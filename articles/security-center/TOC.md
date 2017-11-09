@@ -1,6 +1,5 @@
 # 概述
 ## [什么是 Azure 安全中心？](security-center-intro.md)
-## [使用 Power BI 获取见解](security-center-powerbi.md)
 ## [数据安全](security-center-data-security.md)
 ## 方案
 ### [事件响应](security-center-incident-response.md)
@@ -13,14 +12,13 @@
 ## [规划和操作](security-center-planning-and-operations-guide.md)
 ## [权限](security-center-permissions.md)
 ## [支持的平台](security-center-os-coverage.md)
-## [合作伙伴集成](security-center-partner-integration.md)
 ## [常见问题](security-center-faq.md)
 
 # 如何
-
-## 安全策略
+## [安全策略](security-center-policies-overview.md)
 ### [数据收集](security-center-enable-data-collection.md)
 ### [安全策略](security-center-policies.md)
+### [使用 Azure 策略的安全策略](security-center-azure-policy.md)
 ### [电子邮件通知](security-center-provide-security-contact-details.md)
 ### [定价层](security-center-pricing.md)
 
@@ -29,6 +27,10 @@
 ## [搜索](security-center-search.md)
 
 ## 预防
+### [安全解决方案](security-center-partner-integration.md)
+#### [监视已连接的解决方案](security-center-partner-solutions.md)
+#### [连接 Microsoft ATA](security-center-ata-integration.md)
+#### [连接 Azure AD Identity Protection](security-center-aadip-integration.md)
 ### [实施安全建议](security-center-recommendations.md)
 ### [应用程序建议](security-center-application-recommendations.md)
 #### [添加 Web 应用程序防火墙](security-center-add-web-application-firewall.md)
@@ -53,11 +55,9 @@
 #### [安装终结点保护](security-center-install-endpoint-protection.md)
 #### [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md)
-#### [解决终结点保护运行状况警报](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [更新 OS 版本](security-center-update-os-version.md)
 #### [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
 ### [监视安全运行状况](security-center-monitoring.md)
-### [监视合作伙伴解决方案](security-center-partner-solutions.md)
 ### [标识和访问](security-center-identity-access.md)
 
 ## 检测和响应
@@ -74,6 +74,7 @@
 
 ## 云防御措施
 ### [实时访问](security-center-just-in-time.md)
+### [自适应应用程序控制](security-center-adaptive-application.md)
 
 ## 自动化和业务流程
 ### [演练手册](security-center-playbooks.md)

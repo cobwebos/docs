@@ -9,18 +9,18 @@ editor:
 ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
 ms.custom: load & move data
-ms.workload: na
+ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
+ms.reviewer: douglasl
+ms.openlocfilehash: 64b95142eb5b7086b070585a359bf81e7397c3e5
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 2d0f9d7f32ad79f49d58165d734b9df4af862835
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Azure SQL 数据同步入门（预览版）
 本教程将介绍如何创建包含 Azure SQL 数据库和 SQL Server 实例的混合同步组，从而设置 Azure SQL 数据同步。 新的同步组进行了全面配置，可根据所设定的计划进行同步。
@@ -33,9 +33,6 @@ ms.lasthandoff: 08/05/2017
 -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
 -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-> [!NOTE]
-> 有关 Azure SQL 数据同步的完整技术文档集以前位于 MSDN 中，现在以 .pdf 文档提供。 可从[此处](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)下载。
-
 ## <a name="step-1---create-sync-group"></a>第 1 步 - 创建同步组
 
 ### <a name="locate-the-data-sync-settings"></a>找到数据同步设置
@@ -46,7 +43,7 @@ ms.lasthandoff: 08/05/2017
 
     ![Azure SQL 数据库列表](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
-3.  在“SQL 数据库”边栏选项卡中，选择要用作数据同步的中心数据库的现有 SQL 数据库。 此时，选定数据库的“SQL 数据库”边栏选项卡打开。
+3.  在“SQL 数据库”边栏选项卡中，选择要用作数据同步的中心数据库的现有 SQL 数据库。此时，选定数据库的“SQL 数据库”边栏选项卡打开。
 
 4.  在选定数据库的“SQL 数据库”边栏选项卡中，选择“同步到其他数据库”。 此时，“数据同步”边栏选项卡打开。
 
@@ -63,7 +60,7 @@ ms.lasthandoff: 08/05/2017
     2.  在“同步元数据数据库”部分中，选择是新建数据库（推荐），还是使用现有数据库。
 
         > [!NOTE]
-        > Microsoft 建议新建空的数据库，以用作同步元数据数据库。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库自动共享为选定区域中所有同步组的同步元数据数据库。 只有在删除同步元数据数据库后，才能更改此数据库、数据库名称或服务级别。
+        > Microsoft 建议新建空的数据库，以用作同步元数据数据库。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库自动共享为选定区域中所有同步组的同步元数据数据库。 只有在删除同步元数据数据库后，才能更改此数据库或其名称。
 
         如果选中“新建数据库”，请选择“创建新数据库”。 此时，“SQL 数据库”边栏选项卡打开。 在“SQL 数据库”边栏选项卡中，命名并配置新数据库。 然后选择“确定”。
 
@@ -162,7 +159,7 @@ ms.lasthandoff: 08/05/2017
 
         ![添加和配置 SQL Server 数据库](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
 
-    10. 在“SQL Server 数据库配置”对话框中，选择是使用 SQL Server 身份验证，还是使用 Windows 身份验证进行连接。 如果选择 SQL Server 身份验证，请输入现有凭据。 输入 SQL Server 名称和要同步的数据库的名称。 选择“测试连接”，以测试设置。 再选择“保存”。 此时，已注册的数据库显示在列表中。
+    10. 在“SQL Server 数据库配置”对话框中，选择是使用 SQL Server 身份验证，还是使用 Windows 身份验证进行连接。 如果选择 SQL Server 身份验证，请输入现有凭据。 输入 SQL Server 名称和要同步的数据库的名称。选择“测试连接”，以测试设置。 再选择“保存”。 此时，已注册的数据库显示在列表中。
 
         ![SQL Server 数据库现已注册](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
 
@@ -190,7 +187,7 @@ ms.lasthandoff: 08/05/2017
 
     ![选择要同步的表](media/sql-database-get-started-sql-data-sync/datasync-preview-tables.png)
 
-3.  表中的所有列默认处于选中状态。 如果不想同步所有列，请取消选中不想同步的列的复选框。 请务必保持主键列的选中状态不变。
+3.  表中的所有列默认处于选中状态。 如果不想同步所有列，请取消选中不想同步的列的复选框。请务必保持主键列的选中状态不变。
 
     ![选择要同步的字段](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
 
@@ -201,8 +198,6 @@ ms.lasthandoff: 08/05/2017
 
 有关 SQL 数据库和 SQL 数据同步的详细信息，请参阅：
 
--   [下载完整的 SQL 数据同步技术文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
 -   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 -   [SQL 数据库概述](sql-database-technical-overview.md)
 -   [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
-

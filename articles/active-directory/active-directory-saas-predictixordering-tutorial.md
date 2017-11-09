@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 8536a741f9b114ac6787c7aefb4c76ec6c4ed83e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教程：Azure Active Directory 与 Predictix Ordering 的集成
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/26/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Predictix Ordering 测试用户](#create-a-predictix-ordering-test-user)** - 在 Predictix Ordering 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+3. **[创建 Predictix Ordering 测试用户](#create-a-predictix-ordering-test-user)** - 在 Predictix Ordering 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 07/26/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Predictix Ordering 客户端支持团队](https://www.predix.io/support/)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-predictixordering-tutorial/tutorial_predictixordering_certificate.png) 
 
@@ -205,7 +204,7 @@ ms.lasthandoff: 07/26/2017
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-本部分旨在使用“访问面板”测试你的 Azure AD 单一登录配置。
+本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Predictix Ordering”磁贴时，用户就会自动登录到 Predictix Ordering 应用程序。
 
@@ -230,5 +229,4 @@ ms.lasthandoff: 07/26/2017
 [201]: ./media/active-directory-saas-predictixordering-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-predictixordering-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-predictixordering-tutorial/tutorial_general_203.png
-
 

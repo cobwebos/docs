@@ -13,14 +13,12 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 5838e3276765f4f074bca2e3cae81b17edfa7c69
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft 混合标识解决方案
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 混合标识解决方案使你能够将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用已同步的标识还是使用联合标识。 通过已同步标识和可选密码哈希，你的用户能够使用相同密码访问本地和基于云的组织资源。 对于更高级的方案要求，如单一登录 (SSO) 或本地 MFA，需要将 Active Directory 联合身份验证服务 (AD FS) 部署到联合标识。 
 
@@ -99,5 +97,4 @@ ms.lasthandoff: 07/06/2017
 [安装 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
 
 [监视混合标识同步](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)
-
 

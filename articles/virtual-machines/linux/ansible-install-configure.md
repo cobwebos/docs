@@ -4,7 +4,7 @@ description: "了解如何在 Ubuntu、CentOS 和 SLES 上安装和配置 Ansibl
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: na
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/25/2017
+ms.date: 09/25/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 52b763274437961dccfc862c8a45fbd57ea9fc4e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 3fabfee169c3ebedc7bca81a6a6d9a44171daf20
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>安装和配置 Ansible 以管理 Azure 中的虚拟机
 本文详细介绍了如何为某些最常见的 Linux 发行版安装 Ansible 和所需的 Azure Python SDK 模块。 通过调整安装的程序包以适应特定的平台，在其他发行版上安装 Ansible。 若要安全地创建 Azure 资源，还需了解如何创建和定义用于 Ansible 的凭据。 
 
@@ -66,13 +64,8 @@ ssh azureuser@<publicIpAddress>
 ## Install pre-requisite packages
 sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
 
-## Install Azure SDKs via pip
-pip install "azure==2.0.0rc5" msrestazure
-
-## Install Ansible via apt
-sudo apt-get install -y software-properties-common
-sudo apt-add-repository -y ppa:ansible/ansible
-sudo apt-get update && sudo apt-get install -y ansible
+## Install Ansible and Azure SDKs via pip
+pip install ansible[azure]
 ```
 
 现在转到[创建 Azure 凭据](#create-azure-credentials)。
@@ -103,11 +96,8 @@ ssh azureuser@<publicIpAddress>
 sudo yum check-update; sudo yum install -y gcc libffi-devel python-devel openssl-devel epel-release
 sudo yum install -y python-pip python-wheel
 
-## Install Azure SDKs via pip
-sudo pip install "azure==2.0.0rc5" msrestazure
-
-## Install Ansible via yum
-sudo yum install -y ansible
+## Install Ansible and Azure SDKs via pip
+sudo pip install ansible[azure]
 ```
 
 现在转到[创建 Azure 凭据](#create-azure-credentials)。
@@ -136,11 +126,10 @@ ssh azureuser@<publicIpAddress>
 ```bash
 ## Install pre-requisite packages
 sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 python-devel \
-    libopenssl-devel python-pip python-setuptools python-azure-sdk
+    libopenssl-devel libtool python-pip python-setuptools
 
-## Install Ansible via zypper
-sudo zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/SLE_12_SP2/systemsmanagement.repo
-sudo zypper refresh && sudo zypper install ansible
+## Install Ansible and Azure SDKs via pip
+sudo pip install ansible[azure]
 ```
 
 现在转到[创建 Azure 凭据](#create-azure-credentials)。
@@ -189,8 +178,8 @@ vi ~/.azure/credentials
 ```bash
 [default]
 subscription_id=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-client_id=66cf7166-dd13-40f9-bca2-3e9a43f2b3a4
-secret=b8326643-f7e9-48fb-b0d5-952b68ab3def
+client_id=eec5624a-90f8-4386-8a87-02730b5410d5
+secret=531dcffa-3aff-4488-99bb-4816c395ea3f
 tenant=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 
@@ -200,8 +189,8 @@ tenant=72f988bf-86f1-41af-91ab-2d7cd011db47
 
 ```bash
 export AZURE_SUBSCRIPTION_ID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-export AZURE_CLIENT_ID=66cf7166-dd13-40f9-bca2-3e9a43f2b3a4
-export AZURE_SECRET=8326643-f7e9-48fb-b0d5-952b68ab3def
+export AZURE_CLIENT_ID=eec5624a-90f8-4386-8a87-02730b5410d5
+export AZURE_SECRET=531dcffa-3aff-4488-99bb-4816c395ea3f
 export AZURE_TENANT=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 

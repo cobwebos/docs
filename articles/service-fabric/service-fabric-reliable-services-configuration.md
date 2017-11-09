@@ -12,20 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/29/2017
+ms.date: 10/02/2017
 ms.author: sumukhs
+ms.openlocfilehash: 84111b37f5cdecf377442bca0b15af2092d57414
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: fa77eaf44f4d90d1a78f5de69e36432a53d80ecd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
 
 ## <a name="global-configuration"></a>全局配置
-全局可靠服务配置在群集的群集清单中的 KtlLogger 节下面指定。 它可配置共享日志位置和大小，以及记录器所使用的全局内存限制。 群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 你可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
+全局可靠服务配置在群集的群集清单中的 KtlLogger 节下面指定。 它可配置共享日志位置和大小，以及记录器所使用的全局内存限制。 群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
 
 ### <a name="configuration-names"></a>配置名称
 | Name | 计价单位 | 默认值 | 备注 |
@@ -75,7 +74,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 默认情况下，Azure Service Fabric 运行时在 Settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
 > [!NOTE]
-> 请**勿**删除 Visual Studio 解决方案中生成的 Settings.xml 文件中的以下配置的节名称，除非你打算通过代码配置你的服务。
+> 请**勿**删除 Visual Studio 解决方案中生成的 Settings.xml 文件中的以下配置的节名称，除非打算通过代码配置服务。
 > 配置 ReliableStateManager 时，重命名配置包名称或节名称需要进行代码更改。
 > 
 > 
@@ -87,7 +86,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 ReplicatorSecurityConfig
 
 > [!NOTE]
-> 若要更改此节名称，请在创建此服务的 ReliableStateManager 时，将 replicatorSecuritySectionName 参数重写为 ReliableStateManagerConfiguration 构造函数。
+> 要更改此节名称，请在创建此服务的 ReliableStateManager 时，将 replicatorSecuritySectionName 参数重写为 ReliableStateManagerConfiguration 构造函数。
 > 
 > 
 
@@ -99,7 +98,7 @@ ReplicatorSecurityConfig
 ReplicatorConfig
 
 > [!NOTE]
-> 若要更改此节名称，请在创建此服务的 ReliableStateManager 时，将 replicatorSettingsSectionName 参数重写为 ReliableStateManagerConfiguration 构造函数。
+> 要更改此节名称，请在创建此服务的 ReliableStateManager 时，将 replicatorSettingsSectionName 参数重写为 ReliableStateManagerConfiguration 构造函数。
 > 
 > 
 
@@ -113,11 +112,11 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |创建状态检查点后的日志文件空间量。 |
 | MaxRecordSizeInKB |KB |1024 |复制器可以在日志中写入的最大记录大小。 此值必须是 4 的倍数，且大于 16。 |
 | MinLogSizeInMB |MB |0（系统确定） |事务日志的最小大小。 不允许将日志截断到此设置以下的大小。 0 指示复制器将确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
-| TruncationThresholdFactor |系数 |2 |确定将触发的截断日志大小。 截断阈值由 MinLogSizeInMB 乘以 TruncationThresholdFactor 确定的。 TruncationThresholdFactor 必须是大于 1。 MinLogSizeInMB * TruncationThresholdFactor 必须小于 MaxStreamSizeInMB。 |
+| TruncationThresholdFactor |系数 |#N/A |确定将触发的截断日志大小。 截断阈值由 MinLogSizeInMB 乘以 TruncationThresholdFactor 确定的。 TruncationThresholdFactor 必须是大于 1。 MinLogSizeInMB * TruncationThresholdFactor 必须小于 MaxStreamSizeInMB。 |
 | ThrottlingThresholdFactor |系数 |4 |确定开始限制副本的日志大小。 限制阈值（以 MB 为单位）由 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 确定。 限制阈值（以 MB 为单位）必须大于截断阈值（以 MB 为单位）。 截断阈值（以 MB 为单位）必须小于 MaxStreamSizeInMB。 |
-| MaxAccumulatedBackupLogSizeInMB |MB |800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求将失败。 在这种情况下，用户需要执行完整备份。 |
+| MaxAccumulatedBackupLogSizeInMB |MB |800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求会失败。 在这种情况下，用户需要执行完整备份。 |
 | SharedLogId |GUID |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 GUID。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。 |
-| SharedLogPath |完全限定的路径名 |"" |指定将在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
+| SharedLogPath |完全限定的路径名 |"" |指定会在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 | SlowApiMonitoringDuration |秒 |300 |设置托管 API 调用的监视间隔。 示例：用户提供的备份回调函数。 此间隔时间过去后，将向运行状况管理器发送一个警告运行状况报告。 |
 
 ### <a name="sample-configuration-via-code"></a>通过代码进行配置的示例
@@ -187,5 +186,4 @@ SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用�
 ## <a name="next-steps"></a>后续步骤
 * [在 Visual Studio 中调试 Service Fabric 应用程序](service-fabric-debugging-your-application.md)
 * [Reliable Services 的开发人员参考](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
 

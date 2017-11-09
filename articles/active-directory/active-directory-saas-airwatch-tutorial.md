@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 1996ec97e7c0d94c5606ca43bb5956548f1f3712
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>教程：Azure Active Directory 与 AirWatch 集成
 
@@ -119,7 +118,7 @@ ms.lasthandoff: 07/21/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 若要获取此值，请与 [AirWatch 客户端支持团队](http://www.air-watch.com/company/contact-us/)联系。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_certificate.png) 
 
@@ -133,11 +132,11 @@ ms.lasthandoff: 07/21/2017
 <CS>
 7. 在其他 Web 浏览器窗口中，以管理员身份登录 AirWatch 公司站点。
 
-8. 在左侧导航窗格中，单击“帐户”，然后单击“管理员”。
+8. 在左侧导航窗格中，单击“帐户”，并单击“管理员”。
    
    ![管理员](./media/active-directory-saas-airwatch-tutorial/ic791920.png "管理员")
 
-9. 展开“设置”菜单，然后单击“目录服务”。
+9. 展开“设置”菜单，并单击“目录服务”。
    
    ![设置](./media/active-directory-saas-airwatch-tutorial/ic791921.png "设置")
 
@@ -153,7 +152,7 @@ ms.lasthandoff: 07/21/2017
     
     ![上传](./media/active-directory-saas-airwatch-tutorial/ic791924.png "上传")   
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“目录类型”，选择“无”。
+    a. 对于“目录类型”，选择“无”。
 
     b. 选择“将 SAML 用于身份验证”。
 
@@ -163,7 +162,7 @@ ms.lasthandoff: 07/21/2017
     
     ![请求](./media/active-directory-saas-airwatch-tutorial/ic791925.png "请求")  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“请求绑定类型”，请选择“POST”。
+    a. 对于“请求绑定类型”，请选择“POST”。
 
     b. 在 Azure 门户的“配置 Airwatch 的单一登录”对话框上，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“标识提供程序单一登录 URL”文本框。
 
@@ -179,7 +178,7 @@ ms.lasthandoff: 07/21/2017
     
     ![属性](./media/active-directory-saas-airwatch-tutorial/ic791927.png "属性")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“对象标识符”文本框中，键入“http://schemas.microsoft.com/identity/claims/objectidentifier”。
+    a. 在“对象标识符”文本框中，键入“http://schemas.microsoft.com/identity/claims/objectidentifier”。
 
     b. 在“用户名”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
 
@@ -218,7 +217,7 @@ ms.lasthandoff: 07/21/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-airwatch-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 
@@ -235,10 +234,10 @@ ms.lasthandoff: 07/21/2017
 **若要预配用户帐户，请执行以下步骤：**
 
 1. 以管理员身份登录 **AirWatch** 公司站点。
-2. 在左侧导航窗格中，单击“帐户”，然后单击“用户”。
+2. 在左侧导航窗格中，单击“帐户”，并单击“用户”。
    
    ![用户](./media/active-directory-saas-airwatch-tutorial/ic791929.png "用户")
-3. 在“用户”菜单中，单击“列表视图”，然后依次单击“添加”\>“添加用户”。
+3. 在“用户”菜单中，单击“列表视图”，并依次单击“添加”\>“添加用户”。
    
    ![添加用户](./media/active-directory-saas-airwatch-tutorial/ic791930.png "添加用户")
 4. 在“添加 / 编辑用户”对话框中，执行以下步骤：
@@ -259,7 +258,7 @@ ms.lasthandoff: 07/21/2017
 
 若要将 Britta Simon 分配到 AirWatch，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -308,5 +307,4 @@ ms.lasthandoff: 07/21/2017
 [201]: ./media/active-directory-saas-airwatch-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-airwatch-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-airwatch-tutorial/tutorial_general_203.png
-
 

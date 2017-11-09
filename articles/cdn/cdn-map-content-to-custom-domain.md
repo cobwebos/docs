@@ -1,5 +1,5 @@
 ---
-title: "将 Azure CDN 内容映射到自定义域 |Microsoft Docs"
+title: "将自定义域添加到 CDN 终结点 | Microsoft Docs"
 description: "了解如何将 Azure CDN 内容映射到自定义域。"
 services: cdn
 documentationcenter: 
@@ -12,74 +12,100 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/09/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: cd6db44f7776859d1e6a893543cf0666182ca41a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
-
+ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="map-azure-cdn-content-to-a-custom-domain"></a>将 Azure CDN 内容映射到自定义域
-可以将自定义域映射到 CDN 终结点，以便在指向已缓存内容的 URL 中使用自己的域名，而不是使用 azureedge.net 的子域。
+# <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>将自定义域添加到 CDN 终结点
+创建配置文件后，通常还会创建一个或多个 CDN [终结点](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)（`azureedge.net` 的子域），以通过 HTTP 和 HTTPS 传送内容。 默认情况下，此终结点会包含在所有 URL 中，例如 `https://contoso.azureedge.net/photo.png`。 为方便起见，Azure CDN 允许将自定义域（例如 `www.contoso.com`）与终结点相关联。 借助此选项，可以使用自定义域而不是终结点来传送内容。 例如，如果出于品牌宣传目的，你希望客户能够看到你自己的域名，则选项就很有用。
 
-可以使用两种方法将自定义域映射到 CDN 终结点：
+如果没有自定义域，则必须先在域提供商那里购买一个。 获取自定义域后，请执行以下步骤：
+1. [访问域提供商的 DNS 记录](#step-1-access-dns-records-by-using-your-domain-provider)
+2. [创建 CNAME DNS 记录](#step-2-create-the-cname-dns-records)
+    - 选项 1：将自定义域直接映射到 CDN 终结点
+    - 选项 2：使用 cdnverify 将自定义域映射到 CDN 终结点 
+3. [在 Azure 中启用 CNAME 记录映射](#step-3-enable-the-cname-record-mapping-in-azure)
+4. [验证该自定义子域引用 CDN 终结点](#step-4-verify-that-the-custom-subdomain-references-your-cdn-endpoint)
+5. [（相关步骤）将永久自定义域映射到 CDN 终结点](#step-5-dependent-step-map-the-permanent-custom-domain-to-the-cdn-endpoint)
 
-1. [在域注册机构中创建一个 CNAME 记录，并将自定义域和子域映射到 CDN 终结点](#register-a-custom-domain-for-an-azure-cdn-endpoint)
-   
-    CNAME 记录是一种 DNS 功能，可将源域（如 `www.contosocdn.com` 或 `cdn.contoso.com`）映射到目标域。 在此情况下，源域是你的自定义域和子域（始终需要类似于 **www** 或 **cdn** 的子域）。 目标域是你的 CDN 终结点。  
-   
-    但是，将自定义域映射到 CDN 终结点的过程会导致你在 Azure 门户中注册域时出现短暂的停机时间。
-2. [通过 cdnverify **添加中间注册步骤**](#register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain)
-   
-    如果你的自定义域目前所支持的应用程序的服务级别协议 (SLA) 要求不能有停机时间，则可以使用 Azure **cdnverify** 子域提供中间注册步骤，以便用户在 DNS 映射进行时能够访问你的域。  
+## <a name="step-1-access-dns-records-by-using-your-domain-provider"></a>步骤 1：通过域提供商访问 DNS 记录
 
-使用上面的其中一个过程注册自定义域后，你需要[验证自定义子域可以引用 CDN 终结点](#verify-that-the-custom-subdomain-references-your-cdn-endpoint)。
+如果使用 Azure 托管 [DNS 域](https://docs.microsoft.com/en-us/azure/dns/dns-overview)，必须将域提供商的 DNS 委托给 Azure DNS。 有关详细信息，请参阅[将域委托给 Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。
+
+否则，如果通过域提供商处理 DNS 域，请登录到域提供商的网站。 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 某些提供商提供不同的链接来添加不同的记录类型。
 
 > [!NOTE]
-> 你必须在域注册机构中创建 CNAME 记录，将你的域映射到 CDN 终结点 CNAME 记录会映射特定子域，如 `www.contoso.com` 或 `cdn.contoso.com`。 无法将 CNAME 记录映射到根域，例如 `contoso.com`。
-> 
-> 只能将一个子域与一个 CDN 终结点相关联。 你创建的 CNAME 记录会将其目标为子域的所有流量路由到指定的终结点。  例如，如果将 `www.contoso.com` 与 CDN 终结点关联在一起，则不能将它与其他 Azure 终结点（例如，存储帐户终结点或云服务终结点）进行关联。 但是，你可以将同一域中的不同子域用于不同的服务终结点。 你还可以将不同子域映射到同一 CDN 终结点。
-> 
-> 对于**来自 Verizon 的 Azure CDN**（标准和高级） 终结点，请注意，它需要长达 **90 分钟**将自定义域更改传播到 CDN 边缘节点。
-> 
-> 
+> 对于某些提供商（例如 GoDaddy），在你选择单独的“保存更改”链接之前，这些 DNS 记录不会生效。 
 
-## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint"></a>为 Azure CDN 终结点注册自定义域
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“**浏览**”，然后单击“**CDN 配置文件**”，然后选择需要映射到自定义域的具有终结点的 CDN 配置文件。  
-3. 在“**CDN 配置文件**”边栏选项卡，单击想要将子域关联的 CDN 终结点。
-4. 在终结点边栏选项卡页的顶部，单击“**添加自定义域**”按钮。  在“**添加自定义域**”边栏选项卡，你会看到从 CDN 终结点派生的终结点主机名，该名称可用于创建新的 CNAME 记录。 主机名地址的格式将显示为**&lt;终结点名称 >.azureedge.net**。  你可以复制此主机名，将其用于创建 CNAME 记录。  
-5. 导航到域注册机构的网站，找到创建 DNS 记录的部分。 可能会在“**域名**”、“**DNS**”或“**名称服务器管理**”等部分中找到此页。
-6. 找到用于管理 CNAME 的部分。 你可能需要转至高级设置页面，并找到“CNAME”、“别名”或“子域”字样。
-7. 创建一个新的 CNAME 记录，将所选子域（例如 **www** 或 **cdn**）映射到在“**添加自定义域**”边栏选项卡中提供的主机名。 
-8. 返回到“**添加自定义域**”边栏选项卡，在对话框中输入自定义域（包括子域）。 例如，按格式 `www.contoso.com` 或 `cdn.contoso.com` 输入域名。   
-   
-   Azure 会验证你所输入的域名是否存在 CNAME 记录。 如果该 CNAME 正确，将验证你的自定义域。  但是，对于**来自 Verizon 的 Azure CDN**（标准和高级）终结点，它可能需要长达 90 分钟将自定义域的设置传播到所有 CDN 边缘节点。  
-   
-   请注意，在某些情况下，CNAME 记录传播到 Internet 上的名称服务器需要一定的时间。 如果你的域并没有立即获得验证，而你确信 CNAME 记录是正确的，则请等待数分钟，然后重试。
 
-## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain"></a>使用中间 cdnverify 子域为 Azure CDN 终结点注册自定义域
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“**浏览**”，然后单击“**CDN 配置文件**”，然后选择需要映射到自定义域的具有终结点的 CDN 配置文件。  
-3. 在“**CDN 配置文件**”边栏选项卡，单击想要将子域关联的 CDN 终结点。
-4. 在终结点边栏选项卡页的顶部，单击“**添加自定义域**”按钮。  在“**添加自定义域**”边栏选项卡，你会看到从 CDN 终结点派生的终结点主机名，该名称可用于创建新的 CNAME 记录。 主机名地址的格式将显示为**&lt;终结点名称 >.azureedge.net**。  你可以复制此主机名，将其用于创建 CNAME 记录。
-5. 导航到域注册机构的网站，找到创建 DNS 记录的部分。 可能会在“**域名**”、“**DNS**”或“**名称服务器管理**”等部分中找到此页。
-6. 找到用于管理 CNAME 的部分。 你可能需要转至高级设置页面，并找到“**CNAME**”、“**别名**”或“**子域**”字样。
-7. 创建一个新的 CNAME 记录，并且提供包含 **cdnverify** 子域的子域别名。 例如，指定的子域将采用 **cdnverify.www** 或 **cdnverify.cdn** 格式。 然后提供主机名，这是你的 CDN 终结点，格式为 **cdnverify.&lt;终结点名称 >. azureedge.net**。 DNS 映射如下所示：`cdnverify.www.consoto.com   CNAME   cdnverify.consoto.azureedge.net`  
-8. 返回到“**添加自定义域**”边栏选项卡，在对话框中输入自定义域（包括子域）。 例如，按格式 `www.contoso.com` 或 `cdn.contoso.com` 输入域名。 请注意在此步骤中，你无需为子域添加前缀 **cdnverify**。  
-   
-    Azure 会验证你所输入的 cdnverify 域名是否存在 CNAME 记录。
-9. 此时，你的自定义域已由 Azure 进行了验证，但传输到你的域的流量尚未路由到你的 CDN 终结点。 在等待足够长的时间以允许自定义域设置传播到 CDN 边缘节点（对于**来自 Verizon 的 Azure CDN**，这需要 90 分钟，对于**来自 Akamai 的 Azure CDN**，这需要 1-2 分钟）后，返回到 DNS 注册机构网站，并创建另一个 CNAME 记录，将子域映射到 CDN 终结点。 例如，可将子域指定为 **www** 或 **cdn**，并将主机名指定为 **&lt;终结点名称>.azureedge.net**。 完成此步骤后，也就完成了你的自定义域的注册。
-10. 最后，你可以使用 **cdnverify** 删除你创建的 CNAME 记录，因为在中间步骤才需要使用此记录。  
+## <a name="step-2-create-the-cname-dns-records"></a>步骤 2：创建 CNAME DNS 记录
 
-## <a name="verify-that-the-custom-subdomain-references-your-cdn-endpoint"></a>验证该自定义子域引用你的 CDN 终结点
-* 完成自定义域的注册以后，你就可以通过自定义域访问缓存在 CDN 终结点的内容。
-  首先，请确保你在终结点缓存了公共内容。 例如，如果你的 CDN 终结点与某个存储帐户相关联，则 CDN 会将内容缓存在公共 blob 容器中。 若要测试自定义域，请确保已将你的容器设置为允许公共访问，而且该容器包含至少一个 blob。
-* 在浏览器中，导航到使用自定义域的 blob 的地址。 例如，如果你的自定义域为 `cdn.contoso.com`，则指向缓存的 blob 的 URL 将类似于以下 URL：http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg
+在将自定义域与 Azure CDN 终结点结合使用之前，必须先在域提供商的配合下创建一个规范名称 (CNAME) 记录。 CNAME 记录是域名系统 (DNS) 中的一种记录类型，可通过指定“规范”或真实域名的别名域名，将源域映射到目标域。 对 Azure CDN 而言，源域是自定义域（和子域），目标域是 CDN 终结点。 通过门户或 API 将自定义域添加到终结点时，Azure CDN 会验证 CNAME DNS 记录。 
+
+CNAME 记录映射特定的域和子域，例如 `www.contoso.com` 或 `cdn.contoso.com`；它无法将 CNAME 记录映射到根域，例如 `contoso.com`。 一个子域只能与一个 CDN 终结点关联，创建的 CNAME 记录会将其目标为子域的所有流量路由到指定的终结点。 例如，如果将 `www.contoso.com` 与 CDN 终结点关联在一起，则不能将它与其他 Azure 终结点（例如，存储帐户终结点或云服务终结点）相关联。 但是，可以将同一域中的不同子域用于不同的服务终结点。 还可以将不同子域映射到同一 CDN 终结点。
+
+使用以下选项之一将自定义域映射到 CDN 终结点：
+
+- 选项 1：直接映射。 如果自定义域上未运行生产流量，则可以直接将自定义域映射到 CDN 终结点。 将自定义域映射到 CDN 终结点的过程可能会导致在 Azure 门户中注册域时出现短暂的停机。 CNAME 映射条目应采用以下格式： 
+ 
+  | 名称             | 类型  | 值                  |
+  |------------------|-------|------------------------|
+  | www\.consoto.com | CNAME | consoto\.azureedge.net |
+
+
+- 选项 2：使用 **cdnverify** 子域进行映射。 如果自定义域上运行了不可中断的生产流量，可以创建 CNAME 到 CDN 终结点的临时映射。 借助此选项，可以使用 Azure **cdnverify** 子域来提供中间注册步骤，这样，在发生 DNS 映射时，用户仍可以持续访问你的域。
+
+   1. 创建一个新的 CNAME 记录，并提供包含 **cdnverify** 子域的子域别名。 例如，**cdnverify.www** 或 **cdnverify.cdn**。 
+   2. 使用以下格式提供主机名，即 CDN 终结点：`cdnverify.<EndpointName>.azureedge.net`。 CNAME 映射条目应采用以下格式： 
+
+   | 名称                       | 类型  | 值                            |
+   |----------------------------|-------|----------------------------------|
+   | cdnverify.www\.consoto.com | CNAME | cdnverify.consoto\.azureedge.net | 
+
+
+## <a name="step-3-enable-the-cname-record-mapping-in-azure"></a>步骤 3：在 Azure 中启用 CNAME 记录映射
+
+使用前面的过程之一注册自定义域后，可在 Azure CDN 中启用自定义域功能。 
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)，浏览到 CDN 配置文件，其中包含需要映射到自定义域的终结点。  
+2. 在“CDN 配置文件”边栏选项卡中，选择想要将子域关联到的 CDN 终结点。
+3. 在终结点边栏选项卡的左上角，单击“自定义域”。 
+
+   ![自定义域按钮](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
+
+4. 在“自定义主机名”文本框中，输入自定义域，包括子域。 例如 `www.contoso.com` 或 `cdn.contoso.com`。
+
+   ![添加自定义域的对话框](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain-dialog.png)
+
+5. 单击“添加”。
+
+   Azure 会验证所输入的域名是否存在 CNAME 记录。 如果该 CNAME 正确，会验证自定义域。 将 CNAME 记录传播到名称服务器可能需要一段时间。 如果域并没有立即获得验证，请验证 CNAME 记录是正确，然后等待几分钟重试。 对于**来自 Verizon 的 Azure CDN**（标准和高级）终结点，最长可能需要 90 分钟才能将自定义域的设置传播到所有 CDN 边缘节点。  
+
+
+## <a name="step-4-verify-that-the-custom-subdomain-references-your-cdn-endpoint"></a>步骤 4：验证自定义子域是否引用 CDN 终结点
+
+完成自定义域的注册后，请验证该自定义子域是否引用 CDN 终结点。
+ 
+1. 确保在终结点缓存了公共内容。 例如，如果 CDN 终结点与某个存储帐户相关联，则 CDN 会将内容缓存在公共 blob 容器中。 若要测试自定义域，请验证是否已将容器设置为允许公共访问，并至少包含一个 Blob。
+
+2. 在浏览器中，使用自定义域导航到 Blob 的地址。 例如，如果自定义域为 `cdn.contoso.com`，则缓存的 Blob 的 URL 应类似于：`http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg`。
+
+
+## <a name="step-5-dependent-step-map-the-permanent-custom-domain-to-the-cdn-endpoint"></a>步骤 5（相关步骤）：将永久自定义域映射到 CDN 终结点
+
+此步骤与步骤 2 的选项 2（使用 **cdnverify** 子域进行映射）相关。 如果使用的是 **cdnverify** 临时子域并确认该域可正常工作，则可以将永久自定义域映射到 CDN 终结点。
+
+1. 在域提供商的网站上，创建一条 CNAME DNS 记录，用于将永久自定义域映射到 CDN 终结点。 CNAME 映射条目应采用以下格式： 
+ 
+   | 名称             | 类型  | 值                  |
+   |------------------|-------|------------------------|
+   | www\.consoto.com | CNAME | consoto\.azureedge.net |
+2. 删除包含前面所创建的 **cdnverify** 子域的 CNAME 记录。
 
 ## <a name="see-also"></a>另请参阅
-[如何对 Azure 启用内容交付网络 (CDN)](cdn-create-new-endpoint.md)  
-
-
+[如何为 Azure 启用内容交付网络 (CDN)](cdn-create-new-endpoint.md)  
+[将域委托给 Azure DNS](../dns/dns-domain-delegation.md)

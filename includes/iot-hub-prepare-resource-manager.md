@@ -11,7 +11,7 @@
     Login-AzureRmAccount
     ```
 
-1. 如果你有多个 Azure 订阅，则访问 Azure 即有权访问与凭据关联的所有 Azure 订阅。 使用以下命令，列出可供使用的 Azure 订阅：
+1. 如果有多个 Azure 订阅，则访问 Azure 即有权访问与凭据关联的所有 Azure 订阅。 使用以下命令，列出可供使用的 Azure 订阅：
 
     ```powershell
     Get-AzureRMSubscription
@@ -47,7 +47,7 @@
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-现在，你已创建可从自定义 C# 应用程序进行身份验证的 Azure AD 应用程序。 在本教程的后续内容中，你需要用到以下值：
+现在，已创建可从自定义 C# 应用程序进行身份验证的 Azure AD 应用程序。 在本教程的后续内容中，需要用到以下值：
 
 * TenantId
 * SubscriptionId

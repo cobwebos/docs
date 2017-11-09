@@ -12,16 +12,14 @@ ms.custom: security
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.workload: On Demand
 ms.date: 03/09/2017
 ms.author: ronitr; ronmat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: cf13c0290cc0356db0885d6762a4ebebac304431
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: b75f170870a5f595fcda41196f4de81f237f88b8
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL 数据库动态数据掩码
 
@@ -53,12 +51,11 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 <a name="Anchor1"></a>
 
 ### <a name="recommended-fields-to-mask"></a>建议进行屏蔽的字段
-DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。 在门户的“动态数据屏蔽”边栏选项卡中，你会看到针对你的数据库建议的列。 你只需针对一个或多个列单击“添加屏蔽”，然后单击“保存”，即可对这些字段应用屏蔽。
+DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。 在门户的“动态数据屏蔽”边栏选项卡中，会看到针对数据库建议的列。 只需针对一个或多个列单击“添加屏蔽”，然后单击“保存”，即可对这些字段应用屏蔽。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 Powershell cmdlet 为数据库设置动态数据屏蔽
 请参阅 [Azure SQL 数据库 Cmdlet](https://msdn.microsoft.com/library/azure/mt574084.aspx)。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>使用 REST API 为数据库设置动态数据屏蔽
 请参阅对 [Azure SQL 数据库](https://msdn.microsoft.com/library/dn505719.aspx)的操作。
-
 

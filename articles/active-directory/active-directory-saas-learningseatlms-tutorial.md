@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 877e0288fdd1f590acf064c204aff0741539b112
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>教程：Azure Active Directory 与 Learning Seat LMS 的集成
 
@@ -110,7 +109,7 @@ ms.lasthandoff: 06/30/2017
 
     ![配置单一登录](./media/active-directory-saas-learnconnect-tutorial/tutorial_learnconnect_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.learningseatlms.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.learningseatlms.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService`
 
@@ -123,7 +122,7 @@ ms.lasthandoff: 06/30/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Learning Seat 支持团队](http://help.learningseatlms.com/help)获取这些值。 
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-learnconnect-tutorial/tutorial_learnconnect_certificate.png) 
 
@@ -160,7 +159,7 @@ ms.lasthandoff: 06/30/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-learnconnect-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -180,7 +179,7 @@ ms.lasthandoff: 06/30/2017
 
 **若要将 Britta Simon 分配到 Learning Seat LMS，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -228,5 +227,4 @@ ms.lasthandoff: 06/30/2017
 [201]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_203.png
-
 

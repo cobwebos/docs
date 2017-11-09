@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8b676aee5353d0e5d85224950a537b3fe31f2f29
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 4105392f58eaf37e88c1d9ffb74f3f4133fa5482
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Azure 移动应用中的身份验证和授权
 ## <a name="what-is-app-service-authentication--authorization"></a>什么是应用服务身份验证/授权？
@@ -55,7 +54,7 @@ ms.lasthandoff: 11/17/2016
 在后端将一切配置准备就绪后，可以修改用于登录的客户端。 可以使用下述两种方式：
 
 * 使用一行代码，让移动应用客户端 SDK 登录用户。
-* 利用给定标识提供者发布的 SDK 建立标识，然后获取对应用服务的访问权限。
+* 利用给定标识提供者发布的 SDK 建立标识，并获取对应用服务的访问权限。
 
 > [!TIP]
 > 大多数应用程序都应该使用提供程序 SDK 来获得更自然的登录体验，使用刷新支持和其他提供程序特定的优势。
@@ -73,9 +72,9 @@ ms.lasthandoff: 11/17/2016
 获取提供者令牌后，需将其发送到应用服务进行验证。 在流程结束时，客户端 SDK 将拥有一个应用服务令牌，该令牌自动附加到针对后端的所有请求。 开发人员也可选择性地保留对提供者令牌的引用。
 
 ## <a name="how-authorization-works"></a>授权工作原理
-应用服务身份验证/授权公开**请求未经身份验证时需执行的操作**的多个选项。 在代码收到给定的请求之前，可以进行应用服务检查来查看是否对请求进行身份验证，如果没有，则拒绝请求并尝试让用户登录，然后再试一次。
+应用服务身份验证/授权公开**请求未经身份验证时需执行的操作**的多个选项。 在代码收到给定的请求之前，可以进行应用服务检查来查看是否对请求进行身份验证，如果没有，则拒绝请求并尝试让用户登录，并再试一次。
 
-其中一个选项是让未经身份验证的请求重定向到其中一个标识提供者。 在 Web 浏览器中，这实际上会将用户转到新页面。 但是，这样就无法重定向移动客户端，并且未经身份验证的响应将收到 HTTP“401 未授权”响应。 考虑到这一点，客户端发出的第一个请求应始终为登录终结点，然后可对任何其他 API 进行调用。 如果尝试在登录之前调用另一个 API，客户端将收到错误。
+其中一个选项是让未经身份验证的请求重定向到其中一个标识提供者。 在 Web 浏览器中，这实际上会将用户转到新页面。 但是，这样就无法重定向移动客户端，并且未经身份验证的响应将收到 HTTP“401 未授权”响应。 考虑到这一点，客户端发出的第一个请求应始终为登录终结点，并可对任何其他 API 进行调用。 如果尝试在登录之前调用另一个 API，客户端将收到错误。
 
 如果想要更精细控制哪些终结点需要身份验证，也可以针对未经身份验证的请求选择“无操作(允许请求)”。 在此情况下，所有身份验证决策都将延后到应用程序代码。 也可以根据自定义的授权规则来允许特定的用户访问。
 
@@ -102,9 +101,8 @@ ms.lasthandoff: 11/17/2016
 [将身份验证添加到 Xamarin.Android 应用]: app-service-mobile-xamarin-android-get-started-users.md
 [将身份验证添加到 Windows 应用]: app-service-mobile-windows-store-dotnet-get-started-users.md
 
-[如何将应用配置为使用 Azure Active Directory 登录]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[如何将应用配置为使用 Facebook 登录]: app-service-mobile-how-to-configure-facebook-authentication.md
-[如何将应用配置为使用 Google 登录]: app-service-mobile-how-to-configure-google-authentication.md
-[如何将应用配置为使用 Microsoft 帐户登录]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[如何将应用配置为使用 Twitter 登录]: app-service-mobile-how-to-configure-twitter-authentication.md
-
+[如何将应用配置为使用 Azure Active Directory 登录]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[如何将应用配置为使用 Facebook 登录]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
+[如何将应用配置为使用 Google 登录]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
+[如何将应用配置为使用 Microsoft 帐户登录]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
+[如何将应用配置为使用 Twitter 登录]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md

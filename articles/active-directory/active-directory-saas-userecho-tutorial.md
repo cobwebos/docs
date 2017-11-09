@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 2d824d8d5eb8a25db128397b908a126bd87213ea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>教程：Azure Active Directory 与 UserEcho 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/12/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-userecho-from-the-gallery"></a>从库添加 UserEcho
-若要配置 UserEcho 与 Azure AD 的集成，需要从库中将 UserEcho 添加到托管 SaaS 应用列表。
+要配置 UserEcho 与 Azure AD 的集成，需要从库中将 UserEcho 添加到托管 SaaS 应用列表。
 
 **若要从库添加 UserEcho，请按以下步骤操作：**
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/12/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 UserEcho 测试用户](#creating-a-userecho-test-user)** - 以在 UserEcho 中具有对应的 Britta Simon 用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建 UserEcho 测试用户](#creating-a-userecho-test-user)** - 在 UserEcho 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 07/12/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [UserEcho 客户端支持团队](https://feedback.userecho.com/)获取这些值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_certificate.png) 
 
@@ -132,7 +131,7 @@ ms.lasthandoff: 07/12/2017
 
 7. 在另一浏览器窗口中，以管理员身份登录到 UserEcho 公司站点。
 
-8. 在顶部工具栏中，单击用户名展开菜单，然后单击“设置”。
+8. 在顶部工具栏中，单击用户名展开菜单，并单击“设置”。
    
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png) 
 
@@ -140,7 +139,7 @@ ms.lasthandoff: 07/12/2017
    
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_07.png) 
 
-10. 单击“网站”，然后单击“单一登录 (SAML2)”。
+10. 单击“网站”，并单击“单一登录 (SAML2)”。
    
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_08.png) 
 
@@ -148,15 +147,15 @@ ms.lasthandoff: 07/12/2017
    
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_09.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 至于“SAML 启用”，请选择“是”。
+    a. 至于“SAML 启用”，请选择“是”。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“SAML SSO URL”文本框中。
+    b. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“SAML SSO URL”文本框中。
     
     c. 将从 Azure 门户复制的“注销 URL”粘贴到“远程注销 URL”文本框中。
     
-    d. 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“X.509 证书”文本框中。
+    d. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“X.509 证书”文本框中。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存” 。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -185,7 +184,7 @@ ms.lasthandoff: 07/12/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-userecho-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -201,7 +200,7 @@ ms.lasthandoff: 07/12/2017
 
 1. 以管理员身份登录到 UserEcho 公司站点。
 
-2. 在顶部工具栏中，单击用户名展开菜单，然后单击“设置”。
+2. 在顶部工具栏中，单击用户名展开菜单，并单击“设置”。
    
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_06.png)
 
@@ -221,9 +220,9 @@ ms.lasthandoff: 07/12/2017
    
     ![配置单一登录](./media/active-directory-saas-userecho-tutorial/tutorial_userecho_13.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入用户名（如 Britta Simon）。
+    a. 在“名称”文本框中，键入用户名（如 Britta Simon）。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。  在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    b.  在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
     
     c. 单击“邀请”。
 
@@ -235,9 +234,9 @@ ms.lasthandoff: 07/12/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 UserEcho，请执行以下步骤：**
+**要将 Britta Simon 分配到 UserEcho，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -283,5 +282,4 @@ ms.lasthandoff: 07/12/2017
 [201]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_203.png
-
 

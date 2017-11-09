@@ -14,27 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>概述
-本主题介绍如何使用 Azure 通知中心将突发新闻通知广播到 Windows Phone 8.0/8.1 Silverlight 应用。 如果你要以 Windows 应用商店或 Phone 8.1 应用为目标，请参阅 [Windows Universal](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md) 版本。 完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
+本主题介绍如何使用 Azure 通知中心将突发新闻通知广播到 Windows Phone 8.0/8.1 Silverlight 应用。 如果要以 Windows 应用商店或 Phone 8.1 应用为目标，请参阅 [Windows Universal](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md) 版本。 完成时，可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
 ## <a name="prerequisites"></a>先决条件
-本主题以你在[通知中心入门]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门]教程的学习。
+本主题以在[通知中心入门]中创建的应用为基础。 在开始本教程之前，必须先完成[通知中心入门]教程的学习。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
-第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在你的通知中心创建设备注册。
+第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
 
-1. 打开 MainPage.xaml 项目文件，然后使用以下代码替换名为 `TitlePanel` 和 `ContentPanel` 的 **Grid** 元素：
+1. 打开 MainPage.xaml 项目文件，并使用以下代码替换名为 `TitlePanel` 和 `ContentPanel` 的 **Grid** 元素：
    
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Breaking News" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
@@ -191,7 +191,7 @@ ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
    
    > [!NOTE]
-   > 由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+   > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
    > 
    > 
 2. 在 MainPage.xaml.cs 中，添加以下行：
@@ -215,19 +215,19 @@ ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
              result.RegistrationId);
         }
    
-    此方法创建一个类别列表并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标签注册到你的通知中心。 更改类别时，使用新类别重新创建注册。
+    此方法创建一个类别列表并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标签注册到通知中心。 更改类别时，使用新类别重新创建注册。
 
-你的应用程序现在可以将一组类别存储在设备的本地存储区中了，每当用户更改所选类别时，会将这些类别注册到通知中心。
+应用程序现在可以将一组类别存储在设备的本地存储区中了，每当用户更改所选类别时，会将这些类别注册到通知中心。
 
 ## <a name="register-for-notifications"></a>注册通知
-这些步骤用于在启动时将在本地存储区中存储的类别注册到通知中心。
+这些步骤用于在启动时会在本地存储区中存储的类别注册到通知中心。
 
 > [!NOTE]
-> 由于 Microsoft 推送通知服务 (MPNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
+> 由于 Microsoft 推送通知服务 (MPNS) 分配的通道 URI 随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
 > 
 > 
 
-1. 打开 App.xaml.cs 文件，将 **async** 修饰符添加到 **Application_Launching** 方法，并将你在[通知中心入门]中添加的通知中心注册代码替换为以下代码：
+1. 打开 App.xaml.cs 文件，将 **async** 修饰符添加到 **Application_Launching** 方法，并会在[通知中心入门]中添加的通知中心注册代码替换为以下代码：
    
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
@@ -257,7 +257,7 @@ ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
    
     这基于以前保存的类别状态更新主页。
 
-应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时将使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
+应用程序现在已完成，可以在设备的本地存储区中存储一组类别了，每当用户更改所选类别时会使用这些类别注册到通知中心。 接下来，我们将定义一个后端，它可将类别通知发送到此应用程序。
 
 ## <a name="sending-tagged-notifications"></a>发送带标记的通知
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
@@ -267,17 +267,17 @@ ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
    
     ![][1]
    
-    请注意，应用程序 UI 提供了一组开关，你可以使用它们选择要订阅的类别。
-2. 启用一个或多个类别开关，然后单击“**订阅**”。
+    请注意，应用程序 UI 提供了一组开关，可以使用它们选择要订阅的类别。
+2. 启用一个或多个类别开关，并单击“**订阅**”。
    
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
    
     ![][2]
-3. 在接收类别已完成订阅的确认后，运行控制台应用以发送每个类别的通知。 确认你只会收到订阅的类别的通知。
+3. 在接收类别已完成订阅的确认后，运行控制台应用以发送每个类别的通知。 验证是否仅接收已订阅类别的通知。
    
     ![][3]
 
-你已完成本主题。
+已完成本主题。
 
 <!--##Next steps
 
@@ -293,11 +293,11 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 -->
 
 <!-- Anchors. -->
-[向应用中添加类别选择]: #adding-categories
-[注册通知]: #register
-[从后端发送通知]: #send
-[运行应用并生成通知]: #test-app
-[后续步骤]: #next-steps
+[Add category selection to the app]: #adding-categories
+[Register for notifications]: #register
+[Send notifications from your back-end]: #send
+[Run the app and generate notifications]: #test-app
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
@@ -308,15 +308,9 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 <!-- URLs.-->
 [通知中心入门]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[使用通知中心广播本地化的突发新闻]: ../breakingnews-localized-wp8.md
-[使用通知中心通知用户]: /manage/services/notification-hubs/notify-users/
-[移动服务]: /develop/mobile/tutorials/get-started
-[通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
-[针对 Windows Phone 的通知中心操作指南]: ??
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Use Notification Hubs to broadcast localized breaking news]: ../breakingnews-localized-wp8.md
+[Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users/
+[Mobile Service]: /develop/mobile/tutorials/get-started
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Windows Phone]: ??
 

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: f2849fe25fd0d5b3dc26598ffba7591cb7433161
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="intro"></a>将云服务与 Azure CDN 集成
 云服务可以与 Azure CDN 集成，从云服务的位置提供任何内容。 此方法具有以下优点：
@@ -30,7 +29,7 @@ ms.lasthandoff: 08/01/2017
 * 为 Web 应用程序和 CDN 提供的内容应用统一的部署工作流
 * 将 ASP.NET 绑定和缩减与 Azure CDN 集成
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+## <a name="what-you-will-learn"></a>要学习的知识
 在本教程中，将了解如何：
 
 * [将 Azure CDN 终结点与云服务集成，通过 Azure CDN 在网页中提供静态内容](#deploy)
@@ -601,4 +600,3 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 [cdn-new-endpoint-button]: ./media/cdn-cloud-service-with-cdn/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
-

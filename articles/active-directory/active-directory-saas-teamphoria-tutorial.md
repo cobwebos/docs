@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: 2a35efb04d7fe22abc6894c149caf090666ce016
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>教程：Azure Active Directory 与 Teamphoria 集成
 
@@ -62,7 +61,7 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-teamphoria-from-the-gallery"></a>从库中添加 Teamphoria
-若要配置 Teamphoria 与 Azure AD 的集成，需要从库中将 Teamphoria 添加到托管的 SaaS 应用列表。
+要配置 Teamphoria 与 Azure AD 的集成，需要从库中将 Teamphoria 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 Teamphoria，请执行以下步骤：**
 
@@ -82,7 +81,7 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_search.png)
 
-5. 在结果窗格中，选择“Teamphoria”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Teamphoria”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_addfromgallery.png)
 
@@ -95,15 +94,15 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
 若要配置和测试 Teamphoria 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Teamphoria 测试用户](#creating-a-teamphoria-test-user)** - 在 Teamphoria 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
+3. **[创建 Teamphoria 测试用户](#creating-a-teamphoria-test-user)** - 在 Teamphoria 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 Teamphoria 应用程序中配置单一登录。
+在本部分中，会在 Azure 管理门户中启用 Azure AD 单一登录并在 Teamphoria 应用程序中配置单一登录。
 
 **若要配置 Teamphoria 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -119,12 +118,12 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
     ![配置单一登录](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.teamphoria.com/login`    
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.teamphoria.com/login`    
 
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际登录 URL 更新这些值。 联系 [Teamphoria 客户端支持团队](https://www.teamphoria.com/)以获取登录 URL。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书。
+4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书。
 
     ![配置单一登录](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_certificate.png) 
 
@@ -138,7 +137,7 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
 7. 若要在“Teamphoria”端配置单一登录，请以管理员身份登录 Teamphoria 应用程序。
 
-8. 转到左侧工具栏中的“管理员设置”选项，然后在“配置”选项卡下单击“单一登录”，以打开 SSO 配置窗口。
+8. 转到左侧工具栏中的“管理员设置”选项，并在“配置”选项卡下单击“单一登录”，以打开 SSO 配置窗口。
 
     ![配置单一登录](./media/active-directory-saas-teamphoria-tutorial/admin_sso_configure.png)
 
@@ -152,13 +151,13 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
     a. **显示名称**：在管理页上输入插件的显示名称。
 
-    b. **按钮名称**：将在用于通过 SSO 登录的登录页上显示的选项卡的名称。
+    b. **按钮名称**：会在用于通过 SSO 登录的登录页上显示的选项卡的名称。
 
     c. **证书**：在记事本中打开之前从 Azure 门户下载的证书，复制相同的内容并将其粘贴到此处的框中。
 
     d. **入口点**：粘贴之前从 Azure 门户中复制的“SAML 单一登录服务 URL”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将选项切换为“打开”，然后单击“保存”。   
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 将选项切换为“打开”，然后单击“保存”。   
 
 <!--### Next steps
 
@@ -196,7 +195,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -212,7 +211,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 
 1. 以管理员身份登录 Teamphoria 公司站点。
 
-2. 单击左侧工具栏上的“管理员”设置，然后在“管理”选项卡下单击“用户”，以打开用户的管理页。
+2. 单击左侧工具栏上的“管理员”设置，并在“管理”选项卡下单击“用户”，以打开用户的管理页。
 
     ![添加员工](./media/active-directory-saas-teamphoria-tutorial/admin_manage_users.png)
 
@@ -224,7 +223,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
     
     ![邀请人员](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件地址”文本框中，键入 Britta Simon 的“电子邮件地址”。
+    a. 在“电子邮件地址”文本框中，键入 Britta Simon 的“电子邮件地址”。
 
     b. 在“名字”文本框中，键入“Britta”。
 
@@ -238,9 +237,9 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Teamphoria，请执行以下步骤：**
+**要将 Britta Simon 分配到 Teamphoria，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -288,5 +287,4 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 [201]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_203.png
-
 

@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
 ms.openlocfilehash: 22c72020200138e78835ed7dd2661f18b824c785
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>教程：Azure Active Directory 与 iLMS 的集成
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 05/01/2017
 
 测试本教程中的步骤应遵循以下建议：
 
-- 不应使用生产环境，除非有此必要。
+- 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
@@ -55,7 +53,7 @@ ms.lasthandoff: 05/01/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-ilms-from-the-gallery"></a>从库中添加 iLMS
-若要配置 iLMS 与 Azure AD 的集成，需要从库中将 iLMS 添加到托管 SaaS 应用列表。
+要配置 iLMS 与 Azure AD 的集成，需要从库中将 iLMS 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 iLMS，请执行以下步骤：**
 
@@ -75,7 +73,7 @@ ms.lasthandoff: 05/01/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_search.png)
 
-5. 在结果窗格中，选择“iLMS”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“iLMS”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_addfromgallery.png)
 
@@ -90,13 +88,13 @@ ms.lasthandoff: 05/01/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 iLMS 测试用户](#creating-an-ilms-test-user)** - 在 iLMS 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 iLMS 测试用户](#creating-an-ilms-test-user)** - 在 iLMS 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 iLMS 应用程序中配置单一登录。
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 iLMS 应用程序中配置单一登录。
 
 **若要配置 iLMS 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -114,7 +112,7 @@ ms.lasthandoff: 05/01/2017
 
     a. 在“标识符”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的“标识符”值。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值
+    b. 在“回复 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值
 
     >[!Note]
     >其中的“123456”是标识符的示例值。
@@ -123,18 +121,18 @@ ms.lasthandoff: 05/01/2017
 
     ![配置单一登录](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
 
-    在“登录 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值        
+    在“登录 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值     
 
 5. 若要启用 JIT 预配，iLMS 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录](./media/active-directory-saas-ilms-tutorial/4.png)
     
-    创建“部门”、“区域”和“分支”属性，并添加这些属性在 iLMS 中的名称。 上面所示的所有这些属性都是必需的。    
+    创建“部门”、“区域”和“分支”属性，并添加这些属性在 iLMS 中的名称。 上面所示的所有这些属性都是必需的。  
 
     > [!NOTE] 
     > 必须在 iLMS 中启用“创建不可识别的用户帐户”才能映射这些属性。 遵照[此处](http://support.inspiredelearning.com/customer/portal/articles/2204526)的说明获取有关属性配置的思路。
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
+6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
@@ -152,9 +150,9 @@ ms.lasthandoff: 05/01/2017
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定”
+    d. 单击“确定”
 
-7. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+7. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_certificate.png) 
 
@@ -162,17 +160,17 @@ ms.lasthandoff: 05/01/2017
 
     ![配置单一登录](./media/active-directory-saas-iLMS-tutorial/tutorial_general_400.png)
 
-9. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 **iLMS 管理门户**。
+9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 **iLMS 管理门户**。
 
 10. 单击“设置”选项卡下面的“SSO:SAML”打开“SAML 设置”并执行以下步骤：
     
     ![配置单一登录](./media/active-directory-saas-ilms-tutorial/1.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 展开“服务提供程序”部分，并复制“标识符”和“终结点(URL)”值。
+    a. 展开“服务提供程序”部分，并复制“标识符”和“终结点(URL)”值。
 
     ![配置单一登录](./media/active-directory-saas-ilms-tutorial/2.png) 
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识提供者”部分下面，单击“导入元数据”。
+    b. 在“标识提供者”部分下面，单击“导入元数据”。
     
     c. 在“SAML 签名证书”部分中选择从 Azure 门户下载的“元数据”文件。
 
@@ -228,7 +226,7 @@ ms.lasthandoff: 05/01/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ilms-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -238,7 +236,7 @@ ms.lasthandoff: 05/01/2017
  
 ### <a name="creating-an-ilms-test-user"></a>创建 iLMS 测试用户
 
-应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。 如果在 iLMS 管理门户中设置 SAML 配置期间已单击“创建不可识别的用户帐户”复选框，则 JIT 会正常工作。
+应用程序支持实时用户预配，且进行身份验证后，会在应用程序中自动创建用户。 如果在 iLMS 管理门户中设置 SAML 配置期间已单击“创建不可识别的用户帐户”复选框，则 JIT 会正常工作。
 
 如果需要手动创建用户，请执行以下步骤：
 
@@ -252,9 +250,9 @@ ms.lasthandoff: 05/01/2017
 
     ![添加员工](./media/active-directory-saas-ilms-tutorial/create_testuser_add.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中键入名字 Britta。
+    a. 在“名字”文本框中键入名字 Britta。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 在“姓氏”文本框键入姓氏 Simon。
+    b. 在“姓氏”文本框键入姓氏 Simon。
 
     c. 在“电子邮件 ID”文本框中，键入 Britta Simon 帐户的电子邮件地址。
 
@@ -275,9 +273,9 @@ ms.lasthandoff: 05/01/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 iLMS，请执行以下步骤：**
+**要将 Britta Simon 分配到 iLMS，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -325,5 +323,4 @@ ms.lasthandoff: 05/01/2017
 [201]: ./media/active-directory-saas-ilms-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-ilms-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-ilms-tutorial/tutorial_general_203.png
-
 

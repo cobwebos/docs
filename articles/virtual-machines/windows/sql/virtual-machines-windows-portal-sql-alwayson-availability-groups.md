@@ -15,18 +15,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.lasthandoff: 04/11/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>在 Azure 虚拟机中自动配置 AlwaysOn 可用性组：Resource Manager
 
-本教程介绍如何创建使用 Azure Resource Manager 虚拟机的 SQL Server 可用性组。 本教程将使用 Azure 边栏选项卡配置模板。 完成本教程后，可查看门户中的默认设置、键入所需设置，并可更新边栏选项卡。
+本教程介绍如何创建使用 Azure Resource Manager 虚拟机的 SQL Server 可用性组。 本教程会使用 Azure 边栏选项卡配置模板。 完成本教程后，可查看门户中的默认设置、键入所需设置，并可更新边栏选项卡。
 
-完整的教程将在 Azure 虚拟机上创建一个 SQL Server 可用性组，包括以下元素：
+完整的教程会在 Azure 虚拟机上创建一个 SQL Server 可用性组，包括以下元素：
 
 * 一个包含多个子网（包括前端子网和后端子网）的虚拟网络
 * 包含 Active Directory 域的两个域控制器
@@ -42,19 +41,19 @@ ms.lasthandoff: 04/11/2017
 
 在开始本教程之前，请确认以下内容：
 
-* 你已有一个 Azure 帐户。 如果没有，请[注册试用帐户](http://azure.microsoft.com/pricing/free-trial/)。
-* 你已经知道如何使用 GUI 从虚拟机库预配 SQL Server 虚拟机。 有关详细信息，请参阅[在 Azure 上预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
-* 你已经深入了解可用性组。 有关详细信息，请参阅 [Always On 可用性组 (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)。
+* 已有一个 Azure 帐户。 如果没有，请[注册试用帐户](http://azure.microsoft.com/pricing/free-trial/)。
+* 已经知道如何使用 GUI 从虚拟机库预配 SQL Server 虚拟机。 有关详细信息，请参阅[在 Azure 上预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
+* 已经深入了解可用性组。 有关详细信息，请参阅 [Always On 可用性组 (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)。
 
 > [!NOTE]
-> 若要将可用性组与 SharePoint 结合使用，另请参阅[为 SharePoint 2013 配置 SQL Server 2012 Always On 可用性组](http://technet.microsoft.com/library/jj715261.aspx)。
+> 要将可用性组与 SharePoint 结合使用，另请参阅[为 SharePoint 2013 配置 SQL Server 2012 Always On 可用性组](http://technet.microsoft.com/library/jj715261.aspx)。
 >
 >
 
 在本教程中，使用 Azure 门户执行以下操作：
 
 * 从门户中选择 AlwaysOn 模板。
-* 查看该模板设置并针对你的环境更新几个配置设置。
+* 查看该模板设置并针对环境更新几个配置设置。
 * 在 Azure 创建整个环境时监视 Azure。
 * 连接到域控制器，再连接到运行 SQL Server 的服务器。
 
@@ -78,7 +77,7 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 * “密码”是域管理员帐户的密码。 请使用复杂密码。 确认该密码。
 * **订阅**是指向 Azure 付费以运行为可用性组部署的所有资源。 如果帐户具有多个订阅，可以指定不同订阅。
 * **资源组**是此模板创建的所有 Azure 资源所属的组的名称。 对于本教程，请使用 **SQL-HA-RG**。 有关详细信息，请参阅 [Azure Resource Manager 概述](../../../azure-resource-manager/resource-group-overview.md#resource-groups)。
-* **位置**是本教程将在其中创建资源的 Azure 区域。 选择一个 Azure 区域。
+* **位置**是本教程会在其中创建资源的 Azure 区域。 选择一个 Azure 区域。
 
 以下屏幕截图是完整的“基本信息”边栏选项卡：
 
@@ -104,7 +103,7 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 
 如有必要，可以更改这些值。 本教程使用的是预设值。
 
-查看设置，然后单击“确定”。
+查看设置，并单击“确定”。
 
 ### <a name="availability-group-settings"></a>可用性组设置
 在“可用性组设置”中查看可用性组和侦听器的预设值。
@@ -144,10 +143,10 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 
 ![VM 大小存储设置](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
 
-查看设置，然后单击“确定”。
+查看设置，并单击“确定”。
 
 #### <a name="a-note-about-storage"></a>有关存储的注意事项
-其他优化取决于 SQL Server 数据磁盘的大小。 对于每 TB 的数据磁盘，Azure 将额外添加 1 TB 高级存储。 如果服务器需要 2 TB 或更大存储空间，该模板将在每个 SQL Server 虚拟机上创建存储池。 存储池是存储虚拟化的一种形式，其中配置了多张光盘以提供更高容量、复原能力和性能。  然后，该模板在存储池上创建一个存储空间，并向操作系统提供单个数据磁盘。 该模板将此磁盘指定为 SQL Server 的数据磁盘。 该模板使用以下设置针对 SQL Server 优化存储池：
+其他优化取决于 SQL Server 数据磁盘的大小。 对于每 TB 的数据磁盘，Azure 将额外添加 1 TB 高级存储。 如果服务器需要 2 TB 或更大存储空间，该模板会在每个 SQL Server 虚拟机上创建存储池。 存储池是存储虚拟化的一种形式，其中配置了多张光盘以提供更高容量、复原能力和性能。  然后，该模板在存储池上创建一个存储空间，并向操作系统提供单个数据磁盘。 该模板将此磁盘指定为 SQL Server 的数据磁盘。 该模板使用以下设置针对 SQL Server 优化存储池：
 
 * 带区大小是虚拟磁盘的交错设置。 事务工作负荷使用 64 KB。 数据仓库工作负荷使用 256 KB。
 * 复原功能很简单（无复原功能）。
@@ -173,7 +172,7 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 * “SQL Server 版本”是指 SQL Server 的版本。 对于本教程，请使用 **SQL Server 2014**。 还可以选择 **SQL Server 2012** 或 **SQL Server 2016**。
 * “SQL Server 服务帐户用户名”是 SQL Server 服务的域帐户名称。 对于本教程，请使用 **sqlservice**。
 * “密码”是 SQL Server 服务帐户的密码。  请使用复杂密码。 确认该密码。
-* “SQL 自动修补维护计划”标识 Azure 将自动修补 SQL Server 的日期（星期几）。 对于本教程，请键入“星期日”。
+* “SQL 自动修补维护计划”标识 Azure 会自动修补 SQL Server 的日期（星期几）。 对于本教程，请键入“星期日”。
 * “SQL 自动修补维护开始小时”是 Azure 区域开始自动修补的当日时间。
 
 > [!NOTE]
@@ -183,10 +182,10 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 
 ![SQL Server 设置](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/5-sql.png)
 
-查看设置，然后单击“确定”。
+查看设置，并单击“确定”。
 
 ### <a name="summary"></a>摘要
-在摘要页上，Azure 将验证设置。 还可以下载模板。 查看摘要。 单击 **“确定”**。
+在摘要页上，Azure 会验证设置。 还可以下载模板。 查看摘要。 单击 **“确定”**。
 
 ### <a name="buy"></a>购买
 这个最后的边栏选项卡包含“使用条款”和“隐私政策”。 查看此信息。 在 Azure 可开始创建虚拟机以及可用性组所需的其他所有资源后，请单击“创建”。
@@ -199,17 +198,16 @@ Azure 门户将创建资源组和所有资源。
 ![Azure 仪表板](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
 ## <a name="connect-to-sql-server"></a>连接到 SQL Server
-SQL Server 的新实例将在连接到 Internet 的 IP 地址上运行。 可以通过远程桌面 (RDP) 直接访问每个 SQL Server 虚拟机。
+SQL Server 的新实例会在连接到 Internet 的 IP 地址上运行。 可以通过远程桌面 (RDP) 直接访问每个 SQL Server 虚拟机。
 
-若要将 RDP 连接到 SQL Server，请执行以下步骤：
+要将 RDP 连接到 SQL Server，请执行以下步骤：
 
 1. 在 Azure 门户仪表板中，验证部署是否已成功。
 2. 单击“资源”。
 3. 在“资源”边栏选项卡中，单击“sqlserver-0”（即其中一个运行 SQL Server 的虚拟机的机名）。
 4. 在“sqlserver-0”边栏选项卡中，单击“连接”。 浏览器将询问是要打开还是要保存远程连接对象。 单击“打开”。
-5. “远程桌面连接”可能会警告你：无法识别此远程连接的发布者。 单击“连接”。
-6. Windows 安全性会提示你输入凭据，以便连接到主域控制器的 IP 地址。 单击“使用另一帐户”。 对于“用户名”，请键入 **contoso\DomainAdmin**。 此帐户是在模板中设置管理员用户名时配置的。 当配置了模板时，请使用所选的复杂密码。
-7. “远程桌面”可能会警告你：由于安全证书存在问题，无法验证远程计算机。 它将显示安全证书名称。 如果按照本教程操作，该名称为 **sqlserver-0.contoso.com**。 单击 **“是”**。
+5. “远程桌面连接”可能会发出警告：无法识别此远程连接的发布者。 单击“连接”。
+6. Windows 安全性会提示输入凭据，以便连接到主域控制器的 IP 地址。 单击“使用另一帐户”。 对于“用户名”，请键入 **contoso\DomainAdmin**。 此帐户是在模板中设置管理员用户名时配置的。 当配置了模板时，请使用所选的复杂密码。
+7. “远程桌面”可能会发出警告：由于安全证书存在问题，无法验证远程计算机。 它会显示安全证书名称。 如果按照本教程操作，该名称为 **sqlserver-0.contoso.com**。单击 **“是”**。
 
-现在，你已通过 RDP 连接到 SQL Server 虚拟机。 可打开 SQL Server Management Studio，连接到 SQL Server 的默认实例，并验证可用性组是否已配置。
-
+现在，已通过 RDP 连接到 SQL Server 虚拟机。 可打开 SQL Server Management Studio，连接到 SQL Server 的默认实例，并验证可用性组是否已配置。

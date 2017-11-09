@@ -1,5 +1,5 @@
 ---
-title: "架构更新（2015 年&8; 月&1; 日预览版）- Azure 逻辑应用 | Microsoft 文档"
+title: "架构更新（2015 年 8 月 1 日预览版）- Azure 逻辑应用 | Microsoft 文档"
 description: "为架构版本为 2015-08-01-preview 的 Azure 逻辑应用创建 JSON 定义"
 author: stepsic-microsoft-com
 manager: anneta
@@ -15,22 +15,20 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: LADocs; stepsic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ae5ce7d16ac9ed3a06c313ff3c48e8cbf79c54
-ms.openlocfilehash: f1bf19e6dfbcf187635730a53c93162244c17c6a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 35d7a56d5607dcc18a4407c65b92962d3d0dcd1d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure 逻辑应用的架构更新 - 2015 年 8 月 1 日预览版
 
 适用于 Azure 逻辑应用的这个新架构和 API 版本包含多项关键改进，使逻辑应用更可靠，更易于使用：
 
-*    **APIApp** 操作类型已更新为新的 [**APIConnection**](#api-connections) 操作类型。
-*    **Repeat** 已重命名为 [**Foreach**](#foreach)。
-*    不再需要 [**HTTP 侦听器** API 应用](#http-listener)。
-*    调用子工作流会使用[新架构](#child-workflows)。
+*   **APIApp** 操作类型已更新为新的 [**APIConnection**](#api-connections) 操作类型。
+*   **Repeat** 已重命名为 [**Foreach**](#foreach)。
+*   不再需要 [**HTTP 侦听器** API 应用](#http-listener)。
+*   调用子工作流会使用[新架构](#child-workflows)。
 
 <a name="api-connections"></a>
 ## <a name="move-to-api-connections"></a>移到 API 连接
@@ -81,7 +79,7 @@ Microsoft 代表你管理某些 API，例如 Office 365、Salesforce、Twitter �
 
 `api` 具有承载托管 API 的位置的运行时 URL。 可以通过调用 `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` 来查看所有可用的托管 API。
 
-使用 API 时，API 可以定义也可以不定义任何*连接参数*。 如果 API 未定义连接参数，则不需要*连接*。 如果 API 定义了连接参数，则必须创建连接。 创建的连接具有所选的名称。 然后，你可以在 `host` 对象内的 `connection` 对象中引用该名称。 若要在资源组中创建连接，请调用：
+使用 API 时，API 可以定义也可以不定义任何*连接参数*。 如果 API 未定义连接参数，则不需要*连接*。 如果 API 定义了连接参数，则必须创建连接。 创建的连接具有所选的名称。 然后，可以在 `host` 对象内的 `connection` 对象中引用该名称。 若要在资源组中创建连接，请调用：
 
 ```
 PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.Web/connections/{name}?api-version=2015-08-01-preview
@@ -196,11 +194,11 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
     }]
 ```
 
-在此示例中可以看到，连接只是位于资源组中的资源。 它们引用你的订阅中可供你使用的托管 API。
+在此示例中可以看到，连接只是位于资源组中的资源。 它们引用订阅中可供你使用的托管 API。
 
 ### <a name="your-custom-web-apis"></a>自定义 Web API
 
-如果你使用自己的 API（而不是 Microsoft 托管的 API），则应使用内置 **HTTP** 操作调用它们。 若要获得理想体验，应该为 API 公开一个 Swagger 终结点。 此终结点使逻辑应用设计器可以呈现 API 的输入和输出。 如果没有 Swagger，则设计器只能将输入和输出显示为不透明的 JSON 对象。
+如果使用自己的 API（而不是 Microsoft 托管的 API），则应使用内置 **HTTP** 操作调用它们。 若要获得理想体验，应该为 API 公开一个 Swagger 终结点。 此终结点使逻辑应用设计器可以呈现 API 的输入和输出。 如果没有 Swagger，则设计器只能将输入和输出显示为不透明的 JSON 对象。
 
 下面是演示新 `metadata.apiDefinitionUrl` 属性的示例：
 
@@ -221,7 +219,7 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
 }
 ```
 
-如果将 Web API 托管在 Azure 应用服务中，则 Web API 会自动显示在设计器中提供的操作列表中。 如果未自动显示，则必须直接粘贴在 URL 中。 Swagger 终结点必须未经身份验证才能在逻辑应用设计器中使用（不过你可以使用 Swagger 中支持的任何方法保护 API 本身）。
+如果将 Web API 托管在 Azure 应用服务中，则 Web API 会自动显示在设计器中提供的操作列表中。 如果未自动显示，则必须直接粘贴在 URL 中。 Swagger 终结点必须未经身份验证才能在逻辑应用设计器中使用（不过可以使用 Swagger 中支持的任何方法保护 API 本身）。
 
 ### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>使用 2015-08-01-preview 调用已部署的 API 应用
 
@@ -306,7 +304,7 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
 | `inputs.body` |等同于 API 应用参数 |
 | `inputs.authentication` |等同于 API 应用身份验证 |
 
-此方法应适用于所有 API 应用操作。 但是请记住，以前的这些 API 应用不再受支持。 因此，你应移到以前的其他两个选项（托管 API 或托管自定义 Web API）之一。
+此方法应适用于所有 API 应用操作。 但是请记住，以前的这些 API 应用不再受支持。 因此，应移到以前的其他两个选项（托管 API 或托管自定义 Web API）之一。
 
 <a name="foreach"></a>
 ## <a name="renamed-repeat-to-foreach"></a>已将“repeat”重命名为“foreach”
@@ -465,7 +463,7 @@ HTTP 侦听器功能现在已内置。 因此，不再需要部署 HTTP 侦听�
 
 第二个改进是我们为子工作流提供了对传入请求的完全访问权限。 这意味着可以在查询部分和标头对象中传递参数，并且可以完全自定义整个正文。
 
-最后，需要对子工作流进行更改。 之前你可以直接调用子工作流；而现在，必须在工作流中为要调用的父级定义触发器终结点。 通常，你会添加类型为 `manual` 的触发器，然后在父定义中使用该触发器。 请注意，`host` 属性明确具有 `triggerName`，因为你必须始终指定所调用的触发器。
+最后，需要对子工作流进行更改。 之前可以直接调用子工作流；而现在，必须在工作流中为要调用的父级定义触发器终结点。 通常，会添加类型为 `manual` 的触发器，并在父定义中使用该触发器。 请注意，`host` 属性明确具有 `triggerName`，你必须始终指定所调用的触发器。
 
 ## <a name="other-changes"></a>其他更改
 
@@ -480,4 +478,3 @@ HTTP 侦听器功能现在已内置。 因此，不再需要部署 HTTP 侦听�
 ## <a name="coming-soon-enterprise-integration-apis"></a>即将推出：企业集成 API
 
 我们尚没有托管版本的企业集成 API，如 AS2。 同时，可以通过 HTTP 操作使用现有的已部署 BizTalk API。 有关详细信息，请参阅[集成路线图](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)中的“使用已部署的 API 应用”。 
-

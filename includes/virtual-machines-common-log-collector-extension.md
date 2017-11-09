@@ -25,8 +25,8 @@
 * **Recursive**：是否要在文件夹中以递归方式收集文件。
 
 ## <a name="prerequisites"></a>先决条件
-* 你需要一个用于扩展的存储帐户，以便保存生成的 zip 文件。
-* 你必须确保使用的是 Azure PowerShell Cmdlets V0.8.0 或更高版本。 有关详细信息，请参阅 [Azure 下载](https://azure.microsoft.com/downloads/)。
+* 需要一个用于扩展的存储帐户，以便保存生成的 zip 文件。
+* 必须确保使用的是 Azure PowerShell Cmdlets V0.8.0 或更高版本。 有关详细信息，请参阅 [Azure 下载](https://azure.microsoft.com/downloads/)。
 
 ## <a name="add-the-extension"></a>添加扩展
 可以使用 [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlet 或[服务管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) 添加 AzureLogCollector 扩展。
@@ -69,7 +69,7 @@
 > 
 > 
 
-你可以遵循以下两个步骤之一，将 AzureLogCollector 添加到所选角色的云服务或虚拟机的一个或多个实例，以便在每个 VM 上触发收集操作，从而运行收集的文件并将其发送给指定的 Azure 帐户。
+可以遵循以下两个步骤之一，将 AzureLogCollector 添加到所选角色的云服务或虚拟机的一个或多个实例，以便在每个 VM 上触发收集操作，从而运行收集的文件并将其发送给指定的 Azure 帐户。
 
 ## <a name="adding-as-a-service-extension"></a>作为服务扩展添加
 1. 按照说明将 Azure PowerShell 连接到订阅。
@@ -106,11 +106,11 @@
    > 可以使用令牌 `%roleroot%` 来指定角色根驱动器，因为该角色不使用固定驱动器。
    > 
    > 
-4. 提供要向其上载所收集文件的 Azure 存储帐户名称和密钥。
+4. 提供要向其上传所收集文件的 Azure 存储帐户名称和密钥。
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-5. 按如下所示调用 SetAzureServiceLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 `https://YouareStorageAccountName.blob.core.windows.net/vmlogs` 下找到上载的文件
+5. 按如下所示调用 SetAzureServiceLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 `https://YouareStorageAccountName.blob.core.windows.net/vmlogs` 下找到上传的文件
    
         .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
 
@@ -186,11 +186,11 @@
    
         $AdditionalDataList+= $a1
               #more locations can be added....
-2. 提供要向其上载所收集文件的 Azure 存储帐户名称和密钥。
+2. 提供要向其上传所收集文件的 Azure 存储帐户名称和密钥。
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-3. 按如下所示调用 SetAzureVMLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 https://YouareStorageAccountName.blob.core.windows.net/vmlogs 下找到上载的文件
+3. 按如下所示调用 SetAzureVMLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 https://YouareStorageAccountName.blob.core.windows.net/vmlogs 下找到上传的文件
 
 下面是传递给脚本的参数的定义。 （也在下面复制。）
 
@@ -481,5 +481,5 @@ SetAzureVMLogCollector.ps1
     }
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以从一个很简单的位置查看或复制日志。
+现在，可以从一个很简单的位置查看或复制日志。
 

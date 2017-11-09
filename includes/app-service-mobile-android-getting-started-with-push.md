@@ -25,8 +25,8 @@
 6. 将 *MobileServiceClient* 的定义从 **private** 更改为 **public static**，使之现在如以下所示：
 
         public static MobileServiceClient mClient;
-7. 添加新类以处理通知。 在项目资源管理器中，打开 **src** > **main** > **java** 节点，然后右键单击包名称节点。 单击“新建”，然后单击“Java 类”。
-8. 在“名称”中，键入 `MyHandler`，然后单击“确认”。
+7. 添加新类以处理通知。 在项目资源管理器中，打开 **src** > **main** > **java** 节点，并右键单击包名称节点。 单击“新建”，并单击“Java 类”。
+8. 在“名称”中，键入 `MyHandler`，并单击“确认”。
 
     ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
 
@@ -93,4 +93,4 @@
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
-    你的应用现已更新，可支持推送通知。
+    应用现已更新，可支持推送通知。

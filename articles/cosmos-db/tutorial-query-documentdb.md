@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 270fe75e61bb26ad3bb9cae1105e83911bae677d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB：如何使用 SQL 进行查询？
 
 Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) 支持使用 SQL 查询文档。 本文提供一个示例文档和两个示例 SQL 查询和结果。
@@ -74,7 +72,7 @@ Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) 支持使用 SQL �
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程假定你已拥有 Azure Cosmos DB 帐户和集合。 没有这些内容？ 请学习 [5 分钟快速入门](create-mongodb-nodejs.md)或[开发人员教程](tutorial-develop-mongodb.md)，创建 帐户和集合。
+本教程假定已拥有 Azure Cosmos DB 帐户和集合。 没有这些内容？ 请学习 [5 分钟快速入门](create-mongodb-nodejs.md)或[开发人员教程](tutorial-develop-mongodb.md)，创建 帐户和集合。
 
 ## <a name="example-query-1"></a>示例查询 1
 
@@ -148,5 +146,4 @@ Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) 支持使用 SQL �
 
 > [!div class="nextstepaction"]
 > [全局分发数据](tutorial-global-distribution-documentdb.md)
-
 

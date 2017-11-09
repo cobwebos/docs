@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
-以下为将在 Windows 10 中漫游或备份的所有设置的完整列表。 
+以下为会在 Windows 10 中漫游或备份的所有设置的完整列表。 
 
 ## <a name="devices-and-endpoints"></a>设备和终结点
 请参阅下表大概了解 Windows 10 中同步、备份和还原框架支持的设备和帐户类型。
@@ -180,4 +179,3 @@ Windows Creators 更新（内部版本 15063）受支持的最低 OS 版本。
 * [设置和数据漫游的常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-

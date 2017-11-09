@@ -15,23 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 330f733440932a769eb0fe6031cd0d947a820080
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 用户连接器入门
-连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，你可以：
+连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，可以：
 
-* 根据从 Office 365 用户中获取的数据生成你的业务流。 
-* 使用获取直接下属、获取经理的用户配置文件等操作。 这些操作可获得响应，然后使输出可用于其他操作。 例如，获取用户的直接下属，然后获取此信息并更新 SQL Azure 数据库。 
+* 根据从 Office 365 用户中获取的数据生成业务流。 
+* 使用获取直接下属、获取经理的用户配置文件等操作。 这些操作可获得响应，并使输出可用于其他操作。 例如，获取用户的直接下属，然后使用此信息更新 SQL Azure 数据库。 
 
 若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="create-a-connection-to-office-365-users"></a>创建到 Office 365 用户的连接
-将此连接器添加到逻辑应用时，必须登录到 Office 365 用户帐户，并允许逻辑应用连接到你的帐户。
+将此连接器添加到逻辑应用时，必须登录到 Office 365 用户帐户，并允许逻辑应用连接到帐户。
 
 > [!INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 > 

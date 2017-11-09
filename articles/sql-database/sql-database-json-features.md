@@ -12,16 +12,14 @@ ms.custom: develop databases
 ms.devlang: NA
 ms.date: 11/15/2016
 ms.author: jovanpop
-ms.workload: NA
+ms.workload: On Demand
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 57057bbdbbafff6843070336efc986286d84af36
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: 8877b0bb779501df003ce11d66d9625c2f99e9ce
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
 使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
@@ -60,7 +58,7 @@ FOR JSON PATH 子句将查询结果格式化为 JSON 文本。 列名用作键�
 
 结果集已格式化为 JSON 数组格式，其中每行已格式化为单独的 JSON 对象。
 
-PATH 表示可以在列别名中使用点表示法自定义 JSON 结果的输出格式。 以下查询更改输出 JSON 格式中“CustomerName”键的名称，然后将电话和传真号码放入“Contact”子对象：
+PATH 表示可以在列别名中使用点表示法自定义 JSON 结果的输出格式。 以下查询更改输出 JSON 格式中“CustomerName”键的名称，并将电话和传真号码放入“Contact”子对象：
 
 ```
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
@@ -96,7 +94,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 ```
 
-无需单独发送查询来获取 Customer 数据，然后再提取相关 Orders 列表，而可以通过一个查询来获取全部所需的数据，如以下示例输出中所示：
+只需一个查询，即可获取所有必需数据，无需单独发送查询来获取 Customer 数据，然后再提取相关 Orders 列表，如以下示例输出所示：
 
 ```
 {
@@ -141,7 +139,7 @@ EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","childr
 ## <a name="querying-json-data"></a>查询 JSON 数据
 如果格式化为 JSON 的数据已存储在 Azure SQL 表中，可以通过 JSON 函数在任何 SQL 查询中使用此数据。
 
-通过可在 Azure SQL 数据库中使用的 JSON 函数，可将格式化为 JSON 的数据视为其他任何 SQL 数据类型。 可以轻松地从 JSON 文本中提取值，然后在任何查询中使用 JSON 数据：
+通过可在 Azure SQL 数据库中使用的 JSON 函数，可将格式化为 JSON 的数据视为其他任何 SQL 数据类型。 可以轻松地从 JSON 文本中提取值，并在任何查询中使用 JSON 数据：
 
 ```
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
@@ -172,11 +170,11 @@ ALTER TABLE Products
 ## <a name="transforming-json-into-tabular-format"></a>将 JSON 转换为表格格式
 Azure SQL 数据库还允许将 JSON 集合转换为表格格式，然后加载或查询 JSON 数据。
 
-OPENJSON 是一个表值函数，可分析 JSON 文本、查找 JSON 对象数组、迭代数组的元素，然后在输出结果中针对每个数组元素返回一行。
+OPENJSON 是一个表值函数，可分析 JSON 文本、查找 JSON 对象数组、迭代数组的元素，并在输出结果中针对每个数组元素返回一行。
 
 ![JSON 表格](./media/sql-database-json-features/image_2.png)
 
-在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找将以单元格形式返回的 JSON 值。
+在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找以单元格形式返回的 JSON 值。
 
 可以将 @orders 变量中的 JSON 数组转换为行集、分析此结果集，或将行插入标准表中：
 
@@ -199,12 +197,11 @@ END
 可以分析采用 JSON 数组格式并作为参数提供给存储过程的订单集合，然后将它插入 Orders 表。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何将 JSON 集成到应用程序中，请参阅以下资源：
+要了解如何将 JSON 集成到应用程序中，请参阅以下资源：
 
 * [TechNet 博客](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
 * [MSDN 文档](https://msdn.microsoft.com/library/dn921897.aspx)
 * [第 9 频道视频](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-若要了解将 JSON 集成到应用程序中的各种方案，请参阅这部第 [9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与应用场合相符的方案。
-
+要了解将 JSON 集成到应用程序中的各种方案，请参阅这部第 [9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与应用场合相符的方案。
 

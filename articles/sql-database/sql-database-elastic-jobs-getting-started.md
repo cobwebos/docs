@@ -1,6 +1,6 @@
 ---
 title: "弹性数据库作业入门 | Microsoft Docs"
-description: "如何使用弹性数据库作业"
+description: "使用弹性数据库作业执行跨多个数据库的 T-SQL 脚本。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -8,37 +8,35 @@ author: ddove
 ms.assetid: 2540de0e-2235-4cdd-9b6a-b841adba00e5
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 12f84f7ee418955f34316686c836a8697be94ea2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/10/2017
-
-
+ms.openlocfilehash: d985008bf4aa6710f3aae89f13fc7e36ac0c176b
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
-Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[功能概述页](sql-database-elastic-jobs-overview.md)。
+使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[弹性作业](sql-database-elastic-jobs-overview.md)。
 
-本主题对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例做了延伸。 完成本主题后，你将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
+本文对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例进行了扩展。 完成本主题后，将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
 
 ## <a name="prerequisites"></a>先决条件
 下载并运行[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用示例应用程序创建分片映射管理器
-在此处，你将创建分片映射管理器以及多个分片，然后将数据插入分片。 如果你的分片中设置了分片数据，则你可以跳过下面的步骤，直接转到下一部分。
+在此处，将创建分片映射管理器以及多个分片，然后将数据插入分片。 如果分片中设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
 
-1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，你将看到以下命令提示符：
+1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，会看到以下命令提示符：
 
    ![命令提示符](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
-2. 在命令窗口中键入“1”，然后按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入“3”并按“Enter”；重复该操作四次。 这会在你的分片中插入示例数据行。
-3. [Azure 门户](https://portal.azure.com)应显示 3 个新数据库：
+2. 在命令窗口中键入“1”，并按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入"3"并按 Enter；重复该操作四次。 这会在分片中插入示例数据行。
+3. [Azure 门户](https://portal.azure.com)应显示三个新数据库：
 
    ![Visual Studio 确认](./media/sql-database-elastic-query-getting-started/portal.png)
 
@@ -228,7 +226,7 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
    ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>检索作业任务执行内的失败
-JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。 如果作业任务执行失败，生命周期属性将设为 Failed，且消息属性将设为生成的异常消息及其堆栈。 如果作业不成功，必须查看给定操作不成功的作业任务的详细信息。
+JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。 如果作业任务执行失败，则生命周期属性将设为*失败*，且消息属性将设为生成的异常消息及其堆栈。 如果作业不成功，必须查看给定操作不成功的作业任务的详细信息。
 
    ```
     $jobExecutionId = "{Job Execution Id}"
@@ -256,7 +254,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 执行策略当前允许定义：
 
 * 名称：执行策略的标识符。
-* 作业超时：弹性数据库作业取消作业之前的总时间。
+* 作业超时：作业被弹性数据库作业取消之前经过的总时间。
 * 初始重试间隔：第一次重试之前等待的间隔。
 * 最大重试间隔：要使用的重试间隔上限。
 * 重试间隔回退系数：用于计算每两次重试的下一个间隔系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数),(重试次数) - 2)。
@@ -303,7 +301,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 弹性数据库作业可通过两种不同的方式执行取消：
 
-1. 取消当前正在执行的任务：如果在任务正在执行时检测到取消，将在当前正在执行的任务层面尝试取消。  例如：当尝试取消时，如果有某个长时间运行的查询当前正在执行，将尝试取消该查询。
+1. 取消当前正在执行的任务：如果在任务正在执行时检测到取消，会在当前正在执行的任务层面尝试取消。  例如：当尝试取消时，如果有某个长时间运行的查询当前正在执行，将尝试取消该查询。
 2. 取消任务重试：如果控制线程在启动任务执行之前检测到取消，控制线程将避免启动该任务，并将请求声明为已取消。
 
 如果针对父作业请求了作业取消，则会对父作业及其所有子作业执行取消请求。
@@ -316,7 +314,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>根据名称和作业的历史记录删除作业
-弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统将在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
+弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统会在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
 
 必须调用 Stop-AzureSqlJobExecution 来取消处于活动状态的作业执行。
 
@@ -448,23 +446,23 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
    ```
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>将弹性数据库查询结果导入 Excel
- 你可以将查询结果导入到 Excel 文件。
+ 可以将查询结果导入到 Excel 文件。
 
 1. 启动 Excel 2013。
 2. 导航到**数据功**能区。
-3. 单击“从其他源”，然后单击“从 SQL Server”。
+3. 单击“从其他源”，并单击“从 SQL Server”。
 
    ![从其他源导入 Excel](./media/sql-database-elastic-query-getting-started/exel-sources.png)
 
-4. 在**数据连接向导**中，键入服务器名称和登录凭据。 。
+4. 在**数据连接向导**中，键入服务器名称和登录凭据。 然后单击“下一步”。
 5. 在对话框**选择包含所需数据的数据库**中，选择 **ElasticDBQuery** 数据库。
 6. 在列表视图中选择“客户”表并单击“下一步”。 然后单击“完成”。
-7. 在“导入数据”窗体中的“请选择该数据在工作簿中的显示方式”下，选择“表”，然后单击“确定”。
+7. 在“导入数据”窗体中的“请选择该数据在工作簿中的显示方式”下，选择“表”，并单击“确定”。
 
 存储在不同分片中、来自“客户”表的所有行将填入 Excel 工作表。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以使用 Excel 的数据功能。 使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。 请确保支持将 SQL Server 用作工具的数据源。 参考弹性查询数据库和外部表，就如同将要与你的工具连接的任何其他 SQL Server 数据库和 SQL Server 表。
+现在，可以使用 Excel 的数据功能。 使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。 请确保支持将 SQL Server 用作工具的数据源。 参考弹性查询数据库和外部表，就如同将要与工具连接的任何其他 SQL Server 数据库和 SQL Server 表。
 
 ### <a name="cost"></a>成本
 使用弹性数据库查询功能不会产生额外的费用。 但是，目前此功能只能在用作终结点的高级数据库上使用，但分片可以是任何服务层。
@@ -480,4 +478,3 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
-

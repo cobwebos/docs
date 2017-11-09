@@ -16,12 +16,11 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 7f1aa292e6c15e2702f939b9751fe13a27bc5b7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
 Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和服务的内置角色。 不能修改内置角色的定义。 但是，可以创建 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)，以满足组织的特定需要。
@@ -30,13 +29,13 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 下表提供内置角色的简短说明。 单击角色名称可查看角色的“操作”和“不操作”的详细列表。 **操作**属性指定对 Azure 资源允许的操作。 操作字符串可以使用通配符。 **不操作**属性指定从允许的操作中排除的操作。
 
 操作定义可以对给定资源类型执行哪种类型的操作。 例如：
-- **Write** 使你可以执行 PUT、POST、PATCH 和 DELETE 操作。
-- **Read** 使你可以执行 GET 操作。
+- 使用 **Write** 可以执行 PUT、POST、PATCH 和 DELETE 操作。
+- 使用 **Read** 可以执行 GET 操作。
 
-本文仅针对目前存在的各种角色。 不过，向用户分配角色时，你可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。
+本文仅针对目前存在的各种角色。 不过，向用户分配角色时，可以通过定义作用域进一步限制允许的操作。 如果想要将某人设为网站参与者，但只针对一个资源组，则此功能很有用。
 
 > [!NOTE]
-> Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet 列出所有当前角色。 可以使用 `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions` 深入了解特定角色（如果适用）。 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 列出特定 Azure 资源提供程序的操作。
+> Azure 角色定义不断演化。 本文尽可能地保持最新，但你总是可在 Azure PowerShell 中找到最新的角色定义。 使用 [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) cmdlet 列出所有当前角色。 可以使用 `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions` 深入了解特定角色（如果适用）。 使用 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) 列出特定 Azure 资源提供程序的操作。
 
 
 | 角色名称 | 说明 |
@@ -873,4 +872,3 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 * [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)：了解如何创建自定义角色，以满足访问需要。
 * [创建访问权限更改历史记录报告](role-based-access-control-access-change-history-report.md)：记录 RBAC 中的角色分配更改。
 * [基于角色的访问控制故障排除](role-based-access-control-troubleshooting.md)：获取解决常见问题的建议。
-

@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 9bdaa57f9902373ccf796ff109332b64c66bf9e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-ios-sdk-release-notes"></a>Azure Mobile Engagement iOS SDK 发行说明
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="300-06192015"></a>3.0.0 (06/19/2015)
 * Mobile Engagement 使用无提示推送通知。
-* 放弃了对 iOS 4.X 的支持。 从此版本开始，你的应用程序的部署目标必须至少为 iOS 6。
+* 放弃了对 iOS 4.X 的支持。 从此版本开始，应用程序的部署目标必须至少为 iOS 6。
 
 ## <a name="220-05212015"></a>2.2.0 (05/21/2015)
 * 低于 iOS 6 的设备的 Mobile Engagement 设备 ID 现在基于安装时生成的 GUID。
@@ -78,4 +77,3 @@ ms.lasthandoff: 07/20/2017
 * 删除了在设备之间发送和接收消息的 API。
 * 安全性改进。
 * 删除了 SmartAd 跟踪。
-

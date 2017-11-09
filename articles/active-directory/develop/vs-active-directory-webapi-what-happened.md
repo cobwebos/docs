@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 8ca3234e54d8736aa187195640a103ac6eb145e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 086e5a9622cad681cd282345d97e0c28ee7de2fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 > [!div class="op_single_selector"]
@@ -51,13 +50,13 @@ ms.lasthandoff: 03/21/2017
 * `System.IdentityModel.Tokens.Jwt`
 
 ## <a name="code-changes"></a>代码更改
-### <a name="code-files-were-added-to-your-project"></a>代码文件已添加到您的项目
-身份验证启动类 **App_Start/Startup.Auth.cs**（包含 Azure AD 身份验证的启动逻辑）已添加到你的项目。
+### <a name="code-files-were-added-to-your-project"></a>代码文件已添加到项目
+身份验证启动类 **App_Start/Startup.Auth.cs**（包含 Azure AD 身份验证的启动逻辑）已添加到项目。
 
-### <a name="startup-code-was-added-to-your-project"></a>启动代码已添加到您的项目
-如果项目中已经有一个 Startup 类，**Configuration** 方法将进行更新，以包括对 `ConfigureAuth(app)` 的调用。 否则，Startup 类已添加到您的项目。
+### <a name="startup-code-was-added-to-your-project"></a>启动代码已添加到项目
+如果项目中已经有一个 Startup 类，**Configuration** 方法将进行更新，以包括对 `ConfigureAuth(app)` 的调用。 否则，Startup 类已添加到项目。
 
-### <a name="your-appconfig-or-webconfig-file-has-new-configuration-values"></a>您的 app.config 或 web.config 文件具有新的配置值。
+### <a name="your-appconfig-or-webconfig-file-has-new-configuration-values"></a>app.config 或 web.config 文件具有新配置值。
 已添加以下配置条目。
 
 ```
@@ -69,12 +68,12 @@ ms.lasthandoff: 03/21/2017
 ```
 
 ### <a name="an-azure-ad-app-was-created"></a>已创建 Azure AD 应用
-已在您在向导中选定的目录内创建一个 Azure AD 应用程序。
+已在向导中选定的目录内创建一个 Azure AD 应用程序。
 
 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
 ## <a name="if-i-checked-disable-individual-user-accounts-authentication-what-additional-changes-were-made-to-my-project"></a>如果我选中“*禁用单个用户帐户身份验证*”，会对我的项目进行哪些额外的更改？
-NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状态，你可能需要手动删除额外的引用或文件，或者根据需要修改代码。
+NuGet 包引用已删除，文件已删除和备份。 根据项目的状态，可能需要手动删除额外的引用或文件，或者根据需要修改代码。
 
 ### <a name="nuget-package-references-removed-for-those-present"></a>删除的 NuGet 包引用（针对已存在的）
 * `Microsoft.AspNet.Identity.Core`
@@ -106,10 +105,9 @@ NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状�
     </appSettings>`
 ```
 
-### <a name="your-azure-active-directory-app-was-updated"></a>你的 Azure Active Directory 应用已更新
-你的 Azure Active Directory 应用已更新为包括“*读取目录数据*”权限，并已创建一个附加密钥，并在随后用作 `web.config` 文件中的 *ida:Password*。
+### <a name="your-azure-active-directory-app-was-updated"></a>Azure Active Directory 应用已更新
+Azure Active Directory 应用已更新为包括“*读取目录数据*”权限，并已创建一个附加密钥，并在随后用作 `web.config` 文件中的 *ida:Password*。
 
 ## <a name="next-steps"></a>后续步骤
 - [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 102dffcd73f3d3b9362d7b2853faa060e9c645dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打开 StorSimple 8100 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述
@@ -49,7 +48,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    | 标签 | 说明 |
    | --- | --- |
    |   1 |包装箱 |
-   |   2 |底部泡沫 |
+   |   #N/A |底部泡沫 |
    |   3 |设备 |
    |   4 |顶部泡沫 |
    |   5 |配件盒 |
@@ -102,7 +101,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 提供了一组用于 19 英寸机架柜的安装导轨。 导轨已经过测试，足以承担最大机箱重量。 还可在这些导轨安装多个机箱，而不会额外占用机架内的任何空间。
 
 #### <a name="to-install-the-device-on-the-rails"></a>将设备安装到导轨上
-1. 仅当设备上未安装内部导轨时，才需执行此步骤。 通常，出厂时内部导轨已装好。 若未安装，则将左侧和右侧导轨安装到机箱底架的侧面。 每侧使用&6; 个公制螺丝连接。 为帮助确定方向，导轨上标有 **LH – Front** 和 **RH – Front**，固定在机箱后部的导轨一端为锥形。<br/>
+1. 仅当设备上未安装内部导轨时，才需执行此步骤。 通常，出厂时内部导轨已装好。 若未安装，则将左侧和右侧导轨安装到机箱底架的侧面。 每侧使用 6 个公制螺丝连接。 为帮助确定方向，导轨上标有 **LH – Front** 和 **RH – Front**，固定在机箱后部的导轨一端为锥形。<br/>
    
     ![在机箱底部安装导轨](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
@@ -111,11 +110,11 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
     标签 | 说明
     ----- | -----------
     1     | M 3x4 圆头螺丝
-    2     | 底架滑轨
+    #N/A     | 底架滑轨
 
 2. 将外部左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
 3. 找到导轨组件前部和后部的导轨销。 延长导轨，使其适合机架立柱间距，并将销插入前后机架立柱的垂直部件孔中。 确保导轨组件保持水平。
-4. 使用提供的&2; 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用&1; 颗螺丝。
+4. 使用提供的 2 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用 1 颗螺丝。
 5. 其他导轨组装请重复以上步骤。<br/>
    
      ![将导轨固定到机架机箱上](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
@@ -125,7 +124,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    | 标签 | 说明 |
    | --- | --- |
    |   1 |旋紧螺丝 |
-   |   2 |方孔前机架立柱螺丝 |
+   |   #N/A |方孔前机架立柱螺丝 |
    |   3 |左侧导轨前端定位销 |
    |   4 |旋紧螺丝 |
    |   5 |左侧导轨后端定位销 |
@@ -141,7 +140,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **将设备安装到机架中**
 3. 拉松法兰帽，取下左前和右前的法兰帽。 只需将法兰帽卡到法兰上。
-4. 每个法兰左右各安装&1; 个提供的十字螺丝，将机箱固定在机架中。
+4. 每个法兰左右各安装 1 个提供的十字螺丝，将机箱固定在机架中。
 5. 将法兰帽压入到合适位置并将其卡入到位，完成法兰帽安装。<br/>
    
      ![安装法兰帽](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
@@ -161,7 +160,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 在开始进行设备布线之前，需要：
 
 * 存储设备已完全打开包装并已完成机架安装。
-* 设备附带的&2; 根电源线
+* 设备附带的 2 根电源线
 * 可访问 2 个电源分配单元（推荐）。
 * 网络电缆
 * 提供的串行电缆
@@ -213,12 +212,12 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 
 进行设备布线时，最低配置要求为：
 
-* 每个控制器上至少连接&2; 个网络接口，分别用于云访问和 iSCSI。 DATA 0 端口已自动启用，且通过设备串行控制台配置完毕。 除 DATA 0 外，还需要通过 Azure 经典门户再配置一个数据端口。 在此情况下，将 DATA 0 端口连接到主 LAN（具有 Internet 访问的网络）。 其他数据端口可连接到网络的 SAN/iSCSI LAN (VLAN) 分段，具体取决于预期角色。
+* 每个控制器上至少连接 2 个网络接口，分别用于云访问和 iSCSI。 DATA 0 端口已自动启用，且通过设备串行控制台配置完毕。 除 DATA 0 外，还需要通过 Azure 经典门户再配置一个数据端口。 在此情况下，将 DATA 0 端口连接到主 LAN（具有 Internet 访问的网络）。 其他数据端口可连接到网络的 SAN/iSCSI LAN (VLAN) 分段，具体取决于预期角色。
 * 将每个控制器上的相同接口连接到同一网络中，确保在发生控制器故障转移时可用。 例如，如果选择对一个控制器连接 DATA 0 和 DATA 3，则需对另一控制器连接相应的 DATA 0 和 DATA 3。
 
 对于高可用性和性能，请记住：
 
-* 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐&10; GbE）。
+* 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐 10 GbE）。
 * 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。
 
 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)下的**网络接口**。
@@ -248,5 +247,4 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[部署和配置本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
-
 

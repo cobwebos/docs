@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-android-deployment"></a>适用于 Unity Android 部署的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-本主题将介绍如何借助 Azure Mobile Engagement 了解应用的使用，以及如何在 Unity 应用程序部署到 Android 设备时，向其细分用户发送推送通知。
-本教程将以经典的 Unity 滚球教程为起点。 在继续进行我们将在下面教程中展示的 Mobile Engagement 集成之前，应按照本 [教程](mobile-engagement-unity-roll-a-ball.md) 中的步骤进行操作。 
+本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，以及如何在 Unity 应用程序部署到 Android 设备时，向其细分用户发送推送通知。
+本教程以经典的 Unity 滚球教程为起点。 在继续进行我们会在下面教程中展示的 Mobile Engagement 集成之前，应按照本 [教程](mobile-engagement-unity-roll-a-ball.md) 中的步骤进行操作。 
 
 本教程需要的内容如下：
 
@@ -33,20 +33,20 @@ ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
 * Google Android SDK
 
 > [!NOTE]
-> 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-android-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-android-get-started)。
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-android-app"></a><a id="setup-azme"></a>为 Android 应用设置 Mobile Engagement
+## <a id="setup-azme"></a>为 Android 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 ### <a name="import-the-unity-package"></a>导入 Unity 程序包
-1. 下载 [Mobile Engagement Unity 程序包](https://aka.ms/azmeunitysdk) ，将其保存到本地计算机。 
-2. 转到“资产”->“导入包”->“自定义包”，并选择上面步骤中下载的软件包。 
+1. 下载 [Mobile Engagement Unity 程序包](https://aka.ms/azmeunitysdk)，将其保存到本地计算机。 
+2. 转到“资产”->“导入包”->“自定义包”，并选择在上面步骤中下载的软件包。 
    
     ![][70] 
-3. 请确保选择所有文件，然后单击“导入”  按钮。 
+3. 请确保选择所有文件，并单击“导入”  按钮。 
    
     ![][71] 
 4. 成功导入后，在项目中可以看到导入的 SDK 文件。  
@@ -58,7 +58,7 @@ ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
    
     ![][73]
 2. 保存 
-3. 执行“文件”->“参与”->“生成 Android 清单”。 这是由 Mobile Engagement SDK 添加的插件，单击此插件将自动更新项目设置。 
+3. 执行“文件”->“参与”->“生成 Android 清单”。 这是由 Mobile Engagement SDK 添加的插件，单击此插件会自动更新项目设置。 
    
     ![][74]
 
@@ -84,7 +84,7 @@ ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
 2. 打开“文件”->“生成设置” 
    
     ![][40]
-3. 选择“Android”，然后单击“切换平台”
+3. 选择“Android”，并单击“切换平台”
    
     ![][51]
    
@@ -95,13 +95,13 @@ ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
 5. 最后，单击“ **生成并运行**
    
     ![][54]
-6. 你可能需要为文件夹命名，以便存储 Android 程序包。 
-7. 如果一切正常，然后程序包将部署到连接的设备，并应在你的电话上看到 Unity 游戏！ 
+6. 可能需要为文件夹命名，以便存储 Android 程序包。 
+7. 如果一切正常，然后程序包将部署到连接的设备，并应在电话上看到 Unity 游戏！ 
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>将应用与实时监视相连接
+## <a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
+## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 [!INCLUDE [Enable Google Cloud Messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 
 ### <a name="update-the-engagementconfiguration"></a>更新 EngagementConfiguration
@@ -109,7 +109,7 @@ ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
    
     ![][75]
 2. 保存文件。 
-3. 执行“文件”->“参与”->“生成 Android 清单”。 这是由 Mobile Engagement SDK 添加的插件，单击此插件将自动更新项目设置。 
+3. 执行“文件”->“参与”->“生成 Android 清单”。 这是由 Mobile Engagement SDK 添加的插件，单击此插件会自动更新项目设置。 
    
     ![][74]
 
@@ -134,9 +134,3 @@ ms.openlocfilehash: bf0b758159d475b4ed7eadb84227e4824e11ba86
 [52]: ./media/mobile-engagement-unity-android-get-started/52.png
 [53]: ./media/mobile-engagement-unity-android-get-started/53.png
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

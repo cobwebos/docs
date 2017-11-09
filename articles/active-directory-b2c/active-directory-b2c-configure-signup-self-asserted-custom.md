@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 8731ff3a42e12d145bc259597812aded8333a095
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.openlocfilehash: 2e4dbd13107a7a48eda179aeffdf6670a1c1cb22
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C：修改注册以添加新声明和配置用户输入。
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 05/23/2017
 
 
 ## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>定义声明、其显示名称和用户输入类型
-我们请求用户输入其所在城市。  将以下元素添加到 TrustFrameWorkExtensions 策略文件中的 `<ClaimsSchema>` 元素：
+我们请求用户输入其所在城市。  将以下元素添加到 TrustFrameworkBase 策略文件中的 `<ClaimsSchema>` 元素：
 
 ```xml
 <ClaimType Id="city">
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/23/2017
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-此处可以选择其他选项来自定义声明。  有关完整的架构，请参阅**标识体验框架技术参考指南**。  本指南即将在参考部分中发布。
+此处可以选择其他选项来自定义声明。  有关完整的架构，请参阅**标识体验框架技术参考指南**。  本指南即会在参考部分中发布。
 
 * `<DisplayName>` 是一个字符串，用于定义面向用户的*标签*
 
@@ -242,7 +241,7 @@ ms.lasthandoff: 05/23/2017
 ## <a name="test-the-custom-policy-using-run-now"></a>使用“立即运行”测试自定义策略
 
 1. 打开“Azure AD B2C 边栏选项卡”并导航到“标识体验框架”>“自定义策略”。
-2. 选择上传的自定义策略，然后单击“立即运行”按钮。
+2. 选择上传的自定义策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址注册。
 
 测试模式下的注册屏幕应类似于：
@@ -272,7 +271,7 @@ ms.lasthandoff: 05/23/2017
 
 ## <a name="optional-remove-email-verification-from-signup-journey"></a>可选：从注册旅程中删除电子邮件验证
 
-若要跳过电子邮件验证，策略作者可以选择删除 `PartnerClaimType="Verified.Email"`。 电子邮件地址是必需的，但除非删除了 “Required” = true，否则不会验证该地址。  请仔细考虑此选项是否适合你的用例！
+若要跳过电子邮件验证，策略作者可以选择删除 `PartnerClaimType="Verified.Email"`。 电子邮件地址是必需的，但除非删除了 “Required” = true，否则不会验证该地址。  请仔细考虑此选项是否适合用例！
 
 在初学者包中 TrustFrameworkBase 策略文件的 `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` 内，默认已启用验证的电子邮件：
 ```xml
@@ -286,4 +285,3 @@ ms.lasthandoff: 05/23/2017
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
 ```
-

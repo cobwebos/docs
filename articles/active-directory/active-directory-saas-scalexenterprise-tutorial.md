@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
 ms.openlocfilehash: 0ebed0c2605862426384c0e219e52c9d626b6246
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 与 ScaleX Enterprise 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 05/23/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-scalex-enterprise-from-the-gallery"></a>从库中添加 ScaleX Enterprise
-若要配置 ScaleX Enterprise 与 Azure AD 的集成，需要从库中将 ScaleX Enterprise 添加到托管 SaaS 应用列表。
+要配置 ScaleX Enterprise 与 Azure AD 的集成，需要从库中将 ScaleX Enterprise 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 ScaleX Enterprise，请执行以下步骤：**
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 05/23/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_search.png)
 
-5. 在结果窗格中，选择“ScaleX Enterprise”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“ScaleX Enterprise”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_addfromgallery.png)
 
@@ -89,13 +88,13 @@ ms.lasthandoff: 05/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ScaleX Enterprise 测试用户](#creating-a-scalex-enterprise-test-user)** - 在 ScaleX Enterprise 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
+3. **[创建 ScaleX Enterprise 测试用户](#creating-a-scalex-enterprise-test-user)** - 在 ScaleX Enterprise 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 ScaleX Enterprise 应用程序中配置单一登录。
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 ScaleX Enterprise 应用程序中配置单一登录。
 
 **若要配置 ScaleX Enterprise 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 05/23/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ScaleX Enterprise 客户端支持团队](http://info.rescale.com/contact_sales)来获取这些值。 
 
-5. ScaleX 应用程序需要特定格式的 SAML 断言，这要求你修改与 SAML 令牌属性配置之间的自定义属性映射。 单击“查看和编辑所有其他用户属性”复选框以打开自定义属性设置。
+5. ScaleX 应用程序需要特定格式的 SAML 断言，这要求修改与 SAML 令牌属性配置之间的自定义属性映射。 单击“查看和编辑所有其他用户属性”复选框以打开自定义属性设置。
 
     ![配置单一登录](./media/active-directory-saas-scalexenterprise-tutorial/scalex_attributes.png)
     
@@ -136,7 +135,7 @@ ms.lasthandoff: 05/23/2017
 
     ![配置单一登录](./media/active-directory-saas-scalexenterprise-tutorial/edit_email_attribute.png)   
     
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_certificate.png) 
 
@@ -153,7 +152,7 @@ ms.lasthandoff: 05/23/2017
 9. 单击右上角的菜单并选择“Contoso 管理”。
 
     > [!NOTE] 
-    > Contoso 只是一个示例。 这应当是你的实际公司名称。 
+    > Contoso 只是一个示例。 这应当是实际公司名称。 
 
     ![配置单一登录](./media/active-directory-saas-scalexenterprise-tutorial/Test_Admin.png) 
 
@@ -208,7 +207,7 @@ ms.lasthandoff: 05/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-scalexenterprise-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -218,7 +217,7 @@ ms.lasthandoff: 05/23/2017
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>创建 ScaleX Enterprise 测试用户
 
-为了使 Azure AD 用户能够登录到 ScaleX Enterprise，必须将其预配到 ScaleX Enterprise 中。 对于 ScaleX Enterprise，预配是自动执行的任务，不需要手动执行任何步骤。 在 ScaleX 端将自动预配可以通过 SSO 凭据成功进行身份验证的任何用户。
+为了使 Azure AD 用户能够登录到 ScaleX Enterprise，必须将其预配到 ScaleX Enterprise 中。 对于 ScaleX Enterprise，预配是自动执行的任务，不需要手动执行任何步骤。 在 ScaleX 端会自动预配可以通过 SSO 凭据成功进行身份验证的任何用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -226,9 +225,9 @@ ms.lasthandoff: 05/23/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 ScaleX Enterprise，请执行以下步骤：**
+**要将 Britta Simon 分配到 ScaleX Enterprise，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -254,7 +253,7 @@ ms.lasthandoff: 05/23/2017
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ScaleX Enterprise 磁贴时，你将自动登录到 ScaleX Enterprise 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。
+单击访问面板中的 ScaleX Enterprise 磁贴时，会自动登录到 ScaleX Enterprise 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。
 
 
 ## <a name="additional-resources"></a>其他资源
@@ -277,5 +276,4 @@ ms.lasthandoff: 05/23/2017
 [201]: ./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-scalexenterprise-tutorial/tutorial_general_203.png
-
 

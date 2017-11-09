@@ -15,12 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 本文介绍用于将报告数据推送到 Log Analytics 的数据模型。 使用此数据模型可以创建自定义查询和仪表板，并在 OMS 中利用这些对象。 
@@ -288,4 +287,3 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="next-steps"></a>后续步骤
 查看用于创建 Azure 备份报告的数据模型后，可以开始在 Log Analytics 和 OMS 中[创建仪表板](../log-analytics/log-analytics-dashboards.md)。
-

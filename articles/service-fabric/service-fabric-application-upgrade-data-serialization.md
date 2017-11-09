@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: 6aa3ac7842df4657fca7f6b4264e1c6fe52dc0c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>数据序列化如何影响应用程序升级
 在[应用程序滚动升级](service-fabric-application-upgrade.md)过程中，升级应用于部分节点，一次一个升级域。 在此过程中，一些升级域位于较新版本的应用程序上，而一些升级域位于较旧版本的应用程序上。 在滚动更新期间，新版本的应用程序必须能够读取旧版本的数据，并且旧版本的应用程序必须能够读取新版本的数据。 如果数据格式不向前和向后兼容，则升级可能会失败（或更糟），甚至可能丢失数据。 本文介绍数据格式的构成，并提供确保数据向前和向后兼容的最佳实践。
 
 ## <a name="what-makes-up-your-data-format"></a>数据格式由哪些部分构成？
-在 Azure Service Fabric 中，保留和复制的数据来自于你的 C# 类。 对于使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 的应用程序，此数据是可靠词典和队列中的对象。 对于使用 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 的应用程序，它是执行组件的备用状态。 这些 C# 类必须可序列化，以进行保留和复制。 因此，数据格式由已序列化的字段和属性及其序列化方式定义。 例如，在 `IReliableDictionary<int, MyClass>` 中，数据是一个序列化的 `int` 和一个序列化的 `MyClass`。
+在 Azure Service Fabric 中，保留和复制的数据来自于 C# 类。 对于使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 的应用程序，此数据是可靠词典和队列中的对象。 对于使用 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 的应用程序，它是执行组件的备用状态。 这些 C# 类必须可序列化，以进行保留和复制。 因此，数据格式由已序列化的字段和属性及其序列化方式定义。 例如，在 `IReliableDictionary<int, MyClass>` 中，数据是一个序列化的 `int` 和一个序列化的 `MyClass`。
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>导致数据格式更改的代码更改
 由于数据格式由 C# 类确定，所以对类进行更改可能会导致数据格式更改。 必须格外小心，以确保滚动升级可以处理数据格式更改。 可能会导致数据格式更改的示例：
@@ -41,7 +40,7 @@ ms.lasthandoff: 07/01/2017
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>数据格式如何影响滚动升级
 滚动升级期间，主要在两种情景下序列化程序可能会遇到较旧的数据版本或*较新*的数据版本：
 
-1. 节点升级并启动备份后，新的序列化程序将会加载旧版本保留到磁盘的数据。
+1. 节点升级并启动备份后，新的序列化程序会加载旧版本保留到磁盘的数据。
 2. 滚动升级期间，群集中将混合新旧版本的代码。 由于副本可能放置在不同的升级域中，并且副本会相互发送数据，因此新和/或旧版本的序列化程序可能会遇到新和/或旧版本的数据。
 
 > [!NOTE]
@@ -63,5 +62,4 @@ ms.lasthandoff: 07/01/2017
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
 

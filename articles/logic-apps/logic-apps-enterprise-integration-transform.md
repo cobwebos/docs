@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9369b90471ee775664b942b21ceb450b8852eafd
-ms.openlocfilehash: a8684769e73dd3f7a76cba9c78046abceb842918
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>企业集成与 XML 转换
 ## <a name="overview"></a>概述
-企业集成转换连接器可将数据从一种格式转换为另一种格式。 例如，你的传入消息可能包含 YearMonthDay 格式的当前日期。 可以使用转换将日期格式重新设置为 MonthDayYear 格式。
+企业集成转换连接器可将数据从一种格式转换为另一种格式。 例如，传入消息可能包含 YearMonthDay 格式的当前日期。 可以使用转换将日期格式重新设置为 MonthDayYear 格式。
 
 ## <a name="what-does-a-transform-do"></a>转换的作用是什么？
 转换（也称为映射）由源 XML 架构（输入）和目标 XML 架构（输出）组成。 可以使用不同的内置函数帮助操作或控制数据，包括字符串操作、条件分配、算术表达式、日期时间格式化程序甚至是循环构造。
@@ -57,7 +55,7 @@ ms.lasthandoff: 02/07/2017
 8. 保存工作  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-此时，已完成映射设置。 在实际应用程序中，你可能要将转换的数据存储在 LOB 应用程序中，如 SalesForce。 可以轻松地添加操作以将转换的输出发送给 Salesforce。 
+此时，已完成映射设置。 在实际应用程序中，可能要将转换的数据存储在 LOB 应用程序中，如 SalesForce。 可以轻松地添加操作以将转换的输出发送给 Salesforce。 
 
 现在可以通过向 HTTP 终结点发出请求来测试转换。  
 
@@ -73,5 +71,4 @@ ms.lasthandoff: 02/07/2017
 ## <a name="learn-more"></a>了解详细信息
 * [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
 * [了解有关映射的详细信息](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成映射")  
-
 

@@ -1,5 +1,5 @@
 ---
-title: "为应用商店创建解决方案模板指南 | Microsoft 文档"
+title: "为应用商店创建解决方案模板指南 | Microsoft Docs"
 description: "有关如何创建、验证和部署在 Azure 应用商店上提供购买的多 VM 映像解决方案模板的详细说明。"
 services: marketplace-publishing
 documentationcenter: 
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
+ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b753bfb4bd69bd9aacf4eebd8999397394c28bc4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>为 Azure 应用商店创建解决方案模板指南
 完成步骤 1 [帐户创建和注册][link-acct-creation]后，我们已通过[创建解决方案模板的技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)指导创建 Azure 兼容的解决方案模板。 现在，我们指导完成在 Azure 应用商店的[发布门户][link-pubportal]上为多个 VM 创建解决方案模板的步骤。
@@ -61,11 +60,10 @@ ms.lasthandoff: 08/22/2017
 
 * VM 映像：[关于 Azure 中的虚拟机映像](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * VM 扩展：[ VM 代理和 VM 扩展概述](https://msdn.microsoft.com/library/azure/dn832621.aspx)和 [Azure VM 扩展和功能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
-* Azure Resource Manager：[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)和[简单的模板示例](https://github.com/rjmax/ArmExamples)
-* 存储帐户限制：[如何监视存储帐户限制](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)和[高级存储](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)
+* Azure 资源管理器：[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)和[简单的模板示例](https://github.com/rjmax/ArmExamples)
+* 存储帐户限制：[如何监视存储帐户限制](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)和[高级存储](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-pubportal]:https://publish.windowsazure.com
-

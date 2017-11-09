@@ -1,6 +1,8 @@
-# 概述
+# [概述](search-what-is-azure-search.md)
 ## [什么是 Azure 搜索？](search-what-is-azure-search.md)
+
 # 入门
+
 ## [选择 SKU](search-sku-tier.md)
 ## [创建服务](search-create-service-portal.md)
 ## [创建索引](search-what-is-an-index.md)
@@ -15,18 +17,22 @@
 ### [Azure 门户](search-explorer.md)
 ### [.NET](search-query-dotnet.md)
 ### [REST](search-query-rest-api.md)
+
 # 教程
+
 ## [.NET](search-howto-dotnet-sdk.md)
 ## [.NET 同义词（预览版）](search-synonyms-tutorial-sdk.md)
 ## [门户](search-get-started-portal.md)
+## [搜索半结构化数据](search-semi-structured-data.md)
 ## [Node.js](search-get-started-nodejs.md)
 ## [Java](search-get-started-java.md)
+
 # 如何
+
 ## 规划和设计
 ### [服务限制](search-limits-quotas-capacity.md)
 ### [服务可伸缩性](search-capacity-planning.md)
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
-
 ## 开发
 ### [API 版本](search-api-versions.md)
 ### [升级 SDK](search-dotnet-sdk-migration.md)
@@ -34,11 +40,10 @@
 ### [为复杂数据类型建模](search-howto-complex-data-types.md)
 ### [处理并发更新](search-howto-concurrency.md)
 ### [代码示例](https://azure.microsoft.com/resources/samples/?service=search)
-
 ## 管理
 ### 管理 Azure 搜索
 #### [Azure 门户](search-manage.md)
-#### [PowerShell](search-manage-powershell.md)
+#### [Azure PowerShell](search-manage-powershell.md)
 ### [监视使用情况和统计信息](search-monitor-usage.md)
 ### [搜索流量分析](search-traffic-analytics.md)
 ### [性能和优化](search-performance-optimization.md)
@@ -57,17 +62,23 @@
 ### 查询构造
 #### [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 #### [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-#### [Lucene 语法查询示例](search-query-lucene-examples.md)
-#### [筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+#### [Lucene 查询示例](search-query-lucene-examples.md)
 ### Azure 搜索中的分析器
 #### [概述](search-analyzers.md)
 #### [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
+### Azure 搜索中的筛选器
+#### [概述](search-filters.md)
+#### [Facet 筛选器](search-filters-facets.md)
+#### [语言筛选器](search-filters-language.md)
+#### [安全修整](search-security-trimming-for-azure-search.md)
+#### [表达式语法参考](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
 ### [分页结果](search-pagination-page-layout.md)
 ### [评分](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [建议](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [多面导航](search-faceted-navigation.md)
 ### [同义词（预览版）](search-synonyms.md)
+### [moreLikeThis 预览版](search-more-like-this.md)
 
 # 引用
 
@@ -76,11 +87,10 @@
 ## [Python（管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [.NET（管理）](/rest/api/searchmanagement)
-## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
+## [服务 REST（预览版）](search-api-2016-09-01-preview.md)
 
 # 资源
 
-## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [FAQ - 常见问题解答](search-faq-frequently-asked-questions.md)
 ## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

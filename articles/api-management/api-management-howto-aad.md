@@ -3,7 +3,7 @@ title: "使用 Azure Active Directory 授权开发人员帐户 - Azure API 管�
 description: "了解如何在 API 管理中使用 Azure Active Directory 授权用户。"
 services: api-management
 documentationcenter: API Management
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
+ms.openlocfilehash: 2e8bc33ddf38657fe2d0d84a7bf64d4177d51572
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 2fa5c021d9f493004a5beab02529c70b600b9a0d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
-
 > [!WARNING]
 > 仅在[开发人员和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层提供 Azure Active Directory 集成。
 
@@ -245,5 +243,4 @@ ms.lasthandoff: 09/02/2017
 [Next steps]: #next-steps
 
 [Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
-
 

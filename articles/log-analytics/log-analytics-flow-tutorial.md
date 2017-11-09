@@ -10,24 +10,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/29/2017
 ms.author: bwren
+ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 4955f90de06cd720d78c5bb60c0adcd7dc633245
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
-
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Log Analytics 过程
 [Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  通过用于 Microsoft Flow 的 Azure Log Analytics 连接器，可构建包含 Log Analytics 中日志搜索检索到的数据的工作流。
 
 例如，通过 Microsoft Flow，可在 Office 365 的电子邮件通知中使用 Log Analytics 数据，在 Visual Studio Team Services 中创建 bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。  
-
-
-> [!NOTE]
-> 用于 Microsoft Flow 的 Azure Log Analytics 连接器需要将工作区升级至新的 Log Analytics 查询语言。 若要了解有关新语言的详细信息和工作区升级过程，请参阅[将 Azure Log Analytics 工作区升级到新日志搜索](log-analytics-log-search-upgrade.md)。  
 
 本文中的教程展示如何创建自动通过电子邮件发送 Log Analytics 日志搜索结果的流，是关于如何在 Microsoft Flow 中使用 Log Analytics 的示例。 
 
@@ -57,7 +51,7 @@ ms.lasthandoff: 08/10/2017
     | where EventLevelName == "Error" 
     | where TimeGenerated > ago(1day)
     | summarize count() by Computer
-    | sort by Computerindow. 
+    | sort by Computer
 ```
 
 2. 在“图表类型”中，选择“Html 表”。<br><br>![Log Analytics 操作](media/log-analytics-flow-tutorial/flow03.png)
@@ -85,7 +79,6 @@ ms.lasthandoff: 08/10/2017
 
 - 详细了解 [Log Analytics 中的日志搜索](log-analytics-log-search-new.md)。
 - 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
-
 
 
 

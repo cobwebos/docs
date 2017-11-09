@@ -9,6 +9,8 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF 中继](relay-wcf-dotnet-get-started.md)
+## [WCF 中继教程](service-bus-relay-tutorial.md)
+## [WCF 中继 REST 教程](service-bus-relay-rest-tutorial.md)
 
 # 如何
 ## 规划和设计
@@ -19,6 +21,8 @@
 ### [可用 API](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
 #### [Node](relay-hybrid-connections-node-ws-api-overview.md)
+## 管理
+### [使用 Azure 监视来监视 Azure 中继](relay-metrics-azure-monitor.md)
 
 # 引用
 ## .NET

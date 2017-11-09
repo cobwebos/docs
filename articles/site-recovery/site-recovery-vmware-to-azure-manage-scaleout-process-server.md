@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-a-scale-out-process-server"></a>管理横向扩展进程服务器
 
 横向扩展进程服务器充当 Site Recovery 服务和本地基础结构之间的数据传输的协调者。 本文介绍如何设置、配置和管理横向扩展进程服务器。
@@ -30,14 +28,14 @@ ms.lasthandoff: 06/30/2017
 以下是建议的设置横向扩展进程服务器所需的硬件、软件和网络配置。
 
 > [!NOTE]
-> [容量规划](site-recovery-capacity-planner.md)是一个重要的步骤，用于确保使用符合你的负载要求的配置部署横向扩展进程服务器。 请阅读有关[横向扩展进程服务器的扩展特征](#sizing-requirements-for-a-configuration-server)的更多信息。
+> [容量规划](site-recovery-capacity-planner.md)是一个重要的步骤，用于确保使用符合负载要求的配置部署横向扩展进程服务器。 请阅读有关[横向扩展进程服务器的扩展特征](#sizing-requirements-for-a-configuration-server)的更多信息。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 ## <a name="downloading-the-scale-out-process-server-software"></a>下载横向扩展进程服务器软件
 1. 登录 Azure 门户并浏览到恢复服务保管库。
 2. 浏览到“Site Recovery 基础结构” > “配置服务器”（在“针对 VMware 和物理计算机”下面）。
-3. 选择你的配置服务器以向下钻取到此配置服务器的详细信息页。
+3. 选择配置服务器以向下钻取到此配置服务器的详细信息页。
 4. 单击“+ 进程服务器”按钮。
 5. 在“添加进程服务器”页上，从“选择要部署进程服务器的位置”下拉列表中选择“在本地部署横向扩展进程服务器”。
 
@@ -45,12 +43,12 @@ ms.lasthandoff: 06/30/2017
 6. 单击“下载 Microsoft Azure Site Recovery 统一安装”链接以下载最新版本的横向扩展进程服务器的安装程序。
 
   > [!WARNING]
-  横向扩展进程服务器的版本应等于或小于你的环境中运行的配置服务器版本。 确保版本兼容性的一种简单方法是使用最近用来安装/更新配置服务器的相同的安装程序。
+  横向扩展进程服务器的版本应等于或小于环境中运行的配置服务器版本。 确保版本兼容性的一种简单方法是使用最近用来安装/更新配置服务器的相同的安装程序。
 
 ## <a name="installing-and-registering-a-scale-out-process-server-from-gui"></a>从 GUI 安装和注册横向扩展进程服务器
 如果必须将部署扩展到 200 台以上源计算机，或者每日改动率总计超过 2 TB，则需要额外的进程服务器来处理流量。
 
-请查看[进程服务器的大小建议](#size-recommendations-for-the-process-server)，然后按照这些说明来设置进程服务器。 设置服务器后，可以迁移源计算机来使用它。
+请查看[进程服务器的大小建议](#size-recommendations-for-the-process-server)，并按照这些说明来设置进程服务器。 设置服务器后，可以迁移源计算机来使用它。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
 
@@ -148,4 +146,3 @@ net start obengine
 |4 个 vCPU（2 个插槽 * 2 个核心 @ 2.5 GHz），8 GB 内存 |300 GB |250 GB 或更少 |复制 85 台或更少的计算机。 |
 |8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5 GHz），12 GB 内存 |600 GB |250 GB 到 1 TB |复制 85-150 台计算机。 |
 |12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5 GHz），24 GB 内存 |1 TB |1 TB 到 2 TB |复制 150-225 台计算机。 |
-

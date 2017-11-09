@@ -1,27 +1,27 @@
 ---
 title: "使 Azure 服务总线应用程序免受服务总线中断和灾难影响 | Microsoft Docs"
-description: "介绍可用于保护应用程序免受潜在服务总线中断影响的技术。"
+description: "保护应用程序免受潜在服务总线故障影响的技术。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: tysonn
+editor: 
 ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 10/06/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: bc84dbe5c26a834b2cff5f71ba5f541e94ba0b38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
+
 任务关键型应用程序必须连续运行，即使是在计划外中断或灾难发生时。 本主题介绍可用于保护服务总线应用程序免受潜在的服务中断和灾难影响的技术。
 
 中断定义为 Azure 服务总线暂时不可用。 中断会影响服务总线的一些组件，例如消息存储空间，甚至整个数据中心。 问题解决后，服务总线将恢复可用。 通常情况下，中断不会导致消息或其他数据丢失。 组件故障的一个示例是特定的消息存储空间不可用。 数据中心范围中断的示例有数据中心电源故障或数据中心网络交换机故障。 中断可能会持续几分钟到几天的时间。
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/13/2017
 将未分区的队列或主题分配到一个消息存储空间。 如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。 另一方面，分区的队列包括多个片段。 每个片段存储在不同的消息存储空间中。 当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。 如果相应的消息存储空间不可用，则服务总线会将消息写入另一片段（如有可能）。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>针对数据中心中断或灾难进行保护
-若要允许在两个数据中心之间进行故障转移，你可以在每个数据中心中各创建一个服务总线服务命名空间。 例如，服务总线服务命名空间 **contosoPrimary.servicebus.windows.net** 可能位于美国北部/中部区域，而 **contosoSecondary.servicebus.windows.net** 可能位于美国南部/中部区域。 如果必须在数据中心中断的情况下仍可访问服务总线消息传送实体，你可以在两个命名空间中都创建该实体。
+要允许在两个数据中心之间进行故障转移，可以在每个数据中心中各创建一个服务总线服务命名空间。 例如，服务总线服务命名空间 **contosoPrimary.servicebus.windows.net** 可能位于美国北部/中部区域，而 **contosoSecondary.servicebus.windows.net** 可能位于美国南部/中部区域。 如果必须在数据中心中断的情况下仍可访问服务总线消息传送实体，可以在两个命名空间中都创建该实体。
 
 有关详细信息，请参阅[异步消息传送模式和高可用性][Asynchronous messaging patterns and high availability]中的“Azure 数据中心内的服务总线故障”部分。
 
@@ -50,8 +50,6 @@ ms.lasthandoff: 04/13/2017
 中继终结点的异地复制使得公开中继终结点的服务在服务总线中断时可用。 若要实现异地复制，该服务必须在不同的命名空间中创建两个中继终结点。 命名空间必须位于不同的数据中心，且两个终结点必须具有不同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下访问主要终结点，而在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下访问其辅助终结点。
 
 该服务随后侦听两个终结点，客户端可通过其中任一终结点调用服务。 客户端应用程序随机选取一个中继作为主要终结点，并向活动终结点发送请求。 如果操作失败并返回错误代码，此故障指示中继终结点不可用。 应用程序将打开通向备份终结点的通道并重新发送请求。 此时，活动终结点与备份终结点将互换角色：客户端应用程序会将旧的活动终结点认定为新的备份终结点，而将旧的备份终结点认定为新的活动终结点。 如果两次发送操作都失败，则两个实体的角色将保持不变并返回错误。
-
-[使用服务总线中继消息进行异地复制][Geo-replication with Service Bus relayed Messages]示例演示了如何复制中继。
 
 ## <a name="protecting-queues-and-topics-against-datacenter-outages-or-disasters"></a>保护队列和主题免受数据中心中断或灾难的影响
 为了在使用中转消息传送时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。 对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，可在两个命名空间中进行创建。 两个实体可以具有相同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助队列。
@@ -61,7 +59,7 @@ ms.lasthandoff: 04/13/2017
 ## <a name="active-replication"></a>主动复制
 主动复制对于每个操作都使用这两个命名空间中的实体。 任何发送消息的客户端都将发送同一条消息的两个副本。 将第一个副本发送到主要实体（例如 **contosoPrimary.servicebus.windows.net/sales**），并将该消息的第二个副本发送到辅助实体（例如 **contosoSecondary.servicebus.windows.net/sales**）。
 
-客户端从两个队列接收消息。 如果接收方处理了消息的第一个副本，则第二个副本将被取消。 要取消重复的消息，发送方必须用唯一标识符标记每一条消息。 必须用同一标识符标记消息的两个副本。 可使用 [BrokeredMessage.MessageId][BrokeredMessage.MessageId] 或 [BrokeredMessage.Label][BrokeredMessage.Label] 属性或自定义属性对消息进行标记。 接收方必须保留已接收消息的列表。
+客户端从两个队列接收消息。 如果接收方处理了消息的第一个副本，则第二个副本会被取消。 要取消重复的消息，发送方必须用唯一标识符标记每一条消息。 必须用同一标识符标记消息的两个副本。 可使用 [BrokeredMessage.MessageId][BrokeredMessage.MessageId] 或 [BrokeredMessage.Label][BrokeredMessage.Label] 属性或自定义属性对消息进行标记。 接收方必须保留已接收消息的列表。
 
 [使用服务总线中转消息进行异地复制][Geo-replication with Service Bus Brokered Messages]示例演示了消息传送实体的主动复制。
 
@@ -79,8 +77,8 @@ ms.lasthandoff: 04/13/2017
 
 使用被动复制时，在以下情况下可能丢失消息或接收两次：
 
-* **消息延迟或丢失**：假定发送方将消息 m1 成功发送到主要队列，而该队列在接收方接收 m1 之前变为不可用。 发送方将后续消息 m2 发送给辅助队列。 如果主要队列是暂时不可用，则接收方将在该队列恢复可用后接收 m1。 如果发生灾难，则接收方可能永远无法接收 m1。
-* **重复接收**：假定发件人将消息 m 发送给主要队列。 服务总线成功处理了 m 但无法发送响应。 发送操作超时后，发送方将向辅助队列发送 m 的一份相同副本。 如果接收方能够在主要队列变为不可用之前接收 m 的第一个副本，则接收方将在几乎同一时间接收 m 的两个副本。 如果接收方不能在主要队列变为不可用之前接收 m 的第一个副本，则接收方首先仅接收 m 的第二个副本，但将在主要队列变为可用后接收 m 的另一个副本。
+* **消息延迟或丢失**：假定发送方将消息 m1 成功发送到主要队列，而该队列在接收方接收 m1 之前变为不可用。 发送方将后续消息 m2 发送给辅助队列。 如果主要队列是暂时不可用，则接收方会在该队列恢复可用后接收 m1。 如果发生灾难，则接收方可能永远无法接收 m1。
+* **重复接收**：假定发件人将消息 m 发送给主要队列。 服务总线成功处理了 m 但无法发送响应。 发送操作超时后，发送方将向辅助队列发送 m 的一份相同副本。 如果接收方能够在主要队列变为不可用之前接收 m 的第一个副本，则接收方会在几乎同一时间接收 m 的两个副本。 如果接收方不能在主要队列变为不可用之前接收 m 的第一个副本，则接收方首先仅接收 m 的第二个副本，但会在主要队列变为可用后接收 m 的另一个副本。
 
 [使用服务总线中转消息进行异地复制][Geo-replication with Service Bus Brokered Messages]示例演示了消息传送实体的被动复制。
 
@@ -93,10 +91,8 @@ ms.lasthandoff: 04/13/2017
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
-[Geo-replication with Service Bus Relayed Messages]: http://code.msdn.microsoft.com/Geo-replication-with-16dbfecd
 [BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label
-[Geo-replication with Service Bus Brokered Messages]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
+[Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
-

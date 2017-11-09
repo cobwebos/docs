@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
 ms.openlocfilehash: 2e5475a0563549ddfaa2c146e4acf94c019841ec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>使用 Operations Management Suite 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
@@ -37,7 +35,7 @@ ms.lasthandoff: 06/14/2017
 服务映射可显示系统的连接方式以及相互的影响，无需再猜测问题隔离。 除了标识失败的连接，它还帮助标识配置错误的负载均衡器、关键服务上的意外或多余负载以及与生产系统通信的开发人员计算机等恶意客户端。 通过将集成的工作流与 Operations Management Suite 更改跟踪配合使用，还可以查看后端计算机或服务上的更改事件是否能解释事件的根本原因。
 
 ### <a name="migration-assurance"></a>迁移保障
-使用服务映射可以有效地计划、加快和验证 Azure 迁移，帮助确保迁移所有内容，不会发生意外中断。 你可以发现所有需要一起迁移的互相依赖的系统、访问系统配置和容量并标识运行的系统仍然为用户提供服务还是等待解除授权而非迁移。 移动完成后，可以检查客户端负载和标识，验证测试系统和客户是否正在连接。 如果子网计划和防火墙定义有问题，“服务映射”映射中的失败连接将指向需要连接的系统。
+使用服务映射可以有效地计划、加快和验证 Azure 迁移，帮助确保迁移所有内容，不会发生意外中断。 可以发现所有需要一起迁移的互相依赖的系统、访问系统配置和容量，并识别运行中的系统仍然为用户提供服务还是在等待解除授权而非迁移。 移动完成后，可以检查客户端负载和标识，验证测试系统和客户是否正在连接。 如果子网计划和防火墙定义有问题，“服务映射”映射中的失败连接将指向需要连接的系统。
 
 ### <a name="business-continuity"></a>业务连续性
 如果使用 Azure Site Recovery 并需要帮助定义应用程序环境的恢复顺序，服务映射可自动显示系统互相依赖的方式，以便确保恢复计划可靠。 通过选择关键服务器或组并查看其客户端，可以标识要在该服务器还原并可用后恢复的前端系统。 相反，通过查看关键服务器的后端依赖关系，可以标识要在焦点系统还原之前恢复的系统。
@@ -259,7 +257,7 @@ ms.lasthandoff: 06/14/2017
 - 计算机：使用 ResourceId 或 ResourceName_s 唯一标识 Operations Management Suite 工作区中的计算机。
 - 进程：使用 ResourceId 唯一标识 Operations Management Suite 工作区中的进程。 ResourceName_s 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
-由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅包括最新记录，请将“|dedup ResourceId”添加到查询。
+由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL 记录
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
@@ -367,4 +365,3 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="feedback"></a>反馈
 是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
-

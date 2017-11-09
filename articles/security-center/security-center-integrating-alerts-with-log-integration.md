@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>集成 Azure 安全中心警报和 Azure 日志集成
 许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 通过 Azure 日志集成，可将 Azure 安全中心警报与 SIEM 解决方案集成。
@@ -29,7 +28,7 @@ Azure 日志集成当前支持 HP ArcSight、Splunk 和 IBM QRadar。
 ## <a name="what-logs-can-i-integrate"></a>可以集成哪些日志？
 Azure 针对每个服务生成大量日志记录。 这些日志分类如下：
 
-* **控制/管理日志**，使 Azure 资源管理器的 CREATE、UPDATE 和 DELETE 操作可见。 这些控件平面事件显示在 Azure 活动日志中
+* **控制/管理日志**，使 Azure Resource Manager 的 CREATE、UPDATE 和 DELETE 操作可见。 这些控件平面事件显示在 Azure 活动日志中
 * **数据平面日志**，可让使用 Azure 资源时引发的事件可见。 Windows 事件日志是一个例子，可在其中从事件查看器的安全通道获取安全事件信息。 数据平面事件（由虚拟机或 Azure 服务生成）通过 Azure 诊断日志显示。
 
 Azure 日志集成当前支持以下集成：
@@ -83,11 +82,10 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 ## <a name="next-steps"></a>后续步骤
 若要详细了解 Azure 活动日志和属性定义，请参阅：
 
-* [使用资源管理器执行审核操作](../azure-resource-manager/resource-group-audit.md)
+* [使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)了解如何管理和响应安全警报。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) — 获取最新的 Azure 安全新闻和信息。
-

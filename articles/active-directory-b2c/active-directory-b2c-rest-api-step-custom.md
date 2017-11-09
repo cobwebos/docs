@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: dc319c97e64e55861b84cc3943667418077a05d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换
 
 构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。  
@@ -57,7 +55,7 @@ IEF 在声明中发送数据，同时也在声明中接收数据。 REST API 声
 
 我们已设置一个用于接收声明 `email` 的 Azure 函数，然后返回具有分配值 `Redmond` 的声明 `city`。 [Github](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) 中提供了示例 Azure 函数。
 
-Azure 函数返回的 `userMessage` 声明在此上下文中是可选的，将被 IEF 忽略。 该声明可能会用作传递给应用程序，然后提供给用户的消息。
+Azure 函数返回的 `userMessage` 声明在此上下文中是可选的，将被 IEF 忽略。 可能会将该声明用作传递给应用程序，然后提供给用户的消息。
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -264,4 +262,3 @@ return request.CreateResponse<ResponseContent>(
 [使用 REST API 作为验证步骤](active-directory-b2c-rest-api-validation-custom.md)
 
 [修改配置文件编辑以收集用户的其他信息](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
-

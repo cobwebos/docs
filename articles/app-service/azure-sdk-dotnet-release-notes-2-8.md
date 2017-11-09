@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 81772fb5801ec620d1c1996509a275e4bb29fb12
-
-
+ms.openlocfilehash: 0b9f55d69c824e86245738a082f95fc529583f58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK for .NET 2.8、2.8.1 和 2.8.2
 ## <a name="overview"></a>概述
@@ -33,7 +33,7 @@ ms.openlocfilehash: 81772fb5801ec620d1c1996509a275e4bb29fb12
 
 ### <a name="net-452-support"></a>.NET 4.5.2 支持
 #### <a name="known-issues"></a>已知问题
-Azure.NET SDK 2.8 可让你创建 .NET 4.5.2 云服务包。 不过，.NET 4.5.2 Framework 要在 2016 年 1 月来宾 OS 版本发布后，才会安装在默认的来宾 OS 映像上。 在此之前，可以通过独立的来宾 OS 版本 November 2015-02 获取 .NET 4.5.2 Framework。 请参阅 [Azure 来宾 OS 版本和 SDK 兼容性对照表](../cloud-services/cloud-services-guestos-update-matrix.md)页跟踪该映像的发布时间。  November 2015-02 映像发布后，你可以选择通过更新云服务配置文件 (.cscfg) 来使用该映像。 在服务配置文件中，将 ServiceConfiguration 元素的 osVersion 属性设置为字符串“WA-GUEST-OS-4.26_201511-02”。 如果你选择使用此映像，将不再获得来宾 OS 的自动更新。 若要获取自动更新，osVersion 必须设置为“*”，并且只能在 2016 年 1 月通过自动更新获取 .NET 4.5.2。
+Azure.NET SDK 2.8 允许创建 .NET 4.5.2 云服务包。 不过，.NET 4.5.2 Framework 要在 2016 年 1 月来宾 OS 版本发布后，才会安装在默认的来宾 OS 映像上。 在此之前，可以通过独立的来宾 OS 版本 November 2015-02 获取 .NET 4.5.2 Framework。 请参阅 [Azure 来宾 OS 版本和 SDK 兼容性对照表](../cloud-services/cloud-services-guestos-update-matrix.md)页跟踪该映像的发布时间。  November 2015-02 映像发布后，可以选择通过更新云服务配置文件 (.cscfg) 来使用该映像。 在服务配置文件中，将 ServiceConfiguration 元素的 osVersion 属性设置为字符串“WA-GUEST-OS-4.26_201511-02”。 如果选择使用此映像，不再获得来宾 OS 的自动更新。 若要获取自动更新，osVersion 必须设置为“*”，并且只能在 2016 年 1 月通过自动更新获取 .NET 4.5.2。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 #### <a name="known-issues"></a>已知问题
@@ -41,7 +41,7 @@ Azure.NET SDK 2.8 可让你创建 .NET 4.5.2 云服务包。 不过，.NET 4.5.2
 
 若要成功创建这种类型的项目，必须安装 [Azure PowerShell 0.9.8 版](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi)。
 
-### <a name="azure-resource-manager-tools"></a>Azure 资源管理器工具
+### <a name="azure-resource-manager-tools"></a>Azure Resource Manager 工具
 #### <a name="breaking-changes"></a>重大变化
 Azure 资源组项目提供的 PowerShell 脚本在此版本中已更新，可以配合新的 Azure PowerShell cmdlet 1.0 版使用。  使用 2.8 以前的 SDK 版本时，将无法从 Visual Studio 使用此新脚本。  
 
@@ -65,17 +65,17 @@ Azure 资源组项目提供的 PowerShell 脚本在此版本中已更新，可�
 
 ## <a name="azure-sdk-for-net-281"></a>Azure SDK for .NET 2.8.1
 ### <a name="known-issues-for-visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 和 Visual Studio 2015 的已知问题
-1. 以槽为目标的触发 Web 作业发布将显示错误，并且不会设置计划，但会将 Web 作业推送到 Azure。 需要计划作业的客户可以使用 Azure 门户来设置 Web 作业的计划。 
+1. 以槽为目标的触发 Web 作业发布会显示错误，并且不会设置计划，但会将 Web 作业推送到 Azure。 需要计划作业的客户可以使用 Azure 门户来设置 Web 作业的计划。 
 2. Python 客户可能会遇到调试器问题。 服务团队正在针对此问题推出修复程序，但如果客户受到影响，请通过论坛、通知博客或发行说明意见部分告知 Microsoft。 
 3. 某些区域（如印度南部）的客户会遇到应用服务预配错误。 这与门户中的情况一致，遇到此问题的客户可以使用 Azure 门户来请求这些地理区域的发布访问权限。 使用 Azure 门户请求这些区域的访问权限后，预配应能正常进行。 
 
 ## <a name="azure-sdk-for-net-282"></a>Azure SDK for .NET 2.8.2
 在安装 2.8.2 工具以后，客户可能会遇到以下问题。         
 
-* 如果你使用的是 Windows 10 且尚未安装 Internet Explorer，则可能会遇到“找不到 Internet Explorer”错误。
+* 如果使用的是 Windows 10 且尚未安装 Internet Explorer，则可能会遇到“找不到 Internet Explorer”错误。
   若要解决此问题，请使用“添加/删除 Windows 组件”对话框来安装 Internet Explorer。
 
-如果你发现此问题，请使用“发送微笑”功能进行报告。
+如果发现此问题，请使用“发送微笑”功能进行报告。
 
 有关详细信息，请参阅[此文章](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-2-for-net/)。
 
@@ -86,10 +86,4 @@ Azure 资源组项目提供的 PowerShell 脚本在此版本中已更新，可�
 [Azure SDK 2.8 通告文章](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)
 
 [用于 .NET 的 Azure SDK 和 API 支持与停用信息](https://msdn.microsoft.com/library/azure/dn479282.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -10,15 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: support-article
 ms.date: 07/12/2017
 ms.author: genli
+ms.openlocfilehash: 3b11dc6afac716ef391976093839547e8fd37a91
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 182a27e444c2f5db66d518a1a0c608d3e319d553
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -26,9 +25,9 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="symptom"></a>症状
 
-尝试在部署过程中执行操作时，可能会收到阻止执行操作的 **RequestDisallowedByPolicy** 错误。 以下是错误的示例：
+尝试在部署过程中执行操作时，可能会收到阻止完成操作的 **RequestDisallowedByPolicy** 错误。 以下示例显示错误：
 
-```
+```json
 {
   "statusCode": "Forbidden",
   "serviceRequestId": null,
@@ -43,7 +42,7 @@ ms.lasthandoff: 07/13/2017
 
 ### <a name="method-1"></a>方法 1
 
-在 PowerShell 中，提供该策略标识符作为 **Id** 参数，检索有关阻止部署的策略的详细信息。
+在 PowerShell 中，提供该策略标识符作为 `Id` 参数，检索有关阻止部署的策略的详细信息。
 
 ```PowerShell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -59,16 +58,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>解决方案
 
-为了安全性或合规性，IT 部门可能会强制执行禁止创建公共 IP 地址、网络安全组、用户定义路由或路由表的资源策略。 在“症状”部分中说明的错误消息的示例中，策略名为 **regionPolicyDefinition**，但它可以不同。
+为了安全性或合规性，IT 部门可能会强制执行禁止创建公共 IP 地址、网络安全组、用户定义路由或路由表的资源策略。 **症状**部分中的错误消息显示名为 **regionPolicyDefinition** 的策略。 你的策略可能具有不同的名称。
 若要解决此问题，请协助 IT 部门查看资源策略，并确定如何执行符合这些策略的请求操作。
-
 
 有关详细信息，请参阅以下文章：
 
 - [资源策略概述](resource-manager-policy.md)
-- [常见部署错误 - RequestDisallowedByPolicy](resource-manager-common-deployment-errors.md#requestdisallowedbypolicy)
-
- 
-
-
-
+- [通过门户查看策略分配](resource-manager-policy-portal.md#view-policy-assignments)

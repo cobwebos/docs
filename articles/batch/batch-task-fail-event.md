@@ -1,5 +1,5 @@
 ---
-title: "Azure 批处理任务失败事件 | Microsoft Docs"
+title: "Azure Batch 任务失败事件 | Microsoft Docs"
 description: "批处理任务失败事件参考。"
 services: batch
 author: tamram
@@ -12,14 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 08feb4ec34bb1635f8ea744b54a10b677b94ab3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="task-fail-event"></a>任务失败事件
 
  当任务以失败结束时，会发出此事件。 当前，所有非零退出代码都视为失败。 *除了*任务完成事件，还将发出此事件，该事件可用于检测任务失败的时间。
@@ -93,4 +91,3 @@ ms.lasthandoff: 04/22/2017
 |exitCode|Int32|任务的退出代码。|
 |retryCount|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount。|
 |requeueCount|Int32|批处理服务因用户请求而对任务进行重新排队的次数。<br /><br /> 当用户从池中删除节点（通过调整池的大小或缩小池）或作业已禁用时，用户可以指定节点上运行的任务重新排队等待执行。 此计数跟踪由于这些原因而重新排队任务的次数。|
-

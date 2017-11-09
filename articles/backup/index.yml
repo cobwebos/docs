@@ -1,0 +1,68 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure 备份文档
+metadata:
+  title: Azure 备份文档 - 教程和 API 参考 | Microsoft 文档
+  description: 使用 Azure 备份可以备份本地服务器、虚拟机、虚拟化工作负荷、SQL 服务器、SharePoint 服务器等的数据。 使用快速入门、教程和示例了解如何备份与还原数据。
+  services: backup
+  author: czeumault
+  manager: carolz
+  ms.service: backup
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/11/2017
+  ms.author: carolz
+abstract:
+  description: 使用 Azure 备份可以备份本地服务器、虚拟机、虚拟化工作负荷、SQL 服务器、SharePoint 服务器等的数据。 使用快速入门、教程和示例了解如何备份与还原数据。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何备份 Azure 中的 Azure 虚拟机。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
+            text: Azure 门户
+            href: quick-backup-vm-portal
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: quick-backup-vm-powershell
+          - image:
+              src: 'https://docs.microsoft.com/media/common/cli.svg'
+            text: Azure CLI
+            href: quick-backup-vm-cli
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何在 Azure 中或者从 Windows Server 备份和恢复虚拟机。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-backup-vm-at-scale">备份多个 Azure VM</a>
+          - html: <a href="tutorial-restore-disk">还原磁盘并创建已恢复的 VM</a>
+          - html: <a href="tutorial-restore-files">将文件还原到 Azure 中的虚拟机</a>
+          - html: <a href="tutorial-backup-windows-server-to-azure">将 Windows Server 备份到 Azure</a>
+          - html: <a href="tutorial-backup-restore-files-windows-server">将文件从 Azure 恢复到 Windows Server</a>
+  - title: 示例
+    items:
+      - type: paragraph
+        text: 使用以下示例保护 Azure 中的数据。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
+          - title: 语言
+            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>

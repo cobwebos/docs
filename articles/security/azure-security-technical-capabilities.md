@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 11/01/2017
 ms.author: TomSh
+ms.openlocfilehash: 7288466cf31e180a16db18f8ddfe02ace3588a8d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: a32693a274c2615a515838306d72dbe64a5d1763
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -114,7 +113,7 @@ Azure Active Directory (AD) 在安全方面的益处包括以下能力：
 
 安全监控、警报和基于机器学习的报告（它们识别不一致的访问模式）可以帮助保护业务。 可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
-在 Azure 经典门户或 [Azure Active Directory 门户](http://aad.portal.azure.com/)中，[报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)按以下方式分类：
+在 Azure 门户或 [Azure Active Directory 门户](http://aad.portal.azure.com/)中，[报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)按以下方式分类：
 
 - 异常报告 - 包含我们发现存在异常的登录事件。 我们的目标是让用户知道这类活动并使用户能够就事件是否可疑做出决定。
 
@@ -162,7 +161,7 @@ Azure Active Directory (AD) 在安全方面的益处包括以下能力：
 
 ## <a name="secured-resource-access-in-azure"></a>Azure 中受保护的资源访问
 
-Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 [Azure 经典门户](https://manage.windowsazure.com/)来添加、删除和修改该订阅中的 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 帐户中心更改 SA。
+Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 Azure 门户在该订阅中添加、删除和修改 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 帐户中心更改 SA。
 
 ![Azure 中受保护的资源访问](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
@@ -357,8 +356,7 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)实现此操作。
 
-
-            [强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
+[强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动到 Internet 上的设备的连接。
 
 Azure 支持通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 使用专用 WAN 链路连接本地网络和 Azure 虚拟网络。 Azure 和站点之间的链接使用专用连接，不需要通过公共 Internet。 如果 Azure 应用程序在多个数据中心运行，则可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)智能地跨应用程序实例路由来自用户的请求。 如果可以通过 Internet 访问未在 Azure 中运行的服务，还可以将流量路由到这些服务。
 
@@ -489,7 +487,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 - 应用中的**诊断跟踪日志**- 可以将跟踪事件与请求相关联。
 
 - 在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
-应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 以组的方式处理解决方案中的资源。
+应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以组的方式处理解决方案中的资源。
 
 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
@@ -531,4 +529,3 @@ Resource Manager 提供多种优势：
 - [网络安全](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [威胁管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
-

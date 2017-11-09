@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 1f8c7fd97021f320a23bc78466a7b61f2d7e513e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>教程：Azure Active Directory 与 Veritas Enterprise Vault.cloud SSO 集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/28/2017
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Veritas Enterprise Vault.cloud SSO 客户端支持团队](https://www.veritas.com/support/.html)获取此值。 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_certificate.png) 
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 07/28/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -223,5 +222,4 @@ ms.lasthandoff: 07/28/2017
 [201]: ./media/active-directory-saas-veritas-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-veritas-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-veritas-tutorial/tutorial_general_203.png
-
 

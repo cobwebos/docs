@@ -11,36 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
-ms.openlocfilehash: 5c4ab6e08c8f1af89ea80ac7f4d58d82ee931ec9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: cec3d2cb02dd34dd5ac631e572936cfd7c8de033
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery 的安全和隐私注意事项
-Microsoft 致力于保护你的隐私和数据安全，同时提供软件和服务来帮助你管理组织的安全性。  
-我们认识到，当你授信他人访问你的数据时，这种信任需要极高的安全工程投资和专业知识来提供支持。
-从安全软件开发生命周期实践到服务运营，Microsoft 都严格遵守法规与安全准则。  
-保护数据是 Microsoft 的头等大事。
+本主题介绍如何在 Azure Active Directory Cloud App Discovery 中收集、处理和保护数据。 Microsoft 致力于保护你的隐私和数据安全。 Microsoft 遵循安全软件开发生命周期做法运营服务。 保护数据是 Microsoft 的头等大事。
 
-本主题介绍如何在 Azure Active Directory Cloud App Discovery 中收集、处理和保护数据
+> [!TIP] 
+> 在 Azure Active Directory (Azure AD) 中核查新的无代理 Cloud App Discovery，该功能已通过[与 Microsoft Cloud App Security 集成](https://portal.cloudappsecurity.com)而得到加强。 
 
 ## <a name="overview"></a>概述
 Cloud App Discovery 是 Azure AD 的一项功能，在 Microsoft Azure 中托管。  
-Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用程序发现数据。  
-收集的数据通过加密通道安全地发送到 Azure AD Cloud App Discovery 服务。  
-然后，组织的 Cloud App Discovery 数据会显示在 Azure 门户中。 
+Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用程序发现数据。 收集的数据通过加密通道安全地发送到 Azure AD Cloud App Discovery 服务。 然后，组织的 Cloud App Discovery 数据会显示在 Azure 门户中。 
 
 ![云应用程序发现的工作原理](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) 
 
-以下部分以信息流为主，介绍如何从你的组织将信息移到 Cloud App Discovery 服务并最终移到 Cloud App Discovery 门户时为其提供保护。
+以下部分按照安全的信息流，介绍如何从组织将信息移到 Cloud App Discovery 服务并最终移到 Cloud App Discovery 门户。
 
-## <a name="collecting-data-from-your-organization"></a>从你的组织收集数据
-若要使用 Azure Active Directory 的 Cloud App Discovery 功能来了解组织中的员工使用的应用程序，你需要首先将 Azure AD Cloud App Discovery 终结点代理部署到你的组织中的计算机。
+## <a name="collecting-data-from-your-organization"></a>从组织收集数据
+要使用 Azure Active Directory 的 Cloud App Discovery 功能来了解组织中的员工使用的应用程序，需要首先将 Azure AD Cloud App Discovery 终结点代理部署到组织中的计算机。
 
 Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户下载代理安装包。 这些代理可以手动安装或使用 SCCM 或组策略安装在组织中的多台计算机上。
 
@@ -48,26 +43,19 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 
 
 ### <a name="data-collected-by-the-agent"></a>代理收集的数据
-在建立与 Web 应用程序的连接时，代理将收集下表中概述的信息。 该信息仅收集用于管理员已为发现配置的这些应用程序。  
-以通过 Microsoft [Azure 门户](https://portal.azure.com/)中的“Cloud App Discovery”边栏选项卡，在“设置”->“数据收集”->“应用集合列表”下面，编辑代理监视的云应用列表。 有关更多详细信息，请参阅 [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)（Cloud App Discovery 入门）
-
+在建立与 Web 应用程序的连接时，代理将收集下表中概述的信息。 该信息仅收集用于管理员已为发现配置的这些应用程序。 可以通过 Microsoft [Azure 门户](https://portal.azure.com/)的 Azure AD 中的 Cloud App Discovery，在“设置”->“数据收集”->“应用集合列表”下面，编辑代理监视的云应用列表。 
 
 **信息类别**：用户信息  
-**说明**：  
-已对目标 Web 应用程序发出请求的进程的 Windows 用户名（例如：DOMAIN\username），以及用户的 Windows 安全标识符 (SID)。
+**说明**：已向目标 Web 应用程序发出请求的进程的 Windows 用户名（例如，DOMAIN\username），以及用户的 Windows 安全标识符 (SID)。
 
 **信息类别**：进程信息  
-**说明**：  
-已对目标 Web 应用程序发出请求的进程的名称（例如：“iexplore.exe”）
+**说明**：已向目标 Web 应用程序发出请求的进程的名称（例如：iexplore.exe）
 
 **信息类别**：计算机信息  
-**说明**：  
-已安装代理的计算机的 NetBIOS 名称。
+**说明**：已安装代理的计算机的 NetBIOS 名称。
 
 **信息类别**：应用流量信息  
-**说明**： 
-
-以下连接信息：
+**说明**：以下连接信息：
 
 * 源（本地计算机）和目标 IP 地址和端口号
 * 组织的公共 IP 地址，请求通过该地址发出。
@@ -93,7 +81,10 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 > 
 > 
 
-代理除了收集有关网络活动的数据以外，还收集有关软件和硬件配置的匿名信息、错误报告以及有关代理用法的信息。
+除了代理收集的有关网络活动的数据外，它还会收集有关以下项的匿名数据：
+* 软件和硬件配置
+* 错误报告
+* 有关如何使用代理的数据。
 
 
 ### <a name="how-the-agent-works"></a>代理工作原理
@@ -102,20 +93,18 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 * 用户模式组件
 * 内核模式驱动程序组件（Windows 筛选平台驱动程序）
 
-首次安装代理时，它将在计算机上存储特定于计算机的受信任的证书，然后用该证书来建立与 Cloud App Discovery 服务的安全连接。  
-代理会通过此安全连接从 Cloud App Discovery 服务定期检索策略配置。  
-该策略包括有关要监视的云应用程序以及是否应启用自动更新等的信息。
+首次安装代理时，它会在计算机上存储特定于计算机的受信任的证书，然后用该证书来建立与 Cloud App Discovery 服务的安全连接。 代理会通过此安全连接从 Cloud App Discovery 服务定期检索策略配置。 该策略包括有关要监视的云应用程序以及是否应启用自动更新等的信息。
 
 在计算机的 Internet Explorer 和 Chrome 中发送和接收 Web 流量时，Cloud App Discovery 代理分析该流量并提取相关的元数据（请参阅上面的**代理收集的数据**部分）。  
-代理每一分钟通过加密通道将收集的元数据上载到 Cloud App Discovery 服务。
+代理每一分钟通过加密通道将收集的元数据上传到 Cloud App Discovery 服务。
 
 驱动程序组件会截获加密的流量，并将自身插入到加密流中。 有关详细信息，请参阅下面的**拦截来自加密连接的数据（深度检测）**部分。
 
 ### <a name="respecting-user-privacy"></a>尊重用户隐私
-我们的目标是为管理员提供工具，用于根据组织的需要在详细的应用程序用法和用户隐私之间设置平衡。 最后，我们将在门户的“设置”页中提供以下旋钮：
+我们的目标是为管理员提供工具，用于根据组织的需要在详细的应用程序用法和用户隐私之间设置平衡。 最后，我们会在门户的“设置”页中提供以下旋钮：
 
 * **数据收集**：管理员可以选择指定要获取其发现数据的应用程序或应用程序类别。
-* **深度检测**：管理员可以选择指定代理是否收集 SSL/TLS 连接的 HTTP 流量（即**深度检测**）。 下一部分将会详述此技术。
+* **深度检测**：管理员可以选择指定代理是否收集 SSL/TLS 连接的 HTTP 流量（即**深度检测**）。 下一部分会详述此技术。
 * **同意选项**：管理员可以使用 Cloud App Discovery 门户选择是否要让用户知道代理将要收集数据，以及在代理开始收集用户数据之前是否需要获得用户同意。
 
 Cloud App Discovery 终结点代理只收集上面**代理收集的数据**中所述的信息。
@@ -130,16 +119,16 @@ Cloud App Discovery 终结点代理只收集上面**代理收集的数据**中�
 通过启用深度检测，Cloud App Discovery 终结点代理可以解密并检查 TLS 加密的通信，使服务能够减少干扰，并提供有关加密云应用使用方式的深入见解。
 
 #### <a name="a-word-of-caution"></a>注意事项
-启用深度检测之前，强烈建议你与法律和人力资源部门沟通想法，并获取他们的同意。 原因很简单，检查用户的私人加密通信是非常敏感的话题。 在生产环境中展开深度检测之前，请确保更新企业的安全与可接受用法策略，指明将要检查加密的通信。 如果你将 Cloud App Discovery 配置为监视用户，则可能还需要通知用户，并排除视为机密的站点（例如，银行和医疗站点）。 如前所述，管理员可以使用 Cloud App Discovery 门户选择是否要让用户知道代理将要收集数据，以及在代理开始收集用户数据之前是否需要获得用户同意。
+启用深度检测之前，强烈建议你与法律和人力资源部门沟通想法，并获取他们的同意。 原因很简单，检查用户的私人加密通信是非常敏感的话题。 在生产环境中展开深度检测之前，请确保更新企业的安全与可接受用法策略，指明将要检查加密的通信。 如果将 Cloud App Discovery 配置为监视用户，则可能还需要通知用户，并排除视为机密的站点（例如，银行和医疗站点）。 如前所述，管理员可以使用 Cloud App Discovery 门户选择是否要让用户知道代理将要收集数据，以及在代理开始收集用户数据之前是否需要获得用户同意。
 
 ### <a name="known-issues-and-drawbacks"></a>已知问题和缺点
 下面是 TLS 拦截可能对用户体验造成影响的一些场合：
 
-* 扩展验证 (EV) 证书将 Web 浏览器的地址栏标为绿色，在你访问受信任网站时充当视觉提示。 TLS 检查无法复制颁发给客户端的证书中的 EV，因此使用 EV 证书的网站尽管可以正常运行，但地址栏不显示为绿色。　  
-* 公钥绑定（也称为证书绑定）旨在帮助保护用户，以免其受到中间人攻击和恶意证书颁发机构的攻击。 当绑定站点的根证书与已知正常 CA 的某个根证书不匹配时，浏览器将拒绝连接并返回错误。 事实上，由于 TLS 拦截是一种中间人活动，因此这些连接将会失败。
+* 扩展验证 (EV) 证书将 Web 浏览器的地址栏标为绿色，在访问受信任网站时充当视觉提示。 TLS 检查无法复制颁发给客户端的证书中的 EV，因此使用 EV 证书的网站尽管可以正常运行，但地址栏不显示为绿色。　  
+* 公钥绑定（也称为证书绑定）旨在帮助保护用户，以免其受到中间人攻击和恶意证书颁发机构的攻击。 当绑定站点的根证书与已知正常 CA 的某个根证书不匹配时，浏览器将拒绝连接并返回错误。 事实上，由于 TLS 拦截是一种中间人活动，因此这些连接会失败。
 * 如果用户单击浏览器地址栏中的锁形图标来检查站点信息，看到的证书链不是用来为网站证书签名的证书颁发机构，而是 Windows 可信证书存储区。
 
-为了减少这些问题的出现频率，我们将持续跟踪已知使用扩展验证或公钥绑定的云服务和客户端应用程序，并指示终结点代理避免拦截受影响的连接。 但是，即使在这种情况下，你仍会收到有关这些云应用的用法以及所传输的数据量的报告，但由于未深度检测，因此不提供应用使用方式的详细信息。
+为了减少这些问题的出现频率，我们将持续跟踪已知使用扩展验证或公钥绑定的云服务和客户端应用程序，并指示终结点代理避免拦截受影响的连接。 但是，即使在这种情况下，仍会收到有关这些云应用的用法以及所传输的数据量的报告，但由于未深度检测，因此不提供应用使用方式的详细信息。
 
 ## <a name="sending-data-to-cloud-app-discovery"></a>将数据发送到 Cloud App Discovery
 元数据一旦由代理收集，就会在计算机上缓存一分钟，或直到缓存的数据达到 5MB 的大小。 然后，这些数据会被压缩，并通过安全连接发送到 Cloud App Discovery 服务。
@@ -170,5 +159,4 @@ Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段
 ## <a name="additional-resources"></a>其他资源
 * [如何发现本组织中使用的未经许可的云应用](active-directory-cloudappdiscovery-whatis.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
 

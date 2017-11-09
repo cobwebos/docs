@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/30/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 8629235511e0dda149ceef6a9c834c3042f64f90
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -33,13 +32,13 @@ ms.lasthandoff: 07/04/2017
 ## <a name="connectivity-provider"></a>连接服务提供商
 
 * 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md)可以在本地网络与 Microsoft 之间建立连接。
-* 即使你的提供商不是 ExpressRoute 连接合作伙伴，你也可以通过 [云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
+* 即使提供商不是 ExpressRoute 连接合作伙伴，也可以通过 [云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
-* **冗余连接**：对于你和提供商之间的物理连接，没有冗余方面的要求。 即使你只有 [一个到云交换的物理连接](expressroute-faqs.md#onep2plink)，Microsoft 也会要求在 Microsoft 的路由器和对等互连路由器之间建立冗余性的 BGP 会话。
-* **路由**：你或你的提供商需设置和管理针对 [路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
-* **NAT**：Microsoft 只能通过 Microsoft 对等互连方式接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或你的提供商需 [使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
-* **QoS**：Skype for Business 的各种服务（例如语音、视频、文本）所要求的 QoS 处理方式各有差异。 你和你的提供商应遵循 [QoS 要求](expressroute-qos.md)。
+* **冗余连接**：对于你和提供商之间的物理连接，没有冗余方面的要求。 即使你只有[一个到云交换的物理连接](expressroute-faqs.md#onep2plink)，Microsoft 也会要求在 Microsoft 的路由器和对等互连路由器之间建立冗余性的 BGP 会话。
+* **路由**：你或提供商需设置和管理针对 [路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
+* **NAT**：Microsoft 只能通过 Microsoft 对等互连方式接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或提供商需 [使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
+* **QoS**：Skype for Business 的各种服务（例如语音、视频、文本）所要求的 QoS 处理方式各有差异。 你和提供商应遵循 [QoS 要求](expressroute-qos.md)。
 * **网络安全**：通过 ExpressRoute 连接到 Microsoft 云时，应考虑[网络安全](../best-practices-network-security.md)。
 
 ## <a name="office-365"></a>Office 365
@@ -67,4 +66,3 @@ ms.lasthandoff: 07/04/2017
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)
   * [配置路由](expressroute-howto-routing-classic.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-

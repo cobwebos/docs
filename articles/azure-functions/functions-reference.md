@@ -14,19 +14,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 10/12/2017
 ms.author: chrande
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
 
-本文假定你已阅读了 [Azure Functions 概述](functions-overview.md)且熟悉[触发器、绑定和 JobHost 运行时间等 WebJobs SDK 概念](../app-service-web/websites-dotnet-webjobs-sdk.md)。 Azure Functions 以 WebJobs SDK 为基础。 
+本文假定已阅读了 [Azure Functions 概述](functions-overview.md)且熟悉[触发器、绑定和 JobHost 运行时间等 WebJobs SDK 概念](https://github.com/Azure/azure-webjobs-sdk/wiki)。 Azure Functions 以 WebJobs SDK 为基础。 
 
 ## <a name="function-code"></a>函数代码
 函数是 Azure Functions 的基本概念。 使用所选语言编写函数代码，并将代码文件和配置文件保存在同一文件夹中。 配置的名称为 `function.json`，其中包含 JSON 配置数据。 支持各种语言，并且对每种语言进行了优化，使每种语言体验有些许不同，以达到最佳工作效果。 
@@ -79,7 +78,7 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 ## <a id="fileupdate"></a> 如何更新函数应用文件
 通过 Azure 门户中内置函数编辑器可更新 function.json 文件和函数代码文件。 要上传或更新其他文件，例如 package.json 或 project.json 或是依赖项，必须使用其他部署方法。
 
-Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service-web/web-sites-deploy.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
+Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service/app-service-deploy-local-git.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
 
 #### <a name="to-use-app-service-editor"></a>使用应用服务编辑器
 1. 在 Azure Functions 门户中，单击“函数应用设置”。
@@ -94,9 +93,9 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 1. 导航到：`https://<function_app_name>.scm.azurewebsites.net`。
 2. 单击“调试控制台”> CMD。
 3. 导航到 `D:\home\site\wwwroot\` 更新 host.json 或导航到 `D:\home\site\wwwroot\<function_name>` 更新函数文件。
-4. 将想要上传的文件拖放到文件网格中相应的文件夹。 文件网格中有两个区域可放置文件。 对于 .zip 文件，会出现一个带标签的框，显示“将文件拖到此处进行上传并解压缩。” 对于其他文件类型，将文件拖放到“解压缩”框以外的文件网格中。
+4. 将想要上传的文件拖放到文件网格中相应的文件夹。 文件网格中有两个区域可放置文件。 对于 .zip 文件，会出现一个带标签的框，其中显示“将文件拖到此处进行上传并解压缩”。 对于其他文件类型，将文件拖放到“解压缩”框以外的文件网格中。
 
-<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --DonnaM -->
+<!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
 #### <a name="to-use-continuous-deployment"></a>使用连续部署
 按照本主题中的说明 [Azure Functions 连续部署](functions-continuous-deployment.md) 进行操作。
@@ -106,7 +105,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 可在 Azure 门户的“设置”选项卡中查看 Function App 的确切版本。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](functions-versions.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：
@@ -134,5 +133,4 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [Azure Functions：Azure 应用服务团队博客之旅](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)。 Azure Functions 的开发历史。
-
 

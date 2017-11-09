@@ -15,14 +15,12 @@ ms.date: 06/15/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
+ms.openlocfilehash: f43f6e33976325920da9cf0f6aef6decae5bde26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 6166e20a4652379dc9eeffe522feb651f5e57ea2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="security-best-practices-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全最佳实践
 
 对于希望增强其身份验证过程的大多数组织来说，双重验证是其首选。 Azure 多重身份验证 (MFA) 可帮助公司满足其安全和法规遵从要求，同时为用户提供简单的登录体验。 本文介绍了计划采用 Azure MFA 时应考虑的一些提示。
@@ -114,5 +112,4 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 * [Azure 多重身份验证中的报告](multi-factor-authentication-manage-reports.md)
 * [双重验证注册体验](multi-factor-authentication-end-user-first-time.md)
 * [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)
-
 

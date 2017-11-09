@@ -12,15 +12,14 @@ ms.custom: load & move data
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: carlrab
+ms.openlocfilehash: 2f00a740b3cc59c4e7b3b378c06cfa8cb05e8380
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 84bebab7763bb21f73880a6c8b367a62b0c137d3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 载入 Azure SQL 数据库（平面文件）
 可以使用 bcp 命令行实用程序将数据从 CSV 文件导入 Azure SQL 数据库。
@@ -100,15 +99,15 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20150101 |1 |3 |
 | 20150201 |1 |3 |
 | 20150301 |1 |3 |
-| 20150401 |2 |4 |
-| 20150501 |2 |4 |
-| 20150601 |2 |4 |
+| 20150401 |#N/A |4 |
+| 20150501 |#N/A |4 |
+| 20150601 |#N/A |4 |
 | 20150701 |3 |1 |
 | 20150801 |3 |1 |
 | 20150801 |3 |1 |
-| 20151001 |4 |2 |
-| 20151101 |4 |2 |
-| 20151201 |4 |2 |
+| 20151001 |4 |#N/A |
+| 20151101 |4 |#N/A |
+| 20151201 |4 |#N/A |
 
 ## <a name="next-steps"></a>后续步骤
 若要迁移 SQL Server 数据库，请参阅 [SQL Server 数据库迁移](sql-database-cloud-migrate.md)。
@@ -119,4 +118,3 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 77e2fcf9c306259286b15767f3a992510d6d79d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 集成
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 07/24/2017
 - 获取 [Azure AD 一个月免费试用版](https://azure.microsoft.com/pricing/free-trial/)（如果没有）。  
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加由 HR2day by Merces。
 2. 配置和测试 Azure AD 单一登录。
@@ -171,7 +170,7 @@ ms.lasthandoff: 07/24/2017
     >向 Merces 团队提及此集成需要使用以下模式设置实体 ID：**https://hr2day.force.com/INSTANCENAME**。
 
     > [!TIP]
-    >之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory” > “企业应用程序”部分添加此应用后，请选择“单一登录”选项卡。 然后通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
+    >之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory” > “企业应用程序”部分添加此应用后，请选择“单一登录”选项卡。然后通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -268,5 +267,4 @@ ms.lasthandoff: 07/24/2017
 [201]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_203.png
-
 

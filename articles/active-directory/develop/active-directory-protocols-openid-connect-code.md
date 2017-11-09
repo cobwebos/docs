@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 1bb944997caa0c43354e82bf9b1a70e3e104a476
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # 使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 是构建在 OAuth 2.0 协议顶层的简单标识层。 OAuth 2.0 定义了一些机制用于获取和使用**访问令牌**来访问受保护资源，但未定义用于提供标识信息的标准方法。 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 它以 `id_token` 的形式提供有关最终用户的信息，可验证用户的标识，并提供有关用户的基本配置文件信息。
@@ -235,4 +234,3 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 有关可能的错误代码的描述及其建议的客户端操作，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
 获取授权 `code` 和 `id_token` 之后，可以将用户登录，并代表他们获取访问令牌。  要将用户登录，必须确切地按上面所述验证 `id_token`。 若要获取访问令牌，可以遵循 [OAuth 协议文档](active-directory-protocols-oauth-code.md)的“使用授权代码请求访问令牌”部分中所述的步骤。
-

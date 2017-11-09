@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
 ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
 Web 应用程序防火墙 (WAF) 是应用程序网关的功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。 
@@ -54,7 +52,7 @@ Web 应用程序防火墙基于 [OWASP 核心规则集](https://www.owasp.org/in
 
 ## <a name="features"></a>功能
 
-Web 应用程序防火墙中默认已预先配置 CRS 3.0，你也可以选择使用版本 2.2.9。 与版本 2.2.9 相比，CRS 3.0 的误报数更少。 提供[根据需求自定义规则](application-gateway-customize-waf-rules-portal.md)的功能。 Web 应用程序防火墙防范的某些常见 Web 安全漏洞包括：
+Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使用版本 2.2.9。 与版本 2.2.9 相比，CRS 3.0 的误报数更少。 提供[根据需求自定义规则](application-gateway-customize-waf-rules-portal.md)的功能。 Web 应用程序防火墙防范的某些常见 Web 安全漏洞包括：
 
 * SQL 注入保护
 * 跨站点脚本保护
@@ -122,7 +120,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，你也可以选择�
 
 #### <a name="azure-monitor"></a>Azure 监视器
 
-每个应用程序网关日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成。  这样，你便可以跟踪包括 WAF 警报和日志在内的诊断信息。  门户中“诊断”选项卡上的“应用程序网关”资源中提供了此功能，也可以通过 Azure Monitor 服务直接访问此功能。 若要详细了解如何为应用程序网关启用诊断日志，请访问[应用程序网关诊断](application-gateway-diagnostics.md)
+每个应用程序网关日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成。  这样，便可以跟踪包括 WAF 警报和日志在内的诊断信息。  门户中“诊断”选项卡上的“应用程序网关”资源中提供了此功能，也可以通过 Azure Monitor 服务直接访问此功能。 若要详细了解如何为应用程序网关启用诊断日志，请访问[应用程序网关诊断](application-gateway-diagnostics.md)
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
@@ -173,5 +171,4 @@ WAF 的计费方式从 2017 年 5 月 5 日开始生效，在此之前，WAF SKU
 ## <a name="next-steps"></a>后续步骤
 
 深入了解 WAF 的功能后，请参阅[如何在应用程序网关上配置 Web 应用程序防火墙](application-gateway-web-application-firewall-portal.md)。
-
 

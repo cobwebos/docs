@@ -1,6 +1,6 @@
 ---
 title: "Service Fabric 应用升级教程 | Microsoft 文档"
-description: "本文逐步指导你使用 Visual Studio 部署 Service Fabric 应用程序、更改代码以及推出升级版本。"
+description: "本文逐步指导使用 Visual Studio 部署 Service Fabric 应用程序、更改代码以及推出升级版本。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 2b1b12666b71bf173342d5864772a94b9625d38b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/25/2017
-
+ms.openlocfilehash: 940440688ec770a4aeb932b574bd6be173f494d4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.lasthandoff: 04/25/2017
 Azure Service Fabric 确保只升级已更改的服务，并在整个升级过程中监视应用程序的运行状况，从而可以简化云应用程序的升级过程。 它还能在应用程序发生任何问题时自动回滚到旧版本。 Service Fabric 应用程序升级造成的*停机时间为零*，因为可以在不停机的情况下升级应用程序。 本教程介绍如何从 Visual Studio 完成滚动升级。
 
 ## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>步骤 1：构建和发布可视对象示例
-首先，从 GitHub 下载[可视对象](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects)应用程序。 然后，右键单击应用程序项目 **VisualObjects**，并从 Service Fabric 菜单项中选择“**发布**”命令生成并发布应用程序。
+首先，从 GitHub 下载[可视对象](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects)应用程序。 然后，右键单击应用程序项目 **VisualObjects**，并从 Service Fabric 菜单项中选择“发布”命令生成并发布应用程序。
 
 ![Service Fabric 应用程序的上下文菜单][image1]
 
@@ -41,14 +40,14 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 ![发布 Service Fabric 应用程序][image2]
 
-现在，可在对话框中单击“**发布**”。 可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 “可视对象”应用程序有一个 Web 服务，在浏览器的地址栏中输入 [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) 即可转到该服务。  你应会在屏幕上看到 10 个四处移动的浮动可视对象。
+现在，可在对话框中单击“**发布**”。 可以使用 [Service Fabric Explorer 查看群集和应用程序](service-fabric-visualizing-your-cluster.md)。 “可视对象”应用程序有一个 Web 服务，在浏览器的地址栏中输入 [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) 即可转到该服务。  应会在屏幕上看到 10 个四处移动的浮动可视对象。
 
 **注意：** 如果部署到 `Cloud.xml` 配置文件 (Azure Service Fabric)，则可以在 **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** 访问应用程序。 请确保在负载均衡器中配置了 `8081/TCP`（在与 Service Fabric 实例相同的资源组中找到负载均衡器）。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>步骤 2：更新可视对象示例
 你可能会注意到，使用步骤 1 中部署的版本，可视对象不会旋转。 让我们将此应用程序升级到可视对象也会旋转的版本。
 
-选择 VisualObjects 解决方案中的 VisualObjects.ActorService 项目，然后打开 **VisualObjectActor.cs** 文件。 在该文件中，转到 `MoveObject` 方法，注释掉 `visualObject.Move(false)`，然后取消注释 `visualObject.Move(true)`。 此代码更改可在升级服务后旋转对象。  **现在可以生成（不是重新生成）解决方案**，这会生成修改后的项目。 如果选择“*全部重新生成*”，则必须更新所有项目的版本。
+选择 VisualObjects 解决方案中的 VisualObjects.ActorService 项目，并打开 **VisualObjectActor.cs** 文件。 在该文件中，转到 `MoveObject` 方法，注释掉 `visualObject.Move(false)`，并取消注释 `visualObject.Move(true)`。 此代码更改可在升级服务后旋转对象。  **现在可以生成（不是重新生成）解决方案**，这会生成修改后的项目。 如果选择“*全部重新生成*”，则必须更新所有项目的版本。
 
 我们还需要设置应用程序的版本。 若要在右键单击“**VisualObjects**”项目之后进行版本更改，可以使用 Visual Studio 的“**编辑清单版本**”选项。 选择此选项会显示用于编辑版本的对话框，如下所示：
 
@@ -60,10 +59,10 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 如果选择“**自动更新应用程序和服务版本**”，Visual Studio 工具可以自动滚动更新版本。 如果使用 [SemVer](http://www.semver.org)，则在选择该选项后，需要单独更新代码和/或配置包版本。
 
-保存更改，然后选中“**升级应用程序**”框。
+保存更改，并选中“**升级应用程序**”框。
 
 ## <a name="step-3--upgrade-your-application"></a>步骤 3：升级应用程序
-请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解可应用的各种升级参数、超时和运行状况标准。 在本演练中，服务运行状况评估条件设置为默认值（不受监视模式）。 若要配置这些设置，可以选择“**配置升级设置**”，然后视需要修改参数。
+请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解可应用的各种升级参数、超时和运行状况标准。 在本演练中，服务运行状况评估条件设置为默认值（不受监视模式）。 要配置这些设置，可以选择“**配置升级设置**”，并视需要修改参数。
 
 现在，我们已经准备好选择“**发布**”来开始升级应用程序。 此选项会将应用程序升级到对象会旋转的版本 2.0.0。 Service Fabric 每次会升级一个更新域（先更新一些对象，再更新另一些对象），在升级期间，仍可访问服务。 可以通过客户端（浏览器）检查是否可以访问服务。  
 
@@ -71,7 +70,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 几分钟后，所有更新域应已升级（已完成），Visual Studio 输出窗口应该也会指出升级已完成。 此外，可以看到，浏览器窗口中的*所有* 可视对象都在旋转！
 
-你可以尝试通过更改版本来练习本文所述的操作：从版本 2.0.0 升级到版本 3.0.0，或者从版本 2.0.0 降级到版本 1.0.0。 尝试使用超时和运行状况策略，以加深熟悉程度。 与部署到本地群集不同，在部署到 Azure 群集时，可能需要使用不同的参数。 们建议保守设置超时值。
+可以尝试通过更改版本来练习本文所述的操作：从版本 2.0.0 升级到版本 3.0.0，或者从版本 2.0.0 降级到版本 1.0.0。 尝试使用超时和运行状况策略，以加深熟悉程度。 与部署到本地群集不同，在部署到 Azure 群集时，可能需要使用不同的参数。 们建议保守设置超时值。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 PowerShell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
@@ -88,4 +87,3 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
-

@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: a2f3c2d97df37e067670af48b37cc2e2dd3a36cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
-
+ms.openlocfilehash: ecafb02a6ac13d1c3cd1fe77ef710cd8525e32b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="federation-metadata"></a>联合元数据
 对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 中描述了联合元数据文档格式。
@@ -43,7 +41,7 @@ Azure AD 会在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 
 对于**独立于租户的终结点**，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.microsoftonline.com 上的所有 Azure AD 租户通用的联合元数据元素。
 
-例如，特定于租户的终结点可以是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点是 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 你可以在浏览器中键入此 URL 以查看联合元数据文档。
+例如，特定于租户的终结点可以是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点是 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 可以在浏览器中键入此 URL 以查看联合元数据文档。
 
 ## <a name="contents-of-federation-metadata"></a>联合元数据的内容
 以下部分提供使用 Azure AD 颁发的令牌的服务所需的信息。
@@ -59,7 +57,7 @@ xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
 ID="_b827a749-cfcb-46b3-ab8b-9f6d14a1294b"
 entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
-可以将独立于租户的终结点中的租户 ID 替换为你的租户 ID，以创建特定于租户的 `EntityID` 值。 生成的值将与令牌颁发者的值相同。 该策略允许多租户应用程序验证给定租户的颁发者。
+可以将独立于租户的终结点中的租户 ID 替换为租户 ID，以创建特定于租户的 `EntityID` 值。 生成的值将与令牌颁发者的值相同。 该策略允许多租户应用程序验证给定租户的颁发者。
 
 以下元数据显示了独立于租户的 `EntityID` 元素示例。 请注意，`{tenant}` 是文本而不是占位符。
 
@@ -158,4 +156,3 @@ https://login.microsoftonline.com/common/wsfed
     <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://login.microsoftonline.com/common/saml2" />
   </IDPSSODescriptor>
 ```
-

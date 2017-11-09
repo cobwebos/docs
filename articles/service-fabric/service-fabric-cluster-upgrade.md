@@ -1,6 +1,6 @@
 ---
 title: "升级 Azure Service Fabric 群集 | Microsoft 文档"
-description: "升级运行 Service Fabric 群集的 Service Fabric 代码和/或配置，包括设置群集更新模式、升级证书、添加应用程序端口、执行操作系统修补，等等。 执行升级时会预料到哪种结果？"
+description: "升级运行 Service Fabric 群集的 Service Fabric 代码和/或配置，包括设置群集更新模式、升级证书、添加应用程序端口、执行操作系统修补，等等。 执行升级时你会预料到哪种结果？"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
 ms.author: chackdan
-ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
 ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>升级 Azure Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -64,7 +63,7 @@ ms.lasthandoff: 08/12/2017
 ![ARMUpgradeMode][ARMUpgradeMode]
 
 #### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>在已通过 Resource Manager 模板设置为手动模式的群集上升级至新版本。
-群集处于手动模式时，若要升级到新版本，则可将“clusterCodeVersion”更改为支持的版本并部署此版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
+当群集处于手动模式时，要升级到新版本，则可将“clusterCodeVersion”更改为支持的版本并部署此版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
 
 如果不符合现行的群集运行状况策略，则回滚升级。 向下滚动本文档，了解有关如何设置这些自定义运行状况策略的更多信息。 
 
@@ -224,4 +223,3 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们会�
 [ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
-

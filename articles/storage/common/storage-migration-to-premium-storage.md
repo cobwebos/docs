@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
+ms.openlocfilehash: cb46c3f2809fa86fea7a8370d4c417f04040b74c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ca893f87b155a92c457e3bf6d9d39aaf86bf5fb3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -38,7 +37,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 可将 VM 从其他平台迁移至 Azure 高级存储或将现有 Azure VM 从标准存储迁移至高级存储。 本指南包括这两种方案的步骤。 根据具体方案，执行相关部分中指定的步骤。
 
 > [!NOTE]
-> 可在高级存储：[适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)中找到高级存储功能概述和定价。 建议将任何需要高 IOPS 的虚拟机磁盘迁移到 Azure 高级存储，以便应用程序实现最佳性能。 如果磁盘不需要高 IOPS，可以通过在标准存储（将虚拟机磁盘数据存储在硬盘驱动器 (HDD) 上而不是 SSD 上）中对其进行维护来限制成本。
+> 可在高级存储：[适用于 Azure 虚拟机工作负荷的高性能存储](../../virtual-machines/windows/premium-storage.md)中找到高级存储功能概述和定价。 建议将任何需要高 IOPS 的虚拟机磁盘迁移到 Azure 高级存储，以便应用程序实现最佳性能。 如果磁盘不需要高 IOPS，可以通过在标准存储（将虚拟机磁盘数据存储在硬盘驱动器 (HDD) 上而不是 SSD 上）中对其进行维护来限制成本。
 >
 
 完成整个迁移过程可能需要在执行本指南中提供的步骤前后执行其他操作。 示例包括配置虚拟网络或终结点，或在应用程序本身中进行代码更改，这可能要求应用程序一段时间内处于停用状态。 这些操作对于每个应用程序都是唯一的，应该随本指南中提供的步骤一起来完成这些操作，以便尽可能无缝地进行到高级存储的完全转换。
@@ -66,7 +65,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 | 每个磁盘的 IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | 每个磁盘的吞吐量 | 每秒 100 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB |
 
-根据工作负荷，确定 VM 是否需要附加数据磁盘。 可以将多个持久性数据磁盘附加到 VM。 如有需要，可以跨磁盘条带化，以增加卷的容量与性能。 （请参阅[此处](storage-premium-storage-performance.md#disk-striping)，了解什么是磁盘条带化。）如果使用[存储空间][4]来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 对于 Linux VM，可以使用 mdadm 实用工具来实现同一目的。 有关详细信息，请参阅[在 Linux 上配置软件 RAID](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 一文。
+根据工作负荷，确定 VM 是否需要附加数据磁盘。 可以将多个持久性数据磁盘附加到 VM。 如有需要，可以跨磁盘条带化，以增加卷的容量与性能。 （请参阅[此处](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)，了解什么是磁盘条带化。）如果使用[存储空间][4]来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 对于 Linux VM，可以使用 mdadm 实用工具来实现同一目的。 有关详细信息，请参阅[在 Linux 上配置软件 RAID](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 一文。
 
 #### <a name="storage-account-scalability-targets"></a>存储帐户的可伸缩性目标
 高级存储帐户除了 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)外还具有以下可伸缩性目标。 如果应用程序需求超过了单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据分布到这些存储帐户中。
@@ -75,7 +74,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 |:--- |:--- |
 | 磁盘容量：35TB<br />快照容量：10 TB |入站 + 出站最高每秒 50 Gbps |
 
-有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](storage-premium-storage.md#scalability-and-performance-targets)。
+有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)。
 
 #### <a name="disk-caching-policy"></a>磁盘缓存策略
 默认情况下，所有高级数据磁盘的磁盘缓存策略都是“只读”，所有附加到 VM 的高级操作系统都是“读写”。 为使应用程序的 IO 达到最佳性能，建议使用此配置设置。 对于频繁写入或只写的磁盘（例如 SQL Server 日志文件），禁用磁盘缓存可获得更佳的应用程序性能。 可以使用 [Azure 门户](https://portal.azure.com)或 *Set-AzureDataDisk* cmdlet 的 *-HostCaching* 参数更新现有数据磁盘的缓存设置。
@@ -87,7 +86,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 在创建 Azure VM 时，需要配置某些 VM 设置。 请记住，在 VM 的生存期内有少量设置是固定不变的，但可在以后修改或添加其他设置。 请查看这些 Azure VM 配置设置，并确保这些设置都正确配置以满足工作负荷要求。
 
 ### <a name="optimization"></a>优化
-[Azure 高级存储：高性能设计](storage-premium-storage-performance.md)提供了使用 Azure 高级存储构建高性能应用程序的准则。 可结合使用这些指导和适用于应用程序所使用的技术的性能最佳做法。
+[Azure 高级存储：高性能设计](../../virtual-machines/windows/premium-storage-performance.md)提供了使用 Azure 高级存储构建高性能应用程序的准则。 可结合使用这些指导和适用于应用程序所使用的技术的性能最佳做法。
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>准备虚拟硬盘 (VHD) 并将其复制到高级存储
 下面的部分提供有关准备 VM 中的 VHD 和将 VHD 复制到 Azure 存储的准则。
@@ -219,11 +218,11 @@ C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceCont
 ```
 
 ### <a name="scenario2"></a>情景 2：“要从其他平台将 VM 迁移到 Azure 高级存储。”
-如果要将 VHD 从非 Azure 云存储迁移到 Azure，必须首先将 VHD 导出到本地目录中。 准备好存储 VHD 的本地目录的完整源路径，然后使用 AzCopy 将其上传至 Azure 存储。
+如果要将 VHD 从非 Azure 云存储迁移到 Azure，必须首先将 VHD 导出到本地目录中。 准备好存储 VHD 的本地目录的完整源路径，并使用 AzCopy 将其上传至 Azure 存储。
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>步骤 1。 将 VHD 导出到本地目录
 ##### <a name="copy-a-vhd-from-aws"></a>从 AWS 复制 VHD
-1. 如果要使用 AWS，请将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 按照 Amazon 文档导出 Amazon EC2 实例中所述的步骤安装 Amazon EC2 命令行接口 (CLI) 工具，然后运行 create-instance-export-task 命令将 EC2 实例导出到 VHD 文件。 运行 **create-instance-export-task** 命令时，请务必对 DISK&#95;IMAGE&#95;FORMAT 变量使用 **VHD**。 导出的 VHD 文件将保存在该过程中指定的 Amazon S3 存储桶中。
+1. 如果要使用 AWS，请将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 按照 Amazon 文档导出 Amazon EC2 实例中所述的步骤安装 Amazon EC2 命令行接口 (CLI) 工具，并运行 create-instance-export-task 命令将 EC2 实例导出到 VHD 文件。 运行 **create-instance-export-task** 命令时，请务必对 DISK&#95;IMAGE&#95;FORMAT 变量使用 **VHD**。 导出的 VHD 文件将保存在该过程中指定的 Amazon S3 存储桶中。
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
@@ -303,7 +302,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 >
 
 ## <a name="create-azure-virtual-machine-using-premium-storage"></a>使用高级存储创建 Azure VM
-将 VHD 上传或复制到所需的存储帐户后，请按照本部分中的说明将 VHD 注册为 OS 映像或 OS 磁盘（具体取决于方案），然后从中创建 VM 实例。 在创建后，可以将数据磁盘 VHD 附加到 VM。
+将 VHD 上传或复制到所需的存储帐户后，请按照本部分中的说明将 VHD 注册为 OS 映像或 OS 磁盘（具体取决于方案），并从中创建 VM 实例。 在创建后，可以将数据磁盘 VHD 附加到 VM。
 本部分末尾提供了一个示例迁移脚本。 该示例脚本并不适用于所有方案。 可能需要更新该脚本以与特定方案相匹配。 要查看此脚本是否适用于方案，请参阅下面的[示例迁移脚本](#a-sample-migration-script)。
 
 ### <a name="checklist"></a>清单
@@ -317,7 +316,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 让应用程序做好停机准备。 为了执行净迁移，必须停止当前系统中的所有处理。 只有这样才能使其处于一致状态，可以将该状态迁移到新的平台。 停机持续时间将取决于要迁移的磁盘中的数据量。
 
 > [!NOTE]
-> 如果要从专用 VHD 磁盘创建 Azure Resource Manager VM，请参阅 [此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)以使用现有磁盘部署 Resource Manager VM。
+> 如果要从专用 VHD 磁盘创建 Azure 资源管理器 VM，请参阅 [此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)以使用现有磁盘部署 资源管理器 VM。
 >
 >
 
@@ -751,7 +750,7 @@ Update-AzureVM  -VM $vm
 2. 登录到该 VM 并将当前卷中的数据复制到映射到该卷的新磁盘。 对需要映射到新磁盘的所有当前卷执行此操作。
 3. 接下来，更改应用程序设置以切换到新磁盘，并分离旧卷。
 
-有关调整应用程序以实现更佳的磁盘性能的信息，请参阅[优化应用程序性能](storage-premium-storage-performance.md#optimizing-application-performance)。
+有关调整应用程序以实现更佳的磁盘性能的信息，请参阅[优化应用程序性能](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance)。
 
 ### <a name="application-migrations"></a>应用程序迁移
 数据库和其他复杂的应用程序可能需要执行应用程序提供程序定义的特殊步骤以进行迁移。 请参阅各自的应用程序文档。 例如 通常情况下，可以通过备份和还原来迁移数据库。
@@ -768,10 +767,9 @@ Update-AzureVM  -VM $vm
 
 * [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)
+* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../virtual-machines/windows/premium-storage.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 [4]: http://technet.microsoft.com/library/hh831739.aspx
-

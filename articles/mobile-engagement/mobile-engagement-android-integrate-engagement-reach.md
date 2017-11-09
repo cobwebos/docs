@@ -14,16 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-engagement-reach-on-android"></a>如何在 Android 上集成 Engagement Reach
 > [!IMPORTANT]
-> 你必须先按照“如何在 Android 上集成 Engagement”文档中所述的集成过程完成操作，才能接续本指南中的操作。
+> 必须先按照“如何在 Android 上集成 Engagement”文档中所述的集成过程完成操作，才能接续本指南中的操作。
 > 
 > 
 
@@ -31,10 +30,10 @@ ms.lasthandoff: 06/28/2017
 
 从项目中的 SDK 复制 Reach 资源文件：
 
-* 将随 SDK 交付的 `res/layout` 文件夹中的文件复制到你的应用程序的 `res/layout` 文件夹中。
-* 将随 SDK 所附的 `res/drawable` 文件夹中的文件复制到你的应用程序的 `res/drawable` 文件夹中。
+* 将使用 SDK 所附的 `res/layout` 文件夹中的文件复制到应用程序的 `res/layout` 文件夹中。
+* 将使用 SDK 所附的 `res/drawable` 文件夹中的文件复制到应用程序的 `res/drawable` 文件夹中。
 
-编辑你的 `AndroidManifest.xml` 文件：
+编辑 `AndroidManifest.xml` 文件：
 
 * 添加以下部分（在 `<application>` 和 `</application>` 标记之间）：
   
@@ -79,7 +78,7 @@ ms.lasthandoff: 06/28/2017
               <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
             </intent-filter>
           </receiver>
-* 你需要此权限来重新执行关机时未单击过的系统通知（否则，会将其保存在磁盘上，但不会再显示，你确实一定要包括此部分）。
+* 需要此权限来重新执行关机时未单击过的系统通知（否则，会将其保存在磁盘上，但不会再显示，确实一定要包括此部分）。
   
           <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 * 通过复制和编辑以下部分指定用于通知（同时位于应用和系统内）的图标（在 `<application>` 和 `</application>` 标记之间）：
@@ -87,7 +86,7 @@ ms.lasthandoff: 06/28/2017
           <meta-data android:name="engagement:reach:notification:icon" android:value="<name_of_icon_WITHOUT_file_extension_and_WITHOUT_'@drawable/'>" />
 
 > [!IMPORTANT]
-> 如果打算在创建市场宣传活动时使用系统通知，则**必需**使用本部分。 Android 将阻止显示没有图标的系统通知。 因此，如果你省略此部分，则最终用户将无法收到这些通知。
+> 如果打算在创建市场宣传活动时使用系统通知，则**必需**使用本部分。 Android 将阻止显示没有图标的系统通知。 因此，如果省略此部分，则最终用户将无法收到这些通知。
 > 
 > 
 
@@ -96,30 +95,30 @@ ms.lasthandoff: 06/28/2017
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
           <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
   
-  * 在 Android M 上，如果你的应用程序目标为 Android API 级别23 或更高级别，则 ``WRITE_EXTERNAL_STORAGE`` 权限需要用户批准。 请阅读[本部分](mobile-engagement-android-integrate-engagement.md#android-m-permissions)。
+  * 在 Android M 上，如果应用程序目标为 Android API 级别23 或更高级别，则 ``WRITE_EXTERNAL_STORAGE`` 权限需要用户批准。 请阅读[本部分](mobile-engagement-android-integrate-engagement.md#android-m-permissions)。
 * 针对系统通知，如果设备应设置为响铃和/或振动，也可以在市场宣传活动中指定。 为使其正常工作，必须确保声明了以下权限（在 `</application>` 标记之后）：
   
           <uses-permission android:name="android.permission.VIBRATE" />
   
-  在没有此权限的情况下，如果你在“市场宣传活动管理员”中选中响铃或振动选项，Android 会阻止显示系统通知。
+  在没有此权限的情况下，如果在“市场宣传活动管理员”中选中响铃或振动选项，Android 会阻止显示系统通知。
 
 ## <a name="native-push"></a>原生推送
-至此，你已配置了市场宣传模块，接下来需要配置原生推送，以便能够在设备上接收活动。
+至此，已配置了市场宣传模块，接下来需要配置原生推送，以便能够在设备上接收活动。
 
 我们在 Android 上支持两种服务：
 
 * Google Play 设备：遵循[如何集成 GCM 与 Engagement 指南](mobile-engagement-android-gcm-integrate.md)所述，使用 [Google Cloud Messaging]。
 * Amazon 设备：遵循[如何集成 ADM 与 Engagement 指南](mobile-engagement-android-adm-integrate.md)所述，使用 [Amazon Device Messaging]。
 
-如果你想同时定位到 Amazon 和 Google Play 设备，则可以将所有内容放在一个 AndroidManifest.xml/APK 进行开发。 但提交到 Amazon 时，如果它们发现 GCM 代码，则可能会拒绝你的应用程序。
+如果想同时定位到 Amazon 和 Google Play 设备，则可以将所有内容放在一个 AndroidManifest.xml/APK 进行开发。 但提交到 Amazon 时，如果它们发现 GCM 代码，则可能会拒绝应用程序。
 
 在这种情况下应使用多个 APK。
 
-**现在你的应用程序已准备好接收和显示市场宣传活动！**
+**现在应用程序已准备好接收和显示市场宣传活动！**
 
 ## <a name="how-to-handle-data-push"></a>如何处理数据推送
 ### <a name="integration"></a>集成
-如果你希望应用程序能够接收市场宣传数据推送，则必须创建 `com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver` 的子类，并在 `AndroidManifest.xml` 文件中进行引用（在 `<application>` 和/或 `</application>` 标记之间）：
+如果希望应用程序能够接收市场宣传数据推送，则必须创建 `com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver` 的子类，并在 `AndroidManifest.xml` 文件中进行引用（在 `<application>` 和/或 `</application>` 标记之间）：
 
             <receiver android:name="<your_sub_class_of_com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver>"
               android:exported="false">
@@ -128,7 +127,7 @@ ms.lasthandoff: 06/28/2017
               </intent-filter>
             </receiver>
 
-然后，你可以重写 `onDataPushStringReceived` 和 `onDataPushBase64Received` 回调。 下面是一个示例：
+然后，可以重写 `onDataPushStringReceived` 和 `onDataPushBase64Received` 回调。 下面是一个示例：
 
             public class MyDataPushReceiver extends EngagementReachDataPushReceiver
             {
@@ -149,15 +148,15 @@ ms.lasthandoff: 06/28/2017
             }
 
 ### <a name="category"></a>类别
-当你创建数据推送活动时，类别参数是可选的，并允许你筛选数据推送。 如果你有多个广播接收器处理不同类型的数据推送，或如果你想要推送不同种类的 `Base64` 数据，并且希望在解析它们之前确定其类型，此参数会非常有用。
+创建数据推送活动时，类别参数是可选的，并允许筛选数据推送。 如果有多个广播接收器处理不同类型的数据推送，或如果想要推送不同种类的 `Base64` 数据，并且希望在解析它们之前确定其类型，此参数会非常有用。
 
 ### <a name="callbacks-return-parameter"></a>回调的返回参数
 以下是正确处理 `onDataPushStringReceived` 和 `onDataPushBase64Received` 的返回参数部分准则：
 
-* 如果广播接收器不知道如何处理数据推送，则应在回调中返回 `null`。 你应使用类别来确定广播接收器是否应处理数据推送。
+* 如果广播接收器不知道如何处理数据推送，则应在回调中返回 `null`。 应使用类别来确定广播接收器是否应处理数据推送。
 * 如果其中一个广播接收器接受数据推送，则应在回调中返回 `true`。
 * 如果其中一个广播接收器可识别数据推送，但因各种原因而放弃，则应在回调中返回 `false`。 例如，当收到的数据无效时，返回 `false`。
-* 如果对于相同的数据推送，一个广播接收器返回 `true`，而另一个返回 `false`，则属于未定义行为，你永远都不应这样做。
+* 如果对于相同的数据推送，一个广播接收器返回 `true`，而另一个返回 `false`，则属于未定义行为，永远都不应这样做。
 
 返回类型仅针对市场宣传统计信息：
 
@@ -167,13 +166,13 @@ ms.lasthandoff: 06/28/2017
 ## <a name="how-to-customize-campaigns"></a>如何自定义市场活动
 若要自定义市场活动，可以修改 Reach SDK 中提供的布局。
 
-你应保留布局中使用的所有标识符，并保留使用标识符的视图类型，尤其是文本视图和图像视图。 某些视图只用于隐藏或显示区域，因此可能会更改其类型。 如果你想要更改提供布局中的视图类型，请检查源代码。
+应保留布局中使用的所有标识符，并保留使用标识符的视图类型，尤其是文本视图和图像视图。 某些视图只用于隐藏或显示区域，因此可能会更改其类型。 如果想要更改提供布局中的视图类型，请检查源代码。
 
 ### <a name="notifications"></a>通知
 有两种类型的通知：系统通知和应用内通知，它们使用不同的布局文件。
 
 #### <a name="system-notifications"></a>系统通知
-若要自定义系统通知，需要使用**类别**。 你可以跳到[类别](#categories)。
+若要自定义系统通知，需要使用**类别**。 可以跳到[类别](#categories)。
 
 #### <a name="in-app-notifications"></a>应用内通知
 默认情况下，应用内通知是使用 Android 方法 `addContentView()` 动态添加到当前活动用户界面的视图。 这称为通知覆盖。 通知覆盖非常适合用于快速集成，因为它们不需要你修改应用程序中的任何布局。
@@ -181,14 +180,14 @@ ms.lasthandoff: 06/28/2017
 若要修改通知覆盖的外观，可以根据需要仅修改文件 `engagement_notification_area.xml` 即可。
 
 > [!NOTE]
-> 文件 `engagement_notification_overlay.xml` 用于创建通知覆盖，其中也包含文件 `engagement_notification_area.xml`。 你也可以对其进行自定义以满足自己的需求（例如，定位覆盖内的通知区域）。
+> 文件 `engagement_notification_overlay.xml` 用于创建通知覆盖，其中也包含文件 `engagement_notification_area.xml`。 也可以对其进行自定义以满足自己的需求（例如，定位覆盖内的通知区域）。
 > 
 > 
 
 ##### <a name="include-notification-layout-as-part-of-an-activity-layout"></a>包括通知布局作为活动布局的一部分
 覆盖非常适合用于快速集成，但在特殊情况下可能造成不便或负面影响。 可以在活动级别自定义覆盖系统，以便轻松避免特殊活动的负面影响。
 
-你可以决定使用 Android **include** 语句，将我们的通知布局纳入现有布局。 下面是修改过的 `ListActivity` 布局的示例，其中仅包含一个 `ListView`。
+可以决定使用 Android **include** 语句，将我们的通知布局纳入现有布局。 下面是修改过的 `ListActivity` 布局的示例，其中仅包含一个 `ListView`。
 
 **在 Engagement 集成之前：**
 
@@ -223,28 +222,28 @@ ms.lasthandoff: 06/28/2017
 Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，并且不会添加此活动的覆盖。
 
 > [!TIP]
-> 如果你在应用程序中使用 ListActivity，则可见的市场宣传覆盖会使你无法再对列表视图中的点击项作出反应。 这是已知问题。 若要暂时解决此问题，我们建议你在自己的列表活动布局中嵌入通知布局，如前面的示例所示。
+> 如果在应用程序中使用 ListActivity，则可见的市场宣传覆盖会使你无法再对列表视图中的点击项作出反应。 这是已知问题。 要暂时解决此问题，我们建议在自己的列表活动布局中嵌入通知布局，如前面的示例所示。
 > 
 > 
 
 ##### <a name="disabling-application-notification-per-activity"></a>禁用每个活动的应用程序通知
-如果你不想将覆盖添加到活动中，并且如果在你自己的布局中也未包括通知布局，则可以通过添加 `meta-data` 部分在 `AndroidManifest.xml` 中禁用此活动的覆盖，如以下示例所示：
+如果不想将覆盖添加到活动中，并且如果在自己的布局中也未包括通知布局，则可以通过添加 `meta-data` 部分在 `AndroidManifest.xml` 中禁用此活动的覆盖，如以下示例所示：
 
             <activity android:name="SplashScreenActivity">
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
 #### <a name="categories"></a> 类别
-当修改提供的布局时，你会修改所有通知的外观。 类别允许你定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
+当修改提供的布局时，会修改所有通知的外观。 类别允许定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
 
 若要注册通知的类别处理程序，需要在初始化应用程序时添加调用。
 
 > [!IMPORTANT]
-> 请先阅读“如何在 Android 上集成 Engagement”主题中有关 android:process 属性 \<android-sdk-engagement-process\> 的警告，然后再继续操作。
+> 请先阅读“如何在 Android 上集成 Engagement”主题中有关 android:process 属性 \<android-sdk-engagement-process\> 的警告，再继续操作。
 > 
 > 
 
-下面的示例假定你已知道上述警告，并使用 `EngagementApplication` 的子类：
+下面的示例假定已知道上述警告，并使用 `EngagementApplication` 的子类：
 
             public class MyApplication extends EngagementApplication
             {
@@ -263,7 +262,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
             reachAgent.registerNotifier(new MyNotifier(this), "myCategory", "myAnotherCategory");
 
-若要替换默认类别实现，你可以按如下示例所示注册实现：
+要替换默认类别实现，可以按如下示例所示注册实现：
 
             public class MyApplication extends EngagementApplication
             {
@@ -276,11 +275,11 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
               }
             }
 
-处理程序中所用的当前类别，在你可于 `EngagementDefaultNotifier` 重写的大多数方法中作为参数进行传递。
+处理程序中所用的当前类别，在可于 `EngagementDefaultNotifier` 重写的大多数方法中作为参数进行传递。
 
 它可以作为 `String` 参数传递，也可以使用 `getCategory()` 方法间接在 `EngagementReachContent` 对象中间接。
 
-你可以通过在 `EngagementDefaultNotifier` 上重新定义方法，更改通知创建过程中的大部分内容。若需要更高级的自定义，可以随时查看技术文档和源代码。
+可以通过在 `EngagementDefaultNotifier` 上重新定义方法，更改通知创建过程中的大部分内容。若需要更高级的自定义，可以随时查看技术文档和源代码。
 
 ##### <a name="in-app-notifications"></a>应用内通知
 如果只想针对特定类别使用备用布局，可以按如以下示例进行实现：
@@ -411,10 +410,10 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
 这个简单的类别示例使应用程序（或应用内）通知显示在屏幕的顶部。 我们并未更改通知区域自身所使用的标准标识符。
 
-如果你想要进行更改，则必须重新定义 `EngagementDefaultNotifier.prepareInAppArea` 方法。 如果你需要此级别的高级自定义，建议查看 `EngagementNotifier` 和 `EngagementDefaultNotifier` 的技术文档和源代码。
+如果想要进行更改，则必须重新定义 `EngagementDefaultNotifier.prepareInAppArea` 方法。 如果需要此级别的高级自定义，建议查看 `EngagementNotifier` 和 `EngagementDefaultNotifier` 的技术文档和源代码。
 
 ##### <a name="system-notifications"></a>系统通知
-通过扩展 `EngagementDefaultNotifier`，你可以重写 `onNotificationPrepared` 以更改默认实现所准备的通知。
+通过扩展 `EngagementDefaultNotifier`，可以重写 `onNotificationPrepared` 以更改默认实现所准备的通知。
 
 例如：
 
@@ -429,7 +428,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
 本示例在使用“正在进行”类别时，针对显示为正在进行事件的内容创建系统通知。
 
-如果你想要从头开始生成 `Notification` 对象，则可以将 `false` 返回到方法，并在 `NotificationManager` 自行调用 `notify`。 在这种情况下，务必保留 `contentIntent`、`deleteIntent` 和 `EngagementReachReceiver` 所使用的通知标识符。
+如果想要从头开始生成 `Notification` 对象，则可以将 `false` 返回到方法，并在 `NotificationManager` 自行调用 `notify`。 在这种情况下，务必保留 `contentIntent`、`deleteIntent` 和 `EngagementReachReceiver` 所使用的通知标识符。
 
 下面是此类实现一个正确示例：
 
@@ -473,7 +472,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
 对于旧版本的 Engagement 用户，请注意，没有操作 URL 的系统通知会启动后台中的应用程序，因此，可以使用没有操作 URL 的公告调用此方法。 自定义意向时，应考虑这一点。
 
-你也可以从头开始实现 `EngagementNotifier.executeNotifAnnouncementAction`。
+也可以从头开始实现 `EngagementNotifier.executeNotifAnnouncementAction`。
 
 ##### <a name="notification-life-cycle"></a>通知生命周期
 使用默认类别时，会在 `EngagementReachInteractiveContent` 对象上调用某些生命周期方法，以报告统计信息和更新市场活动状态：
@@ -482,11 +481,11 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 * 如果关闭通知，系统将调用 `exitNotification` 方法、报告统计信息，并且立即处理后续市场活动。
 * 如果单击该通知，则系统将调用 `actionNotification`、报告统计信息并启动关联的意向。
 
-如果你的 `EngagementNotifier` 实现绕过默认行为，则必须自行调用这些生命周期方法。 下面的示例阐释了绕过默认行为的一些情况：
+如果 `EngagementNotifier` 实现绕过默认行为，则必须自行调用这些生命周期方法。 下面的示例阐释了绕过默认行为的一些情况：
 
-* 你不扩展 `EngagementDefaultNotifier`，例如，从头开始实现类别处理。
-* 对于系统通知，你重写了 `onNotificationPrepared`，并修改了 `Notification` 对象中的 `contentIntent` 或 `deleteIntent`。
-* 对于应用内通知，你重写了 `prepareInAppArea`，请务必至少将 `actionNotification` 映射到其中一个 U.I 控件。
+* 不扩展 `EngagementDefaultNotifier`，例如，从头开始实现类别处理。
+* 对于系统通知，重写了 `onNotificationPrepared`，并修改了 `Notification` 对象中的 `contentIntent` 或 `deleteIntent`。
+* 对于应用内通知，重写了 `prepareInAppArea`，请务必至少将 `actionNotification` 映射到其中一个 U.I 控件。
 
 > [!NOTE]
 > 如果 `handleNotification` 引发异常，则会删除内容并调用 `dropContent`。 这会在统计信息中报告，并且立即处理后续活动。
@@ -519,7 +518,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
 Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方案失败，则返回到默认类别。
 
-然后，你必须实现 `MyCustomTextAnnouncementActivity`，如果只想更改布局（但保留相同的视图标识符），则只需定义类，如以下示例所示：
+然后，必须实现 `MyCustomTextAnnouncementActivity`，如果只想更改布局（但保留相同的视图标识符），则只需定义类，如以下示例所示：
 
             public class MyCustomTextAnnouncementActivity extends EngagementTextAnnouncementActivity
             {
@@ -530,11 +529,11 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
               }
             }
 
-若要替换文本公告的默认类别，只需在你的实现中替换 `android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity"`。
+要替换文本公告的默认类别，只需在实现中替换 `android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity"`。
 
 可采用类似的方式自定义Web 公告和投票。
 
-对于 Web 公告，你可以扩展 `EngagementWebAnnouncementActivity`，并在 `AndroidManifest.xml` 中声明活动，如以下示例所示：
+对于 Web 公告，可以扩展 `EngagementWebAnnouncementActivity`，并在 `AndroidManifest.xml` 中声明活动，如以下示例所示：
 
             <activity android:name="com.your_company.MyCustomWebAnnouncementActivity">
               <intent-filter>
@@ -544,7 +543,7 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
               </intent-filter>
             </activity>
 
-对于投票，你可以扩展 `EngagementPollActivity`，并在 `AndroidManifest.xml` 中声明你的活动，如以下示例所示：
+对于投票，可以扩展 `EngagementPollActivity`，并在 `AndroidManifest.xml` 中声明活动，如以下示例所示：
 
             <activity android:name="com.your_company.MyCustomPollActivity">
               <intent-filter>
@@ -554,13 +553,13 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
             </activity>
 
 ##### <a name="implementation-from-scratch"></a>从头实现
-可以实现公告（和投票）活动的类别，无需扩展由 Reach SDK 提供的任何 `Engagement*Activity` 类。 例如，如果你想要定义不使用与标准布局相同的视图，这将非常有用。
+可以实现公告（和投票）活动的类别，无需扩展由 Reach SDK 提供的任何 `Engagement*Activity` 类。 例如，如果想要定义不使用与标准布局相同的视图，这会非常有用。
 
 而对于高级通知自定义，建议查看标准实现的源代码。
 
 下面是一些注意事项：市场宣传会以特定的意向（对应于意向筛选器），以及一个额外参数（也就是内容标识符）来启动活动。
 
-若要检索包含你在网站上创建市场活动时所指定字段的内容对象，可以执行此操作：
+要检索包含你在网站上创建市场活动时所指定字段的内容对象，可以执行此操作：
 
             public class MyCustomTextAnnouncement extends EngagementActivity
             {
@@ -599,7 +598,7 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
 
 然后，不要忘记在活动进入后台之前在内容对象上调用 `actionContent(this)` 或 `exitContent(this)`。
 
-如果你不调用 `actionContent` 或 `exitContent`，则系统将不会发送统计信息（即没有针对活动的分析），更为重要的是，在重新启动应用程序进程之前，系统不会通知后续活动。
+如果不调用 `actionContent` 或 `exitContent`，则系统将不会发送统计信息（即没有针对活动的分析），更为重要的是，在重新启动应用程序进程之前，系统不会通知后续活动。
 
 方向或其他配置更改可能会使代码更难以确定活动是否进入后台，而标准实现则可确保在用户离开活动时（通过按 `HOME` 或 `BACK`），在退出时报告内容但在方向更改时不会。
 
@@ -625,9 +624,8 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
               super.onPause();
             }
 
-如你所看到的，如果你调用了 `actionContent(this)`，然后完成了活动，则可以安全地调用 `exitContent(this)`，而不会产生任何影响。
+如你所见，如果调用了 `actionContent(this)`，完成了活动，则可以安全地调用 `exitContent(this)`，而不会产生任何影响。
 
 [here]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
-

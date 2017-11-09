@@ -3,7 +3,7 @@ title: "使用 Microsoft Flow自动执行 Azure Application Insights 过程"
 description: "了解如何通过 Microsoft Flow 使用 Application Insights 连接器快速自动执行可重复的过程。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,15 +11,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: d0cd0cc97fa61d3401f6101292b82132622c9e81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: a1d2787626ed8fa71e3e4e9921ffb8a4680014cb
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
-
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Application Insights 过程
 
 你是否发现自己曾对遥测数据重复运行相同的查询，用于检查你的服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ Microsoft Flow Application Insights 连接器（预览版）是适用于这些用途的工具。
@@ -46,7 +44,7 @@ ms.lasthandoff: 07/08/2017
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
-1. 单击“新建步骤”，然后单击“添加操作”。
+1. 单击“新建步骤”，并单击“添加操作”。
 2. 搜索“Azure Application Insights”。
 3. 单击“Azure Application Insights - 将 Analytics 查询可视化(预览)”。
 
@@ -84,7 +82,7 @@ ms.lasthandoff: 07/08/2017
 
 ### <a name="step-6-configure-the-flow-to-send-email"></a>步骤 6：配置流以发送电子邮件
 
-1. 单击“新建步骤”，然后单击“添加操作”。
+1. 单击“新建步骤”，并单击“添加操作”。
 2. 搜索“Office 365 Outlook”。
 3. 单击“Office 365 Outlook - 发送电子邮件”。
 
@@ -92,9 +90,9 @@ ms.lasthandoff: 07/08/2017
 
 4. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 键入收件人的电子邮件地址。
+   a. 键入收件人的电子邮件地址。
 
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 键入电子邮件的主题。
+   b. 键入电子邮件的主题。
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
 
@@ -104,9 +102,9 @@ ms.lasthandoff: 07/08/2017
 
 5. 在动态内容菜单上执行以下操作：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“附件名称”。
+    a. 选择“附件名称”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“附件内容”。
+    b. 选择“附件内容”。
     
     c. 在“是否为 HTML”框中选择“是”。
 
@@ -132,7 +130,6 @@ ms.lasthandoff: 07/08/2017
 
 
 <!--Link references-->
-
 
 
 

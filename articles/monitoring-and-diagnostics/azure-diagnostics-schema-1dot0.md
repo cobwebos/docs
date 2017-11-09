@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
-ms.openlocfilehash: c749a0929d292913e03fa7340bbbebad411fb44d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
-
+ms.openlocfilehash: a8fdfb52d5091d3fc9779657737c7430fcfada51
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure 诊断 1.0 配置架构
 > [!NOTE]
@@ -139,7 +137,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**scheduledTransferPeriod**|duration|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 
 ## <a name="directories-element"></a>Directories 元素  
-为你可以定义的基于文件的日志定义缓冲区配置。
+为可以定义的基于文件的日志定义缓冲区配置。
 
 父元素：[DiagnosticMonitorConfiguration 元素](#DiagnosticMonitorConfiguration)。  
 
@@ -276,4 +274,3 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|类型|说明|  
 |---------------|----------|-----------------|  
 |**name**|字符串|必需。 指定要收集的日志的 XPath 表达式。|  
-

@@ -15,16 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
+ms.openlocfilehash: ad4b5aeed645512774f1a3ecf94de37beff26b22
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 6790db207fc7ec8a4b1546ef07c97ef30abe9513
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 ## <a name="overview"></a>概述
-[Azure 高级存储](../../../storage/common/storage-premium-storage.md)是下一代提供低延迟和高吞吐量 IO 的存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
+[Azure 高级存储](../premium-storage.md)是下一代提供低延迟和高吞吐量 IO 的存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
 
 > [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
@@ -97,7 +96,7 @@ ms.lasthandoff: 08/22/2017
 ### <a name="vhds-cache-settings"></a>VHD 缓存设置
 创建属于高级存储帐户的磁盘之间的主要区别是磁盘缓存设置。 对于 SQL Server 数据卷磁盘，建议使用“**读取缓存**”。 对于事务日志卷，磁盘缓存设置应设为“**无**”。 这不同于针对标准存储帐户的建议。
 
-附加 VHD 后，便不能变更缓存设置。 将需要分离 VHD，然后再使用已更新的缓存设置重新附加该 VHD。
+附加 VHD 后，便不能变更缓存设置。 将需要分离 VHD，再使用已更新的缓存设置重新附加该 VHD。
 
 ### <a name="windows-storage-spaces"></a>Windows 存储空间
 可以像使用以前的标准存储一样使用 [Windows 存储空间](https://technet.microsoft.com/library/hh831739.aspx)，这会允许迁移已在利用存储空间的 VM。 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例（步骤 9 及前面的步骤）演示了提取并导入附加了多个 VHD 的 VM 的 Powershell 代码。
@@ -139,12 +138,12 @@ ms.lasthandoff: 08/22/2017
 
 现在，可以使用此信息将附加 VHD 关联到存储池中的物理磁盘。
 
-将 VHD 映射到存储池中的物理磁盘后，可以将其分离并复制到高级存储帐户，然后使用正确的缓存设置附加它们。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例，步骤 8 到步骤 12。 以下步骤显示如何将 VM 附加的 VHD 磁盘配置提取到 CSV 文件、复制 VHD、变更磁盘配置缓存设置，最后将 VM 重新部署为带所有附加磁盘的 DS 系列 VM。
+将 VHD 映射到存储池中的物理磁盘后，可以将其分离并复制到高级存储帐户，并使用正确的缓存设置附加它们。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例，步骤 8 到步骤 12。 以下步骤显示如何将 VM 附加的 VHD 磁盘配置提取到 CSV 文件、复制 VHD、变更磁盘配置缓存设置，最后将 VM 重新部署为带所有附加磁盘的 DS 系列 VM。
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>VM 存储带宽和 VHD 存储吞吐量
 存储量性能取决于指定的 DS* VM 大小和 VHD 大小。 VM 针对可附加的 VHD 数量以及它们支持的最大带宽（MB/秒）提供不同限额。 有关特定带宽数字，请参阅 [Azure 的虚拟机和云服务大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-较大的磁盘大小可提高 IOPS。 考虑迁移路径时，应考虑这一点。 有关详细信息，[请参阅 IOPS 和磁盘类型的表](../../../storage/common/storage-premium-storage.md#scalability-and-performance-targets)。
+较大的磁盘大小可提高 IOPS。 考虑迁移路径时，应考虑这一点。 有关详细信息，[请参阅 IOPS 和磁盘类型的表](../premium-storage.md#scalability-and-performance-targets)。
 
 最后，考虑到 VM 具有不同的最大磁盘带宽，它们将支持所有附加磁盘。 在高负载下可使可供该 VM 角色大小使用的最大磁盘带宽饱和。 例如，Standard_DS14 将最多支持 512MB/秒；因此，使用三个 P30 磁盘可使 VM 的磁盘带宽饱和。 但在此示例中，可以超出吞吐量限制，具体取决于读取和写入 IO 的组合。
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 08/22/2017
 >
 
 ### <a name="create-a-new-vm-with-premium-storage-with-gallery-image"></a>使用库映像创建带高级存储的新 VM
-下面的示例演示如何将操作系统 VHD 放置到高级存储上并附加高级存储 VHD。 但是，也可以将操作系统磁盘放置在标准存储帐户中，然后附加驻留在高级存储帐户中的 VHD。 将演示这两种方案。
+下面的示例演示如何将操作系统 VHD 放置到高级存储上并附加高级存储 VHD。 但是，也可以将操作系统磁盘放置在标准存储帐户中，并附加驻留在高级存储帐户中的 VHD。 将演示这两种方案。
 
     $mysubscription = "DansSubscription"
     $location = "West Europe"
@@ -252,7 +251,7 @@ ms.lasthandoff: 08/22/2017
 
 
 ### <a name="create-a-new-vm-to-use-premium-storage-with-a-custom-image"></a>使用自定义映像创建新的 VM 以使用高级存储
-此方案演示拥有驻留在标准存储帐户中的现有自定义映像的位置。 如前所述，如果要将操作系统 VHD 放置在高级存储上，则需要复制标准存储帐户中存在的映像，并将它们传输到高级存储中，然后才能使用它。 如果在本地有一个映像，也可以使用此方法将该映像直接复制到高级存储帐户。
+此方案演示拥有驻留在标准存储帐户中的现有自定义映像的位置。 如前所述，如果要将操作系统 VHD 放置在高级存储上，则需要复制标准存储帐户中存在的映像，并将它们传输到高级存储中，才能使用它。 如果在本地有一个映像，也可以使用此方法将该映像直接复制到高级存储帐户。
 
 #### <a name="step-1-create-storage-account"></a>步骤 1：创建存储帐户
     $mysubscription = "DansSubscription"
@@ -350,7 +349,7 @@ ms.lasthandoff: 08/22/2017
 未使用 Always On 可用性组的 SQL Server 部署和使用这些组的 SQL Server 部署有不同的注意事项。 如果未使用 Always On 并且有现有的独立 SQL Server，则可以通过使用新的云服务和存储帐户升级到高级存储。 请考虑以下选项：
 
 * **创建新的 SQL Server VM**。 可以创建使用高级存储帐户的新 SQL Server VM，如“新建部署”中所述。 然后备份并还原 SQL Server 配置和用户数据库。 将需要更新应用程序以引用新的 SQL Server（如果正在从内部或外部访问它）。 需要复制所有“数据库外”对象，就像执行并排 (SxS) SQL Server 迁移一样。 这包括登录名、证书和链接服务器等对象。
-* **迁移现有 SQL Server VM**。 这会需要使 SQL Server VM 脱机，然后将其传输到新的云服务，包括将其所有附加 VHD 复制到高级存储帐户。 当 VM 联机时，应用程序将像以前一样引用服务器主机名。 请注意，现有磁盘的大小会影响性能特性。 例如，400 GB 磁盘将向上舍入到 P20。 如果知道不需要该磁盘性能，则可以将 VM 重新创建为 DS 系列 VM，并附加具有所需大小/性能指标的高级存储 VHD。 然后，可以分离并重新附加 SQL DB 文件。
+* **迁移现有 SQL Server VM**。 这将需要使 SQL Server VM 脱机，并将其传输到新的云服务，包括将其所有附加 VHD 复制到高级存储帐户。 当 VM 联机时，应用程序将像以前一样引用服务器主机名。 请注意，现有磁盘的大小会影响性能特性。 例如，400 GB 磁盘将向上舍入到 P20。 如果知道不需要该磁盘性能，则可以将 VM 重新创建为 DS 系列 VM，并附加具有所需大小/性能指标的高级存储 VHD。 然后，可以分离并重新附加 SQL DB 文件。
 
 > [!NOTE]
 > 复制 VHD 磁盘时应注意大小，取决于大小意味着这些磁盘将归入何种高级存储磁盘类型，此类型将确定磁盘性能指标。 Azure 将向上舍入到最接近的磁盘大小，因此，如果有一个 400GB 磁盘，则此磁盘将向上舍入到 P20。 根据操作系统 VHD 的现有 IO 要求，可能不需要将此 VHD 迁移到高级存储帐户。
@@ -507,7 +506,7 @@ ms.lasthandoff: 08/22/2017
 #### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2.利用现有的辅助副本：多站点
 如果在多个 Azure 数据中心 (DC) 中有节点，或者拥有混合环境，则可以在此环境中使用 Always On 配置以最大程度减少停机时间。
 
-此方法的目的是将本地或辅助 Azure DC 的 Always On 同步更改为同步，然后故障转移到该 SQL Server。 然后将 VHD 复制到一个高级存储帐户，并将计算机重新部署到新的云服务中。 更新侦听器，并故障恢复。
+此方法的目的是将本地或辅助 Azure DC 的 Always On 同步更改为同步，并故障转移到该 SQL Server。 然后将 VHD 复制到一个高级存储帐户，并将计算机重新部署到新的云服务中。 更新侦听器，并故障恢复。
 
 ##### <a name="points-of-downtime"></a>停机时间点
 停机时间包含故障转移到备用 DC 并返回的时间。 它还取决于客户端/DNS 配置，并且客户端重新连接可能会延迟。
@@ -542,7 +541,7 @@ ms.lasthandoff: 08/22/2017
 * 配置 ILB/ELB 并添加终结点。
 * 使用新的 ILB/ELB IP 地址更新 Always On 侦听器并测试故障转移。
 * 检查 DNS 配置。
-* 将 AFP 更改为 SQL2，然后迁移 SQL1 并完成步骤 2 - 5。
+* 将 AFP 更改为 SQL2，迁移 SQL1 并完成步骤 2 - 5。
 * 测试故障转移。
 * 将 AFP 切换回 SQL1 和 SQL2
 
@@ -892,7 +891,7 @@ ms.lasthandoff: 08/22/2017
 现在，应检查 SQL Server 客户端网络上的 DNS 服务器，并确保群集已为添加的 IP 地址添加额外的主机记录。 如果这些 DNS 服务器未更新，请考虑强制进行 DNS 区域传送并确保该子网中的客户端能够解析为这两个 Always On IP 地址，以便无需等待自动 DNS 复制。
 
 #### <a name="step-16-reconfigure-always-on"></a>步骤 16：重新配置 Always On
-此时，等待已迁移的辅助节点与本地节点完全重新同步并切换到同步复制节点，然后使其成为 AFP。  
+此时，等待已迁移的辅助节点与本地节点完全重新同步并切换到同步复制节点，使其成为 AFP。  
 
 #### <a name="step-17-migrate-second-node"></a>步骤 17：迁移辅助节点
     $vmNameToMigrate="dansqlams1"
@@ -1097,7 +1096,7 @@ ms.lasthandoff: 08/22/2017
     ![Appendix15][25]
 
 ## <a name="additional-resources"></a>其他资源
-* [Azure 高级存储](../../../storage/common/storage-premium-storage.md)
+* [Azure 高级存储](../premium-storage.md)
 * [虚拟机](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure 虚拟机中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
@@ -1127,4 +1126,3 @@ ms.lasthandoff: 08/22/2017
 [23]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_13.png
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
-

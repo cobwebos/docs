@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 5335dae62e61659b68e8befb4ed0d404dffb800c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook 连接器入门
 Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使用此连接器创建、编辑和更新联系人和日历项，还可以获取、发送和回复电子邮件。
 
-通过 Office 365 Outlook，你可以：
+通过 Office 365 Outlook，可以：
 
-* 使用 Office 365 内的电子邮件和日历功能生成你的工作流。 
+* 使用 Office 365 内的电子邮件和日历功能生成工作流。 
 * 在存在新电子邮件时、更新日历项时等情况下，使用触发器启动工作流。
 * 使用发送电子邮件、创建新日历事件等操作。 例如，当 Salesforce 中存在新对象时（触发器），向 Office 365 Outlook 发送一封电子邮件（操作）。 
 
@@ -49,7 +48,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 > 
 
 ## <a name="use-a-trigger"></a>使用触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以你希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 1. 在逻辑应用中，键入“office 365”获取触发器列表：  
    
@@ -58,16 +57,16 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
    
     ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
    
-    如果提示你登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)列出了相关步骤。 
+    如果提示登录，则输入登录详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)列出了相关步骤。 
    
    > [!NOTE]
-   > 在此示例中，逻辑应用在更新日历事件时运行。 若要查看此触发器的结果，请添加另一个向你发送短信的操作。 例如，添加可在日历事件启动前 15 分钟向你发送短信的 Twilio“发送消息”操作。 
+   > 在此示例中，逻辑应用在更新日历事件时运行。 要查看此触发器的结果，请添加另一个向你发送短信的操作。 例如，添加 Twilio“发送消息”操作，如果日历事件将在 15 分钟后启动，该操作将向你发送短信。 
    > 
    > 
-3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果你希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
+3. 选择“编辑”按钮并设置“频率”和“间隔”值。 例如，如果希望触发器每 15 分钟轮询一次，将“频率”设置为“分钟”，将“间隔”设置为“15”。 
    
     ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
+4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 ## <a name="use-an-action"></a>使用操作
 操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
@@ -83,13 +82,13 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
    
     ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
    
-    如果提示你提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)介绍了这些属性。 
+    如果提示提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-office365-outlook.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
    > 在此示例中，我们在 Office 365 Outlook 中新建联系人。 可使用来自其他触发器的输出创建联系人。 例如，添加 SalesForce“创建对象时”触发器。 然后添加 Office 365 Outlook“创建联系人”操作，可使用 SalesForce 字段在 Office 365 中新建联系人。 
    > 
    > 
-5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
+5. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
@@ -97,5 +96,4 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
-
 

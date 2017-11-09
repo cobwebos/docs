@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 0068aae9d6780aa41a070db0eb191d0d5a165d21
-ms.lasthandoff: 03/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Azure 导入/导出作业的诊断和错误恢复
-对于每个已处理的驱动器，Azure 导入/导出服务将在关联的存储帐户中创建错误日志。 用户也可以通过在调用[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)或[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作时将 `LogLevel` 属性设置为 `Verbose` 来启用详细日志记录。
+对于每个已处理的驱动器，Azure 导入/导出服务会在关联的存储帐户中创建错误日志。 用户也可以通过在调用[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)或[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作时将 `LogLevel` 属性设置为 `Verbose` 来启用详细日志记录。
 
  默认情况下，日志将写入一个名为 `waimportexport` 的容器中。 可以在调用“`Put Job`”或“`Update Job Properties`”操作时设置“`DiagnosticsPath`”属性来指定其他名称。 使用以下命名约定将日志存储为块 Blob：`waies/jobname_driveid_timestamp_logtype.xml`。
 
@@ -59,9 +57,8 @@ ms.lasthandoff: 03/30/2017
 
 -   Blob 属性和/或元数据文件的架构错误
 
-可能存在以下情况：导入或导出作业的某些部分未成功完成，但整体作业仍已完成。 在此情况下，可以通过网络上载或下载数据的缺失部分，也可以创建新作业来传输数据。 若要了解如何通过网络修复数据，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。
+可能存在以下情况：导入或导出作业的某些部分未成功完成，但整体作业仍已完成。 在此情况下，可以通过网络上传或下载数据的缺失部分，也可以创建新作业来传输数据。 若要了解如何通过网络修复数据，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
-

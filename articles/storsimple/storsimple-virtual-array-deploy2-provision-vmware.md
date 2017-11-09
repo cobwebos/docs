@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
 ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.lasthandoff: 03/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -86,13 +86,13 @@ ms.lasthandoff: 03/16/2017
 3. 在 vSphere 客户端的左窗格的清单部分，选择“ESXi 服务器”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image2.png)
-4. 将 VMDK 上载到 ESXi 服务器。 导航到右窗格中的“配置”选项卡。 在“硬件”下选择“存储”。
+4. 将 VMDK 上传到 ESXi 服务器。 导航到右窗格中的“配置”选项卡。 在“硬件”下选择“存储”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
-5. 在右窗格的“数据存储”下，选择要将 VMDK 上载到其中的数据存储。 数据存储必须为 OS 和数据磁盘留有足够的可用空间。
+5. 在右窗格的“数据存储”下，选择要将 VMDK 上传到其中的数据存储。 数据存储必须为 OS 和数据磁盘留有足够的可用空间。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image4.png)
-6. 右键单击，然后选择“浏览数据存储”。
+6. 右键单击，并选择“浏览数据存储”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image5.png)
 7. 此时会显示“数据存储浏览器”窗口。
@@ -104,22 +104,22 @@ ms.lasthandoff: 03/16/2017
 9. 新文件夹会显示在“数据存储浏览器”的左窗格中。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. 单击上载图标 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png)，然后选择“上载文件”。
+10. 单击上载图标 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png)，并选择“上载文件”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
-11. 浏览并指向已下载的 VMDK 文件。 有两个文件。 选择要上载的文件。
+11. 浏览并指向已下载的 VMDK 文件。 有两个文件。 选择要上传的文件。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image12m.png)
-12. 单击“打开”。 此时会开始将 VMDK 文件上载到指定的数据存储。 上载文件可能需要数分钟的时间。
-13. 上载完成后，可以在数据存储的已创建文件夹中看到该文件。
+12. 单击“打开”。 此时会开始将 VMDK 文件上传到指定的数据存储。 上传文件可能需要数分钟的时间。
+13. 上传完成后，可以在数据存储的已创建文件夹中看到该文件。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image14.png)
 
-    现在将第二个 VMDK 文件上载到同一数据存储。
+    现在将第二个 VMDK 文件上传到同一数据存储。
 14. 返回到 vSphere 客户端窗口。 选中 ESXi 服务器后，右键单击并选择“新建虚拟机”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. 此时会显示“创建新的虚拟机”窗口。 在“配置”页上选择“自定义”选项。 单击“资源组名称” 的 Azure 数据工厂。
+15. 此时会显示“创建新的虚拟机”窗口。 在“配置”页上选择“自定义”选项。 单击“下一步”。
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. 在“名称和位置”页上，指定虚拟机的名称。 该名称应与此前在步骤 8 中指定的文件夹名称配置（建议的最佳做法）。
 
@@ -133,10 +133,10 @@ ms.lasthandoff: 03/16/2017
 19. 在“来宾操作系统”页上，选择“Windows”作为“来宾操作系统”。 从下拉列表中选择“Microsoft Windows Server 2012 (64 位)”作为“版本”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。 单击“资源组名称” 的 Azure 数据工厂。
+20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
-21. 在“内存”页上，将 RAM 指定为 8 GB（或 8 GB 以上）。 单击“资源组名称” 的 Azure 数据工厂。
+21. 在“内存”页上，将 RAM 指定为 8 GB（或 8 GB 以上）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. 在“网络”页上，指定网络接口的数目。 最低要求是一个网络接口。
@@ -145,13 +145,13 @@ ms.lasthandoff: 03/16/2017
 23. 在“SCSI 控制器”页上，接受默认的“LSI 逻辑 SAS 控制器”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. 在“选择磁盘”页上，选择“使用现有虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
+24. 在“选择磁盘”页上，选择“使用现有虚拟磁盘”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. 在“选择现有磁盘”页的“磁盘文件路径”下，单击“浏览”。 此时会打开“浏览数据存储”对话框。 导航到上载 VMDK 的位置。 此时在数据存储中只会看到一个文件，因为最初上载的两个文件已合并。 选择该文件，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+25. 在“选择现有磁盘”页的“磁盘文件路径”下，单击“浏览”。 此时会打开“浏览数据存储”对话框。 导航到上传 VMDK 的位置。 此时在数据存储中只会看到一个文件，因为最初上传的两个文件已合并。 选择该文件，并单击“确定”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
-26. 在“高级选项”页上，接受默认值，然后单击“下一步”。
+26. 在“高级选项”页上，接受默认值，并单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
 27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。 单击“继续”。
@@ -160,13 +160,13 @@ ms.lasthandoff: 03/16/2017
 28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。 选择“新建硬盘”。 单击 **“添加”**。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
-29. 此时会显示“添加硬件”窗口。 在“设备类型”页的“选择要添加的设备类型”下选择“硬盘”，然后单击“下一步”。
+29. 此时会显示“添加硬件”窗口。 在“设备类型”页的“选择要添加的设备类型”下选择“硬盘”，并单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
+30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“资源组名称” 的 Azure 数据工厂。
+31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. 在“高级选项”页上，接受默认值。
@@ -178,7 +178,7 @@ ms.lasthandoff: 03/16/2017
 34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成” 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。 查看虚拟机的设置。
+35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。查看虚拟机的设置。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -188,10 +188,10 @@ ms.lasthandoff: 03/16/2017
 执行以下步骤，启动虚拟设备并与其进行连接。
 
 #### <a name="to-start-the-virtual-device"></a>启动虚拟设备
-1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，然后右键单击以显示上下文菜单。 选择“电源”，然后选择“启动”。 此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。
+1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，并右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 完成设置任务需要几分钟时间。 设备运行以后，导航到“控制台”选项卡。 发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
+2. 完成设置任务需要几分钟时间。 设备运行以后，导航到“控制台”选项卡。发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
@@ -200,7 +200,7 @@ ms.lasthandoff: 03/16/2017
 4. 请输入至少包含 8 个字符的密码。 密码必须包含以下要求中 4 项内容中的 3 项：大写、小写、数字、特殊字符。 再次输入密码进行确认。 用户会收到密码已更改的通知。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
-5. 成功更改密码后，虚拟设备会重新启动。 等待重新启动完成。 将会显示设备的 Windows PowerShell 控制台和进度栏。
+5. 成功更改密码后，虚拟设备会重新启动。 等待重新启动完成。 会显示设备的 Windows PowerShell 控制台和进度栏。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
 6. 步骤 6-8 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，则请跳过这些步骤，转到步骤 9。 如果已在非 DHCP 环境中启动设备，则会看到以下屏幕。
@@ -216,10 +216,10 @@ ms.lasthandoff: 03/16/2017
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
-9. 完成初始设置并启动设备以后，将会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 需使用该 IP 地址连接到虚拟设备的 Web UI 并完成本地设置和注册。
+9. 完成初始设置并启动设备以后，会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 需使用该 IP 地址连接到虚拟设备的 Web UI 并完成本地设置和注册。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)
-10. （可选）仅当你是在政府云中部署设备时，才执行此步骤。 此时会在设备上启用美国联邦信息处理标准 (FIPS) 模式。 FIPS 140 标准定义的加密算法已经过批准，可以用于美国联邦政府计算机系统来保护敏感数据。
+10. （可选）仅是在政府云中部署设备时，才执行此步骤。 此时会在设备上启用美国联邦信息处理标准 (FIPS) 模式。 FIPS 140 标准定义的加密算法已经过批准，可以用于美国联邦政府计算机系统来保护敏感数据。
 
     1. 若要启用 FIPS 模式，请运行以下 cmdlet：
 
@@ -243,4 +243,3 @@ ms.lasthandoff: 03/16/2017
 ## <a name="next-steps"></a>后续步骤
 * [将 StorSimple 虚拟阵列设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
 * [将 StorSimple 虚拟阵列设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)
-

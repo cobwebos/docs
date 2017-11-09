@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 3a1c9cc5d7a2ebe28e9fb7e0e6ed8e3d393873ae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/20/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请与 [AnswerHub 客户端支持团队](mailto:success@answerhub.com)联系以获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_certificate.png) 
 
@@ -147,9 +146,9 @@ ms.lasthandoff: 06/20/2017
 
      ![SAML 设置](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML 设置")  
   
-     a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
+     a. 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”。
   
-     b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“IDP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+     b. 在“IDP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
      
      c. 在“IDP 名称标识符格式”文本框中，输入用户标识符值，该值与“用户属性”部分中从 Azure 门户选中的值相同。
   
@@ -159,9 +158,9 @@ ms.lasthandoff: 06/20/2017
     
      ![密钥和证书](./media/active-directory-saas-answerhub-tutorial/ic785173.png "密钥和证书")  
  
-     a.在“横幅徽标”下面，选择“删除上传的徽标”。 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“IDP 公钥（x509 格式）”文本框中。
+     a. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“IDP 公钥（x509 格式）”文本框中。
   
-     b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“保存”。
+     b. 单击“保存”。
 
 14. 在“IDP 配置”选项卡上，单击“保存”。
 
@@ -191,7 +190,7 @@ ms.lasthandoff: 06/20/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-answerhub-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -216,7 +215,7 @@ ms.lasthandoff: 06/20/2017
    
    ![用户和组](./media/active-directory-saas-answerhub-tutorial/ic785175.png "用户和组")
 
-5. 键入希望在相关文本框中预配的有效 Azure Active Directory 帐户的“电子邮件地址”、“用户名”和“密码”，然后单击“保存”。
+5. 键入希望在相关文本框中预配的有效 Azure Active Directory 帐户的“电子邮件地址”、“用户名”和“密码”，并单击“保存”。
 
 >[!NOTE]
 >可使用其他任何 AnswerHub 用户帐户创建工具或 AnswerHub 提供的 API 预配 AAD 用户帐户。
@@ -229,7 +228,7 @@ ms.lasthandoff: 06/20/2017
 
 若要将 Britta Simon 分配到 AnswerHub，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -276,5 +275,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-answerhub-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-answerhub-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-answerhub-tutorial/tutorial_general_203.png
-
 

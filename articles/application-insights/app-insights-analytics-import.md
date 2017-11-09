@@ -4,21 +4,20 @@ description: "导入要与应用遥测数据联接的静态数据，或者导入
 services: application-insights
 keywords: "打开架构，导入数据"
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
-ms.author: bwren
+ms.date: 10/04/2017
+ms.author: mbullwin
+ms.openlocfilehash: f124748434be1b8f0c4704fe6ffba70414c47916
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 50049b1c66bf93cbed52e30e66385c33a4d97c5b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
 
@@ -367,5 +366,4 @@ namespace IngestionClient
 ## <a name="next-steps"></a>后续步骤
 
 * [Log Analytics 查询语言教程](app-insights-analytics-tour.md)
-* [使用 *Logstash* 将数据发送到 Application Insights](https://github.com/Microsoft/logstash-output-application-insights)
-
+* 如果使用 Logstash，请[使用 Logstash 插件将数据发送到 Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

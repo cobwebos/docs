@@ -15,16 +15,14 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: ce60eb0586b4756aabab0bad830e7fc3ca506097
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
-
+ms.openlocfilehash: ae73833a68db14804dc40eaf07ff7d3effaa9052
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="important-updates-to-the-v20-authentication-protocols"></a>v2.0 身份验证协议的重要更新
-开发人员请注意！ 在接下来两周，我们会对 v2.0 身份验证协议进行一些更新，这些更新对于你在我们的预览期间编写的任何应用都可能是重大更改。  
+开发人员请注意！ 在接下来两周，我们会对 v2.0 身份验证协议进行一些更新，这些更新对于在我们的预览期间编写的任何应用都可能是重大更改。  
 
 ## <a name="who-does-this-affect"></a>哪些人会受到影响？
 任何已编写为使用 v2.0 聚合身份验证终结点的应用，
@@ -35,7 +33,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 
 有关 v2.0 终结点的详细信息，可以在[此处](active-directory-appmodel-v2-overview.md)找到。
 
-如果你已经通过直接编码到 v2.0 协议，使用 v2.0 终结点构建了应用，并使用我们的任意 OpenID Connect 或 OAuth Web 中间件，或使用其他第三方库来执行身份验证，则应该准备好测试你的项目，并且根据需要进行更改。
+如果已经通过直接编码到 v2.0 协议，使用 v2.0 终结点构建了应用，并使用我们的任意 OpenID Connect 或 OAuth Web 中间件，或使用其他第三方库来执行身份验证，则应该准备好测试项目，并且根据需要进行更改。
 
 ## <a name="who-doesnt-this-affect"></a>哪些人不会受到影响？
 任何已根据生产 Azure AD 身份验证终结点编写的应用，
@@ -46,11 +44,11 @@ https://login.microsoftonline.com/common/oauth2/authorize
 
 此协议一定都是如此，不会发生任何更改。
 
-此外，如果你的应用**只**使用我们的 ADAL 库来执行身份验证，则不必更改任何项目。  ADAL 已保护你的应用免遭更改。  
+此外，如果应用**只**使用我们的 ADAL 库来执行身份验证，则不必更改任何项目。  ADAL 已保护应用免遭更改。  
 
 ## <a name="what-are-the-changes"></a>所做的更改有哪些？
 ### <a name="removing-the-x5t-value-from-jwt-headers"></a>从 JWT 标头删除 x5t 值
-v2.0 终结点大量使用 JWT 令牌，其中包含标头参数部分以及令牌的相关元数据。  如果解码其中一个当前 JWT 的标头，你会发现类似以下的情形：
+v2.0 终结点大量使用 JWT 令牌，其中包含标头参数部分以及令牌的相关元数据。  如果解码其中一个当前 JWT 的标头，会发现类似以下的情形：
 
 ```
 { 
@@ -63,10 +61,10 @@ v2.0 终结点大量使用 JWT 令牌，其中包含标头参数部分以及令�
 
 “x5t”和“kid”属性都会识别从 OpenID Connect 元数据终结点检索的，应该用于验证令牌签名的公钥。
 
-我们在这里进行的更改是要删除“x5t”属性。  你可以继续使用相同的机制来验证令牌，但应该只依赖“kid”属性来检索正确的公钥，如 OpenID Connect 协议中所指定。 
+我们在这里进行的更改是要删除“x5t”属性。  可以继续使用相同的机制来验证令牌，但应该只依赖“kid”属性来检索正确的公钥，如 OpenID Connect 协议中所指定。 
 
 > [!IMPORTANT]
-> **你的工作：确保应用不依赖于 x5t 值是否存在。**
+> **工作：确保应用不依赖于 x5t 值是否存在。**
 > 
 > 
 
@@ -105,12 +103,12 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 }
 ```
 
-你可以解码并分析 id_token，以检索你从 profile_info 收到的相同信息。  id_token 是 JSON Web 令牌 (JWT)，其内容由 OpenID Connect 指定。  用于执行此操作的代码应该非常类似 — 你只需要提取 id_token 的中间段（主体），base64 会将其解码以在 JSON 对象中访问。
+可以解码并分析 id_token，以检索你从 profile_info 收到的相同信息。  id_token 是 JSON Web 令牌 (JWT)，其内容由 OpenID Connect 指定。  用于执行此操作的代码应该非常类似 — 只需要提取 id_token 的中间段（主体），base64 会将其解码以在 JSON 对象中访问。
 
 在接下来两周，应该将应用编码为从 `id_token` 或 `profile_info`（以存在的那个为准）检索用户信息。  这样一来，进行更改时，应用可以无缝地处理从 `profile_info` 到 `id_token` 的转换，而不会中断。
 
 > [!IMPORTANT]
-> **你的工作：确保应用不依赖于 `profile_info` 值是否存在。**
+> **工作：确保应用不依赖于 `profile_info` 值是否存在。**
 > 
 > 
 
@@ -137,7 +135,7 @@ https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_exp
 `id_token_expires_in` 值会指出 id_token 保持有效的秒数。  现在，我们完全删除 `id_token_expires_in` 值。  可以改为使用 OpenID Connect 标准 `nbf` 和 `exp` 声明来检查 id_token 的有效性。  有关这些声明的详细信息，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。
 
 > [!IMPORTANT]
-> **你的工作：确保应用不依赖于 `id_token_expires_in` 值是否存在。**
+> **工作：确保应用不依赖于 `id_token_expires_in` 值是否存在。**
 > 
 > 
 
@@ -171,12 +169,12 @@ client_id=...
 }
 ```
 
-如果你想要获取有关应用程序中的用户的个人标识信息 (PII)，应用程序必须向用户请求其他权限。  我们将从 OpenID Connect 规范引入对两个新范围（`email` 和 `profile` 范围）的支持，这两个范围让你能够执行此操作。
+如果想要获取有关应用程序中的用户的个人标识信息 (PII)，应用程序必须向用户请求其他权限。  我们将从 OpenID Connect 规范引入对两个新范围（`email` 和 `profile` 范围）的支持，这两个范围让你能够执行此操作。
 
 * `email` 范围非常简单，它可让应用通过 id_token 中的 `email` 声明访问用户的主要电子邮件地址。  请注意，`email` 声明不一定出现在 id_token 中 - 只有在用户的配置文件中可用时才会包含。
 * `profile` 范围可让应用访问用户的所有其他基本信息 — 其名称、首选用户名、对象 ID 等等。
 
-这样，你就能够以最低泄漏的方式编码应用 — 只能向用户请求应用执行其作业所需的信息集。  如果你想继续获取应用当前接收的完整用户信息集，则应该在授权请求中包含所有三个范围：
+这样，就能够以最低泄漏的方式编码应用 — 只能向用户请求应用执行其作业所需的信息集。  如果想继续获取应用当前接收的完整用户信息集，则应该在授权请求中包含所有三个范围：
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -190,7 +188,7 @@ client_id=...
 应用可以立即开始发送 `email` 和 `profile` 范围，v2.0 终结点会接受这两个范围，并根据需要开始向用户请求权限。  不过，对 `openid` 范围解释的更改几周后才会生效。
 
 > [!IMPORTANT]
-> **你的工作：如果应用需要用户的相关信息，则添加 `profile` 和 `email` 范围。**  请注意，默认情况下，ADAL 将在请求中同时包含这些权限。 
+> **工作：如果应用需要用户的相关信息，则添加 `profile` 和 `email` 范围。**  请注意，默认情况下，ADAL 会在请求中同时包含这些权限。 
 > 
 > 
 
@@ -210,15 +208,15 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 。
 
 > [!IMPORTANT]
-> **你的工作：确保应用在颁发者验证期间接受包含或不含尾部斜杠的颁发者值。**
+> **工作：确保应用在颁发者验证期间接受包含或不含尾部斜杠的颁发者值。**
 > 
 > 
 
 ## <a name="why-change"></a>为何更改？
 引进这些更改的主要目的是要符合 OpenID Connect 标准规范。  我们希望通过符合 OpenID Connect，将与 Microsoft 标识服务集成以及与业内其他标识服务集成的差异降到最低。  我们想让开发人员使用他们最爱的开源身份验证库，而不必更改库来适应 Microsoft 的差异。
 
-## <a name="what-can-you-do"></a>你该怎么办？
-目前，你可以开始进行上述所有更改。  你应该立即：
+## <a name="what-can-you-do"></a>该怎么办？
+目前，可以开始进行上述所有更改。  应该立即：
 
 1. **删除 `x5t` 标头参数上的所有依赖项。**
 2. **妥善处理令牌响应中从 `profile_info` 到 `id_token` 的转换。**
@@ -231,12 +229,11 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 如果对更改的范围还有其他疑问，欢迎在我们的 Twitter (@AzureAD) 上与我们联系。
 
 ## <a name="how-often-will-protocol-changes-occur"></a>协议多久进行一次更改？
-我们无法预见身份验证协议任何进一步的重大更改。  我们特意将这些更改捆绑到一个版本中，这样，你就不需要马上再经历一次这种更新过程。  当然，我们将继续向聚合 v2.0 身份验证服务添加你可以充分利用的功能，但这些更改应该只是附加的，不会中断现有代码。
+我们无法预见身份验证协议任何进一步的重大更改。  我们特意将这些更改捆绑到一个版本中，这样，就不需要马上再经历一次这种更新过程。  当然，我们将继续向聚合 v2.0 身份验证服务添加可以充分利用的功能，但这些更改应该只是附加的，不会中断现有代码。
 
-最后，感谢你在预览期间进行试用。  迄今为止，早期采用者的深刻见解和体验为我们提供了非常宝贵的信息，希望你继续与我们分享你的意见和想法。
+最后，感谢你在预览期间进行试用。  迄今为止，早期采用者的深刻见解和体验为我们提供了非常宝贵的信息，希望你继续与我们分享意见和想法。
 
 祝你编码愉快！
 
 Microsoft 标识部门
-
 

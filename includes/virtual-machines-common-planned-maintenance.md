@@ -8,6 +8,8 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 在虚拟机中运行的应用程序可以通过适用于 [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) 或 [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md) 的 Azure 元数据服务收集即将发布的更新的相关信息。
 
+有关管理计划维护的“操作说明”信息，请参阅 [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) 或 [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) 的“处理计划维护通知”。
+
 ## <a name="in-place-vm-migration"></a>就地 VM 迁移
 
 当更新不需要完整的重启时，可以使用就地实时迁移。 在更新过程中，虚拟机会暂停约 30 秒，保留在 RAM 中的内存，而宿主环境则会应用必需的更新和修补程序。 然后，虚拟机会进行恢复，其时钟会自动同步。

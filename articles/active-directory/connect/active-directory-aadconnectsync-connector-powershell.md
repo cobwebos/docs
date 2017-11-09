@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: 65e5e6938ce67b6ba9751e38d23715f3512c4b93
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/06/2017
-
+ms.openlocfilehash: 0e5ccf5a38072e31d85bbc63eb0c608b0c34cfc2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-<a id="windows-powershell-connector-technical-reference" class="xliff"></a>
-
-# Windows PowerShell 连接器技术参考
+# <a name="windows-powershell-connector-technical-reference"></a>Windows PowerShell 连接器技术参考
 本文介绍 Windows PowerShell 连接器。 本文适用于以下产品：
 
 * Microsoft 标识管理器 2016 (MIM2016)
@@ -32,14 +29,10 @@ ms.lasthandoff: 02/06/2017
 
 对于 MIM2016 和 FIM2010R2，可以从 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=717495)下载此连接器。
 
-<a id="overview-of-the-powershell-connector" class="xliff"></a>
-
-## PowerShell 连接器概述
+## <a name="overview-of-the-powershell-connector"></a>PowerShell 连接器概述
 使用 PowerShell 连接器可将同步服务与可提供基于 Windows PowerShell 的 API 的外部系统相集成。 该连接器在基于调用的可扩展连接管理代理 2 (ECMA2) 框架与 Windows PowerShell 的功能之间提供桥梁。 有关 ECMA 框架的详细信息，请参阅 [Extensible Connectivity 2.2 Management Agent Reference](https://msdn.microsoft.com/library/windows/desktop/hh859557.aspx)（可扩展连接管理代理 2.2 参考）。
 
-<a id="prerequisites" class="xliff"></a>
-
-### 先决条件
+### <a name="prerequisites"></a>先决条件
 在使用连接器之前，请确保在同步服务器上安装以下软件：
 
 * Microsoft .NET 4.5.2 Framework 或更高版本
@@ -48,9 +41,7 @@ ms.lasthandoff: 02/06/2017
 同步服务服务器上的执行策略必须配置为允许连接器运行 Windows PowerShell 脚本。 除非连接器要运行的脚本已经过数字签名，否则请运行以下命令来配置执行策略：  
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
-<a id="create-a-new-connector" class="xliff"></a>
-
-## 创建新连接器
+## <a name="create-a-new-connector"></a>创建新连接器
 若要在同步服务中创建 Windows PowerShell 连接器，必须提供一系列 Windows PowerShell 脚本用于执行同步服务请求的步骤。 根据所要连接到的数据源和所需的功能，需要实现的脚本将有所不同。 本部分概述可以实现的每个脚本以及何时需要用到它们。
 
 Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本。 虽然可以运行存储在文件系统中的脚本，但将每个脚本的主体直接插入连接器配置要方便得多。
@@ -59,9 +50,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 
 ![创建连接器](./media/active-directory-aadconnectsync-connector-powershell/createconnector.png)
 
-<a id="connectivity" class="xliff"></a>
-
-### 连接
+### <a name="connectivity"></a>连接
 提供用于连接到远程系统的配置参数。 这些值由同步服务安全保存，在连接器运行时提供给 Windows PowerShell 脚本。
 
 ![连接](./media/active-directory-aadconnectsync-connector-powershell/connectivity.png)
@@ -79,7 +68,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 | 模拟连接器帐户 |False |如果为 true，同步服务将对提供的凭据上下文中运行 Windows PowerShell 脚本。 如果可能，建议使用传递给每个脚本的 **$Credentials** 参数来代替模拟。 有关使用此选项时必须具有的其他权限的详细信息，请参阅[其他模拟配置](#additional-configuration-for-impersonation)。 |
 | 模拟时加载用户配置文件 |False |指示 Windows 在模拟期间加载连接器凭据的用户配置文件。 如果要模拟的用户具有漫游配置文件，连接器不会加载漫游配置文件。 有关使用此参数时必须具有的其他权限的详细信息，请参阅[其他模拟配置](#additional-configuration-for-impersonation)。 |
 | 模拟时的登录类型 |无 |模拟期间的登录类型。 有关详细信息，请参阅 [dwLogonType][dw] 文档。 |
-| 仅限已签名的脚本 |False |如果为 true，Windows PowerShell 连接器将验证每个脚本是否具有有效的数字签名。 如果为 false，请确保同步服务服务器的 Windows PowerShell 执行策略是 RemoteSigned 或 Unrestricted。 |
+| 仅限已签名的脚本 |False |如果为 true，Windows PowerShell 连接器会验证每个脚本是否具有有效的数字签名。 如果为 false，请确保同步服务服务器的 Windows PowerShell 执行策略是 RemoteSigned 或 Unrestricted。 |
 
 **通用模块**  
 连接器允许在配置中存储共享的 Windows PowerShell 模块。 连接器在运行脚本时，会将 Windows PowerShell 模块提取到文件系统，使其可供每个脚本导入。
@@ -91,7 +80,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 若要从 %TEMP% 文件夹加载名为 FIMPowerShellConnectorModule.psm1 的模块，请使用以下语句：`Import-Module (Join-Path -Path $env:TEMP -ChildPath "FIMPowerShellConnectorModule.psm1")`
 
 **参数验证**  
-验证脚本是可选的 Windows PowerShell 脚本，可用于确保管理员提供的连接器配置参数有效。 验证服务器、连接凭据和连接参数是验证脚本的常见用途。 如果修改以下选项卡和对话框，将会调用验证脚本：
+验证脚本是可选的 Windows PowerShell 脚本，可用于确保管理员提供的连接器配置参数有效。 验证服务器、连接凭据和连接参数是验证脚本的常见用途。 如果修改以下选项卡和对话框，会调用验证脚本：
 
 * 连接
 * 全局参数
@@ -126,9 +115,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 
 若要从脚本中访问自定义配置设置，必须在名称后面添加下划线 ( \_ ) 和参数范围（Global、Partition 或 RunStep）。 例如，若要访问全局 FileName 参数，请使用此代码片段：`$ConfigurationParameters["FileName_Global"].Value`
 
-<a id="capabilities" class="xliff"></a>
-
-### 功能
+### <a name="capabilities"></a>功能
 管理代理设计器的功能选项卡定义连接器的行为和功能。 在创建连接器后，无法修改在此选项卡上所做的选择。 此表列出了功能设置。
 
 ![功能](./media/active-directory-aadconnectsync-connector-powershell/capabilities.png)
@@ -147,19 +134,17 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 | 启用增量导入 |选中时，连接器可以从导入脚本请求增量。 |
 | 启用导出 |选中时，连接器将通过导出脚本导出数据。 |
 | 启用完整导出 |选中时，导出脚本可支持导出整个连接器空间。 若要使用此选项，还必须选中“启用导出”。 |
-| 第一个导出阶段没有引用值 |选中时，将在第二个导出阶段导出引用属性。 |
+| 第一个导出阶段没有引用值 |选中时，会在第二个导出阶段导出引用属性。 |
 | 启用对象重命名 |选中时，可以修改可分辨名称。 |
 | 删除-添加用作替换 |选中时，将删除-添加操作导出为单个替换。 |
 | 启用密码操作 |选中时，可支持密码同步脚本。 |
-| 在第一个阶段启用导出密码 |选中时，将在创建对象时导出预配期间设置的密码。 |
+| 在第一个阶段启用导出密码 |选中时，会在创建对象时导出预配期间设置的密码。 |
 
-<a id="global-parameters" class="xliff"></a>
-
-### 全局参数
+### <a name="global-parameters"></a>全局参数
 使用管理代理设计器中的“全局参数”选项卡可以配置连接器运行的 Windows PowerShell 脚本。 此外，可以针对“连接”选项卡上定义的自定义配置设置配置全局值。
 
 **分区发现**  
-分区是一个共享架构内的独立命名空间。 例如在 Active Directory 中，每个域就是一个林内的分区。 分区是导入和导出操作的逻辑组。 导入和导出将分区用作上下文，所有操作将在此上下文中发生。 分区应该代表 LDAP 中的层次结构。 导入操作使用分区的可分辨名称来验证所有返回的对象是否都在分区的范围内。 在从 Metaverse 预配到连接器空间的期间，也使用分区可分辨名称来确定对象应该在导出期间与哪个分区关联。
+分区是一个共享架构内的独立命名空间。 例如在 Active Directory 中，每个域就是一个林内的分区。 分区是导入和导出操作的逻辑组。 导入和导出将分区用作上下文，所有操作会在此上下文中发生。 分区应该代表 LDAP 中的层次结构。 导入操作使用分区的可分辨名称来验证所有返回的对象是否都在分区的范围内。 在从 Metaverse 预配到连接器空间的期间，也使用分区可分辨名称来确定对象应该在导出期间与哪个分区关联。
 
 分区发现脚本将从连接器接收以下参数：
 
@@ -183,13 +168,11 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 
 脚本必须将单个 HierarchyNode 子对象或 HierarchyNode 子对象 List[T] 返回到管道中。
 
-<a id="import" class="xliff"></a>
-
-#### 导入
+#### <a name="import"></a>导入
 支持导入操作的连接器必须实现三个脚本。
 
 **开始导入**  
-开始导入脚本在导入运行步骤开始时运行。 在此步骤中，可以连接到源系统并执行预备步骤，然后从连接的系统导入数据。
+开始导入脚本在导入运行步骤开始时运行。 在此步骤中，可以连接到源系统并执行预备步骤，并从连接的系统导入数据。
 
 开始导入脚本将从连接器接收以下参数：
 
@@ -231,9 +214,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 
 脚本必须将单个 [CloseImportConnectionResults][cicres] 对象返回到管道中，例如：`Write-Output (New-Object Microsoft.MetadirectoryServices.CloseImportConnectionResults)`
 
-<a id="export" class="xliff"></a>
-
-#### 导出
+#### <a name="export"></a>导出
 与连接器的导入体系结构一样，支持导出的连接器必须实现三个脚本。
 
 **开始导出**  
@@ -263,7 +244,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 | OpenExportConnectionRunStep |[OpenExportConnectionRunStep][oecrs] |告知脚本导出运行的类型（增量或完整）、分区、层次结构和预期的页面大小。 |
 | 类型 |[Schema][schema] |要导出的连接器空间的架构。 |
 
-导出数据脚本必须将 [PutExportEntriesResults][peeres] 对象返回到管道中。 此对象不需要包含每个导出连接器的结果信息，除非发生定位点属性错误或更改。 例如，若要将 PutExportEntriesResults 对象返回到管道中：`Write-Output (New-Object Microsoft.MetadirectoryServices.PutExportEntriesResults)`
+导出数据脚本必须将 [PutExportEntriesResults][peeres] 对象返回到管道中。 此对象不需要包含每个导出连接器的结果信息，除非发生定位点属性错误或更改。 例如，要将 PutExportEntriesResults 对象返回到管道中：`Write-Output (New-Object Microsoft.MetadirectoryServices.PutExportEntriesResults)`
 
 **结束导出**  
 在导出运行结束时，将运行结束导出脚本。 此脚本应该执行任何必要的清理任务（例如断开系统连接和对失败做出响应）。
@@ -279,9 +260,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 
 脚本不应将任何输出返回到管道中。
 
-<a id="password-synchronization" class="xliff"></a>
-
-#### 密码同步
+#### <a name="password-synchronization"></a>密码同步
 Windows PowerShell 连接器可以用作密码更改/重置的目标。
 
 密码脚本将从连接器接收以下参数：
@@ -303,17 +282,11 @@ Windows PowerShell 连接器可以用作密码更改/重置的目标。
 * [PasswordIllFormedException][pwdex2] - 当连接的系统不接受密码时引发。
 * [PasswordExtension][pwdex3] - 当密码脚本中发生其他所有错误时引发。
 
-<a id="sample-connectors" class="xliff"></a>
-
-## 示例连接器
+## <a name="sample-connectors"></a>示例连接器
 有关可用示例连接器的完整概述，请参阅 [Windows PowerShell Connector Sample Connector Collection][samp]（Windows PowerShell 连接器示例连接器集合）。
 
-<a id="other-notes" class="xliff"></a>
-
-## 其他说明
-<a id="additional-configuration-for-impersonation" class="xliff"></a>
-
-### 其他模拟配置
+## <a name="other-notes"></a>其他说明
+### <a name="additional-configuration-for-impersonation"></a>其他模拟配置
 对要模拟的用户授予同步服务服务器上的以下权限：
 
 对以下注册表项的读取权限：
@@ -336,9 +309,7 @@ $account.Translate([System.Security.Principal.SecurityIdentifier]).Value
 
 将 {ConnectorName} 占位符替换为 Windows PowerShell 连接器的名称。
 
-<a id="troubleshooting" class="xliff"></a>
-
-## 故障排除
+## <a name="troubleshooting"></a>故障排除
 * 有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
@@ -371,4 +342,3 @@ $account.Translate([System.Security.Principal.SecurityIdentifier]).Value
 [pwdex2]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordillformedexception.aspx
 [pwdex3]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordextensionexception.aspx
 [samp]: http://go.microsoft.com/fwlink/?LinkId=394291
-

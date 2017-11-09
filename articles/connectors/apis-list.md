@@ -1,6 +1,6 @@
 ---
 title: "Azure 逻辑应用的连接器 | Microsoft Docs"
-description: "从所有可用的 Microsoft 托管连接器中进行选择，以生成并创建逻辑应用"
+description: "从所有可用的 Microsoft 连接器中进行选择，以生成并创建逻辑应用"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,20 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
+ms.openlocfilehash: 36d3474c2b8dde0355a265c149fe6ba1920a9f22
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="connectors-list"></a>连接器列表
-> [!TIP]
-> （本主题中的）[A-Z 完整列表](#az)列出了所有可以用在逻辑应用中的连接器。 [连接器详细信息](/connectors/)列出了在 Swagger 中定义的触发器和操作，同时还列出了每个连接器的限制。
+若要查找每个连接器的 Swagger 说明和连接器限制所定义的触发器和操作，请参阅[连接器详细信息](/connectors/)。
 
-在创建逻辑应用时，连接器是不可或缺的一部分。 使用这些连接器可以真正地扩展本地应用程序和云应用程序，对你创建的数据以及已经拥有的数据执行不同的操作。 提供的连接器有以下类别： 
+在创建逻辑应用时，连接器是不可或缺的一部分。 使用这些连接器可以扩展本地应用程序和云应用程序，对所创建的数据以及已经拥有的数据执行不同的操作。 连接器以内置操作或托管连接器的形式提供。
 
-* **标准连接器**：在你使用逻辑应用时自动提供。 示例包括服务总线、Power BI、Oracle 数据库、OneDrive 等。
+**内置操作**：逻辑应用引擎本身提供内置操作，用于与终结点通信以及执行任务。 例如，可以使用这些操作来调用 HTTP 终结点、Azure Functions 和 Azure API 管理操作，以及使用数据操作和变量来操作消息。
+
+**托管连接器**：通过创建逻辑应用服务托管和管理的 API 连接，为各种服务提供 API 访问权限。 托管连接器分为以下类别：
+
+* **标准连接器**：在使用逻辑应用时自动提供。 示例包括服务总线、Power BI、OneDrive 等。
+
+* **本地连接器**：使用[本地数据网关][gatewaydoc]连接到本地服务器应用程序。 本地连接器包括到各种服务器应用程序（例如 SharePoint Server、SQL Server、Oracle DB、文件共享等）的连接。
 
 * 集成帐户连接器：在购买集成帐户时提供。 使用这些连接器可以转换和验证 XML、处理 AS2/X12/EDIFACT 格式的企业到企业消息，以及对平面文件进行编码和解码。 如果使用 BizTalk Server，则可选择这些连接器将 BizTalk 工作流扩展到 Azure 中。  
 
@@ -36,52 +40,57 @@ ms.lasthandoff: 07/28/2017
 
 * **企业连接器**：包括 MQ 和 SAP。 需支付额外费用。 
 
-[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)和[定价模型](../logic-apps/logic-apps-pricing.md)提供了有关成本的更多详细信息。 
+有关费用的详细信息，请参阅逻辑应用的[定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[定价模型](../logic-apps/logic-apps-pricing.md)。 
 
 ## <a name="popular-connectors"></a>常用连接器
-成千上万的应用程序和执行操作成功使用这些连接器处理数据和信息。 下表列出了用户最常用和最喜欢的一些连接器：
+成千上万的应用程序和执行操作成功使用这些连接器处理数据和信息。 
+
+### <a name="built-in-actions"></a>内置操作
+逻辑应用引擎提供的操作可以用来操作数据、通过 HTTP 进行通信，以及控制逻辑应用定义的流。 部分此类操作包括：
 
 | |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>存储**][AzureBlobStoragedoc] | 如果需要自动完成存储帐户的任务，则应使用此连接器。 支持 CRUD（创建、读取、更新、删除）操作。 | [![API 图标][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | 创建运行 C# 或 node.js 自定义代码片段的函数，并在逻辑应用中使用这些函数。  |
-| [![API 图标][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | 最受欢迎的连接器之一。 它包含触发器和操作、有助于自动完成潜在客户的工作流，等等。 | [![API 图标][Event-Hubs-icon]<br/>**事件中心**][event-hubs-doc] | 在事件中心使用和发布事件。 例如，可以通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 |
-| [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | 如果可以从 Internet 访问 FTP 服务器，则可自动完成用于处理文件和文件夹的工作流。 <br/><br/>也可通过 SFTP 连接器来使用 SFTP。 | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | 使用逻辑应用与任何基于 HTTP 的终结点通信。 |
-| [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 大量的触发器，以及数量更多的操作，便于在工作流中使用 Office 365 电子邮件和事件。 <br/><br/>此连接器包括“审批电子邮件”操作，用于审批休假请求、费用报表等。 <br/><br/>也可通过 Office 365 用户连接器使用 Office 365 用户。| [![API 图标][HTTP-Requesticon]<br/>**请求/响应**][HTTP-Requestdoc] | 此连接器提供 HTTPS URL。 当逻辑应用收到向此 URL 发出的请求时，逻辑应用就会启动。 |
-| [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | 轻松使用 Salesforce 帐户登录，以便访问各种对象，例如潜在客户等。 |  [![API Icon][Service-Busicon]<br/>**服务总线**][Service-Busdoc] | 逻辑应用中最常用的连接器，其包括的触发器和操作适用于异步消息传送，以及队列、订阅和主题的发布/订阅。 |
-|  [![API 图标][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | 如果通过 SharePoint 进行操作，并且可以利用自动化，则建议使用此连接器。 可以与本地 SharePoint 以及 SharePoint Online 配合使用。 | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | 使用次数最多的连接器之一，可以连接到本地 SQL Server 以及 Azure SQL 数据库。 | 
-| [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | 轻松使用 Twitter 帐户登录，并在有新推文发布时启动工作流。 然后，将这些推文保存到 SQL 数据库或 SharePoint 列表。 | | | 
+| [![API 图标][HTTPicon]<br/>**HTTP**][httpdoc] | 使用逻辑应用与任何基于 HTTP 的终结点通信。| [![API 图标][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | 创建运行 C# 或 node.js 自定义代码片段的函数，并在逻辑应用中使用这些函数。  |
+| [![API 图标][HTTP-Requesticon]<br/>**请求**][HTTP-Requestdoc] | 提供一个可调用的 HTTPS URL，在其他应用程序中通常用作 webhook。 当逻辑应用收到向此 URL 发出的请求时，逻辑应用就会启动。 | [![API 图标][Recurrenceicon]<br/>**计划**][recurrencedoc] | 根据简单或复杂的循环计划启动逻辑应用。 例如，在创建计划时，可以创建简单的计划，每天循环一次，也可以创建复杂的计划，在每月最后一个星期五的早晨 9:00 到下午 5:00 之间每小时循环一次。 |
+| [![API 图标][CallLogicApp-icon]<br/>**调用<br/>逻辑应用**][nested-logic-appdoc] | 调用嵌套的逻辑应用。 任何具有请求触发器的逻辑应用都可以作为嵌套的逻辑应用来调用。| [![API 图标][API/Web-Appicon]<br/>**API 应用**][api/web-appdoc] | 调用应用服务 API 应用。 具有 swagger 的 API 应用在呈现时，与其他一类操作一样。|
 
-## <a name="integration-account-connectors"></a>集成帐户连接器 
+### <a name="standard-connectors"></a>标准连接器
+下表列出了用户最常用和最喜欢的一些连接器：
+
+| |  |  |  |
+| --- | --- | --- | --- |
+| [![API 图标][AzureBlobStorageicon]<br/>**Azure Blob<br/>存储**][AzureBlobStoragedoc] | 如果需要自动完成存储帐户的任务，则应使用此连接器。 支持 CRUD（创建、读取、更新、删除）操作。 | [![API 图标][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | 最受欢迎的连接器之一。 它包含触发器和操作、有助于自动完成潜在客户的工作流，等等。 |
+| [![API 图标][Event-Hubs-icon]<br/>**事件中心**][event-hubs-doc] | 在事件中心使用和发布事件。 例如，可以通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 | [![API 图标][FTPicon]<br/>**FTP**][FTPdoc] | 如果可以从 Internet 访问 FTP 服务器，则可自动完成用于处理文件和文件夹的工作流。 <br/><br/>也可通过 SFTP 连接器来使用 SFTP。 |
+| [![API 图标][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 大量的触发器，以及数量更多的操作，便于在工作流中使用 Office 365 电子邮件和事件。 <br/><br/>此连接器包括“审批电子邮件”操作，用于审批休假请求、费用报表等。 <br/><br/>也可通过 Office 365 用户连接器使用 Office 365 用户。| [![API 图标][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | 轻松使用 Salesforce 帐户登录，以便访问各种对象，例如潜在客户等。 | 
+| [![API 图标][Service-Busicon]<br/>**服务总线**][Service-Busdoc] | 逻辑应用中最常用的连接器，其包括的触发器和操作适用于异步消息传送，以及队列、订阅和主题的发布/订阅。 |  [![API 图标][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | 如果通过 SharePoint 进行操作，并且可以利用自动化，则建议使用此连接器。 可以与本地 SharePoint 以及 SharePoint Online 配合使用。 |
+| [![API 图标][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | 使用次数最多的连接器之一，可以连接到本地 SQL Server 以及 Azure SQL 数据库。 | [![API 图标][Twittericon]<br/>**Twitter**][Twitterdoc] | 轻松使用 Twitter 帐户登录，并在有新推文发布时启动工作流。 然后，将这些推文保存到 SQL 数据库或 SharePoint 列表。 | 
+
+### <a name="on-premises-connectors"></a>本地连接器 
+
+本地连接器用于访问本地服务器中的数据。  创建到本地服务器的连接时，需要[本地数据网关][gatewaydoc]，该网关的作用是提供安全的通信通道，不需配置网络基础结构。  某些连接器包括：
+
+|  |  |  |  |
+| --- | --- | --- | --- |
+| [![API 图标][db2icon]<br/>**DB2**][db2doc] | [![API 图标][oracle-DB-icon]<br/>**Oracle DB**][oracle-db-doc] | [![API 图标][sharepointicon]<br/>**SharePoint</br> Server**][sharepointserver] | [![API 图标][filesystem-icon]<br/>**文件</br>系统**][filesystemdoc] |
+[![API 图标][sql-servericon]<br/>**SQL</br> Server**][sql-serverdoc] | ![API 图标][Biztalk-Servericon]<br/>**BizTalk</br> 服务器**| |
+
+### <a name="integration-account-connectors"></a>集成帐户连接器 
 
 Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连接器。 购买[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)时，还会获得以下连接器： 
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][as2icon]<br/>**AS2</br> 解码**][as2decode] | [![API Icon][as2icon]<br/>**AS2</br> 编码**][as2encode] | [![API Icon][x12icon]<br/>**EDIFACT</br> 解码**][EDIFACTdecode] | [![API Icon][x12icon]<br/>**EDIFACT</br> 编码**][EDIFACTencode] |
-[![API Icon][flatfileicon]<br/>**平面文件</br>编码**][flatfiledoc] | [![API Icon][flatfiledecodeicon]<br/>**平面文件</br>解码**][flatfiledecodedoc] | [![API 图标][integrationaccounticon]<br/>**集成<br/>帐户**][integrationaccountdoc] | [![API 图标][xmltransformicon]<br/>**转换<br/>XML**][xmltransformdoc] |
-| [![API Icon][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API Icon][x12icon]<br/>**X12</br> 解码**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | |
+| [![API 图标][as2icon]<br/>**AS2</br> 解码**][as2decode] | [![API 图标][as2icon]<br/>**AS2</br> 编码**][as2encode] | [![API 图标][x12icon]<br/>**EDIFACT</br> 解码**][EDIFACTdecode] | [![API 图标][x12icon]<br/>**EDIFACT</br> 编码**][EDIFACTencode] |
+[![API 图标][flatfileicon]<br/>**平面文件</br>编码**][flatfiledoc] | [![API 图标][flatfiledecodeicon]<br/>**平面文件</br>解码**][flatfiledecodedoc] | [![API 图标][integrationaccounticon]<br/>**集成<br/>帐户**][integrationaccountdoc] | [![API 图标][xmltransformicon]<br/>**转换<br/>XML**][xmltransformdoc] |
+| [![API 图标][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API 图标][x12icon]<br/>**X12</br> 编码**][x12encode] | [![API 图标][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | |
 
-## <a name="enterprise-connectors"></a>企业连接器
+### <a name="enterprise-connectors"></a>企业连接器
 
 连接到逻辑应用中的企业应用程序。
 
 |  |  |
 | --- | --- |
-|[![API 图标][MQicon]<br/>MQ][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
-
-
-## <a name="az"></a>A-Z 完整列表
-
-[连接器详细信息](/connectors/)列出了在 Swagger 中定义的触发器和操作，同时还列出了每个连接器的限制。
-
-| | | | | | | | | | | | | |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [**1**](#1) | [**A**](#a) | [**B**](#b) | [**C**](#c) | [**D**](#d) | [**E**](#e) | [**F**](#f) | [**G**](#g) | [**H**](#h) | [**I**](#i) | [**J**](#j) | [**L**](#l) | [**M**](#m) |
-| [**N**](#n) | [**O**](#o) | [**P**](#p) | [**R**](#r) | [**S**](#s) | [**T**](#t) | [**U**](#u) | [**V**](#v) | [**W**](#w) | [**X**](#x) | [**Y**](#y) | [**Z**](#z) | | 
-
-| | |
-|---|---|
-|<a name="1"></a>10to8 约会安排<br/><br/><a name="a"></a>行动！<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API 管理<br/>Azure 应用服务<br/>Azure 应用程序<br/>Azure 自动化<br/>[Azure Blob 存储][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure 逻辑应用][nested-logic-appdoc]<br/>AzureML<br/>Azure 队列<br/>Azure Resource Manager<br/>[Azure SQL 数据库][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>批处理<br/>Benchmark Email<br/>必应搜索<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>认知服务计算机视觉 API<br/>认知服务人脸 API<br/>认知服务 LUIS<br/>认知服务文本分析<br/>Common Data Service<br/>内容转换<br/>Control-Terminate<br/>[自定义 API/Web 应用][api/web-appdoc]<br/><br/><a name="d"></a>数据操作<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[事件中心][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[文件系统][filesystemdoc]<br/>[平面文件][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>Freshservice<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google Sheets<br/>Google Tasks<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>集成帐户<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>中型<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN 天气<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 用户<br/>Office 365 视频<br/>OneDrive<br/>OneDrive for Business<br/>OneNote（企业）<br/>[Oracle 数据库][oracle-db-doc]<br/>Outlook 客户管理器<br/>Outlook 任务<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[请求/响应][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[计划][recurrencedoc]<br/>范围<br/>SendGrid<br/>将消息发送到批处理<br/>[服务总线][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointserver]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork Projects<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[转换 XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Variables<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML 验证][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
+|[![API 图标][MQicon]<br/>**MQ**][mqdoc]|[![API 图标][SAPicon]<br/>**SAP**][sapconnector]|
 
 > [!TIP]
 > 若要在注册 Azure 帐户之前开始使用 Azure 逻辑应用，请转到[试用逻辑应用](https://tryappservice.azure.com/?appservice=logic)。 可立即创建短期的初学者逻辑应用。 不需要使用信用卡，也不需要做出承诺。
@@ -96,7 +105,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
     有新数据可用时，将运行逻辑应用的新实例并以该数据作为输入。 
 
-* *推送触发器*：这些触发器侦听终结点上的数据或要发生的事件，然后触发逻辑应用的新实例。
+* *推送触发器*：这些触发器侦听终结点上的数据或要发生的事件，并触发逻辑应用的新实例。
 
 * *定期触发器*：此触发器按规定的计划实例化逻辑应用。
 
@@ -121,9 +130,9 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 ## <a name="custom-connectors-and-azure-certification"></a>自定义连接器和 Azure 认证 
 
-要调用的 API 运行自定义代码，或者无法作为连接器使用，可以[将基于 REST 的 API 应用作为自定义连接器创建](../logic-apps/logic-apps-create-api-app.md)，以便扩展逻辑应用平台。 
+若要调用的 API 运行自定义代码，或者无法作为连接器使用，可以[创建基于 REST 的 API 应用](../logic-apps/logic-apps-create-api-app.md)，以便扩展逻辑应用平台。 也可创建自己的[自定义连接器](../logic-apps/custom-connector-overview.md)，将其提供给订阅中的任何逻辑应用使用。
 
-要将自定义 API 应用公开并使其可以在 Azure 中使用，则请将提名的应用提交到 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。
+若要将自定义 API 应用公开并使其可以在 Azure 中使用，则可[提交进行 Microsoft 认证的连接器](../logic-apps/custom-connector-submit-certification.md)。
 
 ## <a name="get-help"></a>获取帮助
 
@@ -140,6 +149,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 <!--Connectors Documentation-->
 
+[gatewaydoc]: ../logic-apps/logic-apps-gateway-connection.md "通过本地数据网关，从逻辑应用连接到本地数据源"
 [api/web-appdoc]: ../logic-apps/logic-apps-custom-hosted-api.md "将逻辑应用与应用服务 API 应用集成"
 [azureblobstoragedoc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
 [azure-functionsdoc]: ../logic-apps/logic-apps-azure-functions.md "将逻辑应用与 Azure Functions 集成"
@@ -147,7 +157,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [Dynamics-365doc]: ./connectors-create-api-crmonline.md "连接到 Dynamics CRM Online，以便使用 CRM Online 数据"
 [event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心。在逻辑应用与事件中心之间接收和发送事件"
 [filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"
-[ftpdoc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上载、获取、删除文件，等等"
+[ftpdoc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等"
 [httpdoc]: ./connectors-native-http.md "通过 HTTP 连接器进行 HTTP 调用"
 [http-requestdoc]: ./connectors-native-reqres.md "向逻辑应用添加 HTTP 请求和响应的操作"
 [http-swaggerdoc]: ./connectors-native-http-swagger.md "通过 HTTP + Swagger 连接器进行 HTTP 调用"
@@ -217,6 +227,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
+[AppServices-icon]: ./media/apis-list/AppServices.png
 [Asanaicon]: ./media/apis-list/asana.png
 [Azure-Automation-icon]: ./media/apis-list/azure-automation.png
 [AzureBlobStorageicon]: ./media/apis-list/azureblob.png
@@ -241,6 +252,8 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [Easy-Redmineicon]: ./media/apis-list/easyredmine.png
 [Event-Hubs-icon]: ./media/apis-list/eventhubs.png
 [Facebookicon]: ./media/apis-list/facebook.png
+[FileSystem-icon]: ./media/apis-list/filesystem.png
+[FileSystemIcon]: ./media/apis-list/filesystem.png
 [FTPicon]: ./media/apis-list/ftp.png
 [GitHubicon]: ./media/apis-list/github.png
 [Google-Calendaricon]: ./media/apis-list/googlecalendar.png
@@ -294,10 +307,10 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [YouTubeicon]: ./media/apis-list/youtube.png
 
 <!-- Primitive Icons -->
-[API/Web-Appicon]: ./media/apis-list/api.png
+[API/Web-Appicon]: ./media/apis-list/appservices.png
 [Azure-Functionsicon]: ./media/apis-list/function.png
+[CallLogicApp-icon]: ./media/apis-list/calllogicapp.png
 [Delayicon]: ./media/apis-list/delay.png
-[FileSystemIcon]: ./media/apis-list/filesystem.png
 [HTTPicon]: ./media/apis-list/http.png
 [HTTP-Requesticon]: ./media/apis-list/request.png
 [HTTP-Responseicon]: ./media/apis-list/response.png
@@ -315,4 +328,3 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 [integrationaccounticon]: ./media/apis-list/integrationaccount.png
-

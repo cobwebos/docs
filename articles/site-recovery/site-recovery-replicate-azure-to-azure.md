@@ -14,16 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 5/22/2017
 ms.author: asgang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>将 Azure 虚拟机复制到另一个 Azure 区域
 
 
@@ -127,4 +123,3 @@ ms.lasthandoff: 06/20/2017
 - [详细了解](site-recovery-failover.md)不同类型的故障转移，以及如何运行它们。
 - 详细了解如何[使用恢复计划](site-recovery-create-recovery-plans.md)来缩短 RTO。
 - 详细了解如何在故障转移后[重新保护 Azure VM](site-recovery-how-to-reprotect.md)。
-

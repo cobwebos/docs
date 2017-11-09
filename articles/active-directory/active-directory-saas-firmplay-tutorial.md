@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c0bb99976277405cfd79c37ebd754311c3c6004e
 ms.openlocfilehash: 3cddd5b9508159089bf344dbb3882d462799747c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 02/23/2017
 
 
 ## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>从库中添加 FirmPlay - Employee Advocacy for Recruiting
-若要在 Azure AD 中配置 FirmPlay - Employee Advocacy for Recruiting 的集成，需要将 FirmPlay - Employee Advocacy for Recruiting 从库添加到托管 SaaS 应用。
+要在 Azure AD 中配置 FirmPlay - Employee Advocacy for Recruiting 的集成，需要将 FirmPlay - Employee Advocacy for Recruiting 从库添加到托管 SaaS 应用。
 
 **若要从库中添加 FirmPlay - Employee Advocacy for Recruiting，请执行以下步骤：**
 
@@ -78,7 +77,7 @@ ms.lasthandoff: 02/23/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_001.png)
 
-5. 在结果窗格中，选择“FirmPlay - Employee Advocacy for Recruiting”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“FirmPlay - Employee Advocacy for Recruiting”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_0001.png)
 
@@ -94,7 +93,7 @@ ms.lasthandoff: 02/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 FirmPlay - Employee Advocacy for Recruiting 测试用户](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** - 在 FirmPlay：Employee Advocacy for Recruiting 中创建 Britta Simon 的对应用户，并将其链接到她在 Azure AD 中的表示形式。
+3. **[创建 FirmPlay - Employee Advocacy for Recruiting 测试用户](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** - 在 FirmPlay：Employee Advocacy for Recruiting 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -123,11 +122,11 @@ ms.lasthandoff: 02/23/2017
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)   
 
-5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
+5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_general_300.png)
 
-6. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
+6. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_04.png)
 
@@ -135,7 +134,7 @@ ms.lasthandoff: 02/23/2017
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_general_400.png)
 
-8. 在“SAML 签名证书”部分中，单击“证书(base64)”，然后在计算机上保存证书文件。 
+8. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。 
 
     ![配置单一登录](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_05.png) 
 
@@ -179,7 +178,7 @@ ms.lasthandoff: 02/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-firmplay-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -191,7 +190,7 @@ ms.lasthandoff: 02/23/2017
 
 ### <a name="creating-a-firmplay---employee-advocacy-for-recruiting-test-user"></a>创建 FirmPlay - Employee Advocacy for Recruiting 测试用户
 
-本部分将在 FirmPlay - Employee Advocacy for Recruiting 中创建名为 Britta Simon 的用户。 请与 [FirmPlay - Employee Advocacy for Recruiting 支持团队](mailto:engineering@firmplay.com)协作，在 FirmPlay - Employee Advocacy for Recruiting 平台中添加用户。
+本部分会在 FirmPlay - Employee Advocacy for Recruiting 中创建名为 Britta Simon 的用户。 请与 [FirmPlay - Employee Advocacy for Recruiting 支持团队](mailto:engineering@firmplay.com)协作，在 FirmPlay - Employee Advocacy for Recruiting 平台中添加用户。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -200,9 +199,9 @@ ms.lasthandoff: 02/23/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 FirmPlay - Employee Advocacy for Recruiting，请执行以下步骤：**
+**要将 Britta Simon 分配到 FirmPlay - Employee Advocacy for Recruiting，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

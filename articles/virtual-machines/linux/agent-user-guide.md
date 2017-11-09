@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM 代理概述 | Microsoft Docs"
-description: "了解如何安装和配置 Linux 代理 (waagent) 以管理您的虚拟机与 Azure 结构控制器的交互。"
+description: "了解如何安装和配置 Linux 代理 (waagent) 以管理虚拟机与 Azure 结构控制器的交互。"
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -104,7 +103,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 * 装载 UDF 文件系统的内核支持。
 
 ## <a name="installation"></a>安装
-使用你的分发包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)会将 Azure Linux 代理包集成到其映像和存储库。
+使用分发包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)会将 Azure Linux 代理包集成到其映像和存储库。
 
 请参阅 [GitHub 上的 Azure Linux 代理存储库](https://github.com/Azure/WALinuxAgent)中的文档了解高级安装选项，例如从源安装，或者安装到自定义位置或前缀。
 
@@ -196,7 +195,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：布尔值  
 默认值：y
 
-如果设置此参数，则 waagent 将监视 Linux 虚拟机的主机名更改情况（由“hostname”命令返回），并自动更新映像中的网络配置以反映此更改。 若要将名称更改推送到 DNS 服务器，可在虚拟机中重新启动网络。 这将导致 Internet 连接暂时中断。
+如果设置此参数，则 waagent 将监视 Linux 虚拟机的主机名更改情况（由“hostname”命令返回），并自动更新映像中的网络配置以反映此更改。 要将名称更改推送到 DNS 服务器，可在虚拟机中重新启动网络。 这会导致 Internet 连接暂时中断。
 
 **Provisioning.DecodeCustomData**  
 类型：布尔值  
@@ -208,7 +207,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：布尔值  
 默认值：n
 
-如果已设置，waagent 将在预配后执行 CustomData。
+如果已设置，waagent 会在预配后执行 CustomData。
 
 **Provisioning.PasswordCryptId**  
 类型：字符串  
@@ -236,13 +235,13 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：字符串  
 默认值：ext4
 
-这将指定资源磁盘的 filesystem 类型。 支持的值随 Linux 分发的不同而不同。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
+这会指定资源磁盘的 filesystem 类型。 支持的值随 Linux 分发的不同而不同。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
 
 **ResourceDisk.MountPoint：**  
 类型：字符串  
 默认值：/mnt/resource 
 
-这将指定资源磁盘的安装路径。 请注意，资源磁盘是*临时*磁盘，可能在取消预配 VM 时被清空。
+这会指定资源磁盘的安装路径。 请注意，资源磁盘是*临时*磁盘，可能在取消预配 VM 时被清空。
 
 **ResourceDisk.MountOptions**  
 类型：字符串  
@@ -254,7 +253,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：布尔值  
 默认值：n
 
-如果设置此参数，则将在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
+如果设置此参数，则会在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
 
 **ResourceDisk.SwapSizeMB：**  
 类型：整数  
@@ -278,7 +277,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 类型：整数  
 默认值：300
 
-这将配置 OS 磁盘和数据驱动器上的 SCSI 超时（以秒为单位）。 如果未设置此参数，则使用系统默认值。
+这会配置 OS 磁盘和数据驱动器上的 SCSI 超时（以秒为单位）。 如果未设置此参数，则使用系统默认值。
 
 **OS.OpensslPath：**  
 类型：字符串  
@@ -307,5 +306,4 @@ Linux 代理的正常运行依赖一些系统程序包：
   
   * [Ubuntu Wiki：配置交换分区](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [将自定义数据注入到 Azure 虚拟机中](../windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
 

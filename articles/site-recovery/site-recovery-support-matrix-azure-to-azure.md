@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
+ms.openlocfilehash: b157e2f90fa2daf00cf71472eb799ee98797b4dc
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
-ms.sourcegitcommit: 3f130c7718e204ba2e826c2500d8935a6285f71f
-ms.openlocfilehash: 144078bbee8e9633fac12231daa07da6c295f46e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
 
@@ -70,7 +69,7 @@ ms.lasthandoff: 09/20/2017
 
 #### <a name="windows"></a>Windows
 
-- Windows Server 2016（服务器核心和带桌面体验的服务器）*
+- Windows Server 2016（服务器核心、带桌面体验的服务器）*
 - Windows Server 2012 R2
 - Windows Server 2012
 - 带 SP1（或更高版本）的 Windows Server 2008 R2
@@ -85,6 +84,8 @@ ms.lasthandoff: 09/20/2017
 - CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3
 - Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+- Debian 7
+- Debian 8
 - Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
@@ -144,8 +145,8 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 
 **配置** | **支持/不支持** | **备注**
 --- | --- | ---
-最大 OS 磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
-最大数据磁盘大小 | 1023 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
+最大 OS 磁盘大小 | 2048 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
+最大数据磁盘大小 | 4095 GB | 请参阅 [VM 使用的磁盘](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
 数据磁盘数 | 特定 Azure VM 大小最多支持 64 个 | 请参阅 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)
 临时磁盘 | 始终从复制中排除 | 临时磁盘始终从复制中排除。 按照 Azure 指南，不能将任何永久数据放在临时磁盘上。 有关更多详细信息，请参阅 [Azure VM 上的临时磁盘](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
 磁盘上的数据更改率 | 每个磁盘最大 6 MBps | 如果磁盘上的平均数据更改率连续超过 6 MBps，复制将不同步。 但是，如果只是偶尔出现数据迸发，数据更改率间或高于 6 MBps，但随后又降下来，则复制可同步。 在此情况下，可能会看到恢复点稍有延迟。
@@ -191,4 +192,3 @@ VNET 到 VNET 连接 | 支持 | 请参阅[网络指南文档](site-recovery-azur
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure VM 复制网络指南](site-recovery-azure-to-azure-networking-guidance.md)
 - [复制 Azure VM](site-recovery-azure-to-azure.md)，开始对工作负荷进行保护
-

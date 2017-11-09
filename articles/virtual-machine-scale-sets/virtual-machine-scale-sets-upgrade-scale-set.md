@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>升级虚拟机规模集
 本文介绍了如何在不停机的情况下为 Azure 虚拟机规模集推出 OS 更新。 在此上下文中，OS 更新涉及到更改 OS 的版本或 SKU，或者更改自定义映像的 URI。 在不停机的情况下更新意味着一次只更新一台虚拟机或分组更新（如一次更新一个容错域），而不是一次更新所有虚拟机。 这样做能使没有进行升级的虚拟机继续运行。
@@ -90,7 +89,7 @@ $vmss.virtualMachineProfile.storageProfile.imageReference.id = $newImageReferenc
 使用此脚本，可选择要更新的具体虚拟机或者指定更新域。 它支持更改平台映像版本或更改自定义映像的 URI。
 
 ### <a name="vmsseditor"></a>Vmsseditor
-[Vmsseditor](https://github.com/gbowerman/vmssdashboard) 是一个适用于虚拟机规模集的通用编辑器，它以热度地图的形式显示虚拟机状态，其中一行表示一个更新域。 可以使用新版本、SKU 或自定义映像 URI 等来更新规模集的模型，然后选择要升级的容错域。 执行此操作时，该更新域中的所有虚拟机都将升级到新模型。 或者，可以根据所选的批大小执行滚动升级。  
+[Vmsseditor](https://github.com/gbowerman/vmssdashboard) 是一个适用于虚拟机规模集的通用编辑器，它以热度地图的形式显示虚拟机状态，其中一行表示一个更新域。 可以使用新版本、SKU 或自定义映像 URI 等来更新规模集的模型，并选择要升级的容错域。 执行此操作时，该更新域中的所有虚拟机都将升级到新模型。 或者，可以根据所选的批大小执行滚动升级。  
 
 以下屏幕截图显示了 Ubuntu 14.04-2LTS 版本 14.04.201507060 的规模集的模型。 自此屏幕截图截取之后，此工具增加了很多新选项。
 
@@ -99,5 +98,4 @@ $vmss.virtualMachineProfile.storageProfile.imageReference.id = $newImageReferenc
 单击“升级”和“获取详细信息”之后，UD 0 中的虚拟机将开始进行更新。
 
 ![显示正在进行更新的 Vmsseditor](./media/virtual-machine-scale-sets-upgrade-scale-set/vmssEditor2.png)
-
 

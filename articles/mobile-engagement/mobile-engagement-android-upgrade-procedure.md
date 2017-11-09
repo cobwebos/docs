@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97ce7f4d682ec12470db4248d046a8367840f0bd
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-procedures"></a>升级过程
 如果已将我们较旧版本的 SDK 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
@@ -146,7 +145,7 @@ SDK 现在处理来自 Android M 的新权限模型。
 将新的 `res/layout/engagement_loading.xml` 文件嵌入到项目中。
 
 ## <a name="from-240-to-300"></a>从 2.4.0 至 3.0.0
-以下部分介绍如何将 SDK 集成从由 Capptain SAS 提供的 Capptain 服务迁移到 Azure Mobile Engagement 支持的应用。 如果从较早版本进行迁移，请参阅 Capptain 网站先迁移到 2.4.0，然后再应用以下过程。
+以下部分介绍如何将 SDK 集成从由 Capptain SAS 提供的 Capptain 服务迁移到 Azure Mobile Engagement 支持的应用。 如果从较早版本进行迁移，请参阅 Capptain 网站先迁移到 2.4.0，再应用以下过程。
 
 > [!IMPORTANT]
 > Capptain 和 Mobile Engagement 不是相同的服务，以下提供的过程仅重点描述如何迁移客户端应用。 迁移应用中的 SDK 不会将数据从 Capptain 服务器迁移到 Mobile Engagement 服务器。
@@ -396,7 +395,7 @@ Google Play 和 SmartAd 跟踪已从 SDK 中删除，只需将其删除即可，
 
             protected void onXMPPMessageReceived(android.content.Context context, android.os.Bundle message)
 
-然后为以下内容删除对 **EngagementAgent** 的任何调用：
+然后删除以下项对 **EngagementAgent** 的任何调用：
 
             sendMessageToDevice(java.lang.String deviceId, java.lang.String payload, java.lang.String packageName)
 
@@ -414,5 +413,4 @@ ProGuard 配置可能会受到品牌重塑的影响，规则目前看起来如�
             -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
               <methods>;
             }
-
 

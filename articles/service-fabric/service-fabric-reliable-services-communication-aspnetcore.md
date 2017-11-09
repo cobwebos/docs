@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 05/02/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
 
 ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连接 Internet 的应用程序，如 Web 应用、IoT 应用和移动后端。 
@@ -46,12 +44,12 @@ ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连�
 
 在 Service Fabric 中，服务的一个或多个实例和/或副本在*服务主机进程*（运行服务代码的可执行文件）中运行。 服务作者拥有服务主机进程，Service Fabric 将为服务作者激活并监视此进程。
 
-传统的 ASP.NET（最高为 MVC 5）通过 System.Web.dll 与 IIS 紧密耦合。 ASP.NET Core 在 Web 服务器和 Web 应用程序之间提供分隔。 这使 Web 应用程序可在不同 Web 服务器之间移植，并且还允许 Web 服务器*自托管*，这意味着你可以在自己的进程（而不是由 IIS 等专用 Web 服务器软件拥有的进程）中启动 Web 服务器。 
+传统的 ASP.NET（最高为 MVC 5）通过 System.Web.dll 与 IIS 紧密耦合。 ASP.NET Core 在 Web 服务器和 Web 应用程序之间提供分隔。 这使 Web 应用程序可在不同 Web 服务器之间移植，并且还允许 Web 服务器*自托管*，这意味着可以在自己的进程（而不是由 IIS 等专用 Web 服务器软件拥有的进程）中启动 Web 服务器。 
 
 若要合并 Service Fabric 服务和 ASP.NET，无论是作为来宾可执行文件或是在 Reliable Service 中，必须能够在服务主机进程内启动 ASP.NET。 可借助 ASP.NET Core 的自托管功能执行此操作。
 
 ## <a name="hosting-aspnet-core-in-a-reliable-service"></a>在 Reliable Service 中托管 ASP.NET Core
-通常情况下，自托管 ASP.NET Core 应用程序将在应用程序的入口点创建 WebHost，如 `Program.cs` 中的 `static void Main()` 方法。 在这种情况下，WebHost 的生命周期绑定到进程的生命周期中。
+通常情况下，自托管 ASP.NET Core 应用程序会在应用程序的入口点创建 WebHost，如 `Program.cs` 中的 `static void Main()` 方法。 在这种情况下，WebHost 的生命周期绑定到进程的生命周期中。
 
 ![在进程中托管 ASP.NET Core][0]
 
@@ -67,7 +65,7 @@ Reliable Service 实例由派生自 `StatelessService` 或 `StatefulService` 的
 这两种通信侦听器都能提供采用以下参数的构造函数：
  - **`ServiceContext serviceContext`**：包含有关运行中的服务信息的 `ServiceContext` 对象。
  - **`string endpointName`**：ServiceManifest.xml 中 `Endpoint` 配置的名称。 以下是两种通信侦听器的主要区别：WebListener **需要** `Endpoint` 配置，而 Kestrel 不需要。
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**：你实现的 lambda，在其中创建和返回 `IWebHost`。 这允许你按通常在 ASP.NET Core 应用程序中使用的方法配置 `IWebHost`。 Lambda 提供为你生成的 URL，具体取决于你使用的 Service Fabric 集成选项和你提供的 `Endpoint` 配置。 然后可修改 URL 或直接将其按原样用于启动 Web 服务器。
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**：你实现的 lambda，在其中创建和返回 `IWebHost`。 这允许按通常在 ASP.NET Core 应用程序中使用的方法配置 `IWebHost`。 Lambda 提供生成的 URL，具体取决于使用的 Service Fabric 集成选项和你提供的 `Endpoint` 配置。 然后可修改 URL 或直接将其按原样用于启动 Web 服务器。
 
 ## <a name="service-fabric-integration-middleware"></a>Service Fabric 集成中间件
 `Microsoft.ServiceFabric.Services.AspNetCore` NuGet 包包含添加 Service Fabric 可识别的中间件的 `IWebHostBuilder` 上的 `UseServiceFabricIntegration` 扩展方法。 此中间件将 Kestrel 或 WebListener `ICommunicationListener` 配置为向 Service Fabric 命名服务注册唯一的服务 URL，然后验证客户端请求，以确保客户端连接到了正确的服务。 在 Service Fabric 等共享主机环境中，多个 Web 应用程序可能在同一物理计算机或虚拟机上运行，但不使用唯一的主机名，为了防止客户端错误地连接到错误的服务，此操作是必需的。 后续部分将对此方案进行详细说明。
@@ -97,12 +95,12 @@ Reliable Service 实例由派生自 `StatelessService` 或 `StatefulService` 的
 
 ![Service Fabric ASP.NET Core 集成][2]
 
-Kestrel 和 WebListener `ICommunicationListener` 实现以完全相同的方式使用此机制。 尽管 WebListener 可使用基本 *http.sys* 端口共享功能基于唯一 URL 路径内部区分请求，但 WebListener `ICommunicationListener` 实现*不会*使用此功能，因为这会导致上述方案中出现 HTTP 503 和 HTTP 404 错误状态代码。 这进而使客户端很难确定错误原因，因为 HTTP 503 和 HTTP 404 通常用于指示其他错误。 因此，Kestrel 和 WebListener `ICommunicationListener` 实现将在 `UseServiceFabricIntegration` 扩展方法提供的中间件上执行标准化，使客户端只需对 HTTP 410 响应执行服务终结点重新解析操作。
+Kestrel 和 WebListener `ICommunicationListener` 实现以完全相同的方式使用此机制。 尽管 WebListener 可使用基本 *http.sys* 端口共享功能基于唯一 URL 路径内部区分请求，但 WebListener `ICommunicationListener` 实现*不会*使用此功能，因为这会导致上述方案中出现 HTTP 503 和 HTTP 404 错误状态代码。 这进而使客户端很难确定错误原因，因为 HTTP 503 和 HTTP 404 通常用于指示其他错误。 因此，Kestrel 和 WebListener `ICommunicationListener` 实现会在 `UseServiceFabricIntegration` 扩展方法提供的中间件上执行标准化，使客户端只需对 HTTP 410 响应执行服务终结点重新解析操作。
 
 ## <a name="weblistener-in-reliable-services"></a>Reliable Services 中的 WebListener
 通过导入 **Microsoft.ServiceFabric.AspNetCore.WebListener** NuGet 包，可在 Reliable Service 中使用 WebListener。 此包包含 `WebListenerCommunicationListener` - `ICommunicationListener` 的实现，此实现允许使用 WebListener Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
 
-将在 [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) 上构建 WebListener。 这将使用 IIS 所用的 *http.sys* 内核驱动程序处理 HTTP 请求，并将其路由到运行 Web 应用程序的进程。 这可允许同一物理计算机或虚拟机上的多个进程在同一端口上托管 Web 应用程序，通过唯一 URL 路径或主机名来消除歧义。 Service Fabric 在同一群集中托管多个网站时，这些功能非常有用。
+将在 [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) 上构建 WebListener。 这会使用 IIS 所用的 *http.sys* 内核驱动程序处理 HTTP 请求，并将其路由到运行 Web 应用程序的进程。 这可允许同一物理计算机或虚拟机上的多个进程在同一端口上托管 Web 应用程序，通过唯一 URL 路径或主机名来消除歧义。 Service Fabric 在同一群集中托管多个网站时，这些功能非常有用。
 
 下图说明了 WebListener 如何在 Windows 上使用 *http.sys* 内核驱动程序进行端口共享：
 
@@ -138,7 +136,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>终结点配置
 
-使用 Windows HTTP Server API 的 Web 服务器（包括 WebListener）需要使用 `Endpoint` 配置。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 *http.sys* 的 URL（通常可使用 [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) 工具实现）。 此操作需要提升的权限，默认情况下你的服务不具备此权限。 用于 *ServiceManifest.xml* 中 `Endpoint` 配置的 `Protocol` 属性的“Http”或“https”选项，可专门用于指示 Service Fabric 运行时使用[*强通配符*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL 前缀代表你注册带有 *http.sys* 的 URL。
+使用 Windows HTTP Server API 的 Web 服务器（包括 WebListener）需要使用 `Endpoint` 配置。 使用 Windows HTTP Server API 的 Web 服务器首先必须保留带有 *http.sys* 的 URL（通常可使用 [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) 工具实现）。 此操作需要提升的权限，默认情况下服务不具备此权限。 用于 ServiceManifest.xml 中 `Endpoint` 配置的 `Protocol` 属性的“Http”或“https”选项，可专门用于指示 Service Fabric 运行时使用[强通配符](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL 前缀代表你注册带有 http.sys 的 URL。
 
 例如，若要保留服务的 `http://+:80`，则应在 ServiceManifest.xml 中使用以下配置：
 
@@ -168,7 +166,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 #### <a name="use-weblistener-with-a-static-port"></a>将 WebListener 与静态端口配合使用
-若要将 WebListener 与静态端口配合使用，需在 `Endpoint` 配置中提供端口号：
+要将 WebListener 与静态端口配合使用，需在 `Endpoint` 配置中提供端口号：
 
 ```xml
   <Resources>
@@ -179,7 +177,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 #### <a name="use-weblistener-with-a-dynamic-port"></a>将 WebListener 与动态端口配合使用
-若要将 WebListener 与动态分配端口配合使用，需在 `Endpoint` 配置中省略 `Port` 属性：
+要将 WebListener 与动态分配端口配合使用，需在 `Endpoint` 配置中省略 `Port` 属性：
 
 ```xml
   <Resources>
@@ -282,13 +280,13 @@ new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listen
 #### <a name="use-kestrel-with-a-dynamic-port"></a>将 Kestrel 和动态端口配合使用
 Kestrel 无法使用 ServiceManifest.xml 中 `Endpoint` 配置的自动端口分配，因为 `Endpoint` 配置中的自动端口分配会为每个*主机进程*分配唯一端口，并且单个主机进程可能包含多个 Kestrel 实例。 由于 Kestrel 不支持端口共享，并且每个 Kestrel 实例必须在唯一端口上打开，因此此方案不可行。
 
-若要将 Kestrel 和动态端口分配配合使用，只需完全省略ServiceManifest.xml 中的 `Endpoint` 配置，并且不要将终结点名称传递到 `KestrelCommunicationListener` 构造函数：
+要将 Kestrel 和动态端口分配配合使用，只需完全省略ServiceManifest.xml 中的 `Endpoint` 配置，并且不要将终结点名称传递到 `KestrelCommunicationListener` 构造函数：
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
-在此配置中，`KestrelCommunicationListener` 将自动从应用程序端口范围中选择未使用的端口。
+在此配置中，`KestrelCommunicationListener` 会自动从应用程序端口范围中选择未使用的端口。
 
 ## <a name="scenarios-and-configurations"></a>方案和配置
 本部分介绍以下方案，并提供 Web 服务器、端口配置、Service Fabric 集成选项和其他设置的建议组合方式，以使服务正常工作：
@@ -360,4 +358,3 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 [2]:./media/service-fabric-reliable-services-communication-aspnetcore/integration.png
 [3]:./media/service-fabric-reliable-services-communication-aspnetcore/httpsys.png
 [4]:./media/service-fabric-reliable-services-communication-aspnetcore/kestrel.png
-

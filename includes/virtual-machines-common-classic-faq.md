@@ -33,7 +33,7 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>可以使用哪些虚拟硬盘类型？
 Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHDX，需先使用 Hyper-V 管理器或 [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) cmdlet 对其进行转换。 然后，使用 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet（在“服务管理”模式下）将 VHD 上传到 Azure 的存储帐户，用于虚拟机。
 
-* 有关 Linux 说明，请参阅创建并上传包含 Linux 操作系统的虚拟硬盘。[](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* 有关 Linux 说明，请参阅创建并上传包含 [Linux 操作系统的虚拟硬盘](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
 * 有关 Windows 说明，请参阅[创建 Windows Server VHD 并将其上传到 Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>这些虚拟机是否与 Hyper-V 虚拟机相同？
@@ -96,7 +96,7 @@ Azure 针对防病毒解决方案提供多种选项，但需要用户自行管�
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>哪些选项可用于备份和恢复？
-在某些区域，可将 Azure 备份用作预览。 有关详细信息，请参阅[备份 Azure 虚拟机](../articles/backup/backup-azure-vms.md)。 认证合作伙伴提供其他解决方案。 若要了解当前提供的内容，请搜索 Azure Marketplace。
+在某些区域，可将 Azure 备份用作预览。 有关详细信息，请参阅[备份 Azure 虚拟机](../articles/backup/backup-azure-vms.md)。 认证合作伙伴提供其他解决方案。 若要了解当前提供的内容，请搜索 Azure 应用商店。
 
 其他选项使用 blob 存储的快照功能。 为此，需要在进行任何依赖 blob 快照的操作前关闭 VM。 这会保存挂起的数据写入，并将文件系统保持为一致状态。
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 58908d65fdebd651e5cfab2b668574bdf7ab6085
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: e3a03a97b10e04fb85261620879b2102e1db8465
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
 Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
@@ -82,7 +81,7 @@ Active Directory 连接器为入站同步规则提供以下参数：
 
 例如：  
 `Trim([proxyAddresses])` 对 proxyAddress 属性中的每个值执行 Trim。  
-`Word([proxyAddresses],1,"@") & "@contoso.com"` 对于包含 @-sign, 的每个值，将域替换为 @contoso.com。  
+`Word([proxyAddresses],1,"@") & "@contoso.com"` 对于包含 @-sign 的每个值，将域替换为 @contoso.com。  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 查找 SIP 地址并从值中删除该地址。
 
 ## <a name="next-steps"></a>后续步骤
@@ -98,5 +97,4 @@ Active Directory 连接器为入站同步规则提供以下参数：
 **参考主题**
 
 * [Azure AD Connect 同步：函数参考](active-directory-aadconnectsync-functions-reference.md)
-
 

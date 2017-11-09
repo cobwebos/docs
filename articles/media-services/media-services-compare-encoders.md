@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
+ms.openlocfilehash: 3bba48d5425ae47c72aca893af7c11fe270c2929
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: a0e93881e0d75541fc04d7bc736459f8109d1c9f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比
 
 本主题对 **Media Encoder Standard** 和**媒体编码器高级工作流**的编码功能进行了比较。
@@ -153,4 +151,3 @@ ms.lasthandoff: 07/26/2017
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-

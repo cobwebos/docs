@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 09/18/2017
 ms.author: terrylan
+ms.openlocfilehash: 0616f5e501324bfd821c1455ce234602f1fcf1bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: cb4a7db5666242576bf83abbf10682cc6f53ba69
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
-可以通过配置安全策略，然后实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。
+可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。
 
 > [!NOTE]
 > 本文基于安全中心[规划和操作指南](security-center-planning-and-operations-guide.md)中引入的的角色和概念。 在继续阅读本文之前，最好先查看该规划指南。
@@ -37,7 +35,7 @@ ms.lasthandoff: 07/11/2017
 
 ![安全策略继承][1]
 
-若需在特定资源组中应用自定义策略，可以在资源组中禁用继承。 若要禁用，请将“安全策略”边栏选项卡上的“继承”设置为“唯一”，并且对安全中心将为哪些控件显示建议进行自定义。
+若需在特定资源组中应用自定义策略，可以在资源组中禁用继承。 要禁用，请将“安全策略”边栏选项卡上的“继承”设置为“唯一”，并且对安全中心将为哪些控件显示建议进行自定义。
 
 例如，如果有不需要 SQL 数据库透明数据加密 (TDE) 策略的工作负荷，请在订阅级别关闭该策略，仅在需要 SQL TDE 的资源组中启用。
 
@@ -73,17 +71,17 @@ Contoso 的 IT 安全部门的 David 使用安全中心配置**安全策略**。
 让我们按照 Jeff 的步骤，了解他如何使用安全中心建议来指导他完成配置控件以消除安全漏洞的过程。
 
 ## <a name="how-to-implement-this-solution"></a>如何实施该解决方案
-Jeff 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)，然后打开安全中心控制台。 作为其每日监视活动的一部分，他会通过执行以下步骤来查看是否有安全建议：
+Jeff 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)，并打开安全中心控制台。 作为其每日监视活动的一部分，他会通过执行以下步骤来查看是否有安全建议：
 
-1. Jeff 选择“建议”磁贴以打开“建议”边栏选项卡。
+1. Jeff 选择“建议”磁贴以打开“建议”。
    ![选择“建议”磁贴][3]
-2. Jeff 查看建议列表。 他会看到安全中心已按优先级顺序（从最高优先级到最低优先级）提供了建议列表。 他决定处理列表上的高优先级建议。 他在“建议”边栏选项卡中选择“安装终结点保护”。
-3. “安装终结点保护”边栏选项卡将打开，显示未启用反恶意软件的 VM 列表。 Jeff 查看 VM 列表，选择所有 VM，然后选择“在 3 个 VM 上安装”。
+2. Jeff 查看建议列表。 他会看到安全中心已按优先级顺序（从最高优先级到最低优先级）提供了建议列表。 他决定处理列表上的高优先级建议。 他在“建议”下选择“安装终结点保护”。
+3. “安装终结点保护”将打开，显示未启用反恶意软件的 VM 列表。 Jeff 查看 VM 列表，选择所有 VM，并选择“在 3 个 VM 上安装”。
    ![安装终结点保护][4]
-4. “选择终结点保护”边栏选项卡将打开，向 Jeff 提供两个反恶意软件解决方案。 Jeff 选择“Microsoft 反恶意软件”解决方案。
+4. “选择终结点保护”将打开，向 Jeff 提供两个反恶意软件解决方案。 Jeff 选择“Microsoft 反恶意软件”解决方案。
 5. 将显示有关反恶意软件解决方案的其他信息。 Jeff 选择“创建”。
    ![Microsoft 反恶意软件][5]
-6. Jeff 在“安装”边栏选项卡上输入所需的配置设置，然后选择“确定”。
+6. Jeff 在“安装”下输入所需的配置设置，并选择“确定”。
 
 [Microsoft 反恶意软件](../security/azure-security-antimalware.md)目前在所选 VM 上处于活动状态。
 
@@ -91,10 +89,10 @@ Jeff 继续浏览高优先级和中优先级建议，进行有关实施的决策
 
 Jeff 获悉 [Microsoft 安全响应中心 (MSRC)](../security/azure-security-response-center.md) 会执行 Azure 网络和基础结构的选择安全监视，并接收来自第三方的威胁情报和滥用行为投诉。 如果 Jeff 为 Contoso 的 Azure 订阅提供安全联系人详细信息，那么在 MSRC 发现 Contoso 的客户数据已被非法的一方或未经授权方访问时，Microsoft 将联系 Contoso。 当 Jeff 应用“提供安全联系人详细信息”建议（上面的建议列表中严重性为“中”的建议）时，让我们按照他的步骤执行操作。
 
-1. Jeff 选择“建议”边栏选项卡上的“提供安全联系人详细信息”，这将打开“提供安全联系人详细信息”边栏选项卡。
+1. Jeff 选择“建议”下的“提供安全联系人详细信息”，这会打开“提供安全联系人详细信息”。
 2. Jeff 选择要提供联系人信息的 Azure 订阅。 会再打开一个“提供安全联系人详细信息”边栏选项卡。
    ![安全联系人详细信息][6]
-3. 在第二个“提供安全联系人详细信息”边栏选项卡上，Jeff 输入：
+3. 在“提供安全联系人详细信息”下，Jeff 输入：
 
   - 由逗号分隔的安全联系人电子邮件地址（他可以输入的电子邮件地址数没有限制）
   - 一个安全联系人电话号码
@@ -102,11 +100,23 @@ Jeff 获悉 [Microsoft 安全响应中心 (MSRC)](../security/azure-security-res
 4. Jeff 也会启用选项“向我发送有关警报的电子邮件”，以便接收有关高严重性警报的电子邮件。
 5. Jeff 选择“确定”，将安全联系人信息应用到 Contoso 的订阅。
 
-最后，Jeff 查看低优先级建议“修正 OS 漏洞”并确定此建议不适用。 他想要取消该建议。 Jeff 选择显示在右侧的三个点，然后选择“取消”。
+最后，Jeff 查看低优先级建议“修正 OS 漏洞”并确定此建议不适用。 他想要取消该建议。 Jeff 选择显示在右侧的三个点，并选择“取消”。
    ![取消建议][7]
 
 ## <a name="conclusion"></a>结束语
 监视安全中心内的建议可有助于在发生攻击之前消除安全漏洞。 可以通过使用安全中心内的安全策略来实施和维护保护措施，从而防止安全事件发生。
+
+## <a name="next-steps"></a>后续步骤
+此方案说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 请参阅[事件响应方案](security-center-incident-response.md)，了解如何在攻击发生之前制定事件响应计划。
+
+若要了解有关安全中心的详细信息，请参阅：
+
+* [安全运行状况监视](security-center-monitoring.md) — 了解如何监视 Azure 资源的运行状况。
+* [管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。
+* [监视和处理安全事件](security-center-events-dashboard.md) - 了解如何监视和处理随着时间的推移收集到的安全事件。
+* [监视合作伙伴解决方案](security-center-partner-solutions.md) — 了解如何监视合作伙伴解决方案的运行状态。
+* [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
+* [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/) — 获取最新的 Azure 安全新闻和信息。
 
 <!--Image references-->
 [1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png
@@ -116,4 +126,3 @@ Jeff 获悉 [Microsoft 安全响应中心 (MSRC)](../security/azure-security-res
 [5]:./media/security-center-using-recommendations/microsoft-antimalware.png
 [6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
 [7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
-

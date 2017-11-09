@@ -1,0 +1,120 @@
+- name: Azure HDInsight 文档
+  href: /azure/hdinsight
+- name: HDInsight 上的 HBase
+  items:
+    - name: 概述
+      href: apache-hbase-overview.md
+    - name: 组件版本控制
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
+- name: 入门
+  items:
+    - name: HBase 和 NoSQL 入门
+      href: apache-hbase-tutorial-get-started-linux.md
+    - name: 容量计划
+      href: ../hdinsight-capacity-planning.md
+      maintainContext: true
+- name: 如何
+  items:
+    - name: 在虚拟网络中创建群集
+      href: apache-hbase-provision-vnet.md
+    - name: 配置 HBase 复制
+      href: apache-hbase-replication.md
+    - name: 使用 Phoenix 和 SQLLine
+      href: apache-hbase-phoenix-squirrel-linux.md
+    - name: 开发 Java 应用程序
+      href: apache-hbase-build-java-maven-linux.md
+    - name: HBase 故障排除
+      href: apache-troubleshoot-hbase.md
+- name: 引用
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.hdinsight
+    - name: .NET (Hadoop)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
+    - name: .NET (HBase)
+      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+    - name: .NET (Avro)
+      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
+    - name: REST
+      href: /rest/api/hdinsight/
+    - name: REST (Spark)
+      href: /rest/api/hdinsightspark/
+- name: 相关内容
+  items:
+    - name: Windows 群集
+      items:
+        - name: 将 Windows 群集迁移到 Linux 群集
+          href: ../hdinsight-migrate-from-windows-to-linux.md
+          maintainContext: true
+        - name: 将 .NET 解决方案迁移到 Linux 群集
+          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+          maintainContext: true
+        - name: 运行 Hadoop MapReduce 示例
+          href: ../hdinsight-run-samples.md
+          maintainContext: true
+        - name: 在群集上使用 Solr
+          href: ../hdinsight-hadoop-solr-install-linux.md
+          maintainContext: true
+        - name: 使用 Giraph 处理大型图形
+          href: ../hdinsight-hadoop-giraph-install.md
+          maintainContext: true
+        - name: 为工作流使用 Oozie
+          href: ../hdinsight-use-oozie.md
+          maintainContext: true
+        - name: 部署和管理 Storm 拓扑
+          href: ../storm/apache-storm-deploy-monitor-topology.md
+          maintainContext: true
+        - name: 使用 Maven 构建 Java 应用程序
+          href: ../hdinsight-hbase-build-java-maven.md
+          maintainContext: true
+        - name: 使用 Tez UI 调试 Tez 作业
+          href: ../hdinsight-debug-tez-ui.md
+          maintainContext: true
+        - name: 使用脚本操作进行自定义
+          href: ../hdinsight-hadoop-customize-cluster.md
+          maintainContext: true
+        - name: 访问 YARN 应用程序日志
+          href: ../hdinsight-hadoop-access-yarn-app-logs.md
+          maintainContext: true
+        - name: 使用 Apache Phoenix 和 SQuirrel
+          href: ../hdinsight-hbase-phoenix-squirrel.md
+          maintainContext: true
+        - name: 使用 Mahout 生成电影推荐
+          href: ../hdinsight-mahout.md
+          maintainContext: true
+        - name: 分析航班延误数据
+          href: ../hdinsight-analyze-flight-delay-data.md
+          maintainContext: true
+        - name: 开发脚本操作
+          href: ../hdinsight-hadoop-script-actions.md
+          maintainContext: true
+        - name: 分析 Twitter 数据
+          href: ../hdinsight-analyze-twitter-data.md
+          maintainContext: true
+        - name: 使用 Azure 门户管理群集
+          href: ../hdinsight-administer-use-management-portal.md
+          maintainContext: true
+        - name: 使用 Ambari API 监视群集
+          href: ../hdinsight-monitor-use-ambari-api.md
+          maintainContext: true
+- name: 资源
+  items:
+    - name: 发行说明
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: 在论坛上获取帮助
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
+    - name: 学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+    - name: 适用于大数据的 Microsoft 专业计划
+      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 适用于 HDInsight 的 Windows 工具
+      href: ../hdinsight-hadoop-windows-tools.md
+      maintainContext: true

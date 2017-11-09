@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 92a3250a4b07a8a473bd3343181176a2623cd476
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.openlocfilehash: 32f5d2d142940bc515849dcd0edb1bb1f152aa6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reprotect-from-failed-over-azure-region-back-to-primary-region"></a>重新保护从故障转移 Azure 区域回复到主要区域的虚拟机
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 06/16/2017
 
 下文介绍使用默认设置重新保护虚拟机的步骤。
 
-1. 在“保管库” > “已复制的项”中，右键单击已故障转移的虚拟机，然后选择“重新保护”。 也可以单击该计算机，然后从命令按钮中选择“重新保护”。
+1. 在“保管库” > “已复制的项”中，右键单击已故障转移的虚拟机，并选择“重新保护”。 也可以单击该计算机，并从命令按钮中选择“重新保护”。
 
 ![右键单击以重新保护](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -109,4 +108,3 @@ ms.lasthandoff: 06/16/2017
 -   [启动虚拟机测试故障转移的步骤](site-recovery-test-failover-to-azure.md)
 
 -   [启动虚拟机故障转移的步骤](site-recovery-failover.md)
-

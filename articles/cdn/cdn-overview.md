@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
+ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 2706f22d2bc3e77a53f0a6a39dcbea8048879d01
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Azure 内容交付网络 (CDN) 概述
 > [!NOTE]
@@ -75,7 +74,7 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 | [实时统计信息](cdn-real-time-stats.md) | | |**&#x2713;** |
 | [实时警报](cdn-real-time-alerts.md) | | |**&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __易于使用__ |
-| 与[存储](cdn-create-a-storage-account-with-cdn.md)、[云服务](cdn-cloud-service-with-cdn.md)、[Web 应用](../app-service-web/app-service-web-tutorial-content-delivery-network.md)和[媒体服务](../media-services/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务轻松集成 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| 与[存储](cdn-create-a-storage-account-with-cdn.md)、[云服务](cdn-cloud-service-with-cdn.md)、[Web 应用](../app-service/app-service-web-tutorial-content-delivery-network.md)和[媒体服务](../media-services/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务轻松集成 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 通过 [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md) 或 [PowerShell](cdn-manage-powershell.md) 进行管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [可自定义的、基于规则的内容传送引擎](cdn-rules-engine.md) | | |**&#x2713;** |
 | 缓存/标头设置（使用 [规则引擎](cdn-rules-engine.md)） | | |**&#x2713;** |
@@ -100,5 +99,4 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 了解如何通过 [.NET](cdn-app-dev-net.md) 或 [Node.js](cdn-app-dev-node.md) 实现 Azure CDN 的自动化。
 
 有关定价信息，请参阅 [CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)。
-
 

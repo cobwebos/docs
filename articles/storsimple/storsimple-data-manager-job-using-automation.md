@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 9691408bcd80afb6eba534f26749b76dd3bfe315
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-automation-to-trigger-a-job-private-preview"></a>使用 Azure 自动化触发作业（个人预览版）
 
 本文介绍如何使用 Azure 自动化触发 StorSimple Data Manager 作业。
@@ -50,7 +48,7 @@ ms.lasthandoff: 03/21/2017
         .\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
          ```
 
-        ActiveDirectoryKey 是稍后要使用的密码。 输入你选择的密码。 AppName 可以是任意字符串。
+        ActiveDirectoryKey 是稍后要使用的密码。 输入选择的密码。 AppName 可以是任意字符串。
 
 2. 此脚本输出以下值，触发自动化 runbook 时应使用这些值。 记下这些值。
 
@@ -80,20 +78,20 @@ ms.lasthandoff: 03/21/2017
 
 ### <a name="to-import-the-runbook-that-triggers-the-job-definition"></a>导入触发作业定义的 runbook
 
-1. 在 Azure 门户中，打开你的自动化帐户。
+1. 在 Azure 门户中，打开自动化帐户。
 2. 单击“Runbook”磁贴打开 runbook 的列表。
-3. 单击“+ 添加 runbook”，然后单击“导入现有的 runbook”。
+3. 单击“+ 添加 runbook”，并单击“导入现有的 runbook”。
 
    ![导入现有的 runbook](./media/storsimple-data-manager-job-using-automation/import-a-runbook.png)
 
-4. 单击“Runbook 文件”，然后选择文件以导入 `Trigger-DataTransformation-Job.ps1`。
+4. 单击“Runbook 文件”，并选择文件以导入 `Trigger-DataTransformation-Job.ps1`。
 5. 单击“创建”以导入 runbook。 新的 runbook 会出现在自动化帐户的 runbook 列表中。
-7. 单击 **Trigger-DataTransformation-Job** runbook，然后单击“编辑”。
-8. 系统提示确认时，请单击“发布”，然后单击“是”。
+7. 单击 **Trigger-DataTransformation-Job** runbook，并单击“编辑”。
+8. 系统提示确认时，请单击“发布”，并单击“是”。
 
 
 ### <a name="to-run-the-runbook"></a>运行 runbook：
-1. 在 Azure 门户中，打开你的自动化帐户。
+1. 在 Azure 门户中，打开自动化帐户。
 2. 单击“Runbook”磁贴打开 Runbook 的列表。
 3. 单击 **Trigger-DataTransformation-Job**。
 4. 单击“启动”以启动 Runbook **ResourceGroupName** 。

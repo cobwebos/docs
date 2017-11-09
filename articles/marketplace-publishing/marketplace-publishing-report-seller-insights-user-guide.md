@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-dabosl
-ms.translationtype: HT
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: cd5db703ab0b89b8597c99c0d536bc07f883ebc6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-marketplace-seller-insights-portal"></a>如何使用 Microsoft Azure Marketplace 卖方 Insights 门户
 
@@ -417,4 +416,3 @@ ms.lasthandoff: 06/17/2017
 [33]: ./media/marketplace-publishing-report-seller-insights-user-guide/support-fill-out-and-submit.png
 [34]: ./media/marketplace-publishing-report-seller-insights-user-guide/feedback-form.png
 [35]: ./media/marketplace-publishing-report-seller-insights-user-guide/help.png
-

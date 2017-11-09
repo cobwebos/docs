@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ef700f9a27d27997d53143260603bda822aa104
-ms.openlocfilehash: b84853da989d18414a31cf5b178c6506abc56bbe
-ms.lasthandoff: 01/30/2017
-
-
+ms.openlocfilehash: c3c923b5c9cd652f0c5b0ec98c1cda740f180122
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>配置托管域以支持 SharePoint Server 的配置文件同步
 SharePoint Server 包含一个用户配置文件服务用于用户配置文件同步。 若要设置用户配置文件服务，需要在 Active Directory 域中授予相应的权限。 有关详细信息，请参阅 [grant Active Directory Domain Services permissions for profile synchronization in SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx)（在 SharePoint Server 2013 中授予配置文件同步的 Active Directory 域服务权限）。
 
@@ -50,4 +48,3 @@ SharePoint Server 包含一个用户配置文件服务用于用户配置文件�
 
 ## <a name="related-content"></a>相关内容
 * [技术参考 - 在 SharePoint Server 2013 中授予配置文件同步的 Active Directory 域服务权限](https://technet.microsoft.com/library/hh296982.aspx)
-

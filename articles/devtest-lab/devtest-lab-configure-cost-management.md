@@ -1,6 +1,6 @@
 ---
-title: "查看 Azure 开发测试实验室中月评估成本趋势 | Microsoft Docs"
-description: "了解 Azure 开发测试实验室中的月评估成本趋势图表。"
+title: "查看 Azure 开发测试实验室的每月估计实验室成本趋势 | Microsoft Docs"
+description: "了解 Azure 开发测试实验室的每月估计成本趋势图表。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
 ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>查看 Azure 开发测试实验室中月评估成本趋势
+# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>查看 Azure 开发测试实验室的每月估计实验室成本趋势
 开发测试实验室的成本管理功能有助于追踪实验室成本。 本文将演示如何使用**月评估成本趋势**图表，查看当前日历月中截止目前的成本以及当前日历月截止月底的预估成本。 通过本文可以了解如何在 Azure 门户中查看月评估成本趋势图表。
 
 ## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>查看月评估成本趋势图表
 若要查看月评估成本趋势图表，请按以下步骤操作： 
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表中，选择所需的实验室。   
 4. 在实验室的边栏选项卡上，选择“成本设置”。
 5. 在本实验的“成本设置”边栏选项卡，选择“实验室成本趋势”。
@@ -63,8 +62,7 @@ ms.lasthandoff: 02/08/2017
 以下为后续步骤：
 
 * [定义实验室策略](devtest-lab-set-lab-policy.md) - 了解如何设置各种策略，来管理实验室和其 VM 的使用方式。 
-* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或 Marketplace 映像。 本文演示了如何从 VHD 文件创建自定义映像。
-* [配置 Marketplace 映像](devtest-lab-configure-marketplace-images.md) - 开发测试实验室支持创建基于 Azure Marketplace 映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure Marketplace 映像（如果有）。
-* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或 Marketplace 映像）创建 VM，以及如何使用在 VM 中使用项目。
-
+* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或应用商店映像。 本文演示了如何从 VHD 文件创建自定义映像。
+* [配置应用商店映像](devtest-lab-configure-marketplace-images.md) - 开发测试实验室支持创建基于 Azure 应用商店映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 应用商店映像（如果有）。
+* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或应用商店映像）创建 VM，以及如何使用在 VM 中使用项目。
 

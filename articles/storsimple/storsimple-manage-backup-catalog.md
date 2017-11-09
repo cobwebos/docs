@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/28/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 5ee9855e1428c7a2d871d9c215d302c5c3b7101a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple Manager 服务管理备份目录
 ## <a name="overview"></a>概述
@@ -86,10 +85,9 @@ StorSimple Manager 服务的“备份目录”页面显示执行手动或计划�
       
       与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
 3. 选择并展开备份集。 “还原”和“删除”选项显示在页面底部。 单击“删除” 。
-4. 系统会在删除过程中以及删除成功完成后向用户发送通知。 删除完成后，刷新此页上的查询。 已删除的备份集将不再显示在备份集列表中。
+4. 系统会在删除过程中以及删除成功完成后向用户发送通知。 删除完成后，刷新此页上的查询。 已删除的备份集不再显示在备份集列表中。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用备份目录从备份集还原设备](storsimple-restore-from-backup-set.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

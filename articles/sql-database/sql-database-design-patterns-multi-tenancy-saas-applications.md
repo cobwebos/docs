@@ -1,6 +1,6 @@
 ---
 title: "多租户 SaaS 应用程序与 Azure SQL 数据库的设计模式 | Microsoft Docs"
-description: "本文介绍云环境中运行的多租户数据库应用程序需要考虑的要求和通用数据体系结构模式，以及与这些模式相关的各种利弊。 此外，还说明了 Azure SQL 数据库及其弹性池与弹性工具如何在不造成损害的情况下满足这些要求。"
+description: "了解云环境中运行的多租户软件即服务 (SaaS) 数据库应用程序的要求和通用数据体系结构模式。"
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -13,15 +13,14 @@ ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: sqldb-design
+ms.workload: Active
 ms.date: 02/01/2017
 ms.author: srinia
+ms.openlocfilehash: eef48cfcbc7d6c241b5ece863df0be6ecad78ca7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 0f6ba62a01f3211ccaae6b6c48f72e0de54aad78
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>多租户 SaaS 应用程序与 Azure SQL 数据库的设计模式
 可以在本文中了解云环境中运行的多租户软件即服务 (SaaS) 数据库应用程序的要求和通用数据体系结构模式。 其中还说明了需要考虑的因素，以及不同设计模式的利弊取舍。 借助 Azure SQL 数据库中的弹性池和弹性工具，可以在不影响其他目标的情况下达到特定的要求。
@@ -168,5 +167,4 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
 
 如有问题，查找我们在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)。 添加 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)中的功能请求。
-
 

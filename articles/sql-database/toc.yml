@@ -11,12 +11,14 @@
       href: sql-database-get-started-portal.md
     - name: 创建 DB - Azure CLI
       href: sql-database-get-started-cli.md
-    - name: 创建 DB - PowerShell
+    - name: 创建 DB - Azure PowerShell
       href: sql-database-get-started-powershell.md
     - name: 连接和查询
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md
+        - name: Azure 门户
+          href: sql-database-connect-query-portal.md
         - name: VS Code
           href: sql-database-connect-query-vscode.md
         - name: 将 .NET 与 Visual Studio 配合使用
@@ -51,7 +53,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
     - name: Azure CLI
       href: sql-database-cli-samples.md
-    - name: PowerShell
+    - name: Azure PowerShell
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
@@ -71,6 +73,8 @@
           href: sql-database-connectivity-architecture.md
         - name: 防火墙规则
           href: sql-database-firewall-configure.md
+        - name: 防火墙虚拟网络规则
+          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: DTU 和 eDTU
           href: sql-database-what-is-a-dtu.md
         - name: DTU 基准
@@ -95,6 +99,8 @@
           href: sql-database-elastic-transactions-overview.md
         - name: 弹性作业
           href: sql-database-elastic-jobs-overview.md
+        - name: SQL 漏洞评估
+          href: sql-vulnerability-assessment.md
         - name: SQL Server 常用功能
           href: sql-database-features.md
     - name: “安全”
@@ -131,12 +137,16 @@
           href: sql-database-disaster-recovery.md
         - name: 执行恢复演练
           href: sql-database-disaster-recovery-drills.md
-    - name: 加载和移动数据
+    - name: 迁移到 SQL 数据库
       items:
         - name: 迁移 SQL Server DB
           href: sql-database-cloud-migrate.md
         - name: T-SQL 的更改
           href: sql-database-transact-sql-information.md
+        - name: 在迁移后管理数据库
+          href: sql-database-manage-after-migration.md
+    - name: 加载和移动数据
+      items:
         - name: 复制 DB
           href: sql-database-copy.md
         - name: 导入 DB
@@ -155,14 +165,16 @@
           href: sql-database-advisor.md
         - name: 自动优化
           href: sql-database-automatic-tuning.md
+        - name: Intelligent Insights
+          href: sql-database-intelligent-insights.md
+        - name: 智能见解诊断日志
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
         - name: 手动优化
           href: sql-database-performance-guidance.md
         - name: 操作 Query Store
           href: sql-database-operate-query-store.md
         - name: 扩展的事件
           href: sql-database-xevent-db-diff-from-svr.md
-        - name: 兼容级别
-          href: sql-database-compatibility-level-query-performance-130.md
         - name: 监视内存中存储
           href: sql-database-in-memory-oltp-monitoring.md
     - name: 向外扩展
@@ -229,7 +241,7 @@
           href: sql-database-elastic-jobs-service-installation.md
         - name: 创建作业 - 门户
           href: sql-database-elastic-jobs-create-and-manage.md
-        - name: 创建作业 - PowerShell
+        - name: 创建作业 - Azure PowerShell
           href: sql-database-elastic-jobs-powershell.md
         - name: 创建作业 - 示例应用
           href: sql-database-elastic-jobs-getting-started.md
@@ -255,12 +267,20 @@
           href: sql-database-dynamic-data-masking-get-started-portal.md
         - name: 配置多重身份验证
           href: sql-database-ssms-mfa-authentication-configure.md
+        - name: 通过 PowerShell 配置虚拟网络规则
+          href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: 业务连续性
+      items:
+        - name: 配置保管库 - 备份
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: 异地复制 - 门户
+          href: sql-database-geo-replication-portal.md
+    - name: 加载和移动数据
       items:
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md
         - name: 使用 ADF 加载数据
-          href: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+          href: ../data-factory/v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
         - name: 同步数据
           href: sql-database-get-started-sql-data-sync.md
     - name: 监视和优化
@@ -273,6 +293,8 @@
           href: sql-database-advisor-portal.md
         - name: 启用自动优化
           href: sql-database-automatic-tuning-enable.md
+        - name: 智能见解性能故障排除
+          href: sql-database-intelligent-insights-troubleshoot-performance.md
         - name: 使用 DMV 监视性能
           href: sql-database-monitoring-with-dmvs.md
         - name: 创建警报
@@ -287,6 +309,10 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure 自动化
           href: sql-database-manage-automation.md
+        - name: SQL 数据同步最佳做法
+          href: sql-database-best-practices-data-sync.md
+        - name: SQL 数据同步故障排除
+          href: sql-database-troubleshoot-data-sync.md
     - name: 向外扩展
       items:
         - name: 创建分片应用
@@ -335,7 +361,7 @@
           href: sql-database-connect-excel.md
 - name: 引用
   items:
-    - name: PowerShell
+    - name: Azure PowerShell
       href: '/powershell/module/azurerm.sql/#sql'
     - name: PowerShell（弹性数据库）
       href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'

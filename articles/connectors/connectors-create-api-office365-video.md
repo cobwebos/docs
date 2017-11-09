@@ -15,23 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: f0e3613d4a3fd5478787c0365eb7a0bcde886c81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-office365-video-connector"></a>Office 365 视频连接器入门
-连接到 Office 365 视频，获取有关 Office 365 视频的信息、获取视频列表等。 通过 Office 365 视频，你可以：
+连接到 Office 365 视频，获取有关 Office 365 视频的信息、获取视频列表等。 通过 Office 365 视频，可以：
 
-* 根据从 Office 365 视频中获取的数据生成你的业务流。 
-* 使用检查视频门户状态、获取频道中所有视频列表等操作。 这些操作可获得响应，然后使输出可用于其他操作。 例如，可以使用必应搜索连接器搜索 Office 365 视频，然后使用 Office 365 视频连接器获取该视频的相关信息。 如果视频满足你的要求，可在 Facebook 上发布此视频。 
+* 根据从 Office 365 视频中获取的数据生成业务流。 
+* 使用检查视频门户状态、获取频道中所有视频列表等操作。 这些操作可获得响应，并使输出可用于其他操作。 例如，可以使用必应搜索连接器搜索 Office 365 视频，并使用 Office 365 视频连接器获取该视频的相关信息。 如果视频满足要求，可在 Facebook 上发布此视频。 
 
 若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="create-a-connection-to-office365-video-connector"></a>创建到 Office 365 视频连接器的连接
-将此连接器添加到逻辑应用时，必须登录到 Office 365 视频帐户，并允许逻辑应用连接到你的帐户。
+将此连接器添加到逻辑应用时，必须登录到 Office 365 视频帐户，并允许逻辑应用连接到帐户。
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
 > 

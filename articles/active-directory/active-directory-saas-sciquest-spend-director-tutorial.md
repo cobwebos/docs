@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
 ms.openlocfilehash: 84b707668dc45e92e6151f422f1c919f638533b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>教程：Azure Active Directory 与 SciQuest Spend Director 集成
 本教程的目的是说明如何将 SciQuest Spend Director 与 Azure Active Directory (Azure AD) 集成。  
@@ -44,7 +43,7 @@ ms.lasthandoff: 02/16/2017
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
+* 除非必要，请勿使用生产环境。
 * 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。 
 
 ## <a name="scenario-description"></a>方案描述
@@ -55,7 +54,7 @@ ms.lasthandoff: 02/16/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-sciquest-spend-director-from-the-gallery"></a>从库中添加 SciQuest Spend Director
-若要配置 SciQuest Spend Director 与 Azure AD 的集成，需要从库中将 SciQuest Spend Director 添加到托管 SaaS 应用列表。
+要配置 SciQuest Spend Director 与 Azure AD 的集成，需要从库中将 SciQuest Spend Director 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 SciQuest Spend Director，请执行以下步骤：**
 
@@ -81,7 +80,7 @@ ms.lasthandoff: 02/16/2017
    
     ![应用程序][5]
 
-7. 在结果窗格中，选择“SciQuest Spend Director”，然后单击“完成”以添加该应用程序。
+7. 在结果窗格中，选择“SciQuest Spend Director”，并单击“完成”以添加该应用程序。
    
     ![应用程序][6]
 
@@ -95,8 +94,8 @@ ms.lasthandoff: 02/16/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SciQuest Spend Director 测试用户](#creating-a-halogen-software-test-user)** - 在 SciQuest Spend Director 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 SciQuest Spend Director 测试用户](#creating-a-halogen-software-test-user)** - 在 SciQuest Spend Director 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-single-sign-on"></a>配置 Azure AD 单一登录
@@ -108,7 +107,7 @@ ms.lasthandoff: 02/16/2017
    
     ![配置单一登录][8]
 
-2. 在“你希望用户如何登录 SciQuest Spend Director”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 SciQuest Spend Director”页上，选择“Azure AD 单一登录”，并单击“下一步”。
    
     ![Azure AD 单一登录][9]
 
@@ -118,9 +117,9 @@ ms.lasthandoff: 02/16/2017
    
      a. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 SciQuest Spend Director 应用程序的 URL：*https://.*sciquest.com/。**
    
-     b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中键入的值与在“登录 URL”文本框中键入的值相同。 
+     b. 在“回复 URL”文本框中键入的值与在“登录 URL”文本框中键入的值相同。 
    
-     c. 单击“资源组名称” 的 Azure 数据工厂。
+     c. 单击“下一步”。
 
 4. 在“配置 SciQuest Spend Director 的单一登录”页上，单击“下载元数据”，然后将元数据文件本地保存在计算机上。
    
@@ -128,7 +127,7 @@ ms.lasthandoff: 02/16/2017
 
 5. 联系 SciQuest 支持，以便使用前面下载的元数据启用此身份验证方法。
 
-6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。 
+6. 在 Azure 经典门户中，选择“单一登录配置确认”，并单击“完成”，关闭“配置单一登录”对话框。 
    
     ![什么是 Azure AD Connect][15]
 
@@ -157,7 +156,7 @@ ms.lasthandoff: 02/16/2017
    
     ![什么是 Azure AD Connect][103] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    a. 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -167,7 +166,7 @@ ms.lasthandoff: 02/16/2017
    
     ![什么是 Azure AD Connect][104] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a. 在“名字”文本框中，键入“Britta”。  
    
     b. 在“姓氏”文本框中，键入 **Simon**。
    
@@ -175,7 +174,7 @@ ms.lasthandoff: 02/16/2017
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -185,17 +184,17 @@ ms.lasthandoff: 02/16/2017
    
     ![什么是 Azure AD Connect][106]   
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
+    a. 写下“新密码”的值。
    
     b. 单击“完成”。   
 
 ### <a name="creating-a-sciquest-spend-director-test-user"></a>创建 SciQuest Spend Director 测试用户
 本部分的目的是在 SciQuest Spend Director 中创建名为“Britta Simon”的用户。
 
-你需要联系 SciQuest Spend Director 支持团队，向他们提供有关测试帐户的详细信息，以便他们创建测试帐户。
+需要联系 SciQuest Spend Director 支持团队，向他们提供有关测试帐户的详细信息，以便他们创建测试帐户。
 
 或者，可以利用实时预配（SciQuest Spend Director 提供支持的一项单一登录功能）。  
-如果已启用实时预配，则在单一登录尝试期间 SciQuest Spend Director 将自动创建用户（如果这些用户不存在）。 此功能使你无需手动创建单一登录对应用户。
+如果已启用实时预配，则在单一登录尝试期间 SciQuest Spend Director 会自动创建用户（如果这些用户不存在）。 使用此功能无需手动创建单一登录对应用户。
 
 若要启用实时预配，需要联系 SciQuest Spend Director 支持团队。
 
@@ -204,7 +203,7 @@ ms.lasthandoff: 02/16/2017
 
 ![什么是 Azure AD Connect][200]
 
-**若要将 Britta Simon 分配到 SciQuest Spend Director，请执行以下步骤：**
+**要将 Britta Simon 分配到 SciQuest Spend Director，请执行以下步骤：**
 
 1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
@@ -260,5 +259,4 @@ ms.lasthandoff: 02/16/2017
 [203]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_18.png
 [204]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_20.png
-
 

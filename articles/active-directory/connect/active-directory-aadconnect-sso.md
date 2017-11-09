@@ -12,28 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 09/18/2017
 ms.author: billmath
+ms.openlocfilehash: dd619ddf62b079ecc06bdf3699e3e32c35313284
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 5a390208f4b7c22e96d7888bcbbd14d8b27667eb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>什么是 Azure Active Directory 无缝单一登录？
 
 Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 启用此功能后，用户无需键入其密码即可登录到 Azure AD；通常情况下，甚至无需键入其用户名。 此功能可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+
 无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。
 
 ![无缝单一登录](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->无缝 SSO 目前以预览版提供。 此功能不适用于 Active Directory 联合身份验证服务 (ADFS)。
+>无缝 SSO _不_适用于 Active Directory 联合身份验证服务 (ADFS)。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -65,9 +65,6 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 \*需要[额外的配置](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
->[!IMPORTANT]
->我们最近中止了对 Microsoft Edge 的支持，以调查客户报告的问题。
-
 >[!NOTE]
 >对于 Windows 10，建议使用 [Azure AD join](../active-directory-azureadjoin-overview.md)，以获得最佳的 Azure AD 单一登录体验。
 
@@ -78,4 +75,3 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - [**常见问题**](active-directory-aadconnect-sso-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-

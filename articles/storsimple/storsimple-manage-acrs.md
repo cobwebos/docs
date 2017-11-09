@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: a87624b5706c1d9b8c2b9926e5580996a89ce984
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
 ## <a name="overview"></a>概述
-使用访问控制记录 (ACR) 可以指定哪些主机能够连接到 StorSimple 设备上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备将在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 “配置”页上的访问控制记录部分显示包含相应主机 IQN 的所有访问控制记录。
+使用访问控制记录 (ACR) 可以指定哪些主机能够连接到 StorSimple 设备上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备会在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 “配置”页上的访问控制记录部分显示包含相应主机 IQN 的所有访问控制记录。
 
 本教程介绍了以下与 ACR 相关的常见任务：
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 11/17/2016
 执行以下步骤，添加 ACR。
 
 #### <a name="to-add-an-access-control-record"></a>添加访问控制记录
-1. 在服务登陆页上选择服务，双击服务名称，然后单击“配置”选项卡。
+1. 在服务登陆页上选择服务，双击服务名称，并单击“配置”选项卡。
 2. 在“访问控制记录”下的表格列表中，为 ACR 提供一个“名称”。
 3. 在“iSCSI 发起程序名称”下，提供 Windows 主机的 IQN 名称。 若要获取 Windows Server 主机的 IQN，请执行以下操作：
    
@@ -63,7 +62,7 @@ ms.lasthandoff: 11/17/2016
 执行以下步骤，编辑 ACR。
 
 #### <a name="to-edit-an-access-control-record"></a>编辑访问控制记录
-1. 在服务登陆页上选择服务，双击服务名称，然后单击“配置”选项卡。
+1. 在服务登陆页上选择服务，双击服务名称，并单击“配置”选项卡。
 2. 在访问控制记录的表格列表中，将鼠标悬停在要修改的 ACR 上。
 3. 为 ACR 提供新名称和/或 IQN。
 4. 单击“保存”保存修改的 ACR。 表格列表随即会更新以反映此项更改。
@@ -79,13 +78,12 @@ ms.lasthandoff: 11/17/2016
 执行以下步骤，删除访问控制记录。
 
 #### <a name="to-delete-an-access-control-record"></a>删除访问控制记录
-1. 在服务登陆页上选择服务，双击服务名称，然后单击“配置”选项卡。
+1. 在服务登陆页上选择服务，双击服务名称，并单击“配置”选项卡。
 2. 在访问控制记录 (ACR) 的表格列表中，将鼠标悬停在要删除的 ACR 上。
-3. 所选 ACR 的最右侧列中将显示一个删除图标 (**x**)。 单击 **x** 图标即可删除 ACR。
+3. 所选 ACR 的最右侧列中会显示一个删除图标 (**x**)。 单击 **x** 图标即可删除 ACR。
 4. 系统提示确认时，请单击“是”继续删除。 表格列表随即会更新以反映删除。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[管理 StorSimple 卷](storsimple-manage-volumes.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
 

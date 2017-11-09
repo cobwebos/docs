@@ -14,14 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/05/2017
 ms.author: betorres
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-search-traffic-analytics"></a>搜索流量分析是什么
 搜索流量分析是用于为搜索服务实现反馈循环的模式。 此模式描述必需的数据以及如何使用 Application Insights（用于监视多个平台中的服务的行业领导者）收集这些数据。
 
@@ -45,13 +43,13 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 前一部分中提到的信号必须在用户与搜索应用程序交互时从该搜索应用程序中收集。 Application Insights 是一个可扩展的监视解决方案，可用于多个平台，具有灵活的检测选项。 使用 Application insights 可以充分利用由 Azure 搜索创建的 Power BI 搜索报表，从而使数据分析更加容易。
 
-在 Azure 搜索服务的[门户](https://portal.azure.com)页中，“搜索流量分析”边栏选项卡包含一个用于遵循此遥测模式的速查表。 还可以选择或创建 Application Insights 资源，然后查看必需的数据，所有这些全都在一个位置完成。
+在 Azure 搜索服务的[门户](https://portal.azure.com)页中，“搜索流量分析”边栏选项卡包含一个用于遵循此遥测模式的速查表。 还可以选择或创建 Application Insights 资源，并查看必需的数据，所有这些全都在一个位置完成。
 
 ![“搜索流量分析”说明][1]
 
 ### <a name="1-select-an-application-insights-resource"></a>1.选择 Application Insights 资源
 
-需要选择要使用的 Application Insights 资源，如果你还没有 Application Insights 资源，则需要创建一个。 可以使用已在使用的资源记录所需的自定义事件。
+需要选择要使用的 Application Insights 资源，如果还没有 Application Insights 资源，则需要创建一个。 可以使用已在使用的资源记录所需的自定义事件。
 
 创建新的 Application Insights 资源时，此方案对所有应用程序类型都有效。 选择一个最适合所用平台的资源。
 
@@ -59,7 +57,7 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 ### <a name="2-instrument-your-application"></a>2.检测应用程序
 
-在此阶段中，你将使用以上步骤中创建的 Application Insights 资源检测自己的搜索应用程序。 此过程有四个步骤：
+在此阶段中，将使用以上步骤中创建的 Application Insights 资源检测自己的搜索应用程序。 此过程有四个步骤：
 
 **I.创建一个遥测客户端**。这是将事件发送到 Application Insights 资源的对象。
 
@@ -79,7 +77,7 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 对于其他语言和平台，请参阅完整的[列表](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
 
-**II.请求用于关联的搜索 ID**。为了将搜索请求与单击相关联，必须具有一个将这两个不同事件关联起来的相关性 ID。 你使用标头请求搜索 ID 时，Azure 搜索将为你提供该 ID：
+**II.请求用于关联的搜索 ID**。为了将搜索请求与单击相关联，必须具有一个将这两个不同事件关联起来的相关性 ID。 使用标头请求搜索 ID 时，Azure 搜索将提供该 ID：
 
 *C#*
 
@@ -102,7 +100,7 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 
 **III.记录搜索事件**
 
-每当用户发出搜索请求时，你应使用 Application Insights 自定义事件上的以下架构，将该请求作为搜索事件进行记录：
+每当用户发出搜索请求时，应使用 Application Insights 自定义事件上的以下架构，将该请求作为搜索事件进行记录：
 
 **ServiceName**：(string) 搜索服务名称 **SearchId**：(guid) 搜索查询的唯一标识符（进入搜索响应） **IndexName**：(string) 要查询的搜索服务索引 **QueryTerms**：(string) 用户输入的搜索词 **ResultCount**：(int) 返回的文档数（进入搜索响应）**ScoringProfile**：(string) 所用计分概要文件的名称（如果有计分概要文件）
 
@@ -171,7 +169,7 @@ Azure 搜索提供集成 Azure Application Insights 和 Power BI 的遥测解决
 检测到应用并确认应用程序已正确连接到 Application Insights 后，可以对 Power BI Desktop 使用由 Azure 搜索创建的预定义模板。
 此模板包含图表和表格，可帮助你做出更明智的决策来提高搜索性能和相关性。
 
-若要实例化 Power BI Desktop 模板，需要三部分有关 Application Insights 的信息。 此数据可以在“搜索流量分析”页中找到（当你选择要使用的资源时）
+若要实例化 Power BI Desktop 模板，需要三部分有关 Application Insights 的信息。 此数据可以在“搜索流量分析”页中找到（选择要使用的资源时）
 
 ![“搜索流量分析”边栏选项卡中的 Application Insights 数据][2]
 
@@ -197,4 +195,3 @@ Power BI Desktop 模板中包括的指标：
 [1]: ./media/search-traffic-analytics/AzureSearch-TrafficAnalytics.png
 [2]: ./media/search-traffic-analytics/AzureSearch-AppInsightsData.png
 [3]: ./media/search-traffic-analytics/AzureSearch-PBITemplate.png
-

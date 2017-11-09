@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: b2ea3d92f233dab5bd6814e4875f881117eac8e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>教程：Azure Active Directory 与 Ceridian Dayforce HCM 集成
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 07/19/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-ceridian-dayforce-hcm-from-the-gallery"></a>从库中添加 Ceridian Dayforce HCM
-若要配置 Ceridian Dayforce HCM 与 Azure AD 的集成，需要从库中将 Ceridian Dayforce HCM 添加到托管 SaaS 应用列表。
+要配置 Ceridian Dayforce HCM 与 Azure AD 的集成，需要从库中将 Ceridian Dayforce HCM 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Ceridian Dayforce HCM，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/19/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Ceridian Dayforce HCM 测试用户](#create-a-ceridian-dayforce-hcm-test-user)**：目的是在 Ceridian Dayforce HCM 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建 Ceridian Dayforce HCM 测试用户](#create-a-ceridian-dayforce-hcm-test-user)** - 在 Ceridian Dayforce HCM 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -109,14 +108,14 @@ ms.lasthandoff: 07/19/2017
 
     ![配置单一登录](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入用户用于登录 Ceridian Dayforce HCM 应用程序的 URL。
+    a. 在“登录 URL”文本框中，键入用户用于登录 Ceridian Dayforce HCM 应用程序的 URL。
     
     | 环境 | 代码 |
     | :-- | :-- |
     | 生产 | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | 测试 | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
     
     | 环境 | 代码 |
     | :-- | :-- |
@@ -133,7 +132,7 @@ ms.lasthandoff: 07/19/2017
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Ceridian Dayforce HCM 客户端支持团队](https://www.ceridian.com/contact-us/index.html)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
 
@@ -141,13 +140,13 @@ ms.lasthandoff: 07/19/2017
 
     ![配置单一登录](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，然后执行以下步骤：
+6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称  | 属性值 |
     | --------------- | -------------------- |    
     | name  | user.extensionattribute2 |    
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
 
@@ -215,9 +214,9 @@ ms.lasthandoff: 07/19/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Ceridian Dayforce HCM，请执行以下步骤：**
+**要将 Britta Simon 分配到 Ceridian Dayforce HCM，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -245,9 +244,9 @@ ms.lasthandoff: 07/19/2017
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 Ceridian Dayforce HCM，请执行以下步骤：**
+**要将 Britta Simon 分配到 Ceridian Dayforce HCM，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -292,5 +291,4 @@ ms.lasthandoff: 07/19/2017
 [201]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_203.png
-
 

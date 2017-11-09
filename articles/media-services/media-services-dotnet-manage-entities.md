@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
 > [!div class="op_single_selector"]
@@ -113,7 +112,7 @@ ms.lasthandoff: 08/28/2017
     }
 
 ## <a name="list-jobs-and-assets"></a>列出作业和资产
-在媒体服务中列出资产及其关联作业是一项重要的相关任务。 以下代码示例演示如何列出每个 IJob 对象，然后，针对每个作业显示作业的相关属性、所有相关的任务、所有输入资产和所有输出资产。 本示例中的代码对各种其他任务也有所帮助。 例如，如果想要列出你先前运行的一个或多个编码作业的输出资产，本代码将演示如何访问输出资产。 如果拥有对某个输出资产的引用，可以通过下载或提供 URL 的方式，将内容传递给其他用户或应用程序。 
+在媒体服务中列出资产及其关联作业是一项重要的相关任务。 以下代码示例演示了如何列出每个 IJob 对象，然后，针对每个作业，它会显示作业的相关属性、所有相关的任务、所有输入资产和所有输出资产。 本示例中的代码对各种其他任务也有所帮助。 例如，如果想要列出你先前运行的一个或多个编码作业的输出资产，本代码将演示如何访问输出资产。 如果拥有对某个输出资产的引用，可以通过下载或提供 URL 的方式，将内容传递给其他用户或应用程序。 
 
 有关传递资产选项的详细信息，请参阅[使用适用于 .NET 的媒体服务 SDK 传递资产](media-services-deliver-streaming-content.md)。
 
@@ -193,7 +192,7 @@ ms.lasthandoff: 08/28/2017
     }
 
 ## <a name="list-all-access-policies"></a>列出所有访问策略
-在媒体服务中，可以对资产或其文件定义访问策略。 访问策略定义文件或资产的权限（访问类型以及持续时间）。 在媒体服务代码中，通常通过创建 IAccessPolicy 对象来定义访问策略对象，然后将其与现有资产相关联。 然后创建一个 ILocator 对象，它允许提供对媒体服务中的资产的直接访问。 本文档系列随附的 Visual Studio 项目包含几个代码示例，这些代码示例演示如何创建和分配访问策略和定位符到资产。
+在媒体服务中，可以对资产或其文件定义访问策略。 访问策略定义文件或资产的权限（访问类型以及持续时间）。 在媒体服务代码中，通常通过创建 IAccessPolicy 对象来定义访问策略对象，并将其与现有资产相关联。 然后创建一个 ILocator 对象，它允许你提供对媒体服务中的资产的直接访问。 本文档系列随附的 Visual Studio 项目包含几个代码示例，这些代码示例演示如何创建和分配访问策略和定位符到资产。
 
 以下代码示例演示如何列出服务器上所有的访问策略，并显示与每个策略关联的权限类型。 查看访问策略的另一个有用方法是列出服务器上的所有 ILocator 对象，然后针对每个定位符，可以使用其 AccessPolicy 属性列出其关联的访问策略。
 
@@ -404,5 +403,4 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

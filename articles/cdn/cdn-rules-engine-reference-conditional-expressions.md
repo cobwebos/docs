@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 57e56c38e003cb83dcf44f455c4451d159db8a59
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Azure CDN 规则引擎条件表达式
 本主题列出了 Azure 内容传送网络 (CDN) [规则引擎](cdn-rules-engine.md)的条件表达式的详细说明。
 
@@ -44,4 +42,3 @@ ELSE IF| ELSE IF 表达式指定在一组特定于此 ELSE IF 语句的功能发
 * [规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)
 * [规则引擎功能](cdn-rules-engine-reference-features.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
-

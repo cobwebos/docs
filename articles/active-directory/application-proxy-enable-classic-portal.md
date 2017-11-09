@@ -15,14 +15,12 @@ ms.date: 07/02/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: ea97fdc8d146ed524a932018b572ceda0982738b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-application-proxy-in-the-classic-portal-and-download-connectors"></a>在经典门户中启用应用程序代理并下载连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 08/01/2017
 ## <a name="application-proxy-prerequisites"></a>应用程序代理先决条件
 在启用和使用应用程序代理服务之前，需要：
 
-* [Microsoft Azure AD 基本或高级版订阅](active-directory-editions.md) 以及你本人为全局管理员的 Azure AD 目录。
+* [Microsoft Azure AD 基本或高级版订阅](active-directory-editions.md) 以及本人为全局管理员的 Azure AD 目录。
 * 可以安装应用程序代理连接器、运行 Windows Server 2012 R2 或 2016 的服务器。 该服务器将请求发送到云中的应用程序代理服务，并且需要与要发布的应用程序建立 HTTP 或 HTTPS 连接。
   * 若要单一登录到已发布的应用程序，此计算机应域加入要发布的应用程序所在的同一 AD 域。 相关信息，请参阅[使用应用程序代理进行单一登录](active-directory-application-proxy-sso-using-kcd.md)
 * 如果组织使用代理服务器连接 Internet，请阅读[使用现有本地代理服务器](application-proxy-working-with-proxy-servers.md)，了解配置方法的详细信息。
@@ -97,4 +95,3 @@ ms.lasthandoff: 08/01/2017
 现在，可以随时 [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
 如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors.md)的详细信息。
-

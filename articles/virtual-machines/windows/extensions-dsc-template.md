@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e85d5563a314964ad1ed43c693cdebe7a30297de
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 4292f9d8cd181073fdf0adff99fcb9624e0e9f55
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用 Windows VMSS 和 Desired State Configuration
 本文介绍 [Desired State Configuration 扩展处理程序](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的 Resource Manager 模板。 
@@ -173,7 +172,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 
 ## <a name="example"></a>示例
 以下示例摘自 [DSC 扩展处理程序概述](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)网页中的“入门”部分。
-此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。 保存“IisInstall.ps1”配置，将它放在 .ZIP 文件中，然后将该文件上传到可访问的 URL 中。 此示例使用 Azure Blob 存储，但可以从任意位置下载 .ZIP 文件。
+此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。 保存“IisInstall.ps1”配置，将它放在 .ZIP 文件中，并将该文件上传到可访问的 URL 中。 此示例使用 Azure Blob 存储，但可以从任意位置下载 .ZIP 文件。
 
 在 Azure Resource Manager 模板中，以下代码指示 VM 下载正确的文件并运行适当的 PowerShell 函数：
 
@@ -192,7 +191,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 ```
 
 ## <a name="updating-from-the-previous-format"></a>从以前的格式进行更新
-以前格式（包含 ModulesUrl、ConfigurationFunction、SasToken 或 Properties 等公共属性）中的所有设置将自动调整为当前格式，并按以前的相同方式运行。
+以前格式（包含 ModulesUrl、ConfigurationFunction、SasToken 或 Properties 等公共属性）中的所有设置会自动调整为当前格式，并按以前的相同方式运行。
 
 上述 settings 架构如下所示：
 
@@ -294,12 +293,11 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 * 删除需要缺失属性的属性。
 
 ## <a name="next-steps"></a>后续步骤
-在[将虚拟机规模集与 Azure DSC 扩展配合使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集
+在[将虚拟机规模集与 Azure DSC 扩展配合使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集。
 
 在 [DSC 的安全凭据管理](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中了解更多详细信息。 
 
 有关 Azure DSC 扩展处理程序的详细信息，请参阅 [Azure Desired State Configuration 扩展处理程序简介](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 有关 PowerShell DSC 的详细信息，请[访问 PowerShell 文档中心](https://msdn.microsoft.com/powershell/dsc/overview)。 
-
 

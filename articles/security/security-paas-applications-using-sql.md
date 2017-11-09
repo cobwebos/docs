@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: 18509b3fc3a73118f67583a0b087c58f0e51993c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="securing-paas-databases-in-azure"></a>在 Azure 中保护 PaaS 数据库
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 07/18/2017
 
 可将 Azure SQL 数据库配置为使用以下两种身份验证类型之一：
 
-- **SQL 身份验证**使用用户名和密码。 在为数据库创建逻辑服务器时，你已指定一个包含用户名和密码的“服务器管理员”登录名。 借助这些凭据，可以使用数据库所有者的身份通过服务器上任何数据库的身份验证。
+- **SQL 身份验证**使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 借助这些凭据，可以使用数据库所有者的身份通过服务器上任何数据库的身份验证。
 
 - **Azure Active Directory 身份验证**使用 Azure Active Directory 管理的标识，支持托管域和集成域。 若要使用 Azure Active Directory 身份验证，必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 07/18/2017
 ### <a name="restrict-access-based-on-ip-address"></a>基于 IP 地址限制访问
 可以创建防火墙规则用于指定可接受的 IP 地址范围。 这些规则可以针对服务器级别和数据库级别。 建议尽量使用数据库级防火墙规则，以增强安全性并提高数据库的可移植性。 当多个数据库具有相同的访问要求，但你不想花时间单独配置每个数据库时，管理员最好是使用服务器级防火墙规则。
 
-SQL 数据库的默认源 IP 地址限制允许从任何 Azure 地址（包括其他订阅和租户）进行访问。 可以限制为仅允许从你的 IP 地址访问实例。 即使使用了 SQL 防火墙和 IP 地址限制，也仍然需要设置强身份验证。 请参阅本文前面提供的建议。
+SQL 数据库的默认源 IP 地址限制允许从任何 Azure 地址（包括其他订阅和租户）进行访问。 可以限制为仅允许从 IP 地址访问实例。 即使使用了 SQL 防火墙和 IP 地址限制，也仍然需要设置强身份验证。 请参阅本文前面提供的建议。
 
 若要了解有关 Azure SQL 防火墙和 IP 限制的详细信息，请参阅：
 
@@ -92,4 +91,3 @@ Azure SQL 通过 [Always Encrypted](/sql/relational-databases/security/encryptio
 
 - [保护 PaaS 部署](security-paas-deployments.md)
 - [使用 Azure 应用服务保护 PaaS Web 和移动应用程序](security-paas-applications-using-app-services.md)
-

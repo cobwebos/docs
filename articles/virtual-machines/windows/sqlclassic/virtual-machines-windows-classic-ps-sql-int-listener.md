@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 中配置 Always On 可用性组的 ILB 侦听器 | Microsoft Docs"
+title: "在 Azure 中配置 Always On 可用性组的 ILB 侦听器 | Microsoft文档"
 description: "本教程使用通过经典部署模型创建的资源，并使用内部负载均衡器在 Azure 中创建 Always On 可用性组侦听器。"
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: fea70b389b1f1d6af963e3f14fdc48e8d857dd53
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 Always On 可用性组的 ILB 侦听器
 > [!div class="op_single_selector"]
@@ -47,7 +46,7 @@ ms.lasthandoff: 06/28/2017
 ## <a name="determine-the-accessibility-of-the-listener"></a>确定侦听器的可访问性
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-本文重点介绍如何创建使用 ILB 的侦听器。 如果你需要一个公共或外部侦听器，请参阅本文的另一个版本，其中介绍了如何设置[外部侦听器](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+本文重点介绍如何创建使用 ILB 的侦听器。 如果需要一个公共或外部侦听器，请参阅本文的另一个版本，其中介绍了如何设置[外部侦听器](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>创建支持直接服务器返回的负载均衡 VM 终结点
 首先通过运行本部分稍后的脚本创建 ILB。
@@ -63,9 +62,9 @@ ms.lasthandoff: 06/28/2017
 4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
 
 5. 启动 Azure PowerShell。  
-    将打开新的 PowerShell 会话，其中加载了 Azure 管理模块。
+    将打开新 PowerShell 会话，其中加载了 Azure 管理模块。
 
-6. 运行 `Get-AzurePublishSettingsFile`。 此 cmdlet 将你定向到浏览器，以将发布设置文件下载到本地目录。 系统可能会提示输入 Azure 订阅的登录凭据。
+6. 运行 `Get-AzurePublishSettingsFile`。 此 cmdlet 你将定向到浏览器，以将发布设置文件下载到本地目录。 系统可能会提示输入 Azure 订阅的登录凭据。
 
 7. 结合下载的发布设置文件的路径运行以下 `Import-AzurePublishSettingsFile` 命令：
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 06/28/2017
 
     使用地缘组的现有部署不能添加 ILB。 有关 ILB 要求的详细信息，请参阅[内部负载均衡器概述](../../../load-balancer/load-balancer-internal-overview.md)。
 
-    此外，如果可用性组跨 Azure 区域，则你必须在每个数据中心内对云服务和节点运行该脚本一次。
+    此外，如果可用性组跨多个 Azure 区域，则必须在每个数据中心内对驻留其中的云服务和节点运行一次该脚本。
 
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -167,4 +166,3 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-

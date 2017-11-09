@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
+ms.openlocfilehash: 9b8f96b34b53982c469273a3df9751ceb7930d60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9c6eab099057ef91f79ff1a97e1cc1bd397fc946
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集
 
 Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 容器解决方案是 OMS Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
@@ -52,8 +50,7 @@ Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理
 
 ![](media/container-service-monitoring-oms/image4.png)
 
-3. 需在此页面上输入 `wsid`（OMS 工作区 ID）和 `wskey`（工作区 ID 的 OMS 主密钥）。 若要获取 `wsid` 和 `wskey`，需在 <https://mms.microsoft.com> 创建 OMS 帐户。
-请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
+3. 需在此页面上输入 `wsid`（OMS 工作区 ID）和 `wskey`（工作区 ID 的 OMS 主密钥）。 若要获取 `wsid` 和 `wskey`，需在 <https://mms.microsoft.com> 创建 OMS 帐户。请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -117,4 +114,3 @@ $ dcos package uninstall msoms
 ## <a name="next-steps"></a>后续步骤
 
  现在已完成设置，可使用 OMS 监视容器，请[查看容器仪表板](../../log-analytics/log-analytics-containers.md)。
-

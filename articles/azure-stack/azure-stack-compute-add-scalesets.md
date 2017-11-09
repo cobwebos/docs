@@ -1,52 +1,53 @@
 ---
-title: Make virtual machine scale sets available in Azure Stack
-description: Learn how a cloud administrator can add virtual machine scale to the Azure Stack Marketplace
+title: "在 Azure 堆栈中提供虚拟机规模集"
+description: "了解如何云管理员可以向 Azure 堆栈应用商店中添加虚拟机规模"
 services: azure-stack
 author: anjayajodha
 ms.service: azure-stack
 ms.topic: article
-ms.date: 8/4/2017
+ms.date: 9/25/2017
 ms.author: anajod
 keywords: 
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c3ce40b182085dbd2fe54d0f6b6cbe704ab28e86
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.openlocfilehash: 31aeb963bdf4fd32712bc6f29f64060ec1c77cb8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure 堆栈中提供虚拟机规模集
 
-# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Make virtual machine scale sets available in Azure Stack
-Virtual machine scale sets are an Azure Stack compute resource. You can use them to deploy and manage a set of identical virtual machines. With all virtual machines configured the same, scale sets don’t require pre-provisioning of virtual machines. It's easier to build large-scale services that target big compute, big data, and containerized workloads.
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-This topic guides you through the process to make scale sets available in the Azure Stack Marketplace. After you complete this procedure, your users can add virtual machine scale sets to their subscriptions.
+虚拟机缩放集是 Azure 堆栈计算资源。 你可以使用它们来部署和管理一组相同的虚拟机。 对于所有虚拟机配置相同，不需要预设置的虚拟机缩放集。 它是更轻松地生成面向大计算、 大数据和容器化工作负荷的大规模服务。
 
-Virtual machine scale sets on Azure Stack are like virtual machine scale sets on Azure. For more information, see the following videos:
-* [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
-* [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
+本主题将指导您完成使缩放集 Azure 堆栈应用商店中可用的过程。 完成此过程之后，你的用户可以将虚拟机规模集对它们的订阅添加。
 
-On Azure Stack, Virtual Machine Scale Sets do not support auto-scale. You can add more instances to a scale set using the Azure Stack portal, Resource Manager templates, or PowerShell.
+Azure 堆栈上的虚拟机规模集就像在 Azure 上的虚拟机规模集。 有关详细信息，请参阅以下视频：
+* [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)（Mark Russinovich 谈论 Azure 规模集）
+* [Guy Bowerman 介绍虚拟机规模集](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-## <a name="prerequisites"></a>Prerequisites
-* **Powershell and tools**
+在 Azure 堆栈上虚拟机规模集不支持自动缩放。 可以将多个实例添加到缩放集使用 Azure 堆栈门户、 资源管理器模板或 PowerShell。
 
-   Install and configured PowerShell for Azure Stack and the Azure Stack tools. See [Get up and running with PowerShell in Azure Stack](azure-stack-powershell-configure-quickstart.md).
+## <a name="prerequisites"></a>必备组件
+* **Powershell 和工具**
 
-   After you install the Azure Stack tools, make sure you import the following PowerShell module (path relative to the .\ComputeAdmin folder in the AzureStack-Tools-master folder):
+   安装和配置适用于 Azure 堆栈的 PowerShell 和 Azure 堆栈工具。 请参阅[获取启动并运行 Azure 堆栈中的 PowerShell](azure-stack-powershell-configure-quickstart.md)。
+
+   安装 Azure 堆栈工具后，请确保你导入以下的 PowerShell 模块 (相对于的路径。 \ComputeAdmin 文件夹 AzureStack 工具主文件夹中的):
 
         Import-Module .\AzureStack.ComputeAdmin.psm1
 
-* **Operating system image**
+* **操作系统映像**
 
-   If you haven’t added an operating system image to your Azure Stack Marketplace, see [Add the Windows Server 2016 VM image to the Azure Stack marketplace](azure-stack-add-default-image.md).
+   如果你尚未添加到 Azure 堆栈应用商店的操作系统映像，请参阅[将 Windows Server 2016 VM 映像添加到 Azure 堆栈 marketplace](azure-stack-add-default-image.md)。
 
-   For Linux support, download Ubuntu Server 16.04 and add it using ```Add-AzsVMImage``` with the following parameters: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
+   Linux 支持下载 Ubuntu Server 16.04 并将其使用添加```Add-AzsVMImage```使用以下参数： ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```。
 
-## <a name="add-the-virtual-machine-scale-set"></a>Add the virtual machine scale set
+## <a name="add-the-virtual-machine-scale-set"></a>添加虚拟机规模集
 
-Edit the following PowerShell script for your environment and then run it to add a virtual machine scale set to your Azure Stack Marketplace. 
+编辑你的环境的以下 PowerShell 脚本，然后运行它，以便添加到你的 Azure 堆栈 Marketplace 设置虚拟机规模。 
 
-``$User`` is the account you use to connect the administrator portal. For example, serviceadmin@contoso.onmicrosoft.com.
+``$User``是用于连接管理员门户的帐户。 例如，serviceadmin@contoso.onmicrosoft.com。
 
 ```
 $Arm = "https://adminmanagement.local.azurestack.external"
@@ -69,17 +70,16 @@ Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 Add-AzsVMSSGalleryItem -Location $Location
 ```
 
-## <a name="remove-a-virtual-machine-scale-set"></a>Remove a virtual machine scale set
+## <a name="remove-a-virtual-machine-scale-set"></a>删除虚拟机规模集
 
-To remove a virtual machine scale set gallery item, run the following PowerShell command:
+若要删除虚拟机缩放集库项，运行以下 PowerShell 命令：
 
     Remove-AzsVMSSGalleryItem
 
 > [!NOTE]
-> The gallery item may not be removed immediately. You may need to refresh the portal several times before it is removed from the Marketplace.
+> 不能立即删除库项。 你可能需要刷新门户几次，才能从应用商店中删除。
 
 
-## <a name="next-steps"></a>Next steps
-[Frequently asked questions for Azure Stack](azure-stack-faq.md)
-
+## <a name="next-steps"></a>后续步骤
+[Azure 堆栈的常见问题](azure-stack-faq.md)
 

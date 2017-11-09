@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
+ms.openlocfilehash: 45e80ca672dfdb6defc6e5c1aac3d29f5479125c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: d6a0be5d9c876984a323a65f9e0ce73668e94cb8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -108,7 +107,7 @@ ms.lasthandoff: 07/20/2017
         $('#add-item').submit(addItemHandler);
         $('#refresh').on('click', refreshDisplay);
 
-    前面的代码会初始化同步上下文，然后调用 getSyncTable（而不是 getTable）来获取对本地表的引用。
+    前面的代码会初始化同步上下文，并调用 getSyncTable（而不是 getTable）来获取对本地表的引用。
 
     此代码使用本地数据库进行所有创建、读取、更新和删除 (CRUD) 表操作。
 
@@ -128,15 +127,15 @@ ms.lasthandoff: 07/20/2017
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    通过调用 **syncContext.push()** 决定何时将更改推送到移动应用后端。 例如，可以在与同步按钮关联的按钮事件处理程序中调用 **syncBackend**。
+    通过调用 **syncContext.push()** 决定何时会更改推送到移动应用后端。 例如，可以在与同步按钮关联的按钮事件处理程序中调用 **syncBackend**。
 
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
 
 示例中 **syncContext** 的 **push** 方法仅会在应用启动时在登录的回调函数中调用。  在实际应用程序中，还可以手动或在网络状态发生更改时触发此同步功能。
 
-对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作将自动触发推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **push** 调用，因为它可能是冗余的。
+对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **push** 调用，因为它可能是冗余的。
 
-在所提供的代码中，将查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
+在所提供的代码中，查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
 
 ## <a name="optional-disable-authentication"></a>（可选）禁用身份验证
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 07/20/2017
 ## <a name="optional-test-the-sync-behavior"></a>（可选）测试同步行为
 在本部分中，修改客户端项目，通过对后端使用无效的应用程序 URL 来模拟脱机方案。 添加或更改数据项时，这些更改将保存在本地存储中，但在重新建立连接之前，不会同步到后端数据存储中。
 
-1. 在解决方案资源管理器中，打开 index.js 项目文件，然后更改应用程序 URL，使其指向无效的 URL，如以下代码所示：
+1. 在解决方案资源管理器中，打开 index.js 项目文件，并更改应用程序 URL，使其指向无效的 URL，如以下代码所示：
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
@@ -211,4 +210,3 @@ ms.lasthandoff: 07/20/2017
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-

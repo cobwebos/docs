@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
 ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operations-management-suite-oms-sdk"></a>Operations Management Suite (OMS) SDK
-[Operations Management Suite (OMS)](operations-management-suite-overview.md) 是 Microsoft 基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。  本文列出的文档和其他资源可访问 OMS 和 Azure 门户之外的 OMS 服务。  这包括从多种编程接口和脚本引擎（例如 PowerShell）访问的 REST API。 
+[Operations Management Suite (OMS)](operations-management-suite-overview.md) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。  本文列出的文档和其他资源可访问 OMS 和 Azure 门户之外的 OMS 服务。  这包括从多种编程接口和脚本引擎（例如 PowerShell）访问的 REST API。 
 
 ## <a name="automation"></a>自动化
 * [Azure 自动化文档](http://azure.microsoft.com/documentation/services/automation)
@@ -58,5 +57,4 @@ ms.lasthandoff: 03/03/2017
 ## <a name="next-steps"></a>后续步骤
 * 阅读关于[与 OMS 服务集成](operations-management-suite-integration.md)的不同选项。
 * [在 OMS 中创建自定义解决方案](operations-management-suite-solutions-creating.md)。
-
 

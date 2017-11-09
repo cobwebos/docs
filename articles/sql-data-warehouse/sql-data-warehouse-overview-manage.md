@@ -15,18 +15,16 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 0056c458cc002cbdb1b8dabefe0d11a8abd61179
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/30/2017
-
-
+ms.openlocfilehash: b14d0aad5a1f50c225391dbab27ec6240423a65a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中管理数据库
-SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，若要缩放性能，你只需调整相应级别的计算资源并为这些资源付费，然后即可让 SQL 数据仓库执行向外扩展和缩减的所有工作。
+SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，要缩放性能，只需调整相应级别的计算资源并为这些资源付费，然后即可让 SQL 数据仓库执行向外扩展和缩减的所有工作。
 
-你肯定需要监视工作负荷以确定所需性能，并对长时间运行的查询进行故障排除。 你还需要执行几个安全任务来管理用户和登录名的权限。
+肯定需要监视工作负荷以确定所需性能，并对长时间运行的查询进行故障排除。 还需要执行几个安全任务来管理用户和登录名的权限。
 
 本概述介绍管理 SQL 数据仓库的这些方面内容。
 
@@ -39,15 +37,15 @@ SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，
 * 备份和还原
 
 ## <a name="management-tools"></a>管理工具
-可以使用多种工具来管理 SQL 数据仓库中的数据库。 管理数据库时，你将为需要执行的每种类型的任务制定工具首选项。
+可以使用多种工具来管理 SQL 数据仓库中的数据库。 管理数据库时，将为需要执行的每种类型的任务制定工具首选项。
 
 ### <a name="azure-portal"></a>Azure 门户
-[Azure 门户][Azure portal]是一个基于 Web 的门户，可用于创建、更新和删除数据库以及监视数据库资源。 如果你刚开始使用 Azure、管理少量的数据仓库数据库或需要快速执行某些操作，该工具是理想之选。
+[Azure 门户][Azure portal]是一个基于 Web 的门户，可用于创建、更新和删除数据库以及监视数据库资源。 如果刚开始使用 Azure、管理少量的数据仓库数据库或需要快速执行某些操作，该工具是理想之选。
 
 若要开始使用 Azure 门户，请参阅[创建 SQL 数据仓库（Azure 门户）][Create a SQL Data Warehouse (Azure portal)]。
 
 ### <a name="sql-server-data-tools-in-visual-studio"></a>Visual Studio 中的 SQL Server Data Tools
-使用 Visual Studio 中的 [SQL Server Data Tools][SQL Server Data Tools] (SSDT)，可连接到你的数据库并对其进行管理和开发。 如果你是熟悉 Visual Studio 或其他集成开发环境 (IDE) 的应用程序开发人员，请尝试使用 Visual Studio 中的 SSDT。
+使用 Visual Studio 中的 [SQL Server Data Tools][SQL Server Data Tools] (SSDT)，可连接到数据库并对其进行管理和开发。 如果是熟悉 Visual Studio 或其他集成开发环境 (IDE) 的应用程序开发人员，请尝试使用 Visual Studio 中的 SSDT。
 
 使用 SSDT 包含的 SQL Server 对象资源管理器，可以针对 SQL 数据仓库数据库进行可视化、连接和执行脚本。 若要快速连接到 SQL 数据仓库，只需在 Azure 经典门户中查看数据库详细信息时，单击命令栏中的“**在 Visual Studio 中打开**”按钮。  
 
@@ -62,12 +60,12 @@ DMV 是管理 SQL 数据仓库的必备工具。 在门户中显示的所有信�
 若要开始，请参阅[使用 sqlcmd 进行连接和查询][Connect and query with sqlcmd]以及[创建数据库 (PowerShell)][Create a database (PowerShell)]。
 
 ## <a name="scale-compute"></a>缩放计算
-在 SQL 数据仓库中，你可以快速地进行性能缩放，只需增加或减少 CPU 计算资源、内存和 I/O 带宽即可。 进行性能缩放时，只需调整 SQL 数据仓库分配给你的数据库的数据仓库单位 (DWU) 数即可。 SQL 数据仓库可以快速地进行更改，并处理针对硬件或软件的所有基础更改。
+在 SQL 数据仓库中，可以快速地进行性能缩放，只需增加或减少 CPU 计算资源、内存和 I/O 带宽即可。 进行性能缩放时，只需调整 SQL 数据仓库分配给数据库的数据仓库单位 (DWU) 数即可。 SQL 数据仓库可以快速地进行更改，并处理针对硬件或软件的所有基础更改。
 
 若要了解有关缩放 DWU 的详细信息，请参阅[缩放性能]。
 
 ## <a name="pause-and-resume"></a>暂停和恢复
-为了节省成本，可以按需暂停和恢复计算资源。 例如，如果你晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 当数据库暂停时不对 DWU 进行收费。
+为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 当数据库暂停时不对 DWU 进行收费。
 
 有关详细信息，请参阅[暂停计算][Pause compute]和[恢复计算][Resume compute]。
 
@@ -115,4 +113,3 @@ DMV 是管理 SQL 数据仓库的必备工具。 在门户中显示的所有信�
 
 <!--Other web references-->
 [Azure portal]: http://portal.azure.com/
-

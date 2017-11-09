@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
 ms.openlocfilehash: 73b3bc05aeb337c12acb7e47c0dbebe6d0196530
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>教程：Azure Active Directory 与 Wizergos Productivity Software 集成
 本教程的目的是演示如何将 Wizergos Productivity Software 与 Azure Active Directory (Azure AD) 集成。
@@ -56,7 +55,7 @@ ms.lasthandoff: 02/28/2017
 2. 配置和测试 Azure AD SSO
 
 ## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>从库添加 Wizergos Productivity Software
-若要配置 Wizergos Productivity Software 与 Azure AD 的集成，需要从库中将 Wizergos Productivity Software 添加到托管 SaaS 应用列表。
+要配置 Wizergos Productivity Software 与 Azure AD 的集成，需要从库中将 Wizergos Productivity Software 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Wizergos Productivity Software，请执行以下步骤：**
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 02/28/2017
 6. 在搜索框中，键入 **Wizergos Productivity Software**。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_01.png)
-7. 在“结果”窗格中，选择“Wizergos Productivity Software”，然后单击“完成”以添加该应用程序。
+7. 在“结果”窗格中，选择“Wizergos Productivity Software”，并单击“完成”以添加该应用程序。
    
     ![在库中选择应用](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_001.png)
 
@@ -91,8 +90,8 @@ ms.lasthandoff: 02/28/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Wizergos Productivity Software 测试用户](#creating-a-wizergos-productivity-software-test-user)** - 获取 Wizergos Productivity Software 中 Britta Simon 的副本，该副本链接到她的 Azure AD 表示。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 Wizergos Productivity Software 测试用户](#creating-a-wizergos-productivity-software-test-user)** - 在 Wizergos Productivity Software 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-sso"></a>配置 Azure AD SSO
@@ -103,20 +102,20 @@ ms.lasthandoff: 02/28/2017
 1. 在经典门户中的“Wizergos Productivity Software”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录][6] 
-2. 在“你希望用户如何登录 Wizergos Productivity Software”页上，选择“Azure AD 单一登录”，然后单击“下一步”：
+2. 在“你希望用户如何登录 Wizergos Productivity Software”页上，选择“Azure AD 单一登录”，并单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_03.png)
 3. 在“配置应用设置”对话框页上，单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_04.png)
-4. 在“配置 Wizergos Productivity Software 的单一登录”页上，请单击“下载证书”，然后在计算机上保存该文件：
+4. 在“配置 Wizergos Productivity Software 的单一登录”页上，请单击“下载证书”，并在计算机上保存该文件：
    
     ![配置单一登录](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_05.png)
 5. 在其他 Web 浏览器窗口中，以管理员身份登录到 Wizergos Productivity Software 租户。
 6. 从汉堡菜单上，选择“管理员”。
    
     ![在应用端配置单一登录](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
-7. 在左侧菜单的“管理员”页中，选择“身份验证”，然后单击“Azure AD”。
+7. 在左侧菜单的“管理员”页中，选择“身份验证”，并单击“Azure AD”。
    
     ![在应用端配置单一登录](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 8. 在“身份验证”部分执行以下步骤。
@@ -127,7 +126,7 @@ ms.lasthandoff: 02/28/2017
   3. 在“单一登录 URL”文本框中放置 Azure AD 应用程序配置向导中“单一登录服务 URL”的值。
   4. 在“单一注销 URL”文本框中放置 Azure AD 应用程序配置向导中“单一注销服务 URL”的值。
   5. 单击“保存”按钮。
-9. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+9. 在经典门户中，选择“单一登录配置确认”，并单击“下一步”。
    
     ![Azure AD 单一登录][10]
 10. 在“单一登录确认”页上，单击“完成”。  
@@ -154,9 +153,9 @@ ms.lasthandoff: 02/28/2017
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_05.png) 
-  1. 在“用户类型”中，选择“你的组织中的新用户”。
+  1. 对于“用户类型”，选择“组织中的新用户”。
   2. 在“用户名”文本框中，键入“BrittaSimon”。
-  3. 单击“资源组名称” 的 Azure 数据工厂。
+  3. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_06.png)
@@ -164,7 +163,7 @@ ms.lasthandoff: 02/28/2017
   2. 在“姓氏”文本框中，键入“Simon”。
   3. 在“显示名称”文本框中，键入“Britta Simon”。
   4. 在“角色”列表中，选择“用户”。
-  5. 单击“资源组名称” 的 Azure 数据工厂。
+  5. 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/create_aaduser_07.png)
@@ -175,14 +174,14 @@ ms.lasthandoff: 02/28/2017
   2. 单击“完成”。   
 
 ### <a name="create-a-wizergos-productivity-software-test-user"></a>创建 Wizergos Productivity Software 测试用户
-在本部分中，将在 Wizergos Productivity Software 中创建一个名为 Britta Simon 的用户。 请通过 [support@wizergos.com](emailTo:support@wizergos.com) 与 Wizergos Productivity Software 支持团队合作，在 Wizergos Productivity Software 平台中添加用户。
+在本部分中，会在 Wizergos Productivity Software 中创建一个名为 Britta Simon 的用户。 请通过 [support@wizergos.com](emailTo:support@wizergos.com) 与 Wizergos Productivity Software 支持团队合作，在 Wizergos Productivity Software 平台中添加用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 本部分旨在通过授予 Britta Simon 访问 Wizergos Productivity Software 的权限，允许她使用 Azure SSO。
 
   ![分配用户][200]
 
-**若要将 Britta Simon 分配到 Wizergos Productivity Software，请执行以下步骤：**
+**要将 Britta Simon 分配到 Wizergos Productivity Software，请执行以下步骤：**
 
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
@@ -224,4 +223,3 @@ ms.lasthandoff: 02/28/2017
 [203]: ./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_general_205.png
-

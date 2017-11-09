@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: e0fb8b3c991d3f95acef77b37929fb5f6dc06242
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>添加 Git 存储库以存储自定义项目和资源管理器模板
 
@@ -99,4 +98,3 @@ ms.lasthandoff: 09/01/2017
 * [使用资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 然后，可将模板存储在专用存储库中。
 
 创建 VM 时，可以验证各个项目或模板是否已添加到 Git 存储库。 它们将立即出现在项目或模板列表中。 专用存储库的名称显示在用于指定源的列中。 
-

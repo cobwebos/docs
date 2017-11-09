@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Micr
 description: "在不重新部署网站的情况下监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: 869ea96072b1492db929c16cfb1e22b0c96bca7d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 457ba9c9f74bc9d88800607a2f78a3c3c96cea07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 07/20/2017
 
 * **生成时：**[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
 * **运行时：** 如下所述检测服务器上的 Web 应用，无需重建并重新部署代码。
-* **结合两种方法：** 将 SDK 构建到 Web 应用代码中，同时应用运行时扩展。 这样就充分利用了两种方法的优势。
+* **结合两种方法：**将 SDK 构建到 Web 应用代码中，同时应用运行时扩展。 这样就充分利用了两种方法的优势。
 
 下面是每种途径的优势摘要：
 
@@ -79,7 +78,7 @@ Application Insights JavaScript SDK 现已注入到每个网页中。
 如果应用托管在 IIS 服务器上，请使用状态监视器启用 Application Insights。
 
 1. 在 IIS Web 服务器上，使用管理员凭据登录。
-2. 如果尚未安装 Application Insights 状态监视器，则请下载并运行[状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)（或者运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)，然后在其中搜索 Application Insights 状态监视器）。
+2. 如果尚未安装 Application Insights 状态监视器，则请下载并运行[状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)（或者运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)，并在其中搜索 Application Insights 状态监视器）。
 3. 在状态监视器中，选择已安装的 Web 应用程序或者要监视的网站。 使用 Azure 凭据登录。
 
     配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已针对此应用进行了 [Web 测试][availability]或[客户端监视][client]，请选择现有资源。） 
@@ -102,7 +101,7 @@ Application Insights JavaScript SDK 现已注入到每个网页中。
 
 如果需要重新发布，但又不希望将 Application Insights 添加到代码中，则请注意，部署过程可能会从已发布网站中删除 DLL 和 ApplicationInsights.config。 因此：
 
-1. 如果已编辑 ApplicationInsights.config，则请对其进行复制，然后再重新发布应用。
+1. 如果已编辑 ApplicationInsights.config，则请对其进行复制，再重新发布应用。
 2. 重新发布应用。
 3. 重新启用 Application Insights 监视。 （使用适当的方法：Azure Web 应用控制面板或 IIS 主机上的状态监视器。）
 4. 恢复对 .config 文件所做的任何编辑。
@@ -114,13 +113,13 @@ Application Insights JavaScript SDK 现已注入到每个网页中。
 
 * 在服务器防火墙中打开[必需的传出端口](app-insights-ip-addresses.md#outgoing-ports)，以便让状态监视器正常工作。
 
-* 打开状态监视器，然后在左窗格中选择应用程序。 检查“配置通知”部分中是否有任何关于此应用程序的诊断消息：
+* 打开状态监视器，并在左窗格中选择应用程序。 检查“配置通知”部分中是否有任何关于此应用程序的诊断消息：
 
   ![打开“性能”边栏选项卡，查看请求、响应时间、依赖项和其他数据](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
 * 如果在服务器上看到有关“权限不足”的消息，请尝试以下操作：
   * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识。
   * 在计算机管理控制面板中，将此标识添加到性能监试器用户组。
-* 如果在服务器上安装了 MMA/SCOM (Systems Center Operations Manager)，某些版本可能会发生冲突。 请卸载 SCOM 和状态监视器，然后重新安装最新版本。
+* 如果在服务器上安装了 MMA/SCOM (Systems Center Operations Manager)，某些版本可能会发生冲突。 请卸载 SCOM 和状态监视器，并重新安装最新版本。
 * 请参阅[故障排除][qna]。
 
 ## <a name="system-requirements"></a>系统要求
@@ -157,7 +156,7 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
   * `SdkState==Disabled`：未针对 Application Insights 检测应用。 应用从未接受检测，或者“状态监视器”工具或 `Stop-ApplicationInsightsMonitoring`已禁用运行时监视。
   * `SdkState==EnabledByCodeInstrumentation`：已通过将 SDK 添加到源代码来检测应用。 其 SDK 无法更新或停止。
   * `SdkVersion` 显示正在用于监视此应用的版本。
-  * `LatestAvailableSdkVersion`显示 NuGet 库中当前可用的版本。 若要将应用升级到此版本，请使用 `Update-ApplicationInsightsMonitoring`。
+  * `LatestAvailableSdkVersion`显示 NuGet 库中当前可用的版本。 要将应用升级到此版本，请使用 `Update-ApplicationInsightsMonitoring`。
 
 `Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000`
 
@@ -275,4 +274,3 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-javascript.md
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 2bce5c63b4c6edd3753f1b234cc4f493dcf53dea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Log Analytics 视图设计器磁贴参考
 Log Analytics 中的视图设计器允许在 OMS 控制台中创建自定义视图，以包含 OMS 存储库中数据的多种可视化效果。 本文针对可在自定义视图中使用的每个磁贴提供了设置参考。
@@ -180,4 +179,3 @@ Log Analytics 中的视图设计器允许在 OMS 控制台中创建自定义视�
 ## <a name="next-steps"></a>后续步骤
 * 了解有关[日志搜索](log-analytics-log-searches.md)以支持磁贴中的查询。
 * 将 [可视化部件](log-analytics-view-designer-parts.md) 添加到自定义视图。
-

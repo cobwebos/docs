@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3750f975600575349e5ea9de249cf4521636fd2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # v2.0 协议 - OAuth 2.0 和 OpenID Connect
 v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 与 OAuth 2.0）提供标识即服务。  尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。  如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个开放源代码库，则可以参考此处提供的有用信息。
@@ -38,8 +37,7 @@ v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 
 
 * **授权服务器**是 v2.0 终结点。  它负责确保用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。  它也称为标识提供者：安全处理与用户信息、用户访问权，以及流中合作对象彼此间信任关系有关的任何项目。
 * **资源所有者**通常是最终用户。  它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
-* 
-            **OAuth 客户端**是应用，按照其应用程序 ID 进行标识。它通常是与最终用户交互的对象，并向授权服务器请求令牌。  客户端必须获得资源所有者授权才能访问资源。
+* **OAuth 客户端**是应用，按照其应用程序 ID 进行标识。它通常是与最终用户交互的对象，并向授权服务器请求令牌。  客户端必须获得资源所有者授权才能访问资源。
 * **资源服务器**是资源或数据所在的位置。  它信任授权服务器安全验证和授权 OAuth 客户端，并使用 Bearer access_token 来确保可以授予对资源的访问权限。
 
 ## 应用注册
@@ -83,4 +81,3 @@ OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包
 * [使用 OAuth 2.0 隐式流构建单页应用](active-directory-v2-protocols-implicit.md)
 * [使用 OAuth 2.0 客户端凭据流构建守护程序或服务器端进程](active-directory-v2-protocols-oauth-client-creds.md)
 * [使用 OAuth 2.0 代理流在 Web API 中获取令牌](active-directory-v2-protocols-oauth-on-behalf-of.md)
-

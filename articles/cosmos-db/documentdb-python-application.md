@@ -13,15 +13,14 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/17/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 0629b0aa7e7981cf04330b407604e4612a58b168
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: c62520846ebdc102204e42b50e52383167c6aa14
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Python Flask Web 应用程序
 > [!div class="op_single_selector"]
@@ -32,14 +31,14 @@ ms.lasthandoff: 09/13/2017
 > 
 > 
 
-本教程演示了如何使用 Azure Cosmos DB 从 Azure 上托管的 Python Web 应用程序来存储和访问数据，并假定你之前有过一些使用 Python 和 Azure 网站的经验。
+本教程介绍如何使用 Azure Cosmos DB 通过 Azure 应用服务中托管的 Python Flask 应用程序存储和访问数据。 本教程假设读者在 Python 和 Azure 网站的用法方面具有一定的经验。
 
 本数据库教程涵盖以下内容：
 
-1. 创建并预配 Cosmos DB 帐户。
+1. 创建并预配 Azure Cosmos DB 帐户。
 2. 创建 Python Flask 应用程序。
-3. 从 Web 应用程序连接并使用 Cosmos DB。
-4. 将 Web 应用程序部署到 Azure。
+3. 从 Web 应用程序连接并使用 Azure Cosmos DB。
+4. 将 Web 应用程序部署到 Azure 应用服务。
 
 通过学习本教程，将可以构建一个可对轮询进行投票的简单投票应用程序。
 
@@ -48,14 +47,13 @@ ms.lasthandoff: 09/13/2017
 ## <a name="database-tutorial-prerequisites"></a>数据库教程先决条件
 在按照本文中的说明操作之前，应确保已安装下列项：
 
-* 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+* [一个 Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* 如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。  
-* [针对 Visual Studio 的 Python 工具](https://github.com/Microsoft/PTVS/)。  
+* 已启用 **Azure 开发**和 **Python 开发**的 [Visual Studio 2017]((https://www.visualstudio.com/downloads/))。 可以检查是否已安装这些必备组件，并在本地打开“Visual Studio 安装程序”进行安装。   
 * [Microsoft Azure SDK for Python 2.7](https://azure.microsoft.com/downloads/)。 
-* [Python 2.7.13](https://www.python.org/downloads/windows/)。 
+* [Python 2.7](https://www.python.org/downloads/windows/)。 可以使用 32 位或 64 位安装。
 
 > [!IMPORTANT]
 > 如果首次安装 Python 2.7，请确保在自定义 Python 2.7.13 屏幕中，选择“向路径添加 python.exe”。
@@ -67,12 +65,12 @@ ms.lasthandoff: 09/13/2017
 * [Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
-让我们首先创建一个 Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Python Flask 应用程序](#step-2-create-a-new-python-flask-web-application)。
+让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Python Flask 应用程序](#step-2-create-a-new-python-flask-web-application)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <br/>
-现在，我们将演练如何从头开始新建 Python Flask Web 应用程序。
+现在，我们演练如何从头开始新建 Python Flask Web 应用程序。
 
 ## <a name="step-2-create-a-new-python-flask-web-application"></a>步骤 2：新建 Python Flask Web 应用程序
 1. 在 Visual Studio 的“文件”菜单中，指向“新建”，并单击“项目”。
@@ -87,7 +85,7 @@ ms.lasthandoff: 09/13/2017
 4. 在“Python Tools for Visual Studio”窗口中，单击“安装到虚拟环境中”。 
    
     ![数据库教程 - Python Tools for Visual Studio 窗口的屏幕截图](./media/documentdb-python-application/python-install-virtual-environment.png)
-5. 由于 PyDocumentDB 目前不支持 Python 3.x，因此可以在“添加虚拟环境”窗口中保留默认设置，将 Python 2.7 用作基本环境，然后单击“创建”。 此操作将设置项目所需的 Python 虚拟环境。
+5. 在“添加虚拟环境”窗口中选择“Python 2.7”或“Python 3.5”，在“选择解释器”框中接受其他默认值，并单击“创建”。 此操作将设置项目所需的 Python 虚拟环境。
    
     ![数据库教程 - Python Tools for Visual Studio 窗口的屏幕截图](./media/documentdb-python-application/image10_A.png)
    
@@ -153,7 +151,7 @@ class VoteForm(Form):
 
 ### <a name="add-the-required-imports-to-viewspy"></a>将所需的导入添加到 views.py 中
 1. 在“解决方案资源管理器”中，展开 **tutorial** 文件夹并打开 **views.py** 文件。 
-2. 将以下导入语句添加到 **views.py** 文件的顶部，然后保存该文件。 这些语句将导入 Cosmos DB 的 PythonSDK 和 Flask 包。
+2. 将以下导入语句添加到 **views.py** 文件的顶部，然后保存该文件。 这些语句将导入 Azure Cosmos DB 的 PythonSDK 和 Flask 包。
    
     ```python
     from forms import VoteForm
@@ -252,7 +250,7 @@ def vote():
 
 
 ### <a name="create-the-html-files"></a>创建 HTML 文件
-1. 在解决方案资源管理器中的 **tutorial** 文件夹中，右键单击 **templates** 文件夹，单击“添加”，并单击“新建项”。 
+1. 在解决方案资源管理器中的 **tutorial** 文件夹中，右键单击 **templates** 文件夹，并依次单击“添加”、“新建项”。 
 2. 选择“HTML 页”，并在名称框中键入 **create.html**。 
 3. 重复步骤 1 和步骤 2，以创建另外两个 HTML 文件：results.html 和 vote.html。
 4. 将以下代码添加到 `<body>` 元素中的 **create.html**。 它会显示一条消息，说明我们创建了新的数据库、集合和文档。
@@ -290,7 +288,7 @@ def vote():
     <a class="btn btn-primary" href="{{ url_for('vote') }}">Vote again?</a>
     {% endblock %}
     ```
-6. 将以下代码添加到 `<body`> 元素中的 **vote.html**。 它会显示轮询并接受投票。 注册投票时，控件权将传递到 views.py 中，我们会在该位置识别投票并相应地追加文档。
+6. 将以下代码添加到 `<body`> 元素中的 **vote.html**。 它会显示轮询并接受投票。 注册投票时，控件权会传递到 views.py 中，Azure Cosmos DB 会在该位置识别投票并相应地追加文档。
    
     ```html
     {% extends "layout.html" %}
@@ -330,9 +328,9 @@ def vote():
     DOCUMENTDB_COLLECTION = 'voting collection'
     DOCUMENTDB_DOCUMENT = 'voting document'
     ```
-3. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”、“Azure Cosmos DB 帐户”导航到“密钥”边栏选项卡，双击要使用的帐户名，并单击“概要”区域中的“密钥”按钮。 在“密钥”边栏选项卡中，复制“URI”值并将其粘贴到 **config.py** 文件中，作为 **DOCUMENTDB\_HOST** 属性的值。 
-4. 返回到 Azure 门户，在“密钥”边栏选项卡中，复制“主密钥”或“辅助密钥”的值，并将其粘贴到 **config.py** 文件，作为 **DOCUMENTDB\_KEY** 属性的值。
-5. 在 **\_\_init\_\_.py** 文件中添加以下行。 
+3. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“浏览”、“Azure Cosmos DB 帐户”导航到“密钥”页，双击要使用的帐户名，并单击“概要”区域中的“密钥”按钮。 在“密钥”页中，复制“URI”值并将其粘贴到 **config.py** 文件中，作为 **DOCUMENTDB\_HOST** 属性的值。 
+4. 返回到 Azure 门户，在“密钥”页中，复制“主密钥”或“辅助密钥”的值，并将其粘贴到 **config.py** 文件，作为 **DOCUMENTDB\_KEY** 属性的值。
+5. 在 **\_\_init\_\_.py** 文件中添加以下行： 
    
         app.config.from_object('config')
    
@@ -365,20 +363,61 @@ def vote():
 6. 按 Shift+F5 停止调试该项目。
 
 ## <a name="step-5-deploy-the-web-application-to-azure"></a>步骤 5：将 Web 应用程序部署到 Azure
-现在，拥有了针对 Cosmos DB 正常工作的完整应用程序，我们打算将其部署到 Azure。
+创建可在本地针对 Azure Cosmos DB 正常工作的完整应用程序后，我们要创建一个 web.config 文件，将服务器上的文件更新为与本地环境匹配，然后在 Azure 中查看已完成的应用。 此过程只能在 Visual Studio 2017 中执行。 如果使用其他 Visual Studio 版本，请参阅[发布到 Azure 应用服务](/visualstudio/python/publishing-to-azure.md)。
 
-1. 右键单击解决方案资源管理器中的项目（确保不再在本地运行它），并选择“发布” 。  
+1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击项目，并选择“添加”>“新建项...”。在显示的对话框中，选择“Azure web.config (Fast CGI)”模板，再选择“确定”。 随后会在项目根目录中创建一个 `web.config` 文件。 
+
+2. 修改 `web.config` 中的 `<system.webServer>` 节，使路径与 Python 安装匹配。 例如，对于 Python 2.7 x64，该条目应如下所示：
+    
+    ```xml
+    <system.webServer>
+        <handlers>
+            <add name="PythonHandler" path="*" verb="*" modules="FastCgiModule" scriptProcessor="D:\home\Python27\python.exe|D:\home\Python27\wfastcgi.py" resourceType="Unspecified" requireAccess="Script"/>
+        </handlers>
+    </system.webServer>
+    ```
+
+3. 将 `web.config` 中的 `WSGI_HANDLER` 条目设置为 `tutorial.app`，使之与项目名称匹配。 
+
+    ```xml
+    <!-- Flask apps only: change the project name to match your app -->
+    <add key="WSGI_HANDLER" value="tutorial.app"/>
+    ```
+
+4. 在 Visual Studio 的“解决方案资源管理器”中，展开 **tutorial** 文件夹，右键单击 `static` 文件夹，并依次选择“添加”>“新建项...”、“Azure 静态文件 web.config”模板、“确定”。 此操作会在 `static` 中创建另一个 `web.config`，用于针对该文件夹禁用 Python 处理。 此配置会将静态文件的请求发送到默认的 Web 服务器，而不使用 Python 应用程序。
+
+5. 保存文件，右键单击解决方案资源管理器中的项目（确保不要在本地运行它），并选择“发布”。  
    
      ![解决方案资源管理器中选中的教程的屏幕截图，其中突出显示了“发布”选项](./media/documentdb-python-application/image20.png)
-2. 在“发布”对话框中，依次选择“Microsoft Azure App Service”和“新建”，然后单击“发布”。
+6. 在“发布”对话框中，依次选择“Microsoft Azure 应用服务”和“新建”，然后单击“发布”。
    
-    ![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure App Service](./media/documentdb-python-application/cosmos-db-python-publish.png)
-3. 在“创建应用服务”对话框中，输入 Web 应用名称、订阅、资源组和应用服务计划，然后单击“创建”。
+    ![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure 应用服务](./media/documentdb-python-application/cosmos-db-python-publish.png)
+7. 在“创建应用服务”对话框中，输入 Web 应用名称、订阅、资源组和应用服务计划，然后单击“创建”。
    
     ![“Microsoft Azure Web 应用窗口”窗口的屏幕截图](./media/documentdb-python-application/cosmos-db-python-create-app-service.png)
-4. 在几秒钟内，Visual Studio 将完成应用服务发布并启动浏览器，可从中查看在 Azure 中运行的简单作品！
+8. 几秒钟后，Visual Studio 会完成将文件复制到服务器的过程，并 在 `http://<your app service>.azurewebsites.net/` 页上显示“由于发生内部服务器错误，无法显示该页”。
 
-    ![“Microsoft Azure Web 应用窗口”窗口的屏幕截图](./media/documentdb-python-application/cosmos-db-python-appservice-created.png)
+9. 在 Azure 门户中打开新的应用服务帐户，在导航菜单中向下滚动到“开发工具”部分，选择“扩展”，并单击“+ 添加”。
+
+10. 在“选择扩展”页上，向下滚动到最近的 Python 2.7 安装并选择 x86 或 x64 位选项，然后单击“确定”接受法律条款。  
+   
+11. 使用 Kudu 控制台（可通过 `https://<your app service name>.scm.azurewebsites.net/DebugConsole` 访问）安装应用的 `requirements.txt` 文件中所列的包。 为此，请在 Kudu 诊断控制台中导航到 Python 文件夹 `D:\home\Python27`，并根据 [Kudu 控制台](/visual-studio/python/managing-python-on-azure-app-service.md#azure-app-service-kudu-console)部分中所述运行以下命令：
+
+    ```
+    D:\home\Python27>python -m pip install --upgrade -r /home/site/wwwroot/requirements.txt
+    ```          
+
+12. 安装新包后，按“重启”按钮在 Azure 门户中重启应用服务。 
+
+    > [!Tip] 
+    > 如果对应用的 `requirements.txt` 文件做了任何更改，请务必重新使用 Kudu 控制台来安装该文件中现已列出的所有包。 
+
+13. 完全配置服务器环境后，请在浏览器中刷新页面，随后应会显示该 Web 应用。
+
+    ![将 Bottle、Flask 和 Django 应用发布到应用服务后的结果](./media/documentdb-python-application/python-published-app-services.png)
+
+    > [!Tip] 
+    > 如果该网页未出现，或者仍然出现“由于发生内部服务器错误，无法显示该页” 消息，请在 Kudo 中打开 web.config 文件，将 ` <httpErrors errorMode="Detailed"></httpErrors>` 添加到 system.webServer 节，并刷新页面。 这样就会在浏览器中提供详细的错误输出。 
 
 ## <a name="troubleshooting"></a>故障排除
 如果这是你在计算机上运行的第一个 Python 应用，请确保下列文件夹（或对应的安装位置）包括在 PATH 变量中：
@@ -388,9 +427,7 @@ def vote():
 如果在投票页上收到了错误，并且已将项目命名为 **tutorial** 以外的名称，请确保 **\_\_init\_\_.py** 引用以下行中正确的项目名称：`import tutorial.view`。
 
 ## <a name="next-steps"></a>后续步骤
-祝贺你！ 刚才完成了第一个使用 Cosmos DB 的 Python Web 应用程序并将其发布到了 Azure。
-
-我们会根据反馈经常更新并改进此主题。  完成该教程后，请使用此页面上顶部和底部的投票按钮，并确保包括有关你想要看到的改进的反馈意见。 如果希望我们直接与你联系，欢迎将电子邮件地址附在评论中。
+祝贺你！ 现已完成第一个使用 Azure Cosmos DB 的 Python Web 应用程序并将其发布到了 Azure。
 
 要将其他功能添加到 Web 应用程序，请查看 [Azure Cosmos DB Python SDK](documentdb-sdk-python.md)中提供的 API。
 
@@ -403,4 +440,3 @@ def vote():
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [Azure portal]: http://portal.azure.com
-

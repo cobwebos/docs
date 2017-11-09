@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
+ms.openlocfilehash: 0d84dde1f70023abcfd0c15f5425d3cbaeb8c765
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 890690f704f033895e42877e3c9355a5a3df07b7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
-
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Google+ 作为 OAuth2 标识提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -100,7 +98,7 @@ ms.lasthandoff: 08/28/2017
 4.  对于“选项”，使用“手动”。
 5.  使用 `GoogleSecret` 作为“名称”。  
     可能会自动添加前缀 `B2C_1A_`。
-6.  在“密码”框中，从 https://apps.dev.microsoft.com 输入你的 Microsoft 应用程序密码
+6.  在“机密”框中，输入前面从 [Google 开发人员控制台](https://console.developers.google.com/)复制的 Google 应用程序机密。
 7.  使用“签名”作为“密钥用法”。
 8.  单击“创建” 
 9.  确认已创建密钥 `B2C_1A_GoogleSecret`。
@@ -254,4 +252,3 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="download-the-complete-policy-files"></a>下载完整的策略文件
 可选：建议在完成自定义策略入门演练后，使用你自己的自定义策略文件来构建方案，而不是使用这些示例文件。  [参考示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-goog-app)
-

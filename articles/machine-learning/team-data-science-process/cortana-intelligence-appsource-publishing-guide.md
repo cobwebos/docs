@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: HT
-ms.sourcegitcommit: 8fc320ef8919f177e8dea433660489f00c9547bb
 ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
---- 
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
+---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence AppSource 发布指南
 
 ## <a name="overview"></a>概述
@@ -116,5 +115,4 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 通过在 AppSource 上发布应用可获得的回报水平主要取决于如何影响目标受众。 请参阅[在 AppSource 上黑客式营销 Cortana Intelligence 应用](http://aka.ms/aagrowthhackguide)，详细了解如何使回报最大化。
 
 如果有任何问题或建议，请通过以下电子邮件地址联系我们：<appsourcecissupport@microsoft.com>。
-
 

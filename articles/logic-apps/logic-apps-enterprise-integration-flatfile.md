@@ -14,27 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: b9b0f1970a5c7edeb9986c0d60c8bc249c50f2ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/31/2017
-
-
+ms.openlocfilehash: bc3430624844cdeb92958433fba295f67a8ae0ff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>企业集成与平面文件概述
 
-在企业到企业 (B2B) 方案中将 XML 内容发送给业务合作伙伴之前，你可能要对该内容进行编码。 在逻辑应用中，可以使用平面文件编码连接器进行此操作。 创建的逻辑应用可以从各种源获取其 XML 内容，包括从 HTTP 请求触发器、从其他应用程序、甚至是从许多[连接器](../connectors/apis-list.md)中的一个。 有关逻辑应用的详细信息，请参阅[逻辑应用文档](logic-apps-what-are-logic-apps.md "了解有关逻辑应用的详细信息")。  
+在企业到企业 (B2B) 方案中将 XML 内容发送给业务合作伙伴之前，可能要对该内容进行编码。 在逻辑应用中，可以使用平面文件编码连接器进行此操作。 创建的逻辑应用可以从各种源获取其 XML 内容，包括从 HTTP 请求触发器、从其他应用程序、甚至是从许多[连接器](../connectors/apis-list.md)中的一个。 有关逻辑应用的详细信息，请参阅[逻辑应用文档](logic-apps-what-are-logic-apps.md "了解有关逻辑应用的详细信息")。  
 
 ## <a name="create-the-flat-file-encoding-connector"></a>创建平面文件编码连接器
 按照以下步骤可将平面文件编码连接器添加到逻辑应用。
 
-1. 创建逻辑应用并[将它链接到集成帐户](logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。 此帐户包含将用于对 XML 数据进行编码的架构。  
+1. 创建逻辑应用并[将它链接到集成帐户](logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。 此帐户包含用于对 XML 数据进行编码的架构。  
 2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。  
    ![要选择的触发器的屏幕截图](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
 3. 添加平面文件编码操作，如下所示：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择**加号**。
+    a. 选择**加号**。
    
     b. 选择“添加操作”链接（在选择了加号之后出现）。
    
@@ -46,25 +44,25 @@ ms.lasthandoff: 01/31/2017
    ![“内容”文本框的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
 5. 选择正文标记作为要编码的内容。 正文标记回填充内容字段。     
    ![正文标记的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-6. 选择“架构名称”列表框，然后选择要用于对输入内容进行编码的架构。    
+6. 选择“架构名称”列表框，并选择要用于对输入内容进行编码的架构。    
    ![“架构名称”列表框的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
 7. 保存工作。   
    ![“保存”图标的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
-此时，已完成平面文件编码连接器设置。 在实际应用程序中，你可能要将编码数据存储在业务线应用程序中，如 Salesforce。 或者，可以将该编码数据发送给贸易合作伙伴。 可以使用提供的其他连接器中的任何一个，轻松地添加操作以将编码操作的输出发送给 Salesforce 或贸易合作伙伴。
+此时，已完成平面文件编码连接器设置。 在实际应用程序中，可能要将编码数据存储在业务线应用程序中，如 Salesforce。 或者，可以将该编码数据发送给贸易合作伙伴。 可以使用提供的其他连接器中的任何一个，轻松地添加操作以将编码操作的输出发送给 Salesforce 或贸易合作伙伴。
 
 现在可以通过向 HTTP 终结点发出请求并在请求正文中包含 XML 内容，来测试连接器。  
 
 ## <a name="create-the-flat-file-decoding-connector"></a>创建平面文件解码连接器
 
 > [!NOTE]
-> 若要完成这些步骤，需要已将架构文件上传到集成帐户。
+> 要完成这些步骤，需要已将架构文件上传到集成帐户。
 
 1. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。  
    ![要选择的触发器的屏幕截图](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
 2. 添加平面文件解码操作，如下所示：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择**加号**。
+    a. 选择**加号**。
    
     b. 选择“添加操作”链接（在选择了加号之后出现）。
    
@@ -80,11 +78,10 @@ ms.lasthandoff: 01/31/2017
 6. 保存工作。  
    ![“保存”图标的屏幕截图](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
-此时，已完成平面文件解码连接器设置。 在实际应用程序中，你可能要将解码数据存储在业务线应用程序中，如 Salesforce。 可以轻松地添加操作以将解码操作的输出发送给 Salesforce。
+此时，已完成平面文件解码连接器设置。 在实际应用程序中，可能要将解码数据存储在业务线应用程序中，如 Salesforce。 可以轻松地添加操作以将解码操作的输出发送给 Salesforce。
 
 现在可以通过向 HTTP 终结点发出请求并在请求正文中包含要解码的 XML 内容，来测试连接器。  
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")。  
-
 

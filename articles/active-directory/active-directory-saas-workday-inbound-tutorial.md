@@ -13,13 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: f9cc94ca1fc44d10af19debab49435b265bf6e7c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
-
+ms.openlocfilehash: 86f5591cd2d67d7f734b7148b79c8ee388336283
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>教程：使用本地 Active Directory 和 Azure Active Directory 为 Workday 配置自动用户预配
 本教程旨在说明需要执行哪些步骤才能将用户从 Workday 导入 Active Directory 和 Azure Active Directory，并有选择性地将某些属性写回到 Workday。 
@@ -63,9 +61,6 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Service 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
 * 已安装 [Azure AD Connect](connect/active-directory-aadconnect.md)，用于在 Active Directory 与 Azure AD 之间同步
 
-> [!NOTE]
-> 如果 Azure AD 租户位于欧洲，请参阅下面的[已知问题](#known-issues)部分。
-
 
 ### <a name="solution-architecture"></a>解决方案体系结构
 
@@ -85,7 +80,7 @@ Azure AD 提供一组丰富的预配连接器来帮助解决 Workday 与 Active 
 
 Azure Active Directory 支持适用于 Workday 的预先集成预配连接器以及其他众多的 SaaS 应用程序。 
 
-单个预配连接器将与单个源系统的 API 对接，帮助将数据预配到单个目标系统。 Azure AD 支持的大多数预配连接器适用于单个源和目标系统（例如 Azure AD 到 ServiceNow），只需通过 Azure AD 应用库添加所需的应用（例如 ServiceNow）即可设置这些连接器。 
+单个预配连接器将与单个源系统的 API 对接，帮助将数据预配到单个目标系统。 Azure AD 支持的大多数预配连接器适用于单个源和目标系统（例如 Azure AD 到 ServiceNow），通过 Azure AD 应用库添加所需的应用（例如 ServiceNow）即可设置这些连接器。 
 
 Azure AD 中的预配连接器实例与应用实例之间存在一对一的关系：
 
@@ -306,7 +301,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
       * **使用此属性匹配对象** – 是否应使用此映射唯一标识 Workday 与 Active Directory 之间的用户。 通常在 Workday 的“工作人员 ID”字段中设置此值，此值通常映射到 Active Directory 中的“员工 ID”属性之一。
 
-      * **匹配优先顺序** – 可设置多个匹配属性。 如果存在多个属性，将按照此字段定义的顺序对其进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+      * **匹配优先顺序** – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
       * **应用此映射**
        
@@ -322,7 +317,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 -   可以基于一个或多个 Workday 源属性，使用可映射到 parentDistinguishedName AD 属性的表达式将用户预配到特定的 OU。 此示例根据用户在 Workday 中的城市数据，将用户放在不同的 OU 中。
 
--   可映射到 userPrincipalName AD 属性的表达式将创建 firstName.LastName@contoso.com UPN。 此外，它还会替换非法的特殊字符。
+-   可映射到 userPrincipalName AD 属性的表达式将创建 firstName.LastName@contoso.com UPN。此外，它还会替换非法的特殊字符。
 
 -   [此处提供了有关编写表达式的文档](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 
@@ -340,7 +335,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **Fax**      | facsimileTelephoneNumber     |     |    创建 + 更新 |
 | **名字**   | givenName       |     |    创建 + 更新 |
 | **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | 创建 + 更新 |
-| **Mobile**  |    mobile       |     |       仅在创建时写入 |
+| **Mobile**  |    mobile       |     |       创建 + 更新 |
 | **电子邮件地址**    | mail    |     |     创建 + 更新 |
 | **ManagerReference**   | manager  |     |  创建 + 更新 |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
@@ -350,7 +345,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **姓氏**   |   sn   |     |  创建 + 更新 |
 | **CountryRegionReference** |  号     |     | 创建 + 更新 |
 | **AddressLineData**    |  streetAddress  |     |   创建 + 更新 |
-| **PrimaryWorkTelephone**  |  telephoneNumber   |     | 仅在创建时写入 |
+| **PrimaryWorkTelephone**  |  telephoneNumber   |     | 创建 + 更新 |
 | **BusinessTitle**   |  title     |     |  创建 + 更新 |
 | **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 创建 + 更新                                                   
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  创建 + 更新 |
@@ -382,6 +377,10 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 * 输入：Azure AD 租户的全局管理员用户名和密码
 
+>[!IMPORTANT]
+>目前有一个已知的问题：如果全局管理员凭据使用自定义域（例如：admin@contoso.com），则这些凭据不起作用。 解决方法是创建并使用包含 onmicrosoft.com 域的全局管理员帐户（例如：admin@contoso.onmicrosoft.com）
+
+
 **命令 #4**
 
 > Get-AdSyncAgentProvisioningTasks
@@ -410,8 +409,39 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 > net start aadsyncagent
 
+>[!TIP]
+>除了 Powershell 中的“net”命令以外，还可以使用 **Services.msc** 启动和停止同步代理服务。 如果运行 Powershell 命令时出错，请确保 **Microsoft Azure AD Connect Provisioning Agent** 在 **Services.msc** 中运行。
+
+![服务](./media/active-directory-saas-workday-inbound-tutorial/Services.png)  
+
+**适用于欧盟客户的附加配置**
+
+如果 Azure Active Directory 租户位于某个欧盟数据中心，请遵循以下附加步骤。
+
+1. 打开 **Services.msc**，并停止 **Microsoft Azure AD Connect Provisioning Agent** 服务。
+2. 转到代理安装文件夹（例如：C:\Program Files\Microsoft Azure AD Connect Provisioning Agent）。
+3. 在文本编辑器中打开 **SyncAgnt.exe.config**。
+4. 将 https://manage.hub.syncfabric.windowsazure.com/Management 替换为 **https://eu.manage.hub.syncfabric.windowsazure.com/Management**
+5. 将 https://provision.hub.syncfabric.windowsazure.com/Provisioning 替换为 **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning**
+6. 保存 **SyncAgnt.exe.config** 文件。
+7. 打开 **Services.msc**，并启动 **Microsoft Azure AD Connect Provisioning Agent** 服务。
+
+**代理故障排除**
+
+托管代理的 Windows Server 计算机上的 [Windows 事件日志](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx)包含代理执行的所有操作的相关事件。 若要查看这些事件，请执行以下操作：
+    
+1. 打开 **Eventvwr.msc**。
+2. 选择“Windows 日志”>“应用程序”。
+3. 查看 **AADSyncAgent** 源下记录的所有事件。 
+4. 检查错误和警告。
+
+如果在 Powershell 命令中提供的 Active Directory 或 Azure Active Directory 凭据出现权限问题，会显示如下所示的错误： 
+    
+![事件日志](./media/active-directory-saas-workday-inbound-tutorial/Windows_Event_Logs.png) 
+
+
 ### <a name="part-4-start-the-service"></a>第 4 部分：启动服务
-完成第 1-3 部分后，可以返回 Azure 管理门户并启动预配服务。
+完成第 1-3 部分后，可以返回 Azure 门户并启动预配服务。
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
@@ -419,11 +449,12 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
-4. 可以在“审核日志”选项卡中查看单个同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 **[有关如何读取审核日志的详细说明，请参阅预配报告指南](active-directory-saas-provisioning-reporting.md)**
+4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 **[有关如何读取审核日志的详细说明，请参阅预配报告指南](active-directory-saas-provisioning-reporting.md)**
 
-5.  代理计算机上的 Windows 应用程序日志将显示通过代理执行的所有操作。
+5.  在托管代理的 Windows Server 计算机上的 [Windows 事件日志](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx)中查看任何新的错误或警告。 在服务器上启动“Eventvwr.msc”并选择“Windows 日志”>“应用程序”即可查看这些事件。 所有与预配相关的消息记录在 **AADSyncAgent** 源下面。 
+    
 
-6. 完成某项操作后，系统会在  **预配** 选项卡中写入一份审核摘要报告，如下所示。
+6. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
 ![Azure 门户](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
 
@@ -468,7 +499,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **管理员密码** – 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串（如果需要）。
+   * **租户 URL** – 输入租户的 Workday Web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中，contoso4 需替换为正确的租户名，wd3-impl 需替换为正确的环境字符串。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
 
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -522,7 +553,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **使用此属性匹配对象** – 是否应使用此映射唯一标识 Workday 与 Azure AD 之间的用户。 通常在 Workday 的“工作人员 ID”字段中设置此值，此值通常映射到 Azure AD 中的“员工 ID”属性（新）或扩展属性。
 
-   * **匹配优先顺序** – 可设置多个匹配属性。 如果存在多个属性，将按照此字段定义的顺序对其进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+   * **匹配优先顺序** – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
    * **应用此映射**
 
@@ -541,9 +572,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
-4. 可在“审核日志”选项卡中查看单个同步事件。 **[有关如何读取审核日志的详细说明，请参阅预配报告指南](active-directory-saas-provisioning-reporting.md)**
+4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](active-directory-saas-provisioning-reporting.md)**
 
-5. 完成某项操作后，系统会在  **预配** 选项卡中写入一份审核摘要报告，如下所示。
+5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
 
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>配置向 Workday 写回电子邮件地址
@@ -602,13 +633,15 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
-4. 可在“审核日志”选项卡中查看单个同步事件。 **[有关如何读取审核日志的详细说明，请参阅预配报告指南](active-directory-saas-provisioning-reporting.md)**
+4. 可在“审核日志”选项卡中查看单个同步事件。**[有关如何读取审核日志的详细说明，请参阅预配报告指南](active-directory-saas-provisioning-reporting.md)**
 
-5. 完成某项操作后，系统会在  **预配** 选项卡中写入一份审核摘要报告，如下所示。
+5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
 ## <a name="known-issues"></a>已知问题
 
-* **欧洲区域设置中的审核日志** - 在此技术预览版中，如果 Azure AD 租户驻留在欧洲数据中心，则会出现一个已知的问题：Workday 连接器应用的[审核日志](active-directory-saas-provisioning-reporting.md)不会显示在 [Azure 门户](https://portal.azure.com)中。 我们即将发布此问题的修复程序。 请在不久之后再次查看本主题，看看是否有可用的更新。 
+* 运行 **Add-ADSyncAgentAzureActiveDirectoryConfiguration** Powershell 命令时，目前有一个已知的问题：如果全局管理员凭据使用自定义域（例如：admin@contoso.com），则这些凭据不起作用。 解决方法是在 Azure AD 中创建并使用包含 onmicrosoft.com 域的全局管理员帐户（例如：admin@contoso.onmicrosoft.com）。
+
+* 以前存在的，审核日志在位于欧盟的 Azure AD 租户中不显示的问题现已得到解决。 但是，需要对欧盟的 Azure AD 租户进行附加的代理配置。 有关详细信息，请参阅[第 3 部分：配置本地同步代理](#Part 3: Configure the on-premises synchronization agent)
 
 ## <a name="additional-resources"></a>其他资源
 * [教程：在 Workday 与 Azure Active Directory 之间配置单一登录](active-directory-saas-workday-tutorial.md)
@@ -618,4 +651,3 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解如何查看日志并获取有关预配活动的报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
-

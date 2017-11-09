@@ -1,6 +1,6 @@
 ---
 title: "OMS 解决方案中的保存的搜索和警报 | Microsoft Docs"
-description: "OMS 中的解决方案通常会包括 Log Analytics 中保存的搜索，以便分析解决方案收集的数据。  它们可能还会定义警报，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在 ARM 模板中定义 Log Analytics 保存的搜索和警报，以便将其纳入管理解决方案。"
+description: "OMS 中的解决方案通常会包括 Log Analytics 中保存的搜索，以便分析解决方案收集的数据。  它们可能还会定义警报，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在资源管理模板中定义 Log Analytics 保存的搜索和警报，以便将其纳入管理解决方案。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -11,17 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.date: 10/16/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
-
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到 OMS 管理解决方案（预览版）
 
 > [!NOTE]
@@ -34,19 +32,34 @@ ms.lasthandoff: 05/26/2017
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)对此进行了介绍  
 
 ## <a name="prerequisites"></a>先决条件
-本文假设已经熟悉如何[创建管理解决方案](operations-management-suite-solutions-creating.md)以及 [ARM 模板](../resource-group-authoring-templates.md)和解决方案文件的结构。
+本文假设你已经熟悉如何[创建管理解决方案](operations-management-suite-solutions-creating.md)以及[资源管理器模板](../resource-group-authoring-templates.md)和解决方案文件的结构。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
+Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
 
 工作区的名称包含在每个 Log Analytics 资源的名称中。  这是在具有 **workspace** 参数的解决方案中完成的，如以下 savedsearch 资源示例所示。
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
+## <a name="log-analytics-api-version"></a>Log Analytics API 版本
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../log-analytics/log-analytics-log-search-upgrade.md)的资源，此版本有所不同。  
+
+ 下表指定了旧版工作区和升级版工作区适用的 Log Analytics API 版本，并提供了为它们指定不同语法的查询示例。 
+
+| 工作区版本 | API 版本 | 示例查询 |
+|:---|:---|:---|
+| v1（旧版）   | 2015-11-01-预览版 | Type=Event EventLevelName = Error             |
+| v2（升级版） | 2017-03-15-预览版 | Event &#124; where EventLevelName == "Error"  |
+
+请注意下文以了解不同的版本支持的工作区。
+
+- 可以将使用旧版查询语言的模板安装到旧版或升级版工作区。  如果安装到升级版工作区，当用户运行查询时，会将查询实时转换为新的语言。
+- 只能将使用升级版查询语言的模板安装到升级版工作区中。
+
 
 ## <a name="saved-searches"></a>保存的搜索
-将[保存的搜索](../log-analytics/log-analytics-log-searches.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将出现在 OMS 门户中的“收藏夹”下和 Azure 门户的“保存的搜索”下。  每个警报也需要一个保存的搜索。   
+将[保存的搜索](../log-analytics/log-analytics-log-searches.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将在 OMS 门户的“收藏夹”和 Azure 门户的“保存的搜索”下显示。  每个警报也需要一个保存的搜索。   
 
 [Log Analytics 保存的搜索](../log-analytics/log-analytics-log-searches.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
@@ -67,7 +80,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 
 
-下表描述了保存的搜索的每个属性。 
+下表介绍了保存的搜索的各个属性。 
 
 | 属性 | 说明 |
 |:--- |:--- |
@@ -83,10 +96,10 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 管理解决方案中的警报规则由以下三种不同资源组成。
 
-- **保存的搜索。**  定义要运行的日志搜索。  多个警报规则可共享一个保存的搜索。
+- **保存的搜索。**  定义运行的日志搜索。  多个警报规则可共享一个保存的搜索。
 - **计划。**  定义运行日志搜索的频率。  每个警报规则有且仅有一个计划。
-- **警报操作。**  每个警报规则都将具有一个类型为 **Alert** 的操作资源，它可定义警报的详细信息，例如定义创建警报记录的时间和警报严重性等条件。  操作资源将选择性定义一个邮件和 runbook 响应。
-- **Webhook 操作（可选）。**  如果警报规则调用 webhook，则需要一个类型为 **webhook** 的额外操作资源。    
+- **警报操作。**  每个警报规则都具有一个类型为 Alert 的操作资源，它可定义警报的详细信息，例如定义创建警报记录的时间和警报严重性等条件。  操作资源将选择性定义一个邮件和 runbook 响应。
+- **Webhook 操作（可选）。**  如果警报规则调用 webhook，则需要一个类型为 webhook 的额外操作资源。    
 
 前面描述了保存的搜索资源。  下面会介绍其他资源。
 
@@ -131,7 +144,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 #### <a name="alert-actions"></a>警报操作
 
-每个计划都将有一个 **Alert** 操作。  这可定义警报的详细信息，并选择性定义通知和修正操作的详细信息。  通知将一封电子邮件发送到一个或多个地址。  修正在 Azure 自动化中启动 runbook，尝试修正检测到的问题。
+每个计划都有一个 Alert 操作。  这可定义警报的详细信息，并选择性定义通知和修正操作的详细信息。  通知将一封电子邮件发送到一个或多个地址。  修正在 Azure 自动化中启动 runbook，尝试修正检测到的问题。
 
 警报操作具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
@@ -176,7 +189,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|
-| 类型 | 是 | 操作的类型。  警报操作的类型是 **Alert**。 |
+| 类型 | 是 | 操作的类型。  警报操作的类型是 Alert。 |
 | 名称 | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | 说明 | 否 | 警报的可选说明。 |
 | 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> **严重**<br>**警告**<br>**信息性** |
@@ -255,10 +268,10 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|
-| type | 是 | 操作的类型。  Webhook 操作的类型是 **Webhook**。 |
+| type | 是 | 操作的类型。  Webhook 操作的类型是 Webhook。 |
 | 名称 | 是 | 操作的显示名称。  控制台中不显示此名称。 |
 | wehookUri | 是 | Webhook 的 URI。 |
-| customPayload | 否 | 发送到 Webhook 的自定义负载。 格式将取决于 Webhook 的期望。 |
+| customPayload | 否 | 发送到 Webhook 的自定义负载。 格式取决于 Webhook 的期望。 |
 
 
 
@@ -510,5 +523,4 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 ## <a name="next-steps"></a>后续步骤
 * [将视图](operations-management-suite-solutions-resources-views.md)添加到管理解决方案。
 * [将自动化 runbook 和其他资源添加](operations-management-suite-solutions-resources-automation.md)到管理解决方案。
-
 

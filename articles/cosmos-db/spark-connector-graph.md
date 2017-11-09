@@ -15,18 +15,17 @@ ms.devlang: gremlin
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: khdang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 4f35ed6399df777edd90d1944f22dce91e76952f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: 473cc23c73a721c54bc87c03069f4f3688cde11f
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB：使用 Spark 和 Apache TinkerPop Gremlin 执行图形分析
 
 [Azure Cosmos DB](introduction.md) 是 Microsoft 提供的全局分布式多模型数据库服务。 可创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 最核心的全局分布和水平缩放功能。 Azure Cosmos DB 支持使用 [Apache TinkerPop Gremlin](graph-introduction.md) 的联机事务处理 (OLTP) 图形工作负荷。
 
-[Spark](http://spark.apache.org/) 是 Apache Software Foundation 项目，专注于通用联机分析处理 (OLAP) 数据处理。 Spark 提供混合的内存/磁盘型分布式计算模型，类似于 Hadoop MapReduce 模型。 可以使用 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) 在云中部署 Apache Spark。
+[Spark](http://spark.apache.org/) 是 Apache Software Foundation 项目，专注于通用联机分析处理 (OLAP) 数据处理。 Spark 提供混合的内存/磁盘型分布式计算模型，类似于 Hadoop MapReduce 模型。 可以使用 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 在云中部署 Apache Spark。
 
 通过将 Azure Cosmos DB 和 Spark 相结合，即可在使用 Gremlin 时执行 OLTP 和 OLAP 工作负荷。 本快速入门文章介绍如何在 Azure HDInsight Spark 群集上对 Azure Cosmos DB 运行 Gremlin 查询。
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 06/13/2017
 
 3. 安装 Spark-Gremlin 插件 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 插件安装由 Grape 负责。 为 Grape 填充存储库信息，使之能够下载插件及其依赖项。 
+    a. 插件安装由 Grape 负责。 为 Grape 填充存储库信息，使之能够下载插件及其依赖项。 
 
       创建 Grape 配置文件（如果 `~/.groovy/grapeConfig.xml` 中没有）。 使用以下设置：
 
@@ -90,7 +89,7 @@ ms.lasthandoff: 06/13/2017
     </ivysettings>
     ``` 
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 启动 Gremlin 控制台 `bin/gremlin.sh`。
+    b. 启动 Gremlin 控制台 `bin/gremlin.sh`。
         
     c. 安装在前述步骤中生成的版本为 3.3.0-SNAPSHOT 的 Spark-Gremlin 插件：
 
@@ -181,9 +180,9 @@ ms.lasthandoff: 06/13/2017
 
 2. 也可在本地生成。 由于最新版本的 Spark-Gremlin 是使用 Spark 1.6.1 生成的，不兼容目前在 Azure Cosmos DB Spark 连接器中使用的 Spark 2.0.2，因此可以手动生成最新的 TinkerPop3 代码并安装 jar。 请执行以下操作：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 克隆 Azure Cosmos DB Spark 连接器。
+    a. 克隆 Azure Cosmos DB Spark 连接器。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 生成 TinkerPop3（已在前述步骤中完成）。 在本地安装所有 TinkerPop 3.3.0-SNAPSHOT jar。
+    b. 生成 TinkerPop3（已在前述步骤中完成）。 在本地安装所有 TinkerPop 3.3.0-SNAPSHOT jar。
 
     ```bash
     mvn install:install-file -Dfile="gremlin-core-3.3.0-SNAPSHOT.jar" -DgroupId=org.apache.tinkerpop -DartifactId=gremlin-core -Dversion=3.3.0-SNAPSHOT -Dpackaging=jar
@@ -219,14 +218,14 @@ ms.lasthandoff: 06/13/2017
 
 2. 将前述 Gremlin 依赖项、CosmosDB Spark 连接器 jar 和 CosmosDB Java SDK 复制到辅助角色节点，方法如下：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将所有 jar 复制到 `~/azure-documentdb-spark` 中。
+    a. 将所有 jar 复制到 `~/azure-documentdb-spark` 中。
 
     ```bash
     $ /home/sshuser/tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone:
     cp lib/* ~/azure-documentdb-spark
     ```
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 获取所有 Spark 辅助角色节点的列表，该列表位于 Ambari 仪表板 `Spark2` 部分的 `Spark2 Clients` 列表中。
+    b. 获取所有 Spark 辅助角色节点的列表，该列表位于 Ambari 仪表板 `Spark2` 部分的 `Spark2 Clients` 列表中。
 
     c. 将该目录复制到每个节点。
 
@@ -242,9 +241,9 @@ ms.lasthandoff: 06/13/2017
 
 2. 为所有节点设置 hdp.version。 在 Ambari 仪表板中，转到“YARN 部分” > “配置” > “高级”，然后执行以下操作： 
  
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在 `Custom yarn-site` 中添加新属性 `hdp.version`，其值设置为主节点上的 HDP 版本。 
+    a. 在 `Custom yarn-site` 中添加新属性 `hdp.version`，其值设置为主节点上的 HDP 版本。 
      
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 保存配置。 出现警告，但可将其忽略。 
+    b. 保存配置。 出现警告，但可将其忽略。 
      
     c. 按照通知图标的指示重启 YARN 和 Oozie 服务。
 
@@ -328,9 +327,9 @@ ms.lasthandoff: 06/13/2017
 
 3. 启动 Gremlin 控制台并创建以下计算步骤，将数据保存到配置的 Azure Cosmos DB 集合：  
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 创建图形 `graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`。
+    a. 创建图形 `graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 使用 SparkGraphComputer 写入 `graph.compute(SparkGraphComputer.class).result(GraphComputer.ResultGraph.NEW).persist(GraphComputer.Persist.EDGES).program(TraversalVertexProgram.build().traversal(graph.traversal().withComputer(Computer.compute(SparkGraphComputer.class)),"gremlin-groovy","g.V()").create(graph)).submit().get()`。
+    b. 使用 SparkGraphComputer 写入 `graph.compute(SparkGraphComputer.class).result(GraphComputer.ResultGraph.NEW).persist(GraphComputer.Persist.EDGES).program(TraversalVertexProgram.build().traversal(graph.traversal().withComputer(Computer.compute(SparkGraphComputer.class)),"gremlin-groovy","g.V()").create(graph)).submit().get()`。
 
     ```bash
     gremlin> graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")
@@ -359,9 +358,9 @@ ms.lasthandoff: 06/13/2017
 
 2. 通过执行以下步骤加载图形、遍历数据并对其运行 Gremlin 查询：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 启动 Gremlin 控制台 `bin/gremlin.sh`。
+    a. 启动 Gremlin 控制台 `bin/gremlin.sh`。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 使用配置 `graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')` 创建图形。
+    b. 使用配置 `graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')` 创建图形。
 
     c. 使用 SparkGraphComputer `g = graph.traversal().withComputer(SparkGraphComputer)` 创建图形遍历。
 
@@ -398,7 +397,7 @@ ms.lasthandoff: 06/13/2017
     ```
 
 > [!NOTE]
-> 若要查看更详细的日志记录，请在 `conf/log4j-console.properties` 中将日志级别设置为更详细的级别。
+> 要查看更详细的日志记录，请在 `conf/log4j-console.properties` 中将日志级别设置为更详细的级别。
 >
 
 ## <a name="next-steps"></a>后续步骤
@@ -406,4 +405,3 @@ ms.lasthandoff: 06/13/2017
 本快速入门文章介绍了如何结合使用 Azure Cosmos DB 和 Spark 来处理图形。
 
 > [!div class="nextstepaction"]
-

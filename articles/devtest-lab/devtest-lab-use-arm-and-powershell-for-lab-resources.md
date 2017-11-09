@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>使用 Azure Resource Manager 模板和 PowerShell 自动创建或修改实验室
 
-开发测试实验室提供许多 Azure Resource Manager 模板和 PowerShell 脚本，有助于快速且自动创建新实验室或修改现有实验室，然后部署这些资源。
+开发测试实验室提供许多 Azure Resource Manager 模板和 PowerShell 脚本，有助于快速且自动创建新实验室或修改现有实验室，并部署这些资源。
 
 本文有助于指导用户完成使用这些模板和脚本自动创建、修改和部署实验室的过程。 本文还介绍在哪里可以找到关于如何在开发测试实验室中使用 PowerShell 执行一些常见任务的详细信息。
 
@@ -51,4 +49,3 @@ ms.lasthandoff: 05/09/2017
 ### <a name="next-steps"></a>后续步骤
 * 了解如何创建存储自定义模板或脚本的[专用 Git 存储库](devtest-lab-add-artifact-repo.md)。
 * 浏览 [Azure 快速入门模板库中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)。
-

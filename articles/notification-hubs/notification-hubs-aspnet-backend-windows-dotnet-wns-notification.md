@@ -14,32 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-notify-users-with-net-backend"></a>Azure 通知中心 - 使用 .NET 后端通知用户
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>概述
-利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证。 后端使用经过身份验证的客户端用户自动将标记添加通知注册。 后端将使用此标记为特定的用户生成通知。 有关使用应用后端注册通知的详细信息，请参阅指南主题[从应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)。 本教程以你在[通知中心入门]教程中创建的通知中心和项目为基础。
+利用 Azure 中的推送通知支持，可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。 本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。 ASP.NET WebAPI 后端用于对客户端进行身份验证。 后端使用经过身份验证的客户端用户自动将标记添加通知注册。 后端将使用此标记为特定的用户生成通知。 有关使用应用后端注册通知的详细信息，请参阅指南主题[从应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)。 本教程基于[通知中心入门]教程中创建的通知中心和项目编写。
 
 此外，只有在学习本教程后，才可以学习[安全推送]教程。 完成本教程中的步骤后，可以继续学习[安全推送]教程，其中说明了如何修改本教程中的代码以安全地发送推送通知。
 
 ## <a name="before-you-begin"></a>开始之前
-我们非常重视你的反馈。 如果你在完成本主题的过程中遇到任何难题，或者在改善内容方面有任何建议，请在页面底部提供反馈，我们将不胜感激。
+我们非常重视反馈。 如果在完成本主题的过程中遇到任何难题，或者在改善内容方面有任何建议，请在页面底部提供反馈，我们将不胜感激。
 
 可以在 GitHub 上的 [此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)找到本教程的已完成代码。 
 
 ## <a name="prerequisites"></a>先决条件
 在开始本教程之前，必须已完成以下移动服务教程：
 
-* [通知中心入门]<br/>在此教程中，会创建通知中心，保留应用名称，然后注册以接收通知。 本教程假设已完成这些步骤。 请遵循[通知中心入门（Windows 应用商店）](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中的步骤；具体而言，请遵循[在 Windows 应用商店中注册你的应用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#register-your-app-for-the-windows-store)和[配置通知中心](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)部分中的步骤。 请务必确保已在门户中你的通知中心的“**配置**”选项卡上输入了“**程序包 SID**”和“**客户端机密**”值。 [配置通知中心](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)部分中介绍了此配置过程。 这个步骤非常重要：如果门户上的凭据与针对所选应用程序名称指定的凭据不匹配，推送通知将不会成功。
+* [通知中心入门]<br/>在此教程中，会创建通知中心，保留应用名称，并注册以接收通知。 本教程假设已完成这些步骤。 请遵循[通知中心入门（Windows 应用商店）](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中的步骤；具体而言，请遵循[在 Windows 应用商店中注册应用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#register-your-app-for-the-windows-store)和[配置通知中心](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)部分中的步骤。 请务必确保已在门户中通知中心的“**配置**”选项卡上输入了“**程序包 SID**”和“**客户端机密**”值。 [配置通知中心](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)部分中介绍了此配置过程。 这个步骤非常重要：如果门户上的凭据与针对所选应用程序名称指定的凭据不匹配，推送通知将不会成功。
 
 > [!NOTE]
-> 如果使用 Azure App Service 中的移动应用作为后端服务，请参阅本教程的[移动应用版本](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
+> 如果使用 Azure 应用服务中的移动应用作为后端服务，请参阅本教程的[移动应用版本](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
 > 
 > 
 
@@ -48,14 +48,14 @@ ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="update-the-code-for-the-client-project"></a>更新客户端项目的代码
-在本部分中，将更新你在[通知中心入门]教程中完成的项目中的代码。 这些代码应该已与应用商店关联，并已针对通知中心进行配置。 在本部分中，你将添加代码以调用新的 WebAPI 后端，并使用该后端来注册和发送通知。
+在本部分中，将更新你在[通知中心入门]教程中完成的项目中的代码。 这些代码应该已与应用商店关联，并已针对通知中心进行配置。 在本部分中，会添加代码以调用新的 WebAPI 后端，并使用该后端来注册和发送通知。
 
 1. 在 Visual Studio 中，打开为[通知中心入门]教程创建的解决方案。
-2. 在“解决方案资源管理器”中，右键单击“**(Windows 8.1)**”项目，然后单击“**管理 NuGet 程序包**”。
+2. 在“解决方案资源管理器”中，右键单击“**(Windows 8.1)**”项目，并单击“**管理 NuGet 程序包**”。
 3. 在左侧单击“**联机**”。
 4. 在“**搜索**”框中键入 **Http 客户端**。
-5. 在结果列表中，单击“**Microsoft HTTP 客户端库**”，然后单击“**安装**”。 完成安装。
-6. 返回到 NuGet“**搜索**”框，键入 **Json.net**。 安装 **Json.NET** 程序包，然后关闭“NuGet 程序包管理器”窗口。
+5. 在结果列表中，单击“**Microsoft HTTP 客户端库**”，并单击“**安装**”。 完成安装。
+6. 返回到 NuGet“**搜索**”框，键入 **Json.net**。 安装 **Json.NET** 程序包，并关闭“NuGet 程序包管理器”窗口。
 7. 针对“**(Windows Phone 8.1)**”项目重复上述步骤，安装 Windows Phone 项目的 **JSON.NET** NuGet 程序包。
 8. 在解决方案资源管理器中的“**(Windows 8.1)**”项目内，双击“**MainPage.xaml**”在 Visual Studio 编辑器中打开它。
 9. 在 **MainPage.xaml** XML 代码中，将 `<Grid>` 节替换为以下代码： 此代码将添加用户用来进行身份验证的用户名和密码文本框。 它还会添加通知消息的文本框，以及应接收通知的用户名标记：
@@ -126,7 +126,7 @@ ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
     
     `PushClick` 方法是“**发送推送**”按钮的单击处理程序。 它调用后端以触发向用户名标记与 `to_tag` 参数匹配的所有设备发送通知。 通知消息作为请求正文中的 JSON 内容发送。
     
-    `LoginAndRegisterClick` 方法是“**登录和注册**”按钮的单击处理程序。 它在本地存储中存储基本身份验证令牌（请注意，这代表身份验证方案使用的任何令牌），然后使用 `RegisterClient` 来通过后端注册通知。
+    `LoginAndRegisterClick` 方法是“**登录和注册**”按钮的单击处理程序。 它在本地存储中存储基本身份验证令牌（请注意，这代表身份验证方案使用的任何令牌），并使用 `RegisterClient` 来通过后端注册通知。
 
         private async void PushClick(object sender, RoutedEventArgs e)
         {
@@ -212,9 +212,9 @@ ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
             //InitNotificationsAsync();
 
 
-1. 在“解决方案资源管理器”中，右键单击“**共享**”项目，然后依次单击“**添加**”和“**类**”。 将类命名为 **RegisterClient.cs**，然后单击“**确定**”以生成该类。
+1. 在“解决方案资源管理器”中，右键单击“**共享**”项目，并依次单击“**添加**”和“**类**”。 将类命名为 **RegisterClient.cs**，然后单击“**确定**”以生成该类。
    
-   此类将包装所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中所述。 请注意，该组件使用当你单击“**登录并注册**”按钮时存储在本地存储中的授权令牌。
+   此类将包装所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中所述。 请注意，该组件使用单击“**登录并注册**”按钮时存储在本地存储中的授权令牌。
 2. 在 RegisterClient.cs 文件的顶部添加以下 `using` 语句：
    
        using Windows.Storage;
@@ -314,11 +314,11 @@ ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
 ## <a name="testing-the-application"></a>测试应用程序
 1. 在 Windows 8.1 和 Windows Phone 8.1 上启动应用程序。 对于 Windows Phone 8.1，可以在模拟器或实际设备中运行实例。
 2. 在应用的 Windows 8.1 实例中，输入“**用户名**”和“**密码**”，如以下屏幕中所示。 这应该与在 Windows Phone 上输入的用户名和密码不同。
-3. 单击“**登录并注册**”，然后验证是否会确认显示你已登录的对话框。 这也会启用“**发送推送**”按钮。
+3. 单击“**登录并注册**”，然后验证是否会确认显示已登录的对话框。 这也会启用“**发送推送**”按钮。
    
     ![][14]
-4. 在 Windows Phone 8.1 实例上，于“**用户名**”和“**密码**”字段中输入用户名字符串，然后单击“**登录和注册**”。
-5. 然后，在“**接收方用户名标记**”字段中，输入在 Windows 8.1 上注册的用户名。 输入通知消息，然后单击“**发送推送**”。
+4. 在 Windows Phone 8.1 实例上，于“**用户名**”和“**密码**”字段中输入用户名字符串，并单击“**登录和注册**”。
+5. 然后在“收件人用户名标记”字段中，输入在 Windows 8.1 中注册的用户名。 输入通知消息，并单击“**发送推送**”。
    
     ![][16]
 6. 只有已使用匹配用户名标记进行注册的设备才会收到通知消息。
@@ -345,9 +345,3 @@ ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
 [安全推送]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [使用通知中心发送突发新闻]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

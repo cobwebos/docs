@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 4a9bf4193017313f532b398880a84966367f0b58
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
-
+ms.openlocfilehash: 1e286044fb1a1b367fcac2dc14c47f68d5ed120d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>在单个应用中登录 Microsoft 帐户和 Azure AD 用户
 在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用开发人员需要集成两个单独的系统。  **Azure AD v2.0 终结点**推出了新的身份验证 API 版本，可让你通过一个简单的集成登录这两种类型的帐户。  使用 v2.0 终结点的应用还可以通过其中一种帐户从 [Microsoft Graph](https://graph.microsoft.io) 使用 REST API。
 
 ## <a name="getting-started"></a>入门
-从下述列表中选择偏爱的平台，以便使用开源库与框架生成应用。  或者，你可以使用我们的 OAuth 2.0 和 OpenID Connect 协议文档来直接发送和接收协议消息，而不必使用身份验证库。
+从下述列表中选择偏爱的平台，以便使用开源库与框架生成应用。  或者，可以使用我们的 OAuth 2.0 和 OpenID Connect 协议文档来直接发送和接收协议消息，而不必使用身份验证库。
 
 <br />
 
@@ -60,5 +58,4 @@ ms.lasthandoff: 05/16/2017
 
 > [!NOTE]
 > 如果只需从 Azure Active Directory 登录工作和学校帐户，则应从我们的 [Azure AD 开发人员指南](active-directory-developers-guide.md)开始。  V2.0 终结点供显式需要登录 Microsoft 个人帐户的开发人员使用。
-
 

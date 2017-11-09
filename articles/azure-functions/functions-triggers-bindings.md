@@ -3,7 +3,7 @@ title: "使用 Azure Functions 中的触发器和绑定 | Microsoft 文档"
 description: "了解如何使用 Azure Functions 中的触发器和绑定将代码执行连接到联机事件和基于云的服务。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -15,15 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: donnam
+ms.author: glenga
+ms.openlocfilehash: 74933d9c3535ab71f47c792e20bfbc35e589ec08
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: fc3fc337a305434745e1e5e716ae7bf2096c2b33
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
-
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 借助 Azure Functions，可以编写通过“触发器”和“绑定”响应 Azure 中的事件和其他服务的代码。 本文是所有支持编程语言的触发器和绑定的概念性概述。 此处介绍所有绑定通用的功能。
 
@@ -43,21 +41,21 @@ ms.lasthandoff: 09/08/2017
 
 ### <a name="example-queue-trigger-and-table-output-binding"></a>示例：队列触发器和表输出绑定
 
-假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列触发器和表输出绑定接口即可实现此方案。 
+假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列触发器和 Azure 表存储输出绑定即可实现此方案。 
 
-队列触发器需要“集成”选项卡中的以下信息：
+Azure 队列存储触发器需要“集成”选项卡中的以下信息：
 
-* 包含队列存储帐户连接字符串的应用设置的名称
+* 包含用于 Azure 队列存储的 Azure 存储帐户连接字符串的应用设置对应的名称
 * 队列名称
 * 代码中用于读取队列消息内容的标识符，如 `order`。
 
 若要写入 Azure 表存储，请使用含有以下详细信息的输出绑定：
 
-* 包含表存储帐户连接字符串的应用设置的名称
+* 包含用于 Azure 表存储的 Azure 存储帐户连接字符串的应用设置对应的名称
 * 表名称
 * 代码中用于创建输出项的标识符，或函数的返回值。
 
-绑定使用连接字符串的应用设置，以强制执行 *function.json* 不包含服务密钥的最佳做法。
+绑定使用应用设置中存储的连接字符串值强制实施最佳做法，其中 function.json 不包含服务机密，而只包含应用设置的名称。
 
 然后，使用提供的标识符以在代码中与 Azure 存储集成。
 
@@ -168,7 +166,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
     log.Info($"C# script processed queue message. Item={json}");
-    return json;
+    return Task.FromResult(json);
 }
 ```
 
@@ -191,7 +189,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 ## <a name="binding-datatype-property"></a>绑定 dataType 属性
 
-在 .NET中，使用类型来定义输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本和一个要读取为二进制内容的字节数组。
+在 .NET中，使用类型来定义输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为 POCO 对象的自定义类型。
 
 对于动态键入的语言（如 JavaScript），请在绑定定义中使用 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，请使用类型 `binary`：
 
@@ -213,7 +211,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 只要一个值用百分号括起来（如 `%MyAppSetting%`），就会解析应用设置。 请注意，触发器和绑定的 `connection` 属性是一种特殊情况，该属性会自动将值解析为应用设置。 
 
-以下示例是一个队列触发器，该触发器使用应用设置 `%input-queue-name%` 定义要触发的队列。
+以下示例是一个 Azure 队列存储触发器，该触发器使用应用设置 `%input-queue-name%` 定义要触发的队列。
 
 ```json
 {
@@ -233,7 +231,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 除了触发器提供的数据负载（如触发函数的队列消息），许多触发器还会提供其他元数据值。 这些值可用作 C# 和 F# 中的输入参数，或用作 JavaScript 中 `context.bindings` 对象的属性。 
 
-例如，队列触发器支持以下属性：
+例如，Azure 存储队列触发器支持以下属性：
 
 * QueueTrigger - 如果字符串有效，将触发消息内容
 * DequeueCount
@@ -245,7 +243,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 相应参考主题中会详细介绍每种触发器的元数据属性。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
 
-例如，由于 blob 触发器有一些延迟，因此可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#storage-blob-trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
+例如，由于 blob 触发器有一些延迟，因此你可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#storage-blob-trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
 
 ```json
   "bindings": [
@@ -349,7 +347,7 @@ Azure Functions 为在绑定中通过 `{rand-guid}` 绑定表达式生成 GUID �
       "name": "info",
       "type": "httpTrigger",
       "direction": "in",
-      "webHookType": "genericJson",
+      "webHookType": "genericJson"
     },
     {
       "name": "blobContents",
@@ -422,9 +420,9 @@ module.exports = function (context, info) {
 - [事件中心](functions-bindings-event-hubs.md)
 - [服务总线](functions-bindings-service-bus.md)
 - [Azure Cosmos DB](functions-bindings-documentdb.md)
+- [Microsoft Graph](functions-bindings-microsoft-graph.md)
 - [SendGrid](functions-bindings-sendgrid.md)
 - [Twilio](functions-bindings-twilio.md)
 - [通知中心](functions-bindings-notification-hubs.md)
 - [移动应用](functions-bindings-mobile-apps.md)
 - [外部文件](functions-bindings-external-file.md)
-

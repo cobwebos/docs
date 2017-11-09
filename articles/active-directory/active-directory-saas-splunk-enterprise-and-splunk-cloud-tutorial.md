@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/09/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: b78e9b7161207a74880e912241d5e965b353d1c5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>教程：Azure Active Directory 与 Splunk Enterprise and Splunk Cloud 集成
 
 在本教程中，了解如何将 Splunk Enterprise and Splunk Cloud 与 Azure Active Directory (Azure AD) 集成。
@@ -29,7 +27,7 @@ ms.lasthandoff: 03/28/2017
 
 - 可在 Azure AD 中控制谁有权访问 Splunk Enterprise and Splunk Cloud
 - 可以让用户使用其 Azure AD 帐户自动登录到 Splunk Enterprise and Splunk Cloud 单一登录 (SSO)
-- 可在一个中心位置（即 Azure 经典门户）管理你的帐户
+- 可在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -61,7 +59,7 @@ ms.lasthandoff: 03/28/2017
 
 
 ## <a name="add-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>从库中添加 Splunk Enterprise and Splunk Cloud
-若要配置 Splunk Enterprise and Splunk Cloud 与 Azure AD 的集成，需要从库中将 Splunk Enterprise and Splunk Cloud 添加到托管 SaaS 应用列表。
+要配置 Splunk Enterprise and Splunk Cloud 与 Azure AD 的集成，需要从库中将 Splunk Enterprise and Splunk Cloud 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Splunk Enterprise and Splunk Cloud，请执行以下步骤：**
 
@@ -87,7 +85,7 @@ ms.lasthandoff: 03/28/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_01.png)
 
-7. 在结果窗格中，选择“Splunk Enterprise and Splunk Cloud”，然后单击“完成”以添加该应用程序。
+7. 在结果窗格中，选择“Splunk Enterprise and Splunk Cloud”，并单击“完成”以添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_02.png)
 
@@ -102,13 +100,13 @@ ms.lasthandoff: 03/28/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Splunk Enterprise and Splunk Cloud 测试用户](#creating-a-splunk-enterprise-and-splunk-cloud-test-user)** - 在 Splunk Enterprise and Splunk Cloud 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 Splunk Enterprise and Splunk Cloud 测试用户](#creating-a-splunk-enterprise-and-splunk-cloud-test-user)** - 在 Splunk Enterprise and Splunk Cloud 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在经典门户中启用 Azure AD SSO，并在“Splunk Enterprise and Splunk Cloud”应用程序中配置 SSO。
+在本部分中，会在经典门户中启用 Azure AD SSO，并在“Splunk Enterprise and Splunk Cloud”应用程序中配置 SSO。
 
 
 **若要配置 Splunk Enterprise and Splunk Cloud 的 Azure AD 单一登录，请执行以下步骤：**
@@ -117,7 +115,7 @@ ms.lasthandoff: 03/28/2017
      
     ![配置单一登录][6] 
 
-2. 在“你希望用户如何登录 Splunk Enterprise and Splunk Cloud”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 Splunk Enterprise and Splunk Cloud”页上，选择“Azure AD 单一登录”，并单击“下一步”。
 
     ![配置单一登录](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_03.png) 
 
@@ -132,13 +130,13 @@ ms.lasthandoff: 03/28/2017
 4. 在“配置 Splunk Enterprise and Splunk Cloud 的单一登录”页上，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_05.png)
-  1. 单击“下载元数据”，然后在计算机上保存该文件。
-  2. 单击“资源组名称” 的 Azure 数据工厂。
+  1. 单击“下载元数据”，并在计算机上保存该文件。
+  2. 单击“下一步”。
 
 5. 若要为应用程序配置 SSO，请联系 Splunk Enterprise and Splunk Cloud 支持团队，并向其提供以下信息：
 
     * 下载的**联合元数据**
-6. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+6. 在经典门户中，选择“单一登录配置确认”，并单击“下一步”。
     
     ![Azure AD 单一登录][10]
 
@@ -147,7 +145,7 @@ ms.lasthandoff: 03/28/2017
     ![Azure AD 单一登录][11]
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-在本部分中，将在经典门户中创建一个名为 Britta Simon 的测试用户。
+在本部分中，会在经典门户中创建一个名为 Britta Simon 的测试用户。
 
 ![创建 Azure AD 用户][20]
 
@@ -170,9 +168,9 @@ ms.lasthandoff: 03/28/2017
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_05.png) 
-  1. 在“用户类型”中，选择“你的组织中的新用户”。
+  1. 对于“用户类型”，选择“组织中的新用户”。
   2. 在“用户名”文本框中，键入“BrittaSimon”。
-  3. 单击“资源组名称” 的 Azure 数据工厂。
+  3. 单击“下一步”。
 
 6.  在“用户配置文件”对话框页上，执行以下步骤：
   
@@ -181,7 +179,7 @@ ms.lasthandoff: 03/28/2017
   2. 在“姓氏”文本框中，键入“Simon”。
   3. 在“显示名称”文本框中，键入“Britta Simon”。
   4. 在“角色”列表中，选择“用户”。
-  5. 单击“资源组名称” 的 Azure 数据工厂。
+  5. 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
 
@@ -195,7 +193,7 @@ ms.lasthandoff: 03/28/2017
 
 ### <a name="create-a-splunk-enterprise-and-splunk-cloud-test-user"></a>创建 Splunk Enterprise and Splunk Cloud 测试用户
 
-在本部分中，将在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 请协助 Splunk Enterprise and Splunk Cloud 支持团队将用户添加到 Splunk Enterprise and Splunk Cloud 平台中。
+在本部分中，会在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 请协助 Splunk Enterprise and Splunk Cloud 支持团队将用户添加到 Splunk Enterprise and Splunk Cloud 平台中。
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -204,7 +202,7 @@ ms.lasthandoff: 03/28/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Splunk Enterprise and Splunk Cloud，请执行以下步骤：**
+**要将 Britta Simon 分配到 Splunk Enterprise and Splunk Cloud，请执行以下步骤：**
 
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
 
@@ -254,4 +252,3 @@ ms.lasthandoff: 03/28/2017
 [203]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_205.png
-

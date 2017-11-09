@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>使用经典部署模型管理 Azure 备份保管库和服务器
 > [!div class="op_single_selector"]
@@ -119,7 +118,7 @@ ms.lasthandoff: 08/22/2017
 1. 在 Microsoft Azure 备份代理中，单击“**计划备份**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server-classic/schedule-backup.png)
-2. 在**计划备份向导**中，将“**更改备份项或时间**”选项保留选中状态，然后单击“**下一步**”。
+2. 在**计划备份向导**中，将“**更改备份项或时间**”选项保留选中状态，并单击“**下一步**”。
 
     ![修改计划的备份](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
 3. 如果要添加或更改项，请在“**选择要备份的项**”屏幕中单击“**添加项**”。
@@ -147,7 +146,7 @@ ms.lasthandoff: 08/22/2017
     修改保护设置后，可以通过转到“**作业**”选项卡并确认更改已反映在备份作业中，来确认可正确触发备份。
 
 ### <a name="enable-network-throttling"></a>启用网络限制
-Azure 备份代理提供“限制”选项卡，可用于控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
+Azure 备份代理提供的“限制”选项卡可让你控制在数据传输期间使用网络带宽的方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，此控制机制很有帮助。 数据传输的限制适用于备份和还原活动。  
 
 若要启用限制，请执行以下操作：
 
@@ -167,7 +166,7 @@ Azure 备份代理提供“限制”选项卡，可用于控制在数据传输�
 2. 在 Microsoft Azure 备份代理中，单击“**计划备份**”。
 
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server-classic/schedule-backup.png)
-3. 在计划备份向导中，将“**更改备份项或时间**”选项保留选中状态，然后单击“**下一步**”。
+3. 在计划备份向导中，将“**更改备份项或时间**”选项保留选中状态，并单击“**下一步**”。
 
     ![修改计划](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
 4. 单击“**排除设置**”。
@@ -199,4 +198,3 @@ Azure 备份代理提供“限制”选项卡，可用于控制在数据传输�
 * [从 Azure 还原 Windows Server 或 Windows 客户端](backup-azure-restore-windows-server.md)
 * 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](backup-introduction-to-azure-backup.md)
 * 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)
-

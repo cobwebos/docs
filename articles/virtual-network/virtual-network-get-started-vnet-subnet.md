@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-virtual-network"></a>创建自己的首个虚拟网络
 
 了解如何创建包含两个子网的虚拟网络 (VNet)、如何创建两个虚拟机 (VM)，以及如何将每个 VM 连接到其中一个子网，如下图所示：
@@ -253,4 +251,3 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 可以�
 - [网络接口](virtual-network-network-interface.md)
 - [网络安全组](virtual-networks-nsg.md)
 - [虚拟机](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: a57edd30975ec0e943fd84b2c66137d328a89b8b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: a26c40351c6b982fd90acb4bf06220ef3f79f399
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>配置 Azure Active Directory 基于设备的条件访问策略
 
@@ -57,7 +56,9 @@ ms.lasthandoff: 08/23/2017
 可通过以下途径在目录中将设备标记为合规：
 
 - Intune 
-- 与 Azure AD 集成的第三方移动设备管理系统  
+- 第三方移动设备托管系统，该系统通过 Azure AD 集成管理 Windows 10 设备 
+ 
+  
 
 只能将连接到 Azure AD 的设备标记为合规。 若要将设备连接到 Azure Active Directory，可使用以下选项： 
 
@@ -75,5 +76,4 @@ ms.lasthandoff: 08/23/2017
 ## <a name="next-steps"></a>后续步骤
 
 在环境中配置基于设备的条件访问策略之前，应该参阅 [Azure Active Directory 中的条件访问最佳做法](active-directory-conditional-access-best-practices.md)。
-
 

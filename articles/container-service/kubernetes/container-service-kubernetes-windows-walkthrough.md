@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
+ms.custom: H1Hack27Feb2017, mvc, devcenter
+ms.openlocfilehash: 7dd58ae747a1009b5db99e0fec741272d98b36ad
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9211b28debc2f0df194eded564e2a4d52303f3e6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>为 Windows 容器部署 Kubernetes 群集
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍如何在 [Azure 容器服务](../container-service-intro.md)中使用 Azure CLI 部署 [Kubernetes](https://kubernetes.io/docs/home/) 群集。 部署群集后，使用 Kubernetes `kubectl` 命令行工具连接到群集，并部署第一个 Windows 容器。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 使用 [az acs create](/cli/azure/acs#create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
-以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为 Windows 节点上的密码。 更新这些值，使其适用于你的环境。 
+以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为 Windows 节点上的密码。 更新这些值，使其适用于环境。 
 
 
 
@@ -110,7 +110,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
 此基本示例使用 JSON 文件指定 Microsoft Internet Information Server (IIS) 容器，然后使用 `kubctl apply` 命令创建 Pod。 
 
-创建名为 `iis.json` 的本地文件，并复制以下文本。 此文件告知 Kubernetes 使用 [Docker 中心](https://hub.docker.com/r/nanoserver/iis/)提供的公共容器映像在 Windows Server 2016 Nano Server 上运行 IIS。 该容器使用端口 80，但最初只能在群集网络中访问。
+创建名为 `iis.json` 的本地文件，并复制以下文本。 此文件告知 Kubernetes 使用 [Docker 中心](https://hub.docker.com/r/microsoft/iis/)提供的公共容器映像在 Windows Server 2016 Nano Server 上运行 IIS。 该容器使用端口 80，但最初只能在群集网络中访问。
 
  ```JSON
  {
@@ -126,7 +126,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
     "containers": [
       {
         "name": "iis",
-        "image": "nanoserver/iis",
+        "image": "microsoft/iis:nanoserver",
         "ports": [
           {
           "containerPort": 80
@@ -168,7 +168,7 @@ iis      1/1          Running       0           32s
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-通过使用此命令，Kubernetes 创建服务，并使用该服务公共 IP 地址创建 [Azure 负载均衡器规则](container-service-kubernetes-load-balancing.md)。 
+通过使用此命令，Kubernetes 创建服务，并使用该服务公共 IP 地址创建 Azure 负载均衡器规则。 
 
 运行以下命令，以便查看服务的状态。
 
@@ -203,4 +203,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [管理 ACS Kubernetes 群集](container-service-tutorial-kubernetes-prepare-app.md)
-

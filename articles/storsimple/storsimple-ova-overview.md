@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/09/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ba37cbfc8c92d00cf0ec02dd7b1ea9795946bcd
 ms.openlocfilehash: 100eed4694d2017333ef25eca86034d17cce78d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/09/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
 ## <a name="overview"></a>概述
@@ -63,7 +62,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 | 功能 | 优势 |
 | --- | --- |
 | 透明集成 |虚拟阵列支持 iSCSI 或 SMB 协议。 本地层和云层之间的数据移动是无缝的，并且对用户透明。 |
-| 降低存储成本 |借助 StorSimple，你预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
+| 降低存储成本 |借助 StorSimple，预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
 | 简化存储管理 |StorSimple 提供云中的集中式管理，使用 StorSimple 设备管理器管理多台设备。 |
 | 改进灾难恢复和合规性 |StorSimple 通过立即还原元数据和按需还原数据促进更快的灾难恢复。 这意味着正常运行能够得以继续，而很少发生中断。 |
 | 数据移动性 |可出于恢复和迁移目的从其他站点访问分层到云的数据。 请注意，只能将数据还原到原始虚拟阵列。 但是，使用灾难恢复功能可将整个虚拟阵列还原到另一个虚拟阵列。 |
@@ -96,14 +95,14 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 
 * **卷或共享存储** - 使用还原作为恢复卷或共享的新工作流。 使用此方法恢复整个卷或共享。
 * **项目级恢复** - 共享允许对最近备份的简化访问。 可从云中提供的特殊 *.backup* 文件夹轻松恢复单个文件。 此还原功能是用户驱动的，不需要任何管理干预。
-* **灾难恢复** - 使用故障转移功能可将所有卷或共享恢复到新的虚拟阵列。 创建新的虚拟阵列并向 StorSimple Device Manager 服务注册它，然后故障转移原始虚拟阵列。 然后，新的虚拟阵列将采用预配的资源。 
+* **灾难恢复** - 使用故障转移功能可将所有卷或共享恢复到新的虚拟阵列。 创建新的虚拟阵列并向 StorSimple Device Manager 服务注册它，然后故障转移原始虚拟阵列。 然后，新的虚拟阵列会采用预配的资源。 
 
 ## <a name="storsimple-virtual-array-components"></a>StorSimple 虚拟阵列组件
 虚拟阵列包括以下组件：
 
 * [虚拟阵列](#virtual-array) - 基于在虚拟化环境或虚拟机监控程序中预配的虚拟机的混合云存储设备。  
 * [StorSimple Device Manager 服务](#storsimple-device-manager-service) - Azure 门户的扩展，让用户能够从可从不同地理位置访问的单个 Web 界面管理一台或多台 StorSimple 设备。 可使用 StorSimple Device Manager 服务创建和管理服务、查看和管理设备和警报以及管理卷、共享和现有快照。
-* [本地 Web 用户界面](#local-web-user-interface) - 基于 Web 的 UI，用于配置设备，以便它可以连接到本地网络，然后向 StorSimple Device Manager 服务注册该设备。 
+* [本地 Web 用户界面](#local-web-user-interface) - 基于 Web 的 UI，用于配置设备，以便它可以连接到本地网络，并向 StorSimple Device Manager 服务注册该设备。 
 * [命令行接口](#command-line-interface) - Windows PowerShell 接口，可用于在虚拟阵列上启动支持会话。
   以下各节更详细地介绍了其中的每个组件，并解释该解决方案如何排列数据、分配存储并促进存储管理和数据保护。
 
@@ -191,5 +190,4 @@ StorSimple 数据保护功能支持创建按需备份。 此外，默认备份�
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[准备虚拟阵列门户](storsimple-virtual-array-deploy1-portal-prep.md)。
-
 

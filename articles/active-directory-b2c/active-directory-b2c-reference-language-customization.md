@@ -12,12 +12,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: sama
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 3c7c49ee5fbd98762da0eef6f02e7c2f036453cb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C：使用语言自定义
 
@@ -202,4 +201,3 @@ Chrome 和 Firefox 都会请求其设置的语言，如果支持该语言，将�
 | 土耳其语               | tr            |
 | 简体中文  | zh-hans       |
 | 繁体中文 | zh-hant       |
-

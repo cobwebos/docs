@@ -14,17 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
 Service Fabric 群集资源管理器支持动态负载更改、对添加或删除节点或服务做出反应。 还会自动更正约束冲突和主动重新均衡群集。 但这些操作的执行频率是多少，又是什么触发了这些操作？
 
-群集资源管理器可以执行三种不同类别的工作。 它们具有以下特点：
+群集资源管理器可以执行三种不同类别的工作。 它们是：
 
 1. 放置 - 此阶段负责放置任何遗漏的有状态副本或无状态实例。 放置既包括新服务也包括处理已失败的有状态副本或无状态实例。 删除和丢弃副本或实例的操作也在此阶段处理。
 2. 约束检查 – 此阶段检查并更正系统中不同放置约束（规则）的违规情况。 规则示例：确保节点不超出容量、符合服务的放置约束。
@@ -215,4 +214,3 @@ ClusterManifest.xml
 [Image3]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-activity-thresholds.png
 [Image4]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
 [Image5]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
-

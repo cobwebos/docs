@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob 存储：热、冷、存档（预览版）存储层
 
@@ -92,7 +91,7 @@ Blob 存储帐户公开**访问层**属性，它允许用户将存储层指定�
 
 ## <a name="blob-level-tiering-feature-preview"></a>Blob 级分层功能（预览版）
 
-现在，使用 Blob 级分层功能即可通过名为 [“设置 Blob 层”](/rest/api/storageservices/set-blob-tier) 的单一操作在对象级别更改数据的层。 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改都是即时发生的，Blob 正从存档中解除冻结的情况除外。 所有三个存储层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置继承相应的层。
+现在，使用 Blob 级分层功能即可通过名为[设置 Blob 层](/rest/api/storageservices/set-blob-tier)的单一操作在对象级别更改数据的层。 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改都是即时发生的，Blob 正从存档中解除冻结的情况除外。 所有三个存储层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置继承相应的层。
 
 若要使用这些预览版功能，请按 [Azure 存档和 Blob 级分层博客公告](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering)中的说明操作。
 
@@ -278,7 +277,7 @@ Blob 存储帐户使用的定价模型适用于基于存储层的 Blob 存储。
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 
 > [!NOTE]
-> 如需更详细的示例来了解如何计算热或冷存储层的使用费用，请参阅 *Azure Storage Pricing Page*（Azure 存储定价）页 中名为“ [什么是‘热’和‘冷’访问层以及如何确定应使用哪一个？](https://azure.microsoft.com/pricing/details/storage/)。
+> 如需更详细的示例来了解如何计算热或冷存储层的使用费用，请参阅 *Azure Storage Pricing Page*（Azure 存储定价）页 中标题为“[什么是‘热’和‘冷’访问层以及如何确定应使用哪一个？](https://azure.microsoft.com/pricing/details/storage/)”的常见问题解答。
  
 ## <a name="migrating-existing-data"></a>迁移现有数据
 
@@ -319,7 +318,7 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 
 3. **是否可以将现有存储帐户转换成 Blob 存储帐户？**
    
-    不会。 Blob 存储帐户是一种不同的存储帐户，必须新建它并如上文所述迁移数据。
+    不能。 Blob 存储帐户是一种不同的存储帐户，必须新建它并如上文所述迁移数据。
 
 4. **是否可以将对象存储在同一帐户中的两个存储层中？**
    

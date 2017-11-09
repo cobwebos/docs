@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: f6dc9657e64160be1e68a7356863b53131e9b3c3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>使用 Microsoft HPC Pack 和按需 Azure 计算节点设置混合高性能计算 (HPC) 群集
 使用 Microsoft HPC Pack 2012 R2 和 Azure 可以设置小型混合高性能计算 (HPC) 群集 本文中所示的群集包含一个本地 HPC Pack 头节点和一些在 Azure 云服务中按需部署的计算节点。 可以在混合群集上运行计算作业。
@@ -109,7 +108,7 @@ HPC Pack 会在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 
 2. 键入该帐户的名称，然后选择“经典”部署模型。
 
-3. 选择资源组和位置，并将其他设置保留为默认值。 然后单击“创建” 。
+3. 选择资源组和位置，并将其他设置保留为默认值。 然后单击“创建”。
 
 ## <a name="configure-the-head-node"></a>配置头节点
 若要使用 HPC 群集管理器部署 Azure 节点和提交作业，必须首先执行一些必需的群集配置步骤。
@@ -299,4 +298,3 @@ HPC Pack 会在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 [stop_node1]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node1.png
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
-

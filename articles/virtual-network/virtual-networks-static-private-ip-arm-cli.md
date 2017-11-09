@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 为虚拟机配置专用 IP 地址
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 04/07/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍资源管理器部署模型。 还可以[管理经典部署模型中的静态专用 IP 地址](virtual-networks-static-private-ip-classic-cli.md)。
+本文介绍 Resource Manager 部署模型。 还可以[管理经典部署模型中的静态专用 IP 地址](virtual-networks-static-private-ip-classic-cli.md)。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 04/07/2017
 2. 使用 [az network public-ip create](/cli/azure/network/public-ip#create) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
 
     > [!NOTE]
-    > 你可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。
+    > 可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。
    
     ```azurecli
     az network public-ip create \
@@ -205,7 +204,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>从 VM 中删除静态专用 IP 地址
 
-无法在用于 Resource Manager 部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 你必须：
+无法在用于 Resource Manager 部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须：
 - 创建使用动态 IP 的新 NIC
 - 将 VM 上的 NIC 设置为新创建的 NIC。 
 
@@ -281,5 +280,4 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 * 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。
 * 了解[实例层级公共 IP (ILPIP) 地址](virtual-networks-instance-level-public-ip.md)。
 * 查阅[保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
 

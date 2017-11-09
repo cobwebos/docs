@@ -3,7 +3,7 @@ title: "在 Azure 自动化中创建或导入 Runbook"
 description: "本文介绍了如何在 Azure 自动化中创建新的 Runbook，或如何从文件中导入 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 24414362-b690-4474-8ca7-df18e30fc31d
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2017
+ms.date: 09/29/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: ad070333b85b70d911a492a35cc89c8c4a60e5c1
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 0264de12caaf62e976673a423df731ad27ab01e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>在 Azure 自动化中创建或导入 Runbook
 可以通过以下方法将 Runbook 添加到 Azure 自动化：[创建新的 Runbook](#creating-a-new-runbook)；从文件或 [Runbook 库](automation-runbook-gallery.md)导入现有 Runbook。 本文介绍如何通过文件创建和导入 Runbook。  可以在 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)中获取有关如何访问社区 Runbook 和模块的所有详细信息。
@@ -30,7 +29,7 @@ ms.lasthandoff: 08/08/2017
 ### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-classic-portal"></a>使用 Azure 经典门户创建新的 Azure 自动化 Runbook
 只能使用 Azure 门户中的 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。
 
-1. 在 Azure 经典门户中，依次单击“新建”、“应用程序服务”、“自动化”、“Runbook”、“快速创建”。
+1. 在 Azure 经典门户中，依次单击“新建”、“应用服务”、“自动化”、“Runbook”、“快速创建”。
 2. 输入所需的信息，并单击“创建”。 Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
 3. 若要立即编辑 Runbook，则请单击“编辑 Runbook”。 否则，请单击“确定”。
 4. 新的 Runbook 将出现在“Runbook”选项卡中。
@@ -51,16 +50,16 @@ ms.lasthandoff: 08/08/2017
     -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>将 Runbook 从文件导入 Azure 自动化
-可以在 Azure 自动化中创建新的 Runbook，方法是导入 PowerShell 脚本或 PowerShell 工作流（扩展名为 .ps1）或导出的图形 Runbook (.graphrunbook)。  必须指定要通过导入创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
+可以在 Azure 自动化中创建新的 Runbook，方法是导入 PowerShell 脚本或 PowerShell 工作流（扩展名为 .ps1）、导出的图形 Runbook (.graphrunbook) 或 Python 2 脚本（扩展名为.py）。  必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
 
 * .graphrunbook 文件只能导入到新的[图形 Runbook](automation-runbook-types.md#graphical-runbooks) 中，并且只能从 .graphrunbook 文件创建图形 Runbook。
 * 包含 PowerShell 工作流的 .ps1 文件只能导入到 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks) 中。  如果该文件包含多个 PowerShell 工作流，导入会失败。 必须将每个工作流保存到各自的文件中，并分别导入每个工作流。
-* 不包含工作流的 .ps1 文件可以导入到 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 中，也可以导入到 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks) 中。  如果将工作流导入到 PowerShell 工作流 Runbook 中，则会将其转换为工作流，并会在 Runbook 中添加注释，详述所做的更改。
+* 不包含工作流的 .ps1 文件可以导入到 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 中，也可以导入到 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks) 中。  如果将它导入到 PowerShell 工作流 Runbook 中，则会将其转换为工作流，并会在 Runbook 中添加注释，详述所做的更改。
 
 ### <a name="to-import-a-runbook-from-a-file-with-the-azure-classic-portal"></a>使用 Azure 经典门户通过文件导入 Runbook
 可通过以下过程将脚本文件导入 Azure 自动化。  请注意，只能通过此门户将 .ps1 文件导入 PowerShell 工作流 Runbook。  其他类型必须使用 Azure 门户。
 
-1. 在 Azure 管理门户中，选择“自动化”，并选择一个自动化帐户。
+1. 在 Azure 经典门户中，选择“自动化”，并选择自动化帐户。
 2. 单击“导入”。
 3. 单击“浏览文件”，找到要导入的脚本文件。
 4. 若要立即编辑 Runbook，则请单击“编辑 Runbook”。 否则，请单击“确定”。
@@ -81,12 +80,12 @@ ms.lasthandoff: 08/08/2017
 4. 单击“Runbook 文件”以选择要导入的文件
 5. 如果“名称”字段已启用，则可以选择更改它。  Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
 6. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。 
-7. 新的 Runbook 将出现在自动化帐户的 Runbook 列表中。
+7. 新的 runbook 会出现在自动化帐户的 runbook 列表中。
 8. 必须先[发布 Runbook](#publishing-a-runbook)，才能运行它。
 
 > [!NOTE]
-> 在导入图形 Runbook 或图形 PowerShell 工作流 Runbook 后，可以选择转换为其他类型（如果需要）。 无法转换为文本。
-> 
+> 在导入图形 Runbook 或图形 PowerShell 工作流 Runbook 后，可以选择转换为其他类型（如果需要）。 无法转换为文本 runbook。
+>  
 > 
 
 ### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>使用 Windows PowerShell 从脚本文件中导入 Runbook
@@ -132,5 +131,4 @@ ms.lasthandoff: 08/08/2017
 * 要了解可以如何从 Runbook 和 PowerShell 模块库中受益，请参阅 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)
 * 若要了解有关使用文本编辑器编辑 PowerShell 和 PowerShell 工作流 Runbook 的详细信息，请参阅 [编辑 Azure 自动化中的文本 Runbook](automation-edit-textual-runbook.md)
 * 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
-
 

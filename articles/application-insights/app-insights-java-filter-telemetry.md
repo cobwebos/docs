@@ -3,7 +3,7 @@ title: "在 Java Web 应用中筛选 Azure Application Insights 遥测 |Microsof
 description: "筛选出无需监视的事件，减少遥测流量。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: cd09b7c5d45d07a3fbcc5d6f0c02400dcd36d61b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/02/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: f9e061c010667bc18ac54e6546cc25339e9c0e3e
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 02/02/2017
 * 特定事件名称
 
 > [!NOTE]
-> 筛选器会使应用的指标产生偏差。 例如，为了诊断缓慢响应时间，你可能会决定设置一个排除快速响应时间的筛选器。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
+> 筛选器会使应用的指标产生偏差。 例如，为了诊断缓慢响应，你可能会决定设置一个排除快速响应时间的筛选器。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
 > 如果这是一个问题，请改用[采样](app-insights-sampling.md)。
 
 ## <a name="setting-filters"></a>设置筛选器
@@ -259,9 +258,8 @@ ms.lasthandoff: 02/02/2017
 
 我的筛选器不能正常工作。
 
-* 请检查提供的参数值是否有效。 例如，持续时间应为整数。 无效值将导致筛选器被忽略。 如果自定义筛选器从构造函数或 set 方法中引发异常，它将被忽略。
+* 请检查提供的参数值是否有效。 例如，持续时间应为整数。 无效值将导致筛选器被忽略。 如果自定义筛选器从构造函数或 set 方法中引发异常，它会被忽略。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [采样](app-insights-sampling.md) - 请考虑将采样作为替代方法，该方法不会使指标出现偏差。
-

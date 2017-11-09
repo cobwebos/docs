@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 01/23/2017
 ms.author: adhurwit
+ms.openlocfilehash: fc4286b39ade5558a9dabd5832be05a7a0d6f0c7
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a2a3a4773d33fe6b8589ad8d9d219acda4d1015e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>教程：在 Microsoft Azure 存储中使用 Azure 密钥保管库加密和解密 Blob
 ## <a name="introduction"></a>介绍
@@ -87,7 +86,7 @@ Install-Package Microsoft.Azure.KeyVault.Extensions
 </appSettings>
 ```
 
-添加以下 `using` 语句并确保将对 System.Configuration 的引用添加到项目中。
+添加以下 `using` 指令并确保将对 System.Configuration 的引用添加到项目中。
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -238,4 +237,3 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 有关 Blob REST API 的详细信息，请参阅 [Blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Blob 服务 REST API）。
 
 有关 Microsoft Azure 存储的最新信息，请转到 [Microsoft Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
-

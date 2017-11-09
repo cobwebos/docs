@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-service-management-from-python"></a>如何从 Python 使用服务管理
 本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 **ServiceManagementService** 类支持以编程方式访问 [Azure 经典门户][management-portal]中提供的众多与服务管理相关的功能（例如**创建、更新和删除云服务、部署、数据管理服务和虚拟机**）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
@@ -119,8 +118,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 * 澳大利亚东南部
 
 ## <a name="CreateCloudService"></a>如何：创建云服务
-创建应用程序并在 Azure 中运行该应用程序时，相关代码和配置统称为 Azure [云服务][cloud service]（在早期版本的 Azure 中称为*托管服务*）。 
-            **create\_hosted\_service** 方法允许通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建新的托管服务。
+创建应用程序并在 Azure 中运行该应用程序时，相关代码和配置统称为 Azure [云服务][cloud service]（在早期版本的 Azure 中称为*托管服务*）。 **create\_hosted\_service** 方法允许通过提供托管服务名称（它在 Azure 中必须是唯一的）、标签（自动编码为 base64）、说明和位置来创建新的托管服务。
 
     from azure import *
     from azure.servicemanagement import *
@@ -428,4 +426,3 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 
 [cloud service]:/services/cloud-services/
-

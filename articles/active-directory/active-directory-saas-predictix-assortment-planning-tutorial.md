@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: cc7ad4aa5260276e26406b6b79c039372e5ee69f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>教程：Azure Active Directory 与 Predictix Assortment Planning 的集成
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 08/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Predictix Assortment Planning
-2. 配置和测试 Azure AD 单一登录
+2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-predictix-assortment-planning-from-the-gallery"></a>从库中添加 Predictix Assortment Planning
 要通过配置将 Predictix Assortment Planning 集成到 Azure AD 中，需从库将 Predictix Assortment Planning 添加到托管式 SaaS 应用的列表中。
@@ -126,7 +125,7 @@ ms.lasthandoff: 08/11/2017
  
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_certificate.png) 
 
@@ -239,5 +238,4 @@ ms.lasthandoff: 08/11/2017
 [201]: ./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_general_203.png
-
 

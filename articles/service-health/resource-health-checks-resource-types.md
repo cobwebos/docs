@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/19/2017
+ms.date: 10/09/2017
 ms.author: BernardoAMunoz
+ms.openlocfilehash: 22e1768257524400f341cf881dfebfb35115a43b
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: ed9c955096a5427e8184bb6c542ad85ff4c302be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
+
+## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
+|执行的检查|
+|---|
+|<ul><li>API 管理服务是否已启动并运行？</li></ul>|
 
 ## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
 |执行的检查|
@@ -60,6 +63,12 @@ ms.lasthandoff: 07/11/2017
 |执行的检查|
 |---|
 |<ul><li>区域中的用户是否可将数据上传到 Data Lake Store？</li><li>区域中的用户是否可从 Data Lake Store 下载数据？</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+
+|执行的检查|
+|---|
+|<ul><li>IoT 中心在正常运行吗？</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |执行的检查|

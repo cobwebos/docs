@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
-ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/18/2017
-
+ms.openlocfilehash: f87b5837c7a786c8b309a6a52e69b53c0ad4c9d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
 过去数年以来，集成工具已得到发展和演进。  本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
@@ -27,7 +26,7 @@ ms.lasthandoff: 01/18/2017
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect 整合了以前作为 DirSync 和 AAD Sync 发布的组件和功能。 这些工具不再单独发布，将来所做的改进将包含在 Azure AD Connect 更新中，因此你始终知道从何处获取最新功能。
+> Azure AD Connect 整合了以前作为 DirSync 和 AAD Sync 发布的组件和功能。这些工具不再单独发布，将来所做的改进将包含在 Azure AD Connect 更新中，因此，始终知道从何处获取最新功能。
 > 
 > DirSync 和 Azure AD Sync 已弃用。 可在 [此处](active-directory-aadconnect-dirsync-deprecated.md)找到更多信息。
 > 
@@ -92,5 +91,4 @@ PP = 公开预览版
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
 

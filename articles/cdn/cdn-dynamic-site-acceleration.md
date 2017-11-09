@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: be2719e0e02c8bc69800ef4a3e7da3c3164cb9dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
@@ -137,7 +136,6 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 例如：`mydynamic.azureedge.net/index.html` 是动态页面，从 DSA 终结点进行加载。  HTML 页面引用多个静态资产，如 JavaScript 库或从静态 CDN 终结点加载的图像，如 `mystatic.azureedge.net/banner.jpg` 和 `mystatic.azureedge.net/scripts.js`。 
 
 若要了解如何在 ASP.NET Web 应用程序中使用控制器通过特定 CDN URL来提供内容，请参见[此处](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller)示例。
-
 
 
 

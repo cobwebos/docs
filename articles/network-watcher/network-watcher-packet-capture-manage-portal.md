@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 818f6513625a2677668dd6b6869ef969fe015bf7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
@@ -33,7 +31,7 @@ ms.lasthandoff: 06/15/2017
 
 使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
 
-本文将引导你完成当前可用于数据包捕获的不同管理任务。
+本文将引导完成当前可用于数据包捕获的不同管理任务。
 
 - [**启动数据包捕获**](#start-a-packet-capture)
 - [**停止数据包捕获**](#stop-a-packet-capture)
@@ -52,13 +50,13 @@ ms.lasthandoff: 06/15/2017
 
 ### <a name="packet-capture-agent-extension-through-the-portal"></a>通过门户安装数据包捕获代理扩展
 
-若要通过门户安装数据包捕获 VM 代理，请导航到你的虚拟机，单击“扩展” > “添加”，然后搜索“适用于 Windows 的网络观察程序代理”
+要通过门户安装数据包捕获 VM 代理，请导航到虚拟机，单击“扩展” > “添加”，然后搜索“适用于 Windows 的网络观察程序代理”
 
 ![代理视图][agent]
 
 ## <a name="packet-capture-overview"></a>数据包捕获概述
 
-导航到 [Azure 门户](https://portal.azure.com)，然后单击“网络” > “网络观察程序” > “数据包捕获”
+导航到 [Azure 门户](https://portal.azure.com)，并单击“网络” > “网络观察程序” > “数据包捕获”
 
 概述页显示现有的所有数据包捕获列表，不管其状态如何。
 
@@ -108,11 +106,11 @@ ms.lasthandoff: 06/15/2017
 
 ![创建数据包捕获][2]
 
-超过针对数据包捕获设置的时间限制后，数据包捕获将会停止，可供查看。 也可以手动停止数据包捕获会话。
+超过针对数据包捕获设置的时间限制后，数据包捕获会停止，可供查看。 也可以手动停止数据包捕获会话。
 
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 
-在数据包捕获视图中，单击**上下文菜单** (…) 或右键单击，然后单击“删除”即可停止数据包捕获
+在数据包捕获视图中，单击**上下文菜单** (…) 或右键单击，并单击“删除”即可停止数据包捕获
 
 ![删除数据包捕获][3]
 
@@ -125,7 +123,7 @@ ms.lasthandoff: 06/15/2017
 
 ## <a name="stop-a-packet-capture"></a>停止数据包捕获
 
-在数据包捕获视图中，单击**上下文菜单** (…) 或右键单击，然后单击“停止”即可停止数据包捕获
+在数据包捕获视图中，单击**上下文菜单** (…) 或右键单击，并单击“停止”即可停止数据包捕获
 
 ## <a name="download-a-packet-capture"></a>下载数据包捕获
 
@@ -148,7 +146,6 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 [3]: ./media/network-watcher-packet-capture-manage-portal/figure3.png
 [4]: ./media/network-watcher-packet-capture-manage-portal/figure4.png
 [agent]: ./media/network-watcher-packet-capture-manage-portal/agent.png
-
 
 
 

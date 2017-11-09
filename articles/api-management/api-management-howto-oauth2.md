@@ -3,7 +3,7 @@ title: "在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权 | Mi
 description: "了解如何在 API 管理中使用 OAuth 2.0 为用户授权。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 78c48247-64f0-4708-b2d0-98b61a821283
@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
+ms.openlocfilehash: c61b4969757d62d7e16e7acecf7d7bed4b31c9b1
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: a19c453bb3271374b587f3d0b35adad55863b490
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
-许多 API 支持使用 [OAuth 2.0](http://oauth.net/2/) 维护 API 的安全，并确保仅有效用户具有访问权限且只能访问有权访问的资源。 若要将 Azure API 管理的交互式开发人员门户与此类 API 配合使用，需通过该服务对服务实例进行配置，使之适用于支持 OAuth 2.0 的 API。
+许多 API 支持使用 [OAuth 2.0](http://oauth.net/2/) 维护 API 的安全，并确保仅有效用户具有访问权限且只能访问有权访问的资源。 要将 Azure API 管理的交互式开发人员门户与此类 API 配合使用，需通过该服务对服务实例进行配置，使之适用于支持 OAuth 2.0 的 API。
 
 ## <a name="prerequisites"> </a>先决条件
 本指南介绍如何配置 API 管理服务实例，以便针对开发人员帐户使用 OAuth 2.0 授权，但不介绍如何配置 OAuth 2.0 提供程序。 每个 OAuth 2.0 提供程序的配置均不相同，虽然步骤类似，不过在 API 管理服务实例中配置 OAuth 2.0 时使用的必需信息是相同的。 本主题介绍的示例使用 Azure Active Directory 作为 OAuth 2.0 提供程序。
@@ -42,7 +41,7 @@ ms.lasthandoff: 07/12/2017
 > 
 > 
 
-在左侧的“API 管理”菜单中单击“安全”，然后单击“OAuth 2.0”和“添加授权服务器”。
+在左侧的“API 管理”菜单中单击“安全”，并单击“OAuth 2.0”和“添加授权服务器”。
 
 ![OAuth 2.0][api-management-oauth2]
 
@@ -81,7 +80,7 @@ ms.lasthandoff: 07/12/2017
 
 “客户端身份验证方法”的默认设置为“基本”，“访问令牌发送方法”为“Authorization 标头”。 这些值以及“默认范围”在窗体的此部分配置。
 
-“客户端凭据”部分包含“客户端 ID”和“客户端密钥”，在创建和配置 OAuth 2.0 服务器的过程中获取。 指定“客户端 ID”和“客户端密钥”以后，将会生成“授权代码”的“redirect_uri”。 该 URI 用于在 OAuth 2.0 服务器配置中配置回复 URL。
+“客户端凭据”部分包含“客户端 ID”和“客户端密钥”，在创建和配置 OAuth 2.0 服务器的过程中获取。 指定“客户端 ID”和“客户端密钥”以后，会生成“授权代码”的“redirect_uri”。 该 URI 用于在 OAuth 2.0 服务器配置中配置回复 URL。
 
 ![新建服务器][api-management-oauth2-server-4]
 
@@ -96,7 +95,7 @@ ms.lasthandoff: 07/12/2017
 
 ![用户授权][api-management-user-authorization]
 
-从下拉列表中选择所需的“授权服务器”，然后单击“保存”。
+从下拉列表中选择所需的“授权服务器”，并单击“保存”。
 
 ![用户授权][api-management-user-authorization-save]
 
@@ -105,20 +104,20 @@ ms.lasthandoff: 07/12/2017
 
 ![开发人员门户][api-management-developer-portal-menu]
 
-单击顶部菜单中的“API”，然后选择“Echo API”。
+单击顶部菜单中的“API”，并选择“Echo API”。
 
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
-> 如果必须只有一个 API 得到配置或对您的帐户可见，然后单击 API 使您直接进入该 API 的操作。
+> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
 > 
 > 
 
-选择“GET 资源”操作，单击“打开控制台”，然后从下拉列表中选择“授权代码”。
+选择“GET 资源”操作，单击“打开控制台”，并从下拉列表中选择“授权代码”。
 
 ![打开控制台][api-management-open-console]
 
-选中“授权代码”后，将会显示一个弹出窗口，其中包含 OAuth 2.0 提供程序的登录窗体。 在此示例中，登录窗体由 Azure Active Directory 提供。
+选中“授权代码”后，会显示一个弹出窗口，其中包含 OAuth 2.0 提供程序的登录窗体。 在此示例中，登录窗体由 Azure Active Directory 提供。
 
 > [!NOTE]
 > 如果已禁用弹出窗口，浏览器会提示用户启用该功能。 启用该功能后，再次选中“授权代码”，此时就会显示登录窗体。
@@ -131,7 +130,7 @@ ms.lasthandoff: 07/12/2017
 
 ![请求标头令牌][api-management-request-header-token]
 
-此时可以配置剩余参数的所需值，然后提交请求。 
+此时可以配置剩余参数的所需值，并提交请求。 
 
 ## <a name="next-steps"></a>后续步骤
 有关如何使用 OAuth 2.0 和 API 管理的详细信息，请观看以下视频并查看随附的[文章](api-management-howto-protect-backend-with-aad.md)。
@@ -174,5 +173,4 @@ ms.lasthandoff: 07/12/2017
 [Configure an API to use OAuth 2.0 user authorization]: #step2
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
-
 

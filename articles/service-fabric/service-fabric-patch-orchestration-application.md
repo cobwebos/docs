@@ -14,17 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
+ms.openlocfilehash: aaceb556d926dbb09aeb2843a7941eadaaeb588b
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 2c5842822e347113e388d570f6ae603a313944d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
-修补业务流程应用程序是一个 Azure Service Fabric 应用程序，可在 Azure 上的 Service Fabric 群集中自动修补操作系统，而无需停机。
+修补业务流程应用程序是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集中自动修补操作系统，而无需停机。
 
 修补业务流程应用提供以下功能：
 
@@ -71,7 +69,7 @@ ms.lasthandoff: 08/24/2017
 银级持久层中的 Azure 群集默认启用修复管理器服务。 黄金级耐久层中的 Azure 群集可能启用或不启用修复管理器服务，具体取决于这些群集的创建时间。 铜级持久层中的 Azure 群集默认不启用修复管理器服务。 如果已启用该服务，可以看到它在 Service Fabric Explorer 的系统服务部分中运行。
 
 ##### <a name="azure-portal"></a>Azure 门户
-在设置群集时，可以从 Azure 门户启用修复管理器。 群集配置过程中，在“`Add on features`”下选择“`Include Repair Manager`”选项。
+在设置群集时，可以从 Azure 门户启用修复管理器。 在群集配置时选择“附加功能”下的“包含修复管理器”选项。
 ![从 Azure 门户启用修复管理器的映像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
@@ -96,10 +94,10 @@ ms.lasthandoff: 08/24/2017
     ```json
     "fabricSettings": [
         ...      
-        ],
-        "addonFeatures": [
-            "RepairManager"
-        ],
+    ],
+    "addonFeatures": [
+        "RepairManager"
+    ],
     ```
 
 3. 通过这些更改更新群集模板后，应用更改并等待升级完成。 现在可以看到修复管理器系统服务在群集中运行。 它在 Service Fabric Explorer 中的系统服务部分中被称为 `fabric:/System/RepairManagerService`。 
@@ -121,15 +119,15 @@ ms.lasthandoff: 08/24/2017
     }
     ```
 
-2. 现在，通过在 `fabricSettings` 节后面添加以下 `addonFeaturres` 节来启用修复管理器服务，如下所示：
+2. 现在，通过在 `fabricSettings` 节后面添加以下 `addonFeatures` 节来启用修复管理器服务，如下所示：
 
     ```json
     "fabricSettings": [
         ...      
-        ],
-        "addonFeatures": [
-            "RepairManager"
-        ],
+    ],
+    "addonFeatures": [
+        "RepairManager"
+    ],
     ```
 
 3. 通过这些更改更新群集清单后，使用已更新的群集清单[创建新群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)或[升级群集配置](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server#Upgrade-the-cluster-configuration)。 群集使用已更新的群集清单运行后，就可以看到修复管理器系统服务在群集中运行，该服务在 Service Fabric Explorer 中的系统服务部分下被称为 `fabric:/System/RepairManagerService`。
@@ -206,7 +204,7 @@ ms.lasthandoff: 08/24/2017
 |LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
 | WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 | InstallWindowsOSOnlyUpdates | Bool <br> （默认值：True）                 | 此标志允许安装 Windows 操作系统更新。            |
-| WUOperationTimeOutInMinutes | int <br>（默认值：90）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作将被中止。       |
+| WUOperationTimeOutInMinutes | int <br>（默认值：90）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
 | WURescheduleCount     | int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
 | WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD,HH:MM:SS，例如：Monthly, 5,12:22:32。 <br> -   Weekly,DAY,HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，所有时间均采用 UTC。|
@@ -274,6 +272,17 @@ ms.lasthandoff: 08/24/2017
   ...
 ]
 ```
+
+JSON 的字段如下所述。
+
+字段 | 值 | 详细信息
+-- | -- | --
+OperationResult | 0 - Succeeded（成功）<br> 1 - Succeeded With Errors（已成功但存在错误）<br> 2 - Failed（失败）<br> 3 - Aborted（已中止）<br> 4 - Aborted With Timeout（因超时已中止） | 指示整个操作（通常涉及安装一个或多个更新）的结果。
+ResultCode | 与 OperationResult 相同 | 此字段指示单个更新的安装操作的结果。
+OperationType | 1 - Installation（安装）<br> 0 - Search and Download（搜索并下载）。| 安装是唯一默认情况下会显示在结果中的 OperationType。
+WindowsUpdateQuery | 默认值是“IsInstalled=0” |用于搜索更新的 Windows 更新查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
+RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指示是否需要重新启动才能完成安装更新。
+
 如果尚未计划更新，JSON 结果将为空。
 
 请登录到群集以查询 Windows 更新结果。 然后找出协调器服务的主副本地址，并在浏览器中点击此 URL：http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults。
@@ -317,7 +326,7 @@ ms.lasthandoff: 08/24/2017
 
 如果某个节点上的 Windows 更新操作失败，将会针对节点代理服务生成运行状况报告。 运行状况报告的详细信息将包含有问题的节点名称。
 
-在有问题的节点上成功完成修补后，将自动清除该报告。
+在有问题的节点上成功完成修补后，会自动清除该报告。
 
 #### <a name="the-node-agent-ntservice-is-down"></a>节点代理 NTService 关闭
 
@@ -361,9 +370,9 @@ A. 修补业务流程应用所需的时长主要取决于以下因素：
 - 下载和安装更新所需的平均时间，不应超过两个小时。
 - VM 的性能和网络带宽。
 
-问： 为什么某些更新会出现在通过 REST API 获得的 Windows 更新结果中，而不是在计算机的 Windows 更新历史记录下？
+问： **为什么某些更新会出现在通过 REST API 获得的 Windows 更新结果中，而不是在计算机的 Windows 更新历史记录下？**
 
-A. 某些产品更新需要签入其各自的更新/修补历史记录。 例如：Windows Defender 更新未显示在 Windows Server 2016 的 Windows 更新历史记录中。
+A. 某些产品更新需要签入其各自的更新/修补历史记录。 例如，Windows Defender 更新不会显示在 Windows Server 2016 的 Windows 更新历史记录中。
 
 ## <a name="disclaimers"></a>免责声明
 
@@ -403,7 +412,7 @@ A. 某些产品更新需要签入其各自的更新/修补历史记录。 例如
 
 管理员必须介入，并判断为何 Windows 更新会导致应用程序或群集运行不正常。
 
-## <a name="release-notes-"></a>发布说明：
+## <a name="release-notes"></a>发行说明
 
 ### <a name="version-110"></a>版本 1.1.0
 - 公开发布的版本
@@ -416,4 +425,3 @@ A. 某些产品更新需要签入其各自的更新/修补历史记录。 例如
 - 系统重启工作流中的 Bug 修复。
 - 由于修复任务准备过程中的运行状况检查，RM 任务创建过程中的 Bug 修复未能按预期方式进行。
 - 将窗口服务 POANodeSvc 的启动模式从自动更改为延时自动。
-

@@ -1,0 +1,131 @@
+- name: Azure Stack 用户文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 重要注意事项
+      href: azure-stack-considerations.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建 Windows VM - 门户
+      href: azure-stack-quick-windows-portal.md
+    - name: 创建 Windows VM - PowerShell
+      href: azure-stack-quick-create-vm-windows-powershell.md
+    - name: 创建 Windows VM - CLI
+      href: azure-stack-quick-create-vm-windows-cli.md
+    - name: 创建 Linux VM - 门户
+      href: azure-stack-quick-linux-portal.md
+    - name: 创建 Linux VM - PowerShell
+      href: azure-stack-quick-create-vm-linux-powershell.md
+    - name: 创建 Linux VM - CLI
+      href: azure-stack-quick-create-vm-linux-cli.md
+- name: 教程
+  items:
+    - name: 将应用部署到 Azure 和 Azure Stack
+      href: azure-stack-solution-pipeline.md
+- name: 操作指南
+  items:
+    - name: 使用 Azure Stack 门户
+      href: azure-stack-use-portal.md
+    - name: 安全性和遵从性
+      items:
+        - name: 管理 RBAC
+          href: azure-stack-manage-permissions.md
+        - name: 创建服务主体
+          href: Azure-stack-create-service-principals.md
+    - name: 使用服务
+      items:
+        - name: 重要注意事项
+          href: azure-stack-considerations.md
+        - name: 计算
+          items:
+            - name: 概述
+              href: azure-stack-compute-overview.md
+            - name: VM 注意事项
+              href: azure-stack-vm-considerations.md
+        - name: 存储
+          items:
+            - name: 概述
+              href: azure-stack-storage-overview.md
+            - name: 存储注意事项
+              href: azure-stack-acs-differences.md
+            - name: 存储开发工具
+              href: azure-stack-storage-dev.md
+            - name: 数据传输工具
+              href: azure-stack-storage-transfer.md
+            - name: 连接存储资源管理器
+              href: azure-stack-storage-connect-se.md
+        - name: 网络
+          items:
+            - name: 概述
+              href: azure-stack-network-overview.md
+            - name: 网络注意事项
+              href: azure-stack-network-differences.md
+            - name: 用于 Azure Stack 的 iDNS
+              href: azure-stack-understanding-dns.md
+            - name: Azure Stack 中的 DNS
+              href: azure-stack-dns.md
+        - name: Key Vault
+          items:
+            - name: 概述
+              href: azure-stack-kv-intro.md
+            - name: 使用门户进行管理
+              href: azure-stack-kv-manage-portal.md
+            - name: 使用 PowerShell 进行管理
+              href: azure-stack-kv-manage-powershell.md
+            - name: 使用机密创建 VM
+              href: azure-stack-kv-deploy-vm-with-secret.md
+            - name: 使用证书创建 VM
+              href: azure-stack-kv-push-secret-into-vm.md
+            - name: KeyVault 示例应用
+              href: azure-stack-kv-sample-app.md
+    - name: 生成应用
+      items:
+        - name: 为 Azure Stack 进行开发
+          href: azure-stack-developer.md
+        - name: 设置开发环境
+          items:
+            - name: 安装 Azure Stack PowerShell
+              href: azure-stack-powershell-install.md
+            - name: 下载工具
+              href: azure-stack-powershell-download.md
+            - name: 配置 PowerShell - 用户
+              href: azure-stack-powershell-configure-user.md
+            - name: 安装和配置 Azure Stack CLI
+              href: azure-stack-connect-cli.md
+            - name: 安装 Visual Studio
+              href: azure-stack-install-visual-studio.md
+            - name: 管理 API 版本配置文件
+              href: azure-stack-version-profiles.md
+        - name: 使用策略模块
+          href: azure-stack-policy-module.md
+        - name: 使用模板
+          items:
+            - name: 模板概述
+              href: azure-stack-arm-templates.md
+            - name: 开发模板
+              href: azure-stack-develop-templates.md
+            - name: 检查模板
+              href: azure-stack-validate-templates.md
+            - name: 使用门户进行部署
+              href: azure-stack-deploy-template-portal.md
+            - name: 使用 PowerShell 进行部署
+              href: azure-stack-deploy-template-powershell.md
+            - name: 使用 Visual Studio 进行部署
+              href: azure-stack-deploy-template-visual-studio.md
+- name: 引用
+  items:
+    - name: Azure Stack PowerShell
+      href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
+    - name: Azure Stack CLI
+      href: /cli/azure/?view=azure-cli-2017-03-09-profile
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: 定价信息
+      href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-stack'

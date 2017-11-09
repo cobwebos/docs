@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 的 Linux 容器中创建 Node.js Web 应用 | Microsoft Docs"
-description: "数分钟内在 Azure App Service Web 应用中部署第一个 Node.js Hello World。"
+title: "在 Linux 上的 Azure 应用服务中创建 Node.js | Microsoft Docs"
+description: "数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Node.js Hello World。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/05/2017
-ms.author: cfowler;cephalin
+ms.author: cephalin
+ms.custom: mvc
+ms.openlocfilehash: a40dc540884454fed9c374ba1365fdf7b85e4531
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8dba82b37a1584199f6a16cd2b05129e2adca276
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="create-a-nodejs-web-app-in-a-linux-container-in-azure"></a>在 Azure 的 Linux 容器中创建 Node.js Web 应用
+# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Node.js Web 应用
 
-[用于容器的 Web 应用](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示了如何将 Node.js 应用部署到用于容器的 Azure Web 应用中。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 Node.js 代码部署到 Web 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何使用内置映像将 Node.js 应用部署到 Linux 上的应用服务。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建包含内置映像的 Web 应用，并使用 Git 将 Node.js 代码部署到 Web 应用。
 
 ![在 Azure 中运行应用的示例](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -62,7 +62,7 @@ cd nodejs-docs-hello-world
 npm start
 ```
 
-打开 Web 浏览器并导航到 http://localhost:1337 处的示例应用。
+打开 Web 浏览器并导航到 `http://localhost:1337` 处的示例应用。
 
 页面中会显示该示例应用发出的 Hello World 消息。
 
@@ -78,11 +78,11 @@ npm start
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>创建 Web 应用
+## <a name="create-a-web-app-with-built-in-image"></a>使用内置映像创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-nodejs-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)]
 
-浏览到该站点查看新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
+浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -134,11 +134,11 @@ To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js 示例代码在 Azure App Service Web 应用中运行。
+Node.js 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-nodejs/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 Node.js 应用部署到应用服务。
+**祝贺你！** 现已将第一个 Node.js 应用部署到 Linux 应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -179,4 +179,3 @@ git push azure master
 
 > [!div class="nextstepaction"]
 > [将 Node.js 与 MongoDB 配合使用](tutorial-nodejs-mongodb-app.md)
-

@@ -1,9 +1,9 @@
 ---
-title: "提高 Azure SQL 中列存储索引的性能 | Microsoft Docs"
+title: "提高列存储索引的性能 - Azure SQL 数据仓库 | Microsoft Docs"
 description: "减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
+author: barbkess
 manager: jhubbard
 editor: 
 ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
@@ -13,16 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 6/2/2017
-ms.author: shigu;barbkess
+ms.date: 10/23/2017
+ms.author: barbkess
+ms.openlocfilehash: 0476afb875616ed0758835aa52fb2334b63959a9
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: f0e0b839b4a0c216eee2eb5134d43b91d8f83289
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
 行组质量由行组中的行数决定。 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
@@ -164,4 +162,3 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 <!--MSDN references-->
 
 <!--Other Web references-->
-

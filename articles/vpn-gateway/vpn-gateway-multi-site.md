@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
+ms.openlocfilehash: 434f84dc6244eddce9b172a617722b218360ffc2
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: bb3129f70f5eeed99d5889226aa6727f675b6217
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
 
@@ -71,11 +70,11 @@ ms.lasthandoff: 08/08/2017
 如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到[导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>如果已有一个站点到站点虚拟网络，但该虚拟网络使用静态（基于策略的）路由网关：
-1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由的）路由网关。 要更改网关类型，首先需要删除现有网关，然后创建新网关。 有关说明，请参阅[如何更改网关的 VPN 路由类型](vpn-gateway-configure-vpn-gateway-mp.md)。  
-2. 配置新网关并创建 VPN 隧道。 有关说明，请参阅[在 Azure 经典门户中配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 首先，将网关类型更改为动态路由。
+1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由的）路由网关。 要更改网关类型，首先需要删除现有网关，然后创建新网关。
+2. 配置新网关并创建 VPN 隧道。 有关说明，请参阅[指定 SKU 和 VPN 类型](vpn-gateway-howto-site-to-site-classic-portal.md#sku)。 请确保将“路由类型”指定为“动态”。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>如果没有站点到站点虚拟网络：
-1. 按照以下说明创建站点到站点虚拟网络：[在 Azure 经典门户中创建使用站点到站点 VPN 连接的虚拟网络](vpn-gateway-site-to-site-create.md)。  
+1. 按照以下说明创建站点到站点虚拟网络：[创建使用站点到站点 VPN 连接的虚拟网络](vpn-gateway-site-to-site-create.md)。  
 2. 按照以下说明配置动态路由网关：[配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 请务必为网关类型选择“**动态路由**”。
 
 ## <a name="export"></a>2.导出网络配置文件
@@ -158,7 +157,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="5-import-the-network-configuration-file"></a>5.导入网络配置文件
-导入网络配置文件。 在导入这个包含更改的文件时，会添加新的隧道。 这些隧道将使用前面创建的动态网关。 可使用经典门户或 PowerShell 导入文件。
+导入网络配置文件。 在导入这个包含更改的文件时，会添加新的隧道。 这些隧道将使用前面创建的动态网关。 可以使用 PowerShell 导入文件。
 
 ## <a name="6-download-keys"></a>6.下载密钥
 添加新的隧道后，使用 PowerShell cmdlet“Get-AzureVNetGatewayKey”获取每个隧道的 IPsec/IKE 预共享密钥。
@@ -210,4 +209,3 @@ Get-AzureVnetConnection -VNetName VNET1
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
-

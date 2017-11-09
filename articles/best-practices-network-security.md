@@ -14,19 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 243c1cd5ebf34f2d8a8fda234fa3875298390336
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft 云服务和网络安全性
 Microsoft 云服务提供超大规模的服务和基础结构、企业级的功能，以及许多混合连接选项。 客户可以选择通过 Internet 或 Azure ExpressRoute（提供专用网络连接）访问这些服务。 Microsoft Azure 平台可让客户无缝地将基础结构扩展到云中并构建多层体系结构。 此外，第三方可以提供安全服务和虚拟设备，以启用增强的功能。 本白皮书概述了当客户使用通过 ExpressRoute 访问的 Microsoft 云服务创建安全服务时应该考虑的安全和体系结构问题。 此外，还介绍了如何在 Azure 虚拟网络中创建其他安全服务。
 
 ## <a name="fast-start"></a>快速开始
-以下逻辑图表以具体示例说明了 Azure 平台提供的许多安全技术。 有关快速参考，请找到最适合你案例的示例。 有关更详尽的说明，请继续阅读本文。
+以下逻辑图表以具体示例说明了 Azure 平台提供的许多安全技术。 有关快速参考，请找到最适合你的情况的示例。 有关更详尽的说明，请继续阅读本文。
 [![0]][0]
 
 [示例 1：构建外围网络（也称为 DMZ、外围安全区域或屏蔽子网），以使用网络安全组 (NSG) 帮助保护应用程序。](#example-1-build-a-perimeter-network-to-help-protect-applications-with-nsgs)</br>
@@ -35,7 +33,7 @@ Microsoft 云服务提供超大规模的服务和基础结构、企业级的功�
 [示例 4：使用站点到站点虚拟设备虚拟专用网络 (VPN) 添加混合连接。](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
 [示例 5：使用站点到站点 Azure VPN 网关添加混合连接。](#example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway)</br>
 [示例 6：使用 ExpressRoute 添加混合连接。](#example-6-add-a-hybrid-connection-with-expressroute)</br>
-未来几个月内，本文档中将会加入有关在虚拟网络之间添加连接、高可用性和服务链接的示例。
+未来几个月内，本文档中会加入有关在虚拟网络之间添加连接、高可用性和服务链接的示例。
 
 ## <a name="microsoft-compliance-and-infrastructure-protection"></a>Microsoft 合规性与基础结构保护
 为了确保组织在收集和使用个人数据时遵循国家、地区和行业特定要求，Microsoft 提供了 40 多种认证和证明。 最全面的集合，囊括所有云服务提供商。
@@ -94,7 +92,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * **跨界连接**：客户可以在虚拟网络和多个本地站点或 Azure 中的其他虚拟网络之间创建跨界连接。 客户可以使用 VNet 对等互连、Azure VPN 网关、第三方网络虚拟设备或 ExpressRoute 来构造连接。 Azure 支持使用标准 IPsec/IKE 协议和 ExpressRoute 专用连接的站点到站点 (S2S) VPN。
 * **NSG** 允许客户根据所需的粒度（网络接口、单个 VM 或虚拟子网）创建规则 (ACL)。 客户可以从客户网络上的系统，通过跨界连接或直接 Internet 通信来允许或拒绝虚拟网络内的工作负荷，以控制访问。
 * **UDR** 和 **IP 转发**允许客户定义虚拟网络中不同层之间的通信路径。 客户可以部署防火墙、IDS/IPS 和其他虚拟设备，并通过这些安全设备来路由网络流量，以实施安全边界策略、审核和检查。
-* Azure Marketplace 中的**网络虚拟设备**：Azure Marketplace 和 VM 映像库中提供了防火墙、负载均衡器和 IDS/IPS 等安全设备。 客户可将这些设备部署到其虚拟网络，特别是安全边界（包括外围网络子网），以实现多层安全网络环境。
+* Azure 应用商店中的**网络虚拟设备**：Azure 应用商店和 VM 映像库中提供了防火墙、负载均衡器和 IDS/IPS 等安全设备。 客户可将这些设备部署到其虚拟网络，特别是安全边界（包括外围网络子网），以实现多层安全网络环境。
 
 下图演示了如何使用这些功能在 Azure 中构造外围网络体系结构：
 
@@ -109,7 +107,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 * 面向 Internet：
   * 外围网络子网本身面向 Internet，直接与 Internet 通信。
   * 公共 IP 地址、VIP 和/或服务终结点将 Internet 流量传递给前端网络和设备。
-  * 来自 Internet 的入站流量先通过安全设备，然后再通过前端网络上其他资源。
+  * 来自 Internet 的入站流量先通过安全设备，再通过前端网络上其他资源。
   * 如果已启用出站安全性，则流量先通过安全设备（最后一个步骤），然后才传递到 Internet。
 * 受保护的网络：
   * Internet 与核心基础结构之间没有直接的路径。
@@ -123,7 +121,7 @@ Microsoft 采取综合性的方案来保护运行超大规模全球服务所需�
 ### <a name="perimeter-network-requirements"></a>外围网络要求
 若要实现这些特征，请遵循有关需要满足哪些虚拟网络要求才能实现成功外围网络的指导：
 
-* **子网体系结构：**指定虚拟网络，使整个子网专门作为外围网络，与相同虚拟网络中的其他子网分开。 这样分隔可确保外围网络与其他内部或专用子网层之间的流量流经防火墙或 IDS/IPS 虚拟设备。  若要将此流量转发到虚拟设备，需在边界子网上使用用户定义的路由。
+* **子网体系结构：**指定虚拟网络，使整个子网专门作为外围网络，与相同虚拟网络中的其他子网分开。 这样分隔可确保外围网络与其他内部或专用子网层之间的流量流经防火墙或 IDS/IPS 虚拟设备。  要将此流量转发到虚拟设备，需在边界子网上使用用户定义的路由。
 * **NSG：**外围网络子网本身应该打开以允许与 Internet 通信，但这不表示客户应该绕过 NSG。 请遵循常用的安全实践，将曝露于 Internet 的网络接触面减到最小。 管制允许访问部署的远程地址范围，或特定的应用程序协议和打开的端口。 但在某些情况下，不可能实现完全锁定。 例如，如果客户在 Azure 中有外部网站，则外围网络应该允许从任何公共 IP 地址传入的 Web 请求，但只应该打开以下 Web 应用程序端口：TCP:80 和/或 TCP:443。
 * **路由表：**外围网络子网本身必须能够直接与 Internet 通信，但不应该允许未通过防火墙或安全设备，就直接与后端或本地网络之间相互通信。
 * **安全设备配置：**为了路由和检查外围网络与受保护网络其余部分之间的数据包，安全设备（例如防火墙、IDS 和 IPS 设备）可以有多重主目录。 外围网络和后端子网可能有独立的 NIC。 外围网络中的 NIC 将使用相应的 NSG 和路由表直接与 Internet 相互通信。 对于相应的后端子网，连接到后端子网的 NIC 有更受限制的 NSG 和路由表。
@@ -358,14 +356,14 @@ VNETLocal 始终是一个或多个已定义地址前缀，组成该特定网络�
 #### <a name="ip-forwarding-description"></a>IP 转发描述
 IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置，使虚拟设备能够接收不是要专门传送到该设备的流量，再将流量转发到其最终目标。
 
-例如，如果 AppVM01 对 DNS01 服务器发出请求，UDR 会将此流量路由到防火墙。 在启用 IP 转发后，目标为 DNS01 (10.0.2.4) 的流量被设备 (10.0.0.4) 所接受，然后转发到其最终目标 (10.0.2.4)。 如果防火墙上未启用 IP 转发，则即使路由表将防火墙用作下一跃点，流量也不会被设备所接受。 若要使用虚拟设备，必须记得一同启用 IP 转发和 UDR。
+例如，如果 AppVM01 对 DNS01 服务器发出请求，UDR 会将此流量路由到防火墙。 在启用 IP 转发后，目标为 DNS01 (10.0.2.4) 的流量被设备 (10.0.0.4) 所接受，并转发到其最终目标 (10.0.2.4)。 如果防火墙上未启用 IP 转发，则即使路由表将防火墙用作下一跃点，流量也不会被设备所接受。 若要使用虚拟设备，必须记得一同启用 IP 转发和 UDR。
 
 #### <a name="nsg-description"></a>NSG 描述
 此示例将构建一个 NSG 组，然后加载单个规则。 此组接着只绑定到前端和后端子网（不绑定到 SecNet）。 以声明性的方式构建以下规则：
 
 * 拒绝从 Internet 到整个虚拟网络（所有子网）的任何流量（所有端口）。
 
-尽管本示例使用了 NSG，但它的主要用途是作为防止人为配置错误的第二道防线。 目标是阻止从 Internet 传送到前端或后端子网的所有入站流量。 流量只应流经 SecNet 子网前往防火墙（并于合适时流往前端或后端子网）。 此外，在配置 UDR 规则后，确实能够流往前端或后端子网的流量都将被定向到防火墙（得益于 UDR）。 防火墙会将此流量视为非对称流量，并且会丢弃出站流量。 因此，有三个安全层在保护子网：
+尽管本示例使用了 NSG，但它的主要用途是作为防止人为配置错误的第二道防线。 目标是阻止从 Internet 传送到前端或后端子网的所有入站流量。 流量只应流经 SecNet 子网前往防火墙（并于合适时流往前端或后端子网）。 此外，在配置 UDR 规则后，确实能够流往前端或后端子网的流量都会被定向到防火墙（得益于 UDR）。 防火墙会将此流量视为非对称流量，并且会丢弃出站流量。 因此，有三个安全层在保护子网：
 
 * 在任何 FrontEnd 或 BackEnd NIC 上都没有公共 IP 地址。
 * NSG 拒绝来自 Internet 的流量。
@@ -409,7 +407,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 创建好上述规则后，请务必检查每个规则的优先级，确保可根据需要允许或拒绝流量。 在本示例中，规则设置了优先顺序。
 
 #### <a name="conclusion"></a>结束语
-与前面的示例相比，此示例是以更复杂但更完整的方式来保护和隔离网络的方法。 （示例 2 只保护应用程序，示例 1 只隔离子网）。 这项设计允许你同时监视两个方向的流量，而不只是保护入站应用程序服务器，同时还对此网络上的所有服务器实施网络安全策略。 此外，根据使用的设备，还能实现全面的流量审核和感知。 有关详细信息，请参阅[详细构建说明][Example3]。 这些说明包括：
+与前面的示例相比，此示例是以更复杂但更完整的方式来保护和隔离网络的方法。 （示例 2 只保护应用程序，示例 1 只隔离子网）。 这项设计允许同时监视两个方向的流量，而不只是保护入站应用程序服务器，同时还对此网络上的所有服务器实施网络安全策略。 此外，根据使用的设备，还能实现全面的流量审核和感知。 有关详细信息，请参阅[详细构建说明][Example3]。 这些说明包括：
 
 * 如何使用经典 PowerShell 脚本构建此示例外围网络。
 * 如何使用 Azure Resource Manager 模板构建此示例。
@@ -446,7 +444,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 ![13]
 
 #### <a name="conclusion"></a>结束语
-将站点到站点 VPN 混合网络连接添加到 Azure 虚拟网络能够安全地将本地网络扩展到 Azure。 使用 VPN 连接时，流量将会加密并通过 Internet 路由。 本示例中的 NVA 提供一个中心位置用于实施和管理安全策略。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
+将站点到站点 VPN 混合网络连接添加到 Azure 虚拟网络能够安全地将本地网络扩展到 Azure。 使用 VPN 连接时，流量会加密并通过 Internet 路由。 本示例中的 NVA 提供一个中心位置用于实施和管理安全策略。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
 
 * 如何使用 PowerShell 脚本构建此示例外围网络。
 * 如何使用 Azure Resource Manager 模板构建此示例。
@@ -476,7 +474,7 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 [![15]][15]
 
 #### <a name="conclusion"></a>结束语
-将站点到站点 VPN 混合网络连接添加到 Azure 虚拟网络能够安全地将本地网络扩展到 Azure。 使用本机 Azure VPN 网关时，流量将由 IPSec 加密并通过 Internet 路由。 此外，使用 Azure VPN 网关的成本也较低（不像第三方 NVA 一样需要额外的许可成本）。 在不使用任何 NVA 的示例 1 中，此选项是最经济实惠的方案。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
+将站点到站点 VPN 混合网络连接添加到 Azure 虚拟网络能够安全地将本地网络扩展到 Azure。 使用本机 Azure VPN 网关时，流量由 IPSec 加密并通过 Internet 路由。 此外，使用 Azure VPN 网关的成本也较低（不像第三方 NVA 一样需要额外的许可成本）。 在不使用任何 NVA 的示例 1 中，此选项是最经济实惠的方案。 有关详细信息，请参阅详细构建说明（即将发布）。 这些说明包括：
 
 * 如何使用 PowerShell 脚本构建此示例外围网络。
 * 如何使用 Azure Resource Manager 模板构建此示例。
@@ -534,12 +532,12 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 [8]: ./media/best-practices-network-security/example2design.png "使用 NVA 和 NSG 的入站外围网络"
 [9]: ./media/best-practices-network-security/example3design.png "使用 NVA、NSG 和 UDR 的双向外围网络"
 [10]: ./media/best-practices-network-security/example3firewalllogical.png "防火墙规则逻辑视图"
-[11]: ./media/best-practices-network-security/example3designoptions.png "包含连接 NVA 的混合网络的外围网络"
-[12]: ./media/best-practices-network-security/example4designs2s.png "使用站点到站点 VPN 的连接 NVA 的外围网络"
+[11]: ./media/best-practices-network-security/example3designoptions.png "包含连接 NVA 的外围网络的混合网络"
+[12]: ./media/best-practices-network-security/example4designs2s.png "使用站点到站点 VPN 连接 NVA 的外围网络"
 [13]: ./media/best-practices-network-security/example4networklogical.png "从 NVA 角度观察的逻辑网络"
-[14]: ./media/best-practices-network-security/example5designoptions.png "包含站点到站点连接 Azure 网关的混合网络的外围网络"
-[15]: ./media/best-practices-network-security/example5designs2s.png "使用站点到站点 VPN 的 Azure 网关的外围网络"
-[16]: ./media/best-practices-network-security/example6designoptions.png "包含使用 ExpressRoute 连接 Azure 网关的混合网络的外围网络"
+[14]: ./media/best-practices-network-security/example5designoptions.png "包含使用站点到站点连接来连接 Azure 网关的外围网络的混合网络"
+[15]: ./media/best-practices-network-security/example5designs2s.png "包含使用站点到站点 VPN 的 Azure 网关的外围网络"
+[16]: ./media/best-practices-network-security/example6designoptions.png "包含使用 ExpressRoute 连接 Azure 网关的外围网络的混合网络"
 [17]: ./media/best-practices-network-security/example6designexpressroute.png "包含使用 ExpressRoute 连接的 Azure 网关的外围网络"
 
 <!--Link References-->
@@ -552,4 +550,3 @@ IP 转发是 UDR 的随附功能。 IP 转发是虚拟设备上的一项设置�
 [Example6]: ./virtual-network/virtual-networks-hybrid-expressroute-asm.md
 [Example7]: ./virtual-network/virtual-networks-vnet2vnet-direct-asm.md
 [Example8]: ./virtual-network/virtual-networks-vnet2vnet-transit-asm.md
-

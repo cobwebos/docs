@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Shell（预览版）快速入门 | Microsoft Docs"
-description: "Azure Cloud Shell 快速入门"
+title: "Azure Cloud Shell（预览版）中的 Bash 快速入门 | Microsoft Docs"
+description: "Cloud Shell 中的 Bash 快速入门"
 services: 
 documentationcenter: 
 author: jluk
@@ -12,28 +12,34 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
+ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
-# <a name="quickstart-for-using-the-azure-cloud-shell"></a>使用 Azure Cloud Shell 快速入门
+本文档详细介绍如何在 [Azure 门户](https://ms.portal.azure.com/)中使用 Azure Cloud Shell 中的 Bash。
 
-本文档详细介绍如何在 [Azure 门户](https://ms.portal.azure.com/)中使用 Azure Cloud Shell。
+> [!NOTE]
+> 此外，还提供了 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 1. 从 Azure 门户的顶部导航栏启动 **Cloud Shell** <br>
-![](media/shell-icon.png)
+![](media/quickstart/shell-icon.png)
 2. 选择用于创建存储帐户和 Azure 文件共享的订阅
 3. 选择“创建存储”
 
 > [!TIP]
 > 在每个会话中会自动针对 Azure CLI 2.0 对你进行身份验证。
+
+### <a name="select-the-bash-environment"></a>选择 Bash 环境
+1. 在 shell 窗口的左侧选择环境下拉列表 <br>
+![](media/quickstart/env-selector.png)
+2. 选择 Bash
 
 ### <a name="set-your-subscription"></a>设置订阅
 1. 列出可以访问的订阅： <br>
@@ -61,16 +67,16 @@ ms.lasthandoff: 08/22/2017
 1. 在 Azure 门户搜索栏中搜索 VM 名称
 2. 单击“连接”并运行：`ssh username@ipaddress`
 
-![](media/sshcmd-copy.png)
+![](media/quickstart/sshcmd-copy.png)
 
-建立 SSH 连接后，应看到 Ubuntu 欢迎提示。
-![](media/ubuntu-welcome.png)
+建立 SSH 连接后，应看到 Ubuntu 欢迎提示。 <br>
+![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>清理 
 删除资源组及其中的任何资源： <br>
 运行 `az group delete -n MyRG`
 
 ## <a name="next-steps"></a>后续步骤
-[了解如何持久保存 Cloud Shell 上的存储](persisting-shell-storage.md) <br>
+[了解如何为 Cloud Shell 中的 Bash 持久保存文件](persisting-shell-storage.md) <br>
 [了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure 文件存储](../storage/files/storage-files-introduction.md) <br>

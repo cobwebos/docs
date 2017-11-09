@@ -16,7 +16,7 @@
 
     4.  为服务提供“位置”  。 有关哪个区域中有哪些服务可用的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services)。 一般情况下，请选择距离要在其中部署设备的地理区域最近的**位置**。 还可能需要考虑以下因素：
 
-        -   如果 Azure 中还存在你希望使用 StorSimple 设备部署的现有工作负荷，我们建议你使用该数据中心。
+        -   如果 Azure 中还存在希望使用 StorSimple 设备部署的现有工作负荷，我们建议使用该数据中心。
 
         -   StorSimple 设备管理器和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
 
@@ -30,6 +30,6 @@
 
         ![创建新服务](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
-随后会定向到“服务”登陆页。 创建服务需要几分钟时间。 成功创建该服务后，用户将收到相应通知，服务状态将更改为“活动” 。
+随后会定向到“服务”登陆页。 创建服务需要几分钟时间。 成功创建该服务后，用户将收到相应通知，服务状态将更改为“活动”。
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Linux 部署上的 Azure Web 应用 - 自定义映像还是内置平台映像？  | Microsoft Docs"
-description: "如何在自定义 Docker 容器部署和内置应用程序框架之间做出选择"
+title: "Linux 上的 Azure 应用服务部署 - 自定义映像还是内置平台映像？  | Microsoft Docs"
+description: "如何在自定义 Docker 容器部署和用于 Linux 应用服务的内置应用程序框架之间做出选择"
 keywords: "azure 应用服务, web 应用, linux, oss"
 services: app-service
 documentationCenter: 
@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: nickwalk
+ms.openlocfilehash: 4a04bba2375b5a107bc3cb8cdc1a75d037c50af6
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 322533a9dce54222943f8b2a3d653780a674c8a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="custom-image-or-built-in-platform-image"></a>自定义映像还是内置平台映像？
 
-[Linux 上的 Web 应用](app-service-linux-intro.md)提供可将应用程序发布到 Web 的两种不同方法：
+[Linux 应用服务](app-service-linux-intro.md)提供可将应用程序发布到 Web 的两种不同方法：
 
 - **自定义映像部署**：将应用 Docker 化为 Docker 映像，映像中包含可运行包中的所有文件和依赖项。
 - **使用内置平台映像的应用部署**：我们的内置平台映像包含常见 Web 应用运行时和依赖项，如 Node 和 PHP。 使用任意一种 [Azure App Service 部署方法](../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)将应用部署到 Web 应用的存储，然后使用内置平台映像运行应用。

@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure CLI 管理 Azure Redis 缓存 | Microsoft 文档"
-description: "了解如何在任何平台上安装 Azure CLI、如何使用它连接到你的 Azure 帐户，以及如何从 Azure CLI 创建和管理 Redis 缓存。"
+description: "了解如何在任何平台上安装 Azure CLI、如何使用它连接到 Azure 帐户，以及如何从 Azure CLI 创建和管理 Redis 缓存。"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: ba078a870a3998568170cc197bd6698b97b7fadb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>如何使用 Azure 命令行界面 (Azure CLI) 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -38,10 +37,10 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演�
 ## <a name="prerequisites"></a>先决条件
 若要使用 Azure CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
-* 你必须具有 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 必须具有 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * [安装 Azure CLI](../cli-install-nodejs.md)。
 * 将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从 Azure CLI 登录。 若要了解差别并进行选择，请参阅[从 Azure 命令行界面 (Azure CLI) 连接到 Azure 订阅](../xplat-cli-connect.md)。
-* 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将 Azure CLI 切换到资源管理器模式下。 有关更多详细信息，请参阅[使用 Azure CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
+* 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将 Azure CLI 切换到 Resource Manager 模式下。 有关更多详细信息，请参阅[使用 Azure CLI 管理 Azure 资源和资源组](../xplat-cli-azure-resource-manager.md)。
 
 ## <a name="redis-cache-properties"></a>Redis 缓存属性
 在创建和更新 Redis 缓存实例时使用以下属性。
@@ -53,13 +52,13 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演�
 | location |-l, --location |要创建缓存的位置。 |
 | size |-z, --size |Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
 | sku |-x, --sku |Redis SKU。 应为以下值之一：[Basic、Standard、Premium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |Redis 缓存的 EnableNonSslPort 属性。 如果要为你的缓存启用非 SSL 端口，请添加此标志 |
+| EnableNonSslPort |-e, --enable-non-ssl-port |Redis 缓存的 EnableNonSslPort 属性。 如果要为缓存启用非 SSL 端口，请添加此标志 |
 | Redis 配置 |-c, --redis-configuration |Redis 配置。 在此处输入配置键和值的 JSON 格式字符串。 格式："{"":"","":""}" |
 | Redis 配置 |-f, --redis-configuration-file |Redis 配置。 在此处输入包含配置键和值的文件的路径。 文件输入项的格式：{"":"","":""} |
 | 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
 | 虚拟网络 |-v, --virtual-network |在 VNET 中托管缓存时，指定要在其中部署 Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t, --key-type |要续订的密钥类型。 有效值：[Primary, Secondary] |
-| StaticIP |-p, --static-ip <static-ip> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中为你选择一个。 |
+| StaticIP |-p, --static-ip <static-ip> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 |
 | 子网 |t, --subnet <subnet> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
 | VirtualNetwork |-v, --virtual-network <virtual-network> |在 VNET 中托管缓存时，指定要在其中部署 Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 订阅 |-s, --subscription |订阅标识符。 |
@@ -272,4 +271,3 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演�
     help:      -s, --subscription <subscription>      the subscription identifier
     help:
     help:    Current Mode: arm (Azure Resource Management)
-

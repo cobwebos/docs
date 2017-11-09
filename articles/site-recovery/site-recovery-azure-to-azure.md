@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 9ca33057f6030fdcc233f6053fdc392d62f8f9f4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="replicate-azure-vms-between-regions-with-azure-site-recovery"></a>使用 Azure Site Recovery 在区域间复制 Azure VM
 
 >[!NOTE]
@@ -53,7 +51,7 @@ Site Recovery 提供了一种简单方法，以在区域间复制 Azure VM：
 - 自动复制。 Site Recovery 提供自动连续复制。 通过一次单击便可触发故障转移和故障回复。
 - RTO 和 RPO。 Site Recovery 利用连接区域的 Azure 网络基础结构，保持非常低的 RTO 和 RPO。
 - **测试**。 在需要的时候，可以运行按需测试故障转移进行灾难恢复演练，而不影响生产工作负荷或正在进行的复制。
-- 恢复计划。 可以使用恢复计划为多个 VM 上运行的完整应用程序安排故障转移和故障回复。 恢复计划功能与 Azure 自动化 runbook 有丰富的一流集成。
+- **恢复计划**。 可以使用恢复计划为多个 VM 上运行的完整应用程序安排故障转移和故障回复。 恢复计划功能与 Azure 自动化 runbook 有丰富的一流集成。
 
 
 ## <a name="deployment-summary"></a>部署摘要
@@ -147,4 +145,3 @@ Site Recovery 提供了一种简单方法，以在区域间复制 Azure VM：
 
 - [详细了解](site-recovery-failover.md)不同类型的故障转移，以及如何运行它们。
 - 详细了解如何[使用恢复计划](site-recovery-create-recovery-plans.md)来缩短 RTO。
-

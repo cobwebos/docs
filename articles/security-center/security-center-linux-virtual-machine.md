@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
 ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure 安全中心与 Azure Linux 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -35,7 +34,7 @@ ms.lasthandoff: 01/05/2017
 * 磁盘加密验证
 * 基于网络的攻击（仅适用于[标准版](https://azure.microsoft.com/en-us/pricing/details/security-center/)）
 
-除帮助保护 Azure VM 外，安全中心还可安全监视和管理云服务、应用程序服务、虚拟网络等。 
+除帮助保护 Azure VM 外，安全中心还可安全监视和管理云服务、应用服务、虚拟网络等。 
 
 > [!NOTE]
 > 请参阅 [Azure 安全中心简介](security-center-intro.md)，了解有关 Azure 安全中心的详细信息。
@@ -61,9 +60,9 @@ ms.lasthandoff: 01/05/2017
 > 
 
 ## <a name="manage-security-recommendations"></a>管理安全建议
-安全中心将分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议将指导你完成配置所需控件的过程。
+安全中心将分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。
 
-设置安全策略之后，安全中心将分析你的资源的安全状态，以识别潜在的漏洞。 建议将以表格形式显示，其中每一行都表示一个特定的建议。 下表提供了运行 Linux 操作系统的 Azure VM 的一些建议示例，以及每个示例在应用时将执行的操作。 选择建议时，系统将提供信息，演示如何在安全中心内实现该建议。
+设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 下表提供了运行 Linux 操作系统的 Azure VM 的一些建议示例，以及每个示例在应用时会执行的操作。 选择建议时，系统将提供信息，演示如何在安全中心内实现该建议。
 
 | 建议 | 说明 |
 | --- | --- |
@@ -80,7 +79,7 @@ ms.lasthandoff: 01/05/2017
 > 
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对你的 VM 的建议。 
+用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对 VM 的建议。 
 
 ![安全运行状况](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -92,11 +91,11 @@ ms.lasthandoff: 01/05/2017
 选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按[类型](security-center-alerts-type.md)和日期分组。
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对你的 VM 的建议。 
+用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对 VM 的建议。 
 
 ![安全运行状况](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig4.png)
 
-如果单击此项建议，将会看到解决这些问题应采取的具体措施的更多详细信息。 详细信息显示在边栏选项卡底部的“建议”下面。 
+如果单击此项建议，会看到解决这些问题应采取的具体措施的更多详细信息。 详细信息显示在边栏选项卡底部的“建议”下面。 
 
 ![安全运行状况 2](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig5.png)
 
@@ -107,5 +106,4 @@ ms.lasthandoff: 01/05/2017
 * [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题](security-center-faq.md) - 查找有关使用服务的常见问题。
-
 

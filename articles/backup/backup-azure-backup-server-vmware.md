@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>将 VMware 服务器备份到 Azure
 
@@ -385,4 +384,3 @@ Azure 备份服务器使用用户名和密码对 vCenter 服务器进行身份�
 如果使用 Azure 备份服务器保护 VMware 工作负荷，就可能有兴趣使用该服务器来帮助保护 [Microsoft Exchange Server](./backup-azure-exchange-mabs.md)、[Microsoft SharePoint 场](./backup-azure-backup-sharepoint-mabs.md)或 [SQL Server数据库](./backup-azure-sql-mabs.md)。
 
 若要了解代理注册、保护组配置或作业备份方面的问题，请参阅[排查 Azure 备份服务器问题](./backup-azure-mabs-troubleshoot.md)。
-

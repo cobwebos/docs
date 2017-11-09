@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 178b1ec0edce5a3fb20dc5c591e12cfe6e721cf2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: 0398774e21d89fd084e6929bc5e410697d2aafaa
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>跟踪遥测：Application Insights 数据模型
 
@@ -44,4 +43,3 @@ ms.lasthandoff: 04/27/2017
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - [编写自定义跟踪遥测](app-insights-api-custom-events-metrics.md#tracktrace)
 - 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
-

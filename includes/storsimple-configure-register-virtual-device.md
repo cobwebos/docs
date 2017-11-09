@@ -1,7 +1,7 @@
 #### <a name="to-configure-and-register-the-virtual-device"></a>配置和注册虚拟设备
 
 1. 选择刚在“设备”  页中创建的 StorSimple 虚拟设备。
-2. 单击“完成设备设置” 。 这将启动“配置设备向导”。
+2. 单击“完成设备设置” 。 这会启动“配置设备向导”。
     
     ![StorSimple 在“设备”页中完成设备设置](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
 

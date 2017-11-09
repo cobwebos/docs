@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>为 Azure Cosmos DB 容器设置吞吐量
 
 可在 Azure 门户中或使用客户端 SDK 为 Azure Cosmos DB 容器设置吞吐量。 
@@ -51,7 +49,7 @@ ms.lasthandoff: 06/13/2017
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>使用 Azure 门户设置吞吐量
 
 1. 在新窗口中，打开 [Azure 门户](https://portal.azure.com)。
-2. 在左侧栏中单击“Azure Cosmos DB”，或者单击底部的“更多服务”，滚动到“数据库”，然后单击“Azure Cosmos DB”。
+2. 在左侧栏中单击“Azure Cosmos DB”，或者单击底部的“更多服务”，滚动到“数据库”，并单击“Azure Cosmos DB”。
 3. 选择 Cosmos DB 帐户。
 4. 在新窗口中，单击导航菜单中的“数据资源管理器(预览版)”。
 5. 在新窗口中，展开数据库和容器，然后单击“缩放和设置”。
@@ -88,4 +86,3 @@ await client.ReplaceOfferAsync(offer);
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关使用 Cosmos DB 进行预配和全球扩展的详细信息，请参阅[使用 Cosmos DB 进行分区和缩放](partition-data.md)。
-

@@ -1,6 +1,6 @@
 ---
 title: "StorSimple 设备的安全性 | Microsoft Docs"
-description: "描述安全约定、指南和注意事项，并解释如何安全地安装和运行你的 StorSimple 设备。"
+description: "描述安全约定、指南和注意事项，并解释如何安全地安装和运行 StorSimple 设备。"
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: e45b09a62f33fd9811714febd63a74149784980d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行你的 StorSimple 设备
+# <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
 ![阅读安全注意事项图标](./media/storsimple-safety/IC740885.png) **阅读安全和运行状况信息**
 
-阅读本文中适用于 Microsoft Azure StorSimple 设备的所有安全和运行状况信息。 保留 StorSimple 设备附带的所有打印的指南以供将来参考。 如果不按说明对此产品进行正确设置、使用和护理等操作，伤亡或设备损坏风险将会增加。 [本指南提供可下载版本](http://www.microsoft.com/download/details.aspx?id=44233)。
+阅读本文中适用于 Microsoft Azure StorSimple 设备的所有安全和运行状况信息。 保留 StorSimple 设备附带的所有打印的指南以供将来参考。 如果不按说明对此产品进行正确设置、使用和护理等操作，伤亡或设备损坏风险会增加。 [本指南提供可下载版本](http://www.microsoft.com/download/details.aspx?id=44233)。
 
 ## <a name="safety-icon-conventions"></a>安全图标约定
 以下是在查看安全预防措施时出现的图标，安装和运行 Microsoft Azure StorSimple 设备时应遵循这些措施。
@@ -57,7 +56,7 @@ ms.lasthandoff: 07/08/2017
 若要降低受伤、电击或死亡的可能性：
 
 * 当由多个 AC 电源供电时，断开所有电源以完全隔离。
-* 在移动之前，或者如果你认为该设备出现了任何形式的损坏，请永久拔掉电源。
+* 在移动之前，或者如果认为该设备出现了任何形式的损坏，请永久拔掉电源。
 * 为电源线提供安全接地连接。 在接通电源前，请验证机箱的接地符合国家和地区的要求。
 * 从机箱中取下 PCM 之前，请确保始终断开电源连接。
 * 考虑到电源线上的插头是主要的断开设备，请确保插座口位于设备附近且易于访问。
@@ -152,5 +151,4 @@ ms.lasthandoff: 07/08/2017
 ## <a name="next-steps"></a>后续步骤
 * 对于对 8100 设备，请转到 [安装 StorSimple 8100 设备](storsimple-8100-hardware-installation.md)。
 * 对于对 8600 设备，请转到 [安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)。
-
 

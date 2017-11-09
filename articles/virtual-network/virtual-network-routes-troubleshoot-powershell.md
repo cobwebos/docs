@@ -1,6 +1,6 @@
 ---
 title: "排查路由问题 - PowerShell | Microsoft 文档"
-description: "了解如何使用 Azure PowerShell 在 Azure Resource Manager 部署模型中排查路由问题。"
+description: "了解如何使用 Azure PowerShell 在 Azure 资源管理器部署模型中排查路由问题。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6efe6de6cc6d6d4c9788549048c5b50b03b3de42
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 29823708b2d26a383b76e371499859e57f470c6f
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>使用 Azure PowerShell 排查路由问题
 > [!div class="op_single_selector"]
@@ -35,9 +34,9 @@ ms.lasthandoff: 04/27/2017
 
 * **系统路由：**默认情况下，在 Azure 虚拟网络 (VNet) 中创建的每个子网都具有系统路由表，允许传送本地 VNet 流量、通过 VPN 网关的本地流量以及 Internet 流量。 对等互连的 VNet 也有系统路由。
 * **BGP 路由：**通过 ExpressRoute 或站点到站点 VPN 连接传播到网络接口。 阅读[使用 VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md) 和 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)一文，了解有关 BGP 路由的详细信息。
-* **用户定义的路由 (UDR)：**如果使用网络虚拟设备或强制隧道通过站点到站点 VPN 将流量传送到本地网络，可将用户定义的路由 (UDR) 与子网路由表相关联。 如果不熟悉 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md#user-defined-routes)一文。
+* **用户定义的路由 (UDR)：**如果使用网络虚拟设备或强制隧道通过站点到站点 VPN 将流量传送到本地网络，可将用户定义的路由 (UDR) 与子网路由表相关联。 如果不熟悉 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md#user-defined)一文。
 
-由于可将各种路由应用到网络接口，因此有时难以确定哪些聚合路由是有效的。 为了帮助排查 VM 网络连接问题，可以查看 Azure Resource Manager 部署模型中某个网络接口的所有有效路由。
+由于可将各种路由应用到网络接口，因此有时难以确定哪些聚合路由是有效的。 为了帮助排查 VM 网络连接问题，可以查看 Azure 资源管理器部署模型中某个网络接口的所有有效路由。
 
 ## <a name="using-effective-routes-to-troubleshoot-vm-traffic-flow"></a>使用有效路由排查 VM 流量流问题
 本文使用以下情景作为示例，演示如何排查网络接口的有效路由问题：
@@ -128,7 +127,7 @@ ms.lasthandoff: 04/27/2017
   * 系统（默认）路由
     
     对于有效路由，只能查看基于所有可用路由匹配 LPM 的有效路由。 如果显示了如何针对给定 NIC 实际评估路由，因此可以更方便地对可能影响 VM 连接的特定路由进行故障排除。
-* 如果使用 UDR 并且要将流量发送到网络虚拟设备 (NVA)（*VirtualAppliance* 为 **nextHopType**），请确保接收流量的 NVA 已启用 IP 转发，否则数据包将被丢弃。 
+* 如果使用 UDR 并且要将流量发送到网络虚拟设备 (NVA)（*VirtualAppliance* 为 **nextHopType**），请确保接收流量的 NVA 已启用 IP 转发，否则数据包会被丢弃。 
 * 如果启用了强制隧道，所有出站 Internet 流量将路由到本地。 根据本地处理此流量的方式，可能无法使用此设置通过 RDP/SSH 从 Internet 连接到 VM。 
   符合以下条件时，可以启用强制隧道：
   * 使用站点到站点 VPN 时，将用户定义的路由 (UDR) 的 nextHopType 设置为 VPN 网关
@@ -136,5 +135,4 @@ ms.lasthandoff: 04/27/2017
 * 要使 VNet 对等互连流量正常工作，对等互连的 VNet 的前缀范围中必须存在 **nextHopType** 为 *VNetPeering* 的系统路由。 如果没有此类路由，并且 VNet 对等互连链接看起来正常：
   * 如果是新建立的对等互连链接，请等待几秒钟并重试。 有时需要花费较长的时间才能将路由传播到子网中的所有网络接口。
   * 网络安全组 (NSG) 规则可能会影响流量流。 有关详细信息，请参阅[排查网络安全组问题](virtual-network-nsg-troubleshoot-powershell.md)一文。
-
 

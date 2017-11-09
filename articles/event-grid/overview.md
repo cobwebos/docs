@@ -6,16 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 10/20/2017
 ms.author: babanisa
+ms.openlocfilehash: e798a1e751cb9e789bc479a6f842fb7f8f703bbf
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 20c22bdbefe238781242ee26e648a77da02a21d2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
-
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
 通过 Azure 事件网格，可使用基于事件的体系结构轻松生成应用程序。 你可以选择要订阅的 Azure 资源，并提供要向其发送事件的事件处理程序或 WebHook 终结点。 事件网格包含来自 Azure 服务对事件的内置支持，如存储 blob 和资源组。 事件网格还可以使用自定义主题和自定义 webhook 对应用程序和第三方事件提供自定义支持。 
@@ -27,8 +25,6 @@ ms.lasthandoff: 09/13/2017
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
 
 ![事件网格功能模型](./media/overview/event-grid-functional-model.png)
-
-目前，Blob 存储尚未公开用作发布服务器。 必须注册预览版本，才能对存储 blob 事件做出响应。 有关详细信息，请参阅[将 Blob 存储事件路由到自定义 Web 终结点（预览）](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 
 ## <a name="concepts"></a>概念
 
@@ -66,6 +62,7 @@ Azure 使用多项服务提供内置事件支持，包括发布者和处理程�
 * 资源组（管理操作）
 * Azure 订阅（管理操作）
 * 事件中心
+* 存储 Blob
 * 自定义主题
 
 本年度将添加其他 Azure 服务。
@@ -78,6 +75,7 @@ Azure 使用多项服务提供内置事件支持，包括发布者和处理程�
 * 逻辑应用
 * Azure 自动化
 * Webhook
+* Microsoft Flow
 
 本年度将添加其他 Azure 服务。
 
@@ -119,6 +117,8 @@ Azure 事件网格使用按事件支付的定价模型，因此，你只需为�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [路由存储 Blob 事件](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+  使用事件网格响应存储 blob 事件。
 * [创建并订阅自定义事件](custom-event-quickstart.md)  
   立即开始使用 Azure 事件网格快速入门，将自己的自定义事件发送到任何终结点。
 * [将逻辑应用用作事件处理程序](monitor-virtual-machine-changes-event-grid-logic-app.md)  

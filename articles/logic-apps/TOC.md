@@ -5,8 +5,8 @@
 
 # 入门
 ## [创建第一个逻辑应用](logic-apps-create-a-logic-app.md)
-## [逻辑应用的模板](logic-apps-use-logic-app-templates.md)
-## [从模板创建逻辑应用](logic-apps-arm-provision.md)
+## [从模板创建逻辑应用](logic-apps-create-logic-apps-from-templates.md)
+## [从资源管理器模板创建逻辑应用](logic-apps-create-deploy-azure-resource-manager-templates.md)
 ## [将 MABS 应用移到逻辑应用](logic-apps-move-from-mabs.md)
 
 # 如何
@@ -19,8 +19,20 @@
 ### [对消息进行批处理](logic-apps-batch-process-send-receive-messages.md)
 ### [编写逻辑应用定义](logic-apps-author-definitions.md)
 ### [调用、触发或嵌套逻辑应用](logic-apps-http-endpoint.md)
-### [为逻辑应用创建自定义 API](logic-apps-create-api-app.md)
-### [调用逻辑应用的自定义 API](logic-apps-custom-hosted-api.md)
+### 开发自定义连接器
+#### [自定义连接器概述](custom-connector-overview.md)
+#### [从 Web API 创建连接器](custom-connector-build-web-api-app-tutorial.md)
+#### [使用 Azure AD 保护连接器](custom-connector-azure-active-directory-authentication.md)
+#### [使用 Postman 描述 API](custom-connector-api-postman-collection.md)
+#### [为自定义连接器扩展 OpenAPI](custom-connector-openapi-extensions.md)
+#### [创建并注册 OpenAPI 连接器](logic-apps-custom-connector-register.md)
+#### [创建并注册 SOAP 连接器](logic-apps-soap-connector-create-register.md)
+#### [认证连接器](custom-connector-submit-certification.md)
+#### [自定义连接器常见问题解答](custom-connector-faq.md)
+### 开发自定义 API
+#### [为逻辑应用创建自定义 API](logic-apps-create-api-app.md)
+#### [保护对自定义 API 的调用](logic-apps-custom-api-authentication.md)
+#### [部署和调用自定义 API](logic-apps-custom-api-host-deploy-call.md)
 ### [处理错误和异常](logic-apps-exception-handling.md)
 ### [处理内容类型](logic-apps-content-type.md)
 ### [保护逻辑应用](logic-apps-securing-a-logic-app.md)
@@ -32,6 +44,7 @@
 ### [合作伙伴](logic-apps-enterprise-integration-partners.md)
 ### [协议](logic-apps-enterprise-integration-agreements.md)
 ### [B2B 处理](logic-apps-enterprise-integration-b2b.md)
+### [成批发送 EDI 消息](logic-apps-scenario-edi-send-batch-messages.md)
 ### [XML 处理](logic-apps-enterprise-integration-xml.md)
 ### [平面文件处理](logic-apps-enterprise-integration-flatfile.md)
 ### [验证 XML](logic-apps-enterprise-integration-xml-validation.md)
@@ -73,12 +86,11 @@
 #### [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [自定义跟踪架构](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## 示例、方案和演练
-### [概述](logic-apps-examples-and-scenarios.md)
+## [示例、方案和演练](logic-apps-examples-and-scenarios.md)
 ### [创建无服务器的社交仪表板](logic-apps-scenario-social-serverless.md)
 ### [使用 Azure Functions 调用逻辑应用](logic-apps-scenario-function-sb-trigger.md)
 ### [添加错误和异常处理](logic-apps-scenario-error-and-exception-handling.md)
-### [B2B 处理](logic-apps-enterprise-integration-b2b.md)
+### [B2B 处理](logic-apps-enterprise-integration-b2b.md) 
 
 ## 定价和计费
 ### [定价](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -98,7 +110,7 @@
 ## [工作流定义语言](logic-apps-workflow-definition-language.md)
 ## [工作流操作和触发器](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## 连接器：深入的主题
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob 存储](../connectors/connectors-create-api-azureblobstorage.md)

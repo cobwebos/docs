@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 35f7bdbeb480122513ae2a0b04a6d8cfd426802a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="bridge-ios-webview-with-native-mobile-engagement-ios-sdk"></a>将 iOS Web 视图与原生 Mobile Engagement iOS SDK 桥接
 > [!div class="op_single_selector"]
@@ -28,25 +27,25 @@ ms.lasthandoff: 12/08/2016
 > 
 > 
 
-某些移动应用被设计成混合应用，而应用本身是使用原生 iOS Objective C 开发进行开发的，但部分或者甚至所有屏幕都是在 iOS Web 视图中进行渲染的。 你仍可以使用此类应用内的 Mobile Engagement iOS SDK，本教程介绍如何执行此操作。 
+某些移动应用被设计成混合应用，而应用本身是使用原生 iOS Objective C 开发进行开发的，但部分或者甚至所有屏幕都是在 iOS Web 视图中进行渲染的。 仍可以使用此类应用内的 Mobile Engagement iOS SDK，本教程介绍如何执行此操作。 
 
 有两种方法可以实现此目的，但这两种方法都是未经事实证明的：
 
-* 有关第一种方法的描述请查看此[链接](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip)，这需要在你的 Web 视图上注册 `UIWebViewDelegate`，然后捕获并立即取消在 Javascript 中进行的位置更改。 
+* 有关第一种方法的描述请查看此[链接](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip)，这需要在 Web 视图上注册 `UIWebViewDelegate`，然后捕获并立即取消在 Javascript 中进行的位置更改。 
 * 第二种方法基于此 [WWDC 2013 会话](https://developer.apple.com/videos/play/wwdc2013/615)，这是一种比第一种方法更简洁的方法，在本指南中我们将遵循这第二种方法。 请注意，此方法仅可以在 iOS7 及更高版本上正常工作。 
 
 对于 iOS 桥接示例，请执行以下步骤︰
 
-1. 首先，你需要确保你已完成我们的[入门教程](mobile-engagement-ios-get-started.md)，以便在混合应用中集成 Mobile Engagement iOS SDK。 你还可以选择启用测试日志记录，如下所示，以便在我们从 Web 视图触发 SDK 方法时，可以看到它们。 
+1. 首先，需要确保已完成我们的[入门教程](mobile-engagement-ios-get-started.md)，以便在混合应用中集成 Mobile Engagement iOS SDK。 还可以选择启用测试日志记录，如下所示，以便在我们从 Web 视图触发 SDK 方法时，可以看到它们。 
    
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
            ....
              [EngagementAgent setTestLogEnabled:YES];
            ....
         }
-2. 现在请确保你的混合应用有一个包含 Web 视图的屏幕。 你可以将其添加到应用的 `Main.storyboard` 中。 
-3. 通过单击 Web 视图并将其从视图控制器场景拖动到 `ViewController.h` 编辑屏幕（将其紧挨着放置在 `@interface` 行的下方），将此 Web 视图与你的 **ViewController** 相关联。 
-4. 执行此操作之后，将立即弹出一个对话框询问名称。 提供该名称作为 **Web 视图**。 你的 `ViewController.h` 文件应如下所示：
+2. 现在请确保混合应用有一个包含 Web 视图的屏幕。 可以将其添加到应用的 `Main.storyboard` 中。 
+3. 通过单击 Web 视图并将其从视图控制器场景拖动到 `ViewController.h` 编辑屏幕（将其紧挨着放置在 `@interface` 行的下方），将此 Web 视图与 **ViewController** 相关联。 
+4. 执行此操作之后，将立即弹出一个对话框询问名称。 提供该名称作为 **Web 视图**。 `ViewController.h` 文件应如下所示：
    
         #import <UIKit/UIKit.h>
         #import "EngagementViewController.h"
@@ -114,7 +113,7 @@ ms.lasthandoff: 12/08/2016
         }
    
         @end
-7. 现在我们又回到 **ViewController.m**，然后使用下面的代码更新它： 
+7. 现在我们又回到 **ViewController.m**，并使用下面的代码更新它： 
    
         #import <JavaScriptCore/JavaScriptCore.h>
         #import "ViewController.h"
@@ -162,7 +161,7 @@ ms.lasthandoff: 12/08/2016
 8. 关于 **ViewController.m** 文件，请注意以下几点：
    
    * 在 `loadWebView` 方法中，我们正在加载一个称为 **LocalPage.html** 的本地 HTML 文件，我们接下来将查看其代码。 
-   * 在 `webViewDidFinishLoad` 方法中，我们将获取 `JsContext` 并将我们的包装类与其相关联。 这将允许从 Web 视图使用句柄 **EngagementJs** 调用我们的包装 SDK 方法。 
+   * 在 `webViewDidFinishLoad` 方法中，我们将获取 `JsContext` 并将我们的包装类与其相关联。 这会允许从 Web 视图使用句柄 **EngagementJs** 调用我们的包装 SDK 方法。 
 9. 使用以下代码创建名为 **LocalPage.html** 的文件：
    
         <!doctype html>
@@ -251,18 +250,17 @@ ms.lasthandoff: 12/08/2016
         </html>
 10. 关于上述 HTML 文件，请注意以下几点：
     
-    * 它包含一组输入框，你可以在其中提供要用作事件、作业、错误和应用信息的名称的数据。 当你单击它旁边的按钮时，将调用 Javascript，最终调用网桥文件中的方法将此调用传递到 Mobile Engagement iOS SDK。 
-    * 我们对事件、作业和甚至是错误标记某些静态额外信息，以演示这是如何完成的。 如果你查看 `EngagementJsExports.m` 文件，此额外信息会以 JSON 字符串形式发送，JSON 字符串会被分析，并在发送事件、作业和错误时一起传递。 
-    * 启动一个 Mobile Engagement 作业，名称为你在输入框中指定的名称，运行 10 秒并关闭。 
-    * 系统会传递 Mobile Engagement 应用信息或标记，以“customer name”作为静态密钥，并将你在输入框中输入的值作为标记的值。 
-11. 运行该应用，你将看到以下内容。 现在为测试事件提供一些名称，如下所示，然后单击其旁边的**发送**。 
+    * 它包含一组输入框，可以在其中提供要用作事件、作业、错误和应用信息的名称的数据。 单击它旁边的按钮时，将调用 Javascript，最终调用网桥文件中的方法将此调用传递到 Mobile Engagement iOS SDK。 
+    * 我们对事件、作业和甚至是错误标记某些静态额外信息，以演示这是如何完成的。 如果查看 `EngagementJsExports.m` 文件，此额外信息会以 JSON 字符串形式发送，JSON 字符串会被分析，并在发送事件、作业和错误时一起传递。 
+    * 启动一个 Mobile Engagement 作业，名称在输入框中指定的名称，运行 10 秒并关闭。 
+    * 系统会传递 Mobile Engagement 应用信息或标记，以“customer name”作为静态密钥，并会在输入框中输入的值作为标记的值。 
+11. 运行该应用，会看到以下内容。 现在为测试事件提供一些名称，如下所示，并单击其旁边的**发送**。 
     
      ![][1]
-12. 如果你现在转到应用的“**监视器**”选项卡，查看“**事件 -> 详细信息**”，你将看到此事件以及我们发送的静态应用信息。 
+12. 如果现在转到应用的“**监视器**”选项卡，查看“**事件 -> 详细信息**”，会看到此事件以及我们发送的静态应用信息。 
     
     ![][2]
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-bridge-webview-native-ios/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-ios/event-output.png
-

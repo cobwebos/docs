@@ -1,6 +1,6 @@
 ---
 title: "未授权用户使用情况报表 | Microsoft Docs"
-description: "未授权用户使用情况报表可帮助你识别正在使用付费的 Azure AD 功能的未授权用户。"
+description: "未授权用户使用情况报表可帮助你识别正在使用付费 Azure AD 功能的未授权用户。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,18 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
-
+ms.openlocfilehash: 0f5f0eb79d8924ebe7e5848e1d8b761ea2e4983d
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="unlicensed-usage-report"></a>未授权用户使用情况报表
-未授权用户使用情况报表可帮助你识别正在使用付费的 Azure AD 功能的未授权用户。 这样可以更好地使用已购买的许可证，并且让你知道何时可能需要其他许可证。 
+未授权用户使用情况报表可帮助你识别正在使用付费 Azure AD 功能的未授权用户。 这样可以更好地使用已购买的许可证，并且让你知道何时可能需要其他许可证。 
 
 该报表显示最近 30 天付费功能的有效使用情况。 
 
@@ -46,5 +44,4 @@ ms.lasthandoff: 12/29/2016
 ## <a name="see-also"></a>另请参阅
 * [在 Office 365 和其他连接到 Azure Active Directory 的应用中使用条件性访问](active-directory-conditional-access.md)
 * [Azure AD 的条件性访问入门](active-directory-conditional-access-azuread-connected-apps.md) 
-
 

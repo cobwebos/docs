@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 78a4b0c8d305f57f495402cecb92d18425ff6bff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 创建虚拟机规模集
 本文介绍如何使用 Visual Studio 资源组部署部署 Azure 虚拟机规模集。
@@ -66,7 +65,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 ![JSON 资源管理器][json_explorer]
 
 ## <a name="deploy-the-project"></a>部署项目
-1. 部署 Azure Resource Manager 模板来创建虚拟机规模集资源。 右键单击项目节点，然后选择“部署”->“新建部署”。
+1. 部署 Azure Resource Manager 模板来创建虚拟机规模集资源。 右键单击项目节点，并选择“部署”->“新建部署”。
    
     ![部署模板][5deploy_Template]
     
@@ -87,7 +86,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
    ![输出窗口][output_window]
 
 ## <a name="exploring-your-virtual-machine-scale-set"></a>探索虚拟机规模集
-部署完成后，可在 Visual Studio **云资源管理器**中（刷新列表）查看新的虚拟机规模集。 云资源管理器让你可以在开发应用程序时管理 Visual Studio 中的 Azure 资源。 还可以在 [Azure 门户](https://portal.azure.com)和 [Azure 资源浏览器](https://resources.azure.com/)中查看虚拟机规模集。
+部署完成后，可在 Visual Studio **云资源管理器**中（刷新列表）查看新的虚拟机规模集。 云资源管理器让可以在开发应用程序时管理 Visual Studio 中的 Azure 资源。 还可以在 [Azure 门户](https://portal.azure.com)和 [Azure 资源浏览器](https://resources.azure.com/)中查看虚拟机规模集。
 
 ![云资源管理器][cloud_explorer]
 
@@ -107,4 +106,3 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 [edit_parameters]: ./media/virtual-machine-scale-sets-vs-create/8-EditParameter.png
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
-

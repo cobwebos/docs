@@ -36,6 +36,7 @@
 #### [管理作业](storsimple-virtual-array-manage-jobs.md)
 #### [更改设备密码](storsimple-virtual-array-change-device-admin-password.md)
 #### [在 Windows Server 主机上配置 MPIO](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [使用警报进行监视](storsimple-virtual-array-manage-alerts.md)
 #### [诊断和故障排除](storsimple-virtual-array-diagnose-problems.md)
 #### [记录支持请求](storsimple-virtual-array-log-support-ticket.md)
 
@@ -56,6 +57,7 @@
 ### [什么是解决方案？](storsimple-overview.md)
 ### [StorSimple 学习路线图](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [安全注意事项](storsimple-8000-security.md)
+### [常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)
 
 ## 入门
 
@@ -99,6 +101,7 @@
 ##### [管理卷容器](storsimple-8000-manage-volume-containers.md)
 ##### [管理卷 - 最新版](storsimple-8000-manage-volumes-u2.md)
 ###### [常见问题：本地固定卷](storsimple-8000-local-volume-faq.md)
+##### [基于角色的访问控制](storsimple-8000-role-based-access-control.md)
 ##### [管理 ACR](storsimple-8000-manage-acrs.md)
 ##### [管理带宽模板](storsimple-8000-manage-bandwidth-templates.md)
 ##### [查看和管理作业](storsimple-8000-manage-jobs-u2.md)
@@ -117,6 +120,7 @@
 ##### [修改 DATA 0 设置](storsimple-8000-modify-data-0.md)
 
 
+
 #### [使用 StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md)
 ##### [什么是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
 ##### [关于 StorSimple Snapshot Manager 界面](storsimple-use-snapshot-manager.md)
@@ -127,6 +131,11 @@
 ##### [通过 StorSimple Snapshot Manager 管理备份作业](storsimple-snapshot-manager-manage-backup-jobs.md)
 ##### [通过 StorSimple Snapshot Manager 管理卷](storsimple-snapshot-manager-manage-volumes.md)
 ##### [使用 StorSimple Snapshot Manager 中的 MMC 操作](storsimple-snapshot-manager-mmc-menu.md)
+
+### 自动化
+
+#### [使用 Azure PowerShell 示例脚本](storsimple-8000-automation-azurerm-scripts.md)
+#### [使用 Azure 自动化 Runbook](storsimple-8000-automation-azurerm-runbook.md)
 
 ### 构建解决方案
 #### [采用 Veeam 的 StorSimple](storsimple-configure-backup-target-veeam.md)
@@ -185,7 +194,7 @@
 #### [Release - GA](storsimple-july-2014-release-notes.md)
 
 ## 引用
-### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
+### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Windows PowerShell for StorSimple cmdlet](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple 8000 系列（经典门户）

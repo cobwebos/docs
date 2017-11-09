@@ -15,15 +15,19 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
+ms.openlocfilehash: f8510bb6b412e9af8aad30ba32bc74206c22042f
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ebafcb2463bc92f15c1299963e054fcddd47b0b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="web-apps-overview"></a>Web 应用概述
-*应用服务 Web 应用* 是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 Microsoft Azure 提供的这个 [平台即服务](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) 产品使你可重点关注业务逻辑，同时 Azure 负责维护用于运行和扩展应用的基础结构。
+
+*Azure 应用服务 Web 应用*（简称 Web 应用）是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 可以在 Windows 或 Linux VM 上轻松运行和缩放应用（请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)）。 
+
+Web 应用不仅可将 Microsoft Azure 的强大功能（例如安全性、负载均衡、自动缩放和自动管理）添加到应用程序， 我们还能利用其 DevOps 功能，例如来自 VSTS、GitHub、Docker 中心和其他源的持续部署，以及包管理、过渡环境、自定义域和 SSL 证书。 
+
+使用应用服务时，需要支付 Azure 计算资源的使用费。 使用的计算资源量由运行 Web 应用的应用服务计划确定。 有关详细信息，请参阅 [Azure Web 应用中的应用服务计划](azure-web-sites-web-hosting-plans-in-depth-overview.md)。
 
 下面的 5 分钟视频介绍了 Azure 应用服务 Web 应用。
 
@@ -31,49 +35,40 @@ ms.lasthandoff: 09/20/2017
 >
 >
 
-> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-> 
-> 
-
-## <a name="what-is-a-web-app-in-app-service"></a>应用服务中的 Web 应用是什么？
-在应用服务中， *Web 应用* 是 Azure 提供用来托管网站或 Web 应用程序的计算资源。  
-
-该计算资源可能位于共享虚拟机 (VM) 上，也可能位于专用虚拟机上，具体取决于选择的定价层。 应用程序代码在独立于其他客户的托管 VM 中运行。
-
-代码可以使用 [Azure 应用服务](../app-service/app-service-web-overview.md)支持的任何语言或框架，例如 ASP.NET、Node.js、Java、PHP 或 Python。 也可以在 Web 应用中运行使用 [PowerShell 和其他脚本语言](web-sites-create-web-jobs.md#acceptablefiles) 的脚本。
-
-有关可使用 Web 应用的典型应用程序方案示例，请参阅 [Azure 应用服务、虚拟机、Service Fabric 和云服务组件](choose-web-site-cloud-service-vm.md#scenarios)中的 [Web 应用方案](https://azure.microsoft.com/documentation/scenarios/web-app/)以及**方案和建议**部分。
-
 ## <a name="why-use-web-apps"></a>为何使用 Web 应用？
-以下是适用于 Web 应用的一些主要应用服务功能：
+下面是应用服务 Web 应用的一些重要功能：
 
-* **多种语言和框架** — 应用服务为 ASP.NET、Node.js、Java、PHP 和 Python 提供一流支持。 也可以在应用服务 VM 上运行 [PowerShell 和其他脚本或可执行文件](web-sites-create-web-jobs.md) 。
-* **DevOps 优化** — 使用 Visual Studio Team Services、GitHub 或 BitBucket 设置 [持续集成和部署](app-service-continuous-deployment.md) 。 通过 [测试和过渡环境](web-sites-staged-publishing.md)提升更新。 在应用服务中，利用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](../cli-install-nodejs.md) 来管理应用。
+* **多个语言和框架** - Web 应用针对 ASP.NET、ASP.NET Core、Java、Ruby、Node.js、PHP 或 Python 提供一流支持。 我们还能以后台服务的形式运行 [PowerShell 和其他脚本或可执行文件](web-sites-create-web-jobs.md)。
+* **DevOps 优化** - 使用 Visual Studio Team Services、GitHub、BitBucket、Docker 中心或 Azure 容器服务设置[持续集成和部署](app-service-continuous-deployment.md)。 通过 [测试和过渡环境](web-sites-staged-publishing.md)提升更新。 在 Web 应用中使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](/cli/azure/install-azure-cli) 管理应用。
 * **具有高可用性的全局缩放** - 以手动或自动方式进行[增大](web-sites-scale.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
-* **到 SaaS 平台和本地数据的连接** - 从适用于企业系统（例如 SAP、Siebel 和 Oracle）的 50 多个 [连接器](../connectors/apis-list.md) 、SaaS 服务（例如 Salesforce 和 Office 365）以及 Internet 服务（例如 Facebook 和 Twitter）中进行选择。 使用[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)访问本地数据。
-* **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)的要求。
-* **应用程序模板** - 从 [Azure 应用商店](https://azure.microsoft.com/marketplace/) 的大量应用程序模板列表中进行选择，使用向导安装流行的开源软件，例如 WordPress、Joomla 和 Drupal。
+* **与 SaaS 平台和本地数据建立连接** - 从适用于企业系统（例如 SAP）的 50 多个[连接器](../connectors/apis-list.md)、SaaS 服务（例如 Salesforce）以及 Internet 服务（例如 Facebook）中进行选择。 使用[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)访问本地数据。
+* **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)的要求。 使用 [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) 或社交登录名（[Google](app-service-mobile-how-to-configure-google-authentication.md)、[Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)、[Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) 和 [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)）对用户进行身份验证。 创建 [IP 地址限制](app-service-ip-restrictions.md)和[管理服务标识](app-service-managed-service-identity.md)。
+* **应用程序模板** - 从 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 的大量应用程序模板列表中进行选择，例如 WordPress、Joomla 和 Drupal。
 * **Visual Studio 集成** — Visual Studio 中的专用工具可简化创建、部署和调试工作。
+* **API 和移动功能** - Web 应用针对 RESTful API 方案提供统包式 CORS 支持，通过启用身份验证、脱机数据同步、推送通知等功能简化移动应用方案。
+* **无服务器代码** - 按需运行代码片段或脚本，无需显式预配或管理基础结构，并且只需为代码实际使用的计算时间付费（请参阅 [Azure Functions](/azure/azure-functions/)）。
 
-此外，Web 应用可利用 [API 应用](app-service-web-tutorial-rest-api.md)提供的 CORS 支持等功能和[移动应用](../app-service-mobile/app-service-mobile-value-prop.md)提供的推送通知等功能。 
+除了应用服务中的 Web 应用，Azure 还提供可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web 应用是最佳选择。  对于微服务体系结构，请考虑使用 [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)。 如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。 有关如何在这些 Azure 服务之间做出选择的详细信息，请参阅 [Azure 应用服务、虚拟机、Service Fabric 和云服务的比较](choose-web-site-cloud-service-vm.md)。
 
-除了应用服务中的 Web 应用，Azure 还提供可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web 应用是最佳选择。  对于微服务体系结构，请考虑使用 [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)；如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。 有关如何在这些 Azure 服务之间做出选择的详细信息，请参阅 [Azure 应用服务、虚拟机、Service Fabric 和云服务的比较](choose-web-site-cloud-service-vm.md)。
+## <a name="next-steps"></a>后续步骤
 
-## <a name="getting-started"></a>入门
-若要开始在应用服务中向新 Web 应用部署示例代码，请遵循下拉框中的某篇教程。 需要一个免费 Azure 帐户。
+创建第一个 Web 应用。
 
-> [!div class="op_single_selector"]
-> * [在 5 分钟内将第一个 ASP.NET Web 应用部署到 Azure](app-service-web-get-started-dotnet.md)
-> * [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php.md)
-> * [在 5 分钟内将第一个 Node.js Web 应用部署到 Azure](app-service-web-get-started-nodejs.md)
-> * [在 5 分钟内将第一个 Java Web 应用部署到 Azure](app-service-web-get-started-java.md)
-> * [在 5 分钟内将第一个 Python Web 应用部署到 Azure](app-service-web-get-started-python.md)
-> * [在 5 分钟内将第一个 HTML 站点部署到 Azure](app-service-web-get-started-html.md)
-> 
-> 
+> [!div class="nextstepaction"]
+> [ASP.NET](app-service-web-get-started-dotnet.md)
 
-> [!NOTE]
-> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
-> 
-> 
+> [!div class="nextstepaction"]
+> [PHP](app-service-web-get-started-php.md)
+
+> [!div class="nextstepaction"]
+> [Node.js](app-service-web-get-started-nodejs.md)
+
+> [!div class="nextstepaction"]
+> [Java](app-service-web-get-started-java.md)
+
+> [!div class="nextstepaction"]
+> [Python](app-service-web-get-started-python.md)
+
+> [!div class="nextstepaction"]
+> [HTML](app-service-web-get-started-html.md)
 

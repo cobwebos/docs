@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: d3ba8cb1f7e1d4332f7912848e8b6902d9acf909
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>教程：Azure Active Directory 与 RealtimeBoard 的集成
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 08/01/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 RealtimeBoard 测试用户](#create-a-realtimeboard-test-user)** - 在 RealtimeBoard 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 RealtimeBoard 测试用户](#create-a-realtimeboard-test-user)** - 在 RealtimeBoard 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 08/01/2017
 
     在“登录 URL”文本框中，键入 URL `https://realtimeboard.com/sso/saml`
 
-5. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_certificate.png) 
 
@@ -155,9 +154,9 @@ ms.lasthandoff: 08/01/2017
 
     ![“用户”对话框](./media/active-directory-saas-realtimeboard-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -209,7 +208,7 @@ ms.lasthandoff: 08/01/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -226,5 +225,4 @@ ms.lasthandoff: 08/01/2017
 [201]: ./media/active-directory-saas-realtimeboard-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-realtimeboard-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-realtimeboard-tutorial/tutorial_general_203.png
-
 

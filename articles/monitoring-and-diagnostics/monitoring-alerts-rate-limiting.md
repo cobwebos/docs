@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: bde645624ab1860d19ba18470f55845855a7d1fb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="rate-limiting-for-sms-messages-emails-and-webhook-posts"></a>短信、电子邮件和 webhook 发布的速率限制
 速率限制是在发送给特定电话号码或电子邮件地址的通知太多时发生的通知挂起。 通过速率限制，确保警报处于管理且可操作状态。
 
@@ -42,4 +40,3 @@ ms.lasthandoff: 08/24/2017
 * 详细了解[短信警报行为](monitoring-sms-alert-behavior.md)。
 * 获取[活动日志警报概述](monitoring-overview-alerts.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。
-

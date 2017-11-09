@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 18c71608f7429f7c52720282ca66f44c88de2d84
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# Reliable Services 通知
-<a id="reliable-services-notifications" class="xliff"></a>
+# <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*和*可靠字典*。
 
 使用通知的常见原因如下：
@@ -33,8 +30,7 @@ ms.lasthandoff: 11/17/2016
 
 通知会在应用操作的过程中触发。 因此，应该尽快处理通知，且同步事件不应包含任何耗费资源的操作。
 
-## 可靠状态管理器通知
-<a id="reliable-state-manager-notifications" class="xliff"></a>
+## <a name="reliable-state-manager-notifications"></a>可靠状态管理器通知
 可靠状态管理器为以下事件提供通知：
 
 * 事务
@@ -53,7 +49,7 @@ ms.lasthandoff: 11/17/2016
 * 完整副本：必须先生成副本，它才能加入配置集。 有时，这需要将主要副本中可靠状态管理器状态的完整副本应用到空闲的次要副本。 次要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从主要副本获取的可靠状态。
 * 还原：在灾难恢复方案中，副本的状态可通过 **RestoreAsync** 从备份还原。 在这种情况下，主要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从备份还原的可靠状态。
 
-若要注册事务通知和/或状态管理器通知，需要在可靠状态管理器上注册 **TransactionChanged** 或 **StateManagerChanged** 事件。 注册这些事件处理程序的常见位置是有状态服务的构造函数。 当你在构造函数上注册时，也不会错过 **IReliableStateManager** 生存期内的更改所导致的任何通知。
+若要注册事务通知和/或状态管理器通知，需要在可靠状态管理器上注册 **TransactionChanged** 或 **StateManagerChanged** 事件。 注册这些事件处理程序的常见位置是有状态服务的构造函数。 在构造函数上注册时，也不会错过 **IReliableStateManager** 生存期内的更改所导致的任何通知。
 
 ```C#
 public MyService(StatefulServiceContext context)
@@ -67,7 +63,7 @@ public MyService(StatefulServiceContext context)
 **TransactionChanged** 事件处理程序使用 **NotifyTransactionChangedEventArgs** 来提供有关事件的详细信息。 它包含用于指定更改类型的操作属性（例如，**NotifyTransactionChangedAction.Commit**）。 也包含提供对已更改事务的引用的事务属性。
 
 > [!NOTE]
-> 现在，只有提交事务才会引发 **TransactionChanged** 事件。 此操作等同于 **NotifyTransactionChangedAction.Commit**。 但是在未来，可能会有其他类型的事务状态更改可以引发事件。 建议你检查操作，仅在你预期的事件发生时处理事件。
+> 现在，只有提交事务才会引发 **TransactionChanged** 事件。 此操作等同于 **NotifyTransactionChangedAction.Commit**。 但是在未来，可能会有其他类型的事务状态更改可以引发事件。 建议检查操作，仅在预期的事件发生时处理事件。
 > 
 > 
 
@@ -109,8 +105,7 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## 可靠字典通知
-<a id="reliable-dictionary-notifications" class="xliff"></a>
+## <a name="reliable-dictionary-notifications"></a>可靠字典通知
 可靠字典为以下事件提供通知：
 
 * 重新生成：在 **ReliableDictionary** 从过去恢复或复制的本地状态或备份恢复其状态后调用。
@@ -120,7 +115,7 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 * 删除：在删除 **IReliableDictionary** 中的项之后调用。
 
 若要获取可靠字典通知，需在 **DictionaryChanged** 上注册 **IReliableDictionary** 事件处理程序。 注册这些事件处理程序的常见位置是在 **ReliableStateManager.StateManagerChanged** 添加通知中。
-在将 **IReliableDictionary** 添加到 **IReliableStateManager** 时注册，可确保你不会错过任何通知。
+在将 **IReliableDictionary** 添加到 **IReliableStateManager** 时注册，可确保不会错过任何通知。
 
 ```C#
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -207,8 +202,7 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-## 建议
-<a id="recommendations" class="xliff"></a>
+## <a name="recommendations"></a>建议
 * 尽快*完成*通知事件。
 * *不要*执行任何耗费资源的操作（例如 I/O 操作）作为同步事件的一部分。
 * 处理事件之前，先*检查*操作类型。 未来可能会添加新的操作类型。
@@ -217,15 +211,13 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 
 * 通知会在执行操作的过程中触发。 例如，在还原操作的最后一个步骤触发还原通知。 处理通知事件之前，不会完成还原。
 * 由于通知会在应用操作的过程中触发，因此，客户端只会看见本地提交操作的通知。 而且因为操作只保证会在本地提交（亦即记录），所以它们不一定可在未来恢复。
-* 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，你将依次收到一个针对 X 创建的通知，一个针对删除的通知，然后再收到一个针对创建的通知。
+* 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，将依次收到一个针对 X 创建的通知，一个针对删除的通知，然后再收到一个针对创建的通知。
 * 对于包含多个操作的事务，操作将按用户在主要副本上收到它们的顺序应用。
-* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，你将看到一条针对 Delete(X) 的通知。
+* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，会看到一条针对 Delete(X) 的通知。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
 * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
 

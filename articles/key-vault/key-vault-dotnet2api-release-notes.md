@@ -13,16 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 21b34e30a7e07b37ccae3f101f2ab4dfadfad9bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
-
-
+ms.openlocfilehash: c5b5fd7f16faf17d16ecc82269fb1264adf4dd06
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
-下面的注意事项和指南适用于使用 Azure Key Vault .NET/C# 库的开发人员。 在从 1.0 版到 2.0 版的转换中，进行了大量需要代码迁移的更新，使你可以受益于功能的改进和新增，例如 **Key Vault 证书**支持。
+下面的注意事项和指南适用于使用 Azure Key Vault .NET/C# 库的开发人员。 从 1.0 版到 2.0 版的转换中进行了大量需要代码迁移的更新，使你可以受益于功能的改进和新增，例如 Key Vault 证书支持。
 
 ## <a name="key-vault-certificates"></a>Key Vault 证书
 
@@ -108,5 +106,4 @@ ms.lasthandoff: 04/29/2017
 ## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
 
 * 包分为 **Microsoft.Azure.KeyVault.Extensions** 和 **Microsoft.Azure.KeyVault.Cryptography** 以便执行加密操作。
-
 

@@ -14,21 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 62fa6a6d0cccc5545b94d4ae167f2fcc7e4cd0de
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 1ad6ca4abe73336ce9ce3539fdaf2a9d7dd23fa6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
 使用网络观察程序的数据包捕获功能，可在门户、PowerShell、CLI 中以及通过 SDK 和 REST API 以编程方式在 Azure VM 上启动和管理捕获会话。 借助数据包捕获，可通过以随时可用的格式提供信息，来解决需要数据包级数据的方案。 利用免费工具检查数据，可以检测传入和传出 VM 的通信并洞察网络流量。 数据包捕获数据的一些示例用途包括：调查网络或应用程序问题、检测网络滥用和入侵企图，或保持合规性。 本文介绍如何使用流行的开源工具打开网络观察程序提供的数据包捕获文件。 此外，还举例说明了如何计算连接延迟、识别异常流量，以及检查网络统计信息。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文将会回顾以前运行的有关数据包捕获的一些预配置方案。 这些方案演示了可以通过查看数据包捕获访问的功能。 本方案使用 [WireShark](https://www.wireshark.org/) 来检查数据包捕获。
+本文会回顾以前运行的有关数据包捕获的一些预配置方案。 这些方案演示了可以通过查看数据包捕获访问的功能。 本方案使用 [WireShark](https://www.wireshark.org/) 来检查数据包捕获。
 
 本方案假设已在虚拟机上运行数据包捕获。 若要了解如何创建数据包捕获，请访问 [Manage packet captures with the portal](network-watcher-packet-capture-manage-portal.md)（使用门户管理数据包捕获）；若要了解如何使用 REST 进行相应操作，请访问 [Managing Packet Captures with REST API](network-watcher-packet-capture-manage-rest.md)（使用 REST API 管理数据包捕获）。
 
@@ -60,9 +58,9 @@ ms.lasthandoff: 03/21/2017
 
 为了更轻松地查看 TCP 三次握手中的前两个数据包，我们将利用 WireShark 提供的筛选功能。
 
-若要应用 WireShark 中的筛选器，请展开捕获中 [SYN] 数据包的“Transmission Control Protocol”段，然后检查 TCP 标头中设置的标志。
+要应用 WireShark 中的筛选器，请展开捕获中 [SYN] 数据包的“Transmission Control Protocol”段，并检查 TCP 标头中设置的标志。
 
-由于我们想要针对所有 [SYN] 和 [SYN, ACK] 数据包执行筛选，因此应该在标志下面确认 Syn 位设置为 1，然后右键单击 Syn 位 ->“应用为筛选器”->“选定”。
+由于我们想要针对所有 [SYN] 和 [SYN, ACK] 数据包执行筛选，因此应该在标志下面确认 Syn 位设置为 1，并右键单击 Syn 位 ->“应用为筛选器”->“选定”。
 
 ![图 7][7]
 
@@ -74,9 +72,9 @@ ms.lasthandoff: 03/21/2017
 
 ## <a name="unwanted-protocols"></a>不需要的协议
 
-在 Azure 中部署的虚拟机实例上可能运行了大量的应用程序。 其中的许多应用程序可能在未得到你的明确许可的情况下通过网络通信。 使用数据包捕获存储网络通信，可以调查应用程序如何在网络上通信，以及检查是否出现了任何问题。
+在 Azure 中部署的虚拟机实例上可能运行了大量的应用程序。 其中的许多应用程序可能在未得到明确许可的情况下通过网络通信。 使用数据包捕获存储网络通信，可以调查应用程序如何在网络上通信，以及检查是否出现了任何问题。
 
-在本示例中，我们将检查以前运行的数据包捕获是否存在不需要的协议，这可能表示计算机上运行的应用程序正在进行未经授权的通信。
+在本示例中，我们会检查以前运行的数据包捕获是否存在不需要的协议，这可能表示计算机上运行的应用程序正在进行未经授权的通信。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -84,7 +82,7 @@ ms.lasthandoff: 03/21/2017
 
 ![协议层次结构菜单][2]
 
-此时将显示协议层次结构窗口。 此视图提供在捕获会话期间使用的所有协议的列表，以及使用协议传输和接收的数据包数目。 在查找虚拟机或网络上不需要的网络流量时，此视图可能很有作用。
+此时会显示协议层次结构窗口。 此视图提供在捕获会话期间使用的所有协议的列表，以及使用协议传输和接收的数据包数目。 在查找虚拟机或网络上不需要的网络流量时，此视图可能很有作用。
 
 ![打开的协议层次结构][3]
 
@@ -118,7 +116,7 @@ ms.lasthandoff: 03/21/2017
 tcp.port == 111
 ```
 
-在筛选器文本框中输入上面所示的筛选器文本，然后按 Enter。
+在筛选器文本框中输入上面所示的筛选器文本，并按 Enter。
 
 ![图 6][6]
 
@@ -136,7 +134,6 @@ tcp.port == 111
 [6]: ./media/network-watcher-deep-packet-inspection/figure6.png
 [7]: ./media/network-watcher-deep-packet-inspection/figure7.png
 [8]: ./media/network-watcher-deep-packet-inspection/figure8.png
-
 
 
 

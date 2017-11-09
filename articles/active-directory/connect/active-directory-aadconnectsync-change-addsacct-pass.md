@@ -15,26 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 427070021ac547058c2f18be0e58ef6d81822b8a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: 14e16a238e60ecfeeb3cbf88c3922a79349dcc75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-<a id="changing-the-ad-ds-account-password" class="xliff"></a>
-
-# 更改 AD DS 帐户密码
-AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，Synchronization 不再能正确与本地 Active Directory 同步，且将会遇到以下错误：
+# <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
+AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，Synchronization 不再能正确与本地 Active Directory 同步，且会遇到以下错误：
 
 * 在 Synchronization Service Manager 中，本地 AD 的导入/导出操作失败，出现 **no-start-credentials** 错误。
 
 * 在 Windows 事件查看器下，应用程序事件日志包含一个错误，**事件 ID 为 6000**，消息为**“管理代理‘contoso.com’未能运行，因为凭据无效”**。
 
 
-<a id="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account" class="xliff"></a>
-
-## 如何使用 AD DS 帐户的新密码更新 Synchronization Service
+## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>如何使用 AD DS 帐户的新密码更新 Synchronization Service
 使用新密码更新 Synchronization Service：
 
 1. 启动 Synchronization Service Manager（“开始”→ Synchronization Service）。
@@ -54,12 +49,9 @@ AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用�
 
 8. 在 Windows 服务控制管理器下重启 Azure AD Connect Synchronization Service。 这是为了确保从内存缓存中删除任何对旧密码的引用。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)
 
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

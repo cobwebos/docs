@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-warehouse-workload"></a>数据仓库工作负荷
 数据仓库工作负荷是指所有针对数据仓库所发生的操作。 数据仓库工作负荷包括将数据载入仓库、对数据仓库执行分析和报告、管理数据仓库中的数据，以及从数据仓库导出数据的整个过程。 这些组件的广度与深度多半与数据仓库的成熟度相当。
@@ -78,4 +77,3 @@ ms.lasthandoff: 05/27/2017
 <!--MSDN references-->
 
 <!--Other web references-->
-

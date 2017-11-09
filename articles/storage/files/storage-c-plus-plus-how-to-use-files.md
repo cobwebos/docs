@@ -1,6 +1,6 @@
 ---
-title: "使用 C++ 针对 Azure 文件存储进行开发 | Microsoft Docs"
-description: "了解如何开发使用 Azure 文件存储来存储文件数据的 C++ 应用程序和服务。"
+title: "使用 C++ 针对 Azure 文件进行开发 | Microsoft Docs"
+description: "了解如何开发使用 Azure 文件来存储文件数据的 C++ 应用程序和服务。"
 services: storage
 documentationcenter: .net
 author: renashahmsft
@@ -12,24 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renashahmsft
+ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 86c3714327074f5576e535f67a0a2a8e761ffb46
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="develop-for-azure-file-storage-with-c"></a>使用 C++ 针对 Azure 文件存储进行开发
+# <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>关于本教程
 
-本教程介绍如何针对 Azure 文件存储执行基本的操作。 通过用 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Azure 文件存储，学习后续部分的概念对于理解示例有帮助。
+本教程介绍如何针对 Azure 文件执行基本的操作。 通过用 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Azure 文件，请先了解下面各部分中的概念，以便理解相关示例。
 
 
 * 创建和删除 Azure 文件共享
@@ -40,7 +38,7 @@ ms.lasthandoff: 08/22/2017
 * 若一个文件使用在共享中定义的共享访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
 
 > [!Note]  
-> 由于 Azure 文件存储可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 C++ I/O 类和函数来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 C++ SDK 的应用程序，该 SDK 使用 [Azure 文件存储 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件存储通信。
+> 由于 Azure 文件可以通过 SMB 进行访问，因此可以编写简单的应用程序，通过标准的 C++ I/O 类和函数来访问 Azure 文件共享。 本文将介绍如何编写使用 Azure 存储 C++ SDK 的应用程序，该 SDK 使用 [文件 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) 与 Azure 文件通信。
 
 ## <a name="create-a-c-application"></a>创建 C++ 应用程序
 若要生成示例，需要安装用于 C++ 的 Azure 存储客户端库 2.4.0。 此外，应该已经创建了一个 Azure 存储帐户。
@@ -54,8 +52,8 @@ ms.lasthandoff: 08/22/2017
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-azure-file-storage"></a>设置应用程序以使用 Azure 文件存储
-将以下 include 语句添加到要在其中操作 Azure 文件存储的 C++ 源文件的顶部：
+## <a name="set-up-your-application-to-use-azure-files"></a>设置应用程序以使用 Azure 文件
+将以下 include 语句添加到要在其中操作 Azure 文件的 C++ 源文件的顶部：
 
 ```cpp
 #include <was/storage_account.h>
@@ -81,15 +79,15 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
-Azure 文件存储中的所有文件和目录都位于名为 **Share** 的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 若要获得共享及其内容的访问权限，需要使用 Azure 文件存储客户端。
+Azure 文件共享中的所有文件和目录都位于名为 Share 的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
 
 ```cpp
-// Create the Azure File storage client.
+// Create the Azure Files client.
 azure::storage::cloud_file_client file_client = 
   storage_account.create_cloud_file_client();
 ```
 
-使用 Azure 文件存储客户端可以获取对共享的引用。
+使用 Azure 文件客户端可以获取对共享的引用。
 
 ```cpp
 // Get a reference to the file share
@@ -120,7 +118,7 @@ share.delete_share_if_exists();
 ```
 
 ## <a name="create-a-directory"></a>创建目录
-可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 Azure 文件存储允许创建帐户允许的任意数目的目录。 下面的代码会在根目录下创建一个名为 **my-sample-directory** 的目录，以及一个名为 **my-sample-subdirectory** 的子目录。
+可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 使用 Azure 文件可以创建帐户允许的任意数目的目录。 下面的代码会在根目录下创建一个名为 **my-sample-directory** 的目录，以及一个名为 **my-sample-subdirectory** 的子目录。
 
 ```cpp
 // Retrieve a reference to a directory
@@ -241,7 +239,7 @@ outfile.close();
 ```
 
 ## <a name="delete-a-file"></a>删除文件
-另一项常见的 Azure 文件存储操作是删除文件。 下面的代码删除存储在根目录下的名为 my-sample-file-3 的文件。
+另一项常见的 Azure 文件操作是删除文件。 下面的代码删除存储在根目录下的名为 my-sample-file-3 的文件。
 
 ```cpp
 // Get a reference to the root directory for the share.    

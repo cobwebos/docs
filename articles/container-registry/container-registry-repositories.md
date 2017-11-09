@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2017
 ms.author: cristyg
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 06b809c31cecef1714f60d04657eb74c611be8cb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: d737df98fee955b57166cb44f45f61dff906514e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Azure 容器注册表存储库
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 03/28/2017
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI 2.0](container-registry-get-started-azure-cli.md)。
-* **Docker CLI** - 若要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
+* **Docker CLI** - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
 * **提取映像** - 从公共 Docker Hub 注册表中提取映像，对其进行标记，然后将其推送到注册表。 有关如何推送和提取映像的指导，请参阅[将 Docker 映像推送到 Azure 专用注册表](container-registry-get-started-docker-cli.md)。
 
 
@@ -54,4 +53,3 @@ docker push myregistry.azurecr.io/samples/nginx
 
 ## <a name="next-steps"></a>后续步骤
 了解基础知识后，便可以开始使用注册表了！ 例如，开始将容器映像部署到 [Azure 容器服务](https://azure.microsoft.com/documentation/services/container-service/)群集。
-

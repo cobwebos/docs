@@ -1,0 +1,352 @@
+- name: Azure HDInsight 文档
+  href: /azure/hdinsight
+- name: HDInsight 上的交互式查询
+  items:
+    - name: 组件版本控制
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
+- name: 入门
+  items:
+    - name: 从交互式查询开始
+      href: ./apache-interactive-query-get-started.md
+    - name: 容量计划
+      href: ../hdinsight-capacity-planning.md
+      maintainContext: true
+- name: 如何
+  items:
+    - name: 使用群集存储
+      items:
+        - name: 使用 Azure 存储
+          href: ../hdinsight-hadoop-use-blob-storage.md
+          maintainContext: true
+        - name: 使用 Azure Data Lake Store
+          href: ../hdinsight-hadoop-use-data-lake-store.md
+          maintainContext: true
+    - name: 将 Hadoop 用于交互式查询
+      items:
+        - name: Hive 与 Hadoop
+          href: ../hadoop/hdinsight-use-hive.md
+          maintainContext: true
+          items:
+            - name: 使用 Zeppelin
+              href: ../hdinsight-connect-hive-zeppelin.md
+              maintainContext: true
+            - name: 适用于 Visual Studio 的工具
+              href: ../hdinsight-hadoop-visual-studio-tools-get-started.md
+              maintainContext: true
+            - name: 适用于 VSCode 的工具
+              href: ../hdinsight-for-vscode.md
+              maintainContext: true
+            - name: Data Lake 工具与 Hortonworks 沙盒
+              href: ../hdinsight-hadoop-emulator-visual-studio.md
+              maintainContext: true
+            - name: 使用 Hive 视图
+              href: ../hadoop/apache-hadoop-use-hive-ambari-view.md
+              maintainContext: true
+            - name: 使用 Beeline
+              href: ../hadoop/apache-hadoop-use-hive-beeline.md
+              maintainContext: true
+            - name: 使用 cURL
+              href: ../hadoop/apache-hadoop-use-hive-curl.md
+              maintainContext: true
+            - name: 使用 Azure PowerShell
+              href: ../hadoop/apache-hadoop-use-hive-powershell.md
+              maintainContext: true
+            - name: 使用 .NET SDK
+              href: ../hadoop/apache-hadoop-use-hive-dotnet-sdk.md
+              maintainContext: true
+            - name: 使用用于 Visual Studio 的 HDInsight 工具
+              href: ../hadoop/apache-hadoop-use-hive-visual-studio.md
+              maintainContext: true
+            - name: 使用远程桌面
+              href: ../hadoop/apache-hadoop-use-hive-remote-desktop.md
+              maintainContext: true
+            - name: 使用查询控制台
+              href: ../hadoop/apache-hadoop-use-hive-query-console.md
+              maintainContext: true
+        - name: 将 Java UDF 与 Hive 配合使用
+          href: ../hadoop/apache-hadoop-hive-java-udf.md
+          maintainContext: true
+        - name: 提交 Hadoop 作业
+          href: ../hadoop/submit-apache-hadoop-jobs-programmatically.md
+          maintainContext: true
+    - name: 开发
+      items:
+        - name: 使用空边缘节点
+          href: ../hdinsight-apps-use-edge-node.md
+          maintainContext: true
+        - name: 处理和分析 JSON 文档
+          href: ../hadoop/using-json-in-hive.md
+          maintainContext: true
+        - name: 使用 Avro 库将数据序列化
+          href: ../hadoop/apache-hadoop-dotnet-avro-serialization.md
+          maintainContext: true
+        - name: '使用 C# 用户定义的函数'
+          href: ../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
+          maintainContext: true
+        - name: 将 Python 与 Hive 和 Pig 配合使用
+          href: ../hadoop/python-udf-hdinsight.md
+          maintainContext: true
+        - name: 创建非交互式身份验证 .NET HDInsight 应用程序
+          href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
+          maintainContext: true
+    - name: 多用户（已加入域）
+      items:
+        - name: 概述
+          href: ../domain-joined/apache-domain-joined-introduction.md
+          maintainContext: true
+        - name: 规划已加入域的 HDInsight
+          href: ../domain-joined/apache-domain-joined-architecture.md
+          maintainContext: true
+        - name: 配置已加入域的 HDInsight
+          href: ../domain-joined/apache-domain-joined-configure.md
+          maintainContext: true
+        - name: 配置 Hive 策略
+          href: ../domain-joined/apache-domain-joined-run-hive.md
+          maintainContext: true
+        - name: 管理群集
+          href: ../domain-joined/apache-domain-joined-manage.md
+          maintainContext: true
+        - name: 管理用户权限
+          href: ../hdinsight-add-acls-at-file-folder-levels.md
+          maintainContext: true
+    - name: 分析大数据
+      items:
+        - name: 使用 Power Query 进行分析
+          href: ../hadoop/apache-hadoop-connect-excel-power-query.md
+          maintainContext: true
+        - name: 将 Power BI 连接到 Hadoop
+          href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: 将 Excel 连接到 Hadoop
+          href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+          maintainContext: true
+        - name: 使用 Hive JDBC 驱动程序进行连接
+          href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+          maintainContext: true
+        - name: 分析存储的传感器数据
+          href: ../hadoop/apache-hive-analyze-sensor-data.md
+          maintainContext: true
+        - name: 分析存储的推文
+          href: ../hdinsight-analyze-twitter-data-linux.md
+          maintainContext: true
+        - name: 分析航班延误数据
+          href: ../hdinsight-analyze-flight-delay-data-linux.md
+          maintainContext: true
+        - name: 使用 Hive 分析网站日志
+          href: ../hadoop/apache-hive-analyze-website-log.md
+          maintainContext: true
+    - name: 扩展群集
+      items:
+        - name: 使用启用安全传输的存储帐户
+          href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+          maintainContext: true
+        - name: 使用 Bootstrap 自定义群集
+          href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+          maintainContext: true
+        - name: 使用脚本操作自定义群集
+          href: ../hdinsight-hadoop-customize-cluster-linux.md
+          maintainContext: true
+        - name: 将 HDInsight 连接到本地网络
+          href: ../connect-on-premises-network.md
+          maintainContext: true
+        - name: 开发脚本操作
+          href: ../hdinsight-hadoop-script-actions-linux.md
+          maintainContext: true
+        - name: 添加 Hive 库
+          href: ../hdinsight-hadoop-add-hive-libraries.md
+          maintainContext: true
+        - name: 使用虚拟网络
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+          maintainContext: true
+        - name: 使用 Zeppelin
+          href: ../hdinsight-apache-spark-zeppelin-notebook.md
+          maintainContext: true
+        - name: 构建 HDInsight 应用程序
+          items:
+            - name: 安装 HDInsight 应用
+              href: ../hdinsight-apps-install-applications.md
+              maintainContext: true
+            - name: 安装自定义应用
+              href: ../hdinsight-apps-install-custom-applications.md
+              maintainContext: true
+            - name: 使用 REST 安装应用
+              href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+            - name: 将 HDInsight 应用发布到 Azure 应用商店
+              href: ../hdinsight-apps-publish-applications.md
+              maintainContext: true
+    - name: 安全
+      items:
+        - name: 将 SSH 与 HDInsight 配合使用
+          href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+          maintainContext: true
+        - name: 使用 SSH 隧道
+          href: ../hdinsight-linux-ambari-ssh-tunnel.md
+          maintainContext: true
+        - name: 限制数据访问
+          href: ../hdinsight-storage-sharedaccesssignature-permissions.md
+          maintainContext: true
+        - name: 授权用户访问 Ambari 视图
+          href: ../hdinsight-authorize-users-to-ambari.md
+          maintainContext: true
+        - name: 管理文件和文件夹级别的用户权限
+          href: ../hdinsight-add-acls-at-file-folder-levels.md
+          maintainContext: true
+    - name: 管理
+      items:
+        - name: 创建群集
+          href: ../hdinsight-hadoop-provision-linux-clusters.md
+          maintainContext: true
+          items:
+            - name: 使用 Azure PowerShell
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+              maintainContext: true
+            - name: 使用 cURL 和 Azure REST API
+              href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+              maintainContext: true
+            - name: 使用 .NET SDK
+              href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
+              maintainContext: true
+            - name: 使用 Azure CLI
+              href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+              maintainContext: true
+            - name: 使用 Azure 门户
+              href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+              maintainContext: true
+            - name: 使用 Azure 资源管理器模板
+              href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+              maintainContext: true
+        - name: 创建按需群集
+          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+          maintainContext: true
+        - name: 管理的 Hadoop 群集
+          href: ../hdinsight-administer-use-portal-linux.md
+          maintainContext: true
+          items:
+            - name: 使用 .NET SDK
+              href: ../hdinsight-administer-use-dotnet-sdk.md
+              maintainContext: true
+            - name: 使用 Azure PowerShell
+              href: ../hdinsight-administer-use-powershell.md
+              maintainContext: true
+            - name: 使用 Azure CLI
+              href: ../hdinsight-administer-use-command-line.md
+              maintainContext: true
+        - name: 使用 Ambari Web UI 管理群集
+          href: ../hdinsight-hadoop-manage-ambari.md
+          maintainContext: true
+          items:
+            - name: 使用 Ambari REST API
+              href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+              maintainContext: true
+        - name: 添加存储帐户
+          href: ../hdinsight-hadoop-add-storage.md
+          maintainContext: true
+        - name: 上传 Hadoop 作业的数据
+          href: ../hdinsight-upload-data.md
+          maintainContext: true
+        - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
+          href: ../hdinsight-multiple-clusters-data-lake-store.md
+          maintainContext: true
+        - name: 群集及服务端口和 URI
+          href: ../hdinsight-hadoop-port-settings-for-services.md
+          maintainContext: true
+        - name: 迁移到 Resource Manager 开发工具
+          href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
+          maintainContext: true
+        - name: 可用性和可靠性
+          href: ../hdinsight-high-availability-linux.md
+          maintainContext: true
+        - name: 将 HDInsight 群集升级到更新的版本
+          href: ../hdinsight-upgrade-cluster.md
+          maintainContext: true
+        - name: 为 HDInsight 群集修补 OS
+          href: ../hdinsight-os-patching.md
+          maintainContext: true
+    - name: 监视
+      items:
+        - name: 使用 Azure Log Analytics
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          maintainContext: true
+        - name: 特定于群集的仪表板
+          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+          maintainContext: true
+        - name: 将查询与 Log Analytics 配合使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          maintainContext: true
+        - name: 监视群集性能
+          href: ../hdinsight-key-scenarios-to-monitor.md
+          maintainContext: true
+    - name: 故障排除
+      href: ../hdinsight-troubleshoot-guide.md
+      maintainContext: true
+      items:
+        - name: HDFS 故障排除
+          href: ../hdinsight-troubleshoot-hdfs.md
+          maintainContext: true
+        - name: HIVE 故障排除
+          href: ../hdinsight-troubleshoot-hive.md
+          maintainContext: true
+        - name: YARN 故障排除
+          href: ../hdinsight-troubleshoot-yarn.md
+          maintainContext: true
+        - name: 资源
+          items:
+            - name: 有关在 Linux 上使用 HDInsight 的信息
+              href: ../hdinsight-hadoop-linux-information.md
+              maintainContext: true
+            - name: Hadoop 内存和性能
+              href: ../hdinsight-hadoop-stack-trace-error-messages.md
+              maintainContext: true
+            - name: 在 Linux 上访问 Hadoop YARN 应用程序日志
+              href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+              maintainContext: true
+            - name: 为 Hadoop 服务启用堆转储
+              href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+              maintainContext: true
+            - name: 了解和解决 WebHCat 错误
+              href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
+              maintainContext: true
+            - name: 通过 Hive 设置解决内存不足错误
+              href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
+              maintainContext: true
+            - name: 使用 Ambari 视图调试 Tez 作业
+              href: ../hdinsight-debug-ambari-tez-view.md
+              maintainContext: true
+            - name: 优化 Hive 查询
+              href: ../hdinsight-hadoop-optimize-hive-query.md
+              maintainContext: true
+- name: 引用
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.hdinsight
+    - name: .NET (Hadoop)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
+    - name: .NET (HBase)
+      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+    - name: .NET (Avro)
+      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
+    - name: REST
+      href: /rest/api/hdinsight/
+    - name: REST (Spark)
+      href: /rest/api/hdinsightspark/
+- name: 资源
+  items:
+    - name: 发行说明
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: 在论坛上获取帮助
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
+    - name: 学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+    - name: 适用于大数据的 Microsoft 专业计划
+      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 适用于 HDInsight 的 Windows 工具
+      href: ../hdinsight-hadoop-windows-tools.md
+      maintainContext: true

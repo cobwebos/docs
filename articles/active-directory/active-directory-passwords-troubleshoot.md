@@ -13,17 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: 24b8a9852395c26a40adb406bd706283e1a96d5d
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 60d35b230534ca5721a49a770ea81cc79d52ec02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>如何排查自助密码重置问题
 
 如果在使用自助密码重置时遇到问题，下面的方法可能会帮助你快速解决问题。
@@ -88,7 +86,7 @@ ms.lasthandoff: 08/29/2017
 | 密码重置服务在本地未启动，并且在 Azure AD Connect 计算机的应用程序事件日志中出现错误 6800。 <br> <br> 在登记后，联合的或密码哈希同步的用户无法重置其密码。 | 当启用了密码写回时，同步引擎将调用写回库通过与云登记服务进行通信来执行配置（登记）。 在登记期间或者为密码写回启动 WCF 终结点时遇到任何错误都将导致在 Azure AD Connect 计算机的事件日志中生成错误。 <br> <br> 在重新启动 ADSync 服务期间，如果配置了写回，则 WCF 终结点将启动。 但是，如果终结点启动失败，我们将记录事件 6800 并允许同步服务启动。 存在此事件意味着密码写回终结点未启动。 此事件 (6800) 的事件日志详细信息以及 PasswordResetService 组件生成的事件日志条目将指明终结点无法启动的原因。 请查看这些事件日志错误，如果密码写回仍不能正常工作，请尝试重新启动 Azure AD Connect。 如果问题仍然存在，请尝试禁用并重新启用密码写回。
 | 如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作会失败。 <br> <br> 此外，解锁操作发生后，会在 Azure AD Connect 事件日志中看到一个事件，其中包含：“同步引擎返回了一条错误 hr=800700CE，消息=文件名或扩展太长”。 | 查找用于 Azure AD Connect 的 Active Directory 帐户并重置密码，使其包含的字符数不超过 127 个。 然后，从“开始”菜单打开“同步服务”。 导航到“连接器”并找到“Active Directory 连接器”。 选择它，并单击“属性”。 导航到“凭据”页，并输入新密码。 选择“确定”关闭页面。 |
 | 在 Azure AD Connect 安装过程的最后一步，看到了一个错误，它指出无法配置密码写回。 <br> <br> Azure AD Connect 应用程序事件日志包含错误 32009，其文本为“获取身份验证令牌时出错”。 | 在以下两种情况下会发生此错误：<br> <br> a. 为在 Azure AD Connect 安装过程开始时指定的全局管理员帐户指定了错误的密码。<br> b. 试图将联合用户用于在 Azure AD Connect 安装过程开始时指定的全局管理员帐户。<br> <br> 要解决此错误，请确保未将联合帐户用于在 Azure AD Connect 安装过程开始时指定的全局管理员帐户，并且指定的密码正确无误。 |
-| Azure AD Connect 计算机事件日志包含由 PasswordResetService 引发的错误 32002。 <br> <br> 错误如下：“连接到服务总线时出错，令牌提供程序无法提供安全令牌...” | 本地环境无法连接到云中的服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[网络要求](active-directory-passwords-how-it-works.md#network-requirements)。 在更新这些规则后，重新启动 AAD Sync 计算机，密码写回应当会再次开始工作。 |
+| Azure AD Connect 计算机事件日志包含由 PasswordResetService 引发的错误 32002。 <br> <br> 错误如下：“连接到服务总线时出错，令牌提供程序无法提供安全令牌...” | 本地环境无法连接到云中的服务总线终结点。 此错误是由于防火墙规则阻止了到特定端口或 web 地址的出站连接导致的。 有关详细信息，请参阅[连接先决条件](./connect/active-directory-aadconnect-prerequisites.md)。 在更新这些规则后，重新启动 AAD Sync 计算机，密码写回应当会再次开始工作。 |
 | 在工作一段时间后，联合用户或密码哈希同步的用户无法重置其密码。 | 在某些极少见的情况下，当 Azure AD Connect 已重新启动时，密码写回服务可能无法重新启动。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 这可以通过使用 Azure AD Connect 向导或 powershell 来完成（请参阅上面的“操作说明”部分）。如果此功能已启用，请尝试再次通过 UI 或 PowerShell 启用或禁用此功能。 如果这不起作用，请尝试完全卸载并重新安装 Azure AD Connect。 |
 | 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误，该错误指示存在服务问题。 <br ><br> 除此之外，在密码重置期间，可能会在本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 AD MA 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> **在授予此权限后，权限可能需要最多 1 小时来通过 DC 上的 sdprop 后台任务进行渗透。** <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将一直因为访问被拒绝而失败。 |
 | 尝试重置其密码的联合用户或密码哈希同步的用户在提交密码后看到了一个错误，该错误指示存在服务问题。 <br> <br> 除此之外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 AAD 连接器空间中的用户对象或者无法找到链接的 MV 或 AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 AAD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 AD CS 对象是 MV 对象的连接器。|
@@ -152,17 +150,21 @@ ms.lasthandoff: 08/29/2017
 | 33008| ADPasswordPolicyError| 当密码写回服务尝试在本地目录中设置的密码不符合域在密码期限、历史记录、复杂度或筛选方面的要求时，将发生此事件。 <br> <br> 如果使用最短密码期限，并且最近在此时间窗口内已更改过密码，将无法再次更改密码，直到它达到域中指定的期限。 对于测试目的，最短期限应设置为 0。 <br> <br> 如果启用了密码历史记录要求，则必须选择在最近 N 次未使用过的密码，其中 N 是密码历史记录设置。 如果选择了在最近 N 次中使用过的密码，则在此情况下会失败。 对于测试目的，历史记录应设置为 0。 <br> <br> 如果有密码复杂性要求，则当用户尝试更改或重置密码时会强制实施所有这些要求。 <br> <br> 如果启用密码筛选器，并且用户选择了不满足筛选条件的密码，则重置或更改操作会失败。|
 | 33009| ADConfigurationError| 此事件表示将密码写回到本地目录时由于 Active Directory 存在配置问题而出现问题。 有关发生了什么错误的详细信息，请检查 Azure AD Connect 计算机的应用程序事件日志以查找来自 ADSync 服务的消息。|
 
-
 ## <a name="troubleshoot-password-writeback-connectivity"></a>排查密码写回连接问题
 
 如果遇到 Azure AD Sync 密码写回组件的服务中断，可以使用以下快速步骤来解决此问题：
 
+* [确认网络连接](#confirm-network-connectivity)
 * [重新启动 Azure AD Sync 服务](#restart-the-azure-ad-connect-sync-service)
 * [禁用再重新启用密码写回功能](#disable-and-re-enable-the-password-writeback-feature)
 * [安装最新版本的 Azure AD Connect](#install-the-latest-azure-ad-connect-release)
 * [排查密码写回问题](#troubleshoot-password-writeback)
 
 通常，我们建议按照上述顺序执行这些步骤，从而以最快的方式恢复服务。
+
+### <a name="confirm-network-connectivity"></a>确认网络连接
+
+最常见的故障点是防火墙和/或代理端口以及空闲超时未正确配置。 有关详细信息，请查看 [Azure AD Connect 的先决条件](./connect/active-directory-aadconnect-prerequisites.md)一文中的连接先决条件。
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>重新启动 Azure AD Sync 服务
 
@@ -267,14 +269,14 @@ Azure AD Connect 需要 AD“重置密码”权限才能执行密码写回。 �
 
 以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理
-* [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
-* [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
-* [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
-* [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 始终要问的问题的答案
-
+* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+* [是否有许可问题？](active-directory-passwords-licensing.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
+* [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
+* [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

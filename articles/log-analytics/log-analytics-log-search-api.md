@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics 日志搜索 REST API | Microsoft Docs"
-description: "本指南提供的基本教程介绍了如何使用 Operations Management Suite (OMS) 中的 Log Analytics 搜索 REST API，并举例说明了如何使用这些命令。"
+description: "本指南提供的基本教程介绍了如何使用 Operations Management Suite (OMS) 中的 Log Analytics 搜索 REST API，提供的示例向你演示如何使用这些命令。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics 日志搜索 REST API
 本指南提供使用 Log Analytics 搜索 REST API 的基本教程，包括示例。 Log Analytics 是 Operations Management Suite (OMS) 的一部分。
@@ -44,7 +43,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 
 ## <a name="basic-log-analytics-search-rest-api-tutorial"></a>Log Analytics 搜索 REST API 基本教程
 ### <a name="to-use-armclient"></a>使用 ARMClient
-1. 安装 [Chocolatey](https://chocolatey.org/)，它是适用于 Windows 的开源软件包管理器。 以管理员身份打开命令提示符窗口，并运行以下命令：
+1. 安装 [Chocolatey](https://chocolatey.org/)，它是适用于 Windows 的开源软件包管理器。 以管理员身份打开命令提示符窗口，然后运行以下命令：
 
     ```
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
@@ -138,13 +137,13 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 
 | **属性** | **说明** |
 | --- | --- |
-| top |返回结果的最大数量。 |
+| top |要返回的最大结果数。 |
 | highlight |包含 pre 和 post 参数，通常用于突出显示匹配的字段 |
 | pre |将给定字符串作为前缀添加到匹配的字段。 |
 | post |将给定字符串追加到匹配的字段。 |
 | query |用于收集并返回结果的搜索查询。 |
-| start |结果查找操作的时间范围起点。 |
-| end |结果查找操作的时间范围终点。 |
+| start |要查找结果的开始时间窗口。 |
+| end |要查找结果的结束时间窗口。 |
 
 **响应：**
 
@@ -316,7 +315,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 以下信息介绍了可用的可选参数。
 
 ### <a name="highlighting"></a>Highlighting
-“Highlight”参数是一个可选参数，可以使用它请求搜索子系统在其响应中包含一组标记。
+“Highlight”参数是一个可选参数，可以使用它请求搜索子系统（会在其响应中包含一组标记）。
 
 这些标记指示突出显示的开始和结束文本，这些文本与搜索查询中提供的术语匹配。
 可以指定搜索用于包含突出显示的术语的开始和结束标记。
@@ -419,4 +418,3 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志搜索](log-analytics-log-searches.md)，使用自定义字段作为条件生成查询。
-

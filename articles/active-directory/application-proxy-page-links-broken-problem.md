@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 165536dcaa7a5db1c913121895634659d70d5c9c
-ms.openlocfilehash: e4b2556533fcb22556ca526d5815908fdefb0788
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 83c4261fab0498541591c01f9bb692b396c7b751
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>页面上的链接对应用程序代理应用程序不起作用
 
 本文可帮助诊断 Azure Active Directory 应用程序代理应用程序中的链接无法正常工作的原因。
@@ -34,7 +32,7 @@ ms.lasthandoff: 06/30/2017
 
 可通过三种方法来解决此问题。 按复杂性递增的顺序列出了以下选项。
 
-1.  请确保内部 URL 是包含应用程序所有相关链接的根 URL。 这将允许所有链接解析为同一应用程序内发布的内容。
+1.  请确保内部 URL 是包含应用程序所有相关链接的根 URL。 这会允许所有链接解析为同一应用程序内发布的内容。
 
     如果更改了内部 URL，但不想更改用户的登陆页面，则将主页 URL 更改为以前发布的内部 URL。 这可以通过转到“Azure Active Directory”-&gt;“应用注册”-&gt; 选择应用程序 -&gt;“属性”来实现。 在此属性选项卡上，会看到“主页 URL”字段，可将其调整为所需的登陆页面。
 
@@ -48,5 +46,4 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="next-steps"></a>后续步骤
 [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)
-
 

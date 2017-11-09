@@ -3,7 +3,7 @@ title: "Azure Application Insights 数据模型 | Microsoft Docs"
 description: "介绍在 JSON 中通过连续导出导出的、用作筛选器的属性。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 3084bb344976bc542e78a55a1c27c4dedc111af0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: 86aef6ba93224bbbb41bc7e651aaeec394fd8718
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](app-insights-overview.md) SDK 发送到门户的遥测属性。
@@ -351,4 +350,3 @@ ms.lasthandoff: 04/12/2017
 * [Application Insights](app-insights-overview.md)
 * [连续导出](app-insights-export-telemetry.md)
 * [代码示例](app-insights-export-telemetry.md#code-samples)
-

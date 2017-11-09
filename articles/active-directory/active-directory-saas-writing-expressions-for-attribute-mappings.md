@@ -11,15 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 10/17/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: d2d7f5b00039cd1beab009b78b273ec4dffaab47
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
-
+ms.openlocfilehash: 2811b4d57f69425ef119c88f80b32d24c6c32195
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -100,7 +98,7 @@ ms.lasthandoff: 04/06/2017
 ### <a name="not"></a>Not
 **函数：**<br> Not(source)
 
-**说明：**<br> 翻转 **source** 的布尔值。 如果 **source**  值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
+**说明：**<br> 翻转 **source** 的布尔值。 如果 **source** 值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
 
 **参数：**<br> 
 
@@ -139,7 +137,7 @@ ms.lasthandoff: 04/06/2017
 | **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 replacementPropertyName 时，才会从替换属性中提取此组的值作为 replacementValue。 |
 | **replacementValue** |可选 |String |用于替换旧值的新值。 |
 | **replacementAttributeName** |可选 |String |当源没有值时，用于替换值的属性名称。 |
-| **template** |可选 |String |当提供 **template** 值时，将在模板中查找 **oldValue** 并将其替换为源值。 |
+| **template** |可选 |String |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为源值。 |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -238,5 +236,4 @@ ms.lasthandoff: 04/06/2017
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
 * [帐户预配通知](active-directory-saas-account-provisioning-notifications.md)
 * [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
-
 

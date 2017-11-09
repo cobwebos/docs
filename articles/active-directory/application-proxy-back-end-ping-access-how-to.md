@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 72591111f417267c1daaf13a40a499da42a2c303
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: a9da67373465cebbdbecae5c8fb8bd0a0ee3c171
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>如何配置应用程序代理应用程序以使用 PingAccess
 
 我们与 PingAccess 合作，现在使你能够将应用程序代理的优势扩展到使用基于标头的身份验证的应用程序。 如果应用程序没有使用标头，请参阅[单一登录文档](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)，以了解其他选项的详细信息。
@@ -38,4 +36,3 @@ ms.lasthandoff: 04/18/2017
 4.  在 PingAccess 中配置应用程序
 
 有关这些步骤的详细信息，请参阅[基于标头的单一登录文档](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access)。
-

@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: e454c783242bd46f70f6dbe2e0768d61a9d2d504
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -75,7 +74,7 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 
 ## <a name="filtering-audit-logs"></a>筛选审核日志
 
-若要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选审核数据：
+要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选审核数据：
 
 - 日期范围
 - 发起者（参与者/执行组件）
@@ -122,13 +121,13 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 - 设备
 - 其他
 
-选择“组”作为“活动资源类型”时，你会获得一个额外的筛选器类别，因此还可以提供“源”：
+选择“组”作为“活动资源类型”时，会获得一个额外的筛选器类别，因此还可以提供“源”：
 
 - Azure AD
 - O365
 
 
-“活动”筛选器基于类别以及你所做的活动资源类型选择。 可以选择要查看的特定活动，也可以全选。 
+“活动”筛选器基于类别以及所做的活动资源类型选择。 可以选择要查看的特定活动，也可以全选。 
 
 若要获取所有审核活动的列表，可以使用图形 API（https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta，其中， $tenantdomain 为域名），也可以参阅[审核报告事件](active-directory-reporting-audit-events.md)一文。
 
@@ -186,5 +185,4 @@ Azure Active Directory 中的审核日志为符合性提供系统活动的记录
 ## <a name="next-steps"></a>后续步骤
 
 有关报告的概述，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。
-
 

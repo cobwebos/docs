@@ -14,14 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
+ms.openlocfilehash: 0f8c8e2c22310f6de9f5bedff79a87b887bc0fb1
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言架构
 
 工作流定义包含作为逻辑应用一部分执行的实际逻辑。 此定义包含一个或多个启动逻辑应用的触发器，以及逻辑应用要执行的一个或多个操作。  
@@ -169,7 +167,7 @@ ms.lasthandoff: 08/10/2017
 |表达式|计算|  
 |----------------|----------------|  
 |"@function('Hello')"|调用第一个参数为文本字符串 Hello 的定义的函数成员。|  
-|"@function('It's Cool!')"|调用第一个参数为文本字符串“It's Cool!”的定义的 函数成员|  
+|"@function('It''s Cool!')"|调用第一个参数为文本字符串“It's Cool!”的定义的 函数成员|  
 |"@function().prop1"|返回定义的 `myfunction` 成员的 prop1 属性值。|  
 |"@function('Hello').prop1"|调用第一个参数为文本字符串“Hello”的定义的函数成员，并返回对象的 prop1 属性。|  
 |"@function(parameters('Hello'))"|计算 Hello 参数并将值传递给函数|  
@@ -316,7 +314,7 @@ ms.lasthandoff: 08/10/2017
 |addseconds|将整数秒数添加到传入的字符串时间戳。 秒数可为正数或负数。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如：`2015-03-15T13:27:00Z` <p>`addseconds('2015-03-15T13:27:36Z', -36)` <p> **参数数目**：1 <p> **名称**：时间戳 <p> **说明**：必需。 包含时间的字符串。 <p> **参数数目**：2 <p> **名称**：秒 <p> **说明**：必需。 要添加的秒数。 可为负数（减去相应的秒数）。 <p> **参数数目**：3 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |addminutes|将整数分钟数添加到传入的字符串时间戳。 分钟数可为正数或负数。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如：`2015-03-15T14:00:36Z` <p>`addminutes('2015-03-15T13:27:36Z', 33)` <p> **参数数目**：1 <p> **名称**：时间戳 <p> **说明**：必需。 包含时间的字符串。 <p> **参数数目**：2 <p> **名称**：分钟 <p> **说明**：必需。 要添加的分钟数。 可为负数（减去相应的分钟数）。 <p> **参数数目**：3 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |addhours|将整数小时数添加到传入的字符串时间戳。 小时数可为正数或负数。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如：`2015-03-16T01:27:36Z` <p>`addhours('2015-03-15T13:27:36Z', 12)` <p> **参数数目**：1 <p> **名称**：时间戳 <p> **说明**：必需。 包含时间的字符串。 <p> **参数数目**：2 <p> **名称**：小时 <p> **说明**：必需。 要添加的小时数。 可为负数（减去相应的小时数）。 <p> **参数数目**：3 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
-|adddays|将整数天数添加到传入的字符串时间戳。 天数可为正数或负数。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如：`2015-02-23T13:27:36Z` <p>`addseconds('2015-03-15T13:27:36Z', -20)` <p> **参数数目**：1 <p> **名称**：时间戳 <p> **说明**：必需。 包含时间的字符串。 <p> **参数数目**：2 <p> **名称**：天 <p> **说明**：必需。 要添加的天数。 可为负数（减去相应的天数）。 <p> **参数数目**：3 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
+|adddays|将整数天数添加到传入的字符串时间戳。 天数可为正数或负数。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如：`2015-02-23T13:27:36Z` <p>`adddays('2015-03-15T13:27:36Z', -2)` <p> **参数数目**：1 <p> **名称**：时间戳 <p> **说明**：必需。 包含时间的字符串。 <p> **参数数目**：2 <p> **名称**：天 <p> **说明**：必需。 要添加的天数。 可为负数（减去相应的天数）。 <p> **参数数目**：3 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |formatDateTime|返回日期格式的字符串。 默认情况下，结果是采用 ISO 8601 格式 ("o") 的字符串，除非提供了格式说明符。 例如：`2015-02-23T13:27:36Z` <p>`formatDateTime('2015-03-15T13:27:36Z', 'o')` <p> **参数数目**：1 <p> **名称**：日期 <p> **说明**：必需。 包含日期的字符串。 <p> **参数数目**：2 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |startOfHour|返回传入的字符串时间戳的起始小时。 例如 `2017-03-15T13:00:00Z`：<br /><br /> `startOfHour('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。<br /><br />**参数数目**：2<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  
 |startOfDay|返回传入的字符串时间戳的起始日期。 例如 `2017-03-15T00:00:00Z`：<br /><br /> `startOfDay('2017-03-15T13:27:36Z')`<br /><br /> **参数数目**：1<br /><br /> **名称**：时间戳<br /><br /> **说明**：必需。 这是包含时间的字符串。<br /><br />**参数数目**：2<br /><br /> **名称**：格式<br /><br /> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。| 
@@ -338,4 +336,3 @@ ms.lasthandoff: 08/10/2017
 ## <a name="next-steps"></a>后续步骤
 
 [工作流操作和触发器](logic-apps-workflow-actions-triggers.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
+ms.openlocfilehash: de7aff6b31d937576da65498c5fcce2ae9abdbf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 0230ec0e4fc4ff7fe98a7c3e82f252bd8dd66d16
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>集成 Data Lake Store 和其他 Azure 服务
 Azure Data Lake Store 可和其他 Azure 服务结合使用来提供更多的方案。 下面的文章列出了可和 Data Lake Store 集成的服务。
@@ -41,7 +40,7 @@ Azure Data Lake Store 可和其他 Azure 服务结合使用来提供更多的方
 ## <a name="use-data-lake-store-with-azure-data-factory"></a>配合使用 Data Lake Store 和 Azure Data Factory
 可使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)从 Azure 表、Azure SQL 数据库、Azure SQL 数据仓库、Azure 存储 Blob 和本地数据库引入数据。 作为 Azure 生态系统的一类成员，Azure 数据工厂可用于协调从这些源到 Azure Data Lake Store 的数据引入。
 
-有关如何配合使用 Azure 数据工厂和 Data Lake Store 的说明，请参阅[使用数据工厂向/从 Data Lake Store 移动数据](../data-factory/data-factory-azure-datalake-connector.md)。
+有关如何配合使用 Azure 数据工厂和 Data Lake Store 的说明，请参阅[使用数据工厂向/从 Data Lake Store 移动数据](../data-factory/connector-azure-data-lake-store.md)。
 
 ## <a name="copy-data-from-azure-storage-blobs-into-data-lake-store"></a>从 Azure 存储 Blob 复制数据到 Data Lake Store
 Azure Data Lake Store 提供命令行工具 AdlCopy，可从 Azure 存储 Blob 复制数据到 Data Lake Store 帐户。 有关详细信息，请参阅[从 Azure 存储 Blob 复制数据到 Data Lake Store](data-lake-store-copy-data-azure-storage-blob.md)。
@@ -71,5 +70,4 @@ Azure Data Lake Store 提供命令行工具 AdlCopy，可从 Azure 存储 Blob �
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [通过门户实现 Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * [通过 PowerShell 实现 Data Lake Store 入门](data-lake-store-get-started-powershell.md)  
-
 

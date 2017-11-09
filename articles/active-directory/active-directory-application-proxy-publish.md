@@ -15,14 +15,12 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
 
 > [!div class="op_single_selector"]
@@ -97,12 +95,10 @@ Azure AD 应用程序代理可发布要通过 Internet 访问的本地应用程�
 要删除某个应用程序，请在列表中选择该应用程序，并单击“ **删除**”。
 
 ## <a name="next-steps"></a>后续步骤
-* 
-            [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
+* [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
 * [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
 * [启用条件性访问](active-directory-application-proxy-conditional-access.md)
 * [使用声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-
 

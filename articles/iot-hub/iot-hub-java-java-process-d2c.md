@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
+ms.openlocfilehash: 0fb3e9012ae88112515ebb552e49fa463a087f54
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>处理 IoT 中心设备到云的消息 (Java)
 
@@ -38,12 +37,12 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 > [!NOTE]
 > IoT 中心对许多设备平台和语言（包括 C、Java 和 JavaScript）提供 SDK 支持。 若要了解如何将本教程中的设备替换为物理设备，以及如何将设备连接到 IoT 中心，请参阅 [Azure IoT 开发人员中心]。
 
-若要完成本教程，您需要以下各项：
+要完成本教程，需要以下各项：
 
 * [IoT 中心入门]教程的完整工作版本。
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
-* 有效的 Azure 帐户。 （如果你没有帐户，只需花费几分钟就能创建一个 [免费帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
 应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
 
@@ -130,7 +129,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
     ![添加终结点][31]
 
-4. 现在单击 IoT 中心的“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的路由规则。 选择“DeviceTelemetry”作为数据源。 输入 `level="critical"` 作为条件，然后选择刚添加为自定义终结点的队列作为路由规则终结点。 完成后，单击底部的“**保存**”。
+4. 现在单击 IoT 中心的“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的路由规则。 选择“DeviceTelemetry”作为数据源。 输入 `level="critical"` 作为条件，并选择刚添加为自定义终结点的队列作为路由规则终结点。 完成后，单击底部的“**保存**”。
 
     ![添加路由][32]
 
@@ -211,4 +210,4 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 [lnk-c2d]: iot-hub-java-java-c2d.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
+[lnk-free-trial]: https://azure.microsoft.com/free/

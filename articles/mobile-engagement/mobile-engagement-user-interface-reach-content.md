@@ -14,15 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>如何管理不同类型的推送通知活动的独特内容
-你可以使用新的市场宣传活动的内容部分修改公告、投票、数据推送和磁贴（仅 Windows Phone）的内容。 推送活动的内容设置是与活动类型相关的。 
+可以使用新的市场宣传活动的内容部分修改公告、投票、数据推送和磁贴（仅 Windows Phone）的内容。 推送活动的内容设置是与活动类型相关的。 
 
 ### <a name="content-types"></a>内容类型：
 * 公告
@@ -42,8 +41,8 @@ ms.lasthandoff: 03/01/2017
 * [市场宣传 - 操作说明 - 公告][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>关于 Web 视图公告：
-你在此处提供的 HTML 代码或 JavaScript 代码中出现的“{deviceid}”模式都将由显示该公告的设备的标识符自动替换。 这是一种检索在你的后端办公系统上托管的外部 Web 服务中的 Azure Mobile Engagement 设备标识符的简单方式。
-如果你想要创建全屏 Web 视图（不带我们提供的默认操作按钮和退出按钮），则可以使用 Web 视图公告的 JavaScript 代码中的以下函数： 
+在此处提供的 HTML 代码或 JavaScript 代码中出现的“{deviceid}”模式都由显示该公告的设备的标识符自动替换。 这是一种检索在后端办公系统上托管的外部 Web 服务中的 Azure Mobile Engagement 设备标识符的简单方式。
+如果想要创建全屏 Web 视图（不带我们提供的默认操作按钮和退出按钮），则可以使用 Web 视图公告的 JavaScript 代码中的以下函数： 
 
 * 执行公告操作：ReachContent.actionContent()
 * 退出公告：ReachContent.exitContent()
@@ -51,8 +50,8 @@ ms.lasthandoff: 03/01/2017
 ### <a name="choose-your-action"></a>选择操作：
 ### <a name="about-action-urls"></a>关于操作 URL：
 可由目标设备的操作系统解释的任何 URL 都可用作操作 URL。
-你的应用程序可能支持的任何专用 URL（例如，让用户跳转到特定屏幕）也可用作操作 URL。
-出现的每个 {deviceid} 模式都将由执行该操作的设备的标识符自动替换。 这可用于通过在你的后端办公系统上托管的外部 Web 服务轻松地检索 Azure Mobile Engagement 设备标识符。
+应用程序可能支持的任何专用 URL（例如，让用户跳转到特定屏幕）也可用作操作 URL。
+出现的每个 {deviceid} 模式都由执行该操作的设备的标识符自动替换。 这可用于通过在后端办公系统上托管的外部 Web 服务轻松地检索 Azure Mobile Engagement 设备标识符。
 
 * **Android + iOS 操作**
   * 打开网页
@@ -108,7 +107,7 @@ ms.lasthandoff: 03/01/2017
 * 请参阅 <UI Documentation>的“设置”部分，了解有关生成将允许用户下载其他应用程序之一的跟踪 URL 的说明。
 
 ### <a name="define-the-texts-of-your-announcement"></a>定义公告的文本
-填写公告的标题、内容和按钮文本。 你可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动的反馈来确定访问群体。
+填写公告的标题、内容和按钮文本。 可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动的反馈来确定访问群体。
 
 ### <a name="see-also"></a>另请参阅
 * [UI 文档 - 市场宣传 - 新推送条件][Link 28]
@@ -116,8 +115,8 @@ ms.lasthandoff: 03/01/2017
 ## <a name="content-of-polls"></a>投票内容
 ![市场宣传内容 2][31] 
 
-填写公告的标题、说明和按钮文本。 然后，添加问题以及问题答案的选项。
-你可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。 也可以基于投票结果反馈（其中问题和答案选项用作条件）确定访问群体。
+填写公告的标题、说明和按钮文本。 然后，添加问题和问题的答案选项。
+可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。 也可以基于投票结果反馈（其中问题和答案选项用作条件）确定访问群体。
 
 ### <a name="see-also"></a>另请参阅
 * [UI 文档 - 市场宣传 - 新推送条件][Link 28]
@@ -131,9 +130,9 @@ ms.lasthandoff: 03/01/2017
 * Base64 数据
 
 ### <a name="define-the-content-of-your-data"></a>定义数据的内容
-* 如果选择推送文本数据，则将该文本复制并粘贴到“内容”框中。
-* 如果选择推送二进制数据或 base64 数据，则使用“上载文件”按钮上载文件。
-* 你可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。
+* 如果选择推送文本数据，请将该文本复制并粘贴到“内容”框中。
+* 如果选择推送二进制数据或 base64 数据，则使用“上传文件”按钮上传文件。
+* 可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。
 
 ### <a name="see-also"></a>另请参阅
 * [UI 文档 - 市场宣传 - 新推送条件][Link 28]
@@ -238,5 +237,4 @@ ms.lasthandoff: 03/01/2017
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
 

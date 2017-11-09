@@ -3,7 +3,7 @@ title: "在 Azure 存储中使用共享访问签名 (SAS) | Microsoft Docs"
 description: "了解使用共享访问签名 (SAS) 委派对 Azure 存储资源（包括 Blob、队列、表和文件）的访问权限。"
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: marsma
+ms.author: tamram
+ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 1c80229e2e5ec0c4ddf1f66099fa00ef145ec2ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS)
 
@@ -91,7 +90,7 @@ SAS 令牌是在客户端侧生成的字符串（请参阅 [SAS 示例](#sas-exa
 * **Signature.** 签名由指定为部分令牌的其他参数构造，并进行加密。 它用于对 SAS 进行身份验证。
 
 ### <a name="parameters-for-a-service-sas-token"></a>服务 SAS 令牌的参数
-* **Storage resource.** 可以使用服务 SAS 为其委派访问权限的存储资源包括：
+* **存储资源。** 可以使用服务 SAS 为其委派访问权限的存储资源包括：
   * 容器和 Blob
   * 文件共享和文件
   * 队列
@@ -99,7 +98,7 @@ SAS 令牌是在客户端侧生成的字符串（请参阅 [SAS 示例](#sas-exa
 
 ### <a name="parameters-for-an-account-sas-token"></a>帐户 SAS 令牌的参数
 * **Service or services.** 帐户 SAS 可委派对一个或多个存储服务的访问权限。 例如，可以创建一个帐户 SAS 以委派对 Blob 和文件服务的访问权限。 也可以创建一个 SAS 以委派对所有四种服务（Blob、队列、表和文件）的访问权限。
-* **Storage resource types.** 帐户 SAS 适用于一个或多个类别的存储资源，而不是特定资源。 可以创建帐户 SAS 以委派对以下项的访问权限：
+* **存储资源类型。** 帐户 SAS 适用于一个或多个类别的存储资源，而不是特定资源。 可以创建帐户 SAS 以委派对以下项的访问权限：
   * 服务级别 API，将针对存储帐户资源调用它。 示例包括**获取/设置服务属性**、**获取服务统计信息**和**列出容器/队列/表/共享**。
   * 容器级别 API，将针对每个服务的容器对象调用它：blob 容器、队列、表和文件共享。 示例包括**创建/删除容器**、**创建/删除队列**、**创建/删除表**、**创建/删除共享**和**列出 Blob/文件和目录**。
   * 对象级别 API，将针对 blob、队列消息、表实体和文件调用它。 例如，**放置 Blob**、**查询实体**、**获取消息**和**创建文件**。
@@ -427,7 +426,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 共享访问签名用于将存储帐户的受限权限提供给不应具有帐户密钥的客户端。 因此，它们是安全模型的重要环节，适合使用 Azure 存储的任何应用程序。 如果按照本文中介绍的最佳实践执行，则可以使用 SAS 更灵活地访问存储帐户中的资源，且不会影响应用程序的安全性。
 
 ## <a name="next-steps"></a>后续步骤
+* [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [管理对容器和 blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 * [Delegating Access with a Shared Access Signature](http://msdn.microsoft.com/library/azure/ee395415.aspx)（使用共享访问签名委托访问）
 * [介绍表和队列 SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
-

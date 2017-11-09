@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71c5a4f1b816fdcfe7ef267c20e6ed42e6cc51e6
-ms.openlocfilehash: 3c3fb275a7c980f71a3a30e6875b9515321bad99
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: 199f0906f73d693d7cd4b73c928f23ae83b99596
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>用于 .NET 2.9 的 Azure SDK 发行说明
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 03/01/2017
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 候选发布
 
-- 在 Visual Studio 2017 RC 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 进行 Azure 开发所需的全部工具将成为 Visual Studio 2017 RC 及后续版本的一部分。 对于 Visual Studio 2015 和 Visual Studio 2013，仍可通过 WebPI 获取 SDK。 Visual Studio 2017 作为最终产品发布时，将不再发布 Visual Studio 2013 的 用于 .NET 的 Azure SDK 版本。 通过此链接可下载 Visual Studio 2017 RC：https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- 在 Visual Studio 2017 RC 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 进行 Azure 开发所需的全部工具将成为 Visual Studio 2017 RC 及后续版本的一部分。 对于 Visual Studio 2015 和 Visual Studio 2013，仍可通过 WebPI 获取 SDK。 Visual Studio 2017 作为最终产品发布时，不再发布 Visual Studio 2013 的 用于 .NET 的 Azure SDK 版本。 通过此链接可下载 Visual Studio 2017 RC：https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
@@ -46,12 +45,12 @@ ms.lasthandoff: 03/01/2017
 
 #### <a name="known-issues"></a>已知问题
 
-- Azure .NET SDK 2.9.6 引入了一个限制，阻止用户使用不受支持的 .NET 框架（例如 .NET 4.6）将项目部署到任何 OS 系列 (< 5)。 [此处](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)通过了一个解决方法。
+- Azure .NET SDK 2.9.6 引入了一个限制，阻止用户使用不受支持的 .NET framework（例如 .NET 4.6）将项目部署到任何 < 5 的 OS 系列。 [此处](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)通过了一个解决方法。
 
  
 ### <a name="azure-in-role-cache"></a>Azure 角色中缓存 
 
-- 从 2016 年 11 月 30 日起，将不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
+- 从 2016 年 11 月 30 日起，不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
 
 ### <a name="azure-resource-manager-templates-for-azure-stack"></a>用于 Azure Stack 的 Azure Resource Manager 模板
 
@@ -78,7 +77,7 @@ ms.lasthandoff: 03/01/2017
 ## <a name="azure-data-lake-tools-for-visual-studio-2015-update-2"></a>Azure Data Lake Tools for Visual Studio 2015 Update 2
 此更新包含下列工具：
 
-* 用于 Visual Studio 的 **Azure Data Lake 工具**现已合并到用于 .NET 的 Azure SDK 版本中。 当你安装 Azure SDK 时，便会自动安装此工具。 
+* 用于 Visual Studio 的 **Azure Data Lake 工具**现已合并到用于 .NET 的 Azure SDK 版本中。 安装 Azure SDK 时，便会自动安装此工具。 
   
     此工具经常更新，请转到[此处](http://aka.ms/datalaketool)获取更新。
 * **服务器资源管理器**现在支持查看所有内容并创建一些 U-SQL 元数据实体。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/documentation/services/data-lake-analytics/)。
@@ -86,10 +85,9 @@ ms.lasthandoff: 03/01/2017
 ## <a name="hdinsight-tools"></a>HDInsight 工具
 用于 Visual Studio 的 **HDInsight 工具**现在支持 HDInsight 3.3 版，包括显示 Tez 图形和其他语言修复。
 
-## <a name="azure-resource-manager"></a>Azure 资源管理器
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 此版本添加了对 Resource Manager 模板的[密钥保管库](../azure-resource-manager/resource-manager-keyvault-parameter.md)支持。
 
 ## <a name="see-also"></a>另请参阅
 [Azure SDK 2.9 通告文章](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
-
 

@@ -1,7 +1,7 @@
 
 1. 使用[从 Azure CLI 1.0 连接到 Azure](../articles/xplat-cli-connect.md) 中列出的步骤登录到 Azure 订阅。
 
-2. 请确保你在经典部署模式下，如下所示：
+2. 请确保在经典部署模式下，如下所示：
 
     ```azurecli
     azure config mode asm

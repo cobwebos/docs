@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 9bfcb44ed19f167872b3cd9119e2dbdd35c82604
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教程：Azure Active Directory 与 xMatters OnDemand 集成
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 07/13/2017
 
     ![配置单一登录](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：   
+    a. 在“标识符”文本框中，使用以下模式键入 URL：   
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -120,7 +119,7 @@ ms.lasthandoff: 07/13/2017
     | `https://www.xmatters.com`|
     | `https://<companyname>.xmatters.com.au/`|
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -148,7 +147,7 @@ ms.lasthandoff: 07/13/2017
 
 7. 在其他 Web 浏览器窗口中，以管理员身份登录到 XMatters OnDemand 公司站点。
 
-8. 在顶部工具栏中，单击“管理员”，然后单击左侧导航栏中的“公司详细信息”。
+8. 在顶部工具栏中，单击“管理员”，并单击左侧导航栏中的“公司详细信息”。
    
     ![管理员](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "管理员")
 
@@ -156,9 +155,9 @@ ms.lasthandoff: 07/13/2017
    
     ![SAML 配置](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML 配置")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“启用 SAML”。
+    a. 选择“启用 SAML”。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“标识提供者 ID”文本框中。
+    b. 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“标识提供者 ID”文本框中。
    
     c. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“单一登录 URL”文本框。
    
@@ -195,7 +194,7 @@ ms.lasthandoff: 07/13/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -210,7 +209,7 @@ ms.lasthandoff: 07/13/2017
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
 1. 登录到 **XMatters OnDemand** 租户。
 
-2.  单击“用户”选项卡。 并单击“添加用户”。
+2.  单击“用户”选项卡，并单击“添加用户”。
   
     ![用户](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "用户")
 
@@ -218,9 +217,9 @@ ms.lasthandoff: 07/13/2017
    
     ![添加用户](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "添加用户")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“活动”。
+    a. 选择“活动”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“用户 ID”文本框中，键入用户的用户 ID（如 Brittasimon@contoso.com）。
+    b. 在“用户 ID”文本框中，键入用户的用户 ID（如 Brittasimon@contoso.com）。
    
     c. 在“名字”文本框中，键入用户的名字（如 Britta）。
 
@@ -238,7 +237,7 @@ ms.lasthandoff: 07/13/2017
 
 若要将 Britta Simon 分配到 xMatters OnDemand，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -285,5 +284,4 @@ ms.lasthandoff: 07/13/2017
 [201]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_203.png
-
 

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
+ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 05fb31007e1e4c2243f93169129ec5b2c93099e2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -88,7 +87,7 @@ Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记�
 有关通过 SAP 的 SAP NetWeaver 或 S/4HANA 应用程序层认证的 Azure VM 类型，请参阅 [SAP 说明 1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533/E)中的介绍。
 
 >[!Note]
->SAP-Linux-Azure 集成仅在 Azure Resource Manager 部署模型上受支持，在经典部署模型上不受支持。 
+>SAP-Linux-Azure 集成仅在 Azure 资源管理器部署模型上受支持，在经典部署模型上不受支持。 
 
 ## <a name="manual-installation-of-sap-hana"></a>手动安装 SAP HANA
 本指南介绍了在 Azure VM 上手动安装 SAP HANA 的两种不同方法：
@@ -104,7 +103,7 @@ Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记�
 本部分列出了当使用 SAP SWPM 执行分布式 SAP NetWeaver 7.5 安装时，手动安装单实例 SAP HANA 时的主要步骤。 本指南后面部分中的屏幕截图对各个步骤进行了更详细地说明。
 
 1. 创建包含两个测试 VM 的 Azure 虚拟网络。
-2. 按照 Azure Resource Manager 模型部署两个带有操作系统的 Azure VM（在本示例中为 SUSE Linux Enterprise Server (SLES) 和 SLES for SAP Applications 12 SP1）。
+2. 按照 Azure 资源管理器模型部署两个带有操作系统的 Azure VM（在本示例中为 SUSE Linux Enterprise Server (SLES) 和 SLES for SAP Applications 12 SP1）。
 3. 将两个 Azure 标准或高级存储磁盘（例如 75-GB 或 500-GB 磁盘）附加到应用程序服务器 VM。
 4. 将高级存储磁盘附加到 HANA DB 服务器 VM。 有关详细信息，请参阅本指南后面的“磁盘设置”部分。
 5. 根据大小或吞吐量需求，附加多个磁盘，然后使用逻辑卷管理或多设备管理工具 (MDADM) 在 VM 内的 OS 级别创建带区卷。
@@ -126,7 +125,7 @@ Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记�
 本部分列出了使用 SAP HDBLCM 执行分布式 SAP NetWeaver 7.5 安装时，手动安装单实例 SAP HANA 的主要步骤。 本指南中的屏幕截图对各个步骤进行了更详细的说明。
 
 1. 创建包含两个测试 VM 的 Azure 虚拟网络。
-2. 按照 Azure Resource Manager 模型部署两个带有操作系统的 Azure VM（在本示例中为 SLES 和 SLES for SAP Applications 12 SP1）。
+2. 按照 Azure 资源管理器模型部署两个带有操作系统的 Azure VM（在本示例中为 SLES 和 SLES for SAP Applications 12 SP1）。
 3. 将两个 Azure 标准或高级存储磁盘（例如 75-GB 或 500-GB 磁盘）附加到应用服务器 VM。
 4. 将高级存储磁盘附加到 HANA DB 服务器 VM。 有关详细信息，请参阅本指南后面的“磁盘设置”部分。
 5. 根据大小或吞吐量需求，附加多个磁盘，然后使用逻辑卷管理或多设备管理工具 (MDADM) 在 VM 内的 OS 级别创建带区卷。
@@ -201,7 +200,7 @@ Azure 上 Linux VM 中的根文件系统具有大小限制。 因此，有必要
 
 Azure 高级存储允许定义磁盘缓存模式。 对于保存 /hana/data 和 /hana/log 的条带化集，应禁用磁盘缓存。 对于其他卷（磁盘），缓存模式都应设置为“ReadOnly”。
 
-有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../../storage/common/storage-premium-storage.md)。
+有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../windows/premium-storage.md)。
 
 要查找用于创建 VM 的示例 JSON 模板，请转到 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 vm-simple-sles 模板是基本模板。 它包含具有额外 100-GB 数据磁盘的存储区。 此模板可以用作基类。 可将模板调整为特定配置。
@@ -454,5 +453,4 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 下载 HANA SP12 Platform Edition：
 
  ![用于下载 HANA SP12 Platform Edition 的 SAP 服务安装和升级窗口](./media/hana-get-started/image002.jpg)
-
 

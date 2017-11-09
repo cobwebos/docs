@@ -14,20 +14,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
 ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>升级到 Azure 搜索服务 REST API 版本 2016-09-01
-如果使用的是 [Azure 搜索服务 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 的版本 2015-02-28 或 2015-02-28-Preview，本文有助于你升级应用程序，以便使用接下来正式发布的 API 版本：2016-09-01。
+如果使用的是 [Azure 搜索服务 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 的版本 2015-02-28 或 2015-02-28-Preview，本文有助于升级应用程序，以便使用接下来正式发布的 API 版本：2016-09-01。
 
 REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 这些更改主要涉及向后兼容性，因此更改代码只需最小的工作量，具体取决于之前使用的是哪个版本。 请参阅[升级步骤](#UpgradeSteps)，获取有关如何更改代码以使用新 API 版本的说明。
 
 > [!NOTE]
-> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 你可以不使用最新版本，但是我们建议迁移你的代码，以便使用最新版本。
+> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 可以不使用最新版本，但是我们建议迁移代码，以便使用最新版本。
 
 <a name="WhatsNew"></a>
 
@@ -44,7 +43,7 @@ REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 �
 ## <a name="steps-to-upgrade"></a>升级步骤
 如果从版本 2015-02-28 升级，除了更改版本号，可能无需对代码进行任何其他更改。 仅对于以下情况，可能需要更改代码：
 
-* 当 API 响应中返回无法识别的属性时，代码失效。 默认情况下，你的应用程序应忽略无法理解的属性。
+* 当 API 响应中返回无法识别的属性时，代码失效。 默认情况下，应用程序应忽略无法理解的属性。
 * 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找[搜索 API 参考](https://msdn.microsoft.com/library/azure/dn798927.aspx#Anchor_1)中的 `@search.nextPageParameters`）。
 
 如果任一种情况适用，都可能需要更改相应代码。 否则，如果不是要开始使用版本 2016-09-01 的[新功能](#WhatsNew)，便无需进行任何更改。
@@ -65,8 +64,7 @@ REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 �
 ## <a name="conclusion"></a>结束语
 如果需要有关使用 Azure 搜索服务 REST API 的更多详细信息，请参阅 MSDN 上最近更新的 [API 参考](https://msdn.microsoft.com/library/azure/dn798935.aspx)。
 
-我们欢迎你对 Azure 搜索提出反馈。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)或 [StackOverflow](http://stackoverflow.com/) 向我们寻求帮助。 如果你要在 StackOverflow 上询问有关 Azure 搜索的问题，请确保使用 `azure-search` 标记问题。
+我们欢迎你对 Azure 搜索提出反馈。 如果遇到问题，请随时通过 [Azure 搜索 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)或 [StackOverflow](http://stackoverflow.com/) 向我们寻求帮助。 如果要在 StackOverflow 上询问有关 Azure 搜索的问题，请确保使用 `azure-search` 标记问题。
 
 感谢使用 Azure 搜索！
-
 

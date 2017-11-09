@@ -12,19 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
+ms.author: danha; mbullwin
+ms.openlocfilehash: 50161c71443a3cc0192ab2db771bb258058e233c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 28d32d1e2d82519fc7b2ad4edca8435c3759594f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="using-analytics-in-application-insights"></a>使用 Application Insights 中的 Analytics
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
-* **[针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
+* **[在模拟数据上体验 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
 
 ## <a name="open-analytics"></a>打开 Analytics
 在 Application Insights 上的应用主页资源中单击“Analytics”。
@@ -135,7 +134,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 ![Analytics Diagnostics](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>固定到仪表板
-可以将图表或表固定到某个[共享仪表板](app-insights-dashboards.md) - 单击“固定”即可。 （可能需要[升级应用的资费套餐](app-insights-pricing.md)才能启用此功能。） 
+可以将图表或表固定到某个[共享仪表板](app-insights-dashboards.md) - 单击“固定”即可。 
 
 ![单击“固定”](./media/app-insights-analytics-using/pin-01.png)
 
@@ -238,5 +237,4 @@ curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
 

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-ms.lasthandoff: 12/08/2016
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>计划程序的概念、术语和实体层次结构
 ## <a name="scheduler-entity-hierarchy"></a>计划程序实体层次结构
@@ -162,7 +161,7 @@ ms.lasthandoff: 12/08/2016
 如果某一作业具有在其 JSON 定义中指定的重复执行的对象，将重复执行该作业。 如果计数和结束时间均指定，则遵循首先发生的完成规则。
 
 ## <a name="state"></a>state
-作业的状态是以下四个值之一：enabled、disabled、completed 或 faulted。 你可以 PUT 或 PATCH 作业以便将它们更新到已启用或已禁用状态。 如果某一作业已完成或已出错，则该作业是不能更新的最终状态（尽管该作业仍可以是 DELETED）。 如下所示是状态属性的示例：
+作业的状态是以下四个值之一：enabled、disabled、completed 或 faulted。 可以 PUT 或 PATCH 作业以便将它们更新到已启用或已禁用状态。 如果某一作业已完成或已出错，则该作业是不能更新的最终状态（尽管该作业仍可以是 DELETED）。 如下所示是状态属性的示例：
 
         "state": "disabled", // enabled, disabled, completed, or faulted
 60 天后删除完成的作业和出错的作业。
@@ -173,11 +172,11 @@ ms.lasthandoff: 12/08/2016
 作业状态包含前一个执行的时间（如果有）、下一个计划执行的时间（对于正在进行中的作业）以及作业的执行计数。
 
 ## <a name="retrypolicy"></a>retryPolicy
-如果计划程序作业失败，可以指定重试策略来确定是否以及如何重试该操作。 由 **retryType** 对象确定 - 如果没有重试策略，则将其设为 **none**，如上所示。 如果有重试策略，请将其设为 **fixed** 。
+如果计划程序作业失败，可以指定重试策略来确定是否以及如何重试该操作。 由 **retryType** 对象确定 - 如果没有重试策略，则将其设为 **none**，如上所示。 如果有重试策略，请将其设为 **fixed**。
 
 若要设置重试策略，可指定两个附加设置：重试间隔 (**retryInterval**) 和重试次数 (**retryCount**)。
 
-重试间隔使用 **retryInterval** 对象指定，表示两次重试之间的时间间隔。 其默认值为 30 秒，最小可配置值为 15 秒，最大值为 18 个月。 空闲作业集合中的作业的最小可配置值为 1 小时。  它使用 ISO 8601 格式定义。 同样，重试次数的值使用 **retryCount** 对象指定；它是尝试重试的次数。 其默认值为 4，其最大值为 20\.**retryInterval** 和 **retryCount** 都是可选的。 如果 **retryType** 设为 **fixed** 并且未为它们显式指定任何值，则为它们赋予默认值。
+重试间隔使用 **retryInterval** 对象指定，表示两次重试之间的时间间隔。 其默认值为 30 秒，最小可配置值为 15 秒，最大值为 18 个月。 空闲作业集合中的作业的最小可配置值为 1 小时。  它使用 ISO 8601 格式定义。 同样，重试次数的值使用 **retryCount** 对象指定；它是尝试重试的次数。 其默认值为 4，其最大值为 20\。 retryInterval 和 retryCount 均为可选。 如果 **retryType** 设为 **fixed** 并且未为它们显式指定任何值，则为它们赋予默认值。
 
 ## <a name="see-also"></a>另请参阅
  [计划程序是什么？](scheduler-intro.md)
@@ -197,5 +196,4 @@ ms.lasthandoff: 12/08/2016
  [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
 
  [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
 

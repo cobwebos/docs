@@ -15,15 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 OpenFoam 和 Microsoft HPC Pack
-本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，将在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用 Marketplace 中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
+本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，会在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用 Marketplace 中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -42,7 +41,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
   **其他须知项**
   
   * 有关 Azure 中 Linux RDMA 网络的先决条件，请参阅[高性能计算 VM 大小](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-  * 如果你使用 Powershell 脚本部署选项，请将所有 Linux 计算节点部署在一个云服务中，以使用 RDMA 网络连接。
+  * 如果使用 Powershell 脚本部署选项，请将所有 Linux 计算节点部署在一个云服务中，以使用 RDMA 网络连接。
   * 部署 Linux 节点后，请通过 SSH 建立连接，执行其他任何管理任务。 可以在 Azure 门户中找到每个 Linux VM 的 SSH 连接详细信息。  
 * **Intel MPI** - 若要在 Azure 中的 SLES 12 HPC 计算节点上运行 OpenFOAM，需要从 [Intel.com 站点](https://software.intel.com/en-us/intel-mpi-library/)安装 Intel MPI Library 5 运行时。 （基于 CentOS 的 HPC 映像中已预装 Intel MPI 5）。在后面的步骤中，可以根据需要在 Linux 计算节点上安装 Intel MPI。 为此，向 Intel 注册后，请点击确认电子邮件中的链接转到相关网页。 然后，复制相应 Intel MPI 版本对应的 .tgz 文件的下载链接。 本文基于 Intel MPI 版本 5.0.3.048。
 * **OpenFOAM Source Pack** - 从 [OpenFOAM Foundation 站点](http://openfoam.org/download/2-3-1-source/)下载 Linux 版 OpenFOAM Source Pack 软件。 本文基于 2.3.1 版的 Source Pack（以 OpenFOAM-2.3.1.tgz 形式供用户下载）。 请按本文后面的说明，在 Linux 计算节点上对 OpenFOAM 进行解包和编译。
@@ -88,18 +87,18 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
    hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
    ```
    
-   此命令成功完成后，没有输出。 为你需要运行作业的用户帐户设置凭据后，请将 cred.xml 文件存储在安全位置，或者删除 cred.xml 文件。
-5. 如果你在一个 Linux 节点上生成 RSA 密钥对，请记住在使用完成后删除这些密钥。 如果找到现有的 id_rsa 文件或 id_rsa.pub 文件，HPC Pack 不会建立互信关系。
+   此命令成功完成后，没有输出。 为需要运行作业的用户帐户设置凭据后，请将 cred.xml 文件存储在安全位置，或者删除 cred.xml 文件。
+5. 如果在一个 Linux 节点上生成 RSA 密钥对，请记住在使用完成后删除这些密钥。 如果找到现有的 id_rsa 文件或 id_rsa.pub 文件，HPC Pack 不会建立互信关系。
 
 > [!IMPORTANT]
-> 我们不建议在共享群集上以群集管理员的身份运行 Linux 作业，因为由管理员提交的作业会在 Linux 节点的根帐户下运行。 但是，由非管理员用户提交的作业会在本地 Linux 用户帐户（名称与作业用户相同）下运行。 在这种情况下，HPC Pack 将在该作业分配到的所有节点中为这位 Linux 用户建立互信关系。 在运行作业之前，你可以在 Linux 节点上手动设置 Linux 用户，也可以在提交作业时由 HPC Pack 自动创建用户。 如果 HPC Pack 创建了一个用户，则作业完成后 HPC Pack 会删除此用户。 为了减少安全威胁，HPC Pack 将在完成作业后删除密钥。
+> 我们不建议在共享群集上以群集管理员的身份运行 Linux 作业，因为由管理员提交的作业会在 Linux 节点的根帐户下运行。 但是，由非管理员用户提交的作业会在本地 Linux 用户帐户（名称与作业用户相同）下运行。 在这种情况下，HPC Pack 会在该作业分配到的所有节点中为这位 Linux 用户建立互信关系。 在运行作业之前，可以在 Linux 节点上手动设置 Linux 用户，也可以在提交作业时由 HPC Pack 自动创建用户。 如果 HPC Pack 创建了一个用户，则作业完成后 HPC Pack 会删除此用户。 为了减少安全威胁，HPC Pack 会在完成作业后删除密钥。
 > 
 > 
 
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>为 Linux 节点设置文件共享
-现在，在头节点上对某个文件夹设置标准 SMB 共享。 若要允许 Linux 节点使用通用路径访问应用程序文件，请在 Linux 节点上装入共享文件夹。 你可以根据需要使用其他文件共享选项，例如 Azure 文件共享（建议用于多种方案）或 NFS 共享。 请参阅 [Get started with Linux compute nodes in an HPC Pack Cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）中的文件共享信息和详细步骤。
+现在，在头节点上对某个文件夹设置标准 SMB 共享。 若要允许 Linux 节点使用通用路径访问应用程序文件，请在 Linux 节点上装入共享文件夹。 可以根据需要使用其他文件共享选项，例如 Azure 文件共享（建议用于多种方案）或 NFS 共享。 请参阅 [Get started with Linux compute nodes in an HPC Pack Cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）中的文件共享信息和详细步骤。
 
-1. 在头节点上创建一个文件夹，然后通过设置读/写权限将其与所有人共享。 例如，在头节点上将 C:\OpenFOAM 共享为 \\\\SUSE12RDMA-HN\OpenFOAM。 在此处，*SUSE12RDMA-HN* 是头节点的主机名。
+1. 在头节点上创建一个文件夹，并通过设置读/写权限将其与所有人共享。 例如，在头节点上将 C:\OpenFOAM 共享为 \\\\SUSE12RDMA-HN\OpenFOAM。 在此处，*SUSE12RDMA-HN* 是头节点的主机名。
 2. 打开 Windows PowerShell 窗口并运行以下命令：
    
    ```
@@ -116,12 +115,12 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
 > 
 
 ## <a name="install-mpi-and-openfoam"></a>安装 MPI 和 OpenFOAM
-若要在 RDMA 网络上以 MPI 作业的形式运行 OpenFOAM，你需要使用 Intel MPI 库编译 OpenFOAM。 
+要在 RDMA 网络上以 MPI 作业的形式运行 OpenFOAM，需要使用 Intel MPI 库编译 OpenFOAM。 
 
 首先，运行多个 **clusrun** 命令，在 Linux 节点上安装 Intel MPI 库和 OpenFOAM（如果尚未安装）。 使用以前配置的头节点共享在 Linux 节点中共享安装文件。
 
 > [!IMPORTANT]
-> 这些安装和编译步骤均为示例。 需要对 Linux 系统管理有一定的了解，以确保正确安装相关的编译器和库。 你可能需要根据 Intel MPI 和 OpenFOAM 的版本修改某些环境变量或其他设置。 有关详细信息，请参阅适用于环境的 [Intel MPI Library for Linux Installation Guide](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)（Intel MPI Library for Linux 安装指南）和 [OpenFOAM Source Pack Installation](http://openfoam.org/download/2-3-1-source/)（OpenFOAM Source Pack 安装）。
+> 这些安装和编译步骤均为示例。 需要对 Linux 系统管理有一定的了解，以确保正确安装相关的编译器和库。 可能需要根据 Intel MPI 和 OpenFOAM 的版本修改某些环境变量或其他设置。 有关详细信息，请参阅适用于环境的 [Intel MPI Library for Linux Installation Guide](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)（Intel MPI Library for Linux 安装指南）和 [OpenFOAM Source Pack Installation](http://openfoam.org/download/2-3-1-source/)（OpenFOAM Source Pack 安装）。
 > 
 > 
 
@@ -137,10 +136,10 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
    
    clusrun /nodegroup:LinuxNodes tar -xzf /opt/intel/l_mpi_p_5.0.3.048.tgz -C /opt/intel/
    ```
-2. 若要以无提示方式安装 Intel MPI Library，请使用 silent.cfg 文件。 你可以在本文末尾的示例文件中找到一个示例。 将此文件放在共享文件夹 /openfoam 中。 有关 silent.cfg 文件的详细信息，请参阅 [Intel MPI Library for Linux Installation Guide - Silent Installation](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html#silentinstall)（Intel MPI Library for Linux 安装指南 - 无提示安装）。
+2. 若要以无提示方式安装 Intel MPI Library，请使用 silent.cfg 文件。 可以在本文末尾的示例文件中找到一个示例。 将此文件放在共享文件夹 /openfoam 中。 有关 silent.cfg 文件的详细信息，请参阅 [Intel MPI Library for Linux Installation Guide - Silent Installation](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html#silentinstall)（Intel MPI Library for Linux 安装指南 - 无提示安装）。
    
    > [!TIP]
-   > 请确保将你的 silent.cfg 文件另存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 此步骤可确保其在 Linux 节点上正常运行。
+   > 请确保将 silent.cfg 文件另存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 此步骤可确保其在 Linux 节点上正常运行。
    > 
    > 
 3. 在静默模式下安装 Intel MPI Library。
@@ -167,7 +166,7 @@ clusrun /nodegroup:LinuxNodes systemctl reboot
 ### <a name="compile-and-install-openfoam"></a>编译并安装 OpenFOAM
 将下载的 OpenFOAM Source Pack 安装包（在此示例中为 OpenFOAM-2.3.1.tgz）保存到头节点上的 C:\OpenFoam 中，使得 Linux 节点能够从 /openfoam 访问此文件。 然后，运行 **clusrun** 命令在所有 Linux 节点上编译 OpenFOAM。
 
-1. 在每个 Linux 节点上创建 /opt/OpenFOAM 文件夹，将源包复制到该文件夹中，然后解压缩。
+1. 在每个 Linux 节点上创建 /opt/OpenFOAM 文件夹，将源包复制到该文件夹中，并解压缩。
    
    ```
    clusrun /nodegroup:LinuxNodes mkdir -p /opt/OpenFOAM
@@ -176,8 +175,8 @@ clusrun /nodegroup:LinuxNodes systemctl reboot
    
    clusrun /nodegroup:LinuxNodes tar -xzf /opt/OpenFOAM/OpenFOAM-2.3.1.tgz -C /opt/OpenFOAM/
    ```
-2. 若要通过 Intel MPI Library 编译 OpenFOAM，请先针对 Intel MPI 和 OpenFOAM 设置某些环境变量。 使用名为 settings.sh 的 bash 脚本设置变量。 你可以在本文末尾的示例文件中找到一个示例。 将此文件（保存时带有 Linux 换行）置于共享文件夹 /openfoam 中。 此文件还包含可以随后用来运行 OpenFOAM 作业的 MPI 和 OpenFOAM 运行时设置。
-3. 安装编译 OpenFOAM 所需的相关程序包。 你可能需要添加存储库，具体取决于你的 Linux 分发。 运行类似于下面的 **clusrun** 命令：
+2. 若要通过 Intel MPI Library 编译 OpenFOAM，请先针对 Intel MPI 和 OpenFOAM 设置某些环境变量。 使用名为 settings.sh 的 bash 脚本设置变量。 可以在本文末尾的示例文件中找到一个示例。 将此文件（保存时带有 Linux 换行）置于共享文件夹 /openfoam 中。 此文件还包含可以随后用来运行 OpenFOAM 作业的 MPI 和 OpenFOAM 运行时设置。
+3. 安装编译 OpenFOAM 所需的相关程序包。 可能需要添加存储库，具体取决于 Linux 分发。 运行类似于下面的 **clusrun** 命令：
    
     ```
     clusrun /nodegroup:LinuxNodes zypper ar http://download.opensuse.org/distribution/13.2/repo/oss/suse/ opensuse
@@ -211,19 +210,19 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 使用以前配置的头节点共享在 Linux 节点中共享文件（装载为 /openfoam）。
 
 1. 通过 SSH 连接到 Linux 计算节点之一。
-2. 如果你尚未执行此操作，请运行以下命令以设置 OpenFOAM 运行时环境。
+2. 如果尚未执行此操作，请运行以下命令以设置 OpenFOAM 运行时环境。
    
    ```
    $ source /openfoam/settings.sh
    ```
-3. 将 sloshingTank3D 示例复制到共享文件夹，然后导航到该文件夹。
+3. 将 sloshingTank3D 示例复制到共享文件夹，并导航到该文件夹。
    
    ```
    $ cp -r $FOAM_TUTORIALS/multiphase/interDyMFoam/ras/sloshingTank3D /openfoam/
    
    $ cd /openfoam/sloshingTank3D
    ```
-4. 使用此示例的默认参数时，可能需要数十分钟或更长的运行时间，因此可能需要修改部分参数，使其运行速度加快。 一种简单的方法是修改 system/controlDict 文件中的时间步长变量 deltaT 和 writeInterval。 此文件存储与时间控制以及解决方案数据的读取和写入相关的所有输入数据。 例如，你可以将 deltaT 的值从 0.05 更改为 0.5，将 writeInterval 的值从 0.05 更改为 0.5。
+4. 使用此示例的默认参数时，可能需要数十分钟或更长的运行时间，因此可能需要修改部分参数，使其运行速度加快。 一种简单的方法是修改 system/controlDict 文件中的时间步长变量 deltaT 和 writeInterval。 此文件存储与时间控制以及解决方案数据的读取和写入相关的所有输入数据。 例如，可以将 deltaT 的值从 0.05 更改为 0.5，将 writeInterval 的值从 0.05 更改为 0.5。
    
    ![修改步骤变量][step_variables]
 5. 在 system/decomposeParDict 文件中指定变量的所需值。 此示例使用两个 Linux 节点，每个节点 8 个内核，因此可将 numberOfSubdomains 设置为 16，将 hierarchicalCoeffs 的 n 设置为 (1 1 16)，这表示使用 16 个流程并行运行 OpenFOAM。 有关详细信息，请参阅 [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)（OpenFOAM 用户指南：3.4 并行运行应用程序）。
@@ -242,7 +241,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    
    $ runApplication setFields  
    ```
-7. 在头节点上，你会看到示例数据文件已复制到 C:\OpenFoam\sloshingTank3D 中。 （C:\OpenFoam 是头节点上的共享文件夹。）
+7. 在头节点上，会看到示例数据文件已复制到 C:\OpenFoam\sloshingTank3D 中。 （C:\OpenFoam 是头节点上的共享文件夹。）
    
    ![头节点上的数据文件][data_files]
 
@@ -258,13 +257,13 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    ```
    
    > [!TIP]
-   > 你还可以在头节点的 C:\OpenFoam\hostfile 中创建此文件。 如果选择此选项，可以将脚本另存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 这可确保其在 Linux 节点上正常运行。
+   > 还可以在头节点的 C:\OpenFoam\hostfile 中创建此文件。 如果选择此选项，可以将脚本另存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。 这可确保其在 Linux 节点上正常运行。
    > 
    > 
    
    **Bash 脚本包装**
    
-   如果有多个 Linux 节点，并且希望作业仅在部分节点上运行，则最好不要使用固定的主机文件，因为不知道哪些节点会分配给作业。 在这种情况下，可为 **mpirun** 编写一个 bash 脚本包装，以便自动创建主机文件。 可以在本文末尾找到一个名为 hpcimpirun.sh 的示例 bash 脚本包装，请将它另存为 /openfoam/hpcimpirun.sh。 此示例脚本执行以下任务：
+   如果有多个 Linux 节点，并且希望作业仅在部分节点上运行，则最好不要使用固定的主机文件，因为不知道哪些节点会分配给作业。 在这种情况下，可为 **mpirun** 编写一个 bash 脚本包装，以便自动创建主机文件。 可以在本文末尾找到一个名为 hpcimpirun.sh 的示例 bash 脚本包装，请将它另存为 /openfoam/hpcimpirun.sh。此示例脚本执行以下任务：
    
    1. 设置 **mpirun** 的环境变量以及其他命令参数，通过 RDMA 网络运行 MPI 作业。 在本例中，将设置以下变量：
       
@@ -296,18 +295,18 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
       * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` - HPC Pack 头节点设置的环境变量，用于存储分配给此作业的内核的总数。 在本示例中，它指定 **mpirun** 的进程数。
 
 ## <a name="submit-an-openfoam-job"></a>提交 OpenFOAM 作业
-现在，你可以在 HPC 群集管理器中提交作业。 部分作业任务需要将脚本 hpcimpirun.sh 传递到命令行中。
+现在，可以在 HPC 群集管理器中提交作业。 部分作业任务需要将脚本 hpcimpirun.sh 传递到命令行中。
 
-1. 连接到你的群集头节点，然后启动 HPC 群集管理器。
+1. 连接到群集头节点，然后启动 HPC 群集管理器。
 2. 在“资源管理”中，确保 Linux 计算节点处于“联机”状态。 如果节点未处于联机状态，请选择它们并单击“联机”。
 3. 在“作业管理”中，单击“新作业”。
 4. 为作业输入一个名称，如 *sloshingTank3D*。
    
    ![作业详细信息][job_details]
-5. 在“作业资源”中，将资源类型选为“节点”，并将“最小数量”设置为 2。 在本示例中，此配置将在两个 Linux 节点（每个节点有八个核心）上运行该作业。
+5. 在“作业资源”中，将资源类型选为“节点”，并将“最小数量”设置为 2。 在本示例中，此配置会在两个 Linux 节点（每个节点有八个核心）上运行该作业。
    
    ![作业资源][job_resources]
-6. 在左侧导航栏中单击“编辑任务”，然后单击“添加”将任务添加到作业。 使用以下命令行和设置将四个任务添加到作业。
+6. 在左侧导航栏中单击“编辑任务”，并单击“添加”将任务添加到作业。 使用以下命令行和设置将四个任务添加到作业。
    
    > [!NOTE]
    > 运行 `source /openfoam/settings.sh` 将设置 OpenFOAM 和 MPI 运行时环境，因此下述每个任务会在调用 OpenFOAM 命令之前调用它。
@@ -333,7 +332,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
      * 为任务分配一个节点
      * **命令行** - `source /openfoam/settings.sh && reconstructPar > /openfoam/reconstructPar${CCP_JOBID}.log`
      * **工作目录** - /openfoam/sloshingTank3D
-   * **任务 4**。 并行运行 **foamToEnsight**，将 OpenFOAM 结果文件转换成 EnSight 格式，然后将 EnSight 文件置于示例目录的名为 Ensight 的目录中。
+   * **任务 4**。 并行运行 **foamToEnsight**，将 OpenFOAM 结果文件转换成 EnSight 格式，并将 EnSight 文件置于示例目录的名为 Ensight 的目录中。
      
      * 为任务分配两个节点
      * **命令行** - `source /openfoam/settings.sh && /openfoam/hpcimpirun.sh foamToEnsight -parallel > /openfoam/foamToEnsight${CCP_JOBID}.log`
@@ -343,11 +342,11 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    ![任务依赖项][task_dependencies]
 8. 单击“提交”运行此作业。
    
-   默认情况下，HPC Pack 将以当前登录的用户帐户提交作业。 单击“提交”后，可能会看到一个对话框，提示输入用户名和密码。
+   默认情况下，HPC Pack 以当前登录的用户帐户提交作业。 单击“提交”后，可能会看到一个对话框，提示输入用户名和密码。
    
    ![作业凭据][creds]
    
-   在某些情况下，HPC Pack 会记住以前输入的用户信息，并不会显示此对话框。 为了使 HPC Pack 再次显示此对话框，在命令提示符下输入以下命令，然后提交作业。
+   在某些情况下，HPC Pack 会记住以前输入的用户信息，并不会显示此对话框。 为了使 HPC Pack 再次显示此对话框，在命令提示符下输入以下命令，并提交作业。
    
    ```
    hpccred delcreds
@@ -370,14 +369,14 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
    可在查看器中看到一个罐。
    
    ![EnSight 中的罐][tank]
-3. 从 **internalMesh** 创建**等值面**，然后选择变量 **alpha_water**。
+3. 从 **internalMesh** 创建**等值面**，并选择变量 **alpha_water**。
    
    ![创建等值面][isosurface]
 4. 为前一步骤中创建的 **Isosurface_part** 设置颜色。 例如，将其设置为水蓝色。
    
    ![编辑等值面颜色][isosurface_color]
-5. 从“罐壁”创建“等值体”，方法是：在“部件”面板中选择“罐壁”，然后单击工具栏中的“等值面”按钮。
-6. 在对话框中，选择“等值体”作为“类型”，然后将“等值体范围”的最小值设置为 0.5。 若要创建等值体，请单击“使用所选部件创建”。
+5. 从“罐壁”创建“等值体”，方法是：在“部件”面板中选择“罐壁”，并单击工具栏中的“等值面”按钮。
+6. 在对话框中，选择“等值体”作为“类型”，并将“等值体范围”的最小值设置为 0.5。 若要创建等值体，请单击“使用所选部件创建”。
 7. 为前一步骤中创建的 **Iso_volume_part** 设置颜色。 例如，将其设置为深水蓝色。
 8. 设置“罐壁”的颜色。 例如，将其设置为透明的白色。
 9. 现在，请单击“播放”查看模拟结果。
@@ -603,4 +602,3 @@ exit ${RTNSTS}
 [isosurface]:media/hpcpack-cluster-openfoam/isosurface.png
 [isosurface_color]:media/hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]:media/hpcpack-cluster-openfoam/linux_processes.png
-

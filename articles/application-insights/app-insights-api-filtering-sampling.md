@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: bwren
+ms.author: borooji;mbullwin
+ms.openlocfilehash: 9261f44a0c0400a0a8d908b0ff72318c637771de
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 7704a7465941d317adfa83d8c6832de273eed39c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -350,4 +349,3 @@ public void Process(ITelemetry item)
 * [搜索事件和日志](app-insights-diagnostic-search.md)
 * [采样](app-insights-sampling.md)
 * [故障排除](app-insights-troubleshoot-faq.md)
-

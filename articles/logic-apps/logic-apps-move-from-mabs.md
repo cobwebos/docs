@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/21/2017
 ---
-
 # <a name="move-from-biztalk-services-to-logic-apps"></a>从 BizTalk 服务移动到逻辑应用
 
 Microsoft Azure BizTalk 服务 (MABS) 即将停用。 使用本主题将 MABS 集成解决方案移动到 Azure 逻辑应用。 
@@ -33,13 +31,13 @@ BizTalk 服务由两个子服务组成：
 1.  Microsoft BizTalk 服务混合连接
 2.  基于 EAI 和 EDI 网桥的集成
 
-如果打算移动混合连接，那么请参阅 [Azure App Service 混合连接](../app-service/app-service-hybrid-connections.md)，了解此服务的更改和功能。 Azure 混合连接将替换 BizTalk 服务混合连接。 Azure 混合连接可从 Azure App Service 获得，也可从 Azure 门户中获得。 Azure 混合连接还将提供新的混合连接管理器，管理现有 BizTalk 服务混合连接，以及门户中创建的新混合连接。 Azure App Service 混合连接已正式发布 (GA)。
+如果打算移动混合连接，那么请参阅 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)，了解此服务的更改和功能。 Azure 混合连接将替换 BizTalk 服务混合连接。 Azure 混合连接可从 Azure 应用服务获得，也可从 Azure 门户中获得。 Azure 混合连接还将提供新的混合连接管理器，管理现有 BizTalk 服务混合连接，以及门户中创建的新混合连接。 Azure 应用服务混合连接已正式发布 (GA)。
 
 为了实现基于 EAI 和 EDI 网桥的集成，将替换为逻辑应用。 逻辑应用提供与 BizTalk 服务相同的所有功能以及更多内容。 逻辑应用提供基于云规模消耗的工作流和业务流程功能，用户可以使用浏览器或 Visual Studio 中的工具，快速轻松地生成复杂的集成解决方案。
 
 下表提供了 BizTalk 服务功能到逻辑应用的映射。
 
-| BizTalk 服务   | Logic Apps            | 目的                  |
+| BizTalk 服务   | 逻辑应用            | 目的                  |
 | ------------------ | --------------------- | ---------------------------- |
 | 连接器          | 连接器             | 发送和接收数据   |
 | 网桥             | 逻辑应用             | 管道处理器           |
@@ -101,7 +99,7 @@ BizTalk 服务处理中的扩充阶段会向与接收的数据关联的消息上
 ### <a name="use-custom-code"></a>使用自定义代码
 BizTalk 服务能够[运行上传到程序集中的自定义代码](https://msdn.microsoft.com/library/azure/dn232389.aspx)。 这是通过 [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector.aspx) 接口实现的。 网桥中的每个阶段都包括两个属性（On Enter Inspector 和 On Exit Inspector），它们提供创建的 .Net 类型以实现此接口。 通过自定义代码可以对数据执行更复杂的处理，还可以重复使用程序集中执行常见业务逻辑的现有代码。 
 
-逻辑应用提供两种主要方式来执行自定义代码：Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure App Service 的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
+逻辑应用提供两种主要方式来执行自定义代码：Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure 应用服务的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
 
 如果程序集中有从 BizTalk 服务中调用的自定义代码，可以将此代码移到 Azure Functions，也可以使用 API 应用创建自定义 API；具体取决于要实现什么。 例如，如果代码包装了逻辑应用没有连接器的另一个服务，则请创建 API 应用，并使用 API 应用在逻辑应用中提供的操作。 如果有帮助程序函数或库，则 Azure Functions 很有可能是最合适的。
 
@@ -129,6 +127,5 @@ BizTalk 服务包括 EDI 和 B2B 处理，支持 AS2（适用性语句 2）、X1
 
 ## <a name="next"></a>下一步
 * [什么是逻辑应用](logic-apps-what-are-logic-apps.md)
-* [创建你的第一个逻辑应用](logic-apps-create-a-logic-app.md)，或者通过[预置模板](logic-apps-use-logic-app-templates.md)快速入门  
+* [创建你的第一个逻辑应用](logic-apps-create-a-logic-app.md)，或者通过[预置模板](logic-apps-create-logic-apps-from-templates.md)快速入门  
 * [查看所有可用的连接器](../connectors/apis-list.md)（可在逻辑应用中使用）
-

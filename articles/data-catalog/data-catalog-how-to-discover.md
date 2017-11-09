@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 1cefc0341789a4751d4e3ee687048ccd291559e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: 9ff67dcb5ecb00440f73f979fd8d2b79a570c674
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何发现 Azure 数据目录中的数据源
 ## <a name="introduction"></a>介绍
@@ -29,7 +28,7 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 ## <a name="searching-and-filtering"></a>搜索和筛选
 数据目录中的发现使用两个主要机制：搜索和筛选。
 
-搜索机制直截了当且功能强大。 默认情况下，将会根据目录中的任何属性（包括用户提供的批注）来匹配搜索词。
+搜索机制直截了当且功能强大。 默认情况下，会根据目录中的任何属性（包括用户提供的批注）来匹配搜索词。
 
 筛选是对搜索的补充。 用户可选择具体特征，例如专家、数据源类型、对象类型和标签。 仅可查看匹配的数据资产，将搜索结果限于匹配的资产。
 
@@ -67,4 +66,3 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关如何发现数据源的分步详细说明，请参阅 [Azure 数据目录入门](data-catalog-get-started.md)。
-

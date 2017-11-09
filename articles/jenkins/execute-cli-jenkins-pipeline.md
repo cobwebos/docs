@@ -15,15 +15,13 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: b93e787050613b241ea116e7263f63835bd211fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: a1f5329e4e33ae20541e2fdaa09f4609296bddd5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure App Service
+# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
 若要将 Java Web 应用部署到 Azure，可以通过 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)使用 Azure CLI。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
 
 > [!div class="checklist"]
@@ -62,7 +60,7 @@ sudo apt-get install -y maven
 
 ![添加凭据](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
-## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>创建 Azure App Service 以部署 Java Web 应用
+## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>创建 Azure 应用服务以部署 Java Web 应用
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
 
@@ -93,7 +91,7 @@ az appservice plan create \
 
 ### <a name="create-an-azure-web-app"></a>创建 Azure Web 应用
 
- 使用 [az webapp create](/cli/azure/appservice/web#create) CLI 命令，在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
+ 使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) CLI 命令，在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
 
 ```azurecli-interactive
 az webapp create \
@@ -224,7 +222,7 @@ Linux 上的 Web 应用支持用另一种方式执行部署，即，使用 Docke
     转到 http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>（将 &lt;x> 和 &lt;y> 替换为任意数字）获取 x 与 y 的和
     
 ## <a name="next-steps"></a>后续步骤
-在本教程中，配置了一个 Jenkins 管道，用于签出 GitHub 存储库中的源代码。 运行 Maven 以生成 war 文件，然后使用 Azure CLI 部署到 Azure App Service。 你已了解如何：
+在本教程中，配置了一个 Jenkins 管道，用于签出 GitHub 存储库中的源代码。 运行 Maven 以生成 war 文件，然后使用 Azure CLI 部署到 Azure 应用服务。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Jenkins VM
@@ -233,4 +231,3 @@ Linux 上的 Web 应用支持用另一种方式执行部署，即，使用 Docke
 > * 准备 GitHub 存储库
 > * 创建 Jenkins 管道
 > * 运行管道并验证 Web 应用
-

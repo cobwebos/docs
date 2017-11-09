@@ -1,74 +1,137 @@
 ---
-title: "创建私有 Docker 注册表 - Azure 门户 | Microsoft 文档"
-description: "开始使用 Azure 门户创建和管理私有 Docker 容器注册表"
+title: "快速入门 - 使用 Azure 门户在 Azure 中创建专用 Docker 注册表"
+description: "快速了解如何使用 Azure 门户创建专用 Docker 容器注册表。"
 services: container-registry
 documentationcenter: 
-author: stevelas
-manager: balans
-editor: dlepow
+author: mmacy
+manager: timlt
+editor: tysonn
 tags: 
 keywords: 
 ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1
 ms.service: container-registry
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
-ms.author: stevelas
-ms.custom: H1Hack27Feb2017
+ms.date: 10/31/2017
+ms.author: marsma
+ms.custom: 
+ms.openlocfilehash: 514fa3490e480647f0923c99bd9606a3726d4d30
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7fbbb56d775ee96c9a44363a4e41d4fc3c630582
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
+# <a name="create-a-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建容器注册表
 
-# <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建私有 Docker 容器注册表
-使用 Azure 门户创建容器注册表并管理其设置。 也可以使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md)、[Azure PowerShell](container-registry-get-started-powershell.md) 或者以编程方式使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 创建和管理容器注册表。
+Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 在本快速入门教程中，你会使用 Azure 门户创建容器注册表。
 
-有关背景和概念，请参阅[概述](container-registry-intro.md)。
+要完成本快速入门，必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
+
+## <a name="log-in-to-azure"></a>登录 Azure
+
+登录 Azure 门户 ( https://portal.azure.com )。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“+ 新建”。
-2. 在应用商店中搜索“Azure 容器注册表”。
-3. 选择发行商为“Microsoft”的“Azure 容器注册表”。
-    ![Azure 应用商店中的容器注册表服务](./media/container-registry-get-started-portal/container-registry-marketplace.png)
-4. 单击“创建” 。 此时会显示“Azure 容器注册表”边栏选项卡。
 
-    ![容器注册表设置](./media/container-registry-get-started-portal/container-registry-settings.png)
-5. 在“Azure 容器注册表”边栏选项卡中输入以下信息。 完成后，单击“创建”。
+选择“新建” > “容器” > “Azure 容器注册表”。
 
-    a. **注册表名称**：特定注册表的全局唯一顶级域名。 在本示例中，注册表名称为 *myRegistry01*，但需要将它替换成自己的唯一名称。 该名称只能包含字母和数字。
+![在 Azure 门户中创建容器注册表][qs-portal-01]
 
-    b. **资源组**：选择现有的[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。
+在“注册表名称”和“资源组”中输入值。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 创建名为 `myResourceGroup` 的新资源组，对于 SKU 选择“Basic”。 选择“创建”，部署 ACR 实例。
 
-    c. **位置**：选择[提供](https://azure.microsoft.com/regions/services/)该服务的 Azure 数据中心位置，例如“美国中南部”。
+![在 Azure 门户中创建容器注册表][qs-portal-03]
 
-    d.单击“下一步”。 **管理员用户**：如果需要，请启用一个管理员用户来访问注册表。 创建注册表后可以更改此设置。
+在本快速入门中，我们将创建基本注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的扩展详细信息，请参阅[容器注册表 SKU](container-registry-skus.md)。
 
-      > [!IMPORTANT]
-      > 除了通过管理员用户帐户提供访问权限以外，容器注册表还基于 Azure Active Directory 服务主体的身份验证。 有关详细信息和注意事项，请参阅 [Authenticate with a container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
-      >
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **存储帐户**：使用默认设置来创建[存储帐户](../storage/common/storage-introduction.md)，或选择位于同一位置的现有存储帐户。 当前不支持高级存储。
+显示“部署成功”消息时，请在门户中选择容器注册表，然后选择“访问密钥”。
 
-## <a name="manage-registry-settings"></a>管理注册表设置
-创建注册表后，请在门户中的“容器注册表”在边栏选项卡上查找注册表设置。 例如，可能需要指定设置来登录注册表，或者需要启用或禁用管理员用户。
+![在 Azure 门户中创建容器注册表][qs-portal-05]
 
-1. 在“容器注册表”边栏选项卡上，单击相应注册表的名称。
+在“管理员用户”下，选择“启用”。 记录以下值：
 
-    ![容器注册表边栏选项卡](./media/container-registry-get-started-portal/container-registry-blade.png)
-2. 若要管理访问权限设置，请单击“访问密钥”。
+* 登录服务器
+* 用户名
+* password
 
-    ![容器注册表访问权限](./media/container-registry-get-started-portal/container-registry-access.png)
-3. 请注意以下设置：
+使用 Docker CLI 处理注册表时，可在以下步骤中使用这些值。
 
-   * **登录服务器** - 用于登录注册表的完全限定名称。 在此示例中，它是 `myregistry01.azurecr.io`。
-   * **管理员用户** - 启用或禁用注册表的管理员用户帐户。
-   * **用户名**和**密码** - 可用于登录注册表的管理员用户帐户（如果已启用）的凭据。 可以根据需要重新生成密码。 将生成两个密码，这样就可以在重新生成某个密码的时候，使用另一个密码来连接到注册表。 若要改用服务主体进行身份验证，请参阅[使用私有 Docker 容器注册表进行身份验证](container-registry-authentication.md)。
+![在 Azure 门户中创建容器注册表][qs-portal-06]
+
+## <a name="log-in-to-acr"></a>登录到 ACR
+
+在推送和拉取容器映像之前，必须登录到 ACR 实例。 请使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令完成此操作。 使用在上一步中记录的值替换用户名、密码和登录服务器。
+
+```bash
+docker login --username <username> --password <password> <login server>
+```
+
+该命令在完成后返回 `Login Succeeded`。 可能会看见建议使用 `--password-stdin` 参数的安全警告。 虽然本文中未介绍它的用法，但我们建议按照此最佳做法进行操作。 更多详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
+
+## <a name="push-image-to-acr"></a>将映像推送到 ACR
+
+要将映像推送到 Azure 容器注册表中，首先必须具有一个映像。 如果需要，请运行以下命令，从 Docker 中心拉取现有映像。
+
+```bash
+docker pull microsoft/aci-helloworld
+```
+
+将映像推送到注册表之前，必须使用 ACR 登录服务器名称标记映像。 使用 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) 命令标记映像。 使用之前记录的登录服务器名称替换登录服务器。
+
+```
+docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+```
+
+最后，使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将映像推送到 ACR 实例。 使用 ACR 实例的登录服务器名称替换登录服务器。
+
+```
+docker push <login server>/aci-helloworld:v1
+```
+
+成功的 `docker push` 命令的输出类似于：
+
+```
+The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
+7c701b1aeecd: Pushed
+c4332f071aa2: Pushed
+0607e25cc175: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+```
+
+## <a name="list-container-images"></a>列出容器映像
+
+要列出 ACR 实例中的映像，请在门户中导航到注册表并选择“存储库”，然后选择使用 `docker push` 创建的存储库。
+
+在本示例中，我们选择 aci-helloworld 存储库，并可在“标记”下看到 `v1` 标记的映像。
+
+![在 Azure 门户中创建容器注册表][qs-portal-09]
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，删除 myResourceGroup 资源组。 此操作会删除资源组、ACR 实例和所有容器映像。
+
+![在 Azure 门户中创建容器注册表][qs-portal-08]
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
 
+在本快速入门教程中，你已使用 Azure CLI 创建 Azure 容器注册表。 如果要对 Azure 容器实例使用 Azure 容器注册表，请继续学习 Azure 容器实例教程。
+
+> [!div class="nextstepaction"]
+> [Azure 容器实例教程](../container-instances/container-instances-tutorial-prepare-app.md)
+
+<!-- IMAGES -->
+[qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png
+[qs-portal-02]: ./media/container-registry-get-started-portal/qs-portal-02.png
+[qs-portal-03]: ./media/container-registry-get-started-portal/qs-portal-03.png
+[qs-portal-04]: ./media/container-registry-get-started-portal/qs-portal-04.png
+[qs-portal-05]: ./media/container-registry-get-started-portal/qs-portal-05.png
+[qs-portal-06]: ./media/container-registry-get-started-portal/qs-portal-06.png
+[qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
+[qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
+[qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png

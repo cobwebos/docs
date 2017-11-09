@@ -3,7 +3,7 @@ title: "了解 Azure AD 应用程序代理连接器 | Microsoft 文档"
 description: "介绍有关 Azure AD 应用程序代理连接器的基础知识。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -11,23 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
-ms.author: kgremban
+ms.date: 10/12/2017
+ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 9dce8c3132b60b0b0c44f9f9d1e9cf01f68fa280
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c18d0a2bff654573e6e28a7cd7fad853b3a11346
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
-
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
 连接器使 Azure AD 应用程序代理成为可能。 连接器的形式简单、易于部署和维护，且功能超强。 本文介绍连接器的概念及其工作原理，以及有关如何优化部署的建议。 
 
-## <a name="what-is-an-application-proxy-connector"></a>什么是应用程序代理连接器
+## <a name="what-is-an-application-proxy-connector"></a>什么是应用程序代理连接器？
 
 连接器是位于本地的轻型代理，能够帮助与应用程序代理服务建立出站连接。 必须将连接器安装在能够访问后端应用程序的 Windows Server 上。 可将连接器组织成连接器组，每个组处理发往特定应用程序的流量。 连接器可自动均衡负载，并有助于优化网络结构。 
 
@@ -70,6 +68,21 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](active-directory-application-proxy-connectors-azure-portal.md)。
 
+## <a name="capacity-planning"></a>容量规划 
+
+虽然连接器会自动在连接器组内进行负载均衡，但是确保在连接器之间规划足够的容量来处理预期的流量也非常重要。 通常，用户越多，需要的计算机越大。 下表概述了不同计算机可以处理的数据量。 请注意，它们全都基于预期的每秒事务数 (TPS) 而非按用户计算的，因为使用模式会变化，无法用来预测负载。  另请注意，根据响应大小和后端应用程序响应时间，会有一些差异 - 较大的响应大小和较慢的响应时间将产生较低的最大 TPS。
+
+|核心数|RAM|预期的延迟 (MS)-P99|最大 TPS|
+| ----- | ----- | ----- | ----- |
+|#N/A|8|325|586|
+|4|16|320|1150|
+|8|32|270|1190|
+|16|64|245|1200*|
+\* 此计算机的连接限制为 800。 对于所有其他计算机，我们使用了默认的 200 连接限制。
+ 
+>[!NOTE]
+>在 4 核心、8 核心和 16 核心计算机之间，最大 TPS 没有多大区别。 主要区别体现在预期的延迟。  
+
 ## <a name="security-and-networking"></a>安全和网络
 
 可将连接器安装在网络中允许连接器向应用程序代理服务发送请求的任意位置。 重要的是，运行连接器的计算机还有权访问应用。 可将连接器安装在企业网络内部，或云中运行的虚拟机上。 连接器可在外围安全区域 (DMZ) 中运行，但不一定要这样做，因为所有流量都是出站的，网络始终是安全的。
@@ -88,7 +101,9 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 连接器性能受 CPU 和网络的约束。 SSL 加密和解密依赖于 CPU 性能，而网络性能对于快速连接到应用程序和 Azure 中的联机服务非常重要。
 
-相比之下，内存对于连接器来说不是一个很大的问题。 联机服务会处理大部分处理负载，以及所有未经身份验证的流量。 可在云中完成的所有任务将在云中完成。 
+相比之下，内存对于连接器来说不是一个很大的问题。 联机服务会处理大部分处理负载，以及所有未经身份验证的流量。 可在云中完成的所有任务会在云中完成。 
+
+将在给定连接器组的连接器之间进行负载均衡。 我们执行轮循机制的变体来确定组中的哪个连接器为特定请求提供服务。 在选择连接器后，我们在会话持续时间内将维护用户与应用程序之间的会话相关性。 如果连接器或计算机因任何原因而变得不可用，则流量将开始转到该组中的另一个连接器。 此复原也是我们建议使用多个连接器的原因。
 
 影响性能的另一个因素是连接器之间的网络质量，包括： 
 
@@ -138,7 +153,7 @@ Register-AppProxyConnector
 
 连接器提供管理日志和会话日志。 管理日志包括关键事件及其错误。 会话日志包括所有事务及其处理详细信息。 
 
-若要查看日志，请转到事件查看器，打开“视图”菜单，然后启用“显示分析和调试日志”。 然后，启用这些日志以开始收集事件。 这些日志不会显示在 Windows Server 2012 R2 上的 Web 应用程序代理中，因为连接器基于更新的版本。
+要查看日志，请转到事件查看器，打开“视图”菜单，并启用“显示分析和调试日志”。 然后，启用这些日志以开始收集事件。 这些日志不会显示在 Windows Server 2012 R2 上的 Web 应用程序代理中，因为连接器基于更新的版本。
 
 可在“服务”窗口中检查服务的状态。 连接器包含两个 Windows 服务：实际的连接器和更新程序。 二者都必须一直运行。
 
@@ -151,5 +166,4 @@ Register-AppProxyConnector
 * [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)
 * [对应用程序代理和连接器错误进行故障排除](active-directory-application-proxy-troubleshoot.md)
 * [如何以无提示方式安装 Azure AD 应用程序代理连接器](active-directory-application-proxy-silent-installation.md)
-
 

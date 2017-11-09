@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
+ms.openlocfilehash: 283cae7031fd275fc1f355e25f01206d143756fe
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 64aff391b4fc358fac8622d4448bbb981e330e33
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>使用 Sysdig 监视 Azure 容器服务 Kubernetes 群集
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 ## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
@@ -79,7 +79,7 @@ $ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/a
 $ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
-然后编辑该文件，插入从 Sysdig 帐户中获取的访问密钥。
+然后编辑该文件，插入从 Sysdig 帐户获取的访问密钥。
 
 最后创建 DaemonSet：
 
@@ -91,4 +91,3 @@ $ kubectl create -f sysdig-daemonset.yaml
 代理安装完毕并开始运行后，应该将数据发送回 Sysdig。  返回到 [sysdig 仪表板](https://app.sysdigcloud.com)应该可以看到有关容器的信息。
 
 还可以通过[新仪表板向导](https://app.sysdigcloud.com/#/dashboards/new)安 Kubernetes 特定的仪表板。
-

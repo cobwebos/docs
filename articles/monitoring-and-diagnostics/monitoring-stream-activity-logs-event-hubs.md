@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/06/2017
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 51a7a274c0cdbec169154bd1100abb4534283cff
-ms.openlocfilehash: ac478dc5c6691ef9f6c4829bd47a81912774d032
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/10/2016
-
+ms.openlocfilehash: 88c5701279f370914fac68872d67b02a7571748a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 可以将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在日志配置文件中启用服务总线规则 ID。
@@ -80,5 +79,4 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 * [将活动日志存档到存储帐户](monitoring-archive-activity-log.md)
 * [阅读 Azure 活动日志概述](monitoring-overview-activity-logs.md)
 * [根据活动日志事件设置警报](insights-auditlog-to-webhook-email.md)
-
 

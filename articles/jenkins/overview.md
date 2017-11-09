@@ -11,17 +11,15 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
+ms.openlocfilehash: daa202ddf0dc934c491ead3951ddc4fdc3dd819c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 720d4c592256389f9494cb1b2be56393f4e9f03f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-and-jenkins"></a>Azure 和 Jenkins
 
-[Jenkins](https://jenkins.io/) 是一个受欢迎的开源自动化服务器，用于设置软件项目的持续集成和交付 (CI/CD)。 可以使用 Azure 资源来托管 Jenkins 部署 Azure 或扩展现有的 Jenkins 配置。 此外，Jenkins 插件还可用来简化应用程序在 Azure 中的 CI/CD 过程。
+[Jenkins](https://jenkins.io/) 是一个受欢迎的开源自动化服务器，用于设置软件项目的持续集成和交付 (CI/CD)。 可以使用 Azure 资源在 Azure 中托管 Jenkins 部署或扩展现有的 Jenkins 配置。 此外，Jenkins 插件还可用来简化应用程序在 Azure 中的 CI/CD 过程。
 
 本文将介绍如何将 Azure 用于 Jenkins，详细说明可供 Jenkins 用户使用的核心 Azure 功能。 若要在 Azure 中开始使用你自己的 Jenkins 服务器，请参阅我们的[快速入门](install-jenkins-solution-template.md)。
 
@@ -46,11 +44,10 @@ ms.lasthandoff: 09/20/2017
 
 ## <a name="deploy-your-code-into-azure-services"></a>将代码部署到 Azure 服务
 
-使用 Jenkins 插件将应用程序作为 Jenkins CI/CD 管道的一部分部署到 Azure。 通过部署到 [Azure 应用服务](/azure/app-service-web/)和 [Azure 容器服务](/azure/container-service/kubernetes/)，可以暂存和测试更新，并将其发布到应用程序，而无需管理基础结构。
+使用 Jenkins 插件将应用程序作为 Jenkins CI/CD 管道的一部分部署到 Azure。 通过部署到 [Azure 应用服务](/azure/app-service/)和 [Azure 容器服务](/azure/container-service/kubernetes/)，可以暂存和测试更新，并将其发布到应用程序，而无需管理基础结构。
 
  插件可用于部署到以下服务和环境：
 
-- [Linux 上的 Azure Web 应用](/azure/app-service-web/app-service-linux-intro)。 请参阅[教程](java-deploy-webapp-tutorial.md)以开始使用。
+- [Linux 上的 Azure Web 应用](/azure/app-service/containers/app-service-linux-intro)。 请参阅[教程](java-deploy-webapp-tutorial.md)以开始使用。
 - [Azure Web 应用](/azure/app-service/app-service-web-overview)。 请参阅[操作指南](deploy-Jenkins-app-service-plugin.md)以开始使用。
-
 

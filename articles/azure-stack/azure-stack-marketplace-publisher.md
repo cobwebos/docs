@@ -1,6 +1,6 @@
 ---
-title: Use the Marketplace toolkit to create and publish marketplace items | Microsoft Docs
-description: Learn how to quickly create marketplace items with the publishing Toolkit
+title: "使用应用商店工具包来创建和发布的应用商店项 |Microsoft 文档"
+description: "了解如何使用发布工具包快速创建应用商店项"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -14,87 +14,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-#  <a name="add-marketplace-items-using-publishing-tool"></a>Add marketplace items using publishing tool
-Adding your content to the [Azure Stack Marketplace](azure-stack-marketplace.md) makes your solutions available to you and your tenants for deployment.  The Marketplace Toolkit creates Azure Marketplace Packages (.azpkg) files based on your IaaS Azure Resource Manager templates or VM Extensions.  You can also use the Marketplace Toolkit to publish .azpkg files, either created with the tool or using [manual](azure-stack-create-and-publish-marketplace-item.md) steps.  This topic guides you through downloading the tool, creating a marketplace item based on a VM template, and then publishing that item to the Azure Stack Marketplace.     
-
-
-## <a name="prerequisites"></a>Prerequisites
- - You must run the toolkit on the Azure Stack host or have [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) connectivity from the machine where you run the tool.
-
- - Download the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) and extract.
-
- - Download the [Azure Gallery Packaging tool](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
-
- - Publishing to the marketplace requires icons and a thumbnail file.  You can use your own, or save the [sample](azure-stack-marketplace-publisher.md#support-files) files locally for this example.
-
-## <a name="download-the-tool"></a>Download the tool
-The Marketplace Toolkit can be [downloaded from the Azure Stack Tools repo](azure-stack-powershell-download.md).
+#  <a name="add-marketplace-items-using-publishing-tool"></a>添加使用发布工具的应用商店项
+你将内容添加到[Azure 堆栈应用商店](azure-stack-marketplace.md)使你的解决方案可供您和您的租户以进行部署。  应用商店工具包创建基于 IaaS Azure 资源管理器模板或 VM 扩展的 Azure 应用商店包 (.azpkg) 文件。  你还可以使用应用商店工具包发布.azpkg 文件，使用该工具创建或使用[手动](azure-stack-create-and-publish-marketplace-item.md)步骤。  本主题将指导您完成下载该工具、 创建基于 VM 模板中，应用商店项和再将该项目发布到 Azure 堆栈应用商店。     
 
 
-##  <a name="create-marketplace-items"></a>Create marketplace items
-In this section, you use the Marketplace Toolkit to create a marketplace item package in .azpkg format.  
+## <a name="prerequisites"></a>必备组件
+ - 你必须在 Azure 堆栈主机上运行该工具包或具有[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)从运行该工具的计算机的连接。
 
-### <a name="provide-marketplace-information-with-wizard"></a>Provide marketplace information with wizard
-1. Run the Marketplace Toolkit from a PowerShell session:
+ - 下载[Azure 堆栈快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip)和提取。
+
+ - 下载[Azure 库打包工具](http://aka.ms/azurestackmarketplaceitem)(AzureGalleryPackage.exe)。 
+
+ - 发布到应用商店要求图标和缩略图文件。  您可以使用你自己，或保存[示例](azure-stack-marketplace-publisher.md#support-files)本地为此示例中的文件。
+
+## <a name="download-the-tool"></a>下载工具
+应用商店工具包可以是[从 Azure 堆栈 Tools 存储库下载](azure-stack-powershell-download.md)。
+
+
+##  <a name="create-marketplace-items"></a>创建应用商店项
+在此部分中，你可以使用应用商店工具包以.azpkg 格式创建应用商店项包。  
+
+### <a name="provide-marketplace-information-with-wizard"></a>提供使用向导的应用商店信息
+1. 从 PowerShell 会话中运行应用商店工具包：
 ```PowerShell
     .\MarketplaceToolkit.ps1
 ```
 
-2. Click the **Solution** tab.  This screen accepts information about your marketplace item. Enter information about your item as you want it to appear in the marketplace.  You can also specify a [parameters file](azure-stack-marketplace-publisher.md#use-a-parameters-file) to prepopulate the form.  
+2. 单击**解决方案**选项卡。此屏幕接受你的应用商店项目的信息。 如您希望其出现在应用商店，请输入你的项目的信息。  你还可以指定[参数文件](azure-stack-marketplace-publisher.md#use-a-parameters-file)用于预先填充窗体。  
     
-    ![screenshot of Marketplace Toolkit first screen](./media/azure-stack-marketplace-publisher/image7.png)
-3. Click **Browse** and select an image file for each icon and screenshot field.  You can use your own icons, or the sample icons in the [support files](azure-stack-marketplace-publisher.md#support-files) section.
-4. Once all fields are populated, select "Preview Solution" for a preview of the solution within the Marketplace.  You can revise and edit the text, images, and screenshot before clicking **Next**.  
+    ![应用商店工具包第一个屏幕的屏幕快照](./media/azure-stack-marketplace-publisher/image7.png)
+3. 单击**浏览**并选择每个图标和屏幕截图字段图像文件。  你可以使用你自己的图标或中的示例图标[支持文件](azure-stack-marketplace-publisher.md#support-files)部分。
+4. 后填充所有字段，选择"预览解决方案"内应用商店的解决方案的预览。  可以修改并单击前编辑文本、 图像和屏幕截图**下一步**。  
 
-### <a name="import-template-and-create-package"></a>Import template and create package
-In this section, you import the template and work with input for your solution.
+### <a name="import-template-and-create-package"></a>导入模板，创建包
+在本部分中，可以将模板导入和处理输入你的解决方案。
 
-1.  Click **Browse** and select the *azuredeploy.json* from the 101-Simple-Windows-VM folder in the downloaded templates.
+1.  单击**浏览**和选择*azuredeploy.json*从下载的模板中的 101 简单的 Windows 虚拟机文件夹。
 
-    ![screenshot of Marketplace Toolkit second screen](./media/azure-stack-marketplace-publisher/image8.png)
-2.  The Deployment Wizard is populated with a *Basic* step and input items for each parameter specified in the template.  You can add additional steps and move inputs between steps.  As an example, you may want "Front-End Configuration" and "Back-End Configuration" steps for your solution.
-3.  Specify the path to AzureGalleryPackager.exe.  
-4.  Click **Create** and the Marketplace Toolkit packages your solution into an .azpkg file.  Once complete, the wizard displays the path to your solution file and give you the option to continue publishing your package to Azure Stack.
+    ![应用商店工具包第二个屏幕的屏幕快照](./media/azure-stack-marketplace-publisher/image8.png)
+2.  使用填充部署向导*基本*步骤和输入项模板中指定每个参数。  您可以添加其他步骤，并将输入移动步骤之间。  例如，你可能想"前端配置"和"后端配置"步骤为你的解决方案。
+3.  指定 AzureGalleryPackager.exe 的路径。  
+4.  单击**创建**，应用商店工具包到.azpkg 文件打包你的解决方案。  完成后，该向导将显示你的解决方案文件的路径，并为你提供的选项以继续发布到 Azure 堆栈的你的包。
 
 
-## <a name="publish-marketplace-items"></a>Publish marketplace items
-In this section, you publish the marketplace item to your Azure Stack Marketplace.
+## <a name="publish-marketplace-items"></a>发布应用商店项
+在此部分中，你将应用商店项目发布到 Azure 堆栈应用商店。
 
-![screenshot of Marketplace Toolkit first screen](./media/azure-stack-marketplace-publisher/image9.png)
+![应用商店工具包第一个屏幕的屏幕快照](./media/azure-stack-marketplace-publisher/image9.png)
 
-1.  The wizard requires information to publish your solution:
+1.  此向导需要发布你的解决方案的信息：
     
-    |Field|Description|
+    |字段|说明|
     |-----|-----|
-    | Service Admin Name | Service Administrator account.  Example:  ServiceAdmin@mydomain.onmicrosoft.com |
-    | Password | Password for Service Administrator account. |
-    | API Endpoint | Azure Stack Azure Resource Manager endpoint.  Example: management.local.azurestack.external |
-2.  Click **Publish** and the publishing log is displayed.
-3.  You are now able to deploy your published item via the Azure Stack portal.
+    | 服务管理员名称 | 服务管理员帐户。  示例：ServiceAdmin@mydomain.onmicrosoft.com |
+    | 密码 | 服务管理员帐户密码。 |
+    | API 终结点 | Azure 堆栈 Azure 资源管理器终结点。  示例： management.local.azurestack.external |
+2.  单击**发布**，发布的日志会显示。
+3.  现在已能够部署你已发布的项，通过 Azure 堆栈门户。
 
 
-## <a name="use-a-parameters-file"></a>Use a parameters file
-You can also use a parameters file to complete the marketplace item information.  
+## <a name="use-a-parameters-file"></a>使用参数文件
+参数文件还可用于完成的应用商店项信息。  
 
-The Marketplace Toolkit includes a *solution.parameters.ps1* you can use to create your own parameters file.
+应用商店工具包包括*solution.parameters.ps1*可用于创建你自己的参数文件。
 
 
-## <a name="support-files"></a>Support files
-| Description | Sample |
+## <a name="support-files"></a>支持文件
+| 说明 | 示例 |
 | ----- | ----- |
-| 40x40 .png icon | ![](./media/azure-stack-marketplace-publisher/image1.png) |
-| 90x90 .png icon | ![](./media/azure-stack-marketplace-publisher/image2.png) |
-| 115x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image3.png) |
-| 255x115 .png icon | ![](./media/azure-stack-marketplace-publisher/image4.png) |
-| 533x324 .png thumbnail | ![](./media/azure-stack-marketplace-publisher/image5.png) |
-
+| 40 x 40 个.png 图标 | ![](./media/azure-stack-marketplace-publisher/image1.png) |
+| 90 x 90.png 图标 | ![](./media/azure-stack-marketplace-publisher/image2.png) |
+| 115 x 115.png 图标 | ![](./media/azure-stack-marketplace-publisher/image3.png) |
+| 255 x 115.png 图标 | ![](./media/azure-stack-marketplace-publisher/image4.png) |
+| 533 x 324.png 缩略图 | ![](./media/azure-stack-marketplace-publisher/image5.png) |
 
 

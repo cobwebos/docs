@@ -2,7 +2,7 @@
 
 #### <a name="to-install-updates-via-the-azure-portal"></a>通过 Azure 门户安装更新
 
-1. 转到 StorSimple 设备管理器并选择“设备”。 从连接到你的服务的设备列表中，选择并单击要更新的设备。 
+1. 转到 StorSimple 设备管理器并选择“设备”。 从连接到服务的设备列表中，选择并单击要更新的设备。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
 
@@ -26,7 +26,7 @@
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 
-6. 在上载开始和成功完成时，系统会发出通知。
+6. 在上传开始和成功完成时，系统会发出通知。
 
      ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate8m.png)
 
@@ -46,7 +46,7 @@
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
 
-    这将转到“安装更新”边栏选项卡。 可以在此处查看关于该作业的详细信息。
+    这会转到“安装更新”边栏选项卡。 可以在此处查看关于该作业的详细信息。
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 91b2f16611b88aa4b9395ca301d88042065ad9dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 AS2 消息以实现企业集成
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/10/2017
 
 下面是需要准备好的项：
 
-* 已定义的、与你的 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* 已定义的、与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
 * 在集成帐户中至少已定义两个[合作伙伴](logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 AS2 限定符
 
 > [!NOTE]
@@ -107,8 +106,8 @@ ms.lasthandoff: 06/10/2017
 | --- | --- |
 | 替代消息属性 |表示可替代接收消息中的属性。 |
 | 对消息进行签名 |要求对消息进行数字签名。 配置来宾合作伙伴公共证书以进行签名验证。  |
-| 对消息进行加密 |要求对消息进行加密。 未加密的消息将被拒绝。 配置主机合作伙伴私有证书以对消息进行解密。  |
-| 对消息进行压缩 |要求对消息进行压缩。 未压缩的消息将被拒绝。 |
+| 对消息进行加密 |要求对消息进行加密。 未加密的消息会被拒绝。 配置主机合作伙伴私有证书以对消息进行解密。  |
+| 对消息进行压缩 |要求对消息进行压缩。 未压缩的消息会被拒绝。 |
 | MDN 文本 |要发送到消息发送方的默认消息处置通知 (MDN)。 |
 | 发送 MDN |要求对 MDN 进行发送。 |
 | 发送已签名的 MDN |要求对 MDN 进行签名。 |
@@ -125,14 +124,14 @@ ms.lasthandoff: 06/10/2017
 
     ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-agreements/agreement-51.png)
 
-2. 若要将签名的消息发送到合作伙伴，请选择“启用消息签名”。 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
+2. 要将签名的消息发送到合作伙伴，请选择“启用消息签名”。 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
 
-3. 若要将加密的消息发送到合作伙伴，请选择“启用消息加密”。 若要加密消息，请在“加密算法”列表中，选择*来宾合作伙伴公共证书算法*。
+3. 要将加密的消息发送到合作伙伴，请选择“启用消息加密”。 若要加密消息，请在“加密算法”列表中，选择*来宾合作伙伴公共证书算法*。
 在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
 
 4. 若要压缩消息，请选择“启用消息压缩”。
 
-5. 若要将 HTTP 内容类型标头展开为单个行，请选择“展开 HTTP 标头”。
+5. 要将 HTTP 内容类型标头展开为单个行，请选择“展开 HTTP 标头”。
 
 6. 若要接收所发送消息的同步 MDN，请选择“请求 MDN”。
 
@@ -171,7 +170,7 @@ ms.lasthandoff: 06/10/2017
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，然后选择“协议”磁贴。 
+2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。 
 
     ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
 
@@ -180,4 +179,3 @@ ms.lasthandoff: 06/10/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
-

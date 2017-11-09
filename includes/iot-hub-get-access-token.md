@@ -23,7 +23,7 @@ Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. 创建或获取对你使用的资源组的引用：
+3. 创建或获取对正在使用的资源组的引用：
    
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,

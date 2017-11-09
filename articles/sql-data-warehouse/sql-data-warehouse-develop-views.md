@@ -15,16 +15,14 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 902929fba9e2486d97323ab52505ba6db3fe0aab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: d2a03be810bd7f792876607ec735eb578b65a3b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="views-in-sql-data-warehouse"></a>SQL 数据仓库中的视图
-SQL 数据仓库中的视图特别有用。 可以通过多种不同的方式使用这些视图以提升解决方案的质量。  本文重点介绍几个示例，说明如何使用视图来丰富你的解决方案，以及需要注意的限制。
+SQL 数据仓库中的视图特别有用。 可以通过多种不同的方式使用这些视图以提升解决方案的质量。  本文重点介绍几个示例，说明如何使用视图来丰富解决方案，以及需要注意的限制。
 
 > [!NOTE]
 > 本文不讨论 `CREATE VIEW` 的语法。 有关这方面的参考信息，请参阅 MSDN 上的 [CREATE VIEW][CREATE VIEW] 文章。
@@ -81,4 +79,3 @@ SQL 数据仓库中的视图只是元数据。  因此无法使用以下选项�
 [CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
 
 <!--Other Web references-->
-

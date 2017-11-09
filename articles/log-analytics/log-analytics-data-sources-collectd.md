@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>在 Linux 代理上将来自 CollectD 的数据收集到 Log Analytics 中
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文提供了与将来自 CollectD 的性能数据收集到 Log Analytics 中相关的信息。
@@ -83,7 +82,7 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 ### <a name="configure-collectd-to-forward-data"></a>配置 CollectD 来转发数据 
 
-1. 若要将 CollectD 数据路由到用于 Linux 的 OMS 代理，需要将 `oms.conf` 添加到 CollectD 的配置目录中。 此文件的目的地取决于计算机的 Linux 发行版。
+1. 要将 CollectD 数据路由到用于 Linux 的 OMS 代理，需要将 `oms.conf` 添加到 CollectD 的配置目录中。 此文件的目的地取决于计算机的 Linux 发行版。
 
     如果 CollectD 配置目录位于 /etc/collectd.d/ 中：
 
@@ -123,5 +122,4 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
 * 使用[自定义字段](log-analytics-custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
-
 

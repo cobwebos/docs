@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 553111d37543a0d5d6d3c89afab118b209704fec
-ms.openlocfilehash: b6ed4bd6898d54f6f9ef3206de38e2be6d2900be
-ms.lasthandoff: 01/18/2017
-
-
+ms.openlocfilehash: 1a4af8c9a5f30cf7ea24d587866d1b41ab9cfb2c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>与 Azure AD 域服务兼容的第三方软件
 
 ## <a name="one-identity-authentication-services"></a>统一标识身份验证服务
@@ -42,4 +40,3 @@ ms.lasthandoff: 01/18/2017
 Red Hat Enterprise Linux 是世界上领先的企业 Linux 平台，用于满足当今现代企业的需求。 Red Hat Enterprise Linux 是 Microsoft Azure 上的企业 Linux 虚拟机 (VM) 工作负荷的最佳选择。 Red Hat Enterprise Linux 是一个开放、可靠且安全的平台，针对需要业务关键型工作负荷（从数据中心到 Azure 云）的灵活部署的客户而设计，以 Red Hat 和 Microsoft 提供的紧密集成的企业级支持为基础。
 
 [将 RedHat Enterprise Linux 7.2 VM 加入到 Azure AD 域服务](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-

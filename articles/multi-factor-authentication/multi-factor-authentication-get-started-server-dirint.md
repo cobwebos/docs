@@ -1,6 +1,6 @@
 ---
-title: "Azure Multi-Factor Authentication 与 Active Directory 之间的目录集成"
-description: "这是与 Multi-Factor Authentication 相关的页面，介绍如何将 Multi-Factor Authentication 服务器与 Active Directory 集成以便可以同步目录。"
+title: "Azure 多重身份验证与 Active Directory 之间的目录集成"
+description: "这是与多重身份验证相关的页面，介绍如何将多重身份验证服务器与 Active Directory 集成以便可以同步目录。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,12 +15,11 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
+ms.openlocfilehash: c469dfaccf515bcd1ced43279decfefe6be8375b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 5250c0cbc71450eb66f79226a1ecb062a9335ee3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 使用 Azure MFA 服务器的“目录集成”部分可与 Active Directory 或其他 LDAP 目录集成。 可以配置属性来匹配目录架构，并设置用户自动同步。
@@ -36,7 +35,7 @@ ms.lasthandoff: 09/14/2017
 | 包括受信任域 |选中“包括受信任域”可让代理尝试连接到当前域、林中其他域或林信任涉及的域所信任的域。  当不从任何受信任域导入或同步用户时，请取消选中该复选框以提高性能。  默认处于选中状态。 |
 | 使用特定 LDAP 配置 |选择“使用 LDAP”选项可使用指定的 LDAP 设置进行导入和同步。 注意：选择“使用 LDAP”时，用户界面会将引用从 Active Directory 更改为 LDAP。 |
 | 编辑按钮 |使用“编辑”按钮可以修改当前 LDAP 配置设置。 |
-| 使用属性范围查询 |指示是否应使用属性范围查询。  属性范围查询允许根据其他记录的属性中的条目，实现对符合条件的记录的高效目录搜索。  Azure Multi-Factor Authentication 服务器使用属性范围查询有效地查询属于安全组的用户。   <br>注意：在某些情况下，系统支持属性范围查询，但不应使用。  例如，如果安全组包含来自多个域的成员，Active Directory 可能在使用属性范围查询时出现问题。 在这种情况下，请取消选中该复选框。 |
+| 使用属性范围查询 |指示是否应使用属性范围查询。  属性范围查询允许根据其他记录的属性中的条目，实现对符合条件的记录的高效目录搜索。  Azure 多重身份验证服务器使用属性范围查询有效地查询属于安全组的用户。   <br>注意：在某些情况下，系统支持属性范围查询，但不应使用。  例如，如果安全组包含来自多个域的成员，Active Directory 可能在使用属性范围查询时出现问题。 在这种情况下，请取消选中该复选框。 |
 
 下表描述了 LDAP 配置设置。
 
@@ -103,7 +102,7 @@ Azure 多重身份验证提供以下三个筛选选项：
 ## <a name="synchronization"></a>同步
 同步能使 Azure MFA 用户数据库与 Active Directory 或其他轻型目录访问协议 (LDAP) 目录中的用户保持同步。 该进程类似于从 Active Directory 手动导入用户，但会定期轮询 Active Directory 用户和安全组对进程所做的更改。  它还能禁用或删除已从容器、安全组或 Active Directory 中删除的用户。
 
-Multi-Factor Auth AdSync 服务是一种 Windows 服务，它定期轮询 Active Directory。  请勿与 Azure AD Sync 或 Azure AD Connect 相混淆。  Multi-Factor Auth ADSync 尽管构建在类似的代码基础之上，但专用于 Azure Multi-Factor Authentication 服务器。  它在停止状态进行安装，并在配置好可以运行时由 Multi-Factor Auth 服务器服务启动。  如果具有多服务器 Multi-Factor Auth 服务器配置，则 Multi-Factor Auth AdSync 只能运行在单个服务器上。
+Multi-Factor Auth AdSync 服务是一种 Windows 服务，它定期轮询 Active Directory。  请勿与 Azure AD Sync 或 Azure AD Connect 相混淆。  Multi-Factor Auth ADSync 尽管构建在类似的代码基础之上，但专用于 Azure 多重身份验证服务器。  它在停止状态进行安装，并在配置好可以运行时由 Multi-Factor Auth 服务器服务启动。  如果具有多服务器 Multi-Factor Auth 服务器配置，则 Multi-Factor Auth AdSync 只能运行在单个服务器上。
 
 Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器扩展来高效地轮询所做的更改。  此 DirSync 控件调用方必须具有“目录获取更改”权限和 DS-Replication-Get-Changes 扩展的控制访问权限。  默认情况下，将为域控制器上的 Administrator 和 LocalSystem 帐户分配这些权限。  默认情况下，Multi-Factor Authentication AdSync 服务配置为以 LocalSystem 身份运行。  因此，最简单的方法是在域控制器上运行该服务。  如果将该服务配置为始终执行完全同步，则它可以使用具有更低权限的帐户运行。  这会降低效率，但所需的帐户特权更低。
 
@@ -139,4 +138,3 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 可以设置额外的 Multi-Factor Auth 服务器作为备份 RADIUS 代理、LDAP 代理，或将其用于 IIS 身份验证。 同步配置在所有代理之间共享。 但是，只有其中一个代理可以让 Multi-Factor Auth 服务器服务运行。 此选项卡允许选择可用于同步的 Multi-Factor Auth 服务器。
 
 ![Multi-Factor-Auth 服务器](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
-

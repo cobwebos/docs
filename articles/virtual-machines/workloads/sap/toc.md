@@ -7,6 +7,9 @@
 ## [安装 SAP HANA](hana-installation.md)
 ## [高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
 ## [故障排除和监视](troubleshooting-monitoring.md)
+## 如何
+### [设置使用 STONITH 的 HA](ha-setup-with-stonith.md)
+### [类型 II SKU 的 OS 备份](os-backup-type-ii-skus.md)
 # Azure 虚拟机上的 SAP HANA
 ## [单实例 SAP HANA](hana-get-started.md)
 ## [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)
@@ -18,9 +21,25 @@
 ## [Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Azure Linux VM 上的 SAP NetWeaver](suse-quickstart.md)
 ## [在 Azure 上规划和实施 SAP NetWeaver](planning-guide.md)
-## [Windows 上的高可用性](high-availability-guide.md)
-## [SUSE Linux 上的高可用性](high-availability-guide-suse.md)
-## [多 SID 配置](high-availability-multi-sid.md)
+## Windows 和 Linux 上的高可用性 (HA)
+### [概述](sap-high-availability-guide-start.md)
+### 高可用性体系结构
+#### [HA 体系结构和方案](sap-high-availability-architecture-scenarios.md)
+#### [更高可用性体系结构和方案](sap-higher-availability-architecture-scenarios.md)
+#### [使用共享磁盘在 Windows 上为 (A)SCS 实例提供 HA](sap-high-availability-guide-wsfc-shared-disk.md)
+#### [使用 SOFS 文件共享在 Windows 上为 (A)SCS 实例提供 HA](sap-high-availability-guide-wsfc-file-share.md)
+#### [在 SUSE Linux 上为 (A)SCS 实例提供 HA](high-availability-guide-suse.md)
+### Azure 基础结构准备
+#### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-high-availability-infrastructure-wsfc-shared-disk.md)
+#### [Windows 以及用于 (A)SCS 实例的 SOFS 文件共享](sap-high-availability-infrastructure-wsfc-file-share.md)
+#### [SUSE Linux 以及用于 (A)SCS 实例的 NFS](high-availability-guide-suse.md)
+### SAP 安装
+#### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-high-availability-installation-wsfc-shared-disk.md)
+#### [Windows 以及用于 (A)SCS 实例的 SOFS 文件共享](sap-high-availability-installation-wsfc-file-share.md)
+#### [SUSE Linux 以及用于 (A)SCS 实例的 NFS](high-availability-guide-suse.md)
+### SAP 多 SID
+#### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
+#### [Windows 以及用于 (A)SCS 实例的 SOFS 文件共享](sap-ascs-ha-multi-sid-wsfc-file-share.md)
 ## [部署指南](deployment-guide.md)
 ## [DBMS 部署指南](dbms-guide.md)
 ## [使用 Azure Site Recovery 进行 SAP 灾难恢复](../../../site-recovery/site-recovery-workload.md#protect-sap)

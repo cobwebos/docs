@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: b14eea46e773a4b92ba20cd3121cd258f86307c9
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: a2487aac712542d86cb3a7f34c45e21c8d035496
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遥测数据模型
 
@@ -57,4 +56,3 @@ Application Insights 数据模型采用简单基本的结构，不过，它能�
 - 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
 - 使用[采样](app-insights-sampling.md)基于数据模型最小化遥测量。
 - 查看 Application Insights 支持的[平台](app-insights-platforms.md)。
-

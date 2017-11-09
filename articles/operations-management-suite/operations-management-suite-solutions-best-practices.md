@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中创建管理解决方案（预览版）的最佳做法
 > [!NOTE]
@@ -28,10 +27,10 @@ ms.lasthandoff: 04/27/2017
 本文提供在 Operations Management Suite (OMS) 中[创建管理解决方案文件](operations-management-suite-solutions-solution-file.md)的最佳做法。  发现其他最佳做法后，将更新此信息。
 
 ## <a name="data-sources"></a>数据源
-- 数据源可以[使用 Resource Manager 模板进行配置](../log-analytics/log-analytics-template-workspace-configuration.md)，但它们不应包含在解决方案文件中。  原因是，数据源配置当前是不幂等的，这意味着你的解决方案可以覆盖用户工作区中的现有配置。<br><br>例如，你的解决方案可能需要应用程序事件日志中的警告和错误事件。  如果你在解决方案中将此项指定为数据源，则当用户已在其工作区中配置此项时，可能会删除信息事件。  如果包含所有事件，则可能会在用户的工作区中收集过多信息事件。
+- 数据源可以[使用 Resource Manager 模板进行配置](../log-analytics/log-analytics-template-workspace-configuration.md)，但它们不应包含在解决方案文件中。  原因是，数据源配置当前是不幂等的，这意味着解决方案可以覆盖用户工作区中的现有配置。<br><br>例如，解决方案可能需要应用程序事件日志中的警告和错误事件。  如果在解决方案中将此项指定为数据源，则当用户已在其工作区中配置此项时，可能会删除信息事件。  如果包含所有事件，则可能会在用户的工作区中收集过多信息事件。
 
-- 如果你的解决方案需要来自某个标准数据源的数据，则应将此数据源定义为先决条件。  在文档中声明：客户必须自己配置数据源。  
-- 向解决方案中的任何视图添加[数据流验证](../log-analytics/log-analytics-view-designer-tiles.md)消息，以针对需要为待收集的所需数据而配置的数据源向用户提供指示。  找不到所需的数据时，此消息将显示在视图的磁贴上。
+- 如果解决方案需要来自某个标准数据源的数据，则应将此数据源定义为先决条件。  在文档中声明：客户必须自己配置数据源。  
+- 向解决方案中的任何视图添加[数据流验证](../log-analytics/log-analytics-view-designer-tiles.md)消息，以针对需要为待收集的所需数据而配置的数据源向用户提供指示。  找不到所需的数据时，此消息会显示在视图的磁贴上。
 
 
 ## <a name="runbooks"></a>Runbook
@@ -42,7 +41,7 @@ ms.lasthandoff: 04/27/2017
 ## <a name="views"></a>视图
 - 所有解决方案都应包含在用户门户中显示的单一视图。  该视图可以包含多个[可视化效果部件](../log-analytics/log-analytics-view-designer-parts.md)以演示不同数据集。
 - 向解决方案中的任何视图添加[数据流验证](../log-analytics/log-analytics-view-designer-tiles.md)消息，以针对需要为待收集的所需数据而配置的数据源向用户提供指示。
-- 将解决方案配置为[包含](operations-management-suite-solutions-solution-file.md#solution-resource)该视图，因此如果删除解决方案，它也将被删除。
+- 将解决方案配置为[包含](operations-management-suite-solutions-solution-file.md#solution-resource)该视图，因此如果删除解决方案，它也会被删除。
 
 ## <a name="alerts"></a>警报
 - 在解决方案文件中将收件人列表定义为参数，以便用户在安装解决方案时可以定义它们。
@@ -55,5 +54,4 @@ ms.lasthandoff: 04/27/2017
 * [已保存的搜索和警报](operations-management-suite-solutions-resources-searches-alerts.md)到管理解决方案。
 * [将视图](operations-management-suite-solutions-resources-views.md)添加到管理解决方案。
 * [将自动化 runbook 和其他资源添加](operations-management-suite-solutions-resources-automation.md)到管理解决方案。
-
 

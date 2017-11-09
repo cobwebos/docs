@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 61adb7ae8fddc3cf423ee4558308eb9ded11fea3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 2466e823c448ada4dc7bc5769b1b7f10bbb5dc7d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>数据仓库迁移实用程序（预览版）
 > [!div class="op_single_selector"]
@@ -31,17 +29,17 @@ ms.lasthandoff: 12/08/2016
 
 数据仓库迁移实用程序是专门用于将架构和数据从 SQL Server 与 Azure SQL 数据库迁移到 Azure SQL 数据仓库的工具。 在迁移架构期间，该工具会自动将相应架构从源映射到目标。 迁移架构后，该工具提供了使用自动生成的脚本移动数据的选项。
 
-除了迁移架构和数据以外，此工具还能让您选择生成兼容性报告，汇总目标与源实例之间可能会妨碍迁移操作的不兼容问题。
+除了迁移架构和数据以外，此工具还能让你选择生成兼容性报告，汇总目标与源实例之间可能会妨碍迁移操作的不兼容问题。
 
 ## <a name="get-started"></a>入门
-安装的先决条件之一是，你需要使用 BCP 命令行实用程序来运行迁移脚本和 Office，这样才能查看兼容性报告。 启动下载的可执行文件后，系统将提示你在安装该工具之前接受标准 EULA。
+安装的先决条件之一是，需要使用 BCP 命令行实用程序来运行迁移脚本和 Office，这样才能查看兼容性报告。 启动下载的可执行文件后，系统会提示在安装该工具之前接受标准 EULA。
 
-此外，若要运行此迁移实用程序，你需要以下某种针对你要迁移的数据库的权限：CREATE DATABASE、ALTER ANY DATABASE 或 VIEW ANY DEFINITION。
+此外，要运行此迁移实用程序，需要以下某种针对要迁移的数据库的权限：CREATE DATABASE、ALTER ANY DATABASE 或 VIEW ANY DEFINITION。
 
 ### <a name="launching-the-tool-and-connecting"></a>启动工具并连接
-单击在安装后显示的桌面图标即可启动该工具。 打开工具时，系统会显示初始连接页面，提示你选择迁移工具的源和目标。 目前我们支持将 SQL Server 和 Azure SQL 数据库用作源，将 SQL 数据仓库用作目标。 选择源和目标后，系统会要求你填写服务器名称并执行身份验证，然后单击“连接”以连接到源服务器。
+单击在安装后显示的桌面图标即可启动该工具。 打开工具时，系统会显示初始连接页面，提示选择迁移工具的源和目标。 目前我们支持将 SQL Server 和 Azure SQL 数据库用作源，将 SQL 数据仓库用作目标。 选择源和目标后，系统会要求填写服务器名称并执行身份验证，然后单击“连接”以连接到源服务器。
 
-完成身份验证后，该工具将显示连接到的服务器中的数据库列表。 你可以通过选择想要迁移的数据库，然后单击“迁移选定项目”开始迁移。
+完成身份验证后，该工具会显示连接到的服务器中的数据库列表。 可以通过选择想要迁移的数据库，然后单击“迁移选定项目”开始迁移。
 
 ## <a name="migration-report"></a>迁移报告
 在工具中选择“检查数据库兼容性”会生成一份报告，其中汇总了请求迁移的数据库中所有的对象不兼容情况。 未列在 SQL 数据仓库中的部分 SQL Server 功能详细列表可以在[迁移文档][migration documentation]中找到。 生成报告后，可以将它保存并在 Excel 中打开。
@@ -59,7 +57,7 @@ ms.lasthandoff: 12/08/2016
 填写上述参数后，只需单击“运行迁移”，系统就会在指定的位置生成两个包。 运行导出文件，以将迁移源中的数据导出到平面文件，然后运行导入文件，以将数据导入 SQL 数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
-现在你已迁移一些数据，请继续了解如何[开发][develop]。
+现在已迁移一些数据，请继续了解如何[开发][develop]。
 
 <!--Image references-->
 
@@ -69,4 +67,3 @@ ms.lasthandoff: 12/08/2016
 
 <!--Other Web references--> 
 [Download Migration Utility]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
-

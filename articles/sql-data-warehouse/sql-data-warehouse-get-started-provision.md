@@ -16,13 +16,11 @@ ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 75f4792ff2aa2b73ebc3ff976887a74ce09988f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 24ed2d8bad3090e378acf2a42fb909dee0a8517b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-sql-data-warehouse"></a>创建 Azure SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -35,7 +33,7 @@ ms.lasthandoff: 03/10/2017
 本教程使用 Azure 门户来创建包含 AdventureWorksDW 示例数据库的 SQL 数据仓库。
 
 ## <a name="prerequisites"></a>先决条件
-若要开始，您需要：
+要开始，需要：
 
 * **Azure 帐户**：访问 [Azure 免费试用版][Azure Free Trial]或者 [MSDN Azure 信用额度][MSDN Azure Credits]，以创建帐户。
 * **Azure SQL Server**：有关详细信息，请参阅[使用 Azure 门户创建 Azure SQL 数据库][Create an Azure SQL database in the Azure portal]。
@@ -50,14 +48,14 @@ ms.lasthandoff: 03/10/2017
 2. 单击“+ 新建” > “数据库” > “SQL 数据仓库”。
 
     ![创建](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
-3. 在“SQL 数据仓库”  边栏选项卡中，填写所需的信息，然后按“创建”进行创建。
+3. 在“SQL 数据仓库”  边栏选项卡中，填写所需的信息，并按“创建”进行创建。
 
     ![创建数据库](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
    * **服务器**：建议先选择服务器。  
    * **数据库名称**：用于引用 SQL 数据仓库的名称。  对服务器而言，它必须是唯一的。
    * **性能**：建议从 400 [DWU][DWU] 开始。 可以将滑块向左或向右移动以调整数据仓库的性能，也可以在创建之后增加或减少。  若要了解有关 DWU 的详细信息，请参阅[缩放](sql-data-warehouse-manage-compute-overview.md)文档或[定价页][SQL Data Warehouse pricing]。
-   * **订阅**：选择此 SQL 数据仓库将会计费的 [订阅] 。
+   * **订阅**：选择此 SQL 数据仓库会计费的 [订阅]。
    * **资源组**：[资源组][Resource group]是旨在帮助管理 Azure 资源集合的容器。 了解有关 [资源组](../azure-resource-manager/resource-group-overview.md)的详细信息。
    * **选择源**：单击“选择源” > “示例”。 Azure 使用 AdventureWorksDW 自动填充“选择示例”  选项。
 
@@ -67,7 +65,7 @@ ms.lasthandoff: 03/10/2017
    >
 
 1. 单击“创建”  以创建 SQL 数据仓库。
-2. 请稍等几分钟。 数据仓库准备就绪后，应返回到 [Azure 门户](https://portal.azure.com)。 你可以在仪表板上找到你的 SQL 数据仓库，它列于 SQL 数据库之下，或在用来创建它的资源组中。
+2. 请稍等几分钟。 数据仓库准备就绪后，应返回到 [Azure 门户](https://portal.azure.com)。 可以在仪表板上找到 SQL 数据仓库，它列于 SQL 数据库之下，或在用来创建它的资源组中。
 
     ![门户视图](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
@@ -76,7 +74,7 @@ ms.lasthandoff: 03/10/2017
 ## <a name="next-steps"></a>后续步骤
 创建 SQL 数据仓库后，便可以[连接](sql-data-warehouse-connect-overview.md)并开始查询。
 
-若要将数据加载到 SQL 数据仓库中，请参阅[加载概述](sql-data-warehouse-overview-load.md)。
+要将数据加载到 SQL 数据仓库中，请参阅 [加载概述](sql-data-warehouse-overview-load.md)。
 
 如果尝试将现有数据库迁移到 SQL 数据仓库，请参阅[迁移概述](sql-data-warehouse-overview-migrate.md)或使用[迁移实用工具](sql-data-warehouse-migrate-migration-utility.md)。
 
@@ -102,4 +100,3 @@ ms.lasthandoff: 03/10/2017
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-

@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 10/17/2017
 ms.author: sethm
+ms.openlocfilehash: 632af7294a7e6766d791d1d9ab08f98308fb2c02
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: b561d6fdcf4fb2839908ac8f53832fb0830dd576
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 08/11/2017
 
 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 可以选择基于每个订阅注册主题的筛选规则，这样就可以筛选/限制哪些主题订阅接收发送至某个主题的哪些消息。
 
-利用 Service Bus 主题和订阅，可以进行扩展以处理跨大量用户和应用程序的许多消息。
+利用服务总线主题和订阅，可以进行扩展以处理跨大量用户和应用程序的许多消息。
 
 ## <a name="create-a-service-namespace"></a>创建服务命名空间
 若要开始在 Azure 中使用服务总线主题和订阅，必须先创建一个命名空间，该命名空间提供一个范围容器，用于对应用程序中的服务总线资源进行寻址。
@@ -97,13 +96,13 @@ topicInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
 CreateTopicResult result = service.createTopic(topicInfo);
 ```
 
-请注意，可以对 **ServiceBusContract** 对象使用 **listTopics** 方法来检查具有指定名称的主题在某个服务命名空间中是否已存在。
+可以对 **ServiceBusContract** 对象使用 **listTopics** 方法来检查具有指定名称的主题在某个服务命名空间中是否已存在。
 
 ## <a name="create-subscriptions"></a>创建订阅
 主题订阅也是使用 **ServiceBusService** 类创建的。 订阅已命名，并且具有一个限制传递到订阅的虚拟队列的消息集的可选筛选器。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
-**MatchAll** 筛选器是默认筛选器，在创建新订阅时未指定筛选器的情况下使用。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 **MatchAll** 筛选器。
+如果在创建新订阅时未指定筛选器，则所使用的是默认筛选器 **MatchAll** 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 **MatchAll** 筛选器。
 
 ```java
 SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
@@ -142,7 +141,7 @@ CreateRuleResult ruleResult = service.createRule("TestTopic", "LowMessages", rul
 service.deleteRule("TestTopic", "LowMessages", "$Default");
 ```
 
-现在，当消息发送到 `TestTopic` 时，它始终会传送给订阅了 `AllMessages` 订阅的接收者，并且选择性地传送给订阅了 `HighMessages` 和 `LowMessages` 订阅的接收者（具体取决于消息内容）。
+现在，如果消息发送到 `TestTopic`，始终都会传递给订阅了 `AllMessages` 订阅的接收程序，并且有选择性地传递给订阅了 `HighMessages` 和 `LowMessages` 订阅的接收程序（具体视消息内容而定）。
 
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
 将消息发送到服务总线主题，应用程序获得 **ServiceBusContract** 对象。 以下代码演示了如何将消息发送到之前在 `HowToSample` 命名空间内创建的 `TestTopic` 主题：
@@ -152,10 +151,10 @@ BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage]* 对象包含一组标准方法（如 setLabel 和 TimeToLive）、一个用来保存自定义应用程序特定属性的字典和大量任意应用程序数据。 应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后使用适当的 DataContractSerializer 序列化对象。 或者，也可以提供 java.io.InputStream。
+发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage]* 对象包含一组标准方法（如 setLabel 和 TimeToLive）、一个用来保存自定义应用程序特定属性的字典和大量任意应用程序数据。 应用程序可以将任何可序列化对象传递给 [BrokeredMessage][BrokeredMessage] 构造函数，从而设置消息正文，然后再使用适当的 DataContractSerializer 序列化对象。 或者，也可以提供 java.io.InputStream。
 
-以下示例演示了如何将五条测试消息发送到我们在前面的代码片段中获得的 `TestTopic` **MessageSender**。
-请注意每条消息的 **MessageNumber** 属性值如何随循环迭代而变化（这会确定接收消息的订阅）：
+下面的示例展示了如何将五个测试消息发送到在上面代码片段中获取的 `TestTopic` MessageSender。
+请注意每条消息的 **MessageNumber** 属性值如何随循环迭代而变化（此值确定接收消息的订阅）：
 
 ```java
 for (int i=0; i<5; i++)  {
@@ -171,13 +170,13 @@ service.sendTopicMessage("TestTopic", message);
 服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>如何从订阅接收消息
-若要从订阅接收消息，请使用 **ServiceBusContract** 对象。 收到的消息可在两种不同模式下工作：**ReceiveAndDelete** 和 **PeekLock**。
+若要从订阅接收消息，请使用 **ServiceBusContract** 对象。 收到的消息可以在两种不同的模式下运行：ReceiveAndDelete 和 PeekLock（默认）。
 
-当使用 **ReceiveAndDelete** 模式时，接收是一个单次操作。即，当服务总线接收到对消息的读取请求时，它会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许出现故障时不处理消息的方案。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“将使用”，因此当应用程序重启并重新开始使用消息时，它会丢失在发生崩溃前使用的消息。
+当使用 **ReceiveAndDelete** 模式时，接收是一个单次操作。即，当服务总线接收到对消息的读取请求时，它会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 例如，可以考虑这样一种情形：使用者发出接收请求，但在处理该请求前发生了故障。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
-在 **PeekLock** 模式下，接收变成了一个两阶段操作，从而有可能支持无法允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，将通过对收到的消息调用 **Delete** 完成接收过程的第二个阶段。 服务总线发现 **Delete** 调用时，它会将消息标记为“已使用”并将其从主题中删除。
+在 **PeekLock** 模式下，接收变成了一个两阶段操作，从而有可能支持无法允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，将通过对收到的消息调用 **Delete** 完成接收过程的第二个阶段。 当服务总线发现 Delete 调用时，它会将消息标记为“已使用”，并将它从主题中删除。
 
-以下示例演示了如何使用 **PeekLock** 模式（非默认模式）接收和处理消息。 以下示例执行一个循环并处理“HighMessages”订阅中的消息，并在处理完所有消息后退出循环（或者，可将其设置为等待新消息）。
+下面的示例展示了如何使用 PeekLock（默认模式）接收和处理消息。 此示例执行循环，并处理 `HighMessages` 订阅中的消息，然后在没有其他任何消息时退出循环（也可以设置为等待新消息）。
 
 ```java
 try
@@ -233,11 +232,11 @@ catch (Exception e) {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，则其可以对收到的消息调用 **unlockMessage** 方法（而不是 **deleteMessage** 方法）。 这会导致服务总线解锁主题中的消息并使它能够由同一使用方应用程序或其他使用方应用程序再次接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，则其可以对收到的消息调用 **unlockMessage** 方法（而不是 **deleteMessage** 方法）。 这样一来，服务总线会解除锁定主题中的消息，让它再次可供接收，无论是被同一个使用应用程序接收，还是被其他使用应用程序接收。
 
-还存在与主题中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁该消息并使其可再次被接收。
+主题中的锁定消息还有相关超时，如果应用程序无法在锁定超时期满前处理消息（例如，当应用程序发生故障时），服务总线会自动解除锁定消息，让它再次可供接收。
 
-如果在处理消息之后，发出 **deleteMessage** 请求之前应用程序发生崩溃，该消息会在应用程序重新启动时重新传送给它。 此情况通常称作**至少处理一次**，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 通常可使用消息的 **getMessageId** 方法实现此操作，这在多个传送尝试中保持不变。
+如果在处理消息之后，发出 **deleteMessage** 请求之前，应用程序发生崩溃，该消息会在应用程序重新启动时重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 通常可使用消息的 **getMessageId** 方法实现此操作，这在多个传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 删除主题和订阅的主要方法是使用 **ServiceBusContract** 对象。 删除某个主题也会删除向该主题注册的所有订阅。 也可以单独删除订阅。
@@ -258,11 +257,10 @@ service.deleteTopic("TestTopic");
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter 
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.filters.sqlfilter
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.filters.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
 [2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
 [3]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-09.png
-

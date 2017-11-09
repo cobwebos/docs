@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/08/2017
 ms.author: anbacker
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 5772334aade138101730fa7345f4515664d6d22f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple Manager 服务查看和管理 StorSimple 警报
 ## <a name="overview"></a>概述
@@ -203,5 +202,4 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 错误以及如何排查运行中设备的问题](storsimple-troubleshoot-operational-device.md)。
-
 

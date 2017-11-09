@@ -14,12 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: evboyle
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -59,7 +58,7 @@ ms.lasthandoff: 04/27/2017
 使用以下方法之一下载该示例。
 
 1. 转到 [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo)。
-2. 单击“下载 ZIP” ，保存该 .zip 文件，然后解压缩其包含的所有文件。
+2. 单击“下载 ZIP” ，保存该 .zip 文件，并解压缩其包含的所有文件。
 
 将对此文件夹中的文件进行所有后续文件修改并运行语句。
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 04/27/2017
 
 管理密钥授予对所有服务操作的完全控制权限，包括创建或删除索引，以及加载文档。 与此相反，查询密钥用于只读操作，通常由连接到 Azure 搜索的客户端应用程序所使用。
 
-在此示例中，将查询密钥包含在内，以帮助增强在客户端应用程序中使用查询密钥的最佳实践。
+在此示例中，查询密钥包含在内，以帮助增强在客户端应用程序中使用查询密钥的最佳实践。
 
 以下屏幕截图显示在文本编辑器中打开的 **config.js** ，并界定相关项，以便查看在何处可以使用搜索服务的有效值更新文件。
 
@@ -90,7 +89,7 @@ ms.lasthandoff: 04/27/2017
 4. 将浏览器指向 `http://localhost:8080/index.html`
 
 ## <a name="search-on-usgs-data"></a>搜索 USGS 数据
-USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中单击“搜索”，按照默认设置，将获得前 50 个条目。
+USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中单击“搜索”，按照默认设置，会获得前 50 个条目。
 
 输入搜索词，为搜索引擎提供可搜索的内容。 尝试输入区域名称。 “Roger Williams”是罗得岛的第一任州长。 许多公园、建筑和学校都以他的名字命名。
 
@@ -103,7 +102,7 @@ USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中�
 * goose +cape
 
 ## <a name="next-steps"></a>后续步骤
-这是第一个基于 Node.js 和 USGS 数据集的 Azure 搜索教程。 日后，本教程将进一步扩展，演示自定义解决方案中可能想要使用的其他搜索功能。
+这是第一个基于 Node.js 和 USGS 数据集的 Azure 搜索教程。 日后，本教程会进一步扩展，演示自定义解决方案中可能要使用的其他搜索功能。
 
 如果已对 Azure 搜索有一定的了解，可以将此教程用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。 还可以通过添加计数以及批处理文档，改进搜索结果页，以便用户可以翻阅结果。
 
@@ -115,4 +114,3 @@ USGS 数据集包含罗得岛州的相关记录。 如果在空白搜索框中�
 [3]: ./media/search-get-started-Nodejs/create-search-portal-3.PNG
 [5]: ./media/search-get-started-Nodejs/AzSearch-Nodejs-configjs.png
 [9]: ./media/search-get-started-Nodejs/rogerwilliamsschool.png
-

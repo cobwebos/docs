@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 54e092e4bb8d83a59d05d8aca2760f9098ecd548
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 781d06d2a8234d4cedf546ef059d49b7ece8783d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
-
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的联合单一登录
 
-若要配置非库应用程序，需要拥有 Azure AD Premium 和支持 SAML 2.0 的应用程序。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+若要为非库应用程序配置单一登录*而无需编写代码*，需要拥有订阅或 Azure AD Premium，并且该应用程序必须支持 SAML 2.0。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="overview-of-steps-required"></a>所需步骤概述
-下面的内容从较高的级别概述了配置非库（例如：自定义）应用程序联合单一登录所需的步骤。
+下面从较高的级别概述了使用 SAML 2.0 配置非库（例如：自定义）应用程序联合单一登录所需的步骤。
 
--   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、回复 URL）](#_Configuring_single_sign-on)
+-   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）](#_Configuring_single_sign-on)
 
 -   [选择用户标识符，并添加要发送给应用程序的用户属性](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
@@ -64,9 +62,9 @@ ms.lasthandoff: 06/20/2017
 
 11. 在“域和 URL”中输入所需的值。 应从应用程序供应商处获取这些值。
 
-   1. 若要将应用程序配置为 IdP 启动的 SSO，请输入“回复 URL”和“标识符”。
+   1. 要将应用程序配置为 IdP 启动的 SSO，请输入“回复 URL”和“标识符”。
 
-   2. **可选：**若要将应用程序配置为 SP 启动的 SSO，“登录 URL”是必需值。
+   2. **可选：**要将应用程序配置为 SP 启动的 SSO，“登录 URL”是必需值。
 
 12. 在“用户属性”的“用户标识符”下拉列表中，为用户选择唯一标识符。
 
@@ -136,13 +134,13 @@ ms.lasthandoff: 06/20/2017
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  转到“SAML 签名证书”部分，然后单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
 Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
 
 ## <a name="assign-users-to-the-application"></a>将用户分配到应用程序
 
-若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
@@ -184,4 +182,3 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
-

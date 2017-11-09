@@ -15,12 +15,11 @@ ms.date: 06/23/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: e9b8504d4a59cf0fae69a4e975d6f834028066d5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 作为管理员，可以管理以下用户和设备设置：
@@ -80,4 +79,3 @@ Azure 多重身份验证的可配置功能之一是为用户提供将设备标�
 - 获取有关如何[配置 Azure 多重身份验证设置](multi-factor-authentication-whats-next.md)的详细信息
 
 - 如果用户需要帮助，可让其参阅[双重验证用户指南](./end-user/multi-factor-authentication-end-user.md)
-

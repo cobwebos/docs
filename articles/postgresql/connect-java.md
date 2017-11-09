@@ -11,14 +11,12 @@ ms.custom: mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 93ee612764e8f74943e0a847969fb1220b3bdee1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: ca51cc33561817e36ebaba9a9146bebf9d5d5d96
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Java 进行连接并查询数据
 本快速入门演示了如何使用 Java 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Java 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
@@ -27,7 +25,7 @@ ms.lasthandoff: 06/26/2017
 - [创建 DB - 门户](quickstart-create-server-database-portal.md)
 - [创建 DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-你还需要：
+还需要：
 - 下载与 Java 版本和 Java 开发工具包匹配的 [PostgreSQL JDBC 驱动程序](https://jdbc.postgresql.org/download.html)。
 - 在应用程序类路径中包括 PostgreSQL JDBC jar 文件（例如 postgresql-42.1.1.jar）。 有关详细信息，请参阅[类路径详细信息](https://jdbc.postgresql.org/documentation/head/classpath.html)。
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 06/26/2017
 5. 如果忘了服务器的登录信息，请导航到“概览”页，以查看服务器管理员登录名并重置密码（如果需要）。
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
-通过以下代码进行连接，然后使用函数和 **INSERT** SQL 语句加载数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接、删除和创建表。 使用 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法为每组参数运行该命令。 
+通过以下代码进行连接，然后使用函数和 INSERT SQL 语句将数据加载到数据库。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接到数据库、删除和创建表。 使用 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法为每组参数运行该命令。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
 
@@ -142,7 +140,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码，通过 **SELECT** SQL 语句读取数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接、创建和运行 select 语句。 结果使用 [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) 对象处理。 
+使用以下代码，通过 **SELECT** SQL 语句读取数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接到数据库、创建和运行 select 语句。 结果使用 [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) 对象处理。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
 
@@ -229,7 +227,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码，通过 **UPDATE** SQL 语句更改数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法来连接、准备和运行 update 语句。 
+使用以下代码，通过 **UPDATE** SQL 语句更改数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法来连接到数据库、准备和运行 update 语句。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
 
@@ -309,7 +307,7 @@ public class UpdateTable {
 }
 ```
 ## <a name="delete-data"></a>删除数据
-使用以下代码，通过 **DELETE** SQL 语句删除数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法来连接、准备和运行 delete 语句。 
+使用以下代码，通过 **DELETE** SQL 语句删除数据。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法来连接到数据库、准备和运行 delete 语句。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
 
@@ -391,4 +389,3 @@ public class DeleteTable {
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
-

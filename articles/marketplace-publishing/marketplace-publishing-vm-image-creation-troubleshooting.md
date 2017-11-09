@@ -14,15 +14,14 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: hascipio; v-divte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
 ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>如何对 VHD 创建期间遇到的常见问题进行故障排除
-提供本文的目的是在发布或管理虚拟机解决方案时，帮助可能遇到问题或有常见问题的 Azure Marketplace 发布者和/或联合管理员。
+提供本文的目的是在发布或管理虚拟机解决方案时，帮助可能遇到问题或有常见问题的 Azure 应用商店发布者和/或联合管理员。
 
 1. 如何更改主机名称？
    
@@ -49,7 +48,7 @@ ms.lasthandoff: 03/31/2017
 8. 如何使用上传到高级存储的 VHD 在 Azure 门户中创建 VM？
    
    我们尚不支持此功能。
-9. Azure Marketplace 支持 32 位应用吗？
+9. Azure 应用商店支持 32 位应用吗？
    
    有关支持策略的详细信息，请参阅以下链接：[https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 10. 每当我尝试从 VHD 中创建图像时，都会在 PowerShell 中收到错误“VHD 已通过图像存储库注册为资源”。 我之前没有创建任何图像，也没在 Azure 中找到任何带有此名称的图像。 如何解决此问题？

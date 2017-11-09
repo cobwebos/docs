@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>教程：使用 R 扩展 U-SQL 入门
 
 以下示例演示了用于部署 R 代码的基本步骤：
@@ -106,7 +104,7 @@ ms.lasthandoff: 06/20/2017
 * U-SQL 数据集不能有重复的列名称。
 * U-SQL 数据集列名称必须是字符串。
 * U-SQL 和 R 脚本中的列名称必须相同。
-* 只读列不能是输出数据框的一部分。 因为如果只读列是 UDO 输出架构的一部分，这些列将自动重新注入到 U-SQL 表中。
+* 只读列不能是输出数据框的一部分。 因为如果只读列是 UDO 输出架构的一部分，这些列会自动重新注入到 U-SQL 表中。
 
 ### <a name="functional-limitations"></a>功能限制
 * 在同一进程中，R 引擎不能实例化两次。 
@@ -169,11 +167,11 @@ ms.lasthandoff: 06/20/2017
 分配给每个顶点的内存量受限。 因为输入和输出 DataFrames 必须存在于 R 代码的内存中，因此输入和输出的总大小不能超过 500 MB。
 
 ### <a name="sample-code"></a>代码示例
-在安装 U-SQL Advanced Analytics 扩展后，你的 Data Lake Store 帐户中将会提供更多的示例代码。 更多示例代码的路径为：`<your_account_address>/usqlext/samples/R`。 
+在安装 U-SQL Advanced Analytics 扩展后，Data Lake Store 帐户中会提供更多的示例代码。 更多示例代码的路径为：`<your_account_address>/usqlext/samples/R`。 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>使用 U-SQL 部署自定义 R 模块
 
-首先，创建一个 R 自定义模块并将其压缩为 zip 文件，然后将压缩后的 R 自定义模块文件上传到你的 ADL 存储。 在示例中，我们将 magittr_1.5.zip 上传到我们使用的 ADLA 帐户的默认 ADLS 帐户的根目录中。 将模块上传到 ADL 存储后，对其进行声明并使用 DEPLOY RESOURCE 使其在 U-SQL 脚本中可用，然后调用 `install.packages` 来安装它。
+首先，创建一个 R 自定义模块并将其压缩为 zip 文件，然后将压缩后的 R 自定义模块文件上传到 ADL 存储。 在示例中，我们将 magittr_1.5.zip 上传到我们使用的 ADLA 帐户的默认 ADLS 帐户的根目录中。 将模块上传到 ADL 存储后，对其进行声明并使用 DEPLOY RESOURCE 使其在 U-SQL 脚本中可用，然后调用 `install.packages` 来安装它。
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -216,4 +214,3 @@ ms.lasthandoff: 06/20/2017
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
-

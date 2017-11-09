@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
 ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Azure Mobile Engagement Android SDK 的高级配置
 > [!div class="op_single_selector"]
@@ -38,7 +37,7 @@ ms.lasthandoff: 11/17/2016
 ## <a name="permission-requirements"></a>权限要求
 在特定功能中，有些选项需要特定权限（在此一并列出以供参考）以及内联。 将这些权限添加到项目 AndroidManifest.xml 的 `<application>` 标记之前或之后。
 
-权限代码需如下类似格式，你可以根据下表填入相应权限。
+权限代码需如下类似格式，可以根据下表填入相应权限。
 
     <uses-permission android:name="android.permission.[specific permission]"/>
 
@@ -73,7 +72,7 @@ ms.lasthandoff: 11/17/2016
 突发模式虽然会略微增加电池寿命，但将对 Engagement 监视器造成影响：所有会话和作业持续时间均被取整为突发阈值（因此，短于突发阈值的会话和作业可能不可见）。 突发阈值不应长于 30000（30 秒）。
 
 ### <a name="session-timeout"></a>会话超时
- 可通过按 **Home** 键或 **Back** 键，设置手机空闲或跳转至其他应用程序来结束某个活动。 默认情况下，会话将在其最后一个活动结束 10 秒后结束。 这可避免用户每次快速退出和返回应用程序时的会话拆分（用户在执行选取图像、检查通知等操作时可能出现此问题）。你可能需要修改这个参数。 若要执行此操作，请在 `<application>` 和 `</application>` 标记间添加此代码：
+ 可通过按 **Home** 键或 **Back** 键，设置手机空闲或跳转至其他应用程序来结束某个活动。 默认情况下，会话会在其最后一个活动结束 10 秒后结束。 这可避免用户每次快速退出和返回应用程序时的会话拆分（用户在执行选取图像、检查通知等操作时可能出现此问题）。可能需要修改这个参数。 若要执行此操作，请在 `<application>` 和 `</application>` 标记间添加此代码：
 
     <meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 11/17/2016
 ### <a name="integration-in-your-own-preferenceactivity"></a>在自己的 `PreferenceActivity` 中集成
 如不调用此函数，还可以在现有的 `PreferenceActivity` 中直接集成此设置。
 
-你可在 `AndroidManifest.xml` 文件中使用 `application meta-data`，配置 Engagement，以使用首选项文件：
+可在 `AndroidManifest.xml` 文件中使用 `application meta-data`，配置 Engagement，以使用首选项文件：
 
 * `engagement:agent:settings:name` 关键字用于定义共享的首选项文件的名称。
 * `engagement:agent:settings:mode` 关键字用于定义共享的首选项文件的模式。 使用与 `PreferenceActivity` 中相同的模式。 该模式必须以数字传递：如果在代码中使用常量标志的组合，请检查总值。
@@ -118,4 +117,3 @@ Engagement 在首选项文件内始终使用 `engagement:key` 布尔型关键字
       android:title="Use Engagement"
       android:summaryOn="Engagement is enabled."
       android:summaryOff="Engagement is disabled." />
-

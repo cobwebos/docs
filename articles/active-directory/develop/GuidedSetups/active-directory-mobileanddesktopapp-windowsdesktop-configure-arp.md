@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 5e83171846517496e221f0a84565cdf7b77514df
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 在此步骤中，需要将应用程序 ID 添加到项目。
 
@@ -35,4 +33,3 @@ private static string ClientId = "[Enter the application Id here]";
 ### <a name="what-is-next"></a>后续操作
 
 [测试和验证](active-directory-mobileanddesktopapp-windowsdesktop-test.md)
-

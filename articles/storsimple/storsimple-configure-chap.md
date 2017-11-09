@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>为 StorSimple 设备配置 CHAP
 本教程介绍如何为 StorSimple 设备配置 CHAP。 本文详述的过程适用于 StorSimple 8000 系列和 StorSimple 1200 设备。
@@ -47,7 +46,7 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 1. 在 Azure 经典门户的“设备”页上，单击“配置”选项卡。
    
     ![CHAP 发起程序](./media/storsimple-configure-chap/IC740943.png)
-2. 在此页上向下滚动，然后在“CHAP 发起程序”部分执行以下操作：
+2. 在此页上向下滚动，并在“CHAP 发起程序”部分执行以下操作：
    
    1. 提供 CHAP 发起程序的用户名。
    2. 提供 CHAP 发起程序的密码。
@@ -92,13 +91,13 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 有关在 Windows 主机服务器上配置 CHAP 的详细信息，请转到[其他注意事项](#additional-considerations)。
 
 ## <a name="bidirectional-or-mutual-authentication"></a>双向或相互身份验证
-在双向身份验证中，目标会对发起程序进行身份验证，然后发起程序也对目标进行身份验证。 这要求用户配置 CHAP 发起程序设置，在设备上配置反向 CHAP 设置，以及在主机上配置 iSCSI 发起程序软件。 以下过程介绍在设备和 Windows 主机上配置相互身份验证的步骤。
+在双向身份验证中，目标会对发起程序进行身份验证，并发起程序也对目标进行身份验证。 这要求用户配置 CHAP 发起程序设置，在设备上配置反向 CHAP 设置，以及在主机上配置 iSCSI 发起程序软件。 以下过程介绍在设备和 Windows 主机上配置相互身份验证的步骤。
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>配置设备的相互身份验证
 1. 在 Azure 经典门户的“设备”页上，单击“配置”选项卡。
    
     ![CHAP 目标](./media/storsimple-configure-chap/IC740948.png)
-2. 在此页上向下滚动，然后在“CHAP 目标”部分执行以下操作：
+2. 在此页上向下滚动，并在“CHAP 目标”部分执行以下操作：
    
    1. 提供设备的“反向 CHAP 用户名”。
    2. 提供设备的“反向 CHAP 密码”。
@@ -161,5 +160,4 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple 安全性](storsimple-security.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
 

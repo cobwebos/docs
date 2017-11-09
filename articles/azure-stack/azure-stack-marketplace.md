@@ -1,6 +1,6 @@
 ---
-title: Publish a custom marketplace item in Azure Stack (cloud operator) | Microsoft Docs
-description: As a cloud operator, learn how to publish a custom marketplace item in Azure Stack.
+title: "Azure 堆栈 （云操作员） 中发布的自定义应用商店项 |Microsoft 文档"
+description: "作为 Azure 堆栈操作员，了解如何在 Azure 堆栈中发布的自定义应用商店项。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,34 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be61e746d97fbce166f44262fcc33e2f7118fd82
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.openlocfilehash: 7b5f976eb2d51eb86761a2bd0be6adb45ca87681
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="the-azure-stack-marketplace-overview"></a>The Azure Stack Marketplace overview
-The Marketplace is a collection of services, applications, and resources customized for Azure Stack, like networks, virtual machines, storage, and so on. Users come here to create new resources and deploy new applications. Think of it as a shopping catalog where users can browse and choose the items they want to use. To use a Marketplace item, users must subscribe to an offer that grants them access to the item.
+# <a name="the-azure-stack-marketplace-overview"></a>Azure 堆栈应用商店概述
 
-As a cloud operator, you decide which items to add (publish) to the Marketplace. You can publish things like databases, App Services, and so on. This makes them visible to all your users. You can publish custom items that you create. You can also publish items from a growing [list of Azure Marketplace items](azure-stack-marketplace-azure-items.md). When you publish an item to the Marketplace, users can see it within five minutes.
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-To open the Marketplace, click **New**.
+应用商店是服务、 应用程序和自定义 Azure 堆栈，如网络、 虚拟机、 存储和等等的资源的集合。 用户到这里来创建新资源和部署新的应用程序。 可以将它视为购物目录用户可以浏览并选择他们想要使用的项。 若要使用的应用商店项，用户必须订阅向其授予了对项的访问的产品。
+
+作为 Azure 堆栈操作员，你决定要添加的项 （发布） 到应用商店。 你可以发布如数据库、 应用程序服务和等等。 这使它们对所有用户可见。 你可以发布创建的自定义项。 你也可以发布项从一个不断增长[的 Azure 应用商店项目列表](azure-stack-marketplace-azure-items.md)。 在将项发布到应用商店，用户可以看到它在五分钟内。
+
+若要打开应用商店，请单击**新建**。
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
-## <a name="marketplace-items"></a>Marketplace items
-An Azure Stack Marketplace item is a service, application, or resource that your users can download and use. All Azure Stack Marketplace items are visible to all your users.
+## <a name="marketplace-items"></a>应用商店项
+Azure 堆栈应用商店项是服务、 应用程序或你的用户可以下载和使用的资源。 Azure 堆栈应用商店的所有项都都对所有用户可见。
 
-Every Marketplace item has:
+每个应用商店项具有：
 
-* An Azure Resource Manager template for resource provisioning
-* Metadata, like strings, icons, and other marketing collateral
-* Formatting information to display the item in the portal
+* 资源设置的 Azure 资源管理器模板
+* 元数据，如字符串、 图标和其他市场宣传资料
+* 若要显示在门户中的项的格式设置信息
 
-Every item published to the Marketplace uses a format called the Azure Gallery Package (azpkg). Add deployment or runtime resources (like code, zip files with software, or virtual machine images) to Azure Stack separately, not as part of the Marketplace Item. 
+发布到应用商店的每一项使用的格式称为 Azure 库包 (azpkg)。 部署或运行时将资源添加 （与代码一样，使用软件或虚拟机映像的 zip 文件） 到 Azure 堆栈单独，不是应用商店项目的一部分。 
 
-## <a name="next-steps"></a>Next steps
-[Create and publish a marketplace item](azure-stack-create-and-publish-marketplace-item.md)
-
+## <a name="next-steps"></a>后续步骤
+[创建和发布的应用商店项](azure-stack-create-and-publish-marketplace-item.md)
 

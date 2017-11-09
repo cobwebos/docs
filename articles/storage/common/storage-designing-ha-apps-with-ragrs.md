@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: tamram
+ms.openlocfilehash: 4100e8b90e37d6f4ab5123dfd682452c21c77998
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 2889faf7bfa86f40eb38c50f146bd59ecfb6001f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -38,19 +37,19 @@ Azure 存储为存储帐户中的数据冗余提供四个选项：
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS 的主要功能
 
-针对 RA-GRS 设计应用程序时，请记住以下要点：
+针对 RA-GRS 设计应用程序时，请注意下面这些要点：
 
 * Azure 存储在次要区域中保留主要区域中存储的数据的只读副本。 如上所述，存储服务确定次要区域的位置。
 
 * 只读副本与主要区域中的数据[最终一致](https://en.wikipedia.org/wiki/Eventual_consistency)。
 
-* 对于 blob、表和队列，可以从次要区域查询上次同步时间的值，了解上次从主要区域复制到次要区域的时间。 （Azure 文件存储不支持此操作，因为其目前不具有 RA-GRS 冗余。）
+* 对于 blob、表和队列，可以从次要区域查询上次同步时间的值，了解上次从主要区域复制到次要区域的时间。 （Azure 文件不支持此操作，因为其目前不具有 RA-GRS 冗余。）
 
 * 可以使用存储客户端库与主要或次要区域中的数据进行交互。 如果到主要区域的读取请求超时，还可将读取请求自动重定向到次要区域。
 
 * 如果存在影响主要区域中的数据可访问性的主要问题，Azure 团队可能会触发异地故障转移，此时指向主要区域的 DNS 条目将更改为指向次要区域。
 
-* 如果发生异地故障转移，Azure 将选择新的次要位置并将数据复制到该位置，然后将次要 DNS 条目指向该位置。 存储帐户复制完成之前，辅助终结点都不可用。 有关详细信息，请参阅 [What to do if an Azure Storage outage occurs](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance)（Azure 存储中断时应采取什么操作）。
+* 如果发生异地故障转移，Azure 将选择新的次要位置并将数据复制到该位置，并将次要 DNS 条目指向该位置。 存储帐户复制完成之前，辅助终结点都不可用。 有关详细信息，请参阅 [What to do if an Azure Storage outage occurs](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance)（Azure 存储中断时应采取什么操作）。
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>使用 RA-GRS 时的应用程序设计注意事项
 
@@ -68,7 +67,7 @@ Azure 存储为存储帐户中的数据冗余提供四个选项：
 
 尽管可能性不大，但当其他服务仍然完全可用时，某一个服务可能不可用。 可单独为每个服务（blob、队列、表）处理重试操作或只读模式，或者以一般方式为所有存储服务统一处理重试操作。
 
-例如，如果在应用程序中使用队列和 blob，可以使用单独的代码处理每个队列或 blob 的重试错误。 然后如果从 blob 服务中重试，但队列服务仍在工作，那么只有处理 blob 的应用程序部分会受到影响。 如果决定以一般方式处理所有存储服务重试操作，并使对 blob 服务的调用返回可重试错误，则对 blob 服务和队列服务的请求将受到影响。
+例如，如果在应用程序中使用队列和 blob，可以使用单独的代码处理每个队列或 blob 的重试错误。 然后如果从 blob 服务中重试，但队列服务仍在工作，那么只有应用程序处理 blob 的部分会受到影响。 如果决定以一般方式处理所有存储服务重试操作，并使对 blob 服务的调用返回可重试错误，则对 blob 服务和队列服务的请求将受到影响。
 
 从根本上讲，这取决于应用程序的复杂程度。 当检测到主要区域中的任何存储服务存在问题时，可以不按服务处理失败，而改为将对所有存储服务的读取请求重定向到次要区域，并在只读模式下运行应用程序。
 
@@ -98,7 +97,7 @@ Azure 存储为存储帐户中的数据冗余提供四个选项：
 
 1.  可以对用户进行响应，并告知他们当前不接受更新。 例如，联系人管理系统可使客户访问联系信息但不能进行更新。
 
-2.  可将更新放入另一区域进行排队。 在这种情况下，可将挂起的更新请求写入不同区域中的队列，然后在主数据中心再次联机后以某种方式处理这些请求。 在此方案中，应让客户知道更新请求已排队等待稍后处理。
+2.  可将更新放入另一区域进行排队。 在这种情况下，可将挂起的更新请求写入不同区域中的队列，并在主数据中心再次联机后以某种方式处理这些请求。 在此方案中，应让客户知道更新请求已排队等待稍后处理。
 
 3.  可将更新写入其他区域中的存储帐户。 然后在主数据中心重新联机后，可以某种方式将这些更新合并到主要数据中，具体取决于数据的结构。 例如，如果使用名称中的日期/时间戳创建单独的文件，可将这些文件复制回主要区域。 此操作适用于某些工作负荷，例如日志记录和 iOT 数据。
 
@@ -244,4 +243,3 @@ static function OnBeforeResponse(oSession: Session) {
 * 有关读取访问异地冗余的详细信息及如何设置 LastSyncTime 的另一示例，请参阅 [Windows Azure Storage Redundancy Options and Read Access Geo-Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)（Windows Azure 存储冗余选项和读取访问异地冗余存储）。
 
 * 有关如何在主终结点和辅助终结点之间来回切换的完整示例，请参阅 [Azure 示例 - 搭配使用断路器模式和 RA-GRS 存储](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)。
-

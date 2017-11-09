@@ -14,18 +14,18 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 41f978750ddef9f7e878c65b0017e909720154aa
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-本主题介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的关键功能。 这是一个开源项目，你可以在 [Java SDK] 查看完整的 SDK 代码。 
+本主题介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的关键功能。 这是一个开源项目，可以在 [Java SDK] 查看完整的 SDK 代码。 
 
-通常情况下，如 MSDN 主题[通知中心 REST API](http://msdn.microsoft.com/library/dn223264.aspx) 中所述，你可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。 此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。 
+通常情况下，如 MSDN 主题[通知中心 REST API](http://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。 此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。 
 
 SDK 当前支持：
 
@@ -48,7 +48,7 @@ SDK 当前支持：
 
 ## <a name="code"></a>代码
 ### <a name="notification-hub-cruds"></a>通知中心 CRUD
-**创建 NamespaceManager：**
+**NamespaceManager：**
 
     NamespaceManager namespaceManager = new NamespaceManager("connection string")
 
@@ -136,21 +136,21 @@ SDK 当前支持：
 所有集合查询都支持 $top 和继续标记。
 
 ### <a name="installation-api-usage"></a>安装 API 用法
-安装 API 是一种注册管理的替代机制。 其现在可以使用“单个”安装对象，而不是维护着多个注册，后者不但工作量较大，而且容易出错且效率低下。 安装包含你所需的一切：推送通道（设备标记）、标记、模板、辅助磁贴（用于 WNS 和 APNS）。 你不必再调用该服务以获取 ID - 只需生成 GUID 或任何其他标识符，将其保存在设备上并与推送通道（设备标记）一起发送到你的后端即可。 在后端，你应当只做一个调用：CreateOrUpdateInstallation，其完全是幂等的，因此，如果需要，可随时重试。
+安装 API 是一种注册管理的替代机制。 其现在可以使用“单个”安装对象，而不是维护着多个注册，后者不但工作量较大，而且容易出错且效率低下。 安装包含所需一切内容：推送通道（设备标记）、标记、模板、辅助磁贴（用于 WNS 和 APNS）。 不必再调用该服务以获取 ID - 只需生成 GUID 或任何其他标识符，将其保存在设备上并与推送通道（设备标记）一起发送到后端即可。 在后端，应当只做一个调用：CreateOrUpdateInstallation，其完全是幂等的，因此，如果需要，可随时重试。
 
 针对 Amazon Kindle Fire，示例如下：
 
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
 
-如果你希望进行更新： 
+如果希望进行更新： 
 
     installation.addTag("foo");
     installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
     installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
     hub.createOrUpdateInstallation(installation);
 
-对于高级方案，我们提供有部分更新功能，以允许仅修改安装对象的特定属性。 基本上，部分更新是你针对安装对象运行 JSON Patch 操作的子集。
+对于高级方案，我们提供有部分更新功能，以允许仅修改安装对象的特定属性。 部分更新本质上是可针对安装对象运行的 JSON Patch 操作的子集。
 
     PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
     PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
@@ -161,9 +161,9 @@ SDK 当前支持：
 
     hub.deleteInstallation(installation.getInstallationId());
 
-CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 你请求的操作会在调用期间进入系统队列并在后台执行。 请注意，Get 并不适用于主运行时方案，只适用于调试和故障排除，其会受到服务的严密限制。
+CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在调用期间进入系统队列并在后台执行。 请注意，Get 并不适用于主运行时方案，只适用于调试和故障排除，其会受到服务的严密限制。
 
-安装的发送流与注册的一样。 我们只是引入了一个选项以将通知锁定至特定安装 - 仅使用了标记 "InstallationId:{desired-id}"。 对于上述情况，其如下所示：
+安装的发送流与注册的一样。 我们只是引入了一个选项以将通知定向至特定安装 - 仅使用了标记“InstallationId:{desired-id}”。 对于上述情况，其如下所示：
 
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.sendNotification(n, "InstallationId:{installation-id}");
@@ -186,7 +186,7 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 你请求的操作会�
     hub.scheduleNotification(n, c.getTime());
 
 ### <a name="importexport-available-for-standard-tier"></a>导入/导出（可用于标准层）
-有时需要针对注册执行批量操作。 通常这是为了与另一个系统集成，或只是一个大规模修复以更新标记。 如果涉及到数以千计的注册，强烈不建议使用 Get/Update 流。 导入/导出功能专门针对以下方案设计。 基本上，你会在存储帐户下提供对一些 BLOB 容器的访问权限作为传入数据的源和输出的位置。
+有时需要针对注册执行批量操作。 通常这是为了与另一个系统集成，或只是一个大规模修复以更新标记。 如果涉及到数以千计的注册，强烈不建议使用 Get/Update 流。 导入/导出功能专门针对以下方案设计。 基本上，会在存储帐户下提供对一些 BLOB 容器的访问权限作为传入数据的源和输出的位置。
 
 **提交导出作业：**
 
@@ -217,10 +217,10 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 你请求的操作会�
 
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**使用 SAS 签名的 URI：**这是某些 BLOB 文件或 BLOB 容器的 URL，加上一组参数（例如权限和到期日期），再加上使用帐户的 SAS 密钥生成的所有这些内容的签名。 Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。 作为简单的替代，你可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
+**使用 SAS 签名的 URI：**这是某些 BLOB 文件或 BLOB 容器的 URL，加上一组参数（例如权限和到期日期），再加上使用帐户的 SAS 密钥生成的所有这些内容的签名。 Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。 作为简单的替代，可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
 
 ### <a name="send-notifications"></a>发送通知
-通知对象只有带有标头的正文，一些实用工具方法可帮助你构建本机和模板通知对象。
+通知对象只是一个带标头的正文，而一些实用工具方法有助于构建本机和模板通知对象。
 
 * **Windows 应用商店和 Windows Phone 8.1（非 Silverlight）**
   
@@ -271,29 +271,23 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 你请求的操作会�
 
 运行 Java 代码，现在应该生成显示在目标设备上的通知。
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>后续步骤
-在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 从这里你可以：
+## <a name="next-steps"></a>后续步骤
+在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 从这里可以：
 
 * 下载完整的 [Java SDK]，其中包含完整的 SDK 代码。 
 * 播放示例：
   * [通知中心入门]
   * [发送突发新闻]
   * [发送本地化的突发新闻]
-  * [将通知发送到经身份验证的用户]
-  * [将跨平台通知发送到经身份验证的用户]
+  * [发送通知到经身份验证的用户]
+  * [发送跨平台通知到经身份验证的用户]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[入门教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Get started tutorial]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [通知中心入门]: http://www.windowsazure.com/manage/services/notification-hubs/getting-started-windows-dotnet/
 [发送突发新闻]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-dotnet/
 [发送本地化的突发新闻]: http://www.windowsazure.com/manage/services/notification-hubs/breaking-news-localized-dotnet/
-[将通知发送到经身份验证的用户]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
-[将跨平台通知发送到经身份验证的用户]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+[发送通知到经身份验证的用户]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users/
+[发送跨平台通知到经身份验证的用户]: http://www.windowsazure.com/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 [Maven]: http://maven.apache.org/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

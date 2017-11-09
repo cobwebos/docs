@@ -3,7 +3,7 @@
 | 类别 | 限制 |
 | --- | --- |
 | 目录 |单个用户只能与最多 20 个 Azure Active Directory 目录相关联。<br />可能的组合的示例： <ul> <li>单个用户创建了 20 个目录。</li><li>单个用户以成员身份添加到 20 个目录。</li><li>单个用户创建了 10 个目录，之后其他人又将该用户添加到 10 个不同的目录。</li></ul> |
-| 对象 |<ul><li>Azure Active Directory 免费版用户最多可以在单个目录中使用 500,000 个对象。</li><li>非管理员用户最多可以创建 250 个对象。</li></ul> |
+| 对象 |<ul><li>Azure Active Directory 免费版用户最多可以在单个目录中创建 500,000 个对象。</li><li>非管理员用户最多可以创建 250 个对象。</li></ul> |
 | 架构扩展 |<ul><li>String 类型扩展最多只能有 256 个字符。 </li><li>Binary 类型扩展限制在 256 字节以内。</li><li>100 扩展值（在 ALL 类型和 ALL 应用程序中）可以编写到任何单一对象中。</li><li>仅“用户”、“组”、“TenantDetail”、“设备”、“应用程序”和“ServicePrincipal” 实体可以用“String”类型或“Binary”类型单一值属性进行扩展。</li><li>架构扩展仅在 Graph API 1.21 预览版中可用。 必须授予应用程序编写访问注册扩展的权限。</li></ul> |
 | 应用程序 |最多有 100 位用户可以是单一应用程序的所有者。 |
 | 组 |<ul><li>最多有 100 位用户可以是单一组的所有者。</li><li>Azure Active Directory 中的单个组可以具有任意数量的对象。</li><li>使用 Azure Active Directory 目录同步 (DirSync) 时，一个小组中从本地 Active Directory 同步到 Azure Active Directory 的成员数目仅限 15000。</li><li>使用 Azure AD Connect 时，一个小组中从本地 Active Directory 同步到 Azure Active Directory 的成员数目仅限 50000。</li></ul> |

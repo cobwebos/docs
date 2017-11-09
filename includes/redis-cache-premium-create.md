@@ -1,4 +1,4 @@
-若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com)，然后单击“新建” > “数据库” > “Redis 缓存”。
+要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com)，并单击“新建” > “数据库” > “Redis 缓存”。
 
 ![创建缓存](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
@@ -9,5 +9,5 @@
 
 若要配置高级功能，请先在“定价层”下拉列表中选择一个高级定价层。 若要详细了解每个定价层，请单击“查看全部定价详细信息”，并从“选择你的定价层”边栏选项卡中选择一个定价层。
 
-![选择你的定价层](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
+![选择定价层](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

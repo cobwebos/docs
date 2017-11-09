@@ -11,7 +11,7 @@
 
     ![确认删除](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance2.png)
 
-6. 设备删除后，你将收到通知。
+6. 设备删除后，将收到通知。
 
     ![成功删除设备的通知](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance4.png)
 

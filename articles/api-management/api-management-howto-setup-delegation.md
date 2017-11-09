@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 0be893406c6a20193b10b728fff2cec06f562069
-ms.lasthandoff: 12/20/2016
-
-
+ms.openlocfilehash: 2637ab6405f2d4ea1da84981295a144874dfa4f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
-可以通过委派使用现有网站处理开发人员的登录/注册和产品订阅事项，不需使用开发人员门户中的 内置功能。 这样就可以让你的网站拥有用户数据，并通过自定义方式对这些步骤进行验证。
+可以通过委派使用现有网站处理开发人员的登录/注册和产品订阅事项，不需使用开发人员门户中的 内置功能。 这样就可以让网站拥有用户数据，并通过自定义方式对这些步骤进行验证。
 
 ## <a name="delegate-signin-up"> </a>委派开发人员登录和注册
-若要将开发人员登录和注册委派给现有网站，需在站点上创建一个特殊的委派终结点，充当从 API 管理开发人员门户中发起的任何此类请求的入口点。
+要将开发人员登录和注册委派给现有网站，需在站点上创建一个特殊的委派终结点，充当从 API 管理开发人员门户中发起的任何此类请求的入口点。
 
 最终工作流将如下所示：
 
@@ -34,12 +33,12 @@ ms.lasthandoff: 12/20/2016
 3. 委派终结点反过来会重定向到 UI 或呈现该 UI，要求用户登录或注册
 4. 成功后，用户会重定向回一开始使用的 API 管理开发人员门户页
 
-一开始需先将 API 管理设置为通过委派终结点路由请求。 在 API 管理发布者门户中单击“安全”，然后单击“委派”选项卡。 单击启用“委派登录和注册”的复选框。
+一开始需先将 API 管理设置为通过委派终结点路由请求。 在 API 管理发布者门户中单击“安全”，并单击“委派”选项卡。单击启用“委派登录和注册”的复选框。
 
 ![“委派”页][api-management-delegation-signin-up]
 
 * 确定特殊委派终结点的 URL，将其输入“委派终结点 URL”字段中。 
-* 在”委派身份验证密钥”字段中输入一个密钥，该密钥将用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 单击“生成”按钮即可让 API 管理随机生成一个密钥。
+* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 单击“生成”按钮即可让 API 管理随机生成一个密钥。
 
 现在需创建“委派终结点”。 该终结点需执行多项操作：
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 12/20/2016
      > 
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
-3. 验证收到的是否为登录/注册请求：需将 **operation** 查询参数设置为“**SignIn**”。
+3. 验证收到的是否为登录/注册请求：需将 **operation** 查询参数设置为“SignIn”。
 4. 向用户提供登录或注册 UI
 5. 如果用户要注册，则需在 API 管理中为其创建相应的帐户。 请使用 API 管理 REST API [创建用户]。 这样做时，请确保将用户 ID 设置为与用户存储中的用户 ID 相同，或设置为可跟踪的 ID。
 6. 成功对用户进行身份验证以后，请执行以下操作：
@@ -92,7 +91,7 @@ ms.lasthandoff: 12/20/2016
 ## <a name="delegate-product-subscription"> </a>委派产品订阅
 委派产品订阅在操作起来与委派用户登录/注册类似。 最终工作流将如下所示：
 
-1. 开发人员在 API 管理开发人员门户中选择一个产品，然后单击“订阅”按钮
+1. 开发人员在 API 管理开发人员门户中选择一个产品，并单击“订阅”按钮
 2. 浏览器重定向到委派终结点
 3. 委派终结点执行所需的产品订阅步骤 - 这取决于用户，可能需要重定向到其他请求计费信息的页面，需要提问更多问题，或者只需存储信息而不需任何用户操作
 
@@ -125,7 +124,7 @@ ms.lasthandoff: 12/20/2016
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
 3. 根据在 **operation** 中请求的操作的类型（例如请求计费信息、提问更多问题，等等）进行产品订阅处理。
-4. 在你这一端成功为用户订阅产品以后，即可[调用产品订阅 REST API] 为用户订阅 API 管理产品。
+4. 在这一端成功为用户订阅产品以后，即可[调用产品订阅 REST API] 为用户订阅 API 管理产品。
 
 ## <a name="delegate-example-code"> </a> 示例代码
 这些代码示例演示了如何使用*委派验证密钥*，该密钥在发布者门户的“委派”屏幕中设置，用于创建 HMAC，后者随后又可用于验证签名，证明传递的 returnUrl 的有效性。 同样的代码也适用于 productId 和 userId，只需进行轻微修改。
@@ -180,4 +179,3 @@ var signature = digest.toString('base64');
 [示例代码在下面提供]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
-

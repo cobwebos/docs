@@ -12,20 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 10/11/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 264ea071dc0b15964af07c68cbf0dee896b07a3e
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="log-analytics-search-reference"></a>Log Analytics 搜索参考
 
 >[!NOTE]
-> 本文介绍 Log Analytics 中使用当前查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新语言的语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。
+> 本文介绍 Log Analytics 中使用旧查询语言的日志搜索。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新语言的语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。
 
 以下有关搜索语言的参考部分介绍常规查询语法选项，可用于搜索数据和筛选表达式，以帮助缩小搜索范围。 另外还介绍了可用于对检索到的数据执行操作的命令。
 
@@ -890,4 +889,3 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
 * 使用 [Log Analytics 中的自定义字段](log-analytics-custom-fields.md)扩展日志搜索。
-

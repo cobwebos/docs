@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: Mingfeiy;willzhan;Juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 25b4da6a555fa2a5e029eadbea45eb6148518e70
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 5b69e804809f834e81221fb2787a997a52dbe286
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务
 > [!div class="op_single_selector"]
@@ -43,7 +42,7 @@ ms.lasthandoff: 07/06/2017
 * castLabs 和 AMS 均内置了令牌身份验证。 以下部分讨论身份验证令牌。 
 * 客户端请求流式传输视频时，内容将使用**通用加密** (CENC) 进行动态加密，并由 AMS 动态打包成平滑流和 DASH。 我们还针对 HLS 流式处理协议提供 PlayReady M2TS 基本流加密。
 * PlayReady 许可证从 AMS 许可证服务器检索，而 Widevine 许可证则从 castLabs 许可证服务器检索。 
-* Media Player 将自动根据客户端平台功能决定要提取哪个许可证。 
+* Media Player 会自动根据客户端平台功能决定要提取哪个许可证。 
 
 ## <a name="authentication-token-generation-for-getting-a-license"></a>用于获取许可证的身份验证令牌生成
 castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令牌格式。 
@@ -64,7 +63,7 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 | 名称 | 说明 |
 | --- | --- |
-| optData |一个包含你的相关信息的 JSON 字符串。 |
+| optData |一个包含相关信息的 JSON 字符串。 |
 | crt |一个包含有关资源、其许可证信息和播放权限的信息的 JSON 字符串。 |
 | iat |用 epoch 表示的当前日期时间。 |
 | jti |有关此令牌的唯一标识符（每个令牌只能在 castLabs 系统中使用一次）。 |
@@ -112,5 +111,4 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

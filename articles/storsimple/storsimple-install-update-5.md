@@ -12,26 +12,26 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/25/2017
+ms.date: 10/10/2017
 ms.author: alkohli
+ms.openlocfilehash: 9d8dc7aebbeea7ad428be4af66e4e991f60c8301
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 51fdaae3359c4e341431477ec5079473c345c32d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
 
 ## <a name="overview"></a>概述
 
-本教程介绍如何通过 Azure 经典门户使用修补程序方法在运行早期软件版本的 StorSimple 设备上安装 Update 5。 如果是在 StorSimple 设备的非 DATA 0 网络接口上配置网关，且用户正在尝试从 pre-Update 1 软件版本进行更新，则可使用修补程序方法。
+本教程介绍如何通过 Azure 经典门户使用修补程序方法在运行早期软件版本的 StorSimple 设备上安装 Update 5。 若要尝试在运行预发行 Update 3 版本的设备上安装 Update 5，可使用修补程序方法。 如果在 StorSimple 设备的非 DATA 0 网络接口上配置网关，若要尝试从预发行 Update 1 软件版本更新，也可以使用修补程序方法。
 
 Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更新，以及磁盘固件更新。  设备软件、Spaceport、Storport、安全更新和其他 OS 更新是非中断性更新。 可通过 Azure 经典门户或修补程序方法应用非中断性更新或常规更新。 磁盘固件更新为中断性更新，在设备处于维护模式时，使用设备的 Windows PowerShell 接口通过修补程序方法进行应用。
 
 > [!IMPORTANT]
 > * 在安装之前需进行一组手动的和自动的预检查，以便确定设备在硬件状态和网络连接性方面的运行状况。 仅当用户从 Azure 门户应用更新时，才会执行这些预检查。
-> * 建议通过 Azure 经典门户安装软件更新和其他常规更新。 如果在门户中进行预更新网关检查失败，则只能转到设备的 Windows PowerShell 接口安装更新。 根据需从其进行更新的版本，安装更新可能需要 4 个小时（或更长时间）。 维护模式更新必须通过设备的 Windows PowerShell 接口进行安装。 由于维护模式更新为中断性更新，因此会导致设备停机。
+> * 如果要运行的版本低于 Update 3，强烈建议使用修补程序方法安装 Update 5。 若要让支持人员逐步指导如何更新，请[记录支持票证](storsimple-8000-contact-microsoft-support.md)。
+> * 若要运行 Update 3 及更高版本，建议通过 Azure 经典门户安装软件和其他常规更新。 根据需从其进行更新的版本，安装更新可能需要 4 个小时（或更长时间）。 维护模式更新必须通过设备的 Windows PowerShell 接口进行安装。 由于维护模式更新为中断性更新，因此会导致设备停机。
 > * 如果运行可选的 StorSimple Snapshot Manager，请确保在更新设备之前已将 Snapshot Manager 版本升级到 Update 5。
 
 
@@ -49,7 +49,7 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 * 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
 
-* 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4011837，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。
+* 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB4037263，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。
 
 ## <a name="install-update-5-as-a-hotfix"></a>将 Update 5 作为修补程序安装
 
@@ -63,7 +63,7 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 * Update 4
 
 > [!NOTE]
-> 建议通过 Azure 经典门户安装 Update 5。 如果用户在尝试通过 Azure 经典门户安装更新时进行网关检查失败，可使用此过程。 当将网关分配到非 DATA 0 网络接口且设备运行的是 Update 1 之前的软件版本时，检查会失败。
+> 建议通过 Azure 经典门户安装 Update 5。 不过，如果要运行的版本低于 Update 3，强烈建议使用此方法安装 Update 5。 此外，如果在尝试通过 Azure 经典门户安装更新时无法执行网关检查，也可以按照此过程操作。 当将网关分配到非 DATA 0 网络接口且设备运行的是 Update 1 之前的软件版本时，检查会失败。
 
 修补程序方法涉及以下三个步骤：
 
@@ -114,5 +114,4 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Update 5 版本](storsimple-update5-release-notes.md)的详细信息。
-
 

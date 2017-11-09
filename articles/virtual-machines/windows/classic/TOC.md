@@ -1,5 +1,5 @@
 # 概述
-## [关于虚拟机](../../virtual-machines-windows-about.md)
+## [关于虚拟机](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [磁盘和 VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [虚拟网络](../../../virtual-network/virtual-networks-overview.md)
 ## [常见问题](faq.md)
@@ -7,7 +7,7 @@
 ## [容器](../../virtual-machines-windows-containers.md)
 
 # 入门
-## [使用门户创建 VM](tutorial.md)
+## [使用 Azure 门户创建 VM](tutorial.md)
 ## [登录到 VM](connect-logon.md)
 ## [安装 Azure PowerShell](/powershell/azure/overview)
 ## [安装 Azure CLI](../../../cli-install-nodejs.md)
@@ -85,15 +85,15 @@
 ### [将虚拟硬盘附加到故障排除 VM](troubleshoot-recovery-disks-portal.md)
 
 # 引用
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [创建 Resource Manager 模板](../../../resource-group-authoring-templates.md)
 ## [社区模板](https://azure.microsoft.com/documentation/templates)
-## [计算 REST](/rest/api/compute)
-## [网络 REST](/rest/api)
-## [存储 REST](/rest/api/storageservices)
+## [计算 REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [网络 REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [存储 REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=compute)

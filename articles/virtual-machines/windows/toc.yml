@@ -33,13 +33,15 @@
       href: tutorial-virtual-network.md
     - name: 9 - 备份虚拟机
       href: tutorial-backup-vms.md
-    - name: 10 - 监视虚拟机
+    - name: 10 - 监视和更新 VM
       href: tutorial-monitoring.md
     - name: 11 - 管理 VM 安全性
       href: tutorial-azure-security.md
     - name: 12 - 团队服务 CI/CD
       href: tutorial-vsts-iis-cicd.md
-    - name: 13 - 使用 SSL 保护 Web 服务器
+    - name: 13 - 安装 SQL\IIS\.NET 堆栈
+      href: tutorial-iis-sql.md
+    - name: 14 - 使用 SSL 保护 Web 服务器
       href: tutorial-secure-web-server.md
 - name: 示例
   items:
@@ -55,10 +57,38 @@
       href: regions-and-availability.md
     - name: VM 类型和大小
       href: sizes.md
+      items:
+        - name: 常规用途
+          href: sizes-general.md
+          items:
+            - name: B 系列可突增
+              href: b-series-burstable.md
+        - name: 计算优化
+          href: sizes-compute.md
+        - name: 内存优化
+          href: sizes-memory.md
+        - name: 存储优化
+          href: sizes-storage.md
+        - name: GPU 优化
+          href: sizes-gpu.md
+          items:
+            - name: 安装 GPU 驱动程序
+              href: n-series-driver-setup.md
+        - name: 高性能计算
+          href: sizes-hpc.md
+        - name: Azure 计算单元 (ACU)
+          href: sizes-general.md
     - name: 维护和更新
       href: maintenance-and-updates.md
     - name: 存储
       href: about-disks-and-vhds.md
+      items:
+        - name: 高级存储
+          href: premium-storage.md
+        - name: 高级存储性能
+          href: premium-storage-performance.md
+        - name: 标准存储
+          href: standard-storage.md
     - name: 联网
       href: network-overview.md
     - name: 自动缩放应用程序
@@ -145,7 +175,7 @@
           href: prepare-for-upload-vhd-image.md
         - name: 使用通用映像
           href: create-vm-generalized-managed.md
-        - name: 使用专用映像
+        - name: 使用专用磁盘
           href: create-vm-specialized.md
         - name: 将 VM 捕获到映像
           href: capture-image-resource.md
@@ -163,6 +193,12 @@
           href: manage-availability.md
         - name: 纵向缩放
           href: vertical-scaling-automation.md
+        - name: 在可用性区域中创建 VM
+          items:
+            - name: PowerShell
+              href: create-powershell-availability-zone.md
+            - name: 门户
+              href: create-portal-availability-zone.md
     - name: 使用自动化工具
       items:
         - name: Chef
@@ -170,7 +206,7 @@
     - name: 运行应用程序
       items:
         - name: SQL Server
-          href: /sql/virtual-machines-windows-sql-server-iaas-overview
+          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
         - name: MongoDB
           href: install-mongodb.md
         - name: Azure 上的 SAP
@@ -206,12 +242,16 @@
           href: detach-disk.md
         - name: 调整磁盘大小
           href: expand-os-disk.md
+        - name: 磁盘的备份和灾难恢复
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 在“标准”和“高级”之间转换磁盘
           href: convert-disk-storage.md
+        - name: 使用 Azure Site Recovery 迁移到高级存储
+          href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: 使用文件存储
           href: mount-azure-file-storage.md
         - name: 使用模板部署磁盘
@@ -280,7 +320,7 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 从经典部署迁移到 Azure Resource Manager 部署
+        - name: 从经典部署迁移到 Azure 资源管理器部署
           href: migration-classic-resource-manager-overview.md
           items:
             - name: 深入了解迁移
@@ -338,11 +378,13 @@
               href: troubleshoot-recovery-disks-portal.md
         - name: 使用 PerfInsights
           href: how-to-use-perfInsights.md
+        - name: 性能诊断 VM 扩展
+          href: performance-diagnostics-vm-extension.md
 - name: 引用
   items:
     - name: Azure CLI
       href: /cli/azure/vm
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/azureps-cmdlets-docs
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute

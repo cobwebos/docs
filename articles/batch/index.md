@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
+ms.openlocfilehash: 2c5d43338ca5a672e33dc9474a7874eb9d113377
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: bf3e8b9e8976e2b68bc0da6a3beb1dacfaef6066
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
 #<a name="batch-documentation"></a>Batch 文档
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 07/21/2017
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.batch">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/">Node.js</a></p>
+                        <p><a href="/nodejs/api/overview/azure/batch">Node.js</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html">Python</a></p>
                     </div>
                 </div>
@@ -193,6 +192,5 @@ ms.lasthandoff: 07/21/2017
         </div>
     </li>
 </ul>
-
 
 

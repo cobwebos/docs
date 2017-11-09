@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 10/19/2017
 ms.author: billmath
+ms.openlocfilehash: cbedb87722d1c230f3b8003cadd069947881f25d
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 07063ea53e96c6467e40e8a7ca70e5c03ce53284
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
 
 ## <a name="how-to-deploy-azure-ad-pass-through-authentication"></a>如何部署 Azure AD 直通身份验证
@@ -29,7 +27,7 @@ ms.lasthandoff: 08/24/2017
 借助 Azure Active Directory (Azure AD) 直通身份验证证，你的用户可使用同一密码登录到本地应用程序和基于云的应用程序。 它通过直接针对本地 Active Directory 验证用户密码来登录用户。
 
 >[!IMPORTANT]
->Azure AD 直通身份验证目前处于预览状态。 如果一直通过预览版使用此功能，应确保使用[此处](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)提供的说明升级身份验证代理的预览版本。
+>如果一直通过预览版使用此功能，应确保使用[此处](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)提供的说明升级身份验证代理的预览版本。
 
 需要按照以下说明部署传递身份验证：
 
@@ -45,7 +43,11 @@ ms.lasthandoff: 08/24/2017
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
 1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，将在其上运行 Azure AD Connect。 将该服务器添加到需进行密码验证的用户所在的同一 AD 林。
-2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.557.0 或更高版本。
+2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.644.0 或更高版本。
+
+    >[!NOTE]
+    >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有**密码哈希同步**相关问题。 如果_不_打算将密码哈希同步与传递身份验证结合使用，请阅读 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)了解详细信息。
+
 3. 标识另一个运行 Windows Server 2012 R2 或更高版本的服务器，将在其上运行独立身份验证代理。 身份验证代理版本需为 1.5.193.0 或更高版本。 需要服务器来确保登录请求的高可用性。 将该服务器添加到需进行密码验证的用户所在的同一 AD 林。
 4. 如果服务器和 Azure AD 之间存在防火墙，则需配置以下项：
    - 确保身份验证代理可以通过以下端口向 Azure AD 提出“出站”请求：
@@ -89,7 +91,7 @@ Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
 
 ![Azure AD Connect — 用户登录](./media/active-directory-aadconnect-sso/sso3.png)
 
-如果已安装 Azure AD Connect（使用[快速安装](active-directory-aadconnect-get-started-express.md)或[自定义安装](active-directory-aadconnect-get-started-custom.md)路径），请在 Azure AD Connect 上选择“更改用户登录页”并单击“下一步”。 然后选择“直通身份验证”作为登录方法。 成功完成上述步骤后，将在 Azure AD Connect 所在的同一台服务器上安装直通身份验证代理，并在租户中启用该功能。
+如果已安装 Azure AD Connect（使用[快速安装](active-directory-aadconnect-get-started-express.md)或[自定义安装](active-directory-aadconnect-get-started-custom.md)路径），请在 Azure AD Connect 上选择“更改用户登录”任务并单击“下一步”。 然后选择“直通身份验证”作为登录方法。 成功完成上述步骤后，将在 Azure AD Connect 所在的同一台服务器上安装直通身份验证代理，并在租户中启用该功能。
 
 ![Azure AD Connect - 更改用户登录](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
@@ -130,10 +132,11 @@ Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
 >也可以从[此处](https://aka.ms/getauthagent)下载身份验证代理。 确保在安装身份验证代理_之前_查看并接受其[服务条款](https://aka.ms/authagenteula)。
 
 ## <a name="next-steps"></a>后续步骤
-- [**当前限制**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 此功能目前处于预览状态。 了解支持和不支持的方案。
+- [**智能锁定**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
+- [当前限制](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - 了解支持和不支持的方案。
 - [深入技术探究](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - 了解此功能如何运作。
 - [**常见问题**](active-directory-aadconnect-pass-through-authentication-faq.md) - 常见问题解答。
 - [故障排除](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [**深入了解安全性**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 有关该功能的其他深入技术信息。
 - [**Azure AD 无缝 SSO**](active-directory-aadconnect-sso.md) - 深入了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-

@@ -3,7 +3,7 @@
 选择其中一个与后端项目类型 [.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
 ### <a name="dotnet"></a>.NET 后端项目
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，然后单击“安装”。 将安装通知中心库，以便从后端发送通知。
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”。 将安装通知中心库，以便从后端发送通知。
 2. 在服务器项目中，打开“控制器” > “TodoItemController.cs”，使用以下语句进行添加：
 
         using System.Collections.Generic;

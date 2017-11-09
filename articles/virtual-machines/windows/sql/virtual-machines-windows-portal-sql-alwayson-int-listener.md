@@ -14,17 +14,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/01/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
 ms.openlocfilehash: 09fed7e785708d4afe64905de973becc188181d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>在 Azure 中为 Always On 可用性组配置负载均衡器
 本文说明如何在使用 Azure Resource Manager 运行的 Azure 虚拟机中为 SQL Server Always On 可用性组创建负载均衡器。 当 SQL Server 实例位于 Azure 虚拟机上时，AlwaysOn 可用性组需要负载均衡器。 负载均衡器存储可用性组侦听器的 IP 地址。 如果可用性组跨多个区域，则每个区域都需要一个负载均衡器。
 
-若要完成此任务，需要在使用 Resource Manager 运行的 Azure 虚拟机上部署一个 SQL Server 可用性组。 这两个 SQL Server 虚拟机必须属于同一个可用性集。 可以使用 [Microsoft 模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)在 Resource Manager 中自动创建可用性组。 此模板将自动创建内部负载均衡器。 
+若要完成此任务，需要在使用 Resource Manager 运行的 Azure 虚拟机上部署一个 SQL Server 可用性组。 这两个 SQL Server 虚拟机必须属于同一个可用性集。 可以使用 [Microsoft 模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)在 Resource Manager 中自动创建可用性组。 此模板会自动创建内部负载均衡器。 
 
 如果需要，可以[手动配置可用性组](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 05/13/2017
 
 2. 在资源组中，单击“添加”。
 
-3. 搜索“负载均衡器”，然后在搜索结果中选择 **Microsoft** 发布的“负载均衡器”。
+3. 搜索“负载均衡器”，并在搜索结果中选择 **Microsoft** 发布的“负载均衡器”。
 
 4. 在“负载均衡器”边栏选项卡上，单击“创建”。
 
@@ -71,7 +70,7 @@ ms.lasthandoff: 05/13/2017
    | **子网** |选择 SQL Server 实例所在的子网。 |
    | **IP 地址分配** |**静态** |
    | **专用 IP 地址** |指定子网中的某个可用 IP 地址。 在群集上创建侦听器时，将使用此 IP 地址。 本文稍后的 PowerShell 脚本会将此地址用于 `$ILBIP` 变量。 |
-   | **订阅** |如果你有多个订阅，可能会显示此字段。 选择要与此资源关联的订阅。 它通常是与可用性组的所有资源相同的订阅。 |
+   | **订阅** |如果有多个订阅，可能会显示此字段。 选择要与此资源关联的订阅。 它通常是与可用性组的所有资源相同的订阅。 |
    | **资源组** |选择 SQL Server 实例所在的资源组。 |
    | **位置** |选择 SQL Server 实例所在的 Azure 位置。 |
 
@@ -92,9 +91,9 @@ Azure 将后端地址池称作*后端池*。 在本例中，后端池是可用�
 
 5. 在“虚拟机”下，单击“添加虚拟机”。 
 
-6. 在“选择虚拟机”下，单击“选择可用性集”，然后指定 SQL Server 虚拟机所属的可用性集。
+6. 在“选择虚拟机”下，单击“选择可用性集”，并指定 SQL Server 虚拟机所属的可用性集。
 
-7. 选择可用性集后，请单击“选择虚拟机”，选择在可用性组中托管 SQL Server 实例的两个虚拟机，然后单击“选择”。 
+7. 选择可用性集后，请单击“选择虚拟机”，选择在可用性组中托管 SQL Server 实例的两个虚拟机，并单击“选择”。 
 
 8. 单击“确定”，关闭“选择虚拟机”和“添加后端池”边栏选项卡。 
 
@@ -124,7 +123,7 @@ Azure 将更新后端地址池的设置。 现在，可用性集具有包含两�
 > 
 > 
 
-Azure 创建探测，然后使用它来测试哪个 SQL Server 实例具有可用性组的侦听器。
+Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用性组的侦听器。
 
 ### <a name="step-4-set-the-load-balancing-rules"></a>步骤 4：设置负载均衡规则
 负载均衡规则设置负载均衡器将流量路由到 SQL Server 实例的方式。 对此负载均衡器，需要启用直接服务器返回，因为在两个 SQL Server 实例中，每次只有一个拥有可用性组侦听器资源。
@@ -168,7 +167,7 @@ Azure 创建探测，然后使用它来测试哪个 SQL Server 实例具有可�
 2. 使侦听器联机。
 
 ### <a name="step-5-create-the-availability-group-listener-on-the-failover-cluster"></a>步骤 5：在故障转移群集上创建可用性组侦听器
-在此步骤中，你在故障转移群集管理器和 SQL Server Management Studio 中手动创建可用性组侦听器。
+在此步骤中，在故障转移群集管理器和 SQL Server Management Studio 中手动创建可用性组侦听器。
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
@@ -176,14 +175,14 @@ Azure 创建探测，然后使用它来测试哪个 SQL Server 实例具有可�
 
 如果正确配置了群集资源和依赖项，应能够查看 SQL Server Management Studio 中的侦听器。 若要设置侦听器端口，请执行以下操作：
 
-1. 启动 SQL Server Management Studio，然后连接到主副本。
+1. 启动 SQL Server Management Studio，并连接到主副本。
 
 2. 转到“AlwaysOn 高可用性” > “可用性组” > “可用性组侦听器”。  
-    你现在应看到在故障转移群集管理器中创建的侦听器名称。 
+    现在应看到在故障转移群集管理器中创建的侦听器名称。 
 
-3. 右键单击侦听器名称，然后单击“属性”。
+3. 右键单击侦听器名称，并单击“属性”。
 
-4. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），然后单击“确定”。
+4. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），并单击“确定”。
 
 现在，在 Resource Manager 模式下运行的 Azure 虚拟机中有了一个可用性组。 
 
@@ -196,17 +195,17 @@ Azure 创建探测，然后使用它来测试哪个 SQL Server 实例具有可�
    
         sqlcmd -S <listenerName> -E
 
-SQLCMD 连接将自动连接到托管主副本的 SQL Server 实例。 
+SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。 
 
 ## <a name="create-an-ip-address-for-an-additional-availability-group"></a>为其他可用性组创建一个 IP 地址
 
 每个可用性组使用单独的侦听器。 每个侦听器都有自己的 IP 地址。 使用同一个负载均衡器以保留其他侦听器的 IP 地址。 创建可用性组后，请将 IP 地址添加到负载均衡器，然后配置侦听器。
 
-若要使用 Azure 门户将 IP 地址添加到负载均衡器，请执行以下操作：
+要使用 Azure 门户将 IP 地址添加到负载均衡器，请执行以下操作：
 
-1. 在 Azure 门户中，打开包含负载均衡器的资源组，然后单击负载均衡器。 
+1. 在 Azure 门户中，打开包含负载均衡器的资源组，并单击负载均衡器。 
 
-2. 在“设置”下面，单击“前端 IP 池”，然后单击“添加”。 
+2. 在“设置”下面，单击“前端 IP 池”，并单击“添加”。 
 
 3. 在“添加前端 IP 地址”下，为前端分配名称。 
 
@@ -231,7 +230,7 @@ SQLCMD 连接将自动连接到托管主副本的 SQL Server 实例。
 
 8. 单击“确定”保存探测。 
 
-9. 创建负载均衡规则。 单击“负载均衡规则”，然后单击“+ 添加”。
+9. 创建负载均衡规则。 单击“负载均衡规则”，并单击“+ 添加”。
 
 10. 使用以下设置配置新的负载均衡规则：
 
@@ -274,4 +273,3 @@ SQLCMD 连接将自动连接到托管主副本的 SQL Server 实例。
 ## <a name="next-steps"></a>后续步骤
 
 - [在位于不同区域的 Azure 虚拟机上配置 SQL Server Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-dr.md)
-

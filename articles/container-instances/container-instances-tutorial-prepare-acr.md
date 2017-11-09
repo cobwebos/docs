@@ -1,5 +1,5 @@
 ---
-title: "Azure 容器实例教程 - 准备 Azure 容器注册表 | Microsoft Docs"
+title: "Azure 容器实例教程 - 准备 Azure 容器注册表"
 description: "Azure 容器实例教程 - 准备 Azure 容器注册表"
 services: container-instances
 documentationcenter: 
@@ -14,20 +14,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/26/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: 8cb00210ee260383d546be4faf141c133661156b
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
-
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
-这是三部分教程的第二部分。 在[上一步](./container-instances-tutorial-prepare-app.md)中，介绍了如何为采用 [Node.js](http://nodejs.org) 编写的简单 Web 应用程序创建容器映像。 在本教程中，此映像会被推送到 Azure 容器注册表。 若尚未创建容器映像，请返回[教程 1 - 创建容器映像](./container-instances-tutorial-prepare-app.md)。 
+这是三部分教程的第二部分。 在[上一步](container-instances-tutorial-prepare-app.md)中，介绍了如何为采用 [Node.js](http://nodejs.org) 编写的简单 Web 应用程序创建容器映像。 在本教程中，会将此映像推送到 Azure 容器注册表。 若尚未创建容器映像，请返回[教程 1 - 创建容器映像](container-instances-tutorial-prepare-app.md)。
 
 Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注册表。 本教程演示了如何部署 Azure 容器注册表实例，并向其推送容器映像。 已完成的步骤包括：
 
@@ -40,7 +38,11 @@ Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.12 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+本教程要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
+
+若要完成本教程，需要 Docker 开发环境。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
+
+Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 因此，我们建议在本地安装 Azure CLI 和 Docker 开发环境。
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
 
@@ -62,7 +64,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 ## <a name="container-registry-login"></a>容器注册表登录
 
-在将映像推送到 ACR 实例之前必须先登录 ACR 实例。 使用 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login) 命令完成此操作。 需要提供创建容器注册表时所使用的唯一名称。
+在将映像推送到 ACR 实例之前必须先登录 ACR 实例。 使用 [az acr login](/cli/azure/acr#az_acr_login) 命令完成此操作。 必须提供创建容器注册表时所使用的唯一名称。
 
 ```azurecli
 az acr login --name <acrName>
@@ -87,7 +89,7 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-若要获取 loginServer 名称，请运行以下命令。
+要获取 loginServer 名称，请运行以下命令：
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -166,4 +168,3 @@ v1
 
 > [!div class="nextstepaction"]
 > [将容器部署到 Azure 容器实例](./container-instances-tutorial-deploy-app.md)
-

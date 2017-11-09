@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: ba390a5973ad33405f1d4217d60d7989f04db3b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>将数据移动到和移出 Azure 存储
 如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文将提供不同方案以及针对每个方案的适当产品/服务的快速概述。
@@ -78,4 +77,3 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 ### <a name="moving-data-faq"></a>数据移动常见问题解答：
 ## <a name="can-i-migrate-vhds-from-one-region-to-another-without-copying"></a>是否可以不复制即将 VHD 从一个区域迁移到另一个区域？
 若要在区域之间复制 VHD，唯一方法是各区域上的存储帐户之间复制数据。 可以使用 AZCopy 执行此操作。 请参阅使用 AzCopy 命令行实用程序传输数据了解详细信息。 对于量很大的数据，也可以使用 Azure 导入/导出。 请参阅 [Azure 导入/导出](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service)了解详细信息。
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: e1da8bce96078a43c656f84005cefc8bbe81c9e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-azure-virtual-machines-classic-portal"></a>备份 Azure 虚拟机（经典门户）
 > [!div class="op_single_selector"]
@@ -43,7 +42,7 @@ ms.lasthandoff: 08/03/2017
 ![备份 Azure IaaS VM 的三个步骤](./media/backup-azure-vms/3-steps-for-backup.png)
 
 > [!NOTE]
-> 备份虚拟机是在本地完成的过程。 你不能将一个区域的虚拟机备份到另一个区域的备份保管库。 因此，必须在每个要备份 VM 的 Azure 区域中创建一个备份保管库。
+> 备份虚拟机是在本地完成的过程。 不能将一个区域的虚拟机备份到另一个区域的备份保管库。 因此，必须在每个要备份 VM 的 Azure 区域中创建一个备份保管库。
 >
 > [!IMPORTANT]
 > 从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
@@ -53,7 +52,7 @@ ms.lasthandoff: 08/03/2017
 >
 
 ## <a name="step-1---discover-azure-virtual-machines"></a>步骤 1 - 发现 Azure 虚拟机
-为了确保在注册前能够识别任何添加到订阅中的新虚拟机 (VM)，请先运行发现过程。 该过程将在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。
+为了确保在注册前能够识别任何添加到订阅中的新虚拟机 (VM)，请先运行发现过程。 该过程会在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。
 
 1. 登录到[经典门户](http://manage.windowsazure.com/)
 2. 在 Azure 服务列表中，单击“**恢复服务**”打开备份和站点恢复保管库的列表。
@@ -74,7 +73,7 @@ ms.lasthandoff: 08/03/2017
 6. 单击页面底部的“**发现**”。
     ![发现按钮](./media/backup-azure-vms/discover-button-only.png)
 
-    发现过程可能会需要几分钟，将以表格显示虚拟机。 屏幕底部有一个通知，让你知道系统正在运行发现过程。
+    发现过程可能会需要几分钟，以表格显示虚拟机。 屏幕底部有一个通知，让你知道系统正在运行发现过程。
 
     ![发现 VM](./media/backup-azure-vms/discovering-vms.png)
 
@@ -82,7 +81,7 @@ ms.lasthandoff: 08/03/2017
 
     ![完成发现](./media/backup-azure-vms/discovery-complete.png)
 
-    发现新项后，请转到步骤 2 并注册你的 VM。
+    发现新项后，请转到步骤 2 并注册 VM。
 
 ## <a name="step-2---register-azure-virtual-machines"></a>步骤 2 - 注册 Azure 虚拟机
 注册 Azure 虚拟机即可将其与 Azure 备份服务相关联。 这通常是一次性活动。
@@ -114,7 +113,7 @@ ms.lasthandoff: 08/03/2017
     ![注册状态 2](./media/backup-azure-vms/register-status02.png)
 
 ## <a name="step-3---protect-azure-virtual-machines"></a>步骤 3 - 保护 Azure 虚拟机
-现在，你可以设置虚拟机的备份和保留策略。 只需单个保护操作即可保护多个虚拟机。
+现在，可以设置虚拟机的备份和保留策略。 只需单个保护操作即可保护多个虚拟机。
 
 2015 年 5 月之后创建的 Azure 备份保管库内置了默认策略。 此默认策略随附默认 30 天保留期和每日一次的备份计划。
 
@@ -124,18 +123,18 @@ ms.lasthandoff: 08/03/2017
     ![在门户中选择工作负荷](./media/backup-azure-vms/select-workload.png)
 3. 单击页面底部的“ **保护** ”。
 
-    此时将显示“**保护项向导**”。 此向导只列出已注册但不受保护的虚拟机。 选择要保护的虚拟机。
+    此时会显示“**保护项向导**”。 此向导只列出已注册但不受保护的虚拟机。 选择要保护的虚拟机。
 
     如果存在两个以上的同名虚拟机，请使用云服务来区别虚拟机。
 
    > [!TIP]
-   > 你可以一次保护多个虚拟机。
+   > 可以一次保护多个虚拟机。
    >
    >
 
     ![配置批量保护](./media/backup-azure-vms/protect-at-scale.png)
 
-4. 选择“**备份计划**”以备份所选虚拟机。 你可以从现有的一组策略中进行选择，也可以定义新的策略。
+4. 选择“**备份计划**”以备份所选虚拟机。 可以从现有的一组策略中进行选择，也可以定义新的策略。
 
     每个备份策略可以有多个关联的虚拟机。 但无论何时，该虚拟机只能与一个策略相关联。
 
@@ -150,7 +149,7 @@ ms.lasthandoff: 08/03/2017
 
     ![使用弹性保留期进行保护](./media/backup-azure-vms/policy-retention.png)
 
-    保留策略指定存储备份的时间长短。 你可以根据备份的时间指定不同的保留策略。 例如，每天创建的备份点（用作操作恢复点）可能只需保留 90 天。 相比而言，在每个季末创建的备份点可能需要保留数月甚至数年时间（用于审核目的）。
+    保留策略指定存储备份的时间长短。 可以根据备份的时间指定不同的保留策略。 例如，每天创建的备份点（用作操作恢复点）可能只需保留 90 天。 相比而言，在每个季末创建的备份点可能需要保留数月甚至数年时间（用于审核目的）。
 
     ![已使用恢复点备份虚拟机](./media/backup-azure-vms/long-term-retention.png)
 
@@ -167,7 +166,7 @@ ms.lasthandoff: 08/03/2017
     ![配置保护作业](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## <a name="initial-backup"></a>初始备份
-使用策略保护虚拟机后，虚拟机将会出现在“**受保护的项**”选项卡下，其状态为“*受保护 -（等待初始备份）*”。 默认情况下，第一个计划的备份是 *初始备份*。
+使用策略保护虚拟机后，虚拟机会出现在“**受保护的项**”选项卡下，其状态为“*受保护 -（等待初始备份）*”。 默认情况下，第一个计划的备份是 *初始备份*。
 
 若要在配置保护后立即触发初始备份，请执行以下操作：
 
@@ -183,7 +182,7 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-完成初始备份后，“**受保护的项**”选项卡中的虚拟机状态将显示为“*受保护*”。
+完成初始备份后，“**受保护的项**”选项卡中的虚拟机状态会显示为“*受保护*”。
 
 ![已使用恢复点备份虚拟机](./media/backup-azure-vms/protect-backedupvm.png)
 
@@ -198,6 +197,5 @@ ms.lasthandoff: 08/03/2017
 如果在备份虚拟机时遇到问题，请参阅 [VM 故障排除文章](backup-azure-vms-troubleshoot.md)以获取帮助。
 
 ## <a name="next-steps"></a>后续步骤
-* [管理和监视你的虚拟机](backup-azure-manage-vms.md)
+* [管理和监视虚拟机](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-restore-vms.md)
-

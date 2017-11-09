@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure 安全中心平台迁移
 
@@ -78,5 +77,4 @@ ms.lasthandoff: 07/24/2017
 - 需要启用“数据收集”功能，并且系统会为标准定价层的客户自动启用此功能。
 - Azure 安全中心开始发现未通过 Azure 扩展部署的反恶意软件解决方案。 首先提供关于 Symantec Endpoint Protection 和 Windows 2016 Defender 的发现。
 - 防护策略和通知只能在“通知”级别配置，但定价仍可在“资源组”级别设置
-
 

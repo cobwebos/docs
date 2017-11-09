@@ -3,7 +3,7 @@ title: "Azure 自动化混合 Runbook 辅助角色 | Microsoft Docs"
 description: "本文介绍如何安装和使用混合 Runbook 辅助角色，该角色是 Azure 自动化的一项功能，可以用于在本地数据中心或云提供商的计算机上运行 Runbook。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/21/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: 5697491ed62a3a2ed5b4762041a683ee97f42b1d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 67aa0f407fd669df559ce1a8d411650158462aef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。  利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。  
 
@@ -44,7 +42,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 可以使用以下条件来确定是带有混合 Runbook 辅助角色的 Azure 自动化还是 Service Management 自动化更适合要求。
 
 * 如果需要图形管理界面，SMA 要求在本地安装与 Windows Azure Pack 连接的基础组件。 SMA 需要其他一些本地资源，这些资源的维护成本高于 Azure 自动化，后者只需在本地 Runbook 辅助角色中安装一个代理。 代理由 Operations Management Suite 管理，这进一步降低了维护成本。
-* Azure 自动化在云中存储其 Runbook，然后将这些 Runbook 传送给本地混合 Runbook 辅助角色。 如果安全策略不允许此行为，则应使用 SMA。
+* Azure 自动化在云中存储其 Runbook，并将这些 Runbook 传送给本地混合 Runbook 辅助角色。 如果安全策略不允许此行为，则应使用 SMA。
 * System Center 随附了 SMA；因此，需要 System Center 2012 R2 的许可证。 Azure 自动化基于分层订阅模型。
 * Azure 自动化包含 SMA 所不能提供的一些高级功能，例如图形 Runbook。
 
@@ -63,7 +61,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 执行以下步骤，以便自动完成 Windows 混合辅助角色的安装和配置。  
 
-1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.0/DisplayScript)下载 New-OnPremiseHybridWorker.ps1 脚本，然后将其复制到辅助角色。  
+1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.0/DisplayScript)下载 New-OnPremiseHybridWorker.ps1 脚本，并将其复制到辅助角色。  
 
     在执行期间，New-OnPremiseHybridWorker.ps1 脚本需要以下参数：
 
@@ -117,7 +115,7 @@ Microsoft Monitoring Agent 可将计算机连接到 Operations Management Suite�
     cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\HybridRegistration"
     Import-Module HybridRegistration.psd1
 
-然后，请使用以下语法运行“Add-HybridRunbookWorker”cmdlet：
+然后，请使用以下语法运行 **Add-HybridRunbookWorker** cmdlet：
 
     Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
@@ -173,4 +171,3 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
 
 ## <a name="next-steps"></a>后续步骤
 查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
-

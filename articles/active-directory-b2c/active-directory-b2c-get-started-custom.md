@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 4f14dbf4b66f10290cd4f98d56a005f97cc6a207
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
 
@@ -218,4 +217,3 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
 本入门指南中使用的基本文件已包含添加其他标识提供者所需的一些内容。 有关设置登录名的信息，请参阅 [Azure Active Directory B2C：使用 Azure AD 帐户登录](active-directory-b2c-setup-aad-custom.md)一文。
 
 有关使用标识体验框架的 Azure AD B2C 中的自定义策略概述，请参阅 [Azure Active Directory B2C：自定义策略](active-directory-b2c-overview-custom.md)一文。 
-

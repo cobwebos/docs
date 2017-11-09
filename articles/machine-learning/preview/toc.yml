@@ -1,0 +1,190 @@
+- name: Azure 机器学习文档（预览）
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是 Azure 机器学习？
+      href: overview-what-is-azure-ml.md
+    - name: 模型管理概述
+      href: model-management-overview.md
+- name: 快速入门
+  items:
+    - name: 安装和创建
+      href: quickstart-installation.md
+- name: 教程
+  items:
+    - name: 1- 准备数据
+      href: tutorial-classifying-iris-part-1.md
+    - name: 2 - 生成模型
+      href: tutorial-classifying-iris-part-2.md
+    - name: 3 - 部署模型
+      href: tutorial-classifying-iris-part-3.md
+    - name: 4 - 高级数据准备
+      href: tutorial-bikeshare-dataprep.md
+- name: 概念
+  items:
+    - name: 关键概念
+      href: overview-general-concepts.md
+- name: 操作指南
+  items:
+    - name: 使用 Workbench
+      items:
+        - name: 使用 Python IDE
+          href: how-to-configure-your-IDE.md
+        - name: 使用 Jupyter Notebook
+          href: how-to-use-jupyter-notebooks.md
+        - name: 与 Git 存储库集成
+          href: using-git-ml-project.md
+        - name: 使用 TDSP 构造项目
+          href: how-to-use-tdsp-in-azure-ml.md
+        - name: 漫游和协作
+          href: roaming-and-collaboration.md
+    - name: 使用用于 AI 的 Visual Studio Code 工具
+      href: quickstart-visual-studio-tools.md
+    - name: 配置计算环境
+      items:
+        - name: 配置试验
+          href: experimentation-service-configuration.md
+        - name: 创建 DSVM 和 HDI Spark 群集
+          href: how-to-create-dsvm-hdi.md
+        - name: 使用 GPU 训练
+          href: how-to-use-gpu.md
+    - name: 获取和了解数据
+      items:
+        - name: 添加数据源
+          href: data-source-wizard.md
+        - name: 数据准备指南
+          href: data-prep-getting-started.md
+        - name: 高级数据准备
+          href: data-prep-user-guide.md
+        - name: 数据准备转换
+          href: data-prep-appendix3-supported-transforms.md
+          items:
+            - name: 按示例合并列
+              href: data-prep-combine-columns-by-example.md
+            - name: 按示例派生列
+              href: data-prep-derive-column-by-example.md
+            - name: 按示例拆分列
+              href: data-prep-split-column-by-example.md
+            - name: 展开 JSON
+              href: data-prep-expand-json.md
+    - name: 开发模型
+      items:
+        - name: 使用 CLI 对 Iris 进行分类
+          href: tutorial-iris-azure-cli.md
+        - name: 跟踪运行历史记录和模型指标
+          href: how-to-use-run-history-model-metrics.md
+        - name: 查找具有最高准确性的运行
+          href: how-to-find-best-accuracy-cli.md
+        - name: 读取和写入文件
+          href: how-to-read-write-files.md
+        - name: 使用 MMLSpark 库
+          href: how-to-use-mmlspark.md
+    - name: 使模型可操作化
+      items:
+        - name: 设置模型管理
+          href: deployment-setup-configuration.md
+        - name: 缩放群集和服务
+          href: how-to-scale-clusters.md
+        - name: 部署 Web 服务
+          href: model-management-service-deploy.md
+        - name: 使用 Web 服务
+          href: model-management-consumption.md
+        - name: 收集模型数据
+          href: how-to-use-model-data-collection.md
+        - name: 部署故障排除指南
+          href: how-to-deploy-troubleshooting-guide.md
+    - name: 真实示例
+      items:
+        - name: 文档集合分析
+          href: scenario-document-collection-analysis.md
+        - name: 问答匹配
+          href: scenario-qna-matching.md
+        - name: 预见性维护
+          href: scenario-predictive-maintenance.md
+        - name: 航拍图像分类
+          href: scenario-aerial-image-classification.md
+        - name: 基于 TB 量级的数据执行服务器工作负荷预测
+          href: scenario-big-data.md
+        - name: 能量需求时序预测
+          href: scenario-time-series-forecasting.md
+        - name: 超参数的分布式优化
+          href: scenario-distributed-tuning-of-hyperparameters.md
+        - name: 客户流失预测
+          href: scenario-churn-prediction.md
+        - name: 使用深度学习进行情绪分析
+          href: scenario-sentiment-analysis-deep-learning.md
+        - name: 生物医学实体识别 - TDSP 项目
+          href: scenario-tdsp-biomedical-recognition.md
+        - name: 美国收入分类 - TDSP 项目
+          href: scenario-tdsp-classifying-us-incomes.md
+- name: 引用
+  items:
+    - name: 数据准备工作
+      items:
+        - name: 用于数据准备的 Python 扩展
+          href: data-prep-python-extensibility-overview.md
+        - name: 支持的数据源
+          href: data-prep-appendix2-supported-data-sources.md
+        - name: 支持的检查器
+          href: data-prep-appendix4-supported-inspectors.md
+        - name: 支持的数据目标
+          href: data-prep-appendix5-supported-destinations.md
+        - name: 支持的执行和数据环境组合
+          href: data-prep-supported-runtime-data-environments.md
+        - name: Python 中的筛选表达式示例
+          href: data-prep-appendix6-sample-filter-expressions-python.md
+        - name: 以 Python 编写的自定义数据流转换示例
+          href: data-prep-appendix7-sample-transform-data-flow-python.md
+        - name: Python 中的源连接示例
+          href: data-prep-appendix8-sample-source-connections-python.md
+        - name: Python 中的目标连接示例
+          href: data-prep-appendix9-sample-destination-connections-python.md
+        - name: Python 中的列转换示例
+          href: data-prep-appendix10-sample-custom-column-transforms-python.md
+        - name: 数据准备执行 API
+          href: data-prep-python-execution-api.md
+    - name: 试验
+      items:
+        - name: 试验服务配置
+          href: experimentation-service-configuration-reference.md
+        - name: 日志记录 API
+          href: reference-logging-api.md
+    - name: 模型管理
+      items:
+        - name: 模型管理 API
+          href: model-management-api-reference.md
+        - name: 模型管理 CLI
+          href: model-management-cli-reference.md
+        - name: 模型数据集合 API
+          href: model-data-collection-api-reference.md
+    - name: 发行说明
+      items:
+        - name: 冲刺 (sprint) 0 - 2017 年 10 月
+          href: release-notes-sprint-0.md
+- name: 资源
+  items:
+    - name: 常见问题
+      href: frequently-asked-questions.md
+    - name: 已知问题和故障排除
+      href: known-issues-and-troubleshooting-guide.md
+    - name: Team Data Science Process 文档
+      href: ../team-data-science-process/overview.md
+    - name: 数据科学 VM 文档
+      href: ../data-science-virtual-machine/overview.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: 反馈论坛
+      href: 'https://feedback.azure.com/forums/257792-machine-learning'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支持选项
+      href: 'https://azure.microsoft.com/support/options/'

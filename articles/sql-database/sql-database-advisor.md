@@ -12,22 +12,21 @@ ms.custom: monitor & tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.date: 07/05/2017
+ms.workload: On Demand
+ms.date: 09/20/2017
 ms.author: sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 357a25a665894c86ddb0f93beeb4dd59d8837489
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 9b6c60a14578842f4b3b1a9e4724eab6de3f8815
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="performance-recommendations"></a>性能建议
 
-Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的建议，使你能够将 SQL 数据库的性能最大化。 通过分析 SQL 数据库使用情况历史记录，可以持续评估性能。 提供的建议是以数据库唯一工作负载模式为依据，有助于提升性能。
+Azure SQL 数据库可以学习和适应应用程序并提供自定义的建议，使你能够将 SQL 数据库的性能最大化。 通过分析 SQL 数据库使用情况历史记录，可以持续评估性能。 提供的建议是以数据库唯一工作负载模式为依据，有助于提升性能。
 
-> [!NOTE]
-> 建议通过对数据库启用“自动优化”来使用性能建议。 有关详细信息，请参阅[自动优化](sql-database-automatic-tuning.md)。
+> [!TIP]
+> [自动优化](sql-database-automatic-tuning.md)是性能优化的推荐方式。 [智能见解](sql-database-intelligent-insights.md)是监控性能的推荐方式。 
 >
 
 ## <a name="create-index-recommendations"></a>“创建索引”建议
@@ -54,9 +53,9 @@ Azure SQL 数据库持续监视执行中的查询，并发现可以提升性能�
 
 发送包含非参数化值的查询的应用程序可能会导致性能开销，其中对于使用不同参数值的每个此类查询，将重新编译执行计划。 在许多情况下，使用不同参数值的相同查询将生成相同的执行计划，但这些计划将仍然分别添加到计划缓存中。 重新编译执行计划会占用数据库资源、增加查询持续时间并使计划缓存溢出，从而导致系统从缓存中逐出计划。 可以通过对数据库设置强制参数化选项来更改 SQL Server 的此行为。 
 
-为了帮助你估计此建议的影响，将为你提供实际 CPU 使用率和预计 CPU 使用率（就像已应用建议一样）之间的比较。 除了节省 CPU 外，查询持续时间会因编译花费的时间而减少。 计划缓存上的开销也会更低，从而允许大部分计划保留在缓存中并可重复使用。 可以通过单击“应用”命令来快速轻松地应用此建议。 
+为了帮助你估计此建议的影响，将提供实际 CPU 使用率和预计 CPU 使用率（就像已应用建议一样）之间的比较。 除了节省 CPU 外，查询持续时间会因编译花费的时间而减少。 计划缓存上的开销也会更低，从而允许大部分计划保留在缓存中并可重复使用。 可以通过单击“应用”命令来快速轻松地应用此建议。 
 
-应用此建议后，它将在几分钟之内对数据库启用强制参数化，并将启动监视进程（大约持续 24 小时）。 经过这段时间后，即可看到验证报告，该报告显示应用此建议之前和之后的 24 小时内数据库的 CPU 使用率。 SQL 数据库顾问具有安全机制，在检测到性能衰退的情况下，可以自动还原已应用的建议。
+应用此建议后，它会在几分钟之内对数据库启用强制参数化，并将启动监视进程（大约持续 24 小时）。 经过这段时间后，即可看到验证报告，该报告显示应用此建议之前和之后的 24 小时内数据库的 CPU 使用率。 SQL 数据库顾问具有安全机制，在检测到性能衰退的情况下，可以自动还原已应用的建议。
 
 ## <a name="fix-schema-issues-recommendations"></a>修复架构问题建议
 当 SQL 数据库服务发现 Azure SQL 数据库上架构相关 SQL 错误的数量发生异常时，就会出现**修复架构问题**建议。 此建议通常在数据库在一个小时内遭遇到多个架构相关的错误（无效的列名称、无效的对象名称等）时出现。
@@ -77,12 +76,9 @@ Azure SQL 数据库持续监视执行中的查询，并发现可以提升性能�
 ## <a name="next-steps"></a>后续步骤
 监视建议并继续应用它们以优化性能。 数据库工作负荷是动态的，并且不断地更改。 SQL 数据库顾问将继续监视和提供可能提高数据库性能的建议。 
 
+* 请参阅 [Azure SQL 数据库自动优化](sql-database-automatic-tuning.md)，了解数据库索引和查询执行计划的自动优化。
+* 请参阅 [Azure SQL 智能见解](sql-database-intelligent-insights.md)，了解借助自动诊断和性能问题的根本原因分析自动监视数据库性能。
 * 请参阅 [Azure 门户中的性能建议](sql-database-advisor-portal.md)，了解如何在 Azure 门户中使用性能建议。
 * 若要了解和查看排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。
-
-## <a name="additional-resources"></a>其他资源
-* [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
-* [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
-* [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)
 
 

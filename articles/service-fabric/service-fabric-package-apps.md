@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 48e4ad774164b87d0cacb42f709e54af1d6f07b9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 486a27d7ca576c8fe1552c02eb24ece6b8bb2ba8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="package-an-application"></a>打包应用程序
 本文介绍如何打包 Service Fabric 应用程序并为部署做好准备。
@@ -59,16 +58,16 @@ D:\TEMP\MYAPPLICATIONTYPE
 <a id="Package-App"></a>
 ## <a name="configure"></a>配置
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
-如果使用 Visual Studio 2015 创建应用程序，你可以使用“包”命令自动创建符合上述布局的包。
+如果使用 Visual Studio 2015 创建应用程序，可以使用“包”命令自动创建符合上述布局的包。
 
 若要创建包，请在“解决方案资源管理器”中右键单击应用程序项目，并选择“包”命令，如下所示：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置将显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置会显示在“输出”窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
-还可以使用 `msbuild.exe` 以编程方式打包你的应用程序。 这是 Visual Studio 实际运行的操作，因此输出是相同的。
+还可以使用 `msbuild.exe` 以编程方式打包应用程序。 这是 Visual Studio 实际运行的操作，因此输出是相同的。
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
@@ -202,4 +201,3 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
-

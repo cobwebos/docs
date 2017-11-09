@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
@@ -78,13 +77,13 @@ ms.lasthandoff: 08/24/2017
 
     ![Azure Monitor 的“监视”部分](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断的资源。
+2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断设置的资源。
 
 3. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“启用诊断”。
 
    ![添加诊断设置 - 没有现有的设置](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
 
-   如果资源上没有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
+   如果资源上有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
 
    ![添加诊断设置 - 现有的设置](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
 
@@ -180,4 +179,3 @@ azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource 
 * [将资源诊断日志流式传输到事件中心](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源诊断设置](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../log-analytics/log-analytics-azure-storage.md)
-

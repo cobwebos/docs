@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 408394e529c262c0a47aae680c8f6ea1bc8eb7c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: e098e27e32f7b7ae2009580a430f262aa7225206
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-your-seller-insights-report"></a>了解卖方 Insights 报表
 **什么是卖方 Insights？**
@@ -29,10 +27,10 @@ ms.lasthandoff: 12/08/2016
 
 **我将收到什么？**
 
-* **欢迎电子邮件：**作为新的发布者，你将收到一封欢迎电子邮件，通知你将开始收到卖方 Insights 每月报表。
-* **每月销售报表：**如果有使用量，你将收到第二封电子邮件，其中包含报表以及有关如何访问密码的说明：
+* **欢迎电子邮件：**作为新的发布者，将收到一封欢迎电子邮件，通知你会开始收到卖方 Insights 每月报表。
+* **每月销售报表：**如果有使用量，将收到第二封电子邮件，其中包含报表以及有关如何访问密码的说明：
 
-  * 如果所拥有的 VM 或基于使用量的计费开发人员服务 SKU 产生使用量，每月报表将显示有关产品/服务的订单、使用量、市场和客户细节的详细信息。
+  * 如果所拥有的 VM 或基于使用量的计费开发人员服务 SKU 产生使用量，每月报表会显示有关产品/服务的订单、使用量、市场和客户细节的详细信息。
   * 为了保护客户数据，报表使用密码进行锁定，该密码只有你和 Microsoft 知道。
   * 如果产品/服务当月未产生使用量，Microsoft 将不会发送报表。
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 12/08/2016
 
 ![readingreportbyorders][2]
 
-* 切片器可帮助你按每个元素对报表进行筛选。
+* 切片器可用于按元素对报表进行筛选。
 * 图表显示了按 Azure 许可证类型分类的每月订单。 每一栏显示按 Azure 许可证类型分类的该月订单总计。
 * 图表显示按 SKU 分类的每月订单。 每一栏显示按 SKU 分类的所有 SKU 的每月订单总计。
 * 图表显示按 Azure 许可证类型和 Azure 应用商店许可证类型分类的每月订单趋势。
@@ -52,7 +50,7 @@ ms.lasthandoff: 12/08/2016
 
 ![readingreportbyusage][3]
 
-* 切片器可帮助你按每个元素对报表进行筛选。
+* 切片器可用于按元素对报表进行筛选。
 * 应选择规范化的 VM 使用量或原始使用量。
 * 图表显示了按 Azure 许可证类型分类的每月使用量。 每一栏显示按 Azure 许可证类型分类的该月使用量总计。
 * 图表显示按 SKU 分类的每月使用量。 每一栏显示按 SKU 分类的所有 SKU 的每月使用量总计。
@@ -80,25 +78,24 @@ ms.lasthandoff: 12/08/2016
 
 ![法律][1]
 
-请仔细阅读法律免责声明。 如果你有任何问题或反馈，请单击免责声明底部的链接，路由到应用商店支持页。
+请仔细阅读法律免责声明。 如果有任何问题或反馈，请单击免责声明底部的链接，路由到应用商店支持页。
 
 ## <a name="request-a-password-reminder"></a>请求密码提示
 导航到 https://publish.windowsazure.com/ 并使用 Microsoft 帐户凭据登录。
 ![passwordreminder][7]
 
-选择“发布者”选项卡。
-![selectpublisherstab][8]
+选择“发布者”选项卡。![selectpublisherstab][8]
 
 在 URL 中找到发布者 ID：
 
 * 将此 ID 用作密码以打开卖方 Insights Excel 文件。
-  在进一步通知之前，这就是你的密码。
+  在进一步通知之前，这就是密码。
 * 我们建议将 Microsoft Office 2013 与 Windows 结合使用来作为选择的工作簿读取器。  某些用户报告在使用 Microsoft Office for Mac 时存在问题。
 
 ![publisherid][9]
 
 ## <a name="next-steps"></a>后续步骤
-如果你对报表和 Insights 有任何问题，请与我们的支持团队联系：
+如果对报表和 Insights 有任何问题，请与我们的支持团队联系：
 
 1. 导航到 https://publish.windowsazure.com/ 处的支持页。
 2. 在“问题类型”框中，选择“报表和 Insights”。
@@ -116,4 +113,3 @@ ms.lasthandoff: 12/08/2016
 [8]: ./media/marketplace-publishing-report-seller-insights/selectpublisherstab.png
 [9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
 [10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
-

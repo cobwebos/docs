@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/19/2017
 ms.author: dobett
+ms.openlocfilehash: a038a46c98af5b434456e1bb979fc6cd8e009d76
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: e4fe5400ffcf4446392015aada031dd4dfbf238a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -32,8 +31,6 @@ ms.lasthandoff: 08/08/2017
 * 如何限定凭据的作用域，以限制对特定资源的访问。
 * IoT 中心支持 X.509 证书。
 * 使用现有的设备标识注册表或身份验证方案的自定义设备身份验证机制。
-
-### <a name="when-to-use"></a>何时使用
 
 必须具有适当的权限，才能访问任何 IoT 中心终结点。 例如，设备必须随它发送到 IoT 中心的每条消息提供包含安全凭据的令牌。
 
@@ -73,7 +70,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 
 ### <a name="protocol-specifics"></a>协议详情
 
-每个支持的协议（如 MQTT、AMQP 和 HTTP）以不同方式传输令牌。
+每个支持的协议（如 MQTT、AMQP 和 HTTPS）以不同方式传输令牌。
 
 使用 MQTT 时，CONNECT 包将 deviceId 用作 ClientId，“用户名”字段中为 {iothubhostname}/{deviceId}；在“密码”字段中为 SAS 令牌。 {iothubhostname} 应该是 IoT 中心的完整 CName（例如，contoso.azure-devices.net）。
 
@@ -88,7 +85,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 
 在这两种情况下，密码字段都包含令牌，如 [IoT 中心安全令牌][lnk-sas-tokens]所述。
 
-HTTP 通过在 **Authorization** 请求标头中包含有效的令牌来实施身份验证。
+HTTPS 通过在 Authorization 请求标头中包含有效的令牌来实施身份验证。
 
 #### <a name="example"></a>示例
 
@@ -101,7 +98,7 @@ HTTP 通过在 **Authorization** 请求标头中包含有效的令牌来实施�
 
 ### <a name="special-considerations-for-sasl-plain"></a>有关 SASL PLAIN 的特殊注意事项
 
-将 SASL PLAIN 用于 AMQP 时，连接到 IoT 中心的客户端可为每个 TCP 连接使用单个令牌。 当令牌过期时，TCP 将从服务断开连接，并触发重新连接。 此行为虽然不会对后端应用造成问题，但对设备应用不利，原因如下：
+将 SASL PLAIN 用于 AMQP 时，连接到 IoT 中心的客户端可为每个 TCP 连接使用单个令牌。 当令牌过期时，TCP 连接将与服务断开连接，并触发重新连接。 此行为虽然不会对后端应用造成问题，但对设备应用不利，原因如下：
 
 * 网关通常代表许多设备连接。 使用 SASL PLAIN 时，它们必须针对连接到 IoT 中心的每个设备创建不同的 TCP 连接。 此方案会大幅提高电源与网络资源的消耗并增大每个设备连接的延迟。
 * 在每个令牌过期后，增加使用要重新连接的资源通常会对资源受限的设备造成不良影响。
@@ -116,7 +113,7 @@ HTTP 通过在 **Authorization** 请求标头中包含有效的令牌来实施�
 
 IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT SDK][lnk-sdks] 无需任何特殊配置即可自动生成令牌。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这些情况包括：
 
-* MQTT、AMQP 或 HTTP 曲面的直接使用。
+* MQTT、AMQP 或 HTTPS 曲面的直接使用。
 * 令牌服务模式的实现，如[自定义设备身份验证][lnk-custom-auth]中所述。
 
 IoT 中心还允许设备使用 [X.509 证书][lnk-x509]向 IoT 中心进行身份验证。
@@ -194,6 +191,39 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + urlencode(rawtoken)
 ```
 
+C# 中用于生成安全令牌的功能是：
+
+```C#
+using System;
+using System.Globalization;
+using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+
+public static string generateSasToken(string resourceUri, string key, string policyName, int expiryInSeconds = 3600)
+{
+    TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    string expiry = Convert.ToString((int)fromEpochStart.TotalSeconds + expiryInSeconds);
+
+    string stringToSign = WebUtility.UrlEncode(resourceUri).ToLower() + "\n" + expiry;
+
+    HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key));
+    string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+
+    string token = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri).ToLower(), WebUtility.UrlEncode(signature), expiry);
+
+    if (!String.IsNullOrEmpty(policyName))
+    {
+        token += "&skn=" + policyName;
+    }
+
+    return token;
+}
+
+```
+
+
 > [!NOTE]
 > 由于 IoT 中心计算机会验证令牌的有效期，因此生成令牌的计算机的时间偏差必须很小。
 
@@ -211,7 +241,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 | 终结点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |发送设备到云的消息。 |
-| `{iot hub host name}/devices/{deviceId}/devicebound` |接收云到设备的消息。 |
+| `{iot hub host name}/devices/{deviceId}/messages/devicebound` |接收云到设备的消息。 |
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>使用标识注册表中的对称密钥
 
@@ -384,7 +414,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ### <a name="comparison-with-a-custom-gateway"></a>与自定义网关的比较
 
-令牌服务模式是使用 IoT 中心实现自定义标识注册表/身份验证方案的建议方式。 建议使用这种模式是因为 IoT 中心继续处理大部分解决方案流量。 但是，如果自定义身份验证方案与协议过度交织，可能需要自定义网关来处理所有流量。 使用[传输层安全 (TLS) 和预共享密钥 (PSK)][lnk-tls-psk] 就是这种情况的例子。 有关详细信息，请参阅[协议网关][lnk-protocols]主题。
+令牌服务模式是使用 IoT 中心实现自定义标识注册表/身份验证方案的建议方式。 建议使用这种模式是因为 IoT 中心继续处理大部分解决方案流量。 但是，如果自定义身份验证方案与协议过度交织，可能需要自定义网关来处理所有流量。 使用[传输层安全 (TLS) 和预共享密钥 (PSK)][lnk-tls-psk] 就是这种情况的例子。 有关详细信息，请参阅[协议网关][lnk-protocols]一文。
 
 ## <a name="reference-topics"></a>参考主题：
 
@@ -413,13 +443,13 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 ## <a name="next-steps"></a>后续步骤
 
-现已了解如何控制对 IoT 中心的访问，可能有兴趣了解以下 IoT 中心开发人员指南主题：
+既然已了解如何控制对 IoT 中心的访问，可能有兴趣了解以下 IoT 中心开发人员指南主题：
 
 * [使用设备孪生来同步状态和配置][lnk-devguide-device-twins]
 * [在设备上调用直接方法][lnk-devguide-directmethods]
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
-如果要尝试本文中介绍的一些概念，可能对以下 IoT 中心教程感兴趣：
+如果要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
 * [Azure IoT 中心入门][lnk-getstarted-tutorial]
 * [如何使用 IoT 中心发送从云到设备的消息][lnk-c2d-tutorial]
@@ -462,4 +492,3 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-

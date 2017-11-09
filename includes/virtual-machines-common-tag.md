@@ -12,7 +12,7 @@
 
 ![模板中的 Azure 标记](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
-如你所见，标记定义为键值对，用冒号 (:) 分隔。 必须按以下格式定义标记：
+如你所见，标记将被定义为键值对，用冒号 (:) 分隔。 必须按以下格式定义标记：
 
         “tags”: {
             “Key1” : ”Value1”,
@@ -34,7 +34,7 @@
 
 ![Azure 门户中的标记图标](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
 
-通过定义你自己的键/值对，使用门户添加新标记并将其保存。
+通过定义自己的键/值对，使用门户添加新标记并将其保存。
 
 ![通过 Azure 门户添加新标记](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
 

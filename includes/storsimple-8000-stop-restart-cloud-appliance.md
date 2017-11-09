@@ -11,7 +11,7 @@
 
     ![StorSimple 云设备虚拟机](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
-4. 当停止某个 VM 时，它将被解除分配。 当云设备正在停止时，其状态为“正在解除分配”。 在云设备停止后，其状态为“已停止（已解除分配）。
+4. 当停止某个 VM 时，它会被解除分配。 当云设备正在停止时，其状态为“正在解除分配”。 在云设备停止后，其状态为“已停止（已解除分配）。
 
     ![StorSimple 云设备虚拟机](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 

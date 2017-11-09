@@ -1,4 +1,4 @@
-### <a name="app-service-plan"></a>App Service 计划
+### <a name="app-service-plan"></a>应用服务计划
 创建用于托管 Web 应用的服务计划。 通过 **hostingPlanName** 参数提供计划的名称。 计划的位置与用于资源组的位置相同。 定价层和辅助角色大小在 **sku** 和 **workerSize** 参数中指定
 
     {

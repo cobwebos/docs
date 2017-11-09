@@ -1,6 +1,6 @@
 ---
 title: "如何卸载弹性数据库作业工具"
-description: "如何卸载弹性数据库作业工具"
+description: "了解如何使用 PowerShell 的 Azure 门户卸载弹性数据库作业组件。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -8,28 +8,26 @@ author: ddove
 editor: 
 ms.assetid: bfc9d820-edbd-4fca-bfbf-1f339cfcc448
 ms.service: sql-database
-ms.workload: sql-database
+ms.workload: Inactive
 ms.custom: scale out apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: aa438680348748a771f9016ecdcc68372c6c5e86
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 5e665ee8cc9efacbd31111dc0458ad6096e457c0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>卸载弹性数据库作业组件
-可以使用门户或 PowerShell 卸载**弹性数据库作业**组件。
+可以使用 Azure 门户或 PowerShell 卸载**弹性数据库作业**组件。
 
 ## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>使用 Azure 门户卸载弹性数据库作业组件
 1. 打开 [Azure 门户](https://portal.azure.com/)。
 2. 导航到包含**弹性数据库作业**组件的订阅，即安装了弹性数据库作业的订阅。
-3. 单击“浏览”，然后单击“资源组”。
+3. 单击“浏览”，并单击“资源组”。
 4. 选择名为“__ElasticDatabaseJob”的资源组。
 5. 删除该资源组。
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 11/17/2016
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1
 
-假设组件的安装使用了默认值，则你可以简单地执行以下脚本：
+假设组件的安装使用了默认值，则可以简单地执行以下脚本：
 
         $ResourceGroupName = "__ElasticDatabaseJob"
         Switch-AzureMode AzureResourceManager
@@ -63,6 +61,5 @@ ms.lasthandoff: 11/17/2016
 有关弹性数据库作业的概述，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。
 
 <!--Image references-->
-
 
 

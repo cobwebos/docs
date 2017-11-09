@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
+ms.openlocfilehash: f72944fe819a79edbafb73fba635d73642f33e4f
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 65556049d33c84848f015a095acf9c1f69348c6d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>使用 Operations Management Suite 监视 Kubernetes 群集
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 监视 Kubernetes 群集和容器至关重要，特别是在使用多个应用大规模地管理生产群集时。 
 
@@ -140,7 +140,7 @@ omsagent   3         3         3         0            3           <none>        
 
 同样，在 Azure 门户中，转到“Log Analytics”并选择工作区名称。 若要查看“容器”摘要磁贴，请单击“解决方案” > “容器”。 若要查看详细信息，请单击该磁贴。
 
-有关查询和分析监视数据的详细指南，请参阅 [Azure Log Analytics 文档](../../log-analytics/index.md)。
+有关查询和分析监视数据的详细指南，请参阅 [Azure Log Analytics 文档](../../log-analytics/index.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -156,4 +156,3 @@ omsagent   3         3         3         0            3           <none>        
 
 > [!div class="nextstepaction"]
 > [Azure 容器服务脚本示例](cli-samples.md)
-

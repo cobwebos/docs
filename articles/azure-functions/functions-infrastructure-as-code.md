@@ -3,7 +3,7 @@ title: "为 Azure Functions 中的函数应用自动执行资源部署 | Microso
 description: "了解如何生成用于部署函数应用的 Azure Resource Manager 模板。"
 services: Functions
 documtationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -16,14 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 9458b3b619649d094ddab1638e146571d9268fb0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.openlocfilehash: e6b3deb9353ba07d693d71822d37a1761dd70d67
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
-
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
 可以使用 Azure Resource Manager 模板来部署函数应用。 本文概述了完成此操作所需的资源和参数。 可能还需要部署其他资源，具体取决于函数应用中的[触发器和绑定](functions-triggers-bindings.md)。
@@ -32,14 +30,14 @@ ms.lasthandoff: 06/06/2017
 
 有关示例模板，请参阅：
 - [基于消耗计划的函数应用]
-- [基于 Azure App Service 计划的函数应用]
+- [基于 Azure 应用服务计划的函数应用]
 
 ## <a name="required-resources"></a>所需资源
 
 函数应用需要以下资源：
 
-* [Azure 存储](../storage/index.md)帐户
-* 托管计划（消耗计划或 App Service 计划）
+* [Azure 存储](../storage/index.yml)帐户
+* 托管计划（消耗计划或应用服务计划）
 * 函数应用 
 
 ### <a name="storage-account"></a>存储帐户
@@ -76,7 +74,7 @@ ms.lasthandoff: 06/06/2017
 
 ### <a name="hosting-plan"></a>托管计划
 
-托管计划的定义取决于是使用消耗计划还是使用 App Service 计划。 请参阅[基于消耗计划部署函数应用](#consumption)和[基于 App Service 计划部署函数应用](#app-service-plan)。
+托管计划的定义取决于是使用消耗计划还是使用应用服务计划。 请参阅[基于消耗计划部署函数应用](#consumption)和[基于应用服务计划部署函数应用](#app-service-plan)。
 
 ### <a name="function-app"></a>函数应用
 
@@ -99,7 +97,7 @@ ms.lasthandoff: 06/06/2017
 
 ## <a name="deploy-a-function-app-on-the-consumption-plan"></a>基于消耗计划部署函数应用
 
-可以在两种不同的模式下运行函数应用：消耗计划和 App Service 计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 若要详细了解托管计划，请参阅 [Azure Functions 消耗计划和 App Service 计划](functions-scale.md)。
+可以在两种不同的模式下运行函数应用：消耗计划和应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 若要详细了解托管计划，请参阅 [Azure Functions 消耗计划和应用服务计划](functions-scale.md)。
 
 有关 Azure Resource Manager 模板示例，请参阅[基于消耗计划的函数应用]。
 
@@ -168,11 +166,11 @@ ms.lasthandoff: 06/06/2017
 
 <a name="app-service-plan"></a> 
 
-## <a name="deploy-a-function-app-on-the-app-service-plan"></a>基于 App Service 计划部署函数应用
+## <a name="deploy-a-function-app-on-the-app-service-plan"></a>基于应用服务计划部署函数应用
 
-在 App Service 计划中，函数应用在基本、标准和高级 SKU 中的专用 VM 上运行，类似于 Web 应用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+在应用服务计划中，函数应用在基本、标准和高级 SKU 中的专用 VM 上运行，类似于 Web 应用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
-有关 Azure Resource Manager 模板示例，请参阅[基于 Azure App Service 计划的函数应用]。
+有关 Azure 资源管理器模板示例，请参阅[基于 Azure 应用服务计划的函数应用]。
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
@@ -292,5 +290,4 @@ ms.lasthandoff: 06/06/2017
 <!-- LINKS -->
 
 [基于消耗计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
-[基于 Azure App Service 计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
-
+[基于 Azure 应用服务计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json

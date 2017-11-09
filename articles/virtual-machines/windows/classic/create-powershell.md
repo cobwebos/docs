@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: bd14d9902f4061965c008454a14f91d3927f5b99
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 75c6cf17ee269ae169d9f2f748d0985ca07e454e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>使用 Powershell 和经典部署模型创建 Windows 虚拟机
 > [!div class="op_single_selector"]
@@ -36,18 +35,18 @@ ms.lasthandoff: 06/02/2017
 
 这些步骤演示了如何使用构建基块方法自定义一组 Azure PowerShell 命令以创建和预配置基于 Windows 的 Azure 虚拟机。 可以使用此过程快速创建用于基于 Windows 的新虚拟机的命令集并扩展现有部署，或者创建多个命令集以快速构建出自定义开发/测试或 IT 专业环境。
 
-这些步骤采用填空方法来创建 Azure PowerShell 命令集。 如果你不熟悉 PowerShell 或只想知道为成功的配置指定什么值，则此方法很有用。 高级 PowerShell 用户可以使用命令并将变量（以“$”开头的行）替换为他们自己的值。
+这些步骤采用填空方法来创建 Azure PowerShell 命令集。 如果不熟悉 PowerShell 或只想知道为成功的配置指定什么值，则此方法很有用。 高级 PowerShell 用户可以使用命令并将变量（以“$”开头的行）替换为他们自己的值。
 
 如果尚未这样做，请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 中的说明在本地计算机上安装 Azure PowerShell。 然后，打开 Windows PowerShell 命令提示符。
 
 ## <a name="step-1-add-your-account"></a>步骤 1：添加帐户
 1. 在 PowerShell 命令提示处，键入 **Add-AzureAccount** 并单击“Enter”。 
-2. 键入与你的 Azure 订阅相关联的电子邮件地址并单击“继续”。 
-3. 键入你的帐户的密码。 
+2. 键入与 Azure 订阅相关联的电子邮件地址并单击“继续”。 
+3. 键入帐户的密码。 
 4. 单击“登录”。
 
 ## <a name="step-2-set-your-subscription-and-storage-account"></a>步骤 2：设置订阅和存储帐户
-通过在 Windows PowerShell 命令提示符处运行以下命令，设置你的 Azure 订阅和存储帐户。 将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
+通过在 Windows PowerShell 命令提示符处运行以下命令，设置 Azure 订阅和存储帐户。 将引号内的所有内容（包括 < 和 > 字符）替换为相应的名称。
 
     $subscr="<subscription name>"
     $staccount="<storage account name>"
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/02/2017
 可以从 **Get-AzureSubscription** 命令输出的 SubscriptionName 属性获取相应的订阅名称。 运行 **Select-AzureSubscription** 命令后，可以从 **Get-AzureStorageAccount** 命令输出的 Label 属性获取相应的存储帐户名称。
 
 ## <a name="step-3-determine-the-imagefamily"></a>步骤 3：确定 ImageFamily
-接下来，你需要确定与要创建的 Azure 虚拟机对应的特定映像的 ImageFamily 或 Label 值。 你可以使用此命令获取可用 ImageFamily 值的列表。
+接下来，需要确定与要创建的 Azure 虚拟机对应的特定映像的 ImageFamily 或 Label 值。 可以使用此命令获取可用 ImageFamily 值的列表。
 
     Get-AzureVMImage | select ImageFamily -Unique
 
@@ -68,12 +67,12 @@ ms.lasthandoff: 06/02/2017
 * Windows Server 2016 Technical Preview 4
 * Windows Server 2012 上的 SQL Server 2102 SP1 Enterprise
 
-如果你找到要查找的映像，请打开所选文本编辑器的一个新实例或 PowerShell 集成脚本环境 (ISE)。 将以下内容复制到新的文本文件或 PowerShell ISE，并替换 ImageFamily 值。
+如果找到要查找的映像，请打开所选文本编辑器的一个新实例或 PowerShell 集成脚本环境 (ISE)。 将以下内容复制到新的文本文件或 PowerShell ISE，并替换 ImageFamily 值。
 
     $family="<ImageFamily value>"
     $image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
-在某些情况下，映像名称在 Label 属性中，而不是 ImageFamily 值。 如果你使用 ImageFamily 属性找不到要查找的映像，请使用此命令按映像的 Label 属性列出映像。
+在某些情况下，映像名称在 Label 属性中，而不是 ImageFamily 值。 如果使用 ImageFamily 属性找不到要查找的映像，请使用此命令按映像的 Label 属性列出映像。
 
     Get-AzureVMImage | select Label -Unique
 
@@ -83,7 +82,7 @@ ms.lasthandoff: 06/02/2017
     $image = Get-AzureVMImage | where { $_.Label -eq $label } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
 ## <a name="step-4-build-your-command-set"></a>步骤 4：构建命令集
-通过将下面相应的一组程序块复制到新文本文件或 ISE 中，然后填写变量值并删除 < 和 > 字符来构建命令集的其余部分。 请参阅本文末尾的两个[示例](#examples)，了解最终结果。
+通过将下面相应的一组程序块复制到新文本文件或 ISE 中，并填写变量值并删除 < 和 > 字符来构建命令集的其余部分。 请参阅本文末尾的两个[示例](#examples)，了解最终结果。
 
 通过选择这两个命令块之一启动命令集（必需）。
 
@@ -114,7 +113,7 @@ ms.lasthandoff: 06/02/2017
 
 选择一个强密码。 若要检查其强度，请参阅[密码检查器：使用强密码](https://www.microsoft.com/security/pc-security/password-checker.aspx)。
 
-（可选）若要将 Windows 计算机添加到现有的 Active Directory 域，请指定本地管理员帐户和密码、域以及域帐户的名称和密码。
+（可选）要将 Windows 计算机添加到现有的 Active Directory 域，请指定本地管理员帐户和密码、域以及域帐户的名称和密码。
 
     $cred1=Get-Credential –Message "Type the name and password of the local administrator account."
     $cred2=Get-Credential –Message "Now type the name (not including the domain) and password of an account that has permission to add the machine to the domain."
@@ -173,11 +172,11 @@ ms.lasthandoff: 06/02/2017
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname
 
 ## <a name="step-5-run-your-command-set"></a>步骤 5：运行命令集
-复查你在步骤 4 中在文本编辑器或 PowerShell ISE 中生成的包含多个命令块的 Azure PowerShell 命令集。 确保你指定了所需的所有变量，并且这些变量具有正确的值。 另请确保已删除所有 < 和 > 字符。
+复查你在步骤 4 中在文本编辑器或 PowerShell ISE 中生成的包含多个命令块的 Azure PowerShell 命令集。 确保指定了所需的所有变量，并且这些变量具有正确的值。 另请确保已删除所有 < 和 > 字符。
 
-如果你使用的是文本编辑器，则将命令集复制到剪贴板，然后右键单击打开的 Windows PowerShell 命令提示符。 这将发出作为一系列 PowerShell 命令的命令集，并创建 Azure 虚拟机。 或者，在 PowerShell ISE 中运行命令集。
+如果使用的是文本编辑器，则将命令集复制到剪贴板，然后右键单击打开的 Windows PowerShell 命令提示符。 这会发出作为一系列 PowerShell 命令的命令集，并创建 Azure 虚拟机。 或者，在 PowerShell ISE 中运行命令集。
 
-如果你要再次创建此虚拟机或类似的虚拟机，则可以：
+如果要再次创建此虚拟机或类似的虚拟机，则可以：
 
 * 将此命令集保存为 PowerShell 脚本文件 (*.ps1)。
 * 在 Azure 门户的“自动化帐户”部分中，将此命令集保存为 Azure 自动化 Runbook。
@@ -260,5 +259,4 @@ ms.lasthandoff: 06/02/2017
 
 ## <a name="next-steps"></a>后续步骤
 如果需要大于 127 GB 的 OS 磁盘，可以[展开 OS 驱动器](../../virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
 

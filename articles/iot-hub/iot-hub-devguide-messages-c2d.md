@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2017
 ms.author: dobett
+ms.openlocfilehash: a3ebda292d16b2a420fb6d586f18201e34efffa7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 706c9650a8deef941f9b39956021456053369e5e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 09/06/2017
 设备还可以选择：
 
 * *拒绝*消息，这会使 IoT 中心将此消息设置为**死信**状态。 通过 MQTT 协议连接的设备无法拒绝云到设备消息。
-* *放弃*消息，这会使 IoT 中心将消息放回队列，并将状态设置为**已排队**。
+* *放弃*消息，这会使 IoT 中心将消息放回队列，并将状态设置为**已排队**。 通过 MQTT 协议连接的设备无法放弃云到设备消息。
 
 线程可能无法处理消息，且不通知 IoT 中心。 在此情况下，在*可见性(或锁定)超时*时间之后，消息将从**不可见**状态自动转换回**已排队**状态。 此超时的默认值为一分钟。
 
@@ -151,4 +150,3 @@ ms.lasthandoff: 09/06/2017
 [lnk-c2d-configuration]: #cloud-to-device-configuration-options
 [lnk-lifecycle]: #message-lifecycle
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
-

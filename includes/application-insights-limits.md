@@ -1,4 +1,4 @@
-每个应用程序（即每个检测密钥）的度量值和的事件数都具有一定限制。 限制取决于你选择的[定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
+每个应用程序（即每个检测密钥）的度量值和的事件数都具有一定限制。 限制取决于选择的[定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 | **资源** | **默认限制** | **注意**
 | --- | --- | --- |

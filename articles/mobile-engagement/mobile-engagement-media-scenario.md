@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6f08f986e66e40211f60beef6ebd00bb041a8ada
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>对媒体应用实现 Mobile Engagement
 ## <a name="overview"></a>概述
@@ -57,9 +56,9 @@ John 根据与之见面的关键利益干系人的会面结果，定义了自己
 他针对每个 KPI 对所需的数据进行分类，并将其记录在操作手册的适当位置。
 
 ## <a name="engagement-program-and-integration"></a>用户参与计划和集成
-至此，John 已确定了自己的 KPI，接下来他开始进行他的用户参与战略阶段，他定义了以下 4 个参与计划及对应目标：    ![][1]
+至此，John 已确定了自己的 KPI，接下来他开始进行他的用户参与战略阶段，他定义了以下 4 个参与计划及对应目标：![][1]
 
-然后，John 更进一步地详细说明每个计划的推送通知。 推送通知按照以下五个元素进行定义：
+然后 John 就更深入地详细说明每个计划的推送通知。 推送通知按照以下五个元素进行定义：
 
 1. 目标：通知的目标是什么
 2. 将如何达到目标
@@ -99,4 +98,3 @@ John 决定使用 Reach API，这是一个无需使用 AZME Web 界面即可管�
 
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
-

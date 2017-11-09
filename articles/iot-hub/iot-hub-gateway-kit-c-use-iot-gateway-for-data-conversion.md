@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 5f5151c9e250fb8a19a953c6212dd2675004dc55
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: d5c735a4adbc59e9526ec4fd40720c5ec136d63d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>通过 Azure IoT Edge，使用 IoT 网关进行传感器数据转换
 
@@ -126,7 +125,7 @@ sed -i -e "s/\r$//" build.sh
    }
    ```
 
-1. 按 `ESC`，然后键入 `:wq` 保存文件。
+1. 按 `ESC`，并键入 `:wq` 保存文件。
 
 ## <a name="run-the-sample-application"></a>运行示例应用程序
 
@@ -148,4 +147,3 @@ sed -i -e "s/\r$//" build.sh
 已成功使用 IoT 网关将消息从 SensorTag 转换为 .json 格式。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

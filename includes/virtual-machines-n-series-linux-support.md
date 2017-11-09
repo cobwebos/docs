@@ -11,7 +11,7 @@
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC 实例 - NVIDIA Tesla 驱动程序
 | 分发 | 驱动程序 |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> 基于 CentOS 的 7.3 | NVIDIA CUDA 8.0，驱动程序分支为 R375 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> 基于 CentOS 的 7.3 | NVIDIA CUDA 9.0，驱动程序分支为 R384 |
 
 
 

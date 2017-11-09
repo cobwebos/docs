@@ -14,12 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
+ms.openlocfilehash: b7362b7f26859de541f792e714502851d74c98e5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: f2073819fe60aa51b88feeaf3b0ff0e8d052b4c7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -32,7 +31,7 @@ ms.lasthandoff: 07/20/2017
 
 [观看显示类似步骤的视频](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 现在，可以验证是否已禁用对后端的匿名访问。 在 Visual Studio 中：
@@ -43,8 +42,8 @@ ms.lasthandoff: 07/20/2017
 
 接下来，需要更新应用程序，以便在从移动应用后端请求资源之前对用户进行身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
-1. 在 **Visual Studio** 中打开项目，然后打开 `www/index.html` 文件进行编辑。
+## <a name="add-authentication"></a>向应用添加身份验证
+1. 在 **Visual Studio** 中打开项目，并打开 `www/index.html` 文件进行编辑。
 2. 找到 head 节中的 `Content-Security-Policy` 元标记。  将 OAuth 主机添加到允许的源列表。
 
    | 提供程序 | SDK 提供程序名称 | OAuth 主机 |
@@ -64,7 +63,7 @@ ms.lasthandoff: 07/20/2017
 
     在相应的移动设备上使用时，某些身份验证提供程序不需要 Content-Security-Policy 更改。  例如，在 Android 设备上使用 Google 身份验证时便不需要 Content-Security-Policy 更改。
 
-3. 打开 `www/js/index.js` 文件进行编辑，找到 `onDeviceReady()` 方法，然后在客户端创建代码下面添加以下代码：
+3. 打开 `www/js/index.js` 文件进行编辑，找到 `onDeviceReady()` 方法，并在客户端创建代码下面添加以下代码：
 
         // Login to the service
         client.login('SDK_Provider_Name')
@@ -111,4 +110,3 @@ ms.lasthandoff: 07/20/2017
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-

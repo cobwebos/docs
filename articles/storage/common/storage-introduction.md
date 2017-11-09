@@ -3,7 +3,7 @@ title: "Azure 存储简介 | Microsoft 文档"
 description: "Microsoft 的云中数据存储 - Azure 存储的简介。"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
@@ -13,15 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: e7b32aa2de5d6501e8d7894a936e9ab8b2f4f42f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 163f35682a4fdaa971f715c7429153bfdcf6a584
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-<!-- this is the same version that is in the MVC branch -->
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储简介
 
 Microsoft Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Microsoft 为你负责维护并处理关键问题。 
@@ -37,13 +35,9 @@ Azure 存储包含三项数据服务：Blob 存储、文件存储和队列存储
 * 将数据传入或传出存储
 * 许多可用的存储客户端库。 
 
-
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
-
+若要快速启动并运行 Azure 存储，请查看以下快速入门教程：
+* [使用 PowerShell 创建存储帐户](storage-quickstart-create-storage-account-powershell.md)
+* [使用 CLI 创建存储帐户](storage-quickstart-create-storage-account-cli.md)
 
 ## <a name="introducing-the-azure-storage-services"></a>Azure 存储服务简介
 
@@ -55,7 +49,7 @@ Blob 本质上是文件，例如存储在计算机、平板电脑、移动设备
 
 将文件存储在 Blob 存储中以后，即可使用 URL、REST 接口或 Azure SDK 存储客户端库之一从世界各地访问它们。 存储客户端库提供多个语言版本，包括 Node.js、Java、PHP、Ruby、Python 和 .NET。 
 
-有三种类型的 Blob -- 块 Blob、追加 Blob 和页 Blob（用于 VHD 文件）。
+有三种类型的 Blob -- 块 Blob、页 Blob（用于 VHD 文件）和追加 Blob。
 
 * 块 Blob 用于保存最大约 4.7 TB 的普通文件。 
 * 页 Blob 用于保存最大 8 TB 的随机访问文件。 此类 Blob 用于可备份 VM 的 VHD 文件。
@@ -63,11 +57,10 @@ Blob 本质上是文件，例如存储在计算机、平板电脑、移动设备
 
 如果使用的是极大型数据集，因网络限制而无法通过网络向 Blob 存储上传数据或从其下载数据，则可将一组硬盘驱动器寄送到 Microsoft，以便直接通过数据中心导入或导出数据。 请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../storage-import-export-service.md)。
 
-## <a name="file-storage"></a>文件存储
+## <a name="azure-files"></a>Azure 文件
+可以通过 [Azure 文件](../files/storage-files-introduction.md)设置可用性高的网络文件共享，以便使用标准的服务器消息块 (SMB) 协议对其进行访问。 这意味着，多个 VM 可以共享启用了读取和写入访问权限的相同文件。 也可使用 REST 接口或存储客户端库来读取文件。 
 
-可以通过 Azure 文件服务设置可用性高的网络文件共享，以便使用标准的服务器消息块 (SMB) 协议对其进行访问。 这意味着，多个 VM 可以共享启用了读取和写入访问权限的相同文件。 也可使用 REST 接口或存储客户端库来读取文件。 
-
-Azure 文件存储不同于公司文件共享的一点是，可以在全球任何地方使用 URL 来访问文件，只要该 URL 指向文件且包含共享访问签名 (SAS) 令牌即可。 可以生成 SAS 令牌，用于在指定时间内对私有资产进行特定访问。 
+Azure 文件不同于公司文件共享的一点是，可以在全球任何地方使用 URL 来访问文件，只要该 URL 指向文件且包含共享访问签名 (SAS) 令牌即可。 可以生成 SAS 令牌，用于在指定时间内对私有资产进行特定访问。 
 
 文件共享适用于许多常用方案： 
 
@@ -85,14 +78,13 @@ Azure 队列服务用于存储和检索消息。 队列消息最大可以为 64 
 
 例如，假设你需要客户能够上传图片，并且你需要创建每个图片的缩略图。 可以让客户在上传图片时等待你创建缩略图， 也可以使用队列。 当客户完成上传操作后，向队列写入一条消息。 然后通过 Azure Function 从队列检索该消息并创建缩略图。 此处理过程的每一部分都可以单独进行缩放，让你可以根据使用情况进行调整，加强控制。
 
-<!-- this bookmark is used by other articles; you'll need to update them before this goes into production ROBIN-->
 ## <a name="table-storage"></a>表存储
-<!-- add a link to the old table storage to this paragraph once it's moved -->
-标准 Azure 表存储现在是 Cosmos DB 的一部分。 此外还发布了适用于 Azure 表存储的高级表，提供吞吐量优化表、全局分发和自动化辅助索引。 若要详细了解和尝试新的高级体验，请查看 [Azure Cosmos DB：表 API](https://aka.ms/premiumtables)。
+
+标准 Azure 表存储现在是 Cosmos DB 的一部分。 若要查看该文档，请参阅 [Azure 表存储概述](../../cosmos-db/table-storage-overview.md)。 此外还发布了适用于 Azure 表存储的高级表，提供吞吐量优化表、全局分发和自动化辅助索引。 若要详细了解和尝试新的高级体验，请查看 [Azure Cosmos DB：表 API](https://aka.ms/premiumtables)。
 
 ## <a name="disk-storage"></a>磁盘存储
 
-Azure 存储团队还拥有磁盘，其中包括虚拟机使用的所有托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
+Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型 
 
@@ -155,7 +147,7 @@ Blob 存储帐户是专用于存储块 Blob 和追加 Blob 的存储帐户。 �
 
 有关共享访问签名的详细信息，请参阅 [使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md) 。 有关安全访问存储帐户的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)和 [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)（Azure 存储服务身份验证）。
 
-若要更详细地了解如何确保存储帐户和加密的安全性，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
+若要详细了解如何确保存储帐户和加密的安全性，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
 
 ## <a name="replication"></a>复制
 
@@ -227,11 +219,9 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 * [详细了解文件存储](../storage-files-introduction.md)
 * [详细了解队列存储](../queues/storage-queues-introduction.md)
 
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
+若要快速启动并运行 Azure 存储，请查看以下快速入门教程：
+* [使用 PowerShell 创建存储帐户](storage-quickstart-create-storage-account-powershell.md)
+* [使用 CLI 创建存储帐户](storage-quickstart-create-storage-account-cli.md)
 
 <!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
 
@@ -273,9 +263,6 @@ To learn more about Azure Storage, explore these resources:
 * [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
 * [Create a storage account](../storage-create-storage-account.md)
 
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
-<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 -->
 
 ### <a name="for-administrators"></a>面向管理员
@@ -284,15 +271,15 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-net-developers"></a>面向 .NET 开发人员
 * [通过 .NET 开始使用 Azure Blob 存储](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [使用 .NET 针对 Azure 文件进行开发](../files/storage-dotnet-how-to-use-files.md)
 * [通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [通过 .NET 开始使用 Azure 队列存储](../storage-dotnet-how-to-use-queues.md)
-* [在 Windows 上开始使用 Azure 文件存储](../storage-dotnet-how-to-use-files.md)
 
 ### <a name="for-javaandroid-developers"></a>面向 Java/Android 开发人员
 * [如何通过 Java 使用 Blob 存储](../blobs/storage-java-how-to-use-blob-storage.md)
+* [使用 Java 针对 Azure 文件进行开发](../files/storage-java-how-to-use-file-storage.md)
 * [如何通过 Java 使用表存储](../../cosmos-db/table-storage-how-to-use-java.md)
 * [如何通过 Java 使用队列存储](../storage-java-how-to-use-queue-storage.md)
-* [如何通过 Java 使用文件存储](../storage-java-how-to-use-file-storage.md)
 
 ### <a name="for-nodejs-developers"></a>面向 Node.js 开发人员
 * [如何通过 Node.js 使用 Blob 存储](../blobs/storage-nodejs-how-to-use-blob-storage.md)
@@ -311,7 +298,6 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-python-developers"></a>面向 Python 开发人员
 * [如何通过 Python 使用 Blob 存储](../blobs/storage-python-how-to-use-blob-storage.md)
+* [使用 Python 针对 Azure 文件进行开发](../files/storage-python-how-to-use-file-storage.md)
 * [如何通过 Python 使用表存储](../../cosmos-db/table-storage-how-to-use-python.md)
-* [如何通过 Python 使用队列存储](../storage-python-how-to-use-queue-storage.md)   
-* [如何通过 Python 使用文件存储](../storage-python-how-to-use-file-storage.md) 
--->
+* [如何通过 Python 使用队列存储](../storage-python-how-to-use-queue-storage.md)

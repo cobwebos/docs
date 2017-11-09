@@ -15,14 +15,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>使用 REST API 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
 >
@@ -60,9 +58,9 @@ ms.lasthandoff: 07/12/2017
 | @search.action | 说明 | 每个文档必需的字段 | 说明 |
 | --- | --- | --- | --- |
 | `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 将失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 包括 `Collection(Edm.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 包括 `Collection(Edm.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
 | `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
-| `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都将被忽略。 如果要从文档中删除单个字段，请改用 `merge` ，只需将该字段显式设置为 null。 |
+| `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
 
 ## <a name="construct-your-http-request-and-request-body"></a>构造 HTTP 请求和请求正文
 既然已经为索引操作收集了必要的字段值，就可以构造实际的 HTTP 请求和 JSON 请求正文来导入数据。
@@ -162,7 +160,7 @@ ms.lasthandoff: 07/12/2017
 ```
 
 > [!NOTE]
-> 这通常意味着，搜索服务上的负载即将达到某个点，索引请求将在该点开始返回 `503` 响应。 在这种情况下，强烈建议等到客户端代码自动消失，然后重试。 这可以给系统一些时间来恢复，增加今后请求成功的可能性。 快速重试请求只会延长这种情况持续的时间。
+> 这通常意味着，搜索服务上的负载即将达到某个点，索引请求会在该点开始返回 `503` 响应。 在这种情况下，强烈建议等到客户端代码自动消失，并重试。 这可以给系统一些时间来恢复，增加今后请求成功的可能性。 快速重试请求只会延长这种情况持续的时间。
 >
 >
 
@@ -173,7 +171,7 @@ ms.lasthandoff: 07/12/2017
 如果请求中的所有项均未成功索引，会返回状态代码 `503` 。 此错误表示系统负载过重，当前无法处理请求。
 
 > [!NOTE]
-> 在这种情况下，强烈建议等到客户端代码自动消失，然后重试。 这可以给系统一些时间来恢复，增加今后请求成功的可能性。 快速重试请求只会延长这种情况持续的时间。
+> 在这种情况下，强烈建议等到客户端代码自动消失，并重试。 这可以给系统一些时间来恢复，增加今后请求成功的可能性。 快速重试请求只会延长这种情况持续的时间。
 >
 >
 
@@ -181,4 +179,3 @@ ms.lasthandoff: 07/12/2017
 
 ## <a name="next-steps"></a>后续步骤
 填充 Azure 搜索索引后，即可发出查询，搜索文档。 有关详细信息，请参阅 [查询 Azure 搜索索引](search-query-overview.md) 。
-

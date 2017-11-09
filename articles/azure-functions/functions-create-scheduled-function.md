@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中创建按计划运行的函数 | Microsoft Docs"
-description: "了解如何在 Azure 中创建根据你定义的计划运行的函数。"
+description: "了解如何在 Azure 中创建根据所定义的计划运行的函数。"
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,16 +16,15 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 4442d0038a0604d3297871907c1d05d8d3916dcf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 476e103c7101621e116c5155241f56f1cb9036df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
 
-了解如何使用 Azure Functions 创建根据你定义的计划运行的函数。
+了解如何使用 Azure Functions 创建根据所定义的计划运行的函数。
 
 ![在 Azure 门户中创建 Function App](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/08/2017
 
 完成本教程：
 
-+ 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
++ 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -72,9 +71,9 @@ ms.lasthandoff: 06/08/2017
 
 ## <a name="update-the-timer-schedule"></a>更新计时器计划
 
-1. 展开函数，然后单击“集成”。 可在此处定义函数的输入和输出绑定，还可以设置计划。 
+1. 展开函数，并单击“集成”。 可在此处定义函数的输入和输出绑定，还可以设置计划。 
 
-2. 输入新**计划**值（`0 0 */1 * * *`），然后单击“保存”。  
+2. 输入新**计划**值（`0 0 */1 * * *`），并单击“保存”。  
 
 ![Azure 门户中的函数更新计时器计划。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 

@@ -1,6 +1,6 @@
 ---
 title: "Publish-WebApplicationWebSite（Windows PowerShell 脚本）| Microsoft Docs"
-description: "了解如何将 Web 项目发布到 Azure 网站。 此脚本将在 Azure 订阅中创建所需的资源（如果这些资源不存在）。"
+description: "了解如何将 Web 项目发布到 Azure 网站。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6942ea67050b86dc8f5a4c9d71ebd8ebd83ad0a2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 07d21b7ce6cd8aee1cff704d316e7a2ca8c00437
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publish-WebApplicationWebSite（Windows PowerShell 脚本）
 ## <a name="syntax"></a>语法
-将 Web 项目发布到 Azure 网站。 此脚本将在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
+将 Web 项目发布到 Azure 网站。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
 
     Publish-WebApplicationWebSite
     –Configuration <configuration>
@@ -125,5 +124,4 @@ JSON 配置文件指定要部署的内容的详细信息。 它包括当创建�
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[Publish-WebApplicationVM（Windows PowerShell 脚本）](vs-azure-tools-publish-webapplicationvm.md)
-
 

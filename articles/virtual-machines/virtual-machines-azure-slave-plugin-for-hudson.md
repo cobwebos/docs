@@ -14,15 +14,14 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 0661f26e62a465ccd096773cbabd47268491f22d
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>如何在 Hudson 连续集成中使用 Azure 从属插件
-适用于 Hudson 的 Azure 从属插件让你能够在运行分布式构建系统时，预配 Azure 上的从属节点。
+适用于 Hudson 的 Azure 从属插件使你能够在运行分布式构建系统时，预配 Azure 上的从属节点。
 
 ## <a name="install-the-azure-slave-plug-in"></a>安装 Azure 从属插件
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
@@ -35,7 +34,7 @@ ms.lasthandoff: 01/05/2017
 6. 单击“安装” 。
 7. 重新启动 Hudson。
 
-现在插件安装完毕，接下来的步骤是用 Azure 订阅配置文件配置插件并创建一个在为从属节点创建 VM 时要使用的模板。
+现在插件安装完毕，后续步骤是用 Azure 订阅配置文件配置插件并创建一个在为从属节点创建 VM 时要使用的模板。
 
 ## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>使用订阅配置文件配置 Azure 从属插件
 订阅配置文件也称为发布设置，是一个 XML 文件，包含在开发环境中使用 Azure 时需要的安全凭据以及一些附加信息。 若要配置 Azure 从属插件，需要：
@@ -73,7 +72,7 @@ ms.lasthandoff: 01/05/2017
    
     ![添加新的云][add new cloud]
    
-    此时将显示用于输入订阅详细信息的字段。
+    此时会显示用于输入订阅详细信息的字段。
    
     ![配置配置文件][configure profile]
 5. 从订阅配置文件中复制订阅 ID 和管理证书，然后将其粘贴到相应的字段中。
@@ -88,30 +87,30 @@ ms.lasthandoff: 01/05/2017
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
 2. 单击“配置系统”。
 3. 向下滚动页面找到“云”部分。
-4. 在“云”部分中，找到“添加 Azure 虚拟机模板”，然后单击“添加”按钮。
+4. 在“云”部分中，找到“添加 Azure 虚拟机模板”，并单击“添加”按钮。
    
     ![添加 VM 模板][add vm template]
-5. 在“名称”字段中指定一个云服务名称。 如果你指定的名称引用一个现有的云服务，则将在该服务中设置 VM。 否则，Azure 将创建一个新服务。
+5. 在“名称”字段中指定一个云服务名称。 如果指定的名称引用一个现有的云服务，则会在该服务中设置 VM。 否则，Azure 将创建一个新服务。
 6. 在“说明”字段中，输入描述所创建模板的文本。 此信息仅用于记录目的，并不在设置 VM 时使用。
 7. 在“标签”字段中，输入 **linux**。 此标签用于标识所创建的模板，随后在创建 Hudson 作业时用于引用该模板。
 8. 选择要创建 VM 的所在区域。
 9. 选择适当的 VM 大小。
-10. 指定要创建 VM 的存储帐户。 确保其所在区域与你要使用的云服务相同。 如果你想要创建新的存储空间，可以将此字段留空。
+10. 指定要创建 VM 的存储帐户。 确保其所在区域与要使用的云服务相同。 如果想要创建新的存储空间，可以将此字段留空。
 11. 保留时间指定 Hudson 删除空闲从属节点之前所需要的分钟数。 其保留默认值为 60。
 12. 在“使用情况”中，选择使用此从属节点时的适当条件。 现在，选择“尽可能多地使用此节点”。
     
-     此时，你的窗体会与以下类似：
+     此时，窗体会与以下类似：
     
      ![模板配置][template config]
 13. 在“映像系列或 ID”中，必须指定要在 VM 中安装的系统映像。 可以从映像系列的列表中选择，也可以指定一个自定义映像。
     
-     如果要从映像系列的列表中选择，请输入映像系列名称的首字符（区分大小写）。 例如，键入 **U** 将显示一个 Ubuntu Server 系列列表。 从列表中选择后，Jenkins 将在设置你的 VM 时使用该系列的最新版系统映像。
+     如果要从映像系列的列表中选择，请输入映像系列名称的首字符（区分大小写）。 例如，键入 **U** 会显示一个 Ubuntu Server 系列列表。 从列表中选择后，Jenkins 会在设置 VM 时使用该系列的最新版系统映像。
     
      ![OS 系列列表][OS family list]
     
-     如果你有一个自定义映像，想要改用该映像，则输入该自定义映像的名称。 自定义映像名称不显示在列表中，因此你必须确保名称输入正确。    
+     如果有一个自定义映像，想要改用该映像，则输入该自定义映像的名称。 自定义映像名称不显示在列表中，因此，必须确保名称输入正确。    
     
-     对于本教程，键入 **U** 显示一个 Ubuntu 映像列表，然后选择“Ubuntu Server 14.04 LTS”。
+     对于本教程，键入 **U** 显示一个 Ubuntu 映像列表，并选择“Ubuntu Server 14.04 LTS”。
 14. 对于“启动方法”，请选择“SSH”。
 15. 复制下面的脚本并粘贴到“初始化脚本”字段中。
     
@@ -143,15 +142,15 @@ ms.lasthandoff: 01/05/2017
 18. 单击“保存” 。
 
 ## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>创建在 Azure 上的从属节点上运行的 Hudson 作业
-在此部分，你将创建一个在 Azure 上的从属节点上运行的 Hudson 任务。
+在此部分，将创建一个在 Azure 上的从属节点上运行的 Hudson 任务。
 
 1. 在 Hudson 仪表板中，单击“新建作业”。
-2. 为你正在创建的作业输入一个名称。
+2. 为正在创建的作业输入一个名称。
 3. 对于作业类型，选择“生成自由格式的软件作业”。
 4. 单击 **“确定”**。
 5. 在作业配置页中，选择“限制可以运行此项目的位置”。
-6. 选择“节点和标签菜单”，然后选择 **linux**（在上一部分中创建虚拟机模板时，我们指定了此标签）。
-7. 在“构建”部分，单击“添加构建步骤”，然后选择“执行 shell”。
+6. 选择“节点和标签菜单”，并选择 **linux**（在上一部分中创建虚拟机模板时，我们指定了此标签）。
+7. 在“构建”部分，单击“添加构建步骤”，并选择“执行 shell”。
 8. 编辑以下脚本，用相应的值替换 **{your github account name}**、**{your project name}** 和 **{your project directory}**，然后将编辑后的脚本粘贴到显示的文本区域中。
    
         # Clone from git repo
@@ -178,7 +177,7 @@ ms.lasthandoff: 01/05/2017
    
         ant
 9. 单击“保存” 。
-10. 在 Hudson 仪表板中，找到刚刚创建的作业，然后单击“计划生成”图标。
+10. 在 Hudson 仪表板中，找到刚刚创建的作业，并单击“计划生成”图标。
 
 之后，Hudson 将使用在上一部分中创建的模板创建一个从属节点，并执行你在此任务的构建步骤中指定的脚本。
 
@@ -197,5 +196,4 @@ ms.lasthandoff: 01/05/2017
 [add vm template]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-addnewvmtemplate.png
 [template config]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-templateconfig1-withdata.png
 [OS family list]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-oslist.png
-
 

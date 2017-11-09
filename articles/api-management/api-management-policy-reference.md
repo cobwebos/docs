@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: adc0c4415e10ddd0b4994cecef17f026546e91a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-policy-reference"></a>Azure API 管理策略参考
 本部分提供 [API 管理策略参考][API Management policy reference]中策略的索引。 有关添加和配置策略的信息，请参阅 [API 管理中的策略][Policies in API Management]。
@@ -39,7 +38,7 @@ ms.lasthandoff: 07/06/2017
   * [控制流][Control flow] - 根据布尔值[表达式][expressions]的评估结果，有条件地应用策略语句。
   * [转发请求][Forward request] - 将请求转发到后端服务。
   * [记录到事件中心][Log to Event Hub] - 将指定格式的消息发送到[记录器](https://msdn.microsoft.com/library/azure/mt592020.aspx#Logger)实体定义的消息目标。
-  * [重试](https://msdn.microsoft.com/en-us/library/dn894085.aspx#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统将根据指定的时间间隔重复，直到执行指定的重试计数为止。
+  * [重试](https://msdn.microsoft.com/en-us/library/dn894085.aspx#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会根据指定的时间间隔重复，直到执行指定的重试计数为止。
   * [返回响应](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。
   * [发送单向请求](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) - 将请求发送到指定的 URL，无需等待响应。
   * [发送请求](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) - 将请求发送到指定的 URL。
@@ -123,6 +122,5 @@ ms.lasthandoff: 07/06/2017
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
 
 [Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
-
 
 

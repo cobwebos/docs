@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9c40d273f102339fac8ea633c870b869d10106a7
-ms.openlocfilehash: ccbc051f49220e824782ed4831a31ab1a716570a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/17/2017
-
-
+ms.openlocfilehash: 54ee403f283bc5dc79911e2e813dd513ff595828
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-with-xamarin-apps"></a>将 Azure AD 与 Xamarin 应用集成
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -38,7 +36,7 @@ ms.lasthandoff: 02/17/2017
 
 ## <a name="before-you-get-started"></a>准备工作
 * 下载[框架项目](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip)，或下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。 每个下载内容都是 Visual Studio 2013 解决方案。
-* 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
+* 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 准备好后，请按照以下 4 个部分中的步骤操作。
 
@@ -51,14 +49,14 @@ ms.lasthandoff: 02/17/2017
 若要让应用获取令牌，首先需要在 Azure AD 租户中注册该应用，并授予其访问 Azure AD 图形 API 的权限。 方法如下：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏上，单击你的帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。
+2. 在顶部栏上，单击帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。
 3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
-4. 单击“应用注册”，然后选择“添加”。
+4. 单击“应用注册”，并选择“添加”。
 5. 若要创建新的“本机客户端应用程序”，请遵照提示操作。
   * “名称”向用户描述应用。
   * **重定向 URI** 是 Azure AD 用于返回令牌响应的方案和字符串组合。 输入一个值（例如 http://DirectorySearcher）。
 6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 复制“应用程序”选项卡中的值，因为稍后需用到此值。
-7. 在“设置”页上，选择“所需权限”，然后选择“添加”。
+7. 在“设置”页上，选择“所需权限”，并选择“添加”。
 8. 选择“Microsoft Graph”作为 API。 在“委派权限”下面，添加“读取目录数据”权限。  
 此操作可让应用查询用户的图形 API。
 
@@ -173,7 +171,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ```
 
 ### <a name="windows-universal"></a>Windows Universal
-在 Windows Universal 中打开 MainPage.xaml.cs，然后实现 `Search` 方法。 此方法根据需要使用共享项目中的帮助器方法来更新 UI。
+在 Windows Universal 中打开 MainPage.xaml.cs，并实现 `Search` 方法。 此方法根据需要使用共享项目中的帮助器方法来更新 UI。
 
 ```C#
 ...
@@ -186,14 +184,13 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 
 如果尚未在租户中填充用户，现在便可执行此操作。
 
-1. 运行 DirectorySearcher 应用，然后使用其中一个用户进行登录。
+1. 运行 DirectorySearcher 应用，并使用其中一个用户进行登录。
 2. 根据用户的 UPN 搜索其他用户。
 
 使用 ADAL 可以方便地将常见标识功能合并到应用中。 它会负责所有的繁琐工作，例如缓存管理、OAuth 协议支持、向用户显示登录 UI，以及刷新过期令牌。 只需知道一个 API 调用，即 `authContext.AcquireToken*(…)`。
 
 有关参考，请下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)（无配置值）。
 
-现在，你可以转到其他标识方案。 例如，尝试[使用 Azure AD 保护 .NET Web API](active-directory-devquickstarts-webapi-dotnet.md)。
+现在，可以转到其他标识方案。 例如，尝试[使用 Azure AD 保护 .NET Web API](active-directory-devquickstarts-webapi-dotnet.md)。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

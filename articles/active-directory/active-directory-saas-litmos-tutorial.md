@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
+ms.openlocfilehash: ef1b5860ba0a406022bbd11afb366d14bee2c57d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: fa962b3f0547b1afcf1c85abb0f28205f26ef96d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>教程：Azure Active Directory 与 Litmos 的集成
 
@@ -55,7 +54,7 @@ ms.lasthandoff: 07/20/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-litmos-from-the-gallery"></a>从库中添加 Litmos
-若要配置 Litmos 与 Azure AD 的集成，需要从库中将 Litmos 添加到托管 SaaS 应用列表。
+要配置 Litmos 与 Azure AD 的集成，需要从库中将 Litmos 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Litmos，请执行以下步骤：**
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/20/2017
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Litmos 测试用户](#create-a-litmos-test-user) - 在 Litmos 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -109,14 +108,14 @@ ms.lasthandoff: 07/20/2017
 
     ![Litmos 域和 URL 单一登录信息](./media/active-directory-saas-litmos-tutorial/tutorial_litmos_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.litmos.com/account/Login`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.litmos.com/account/Login`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.litmos.com/integration/samllogin`
 
     > [!NOTE] 
     > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值（本教程后面部分将进行介绍）或联系 [Litmos 支持团队](https://www.litmos.com/contact-us/)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-litmos-tutorial/tutorial_litmos_certificate.png)
 
@@ -130,13 +129,13 @@ ms.lasthandoff: 07/20/2017
     | LastName  |user.surname |
     | 电子邮件 |user.mail |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![添加属性](./media/active-directory-saas-litmos-tutorial/tutorial_attribute_04.png)
 
     ![“添加属性”对话框](./media/active-directory-saas-litmos-tutorial/tutorial_attribute_05.png)
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
@@ -156,7 +155,7 @@ ms.lasthandoff: 07/20/2017
    
     ![“集成”选项卡][23] 
 
-10. 在“集成”选项卡上，向下滚动到“第三方集成”，然后单击“SAML 2.0”选项卡。
+10. 在“集成”选项卡上，向下滚动到“第三方集成”，并单击“SAML 2.0”选项卡。
    
     ![SAML 2.0 部分][24] 
 
@@ -168,9 +167,9 @@ ms.lasthandoff: 07/20/2017
     
      ![Litmos 应用程序][25] 
      
-     a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“启用 SAML”。
+     a. 单击“启用 SAML”。
     
-     b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“SAML X.509 证书”文本框中。
+     b. 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，再粘贴到“SAML X.509 证书”文本框中。
      
      c. 单击“保存更改”。
 
@@ -212,7 +211,7 @@ ms.lasthandoff: 07/20/2017
 ### <a name="create-a-litmos-test-user"></a>创建 Litmos 测试用户
 
 本部分的目的是在 Litmos 中创建名为 Britta Simon 的用户。  
-Litmos 应用程序支持实时预配。 这意味着，在尝试使用访问面板访问应用程序期间，如有必要，将会自动创建一个用户帐户。
+Litmos 应用程序支持实时预配。 这意味着，在尝试使用访问面板访问应用程序期间，如有必要，会自动创建一个用户帐户。
 
 **若要在 Litmos 中创建名为 Britta Simon 的用户，请执行以下步骤：**
 
@@ -226,7 +225,7 @@ Litmos 应用程序支持实时预配。 这意味着，在尝试使用访问面
    
     ![“集成”选项卡][23] 
 
-4. 在“集成”选项卡上，向下滚动到“第三方集成”，然后单击“SAML 2.0”选项卡。
+4. 在“集成”选项卡上，向下滚动到“第三方集成”，并单击“SAML 2.0”选项卡。
    
     ![SAML 2.0][24] 
     
@@ -240,9 +239,9 @@ Litmos 应用程序支持实时预配。 这意味着，在尝试使用访问面
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 Litmos，请执行以下步骤：**
+**要将 Britta Simon 分配到 Litmos，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -295,5 +294,4 @@ Litmos 应用程序支持实时预配。 这意味着，在尝试使用访问面
 [201]: ./media/active-directory-saas-litmos-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-litmos-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-litmos-tutorial/tutorial_general_203.png
-
 

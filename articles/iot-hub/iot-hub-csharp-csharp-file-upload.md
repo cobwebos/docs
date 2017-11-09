@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
+ms.openlocfilehash: f0be85d661807f36890fc79090c3f820ae8c376d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: b45d85d0d77cf47f36cb793bc8c0dbe2d5c12634
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>通过 .NET 使用 IoT 中心将文件从设备上传到云
 
@@ -30,14 +29,14 @@ ms.lasthandoff: 07/14/2017
 - 安全提供具有 Azure blob URI 的设备，用于上传文件。
 - 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[IoT 中心入门](iot-hub-csharp-csharp-getstarted.md)和[使用 IoT 中心发送云到设备消息](iot-hub-csharp-csharp-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备消息传送功能。 [处理设备到云的消息](iot-hub-csharp-csharp-process-d2c.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，你无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[IoT 中心入门](iot-hub-csharp-csharp-getstarted.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [处理设备到云的消息](iot-hub-csharp-csharp-process-d2c.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
 * 以高频率采样的振动数据
 * 某种形式的预处理数据
 
-通常使用 [Azure 数据工厂](../data-factory/index.md)或 [Hadoop](../hdinsight/index.md) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](../hdinsight/index.md) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 在本教程结束时，会运行 2 个 .NET 控制台应用：
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/14/2017
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、Java 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
 
-若要完成本教程，您需要以下各项：
+要完成本教程，需要以下各项：
 
 * Visual Studio 2015 或 Visual Studio 2017
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
@@ -58,9 +57,9 @@ ms.lasthandoff: 07/14/2017
 
 在本部分中，会修改在[使用 IoT 中心发送云到设备消息](iot-hub-csharp-csharp-c2d.md)中创建的设备应用，以接收来自 IoT 中心的云到设备消息。
 
-1. 在 Visual Studio 中，右键单击 **SimulatedDevice** 项目，单击“**添加**”，然后单击“**现有项**”。 导航到某个图像文件并将它包含在项目中。 本教程假设图像名称为 `image.jpg`。
+1. 在 Visual Studio 中，右键单击 **SimulatedDevice** 项目，单击“**添加**”，并单击“**现有项**”。 导航到某个图像文件并将它包含在项目中。 本教程假设图像名称为 `image.jpg`。
 
-1. 右键单击该图像，然后单击“**属性**”。 确保“**复制到输出目录**”设置为“**始终复制**”。
+1. 右键单击该图像，并单击“**属性**”。 确保“**复制到输出目录**”设置为“**始终复制**”。
 
     ![][1]
 
@@ -108,11 +107,11 @@ ms.lasthandoff: 07/14/2017
 
     ![Visual Studio 中的新项目][2]
 
-1. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，然后单击“管理 NuGet 包...”。
+1. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，并单击“管理 NuGet 包...”。
 
-1. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，然后单击“安装”并接受使用条款。
+1. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，单击“安装”并接受使用条款。
 
-    此操作将会下载、安装 [Azure IoT 服务 SDK NuGet 包]，并在 **ReadFileUploadNotification** 项目中添加对它的引用。
+    此操作会下载、安装 [Azure IoT 服务 SDK NuGet 包]，并在 **ReadFileUploadNotification** 项目中添加对它的引用。
 
 1. 在 **Program.cs** 文件的顶部添加以下语句：
 
@@ -163,9 +162,9 @@ ms.lasthandoff: 07/14/2017
 
 ## <a name="run-the-applications"></a>运行应用程序
 
-现在，你已准备就绪，可以运行应用程序了。
+现在，已准备就绪，可以运行应用程序了。
 
-1. 在 Visual Studio 中，右键单击你的解决方案并选择“**设置启动项目**”。 选择“**多个启动项目**”，然后针对 **ReadFileUploadNotification** 和 **SimulatedDevice** 应用选择“**启动**”操作。
+1. 在 Visual Studio 中，右键单击解决方案并选择“**设置启动项目**”。 选择“**多个启动项目**”，并针对 **ReadFileUploadNotification** 和 **SimulatedDevice** 应用选择“**启动**”操作。
 
 1. 按 **F5**。 这两个应用程序应该都会启动。 你将在其中一个控制台应用中看到上传已完成，同时还会看到另一个控制台应用收到的上传通知消息。 可使用 [Azure 门户]或 Visual Studio 服务器资源管理器检查 Azure 存储帐户中是否存在上传的文件。
 
@@ -204,4 +203,3 @@ ms.lasthandoff: 07/14/2017
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-iotedge]: iot-hub-windows-iot-edge-simulated-device.md
-

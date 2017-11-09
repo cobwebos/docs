@@ -4,7 +4,7 @@ description: "了解如何通过部署默认的 ASP.NET Web 应用，在 Azure �
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: cfowler
 editor: 
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
-ms.custom: mvc
+ms.custom: mvc, devcenter
+ms.openlocfilehash: 76e20ea1bebbf35910210e1651fadc0daf426aa4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 107b0a73c7f544aebd0ee685fd1d726d1420495d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Web 应用
 
@@ -107,7 +106,7 @@ ms.lasthandoff: 09/20/2017
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
 | 位置 | 欧洲西部 | 托管 Web 应用的数据中心。 |
-| 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/)确定托管功能。 |
+| 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
 选择“确定”。
 
@@ -168,4 +167,3 @@ ms.lasthandoff: 09/20/2017
 
 > [!div class="nextstepaction"]
 > [将 ASP.NET 与 SQL 数据库配合使用](app-service-web-tutorial-dotnet-sqldatabase.md)
-

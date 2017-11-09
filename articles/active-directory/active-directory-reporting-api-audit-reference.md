@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: 242fa094010694d7060b05e5892ce738d5b37a32
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 审核 API 参考
 本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
-Azure AD 报告向你提供了一个允许你使用代码或相关工具访问审核数据的 API。
+Azure AD 报告向你提供了一个允许使用代码或相关工具访问审核数据的 API。
 本主题用于向你提供有关**审核 API** 的参考信息。
 
 请参阅：
@@ -47,13 +46,13 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 * 有权访问 API 的任何应用（仅可根据全局管理员的权限设置应用授权）
 
 ## <a name="prerequisites"></a>先决条件
-为了通过报告 API 访问此报告，你必须具备：
+为了通过报告 API 访问此报告，必须具备：
 
 * [Azure Active Directory 免费版或更高版本](active-directory-editions.md)
 * 完成了[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)。 
 
 ## <a name="accessing-the-api"></a>访问 API
-你可以通过 [Graph 浏览器](https://graphexplorer2.cloudapp.net) 访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
+可以通过“Graph 浏览器”[](https://graphexplorer2.cloudapp.net)访问此 API，或以编程方式使用 PowerShell 等访问此 API。 为了使 PowerShell 正确解释在 AAD Graph REST 调用中使用的 OData 筛选器语法，必须使用反撇号字符（也称为重音符）对 $ 字符进行“转义”。 反撇号字符用作 [PowerShell 的转义字符](https://technet.microsoft.com/library/hh847755.aspx)，允许 PowerShell 对 $ 字符进行原义解释，并避免将它误用作 PowerShell 变量名称（即 $filter）。
 
 本主题着重介绍了 Graph 浏览器。 有关 PowerShell 示例，请参阅此 [PowerShell 脚本](active-directory-reporting-api-audit-samples.md#powershell-script)。
 
@@ -66,7 +65,7 @@ Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制
 有关报告数据的保留限制，请查看[报告保留策略](active-directory-reporting-retention.md)。
 
 此调用分批返回数据。 每一批中最多有 1000 条记录。  
-若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 skiptoken 信息。 跳过标记将在结果集的末尾。  
+若要获取下一批记录，请使用“下一个”链接。 从第一组返回的记录中获取 skiptoken 信息。 跳过标记会在结果集的末尾。  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -74,14 +73,14 @@ Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制
 
 
 ## <a name="supported-filters"></a>支持的筛选器
-你可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
+可以缩小显示在筛选器窗体中的 API 调用所返回记录的范围。  
 对于与登录 API 相关的数据，支持以下筛选器：
 
-* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果你想要返回数以千计的对象，则不应使用此筛选器。     
-* **$filter=\<筛选语句\>** - 根据受支持的筛选字段，指定你所关注的记录类型
+* **$top=\<要返回的记录数\>** - 限制返回的记录数。 此操作成本高昂。 如果想要返回数以千计的对象，则不应使用此筛选器。     
+* **$filter=\<筛选语句\>** - 根据受支持的筛选字段，指定所关注的记录类型
 
 ## <a name="supported-filter-fields-and-operators"></a>支持的筛选字段和运算符
-若要指定你所关注的记录类型，可生成包含以下一个或一组筛选字段的筛选语句：
+要指定你所关注的记录类型，可生成包含以下一个或一组筛选字段的筛选语句：
 
 * [activityDate](#activitydate) - 定义日期或日期范围
 * [category](#category) - 定义要筛选的类别。
@@ -241,5 +240,4 @@ Azure AD 审核 API（使用 OData 分页）返回的记录数没有任何限制
 ## <a name="next-steps"></a>后续步骤
 * 是否要查看筛选的系统活动的示例？ 请查看 [Azure Active Directory 审核 API 示例](active-directory-reporting-api-audit-samples.md)。
 * 是否要了解有关 Azure AD 报告 API 的详细信息？ 请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-
 

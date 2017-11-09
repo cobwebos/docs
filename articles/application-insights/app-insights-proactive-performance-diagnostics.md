@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: 57f17c201cd50933517ee02b2bbbe7d6aceff9b2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: dab2e54dedf55f0d9a0b0b4e66d101ed7df94bfa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -68,7 +67,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="faq"></a>常见问题
 
-* *所以你们会查看我的数据？*
+* 所以你们会查看我的数据？
   * 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
@@ -131,7 +130,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * 检测当天和 7 天前此操作的请求计数。
 * 此操作的降级与相关依赖项的降级之间的关联。 
 * 帮助你诊断问题的链接。
-  * 帮助你查看占用操作时间的位置的探查器跟踪（如果在检测期间已收集此操作的探查器跟踪示例，则会提供链接）。 
+  * 帮助你查看哪些地方需要花费操作时间的探查器跟踪（如果在检测期间已收集此操作的探查器跟踪示例，则会提供链接）。 
   * 指标资源管理器中的性能报告，可在其中分解此操作的时间范围/筛选器。
   * 搜索此调用以查看特定的调用属性。
   * 失败报告 - 如果计数大于 1，则表示此操作可能由于性能下降而发生失败。
@@ -180,7 +179,7 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 修改时间范围和筛选器以浏览遥测。
 
 ## <a name="next-steps"></a>后续步骤
-这些诊断工具可帮助你检查应用中的遥测：
+这些诊断工具可帮助检查应用中的遥测数据：
 
 * [探查器](app-insights-profiler.md) 
 * [快照调试器](app-insights-snapshot-debugger.md)
@@ -191,4 +190,3 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 * [手动配置的指标警报](app-insights-alerts.md)
 * [可用性 Web 测试](app-insights-monitor-web-app-availability.md)
-

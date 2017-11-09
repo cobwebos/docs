@@ -16,12 +16,11 @@ ms.date: 07/28/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 91978cee88d55c99bcb63c63cdaf01581ae84668
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -34,7 +33,7 @@ Azure Active Directory (Azure AD) 可以使用[跨域标识管理系统 (SCIM) 2
 
 
 ![][0]
-图 1：通过 Web 服务从 Azure Active Directory 预配到标识存储
+*图 1：通过 Web 服务从 Azure Active Directory 预配到标识存储*
 
 此功能可配合 Azure AD 中的“自带应用”功能，为提供 SCIM Web 服务或以该服务为前端的应用程序启用单一登录和自动用户预配。
 
@@ -66,13 +65,13 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 3. 为应用程序输入一个名称，然后单击“添加”图标创建应用对象。
     
   ![][1]
-  图 2：Azure AD 应用程序库
+  *图 2：Azure AD 应用程序库*
     
 4. 在生成的屏幕的左侧列中选择“预配”选项卡。
 5. 在“预配模式”菜单中，选择“自动”。
     
   ![][2]
-  图 3：在 Azure 门户中配置预配
+  *图 3：在 Azure 门户中配置预配*
     
 6. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例：https://api.contoso.com/scim/v2/
 7. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
@@ -148,7 +147,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 5. 在“预配模式”菜单中，选择“自动”。
     
   ![][2]
-  图 4：在 Azure 门户中配置预配
+  *图 4：在 Azure 门户中配置预配*
     
 6. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。 这类似于 http://testmachine.contoso.com:9000 或 http://<ip-address>:9000/，其中 <ip-address> 是 Internet 公开的 IP 地址。  
 7. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
@@ -392,7 +391,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 下图显示了 Azure Active Directory 发送到 SCIM 服务以管理用户在其他标识存储中的生命周期的消息。 该图还显示了使用 Microsoft 提供的、用于构建此类服务的 CLI 库所实现的 SCIM 服务如何将这些请求转换为对提供程序的方法调用。  
 
 ![][4]
-图 5：用户预配和取消预配顺序
+*图 5：用户预配和取消预配顺序*
 
 1. Azure Active Directory 会在服务中查询是否有某个用户的 externalId 属性值与 Azure AD 中用户的 mailNickname 属性值匹配。 查询以类似此例的超文本传输协议 (HTTP) 请求形式表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例： 
   ````
@@ -696,7 +695,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 * 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
 
 ![][5]
-图 6：组预配和取消预配顺序
+*图 6：组预配和取消预配顺序*
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
@@ -714,4 +713,3 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 [3]: ./media/active-directory-scim-provisioning/scim-figure-3.PNG
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
-

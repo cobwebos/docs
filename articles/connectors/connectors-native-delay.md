@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>延迟和延迟到操作入门
 通过使用延迟和“延迟到”操作，可以完成各种工作流方案。
 
-例如，你可以：
+例如，可以：
 
 * 等到工作日通过电子邮件发送状态更新。
 * 在恢复和检索结果前，延迟工作流直到 HTTP 调用有时间完成。
@@ -74,5 +73,4 @@ ms.lasthandoff: 01/20/2017
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
-
 

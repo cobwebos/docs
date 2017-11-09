@@ -8,15 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 8606067a8e82c6314ab931eb4816d45755a8e04f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: ce6edbdffe9704383676e990865cd4e2958f30fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
 - 从命令行转储和还原（使用 mysqldump） 
@@ -46,8 +44,8 @@ ms.lasthandoff: 06/17/2017
 ## <a name="performance-considerations"></a>性能注意事项
 若要优化性能，请在转储大型数据库时留意这些注意事项：
 -   转储数据库时，请使用 mysqldump 中的 `exclude-triggers` 选项。 从转储文件中排除触发器，避免在还原数据期间触发触发器命令。 
--   转储超大型数据库时，避免使用 mysqldump 中的 `single-transaction` 选项。 在单个事务中转储多个表会导致在还原期间消耗额外的存储和内存资源，还可能导致性能延迟或资源限制。
--   通过 SQL 加载时使用多值插入，以便在转储数据库时最小化语句执行开销。 使用由 mysqldump 实用程序生成的转储文件时，会默认启用多值插入。 
+-   使用 `single-transaction` 选项，将事务隔离模式设置为 REPEATABLE READ 并在转储数据之前将 START TRANSACTION SQL 语句发送到服务器。 在单个事务中转储多个表会在还原过程中占用一些额外的存储空间。 `single-transaction` 选项和 `lock-tables` 选项彼此互斥，因为 LOCK TABLES 会导致所有挂起的事务隐式提交。若要转储大型表，请将 `single-transaction` 选项和 `quick` 选项配合使用。 
+-   使用其中包含多个 VALUE 列表的 `extended-insert` 多行语法。 这可使转储文件较小并在重新加载文件时加快插入。
 -  转储数据库时，使用 mysqldump 中的 `order-by-primary` 选项，以便按主键顺序编写数据脚本。
 -   转储数据时，使用 mysqldump 中的 `disable-keys` 选项，以便在加载前，禁用外键约束。 禁用外键检查可提高性能。 启用约束并在加载后验证数据，确保引用完整性。
 -   适当时使用已分区表。
@@ -61,9 +59,9 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 ```
 
 需要提供的参数包括：
-- [uname] 你的数据库用户名 
+- [uname] 数据库用户名 
 - [pass] 数据库密码（请注意，-p 和密码之间没有空格） 
-- [dbname] 你的数据库名称 
+- [dbname] 数据库名称 
 - [backupfile.sql] 数据库备份的文件名 
 - [--opt] mysqldump 选项 
 
@@ -113,7 +111,7 @@ $ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p te
 - 单击“导出”链接。 这将显示一个新页面，可查看数据库转储情况。
 - 在“导出”区域中，单击“全选”链接，选择数据库中的表。 
 - 在 SQL 选项区域中，单击适当的选项。 
-- 单击“另存为文件”选项及相应的压缩选项，然后单击“执行”按钮。 将出现一个对话框，提示你在本地保存该文件。
+- 单击“另存为文件”选项及相应的压缩选项，然后单击“执行”按钮。 将出现一个对话框，提示在本地保存该文件。
 
 ## <a name="import-using-phpmyadmin"></a>使用 PHPMyAdmin 进行导入
 导入数据库的方法与导出类似。 执行以下操作：
@@ -126,4 +124,3 @@ $ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p te
 
 ## <a name="next-steps"></a>后续步骤
 [将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
+ms.openlocfilehash: b207e7e7bd83e56db68288190c7bedafa8b5b7fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: f90813c0150d17f301f243c534d77ffd3da297b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-azure-portal"></a>使用 Azure 门户为应用程序网关创建基于路径的规则
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 09/14/2017
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 > * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-借助基于 URL 路径的路由，可根据 HTTP 请求的 URL 路径来关联路由。 它会检查是否有路由通向针对应用程序网关中所列 URL 配置的后端服务器池，并将流量发送到定义的池。 基于 URL 路径的路由的常见用例是，将不同内容类型的请求负载均衡到不同的后端服务器池。
+借助基于 URL 路径的路由，可根据 HTTP 请求的 URL 路径来关联路由。 它会检查是否有路由连接到为应用程序网关中列出的 URL 配置的后端服务器池，并将网络流量发送到定义的池。 基于 URL 路径的路由的常见用例是，将不同内容类型的请求负载均衡到不同的后端服务器池。
 
 应用程序网关有两种类型的规则：基本规则和基于 URL 路径的规则。 基本规则类型为后端池提供轮循机制服务。 除了提供轮循机制服务之外，基于路径的规则还可以在选择适当后端池时，使用请求 URL 的路径模式。
 
@@ -91,4 +90,3 @@ ms.lasthandoff: 09/14/2017
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
 [scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
-

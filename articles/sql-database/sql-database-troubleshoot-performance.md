@@ -10,18 +10,17 @@ keywords: "sql 性能优化, 数据库性能优化, sql 性能优化提示, sql 
 ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: v-shysun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 7a2f1199a56e0bd32eafef9f420879c756673e7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: 4eb344bf9e87ef1a8f469268211588e51696164e
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
@@ -35,7 +34,7 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 
 在 Azure SQL 数据库中，可以轻松监视数据库的使用情况，以及识别可能导致性能问题的查询。 可以使用 Azure 门户或系统视图监视数据库性能。 可使用以下选项来监视数据库性能以及对其进行故障排除：
 
-1. 在 [Azure 门户](https://portal.azure.com)中单击“SQL 数据库”，选择数据库，然后使用“监视”图表查找接近其上限的资源。 默认将显示 DTU 消耗量。 单击“**编辑**”更改显示的时间范围和值。
+1. 在 [Azure 门户](https://portal.azure.com)中单击“SQL 数据库”，选择数据库，然后使用“监视”图表查找接近其上限的资源。 默认会显示 DTU 消耗量。 单击“**编辑**”更改显示的时间范围和值。
 2. 使用 [Query Performance Insight](sql-database-query-performance.md) 来识别资源消耗量最大的查询。
 3. 可以使用动态管理视图 (DMV)、扩展事件 (`XEvents`) 和 SSMS 中的查询存储实时获取性能参数。
 

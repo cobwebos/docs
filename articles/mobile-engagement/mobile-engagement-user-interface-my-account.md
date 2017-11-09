@@ -1,6 +1,6 @@
 ---
 title: "Azure Mobile Engagement 用户界面 - 我的帐户"
-description: "了解如何使用 Azure Mobile Engagement 管理你的帐户配置文件和测试设备"
+description: "了解如何使用 Azure Mobile Engagement 管理帐户配置文件和测试设备"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,46 +14,45 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-your-account-profile-and-test-devices"></a>如何管理帐户配置文件和测试设备
 本文介绍了 **Mobile Engagement** 门户的“**主页**”。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 
 
 要访问“**我的帐户**”页面，请单击页面顶部的帐户。
 
-UI 的“我的帐户”部分可让你查看和更改与帐户相关联的设置，包括你的“配置文件”设置和测试设备 ID。 也可以通过设备 API 访问这些设置包含的项。
+UI 的“我的帐户”部分可让你查看和更改与帐户相关联的设置，包括“配置文件”设置和测试设备 ID。 也可以通过设备 API 访问这些设置包含的项。
 
-![我的帐户&1;][7]  
+![我的帐户 1][7]  
 
 ## <a name="profile"></a>配置文件：
-你可以查看或更改下面显示的任意帐户设置。 你也可以根据 [主页](mobile-engagement-user-interface-home.md) 中的电子邮件地址，将使用应用程序的权限授予其他用户。
+可以查看或更改下面显示的任意帐户设置。 也可以根据 [主页](mobile-engagement-user-interface-home.md) 中的电子邮件地址，将使用应用程序的权限授予其他用户。
 
-![我的帐户&2;][8]  
+![我的帐户 2][8]  
 
 ## <a name="devices"></a>设备：
-你可以查看、添加或删除测试设备的测试设备 ID，这些测试设备可用于测试**市场宣传**或**推送**活动。 当你单击“新建设备”时，将显示有关如何查找每个平台（iOS、Android、Windows Phone 等）设备的设备 ID 的上下文说明。 
+可以查看、添加或删除测试设备的测试设备 ID，这些测试设备可用于测试**市场宣传**或**推送**活动。 单击“新建设备”时，会显示有关如何查找每个平台（iOS、Android、Windows Phone 等）设备的设备 ID 的上下文说明。 
 
-![我的帐户&3;][9]  
+![我的帐户 3][9]  
 
-要使用推送 API 或设备 API，你需要知道用户的唯一设备标识符（deviceid 参数）。 有多种方法可检索唯一设备标识符：
+要使用推送 API 或设备 API，需要知道用户的唯一设备标识符（deviceid 参数）。 有多种方法可检索唯一设备标识符：
 
-1. 在后端，你可以使用 Device API的“Get”功能获取设备标识符的完整列表。
-2. 在应用中，你可以使用 SDK 获取它。 （在 Android 上，调用 Agent 类的 getDeviceID() 函数，而在 iOS 上，读取 Agent 类的 deviceid 属性。）
-3. 在市场宣传公告中，如果与公告相关联的操作 URL 包含 {device id} 模式，则将被自动替换为触发操作的设备的标识符。
-   http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata 将被替换为：http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata 
-4. 在 Reach Web 公告中，如果公告的 HTML 代码包含 {device id} 模式，则将被自动替换为显示 Web 公告的设备的标识符。
-   这是我的设备标识符：{deviceid} 将被替换为：这是我的设备标识符：XXXXXXXXXXXXXXXX
-5. 在你的设备中打开应用程序，并在已标记的应用中执行事件。
-   从“UI - 你的应用 - 监视器 - 事件 - 详细信息”中，找到你在列表中执行的事件。
+1. 在后端，可以使用 Device API的“Get”功能获取设备标识符的完整列表。
+2. 在应用中，可以使用 SDK 获取它。 （在 Android 上，调用 Agent 类的 getDeviceID() 函数，而在 iOS 上，读取 Agent 类的 deviceid 属性。）
+3. 在市场宣传公告中，如果与公告相关联的操作 URL 包含 {device id} 模式，则会被自动替换为触发操作的设备的标识符。
+   http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata 会被替换为：http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata 
+4. 在 Reach Web 公告中，如果公告的 HTML 代码包含 {device id} 模式，则会被自动替换为显示 Web 公告的设备的标识符。
+   这是我的设备标识符：{deviceid} 会被替换为：这是我的设备标识符：XXXXXXXXXXXXXXXX
+5. 在设备中打开应用程序，并在已标记的应用中执行事件。
+   从“UI - 应用 - 监视器 - 事件 - 详细信息”中，找到在列表中执行的事件。
    在监视器中单击此事件。
-   你应该在执行此事件的设备列表中找到你的设备 ID。
-   然后，你可以复制此设备 ID 并在“UI - 我的帐户 - 设备 - 新建设备 - 选择你的设备平台”中注册它。
-   >（请注意，当 iOS 禁用 IDFA 时，如果你卸载并重新安装应用，设备 ID 可能会随时间而改变。）
+   应该在执行此事件的设备列表中找到设备 ID。
+   然后，可以复制此设备 ID 并在“UI - 我的帐户 - 设备 - 新建设备 - 选择设备平台”中注册它。
+   >（请注意，当 iOS 禁用 IDFA 时，如果卸载并重新安装应用，设备 ID 可能会随时间而改变。）
 
 ## <a name="troubleshooting-guide"></a>故障排除指南
 * [故障排除指南 - 服务][Link 24]
@@ -155,7 +154,6 @@ UI 的“我的帐户”部分可让你查看和更改与帐户相关联的设�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
 
 
 

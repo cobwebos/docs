@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: bb9dd10c887cb0e42e544066d9b0dcfa554e10ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>教程：Azure Active Directory 与 Projectplace 的集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 07/04/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Projectplace 客户端支持团队](https://success.planview.com/Projectplace/Support)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_certificate.png) 
 
@@ -155,7 +154,7 @@ ms.lasthandoff: 07/04/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-projectplace-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -171,7 +170,7 @@ ms.lasthandoff: 07/04/2017
 
 1. 以管理员身份登录到 **Projectplace** 公司站点。
 
-2. 转到“人员”，然后单击“成员”。
+2. 转到“人员”，并单击“成员”。
    
     ![人员](./media/active-directory-saas-projectplace-tutorial/ic790228.png "人员")
 
@@ -183,9 +182,9 @@ ms.lasthandoff: 07/04/2017
    
     ![新建成员](./media/active-directory-saas-projectplace-tutorial/ic790233.png "新建成员")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“新建成员”文本框中，键入要在相关文本框中预配的有效 AAD 帐户的电子邮件地址。
+    a. 在“新建成员”文本框中，键入要在相关文本框中预配的有效 AAD 帐户的电子邮件地址。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“发送”。
+    b. 单击“发送”。
 
    将向 Azure Active Directory 帐户持有者发送一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。
 
@@ -200,7 +199,7 @@ ms.lasthandoff: 07/04/2017
 
 若要将 Britta Simon 分配到 Projectplace，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -249,5 +248,4 @@ ms.lasthandoff: 07/04/2017
 [201]: ./media/active-directory-saas-projectplace-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-projectplace-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-projectplace-tutorial/tutorial_general_203.png
-
 

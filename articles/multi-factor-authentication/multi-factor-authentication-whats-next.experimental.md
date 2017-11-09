@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 9d77b9329116afcf2fdde48d672c95020738138c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。  本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。  并非所有版本的 Azure 多重身份验证都提供了这些功能。
@@ -92,7 +91,7 @@ ms.lasthandoff: 09/20/2017
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧选择“Active Directory”。
 3. 在顶部，选择“多重身份验证提供程序”以显示多重身份验证提供程序的列表。
-4. 选择多重身份验证提供程序，并单击页面底部的“管理”。 Azure 多重身份验证管理门户随即打开。
+4. 选择多重身份验证提供程序，然后单击页面底部的“管理”。 Azure 多重身份验证管理门户随即打开。
 5. 在 Azure 多重身份验证管理门户上，单击“查看报告”下的“欺诈警报”。
 6. 指定要在报告中查看的日期范围。 还可以指定用户名、电话号码和用户状态。
 7. 单击“运行”以显示欺诈警报报告。 如果要导出报告，请单击“导出到 CSV”。
@@ -116,7 +115,7 @@ ms.lasthandoff: 09/20/2017
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧选择“Active Directory”。
 3. 在顶部，选择“多重身份验证提供程序”以显示多重身份验证提供程序的列表。
-4. 选择多重身份验证提供程序，并单击页面底部的“管理”。 Azure 多重身份验证管理门户随即打开。
+4. 选择多重身份验证提供程序，然后单击页面底部的“管理”。 Azure 多重身份验证管理门户随即打开。
 5. 在 Azure 多重身份验证管理门户上，单击左侧“查看报告”下的“免验证一次”。
 6. 指定要在报告中查看的日期范围。 还可以指定用户名、电话号码和用户状态。
 7. 单击“运行”显示免验证报告。 如果要导出报告，请单击“导出到 CSV”。
@@ -319,4 +318,3 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
    ![验证选项](./media/multi-factor-authentication-whats-next/authmethods.png)
 4. 单击“保存” 。
 5. 单击“**关闭**”。
-

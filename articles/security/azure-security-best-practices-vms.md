@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 08/11/2017
 
 与所有本地 VM 一样，Azure VM 应该由用户自行管理，因此，Azure 不会向这些 VM 推送 Windows 更新。 但是，我们依然建议启用 Windows 自动更新设置。 另一种方法是在另一个 VM 上或本地部署 [Windows Server 更新服务 (WSUS)](https://technet.microsoft.com/windowsserver/bb332157.aspx) 或其他适合的更新管理产品。 WSUS 和 Windows 更新都可使 VM 保持最新状态。 此外，我们建议使用扫描产品来验证是否所有 IaaS VM 都处于最新状态。
 
-Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新。 但是，无法保证映像在部署时为最新状态， 其版本可能比公共版略有滞后（最多几周）。 每个部署的第一步应是检查和安装所有 Windows 更新。 在部署自己或库中提供的映像时，采用此措施就特别重要。 默认情况下，作为 Azure Marketplace 一部分提供的映像会自动更新。
+Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新。 但是，无法保证映像在部署时为最新状态， 其版本可能比公共版略有滞后（最多几周）。 每个部署的第一步应是检查和安装所有 Windows 更新。 在部署自己或库中提供的映像时，采用此措施就特别重要。 默认情况下，作为 Azure 应用商店一部分提供的映像会自动更新。
 
 未实施软件更新策略的组织面临更多利用已修复的已知漏洞的威胁。 除了应对此类威胁以外，为了遵守行业法规，公司还必须证明他们在不断作出相应努力并使用正确的安全控制机制来帮助确保云中工作负荷的安全性。
 
@@ -128,4 +127,3 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 还可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
 
 不监视 VM 性能的组织无法确定性能模式的某些变化是正常还是异常。 如果 VM 消耗的资源超过平常，这种异常可能意味着存在来自外部资源的潜在攻击，或者此 VM 中有不安全的进程正在运行。
-

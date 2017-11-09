@@ -10,19 +10,17 @@ ms.date: 05/17/2017
 ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
 ms.openlocfilehash: e4f231c1f9b903d6cc7f2b062b30d2a072be8493
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Hadoop 生态系统中工作
 
 了解 Windows 电脑上用于在 HDInsight 的 Hadoop 生态系统中工作的开发和管理选项。 
 
-HDInsight 基于在 Linux 上开发的 Apache Hadoop 和 Hadoop 组件与开源技术。 HDInsight 3.4 及更高版本使用 Ubuntu Linux 发行版作为群集的基础 OS。 但是，你可以通过 Windows 客户端或 Windows 开发环境使用 HDInsight。
+HDInsight 基于在 Linux 上开发的 Apache Hadoop 和 Hadoop 组件与开源技术。 HDInsight 3.4 及更高版本使用 Ubuntu Linux 发行版作为群集的基础 OS。 但是，可以通过 Windows 客户端或 Windows 开发环境使用 HDInsight。
 
 ## <a name="use-powershell-for-deployment-and-management-tasks"></a>使用 PowerShell 完成部署和管理任务
 Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在 HDInsight 中控制和自动完成部署与管理任务。
@@ -37,8 +35,8 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>可在浏览器中运行的实用工具
 以下实用工具提供可在浏览器中运行的 Web UI：
-* **[Azure Cloud Shell（预览）](https://docs.microsoft.com/azure/cloud-shell/quickstart)**是可在浏览器和 Azure 门户中运行的交互式命令行 shell。
-* **[Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
+* [Azure Cloud Shell（预览）](https://docs.microsoft.com/azure/cloud-shell/quickstart)是可在浏览器和 Azure 门户中运行的交互式命令行 shell。
+* [Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
     * [将 Ambari 与 REST API 配合使用](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Ambari 中的 Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md)
     * [Ambari 中的 Tez 视图](hdinsight-debug-ambari-tez-view.md)
@@ -90,6 +88,6 @@ HDInsight 中的 Apache Spark 群集包含可与 Jupyter Notebook 配合使用�
 * 使用 **[MobaXTerm](http://mobaxterm.mobatek.net/)** 可以通过 SSH 连接以图形方式浏览群集文件系统。
 
 ## <a name="next-steps"></a>后续步骤
-如果你不太熟悉如何在基于 Linux 的群集中操作，请参阅以下文章：
+如果不太熟悉如何在基于 Linux 的群集中操作，请参阅以下文章：
 * [设置 Hadoop、Kafka、Spark 或其他群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [有关 Linux 上的 HDInsight 群集的提示](hdinsight-hadoop-linux-information.md)

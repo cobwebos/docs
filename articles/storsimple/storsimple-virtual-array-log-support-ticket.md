@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
 
@@ -33,7 +32,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-log-a-new-request"></a>记录新请求
 
-1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，然后单击“新建支持请求”。
+1. 转到 StorSimple Device Manager 服务。 在服务摘要边栏选项卡设置中，转到“支持 + 疑难解答”，并单击“新建支持请求”。
    
     ![新建支持请求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
@@ -57,7 +56,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 
-创建支持请求之后，您可以在门户内管理请求的生命周期。
+创建支持请求之后，可以在门户内管理请求的生命周期。
 
 #### <a name="to-manage-your-support-requests"></a>管理支持请求
 
@@ -68,5 +67,4 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[诊断并解决与 StorSimple 虚拟阵列相关的问题](storsimple-virtual-array-diagnose-problems.md)
-
 

@@ -22,6 +22,7 @@
 
 # 如何
 ## 规划和设计
+### [异地灾难恢复和异地复制](event-hubs-geo-dr.md)
 ### [专用事件中心](event-hubs-dedicated-overview.md)
 ### [身份验证和安全模型概述](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性和一致性](event-hubs-availability-and-consistency.md)
@@ -33,6 +34,7 @@
 #### [诊断日志](event-hubs-diagnostic-logs.md)
 ### [AMQP 1.0 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## 管理
+### [使用 Azure 监视来监视事件中心](event-hubs-metrics-azure-monitor.md)
 ### [事件中心管理库](event-hubs-management-libraries.md)
 ### 捕获
 #### [事件中心捕获](event-hubs-capture-overview.md)

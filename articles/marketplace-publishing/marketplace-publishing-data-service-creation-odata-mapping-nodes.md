@@ -1,6 +1,6 @@
 ---
-title: "为 Marketplace 创建数据服务指南 | Microsoft Docs"
-description: "详细说明如何创建、验证和部署在 Azure Marketplace 上提供购买的数据服务。"
+title: "为应用商店创建数据服务指南 | Microsoft Docs"
+description: "详细说明如何创建、验证和部署在 Azure 应用商店上提供购买的数据服务。"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,23 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 8ff76ea21ba684ae2a2afcb74d66b4912d7be053
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>了解通过 CSDL 将现有 Web 服务映射到 OData 的节点架构
 > [!IMPORTANT]
-> **本次我们将不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure Marketplace 上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
+> **本次我们不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
 >
 >
 
 本文档将帮助阐明用于将 OData 协议映射到 CSDL 的节点结构。 务必注意节点结构是格式正确的 XML。 因此，在设计 OData 映射时根节点、父节点和子节点结构也适用。
 
 ## <a name="ignored-elements"></a>被忽略的元素
-以下是 Azure Marketplace 后端在 Web 服务的元数据导入过程中将不会使用的高级 CSDL 元素（XML 节点）。 它们可以存在，但将被忽略。
+以下是 Azure 应用商店后端在 Web 服务的元数据导入过程中将不会使用的高级 CSDL 元素（XML 节点）。 它们可以存在，但会被忽略。
 
 | 元素 | 范围 |
 | --- | --- |
@@ -53,7 +52,7 @@ FunctionImport 节点表示一个将服务公开给最终用户的 URL（入口�
 
 以下是由 FunctionImport 节点公开的其他属性 （或新增属性）：
 
-**d:BaseUri** - 向 Marketplace 公开的 REST 资源的 URI 模板。 市场上使用该模板来构建针对 REST Web 服务的查询。 URI 模板包含 {parameterName} 形式的参数占位符，其中 parameterName 是参数名称。 例如： apiVersion = {apiVersion}。
+**d:BaseUri** - 向应用商店公开的 REST 资源的 URI 模板。 市场上使用该模板来构建针对 REST Web 服务的查询。 URI 模板包含 {parameterName} 形式的参数占位符，其中 parameterName 是参数名称。 例如： apiVersion = {apiVersion}。
 参数可以作为 URI 参数或作为 URI 路径的一部分出现。 出现在路径中时，参数始终是必需的（不能标记为可为 null）。 *示例：* `d:BaseUri="http://api.MyWeb.com/Site/{url}/v1/visits?start={start}&amp;end={end}&amp;ApiKey=3fadcaa&amp;Format=XML"`
 
 **名称** — 已导入函数的名称。  不能与 CSDL 中其他定义的名称相同。  例如： 名称 ="GetModelUsageFile"
@@ -71,7 +70,7 @@ FunctionImport 节点表示一个将服务公开给最终用户的 URL（入口�
 **d:Paging** - 指定 REST 资源如何处理分页。 参数值在大括号内使用，例如 page={$page}&itemsperpage={$size} 可用的选项为：
 
 * **None：**无分页可用
-* **Skip：**分页通过逻辑“skip”和“take”（顶部）表示。 Skip 跳过 M 元素，然后 Take 返回后续的 N 元素。 参数值：$skip
+* **Skip：**分页通过逻辑“skip”和“take”（顶部）表示。 “skip”跳过 M 元素，“take”随之返回后续的 N 元素。 参数值：$skip
 * **Take：**Take 返回后续的 N 元素。 参数值：$take
 * **PageSize：**分页通过逻辑页和大小（每页的项目）表示。 Page 表示返回的当前页。 参数值：$page
 * **Size：** Size 表示为每页返回的项目数。 参数值：$size
@@ -112,7 +111,7 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 **d:ErrorHandling***（可选）*和 **d:Condition** *（可选）* - 条件节点承载一个在内容提供商服务返回的结果中检查的条件。 以下是**必需的**属性：
 
 * **d:Match：**验证给定节点/值是否显示在内容提供商的输出 XML 中的 XPath 表达式。 针对输出运行 XPath，如果条件匹配，应返回 true，否则返回 false。
-* **d:HttpStatusCode：**当条件匹配时 Marketplace 应返回的 HTTP 状态代码。 Marketplace 通过 HTTP 状态代码向用户指出错误。 HTTP 状态代码列表在 http://en.wikipedia.org/wiki/HTTP_status_code 提供
+* **d:HttpStatusCode：**当条件匹配时应用商店应返回的 HTTP 状态代码。 应用商店通过 HTTP 状态代码向用户指出错误。 HTTP 状态代码列表在 http://en.wikipedia.org/wiki/HTTP_status_code 提供
 * **d:ErrorMessage：**（通过 HTTP 状态代码）向用户返回的错误消息。 这应是不包含任何机密的友好错误消息。
 
 **d:Title** *（可选）*- 运行描述函数的标题。 标题的值来自
@@ -157,7 +156,7 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 | --- | --- | --- |
 | Name |是 |参数的名称。 区分大小写！  与 BaseUri 大小写匹配。 **示例：** `<Property Name="IsDormant" Type="Byte" />` |
 | 类型 |是 |参数类型。 值必须为 **EDMSimpleType** 或模型范围内的复杂类型。 有关详细信息，请参阅“6 种受支持的参数/属性类型”。  （区分大小写！ 第一个字符是大写，其余是小写。）另请参阅[概念模型类型 (CSDL)][MSDNParameterLink](http://msdn.microsoft.com/library/bb399548.aspx)。 **示例：**`<Property Name="LimitedPartnershipID " Type="Int32" />` |
-| Mode |否 |**In**、Out 或 InOut 取决于参数是输入、输出还是输入/输出参数。 （仅“IN”在 Azure Marketplace 中可用。）**示例：** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
+| Mode |否 |**In**、Out 或 InOut 取决于参数是输入、输出还是输入/输出参数。 （仅“IN”在 Azure 应用商店中可用。）**示例：** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
 | MaxLength |否 |允许的参数最长长度。 **示例：**`<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
 | Precision |否 |参数的精度。 **示例：**`<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
 | 缩放 |否 |参数的确定位数。 **示例：** `<Property Name="SICCode" Type="Decimal" Precision="10" Scale="0" />` |
@@ -172,7 +171,7 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 | **d:SampleValue** *（可选）* |在 UI 中作为注释向客户端显示的示例值。  可通过使用竖线分隔的列表添加多个值，即 `a |
 
 ## <a name="entitytype-node"></a>EntityType 节点
-此节点表示从 Marketplace 返回给最终用户的类型之一。 它还包含从内容提供商服务返回的输出到返回给最终用户的值的映射。
+此节点表示从应用商店返回给最终用户的类型之一。 它还包含从内容提供商服务返回的输出到返回给最终用户的值的映射。
 
 可在[此处](http://msdn.microsoft.com/library/bb399206.aspx)找到关于此节点的详细信息（必要时使用“其他版本”下拉列表查看该文档。）
 
@@ -193,7 +192,7 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 
 XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，并且它包含返回给最终用户的实际内容。
 
-**Key** - Marketplace 忽略此属性。 基于 REST 的 Web 服务通常不公开主键。
+**Key** - 应用商店忽略此属性。 基于 REST 的 Web 服务通常不公开主键。
 
 ## <a name="property-node"></a>属性节点
 此节点包含记录的一个属性。
@@ -215,7 +214,7 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 | 缩放 |否 |在数值中保留的最大小数位数。 |
 | Unicode |否 |**True** 或 **False**，取决于属性值是否以 Unicode 字符串的形式存储。 |
 | Collation |否 |指定要在数据源中使用的排序的字符串。 |
-| ConcurrencyMode |否 |**无**（默认值）或**固定**。 如果此值设置为**固定**，将在乐观并发检查中使用属性值。 |
+| ConcurrencyMode |否 |**无**（默认值）或**固定**。 如果此值设置为**固定**，会在乐观并发检查中使用属性值。 |
 
 以下是已添加到 CSDL 规范的其他属性：
 
@@ -270,7 +269,6 @@ XPath 表达式将是 /foo/bar，因为 bar 节点是输出中的重复节点，
 | String |表示固定或可变长度的字符数据 |
 
 ## <a name="see-also"></a>另请参阅
-* 如果你有兴趣了解全面的 OData 映射过程和用途，请阅读[数据服务 OData 映射](marketplace-publishing-data-service-creation-odata-mapping.md)一文以查看定义、结构和说明。
-* 如果你有兴趣查看示例，请阅读[数据服务 OData 映射示例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)一文以查看示例代码，了解代码的语法和上下文。
-* 若要返回到用于将数据服务发布到 Azure Marketplace 的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
-
+* 如果有兴趣了解全面的 OData 映射过程和用途，请阅读文章“[Data Service OData Mapping](marketplace-publishing-data-service-creation-odata-mapping.md)”（数据服务 OData 映射）以查看定义、结构和说明。
+* 如果有兴趣查看示例，请阅读[数据服务 OData 映射示例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)一文以查看示例代码，了解代码的语法和上下文。
+* 要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。

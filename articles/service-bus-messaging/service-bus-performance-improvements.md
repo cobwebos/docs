@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/10/2017
+ms.date: 10/12/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: e6a0e480f7748f12f5e566cf4059b5b2c4242c09
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 1f57fbb8e2a86b744808ee844e5f853bdb587a5d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
-本文介绍如何使用 [Azure 服务总线消息传递](https://azure.microsoft.com/services/service-bus/)在交换中转消息时优化性能。 该主题的第一部分介绍有助于提高性能的各种不同方法。 第二部分则指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
+本文介绍如何使用 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)在交换中转消息时优化性能。 本文的第一部分介绍有助于提高性能的各种不同机制。 第二部分则指导用户如何针对给定方案以能够提供最佳性能的方式使用服务总线。
 
-在本主题中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
+在本主题中，术语“客户端”是指任何访问服务总线的实体。 客户端可以充当发送方或接收方的角色。 术语“发件人”用于将消息发送到服务总线队列或主题订阅的服务总线队列或主题客户端。 术语“接收方”是指从服务总线队列或订阅接收消息的服务总线队列或订阅客户端。
 
 以下几部分介绍服务总线用以帮助提高性能的几个概念。
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/10/2017
 AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与服务总线的连接。 它还实现批处理和预提取。 除非明确提到，本主题中的所有内容都假定使用 AMQP 或 SBMP。
 
 ## <a name="reusing-factories-and-clients"></a>重用工厂和客户端
-[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象是通过 [MessagingFactory][MessagingFactory] 对象创建的，该对象还提供连接的内部管理。 发送消息后，不应关闭消息工厂或队列、主题和订阅客户端，然后在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 你可以使用 [QueueClient][QueueClient] 对象，安全地从并发异步操作和多个线程发送消息。 
+[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象是通过 [MessagingFactory][MessagingFactory] 对象创建的，该对象还提供连接的内部管理。 发送消息后，不应关闭消息工厂或队列、主题和订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 可以使用 [QueueClient][QueueClient] 对象，安全地从并发异步操作和多个线程发送消息。 
 
 ## <a name="concurrent-operations"></a>并发操作
 执行某项操作（发送、接收、删除等）需要花费一定时间。 这一时间包括服务总线服务处理该操作的时间，外加延迟处理请求和答复的时间。 若要增加每次操作的数目，操作必须同时执行。 可以通过几种不同的方式实现：
@@ -105,9 +104,9 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 批处理不会影响可计费的消息操作的数目，且仅适用于服务总线客户端协议。 HTTP 协议不支持批处理。
 
 ## <a name="batching-store-access"></a>批处理存储访问
-为了增加队列、主题或订阅的吞吐量，服务总线在写入其内部存储时会对多条消息进行批处理。 如果在队列或主题中启用，则会将消息批量写入存储区。 如果在队列或订阅中启用，则会从存储区批量删除消息。 如果对实体启用了批量存储访问，服务总线会将有关此实体的存储写入操作延迟多达 20 毫秒的时间。 在此间隔期间发生的其他存储操作将被添加到此批中。 批量存储访问仅影响**发送**和**完成**操作；接收操作不会受到影响。 批量存储访问是实体上的一个属性。 将跨所有启用了批量存储访问的实体实施批处理。
+为了增加队列、主题或订阅的吞吐量，服务总线在写入其内部存储时会对多条消息进行批处理。 如果在队列或主题中启用，则会将消息批量写入存储区。 如果在队列或订阅中启用，则会从存储区批量删除消息。 如果对实体启用了批量存储访问，服务总线会将有关此实体的存储写入操作延迟多达 20 毫秒的时间。 在此间隔期间发生的其他存储操作会被添加到此批中。 批量存储访问仅影响**发送**和**完成**操作；接收操作不会受到影响。 批量存储访问是实体上的一个属性。 将跨所有启用了批量存储访问的实体实施批处理。
 
-在创建新队列、主题或订阅时，默认情况下启用批量存储访问。 若要禁用批量存储访问，则在创建实体之前将 [EnableBatchedOperations][EnableBatchedOperations] 属性设置为 **false**。 例如：
+在创建新队列、主题或订阅时，默认情况下启用批量存储访问。 要禁用批量存储访问，则在创建实体之前将 [EnableBatchedOperations][EnableBatchedOperations] 属性设置为 **false**。 例如：
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -118,13 +117,13 @@ Queue q = namespaceManager.CreateQueue(qd);
 批量存储访问不会影响计费的消息传递操作数，它是队列、主题或订阅的属性。 它不依赖于接收模式以及客户端和服务总线服务之间所使用的协议。
 
 ## <a name="prefetching"></a>预提取
-预提取允许队列或订阅客户端在执行接收操作时从服务加载其他消息。 客户端将这些消息存储在本地缓存中。 缓存大小由 [QueueClient.PrefetchCount][QueueClient.PrefetchCount] 属性或 [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 属性决定。 启用预提取的每个客户端维护其自己的缓存。 客户端之间不共享缓存。 如果客户端启动接收操作，而其缓存是空的，则服务会传输一批消息。 批的大小等于缓存的大小或 256 KB，以二者中较小者为准。 如果客户端启动接收操作，而其缓存中包含一个消息，则将从缓存中取出消息。
+[预提取](service-bus-prefetch.md)允许队列或订阅客户端在执行接收操作时从服务加载其他消息。 客户端将这些消息存储在本地缓存中。 缓存大小由 [QueueClient.PrefetchCount][QueueClient.PrefetchCount] 属性或 [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 属性决定。 启用预提取的每个客户端维护其自己的缓存。 客户端之间不共享缓存。 如果客户端启动接收操作，而其缓存是空的，则服务会传输一批消息。 批的大小等于缓存的大小或 256 KB，以二者中较小者为准。 如果客户端启动接收操作，而其缓存中包含一个消息，则将从缓存中取出消息。
 
-预提取一条消息后，服务将锁定此预提取的消息。 通过执行此操作，其他接收方则无法接收到此预提取的消息。 如果接收方在锁定过期之前无法完成此消息，则该消息便对其他接收方可用。 预提取的消息的副本则保留在缓存中。 使用过期的缓存副本的接收方将在尝试完成该消息时接收到一个异常。 默认情况下，消息锁定在 60 秒后过期。 这一值可延长到 5 分钟。 若要阻止过期消息的使用，缓存大小应始终小于客户端可在锁定超时间隔内使用的消息数。
+预提取一条消息后，服务将锁定此预提取的消息。 通过执行此操作，其他接收方则无法接收到此预提取的消息。 如果接收方在锁定过期之前无法完成此消息，则该消息便对其他接收方可用。 预提取的消息的副本则保留在缓存中。 使用过期的缓存副本的接收方会在尝试完成该消息时接收到一个异常。 默认情况下，消息锁定在 60 秒后过期。 这一值可延长到 5 分钟。 若要阻止过期消息的使用，缓存大小应始终小于客户端可在锁定超时间隔内使用的消息数。
 
 使用 60 秒的默认锁定时限时，[SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 的合理值是工厂所有接收方最大处理速率的 20 倍。 例如，某个工厂创建了 3 个接收方，并且每个接收方每秒可以处理最多 10 个消息。 预提取计数不应超过 20 X 3 X 10 = 600。 默认情况下，[QueueClient.PrefetchCount][QueueClient.PrefetchCount] 设置为 0，这表示不会从服务中提取额外消息。
 
-预提取消息会增加队列或订阅的总体吞吐量，因为它减少了消息操作或往返行程的总数。 但是，提取第一条消息将会耗用更长的时间（因消息大小增加所致）。 由于预提取的消息已经被客户端下载，因此预提取消息的接收速度将变快。
+预提取消息会增加队列或订阅的总体吞吐量，因为它减少了消息操作或往返行程的总数。 但是，提取第一条消息会耗用更长的时间（因消息大小增加所致）。 由于预提取的消息已经被客户端下载，因此预提取消息的接收速度将变快。
 
 服务器会在向客户端发送消息时检查消息的“生存时间 (TTL)”属性。 收到邮件时，客户端不检查消息的 TTL 属性。 即使消息被客户端缓存时该消息的 TTL 已通过，该消息仍可被接收。
 
@@ -146,7 +145,7 @@ namespaceManager.CreateTopic(td);
 > Express 实体不支持事务。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>使用分区的队列或主题
-在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，分区的队列或主题则被分布在多个节点和消息存储。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 若要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
+在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，[分区的队列或主题](service-bus-partitioning.md)则分布在多个节点和消息存储上。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 ```csharp
 // Create partitioned queue.
@@ -177,12 +176,12 @@ namespaceManager.CreateQueue(qd);
 * 使用异步操作可利用客户端批处理。
 * 将批处理间隔时间设置为 50 毫秒以减少服务总线客户端协议传输的数量。 如果使用多个发送方，则将批处理间隔时间增加到 100 毫秒。
 * 将批量存储访问保留为启用状态。 这会增加可将消息写入队列的总速率。
-* 将预提取计数设置为工厂所有接收方最大处理速率的 20 倍。 这将减少服务总线客户端协议传输的数量。
+* 将预提取计数设置为工厂所有接收方最大处理速率的 20 倍。 这会减少服务总线客户端协议传输的数量。
 
 ### <a name="multiple-high-throughput-queues"></a>多个高吞吐量队列
 目标：将多个队列的整体吞吐量最大化。 单个队列的吞吐量中等或高。
 
-若要在多个队列之间获得最大的吞吐量，则使用所述设置将单个队列的吞吐量最大化。 此外，使用不同工厂来创建向不同的队列发送或从其接收的客户端。
+要在多个队列之间获得最大的吞吐量，则使用所述设置将单个队列的吞吐量最大化。 此外，使用不同工厂来创建向不同的队列发送或从其接收的客户端。
 
 ### <a name="low-latency-queue"></a>低延迟队列
 目标：将队列或主题的端到端滞后时间最小化。 发送方和接收方的数目较小。 队列的吞吐量较小或为中等。
@@ -205,7 +204,7 @@ namespaceManager.CreateQueue(qd);
 * 使用异步操作可利用客户端批处理。
 * 使用 20 毫秒的默认批处理间隔时间以减少服务总线客户端协议传输的数量。
 * 将批量存储访问保留为启用状态。 这会增加可将消息写入队列或主题的总速率。
-* 将预提取计数设置为工厂所有接收方最大处理速率的 20 倍。 这将减少服务总线客户端协议传输的数量。
+* 将预提取计数设置为工厂所有接收方最大处理速率的 20 倍。 这会减少服务总线客户端协议传输的数量。
 
 ### <a name="queue-with-a-large-number-of-receivers"></a>包含大量接收方的队列
 目标：使包含大量接收方的队列或订阅的接收速率最大化。 每个接收方以中等接收速率接收消息。 发送方的数目较小。
@@ -217,7 +216,7 @@ namespaceManager.CreateQueue(qd);
 * 使用分区的队列提高性能和可用性。
 * 如果每个接收方驻留在不同进程中，则每个进程仅使用单个工厂。
 * 接收方可使用同步或异步操作。 如果独立接收方的接收速率给定为中等级别，则客户端对“完成”请求的批处理不会影响接收方的吞吐量。
-* 将批量存储访问保留为启用状态。 这将减少实体的总负载。 这还将降低可将消息写入队列或主题的总速率。
+* 将批量存储访问保留为启用状态。 这会减少实体的总负载。 这还将降低可将消息写入队列或主题的总速率。
 * 将预提取计数设置为较小值（例如，PrefetchCount = 10）。 这可防止接收方在其他接收方已缓存大量消息时处于闲置状态。
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>包含少量订阅的主题
@@ -231,7 +230,7 @@ namespaceManager.CreateQueue(qd);
 * 使用异步操作可利用客户端批处理。
 * 使用 20 毫秒的默认批处理间隔时间以减少服务总线客户端协议传输的数量。
 * 将批量存储访问保留为启用状态。 这会增加可将消息写入主题的总写入速率。
-* 将预提取计数设置为工厂所有接收方最大处理速率的 20 倍。 这将减少服务总线客户端协议传输的数量。
+* 将预提取计数设置为工厂所有接收方最大处理速率的 20 倍。 这会减少服务总线客户端协议传输的数量。
 
 ### <a name="topic-with-a-large-number-of-subscriptions"></a>包含大量订阅的主题
 目标：使包含大量订阅的主题的吞吐量最大化。 消息由多个订阅接收，这意味着对所有订阅的组合接收速率比发送速率要大得多。 发送方的数目较小。 每个订阅的接收方的数目较小。
@@ -244,22 +243,21 @@ namespaceManager.CreateQueue(qd);
 * 使用异步操作可利用客户端批处理。
 * 使用 20 毫秒的默认批处理间隔时间以减少服务总线客户端协议传输的数量。
 * 将批量存储访问保留为启用状态。 这会增加可将消息写入主题的总写入速率。
-* 将预提取计数设置为预期接收速率的 20 倍（以秒为单位）。 这将减少服务总线客户端协议传输的数量。
+* 将预提取计数设置为预期接收速率的 20 倍（以秒为单位）。 这会减少服务总线客户端协议传输的数量。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关优化服务总线性能的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
-[QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
-[MessageSender]: /dotnet/api/microsoft.servicebus.messaging.messagesender
+[QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
+[MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[PeekLock]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[ReceiveAndDelete]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
-[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
-[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
+[PeekLock]: /dotnet/api/microsoft.azure.servicebus.receivemode
+[ReceiveAndDelete]: /dotnet/api/microsoft.azure.servicebus.receivemode
+[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
+[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations
+[QueueClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount
+[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount
+[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
+[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
-
+[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

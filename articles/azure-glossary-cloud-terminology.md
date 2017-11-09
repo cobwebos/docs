@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
+ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 1607ca31a81c0941895611f626d54f6fbb294a20
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -37,7 +36,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 又叫[应用服务应用](#app-service-app)。
 
 ## <a name="app-service-app"></a>应用服务应用
-[Azure App Service](app-service/app-service-value-prop-what-is.md) 提供的用于托管[网站或 Web 应用](app-service-web/app-service-web-overview.md)、[Web API](app-service-api/app-service-api-apps-why-best-platform.md) 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”、“Web 应用”、“API 应用”和“移动应用”。
+[Azure 应用服务](app-service/app-service-web-overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”、“Web 应用”、“API 应用”和“移动应用”。
 
 ## <a name="availability-set"></a>可用性集
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  
@@ -130,7 +129,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 请参阅 [Microsoft 在线订阅协议](https://azure.microsoft.com/support/legal/subscription-agreement/)和 [Azure 订阅与 Azure Active Directory 的关联方式](active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 ## <a name="tag"></a>标记
-一个索引编制术语，可让你根据管理或计费要求为资源分类。 如果有一系列复杂的资源，则可以使用标记以最有利的方式可视化这些资产。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。  
+一个索引编制术语，让你根据管理或计费要求为资源分类。 如果有一系列复杂的资源，则可以使用标记以最有利的方式可视化这些资产。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。  
 请参阅[使用标记整理 Azure 资源](resource-group-using-tags.md)
 
 ## <a name="update-domain"></a>更新域
@@ -159,5 +158,4 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 * [云资源中心](https://azure.microsoft.com/resources/)  
 * [适用于业务应用程序的 Azure](https://azure.microsoft.com/overview/business-apps-on-azure/)
 * [数据中心的 Azure](https://azure.microsoft.com/overview/business-apps-on-azure/)
-
 

@@ -4,7 +4,7 @@ description: "Azure Active Directory 域服务的概述"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
@@ -12,20 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 10/26/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c70e80c413d0637f956c43686df29b8073daaa3b
-ms.lasthandoff: 12/29/2016
-
-
+ms.openlocfilehash: be18ee0266a97057499baccc5bb39a35224336d7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD 域服务
+# <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) 域服务
 ## <a name="overview"></a>概述
 使用 Azure 基础结构服务可以灵活部署各种计算解决方案。 借助 Azure 虚拟机，几乎即时就能完成部署，并且只需按分钟付费。 使用 Windows、Linux、SQL Server、Oracle、IBM、SAP 和 BizTalk 的支持，可以在几乎任何操作系统上部署任何语言的任何工作负荷。 凭借这些优势，可以将本地的旧版应用程序迁移到 Azure，从而节省运营开支。
 
-将本地应用程序迁移到 Azure 的一个重要方面是处理这些应用程序的标识需求。 目录感知的应用程序可以依赖于使用 LDAP 对企业目录进行读取或写入访问，或依赖于使用 Windows 集成身份验证（Kerberos 或 NTLM 身份验证）来验证最终用户的身份。 Windows Server 上运行的业务线 (LOB) 应用程序通常部署在已加入域的计算机中，因此可以使用组策略安全地对其进行管理。 若要将本地应用程序“即时转移”到云中，需要解决对企业标识基础结构的依赖关系。
+将本地应用程序迁移到 Azure 的一个重要方面是处理这些应用程序的标识需求。 目录感知的应用程序可以依赖于使用 LDAP 对企业目录进行读取或写入访问，或依赖于使用 Windows 集成身份验证（Kerberos 或 NTLM 身份验证）来验证最终用户的身份。 Windows Server 上运行的业务线 (LOB) 应用程序通常部署在已加入域的计算机中，因此可以使用组策略安全地对其进行管理。 要将本地应用程序“即时转移”到云中，需要解决对企业标识基础结构的依赖关系。
 
 管理员经常采用以下解决方案之一来满足部署在 Azure 中的应用程序的标识需求：
 
@@ -36,6 +35,10 @@ ms.lasthandoff: 12/29/2016
 所有这些方法都会增加成本和管理开销。 管理员需要在 Azure 中使用虚拟机部署域控制器。 此外，他们需要管理、保护、修补、监视、备份这些虚拟机并对其进行故障排除。 过份依赖使用 VPN 连接访问本地目录，使得 Azure 中部署的工作负荷容易发生暂时性网络问题或中断。 而这些网络中断又会导致运行时间减少，降低这些应用程序的可靠性。
 
 Azure AD 域服务经过精心设计，可以提供一种更简便的替代方法。
+
+### <a name="watch-an-introductory-video"></a>观看介绍视频
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
+
 
 ## <a name="introducing-azure-ad-domain-services"></a>Azure AD 域服务简介
 Azure AD 域服务提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器即可使用这些域服务。 Azure AD 域服务与现有的 Azure AD 租户集成，因此可让用户使用其企业凭据登录。 此外，可以使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源“即时转移”到 Azure 基础结构服务。
@@ -84,3 +87,13 @@ Azure AD 域服务预配的托管域的几个重要方面如下所述：
 * **兼容** - Azure AD 域服务建立在 Windows Server Active Directory 的经过证实的企业级基础结构之上。 因此，与 Windows Server Active Directory 功能的更高程度的兼容可为应用程序提供保障。 并非 Windows Server AD 中的所有功能目前都可在 Azure AD 域服务中使用。 但是，可用的功能与本地基础结构中依赖的相应 Windows Server AD 功能兼容。 LDAP、Kerberos、NTLM、组策略和域加入功能构成了一款成熟的产品，并且已在各种 Windows Server 版本经过测试和优化。
 * **经济高效** – 使用 Azure AD 域服务免除了管理标识基础结构、为传统的目录感知应用程序提供支持所带来的基础结构和管理负担。 可以将这些应用程序转移到 Azure 基础结构服务，受益于运营开支的大幅节减。
 
+
+## <a name="next-steps"></a>后续步骤
+### <a name="learn-more-about-azure-ad-domain-services"></a>了解有关 Azure AD 域服务的详细信息
+* [功能](active-directory-ds-features.md)
+* [部署方案](active-directory-ds-scenarios.md)
+* [了解 Azure AD 域服务是否适合用例](active-directory-ds-comparison.md)
+* [了解如何将 Azure AD 域服务与 Azure AD 目录同步](active-directory-ds-synchronization.md)
+
+### <a name="get-started-with-azure-ad-domain-services"></a>Azure AD 域服务入门
+* [使用 Azure 门户启用 Azure AD 域服务](active-directory-ds-getting-started.md)

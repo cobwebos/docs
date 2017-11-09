@@ -16,16 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 01983ac7b60f7fdb237fba27f22cb31fcb3c1b7b
-ms.openlocfilehash: cd1e67ce89a856f325b66087f003b1a9a1ac6f6a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/08/2017
-
-
+ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
 
 使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何执行此操作，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例 Resource Manager 模板的社区主导存储库）中的拉取请求为例。 可在此处查看完整的拉取请求：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)，差异的相关部分如下，并进行了说明：
@@ -141,7 +137,7 @@ ms.lasthandoff: 02/08/2017
 ]
 ```
 
-如果在此数组中指定 `n` 个磁盘，则规模集中的每个 VM 将获得 `n` 个数据磁盘。 但是，请注意，这些数据磁盘是原始设备。 它们未进行格式化。 在使用这些磁盘之前，由客户负责附加它们并对其进行分区和格式化。 （可选）还可以在每个数据磁盘对象中指定 `"managedDisk": { "storageAccountType": "Premium_LRS" }`，以指定它应是高级数据磁盘。 只有 VM sku 中带大写或小写“s”的 VM 可以使用高级磁盘。
+如果在此数组中指定 `n` 个磁盘，则规模集中的每个 VM 会获得 `n` 个数据磁盘。 但是，请注意，这些数据磁盘是原始设备。 它们未进行格式化。 在使用这些磁盘之前，由客户负责附加它们并对其进行分区和格式化。 （可选）还可以在每个数据磁盘对象中指定 `"managedDisk": { "storageAccountType": "Premium_LRS" }`，以指定它应是高级数据磁盘。 只有 VM sku 中带大写或小写“s”的 VM 可以使用高级磁盘。
 
 若要详细了解如何在规模集中使用数据磁盘，请参阅[此文](./virtual-machine-scale-sets-attached-disks.md)。
 
@@ -150,5 +146,4 @@ ms.lasthandoff: 02/08/2017
 有关使用规模集的示例 Resource Manager 模板，请在 [Azure 快速入门模板 github 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索“vmss”。
 
 有关一般信息，请参阅[规模集的主要登陆页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
-
 

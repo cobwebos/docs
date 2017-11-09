@@ -13,17 +13,15 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2017
+ms.date: 9/14/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 7bf423fd05d6651bf16693e6d6930fada8b5da70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -40,8 +38,6 @@ ms.lasthandoff: 08/23/2017
 * 设置 Raspberry Pi。
 * 在 Pi 上运行示例应用程序，以将传感器数据发送到 IoT 中心。
 
-将 Raspberry Pi 连接到创建的 IoT 中心。 然后，在 Pi 上运行示例应用程序，以从 BME280 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
-
 ## <a name="what-you-learn"></a>学习内容
 
 * 如何创建 Azure IoT 中心以及如何获取新的设备连接字符串。
@@ -53,9 +49,9 @@ ms.lasthandoff: 08/23/2017
 
 ![所需条件](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
-* Raspberry Pi 2 或 Raspberry Pi 3 电路板。
+* 一个 Raspberry Pi 2 或 Raspberry Pi 3 电路板。
 * 一个有效的 Azure 订阅。 如果没有 Azure 帐户，只需几分钟时间就能[创建一个免费的 Azure 试用帐户](https://azure.microsoft.com/free/)。
-* 监视器、USB 键盘和连接到 Pi 的鼠标。
+* 连接到 Pi 的监视器、USB 键盘和鼠标。
 * 运行 Windows 或 Linux 的 Mac 或 PC。
 * Internet 连接。
 * 16 GB 或更大内存的 microSD 卡。
@@ -71,35 +67,40 @@ ms.lasthandoff: 08/23/2017
 
 
 > [!NOTE] 
-这些项是可选项，因为代码示例支持模拟的传感器数据。
+如果没有可选项，可以使用模拟的传感器数据。
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="setup-raspberry-pi"></a>设置 Raspberry Pi
+## <a name="set-up-raspberry-pi"></a>设置 Raspberry Pi
 
 ### <a name="install-the-raspbian-operating-system-for-pi"></a>为 Pi 安装 Raspbian 操作系统
 
 准备用于安装 Raspbian 映像的 microSD 卡。
 
 1. 下载 Raspbian。
-   1. [下载 Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
+   1. [下载 Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/)（.zip 文件）。
+
+   > [!WARNING]
+   > 请使用上面的链接来下载 `raspbian-2017-07-5` zip 映像。 Raspbian 映像的最新版本具有与接线 Pi 节点相关的已知问题，这可能会导致在接下来的步骤中发生故障。
    1. 将 Raspbian 映像提取到计算机上的一个文件夹中。
+
 1. 将 Raspbian 安装到 microSD 卡。
    1. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
    1. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
-   1. 选择 microSD 卡驱动器。 注意，Etcher 可能已选择了正确的驱动器。
+   1. 选择 microSD 卡驱动器。 Etcher 可能已选择了正确的驱动器。
    1. 单击“刷机”，将 Raspbian 安装到 microSD 卡。
    1. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
    1. 将 microSD 卡插入到 Pi 中。
 
 ### <a name="enable-ssh-and-i2c"></a>启用 SSH 和 I2C
 
-1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
+1. 将 Pi 连接到监视器、键盘和鼠标。 
+1. 启动 Pi，通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
 1. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
    ![Raspbian 首选项菜单](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
-1. 在“接口”选项卡上，将“I2C”和“SSH”设置为“启用”，然后单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+1. 在“接口”选项卡上，将“I2C”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 I2C 和 SSH](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -112,7 +113,7 @@ ms.lasthandoff: 08/23/2017
 
 ![Raspberry Pi 和传感器连接](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通信，LED 将闪烁。 
+BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云时，LED 将闪烁。 
 
 对于传感器引脚，请使用以下接线：
 
@@ -125,7 +126,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 | LED VDD（引脚 18F）        | GPIO 24（引脚 18）       | 白线   |
 | LED GND（引脚 17F）        | GND（引脚 20）           | 黑线   |
 
-单击查看 [Raspberry Pi 2 和 3 引脚映射](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi)以供参考。
+单击以查看 [Raspberry Pi 2 和 3 引脚映射](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi)以供参考。
 
 成功将 BME280 连接到 Raspberry Pi 后，它应如下图所示。
 
@@ -144,7 +145,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>克隆示例应用程序，并安装必备组件包
 
-1. 使用主计算机的以下任一 SSH 客户端连接到 Raspberry Pi。
+1. 从主计算机使用以下 SSH 客户端之一连接到 Raspberry Pi：
    
    **Windows 用户**
    1. 下载并安装 [PuTTY](http://www.putty.org/) for Windows。 
@@ -160,26 +161,26 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 1. 将 Node.js 和 NPM 安装到 Pi。
    
-   首先应使用以下命令查看 Node.js 版本。 
+   首先检查 Node.js 版本。 
    
    ```bash
    node -v
    ```
 
-   如果版本低于 4.x，或者 Pi 上没有 Node.js，则运行以下命令以安装或更新 Node.js。
+   如果版本低于 4.x，或者 Pi 上没有任何 Node.js，请安装最新版本。
 
    ```bash
    curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
-1. 通过运行以下命令，克隆示例应用程序：
+1. 克隆示例应用程序。
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. 通过运行以下命令，安装所有程序包。 它包括 Azure IoT 设备 SDK、BME280 传感器库和接线 Pi 库。
+1. 安装示例的所有包。 安装包括 Azure IoT 设备 SDK、BME280 传感器库和接线 Pi 库。
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
@@ -198,7 +199,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
    ![配置文件](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   此文件中有两个可以配置的项。 第一个是 `interval`，它确定发送到云的两条消息之间的时间间隔（以毫秒为单位）。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
+   此文件中有两个可以配置的项。 第一个是 `interval`，它定义了发送到云的消息之间的时间间隔（以毫秒为单位）。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
    如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
@@ -225,4 +226,3 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。 若要查看 Raspberry Pi 已发送到 IoT 中心的消息，或若要在命令行接口中将消息发送到 Raspberry Pi，请参阅[使用 iothub-explorer 管理云设备消息传送教程](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

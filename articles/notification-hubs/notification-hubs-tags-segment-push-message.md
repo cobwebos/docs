@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3a5f06b7e9600c34ef690e025a0a2079f71f843e
-
-
+ms.openlocfilehash: 18faa88641623e1248d6a33bc2d87099e1c9f624
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="routing-and-tag-expressions"></a>路由和标记表达式
 ## <a name="overview"></a>概述
@@ -33,7 +33,7 @@ ms.openlocfilehash: 3a5f06b7e9600c34ef690e025a0a2079f71f843e
 3. **标记表达式**：其标记集匹配指定表达式的所有注册将收到通知。
 
 ## <a name="tags"></a>标记
-标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、‘@’, ‘#’、“.”、“:”、“-”。 以下示例显示了一个应用程序，你可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签。
+标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、“@”、“#”、“.”、“:”、“-”。 以下示例显示了一个应用程序，可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签。
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -41,7 +41,7 @@ ms.openlocfilehash: 3a5f06b7e9600c34ef690e025a0a2079f71f843e
 
 有关针对标记创建注册的详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。
 
-你可以使用 [Microsoft Azure 通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 中 `Microsoft.Azure.NotificationHubs.NotificationHubClient` 类的发送通知方法将通知发送到标记。 你还可以使用 Node.js 或推送通知 REST API。  下面是使用 SDK 的示例。
+可以使用 [Microsoft Azure 通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 中 `Microsoft.Azure.NotificationHubs.NotificationHubClient` 类的发送通知方法将通知发送到标记。 还可以使用 Node.js 或推送通知 REST API。  下面是使用 SDK 的示例。
 
     Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
 
@@ -64,7 +64,7 @@ ms.openlocfilehash: 3a5f06b7e9600c34ef690e025a0a2079f71f843e
 
 在此图中，Alice 对于 Beatles 的更新感兴趣，而 Bob 对于 Wailers 的更新感兴趣。 Bob 还对 Charlie 的评论感兴趣，而 Charlie 对 Wailers 感兴趣。 当发送有关 Charlie 对 Beatles 的评论的通知时，Alice 和 Bob 都将收到它。
 
-虽然你可以在标记中对多个关注进行编码（例如，“band_Beatles”或“follows_Chanrlie”），但标记只是简单的字符串，并不是具有值的属性。 只有存在或缺少特定标记时，才会匹配某一注册。
+虽然可以在标记中对多个关注进行编码（例如，“band_Beatles”或“follows_Chanrlie”），但标记只是简单的字符串，并不是具有值的属性。 只有存在或缺少特定标记时，才会匹配某一注册。
 
 有关如何使用标记发送到相关组的完整分步教程，请参阅[突发新闻](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)。
 
@@ -102,9 +102,3 @@ ms.openlocfilehash: 3a5f06b7e9600c34ef690e025a0a2079f71f843e
     toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
     "You want info on the Red Socks</text></binding></visual></toast>";
     outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

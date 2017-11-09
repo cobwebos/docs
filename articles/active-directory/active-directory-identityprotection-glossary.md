@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f31188ed3216034ef8ec056023472844ec4debd6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 5b6d2db0a8df31fd159053cceab6b9b320ffd8cb
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 术语表
 ### <a name="at-risk-user"></a>有风险（用户）
@@ -120,7 +119,7 @@ Identity Protection 用户手动设置的风险事件状态，指示用户已在
 采取补救措施（例如更改密码或者重建计算机映像），将可能遭到入侵的标识还原到未遭入侵的状态。
 
 ### <a name="security-policy"></a>安全策略
-策略规则和条件的集合。 策略可应用到各种实体，例如用户、组、应用、设备、设备平台、设备状态、IP 范围和 Auth2.0 客户端类型。 启用某个策略后，将在向策略包含的实体颁发资源令牌时评估该策略。
+策略规则和条件的集合。 策略可应用到各种实体，例如用户、组、应用、设备、设备平台、设备状态、IP 范围和 Auth2.0 客户端类型。 启用某个策略后，会在向策略包含的实体颁发资源令牌时评估该策略。
 
 ### <a name="sign-in-v"></a>登录（动词）
 在 Azure Active Directory 中对某个标识进行身份验证。
@@ -163,5 +162,4 @@ Azure Active Directory 中导致目录容易遭到入侵或威胁的配置或状
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

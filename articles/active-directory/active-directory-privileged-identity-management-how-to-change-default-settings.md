@@ -15,18 +15,17 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5108b83d3291d3b934a402a0a7978c68bda0cf1b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 23605e89cd1846d2e06e48cb5d3e0191cb9e9b4a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中管理角色激活设置
 特权角色管理员可以自定义其组织中的 Azure AD Privileged Identity Management (PIM)，包括更改激活合格角色分配的用户的体验。
 
 ## <a name="manage-the-role-activation-settings"></a>管理角色激活设置
-1. 转到 [Azure 门户](https://portal.azure.com)，然后从仪表板中选择“Azure AD Privileged Identity Management”应用。
+1. 转到 [Azure 门户](https://portal.azure.com)，并从仪表板中选择“Azure AD Privileged Identity Management”应用。
 2. 选择“管理特权角色” > “设置” > “特权角色”。
 3. 选择想要管理其设置的角色。
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 11/17/2016
 
 **多重身份验证**：可以选择是否要求用户在激活其角色之前，先使用 MFA 验证其身份。 他们只需在每个会话中执行身份验证一次，而无需在每次激活角色时都执行身份验证。 启用 MFA 时，请记住两点提示：
 
-* 使用 Microsoft 帐户作为电子邮件地址（通常是 @outlook.com,，但不一定）的用户无法注册 Azure MFA。 如果想要将角色分配到使用 Microsoft 帐户的用户，应将其设置为永久管理员，或者为该角色禁用 MFA。
+* 使用 Microsoft 帐户作为电子邮件地址（通常是 @outlook.com，但不一定）的用户无法注册 Azure MFA。 如果想要将角色分配到使用 Microsoft 帐户的用户，应将其设置为永久管理员，或者为该角色禁用 MFA。
 * 无法对 Azure AD 和 Office365 中的高特权角色禁用 MFA。 这是一项安全功能，因为这些角色应该受到严密的保护：  
   
   * 应用程序管理员
@@ -69,5 +68,4 @@ ms.lasthandoff: 11/17/2016
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
 

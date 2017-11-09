@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 050965185c0c4b2d6880b74592e640be85678c06
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
 
@@ -148,6 +147,5 @@ ms.lasthandoff: 06/20/2017
         </div>
     </li>
 </ul>
-
 
 

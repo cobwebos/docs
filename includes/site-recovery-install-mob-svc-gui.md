@@ -2,7 +2,7 @@
 2. 在“安装选项”边栏选项卡上，选择“安装移动服务”。
 
     ![移动服务安装选项页 ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
-3. 选择安装位置，然后单击“安装”开始安装过程。
+3. 选择安装位置，并单击“安装”开始安装过程。
 
     ![移动服务安装位置页 ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
 4. 可以使用“安装进度”页来监视安装程序的进度。

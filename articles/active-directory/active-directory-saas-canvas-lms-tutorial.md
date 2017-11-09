@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 2212b7a81b66d1afd1aa78d1487b07b6d7b84129
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>教程：Azure Active Directory 与 Canvas LMS 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/16/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Canvas 测试用户](#creating-a-canvas-test-user)** - 目的是在 Canvas 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建 Canvas 测试用户](#creating-a-canvas-test-user)** - 在 Canvas 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 06/16/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.instructure.com`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入值：`https://<tenant-name>.instructure.com/saml2`
+    b. 在“标识符”文本框中，使用以下模式键入值：`https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Canvas 客户端支持团队](https://community.canvaslms.com/community/help)获取这些值。 
@@ -136,7 +135,7 @@ ms.lasthandoff: 06/16/2017
    
     ![Canvas](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Canvas")
 
-9. 在左侧导航窗格中，选择“身份验证”，然后单击“添加新 SAML 配置”。
+9. 在左侧导航窗格中，选择“身份验证”，并单击“添加新 SAML 配置”。
    
     ![身份验证](./media/active-directory-saas-canvas-lms-tutorial/IC775991.png "身份验证")
 
@@ -144,9 +143,9 @@ ms.lasthandoff: 06/16/2017
    
     ![当前集成](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "Current Integration")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“IdP 实体 ID”文本框中。
+    a. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“IdP 实体 ID”文本框中。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
@@ -186,7 +185,7 @@ ms.lasthandoff: 06/16/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -220,9 +219,9 @@ ms.lasthandoff: 06/16/2017
    
    ![添加用户](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "添加用户")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“全名”文本框中输入用户的姓名，例如 BrittaSimon。
+   a. 在“全名”文本框中输入用户的姓名，例如 BrittaSimon。
 
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 brittasimon@contoso.com）。
+   b. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 brittasimon@contoso.com）。
 
    c. 在“登录名”文本框中，输入用户的 Azure AD 电子邮件地址（例如 brittasimon@contoso.com）。
 
@@ -241,7 +240,7 @@ ms.lasthandoff: 06/16/2017
 
 **若要将 Britta Simon 分配到 Canvas，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -288,5 +287,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_203.png
-
 

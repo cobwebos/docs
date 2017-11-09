@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 10/12/2017
 ms.author: billmath
+ms.openlocfilehash: d57235671389e02c7d397b1244cdddb7a20067cc
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 72bd39bcf720cf5704274fcdfa0f2b8fc44a77bc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/14/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
 本文可帮助你找到有关 Azure AD 直通身份验证常见问题的故障排除信息。
@@ -51,9 +49,9 @@ ms.lasthandoff: 08/07/2017
 |AADSTS80005|验证遇到了不可预知的 WebException|暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
 |AADSTS80007|与 Active Directory 通信时出错|检查代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理中心登录失败原因
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
-通过在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上查看[登录活动报表](../active-directory-reporting-activity-sign-ins.md)，开始排查用户登录问题。
+如果你的租户有关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
@@ -119,7 +117,7 @@ ms.lasthandoff: 08/07/2017
 
 ### <a name="exchange-powershell-issue"></a>Exchange PowerShell 问题
 
-如果在运行 `Set-OrganizationConfig` Exchange PowerShell 命令时发现 错误`Set-OrganizationConfig`“找不到与参数名‘PerTenantSwitchToESTSEnabled’相匹配的参数”，请联系 Microsoft 支持部门。
+如果看到“找不到与参数名称‘PerTenantSwitchToESTSEnabled’\.相匹配的参数” 错误（在运行 `Set-OrganizationConfig` Exchange PowerShell 命令时），请联系 Microsoft 支持部门。
 
 ### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync 不能正常工作
 
@@ -129,6 +127,10 @@ ms.lasthandoff: 08/07/2017
 
 根据遇到的问题类型，需要在不同的位置查看直通身份验证代理日志。
 
+### <a name="azure-ad-connect-logs"></a>Azure AD Connect 日志
+
+有关与安装相关的错误，请查看 **%ProgramData%\AADConnect\trace-\*.log** 中的 Azure AD Connect 日志。
+
 ### <a name="authentication-agent-event-logs"></a>身份验证代理事件日志
 
 对于与身份验证代理相关的错误，请在服务器上打开“事件查看器”应用程序，然后在 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin 下查看。
@@ -137,7 +139,7 @@ ms.lasthandoff: 08/07/2017
 
 ### <a name="detailed-trace-logs"></a>详细跟踪日志
 
-若要排查用户登录失败原因，请查看 **%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** 中的跟踪日志。 这些日志包含特定用户使用直通身份验证功能登录失败的原因。 这些错误也会映射到前面的[表格](#sign-in-failure-reasons-on-the-Azure-portal)中所示的登录失败原因。 下面是一个日志项目示例：
+若要排查用户登录失败原因，请查看 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** 中的跟踪日志。 这些日志包含特定用户使用直通身份验证功能登录失败的原因。 这些错误也会映射到前面的[表格](#sign-in-failure-reasons-on-the-Azure-portal)中所示的登录失败原因。 下面是一个日志项目示例：
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -171,4 +173,3 @@ ms.lasthandoff: 08/07/2017
 
 >[!IMPORTANT]
 >传递身份验证使用多个身份验证代理提供高可用性，但不提供负载均衡。 并非所有身份验证代理都接收大致相等的请求数，这取决于你的配置。 特定的身份验证代理可能收不到任何流量。
-

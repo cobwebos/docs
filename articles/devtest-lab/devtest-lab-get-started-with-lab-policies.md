@@ -14,26 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中某个实验室的基本策略
 
 借助 Azure 开发测试实验室，可通过管理每个实验室的策略（设置）来控制成本并尽量减少实验中的浪费。 本文介绍如何设置两个最关键的策略 - 限制单个用户可以创建或声明的虚拟机 (VM) 数目，以及配置自动关闭 - 帮助你开始使用策略。 若要了解如何设置每个实验室策略，请参阅 [在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)一文。  
 
 ## <a name="accessing-a-labs-policies-in-azure-devtest-labs"></a>访问 Azure 开发测试实验室中的实验室策略
-以下步骤将指导你完成 Azure 开发测试实验室中的实验室策略设置：
+以下步骤指导完成 Azure 开发测试实验室中的实验室策略设置：
 
 若要查看（和更改）实验室策略，请按以下步骤操作：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
+1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 
 1. 从实验室列表，选择所需实验室。   
 
@@ -71,7 +69,7 @@ ms.lasthandoff: 06/30/2017
 
 1. 选择“保存”。
 
-    默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 若要从特定 VM 中删除此设置，请打开 VM 的边栏选项卡，然后更改其“自动关闭”设置 
+    默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 要从特定 VM 中删除此设置，请打开 VM 的边栏选项卡，并更改其“自动关闭”设置 
 
 ## <a name="set-auto-start"></a>设置自动启动
 通过自动启动策略可以指定启动当前实验室中虚 VM 的时间。  
@@ -86,9 +84,8 @@ ms.lasthandoff: 06/30/2017
 
 4. 选择“保存”。
 
-    一旦启用，此策略不会自动应用到当前实验室中所有 VM。 若要将设置应用到特定 VM，请打开 VM 的边栏选项卡，然后更改其“自动启动”设置 
+    一旦启用，此策略不会自动应用到当前实验室中所有 VM。 要将设置应用到特定 VM，请打开 VM 的边栏选项卡，然后更改其“自动启动”设置 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md) - 了解如何修改其他实验室策略 
-

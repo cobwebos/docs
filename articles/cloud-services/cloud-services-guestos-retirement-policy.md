@@ -12,20 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/26/2017
+ms.date: 9/20/2017
 ms.author: raiye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 488a6e144b16c57c137e60b918ee68c78db1a54f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
 本页面上的信息与 Azure 来宾操作系统（[来宾 OS](cloud-services-guestos-update-matrix.md)）相关。来宾 OS 仅适用于云服务辅助角色和 Web 角色 (PaaS)。 而不适用于虚拟机 (IaaS)。
 
-Microsoft 已发布[来宾 OS 的支持策略](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq)。 你目前正在阅读的页面描述了如何实施该策略。
+Microsoft 已发布[来宾 OS 的支持策略](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq)。 目前正在阅读的页面描述了如何实施该策略。
 
 该策略规定，
 
@@ -36,9 +34,9 @@ Microsoft 已发布[来宾 OS 的支持策略](http://support.microsoft.com/gp/a
 有时，可能会支持两个以上的系列或发行版。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中显示正式的来宾 OS 支持信息。
 
 ## <a name="when-a-guest-os-family-or-version-is-retired"></a>何时停用来宾 OS 系列或版本
-在发布新的正式 Windows Server 操作系统版本后，将在某个时间推出新的来宾 OS **系列**。 每次推出新的来宾 OS 系列时，Microsoft 将停用最早的来宾 OS 系列。
+在发布新的正式 Windows Server 操作系统版本后，会在某个时间推出新的来宾 OS **系列**。 每次推出新的来宾 OS 系列时，Microsoft 将停用最早的来宾 OS 系列。
 
-大约每个月都会推出新来宾 OS **版本**，以合并最新 MSRC 更新。 由于定期每月更新，来宾 OS 版本正常情况下将在其发布的 60 天后禁用。 对于每个可供使用的系列，此活动都至少保留两个来宾 OS 版本。
+大约每个月都会推出新来宾 OS **版本**，以合并最新 MSRC 更新。 由于定期每月更新，来宾 OS 版本正常情况下会在其发布的大约 60 天后禁用。 对于每个可供使用的系列，此活动都至少保留两个来宾 OS 版本。
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>来宾 OS 停用的过程
 宣布停用之后，客户在较旧系列正式从服务中移除之前有 12 个月的“过渡”期。 过渡时间可能延长，这由 Microsoft 决定。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中发布更新。
@@ -63,8 +61,8 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 这些期间可能会延长，这由 Microsoft 决定，以便于客户过渡。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中通告所有更改。
 
 ### <a name="notifications-during-retirement"></a>停用期间的通知
-* **系列停用** <br>Microsoft 将使用博客文章和门户通知。 将通过与指定的服务管理员进行直接通信（电子邮件、门户消息、电话）以通知仍使用停用的来宾 OS 系列的客户。 将在此页面以及此页面开头列出的 RSS 源中发布所有更改。
-* **版本停用** <br>将在此页面以及此页面开头列出的 RSS 源中发布所有更改及做出更改的日期，包括发布、禁用和到期日期。 如果服务管理员有运行在禁用的来宾 OS 版本或系列上的部署，则将收到电子邮件。 这些电子邮件的时间可能各不相同。 通常，在禁用前至少有一个月的时间，但是此时间安排并不是官方的 SLA。
+* **系列停用** <br>Microsoft 将使用博客文章和门户通知。 将通过与指定的服务管理员进行直接通信（电子邮件、门户消息、电话）以通知仍使用停用的来宾 OS 系列的客户。 将在 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)中发布所有更改。
+* **版本停用** <br>所有更改及其发生日期将发布到 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)（包括发布日期、禁用日期和到期日期）。 如果服务管理员有运行在禁用的来宾 OS 版本或系列上的部署，则将收到电子邮件。 这些电子邮件的时间可能各不相同。 通常，在禁用前至少有一个月的时间，但是此时间安排并不是官方的 SLA。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 **我如何消除迁移的影响？**
@@ -77,8 +75,7 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 **如果我的 Web 应用程序需要更深入地与 OS 集成，我该怎么办？**
 
-如果 Web 应用程序体系结构依赖于操作系统的基本功能，请使用平台支持的功能（例如[启动任务](cloud-services-startup-tasks.md)）或其他扩展性机制。 此外，你还可以使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/scenarios/virtual-machines/)（IaaS – 基础结构即服务），你可以在其中负责维护基本操作系统。
+如果 Web 应用程序体系结构依赖于操作系统的基本功能，请使用平台支持的功能（例如[启动任务](cloud-services-startup-tasks.md)）或其他扩展性机制。 此外，还可以使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/scenarios/virtual-machines/)（IaaS – 基础结构即服务），可以在其中负责维护基本操作系统。
 
 ## <a name="next-steps"></a>后续步骤
 查看最新的[来宾 OS 版本](cloud-services-guestos-update-matrix.md)。
-

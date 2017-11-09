@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/6/2016
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7f9fb67a28560f8cc48ba8be8011bc1991d09024
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
-利用 Azure 监视器自动缩放，可以根据遥测数据（指标）增加或减少正在运行的实例数。 本文档介绍了你可能想要使用的常用指标。 在云服务和服务器场的 Azure 门户中，你可以选择要作为缩放依据的资源指标。 不过，你也可以选择其他资源的任何指标来作为缩放依据。
+利用 Azure 监视器自动缩放，可以根据遥测数据（指标）增加或减少正在运行的实例数。 本文档介绍了可能需要使用的常用指标。 在云服务和服务器场的 Azure 门户中，可以选择要作为缩放依据的资源指标。 不过，也可以选择其他资源的任何指标来作为缩放依据。
 
 Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。 其他 Azure 服务使用不同的缩放方法。
 
@@ -33,7 +32,7 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 
 如果使用 VM 规模集，而且发现特定指标未列出，可能是其在诊断扩展中*已禁用*。
 
-如果特定指标未采样或以所需的频率传输，你可以更新诊断配置。
+如果特定指标未采样或以所需的频率传输，可以更新诊断配置。
 
 如果发生上述任一情况，请查看[使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断](../virtual-machines/windows/ps-extensions-diagnostics.md)，将 Azure VM 诊断扩展配置和更新为启用该指标。 这篇文章还包含一个诊断配置文件示例。
 
@@ -78,9 +77,9 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒字节数 |
-| \PhysicalDisk(_Total)\Avg. 磁盘队列长度 |计数 |
-| \PhysicalDisk(_Total)\Avg. 磁盘读取队列长度 |计数 |
-| \PhysicalDisk(_Total)\Avg. 磁盘写入队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg.磁盘队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg.磁盘读取队列长度 |计数 |
+| \PhysicalDisk(_Total)\Avg.磁盘写入队列长度 |计数 |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
 | \LogicalDisk(_Total)\Free Megabytes |计数 |
 
@@ -137,16 +136,16 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \NetworkInterface\TotalCollisions |计数 |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>常用的 Web（服务器场）指标
-你也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名为 **HttpQueueLength**。  以下部分列出了可用的服务器场（Web 应用）指标。
+也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名为 **HttpQueueLength**。  以下部分列出了可用的服务器场（Web 应用）指标。
 
 ### <a name="web-apps-metrics"></a>Web 应用指标
-你可以在 PowerShell 中使用以下命令生成 Web 应用指标列表。
+可以在 PowerShell 中使用以下命令生成 Web 应用指标列表。
 
 ```
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-你可以针对这些指标发出警报或以其为缩放依据。
+可以针对这些指标发出警报或以其为缩放依据。
 
 | 指标名称 | 计价单位 |
 | --- | --- |
@@ -158,7 +157,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | BytesSent |字节 |
 
 ## <a name="commonly-used-storage-metrics"></a>常用的存储指标
-你可以将存储队列长度作为缩放依据，它是存储队列中的消息数目。 存储队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时将进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
+可以将存储队列长度作为缩放依据，它是存储队列中的消息数目。 存储队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
 在 Azure 门户的“设置”边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
 
@@ -179,7 +178,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 ```
 
 ## <a name="commonly-used-service-bus-metrics"></a>常用的服务总线指标
-你可以按服务总线队列的长度进行缩放，该长度是服务总线队列中的消息数量。 服务总线队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时将进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
+可以按服务总线队列的长度进行缩放，该长度是服务总线队列中的消息数量。 服务总线队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
 
@@ -193,4 +192,3 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 > 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-EastUS”、“Default-ServiceBus-WestUS”、“Default-ServiceBus-AustraliaEast”等等。
 >
 >
-

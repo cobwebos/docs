@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: dcc31f7a8c85a8f7fbd554371a66fb1e348bca17
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>配置复杂解决方案时设计 Azure Resource Manager 模板的模式
 使用基于 Azure Resource Manager 模板的灵活方法，可以快速、一致地部署复杂的拓扑。 随着核心产品的发展，用户可以轻松地调整这些部署或适应外来方案或客户的变化。
@@ -76,8 +75,8 @@ ms.lasthandoff: 07/28/2017
 
 这些部署使用 RBAC，因此，可以在客户的帐户中更新和管理部署。
 
-### <a name="azure-marketplace"></a>Azure Marketplace
-若要通过应用商店（例如 Azure Marketplace）宣传和销售产品，可以开发模板来提供不同类型的、在客户的 Azure 帐户中运行的部署。 这些不同的部署通常可描述为 T 恤尺寸（小、中、大）、产品/受众类型（社区、开发人员、企业）或功能类型（基本、高可用性）。  在某些情况下，这些类型允许指定某些部署属性，例如 VM 类型或磁盘数。
+### <a name="azure-marketplace"></a>Azure 应用商店
+若要通过应用商店（例如 Azure 应用商店）宣传和销售产品，可以开发模板来提供不同类型的、在客户的 Azure 帐户中运行的部署。 这些不同的部署通常可描述为 T 恤尺寸（小、中、大）、产品/受众类型（社区、开发人员、企业）或功能类型（基本、高可用性）。  在某些情况下，这些类型允许指定某些部署属性，例如 VM 类型或磁盘数。
 
 ## <a name="oss-projects"></a>OSS 项目
 在开放源代码项目中，Resource Manager 模板可让社区使用经过证实的做法快速部署解决方案。 可以在 GitHub 存储库中存储模板，使社区可在一段时间之后修改它们。 用户可在自己的 Azure 订阅中部署这些模板。
@@ -325,7 +324,7 @@ Redis 只使用单节点类型，因此需创建名为 node-resources.json 的�
 
 **随时可以针对端到端解决方案模板范围扩展用于已划归容量或功能的解决方案模板的模型**
 
-## <a name="preparing-templates-for-the-marketplace"></a>准备用于应用商店的模板
+## <a name="preparing-templates-for-the-marketplace"></a>准备应用商店的模板
 使用前面的方法随时可以适应企业、SI 和 CSV 自行部署模板，或者客户自行部署项目的方案。
 
 另一个所需的方案是通过应用商店部署模板。  此分解方法也适用于应用商店，不过略有差异。
@@ -347,5 +346,4 @@ Redis 只使用单节点类型，因此需创建名为 node-resources.json 的�
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何共享进出模板的状态，请参阅 [Sharing state in Azure Resource Manager templates](best-practices-resource-manager-state.md)（共享 Azure Resource Manager 模板中的状态）。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
 

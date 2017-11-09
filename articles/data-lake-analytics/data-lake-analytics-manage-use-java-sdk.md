@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: a68c6a10156f6d74927d4d53a6fedf2e705865b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>使用 Java SDK 管理 Azure Data Lake Analytics
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 1. 打开 IntelliJ，使用“命令行应用”模板创建 Java 项目。
-2. 右键单击屏幕左侧的项目并单击“添加框架支持”。 选择 “Maven”，然后单击“确定”。
+2. 右键单击屏幕左侧的项目并单击“添加框架支持”。 选择 “Maven”，并单击“确定”。
 3. 打开新创建的 **"pom.xml"** 文件，并在 **\</版本>** 标记和 **\</项目>** 标记之间添加以下文本段：
 
 ```
@@ -90,7 +89,7 @@ ms.lasthandoff: 06/28/2017
 </dependencies>
 ```
 
-转到“文件”>“设置”>“生成”>“执行”>“部署”。 选择“生成工具”>“Maven”>“导入”。 然后单击“自动导入 Maven 项目”。
+转到“文件”>“设置”>“生成”>“执行”>“部署”。 选择“生成工具”>“Maven”>“导入”。 然后选择“自动导入 Maven 项目”。
 
 打开 `Main.java`，将现有代码块替换为以下代码片段：
 
@@ -383,4 +382,3 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 * 若要了解 U-SQL，请参阅 [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL 语言入门）和 [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348)（U-SQL 语言参考）。
 * 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-

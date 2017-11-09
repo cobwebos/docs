@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf672384407588ddc2c4998f42f6893e2638c592
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>如何在 iOS 上使用 Engagement API
 本文档是“如何在 iOS 上集成 Engagement”文档的附加内容：它提供了有关如何使用 Engagement API 报告应用程序统计信息的全部详细信息。
@@ -245,7 +244,7 @@ Engagement API 由 `EngagementAgent` 类提供。 此类的实例可通过调用
 
 请注意，这些信息可以增量方式发送：仅为给定设备保留给定密钥的最新值。
 
-与事件 Extras 类似，`NSDictionary` 类被用于应用程序信息的摘要，请注意，数组或子字典将被视为平面字符串（使用 JSON 序列化）。
+与事件 Extras 类似，`NSDictionary` 类被用于应用程序信息的摘要，请注意，数组或子字典会被视为平面字符串（使用 JSON 序列化）。
 
 **示例：**
 
@@ -268,4 +267,3 @@ Engagement API 由 `EngagementAgent` 类提供。 此类的实例可通过调用
 在上一示例中，发送到服务器的 JSON 长度为 44 个字符：
 
     {"birthdate":"1983-12-07","gender":"female"}
-

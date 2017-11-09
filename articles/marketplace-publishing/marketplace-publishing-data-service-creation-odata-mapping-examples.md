@@ -1,6 +1,6 @@
 ---
-title: "为 Marketplace 创建数据服务指南 | Microsoft Docs"
-description: "详细说明如何创建、验证和部署在 Azure Marketplace 上提供购买的数据服务。"
+title: "为应用商店创建数据服务指南 | Microsoft Docs"
+description: "详细说明如何创建、验证和部署在 Azure 应用商店上提供购买的数据服务。"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>通过 CSDL 将现有 Web 服务映射到 OData 示例
 > [!IMPORTANT]
-> **本次我们将不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure Marketplace 上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
+> **本次我们不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
 > 
 > 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-post"></a>示例：使用“POST”返回的“原始”数据的 FunctionImport
-使用 POST 原始数据，创建新从属并返回其服务器定义的 URL(location)，或者通过服务器定义的 URL 更新从属的一部分。  其中从属是流，即 非结构化，例如 文本文件。  请注意 POST 为非幂等，并且不带位置。
+使用 POST 原始数据，创建新从属并返回其服务器定义的 URL(location)，或者通过服务器定义的 URL 更新从属的一部分。  其中从属是一个流（即非结构化），例如 文本文件。  请注意 POST 为非幂等，并且不带位置。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -108,7 +106,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>示例：使用“PUT”返回的“原始”数据的 FunctionImport
-使用 PUT 原始数据创建新从属，或通过服务器定义的 URL 更新整个从属。  其中从属是流，即 非结构化，例如 文本文件。  PUT 是幂等的，因此多个匹配项将生成相同的状态，即 x=5。  Put 应与指定资源的完整内容一起使用。
+使用 PUT 原始数据创建新从属，或通过服务器定义的 URL 更新整个从属。  其中从属是一个流（即非结构化），例如 文本文件。  PUT 是幂等的，因此多个匹配项将生成相同的状态，即 x=5。  Put 应与指定资源的完整内容一起使用。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -161,8 +159,7 @@ ms.lasthandoff: 07/06/2017
         </FunctionImport>
 
 ## <a name="see-also"></a>另请参阅
-* 如果你有兴趣了解全面的 OData 映射过程和用途，请阅读[数据服务 OData 映射](marketplace-publishing-data-service-creation-odata-mapping.md)一文以查看定义、结构和说明。
-* 如果你有兴趣学习和了解特定节点及其参数，请阅读[数据服务 OData 映射节点](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)一文以了解有关定义和说明、 示例和使用案例上下文。
-* 若要返回到用于将数据服务发布到 Azure Marketplace 的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
-
+* 如果有兴趣了解全面的 OData 映射过程和用途，请阅读文章“[Data Service OData Mapping](marketplace-publishing-data-service-creation-odata-mapping.md)”（数据服务 OData 映射）以查看定义、结构和说明。
+* 如果有兴趣学习和了解特定节点及其参数，请阅读[数据服务 OData 映射节点](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)一文以了解有关定义和说明、 示例和使用案例上下文。
+* 要返回到用于将数据服务发布到 Azure 应用商店的指定路径，请阅读这篇文章[数据服务发布指南](marketplace-publishing-data-service-creation.md)。
 

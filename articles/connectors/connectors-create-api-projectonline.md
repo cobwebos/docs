@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: b075e2eb36f54afb7544e0aeb698701cd224ff93
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-projectonline-connector"></a>ProjectOnline 连接器入门
 Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的灵活联机解决方案。 通过 Office 365 交付的 Project Online 允许组织快速开始使用强大的项目管理功能，以便在几乎所有设备上随时随地规划、管理项目和项目组合投资，并设置优先顺序。
@@ -28,7 +27,7 @@ Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的�
 若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="create-a-connection-to-projectonline"></a>创建到 ProjectOnline 的连接
-若要使用 ProjectOnline 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息： 
+要使用 ProjectOnline 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息： 
 
 | 属性 | 必选 | 说明 |
 | --- | --- | --- |

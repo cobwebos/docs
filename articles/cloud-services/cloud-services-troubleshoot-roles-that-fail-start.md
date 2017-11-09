@@ -10,17 +10,16 @@ tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2017
 ms.author: v-six
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b49393ecfb6fe639825107c5f038906a36cde687
-ms.openlocfilehash: 3cddd9f9c4b978dfad7ec727be9f43f6ed7c7c8f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 44d912c8bee1a7c8db79d3626e00108fbcb39352
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -38,7 +37,7 @@ DLL 或程序集缺失的症状可能为：
 若要调查这些问题，可采用几种推荐的方法。
 
 ## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>在 Web 角色中诊断缺失 DLL 的问题
-如果你导航到在 Web 角色中部署的网站，且浏览器显示类似于下面的服务器错误，可能指示 DLL 缺失。
+如果导航到在 Web 角色中部署的网站，且浏览器显示类似于下面的服务器错误，可能指示 DLL 缺失。
 
 !['/' 应用程序中出现服务器错误。](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
@@ -57,7 +56,7 @@ DLL 或程序集缺失的症状可能为：
 4. 保存文件。
 5. 重新打包并重新部署服务。
 
-重新部署服务后，你将看到错误消息，其中包含缺失的程序集或 DLL 的名称。
+重新部署服务后，会看到错误消息，其中包含缺失的程序集或 DLL 的名称。
 
 ## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>通过远程查看错误来诊断问题
 可使用远程桌面来访问角色并远程查看更完整的错误信息。 通过以下步骤使用远程桌面来查看错误：
@@ -86,15 +85,15 @@ DLL 或程序集缺失的症状可能为：
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>使用计算模拟器诊断问题
 可以使用 Microsoft Azure 计算模拟器来诊断并解决缺失依赖项和出现 web.config 错误的问题。
 
-为了在使用此诊断方法时获得最佳结果，你应使用包含 Windows 的干净安装的计算机或虚拟机。 若要以最佳效果模拟 Azure 环境，请使用 Windows Server 2008 R2 x64。
+为了在使用此诊断方法时获得最佳结果，应使用包含 Windows 的干净安装的计算机或虚拟机。 若要以最佳效果模拟 Azure 环境，请使用 Windows Server 2008 R2 x64。
 
 1. 安装独立版本的 [Azure SDK](https://azure.microsoft.com/downloads/)。
 2. 在开发计算机上生成云服务项目。
 3. 在 Windows 资源管理器中，导航到云服务项目的 bin\debug 文件夹。
-4. 将 .csx 文件夹和 .cscfg 文件复制到你用来调试问题的计算机。
+4. 将 .csx 文件夹和 .cscfg 文件复制到用来调试问题的计算机。
 5. 在干净的计算机上打开 Azure SDK 命令提示符窗口并键入 `csrun.exe /devstore:start`。
 6. 在命令提示符处，键入：`run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`。
-7. 角色启动后，你将在 Internet Explorer 中看到详细的错误信息。 你还可使用标准的 Windows 故障排除工具来进一步诊断问题。
+7. 角色启动后，会在 Internet Explorer 中看到详细的错误信息。 还可使用标准的 Windows 故障排除工具来进一步诊断问题。
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>使用 IntelliTrace 诊断问题
 对于使用 .NET Framework 4 的辅助角色和 Web 角色，可以使用 Microsoft Visual Studio Enterprise 中提供的 [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx)。
@@ -127,4 +126,3 @@ DLL 或程序集缺失的症状可能为：
 查看更多针对云服务的[故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)。
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
-

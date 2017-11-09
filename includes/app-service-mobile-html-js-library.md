@@ -105,7 +105,7 @@ function loadPage(pageNum) {
 
 `.includeTotalCount()` 方法用于将 totalCount 字段添加到结果对象。  如果不分页，totalCount 字段会填充要返回的记录总数。
 
-然后可使用页变量和某些 UI 按钮提供页列表；使用 `loadPage()` 为每页加载新记录。  实施缓存，加快已加载的记录的访问速度。
+然后，可使用页变量和某些 UI 按钮提供页列表；使用 `loadPage()` 为每页加载新记录。  实施缓存，加快已加载的记录的访问速度。
 
 #### <a name="sorting-data"></a>如何：返回排序后的数据
 使用 `.orderBy()` 或 `.orderByDescending()` 查询方法：
@@ -140,7 +140,7 @@ table
 Azure 移动应用 Node.js Server SDK 支持用于开发的动态架构。  使用动态架构可将列添加到表中，在插入或更新操作中指定这些列即可。  建议先关闭动态架构，再将应用程序迁移到生产。
 
 ### <a name="modifying"></a>如何：修改数据
-类似于 `.insert()` 方法，应创建 Update 对象，然后调用 `.update()`。  update 对象必须包含要更新的记录的 ID，此 ID 在读取记录或调用 `.insert()` 时获取。
+类似于 `.insert()` 方法，应创建 Update 对象，并调用 `.update()`。  update 对象必须包含要更新的记录的 ID，此 ID 在读取记录或调用 `.insert()` 时获取。
 
 ```javascript
 var updateItem = {

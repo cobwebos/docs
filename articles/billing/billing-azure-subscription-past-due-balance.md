@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 20761f9c6caf029b2b6bbc8e02b2f041c45abf01
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>从 Azure 收到电子邮件后处理 Azure 订阅的逾期未付余额问题
 
 如果我们未收到付款或无法处理付款，你可能会收到一封电子邮件，或在帐户中心或 Azure 门户中看到一条警报。 消息可能为：
 
-
-            **我们未能通过信用卡收取订阅费用。为防止发生服务中断的情况，请更新付款信息。**
+**我们未能通过信用卡收取订阅费用。为防止发生服务中断的情况，请更新付款信息。**
 
 请按照文章中的步骤解决逾期未付余款问题。
 
@@ -52,4 +50,3 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
 ms.openlocfilehash: 62e2d214d6d685c7f27c8c45cae161eb25ed1cbd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-azure-devtest-labs"></a>关于 Azure 开发测试实验室
 ## <a name="overview"></a>概述
@@ -50,5 +49,4 @@ Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azur
 
 ## <a name="next-steps"></a>后续步骤
 [开发测试实验室概念](devtest-lab-concepts.md)
-
 

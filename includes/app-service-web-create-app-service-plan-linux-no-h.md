@@ -1,6 +1,6 @@
 在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan#create) 命令创建应用服务计划。
 
-[!INCLUDE [app-service-plan](app-service-plan.md)]
+[!INCLUDE [app-service-plan](app-service-plan-linux.md)]
 
 以下示例在**标准**定价层和 Linux 容器中创建名为 `myAppServicePlan` 的应用服务计划：
 

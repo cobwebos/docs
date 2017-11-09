@@ -13,19 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f7ecb22ee46d83867453e035f8a639bc7f7f2d81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 7936f47007285e3f7fa1d3220efa022a6e3881ca
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
-部署自助密码重置 (SSPR) 要求身份验证数据必须存在。 某些组织让其用户自己输入其身份验证数据，但多数组织倾向于与 Active Directory 中的现有数据进行同步。 如果你的本地目录中有正确设置格式的数据，并[使用快速设置配置了 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)，则无需用户交互，就会向 Azure AD 和 SSPR 提供数据。
+部署自助密码重置 (SSPR) 要求身份验证数据必须存在。 某些组织让其用户自己输入其身份验证数据，但多数组织倾向于与 Active Directory 中的现有数据进行同步。 如果本地目录中有正确设置格式的数据，并[使用快速设置配置了 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)，则无需用户交互，就会向 Azure AD 和 SSPR 提供数据。
 
 任何电话号码必须采用“+国家/地区代码 电话号码”的格式（示例：+1 4255551234），才能正常工作。
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 05/08/2017
 * 身份验证电子邮件
 * 安全问答
 
-如果你提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。 此外，用户在首次注册时将看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。
+如果提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。 此外，用户在首次注册时会看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。
 
 ## <a name="set-and-read-authentication-data-using-powershell"></a>使用 PowerShell 设置和读取身份验证数据
 
@@ -138,15 +137,14 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
-
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
-* [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
-* [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
-* [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [**深入技术探究**](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
-* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
-
+* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+* [是否有许可问题？](active-directory-passwords-licensing.md)
+* [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
+* [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
+* [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

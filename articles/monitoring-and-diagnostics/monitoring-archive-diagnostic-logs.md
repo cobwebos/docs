@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: dbc5f89001dcb6cd1ab061cb0a9632e4e5d2c1c7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet、CLI 或 REST API 将 [Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)存档到存储帐户中。 此选项适用于实施可选保留策略的诊断日志，将其保留下来进行审核、静态分析或备份。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与资源发出日志位于同一订阅中。
@@ -61,7 +60,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
-| StorageAccountId |否 |应将诊断日志保存到其中的存储帐户的资源 ID。 |
+| StorageAccountId |否 |应该将诊断日志保存到其中的存储帐户的资源 ID。 |
 | Categories |否 |要启用的日志类别的逗号分隔列表。 |
 | Enabled |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |
 | RetentionEnabled |否 |一个布尔值，表示此资源是否启用了保留策略。 |
@@ -145,4 +144,3 @@ azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-456
 * [下载 blob 进行分析](../storage/storage-dotnet-how-to-use-blobs.md)
 * [将诊断日志流式传输到事件中心命名空间](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [详细了解诊断日志](monitoring-overview-of-diagnostic-logs.md)
-

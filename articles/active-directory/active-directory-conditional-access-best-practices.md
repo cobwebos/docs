@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 09/16/2017
 ms.author: markvi
 ms.reviewer: calebb
+ms.openlocfilehash: 74b97ac263dcc45f7a8dd7461cbdb23d9fd5e6fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: fedc72f8fe1ada9a991d417cc77b8ca659589f55
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
 
@@ -183,38 +182,6 @@ ms.lasthandoff: 09/08/2017
 
 
 
-
-
-
-
-
-
-
-
-## <a name="common-scenarios"></a>常见方案
-
-### <a name="requiring-multi-factor-authentication-for-apps"></a>要求对应用使用多重身份验证
-
-在许多环境中，某些应用所需的保护级别要比其他应用要高一些。
-例如，有权访问敏感数据的应用就需要更高的保护级别。
-如果想要为这些应用添加另一层保护，可以配置条件访问策略，要求访问这些应用的用户执行多重身份验证。
-
-
-### <a name="requiring-multi-factor-authentication-for-access-from-networks-that-are-not-trusted"></a>通过不受信任的网络访问时要求执行多重身份验证
-
-此方案与前一种方案类似，两者都提出了多重身份验证的要求。
-但是，主要区别在于此项要求的条件。  
-前一种方案的重心是有权访问敏感数据的应用，而本方案的重心则是受信任的位置。  
-换而言之，如果用户通过不受信任的网络访问应用，可以要求其进行多重身份验证。
-
-
-### <a name="only-trusted-devices-can-access-office-365-services"></a>只允许受信任的设备访问 Office 365 服务
-
-如果在环境中使用 Intune，马上就可以在 Azure 控制台中开始使用条件性访问策略接口。
-
-许多 Intune 客户都在使用条件性访问来确保只有受信任的设备可以访问 Office 365 服务。 这意味着，访问这些服务的移动设备已注册到 Intune 并满足合规策略要求，Windows 电脑已加入本地域。 一项重要改进是不需要针对每个 Office 365 服务设置相同的策略。  创建新策略时，可以配置云应用，以包含想要使用条件性访问保护的每个 O365 应用。
-
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
-

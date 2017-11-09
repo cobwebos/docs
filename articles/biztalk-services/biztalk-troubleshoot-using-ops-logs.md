@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：利用操作日志进行故障排除
 
@@ -36,10 +34,10 @@ ms.lasthandoff: 06/01/2017
 > 
 
 ## <a name="view-biztalk-services-operation-logs"></a>查看 BizTalk 服务操作日志
-1. 在 Azure 经典门户中，选择“管理服务”，然后选择“操作日志”选项卡。
+1. 在 Azure 经典门户中，选择“管理服务”，并选择“操作日志”选项卡。
 2. 可以基于订阅、日期范围、服务类型（例如 BizTalk 服务）、服务名称或操作的状态（“成功”、“失败”）等不同参数来筛选日志。
-3. 选择复选标记可以查看筛选后的列表。 下图显示了与 testbiztalkservice 相关的活动： ![查看操作日志][ViewLogs] 
-4. 若要查看有关特定操作的详细信息，请选择相应的行，然后在底部的任务栏中单击“详细信息”。
+3. 选择复选标记可以查看筛选后的列表。 下图显示了与 testbiztalkservice 相关的活动：![查看操作日志][ViewLogs] 
+4. 要查看有关特定操作的详细信息，请选择相应的行，并在底部的任务栏中单击“详细信息”。
 
 ## <a name="bizops"></a>使用 Azure 管理服务跟踪的操作
 下表列出了使用 Azure 管理服务跟踪的操作：
@@ -74,5 +72,4 @@ ms.lasthandoff: 06/01/2017
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
-
 

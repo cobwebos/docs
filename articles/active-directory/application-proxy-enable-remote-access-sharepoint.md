@@ -15,14 +15,12 @@ ms.date: 09/06/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 2b4ad3e7bda1346e606b2c185c204154b8f19f87
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
 本文介绍如何将本地 SharePoint 服务器与 Azure Active Directory (Azure AD) 应用程序代理相集成。
@@ -208,5 +206,4 @@ Klist
 
 - [使用 Azure AD 应用程序代理中的自定义域](active-directory-application-proxy-custom-domains.md)
 - [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
-
 

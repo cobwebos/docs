@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 3c00867a29cf8343a57e74e2aabe3971ae6837af
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用和删除 StorSimple 设备
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 08/03/2017
 >
 > 出厂重置过程会删除以本地方式存储在设备上的所有数据。 因此，必须在停用设备之前创建所有数据的云快照。 使用此云快照可以在后面的某个阶段恢复所有数据。
 
-阅读本教程之后，你将能够：
+阅读本教程之后，能够：
 
 * 停用设备并删除数据。
 * 停用设备并保留数据。
@@ -118,8 +117,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要将已停用的设备还原为出厂默认设置，请转到[将设备重置为出厂默认设置](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
+* 要将已停用的设备还原为出厂默认设置，请转到[将设备重置为出厂默认设置](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 * 如需技术帮助，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
 * 若要详细了解如何使用 StorSimple 设备管理器服务，请参阅[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

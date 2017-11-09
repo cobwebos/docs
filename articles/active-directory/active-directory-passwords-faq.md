@@ -13,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: 53075d20aff073ff46dcd6dccaefea5fc8ec3483
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: fed9008d41b43b2c118aba4939260e819c211d67
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -57,10 +56,6 @@ ms.lasthandoff: 08/29/2017
 * **问：用户在注册数据时能否选择不让其他用户看到？**
 
   > **答：**可以。当用户使用密码重置注册门户注册数据时，数据会保存到私有身份验证字段中，只有全局管理员和用户才能看到这些字段。
-    >
-    > [!NOTE]
-    > 如果 **Azure 管理员帐户**注册了用户的身份验证电话号码，该号码也将填充到移动电话字段并且会公开。
-    >
   >
   >
 * **问：是否用户只有在注册之后才能使用密码重置功能？**
@@ -178,7 +173,7 @@ ms.lasthandoff: 08/29/2017
   >
 * **问：电子邮件和短信的一次性密码的有效期有多长？**
 
-  > **答：**进行密码重置的会话生存期为 105 分钟。 从密码重置操作开始算，用户有 105 分钟的时间来重置其密码。 此时间段到期后，电子邮件和短信的一次性密码将无效。
+  > **答：**进行密码重置的会话生存期为 15 分钟。 从密码重置操作开始算，用户有 15 分钟的时间来重置其密码。 此时间段到期后，电子邮件和短信的一次性密码将无效。
   >
   >
 
@@ -268,16 +263,14 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
-
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
-* [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
-* [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
-* [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
-* [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**密码写回**](active-directory-passwords-writeback.md) - 如何对本地目录使用密码写回
-* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
-
+* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+* [是否有许可问题？](active-directory-passwords-licensing.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
+* [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
+* [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

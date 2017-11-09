@@ -1,5 +1,5 @@
 ---
-title: "预见性维护预配置解决方案 | Microsoft Docs"
+title: "预测性维护解决方案概述 - Azure | Microsoft Docs"
 description: "介绍 Azure IoT 套件预见性维护预配置解决方案。"
 services: 
 suite: iot-suite
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
+ms.openlocfilehash: 369e61b091c79df8ad2d874693aedc3b23e512c8
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>预见性维护预配置解决方案概述
 
@@ -78,7 +77,7 @@ Azure IoT 预测性维护解决方案使用通过此模板创建的回归模型�
 
 1. 单击状态为“正在预配”的解决方案磁贴。
 1. 请在 Azure 服务部署到 Azure 订阅中时，注意“预配状态”  。
-1. 预配完成之后，状态将更改为“就绪” 。
+1. 预配完成之后，状态将更改为“就绪”。
 1. 单击磁贴，会在右边窗格中看到解决方案的详细信息。 通过此窗格可以启动解决方案仪表板，并访问机器学习工作区。
 
 > [!NOTE]
@@ -145,7 +144,7 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
 [lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
-[lnk_iot_suite]: iot-suite-overview.md
+[lnk_iot_suite]: iot-suite-options.md
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 

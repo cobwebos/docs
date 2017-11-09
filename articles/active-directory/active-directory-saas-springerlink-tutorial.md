@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: b9aec6f8f293cdd31456a7f50e3efe792804c7c8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>教程：Azure Active Directory 与 Springer Link 集成
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 08/05/2017
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-4. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+4. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 08/05/2017
 
 **若要将 Britta Simon 分配到 Springer Link，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -235,5 +234,4 @@ ms.lasthandoff: 08/05/2017
 [201]: ./media/active-directory-saas-springerlink-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-springerlink-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-springerlink-tutorial/tutorial_general_203.png
-
 

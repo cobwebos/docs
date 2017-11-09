@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>请求和响应组件入门
 借助逻辑应用中的请求和响应组件，可以实时响应事件。
 
-例如，你可以：
+例如，可以：
 
 * 通过逻辑应用使用来自本地数据库的数据响应 HTTP 请求。
 * 从外部 Webhook 事件触发逻辑应用。
@@ -38,7 +37,7 @@ ms.lasthandoff: 01/20/2017
 
 下面是如何在逻辑应用设计器中设置 HTTP 请求的示例序列。
 
-1. 在逻辑应用中添加触发器“请求 - 收到 HTTP 请求时”。 可以选择为请求正文提供 JSON 架构（通过使用 [JSONSchema.net](http://jsonschema.net) 之类的工具）。 这允许设计人员为 HTTP 请求中的属性生成令牌。
+1. 在逻辑应用中添加触发器“请求 - 收到 HTTP 请求时”。 可以选择为请求正文提供 JSON 架构（通过使用 [JSONSchema.net](http://jsonschema.net) 之类的工具）。 这允许设计器为 HTTP 请求中的属性生成令牌。
 2. 添加另一个操作，以便保存逻辑应用。
 3. 保存逻辑应用后，可以从请求卡获取 HTTP 请求 URL。
 4. 对该 URL 的 HTTP POST（可使用 [Postman](https://www.getpostman.com/) 之类的工具）触发逻辑应用。
@@ -51,7 +50,7 @@ ms.lasthandoff: 01/20/2017
 ![响应触发器](./media/connectors-native-reqres/using-trigger.png)
 
 ## <a name="use-the-http-response-action"></a>使用 HTTP 响应操作
-HTTP 请求操作仅在由 HTTP 请求触发的工作流中使用时才有效。 如果未定义响应操作，`202 ACCEPTED` 响应将立即返回到调用方。  可在工作流内的任意步骤中添加响应操作。 逻辑应用使传入请求仅为一个响应保持打开状态一分钟。  一分钟后，如果未从工作流中发送任何响应（并且定义中存在响应操作），则 `504 GATEWAY TIMEOUT` 将返回到调用方。
+HTTP 请求操作仅在用于由 HTTP 请求触发的工作流中时才有效。 如果未定义响应操作，`202 ACCEPTED` 响应将立即返回到调用方。  可在工作流内的任意步骤中添加响应操作。 逻辑应用使传入请求仅为一个响应保持打开状态一分钟。  一分钟后，如果未从工作流中发送任何响应（并且定义中存在响应操作），则 `504 GATEWAY TIMEOUT` 将返回到调用方。
 
 下面是添加 HTTP 响应操作的方法：
 
@@ -111,5 +110,4 @@ HTTP 请求操作仅在由 HTTP 请求触发的工作流中使用时才有效。
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
-
 

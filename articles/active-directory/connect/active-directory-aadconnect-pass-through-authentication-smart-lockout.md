@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 10/19/2017
 ms.author: billmath
+ms.openlocfilehash: 771741fd7da8c9b6932851851aaca148f9596643
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory 传递身份验证：智能锁定
 
 ## <a name="overview"></a>概述
@@ -45,6 +43,9 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 1.  Azure AD 的锁定阈值“小于”AD 的帐户锁定阈值。 建议设置值，使 AD 的帐户锁定阈值至少是 Azure AD 的锁定阈值的二或三倍。
 2.  Azure AD 的锁定持续时间（以秒表示）“长于”AD 的在此后重置帐户锁定计数器的时间（以分钟表示）。
 
+>[!IMPORTANT]
+>目前，如果用户的云帐户已被智能锁定功能锁定，管理员无法为其解锁。 他们必须等到锁定持续时间到期。
+
 ## <a name="verify-your-ad-account-lockout-policies"></a>验证 AD 帐户锁定策略
 
 使用以下说明验证 AD 帐户锁定策略：
@@ -56,7 +57,7 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 
 ![AD 帐户锁定策略](./media/active-directory-aadconnect-pass-through-authentication/pta5.png)
 
-## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values"></a>使用图形 API 管理租户的智能锁定值
+## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values-needs-premium-license"></a>使用图形 API 管理租户的智能锁定值（需要 Premium 许可证）
 
 >[!IMPORTANT]
 >使用图形 API 修改 Azure AD 的锁定阈值和锁定持续时间值是 Azure AD Premium P2 的一项功能。 它还要求你是你所在租户的全局管理员。
@@ -79,7 +80,7 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 1. 以所在租户的全局管理员身份登录 Graph 浏览器。 出现提示时，授予访问所需权限的权限。
 2. 单击“修改权限”并选择“Directory.ReadWrite.All”权限。
 3. 配置图形 API 请求，如下所示：将版本设置为“BETA 版本”，将请求类型设置为“POST”并将 URL 设置为 `https://graph.microsoft.com/beta/<your-tenant-domain>/settings`。
-4. 将以下 JSON 请求复制并粘贴到“请求正文”字段。 适当更改智能锁定值，并使用 `templateId` 的随机 GUID。
+4. 将以下 JSON 请求复制并粘贴到“请求正文”字段。
 5. 单击“运行查询”，设置租户的智能锁定值。
 
 ```
@@ -148,5 +149,4 @@ Azure AD 可防止密码搜索攻击，并防止在 Office 365 和 SaaS 应用�
 确保已使用[这些步骤](#read-smart-lockout-values)正确更新了租户的智能锁定值。
 
 ## <a name="next-steps"></a>后续步骤
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
-
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

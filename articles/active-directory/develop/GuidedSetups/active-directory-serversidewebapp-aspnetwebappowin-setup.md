@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ebf54f5a203adb7f0e5b0c47dcc07595e269e218
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="set-up-your-project"></a>设置项目
 
 本部分介绍使用 OpenID Connect 通过 OWIN 中间件在 ASP.NET 项目上安装和配置身份验证管道的步骤。 
@@ -33,7 +32,7 @@ ms.contentlocale: zh-cn
 
 > 1. 在 Visual Studio 中：`File` > `New` > `Project`<br/>
 > 2. 在 *Visual C#\Web* 下，选择 `ASP.NET Web Application (.NET Framework)`。
-> 3. 命名应用程序，然后单击“确定”
+> 3. 命名应用程序，并单击“确定”
 > 4. 选择 `Empty` 并选中复选框，添加 `MVC` 引用
 <!--end-collapse-->
 
@@ -55,7 +54,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>配置身份验证管道
-下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，将自动执行此类。
+下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，会自动执行此类。
 
 > 如果项目的根文件夹中没有 `Startup.cs` 文件，请执行以下操作：<br/>
 > 1. 右键单击项目的根文件夹：>    `Add` > `New Item...` > `OWIN Startup class`<br/>
@@ -150,5 +149,4 @@ public class Startup
 
 > 在 *OpenIDConnectAuthenticationOptions* 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。 OpenID Connect 中间件会在后台使用 Cookie，因此，还需要设置 Cookie 身份验证，如以上代码所示。 *ValidateIssuer* 值告知 OpenIdConnect 不要限制某个特定组织的访问权限。
 <!--end-collapse-->
-
 

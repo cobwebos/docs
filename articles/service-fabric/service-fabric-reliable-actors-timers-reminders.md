@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 9f820e2e58ee0a105118e590a1206ca89bddba8f
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="actor-timers-and-reminders"></a>执行组件计时器和提醒
 执行组件可通过注册计时器或提醒来计划自身的定期工作。 本文演示如何使用计时器和提醒，并说明它们之间的差异。
@@ -131,12 +130,12 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 
 执行组件运行时会保存在回叫完成时，对执行组件的状态管理器所做的更改。 如果在保存状态时发生错误，则会停用该执行组件对象并激活一个新实例。
 
-如果在垃圾回收过程中停用了执行组件，所有计时器将会停止。 此后不会调用任何计时器回调。 此外，执行组件运行时不保留有关在停用之前运行的计时器的任何信息。 这主要归功于执行组件可以注册在将来重新激活时需要的任何计时器。 有关详细信息，请参阅[执行组件垃圾回收](service-fabric-reliable-actors-lifecycle.md)的部分。
+如果在垃圾回收过程中停用了执行组件，所有计时器会停止。 此后不会调用任何计时器回调。 此外，执行组件运行时不保留有关在停用之前运行的计时器的任何信息。 这主要归功于执行组件可以注册在将来重新激活时需要的任何计时器。 有关详细信息，请参阅[执行组件垃圾回收](service-fabric-reliable-actors-lifecycle.md)的部分。
 
 ## <a name="actor-reminders"></a>执行组件提醒
-提醒是一种机制，用于在指定时间对执行组件触发持久回调。 其功能类似于计时器。 但与计时器不同的是，提醒会在所有情况下触发，直到执行组件显式注销提醒或显式删除执行组件。 具体而言，提醒会在执行组件停用和故障转移间触发，因为 执行组件运行时会保持有关执行组件提醒的信息。
+提醒是一种机制，用于在指定时间对执行组件触发持久回调。 其功能类似于计时器。 但与计时器不同的是，提醒会在所有情况下触发，直到执行组件显式注销提醒或显式删除执行组件。 具体而言，提醒会在执行组件停用和故障转移间触发，因为 执行组件运行时会使用执行组件状态提供程序保存有关执行组件提醒的信息。 请注意，提醒的可靠性关系到执行组件状态提供程序提供的状态可靠性保证。 这意味着，对于状态持久性设置为 None 的执行组件，故障转移后将不会触发提醒。 
 
-若要注册提醒，执行组件将调用基类上提供的 `RegisterReminderAsync` 方法，如以下示例所示：
+要注册提醒，执行组件将调用基类上提供的 `RegisterReminderAsync` 方法，如以下示例所示：
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -231,4 +230,3 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 了解 Reliable Actor 事件和可重入性：
 * [执行组件事件](service-fabric-reliable-actors-events.md)
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
-

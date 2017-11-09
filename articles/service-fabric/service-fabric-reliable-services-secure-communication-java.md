@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: c4634e3d8efb1745fffcfe3e647e43d867038716
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>在 Azure Service Fabric 中帮助保护服务的通信
 > [!div class="op_single_selector"]
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/01/2017
     ```
 2. 添加侦听器设置和安全凭据。
 
-    确保你要用来帮助保护服务通信的证书安装在群集中的所有节点上。 有两种方式可用于提供侦听器设置和安全凭据：
+    确保要用来帮助保护服务通信的证书安装在群集中的所有节点上。 有两种方式可用于提供侦听器设置和安全凭据：
 
    1. 使用[配置包](service-fabric-application-model.md)提供：
 
@@ -85,7 +84,7 @@ ms.lasthandoff: 07/01/2017
         }
        ```
 
-        如果在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，则 `FabricTransportListenerSettings` 将按默认加载此节中的所有设置。
+        如果将在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，则 `FabricTransportListenerSettings` 将按默认加载此节中的所有设置。
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -120,4 +119,3 @@ ms.lasthandoff: 07/01/2017
     CompletableFuture<String> message = client.getHelloWorld();
 
     ```
-

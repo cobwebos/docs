@@ -3,7 +3,7 @@ title: "Azure API 管理中的策略 | Microsoft Docs"
 description: "了解如何在 API 管理创建、编辑和配置策略。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 537e5caf-708b-430e-a83f-72b70af28aa9
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
-ms.lasthandoff: 03/15/2017
-
-
+ms.openlocfilehash: ef4cb447430a613dd519d96dd7732a9349ebba39
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 在 Azure API 管理中，策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员的传入调用。 许多策略开箱即用。
@@ -53,7 +52,7 @@ ms.lasthandoff: 03/15/2017
 
 策略定义是一个简单的 XML 文档，用于描述一个入站和出站语句序列。 可以直接在定义窗口中编辑 XML。 右侧提供语句的列表，同时启用适用于当前范围的语句并突出显示；如上面的屏幕快照中的“限制调用速率”语句所示。
 
-单击启用的语句将在定义视图中的光标位置添加相应的 XML。 
+单击启用的语句会在定义视图中的光标位置添加相应的 XML。 
 
 > [!NOTE]
 > 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计有特定的使用范围，需在特定的策略部分使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中该策略的“用法”部分。
@@ -62,7 +61,7 @@ ms.lasthandoff: 03/15/2017
 
 [策略参考][Policy Reference]提供策略语句的完整列表以及其设置。
 
-例如，若要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
+例如，要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
 
 ![限制策略][policies-restrict]
 
@@ -121,7 +120,7 @@ ms.lasthandoff: 03/15/2017
 
 范围内的语句按 `base` 元素（如果存在）的位置计算。 全局策略没有父策略，因此在其中使用 `<base>` 元素无效。
 
-例如，如果在全局级别有一个策略并且为 API 配置了一个策略，则只要使用该特定 API，这两种策略都将被应用。 API 管理允许通过基础元素实现组合策略声明的确定性排序。 
+例如，如果在全局级别有一个策略并且为 API 配置了一个策略，则只要使用该特定 API，这两种策略都会被应用。 API 管理允许通过基础元素实现组合策略声明的确定性排序。 
 
 ```xml
 <policies>
@@ -133,7 +132,7 @@ ms.lasthandoff: 03/15/2017
 </policies>
 ```
 
-在上述示例策略定义中，`cross-domain` 语句将在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。 
+在上述示例策略定义中，`cross-domain` 语句会在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。 
 
 若要在策略编辑器中查看当前范围的策略，请单击“重新计算所选范围的有效策略”。
 
@@ -161,4 +160,3 @@ ms.lasthandoff: 03/15/2017
 [policies-edit]: ./media/api-management-howto-policies/api-management-policies-edit.png
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
-

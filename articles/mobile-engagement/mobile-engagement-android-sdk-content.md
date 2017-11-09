@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f47772a16dc38c5b9b4751b22b99938e26cc1e0
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 27190b54fc2b3b5c77b5f0a02273883e36ceaf1d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sdk-content"></a>SDK 内容
 本文档列出并描述了 SDK 存档的内容。
@@ -32,7 +31,7 @@ ms.lasthandoff: 11/17/2016
 
 `res` 文件夹
 
-> Engagement Reach SDK 资源（要包括在你的应用程序中的可绘制的布局文件）。
+> Engagement Reach SDK 资源（要包括在应用程序中的可绘制的布局文件）。
 > 
 > 
 
@@ -51,5 +50,4 @@ ms.lasthandoff: 11/17/2016
 > 
 
 其他文件是软件许可证的副本。
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
@@ -43,7 +42,7 @@ Reliable Collections 支持两种隔离级别：
   快照跨 Reliable Collections 一致。
   有关详细信息，请参阅 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)。
 
-Reliable Collections 将在事务创建时根据副本的操作和角色，为指定读取操作自动选择要使用的隔离级别。
+Reliable Collections 会在事务创建时根据副本的操作和角色，为指定读取操作自动选择要使用的隔离级别。
 下表描述了用于 Reliable Dictionary 和 Reliable Queue 操作的默认隔离级别。
 
 | 操作\角色 | 主要 | 辅助 |
@@ -55,7 +54,7 @@ Reliable Collections 将在事务创建时根据副本的操作和角色，为�
 > 单个实体操作的常见示例为 `IReliableDictionary.TryGetValueAsync`、`IReliableQueue.TryPeekAsync`。
 > 
 
-Reliable Dictionary 和 Reliable Queue 都支持“读取你的写入”。
+Reliable Dictionary 和 Reliable Queue 都支持“读取写入”。
 换而言之，事务中的任何写入都将对属于同一事务的后续读取可见。
 
 ## <a name="locks"></a>锁
@@ -94,5 +93,4 @@ Reliable Queue 使用操作级别锁，允许具有 `TryPeekAsync` 和/或 `TryD
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
 * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
 * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
 

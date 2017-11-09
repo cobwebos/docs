@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 7e1dad18ff0ae9a9102b789b2cb32e7b96ed3d38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 05/09/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 ServiceChannel（单一登录）
 - 可在一个中心位置（即 Azure 管理门户）管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 05/09/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-servicechannel-from-the-gallery"></a>从库中添加 ServiceChannel
-若要配置 ServiceChannel 与 Azure AD 的集成，需要从库中将 ServiceChannel 添加到托管 SaaS 应用列表。
+要配置 ServiceChannel 与 Azure AD 的集成，需要从库中将 ServiceChannel 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 ServiceChannel，请执行以下步骤：**
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 05/09/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_000.png)
 
-5. 在结果窗格中，选择“ServiceChannel”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“ServiceChannel”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_2.png)
 
@@ -95,7 +94,7 @@ ms.lasthandoff: 05/09/2017
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 ServiceChannel 应用程序中配置单一登录。
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 ServiceChannel 应用程序中配置单一登录。
 
 **若要配置 ServiceChannel 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 05/09/2017
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 请联系 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)来获取这些值。
 
-4. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 “NameIdentifier（用户标识符）”是唯一的必需声明，默认值为 **user.userprincipalname**，但是 ServiceChannel 期望通过 **user.mail** 对此项进行映射。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
+4. ServiceChannel 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示一个示例。 **NameIdentifier（用户标识符）**是唯一的强制性声明，默认值为 **user.userprincipalname**，但 ServiceChannel 希望将其映射为 **user.mail**。 如果打算启用“即时”用户预配，则应当添加以下声明，如下所示。 **Role** 声明需要映射到包含该用户的角色的 **user.assignedroles**。  
 
     有关声明的详细指导，可以参考[此处的](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) ServiceChannel 指南。
     
@@ -139,13 +138,13 @@ ms.lasthandoff: 05/09/2017
 
     ![配置单一登录](./media/active-directory-saas-servicechannel-tutorial/tutorial_servicechannel_05.png)
     
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
     d. 单击“确定”
     
-6. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_05.png) 
 
@@ -155,7 +154,7 @@ ms.lasthandoff: 05/09/2017
 
 8. 在“ServiceChannel 配置”部分中，单击“配置 ServiceChannel”以打开“配置登录”窗口。 请记下“快速参考”部分中的 **SAML 实体 ID**。
 
-9. 若要在 **ServiceChannel** 端配置单一登录，需要将下载的**证书 (Base64)** 和 **SAML 实体 ID** 发送给 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
+9. 要在 **ServiceChannel** 端配置单一登录，需要将下载的**证书 (Base64)** 和 **SAML 实体 ID** 发送给 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
@@ -182,15 +181,15 @@ ms.lasthandoff: 05/09/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建” 。 
+    d.单击“下一步”。 单击“创建” 。 
 
 ### <a name="creating-a-servicechannel-test-user"></a>创建 ServiceChannel 测试用户
 
-应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。 若要进行完全用户预配，请联系 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)
+应用程序支持实时用户预配，且进行身份验证后，会在应用程序中自动创建用户。 若要进行完全用户预配，请联系 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -198,9 +197,9 @@ ms.lasthandoff: 05/09/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 ServiceChannel，请执行以下步骤：**
+**要将 Britta Simon 分配到 ServiceChannel，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -231,7 +230,7 @@ ms.lasthandoff: 05/09/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->

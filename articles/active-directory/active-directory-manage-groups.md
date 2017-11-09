@@ -16,18 +16,17 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
+ms.openlocfilehash: 3a4764ddf2dea68bf25bd46b9691429ad3341678
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: cd8125eda7643f0b190d35cbb89edf8b7b4eca30
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理对资源的访问权限
 Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方案，它提供一套稳健的功能来管理对本地和云应用程序及资源（包括诸如 Office 365 的 Microsoft 联机服务和众多非 Microsoft SaaS 应用程序）的安全访问。 本文提供了概述，但如果要立即开始使用 Azure AD 组，请遵循[在 Azure AD 中管理安全组](active-directory-accessmanagement-manage-groups.md)中的说明。 若要了解如何使用 PowerShell 来管理 Azure Active directory 中的组，则可以在[用于管理组的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-v2-cmdlets.md) 中阅读更多信息。
 
 > [!NOTE]
-> 若要使用 Azure Active Directory，你需要一个 Azure 帐户。 如果没有帐户，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
+> 要使用 Azure Active Directory，需要一个 Azure 帐户。 如果没有帐户，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 >
 >
 
@@ -65,7 +64,7 @@ Azure AD 访问管理解决方案的核心是安全组。 使用安全组管理�
 组的所有者也可以让该组发出自助请求。 这样，最终用户就可以搜索和查找组并发出加入请求，有效地寻求权限以访问通过组所管理的资源。 组的所有者可以设置组，以便自动批准加入请求，或者要求组的所有者批准。 当用户发出加入组的请求时，加入请求转发到组的所有者。 如果某个所有者批准了该请求，则发出请求的用户将收到通知并加入该组。 如果某个所有者拒绝了该请求，则发出请求的用户将收到通知，但不会加入该组。
 
 ## <a name="getting-started-with-access-management"></a>访问管理入门
-已准备就绪？ 你可以尝试一些可以使用 Azure AD 组完成的基本任务。 使用这些功能可向不同的人员组提供对组织中不同资源的特定访问权限。 下面是基本的首要步骤列表。
+已准备就绪？ 可以尝试一些可以使用 Azure AD 组完成的基本任务。 使用这些功能可向不同的人员组提供对组织中不同资源的特定访问权限。 下面是基本的首要步骤列表。
 
 * [创建简单规则以配置组的动态成员身份](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
 * [使用组管理对 SaaS 应用程序的访问](active-directory-accessmanagement-group-saasapps.md)
@@ -81,4 +80,3 @@ Azure AD 访问管理解决方案的核心是安全组。 使用安全组管理�
 * [在 Azure AD 中设置专用组](active-directory-accessmanagement-dedicated-groups.md)
 * [适用于组的图形 API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 * [用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
-

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0ac4aa10db43fb84119ab97cf78b2d5592cfd277
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-the-azure-cli-on-windows"></a>在 Windows 上使用 Azure CLI
 
 Azure 命令行接口 (CLI) 提供的命令行和脚本编写环境用于创建和管理 Azure 资源。 Azure CLI 适用于 macOS、Linux 和 Windows 操作系统。 在这些操作系统上，CLI 命令是相同的，但特定于操作系统的脚本语法可能有所不同。
@@ -65,4 +63,3 @@ docker run -it azuresdk/azure-cli-python:latest bash
 [用于 Azure Web 应用的 CLI 示例](../../app-service/app-service-cli-samples.md)
 
 [用于 Azure SQL 的 CLI 示例](../../sql-database/sql-database-cli-samples.md)
-

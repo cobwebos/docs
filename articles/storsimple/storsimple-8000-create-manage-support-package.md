@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 92abbb96b2117e10800de61b5c405a784453265b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -109,7 +108,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
         cmdlet Open-HcsSupportPackage at command pipeline position 1
    
         Supply values for the following parameters:EncryptionPassphrase: ****
-6. 浏览到包含日志文件的文件夹。 这些日志文件现在已解压缩和解密，因此会显示原始的文件扩展名。 修改这些文件，删除任何特定于客户的信息，例如卷名称和设备 IP 地址，然后保存文件。
+6. 浏览到包含日志文件的文件夹。 这些日志文件现在已解压缩和解密，因此会显示原始的文件扩展名。 修改这些文件，删除任何特定于客户的信息，例如卷名称和设备 IP 地址，并保存文件。
 7. 关闭要使用 gzip 压缩并使用 AES-256 加密的文件。 这是为了确保通过网络传输支持包的速度和安全性。 若要压缩和加密文件，请输入以下命令：
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
@@ -150,5 +149,4 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 * 了解[支持包中收集的信息](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
 * 了解如何[使用支持包和设备日志排查设备部署问题](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。
 * 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

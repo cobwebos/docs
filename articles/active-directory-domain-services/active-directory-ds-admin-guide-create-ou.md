@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0da01df8ac5fd3cdb6b4e42dfbc08fab7d9615
-ms.openlocfilehash: 5931d532a0790f1570d1d99687611231aafc7596
-ms.lasthandoff: 02/08/2017
-
-
+ms.openlocfilehash: 017a8cabe81743af4c0cbb694098df799a904468
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中创建组织单位 (OU)
 Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计算机”和“AADDC 用户”。 “AADDC 计算机”容器包含已加入托管域的所有计算机的计算机对象。 “AADDC 用户”容器包含 Azure AD 租户中的用户和组。 有时，可能需要在托管域上创建服务帐户才能部署工作负荷。 为此，可以在托管域上创建自定义的组织单位 (OU)，并在此 OU 中创建服务帐户。 本文说明如何在托管域中创建 OU。
@@ -65,7 +64,7 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
     ![ADAC - 已创建 OU](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
 ## <a name="permissionssecurity-for-newly-created-ous"></a>新建 OU 的权限/安全性
-创建自定义 OU 的用户（“AAD DC 管理员”组的成员）默认已被授予 OU 的管理权限（完全控制权）。 此用户以后可以继续将权限授予其他用户，或根据需要向“AAD DC 管理员”组授予权限。 如以下屏幕截图所示，创建新“MyCustomOU”组织单位的用户 'bob@domainservicespreview.onmicrosoft.com' 已被授予该组织单位的完全控制权。
+创建自定义 OU 的用户（“AAD DC 管理员”组的成员）默认已被授予 OU 的管理权限（完全控制权）。 此用户以后可以继续将权限授予其他用户，或根据需要向“AAD DC 管理员”组授予权限。 如以下屏幕截图所示，创建新“MyCustomOU”组织单位的用户“bob@domainservicespreview.onmicrosoft.com”已被授予该组织单位的完全控制权。
 
  ![ADAC - 新 OU 的安全性](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 
@@ -82,4 +81,3 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
 * [在托管域上配置组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory 管理中心：入门](https://technet.microsoft.com/library/dd560651.aspx)
 * [服务帐户分步指南](https://technet.microsoft.com/library/dd548356.aspx)
-

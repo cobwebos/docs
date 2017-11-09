@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2daa6c07191da7bd732cadf62b414f8027682071
-ms.openlocfilehash: 35d7ac416c35c74d38f4370ee7e34a96eb18d000
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: 6c990a184d44771c78330f54f518bb4c35a36a35
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。
@@ -78,7 +77,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 * 支持配置未经身份验证的 HTTP 代理
 * 支持在服务器核心上配置代理
 * 改进了 AD FS 的警报
-* 在适用于 AD FS 的 Azure AD Connect Health 代理中改进了连接和数据上载。
+* 在适用于 AD FS 的 Azure AD Connect Health 代理中改进了连接和数据上传。
 
 **已解决的问题：**
 
@@ -97,5 +96,4 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](active-directory-aadconnect-health.md)。
-
 

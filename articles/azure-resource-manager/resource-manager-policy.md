@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2017
+ms.date: 10/09/2017
 ms.author: tomfitz
+ms.openlocfilehash: cfdbf35b76b6a7f3cddb2deb35dfc475e0fc600f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-policy-overview"></a>资源策略概述
 通过资源策略，可在组织中建立资源约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
@@ -32,11 +31,6 @@ ms.lasthandoff: 08/04/2017
 本主题重点介绍策略定义。 有关策略分配的信息，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)或[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。
 
 在创建和更新资源（PUT 和 PATCH 操作）时评估策略。
-
-> [!NOTE]
-> 当前，策略不对不支持标记、种类和位置的资源类型进行评估，例如 Microsoft.Resources/deployments 资源类型。 将来会添加此支持。 若要避免向后兼容问题，创作策略时应显式指定类型。 例如，未指定类型的标记策略会应用于所有类型。 在此情况下，如果有嵌套资源不支持标记，并且部署资源类型已添加到策略评估中，则模板部署可能会失败。 
-> 
-> 
 
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
 策略和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的**用户**操作。 例如，你将添加到所需范围的资源组的参与者角色后，可对该资源组做出更改。 策略关注部署期间的“资源”属性。 例如，可通过策略控制能够预配的资源类型。 或者，可限制能够预配资源的位置。 不同于 RBAC，策略是默认的允许和明确拒绝系统。 
@@ -67,6 +61,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 ## <a name="policy-definition-structure"></a>策略定义结构
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
+* mode
 * parameters
 * 显示名称
 * description
@@ -79,6 +74,7 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 ```json
 {
   "properties": {
+    "mode": "all",
     "parameters": {
       "allowedLocations": {
         "type": "array",
@@ -105,6 +101,12 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
   }
 }
 ```
+
+## <a name="mode"></a>Mode
+
+建议将 `mode` 设置为 `all`。 将其设置为 all 时，系统会评估该策略的资源组和所有资源类型。 门户对所有策略使用 all。 如果使用 PowerShell 或 Azure CLI，则需要指定 `mode` 参数并将其设置为 all。
+ 
+以前，仅对支持标记和位置的资源类型评估策略。 `indexed` 模式会继续此行为。 如果使用 all 模式，则还对不支持标记和位置的资源类型评估策略。 [虚拟网络子网](https://github.com/Azure/azure-policy-samples/tree/master/samples/Network/enforce-nsg-on-subnet)是新添加类型的示例。 此外，模式设置为 all 时会评估资源组。 例如，可以[对资源组强制实施标记](https://github.com/Azure/azure-policy-samples/tree/master/samples/ResourceGroup/enforce-resourceGroup-tags)。 
 
 ## <a name="parameters"></a>parameters
 使用参数可减少策略定义的数量，有助于简化策略管理。 为资源属性定义策略（如限制资源部署的位置），并在定义中包含参数。 然后，通过在分配策略时传递不同的值（例如为订阅指定一组位置），针对不同的方案重复使用该策略定义。
@@ -210,11 +212,13 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 * 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 ### <a name="effect"></a>效果
-策略支持三种类型的效果 - `deny`、`audit` 和 `append`。 
+策略支持三种类型的效果 - `deny`、`audit`、`append`、`AuditIfNotExists` 和 `DeployIfNotExists`。 
 
 * **Deny** 会在审核日志中生成一个事件，并使请求失败
 * **Audit** 会在审核日志中生成一个警告事件，但不会使请求失败
 * **Append** 会将定义的字段集添加到请求 
+* **AuditIfNotExists** - 如果资源不存在则启用审核
+* **DeployIfNotExists** - 如果资源不存在则部署一个资源。 目前，只支持通过内置的策略实现这种效果。
 
 对于 **append**，必须提供以下详细信息：
 
@@ -229,6 +233,10 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 ```
 
 值可以是字符串或 JSON 格式对象。 
+
+借助 AuditIfNotExists 和 DeployIfNotExists，可以评估子资源是否存在，并在该资源不存在时应用规则。 例如，可以要求为所有虚拟网络部署网络观察程序。
+
+有关未部署虚拟机扩展时的审核示例，请参阅[审核 VM 扩展](https://github.com/Azure/azure-policy-samples/blob/master/samples/Compute/audit-vm-extension/azurepolicy.json)。
 
 ## <a name="aliases"></a>别名
 
@@ -254,10 +262,10 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 
 | 别名 | 说明 |
 | ----- | ----------- |
-| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
-| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
-| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
-| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
 
 
 **Microsoft.Compute/virtualMachines**
@@ -265,15 +273,15 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 | 别名 | 说明 |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | 设置用于创建虚拟机的映像的标识符。 |
-| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
-| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
-| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
-| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
 | Microsoft.Compute/licenseType | 设置本地许可的映像或磁盘。 此值仅用于包含 Windows Server 操作系统的映像。  |
-| Microsoft.Compute/virtualMachines/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
-| Microsoft.Compute/virtualMachines/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
-| Microsoft.Compute/virtualMachines/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
-| Microsoft.Compute/virtualMachines/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
+| Microsoft.Compute/virtualMachines/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/virtualMachines/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/virtualMachines/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/virtualMachines/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
 | Microsoft.Compute/virtualMachines/osDisk.Uri | 设置 vhd URI。 |
 | Microsoft.Compute/virtualMachines/sku.name | 设置虚拟机的大小。 |
 
@@ -290,10 +298,10 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 | 别名 | 说明 |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | 设置用于创建虚拟机的映像的标识符。 |
-| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或 Marketplace 映像的产品/服务。 |
-| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或 Marketplace 映像的发布者。 |
-| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或 Marketplace 映像的 SKU。 |
-| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或 Marketplace 映像的版本。 |
+| Microsoft.Compute/imageOffer | 设置用于创建虚拟机的平台映像或应用商店映像的产品/服务。 |
+| Microsoft.Compute/imagePublisher | 设置用于创建虚拟机的平台映像或应用商店映像的发布者。 |
+| Microsoft.Compute/imageSku | 设置用于创建虚拟机的平台映像或应用商店映像的 SKU。 |
+| Microsoft.Compute/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
 | Microsoft.Compute/licenseType | 设置本地许可的映像或磁盘。 此值仅用于包含 Windows Server 操作系统的映像。 |
 | Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | 设置规模集中所有虚拟机的计算机名前缀。 |
 | Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | 设置用户映像的 blob URI。 |
@@ -347,20 +355,96 @@ Azure 提供了一些可降低必须要定义的策略数目的内置策略定�
 | Microsoft.Storage/storageAccounts/sku.name | 设置 SKU 名称。 |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | 设置为仅允许 https 流入存储服务。 |
 
+## <a name="policy-sets"></a>策略集
 
-## <a name="policy-examples"></a>策略示例
+策略集使你可以对几个相关的策略定义进行分组。 策略集可简化分配和管理，因为你会以单个项目的形式处理组。 例如，可以对单个策略集中的所有相关标记策略进行分组。 将应用策略集，而非单独分配每个策略。
+ 
+下面的示例演示如何创建用于处理 costCenter 和 productName 这两个标记的策略集。 该示例使用两个内置策略用于应用默认的标记值，以及强制实施标记值。 为实现可重用性，策略集声明了两个参数 costCenterValue 和 productNameValue。 它使用不同参数多次引用两个内置的策略定义。 对于每个参数，可以提供一个固定值（如 tagName 的值），也可以提供策略集的参数（如 tagValue 的值）。
 
-以下主题包含策略示例：
+```json
+{
+    "properties": {
+        "displayName": "Billing Tags Policy",
+        "policyType": "Custom",
+        "description": "Specify cost Center tag and product name tag",
+        "parameters": {
+            "costCenterValue": {
+                "type": "String",
+                "metadata": {
+                    "description": "required value for Cost Center tag"
+                }
+            },
+            "productNameValue": {
+                "type": "String",
+                "metadata": {
+                    "description": "required value for product Name tag"
+                }
+            }
+        },
+        "policyDefinitions": [
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                "parameters": {
+                    "tagName": {
+                        "value": "costCenter"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('costCenterValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+                "parameters": {
+                    "tagName": {
+                        "value": "costCenter"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('costCenterValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                "parameters": {
+                    "tagName": {
+                        "value": "productName"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('productNameValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+                "parameters": {
+                    "tagName": {
+                        "value": "productName"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('productNameValue')]"
+                    }
+                }
+            }
+        ]
+    },
+    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
+    "type": "Microsoft.Authorization/policySetDefinitions",
+    "name": "billingTagsPolicy"
+}
+```
 
-* 有关标记策略的示例，请参阅[将资源策略应用于标记](resource-manager-policy-tags.md)。
-* 有关命名和文本模式的示例，请参阅[应用名称和文本的资源策略](resource-manager-policy-naming-convention.md)。
-* 有关存储策略的示例，请参阅[将资源策略应用于存储帐户](resource-manager-policy-storage.md)。
-* 有关虚拟机策略的示例，请参阅[将资源策略应用于 Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) 和[将资源策略应用于 Windows WM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+通过 New-AzureRMPolicySetDefinition PowerShell 命令添加策略集。
 
+对于 REST 操作，使用 2017-06-01-preview API 版本，如下面的示例所示：
+
+```
+PUT /subscriptions/<subId>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicySet?api-version=2017-06-01-preview
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 定义策略规则之后，将其分配到某一范围。 若要通过门户分配策略，请参阅[使用 Azure 门户分配和管理资源策略](resource-manager-policy-portal.md)。 若要通过 REST API、PowerShell 或 Azure CLI 分配策略，请参阅[通过脚本分配和管理策略](resource-manager-policy-create-assign.md)。
+* 有关示例策略，请参阅 [Azure 资源策略 GitHub 存储库](https://github.com/Azure/azure-policy-samples)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 * 该策略架构在 [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) 中发布。 
-
 

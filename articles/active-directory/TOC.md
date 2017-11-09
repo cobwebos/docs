@@ -5,8 +5,11 @@
 ## [部署混合标识解决方案](choose-hybrid-identity-solution.md)
 ## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
 ## [常见问题](active-directory-faq.md)
+## [新增功能](whats-new.md)
+
 
 # 入门
+## [Azure AD 入门](get-started-azure-ad.md)
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [添加自定义域名](add-custom-domain.md)
 ## [配置公司品牌](customize-branding.md)
@@ -42,11 +45,9 @@
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
-#### [为用户和应用提供使用条款](active-directory-tou.md)
-#### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
-### [从其他目录添加用户（经典门户）](active-directory-create-users-external.md)
+#### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
+#### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
-### [重置密码](active-directory-users-reset-password-azure-portal.md)
 ### [管理用户工作信息](active-directory-users-work-info-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 
@@ -56,7 +57,7 @@
 ### 管理组
 #### [Azure 门户](active-directory-groups-create-azure-portal.md)
 #### [经典门户](active-directory-accessmanagement-manage-groups.md)
-#### [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
 ### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
@@ -65,7 +66,8 @@
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
-#### [基于组的许可的 PowerShell 示例](active-directory-licensing-ps-examples.md)
+#### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
+#### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [启用专用组](active-directory-accessmanagement-dedicated-groups.md)
@@ -96,6 +98,7 @@
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
 #### [通知](active-directory-reporting-notifications.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
+#### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
 ### 故障排除
 #### [缺少审核数据](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [在下载项中缺少数据](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -108,24 +111,22 @@
 #### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [使用证书](active-directory-reporting-api-with-certificates.md)
 
-## [管理密码](active-directory-passwords-overview.md)
+## 管理密码
+### [密码概述](active-directory-passwords-overview.md)
 ### 用户文档
 #### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
 #### [注册自助密码重置](active-directory-passwords-reset-register.md)
-### [许可 SSPR](active-directory-passwords-licensing.md)
-### [部署 SSPR](active-directory-passwords-best-practices.md)
+### [SSPR 工作原理](active-directory-passwords-how-it-works.md)
+### [SSPR 部署指南](active-directory-passwords-best-practices.md)
+### [SSPR 策略](active-directory-passwords-policy.md)
+### [SSPR 自定义](active-directory-passwords-customize.md)
+### [SSPR 数据要求](active-directory-passwords-data.md)
+### [SSPR 报告](active-directory-passwords-reporting.md)
 ### IT 管理员：重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
-#### [Azure 经典门户](active-directory-create-users-reset-password.md)
-### [了解 SSPR 策略](active-directory-passwords-policy.md)
-### [了解密码重置](active-directory-passwords-how-it-works.md)
-### [自定义 SSPR](active-directory-passwords-customize.md)
-### [SSPR 使用的数据](active-directory-passwords-data.md)
-### [针对 SSPR 进行报告](active-directory-passwords-reporting.md)
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [许可 SSPR](active-directory-passwords-licensing.md)
 ### [密码写回](active-directory-passwords-writeback.md)
-### [密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
 ### [故障排除](active-directory-passwords-troubleshoot.md)
 ### [常见问题](active-directory-passwords-faq.md)
 
@@ -138,7 +139,7 @@
 ### 任务
 #### [设置已注册到 Azure AD 的 Windows 10 设备](device-management-azuread-registered-devices-windows10-setup.md)
 #### [设置已加入 Azure AD 的设备](device-management-azuread-joined-devices-setup.md)
-#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [设置已加入混合 Azure AD 的设备](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [本地部署](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 首次运行体验中的 Azure AD 加入](device-management-azuread-joined-devices-frx.md)
 ### 故障排除
@@ -149,9 +150,14 @@
 ### [概述](active-directory-enable-sso-scenario.md)
 ### [入门](active-directory-integrating-applications-getting-started.md)
 ### [SaaS 应用集成教程](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
-#### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+### [Cloud App Discovery](cloudappdiscovery-get-started.md)
+#### [创建快照报表](cloudappdiscovery-set-up-snapshots.md)
+#### [配置持续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)
+#### [使用自定义日志分析器](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
+#### 基于代理的发现
+##### [什么是 Cloud App Discovery？](active-directory-cloudappdiscovery-whatis.md)
+##### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+##### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
@@ -199,6 +205,7 @@
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 #### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
+#### [从用户的体验中隐藏第三方应用](active-directory-coreapps-hide-third-party-app.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
@@ -233,6 +240,7 @@
 ### [多个目录](active-directory-licensing-directory-independence.md)
 ### [O365 目录](active-directory-manage-o365-subscription.md)
 ### [自助服务注册](active-directory-self-service-signup.md)
+#### [接管非托管目录](domains-admin-takeover.md)
 ### [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [启用](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [组策略设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
@@ -244,7 +252,7 @@
 #### [管理员添加 B2B 用户](active-directory-b2b-admin-add-users.md)
 #### [信息工作者添加 B2B 用户](active-directory-b2b-iw-add-users.md)
 #### [API 和自定义](active-directory-b2b-api.md)
-#### [代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
+#### [代码和 Azure PowerShell 示例](active-directory-b2b-code-samples.md)
 #### [自助注册门户示例](active-directory-b2b-self-service-portal.md)
 #### [邀请电子邮件](active-directory-b2b-invitation-email.md)
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
@@ -280,7 +288,7 @@
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
 ### [完成访问评审](active-directory-azure-ad-controls-complete-access-review.md)
 ### [创建访问评审](active-directory-azure-ad-controls-create-access-review.md)
-### [如何执行访问评审](active-directory-azure-ad-controls-perform-access-review.md)
+### [如何执行访问审阅](active-directory-azure-ad-controls-perform-access-review.md)
 ### [如何评审访问权限](active-directory-azure-ad-controls-how-to-review-your-access.md)
 ### [使用访问评审的来宾访问](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 ### [通过评审管理用于访问](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
@@ -294,15 +302,15 @@
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### 任务
+##### [迁移经典策略](active-directory-conditional-access-migration.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
+##### [为用户和应用提供使用条款](active-directory-tou.md)
 ##### [设置 VPN 连接](active-directory-conditional-access-vpn-connectivity-windows10.md)
 ##### [设置 SharePoint 和 Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [补救方法](active-directory-conditional-access-device-remediation.md)
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [常见问题](active-directory-conditional-faqs.md)
-#### [经典门户](active-directory-conditional-access.md)
-##### [入门](active-directory-conditional-access-azuread-connected-apps.md)
 
 ### Windows Hello
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)
@@ -324,6 +332,9 @@
 #### [术语表](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+
+## [将其他服务与 Azure AD 集成]()
+### [启用 LinkedIn 集成](linkedin-integration.md)
 
 ## [在 Azure VM 上部署 AD DS](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Azure VM 上的 Windows Server Active Directory](active-directory-deploying-ws-ad-guidelines.md)
@@ -348,7 +359,7 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
-## [PowerShell cmdlets](/powershell/azure/overview)
+## [Azure PowerShell cmdlet](/powershell/azure/overview)
 ## [Java API 参考](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [服务限制和局限性](active-directory-service-limits-restrictions.md)

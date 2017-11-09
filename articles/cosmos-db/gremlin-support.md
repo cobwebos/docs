@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/10/2017
 ms.author: denlee
+ms.openlocfilehash: 9d83e392774b60b795b7027188ef22d0a8e1b71d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 3f2d2af1d6be41d98f9780b4cf9ca4cd79de0fd7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
-Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、10 毫秒以下的可预测延迟、自动编制索引和 99.99% 的 SLA 保证。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此你可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](http://spark.apache.org/graphx/)）无缝集成。 
+Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、10 毫秒以下的可预测延迟、自动编制索引和 99.99% 的 SLA 保证。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](http://spark.apache.org/graphx/)）无缝集成。 
 
 本文提供 Gremlin 的快速演练，并列举图形 API 预览版中支持的 Gremlin 功能和步骤。
 
@@ -68,7 +66,7 @@ Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-如果你需要回答类似于“Thomas 的朋友使用哪些操作系统？”的问题，图形可以提供很大的方便。 可以运行这个简单的 Gremlin 遍历从图形中获取该信息：
+如果需要回答类似于“Thomas 的朋友使用哪些操作系统？”的问题，图形可以提供很大的方便。 可以运行这个简单的 Gremlin 遍历从图形中获取该信息：
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
@@ -209,4 +207,3 @@ Azure Cosmos DB 的写入优化引擎默认支持自动对顶点和边缘中的�
 ## <a name="next-steps"></a>后续步骤
 * 开始[使用我们的 SDK](create-graph-dotnet.md) 构建图形应用程序 
 * 详细了解 [Azure Cosmos DB 的图形支持](graph-introduction.md)
-

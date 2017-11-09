@@ -9,13 +9,12 @@ manager: jhubbard
 ms.service: postgresql
 ms.custom: 
 ms.topic: article
-ms.date: 05/15/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: dd8b3d5b26f4a903f403e5c7e9dba645a14b3231
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/16/2017
-
+ms.date: 11/01/2017
+ms.openlocfilehash: 3173964f0315559b0839fd7e659f8f3bd2c30b2a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>配置 Azure Database for PostgreSQL 中的 SSL 连接
 Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -31,7 +30,7 @@ Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户�
 （可选）可以禁用强制实施 SSL 连接。 Microsoft Azure 建议始终启用“强制实施 SSL 连接”设置，以增强安全性。
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
-访问 Azure Database for PostgreSQL 服务器，然后单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置。 。 
+访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置。 然后，单击“保存”。 
 
 ![连接安全性 - 禁用强制实施 SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
@@ -45,7 +44,7 @@ az postgres server update --resource-group myresourcegroup --name mypgserver-201
 ```
 
 ## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>确保应用程序或框架支持 SSL 连接
-许多将 PostgreSQL 用于数据库服务的常见应用程序框架（例如Drupal 和 Django）在安装过程中不会默认启用 SSL。 必须在安装完毕后启用 SSL 连接性，或者通过特定于应用程序的 CLI 命令启用。 如果 PostgreSQL 服务器强制实施了 SSL 连接，但是未正确配置关联的应用程序，那么应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 SSL 连接。
+许多将 PostgreSQL 用于其数据库服务的常见应用程序框架（例如 Drupal 和 Django）在安装过程中不会默认启用 SSL。 必须在安装完毕后启用 SSL 连接性，或者通过特定于应用程序的 CLI 命令启用。 如果 PostgreSQL 服务器强制实施了 SSL 连接，但是未正确配置关联的应用程序，那么应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 SSL 连接。
 
 
 ## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>需要证书验证才可启用 SSL 连接性的应用程序
@@ -60,11 +59,11 @@ az postgres server update --resource-group myresourcegroup --name mypgserver-201
 #### <a name="for-linux-os-x-or-unix"></a>适用于 Linux、OS X 或 Unix
 [OpenSSL Software Foundation](http://www.openssl.org) 的源代码中直接提供了 OpenSSL 库。 以下说明将指导用户完成在 Linux 电脑上安装 OpenSSL 所需的步骤。 本文使用适用于 Ubuntu 12.04 及更高版本的命令。
 
-打开终端会话并安装 OpenSSL
+打开终端会话并下载 OpenSSL。
 ```bash
 wget http://www.openssl.org/source/openssl-1.1.0e.tar.gz
 ``` 
-将下载的程序包中的文件解压缩
+从下载的包中提取文件。
 ```bash
 tar -xvzf openssl-1.1.0e.tar.gz
 ```
@@ -83,7 +82,7 @@ cd openssl-1.1.0e
 ```bash
 make
 ```
-编译完成后，即可通过运行以下命令将 OpenSSL 安装为可执行文件：
+编译完成后，即可通过运行以下命令将 OpenSSL 作为可执行文件安装：
 ```bash
 make install
 ```
@@ -100,21 +99,21 @@ OpenSSL 1.1.0e 7 Apr 2014
 #### <a name="for-windows"></a>对于 Windows
 可通过以下方式在 Windows 电脑上安装 OpenSSL：
 1. （推荐）使用 Window 10 和更高版本中内置的 Bash for Windows 功能，已默认安装 OpenSSL。 可在[此处](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)了解如何在 Windows 10 中启用 Bash for Windows 功能。
-2. 通过下载社区提供的 Win32/64 应用程序。 虽然 OpenSSL Software Foundation 并未提供或赞同任何特定的 Windows 安装程序，但在[此处](https://wiki.openssl.org/index.php/Binaries)提供了可用安装程序列表
+2. 通过下载社区提供的 Win32/64 应用程序。 虽然 OpenSSL Software Foundation 并未提供或认可任何特定的 Windows 安装程序，但在[此处](https://wiki.openssl.org/index.php/Binaries)提供了可用安装程序列表。
 
 ### <a name="decode-your-certificate-file"></a>解码证书文件
 下载的根 CA 文件采用加密格式。 使用 OpenSSL 解码证书文件。 要执行此操作，请运行此 OpenSSL 命令：
 
 ```dos
-OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -text -out root.crt
+openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
 ```
 
 ### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>连接到具有 SSL 证书身份验证的 Azure Database for PostgreSQL
-现已成功解码证书，可通过 SSL 安全连接到数据库服务器。 若要允许服务器证书验证，必须将证书放在用户主目录中的 ~/.postgresql/root.crt 文件中。 （在 Microsoft Windows 上，该文件的名称是 %APPDATA%\postgresql\root.crt.）。 下面说明如何连接到 Azure Database for PostgreSQL。
+现已成功解码证书，可通过 SSL 安全连接到数据库服务器。 要允许服务器证书验证，必须将证书放在用户主目录中的 ~/.postgresql/root.crt 文件中。 （在 Microsoft Windows 上，该文件的名称是 %APPDATA%\postgresql\root.crt.）。 下面说明如何连接到 Azure Database for PostgreSQL。
 
 > [!NOTE]
-> 目前，如果在连接到服务时使用“sslmode=verify-full”，存在已知问题，连接将失败并显示以下错误：_“&lt;区域&gt;.control.database.windows.net”的服务器证书（和 7 个其他名称）与主机名“&lt;servername&gt;.postgres.database.azure.com”不匹配。_
-> 如果需要“sslmode=verify-full”，请使用服务器命名约定 **&lt;servername&gt;.database.windows.net** 作为连接字符串主机名。 我们计划在将来删除此限制。 使用其他 [SSL 模式](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)的连接应继续使用首选主机命名约定 **&lt;servername&gt;.postgres.database.azure.com**。
+> 目前，如果在连接到服务时使用“sslmode=verify-full”，会出现已知问题，连接将失败并显示以下错误：“&lt;区域&gt;.control.database.windows.net”的服务器证书（和 7 个其他名称）与主机名“&lt;servername&gt;.postgres.database.azure.com”不匹配。
+> 如果需要“sslmode=verify-full”，请使用服务器命名约定 **&lt;servername&gt;.database.windows.net** 作为连接字符串中的主机名。 我们计划在将来删除此限制。 使用其他 [SSL 模式](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)的连接应继续使用首选主机命名约定 **&lt;servername&gt;.postgres.database.azure.com**。
 
 #### <a name="using-psql-command-line-utility"></a>使用 psql 命令行实用工具
 以下示例演示如何使用 psql 命令行实用程序成功连接到 PostgreSQL 服务器。 使用创建的 `root.crt` 文件和 `sslmode=verify-ca` 或 `sslmode=verify-full` 选项。
@@ -142,5 +141,4 @@ postgres=>
 ![pgAdmin - 连接 - SSL 模式要求的屏幕快照](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
 ## <a name="next-steps"></a>后续步骤
-在 [Connection libraries for Azure Database for PostgreSQL](concepts-connection-libraries.md)（Azure Database for PostgreSQL 的连接库）中查看各种应用程序连接性选项
-
+在 [Connection libraries for Azure Database for PostgreSQL](concepts-connection-libraries.md)（Azure Database for PostgreSQL 的连接库）中查看各种应用程序连接选项。

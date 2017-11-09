@@ -1,6 +1,6 @@
 ---
-title: "Azure 操作方法 - 将不同 HSM 与设备预配服务客户端 SDK 配合使用 | Microsoft Docs"
-description: "Azure 操作方法 - 使用物理设备和模拟器将不同 HSM 与设备预配服务客户端 SDK 配合使用"
+title: "Azure 操作方法 - 如何将不同的硬件安全模块与 Azure 中的设备预配服务客户端配合使用 | Microsoft Docs"
+description: "Azure 操作方法 - 如何将不同的硬件安全模块与 Azure 中的设备预配服务客户端配合使用"
 services: iot-dps
 keywords: 
 author: yzhong94
@@ -12,14 +12,12 @@ documentationcenter:
 manager: 
 ms.devlang: na
 ms.custom: mvc
+ms.openlocfilehash: 184bbdc0a6bef74d0e5ac79afe3858354c6b1695
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: a5649ab873993d20803cb01a4b0ecc278c3ce16c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-
 # <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk"></a>如何将不同硬件安全模块与设备预配服务客户端 SDK 配合使用
 这些步骤演示如何使用物理设备和模拟器在 C 中将不同[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 与设备预配服务客户端 SDK 配合使用。  预配服务支持两种身份验证模式：X**.**509 和受信任的平台模块 (TPM)。
 
@@ -150,4 +148,3 @@ cmake -Ddps_auth_type=tpm_simulator ..
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```
-

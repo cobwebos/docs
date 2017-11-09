@@ -12,17 +12,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 06/05/2017
+ms.date: 10/24/2017
 ms.author: nisoneji
+ms.openlocfilehash: e636065131d0719601a3e834cfc571e94e1abfb7
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 本文介绍如何从复制中排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。 VMware 到 Azure 方案和 Hyper-V 到 Azure 方案支持该功能。
+
+## <a name="supported-scenarios"></a>支持的方案
+**功能** | **VMware 到 Azure** | **Hyper-V 到 Azure** | **Azure 到 Azure**| **Hyper-V 到 Hyper-V** 
+--|--|--|--|--
+排除磁盘 | 是 | 是 | 否 | 否
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +54,7 @@ ms.lasthandoff: 07/14/2017
 ## <a name="how-to-exclude-disks-from-replication"></a>如何从复制中排除磁盘？
 
 ### <a name="vmware-to-azure"></a>VMware 到 Azure
-按照[启用复制](site-recovery-vmware-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，然后完成启用复制的步骤。
+按照[启用复制](site-recovery-vmware-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，并完成启用复制的步骤。
 
 ![从复制中排除磁盘，并为 VMware 启用到 Azure 故障回复的复制](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
 
@@ -59,21 +63,21 @@ ms.lasthandoff: 07/14/2017
 >
 > * 只能排除已安装移动服务的磁盘。 需要手动安装移动服务，因为启用复制后，只能使用推送机制安装移动服务。
 > * 只能从复制中排除基本磁盘。 不能排除操作系统磁盘或动态磁盘。
-> * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用计算机保护，然后重新启用保护。
+> * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用计算机保护，并重新启用保护。
 > * 如果排除的磁盘是某个应用程序正常运行所必需的，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可以将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
 > * Windows 虚拟机：在 Azure 中手动创建的磁盘不会执行故障回复。 例如，如果在 Azure 虚拟机中故障转移三个磁盘并直接创建两个磁盘，则只会故障回复完成故障转移的三个磁盘。 不能包括在故障回复过程中或从本地到 Azure 的反向保护过程中手动创建的磁盘。
 > * Linux 虚拟机：在 Azure 中手动创建的磁盘会执行故障回复。 例如，如果要故障转移三个磁盘，并直接在 Azure 虚拟机中创建两个磁盘，则会故障回复所有五个磁盘。 无法从故障回复中排除手动创建的磁盘。
 >
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V 到 Azure
-按照[启用复制](site-recovery-hyper-v-site-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，然后完成启用复制的步骤。
+按照[启用复制](site-recovery-hyper-v-site-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，并完成启用复制的步骤。
 
 ![从复制中排除磁盘，并为 Hyper-V 启用到 Azure 故障回复的复制](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
 >[!NOTE]
 >
 > * 只能从复制中排除基本磁盘。 不能排除操作系统磁盘。 建议不要排除动态磁盘。 Azure Site Recovery 无法确定来宾虚拟机中的虚拟硬盘 (VHD) 是基本磁盘还是动态磁盘。  如果未排除所有依赖性动态卷磁盘，则受保护的动态磁盘就会成为故障转移虚拟机上的故障磁盘，该磁盘上的数据无法访问。
-> * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用虚拟机保护，然后重新启用保护。
+> * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用虚拟机保护，并重新启用保护。
 > * 如果排除的磁盘是某个应用程序正常运行所必需的，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可以将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
 > * 在 Azure 中手动创建的磁盘不会执行故障回复。 例如，如果对三个磁盘进行故障转移，并直接在 Azure 虚拟机中创建两个磁盘，则只会对那三个故障转移的磁盘进行从 Azure 到 Hyper-V 的故障回复。 在故障回复中或从 Hyper-V 到 Azure 的反向复制中，不能包括手动创建的磁盘。
 
@@ -270,4 +274,3 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
 ## <a name="next-steps"></a>后续步骤
 设置并运行部署后，请 [详细了解](site-recovery-failover.md) 不同类型的故障转移。
-

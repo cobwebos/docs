@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e66a3390c08b66e0f2f38725425cd78a36004118
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.openlocfilehash: 2ee76dfcb579e53975b1f61a6590f8d78dc0961b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
 > [!div class="op_single_selector"]
@@ -76,9 +75,9 @@ ms.lasthandoff: 05/18/2017
 
 成功的部署交换有两个先决条件：
 
-- 如果想要将静态 IP 地址用于生产槽，也必须为过渡槽保留一个静态 IP 地址。 否则，交换将失败。
+- 如果想要将静态 IP 地址用于生产槽，也必须为过渡槽保留一个静态 IP 地址。 否则，交换会失败。
 
-- 执行交换前，你的角色的所有实例必须都在运行。 可以在 Azure 经典门户中或使用 [Windows PowerShell 中的 Get-AzureRole 命令](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0)检查实例的状态。
+- 执行交换前，角色的所有实例必须都在运行。 可以在 Azure 经典门户中或使用 [Windows PowerShell 中的 Get-AzureRole 命令](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0)检查实例的状态。
 
 请注意，来宾 OS 更新和服务修复操作也会导致部署交换失败。 有关详细信息，请参阅[排查云服务部署问题](cloud-services-troubleshoot-deployment-problems.md)。
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 05/18/2017
 如在上一部分中所述，部署交换通常非常快，因为它只更改 Azure 负载均衡器中的配置。 但是，在某些情况下，它会需要 10 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](../best-practices-retry-general.md)。
 
 ## <a name="how-to-link-a-resource-to-a-cloud-service"></a>如何：将资源链接到云服务
-要显示云服务对其他资源的依赖性，可将 Azure SQL 数据库实例或存储帐户链接到云服务。 可以在“链接的资源”页上链接和取消链接资源，然后在云服务仪表板上监视其使用情况。 如果链接的存储帐户启用了监视，可在云服务仪表板上监视“请求总数”。
+要显示云服务对其他资源的依赖性，可将 Azure SQL 数据库实例或存储帐户链接到云服务。 可以在“链接的资源”页上链接和取消链接资源，并在云服务仪表板上监视其使用情况。 如果链接的存储帐户启用了监视，可在云服务仪表板上监视“请求总数”。
 
 使用“链接”可将新的或现有的 SQL 数据库实例或存储帐户链接到云服务。 然后即可在“缩放”页上缩放数据库以及正使用它的云服务角色。 （存储帐户可在使用率增加时自动缩放。）有关详细信息，请参阅[如何缩放云服务和链接的资源](cloud-services-how-to-scale.md)。
 
@@ -121,22 +120,22 @@ ms.lasthandoff: 05/18/2017
 
 ### <a name="to-unlink-a-linked-resource"></a>取消链接链接的资源
 1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“云服务”。 然后单击云服务的名称以打开仪表板。
-2. 单击“链接的资源”，然后选择相应资源。
+2. 单击“链接的资源”，并选择相应资源。
 3. 单击“取消链接”。 然后在出现确认提示时，单击“是”。
 
     取消链接 SQL 数据库对该数据库或应用程序与该数据库的连接没有任何影响。 仍可在 Azure 经典门户的“SQL 数据库”区域中管理该数据库。
 
 ## <a name="how-to-delete-deployments-and-a-cloud-service"></a>如何：删除部署和云服务
-必须先删除每个现有部署，然后才能删除云服务。
+必须先删除每个现有部署，才能删除云服务。
 
 为节省计算成本，可在验证生产部署能够按预期运行后删除过渡部署。 即使云服务未运行，也会向你收取角色实例的计算费用。
 
 可使用以下过程删除部署或云服务。
 
 1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“云服务”。
-2. 选择云服务，然后单击“删除”。 （若要选择云服务而不打开仪表板，请单击云服务条目中名称以外的任何位置。）
+2. 选择云服务，并单击“删除”。 （若要选择云服务而不打开仪表板，请单击云服务条目中名称以外的任何位置。）
 
-    如果部署位于过渡或生产环境中，窗口底部将显示如下选择菜单。 必须先删除所有现有部署，然后才能删除云服务。
+    如果部署位于过渡或生产环境中，窗口底部会显示如下选择菜单。 必须先删除所有现有部署，才能删除云服务。
 
     ![“删除”菜单](./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png)
 
@@ -154,4 +153,3 @@ ms.lasthandoff: 05/18/2017
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate.md)。
-

@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
 ms.openlocfilehash: 552a7ab193e12d2e72da494166d774e974c85d47
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
-文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在你的应用程序中使用 Azure 搜索实现丰富的搜索体验。
+文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在应用程序中使用 Azure 搜索实现丰富的搜索体验。
 
 ## <a name="whats-in-the-azure-search-sdk"></a>什么是 Azure 搜索 SDK
-该 SDK 包含一个客户端库 `Microsoft.Azure.Search`。 它使你能够管理索引、数据源和索引器，以及上传和管理文档及执行查询，而无需处理 HTTP 和 JSON 的详细信息。
+该 SDK 包含一个客户端库 `Microsoft.Azure.Search`。 借助它，不仅可以管理索引、数据源和索引器，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。
 
 客户端库会定义 `Index`、`Field` 和 `Document` 之类的类，还会定义 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 之类的操作。 这些类已组织成以下命名空间：
 
@@ -39,26 +38,26 @@ Azure 搜索 .NET SDK 的当前版本现已正式发布。 如果想要提供反
 此 SDK 不支持[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>升级到最新版本的 SDK
-如果你已在使用较旧版本的 Azure 搜索 .NET SDK，并且想要升级到最新的正式发布版本，[文本](search-dotnet-sdk-migration.md)介绍了操作方法。
+如果已在使用较旧版本的 Azure 搜索 .NET SDK，并且想要升级到最新的正式发布版本，[文本](search-dotnet-sdk-migration.md)介绍了操作方法。
 
 ## <a name="requirements-for-the-sdk"></a>SDK 的要求
 1. Visual Studio 2017。
-2. 你自己的 Azure 搜索服务。 要使用 SDK，需要你的服务的名称以及一个或多个 API 密钥。 [在门户中创建服务](search-create-service-portal.md)将帮助你完成这些步骤。
+2. 自己的 Azure 搜索服务。 要使用 SDK，需要服务的名称以及一个或多个 API 密钥。 [在门户中创建服务](search-create-service-portal.md)将帮助你完成这些步骤。
 3. 在 Visual Studio 中，通过使用“管理 NuGet 程序包”来下载 Azure 搜索 .NET SDK [NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.Search)。 只需在 NuGet.org 上搜索程序包名称 `Microsoft.Azure.Search`。
 
 Azure 搜索 .NET SDK 支持面向 .NET Framework 4.6 和 .NET Core 的应用程序。
 
 ## <a name="core-scenarios"></a>核心方案
-需要在你的搜索应用程序中完成几项操作。 在本教程中，我们将介绍以下核心方案：
+需要在搜索应用程序中完成几项操作。 在本教程中，我们介绍以下核心方案：
 
 * 创建索引
 * 使用文档填充索引
 * 使用全文搜索和筛选器搜索文档
 
-后续示例代码说明了其中的每一个。 可随意在你自己的应用程序中使用代码片段。
+后续示例代码说明了其中的每一个。 可随意在自己的应用程序中使用代码片段。
 
 ### <a name="overview"></a>概述
-我们将要探索的示例应用程序会创建一个名为“hotels”的新索引、用几个文档对该索引进行填充，然后执行一些搜索查询。 以下是主程序，演示总体流程：
+我们将要探索的示例应用程序会创建一个名为“hotels”的新索引、用几个文档对该索引进行填充，并执行一些搜索查询。 以下是主程序，演示总体流程：
 
 ```csharp
 // This sample shows how to delete, create, upload documents and query an index
@@ -94,7 +93,7 @@ static void Main(string[] args)
 > 
 >
 
-我们将逐步进行介绍。 首先，我们需要创建一个新的 `SearchServiceClient`。 此对象使你可以管理索引。 若要构建一个，需要提供你的 Azure 搜索服务名称以及管理 API 密钥。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
+我们将逐步进行介绍。 首先，我们需要创建一个新的 `SearchServiceClient`。 使用此对象，可以管理索引。 要构建一个，需要提供 Azure 搜索服务名称以及管理 API 密钥。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -108,7 +107,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 ```
 
 > [!NOTE]
-> 如果提供了不正确的密钥（例如，需要管理密钥的查询密钥），首次调用 `Indexes.Create` 之类上的操作方法时，`SearchServiceClient` 会引发 `CloudException`（错误消息为“已禁用”）。 如果你遇到此情况，请仔细检查我们的 API 密钥。
+> 如果提供了不正确的密钥（例如，需要管理密钥的查询密钥），首次调用 `Indexes.Create` 之类上的操作方法时，`SearchServiceClient` 会引发 `CloudException`（错误消息为“已禁用”）。 如果遇到此情况，请仔细检查我们的 API 密钥。
 > 
 > 
 
@@ -148,7 +147,7 @@ ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration
 RunQueries(indexClientForQueries);
 ```
 
-我们将在以后详细地查看 `RunQueries` 方法。 下面是用于创建新 `SearchIndexClient` 的代码：
+我们会在以后详细地查看 `RunQueries` 方法。 下面是用于创建新 `SearchIndexClient` 的代码：
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -232,10 +231,10 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 }
 ```
 
-此方法使用用于定义新索引架构的一列 `Field` 对象创建新的 `Index` 对象。 每个字段都有名称、数据类型和数个属性（定义其搜索行为）。 `FieldBuilder` 类通过检查给定 `Hotel` 模型类的公共属性和特性，使用反射来为索引创建 `Field` 对象的列表。 我们将在以后详细地查看 `Hotel` 类。
+此方法使用用于定义新索引架构的一列 `Field` 对象创建新的 `Index` 对象。 每个字段都有名称、数据类型和数个属性（定义其搜索行为）。 `FieldBuilder` 类通过检查给定 `Hotel` 模型类的公共属性和特性，使用反射来为索引创建 `Field` 对象的列表。 我们会在以后详细地查看 `Hotel` 类。
 
 > [!NOTE]
-> 如果需要，始终可以直接创建 `Field` 对象的列表，而不是使用 `FieldBuilder`。 例如，你可能不想使用模型类，或者你可能需要使用不希望通过添加属性来进行修改的现有模型类。
+> 如果需要，始终可以直接创建 `Field` 对象的列表，而不是使用 `FieldBuilder`。 例如，你可能不想使用模型类，或者可能需要使用不希望通过添加属性来进行修改的现有模型类。
 >
 > 
 
@@ -308,7 +307,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 }
 ```
 
-此方法有四个部分。 第一部分创建的一个 `Hotel` 对象数组，将用作我们上传到索引的输入数据。 为简单起见，此数据是硬编码的。 在你自己的应用程序中，数据可能来自外部数据源（如 SQL 数据库）。
+此方法有四个部分。 第一部分创建的一个 `Hotel` 对象数组，将用作我们上传到索引的输入数据。 为简单起见，此数据是硬编码的。 在自己的应用程序中，数据可能来自外部数据源（如 SQL 数据库）。
 
 第二部分创建包含文档的 `IndexBatch`。 创建 Batch 时，指定要应用到 Batch 的操作，在这种情况下应调用 `IndexBatch.Upload`。 然后，使用 `Documents.Index` 方法将 Batch 上传到 Azure 搜索索引。
 
@@ -317,7 +316,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 > 
 > 
 
-此方法的第三部分是处理索引重要错误情况的 catch 块。 如果 Azure 搜索服务无法为 Batch 中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生这种情况。 **强烈建议在代码中显式处理这种情况。** 可以延迟为失败的文档编制索引，然后重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
+此方法的第三部分是处理索引重要错误情况的 catch 块。 如果 Azure 搜索服务无法为 Batch 中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生这种情况。 **强烈建议在代码中显式处理这种情况。** 可以延迟为失败的文档编制索引，并重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
 
 > [!NOTE]
 > 可以使用 `FindFailedActionsToRetry` 方法来构造一个新的批处理，其中仅包含上次调用 `Index` 时失败的操作。 在[此处](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception#Microsoft_Azure_Search_IndexBatchException_FindFailedActionsToRetry_Microsoft_Azure_Search_Models_IndexBatch_System_String_)对该方法进行了说明，并且在 [StackOverflow](http://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) 上有如何正确使用它的讨论。
@@ -392,7 +391,7 @@ public partial class Hotel
 
 要注意的第二个问题是属性，如修饰每个公共属性的 `IsFilterable`、`IsSearchable`、`Key` 和 `Analyzer`。 这些属性直接映射到 [Azure 搜索索引的相应属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。 `FieldBuilder` 类使用这些属性构造索引的字段定义。
 
-有关 `Hotel` 类的第三个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在相似的类型映射。[Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会为你处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
+有关 `Hotel` 类的第三个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在相似的类型映射。[Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
 
 使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，我们会在下一节中对此进行介绍。
 
@@ -405,7 +404,7 @@ public partial class Hotel
 
 设计自己的模型类以映射到 Azure 搜索索引时，建议将值类型的属性（如 `bool` 和 `int`）声明为可以为 null（例如，`bool?` 而不是 `bool`）。 如果使用不可为 null 属性，必须 **保证** 索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索服务都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时将获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
@@ -414,7 +413,7 @@ public partial class Hotel
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>使用 JSON.NET 的自定义序列
-SDK 使用 JSON.NET 对文档进行序列化和反序列化。 必要时可以通过定义自己的 `JsonConverter` 或 `IContractResolver` 来自定义序列化和反序列化（有关详细信息，请参阅 [JSON.NET 文档](http://www.newtonsoft.com/json/help/html/Introduction.htm)）。 当你想要使应用程序中的现有模型类适用于 Azure 搜索和其他更高级的方案时，这可能非常有用。 例如，使用自定义序列，你可以：
+SDK 使用 JSON.NET 对文档进行序列化和反序列化。 必要时可以通过定义自己的 `JsonConverter` 或 `IContractResolver` 来自定义序列化和反序列化（有关详细信息，请参阅 [JSON.NET 文档](http://www.newtonsoft.com/json/help/html/Introduction.htm)）。 想要使应用程序中的现有模型类适用于 Azure 搜索和其他更高级的方案时，这可能非常有用。 例如，使用自定义序列，可以：
 
 * 包含或排除模型类的某些属性作为文档字段存储。
 * 在代码中的属性名称与索引中的字段名称之间进行映射。
@@ -588,4 +587,3 @@ WriteDocuments(results);
 * 通过[视频和其他示例以及教程](search-video-demo-tutorial-list.md)加深了解。
 * 查看[命名约定](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)，了解命名各种对象的规则。
 * 查看 Azure 搜索中[受支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
-

@@ -14,20 +14,17 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: a4d9394983539da52105bda6cf06273205f8b0ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
-
+ms.openlocfilehash: c85b8f8434d1e837ac96ac63b9b37f990677ed6e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C：将登录添加到 Node.js Web 应用
 
 **Passport** 是 Node.js 的身份验证中间件。 Passport 极其灵活且采用模块化结构，可以在不造成干扰的情况下安装在任何基于 Express 的应用程序或 Resitify Web 应用程序中。 一套综合性策略支持使用用户名和密码、Facebook、Twitter 等进行身份验证。
 
-我们针对 Azure Active Directory (Azure AD) 开发了一个策略。 你需要安装此模块，然后添加 Azure AD `passport-azure-ad` 插件。
+我们针对 Azure Active Directory (Azure AD) 开发了一个策略。 需要安装此模块，然后添加 Azure AD `passport-azure-ad` 插件。
 
 若要实现此目的，需要：
 
@@ -48,7 +45,7 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="create-an-application"></a>创建应用程序
 
-接下来，需要在 B2C 目录中创建应用。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 客户端应用与 Web API 构成一个逻辑应用，因此将由单个**应用程序 ID** 表示。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
+接下来，需要在 B2C 目录中创建应用。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 客户端应用与 Web API 构成一个逻辑应用，因此由单个**应用程序 ID** 表示。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
 
 - 在应用程序中包含一个 **Web 应用**/**Web API**
 - 在“回复 URL”中输入 `http://localhost:3000/auth/openid/return`。 它是此代码示例的默认 URL。
@@ -92,12 +89,12 @@ ms.lasthandoff: 04/19/2017
 
 - `npm install passport-azure-ad`
 
-这将安装 `passport-azure-ad` 所依赖的库。
+这会安装 `passport-azure-ad` 所依赖的库。
 
 ## <a name="set-up-your-app-to-use-the-passport-nodejs-strategy"></a>将应用设置为使用 Passport-Node.js 策略
-将 Express 中间件配置为使用 OpenID Connect 身份验证协议。 Passport 将用于发出登录和注销请求、管理用户会话、获取有关用户的信息，等等。
+将 Express 中间件配置为使用 OpenID Connect 身份验证协议。 Passport 用于发出登录和注销请求、管理用户会话、获取有关用户的信息，等等。
 
-打开位于项目根目录中的 `config.js` 文件，然后在 `exports.creds` 节中输入应用的配置值。
+打开位于项目根目录中的 `config.js` 文件，并在 `exports.creds` 节中输入应用的配置值。
 - `clientID`：在注册门户中为应用分配的**应用程序 ID**。
 - `returnURL`：在门户中输入的**重定向 URI**。
 - `tenantName`：应用的租户名称，例如 **contoso.onmicrosoft.com**。
@@ -154,10 +151,10 @@ passport.use(new OIDCStrategy({
   }
 ));
 ```
-Passport 对所有策略都使用类似的模式（Twitter 和 Facebook 也不例外）。 所有策略编写器都遵循该模式。 查看该策略即可发现，你为其传递了一个包含令牌的 `function()`，以及一个用作参数的 `done`。 策略在完成所有工作之后将会返回。 存储用户和令牌，这样就不需要再次请求。
+Passport 对所有策略都使用类似的模式（Twitter 和 Facebook 也不例外）。 所有策略编写器都遵循该模式。 查看该策略即可发现，为其传递了一个包含令牌的 `function()`，以及一个用作参数的 `done`。 策略在完成所有工作之后会返回。 存储用户和令牌，这样就不需要再次请求。
 
 > [!IMPORTANT]
-上面的代码会接受经过服务器身份验证的所有用户。 这是自动注册。 使用生产服务器时，如果用户未完成你所设置的注册过程，你不会允许系统接受该用户。 通常可以在消费类应用中看到这种模式。 这样你就可以使用 Facebook 来注册，但此后你必须按照要求填写其他信息。 如果应用程序不是示例应用程序，我们就可以从返回的令牌对象提取电子邮件地址，然后要求用户填写其他信息。 由于这是测试服务器，因此，我们直接将用户添加到内存中的数据库。
+上面的代码会接受经过服务器身份验证的所有用户。 这是自动注册。 使用生产服务器时，如果用户未完成你所设置的注册过程，不会允许系统接受该用户。 通常可以在消费类应用中看到这种模式。 这样便可以使用 Facebook 来注册，但此后你必须按照要求填写其他信息。 如果应用程序不是示例应用程序，我们就可以从返回的令牌对象提取电子邮件地址，并要求用户填写其他信息。 由于这是测试服务器，因此，我们直接将用户添加到内存中的数据库。
 
 根据 Passport 的要求，添加用于跟踪已登录用户的方法。 其中包括将用户信息序列化和反序列化：
 
@@ -270,7 +267,7 @@ app.post('/auth/openid/return',
 
 ## <a name="use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>使用 Passport 向 Azure AD 发出登录和注销请求
 
-现在，应用已正确配置为使用 OpenID Connect 身份验证协议与 v2.0 终结点通信。 `passport-azure-ad` 已处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的细节。 你要做的就是为用户提供登录和注销方式，以及收集有关已登录用户的其他信息。
+现在，应用已正确配置为使用 OpenID Connect 身份验证协议与 v2.0 终结点通信。 `passport-azure-ad` 已处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的细节。 要做的就是为用户提供登录和注销方式，以及收集有关已登录用户的其他信息。
 
 首先，向 `app.js` 文件添加默认方法、登录方法、帐户方法和注销方法：
 
@@ -335,7 +332,7 @@ app.listen(3000);
 
 ## <a name="create-the-views-and-routes-in-express-to-call-your-policies"></a>在 Express 中创建调用策略所需的视图和路由
 
-`app.js` 现已完成。 你只需添加路由和视图，以便调用登录和注册策略。 这些策略也会处理你所创建的 `/logout` 和 `/login` 路由。
+`app.js` 现已完成。 只需添加路由和视图，以便调用登录和注册策略。 这些策略也会处理你所创建的 `/logout` 和 `/login` 路由。
 
 在根目录下创建 `/routes/index.js` 路由。
 
@@ -365,7 +362,7 @@ exports.list = function(req, res){
 
 这些简单的路由会将请求一路传递到视图。 请求中包括用户（如果存在）。
 
-在根目录下创建 `/views/index.ejs` 视图。 这是一个简单的页面，用于调用登录和注销策略。 也可将其用于获取帐户信息。 请注意，在请求中传递用户时，可以使用条件性的 `if (!user)`，提供用户已登录的证据。
+在根目录下创建 `/views/index.ejs` 视图。 这是一个简单的页面，用于调用登录和注销策略。也可将其用于获取帐户信息。 请注意，在请求中传递用户时，可以使用条件性的 `if (!user)`，提供用户已登录的证据。
 
 ```JavaScript
 <% if (!user) { %>
@@ -399,7 +396,7 @@ exports.list = function(req, res){
 <% } %>
 ```
 
-你现在可以生成并运行应用。
+现在可以生成并运行应用。
 
 运行 `node app.js` 并导航到 `http://localhost:3000`
 
@@ -412,7 +409,7 @@ exports.list = function(req, res){
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
 
-现在，你可以转到更高级的主题。 可以尝试：
+现在，可以转到更高级的主题。 可以尝试：
 
 [在 Node.js 中使用 B2C 模型确保 Web API 的安全](active-directory-b2c-devquickstarts-api-node.md)
 
@@ -426,4 +423,3 @@ You can now move on to more advanced B2C topics. You might try:
 [Customizing the your B2C App's UX >>]()
 
 -->
-

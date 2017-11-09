@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: d42045b1c354b7bd5f9299181aefd6d98fda382b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: afe5dcab2beca2c6bf3d116adf249fc9717eeb09
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/04/2017
 ---
-
 # <a name="iot-hub-documentation"></a>IoT 中心文档 
 
 了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档可帮助你在 IoT 设备与解决方案后端之间部署可靠的双向通信。 
@@ -50,7 +48,7 @@ ms.lasthandoff: 06/07/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="/media/common/i_video.svg" alt="" />
+                            <img src="media/common/i_video.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -68,7 +66,7 @@ ms.lasthandoff: 06/07/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="/media/common/i_get-started.svg" alt="" />
+                            <img src="media/common/i_get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -86,7 +84,7 @@ ms.lasthandoff: 06/07/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="/media/common/i_get-started.svg" alt="" />
+                            <img src="media/common/i_get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -104,7 +102,7 @@ ms.lasthandoff: 06/07/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="/media/common/i_road-map.svg" alt="" />
+                            <img src="media/common/i_road-map.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -138,13 +136,26 @@ ms.lasthandoff: 06/07/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
+                        <h3>代码示例</h3>
+                        <p><a href="https://azure.microsoft.com/resources/samples/?service=iot-hub">代码示例</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p>
                         <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p>
                         <p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C 设备 SDK</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java（服务）</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p>
-                        <p><a href="http://azure.github.io/azure-iot-sdk-node/">Node.js SDK</a></p>
+                        <p><a href="/javascript/api/azure-iot-device/">Node.js（设备）</a></p>
+                        <p><a href="/javascript/api/azure-iothub">Node.js（服务）</a></p>
                         <p><a href="http://azure.github.io/iot-edge/">Azure IoT Edge</a></p>
                     </div>
                 </div>
@@ -168,4 +179,3 @@ ms.lasthandoff: 06/07/2017
         </div>
     </li>
 </ul>
-

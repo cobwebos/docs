@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 91588910334859c1ea77186674d5bfb31b311b36
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: 2124dadd1fc6b5d57250c09d31155a4b421fac26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-10"></a>通过 Azure CLI 1.0 使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
@@ -35,7 +33,7 @@ ms.lasthandoff: 05/26/2017
 
 本文使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 1.0。
 
-本文将引导你完成当前可用于数据包捕获的不同管理任务。
+本文将引导完成当前可用于数据包捕获的不同管理任务。
 
 - [**启动数据包捕获**](#start-a-packet-capture)
 - [**停止数据包捕获**](#stop-a-packet-capture)
@@ -225,4 +223,3 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 访问[查看“IP 流验证”](network-watcher-check-ip-flow-verify-portal.md)，了解是否允许某些流量传入和传出 VM
 
 <!-- Image references -->
-

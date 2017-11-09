@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 98ed23b8031c56ba642427e817e48a4e7a5830fc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户创建 Windows 虚拟机
 
 可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 本快速入门介绍了如何创建虚拟机并在 VM 上安装 webserver。
@@ -48,11 +46,11 @@ ms.lasthandoff: 09/01/2017
 
     ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-5. 在“设置”下保留默认值，然后单击“确定”。 
+5. 在“设置”下，保留默认值，然后单击“确定”。 
 
 6. 在摘要页上，单击“确定”以开始虚拟机部署。
 
-7. VM 将固定到 Azure 门户仪表板。 完成部署后，VM 摘要会自动打开。
+7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
 
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
@@ -108,4 +106,3 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)
-

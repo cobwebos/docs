@@ -1,6 +1,6 @@
 ---
 title: "在 Service Fabric 中管理多个环境 | Microsoft 文档"
-description: "Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。 在某些情况下，你需要以不同的方式针对各种环境配置你的应用程序。 本文介绍如何为每个环境定义不同的应用程序参数。"
+description: "Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。 在某些情况下，需要以不同的方式针对各种环境配置应用程序。 本文介绍如何为每个环境定义不同的应用程序参数。"
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,15 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: mikkelhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: eaf1daf8d9f973fe82ba9e82c60a2a82f2681786
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 671cc9b0f7b7b37fcf5b052f7e34bc98e66b2838
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-application-parameters-for-multiple-environments"></a>管理多个环境的应用程序参数
-你可以在任何位置，使用任意数量的计算机（从一台到数千台）来创建 Service Fabric 群集。 尽管无需针对各种环境进行修改即可运行应用程序二进制文件，但通常会根据所要部署的计算机数目，以不同的方式配置应用程序。
+可以在任何位置，使用任意数量的计算机（从一台到数千台）来创建 Service Fabric 群集。 尽管无需针对各种环境进行修改即可运行应用程序二进制文件，但通常会根据所要部署的计算机数目，以不同的方式配置应用程序。
 
 举个简单的例子，假设某个无状态服务有 `InstanceCount` 参数。 在 Azure 中运行应用程序时，通常要将此参数设置为特殊值 "-1"。 此配置可以确保服务在群集中的每个节点上运行（或者，如果设置了放置约束，则在节点类型中的每个节点上运行）。 但是，此配置并不适用于单计算机群集，因为不能有多个进程在单计算机的同一终结点上侦听。 在这种情况下，通常会将 `InstanceCount` 设置为 "1"。
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 06/09/2017
 此配置问题的解决方法是使用一组参数化默认服务和应用程序参数文件，其中填充了给定环境的参数值。 默认服务和应用程序参数在应用程序和服务清单中进行配置。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 ### <a name="default-services"></a>默认服务
-Service Fabric 应用程序由服务实例的集合组成。 尽管你可以先创建一个空应用程序，然后动态创建所有服务实例，但是，大多数应用程序都有一套核心服务，这些服务始终应该在实例化应用程序时创建。 这些服务称为“默认服务”。 它们在应用程序清单中指定。方括号中包含每个环境配置的占位符：
+Service Fabric 应用程序由服务实例的集合组成。 尽管可以先创建一个空应用程序，然后动态创建所有服务实例，但是，大多数应用程序都有一套核心服务，这些服务始终应该在实例化应用程序时创建。 这些服务称为“默认服务”。 它们在应用程序清单中指定。方括号中包含每个环境配置的占位符：
 
 ```xml
   <DefaultServices>
@@ -90,7 +89,7 @@ DefaultValue 属性指定当给定的环境缺少更具体的参数时所要使�
      </ConfigOverride>
   </ConfigOverrides>
 ```
-然后可根据上面所示，按环境配置此参数。 为此，可以在应用程序清单的 parameters 节中声明该参数，并在应用程序参数文件中指定特定于环境的值。
+然后，可以按环境配置此参数，如上所示。 为此，可以在应用程序清单的 parameters 节中声明该参数，并在应用程序参数文件中指定特定于环境的值。
 
 > [!NOTE]
 > 对于服务配置设置，可在三个位置设置键的值：服务配置包、应用程序清单和应用程序参数文件。 Service Fabric 始终先从应用程序参数文件（如果已指定）进行选择，再从应用程序清单选择，最后从配置包选择。
@@ -98,7 +97,7 @@ DefaultValue 属性指定当给定的环境缺少更具体的参数时所要使�
 > 
 
 ### <a name="setting-and-using-environment-variables"></a>设置并使用环境变量 
-可以在 ServiceManifest.xml 文件中指定和设置环境变量，然后在每个实例的 ApplicationManifest.xml 文件中重写这些环境变量。
+可以在 ServiceManifest.xml 文件中指定和设置环境变量，并在每个实例的 ApplicationManifest.xml 文件中重写这些环境变量。
 下面的示例演示了两个环境变量：一个具有值集合，另一个被重写。 可使用和配置重写相同的方式，使用应用程序参数设置环境变量。
 
 ```xml
@@ -145,7 +144,7 @@ DefaultValue 属性指定当给定的环境缺少更具体的参数时所要使�
 ```
 
 ### <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
-Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表，其中粗体的是将在服务中使用的环境变量，其他环境变量由 Service Fabric 运行时使用。 
+Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表，其中粗体的是会在服务中使用的环境变量，其他环境变量由 Service Fabric 运行时使用。 
 
 * Fabric_ApplicationHostId
 * Fabric_ApplicationHostType
@@ -227,4 +226,3 @@ Service Fabric 应用程序项目可以包含一个或多个应用程序参数�
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]:./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
-

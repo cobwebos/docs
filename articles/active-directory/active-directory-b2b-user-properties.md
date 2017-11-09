@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 6e49cb202ed03bf50fb9ca34d34924cda434829c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
 Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType = Guest 的用户。 此来宾用户通常来自某个合作伙伴组织，默认情况下，对邀请方的目录拥有有限的特权。
@@ -107,4 +105,3 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
-

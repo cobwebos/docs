@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a635b214fcc9b37ac426df227420b643e2a02cc7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 搜索服务
 > [!div class="op_single_selector"]
@@ -44,7 +43,7 @@ ms.lasthandoff: 04/27/2017
 
 或者，可以[使用服务主体采用非交互方式登录](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
-如果你有多个 Azure 订阅，则需要设置你的 Azure 订阅。 若要查看当前订阅的列表，请运行以下命令。
+如果有多个 Azure 订阅，则需要设置 Azure 订阅。 若要查看当前订阅的列表，请运行以下命令。
 
     Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
 
@@ -131,12 +130,11 @@ ms.lasthandoff: 04/27/2017
     $resource | Remove-AzureRmResource
 
 ## <a name="next-steps"></a>后续步骤
-至此，已创建服务，接下来你可以执行下面的步骤：生成[索引](search-what-is-an-index.md)，[查询索引](search-query-overview.md)，最后创建和管理你自己的使用 Azure 搜索的搜索应用程序。
+至此，已创建服务，接下来可以执行下面的步骤：生成[索引](search-what-is-an-index.md)，[查询索引](search-query-overview.md)，最后创建和管理自己的使用 Azure 搜索的搜索应用程序。
 
 * [使用 Azure 门户创建 Azure 搜索索引](search-create-index-portal.md)
 * [使用搜索资源管理器在 Azure 门户中查询 Azure 搜索索引](search-explorer.md)
 * [设置索引器以从其他服务加载数据](search-indexer-overview.md)
 * [如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)
 * [分析 Azure 搜索流量](search-traffic-analytics.md)
-
 

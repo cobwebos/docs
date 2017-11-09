@@ -14,27 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 35678142550f9f887562f311a5e7d9516495cf53
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 96925f251cf4984a11516a962740e19a7b9589dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
 了解 Azure 顾问及其主要功能，获取常见问题的答案。
 
 ## <a name="what-is-advisor"></a>顾问是什么？
-顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，然后推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
+顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
 
 使用顾问可以：
 * 获取主动的、可操作的以及个性化的最佳做法建议。 
 * 提高资源的性能、安全性和高可用性，同时确定机会减少总体 Azure 支出。
 * 通过提议的内联操作获取建议。
 
-可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，选择“浏览”，然后滚动到“Azure 顾问”。 顾问仪表板显示针对所选订阅的个性化建议。 
+可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，选择“浏览”，并滚动到“Azure 顾问”。 顾问仪表板显示针对所选订阅的个性化建议。 
 
 建议分为四类： 
 
@@ -60,9 +58,9 @@ ms.lasthandoff: 03/31/2017
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-do-i-access-advisor"></a>如何访问顾问？
-可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，选择“浏览”，然后滚动到“Azure 顾问”。 顾问仪表板显示针对所选订阅的个性化建议。 
+可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，选择“浏览”，并滚动到“Azure 顾问”。 顾问仪表板显示针对所选订阅的个性化建议。 
 
-还可通过虚拟机资源边栏选项卡查看顾问建议。 选择虚拟机，然后滚动到菜单中的顾问建议。 
+还可通过虚拟机资源边栏选项卡查看顾问建议。 选择虚拟机，并滚动到菜单中的顾问建议。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>需要哪些权限才能访问顾问？
 
@@ -89,4 +87,3 @@ ms.lasthandoff: 03/31/2017
 * [顾问安全性建议](advisor-security-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问成本建议](advisor-cost-recommendations.md)
-

@@ -14,14 +14,12 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
-ms.openlocfilehash: 31b797361fca0c92db228f4150a6bff7e38e2b22
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/29/2017
-
+ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="approvals-preview"></a>审批（预览版）
 
 ## <a name="overview"></a>概述
@@ -117,7 +115,7 @@ ms.lasthandoff: 04/29/2017
 
 注意：可以一次性选择多个用户或组。
 
-选择的内容将显示在所选审批者列表中，如下所示：
+选择的内容会显示在所选审批者列表中，如下所示：
 
 ![](media/azure-ad-pim-approval-workflow/image019.png)
 
@@ -152,7 +150,7 @@ ms.lasthandoff: 04/29/2017
 
 ### <a name="provide-justification-for-my-approvalrejection"></a>提供批准/拒绝的理由
 
-这将打开新的边栏选项卡，以便一次性批准或拒绝多个请求。 输入决策理由，然后在底部或边栏选项卡上单击“批准”或“拒绝”：
+这会打开新边栏选项卡，以便一次性批准或拒绝多个请求。 输入决策理由，并在底部或边栏选项卡上单击“批准”或“拒绝”：
 
 ![](media/azure-ad-pim-approval-workflow/image029.png)
 
@@ -166,7 +164,7 @@ ms.lasthandoff: 04/29/2017
 
 ![](media/azure-ad-pim-approval-workflow/image033.png)
 
-如果特权角色要求进行多重身份验证，系统将提示首先完成该任务：
+如果特权角色要求进行多重身份验证，系统会提示首先完成该任务：
 
 ![](media/azure-ad-pim-approval-workflow/image035.png)
 
@@ -194,5 +192,4 @@ ms.lasthandoff: 04/29/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-你的反馈对我们非常重要。 请随意在此处与我们分享评论或反馈！
-
+反馈对我们非常重要。 请随意在此处与我们分享评论或反馈！

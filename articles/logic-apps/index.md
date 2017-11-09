@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 7f9790a52365b76e9d3dd1fdf1a17ab2aaaf8b5a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: ff3f9ba6c225294e7570c5204701dd2f6b927318
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="logic-apps-documentation"></a>逻辑应用文档
 
 了解如何开发逻辑应用，用于简化和集成云中的可缩放工作流。 教程、模板和 API 参考可帮助你设计及部署跨本地和云的自动化业务工作流。
@@ -172,6 +170,5 @@ ms.lasthandoff: 06/02/2017
         </div>
     </li>
 </ul>
-
 
 

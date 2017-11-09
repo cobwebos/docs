@@ -8,21 +8,19 @@ editor: jasonwhowell
 manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/12/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 2f40da41bcfda7e35f6fc63ead5d055246ab390c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: c9fe0a892bd5e81d2b33987b6ca55ec753550a01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何将应用程序连接到 Azure Database for MySQL
-本文档列出了 Azure Database for MySQL 支持的连接字符串，以及模板和示例。 你可能会在连接字符串中使用不同的参数和设置。
+本主题列出了 Azure Database for MySQL 支持的连接字符串以及模板和示例。 你可能会在连接字符串中使用不同的参数和设置。
 
 - 若要获取证书，请参阅[如何配置 SSL](./howto-configure-ssl.md)。
 - {your_host} = <servername>.mysql.database.azure.com
-- {your_user}@{servername} = userID 格式是用于身份验证的正确格式。  仅使用 userID 将导致身份验证失败。
+- {your_user}@{servername} = userID 格式是用于身份验证的正确格式。  如果只使用 userID，身份验证将失败。
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
@@ -66,10 +64,9 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>从 Azure 门户获取连接字符串详细信息
-在 [Azure 门户](https://portal.azure.com)中，转到 Azure Database for MySQL 服务器，然后单击“连接字符串”以获取你的实例的字符串列表：![Azure 门户中的连接字符串窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
+在 [Azure 门户](https://portal.azure.com)中，转到 Azure Database for MySQL 服务器，然后单击“连接字符串”以获取实例的字符串列表：![Azure 门户中的连接字符串窗格](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 修改这些示例，以使用你自己的参数，例如数据库名称、密码，等等。 然后，可以在代码和应用程序中使用此字符串连接到服务器。
+字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 修改这些示例以使用自己的参数，例如数据库名称、密码等。 然后，可以在代码和应用程序中使用此字符串连接到服务器。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关连接库的详细信息，请参阅[概念 - 连接库](./concepts-connection-libraries.md)。
-

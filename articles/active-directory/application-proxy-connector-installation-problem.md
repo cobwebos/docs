@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 3dabb8adb67345c56750bb88373f5f740aa19036
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 91b3f6f3c8339647f568a509e9efd8e1fffb13dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
 Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使用出站连接来建立从云可用终结点到内部域的连接性。
@@ -39,7 +37,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 **目的︰**验证连接器计算机是否可以连接到 AAD 应用程序代理注册终结点以及 Microsoft 登录页。
 
-1.  打开浏览器，然后转到以下网页：<https://aadap-portcheck.connectorporttest.msappproxy.net>，验证与美国中部和美国东部数据中心（使用端口 9090 和 9091）的连接是否正常。
+1.  打开浏览器，并转到以下网页：<https://aadap-portcheck.connectorporttest.msappproxy.net>，验证与美国中部和美国东部数据中心（使用端口 9090 和 9091）的连接是否正常。
 
 2.  如果任何端口都没有成功连接（即没有绿色复选标记），则验证防火墙或后端代理是否已正确定义 \*.msappproxy.net（使用端口 9090 和 9091）。
 
@@ -68,8 +66,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 连接到 <https://login.microsoftonline.com> 并使用相同的凭据。 确保登录成功。 可以通过转到“Azure Active Directory” -&gt;“用户和组” -&gt;“所有用户”来检查用户角色。 
 
-选择用户帐户，然后在生成的菜单中选择“目录角色”。 验证所选角色是否为“全局管理员”。 如果按这些步骤操作无法访问任何页，则不是全局管理员。
+选择用户帐户，并在生成的菜单中选择“目录角色”。 验证所选角色是否为“全局管理员”。 如果按这些步骤操作无法访问任何页，则不是全局管理员。
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
-

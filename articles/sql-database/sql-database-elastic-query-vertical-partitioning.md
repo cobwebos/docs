@@ -8,20 +8,17 @@ author: torsteng
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
-ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/22/2017
-
-
-
+ms.openlocfilehash: d57f45066387f451463a38d76d3fe6adab77e41f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 ![跨不同数据库中的表进行查询][1]
@@ -121,7 +118,7 @@ ms.lasthandoff: 02/22/2017
 ### <a name="remarks"></a>备注
 弹性查询将扩展现有的外部表语法以定义使用 RDBMS 类型的外部数据源的外部表。 垂直分区的外部表定义涉及以下几个方面： 
 
-* **架构**：外部表 DDL 定义了你的查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。 
+* **架构**：外部表 DDL 定义了查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。 
 * **远程数据库引用**：外部表 DDL 引用外部数据源。 外部数据源指定存储实际表数据的远程数据库的逻辑服务器名称和数据库名称。 
 
 使用上一节中所述的外部数据源时，用于创建外部表的语法如下： 
@@ -137,7 +134,7 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 **CREATE/DROP EXTERNAL TABLE 的权限**：外部表 DDL 需要 ALTER ANY EXTERNAL DATA SOURCE 权限，在引用基础数据源时也需要该权限。  
 
 ## <a name="security-considerations"></a>安全注意事项
-有权访问外部表的用户在使用外部数据源定义中提供的凭据时自动获得对基础远程表的访问权。 你应小心管理对外部表的访问权以避免通过外部数据源的凭据意外地提升权限。 可以使用常规 SQL 权限来授予或撤消对外部表的访问权，就像它是常规表一样。  
+有权访问外部表的用户在使用外部数据源定义中提供的凭据时自动获得对基础远程表的访问权。 应小心管理对外部表的访问权以避免通过外部数据源的凭据意外地提升权限。 可以使用常规 SQL 权限来授予或撤消对外部表的访问权，就像它是常规表一样。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>示例：正在查询垂直分区数据库
 以下查询执行订单和订单行的两个本地表和客户的远程表之间的三向联接。 这是弹性查询的引用数据用例的示例： 
@@ -176,7 +173,7 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 
 ## <a name="connectivity-for-tools"></a>工具的连接
-可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到 SQL 数据库服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后可以引用弹性查询数据库及其外部表，就如同使用工具连接的任何其他 SQL Server 数据库一样。 
+可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到 SQL 数据库服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库及其外部表，就像使用工具连接到其他任何 SQL Server 数据库一样。 
 
 ## <a name="best-practices"></a>最佳实践
 * 确保已通过在 SQL 数据库防火墙配置中启用对 Azure 服务的访问授予弹性查询终结点数据库访问远程数据库的权限。 另请确保外部数据源定义中提供的凭据可以成功登录到远程数据库并有权访问远程表。  
@@ -196,4 +193,3 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 
 <!--anchors-->
-

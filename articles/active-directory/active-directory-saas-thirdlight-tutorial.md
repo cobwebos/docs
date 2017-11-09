@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: ee7710cfea3a13907c0cc940a98c875bf83607a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>教程：Azure Active Directory 与 ThirdLight 集成
 
@@ -62,7 +61,7 @@ ms.lasthandoff: 06/20/2017
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/20/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ThirdLight 测试用户](#creating-a-thirdlight-test-user)** - 在 ThirdLight 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 ThirdLight 测试用户](#creating-a-thirdlight-test-user)** - 在 ThirdLight 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/20/2017
     > [!NOTE] 
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [ThirdLight 客户端支持团队](https://www.thirdlight.com/support)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-thirdlight-tutorial/tutorial_thirdlight_certificate.png) 
 
@@ -128,7 +127,7 @@ ms.lasthandoff: 06/20/2017
 
 6. 在另一个 Web 浏览器窗口中，以管理员身份登录 ThirdLight 公司站点。
 
-7. 转到“配置”\>“系统管理”，然后单击“SAML2”。
+7. 转到“配置”\>“系统管理”，并单击“SAML2”。
    
     ![系统管理](./media/active-directory-saas-thirdlight-tutorial/ic805843.png "Administration")
 
@@ -208,7 +207,7 @@ ms.lasthandoff: 06/20/2017
 
 **若要将 Britta Simon 分配到 ThirdLight，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -255,5 +254,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-thirdlight-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-thirdlight-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-thirdlight-tutorial/tutorial_general_203.png
-
 

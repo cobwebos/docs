@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: pratshar
+ms.openlocfilehash: e53f60979e01a0eabe118d3ae6457a61bd4b0ded
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: a1e5461ef2188a42a3edd6cc35827874ddd6e3f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server
 
@@ -105,7 +104,7 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 
 下面是需要执行的操作：
 
-1. 将脚本导入到你的 Azure 自动化帐户中。 这包括用于在 [Resource Manager 虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移的脚本。
+1. 将脚本导入到 Azure 自动化帐户中。 这包括用于在 [Resource Manager 虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移的脚本。
 
     [![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
@@ -159,7 +158,7 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 1. 创建可用性组侦听器，或更新现有的侦听器，以包含异步副本虚拟机。
 1. 确保应用程序场是使用侦听器设置的。 如果它是使用数据库服务器名称设置的，请将其更新为使用侦听器，以便不需要在故障转移后重新配置该场。
 
-对于使用分布式事务的应用程序，我们建议你使用 [VMware/物理服务器站点到站点复制](site-recovery-vmware-to-vmware.md)部署 Site Recovery。
+对于使用分布式事务的应用程序，我们建议使用 [VMware/物理服务器站点到站点复制](site-recovery-vmware-to-vmware.md)部署 Site Recovery。
 
 ### <a name="recovery-plan-considerations"></a>恢复计划注意事项
 1. 将此示例脚本添加到主站点和辅助站点上的 VMM 库。
@@ -199,8 +198,7 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 
 ### <a name="failback-considerations"></a>故障回复注意事项
 
-对于 SQL Server Standard 群集，计划外故障转移后的故障回复需要从镜像实例 SQL Server 备份并还原到原始群集，然后重新建立镜像。
+对于 SQL Server Standard 群集，计划外故障转移后的故障回复需要从镜像实例 SQL Server 备份并还原到原始群集，并重新建立镜像。
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](site-recovery-components.md) Site Recovery 体系结构。
-

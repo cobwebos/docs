@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 03/02/2017
 ms.author: kevin;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: a5befbf1dc1862b3b0803eb4940341d246ec036c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/14/2017
-
-
+ms.openlocfilehash: 3197948e32fe5c95b111fe5495a0e5f85966a24b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure 机器学习分析数据
 > [!div class="op_single_selector"]
@@ -40,7 +38,7 @@ ms.lasthandoff: 03/14/2017
 > 
 
 ## <a name="prerequisites"></a>先决条件
-若要逐步完成本教程，你需要：
+要逐步完成本教程，需要：
 
 * 随 AdventureWorksDW 示例数据预先加载的 SQL 数据仓库。 若要完成此预配，请参阅[创建 SQL 数据仓库][Create a SQL Data Warehouse]，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[手动加载示例数据][load sample data manually]。
 
@@ -77,7 +75,7 @@ FROM [dbo].[vTargetMail]
 单击试验画布下面的“运行”以运行试验。
 ![运行试验][1]
 
-试验成功运行完毕后，单击读取器模块底部的输出端口，然后选择“可视化”以查看导入的数据。
+试验成功运行完毕后，单击读取器模块底部的输出端口，并选择“可视化”以查看导入的数据。
 ![查看导入的数据][3]
 
 ## <a name="2-clean-the-data"></a>2.清理数据
@@ -90,7 +88,7 @@ FROM [dbo].[vTargetMail]
    ![删除不需要的列][5]
 
 ## <a name="3-build-the-model"></a>3.生成模型
-我们将以 80-20 的比例拆分数据：80% 用于训练机器学习模型，20% 用于测试模型。 我们将使用“双类”算法处理此二元分类问题。
+我们以 80-20 的比例拆分数据：80% 用于训练机器学习模型，20% 用于测试模型。 我们将使用“双类”算法处理此二元分类问题。
 
 1. 将“拆分”模块拖放到画布中。
 2. 在“属性”窗格中，为“第一个输出集中的行部分”输入 0.8。
@@ -113,18 +111,18 @@ FROM [dbo].[vTargetMail]
 4. 将“评估模型”模块拖放到画布以比较两种算法。
 5. **运行** 试验。
    ![运行试验][10]
-6. 单击“评估模型”模块底部的输出端口，然后单击“可视化”。
+6. 单击“评估模型”模块底部的输出端口，并单击“可视化”。
    ![可视化评估结果][11]
 
-提供的度量值包括 ROC 曲线、精度和召回率示意图以及提升曲线。 查看这些度量值，我们可以看到第一个模型的执行效果优于第二个。 若要查看第一个模型的预测内容，请单击“评分模型”的输出端口，然后单击“可视化”。
+提供的度量值包括 ROC 曲线、精度和召回率示意图以及提升曲线。 查看这些度量值，我们可以看到第一个模型的执行效果优于第二个。 要查看第一个模型的预测内容，请单击“评分模型”的输出端口，并单击“可视化”。
 ![可视化评分结果][12]
 
-你将看到另外两个列已添加到测试数据集。
+会看到另外两个列已添加到测试数据集。
 
 * 评分概率：客户购买自行车的可能性。
 * 评分标签：模型执行的分类 – 自行车的购买者 (1) 或不是购买者 (0)。 标签的概率阈值设置为 50%，并可以调整。
 
-比较 BikeBuyer（实际）列和评分标签（预测），可以看到模型的执行效果。 在后面的步骤中，你可以使用此模型预测新的客户，并将其发布为 Web 服务，或将结果写回到 SQL 数据仓库。
+比较 BikeBuyer（实际）列和评分标签（预测），可以看到模型的执行效果。 在后面的步骤中，可以使用此模型预测新的客户，并将其发布为 Web 服务，或将结果写回到 SQL 数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
 若要深入了解如何构建预测性机器学习模型，请参阅 [Azure 上的机器学习简介][Introduction to Machine Learning on Azure]。
@@ -149,4 +147,3 @@ FROM [dbo].[vTargetMail]
 [Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [load sample data manually]: sql-data-warehouse-load-sample-databases.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-

@@ -14,19 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk 服务：版本图表
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Azure BizTalk 服务提供多个版本。 借助本文确定适合你的方案和业务需求的版本。
+Azure BizTalk 服务提供多个版本。 借助本文确定适合方案和业务需求的版本。
 
 ## <a name="compare-the-editions"></a>比较版本
 **免费(预览版)**
@@ -215,7 +213,7 @@ Azure BizTalk 服务提供多个版本。 借助本文确定适合你的方案�
 “单位”是 Azure BizTalk 服务部署的原子级别。 每个版本均附带一个具有不同的计算能力和内存的单元。 例如，基本单位具有比开发人员单位更多的计算，而标准单位具有比基本单位更多的计算，依此类推。 缩放 BizTalk 服务时，将按单位进行缩放。
 
 #### <a name="what-is-the-difference-between-biztalk-services-and-azure-biztalk-vm"></a>BizTalk 服务和 Azure BizTalk VM 之间的差别是什么？
-BizTalk 服务提供一个真正的“平台即服务”(PaaS) 体系结构，用于在云中生成集成解决方案。 使用 PaaS 模型，你可以将工作重心完全放在应用程序逻辑上，而将所有基础结构管理工作都留给 Microsoft 执行，包括：
+BizTalk 服务提供一个真正的“平台即服务”(PaaS) 体系结构，用于在云中生成集成解决方案。 使用 PaaS 模型，可以将工作重心完全放在应用程序逻辑上，而将所有基础结构管理工作都留给 Microsoft 执行，包括：
 
 * 无需管理或修补虚拟机。
 * Microsoft 确保可用性。
@@ -223,7 +221,7 @@ BizTalk 服务提供一个真正的“平台即服务”(PaaS) 体系结构，�
 
 Azure 虚拟机上的 BizTalk Server 提供基础结构即服务 (IaaS) 体系结构。 用户可以完全像本地环境一样创建虚拟机和配置它们，从而更轻松地在云中运行现有应用程序而不必进行代码更改。 使用 IaaS 时，仍由用户负责配置和管理虚拟机（例如，安装软件和操作系统修补程序）以及相应地设计应用程序以实现高可用性。
 
-如果你考虑生成新的集成解决方案以将基础结构管理工作减至最少，那么请使用 BizTalk 服务。 如果你希望快速迁移现有 BizTalk 解决方案或寻找按需环境以开发和测试 BizTalk Server 应用程序，那么请在 Azure 虚拟机中使用 BizTalk Server。
+如果考虑生成新的集成解决方案以将基础结构管理工作减至最少，那么请使用 BizTalk 服务。 如果希望快速迁移现有 BizTalk 解决方案或寻找按需环境以开发和测试 BizTalk Server 应用程序，那么请在 Azure 虚拟机中使用 BizTalk Server。
 
 #### <a name="what-is-the-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>BizTalk 适配器服务和混合连接之间的差别是什么？
 BizTalk 适配器服务由 Azure BizTalk 服务使用。 BizTalk 适配器服务使用 BizTalk 适配器包连接到本地业务线 (LOB) 系统。 使用混合连接可以轻松方便地将 Azure 应用程序（例如 Azure 应用服务中的 Web 应用功能和 Azure 移动服务）连接到本地资源。
@@ -256,5 +254,4 @@ BizTalk 适配器服务由 Azure BizTalk 服务使用。 BizTalk 适配器服务
 * [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-
 

@@ -8,17 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 10/20/2017
+ms.openlocfilehash: 759fa290cff94b04e29edd818b985b11267caab7
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: e746f28829063f8437ad408c4681f90aec6c0e0a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
-
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
-本主题列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。
+本文列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。
 
 ## <a name="client-interfaces"></a>客户端接口
 MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标准 ODBC 和 JDBC 的应用程序和工具配合使用。 适用于 ODBC 或 JDBC 的任何系统都可以使用 MySQL。
@@ -37,6 +35,7 @@ MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标�
 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Database for MySQL 概述](./overview.md)
-[Azure Database for MySQL 中的服务器概念](./concepts-servers.md)
+阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for MySQL：
+
+[PHP](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [Go](./connect-go.md)
 

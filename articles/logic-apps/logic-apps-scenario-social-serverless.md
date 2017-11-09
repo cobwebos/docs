@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
 ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建实时客户见解仪表板
 
@@ -34,7 +33,7 @@ Azure Serverless 工具功能强大，可以在云中快速生成和托管应用
 
 Functions 在云中提供无服务器计算。  在此方案中，我们将使用 Azure Functions 根据一系列预定义的关键字来标记客户的推文。
 
-整个解决方案可以[在 Visual Studio 中生成](logic-apps-deploy-from-vs.md)，然后[作为资源模板的一部分部署](logic-apps-create-deploy-template.md)。  [第 9 频道](http://aka.ms/logicappsdemo)也有此方案的视频演练。
+整个解决方案可以[在 Visual Studio 中生成](logic-apps-deploy-from-vs.md)，并[作为资源模板的一部分部署](logic-apps-create-deploy-template.md)。  [第 9 频道](http://aka.ms/logicappsdemo)也有此方案的视频演练。
 
 ## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>生成可以针对客户数据进行触发操作的逻辑应用
 
@@ -83,7 +82,7 @@ Functions 在云中提供无服务器计算。  在此方案中，我们将使�
 
 1. 以单击方式添加“新步骤”
 1. 选择 **Azure Functions** 连接器
-1. 选择从现有函数中进行选择，然后浏览到所创建的函数。
+1. 选择从现有函数中进行选择，并浏览到所创建的函数。
 1. 为“请求正文”递送“推文文本”
 
 ## <a name="running-and-monitoring-the-solution"></a>运行和监视解决方案

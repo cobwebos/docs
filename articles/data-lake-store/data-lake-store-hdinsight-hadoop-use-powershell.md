@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 7a7069adab5742a9dae2833c13a1db57337a41a0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 0e2e0d02677013252b0806558535fe970b5c50b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>使用 Azure PowerShell 创建具有 Data Lake Store 的 HDInsight 群集（作为其他存储）
 > [!div class="op_single_selector"]
@@ -51,7 +50,7 @@ ms.lasthandoff: 06/09/2017
 * 在此群集上运行作业
 
 ## <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+在开始阅读本教程前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
@@ -99,7 +98,7 @@ ms.lasthandoff: 06/09/2017
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    你应该看到如下输出：
+    应该看到如下输出：
 
         ...
         ProvisioningState           : Succeeded
@@ -131,7 +130,7 @@ ms.lasthandoff: 06/09/2017
 * 在 Azure Active Directory 中创建应用程序和服务主体
 
 ### <a name="create-a-self-signed-certificate"></a>创建自签名证书
-继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须创建一个目录（该证书将在其中创建），例如 **C:\mycertdir**。
+继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须创建一个目录（该证书会在其中创建），例如 **C:\mycertdir**。
 
 1. 在 PowerShell 窗口中，导航到安装 Windows SDK 的位置（通常为 `C:\Program Files (x86)\Windows Kits\10\bin\x86`），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥。 使用以下命令。
 
@@ -217,7 +216,7 @@ ms.lasthandoff: 06/09/2017
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Store
 配置 HDInsight 群集后，可在该群集上运行测试作业来测试该 HDInsight 群集是否可访问 Data Lake Store。 为此，我们会运行示例 Hive 作业，该作业会使用先前已上传至 Data Lake Store 的示例数据创建一个表。
 
-本节中，将以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行示例 Hive 查询。
+本节中，以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行示例 Hive 查询。
 
 * 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 * 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -231,7 +230,7 @@ ms.lasthandoff: 06/09/2017
         CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestore>.azuredatalakestore.net:443/';
         SELECT * FROM vehicles LIMIT 10;
 
-    你应该会看到与下面类似的输出：
+    应该会看到与下面类似的输出：
 
         1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
         1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
@@ -247,7 +246,7 @@ ms.lasthandoff: 06/09/2017
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Store
 配置 HDInsight 群集使用 Data Lake Store 后，可使用 HDFS shell 命令访问此存储。
 
-本节中，将以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行 HDFS 命令。
+本节中，以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行 HDFS 命令。
 
 * 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 * 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -262,11 +261,10 @@ ms.lasthandoff: 06/09/2017
     Found 1 items
     -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
 
-可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
+可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，并使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
 ## <a name="see-also"></a>另请参阅
 * [门户：创建 HDInsight 群集以使用 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
-

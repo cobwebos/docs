@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: 115a1937a4c88ba2b986a40c84b1b759ed5e03b5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-nsgs-classic-in-the-azure-cli"></a>如何在 Azure CLI 中创建 NSG（经典）
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -29,16 +28,16 @@ ms.lasthandoff: 03/21/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍经典部署模型。 你还可以[在资源管理器部署模型中创建 NSG](virtual-networks-create-nsg-arm-cli.md)。
+本文介绍经典部署模型。 还可以[在 Resource Manager 部署模型中创建 NSG](virtual-networks-create-nsg-arm-cli.md)。
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-下面的示例 Azure CLI 命令需要一个已经基于上述方案创建的简单环境。 如果你想要运行本文档中所显示的命令，首先通过[创建 VNet](virtual-networks-create-vnet-classic-cli.md) 构建测试环境。
+下面的示例 Azure CLI 命令需要一个已经基于上述方案创建的简单环境。 如果想要运行本文档中所显示的命令，首先通过[创建 VNet](virtual-networks-create-vnet-classic-cli.md) 构建测试环境。
 
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>如何为前端子网创建 NSG
 若要基于上述方案创建名为 **NSG-FrontEnd** 的 NSG，请执行下面的步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **`azure config mode`** 命令以切换到经典模式，如下所示。
    
         azure config mode asm
@@ -235,5 +234,4 @@ ms.lasthandoff: 03/21/2017
         info:    Looking up network configuration
         info:    Creating a network security group "NSG-BackEndX"
         info:    network nsg subnet add command OK
-
 

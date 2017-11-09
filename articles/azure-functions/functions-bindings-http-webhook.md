@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/26/2017
 ms.author: mahender
+ms.openlocfilehash: 3c3247592cbe2bc382d220264b0c646ee566b8a7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: cac0f437cee86aa933763e5133ac1a0e892ffb52
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP 和 webhook 绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -202,7 +201,7 @@ module.exports = function (context, req) {
 
 若要深入了解如何更新函数的 *host.json* 文件，请参阅[如何更新 Function App 文件](functions-reference.md#fileupdate)。 
 
-若要了解可在 *host.json* 文件中配置的其他属性，请参阅 [host.json 参考](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)。
+若要了解可在 *host.json* 文件中配置的其他属性，请参阅 [host.json 参考](functions-host-json.md)。
 
 
 <a name="keys"></a>
@@ -447,5 +446,4 @@ module.exports = function (context, data) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

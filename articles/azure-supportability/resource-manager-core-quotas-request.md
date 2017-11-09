@@ -7,14 +7,12 @@ ms.date: 1/18/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2373cf227cbed4f6657e31088b11dca5223ce5fe
 ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="resource-manager-core-quota-increase-requests"></a>Resource Manager 核心配额增加请求
 
 在区域级别和 SKU 系列级别，需要强制实施 Resource Manager 核心配额。
@@ -26,11 +24,11 @@ ms.lasthandoff: 07/06/2017
 > [!NOTE]
 > 了解如何在 Azure 门户中[创建支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)
 
-1. 在新的支持请求页上，将问题类型选择为“配额”，将配额类型选择为“内核”。
+1. 在“新建支持请求”页上，将问题类型选择为“配额”，将配额类型选择为“核心”。
 
     ![“配额基本信息”边栏选项卡](./media/resource-manager-core-quotas-request/Basics-blade.png)
 
-2. 将部署模型选择为“ Resource Manager ”并选择一个位置。
+2. 将部署模型选择为“资源管理器”并选择一个位置。
 
     ![“配额问题”边栏选项卡](./media/resource-manager-core-quotas-request/Problem-step.png)
 
@@ -44,4 +42,3 @@ ms.lasthandoff: 07/06/2017
 
 - 若要删除某行，请从 SKU 系列下拉列表中取消选中 SKU，或单击“x”丢弃图标。
 为每个 SKU 系列输入所需的配额后，在“问题步骤”页面上单击“下一步”，继续创建支持请求。
-

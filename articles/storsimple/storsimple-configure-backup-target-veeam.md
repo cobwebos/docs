@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
+ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 38cc3ae906f75e75c9e44ac7e4b7098935a56cf2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 
 ## <a name="overview"></a>概述
@@ -519,4 +517,3 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 - 详细了解如何[从备份集还原](storsimple-restore-from-backup-set-u2.md)。
 - 详细了解如何执行[设备故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。
-

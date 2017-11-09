@@ -6,6 +6,10 @@
 ## [添加缓存以提升性能](api-management-howto-cache.md)
 ## [常见问题](api-management-faq.md)
 # 如何
+## 设置 APIM 服务
+### [创建 APIM 实例](get-started-create-service-instance.md)
+### [升级和缩放](upgrade-and-scale.md)
+### [配置自定义域](configure-custom-domain.md)
 ## 开发 API
 ### [添加和发布 API 产品](api-management-howto-add-products.md)
 ### [添加操作](api-management-howto-add-operations.md)
@@ -46,12 +50,13 @@
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
 ### [使用 Azure Monitor 进行监视](api-management-howto-use-azure-monitor.md)
 ### [使用基于角色的访问控制](api-management-role-based-access-control.md)
+### [使用托管服务标识](api-management-howto-use-managed-service-identity.md)
 ### 与 Service Fabric 集成
 #### [概述](../service-fabric/service-fabric-api-management-overview.md)
 #### [快速入门](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # 引用
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [REST（原始）](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [策略](api-management-policies.md)

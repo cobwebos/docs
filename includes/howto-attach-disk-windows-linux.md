@@ -2,9 +2,9 @@
 
 
 ## <a name="attach-an-empty-disk"></a>附加空磁盘
-附加空磁盘是添加数据磁盘的简单方法，因为 Azure 将为你创建 .vhd 文件并将其存储在存储帐户中。
+附加空磁盘是添加数据磁盘的简单方法，因为 Azure 将创建 .vhd 文件并将其存储在存储帐户中。
 
-1. 单击“虚拟机(经典)”，然后选择相应的 VM。
+1. 单击“虚拟机(经典)”，并选择相应的 VM。
 
 2. 在“设置”菜单中，单击“磁盘”。
 
@@ -16,7 +16,7 @@
     ![附加新磁盘](./media/howto-attach-disk-windows-linux/newdiskdetail.png)
 
     填充以下信息：
-    - 在“文件名”中，接受默认名称或为 .vhd 文件键入另一个名称。 数据磁盘使用自动生成的名称，即使你为 .vhd 文件键入另一个名称。
+    - 在“文件名”中，接受默认名称或为 .vhd 文件键入另一个名称。 数据磁盘使用自动生成的名称，即使你键入 .vhd 文件的另一个名称。
     - 选择数据磁盘的“类型”。 所有虚拟机都支持标准磁盘。 许多虚拟机还支持高级磁盘。
     - 选择数据磁盘的“大小(GB)”。
     - 对于“主机缓存”，请选择“无”或“只读”。
@@ -30,9 +30,9 @@
 > 添加数据磁盘后，需要登录到 VM 并初始化该磁盘，以便可以使用它。
 
 ## <a name="how-to-attach-an-existing-disk"></a>如何：附加现有磁盘
-附加现有磁盘需要存储帐户中具有可用的 .vhd。 可使用 [Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet 将 .vhd 文件上载到存储帐户。 在创建并上载 .vhd 文件后，你可以将其附加到 VM。
+附加现有磁盘需要存储帐户中具有可用的 .vhd。 可使用 [Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet 将 .vhd 文件上传到存储帐户。 在创建并上传 .vhd 文件后，可以将其附加到 VM。
 
-1. 单击“虚拟机(经典)”，然后选择相应的虚拟机。
+1. 单击“虚拟机(经典)”，并选择相应的虚拟机。
 
 2. 在“设置”菜单中，单击“磁盘”。
 
@@ -48,7 +48,7 @@
 
     ![提供容器 virtual-machines-windows](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
 
-6. **vhd** 面板列出了保留在容器中的磁盘驱动器。 单击其中一个磁盘，然后单击“选择”。
+6. **vhd** 面板列出了保留在容器中的磁盘驱动器。 单击其中一个磁盘，并单击“选择”。
 
     ![为 virtual-machines-windows 提供磁盘映像](./media/howto-attach-disk-windows-linux/existdiskvhds.png)
 

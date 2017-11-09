@@ -3,7 +3,7 @@ title: "如何监视 Azure 存储帐户 | Microsoft 文档"
 description: "了解如何使用 Azure 门户在 Azure 中监视存储帐户。"
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: b83cba7b-4627-4ba7-b5d0-f1039fe30e78
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: marsma
+ms.author: tamram
+ms.openlocfilehash: 8c566978531ceb9db9aa7c9e2ba3ab83b2dc67cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e8fbc4ecdffe62806019f494e1412cfedbccf71f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 08/22/2017
 > [!NOTE]
 > 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析和计费](/rest/api/storageservices/Storage-Analytics-and-Billing)。
 >
-> Azure 文件存储目前支持存储分析指标，但尚不支持日志记录。
+> Azure 文件目前支持存储分析指标，但尚不支持日志记录。
 >
 > 使用区域冗余存储空间 (ZRS) 复制类型的存储帐户目前不支持指标或日志记录功能。
 > 
@@ -138,7 +137,7 @@ ms.lasthandoff: 08/22/2017
 可以指示 Azure 存储保存针对 Blob、表和队列服务发出的读取、写入和删除请求的诊断日志。 设置的数据保留策略也适用于这些日志。
 
 > [!NOTE]
-> Azure 文件存储目前支持存储分析指标，但尚不支持日志记录。
+> Azure 文件目前支持存储分析指标，但尚不支持日志记录。
 >
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，并单击存储帐户的名称打开存储帐户边栏选项卡。
@@ -159,4 +158,3 @@ ms.lasthandoff: 08/22/2017
 
 * 了解有关存储分析的[指标、日志记录和计费](../storage-analytics.md)的详细信息。
 * 使用 PowerShell 以及通过 C# 以编程方式[启用 Azure 存储指标和查看指标数据](../storage-enable-and-view-metrics.md)。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 此主题涵盖有关如何在客户端上插入多种类型的广告的信息。
@@ -792,5 +791,4 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 
 ## <a name="see-also"></a>另请参阅
 [开发视频播放器应用程序](media-services-develop-video-players.md)
-
 

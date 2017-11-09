@@ -14,13 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3a423e42441c6b3b2f1917ba02f80078c759ec69
-ms.openlocfilehash: 4c114f470631ae6b06968c3cc8601bc1c76bc1da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/02/2017
-
-
+ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>如何开始使用和管理推送来向最终用户进行市场宣传
 将 SDK 完全集成到应用中后，则可以开始使用 UI 的市场宣传部分来向应用的用户推送通知。  
@@ -49,13 +47,13 @@ ms.lasthandoff: 02/02/2017
 
 * 可以在通知中编写一个标题（可选）。
 * 编写推送消息内容。
-* 可以上载一个映像。 注意文件的大小不能超出 32,768 字节。
+* 可以上传一个映像。 注意文件的大小不能超出 32,768 字节。
 * 还可以选择更多选项，我们稍后再进行了解，以便先专注于本教程的重点。
 * 将内容类型选择为“仅通知”
 
 ![First6][6]
 
-* 创建推送市场活动，然后该活动会出现在市场活动列表中。
+* 创建推送市场活动，该活动会出现在市场活动列表中。
 
 ![First7][7]
 
@@ -80,7 +78,7 @@ ms.lasthandoff: 02/02/2017
 ![Personalize1][11]
 
 通过替换应用信息标记中的标记进行个性化设置，因此首先必须确保用户已定义正确的应用信息。 在本示例中，目标用户将定义名称为 rebate_code 的应用信息标记。
-如上所示，推送通知内容中包含标记 ${rebate_code}，这指示该标记将被应用信息标记的实际内容替代。
+如上所示，推送通知内容中包含标记 ${rebate_code}，这指示该标记会被应用信息标记的实际内容替代。
 
 > [!WARNING]
 > 如果没有为用户定义该应用信息标记，则用户不会收到推送。
@@ -104,7 +102,7 @@ ms.lasthandoff: 02/02/2017
 * 消息正文。
 
 ## <a name="differentiate-your-push-notification-in-or-out-of-app"></a>区分推送通知（应用内或外）
-* 选择要推送的通知类型，选择应用程序，转至“市场宣传”部分，选择或创建一个推送市场活动，然后转至“通知”部分。
+* 选择要推送的通知类型，选择应用程序，转至“市场宣传”部分，选择或创建一个推送市场活动，并转至“通知”部分。
 * 单击需要的“传递模式”。
 * 如果想要通知出现在特定活动（屏幕）上，则单击“限制活动”复选框。
 
@@ -124,7 +122,7 @@ ms.lasthandoff: 02/02/2017
 
 “仅应用内”传递模式在应用程序正在运行时提供推送通知。
 对于此类通知，无需进入 APNS 或 GCM 系统。
-可以使用应用内系统对最终用户进行市场宣传。
+可以使用应用内传递系统对最终用户进行市场宣传。
 可以完全自定义通知并决定通知出现在哪个活动（屏幕）中。
 
 ### <a name="anytime-delivery-mode"></a>“随时”传递模式
@@ -178,7 +176,7 @@ ms.lasthandoff: 02/02/2017
 > [!NOTE]
 > 推送文本视图时，始终先显示一个通知。 
 
-* 定义文本（选择文本公告内容后，将会显示子分区以允许定义要显示的文本）。
+* 定义文本（选择文本公告内容后，会显示子分区以允许定义要显示的文本）。
 
 ![TextView4][24]
 
@@ -186,7 +184,7 @@ ms.lasthandoff: 02/02/2017
 * 编写文本视图的主要内容。
 * 编写要在“操作”按钮上显示的内容（“操作”按钮允许应用程序执行特定操作，例如打开应用程序的页面、重定向到应用商店或可以提供的任意种类的源）。
 * 编写要在“退出”按钮上显示的内容（单击“退出”按钮，文本视图则会消失）。
-* 创建推送通知市场活动，然后该活动会出现在市场活动列表中。
+* 创建推送通知市场活动，该活动会出现在市场活动列表中。
 
 ![TextView5][25]
 
@@ -228,7 +226,7 @@ Web 视图是包含 Web 内容的弹出窗口。 当最终用户单击了推送�
 > [!NOTE]
 > 推送 Web 视图时，始终先显示一个通知。
 
-* 定义 Web 内容（选择 Web 公告内容后，将会显示子分区以允许定义要显示的 Web 视图内容）。
+* 定义 Web 内容（选择 Web 公告内容后，会显示子分区以允许定义要显示的 Web 视图内容）。
 
 ![WebView4][31]
 
@@ -312,5 +310,4 @@ Web 视图是包含 Web 内容的弹出窗口。 当最终用户单击了推送�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
 

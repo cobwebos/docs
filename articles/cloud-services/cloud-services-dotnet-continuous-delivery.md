@@ -14,15 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>在 Azure 中持续交付云服务
-本文中所述过程演示了如何设置对 Azure 云应用程序的持续交付。 此过程使你能够在签入每个代码后，自动创建服务包并将其部署到 Azure。 本文中介绍的包生成过程与 Visual Studio 中的 **Package** 命令等效，而发布步骤与 Visual Studio 中的 **Publish** 命令等效。
+本文中所述过程向你演示如何设置对 Azure 云应用程序的持续交付。 此过程使你能够在签入每个代码后，自动创建服务包并将其部署到 Azure。 本文中介绍的包生成过程与 Visual Studio 中的 **Package** 命令等效，而发布步骤与 Visual Studio 中的 **Publish** 命令等效。
 本文包含用于创建生成服务器的方法以及 MSBuild 命令行语句和 Windows PowerShell 脚本，并演示了如何选择性地配置 Visual Studio Team Foundation Server - Team Build 定义以使用 MSBuild 命令和 PowerShell 脚本。 可针对生成环境和 Azure 目标环境自定义此过程。
 
 也可以使用 Visual Studio Team Services（Azure 中托管的 TFS 版本）更轻松地实现此目的。 
@@ -64,7 +63,7 @@ ms.lasthandoff: 08/28/2017
    * Project.cspkg
    * ServiceConfiguration.*TargetProfile*.cscfg
 
-   默认情况下，每个 Azure 项目均包含两个服务配置文件（.cscfg 文件），这两个文件分别针对本地（调试）生成和云（过渡或生产）生成，可根据需要添加或删除服务配置文件。 在 Visual Studio 中生成包时，系统会询问你要将哪个服务配置文件与包一起包含。
+   默认情况下，每个 Azure 项目均包含两个服务配置文件（.cscfg 文件），这两个文件分别针对本地（调试）生成和云（过渡或生产）生成，可根据需要添加或删除服务配置文件。 在 Visual Studio 中生成包时，系统会询问要将哪个服务配置文件与包一起包含。
 5. 指定服务配置文件。 使用 MSBuild 生成包时，默认情况下将包含本地服务配置文件。 若要包含其他服务配置文件，请设置 MSBuild 命令的 TargetProfile 属性，如以下示例所示：
 
        MSBuild /t:Publish /p:TargetProfile=Cloud
@@ -166,7 +165,7 @@ ms.lasthandoff: 08/28/2017
 
    默认情况下，此脚本会在未传入参数或显式传递值 1 时执行升级部署 ($enableDeploymentUpgrade = 1)。 对于单一实例，此部署相对于完整部署的好处是，花费的时间更少。 对于需要高可用性的实例，此部署的好处是，在升级一些实例的同时使其他实例保持运行（检查更新域）且不会删除 VIP。
 
-   可使用脚本 ($enableDeploymentUpgrade = 0) 或通过将 *-enableDeploymentUpgrade 0* 作为参数传递（这会将脚本行为更改为首先删除任何现有部署，然后创建新的部署）来禁用升级部署。
+   可使用脚本 ($enableDeploymentUpgrade = 0) 或通过将 *-enableDeploymentUpgrade 0* 作为参数传递（这会将脚本行为更改为首先删除任何现有部署，并创建新的部署）来禁用升级部署。
 
    > [!IMPORTANT]
    > 默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。 这对于从没有用户/操作员提示的自动化中启用持续交付是必需的。
@@ -181,7 +180,7 @@ ms.lasthandoff: 08/28/2017
 3. 按照[这些说明](http://msdn.microsoft.com/library/dd647551.aspx)添加生成过程模板的活动项目，下载默认模板，将其添加到项目并将其签入。 为生成过程模板指定新名称，如 AzureBuildProcessTemplate。
 4. 返回到“**进程**”选项卡，并使用“**显示详细信息**”显示可用生成过程模板的列表。 选择“**新建...**”按钮，然后导航到刚刚添加并签入的项目。 找到刚刚创建的模板，并选择“**确定**”。
 5. 打开选定的过程模板以进行编辑。 可以直接在工作流设计器或 XML 编辑器中打开以处理 XAML。
-6. 在工作流设计器的参数选项卡中将以下一系列新参数作为单独的行项添加。 所有参数应具有 direction=In 和 type=String。 这两个值用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
+6. 在工作流设计器的参数选项卡中将以下一系列新参数作为单独的行项添加。 所有参数应具有 direction=In 和 type=String。 这两个值将用于将参数从生成定义流入工作流中，并用于调用发布脚本。
 
        SubscriptionName
        StorageAccountName
@@ -235,7 +234,7 @@ ms.lasthandoff: 08/28/2017
 
           Not String.IsNullOrEmpty(PublishScriptLocation)
    2. 在 If 语句的 Then 事例中，添加一个新的 Sequence 活动。 将显示名称设置为 'Start publish'
-   3. 在 Start publish 序列仍处于选定状态的情况下，在工作流设计器的变量选项卡中将以下一系列新变量作为单独的行项添加。 所有变量应具有 Variable type =String 和 Scope=Start publish。 这两个值用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
+   3. 在 Start publish 序列仍处于选定状态的情况下，在工作流设计器的变量选项卡中将以下一系列新变量作为单独的行项添加。 所有变量应具有 Variable type =String 和 Scope=Start publish。 这两个值将用于将参数从生成定义流入工作流中，并用于调用发布脚本。
 
       * String 类型的 SubscriptionDataFilePath
       * String 类型的 PublishScriptFilePath
@@ -530,4 +529,3 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
 [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
 [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
-

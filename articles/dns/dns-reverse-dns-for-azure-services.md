@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: 63701e1ce0c1c6dcf2ce02ebce272b8280395e7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
 本文介绍如何为 Azure 中托管的服务配置反向 DNS 查找。
@@ -34,7 +32,7 @@ Azure 提供两个不同的部署模型用于创建和处理资源：[Resource M
 * 在 Resource Manager 部署模型中，通过 PublicIpAddress 资源公开计算资源（如虚拟机、虚拟机规模集或 Service Fabric 群集）。 使用 PublicIpAddress 的“ReverseFqdn”属性配置反向 DNS 查找。
 * 在经典部署模型中，使用云服务公开计算资源。 使用云服务的“ReverseDnsFqdn”属性配置反向 DNS 查找。
 
-Azure App Service 目前不支持反向 DNS。
+Azure 应用服务目前不支持反向 DNS。
 
 ## <a name="validation-of-reverse-dns-records"></a>反向 DNS 记录的验证
 
@@ -234,9 +232,9 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 
 如果反向 DNS 验证检查失败，则配置反向 DNS 记录的操作也会失败。 请根据需要更正反向 DNS 值，然后重试。
 
-### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>是否可以为 Azure App Service 配置反向 DNS？
+### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>是否可以为 Azure 应用服务配置反向 DNS？
 
-不能。 Azure App Service 不支持反向 DNS。
+不能。 Azure 应用服务不支持反向 DNS。
 
 ### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>是否可以为 Azure 服务配置多个反向 DNS 记录？
 
@@ -255,5 +253,4 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
 <br>
 了解如何[在 Azure DNS 中为 ISP 分配的 IP 范围托管反向查找区域](dns-reverse-dns-for-azure-services.md)。
-
 

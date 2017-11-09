@@ -1,6 +1,6 @@
 ---
-title: Use MySQL databases as PaaS on Azure Stack | Microsoft Docs
-description: Learn how you can deploy the MySQL Resource Provider and provide MySQL databases as a service on Azure Stack
+title: "MySQL 数据库用作 Azure 堆栈上的 PaaS |Microsoft 文档"
+description: "了解如何部署 MySQL 资源提供程序和提供作为 Azure 堆栈上的服务的 MySQL 数据库"
 services: azure-stack
 documentationCenter: 
 author: JeffGoldner
@@ -11,220 +11,258 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 10/10/2017
 ms.author: JeffGo
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 4e9da524ef9dfa2d5b7150bc6a888536a1435dfd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.openlocfilehash: badaefb4986f573362babea81d704bf2be067d6b
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
+# <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
-# <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Use MySQL databases on Microsoft Azure Stack
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+
+你可以部署 Azure 堆栈上的 MySQL 资源提供程序。 在部署资源提供程序后，你可以创建 MySQL 服务器和数据库通过 Azure 资源管理器部署模板和作为服务提供 MySQL 数据库。 MySQL 数据库，共有网站，支持多个网站平台。 例如，部署资源提供程序之后, 你可以创建 WordPress 网站从 Azure Web Apps 平台作为服务 (PaaS) 外接程序用于 Azure 堆栈。
+
+若要部署不能访问 internet 的系统上的 MySQL 提供程序，你可以将文件复制[mysql 连接器 net 6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi)到本地共享。 然后，提供出现提示时该共享名称。 你还必须安装的 Azure 和 Azure 堆栈 PowerShell 模块。
 
 
-You can deploy a MySQL resource provider on Azure Stack. After you deploy the resource provider, you can create MySQL servers and databases through Azure Resource Manager deployment templates and provide MySQL databases as a service. MySQL databases, which are common on web sites, support many website platforms. As an example, after you deploy the resource provider, you can create WordPress websites from the Azure Web Apps platform as a service (PaaS) add-on for Azure Stack.
+## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL Server 资源提供程序适配器体系结构
 
-To deploy the MySQL provider on a system that does not have internet access, you can copy the file [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi) to a local share and provide that share name when prompted (see below). You must also install the Azure and Azure Stack PowerShell modules.
+资源提供程序由三个组件组成：
+
+- **MySQL 资源提供程序适配器 VM**，后者是运行的提供程序服务的 Windows 虚拟机。
+- **资源提供程序本身**、 哪些流程预配请求和公开数据库资源。
+- **承载 MySQL Server 的服务器**，它提供的信息对于数据库，容量称为托管服务器。
+
+此版本不再创建的 MySQL 实例。 你必须创建它们和/或提供对外部的 SQL 实例的访问。 请访问[Azure 堆栈快速入门库](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows)有关示例模板，可以：
+- 为你创建的 MySQL 服务器
+- 下载并部署从应用商店创建 MySQL 服务器。
+
+![注意]从租户订阅，必须创建宿主服务器安装在多节点 Azure 堆栈上。 也不能从默认提供程序订阅中创建。 换而言之，则必须创建从租户门户或具有合适的登录名的 PowerShell 会话。 所有宿主服务器是应计费 Vm，并且必须具有合适的许可证。 服务管理员可以是该订阅的所有者。
+
+### <a name="required-privileges"></a>必需的权限
+系统帐户必须具有以下权限：
+
+1.  数据库： 创建、 删除
+2.  登录名： 创建、 设置、 Drop、 grant、 Revoke
+
+## <a name="deploy-the-resource-provider"></a>部署资源提供程序
+
+1. 如果尚未这样做，注册你开发工具包，并下载可下载通过应用商店管理 Windows Server 2016 数据中心 Core 映像。 你必须使用 Windows Server 2016 Core 映像。 你还可以使用脚本创建[Windows Server 2016 映像](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)-请务必选择核心选项。 .NET 3.5 运行时不再是必需的。
 
 
-## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL Server Resource Provider Adapter architecture
+2. 登录到可以访问特权的终结点 VM 的主机。
 
-The resource provider is made up of three components:
+    a. 在 Azure 堆栈开发工具包 (ASDK) 安装中，登录到物理主机。
 
-- **The MySQL resource provider adapter VM**, which is a Windows virtual machine running the provider services.
-- **The resource provider itself**, which processes provisioning requests and exposes database resources.
-- **Servers that host MySQL Server**, which provide capacity for databases, called Hosting Servers. 
+    b. 在多节点系统中，主机必须是一个系统，可以访问特权终结点。
 
-This release no longer creates a MySQL instance. You must create them and/or provide access to external SQL instances. You can visit the [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) for an example template that can create a MySQL server for you or download and deploy a MySQL Server from the Marketplace.
+3. [下载 MySQL 资源提供程序二进制文件文件](https://aka.ms/azurestackmysqlrp)和执行自动解压缩程序中，若要将内容提取到临时目录。
 
-## <a name="deploy-the-resource-provider"></a>Deploy the resource provider
+4.  从特权终结点中检索 Azure 堆栈根证书。 为 ASDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
 
-1. If you have not already done so, register your development kit and download the Windows Server 2016 Datacenter - Eval image downloadable through Marketplace Management. You can also use a script to create a [Windows Server 2016 image](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image).
+    如果你需要提供你自己的证书，你需要以下证书：
 
-2. [Download the MySQL resource provider binaries file](https://aka.ms/azurestackmysqlrp) and extract it on the development kit host.
+    通配符证书\*.dbadapter。\<区域\>。\<外部 fqdn\>。 此证书必须受信任，如将由证书颁发机构颁发。 即，信任链必须存在而无需中间证书。 可使用在安装过程中使用显式的 VM 名称 [mysqladapter] 的单个站点证书。
 
-3. Sign in to the development kit host, and extract the MySQL RP installer file to a temporary directory.
 
-4. The Azure Stack root certificate is retrieved and a self-signed certificate is created as part of this process. 
+5. 打开**新**提升 （管理） 的 PowerShell 控制台和对您将文件解压缩 directory 的更改。 使用新窗口以避免可能不正确已加载的 PowerShell 模块从系统出现的问题。
 
-    __Optional:__ If you need to provide your own, prepare the certificates and copy to a local directory if you wish to customize the certificates (passed to the installation script). You need the following:
+6. [安装 Azure PowerShell 版本 1.2.11](azure-stack-powershell-install.md)。
 
-    a. A wildcard certificate for *.dbadapter.\<region\>.\<external fqdn\>. This certificate must be trusted, such as would be issued by a certificate authority (that is, the chain of trust must exist without requiring intermediate certificates.) (A single site certificate can be used with the explicit VM name you provide during install.)
+7. 运行 DeploySqlProvider.ps1 脚本。
 
-    b. The root certificate used by the Azure Resource Manager for your instance of Azure Stack. If it is not found, the root certificate will be retrieved.
+脚本执行以下步骤：
 
-5. Open a **new** elevated PowerShell console and change to the directory where you extracted the files. Use a new window to avoid problems that may arise from incorrect PowerShell modules already loaded on the system.
+* 下载 MySQL 连接器二进制文件 （这可以提供脱机）。
+* 将证书和其他项目上载到 Azure 堆栈上的存储帐户。
+* 发布库包，以便你可以部署通过库的 SQL 数据库。
+* 发布库包部署托管服务器
+* 使用在步骤 1 中创建的 Windows Server 2016 映像部署 VM 并安装资源提供程序。
+* 注册映射到你的资源提供程序 VM 的本地 DNS 记录。
+* 注册资源提供程序与本地 Azure 资源管理器 （租户和管理员）。
 
-6. If you have installed any versions of the AzureRm or AzureStack PowerShell modules other than 1.2.9 or 1.2.10, you will be prompted to remove them or the install will not proceed. This includes versions 1.3 or greater.
 
-7. Run DeployMySqlProvider.ps1.
+可以：
+- 在命令行上指定至少所需的参数
+- 或者，如果运行不带任何参数，则输入系统提示时。
 
-This script performs these steps:
-
-* If necessary, download a compatible version of Azure PowerShell.
-* Download the MySQL connector binary (this can be provided offline).
-* Upload the certificate and all other artifacts to an Azure Stack storage account.
-* Publish gallery packages so that you can deploy MySQL databases through the gallery.
-* Deploy a virtual machine (VM) that hosts your resource provider.
-* Register a local DNS record that maps to your resource provider VM.
-* Register your resource provider with the local Azure Resource Manager.
-
-Either specify at least the required parameters on the command line, or, if you run without any parameters, you are prompted to enter them. 
-
-Here's an example you can run from the PowerShell prompt (but change the account information and portal endpoints as needed):
+下面是你可以从 PowerShell 运行的示例提示 （但根据需要更改的帐户信息和密码）：
 
 
 ```
-# Install the AzureRM.Bootstrapper module
+# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
 Install-Module -Name AzureRm.BootStrapper -Force
-
-# Installs and imports the API Version Profile required by Azure Stack into the current PowerShell session.
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.10 -Force
+Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Download the Azure Stack Tools from GitHub and set the environment
-cd c:\
-Invoke-Webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip -OutFile master.zip
-Expand-Archive master.zip -DestinationPath . -Force
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
+$domain = 'AzureStack'
+# Point to the directory where the RP installation files were extracted
+$tempDir = 'C:\TEMP\MYSQLRP'
 
-# This endpoint may be different for your installation
-Import-Module C:\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
-Add-AzureRmEnvironment -Name AzureStackAdmin -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+# The service admin account (can be AAD or ADFS)
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# For AAD, use the following
-$tenantID = Get-AzsDirectoryTenantID -AADTenantName "<your directory name>" -EnvironmentName AzureStackAdmin
-
-# For ADFS, replace the previous line with
-# $tenantID = Get-AzsDirectoryTenantID -ADFS -EnvironmentName AzureStackAdmin
-
+# Set the credentials for the Resource Provider VM
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
 
-$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$AdminCreds = New-Object System.Management.Automation.PSCredential ("admin@mydomain.onmicrosoft.com", $AdminPass)
+# and the cloudadmin credential required for Privleged Endpoint access
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
-# change this as appropriate
+# change the following as appropriate
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# Change directory to the folder where you extracted the installation files 
-# and adjust the endpoints
-<extracted file directory>\DeployMySQLProvider.ps1 -DirectoryTenantID $tenantID -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -ResourceGroupName "MySqlRG" -VmName "MySQLRP" -ArmEndpoint "https://adminmanagement.local.azurestack.external" -TenantArmEndpoint "https://management.local.azurestack.external" -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath
+# Run the installation script from the folder where you extracted the installation files
+# Find the ERCS01 IP address first and make sure the certificate
+# file is in the specified directory
+.$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint '10.10.10.10' `
+  -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert `
+  -AcceptLicense
+
  ```
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 parameters
+### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 参数
 
-You can specify these parameters in the command line. If you do not, or any parameter validation fails, you are prompted to provide the required ones.
+你可以在命令行中指定这些参数。 如果你不希望这样做，或任何参数验证失败，系统会提示你提供所需的。
 
-| Parameter Name | Description | Comment or Default Value |
+| 参数名称 | 说明 | 注释或默认值 |
 | --- | --- | --- |
-| **DirectoryTenantID** | The Azure or ADFS Directory ID (guid) | _required_ |
-| **ArmEndpoint** | The Azure Stack Administrative Azure Resource Manager Endpoint | _required_ |
-| **TenantArmEndpoint** | The Azure Stack Tenant Azure Resource Manager Endpoint | _required_ |
-| **AzCredential** | Azure Stack Service Admin account credential (use the same account as you used for deploying Azure Stack) | _required_ |
-| **VMLocalCredential** | The local administrator account of the MySQL resource provider VM | _required_ |
-| **ResourceGroupName** | Resource Group for the items created by this script |  _required_ |
-| **VmName** | Name of the VM holding the resource provider |  _required_ |
-| **AcceptLicense** | Skips the prompt to accept the GPL License  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
-| **DependencyFilesLocalPath** | Path to a local share containing [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi). If you provide them, certificate files must be placed in this directory as well. | _optional_ |
-| **DefaultSSLCertificatePassword** | The password for the .pfx certificate | _required_ |
-| **MaxRetryCount** | Each operation is retried if there is a failure | 2 |
-| **RetryDuration** | Timeout between retries, in seconds | 120 |
-| **Uninstall** | Remove the resource provider | No |
-| **DebugMode** | Prevents automatic cleanup on failure | No |
+| **CloudAdminCredential** | 有关访问特权终结点所需的云管理员凭据。 | （必需） |
+| **AzCredential** | 提供 Azure 堆栈服务管理员帐户的凭据。 使用相同的凭据用于部署 Azure 堆栈）。 | （必需） |
+| **VMLocalCredential** | 定义 MySQL 资源提供程序 VM 的本地管理员帐户的凭据。 | （必需） |
+| **PrivilegedEndpoint** | 提供的 IP 地址或特权终结点的 DNS 名称。 |  （必需） |
+| **DependencyFilesLocalPath** | 本地共享包含路径[mysql 连接器 net 6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi)。 如果你提供一个，证书文件必须放置在此目录中。 | _可选_(_必需_多节点) |
+| **DefaultSSLCertificatePassword** | .Pfx 证书的密码 | （必需） |
+| **MaxRetryCount** | 定义你想要重试每个操作，如果有多少次失败。| 2 |
+| **RetryDuration** | 定义重试，以秒为单位之间的超时值。 | 120 |
+| **卸载** | 删除资源提供程序和所有关联的资源 （请参阅下面的注释） | 否 |
+| **DebugMode** | 阻止失败的自动清理 | 否 |
+| **AcceptLicense** | 跳过的提示时接受 GPL 许可证 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
 
-Depending on the system performance and download speeds, installation may take as little as 20 minutes or as long as several hours. You must refresh the admin portal if the MySQLAdapter blade is not available.
+具体取决于系统的性能和下载速度，安装可能需要最小为 20 分钟或长时间为几个小时。 如果 MySQLAdapter 边栏选项卡不可用，刷新管理门户。
 
 > [!NOTE]
-> If the installation takes more than 90 minutes, it may fail and you will see a failure message on the screen and in the log file. The deployment is retried from the failing step. Systems that do not meet the recommended memory and core specifications may not be able to deploy the MySQL RP.
+> 如果安装需要超过 90 分钟，则可能会失败，并在屏幕上，在日志文件中，你将看到失败消息。 从失败的步骤重试部署。 不符合建议的内存和核心规范的系统可能不能部署 MySQL RP。
 
 
-## <a name="provide-capacity-by-connecting-to-a-mysql-hosting-server"></a>Provide capacity by connecting to a MySQL hosting server
 
-1. Sign in to the Azure Stack portal as a service admin.
+## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>验证使用 Azure 堆栈门户部署
 
-2. Click **Resource Providers** &gt; **MySQLAdapter** &gt; **Hosting Servers** &gt; **+Add**.
+> [!NOTE]
+>  安装脚本完成后，你将需要刷新门户后，以查看管理边栏选项卡。
 
-    The **MySQL Hosting Servers** blade is where you can connect the MySQL Server Resource Provider to actual instances of MySQL Server that serve as the resource provider’s backend.
 
-    ![Hosting Servers](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+1. 服务管理员身份登录到管理门户。
 
-3. Fill the form with the connection details of your MySQL Server instance. Provide the fully qualified domain name (FQDN) or a valid IPv4 address, and not the short VM name. This installation no longer provides a default MySQL instance. The size provided helps the resource provider manage the database capacity. It should be close to the physical capacity of the database server.
+2. 验证部署成功完成。 浏览**资源组** &gt;，单击**系统。\<位置\>.mysqladapter**资源组，并验证所有四个部署成功。
+
+      ![验证 MySQL RP 的部署](./media/azure-stack-mysql-rp-deploy/mysqlrp-verify.png)
+
+## <a name="provide-capacity-by-connecting-to-a-mysql-hosting-server"></a>提供通过连接到 MySQL 宿主服务器的容量
+
+1. 登录到 Azure 堆栈门户为服务管理员。
+
+2. 浏览到**管理资源** &gt; **MySQL 宿主服务器** &gt; **+ 添加**。
+
+    **MySQL 宿主服务器**边栏选项卡是其中你可以连接到的 MySQL Server 作为资源提供程序的后端的实际实例的 MySQL Server 资源提供程序。
+
+    ![宿主服务器](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+
+3. 使用您的 MySQL Server 实例的连接详细信息来填充窗体。 提供的完全限定的域名 (FQDN) 或有效的 IPv4 地址，并不是短 VM 名称。 此安装不再提供的默认 MySQL 实例。 提供的大小可帮助管理数据库容量资源提供程序。 它应接近数据库服务器的物理容量。
 
     > [!NOTE]
-    > As long as the MySQL instance can be accessed by the tenant and admin Azure Resource Manager, it can be placed under control of the resource provider. The MySQL instance __must__ be allocated exclusively to the RP.
+    > 只要租户和管理 Azure 资源管理器可以访问 MySQL 实例，它可以放置受控制的资源提供程序。 MySQL 实例__必须__分配以独占方式给 RP。
 
-4. As you add servers, you must assign them to a new or existing SKU to allow differentiation of service offerings. For example, you could have an enterprise instance providing database capacity and automatic backup, reserve high-performance servers for individual departments, etc. The SKU name should reflect the properties so that tenants can place their databases appropriately and all hosting servers in a SKU should have the same capabilities.
+4. 添加服务器时，你必须为他们分配一种新的或现有的 SKU，以允许服务产品的不同之处。
+  例如，你可以具有企业实例提供：
+    - 数据库容量
+    - 自动备份
+    - 预留各部门的高性能服务器
+    - 等等。
+    SKU 名称应反映的属性，以便租户可以适当地将其数据库。 在 SKU 中的所有宿主服务器应具有相同的功能。
 
-    ![Create a MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+    ![创建 MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
 >[!NOTE]
-SKUs can take up to an hour to be visible in the portal. You cannot create a database until the SKU is created.
+Sku 可以花费一个小时的时间无法在门户中显示。 无法创建一个数据库，直到创建 SKU。
 
 
-## <a name="create-your-first-mysql-database-to-test-your-deployment"></a>Create your first MySQL database to test your deployment
+## <a name="to-test-your-deployment-create-your-first-mysql-database"></a>若要测试你的部署，创建你的第一个 MySQL 数据库
 
 
-1. Sign in to the Azure Stack portal as service admin.
+1. 登录到 Azure 堆栈门户为服务管理员。
 
-2. Click the **+ New** button &gt; **Data + Storage** &gt; **MySQL Database (preview)**.
+2. 单击**+ 新建**按钮&gt;**数据 + 存储** &gt; **MySQL 数据库**。
 
-3. Fill in the form with the database details.
+3. 填写数据库详细信息的表单。
 
-    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+    ![创建测试 MySQL 数据库](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
 
-4. Select a SKU.
+4. 选择一种的 SKU。
 
-    ![Select a SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+    ![选择一种的 SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
 
-5. Create a login setting. The login setting can be reused or a new one created. This contains the user name and password for the database.
+5. 创建一个登录名设置。 可以重复使用的登录名设置或创建一个新。 此设置包含的用户名称和数据库的密码。
 
-    ![Create a new database login](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+    ![创建新的数据库登录名](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
 
-    The connections string includes the real database server name. Copy it from the portal.
+    该连接字符串包含实际的数据库服务器名称。 从门户复制它。
 
-    ![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+    ![获取 MySQL 数据库的连接字符串](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
 
 > [!NOTE]
-> The length of the user names cannot exceed 32 characters with MySQL 5.7 or 16 characters in earlier editions. This is a limitation of the MySQL implementations.
+> 用户名称的长度不能超过 32 个字符带有 MySQL 5.7 或早期版本中的 16 个字符。
 
 
-## <a name="add-capacity"></a>Add capacity
+## <a name="add-capacity"></a>添加容量
 
-Add capacity by adding additional MySQL servers in the Azure Stack portal. If you wish to use another instance of MySQL, click **Resource Providers** &gt; **MySQLAdapter** &gt; **MySQL Hosting Servers** &gt; **+Add**.
-
-
-## <a name="making-mysql-databases-available-to-tenants"></a>Making MySQL databases available to tenants
-Create plans and offers to make MySQL databases available for tenants. Add the Microsoft.MySqlAdapter service, add a quota, etc.
-
-![Create plans and offers to include databases](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
-
-## <a name="removing-the-mysql-adapter-resource-provider"></a>Removing the MySQL Adapter Resource Provider
-
-To remove the resource provider, it is essential to first remove any dependencies.
-
-1. Ensure you have the original deployment package that you downloaded for this version of the Resource Provider.
-
-2. All tenant databases must be deleted from the resource provider (this will not delete the data). This should be performed by the tenants themselves.
-
-3. Tenants must unregister from the namespace.
-
-4. Administrator must delete the hosting servers from the MySQL Adapter
-
-5. Administrator must delete any plans that reference the MySQL Adapter.
-
-6. Administrator must delete any quotas associated to the MySQL Adapter.
-
-7. Rerun the deployment script with the -Uninstall parameter, Azure Resource Manager endpoints, DirectoryTenantID, and credentials for the service administrator account.
+通过在 Azure 堆栈门户中添加其他 MySQL 服务器添加容量。 其他服务器可以添加到一种新的或现有的 SKU。 请确保服务器特征都相同。
 
 
+## <a name="making-mysql-databases-available-to-tenants"></a>向租户提供 MySQL 数据库
+创建计划，并提供可使 MySQL 数据库供租户可用。 添加 Microsoft.MySqlAdapter 服务，添加一个配额，等等。
+
+![创建计划，并提供要包括数据库](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
+
+## <a name="updating-the-administrative-password"></a>更新管理密码
+可以通过第一个更改它的 MySQL server 实例上修改密码。 浏览到**管理资源** &gt; **MySQL 宿主服务器**&gt;单击的宿主服务器上。 在设置面板中，单击密码。
+
+![更新管理员密码](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
+
+## <a name="removing-the-mysql-adapter-resource-provider"></a>删除 MySQL 适配器资源提供程序
+
+若要删除资源提供程序，请务必首先删除任何依赖关系。
+
+1. 请确保您具有原始你下载的此版本的资源提供程序的部署包。
+
+2. 从资源提供程序 （这不会删除数据），必须删除所有租户数据库。 这应该通过租户本身。
+
+3. 从命名空间中，租户必须取消注册。
+
+4. 管理员必须从 MySQL 适配器中删除宿主服务器
+
+5. 管理员必须删除任何引用 MySQL 适配器的计划。
+
+6. 管理员必须删除与 MySQL 适配器相关联的任何配额。
+
+7. 重新运行的部署脚本的卸载参数、 Azure 资源管理器终结点、 DirectoryTenantID 和服务管理员帐户凭据。
 
 
-## <a name="next-steps"></a>Next steps
 
 
-Try other [PaaS services](azure-stack-tools-paas-services.md) like the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [App Services resource provider](azure-stack-app-service-overview.md).
+## <a name="next-steps"></a>后续步骤
 
+
+尝试使用其他[PaaS 服务](azure-stack-tools-paas-services.md)如[SQL Server 资源提供程序](azure-stack-sql-resource-provider-deploy.md)和[应用程序服务资源提供程序](azure-stack-app-service-overview.md)。

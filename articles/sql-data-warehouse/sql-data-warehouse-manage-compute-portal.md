@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
-ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/20/2017
-
-
+ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>管理 Azure SQL 数据仓库中的计算能力（Azure 门户）
 > [!div class="op_single_selector"]
@@ -39,7 +37,7 @@ ms.lasthandoff: 01/20/2017
 
 更改计算资源：
 
-1. 依次打开 [Azure 门户][Azure portal]和数据库，然后单击“缩放”。
+1. 依次打开 [Azure 门户][Azure portal]和数据库，并单击“缩放”。
 
     ![单击“缩放”][1]
 2. 在“缩放”边栏选项卡上，向左或向右移动滑块，以更改 DWU 设置。
@@ -56,10 +54,10 @@ ms.lasthandoff: 01/20/2017
 
 暂停数据库：
 
-1. 打开 [Azure 门户][Azure portal]，然后打开数据库。 请注意，状态为“联机”。
+1. 打开 [Azure 门户][Azure portal]，并打开数据库。 请注意，状态为“联机”。
 
     ![联机状态][6]
-2. 若要挂起计算和内存资源，请单击“暂停”，随后将显示确认消息。 单击“是”以确认或“否”以取消。
+2. 要挂起计算和内存资源，请单击“暂停”，随后会显示确认消息。 单击“是”以确认或“否”以取消。
 
     ![确认暂停][7]
 3. 当 SQL 数据仓库正在启动数据库时，状态为“正在暂停”。
@@ -74,10 +72,10 @@ ms.lasthandoff: 01/20/2017
 
 恢复数据库：
 
-1. 打开 [Azure 门户][Azure portal]，然后打开数据库。 请注意，状态为“已暂停”。
+1. 打开 [Azure 门户][Azure portal]，并打开数据库。 请注意，状态为“已暂停”。
 
     ![暂停数据库][4]
-2. 若要恢复数据库，请单击“启动”，随后将显示确认消息。 单击“是”以确认或“否”以取消。
+2. 要恢复数据库，请单击“启动”，随后会显示确认消息。 单击“是”以确认或“否”以取消。
 
     ![确认恢复][5]
 3. 当 SQL 数据仓库正在启动数据库时，状态为“正在恢复”。
@@ -109,4 +107,3 @@ ms.lasthandoff: 01/20/2017
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-

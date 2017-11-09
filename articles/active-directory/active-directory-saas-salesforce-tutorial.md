@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Salesforce 集成 | Microsoft Docs"
+title: "教程：Azure Active Directory 与 Salesforce 的集成 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Salesforce 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 639e40ca7e406a1726033e9f5c5363c289087589
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 06/23/2017
 
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_configure.png) 
 <CS>
-7.  在浏览器中打开新选项卡并登录到你的 Salesforce 管理员帐户。
+7.  在浏览器中打开新选项卡并登录到 Salesforce 管理员帐户。
 
 8.  在“管理员”导航窗格下，单击“安全控件”以展开相关部分。 然后单击“单一登录设置”。
 
@@ -142,7 +141,7 @@ ms.lasthandoff: 06/23/2017
       > [!NOTE]
       > 如果无法为 Salesforce 帐户启用单一登录设置，则需要联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)。 
 
-10. 选择“已启用 SAML”，然后单击“保存”。
+10. 选择“已启用 SAML”，并单击“保存”。
 
       ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-enable-saml.png)
 11. 若要配置 SAML 单一登录设置，请单击“新建”。
@@ -153,16 +152,16 @@ ms.lasthandoff: 06/23/2017
 
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-saml-config.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”字段中，为此配置键入友好名称。 提供“名称”值时会自动填充“API 名称”文本框。
+    a. 在“名称”字段中，为此配置键入友好名称。 提供“名称”值时会自动填充“API 名称”文本框。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将“SMAL 实体 ID”值粘贴到 Salesforce 中的“证书颁发者”字段。
+    b. 将“SMAL 实体 ID”值粘贴到 Salesforce 中的“证书颁发者”字段。
 
     c. 在“实体 ID”文本框中，使用以下模式输入 Salesforce 域名：
       
       * 企业帐户：`https://<subdomain>.my.salesforce.com`
       * 开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
       
-    d. 单击“浏览”或“选择文件”打开“选择要上传的文件”对话框，选择你的 Salesforce 证书，然后单击“打开”以上传该证书。
+    d. 单击“浏览”或“选择文件”打开“选择要上传的文件”对话框，选择 Salesforce 证书，然后单击“打开”以上传该证书。
 
     e. 对于“SAML 标识类型”，请选择“断言包含用户的 salesforce.com 用户名”。
 
@@ -174,20 +173,20 @@ ms.lasthandoff: 06/23/2017
     
     i. 最后，单击“保存”以应用 SAML 单一登录设置。
 
-13. 在 Salesforce 的左侧导航窗格中，单击“域管理”展开相关部分，然后单击“我的域”。
+13. 在 Salesforce 的左侧导航窗格中，单击“域管理”展开相关部分，并单击“我的域”。
 
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-my-domain.png)
 
-14. 向下滚动到“身份验证配置”部分，然后单击“编辑”按钮。
+14. 向下滚动到“身份验证配置”部分，并单击“编辑”按钮。
 
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-edit-auth-config.png)
 
-15. 在“身份验证服务”部分，选择 SAML SSO 配置的友好名称，然后单击“保存”。
+15. 在“身份验证服务”部分，选择 SAML SSO 配置的友好名称，并单击“保存”。
 
     ![配置单一登录](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
-    > 如果选择了多个身份验证服务，则当用户尝试向 Salesforce 环境发起单一登录时，系统将提示他们选择登录时要使用的身份验证服务。 如果不希望发生这种情况，应将其他所有身份验证服务保持未选中状态。
+    > 如果选择了多个身份验证服务，则当用户向 Salesforce 环境发起单一登录时，系统将提示他们选择登录时要使用的身份验证服务。 如果不希望发生这种情况，应将其他所有身份验证服务保持未选中状态。
 <CE>    
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -216,7 +215,7 @@ ms.lasthandoff: 06/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-salesforce-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -237,7 +236,7 @@ ms.lasthandoff: 06/23/2017
 
 若要将 Britta Simon 分配到 Salesforce，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -282,5 +281,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_203.png
-
 

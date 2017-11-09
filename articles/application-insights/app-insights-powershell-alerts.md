@@ -3,7 +3,7 @@ title: "使用 Powershell 在 Application Insights 中设置警报 | Microsoft �
 description: "自动配置 Application Insights，以获取有关指标更改的电子邮件。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 298e0218c51385caa2de6a684ac40503fc07f5fa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: b90a540afd1c2815db8f5a99ee210ce21ea4d874
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 可以在 [Application Insights](app-insights-overview.md) 中自动配置[警报](app-insights-alerts.md)。
@@ -26,7 +25,7 @@ ms.lasthandoff: 04/27/2017
 此外，可以[将 webhook 设置为自动执行对警报的响应](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。
 
 > [!NOTE]
-> 如果要同时创建资源和警报，请考虑[使用 Azure Resource Manager 模板](app-insights-powershell.md)。
+> 如果要同时创建资源和警报，请考虑[使用 Azure 资源管理器模板](app-insights-powershell.md)。
 >
 >
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 04/27/2017
 * 使用它来安装 Microsoft Azure Powershell
 
 ## <a name="connect-to-azure"></a>连接到 Azure
-启动 Azure PowerShell 并[连接到你的订阅](/powershell/azure/overview)：
+启动 Azure PowerShell 并[连接到订阅](/powershell/azure/overview)：
 
 ```PowerShell
 
@@ -121,7 +120,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 | `request.rate` |请求速率 |每秒应用程序所有请求的速率。 |
 | `requestFailed.count` |失败的请求 |响应代码中生成的 HTTP 请求计数 >= 400 |
 | `view.count` |页面视图 |网页的客户端用户请求的计数。 综合流量已筛选掉。 |
-| {你的自定义指标名称} |{你的指标名称} |由 [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](app-insights-api-custom-events-metrics.md#properties)中的指标值。 |
+| {自定义指标名称} |{指标名称} |由 [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](app-insights-api-custom-events-metrics.md#properties)中的指标值。 |
 
 指标由不同的遥测模块发送：
 
@@ -140,4 +139,3 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 * [从模板创建 Application Insights 和 Web 测试资源](app-insights-powershell.md)
 * [自动执行 Microsoft Azure 诊断到 Application Insights 的耦合](app-insights-powershell-azure-diagnostics.md)
 * [自动执行对警报的响应](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
-

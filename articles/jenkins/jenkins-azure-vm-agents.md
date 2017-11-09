@@ -11,14 +11,12 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: a3bfa3a17f0d7300f9d1ceb529410bbbb7bb2fee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
-
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
 本教程介绍如何使用 Jenkins [Azure VM 代理插件](https://plugins.jenkins.io/azure-vm-agents)通过在 Azure 中运行的 Linux 虚拟机添加按需容量。
@@ -110,7 +108,7 @@ ms.lasthandoff: 08/29/2017
 1. 选择“添加 Azure 虚拟机模板”旁的“添加”。
 2. 对于“名称”，请输入 `defaulttemplate`
 3. 对于“标签”，请输入 `ubuntu`
-4. 从组合框中选择所需 [Azure 区域](https://azure.microsoft.com/regions/)。
+4. 从组合框中选择所需 [Azure 区域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 5. 从“虚拟机大小”下的下拉列表中选择 [VM 大小](/azure/virtual-machines/linux/sizes)。 通用 `Standard_DS1_v2` 大小对本教程来说就可以了。   
 6. 将“保留时间” 设为 `60`。 此设置定义 Jenkins 在解除分配闲置代理前可等待的分钟数。 如果不希望自动删除闲置代理，请指定为 0。
 
@@ -147,5 +145,4 @@ ms.lasthandoff: 08/29/2017
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [CI/CD 到 Azure App Service](deploy-jenkins-app-service-plugin.md)
-
+> [CI/CD 到 Azure 应用服务](java-deploy-webapp-tutorial.md)

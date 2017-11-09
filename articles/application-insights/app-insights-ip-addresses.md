@@ -1,9 +1,9 @@
 ---
-title: "Application Insights 使用的 IP 地址 | Microsoft 文档"
+title: "Application Insights 和 Log Analytics 使用的 IP 地址 | Microsoft Docs"
 description: "Application Insights 所需的服务器防火墙例外"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 44d989f8-bae9-40ff-bfd5-8343d3e59358
 ms.service: application-insights
@@ -11,17 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: eec83ceb6edbc1aaa68d51a85d2a913063677530
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/29/2017
-
+ms.date: 10/04/2017
+ms.author: mbullwin
+ms.openlocfilehash: 79ead157dc7509f035c491f9a4c4290eb4d70334
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="ip-addresses-used-by-application-insights"></a>Application Insights 使用的 IP 地址
-[Azure Application Insights](app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，你可能需要知道这些 IP 地址。
+# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
+[Azure Application Insights](app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
 
 > [!NOTE]
 > 尽管这些地址是静态的，但我们可能随时需要更改它们。
@@ -119,11 +118,19 @@ RU : Moscow
 94.245.82.33
 94.245.82.37
 94.245.82.38
+51.140.79.229
+51.140.84.172
+51.140.87.211
+51.140.105.74
 SE : Stockholm
 94.245.78.40
 94.245.78.41
 94.245.78.42
 94.245.78.45
+51.141.25.219
+51.141.32.101
+51.141.35.167
+51.141.54.177
 SG : Singapore
 52.187.29.7
 52.187.179.17
@@ -151,6 +158,14 @@ US : FL-Miami
 65.54.78.58
 65.54.78.59
 65.54.78.60
+52.165.130.58
+52.173.142.229
+52.173.147.190
+52.173.17.41
+52.173.204.247
+52.173.244.190
+52.173.36.222
+52.176.1.226
 US : IL-Chicago
 23.96.247.139
 23.96.249.113
@@ -189,12 +204,18 @@ US : VA-Ashburn
 
 ```  
 
-## <a name="data-access-api"></a>数据访问 API
+## <a name="application-insights-api"></a>Application Insights API
 | 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
 | API 文档 |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
 | 内部 API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |动态|443 |
+
+## <a name="log-analytics-api"></a>Log Analytics API
+| 目的 | URI | IP | 端口 |
+| --- | --- | --- | --- |
+| API |api.loganalytics.io<br/>*.api.loganalytics.io |动态 |80,443 |
+| API 文档 |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |动态 |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 
@@ -205,6 +226,15 @@ US : VA-Ashburn
 | 媒体 CDN | applicationanalyticsmedia.azureedge.net | 动态 | 80,443 |
 
 注意：*.applicationinsights.io 域为 Application Insights 团队所有。
+
+## <a name="log-analytics-portal"></a>Log Analytics 门户
+
+| 目的 | URI | IP | 端口 |
+| --- | --- | --- | --- |
+| 门户 | portal.loganalytics.io | 动态 | 80,443 |
+| CDN | applicationanalytics.azureedge.net | 动态 | 80,443 |
+
+注意：*.loganalytics.io 域由 Log Analytics 团队拥有。
 
 ## <a name="application-insights-azure-portal-extension"></a>Application Insights Azure 门户扩展
 
@@ -235,4 +265,3 @@ US : VA-Ashburn
 | 代理 | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 动态 | 443
 | 门户 | ppe.gateway.azureserviceprofiler.net | 动态 | 443
 | 存储 | *.core.windows.net | 动态 | 443
-

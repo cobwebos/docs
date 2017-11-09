@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 5047635555a6b4592c0714677c2b942e50bad344
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 
 为了帮助提高安全性，Azure 数据库包括大量可用于限制和控制访问的内置安全控件。
@@ -65,5 +63,4 @@ Azure 数据库是一个可靠的数据库平台，提供满足众多组织要�
 - 为服务器和/或数据库设置[防火墙规则](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure)。
 - 通过[加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/sql-server-encryption)保护数据。
 - 启用 [SQL 数据库审核](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing)。
-
 

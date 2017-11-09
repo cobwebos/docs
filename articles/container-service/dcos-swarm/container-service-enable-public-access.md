@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
+ms.openlocfilehash: c9ef5913859cf3a55a2de2107a9304f1d28a4829
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 25eb3b5d379f58022e9e516c51f67c52becf9087
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>启用对 Azure 容器服务应用程序的公共访问
 ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)中的任何 DC/OS 容器会自动公开到 Internet。 默认情况下，端口 **80**、**443**、**8080** 处于打开状态，且可访问任何在这些端口上侦听的（公用）容器。 本文介绍如何在 Azure 容器服务中打开更多端口供应用程序使用。
@@ -88,5 +87,4 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
 了解有关[公共和专用 DC/OS 代理](container-service-dcos-agents.md)之间的差异。
 
 阅读有关[管理 DC/OS 容器](container-service-mesos-marathon-ui.md)的详细信息。
-
 

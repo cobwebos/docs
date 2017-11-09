@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 03/22/2017
+ms.date: 3/23/2017
 ms.author: elbutter
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.openlocfilehash: 0d0d3b94fb50155ce0579d32e8ff78a47b9e3589
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>管理 Azure SQL 数据仓库中的计算能力（概述）
 > [!div class="op_single_selector"]
@@ -34,19 +33,19 @@ ms.lasthandoff: 04/12/2017
 
 SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许每项功能单独进行缩放。 因此，可以独立于数据量，根据性能需求缩放计算资源。 此体系结构的自然结果是，计算和存储的[计费][billed]是独立的。 
 
-本概述文章介绍如何扩展 SQL 数据仓库，以及如何利用 SQL 数据仓库的暂停、恢复和缩放功能。 请查阅[数据仓库单位 (DWU)][data warehouse units (DWUs)]页，了解 DWU 与性能的关联方式。 
+本概述文章介绍如何扩展 SQL 数据仓库，以及如何利用 SQL 数据仓库的暂停、恢复和缩放功能。 
 
 ## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>SQL 数据仓库中计算管理操作的工作原理
 SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布区的存储层组成。 
 
 在 SQL 数据仓库中，系统的头节点管理元数据，并且包含分布式的查询优化器中的正常活动会话。 此头节点下是计算节点和存储层。 对于 DWU 400，系统具有一个头节点、四个计算节点和存储层，包含 60 个分布区。 
 
-进行缩放或暂停操作时，系统将首先将终止所有传入的查询，并会回滚事务以确保一致的状态。 为缩放操作，缩放仅后会进行此事务回滚已完成。 对于向上缩放操作，额外的所需数量的系统设置计算节点，并重新附加到的存储层的计算节点开始。 对于缩减操作，不需要的节点将发布和剩余的计算节点重新自身附加到相应数量的分发。 对于暂停操作，所有计算节点的发行和你的系统将进行各种元数据操作，以使最终系统处于稳定状态。
+进行缩放或暂停操作时，系统将首先将终止所有传入的查询，并会回滚事务以确保一致的状态。 为缩放操作，缩放仅后会进行此事务回滚已完成。 对于向上缩放操作，额外的所需数量的系统设置计算节点，并重新附加到的存储层的计算节点开始。 对于缩减操作，不需要的节点将发布和剩余的计算节点重新自身附加到相应数量的分发。 对于暂停操作，所有计算节点的发行和系统将进行各种元数据操作，以使最终系统处于稳定状态。
 
 | DWU  | 计算节点的 \# | 每个节点的分布区 \# |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
-| 200  | 2                  | 30                           |
+| 200  | #N/A                  | 30                           |
 | 300  | 3                  | 20                           |
 | 400  | 4                  | 15                           |
 | 500  | 5                  | 12                           |
@@ -55,7 +54,7 @@ SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布
 | 1200 | 12                 | 5                            |
 | 1500 | 15                 | 4                            |
 | 2000 | 20                 | 3                            |
-| 3000 | 30                 | 2                            |
+| 3000 | 30                 | #N/A                            |
 | 6000 | 60                 | 1                            |
 
 用于管理计算的三个主要功能是：
@@ -87,10 +86,10 @@ SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布
 
 ## <a name="scale-compute"></a>缩放计算
 
-SQL 数据仓库中的性能以[数据仓库单位 (DWU)][data warehouse units (DWUs)] 度量，这是 CPU、内存和 I/O 带宽等计算资源的抽象度量值。 想要缩放其系统性能的用户可以通过不同的方式实现此目的，例如通过门户、T-SQL 和 REST API。 
+SQL 数据仓库中的性能以 [数据仓库单位 (DWU)][数据仓库单位 (DWU)] 度量，这是 CPU、内存和 I/O 带宽等计算资源的抽象度量值。 想要缩放其系统性能的用户可以通过不同的方式实现此目的，例如通过门户、T-SQL 和 REST API。 
 
 ### <a name="how-do-i-scale-compute"></a>如何缩放计算资源？
-可通过更改 DWU 设置来管理 SQL 数据仓库的计算能力。 为特定的操作添加更多 DWU 后，性能会[线性][linearly]提高。  我们提供确保性能将更改显著时是向上或向下扩展系统的 DWU 产品。 
+可通过更改 DWU 设置来管理 SQL 数据仓库的计算能力。 为特定的操作添加更多 DWU 后，性能会线性提高。  我们提供确保性能将更改显著时是向上或向下扩展系统的 DWU 产品。 
 
 若要调整 DWU，可以使用以下任何单个方法。
 
@@ -106,17 +105,17 @@ SQL 数据仓库中的性能以[数据仓库单位 (DWU)][data warehouse units (
 > [!Note] 
 > SQL 数据仓库旨在处理大量数据。 若要了解数据仓库的真正缩放功能，尤其是大规模 DWU 处理能力，可以使用接近或超过 1 TB 的大型数据集。
 
-针对工作负荷查找最佳 DWU 时，建议你：
+针对工作负荷查找最佳 DWU 时，建议：
 
 1. 对于正在开发的数据仓库，可以从较小的 DWU 性能级别开始。  一个好的起点为 DW400 或 DW200。
 2. 监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
 3. 通过假设线性缩放，判断需要将性能加快或减慢多少才能达到要求的最佳性能级别。
-4. 如果你要加快或减慢工作负荷的执行速度，则可按比例相应地提高或降低 DWU 数目。 
+4. 如果要加快或减慢工作负荷的执行速度，则可按比例相应地提高或降低 DWU 数目。 
 5. 继续进行调整，直到达到业务要求的最佳性能级别。
 
 > [!NOTE]
 >
-> 此外，如果可以计算节点之间拆分工作，与多个并行化只会增加查询性能。 如果发现缩放未更改你的性能，请查看我们的性能优化文章，以检查是否没有数据均匀分布，或者如果正在引入大量的数据移动。 
+> 此外，如果可以计算节点之间拆分工作，与多个并行化只会增加查询性能。 如果发现缩放未更改性能，请查看我们的性能优化文章，以检查是否没有数据均匀分布，或者如果正在引入大量的数据移动。 
 
 ### <a name="when-should-i-scale-dwus"></a>何时应进行 DWU 缩放？
 缩放 DWU 会改变以下重要方案：
@@ -182,9 +181,7 @@ SQL 数据仓库中的性能以[数据仓库单位 (DWU)][data warehouse units (
 <!--Image reference-->
 
 <!--Article references-->
-[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
-[billed]: https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/
-[linearly]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
+[billed]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
 [Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
 [Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
@@ -220,4 +217,3 @@ SQL 数据仓库中的性能以[数据仓库单位 (DWU)][data warehouse units (
 
 <!--Other Web references-->
 [Azure portal]: http://portal.azure.com/
-

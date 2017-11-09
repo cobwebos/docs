@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/19/2017
 ms.author: bryanla
+ms.openlocfilehash: 169417530da21e0c8c58cbf770fd1d26660387f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 9406ba2bbbea41f4677cd0d5aaddf16b0f4f26c8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>使用 Azure 门户配置 VM 托管服务标识 (MSI)
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
 托管服务标识为 Azure 服务提供了 Azure Active Directory 中的自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
 
-本文将介绍如何使用 Azure 门户为 Azure Windows VM 启用和禁用 MSI。
+本文将介绍如何使用 Azure 门户为 Azure VM 启用和删除 MSI。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,13 +33,18 @@ ms.lasthandoff: 09/14/2017
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm"></a>在 Azure VM 创建过程中启用 MSI
 
-截止本文撰写之时，不支持使用 Azure 门户在 VM 创建过程中启用 MSI。 请改为参阅[使用 Azure 门户创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)快速入门，详细了解如何创建 VM。 然后，转到下一部分，详细了解如何启用 MSI。
+截止本文撰写之时，不支持使用 Azure 门户在 VM 创建过程中启用 MSI。 而是请参阅以下 VM 创建快速入门文章之一，先创建一个 VM：
+
+- [使用 Azure 门户创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [使用 Azure 门户创建 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+
+然后，转到下一部分，详细了解如何在 VM 上启用 MSI。
 
 ## <a name="enable-msi-on-an-existing-azure-vm"></a>在现有 Azure VM 上启用 MSI
 
 如果 VM 最初预配时没有启用 MSI，请执行以下操作：
 
-1. 使用帐户登录 [Azure 门户](https://portal.azure.com)，此帐户与要在其下部署 VM 的 Azure 订阅相关联。
+1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
 
 2. 转到相应虚拟机。
 
@@ -53,7 +56,7 @@ ms.lasthandoff: 09/14/2017
 
 如果虚拟机不再需要 MSI，请执行以下操作：
 
-1. 使用帐户登录 [Azure 门户](https://portal.azure.com)，此帐户与要在其下部署 VM 的 Azure 订阅相关联。
+1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”。
 
 2. 转到相应虚拟机。
 
@@ -64,11 +67,9 @@ ms.lasthandoff: 09/14/2017
 ## <a name="related-content"></a>相关内容
 
 - 有关 MSI 的概述，请参阅[托管服务标识概述](msi-overview.md)。
-- 本文改编自[使用 Azure 门户创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)快速入门，出于添加 MSI 专属说明的目的进行了修改。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 Azure 门户，授予 Azure VM 的 MSI [对另一个 Azure 资源的访问权限](msi-howto-assign-access-portal.md)。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
-

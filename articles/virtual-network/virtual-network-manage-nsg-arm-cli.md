@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: dcb0455fe223e99b4f1b0035b1d1109ecf5ee268
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 管理网络安全组
 
@@ -161,7 +160,7 @@ az network nsg rule create  \
 ```
 
 ## <a name="change-a-rule"></a>更改规则
-若要将上面创建的规则更改为仅允许来自 **Internet** 的入站流量，请运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令：
+要将上面创建的规则更改为仅允许来自 **Internet** 的入站流量，请运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令：
 
 ```azurecli
 az network nsg rule update \
@@ -204,7 +203,7 @@ az network nsg rule delete \
 
 
 ## <a name="associate-an-nsg-to-a-nic"></a>将 NSG 关联到 NIC
-若要将 **NSG-FrontEnd** NSG 关联到 **TestNICWeb1** NIC，请使用 [az network nic update](/cli/azure/network/nic#update) 命令：
+要将 **NSG-FrontEnd** NSG 关联到 **TestNICWeb1** NIC，请使用 [az network nic update](/cli/azure/network/nic#update) 命令：
 
 ```azurecli
 az network nic update \
@@ -287,7 +286,7 @@ az network nic update \
 
 ## <a name="dissociate-an-nsg-from-a-nic"></a>取消 NSG 与 NIC 之间的关联
 
-若要从 **TestNICWeb1** NIC 取消关联 **NSG-FrontEnd** NSG，请再次运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令，但将 `--network-security-group` 参数替换为一个空字符串 (`""`)。
+要从 **TestNICWeb1** NIC 取消关联 **NSG-FrontEnd** NSG，请再次运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令，但将 `--network-security-group` 参数替换为一个空字符串 (`""`)。
 
 ```azurecli
 az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-security-group ""
@@ -296,7 +295,7 @@ az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-secur
 在输出中，将 `networkSecurityGroup` 项设置为 null。
 
 ## <a name="dissociate-an-nsg-from-a-subnet"></a>取消 NSG 与子网之间的关联
-若要从 **FrontEnd** 子网取消关联 **NSG-FrontEnd** NSG，请再次运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令，但将 `--network-security-group` 参数替换为一个空字符串 (`""`)。
+要从 **FrontEnd** 子网取消关联 **NSG-FrontEnd** NSG，请再次运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令，但将 `--network-security-group` 参数替换为一个空字符串 (`""`)。
 
 ```azurecli
 az network vnet subnet update \
@@ -309,7 +308,7 @@ az network vnet subnet update \
 在输出中，将 `networkSecurityGroup` 项设置为 null。
 
 ## <a name="associate-an-nsg-to-a-subnet"></a>将 NSG 关联到子网
-若要再次将 **NSG-FrontEnd** NSG 关联到 **FrontEnd** 子网，请运行以下命令：
+要再次将 **NSG-FrontEnd** NSG 关联到 **FrontEnd** 子网，请运行以下命令：
 
 ```azurecli
 az network vnet subnet update \
@@ -352,5 +351,4 @@ az network vnet subnet update \
     ```
 ## <a name="next-steps"></a>后续步骤
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
-
 

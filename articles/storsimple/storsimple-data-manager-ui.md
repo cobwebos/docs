@@ -14,17 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 692f00bf342e2cd6d3d76754d18751c773aeedc5
 ms.openlocfilehash: 53a8599df2c647613122cd791b680e2e658586b0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/28/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-using-the-storsimple-data-manager-service-ui-private-preview"></a>使用 StorSimple Data Manager 服务 UI（个人预览版）进行管理
 
-本文介绍如何使用 StorSimple Data Manager UI 对驻留在 StorSimple 8000 系列设备上的数据执行数据转换。 然后，转换后的数据可供其他 Azure 服务（如 Azure 媒体服务、Azure HDInsight、Azure 机器学习和 Azure 搜索）使用。 
+本文介绍如何使用 StorSimple Data Manager UI 对驻留在 StorSimple 8000 系列设备上的数据执行数据转换。 然后，Azure 媒体服务、Azure HDInsight、Azure 机器学习和 Azure 搜索等其他 Azure 服务可以使用转换的数据。 
 
 
 ## <a name="use-storsimple-data-transformation"></a>使用 StorSimple 数据转换
@@ -37,17 +35,17 @@ StorSimple Data Manager 是可在其中实例化数据转换的资源。 使用�
 
 1. 若要创建 StorSimple Data Manager 服务，请转到 [https://aka.ms/HybridDataManager](https://aka.ms/HybridDataManager)
 
-2. 单击 **+** 图标，然后搜索“StorSimple Data Manager”。 单击 StorSimple Data Manager 服务，然后单击“创建”。
+2. 单击 **+** 图标，并搜索“StorSimple Data Manager”。 单击 StorSimple Data Manager 服务，并单击“创建”。
 
 3. 如果已启用用于创建此服务的订阅，则将看到以下边栏选项卡。
 
     ![创建 StorSimple Data Manager 资源](./media/storsimple-data-manager-ui/create-new-data-manager-service.png)
 
-4. 输入相关项，然后单击“创建”。 指定的位置应该是存储你的存储帐户和 StorSimple Manager 服务的位置。 目前，仅支持“美国西部”和“西欧”区域。 因此，你的 StorSimple Manager 服务、 Data Manager 服务和关联的存储帐户都应在上述支持的区域中。 创建用户大约需要一分钟时间。
+4. 输入相关项，并单击“创建”。 指定的位置应该是存储存储帐户和 StorSimple Manager 服务的位置。 目前，仅支持“美国西部”和“西欧”区域。 因此，StorSimple Manager 服务、 Data Manager 服务和关联的存储帐户都应在上述支持的区域中。 创建用户大约需要一分钟时间。
 
 ### <a name="create-a-data-transformation-job-definition"></a>创建数据转换作业定义
 
-在 StorSimple Data Manager 服务中，需要创建数据转换作业定义。 作业定义指定你想要以本机格式移到存储帐户中的数据的详细信息。 
+在 StorSimple Data Manager 服务中，需要创建数据转换作业定义。 作业定义指定你希望以本机格式移至存储帐户的数据详细信息。 
 
 执行以下步骤可创建新的数据转换作业定义。
 
@@ -55,27 +53,27 @@ StorSimple Data Manager 是可在其中实例化数据转换的资源。 使用�
 
     ![单击“+作业定义”](./media/storsimple-data-manager-ui/click-add-job-definition.png)
 
-2. 此时将打开新的作业定义边栏选项卡。 为作业定义指定名称并单击“源”。 在“配置数据源”边栏选项卡，指定 StorSimple 设备的详细信息和所需数据。
+2. 此时会打开新作业定义边栏选项卡。 为作业定义指定名称并单击“源”。 在“配置数据源”边栏选项卡，指定 StorSimple 设备的详细信息和所需数据。
 
     ![创建作业定义](./media/storsimple-data-manager-ui//create-new-job-deifnition.png)
 
-3. 由于这是新的 Data Manager 服务，因此不配置任何数据存储库。 若要将 StorSimple Manager 添加为数据存储库，请在数据存储库下拉列表中单击“新增”，然后单击“添加数据存储库”。
+3. 由于这是新的 Data Manager 服务，因此不配置任何数据存储库。 要将 StorSimple Manager 添加为数据存储库，请在数据存储库下拉列表中单击“新增”，然后单击“添加数据存储库”。
 
 4. 选择“StorSimple 8000 系列管理器”作为存储库类型，并输入 **StorSimple Manager** 的属性。 在“资源 Id”字段中，需要输入 StorSimple Manager 的注册密钥中 **:** 之前的数字。
 
     ![创建数据源](./media/storsimple-data-manager-ui/create-new-data-source.png)
 
-5.  完成后单击“确定”。 这将保存你的数据存储库，并且此 StorSimple Manager 可以在其他作业定义中重复使用，而无需重新输入这些参数。 单击“确定”后，需要几秒钟时间此 StorSimple Manager 才会显示在下拉列表中。
+5.  完成后单击“确定”。 这会保存数据存储库，并且此 StorSimple Manager 可以在其他作业定义中重复使用，而无需重新输入这些参数。 单击“确定”后，需要几秒钟时间此 StorSimple Manager 才会显示在下拉列表中。
 
-6.  在“配置数据源”边栏选项卡中，输入设备名称和包含你感兴趣的数据的卷名。
+6.  在“配置数据源”边栏选项卡中，输入设备名称和具有所需数据的卷名称。
 
-7.  在“筛选器”子部分中，输入包含你感兴趣的数据的根目录（此字段应以 `\` 开头）。 还可以在此处添加任何文件筛选器。
+7.  在“筛选器”小节，输入包含所需数据的根目录（该字段应以 `\` 开头）。 还可以在此处添加任何文件筛选器。
 
 8.  数据转换服务处理通过快照推送到 Azure 的数据。 运行此作业时，可以选择每次运行此作业时执行备份（以处理最新的数据） 或者使用云中的上次现有备份（如果要处理某些已存档的数据）。
 
     ![新数据源的详细信息](./media/storsimple-data-manager-ui/new-data-source-details.png)
 
-9. 接下来，需要配置“目标”设置。 支持两种类型的目标 - Azure 存储帐户和 Azure 媒体服务帐户。 选择存储帐户，可将文件放入该帐户的 blob 中。 选择媒体服务帐户，可将文件放入该帐户的资产中。 同样，我们需要添加存储库。 在下拉列表中，选择“新增”，然后选择“配置设置”。
+9. 接下来，需要配置“目标”设置。 支持两种类型的目标 - Azure 存储帐户和 Azure 媒体服务帐户。 选择存储帐户，可将文件放入该帐户的 blob 中。 选择媒体服务帐户，可将文件放入该帐户的资产中。 同样，我们需要添加存储库。 在下拉列表中，选择“新增”，并选择“配置设置”。
 
     ![创建数据接收器](./media/storsimple-data-manager-ui/create-new-data-sink.png)
 
@@ -93,7 +91,7 @@ StorSimple Data Manager 是可在其中实例化数据转换的资源。 使用�
 
 每当需要将数据从 StorSimple 移到已在作业定义中指定的存储帐户时，便会需要调用它。 对于每次调用作业时更改参数，有一些灵活性。 步骤如下：
 
-1. 选择 StorSimple Data Manager 服务，然后转到“监视”。 单击“立即运行”。
+1. 选择 StorSimple Data Manager 服务，并转到“监视”。 单击“立即运行”。
 
     ![触发作业定义](./media/storsimple-data-manager-ui/run-now.png)
 
@@ -101,7 +99,7 @@ StorSimple Data Manager 是可在其中实例化数据转换的资源。 使用�
 
     ![运行作业设置](./media/storsimple-data-manager-ui/run-settings.png)
 
-3. 单击“确定”，然后单击“运行”以启动作业。 若要监视此作业，请转到 StorSimple Data Manager 中的“作业”页。
+3. 单击“确定”，并单击“运行”以启动作业。 若要监视此作业，请转到 StorSimple Data Manager 中的“作业”页。
 
     ![作业列表和状态](./media/storsimple-data-manager-ui/jobs-list-and-status.png)
 

@@ -13,22 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 9a30bcca720ff135d0180d73f46e78403e9bca43
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 集成
 本教程的目的是说明 Azure 与 SCC LifeCycle 的集成。  
 
-在本教程中概述的方案假定您已具有以下各项：
+在本教程中概述的方案假定已有以下各项：
 
 * 一个有效的 Azure 订阅
 * 已启用 SCC LifeCycle 单一登录 (SSO) 的订阅
 
-完成本教程后，已向 SCC LifeCycle 分配的 Azure AD 用户将能够在 SCC LifeCycle 公司站点（服务提供商发起的登录）或使用[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录到应用程序。
+完成本教程后，已向 SCC LifeCycle 分配的 Azure AD 用户能够在 SCC LifeCycle 公司站点（服务提供商发起的登录）或使用[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录到应用程序。
 
 在本教程中概述的方案由以下构建基块组成：
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 04/03/2017
 6. 在搜索框中，键入“SCC LifeCycle”。
    
     ![应用程序库](./media/active-directory-saas-scc-lifecycle-tutorial/IC794121.png "应用程序库")
-7. 在结果窗格中，选择“SCC LifeCycle”，然后单击“完成”以添加该应用程序。
+7. 在结果窗格中，选择“SCC LifeCycle”，并单击“完成”以添加该应用程序。
    
     ![SCC LifeCycle](./media/active-directory-saas-scc-lifecycle-tutorial/IC795082.png "SCC LifeCycle")
    
@@ -73,10 +72,10 @@ ms.lasthandoff: 04/03/2017
 1. 在 Azure 经典门户中的“SCC LifeCycle”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-scc-lifecycle-tutorial/IC794122.png "配置单一登录")
-2. 在“你希望用户如何登录 SCC LifeCycle”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 SCC LifeCycle”页上，选择“Microsoft Azure AD 单一登录”，并单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "配置单一登录")
-3. 在“配置应用 URL”页上的“登录 URL”文本框中，使用以下模式键入用户用于登录 SCC LifeCycle 应用程序的 URL：*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*，然后单击“下一步”。
+3. 在“配置应用 URL”页上的“登录 URL”文本框中，使用以下模式键入用户用于登录 SCC LifeCycle 应用程序的 URL：*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*，并单击“下一步”。
    
     ![配置应用 URL](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "配置应用 URL")
 4. 在“配置 SCC LifeCycle 的单一登录”页上，单击“下载元数据”，然后将元数据文件本地保存在计算机上。
@@ -89,7 +88,7 @@ ms.lasthandoff: 04/03/2017
    > 
    > 
 
-6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
+6. 在 Azure 经典门户中，选择“单一登录配置确认”，并单击“完成”，关闭“配置单一登录”对话框。
    
     ![配置单一登录](./media/active-directory-saas-scc-lifecycle-tutorial/IC794125.png "配置单一登录")
    
@@ -107,16 +106,15 @@ ms.lasthandoff: 04/03/2017
 ## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-**若要将用户分配到 SCC LifeCycle，请执行以下步骤：**
+**要将用户分配到 SCC LifeCycle，请执行以下步骤：**
 
 1. 在 Azure 经典门户中，创建一个测试帐户。
 2. 在“SCC LifeCycle”应用程序集成页上，单击“分配用户”。
    
     ![分配用户](./media/active-directory-saas-scc-lifecycle-tutorial/IC794126.png "分配用户")
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
+3. 选择测试用户，单击“分配”，并单击“是”确认分配。
    
     ![是](./media/active-directory-saas-scc-lifecycle-tutorial/IC767830.png "是")
 
 如果要测试 SSO 设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
 

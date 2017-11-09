@@ -3,7 +3,7 @@ title: "Azure Application Insights 中 Analytics 的演示 | Microsoft Docs"
 description: "Analytics 是 Application Insights 的强大搜索工具，本演示提供了 Analytics 中所有主要查询的简短示例。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
 ms.service: application-insights
@@ -12,22 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: 26a5854735bd197fb114fce409a093251dc5c2f0
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: edcf294856582569c00f7cf49beb3a481e28d7d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
-* **[在模拟数据上体验 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）
+* **[在模拟数据上体验 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
 * **[SQL 用户的备忘单](https://aka.ms/sql-analytics)**转换最常见的惯用语言。
 
-让我们一起来逐步了解一些基本查询，帮助你入门。
+让我们一起逐步了解一些基本查询，帮助入门。
 
 ## <a name="connect-to-your-application-insights-data"></a>连接到 Application Insights 数据
 在 Application Insights 中从应用的[概述边栏选项卡](app-insights-dashboards.md)打开 Analytics：
@@ -58,6 +57,16 @@ ms.lasthandoff: 08/02/2017
 > 单击列标头，重新排列 Web 浏览器中的结果。 但请注意：对于大型结果集，会限制下载到浏览器的行数。 按此方式排序不一定会显示实际的最高或最低项。 若要对项进行可靠地排序，请使用 `top` 或 `sort` 运算符。
 >
 >
+
+## <a name="query-across-applications"></a>跨应用程序查询
+如果想要合并来自多个 Application Insights 应用程序的数据，请使用关键字 **app** 和表名称指定应用程序。  此查询使用 **union** 命令合并来自两个不同应用程序的请求。
+
+
+```AIQL
+
+    union app('fabrikamstage').requests, app('fabrikamprod').requests
+    
+```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 和 [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
 `take` 用于快速获取结果示例，但其不以特定顺序显示表中的行。 若要获取有序视图，请使用 `top`（针对示例）或 `sort`（针对整个表）。
@@ -579,9 +588,9 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
     | summarize count() by realName
 ```
 
-若要导入表，请在“架构”边栏选项卡的“其他数据源”下，遵循说明，通过上传数据示例，添加新数据源。 然后使用此定义上传表。
+若要导入表，请在“架构”边栏选项卡的“其他数据源”下，遵循说明，通过上传数据示例，添加新数据源。 然后，使用此定义上传表。
 
-导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”的链接。 使用此链接登录预览计划，并该链接将替换为“添加新数据源”按钮。
+导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”链接。 使用此链接登录预览计划，并该链接将替换为“添加新数据源”按钮。
 
 
 ## <a name="tables"></a>表
@@ -704,4 +713,3 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 * [SQL 用户的备忘单](https://aka.ms/sql-analytics)转换最常见的惯用语言。
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-

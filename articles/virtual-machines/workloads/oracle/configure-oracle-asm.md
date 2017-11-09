@@ -15,17 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
 ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  你将学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM
@@ -64,7 +62,7 @@ az group create --name myResourceGroup --location eastus
     --data-disk-sizes-gb 50 50 50 50
    ```
 
-创建 VM 后，Azure CLI 将显示类似于以下示例的信息。 请记下 `publicIpAddress` 的值。 需要使用此地址来访问 VM。
+创建 VM 后，Azure CLI 会显示类似于以下示例的信息。 请记下 `publicIpAddress` 的值。 需要使用此地址来访问 VM。
 
    ```azurecli
    {
@@ -81,7 +79,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="connect-to-the-vm"></a>连接到 VM
 
-若要与 VM 建立 SSH 会话并配置其他设置，请使用以下命令。 请将 IP 地址替换为你的 VM 的 `publicIpAddress` 值。
+若要与 VM 建立 SSH 会话并配置其他设置，请使用以下命令。 请将 IP 地址替换为 VM 的 `publicIpAddress` 值。
 
 ```bash 
 ssh <publicIpAddress>
@@ -430,7 +428,7 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。 在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 
@@ -456,7 +454,7 @@ ssh <publicIpAddress>
    ./runInstaller
    ```
 
-   此时将打开 Oracle Grid Infrastructure 12c Release 1 安装程序。 （安装程序可能需要花费几分钟时间来启动。）
+   此时会打开 Oracle Grid Infrastructure 12c Release 1 安装程序。 （安装程序可能需要花费几分钟时间来启动。）
 
 2. 在“选择安装选项”页上，选择“安装并配置适用于独立服务器的 Oracle Grid Infrastructure”。
 
@@ -471,7 +469,7 @@ ssh <publicIpAddress>
    - 在“添加磁盘”下面，选择“ORCLASMSP”。
    - 单击`next`。
 
-5. 在“指定 ASM 密码”页上，选择“对这些帐户使用相同的密码”选项，然后输入密码。
+5. 在“指定 ASM 密码”页上，选择“对这些帐户使用相同的密码”选项，并输入密码。
 
    ![安装程序中的“指定 ASM 密码”页屏幕截图](./media/oracle-asm/install04.png)
 
@@ -512,7 +510,7 @@ ssh <publicIpAddress>
    ./asmca
    ```
 
-   此时将打开 Oracle ASM 配置助手。
+   此时会打开 Oracle ASM 配置助手。
 
 2. 在“配置 ASM: 磁盘组”对话框中单击 `Create` 按钮，再单击 `Show Advanced Options`。
 
@@ -554,7 +552,7 @@ Oracle 数据库软件已安装在 Azure Marketplace 映像中。 若要创建�
    cd /u01/app/oracle/product/12.1.0/dbhome_1/bin
    ./dbca
    ```
-   此时将打开配置助手。
+   此时会打开配置助手。
 
 2. 在“数据库操作”页上，单击 `Create Database`。
 
@@ -589,4 +587,3 @@ az group delete --name myResourceGroup
 [教程：配置 Oracle GoldenGate](Configure-oracle-golden-gate.md)
 
 查看[设计 Oracle DB](oracle-design.md)
-

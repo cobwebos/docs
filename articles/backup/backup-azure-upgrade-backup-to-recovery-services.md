@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/03/2017
 ms.author: sogup;markgal;arunak
+ms.openlocfilehash: c7eb4514dca806d6e6470091423785b30a7d4bcb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 531d645bab8c80caba96bc5292354b5490a53804
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -69,7 +68,8 @@ TargetResourceGroupName - 由于要将保管库升级到基于资源管理器的
 >[!NOTE]
 > 资源组名称具有约束。 请务必遵循指导；否则可能导致保管库升级失败。
 >
->
+>**Azure 美国政府**客户运行脚本时需要将环境设置为“AzureUSGovernment”。
+>**Azure 中国**客户运行脚本时需要将环境设置为“AzureChinaCloud”。
 
 以下代码片段是 PowerShell 命令大致形式的示例：
 
@@ -159,4 +159,3 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 [备份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [备份 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)</br>
 [备份 Windows Server](backup-configure-vault.md)。
-

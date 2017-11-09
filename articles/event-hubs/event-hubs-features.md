@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-features-overview"></a>事件中心功能概述
 
 Azure 事件中心是可缩放的事件处理服务，它引入并处理大量事件和数据，具有低延迟和高可靠性。 有关服务的高级概述，请参阅[什么是事件中心？](event-hubs-what-is-event-hubs.md)。
@@ -173,4 +171,3 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [事件中心示例]: https://github.com/Azure/azure-event-hubs/tree/master/samples
-

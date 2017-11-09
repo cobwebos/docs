@@ -15,13 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
-ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
-
+ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>使用 JSON 为逻辑应用创建工作流定义
 
@@ -277,9 +275,9 @@ ms.lasthandoff: 03/01/2017
 
 请注意： 
 
-*    [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 函数检查类别是否与某个已知的已定义类别匹配。
+*   [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 函数检查类别是否与某个已知的已定义类别匹配。
 
-*    在获取类别后，可以使用方括号提取映射的项：`parameters[...]`
+*   在获取类别后，可以使用方括号提取映射的项：`parameters[...]`
 
 ## <a name="process-strings"></a>处理字符串
 
@@ -452,4 +450,3 @@ ms.lasthandoff: 03/01/2017
 在每个环境中，可为 `connection` 参数提供不同值。 
 
 如需用于创建和管理逻辑应用的所有选项，请参阅 [REST API 文档](https://msdn.microsoft.com/library/azure/mt643787.aspx)。 
-

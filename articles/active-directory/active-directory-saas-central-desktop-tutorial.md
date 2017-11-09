@@ -13,15 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
 ms.openlocfilehash: fe32c1d68040ceb9d9de2ad6c4a6dc9ea93f5aef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
-本教程的目的是说明 Azure 与 Central Desktop 的集成。 在本教程中概述的方案假定您已具有以下各项：
+本教程的目的是说明 Azure 与 Central Desktop 的集成。 在本教程中概述的方案假定已有以下各项：
 
 * 一个有效的 Azure 订阅
 * 已启用 Central Desktop 单一登录的订阅 / Central Desktop 租户
@@ -56,7 +55,7 @@ ms.lasthandoff: 02/17/2017
 6. 在搜索框中，键入“Central Desktop”。
    
    ![应用程序库](./media/active-directory-saas-central-desktop-tutorial/IC769559.png "应用程序库")
-7. 在结果窗格中，选择“Central Desktop”，然后单击“完成”添加该应用程序。
+7. 在结果窗格中，选择“Central Desktop”，并单击“完成”添加该应用程序。
    
    ![Central Desktop](./media/active-directory-saas-central-desktop-tutorial/IC769560.png "Central Desktop")
    
@@ -64,7 +63,7 @@ ms.lasthandoff: 02/17/2017
 
 本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Central Desktop 证明自己的身份。
 
-在此过程中，需要将 base-64 编码的证书上载到 Central Desktop 租户。  
+在此过程中，需要将 base-64 编码的证书上传到 Central Desktop 租户。  
 如果不熟悉此过程，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)。
 
 **若要配置单一登录，请执行以下步骤：**
@@ -72,10 +71,10 @@ ms.lasthandoff: 02/17/2017
 1. 在 Azure 经典门户中的“Central Desktop”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
    ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "配置单一登录")
-2. 在“你希望用户如何登录 Central Desktop”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 Central Desktop”页上，选择“Microsoft Azure AD 单一登录”，并单击“下一步”。
    
    ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC777628.png "配置单一登录")
-3. 在“配置应用 URL”对话框页上，执行以下步骤，然后单击“下一步”： 
+3. 在“配置应用 URL”对话框页上，执行以下步骤，并单击“下一步”： 
    
    1. 在“Central Desktop 登录 URL”文本框中，键入 Central Desktop 租户的 URL（例如：*http://contoso.centraldesktop.com*）。
    2. 在“Central Desktop 回复 URL”文本框中，键入 Central Desktop AssertionConsumerService URL（例如：https://contoso.centraldesktop.com/saml2-assertion.php）。
@@ -85,11 +84,11 @@ ms.lasthandoff: 02/17/2017
    >  
    
    ![配置应用 URL](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "配置应用 URL")
-4. 在“配置 Central Desktop 的单一登录”页上，若要下载证书，请单击“下载证书”，然后将该证书文件保存到计算机上。
+4. 在“配置 Central Desktop 的单一登录”页上，要下载证书，请单击“下载证书”，然后将该证书文件保存到计算机上。
    
   ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC769562.png "配置单一登录")
 5. 登录到 **Central Desktop** 租户。
-6. 转到“设置”，单击“高级”，然后单击“单一登录”。
+6. 转到“设置”，单击“高级”，并单击“单一登录”。
    
   ![设置 - 高级](./media/active-directory-saas-central-desktop-tutorial/IC769563.png "Setup - Advanced")
 7. 在“单一登录设置”页上，执行以下步骤：
@@ -112,7 +111,7 @@ ms.lasthandoff: 02/17/2017
       >  
    4. 选择“显示 SAMLv2 登录页的链接”。
 9. 单击“更新”。
-10. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
+10. 在 Azure 经典门户中，选择“单一登录配置确认”，并单击“完成”，关闭“配置单一登录”对话框。
     
     ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC769566.png "配置单一登录")
     
@@ -126,7 +125,7 @@ ms.lasthandoff: 02/17/2017
 3. 单击“添加内部成员”。
    
   ![人员](./media/active-directory-saas-central-desktop-tutorial/IC781051.png "人员")
-4. 在“新成员的电子邮件地址”文本框中，键入要预配的 AAD 帐户，然后单击“下一步”。
+4. 在“新成员的电子邮件地址”文本框中，键入要预配的 AAD 帐户，并单击“下一步”。
    
   ![新成员的电子邮件地址](./media/active-directory-saas-central-desktop-tutorial/IC781052.png "Email Addresses of New Members")
 5. 单击“添加内部成员”。
@@ -144,16 +143,15 @@ ms.lasthandoff: 02/17/2017
 ## <a name="assign-users"></a>分配用户
 若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-**若要将用户分配到 Central Desktop，请执行以下步骤：**
+**要将用户分配到 Central Desktop，请执行以下步骤：**
 
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Central Desktop”应用程序集成页上，单击“分配用户”。
    
    ![分配用户](./media/active-directory-saas-central-desktop-tutorial/IC769567.png "分配用户")
-3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
+3. 选择测试用户，单击“分配”，并单击“是”确认分配。
    
    ![是](./media/active-directory-saas-central-desktop-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
 

@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/04/2017
+ms.date: 10/24/2017
 ms.author: juliako;anilmur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 38c3637cc477e24ac8d056611e7fda9a4d693cdb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: a2c5fbb574f0388af62186047afedfb45f0881a0
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -30,16 +29,16 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 可以选择实时流式播放你的内容，或者根据点播情况交付内容。 本主题还提供了其他相关主题的链接。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
-你可以在此处查看 AMS 学习路径：
+可以在此处查看 AMS 学习路径：
 
 * [AMS 实时流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 * [AMS 按需流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始使用 Azure 媒体服务，你应该具备以下条件：
+要开始使用 Azure 媒体服务，应该具备以下条件：
 
-* 一个 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * （可选）设置开发环境。 为开发环境选择“.NET”或“REST API”。 有关详细信息，请参阅 [设置环境](media-services-dotnet-how-to-use.md)。
 
@@ -48,7 +47,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 ## <a name="sdks-and-tools"></a>SDK 和工具
 
-若要构建媒体服务解决方案，你可以使用：
+要构建媒体服务解决方案，可以使用：
 
 * [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 可用的客户端 SDK 之一：
@@ -59,6 +58,10 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 * 现有工具：
     * [Azure 门户](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) （Azure 媒体服务资源管理器 (AMSE) 是适用于 Windows 的 Winforms/C# 应用程序）
+
+## <a name="code-samples"></a>代码示例
+
+在“Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
 ## <a name="concepts-and-overview"></a>概念和概述
 有关 Azure 媒体服务的概念，请参阅 [概念](media-services-concepts.md)。
@@ -72,9 +75,9 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 ## <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 
 * 对于媒体服务编码，我们保证 REST API 事务可实现 99.9% 的可用性。
-* 如果客户购买了标准或高级流式处理终结点，则对于流式处理，我们将以 99.9% 的可用性保证成功处理现有媒体内容的请求。
+* 如果客户购买了标准或高级流式处理终结点，则对于流式处理，我们以 99.9% 的可用性保证成功处理现有媒体内容的请求。
 * 对于实时频道，我们保证运行中的频道在至少 99.9% 的时间都能建立外部连接。
-* 对于内容保护，我们保证将在至少 99.9% 的时间成功满足密钥请求。
+* 对于内容保护，我们保证会在至少 99.9% 的时间成功满足密钥请求。
 * 对于索引器，我们将使用编码保留单位在 99.9% 的时间成功处理索引器任务请求。
 
 有关详细信息，请参阅 [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)。
@@ -88,4 +91,3 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 ## <a name="provide-feedback"></a>提供反馈
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 596431b7279b753ca4da838eb028cdde2022ce02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-dashboard"></a>使用 StorSimple Manager 服务仪表板
 ## <a name="overview"></a>概述
@@ -32,7 +31,7 @@ StorSimple Manager 服务仪表板显示以下信息：
 * 在“**图表**”区域中，可以看到设备的相关指标图。 可查看所有设备使用的主存储（本地固定和分层），以及在一段时间内设备使用的云存储。 使用图表右上角的控件可指定 1 周、1 个月、3 个月或 1 年的时间刻度。
 * “**使用情况概述**”显示相对于所有设备可用的总存储而言，由所有设备预配和使用的主存储。 “**预配**”指准备和分配的供使用的存储空间量，“**已用**”指连接到设备的发起程序中现实的卷的使用情况。
 * “**警报**”区提供对所有设备的所有活动警报的快照，按警报的严重性进行分组。 单击严重级别可打开“**警报**”页，确定作用域来显示这些警报。 在“警报”页上，可单击单个警报以查看该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
-* “**作业**”区域提供对连接到你的服务的所有设备的最近作业的快照。 有可用于查看当前正在进行的作业、过去 24 小时内失败的作业，或计划在下一个 24 小时内运行的作业链接。
+* “**作业**”区域提供对连接到服务的所有设备的最近作业的快照。 有可用于查看当前正在进行的作业、过去 24 小时内失败的作业，或计划在下一个 24 小时内运行的作业链接。
 * “**速览**”区域提供服务状态、连接到服务的设备数量、服务位置，及与服务关联的订阅的详细信息等有用信息。 此外，还有操作日志的链接。 单击链接可查看所有已完成的 StorSimple Manager 服务操作的列表。
 
 可使用“StorSimple Manager 服务仪表板”页启动以下任务：
@@ -69,5 +68,4 @@ StorSimple Manager 服务仪表板显示以下信息：
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [排除 StorSimple 设备故障](storsimple-troubleshoot-operational-device.md)。
 * 了解如何使用 [StorSimple Manager 服务以管理 StorSimple 设备](storsimple-manager-service-administration.md) 的详细内容。
-
 

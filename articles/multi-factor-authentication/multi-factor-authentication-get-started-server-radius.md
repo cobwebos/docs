@@ -1,6 +1,6 @@
 ---
 title: "RADIUS 身份验证和 Azure MFA 服务器 | Microsoft Docs"
-description: "本 Azure Multi-Factor Authentication 页面会帮助你部署 RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器。"
+description: "本 Azure 多重身份验证页面会帮助你部署 RADIUS 身份验证和 Azure 多重身份验证服务器。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,12 +15,11 @@ ms.date: 08/25/2017
 ms.author: kgremban
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017, it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 4dfa56ba6f80193e643965b97b6439c62f7873e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -34,7 +33,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 ![Radius 身份验证](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
 ## <a name="add-a-radius-client"></a>添加 RADIUS 客户端
-若要配置 RADIUS 身份验证，请在 Windows Server 上安装 Azure Multi-Factor Authentication 服务器。 如果有 Active Directory 环境，应将服务器加入到网络内部的域中。 使用以下过程可配置 Azure Multi-Factor Authentication 服务器：
+若要配置 RADIUS 身份验证，请在 Windows Server 上安装 Azure 多重身份验证服务器。 如果有 Active Directory 环境，应将服务器加入到网络内部的域中。 使用以下过程可配置 Azure 多重身份验证服务器：
 
 1. 在 Azure 多重身份验证服务器内，单击左侧菜单中的“RADIUS 身份验证”图标。
 2. 选中“启用 RADIUS 身份验证”复选框。

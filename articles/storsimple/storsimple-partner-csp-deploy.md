@@ -14,21 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b28c5e93dc8f53597b1d2fa6f4ae154acf16068
 ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>为云解决方案提供商计划部署 StorSimple Virtual Array
 
 ## <a name="overview"></a>概述
 
 云解决方案提供商 (CSP) 合作伙伴可为其客户部署 StorSimple Virtual Array。 CSP 合作伙伴可以创建 StorSimple Device Manager 服务。 可将此服务用于部署和管理 StorSimple Virtual Array 以及相关联的共享、卷和备份。
 
-本文介绍 CSP 合作伙伴如何向现有客户添加客户或新订阅，然后创建服务，以在 CSP 中部署 StorSimple Virtual Array。
+本文介绍 CSP 合作伙伴如何向现有客户添加客户或新订阅，并创建服务，以在 CSP 中部署 StorSimple Virtual Array。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +37,7 @@ ms.lasthandoff: 02/09/2017
                              
 ## <a name="add-a-customer"></a>添加客户
 
-如果添加客户，将自动创建订阅。 若要添加客户（并自动创建订阅），请在合作伙伴门户中执行下列步骤。
+如果添加客户，会自动创建订阅。 若要添加客户（并自动创建订阅），请在合作伙伴门户中执行下列步骤。
 
 1. 转至[合作伙伴中心](http://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
 
@@ -69,7 +67,7 @@ ms.lasthandoff: 02/09/2017
 
     ![登录到 Azure 门户](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. 若要创建 StorSimple 设备管理器，请单击“+ 新建”，然后搜索或导航到“StorSimple 虚拟设备系列”。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
+8. 要创建 StorSimple 设备管理器，请单击“+ 新建”，并搜索或导航到“StorSimple 虚拟设备系列”。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
 
     ![创建 StorSimple 设备管理器服务](./media/storsimple-partner-csp-deploy/image8.png)
 
@@ -86,7 +84,7 @@ ms.lasthandoff: 02/09/2017
 
     ![客户](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. 在订阅的“热门产品/服务”中勾选“Microsoft Azure”，然后单击“提交”。 这将创建一个新订阅。
+3. 在订阅的“热门产品/服务”中勾选“Microsoft Azure”，并单击“提交”。 这会创建一个新订阅。
 
     ![添加新订阅](./media/storsimple-partner-csp-deploy/image11.png)
 
@@ -98,7 +96,7 @@ ms.lasthandoff: 02/09/2017
 
     ![登录到 Azure 门户](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. 若要创建 StorSimple 设备管理器，请单击“+ 新建”，然后搜索或导航到“StorSimple 虚拟设备系列”。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
+8. 要创建 StorSimple 设备管理器，请单击“+ 新建”，并搜索或导航到“StorSimple 虚拟设备系列”。 有关详细信息，请转到[部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
 
     ![创建 StorSimple 设备管理器服务](./media/storsimple-partner-csp-deploy/image8.png)
 
@@ -106,4 +104,3 @@ ms.lasthandoff: 02/09/2017
 
 - 如果对 CSP 中的 StorSimple 有更多问题，请转到 [CSP 中的 StorSimple：常见问题解答](storsimple-partner-csp-faq.md)。
 - 如果已准备好部署 StorSimple，请转到[部署 CSP 中的 StorSimple](storsimple-partner-csp-deploy.md)。
-

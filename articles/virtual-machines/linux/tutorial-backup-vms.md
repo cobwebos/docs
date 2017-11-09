@@ -16,16 +16,15 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
+ms.openlocfilehash: 0e659c1906c99415ab1b53785a606330ef9068c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: d0cbf7883a8737bcb10e9dd251c9792a12993f77
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>在 Azure 中备份 Linux 虚拟机
 
-可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，或只是还原特定的文件。 本文介绍如何将单个文件还原到运行 nginx 的 Linux VM。 如果没有可用的 VM，可以参考 [Linux 快速入门](quick-create-cli.md)创建一个 VM。 本教程将介绍如何执行下列操作：
+可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，或只是还原特定的文件。 本文介绍如何将单个文件还原到运行 nginx 的 Linux VM。 如果没有可用的 VM，可以参考 [Linux 快速入门](quick-create-cli.md)创建一个 VM。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份
@@ -174,5 +173,4 @@ ms.lasthandoff: 07/28/2017
 
 > [!div class="nextstepaction"]
 > [监视虚拟机](tutorial-monitoring.md)
-
 

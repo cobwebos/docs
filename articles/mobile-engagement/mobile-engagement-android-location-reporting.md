@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 777d5719cce505b55dfb61c91dcac7e713b077a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="location-reporting-for-azure-mobile-engagement-android-sdk"></a>Azure Mobile Engagement Android SDK 的位置报告
 > [!div class="op_single_selector"]
@@ -47,11 +46,11 @@ ms.lasthandoff: 11/17/2016
     engagementConfiguration.setLazyAreaLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-你还需要指定一个位置权限。 此代码使用 ``COARSE`` 权限︰
+还需要指定一个位置权限。 此代码使用 ``COARSE`` 权限︰
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-如果你的应用需要该权限，可以使用 ``ACCESS_FINE_LOCATION`` 来替代。
+如果应用需要该权限，可以使用 ``ACCESS_FINE_LOCATION`` 来替代。
 
 ### <a name="real-time-location-reporting"></a>实时位置报告
 实时位置报告支持报告与设备关联的纬度和经度。 默认情况下，这种类型的位置报告仅使用基于 Cell ID 或 WIFI 的网络位置。 实时位置报告仅在应用程序在前台中运行时（例如，在会话期间）可用。
@@ -116,14 +115,14 @@ ms.lasthandoff: 11/17/2016
 
 如果面向 Android API 级别 23，则安装新应用时，默认会关闭运行时权限。 否则，默认会打开。
 
-你可以从设备“设置”菜单启用/禁用这些权限。 从系统菜单关闭的权限会终止应用的后台进程，这是系统行为，并不影响在后台接收推送功能。
+可以从设备“设置”菜单启用/禁用这些权限。 从系统菜单关闭的权限会终止应用的后台进程，这是系统行为，并不影响在后台接收推送功能。
 
 在 Mobile Engagement 位置报告的上下文中，需要在运行时审核的权限包括：
 
 * `ACCESS_COARSE_LOCATION`
 * `ACCESS_FINE_LOCATION`
 
-使用标准系统对话框从用户请求权限。 如果用户批准，请通知 ``EngagementAgent`` 实时考虑该更改。 否则更改将在下次用户启动应用程序时进行处理。
+使用标准系统对话框从用户请求权限。 如果用户批准，请通知 ``EngagementAgent`` 实时考虑该更改。 否则更改会在下次用户启动应用程序时进行处理。
 
 下面是要在应用程序的活动中使用的代码示例，如果 ``EngagementAgent`` 为正，则请求权限并转发结果：
 
@@ -160,4 +159,3 @@ ms.lasthandoff: 11/17/2016
       if (requestCode == 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
         getEngagementAgent().refreshPermissions();
     }
-

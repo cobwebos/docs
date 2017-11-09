@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a>使用通知中心将本地化的突发新闻发送到 iOS 设备
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
 > 
 
 ## <a name="overview"></a>概述
-本主题介绍如何使用 Azure 通知中心的[模板](notification-hubs-templates-cross-platform-push-messages.md)功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，将从在[使用通知中心发送突发新闻]中创建的 iOS 应用开始操作。 完成时，你将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
+本主题介绍如何使用 Azure 通知中心的[模板](notification-hubs-templates-cross-platform-push-messages.md)功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，将从在[使用通知中心发送突发新闻]中创建的 iOS 应用开始操作。 完成时，将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
 
 此方案包含两个部分：
 
@@ -36,18 +36,18 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
 * 后端使用 Azure 通知中心的**标记**和**模板**功能广播通知。
 
 ## <a name="prerequisites"></a>先决条件
-你必须已完成学习[使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
+必须已完成学习[使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
 
 可以选用 Visual Studio 2012 或更高版本。
 
 ## <a name="template-concepts"></a>模板概念
-在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
+在[使用通知中心发送突发新闻]中，构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
 但是，很多应用程序针对多个市场，需要本地化。 这意味着通知内容本身必须本地化且传递到正确的设备组。
-在本主题中，我们将介绍如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在本主题中，我们介绍如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。 例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world_en”、“world_fr”和“world_ch”。 我们然后必须将世界新闻的本地化版本分别发送到这些标签。 在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
-在较高级别上，模板是指定特定设备应如何接收通知的一种方法。 模板通过引用作为你应用程序后端所发消息的一部分的属性，指定确切的负载格式。 在我们的示例中，我们将发送包含所有支持的语言的区域设置未知的消息：
+在较高级别上，模板是指定特定设备应如何接收通知的一种方法。 模板通过引用作为应用程序后端所发消息的一部分的属性，指定确切的负载格式。 在我们的示例中，我们将发送包含所有支持的语言的区域设置未知的消息：
 
     {
         "News_English": "...",
@@ -63,7 +63,7 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
         }
     }
 
-模板是很强大的功能，你可以在[模板](notification-hubs-templates-cross-platform-push-messages.md)一文中了解其更多信息。
+模板是很强大的功能，可以在[模板](notification-hubs-templates-cross-platform-push-messages.md)一文中了解其更多信息。
 
 ## <a name="the-app-user-interface"></a>应用程序用户界面
 我们现在修改在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以使用模板发送本地化的突发新闻。
@@ -77,7 +77,7 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
 ![][14]
 
 ## <a name="building-the-ios-app"></a>构建 iOS 应用程序
-1. 在 Notification.h 中，添加 *retrieveLocale* 方法，然后修改存储区和 subscribe 方法，如下所示：
+1. 在 Notification.h 中，添加 *retrieveLocale* 方法，并修改存储区和 subscribe 方法，如下所示：
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
    
@@ -98,7 +98,7 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
             [self subscribeWithLocale: locale categories:categories completion:completion];
         }
    
-    然后修改 *subscribe* 方法以包括该区域设置：
+    然后修改 subscribe 方法以包括该区域设置：
    
         - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -148,7 +148,7 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
                 NSLog(@"Error subscribing: %@", error);
             }
         }];
-3. 最后，必须在 AppDelegate.m 中更新 *didRegisterForRemoteNotificationsWithDeviceToken* 方法，以便在应用启动时正确刷新你的注册信息。 将对通知的 *subscribe* 方法的调用更改为：
+3. 最后，必须在 AppDelegate.m 中更新 *didRegisterForRemoteNotificationsWithDeviceToken* 方法，以便在应用启动时正确刷新注册信息。 将对通知的 *subscribe* 方法的调用更改为：
    
         NSSet* categories = [self.notifications retrieveCategories];
         int locale = [self.notifications retrieveLocale];
@@ -162,7 +162,7 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>（可选）通过设备发送本地化的模板通知
-如果你无权访问 Visual Studio，或者只是想要试一试直接从设备上的应用发送本地化的模板通知。  那么，你只需将本地化的模板参数添加到你在前一教程中定义的 `SendNotificationRESTAPI` 方法。
+如果无权访问 Visual Studio，或者只是想要试一试直接从设备上的应用发送本地化的模板通知。  那么，只需将本地化的模板参数添加到在前一教程中定义的 `SendNotificationRESTAPI` 方法。
 
         - (void)SendNotificationRESTAPI:(NSString*)categoryTag
         {
@@ -247,29 +247,23 @@ ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
 
 
 <!-- URLs. -->
-[如何：服务总线通知中心（iOS 应用）]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
 [使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-ios
-[移动服务]: /develop/mobile/tutorials/get-started
+[Mobile Service]: /develop/mobile/tutorials/get-started
 [使用通知中心通知用户：ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [使用通知中心通知用户：移动服务]: /manage/services/notification-hubs/notify-users
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[移动服务入门]: /develop/mobile/tutorials/get-started/#create-new-service
-[数据处理入门]: /develop/mobile/tutorials/get-started-with-data-ios
-[身份验证入门]: /develop/mobile/tutorials/get-started-with-users-ios
-[推送通知入门]: /develop/mobile/tutorials/get-started-with-push-ios
-[向应用用户推送通知]: /develop/mobile/tutorials/push-notifications-to-users-ios
-[使用脚本为用户授权]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[JavaScript 和 HTML]: ../get-started-with-push-js.md
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
+[Get started with data]: /develop/mobile/tutorials/get-started-with-data-ios
+[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-ios
+[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
+[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
+[Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
+[JavaScript and HTML]: ../get-started-with-push-js.md
 
-[面向移动服务的 Windows 开发者预览版注册步骤]: ../mobile-services-windows-developer-preview-registration.md
-[wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
-[适用于 iOS 的通知中心操作方法指南]: http://msdn.microsoft.com/library/jj927168.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+[Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx

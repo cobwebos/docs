@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
 ms.openlocfilehash: 6b5189dc06d7f8b0ed4426944948b904feba847e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-with-windows-store-apps"></a>将 Azure AD 与 Windows 应用商店应用集成
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -40,7 +39,7 @@ ms.lasthandoff: 07/15/2017
 
 ## <a name="before-you-get-started"></a>准备工作
 * 下载[框架项目](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/skeleton.zip)，或下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)。 每个下载内容都是 Visual Studio 2015 解决方案。
-* 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
+* 还需要一个可在其中创建用户和注册应用的 Azure AD 租户。 如果还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 准备好后，请按照以下 3 个部分中的步骤操作。
 
@@ -48,14 +47,14 @@ ms.lasthandoff: 07/15/2017
 若要让应用获取令牌，首先需要在 Azure AD 租户中注册该应用，并授予其访问 Azure AD 图形 API 的权限。 方法如下：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏上，单击你的帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。
+2. 在顶部栏上，单击帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。
 3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
-4. 单击“应用注册”，然后选择“添加”。
+4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建**本机客户端应用程序**。
   * **名称** - 向用户描述应用。
   * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 现在，输入一个占位符值（例如，**http://DirectorySearcher**）。 稍后将替换此值。
 6. 完成注册后，Azure AD 将向应用分配唯一的应用程序 ID。 复制“应用程序”选项卡上的值，因为稍后需用到此值。
-7. 在“设置”页上，选择“所需权限”，然后选择“添加”。
+7. 在“设置”页上，选择“所需权限”，并选择“添加”。
 8. 对于 **Azure Active Directory** 应用，选择“Microsoft Graph”作为 API。
 9. 在“委派的权限”下，添加“以已登录用户的身份访问目录”权限。 如此，使应用能够查询用户的图形 API。
 
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/15/2017
 7. 返回 Azure 门户中应用的“设置”选项卡，添加具有上述值的 **RedirectUri**。  
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>步骤 3：使用 ADAL 从 Azure AD 获取令牌
-ADAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用 `authContext.AcquireToken(…)`，然后 ADAL 就会负责其余的工作。  
+ADAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用 `authContext.AcquireToken(…)`，ADAL 就会负责其余的工作。  
 
 1. 初始化应用的 `AuthenticationContext`，这是 ADAL 的主类。 此操作将向 ADAL 传递它与 Azure AD 通信所需的坐标，并告知 ADAL 如何缓存令牌。
 
@@ -99,7 +98,7 @@ ADAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用
     }
     ```
 
-2. 找到 `Search(...)` 方法，用户在应用 UI 上单击“搜索”按钮时会调用此方法。 此方法将向 Azure AD 图形 API 发出 get 请求，以查询其 UPN 以给定搜索词开头的用户。 若要查询图形 API，请将访问令牌包括在请求的 **Authorization** 标头中。 然后便是 ADAL 发挥作用的时候。
+2. 找到 `Search(...)` 方法，用户在应用 UI 上单击“搜索”按钮时会调用此方法。 此方法将向 Azure AD 图形 API 发出 get 请求，以查询其 UPN 以给定搜索词开头的用户。 要查询图形 API，请将访问令牌包括在请求的 **Authorization** 标头中。 然后便是 ADAL 发挥作用的时候。
 
     ```C#
     private async void Search(object sender, RoutedEventArgs e)
@@ -151,16 +150,15 @@ ADAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用
 现在，便拥有了一个有效的 Windows 应用商店应用，可对用户进行身份验证，使用 OAuth 2.0 安全地调用 Web API，并获取有关用户的基本信息。
 
 如果尚未在租户中填充用户，现在便可执行此操作。
-1. 运行 DirectorySearcher 应用，然后使用其中一个用户进行登录。
+1. 运行 DirectorySearcher 应用，并使用其中一个用户进行登录。
 2. 根据用户的 UPN 搜索其他用户。
-3. 关闭应用，然后重新运行应用。 请注意，用户的会话将保持不变。
-4. 单击右键显示底部栏进行注销，然后以另一用户的身份重新登录。
+3. 关闭应用，并重新运行应用。 请注意，用户的会话将保持不变。
+4. 单击右键显示底部栏进行注销，并以另一用户的身份重新登录。
 
 使用 ADAL 可以方便地将所有这些常见标识功能合并到应用中。 它会负责所有的繁琐工作，例如缓存管理、OAuth 协议支持、向用户显示登录 UI，以及刷新过期令牌。 只需知道一个 API 调用，即 `authContext.AcquireToken*(…)`。
 
 有关参考，请下载[已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-WindowsStore/archive/complete.zip)（无配置值）。
 
-现在，你可以转到其他标识方案。 例如，尝试[使用 Azure AD 保护 .NET Web API](active-directory-devquickstarts-webapi-dotnet.md)。
+现在，可以转到其他标识方案。 例如，尝试[使用 Azure AD 保护 .NET Web API](active-directory-devquickstarts-webapi-dotnet.md)。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

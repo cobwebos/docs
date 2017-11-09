@@ -12,28 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 10/19/2017
 ms.author: billmath
+ms.openlocfilehash: b383a21500c753d8d2fe6747756541a3ff94ef02
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
 本文可帮助你找到有关 Azure AD 无缝单一登录常见问题的故障排除信息。
 
 ## <a name="known-issues"></a>已知问题
 
+- 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
+- 不支持 Edge 浏览器。
+- 启动 Office 客户端（尤其是在共享计算机方案中），用户可能会收到额外的登录提示。 用户将必须经常输入其用户名，而不是密码。
+- 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，SharePoint 和 OneDrive 映射方案将无法正常工作。
+- 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
+- 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
+- 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果你要同步 30 个或更多的 AD 林，则不能使用 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-azure-ad-seamless-sso)该功能。
 - 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net) 添加到“受信任的站点”区域，而非“本地 Intranet”区域会阻止用户登录。
-- 无缝 SSO 在 Firefox 和 Edge 的隐私浏览模式下不起作用。 在 Internet Explorer 的增强保护模式打开时也不起作用。
-
->[!IMPORTANT]
->我们最近中止了对 Microsoft Edge 的支持，以调查客户报告的问题。
 
 ## <a name="check-status-of-the-feature"></a>检查功能状态
 
@@ -41,9 +42,9 @@ ms.lasthandoff: 08/07/2017
 
 ![Azure Active Directory 管理中心 - Azure AD Connect 边栏选项卡](./media/active-directory-aadconnect-sso/sso10.png)
 
-## <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理中心登录失败原因
+## <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
-若要启动使用无缝 SSO 的用户登录问题故障排除，可以在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
+如果你的租户有关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../active-directory-reporting-activity-sign-ins.md)。
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/active-directory-aadconnect-sso/sso9.png)
 
@@ -67,7 +68,7 @@ ms.lasthandoff: 08/07/2017
 使用以下清单排查无缝 SSO 问题：
 
 - 在 Azure AD Connect 中检查是否已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-prerequisites)。
-- 检查是否两个 Azure AD URL （https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net） 均为用户 Intranet 区域设置的一部分。
+- 检查是否两个 Azure AD URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net）均为用户 Intranet 区域设置的一部分。
 - 确保企业设备已加入 AD 域。
 - 确保用户使用 AD 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 AD 林。
@@ -120,4 +121,3 @@ ms.lasthandoff: 08/07/2017
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
 
 调用 `Enable-AzureADSSO` 并在 `Enable: ` 提示符处键入“true”，以在租户中启用此功能。
-

@@ -4,7 +4,7 @@ description: "启用或禁用数据收集模块，并添加性能计数器和其
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
-editor: alancameronwills
+editor: mrbullwinkle
 manager: carmonm
 ms.assetid: 6e397752-c086-46e9-8648-a1196e8078c2
 ms.service: application-insights
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 52b5be98742c9bf0834c12136416e856af5d99cc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: e59df358f25663c742b0da09cf27b974787536dc
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -33,7 +32,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 ## <a name="telemetry-modules-aspnet"></a>遥测模块 (ASP.NET)
 每个遥测模块收集特定类型的数据，并使用核心 API 来发送数据。 不同的 NuGet 包会安装这些模块，同时在 .config 文件中添加所需的行。
 
-在配置文件中，每个模块都有一个对应的节点。 若要禁用某个模块，请删除该节点或将其注释掉。
+在配置文件中，每个模块都有一个对应的节点。 要禁用某个模块，请删除该节点或将其注释掉。
 
 ### <a name="dependency-tracking"></a>依赖项跟踪
 [依赖项跟踪](app-insights-asp-net-dependencies.md)收集有关应用对数据库以及外部服务和数据库的调用的遥测数据。 若要允许在 IIS 服务器中使用此模块，需要[安装状态监视器][redfield]。 若要在 Azure Web 应用或 VM 中使用此模块，请[选择 Application Insights 扩展](app-insights-azure-web-apps.md)。
@@ -56,7 +55,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet 包。 如果只安装此包，则不会自动创建 ApplicationInsights.config 文件。
 
 ### <a name="developer-mode"></a>开发人员模式
-将调试器附加到应用程序进程后，`DeveloperModeWithDebuggerAttachedTelemetryModule` 强制 Application Insights `TelemetryChannel` 立即发送数据，一次发送一个遥测项。 这可以减少应用程序跟踪遥测数据与在 Application Insights 门户显示遥测数据的间隔时间， 但会明显增大 CPU 和网络带宽的开销。
+将调试器附加到应用程序进程后，`DeveloperModeWithDebuggerAttachedTelemetryModule` 强制 `TelemetryChannel` 立即发送数据，一次发送一个遥测项。 这可以减少应用程序跟踪遥测数据与在 Application Insights 门户显示遥测数据的间隔时间， 但会明显增大 CPU 和网络带宽的开销。
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
 * [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet 包
@@ -89,7 +88,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 * [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microsoft.com/library/mt420197.aspx)。 其他遥测模块使用此包，你也可以[使用它来定义自己的遥测](app-insights-api-custom-events-metrics.md)。
+Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microsoft.com/library/mt420197.aspx)。 其他遥测模块使用此包，也可以[使用它来定义自己的遥测](app-insights-api-custom-events-metrics.md)。
 
 * ApplicationInsights.config 中没有条目。
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet 包。 如果只安装此 NuGet，则不会生成任何 .config 文件。
@@ -103,7 +102,7 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 ## <a name="telemetry-initializers-aspnet"></a>遥测初始值设定项 (ASP.NET)
 遥测初始值设定项设置连同每个遥测项一起发送的上下文属性。
 
-你可以[编写自己的初始值设定项](app-insights-api-filtering-sampling.md#add-properties)来设置上下文属性。
+可以[编写自己的初始值设定项](app-insights-api-filtering-sampling.md#add-properties)来设置上下文属性。
 
 标准的初始值设定项由 Web 或 WindowsServer NuGet 包设置：
 
@@ -136,7 +135,7 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 ## <a name="telemetry-processors-aspnet"></a>遥测处理器 (ASP.NET)
 将遥测数据从 SDK 发送到门户之前，遥测处理器可以筛选和修改每个遥测项。
 
-你可以[编写自己的遥测处理器](app-insights-api-filtering-sampling.md#filtering)。
+可以[编写自己的遥测处理器](app-insights-api-filtering-sampling.md#filtering)。
 
 #### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>自适性采样遥测处理器（从 2.0.0-beta3 开始）
 此项已默认启用。 如果应用程序要发送大量遥测数据，此处理器将删除某些遥测数据。
@@ -276,4 +275,3 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 [new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-

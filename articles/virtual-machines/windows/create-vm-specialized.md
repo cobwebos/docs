@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: b315a37f72f34d45bb55c2bbe6be20cca8c42424
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 39cbd30102813a4502cd25811589d04a9adb0aa5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk"></a>从专用磁盘创建 Windows VM
 
@@ -56,7 +55,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 
 ### <a name="get-the-storage-account"></a>获取存储帐户
-Azure 中需要有一个存储帐户用于存储上传的 VHD。 你可以使用现有存储帐户，也可以创建新的存储帐户。 
+Azure 中需要有一个存储帐户用于存储上传的 VHD。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
 若要显示可用的存储帐户，请键入：
 
@@ -98,7 +97,7 @@ Add-AzureRmVhd -ResourceGroupName $resourceGroupName -Destination $urlOfUploaded
 ```
 
 
-如果成功，将显示类似于下面的响应：
+如果成功，会显示类似于下面的响应：
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -128,7 +127,7 @@ New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
 从上传的 VHD 创建新 OS 磁盘。 
 
 ```powershell
-$sourceUri = https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
+$sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
     (New-AzureRmDiskConfig -AccountType StandardLRS  -Location $location -CreateOption Import `
@@ -304,7 +303,7 @@ $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType 
 New-AzureRmVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
-如果此命令成功，你将看到类似于下面的输出：
+如果此命令成功，会看到类似于下面的输出：
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -322,6 +321,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要登录到新虚拟机，请在[门户](https://portal.azure.com)中浏览到该 VM，单击“连接”，然后打开远程桌面 RDP 文件。 使用原始虚拟机的帐户凭据登录到新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。
-
+要登录到新虚拟机，请在[门户](https://portal.azure.com)中浏览到该 VM，单击“连接”，并打开远程桌面 RDP 文件。 使用原始虚拟机的帐户凭据登录到新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。
 

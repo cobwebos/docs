@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
+ms.openlocfilehash: 37e9f06555063ceea00b9162c79344130414b82e
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C：自定义 Azure AD B2C 用户界面 (UI)
 
@@ -28,6 +27,7 @@ ms.lasthandoff: 08/22/2017
 > [!NOTE]
 > 本文所述的页面 UI 自定义功能不适用于仅登录策略、其随附的密码重置页面和验证电子邮件。  这些功能使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)。
 >
+> 同样，如果用户在登录之前启动编辑配置文件策略，则用户将被重定向到可使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)进行自定义的页。
 
 本文涵盖以下主题：
 
@@ -348,4 +348,3 @@ ms.lasthandoff: 08/22/2017
   * 对 Internet Explorer 9 和 8 的支持有限
   * Google Chrome 42.0 和更高版本
   * Mozilla Firefox 38.0 和更高版本
-

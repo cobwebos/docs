@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
 ms.openlocfilehash: d3aba4aab8ded8749db2bf8197f57a6763008c60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/20/2017
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Greenhouse 测试用户](#create-a-greenhouse-test-user) - 在 Greenhouse 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 07/20/2017
  
 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-greenhouse-tutorial/tutorial_greenhouse_certificate.png) 
 
@@ -175,7 +174,7 @@ ms.lasthandoff: 07/20/2017
 
 1. 以管理员身份登录到 **Greenhouse** 公司站点。
 
-2. 在顶部菜单中，单击“配置”，然后单击“用户”。
+2. 在顶部菜单中，单击“配置”，并单击“用户”。
    
    ![用户](./media/active-directory-saas-greenhouse-tutorial/ic790791.png "用户")
 
@@ -202,7 +201,7 @@ ms.lasthandoff: 07/20/2017
 
 **若要将 Britta Simon 分配到 Greenhouse，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -249,5 +248,4 @@ ms.lasthandoff: 07/20/2017
 [201]: ./media/active-directory-saas-greenhouse-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-greenhouse-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-greenhouse-tutorial/tutorial_general_203.png
-
 

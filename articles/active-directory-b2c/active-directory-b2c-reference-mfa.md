@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 62ec48ab067cf02bc8409aca6da704a5418ec270
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C：启用面向用户的应用程序中的多重身份验证
 Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)，以便可以在面向消费者的应用程序中将第二层安全性添加到注册和登录体验。 可以这样操作而无需编写单行代码。 目前我们支持电话和短信验证。 如果已经创建了注册和登录策略，则仍然可以启用多重身份验证。
@@ -58,5 +57,4 @@ Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证]
 
 ## <a name="multi-factor-authentication-on-other-policies"></a>针对其他策略的多重身份验证
 如上面的注册和登录策略所述，还可以在注册或登录策略和密码重置策略中启用多重身份验证。 它很快就可用于配置文件编辑策略。
-
 

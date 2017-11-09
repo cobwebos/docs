@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 7fffe78bebd6799cad544c12c20eb1926975a68f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 4417308d7282391a60361845bc1e4cc69284fe63
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-search-documentation"></a>Azure 搜索文档
 
@@ -160,12 +159,12 @@ ms.lasthandoff: 05/03/2017
                         <h3>REST</h3>
                         <p><a href="/rest/api/searchservice">REST API 参考</a></p>
                         <p><a href="/rest/api/searchmanagement">REST（管理）API 参考</a></p>
+                        <p><a href="search-api-2016-09-01-preview.md">服务 REST（预览版）</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
 
 

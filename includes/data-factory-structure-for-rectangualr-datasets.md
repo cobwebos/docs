@@ -28,7 +28,7 @@
     如上所述，“结构”部分中的类型信息是可选的。 对于结构化源，类型信息已可用作数据存储中的数据集定义的一部分，因此包含“结构”部分时不应包含类型信息。
 * **对于读取的数据源（尤其是 Azure Blob）的架构**，可以选择存储数据但不存储任何架构或类型信息。 对于这些类型的数据源，应在以下 2 种情况下包含“结构”：
   * 想要执行列映射。
-  * 当数据集是“复制”活动中的源时，可以在“结构”中提供类型信息，数据工厂将使用此类型信息转换为接收器的本机类型。 有关详细信息，请参阅 [Move data to and from Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md)（将数据移入和移出 Azure Blob）一文。
+  * 当数据集是“复制”活动中的源时，可以在“结构”中提供类型信息，数据工厂将使用此类型信息转换为接收器的本机类型。 有关详细信息，请参阅 [Move data to and from Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md)（将数据移入和移出 Azure Blob）一文。
 
 ### <a name="supported-net-based-types"></a>支持的基于 .NET 的类型
 数据工厂支持使用以下符合 CLS 标准的基于 .NET 的类型在“结构”中为读取的数据源（如 Azure Blob）中的架构提供类型信息。

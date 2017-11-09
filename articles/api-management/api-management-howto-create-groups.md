@@ -3,7 +3,7 @@ title: "使用 Azure API 管理中的组管理开发人员帐户 | Microsoft 文
 description: "了解如何使用 Azure API 管理中的组管理开发人员帐户"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33660b45-442f-44be-9a4a-1899d7f699b0
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: b4d71cdfbab535b02542fbb26c7555265e5f9c37
-
+ms.openlocfilehash: 00322340d67fd064a0dc9149790e031b94390709
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何创建和使用组来管理 Azure API 管理中的开发人员帐户
-在 API 管理中，使用组来管理产品对开发人员的可见性。 产品首次对组可见，然后这些组中的开发人员可以查看和订阅与组关联的产品。 
+在 API 管理中，使用组来管理产品对开发人员的可见性。 产品首次对组可见，这些组中的开发人员可以查看和订阅与组关联的产品。 
 
 API 管理具有下列不可变的系统组。
 
 * **管理员** - Azure 订阅管理员是此组的成员。 管理员管理 API 管理服务实例、创建 API、操作，以及开发人员所使用的产品。
-* **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用你的 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
+* **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
 * **来宾** - 未经身份验证的开发人员门户用户，如访问此组中 API 管理实例的开发人员门户的潜在客户。 它们可以被授予某些只读访问权限，如能够查看 API，但不能调用它们。
 
 除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组][leverage external groups in associated Azure Active Directory tenants]。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
@@ -38,7 +39,7 @@ API 管理具有下列不可变的系统组。
 > 
 
 ## <a name="create-group"> </a>创建组
-若要创建新组，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。
+若要创建新组，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
 
 ![发布者门户][api-management-management-console]
 
@@ -46,26 +47,26 @@ API 管理具有下列不可变的系统组。
 > 
 > 
 
-单击左侧“API 管理”菜单中的“组”，然后单击“添加组”。
+单击左侧“API 管理”菜单中的“组”，并单击“添加组”。
 
 ![添加新组][api-management-add-group]
 
-输入组和可选说明的唯一名称，然后单击“保存”。
+输入组和可选说明的唯一名称，并单击“保存”。
 
 ![添加新组][api-management-add-group-window]
 
-新组显示在组选项卡中。 若要编辑组的“名称”或“说明”，请单击列表中组的名称。 若要删除组，请单击“删除”。
+新组显示在组选项卡中。若要编辑组的“名称”或“说明”，请单击列表中组的名称。 若要删除组，请单击“删除”。
 
 ![添加的组][api-management-new-group]
 
 现在已创建组，它可以与产品和开发人员相关联。
 
 ## <a name="associate-group-product"> </a>将组与产品关联
-若要将某一组与产品相关联，请单击左侧“API 管理”菜单中的“产品”，然后单击所需产品的名称。
+要将某一组与产品相关联，请单击左侧“API 管理”菜单中的“产品”，然后单击所需产品的名称。
 
 ![设置可见性][api-management-add-group-to-product]
 
-选择“可见性”选项卡添加和删除组，并查看有关该产品的当前组。 若要添加或删除组，请选中或取消选中所需组的复选框，然后单击“保存”。
+选择“可见性”选项卡添加和删除组，并查看有关该产品的当前组。 要添加或删除组，请选中或取消选中所需组的复选框，并单击“保存”。
 
 ![设置可见性][api-management-add-group-to-product-visibility]
 
@@ -79,7 +80,7 @@ API 管理具有下列不可变的系统组。
 一种产品与组相关联后，该组中的开发人员可以查看和订阅该产品。
 
 ## <a name="associate-group-developer"> </a>将组与开发人员关联
-若要将组与开发人员相关联，请单击左侧“API 管理”中的“用户”，然后选中要和一组相关联的开发人员旁边的框。
+要将组与开发人员相关联，请单击左侧“API 管理”中的“用户”，然后选中要和一组相关联的开发人员旁边的框。
 
 ![将开发人员添加到组][api-management-add-group-to-developer]
 
@@ -114,9 +115,3 @@ API 管理具有下列不可变的系统组。
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [leverage external groups in associated Azure Active Directory tenants]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
-
-
-
-<!--HONumber=Jan17_HO5-->
-
-

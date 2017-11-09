@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 357e58665f5cdf6ea9a3fcaee4a390f2b0d2045f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-251-release-notes"></a>用于 .NET 2.5.1 的 Azure SDK 发行说明
 本文档包含用于 .NET 2.5.1 的 Azure SDK 版本的发行说明。 
@@ -63,5 +62,4 @@ ms.lasthandoff: 09/07/2017
 * API 应用项目不能与云服务项目一起使用。
 * 仅 C# 提供 API 应用项目模板。
 * 仅 C# 支持通过“添加 Azure API 应用客户端”上下文菜单使用 API 应用。
-
 

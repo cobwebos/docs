@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 1f1c453267ea17d749a251539f4232131dae53d3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: 0c32ac27187a88dd13bb747f541968d2e81c5064
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -27,7 +26,7 @@ ms.lasthandoff: 06/13/2017
 ## <a name="general-questions"></a>一般问题
 **问：我要管理多个 Azure AD 目录。如何切换到包含 Azure Active Directory Premium 的 Azure AD 目录？**
 
-若要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，然后选择相应的帐户。 如果此处未列出该帐户，可选择“注销”，然后使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
+要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，并选择相应的帐户。 如果此处未列出该帐户，可选择“注销”，并使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
 
 **问：Azure AD Connect Health 支持哪个版本的标识角色？**
 
@@ -54,10 +53,14 @@ ms.lasthandoff: 06/13/2017
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
 | 1 | 1 | 1 个 Azure AD Connect 服务器 |
-| 2 | 26| 1 个 Azure AD Connect 服务器和 1 个域控制器 |
+| #N/A | 26| 1 个 Azure AD Connect 服务器和 1 个域控制器 |
 | 3 | 51 | 1 个 Active Directory 联合身份验证服务 (AD FS) 服务器、1 个 AD FS 代理和 1 个域控制器 |
 | 4 | 76 | 1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
 | 5 | 101 | 1 个 Azure AD Connect 服务器、1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
+
+**问：Azure AD Connect Health 是否支持 Azure 德国云？**
+
+Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconnect-health-agent-install.md)。 德语云客户的所有数据都保留在 Azure 德国云内。
 
 
 ## <a name="installation-questions"></a>安装问题
@@ -118,7 +121,7 @@ ms.lasthandoff: 06/13/2017
 
 由于下列可能的原因，Health 代理可能无法注册：
 
-* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保你已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[要求部分](active-directory-aadconnect-health-agent-install.md#requirements)。
+* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[要求部分](active-directory-aadconnect-health-agent-install.md#requirements)。
 * 网络层会对出站通信进行 SSL 检查。 这会导致代理使用的证书被检查服务器/实体替换，并且无法执行完成代理注册所需的步骤。
 * 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可使用[基于角色的访问控制](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)将访问权限委派给其他用户。
 
@@ -126,7 +129,7 @@ ms.lasthandoff: 06/13/2017
 
 如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 生成此警报的原因有多种。
 
-* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保你已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[要求部分](active-directory-aadconnect-health-agent-install.md#requirements)。
+* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[要求部分](active-directory-aadconnect-health-agent-install.md#requirements)。
 * 网络层会对出站通信进行 SSL 检查。 这会导致代理使用的证书被检查服务器/实体替换，并且将数据上传到 Azure AD Connect Health 服务的过程将失败。
 * 可以使用代理中内置的连接命令。 [了解详细信息](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)。
 * 代理还支持通过未经身份验证的 HTTP 代理进行出站连接。 [了解详细信息](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy)。
@@ -186,4 +189,3 @@ CheckForMS17-010
 * [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 * [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
-

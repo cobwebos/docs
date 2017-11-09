@@ -16,19 +16,17 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: ea5169c1a95f00e78ae3f5f177812466eb7a0deb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>使用 Azure 自动化垂直缩放 Windows VM
 
 垂直缩放是增加或减少计算机的资源以响应工作负荷的过程。 在 Azure 中，这可以通过更改虚拟机的大小来实现。 这种做法可为以下方案提供方便
 
-* 如果你不经常使用某个虚拟机，可以缩小其大小，以降低每月成本
+* 如果不经常使用某个虚拟机，可以缩小其大小，以降低每月成本
 * 如果虚拟机将来会出现负载高峰，可以增大其大小，以提高其容量
 
 下面概述了实现此目的的步骤
@@ -85,13 +83,12 @@ ms.lasthandoff: 03/31/2017
 2. 选择“警报规则”
 3. 选择“添加警报”
 4. 选择用于触发警报的指标
-5. 选择一个条件，满足此条件时将触发该警报
+5. 选择一个条件，满足此条件时会触发该警报
 6. 为步骤 5 中要满足的条件 选择一个阈值
 7. 选择一个时间段，超过该时间段时，监视服务将检查步骤 5 和 6 中的条件与阈值
-8. 粘贴你在上一部分复制的 Webhook。
+8. 粘贴你在上一部分复制的 webhook。
 
 ![将警报添加到虚拟机 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
 ![将警报添加到虚拟机 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
-
 

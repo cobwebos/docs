@@ -1,6 +1,6 @@
 ---
 title: "ExpressRoute 线路配置工作流 | Microsoft Docs"
-description: "本页将指导你完成配置 ExpressRoute 线路和对等互连的工作流"
+description: "本页指导完成配置 ExpressRoute 线路和对等互连的工作流"
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -14,27 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
-本页从较高层面引导你完成服务预配和路由配置工作流。
+本页从较高层面引导完成服务预配和路由配置工作流。
 
 ![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
 下图和相应的步骤说明了预配端到端 ExpressRoute 线路所要执行的任务。 
 
 1. 使用 PowerShell 配置 ExpressRoute 线路。 有关更多详细信息，请遵循[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)一文中的说明。
-2. 从服务提供商订购连接。 此过程根据情况而有所不同。 有关如何订购连接的详细信息，请联系你的连接服务提供商。
+2. 从服务提供商订购连接。 此过程根据情况而有所不同。 有关如何订购连接的详细信息，请联系连接服务提供商。
 3. 通过 PowerShell 验证 ExpressRoute 线路预配状态，以确保线路预配成功。 
-4. 配置路由域 如果连接服务提供商管理第 3 层，则他们将为你的线路配置路由。 如果连接服务提供商只提供第 2 层服务，则必须根据[路由要求](expressroute-routing.md)和[路由配置](expressroute-howto-routing-classic.md)页中所述的指导原则来配置路由。
+4. 配置路由域 如果连接服务提供商管理第 3 层，则他们将为线路配置路由。 如果连接服务提供商只提供第 2 层服务，则必须根据[路由要求](expressroute-routing.md)和[路由配置](expressroute-howto-routing-classic.md)页中所述的指导原则来配置路由。
    
    * 启用 Azure 专用对等互连 - 只有启用此对等互连才能连接到部署在虚拟网络中的 VM/云服务。
-   * 启用 Azure 公共对等互连 - 如果你想要连接到托管在公共 IP 地址上的 Azure 服务，则必须启用 Azure 公共对等互连。 如果你已选择为 Azure 专用对等互连启用默认路由并想要访问 Azure 资源，则必须执行上述操作。
+   * 启用 Azure 公共对等互连 - 如果想要连接到托管在公共 IP 地址上的 Azure 服务，则必须启用 Azure 公共对等互连。 如果已选择为 Azure 专用对等互连启用默认路由并想要访问 Azure 资源，则必须执行上述操作。
    * 启用 Microsoft 对等互连 - 必须启用此对等互连才能访问 Office 365 和 Dynamics 365。 
      
      > [!IMPORTANT]
@@ -81,7 +80,7 @@ ms.lasthandoff: 05/15/2017
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
-线路只有处于 Provisioned 和 Enabled 状态时才可供使用。 如果你使用第 2 层服务提供商，则只有在线路处于此状态时才能配置路由。
+线路只有处于 Provisioned 和 Enabled 状态时才可供使用。 如果使用第 2 层服务提供商，则只有在线路处于此状态时才能配置路由。
 
 **连接服务提供商正在取消预配线路时**
 
@@ -91,10 +90,10 @@ ms.lasthandoff: 05/15/2017
     Status                           : Enabled
 
 
-如果需要，你可以选择重新启用线路，或运行 PowerShell cmdlet 删除线路。  
+如果需要，可以选择重新启用线路，或运行 PowerShell cmdlet 删除线路。  
 
 > [!IMPORTANT]
-> 当 ServiceProviderProvisioningState 为 Provisioning 或 Provisioned 时，如果运行该 PowerShell cmdlet 来删除线路，操作将会失败。 请先让连接服务提供商取消 ExpressRoute 线路，然后删除线路。 在运行 PowerShell cmdlet 删除线路之前，Microsoft 会持续收取线路费用。
+> 当 ServiceProviderProvisioningState 为 Provisioning 或 Provisioned 时，如果运行该 PowerShell cmdlet 来删除线路，操作会失败。 请先让连接服务提供商取消设置 ExpressRoute 线路，然后删除该线路。 在运行 PowerShell cmdlet 删除线路之前，Microsoft 会持续收取线路费用。
 > 
 > 
 
@@ -116,5 +115,4 @@ BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。 �
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
   * [配置路由](expressroute-howto-routing-arm.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
 

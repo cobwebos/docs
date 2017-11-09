@@ -4,7 +4,7 @@ description: "介绍了在 Azure Analysis Services 教程项目中如何创建�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 893371145d77e156843271907aeef0c3756d0403
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: d7d2265aa82e54cdbd3b85e09a05e5ea55a7a2c2
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="lesson-5-create-calculated-columns"></a>第 5 课：创建计算列
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/03/2017
 本课预计完成时间：**15 分钟**  
   
 ## <a name="prerequisites"></a>先决条件  
-本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，你应当已完成上一课：[第 4 课：创建关系](../tutorials/aas-lesson-4-create-relationships.md)。 
+本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 4 课：创建关系](../tutorials/aas-lesson-4-create-relationships.md)。 
   
 ## <a name="create-calculated-columns"></a>创建计算列  
   
@@ -47,7 +46,7 @@ ms.lasthandoff: 06/03/2017
   
 2.  在模型设计器中，单击“DimDate”表（选项卡）。  
   
-3.  右键单击“CalendarQuarter”列标题，然后单击“插入列”。  
+3.  右键单击“CalendarQuarter”列标题，并单击“插入列”。  
   
     一个名为“Calculated Column 1”的新列将插入到“Calendar Quarter”列的左侧。  
   
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/03/2017
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  
     ``` 
   
-    然后，将在计算列中为所有行填充值。 如果在表中向下滚动，可看到，根据每行中的数据，各行中的此列可能具有不同的值。    
+    然后，会在计算列中为所有行填充值。 如果在表中向下滚动，可看到，根据每行中的数据，各行中的此列可能具有不同的值。    
   
 5.  将此列重命名为“MonthCalendar”。 
 
@@ -82,7 +81,7 @@ MonthCalendar 计算列提供月份的可排序名称。
 4.  单击列标题，然后将该列拖动到 EnglishDayNameOfWeek 列和 DayNumberOfMonth 列之间。  
   
     > [!TIP]  
-    > 移动你的表中的列可使其更容易导航。  
+    > 移动表中的列可使其更容易导航。  
   
 DayOfWeek 计算列提供周几的可排序名称。  
   
@@ -103,7 +102,7 @@ ProductSubcategoryName 计算列用于在 DimProduct 表中创建层次结构，
   
 #### <a name="create-a-productcategoryname-calculated-column-in-the-dimproduct-table"></a>在 DimProduct 表中创建 ProductCategoryName 计算列  
   
-1.  在“DimProduct”表仍然处于活动状态的情况下，单击“列”菜单，然后单击“添加列”。  
+1.  在“DimProduct”表仍然处于活动状态的情况下，单击“列”菜单，并单击“添加列”。  
   
 2.  在公式栏中，键入以下公式：  
   
@@ -138,4 +137,3 @@ ProductCategoryName 计算列用于在 DimProduct 表中创建层次结构，该
   
   
   
-

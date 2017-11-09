@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ccfbd45def1ecf036a2464f560aa89817c37b419
-ms.openlocfilehash: 54b3ce2c8c3966ee36350fed71bdc48aa5bffa63
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 12f959376d4923e4e2481e37108ade632ac14902
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>什么是 Operations Management Suite (OMS)？
 Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。  由于 OMS 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。  将自动交付新增功能，从而节省持续维护和升级成本。
@@ -53,5 +52,4 @@ Azure 自动化通过 [PowerShell DSC](../automation/automation-dsc-overview.md)
 * 了解 [Azure 自动化](../automation/automation-intro.md)的相关信息。
 * 了解 [Azure 备份](http://azure.microsoft.com/documentation/services/backup)的相关信息。
 * 了解 [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) 的相关信息。
-
 

@@ -14,19 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
-ms.openlocfilehash: 514942b2552564f669d73b997a2d355ddb477b22
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/15/2017
-
-
+ms.openlocfilehash: 9462707db03ecfcc3d5186ce7ded8655ad3bdcc9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>概述：使用 Enterprise Integration Pack 实现 B2B 方案和通信
 
-为了实现企业到企业 (B2B) 工作流和与 Azure 逻辑应用的无缝通信，可以使用 Microsoft 的基于云的解决方案（Enterprise Integration Pack）启用企业集成方案。 组织可以电子方式交换消息，即使它们使用不同的协议和格式，也是如此。 该包将不同的格式转换为组织的系统可以解释和处理的格式。 组织可以通过行业标准协议（包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)）交换消息。 你还可以使用加密和数字签名保护消息。
+为了实现企业到企业 (B2B) 工作流和与 Azure 逻辑应用的无缝通信，可以使用 Microsoft 的基于云的解决方案（Enterprise Integration Pack）启用企业集成方案。 组织可以电子方式交换消息，即使它们使用不同的协议和格式，也是如此。 该包将不同的格式转换为组织的系统可以解释和处理的格式。 组织可以通过行业标准协议（包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)）交换消息。 还可以使用加密和数字签名保护消息。
 
-如果你熟悉 BizTalk Server 或 Microsoft Azure BizTalk 服务，则可轻松地使用企业集成功能，因为大多数概念是类似的。 一个主要区别是企业集成使用集成帐户来简化 B2B 通信中使用的项目的存储和管理。 
+如果熟悉 BizTalk Server 或 Microsoft Azure BizTalk 服务，则可轻松地使用企业集成功能，因为大多数概念是类似的。 一个主要区别是企业集成使用集成帐户来简化 B2B 通信中使用的项目的存储和管理。 
 
 在体系结构上，Enterprise Integration Pack 基于“集成帐户”。 这些帐户是基于云的容器，存储所有项目，例如架构、合作伙伴、证书、映射和协议。 可以使用这些项目设计、部署和维护 B2B 应用以及为逻辑应用构建 B2B 工作流。 但在使用这些项目之前，必须先将集成帐户链接到逻辑应用。 之后，逻辑应用便可以访问集成帐户的项目。
 
@@ -76,5 +74,4 @@ ms.lasthandoff: 02/15/2017
 * [集成帐户元数据](../logic-apps/logic-apps-enterprise-integration-metadata.md "了解集成帐户元数据")
 * [监视 B2B 消息](logic-apps-monitor-b2b-message.md "深入了解 B2B 消息")
 * [在 OMS 门户中跟踪 B2B 消息](logic-apps-track-b2b-messages-omsportal.md "深入了解在 OMS 门户中跟踪 B2B 消息")
-
 

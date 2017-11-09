@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: japere
+ms.openlocfilehash: 9e2f8aa6ad7534ff822907285aa9fe290a4db586
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 613c68d5c13793a3b696b6afbfc0e1a31595e201
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="do-you-need-help-with-the-my-apps-portal"></a>使用“我的应用”门户时是否需要帮助？
 
@@ -49,7 +48,7 @@ ms.lasthandoff: 07/17/2017
 
 ## <a name="how-do-i-register-for-password-reset"></a>如何注册密码重置？
 
-作为最终用户，你可以使用自助密码重置 (SSPR) 来重置密码或解锁帐户，而不需求助他人。 在使用此功能之前，必须注册身份验证方法或确认管理员填充的预定义身份验证方法。 有关更多详细信息，请参阅[注册自助密码重置](active-directory-passwords-reset-register.md)。
+作为最终用户，可以使用自助密码重置 (SSPR) 来重置密码或解锁帐户，而不需求助他人。 在使用此功能之前，必须注册身份验证方法或确认管理员填充的预定义身份验证方法。 有关更多详细信息，请参阅[注册自助密码重置](active-directory-passwords-reset-register.md)。
 
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-portal-browser-extension"></a>安装“我的应用”门户浏览器扩展时遇到问题
@@ -109,5 +108,4 @@ ms.lasthandoff: 07/17/2017
 ## <a name="next-steps"></a>后续步骤
 
 有关信息方面的疑难解答，请参阅[使用应用程序访问面板网站或移动应用程序时出现问题](active-directory-application-access-panel-content-map.md)
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/01/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aa0193e741b1a84c03230b2458eec96b5504f031
 ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -64,7 +63,7 @@ multipath.conf 包括五个节：
 - **设备特定的设置** *(multipaths)*：可以使用此节微调单个 LUN 的配置设置。
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>在连接到 Linux 主机的 StorSimple 上配置多路径
-可以配置连接到 Linux 主机的 StorSimple 设备，以实现高可用性和负载均衡。 例如，如果 Linux 主机有两个连接到 SAN 的接口，设备有两个连接到 SAN 的接口，并且这些接口位于同一子网中，则有 4 个路径可用。 但是，如果设备和主机接口上的每个 DATA 接口位于不同的 IP 子网中（且不可路由），则只有 2 个路径可用。 可以配置多路径，以便自动发现所有可用路径、选择这些路径的负载均衡算法、应用仅限 StorSimple 卷的特定配置设置，然后启用和验证多路径。
+可以配置连接到 Linux 主机的 StorSimple 设备，以实现高可用性和负载均衡。 例如，如果 Linux 主机有两个连接到 SAN 的接口，设备有两个连接到 SAN 的接口，并且这些接口位于同一子网中，则有 4 个路径可用。 但是，如果设备和主机接口上的每个 DATA 接口位于不同的 IP 子网中（且不可路由），则只有 2 个路径可用。 可以配置多路径，以便自动发现所有可用路径、选择这些路径的负载均衡算法、应用仅限 StorSimple 卷的特定配置设置，并启用和验证多路径。
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何配置多路径。
 
@@ -130,7 +129,7 @@ multipath.conf 包括五个节：
            iscsi   0:off   1:off   2:on3:on4:on5:on6:off
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
-       从上面的示例可以看到，启动时，iSCSI 环境将在运行级别 2、3、4 和 5 运行。
+       从上面的示例可以看到，启动时，iSCSI 环境会在运行级别 2、3、4 和 5 运行。
 3. 安装 *device-mapper-multipath*。 键入：
    
     `yum install device-mapper-multipath`
@@ -143,7 +142,7 @@ StorSimple 设备应该：
 * 至少有两个接口已启用 iSCSI。 若要验证 StorSimple 设备上是否有两个接口已启用 iSCSI，请在 StorSimple 设备的 Azure 经典门户中执行以下步骤：
   
   1. 登录 StorSimple 设备的经典门户。
-  2. 选择你的 StorSimple Manager 服务，单击“设备”，然后选择特定的 StorSimple 设备。 单击“配置”并验证网络接口设置。 以下屏幕截图显示两个已启用 iSCSI 的网络接口。 下面 DATA 2 和 DATA 3 两个 10 GbE 接口都已启用 iSCSI。
+  2. 选择 StorSimple Manager 服务，单击“设备”，然后选择特定的 StorSimple 设备。 单击“配置”并验证网络接口设置。 以下屏幕截图显示两个已启用 iSCSI 的网络接口。 下面 DATA 2 和 DATA 3 两个 10 GbE 接口都已启用 iSCSI。
      
       ![MPIO StorSimple DATA 2 配置](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
@@ -173,7 +172,7 @@ StorSimple 设备应该：
 * 在 StorSimple 设备上启用了两个 iSCSI 发起程序。
 * CentOS 主机上已启用两个网络接口。
 
-如果主机和数据接口均可路由，则上述配置将在设备与主机之间生成 4 个不同的路径。
+如果主机和数据接口均可路由，则上述配置会在设备与主机之间生成 4 个不同的路径。
 
 > [!IMPORTANT]
 > * 建议不要对多路径混合使用 1 GbE 与 10 GbE 网络接口。 使用两个网络接口时，两者的类型应完全相同。
@@ -212,12 +211,12 @@ StorSimple 设备应该：
         }
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>步骤 2：为 StorSimple 卷配置多路径
-默认情况下，所有设备都已列入 multipath.conf 文件中的方块列表，因而将被绕过。 必须创建方块列表例外，允许 StorSimple 设备中的卷启动多路径。
+默认情况下，所有设备都已列入 multipath.conf 文件中的方块列表，因而会被绕过。 必须创建方块列表例外，允许 StorSimple 设备中的卷启动多路径。
 
 1. 编辑 `/etc/mulitpath.conf` 文件。 键入：
    
     `vi /etc/multipath.conf`
-2. 在 multipath.conf 文件中找到 blacklist_exceptions 节。 在此节中，需要将你的 StorSimple 设备列为方块列表例外。 可按如下所示在此文件中取消注释相关行，以修改此文件（仅使用所用设备的特定型号）：
+2. 在 multipath.conf 文件中找到 blacklist_exceptions 节。 在此节中，需要将 StorSimple 设备列为方块列表例外。 可按如下所示在此文件中取消注释相关行，以修改此文件（仅使用所用设备的特定型号）：
    
         blacklist_exceptions {
             device {
@@ -447,5 +446,4 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 
 * [Setting up MPIO on CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)（在 CentOS 上设置 MPIO）
 * [Linux Training Guide](http://linux-training.be/files/books/LinuxAdm.pdf)（Linux 培训指南）
-
 

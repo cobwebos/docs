@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 59879dc0b3fc1d7af3e2a1f67f1701f451de9126
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C：向用户提供使用 Microsoft 帐户的注册和登录功能
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
@@ -60,5 +59,4 @@ ms.lasthandoff: 08/08/2017
 5. 单击“标识提供者类型”，选择“Microsoft 帐户”，并单击“确定”。
 6. 单击“设置此标识提供者”，输入之前创建的 Microsoft 帐户应用程序的应用程序 Id 和密码。
 7. 单击“确定”，并单击“创建”以保存 Microsoft 帐户配置。
-
 

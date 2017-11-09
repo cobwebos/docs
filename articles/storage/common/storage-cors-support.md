@@ -14,18 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>对 Azure 存储服务的跨域资源共享 (CORS) 支持
 从版本 2013-08-15 开始，Azure 存储服务支持 Blob、表、队列和文件服务的跨域资源共享 (CORS)。 CORS 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为[同源策略](http://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制，防止网页调用不同域中的 API；CORS 提供了一种安全的方法，允许一个域（源域）调用其他域中的 API。 有关 CORS 的详细信息，请参阅 [CORS 规范](http://www.w3.org/TR/cors/)。
 
-可分别为每个存储服务设置 CORS 规则，方式请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。 为服务设置 CORS 规则后，将会对从另一个域对服务发出的经过正确身份验证的请求进行评估，以根据你指定的规则确定是否允许该请求。
+可分别为每个存储服务设置 CORS 规则，方式请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。 为服务设置 CORS 规则后，会对从另一个域对服务发出的经过正确身份验证的请求进行评估，以根据你指定的规则确定是否允许该请求。
 
 > [!NOTE]
 > 请注意，CORS 不是一种身份验证机制。 在启用 CORS 的情况下针对存储资源发出的任何请求必须具有适当的身份验证签名，或者必须是针对公共资源发出的。
@@ -50,12 +48,12 @@ ms.lasthandoff: 04/06/2017
 请注意，将针对服务（Blob、队列和表）而不是针对请求的资源对预检请求进行评估。 帐户所有者必须已经在帐户服务属性中启用了 CORS，请求才能成功。
 
 ### <a name="actual-request"></a>实际请求
-接受预检请求并返回响应后，浏览器将根据存储资源分发实际请求。 如果预检请求被拒绝，浏览器会立即拒绝实际请求。
+接受预检请求并返回响应后，浏览器会根据存储资源分发实际请求。 如果预检请求被拒绝，浏览器会立即拒绝实际请求。
 
-实际请求将被视为针对存储服务的普通请求。 请求中的 Origin 标头表示该请求是一个 CORS 请求，服务将检查匹配的 CORS 规则。 如果找到匹配项，将向响应中添加 Access-Control 标头并将其发送回客户端。 如果找不到匹配项，则不会返回 CORS Access-Control 标头。
+实际请求会被视为针对存储服务的普通请求。 请求中的 Origin 标头表示该请求是一个 CORS 请求，服务会检查匹配的 CORS 规则。 如果找到匹配项，将向响应中添加 Access-Control 标头并将其发送回客户端。 如果找不到匹配项，则不会返回 CORS Access-Control 标头。
 
 ## <a name="enabling-cors-for-the-azure-storage-services"></a>为 Azure 存储服务启用 CORS
-CORS 规则在服务级别设置，因此你需要分别为每个服务（Blob、队列和表）启用或禁用 CORS。 默认情况下，对每个服务禁用 CORS。 若要启用 CORS，你需要使用版本 2013-08-15 或更高版本设置适当的服务属性，并向服务属性中添加 CORS 规则。 若要详细了解如何为服务启用或禁用 CORS 以及如何设置 CORS 规则，请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。
+CORS 规则在服务级别设置，因此需要分别为每个服务（Blob、队列和表）启用或禁用 CORS。 默认情况下，对每个服务禁用 CORS。 要启用 CORS，需要使用版本 2013-08-15 或更高版本设置适当的服务属性，并向服务属性中添加 CORS 规则。 若要详细了解如何为服务启用或禁用 CORS 以及如何设置 CORS 规则，请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。
 
 下面是通过“设置服务属性”操作指定的一个 CORS 规则示例：
 
@@ -98,9 +96,9 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 
 1. 首先，根据 **AllowedOrigins** 元素中列出的域检查请求的源域。 如果列表中包含源域，或者通过通配符“*”允许了所有域，则规则评估会继续进行。 如果列表中不包含源域，则请求失败。
 2. 接下来，根据 **AllowedMethods** 元素中列出的方法检查请求的方法（或 HTTP 谓词）。 如果列表中包含所用方法，则规则评估会继续进行；否则，请求失败。
-3. 如果请求的源域和方法与某个规则相匹配，则选择该规则来处理请求，并且不再评估其他规则。 但是，必须先根据 **AllowedHeaders** 元素中列出的标头对请求中指定的标头进行检查，请求才能成功。 如果发送的标头与允许的标头不匹配，请求将失败。
+3. 如果请求的源域和方法与某个规则相匹配，则选择该规则来处理请求，并且不再评估其他规则。 但是，必须先根据 **AllowedHeaders** 元素中列出的标头对请求中指定的标头进行检查，请求才能成功。 如果发送的标头与允许的标头不匹配，请求会失败。
 
-由于将按照规则在请求正文中出现的顺序处理规则，因此最佳做法建议你在列表中最先指定与来源有关的限制性最强的规则，以便先对这些规则进行评估。 在列表的最后指定限制性较弱的规则，例如，允许所有来源的规则。
+由于将按照规则在请求正文中出现的顺序处理规则，因此最佳做法建议在列表中最先指定与来源有关的限制性最强的规则，以便先对这些规则进行评估。 在列表的最后指定限制性较弱的规则，例如，允许所有来源的规则。
 
 ### <a name="example--cors-rules-evaluation"></a>示例 – CORS 规则评估
 以下示例显示用于为存储服务设置 CORS 规则的操作的部分请求正文。 有关构造请求的详细信息，请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。
@@ -154,14 +152,14 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 ## <a name="understanding-how-the-vary-header-is-set"></a>了解如何设置 Vary 标头
 *Vary* 标头是一个由一组请求标头字段组成的标准 HTTP/1.1 标头，这些字段可告知浏览器或用户代理服务器选择用于处理该请求的条件。 *Vary* 标头主要用于代理、浏览器和 CDN 缓存，它们使用该标头来确定应如何缓存响应。 有关详细信息，请参阅 [Vary 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)的规范。
 
-当浏览器或其他用户代理缓存 CORS 请求的响应时，源域将作为允许的来源缓存。 如果第二个域在缓存处于活动时对存储资源发出相同请求，用户代理将会检索缓存的源域。 由于第二个域与缓存的域不匹配，因此原本应该成功的请求将会失败。 在某些情况下，Azure 存储会将 Vary 标头设置为 **Origin**，以便在发出请求的域不同于缓存的来源时，指示用户代理将后续 CORS 请求发送到服务。
+当浏览器或其他用户代理缓存 CORS 请求的响应时，源域将作为允许的来源缓存。 如果第二个域在缓存处于活动时对存储资源发出相同请求，用户代理会检索缓存的源域。 由于第二个域与缓存的域不匹配，因此原本应该成功的请求会失败。 在某些情况下，Azure 存储会将 Vary 标头设置为 **Origin**，以便在发出请求的域不同于缓存的来源时，指示用户代理将后续 CORS 请求发送到服务。
 
 在以下情况下，Azure 存储会针对实际 GET/HEAD 请求，将 *Vary* 标头设置为 **Origin**：
 
 * 当请求来源与 CORS 规则定义的允许来源完全匹配时。 要想成为精确匹配项，CORS 规则不能包含 ' * ' 通配符。
 * 不存在与请求源匹配的规则，但为存储服务启用了 CORS。
 
-如果 GET/HEAD 请求与允许所有来源的 CORS 规则匹配，响应将指示允许所有来源，并且用户代理缓存将在缓存处于活动时允许来自任何源域的后续请求。
+如果 GET/HEAD 请求与允许所有来源的 CORS 规则匹配，响应将指示允许所有来源，并且用户代理缓存会在缓存处于活动时允许来自任何源域的后续请求。
 
 请注意，对于使用 GET/HEAD 之外的方法的请求，存储服务不会设置 Vary 标头，因为用户代理不会缓存对这些方法的响应。
 
@@ -169,7 +167,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 
 | 请求 | 帐户设置和规则评估结果 |  |  | 响应 |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **请求中存在 Origin 标头** |**为此服务指定了 CORS 规则** |**存在允许所有域 (*) 的匹配规则** |**存在精确匹配域的匹配规则** |**响应包含设置为 Origin 的 Vary 标头** |**响应包含 Access-Control-Allowed-Origin：“*”** |**响应包含 Access-Control-Exposed-Headers** |
+| **请求中存在 Origin 标头** |**为此服务指定了 CORS 规则** |**存在允许所有源 (*) 的匹配规则** |**存在精确匹配域的匹配规则** |**响应包含设置为 Origin 的 Vary 标头** |**响应包含 Access-Control-Allowed-Origin：“*”** |**响应包含 Access-Control-Exposed-Headers** |
 | 否 |否 |否 |否 |否 |否 |否 |
 | 否 |是 |否 |否 |是 |否 |否 |
 | 否 |是 |是 |否 |否 |是 |是 |
@@ -179,7 +177,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 | 是 |是 |是 |否 |否 |是 |是 |
 
 ## <a name="billing-for-cors-requests"></a>CORS 请求的计费
-如果已按下述文章中的方式对帐户的任一存储服务启用了 CORS，将会对成功的预检请求计费：[Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）或 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)设置表服务属性）。 为了尽可能减少费用，可考虑将 CORS 规则中的 **MaxAgeInSeconds** 元素设置为一个较大的值，以便用户代理可以缓存请求。
+如果已按下述文章中的方式对帐户的任一存储服务启用了 CORS，会对成功的预检请求计费：[Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）或 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)设置表服务属性）。 为了尽可能减少费用，可考虑将 CORS 规则中的 **MaxAgeInSeconds** 元素设置为一个较大的值，以便用户代理可以缓存请求。
 
 将不会对失败的预检请求计费。
 
@@ -191,5 +189,4 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）
 
 [W3C 跨域资源共享规范](http://www.w3.org/TR/cors/)
-
 

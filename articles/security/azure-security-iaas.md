@@ -1,5 +1,5 @@
 ---
-title: "Azure 中 IaaS 工作负荷的安全性最佳实践 | Microsoft 文档"
+title: "Azure 中 IaaS 工作负荷的安全性最佳实践 | Microsoft Docs"
 description: " 将工作负荷迁移到 Azure IaaS 为重新评估设计带来了机会 "
 services: security
 documentationcenter: na
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: barclayn
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: f93211d289553b7a8afbe8c17fa4847f3d4585a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -230,4 +229,3 @@ Microsoft 会在通过 FIPS 140-2 第 2 级验证的 HSM（硬件和固件）中
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)
 * [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)
-

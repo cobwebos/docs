@@ -1,6 +1,6 @@
 ---
-title: Connect to Azure Stack | Microsoft Docs
-description: Learn how to connect Azure Stack
+title: "连接到 Azure 的堆栈 |Microsoft 文档"
+description: "了解如何连接到 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -12,57 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/22/2017
+ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: b5a1cd57106895fdd04f0281f0f81c0be0aca428
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.openlocfilehash: ba2359739b1d9cd265879227a499c94f93d8e4c6
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="connect-to-azure-stack"></a>Connect to Azure Stack
+# <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 
-To manage resources, you must connect to the Azure Stack Development Kit. This topic details the steps required to connect to the development kit. You can use either of the following connection options:
+*适用范围： Azure 堆栈开发工具包*
 
-* [Remote Desktop](#connect-with-remote-desktop): lets a single concurrent user quickly connect from the development kit.
-* [Virtual Private Network (VPN)](#connect-with-vpn): lets multiple concurrent users connect from clients outside of the Azure Stack infrastructure (requires configuration).
+若要管理的资源，必须首先连接到 Azure 堆栈开发工具包。 在本文中，我们将介绍为连接到开发工具包所采取的步骤。 你可以使用以下连接选项之一：
 
-## <a name="connect-to-azure-stack-with-remote-desktop"></a>Connect to Azure Stack with Remote Desktop
-With a Remote Desktop connection, a single concurrent user can work with the portal to manage resources.
+* [远程桌面连接](#connect-with-remote-desktop)。 在使用远程桌面连接进行连接，一个用户可以快速连接从开发工具包。
+* [虚拟专用网络 (VPN)](#connect-with-vpn)。 当你连接时使用 VPN 时，多个用户可以同时连接从外部 （需要安装程序） 的 Azure 堆栈基础结构的客户端。
 
-1. Open a Remote Desktop Connection and connect to the development kit. Enter **AzureStack\AzureStackAdmin** as the username, and the operator's password that you provided during Azure Stack setup.  
+<a name="connect-to-azure-stack-with-remote-desktop"></a>
+##  <a name="connect-to-azure-stack-by-using-remote-desktop-connection"></a>使用远程桌面连接连接到 Azure 堆栈
+单个的并发用户可以管理运算符门户或通过远程桌面连接的用户门户中的资源。
 
-2. From the development kit computer, open Server Manager, click **Local Server**, turn off Internet Explorer Enhanced Security, and then close Server Manager.
+1. 打开远程桌面连接并连接到开发工具包。 对于用户名，输入**AzureStack\AzureStackAdmin**。 使用 Azure 堆栈中向上设置时指定的运算符密码。  
 
-3. To open the user [portal](azure-stack-key-features.md#portal), navigate to (https://portal.local.azurestack.external/) and sign in using user credentials. To open the Azure Stack operator's [portal](azure-stack-key-features.md#portal), navigate to (https://adminportal.local.azurestack.external/) and sign in using the Azure Active Directory credentials specified during installation.
+2. 开发工具包在计算机上，打开服务器管理器。 选择**本地服务器**，清除**Internet Explorer 增强安全性**复选框，，然后关闭服务器管理器。
 
-## <a name="connect-to-azure-stack-with-vpn"></a>Connect to Azure Stack with VPN
+3. 若要打开[用户门户](azure-stack-key-features.md#portal)，请转到 https://portal.local.azurestack.external/。 通过使用用户凭据登录。 若要打开 Azure 堆栈[运算符门户](azure-stack-key-features.md#portal)，请转到 https://adminportal.local.azurestack.external/。 使用在安装期间指定的 Azure Active Directory (Azure AD) 凭据登录。
 
-You can establish a split tunnel Virtual Private Network (VPN) connection to an Azure Stack Development Kit. Through the VPN connection, you can access the Azure Stack operator's portal, user portal, and locally installed tools such as Visual Studio and PowerShell to manage Azure Stack resources. VPN connectivity is supported in both Azure Active Directory(AAD) and Active Directory Federation Services(AD FS) based deployments. VPN connections enable multiple clients to connect to Azure Stack at the same time. 
+<a name="connect-to-azure-stack-with-vpn"></a>
+## <a name="connect-to-azure-stack-by-using-vpn"></a>通过使用 VPN 连接到 Azure 堆栈
+
+你可以建立与 Azure 堆栈开发工具包的 VPN 连接使用拆分隧道连接。 可以使用 VPN 连接来访问 Azure 堆栈运算符门户，用户门户和本地安装的工具，如 Visual Studio 和 PowerShell 来管理 Azure 堆栈的资源。 在 Azure AD 和 Active Directory 联合身份验证服务 (AD FS) 部署中支持 VPN 连接。 VPN 连接使多个客户端同时连接到 Azure 堆栈。 
 
 > [!NOTE] 
-> This VPN connection does not provide connectivity to Azure Stack infrastructure VMs. 
+> VPN 连接不提供连接到 Azure 堆栈基础结构 Vm。 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必备组件
 
-* Install [Azure Stack compatible Azure PowerShell](azure-stack-powershell-install.md) on your local computer.  
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md). 
+1. 安装[Azure 堆栈兼容 Azure PowerShell](azure-stack-powershell-install.md)本地计算机上。  
+2. 下载[工具需要使用处理 Azure 堆栈](azure-stack-powershell-download.md)。 
 
-### <a name="configure-vpn-connectivity"></a>Configure VPN connectivity
+### <a name="set-up-vpn-connectivity"></a>设置 VPN 连接
 
-To create a VPN connection to the development kit, open an elevated PowerShell session from your local Windows-based computer and run the following script (make sure to update the the IP address and password values for your environment):
+若要创建与开发工具包的 VPN 连接，请以管理员身份本地基于 Windows 的计算机上打开 Windows PowerShell。 然后，运行以下脚本 （你的环境的 IP 地址和密码值的更新）：
 
 ```PowerShell 
-# Configure winrm if it's not already configured
+# Configure Windows Remote Management (WinRM), if it's not already configured.
 winrm quickconfig  
 
 Set-ExecutionPolicy RemoteSigned
 
-# Import the Connect module
+# Import the Connect module.
 Import-Module .\Connect\AzureStack.Connect.psm1 
 
-# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the the IP address and password values for your environment. 
+# Add the development kit computer’s host IP address and certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment. 
 
 $hostIP = "<Azure Stack host IP address>"
 
@@ -75,38 +78,37 @@ Set-Item wsman:\localhost\Client\TrustedHosts `
   -Value $hostIP `
   -Concatenate
 
-# Create a VPN connection entry for the local user
+# Create a VPN connection entry for the local user.
 Add-AzsVpnConnection `
   -ServerAddress $hostIP `
   -Password $Password
 
 ```
 
-If the set up succeeds, you should see **azurestack** in your list of VPN connections.
+如果安装成功， **azurestack**将出现在你的 VPN 连接的列表。
 
-![Network connections](media/azure-stack-connect-azure-stack/image3.png)  
+![网络连接](media/azure-stack-connect-azure-stack/image3.png)  
 
-### <a name="connect-to-azure-stack"></a>Connect to Azure Stack
+### <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 
-Connect to the Azure Stack instance by using either of the following two methods:  
+通过使用以下方法之一连接到 Azure 堆栈实例：  
 
-* By using the `Connect-AzsVpn ` command: 
+* 使用`Connect-AzsVpn `命令： 
     
   ```PowerShell
   Connect-AzsVpn `
     -Password $Password
   ```
 
-  When prompted, trust the Azure Stack host and install the certificate from **AzureStackCertificateAuthority** onto your local computer’s certificate store. (the prompt might appear behind the PowerShell session window). 
+  出现提示时，信任 Azure 堆栈主机和安装证书**AzureStackCertificateAuthority**你本地计算机证书存储中。 （提示符可能被隐藏时 PowerShell 窗口。） 
 
-* Open your local computer’s **Network Settings** > **VPN** > click **azurestack** > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
+* 在本地计算机上，选择**网络设置** > **VPN** > **azurestack** > **连接**. 在签入提示符下，输入用户名 (**AzureStack\AzureStackAdmin**) 和你的密码。
 
-### <a name="test-the-vpn-connectivity"></a>Test the VPN connectivity
+### <a name="test-vpn-connectivity"></a>测试 VPN 连接
 
-To test the portal connection, open an Internet browser and navigate to either the user portal (https://portal.local.azurestack.external/) or the operator portal (https://adminportal.local.azurestack.external/), sign in and create resources.  
+若要测试的门户连接，打开 web 浏览器中，，然后转到用户门户 (https://portal.local.azurestack.external/) 或运算符门户 (https://adminportal.local.azurestack.external/)。 登录并创建资源。  
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md)
-
+[让 Azure 堆栈用户能够使用虚拟机](azure-stack-tutorial-tenant-vm.md)
 

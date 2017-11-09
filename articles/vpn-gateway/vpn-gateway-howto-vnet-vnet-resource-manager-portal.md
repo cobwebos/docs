@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
+ms.openlocfilehash: cbbae06d4e5774d5fdf7bcce65dc7efddaa5f280
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 0293495a9cbdab1fc797d9948e4cbb7759b1ba54
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 08/03/2017
 
 * **跨区域地域冗余和地域存在**
   
-  * 你可以使用安全连接设置自己的异地复制或同步，而无需借助于面向 Internet 的终结点。
+  * 可以使用安全连接设置自己的异地复制或同步，而无需借助于面向 Internet 的终结点。
   * 使用 Azure 流量管理器和负载均衡器，可以设置支持跨多个 Azure 区域实现异地冗余的高可用性工作负荷。 一个重要的示例就是对分布在多个 Azure 区域中的可用性组设置 SQL Always On。
 * **具有隔离或管理边界的区域多层应用程序**
   
@@ -156,9 +155,8 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
    
     ![连接名称](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "连接名称")
 4. 对于“连接类型”。 从下拉列表选择“VNet 到 VNet”。
-5. 
-            **第一个虚拟网络网关**字段值会自动填充，你是从指定的虚拟网络网关创建此连接。
-6. **第二个虚拟网络网关**字段是你想要创建连接的 VNet 的虚拟网络网关。 单击“选择另一个虚拟网络网关”可打开“选择虚拟网络网关”边栏选项卡。
+5. **第一个虚拟网络网关**字段值会自动填充，你是从指定的虚拟网络网关创建此连接。
+6. “第二个虚拟网关”字段是你想要创建连接的 VNet 的虚拟网关。 单击“选择另一个虚拟网络网关”可打开“选择虚拟网络网关”边栏选项卡。
    
     ![添加连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "添加连接")
 7. 查看此边栏选项卡上列出的虚拟网络网关。 请注意，仅会列出订阅中的虚拟网络网关。 如果想要连接到订阅外的虚拟网络网关，请参阅 [PowerShell 文章](vpn-gateway-vnet-vnet-rm-ps.md)。 
@@ -192,4 +190,3 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机文档](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
-

@@ -14,15 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Reliable Services 编程模型的高级用法
-Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编写与管理。 本指南讨论 Reliable Services 的高级用法，以便针对服务获得更多控制和灵活性。 阅读本指南之前，你自己应熟悉 [Reliable Services 编程模型](service-fabric-reliable-services-introduction.md)。
+Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编写与管理。 本指南讨论 Reliable Services 的高级用法，以便针对服务获得更多控制和灵活性。 阅读本指南之前，自己应熟悉 [Reliable Services 编程模型](service-fabric-reliable-services-introduction.md)。
 
 有状态服务和无状态服务针对用户代码都有两个主要入口点：
 
@@ -53,7 +52,7 @@ Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编�
 
 在有状态服务中，只有主副本才对状态具有写入访问权限，因此当服务执行实际工作时通常为主副本。 只有当有状态服务副本为主副本时，才会执行有状态服务中的 `RunAsync` 方法。 当主要副本的角色变成非主要时，以及在关闭和中止事件期间，会取消 `RunAsync` 方法。
 
-使用 `OnChangeRoleAsync` 事件，你可以根据副本角色执行工作以及响应角色更改。
+使用 `OnChangeRoleAsync` 事件，可以根据副本角色执行工作以及响应角色更改。
 
 有状态服务还提供与无状态服务相同的四个生命周期事件，并具有相同的语义和用例：
 
@@ -70,4 +69,3 @@ Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编�
 * [Service Fabric 运行状况简介](service-fabric-health-introduction.md)
 * [使用系统运行状况报告进行故障排除](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [使用 Service Fabric 群集 Resource Manager 配置服务](service-fabric-cluster-resource-manager-configure-services.md)
-

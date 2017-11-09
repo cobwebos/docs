@@ -15,15 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 57b170539513953bd6a01ab4dd362a65cf905496
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>了解 Azure AD B2B 协作中的用户令牌
 
 若要了解 B2B 协作用户的令牌外观，以下是资源租户中 Azure Active Directory (Azure AD) 来宾和 Microsoft 帐户来宾的持有者令牌详细信息和令牌内容（适用于 tenantid 04dcc6ab-388a-4559-b527-fbec656300ea）。 若要查看 JSON Web 令牌 (JWT) 的内容，请使用 [https://jwt.io/](https://jwt.io/) 或 [http://calebb.net](http://calebb.net/)。
@@ -53,4 +50,3 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilk0dWVLMm9hSU
 * [B2B 协作用户声明映射](active-directory-b2b-claims-mapping.md)
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作的当前限制](active-directory-b2b-current-limitations.md)
-

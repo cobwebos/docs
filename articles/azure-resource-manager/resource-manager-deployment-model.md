@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager 与经典部署：了解部署模型和资源状态
-本主题介绍 Azure Resource Manager 和经典部署模型、资源的状态，以及使用不同模型来部署资源的原因。 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 通过两个不同的 API 集来处理它们，且部署的资源可能包含重要差异。 这两个模型相互不完全兼容。 本主题将介绍这些差异。
+本主题介绍 Azure Resource Manager 和经典部署模型、资源的状态，以及使用不同模型来部署资源的原因。 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 通过两个不同的 API 集来处理它们，且部署的资源可能包含重要差异。 这两个模型相互不完全兼容。 本主题介绍这些差异。
 
 若要简化资源部署和管理，Microsoft 建议为所有新资源使用 Resource Manager。 如果可能，Microsoft 建议通过 Resource Manager 重新部署现有资源。
 
@@ -81,7 +80,7 @@ SubscriptionId    : {guid}
 Get-AzureRmVM -ResourceGroupName ExampleGroup
 ```
 
-只有通过 Resource Manager 创建的资源才支持标记。 您不能将标记应用到经典资源。
+只有通过 Resource Manager 创建的资源才支持标记。 不能将标记应用到经典资源。
 
 ## <a name="resource-manager-characteristics"></a>Resource Manager 的特征
 为了更好地理解这两个模型，请看看 Resource Manager 类型的特征：
@@ -90,7 +89,7 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
   
      ![Azure 门户](./media/resource-manager-deployment-model/portal.png)
   
-     对于计算、存储和网络资源，你可以选择使用 Resource Manager 或经典部署。 选择“Resource Manager”。
+     对于计算、存储和网络资源，可以选择使用 Resource Manager 或经典部署。 选择“Resource Manager”。
   
      ![Resource Manager 部署](./media/resource-manager-deployment-model/select-resource-manager.png)
 * 使用 Azure PowerShell cmdlet 的 Resource Manager 版本创建。 这些命令采用 Verb-AzureRmNoun 格式。
@@ -112,7 +111,7 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
     ![Web 应用](./media/resource-manager-deployment-model/resource-manager-type.png)
 
 ## <a name="classic-deployment-characteristics"></a>经典部署的特性
-您也可能知道经典部署模型就是服务管理模型。
+你也可能知道经典部署模型就是服务管理模型。
 
 在经典部署模型中创建的资源具有以下共同特性：
 
@@ -120,7 +119,7 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
   
      ![经典门户](./media/resource-manager-deployment-model/classic-portal.png)
   
-     或者，通过 Azure 门户创建，然后指定**经典**部署（适用于计算、存储和网络）。
+     或者，通过 Azure 门户创建，并指定**经典**部署（适用于计算、存储和网络）。
   
      ![经典部署](./media/resource-manager-deployment-model/select-classic.png)
 * 通过 Azure PowerShell cmdlet 的服务管理版本创建。 这些命令名称采用 Verb-AzureNoun 格式。
@@ -209,7 +208,7 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 
 **我能通过 Resource Manager API 继续使用自动化脚本来预配虚拟机、虚拟网络和存储帐户资源吗？**
 
-你所构建的所有自动化和脚本将继续适用于在 Azure 服务管理模式下创建的现有虚拟机和虚拟网络。 然而，必须更新这些脚本以使用新的架构，通过 Resource Manager 模式来创建相同的资源。
+所构建的所有自动化和脚本将继续适用于在 Azure 服务管理模式下创建的现有虚拟机和虚拟网络。 然而，必须更新这些脚本以使用新的架构，通过 Resource Manager 模式来创建相同的资源。
 
 **在哪里可以找到 Azure Resource Manager 模板的示例？**
 
@@ -218,5 +217,4 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 ## <a name="next-steps"></a>后续步骤
 * 若要演练如何创建用于定义虚拟机、存储帐户和虚拟网络的模板，请参阅 [Resource Manager 模板演练](resource-manager-template-walkthrough.md)。
 * 若要查看用于部署模板的命令，请参阅[使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。
-
 

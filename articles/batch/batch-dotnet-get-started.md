@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: cf2b506c6d12e6337161aba889b23ad5eca83d96
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>通过适用于 .NET 的 Batch 客户端库开始构建解决方案
 
@@ -56,8 +55,8 @@ ms.lasthandoff: 08/22/2017
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
-### <a name="azure-batch-explorer-optional"></a>Azure Batch 资源管理器（可选）
-[Azure Batch 资源管理器][github_batchexplorer]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库随附的免费实用工具。 尽管完成本教程不要求使用 Azure Batch 资源管理器，但可将其用于开发和调试 Batch 解决方案。
+### <a name="batchlabs-optional"></a>BatchLabs（可选）
+[BatchLabs][github_batchlabs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 尽管完成本教程不要求使用 Azure Batch 资源管理器，但可将其用于开发和调试 Batch 解决方案。
 
 ## <a name="dotnettutorial-sample-project-overview"></a>DotNetTutorial 示例项目概述
 *DotNetTutorial* 代码示例是由以下两个项目组成的 Visual Studio 解决方案：**DotNetTutorial** 和 **TaskApplication**。
@@ -471,7 +470,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 
 1. **第一个参数** 是要处理的文件的路径。 这是节点上现有文件的本地路径。 首次创建上面 `UploadFileToContainerAsync` 中的 ResourceFile 对象时，会将文件名用于此属性（作为 ResourceFile 构造函数的参数）。 这意味着可以在 *TaskApplication.exe*所在的目录中找到此文件。
 2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前 3 个单词写入输出文件。
-3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 TaskApplication.exe 在将输出文件上传到 Azure 存储时使用此共享访问签名 URL。 可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
+3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 *TaskApplication.exe* 在将输出文件上传到 Azure 存储时使用此共享访问签名 URL。 可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
 
 ```csharp
 // NOTE: From project TaskApplication Program.cs
@@ -510,7 +509,7 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 
 ## <a name="step-6-monitor-tasks"></a>步骤 6：监视任务
 ![监视任务][6]<br/>
-*客户端应用程序将会：(1) 监视任务的完成和成功状态；(2) 监视将结果数据上传到 Azure 存储的任务*
+*脚本将会：(1) 监视任务的完成状态，(2) 监视将结果数据上传到 Azure 存储的任务*
 
 任务在添加到作业后，会自动排入队列并计划在与作业关联的池中的计算节点上执行。 根据你指定的设置，Batch 将处理所有任务排队、计划、重试和其他任务管理工作。
 
@@ -751,7 +750,7 @@ Sample complete, hit ENTER to exit...
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[github_batchlabs]: https://azure.github.io/BatchLabs/
 [github_dotnettutorial]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/DotNetTutorial
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_common]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Common
@@ -806,4 +805,3 @@ Sample complete, hit ENTER to exit...
 [9]: ./media/batch-dotnet-get-started/credentials_batch_sm.png "门户中的 Batch 凭据"
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "门户中的存储凭据"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch 解决方案工作流（精简流程图）"
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 23c159471a6e5a7ad9cb545840e8afd3ac72ecba
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 7b63de2453180e562596c211d40cebe85b95bd54
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="advisor-high-availability-recommendations"></a>顾问高可用性建议
 
 Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以通过顾问仪表板的“高可用性”选项卡获取顾问的高可用性建议。
@@ -31,7 +29,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="ensure-virtual-machine-fault-tolerance"></a>确保虚拟机容错
 
-顾问标识不属于可用性集的虚拟机，并建议将它们移动到可用性集中。 若要为应用程序提供冗余，建议你将两个或更多虚拟机组合到一个可用性集中。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择为虚拟机创建可用性集，或将虚拟机添加到现有可用性集。
+顾问标识不属于可用性集的虚拟机，并建议将它们移动到可用性集中。 要为应用程序提供冗余，建议将两个或更多虚拟机组合到一个可用性集中。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择为虚拟机创建可用性集，或将虚拟机添加到现有可用性集。
 
 > [!NOTE]
 > 如果选择创建可用性集，则必须至少再向其中添加一台虚拟机。 建议在可用性集中对两个或更多虚拟机进行分组，确保其中一台虚拟机在出现故障期间可用。
@@ -40,7 +38,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>确保可用性集容错 
 
-顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 若要为应用程序提供冗余，建议你将两个或更多虚拟机组合到一个可用性集中。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机或使用现有虚拟机，并将其添加到可用性集。  
+顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 要为应用程序提供冗余，建议将两个或更多虚拟机组合到一个可用性集中。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机或使用现有虚拟机，并将其添加到可用性集。  
 
 ![顾问建议：将一个或多个 VM 添加到此可用性集](./media/advisor-high-availability-recommendations/advisor-high-availability-add-vm-to-availability-set.png)
 
@@ -74,7 +72,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 3. 在服务菜单窗格中，在“监视和管理”下，单击“Azure 顾问”。  
  将显示顾问仪表板。
 
-4. 在顾问仪表板上，单击“高可用性”选项卡，然后选择要接收建议的订阅。
+4. 在顾问仪表板上，单击“高可用性”选项卡，并选择要接收建议的订阅。
 
 > [!NOTE]
 > 若要访问顾问建议，必须先向顾问*注册订阅*。 订阅所有者启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是*一次性操作*。 注册订阅后，可通过订阅、资源组或特定资源的所有者、参与者或读者身份访问顾问建议。
@@ -87,5 +85,4 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 * [顾问成本建议](advisor-performance-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-
 

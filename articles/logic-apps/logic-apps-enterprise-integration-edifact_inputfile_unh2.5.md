@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 90c9b65062acbe78196e220ba167997d44cdce90
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
-
+ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>如何处理具有 UNH2.5 段的 EDIFACT 文档
 EDIFACT 文档中存在 UNH2.5 时，它用于架构查找。 
@@ -42,14 +40,14 @@ UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'
 若要解码传入消息，请在 EDIFACT 协议接收设置中配置架构
 1. 将架构添加到集成帐户    
 2. 在 EDIFACT 协议接收设置中配置架构。 
-3. 选择 EDIFACT 协议，然后单击“编辑为 JSON”。  在接收协议 **schemaReferences**
+3. 选择 EDIFACT 协议，并单击“编辑为 JSON”。  在接收协议 **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png) 中添加 UNH2.5 值
 
 ### <a name="edifact-encode"></a>EDIFACT 编码
 若要编码传入消息，请在 EDIFACT 协议发送设置中配置架构
 1. 将架构添加到集成帐户    
 2. 在 EDIFACT 协议发送设置中配置架构。 
-3. 选择 EDIFACT 协议，然后单击“编辑为 JSON”。  在发送协议 **schemaReferences**
+3. 选择 EDIFACT 协议，并单击“编辑为 JSON”。  在发送协议 **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png) 中添加 UNH2.5 值
 
 ## <a name="next-steps"></a>后续步骤

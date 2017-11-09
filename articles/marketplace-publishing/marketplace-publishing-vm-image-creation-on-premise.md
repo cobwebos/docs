@@ -1,6 +1,6 @@
 ---
-title: "为 Azure Marketplace 创建本地虚拟机映像 | Microsoft Docs"
-description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure Marketplace。"
+title: "为 Azure 应用商店创建本地虚拟机映像 | Microsoft Docs"
+description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure 应用商店。"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,14 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 部署本地虚拟机映像
+# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
 
 对于本地开发，必须下载所创建 VM 的操作系统 VHD。 这些步骤将作为上述步骤 3.3 的一部分执行。  
@@ -32,11 +31,11 @@ ms.lasthandoff: 04/03/2017
 
 从新的 [Microsoft Azure 门户](https://portal.azure.com)找到 blob URL：
 
-1. 转到“浏览” > “VM”，然后选择已部署的 VM。
-2. 在“配置”下，选择“磁盘”磁贴，这将打开“磁盘”边栏选项卡。
+1. 转到“浏览” > “VM”，并选择已部署的 VM。
+2. 在“配置”下，选择“磁盘”磁贴，这会打开“磁盘”边栏选项卡。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img01.png)
-3. 选择“OS 磁盘”，这将打开显示磁盘属性的另一个边栏选项卡，其中包括 VHD 位置。
+3. 选择“OS 磁盘”，这会打开显示磁盘属性的另一个栏选项卡，其中包括 VHD 位置。
 4. 复制此 blob URL。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img02.png)
@@ -59,7 +58,7 @@ ms.lasthandoff: 04/03/2017
 3. 选择其中存储 VHD 的存储帐户。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img04.png)
-4. 这将显示存储帐户属性。 选择“容器”选项卡。
+4. 这会显示存储帐户属性。 选择“容器”选项卡。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img05.png)
 5. 选择其中存储 VHD 的容器。 默认情况下，从门户创建时，VHD 会存储在 vhd 容器中。
@@ -83,11 +82,11 @@ ms.lasthandoff: 04/03/2017
 > 
 > 
 
-## <a name="upload-vhds-to-an-azure-storage-account"></a>将 VHD 上载到 Azure 存储帐户
-如果已准备好 VHD 本地，则需要将它们上载到 Azure 中的存储帐户。 在创建 VHD 本地后执行此步骤，但在获取 VM 映像的认证前执行此步骤。
+## <a name="upload-vhds-to-an-azure-storage-account"></a>将 VHD 上传到 Azure 存储帐户
+如果已准备好 VHD 本地，则需要将它们上传到 Azure 中的存储帐户。 在创建 VHD 本地后执行此步骤，但在获取 VM 映像的认证前执行此步骤。
 
 ### <a name="create-a-storage-account-and-container"></a>创建存储帐户和容器
-我们建议 VHD 上载到美国某一区域的存储帐户中。 单个 SKU 的所有 VHD 都应放置在单个存储帐户内的单个容器中。
+我们建议 VHD 上传到美国某一区域的存储帐户中。 单个 SKU 的所有 VHD 都应放置在单个存储帐户内的单个容器中。
 
 若要创建存储帐户，可以使用 [Microsoft Azure 门户](https://portal.azure.com/)、PowerShell 或 Linux 命令行工具。  
 
@@ -95,7 +94,7 @@ ms.lasthandoff: 04/03/2017
 
 1. 单击“新建” 。
 2. 选择“存储”。
-3. 填写存储帐户名称，然后选择位置。
+3. 填写存储帐户名称，并选择位置。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
 4. 单击“创建” 。
@@ -103,10 +102,10 @@ ms.lasthandoff: 04/03/2017
 6. 选择“容器”。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img09.png) 
-7. 在“容器”边栏选项卡上，选择“添加”，然后输入容器名称和容器权限。 为容器权限选择“私有”。
+7. 在“容器”边栏选项卡上，选择“添加”，并输入容器名称和容器权限。 为容器权限选择“私有”。
 
 > [!TIP]
-> 我们建议你按 SKU 创建计划发布的容器。
+> 我们建议按 SKU 创建计划发布的容器。
 > 
 > 
 
@@ -135,19 +134,18 @@ ms.lasthandoff: 04/03/2017
 
         azure storage container create containername --account-name mystorageaccount --accountkey <accountKey>
 
-## <a name="upload-a-vhd"></a>上载 VHD
-创建存储帐户和容器后，可以上载已准备好的 VHD。 可以使用 PowerShell、Linux 命令行工具或其他 Azure 存储管理工具。
+## <a name="upload-a-vhd"></a>上传 VHD
+创建存储帐户和容器后，可以上传已准备好的 VHD。 可以使用 PowerShell、Linux 命令行工具或其他 Azure 存储管理工具。
 
-### <a name="upload-a-vhd-via-powershell"></a>通过 PowerShell上载 VHD
+### <a name="upload-a-vhd-via-powershell"></a>通过 PowerShell上传 VHD
 使用 [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) cmdlet。
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
-### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>使用适用于 Mac 和 Linux 的命令行工具上载 VHD
+### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>使用适用于 Mac 和 Linux 的命令行工具上传 VHD
 借助 [Linux 命令行工具](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>另请参阅
-* [为 Marketplace 创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
+* [为应用商店创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
 * [设置 Azure PowerShell](marketplace-publishing-powershell-setup.md)
-
 

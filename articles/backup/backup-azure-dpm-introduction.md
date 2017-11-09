@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
+ms.openlocfilehash: 41eed9c44a226817da9ee5f324e62902bc23754c
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 3422c8d57bdd786ce5d1a41fbb4c12cc4efffddd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>使用 DPM 准备将工作负荷备份到 Azure
 > [!div class="op_single_selector"]
@@ -43,7 +42,7 @@ ms.lasthandoff: 08/22/2017
 >
 >
 
-System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
+[System Center DPM](https://docs.microsoft.com/en-us/system-center/dpm/dpm-overview) 备份文件和应用程序数据。 可在[此处](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix)查看有关支持的工作负载的详细信息。备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
 
 * **部署为物理服务器或本地虚拟机的 DPM** - 如果 DPM 部署为物理服务器或本地 Hyper-V 虚拟机，则除了磁盘和磁带备份外，还可以将数据备份到恢复服务保管库。
 * **部署为 Azure 虚拟机的 DPM** — 通过 System Center 2012 R2 Update 3，可以将 DPM 部署为 Azure 虚拟机。 如果 DPM 部署为 Azure 虚拟机部署，则可以将数据备份到附加到 DPM Azure 虚拟机的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
@@ -61,6 +60,15 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 2. **下载保管库凭据** - 下载可用于将 DPM 服务器注册到恢复服务保管库的凭据。
 3. **安装 Azure 备份代理** - 将代理从 Azure 备份安装到每个 DPM 服务器上。
 4. **注册服务器** - 将 DPM 服务器注册到恢复服务保管库。
+
+## <a name="key-definitions"></a>关键定义
+下面是 DPM 的 Azure 备份的一些关键定义：
+
+1. **保管库凭据** — 当计算机向 Azure 备份服务中标识的保管库发送备份数据时，需要使用保管库凭据来对计算机进行身份验证。 保管库凭据可从保管库下载，并且在 48 小时内有效。
+2. **密码** — 密码用于加密向云中进行的备份。 请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
+3. **安全 PIN** — 若已启用保管库的[安全设置](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature)，则需要使用安全 PIN 来执行关键的备份操作。 该多重身份验证相当于增加了额外一层安全措施。 
+4. **恢复文件夹** — 这是执行云恢复时云中的备份临时下载到的文件夹名称。 其大小应与你想要并行恢复的备份项的大小大致相等。
+
 
 ### <a name="1-create-a-recovery-services-vault"></a>1.创建恢复服务保管库
 若要创建恢复服务保管库，请执行以下操作：
@@ -174,7 +182,7 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 * DPM 可将大多数工作负载备份到 Azure 备份。 有关所支持内容的完整列表，请参阅下面的 Azure 备份支持项。
 * 使用“复制到磁带”选项无法恢复存储在 Azure 备份中的数据。
 * 需要一个启用了 Azure 备份功能的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 阅读[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
-* 若要使用 Azure 备份，应在要备份的服务器上安装 Azure 备份代理。 每台服务器上的可用本地存储必须至少为要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
+* 若要使用 Azure 备份，应在要备份的服务器上安装 Azure 备份代理。 每台服务器上的可用本地存储空间必须至少为要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
 * 数据将存储在 Azure 保管库存储中。 可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如虚拟机或数据库）的大小不应超过 54400 GB。
 
 支持将以下文件类型备份到 Azure：
@@ -198,4 +206,3 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 > 从 System Center 2012 DPM SP1 开始，可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
 >
 >
-

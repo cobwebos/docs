@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-manager-rest-apis"></a>Resource Manager REST API
 > [!div class="op_single_selector"]
@@ -31,7 +29,7 @@ ms.lasthandoff: 05/25/2017
 > 
 > 
 
-在每次调用 Azure Resource Manager、每次部署模板以及每次配置存储帐户时，都会对 Azure Resource Manager 的 RESTful API 进行一次或多次调用。 本主题专门介绍这些 API 以及如何在完全不使用任何 SDK 的情况下调用它们。 如果你想要完全控制对 Azure 的请求，或者你偏好语言的 SDK 无法使用或不支持所需的操作，则此方法很有用。
+在每次调用 Azure Resource Manager、每次部署模板以及每次配置存储帐户时，都会对 Azure Resource Manager 的 RESTful API 进行一次或多次调用。 本主题专门介绍这些 API 以及如何在完全不使用任何 SDK 的情况下调用它们。 如果想要完全控制对 Azure 的请求，或者偏好语言的 SDK 无法使用或不支持所需的操作，则此方法很有用。
 
 本文不逐一介绍 Azure 中公开的每个 API，而以某些操作为例，说明如何连接到这些操作。 了解基础知识后，可阅读 [Azure Resource Manager REST API 参考](https://docs.microsoft.com/rest/api/resources/)，查找有关如何使用其余 API 的详细信息。
 
@@ -40,9 +38,9 @@ Azure Active Directory (AD) 负责处理 Resource Manager 的身份验证。 若
 有关分步说明，请参阅[创建 Azure AD 应用程序和服务主体](resource-group-create-service-principal-portal.md)。
 
 ### <a name="generating-an-access-token"></a>生成访问令牌
-通过向外调用位于 login.microsoftonline.com 的 Azure AD 来对 Azure AD 进行身份验证。 若要进行身份验证，需要提供以下信息：
+通过向外调用位于 login.microsoftonline.com 的 Azure AD 来对 Azure AD 进行身份验证。若要进行身份验证，需要提供以下信息：
 
-* Azure AD 租户 ID（用于登录的 Azure AD 名称，通常与你的公司同名，但不一定总是如此）
+* Azure AD 租户 ID（用于登录的 Azure AD 名称，通常与公司同名，但不一定总是如此）
 * 应用程序 ID（在创建 Azure AD 应用程序期间获取）
 * 密码（在创建 Azure AD 应用程序时选择）
 
@@ -89,7 +87,7 @@ Invoke-RestMethod -Uri https://login.microsoftonline.com/<Azure AD Tenant ID>/oa
 响应包含访问令牌和令牌有效期限的相关信息，以及可以将该令牌用于哪项资源的相关信息。
 对于对 Resource Manager API 的所有请求，必须传入在前面的 HTTP 调用中收到的访问令牌。 可以使用值“Bearer YOUR_ACCESS_TOKEN”传递它作为名为“Authorization”的标头值。 请注意“Bearer”与访问令牌之间有空格。
 
-从上面的 HTTP 结果可以看到，令牌在特定时间段内保持有效状态，你应在这段期间缓存并重复使用该同一令牌。 即使你可以在每次调用 API 时对 Azure AD 进行身份验证，但这样做的效率很低。
+从上面的 HTTP 结果可以看到，令牌在特定时间段内保持有效状态，应在这段期间缓存并重复使用该同一令牌。 即使可以在每次调用 API 时对 Azure AD 进行身份验证，但这样做的效率很低。
 
 ## <a name="calling-resource-manager-rest-apis"></a>调用 Resource Manager REST API
 本主题仅使用几个 API 来说明 REST 操作的基本用法。 有关所有操作的信息，请参阅 [Azure Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/)。
@@ -170,7 +168,7 @@ Content-Type: application/json
 ```
 
 ### <a name="create-a-resource-group"></a>创建资源组
-到目前为止，我们一直只在 Resource Manager API 中查询信息。 是创建一些资源的时候了，让我们从最简单的开始，创建一个资源组。 以下 HTTP 请求将在所选区域/位置中创建一个资源组，并向其添加标记。
+到目前为止，我们一直只在 Resource Manager API 中查询信息。 是创建一些资源的时候了，让我们从最简单的开始，创建一个资源组。 以下 HTTP 请求会在所选区域/位置中创建一个资源组，并向其添加标记。
 
 （将 YOUR_ACCESS_TOKEN、SUBSCRIPTION_ID、RESOURCE_GROUP_NAME 替换为实际的访问令牌、订阅 ID 和要创建的资源组名称）
 
@@ -204,16 +202,16 @@ Content-Type: application/json
 }
 ```
 
-你已在 Azure 中成功创建资源组。 祝贺你！
+已在 Azure 中成功创建资源组。 祝贺你！
 
 ### <a name="deploy-resources-to-a-resource-group-using-a-resource-manager-template"></a>使用 Resource Manager 模板将资源部署到资源组
-有了 Resource Manager，就可以使用模板部署资源。 模板可定义多个资源及其依赖项。 在本部分中，我们假设你熟悉 Resource Manager 模板，并仅演示如何进行 API 调用以开始部署。 有关构造模板的详细信息，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
+有了 Resource Manager，就可以使用模板部署资源。 模板可定义多个资源及其依赖项。 在本部分中，我们假设你熟悉资源管理器模板，并仅演示如何进行 API 调用以开始部署。 有关构造模板的详细信息，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
 
 模板的部署与调用其他 API 的方式并没有太大差别。 一个重要方面是模板的部署可能需要很长时间。 API 调用只返回部署的状态，并由作为开发人员的你来进行查询，以了解部署何时完成。 有关详细信息，请参阅[跟踪异步 Azure 操作](resource-manager-async-operations.md)。
 
-在本示例中，我们将使用 [GitHub](https://github.com/Azure/azure-quickstart-templates) 上提供的公开模板。 我们使用的模板会将 Linux VM 部署到美国西部区域。 尽管本示例使用公共存储库（如 GitHub）中提供的模板，但你也可以改为传递整个模板作为请求的一部分。 请注意，我们将在请求中提供在已部署的模板中使用的参数值。
+在本示例中，我们将使用 [GitHub](https://github.com/Azure/azure-quickstart-templates) 上提供的公开模板。 我们使用的模板会将 Linux VM 部署到美国西部区域。 尽管本示例使用公共存储库（如 GitHub）中提供的模板，但你也可以改为传递整个模板作为请求的一部分。 请注意，我们会在请求中提供在已部署的模板中使用的参数值。
 
-（将 SUBSCRIPTION_ID、RESOURCE_GROUP_NAME、DEPLOYMENT_NAME、YOUR_ACCESS_TOKEN、GLOBALY_UNIQUE_STORAGE_ACCOUNT_NAME、ADMIN_USER_NAME、ADMIN_PASSWORD 和 DNS_NAME_FOR_PUBLIC_IP 替换为适用于你的请求的值）
+（将 SUBSCRIPTION_ID、RESOURCE_GROUP_NAME、DEPLOYMENT_NAME、YOUR_ACCESS_TOKEN、GLOBALY_UNIQUE_STORAGE_ACCOUNT_NAME、ADMIN_USER_NAME、ADMIN_PASSWORD 和 DNS_NAME_FOR_PUBLIC_IP 替换为适用于请求的值）
 
 ```HTTP
 PUT /subscriptions/SUBSCRIPTION_ID/resourcegroups/RESOURCE_GROUP_NAME/providers/microsoft.resources/deployments/DEPLOYMENT_NAME?api-version=2015-01-01 HTTP/1.1
@@ -254,4 +252,3 @@ Content-Type: application/json
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何处理异步 REST 操作，请参阅[跟踪异步 Azure 操作](resource-manager-async-operations.md)。
-

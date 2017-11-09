@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: e49960cac868f80af3e9165a9f75e49be87515f4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>教程：Azure Active Directory 与 LogicMonitor 的集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LogicMonitor 测试用户](#creating-a-logicmonitor-test-user)** - 在 LogicMonitor 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 LogicMonitor 测试用户](#creating-a-logicmonitor-test-user)** - 在 LogicMonitor 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 06/23/2017
  
 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
 
@@ -128,7 +127,7 @@ ms.lasthandoff: 06/23/2017
 
     ![配置单一登录](./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_400.png)
 
-6. 以管理员身份登录到你的 **LogicMonitor** 公司站点。
+6. 以管理员身份登录到 **LogicMonitor** 公司站点。
 
 7. 在顶部菜单中，单击“设置”。
    
@@ -142,9 +141,9 @@ ms.lasthandoff: 06/23/2017
    
    ![单一登录设置](./media/active-directory-saas-logicmonitor-tutorial/ic790054.png "Single Sign-On Settings")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“启用单一登录”。
+   a. 选择“启用单一登录”。
 
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 对于“默认角色分配”，选择“只读”。
+   b. 对于“默认角色分配”，选择“只读”。
    
    c. 在记事本中打开下载的元数据文件，然后将文件内容复制并粘贴到“标识提供者元数据”文本框中。
    
@@ -177,7 +176,7 @@ ms.lasthandoff: 06/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-logicmonitor-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -191,9 +190,9 @@ ms.lasthandoff: 06/23/2017
 
 **若要配置用户预配，请执行以下步骤：**
 
-1. 以管理员身份登录到你的 LogicMonitor 公司站点。
+1. 以管理员身份登录到 LogicMonitor 公司站点。
 
-2. 在顶部菜单中，单击“设置”，然后单击“角色和用户”。
+2. 在顶部菜单中，单击“设置”，并单击“角色和用户”。
    
    ![角色和用户](./media/active-directory-saas-logicmonitor-tutorial/ic790056.png "Roles and Users")
 
@@ -203,9 +202,9 @@ ms.lasthandoff: 06/23/2017
    
    ![添加帐户](./media/active-directory-saas-logicmonitor-tutorial/ic790057.png "Add an account")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 将要预配的 Azure Active Directory 用户的“用户名”、“电子邮件”、“密码”和“重新键入密码”值键入到相关文本框中。
+   a. 将要预配的 Azure Active Directory 用户的“用户名”、“电子邮件”、“密码”和“重新键入密码”值键入到相关文本框中。
    
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 依次选择“角色”、“查看权限”和“状态”。
+   b. 依次选择“角色”、“查看权限”和“状态”。
    
    c. 单击“提交”。
 
@@ -220,7 +219,7 @@ ms.lasthandoff: 06/23/2017
 
 **若要将 Britta Simon 分配到 LogicMonitor，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -269,5 +268,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_203.png
-
 

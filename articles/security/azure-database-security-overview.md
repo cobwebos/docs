@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 11/01/2017
 ms.author: TomSh
+ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 036ce3dce28e7951bb39754c4351661fae85f06c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
-
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
 安全性是管理数据库时的首要考虑因素，并且始终是 Azure SQL 数据库的优先事务。 Azure SQL 数据库支持使用防火墙规则和连接加密的连接安全。 它支持使用用户名和密码的身份验证，以及使用 Azure Active Directory 管理的标识的 Azure Active Directory 身份验证。 授权使用基于角色的访问控制。
@@ -38,7 +36,7 @@ Azure SQL 数据库审核使企业能够将事件记录到审核登录 Azure 存
 
  严格保护 SQL Azure 数据库可符合大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1 等等。 [Microsoft Azure 信任中心站点](http://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。
 
-本文逐步介绍保护 Microsoft Azure SQL 数据库的结构化、表格和关系数据的基础知识。 具体而言，本文将介绍如何使用相应的资源来保护数据、控制访问和执行主动监视。
+本文逐步介绍保护 Microsoft Azure SQL 数据库的结构化、表格和关系数据的基础知识。 具体而言，本文介绍如何使用相应的资源来保护数据、控制访问和执行主动监视。
 
 此 Azure 数据库安全概述文章将重点介绍以下区域：
 
@@ -71,7 +69,7 @@ SQL 数据库可以保护数据。对于动态数据，它使用[传输层安全
 
 在身份验证过程中，TLS/SSL 客户端向 TLS/SSL 服务器发送消息，服务器使用服务器需要验证自身身份的信息进行响应。 客户端和服务器执行会话密钥的额外交换，身份验证对话结束。 完成身份验证后，可以在使用在身份验证过程中建立的对称加密密钥的服务器和客户端之间开始 SSL 保护的通信。
 
-在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。 SQL Azure 使用 TLS/SSL 验证服务器和客户端，然后使用它来加密经过身份验证的双方之间的消息。 必须在应用程序连接字符串中指定用于加密连接的参数，而不要信任服务器证书（服务器证书用于将连接字符串复制到 Azure 经典门户外部），否则，连接将不会验证服务器的身份，并且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 Encrypt=True 和 TrustServerCertificate=False。
+在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。 SQL Azure 使用 TLS/SSL 验证服务器和客户端，然后使用它来加密经过身份验证的双方之间的消息。 必须在应用程序连接字符串中指定用于加密连接的参数，而不要信任服务器证书（服务器证书用于将连接字符串复制到 Azure 门户外部），否则，连接将不会验证服务器的身份，并且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 Encrypt=True 和 TrustServerCertificate=False。
 
 ### <a name="encryption-at-rest"></a>静态加密
 可以采取多种预防措施来帮助保护数据库，例如，设计安全系统、加密机密资产，以及围绕数据库服务器构建防火墙。 但是，如果物理媒体（如驱动器或备份磁带）失窃，恶意方可能会还原或附加数据库并浏览数据。
@@ -113,7 +111,7 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 #### <a name="firewall-and-firewall-rules"></a>防火墙和防火墙规则
 
-Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序提供关系数据库服务。 为了保护你的数据，在你指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则概述](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。
+Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序提供关系数据库服务。 为了保护数据，在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则概述](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)。
 
 只能通过 TCP 端口 1433 使用 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)服务。 若要从计算机访问 SQL 数据库，请确保客户端计算机防火墙允许 TCP 端口 1433 上的传出 TCP 通信。 如果其他应用程序不需要，则阻止 TCP 端口 1433 上的入站连接。
 
@@ -174,7 +172,7 @@ SQL 数据库通过提供审核和威胁检测功能来保护数据。
 ### <a name="auditing"></a>审核
 SQL 数据库审核可提高用户深入了解数据库中发生的事件和更改（包括针对数据的更新和查询）的能力。
 
-[Azure SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。 审核有助于遵从法规标准，但不能保证遵从法规。
+[Azure SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助你一直保持符合法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。 审核有助于遵从法规标准，但不能保证遵从法规。
 
 SQL 数据库审核可让你：
 
@@ -208,7 +206,7 @@ SQL 数据库审核可让你：
 -   集成来自 [Azure SQL 数据库威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)的警报。
 -   安全中心支持基于角色的访问。
 
-## <a name="azure-marketplace"></a>Azure Marketplace
+## <a name="azure-marketplace"></a>Azure 应用商店
 
 Azure Marketplace 是一个在线应用程序和服务市场，初创公司和独立软件供应商 (ISV) 能够通过它为全球 Azure 客户提供解决方案。
 Azure Marketplace 与 Microsoft Azure 合作伙伴生态系统结合为一个统一的平台，以便更好地为我们的客户和合作伙伴提供服务。 单击[此处](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1)浏览 Azure Marketplace 中提供的数据库安全产品。
@@ -219,4 +217,3 @@ Azure Marketplace 与 Microsoft Azure 合作伙伴生态系统结合为一个统
 - 详细了解 [Azure 安全中心与 Azure SQL 数据库服务](https://docs.microsoft.com/azure/security-center/security-center-sql-database)。
 - 若要了解有关威胁检测的详细信息，请参阅 [SQL 数据库威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
 - 若要了解详细信息，请参阅[提高 SQL 数据库性能](https://docs.microsoft.com/azure/sql-database/sql-database-performance-tutorial)。 
-

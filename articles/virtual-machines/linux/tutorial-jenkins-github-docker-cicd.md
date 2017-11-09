@@ -13,17 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 09/25/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: 52408184c8cff53f8bb7006fa940b0db4b900db4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d9849b5e061dd7f2ae0744a3522dc2eb1fb37035
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>如何使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
 要将应用程序开发的生成和测试阶段自动化，可以使用持续集成和部署 (CI/CD) 管道。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 08/22/2017
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-jenkins-instance"></a>创建 Jenkins 实例
-在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 本教程使用 cloud-init 文件在 VM 上安装 Jenkins 和 Docker。 
+在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 本教程使用 cloud-init 文件在 VM 上安装 Jenkins 和 Docker。 Jenkins 是一种常用的开放源代码自动化服务器，它与 Azure 无缝集成以支持持续集成 (CI) 和持续交付 (CD)。 有关如何使用 Jenkins 的更多教程，请参阅[Azure 中心中的 Jenkins](https://docs.microsoft.com/azure/jenkins/)。
 
 在当前 shell 中，创建名为“cloud-init.txt”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init-jenkins.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
@@ -120,22 +118,22 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 现在，请打开 Web 浏览器并转到 `http://<publicIps>:8080`。 按如下所示完成初始 Jenkins 安装：
 
 - 输入在上一步骤从 VM 获取的 *initialAdminPassword*。
-- 单击“选择要安装的插件”
-- 在顶部文本框中搜索 *GitHub*，选择“GitHub 插件”，并单击“安装”
+- 选择“选择要安装的插件”
+- 在顶部文本框中搜索 GitHub，选择“GitHub 插件”，然后选择“安装”
 - 若要创建 Jenkins 用户帐户，请根据需要填写表单。 从安全角度讲，应该创建这第一个 Jenkins 用户，而不要继续使用默认管理员帐户。
-- 完成后，单击“开始使用 Jenkins”
+- 完成后，选择“开始使用 Jenkins”
 
 
 ## <a name="create-github-webhook"></a>创建 GitHub Webhook
-若要配置与 GitHub 的集成，请从 Azure 示例存储库中打开 [Node.js Hello World 示例应用](https://github.com/Azure-Samples/nodejs-docs-hello-world)。 要将存储库分叉到自己的 GitHub 帐户，请单击右上角的“分叉”按钮。
+若要配置与 GitHub 的集成，请从 Azure 示例存储库中打开 [Node.js Hello World 示例应用](https://github.com/Azure-Samples/nodejs-docs-hello-world)。 若要将存储库分叉到自己的 GitHub 帐户，请选择右上角的“分叉”按钮。
 
 在创建的分叉中创建 Webhook：
 
-- 单击“设置”，并在左侧选择“集成和服务”。
-- 单击“添加服务”，并在筛选框中输入 *Jenkins*。
+- 选择“设置”，然后在左侧选择“集成和服务”。
+- 选择“添加服务”，并在筛选框中输入 Jenkins。
 - 选择“Jenkins (GitHub 插件)”
 - 对于“Jenkins 挂钩 URL”，请输入 `http://<publicIps>:8080/github-webhook/`。 请确保包含尾部的 /
-- 单击“添加服务”
+- 选择“添加服务”
 
 ![将 GitHub Webhook 添加到分叉的存储库](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -143,28 +141,28 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ## <a name="create-jenkins-job"></a>创建 Jenkins 作业
 若要让 Jenkins 对 GitHub 中的事件（例如提交代码）做出响应，请创建 Jenkins 作业。 
 
-在 Jenkins 网站中的主页上，单击“创建新作业”：
+在 Jenkins 网站中的主页上，选择“创建新作业”：
 
 - 输入 *HelloWorld* 作为作业名称。 选择“自由风格项目”，然后选择“确定”。
 - 在“常规”部分下面，选择“GitHub”项目并输入分叉的存储库的 URL，例如 *https://github.com/iainfoulds/nodejs-docs-hello-world*
 - 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
 - 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”。
 - 在“生成”部分下面，选择“添加生成步骤”。 选择“执行 shell”，并在命令窗口中输入 `echo "Testing"`。
-- 单击作业窗口底部的“保存”。
+- 选择作业窗口底部的“保存”。
 
 
 ## <a name="test-github-integration"></a>测试 GitHub 集成
 若要测试 GitHub 与 Jenkins 的集成，请提交分叉中的更改。 
 
-返回到 GitHub Web UI，选择分叉的存储库，并单击“index.js”文件。 单击铅笔图标编辑该文件，使第 6 行的内容如下：
+返回到 GitHub Web UI，选择分叉的存储库，然后选择“index.js”文件。 选择铅笔图标编辑该文件，使第 6 行的内容如下：
 
 ```nodejs
 response.end("Hello World!");
 ```
 
-若要提交更改，请单击底部的“提交更改”按钮。
+若要提交更改，请选择底部的“提交更改”按钮。
 
-在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 单击生成编号链接，并选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Testing` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 以此方式访问 Jenkins 并触发新的生成。
+在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 选择生成号链接，并选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Testing` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 以此方式访问 Jenkins 并触发新的生成。
 
 
 ## <a name="define-docker-build-image"></a>定义 Docker 生成映像
@@ -195,10 +193,10 @@ COPY index.js /var/www/
 ## <a name="create-jenkins-build-rules"></a>创建 Jenkins 生成规则
 在上一步骤中，已创建一个可将消息输出到控制台的基本 Jenkins 生成规则。 让我们创建生成步骤以使用 Dockerfile 并运行应用。
 
-返回到 Jenkins 实例，选择上一步骤创建的作业。 单击左侧的“配置”，并向下滚动到“生成”部分：
+返回到 Jenkins 实例，选择上一步骤创建的作业。 选择左侧的“配置”，并向下滚动到“生成”部分：
 
-- 删除现有的 `echo "Test"` 生成步骤。 单击现有生成步骤框右上角的红叉。
-- 单击“添加生成步骤”，并选择“执行 shell”
+- 删除现有的 `echo "Test"` 生成步骤。 选择现有生成步骤框右上角的红叉。
+- 选择“添加生成步骤”，然后选择“执行 shell”
 - 在“命令”框中输入以下 Docker 命令，然后选择“保存”：
 
   ```bash
@@ -211,7 +209,7 @@ Docker 生成步骤将创建一个映像，并使用 Jenkins 生成编号对其�
 
 
 ## <a name="test-your-pipeline"></a>测试管道
-要查看整个管道的工作状况，请再次在分叉的 GitHub 存储库中编辑 *index.js* 文件，并单击“提交更改”。 会基于 GitHub 的 Webhook 在 Jenkins 中启动新作业。 创建 Docker 映像并在新容器中启动应用需要几秒钟时间。
+若要查看整个管道的工作状况，请再次在分叉的 GitHub 存储库中编辑 index.js 文件，并选择“提交更改”。 会基于 GitHub 的 Webhook 在 Jenkins 中启动新作业。 创建 Docker 映像并在新容器中启动应用需要几秒钟时间。
 
 如果需要，请再次获取 VM 的公共 IP 地址：
 

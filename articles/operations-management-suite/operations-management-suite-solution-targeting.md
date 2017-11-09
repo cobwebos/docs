@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
 ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>使用 Operations Management Suite (OMS) 中的解决方案目标来将管理解决方案的应用范围限制为特定的代理（预览）
-向 OMS 中添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 的所有 Windows 和 Linux 代理。  你可能希望管理你的成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用**解决方案目标**，这是一项 OMS 功能，允许向解决方案应用一个范围。
+向 OMS 中添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用**解决方案目标**，这是一项 OMS 功能，允许向解决方案应用一个范围。
 
 ## <a name="how-to-target-a-solution"></a>如何为解决方案设定目标
-可通过三个步骤为解决方案设定目标，如以下各节中所述。  注意，对于各个步骤，你需要同时使用 OMS 门户和 Azure 门户。
+可通过三个步骤为解决方案设定目标，如以下各节中所述。  注意，对于各个步骤，需要同时使用 OMS 门户和 Azure 门户。
 
 
 ### <a name="1-create-a-computer-group"></a>1.创建计算机组
@@ -39,12 +38,12 @@ ms.lasthandoff: 04/28/2017
  
  使用以下过程创建范围配置。  
 
- 1. 在 Azure 门户中，导航到 **Log Analytics** 并选择你的工作区。
+ 1. 在 Azure 门户中，导航到 **Log Analytics** 并选择工作区。
  2. 在工作区的属性中，在“工作区数据源”下选择“范围配置”。
  3. 单击“添加”以创建新的范围配置。
  4. 为范围配置键入**名称**。
  5. 单击“选择计算机组”。
- 6. 选择你创建的计算机组，并且还可以选择要添加到配置的任何其他组。  单击“选择”。  
+ 6. 选择创建的计算机组，并视需要选择要添加到配置的其他任何组。  单击“选择”。  
  6. 单击“确定”以创建范围配置。 
 
 
@@ -53,11 +52,11 @@ ms.lasthandoff: 04/28/2017
 
 使用以下过程应用范围配置。  
 
- 1. 在 Azure 门户中，导航到 **Log Analytics** 并选择你的工作区。
+ 1. 在 Azure 门户中，导航到 **Log Analytics** 并选择工作区。
  2. 在工作区的属性中，选择“解决方案”。
  3. 单击要为其设置应用范围的解决方案。
  4. 在解决方案的属性中，在“工作区数据源”下选择“解决方案目标”。  如果此选项不可用，则说明[无法为此解决方案设定目标](#solutions-and-agents-that-cant-be-targeted)。
- 5. 单击“添加范围配置”。  如果已将某个配置应用于此解决方案，则此选项将不可用。  必须删除现有配置，然后才能添加另一个配置。
+ 5. 单击“添加范围配置”。  如果已将某个配置应用于此解决方案，则此选项将不可用。  必须删除现有配置，才能添加另一个配置。
  6. 单击已创建的范围配置。
  7. 观察配置的“状态”以确保它显示为“成功”。  如果状态指出了错误，请单击配置右侧的省略号并选择“编辑范围配置”来进行更改。
 
@@ -65,8 +64,8 @@ ms.lasthandoff: 04/28/2017
 下面是无法用于解决方案目标的代理和解决方案满足的条件。
 
 - 解决方案目标仅适用于部署到代理的解决方案。
-- 解决方案目标仅适用于由 Microsoft 提供的解决方案。  它不适用于[由你自己或合作伙伴创建的](operations-management-suite-solutions-creating.md)解决方案。
-- 只能筛选出直接连接到 Log Analytics 的代理。  解决方案将自动部署到属于已连接的 Operations Manager 管理组的任何代理，无论它们是否包括在范围配置中。
+- 解决方案目标仅适用于由 Microsoft 提供的解决方案。  它不适用于[由自己或合作伙伴创建的](operations-management-suite-solutions-creating.md)解决方案。
+- 只能筛选出直接连接到 Log Analytics 的代理。  解决方案会自动部署到属于已连接的 Operations Manager 管理组的任何代理，无论它们是否包括在范围配置中。
 
 ### <a name="exceptions"></a>例外
 解决方案目标不能用于以下解决方案，尽管它们满足上述条件。
@@ -74,5 +73,5 @@ ms.lasthandoff: 04/28/2017
 - 代理运行状况评估
 
 ## <a name="next-steps"></a>后续步骤
-- 参阅[将 Azure Log Analytics 管理解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)，了解有关管理解决方案的详细信息，包括可以在你的环境中安装的解决方案。
+- 参阅[将 Azure Log Analytics 管理解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)，了解有关管理解决方案的详细信息，包括可以在环境中安装的解决方案。
 - 参阅 [Log Analytics 日志搜索中的计算机组](../log-analytics/log-analytics-computer-groups.md)，了解有关创建计算机组的详细信息。

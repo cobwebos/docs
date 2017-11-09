@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>在流分析作业中轮转输入和输出的登录凭据
 ## <a name="abstract"></a>摘要
@@ -153,7 +152,7 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 5. 转到第 4 部分。
 
 ### <a name="sql-database"></a>SQL 数据库
-1. 找到“用户名”和“密码”字段，然后将新创建的一组凭据粘贴到其中：  
+1. 找到“用户名”和“密码”字段，并将新创建的一组凭据粘贴到其中：  
    ![graphic38][graphic38]
 2. 单击“保存”命令，并确认保存更改：  
    ![graphic39][graphic39]
@@ -189,7 +188,7 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 2. 单击“运行”：  
    ![graphic43][graphic43]  
 
-将获得以下确认： 
+你会获得以下确认： 
 
     Command(s) completed successfully.
 
@@ -246,5 +245,4 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 [graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png
 [graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
-
 

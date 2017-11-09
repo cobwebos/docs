@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB：如何使用 DocumentDB API 进行查询？ | Microsoft 文档"
-description: "了解如何使用 Azure Cosmos DB 的 DocumentDB API 进行查询"
+title: "Azure Cosmos DB：如何使用 MongoDB API 进行查询？ | Microsoft Docs"
+description: "了解如何使用 Azure Cosmos DB 的 MongoDB API 进行查询"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,15 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: c783af682a78f2001930773ffcfd086efe9b5daa
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
-
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB：如何使用 MongoDB API 进行查询？
 
 Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 支持 [MongoDB shell 查询](https://docs.mongodb.com/manual/tutorial/query-documents/)。 
@@ -155,8 +152,7 @@ Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 支持 [MongoDB shell 查
 **查询**
     
     db.families.find( { "isRegistered" : true })
-**结果**
-不返回任何文档。 
+**结果**不返回任何文档。 
 
 ## <a id="examplequery4"></a>示例查询 4
 
@@ -316,5 +312,4 @@ Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 支持 [MongoDB shell 查
 
 > [!div class="nextstepaction"]
 > [全局分发数据](tutorial-global-distribution-documentdb.md)
-
 

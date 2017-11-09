@@ -15,16 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 932744208d9d53c87e31dcdf9e34539750be4bdb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>将 Docker VM 扩展与 Azure 经典门户结合使用
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 [Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。 可以使用由 [Azure Linux 代理]管理的 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量容器的 Docker VM。
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 04/03/2017
 ```
 
 ## <a name="add-the-docker-vm-extension"></a>添加 Docker VM 扩展
-若要添加 Docker VM 扩展，请找到你创建的 VM 实例，向下滚动到“扩展”，然后单击它以打开“VM 扩展”，如下所示。
+要添加 Docker VM 扩展，请找到创建的 VM 实例，向下滚动到“扩展”，然后单击它以打开“VM 扩展”，如下所示。
 
 > [!NOTE]
 > 只有预览版门户支持此功能：https://portal.azure.com/
@@ -82,14 +81,14 @@ ms.lasthandoff: 04/03/2017
 ![](media/portal-use-docker/ClickAdd.png)
 
 ### <a name="select-the-docker-vm-extension"></a>选择 Docker VM 扩展
-选择“Docker VM 扩展”，随后会显示 Docker 说明和重要链接；然后单击底部的“创建”以开始执行安装过程。
+选择“Docker VM 扩展”，随后会显示 Docker 说明和重要链接；并单击底部的“创建”以开始执行安装过程。
 
 ![](media/portal-use-docker/ChooseDockerExtension.png)
 
 ![](media/portal-use-docker/CreateButtonFocus.png)
 
 ### <a name="add-your-certificate-and-key-files"></a>添加证书和密钥文件：
-在窗体字段中，输入 base64 编码版本的 CA 证书、你的服务器证书以及服务器密钥，如下图所示。
+在窗体字段中，输入 base64 编码版本的 CA 证书、服务器证书以及服务器密钥，如下图所示。
 
 ![](media/portal-use-docker/AddExtensionFormFilled.png)
 
@@ -99,16 +98,16 @@ ms.lasthandoff: 04/03/2017
 > 
 
 ## <a name="add-the-docker-communication-endpoint"></a>添加 Docker 通信终结点
-在查看创建的资源组时，可以选择与 VM 关联的网络安全组，然后单击“入站安全规则”查看如下所示的规则。
+在查看创建的资源组时，可以选择与 VM 关联的网络安全组，并单击“入站安全规则”查看如下所示的规则。
 
 ![](media/portal-use-docker/AddingEndpoint.png)
 
-单击“+ 添加”添加另一个规则，在默认情况下，请输入终结点的名称（在本示例中为 **Docker**）和“目标端口范围”2376。 设置显示 **TCP** 的协议值，然后单击“确定”创建该规则。
+单击“+ 添加”添加另一个规则，在默认情况下，请输入终结点的名称（在本示例中为 **Docker**）和“目标端口范围”2376。 设置显示 **TCP** 的协议值，并单击“确定”创建该规则。
 
 ![](media/portal-use-docker/AddEndpointFormFilledOut.png)
 
 ## <a name="test-your-docker-client-and-azure-docker-host"></a>测试 Docker 客户端和 Azure Docker 主机
-查找并复制 VM 的域名，然后在客户端计算机的命令行中，键入 `docker --tls -H tcp://`*dockerextension*`.cloudapp.net:2376 info`（其中 *dockerextension* 已替换为 VM 的子域）。
+查找并复制 VM 的域名，并在客户端计算机的命令行中，键入 `docker --tls -H tcp://`*dockerextension*`.cloudapp.net:2376 info`（其中 *dockerextension* 已替换为 VM 的子域）。
 
 结果应如下所示：
 
@@ -164,4 +163,3 @@ WARNING: No swap limit support
 
 [使用 https 运行 Docker]:http://docs.docker.com/articles/https/
 [Docker 用户指南]:https://docs.docker.com/userguide/
-

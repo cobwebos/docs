@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: b40d7c0acd8cc6a672f25489b745561c24501482
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用
 
@@ -35,7 +33,7 @@ Log Analytics 可以读取将诊断写入到表存储或将 IIS 日志写入到 
 
 诊断已启用后，可以使用 Azure 门户或 PowerShell 配置 Log Analytics 收集日志。
 
-Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟机收集诊断数据的 Azure 扩展。 该数据存储在 Azure 存储帐户中，可以由 Log Analytics 进行收集。
+Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机收集诊断数据的 Azure 扩展。 该数据存储在 Azure 存储帐户中，可以由 Log Analytics 进行收集。
 
 为了使 Log Analytics 能够收集这些 Azure 诊断日志，这些日志必须位于以下位置：
 
@@ -128,7 +126,7 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 * 虚拟机
 * Web/辅助角色
 
-在 Azure 门户中，导航到 Log Analytics 工作区，然后执行以下任务：
+在 Azure 门户中，导航到 Log Analytics 工作区，并执行以下任务：
 
 1. 单击“存储帐户日志”
 2. 单击“添加”任务
@@ -141,7 +139,7 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 
 对于其他存储帐户和想要 Log Analytics 收集的数据类型，请重复执行步骤 2 到步骤 6。
 
-在大约 30 分钟过后，将能够在 Log Analytics 中看到存储帐户中的数据。 在应用了配置后，只能看到写入到存储中的数据。 Log Analytics 不会从存储帐户中读取预先存在的数据。
+在大约 30 分钟过后，能够在 Log Analytics 中看到存储帐户中的数据。 在应用了配置后，只能看到写入到存储中的数据。 Log Analytics 不会从存储帐户中读取预先存在的数据。
 
 > [!NOTE]
 > 该门户不会验证源是否存在于存储帐户中，或者是否正在写入新数据。
@@ -197,4 +195,3 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 * 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](log-analytics-azure-storage.md)。
 * [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
 * [使用搜索查询](log-analytics-log-searches.md)分析数据。
-

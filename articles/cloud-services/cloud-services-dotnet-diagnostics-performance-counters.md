@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/29/2016
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 2cf765cb034725199127c547a9b8b997a4a6089c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-use-performance-counters-in-an-azure-application"></a>在 Azure 应用程序中创建和使用性能计数器
 本文介绍性能计数器的好处，以及如何将其置于 Azure 应用程序中。 可以使用性能计数器来收集数据、查找瓶颈，以及优化系统和应用程序的性能。
@@ -245,7 +244,7 @@ Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计�
 ## <a name="step-3-query-performance-counter-data"></a>步骤 3：查询性能计数器数据
 在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储。 使用 Cerebrata 提供的工具（例如 Visual Studio 中的服务器资源管理器、[Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com/)或 [Azure 诊断管理器](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)）查看 WADPerformanceCountersTable 表中的性能计数器数据。 你还可以使用 [C#](../cosmos-db/table-storage-how-to-use-dotnet.md)、[Java](../cosmos-db/table-storage-how-to-use-java.md)、[Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)、[Python](../cosmos-db/table-storage-how-to-use-python.md)、[Ruby](../cosmos-db/table-storage-how-to-use-ruby.md) 或 [PHP](../cosmos-db/table-storage-how-to-use-php.md) 以编程方式查询表服务。
 
-以下 C# 示例显示针对 WADPerformanceCountersTable 表的基本查询并将诊断数据保存到 CSV 文件中。 将性能计数器保存到 CSV 文件后，你可以使用 Microsoft Excel 中的图形功能或使用一些其他工具来使数据可视化。 请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版的 Azure SDK for .NET 和更高版本中）的引用。 程序集安装在 %Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\version-num\ref\ 目录中。
+以下 C# 示例显示针对 WADPerformanceCountersTable 表的基本查询并将诊断数据保存到 CSV 文件中。 将性能计数器保存到 CSV 文件后，你可以使用 Microsoft Excel 中的图形功能或使用一些其他工具来使数据可视化。 请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版用于 .NET 的 Azure SDK 和更高版本中）的引用。 程序集安装在 %Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\version-num\ref\ 目录中。
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -321,4 +320,3 @@ public class PerformanceCountersEntity : TableEntity
 
 ## <a name="next-steps"></a>后续步骤
 [查看有关 Azure 诊断的其他文章](../azure-diagnostics.md)
-

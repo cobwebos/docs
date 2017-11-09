@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
 ms.openlocfilehash: 21a2cc6c1eaf4b34cbe8c2d7c4dbb69c8730cf32
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Add authentication to your iOS app（将身份验证添加到 iOS 应用）
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -31,9 +30,9 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
-安全身份验证要求为应用定义新的 URL 方案。  这允许身份验证系统在身份验证过程完成后，重定向回你的应用。  在本教程中，我们将通篇使用 URL 方案 _appname_。  但是，你可以使用所选择的任何 URL 方案。  对于你的移动应用程序而言，它应是唯一的。  在服务器端启用重定向：
+安全身份验证要求为应用定义新的 URL 方案。  这允许身份验证系统在身份验证过程完成后，重定向回应用。  在本教程中，我们将通篇使用 URL 方案 _appname_。  但是，可以使用所选择的任何 URL 方案。  对于移动应用程序而言，它应是唯一的。  在服务器端启用重定向：
 
-1. 在 [Azure 门户]中，选择你的“应用服务”。
+1. 在 [Azure 门户]中，选择“应用服务”。
 
 2. 单击“身份验证/授权”菜单选项。
 
@@ -41,18 +40,18 @@ ms.lasthandoff: 07/20/2017
 
 4. 将“管理模式”设置为“高级”。
 
-5. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是你的移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，因为你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+5. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
 6. 单击 **“确定”**。
 
 7. 单击“保存” 。
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 在 Xcode 中，按“运行”启动应用。 这样将引发异常，因为应用尝试以未经身份验证的用户身份访问后端，但 *TodoItem* 表现在要求身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
+## <a name="add-authentication"></a>向应用添加身份验证
 **Objective-C**：
 
 1. 在 Mac 的 Xcode 中打开 QSTodoListViewController.m 并添加以下方法：
@@ -79,7 +78,7 @@ ms.lasthandoff: 07/20/2017
 
     若未使用 Google 作为标识提供者，请将 google 更改为 microsoftaccount、twitter、facebook 或 windowsazureactivedirectory。 如果使用 Facebook，则必须在应用中[将 Facebook 域添加到允许列表][1]。
 
-    将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与你在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回你的应用程序。
+    将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回应用程序。
 
 2. 按以下代码替换 QSTodoListViewController.m 的 `viewDidLoad` 中的 `[self refresh]`：
 
@@ -112,7 +111,7 @@ ms.lasthandoff: 07/20/2017
 
    在行读取 `#pragma mark - Core Data stack` 前直接添加此代码。  用在步骤 1 中使用过的 urlScheme 值替换 _appname_。
 
-5. 打开 `AppName-Info.plist` 文件（用你应用的名称替换 AppName），并添加以下代码：
+5. 打开 `AppName-Info.plist` 文件（用应用的名称替换 AppName），并添加以下代码：
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -132,7 +131,7 @@ ms.lasthandoff: 07/20/2017
 
     使用 Apple 捆绑包标识符将 `com.microsoft.azure.zumo` 字符串替换为 **CFBundleURLName**。
 
-6. 按“运行”以启动应用，然后登录。 当你登录时，你应能够查看 Todo 列表并进行更新。
+6. 按“运行”以启动应用，并登录。 登录时，应能够查看 Todo 列表并进行更新。
 
 **Swift**：
 
@@ -165,7 +164,7 @@ ms.lasthandoff: 07/20/2017
 
     若未使用 Google 作为标识提供者，请将 google 更改为 microsoftaccount、twitter、facebook 或 windowsazureactivedirectory。 如果使用 Facebook，则必须在应用中[将 Facebook 域添加到允许列表][1]。
 
-    将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与你在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回你的应用程序。
+    将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回应用程序。
 
 2. 删除 *ToDoTableViewController.swift* 中 `viewDidLoad()` 末尾的 `self.refreshControl?.beginRefreshing()` 和 `self.onRefresh(self.refreshControl)` 行。 在其位置上添加对 `loginAndGetData()` 的调用：
 
@@ -190,7 +189,7 @@ ms.lasthandoff: 07/20/2017
 
     用在步骤 1 中使用过的 urlScheme 值替换 _appname_。
 
-4. 打开 `AppName-Info.plist` 文件（用你应用的名称替换 AppName），并添加以下代码：
+4. 打开 `AppName-Info.plist` 文件（用应用的名称替换 AppName），并添加以下代码：
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -210,7 +209,7 @@ ms.lasthandoff: 07/20/2017
 
     使用 Apple 捆绑包标识符将 `com.microsoft.azure.zumo` 字符串替换为 **CFBundleURLName**。
 
-5. 按“运行”以启动应用，然后登录。 当你登录时，你应能够查看 Todo 列表并进行更新。
+5. 按“运行”以启动应用，并登录。 登录时，应能够查看 Todo 列表并进行更新。
 
 应用服务身份验证使用 Apple 应用间通信。  有关此主题的详细信息，请参阅 [Apple 文档][2]
 <!-- URLs. -->
@@ -220,5 +219,4 @@ ms.lasthandoff: 07/20/2017
 [Azure 门户]: https://portal.azure.com
 
 [iOS 快速入门]: app-service-mobile-ios-get-started.md
-
 

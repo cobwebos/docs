@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 091ad6068c64bfe06c090430874d23f6ca497b34
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: fd8c31a727dae3b011aa8294a81f005bad72a278
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 > [!div class="op_single_selector"]
@@ -37,7 +35,7 @@ ms.lasthandoff: 04/03/2017
 
 临时表在处理数据时非常有用 - 尤其是具有暂时性中间结果的转换期间。 临时表存在于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。  Azure SQL 数据仓库中的临时表与 Azure SQL 数据库中的临时表略有不同，它们可以从会话内的任何位置进行访问，包括存储过程内部和外部。
 
-本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助你将代码模块化，从而同时提高代码的可重用性和易维护性。
+本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。
 
 ## <a name="create-a-temporary-table"></a>创建临时表
 只需在表名的前面添加 `#` 作为前缀，即可创建临时表。  例如：
@@ -119,7 +117,7 @@ FROM    t1
 > 
 
 ## <a name="dropping-temporary-tables"></a>删除临时表
-创建新会话时，应不存在任何临时表。  但是，如果调用同一存储过程，它将使用相同名称创建临时表，若要确保 `CREATE TABLE` 语句成功执行，可以使用带 `DROP` 的简单预存在检查，如下面的示例中所示：
+创建新会话时，应不存在任何临时表。  但是，如果调用同一存储过程，它将使用相同名称创建临时表，要确保 `CREATE TABLE` 语句成功执行，可以使用带 `DROP` 的简单预存在检查，如下面的示例中所示：
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -251,4 +249,3 @@ SQL 数据仓库在实现临时表时确实会施加一些限制。  目前，�
 <!--MSDN references-->
 
 <!--Other Web references-->
-

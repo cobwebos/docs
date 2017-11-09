@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 09/15/2017
 ms.author: cynthn
+ms.openlocfilehash: 97660436d29dd8d9b7547a2bf71e9fc06b09624f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 46efcfc9dfc0f56378c6ae6e9e04e0a4672f6d4a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的计划内维护
 
@@ -28,9 +27,7 @@ ms.lasthandoff: 09/15/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 [Azure 元数据服务](instance-metadata-service.md)可以发现有关 Azure 中托管的虚拟机的信息。 
-
-
+有关管理计划内维护的信息，请参阅[处理计划内维护通知](maintenance-notifications.md)。
 
 
 

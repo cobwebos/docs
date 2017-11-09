@@ -11,15 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: e15f3740fbf7cd97002b0b7efda34e968db4fe3c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/29/2016
-
-
+ms.openlocfilehash: a59e9805bd4b694a44a6c83382cce2872530cde3
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="account-provisioning-notifications"></a>帐户预配通知
 使用用户预配可以自动完成在第三方 SaaS 应用程序中管理用户这一过程。 <br>
@@ -32,7 +30,7 @@ ms.lasthandoff: 12/29/2016
 
 ![用户预配][1] 
 
-若要激活帐户预配通知，请在“确认”对话框页上选中相关复选框，然后键入收件人的电子邮件别名。
+要激活帐户预配通知，请在“确认”对话框页上选中相关复选框，并键入收件人的电子邮件别名。
 
 ![帐户预配通知][2]
 
@@ -52,4 +50,3 @@ ms.lasthandoff: 12/29/2016
 <!--Image references-->
 [1]: ./media/active-directory-saas-account-provisioning-notifications/ic766307.png
 [2]: ./media/active-directory-saas-account-provisioning-notifications/ic766308.png
-

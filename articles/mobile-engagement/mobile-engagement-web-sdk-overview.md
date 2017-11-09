@@ -14,12 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 770a83131a3e661771db50b22ce7de25b2d541cf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk"></a>Azure Mobile Engagement Web SDK
 从此处可以了解如何在 Web 应用中集成 Azure Mobile Engagement 的所有详细信息。 如果想在开始使用 Web 应用之前做一些尝试，请查看 [15 分钟的教程](mobile-engagement-web-app-get-started.md)。
@@ -37,7 +36,7 @@ ms.lasthandoff: 11/17/2016
 
 ## <a name="upgrade-procedures"></a>升级过程
 ### <a name="upgrade-from-121-to-200"></a>从 1.2.1 升级到 2.0.0
-以下各节描述如何将 Mobile Engagement Web SDK 集成从 Capptain SAS 提供的 Capptain 服务迁移到 Azure Mobile Engagement 应用。 如果要从早于 1.2.1 的版本迁移，请参阅 Capptain 网站先迁移到 1.2.1，然后再应用下面的过程。
+以下各节描述如何将 Mobile Engagement Web SDK 集成从 Capptain SAS 提供的 Capptain 服务迁移到 Azure Mobile Engagement 应用。 如果要从早于 1.2.1 的版本迁移，请参阅 Capptain 网站先迁移到 1.2.1，再应用下面的过程。
 
 此版本的 Mobile Engagement Web SDK 不支持 Samsung 智能电视、 Opera 电视、 webOS 或 Reach 功能。
 
@@ -50,9 +49,9 @@ ms.lasthandoff: 11/17/2016
 将文件 capptain-sdk.js 替换为文件 azure-engagement.js，然后相应地更新脚本导入项。
 
 #### <a name="remove-capptain-reach"></a>删除 Capptain Reach
-此版本的 Mobile Engagement Web SDK 不支持 Reach 功能。 如果已将 Capptain Reach 集成到应用程序，你需要将其删除。
+此版本的 Mobile Engagement Web SDK 不支持 Reach 功能。 如果已将 Capptain Reach 集成到应用程序，需要将其删除。
 
-从你的页面删除 Reach CSS 导入项，同时删除相关的 .css 文件（默认文件为 capptain-reach.css）。
+从页面删除 Reach CSS 导入项，同时删除相关的 .css 文件（默认文件为 capptain-reach.css）。
 
 删除以下 Reach 资源：关闭图像（默认为 capptain-close.png）和品牌图标（默认为 capptain-notification-icon）。
 
@@ -107,7 +106,7 @@ ms.lasthandoff: 11/17/2016
 #### <a name="configuration"></a>配置
 Mobile Engagement 使用连接字符串来配置 SDK 标识符，例如应用程序标识符。
 
-将应用程序 ID 替换为你的连接字符串。 请注意，SDK 配置的全局对象已从 `capptain` 更改为 `azureEngagement`。
+将应用程序 ID 替换为连接字符串。 请注意，SDK 配置的全局对象已从 `capptain` 更改为 `azureEngagement`。
 
 迁移前：
 
@@ -126,10 +125,9 @@ Mobile Engagement 使用连接字符串来配置 SDK 标识符，例如应用程
 应用程序的连接字符串显示在 Azure 门户中。
 
 #### <a name="javascript-apis"></a>JavaScript API
-全局 JavaScript 对象 `window.capptain` 已重命名为 `window.azureEngagement`，但你可以将 `window.engagement` 别名用于 API 调用。 不能将此别名用于定义 SDK 配置。
+全局 JavaScript 对象 `window.capptain` 已重命名为 `window.azureEngagement`，但可以将 `window.engagement` 别名用于 API 调用。 不能将此别名用于定义 SDK 配置。
 
 例如，`capptain.deviceId` 变成 `engagement.deviceId`，`capptain.agent.startActivity` 变成 `engagement.agent.startActivity`，依此类推。
 
 如果已将早期版本的 Azure Mobile Engagement Web SDK 集成到应用程序，请阅读[升级过程](mobile-engagement-web-upgrade-procedure.md)相关内容。
-
 

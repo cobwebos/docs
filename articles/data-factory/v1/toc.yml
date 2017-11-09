@@ -1,0 +1,225 @@
+- name: 数据工厂 V1 文档
+  href: null
+- name: 概述
+  items:
+    - name: Azure 数据工厂简介
+      href: data-factory-introduction.md
+    - name: 概念
+      items:
+        - name: 管道和活动
+          href: data-factory-create-pipelines.md
+        - name: 数据集
+          href: data-factory-create-datasets.md
+        - name: 计划和执行
+          href: data-factory-scheduling-and-execution.md
+- name: 入门
+  expanded: true
+  items:
+    - name: 创建复制数据的管道
+      href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+      items:
+        - name: 复制向导
+          href: data-factory-copy-data-wizard-tutorial.md
+        - name: Azure 门户
+          href: data-factory-copy-activity-tutorial-using-azure-portal.md
+        - name: Visual Studio
+          href: data-factory-copy-activity-tutorial-using-visual-studio.md
+        - name: Azure PowerShell
+          href: data-factory-copy-activity-tutorial-using-powershell.md
+        - name: REST API
+          href: data-factory-copy-activity-tutorial-using-rest-api.md
+        - name: .NET API
+          href: data-factory-copy-activity-tutorial-using-dotnet-api.md
+    - name: 创建传输数据的管道
+      href: data-factory-build-your-first-pipeline.md
+      items:
+        - name: Azure 门户
+          href: data-factory-build-your-first-pipeline-using-editor.md
+        - name: Visual Studio
+          href: data-factory-build-your-first-pipeline-using-vs.md
+        - name: Azure PowerShell
+          href: data-factory-build-your-first-pipeline-using-powershell.md
+        - name: Azure Resource Manager 模板
+          href: data-factory-build-your-first-pipeline-using-arm.md
+        - name: REST API
+          href: data-factory-build-your-first-pipeline-using-rest-api.md
+    - name: 在本地与云之间移动数据
+      href: data-factory-move-data-between-onprem-and-cloud.md
+    - name: 常见问题
+      href: data-factory-faq.md
+- name: 如何
+  items:
+    - name: 移动数据
+      items:
+        - name: 复制活动概述
+          href: data-factory-data-movement-activities.md
+        - name: 数据工厂复制向导
+          href: data-factory-azure-copy-wizard.md
+          items:
+            - name: 在 15 分钟内加载 1 TB 数据
+              href: data-factory-load-sql-data-warehouse.md
+        - name: 性能和优化指南
+          href: data-factory-copy-activity-performance.md
+        - name: 容错
+          href: data-factory-copy-activity-fault-tolerance.md
+        - name: 安全注意事项
+          href: data-factory-data-movement-security-considerations.md
+        - name: 连接器
+          items:
+            - name: Amazon Redshift
+              href: data-factory-amazon-redshift-connector.md
+            - name: Amazon S3
+              href: data-factory-amazon-simple-storage-service-connector.md
+            - name: Azure Blob 存储
+              href: data-factory-azure-blob-connector.md
+            - name: Azure Cosmos DB
+              href: data-factory-azure-documentdb-connector.md
+            - name: Azure Data Lake Store
+              href: data-factory-azure-datalake-connector.md
+            - name: Azure 搜索
+              href: data-factory-azure-search-connector.md
+            - name: Azure SQL 数据库
+              href: data-factory-azure-sql-connector.md
+            - name: Azure SQL 数据仓库
+              href: data-factory-azure-sql-data-warehouse-connector.md
+            - name: Azure 表存储
+              href: data-factory-azure-table-connector.md
+            - name: Cassandra
+              href: data-factory-onprem-cassandra-connector.md
+            - name: DB2
+              href: data-factory-onprem-db2-connector.md
+            - name: 文件系统
+              href: data-factory-onprem-file-system-connector.md
+            - name: FTP
+              href: data-factory-ftp-connector.md
+            - name: HDFS
+              href: data-factory-hdfs-connector.md
+            - name: HTTP
+              href: data-factory-http-connector.md
+            - name: MongoDB
+              href: data-factory-on-premises-mongodb-connector.md
+            - name: MySQL
+              href: data-factory-onprem-mysql-connector.md
+            - name: OData
+              href: data-factory-odata-connector.md
+            - name: ODBC
+              href: data-factory-odbc-connector.md
+            - name: Oracle
+              href: data-factory-onprem-oracle-connector.md
+            - name: PostgreSQL
+              href: data-factory-onprem-postgresql-connector.md
+            - name: Salesforce
+              href: data-factory-salesforce-connector.md
+            - name: SAP Business Warehouse
+              href: data-factory-sap-business-warehouse-connector.md
+            - name: SAP HANA
+              href: data-factory-sap-hana-connector.md
+            - name: SFTP
+              href: data-factory-sftp-connector.md
+            - name: SQL Server
+              href: data-factory-sqlserver-connector.md
+            - name: Sybase
+              href: data-factory-onprem-sybase-connector.md
+            - name: Teradata
+              href: data-factory-onprem-teradata-connector.md
+            - name: Web 表
+              href: data-factory-web-table-connector.md
+        - name: 数据管理网关
+          href: data-factory-data-management-gateway.md
+    - name: 转换数据
+      href: data-factory-data-transformation-activities.md
+      items:
+        - name: HDInsight Hive 活动
+          href: data-factory-hive-activity.md
+        - name: HDInsight Pig 活动
+          href: data-factory-pig-activity.md
+        - name: HDInsight MapReduce 活动
+          href: data-factory-map-reduce.md
+        - name: HDInsight Streaming 活动
+          href: data-factory-hadoop-streaming-activity.md
+        - name: HDInsight Spark 活动
+          href: data-factory-spark.md
+        - name: 机器学习批处理执行活动
+          href: data-factory-azure-ml-batch-execution-activity.md
+        - name: 机器学习更新资源活动
+          href: data-factory-azure-ml-update-resource-activity.md
+        - name: 存储过程活动
+          href: data-factory-stored-proc-activity.md
+        - name: Data Lake Analytics U-SQL 活动
+          href: data-factory-usql-activity.md
+        - name: .NET 自定义活动
+          href: data-factory-use-custom-activities.md
+        - name: 调用 R 脚本
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+        - name: 在 Azure Analysis Services 中重新处理模型
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+        - name: 计算链接服务
+          href: data-factory-compute-linked-services.md
+    - name: 开发
+      items:
+        - name: Azure Resource Manager 模板
+          href: data-factory-how-to-use-resource-manager-templates.md
+        - name: 示例
+          href: data-factory-samples.md
+        - name: 函数和系统变量
+          href: data-factory-functions-variables.md
+        - name: 命名规则
+          href: data-factory-naming-rules.md
+        - name: .NET API 更改日志
+          href: data-factory-api-change-log.md
+    - name: 监视和管理
+      items:
+        - name: “监视和管理”应用
+          href: data-factory-monitor-manage-app.md
+        - name: Azure 数据工厂管道
+          href: data-factory-monitor-manage-pipelines.md
+        - name: 使用 .NET SDK
+          href: data-factory-create-data-factories-programmatically.md
+        - name: 排查数据工厂问题
+          href: data-factory-troubleshoot.md
+        - name: 解决数据管理网关的使用问题
+          href: data-factory-troubleshoot-gateway-issues.md
+- name: 引用
+  items:
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.datafactories
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.datafactories.models
+    - name: REST
+      href: /rest/api/datafactory/
+    - name: JSON
+      href: data-factory-json-scripting-reference.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 案例研究
+      href: data-factory-customer-case-studies.md
+    - name: 学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 数据管理网关的发行说明
+      href: data-factory-gateway-release-notes.md
+    - name: 请求功能
+      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-data-factory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'
+    - name: 使用数据工厂和批处理来处理大规模数据集
+      href: data-factory-data-processing-using-batch.md
+    - name: 案例研究
+      items:
+        - name: 客户分析
+          href: data-factory-customer-profiling-usecase.md
+        - name: 产品建议
+          href: data-factory-product-reco-usecase.md

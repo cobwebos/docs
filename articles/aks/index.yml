@@ -1,0 +1,55 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure 容器服务 (AKS)
+metadata:
+  document_id: null
+  title: Azure 容器服务 (AKS) 文档 - 教程和 API 参考 | Microsoft Docs
+  meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07-21-2017
+  ms.author: carolz
+abstract:
+  description: Azure 容器服务 (AKS) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何部署 AKS 群集：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/media/index/ContainerService.svg
+            text: 创建 AKS 群集
+            href: /azure/aks/kubernetes-walkthrough
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何在 AKS 群集上部署、管理和更新应用程序。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">从应用程序创建容器映像</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">将容器映像上传到 Azure 容器注册表</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">部署 AKS 群集</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">在 Kubernetes 中运行容器映像</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-scale">缩放应用程序和 Kubernetes 基础结构</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">更新 Kubernetes 中运行的应用程序</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-monitor">使用 OMS 监视 Kubernetes</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">升级 AKS 群集</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/aks">REST API</a></p>

@@ -1,8 +1,10 @@
 # 概述
 ## [什么是负载均衡器？](load-balancer-overview.md)
+## [什么是负载均衡器标准？](load-balancer-standard-overview.md)
 ## [内部负载均衡器](load-balancer-internet-overview.md)
 ## [内部负载均衡器](load-balancer-internal-overview.md)
 ## [了解负载均衡器探测](load-balancer-custom-probe-overview.md)
+## [了解高可用性端口](load-balancer-ha-ports-overview.md)
 ## [Azure Resource Manager 支持](load-balancer-arm.md)
 ## [IPv6 支持](load-balancer-ipv6-overview.md)
 ## [多个 VIP](load-balancer-multivip-overview.md)
@@ -24,14 +26,17 @@
 ### [配置面向 Internet 的负载均衡器 (CLI)](load-balancer-get-started-internet-arm-cli.md)
 ### [配置面向 Internet 的负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
 
-## [配置面向 Internet 的负载均衡器（经典门户）](load-balancer-get-started-internet-classic-portal.md)
+## [配置面向 Internet 的负载均衡器 - （经典 PowerShell）](load-balancer-get-started-internet-classic-ps.md)
 ### [配置面向 Internet 的负载均衡器（经典云）](load-balancer-get-started-internet-classic-cloud.md)
-### [配置面向 Internet 的负载均衡器（经典 PS）](load-balancer-get-started-internet-classic-ps.md)
 ### [配置面向 Internet 的负载均衡器（经典 CLI）](load-balancer-get-started-internet-classic-cli.md)
 
 ## [使用 IPv6 创建面向 Internet 的负载均衡器](load-balancer-ipv6-internet-ps.md)
 ### [使用 IPv6 创建面向 Internet 的负载均衡器 (CLI)](load-balancer-ipv6-internet-cli.md)
 ### [使用 IPv6 创建面向 Internet 的负载均衡器（模板）](load-balancer-ipv6-internet-template.md)
+
+## [创建区域冗余的公共负载均衡器标准](load-balancer-get-started-internet-az-portal.md)
+### [创建区域冗余的公共负载均衡器标准 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [创建区域冗余的公共负载均衡器标准 (CLI)](load-balancer-get-started-internet-az-cli.md)
 
 # 如何
 ## [配置负载均衡器的 TCP 空闲超时](load-balancer-tcp-idle-timeout.md)
@@ -44,13 +49,17 @@
 ### [使用多个 IP 配置 (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
 ## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
+## [为内部负载均衡器配置高可用性端口](load-balancer-configure-ha-ports.md)
+## [在可用性区域中创建公共 IP 地址](../virtual-network/create-public-ip-availability-zone-portal.md)
+## [在可用性区域中创建公共 IP 地址 (PowerShell)](../virtual-network/create-public-ip-availability-zone-powershell.md)
+## [在可用性区域中创建公共 IP 地址 (CLI)](../virtual-network/create-public-ip-availability-zone-cli.md)
 ## 故障排除
 ### [对 Azure 负载均衡器进行故障排除](load-balancer-troubleshoot.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)
-## [PowerShell](/powershell/module/azurerm.network)
-## [Azure CLI 2.0](/cli/azure/network/lb)
+## [Azure PowerShell](/powershell/module/azurerm.network)
+## [Azure CLI](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)

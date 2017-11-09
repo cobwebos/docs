@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 7d181e6e434c998573dbea4b541cfacf7a28ee66
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的电源和散热模块
 ## <a name="overview"></a>概述
@@ -41,7 +40,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
 * 拆卸 PCM 之前，断开 PCM 电源，方法是关闭主开关（如果存在），或者拔下电源线。 系统将收到即将关闭电源的警告。
 * 更换发生故障的 PCM 之前，请确保另一个 PCM 可以正常工作以继续执行系统操作。 必须尽快将发生故障的 PCM 更换为完全可操作的 PCM。
 * PCM 模块的更换只需几分钟即可完成，但必须在 10 分钟内拆掉有故障的 PCM，以防过热。
-* 请注意，出厂时随附的更换件 764 W PCM 模块中不包括备用电池模块。 执行更换之前，需要从发生故障的 PCM 中取出电池，然后将其插入更换件模块。 有关详细信息，请参阅如何[取出并插入备用电池模块](storsimple-8000-battery-replacement.md)。
+* 请注意，出厂时随附的更换件 764 W PCM 模块中不包括备用电池模块。 执行更换之前，需要从发生故障的 PCM 中取出电池，并将其插入更换件模块。 有关详细信息，请参阅如何[取出并插入备用电池模块](storsimple-8000-battery-replacement.md)。
 
 ## <a name="remove-a-pcm"></a>拆卸 PCM
 准备好从 Microsoft Azure StorSimple 设备拆卸电源和散热模块 (PCM) 时，请按照以下说明操作。
@@ -52,9 +51,9 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
 #### <a name="to-remove-a-pcm"></a>拆卸 PCM
 1. 在 Azure 经典门户中，单击“设置”>“监视器”>“硬件运行状况”。 在“共享组件”下检查 PCM 组件的状态，以确定哪个 PCM 发生了故障：
    
-   * 如果 PCM 0 中的电源发生故障，则“PCM 0 中的电源”状态将显示为红色。
-   * 如果 PCM 1 中的电源发生故障，则“PCM 1 中的电源”状态将显示为红色。
-   * 如果 PCM 1 上的风扇出现故障，则“PCM 0 的散热 0”或“PCM 0 的散热 1”状态将显示为红色。
+   * 如果 PCM 0 中的电源发生故障，则“PCM 0 中的电源”状态会显示为红色。
+   * 如果 PCM 1 中的电源发生故障，则“PCM 1 中的电源”状态会显示为红色。
+   * 如果 PCM 1 上的风扇出现故障，则“PCM 0 的散热 0”或“PCM 0 的散热 1”状态会显示为红色。
 2. 在主机箱背面找到发生故障的 PCM。 如果运行的是 8600 模型，可通过查看显示于前面板 LED 显示屏的系统单元标识号识别主机箱。 主机箱上显示的默认单元 ID 是 **00**，而 EBOD 机箱上显示的默认单元 ID 是 **01**。 以下关系图和表对 LED 显示屏的前面板进行了说明。
    
     ![前 OPS 面板上的系统 ID](./media/storsimple-power-cooling-module-replacement/IC740991.png)
@@ -64,7 +63,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |“静音”按钮 |
-   | 2 |系统电源 |
+   | #N/A |系统电源 |
    | 3 |模块故障 |
    | 4 |逻辑故障 |
    | 5 |单元 ID 显示 |
@@ -77,7 +76,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |交流电源故障 |
-   | 2 |风扇故障 |
+   | #N/A |风扇故障 |
    | 3 |电池故障 |
    | 4 |PCM 正常 |
    | 5 |直流电源故障 |
@@ -91,7 +90,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | 2 |PCM 1 |
+   | #N/A |PCM 1 |
    | 3 |控制器 0 |
    | 4 |控制器 1 |
 5. 关闭发生故障的 PCM 并断开电源线。 现在可拆卸 PCM 了。
@@ -100,7 +99,7 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
     ![打开 PCM 把手](./media/storsimple-power-cooling-module-replacement/IC740995.png)
    
     **图 4** 打开 PCM 把手
-7. 抓住该把手，然后拆卸 PCM。
+7. 抓住该把手，并拆卸 PCM。
    
     ![拆卸设备 PCM](./media/storsimple-power-cooling-module-replacement/IC740996.png)
    
@@ -141,5 +140,4 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-8000-hardware-component-replacement.md)。
-
 

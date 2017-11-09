@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: c203b192b9da0d280cbd7f6c123219242ee4a3d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intacct"></a>教程：Azure Active Directory 与 Intacct 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/28/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-intacct-from-the-gallery"></a>从库中添加 Intacct
-若要配置 Intacct 与 Azure AD 的集成，需要从库中将 Intacct 添加到托管 SaaS 应用列表。
+要配置 Intacct 与 Azure AD 的集成，需要从库中将 Intacct 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Intacct，请执行以下步骤：**
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 06/28/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_search.png)
 
-5. 在结果窗格中，选择“Intacct”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Intacct”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_addfromgallery.png)
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 06/28/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Intacct 支持团队](https://us.intacct.com/support)获取此值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_certificate.png) 
 
@@ -134,11 +133,11 @@ ms.lasthandoff: 06/28/2017
 
 7. 在另一个 Web 浏览器窗口中，以管理员身份登录 Intacct 公司站点。
 
-8. 单击“公司”选项卡，然后单击“公司信息”。
+8. 单击“公司”选项卡，并单击“公司信息”。
 
     ![公司](./media/active-directory-saas-intacct-tutorial/ic790037.png "公司")
 
-9. 单击“安全性”选项卡，然后单击“编辑”。
+9. 单击“安全性”选项卡，并单击“编辑”。
 
     ![安全](./media/active-directory-saas-intacct-tutorial/ic790038.png "安全")
 
@@ -146,9 +145,9 @@ ms.lasthandoff: 06/28/2017
 
     ![单一登录](./media/active-directory-saas-intacct-tutorial/ic790039.png "单一登录")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“启用单一登录”。
+    a. 选择“启用单一登录”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 对于“标识提供者类型”，选择“SAML 2.0”。
+    b. 对于“标识提供者类型”，选择“SAML 2.0”。
 
     c. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者 URL”文本框中。
    
@@ -185,7 +184,7 @@ ms.lasthandoff: 06/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intacct-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -201,7 +200,7 @@ ms.lasthandoff: 06/28/2017
 
 1. 登录到 **Intacct** 租户。
 
-2. 单击“公司”选项卡，然后单击“用户”。
+2. 单击“公司”选项卡，并单击“用户”。
 
     ![用户](./media/active-directory-saas-intacct-tutorial/ic790041.png "用户")
 3. 单击“添加”选项卡。
@@ -211,9 +210,9 @@ ms.lasthandoff: 06/28/2017
 
     ![用户信息](./media/active-directory-saas-intacct-tutorial/ic790043.png "User Information")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户信息”部分中输入要预配的 Azure AD 帐户的**用户 ID**、**姓氏**、**名字**、**电子邮件地址**、**职务**和**电话**。
+    a. 在“用户信息”部分中输入要预配的 Azure AD 帐户的**用户 ID**、**姓氏**、**名字**、**电子邮件地址**、**职务**和**电话**。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择要预配的 Azure AD 帐户的**管理员特权**。
+    b. 选择要预配的 Azure AD 帐户的**管理员特权**。
    
     c. 单击“保存” 。 Azure AD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。
 
@@ -226,9 +225,9 @@ ms.lasthandoff: 06/28/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Intacct，请执行以下步骤：**
+**要将 Britta Simon 分配到 Intacct，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -274,5 +273,4 @@ ms.lasthandoff: 06/28/2017
 [201]: ./media/active-directory-saas-intacct-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-intacct-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-intacct-tutorial/tutorial_general_203.png
-
 

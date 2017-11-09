@@ -3,7 +3,7 @@ title: "Azure Application Insights 中的仪表板和导航 | Microsoft Docs"
 description: "创建关键 APM 图表和查询的视图。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: 9a4a839e7b5cc772fb9d4c57ed70484d90a87fdd
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 27ab2084cdb6506cbb807fc9c35b0e67630ad85f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
@@ -165,4 +164,3 @@ ms.lasthandoff: 08/25/2017
 | [指标资源管理器](app-insights-metrics-explorer.md)<br/>筛选器和分段指标 |![搜索示例](./media/app-insights-dashboards/64.png) |
 | [诊断搜索](app-insights-diagnostic-search.md)<br/>查找和检查事件及其相关事件，以及创建 Bug |![搜索示例](./media/app-insights-dashboards/61.png) |
 | [分析](app-insights-analytics.md)<br/>功能强大的查询语言 |![搜索示例](./media/app-insights-dashboards/63.png) |
-

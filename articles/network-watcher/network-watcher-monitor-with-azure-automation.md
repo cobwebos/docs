@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
+ms.openlocfilehash: 935431783b08919049c5c24b56285647bc7b35ba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 55ec52dd0d94a0347cc67a8785b89611da955111
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 
 若要向客户提供可靠的服务，获取网络性能的深入见解至关重要。 因此，必须能够快速检测网络中断状态，并采取纠正措施来缓解中断状态。 在 Azure 自动化中，可以通过 Runbook 以编程方式实施和运行任务。 使用 Azure 自动化可以创建完美的脚本来执行连续、主动的网络监视和警报。
@@ -57,7 +55,7 @@ ms.lasthandoff: 07/28/2017
 
 ### <a name="step-1"></a>步骤 1
 
-在 [Azure 门户](https://portal.azure.com)中导航到“Azure 自动化”，然后单击“Runbook”
+在 [Azure 门户](https://portal.azure.com)中导航到“Azure 自动化”，并单击“Runbook”
 
 ![自动化帐户概述][1]
 
@@ -83,7 +81,7 @@ ms.lasthandoff: 07/28/2017
 
 在此步骤中创建 Runbook。以下代码示例提供了本示例所需的所有代码。 需要将代码中包含 \<value\> 的项替换为订阅中的值。
 
-使用以下代码，然后单击“保存”
+使用以下代码，并单击“保存”
 
 ```PowerShell
 # Set these variables to the proper values for your environment
@@ -201,4 +199,3 @@ else
 [8]: ./media/network-watcher-monitor-with-azure-automation/figure8.png
 [9]: ./media/network-watcher-monitor-with-azure-automation/figure9.png
 [10]: ./media/network-watcher-monitor-with-azure-automation/figure10.png
-

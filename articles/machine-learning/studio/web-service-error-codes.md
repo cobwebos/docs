@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: e109e92d8add47315f483a3ba027912f4b2ee1fd
 ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
- 
 # <a name="machine-learning-rest-api-error-codes"></a>机器学习 REST API 错误代码
  
 在 Azure 机器学习 Web 服务中执行操作时，可能会返回以下错误代码。
@@ -255,4 +253,3 @@ Web 服务包无效。 请检查提供的 Web 包是否正确，并重试。
 | BackendInitializationTimeout | 无法在允许的时间内完成 Web 服务初始化。 |
 | BackendScoreTimeout | 无法在允许的时间内完成 Web 服务请求执行。 |
  
-

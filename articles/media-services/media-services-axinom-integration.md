@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c02b75dc2c783b96dc9e1256051b8c6df290d425
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务
 > [!div class="op_single_selector"]
@@ -31,7 +30,7 @@ ms.lasthandoff: 11/17/2016
 ## <a name="overview"></a>概述
 Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细信息，请参阅 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)）。 此外，Azure 媒体播放器 (AMP) 还添加了 Widevine 支持（有关详细信息，请参阅 [AMP 文档](http://amp.azure.net/libs/amp/latest/docs/)）。 这是在配备了 MSE 和 EME 的现代浏览器上流式处理受 CENC 保护的 DASH 内容方面的一项重要成就，该保护是通过 multi-native-DRM（PlayReady 和 Widevine）来完成的。
 
-从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许你配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
 
 本文介绍如何集成和测试由 Axinom 管理的 Widevine 许可证服务器。 具体而言，本文涵盖：  
 
@@ -46,7 +45,7 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 ## <a name="content-protection"></a>内容保护
 若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[如何通过 Azure 媒体服务配置 Widevine 打包](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
 
-你可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
+可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
 
 1. 适用于 MS Edge 和 IE11 的 PlayReady 保护，可能存在令牌授权限制。 令牌限制策略必须附带由 Azure Active Directory 之类的安全令牌服务 (STS) 颁发的令牌；
 2. 针对 Chrome 的 Widevine 保护，可能要求使用其他 STS 颁发的令牌进行令牌身份验证。 
@@ -54,13 +53,13 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 请参阅 [JWT 令牌生成](media-services-axinom-integration.md#jwt-token-generation)部分，了解为何不能将 Azure Active Directory 用作 Axinom 的 Widevine 许可证服务器的 STS。
 
 ### <a name="considerations"></a>注意事项
-1. 你必须使用 Axinom 指定的密钥种子 (8888000000000000000000000000000000000000) 以及你自己生成或选择的密钥 ID 来生成内容密钥，以便配置密钥传递服务。 Axinom 许可证服务器会颁发所有包含内容密钥的许可证，这些内容密钥基于同一密钥种子，而该种子可同时用于测试和生产。
+1. 必须使用 Axinom 指定的密钥种子 (8888000000000000000000000000000000000000) 以及自己生成或选择的密钥 ID 来生成内容密钥，以便配置密钥传递服务。 Axinom 许可证服务器会颁发所有包含内容密钥的许可证，这些内容密钥基于同一密钥种子，而该种子可同时用于测试和生产。
 2. 用于测试的 Widevine 许可证获取 URL：[https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense)。 HTTP 和 HTTS 都是允许的。
 
 ## <a name="azure-media-player-preparation"></a>Azure Media Player 准备
 AMP v1.4.0 支持播放使用 PlayReady 和 Widevine DRM 进行动态打包的 AMS 内容。
 如果 Widevine 许可证服务器不需要令牌身份验证，则不需执行任何其他操作即可测试受 Widevine 保护的 DASH 内容。 例如，AMP 团队提供简单的[示例](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)，在该示例中可以看到它在使用 PlayReady 的 Edge 和 IE11 中以及使用 Widevine 的 Chrome 中运行。
-Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。 需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。 为此，你需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
+Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。 需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。 为此，需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
@@ -71,7 +70,7 @@ AMP 代码的其余部分为标准 AMP API，如[此处](http://amp.azure.net/li
 ## <a name="jwt-token-generation"></a>生成 JWT 令牌
 用于测试的 Axinom Widevine 许可证服务器要求 JWT 令牌身份验证。 此外，JWT 令牌中的声明之一是复杂的对象类型而不是基元数据类型。
 
-遗憾的是，Azure AD 只能颁发基元类型的 JWT 令牌。 同样，.NET Framework API（System.IdentityModel.Tokens.SecurityTokenHandler 和 JwtPayload）只允许你输入复杂对象类型作为声明。 但是，这些声明仍会序列化为字符串。 因此，这两种类型都不能用于生成 Widevine 许可证请求所需的 JWT 令牌。
+遗憾的是，Azure AD 只能颁发基元类型的 JWT 令牌。 同样，.NET Framework API（System.IdentityModel.Tokens.SecurityTokenHandler 和 JwtPayload）只允许输入复杂对象类型作为声明。 但是，这些声明仍会序列化为字符串。 因此，这两种类型都不能用于生成 Widevine 许可证请求所需的 JWT 令牌。
 
 John Sheehan 的 [JWT Nuget 包](https://www.nuget.org/packages/JWT)符合要求，因此将使用该 Nuget 包。
 
@@ -140,9 +139,9 @@ Axinom Widevine 许可证服务器
 2. Axinom 通信密钥可用作签名密钥。 请注意，该密钥为十六进制字符串，但在进行编码时，必须将其视为一系列字节而非字符串。 这是通过方法 ConvertHexStringToByteArray 实现的。
 
 ## <a name="retrieving-key-id"></a>检索密钥 ID
-你可能已经注意到，在用于生成 JWT 令牌的代码中，密钥 ID 是必需的。 由于在加载 AMP 播放器之前需确保 JWT 令牌就绪，因此需检索密钥 ID 以生成 JWT 令牌。
+可能已经注意到，在用于生成 JWT 令牌的代码中，密钥 ID 是必需的。 由于在加载 AMP 播放器之前需确保 JWT 令牌就绪，因此需检索密钥 ID 以生成 JWT 令牌。
 
-当然，可以通过多种方式来获取密钥 ID。 例如，你可以将密钥 ID 与内容元数据一起存储在数据库中。 也可以从 DASH MPD（媒体演示文稿说明）文件检索密钥 ID。 下面的代码是针对后一种方式。
+当然，可以通过多种方式来获取密钥 ID。 例如，可以将密钥 ID 与内容元数据一起存储在数据库中。 也可以从 DASH MPD（媒体演示文稿说明）文件检索密钥 ID。 下面的代码是针对后一种方式。
 
     //get key_id from DASH MPD
     public static string GetKeyID(string dashUrl)
@@ -183,7 +182,7 @@ Axinom Widevine 许可证服务器
 * Windows 8.1 和 Windows 10 中的 IE 11
 * 同时还支持 Firefox（桌面版）和 Mac（非 iOS）上的 Safari，二者均可通过 Silverlight 使用，同一 URL 也适用于 Azure Media Player
 
-在利用 Axinom Widevine 许可证服务器的迷你解决方案中，需要以下参数。 Axinom 还根据其 Widevine 服务器安装情况提供其他参数，密钥 ID 除外。
+利用 Axinom Widevine 许可证服务器的小型解决方案中需要以下参数。 Axinom 还根据其 Widevine 服务器安装情况提供其他参数，密钥 ID 除外。
 
 | 参数 | 使用方式 |
 | --- | --- |
@@ -201,5 +200,4 @@ Axinom Widevine 许可证服务器
 
 ### <a name="acknowledgments"></a>致谢
 我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的创作工作：Kristjan Jõgi of Axinom、Mingfei Yan 和 Amit Rajput。
-
 

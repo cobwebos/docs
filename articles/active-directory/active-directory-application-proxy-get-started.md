@@ -15,14 +15,12 @@ ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 426056d394af0a9ded28202615cb80c7b50e59fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 67f7f5b8d411d11c97a8666d1bfc3c0c5f1174ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>如何提供对本地应用程序的安全远程访问
 
 现今的员工想要随时随地都能在任何设备上高效工作。 他们想要在自己的设备上工作，无论设备是平板电脑、手机还是笔记本电脑。 而且他们期望能够访问其所有的应用程序：云中的 SaaS 应用和本地的公司应用。 传统上，提供本地应用程序访问权限会涉及虚拟专用网络 (VPN) 或外围网络 (DMZ)。 这些解决方案不仅复杂且难以确保安全性，而且设置和管理成本也很高。
@@ -45,13 +43,13 @@ Azure AD 应用程序代理的特性：
    * 无需更改或更新应用程序即可使用应用程序代理。 
    * 用户可获得一致的身份验证体验。 他们可以使用 MyApps 门户单一登录到云中的 SaaS 应用和本地的应用。 
 * **安全**
-   * 当你使用 Azure AD 应用程序代理发布应用时，可以利用 Azure 中丰富的授权控件和安全性分析功能。 可以获得云级安全性和 Azure 安全功能，例如条件访问和双重验证。
+   * 使用 Azure AD 应用程序代理发布应用时，可以利用 Azure 中丰富的授权控件和安全性分析功能。 可以获得云级安全性和 Azure 安全功能，例如条件访问和双重验证。
    * 无需通过防火墙打开任何入站连接即可让用户进行远程访问。 
 * **经济高效**
    * 应用程序代理在云中运行，因此可以节省时间和资金。 本地解决方案通常需要设置和维护外围网络、边缘服务器或其他复杂的基础结构。  
 
 ## <a name="what-kind-of-applications-work-with-application-proxy"></a>哪种应用程序可与应用程序代理搭配使用？
-通过 Azure AD 应用程序代理，你可以访问各种类型的内部应用程序：
+通过 Azure AD 应用程序代理，可以访问各种类型的内部应用程序：
 
 * 使用 [Windows 集成身份验证](active-directory-application-proxy-sso-using-kcd.md)方法进行身份验证的 Web 应用程序  
 * 使用基于窗体或[基于标头](application-proxy-ping-access.md)的访问的 Web 应用程序  
@@ -76,12 +74,12 @@ Azure AD 应用程序代理的特性：
 6. 通过应用程序代理服务和连接器将响应发送给用户。
 
 ### <a name="single-sign-on"></a>单一登录
-Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果你的应用程序使用 IWA，则应用程序代理将模拟使用 Kerberos 约束委派的用户来提供 SSO。 如果你有信任 Azure Active Directory 的声明感知应用程序，则 SSO 可用，因为用户已经由 Azure AD 进行身份验证。
+Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果应用程序使用 IWA，则应用程序代理将模拟使用 Kerberos 约束委派的用户来提供 SSO。 如果有信任 Azure Active Directory 的声明感知应用程序，则 SSO 可用，因为用户已经由 Azure AD 进行身份验证。
 
 有关 Kerberos 的详细信息，请参阅[全面了解 Kerberos 约束委派 (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)。
 
 ### <a name="managing-apps"></a>管理应用
-使用应用程序代理发布应用后，可以像在 Azure 门户中管理其他任何企业应用一样来对它进行管理。 可以使用条件访问和双重验证等 Azure Active Directory 安全功能来控制用户权限以及自定义应用的品牌。 
+使用应用程序代理发布应用后，可以像在 Azure 门户中管理其他任何企业应用一样来对其进行管理。 可以使用条件访问和双重验证等 Azure Active Directory 安全功能来控制用户权限以及自定义应用的品牌。 
 
 ## <a name="get-started"></a>入门
 
@@ -90,17 +88,16 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 通过两个步骤开始使用应用程序代理：
 
 1. [启用应用程序代理并配置连接器](active-directory-application-proxy-enable.md)。    
-2. [发布应用程序](active-directory-application-proxy-publish.md) - 使用快速方便的向导发布本地应用，然后即可远程访问。
+2. [发布应用程序](active-directory-application-proxy-publish.md) - 使用快速方便的向导发布本地应用，即可远程访问。
 
 ## <a name="whats-next"></a>后续步骤
 发布第一个应用后，还可以使用应用程序代理执行其他许多操作：
 
 * [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
-* [使用你自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
+* [使用自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
 * [了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)
 * [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md) 
 * [设置自定义主页](application-proxy-office365-app-launcher.md)
 
 有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-
 

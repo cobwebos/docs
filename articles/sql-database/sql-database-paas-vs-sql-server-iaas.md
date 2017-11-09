@@ -10,18 +10,17 @@ editor: cjgronlund
 ms.assetid: 7467f422-b77d-4b60-9cb5-0f1ec17ec565
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.workload: data-management
+ms.workload: Active
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: carlrab
+ms.openlocfilehash: 436166fcb0fa9103c6b702b63d93a0b222d536d0
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d136b71c9587d4035009a2ef2296fd93f9e984fe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)
 Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负荷：
@@ -66,7 +65,6 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 |  | 需要对数据库内置高可用性、灾难恢复和升级的团队。 |可以为 SQL Server 配置和管理高可用性、灾难恢复和修补的团队。 提供的某些自动化功能可极大地简化此操作。 | |
 |  | 不想要管理基础操作系统和配置设置的团队。 |需要一个具有完全管理权限的自定义环境。 | |
 |  | 最大为 4 TB 或更大的可使用扩展模式进行[水平或垂直分区](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)的数据库。 |存储最大为 64 TB 的 SQL Server 实例。 此实例可以根据需要支持任意数目的数据库。 | |
-|  | [构建软件即服务 (SaaS) 应用程序](sql-database-design-patterns-multi-tenancy-saas-applications.md)。 |迁移和构建企业应用程序和混合应用程序。 | |
 |  | | |
 | **资源：** |不想使用 IT 资源来配置和管理底层基础结构，而想要重点关注应用程序层。 |将一些 IT 资源用于配置和管理。 提供的某些自动化功能可极大地简化此操作。 |
 | **总拥有成本：** |消除硬件成本并减少管理成本。 |消除硬件成本。 |
@@ -146,5 +144,4 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 * 若要开始使用 SQL 数据库，请参阅[第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
 * 请参阅 [《SQL Database pricing》](https://azure.microsoft.com/pricing/details/sql-database/)（SQL 数据库定价）。
 * 若要开始在 Azure VM 上使用 SQL Server，请参阅 [《Provision a SQL Server virtual machine in Azure》](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) （在 Azure 中预配 SQL Server 虚拟机）。
-
 

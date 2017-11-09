@@ -14,16 +14,15 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 759c5655d7a6dbfff92136968ae8f26ccdeb44af
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
+ms.openlocfilehash: 35e67d86b42358c4ce28b41beae1ee8e1896e939
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含主题、订阅和规则的服务总线命名空间
 
-本文介绍如何使用 Azure Resource Manager 模板，创建包含主题、订阅和规则（筛选器）的服务总线命名空间。 你将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
+本文介绍如何使用 Azure Resource Manager 模板，创建包含主题、订阅和规则（筛选器）的服务总线命名空间。 将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
 有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
 
@@ -43,15 +42,15 @@ ms.lasthandoff: 04/19/2017
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>你将部署什么内容？
+## <a name="what-will-you-deploy"></a>将部署什么内容？
 
-使用此模板，你将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
+使用此模板，将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
 
 [服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## <a name="what-are-rules-filters"></a>什么是规则（筛选器）？
 
-在许多情况下，必须以不同方式处理具有特定特征的消息。 若要启用，可配置订阅以找到具有特定属性的消息，然后对这些属性执行修改。 虽然服务总线订阅可看到发送到主题的所有消息，但你可仅将部分消息复制到虚拟订阅队列。 可使用订阅筛选器完成此操作。 若要深入了解规则（筛选器），请参阅[规则和操作](service-bus-queues-topics-subscriptions.md#rules-and-actions)。
+在许多情况下，必须以不同方式处理具有特定特征的消息。 要启用，可配置订阅以找到具有特定属性的消息，并对这些属性执行修改。 虽然服务总线订阅可看到发送到主题的所有消息，但你可仅将部分消息复制到虚拟订阅队列。 可使用订阅筛选器完成此操作。 若要深入了解规则（筛选器），请参阅[规则和操作](service-bus-queues-topics-subscriptions.md#rules-and-actions)。
 
 若要自动运行部署，请单击以下按钮：
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure Resource Manager，应定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 你应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure Resource Manager，应定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数：
 
@@ -173,7 +172,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
+现在，已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
@@ -187,5 +186,4 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-
 

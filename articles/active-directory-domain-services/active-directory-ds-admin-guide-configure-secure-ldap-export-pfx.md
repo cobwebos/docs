@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 5d46f376d46b8bbf3f93de57a7d4e31abdbcdb2f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 
@@ -32,14 +31,14 @@ ms.lasthandoff: 07/08/2017
 
 执行以下步骤，将 LDAPS 证书导出到 .PFX 文件。
 
-1. 按“开始”按钮并键入 **R**。在“运行”对话框中键入 **mmc**，然后单击“确定”。
+1. 按“开始”按钮并键入 **R**。在“运行”对话框中键入 **mmc**，并单击“确定”。
 
     ![启动 MMC 控制台](./media/active-directory-domain-services-admin-guide/secure-ldap-start-run.png)
 2. 在“用户帐户控制”提示窗口中单击“是”，以管理员身份启动 MMC（Microsoft 管理控制台）。
 3. 在“文件”菜单中，单击“添加/删除管理单元...”。
 
     ![将管理单元添加到 MMC 控制台](./media/active-directory-domain-services-admin-guide/secure-ldap-add-snapin.png)
-4. 在“添加或删除管理单元”对话框中，选择“证书”管理单元，然后单击“添加 >”按钮。
+4. 在“添加或删除管理单元”对话框中，选择“证书”管理单元，并单击“添加 >”按钮。
 
     ![将证书管理单元添加到 MMC 控制台](./media/active-directory-domain-services-admin-guide/secure-ldap-add-certificates-snapin.png)
 5. 在“证书管理单元”向导中，选择“计算机帐户”并单击“下一步”。
@@ -61,12 +60,12 @@ ms.lasthandoff: 07/08/2017
 11. 在“证书导出向导”中，单击“下一步”。
 
     ![导出证书向导](./media/active-directory-domain-services-admin-guide/secure-ldap-export-cert-wizard.png)
-12. 在“导出私钥”页上，选择“是，导出私钥”，然后单击“下一步”。
+12. 在“导出私钥”页上，选择“是，导出私钥”，并单击“下一步”。
 
     ![导出证书私钥](./media/active-directory-domain-services-admin-guide/secure-ldap-export-private-key.png)
 
     > [!WARNING]
-    > 必须连同证书一起导出私钥。 如果提供的 PFX 不包含证书的私钥，则为托管域启用安全 LDAP 将会失败。
+    > 必须连同证书一起导出私钥。 如果提供的 PFX 不包含证书的私钥，则为托管域启用安全 LDAP 会失败。
     >
     >
 13. 在“导出文件格式”页上，选择“个人信息交换 - PKCS #12 (.PFX)”作为导出证书的文件格式。
@@ -77,7 +76,7 @@ ms.lasthandoff: 07/08/2017
     > 仅支持 .PFX 文件格式。 请不要将证书导出为 .CER 文件格式。
     >
     >
-14. 在“安全”页上选择“密码”选项，然后输入用于保护 .PFX 文件的密码。 请记住此密码，因为下一个任务要用到它。 单击“下一步”继续。
+14. 在“安全”页上选择“密码”选项，并输入用于保护 .PFX 文件的密码。 请记住此密码，因为下一个任务要用到它。 单击“下一步”继续。
 
     ![证书导出密码 ](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
@@ -95,4 +94,3 @@ ms.lasthandoff: 07/08/2017
 
 ## <a name="next-step"></a>后续步骤
 [任务 3 - 为托管域启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-

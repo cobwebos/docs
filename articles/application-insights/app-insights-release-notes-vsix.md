@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 5edd37a3a042f710e7d1b9e148c24d9a548a4fea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>开发人员分析工具发行说明
 
@@ -122,12 +121,12 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="version-70"></a>版本 7.0
 ### <a name="azure-application-insights-trends"></a>Azure Application Insights 趋势
-Azure Application Insights 是 Visual Studio 中的新工具，可以用来帮助分析应用随着时间的推移如何运行。 若要开始操作，请在“Application Insights”工具栏按钮上或“Application Insights 搜索”窗口中选择“浏览遥测趋势”。 或者，在“视图”菜单上，单击“其他窗口”，然后单击“Application Insights 趋势”。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 若要查找数据中的异常情况，请选择“视图类型”下拉列表下的其中一个异常情况选项。 使用窗口底部的筛选选项，可轻松地全力探索遥测的特定子集。
+Azure Application Insights 是 Visual Studio 中的新工具，可以用来帮助分析应用随着时间的推移如何运行。 若要开始操作，请在“Application Insights”工具栏按钮上或“Application Insights 搜索”窗口中选择“浏览遥测趋势”。 或者，在“视图”菜单上，单击“其他窗口”，并单击“Application Insights 趋势”。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 若要查找数据中的异常情况，请选择“视图类型”下拉列表下的其中一个异常情况选项。 使用窗口底部的筛选选项，可轻松地全力探索遥测的特定子集。
 
 ![Application Insights 趋势](./media/app-insights-release-notes-vsix/Trends.png)
 
 ### <a name="exceptions-in-codelens"></a>CodeLens 中的异常
-异常遥测现在显示在 CodeLens 中。 如果已将项目连接到 Application Insights 服务，你将看到在过去 24 小时内生产期间每个方法中发生的异常数。 通过 CodeLens，可以跳转到“搜索”或“趋势”，更详细地调查异常。
+异常遥测现在显示在 CodeLens 中。 如果已将项目连接到 Application Insights 服务，会看到在过去 24 小时内生产期间每个方法中发生的异常数。 通过 CodeLens，可以跳转到“搜索”或“趋势”，更详细地调查异常。
 
 ![CodeLens 中的异常](./media/app-insights-release-notes-vsix/ExceptionsCodeLens.png)
 
@@ -136,45 +135,45 @@ Application Insights 现在支持 Visual Studio 中的 ASP.NET Core RC2 项目�
 
 ![ASP.NET Core 支持](./media/app-insights-release-notes-vsix/NetCoreSupport.png)
 
-ASP.NET 5 RC1 和 ASP.NET Core RC2 项目还在“诊断工具”窗口中有新的支持。 当以本地方式在电脑上调试时，你将看到 Application Insights 事件，例如来自 ASP.NET 应用的请求和异常。 从每个事件，单击“搜索”向下钻取以获取详细信息。
+ASP.NET 5 RC1 和 ASP.NET Core RC2 项目还在“诊断工具”窗口中有新的支持。 当以本地方式在电脑上调试时，会看到 Application Insights 事件，例如来自 ASP.NET 应用的请求和异常。 从每个事件，单击“搜索”向下钻取以获取详细信息。
 
 ![诊断工具支持](./media/app-insights-release-notes-vsix/DiagnosticTools.png)
 
 ### <a name="hockeyapp-for-universal-windows-apps"></a>适用于通用 Windows 应用的 HockeyApp
-除了 Beta 分发和用户反馈外，HockeyApp 还为通用 Windows 应用提供符号化的故障报告。 我们甚至使添加 HockeyApp SDK 变得更加容易：右键单击通用 Windows 项目，然后单击“Hockey 应用 - 启用故障分析”。 这将安装 SDK、设置故障收集，并在云中预配 HockeyApp 资源，所有这些操作无需将应用上载到 HockeyApp 服务即可完成。
+除了 Beta 分发和用户反馈外，HockeyApp 还为通用 Windows 应用提供符号化的故障报告。 我们甚至使添加 HockeyApp SDK 变得更加容易：右键单击通用 Windows 项目，并单击“Hockey 应用 - 启用故障分析”。 这会安装 SDK、设置故障收集，并在云中预配 HockeyApp 资源，所有这些操作无需将应用上传到 HockeyApp 服务即可完成。
 
 其他新增功能：
 
-* 我们已使 Application Insights 搜索体验变得更快且更直观。 现在，当你选择时间范围和详细信息筛选器时，它们将自动应用。
+* 我们已使 Application Insights 搜索体验变得更快且更直观。 现在，选择时间范围和详细信息筛选器时，它们会自动应用。
 * 并且在 Application Insights 搜索中，现在可以选择从请求遥测直接跳转至代码。
 * 我们已对 HockeyApp 登录体验做了改进。
-* 在诊断工具中，将显示异常的生产遥测信息。
+* 在诊断工具中，会显示异常的生产遥测信息。
 
 ## <a name="version-52"></a>版本 5.2
 我们非常荣幸地宣布推出 Visual Studio 中的 HockeyApp 方案。 第一个集成是在通用 Windows 应用程序的 Beta 分发和 Visual Studio 中的 Windows 窗体应用。
 
-借助 Beta 分发，可以将早期版本的应用上载到 HockeyApp 以便分发给选定客户或测试人员的子集。 通过将 Beta 分发与 HockeyApp 故障收集和用户反馈功能结合使用，可以为你提供关于应用在广泛发布前的有价值信息。 可以使用此信息来解决应用相关的问题，从而可以避免或尽可能减少将来出现的问题，例如较低的应用评级、负面反馈等。
+借助 Beta 分发，可以将早期版本的应用上传到 HockeyApp 以便分发给选定客户或测试人员的子集。 通过将 Beta 分发与 HockeyApp 故障收集和用户反馈功能结合使用，可以提供关于应用在广泛发布前的有价值信息。 可以使用此信息来解决应用相关的问题，从而可以避免或尽可能减少将来出现的问题，例如较低的应用评级、负面反馈等。
 
-看一下从 Visual Studio 中上载 Beta 分发的版本有多么简单。
+看一下从 Visual Studio 中上传 Beta 分发的版本有多么简单。
 
 ### <a name="universal-windows-apps"></a>通用 Windows 应用程序
-通用 Windows 应用项目节点的上下文菜单现在包含一个选项，可以将版本上载到 HockeyApp。
+通用 Windows 应用项目节点的上下文菜单现在包含一个选项，可以将版本上传到 HockeyApp。
 
 ![适用于通用 Windows 应用的项目上下文菜单](./media/app-insights-release-notes-vsix/UniversalContextMenu.png)
 
-选择项，HockeyApp 上载对话框将打开。 需要一个 HockeyApp 帐户来上载版本。 如果你是新用户，不必担心。 创建帐户的过程很简单。
+选择项，HockeyApp 上传对话框将打开。 需要一个 HockeyApp 帐户来上传版本。 如果是新用户，不必担心。 创建帐户的过程很简单。
 
-连接时，将在对话框中看到上载表单。
+连接时，会在对话框中看到上传表单。
 
-![通用 Windows 应用的上载对话框](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
+![通用 Windows 应用的上传对话框](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-选择要上载的内容（.appxbundle 或 .appx 文件），然后在向导中选择发布选项。 或者，可以在下一页上添加发行说明。 选择“完成”开始上载。
+选择要上载的内容（.appxbundle 或 .appx 文件），并在向导中选择发布选项。 或者，可以在下一页上添加发行说明。 选择“完成”开始上传。
 
-上载完成后，将出现具有确认信息的 HockeyApp 通知和指向 HockeyApp 门户中应用的链接。
+上传完成后，将出现具有确认信息的 HockeyApp 通知和指向 HockeyApp 门户中应用的链接。
 
-![上载完成通知](./media/app-insights-release-notes-vsix/UploadComplete.png)
+![上传完成通知](./media/app-insights-release-notes-vsix/UploadComplete.png)
 
-就这么简单！ 只需几次单击，即可上载 Beta 分发的版本。
+就这么简单！ 只需几次单击，即可上传 Beta 分发的版本。
 
 可以通过多种方式在 HockeyApp 门户中管理应用程序。 这包括邀请用户、查看故障报告和反馈、更改详细信息等。
 
@@ -183,45 +182,45 @@ ASP.NET 5 RC1 和 ASP.NET Core RC2 项目还在“诊断工具”窗口中有新
 有关应用管理的更多详细信息，请参阅 [HockeyApp 知识库](http://support.hockeyapp.net/kb/app-management-2)。
 
 ### <a name="windows-forms-apps"></a>Windows 窗体应用
-Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将版本上载到 HockeyApp。
+Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将版本上传到 HockeyApp。
 
 ![适用于 Windows 窗体应用的项目上下文菜单](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
 
-这将打开 HockeyApp 上载对话框，它类似于通用 Windows 应用中的对话框。
+这会打开 HockeyApp 上传对话框，它类似于通用 Windows 应用中的对话框。
 
-![Windows 窗体应用的上载对话框](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
+![Windows 窗体应用的上传对话框](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
 
-请注意本向导中的新字段，用于指定应用版本。 对于通用 Windows 应用，通过清单来填充信息。 遗憾的是，Windows 窗体应用不具有此功能的等效项。 你将需要手动指定它们。
+请注意本向导中的新字段，用于指定应用版本。 对于通用 Windows 应用，通过清单来填充信息。 遗憾的是，Windows 窗体应用不具有此功能的等效项。 需要手动指定它们。
 
-流程的其余部分与通用 Windows 应用类似：选择生成和发布选项，添加版本说明，然后在 HockeyApp 门户中进行上载和管理。
+流程的其余部分与通用 Windows 应用类似：选择生成和发布选项，添加版本说明，并在 HockeyApp 门户中进行上载和管理。
 
-过程如此简单。 试一下，并告诉我们你的想法。
+过程如此简单。 试一下，并告诉我们想法。
 
 ## <a name="version-43"></a>版本 4.3
 ### <a name="search-telemetry-from-local-debug-sessions"></a>搜索本地调试会话中的遥测
-借助此版本，现在可以搜索在 Visual Studio 调试会话中生成的 Application Insights 遥测。 过去，你只能在已使用 Application Insights 注册应用时使用搜索。 现在，应用只需装有 Application Insights SDK 即可搜索本地遥测。
+借助此版本，现在可以搜索在 Visual Studio 调试会话中生成的 Application Insights 遥测。 过去，只能在已使用 Application Insights 注册应用时使用搜索。 现在，应用只需装有 Application Insights SDK 即可搜索本地遥测。
 
-如果你的 ASP.NET 应用程序具有 Application Insights SDK，请执行以下步骤以使用搜索。
+如果 ASP.NET 应用程序具有 Application Insights SDK，请执行以下步骤以使用搜索。
 
 1. 调试应用程序。
 2. 通过以下方式之一打开 Application Insights 搜索：
-   * 在“视图”菜单上，单击“其他窗口”，然后单击“Application Insights 搜索”。
+   * 在“视图”菜单上，单击“其他窗口”，并单击“Application Insights 搜索”。
    * 单击“Application Insights”工具栏按钮。
-   * 在解决方案资源管理器中，展开 **ApplicationInsights.config**，然后单击“搜索调试会话遥测”。
-3. 如果尚未使用 Application Insights 注册，“搜索”窗口将在调试会话遥测模式下打开。
+   * 在解决方案资源管理器中，展开 **ApplicationInsights.config**，并单击“搜索调试会话遥测”。
+3. 如果尚未使用 Application Insights 注册，“搜索”窗口会在调试会话遥测模式下打开。
 4. 单击“搜索”图标，查看本地遥测。
 
-![上载完成](./media/app-insights-release-notes-vsix/LocalSearch.png)
+![上传完成](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
 ## <a name="version-42"></a>版本 4.2
 在此版本中，我们添加了相关功能，使得在事件上下文中搜索数据变得更容易，能够从更多数据事件跳转到代码，以及实现将日志记录数据发送到 Application Insights 的轻松体验。 此扩展每月更新一次。 若有反馈或功能请求，请将其发送到 aidevtools@microsoft.com。
 
 ### <a name="no-click-logging-experience"></a>无单击日志记录体验
 如果已经在使用 NLog、log4net 或 System.Diagnostics.Tracing，则不必对将所有跟踪记录移动到 Application Insights 而担心。 在此版本中，我们集成了 Application Insights 日志记录适配器与常规配置体验。
-如果已经配置了其中一个记录框架，以下部分将介绍如何获取它。
+如果已经配置了其中一个记录框架，以下部分介绍如何获取它。
 **如果已经添加 Application Insights：**
 
-1. 右键单击项目节点，然后依次单击“Application Insights”和“配置 Application Insights”。 确保看到选项，以在配置窗口中添加正确的适配器。
+1. 右键单击项目节点，并依次单击“Application Insights”和“配置 Application Insights”。 确保看到选项，以在配置窗口中添加正确的适配器。
 2. 或者，在生成解决方案时，留意显示在屏幕右上角的弹出窗口，并单击“配置”。
 
 ![日志记录通知](./media/app-insights-release-notes-vsix/LoggingToast.png)
@@ -254,13 +253,13 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 此版本附带了大量新功能和更新。 需要已安装 Update 1 才能安装此版本。
 
 ### <a name="jump-from-an-exception-to-method-in-source-code"></a>从异常跳转到源代码中的方法
-现在，如果要在 Application Insights 搜索窗口中查看生产应用中的异常，可以跳转到代码中出现异常的方法。 只需加载正确的项目即可，剩余的工作将由 Application Insights 完成！ （若要了解有关 Application Insights 搜索窗口的详细信息，请参阅以下部分中版本 4.0 的发行说明。）
+现在，如果要在 Application Insights 搜索窗口中查看生产应用中的异常，可以跳转到代码中出现异常的方法。 只需加载正确的项目即可，剩余的工作由 Application Insights 完成！ （若要了解有关 Application Insights 搜索窗口的详细信息，请参阅以下部分中版本 4.0 的发行说明。）
 
 工作原理 即使在未打开解决方案时，也可以使用 Applications Insights 搜索。 堆栈跟踪区域显示信息消息，并且堆栈跟踪中的许多项不可用。
 
 如果文件信息可用，某些项可能是链接，但解决方案信息项仍然可见。
 
-如果单击超链接，将跳转到代码中选定方法的位置。 版本号可能存在差异，但跳转至代码的正确版本的功能将在更高版本中引入。
+如果单击超链接，将跳转到代码中选定方法的位置。 版本号可能存在差异，但跳转至代码的正确版本的功能会在更高版本中引入。
 
 ![单击异常详细信息](./media/app-insights-release-notes-vsix/jumptocode.png)
 
@@ -270,13 +269,13 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 ![在解决方案资源管理器中搜索](./media/app-insights-release-notes-vsix/searchentry.png)
 
 ### <a name="displays-a-notification-when-publish-is-completed"></a>发布完成时显示通知
-当项目联机发布时，将显示弹出对话框，以便可以在生产中查看 Application Insights 数据。
+当项目联机发布时，会显示弹出对话框，以便可以在生产中查看 Application Insights 数据。
 
 ![发布完成通知](./media/app-insights-release-notes-vsix/publishtoast.png)
 
 ## <a name="version-40"></a>4.0 版
 ### <a name="search-application-insights-data-from-within-visual-studio"></a>从 Visual Studio 中搜索 Application Insights 数据
-与 Application Insights 门户中的搜索功能一样，现在可以在 Visual Studio 中按事件类型、属性值和文本进行筛选和搜索，然后检查各个事件。
+与 Application Insights 门户中的搜索功能一样，现在可以在 Visual Studio 中按事件类型、属性值和文本进行筛选和搜索，并检查各个事件。
 
 ![搜索窗口](./media/app-insights-release-notes-vsix/search.png)
 
@@ -291,8 +290,7 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 ![“新建项目”对话框](./media/app-insights-release-notes-vsix/newproject.png)
 
 ### <a name="device-support"></a>设备支持
-在 *Connect();* 2015 中，我们已[宣布](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)设备的移动开发人员体验即为 HockeyApp。 HockeyApp 可帮助你将 Beta 版本分发给测试人员、收集和分析应用中的所有故障，并直接从客户那里收集反馈。
+在 *Connect();* 2015 中，我们已[宣布](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)设备的移动开发人员体验即为 HockeyApp。 HockeyApp 可帮助将 Beta 版本分发给测试人员、收集和分析应用中的所有故障，并直接从客户那里收集反馈。
 在选择用来生成应用的任何一个平台（无论是 iOS、Android、Windows 还是 Xamarin、Cordova 或 Unity 之类的跨平台解决方案）上，HockeyApp 都支持该应用。
 
-在将来版本的 Application Insights 扩展中，我们将在 HockeyApp 和 Visual Studio 之间引入更加集成的体验。 现在，你可以通过简单地添加 NuGet 引用来开始操作。 有关详细信息，请参阅[文档](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)。
-
+在将来版本的 Application Insights 扩展中，我们会在 HockeyApp 和 Visual Studio 之间引入更加集成的体验。 现在，可以通过简单地添加 NuGet 引用来开始操作。 有关详细信息，请参阅[文档](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)。

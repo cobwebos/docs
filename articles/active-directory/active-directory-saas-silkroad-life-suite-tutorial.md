@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: ecf4e31ecea00d003fc47ea4cebb781ca58957f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
 本教程的目的是说明如何将 SilkRoad Life Suite 与 Azure Active Directory (Azure AD) 集成。 
@@ -55,7 +54,7 @@ ms.lasthandoff: 03/28/2017
 2. 配置和测试 Azure AD SSO
 
 ## <a name="add-silkroad-life-suite-from-the-gallery"></a>从库中添加 SilkRoad Life Suite
-若要配置 SilkRoad Life Suite 与 Azure AD 的集成，需要从库中将 SilkRoad Life Suite 添加到托管 SaaS 应用列表。
+要配置 SilkRoad Life Suite 与 Azure AD 的集成，需要从库中将 SilkRoad Life Suite 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 SilkRoad Life Suite，请执行以下步骤：**
 
@@ -81,7 +80,7 @@ ms.lasthandoff: 03/28/2017
    
     ![应用程序][5]
 
-7. 在结果窗格中，选择“SilkRoad Life Suite”，然后单击“完成”以添加该应用程序。
+7. 在结果窗格中，选择“SilkRoad Life Suite”，并单击“完成”以添加该应用程序。
    
     ![应用程序][50]
 
@@ -96,7 +95,7 @@ ms.lasthandoff: 03/28/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SilkRoad Life Suite 测试用户](#creating-a-silkroad-life-suite-test-user)** - 在 SilkRoad Life Suite 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 SilkRoad Life Suite 测试用户](#creating-a-silkroad-life-suite-test-user)** - 在 SilkRoad Life Suite 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -111,11 +110,11 @@ ms.lasthandoff: 03/28/2017
   > 若要获取对 SilkRoad Life Suite 身份验证应用程序的访问权限以配置 Microsoft Azure AD 的联合身份验证，请联系 SilkRoad 支持或 SilkRoad 服务代表。
   > 
 
-2. 转到“服务提供商”，然后单击“联合身份验证详细信息”。 
+2. 转到“服务提供商”，并单击“联合身份验证详细信息”。 
    
     ![Azure AD 单一登录][10] 
 
-3. 单击“下载联合元数据”，然后在计算机上保存该元数据文件。
+3. 单击“下载联合元数据”，并在计算机上保存该元数据文件。
    
     ![Azure AD 单一登录][11] 
 
@@ -123,7 +122,7 @@ ms.lasthandoff: 03/28/2017
    
     ![配置单一登录][6] 
 
-5. 在“你希望用户如何登录 SilkRoad Life Suite”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+5. 在“你希望用户如何登录 SilkRoad Life Suite”页上，选择“Azure AD 单一登录”，并单击“下一步”。
    
     ![Azure AD 单一登录][7] 
 
@@ -132,11 +131,11 @@ ms.lasthandoff: 03/28/2017
     ![Azure AD 单一登录][8]   
  1. 在“登录 URL”文本框中，键入用户用于登录 SilkRoad Life Suite 站点的 URL（例如：*https://defcompanytest-test-redcarpet.silkroad-eng.com/Authentication/*）。  
  2. 打开下载的 **Silkroad** 元数据文件。 
- 3. 找到 **AssertionConsumerService** 标记，然后复制 **Location** 属性。         
+ 3. 找到 **AssertionConsumerService** 标记，并复制 **Location** 属性。         
    
     ![Azure AD 单一登录][21] 
  4. 将值粘贴到“回复 URL”文本框中。  
- 5. 单击“资源组名称” 的 Azure 数据工厂。
+ 5. 单击“下一步”。
 
 6. 在“配置 SilkRoad Life Suite 的单一登录”页上，执行以下步骤：
    
@@ -155,7 +154,7 @@ ms.lasthandoff: 03/28/2017
 9. 在“添加身份验证源”部分中，执行以下步骤： 
    
     ![Azure AD 单一登录][14]  
- 1. 在“选项 2 - 元数据文件”下，单击“浏览”以上载已下载的元数据文件。  
+ 1. 在“选项 2 - 元数据文件”下，单击“浏览”以上传已下载的元数据文件。  
  2. 单击“使用文件数据创建标识提供者”。
 
 10. 在“身份验证源”部分中，单击“编辑”。 
@@ -206,9 +205,9 @@ ms.lasthandoff: 03/28/2017
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤： 
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_05.png)  
- 1. 在“用户类型”中，选择“你的组织中的新用户”。  
+ 1. 对于“用户类型”，选择“组织中的新用户”。  
  2. 在“用户名”文本框中，键入“BrittaSimon”。 
- 3. 单击“资源组名称” 的 Azure 数据工厂。
+ 3. 单击“下一步”。
 
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
@@ -217,7 +216,7 @@ ms.lasthandoff: 03/28/2017
  2. 在“姓氏”文本框中，键入“Simon”。 
  3. 在“显示名称”文本框中，键入“Britta Simon”。 
  4. 在“角色”列表中，选择“用户”。
- 5. 单击“资源组名称” 的 Azure 数据工厂。
+ 5. 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -241,7 +240,7 @@ ms.lasthandoff: 03/28/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 SilkRoad Life Suite，请执行以下步骤：**
+**要将 Britta Simon 分配到 SilkRoad Life Suite，请执行以下步骤：**
 
 1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
@@ -305,7 +304,6 @@ ms.lasthandoff: 03/28/2017
 [203]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_205.png
-
 
 
 

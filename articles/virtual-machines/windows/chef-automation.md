@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -34,7 +33,7 @@ Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 让我们开始吧！
 
 ## <a name="chef-basics"></a>Chef 基础知识
-在开始之前，建议你复习一下 Chef 的基本概念。 <a href="http://www.chef.io/chef" target="_blank">此处</a>有大量资料，建议你在尝试此演练之前快速阅读一下。 不过，在我们开始之前，我会扼要重述一下基础知识。
+在开始之前，建议复习一下 Chef 的基本概念。 <a href="http://www.chef.io/chef" target="_blank">此处</a>有大量资料，建议在尝试此演练之前快速阅读一下。 不过，在我们开始之前，我会扼要重述一下基础知识。
 
 下图描绘了概要的 Chef 体系结构。
 
@@ -44,9 +43,9 @@ Chef 有三个主要的体系结构组件：Chef 服务器、Chef 客户端（�
 
 Chef 服务器是我们的管理点，对于 Chef 服务器有两种选择：托管解决方案和内部部署解决方案。 我们将使用托管解决方案。
 
-Chef 客户端（节点）是位于你在管理的服务器上的代理。
+Chef 客户端（节点）是位于在管理的服务器上的代理。
 
-Chef 工作站是我们的管理工作站，我们将在其中创建策略并执行管理命令。 我们从 Chef 工作站运行 **knife** 命令来管理我们的基础结构。
+Chef 工作站是我们的管理工作站，我们会在其中创建策略并执行管理命令。 我们从 Chef 工作站运行 **knife** 命令来管理我们的基础结构。
 
 我们还引入了“食谱”和“配方”的概念。 它们实际上是我们定义并应用于我们的服务器的策略。
 
@@ -67,11 +66,11 @@ Chef 工作站是我们的管理工作站，我们将在其中创建策略并执
 ## <a name="creating-a-managed-chef-account"></a>创建托管的 Chef 帐户
 在[此处](https://manage.chef.io/signup)注册托管的 Chef 帐户。
 
-在注册过程中，会要求你创建一个新组织。
+在注册过程中，会要求创建一个新组织。
 
 ![][3]
 
-在创建你的组织后，下载初学者工具包。
+在创建组织后，下载初学者工具包。
 
 ![][4]
 
@@ -80,7 +79,7 @@ Chef 工作站是我们的管理工作站，我们将在其中创建策略并执
 > 
 > 
 
-此初学者工具包 zip 文件包含你的组织的配置文件和密钥。
+此初学者工具包 zip 文件包含组织的配置文件和密钥。
 
 ## <a name="configuring-the-chef-workstation"></a>配置 Chef 工作站
 将 chef-starter.zip 的内容提取到 C:\chef。
@@ -93,13 +92,13 @@ Chef 工作站是我们的管理工作站，我们将在其中创建策略并执
 
 现在应当有 4 个文件，包括位于根目录 c:\chef 中的 Azure 发布文件。
 
-PEM 文件包含你的组织和用于通信的管理私钥，而 knife.rb 文件包含你的 knife 配置。 你将需要编辑 knife.rb 文件。
+PEM 文件包含组织和用于通信的管理私钥，而 knife.rb 文件包含 knife 配置。 需要编辑 knife.rb 文件。
 
 在所选编辑器中打开该文件并修改“cookbook_path”：从路径中删除 /../，使其如下所示。
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
-另外，请添加以下行以反映你的 Azure 发布设置文件的名称。
+另外，请添加以下行以反映 Azure 发布设置文件的名称。
 
     knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 
@@ -120,18 +119,18 @@ knife.rb 文件现在应类似于以下示例。
 
 如果未包含，请务必添加这些路径！
 
-*请注意，该路径的顺序非常重要！* 如果你的 opscode 路径未采用正确的顺序，你将会遇到问题。
+*请注意，该路径的顺序非常重要！* 如果 opscode 路径未采用正确的顺序，会遇到问题。
 
-在继续操作之前重新启动你的工作站。
+在继续操作之前重新启动工作站。
 
-接下来，我们将安装 Knife Azure 扩展。 这将为 Knife 提供“Azure 插件”。
+接下来，我们将安装 Knife Azure 扩展。 这会为 Knife 提供“Azure 插件”。
 
 运行以下命令。
 
     chef gem install knife-azure ––pre
 
 > [!NOTE]
-> –pre 参数确保你收到 Knife Azure 插件的最新 RC 版本，该版本提供对最新 API 集的访问。
+> –pre 参数确保收到 Knife Azure 插件的最新 RC 版本，该版本提供对最新 API 集的访问。
 > 
 > 
 
@@ -143,18 +142,18 @@ knife.rb 文件现在应类似于以下示例。
 
     knife azure image list
 
-如果所有项都已正确配置，你会看到可用 Azure 映像的列表滚动显示。
+如果所有项都已正确配置，会看到可用 Azure 映像的列表滚动显示。
 
 祝贺。 工作站已设置完毕！
 
 ## <a name="creating-a-cookbook"></a>创建食谱
-食谱由 Chef 用来定义你希望在托管客户端上执行的一组命令。 创建指南简单明了，我们将使用 **chef generate cookbook** 命令来生成指南模板。 我将像自动部署 IIS 的策略一样调用我的指南 Web 服务器。
+食谱由 Chef 用来定义希望在托管客户端上执行的一组命令。 创建指南简单明了，我们将使用 **chef generate cookbook** 命令来生成指南模板。 我将像自动部署 IIS 的策略一样调用我的指南 Web 服务器。
 
 在 C:\Chef 目录下运行以下命令。
 
     chef generate cookbook webserver
 
-这将在 C:\Chef\cookbooks\webserver 目录下生成一组文件。 现在，需要定义希望 Chef 客户端在托管虚拟机上执行的一组命令。
+这会在 C:\Chef\cookbooks\webserver 目录下生成一组文件。 现在，需要定义希望 Chef 客户端在托管虚拟机上执行的一组命令。
 
 这些命令存储在文件 default.rb 中。 在此文件中，我将定义一组命令来安装 IIS、启动 IIS 并将模板文件复制到 wwwroot 文件夹中。
 
@@ -183,10 +182,10 @@ knife.rb 文件现在应类似于以下示例。
 
     chef generate template webserver Default.htm
 
-现在导航到 C:\chef\cookbooks\webserver\templates\default\Default.htm.erb 文件。 通过添加一些简单的“Hello World”html 代码来编辑该文件，然后保存该文件。
+现在导航到 C:\chef\cookbooks\webserver\templates\default\Default.htm.erb 文件。 通过添加一些简单的“Hello World”html 代码来编辑该文件，并保存该文件。
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上传到 Chef 服务器
-在此步骤中，我们将制作我们已在本地计算机上创建的食谱的副本并将其上传到 Chef 托管服务器。 上传完成后，指南将显示在“策略”选项卡下。
+在此步骤中，我们将制作我们已在本地计算机上创建的食谱的副本并将其上传到 Chef 托管服务器。 上传完成后，指南会显示在“策略”选项卡下。
 
     knife cookbook upload webserver
 
@@ -197,18 +196,18 @@ knife.rb 文件现在应类似于以下示例。
 
 若要执行此操作，请使用 **knife azure server create** 命令。
 
-接下来将显示该命令的示例。
+接下来会显示该命令的示例。
 
     knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
 
-各个参数不言自明。 替换你的特定变量并运行。
+各个参数不言自明。 替换特定变量并运行。
 
 > [!NOTE]
 > 通过命令行，还使用 –tcp-endpoints 参数自动执行终结点网络筛选规则。 我已打开端口 80 和 3389 来提供对我的网页和 RDP 会话的访问。
 > 
 > 
 
-在运行该命令后，转到 Azure 门户，会看到你的计算机已开始预配。
+在运行该命令后，转到 Azure 门户，会看到计算机已开始预配。
 
 ![][13]
 
@@ -224,7 +223,7 @@ knife.rb 文件现在应类似于以下示例。
 
 请记住，还可在 Azure 门户中使用端口 3389 通过 RDP 会话进行连接。
 
-希望这对你有所帮助！ 现在就使用 Azure 开始你的基础结构即代码之旅吧！
+希望这对你有所帮助！ 现在就使用 Azure 开始基础结构即代码之旅吧！
 
 <!--Image references-->
 [2]: media/chef-automation/2.png
@@ -241,4 +240,3 @@ knife.rb 文件现在应类似于以下示例。
 
 
 <!--Link references-->
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 9af6c0fc3df2863c8e7b9a6a62acf5ba6b7d2d0a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: daef11a0cea11b0f6633ab32f7d84fac4591180a
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>在 Operations Management Suite 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -34,12 +33,12 @@ ms.lasthandoff: 06/09/2017
 
 
 ## <a name="connected-sources"></a>连接的源
-服务映射从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖 OMS 代理连接到 Operations Management Suite。 这意味着服务器必须首先安装和配置 OMS 代理，然后才能安装依赖关系代理。 下表介绍了服务映射解决方案支持的连接的源。
+服务映射从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖 OMS 代理连接到 Operations Management Suite。 这意味着服务器必须首先安装和配置 OMS 代理，才能安装依赖关系代理。 下表介绍了服务映射解决方案支持的连接的源。
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
-| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
-| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
+| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Operations Management Suite。 数据从管理组转发到 Operations Management Suite 存储库。|
 | Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
@@ -81,7 +80,7 @@ ms.lasthandoff: 06/09/2017
 4.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。 
 
 #### <a name="windows-command-line"></a>Windows 命令行
-使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请使用 /? 标志运行安装程序，如下所示。
+使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请运行安装程序并使用 /? 标志运行安装程序，如下所示。
 
     InstallDependencyAgent-Windows.exe /?
 
@@ -124,7 +123,7 @@ ms.lasthandoff: 06/09/2017
 | 二进制存储文件 | /var/opt/microsoft/dependency-agent/storage |
 
 ## <a name="installation-script-examples"></a>安装脚本示例
-若要轻松地在多个服务器上同时部署依赖关系代理，请使用脚本。 可使用以下脚本示例下载依赖关系代理，并在 Windows 或 Linux 上进行安装。
+若要轻松地在多台服务器上同时部署依赖关系代理，请使用脚本。 可使用以下脚本示例下载依赖关系代理，并在 Windows 或 Linux 上进行安装。
 
 ### <a name="powershell-script-for-windows"></a>适用于 Windows 的 PowerShell 脚本
 ```PowerShell
@@ -138,6 +137,55 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
 sh InstallDependencyAgent-Linux64.bin -s
 ```
+
+## <a name="azure-vm-extension"></a>Azure VM 扩展
+可以使用 [Azure VM 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions)轻松地将依赖项代理部署到 Azure VM。  借助 Azure VM 扩展，可以通过 PowerShell 脚本或直接在 VM 的 Azure 资源管理器模板中将依赖项代理部署到 VM。  有一个扩展可用于 Windows (DependencyAgentWindows) 和 Linux (DependencyAgentLinux)。  如果通过 Azure VM 扩展进行部署，则代理可以自动更新到最新版本。
+
+若要通过 PowerShell 部署 Azure VM 扩展，可以使用以下示例：
+```PowerShell
+#
+# Deploy the Dependency Agent to every VM in a Resource Group
+#
+
+$version = "9.1"
+$ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
+$OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
+$rmgroup = "<Your Resource Group Here>"
+
+Get-AzureRmVM -ResourceGroupName $rmgroup |
+ForEach-Object {
+    ""
+    $name = $_.Name
+    $os = $_.StorageProfile.OsDisk.OsType
+    $location = $_.Location
+    $vmRmGroup = $_.ResourceGroupName
+    "${name}: ${os} (${location})"
+    Date -Format o
+    $ext = $OsExtensionMap.($os.ToString())
+    $result = Set-AzureRmVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
+    -Publisher $ExtPublisher -ExtensionType $ext -Name "DependencyAgent" -TypeHandlerVersion $version
+    $result.IsSuccessStatusCode
+}
+```
+
+一种甚至更简单的用于确保依赖项代理位于每个 VM 上的方法是在 Azure 资源管理器模板中包含代理。  请注意，依赖项代理仍依赖于 OMS 代理，因此必须先部署 [OMS 代理 VM 扩展](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension)。  以下 JSON 片段可以添加到模板的资源节中。
+```JSON
+"type": "Microsoft.Compute/virtualMachines/extensions",
+"name": "[concat(parameters('vmName'), '/DependencyAgent')]",
+"apiVersion": "2017-03-30",
+"location": "[resourceGroup().location]",
+"dependsOn": [
+"[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+],
+"properties": {
+    "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
+    "type": "DependencyAgentWindows",
+    "typeHandlerVersion": "9.1",
+    "autoUpgradeMinorVersion": true
+}
+
+```
+
 
 ## <a name="desired-state-configuration"></a>Desired State Configuration
 若通过 Desired State Configuration 部署依赖关系代理，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
@@ -212,7 +260,7 @@ Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如�
 Windows：查找名为“Microsoft 依赖关系代理”的服务<br>
 Linux：查找名为“microsoft-dependency-agent”的运行中进程
 
-* 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中将不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
+* 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
 
 * 服务器是否正在向 Operations Management Suite 发送日志和性能数据？ 转到日志搜索，并为计算机运行以下查询： 
 
@@ -235,6 +283,7 @@ Linux：查找名为“microsoft-dependency-agent”的运行中进程
 - 美国东部
 - 欧洲西部
 - 美国中西部
+- 东南亚
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
@@ -334,4 +383,3 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="next-steps"></a>后续步骤
 - 部署和配置服务映射后，了解如何[使用服务映射](operations-management-suite-service-map.md)。
-

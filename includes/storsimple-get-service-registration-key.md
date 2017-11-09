@@ -1,10 +1,10 @@
 <!--author=alkohli last changed: 9/17/15-->
 
 #### <a name="to-get-the-storsimple-service-registration-key"></a>获取 StorSimple 服务注册密钥
-1. 在“StorSimple Manager服务”页上，单击创建的服务。 这将使你转到“快速启动”  页。 （可随时单击“快速启动”图标 ![StorSimple 快速启动图标 ](./media/storsimple-get-service-registration-key/HCS_QuickStartIcon-include.png) 访问“快速启动”页。）
+1. 在“StorSimple Manager服务”页上，单击创建的服务。 这会使你转到“快速启动”页。 （可随时单击“快速启动”图标 ![StorSimple 快速启动图标 ](./media/storsimple-get-service-registration-key/HCS_QuickStartIcon-include.png) 访问“快速启动”页。）
    
      ![StorSimple“快速启动”页](./media/storsimple-get-service-registration-key/HCS_ServiceQuickStart-include.png)
-2. 单击“获取服务注册密钥” 。 还可单击页面底部的“注册密钥”  。 正在检索密钥，请等待几分钟时间。 这将显示“服务注册密钥”  对话框。
+2. 单击“获取服务注册密钥” 。 还可单击页面底部的“注册密钥”  。 正在检索密钥，请等待几分钟时间。 这会显示“服务注册密钥”对话框。
    
      ![“服务注册密钥”对话框](./media/storsimple-get-service-registration-key/HCS_GetServiceRegistrationKey-include.png)
 3. 查找服务注册密钥

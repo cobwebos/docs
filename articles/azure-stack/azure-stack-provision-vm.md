@@ -1,6 +1,6 @@
 ---
-title: Create a test VM in Azure Stack | Microsoft Docs
-description: Learn how to provision a test VM in Azure Stack as a cloud operator.
+title: "在 Azure 堆栈中创建测试虚拟机 |Microsoft 文档"
+description: "了解如何设置测试 Azure 作为云操作员的堆栈中的虚拟机。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,33 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/21/2017
+ms.date: 9/25/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 4e3f90fe35b7fb2509db0eb7a467305f4c4167ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/22/2017
-
+ms.openlocfilehash: 233cf4df53af6a49e5fe4c5d51e112d8196a7530
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-test-virtual-machine-in-azure-stack"></a>Create a test virtual machine in Azure Stack
-As a cloud operator, you can create a test virtual machine to validate your Azure Stack deployment.
+# <a name="create-a-test-virtual-machine-in-azure-stack"></a>在 Azure 堆栈中创建测试虚拟机
+
+*适用范围： Azure 堆栈开发工具包*
+
+作为 Azure 堆栈运算符，你可以创建测试虚拟机，以验证你[Azure 堆栈](azure-stack-poc.md)开发人员工具包部署。
 
 > [!NOTE]
-> Before you can provision virtual machines, you must [add the Windows Server 2016 Evaluation image to the Azure Stack marketplace](azure-stack-add-default-image.md).
+> 你可以设置虚拟机之前，你必须[将 Windows Server 2016 评估版映像添加到 Azure 堆栈 marketplace](azure-stack-add-default-image.md)。
 > 
 > 
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-1. On the Azure Stack Development Kit host, [sign in](azure-stack-connect-azure-stack.md) to the administrator portal (`https://adminportal.local.azurestack.external`), and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval** > **Create**.  
-2. In the **Basics** blade, type a **Name**, **User name**, and **Password**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
-3. In the **Choose a size** blade, click **A1 Standard**, and then click **Select**.  
-4. In the **Settings** blade, accept the defaults and click **OK**
-5. In the **Summary** blade, click **OK** to create the virtual machine.  
-6. To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.
+## <a name="create-a-virtual-machine"></a>创建虚拟机
+1. 在 Azure 堆栈开发工具包主机上，[登录](azure-stack-connect-azure-stack.md)到管理员门户 (`https://adminportal.local.azurestack.external`)，然后单击**新建** > **计算** > **评估版的 Windows Server 2016 数据中心** > **创建**。  
+2. 在**基础知识**边栏选项卡中，键入一个**名称**，**用户名**，和**密码**。 选择**订阅**。 创建**资源组**，或选择一个现有，然后单击**确定**。  
+3. 在**选择大小**边栏选项卡，单击**A1 标准**，然后单击**选择**。  
+4. 在**设置**边栏选项卡中，接受默认值，然后单击**确定**
+5. 在**摘要**边栏选项卡，单击**确定**创建虚拟机。  
+6. 若要查看新的虚拟机，单击**的所有资源**，然后搜索虚拟机并单击其名称。
     ![](media/azure-stack-provision-vm/image06.png)
 
 
-## <a name="next-steps"></a>Next steps
-[Using the administrator and user portals in Azure Stack](azure-stack-manage-portals.md)
-
+## <a name="next-steps"></a>后续步骤
+[在 Azure 堆栈中使用的管理员和用户门户](azure-stack-manage-portals.md)

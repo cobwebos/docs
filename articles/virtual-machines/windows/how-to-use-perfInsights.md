@@ -1,5 +1,5 @@
 ---
-title: "如何在 Microsoft Azure 中使用 PerfInsights | Microsoft Docs"
+title: "如何在 Microsoft Azure 中使用 PerfInsights | Microsoft 文档"
 description: "了解如何使用 PerfInsights 来排查 Windows VM 性能问题。"
 services: virtual-machines-windows'
 documentationcenter: 
@@ -11,19 +11,18 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/18/2017
 ms.author: genli
+ms.openlocfilehash: 8d66bbdf6f7153cf59af60051e54377f6eccdc3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: f22bd42302b96118dba0d4e5e387c6798a0b8777
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights 
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) 是自动执行的脚本，可收集有用的诊断信息、运行 I/O 压力负载以及提供分析报告，以便排查 Microsoft Azure 中的 Windows VM 性能问题。 
+[PerfInsights](http://aka.ms/perfinsightsdownload) 是自动执行的脚本，可收集有用的诊断信息、运行 I/O 压力负载以及提供分析报告，以便排查 Microsoft Azure 中的 Windows VM 性能问题。 通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)，它可以作为独立脚本在虚拟机上运行，或直接从门户运行。
 
 对于 VM 性能问题，建议你在通过 Microsoft 开具支持票证之前先运行此脚本。
 
@@ -87,18 +86,18 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 | IOPS         | 数据请求/秒             |
 |              | 读取请求/秒             |
 |              | 写入请求/秒            |
-| 延迟      | 平均 秒/数据请求         |
-|              | 平均 秒/读取                 |
-|              | 平均 秒/写入                |
-| IO 大小      | 平均 字节/数据请求       |
-|              | 平均 字节/读取               |
-|              | 平均 字节/写入              |
+| 延迟      | 平均秒数/数据请求         |
+|              | 平均秒数/读取操作                 |
+|              | 平均秒数/写入操作                |
+| IO 大小      | 平均字节/数据请求       |
+|              | 平均字节/读取               |
+|              | 平均字节/写入              |
 | 吞吐量   | 数据字节/秒                |
 |              | 读取字节/秒                |
 |              | 写入字节/秒               |
-| 队列长度 | 平均 读取队列长度        |
-|              | 平均 写入队列长度       |
-|              | 平均 数据队列长度        |
+| 队列长度 | 平均读取队列长度        |
+|              | 平均写入队列长度       |
+|              | 平均数据队列长度        |
 
 ### <a name="custom-configuration"></a>自定义配置 
 
@@ -189,7 +188,16 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 ### <a name="how-do-i-run-perfinsights"></a>如何运行 PerfInsights？ 
 
-若要运行该脚本，请执行以下步骤：
+你可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)在虚拟机上运行 PerfInsights，或将其作为独立脚本运行。 
+
+**安装和运行来自 Azure 门户的 PerfInsights**
+
+现在可以使用名为 Azure 性能诊断扩展的 VM 扩展来运行 PerfInsights。 有关详细信息，请参阅[安装 Azure 性能诊断扩展](performance-diagnostics-vm-extension.md#install-the-extension)。  
+
+**在独立模式下运行 PerfInsights 脚本**
+
+若要运行 PerfInsights 脚本，请按照以下步骤操作：
+
 
 1. 下载 [PerfInsights.zip](http://aka.ms/perfinsightsdownload)。
 
@@ -299,7 +307,7 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 “DiskMap”和“VolumeMap”以双视角的方式介绍了逻辑卷和物理磁盘的相互关系。
 
-在 PhysicalDisk 视角 (DiskMap) 中，表显示了在磁盘上运行的所有逻辑卷。 在以下示例中，PhysicalDrive2 运行在多个分区（J 和 H）中创建的 2 个逻辑卷：
+在 PhysicalDisk 视角 (DiskMap) 中，表显示了在磁盘上运行的所有逻辑卷。 在以下示例中，PhysicalDrive2 运行在多个分区（J 和 H）中创建的两个逻辑卷：
 
 ![数据选项卡](media/how-to-use-perfInsights/disktab.png)
 
@@ -350,4 +358,3 @@ Xperf 是一个命令行工具，用于捕获 Windows 性能工具包中的跟�
 为了增强安全性，需在第一次使用密码时更改密码。
 
 登录到 DTM 以后，将会出现一个对话框，用于上传 PerfInsights 所收集的 CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip 文件。
-

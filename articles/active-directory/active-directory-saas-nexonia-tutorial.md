@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/1/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
 ms.openlocfilehash: 1370fa64c2ddc25d3121c567ceea4828b1e50921
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/02/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>教程：Azure Active Directory 与 Nexonia 集成
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 05/02/2017
 - 可使用户通过其 Azure AD 帐户自动登录 Nexonia（单一登录）
 - 可以在一个中心位置（即 Azure 门户）中管理帐户
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +53,7 @@ ms.lasthandoff: 05/02/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-nexonia-from-the-gallery"></a>从库中添加 Nexonia
-若要配置 Nexonia 与 Azure AD 的集成，需要将 Nexonia 从库中添加到托管的 SaaS 应用列表。
+要配置 Nexonia 与 Azure AD 的集成，需要将 Nexonia 从库中添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 Nexonia，请执行以下步骤：**
 
@@ -75,7 +73,7 @@ ms.lasthandoff: 05/02/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_search.png)
 
-5. 在结果窗格中，选择“Nexonia”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Nexonia”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_addfromgallery.png)
 
@@ -90,13 +88,13 @@ ms.lasthandoff: 05/02/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Nexonia 测试用户](#creating-a-nexonia-test-user)** - 在 Nexonia 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 Nexonia 测试用户](#creating-a-nexonia-test-user)** - 在 Nexonia 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分将在 Azure 门户中启用 Azure AD 单一登录，并在 Nexonia 应用程序中配置单一登录。
+本部分会在 Azure 门户中启用 Azure AD 单一登录，并在 Nexonia 应用程序中配置单一登录。
 
 >[!Note]
 >如果在集成中遇到问题，请参考此[链接](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?WT.mc_id=UI_AAD_Enterprise_Apps_SupportOrTroubleshooting)获取故障排除指南。 如果仍未找到解决方案，则从 Azure 门户提出支持请求。
@@ -121,7 +119,7 @@ ms.lasthandoff: 05/02/2017
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [Nexonia 支持团队](https://nexonia.zendesk.com/hc/requests/new)联系。 
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_certificate.png) 
 
@@ -171,7 +169,7 @@ ms.lasthandoff: 05/02/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-nexonia-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -190,9 +188,9 @@ ms.lasthandoff: 05/02/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Nexonia，请执行以下步骤：**
+**要将 Britta Simon 分配到 Nexonia，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -241,5 +239,4 @@ ms.lasthandoff: 05/02/2017
 [201]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-nexonia-tutorial/tutorial_general_203.png
-
 

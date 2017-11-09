@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: ed3c4bf2dcdda3e04a18682da568ae73f41bb37d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
@@ -178,4 +176,3 @@ Azure Active Directory (Azure AD) 是一种综合的[标识和访问管理云解
 - 了解有关 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)的详细信息。
 - 了解有关 [Operations Management Suite | 安全性和符合性](https://www.microsoft.com/cloud-platform/security-and-compliance)的详细信息。
 - [Operations Management Suite 安全和审核解决方案入门](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)。
-

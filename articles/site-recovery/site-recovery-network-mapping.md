@@ -12,17 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/23/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: b1b8b1ebc013a5dfb69528f9353369e18f84e61f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 91d6d0466789daa662162c60bc3c97ba6115e7eb
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
-
-
 # <a name="plan-network-mapping-for-hyper-v-vm-replication-with-site-recovery"></a>使用 Site Recovery 规划 Hyper-V VM 复制的网络映射
 
 
@@ -60,7 +57,7 @@ ms.lasthandoff: 06/15/2017
 - 可以在两个 VMM 服务器上的 VM 网络之间配置网络映射；如果两个站点由同一个服务器管理，则在可以在单个 VMM 服务器上的两个对应 VM 网络之间配置网络映射。
 - 在适当配置映射且启用复制后，主位置上的 VM 将连接到网络，目标位置上的副本将连接到其映射网络。
 -
-- 如果已经在 VMM 中正确地设置了网络，则当你在网络映射期间选择目标 VM 网络时，将显示使用源 VM 网络的 VMM 源云以及用于保护的目标云上的可用目标 VM 网络。
+- 如果已经在 VMM 中正确地设置了网络，则在网络映射期间选择目标 VM 网络时，会显示使用源 VM 网络的 VMM 源云以及用于保护的目标云上的可用目标 VM 网络。
 - 如果目标网络具有多个子网，并且其中一个子网与源虚拟机所在的子网同名，则在故障转移后副本虚拟机将连接到该目标子网。 如果没有具有匹配名称的目标子网，则虚拟机将连接到网络中的第一个子网。
 
 
@@ -102,7 +99,7 @@ SilverCloud2 | <p>不可用</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>Logica
 
 #### <a name="target-network-settings"></a>目标网络设置
 
-根据这些设置，当你选择目标 VM 网络时，下表显示将可用的选项。
+根据这些设置，选择目标 VM 网络时，下表显示将可用的选项。
 
 **Select** | **受保护的云** | **提供保护的云** | **可用目标网络**
 ---|---|---|---
@@ -139,4 +136,3 @@ VMNetwork1-Chicago 的网络映射发生变化。 | VM-1 连接现映射到 VMNe
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[规划网络基础结构](site-recovery-network-design.md)。
-

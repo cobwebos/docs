@@ -4,8 +4,9 @@
 
 # 快速入门
 ## [创建 .NET 应用程序](service-fabric-quickstart-dotnet.md)
-## [部署 Windows 容器应用程序](service-fabric-quickstart-containers.md)
 ## [部署 Linux 容器应用程序](service-fabric-quickstart-containers-linux.md)
+## [部署 Windows 容器应用程序](service-fabric-quickstart-containers.md)
+## [部署 Java 应用程序](service-fabric-quickstart-java.md)
 
 # 教程
 ## 部署 .NET 应用
@@ -17,11 +18,26 @@
 ## 将现有 .NET 应用容器化
 ### [1 - 在 Azure 上创建安全群集](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2 - 使用 Docker Compose 部署 .NET 应用](service-fabric-host-app-in-a-container.md)
+### [3 - 监视容器](service-fabric-tutorial-monitoring-wincontainers.md)
+
+## 创建 Linux 容器应用
+### [1- 创建容器映像](service-fabric-tutorial-create-container-images.md)
+### [2 - 打包和部署容器](service-fabric-tutorial-package-containers.md)
+### [3 - 故障转移和缩放](service-fabric-tutorial-containers-failover.md)
+
+## 创建和管理群集
+### 1- 在 Azure 上创建群集
+#### [1a- 创建 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b- 创建 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+### [2- 缩放群集](service-fabric-tutorial-scale-cluster.md)
+### [3- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+
 
 # 示例
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
-## [PowerShell](service-fabric-powershell-samples.md)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=service-fabric)
+## [Azure PowerShell](service-fabric-powershell-samples.md)
 ## [Service Fabric CLI](samples-cli.md)
+
 # 概念
 ## [了解微服务](service-fabric-overview-microservices.md)
 ## [大图](service-fabric-content-roadmap.md)
@@ -67,6 +83,8 @@
 #### [服务状态](service-fabric-concepts-state.md)
 #### [服务分区](service-fabric-concepts-partitioning.md)
 #### [服务的可用性](service-fabric-availability-services.md)
+#### [副本和实例](service-fabric-concepts-replica-lifecycle.md)
+#### [重新配置](service-fabric-concepts-reconfiguration.md)
 #### 服务通信
 ##### [概述](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS 服务](service-fabric-dnsservice.md)
@@ -91,7 +109,6 @@
 
 ## 创建和管理群集
 ### [概述](service-fabric-deploy-anywhere.md)
-### [Linux 上的 Service Fabric](service-fabric-linux-overview.md)
 ### 规划和准备
 #### [容量规划](service-fabric-cluster-capacity.md)
 #### [灾难恢复](service-fabric-disaster-recovery.md)
@@ -130,6 +147,8 @@
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
+
+## [设置 Service Fabric CLI](service-fabric-cli.md)
 
 ## 构建应用程序
 ### [在 Visual Studio 中创建你的第一个 C# 应用](service-fabric-create-your-first-application-in-visual-studio.md)
@@ -182,7 +201,6 @@
 ### 生成 Reliable Actors 服务
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
-##### [Linux 上的 Java](service-fabric-reliable-actors-get-started-java.md)
 ##### [Linux 上的 Java Actor](service-fabric-create-your-first-linux-application-with-java.md)
 #### [发送通知](service-fabric-reliable-actors-events.md)
 #### [设置计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
@@ -225,13 +243,14 @@
 
 ### 部署或删除应用程序
 #### [在本地群集上部署应用程序](service-fabric-get-started-with-a-local-cluster.md)
-#### [PowerShell](service-fabric-deploy-remove-applications.md)
+#### [Azure 资源管理器](service-fabric-application-arm-resource.md)
+#### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### 升级应用程序
-#### [使用 PowerShell 进行升级](service-fabric-application-upgrade-tutorial-powershell.md)
+#### [使用 Azure PowerShell 进行升级](service-fabric-application-upgrade-tutorial-powershell.md)
 #### [使用 Visual Studio 进行升级](service-fabric-application-upgrade-tutorial.md)
 #### [排查应用程序升级故障](service-fabric-application-upgrade-troubleshooting.md)
 
@@ -254,7 +273,7 @@
 #### 创建
 ##### [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
 ##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
-##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+##### [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
 #### 缩放
 ##### [手动](service-fabric-cluster-scale-up-down.md)
 ##### [以编程方式](service-fabric-cluster-programmatic-scaling.md)
@@ -280,8 +299,6 @@
 
 ### [可视化群集](service-fabric-visualizing-your-cluster.md)
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
-
-### [Service Fabric CLI 入门](service-fabric-cli.md)
 ### [修补群集节点](service-fabric-patch-orchestration-application.md)
 
 ### 管理和协调群集资源
@@ -326,12 +343,25 @@
 ### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # 引用
-## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
+## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
-## [Azure CLI](/cli/azure/sf)
+## [Azure CLI (az sf)](/cli/azure/sf)
+## [Service Fabric CLI (sfctl)](service-fabric-sfctl.md)
+### [sfctl application](service-fabric-sfctl-application.md)
+### [sfctl chaos](service-fabric-sfctl-chaos.md)
+### [sfctl cluster](service-fabric-sfctl-cluster.md)
+### [sfctl compose](service-fabric-sfctl-compose.md)
+### [sfctl is](service-fabric-sfctl-is.md)
+### [sfctl node](service-fabric-sfctl-node.md)
+### [sfctl partition](service-fabric-sfctl-partition.md)
+### [sfctl replica](service-fabric-sfctl-replica.md)
+### [sfctl rpm](service-fabric-sfctl-rpm.md)
+### [sfctl service](service-fabric-sfctl-service.md)
+### [sfctl store](service-fabric-sfctl-store.md)
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
+## [服务模型 XML 架构](service-fabric-service-model-schema.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

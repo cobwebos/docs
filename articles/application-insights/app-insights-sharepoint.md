@@ -3,7 +3,7 @@ title: "使用 Application Insights 监视 SharePoint site 站点"
 description: "开始使用新检测密钥监视新应用程序"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/24/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 3977cbc0f111de39621a875cce2d6714559a73fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.author: mbullwin
+ms.openlocfilehash: 9c07ba125e0f9eae2b8f94661abf6dc1efc0cdad
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
 Azure Application Insights 监视应用的可用性、性能和使用情况。 下面介绍如何为 SharePoint 站点设置它。
@@ -26,7 +25,7 @@ Azure Application Insights 监视应用的可用性、性能和使用情况。 �
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 在 [Azure 门户](https://portal.azure.com)中，创建新的 Application Insights 资源。 选择 ASP.NET 作为应用程序类型。
 
-![单击“属性”，选择密钥，然后按 Ctrl+C](./media/app-insights-sharepoint/01-new.png)
+![单击“属性”，选择密钥，并按 Ctrl+C](./media/app-insights-sharepoint/01-new.png)
 
 打开的边栏选项卡是查看关于应用的性能和用法数据的位置。 若要在下次登录 Azure 时返回到它，应在开始屏幕上查找它的磁贴。 或者单击“浏览”查找它。
 
@@ -35,13 +34,13 @@ Azure Application Insights 监视应用的可用性、性能和使用情况。 �
 
 ![](./media/app-insights-sharepoint/02-monitor-web-page.png)
 
-在要跟踪的每个页面的 &lt;/head&gt; 标记之前插入脚本。 如果网站有母版页，可以在那里插入脚本。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
+在要跟踪的每个页面的 &lt;/head&gt; 标记之前插入脚本。如果网站有母版页，可以在那里插入脚本。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
 
 该脚本包含将遥测定向到 Application Insights 资源的检测密钥。
 
 ### <a name="add-the-code-to-your-site-pages"></a>将代码添加到站点页面
 #### <a name="on-the-master-page"></a>在母版页上
-如果可以编辑站点的模板页，这将为站点中的每个页面提供监控。
+如果可以编辑站点的模板页，这会为站点中的每个页面提供监控。
 
 签出母版页并使用 SharePoint Designer 或任何其他编辑器编辑它。
 
@@ -52,7 +51,7 @@ Azure Application Insights 监视应用的可用性、性能和使用情况。 �
 ![](./media/app-insights-sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>或在个别页面上
-若要监视一组有限的页面，请将脚本分别添加到每个页面。 
+要监视一组有限的页面，请将脚本分别添加到每个页面。 
 
 插入 Web 部分并在其中嵌入代码片段。
 
@@ -63,7 +62,7 @@ Azure Application Insights 监视应用的可用性、性能和使用情况。 �
 
 返回到 [Azure 门户](https://portal.azure.com)中的应用程序边栏选项卡。
 
-第一批事件将显示在“搜索”中。 
+第一批事件会显示在“搜索”中。 
 
 ![](./media/app-insights-sharepoint/09-search.png)
 
@@ -145,6 +144,5 @@ function onRequestFail(sender, args) {
 * 适用于其他应用类型的 [Application Insights](app-insights-overview.md)。
 
 <!--Link references-->
-
 
 

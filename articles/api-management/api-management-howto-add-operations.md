@@ -3,7 +3,7 @@ title: "如何将操作添加到 Azure API 管理中的 API | Microsoft Docs"
 description: "了解如何将操作添加到 Azure API 管理中的 API"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 1158a023-1913-4e9c-93de-9164b672f9b3
@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 105fc51c2d1152a40a5757985da47330e0b7b8cf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 8b047c0826590d1cb6a79a2f14ca07764dc2b409
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-add-operations-to-an-api-in-azure-api-management"></a>如何将操作添加到 Azure API 管理中的 API
 在可使用 API 管理中的 API 之前，必须添加操作。 本指南演示如何添加和配置不同类型的 API 操作到 API 管理。
@@ -34,7 +32,7 @@ ms.lasthandoff: 07/06/2017
 > 
 > 
 
-在发布者门户中选择所需的 API，然后选择“操作”选项卡。 
+在发布者门户中选择所需的 API，并选择“操作”选项卡。 
 
 ![操作][api-management-operations]
 
@@ -56,11 +54,11 @@ ms.lasthandoff: 07/06/2017
 
 <a name="rewrite-url-template"></a>
 
-如果需要，请指定“重写 URL 模板”。 这允许您在前端使用标准的 URL 模板处理传入的请求，同时通过根据重写模板转换的 URL 调用后端。 来自 URL 模板的模板参数应用在重写模板中。 下面的示例演示内容类型如何编码为上一示例 web 服务中的路径段，它可以提供作为通过使用 URL 模板的 API 管理平台发布的 API 中的查询参数。
+如果需要，请指定“重写 URL 模板”。 这样既可在前端使用标准的 URL 模板处理传入的请求，同时通过根据重写模板转换的 URL 调用后端。 来自 URL 模板的模板参数应用在重写模板中。 下面的示例演示内容类型如何编码为上一示例 web 服务中的路径段，它可以提供作为通过使用 URL 模板的 API 管理平台发布的 API 中的查询参数。
 
 ![URL 模板重写][api-management-url-template-rewrite]
 
-操作的调用方将使用格式 `/customers?customerid=ALFKI`，调用后端服务时这将映射到 `/Customers('ALFKI')`。
+操作的调用方将使用格式 `/customers?customerid=ALFKI`，调用后端服务时这会映射到 `/Customers('ALFKI')`。
 
 “显示”名称和“说明”提供操作的说明，并用于在开发人员门户中向使用此 API 的开发人员提供文档。
 
@@ -77,14 +75,14 @@ ms.lasthandoff: 07/06/2017
 
 “持续时间”指定在此期间操作响应保留在缓存中的时间段。 默认值为 3600 秒或 1 小时。
 
-缓存键用于区分这两个响应，以便与每个不同缓存键对应的响应将获得自己单独的缓存值。 （可选）分别输入特定的查询字符串参数，和/或要在“通过查询字符串参数变化”和“按标头变化”文本框中的计算缓存键值的 HTTP 标头。 如果指定无，完整请求 URL 和以下 HTTP 标头值用在缓存密钥生成过程中：“接受”和“Accept-Charset”。
+缓存键用于区分这两个响应，以便与每个不同缓存键对应的响应会获得自己单独的缓存值。 （可选）分别输入特定的查询字符串参数，和/或要在“通过查询字符串参数变化”和“按标头变化”文本框中的计算缓存键值的 HTTP 标头。 如果指定无，完整请求 URL 和以下 HTTP 标头值用在缓存密钥生成过程中：“接受”和“Accept-Charset”。
 
 > 有关缓存和缓存策略的详细信息，请参阅[如何在 Azure API 管理中缓存操作结果][How to cache operation results in Azure API Management]。
 > 
 > 
 
 ## <a name="request-parameters"> </a>请求参数
-在“参数”选项卡上管理操作参数。 “签名”选项卡上的“URL 模板”中指定的参数会自动添加，并且只能在编辑 URL 模板时更改。 可以手动输入其他参数。
+在“参数”选项卡上管理操作参数。“签名”选项卡上的“URL 模板”中指定的参数会自动添加，并且只能在编辑 URL 模板时更改。 可以手动输入其他参数。
 
 若要添加新的查询参数，请单击“添加查询参数”并输入以下信息：
 
@@ -114,11 +112,11 @@ ms.lasthandoff: 07/06/2017
 ## <a name="responses"> </a>响应
 为操作可能生成的所有状态代码提供相应示例是不错的做法。 每个状态代码可能有多个响应正文示例，分别针对每种支持的内容类型。 
 
-若要添加一个响应，请单击“添加”并开始键入所需的状态代码。 此示例中状态代码是 **200 OK**。 代码显示在下拉列表中后，选择它，创建响应代码并将其添加到您的操作。
+若要添加一个响应，请单击“添加”并开始键入所需的状态代码。 此示例中状态代码是 **200 OK**。 代码显示在下拉列表中后，选择它，创建响应代码并将其添加到操作。
 
 ![响应代码][api-management-response-code]
 
-单击“添加表示形式”，开始键入所需的内容类型名称（例如 application/json），然后在下拉菜单中选择它。
+单击“添加表示形式”，开始键入所需的内容类型名称（例如 application/json），并在下拉菜单中选择它。
 
 ![正文内容类型][api-management-response-body-content-type]
 
@@ -171,4 +169,3 @@ ms.lasthandoff: 07/06/2017
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
-

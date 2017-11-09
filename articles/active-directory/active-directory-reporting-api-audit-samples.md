@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/02/2017
+ms.date: 10/31/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: 98e1d09cbf638032fe1b5b9dcf19332f9158d7a7
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: aab705688079601bbce93455f7dda80cdd733110
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory 报告审核 API 示例
 本主题包含在有关 Azure Active Directory 报告 API 的主题集合中。  
-Azure AD 报告向你提供了一个允许你使用代码或相关工具访问审核数据的 API。
+Azure AD 报告向你提供了一个允许使用代码或相关工具访问审核数据的 API。
 本主题提供**审核 API** 的示例代码。
 
 请参阅:
@@ -36,7 +35,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
 
 ## <a name="prerequisites"></a>先决条件
-需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)，然后才能使用本主题中的示例。  
+需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)，才能使用本主题中的示例。  
 
 ## <a name="known-issue"></a>已知问题
 如果租户位于欧盟区域，将无法执行应用身份验证。 在我们解决此问题之前，请使用“用户身份验证”来访问审核 API。 
@@ -89,7 +88,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 ### <a name="executing-the-powershell-script"></a>执行 PowerShell 脚本
 完成脚本编辑后，运行该脚本并确认从审核日志报告返回预期的数据。
 
-该脚本以 JSON 格式从审核报告返回输出。 它还将创建具有相同输出的 `audit.json` 文件。 你可通过修改脚本以从其他报告返回数据来进行实验，并注释掉你不需要的输出格式。
+该脚本以 JSON 格式从审核报告返回输出。 它还将创建具有相同输出的 `audit.json` 文件。 可通过修改脚本以从其他报告返回数据来进行实验，并注释掉不需要的输出格式。
 
 ## <a name="bash-script"></a>Bash 脚本
     #!/bin/bash
@@ -152,7 +151,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
     yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
     header_params = {'Authorization': token_type + ' ' + access_token}
-    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=activityDate%20gt%20' + yesterday   
+    request_string = 'https://graph.windows.net/' + tenant_domain + '/activities/audit?api-version=beta&$filter=activityDate%20gt%20' + yesterday   
     response = requests.get(request_string, headers = header_params)
 
     if response.status_code is 200:
@@ -166,7 +165,6 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
 ## <a name="next-steps"></a>后续步骤
 * 是否要自定义本主题中的示例？ 请查看 [Azure Active Directory 审核 API 参考](active-directory-reporting-api-audit-reference.md)。 
-* 如果你想要查看使用 Azure Active Directory 报告 API 的完整概述，请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-* 如果你要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
-
+* 如果想要查看使用 Azure Active Directory 报告 API 的完整概述，请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
+* 如果要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
 

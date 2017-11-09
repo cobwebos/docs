@@ -4,7 +4,7 @@ description: "介绍了如何使用 StorSimple 设备管理器服务监视使用
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,16 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2017
+ms.date: 10/17/2017
 ms.author: alkohli
+ms.openlocfilehash: 679c1fc8775ad4481bc99c9aea79fe16e9bcac8f
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
+
 ## <a name="overview"></a>概述
 可以使用 StorSimple 设备管理器服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用情况、网络吞吐量和设备性能指标创建自定义图表并将它们固定到仪表板。 有关详细信息，请转到[自定义门户仪表板](../azure-portal/azure-portal-dashboards.md)。
 
@@ -45,6 +45,19 @@ ms.lasthandoff: 08/30/2017
 * 过去 90 天
 * 过去一年
 
+报告使用情况图表的两个关键指标、增长和范围。 范围是指在所选持续时间内（例如过去 7 天）报告的用量最大值和最小值。
+
+增长是指从所选持续时间第一天到最后一天的用量增加。 
+
+增长和范围还可通过以下公式表示：
+
+```
+Range = {Usage(minimum), Usage(maximum)}
+
+Growth = Usage(Last day) - Usage(first day)
+
+Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
+```
 
 使用的主存储、云存储和本地存储可以描述如下：
 
@@ -90,7 +103,7 @@ ms.lasthandoff: 08/30/2017
 
 
 ### <a name="local-storage-usage"></a>本地存储使用情况
-这些图表说明了设备的总使用情况，由于其中包含了 SSD 线性层，因此其使用率将比主存储使用率高。 该层包含也存在于设备的其他层上的许多数据。 SSD 线性层中的容量是循环利用的，以便新数据可以进来，并且旧数据将移动到 HDD 层（彼时会删除重复数据项并对数据进行压缩），随后将移动到云。
+这些图表显示设备的总使用量，这会大于主存储使用量，因为它包括 SSD 线性层。 该层包含也存在于设备的其他层上的许多数据。 SSD 线性层中的容量是循环利用的，以便新数据可以进来，并且旧数据将移动到 HDD 层（彼时会删除重复数据项并对数据进行压缩），随后将移动到云。
 
 随着时间的推移，使用的主存储和本地存储很可能会一起增加，直到数据开始分层存储到云。 那时，使用的本地存储将可能开始达到平稳状态，但使用的主存储将随着更多数据的写入而增加。
 
@@ -135,5 +148,4 @@ ms.lasthandoff: 08/30/2017
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用 StorSimple 设备管理器服务设备仪表板](storsimple-device-dashboard.md)。
 * 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

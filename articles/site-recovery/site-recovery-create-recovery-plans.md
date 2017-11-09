@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/23/2017
+ms.date: 09/25/2017
 ms.author: raynew
+ms.openlocfilehash: 202e0ac8be36e9156ec16fadc1b722f4eb3d1432
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 1b0d64cd592c4738311797b826e490639340f92a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="create-recovery-plans"></a>创建恢复计划
 
@@ -77,10 +76,13 @@ ms.lasthandoff: 08/12/2017
 * 确保 VMM 部署中至少有一个库服务器。 VMM 服务器的库共享路径默认位于本地的 VMM 服务器，其文件夹名称为 MSCVMMLibrary。
     * 如果库共享路径在远程位置（或在本地，但不与 MSCVMMLibrary 共享），请按如下所示配置共享（例如使用 \\\libserver2.contoso.com\share\）：
       * 打开注册表编辑器并导航到 **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**。
-      * 编辑值 **ScriptLibraryPath**，将其设置为 \\libserver2.contoso.com\share\. 指定完整的 FQDN。 提供对共享位置的权限。
+      * 编辑值 **ScriptLibraryPath**，将其设置为 \\libserver2.contoso.com\share\. 指定完整的 FQDN。 提供对共享位置的权限。 请注意，这是共享的根节点。 **若要验证这点，可在 VMM 的根节点浏览库。打开的路径即为路径根 - 将在变量中使用。
       * 确保测试脚本时所用的用户帐户具有与 VMM 服务帐户相同的权限。 这会检查独立测试的脚本是否按其在恢复计划中的相同方式进行运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
         * 使用提升的权限打开 64 位 Windows PowerShell 控制台。
         * 键入：**Set-executionpolicy bypass**。 [了解详细信息](https://technet.microsoft.com/library/ee176961.aspx)。
+
+> [!IMPORTANT]
+> 应仅在 64 位 PowerShell 上将执行策略设置为“免验证”。 如果为 32 位 PowerShell 进行此设置，则不会执行脚本。
 
 ## <a name="add-a-script-or-manual-action-to-a-plan"></a>向计划添加脚本或手动操作
 
@@ -106,4 +108,3 @@ ms.lasthandoff: 08/12/2017
 ## <a name="next-steps"></a>后续步骤
 
 [详细了解](site-recovery-failover.md)如何运行故障转移。
-

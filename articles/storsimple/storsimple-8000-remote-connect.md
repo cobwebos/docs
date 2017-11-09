@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: ff76884f020a0fb8a1b48bd371c419bd65e85fd3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
@@ -172,7 +171,7 @@ ms.lasthandoff: 07/08/2017
     将显示与下面类似的证书。
    
     ![获取远程管理证书](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. 将证书中从 **-----BEGIN CERTIFICATE-----** 到 **-----END CERTIFICATE-----** 的信息复制到如记事本等文本编辑器中，然后将其另存为 .cer 文件。 （在准备主机时，需要将此文件复制到远程主机。）
+6. 将证书中从 **-----BEGIN CERTIFICATE-----** 到 **-----END CERTIFICATE-----** 的信息复制到如记事本等文本编辑器中，并将其另存为 .cer 文件。 （在准备主机时，需要将此文件复制到远程主机。）
    
    > [!NOTE]
    > 若要生成新的证书，请使用 `Set-HcsRemoteManagementCert` cmdlet。
@@ -190,8 +189,8 @@ ms.lasthandoff: 07/08/2017
 1. 右键单击 .cer 文件并选择“安装证书”。 这会启动证书导入向导。
    
     ![证书导入向导 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. 对于“存储位置”，选择“本地计算机”，然后单击“下一步”。
-3. 选择“将所有证书放入下列存储”，然后单击“浏览”。 导航到远程主机的根存储，然后单击“下一步”。
+2. 对于“存储位置”，选择“本地计算机”，并单击“下一步”。
+3. 选择“将所有证书放入下列存储”，并单击“浏览”。 导航到远程主机的根存储，并单击“下一步”。
    
     ![证书导入向导 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
 4. 单击“完成” 。 将显示一条提示已成功导入的消息。
@@ -199,7 +198,7 @@ ms.lasthandoff: 07/08/2017
     ![证书导入向导 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>将设备序列号添加到远程主机
-1. 以管理员身份启动记事本，然后打开位于 \Windows\System32\Drivers\etc 的主机文件。
+1. 以管理员身份启动记事本，并打开位于 \Windows\System32\Drivers\etc 的主机文件。
 2. 将以下三项添加到主机文件中：**DATA 0 IP 地址**、**控制器 0 固定 IP 地址**和**控制器 1 固定 IP 地址**。
 3. 输入之前保存的设备序列号。 将此设备序列号映射到 IP 地址，如下图所示。 对于控制器 0 和控制器 1，请在序列号末尾追加 **Controller0** 和 **Controller1**（CN 名）。
    
@@ -234,7 +233,7 @@ ms.lasthandoff: 07/08/2017
 5. 键入：
    
      `Enter-PSSession $session`
-6. 等待几分钟后，将在 SSL 上通过 HTTPS 连接到设备。 会看到一条指示已连接到设备的消息。
+6. 等待几分钟后，会在 SSL 上通过 HTTPS 连接到设备。 会看到一条指示已连接到设备的消息。
    
     ![使用 HTTPS 和 SSL 的 PowerShell 远程处理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
@@ -242,5 +241,4 @@ ms.lasthandoff: 07/08/2017
 
 * 了解有关如何[使用 Windows PowerShell 管理 StorSimple 设备](storsimple-8000-windows-powershell-administration.md)的详细信息。
 * 了解有关如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
-
 

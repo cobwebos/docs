@@ -1,3 +1,5 @@
+此常见问题解答适用于使用经典部署模型进行的 P2S 连接。
+
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>点到站点连接允许使用哪些客户端操作系统？
 
 支持以下客户端操作系统：
@@ -20,11 +22,11 @@
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>能否将我自己的内部 PKI 根 CA 用于点到站点连接？
 
-是的。 以前只可使用自签名根证书。 你仍可上载 20 个根证书。
+是的。 以前只可使用自签名根证书。 仍可上传 20 个根证书。
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>能否使用点到站点功能穿越代理和防火墙？
 
-是的。 我们使用 SSTP（安全套接字隧道协议）作为隧道穿越防火墙。 此隧道将显示为 HTTPS 连接。
+是的。 我们使用 SSTP（安全套接字隧道协议）作为隧道穿越防火墙。 此隧道会显示为 HTTPS 连接。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
 
@@ -36,7 +38,7 @@
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>对于同一虚拟网络，站点到站点和点到站点配置能否共存？
 
-是的。 如果你网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 不支持对静态路由 VPN 网关或使用 `-VpnType PolicyBased` cmdlet 的网关使用点到站点连接。
+是的。 如果网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 不支持对静态路由 VPN 网关或使用 `-VpnType PolicyBased` cmdlet 的网关使用点到站点连接。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 

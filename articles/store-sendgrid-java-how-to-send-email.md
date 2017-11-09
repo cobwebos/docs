@@ -14,18 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
-SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
+SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、伸缩性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
 
 * 自动向客户发送收据
 * 管理用于每月向客户发送电子传单和特惠产品/服务的通讯组列表
@@ -69,7 +68,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
                  // …
 ```
 
-1. 展开 javax.mail.Authenticator 类，然后在你对 getPasswordAuthentication 方法的实现中，返回你的 SendGrid 用户名和密码。  
+1. 展开 javax.mail.Authenticator 类，然后在对 getPasswordAuthentication 方法的实现中，返回 SendGrid 用户名和密码。  
 
        private class SMTPAuthenticator extends javax.mail.Authenticator {
        public PasswordAuthentication getPasswordAuthentication() {
@@ -142,7 +141,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
           {\"settings\":
           {\"enable\":1,\"text/html\":
           \"<html><b>Thank you</b> for your business.</html>\"}}}}");
-* 筛选器的另一个示例是点击跟踪。 比如说，电子邮件文本中含有超链接（如以下链接），而您想要跟踪点击率：
+* 筛选器的另一个示例是点击跟踪。 比如说，电子邮件文本中含有超链接（如以下链接），而你想要跟踪点击率：
 
       messagePart.setContent(
           "Hello,
@@ -159,7 +158,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可使用 **set* 属性替代一些电子邮件属性，***或使用 **add*属性*追加一些电子邮件属性**。
+可使用 set 属性替代一些电子邮件属性**，或使用 add 属性追加一些电子邮件属性**。
 
 例如，若要指定 **ReplyTo** 地址，请使用以下代码：
 
@@ -178,7 +177,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
 SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 SendGrid 功能。 有关完整详细信息，请参阅 [SendGrid API 文档][SendGrid API documentation]。
 
 ## <a name="next-steps"></a>后续步骤
-此时，您已了解 SendGrid 电子邮件服务的基础知识，请访问以下链接以了解更多信息。
+此时，已了解 SendGrid 电子邮件服务的基础知识，请访问以下链接以了解更多信息。
 
 * 演示在 Azure 部署中使用 SendGrid 的示例：[如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email-example.md)
 * SendGrid Java SDK：<https://sendgrid.com/docs/Code_Examples/java.html>
@@ -195,4 +194,3 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程�
 [http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
 [基于云的电子邮件服务]: https://sendgrid.com/email-solutions
 [事务电子邮件传递]: https://sendgrid.com/transactional-email
-

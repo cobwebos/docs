@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: d171538ea57839eccddcc74ca099a39aee34ea10
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>手动或自动缩放实例计数
 在 [Azure 门户](https://portal.azure.com/)中，可手动设置服务的实例计数，或者设置参数以基于需求自动缩放。 这通常称为扩大或缩小。
@@ -29,12 +28,12 @@ ms.lasthandoff: 07/18/2017
 可以在门户中进行缩放，也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx) 或 [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) 手动或自动调整规模。
 
 > [!NOTE]
-> 本文介绍如何在门户 [http://portal.azure.com](http://portal.azure.com) 中创建自动缩放设置。 不可在经典门户 ([http://manage.windowsazure.com](http://manage.windowsazure.com)) 中对此门户中创建的自动缩放设置进行编辑。
+> 本文介绍如何在门户 [http://portal.azure.com](http://portal.azure.com) 中创建自动缩放设置。不可在经典门户 ([http://manage.windowsazure.com](http://manage.windowsazure.com)) 中对此门户中创建的自动缩放设置进行编辑。
 > 
 > 
 
 ## <a name="scaling-manually"></a>手动缩放
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”，然后导航到要缩放的资源（如“应用服务计划”）。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”，并导航到要缩放的资源（如“应用服务计划”）。
 2. 单击“设置”>“扩大(应用服务计划)”。
 3. 在“缩放”边栏选项卡顶部，可以查看服务的自动缩放操作历史记录。
    
@@ -50,7 +49,7 @@ ms.lasthandoff: 07/18/2017
 ## <a name="scaling-based-on-a-pre-set-metric"></a>基于预设指标进行缩放
 如果要基于指标自动调整实例数，请在“缩放依据”下拉列表中选择所需指标。 例如，对于“应用服务计划”，可以按“CPU 百分比”进行缩放。
 
-1. 选择指标时，你会获得一个滑块和/或文本框，以输入要在其间进行缩放的实例数：
+1. 选择指标时，会获得一个滑块和/或文本框，以输入要在其间进行缩放的实例数：
    
     ![显示了 CPU 百分比的“缩放”分页](./media/insights-how-to-scale/Insights_ScaleBladeCPU.png)
    
@@ -63,7 +62,7 @@ ms.lasthandoff: 07/18/2017
 
 ### <a name="adding-or-changing-a-rule"></a>添加或更改规则
 1. 在“缩放依据”下拉列表中选择“计划和性能规则”：![性能规则](./media/insights-how-to-scale/Insights_PerformanceRules.png)
-2. 如果以前进行过自动缩放，则你会看到你所具有的确切规则的视图。
+2. 如果以前进行过自动缩放，则你会看到所具有的确切规则的视图。
 3. 若要基于其他指标进行缩放，请单击“添加规则”行。 还可单击一个现有行，以便从以前具有的指标更改为要作为缩放依据的指标。
    ![添加规则](./media/insights-how-to-scale/Insights_AddRule.png)
 4. 现在需要选择要作为缩放依据的指标。 选择指标时，需要考虑几个事项：
@@ -82,32 +81,32 @@ ms.lasthandoff: 07/18/2017
 9. 配置了所有所需规则之后，请务必点击“保存”命令。
 
 ### <a name="scaling-with-multiple-steps"></a>使用多个步骤进行缩放
-以上示例非常基本。 但是，如果你要更积极地进行地增加（或减少），甚至可以为相同指标添加多个缩放规则。 例如，你可以对 CPU 百分比定义两个缩放规则：
+以上示例非常基本。 但是，如果要更积极地进行地增加（或减少），甚至可以为相同指标添加多个缩放规则。 例如，可以对 CPU 百分比定义两个缩放规则：
 
 1. 如果 CPU 百分比高于 60%，则按 1 个实例进行扩大
 2. 如果 CPU 百分比高于 85%，则按 3 个实例进行扩大
 
 ![多个缩放规则](./media/insights-how-to-scale/Insights_MultipleScaleRules.png)
 
-启用这条附加规则后，如果在执行缩放操作之前负载超出 85%，你将会看到两个附加实例而不是一个。
+启用这条附加规则后，如果在执行缩放操作之前负载超出 85%，会看到两个附加实例而不是一个。
 
 ## <a name="scale-based-on-a-schedule"></a>基于计划的缩放
-默认情况下，当创建缩放规则时，它会始终应用。 你可以在单击配置文件标头时看到该规则：
+默认情况下，当创建缩放规则时，它会始终应用。 可以在单击配置文件标头时看到该规则：
 
 ![配置文件](./media/insights-how-to-scale/Insights_Profile.png)
 
-但是与在周末进行缩放相比，你可能需要在一天或一周当中进行更积极的缩放。 你甚至可以在工作时间之外完全关闭服务。
+但是与在周末进行缩放相比，可能需要在一天或一周当中进行更积极的缩放。 甚至可以在工作时间之外完全关闭服务。
 
-1. 为此，请在具有的配置文件中，选择“重复周期”而不是“总是”，然后选择要应用配置文件的时间。
+1. 为此，请在具有的配置文件中，选择“重复周期”而不是“总是”，并选择要应用配置文件的时间。
 2. 例如，若要具有在一周中应用的配置文件，请在“天”下拉列表中取消选中“星期六”和“星期日”。
-3. 若要具有在白天应用的配置文件，请将“开始时间”设置为一天中希望开始进行的时间。
+3. 要具有在白天应用的配置文件，请将“开始时间”设置为一天中希望开始进行的时间。
    
     ![默认重复周期](./media/insights-how-to-scale/Insights_ProfileRecurrence.png)
 4. 单击 **“确定”**。
 5. 接下来，需要添加要在其他时间应用的配置文件。 单击“添加配置文件”行。
     ![下班](./media/insights-how-to-scale/Insights_ProfileOffWork.png)
 6. 命名新的第二个配置文件，例如可将它称为“下班”。
-7. 然后再次选择“重复周期”，选择在此时间内所需的实例计数范围。
+7. 然后再次选择“重复周期”，然后选择此期间所需的实例计数范围。
 8. 与默认配置文件一样，选择希望应用此配置文件的“天”，以及一天中的“开始时间”。
    
    > [!NOTE]
@@ -115,18 +114,17 @@ ms.lasthandoff: 07/18/2017
    > 
    > 
 9. 单击 **“确定”**。
-10. 现在，需要添加要在第二个配置文件实施期间应用的任何规则。 单击“添加规则”，然后可以构建在默认配置文件实施期间具有的相同规则。
+10. 现在，需要添加要在第二个配置文件实施期间应用的任何规则。 单击“添加规则”，并可以构建在默认配置文件实施期间具有的相同规则。
     
     ![向下班添加规则](./media/insights-how-to-scale/Insights_RuleOffWork.png)
 11. 请务必为扩大和缩小都创建规则，否则在配置文件实施期间，实例计数只会增加（或减少）。
 12. 最后，单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
-* [监视服务指标](insights-how-to-customize-monitoring.md)以确保你的服务可用且响应迅速。
+* [监视服务指标](insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
 * [启用监视和诊断](insights-how-to-use-diagnostics.md)以收集有关服务的详细高频率指标。
 * 每当操作事件发生或指标超过阈值时[接收警报通知](insights-receive-alert-notifications.md)。
 * 要确切了解代码在云中的执行情况时[监视应用程序性能](../application-insights/app-insights-azure-web-apps.md)。
 * [查看事件和活动日志](insights-debugging-with-events.md)，以了解服务中发生的所有事件。
 * 使用 Application Insights [监视任何网页的可用性和响应能力](../application-insights/app-insights-monitor-web-app-availability.md)，以便可以在页面出现故障时及时发现。
-
 

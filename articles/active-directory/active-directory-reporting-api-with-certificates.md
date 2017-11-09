@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/08/2017
 ms.author: ramical
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: c1345dcda6e52267a8037ffd7207e6bc3b0d3b31
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: 38c240ed1608b2e99bde78f3633e722f8e2fa30b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>使用证书通过 Azure AD 报告 API 获取数据
 本文介绍如何在没有用户干预的情况下，使用证书凭据通过 Azure AD 报告 API 从目录获取数据。 
 
 ## <a name="use-the-azure-ad-reporting-api"></a>使用 Azure AD 报告 API 
-Azure AD 报告 API 要求你完成以下步骤：
+Azure AD 报告 API 要求完成以下步骤：
  *  安装必备组件
  *  在应用中设置证书
  *  获取访问令牌
@@ -54,7 +53,7 @@ Azure AD 报告 API 要求你完成以下步骤：
   ![Windows Powershell](./media/active-directory-report-api-with-certificates/windows-powershell.png)
 
 ### <a name="set-the-certificate-in-your-app"></a>在应用中设置证书
-1. 如果你已有应用，请从 Azure 门户获取其对象 ID。 
+1. 如果已有应用，请从 Azure 门户获取其对象 ID。 
 
   ![Azure 门户](./media/active-directory-report-api-with-certificates/azure-portal.png)
 
@@ -91,7 +90,6 @@ Azure AD 报告 API 要求你完成以下步骤：
 
 ## <a name="next-steps"></a>后续步骤
 [Azure 标识管理基础知识](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
-
 
 
 

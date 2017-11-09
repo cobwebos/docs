@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: TomSh
+ms.openlocfilehash: c63eb15e8d575da91fd8198ca9d486f7fdb2b38d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: f3fbca281dbbfca7ff9392d003429719c589afbd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
-
 # <a name="governance-in-azure"></a>Azure 中的监管
 
 我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 将 Azure 用于应用程序和服务的最合理原因之一是可以利用其各种安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。
@@ -169,7 +167,7 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 
 例如，具有对资源组访问权限的用户可以管理其包含的所有资源，如网站、虚拟机和子网。
 
-Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该用户不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
+Azure RBAC 仅支持 Azure 门户和 Azure 资源管理器 API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该用户不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
 
 如果想要了解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)。
 
@@ -181,7 +179,7 @@ Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资
 
 Azure 最初只提供经典部署模型。 在此模型中，每个资源彼此独立；无法将相关的资源组合在一起。 因此，必须手动跟踪构成解决方案或应用程序的资源 ，并记得以协调的方式管理。
 
-部署解决方案有两种方式：通过经典门户单独创建每个资源；或创建一个脚本，以正确的顺序部署所有资源。 若要删除解决方案，必须逐个删除每个资源。 无法轻松应用和更新相关资源的访问控制策略。 最后，无法将标记应用到资源，因此无法使用有助于监视资源和管理计费的术语来标记资源。
+部署解决方案有两种方式：通过 Azure 门户单独创建每个资源；或创建一个脚本，以正确的顺序部署所有资源。 若要删除解决方案，必须逐个删除每个资源。 无法轻松应用和更新相关资源的访问控制策略。 最后，无法将标记应用到资源，因此无法使用有助于监视资源和管理计费的术语来标记资源。
 
 Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。 资源组是一种容器，专门容纳共享同一生命周期的资源。 Resource Manager 部署模型具有几大优点：
 
@@ -203,14 +201,14 @@ Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。
 
 资源组是用于保存 Azure 解决方案相关资源的容器。 [资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。
 
-有关模板的建议，请参阅[创建 Azure Resource Manager 模板的最佳实践](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)。
+有关模板的建议，请参阅[创建 Azure 资源管理器模板的最佳实践](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)。
 
-Azure Resource Manager 会分析依赖关系，以确保按正确的顺序创建资源。 如果一个资源依赖于另一个资源（例如虚拟机需要存储帐户才能访问磁盘）中的值，请设置依赖关系。
+Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建资源。 如果一个资源依赖于另一个资源（例如虚拟机需要存储帐户才能访问磁盘）中的值，请设置依赖关系。
 
 >[!Note]
->有关详细信息，请参阅[在 Azure Resource Manager 模板中定义依赖关系](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies)。
+>有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖关系](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies)。
 
-还可以使用模板对基础结构进行更新。 例如，可以将新的资源添加到应用程序，并为已部署的资源添加配置规则。 如果模板指定要创建资源，但该资源已存在，则 Azure Resource Manager 将执行更新而不是创建新资产。 Azure Resource Manager 会将现有资产更新到相同状态，就如同该资产是新建的一样。
+还可以使用模板对基础结构进行更新。 例如，可以将新的资源添加到应用程序，并为已部署的资源添加配置规则。 如果模板指定要创建资源，但该资源已存在，则 Azure 资源管理器将执行更新而不是创建新资产。 Azure 资源管理器会将现有资产更新到相同状态，就如同该资产是新建的一样。
 
 如果你需要其他操作（例如，安装未包含在安装程序中的软件），Resource Manager 可提供方案扩展。
 
@@ -277,11 +275,11 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
-若要创建或删除管理锁，必须有权访问 Microsoft.Authorization/_ 或 Microsoft.Authorization/locks/_ 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
+若要创建或删除管理锁，必须有权访问 Microsoft.Authorization/ _或 Microsoft.Authorization/locks/_ 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
 
 ## <a name="api-access-to-billing-information"></a>API 对计费信息的访问
 
-使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure Resource Manager 公开的 API 系列。
+使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure 资源管理器公开的 API 系列。
 
 ### <a name="azure-resource-usage-api-preview"></a>Azure 资源使用状况 API（预览）
 
@@ -488,9 +486,9 @@ Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 Azure Resource Manager 模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)。
+- 
+            [创建 Azure 资源管理器模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)。
 
 - [Azure 订阅监管实施示例](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-examples)。
 
 - [Microsoft Azure 政府](https://docs.microsoft.com/azure/azure-government/)。
-

@@ -13,17 +13,16 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: dkshir
 ms.custom: na
+ms.openlocfilehash: 7ebbac4464d793717f68a4cb7905c53d1f5c051a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 05268924a182575b3df66fb6dad6bcac2700ec0c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>使用 Python 将模拟设备连接到 IoT 中心
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-在本教程结束时，将会创建两个 Python 应用：
+在本教程结束时，会创建两个 Python 应用：
 
 * **CreateDeviceIdentity.py**，用于创建设备标识和关联的安全密钥以连接模拟设备应用。
 * **SimulatedDevice.py**，使用前面创建的设备标识连接到 IoT 中心，并使用 MQTT 协议定期发送遥测消息。
@@ -33,7 +32,7 @@ ms.lasthandoff: 07/13/2017
 > 
 > 
 
-若要完成本教程，您需要以下各项：
+要完成本教程，需要以下各项：
 
 * [Python 2.x 或 3.x][lnk-python-download]。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统][lnk-install-pip]。
 * 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包][lnk-visual-c-redist]，以便使用 Python 中的本机 DLL。
@@ -53,9 +52,9 @@ ms.lasthandoff: 07/13/2017
 > 
 
 ## <a name="create-a-device-identity"></a>创建设备标识
-本部分列出了创建 Python 控制台应用的步骤，该应用可在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
+本部分列出了创建 Python 控制台应用的步骤，该应用可在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
-1. 打开命令提示符，然后安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
+1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
 
     ```
     pip install azure-iothub-service-client
@@ -142,7 +141,7 @@ ms.lasthandoff: 07/13/2017
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 本部分列出了创建 Python 控制台应用的步骤，该应用可模拟设备并向 IoT 中心发送设备到云消息。
 
-1. 打开新的命令提示符，然后安装用于 Python 的 Azure IoT 中心设备 SDK，如下所示。 在安装之后关闭命令提示符。
+1. 打开新的命令提示符，并安装用于 Python 的 Azure IoT 中心设备 SDK，如下所示。 在安装之后关闭命令提示符。
 
     ```
     pip install azure-iothub-device-client
@@ -283,13 +282,13 @@ ms.lasthandoff: 07/13/2017
     ![Python 设备到云消息][2]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 你已借助 IoT 中心资源管理器工具观察到 IoT 中心接收的消息。 
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已使用此设备标识来让模拟设备应用向 IoT 中心发送设备到云的消息。 已借助 IoT 中心资源管理器工具观察到 IoT 中心接收的消息。 
 
 若要深入探索用于 Azure IoT 中心的 Python SDK 的用法，请访问[此 Git 中心存储库][lnk-python-github]。 若要查看用于 Python 的 Azure IoT 中心服务 SDK 的消息传送功能，可下载并运行 [iothub_messaging_sample.py][lnk-messaging-sample]。 若要了解如何通过用于 Python 的 Azure IoT 中心设备 SDK 进行设备端模拟，可下载并运行 [iothub_client_sample.py][lnk-client-sample]。
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
-* [连接你的设备][lnk-connect-device]
+* [连接设备][lnk-connect-device]
 * [设备管理入门][lnk-device-management]
 * [Azure IoT 边缘入门][lnk-iot-edge]
 
@@ -327,4 +326,3 @@ ms.lasthandoff: 07/13/2017
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-

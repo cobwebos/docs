@@ -3,7 +3,7 @@ title: "适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs"
 description: "监视 Web 应用程序的可用性、性能和使用情况。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: 74f99dd6f31ecff7c838d8f710a7fe4279ce0ea9
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 43e9e864a11cd6601ca9599f5a193793d344e0e5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 使用 [Application Insights](app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -43,8 +42,7 @@ ms.lasthandoff: 08/17/2017
 
 * [指标资源管理器](app-insights-metrics-explorer.md)显示了指标和计数（例如响应时间、故障率）或你通过 [API](app-insights-api-custom-events-metrics.md) 自行创建的指标的关系图和表。 按属性值筛选和细分数据，以便更好地了解应用及其用户。
 * [搜索资源管理器](app-insights-diagnostic-search.md)列出了单独事件（例如特定请求、异常、日志跟踪）或你通过 [API](app-insights-api-custom-events-metrics.md) 自行创建的事件。 在事件中筛选和搜索，并在相关事件中导航以调查问题。
-* 
-            [分析](app-insights-analytics.md)允许通过遥测运行类似 SQL 的查询，它是一个功能强大的分析和诊断工具。
+* [分析](app-insights-analytics.md)允许通过遥测运行类似 SQL 的查询，它是一个功能强大的分析和诊断工具。
 
 ## <a name="alerts"></a>警报
 * 将自动获取[主动诊断警报](app-insights-proactive-diagnostics.md)，告知你有关失败率和其他指标的异常更改。
@@ -61,11 +59,7 @@ ms.lasthandoff: 08/17/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [将遥测添加到网页](app-insights-javascript.md)，监视页面使用情况和性能。
-* 
-            [监视依赖项](app-insights-asp-net-dependencies.md)，查看 REST、SQL 或其他外部资源是否会降低性能。
-* 
-            [使用 API](app-insights-api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
-* 
-            [可用性测试](app-insights-monitor-web-app-availability.md)从世界各地不断检查应用。 
-
+* [监视依赖项](app-insights-asp-net-dependencies.md)，查看 REST、SQL 或其他外部资源是否会降低性能。
+* [使用 API](app-insights-api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
+* [可用性测试](app-insights-monitor-web-app-availability.md)从世界各地不断检查应用。 
 

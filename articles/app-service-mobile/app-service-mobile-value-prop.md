@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 8576f2b6adce044d2060c3ba6d19ac330e3637c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 166cebeb20ecc79b447dac25f243f07163a6d127
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
@@ -68,7 +67,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 
 * 连续部署：应用服务可与常用供应链管理 (SCM) 系统集成，用于将新版后端推送到 SCM 系统的分支以实现自动部署。
 
-  深入了解 [部署选项]。
+  深入了解 [部署选项](../app-service/app-service-deploy-local-git.md)。
 
 * 虚拟网络：应用服务可以使用虚拟网络、Azure ExpressRoute 或混合连接与本地资源建立连接。
 
@@ -87,7 +86,6 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[Azure 应用服务]: ../app-service/app-service-value-prop-what-is.md
 [入门]: app-service-mobile-ios-get-started.md
 [Azure 表存储]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/documentdb-get-started.md
@@ -100,12 +98,10 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 [Xamarin.iOS 和 Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[自动缩放]: ../app-service-web/web-sites-scale.md
-[过渡环境]: ../app-service-web/web-sites-staged-publishing.md
-[部署选项]: ../app-service-web/web-sites-deploy.md
+[自动缩放]: ../app-service/web-sites-scale.md
+[过渡环境]: ../app-service/web-sites-staged-publishing.md
 [混合连接]: ../biztalk-services/integration-hybrid-connection-overview.md
-[虚拟网络]: ../app-service-web/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
-[应用服务环境]: ../app-service-web/app-service-app-service-environment-intro.md
+[虚拟网络]: ../app-service/web-sites-integrate-with-vnet.md
+[ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
+[应用服务环境]: ../app-service/environment/intro.md
 [学习路线图]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
-

@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 119ebb3f4966de08934c7d1fbd139229bda1d060
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.openlocfilehash: 1689374d180e9c806516812d6d4b51df3b06cb21
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>如何使用 MongoDB API 设置 Azure Cosmos DB 全局分发
 
-本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，然后使用 MongoDB API 进行连接。
+本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用 MongoDB API 进行连接。
 
 本文涵盖以下任务： 
 
@@ -71,21 +70,21 @@ ms.lasthandoff: 05/31/2017
 
 ## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>使用 MongoDB API 连接到首选区域
 
-使用 MongoDB API，可以为全局分布式数据库指定集合的读取首选项。 为实现低延迟读取和全局高可用性，建议你将集合的读取首选项设置为“就近”。 当读取首选项配置为“就近”时，将从最近的区域进行读取。
+使用 MongoDB API，可以为全局分布式数据库指定集合的读取首选项。 为实现低延迟读取和全局高可用性，建议将集合的读取首选项设置为“就近”。 当读取首选项配置为“就近”时，将从最近的区域进行读取。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
 ```
 
-对于具有主读取/写入区域和用于灾难恢复 (DR) 方案的辅助区域的应用程序，建议你将集合的读取首选项设置为“辅助优先”。 当读取首选项配置为“辅助优先”时，如果主区域不可用，将从辅助区域进行读取。
+对于具有主读取/写入区域和用于灾难恢复 (DR) 方案的辅助区域的应用程序，建议将集合的读取首选项设置为“辅助优先”。 当读取首选项配置为“辅助优先”时，如果主区域不可用，将从辅助区域进行读取。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
 ```
 
-最后，如果你愿意，可以手动指定读取区域。 可以在你的读取首选项内设置区域标记。
+最后，如果愿意，可以手动指定读取区域。 可以在读取首选项内设置区域标记。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -107,4 +106,3 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 > [!div class="nextstepaction"]
 > [通过模拟器在本地开发](local-emulator.md)
-

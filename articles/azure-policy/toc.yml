@@ -1,0 +1,39 @@
+- name: 概述
+  items:
+    - name: Azure 策略概述
+      href: azure-policy-introduction.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 分配策略 - 门户
+      href: assign-policy-definition.md
+    - name: 分配策略 - PowerShell
+      href: assign-policy-definition-ps.md
+    - name: 分配策略 - Azure CLI
+      href: assign-policy-definition-cli.md
+- name: 教程
+  items:
+    - name: 创建和管理 Azure 策略
+      href: create-manage-policy.md
+- name: 示例
+  items:
+    - name: 策略模板
+      href: json-samples.md
+- name: 概念
+  items:
+    - name: Azure 策略定义结构
+      href: policy-definition.md
+- name: 引用
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/policy?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.3.1'
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/azure-policy/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'

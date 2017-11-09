@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 596bcd2f38a39cc1404d422214ab49ae79df744c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 81c8ba6245565368eab4cdaca297ff7656180605
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>将现有 .NET Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -48,7 +47,7 @@ ms.lasthandoff: 12/08/2016
 在许多情况下，只需切换到新的移动应用服务器 SDK 并将代码重新发布到新的移动应用实例，即可完成升级。 但在某些情况下则需要一些额外的配置，例如高级身份验证方案和使用计划作业。 后续部分将逐一介绍。
 
 > [!TIP]
-> 建议先阅读并充分了解本主题的余下内容，然后再开始升级。 请记下以下概括的所有功能。
+> 建议先阅读并充分了解本主题的余下内容，再开始升级。 请记下以下概括的所有功能。
 >
 >
 
@@ -68,18 +67,18 @@ ms.lasthandoff: 12/08/2016
 
 接下来，根据 [.NET 后端创建说明](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)创建第二个应用程序实例。 当系统提示选择应用服务计划或“托管计划”时，请选择已迁移的应用程序的计划。
 
-可能需要使用与移动服务中相同的数据库和通知中心。 可以打开 [Azure 门户]并导航到原始应用程序，复制这些值，然后单击“设置” > “应用程序设置”。 在“连接字符串”下，复制 `MS_NotificationHubConnectionString` 和 `MS_TableConnectionString`。 导航到新的升级站点并粘贴这些值，覆盖任何现有值。 针对应用所需的任何其他应用程序设置重复此过程。 如果未使用迁移的服务，可以从 [Azure 经典门户]上“移动服务”部分中的“配置”选项卡中读取连接字符串和应用设置。
+可能需要使用与移动服务中相同的数据库和通知中心。 可以打开 [Azure 门户]并导航到原始应用程序，复制这些值，并单击“设置” > “应用程序设置”。 在“连接字符串”下，复制 `MS_NotificationHubConnectionString` 和 `MS_TableConnectionString`。 导航到新的升级站点并粘贴这些值，覆盖任何现有值。 针对应用所需的任何其他应用程序设置重复此过程。 如果未使用迁移的服务，可以从 [Azure 经典门户]上“移动服务”部分中的“配置”选项卡中读取连接字符串和应用设置。
 
 为应用程序制作 ASP.NET 项目的副本，然后将其发布到新站点。 通过使用新 URL 更新的客户端应用程序副本验证一切是否正常工作。
 
 ## <a name="updating-the-server-project"></a>更新服务器项目
 移动应用提供了一个新的[移动应用服务器 SDK]，该 SDK 提供许多与移动服务运行时相同的功能。 首先，应该删除对移动服务包的所有引用。 在 NuGet 包管理器中，搜索 `WindowsAzure.MobileServices.Backend`。 大多数应用在此处有多个对应的包，包括 `WindowsAzure.MobileServices.Backend.Tables` 和 `WindowsAzure.MobileServices.Backend.Entity`。 在这种情况下，请从依赖性树中级别最低的包（例如 `Entity`）开始删除包。 出现提示时，请不要删除所有依赖包。 重复此过程，直到已删除 `WindowsAzure.MobileServices.Backend` 本身。
 
-此时，项目将不再引用移动服务 SDK。
+此时，项目不再引用移动服务 SDK。
 
 接下来，添加对移动应用 SDK 的引用。 对于这种升级，大多数开发人员都会下载并安装 `Microsoft.Azure.Mobile.Server.Quickstart` 包，因为这可以提取整个所需集。
 
-到时将有不少因 SDK 之间的差异而发生的编译器错误，但这些错误都很容易处理，本部分的余下内容将予以说明。
+到时会有不少因 SDK 之间的差异而发生的编译器错误，但这些错误都很容易处理，本部分的余下内容将予以说明。
 
 ### <a name="base-configuration"></a>基本配置
 然后，在 WebApiConfig.cs 中，将：
@@ -105,7 +104,7 @@ ms.lasthandoff: 12/08/2016
 如果应用使用身份验证功能，则还需要注册 OWIN 中间件。 在此情况下，应该将上述配置代码移入新的 OWIN 启动类。
 
 1. 如果 NuGet 包 `Microsoft.Owin.Host.SystemWeb` 尚未包含在项目中，请添加该包。
-2. 在 Visual Studio 中，右键单击项目，然后选择“添加” -> “新建项”。 选择“Web” -> “常规” -> “OWIN 启动类”。
+2. 在 Visual Studio 中，右键单击项目，并选择“添加” -> “新建项”。 选择“Web” -> “常规” -> “OWIN 启动类”。
 3. 将 MobileAppConfiguration 的上述代码从 `WebApiConfig.Register()` 移到新启动类的 `Configuration()` 方法。
 
 确保 `Configuration()` 方法的末尾为：
@@ -113,7 +112,7 @@ ms.lasthandoff: 12/08/2016
         app.UseWebApi(config)
         app.UseAppServiceAuthentication(config);
 
-存在其他一些与身份验证相关的更改，下面的完全身份验证部分将介绍这些内容。
+存在其他一些与身份验证相关的更改，下面的完全身份验证部分介绍这些内容。
 
 ### <a name="working-with-data"></a>处理数据
 在移动服务中，移动应用名称用作 Entity Framework 设置中的默认架构名称。
@@ -145,7 +144,7 @@ ms.lasthandoff: 12/08/2016
 移动应用客户端 SDK 使用新系统属性名称，因此不需要对客户端代码进行任何更改。 但是，如果要直接对服务进行 REST 调用，则应该相应地更改查询。
 
 #### <a name="local-store"></a>本地存储
-更改系统属性的名称意味着用于移动服务的脱机同步本地数据库与移动应用不兼容。 在将挂起的更改发送到服务器之前，应尽可能避免将客户端应用从移动服务升级到移动应用。 然后，升级的应用应使用新的数据库文件名。
+更改系统属性的名称意味着用于移动服务的脱机同步本地数据库与移动应用不兼容。 在将挂起的更改发送到服务器之前，应尽可能避免将客户端应用从移动服务升级到移动应用。 然后，升级后的应用应使用新的数据库文件名。
 
 如果客户端应用是从移动服务升级到移动应用，但同时在操作队列中有挂起的脱机更改，则系统数据库必须更新才能使用新的列名。 在 iOS 上，可以使用轻量迁移更改列名，从而做到这一点。 在 Android 和 .NET 托管客户端上，应该编写自定义 SQL 来重命名数据对象表的列。
 
@@ -218,7 +217,7 @@ ms.lasthandoff: 12/08/2016
 ## <a name="authentication"></a>身份验证注意事项
 移动服务的身份验证组件现已移入应用服务身份验证/授权功能。 可以阅读 [向移动应用添加身份验证](app-service-mobile-ios-get-started-users.md)主题，了解如何为站点启用此功能。
 
-对于某些提供者（例如 AAD、Facebook 和 Google），应该可以利用复制应用程序中现有的注册。 只需导航到标识提供者的门户，并将新的重定向 URL 添加到注册即可。 然后，使用客户端 ID 和机密配置应用服务身份验证/授权。
+对于某些提供者（例如 AAD、Facebook 和 Google），应该可以利用复制应用程序中现有的注册。 只需导航到标识提供者的门户，并将新的重定向 URL 添加到注册即可。 然后使用客户端 ID 和机密配置应用服务身份验证/授权。
 
 ### <a name="controller-action-authorization"></a>控制器操作授权
 现在，必须更改 `[AuthorizeLevel(AuthorizationLevel.User)]` 属性的所有实例才能使用标准的 ASP.NET `[Authorize]` 属性。 此外，默认情况下，控制器现在是匿名的，如同在其他 ASP.NET 应用程序中一样。
@@ -239,7 +238,7 @@ ms.lasthandoff: 12/08/2016
 如果应用程序使用自定义的身份验证解决方案，需要确保已升级的站点有权访问系统。 遵循 [.NET 服务器 SDK 概述]中适用于自定义身份验证的新说明来集成解决方案。 请注意，自定义身份验证组件仍以预览版提供。
 
 ## <a name="updating-clients"></a>更新客户端
-在获得可正常运行的移动应用后端之后，可以在使用它的新版客户端应用程序上操作。 移动应用还包含新版客户端 SDK。与上述的服务器升级类似，需先删除所有对移动服务 SDK 的引用，然后再安装移动应用版本。
+在获得可正常运行的移动应用后端之后，可以在使用它的新版客户端应用程序上操作。 移动应用还包含新版客户端 SDK。与上述的服务器升级类似，需先删除所有对移动服务 SDK 的引用，再安装移动应用版本。
 
 版本间的其中一个主要更改是构造函数不再需要应用程序密钥。 现在只需传入移动应用的 URL。 例如，在 .NET 客户端中，`MobileServiceClient` 构造函数现在是：
 
@@ -267,10 +266,9 @@ ms.lasthandoff: 12/08/2016
 [Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure 计划程序]: /en-us/documentation/services/scheduler/
-[Web 作业]: ../app-service-web/websites-webjobs-resources.md
+[Web 作业]: https://github.com/Azure/azure-webjobs-sdk/wiki
 [如何使用 .NET 服务器 SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [.NET 服务器 SDK 概述]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-

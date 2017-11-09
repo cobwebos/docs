@@ -13,12 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: adsolank;juliako;
+ms.openlocfilehash: ae6c4da189cd6637b4e1fa9274473b62f6664e51
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 520785880cb5c9dfa5191a097fdcc3ad776f403e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 的任务预设
 
@@ -65,5 +64,4 @@ Azure Media Indexer 是用于执行以下任务的媒体处理器：使媒体文
 ## <a name="next-steps"></a>后续步骤
 
 参阅[使用 Azure Media Indexer 为媒体文件编制索引](media-services-index-content.md)。
-
 

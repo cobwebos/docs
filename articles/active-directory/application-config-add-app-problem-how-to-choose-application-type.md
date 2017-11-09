@@ -13,17 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 1acd4119ebf9c9fd364d0eddd970c362756309ee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: e0d41d1933531c2c633613bcbc1bbcbf075d6a69
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-<a id="how-to-choose-which-application-type-to-use-when-adding-an-application" class="xliff"></a>
-
-# 添加应用程序时如何选择要使用的应用程序类型
+# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>添加应用程序时如何选择要使用的应用程序类型
 
 本文将帮助你了解可以与 Azure AD 集成的四种主要应用程序类型：
 
@@ -31,9 +27,7 @@ ms.lasthandoff: 04/11/2017
 * 可能选择某种应用程序的原因
 * 如何配置这些应用程序的核心属性，如**预配**用户的方式，或要使用的**单一登录**技术。
 
-<a id="supported-application-types-in-azure-ad" class="xliff"></a>
-
-## Azure AD 中支持的应用程序类型
+## <a name="supported-application-types-in-azure-ad"></a>Azure AD 中支持的应用程序类型
 
 Azure AD 支持使用“企业应用程序”下的“添加”功能添加的四种主要应用程序类型。 其中包括：
 
@@ -45,9 +39,7 @@ Azure AD 支持使用“企业应用程序”下的“添加”功能添加的�
 
 -   **非库应用程序** - 引入自己的应用程序！ 任何所需的 Web 链接或任何呈现“用户名”和“密码”字段的应用程序，都支持 SAML 或 OpenID Connect 协议，或支持为实现单一登录而预集成到 Azure AD 的 SCIM。
 
-<a id="features-and-capabilities-supported-by-all-the-above-application-types" class="xliff"></a>
-
-## 上述所有应用程序类型支持的功能
+## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>上述所有应用程序类型支持的功能
 
 Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
@@ -67,17 +59,13 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 -   **权限视图** - 查看目录中应用程序有权从单个位置访问的任何 [OAuth2 权限](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 
-<a id="single-sign-on-and-provisioning-modes-supported-by-specific-application-types" class="xliff"></a>
-
-## 特定应用程序类型支持的单一登录和预配模式
+## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>特定应用程序类型支持的单一登录和预配模式
 
 下表介绍以上每种应用程序类型支持的单一登录和预配模式。 可使用此表帮助了解为支持特定目标而需添加的应用程序。
 
   ![应用类型表](./media/application-tables/table1.png)
 
-<a id="how-to-choose-a-single-sign-on-mode" class="xliff"></a>
-
-## 如何选择单一登录模式
+## <a name="how-to-choose-a-single-sign-on-mode"></a>如何选择单一登录模式
 
 下面列出了 Azure AD 应用程序支持的**单一登录**模式。
 
@@ -108,9 +96,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
    >
    >
 
-<a id="single-sign-on-modes-for-custom-developed-applications" class="xliff"></a>
-
-## 适用于以自定义方式开发的应用程序的单一登录模式
+## <a name="single-sign-on-modes-for-custom-developed-applications"></a>适用于以自定义方式开发的应用程序的单一登录模式
 
 通过[以自定义方式开发的应用程序](#_Custom-Developed_Applications)的开发过程，以自定义方式开发的应用程序，还支持其他上面未列出的单一登录模式。 其中包括：
 
@@ -124,9 +110,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 阅读 [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)，深入了解如何创建支持这些单一登录模式的以自定义方式开发的应用程序。
 
-<a id="how-to-set-an-applications-single-sign-on-mode" class="xliff"></a>
-
-## 如何设置应用程序的单一登录模式
+## <a name="how-to-set-an-applications-single-sign-on-mode"></a>如何设置应用程序的单一登录模式
 
 若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
 
@@ -146,9 +130,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 7.  加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”。
 
-<a id="how-to-choose-a-provisioning-mode" class="xliff"></a>
-
-## 如何选择预配模式
+## <a name="how-to-choose-a-provisioning-mode"></a>如何选择预配模式
 
 -   **手动预配** - 如果已有帐户，或想要在 Azure AD 之外管理此应用程序的帐户，请选择[手动](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes)预配模式。
 
@@ -166,9 +148,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
    >
    >
 
-<a id="how-to-set-an-applications-provisioning-mode" class="xliff"></a>
-
-## 如何设置应用程序的预配模式
+## <a name="how-to-set-an-applications-provisioning-mode"></a>如何设置应用程序的预配模式
 
 若要设置应用程序的**预配**模式，请按照以下说明进行操作：
 
@@ -190,8 +170,5 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 7.  加载应用程序后，在应用程序的左侧导航菜单中，单击“预配”。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](active-directory-enable-sso-scenario.md)
-

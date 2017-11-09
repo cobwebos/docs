@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD 的身份验证方案
 Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的身份验证：将标识提供为一项服务、支持行业标准协议（例如 OAuth 2.0 和 OpenID Connect），并提供用于不同平台的开源库来帮助你快速开始编码。 本文档将帮助你了解 Azure AD 支持的各种方案并演示如何入门。 具体内容划为以下几部分：
@@ -296,5 +295,4 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 [有关 Azure AD 中签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
-
 

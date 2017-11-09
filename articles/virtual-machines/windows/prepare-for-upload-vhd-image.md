@@ -12,15 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/01/2017
 ms.author: genli
+ms.openlocfilehash: 60da4d7f418e2aac6ed6d41092486d2ccdaf940c
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: aa1cec2ef11da6aa8a8c4089be36994ab5f61682
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 在将 Windows 虚拟机 (VM) 从本地上传到 Microsoft Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 仅支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代 VM。 VHD 允许的最大大小为 1,023 GB。 可以将第 1 代 VM 从 VHDX 文件系统转换成 VHD 文件系统，以及从动态扩展磁盘转换成固定大小磁盘， 但无法更改 VM 的代次。 有关详细信息，请参阅 [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)（我应该在 Hyper-V 中创建第 1 代还是第 2 代 VM？）。
@@ -39,8 +38,8 @@ ms.lasthandoff: 08/12/2017
 1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，单击“操作” > “编辑磁盘”。
 2. 在“查找虚拟硬盘”屏幕上，找到并选择虚拟磁盘。
 3. 在“选择操作”屏幕上选择“转换”，然后选择“下一步”。
-4. 如果需要从 VHDX 进行转换，请选择“VHD”，然后单击“下一步”
-5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小”，然后单击“下一步”
+4. 如果需要从 VHDX 进行转换，请选择“VHD”，并单击“下一步”
+5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小”，并单击“下一步”
 6. 找到并选择新 VHD 文件的保存路径。
 7. 单击“完成” 。
 
@@ -380,7 +379,7 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 
 1. 登录到 Windows VM。
 2. 以管理员身份运行命令提示符。 
-3. 将目录更改为：%windir%\system32\sysprep，然后运行 sysprep.exe。
+3. 将目录切换到 %windir%\system32\sysprep，并运行 sysprep.exe。
 3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
@@ -428,5 +427,5 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
-
+* [排查 Azure Windows 虚拟机激活问题](troubleshoot-activation-problems.md)
 

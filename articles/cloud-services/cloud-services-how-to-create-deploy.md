@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: 2a2172a78bfd3ac923edbc9de366b035629dd27b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/19/2017
 
 Azure 经典门户提供两种创建和部署云服务的方法：**快速创建**和**自定义创建**。
 
-本主题介绍如何使用“快速创建”方法创建新的云服务，然后使用“上传”在 Azure 中上传和部署云服务包。 使用此方法时，Azure 经典门户将在用户操作时提供方便的链接以便满足所有要求。 如果可以在创建云服务时对其进行部署，可使用“自定义创建”同时执行这两项操作。
+本主题介绍如何使用“快速创建”方法创建新的云服务，并使用“上传”在 Azure 中上传和部署云服务包。 使用此方法时，Azure 经典门户会在用户操作时提供方便的链接以便满足所有要求。 如果可以在创建云服务时对其进行部署，可使用“自定义创建”同时执行这两项操作。
 
 > [!NOTE]
 > 如果计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，并从“快速启动”或仪表板设置 VSTS 发布。
@@ -47,30 +46,30 @@ Azure 经典门户提供两种创建和部署云服务的方法：**快速创建
 * **服务包**  
   服务包 (.cspkg) 包含应用程序代码和配置以及服务定义文件。
 
-你可以通过[此处](cloud-services-model-and-package.md)了解有关这些内容以及如何创建包的详细信息。
+可以通过[此处](cloud-services-model-and-package.md)了解有关这些内容以及如何创建包的详细信息。
 
 ## <a name="prepare-your-app"></a>准备应用程序
-在可以部署云服务之前，必须根据你的应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 你可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用你选择用于开发应用程序代码的语言。
+在可以部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用选择用于开发应用程序代码的语言。
 
-在你导出服务包之前，三种云服务功能需要特殊的配置：
+在导出服务包之前，三种云服务功能需要特殊的配置：
 
-* 如果你要部署使用安全套接字层 (SSL) 进行数据加密的云服务，请[为应用程序配置](cloud-services-configure-ssl-certificate.md#step-2-modify-the-service-definition-and-configuration-files) SSL。
+* 如果要部署使用安全套接字层 (SSL) 进行数据加密的云服务，请[为应用程序配置](cloud-services-configure-ssl-certificate.md#step-2-modify-the-service-definition-and-configuration-files) SSL。
 * 如果要配置与角色实例的远程桌面连接，请[为这些角色配置](cloud-services-role-enable-remote-desktop.md)远程桌面。
 * 如果要为云服务配置详细监视，请为云服务启用 Azure 诊断。 *最少监视*（默认监视级别）使用从角色实例（虚拟机）的主机操作系统中收集到的性能计数器。 “详细监视”*收集基于角色实例中性能数据的其他度量信息，以便对应用程序处理期间出现的问题进行进一步分析。 若要了解如何启用 Azure 诊断，请参阅[在 Azure 中启用诊断](cloud-services-dotnet-diagnostics.md)。
 
-要使用 Web 角色或辅助角色创建云服务，你必须[创建服务包](cloud-services-model-and-package.md#servicepackagecspkg)。
+要使用 Web 角色或辅助角色创建云服务，必须[创建服务包](cloud-services-model-and-package.md#servicepackagecspkg)。
 
 ## <a name="before-you-begin"></a>开始之前
-* 如果你尚未安装 Azure SDK，请单击“**安装 Azure SDK**”以打开 [Azure 下载页](https://azure.microsoft.com/downloads/)，然后下载你选择用于开发代码的相应语言的 SDK。 （你也可以稍后执行此操作。）
+* 如果尚未安装 Azure SDK，请单击“**安装 Azure SDK**”以打开 [Azure 下载页](https://azure.microsoft.com/downloads/)，然后下载你选择用于开发代码的相应语言的 SDK。 （也可以稍后执行此操作。）
 * 如果任何角色实例需要证书，请创建这些证书。 云服务需要带有私钥的 .pfx 文件。 可在创建和部署云服务时[将这些证书上传到 Azure](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)。
-* 如果你计划将云服务部署到关联组，请创建关联组。 可以使用关联组将你的云服务和其他 Azure 服务部署到某个区域中的同一位置。 你可以在 Azure 经典门户的“**网络**”区域中的“**地缘组**”页上创建地缘组。
+* 如果计划将云服务部署到关联组，请创建关联组。 可以使用关联组将云服务和其他 Azure 服务部署到某个区域中的同一位置。 可以在 Azure 经典门户的“**网络**”区域中的“**地缘组**”页上创建地缘组。
 
 ## <a name="how-to-create-a-cloud-service-using-quick-create"></a>如何：使用“快速创建”创建云服务
 1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中，单击“新建”>“计算”>“云服务”>“快速创建”。
    
     ![CloudServices_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 2. 在 **URL** 中，输入要在公用 URL 中使用的子域名称，以便在生产部署中访问云服务。 生产部署的 URL 格式为：http://*myURL*.cloudapp.net。
-3. 在“区域或地缘组”中，选择要在其中部署云服务的地理区域或地缘组。 若要将云服务和其他 Azure 服务部署到某个区域中的同一位置，请选择地缘组。
+3. 在“区域或地缘组”中，选择要在其中部署云服务的地理区域或地缘组。 要将云服务和其他 Azure 服务部署到某个区域中的同一位置，请选择地缘组。
 4. 单击“创建云服务” 。
    
     ![CloudServices_Region](./media/cloud-services-how-to-create-deploy/CloudServices_Regionlist.png)
@@ -82,7 +81,7 @@ Azure 经典门户提供两种创建和部署云服务的方法：**快速创建
     ![CloudServices_CloudServicesPage](./media/cloud-services-how-to-create-deploy/CloudServices_CloudServicesPage.png)
 
 ## <a name="how-to-upload-a-certificate-for-a-cloud-service"></a>如何：为云服务上传证书
-1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中单击“云服务”，单击云服务的名称，然后单击“证书”。
+1. 在 [Azure 经典门户](http://manage.windowsazure.com/)中单击“云服务”，单击云服务的名称，并单击“证书”。
    
     ![CloudServices_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
 2. 单击“上传证书”或“上传”。
@@ -113,7 +112,7 @@ Azure 经典门户提供两种创建和部署云服务的方法：**快速创建
    
     ![CloudServices_UploadProgress](./media/cloud-services-how-to-create-deploy/CloudServices_UploadProgress.png)
 
-## <a name="verify-your-deployment-completed-successfully"></a>验证确认你的部署已成功完成
+## <a name="verify-your-deployment-completed-successfully"></a>验证确认部署已成功完成
 1. 单击“仪表板”。
    
     该状态应该显示该服务“**正在运行**”。
@@ -127,5 +126,4 @@ Azure 经典门户提供两种创建和部署云服务的方法：**快速创建
 * 配置[自定义域名](cloud-services-custom-domain-name.md)。
 * [管理云服务](cloud-services-how-to-manage.md)。
 * 配置 [SSL 证书](cloud-services-configure-ssl-certificate.md)。
-
 

@@ -2,7 +2,7 @@
 
 ![独立云服务中的虚拟机](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
-如果将虚拟机放在虚拟网络中，可以决定要用于负载均衡和可用性集的云服务数量。 此外，可以采用与本地网络相同的方式，在子网上组织虚拟机，并将虚拟网络连接到本地网络。 下面是一个示例：
+如果将虚拟机放在虚拟网络中，可以决定用于负载均衡和可用性集的云服务数量。 此外，可以采用与本地网络相同的方式，在子网上组织虚拟机，并将虚拟网络连接到本地网络。 下面是一个示例：
 
 ![虚拟网络中的虚拟机](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 

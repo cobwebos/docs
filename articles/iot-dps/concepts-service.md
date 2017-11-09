@@ -5,21 +5,19 @@ services: iot-dps
 keywords: 
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 10/03/2017
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
+ms.openlocfilehash: 96c63e5d0379150ea619dbbe912a21e373f808af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 1a37f0753ab576aba9154e148b026b70877176f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
 IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式预配数百万台设备。
@@ -53,14 +51,14 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ### <a name="enrollment-group"></a>注册组
 
-注册组是一组共享特定证明机制的设备。 注册组中的所有设备都表示已由相同根 CA 签名的 X.509 证书。 注册组只能使用 X.509 证明机制。
+注册组是一组共享特定证明机制的设备。 注册组中的所有设备都表示已由相同根 CA 签名的 X.509 证书。 注册组只能使用 X.509 证明机制。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
 
 > [!TIP]
 > 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。
 
 ### <a name="individual-enrollment"></a>单独注册
 
-单独注册是用于可注册的单一设备的条目。 单独注册可使用 X.509 证书或 SAS 令牌（在真实或虚拟 TPM 中）作为证明机制。 单独注册可能会指定所需 IoT 中心设备 ID。
+单独注册是用于可注册的单一设备的条目。 单独注册可使用 X.509 证书或 SAS 令牌（在真实或虚拟 TPM 中）作为证明机制。 单独注册中的注册 ID 是小写的字母数字，并且可包含连字符。 单独注册可能会指定所需 IoT 中心设备 ID。
 
 > [!TIP]
 > 建议对需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备使用单独注册。
@@ -72,4 +70,3 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 ## <a name="operations"></a>操作
 
 操作是设备预配服务的计费单位。 成功完成到服务的一条指令即为一次操作。 操作包括设备注册和重新注册，还包括服务侧更改（例如添加注册列表条目和更新注册列表条目）。
-

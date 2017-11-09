@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 7963a07a2b9d529e89302f32e5ffd56c51687ffa
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库 (MSAL) 获取用于 Microsoft Graph API 的令牌
 
 1.  打开 `MainActivity`（在 `app` > `java` > `{domain}.{appname}` 下）
@@ -251,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
 `AcquireTokenSilentAsync` 处理令牌获取和续订，无需任何用户交互。 首次执行 `AcquireTokenAsync` 后，通常使用 `AcquireTokenSilentAsync` 方法获取用于访问受保护资源的令牌，以便进行后续调用 - 因为调用请求或续订令牌都以静默方式进行。
-`AcquireTokenSilentAsync` 最终将失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MsalUiRequiredException`。 应用程序可以通过两种方式处理此异常：
+`AcquireTokenSilentAsync` 最终会失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MsalUiRequiredException`。 应用程序可以通过两种方式处理此异常：
 
 1.  立即调用 `AcquireTokenAsync`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例使用此模式：首次执行示例时可以在操作中看到此模式：由于没有用户曾使用过此应用程序，因此 `PublicClientApp.Users.FirstOrDefault` 将包含一个 null 值，并且将引发 `MsalUiRequiredException` 异常。 此示例中的代码随后会处理此异常，方法是通过调用 `AcquireTokenAsync` 使其显示用户登录提示。
 2.  应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `AcquireTokenSilentAsync`。 对于用户能在应用程序不中断的情况下访问应用程序功能的情况，通常会使用此方法 - 例如，应用程序中有可用的脱机内容。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息，或在网络暂时不可用得到还原后，应用程序可以决定重试 `AcquireTokenSilentAsync`。
@@ -317,7 +316,7 @@ private void updateGraphUI(JSONObject graphResponse) {
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
-在此示例应用程序中，`callGraphAPI` 调用 `getAccessToken`，然后对需要令牌的资源发出 HTTP `GET` 请求并返回内容。 此方法可在 HTTP 授权标头中添加获取的令牌。 此示例中的资源是 Microsoft Graph API me 终结点 - 显示用户个人资料信息。
+在此示例应用程序中，`callGraphAPI` 调用 `getAccessToken`，对需要令牌的资源发出 HTTP `GET` 请求并返回内容。 此方法可在 HTTP 授权标头中添加获取的令牌。 此示例中的资源是 Microsoft Graph API me 终结点 - 显示用户个人资料信息。
 <!--end-collapse-->
 
 ## <a name="setup-sign-out"></a>安装注销
@@ -376,7 +375,6 @@ private void updateSignedOutUI() {
 <!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
-上面的 `onSignOutClicked` 删除 MSAL 用户缓存中的用户 - 这将有效地告知 MSAL 忘记当前用户，以便以后成功执行获取令牌的交互式请求。
+上面的 `onSignOutClicked` 删除 MSAL 用户缓存中的用户 - 这会有效地告知 MSAL 忘记当前用户，以便以后成功执行获取令牌的交互式请求。
 此示例中的应用程序支持单个用户，但 MSAL 也支持可同时注册多个帐户的方案（例如，用户可以在一个电子邮件应用程序包含多个帐户）。
 <!--end-collapse-->
-

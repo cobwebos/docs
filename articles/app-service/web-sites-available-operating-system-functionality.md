@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 931954e312b02c7a71acc7a3268b5ee3c0a11708
-ms.lasthandoff: 01/20/2017
-
-
+ms.openlocfilehash: 18ff5c81d0aa5e8a28ed8a11dad19811d2fa1d2c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
 
 <a id="tiers"></a>
 
-## <a name="app-service-plan-tiers"></a>App Service 计划层
+## <a name="app-service-plan-tiers"></a>应用服务计划层
 应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。
 
-由于应用服务支持不同层之间的无缝缩放体验，因此，为应用服务应用实施的安全配置将保持不变。 这可以确保 App Service 计划在切换不同的层时，应用不会突然发生行为上的变化，并且不会以意外的方式失败。
+由于应用服务支持不同层之间的无缝缩放体验，因此，为应用服务应用实施的安全配置将保持不变。 这可以确保应用服务计划在切换不同的层时，应用不会突然发生行为上的变化，并且不会以意外的方式失败。
 
 <a id="developmentframeworks"></a>
 
@@ -53,11 +52,11 @@ ms.lasthandoff: 01/20/2017
 <a id="NetworkDrives"></a>
 
 ### <a name="network-drives-aka-unc-shares"></a>网络驱动器（即 UNC 共享）
-应用服务中有一个独具特色的方面能够简化应用的部署和维护，这就是所有用户内容都存储在一组 UNC 共享中。 此模型非常好地映射到具有多个负载平衡服务器的本地 Web 托管环境所用内容存储的公共模式。 
+应用服务中有一个独具特色的方面能够简化应用的部署和维护，这就是所有用户内容都存储在一组 UNC 共享中。 此模型非常好地映射到具有多个负载均衡服务器的本地 Web 托管环境所用内容存储的公共模式。 
 
 在应用服务内，每个数据中心都创建了许多 UNC 共享。 在每个数据中心针对所有客户的某个百分比的用户内容将分配给各 UNC 共享。 此外，单个客户的订阅的所有文件内容将始终置于相同的 UNC 共享中。 
 
-请注意，由于云服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保将由不同虚拟机装入 UNC 共享，因为在正常云操作过程中它们将会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息将在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 *faux* 绝对路径 **D:\home\site**。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 **D:\home\site**，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径。
+请注意，由于云服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常云操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 *faux* 绝对路径 **D:\home\site**。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 **D:\home\site**，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径。
 
 <a id="TypesOfFileAccess"></a>
 
@@ -68,12 +67,12 @@ ms.lasthandoff: 01/20/2017
 
 说明应用服务如何使用临时本地存储的两个示例是针对临时 ASP.NET 文件的目录和针对 IIS 压缩文件的目录。 ASP.NET 编译系统使用“临时 ASP.NET 文件”目录作为临时编译缓存位置。 IIS 使用“IIS 临时压缩文件”目录存储压缩的响应输出。 在应用服务中，这两种类型的文件使用（以及其他使用）都重新映射到按应用临时本地存储。 此重新映射确保该功能按预期延续。
 
-应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为“应用程序池标识”，以下网页做了进一步的介绍：[http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但当你在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
+应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为“应用程序池标识”，以下网页做了进一步的介绍：[http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
 
 <a name="multipleinstances"></a>
 
 ### <a name="file-access-across-multiple-instances"></a>跨多个实例的文件访问
-主目录包含应用的内容，并且应用程序代码可以写入该目录。 如果应用在多个实例上运行，则主目录在所有实例间共享，以便所有实例都看到同一个目录。 所以，举例来说，如果应用将上载的文件保存到主目录，则所有实例都可以立即使用那些文件。 
+主目录包含应用的内容，并且应用程序代码可以写入该目录。 如果应用在多个实例上运行，则主目录在所有实例间共享，以便所有实例都看到同一个目录。 所以，举例来说，如果应用将上传的文件保存到主目录，则所有实例都可以立即使用那些文件。 
 
 <a id="NetworkAccess"></a>
 
@@ -116,9 +115,8 @@ ms.lasthandoff: 01/20/2017
 [Azure Web App sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)（Azure Web 应用沙盒）- 有关应用服务的执行环境的最新信息。 此页由应用服务开发团队直接维护。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
-
 
 

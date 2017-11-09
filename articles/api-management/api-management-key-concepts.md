@@ -3,7 +3,7 @@ title: "Azure API 管理概述和重要概念 | Microsoft 文档"
 description: "了解有关 API、产品、角色、组和其他 API 管理关键概念。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: e71da405-835a-48f3-956f-45c1a85698d7
@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 47358c6c209488d7a12e8afbf7a2d9b3f872f0de
-
+ms.openlocfilehash: becffc6011ef1dd49e07d22880d3346036629393
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。 所有企业都想要作为数字平台扩大其运营、创建新渠道、查找新客户和深化与现有的契合。 API 管理提供了核心能力，通过开发人员参与、商业洞察力、分析、安全和保护确保成功的 API 程序。
 
-观看以下视频，概要了解 Azure API 管理，并学习如何使用 API 管理将更多功能添加到 API，包括访问控制、速率限制、监视、事件日志记录和响应缓存，将你的工作量降至最低。
+观看以下视频，概要了解 Azure API 管理，并学习如何使用 API 管理将更多功能添加到 API，包括访问控制、速率限制、监视、事件日志记录和响应缓存，将工作量降至最低。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-API-Management-Overview/player]
 > 
 > 
 
-要使用 API 管理，管理员需要创建 API。 每个 API 包括一个或多个操作，并可以将每个 API 添加到一个或多个产品。 要使用的 API，开发人员需要订阅包含该 API 的产品，然后它们可以调用该 API 的操作，根据任何可能生效的使用情况策略。
+要使用 API 管理，管理员需要创建 API。 每个 API 包括一个或多个操作，并可以将每个 API 添加到一个或多个产品。 要使用的 API，开发人员需要订阅包含该 API 的产品，它们可以调用该 API 的操作，根据任何可能生效的使用情况策略。
 
 本主题概述了 API 管理的关键概念。
 
@@ -52,7 +53,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 有关详细信息，请参阅[如何创建 API][How to create APIs] 和[如何将操作添加到 API][How to add operations to an API]。
 
 ## <a name="products"> </a> 产品
-产品是如何将 API 提供给开发人员。 API 管理中的产品有一个或多个 API，并且配置为包含一个标题、说明和使用条款。 产品可以**公开**或**受保护**。 必须先订阅受保护的产品，然后才能使用它们，但公开的产品无需订阅即可使用。 产品可以发布时准备供开发人员使用。 产品一旦发布，开发人员就可以查看（如果是受保护的产品，应先进行订阅）。 在产品级别配置订阅批准，也可由管理员批准或被自动批准。
+产品是如何将 API 提供给开发人员。 API 管理中的产品有一个或多个 API，并且配置为包含一个标题、说明和使用条款。 产品可以**公开**或**受保护**。 必须先订阅受保护的产品，才能使用它们，但公开的产品无需订阅即可使用。 产品可以发布时准备供开发人员使用。 产品一旦发布，开发人员就可以查看（如果是受保护的产品，应先进行订阅）。 在产品级别配置订阅批准，也可由管理员批准或被自动批准。
 
 组用于管理产品对开发人员的可见性。 产品向组授予可见性，并且开发人员可以查看和订阅对他们所属的组可见的产品。 
 
@@ -66,7 +67,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 组用于管理产品对开发人员的可见性。 API 管理具有下列不可变的系统组。
 
 * **管理员** - Azure 订阅管理员是此组的成员。 管理员管理 API 管理服务实例、创建 API、操作，以及开发人员所使用的产品。
-* **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用你的 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
+* **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
 * **来宾** - 未经身份验证的开发人员门户用户，如访问此组中 API 管理实例的开发人员门户的潜在客户。 它们可以被授予某些只读访问权限，如能够查看 API，但不能调用它们。
 
 除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group)。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
@@ -96,9 +97,9 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 > 
 
 ## <a name="developer-portal"> </a> 开发人员门户
-开发人员门户是开发人员可以了解您的 API、视图和调用操作以及订阅产品的位置。 潜在客户可以访问开发人员门户，查看 API 和操作并注册。 你的开发人员门户的 URL 位于你的 API 管理服务实例的 Azure 经典门户中的仪表板上。
+开发人员门户是开发人员可以了解 API、视图和调用操作以及订阅产品的位置。 潜在客户可以访问开发人员门户，查看 API 和操作并注册。 开发人员门户的 URL 位于 API 管理服务实例的 Azure 经典门户中的仪表板上。
 
-您可以通过添加自定义内容、自定义样式并添加您的品牌定制开发人员门户的外观。
+可以通过添加自定义内容、自定义样式并添加品牌定制开发人员门户的外观。
 
 ## <a name="api-management-and-the-api-economy"></a>API 管理和 API 经济性
 若要了解有关 API 管理的更多信息，请观看以下来自 Microsoft Ignite 2015 大会的演示文稿。
@@ -126,11 +127,5 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 
-
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

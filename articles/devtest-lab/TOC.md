@@ -14,8 +14,9 @@
 # 操作指南
 ## 在实验室中使用 VM
 ### [创建 VM](devtest-lab-add-vm.md)
-### [创建可认领 VM](devtest-lab-add-claimable-vm.md)
+### [创建和管理可认领 VM](devtest-lab-add-claimable-vm.md)
 ### [使用 Azure CLI 创建和管理 VM](devtest-lab-vmcli.md)
+### [重新启动 VM](devtest-lab-restart-vm.md)
 
 ## 在实验室中使用环境
 ### [创建环境](devtest-lab-create-environment-from-arm.md)
@@ -28,6 +29,7 @@
 ### [设置策略和计划](devtest-lab-set-lab-policy.md)
 ### [配置成本管理](devtest-lab-configure-cost-management.md)
 ### [配置应用商店映像](devtest-lab-configure-marketplace-images.md)
+### [启用许可的映像](devtest-lab-enable-licensed-images.md)
 ### [将标记添加到实验室](devtest-lab-add-tag.md)
 
 ## [选择自定义映像或公式](devtest-lab-comparing-vm-base-image-types.md)

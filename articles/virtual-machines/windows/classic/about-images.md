@@ -15,16 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: d421cee0becabdf81d865036d0c98b12b077152b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-images-for-windows-virtual-machines"></a>关于 Windows 虚拟机的映像
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关在 Resource Manager 模型中查找和使用映像的信息，请参阅[此处](../../virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关在 Resource Manager 模型中查找和使用映像的信息，请参阅[此处](../../virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-classic-about-images](../../../../includes/virtual-machines-common-classic-about-images.md)]
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 03/27/2017
 
 下面是一些使用 Azure PowerShell 模块的示例。
 
-* **获取所有映像**：`Get-AzureVMImage`返回当前订阅中可用的所有映像的列表：你的映像以及 Azure 或合作伙伴提供的映像。 生成的列表可能较大。 下一个示例演示如何获取较短的列表。
+* **获取所有映像**：`Get-AzureVMImage`返回当前订阅中可用的所有映像的列表：映像以及 Azure 或合作伙伴提供的映像。 生成的列表可能较大。 下一个示例演示如何获取较短的列表。
 * **获取映像系列**：`Get-AzureVMImage | select ImageFamily` 通过显示 **ImageFamily** 字符串属性获取映像系列的列表。
 * **获取特定系列中的所有映像**：`Get-AzureVMImage | Where-Object {$_.ImageFamily -eq $family}`
 * **查找 VM 映像**：`Get-AzureVMImage | where {(gm –InputObject $_ -Name DataDiskConfigurations) -ne $null} | Select -Property Label, ImageName`此 cmdlet 通过筛选 DataDiskConfiguration 属性来完成，仅适用于 VM 映像。 此示例还仅根据标签和映像名称来筛选输出。
@@ -48,4 +47,3 @@ ms.lasthandoff: 03/27/2017
 
 ## <a name="next-steps"></a>后续步骤
 还可以[使用 Azure 门户创建 Windows 计算机](tutorial.md)。
-

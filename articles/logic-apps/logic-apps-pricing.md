@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: LADocs; klam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 10a2c7771d9d2ec57f3e57e1d6bb4f82c55aa7f1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/17/2017
-
+ms.openlocfilehash: 63784c5e3af360b2f3f8cb330a9df8b27a85d859
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
-Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面是有关逻辑应用的计费和定价计划的详细信息。
+使用 Azure 逻辑应用可以在云中缩放和执行集成工作流。  下面是有关逻辑应用的计费和定价计划的详细信息。
 ## <a name="consumption-pricing"></a>消耗量定价
 新创建的逻辑应用使用消耗量计划。 借助逻辑应用消耗量定价模型，只需为使用的部分付费。  使用消耗量计划时，逻辑应用不会受到限制。
 逻辑应用实例运行中执行的所有操作都按流量计费。
@@ -46,14 +45,14 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 
 ## <a name="app-service-plans"></a>应用服务计划
 以前创建的引用了某个应用服务计划的逻辑应用将继续像以前一样运行。 根据所选择的计划，在规定的每日执行后被限制，但是将使用操作执行计量表进行开单。
-如果 EA 客户的订阅中有不必与逻辑应用显式关联的应用服务计划，那么这些客户将会得到由包含的数量带来的好处。  例如，如果你的 EA 订阅中有一个标准应用服务计划并且在同一订阅中有一个逻辑应用，则每天有 10,000 次操作执行是免费的（请参阅下表）。 
+如果 EA 客户的订阅中有不必与逻辑应用显式关联的应用服务计划，那么这些客户会得到由包含的数量带来的好处。  例如，如果 EA 订阅中有一个标准应用服务计划并且在同一订阅中有一个逻辑应用，则每天有 10,000 次操作执行是免费的（请参阅下表）。 
 
 应用服务计划及其每日允许的操作执行次数：
 |  | 免费/共享/基本 | 标准 | 高级 |
 | --- | --- | --- | --- |
 | 每日操作执行次数 |200 |10,000 |50,000 |
 ### <a name="convert-from-app-service-plan-pricing-to-consumption"></a>从应用服务计划定价转换为消耗量
-若要将与应用服务计划关联的逻辑应用更改为消耗量模型，请在逻辑应用定义中删除对应用服务计划的引用。  可以通过调用一个 PowerShell cmdlet 来执行此更改：`Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`。
+要将与应用服务计划关联的逻辑应用更改为消耗量模型，请在逻辑应用定义中删除对应用服务计划的引用。  可以通过调用一个 PowerShell cmdlet 来执行此更改：`Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`。
 ## <a name="pricing"></a>定价
 有关定价详细信息，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
@@ -64,5 +63,4 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/
 [whatis]: logic-apps-what-are-logic-apps.md
 [create]: logic-apps-create-a-logic-app.md
-
 

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/29/2017
+ms.date: 11/01/2017
 ms.author: arramac
+ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 2073948d44ccc4b9b83e4eaf4f250dc272e46292
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 09/08/2017
 * 保证高可用性。
 * [自动编制辅助索引](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
 
-这些应用程序无需更改代码便可使用表 API 迁移到 Azure Cosmos DB，并可充分利用高级功能。
+这些应用程序无需更改代码便可使用表 API 迁移到 Azure Cosmos DB，并可充分利用高级功能。 表 API 适用于 .NET 和 Python。
 
 建议观看以下视频。在视频中，Aravind Ramachandran 介绍了适用于 Azure Cosmos DB 的表 API 的入门方法：
 
@@ -39,10 +38,10 @@ ms.lasthandoff: 09/08/2017
 > 
 > 
 
-## <a name="premium-and-standard-table-apis"></a>高级表 API 和标准表 API
-如果当前使用表存储，可以通过迁移到 Azure Cosmos DB 的“高级表”预览获得以下好处：
+## <a name="table-offerings"></a>表产品/服务
+如果当前使用 Azure 表存储，可以通过移到 Azure Cosmos DB 表 API（预览版）获得以下好处：
 
-| | Azure 表存储 | Azure Cosmos DB：表存储（预览版） |
+| | Azure 表存储 | Azure Cosmos DB 表 API（预览版） |
 | --- | --- | --- |
 | 延迟 | 快速，但对延迟没有上限。 | 读取操作和写入操作的低至个位数的毫秒级延迟（通过以下统计数据提供支持：在全球任何位置，对于任何规模，99% 的情况下读取操作的延迟 < 10 毫秒、写入操作的延迟 < 15 毫秒）。 |
 | 吞吐量 | 可变吞吐量模型。 表的可伸缩性限制为 20,000 个操作/秒。 | 使用 SLA 支持的[每个表专用保留吞吐量](request-units.md)实现高度可缩放。 帐户没有吞吐量上限，每个表支持 >1000 万个操作/秒。 |
@@ -64,5 +63,6 @@ ms.lasthandoff: 09/08/2017
 * [在 .NET 中使用表 API 进行开发](tutorial-develop-table-dotnet.md)
 * [使用表 API 查询表数据](tutorial-query-table.md)
 * [了解如何使用表 API 设置 Azure Cosmos DB 全局分发](tutorial-global-distribution-table.md)
-* [用于 .NET 的 Azure Cosmos DB 表 API SDK](table-sdk-dotnet.md)
+* [Azure Cosmos DB 表 .NET API](table-sdk-dotnet.md)
+* [用于 Python 的 Azure Cosmos DB 表 SDK](table-sdk-python.md)
 

@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
+ms.openlocfilehash: 76679ea0ff2c1e88d1923488717a245351437165
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 13feb95a24add7823feae9fe0abd89e59934255c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块，以及对 Azure 使用本机模块的指南。
@@ -54,7 +53,8 @@ Azure 应用服务不支持部分本机模块，并且在编译具有特定先�
 * 可以将 Azure 应用服务配置为在部署期间执行自定义 bash 或 shell 脚本，以便能够执行自定义命令并精确配置 **npm install** 的运行方式。 有关演示如何配置该环境的视频，请参阅[使用 Kudu 自定义网站部署脚本]。
 
 ### <a name="using-a-packagejson-file"></a>使用 package.json 文件
-可使用 package.json 文件来指定应用程序所需的顶级依赖项，以便托管平台能够安装这些依赖项，而不是要求在部署中包含 node\_packages 文件夹。 部署应用程序后，可使用 **npm install** 命令分析 **package.json** 文件并安装列出的所有依赖项。
+
+可使用 **package.json** 文件来指定应用程序所需的顶级依赖项，以便托管平台能够安装这些依赖项，而不是要求在部署中包含 **node\_modules** 文件夹。 部署应用程序后，可使用 **npm install** 命令分析 **package.json** 文件并安装列出的所有依赖项。
 
 在开发期间，可以在安装模块时使用 **--save**、**--save-dev** 或 **--save-optional** 参数，自动将模块条目添加到 **package.json** 文件中。 有关详细信息，请参阅 [npm-install](https://docs.npmjs.com/cli/install)。
 
@@ -91,4 +91,3 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 [指定 Node.js 版本]: nodejs-specify-node-version-azure-apps.md
 [如何使用适用于 Mac 和 Linux 的 Azure 命令行接口]:cli-install-nodejs.md
 [使用 Kudu 自定义网站部署脚本]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo
-

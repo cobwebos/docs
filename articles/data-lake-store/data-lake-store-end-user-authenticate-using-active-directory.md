@@ -6,32 +6,30 @@ documentationcenter:
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-ms.assetid: ec586ecd-1b42-459e-b600-fadbb7b80a9b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 09/29/2017
 ms.author: nitinme
+ms.openlocfilehash: 98898675b85d62c97a215f9922f1393001013943
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: f10bc67e4ee814d5aa0accff1a3dc1426b818084
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
-> * [服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)
 > * [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
+> * [服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 > 
 > 
 
 Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写用于 Azure Data Lake Store 或 Azure Data Lake Analytics 的应用程序之前，必须首先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。 可用的两个主要选项是：
 
 * 最终用户身份验证（本文所述）
-* 服务到服务身份验证
+* 服务到服务身份验证（从上面的下拉列表中选择此选项）
 
 这两个选项都会将 OAuth 2.0 令牌提供给应用程序，此令牌会附加到对 Azure Data Lake Store 或 Azure Data Lake Analytics 作出的每个请求。
 
@@ -48,8 +46,10 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
   
     ![获取 AAD 域](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
+* Azure 租户 ID。 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
+
 ## <a name="end-user-authentication"></a>最终用户身份验证
-若希望最终用户通过 Azure AD 登录到应用，则推荐此方式。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
+如果希望最终用户通过 Azure AD 登录到应用程序，则此身份验证机制是建议的方法。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
 
 让最终用户登录的结果是会向应用程序授予访问令牌和刷新令牌。 访问令牌会附加到对 Data Lake Store 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，默认情况下两周内有效。 可使用两种不同的最终用户登录方式。
 
@@ -64,8 +64,9 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 ### <a name="directly-passing-in-user-credentials"></a>直接传递用户凭据
 应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户，不适用于个人/“实时 ID”用户帐户，包括以 @outlook.com 或 @live.com 结尾的用户帐户。此外，此方法不适用于需要 Azure AD 双因素身份验证 (2FA) 的用户帐户。
 
-### <a name="what-do-i-need-to-use-this-approach"></a>使用此方式需要什么？
+### <a name="what-do-i-need-for-this-approach"></a>此方法需要什么？
 * Azure AD 域名。 此要求已在本文的先决条件中列出。
+* Azure AD 租户 ID。 此要求已在本文的先决条件中列出。
 * Azure AD **本机应用程序**
 * Azure AD 本机应用程序的应用程序 ID
 * Azure AD 本机应用程序的重定向 URI
@@ -84,7 +85,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 要检索 Azure AD 本机应用程序的应用程序 ID（也称为 Azure 经典门户中的客户端 ID），请参阅[获取应用程序 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 
-若要检索重定向 URI，请按照以下步骤进行操作。
+若要检索重定向 URI，请执行以下步骤。
 
 1. 从 Azure 门户中选择“Azure Active Directory”，单击“应用注册”，找到并单击已创建的 Azure AD 本机应用程序。
 
@@ -118,8 +119,8 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 ## <a name="next-steps"></a>后续步骤
 在本文中，创建了一个 Azure AD 本机应用程序，并使用 .NET SDK、Java SDK 和 REST API 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。
 
-* [Get started with Azure Data Lake Store using .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [通过 Java SDK 实现 Azure Data Lake Store 入门](data-lake-store-get-started-java-sdk.md)
-* [通过 REST API 实现 Azure Data Lake Store 入门](data-lake-store-get-started-rest-api.md)
-
+* [使用 Java SDK 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-java-sdk.md)
+* [使用 .NET SDK 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)
+* [使用 Python 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-python.md)
+* [使用 REST API 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)
 

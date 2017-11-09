@@ -29,22 +29,22 @@
       
       ![配置 StorSimple Adapter - 启用和禁用](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. 单击“更新”按钮以应用配置。 单击“更新”按钮时，所有 WFE 服务器上的 RBS 配置状态将会更新，整个服务器场将启用 RBS。 此时将显示以下消息。
+   4. 单击“更新”按钮以应用配置。 单击“更新”按钮时，所有 WFE 服务器上的 RBS 配置状态会更新，整个服务器场将启用 RBS。 此时会显示以下消息。
       
       ![适配器配置消息](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），SharePoint 管理中心网页可能会超时。 如果发生这种情况，请刷新页面。 这不会影响配置过程。
+      > 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），SharePoint 管理中心网页可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
 
 4. 验证配置：
    
-   1. 登录到 SharePoint 管理中心网站，然后浏览到“配置 StorSimple Adapter”页。
+   1. 登录到 SharePoint 管理中心网站，并浏览到“配置 StorSimple Adapter”页。
    2. 检查配置详细信息，确保与输入的设置一致。 
 5. 验证 RBS 是否正常工作：
    
-   1. 将一个文档上载到 SharePoint。 
-   2. 浏览到配置的 UNC 路径。 确保 RBS 目录结构已创建，并且其中包含上载的对象。
-6. （可选）可以使用 SharePoint 附带的 Microsoft RBS `Migrate()` PowerShell cmdlet，将现有 BLOB 内容迁移到 StorSimple 设备。 有关详细信息，请参阅 [Migrate content into or out of RBS in SharePoint 2013]（在 SharePoint 2013 中将内容移入或移出 RBS）[6] 或 [Migrate content into or out of RBS (SharePoint Foundation 2010)]（将内容移入或移出 RBS (SharePoint Foundation 2010)）[7]。
+   1. 将一个文档上传到 SharePoint。 
+   2. 浏览到配置的 UNC 路径。 确保 RBS 目录结构已创建，并且其中包含上传的对象。
+6. （可选）可以使用 SharePoint 附带的 Microsoft RBS `Migrate()` PowerShell cmdlet，将现有 BLOB 内容迁移到 StorSimple 设备。 有关详细信息，请参阅 [Migrate content into or out of RBS in SharePoint 2013][6]（在 SharePoint 2013 中将内容移入或移出 RBS）或 [Migrate content into or out of RBS (SharePoint Foundation 2010)][7]（将内容移入或移出 RBS (SharePoint Foundation 2010)）。
 7. （可选）进行测试安装时，可以验证是否已将 BLOB 移出内容数据库，如下所示： 
    
    1. 启动 SQL Management Studio。
@@ -91,7 +91,7 @@
         GO
       ```
       
-      如果 RBS 配置正确，任何已上载并通过 RBS 成功外部化的对象的 SizeOfContentInDB 列中会显示 NULL 值。
+      如果 RBS 配置正确，任何已上传并通过 RBS 成功外部化的对象的 SizeOfContentInDB 列中会显示 NULL 值。
 8. （可选）配置 RBS 并将所有 BLOB 内容转移到 Azure StorSimple 设备后，可将内容数据库转移到设备。 如果选择转移内容数据库，我们建议在设备上将内容数据库存储配置为主卷。 然后，根据制定的 SQL 迁移最佳实践，将内容数据库转移到 Azure StorSimple 设备。 
    
    > [!NOTE]

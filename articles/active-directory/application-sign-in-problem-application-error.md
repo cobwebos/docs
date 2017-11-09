@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: c04cfea4c6c0a8211db2579eccc0c05a93cc0a35
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: a8cd93256f79ece268ec3411dfbdf590f4b24447
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="error-on-an-applications-page-after-signing-in"></a>登录后应用程序的页面上出现错误
 
 在这种情况下，用户已登录到 Azure AD，但应用程序显示错误，使得用户无法成功完成登录流。 在这种情况下，应用程序不接受 Azure AD 作出的响应。
@@ -41,13 +39,13 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -77,13 +75,13 @@ ms.lasthandoff: 04/18/2017
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -105,13 +103,13 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -139,13 +137,13 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -159,4 +157,3 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 ## <a name="next-steps"></a>后续步骤
 [如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
+ms.openlocfilehash: 46037efe0e2c30337d76790c46c16e300bfffd5f
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 8c42c0046ccaa98c572134042fbbb7e883ef93c3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/03/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 08/03/2017
 
 * **跨区域地域冗余和地域存在**
 
-  * 你可以使用安全连接设置自己的异地复制或同步，而无需借助于面向 Internet 的终结点。
+  * 可以使用安全连接设置自己的异地复制或同步，而无需借助于面向 Internet 的终结点。
   * 使用 Azure 流量管理器和负载均衡器，可以设置支持跨多个 Azure 区域实现异地冗余的高可用性工作负荷。 一个重要的示例就是对分布在多个 Azure 区域中的可用性组设置 SQL Always On。
 * **具有隔离或管理边界的区域多层应用程序**
 
@@ -70,7 +69,7 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="before-you-begin"></a>开始之前
 
-在开始之前，需要安装最新版本的 Azure Resource Manager PowerShell cmdlet（4.0 或更高版本）。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+在开始之前，需要安装最新版本的 Azure 资源管理器 PowerShell cmdlet（4.0 或更高版本）。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 
@@ -197,7 +196,7 @@ ms.lasthandoff: 08/03/2017
 
 配置 TestVNet1 后，即可创建 TestVNet4。 遵循以下步骤，并根据需要替换为自己的值。 此步骤可在相同的 PowerShell 会话中完成，因为其位于相同的订阅中。
 
-1. 声明变量。 请务必将值替换为要用于配置的值。
+1. 声明变量。 请务必将值替换为用于配置的值。
 
   ```powershell
   $RG4 = "TestRG4"
@@ -312,7 +311,7 @@ ms.lasthandoff: 08/03/2017
 
 必须在新订阅环境中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
 
-1. 声明变量。 请务必将值替换为要用于配置的值。
+1. 声明变量。 请务必将值替换为用于配置的值。
 
   ```powershell
   $Sub5 = "Replace_With_the_New_Subcription_Name"
@@ -332,7 +331,7 @@ ms.lasthandoff: 08/03/2017
   $GWIPconfName5 = "gwipconf5"
   $Connection51 = "VNet5toVNet1"
   ```
-2. 连接到订阅 5。 打开 PowerShell 控制台并连接到你的帐户。 使用下面的示例来帮助你连接：
+2. 连接到订阅 5。 打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
 
   ```powershell
   Login-AzureRmAccount
@@ -452,6 +451,7 @@ ms.lasthandoff: 08/03/2017
   $vnet1gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
   $vnet1gw.Name = "VNet1GW"
   $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
+  $Connection51 = "VNet5toVNet1"
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
 

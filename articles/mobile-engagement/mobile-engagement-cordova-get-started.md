@@ -14,22 +14,21 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: d7a761310782faab1dda023785f93cf90742e2ae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-cordovaphonegap"></a>开始将 Azure Mobile Engagement 用于 Cordova/Phonegap
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，并向通过 Cordova 开发的移动应用程序的分类用户发送推送通知。
 
-本教程将使用 Mac 创建一个空的 Cordova 应用，然后集成 Mobile Engagement SDK。 本教程通过用于 iOS 的 Apple Push Notification 系统 (APNS) 以及用于 Android 的 Google Cloud Messaging (GCM) 收集基本的分析数据并接收通知。 这两个系统将部署到 iOS 或 Android 设备进行测试。 
+本教程会使用 Mac 创建一个空的 Cordova 应用，然后集成 Mobile Engagement SDK。 本教程通过用于 iOS 的 Apple Push Notification 系统 (APNS) 以及用于 Android 的 Google Cloud Messaging (GCM) 收集基本的分析数据并接收通知。 这两个系统将部署到 iOS 或 Android 设备进行测试。 
 
 > [!NOTE]
-> 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)。
 > 
 > 
 
@@ -117,17 +116,17 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
         [Engagement] Connection: Sent: startSession
         [Engagement] Connection: Sent: activity name='myPage'
 
-## <a id="monitor"></a>将应用与实时监视相连
+## <a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ## <a id="integrate-push"></a>启用推送通知和应用内消息传送
 进行营销活动时，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与用户交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
-以下部分会将应用设置为接收此类通知和消息。
+以下各部分介绍如何设置应用以接收推送通知。
 
 ### <a name="configure-push-credentials-for-mobile-engagement"></a>为 Mobile Engagement 配置推送凭据
 若要让 Mobile Engagement 代表用户发送推送通知，需授予其访问用户 Apple iOS 证书或 GCM 服务器 API 密钥的权限。 
 
-1. 导航到 Mobile Engagement 门户。 确保所在位置为本项目所用应用内，然后单击底部的“参与”按钮： 
+1. 导航到 Mobile Engagement 门户。 确保所在位置为本项目所用应用内，并单击底部的“参与”按钮： 
    
     ![][1]
 2. 用户将位于 Engagement 门户的设置页中。 在该处单击“原生推送”部分： 
@@ -137,13 +136,13 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
    
     **[iOS]**
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 p12、上传，然后键入密码：
+    a. 选择 p12、上传，并键入密码：
    
     ![][3]
    
     **[Android]**
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“GCM 设置”部分中“API 密钥”前面的编辑图标，然后在显示的弹出窗口中粘贴 GCM 服务器密钥，并单击“确定”。 
+    a. 单击“GCM 设置”部分中“API 密钥”前面的编辑图标，在显示的弹出窗口中粘贴 GCM 服务器密钥，并单击“确定”。 
    
     ![][4]
 
@@ -162,8 +161,8 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
 ### <a name="run-the-app"></a>运行应用程序
 **[iOS]**
 
-1. 为了测试推送通知，需使用 XCode 生成应用并将其部署到设备上，因为 iOS 只允许将通知推送到实际设备上。 转到创建 Cordova 项目的位置，然后导航到 **...\platforms\ios** 位置。 在 XCode 中打开本机 .xcodeproj 文件。 
-2. 使用帐户和应用 ID 生成 Cordova 应用并将其部署到 iOS 设备，其中，帐户的预配配置文件包含的证书刚上载到 Mobile Engagement 门户，应用 ID 则与创建 Cordova 应用时提供的应用 ID 一致。 可在 XCode 中查看 **Resources\*-info.plist** 文件中的 Bundle 标识符，确保其一致。 
+1. 为了测试推送通知，需使用 XCode 生成应用并将其部署到设备上，因为 iOS 只允许将通知推送到实际设备上。 转到创建 Cordova 项目的位置，并导航到 **...\platforms\ios** 位置。 在 XCode 中打开本机 .xcodeproj 文件。 
+2. 使用帐户和应用 ID 生成 Cordova 应用并将其部署到 iOS 设备，其中，帐户的预配配置文件包含的证书刚上传到 Mobile Engagement 门户，应用 ID 则与创建 Cordova 应用时提供的应用 ID 一致。 可在 XCode 中查看 **Resources\*-info.plist** 文件中的 Bundle 标识符，确保其一致。 
 3. 此时会在设备上显示标准的 iOS 弹出窗口，指出该应用请求发送通知的权限。 授予权限。 
 
 **[Android]**
@@ -196,11 +195,11 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
    * 提供通知的“消息”，作为消息正文。 
      
      ![][12]
-5. 向下滚动，然后在内容部分中选择“仅通知” 
+5. 向下滚动，并在内容部分中选择“仅通知” 
    
     ![][8]
 6. [可选] 也可提供操作 URL。 确保在配置插件的 **AZME\_REDIRECT\_URL** 变量时，使用所提供的 URL 方案，例如，*myapp://test*。  
-7. 已设置完可能情况下最基本的市场活动。 现在再次向下滚动，然后单击“创建”  按钮保存市场活动。
+7. 已设置完可能情况下最基本的市场活动。 现在再次向下滚动，并单击“创建”  按钮保存市场活动。
 8. 最后是“激活”活动 
    
     ![][10]
@@ -220,5 +219,4 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
 [10]: ./media/mobile-engagement-cordova-get-started/campaign-activate.png
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
-
 

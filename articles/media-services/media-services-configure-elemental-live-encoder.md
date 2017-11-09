@@ -14,12 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: bb4966cbd2af7a14caeac108a001b0820a67d2a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/11/2017
-
+ms.openlocfilehash: 668a3ab46a70c0ee25fa87031d27c0f4333ec89c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Elemental Live 编码器发送单比特率实时流
 > [!div class="op_single_selector"]
@@ -39,7 +38,7 @@ ms.lasthandoff: 01/11/2017
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
-* 启动该工具并连接到你的 AMS 帐户。
+* 启动该工具并连接到 AMS 帐户。
 
 ## <a name="tips"></a>提示
 * 尽可能使用硬编码的 Internet 连接。
@@ -51,7 +50,7 @@ ms.lasthandoff: 01/11/2017
 
 ### <a name="create-a-channel"></a>创建频道
 
-1. 在 AMSE 工具中，导航到“实时”选项卡，然后右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
+1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental1.png)
 
@@ -95,7 +94,7 @@ ms.lasthandoff: 01/11/2017
 #### <a name="configuration-steps"></a>配置步骤
 1. 导航到 **Elemental Live** Web 界面，针对 **UDP/TS** 流式处理设置编码器。
 2. 一旦创建新的事件，即可向下滚动到输出组并添加 **UDP/TS** 输出组。
-3. 创建新的输出时，可先选择“新建流”，然后单击“添加输出”。  
+3. 创建新的输出时，方法是选择“新建流”，然后单击“添加输出”。  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental13.png)
 
@@ -130,7 +129,7 @@ ms.lasthandoff: 01/11/2017
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental14.png)
 
     为了实现额外的冗余，可对“辅助输入 URL”重复这些步骤，为 UDP/TS 流式处理创建一个单独的“输出”选项卡。
-3. 单击“创建”（如果已创建新事件）或“更新”（如果要编辑现有事件），然后开始启动编码器。
+3. 单击“创建”（如果已创建新事件）或“更新”（如果要编辑现有事件），并开始启动编码器。
 
 > [!IMPORTANT]
 > 在 Elemental Live Web 界面上单击“启动”之前，**必须**确保频道已就绪。
@@ -142,7 +141,7 @@ ms.lasthandoff: 01/11/2017
 
 ### <a name="test-playback"></a>测试播放
 
-导航回 AMSE 工具，然后右键单击要测试的频道。 在菜单中，将鼠标悬停在“播放预览”上方，然后选择“使用 Azure 媒体播放器”。  
+导航回 AMSE 工具，并右键单击要测试的频道。 在菜单中，将鼠标悬停在“播放预览”上方，然后选择“使用 Azure 媒体播放器”。  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
 
@@ -151,17 +150,17 @@ ms.lasthandoff: 01/11/2017
 如果收到错误，则需重置频道并调整编码器设置。 请参阅[故障排除](media-services-troubleshooting-live-streaming.md)主题以获取相关指导。   
 
 ### <a name="create-a-program"></a>创建节目
-1. 一旦确认频道可以播放，则可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，然后选择“创建新节目”。  
+1. 一旦确认频道可以播放，则可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental9.png)
-2. 为节目命名，然后根据需要调整“存档时段长度”（默认为 4 小时）。 你还可以指定存储位置，也可以将其保留为默认值。  
+2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”框。
 4. 单击“创建节目”。  
 
     >[!NOTE]
     > 创建节目需要的时间比创建频道需要的时间少。   
       
-5. 可以运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，然后选择“使用 Azure Media Player”。  
+5. 可以运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，并选择“使用 Azure Media Player”。  
 6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（也可通过菜单从“节目信息和设置”选项检索此信息）。
 
 现在可以将流嵌入到播放器中，也可将其分发给受众进行实时观看。  
@@ -174,4 +173,3 @@ ms.lasthandoff: 01/11/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -15,12 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
+ms.openlocfilehash: 85e24587f07a4dc65a2f116499f3f7e00c3ac2b8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1390ba45f52473129dce6b904690b040af8f7e2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-azure-ad-directory"></a>管理 Azure AD 目录
 
@@ -37,7 +36,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 * Microsoft Dynamics CRM Online
 * Microsoft Intune
 
-注册其中任何一个 Microsoft 云服务便会获得一个 Azure AD 目录。 可根据需要创建更多的目录。 例如，可以将第一个目录保留为生产目录，然后创建另一个目录进行测试或过渡。
+注册其中任何一个 Microsoft 云服务便会获得一个 Azure AD 目录。 可根据需要创建更多的目录。 例如，可以将第一个目录保留为生产目录，并创建另一个目录进行测试或过渡。
 
 ### <a name="using-the-azure-ad-directory-that-comes-with-a-new-azure-subscription"></a>使用附带新 Azure 订阅的 Azure AD 目录
 
@@ -59,12 +58,14 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 
 ### <a name="how-to-change-the-default-directory-for-a-subscription"></a>如何更改订阅的默认目录
 
-1. 使用作为订阅的“帐户管理员”的帐户登录到 [Azure 帐户中心](https://account.windowsazure.com/Home/Index)以转让订阅所有权。
+1. 使用作为订阅的“帐户管理员”的帐户登录到 [Azure 帐户中心](https://account.azure.com/Subscriptions)以转让订阅所有权。
 2. 确保需要让其成为订阅所有者的用户位于目标目录中。
 3. 单击“转让订阅”。
 4. 指定接收方。 接收方会自动收到含有接受链接的电子邮件。
 5. 接收方单击该链接并遵照说明操作，包括输入他们的付款信息。 接收方成功后，订阅将转让。 
 6. 如果订阅所有权转让成功，则订阅的默认目录会更改为该用户所在的目录。
+
+若要了解详细信息，请参阅[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
 
 ### <a name="manage-the-default-directory-in-azure"></a>管理 Azure 中的默认目录
 注册 Azure 时，默认的 Azure AD 目录会与订阅相关联。 Azure AD 没有使用费用，目录是免费资源。 有单独进行许可的付费 Azure AD 服务，此类服务提供更多的功能，例如在登录时显示公司品牌，以及自助式密码重置。 也可创建自定义域，使用自己拥有的 DNS 名称，代替默认的 *.onmicrosoft.com 域。
@@ -121,4 +122,3 @@ Azure AD 要求删除目录之前必须符合特定的条件。 这可以降低�
 * [Stack Overflow for Azure 问题](http://stackoverflow.com/questions/tagged/azure)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)
-

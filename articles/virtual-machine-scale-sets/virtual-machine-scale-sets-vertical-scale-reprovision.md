@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: guybo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: 9159a5a9041864fe06785829121233379c46bb03
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关 VM 的垂直缩放（规模集中不存在），请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 垂直缩放，也称为增加和减少，即增加或减少虚拟机 (VM) 大小，以响应工作负荷。 将此与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为扩大和缩小，其中 VM 数目的更改取决于工作负荷）进行比较。
 
-重新设置意味着删除现有 VM 并将其替换为新的 VM。 增加或减少 VM 规模集中 VM 的大小时，某些情况下您想要调整现有 VM 的大小并保留数据，尽管在其他情况下您需要部署新 VM 的新大小。 本文档介绍这两种情况。
+重新设置意味着删除现有 VM 并将其替换为新的 VM。 增加或减少 VM 规模集中 VM 的大小时，某些情况下要调整现有 VM 的大小并保留数据，尽管在其他情况下需要部署新 VM 的新大小。 本文档介绍这两种情况。
 
 以下情况下，垂直缩放非常有用：
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 03/31/2017
 可将垂直缩放设置为基于 VM 规模集的警报根据指标触发。 警报被激活时，将开启 Webhook，此 Webhook 将触发可对规模集进行增加或减少的 Runbook。 可通过以下步骤配置垂直缩放：
 
 1. 使用运行时功能创建 Azure 自动化帐户。
-2. 将 VM 规模集的 Azure 自动化垂直缩放 Runbook 导入您的订阅中。
+2. 将 VM 规模集的 Azure 自动化垂直缩放 Runbook 导入订阅中。
 3. 将 Webhook 添加到 Runbook。
 4. 将警报添加到使用 Webhook 通知的 VM 规模集。
 
@@ -61,7 +60,7 @@ ms.lasthandoff: 03/31/2017
 * [Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>将 Azure 自动化垂直缩放 Runbook 导入到订阅中
-需要垂直缩放 VM 规模集的 Runbook 已在 Azure 自动化 Runbook 库中发布。 若要将其导入到订阅中，请按照这篇文章中的步骤进行操作：
+需要垂直缩放 VM 规模集的 Runbook 已在 Azure 自动化 Runbook 库中发布。 要将其导入到订阅中，请按照这篇文章中的步骤进行操作：
 
 * [Azure 自动化的 Runbook 和模块库](../automation/automation-runbook-gallery.md)
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 03/31/2017
 
 ![要导入的 Runbook][runbooks]
 
-显示需要导入的 Runbook。 根据您是否希望垂直缩放（使用或不使用重新设置），选择 Runbook：
+显示需要导入的 Runbook。 根据是否希望垂直缩放（使用或不使用重新设置），选择 Runbook：
 
 ![Runbook 库][gallery]
 
@@ -123,8 +122,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 * [Azure 监视器跨平台 CLI 快速入门示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 
 ## <a name="summary"></a>摘要
-本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，您可以使用一组自定义操作连接各种事件。
+本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png
-

@@ -12,26 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f231252c222c5520d0a66f9b40749bd203545f16
-ms.openlocfilehash: 44ee1e58b65b23eeb3fa3710fcb29a1646d5f3ad
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: ff75a7e50142888e4cff4acd40bbdbee31c0e29d
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>启用 Azure Active Directory Identity Protection
-Azure Active Directory Identity Protection 是一项新功能，提供的统一视图包含了可疑登录活动和潜在漏洞以及通知、修补建议和基于风险的策略，帮助保护你的业务。 
+Azure Active Directory Identity Protection 是一项新功能，提供的统一视图包含了可疑登录活动和潜在漏洞以及通知、修补建议和基于风险的策略，帮助保护业务。 
 
 该服务基于诸如暴力攻击、泄漏凭据，以及从陌生位置和受感染设备登录等信号，检测最终用户和特权（管理）标识的可疑活动，来实时抵御这些活动的威胁。 更重要的是，基于这些可疑活动，会计算用户风险严重性、可以配置基于风险的策略以及自动保护组织的标识。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](active-directory-identityprotection.md)。
 
-本主题将介绍如何启用 Azure Active Directory Identity Protection。
+本主题介绍如何启用 Azure Active Directory Identity Protection。
 
 ## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>启用 Azure Active Directory Identity Protection 的步骤
 1. 以全局管理员身份[登录](https://ms.portal.azure.com/)到 Azure 门户。 
-2. 在 Azure 门户中，单击“Marketplace”。
+2. 在 Azure 门户中，单击“应用商店”。
    
     ![创建](./media/active-directory-identityprotection-enable/01.png "创建")
 3. 在应用程序列表中，单击“安全性 + 标识”。
@@ -46,5 +45,4 @@ Azure Active Directory Identity Protection 是一项新功能，提供的统一�
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

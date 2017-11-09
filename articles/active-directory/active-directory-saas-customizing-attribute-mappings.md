@@ -1,6 +1,6 @@
 ---
 title: "自定义 Azure AD 属性映射 | Microsoft Docs"
-description: "了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足你的业务需求。"
+description: "了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,22 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 6ca2fdc9c68ea0030d938eeaebd57aafa0e2790f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: 6921ca86efeea9d1255bb2d1773f55daa48b9b4a
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
-Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已启用了针对第三方 SaaS 应用程序的用户预配，则 Azure 管理门户将以称作“属性映射”的配置形式控制其属性值。
+Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已启用了针对第三方 SaaS 应用程序的用户预配，则 Azure 管理门户以称作“属性映射”的配置形式控制其属性值。
 
 在 Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配置的一组属性映射。 某些应用可管理其他类型的对象，例如“组”或“联系人”。 <br> 
- 可以根据业务需求自定义默认的属性映射。 这意味着，你可以更改或删除现有属性映射或者创建新的属性映射。
+ 可以根据业务需求自定义默认的属性映射。 这意味着，可以更改或删除现有属性映射或者创建新的属性映射。
 
 在 Azure AD 门户中，可在“企业应用程序”的“管理”部分，通过单击“预配”下的“映射”配置来访问此功能。
 
@@ -53,10 +51,10 @@ SaaS 应用程序需要执行一些属性映射才能正确运行。 对于必�
 使用属性映射，可以控制如何在第三方 SaaS 应用程序中填充属性。 支持四种不同的映射类型：
 
 * **直接** – 目标属性由 Azure AD 中的链接对象的属性值填充。
-* **常量** – 目标属性由你指定的一个特定字符串填充。
+* **常量** - 目标属性使用已指定的特定字符串填充。
 * **表达式** - 目标属性是基于脚本式表达式的结果填充的。 
   有关详细信息，请参阅[在 Azure Active Directory 中编写属性映射的表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)。
-* **无** - 目标属性保持不变。 不过，如果目标属性曾经为空，则它将由你指定的默认值填充。
+* **无** - 目标属性保持不变。 不过，如果目标属性曾经为空，则它由你指定的默认值填充。
 
 除了这四个基本属性映射类型之外，自定义属性映射还支持可选的默认值赋值概念。 默认值赋值确保当 Azure AD 中和目标对象中都没有值时使用某个值填充目标属性。 最常见的配置是将此项留空。
 
@@ -97,5 +95,4 @@ Microsoft Azure AD 提供了一个有效的同步进程实现。 在初始化环
 [5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png
 [6]: ./media/active-directory-saas-customizing-attribute-mappings/22.png
 [7]: ./media/active-directory-saas-customizing-attribute-mappings/23.png
-
 

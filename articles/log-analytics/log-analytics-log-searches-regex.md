@@ -11,16 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 10/11/2017
 ms.author: bwren
+ms.openlocfilehash: 28b2402cefa38ef3bfca68f2ff70e56b649c72f5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 9746170f157ed5065adc953a31687ff18bd73708
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>在 Log Analytics 中使用正则表达式筛选日志搜索结果
+
+>[!NOTE]
+> 本文介绍 Log Analytics 中使用旧查询语言的正则表达式。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[语言文档中的正则表达式](https://docs.loganalytics.io/docs/Language-Reference/References/Regular-Expressions-syntax)。
+
 
 可以通过[日志搜索](log-analytics-log-searches.md)从 Log Analytics 存储库提取信息。  可以通过[筛选表达式](log-analytics-search-reference.md#filter-expressions)按特定条件筛选搜索结果。  可以使用 **RegEx** 关键字为该筛选器指定正则表达式。  
 
@@ -99,4 +102,3 @@ ms.lasthandoff: 08/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 * 熟悉[日志搜索](log-analytics-log-searches.md)，以便查看和分析 Log Analytics 存储库中的数据。
-

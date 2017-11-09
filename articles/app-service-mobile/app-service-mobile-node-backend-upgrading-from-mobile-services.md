@@ -14,12 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 879854c4afc6fa5ac31f8e18dad0164e77f190cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.openlocfilehash: 5fc61fed674f0d2fc64bc29c064e7e872b4f2e68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -39,13 +38,13 @@ ms.lasthandoff: 12/08/2016
 ### <a name="improvements-in-mobile-apps-nodejs-server-sdk"></a>移动应用 Node.js 服务器 SDK 改进
 升级到新版[移动应用 SDK](https://www.npmjs.com/package/azure-mobile-apps) 可获得许多改进，包括：
 
-* 新的轻量型 Node SDK 基于 [Express 框架](http://expressjs.com/en/index.html)，与新推出的 Node 版本功能保持一致。 可以使用 Express 中间件自定义应用程序行为。
+* 新的轻量型 Node SDK 基于 [Express 框架](http://expressjs.com/en/index.html)，与新推出的 Node 版本功能保持一致。可以使用 Express 中间件自定义应用程序行为。
 * 移动服务 SDK 相比，性能有明显改进。
 * 现在，可以将网站与移动后端托管在一起；同样，可以很轻松地将 Azure 移动 SDK 添加到任何现有 express.v4 应用程序。
 * 移动应用 SDK 为跨平台和本地开发而构建，可以在 Windows、Linux 和 OSX 平台上本地开发与运行。 现在，可以方便地使用常见的 Node 开发技术，例如，在部署之前运行 [Mocha](https://mochajs.org/) 测试。
 
 ## <a name="overview"></a>基本升级概述
-为了帮助升级 Node.js 后端，Azure 应用服务提供了兼容包。  升级后，将会获得可部署到新应用服务站点的全新站点。
+为了帮助升级 Node.js 后端，Azure 应用服务提供了兼容包。  升级后，会获得可部署到新应用服务站点的全新站点。
 
 移动服务客户端 SDK 与新的移动应用服务器 SDK **不**兼容。 为了提供应用程序的服务连续性，不应该将更改发布到当前正在为发布的客户端提供服务的站点。 而应该创建新的移动应用作为副本。 可以在同一个应用服务计划中放置此应用程序，以免产生额外的财务成本。
 
@@ -62,7 +61,7 @@ ms.lasthandoff: 12/08/2016
 
 当已迁移的原始移动服务没有任何流量时即可删除。
 
-## <a name="install-npm-package"></a>安装必备组件
+## <a name="install-npm-package"></a> 安装必备组件
 应在本地计算机上安装 [Node]。  还应安装兼容包。  安装 Node 后，可以从新的 cmd 或 PowerShell 命令提示符运行以下命令：
 
 ```npm i -g azure-mobile-apps-compatibility```
@@ -75,14 +74,14 @@ ms.lasthandoff: 12/08/2016
 * 依次单击每个目录导航到 `site/wwwroot/App_Data/config`
 * 单击 `scripts` 目录旁边的下载图标。
 
-随后将下载 ZIP 格式的脚本。  在本地计算机上创建新目录，然后在该目录中解压缩 `scripts.ZIP` 文件。  此时会创建 `scripts` 目录。
+随后将下载 ZIP 格式的脚本。  在本地计算机上创建新目录，并在该目录中解压缩 `scripts.ZIP` 文件。  此时会创建 `scripts` 目录。
 
-## <a name="scaffold-app"></a>创建新 Azure 移动应用后端的基架
+## <a name="scaffold-app"></a>搭建新的 Azure 移动应用后端基架
 从包含脚本目录的目录运行以下命令：
 
 ```scaffold-mobile-app scripts out```
 
-此时将在 `out` 目录中创建带有基架的 Azure 移动应用后端。  最好将 `out` 目录签入所选的源代码存储库（但不一定要这样做）。
+此时会在 `out` 目录中创建带有基架的 Azure 移动应用后端。  最好将 `out` 目录签入所选的源代码存储库（但不一定要这样做）。
 
 ## <a name="deploy-ama-app"></a>部署 Azure 移动应用后端
 在部署期间，需要执行以下操作：
@@ -95,11 +94,11 @@ ms.lasthandoff: 12/08/2016
 
 ### <a name="create-a-new-mobile-app"></a>创建新的移动应用
 1. 在 [Azure 门户]登录。
-2. 单击“+新建” > “Web + 移动” > “移动应用”，然后提供移动应用后端名称。
+2. 单击“+新建” > “Web + 移动” > “移动应用”，并提供移动应用后端名称。
 3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。）
 
-    可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure App Service 计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
-4. 对于“应用服务计划”，请选择默认计划（位于[标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
+    可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
+4. 对于“应用服务计划”，请选择默认计划（位于 [标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
 
     做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。
 
@@ -115,8 +114,8 @@ ms.lasthandoff: 12/08/2016
 * 选择“所有设置” -> “数据连接”。
 * 单击**“+ 添加”**。
 * 在下拉列表中，选择“SQL 数据库”
-* 在“SQL 数据库”下选择现有数据库，然后单击“选择”。
-* 在“连接字符串”下，输入数据库的用户名和密码，然后单击“确定”。
+* 在“SQL 数据库”下选择现有数据库，并单击“选择”。
+* 在“连接字符串”下，输入数据库的用户名和密码，并单击“确定”。
 * 在“添加数据连接”边栏选项卡中，单击“确定”。
 
 查看已迁移的移动服务中目标数据库的连接字符串，即可找到用户名和密码。
@@ -125,7 +124,7 @@ ms.lasthandoff: 12/08/2016
 Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、Google、Microsoft 和 Twitter 身份验证。  自定义身份验证需要另行开发。  有关详细信息，请参阅[身份验证概念]文档和[身份验证快速入门]文档。  
 
 ## <a name="updating-clients"></a>更新移动客户端
-在获得可正常运行的移动应用后端之后，可以在使用它的新版客户端应用程序上操作。 移动应用还包含新版客户端 SDK。与上述的服务器升级类似，需先删除所有对移动服务 SDK 的引用，然后再安装移动应用版本。
+在获得可正常运行的移动应用后端之后，可以在使用它的新版客户端应用程序上操作。 移动应用还包含新版客户端 SDK。与上述的服务器升级类似，需先删除所有对移动服务 SDK 的引用，再安装移动应用版本。
 
 版本间的其中一个主要更改是构造函数不再需要应用程序密钥。
 现在只需传入移动应用的 URL。 例如，在 .NET 客户端中，`MobileServiceClient` 构造函数现在是：
@@ -156,7 +155,7 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 [Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /en-us/documentation/services/scheduler/
-[Web Job]: ../app-service-web/websites-webjobs-resources.md
+[Web Job]: https://github.com/Azure/azure-webjobs-sdk/wiki
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
@@ -178,4 +177,3 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 [Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
-

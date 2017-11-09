@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 4fb13a158c660105a5fc8f79a92c67ba65c5356d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk 服务：颁发者名称和颁发者密钥
 
@@ -39,7 +37,7 @@ Azure BizTalk 服务使用 Service Bus 颁发者名称和颁发者密钥以及 A
 ## <a name="access-control-issuer-name-and-issuer-key"></a>Access Control 颁发者名称和颁发者密钥
 Access Control 颁发者名称和颁发者密钥由以下各项使用：
 
-* 在 Visual Studio 中创建的 Azure BizTalk 服务应用程序：若要在 Visual Studio 中成功将 BizTalk 服务应用程序部署到 Azure，请输入访问控制颁发者名称和颁发者密钥。 
+* 在 Visual Studio 中创建的 Azure BizTalk 服务应用程序：要在 Visual Studio 中成功将 BizTalk 服务应用程序部署到 Azure，请输入访问控制颁发者名称和颁发者密钥。 
 * Azure BizTalk 服务门户：创建 BizTalk 服务并打开 BizTalk 服务门户时，会使用相同的访问控制值对访问控制颁发者名称和颁发者密钥自动注册部署。
 
 ### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>获取访问控制颁发者名称和颁发者密钥
@@ -52,7 +50,7 @@ Access Control 颁发者名称和颁发者密钥由以下各项使用：
 4. 选择订阅：`select-azuresubscription <name of your subscription>` 
 5. 创建新的命名空间：`new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging`
 
-    示例：   `new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
+    示例：`new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
       
 5. 创建新 ACS 命名空间时（这可能需要几分钟），会在连接字符串中列出颁发者名称和颁发者密钥值： 
 
@@ -75,7 +73,7 @@ Access Control 颁发者名称和颁发者密钥由以下各项使用：
 在 [New-azuresbnamespace](https://msdn.microsoft.com/library/dn495165.aspx) cmdlet 中了解详细信息。 
 
 ## <a name="service-bus-issuer-name-and-issuer-key"></a>Service Bus 颁发者名称和颁发者密钥
-Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用。 在 Visual Studio 中的 BizTalk 服务项目中，使用 BizTalk 适配器服务连接到本地业务线 (LOB) 系统。 若要连接，请创建 LOB 中继并输入 LOB 系统的详细信息。 在执行此操作时，你还可以输入 Service Bus 颁发者名称和颁发者密钥。
+Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用。 在 Visual Studio 中的 BizTalk 服务项目中，使用 BizTalk 适配器服务连接到本地业务线 (LOB) 系统。 若要连接，请创建 LOB 中继并输入 LOB 系统的详细信息。 在执行此操作时，还可以输入 Service Bus 颁发者名称和颁发者密钥。
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>检索 Service Bus 颁发者名称和颁发者密钥
 1. 登录到 [Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
@@ -102,5 +100,4 @@ Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用�
 * [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk 服务：备份和还原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk 服务：限制](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-
 

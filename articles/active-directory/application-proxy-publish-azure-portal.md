@@ -15,15 +15,12 @@ ms.date: 07/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: e00a939f2b20ab8e0a2ddf0ff91e59db440213ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布应用程序
 
 > [!div class="op_single_selector"]
@@ -106,4 +103,3 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 - [下载连接器](active-directory-application-proxy-enable.md)并[创建连接器组](active-directory-application-proxy-connectors-azure-portal.md)，以便将应用程序发布到单独的网络和位置。
 
 - 为新发布的应用[设置单一登录](application-proxy-sso-azure-portal.md)
-

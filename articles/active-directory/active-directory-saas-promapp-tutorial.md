@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 10/17/2017
 ms.author: jeedes
+ms.openlocfilehash: a9cd70b048d454009d8741f394fed0b6b93fcab7
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 27013ca9724cf2f57fc85f5f4ccb71921ca57a3b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>教程：Azure Active Directory 与 Promapp 的集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-promapp-from-the-gallery"></a>从库中添加 Promapp
-若要配置 Promapp 与 Azure AD 的集成，需要从库中将 Promapp 添加到托管 SaaS 应用列表。
+要配置 Promapp 与 Azure AD 的集成，需要从库中将 Promapp 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Promapp，请执行以下步骤：**
 
@@ -87,9 +86,9 @@ ms.lasthandoff: 07/11/2017
 
 若要使用 Promapp 配置和测试 Azure AD 单一登录，需完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Promapp 测试用户](#creating-a-promapp-test-user)** - 目的是在 Promapp 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建 Promapp 测试用户](#creating-a-promapp-test-user)** - 在 Promapp 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -107,48 +106,68 @@ ms.lasthandoff: 07/11/2017
  
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
 
-3. 在“Promapp 域和 URL”部分中，执行以下步骤：
+3. 在“Promapp 域和 URL”部分中，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
+    | |
+    |--|
+    | `https://demo.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME`|
+    | `https://demoau.promapp.com/TENANTNAME`|
+    | `https://au.promapp.com/TENANTNAME`|
+    | `https://demous.promapp.com/TENANTNAME`|
+    | `https://us.promapp.com/TENANTNAME`|
+    | `https://dev.promapp.com/TENANTNAME`|
+    | `https://test.promapp.com/TENANTNAME`|
+    | `https://staging.promapp.com/TENANTNAME`|
+    
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/TENANTNAME`
+4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
+
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Promapp 客户端支持团队](https://www.promapp.com/about-us/contact-us/)获取这些值。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Promapp 客户端支持团队](https://www.promapp.com/about-us/contact-us/)获取这些值。
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
 
-5. 单击“保存”按钮。
+6. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
 
-6. 在“Promapp 配置”部分，单击“配置 Promapp”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+7. 在“Promapp 配置”部分，单击“配置 Promapp”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
     ![配置单一登录](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
 
-7. 以管理员身份登录 Promapp 公司站点。 
+8. 以管理员身份登录 Promapp 公司站点。 
 
-8. 在顶部菜单中，单击“管理员”。 
+9. 在顶部菜单中，单击“管理员”。 
    
     ![Azure AD 单一登录][12]
 
-9. 单击 **“配置”**。 
+10. 单击 **“配置”**。 
    
     ![Azure AD 单一登录][13]
 
-10. 在“安全”对话框中，执行以下步骤：
+11. 在“安全”对话框中，执行以下步骤：
    
     ![Azure AD 单一登录][14]
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“SSO 登录 URL”文本框中。
+    a. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“SSO 登录 URL”文本框中。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“可选”作为“SSO - 单一登录模式”，然后单击“保存”。
+    b. 选择“可选”作为“SSO - 单一登录模式”，并单击“保存”。
 
-    c. 在记事本中打开下载的证书，复制除第一行 (-----BEGIN CERTIFICATE-----) 和最后一行 (-----END CERTIFICATE-----) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
+    > [!NOTE]
+    > “可选”模式仅用于测试。 对配置感到满意后，请选择“必需”模式强制所有用户使用 Azure AD 进行身份验证。
+
+    c. 在记事本中打开下载的证书，复制除第一行 (**-----BEGIN CERTIFICATE-----**) 和最后一行 (**-----END CERTIFICATE-----**) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
         
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -177,7 +196,7 @@ ms.lasthandoff: 07/11/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-promapp-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -187,7 +206,7 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-a-promapp-test-user"></a>创建 Promapp 测试用户
 
-Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问面板访问应用程序期间，如有必要，将会自动创建一个用户帐户。
+Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问面板访问应用程序期间，如有必要，会自动创建一个用户帐户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -195,9 +214,9 @@ Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问�
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Promapp，请执行以下步骤：**
+**要将 Britta Simon 分配到 Promapp，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -223,7 +242,9 @@ Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问�
 
 本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
 
-单击访问面板中的“Promapp”磁贴时，用户就会自动登录到 Promapp 应用程序。
+若要在 **IDP** 发起的模式下测试应用程序，单击访问面板中的“Promapp”磁贴时，用户应自动登录到 Promapp 应用程序。
+
+若要在 **SP** 发起的模式下测试应用程序，需要从 Promapp 站点启动身份验证。 为此，需要在登录时将密码字段留空，同时启用“可选”模式。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -246,5 +267,4 @@ Promapp 应用程序支持实时预配。 这意味着，在尝试使用访问�
 [201]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_203.png
-
 

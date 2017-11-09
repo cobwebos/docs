@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 8fe91bed69a1c06367346041d8caba4aaee4c82a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters-preview"></a>查询 Azure Log Analytics，以监视 Azure HDInsight 群集（预览）
 
@@ -155,4 +154,3 @@ ms.lasthandoff: 09/09/2017
 
 * [使用 OMS Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [在 Log Analytics 中创建警报规则](../log-analytics/log-analytics-alerts-creating.md)
-

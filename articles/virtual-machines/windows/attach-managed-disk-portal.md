@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: f0cf88a06c5470ef173b22e7213419a6c8760723
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>如何在 Azure 门户中将托管数据磁盘附加到 Windows VM
 
 本文介绍了如何通过 Azure 门户将新的托管数据磁盘附加到 Windows 虚拟机。 在开始之前，请查看以下提示：
 
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](sizes.md)。
-* 对于新磁盘，你不必首先创建它，因为 Azure 将在附加磁盘时创建该磁盘。
+* 对于新磁盘，不必首先创建它，因为 Azure 会在附加磁盘时创建该磁盘。
 
 还可以[使用 Powershell 附加数据磁盘](attach-disk-ps.md)。
 
@@ -47,14 +46,14 @@ ms.lasthandoff: 05/26/2017
 ## <a name="initialize-a-new-data-disk"></a>初始化新的数据磁盘
 
 1. 连接到 VM。
-1. 单击 VM 中的“开始”菜单，键入“diskmgmt.msc”，然后点击“Enter”。 这会启动“磁盘管理”管理单元。
+1. 单击 VM 中的“开始”菜单，键入“diskmgmt.msc”，并点击“Enter”。 这会启动“磁盘管理”管理单元。
 2. “磁盘管理”识别出空的未初始化磁盘，弹出“初始化磁盘”窗口。
 3. 请确保已选择新磁盘，单击“确定”对其进行初始化。
 4. 现在新磁盘显示为“未分配”。 右键单击磁盘上任意位置，选择“新建简单卷”。 此时会启动“新建简单卷向导”。
 5. 完成向导中的每一步，保留所有默认值，完成后，选择“完成”。
 6. 关闭“磁盘管理”。
 7. 随即弹出提示：需要先格式化新磁盘才能使用新磁盘。 单击“格式化磁盘”。
-8. 在“格式化新磁盘”对话框中，检查设置，然后单击“启动”。
+8. 在“格式化新磁盘”对话框中，检查设置，并单击“启动”。
 9. 随即显示格式化磁盘会清除所有数据的警告，请单击“确定”。
 10. 格式化完成后，单击“确定”。
 
@@ -83,4 +82,3 @@ defrag.exe <volume:> -l
 
 ## <a name="next-steps"></a>后续步骤
 如果应用程序需要使用 D: 盘存储数据，可以[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
-

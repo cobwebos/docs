@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2017
 ms.author: bwren
+ms.openlocfilehash: e3a4c631cd69921fec60b3ae33a23c4c7c369194
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: b7f28868e3ffdf95dbe39872f382e7c97eae692c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -138,14 +137,6 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 
 | 查询 | 说明 |
 |:--- |:--- |
-| Type=MyApp_CL |名为 MyApp_CL 的自定义日志的所有事件。 |
-| Type=MyApp_CL Severity_CF=error |来自名为 MyApp_CL 的自定义日志，且 *Severity_CF* 自定义字段值为 *error* 的所有事件。 |
-
->[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
-
-> | 查询 | 说明 |
-|:--- |:--- |
 | MyApp_CL |名为 MyApp_CL 的自定义日志的所有事件。 |
 | MyApp_CL &#124; where Severity_CF=="error" |来自名为 MyApp_CL 的自定义日志，且 *Severity_CF* 自定义字段值为 *error* 的所有事件。 |
 
@@ -187,4 +178,3 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ## <a name="next-steps"></a>后续步骤
 * 使用[自定义字段](log-analytics-custom-fields.md)将自定义日志中的条目解析为单个字段。
 * 了解[日志搜索](log-analytics-log-searches.md)，分析从数据源和解决方案中收集的数据。
-

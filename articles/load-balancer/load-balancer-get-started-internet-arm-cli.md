@@ -3,7 +3,7 @@ title: "创建面向 Internet 的负载均衡器 - Azure CLI | Microsoft 文档"
 description: "了解如何使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 3b1780033cbc8aa3e108a213a4d2bfd0332fd7d7
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: ba36b7f6d2ae3cc4d63829ffb757ff7b311e467b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
 
@@ -29,11 +29,14 @@ ms.lasthandoff: 03/21/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-本文介绍资源管理器部署模型。 还可以[了解如何使用经典部署创建面向 Internet 的负载均衡器](load-balancer-get-started-internet-classic-portal.md)
+本文介绍 Resource Manager 部署模型。 还可以[了解如何使用经典部署创建面向 Internet 的负载均衡器](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -45,7 +48,7 @@ ms.lasthandoff: 03/21/2017
 
 * 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
 * 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
-* 负载平衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
+* 负载均衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
 * 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
@@ -53,8 +56,8 @@ ms.lasthandoff: 03/21/2017
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>将 CLI 设置为使用 Resource Manager
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
-2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+2. 运行 **azure config mode** 命令以切换到 Resource Manager 模式，如下所示。
 
     ```azurecli
         azure config mode arm
@@ -78,14 +81,14 @@ ms.lasthandoff: 03/21/2017
         azure network vnet subnet create NRPRG NRPVnet NRPVnetSubnet -a 10.0.0.0/24
     ```
 
-2. 使用 DNS 名称 *loadbalancernrp.eastus.cloudapp.azure.com* 创建要由前端 IP 池使用的名为 *NRPPublicIP* 的公共 IP 地址。 下面的命令使用静态分配类型和 4 分钟的空闲超时。
+2. 使用 DNS 名称 *loadbalancernrp.eastus.cloudapp.azure.com* 创建要由前端 IP 池使用的名为 *NRPPublicIP* 的公共 IP 地址。下面的命令使用静态分配类型和 4 分钟的空闲超时。
 
     ```azurecli
         azure network public-ip create -g NRPRG -n NRPPublicIP -l eastus -d loadbalancernrp -a static -i 4
     ```
 
    > [!IMPORTANT]
-   > 负载均衡器将使用公共 IP 的域标签作为其 FQDN。 这与经典部署不同，后者使用云服务作为负载均衡器完全限定的域名 (FQDN)。
+   > 负载均衡器使用公共 IP 的域标签作为其 FQDN。 这与经典部署不同，后者使用云服务作为负载均衡器完全限定的域名 (FQDN)。
    > 在本示例中，FQDN 是 *loadbalancernrp.eastus.cloudapp.azure.com*。
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器
@@ -97,7 +100,7 @@ ms.lasthandoff: 03/21/2017
     ```
 
 ## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>创建前端 IP 池和后端地址池
-本示例演示如何创建前端和后端 IP 池，前者接收负载均衡器上的传入网络流量，后者发送负载平衡的网络流量。
+本示例演示如何创建前端和后端 IP 池，前者接收负载均衡器上的传入网络流量，后者发送负载均衡的网络流量。
 
 1. 创建前端 IP 池，它与负载均衡器和上一步中创建的公共 IP 相关联。
 
@@ -141,7 +144,7 @@ ms.lasthandoff: 03/21/2017
         azure network lb probe create --resource-group nrprg --lb-name nrplb --name healthprobe --protocol "http" --port 80 --path healthprobe.aspx --interval 15 --count 4
     ```
 
-4. 检查你的设置。
+4. 检查设置。
 
     ```azurecli
         azure network lb show nrprg nrplb
@@ -210,7 +213,7 @@ ms.lasthandoff: 03/21/2017
 
 ## <a name="create-nics"></a>创建 NIC
 
-你需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载均衡器规则和探测器。
+需要创建 NIC（或修改现有 NIC），并将其关联到 NAT 规则、负载均衡器规则和探测器。
 
 1. 创建名为 *lb-nic1-be* 的 NIC，并将其与 *rdp1* NAT 规则和 *NRPbackendpool* 后端地址池相关联。
 
@@ -309,4 +312,3 @@ azure network lb delete --resource-group nrprg --name nrplb
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-

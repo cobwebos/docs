@@ -15,17 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: deonhe
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 30abc823a72431dfd12f1051434191ea904533f6
 ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>如何将逻辑应用迁移到架构版本 2015 年 8 月 1 日预览版
-若要将现有逻辑应用移动到新架构，请执行以下操作：  
+要将现有逻辑应用移动到新架构，请执行以下操作：  
 
-1. 在 Azure 门户中，打开你的逻辑应用  
+1. 在 Azure 门户中，打开逻辑应用  
 2. 单击“更新架构”：
    
    ![API 图标][step1]   
@@ -47,7 +46,6 @@ ms.lasthandoff: 01/20/2017
 <!--Icon references-->
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
-
 
 
 

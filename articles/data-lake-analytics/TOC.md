@@ -4,15 +4,15 @@
 # 入门
 ## [Azure 门户](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-## [PowerShell](data-lake-analytics-get-started-powershell.md)
-## [Azure CLI 2.0](data-lake-analytics-get-started-cli2.md)
+## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
+## [Azure CLI](data-lake-analytics-get-started-cli2.md)
 
 # 如何
 
-## 管理 Data Lake Analytics 帐户
+## 管理 Data Lake Analytics
 ### [Azure 门户](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
-### [PowerShell](data-lake-analytics-manage-use-powershell.md)
+### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 ### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
 ### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
 ### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
@@ -33,6 +33,7 @@
 
 ## 调试 U-SQL 程序
 ### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+### [对异常的定期作业进行故障排除](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
 ### [在 U-SQL 中调试 C# 代码](data-lake-analytics-debug-u-sql-jobs.md)
 ### [使用作业浏览器和作业视图](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [使用顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
@@ -41,12 +42,12 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
-## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
+## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
 ## [REST](/rest/api/datalakeanalytics/)
-## [CLI 2.0](https://docs.microsoft.com/cli/azure/dla)
+## [CLI](https://docs.microsoft.com/cli/azure/dla)
 
 # 资源
 ## [Azure Data Lake 博客](https://blogs.msdn.microsoft.com/azuredatalake/)

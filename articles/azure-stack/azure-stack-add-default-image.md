@@ -1,6 +1,6 @@
 ---
-title: Add the default VM image to the Azure Stack marketplace | Microsoft Docs
-description: Add the Windows Server 2016 VM default image to the Azure Stack marketplace.
+title: "将默认 VM 映像添加到 Azure 堆栈 Marketplace |Microsoft 文档"
+description: "将 Windows Server 2016 VM 默认映像添加到 Azure 堆栈应用商店。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,131 +14,141 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 2cbdca8c795346864b6e39e42858f3dc46def199
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.openlocfilehash: e5e7ab55800eccea98cbd71ae32bdc611ee3e961
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Add the Windows Server 2016 VM image to the Azure Stack marketplace
+# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>将 Windows Server 2016 VM 映像添加到 Azure 堆栈应用商店
 
-By default, there aren’t any virtual machine images available in the Azure Stack marketplace. The Azure Stack operator must add an image to the marketplace before users can use them. You can add the Windows Server 2016 image to the Azure Stack marketplace by using one of the following two methods:
+默认情况下，任何虚拟机映像中提供不了 Azure 堆栈应用商店。 Azure 堆栈运算符必须将映像添加到用户访问应用商店。 通过使用以下方法之一，可以向 Azure 堆栈应用商店添加 Windows Server 2016 映像：
 
-* [Add the image by downloading it from the Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace) - Use this option if you are operating in a connected scenario and if you have registered your Azure Stack instance with Azure.
+* [从 Azure 应用商店下载映像](#add-the-image-by-downloading-it-from-the-azure-marketplace)。 如果你正在连接方案中工作并且你向 Azure 注册你的 Azure 堆栈实例，请使用此选项。
 
-* [Add the image by using PowerShell](#add-the-image-by-using-powershell) - Use this option if you have deployed Azure Stack in a disconnected scenario or in scenarios with limited connectivity.
+* [将映像添加使用 PowerShell](#add-the-image-by-using-powershell)。 如果你已经部署了 Azure 堆栈中断开连接的情况下，或在方案中通过有限的连接，请使用此选项。
 
-## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Add the image by downloading it from the Azure Marketplace
+## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>将映像添加通过从 Azure 应用商店中下载它
 
-1. After deploying Azure Stack, sign in to your Azure Stack Development Kit.
+1. 部署 Azure 堆栈，然后登录到你的 Azure 堆栈开发工具包。
 
-2. click **More services** > **Marketplace Management** > **Add from Azure** 
+2. 选择**更多的服务** > **应用商店管理** > **从 Azure 中的添加**。 
 
-3. Find or search for the **Windows Server 2016 Datacenter – Eval** image > click **Download**
+3. 查找或搜索**Windows Server 2016 数据中心 – Eval**映像，，然后选择**下载**。
 
-   ![Download image from Azure](media/azure-stack-add-default-image/download-image.png)
+   ![从 Azure 下载图像](media/azure-stack-add-default-image/download-image.png)
 
-After the download completes, the image is added to the **Marketplace Management** blade and it is also made available from the **Virtual Machines** blade.
+下载完成后，该映像位于下**应用商店管理**。 映像也是可用在**虚拟机**。
 
-## <a name="add-the-image-by-using-powershell"></a>Add the image by using PowerShell
+## <a name="add-the-image-by-using-powershell"></a>使用 PowerShell 添加映像
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>必备组件 
 
-Run the following prerequisites either from the [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+运行以下先决条件，从[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或从基于 Windows 的外部客户端，如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
-* Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
+1. 安装[Azure 堆栈兼容 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
 
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
+2. 下载[工具需要使用处理 Azure 堆栈](azure-stack-powershell-download.md)。  
 
-* Go to https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 and download the Windows Server 2016 evaluation. When prompted, select the **ISO** version of the download. Record the path to the download location, which is used later in these steps. This step requires internet connectivity.  
+3. 在 Windows Server 评估页上，[下载 Windows Server 2016 评估版](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016)。 出现提示时，选择下载的 ISO 版本。 记录到更高版本在本文中所述的步骤中使用的下载位置的路径。 此步骤需要 internet 连接。  
 
-Now run the following steps to add the image to the Azure Stack marketplace:
+### <a name="add-the-image-to-the-azure-stack-marketplace"></a>将映像添加到 Azure 堆栈应用商店
    
-1. Import the Azure Stack Connect and ComputeAdmin modules by using the following commands:
+1. 通过使用以下命令导入 Azure 堆栈连接和 ComputeAdmin 模块：
 
    ```powershell
    Set-ExecutionPolicy RemoteSigned
 
-   # import the Connect and ComputeAdmin modules   
+   # Import the Connect and ComputeAdmin modules.   
    Import-Module .\Connect\AzureStack.Connect.psm1
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
 
    ```
 
-2. Sign in to your Azure Stack environment. Run the following script depending on if your Azure Stack environment is deployed by using AAD or AD FS (Make sure to replace the AAD tenant name):  
+2. 登录到你的 Azure 堆栈环境。 运行以下脚本，具体取决于你是否通过使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 部署你的 Azure 堆栈环境之一。 (替换 Azure AD `tenantName`，`GraphAudience`终结点，和`ArmEndpoint`值以反映你环境的配置。)  
 
-   a. **Azure Active Directory**, use the following cmdlet:
+   * **Azure Active Directory**。 使用以下 cmdlet:
 
-   ```PowerShell
-   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
-   Add-AzureRMEnvironment `
-     -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+    ```PowerShell
+    # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+    $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-   Set-AzureRmEnvironment `
-    -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
-
-   $TenantID = Get-AzsDirectoryTenantId `
-     -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-     -EnvironmentName AzureStackAdmin
-
-   Login-AzureRmAccount `
-     -EnvironmentName "AzureStackAdmin" `
-     -TenantId $TenantID 
-   ```
-
-   b. **Active Directory Federation Services**, use the following cmdlet:
+    # For Azure Stack Development Kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+    $GraphAudience = "<GraphAuidence endpoint for your environment>"
     
-   ```PowerShell
-   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
-   Add-AzureRMEnvironment `
-     -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+    # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+    Add-AzureRMEnvironment `
+      -Name "AzureStackAdmin" `
+      -ArmEndpoint $ArmEndpoint
 
-   Set-AzureRmEnvironment `
-     -Name "AzureStackAdmin" `
-     -GraphAudience "https://graph.local.azurestack.external/" `
-     -EnableAdfsAuthentication:$true
+    Set-AzureRmEnvironment `
+      -Name "AzureStackAdmin" `
+      -GraphAudience $GraphAudience
+
+    $TenantID = Get-AzsDirectoryTenantId `
+      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
+      -EnvironmentName AzureStackAdmin
+
+    Login-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID 
+    ```
+
+   * **Active Directory 联合身份验证服务**。 使用以下 cmdlet:
+    
+    ```PowerShell
+    # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+    $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+    # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+    $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
+    # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+    Add-AzureRMEnvironment `
+      -Name "AzureStackAdmin" `
+      -ArmEndpoint $ArmEndpoint
+
+    Set-AzureRmEnvironment `
+      -Name "AzureStackAdmin" `
+      -GraphAudience $GraphAudience `
+      -EnableAdfsAuthentication:$true
 
    $TenantID = Get-AzsDirectoryTenantId `
-     -ADFS 
-     -EnvironmentName AzureStackAdmin 
+     -ADFS `
+     -EnvironmentName "AzureStackAdmin" 
 
-   Login-AzureRmAccount `
-     -EnvironmentName "AzureStackAdmin" `
-     -TenantId $TenantID 
-   ```
+    Login-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID 
+    ```
    
-3. Add the Windows Server 2016 image to the Azure Stack marketplace (Make sure to replace the *Path_to_ISO* with the path to the WS2016 ISO you downloaded):
+3. 将 Windows Server 2016 映像添加到 Azure 堆栈应用商店。 (替换*fully_qualified_path_to_ISO*替换为你下载 Windows Server 2016 ISO 的路径。)
 
-   ```PowerShell
-   $ISOPath = "<Fully_Qualified_Path_to_ISO>"
+    ```PowerShell
+    $ISOPath = "<fully_qualified_path_to_ISO>"
 
-   # Add a Windows Server 2016 Evaluation VM Image.
-   New-AzsServer2016VMImage `
-     -ISOPath $ISOPath
+    # Add a Windows Server 2016 Evaluation VM image.
+    New-AzsServer2016VMImage `
+      -ISOPath $ISOPath
 
-   ```
+    ```
 
-To ensure that the Windows Server 2016 VM image has the latest cumulative update, include the `IncludeLatestCU` parameter when running the `New-AzsServer2016VMImage` cmdlet. See the [Parameters](#parameters) section for information about allowed parameters for the `New-AzsServer2016VMImage` cmdlet. It takes about an hour to publish the image to the Azure Stack marketplace. 
+若要确保 Windows Server 2016 VM 映像具有最新的累积更新，包括`IncludeLatestCU`参数在运行时`New-AzsServer2016VMImage`cmdlet。 有关允许的参数信息`New-AzsServer2016VMImage`cmdlet，请参阅[参数](#parameters)。 它采用大约一小时才能将该映像发布到 Azure 堆栈应用商店。 
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
-|New-AzsServer2016VMImage parameters|Required?|Description|
+|新 AzsServer2016VMImage 参数|必需？|说明|
 |-----|-----|------|
-|ISOPath|Yes|The fully qualified path to the downloaded Windows Server 2016 ISO.|
-|Net35|No|This parameter allows you to install the .NET 3.5 runtime on the Windows Server 2016 image. By default, this value is set to true. It is mandatory that the image contains the .NET 3.5 runtime to install the SQL and MYSQL resource providers. |
-|Version|No|This parameter allows you to choose whether to add a **Core** or **Full** or **Both** Windows Server 2016 images. By default, this value is set to "Full."|
-|VHDSizeInMB|No|Sets the size (in MB) of the VHD image to be added to your Azure Stack environment. By default, this value is set to 40960 MB.|
-|CreateGalleryItem|No|Specifies if a Marketplace item should be created for the Windows Server 2016 image. By default, this value is set to true.|
-|location |No |Specifies the location to which the Windows Server 2016 image should be published.|
-|IncludeLatestCU|No|Set this switch to apply the latest Windows Server 2016 cumulative update to the new VHD.|
-|CUUri |No |Set this value to choose the Windows Server 2016 cumulative update from a specific URI. |
-|CUPath |No |Set this value to choose the Windows Server 2016 cumulative update from a local path. This option is helpful if you have deployed the Azure Stack instance in a disconnected environment.|
+|ISOPath|是|下载 Windows Server 2016 ISO 完全限定的路径。|
+|net35|否|在 Windows Server 2016 映像上安装.NET 3.5 运行时。 默认情况下，此值设置为**true**。|
+|版本|否|指定**核心**，**完整**，或**同时**Windows Server 2016 映像。 默认情况下，此值设置为**完整**。|
+|VHDSizeInMB|否|设置要添加到你的 Azure 堆栈环境的 VHD 映像的大小 （以 mb 为单位）。 默认情况下，此值设置为 40,960 MB。|
+|CreateGalleryItem|否|指定是否应为 Windows Server 2016 映像创建的应用商店项。 默认情况下，此值设置为**true**。|
+|location |否 |指定的 Windows Server 2016 映像应将其发布到的位置。|
+|IncludeLatestCU|否|适用于新的 VHD 的最新的 Windows Server 2016 累积更新。|
+|CUUri |否 |设置 Windows Server 2016 累积更新为特定 URI 从运行中。 |
+|CUPath |否 |设置 Windows Server 2016 累积更新从本地路径中运行。 此选项很有帮助，如果你已经部署了连接断开的环境中的 Azure 堆栈实例。|
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-[Provision a virtual machine](azure-stack-provision-vm.md)
-
+[预配虚拟机](azure-stack-provision-vm.md)

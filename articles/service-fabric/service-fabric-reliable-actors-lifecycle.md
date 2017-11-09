@@ -12,15 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/13/2017
+ms.date: 10/06/2017
 ms.author: amanbha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 0d942fa9f4a3b9094d8122e4745c0450f507ea16
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: d49afd9e5cfe80ddc2d919c76eaa0cb168280c15
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>执行组件生命周期、自动垃圾回收和手动删除
 当第一次调用执行组件的任何方法时即可激活该执行组件。 如果在可配置的一段时间内未使用执行组件，则此执行组件将停用（执行组件运行时对其进行垃圾回收）。 还可以在任何时候手动删除执行组件及其状态。
@@ -37,7 +35,7 @@ ms.lasthandoff: 03/31/2017
 当停用了某个执行组件，将出现以下情况：
 
 * 如果在一段时间内未使用执行组件，则会从“活动执行组件”表中将其删除。
-* 将调用 `OnDeactivateAsync` (C#) 或 `onDeactivateAsync` (Java) 方法（该方法可以在执行组件实现中被覆盖）。 这将清除此执行组件的所有计时器。 不可从该方法中调用诸如状态更改的执行组件操作。
+* 将调用 `OnDeactivateAsync` (C#) 或 `onDeactivateAsync` (Java) 方法（该方法可以在执行组件实现中被覆盖）。 这会清除此执行组件的所有计时器。 不可从该方法中调用诸如状态更改的执行组件操作。
 
 > [!TIP]
 > Fabric 执行组件运行时发出一些[与执行组件激活和停用相关的事件](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters)。 它们可用于进行诊断和性能监视。
@@ -53,7 +51,7 @@ ms.lasthandoff: 03/31/2017
 * 正在调用的 `IRemindable.ReceiveReminderAsync` 方法（仅当执行组件使用提醒时该方法才可用）
 
 > [!NOTE]
-> 如果该执行组件使用计时器并且调用了其计时器回调，则**不**将其视为“正在使用”。
+> 如果执行组件使用计时器，且计时器回调得到调用，则不计为“正在使用”。
 >
 >
 
@@ -95,7 +93,7 @@ public class Program
     }
 }
 ```
-对于每个活动的执行组件，执行组件运行时将持续跟踪其处于空闲状态（即未使用）的时间。 执行组件运行时每 `ScanIntervalInSeconds` 检查每个执行组件，以查看是否可以对它执行垃圾回收，并且如果它已空闲 `IdleTimeoutInSeconds`，则对其予以回收。
+对于每个活动的执行组件，执行组件运行时会持续跟踪其处于空闲状态（即未使用）的时间。 执行组件运行时每 `ScanIntervalInSeconds` 检查每个执行组件，以查看是否可以对它执行垃圾回收，并且如果它已空闲 `IdleTimeoutInSeconds`，则对其予以回收。
 
 任何时候只要使用了执行组件，其空闲时间都会重置为 0。 此后，仅在此执行组件再次空闲 `IdleTimeoutInSeconds`，才会对其执行垃圾回收。 如果执行执行组件接口方法或执行组件提醒回调，则想到执行组件被视为已使用。 如果执行其计时器回调，则执行组件**不**被视为已使用。
 
@@ -157,4 +155,3 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
-

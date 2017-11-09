@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 11492b85e95ddb39489e36c572af2a168b4c7af8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将介绍如何使用 Azure CLI 从 Azure Marketplace 映像部署 Oracle Database 12c 数据库。 本文将分步演示如何在 Azure 虚拟机 (VM) 上安装和配置 Data Guard。
@@ -692,4 +690,3 @@ az group delete --name myResourceGroup
 [教程：创建高可用性虚拟机](../../linux/create-cli-complete.md)
 
 [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
-

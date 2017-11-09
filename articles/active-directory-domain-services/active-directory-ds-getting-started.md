@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 域服务：入门 | Microsoft Docs"
-description: "通过 Azure 门户（预览版）启用 Azure Active Directory 域服务"
+description: "使用 Azure 门户启用 Azure Active Directory 域服务"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,29 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 7d80049d4b6f7d57924522e3f273c42f4c887fee
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: d2d570bc2bab3bfd28282cd95b0a1be65e96743d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>通过 Azure 门户（预览版）启用 Azure Active Directory 域服务
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户启用 Azure Active Directory 域服务 (Azure AD DS)。
 
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 在左窗格中，单击“新建”。
-3. 在“新建”边栏选项卡中，在搜索栏中输入“域服务”。
+3. 在“新建”页中，在搜索栏中输入“域服务”。
 
     ![搜索域服务](./media/getting-started/search-domain-services.png)
 
-4. 单击以从搜索建议列表中选择“Azure AD 域服务”。 在“Azure AD 域服务”边栏选项卡上，单击“创建”按钮。
+4. 单击以从搜索建议列表中选择“Azure AD 域服务”。 在“Azure AD 域服务”页上，单击“创建”按钮。
 
-    ![“域服务”边栏选项卡](./media/getting-started/domain-services-blade.png)
+    ![“域服务”视图](./media/getting-started/domain-services-blade.png)
 
 5. “启用 Azure AD 域服务”向导随即启动。
 
@@ -46,34 +45,26 @@ ms.lasthandoff: 08/29/2017
 
 1. 为托管域选择“DNS 域名”。
 
-   * 默认情况下会指定目录的默认域名（带 **.onmicrosoft.com** 后缀）。
+   > [!NOTE]
+   > **选择 DNS 域名的准则**
+   > * **内置域名：**默认情况下，该向导指定目录的默认/内置域名（带 **.onmicrosoft.com** 后缀）。 如果选择启用通过 Internet 对托管域进行安全 LDAP 访问，则创建公共 DNS 记录或从此域名的公共 CA 获取安全 LDAP 证书时会遇到问题。 Microsoft 拥有 *.onmicrosoft.com* 域，CA 不会为此域颁发证书担保。
+   * **自定义域名：**也可以键入自定义域名。 在此示例中，自定义域名为 *contoso100.com*。
+   * **不可路由的域后缀：**通常建议尽量避免使用不可路由的域名后缀。 例如，最好避免创建 DNS 域名为“contoso.local”的域。 “.local”DNS 后缀不可路由，并可能导致 DNS 解析出现问题。
+   * **域前缀限制：**指定域名的前缀（例如 *contoso100.com* 域名中的 *contoso100*）所包含的字符不得超过 15 个。 不能创建前缀长度超过 15 个字符的托管域。
+   * **网络名称冲突：**确保为托管域选择的 DNS 域名尚未在虚拟网络中存在。 具体而言，检查是否有以下情况：
+       * 虚拟网络中已存在具有相同 DNS 域名的 Active Directory 域。
+       * 计划在其中启用托管域的虚拟网络具有与本地网络之间的 VPN 连接。 在此方案中，确保在本地网络上没有具有相同 DNS 域名的域。
+       * 虚拟网络上存在具有该名称的云服务。
+    >
 
-   * 还可以输入自定义域名。 在此示例中，自定义域名为 *contoso100.com*。
+2. 选择要在其中创建托管域的 Azure“订阅”。
 
-     > [!WARNING]
-     > 指定域名的前缀（例如 *contoso100.com* 域名中的 *contoso100*）所包含的字符不得超过 15 个。 不能创建前缀长度超过 15 个字符的托管域。
-     >
-     >
+3. 选择托管域应属于的“资源组”。 可以选择“新建”或“使用现有”选项以选择资源组。
 
-2. 确保虚拟网络中不存在为托管域选择的 DNS 域名。 具体而言，检查是否有以下情况：
+4. 选择应在其中创建托管域的 Azure“位置”。 在向导的“网络”页上，只会看到属于所选位置的虚拟网络。
 
-   * 虚拟网络中已存在具有相同 DNS 域名的域。
-
-   * 计划在其中启用托管域的虚拟网络具有与本地网络之间的 VPN 连接。 在此方案中，确保在本地网络上没有具有相同 DNS 域名的域。
-
-   * 虚拟网络上存在具有该名称的云服务。
-
-3. 选择“虚拟网络类型”。 默认情况下选择“资源管理器”虚拟网络类型。 我们建议对所有新创建的托管域使用此类型的虚拟网络。
-
-4. 选择要在其中创建托管域的 Azure“订阅”。
-
-5. 选择托管域应属于的“资源组”。 可以选择“新建”或“使用现有”选项以选择资源组。
-
-6. 选择应在其中创建托管域的 Azure“位置”。 在向导的“网络”页上，只会看到属于所选位置的虚拟网络。
-
-7. 完成后，单击“确定”以前进到向导的“网络”页。
+5. 完成后，单击“确定”以前进到向导的“网络”页。
 
 
 ## <a name="next-step"></a>后续步骤
 [任务 2：配置网络设置](active-directory-ds-getting-started-network.md)
-

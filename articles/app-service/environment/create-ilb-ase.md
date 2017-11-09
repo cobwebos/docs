@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: cc7bdd7860506c20187dc913b72111824d1737ca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -174,9 +173,9 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
-7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com。（或者转到域中的任意 Web 应用名称。）
+7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com 。（或者转到域中的任意 Web 应用名称。）
 
-8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com。如果使用自签名证书，则需接受安全性不足的缺点。
+8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com 。如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 
@@ -250,4 +249,3 @@ Azure App Service 提供大量安全措施，既可保护系统， 也有助于�
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
-

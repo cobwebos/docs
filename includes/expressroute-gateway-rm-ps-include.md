@@ -1,4 +1,4 @@
-此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 此列表中也概述了其他设置和名称。 尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。 你可以复制列表作为参考，并将列表中的值替换为自己的值。
+此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 此列表中也概述了其他设置和名称。 尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。 可以复制列表作为参考，并将列表中的值替换为自己的值。
 
 **配置参考列表**
 
@@ -7,7 +7,7 @@
 * 资源组 = “TestRG”
 * Subnet1 名称 = “FrontEnd” 
 * Subnet1 地址空间 = “192.168.1.0/24”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
+* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 GatewaySubnet。
 * 网关子网地址空间 = “192.168.200.0/26”
 * 区域 =“美国东部”
 * 网关名称 = “GW”
@@ -54,12 +54,12 @@
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
   ```
-7. 请求公共 IP 地址。 创建网关之前请求 IP 地址。 你无法指定要使用的 IP 地址；它会进行动态分配。 后面的配置部分将使用此 IP 地址。 AllocationMethod 必须是动态的。
+7. 请求公共 IP 地址。 创建网关之前请求 IP 地址。 无法指定要使用的 IP 地址；它会进行动态分配。 后面的配置部分将使用此 IP 地址。 AllocationMethod 必须是动态的。
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
   ```
-8. 创建网关配置。 网关配置定义要使用的子网和公共 IP 地址。 在此步骤中，你将指定创建网关时使用的配置。 此步骤不会实际创建网关对象。 使用下面的示例创建你的网关配置。
+8. 创建网关配置。 网关配置定义要使用的子网和公共 IP 地址。 在此步骤中，将指定创建网关时使用的配置。 此步骤不会实际创建网关对象。 使用下面的示例创建网关配置。
 
   ```powershell
   $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
@@ -78,10 +78,10 @@ Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
 ```
 
 ## <a name="resize-a-gateway"></a>重设网关大小
-有许多[网关 SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md)。 你可以使用以下命令随时更改网关 SKU。
+有许多[网关 SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md)。 可以使用以下命令随时更改网关 SKU。
 
 > [!IMPORTANT]
-> 此命令对 UltraPerformance 网关不起作用。 若要将网关更改为 UltraPerformance 网关，首先要删除现有的 ExpressRoute 网关，然后创建新的 UltraPerformance 网关。 若要将网关从 UltraPerformance 网关降级，首先要删除 UltraPerformance 网关，然后创建新网关。
+> 此命令对 UltraPerformance 网关不起作用。 要将网关更改为 UltraPerformance 网关，首先要删除现有的 ExpressRoute 网关，然后创建新的 UltraPerformance 网关。 要将网关从 UltraPerformance 网关降级，首先要删除 UltraPerformance 网关，然后创建新网关。
 > 
 > 
 

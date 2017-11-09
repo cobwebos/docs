@@ -11,14 +11,12 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的批处理 SDK 入门
 
 > [!div class="op_single_selector"]
@@ -28,15 +26,15 @@ ms.lasthandoff: 06/16/2017
 >
 >
 
-了解使用 [Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个批处理应用程序的方案，然后通过 Node.js 客户端设置该方案。  
+了解使用 [Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) 在 Node.js 中生成批处理客户端的基础知识。 我们采用分步方式来了解一个批处理应用程序的方案，并通过 Node.js 客户端设置该方案。  
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设你已设置 Azure 帐户并具有创建批处理和存储服务所需的访问权限。
+本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设已设置 Azure 帐户并具有创建批处理和存储服务所需的访问权限。
 
-我们建议你在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
+我们建议在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
 
 ## <a name="the-tutorial-scenario"></a>教程方案
-让我们了解批处理工作流方案。 我们有一个简单的以 Python 编写的脚本，该脚本从 Azure Blob 存储容器下载所有 csv 文件，并将其转换为 JSON。 若要并行处理多个存储帐户容器，可将脚本部署为 Azure Batch 作业。
+让我们了解批处理工作流方案。 我们有一个简单的以 Python 编写的脚本，该脚本从 Azure Blob 存储容器下载所有 csv 文件，并将其转换为 JSON。 要并行处理多个存储帐户容器，可将脚本部署为 Azure Batch 作业。
 
 ## <a name="azure-batch-architecture"></a>Azure Batch 体系结构
 下图描绘了如何使用 Azure Batch 和 Node.js 客户端来伸缩 Python 脚本。
@@ -79,7 +77,7 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 下面是通过 Azure CLI 创建该帐户的命令。
 
-创建一个资源组。如果你已经有一个需要在其中创建批处理帐户的资源组，则请跳过此步骤：
+创建一个资源组。如果已经有一个需要在其中创建批处理帐户的资源组，则请跳过此步骤：
 
 `az group create -n "<resource-group-name>" -l "<location>"`
 
@@ -94,7 +92,7 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 复制并存储可在后续步骤中使用的密钥。
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>步骤 3：创建 Azure Batch 服务客户端
-以下代码片段首先导入 azure-batch Node.js 模块，然后创建批处理服务客户端。 需先使用从前一步骤复制的批处理帐户密钥创建 SharedKeyCredentials 对象。
+以下代码片段首先导入 azure-batch Node.js 模块，并创建批处理服务客户端。 需先使用从前一步骤复制的批处理帐户密钥创建 SharedKeyCredentials 对象。
 
 ```nodejs
 // Initializing Azure Batch variables
@@ -174,7 +172,7 @@ var pool = batch_client.pool.add(poolConfig,function(error,result){
 });
 ```
 
-你可以检查所创建池的状态，确保状态为“活动”，然后再继续操作，将作业提交到该池。
+可以检查所创建池的状态，确保状态为“活动”，再继续操作，将作业提交到该池。
 
 ```nodejs
 var cloudPool = batch_client.pool.get(poolid,function(error,result,request,response){
@@ -363,5 +361,4 @@ var container_list = ["con1","con2","con3","con4"]
 
 - 如果对 Batch 服务不熟悉，建议查看 [Azure Batch 功能概述](batch-api-basics.md) 一文。
 - 请查看 [Batch Node.js reference](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)（批处理 Node.js 参考），了解批处理 API。
-
 

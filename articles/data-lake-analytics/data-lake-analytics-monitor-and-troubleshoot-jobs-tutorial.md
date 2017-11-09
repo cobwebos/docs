@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>使用 Azure 门户对 Azure Data Lake Analytics 作业进行疑难解答
 了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。
@@ -59,8 +58,8 @@ OUTPUT @searchlog
 
     ![Azure Data Lake Analytics 作业管理](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
-    作业管理为你提供作业状态概览。 请注意没有失败的作业。
-3. 单击“作业管理”磁贴，以查看作业。 在“正在运行”、“已排队”和“已结束”部分对作业进行了分类。 可在“已结束”部分查看失败的作业。 它是列表中的第一个。 有大量的作业时，可以单击“筛选”来帮助你找到作业。
+    作业管理提供作业状态概览。 请注意没有失败的作业。
+3. 单击“作业管理”磁贴，以查看作业。 在“正在运行”、“已排队”和“已结束”部分对作业进行了分类。 可在“已结束”部分查看失败的作业。 它是列表中的第一个。 有大量作业时，可以单击“筛选”来帮助找到作业。
 
     ![Azure Data Lake Analytics 筛选作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 4. 从列表中单击失败的作业，在新的边栏选项卡上打开作业详细信息：
@@ -68,7 +67,7 @@ OUTPUT @searchlog
     ![Azure Data Lake Analytics 失败的作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
     请注意“重新提交”按钮。 解决问题后，可以重新提交作业。
-5. 从之前的屏幕快照中单击突出显示的部分，打开错误的详细信息。  你会看到类似如下内容：
+5. 从之前的屏幕快照中单击突出显示的部分，打开错误的详细信息。  会看到类似如下内容：
 
     ![Azure Data Lake Analytics 失败的作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
@@ -84,4 +83,3 @@ OUTPUT @searchlog
 * [通过使用 Azure PowerShell 实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Visual Studio 实现 Azure Data Lake Analytics U-SQL 入门](data-lake-analytics-u-sql-get-started.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-

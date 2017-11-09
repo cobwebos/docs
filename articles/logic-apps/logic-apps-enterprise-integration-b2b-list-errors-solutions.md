@@ -1,5 +1,5 @@
 ---
-title: "错误和解决方案的逻辑应用 B2B 列表： Azure App Service |Microsoft Docs"
+title: "错误和解决方案的逻辑应用 B2B 列表： Azure 应用服务 |Microsoft Docs"
 description: "错误和解决方案的逻辑应用 B2B 列表"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: 1865d75f1b4c2aa18d5a3130f639572d19563b3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="logic-apps-b2b-list-of-errors-and-solutions"></a>错误和解决方案的逻辑应用 B2B 列表  
 本文可帮助你解决可能会出现在逻辑应用 B2B 方案中的错误，并提供更正这些错误的适当操作。
 

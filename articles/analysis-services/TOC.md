@@ -8,7 +8,7 @@
 
 # 入门
 ## [在 Azure 门户中创建服务器](analysis-services-create-server.md)
-## [使用 PowerShell 创建服务器](analysis-services-create-powershell.md)
+## [使用 Azure PowerShell 创建服务器](analysis-services-create-powershell.md)
 ## [从 Visual Studio 部署模型](analysis-services-deploy.md)
 ## [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
 
@@ -43,14 +43,14 @@
 ### [补充课程 - 不规则层次结构](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # 引用
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [表格模型脚本语言 (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # 资源
-## [GitHub 上的 Analysis Services 代码示例](https://github.com/Microsoft/Analysis-Services)
+## [示例](analysis-services-samples.md)
 ## [Analysis Services 团队博客](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)

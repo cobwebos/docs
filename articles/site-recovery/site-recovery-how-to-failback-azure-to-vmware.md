@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
+ms.openlocfilehash: 1ca34b262a51b694cb9541750588bbea139eeae1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 622604dc3ce69085feff6705168d58ad9938c429
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>从 Azure 故障回复到本地站点
 
 本文介绍如何将虚拟机从 Azure 虚拟机故障回复到本地站点。 根据[使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-vmware-to-azure-classic.md) 教程将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 后，请遵循本文中的说明进行故障回复。
 
 > [!WARNING]
-> 如果已经[完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机转移至另一资源组或已删除 Azure 虚拟机，则在上述操作之后无法进行故障回复。
+> 如果[已完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机移至另一资源组或已删除 Azure 虚拟机，则无法进行故障回复。 如果禁用虚拟机的保护，则无法进行故障回复。
 
 > [!NOTE]
 > 如果已故障转移 VMware 虚拟机，则无法故障回复到 Hyper-v 主机。
@@ -64,9 +63,9 @@ ms.lasthandoff: 06/16/2017
 如果在重新保护本地虚拟机之前该虚拟机不存在，则该方案称为备用位置恢复。 重新保护工作流将重新创建本地虚拟机。 这还会导致完整数据下载。
 
 * 故障回复到备用位置时，会将虚拟机恢复到主目标服务器所部署到的同一 ESX 主机。 用于创建磁盘的数据存储将与重新保护虚拟机时选择的数据存储相同。
-* 只能故障回复到虚拟机文件系统 (VMFS) 数据存储。 如果有 vSAN 或 RDM，重新保护和故障回复将不起作用。
+* 只能故障回复到虚拟机文件系统 (VMFS) 或 vSAN 数据存储。 如果有 RDM，重新保护和故障回复将不起作用。
 * 重新保护涉及一次较大的初始数据传输，并会进行更改。 之所以要执行此过程，是因为本地没有虚拟机。 需要复制回完整的数据。 此重新保护所需的时间还比原始位置恢复长。
-* 无法故障回复到基于 vSAN 或 RDM 的磁盘。 只能在 VMFS 数据存储中创建新的虚拟机磁盘 (VMDK)。
+* 无法故障回复到基于 RDM 的磁盘。 只能在 VMFS/vSAN 数据存储中创建新的虚拟机磁盘 (VMDK)。
 
 故障转移到 Azure 时，物理计算机只能故障回复为 VMware 虚拟机（也称为 P2A2V）。 此流属于备用位置恢复。
 
@@ -78,8 +77,11 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* 执行故障回复时，本地需有配置服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中，否则故障回复不会成功。 因此，请确保定期计划服务器备份。 如果发生灾难，需要使用相同的 IP 地址还原服务器，让故障回复正常工作。
-* 在触发故障回复之前，主目标服务器不应当具有任何快照。
+> [!IMPORTANT]
+> 在故障转移到 Azure 的过程中，本地站点可能无法访问，因此配置服务器可能不可用或关闭。 在重新保护和故障回复期间，本地配置服务器应运行且处于连接正常状态。
+
+* 执行故障回复时，本地需有配置服务器。 服务器应处于运行状态并连接到服务，以便其运行状况正常。 故障回复期间，虚拟机必须位于配置服务器数据库中，否则故障回复不会成功。 因此，请确保定期计划服务器备份。 如果发生灾难，需要使用相同的 IP 地址还原服务器，让故障回复正常工作。
+* 在触发重新保护/故障回复之前，主目标服务器不应当具有任何快照。
 
 ## <a name="steps-to-fail-back"></a>故障回复的步骤
 
@@ -133,4 +135,3 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="common-issues"></a>常见问题
 在执行故障回复之前，请确保 vCenter 处于连接状态。 否则，断开磁盘连接并将其附加回到虚拟机的操作会失败。
-

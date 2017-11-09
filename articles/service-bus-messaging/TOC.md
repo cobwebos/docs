@@ -6,6 +6,7 @@
 
 # 入门
 ## [创建命名空间](service-bus-create-namespace-portal.md)
+### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 ## 使用队列
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -28,21 +29,22 @@
 ### [高级消息传送](service-bus-premium-messaging.md)
 ### [Azure 队列与服务总线队列的比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [优化性能](service-bus-performance-improvements.md)
+### [异地灾难恢复和异地复制](service-bus-geo-dr.md)
 ### [异步消息传送和高可用性](service-bus-async-messaging.md)
 ### [处理中断和灾难问题](service-bus-outages-disasters.md)
-### [将实体与自动转发链接在一起](service-bus-auto-forwarding.md)
 
 ## 开发
-### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
-### [使用队列的应用](service-bus-create-queues.md)
-### [使用主题/订阅的应用](service-bus-create-topics-subscriptions.md)
+### 消息处理
+#### [消息、有效负载和序列化](service-bus-messages-payloads.md)
+#### [消息传输、锁定和处置](message-transfers-locks-settlement.md)
+#### [消息序列化和时间戳](message-sequencing.md)
+#### [消息到期时间（生存时间）](message-expiration.md)
 ### [身份验证和授权](service-bus-authentication-and-authorization.md)
 #### [从 ACS 迁移到 SAS](service-bus-migrate-acs-sas.md)
 #### [使用共享访问签名进行的身份验证](service-bus-sas.md)
+### [主题筛选器和操作](topic-filters.md)
 ### [分区的队列和主题](service-bus-partitioning.md)
-### [死信队列](service-bus-dead-letter-queues.md)
-### [事务处理](service-bus-transactions.md)
-### [诊断日志](service-bus-diagnostic-logs.md)
+### [消息会话](message-sessions.md)
 ### AMQP
 #### [AMQP 概述](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
@@ -50,9 +52,21 @@
 #### [Java 消息服务和 AMQP](service-bus-java-how-to-use-jms-api-amqp.md)
 #### [AMQP 协议指南](service-bus-amqp-protocol-guide.md)
 #### [基于 AMQP 请求-响应的操作](service-bus-amqp-request-response.md)
-
+### 高级功能
+#### [死信队列](service-bus-dead-letter-queues.md)
+#### [预取消息](service-bus-prefetch.md)
+#### [重复消息检测](duplicate-detection.md)
+#### [消息计数器](message-counters.md)
+#### [消息延迟](message-deferral.md)
+#### [消息浏览](message-browsing.md)
+#### [将实体与自动转发链接在一起](service-bus-auto-forwarding.md)
+#### [事务处理](service-bus-transactions.md)
+#### [配对命名空间实现](service-bus-paired-namespaces.md)
 ## 管理
+### [使用 Azure 监视来监视服务总线](service-bus-metrics-azure-monitor.md)
 ### [服务总线管理库](service-bus-management-libraries.md)
+### [诊断日志](service-bus-diagnostic-logs.md)
+### [挂起和重新激活消息传递实体](entity-suspend.md)
 ### [使用 Azure Resource Manager 模板](service-bus-resource-manager-overview.md)
 #### [创建命名空间](service-bus-resource-manager-namespace.md)
 #### [创建命名空间和队列](service-bus-resource-manager-namespace-queue.md)
@@ -60,13 +74,14 @@
 #### [创建命名空间和队列的授权规则](service-bus-resource-manager-namespace-auth-rule.md)
 #### [创建包含主题、订阅和规则的命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 #### 
-### [使用 PowerShell 预配实体](service-bus-manage-with-ps.md)
+### [使用 Azure PowerShell 预配实体](service-bus-manage-with-ps.md)
 
 # 引用
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus（.NET 标准）](/dotnet/api/microsoft.azure.servicebus)
-## [PowerShell](/powershell/module/azurerm.servicebus)
+## [Java](/java/api/overview/azure/servicebus)
+## [Azure PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
 ## [异常](service-bus-messaging-exceptions.md)
 ## [配额](service-bus-quotas.md)

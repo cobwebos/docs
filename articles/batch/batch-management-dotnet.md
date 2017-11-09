@@ -16,12 +16,11 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
 ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 
@@ -33,7 +32,7 @@ ms.lasthandoff: 04/28/2017
 
 可以使用 [Batch Management .NET][api_mgmt_net] 库来自动化批处理帐户的创建、删除、密钥管理和配额发现，从而降低 Azure Batch 应用程序的维护开销。
 
-* 在任何区域中**创建和删除 Batch 帐户**。 例如，如果你是一家独立软件供应商 (ISV)，现在要为每个分配了不同计费 Batch 帐户的客户提供服务，则你可以将帐户创建和删除功能添加到客户门户中。
+* 在任何区域中**创建和删除 Batch 帐户**。 例如，如果是一家独立软件供应商 (ISV)，现在要为每个分配了不同计费 Batch 帐户的客户提供服务，则可以将帐户创建和删除功能添加到客户门户中。
 * 以编程方式为任何 Batch 帐户**检索和重新生成帐户密钥**。 这可以帮助遵守强制帐户密钥定期滚动更新或到期的安全策略。 当各种不同的 Azure 区域中有多个 Batch 帐户时，将此滚动更新过程自动化会提高解决方案的效率。
 * **检查帐户配额**并采取试错猜测，确定哪些 Batch 帐户存在哪些限制。 在启动作业、创建池或添加计算节点之前检查帐户配额可以主动调整创建计算资源的位置或时机。 可在帐户中分配其他资源之前，确定哪些帐户需要增加配额。
 * 通过在同一应用程序中使用 Batch Management .NET、[Azure Active Directory][aad_about] 和 [Azure Resource Manager][resman_overview]，用户可以**结合其他 Azure 服务的功能**获得全功能管理体验。 使用这些功能及其 API 可以提供顺畅的身份验证体验、创建和删除资源组以及上述功能，以获取端到端管理解决方案。
@@ -96,12 +95,12 @@ BatchAccountRegenerateKeyResponse newKeys =
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>检查 Azure 订阅和 Batch 帐户配额
-Azure 订阅和类似于 Batch 的各个 Azure 服务均有默认配额，用于限制其中特定实体的数目。 有关 Azure 订阅的默认配额，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。 有关 Batch 服务的默认配额，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。 使用 Batch Management .NET 库可以在应用程序中检查这些配额。 这样，你就可以在添加帐户或计算资源（如池和计算节点）之前做出分配决策。
+Azure 订阅和类似于 Batch 的各个 Azure 服务均有默认配额，用于限制其中特定实体的数目。 有关 Azure 订阅的默认配额，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。 有关 Batch 服务的默认配额，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。 使用 Batch Management .NET 库可以在应用程序中检查这些配额。 这样，便可以在添加帐户或计算资源（如池和计算节点）之前做出分配决策。
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>检查 Azure 订阅和 Batch 帐户配额
 在区域中创建 Batch 帐户之前，可以检查 Azure 订阅，看是否能将帐户添加到该区域中。
 
-在以下的代码片段中，我们先使用 [BatchManagementClient.Account.ListAsync][net_mgmt_listaccounts] 来获取订阅中所有批处理帐户的集合。 获取此集合后，可以确定目标区域有多少个帐户。 然后使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 来获取批处理帐户配额，并确定可以在该区域中创建多少个帐户（如果有）。
+在以下的代码片段中，我们先使用 [BatchManagementClient.Account.ListAsync][net_mgmt_listaccounts] 来获取订阅中所有批处理帐户的集合。 获取此集合后，可以确定目标区域有多少个帐户。 然后使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 获取批处理帐户配额，并确定可以在该区域中创建多少个帐户（如果有）。
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
@@ -128,7 +127,7 @@ Console.WriteLine("You can create {0} accounts in the {1} region.", quotaRespons
 在上面的代码片段中，`creds` 是 [TokenCloudCredentials][azure_tokencreds] 的实例。 若要查看创建此对象的示例，请参阅 GitHub 上的 [AccountManagement][acct_mgmt_sample] 代码示例。
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>检查 Batch 帐户的计算资源配额
-在增加 Batch 解决方案中的计算资源之前，可以检查以确保想要分配的资源不会超过该帐户的配额。 通过以下代码片段，可输出名为 `mybatchaccount` 的 Batch 帐户的配额信息。 但在你自己的应用程序中，可以使用此类信息来确定帐户是否可以处理要创建的其他资源。
+在增加 Batch 解决方案中的计算资源之前，可以检查以确保想要分配的资源不会超过该帐户的配额。 通过以下代码片段，可输出名为 `mybatchaccount` 的 Batch 帐户的配额信息。 但在自己的应用程序中，可以使用此类信息来确定帐户是否可以处理要创建的其他资源。
 
 ```csharp
 // First obtain the Batch account
@@ -155,7 +154,7 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure Resource
 
 查看 GitHub 上的 [AccountManagment][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 AccountManagment 示例应用程序演示了以下操作：
 
-1. 使用 [ADAL][aad_adal] 从 Azure AD 获取安全令牌。 如果用户尚未登录，系统将提示其输入 Azure 凭据。
+1. 使用 [ADAL][aad_adal] 从 Azure AD 获取安全令牌。 如果用户尚未登录，系统会提示其输入 Azure 凭据。
 2. 使用从 Azure AD 获取的安全令牌创建 [SubscriptionClient][resman_subclient]，以便在 Azure 中查询与帐户关联的订阅列表。 如果列表包含多个订阅，则用户可从中选择一个订阅。
 3. 获取与所选订阅关联的凭据。
 4. 使用凭据创建 [ResourceManagementClient][resman_client] 对象。
@@ -173,7 +172,7 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure Resource
 
 删除新建的 Batch 帐户和资源组之前，可以在 [Azure 门户][azure_portal]中查看它们：
 
-若要成功运行示例应用程序，必须首先在 Azure 门户中将其注册到 Azure AD 租户，并向 Azure Resource Manager API 授予权限。 按照[使用 Azure AD 对 Batch 管理应用程序进行验证](batch-aad-auth-management.md)中提供的步骤操作。
+要成功运行示例应用程序，必须首先在 Azure 门户中将其注册到 Azure AD 租户，并向 Azure Resource Manager API 授予权限。 按照[使用 Azure AD 对 Batch 管理应用程序进行验证](batch-aad-auth-management.md)中提供的步骤操作。
 
 
 [aad_about]: ../active-directory/active-directory-whatis.md "什么是 Azure Active Directory？"
@@ -204,4 +203,3 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure Resource
 [1]: ./media/batch-management-dotnet/portal-01.png
 [2]: ./media/batch-management-dotnet/portal-02.png
 [3]: ./media/batch-management-dotnet/portal-03.png
-

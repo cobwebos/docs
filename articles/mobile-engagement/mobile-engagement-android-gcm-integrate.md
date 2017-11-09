@@ -14,16 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0282abbf44406cac89c13520bc2a4e375817ed1f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-gcm-with-mobile-engagement"></a>如何使用 Mobile Engagement 集成 GCM
 > [!IMPORTANT]
-> 你必须先按照“如何在 Android 上集成 Engagement”文档中所述的集成过程完成操作，才能接续本指南中的操作。
+> 必须先按照“如何在 Android 上集成 Engagement”文档中所述的集成过程完成操作，才能接续本指南中的操作。
 > 
 > 本文档仅在已集成市场宣传模块并计划推送 Google Play 设备时适用。 若要在应用程序中集成市场宣传活动，请首先阅读“如何在 Android 上集成 Engagement Reach”。
 > 
@@ -50,7 +49,7 @@ ms.lasthandoff: 11/17/2016
 
 如果不使用 [Google Play SDK] 或自己尚未发送注册意向，则可以让 Engagement 自动注册设备。
 
-若要启用此功能，请将以下内容添加至 `<application/>` 标记内的 `AndroidManifest.xml` 文件中：
+要启用此功能，请将以下内容添加至 `<application/>` 标记内的 `AndroidManifest.xml` 文件中：
 
             <!-- If only 1 sender, don't forget the \n, otherwise it will be parsed as a negative number... -->
             <meta-data android:name="engagement:gcm:sender" android:value="<Your Google Project Number>\n" />
@@ -83,4 +82,3 @@ ms.lasthandoff: 11/17/2016
 按照[本指南](mobile-engagement-android-get-started.md#grant-mobile-engagement-access-to-your-gcm-api-key)执行操作授予 Mobile Engagement 访问 GCM API 密钥的权限。
 
 [Google Play SDK]:https://developers.google.com/cloud-messaging/android/start
-

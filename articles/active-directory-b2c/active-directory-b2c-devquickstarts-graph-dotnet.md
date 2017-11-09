@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
+ms.openlocfilehash: ccd8bf902f707390f80e3c377e60dd35d535b4b5
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 430063bbc9fab8195e12cd1d3e3966a29bafd404
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
-# <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C：使用图形 API
+# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
+
+>[!NOTE]
+>目前，必须使用 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) 管理 Azure AD B2C 目录中的用户。
+
 Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着许多常见的租户管理任务需要以编程方式执行。 用户管理是一个主要示例。 可能需要将现有用户存储迁移到 B2C 租户。 可能想要在自己的页面上托管用户注册，并在 Azure AD B2C 目录后台创建用户帐户。 这些类型的任务需要能够创建、读取、更新和删除用户帐户。 可以通过使用 Azure AD 图形 API 来执行这些任务。
 
 对于 B2C 租户，与图形 API 通信有两种主要模式。
@@ -68,9 +71,13 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 ## <a name="configure-delete-permissions-for-your-application"></a>为应用程序配置删除权限
 目前，“读取和写入目录数据”权限**不**包括任何删除权限，如删除用户。 如果想要使应用程序能够删除用户，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。
 
-首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。
+首先，请安装 [Azure AD PowerShell v1 模块 (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)（如果还没有安装）：
 
-安装 PowerShell 模块后，打开 PowerShell 并连接到 B2C 租户。 运行 `Get-Credential` 后，系统会提示输入用户名和密码，输入 B2C 租户管理员帐户的用户名和密码。
+```powershell
+Install-Module MSOnline
+```
+
+安装 PowerShell 模块后，连接到 Azure AD B2C 租户。
 
 > [!IMPORTANT]
 > 需要使用 B2C 租户**本地**的 B2C 租户管理员帐户。 这些帐户如下所示：myusername@myb2ctenant.onmicrosoft.com。
@@ -358,5 +365,4 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 * 创建和更新使用者用户时，需要几个属性，如上所述。
 
 对于想要使用图形 API 在 B2C 租户上执行的操作，如有任何疑问或要求，请在本文留下批注，或在 GitHub 代码示例存储库中提出问题。
-
 

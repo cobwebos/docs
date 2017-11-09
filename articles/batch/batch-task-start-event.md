@@ -1,5 +1,5 @@
 ---
-title: "Azure 批处理任务开始事件 | Microsoft Docs"
+title: "Azure Batch 任务开始事件 | Microsoft Docs"
 description: "批处理任务开始事件参考。"
 services: batch
 author: tamram
@@ -12,14 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: c47ab36c99dddd46a14c15018a2a46bf7f873ffa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="task-start-event"></a>任务开始事件
 
  当任务已计划由计划程序在计算节点上启动时，会发出此事件。 请注意，如果重试任务或对其进行重新排队，此事件将再次发出，但重试计数和系统任务版本将相应更新。
@@ -84,4 +82,3 @@ ms.lasthandoff: 04/22/2017
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |retryCount|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount|
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
 在 Azure 中的 Linux 虚拟机上使用软件 RAID 将多个附加的数据磁盘呈现为一个单一的 RAID 设备，是一种常见的情形。 通常，使用这种方法可以改进性能，而且与只使用单独一块磁盘相比，吞吐量也会有所改进。
@@ -46,7 +45,7 @@ zypper install mdadm
 ```
 
 ## <a name="create-the-disk-partitions"></a>创建磁盘分区
-本示例将在 /dev/sdc 上创建一个单一的磁盘分区。 该新磁盘分区将命名为 /dev/sdc1。
+本示例会在 /dev/sdc 上创建一个单一的磁盘分区。 该新磁盘分区将命名为 /dev/sdc1。
 
 1. 启动 `fdisk`，以开始创建分区
 
@@ -62,7 +61,7 @@ zypper install mdadm
                     sectors (command 'u').
     ```
 
-2. 在提示符下按 n 键，创建**新**分区：
+2. 在提示符处按 n 键，创建新**n**分区：
 
     ```bash
     Command (m for help): n
@@ -112,7 +111,7 @@ zypper install mdadm
     ```
 
 ## <a name="create-the-raid-array"></a>创建 RAID 阵列
-1. 以下示例将给位于三个不同数据磁盘（sdc1、sdd1、sde1）上的三个分区设置带区（RAID 级别 0）。  运行此命令之后，将会创建一个名为 **/dev/md127** 的新 RAID 设备。 另请注意，如果这些数据磁盘以前属于另一失效的 RAID 阵列，则可能有必要将 `--force` 参数添加到 `mdadm` 命令：
+1. 以下示例将给位于三个单独的数据磁盘（sdc1、sdd1、sde1）上的三个分区设置带区（RAID 级别 0）。  运行此命令之后，会创建一个名为 **/dev/md127** 的新 RAID 设备。 另请注意，如果这些数据磁盘以前属于另一失效的 RAID 阵列，则可能有必要将 `--force` 参数添加到 `mdadm` 命令：
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -121,13 +120,13 @@ zypper install mdadm
 
 2. 在新 RAID 设备上创建文件系统
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
+    a. **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127
     ```
    
-    b.保留“数据库类型”设置，即设置为“共享”。 **SLES 11**
+    b. **SLES 11**
 
     ```bash
     sudo mkfs -t ext3 /dev/md127
@@ -208,7 +207,7 @@ zypper install mdadm
    
     除了以上参数，还可以使用内核参数“`bootdegraded=true`”来启用系统引导功能，即使发现 RAID 已损坏或降级（例如，由于无意中从虚拟机中移除了数据驱动器而发现这种情况）也无妨。 默认情况下，这样也可能会导致系统无法引导。
    
-    请参阅你的分发的文档，了解如何正确编辑内核参数。 例如，在许多分发（CentOS、Oracle Linux、SLES 11）中，可以手动将这些参数添加到“`/boot/grub/menu.lst`”文件。  在 Ubuntu 上，此参数可添加到“/etc/default/grub”上的 `GRUB_CMDLINE_LINUX_DEFAULT` 变量中。
+    请参阅分发的文档，了解如何正确编辑内核参数。 例如，在许多分发（CentOS、Oracle Linux、SLES 11）中，可以手动将这些参数添加到“`/boot/grub/menu.lst`”文件。  在 Ubuntu 上，此参数可添加到“/etc/default/grub”上的 `GRUB_CMDLINE_LINUX_DEFAULT` 变量中。
 
 
 ## <a name="trimunmap-support"></a>TRIM/UNMAP 支持
@@ -239,4 +238,3 @@ zypper install mdadm
     # sudo yum install util-linux
     # sudo fstrim /data
     ```
-

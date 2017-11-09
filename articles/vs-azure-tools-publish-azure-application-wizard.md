@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 4d9e1564c3fcbdfd59edb0e24158df9954c26026
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: 25b3ca9af2639860d9cfcb1492aef745fb47beb9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>使用 Visual Studio“发布 Azure 应用程序”向导 | Microsoft Docs
 在 Visual Studio 中开发 Web 应用程序后，可以使用**发布 Azure 应用程序**向导将该应用程序发布到 Azure 云服务。 
@@ -37,15 +36,15 @@ ms.lasthandoff: 03/22/2017
 
 1. 在 Visual Studio 中创建或打开 Azure 云服务项目。
 
-1. 在“解决方案资源管理器”中右键单击项目，然后从上下文菜单中选择“发布”。
+1. 在“解决方案资源管理器”中右键单击项目，并从上下文菜单中选择“发布”。
 
 **如果使用的是未为 Azure 启用的 Web 应用程序项目：**
 
 1. 在 Visual Studio 中创建或打开 Azure 云服务项目。
 
-1. 在“解决方案资源管理器”中右键单击项目，然后从上下文菜单中选择“转换” > “转换为 Azure 云服务项目”。 
+1. 在“解决方案资源管理器”中右键单击项目，并从上下文菜单中选择“转换” > “转换为 Azure 云服务项目”。 
 
-1. 在“解决方案资源管理器”中右键单击新创建的 Azure 项目，然后从上下文菜单中选择“发布”。
+1. 在“解决方案资源管理器”中右键单击新创建的 Azure 项目，并从上下文菜单中选择“发布”。
 
 ## <a name="sign-in-page"></a>登录页
 
@@ -75,13 +74,13 @@ ms.lasthandoff: 03/22/2017
 
 ![高级设置](./media/vs-azure-tools-publish-azure-application-wizard/settings-advanced-settings.png)
 
-**部署标签** - 接受默认名称，或者输入所选的名称。 若要将日期附加到部署标签，请保留选中相应的复选框。 
+**部署标签** - 接受默认名称，或者输入所选的名称。 要将日期附加到部署标签，请保留选中相应的复选框。 
    
 **存储帐户** - 选择要用于此部署的存储帐户，或者单击“&lt;新建>”创建一个存储帐户。 每个存储帐户的数据中心均显示在括号中。 建议存储帐户的数据中心位置与云服务的数据中心位置相同（常用设置）。  
    
 Azure 存储帐户将存储应用程序部署的包。 部署应用程序之后，将从存储帐户中删除该包。
 
-**失败时删除部署** - 选择此选项可在发布期间遇到任何错误时将部署删除。 如果要保留云服务的不变虚拟 IP 地址，则应取消选中此项。
+**失败时删除部署** - 选择此选项可在发布期间遇到任何错误时会部署删除。 如果要保留云服务的不变虚拟 IP 地址，则应取消选中此项。
 
 **部署更新** - 如果希望仅部署更新的组件，请选择此选项。 这种部署类型比完整部署更快速。 如果要保留云服务的不变虚拟 IP 地址，则应选中此项。 
 
@@ -89,7 +88,7 @@ Azure 存储帐户将存储应用程序部署的包。 部署应用程序之后�
 
 ![部署设置](./media/vs-azure-tools-publish-azure-application-wizard/deployment-settings.png)
 
-**启用 IntelliTrace** - 指定是否要启用 IntelliTrace。 通过 IntelliTrace，可以在某个角色实例在 Azure 中运行时记录该角色实例的大量调试信息。 如果您需要查找问题的原因，您可以从 Visual Studio 使用 IntelliTrace 日志来单步执行代码，就像它在 Azure 中运行一样。 有关使用 IntelliTrace 的详细信息，请参阅[使用 Visual Studio 和 IntelliTrace 调试已发布的 Azure 云服务](./vs-azure-tools-intellitrace-debug-published-cloud-services.md)。 
+**启用 IntelliTrace** - 指定是否要启用 IntelliTrace。 通过 IntelliTrace，可以在某个角色实例在 Azure 中运行时记录该角色实例的大量调试信息。 如果需要查找问题的原因，可以从 Visual Studio 使用 IntelliTrace 日志来单步执行代码，就像它在 Azure 中运行一样。 有关使用 IntelliTrace 的详细信息，请参阅[使用 Visual Studio 和 IntelliTrace 调试已发布的 Azure 云服务](./vs-azure-tools-intellitrace-debug-published-cloud-services.md)。 
 
 **启用分析** - 指定是否要启用性能分析。 使用 Visual Studio 探查器，可以获取云服务在计算方面运行情况的深入分析。 有关使用 Visual Studio 探查器的详细信息，请参阅[测试 Azure 云服务的性能](./vs-azure-tools-performance-profiling-cloud-services.md)。
 
@@ -105,7 +104,7 @@ Azure 存储帐户将存储应用程序部署的包。 部署应用程序之后�
 
 ![摘要](./media/vs-azure-tools-publish-azure-application-wizard/summary.png)
 
-**目标配置文件** - 可以选择基于所选的设置创建发布配置文件。 例如，可以创建一个配置文件用于测试环境，并创建另一个配置文件用于生产环境。 若要保存此配置文件，请选择“保存”图标。 向导将创建配置文件并将它保存在 Visual Studio 项目中。 若要修改配置文件名称，请打开“目标配置文件”列表，然后选择“<管理…>”。
+**目标配置文件** - 可以选择基于所选的设置创建发布配置文件。 例如，可以创建一个配置文件用于测试环境，并创建另一个配置文件用于生产环境。 若要保存此配置文件，请选择“保存”图标。 向导将创建配置文件并将它保存在 Visual Studio 项目中。 要修改配置文件名称，请打开“目标配置文件”列表，并选择“<管理…>”。
    
    > [!NOTE]
    > 发布配置文件将出现在 Visual Studio 的解决方案资源管理器中，配置文件设置将写入扩展名为.azurePubxml 的文件。 设置将保存为 XML 标记的属性。

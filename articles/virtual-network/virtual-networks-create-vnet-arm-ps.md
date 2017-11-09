@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e0fb1e3fc87e3a3a93d42f9f2722696e0f9aae57
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: e7072ddf51570d46578111e2e392e3cbea53f2aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>使用 PowerShell 创建虚拟网络
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 04/27/2017
 
 Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Microsoft 建议通过 Resource Manager 部署模型创建资源。 若要详细了解这两个模型之间的差别，请阅读 [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md)（了解 Azure 部署模型）一文。
  
-本文说明如何使用 PowerShell 通过资源管理器部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
+本文说明如何使用 PowerShell 通过 Resource Manager 部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
 
 > [!div class="op_single_selector"]
 > * [门户](virtual-networks-create-vnet-arm-pportal.md)
@@ -132,7 +131,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
     -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
     ```
 
-7. 尽管你创建了子网，但它们当前仅存在于用于检索你在上面的步骤 4 中创建的 VNet 的本地变量中。 若要保存对 Azure 所做的更改，请运行以下命令：
+7. 尽管你创建了子网，但它们当前仅存在于用于检索你在前面步骤 4 中创建的 VNet 的本地变量中。 若要保存对 Azure 所做的更改，请运行以下命令：
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -179,7 +178,6 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 如何连接：
 
-- 通过阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md)， 将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
+- 通过阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md)，将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
 - 阅读[连接 VNet](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) 一文，将一个虚拟网络连接到其他虚拟网络。
 - 使用站点到站点虚拟专用网络 (VPN) 或 ExpressRoute 线路，将本地网络连接到虚拟网络。 阅读文章[使用站点到站点 VPN 将 VNet 连接到本地网络](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)和[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-arm.md)，了解相关操作方法。
-

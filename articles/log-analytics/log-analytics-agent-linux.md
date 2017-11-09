@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/05/2017
+ms.date: 09/29/2017
 ms.author: magoedte
+ms.openlocfilehash: c9902e1b8644c2b0a894f9cde98f2056564775c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 17b451b1fc91cf9fdc895ad28f2c455af5d28b07
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-your-linux-computers-to-operations-management-suite-oms"></a>将 Linux 计算机连接到 Operations Management Suite (OMS) 
 
 对于作为物理服务器或虚拟机驻留在本地数据中心的 Linux 计算机和容器解决方案（例如 Docker）以及云托管服务（例如 Amazon Web Services (AWS) 或 Microsoft Azure）中的虚拟机，可以使用 Microsoft Operations Management Suite (OMS) 收集和处理从其中生成的数据。 还可以使用 OMS 中可用的管理解决方案来主动管理 Linux VM 的生命周期，比如使用更改跟踪来标识配置更改，使用更新管理来管理软件更新。 
@@ -75,7 +73,7 @@ PAM | 可插拔身份验证模块 |
 
 **程序包** | **版本** | **说明**
 ----------- | ----------- | --------------
-omsagent | 1.4.0 | Operations Management Suite Agent for Linux
+omsagent | 1.4.1 | Operations Management Suite Agent for Linux
 omsconfig | 1.1.1 | 配置 OMS Agent 的代理
 omi | 1.2.0 | Open Management Infrastructure (OMI)：一款轻型 CIM 服务器
 scx | 1.6.3 | 操作系统性能指标的 OMI CIM 提供程序
@@ -93,9 +91,9 @@ OMS Agent for Linux 与 System Center Operations Manager 代理共享代理二�
 ### <a name="system-configuration-changes"></a>系统配置更改
 在安装 OMS Agent for Linux 程序包后，将应用下列其他系统范围的配置更改。 卸载 omsagent 程序包时会删除这些项目。
 
-* 创建一个名为 `omsagent` 的非特权用户。 这是 omsagent 守护程序运行时使用的帐户。
-* 在 /etc/sudoers.d/omsagent 中创建一个 sudoers “include” 文件。 这会授权 omsagent 重新启动 syslog 和 omsagent 守护程序。 如果安装的 sudo 版本不支持 sudo “include” 指令，则会将这些条目写入 /etc/sudoers。
-* 修改 syslog 配置，以将事件子集转发到代理。 有关详细信息，请参阅下面的**配置数据收集**一节
+* 创建一个名为 `omsagent` 的非特权用户。 omsagent 守护程序以此帐户身份运行。
+* 在 /etc/sudoers.d/omsagent 中创建一个 sudoers “include” 文件。 此文件会授权 omsagent 重新启动 syslog 和 omsagent 守护程序。 如果安装的 sudo 版本不支持 sudo “include” 指令，则会将这些条目写入 /etc/sudoers。
+* 修改 syslog 配置，以将事件子集转发到代理。 有关详细信息，请参阅下面的“配置数据收集”部分。
 
 ### <a name="upgrade-from-a-previous-release"></a>从以前的版本升级
 此版本支持从早于 1.0.0-47 的版本升级。 使用 `--upgrade` 命令执行安装时，会将代理的所有组件都升级到最新版本。
@@ -106,7 +104,7 @@ OMS Agent for Linux 与 System Center Operations Manager 代理共享代理二�
 
 首先，需要 OMS 工作区 ID 和密钥，可通过切换到 [OMS 经典门户](https://mms.microsoft.com)来找到它们。  在“概述”页面上，从顶部菜单中选择“设置”，然后导航到“连接的源\Linux 服务器”。  可在“工作区 ID”和“主键”的右侧看到值。  将它们复制并粘贴到喜爱的编辑器中。    
 
-1. 从 GitHub 下载最新的 [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x64.sh) 或 [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x86.sh)。  
+1. 从 GitHub 下载最新的 [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x64.sh) 或 [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x86.sh)。  
 2. 使用 scp/sftp 将相应的捆绑包（x86 或 x64）传输到 Linux 计算机。
 3. 使用 `--install` 或 `--upgrade` 参数安装捆绑包。 
 
@@ -129,8 +127,8 @@ sudo sh ./omsagent-<version>.universal.x64.sh --upgrade
 sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <shared key> -d opinsights.azure.us
 ```
 
-## <a name="configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway"></a>将代理配置为使用 HTTP 代理服务器或 OMS 网关
-OMS Agent for Linux 支持通过 HTTP 或 HTTPS 代理服务器或 OMS 网关与 OMS 服务进行通信。  支持匿名身份验证和基本身份验证（用户名/密码）。  
+## <a name="configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway"></a>将代理配置为使用代理服务器或 OMS 网关
+适用于 Linux 的 OMS 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 OMS 服务进行通信。  支持匿名身份验证和基本身份验证（用户名/密码）。  
 
 ### <a name="proxy-configuration"></a>代理配置
 代理配置值具有以下语法：
@@ -139,13 +137,13 @@ OMS Agent for Linux 支持通过 HTTP 或 HTTPS 代理服务器或 OMS 网关与
 
 属性|说明
 -|-
-协议|http 或 https
+协议|https
 user|用于代理身份验证的可选用户名
 password|用于代理身份验证的可选密码
 proxyhost|代理服务器/OMS 网关的地址或 FQDN
 端口|代理服务器/OMS 网关的可选端口号
 
-例如： `http://user01:password@proxy01.contoso.com:8080`
+例如： `https://user01:password@proxy01.contoso.com:30443`
 
 可在安装期间指定代理服务器，也可在安装后通过修改 proxy.conf 配置文件来指定。   
 
@@ -153,13 +151,13 @@ proxyhost|代理服务器/OMS 网关的地址或 FQDN
 omsagent 安装捆绑包的 `-p` 或 `--proxy` 参数指定要使用的代理配置。 
 
 ```
-sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p http://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
 ```
 
 ### <a name="define-the-proxy-configuration-in-a-file"></a>在文件中定义代理配置
 可以在 `/etc/opt/microsoft/omsagent/proxy.conf` 和 `/etc/opt/microsoft/omsagent/conf/proxy.conf ` 文件中设置代理配置。 可以直接创建或编辑这些文件，但必须更新其权限以授予 omiuser 用户对这些文件的读取权限。 例如：
 ```
-proxyconf="https://proxyuser:proxypassword@proxyserver01:8080"
+proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
 sudo echo $proxyconf >>/etc/opt/microsoft/omsagent/proxy.conf
 sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf
 sudo chmod 600 /etc/opt/microsoft/omsagent/proxy.conf /etc/opt/microsoft/omsagent/conf/proxy.conf  
@@ -237,10 +235,10 @@ omsagent 的日志轮换配置位于此处：`/etc/logrotate.d/omsagent-<workspa
 * OMS 服务终结点不在数据中心的允许列表中 
 
 #### <a name="resolutions"></a>解决方法
-1. 使用以下命令（启用了 `-v` 选项）通过 OMS Agent for Linux 重新载入到 OMS 服务中。 这允许通过代理服务器连接到 OMS 服务的代理能够进行详细输出。 
+1. 使用以下命令（启用了 `-v` 选项）通过 OMS Agent for Linux 重新载入到 OMS 服务中。 此 settubg 允许通过代理服务器连接到 OMS 服务的代理能够进行详细输出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
-2. 请查看[将代理配置为使用 HTTP 代理服务器(#configuring the-agent-for-use-with-a-http-proxy-server)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
+2. 请查看[将代理配置为使用代理服务器或 OMS 网关](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
 * 仔细检查下列 OMS 服务终结点是否在允许列表中：
 
     |代理资源| 端口 |  
@@ -263,7 +261,7 @@ omsagent 的日志轮换配置位于此处：`/etc/logrotate.d/omsagent-<workspa
 3. 请按照本主题前文所述的安装说明使用正确的工作区 ID 和工作区密钥重新载入。
 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>问题：载入后，日志文件中立即显示 500 和 404 错误
-这是第一次将 Linux 数据上传到 OMS 工作区时发生的已知问题。 这不会影响发送的数据或服务体验。
+此错误是第一次将 Linux 数据上传到 OMS 工作区时发生的已知问题。 此错误不会影响发送的数据或服务体验。
 
 ### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>问题：OMS 门户中未显示任何数据
 
@@ -281,5 +279,4 @@ omsagent 的日志轮换配置位于此处：`/etc/logrotate.d/omsagent-<workspa
 
     >[!NOTE]
     >此问题已在代理版本 1.1.0-28 及更高版本中解决。
-
 

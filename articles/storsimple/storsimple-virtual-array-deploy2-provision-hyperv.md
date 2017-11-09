@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
 ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -85,19 +84,19 @@ ms.lasthandoff: 03/16/2017
 
 #### <a name="to-provision-a-virtual-array"></a>预配虚拟阵列
 1. 在 Windows Server 主机上，将虚拟阵列映像复制到本地驱动器。 通过 Azure 门户已下载该映像（VHD 或 VHDX）。 记下复制映像的位置，因为在以后的过程中将使用此映像。
-2. 打开“服务器管理器”。 单击右上角的“工具”，然后选择“Hyper-V 管理器”。
+2. 打开“服务器管理器”。 单击右上角的“工具”，并选择“Hyper-V 管理器”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
    如果运行的是 Windows Server 2008 R2，请打开 Hyper-V 管理器。 在服务器管理器中，单击“角色 > Hyper-V > Hyper-V 管理器”。
-3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，然后单击“新建” > “虚拟机”。
+3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，并单击“新建” > “虚拟机”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。
 5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。 单击“下一步”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
-6. 在“指定代数”页上选择设备映像类型，然后单击“下一步”。 如果使用的是 Windows Server 2008 R2，则不显示此页。
+6. 在“指定代数”页上选择设备映像类型，并单击“下一步”。 如果使用的是 Windows Server 2008 R2，则不显示此页。
 
    * 如果已为 Windows Server 2012 或更高版本下载了 .vhdx 映像，请选择“第 2 代”。
    * 如果已为 Windows Server 2008 R2 或更高版本下载了 .vhd 映像，请选择“第 1 代”。
@@ -106,13 +105,13 @@ ms.lasthandoff: 03/16/2017
 7. 在“分配内存”页上，将“启动内存”指定为至少“8192 MB”，且不启用动态内存，然后单击“下一步”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image6.png)  
-8. 在“配置网络”页上，指定连接到 Internet 的虚拟交换机，然后单击“下一步”。
+8. 在“配置网络”页上，指定连接到 Internet 的虚拟交换机，并单击“下一步”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. 在“连接虚拟硬盘”页上，选择“使用现有虚拟硬盘”，指定虚拟阵列映像（.vhdx 或 .vhd）的位置，然后单击“下一步”。
+9. 在“连接虚拟硬盘”页上，选择“使用现有虚拟硬盘”，指定虚拟阵列映像（.vhdx 或 .vhd）的位置，并单击“下一步”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
-10. 查看“摘要”，然后单击“完成”创建虚拟机。
+10. 查看“摘要”，并单击“完成”创建虚拟机。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image9.png)
 11. 满足最低要求需 4 个核心。 若要添加 4 个虚拟处理器，请在“Hyper-V 管理器”窗口中选择主机系统。 在“虚拟机”列表下的右窗格中，找到刚创建的虚拟机。 选择计算机名称，右键单击该名称后选择“设置”。
@@ -124,10 +123,10 @@ ms.lasthandoff: 03/16/2017
 13. 若要满足最低要求，还需添加 500 GB 的虚拟数据磁盘。 在“设置”页中：
 
     1. 在左窗格中，选择“SCSI 控制器”。
-    2. 在右窗格中，选择“硬盘驱动器”，然后单击“添加”。
+    2. 在右窗格中，选择“硬盘驱动器”，并单击“添加”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image12.png)
-14. 在“硬盘驱动器”页上，选择“虚拟硬盘”选项，然后单击“新建”。 此时会启动“新建虚拟硬盘向导”。
+14. 在“硬盘驱动器”页上，选择“虚拟硬盘”选项，并单击“新建”。 此时会启动“新建虚拟硬盘向导”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. 在新建虚拟硬盘向导的“准备工作”页上，单击“下一步”。
@@ -140,7 +139,7 @@ ms.lasthandoff: 03/16/2017
 18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 单击“资源组名称” 的 Azure 数据工厂。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。 此时会关闭向导并向虚拟机添加虚拟硬盘。
@@ -190,10 +189,10 @@ ms.lasthandoff: 03/16/2017
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
-9. 完成初始设置并启动设备以后，将会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 使用该 IP 地址连接到虚拟阵列的 Web UI 并完成本地设置和注册。
+9. 完成初始设置并启动设备以后，会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 使用该 IP 地址连接到虚拟阵列的 Web UI 并完成本地设置和注册。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)
-10. （可选）仅当你是在政府云中部署设备时，才执行此步骤。 此时会在设备上启用美国联邦信息处理标准 (FIPS) 模式。 FIPS 140 标准定义的加密算法已经过批准，可以用于美国联邦政府计算机系统来保护敏感数据。
+10. （可选）仅是在政府云中部署设备时，才执行此步骤。 此时会在设备上启用美国联邦信息处理标准 (FIPS) 模式。 FIPS 140 标准定义的加密算法已经过批准，可以用于美国联邦政府计算机系统来保护敏感数据。
 
     1. 若要启用 FIPS 模式，请运行以下 cmdlet：
 
@@ -217,4 +216,3 @@ ms.lasthandoff: 03/16/2017
 ## <a name="next-steps"></a>后续步骤
 * [将 StorSimple 虚拟阵列设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
 * [将 StorSimple 虚拟阵列设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)
-

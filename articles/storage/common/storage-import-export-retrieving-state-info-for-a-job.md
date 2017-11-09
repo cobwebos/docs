@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
 ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
-ms.lasthandoff: 03/30/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="retrieving-state-information-for-an-importexport-job"></a>检索导入/导出作业的状态信息
 可以调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_Get)操作来检索有关导入和导出作业的信息。 返回的信息包括：
 
@@ -49,8 +47,8 @@ ms.lasthandoff: 03/30/2017
 |`Received`|数据中心中收到所有驱动器后，作业状态将设置为 Received。|
 |`Transferring`|在数据中心收到驱动器且已开始处理至少一个驱动器后，作业状态将设置为 `Transferring`。 有关详细信息，请参阅下面的“`Drive States`”部分。|
 |`Packaging`|在处理完所有驱动器后，作业将进入 `Packaging` 状态，直到将驱动器寄回给客户。|
-|`Completed`|在将所有驱动器寄回客户后，如果完成作业时未出现错误，该作业将设置为 `Completed` 状态。 作业在保持 `Completed` 状态 90 天后将自动删除。|
-|`Closed`|将所有驱动器寄回客户后，如果在处理作业期间出现过错误，该作业将设置为 `Closed` 状态。 作业在保持 `Closed` 状态 90 天后将自动删除。|
+|`Completed`|在将所有驱动器寄回客户后，如果完成作业时未出现错误，该作业将设置为 `Completed` 状态。 作业在保持 `Completed` 状态 90 天后会自动删除。|
+|`Closed`|将所有驱动器寄回客户后，如果在处理作业期间出现过错误，该作业将设置为 `Closed` 状态。 作业在保持 `Closed` 状态 90 天后会自动删除。|
 
 只能取消处于特定状态的作业。 已取消的作业将跳过数据复制步骤，不过会遵循与尚未取消的作业相同的状态转换。
 
@@ -58,11 +56,11 @@ ms.lasthandoff: 03/30/2017
 
 |作业状态|事件|解决方法/后续步骤|
 |---------------|-----------|------------------------------|
-|`Creating or Undefined`|作业的一个或多个驱动器已送达，但该作业不处于 `Shipping` 状态，或者服务中没有该作业的记录。|导入/导出服务运营团队将尝试联系客户，使用必要的信息来创建或更新作业，使作业能够继续进行。<br /><br /> 如果运营团队在两周内无法联系到客户，将尝试寄回驱动器。<br /><br /> 如果无法寄回驱动器且无法联系到客户，将在 90 天后安全销毁驱动器。<br /><br /> 请注意，在作业状态更新为 `Shipping` 之前，无法处理作业。|
+|`Creating or Undefined`|作业的一个或多个驱动器已送达，但该作业不处于 `Shipping` 状态，或者服务中没有该作业的记录。|导入/导出服务运营团队将尝试联系客户，使用必要的信息来创建或更新作业，使作业能够继续进行。<br /><br /> 如果运营团队在两周内无法联系到客户，将尝试寄回驱动器。<br /><br /> 如果无法寄回驱动器且无法联系到客户，会在 90 天后安全销毁驱动器。<br /><br /> 请注意，在作业状态更新为 `Shipping` 之前，无法处理作业。|
 |`Shipping`|作业的包裹在两个多星期后仍未送达。|运营团队将通知客户包裹丢失。 根据客户做出的回应，运营团队将延长间隔以等待包裹送达或取消作业。<br /><br /> 如果无法联系到客户或客户在 30 天内未做出回应，运营团队将采取措施，将作业直接从 `Shipping` 状态转移到 `Closed` 状态。|
 |`Completed/Closed`|驱动器从未送至回邮地址或在寄送途中受损（仅适用于导出作业）。|如果驱动器未送至回邮地址，客户应先调用“获取作业”操作或者在门户中查看作业状态，确保已寄送驱动器。 如果已寄送驱动器，客户应联系承运人来尝试找到驱动器。<br /><br /> 如果驱动器在寄送途中受损，客户可能需要请求另一个导出作业或下载缺失的 Blob。|
-|`Transferring/Packaging`|作业的回邮地址错误或缺失。|运营团队将联系作业相关人员获取正确的地址。<br /><br /> 如果无法联系到客户，将在 90 天后安全销毁驱动器。|
-|`Creating / Shipping/ Transferring`|寄送包裹中包含要导入的驱动器列表中未显示的驱动器。|额外的驱动器不会得到处理，将在作业完成后退回给客户。|
+|`Transferring/Packaging`|作业的回邮地址错误或缺失。|运营团队将联系作业相关人员获取正确的地址。<br /><br /> 如果无法联系到客户，会在 90 天后安全销毁驱动器。|
+|`Creating / Shipping/ Transferring`|寄送包裹中包含要导入的驱动器列表中未显示的驱动器。|额外的驱动器不会得到处理，会在作业完成后退回给客户。|
 
 ## <a name="drive-states"></a>驱动器状态
 下面的表格和图描述了单个驱动器在导入或导出作业中转换时的生命周期。 可以通过调用“`Get Job`”操作并检查 `DriveList` 属性的 `State` 元素来检索当前驱动器状态。
@@ -94,4 +92,3 @@ ms.lasthandoff: 03/30/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
-

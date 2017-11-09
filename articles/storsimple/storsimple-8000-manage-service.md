@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 10/04/2017
 ms.author: alkohli
+ms.openlocfilehash: 2d6c1737edbc4e69dd7de4c8ce3d7b0899bfae51
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 22bb4a32f006d7e49356743c2a87eb622a61d18e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -56,21 +55,26 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 * **名称** – 在创建 StorSimple 设备管理器服务时为其分配的名称。 **在创建服务后无法更改服务名称。这也适用于其他实体，例如，无法在 Azure 门户中重命名的设备、卷、卷容器和备份策略。**
 * **状态** – 服务的状态，可以是**活动**、**正在创建**或**联机**。
-* **位置** – 将在其中部署 StorSimple 设备的地理位置。
+* **位置** – 会在其中部署 StorSimple 设备的地理位置。
 * **订阅** – 与服务关联的计费订阅。
 
 ## <a name="move-a-service-to-azure-portal"></a>将服务移动到 Azure 门户
-现在可以在 Azure 门户中管理 StorSimple 8000 系列了。 如果有用来管理 StorSimple 设备的现有服务，建议将该服务移动到 Azure 门户。 在 2017 年 9 月 30 日之后，StorSimple Manager 服务的 Azure 经典门户将不可用。
+现在可以在 Azure 门户中管理 StorSimple 8000 系列了。 如果有用来管理 StorSimple 设备的现有服务，建议将该服务移动到 Azure 门户。 在 2017 年 9 月 30 日之后，将不再支持针对 StorSimple Manager 服务的 Azure 经典门户。 如果想要移动到新的 Azure 门户，请参阅[转换注意事项](#considerations-for-transition)。 
 
-用于迁移到 Azure 门户的选项是按阶段提供的。 如果看不到用于迁移到 Azure 门户的选项，但希望进行移动，并已查看[有关转移的注意事项](#considerations-for-transition)中所述的迁移的影响，则可以[提交请求](https://aka.ms/ss8000-cx-signup)。
+> [!NOTE]
+> 从 2017 年 10 月 5 日开始，经典 StorSimple 设备管理器将自动移至新的 Azure 门户。 此为分阶段转出，我们将通过电子邮件和门户通知告知你有关移动的最新消息。 如果你有任何问题，请参阅[常见问题解答：移至 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
 
 ### <a name="considerations-for-transition"></a>有关转换的注意事项
 
 在移动此服务之前，请查看迁移到新 Azure 门户的影响。
 
+> [!NOTE]
+> 在移至新的 Azure 门户后，将不再支持现有的 Azure 服务管理 (ASM) PowerShell cmdlet。 请更新脚本以通过 Azure 资源管理器 SDK 管理设备。 有关详细信息，请转到[使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备](storsimple-8000-automation-azurerm-scripts.md)。
+> 新的 Azure 门户支持运行 Update 3.0 或更高版本的设备。 如果你的设备不是最新的，我们强烈建议请尽快应用 Update 5。
+
 #### <a name="before-you-transition"></a>在转换之前
 
-* 设备运行的是 Update 3.0 或更高版本。 如果设备运行的是较旧版本，请安装最新更新。 有关详细信息，请转到[安装 Update 4](storsimple-8000-install-update-4.md)。 如果在使用 StorSimple 云设备 (8010/8020)，请创建新的采用 Update 4.0 的云设备。 
+* 设备运行的是 Update 3.0 或更高版本。 如果设备运行的是较旧版本，强烈建议使用修补程序方法安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 如果在使用 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建使用 Update 5.0 的云设备，然后故障转移到新建的云设备。
 
 * 一旦转换到新 Azure 门户，将无法使用 Azure 经典门户来管理 StorSimple 设备。
 
@@ -88,7 +92,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 * 无法再从经典门户管理设备。
 
-* 现有 Azure 服务管理 (ASM) PowerShell cmdlet 将不受支持。 请更新脚本以通过 Azure Resource Manager 管理设备。
+* 现有 Azure 服务管理 (ASM) PowerShell cmdlet 将不受支持。 请更新脚本以通过 Azure 资源管理器管理设备。 有关使用资源管理器 SDK 的示例脚本，请参阅 [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools)。
 
 * 服务和设备配置将保留。 所有卷和备份也将转换到 Azure 门户。
 
@@ -96,20 +100,20 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 执行以下步骤将服务转换到 Azure 门户。
 
-1. 在经典门户中转到现有的 StorSimple Manager 服务。
+1. 在新的 Azure 门户中转到现有的 StorSimple Manager 服务。
+    ![更多服务](./media/storsimple-8000-manage-service/service-browse01.png) ![选择设备管理器](./media/storsimple-8000-manage-service/service-browse02.png)
 
-2. 可以看到一条通知，指出现在可以在 Azure 门户中使用 StorSimple 设备管理器服务了。 请注意，在 Azure 门户中，该服务称为 StorSimple 设备管理器服务。
-
+2. 可以看到一条通知，指出现在可以在 Azure 门户中使用 StorSimple 设备管理器服务了。 在 Azure 门户中，该服务称为 StorSimple 设备管理器服务。
     ![迁移通知](./media/storsimple-8000-manage-service/service-transition1.jpg)
-
+    
     1. 请确保已查看了迁移的全部影响。
     2. 查看将从经典门户移动的 StorSimple 设备管理器的列表。
 
 3. 单击“迁移”。 转换将开始并且需要花费几分钟时间才能完成。
 
-转换完成后，可以通过 Azure 门户中的 StorSimple 设备管理器服务管理设备。
+转换完成后，可以通过 Azure 门户中的 StorSimple 设备管理器服务管理设备。 如果你没有看到用来迁移到 Azure 门户的选项，但你想要移动，则可[提交请求](https://aka.ms/ss8000-cx-signup)。
 
-Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 下表汇总了在从经典门户迁移到 Azure 门户后在运行 Update 3.0 之前版本的设备上支持的操作。
+Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 3.0 之前版本的设备上支持的操作。
 
 | 操作                                                                                                                       | 支持      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
@@ -158,13 +162,13 @@ Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备�
 
 ## <a name="get-the-service-registration-key"></a>获取服务注册密钥
 
-成功创建服务后，你需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-8000-security.md)。 可以通过访问 StorSimple 设备管理器边栏选项卡上的“密钥”来获取注册密钥。
+成功创建服务后，需要为 StorSimple 设备注册该服务。 若要注册第一台 StorSimple 设备，需要使用服务注册密钥。 若要向现有 StorSimple 服务注册额外的设备，需要使用注册密钥和服务数据加密密钥（后者是在注册期间在第一台设备上生成的）。 有关服务数据加密密钥的详细信息，请参阅 [StorSimple 安全性](storsimple-8000-security.md)。 可以通过访问 StorSimple 设备管理器边栏选项卡上的“密钥”来获取注册密钥。
 
 可以执行以下步骤来获取服务注册密钥。
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-将服务注册密钥保存在安全位置。 若要为其他设备注册此服务，你需要使用此密钥以及服务数据加密密钥。 获取服务注册密钥后，必须通过用于 StorSimple 的 Windows PowerShell 界面配置设备。
+将服务注册密钥保存在安全位置。 要为其他设备注册此服务，需要使用此密钥以及服务数据加密密钥。 获取服务注册密钥后，必须通过用于 StorSimple 的 Windows PowerShell 界面配置设备。
 
 有关如何使用此注册密钥的详细信息，请参阅[步骤 3：通过 Windows PowerShell for StorSimple 配置和注册设备](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)。
 
@@ -196,14 +200,14 @@ Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备�
 
 更改服务数据加密密钥过程有 3 个步骤：
 
-1. 使用适用于 Azure Resource Manager 的 Windows PowerShell 脚本，授权某个设备来更改服务数据加密密钥。
+1. 使用适用于 Azure 资源管理器的 Windows PowerShell 脚本，授权某个设备来更改服务数据加密密钥。
 2. 使用 StorSimple 的 Windows PowerShell，启动服务数据加密密钥更改。
 3. 如果有多个 StorSimple 设备，请更新其他设备上的服务数据加密密钥。
 
 ### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>步骤 1：使用 Windows PowerShell 脚本授权某个设备来更改服务数据加密密钥
 通常情况下，设备管理员会请求服务管理员授权某个设备来更改服务数据加密密钥。 然后，服务管理员会授权该设备来更改密钥。
 
-此步骤是使用基于 Azure Resource Manager 的脚本执行的。 服务管理员可以选择有资格接受授权的一个设备。 然后，授权该设备来启动服务数据加密密钥更改过程。 
+此步骤是使用基于 Azure 资源管理器的脚本执行的。 服务管理员可以选择有资格接受授权的一个设备。 然后，授权该设备来启动服务数据加密密钥更改过程。 
 
 有关使用脚本的详细信息，请转到 [Authorize-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
 
@@ -231,32 +235,34 @@ Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备�
 2. 在命令提示符处，键入：
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
-3. cmdlet 成功完成后，你将收到新的服务数据加密密钥。 复制并保存此密钥，以供在此过程的步骤 3 中使用。 此密钥将用于更新已使用 StorSimple Manager 服务注册的所有剩余设备。
+3. cmdlet 成功完成后，将收到新的服务数据加密密钥。 复制并保存此密钥，以供在此过程的步骤 3 中使用。 此密钥用于更新已使用 StorSimple Manager 服务注册的所有剩余设备。
    
    > [!NOTE]
    > 此过程必须在授权 StorSimple 设备后的四小时内启动。
    > 
    > 
    
-   然后，此新密钥将发送到该服务，以推送到所有已使用该服务注册的设备。 之后，服务仪表板上将显示警报。 该服务将禁用已注册设备上的所有操作，随后设备管理员将需要更新其他设备上的服务数据加密密钥。 但是，不会中断 I/O（将数据发送到云的主机）。
+   然后，此新密钥将发送到该服务，以推送到所有已使用该服务注册的设备。 之后，服务仪表板上会显示警报。 该服务将禁用已注册设备上的所有操作，随后设备管理员将需要更新其他设备上的服务数据加密密钥。 但是，不会中断 I/O（将数据发送到云的主机）。
    
-   如果已有一台设备注册到服务，滚动更新过程现已完成，你可以跳过下一步。 如果已有多台设备注册到服务，请继续执行步骤 3。
+   如果已有一台设备注册到服务，滚动更新过程现已完成，可以跳过下一步。 如果已有多台设备注册到服务，请继续执行步骤 3。
 
 ### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>步骤 3：在其他 StorSimple 设备上更新服务数据加密密钥
 如果已有多台设备注册到 StorSimple Manager 服务，则必须在 StorSimple 设备的 Windows PowerShell 界面中执行这些步骤。 必须使用在步骤 2 中获取的密钥来更新注册到 StorSimple Manager 服务的所有剩余 StorSimple 设备。
 
 执行以下步骤，更新设备上的服务数据加密。
 
-#### <a name="to-update-the-service-data-encryption-key"></a>更新服务数据加密密钥
+#### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>在物理设备上更新服务数据加密密钥
 1. 使用 Windows PowerShell for StorSimple 连接到控制台。 选择选项 1 以使用完全访问权限登录。
-2. 在命令提示符处，键入：
-   
-    `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. 在命令提示符处，键入：`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. 提供在[步骤 2：使用 Windows PowerShell for StorSimple 启动服务数据加密密钥更改](#to-initiate-the-service-data-encryption-key-change)中所获取的服务数据加密密钥。
 
+#### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>更新所有 8010/8020 云设备上的服务数据加密密钥
+1. 下载和安装 [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell 脚本。 
+2. 打开 PowerShell 并在命令提示符处键入：`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+
+此脚本将确保在设备管理器下的所有 8010/8020 云设备上设置服务数据加密密钥。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple 部署过程](storsimple-8000-deployment-walkthrough-u2.md)。
 * 详细了解如何[管理 StorSimple 存储帐户](storsimple-8000-manage-storage-accounts.md)。
 * 详细了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-

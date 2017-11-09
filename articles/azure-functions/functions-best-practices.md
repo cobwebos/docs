@@ -14,20 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: d3df59afe595265fba88f7274154a36d42139859
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 645a5dd16e72619e7c2470ab8f03098f0fa6c7f8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
-本文为提高函数应用的性能和可靠性提供了指南。 
+本文为提高[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数应用的性能和可靠性提供了指南。 
 
 
 ## <a name="avoid-long-running-functions"></a>避免使用长时间运行的函数
@@ -99,5 +97,4 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 由于 Azure Functions 使用 Azure 应用服务，用户还应该了解应用服务准则。
 * [模式和实践 HTTP 性能优化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
-
 

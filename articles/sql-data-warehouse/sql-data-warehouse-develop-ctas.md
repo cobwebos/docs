@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 01/30/2017
 ms.author: shigu;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 68655fff239bfd76f93ab9177d161d9534cbb901
-ms.openlocfilehash: 150113dda95ab021dd7ad8696b5886373ba982b8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/31/2017
-
-
+ms.openlocfilehash: cb08313726e8135feaa9b413937c2197ea397f4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>SQL 数据仓库中的 Create Table As Select (CTAS)
 Create Table As Select (`CTAS`) 是所提供的最重要的 T-SQL 功能之一。 它是根据 SELECT 语句的输出创建新表的完全并行化操作。 `CTAS` 是创建表副本的最简单快速方法。 本文档提供 `CTAS` 的示例和最佳实践。
@@ -48,7 +46,7 @@ CREATE TABLE [dbo].[FactInternetSales_new]
 WITH
 (
     DISTRIBUTION = ROUND_ROBIN
-,    CLUSTERED COLUMNSTORE INDEX
+,   CLUSTERED COLUMNSTORE INDEX
 )
 AS
 SELECT  *
@@ -59,14 +57,14 @@ FROM    [dbo].[FactInternetSales]
 使用 `CTAS` 可以更改表数据的分布以及表类型。 
 
 > [!NOTE]
-> 如果你只是想要尝试更改 `CTAS` 操作中的索引并且源表经过哈希分布，那么，在保留相同的分布列和数据类型的情况下，`CTAS` 操作的效果最佳。 这可以避免操作期间发生交叉分布数据移动，从而提高效率。
+> 如果只是想要尝试更改 `CTAS` 操作中的索引并且源表经过哈希分布，那么，在保留相同的分布列和数据类型的情况下，`CTAS` 操作的效果最佳。 这可以避免操作期间发生交叉分布数据移动，从而提高效率。
 > 
 > 
 
 ## <a name="using-ctas-to-copy-a-table"></a>使用 CTAS 复制表
-`CTAS` 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，如果最初你将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
+`CTAS` 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，最初将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
 
-假设你在 `CREATE TABLE` 中没有指定分布列，因而使用 `ROUND_ROBIN` 分布的默认分布类型创建此表。
+假设在 `CREATE TABLE` 中没有指定分布列，因而使用 `ROUND_ROBIN` 分布的默认分布类型创建此表。
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -97,7 +95,7 @@ CREATE TABLE FactInternetSales
 );
 ```
 
-现在你想要创建此表的新副本并包含群集列存储索引，以便可以使用群集列存储表的性能。 你还想要在 ProductKey 上分布此表（因为你预期此列会发生联接）并在联接 ProductKey 期间避免数据移动。 最后，你还想要在 OrderDateKey 上添加分区，以便通过删除旧分区来快速删除旧数据。 以下是用于将旧表复制到新表的 CTAS 语句。
+现在，你想要创建此表的新副本并包含群集列存储索引，以便可以利用群集列存储表的性能。 还想要在 ProductKey 上分布此表（你预期此列会发生联接）并在联接 ProductKey 期间避免数据移动。 最后，还想要在 OrderDateKey 上添加分区，以便通过删除旧分区来快速删除旧数据。 以下是用于将旧表复制到新表的 CTAS 语句。
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -118,7 +116,7 @@ WITH
 AS SELECT * FROM FactInternetSales;
 ```
 
-最后，你可以重命名表以切换到新表，然后删除旧表。
+最后，可以重命名表以切换到新表，然后删除旧表。
 
 ```sql
 RENAME OBJECT FactInternetSales TO FactInternetSales_old;
@@ -140,14 +138,14 @@ DROP TABLE FactInternetSales_old;
 * MERGE 语句
 
 > [!NOTE]
-> 尽量考虑“CTAS 优先”。 如果你认为可以使用 `CTAS` 解决问题，则它往往就是最佳的解决方法，即使你要因此写入更多的数据。
+> 尽量考虑“CTAS 优先”。 如果认为可以使用 `CTAS` 解决问题，则它往往就是最佳的解决方法，即使你要因此写入更多的数据。
 > 
 > 
 
 ## <a name="ansi-join-replacement-for-update-statements"></a>替换 Update 语句的 ANSI Join
-你可能有一个复杂的更新使用 ANSI 联接语法来执行 UPDATE 或 DELETE，以将两个以上的表联接在一起。
+可能有一个复杂的更新使用 ANSI 联接语法来执行 UPDATE 或 DELETE，以将两个以上的表联接在一起。
 
-假设你必须更新此表：
+假设必须更新此表：
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
@@ -187,9 +185,9 @@ AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
 ;
 ```
 
-由于 SQL 数据仓库不支持在 `UPDATE` 语句的 `FROM` 子句中使用 ANSI Join，因此必须稍微更改一下此代码才能将它复制过去。
+由于 SQL 数据仓库不支持在 `UPDATE` 语句的 `FROM` 子句中使用 ANSI Join，因此无法在不稍微更改此代码的情况下将它复制过去。
 
-你可以使用 `CTAS` 和隐式联接的组合来替换此代码：
+可以使用 `CTAS` 和隐式联接的组合来替换此代码：
 
 ```sql
 -- Create an interim table
@@ -283,7 +281,7 @@ RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
 ```
 
 ## <a name="ctas-recommendation-explicitly-state-data-type-and-nullability-of-output"></a>CTAS 建议：显式声明数据类型和输出是否可为 null
-迁移代码时，你可能会遇到这种类型的编码模式：
+迁移代码时，可能会遇到这种类型的编码模式：
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -299,7 +297,7 @@ SELECT @d*@f
 ;
 ```
 
-你可能自然而然地认为应该将此代码迁移到 CTAS。这是对的。 但是，这里有一个隐含的问题。
+可能自然而然地认为应该将此代码迁移到 CTAS。这是对的。 但是，这里有一个隐含的问题。
 
 以下代码不会生成相同的结果：
 
@@ -315,7 +313,7 @@ SELECT @d*@f as result
 ;
 ```
 
-请注意，列“result”沿用表达式的数据类型和可为 null 的值。 如果你不小心处理，可能会导致值存在细微的差异。
+请注意，列“result”沿用表达式的数据类型和可为 null 的值。 如果不小心处理，可能会导致值存在细微的差异。
 
 尝试使用以下内容作为示例：
 
@@ -359,11 +357,11 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 * ISNULL 的第二个部分是常量，即 0
 
 > [!NOTE]
-> 若要正确设置可为 null 属性，必须使用 `ISNULL` 而不是 `COALESCE`。 `COALESCE` 不是确定性的函数，因此表达式的结果始终可为 Null。 `ISNULL` 则不同。 它是确定性的。 因此，当 `ISNULL` 函数的第二个部分是常量或文本时，结果值将是 NOT NULL。
+> 若要正确设置可为 null 属性，必须使用 `ISNULL` 而不是 `COALESCE`。 `COALESCE` 不是确定性的函数，因此表达式的结果始终可为 Null。 `ISNULL` 则不同。 它是确定性的。 因此当 `ISNULL` 函数的第二个部分是常量或文本时，结果值将是 NOT NULL。
 > 
 > 
 
-此技巧不仅可用于确保计算的完整性， 它对表分区切换也很重要。 假设你根据事实定义了此表：
+此技巧不仅可用于确保计算的完整性， 它对表分区切换也很重要。 假设根据事实定义了此表：
 
 ```sql
 CREATE TABLE [dbo].[Sales]
@@ -388,7 +386,7 @@ WITH
 
 但是，值字段是计算的表达式，且不是源数据的一部分。
 
-若要创建分区数据集，你可能需要执行：
+要创建分区数据集，可能需要执行：
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -412,7 +410,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 ;
 ```
 
-该查询将会顺利运行。 但是，当你尝试执行分区切换时，将会出现问题。 表定义不匹配。 若要使表定义匹配，需要修改 CTAS。
+该查询会顺利运行。 但是，尝试执行分区切换时，会出现问题。 表定义不匹配。 若要使表定义匹配，需要修改 CTAS。
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -453,4 +451,3 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
 
 <!--Other Web references-->
-

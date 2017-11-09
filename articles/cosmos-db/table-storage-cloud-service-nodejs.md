@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-web-application-using-storage"></a>使用存储构建 Node.js Web 应用程序
 ## <a name="overview"></a>概述
@@ -415,6 +414,5 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。
 [使用 Express 生成 Node.js Web 应用程序]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Node.js Web 应用程序]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
-
 
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: boltean
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
 ms.openlocfilehash: 85f5f044faddd5180f0c19d3f2c235b20f6373d5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
 安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 _IP 筛选器_功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
@@ -41,7 +39,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ## <a name="default-setting"></a>默认设置
 
-默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着你的中心接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着中心接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
 
 ![IoT 中心默认 IP 筛选器设置][img-ip-filter-default]
 
@@ -55,7 +53,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ![向 IoT 中心添加 IP 筛选规则][img-ip-filter-add-rule]
 
-保存规则后，你会看到一个警报，通知你更新正在进行。
+保存规则后，会看到一个警报，通知你更新正在进行。
 
 ![关于保存 IP 筛选规则的通知][img-ip-filter-save-new-rule]
 
@@ -71,7 +69,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 
-若要删除 IP 筛选器规则，请在网格中选择一个或多个规则，然后单击“删除”。
+要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。
 
 ![删除 IoT 中心 IP 筛选规则][img-ip-filter-delete-rule]
 

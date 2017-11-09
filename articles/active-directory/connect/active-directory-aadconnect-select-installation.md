@@ -14,19 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 81549c4bc0cabcf46bc7dc66d7e6662d7f787b1e
-ms.openlocfilehash: df6353f84f898a1722e3e985244a90dbd6b22522
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.openlocfilehash: a5697686bd1f41d581554b27ce78897963e38c74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# 选择 Azure AD Connect 使用的安装类型
-<a id="select-which-installation-type-to-use-for-azure-ad-connect" class="xliff"></a>
+# <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>选择 Azure AD Connect 使用的安装类型
 Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定义安装。 本主题帮助用户确定安装期间要使用哪种选项。
 
-## Express
-<a id="express" class="xliff"></a>
+## <a name="express"></a>Express
 快速安装是最常用的选项，有 90% 的全新安装会使用它。 它能够为最常见的客户方案提供合适的配置。
 
 该选项假设：
@@ -44,11 +41,10 @@ Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定
 
 仍可使用“快速”选项的场合：
 
-- 如果你不想要同步所有 OU，仍可使用“快速”选项。请在最后一页上取消选择“启动同步过程...”*。 然后再次运行安装向导，更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)中的 OU 并启用计划同步。
-- 你想要启用 Azure AD Premium 中的某个功能，例如密码写回。 首先请完成整个快速安装过程，以完成初始安装。 然后再次运行安装向导并更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)。
+- 如果不想要同步所有 OU，仍可使用“快速”选项。请在最后一页上取消选择“启动同步过程...”*。 然后再次运行安装向导，更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)中的 OU 并启用计划同步。
+- 想要启用 Azure AD Premium 中的某个功能，例如密码写回。 首先请完成整个快速安装过程，以完成初始安装。 然后再次运行安装向导并更改[配置选项](active-directory-aadconnectsync-installation-wizard.md#customize-synchronization-options)。
 
-## “自定义”
-<a id="custom" class="xliff"></a>
+## <a name="custom"></a>“自定义”
 自定义安装途径的选项要比快速安装多得多。 只要前一部分中所述的快速安装提供的配置无法满足组织的需要，就应该使用自定义安装。
 
 使用时机：
@@ -60,25 +56,20 @@ Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定
 - 对象超过 100,000 个，并且需要使用完整的 SQL Server。
 - 计划使用基于组的筛选，而不仅是基于域或基于 OU 的筛选。
 
-## 从 DirSync 升级
-<a id="upgrade-from-dirsync" class="xliff"></a>
-如果你当前正在使用 DirSync，请遵循[从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md)中的步骤升级现有配置。 有两个不同的升级选项：
+## <a name="upgrade-from-dirsync"></a>从 DirSync 升级
+如果当前正在使用 DirSync，请遵循[从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md)中的步骤升级现有配置。 有两个不同的升级选项：
 
 - 就地升级：在同一台服务器上安装 Connect。
 - 并行部署：在新服务器上安装 Connect，现有的 DirSync 服务器仍可正常运行。
 
-## 从 Azure AD Sync 升级
-<a id="upgrade-from-azure-ad-sync" class="xliff"></a>
-如果你当前正在使用 Azure AD Sync，可以遵循从一个 Connect 版本升级到更新版本时采用的[相同步骤](active-directory-aadconnect-upgrade-previous-version.md)。 有两个不同的升级选项：
+## <a name="upgrade-from-azure-ad-sync"></a>从 Azure AD Sync 升级
+如果当前正在使用 Azure AD Sync，可以遵循从一个 Connect 版本升级到更新版本时采用的[相同步骤](active-directory-aadconnect-upgrade-previous-version.md)。 有两个不同的升级选项：
 
 - 就地升级：在同一台服务器上安装 Connect。
 - 交叉迁移：在新服务器上安装 Connect，现有的 Azure AD Sync 服务器仍可正常运行。
 
-## 从 FIM2010 或 MIM2016 迁移
-<a id="migrate-from-fim2010-or-mim2016" class="xliff"></a>
-如果你当前正在使用装有 Azure AD 连接器的 Forefront Identity Manager 2010 或 Microsoft Identity Manager 2016，则唯一可用的选项就是迁移。 请遵循[交叉迁移](active-directory-aadconnect-upgrade-previous-version.md#swing-migration)中所述的步骤。 执行这些步骤时，请将出现的所有 Azure AD Sync 替换为 FIM2010/MIM2016。
+## <a name="migrate-from-fim2010-or-mim2016"></a>从 FIM2010 或 MIM2016 迁移
+如果当前正在使用装有 Azure AD 连接器的 Forefront Identity Manager 2010 或 Microsoft Identity Manager 2016，则唯一可用的选项就是迁移。 请遵循[交叉迁移](active-directory-aadconnect-upgrade-previous-version.md#swing-migration)中所述的步骤。 执行这些步骤时，请将出现的所有 Azure AD Sync 替换为 FIM2010/MIM2016。
 
-## 后续步骤
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>后续步骤
 根据选择使用的选项，请参考左侧的目录查找包含详细步骤的文章。
-

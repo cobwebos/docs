@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/28/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: c58de22e29b6403e88bf22bdfe704a25757cdfca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/13/2017
-
+ms.openlocfilehash: 965ffc0f8cec26cccbe6e6459731afc234111f4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群集中的应用程序和节点的 Web 工具。 Service Fabric Explorer 管理器直接托管在群集内，因此，无论群集在何处运行，它都始终可供使用。
@@ -39,30 +38,30 @@ Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群�
 ![Service Fabric Explorer 群集仪表板][sfx-cluster-dashboard]
 
 ### <a name="view-the-clusters-layout"></a>查看群集的布局
-Service Fabric 群集中的节点横跨容错域和升级域的二维网格放置。 这种放置可确保应用程序在发生硬件故障及应用程序升级时仍然可用。 你可以使用群集图查看当前群集的布局方式。
+Service Fabric 群集中的节点横跨容错域和升级域的二维网格放置。 这种放置可确保应用程序在发生硬件故障及应用程序升级时仍然可用。 可以使用群集图查看当前群集的布局方式。
 
 ![Service Fabric Explorer 群集图][sfx-cluster-map]
 
 ### <a name="view-applications-and-services"></a>查看应用程序和服务
 群集包含两个子树：一个用于应用程序，另一个用于节点。
 
-你可以使用应用程序视图来导航 Service Fabric 的逻辑层次结构：应用程序、服务、分区和副本。
+可以使用应用程序视图来导航 Service Fabric 的逻辑层次结构：应用程序、服务、分区和副本。
 
 在以下示例中，应用程序 **MyApp** 由两个服务 **MyStatefulService** 与 **WebService** 组成。 由于 **MyStatefulService** 是有状态的，因此它包含一个分区，其中有一个主副本和两个辅助副本。 相反，WebSvcService 是无状态的，只包含单个实例。
 
 ![Service Fabric Explorer 应用程序视图][sfx-application-tree]
 
-在树的每个级别，主窗格显示有关项目的信息。 例如，你可以看到特定服务的运行状况和版本。
+在树的每个级别，主窗格显示有关项目的信息。 例如，可以看到特定服务的运行状况和版本。
 
 ![Service Fabric Explorer 基本信息窗格][sfx-service-essentials]
 
 ### <a name="view-the-clusters-nodes"></a>查看群集的节点
-节点视图显示群集的物理布局。 对于给定的节点，你可以检查已在该节点上部署代码的应用程序。 更具体地说，你可以看到当前在那里运行的副本。
+节点视图显示群集的物理布局。 对于给定的节点，可以检查已在该节点上部署代码的应用程序。 更具体地说，可以看到当前在那里运行的副本。
 
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，若要删除某应用程序实例，只需从左侧树中选择该应用程序，然后选择“操作” > “删除应用程序”。
+例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作” > “删除应用程序”。
 
 ![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
@@ -105,7 +104,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 如果知道群集的终结点并具有足够的权限，则可从任一浏览器访问 Service Fabric Explorer。 这是因为 Service Fabric Explorer 只是在该群集中运行的另一个服务。
 
 ### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>发现远程群集的 Service Fabric Explorer 终结点
-若要访问给定群集的 Service Fabric Explorer，请将浏览器指向：
+要访问给定群集的 Service Fabric Explorer，请将浏览器指向：
 
 http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 
@@ -128,4 +127,3 @@ http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
-

@@ -14,18 +14,17 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 297c01ec31b584b354fbd751a9c3c86a379ac63e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/21/2017
-
+ms.openlocfilehash: c8142d8edfd3a527b13d655bac21acf5332f2d14
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建服务总线资源
 
 本文介绍如何使用 Azure Resource Manager 模板、PowerShell 和服务总线资源提供程序创建和部署服务总线资源。
 
-Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关编写 Azure Resource Manager 模板的详细信息，以及模板格式的讨论，请参阅 [Azure Resource Manager 模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关编写 Azure Resource Manager 模板的详细信息，以及模板格式的讨论，请参阅 [Azure Resource Manager 模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 > [!NOTE]
 > 本文中的示例演示如何使用 Azure Resource Manager 来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速启动模板库][Azure Quickstart Templates gallery]并搜索“服务总线”。
@@ -48,7 +47,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 1. 安装 PowerShell。
 2. 创建模板和（可选）参数文件。
-3. 在 PowerShell 中，登录到你的 Azure 帐户。
+3. 在 PowerShell 中，登录到 Azure 帐户。
 4. 创建新资源组（如果不存在）。
 5. 测试部署。
 6. 如果需要，设置部署模式。
@@ -162,7 +161,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 Login-AzureRmAccount
 ```
 
-系统将提示你登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅。
+系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅。
 
 ```powershell
 Get-AzureRMSubscription
@@ -194,7 +193,7 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>测试部署
 
-通过运行 `Test-AzureRmResourceGroupDeployment` cmdlet 验证你的部署。 测试部署时，请提供与执行部署时所提供的完全相同的参数。
+通过运行 `Test-AzureRmResourceGroupDeployment` cmdlet 验证部署。 测试部署时，请提供与执行部署时所提供的完全相同的参数。
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -204,7 +203,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 若要创建新部署，请运行 `New-AzureRmResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)。
 
-以下命令会提示你在 PowerShell 窗口中输入三个参数：
+以下命令会提示在 PowerShell 窗口中输入三个参数：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -222,14 +221,14 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-若要运行[完整](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)部署，请将 **Mode** 参数设置为 **Complete**：
+要运行[完整](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)部署，请将 **Mode** 参数设置为 **Complete**：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>验证部署
-如果资源已成功部署，将在 PowerShell 窗口中显示部署的摘要：
+如果资源已成功部署，会在 PowerShell 窗口中显示部署的摘要：
 
 ```powershell
 DeploymentName    : MyDemoDeployment
@@ -248,7 +247,7 @@ Parameters        :
 ```
 
 ## <a name="next-steps"></a>后续步骤
-你现在已了解用于部署 Azure Resource Manager 模板的基本工作流和命令。 有关更多详细信息，请访问以下链接：
+现在已了解用于部署 Azure Resource Manager 模板的基本工作流和命令。 有关更多详细信息，请访问以下链接：
 
 * [Azure Resource Manager 概述][Azure Resource Manager overview]
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源][Deploy resources with Azure Resource Manager templates]
@@ -257,4 +256,3 @@ Parameters        :
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md
 [Azure Quickstart Templates gallery]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-

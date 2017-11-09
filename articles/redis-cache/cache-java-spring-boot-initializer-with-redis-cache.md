@@ -15,14 +15,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: robmcm;zhijzhao;yidon
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 7a6ec549654d00975494bac8594a6777af5ec415
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-a-spring-boot-initializer-app-to-use-redis-cache"></a>如何配置 Spring Boot Initializer 应用，以使用 Redis 缓存
 
 ## <a name="overview"></a>概述
@@ -195,7 +193,7 @@ ms.lasthandoff: 09/02/2017
 
 有关使用 Azure 上的 Spring Boot 应用程序的详细信息，请参阅以下文章：
 
-* [将 Spring Boot 应用程序部署到 Azure App Service](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [将 Spring Boot 应用程序部署到 Azure 应用服务](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 
 * [在 Azure 容器服务中运行 Kubernetes 群集上的 Spring Boot 应用程序](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
@@ -229,4 +227,3 @@ ms.lasthandoff: 09/02/2017
 
 [RE01]: ./media/cache-java-spring-boot-initializer-with-redis-cache/RE01.png
 [RE02]: ./media/cache-java-spring-boot-initializer-with-redis-cache/RE02.png
-

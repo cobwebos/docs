@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/04/2017
 ms.author: terrylan
+ms.openlocfilehash: c715afe55a3aedd5c4f826bc34c3c56e167d2f82
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 3bc1023d084205171b6b405932cf80f3da59fe8b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
+# <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>使用恰时功能管理虚拟机访问（预览版）
 
 恰时虚拟机 (VM) 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。
 
@@ -42,7 +41,7 @@ ms.lasthandoff: 08/09/2017
 
 当启用了恰时访问时，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受恰时解决方案控制。
 
-当用户请求访问 VM 时，安全中心会检查该用户是否有[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 权限提供了对 Azure 资源的写入访问权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为在你指定的时间内允许发往管理端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
+当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为在你指定的时间内允许发往管理端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
 
 > [!NOTE]
 > 安全中心恰时 VM 访问当前仅支持通过 Azure Resource Manager 部署的 VM。 若要了解有关经典部署模型和 Resource Manager 部署模型的详细信息，请参阅 [Azure Resource Manager 与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
@@ -51,16 +50,18 @@ ms.lasthandoff: 08/09/2017
 
 ## <a name="using-just-in-time-access"></a>使用恰时访问
 
-“安全中心”边栏选项卡上的“恰时 VM 访问”磁贴会显示已配置了恰时访问的 VM 数和过去一周内批准的访问请求数。
-
-选择“恰时 VM 访问”磁贴后，“恰时 VM 访问”边栏选项卡将打开。
+“安全中心”下的“恰时 VM 访问”磁贴显示已配置了恰时访问的 VM 数和过去一周内批准的访问请求数。
 
 ![“恰时 VM 访问”磁贴][2]
 
-“恰时 VM 访问”边栏选项卡提供 VM 的状态信息：
+选择“恰时 VM 访问”磁贴后，“恰时 VM 访问”将打开。
+
+![“恰时 VM 访问”磁贴][10]
+
+“恰时 VM 访问”提供 VM 的状态信息：
 
 - **已配置** - 已配置为支持恰时 VM 访问的 VM。 提供的数据是针对过去一周的，并且针对每个 VM 包括了已批准的请求数、上次访问日期和时间以及上一个用户。
-- **推荐** - 可以支持恰时 VM 访问但尚未配置此功能的 VM。 建议为这些 VM 启用恰时 VM 访问控制。 请参阅[启用恰时 VM 访问](#enable-just-in-time-vm-access)。
+- **推荐** - 可以支持恰时 VM 访问但尚未配置此功能的 VM。 建议为这些 VM 启用恰时 VM 访问控制。 请参阅[配置恰时访问策略](#configuring-a-just-in-time-access-policy)。
 - **不推荐** - 导致不推荐某个 VM 的可能原因有：
   - 缺少 NSG - 恰时解决方案需要 NSG 准备就绪。
   - 经典 VM - 安全中心恰时 VM 访问当前仅支持通过 Azure Resource Manager 部署的 VM。 恰时解决方案不支持经典部署。
@@ -70,11 +71,11 @@ ms.lasthandoff: 08/09/2017
 
 选择要启用的 VM：
 
-1. 在“恰时 VM 访问”边栏选项卡上，选择“推荐”选项卡。
+1. 在“恰时 VM 访问”下，选择“推荐”选项卡。
 
   ![启用恰时访问][3]
 
-2. 在“VM”下，选择要启用的 VM。 这会在 VM 旁边放置一个复选标记。
+2. 在“虚拟机”下，选择要启用的 VM。 这会在 VM 旁边放置一个复选标记。
 3. 选择“在 VM 上启用 JIT”。
 4. 选择“保存”。
 
@@ -82,21 +83,21 @@ ms.lasthandoff: 08/09/2017
 
 可以查看安全中心推荐为其启用恰时功能的默认端口。
 
-1. 在“恰时 VM 访问”边栏选项卡上，选择“推荐”选项卡。
+1. 在“恰时 VM 访问”下，选择“推荐”选项卡。
 
   ![显示默认端口][6]
 
-2. 在“VM”下，选择一个 VM。 这会在该 VM 旁边放置一个复选标记并打开“JIT VM 访问配置”边栏选项卡。 此边栏选项卡将显示默认端口。
+2. 在“VM”下，选择一个 VM。 这会在该 VM 旁边放置一个复选标记并打开“JIT VM 访问配置”。 此边栏选项卡将显示默认端口。
 
 ### <a name="add-ports"></a>添加端口
 
-从“JIT VM 访问配置”边栏选项卡中，还可以添加并配置要启用恰时解决方案的新端口。
+在“JIT VM 访问配置”下，还可以添加并配置要启用恰时解决方案的新端口。
 
-1. 在“JIT VM 访问配置”边栏选项卡上，选择“添加”。 这将打开“添加端口配置”边栏选项卡。
+1. 在“JIT VM 访问配置”下，选择“添加”。 这将打开“添加端口配置”。
 
   ![端口配置][7]
 
-2. 在“添加端口配置”边栏选项卡上，标识端口、协议类型、允许的源 IP 和最大请求时间。
+2. 在“添加端口配置”下，标识端口、协议类型、允许的源 IP 和最大请求时间。
 
   允许的源 IP 是允许根据批准的请求获取访问权限的 IP 范围。
 
@@ -108,13 +109,13 @@ ms.lasthandoff: 08/09/2017
 
 若要请求对 VM 的访问权限，请执行以下操作：
 
-1. 在“恰时 VM 访问”边栏选项卡上，选择“推荐”选项卡。
+1. 在“恰时 VM 访问”下，选择“配置”选项卡。
 2. 在“VM”下，选择要启用访问权限的 VM。 这会在 VM 旁边放置一个复选标记。
-3. 选择“请求访问权限”。 这将打开“请求访问权限”边栏选项卡。
+3. 选择“请求访问权限”。 这将打开“请求访问权限”。
 
   ![请求对 VM 的访问权限][4]
 
-4. 在“请求访问权限”边栏选项卡上，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 以及将打开该端口的时间范围。 只能请求对在恰时策略中配置的端口的访问权限。 每个端口都有一个从恰时策略派生的最大允许时间。
+4. 在“请求访问权限”下，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 以及将打开该端口的时间范围。 只能请求对在恰时策略中配置的端口的访问权限。 每个端口都有一个从恰时策略派生的最大允许时间。
 5. 选择“打开端口”。
 
 ## <a name="editing-a-just-in-time-access-policy"></a>编辑恰时访问策略
@@ -124,15 +125,15 @@ ms.lasthandoff: 08/09/2017
 若要编辑 VM 的现有恰时策略，需使用“推荐”选项卡：
 
 1. 在“VM”下，通过单击 VM 对应的行内的三个点来选择要为其添加端口的 VM。 这将打开一个菜单。
-2. 在菜单中选择“编辑”。 这将打开“JIT VM 访问配置”边栏选项卡。
+2. 在菜单中选择“编辑”。 这将打开“JIT VM 访问配置”。
 
   ![编辑策略][8]
 
-3. 在“JIT VM 访问配置”边栏选项卡上，可以通过单击某个已保护的端口来编辑该端口的现有设置，也可以选择“添加”。 这将打开“添加端口配置”边栏选项卡。
+3. 在“JIT VM 访问配置”下，可以通过单击某个已保护的端口来编辑该端口的现有设置，也可以选择“添加”。 这将打开“添加端口配置”。
 
   ![添加端口][7]
 
-4. 在“添加端口配置”边栏选项卡上，标识端口、协议类型、允许的源 IP 和最大请求时间。
+4. 在“添加端口配置”下，标识端口、协议类型、允许的源 IP 和最大请求时间。
 5. 选择“确定”。
 6. 选择“保存”。
 
@@ -140,15 +141,15 @@ ms.lasthandoff: 08/09/2017
 
 可以使用日志搜索深入了解 VM 活动。 若要查看日志，请执行以下操作：
 
-1. 在“恰时 VM 访问”边栏选项卡上，选择“推荐”选项卡。
+1. 在“恰时 VM 访问”下，选择“配置”选项卡。
 2. 在“VM”下，通过单击 VM 对应的行内的三个点来选择要查看其信息的 VM。 这将打开一个菜单。
-3. 在菜单中选择“活动日志”。 这将打开“活动日志”边栏选项卡。
+3. 在菜单中选择“活动日志”。 这将打开“活动日志”。
 
-![选择“活动日志”][9]
+  ![选择“活动日志”][9]
 
-“活动日志”边栏选项卡提供了该 VM 的以前操作的经筛选视图以及时间、日期和订阅。
+  “活动日志”提供了该 VM 的以前操作的经筛选视图以及时间、日期和订阅。
 
-![查看活动日志][5]
+  ![查看活动日志][5]
 
 可以通过选择“单击此处将所有项下载为 CSV”来下载日志信息。
 
@@ -157,7 +158,7 @@ ms.lasthandoff: 08/09/2017
 ## <a name="using-just-in-time-vm-access-via-powershell"></a>通过 PowerShell 使用恰时 VM 访问
 
 若要通过 PowerShell 使用恰时解决方案，请确保具有[最新](/powershell/azure/install-azurerm-ps) Azure PowerShell 版本。
-在具有最新版本后，需要从 PowerShell 库安装[最新](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.12) Azure 安全中心。
+在具有最新版本后，需要从 PowerShell 库安装[最新](https://aka.ms/asc-psgallery) Azure 安全中心。
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>为 VM 配置恰时策略
 
@@ -186,6 +187,7 @@ ms.lasthandoff: 08/09/2017
 <!--Image references-->
 [1]: ./media/security-center-just-in-time/just-in-time-scenario.png
 [2]: ./media/security-center-just-in-time/just-in-time.png
+[10]: ./media/security-center-just-in-time/just-in-time-access.png
 [3]: ./media/security-center-just-in-time/enable-just-in-time-access.png
 [4]: ./media/security-center-just-in-time/request-access-to-a-vm.png
 [5]: ./media/security-center-just-in-time/activity-log.png
@@ -193,4 +195,3 @@ ms.lasthandoff: 08/09/2017
 [7]: ./media/security-center-just-in-time/add-a-port.png
 [8]: ./media/security-center-just-in-time/edit-policy.png
 [9]: ./media/security-center-just-in-time/select-activity-log.png
-

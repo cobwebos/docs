@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
-ms.openlocfilehash: 7aebd5bd168799e1a88bad0e78ba3a164bfcfccd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 21fbdbc4c24440c6fbbd7487cfbb2e0a3140aa96
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
 云服务由以下三个组件创建：服务定义 *(.csdef)*、服务配置 *(.cscfg)* 和服务包 *(.cspkg)*。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
 
 云服务在 Azure 中开始运行后，可以通 **ServiceConfig.cscfg** 文件重新进行配置，但不能更改定义。
 
-## <a name="what-would-you-like-to-know-more-about"></a>你想了解哪方面的详细信息？
+## <a name="what-would-you-like-to-know-more-about"></a>想了解哪方面的详细信息？
 * 我想了解有关 [ServiceDefinition.csdef](#csdef) 和 [ServiceConfig.cscfg](#cscfg) 文件的详细信息。
 * 我已经知道，请为我提供有关可以配置具体内容的[一些示例](#next-steps)。
 * 我想要创建 [ServicePackage.cspkg](#cspkg)。
@@ -119,7 +118,7 @@ ms.lasthandoff: 07/06/2017
 <a name="cscfg"></a>
 
 ## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
-你的云服务设置的配置由 **ServiceConfiguration.cscfg** 文件中的值确定。 指定要为此文件中每个角色部署的实例数。 在服务定义文件中定义的配置设置值已添加到服务配置文件中。 与云服务相关联的所有管理证书的指纹也会添加到该文件中。 [Azure 服务配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)为服务配置文件提供允许的格式。
+云服务设置的配置由 **ServiceConfiguration.cscfg** 文件中的值确定。 指定要为此文件中每个角色部署的实例数。 在服务定义文件中定义的配置设置值已添加到服务配置文件中。 与云服务相关联的所有管理证书的指纹也会添加到该文件中。 [Azure 服务配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)为服务配置文件提供允许的格式。
 
 服务配置文件不与该应用程序一起打包，但将作为一个单独的文件上传到 Azure 中并用于配置云服务。 无需重新部署云服务即可上传新的服务配置文件。 云服务正在运行时可以更改云服务的配置值。 以下示例显示了可为 Web 角色和辅助角色定义的配置设置：
 
@@ -141,7 +140,7 @@ ms.lasthandoff: 07/06/2017
 </ServiceConfiguration>
 ```
 
-你可以参考[服务配置架构](https://msdn.microsoft.com/library/azure/ee758710.aspx)更好了解此处使用的 XML 架构，不过以下是元素的快速说明：
+可以参考[服务配置架构](https://msdn.microsoft.com/library/azure/ee758710.aspx)更好了解此处使用的 XML 架构，不过以下是元素的快速说明：
 
 **实例**  
 为角色配置运行实例的数目。 若要防止云服务在升级期间可能变得不可用，建议部署面向 web 角色的多个实例。 部署多个实例即表示遵守 [Azure 计算服务级别协议 (SLA)](http://azure.microsoft.com/support/legal/sla/) 中的准则，此协议可以保证在为一个服务部署了两个或多个角色实例时，面向 Internet 的角色拥有 99.95% 的外部连接。
@@ -160,7 +159,7 @@ ms.lasthandoff: 07/06/2017
 > 
 
 ## <a name="defining-ports-for-role-instances"></a>定义角色实例的端口
-Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 IP 地址完成。 可以通过配置主机头使请求指向正确的位置来配置网站共享一个端口。 此外，可以配置你的应用程序侦听 IP 地址上的已知端口。
+Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 IP 地址完成。 可以通过配置主机头使请求指向正确的位置来配置网站共享一个端口。 此外，可以配置应用程序侦听 IP 地址上的已知端口。
 
 以下示例显示了具有网站和 Web 应用程序的 Web 角色的配置。 该网站配置为端口 80 上的默认入口位置，Web 应用程序配置为接收来自名为“mail.mysite.cloudapp.net”备用主机头的请求。
 
@@ -296,4 +295,3 @@ cspack [DirectoryName]\[ServiceDefinition]
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
-

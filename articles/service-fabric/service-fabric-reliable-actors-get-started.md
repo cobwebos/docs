@@ -1,6 +1,6 @@
 ---
 title: "用 C# 创建第一个基于角色的 Azure 微服务 | Microsoft Docs"
-description: "本教程将向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。"
+description: "本教程会向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。"
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -31,7 +30,7 @@ ms.lasthandoff: 07/01/2017
 本文介绍了 Azure Service Fabric Reliable Actors 的基础知识，并演示了如何在 Visual Studio 中创建、调试和部署简单的 Reliable Actor 应用程序。
 
 ## <a name="installation-and-setup"></a>安装和设置
-在开始之前，确保你的计算机上已设置 Service Fabric 开发环境。
+在开始之前，确保计算机上已设置 Service Fabric 开发环境。
 如果需要设置此环境，请参阅有关[如何设置开发环境](service-fabric-get-started.md)的详细说明。
 
 ## <a name="basic-concepts"></a>基本概念
@@ -70,7 +69,7 @@ ms.lasthandoff: 07/01/2017
 典型的 Reliable Actors 解决方案由 3 个项目组成：
 
 * **应用程序项目 (MyActorApplication)**。 这是将所有服务打包在一起以进行部署的项目。 它包含用于管理应用程序的 *ApplicationManifest.xml* 和 PowerShell 脚本。
-* **接口项目 (MyActor.Interfaces)**。 这是包含执行组件的接口定义的项目。 在 MyActor.Interfaces 项目中，你可以定义在解决方案中执行组件所使用的接口。 可在任何项目中使用任何名称定义执行组件接口。不过，因为该接口定义了执行组件实现和调用执行组件的客户端所共享的执行组件协定，所以合理的做法是在独立于执行组件实现的程序集中定义接口，并且其他多个项目可以共享接口。
+* **接口项目 (MyActor.Interfaces)**。 这是包含执行组件的接口定义的项目。 在 MyActor.Interfaces 项目中，可以定义在解决方案中执行组件所使用的接口。 可在任何项目中使用任何名称定义执行组件接口。不过，因为该接口定义了执行组件实现和调用执行组件的客户端所共享的执行组件协定，所以合理的做法是在独立于执行组件实现的程序集中定义接口，并且其他多个项目可以共享接口。
 
 ```csharp
 public interface IMyActor : IActor
@@ -97,7 +96,7 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册你的执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。
+执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。
 
 ```csharp
 internal static class Program
@@ -134,7 +133,7 @@ internal static class Program
 > 
 
 ## <a name="debugging"></a>调试
-适用于 Visual Studio 的 Service Fabric 工具支持在本地计算机上进行调试。 你可以通过点击 F5 键启动调试会话。 Visual Studio 会生成包（如果需要）。 Visual Studio 还将在本地 Service Fabric 群集中部署应用程序，并附加调试器。
+适用于 Visual Studio 的 Service Fabric 工具支持在本地计算机上进行调试。 可以通过点击 F5 键启动调试会话。 Visual Studio 会生成包（如果需要）。 Visual Studio 还会在本地 Service Fabric 群集中部署应用程序，并附加调试器。
 
 在部署过程中，可以在“**输出**”窗口中查看进度。
 
@@ -149,4 +148,3 @@ internal static class Program
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
-

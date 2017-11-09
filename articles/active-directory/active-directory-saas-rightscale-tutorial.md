@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 222c4414a9f736a3589b4cdd0ed934696f6c31ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>教程：Azure Active Directory 与 RightScale 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-rightscale-from-the-gallery"></a>从库中添加 RightScale
-若要配置 RightScale 与 Azure AD 的集成，需要从库中将 RightScale 添加到托管 SaaS 应用列表。
+要配置 RightScale 与 Azure AD 的集成，需要从库中将 RightScale 添加到托管 SaaS 应用列表。
 
 若要从库中添加 RightScale，请执行以下步骤：
 
@@ -115,11 +114,11 @@ ms.lasthandoff: 07/11/2017
     
     ![配置单一登录](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_url1.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 单击“显示高级 URL 设置”。
+    a. 单击“显示高级 URL 设置”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，键入 URL： `https://login.rightscale.com/`
+    b. 在“登录 URL”文本框中，键入 URL： `https://login.rightscale.com/`
 
-5. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_certificate.png) 
 
@@ -133,7 +132,7 @@ ms.lasthandoff: 07/11/2017
 <CS>
 8. 若要为应用程序配置 SSO，需要以管理员身份登录 RightScale 租户。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在顶部菜单中，单击“设置”选项卡，然后选择“单一登录”。
+    a. 在顶部菜单中，单击“设置”选项卡，并选择“单一登录”。
    
     ![配置单一登录](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_001.png) 
 
@@ -190,7 +189,7 @@ ms.lasthandoff: 07/11/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-rightscale-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -200,7 +199,7 @@ ms.lasthandoff: 07/11/2017
  
 ### <a name="creating-a-rightscale-test-user"></a>创建 RightScale 测试用户
 
-在本部分中，将在 RightScale 中创建一个名为“Britta Simon”的用户。 请与 [RightScale 客户端支持团队](mailto:support@rightscale.com)协作，在 RightScale 平台中添加用户。
+在本部分中，会在 RightScale 中创建一个名为“Britta Simon”的用户。 请与 [RightScale 客户端支持团队](mailto:support@rightscale.com)协作，在 RightScale 平台中添加用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -210,7 +209,7 @@ ms.lasthandoff: 07/11/2017
 
 若要将 Britta Simon 分配到 RightScale，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -258,5 +257,4 @@ ms.lasthandoff: 07/11/2017
 [201]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_203.png
-
 

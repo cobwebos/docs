@@ -11,15 +11,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: df707f2c54ce6d4fd48490085b182ad16d7cfaed
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4c0040db9e232b2bb1506282cad57175c61a5b81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
-
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
 查明人们何时使用 Web 应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 使用 [Azure Application Insights](app-insights-overview.md) 分析业务和使用情况遥测
@@ -74,5 +72,4 @@ ms.lasthandoff: 08/17/2017
     - [用户流](app-insights-usage-flows.md)
     - [工作簿](app-insights-usage-workbooks.md)
     - [添加用户上下文](app-insights-usage-send-user-context.md)
-
 

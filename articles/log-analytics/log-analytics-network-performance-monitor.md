@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 10/18/2017
 ms.author: banders
+ms.openlocfilehash: 10e8eeaade5d51b1a15c30802b28600bcf6c72d9
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
-ms.openlocfilehash: c6568e491429f6046ab164ab5eacd0ae5846e201
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics 中的网络性能监视器解决方案
 
@@ -93,28 +92,24 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
     >[!NOTE]
     >Windows 服务器操作系统的代理同时支持使用 TCP 和 ICMP 作为综合事务的协议。 不过，Windows 客户端操作系统的代理仅支持使用 ICMP 作为综合事务的协议。
 
-2. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。  
-   ![网络性能监视器符号](./media/log-analytics-network-performance-monitor/npm-symbol.png)
-3. 在 OMS 门户中，将看到一个标题为**网络性能监视器**的新磁贴以及*解决方案需要进行额外配置*消息。 需要配置解决方案，以基于代理发现的子网和节点添加网络。 单击“网络性能监视器”开始配置默认网络。  
-   ![解决方案需要进行额外配置](./media/log-analytics-network-performance-monitor/npm-config.png)
+2. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将网络性能监视器解决方案添加到工作区。<br><br> ![网络性能监视器符号](./media/log-analytics-network-performance-monitor/npm-symbol.png)  
+3. 在 OMS 门户中，将看到一个标题为**网络性能监视器**的新磁贴以及*解决方案需要进行额外配置*消息。 单击磁贴导航到“部署”选项卡，选择用来创建综合事务以监视网络的协议。  查看[选择正确的协议 - ICMP 或 TCP](#choose-the-right-protocol-icmp-or-tcp)，帮助自己选择适合网络的适当协议。<br><br> ![解决方案要求选择协议](media/log-analytics-network-performance-monitor/log-analytics-netmon-perf-welcome.png)<br><br>
 
-### <a name="configure-the-solution-with-a-default-network"></a>使用默认网络配置解决方案
-在配置页上，会看到名为**默认**的单个网络。 尚未定义任何网络时，会会自动发现的所有子网置于默认网络中。
-
-每当创建网络时，会向创建的网络中添加子网，并从默认网络中删除该子网。 删除某个网络时，会自动将其中的所有子网返回到默认网络。
-
-换句话说，默认网络是未包含在用户定义的任何网络中的所有子网的容器。 无法编辑或删除默认网络。 它始终保留在系统中。 不过，可以根据需要创建任意数量的网络。
-
-在大多数情况下，会将组织中的子网组织在一个以上的网络中，应创建至少一个网络以便对子网进行逻辑分组。
+4. 选择协议后，将重定向到“OMS 概述”页。 当解决方案从网络聚合数据时，网络性能监视器概述磁贴会显示一条消息，指出“数据聚合正在进行”。<br><br> ![解决方案正在聚合数据](media/log-analytics-network-performance-monitor/log-analytics-netmon-tile-status-01.png)<br><br>
+5. 收集数据并为其编制索引后，概述磁贴会发生变化，指示需要执行其他配置。<br><br> ![解决方案磁贴中要求执行其他配置](media/log-analytics-network-performance-monitor/log-analytics-netmon-tile-status-02.png)<br><br>
+6. 单击该磁贴，并遵循以下步骤开始配置解决方案。
 
 ### <a name="create-new-networks"></a>新建网络
-网络性能监视器中的网络是子网的容器。 可以创建根据你喜好命名的网络，然后将子网添加到该网络中。 例如，可以创建名为 *Building1* 的网络，然后添加子网；也可以创建名为 *DMZ* 的网络，然后将外围安全区域所属的全部子网添加到该网络。
+网络性能监视器中的网络是子网的逻辑容器。 可以创建一个具有友好名称的网络，并根据业务逻辑在其中添加子网。 例如，可以创建名为 *London* 的网络并添加伦敦数据中心内的所有子网，或创建名为 *ContosoFrontEnd* 的网络，并将为 Contoso 应用的前端提供服务的所有子网添加到此网络。
+在配置页上的“网络”选项卡中，可以看到名为“默认”的网络。如果尚未创建任何网络，自动发现的所有子网将会放入“默认”网络中。
+每当创建网络时，会向创建的网络中添加子网，并从默认网络中删除该子网。 删除某个网络时，会自动将其中的所有子网返回到默认网络。
+因此，“默认”网络充当包含在用户定义的任何网络中的所有子网的容器。 无法编辑或删除默认网络。 它始终保留在系统中。 不过，可以根据需要创建任意数量的自定义网络。
+在大多数情况下，会将组织中的子网排列在多个网络中，应根据业务逻辑创建一个或多个网络，以便对子网进行分组
 
 #### <a name="to-create-a-new-network"></a>新建网络
 1. 单击“添加网络”，并键入网络名称和描述。
 2. 选择一个或多个子网，并单击“添加”。
-3. 单击“保存”以保存配置。  
-   ![添加网络](./media/log-analytics-network-performance-monitor/npm-add-network.png)
+3. 单击“保存”以保存配置。<br><br> ![添加网络](./media/log-analytics-network-performance-monitor/npm-add-network.png)
 
 ### <a name="wait-for-data-aggregation"></a>等待数据聚合
 首次保存配置之后，该解决方案会开始收集已安装代理的节点之间的网络数据包丢失和延迟信息。 此过程可能需要一些时间，有时会超过 30 分钟。 在此状态下，概述页中的网络性能监视器磁贴会显示一条指示“正在进行数据聚合”的消息。
@@ -136,8 +131,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 1. 选中或清除“子网 ID”旁边的框，并确保已选中或已清除“用于监视”（视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，因为会更新代理以停止 ping 其他代理。
 2. 通过以下方式选择想要监视的特定子网的节点：从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。
    可以根据需要向子网添加自定义“描述”。
-3. 单击“保存”以保存配置。  
-   ![编辑子网](./media/log-analytics-network-performance-monitor/npm-edit-subnet.png)
+3. 单击“保存”以保存配置。<br><br> ![编辑子网](./media/log-analytics-network-performance-monitor/npm-edit-subnet.png)
 
 ### <a name="choose-nodes-to-monitor"></a>选择要监视的节点
 所有已安装代理的节点会列在“节点”选项卡上。
@@ -145,25 +139,28 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 #### <a name="to-enable-or-disable-monitoring-for-nodes"></a>启用或禁用对节点的监视
 1. 选择要监视的节点或清除要停止监视的节点。
 2. 单击“用于监视”，或清除它（视情况而定）。
-3. 单击“保存” 。  
-   ![启用节点监视](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
+3. 单击“保存” 。<br><br> ![启用节点监视](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
 
 ### <a name="set-monitoring-rules"></a>设置监视规则
-突破阈值时，网络性能监视器会生成与一对节点、子网或网络链接之间的连接有关的运行状况事件。 系统可以自动获知这些阈值，也可以为它们配置自定义警报规则。
+突破 2 个子网或 2 个网络之间网络连接的性能阈值时，网络性能监视器会生成运行状况事件。 系统可以自动获知这些阈值，或者，你也可以提供自定义警报。
+系统会自动创建默认规则，每当任何一对网络/子网链接之间的丢失或延迟突破系统获知的阈值时，该规则就会生成运行状况事件。 在尚未显式创建任何监视规则之前，这可以帮助解决方案监视网络基础结构。 如果启用了默认规则，所有节点都会将综合事务发送到已启用监视的其他所有节点。 如果网络规模较小，例如，有少量的服务器在运行微服务，而你想要确保所有服务器相互连接，则默认规则就非常有用。
 
-系统会创建*默认规则*，并且每当一对网络或子网链接之间的丢失或延迟突破系统获知的阈值时，它会生成运行状况事件。 可以选择禁用默认规则，并创建自定义监视规则
+>[!NOTE]
+>我们强烈建议禁用默认规则并创建自定义监视规则，尤其网络规模较大，需要使用大量的节点进行监视时。 这可以减少解决方案生成的流量，并有助于对网络监视进行组织。
+
+根据业务逻辑创建自定义监视规则。 例如，如果想要监视 2 个办公地点到总部的网络连接性能，可将办公地点 1 中的所有子网分组到网络 O1 中，将办公地点 2 中的所有子网分组到网络 O2 中，将总部中的所有子网分组到网络 H 中。创建 2 个监视规则 - 一个在 O1 与 H 之间创建，另一个在 O2 与 H 之间创建。
+
 
 #### <a name="to-create-custom-monitoring-rules"></a>创建自定义监视规则
 1. 在“监视器”选项卡中，单击“添加规则”，并输入规则名称和描述。
 2. 从列表中选择要监视的网络或子网链接对。
 3. 首先从网络下拉列表中选择含有第一个感兴趣子网的网络，然后从相应的子网下拉列表中选择子网。
    如果想要监视网络链接中的所有子网，请选择“全部子网”。 同样，选择其他感兴趣的子网。 还可以单击“添加例外”从已选项中排除对特定子网链接的监视。
-4. 选择 ICMP 或 TCP 协议来执行综合事务。
+4. [选择 ICMP 或 TCP 协议](#choose-the-right-protocol-icmp-or-tcp)来执行综合事务。
 5. 如果不希望针对所选项生成运行状况事件，请清除“启用对此规则覆盖的链接进行运行状况监视”。
 6. 选择监视条件。
    可以通过键入阈值，针对运行状况事件生成设置自定义阈值。 只要条件值超出其针对所选网络/子网对选择的阈值，就会生成运行状况事件。
-7. 单击“保存”以保存配置。  
-   ![创建自定义监视规则](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
+7. 单击“保存”以保存配置。<br><br> ![创建自定义监视规则](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
 
 保存监视规则后，可以单击“创建警报”，将该规则与警报管理集成。 系统将使用搜索查询与其他自动填入的所需参数自动创建警报规则。 使用警报规则可以收到基于电子邮件的警报，以及 NPM 中的现有警报。 警报还能配合 Runbook 触发补救措施，或者，可以使用 Webhook 将警报与现有服务管理解决方案集成。 可以单击“管理警报”来编辑警报设置。
 
@@ -193,7 +190,9 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 相反，ICMP 不使用端口运行。 多数企业方案中都允许 ICMP 流量通过防火墙，以便于使用 Ping 实用程序等网络诊断工具。 因此，如果可以从一台计算机 Ping 另一台计算机，则可以使用 ICMP 协议而无需手动配置防火墙。
 
 > [!NOTE]
-> 如果不确定要使用哪一个协议，请选择 ICMP 以便在开始时使用它。 如果对结果不满意，在以后的任何时候都可以切换到 TCP。
+> 某些防火墙可能会阻止 ICMP，导致重新传输，因而在安全信息和事件管理系统中生成大量的事件。 请确保选择的协议未被网络防火墙/NSG 阻止，否则 NPM 无法监视网段。  因此，我们建议使用 TCP 进行监视。 如果存在如下所述的情况，因而无法使用 TCP，则应使用 ICMP：
+> * 使用基于 Windows 客户端的节点，因为 Windows 客户端中不允许 TCP 原始套接字
+> * 网络防火墙/NSG 会阻止 TCP
 
 
 #### <a name="how-to-switch-the-protocol"></a>如何切换协议
@@ -206,8 +205,6 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 3.  单击“保存”以应用设置。
 
 即使默认规则使用特定协议，也可以使用其他协议创建新规则。 甚至可以创建混合规则，其中一些规则使用 ICMP，另一些规则使用 TCP。
-
-
 
 
 ## <a name="data-collection-details"></a>数据收集详细信息
@@ -293,20 +290,14 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 ## <a name="investigate-the-root-cause-of-a-health-alert"></a>调查运行状况警报的根本原因
 现在，已对网络性能监视器有所了解，下面我们简单分析一下某个运行状况事件的根本原因。
 
-1. 在“概述”页上，通过观察“网络性能监视器”磁贴即可快速获取网络的运行状况快照。 可以看到，在 6 个受监视的子网链接中，有 2 个是不正常的。 这需要调查。 单击该磁贴以查看解决方案仪表板。  
-   ![网络性能监视器磁贴](./media/log-analytics-network-performance-monitor/npm-investigation01.png)
-2. 在以下示例图中，可以看到有某个运行状况事件指出网络链接不正常。 若要调查该问题，请单击“DMZ2-DMZ1”网络链接找出问题的根源。  
-   ![不正常的网络链接示例](./media/log-analytics-network-performance-monitor/npm-investigation02.png)
-3. 深化页显示“DMZ2-DMZ1”网络链接中的所有子网链接。 你会注意到，这两个子网链接的延迟已超过阈值，使网络链接不正常。 还会看到这两个子网链接的延迟趋势。 图表中的时间选择控制可用于重点关注所需时间范围。 可以查看延迟达到其峰值时的当天时间。 若要调查问题，稍后也可以搜索日志来获取此时间段。 单击“查看节点链接”以进一步进行挖掘。  
-   ![不正常的子网链接示例](./media/log-analytics-network-performance-monitor/npm-investigation03.png)
-4. 与上一页类似，特定子网链接的挖掘页面会列出其构成节点链接。 可以在此处执行与上一步类似的操作。 单击“查看拓扑”即可查看 2 个节点之间的拓扑。  
-   ![不正常的节点链接示例](./media/log-analytics-network-performance-monitor/npm-investigation04.png)
-5. 2 个所选节点之间的所有路径绘制在拓扑图中。 可以在拓扑图上可视化两个节点之间路由的逐跳拓扑。 它清晰地呈现两个节点之间存在多少个路由，以及数据包会采用哪条路径。 网络性能瓶颈会标记为红色。 可以通过查看拓扑图上标为红色的元素，定位到发生问题的网络连接或网络设备。  
-   ![不正常的拓扑视图示例](./media/log-analytics-network-performance-monitor/npm-investigation05.png)
+1. 在“概述”页上，通过观察“网络性能监视器”磁贴即可快速获取网络的运行状况快照。 可以看到，在 6 个受监视的子网链接中，有 2 个是不正常的。 这需要调查。 单击该磁贴以查看解决方案仪表板。<br><br> ![网络性能监视器磁贴](./media/log-analytics-network-performance-monitor/npm-investigation01.png)  
+2. 在以下示例图中，可以看到有某个运行状况事件指出网络链接不正常。 若要调查该问题，请单击“DMZ2-DMZ1”网络链接找出问题的根源。<br><br> ![不正常的网络链接示例](./media/log-analytics-network-performance-monitor/npm-investigation02.png)  
+3. 深化页显示“DMZ2-DMZ1”网络链接中的所有子网链接。 你会注意到，这两个子网链接的延迟已超过阈值，使网络链接不正常。 还会看到这两个子网链接的延迟趋势。 图表中的时间选择控制可用于重点关注所需时间范围。 可以查看延迟达到其峰值时的当天时间。 若要调查问题，稍后也可以搜索日志来获取此时间段。 单击“查看节点链接”以进一步进行挖掘。<br><br> ![不正常的子网链接示例](./media/log-analytics-network-performance-monitor/npm-investigation03.png) 
+4. 与上一页类似，特定子网链接的挖掘页面会列出其构成节点链接。 可以在此处执行与上一步类似的操作。 单击“查看拓扑”即可查看 2 个节点之间的拓扑。<br><br> ![不正常的节点链接示例](./media/log-analytics-network-performance-monitor/npm-investigation04.png)  
+5. 2 个所选节点之间的所有路径绘制在拓扑图中。 可以在拓扑图上可视化两个节点之间路由的逐跳拓扑。 它清晰地呈现两个节点之间存在多少个路由，以及数据包会采用哪条路径。 网络性能瓶颈会标记为红色。 可以通过查看拓扑图上标为红色的元素，定位到发生问题的网络连接或网络设备。<br><br> ![不正常的拓扑视图示例](./media/log-analytics-network-performance-monitor/npm-investigation05.png)  
 6. 可在“操作”窗格中查看每个路径中的丢失情况、延迟和跃点数。 滚动条可用于查看这些不正常的路径的详细信息。  使用筛选器可以选择包含不正常跃点的路径，以便只绘制所选路径的拓扑。 可以使用鼠标滚轮放大或缩小拓扑图。
 
-   在下图中，通过查看红色标记的路径和跃点，就可以清楚地了解到网络特定部分的问题区域的根本原因。 单击拓扑图中的节点会呈现该节点的属性，包括 FQDN 和 IP 地址。 单击跃点会显示该跃点的 IP 地址。  
-   ![不正常的拓扑 - 路径详细信息示例](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
+   在下图中，通过查看红色标记的路径和跃点，就可以清楚地了解到网络特定部分的问题区域的根本原因。 单击拓扑图中的节点会呈现该节点的属性，包括 FQDN 和 IP 地址。 单击跃点会显示该跃点的 IP 地址。<br><br> ![不正常的拓扑 - 路径详细信息示例](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
 
 ## <a name="provide-feedback"></a>提供反馈
 
@@ -315,4 +306,3 @@ TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的网络性能数据记录。
-

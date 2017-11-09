@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 5a39d4ec9bbf1c7672267c7e89c957ebc49f1f3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: cde0fc020f1774e0e7669e7573e4aaff3534b34c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中 Linux 性能指标
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 04/13/2017
 
 复制可标识资源的检测密钥。
 
-![浏览全部，打开资源，然后在“概要”下拉菜单中选择并复制该检测密钥](./media/app-insights-java-collectd/02-props.png)
+![浏览全部，打开资源，并在“概要”下拉菜单中选择并复制该检测密钥](./media/app-insights-java-collectd/02-props.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>安装 collectd 和插件
 在 Linux 服务器计算机上：
@@ -98,7 +97,7 @@ ms.lasthandoff: 04/13/2017
 
 ![](./media/app-insights-java-collectd/result.png)
 
-默认情况下，会从收集指标的所有主机中聚合指标。 若要查看每个主机的指标，在“图表”详细信息边栏选项卡中，打开“分组”，然后选择按 CollectD-Host 分组。
+默认情况下，会从收集指标的所有主机中聚合指标。 要查看每个主机的指标，在“图表”详细信息边栏选项卡中，打开“分组”，并选择按 CollectD-Host 分组。
 
 ## <a name="to-exclude-upload-of-specific-statistics"></a>排除特定统计信息的上传
 默认情况下，Application Insights 插件会发送由启用的所有 collectd“读取”插件收集的所有数据。 
@@ -143,6 +142,5 @@ Application Insights 写入插件与某些读取插件不兼容。 Application I
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
-
 
 

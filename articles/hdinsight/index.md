@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight 文档
 
 了解如何在 HDInsight 上使用云中的 Hadoop 来分析流数据或历史数据。 教程和其他文档介绍了如何使用 Hadoop 生态系统中的 Hadoop、Spark、HBase、R-Server、Storm 和其他技术来创建群集、处理与分析大数据，以及开发解决方案。
@@ -198,6 +196,5 @@ ms.lasthandoff: 09/07/2017
         </div>
     </li>
 </ul>
-
 
 

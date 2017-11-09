@@ -3,7 +3,7 @@ title: "通过 Eclipse 中的 Java 开始使用 Azure Application Insights | Mic
 description: "在 Application Insights 中使用 Eclipse 插件为 Java 网站添加性能和使用情况监视功能"
 services: application-insights
 documentationcenter: java
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: e88c9f53-cd90-4abc-b097-1f170937908e
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 8922c65a1755343e19072a0594b800838a5e1cf9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>通过 Eclipse 中的 Java 开始使用 Application Insights
 Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用户能够分析使用情况和性能。 适用于 Application Insights 的 Eclipse 插件自动在项目中安装 SDK，使用户能够获取现成的遥测功能，另外，还可以使用一个 API 来编写自定义遥测。   
@@ -37,7 +36,7 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>在 Eclipse 上安装 SDK（一次性操作）
 只需在每台计算机上执行此操作一次。 此步骤将安装一个工具包，然后，该工具包将 SDK 添加到每个动态 Web 项目。
 
-1. 在 Eclipse 中单击“帮助”，然后单击“安装新软件”。
+1. 在 Eclipse 中单击“帮助”，并单击“安装新软件”。
 
     ![“帮助”->“安装新软件”](./media/app-insights-java-eclipse/0-plugin.png)
 2. 该 SDK 位于 http://dl.microsoft.com/eclipse 中的“Azure 工具包”下。
@@ -51,19 +50,19 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 新建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。  
 
-    ![单击“+”，然后选择“Application Insights”](./media/app-insights-java-eclipse/01-create.png)  
+    ![单击“+”，并选择“Application Insights”](./media/app-insights-java-eclipse/01-create.png)  
 
 4. 查找新资源的检测密钥。 稍后需要将此信息粘贴到代码项目中。  
 
-    ![在新资源概述中，单击“属性”，然后复制检测密钥](./media/app-insights-java-eclipse/03-key.png)  
+    ![在新资源概述中，单击“属性”，并复制检测密钥](./media/app-insights-java-eclipse/03-key.png)  
 
 ## <a name="add-application-insights-to-your-project"></a>将 Application Insights 添加到项目
 1. 从 Java Web 项目的上下文菜单添加 Application Insights。
 
-    ![在新资源概述中，单击“属性”，然后复制检测密钥](./media/app-insights-java-eclipse/02-context-menu.png)
+    ![在新资源概述中，单击“属性”，并复制检测密钥](./media/app-insights-java-eclipse/02-context-menu.png)
 2. 粘贴从 Azure 门户获取的检测密钥。
 
-    ![在新资源概述中，单击“属性”，然后复制检测密钥](./media/app-insights-java-eclipse/03-ikey.png)
+    ![在新资源概述中，单击“属性”，并复制检测密钥](./media/app-insights-java-eclipse/03-ikey.png)
 
 该密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 
@@ -72,7 +71,7 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 
 返回到 Microsoft Azure 中的 Application Insights 资源。
 
-概述边栏选项卡将显示 HTTP 请求数据。 （如果未显示，请稍候片刻，然后单击“刷新”。）
+概述边栏选项卡会显示 HTTP 请求数据。 （如果未显示，请稍候片刻，并单击“刷新”。）
 
 ![服务器响应、请求计数和失败 ](./media/app-insights-java-eclipse/5-results.png)
 
@@ -94,9 +93,9 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 在 HTML 文件的标头中插入代码片段。
 
 #### <a name="view-client-side-data"></a>查看客户端数据
-打开已更新的网页并使用它们。 等待一两分钟，然后返回 Application Insights，打开使用情况边栏选项卡。 （在“概述”边栏选项卡中，向下滚动并单击“使用情况”。）
+打开已更新的网页并使用它们。 等待一两分钟，并返回 Application Insights，打开使用情况边栏选项卡。 （在“概述”边栏选项卡中，向下滚动并单击“使用情况”。）
 
-页面视图、用户和会话指标将显示在使用情况边栏选项卡上：
+页面视图、用户和会话指标会显示在使用情况边栏选项卡上：
 
 ![会话、用户和页面视图](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
@@ -131,12 +130,12 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 [安装 Java 代理](app-insights-java-agent.md) ，记录指定的内部方法、通过 JDBC 发出的调用以及计时数据。
 
 ## <a name="performance-counters"></a>性能计数器
-在“概述”边栏选项卡中，向下滚动并单击“服务器”磁贴。 此时将显示一系列性能计数器。
+在“概述”边栏选项卡中，向下滚动并单击“服务器”磁贴。 此时会显示一系列性能计数器。
 
 ![向下滚动并单击“服务器”磁贴](./media/app-insights-java-eclipse/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
-若要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
+要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
 
 ```XML
 
@@ -196,7 +195,7 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 ## <a name="availability-web-tests"></a>可用性 Web 测试
 Application Insights 可以定期测试网站，检查网站是否正常运行且做出响应。 [若要设置][availability]，请向下滚动并单击“可用性”。
 
-![向下滚动，单击“可用性”，然后单击“添加 Web 测试”](./media/app-insights-java-eclipse/31-config-web-test.png)
+![向下滚动，单击“可用性”，并单击“添加 Web 测试”](./media/app-insights-java-eclipse/31-config-web-test.png)
 
 这样就可以获得响应时间的图表，当站点关闭时还可以收到电子邮件通知。
 
@@ -236,4 +235,3 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [metrics]: app-insights-metrics-explorer.md
 [track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-javascript.md
-

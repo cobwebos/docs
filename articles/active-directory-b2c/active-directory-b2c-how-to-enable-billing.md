@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
 ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>将 Azure 订阅链接到 Azure B2C 租户以支付使用费
 
-Azure Active Directory B2C (Azure AD B2C) 不断发生的使用费将在 Azure 订阅中计费。 创建 B2C 租户本身后，租户管理员必须将 Azure AD B2C 租户显式链接到 Azure 订阅。  这种链接是通过在目标 Azure 订阅中创建 Azure AD“B2C 租户”资源实现的。 许多 B2C 租户可链接到单个 Azure 订阅以及其他 Azure 资源（例如 VM、数据存储和 LogicApps）
+Azure Active Directory B2C (Azure AD B2C) 不断发生的使用费会在 Azure 订阅中计费。 创建 B2C 租户本身后，租户管理员必须将 Azure AD B2C 租户显式链接到 Azure 订阅。  这种链接是通过在目标 Azure 订阅中创建 Azure AD“B2C 租户”资源实现的。 许多 B2C 租户可链接到单个 Azure 订阅以及其他 Azure 资源（例如 VM、数据存储和 LogicApps）
 
 
 > [!IMPORTANT]
@@ -36,8 +35,8 @@ https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 ![切换到 Azure AD 租户](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
-## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>步骤 3 - 在 Azure Marketplace 中创建 B2C 租户资源
-单击“Marketplace”图标，或者选择仪表板左上角的绿色“+”符号，打开 Marketplace。  搜索并选择 Azure Active Directory B2C。 选择“创建”。
+## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>步骤 3 - 在 Azure 应用商店中创建 B2C 租户资源
+单击“应用商店”图标，或者选择仪表板左上角的绿色“+”符号，打开应用商店。  搜索并选择 Azure Active Directory B2C。 选择“创建”。
 
 ![选择“Marketplace”](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
 
@@ -45,11 +44,11 @@ https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 Azure AD B2C 资源创建对话框中包含以下参数：
 
-1. Azure AD B2C 租户 – 从下拉列表中选择一个 Azure AD B2C 租户。  此时仅显示符合条件的 Azure AD B2C 租户。  符合条件的 B2C 租户是指满足以下条件：你是 B2C 租户的全局管理员，B2C 租户目前未关联到 Azure 订阅
+1. Azure AD B2C 租户 – 从下拉列表中选择一个 Azure AD B2C 租户。  此时仅显示符合条件的 Azure AD B2C 租户。  符合条件的 B2C 租户满足以下条件：你是 B2C 租户的全局管理员，B2C 租户目前未关联到 Azure 订阅
 
 2. Azure AD B2C 资源名称 - 已预先选定，与 B2C 租户的域名匹配
 
-3. 订阅 - 你是其中的管理员或协同管理员的有效 Azure 订阅。  可将多个 Azure AD B2C 租户添加到一个 Azure 订阅
+3. 订阅 - 是其中的管理员或协同管理员的有效 Azure 订阅。  可将多个 Azure AD B2C 租户添加到一个 Azure 订阅
 
 4. 资源组和资源组位置 - 此项目可帮助组织多个 Azure 资源。  选择此选项对 B2C 租户位置、性能或计费状态不会造成影响
 
@@ -69,11 +68,10 @@ Azure AD B2C 资源创建对话框中包含以下参数：
 ![B2C 资源设置](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>已知问题
-- B2C 租户删除。 如果创建、删除某个 B2C 租户，然后使用相同的域名创建它，请同时删除“链接”资源并使用相同的域名重新创建该资源。  可通过 Azure 门户在订阅租户中的“所有资源”下面找到此“链接”资源。
+- B2C 租户删除。 如果创建、删除某个 B2C 租户，并使用相同的域名创建它，请同时删除“链接”资源并使用相同的域名重新创建该资源。  可通过 Azure 门户在订阅租户中的“所有资源”下面找到此“链接”资源。
 - 针对区域资源位置自我施加的限制。  在极少数情况下，用户可能已针对 Azure 资源创建建立了区域限制。  这种限制可能会阻止在 Azure 订阅与 B2C 租户之间创建链接。 若要消除此问题，请放宽此限制。
 
 ## <a name="next-steps"></a>后续步骤
-针对每个 B2C 租户完成这些步骤后，将会根据 Azure Direct 或企业协议详细信息在 Azure 订阅中计费。
+针对每个 B2C 租户完成这些步骤后，会根据 Azure Direct 或企业协议详细信息在 Azure 订阅中计费。
 - 在选定的 Azure 订阅中查看使用情况和计费
 - 通过[使用报告 API](active-directory-b2c-reference-usage-reporting-api.md) 查看详细的每日使用报告
-

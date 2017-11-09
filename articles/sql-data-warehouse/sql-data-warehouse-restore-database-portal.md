@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 763ae02d1196a924bbf89e423871af2ec22e9e6c
-ms.openlocfilehash: 84f582e8d767466ce9dec83203ec78047648caea
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/21/2016
-
-
+ms.openlocfilehash: f6bc8671410dc7015a8d2a4bea1ba11f9ae526c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>还原 Azure SQL 数据仓库（门户）
 > [!div class="op_single_selector"]
@@ -40,13 +38,13 @@ ms.lasthandoff: 12/21/2016
 还原数据库：
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧面板中选择“浏览”，然后选择“SQL Server”。
+2. 在左侧面板中选择“浏览”，并选择“SQL Server”。
 
     ![依次选择“浏览”>“SQL Server”](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. 查找服务器，然后选择它。
+3. 查找服务器，并选择它。
 
     ![选择服务器](./media/sql-data-warehouse-restore-database-portal/01-select-server.png)
-4. 查找要从中还原的 SQL 数据仓库实例，然后选择它。
+4. 查找要从中还原的 SQL 数据仓库实例，并选择它。
 
     ![选择要还原的 SQL 数据仓库实例](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
 5. 在数据仓库边栏选项卡顶部，选择“还原”。
@@ -70,10 +68,10 @@ ms.lasthandoff: 12/21/2016
 还原已删除的数据库：
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧面板中选择“浏览”，然后选择“SQL Server”。
+2. 在左侧面板中选择“浏览”，并选择“SQL Server”。
 
     ![依次选择“浏览”>“SQL Server”](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. 查找服务器，然后选择它。
+3. 查找服务器，并选择它。
 
     ![选择服务器](./media/sql-data-warehouse-restore-database-portal/02-select-server.png)
 4. 向下滚动到服务器边栏选项卡上的“操作”部分。
@@ -114,4 +112,3 @@ ms.lasthandoff: 12/21/2016
 
 <!--Other Web references-->
 [Azure portal]: https://portal.azure.com/
-

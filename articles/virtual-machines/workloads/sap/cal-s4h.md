@@ -16,12 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署 S/4HANA。 若要部署其他基于 SAP HANA 的解决方案（如 BW/4HANA），请按照相同的步骤执行。
@@ -43,9 +42,9 @@ ms.lasthandoff: 06/23/2017
 ### <a name="create-an-account-in-the-sap-cal"></a>在 SAP CAL 中创建帐户
 1. 首次登录 SAP CAL，请使用 SAP S-User 或 SAP 中注册的其他用户。 然后定义 SAP CAL 用于在 Azure 上部署设备的 SAP CAL 帐户。 在帐户定义中，需要：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择 Azure 上的部署模型（Resource Manager 或经典）。
+    a. 选择 Azure 上的部署模型（Resource Manager 或经典）。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
+    b. 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
 
     c. 授予 SAP CAL 权限，以便部署到 Azure 订阅中。
 
@@ -54,9 +53,9 @@ ms.lasthandoff: 06/23/2017
 
 2. 创建一个新的 SAP CAL 帐户。 “帐户”页显示 Azure 的三个选项： 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 Microsoft Azure（经典）是经典部署模型，已不再是首选项。
+    a. Microsoft Azure（经典）是经典部署模型，已不再是首选项。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 Microsoft Azure 是新的 Resource Manager 部署模型。
+    b. Microsoft Azure 是新的 Resource Manager 部署模型。
 
     c. 21Vianet 运营的 Windows Azure 是在中国使用经典部署模型的一个选项。
 
@@ -112,9 +111,9 @@ ms.lasthandoff: 06/23/2017
 
 1. 在“帐户详细信息”页上，需要执行以下操作：
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择 SAP CAL 帐户。 （使用通过 Resource Manager 部署模型部署时关联的帐户。）
+    a. 选择 SAP CAL 帐户。 （使用通过 Resource Manager 部署模型部署时关联的帐户。）
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 输入实例“名称”。
+    b. 输入实例“名称”。
 
     c. 选择 Azure“区域”。 SAP CAL 建议一个区域。 如果需要另一个 Azure 区域并且没有 SAP CAL 订阅，则需要通过 SAP 订购 CAL 订阅。
 
@@ -161,7 +160,6 @@ ms.lasthandoff: 06/23/2017
 几个小时内即可在 Azure 中部署一个完善的 SAP S/4 设备。
 
 如果购买了 SAP CAL 订阅，则 SAP 完全支持通过 Azure 上的 SAP CAL 进行部署。 支持队列是 BC-VCM-CAL。
-
 
 
 

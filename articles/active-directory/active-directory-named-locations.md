@@ -11,15 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/20/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: e11f19d518b22a7be4f8daf93304821b42e94a9b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
+ms.openlocfilehash: da437908509e40386ed23863648bd6956b308186
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Azure Active Directory 中的命名位置
 
@@ -52,9 +51,9 @@ ms.lasthandoff: 05/25/2017
 
 6. 在“新建”边栏选项卡上执行以下操作：
 
-    ![新建边栏选项卡](./media/active-directory-named-locations/08.png)
+    ![新建边栏选项卡](./media/active-directory-named-locations/56.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”框中，键入命名位置的名称。
+    a. 在“名称”框中，键入命名位置的名称。
 
     b. 在“IP 范围”框中，键入 IP 范围。 IP 范围需采用*无类别域际路由* (CIDR) 格式。  
 
@@ -64,7 +63,7 @@ ms.lasthandoff: 05/25/2017
 
 ## <a name="what-you-should-know"></a>要点
 
-批量更新：创建或更新命名位置时，若要进行批量更新，可以上传或下载含 IP 范围的 CSV 文件。 上传会将在文件中的 IP 范围添加到列表而不是覆盖列表。
+批量更新：创建或更新命名位置时，若要进行批量更新，可以上传或下载含 IP 范围的 CSV 文件。 上传会会在文件中的 IP 范围添加到列表而不是覆盖列表。
 
 ![上传和下载链接](./media/active-directory-named-locations/09.png)
 
@@ -75,5 +74,4 @@ ms.lasthandoff: 05/25/2017
 ## <a name="next-steps"></a>后续步骤
 
 有关风险事件的详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
-
 

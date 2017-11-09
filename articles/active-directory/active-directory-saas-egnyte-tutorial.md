@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: 62d01333b61e73c83588d2d1701c0c300df4ab1c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 的集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 06/20/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Egnyte 客户端支持团队](https://www.egnyte.com/corp/contact_egnyte.html)获取此值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-egnyte-tutorial/tutorial_egnyte_certificate.png) 
 
@@ -138,7 +137,7 @@ ms.lasthandoff: 06/20/2017
 
    ![设置](./media/active-directory-saas-egnyte-tutorial/ic787820.png "设置")
 
-10. 单击“配置”选项卡，然后单击“安全性”。
+10. 单击“配置”选项卡，并单击“安全性”。
 
     ![安全](./media/active-directory-saas-egnyte-tutorial/ic787821.png "安全")
 
@@ -146,9 +145,9 @@ ms.lasthandoff: 06/20/2017
 
     ![单一登录身份验证](./media/active-directory-saas-egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 对于“单一登录身份验证”，选择“SAML 2.0”。
+    a. 对于“单一登录身份验证”，选择“SAML 2.0”。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 对于“标识提供者”，选择“AzureAD”。
+    b. 对于“标识提供者”，选择“AzureAD”。
    
     c. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“标识提供者登录 URL”文本框中。
    
@@ -189,7 +188,7 @@ ms.lasthandoff: 06/20/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-egnyte-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -207,7 +206,7 @@ ms.lasthandoff: 06/20/2017
 
 2. 转到“设置”\>“用户和组”。
 
-3. 单击“添加新用户”，然后选择要添加的用户的类型。
+3. 单击“添加新用户”，并选择要添加的用户的类型。
    
    ![用户](./media/active-directory-saas-egnyte-tutorial/ic787824.png "用户")
 
@@ -215,9 +214,9 @@ ms.lasthandoff: 06/20/2017
    
    ![新建标准用户](./media/active-directory-saas-egnyte-tutorial/ic787825.png "New Standard User")   
 
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 键入要预配的有效 Azure Active Directory 帐户的“电子邮件”、“用户名”和其他详细信息。
+   a. 键入要预配的有效 Azure Active Directory 帐户的“电子邮件”、“用户名”和其他详细信息。
    
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“保存” 。
+   b. 单击“保存” 。
     
     >[!NOTE]
     >Azure Active Directory 帐户持有者将收到一封通知电子邮件。
@@ -235,7 +234,7 @@ ms.lasthandoff: 06/20/2017
 
 **若要将 Britta Simon 分配到 Egnyte，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -284,5 +283,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-egnyte-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-egnyte-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-egnyte-tutorial/tutorial_general_203.png
-
 

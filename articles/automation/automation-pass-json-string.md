@@ -13,14 +13,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
+ms.openlocfilehash: e9352ac1a346537d6214590be6dbc9db7ca0f461
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: eac0e95a46731b9d396ea0590e629d61ca6a7d70
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
-
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>将 JSON 对象传递到 Azure 自动化 Runbook
 
 它可用于存储想要传递到 JSON 文件中的 Runbook 的数据。
@@ -97,7 +95,7 @@ Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
    ```powershell
    $JsonParams = @{"json"=$json}
    ```
-1. 为 `Start-AzureRmAutomstionRunbook` 的参数创建哈希表：
+1. 为 `Start-AzureRmAutomationRunbook` 的参数创建哈希表：
    ```powershell
    $RBParams = @{
         AutomationAccountName = 'AATest'
@@ -118,6 +116,5 @@ Runbook 将使用 JSON 文件中的值来启动 VM。
 
 * 若要了解有关使用文本编辑器编辑 PowerShell 和 PowerShell 工作流 Runbook 的详细信息，请参阅 [编辑 Azure 自动化中的文本 Runbook](automation-edit-textual-runbook.md) 
 * 若要了解创建和导入 Runbook 的详细信息，请参阅[在 Azure 自动化中创建或导入 Runbook](automation-creating-importing-runbook.md)
-
 
 

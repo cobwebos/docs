@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
 ms.openlocfilehash: b858c6d26b78be4641a46b3453f53d103b512356
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>教程：Azure Active Directory 与 LiquidFiles 集成
 
@@ -115,7 +114,7 @@ ms.lasthandoff: 07/18/2017
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>`
 
-    c. b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/consume`
+    c. b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/consume`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [LiquidFiles 客户端支持团队](https://www.liquidfiles.com/support.html)获取这些值。 
@@ -140,9 +139,9 @@ ms.lasthandoff: 07/18/2017
 
     ![配置单一登录](./media/active-directory-saas-liquidfiles-tutorial/tutorial_single_01.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“SAML 2”作为“单一登录方法”。
+    a. 选择“SAML 2”作为“单一登录方法”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     c. 在“IDP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
@@ -181,7 +180,7 @@ ms.lasthandoff: 07/18/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-liquidfiles-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -201,7 +200,7 @@ ms.lasthandoff: 07/18/2017
 
 若要将 Britta Simon 分配到 LiquidFiles，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -249,5 +248,4 @@ ms.lasthandoff: 07/18/2017
 [201]: ./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-liquidfiles-tutorial/tutorial_general_203.png
-
 

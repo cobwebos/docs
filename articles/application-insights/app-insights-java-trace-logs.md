@@ -3,7 +3,7 @@ title: "在 Azure Application Insights 中浏览 Java 跟踪日志 | Microsoft D
 description: "在 Application Insights 中搜索 Log4J 或 Logback 跟踪"
 services: application-insights
 documentationcenter: java
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 086091bb3be6659436ec8e371acbe4b8e86bfacb
-ms.openlocfilehash: 3ef5f6240d7e4704118b86fb0cfee8cf502859ff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/13/2016
-
+ms.author: mbullwin
+ms.openlocfilehash: 6e441c9cbd15bb1528ea8e8a781f90900af90cf2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -111,7 +110,7 @@ ms.lasthandoff: 12/13/2016
 | Log4j v1.2 |[包含 Log4J v1.2 追加器的 SDK](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>将追加器添加到日志记录框架
-若要开始跟踪，请将相关的代码片段合并到 Log4J 或 Logback 配置文件： 
+要开始跟踪，请将相关的代码片段合并到 Log4J 或 Logback 配置文件： 
 
 *Logback*
 
@@ -168,6 +167,5 @@ Application Insights 追加器可由配置的任何记录器（而不一定是�
 
 [diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
-
 
 

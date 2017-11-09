@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: glenga
+ms.openlocfilehash: ee64913629124f886e91478c21304956fbec9f90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 06e85d02d82bcc7d57989c1dce97028b24b9f317
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure 应用服务正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure 应用服务的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
@@ -227,7 +226,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 1. 选择想要运行的作业。
 2. 如有必要，请单击“启用”以启用该作业。
 3. 单击“设置”，并单击“计划”。
-4. 将周期选择为“一次”，然后单击“保存”
+4. 将周期选择为“一次”，并单击“保存”
 
 按需作业位于 `App_Data/config/scripts/scheduler post-migration` 中。  建议将所有按需作业转换为 [WebJobs] 或[函数]。  编写新的计划程序作业作为 [WebJobs] 或[函数]。
 
@@ -375,29 +374,26 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 <!-- Links -->
 [应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
-[自动缩放]: ../app-service-web/web-sites-scale.md
-[Azure 应用服务]: ../app-service/app-service-value-prop-what-is.md
-[Azure 应用服务部署文档]: ../app-service-web/web-sites-deploy.md
+[自动缩放]: ../app-service/web-sites-scale.md
+[Azure 应用服务]: ../app-service/app-service-web-overview.md
 [Azure 经典门户]: https://manage.windowsazure.com
 [Azure 门户]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/en-us/regions/
 [Azure 计划程序计划]: ../scheduler/scheduler-plans-billing.md
-[连续部署]: ../app-service-web/app-service-continuous-deployment.md
+[连续部署]: ../app-service/app-service-continuous-deployment.md
 [转换混合命名空间]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
-[自定义域名]: ../app-service-web/web-sites-custom-domain-name.md
+[自定义域名]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure 应用服务正式版]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[日志记录]: ../app-service-web/web-sites-enable-diagnostic-log.md
+[日志记录]: ../app-service/web-sites-enable-diagnostic-log.md
 [移动应用 Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services vs.App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [通知中心]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[性能监视]: ../app-service-web/web-sites-monitor.md
+[性能监视]: ../app-service/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
-[过渡槽]: ../app-service-web/web-sites-staged-publishing.md
-[VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
-[WebJobs]: ../app-service-web/websites-webjobs-resources.md
+[过渡槽]: ../app-service/web-sites-staged-publishing.md
+[VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT Transform Samples]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [函数]: ../azure-functions/functions-overview.md
-

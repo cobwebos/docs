@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 7889bf9e4e02143b6bb4c797531afa54f8647ce5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用编码 AS2 消息
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/06/2017
 需要具有以下各项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义的、与你的 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 AS2 消息连接器。
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 AS2 消息连接器。
 * 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [AS2 协议](logic-apps-enterprise-integration-as2.md)
 
@@ -38,13 +37,13 @@ ms.lasthandoff: 07/06/2017
 
 1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
 
-2. 编码 AS2 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
+2. 编码 AS2 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
 
 3.  在搜索框中，输入“AS2”作为筛选器。 选择“AS2 - 编码 AS2 消息”。
    
     ![搜索“AS2”](./media/logic-apps-enterprise-integration-as2-encode/as2decodeimage1.png)
 
-4. 如果以前未创建与集成帐户的任何连接，系统会提示你现在创建该连接。 为你的连接命名，并选择要连接的集成帐户。 
+4. 如果以前未创建与集成帐户的任何连接，系统会提示现在创建该连接。 为连接命名，并选择要连接的集成帐户。 
    
     ![创建到集成帐户的连接](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage1.png)  
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 07/06/2017
    
     ![集成连接详细信息](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage2.png)
 
-6. 如此示例中所示，在创建连接后，根据你的协议中的配置提供 **AS2 发件人标识符**和 **AS2 收件人标识符**的详细信息，并提供**正文**（即消息有效负载）。
+6. 如此示例中所示，在创建连接后，根据协议中的配置提供 **AS2 发件人标识符**和 **AS2 收件人标识符**的详细信息，并提供**正文**（即消息有效负载）。
    
     ![提供必填字段](./media/logic-apps-enterprise-integration-as2-encode/as2encodeimage3.png)
 
@@ -81,5 +80,4 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
-
 

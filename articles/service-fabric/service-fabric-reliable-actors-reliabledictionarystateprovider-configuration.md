@@ -12,18 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/29/2017
+ms.date: 10/2/2017
 ms.author: sumukhs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: e787f48f14539dff3035c51e14243c7bd9dcbb73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 5dcd1b4f5a070e9a09b6f8338928d93d10227d38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-<a id="configuring-reliable-actors--reliabledictionaryactorstateprovider" class="xliff"></a>
-# 配置 Reliable Actors - ReliableDictionaryActorStateProvider
+# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>配置 Reliable Actors - ReliableDictionaryActorStateProvider
 通过更改 Visual Studio 包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 ReliableDictionaryActorStateProvider 的默认配置。
 
 Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
@@ -35,14 +32,12 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 
 也有一些全局设置会影响 ReliableDictionaryActorStateProvider 的配置。
 
-<a id="global-configuration" class="xliff"></a>
-## 全局配置
+## <a name="global-configuration"></a>全局配置
 全局配置在群集的群集清单中的 KtlLogger 节下面指定。 它可配置共享日志位置和大小，以及记录器所使用的全局内存限制。 请注意，群集清单中的更改会影响使用 ReliableDictionaryActorStateProvider 的所有服务以及可靠有状态服务。
 
-群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 你可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
+群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
 
-<a id="configuration-names" class="xliff"></a>
-### 配置名称
+### <a name="configuration-names"></a>配置名称
 | Name | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |千字节 |8388608 |以内核模式分配给记录器写入缓冲区内存池的最小 KB 数。 此内存池用于在将状态信息写入磁盘之前缓存这些信息。 |
@@ -51,8 +46,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 | SharedLogPath |完全限定的路径名 |"" |指定完全限定的路径，该路径中的共享日志文件用于群集中所有节点上的所有 Reliable Services（不会在其服务特定配置中指定 SharedLogPath）。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 | SharedLogSizeInMB |兆字节 |8192 |指定以静态方式分配给共享日志的磁盘空间 MB 数。 此值必须为 2048 或更大。 |
 
-<a id="sample-cluster-manifest-section" class="xliff"></a>
-### 群集清单节示例
+### <a name="sample-cluster-manifest-section"></a>群集清单节示例
 ```xml
    <Section Name="KtlLogger">
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
@@ -63,34 +57,28 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
    </Section>
 ```
 
-<a id="remarks" class="xliff"></a>
-### 备注
+### <a name="remarks"></a>备注
 记录器具有一个从未分页的内核内存分配的内存全局池，节点上的所有 Reliable Services 都可以使用该池在将状态数据写入与可靠服务副本关联的专用日志之前缓存这些数据。 池大小由 WriteBufferMemoryPoolMinimumInKB 和 WriteBufferMemoryPoolMaximumInKB 设置控制。 WriteBufferMemoryPoolMinimumInKB 指定此内存池的初始大小，以及内存池可以缩小到的大小下限。 WriteBufferMemoryPoolMaximumInKB 是内存池可以增长到的大小上限。 每个打开的可靠服务副本都可能会增加内存池的大小，增加幅度从系统决定的数量到 WriteBufferMemoryPoolMaximumInKB。 如果内存池的内存需求大于可用的内存，则会延迟内存请求，直到有可用的内存。 因此，如果写入缓冲区内存池对特定配置而言太小，则性能可能会受到影响。
 
 SharedLogId 和 SharedLogPath 设置始终一起使用，用于定义群集中所有节点的默认共享日志的 GUID 和位置。 默认共享日志可用于不在特定服务 settings.xml 中指定设置的所有 Reliable Services。 为了获得最佳性能，共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少争用。
 
 SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志的磁盘空间数量。  若要指定 SharedLogSizeInMB，不需要指定 SharedLogId 和 SharedLogPath。
 
-<a id="replicator-security-configuration" class="xliff"></a>
-## 复制器安全配置
+## <a name="replicator-security-configuration"></a>复制器安全配置
 复制器安全配置用于保护在复制过程中使用的通信通道的安全。 这意味着服务将无法看到对方的复制流量，从而确保高度可用的数据也处于安全状态。
 默认情况下，空的安全配置节会影响复制安全。
 
-<a id="section-name" class="xliff"></a>
-### 节名称
+### <a name="section-name"></a>节名称
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-<a id="replicator-configuration" class="xliff"></a>
-## 复制器配置
+## <a name="replicator-configuration"></a>复制器配置
 复制器配置用于配置通过在本地复制和保持状态，负责使执行组件状态提供程序的状态高度可靠的复制器。
 默认配置由 Visual Studio 模板生成，并应已足够。 本部分介绍了可用于调整复制器的其他配置。
 
-<a id="section-name" class="xliff"></a>
-### 节名称
+### <a name="section-name"></a>节名称
 &lt;ActorName&gt;ServiceReplicatorConfig
 
-<a id="configuration-names" class="xliff"></a>
-### 配置名称
+### <a name="configuration-names"></a>配置名称
 | Name | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
@@ -102,10 +90,9 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 | MaxRecordSizeInKB |KB |1024 |复制器可以在日志中写入的最大记录大小。 此值必须是 4 的倍数，且大于 16。 |
 | OptimizeLogForLowerDiskUsage |布尔 |是 |为 true 时会配置日志，以便使用 NTFS 稀疏文件创建副本的专用日志文件。 这会降低文件的实际磁盘空间使用率。 为 false 时，会使用固定分配创建文件，这可提供最佳写入性能。 |
 | SharedLogId |guid |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 guid。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。 |
-| SharedLogPath |完全限定的路径名 |"" |指定将在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
+| SharedLogPath |完全限定的路径名 |"" |指定会在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 
-<a id="sample-configuration-file" class="xliff"></a>
-## 示例配置文件
+## <a name="sample-configuration-file"></a>示例配置文件
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -126,8 +113,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 </Settings>
 ```
 
-<a id="remarks" class="xliff"></a>
-## 备注
+## <a name="remarks"></a>备注
 BatchAcknowledgementInterval 参数用于控制复制延迟。 “0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多的确认消息，每个包含较少的确认）。
 BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。 这直接转换为事务提交的延迟。
 
@@ -138,5 +124,4 @@ CheckpointThresholdInMB 参数控制复制器可以用于将状态信息存储�
 MaxRecordSizeInKB 设置用于定义可由复制器写入日志文件的记录的最大大小。 大多数情况下，默认的 1024-KB 记录大小是最佳的。 但是，如果服务使更大数据项成为状态信息的一部分，则可能需要增加此值。 使 MaxRecordSizeInKB 小于 1024 几乎没什么好处，因为记录仅使用较小记录所需的空间。 我们预期此值只在极少数情况下需要更改。
 
 SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用与节点的默认共享日志不同的共享日志。 为获得最佳效率，应让尽可能多的服务指定相同共享日志。 共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少磁头运动争用。 我们预期这些值只在极少数情况下需要更改。
-
 

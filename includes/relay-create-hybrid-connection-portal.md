@@ -5,7 +5,7 @@
 3. 选择要在其中创建混合连接的命名空间。 在本示例中，该命名空间为 **mynewns**。
    
     ![创建混合连接](./media/relay-create-hybrid-connection-portal/create-hc-1.png)
-4. 在“中继命名空间”边栏选项卡中，选择“混合连接”，然后单击“+ 混合连接”。
+4. 在“中继命名空间”边栏选项卡中，选择“混合连接”，并单击“+ 混合连接”。
    
     ![选择混合连接](./media/relay-create-hybrid-connection-portal/create-hc-2.png)
 5. 输入**混合连接名称**，其他值保留默认值。

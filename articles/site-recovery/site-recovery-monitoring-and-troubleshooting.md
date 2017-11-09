@@ -14,42 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/06/2017
-
-
+ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>监视虚拟机和物理服务器的保护及其故障排除
 本监视与故障排除指南可帮助你了解如何跟踪 Azure Site Recovery 的复制运行状况，并掌握相关的故障排除方法。
 
 ## <a name="understand-the-components"></a>了解组件
 ### <a name="vmware-virtual-machine-or-physical-server-site-deployment-for-replication-between-on-premises-and-azure"></a>针对本地与 Azure 之间复制的 VMware 虚拟机或物理服务器站点部署
-若要设置本地 VMware 虚拟机或物理服务器与 Azure 之间的数据库恢复，需要在虚拟机或服务器上设置配置服务器、主目标服务器和进程服务器组件。 如果你启用源服务器保护，Azure Site Recovery 会安装 Microsoft Azure App Service 的移动应用功能。 在本地中断或源服务器故障转移到 Azure 后，客户需要在 Azure 中设置进程服务器，并在本地设置主目标服务器，以在本地重新生成源服务器。
+若要设置本地 VMware 虚拟机或物理服务器与 Azure 之间的数据库恢复，需要在虚拟机或服务器上设置配置服务器、主目标服务器和进程服务器组件。 如果启用源服务器保护，Azure Site Recovery 会安装 Microsoft Azure 应用服务的移动应用功能。 在本地中断或源服务器故障转移到 Azure 后，客户需要在 Azure 中设置进程服务器，并在本地设置主目标服务器，以在本地重新生成源服务器。
 
 ![针对本地与 Azure 之间复制的 VMware/物理站点部署](media/site-recovery-monitoring-and-troubleshooting/image18.png)
 
 ### <a name="virtual-machine-manager-site-deployment-for-replication-between-on-premises-sites"></a>针对本地站点之间复制的 Virtual Machine Manager 站点部署
-若要在两个本地位置之间设置数据库恢复，需要下载 Azure Site Recovery 提供程序，并将其安装在 Virtual Machine Manager 服务器上。 提供程序需要连接 Internet，以确保从 Azure 门户触发的所有操作都转换成本地操作。
+要在两个本地位置之间设置数据库恢复，需要下载 Azure Site Recovery 提供程序，并将其安装在 Virtual Machine Manager 服务器上。 提供程序需要连接 Internet，以确保从 Azure 门户触发的所有操作都转换成本地操作。
 
 ![针对本地站点之间复制的 Virtual Machine Manager 站点部署](media/site-recovery-monitoring-and-troubleshooting/image1.png)
 
 ### <a name="virtual-machine-manager-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>针对本地位置与 Azure 之间复制的 Virtual Machine Manager 站点部署
-若要在本地位置和 Azure 之间设置数据库恢复，需要下载 Azure Site Recovery 提供程序，并将其安装在 Virtual Machine Manager 服务器上。 此外，还需要在每个 Hyper-V 主机上安装 Azure 恢复服务代理。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。
+要在本地位置和 Azure 之间设置数据库恢复，需要下载 Azure Site Recovery 提供程序，并将其安装在 Virtual Machine Manager 服务器上。 此外，还需要在每个 Hyper-V 主机上安装 Azure 恢复服务代理。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。
 
 ![针对本地位置与 Azure 之间复制的 Virtual Machine Manager 站点部署](media/site-recovery-monitoring-and-troubleshooting/image2.png)
 
 ### <a name="hyper-v-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>针对本地位置与 Azure 之间复制的 Hyper-V 站点部署
-此过程与 Virtual Machine Manager 部署类似。 唯一的区别在于，Azure Site Recovery 提供程序和 Azure 恢复服务代理将在 Hyper-V 主机上自行安装。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。 。
+此过程与 Virtual Machine Manager 部署类似。 唯一的区别在于，Azure Site Recovery 提供程序和 Azure 恢复服务代理会在 Hyper-V 主机上自行安装。 [了解详细信息](site-recovery-hyper-v-azure-architecture.md)。 。
 
 ## <a name="monitor-configuration-protection-and-recovery-operations"></a>监视配置、保护和恢复操作
-在“**作业**”选项卡下，Azure Site Recovery 中的每项操作都会经过审核和跟踪。 若要查看任何配置、保护或恢复错误，请转到“**作业**”选项卡，然后查找故障。
+在“**作业**”选项卡下，Azure Site Recovery 中的每项操作都会经过审核和跟踪。有关任何配置、保护或恢复错误，请转到“**作业**”选项卡，并查找故障。
 
 ![“作业”选项卡中的“失败”筛选器](media/site-recovery-monitoring-and-troubleshooting/image3.png)
 
-如果在“**作业**”选项卡下发现故障，请选择相应的作业，然后单击该作业对应的“**错误详细信息**”。
+如果在“**作业**”选项卡下发现失败，请选择该作业，并单击该作业对应的“**错误详细信息**”。
 
 ![“错误详细信息”按钮](media/site-recovery-monitoring-and-troubleshooting/image4.png)
 
@@ -57,16 +55,16 @@ ms.lasthandoff: 03/06/2017
 
 ![显示特定作业的错误详细信息的对话框](media/site-recovery-monitoring-and-troubleshooting/image5.png)
 
-在上述示例中，另一个正在进行的操作可能导致保护配置失败。 根据建议解决此问题，然后单击“**重启**”，再次启动操作。
+在上述示例中，另一个正在进行的操作可能导致保护配置失败。 根据建议解决此问题，并单击“**重启**”，再次启动操作。
 
 ![“作业”选项卡中的“重启”按钮](media/site-recovery-monitoring-and-troubleshooting/image6.png)
 
-“**重启**”选项并不适用于所有操作。 如果操作没有对应的“**重启**”选项，请返回到对象，然后重做操作。 可以使用“**取消**”按钮取消正在进行的任何作业。
+“**重启**”选项并不适用于所有操作。 如果操作不具有“**重新启动**”选项，请返回到对象，并重试该操作。 可以使用“**取消**”按钮取消正在进行的任何作业。
 
 ![“取消”按钮](media/site-recovery-monitoring-and-troubleshooting/image7.png)
 
 ## <a name="monitor-replication-health-for-virtual-machines"></a>监视虚拟机的复制运行状况
-Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery 提供程序。 依次单击“**受保护的项**”和“**VMM 云**”或“**保护组**”。 “**VMM 云**”选项卡只适用于基于 Virtual Machine Manager 的部署。 对于其他方案，受保护的实体位于“**保护组**”选项卡下。
+Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery 提供程序。 单击“**受保护的项**”，并单击“**VMM 云**”或“**保护组**”。 “**VMM 云**”选项卡只适用于基于 Virtual Machine Manager 的部署。 对于其他方案，受保护的实体位于“**保护组**”选项卡下。
 
 ![“VMM 云”和“保护组”选项](media/site-recovery-monitoring-and-troubleshooting/image8.png)
 
@@ -86,15 +84,15 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 >
 
 ## <a name="troubleshoot-on-premises-hyper-v-issues"></a>排查本地 Hyper-V 问题
-连接本地 Hyper-V 管理器控制台，选择虚拟机，然后查看复制运行状况。
+连接本地 Hyper-V 管理器控制台，选择虚拟机，并查看复制运行状况。
 
 ![Hyper-V 管理器控制台中用于查看复制运行状况的选项](media/site-recovery-monitoring-and-troubleshooting/image12.png)
 
-在此示例中，“**复制运行状况**”为“**严重**”。 右键单击虚拟机，然后依次单击“**复制**” > “**查看复制运行状况**”，查看详细信息。
+在此示例中，“**复制运行状况**”为“**严重**”。 右键单击虚拟机，并依次单击“**复制**” > “**查看复制运行状况**”，查看详细信息。
 
 ![特定虚拟机的复制运行状况](media/site-recovery-monitoring-and-troubleshooting/image13.png)
 
-如果虚拟机复制已暂停，请右键单击虚拟机，然后依次单击“**复制**” > “**恢复复制**”。
+如果虚拟机复制已暂停，右键单击虚拟机，并单击“**复制**” > “**恢复复制**”。
 
 ![Hyper-V 管理器控制台中用于恢复复制的选项](media/site-recovery-monitoring-and-troubleshooting/image19.png)
 
@@ -109,7 +107,7 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 | **Applications and Service Logs/Microsoft/Windows/Hyper-V-VMMS/Admin**（Hyper-V 主机） |提供实用的日志记录，用于排查许多 Hyper-V 虚拟机管理问题。 <br/> ![Hyper-V 主机的 Virtual Machine Manager 事件源的位置](media/site-recovery-monitoring-and-troubleshooting/eventviewer01.png) |
 
 ### <a name="hyper-v-replication-logging-options"></a>Hyper-V 复制日志记录选项
-与 Hyper-V 复制相关的所有事件都会记录在“Applications and Services Logs\\Microsoft\\Windows”下的 Hyper-V-VMMS\\Admin 日志中。 此外，你还可以为 Hyper-V 虚拟机管理服务启用分析日志。 若要启用此日志，请先在“事件查看器”中显示“分析”与“调试”日志。 打开“事件查看器”，然后依次单击“**视图**” > “**显示分析和调试日志**”。
+与 Hyper-V 复制相关的所有事件都会记录在“Applications and Services Logs\\Microsoft\\Windows”下的 Hyper-V-VMMS\\Admin 日志中。 此外，还可以为 Hyper-V 虚拟机管理服务启用分析日志。 若要启用此日志，请先在“事件查看器”中显示“分析”与“调试”日志。 打开“事件查看器”，并依次单击“**视图**” > “**显示分析和调试日志**”。
 
 ![“显示分析和调试日志”选项](media/site-recovery-monitoring-and-troubleshooting/image14.png)
 
@@ -121,13 +119,13 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 
 ![“性能监视器”树中的“事件跟踪会话”](media/site-recovery-monitoring-and-troubleshooting/image16.png)
 
-若要查看收集到的信息，请先禁用日志，从而停止跟踪会话。 保存日志，然后再次在“事件查看器”中打开日志，或使用其他工具根据需要转换日志。
+若要查看收集到的信息，请先禁用日志，从而停止跟踪会话。 保存日志，并再次在“事件查看器”中打开日志，或使用其他工具根据需要转换日志。
 
 ## <a name="reach-out-for-microsoft-support"></a>联系 Microsoft 技术团队
 ### <a name="log-collection"></a>日志收集
 对于 Virtual Machine Manager 站点保护，请参阅[使用支持诊断平台 (SDP) 工具收集 Azure Site Recovery 日志](http://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)，收集所需的日志。
 
-对于 Hyper-V 站点保护，请下载[工具](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)，然后在 Hyper-V 主机上执行该工具，以收集日志。
+对于 Hyper-V 站点保护，请下载[工具](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)，并在 Hyper-V 主机上执行该工具，以收集日志。
 
 对于 VMware/物理服务器方案，请参阅[针对 VMware 和物理站点保护收集 Azure Site Recovery 日志](http://social.technet.microsoft.com/wiki/contents/articles/30677.azure-site-recovery-log-collection-for-vmware-and-physical-site-protection.aspx)，收集所需的日志。
 
@@ -193,7 +191,6 @@ Azure 门户可用于远程监视每个受保护的实体的 Azure Site Recovery
 * 许多客户无法连接 Azure 中已故障转移的虚拟机。 [请参考故障排除文档，使用 RDP 连接虚拟机](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 #### <a name="adding-a-public-ip-on-a-resource-manager-virtual-machine"></a>在 Resource Manager 虚拟机上添加公共 IP
-如果门户中的“**连接**”按钮灰显，并且你未通过 Express Route 或站点到站点 VPN 连接连接 Azure，必须先为虚拟机创建并分配一个公共 IP 地址，然后才能使用远程桌面/共享的 Shell。 然后，可以在虚拟机的网络接口上添加公共 IP。  
+如果门户中的“**连接**”按钮灰显，并且未通过 Express Route 或站点到站点 VPN 连接连接 Azure，必须先为虚拟机创建并分配一个公共 IP 地址，才能使用远程桌面/共享的 Shell。 然后，可以在虚拟机的网络接口上添加公共 IP。  
 
 ![在已故障转移的虚拟机的网络接口上添加公共 IP](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-

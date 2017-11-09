@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 316031c5297a0201c8db4a9e177298c78962c673
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>将 Azure Automation DSC 报告数据转发到 OMS Log Analytics
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 05/27/2017
 
 若要开始将数据从 Azure Automation DSC 导入到 Log Analytics，请完成以下步骤：
 
-1. 在 PowerShell 中，登录到你的 Azure 帐户。 请参阅[使用 Azure PowerShell 登录](https://docs.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
+1. 通过 PowerShell 登录 Azure 帐户。 请参阅[使用 Azure PowerShell 登录](https://docs.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
 1. 通过运行以下 PowerShell 命令获取自动化帐户的 ResourceId：（如果具有多个自动化帐户，选择想要配置的帐户的 ResourceID）。
 
   ```powershell
@@ -196,5 +195,4 @@ Log Analytics 可以更直观地显示 Automation DSC 数据的运行情况，�
 * 若要详细了解如何使用 Log Analytics 构造不同的搜索查询和查看 Automation DSC 日志，请参阅 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)
 * 若要了解使用 Azure Automation DSC 的详细信息，请参阅 [Azure Automation DSC 入门](automation-dsc-getting-started.md)
 * 若要了解有关 OMS Log Analytics 和数据收集源的详细信息，请参阅 [Collecting Azure storage data in Log Analytics overview](../log-analytics/log-analytics-azure-storage.md)（在 Log Analytics 中收集 Azure 存储数据概述）
-
 

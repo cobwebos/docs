@@ -11,14 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
+ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: fd656c68b5c3b6858b0aa04c51bdd28f3f0adc24
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-azure-virtual-data-center"></a>Microsoft Azure 虚拟数据中心
 **Microsoft Azure**：更快更省地迁移、集成本地应用和数据
 
@@ -68,7 +66,7 @@ vDC 不仅只是云中的应用程序工作负荷，也是网络、安全、管�
 -   云内的连接
 
 ##### <a name="identity-and-directory-service"></a>*标识和目录服务*
-标识和目录服务是所有数据中心（本地数据中心和云数据中心）的关键方面。 标识与 vDC 内服务的访问和授权的各个方面相关。 为了帮助确保只有获得授权的用户和进程可以访问 Azure 帐户和资源，Azure 使用几种凭据进行身份验证。 这些凭据包括密码（用于访问 Azure 帐户）、加密密钥、数字签名和安全证书。 [*Azure 多重身份验证 (MFA)*][MFA] 是访问 Azure 服务的附加安全层。 Azure MFA 通过一系列简单的验证选项（电话、短信或移动应用通知）提供强身份验证，用户可根据自己的偏好选择所用的方法。
+标识和目录服务是所有数据中心（本地数据中心和云数据中心）的关键方面。 标识与 vDC 内服务的访问和授权的各个方面相关。 为了帮助确保只有获得授权的用户和进程可以访问 Azure 帐户和资源，Azure 使用几种凭据进行身份验证。 这些凭据包括密码（用于访问 Azure 帐户）、加密密钥、数字签名和安全证书。 [*Azure 多重身份验证* (MFA)][MFA] 是访问 Azure 服务的附加安全层。 Azure MFA 通过一系列简单的验证选项（电话、短信或移动应用通知）提供强身份验证，用户可根据自己的偏好选择所用的方法。
 
 任何大型企业都需要定义标识管理流程，说明如何在 vDC 内部或跨 vDC 管理各个标识、其身份验证、授权、角色和权限。 其目标是在减少成本、停机时间和重复人工作业的同时提高安全性和工作效率。
 
@@ -94,7 +92,7 @@ vDC 需要与外部网络连接才能为客户、合作伙伴和/或内部用户
 
 [**Azure 站点到站点 VPN**][VPN] 是通过 Internet 使本地网络与 vDC 实现互连的服务，该互连服务通过安全加密连接（IPsec/IKE 隧道）建立。 由于所有连接都通过 Internet 实现，因此 Azure 站点到站点的连接创建起来灵活而快速，不需要任何进一步的采购。
 
-[**ExpressRoute**][ExR] 是可在 vDC 与本地网络之间建立专用连接的 Azure 连接服务。 ExpressRoute 连接不通过公共 Internet，从而提供更高的安全性、可靠性、更快的速度（最高可达 10 Gbps）和一致延迟。 由于 ExpressRoute 客户可以从与专用连接相关的符合性规则受益，因此 ExpressRoute 对 vDC 十分有用。
+[**ExpressRoute**][ExR] 是一种 Azure 连接性服务，允许在 vDC 和本地网络之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，从而提供更高的安全性、可靠性、更快的速度（最高可达 10 Gbps）和一致延迟。 由于 ExpressRoute 客户可以从与专用连接相关的符合性规则受益，因此 ExpressRoute 对 vDC 十分有用。
 
 部署 ExpressRoute 连接涉及与 ExpressRoute 服务提供程序通信。 对于需要快速入门的客户，通常先使用站点到站点 VPN 在 vDC 与本地资源之间建立连接，然后再迁移到 ExpressRoute 连接。
 
@@ -158,9 +156,9 @@ vDC 通过在多个辐射之间使用共享中心基础结构来降低总体成�
 
 许多组织都使用以下组的变体来提供主要角色细分：
 
--   中心 IT 组 (Corp) 拥有控制基础结构（如网络和安全性）组件的所有权，因此需要在订阅上拥有参与者角色（拥有中心的控制权），并且在辐射中拥有网络参与者角色。 大型组织时常会在多个团队（如专门处理网络的网络操作 (CorpNetOps) 组和负责防火墙和安全策略的安全操作 (CorpSecOps) 组）之间划分这些管理责任。 在这种特定情况下，需要创建两个不同的组，用于分配这些自定义角色。
--   开发与测试 (AppDevOps) 组负责部署工作负荷（应用或服务）。 此组担任用于 IaaS 部署的虚拟机参与者角色和/或一个或多个 PaaS 参与者角色（请参阅[用于 Azure 基于角色的访问控制的内置角色][Roles]）。 （可选）开发与测试团队可能需要对中心或特定辐射内的安全策略 (NSG) 和路由策略 (UDR) 拥有可见性。 因此，除了担任工作负荷参与者角色，此组也需要担任网络读取者角色。
--   操作和维护组（CorpInfraOps 或 AppInfraOps）负责管理生产中的工作负荷。 此组必须是任何生产订阅中工作负荷的订阅参与者。 一些组织还可能评估他们是否需要在生产和中心订阅中担任订阅参与者角色的附加升级支持团队组，以便修复生产环境中的潜在配置问题。
+-   *中心 IT 组 (Corp)* 具有可控制基础结构（如网络和安全）组件的所有权权限，因此需要对订阅具有参与者角色（并可控制中心），对辐射具有网络参与者权限。 大型组织时常会在多个团队（如专门处理网络的网络操作 (CorpNetOps) 组和负责防火墙和安全策略的安全操作 (CorpSecOps) 组）之间划分这些管理责任。 在这种特定情况下，需要创建两个不同的组，用于分配这些自定义角色。
+-   *开发与测试 (AppDevOps) 组*负责部署工作负荷（应用或服务）。 此组担任用于 IaaS 部署的虚拟机参与者角色和/或一个或多个 PaaS 参与者角色（请参阅[用于 Azure 基于角色的访问控制的内置角色][Roles]）。 （可选）开发与测试团队可能需要对中心或特定辐射内的安全策略 (NSG) 和路由策略 (UDR) 拥有可见性。 因此，除了担任工作负荷参与者角色，此组也需要担任网络读取者角色。
+-   *操作和维护组（CorpInfraOps 或 AppInfraOps）*负责管理生产中的工作负荷。 此组必须是任何生产订阅中工作负荷的订阅参与者。 一些组织还可能评估他们是否需要在生产和中心订阅中担任订阅参与者角色的附加升级支持团队组，以便修复生产环境中的潜在配置问题。
 
 vDC 是结构化的，可确保为中心 IT 组创建的用于管理中心的组在工作负荷级别拥有相应的组。 除了管理中心资源之外，只有中心 IT 组能够在订阅中控制外部访问和最高权限。 但是，工作负荷组将能够在中心 IT 内独立地控制其 VNet 中的资源和权限。
 
@@ -217,9 +215,9 @@ NAT 在本地边缘路由器或 Azure 环境中时可避免 IP 地址冲突，�
 
 上方关系图显示通过访问 Internet 和本地网络加强两个外围，这两个外围都位于中心。 在单个中心内，可以增加连接到 Internet 的外围网络，通过使用多个 Web 应用程序防火墙 (WAF) 和/或防火墙场支持大量的 LOB。
 
-[**虚拟网络**][VNet] 通常在 VNet 上生成中心，提供多个子网托管不同类型的服务，并通过 NVA、WAF 和 Azure 应用程序网关筛选和检查与 Internet 的通信流量。
+[**虚拟网络**][VNet] 通常在 VNet 上生成中心，提供多个子网托管不同类型的服务，并通过 NVA、WAF 和 Azure 应用程序网关筛选和检查流入或流出 Internet 的流量。
 
-[**UDR**][UDR] 客户可以使用 UDR 部署防火墙、IDS/IPS 和其他虚拟设备，并通过这些安全设备路由网络流量，以实施安全边界策略、审核和检查。 可以同时在中心和辐射中创建 UDR，保证流量通过 vDC 使用的特定自定义 VM、网络虚拟设备和负载均衡器传输。 若要保证由辐射中的 VM 生成的流量传输到正确的虚拟设备，需要通过将内部负载均衡器的前端 IP 地址设置为下一个跃点在辐射的子网中设置 UDR。 内部负载均衡器将内部流量分配到虚拟设备（负载均衡器后端池）。
+[**UDR**][UDR] 客户可以使用 UDR 部署防火墙、IDS/IPS 和其他虚拟设备，并通过这些安全设备路由网络流量，以实施、审核和检查安全边界策略。 可以同时在中心和辐射中创建 UDR，保证流量通过 vDC 使用的特定自定义 VM、网络虚拟设备和负载均衡器传输。 若要保证由辐射中的 VM 生成的流量传输到正确的虚拟设备，需要通过将内部负载均衡器的前端 IP 地址设置为下一个跃点在辐射的子网中设置 UDR。 内部负载均衡器将内部流量分配到虚拟设备（负载均衡器后端池）。
 
 [![8]][8]
 
@@ -233,11 +231,11 @@ NAT 在本地边缘路由器或 Azure 环境中时可避免 IP 地址冲突，�
 
 大多数大型企业都管理多个域。 Azure DNS 可以用来托管某个特定域的 DNS 记录。 例如，可以在 Azure DNS 记录的 A 记录中登记 Azure 外部负载均衡器（或 WAF）的虚拟 IP 地址 (VIP)。
 
-[**Azure 负载均衡器**][ALB] Azure 负载均衡器提供高度可用的第 4 层（TCP 和 UDP）服务，可以在负载均衡集定义的服务实例间分配传入流量。 可以将由前端终结点（公共 IP 终结点或专用 IP 终结点）发送到负载均衡器的流量重新分配（通过/不通过地址转换）到一组后端 IP 地址池（如网络虚拟设备或 VM）。
+[**Azure 负载均衡器**][ALB] Azure 负载均衡器提供高度可用的第 4 层（TCP 和 UDP）服务，该服务可以在负载均衡集定义的服务实例间分配传入流量。 可以将由前端终结点（公共 IP 终结点或专用 IP 终结点）发送到负载均衡器的流量重新分配（通过/不通过地址转换）到一组后端 IP 地址池（如网络虚拟设备或 VM）。
 
 Azure 负载均衡器也可以探测各种服务器实例的运行状态，当探测无法响应时，负载均衡器会停止向不正常的实例发送流量。 在 vDC 中，中心的外部负载均衡器可以均衡发送到 NVA 的流量，辐射中的外部负载均衡器可以执行均衡多层应用程序的不同 VM 之间的流量等任务。
 
-[**应用程序网关**][AppGW] Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，为应用程序提供各种第 7 层负载均衡功能。 可以用它将 CPU 密集型 SSL 终点卸载到应用程序网关，优化 Web 场工作效率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Web 应用程序防火墙 (WAF) 也作为 WAF SKU 应用程序网关的一部分提供。 此 SKU 可保护 Web 应用程序免受 Web 常见漏洞和攻击的影响。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
+[**应用程序网关**][AppGW] Microsoft Azure 应用程序网关是一个专用的虚拟设备，以服务形式提供应用程序传送控制器 (ADC)，并为应用程序提供各种第 7 层负载均衡功能。 可以用它将 CPU 密集型 SSL 终点卸载到应用程序网关，优化 Web 场工作效率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Web 应用程序防火墙 (WAF) 也作为 WAF SKU 应用程序网关的一部分提供。 此 SKU 可保护 Web 应用程序免受 Web 常见漏洞和攻击的影响。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 
 
 [**公共 IP**][PIP] 可以通过一些 Azure 功能将服务终结点关联到允许从 Internet 访问资源的公共 IP 地址。 该终结点使用网络地址转换 (NAT) 将流量路由到 Azure 虚拟网络上的内部地址和端口。 此路径是外部流量进入虚拟网络的主要方式。 可以对公共 IP 地址进行配置，确定可以传入哪种流量、如何在虚拟网络上转换该流量以及要将它路由到何处。
 
@@ -256,7 +254,7 @@ Azure 中主要有两种日志类型：
 
 在 vDC 中，跟踪 NSG 日志极其重要，尤其是以下信息：
 
--   [**事件日志**][NSGLog]：提供根据 MAC 地址向 VM 和实例角色应用的 NSG 规则的信息。
+-   [**事件日志**][NSGLog]：提供根据 MAC 地址向 VM 和实例角色应用的 NSG 规则的相关信息。
 -   [**计数器日志**][NSGLog]：跟踪每个 NSG 规则拒绝或允许流量的执行次数。
 
 所有日志都可以存储在 Azure 存储帐户中，以便进行审核、静态分析或备份。 日志存储在 Azure 存储帐户时，客户可以对该数据使用不同类型的框架进行检索、准备、分析和可视化操作，以报告云资源的状态和运行状况。
@@ -382,9 +380,8 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
 [OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
-[WebApps]: https://docs.microsoft.com/azure/app-service-web/
+[WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 
 [ServiceBus]: https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview
 [TM]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 3f944ffbf704694b293b4b1e5bdb4f2c93ae35a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>教程：Azure Active Directory 与 TimeOffManager 集成
 
@@ -86,7 +85,7 @@ ms.lasthandoff: 08/05/2017
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TimeOffManager 测试用户](#create-a-timeoffmanager-test-user)** - 在 TimeOffManager 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 TimeOffManager 测试用户](#create-a-timeoffmanager-test-user)** - 在 TimeOffManager 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 08/05/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 可以从教程后面介绍的“单一登录设置页面”中获取此值，也可以联系 [TimeOffManager 支持团队](http://www.timeoffmanager.com/contact-us.aspx)。
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![“SAML 签名证书”部分](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
 
@@ -279,5 +278,4 @@ TimeOffManager 支持实时用户预配。 不存在任何操作项。
 [201]: ./media/active-directory-saas-timeoffmanager-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-timeoffmanager-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-timeoffmanager-tutorial/tutorial_general_203.png
-
 

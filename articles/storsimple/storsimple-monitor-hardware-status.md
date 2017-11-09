@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
-
-
+ms.openlocfilehash: 93df79c9d349c294b692148a19c9d881c4de4f7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple Manager 服务监视硬件组件和状态
 ## <a name="overview"></a>概述
@@ -46,7 +46,7 @@ ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
 ## <a name="monitor-the-hardware-status"></a>监视硬件状态
 可以执行以下步骤来查看设备组件的硬件状态：
 
-1. 导航到“设备”，然后选择一个特定的 StorSimplete 设备。 单击以转到设备级菜单，然后单击“维护”。 
+1. 导航到“设备”，并选择一个特定的 StorSimplete 设备。 单击以转到设备级菜单，并单击“维护”。 
 2. 找到“硬件状态”部分并从可用组件（如上文所述）中进行选择。 只需单击组件标签前面的箭头便可展开列表并查看各种设备组件的状态。 请参阅[主机箱的详细组件列表](#component-list-for-primary-enclosure-of-storsimple-device)和 [EBOD 机箱的详细组件列表](#component-list-for-ebod-enclosure-of-storsimple-device)。
 3. 使用以下颜色编码方案解释组件状态：
    
@@ -54,7 +54,7 @@ ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
    * **黄色** – 表示处于**警告**状态的组件。
    * **红色感叹号** – 表示处于**故障**或**需要注意**状态的组件。
    * **白底黑字** – 表示不存在的组件。
-4. 如果遇到了未处于**正常**状态的组件，请联系 Microsoft 支持部门。 如果在设备上启用了警报，你将收到电子邮件警报。 如果需要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
+4. 如果遇到了未处于**正常**状态的组件，请联系 Microsoft 支持部门。 如果在设备上启用了警报，将收到电子邮件警报。 如果需要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple 设备的主机箱的组件列表
 下表概述了本地 StorSimple 设备的主机箱中包含的物理和逻辑组件。
@@ -87,7 +87,7 @@ ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
 | SSD 存储池 |不适用 |逻辑 |共享 |不适用 |显示基于设备 SSD 创建的逻辑存储池的状态。 |
 | 控制器 [0-1] [状态] |I/O |物理 |控制器 |是 |显示控制器的状态，以及它在机壳内是处于活动状态还是备用状态。 |
 | 控制器中的温度传感器 |I/O |物理 |控制器 |否 |许多温度传感器（例如 I/O 模块、CPU 温度、DIMM 和 PCIe 传感器）会显示它们的状态，指示其温度是否在容差范围内。 |
-| ﻿SAS 扩展器 |I/O |物理 |控制器 |否 |指示串行连接 SCSI (SAS) 扩展器的状态，该扩展器用来将集成的存储连接到控制器。 |
+| SAS 扩展器 |I/O |物理 |控制器 |否 |指示串行连接 SCSI (SAS) 扩展器的状态，该扩展器用来将集成的存储连接到控制器。 |
 | SAS 连接器 [0-1] |I/O |物理 |控制器 |否 |指示每个 SAS 连接器的状态，该连接器用来将集成的存储连接到 SAS 扩展器。 |
 | SBB 中间板互连 |I/O |物理 |控制器 |否 |指示中间板连接器的状态，该连接器用来将每个控制器连接到中间板。 |
 | 处理器核心 |I/O |物理 |控制器 |否 |指示每个控制器中的处理器核心的状态。 |
@@ -116,7 +116,7 @@ ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
 | 本地存储 [HDD] |不适用 |逻辑 |共享 |不适用 |显示基于设备 HDD 创建的逻辑存储池的状态。 |
 | 控制器 [0-1] [状态] |I/O |物理 |控制器 |是 |显示 EBOD 模块中的控制器的状态。 |
 | EBOD 中的温度传感器 |I/O |物理 |控制器 |否 |每个控制器中的许多温度传感器会显示它们的状态，指示其温度是否在容差范围内。 |
-| ﻿SAS 扩展器 |I/O |物理 |控制器 |否 |指示 SAS 扩展器的状态，该扩展器用来将集成的存储连接到控制器。 |
+| SAS 扩展器 |I/O |物理 |控制器 |否 |指示 SAS 扩展器的状态，该扩展器用来将集成的存储连接到控制器。 |
 | SAS 连接器 [0-2] |I/O |物理 |控制器 |否 |指示每个 SAS 连接器的状态，该连接器用来将集成的存储连接到 SAS 扩展器。 |
 | SBB 中间板互连 |I/O |物理 |控制器 |否 |指示中间板连接器的状态，该连接器用来将每个控制器连接到中间板。 |
 | 机箱电子设备电源 |I/O |物理 |控制器 |否 |指示机箱使用的电源系统的状态。 |
@@ -128,10 +128,4 @@ ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
 * 如果需要排除处于降级或故障状态的设备组件的故障，请参阅 [StorSimple 监视指示器](storsimple-monitoring-indicators.md)。 
 * 若要更换发生故障的硬件组件，请参阅 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
 * 如果继续遇到设备问题，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

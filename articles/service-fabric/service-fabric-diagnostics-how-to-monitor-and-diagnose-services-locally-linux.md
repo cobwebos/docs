@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 86ed3f25f0bdd6bb5d8a93f124a0d2bcd7e2b07a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/08/2017
-
+ms.openlocfilehash: 4bc73f581f4855ebc724df19dd56fab8bf103854
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 
 
@@ -63,7 +61,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 * **%u** 是唯一编号，用于解决同时进行的 Java 进程之间的冲突。
 * **%g** 是生成编号，用于区分轮换日志。
 
-默认情况下，如果未显式配置处理程序，将会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
+默认情况下，如果未显式配置处理程序，会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
 
 有关详细信息，请参阅 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  
 
@@ -73,7 +71,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 可以使用多个框架在 Linux 上跟踪 CoreCLR 应用程序。 有关详细信息，请参阅 [GitHub：日志记录](http:/github.com/aspnet/logging)。  由于 C# 开发者熟悉 EventSource，因此本文使用 EventSource 在 Linux 上跟踪 CoreCLR 示例。
 
-第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  若要使用 EventSource 进行日志记录，请将以下项目添加到 project.json 中：
+第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  要使用 EventSource 进行日志记录，请将以下项目添加到 project.json 中：
 
 ```
     "System.Diagnostics.StackTrace": "4.0.1"
@@ -132,7 +130,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
 
 
-上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件内。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
+上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件中。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
 
 ```csharp
 public static TextWriter Out = Console.Out;
@@ -145,4 +143,3 @@ public static TextWriter Out = Console.Out;
 ## <a name="next-steps"></a>后续步骤
 添加到应用程序中的跟踪代码也可用于诊断 Azure 群集中的应用程序。 请参阅下面几篇文章，了解不同的工具选项，以及如何设置这些选项。
 * [如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-lad.md)
-

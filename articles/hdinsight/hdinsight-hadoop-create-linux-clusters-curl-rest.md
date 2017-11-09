@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 1b257b5a021a682990fb615d7c9aae4fc9160dd4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: b2078e5f1bb1bafdf8b53ec8c8ead014773cc9f0
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Hadoop 群集
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 07/08/2017
 
 了解如何使用 Azure Resource Manager 模板和 Azure REST API 创建 HDInsight 群集。
 
-Azure REST API 允许你对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
+Azure REST API 允许对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
 
 > [!IMPORTANT]
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -219,18 +218,18 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 本文档中的步骤会使用此示例。 将 Parameters 部分中的示例值替换为用于群集的值。
 
 > [!IMPORTANT]
-> 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果你计划使用 32 个以上的辅助角色节点，则必须选择至少具有 8 个核心和 14 GB ram 的头节点大小。
+> 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果计划使用 32 个以上的辅助角色节点，则必须选择至少具有 8 个核心和 14 GB ram 的头节点大小。
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
-请按照 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)中所述的步骤操作，并使用 `az login` 命令连接到你的订阅。
+请按照 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)中所述的步骤操作，并使用 `az login` 命令连接到订阅。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 > [!NOTE]
-> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password)文档的“使用密码创建服务主体”部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
+> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文档的“使用密码创建服务主体”部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
 
 1. 从命令行使用以下命令列出 Azure 订阅。
 
@@ -246,7 +245,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换为你自己的值。 为新的 Active Directory 条目提供密码。
+    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换成自己的值。 为新的 Active Directory 条目提供密码。
 
    > [!NOTE]
    > `--home-page` 和 `--identifier-uris` 值无需引用在 Internet 上承载的实际网页。 它们必须是唯一的 URI。
@@ -283,7 +282,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 将 `$TENANTID`、`$APPID` 和 `$PASSWORD` 设置为以前获取或使用的值。
 
-如果此请求成功，你将收到 200 系列响应，且响应正文包含一个 JSON 文档。
+如果此请求成功，将收到 200 系列响应，且响应正文包含一个 JSON 文档。
 
 此请求返回的 JSON 文档包含一个名为 **access_token** 的元素。 **access_token** 的值用来对针对 REST API 的请求进行身份验证。
 
@@ -315,7 +314,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-如果此请求成功，你会收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关组的信息。 `"provisioningState"` 元素包含 `"Succeeded"` 的值。
+如果此请求成功，会收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关组的信息。 `"provisioningState"` 元素包含 `"Succeeded"` 的值。
 
 ## <a name="create-a-deployment"></a>创建部署
 
@@ -335,7 +334,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 >
 > `--data-binary "@/path/to/file.json"`
 
-如果此请求成功，你会收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关部署操作的信息。
+如果此请求成功，会收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关部署操作的信息。
 
 > [!IMPORTANT]
 > 部署已提交，但尚未完成。 部署通常需要大约 15 分钟才能完成。
@@ -376,4 +375,3 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 * [为 Storm on HDInsight 开发 Java 拓扑](hdinsight-storm-develop-java-topology.md)
 * [在 Storm on HDInsight 中使用 Python 组件](hdinsight-storm-develop-python-topology.md)
 * [使用 Storm on HDInsight 部署和监视拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/28/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: fa7360a44c48d4f15233b937f09285233533a0e8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 发行说明
 
@@ -53,7 +52,7 @@ Update 5 中进行了以下重大改进和 bug 修复。
 | 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell 远程功能 |在以前的版本中，用户尝试通过 Windows PowerShell 与 StorSimple 云设备建立远程连接时会收到错误。 在此版本中已找到此问题的根本原因并进行了修复。 |否 |是 |
-| 2 |带宽模板 |在以前的版本中，带宽模板中的某个问题会导致带宽低于配置给设备的带宽。 在此版本中已修复了此问题。 |是 |是 |
+| #N/A |带宽模板 |在以前的版本中，带宽模板中的某个问题会导致带宽低于配置给设备的带宽。 在此版本中已修复了此问题。 |是 |是 |
 | 3 |故障转移 |在以前的版本中，如果将包含大量卷的设备故障转移到运行 Update 4 的另一台设备，则在尝试应用访问控制记录时，故障转移过程会失败。 在此版本中已修复了此问题。 |是 |是 |
 
 
@@ -73,5 +72,4 @@ Update 5 中没有任何新的已知问题。 有关从之前版本遗留至 Upd
 ## <a name="next-step"></a>后续步骤
 
 了解如何在 StorSimple 设备上[安装 Update 5](storsimple-8000-install-update-5.md)。
-
 

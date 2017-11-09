@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: ae9fbd97a1747d8f14c561f247a0973bb11fd039
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-samples"></a>事件中心示例 
 
 Azure 事件中心集示例集演示了 [Azure 事件中心](/azure/event-hubs/)内的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。

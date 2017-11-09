@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
-
-
+ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -27,9 +27,9 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
 > 
 > 
 
-你可以使用[适用于 Node.js 的 Azure CDN SDK](https://www.npmjs.com/package/azure-arm-cdn) 来自动创建和管理 CDN 配置文件和终结点。  本教程将介绍一个简单的 Node.js 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 Node.js 的 Azure CDN SDK 的所有方面。
+可以使用[适用于 Node.js 的 Azure CDN SDK](https://www.npmjs.com/package/azure-arm-cdn) 来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 Node.js 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 Node.js 的 Azure CDN SDK 的所有方面。
 
-要完成本教程，你应已安装并配置了 [Node.js](http://www.nodejs.org) **4.x.x** 或更高版本。  你可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
+要完成本教程，应已安装并配置了 [Node.js](http://www.nodejs.org)**4.x.x** 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
 
 > [!TIP]
 > 可在 MSDN 上下载[本教程中已完成的项目](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)。
@@ -41,11 +41,11 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
 ## <a name="create-your-project-and-add-npm-dependencies"></a>创建项目并添加 NPM 依赖项
 现在我们已经为 CDN 配置文件创建了一个资源组，并已将管理该组中的 CDN 配置文件和终结点的权限授予 Azure AD 应用程序，我们可以开始创建我们的应用程序。
 
-创建一个文件夹以存储你的应用程序。  在当前路径中带有 Node.js 工具的控制台中，将当前位置设置为此新文件夹，并通过执行以下命令来初始化项目：
+创建一个文件夹以存储应用程序。  在当前路径中带有 Node.js 工具的控制台中，将当前位置设置为此新文件夹，并通过执行以下命令来初始化项目：
 
     npm init
 
-然后，你将看到一系列问题，用于初始化你的项目。  对于**入口点**，本教程使用 *app.js*。  你可以在下面的例子中看到我的其他选择。
+然后，会看到一系列问题，用于初始化项目。  对于**入口点**，本教程使用 *app.js*。  可以在下面的例子中看到我的其他选择。
 
 ![NPM init 输出](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -85,7 +85,7 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要使用你的值替换占位符，包括**&lt;尖括号&gt;**。
+2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要使用值替换占位符，包括**&lt;尖括号&gt;**。
    
     ``` javascript
     //Tenant app constants
@@ -105,10 +105,10 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    如果你使用的是个人用户身份验证，这两行看起来会稍有不同。
+    如果使用的是个人用户身份验证，这两行看起来会稍有不同。
    
    > [!IMPORTANT]
-   > 仅当你选择个人用户身份验证而不是服务主体身份验证时，才使用此代码示例。  小心保护你的个人用户凭据并将其保密。
+   > 仅选择个人用户身份验证而不是服务主体身份验证时，才使用此代码示例。  小心保护个人用户凭据并将其保密。
    > 
    > 
    
@@ -118,8 +118,8 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    请务必使用正确的信息替换**&lt;尖括号&gt;**中的项目。  对于 `<redirect URI>`，请使用你在 Azure AD 中注册应用程序时输入的重定向 URI。
-4. 我们的 Node.js 控制台应用程序将采用一些命令行参数。  让我们验证是否至少传递了一个参数。
+    请务必使用正确的信息替换**&lt;尖括号&gt;**中的项目。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
+4. 我们的 Node.js 控制台应用程序会采用一些命令行参数。  让我们验证是否至少传递了一个参数。
    
    ```javascript
    //Collect command-line parameters
@@ -159,7 +159,7 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
             process.exit(1);
     }
     ```
-6. 在程序的数个位置中，我们需要确保传入了正确数量的参数，如果它们看起来不正确，系统将显示一些帮助。  让我们创建函数以执行该操作。
+6. 在程序的数个位置中，我们需要确保传入了正确数量的参数，如果它们看起来不正确，系统会显示一些帮助。  让我们创建函数以执行该操作。
    
    ```javascript
    function requireParms(parmCount) {
@@ -197,7 +197,7 @@ ms.openlocfilehash: d87daad7e550c8989acc075292b17002c424411e
        }
    }
    ```
-7. 最后，我们将在 CDN 管理客户端上使用的函数是异步的，因此它们完成后需要一个回调方法。  让我们创建一个可以显示 CDN 管理客户端中输出（如有）并且能正常退出程序的函数。
+7. 最后，我们会在 CDN 管理客户端上使用的函数是异步的，因此它们完成后需要一个回调方法。  让我们创建一个可以显示 CDN 管理客户端中输出（如有）并且能正常退出程序的函数。
    
     ```javascript
     function callback(err, result, request, response) {
@@ -339,7 +339,7 @@ function cdnDelete() {
 现在可以使用我们最喜爱的调试器，或在控制台执行我们的 Node.js 程序。
 
 > [!TIP]
-> 如果你使用 Visual Studio Code 作为调试器，则需要设置你的环境以传递命令行参数。  Visual Studio Code 在 **lanuch.json** 文件中执行此操作。  寻找名为 **args** 的属性，并为你的参数添加一个字符串值数组，以使其看起来类似于：`"args": ["list", "profiles"]`。
+> 如果使用 Visual Studio Code 作为调试器，则需要设置环境以传递命令行参数。  Visual Studio Code 在 **lanuch.json** 文件中执行此操作。  寻找名为 **args** 的属性，并为参数添加一个字符串值数组，以使其看起来类似于：`"args": ["list", "profiles"]`。
 > 
 > 
 
@@ -367,10 +367,4 @@ function cdnDelete() {
 要查找有关适用于 Node.js 的 Azure CDN SDK 的其他文档，请查看[完整引用](http://azure.github.io/azure-sdk-for-node/)。
 
 使用 [PowerShell](cdn-manage-powershell.md) 管理 CDN 资源。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

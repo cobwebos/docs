@@ -14,17 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: mfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: e673b45a43a06d18040c3437caf8765704d5c36a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: aae828489b708a5b538df1d63c12be23d0423da7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-security-policies-for-your-application"></a>配置应用程序的安全策略
 使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。
 
-默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 Service Fabric 还可让你使用应用程序清单中指定的本地用户帐户或本地系统帐户运行应用程序。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。
+默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 借助 Service Fabric，还可以使用应用程序清单中指定的本地用户帐户或本地系统帐户运行应用程序。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。
 
  使用独立安装程序在数据中心中的 Windows Server 上运行 Service Fabric 时，可以使用 Active Directory 域帐户，包括组托管服务帐户。
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 07/06/2017
 ```
 
 ### <a name="configure-the-policy-by-using-a-local-account"></a>使用本地帐户配置策略
-在配置服务以获取设置入口点之后，你可以在应用程序清单中更改用于运行服务的安全权限。 以下示例演示如何将服务配置为以用户管理员帐户特权运行。
+在配置服务以获取设置入口点之后，可以在应用程序清单中更改用于运行服务的安全权限。 以下示例演示如何将服务配置为以用户管理员帐户特权运行。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -86,11 +85,11 @@ ms.lasthandoff: 07/06/2017
 
 首先，以用户名（例如 SetupAdminUser）创建 **Principals** 节。 这指明用户是管理员系统组的成员。
 
-接下来，在 **ServiceManifestImport** 节下面配置策略，以将此主体应用到 **SetupEntryPoint**。 这会告知 Service Fabric，当 **MySetup.bat** 文件运行时，它应该是具有管理员特权的 `RunAs`。 假设你*尚未*将策略应用到主入口点，则 **MyServiceHost.exe** 中的代码将以系统 **NetworkService** 帐户运行。 这是用于运行所有服务入口点的默认帐户。
+接下来，在 **ServiceManifestImport** 节下面配置策略，以将此主体应用到 **SetupEntryPoint**。 这会告知 Service Fabric，当 **MySetup.bat** 文件运行时，它应该是具有管理员特权的 `RunAs`。 假设你*尚未*将策略应用到主入口点，则 **MyServiceHost.exe** 中的代码以系统 **NetworkService** 帐户运行。 这是用于运行所有服务入口点的默认帐户。
 
-现在让我们将 MySetup.bat 文件添加 Visual Studio 项目，以测试管理员特权。 在 Visual Studio 中，右键单击服务项目，然后添加名为 MySetup.bat 的新文件。
+现在让我们将 MySetup.bat 文件添加 Visual Studio 项目，以测试管理员特权。 在 Visual Studio 中，右键单击服务项目，并添加名为 MySetup.bat 的新文件。
 
-接下来，确保 MySetup.bat 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，然后选择“**属性**”。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
+接下来，确保 MySetup.bat 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，并选择“**属性**”。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
 
 ![SetupEntryPoint 批处理文件的 Visual Studio CopyToOutput][image1]
 
@@ -106,14 +105,14 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-接下来，构建解决方案并将其部署到本地开发群集。 启动该服务之后（如 Service Fabric Explorer 中所示），你可以看到 MySetup.bat 文件在两个方面都已成功。 打开 PowerShell 命令提示符并键入：
+接下来，构建解决方案并将其部署到本地开发群集。 启动该服务之后（如 Service Fabric Explorer 中所示），可以看到 MySetup.bat 文件在两个方面都已成功。 打开 PowerShell 命令提示符并键入：
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-接下来，记下已在 Service Fabric Explorer 中部署并启动服务的节点名称，例如“节点 2”。 接下来，导航到应用程序实例工作文件夹，找到显示 **TestVariable** 值的 out.txt 文件。 例如，如果此服务已部署到节点 2，则你可以转到 **MyApplicationType** 的此路径：
+接下来，记下已在 Service Fabric Explorer 中部署并启动服务的节点名称，例如“节点 2”。 接下来，导航到应用程序实例工作文件夹，找到显示 **TestVariable** 值的 out.txt 文件。 例如，如果此服务已部署到节点 2，则可以转到 **MyApplicationType** 的此路径：
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
@@ -139,6 +138,8 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
    </Principals>
 </ApplicationManifest>
 ```
+
+对于 Linux 群集，若要以根身份运行服务或安装程序入口点，可以将 AccountType 指定为 LocalSystem。
 
 ## <a name="start-powershell-commands-from-a-setup-entry-point"></a>从 SetupEntryPoint 启动 PowerShell 命令
 若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“*如果较新则复制*”属性，以便文件还包括在服务包中。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 **TestVariable**。
@@ -199,7 +200,7 @@ Echo "Test console redirection which writes to the application log folder on the
 **调试脚本后，请立即删除此控制台重定向策略**。
 
 ## <a name="configure-a-policy-for-service-code-packages"></a>配置服务代码包的策略
-在前面步骤中，你已了解如何将 RunAs 策略应用于 SetupEntryPoint。 让我们深入了解如何创建可作为服务策略应用的不同主体。
+在前面步骤中，已了解如何将 RunAs 策略应用于 SetupEntryPoint。 让我们深入了解如何创建可作为服务策略应用的不同主体。
 
 ### <a name="create-local-user-groups"></a>创建本地用户组
 可以定义和创建允许将一个或多个用户添加到组的用户组。 如果不同的服务入口点对应有多个用户，而且这些用户需要拥有特定的常见组级别权限，这种做法就特别有用。 下面的示例演示一个名为 **LocalAdminGroup** 的具有管理员权限的本地组。 Customer1 和 Customer2 这两个用户已成为此本地组的成员。
@@ -229,7 +230,7 @@ Echo "Test console redirection which writes to the application log folder on the
 ```
 
 ### <a name="create-local-users"></a>创建本地用户
-你可以创建一个本地用户，用于帮助保护应用程序中的服务。 当在应用程序清单的主体部分中指定 **LocalUser** 帐户类型时，Service Fabric 在部署应用程序的计算机上创建本地用户帐户。 默认情况下，这些帐户的名称不与应用程序清单中指定的名称相同（例如，以下示例中的 Customer3）。 相反，它们是动态生成的并带有随机密码。
+可以创建一个本地用户，用于帮助保护应用程序中的服务。 当在应用程序清单的主体部分中指定 **LocalUser** 帐户类型时，Service Fabric 在部署应用程序的计算机上创建本地用户帐户。 默认情况下，这些帐户的名称不与应用程序清单中指定的名称相同（例如，以下示例中的 Customer3）。 相反，它们是动态生成的并带有随机密码。
 
 ```xml
 <Principals>
@@ -259,7 +260,7 @@ Echo "Test console redirection which writes to the application log folder on the
 </Policies>
 ```
 
-如果未指定 **EntryPointType**，则 EntryPointType 的默认值设置为“Main”。 如果你想要以系统帐户运行某些高特权设置操作，则指定 **SetupEntryPoint** 将特别有用。 实际服务代码可使用较低特权的帐户来运行。
+如果未指定 **EntryPointType**，则 EntryPointType 的默认值设置为“Main”。 如果想要以系统帐户运行某些高特权设置操作，则指定 **SetupEntryPoint** 将特别有用。 实际服务代码可使用较低特权的帐户来运行。
 
 ### <a name="apply-a-default-policy-to-all-service-code-packages"></a>将默认策略应用到所有服务代码包
 **DefaultRunAsPolicy** 部分用于针对未定义特定 **RunAsPolicy** 的所有代码包指定默认用户帐户。 如果在应用程序所用的服务清单中指定的大多数代码包必须以同一用户运行，则应用程序可以只定义该用户帐户的默认 RunAs 策略。 以下示例指定如果代码包未指定 **RunAsPolicy**，则此代码包应该以 principals 部分指定的 **MyDefaultAccount** 运行。
@@ -340,7 +341,7 @@ Test-AdServiceAccount svc-Test$
 </Policies>
 ```
 
-针对 HTTPS 终结点，你还必须指出要返回给客户端的证书名称。 可以使用 **EndpointBindingPolicy** 结合应用程序清单的 certificates 部分定义的证书，来实现此目的。
+针对 HTTPS 终结点，还必须指出要返回给客户端的证书名称。 可以使用 **EndpointBindingPolicy** 结合应用程序清单的 certificates 部分定义的证书，来实现此目的。
 
 ```xml
 <Policies>
@@ -422,4 +423,3 @@ Test-AdServiceAccount svc-Test$
 * [部署应用程序](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
-

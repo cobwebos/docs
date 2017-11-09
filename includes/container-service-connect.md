@@ -162,7 +162,7 @@ docker info
 
     ![PuTTY 配置 1](./media/container-service-connect/putty1.png)
 
-4. 选择“SSH”>“身份验证”。 添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
+4. 选择“SSH”>“身份验证”。添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
 
     ![PuTTY 配置 2](./media/container-service-connect/putty2.png)
 

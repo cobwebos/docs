@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用 Reliable Services 所用的相同持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
@@ -33,7 +32,7 @@ Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组
 * **易失性状态：**状态被复制到 3 个或更多个副本，且仅保存在内存中。 这可针对节点故障、执行组件故障，以及在升级和资源平衡过程中提供复原能力。 但是，状态不会保留在磁盘中。 因此，如果同时丢失所有副本，状态也会丢失。
 * **非持久化状态**：状态不复制，也不写入磁盘。 此级别适用于完全不需要以可靠方式维护状态的执行组件。
 
-每个级别的持久性只是服务的不同*状态提供程序*和*复制*配置。 是否要将状态写入磁盘取决于状态提供程序（可靠服务中存储状态的组件）。 复制取决于要使用多少个副本来部署服务。 如同 Reliable Services，你可以轻松地手动设置状态提供程序和副本计数。 执行组件框架提供一个属性，对执行组件使用时，该属性将自动选择默认的状态提供程序，并自动生成副本计数的设置，以实现这三种持久性设置中的一个。 StatePersistence 属性不由派生类继承，每个执行组件类型必须提供其 StatePersistence 级别。
+每个级别的持久性只是服务的不同*状态提供程序*和*复制*配置。 是否要将状态写入磁盘取决于状态提供程序（可靠服务中存储状态的组件）。 复制取决于要使用多少个副本来部署服务。 如同 Reliable Services，可以轻松地手动设置状态提供程序和副本计数。 执行组件框架提供一个属性，对执行组件使用时，该属性会自动选择默认的状态提供程序，并自动生成副本计数的设置，以实现这三种持久性设置中的一个。 StatePersistence 属性不由派生类继承，每个执行组件类型必须提供其 StatePersistence 级别。
 
 ### <a name="persisted-state"></a>持久化状态
 ```csharp
@@ -81,7 +80,7 @@ class MyActorImpl extends FabricActor implements MyActor
 此设置使用仅在内存中的状态提供程序，并将副本计数设置为 1。
 
 ### <a name="defaults-and-generated-settings"></a>默认值和生成的设置
-如果使用 `StatePersistence` 属性，在执行组件服务启动时，系统会在运行时自动为你选择状态提供程序。 但是，副本计数将在编译时由 Visual Studio 执行组件构建工具设置。 构建工具在 ApplicationManifest.xml 中自动为执行组件服务生成*默认服务*。 参数是针对**副本集大小下限**和**目标副本集大小**创建的。
+如果使用 `StatePersistence` 属性，在执行组件服务启动时，系统会在运行时自动选择状态提供程序。 但是，副本计数会在编译时由 Visual Studio 执行组件构建工具设置。 构建工具在 ApplicationManifest.xml 中自动为执行组件服务生成*默认服务*。 参数是针对**副本集大小下限**和**目标副本集大小**创建的。
 
 可手动更改这些参数。 但是，每当 `StatePersistence` 属性更改时，参数将设置为所选 `StatePersistence` 属性的默认副本集大小值，并覆盖所有旧值。 换言之，更改 `StatePersistence` 属性值时，在 ServiceManifest.xml 中设置的值将仅在生成时被覆盖。
 
@@ -113,7 +112,7 @@ class MyActorImpl extends FabricActor implements MyActor
 状态管理器公开通用字典方法来管理状态，类似于在可靠字典中找到的项目。
 
 ### <a name="accessing-state"></a>访问状态
-可以通过状态管理器根据键来访问状态。 状态管理器方法全都是异步的，因为当执行组件具有持久化状态时，它们可能需要磁盘 I/O。 首次访问时，状态对象将缓存在内存中。 重复访问操作将从内存中直接访问对象并以同步方式返回，而不造成磁盘 I/O 或异步上下文切换的开销。 在以下情况中，将从缓存中删除状态对象：
+可以通过状态管理器根据键来访问状态。 状态管理器方法全都是异步的，因为当执行组件具有持久化状态时，它们可能需要磁盘 I/O。 首次访问时，状态对象将缓存在内存中。 重复访问操作将从内存中直接访问对象并以同步方式返回，而不造成磁盘 I/O 或异步上下文切换的开销。 在以下情况下，，将从缓存中删除状态对象：
 
 * 从状态管理器中检索对象之后，执行组件方法将引发未经处理的异常。
 * 执行组件在停用之后或发生故障后将重新激活。
@@ -306,7 +305,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-在执行组件方法结束时，状态管理器将自动保存通过插入或更新操作添加或修改的任何值。 根据所用的设置，“保存”可能包括持久保存到磁盘和复制。 未修改的值不会持久保存或复制。 如果未修改任何值，保存操作不起作用。 如果保存失败，将丢弃修改的状态并重新加载原始状态。
+在执行组件方法结束时，状态管理器会自动保存通过插入或更新操作添加或修改的任何值。 根据所用的设置，“保存”可能包括持久保存到磁盘和复制。 未修改的值不会持久保存或复制。 如果未修改任何值，保存操作不起作用。 如果保存失败，将丢弃修改的状态并重新加载原始状态。
 
 也可以通过对执行组件基调用 `SaveStateAsync` 方法来手动保存状态：
 
@@ -411,4 +410,3 @@ class MyActorImpl extends FabricActor implements  MyActor
 存储在 Reliable Actors 中的状态必须进行序列化，然后才能将其写入到磁盘并进行复制以实现高可用性。 详细了解[执行组件类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)。
 
 接下来，详细了解[执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)。
-

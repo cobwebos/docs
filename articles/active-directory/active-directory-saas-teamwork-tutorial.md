@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 92ff0b4b7664ad2d33b54d02290c55a213d4e610
 ms.openlocfilehash: edd2f9446515531f1147a8abf99295b618b89b25
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamwork"></a>教程：Azure Active Directory 与 Teamwork 的集成
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 02/23/2017
 
 
 ## <a name="adding-teamwork-from-the-gallery"></a>从库中添加 Teamwork
-若要配置 Teamwork 与 Azure AD 的集成，需要从库中将 Teamwork 添加到托管 SaaS 应用列表。
+要配置 Teamwork 与 Azure AD 的集成，需要从库中将 Teamwork 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Teamwork，请执行以下步骤：**
 
@@ -78,13 +77,13 @@ ms.lasthandoff: 02/23/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_001.png)
 
-5. 在结果窗格中，选择“Teamwork”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“Teamwork”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_0001.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Teamwork 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Teamwork 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Teamwork 用户。 换句话说，需要在 Azure AD 用户与 Teamwork 中的相关用户之间建立链接关系。
 
@@ -94,13 +93,13 @@ ms.lasthandoff: 02/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Teamwork 测试用户](#creating-a-teamwork-test-user)** - 在 Teamwork 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 Teamwork 测试用户](#creating-a-teamwork-test-user)** - 在 Teamwork 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 Teamwork 应用程序中配置单一登录。
+在本部分中，会在 Azure 管理门户中启用 Azure AD 单一登录并在 Teamwork 应用程序中配置单一登录。
 
 **若要配置 Teamwork 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -123,11 +122,11 @@ ms.lasthandoff: 02/23/2017
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_03.png)   
 
-5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
+5. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_general_300.png)
 
-6. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
+6. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_04.png)
 
@@ -135,7 +134,7 @@ ms.lasthandoff: 02/23/2017
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
 
-8. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+8. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_05.png) 
 
@@ -165,7 +164,7 @@ ms.lasthandoff: 02/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-teamwork-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -177,7 +176,7 @@ ms.lasthandoff: 02/23/2017
 
 ### <a name="creating-a-teamwork-test-user"></a>创建 Teamwork 测试用户
 
-在本部分中，将在 Teamwork 中创建一个名为“Britta Simon”的用户。 请与 [Teamwork 支持团队](mailto:support@teamwork.com)协作，将用户添加到 Teamwork 平台中。
+在本部分中，会在 Teamwork 中创建一个名为“Britta Simon”的用户。 请与 [Teamwork 支持团队](mailto:support@teamwork.com)协作，将用户添加到 Teamwork 平台中。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -186,9 +185,9 @@ ms.lasthandoff: 02/23/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Teamwork，请执行以下步骤：**
+**要将 Britta Simon 分配到 Teamwork，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

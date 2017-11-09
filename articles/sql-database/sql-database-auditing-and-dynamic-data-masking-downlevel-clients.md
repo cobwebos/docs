@@ -9,21 +9,18 @@ editor:
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
 ms.custom: security
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 1447a75758475dd6536ef1bcd0e8432e5618dab8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
-
+ms.openlocfilehash: 42c89f09eee4394fec7d2f33f51ddc5875587530
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
 > [!IMPORTANT]
@@ -50,8 +47,8 @@ ms.lasthandoff: 06/01/2017
 
 **注释：**上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
 
-## <a id="subheading-2"></a>启用审核时的 IP 终结点的更改
-请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果你有严格的防火墙设置，请相应地更新这些防火墙设置。
+## <a id="subheading-2"></a>启用审核时的 IP 终结点变化
+请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果有严格的防火墙设置，请相应地更新这些防火墙设置。
 
 新的数据库 IP 终结点将取决于数据库区域：
 
@@ -85,4 +82,3 @@ ms.lasthandoff: 06/01/2017
 | 加拿大东部 |40.86.227.82, 40.86.225.194 |
 | 英国北部 |13.87.101.18, 13.87.100.232 |
 | 英国南部 2 |13.87.32.202, 13.87.32.226 |
-

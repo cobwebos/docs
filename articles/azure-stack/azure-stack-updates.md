@@ -1,6 +1,6 @@
 ---
-title: Manage updates in Azure Stack | Microsoft Docs
-description: Learn how to manage updates in Azure Stack
+title: "管理 Azure 堆栈概述中的更新 |Microsoft 文档"
+description: "了解 Azure 堆栈集成系统的更新管理。"
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -12,33 +12,57 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 1462079c1aac9031e8ea195282555c0707480ec8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: 3d0d5ea6cc3f3cc7bc0550b83dabbf0ae6af8a27
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-updates-in-azure-stack"></a>Manage updates in Azure Stack
+# <a name="manage-updates-in-azure-stack-overview"></a>管理 Azure 堆栈概述中的更新
 
-In the Azure Stack Development Kit, you can preview the experience for managing Azure Stack updates in a multi-node environment. Because virtual machines are not highly available in the development kit, you cannot apply updates through the **Updates** tile.
+*适用范围： Azure 堆栈集成系统*
 
-In the Azure Stack administrator portal, you can determine the current version (or build number) of Azure Stack.
+Microsoft 将发布为 Azure 堆栈集成系统定期更新包。 每个版本的 Microsoft 软件更新捆绑作为单个更新包中。 作为 Azure 堆栈操作员，你可以轻松地导入、 安装和监视器的安装进度的这些更新在管理员门户中的包。 
 
-## <a name="determine-the-current-version"></a>Determine the current version
+原始设备制造商 (OEM) 硬件供应商还将发布更新，例如驱动程序和固件更新。 这些更新都作为单独的包提供 OEM 硬件供应商，并从 Microsoft 更新上单独进行管理。
 
-To determine the current version of Azure Stack, do either of the following in the administrator portal:
+若要使你的系统受支持，则必须保持更新到特定版本级别的 Azure 堆栈。 请确保您查看[维护策略的 Azure 堆栈](azure-stack-servicing-policy.md)。
 
-- On the dashboard, view the current version in the **Updates** tile.
-- On the **Region management** tile, click the region name (such as **local**). View the current version in the **Updates** tile.
+> [!NOTE]
+> 无法将 Azure 堆栈更新包应用于 Azure 堆栈开发工具包。 更新包专门用于集成的系统。
 
-   ![Updates tile on default dashboard](./media/azure-stack-updates/image1.png)
+## <a name="the-update-resource-provider"></a>更新资源提供程序
 
-## <a name="next-steps"></a>Next steps
+Azure 堆栈包括安排的 Microsoft 软件更新应用程序的更新资源提供程序。 此资源提供程序可确保在所有物理主机，Service Fabric 应用程序和运行时，和基础结构的所有虚拟机和其关联的服务应用的更新。
 
-* [Region management in Azure Stack](azure-stack-region-management.md)     
+更新安装，你可以轻松地查看作为更新过程目标 Azure 堆栈 （例如，物理主机和基础结构的虚拟机） 中的各种子系统的高级状态。
 
+## <a name="plan-for-updates"></a>规划更新
+
+我们强烈建议你通知用户的任何维护操作，并且你在非工作时间期间尽可能多地安排正常的维护时段。 租户工作负载和门户的操作，则可能会影响维护操作。
+
+## <a name="using-the-update-tile-to-manage-updates"></a>使用的更新磁贴以管理更新
+在管理员门户中管理更新是一个简单的过程。 Azure 堆栈运算符可以导航到将仪表板中的更新磁贴：
+
+- 查看如的当前版本的重要信息。
+- 安装更新，并监视进度。
+- 查看以前安装的更新的更新历史记录。
+ 
+## <a name="determine-the-current-version"></a>确定当前的版本
+
+更新磁贴显示 Azure 堆栈的当前版本。 在管理员门户中使用以下方法之一可以获取指向更新磁贴：
+
+- 在仪表板中，查看中的当前版本**更新**磁贴。
+ 
+   ![上默认的仪表板磁贴的更新](./media/azure-stack-updates/image1.png)
+ 
+- 上**区域管理**磁贴中，单击区域名称。 查看中的当前版本**更新**磁贴。
+
+## <a name="next-steps"></a>后续步骤
+
+- [Azure 堆栈维护策略](azure-stack-servicing-policy.md) 
+- [Azure 堆栈中的区域管理](azure-stack-region-management.md)     
 
 

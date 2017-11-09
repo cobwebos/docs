@@ -12,15 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 10/16/2017
 ms.author: richrund
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: f392b3c0ab6b4d2e133d59766732188ce97c2f3e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/03/2017
-
-
+ms.openlocfilehash: 7f522a672d1691990bec3e63a41b2ed7e81058ad
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板管理 Log Analytics
 可以使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -38,6 +36,17 @@ ms.lasthandoff: 03/03/2017
 * 配置 Log Analytics 以为使用 Azure 诊断收集的数据编制索引
 
 本文将提供模板示例，用于演示一些可以从模板执行的配置。
+
+## <a name="api-versions"></a>API 版本
+本文中的示例适用于[升级的 Log Analytics 工作区](log-analytics-log-search-upgrade.md)。  若要使用旧版工作区，则需要将查询的语法更改为旧语言，并更改每个资源的 API 版本。  下表列出了此示例中使用的资源的 API 版本。
+
+| 资源 | 资源类型 | 旧 API 版本 | 升级的 API 版本 |
+|:---|:---|:---|:---|
+| 工作区   | workspaces    | 2015-11-01-preview | 2017-03-15-preview |
+| 搜索      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
+| 数据源 | datasources   | 2015-11-01-preview | 2015-11-01-preview |
+| 解决方案    | solutions     | 2015-11-01-preview | 2015-11-01-preview |
+
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>创建和配置 Log Analytics 工作区
 以下模板示例演示了如何：
@@ -124,7 +133,7 @@ ms.lasthandoff: 03/03/2017
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -136,7 +145,7 @@ ms.lasthandoff: 03/03/2017
       },
       "resources": [
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2017-03-15-preview",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -146,7 +155,7 @@ ms.lasthandoff: 03/03/2017
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Type:Event Source=ServiceFabricNodeBootstrapAgent | dedup Computer | measure count () by Computer",
+            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -420,9 +429,33 @@ ms.lasthandoff: 03/03/2017
     }
   ],
   "outputs": {
-    "workspaceOutput": {
-      "value": "[reference(concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName')), '2015-11-01-preview')]",
-      "type": "object"
+    "workspaceName": {
+      "type": "string",
+      "value": "[parameters('workspaceName')]"
+    },
+    "provisioningState": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').provisioningState]"
+    },
+    "source": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').source]"
+    },
+    "customerId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
+    },
+    "pricingTier": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
+    },
+    "retentionInDays": {
+      "type": "int",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
+    },
+    "portalUrl": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').portalUrl]"
     }
   }
 }
@@ -458,5 +491,4 @@ Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括�
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Resource Manager 模板将代理部署到 Azure VM 中](log-analytics-azure-vm-extension.md)
-
 

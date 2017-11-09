@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/10/2017
+ms.date: 09/27/2017
 ms.author: markvi
 ms.reviewer: calebb
+ms.openlocfilehash: 4cf30130907151ade9eaf9db28748b8141dac8e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 19bc7abbbf7e133018b234399d91604dfdbfe73f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 09/13/2017
 - **授权控制** - 授权控制决定了，用户能否完成身份验证并访问试图登录的资源。 如果已选择多项控制，可以配置在策略获得处理时是否必须强制执行所有这些控制。
 Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
-    ![控制](./media/active-directory-conditional-access-azure-portal/05.png)
+    ![控制](./media/active-directory-conditional-access-azure-portal/73.png)
 
 - **会话控制** - 通过会话控制，可以限制云应用程序中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
 
@@ -108,7 +107,7 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 只要对应用的访问是根据可控的条件执行的，可能就不需要对用户访问云应用的方式实施附加控制。 但是，如何对云应用的访问是通过不受信任的网络或者不合规的设备执行的，则情况可能就有所不同。 在条件语句中，可以定义特定的访问条件并附带一些要求来控制访问应用的执行方式。
 
-![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+![条件](./media/active-directory-conditional-access-azure-portal/01.png)
 
 
 ## <a name="conditions"></a>条件
@@ -120,11 +119,12 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 - 位置
 - 客户端应用
 
-![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+
+![条件](./media/active-directory-conditional-access-azure-portal/01.png)
 
 ### <a name="sign-in-risk"></a>登录风险
 
-登录风险是 Azure Active Directory 所使用的一个对象，用于跟踪不是由用户帐户合法拥有者进行登录尝试的可能性。 在此对象中，可能性（高、中、低）以名为[登录风险级别](active-directory-reporting-risk-events.md#risk-level)的属性的形式存储。 在用户登录期间，如果 Azure Active Directory 检测到登录风险，则会生成此对象。 有关更多详细信息，请参阅[风险登录](active-directory-identityprotection.md#risky-sign-ins)。  
+登录风险是 Azure Active Directory 所使用的一个对象，用于跟踪不是由用户帐户合法拥有者进行登录尝试的可能性。 在此对象中，可能性（高、中、低）以名为[登录风险级别](active-directory-reporting-risk-events.md#risk-level)的属性的形式存储。 在用户登录期间，如果 Azure Active Directory 检测到登录风险，则会生成此对象。 有关详细信息，请参阅[风险登录](active-directory-identityprotection.md#risky-sign-ins)。  
 可以将计算得到的登录风险级别用作条件性访问策略中的条件。 
 
 ![条件](./media/active-directory-conditional-access-azure-portal/22.png)
@@ -147,22 +147,35 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 ### <a name="locations"></a>位置
 
-位置由用于连接到 Azure Active Directory 的客户端的 IP 地址标识。 设置此条件需要熟悉命名位置和受 MFA 信任的 IP。  
+通过位置，可以选择确定基于连接尝试的启动位置的条件。 位置列表中的条目是“已命名位置”或“多重身份验证受信任 IP”。  
 
-命名位置是 Azure Active Directory 的一项功能，用于标记组织中受信任的 IP 地址范围。 在你的环境中，可以在[风险事件](active-directory-reporting-risk-events.md)检测以及条件性访问的上下文中使用命名位置。 有关在 Azure Active Directory 中配置命名位置的更多详细信息，请参阅 [Azure Active Directory 中的命名位置](active-directory-named-locations.md)。
+“已命名位置”是 Azure Active Directory 的一项功能，允许确定进行连接尝试的位置的标签。 若要确定某个位置，可以配置 IP 地址范围或选择某个国家/地区。  
 
-可配置的位置数目取决于 Azure AD 中相关对象的大小。 可以配置：
+![条件](./media/active-directory-conditional-access-azure-portal/42.png)
+
+此外，可以将已命名位置标记为受信任的位置。 对于条件访问策略，受信任的位置是另一个筛选选项，允许在位置条件中选择“所有受信任的位置”。
+已命名位置在检测[风险事件](active-directory-reporting-risk-events.md)的情况下也很重要，因为它可以减少不可能前往的异常位置风险事件的误报数。 
+
+可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 可以配置：
  
  - 一个命名位置最多可以有 500 个 IP 范围
  - 最多可有 60 个命名位置（预览版），其中每个都分配有一个 IP 范围 
 
-
-受 MFA 信任的 IP 是多重身份验证的一项功能，可用于定义代表组织本地 Intranet 的受信任 IP 范围。 配置位置条件时，可以使用受信任的 IP 来区分从组织网络进行的连接以及从其他位置进行的连接。 有关详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。  
-
+有关详细信息，请参阅 [Azure Active Directory 中的已命名位置](active-directory-named-locations.md)。
 
 
-可以包含所有位置或所有受信任的 IP，也可以排除所有受信任的 IP。
+受 MFA 信任的 IP 是多重身份验证的一项功能，可用于定义代表组织本地 Intranet 的受信任 IP 范围。 配置位置条件时，可以使用受信任的 IP 来区分从组织网络和从所有其他位置进行的连接。 有关详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。  
 
+在条件访问策略中，可以：
+
+- 包括
+    - 任何位置
+    - 所有受信任的位置
+    - 选定的位置
+- 排除
+    - 所有受信任的位置
+    - 选定的位置
+     
 ![条件](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
@@ -175,6 +188,7 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 
 
 对于可以在条件性访问策略中使用的完整客户端应用列表，请参阅 [Azure Active Directory 条件性访问技术参考](active-directory-conditional-access-technical-reference.md#client-apps-condition)。
+
 
 
 
@@ -206,4 +220,3 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 - 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 
-

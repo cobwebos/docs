@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
 ms.openlocfilehash: c7f7b095aac6202a7ec5248ee2bbb109615287a7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>教程：Azure Active Directory 与 Fuze 集成
 
@@ -58,7 +57,7 @@ ms.lasthandoff: 04/04/2017
 
 
 ## <a name="adding-fuze-from-the-gallery"></a>从库中添加 Fuze
-若要配置 Fuze 与 Azure AD 的集成，需要从库中将 Fuze 添加到托管 SaaS 应用列表。
+要配置 Fuze 与 Azure AD 的集成，需要从库中将 Fuze 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Fuze，请执行以下步骤：**
 
@@ -78,7 +77,7 @@ ms.lasthandoff: 04/04/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_000.png)
 
-5. 在结果面板中，选择“Fuze”，然后单击“添加”按钮添加该应用程序。
+5. 在结果面板中，选择“Fuze”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_0001.png)
 
@@ -94,13 +93,13 @@ ms.lasthandoff: 04/04/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Fuze 测试用户](#creating-a-fuze-test-user)**：在 Fuze 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 Fuze 测试用户](#creating-a-fuze-test-user)** - 在 Fuze 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 Fuze 应用程序中配置单一登录。
+在本部分中，会在 Azure 管理门户中启用 Azure AD 单一登录并在 Fuze 应用程序中配置单一登录。
 
 **若要配置 Fuze 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -126,7 +125,7 @@ ms.lasthandoff: 04/04/2017
 
     ![配置单一登录](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
 
-6. 若要在“Fuze”端配置单一登录，需要将下载的**元数据 XML** 发送给 [Fuze 支持团队](https://www.fuze.com/support)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
+6. 要在“Fuze”端配置单一登录，需要将下载的**元数据 XML** 发送给 [Fuze 支持团队](https://www.fuze.com/support)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -152,7 +151,7 @@ ms.lasthandoff: 04/04/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fuze-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -171,9 +170,9 @@ Fuze 应用程序支持完整的实时用户预配，因此，在用户登录时
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Fuze，请执行以下步骤：**
+**要将 Britta Simon 分配到 Fuze，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 

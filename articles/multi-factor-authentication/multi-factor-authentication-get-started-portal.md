@@ -15,12 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: a4eb403d3d21b7dbe63c2645b488a7bddb6d39fd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -89,11 +88,11 @@ ms.lasthandoff: 08/28/2017
 * 请使用 SSL 证书保护用户门户。
 * 请使用 SSL 证书保护 Azure 多重身份验证 Web 服务 SDK。
 * 请确保用户门户能够通过 SSL 连接到 Azure 多重身份验证 Web 服务 SDK。
-* 请确保用户门户能够使用“PhoneFactor 管理员”安全组中某个服务帐户的凭据，在 Azure 多重身份验证 Web 服务 SDK 中进行身份验证。 如果 Azure 多重身份验证服务器运行在已加入域的服务器上，则此服务帐户和组应存在于 Active Directory 中。 如果 Azure Multi-Factor Authentication 服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
+* 请确保用户门户能够使用“PhoneFactor 管理员”安全组中某个服务帐户的凭据，在 Azure 多重身份验证 Web 服务 SDK 中进行身份验证。 如果 Azure 多重身份验证服务器运行在已加入域的服务器上，则此服务帐户和组应存在于 Active Directory 中。 如果 Azure 多重身份验证服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
 
 在除 Azure 多重身份验证服务器以外的其他服务器上安装用户门户需要完成以下步骤：
 
-1. 在 MFA 服务器上，浏览到安装路径（示例：C:\Program Files\Multi-Factor Authentication Server），将文件 MultiFactorAuthenticationUserPortalSetup64 复制到允许面向 Internet 的服务器访问的位置，以便在该服务器中安装此文件。
+1. **在 MFA 服务器上**，浏览到安装路径（示例：C:\Program Files\Multi-Factor Authentication Server），将文件 MultiFactorAuthenticationUserPortalSetup64 复制到允许面向 Internet 的服务器访问的位置，以便在该服务器中安装此文件。
 2. 在面向 Internet 的 Web 服务器上，以管理员身份运行 MultiFactorAuthenticationUserPortalSetup64 安装文件，根据需要更改站点并将虚拟目录更改为短名称。
 3. 将 SSL 证书绑定到 IIS 中的站点。
 
@@ -128,7 +127,7 @@ ms.lasthandoff: 08/28/2017
 
 ![MFA 服务器用户门户配置](./media/multi-factor-authentication-get-started-portal/config.png)
 
-Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项。 下表列出了这些选项及其用途的说明。
+Azure 多重身份验证服务器为用户门户提供了多个选项。 下表列出了这些选项及其用途的说明。
 
 | 用户门户设置 | 说明 |
 |:--- |:--- |
@@ -153,7 +152,7 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
 如果要让用户登录并注册，必须在“设置”选项卡下面选择“允许用户登录”和“允许用户注册”选项。请记住，选择的设置会影响用户的登录体验。
 
-例如，当用户首次登录到用户门户时，会转到“Azure 多重身份验证用户设置”页。 根据 Azure Multi-Factor Authentication 的配置方式，用户也许能够选择身份验证方法。
+例如，当用户首次登录到用户门户时，会转到“Azure 多重身份验证用户设置”页。 根据 Azure 多重身份验证的配置方式，用户也许能够选择身份验证方法。
 
 如果他们选择“语音呼叫”验证方法，或已预先配置为使用该方法，此页会提示用户输入主要电话号码和分机（如果有）。 他们还可以输入备用电话号码。
 
@@ -174,7 +173,7 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
 完成激活后，用户可单击“立即对我进行身份验证”按钮。 Azure 多重身份验证通过用户的移动应用执行验证。 用户必须输入其 PIN 码（如果适用），并按其移动应用中的“身份验证”按钮，以转到自我注册过程的下一步。
 
-如果管理员已将 Azure Multi-Factor Authentication 服务器配置为收集安全提问和答案，则用户将转到“安全提问”页。 用户必须选择四个安全问题，并提供其所选问题的答案。
+如果管理员已将 Azure 多重身份验证服务器配置为收集安全提问和答案，则用户将转到“安全提问”页。 用户必须选择四个安全问题，并提供其所选问题的答案。
 
 ![用户门户安全提问](./media/multi-factor-authentication-get-started-portal/secq.png)
 

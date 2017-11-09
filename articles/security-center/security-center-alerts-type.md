@@ -12,21 +12,21 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/20/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 274c50dad9b8a1d79a71a29b04cb8e44ad91893c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
+若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择 **安全策略** 中的 [定价层](security-center-policies.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+
 > [!NOTE]
-> 若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择 **安全策略** 中的 [定价层](security-center-policies.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
->
+> 安全中心在功能有限的预览版中发布了新的一组检测。这些检测利用审核记录这种常用审核框架，检测 Linux 计算机上的恶意行为。 若要体验预览版，请向[我们](mailto:ASC_linuxdetections@microsoft.com)发送包含订阅 ID 的电子邮件。
 
 ## <a name="what-type-of-alerts-are-available"></a>提供了哪类警报？
 Azure 安全中心使用各种[检测功能](security-center-detection-capabilities.md)，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 警报中包含的信息根据用于检测威胁的分析类型而异。 事件也可能包含其他上下文信息，在调查威胁时有所帮助。  本文提供了有关以下警报类型的信息：
@@ -44,7 +44,7 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 >
 
 ### <a name="crash-analysis"></a>故障分析
-故障转储内存分析是一种用于检测复杂恶意软件的方法，此类恶意软件能够避开传统安全解决方案的检测。 很多形式的恶意软件从不向磁盘写入内容，或者会加密写入到磁盘中的软件组件，尝试减少被防病毒产品检测到的机会。 因此，使用传统的反恶意软件方法难以检测到恶意软件。 但是，此类恶意软件可以通过内存分析检测到，因为恶意软件一运行就必然会在内存中留下踪迹。
+故障转储内存分析是一种用于检测复杂恶意软件的方法，此类恶意软件能够避开传统安全解决方案的检测。 很多形式的恶意软件从不向磁盘写入内容，或者会加密写入到磁盘中的软件组件，尝试减少被防病毒产品检测到的机会。 此技术使得使用传统的反恶意软件方法难以检测到恶意软件。 但是，此类恶意软件可以通过内存分析检测到，因为恶意软件一运行就必然会在内存中留下踪迹。
 
 当软件故障时，故障转储可捕获故障时的部分内存。 故障可能由恶意软件、常规应用程序问题或系统问题引发。 通过分析故障转储中的内存，安全中心可以检测到用于利用软件漏洞、访问机密数据以及偷偷存留在受攻击计算机中的技术。 此类操作对主机的性能影响很小，因为分析是由安全中心后端执行的。
 
@@ -121,7 +121,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 ![可疑进程警报](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
-### <a name="multiple-domain-accounts-queried"></a>已查询多个域帐户
+### <a name="multiple-domains-accounts-queried"></a>已查询多个域帐户
 安全中心可以检测到查询 Active Directory 域帐户的多次尝试，此类尝试通常由攻击者在网络侦测期间完成。 攻击者可以利用此技术来查询域，确定用户、域管理员帐户、属于域控制器的计算机，以及与其他域之间存在的可能的域信任关系。
 
 下面是此类警报的示例：
@@ -184,18 +184,18 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 安全中心进行网络威胁检测的机制是自动收集 Azure IPFIX (Internet Protocol Flow Information Export) 流量中的安全信息。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。
 
 ### <a name="suspicious-outgoing-traffic-detected"></a>检测到可疑的传出流量
-网络设备的发现和分析方式大致与其他类型的系统相同。 攻击者一开始通常会进行端口扫描。 在下一示例中，你检测到来自 VM 的可疑的安全外壳 (SSH) 流量。 在这种情况下，可能会发生对外部资源的暴力破解攻击或端口扫描攻击。
+网络设备的发现和分析方式大致与其他类型的系统相同。 攻击者一开始通常会进行端口扫描。 在下一示例中，检测到来自 VM 的可疑的安全外壳 (SSH) 流量。 在这种情况下，可能会发生对外部资源的暴力破解攻击或端口扫描攻击。
 
 ![可疑传出流量警报](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
-此警报提供的信息可以用来确定攻击者发起该攻击时所使用的资源。 此警报提供的信息还可以用来确定受攻击的计算机、检测时间，以及所使用的协议和端口。 此边栏选项卡还提供了一个列表，其中包含的补救步骤可以用来缓解此问题。
+此警报提供的信息可以用来确定攻击者发起该攻击时所使用的资源。 此警报提供的信息还可以用来确定受攻击的计算机、检测时间，以及所使用的协议和端口。 此页还提供了一个列表，其中包含的补救步骤可以用来缓解此问题。
 
 ### <a name="network-communication-with-a-malicious-machine"></a>与恶意计算机进行网络通信
 利用 Microsoft 威胁情报馈送，Azure 安全中心可以检测与恶意 IP 地址通信的受攻击计算机。 在许多情况下，恶意地址为命令和控制中心。 在本示例中，安全中心检测到通信是使用 Pony Loader 恶意软件（也称 [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF)）完成的。
 
 ![网络通信警报](./media/security-center-alerts-type/security-center-alerts-type-fig9.png)
 
-利用此警报提供的信息，你可以确定用于发起该攻击的资源、受攻击的资源、受害 IP、攻击者 IP 以及检测时间。
+利用此警报提供的信息，可以确定用于发起该攻击的资源、受攻击的资源、受害 IP、攻击者 IP 以及检测时间。
 
 > [!NOTE]
 > 出于隐私考虑，此屏幕截图删除了实时 IP 地址。
@@ -224,7 +224,7 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 此警报中的信息可以用来确定受攻击的资源、检测时间以及攻击状态。 此警报还提供一个链接，方便你执行进一步的调查步骤。
 
 ### <a name="vulnerability-to-sql-injection"></a>存在易受 SQL 注入攻击的漏洞
-在数据库中检测到应用程序错误时，将会触发此警报。 此警报会指示可能存在易受 SQL 注入攻击的漏洞。
+在数据库中检测到应用程序错误时，会触发此警报。 此警报会指示可能存在易受 SQL 注入攻击的漏洞。
 
 ![潜在 SQL 注入警报](./media/security-center-alerts-type/security-center-alerts-type-fig12-new.png)
 
@@ -253,4 +253,3 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
 * [Azure 安全中心常见问题](security-center-faq.md)：查找有关使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及符合性的博客文章。
-

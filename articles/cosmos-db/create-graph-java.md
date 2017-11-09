@@ -13,22 +13,24 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 08/24/2017
+ms.date: 10/20/2017
 ms.author: denlee
+ms.openlocfilehash: 4470b5adb52debce1492b084ce71100da77da046
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 0273072c7c10e219ab8d6c85eb252badafc17147
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询托管的文档、表和图形数据库。 
 
-本快速入门通过适用于 Azure Cosmos DB 的 Azure 门户工具创建图形数据库。 本快速入门还介绍了如何使用图形数据库通过 OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) 驱动程序快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 可以使用本快速入门熟悉如何通过 UI 或编程方式创建和修改图形资源，具体取决于你首选哪种方式。 
+本快速入门使用适用于 Azure Cosmos DB 的 Azure 门户工具，创建简单的图形数据库。 本快速入门还介绍了如何使用图形数据库通过 OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) 驱动程序快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 借助本快速入门，可以熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改图形。 
 
 ## <a name="prerequisites"></a>先决条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+此外：
 
 * [Java 开发工具包 (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
@@ -37,8 +39,6 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -50,28 +50,35 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在可以在 Azure 门户中使用数据资源管理器工具来创建图形数据库。 
 
-1. 在 Azure 门户的左侧导航菜单中，单击“数据资源管理器(预览版)”。 
-2. 在“数据资源管理器(预览版)”边栏选项卡中，单击“新建图形”，并使用以下信息填写该页：
+1. 依次单击“数据资源管理器” > “新图形”。
 
-    ![Azure 门户中的数据资源管理器](./media/create-graph-java/azure-cosmosdb-data-explorer.png)
+    此时，最右侧显示“添加图形”区域，可能需要向右滚动才能看到。
+
+    ![Azure 门户“数据资源管理器”中的“添加图形”页](./media/create-graph-java/azure-cosmosdb-data-explorer-graph.png)
+
+2. 在“添加图形”页上，输入新图形的设置。
 
     设置|建议的值|说明
     ---|---|---
-    数据库 ID|sample-database|新数据库的 ID。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
-    图形 ID|sample-graph|新图形的 ID。 图形名称与数据库 ID 的字符要求相同。
-    存储容量| 10 GB|保留默认值。 这是数据库的存储容量。
-    吞吐量|400 RU|保留默认值。 如果想要减少延迟，以后可以增加吞吐量。
+    数据库 ID|sample-database|输入“sample-database”作为新数据库的名称。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
+    图形 ID|sample-graph|输入“sample-graph”作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
+    存储容量|固定 (10 GB)|将值更改为“固定(10GB)”。 此值是数据库的存储容量。
+    吞吐量|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
     分区键|留空|本快速入门此分区键留空。
 
 3. 填写表单后，请单击“确定”。
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在从 GitHub 克隆图形应用，设置连接字符串，并运行该应用。 会看到以编程方式处理数据是多么容易。 
+现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的图形 API 应用程序，设置连接字符串，并运行应用程序。 会看到以编程方式处理数据是多么容易。  
 
-1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
+1. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为相应的示例应用程序安装文件夹。  
 
-2. 运行下列命令以克隆示例存储库。 
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+2. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
@@ -79,7 +86,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-快速查看应用中发生的情况。 从 \src\GetStarted 文件夹打开 `Program.java` 文件，找到以下代码行。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 这些代码段全部取自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted 文件夹中的 `Program.java` 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
 * 将通过 `src/remote.yaml` 中的配置初始化 Gremlin `Client`。
 
@@ -102,51 +109,71 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     }
     ```
 
-## <a name="update-your-connection-string"></a>更新连接字符串
+## <a name="update-your-connection-information"></a>更新连接信息
 
-1. 打开 src/remote.yaml 文件。 
+现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-3. 在 src/remote.yaml 文件中填充 hosts、username 和 password 值。 其余设置不需更改。
+1. 在 [Azure 门户](http://portal.azure.com/)中，单击“密钥”。 
 
-    设置|建议的值|说明
-    ---|---|---
-    主机|[***.graphs.azure.com]|请参看此表后面的屏幕截图。 此值是 Azure 门户“概览”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https:// ，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
-    用户名|/dbs/sample-database/colls/sample-graph|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是现有数据库名称，`<coll>` 是现有集合名称。
-    密码|*主密钥*|请参看此表后面的第二个屏幕截图。 此值是主键，可以从 Azure 门户的“键”页上的“主键”框中检索到。 使用该框右侧的复制按钮复制该值。
+    复制 URI 值的第一部分。
 
-    对于 Hosts 值，请复制“概览”页中的“Gremlin URI”值。 如果该值为空，请查看上表 Hosts 行中的说明，了解如何从“键”边栏选项卡创建 Gremlin URI。
-![在 Azure 门户的“概览”页上查看和复制 Gremlin URI 值](./media/create-graph-java/gremlin-uri.png)
+    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-java/keys.png)
+2. 打开 src/remote.yaml 文件，并将值粘贴到 `hosts: [$name$.graphs.azure.com]` 中的 `$name$`。
 
-    对于 Password 值，请复制“键”边栏选项卡中的“主键”：![在 Azure 门户的“键”页上查看和复制主键](./media/create-graph-java/keys.png)
+    remote.yaml 的第 1 行现应如下所示 
+
+    `hosts: [test-graph.graphs.azure.com]`
+
+3. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password: $masterKey$` 中的 `$masterKey$`。
+
+    remote.yaml 的第 4 行现应如下所示 
+
+    `password: 2Ggkr662ifxz2Mg==`
+
+4. 将 remote.yaml 的第 3 行从
+
+    `username: /dbs/$database$/colls/$collection$`
+
+    更改为 
+
+    `username: /dbs/sample-database/colls/sample-graph`
+
+5. 保存 remote.yaml 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
 1. 在 git 终端窗口中，通过 `cd` 命令转到 azure-cosmos-db-graph-java-getting-started 文件夹。
 
+    ```git
+    cd "C:\git-samples\azure-cosmos-db-graph-java-getting-started"
+    ```
+
 2. 在 git 终端窗口键入 `mvn package`，安装所需的 Java 包。
 
-3. 在 git 终端窗口运行 `mvn exec:java -D exec.mainClass=GetStarted.Program`，启动 Java 应用程序。
+3. 在 git 终端窗口中，运行 `mvn exec:java -D exec.mainClass=GetStarted.Program`，启动 Java 应用程序。
 
-终端窗口会显示添加到图形的顶点。 程序完成后，在 Internet 浏览器中切换回 Azure 门户。 
+    终端窗口会显示添加到图形的顶点。 一旦程序停止运行，在 Internet 浏览器中立即切换回 Azure 门户。 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>查看并添加示例数据
 
 现在可以回到数据资源管理器，查看添加到图形的顶点，并添加其他数据点。
 
-1. 在数据资源管理器中，展开 “sample-database”/“sample-graph”，单击“图形”，然后单击“应用筛选器”。 
+1. 单击“数据资源管理器”，展开“sample-graph”，再依次单击“图形”和“应用筛选器”。 
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. 在“结果”列表中，请注意添加到图形的新用户。 选择“ben”。请注意，他连接到 robin。 可以在图形资源管理器中四处移动顶点，可以放大和缩小，还可以扩展图形资源管理器图面的大小。 
+2. 在“结果”列表中，请注意添加到图形的新用户。 选择“ben”。请注意，他连接到 robin。 可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
 
    ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. 使用数据资源管理器向图形添加一些新用户。 单击“新建顶点”按钮，向图形添加数据。
+3. 接下来，添加几个新用户。 单击“新建顶点”按钮，向图形添加数据。
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
-4. 添加标签“人员”，然后输入以下键和值，在图形中创建第一个顶点。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
+4. 输入标签“人员”。
+
+5. 单击“添加属性”，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
     key|value|说明
     ----|----|----
@@ -157,9 +184,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     > [!NOTE]
     > 在本快速入门中，我们创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-5. 单击 **“确定”**。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 单击 **“确定”**。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
-6. 再次单击“新建顶点”，添加其他新用户。 输入标签“人员”，然后输入以下键和值：
+7. 再次单击“新建顶点”，添加其他新用户。 
+
+8. 输入标签“人员”。
+
+9. 单击“添加属性”，添加下列所有属性：
 
     key|value|说明
     ----|----|----
@@ -167,25 +198,25 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     gender|男| 
     学校|MIT| 
 
-7. 单击 **“确定”**。 
+10. 单击 **“确定”**。 
 
-8. 在筛选器为默认 `g.V()` 筛选器的情况下，单击“应用筛选器”。 所有用户此时会显示在“结果”列表中。 添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 来检索图形中的所有顶点，但可以将其更改为其他[图形查询](tutorial-query-graph.md)（例如 `g.V().count()`），以 JSON 格式返回图形中所有顶点的计数。
+11. 单击“应用筛选器”（默认 `g.V()` 筛选器），显示图形中的所有值。 所有用户此时会显示在“结果”列表中。 
 
-9. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的编辑按钮。 可能需要扩大窗口才能看到“属性”区域。
+    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并单击“应用筛选器”，再次显示所有结果。
+
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的编辑按钮。 可能需要扩大窗口才能看到“属性”区域。
 
    ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-10. 在“目标”框中键入“rakesh”，在“Edge 标签”框中键入“认识”，然后单击复选框。
+13. 在“目标”框中键入“rakesh”，在“Edge 标签”框中键入“认识”，再选中复选框。
 
    ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
-11. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
+14. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
 
    ![在数据资源管理器中连接的两个顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    还可以使用数据资源管理器创建存储过程、UDF 和触发器以执行服务器端业务逻辑和缩放吞吐量。 数据资源管理器公开 API 中提供的所有内置编程数据访问，但可以使用它轻松访问 Azure 门户中的数据。
-
-
+   这就完成了本教程的资源创建部分。可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
@@ -193,10 +224,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下： 
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -204,5 +232,4 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
-
 

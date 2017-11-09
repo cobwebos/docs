@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 797b6236afad45e3e308ce073a8beb90cb7e94a1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/25/2017
-
-
+ms.openlocfilehash: 4153910bc03f112f84c26cda6f9c78f11028b934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-secure-angularjs-single-page-apps-by-using-azure-ad"></a>使用 Azure AD 帮助保护 AngularJS 单页面应用的安全
 
@@ -43,24 +41,24 @@ ms.lasthandoff: 05/25/2017
 2. 安装 ADAL 并配置单页面应用。
 3. 使用 ADAL 帮助保护单页面应用中的页面。
 
-若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)。 还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。 如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
+若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)。 还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。 如果还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 ## <a name="step-1-register-the-directorysearcher-application"></a>步骤 1：注册 DirectorySearcher 应用程序
 若要使应对用户进行身份验证并获取令牌，首先需要在 Azure AD 租户中注册该应用：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果登录到多个目录，可能需要确保正在查看正确目录。 若要执行此操作，在顶部栏上，单击你的帐户。 在“目录”列表下选择要注册应用程序的 Azure AD 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
-4. 单击“应用注册”，然后选择“添加”。
+3. 在左窗格中，单击“更多服务”，并选择“Azure Active Directory”。
+4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建一个新的 Web 应用程序和/或 Web API：
   * **名称**向用户描述应用程序。
   * “重定向 URI”是 Azure AD 要将令牌返回到的位置。 本示例的默认位置是 `https://localhost:44326/`。
-6. 完成注册后，Azure AD 将向应用分配唯一应用程序 ID。  在后面的部分中将会用到此值，因此，请从“应用程序”选项卡中复制此值。
+6. 完成注册后，Azure AD 将向应用分配唯一应用程序 ID。  在后面的部分中会用到此值，因此，请从应用程序选项卡中复制此值。
 7. Adal.js 使用 OAuth 隐式流来与 Azure AD 通信。 必须为应用程序启用隐式流：
-  1. 单击应用程序，然后选择“清单”打开内联清单编辑器。
+  1. 单击应用程序，并选择“清单”打开内联清单编辑器。
   2. 找到 `oauth2AllowImplicitFlow` 属性。 将其值设置为 `true`。
   3. 单击“保存”以保存清单。
-8. 针对应用程序，在租户中授予权限。 转到“设置” > “属性” > “所需的权限”，然后单击顶部栏上的“授予权限”按钮。 单击“是”确认。
+8. 针对应用程序，在租户中授予权限。 转到“设置” > “属性” > “所需的权限”，并单击顶部栏上的“授予权限”按钮。 单击“是”确认。
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>步骤 2：安装 ADAL 并配置单页面应用
 将应用程序注册到 Azure AD 后，可以安装 adal.js 并编写标识相关的代码。
@@ -79,7 +77,7 @@ ms.lasthandoff: 05/25/2017
     ```
 
 ### <a name="configure-the-back-end-server"></a>配置后端服务器
-要使单页面应用的后端待办事项列表 API 接受来自浏览器的令牌，后端需要有关应用注册的配置信息。 在 TodoSPA 项目中，打开 `web.config`。 替换 `<appSettings>` 部分中的元素值，反映在 Azure 门户中使用的值。 只要使用 ADAL，你的代码就会引用这些值。
+要使单页面应用的后端待办事项列表 API 接受来自浏览器的令牌，后端需要有关应用注册的配置信息。 在 TodoSPA 项目中，打开 `web.config`。 替换 `<appSettings>` 部分中的元素值，反映在 Azure 门户中使用的值。 只要使用 ADAL，代码就会引用这些值。
   * `ida:Tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com。
   * `ida:Audience` 是从门户复制的应用程序的客户端 ID。
 
@@ -145,21 +143,20 @@ Adal.js 与 AngularJS 路由和 HTTP 提供程序集成，以便可以帮助保�
     ...
     ```
 
-* 在许多情况下，你希望知道用户是否已登录。 你也可以使用 `userInfo` 对象来收集此信息。  例如，在 `index.html` 中，可以根据身份验证状态显示“登录”或“注销”按钮：
+* 在许多情况下，你希望知道用户是否已登录。 也可以使用 `userInfo` 对象来收集此信息。  例如，在 `index.html` 中，可以根据身份验证状态显示“登录”或“注销”按钮：
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
     ```
 
-集成了 Azure AD 的单页面应用可对用户进行身份验证，使用 OAuth 2.0 安全调用其后端，并获取有关用户的基本信息。 如果你尚未这样做，可以在租户中填充一些用户。 运行待办事项列表单页面应用，然后使用这些用户之一进行登录。 将任务添加到用户的待办事项列表、注销并重新登录。
+集成了 Azure AD 的单页面应用可对用户进行身份验证，使用 OAuth 2.0 安全调用其后端，并获取有关用户的基本信息。 如果尚未这样做，可以在租户中填充一些用户。 运行待办事项列表单页面应用，并使用这些用户之一进行登录。 将任务添加到用户的待办事项列表、注销并重新登录。
 
 使用 Adal.js 可以方便地将常见标识功能合并到应用程序中。 它负责所有的繁琐工作：缓存管理、OAuth 协议支持、向用户显示登录 UI、刷新已过期的令牌等。
 
 [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip) 中提供了已完成示例（无配置值）以供参考。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你可以转到其他方案。 可能需要：[从单页面应用调用 CORS Web API](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)。
+现在，可以转到其他方案。 可能需要：[从单页面应用调用 CORS Web API](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

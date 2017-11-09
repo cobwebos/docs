@@ -1,6 +1,6 @@
 ---
 title: "查看 Azure 网络观察程序拓扑 - REST API | Microsoft 文档"
-description: "本文将介绍如何使用 REST API 查询网络拓扑。"
+description: "本文介绍如何使用 REST API 查询网络拓扑。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 568f3060da372f4a08cec342e04359172522cb69
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.openlocfilehash: fefeae4e816994d3ee69d6ac1c1cbe6cf8bbd06e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-network-watcher-topology-with-rest-api"></a>使用 REST API 查看网络观察程序拓扑
 
 > [!div class="op_single_selector"]
@@ -30,7 +28,7 @@ ms.lasthandoff: 05/26/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
-网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，将自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
+网络观察程序的拓扑功能提供订阅中网络资源的可视表示形式。 在此门户中，会自动向你显示此可视化效果。 可以通过 PowerShell 检索此门户中拓扑视图背后的信息。
 此功能使拓扑信息更为通用，因为这些数据可由其他工具用于构建出可视化效果。
 
 在两个关系下为互连建模。
@@ -52,7 +50,7 @@ ms.lasthandoff: 05/26/2017
 
 在此方案中，检索拓扑信息。 ARMclient 用于使用 PowerShell 调用 REST API。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 ## <a name="scenario"></a>方案
 
@@ -119,5 +117,4 @@ s65qcto",
 ## <a name="next-steps"></a>后续步骤
 
 访问[使用 Power BI 可视化 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 可视化 NSG 流日志
-
 

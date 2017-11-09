@@ -14,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: heidist
-ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
 ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接
 如[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，针对 **Azure VM 上的 SQL Server**（或简称 **SQL Azure VM**）创建索引器受 Azure 搜索支持，但首先需要满足一些与安全性相关的先决条件。 
@@ -42,7 +41,7 @@ ms.lasthandoff: 07/18/2017
      `[MSSQL13.MSSQLSERVER]` 部分因版本和实例名称而异。 
    * 将**证书**密钥的值设置为已导入到 VM 的 SSL 证书的**指纹**。
      
-     可通过多种方式获取指纹，有些方式十分有效。 如果你从 MMC 的**证书**管理单元中复制指纹，可能会[如此支持文章中所述](https://support.microsoft.com/kb/2023869/)选取不可见的前导字符，这会导致在尝试连接时出错。 提供了几种更正此问题的解决方法。 最简单的方法是按 Backspace 键退格，然后重新键入指纹的第一个字符，以在 regedit 中删除密钥值字段中的前导字符。 此外，也可以使用其他工具复制指纹。
+     可通过多种方式获取指纹，有些方式十分有效。 如果从 MMC 的**证书**管理单元中复制指纹，可能会[如此支持文章中所述](https://support.microsoft.com/kb/2023869/)选取不可见的前导字符，这会导致在尝试连接时出错。 提供了几种更正此问题的解决方法。 最简单的方法是按 Backspace 键退格，并重新键入指纹的第一个字符，以在 regedit 中删除密钥值字段中的前导字符。 此外，也可以使用其他工具复制指纹。
 3. 向服务帐户授予权限。 
    
     请确保向 SQL Server 服务帐户授予 SSL 证书私钥的相应权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
@@ -57,7 +56,7 @@ ms.lasthandoff: 07/18/2017
 具体而言，查看每个文章中的“通过 Internet 连接”部分。
 
 ## <a name="configure-the-network-security-group-nsg"></a>配置网络安全组 (NSG)
-若要使其他方可以访问 Azure VM，通常配置 NSG 和相应的 Azure 终结点或访问控制列表 (ACL)。 你可能之前已完成此操作，以允许自己的应用程序逻辑连接到 SQL Azure VM。 这不同于将 Azure 搜索连接到 SQL Azure VM。 
+若要使其他方可以访问 Azure VM，通常配置 NSG 和相应的 Azure 终结点或访问控制列表 (ACL)。 可能之前已完成此操作，以允许自己的应用程序逻辑连接到 SQL Azure VM。 这不同于将 Azure 搜索连接到 SQL Azure VM。 
 
 下面的链接提供了有关 VM 部署的 NSG 配置的说明。 使用这些说明，根据其 IP 地址为 Azure 搜索终结点配置 ACL。
 
@@ -69,24 +68,23 @@ ms.lasthandoff: 07/18/2017
 * 有关 **Resource Manager** VM，请参阅[如何为 ARM 部署创建 NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。 
 * 有关**经典** VM，请参阅[如何为经典部署创建 NSG](../virtual-network/virtual-networks-create-nsg-classic-ps.md)。
 
-IP 寻址会产生一些挑战，如果你了解问题和潜在解决方法，则可以轻松应对。 剩余部分提供了有关处理 ACL 中与 IP 地址相关的问题的建议。
+IP 寻址会产生一些挑战，如果了解问题和潜在解决方法，则可以轻松应对。 剩余部分提供了有关处理 ACL 中与 IP 地址相关的问题的建议。
 
 #### <a name="restrict-access-to-the-search-service-ip-address"></a>限制对搜索服务 IP 地址的访问
-我们强烈建议你限制对 ACL 中搜索服务 IP 地址的访问，而不是允许 SQL Azure VM 接受任何连接请求。 通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.windows.net`）进行 ping 操作，可轻松找到 IP 地址。
+我们强烈建议限制对 ACL 中搜索服务 IP 地址的访问，而不是允许 SQL Azure VM 接受任何连接请求。 通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.windows.net`）进行 ping 操作，可轻松找到 IP 地址。
 
 #### <a name="managing-ip-address-fluctuations"></a>管理 IP 地址波动
-如果你的搜索服务只有一个搜索单位（即一个副本和一个分区），IP 地址将在例程服务重新启动期间发生更改，这会导致搜索服务的 IP 地址的现有 ACL 无效。
+如果搜索服务只有一个搜索单位（即一个副本和一个分区），IP 地址会在例程服务重新启动期间发生更改，这会导致搜索服务的 IP 地址的现有 ACL 无效。
 
 避免后续连接错误的一种方法是，在 Azure 搜索中使用多个副本和一个分区。 这样做会增加成本，但也会解决 IP 地址问题。 在 Azure 搜索中，当具有多个搜索单位时，不会更改 IP 地址。
 
-第二种方法是允许连接失败，然后在 NSG 中重新配置 ACL。 一般情况下，IP 地址应每隔几周更改一次。 对于不常执行受控编制索引的客户，此方法可能可行。
+第二种方法是允许连接失败，并在 NSG 中重新配置 ACL。 一般情况下，IP 地址应每隔几周更改一次。 对于不常执行受控编制索引的客户，此方法可能可行。
 
-第三个可行（但不是特别安全）的方法是指定预配你的搜索服务的 Azure 区域的 IP 地址范围。 将公共 IP 地址分配到 Azure 资源时所依据的 IP 范围列表已在 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)中发布。 
+第三个可行（但不是特别安全）的方法是指定预配搜索服务的 Azure 区域的 IP 地址范围。 将公共 IP 地址分配到 Azure 资源时所依据的 IP 范围列表已在 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)中发布。 
 
 #### <a name="include-the-azure-search-portal-ip-addresses"></a>包括 Azure 搜索门户 IP 地址
 如果使用 Azure 门户创建索引器，Azure 搜索门户逻辑还需要在创建期间访问 SQL Azure VM。 可通过对 `stamp2.search.ext.azure.com` 执行 ping 操作找到 Azure 搜索门户 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
-完成配置后，你现在可以将 Azure VM 上的 SQL Server 指定为 Azure 搜索索引器的数据源。 有关详细信息，请参阅[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。
-
+完成配置后，现在可以将 Azure VM 上的 SQL Server 指定为 Azure 搜索索引器的数据源。 有关详细信息，请参阅[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 49b9d2e21dbcb612828a25f21ed4382327d6f64c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>设置源环境（物理服务器到 Azure）
 > [!div class="op_single_selector"]
 > * [VMware 到 Azure](./site-recovery-set-up-vmware-to-azure.md)
@@ -31,7 +29,7 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已具有：
+本文假设已具有：
 1. [Azure 门户](http://portal.azure.com "Azure 门户")中的恢复服务保管库。
 3. 安装配置服务器的物理计算机。
 
@@ -44,11 +42,11 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
-1. 在 Azure 门户中，转到“恢复服务保管库”边栏选项卡，然后选择你的保管库。
+1. 在 Azure 门户中，转到“恢复服务保管库”边栏选项卡，然后选择保管库。
 2. 在保管库的“资源”菜单中，单击“开始使用” > “Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
 
     ![选择目标](./media/site-recovery-set-up-physical-to-azure/choose-goals.png)
-3. 在“保护目标”中，依次选择“到 Azure”和“未虚拟化/其他”，然后单击“确定”。
+3. 在“保护目标”中，依次选择“到 Azure”和“未虚拟化/其他”，并单击“确定”。
 
     ![选择目标](./media/site-recovery-set-up-physical-to-azure/physical-protection-goal.PNG)
 
@@ -67,7 +65,7 @@ ms.lasthandoff: 06/30/2017
 #### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 
 > [!TIP]
-> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册将失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
+> 如果计算机上的系统时钟时间与本地时间相差 5 分钟以上，则配置服务器注册会失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
@@ -83,4 +81,3 @@ ms.lasthandoff: 06/30/2017
 ## <a name="next-steps"></a>后续步骤
 
 下一步涉及在 Azure 中[设置目标环境](./site-recovery-prepare-target-physical-to-azure.md)。
-

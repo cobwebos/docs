@@ -15,12 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: bf758d1241f2a56eba4d5c92ace713d6e563df65
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器启用移动应用身份验证
 
@@ -43,7 +42,7 @@ Microsoft Authenticator 应用提供一个附加的带外验证选项。 Azure �
 * 将 IIS 7 或更高版本中的 Azure 多重身份验证 Web 服务 SDK 安装在Azure 多重身份验证服务器所在的服务器上
 * 使用 SSL 证书保护 Azure 多重身份验证 Web 服务 SDK。
 * 移动应用 Web 服务可以通过 SSL 连接到 Azure 多重身份验证 Web 服务 SDK
-* 移动应用 Web 服务可以使用属于“PhoneFactor 管理员”安全组的服务帐户凭据，对 Azure MFA Web 服务 SDK 进行身份验证。 如果 Azure 多重身份验证服务器在已加入域的服务器上，则此服务帐户和组存在于 Active Directory 中。 如果 Azure Multi-Factor Authentication 服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
+* 移动应用 Web 服务可以使用属于“PhoneFactor 管理员”安全组的服务帐户凭据，对 Azure MFA Web 服务 SDK 进行身份验证。 如果 Azure 多重身份验证服务器在已加入域的服务器上，则此服务帐户和组存在于 Active Directory 中。 如果 Azure 多重身份验证服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
 
 ## <a name="install-the-mobile-app-web-service"></a>安装移动应用 Web 服务
 
@@ -90,9 +89,9 @@ Microsoft Authenticator 应用提供一个附加的带外验证选项。 Azure �
 7. 如果已安装移动应用 Web 服务的网站尚未与公开签名的证书绑定，请在服务器上安装证书，打开 IIS 管理器并将证书绑定到该网站。
 8. 从任何计算机打开 Web 浏览器，导航到已安装移动应用 Web 服务的 URL（示例：https://mfa.contoso.com/MultiFactorAuthMobileAppWebService）。 确保未显示证书警告或错误。
 
-## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置移动应用设置
+## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure 多重身份验证服务器中配置移动应用设置
 
-安装移动应用 Web 服务后，需要配置 Azure Multi-Factor Authentication 服务器，使其能够与门户配合工作。
+安装移动应用 Web 服务后，需要配置 Azure 多重身份验证服务器，使其能够与门户配合工作。
 
 1. 在多重身份验证服务器控制台中，单击“用户门户”图标。 如果允许用户控制其身份验证方法，请在“设置”选项卡上的“允许用户选择方法”下，选中“移动应用”。 如果未启用此功能，则最终用户需要联系支持人员才能完成移动应用的激活。
 2. 选中“允许用户激活移动应用”框。

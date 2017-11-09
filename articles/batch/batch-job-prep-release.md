@@ -15,19 +15,18 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
 ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
 
- Azure Batch 作业在执行其任务之前，通常需要经过某种形式的设置，并且需要在其任务完成时进行作业后维护。 可能需要将常见的任务输入数据下载到计算节点，或者在作业完成之后，将任务输出数据上载到 Azure 存储。 可以使用“作业准备”和“作业释放”任务来执行这些操作。
+ Azure Batch 作业在执行其任务之前，通常需要经过某种形式的设置，并且需要在其任务完成时进行作业后维护。 可能需要将常见的任务输入数据下载到计算节点，或者在作业完成之后，将任务输出数据上传到 Azure 存储。 可以使用“作业准备”和“作业释放”任务来执行这些操作。
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>什么是作业准备和作业释放任务？
-在运行作业的任务之前，作业准备任务在计划要运行至少一个任务的所有计算节点上运行。 作业完成后，作业释放任务将在池中至少运行了一个任务的每个节点上运行。 与普通的 Batch 任务一样，可以指定在运行作业准备或释放任务时要调用的命令行。
+在运行作业的任务之前，作业准备任务在计划要运行至少一个任务的所有计算节点上运行。 作业完成后，作业释放任务会在池中至少运行了一个任务的每个节点上运行。 与普通的 Batch 任务一样，可以指定在运行作业准备或释放任务时要调用的命令行。
 
 作业准备和释放任务可以提供许多熟悉的 Batch 任务功能，例如文件下载（[资源文件][net_job_prep_resourcefiles]），提升权限的执行，自定义环境变量，最大执行持续时间，重试计数和文件保留时间。
 
@@ -51,7 +50,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 
 **日志保留期**
 
-你可能想要保留任务生成的日志文件的副本，或失败应用程序可能生成的崩溃转储文件。 在这种情况下，使用**作业释放任务**可将这些数据压缩并上载到 [Azure 存储][azure_storage]帐户。
+可能想要保留任务生成的日志文件的副本，或失败应用程序可能生成的崩溃转储文件。 在这种情况下，使用**作业释放任务**可将这些数据压缩并上传到 [Azure 存储][azure_storage]帐户。
 
 > [!TIP]
 > 保存日志及其他作业和任务输出数据的另一种方法是，使用 [Azure Batch 文件约定](batch-task-output.md)库。
@@ -59,7 +58,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 > 
 
 ## <a name="job-preparation-task"></a>作业准备任务
-在执行作业的任务之前，Batch 在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 服务等待作业准备任务完成，然后才在节点上运行计划执行的任务。 但你可以将该服务配置为不要等待。 如果节点重新启动，作业准备任务将再次运行，但可以禁用此行为。
+在执行作业的任务之前，Batch 在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 服务等待作业准备任务完成，才在节点上运行计划执行的任务。 但可以将该服务配置为不要等待。 如果节点重新启动，作业准备任务将再次运行，但可以禁用此行为。
 
 作业准备任务只会在计划运行任务的节点上运行。 例如，这可以防止未分配任务的节点不必要地执行准备任务， 当作业的任务数小于池中的节点数时，可能会出现这种情况。 此外，这也适用于在任务计数小于可能的并行任务总数的情况下启用[并行任务执行](batch-parallel-node-tasks.md)，从而留出一些空闲节点的情况。 不在空闲节点上运行作业准备任务可以节省数据传输费用。
 
@@ -69,7 +68,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 > 
 
 ## <a name="job-release-task"></a>作业释放任务
-将作业标记为完成后，作业释放任务将在池中至少运行了一个任务的每个节点上执行。 可以通过发出终止请求将作业标记为已完成。 然后，Batch 服务会将作业状态设置为正在终止，终止与作业关联的任何活动任务或正在运行的任务，并运行作业释放任务。 然后，该作业将进入“已完成”状态。
+将作业标记为完成后，作业释放任务会在池中至少运行了一个任务的每个节点上执行。 可以通过发出终止请求将作业标记为已完成。 然后，Batch 服务会将作业状态设置为正在终止终止与作业关联的任何活动任务或正在运行的任务，并运行作业释放任务。 然后，该作业将进入已完成状态。
 
 > [!NOTE]
 > 作业删除操作也会执行作业释放任务。 但是，如果已经终止了某个作业，则以后删除该作业时，释放任务不会再次运行。
@@ -77,7 +76,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>使用 Batch .NET 执行作业准备和释放任务
-若要使用作业准备任务，可将 [JobPreparationTask][net_job_prep] 对象分配到作业的 [CloudJob.JobPreparationTask][net_job_prep_cloudjob] 属性。 同样，初始化 [JobReleaseTask][net_job_release] 并将它分配到作业的 [CloudJob.JobReleaseTask][net_job_prep_cloudjob] 属性可以设置作业的释放任务。
+要使用作业准备任务，可将 [JobPreparationTask][net_job_prep] 对象分配到作业的 [CloudJob.JobPreparationTask][net_job_prep_cloudjob] 属性。 同样，初始化 [JobReleaseTask][net_job_release] 并将它分配到作业的 [CloudJob.JobReleaseTask][net_job_prep_cloudjob] 属性可以设置作业的释放任务。
 
 在此代码片段中，`myBatchClient` 是 [BatchClient][net_batch_client] 的实例，`myPool` 是批处理帐户中的现有池。
 
@@ -120,7 +119,7 @@ await myBatchClient.JobOperations.TerminateJobAsy("JobPrepReleaseSampleJob");
 
 1. 创建包含两个“小”节点的池。
 2. 创建具有作业准备、释放和标准任务的作业。
-3. 运行作业准备任务，该任务首先会将节点 ID 写入节点的“共享”目录中的文本文件内。
+3. 运行作业准备任务，该任务首先会将节点 ID 写入节点的“共享”目录中的文本文件。
 4. 在每个节点上运行一个任务，该任务将其任务 ID 写入同一文本文件。
 5. 完成所有任务（或达到超时）后，将每个节点的文本文件内容输出到控制台。
 6. 完成作业后，运行作业释放任务以从节点中删除该文件。
@@ -173,14 +172,14 @@ Sample complete, hit ENTER to exit...
 ```
 
 > [!NOTE]
-> 由于新池中各个节点的创建和启动时间并不一样（某些节点比其他节点更早做好任务准备），你可能看到不同的输出。 具体而言，因为任务快速完成，池的某个节点可能执行作业的所有任务。 如果发生这种情况，你会发现未执行任何任务的节点没有作业准备和作业释放任务存在。
+> 由于新池中各个节点的创建和启动时间并不一样（某些节点比其他节点更早做好任务准备），可能看到不同的输出。 具体而言，因为任务快速完成，池的某个节点可能执行作业的所有任务。 如果发生这种情况，会发现未执行任何任务的节点没有作业准备和作业释放任务存在。
 > 
 > 
 
 ### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>在 Azure 门户中检查作业准备和释放任务
 在运行示例应用程序时，可以使用 [Azure 门户][portal]查看作业及其任务的属性，甚至可以下载作业任务修改的共享文本文件。
 
-以下屏幕截图显示了在运行示例应用程序之后，Azure 门户中出现的“准备任务边栏选项卡”。 在任务完成之后（但在删除作业与池之前），导航到 *JobPrepReleaseSampleJob* 属性，然后单击“准备任务”或“释放任务”以查看其属性。
+以下屏幕截图显示了在运行示例应用程序之后，Azure 门户中出现的“准备任务边栏选项卡”。 在任务完成之后（但在删除作业与池之前），导航到 *JobPrepReleaseSampleJob* 属性，并单击“准备任务”或“释放任务”以查看其属性。
 
 ![Azure 门户中的作业准备属性][1]
 
@@ -225,4 +224,3 @@ Sample complete, hit ENTER to exit...
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-

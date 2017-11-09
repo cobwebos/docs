@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 5121a810badcaa9c66a9f5d85bd83b9f522b9665
-ms.openlocfilehash: 449499ebed1b455af012ec97976d04604a320941
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: c158c67a82e12501386179e19bc75fd852d7e308
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
 
@@ -52,7 +50,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 4. 若要下载连接器，请单击“连接器”按钮。
 
     ![下载连接器](./media/app-proxy/app-proxy-enabled-download-connector.png)
-5. 在下载页上，接受许可条款和隐私协议，然后单击“下载”按钮。
+5. 在下载页上，接受许可条款和隐私协议，并单击“下载”按钮。
 
     ![确认下载](./media/app-proxy/app-proxy-enabled-confirm-download.png)
 
@@ -62,18 +60,18 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 在已启用 Azure AD 域服务托管域的同一虚拟网络（或连接/对等虚拟网络）中预配多个连接器服务器。 同样，托管通过应用程序代理发布的应用程序的服务器需要安装在同一 Azure 虚拟网络中。
 
-若要预配连接器服务器，请遵循[将 Windows 虚拟机加入托管域](active-directory-ds-admin-guide-join-windows-vm.md)一文中所述的任务。
+要预配连接器服务器，请遵循[将 Windows 虚拟机加入托管域](active-directory-ds-admin-guide-join-windows-vm.md)一文中所述的任务。
 
 
 ## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>任务 3 - 安装和注册 Azure AD 应用程序代理连接器
-先前，你已预配 Windows Server 虚拟机，并已将其加入到托管域。 在此任务中，将在此虚拟机上安装 Azure AD 应用程序代理连接器。
+先前，已预配 Windows Server 虚拟机，并已将其加入到托管域。 在此任务中，会在此虚拟机上安装 Azure AD 应用程序代理连接器。
 
 1. 将连接器安装包复制到要在其上安装 Azure AD Web 应用程序代理连接器的 VM。
 
 2. 在此虚拟机上运行 **AADApplicationProxyConnectorInstaller.exe**。 接受软件许可条款。
 
     ![接受条款以安装](./media/app-proxy/app-proxy-install-connector-terms.png)
-3. 在安装期间，系统将提示你将连接器注册到 Azure AD 目录的应用程序代理。
+3. 在安装期间，系统会提示将连接器注册到 Azure AD 目录的应用程序代理。
     * 提供 **Azure AD 全局管理员凭据**。 全局管理员租户可能不同于 Microsoft Azure 凭据。
     * 用于注册连接器的管理员帐户必须属于已启用应用程序代理服务的同一目录。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他有效别名。
     * 如果已为要安装连接器的服务器启用“IE 增强的安全配置”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
@@ -93,7 +91,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 >
 
 ## <a name="next-steps"></a>后续步骤
-你已设置 Azure AD 应用程序代理，并已将其集成到 Azure AD 域服务托管域。
+已设置 Azure AD 应用程序代理，并已将其集成到 Azure AD 域服务托管域。
 
 * **将应用程序迁移到 Azure 虚拟机：**可以将应用程序从本地服务器提升并转移到已加入托管域的 Azure 虚拟机。 这样做可帮助免除在本地运行服务器的基础结构成本。
 
@@ -105,7 +103,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 
 ### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器启用基于资源的 kerberos 约束委派
-应针对 kerberos 约束委派 (KCD) 配置 Azure 应用程序代理连接器，使其可以模拟托管域上的用户。 在 Azure AD 域服务托管域上，你没有域管理员权限。 因此，**无法在托管域上配置传统帐户级 KCD**。
+应针对 kerberos 约束委派 (KCD) 配置 Azure 应用程序代理连接器，使其可以模拟托管域上的用户。 在 Azure AD 域服务托管域上，没有域管理员权限。 因此，**无法在托管域上配置传统帐户级 KCD**。
 
 请使用基于资源的 KCD，如[此文](active-directory-ds-enable-kcd.md)中所述。
 
@@ -131,4 +129,3 @@ Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateTo
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [在托管域上配置 Kerberos 约束委派](active-directory-ds-enable-kcd.md)
 * [Kerberos 约束委派概述](https://technet.microsoft.com/library/jj553400.aspx)
-

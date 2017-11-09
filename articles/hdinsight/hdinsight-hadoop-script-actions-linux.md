@@ -13,14 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 10/23/2017
 ms.author: larryfr
+ms.openlocfilehash: 0cef360de3b7a9be01536b0ebe90769c89e7c432
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 7f1a0bd8c7e60770d376f10eaea136a55c632c5e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -45,7 +44,7 @@ ms.lasthandoff: 08/02/2017
 
 有关使用这些方法应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="bestPracticeScripting"></a>脚本开发最佳实践
+## <a name="bestPracticeScripting"></a>脚本开发最佳做法
 
 在针对 HDInsight 群集开发自定义脚本时，有些最佳做法要铭记于心：
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 08/02/2017
 
 ### <a name="bps10"></a>选择目标 OS 版本
 
-基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
+基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
 
 HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Java 8。
 
@@ -163,7 +162,7 @@ HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 A
 echo "Getting ready to install Foo"
 ```
 
-默认情况下，`echo` 会将字符串发送到 STDOUT。 若要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
+默认情况下，`echo` 会将字符串发送到 STDOUT。 要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -262,7 +261,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
     VARIABLENAME=value
 
-其中，VARIABLENAME 是变量的名称。 若要访问变量，请使用 `$VARIABLENAME`。 例如，若要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
+其中，VARIABLENAME 是变量的名称。 若要访问变量，请使用 `$VARIABLENAME`。 例如，要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
 
     PASSWORD=$1
 
@@ -359,7 +358,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 
 | 命令 | 说明 |
 | --- | --- |
-| `unix2dos -b INFILE` |原始文件将以 .BAK 扩展名备份 |
+| `unix2dos -b INFILE` |原始文件以 .BAK 扩展名备份 |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE 包含只带 LF 行尾的版本 |
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | 直接修改文件 |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 包含只带 LF 行尾的版本 |
@@ -379,4 +378,3 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 * 了解如何[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
 * 使用 [HDInsight.NET SDK 参考](https://msdn.microsoft.com/library/mt271028.aspx)详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) 了解如何通过 REST 在 HDInsight 群集上执行管理操作。
-

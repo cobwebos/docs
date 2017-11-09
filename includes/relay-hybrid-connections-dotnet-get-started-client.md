@@ -5,7 +5,7 @@
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 
 1. 右键单击新创建的项目，然后单击“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.Relay”，并选择“Microsoft Azure 中继”项。 单击“安装”以完成安装，然后关闭此对话框。
+2. 单击“浏览”选项卡，搜索“Microsoft.Azure.Relay”，并选择“Microsoft Azure 中继”项。 单击“安装”以完成安装，并关闭此对话框。
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
 

@@ -1,24 +1,25 @@
 ---
-title: "使用 Azure Batch 渲染服务在云中进行渲染 | Microsoft Docs"
+title: "Azure Batch 渲染服务 - 云规模的渲染 | Microsoft Docs"
 description: "直接从 Maya 渲染 Azure 虚拟机上的作业，按使用付费。"
 services: batch
-author: tamram
+author: v-dotren
 manager: timlt
 ms.service: batch
 ms.topic: hero-article
-ms.date: 07/31/2017
-ms.author: tamram
+ms.date: 09/14/2017
+ms.author: danlep
+ms.openlocfilehash: 08658bbebfc9f457a3f057178f6b002a88338f1e
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4d22f92cafdbceee5213361d6d2b2f38904d12c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/20/2017
 ---
-
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch 渲染服务入门
 
-Azure Batch 渲染服务提供云规模的渲染功能，按使用付费。 Batch 渲染服务处理作业计划和队列、管理失败和重试，以及针对渲染作业自动缩放。 Batch 渲染服务支持 Autodesk Maya、3ds Max 和 Arnold，并会很快推出对其他应用程序的支持。 使用用于 Maya 2017 的 Batch 插件，可以直接从桌面轻松启动 Azure 上的渲染作业。 
+Azure Batch 渲染服务提供云规模的渲染功能，按使用付费。 Batch 渲染服务处理作业计划和队列、管理失败和重试，以及针对渲染作业自动缩放。 Batch 渲染服务支持 [Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview) 和 [V-Ray](https://www.chaosgroup.com/vray/maya)。 使用用于 Maya 2017 的 Batch 插件，可以直接从桌面轻松启动 Azure 上的渲染作业。
+
+有了 Maya 和 3ds Max，即可使用 [BatchLabs](https://github.com/Azure/BatchLabs) 桌面应用程序或 [Batch 模板 CLI](batch-cli-templates.md) 运行作业。 使用 Azure Batch CLI，可在不编写代码的情况下运行 Batch 作业。 可以改用模板文件来创建 Batch 池、作业和任务。 有关详细信息，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
+
 
 ## <a name="supported-applications"></a>支持的应用程序
 
@@ -26,22 +27,24 @@ Batch 渲染服务目前支持以下应用程序：
 
 - Autodesk Maya
 - Autodesk 3ds Max
-- Autodesk Arnold
+- Autodesk Arnold for Maya
+- Autodesk Arnold for 3ds Max
+- Chaos Group V-Ray for Maya
+- Chaos Group V-Ray for 3ds Max
 
 ## <a name="prerequisites"></a>先决条件
 
 若要使用 Batch 渲染服务，你需要：
 
-- 一个 [Azure 帐户](https://azure.microsoft.com/free/)。 
+- 一个 [Azure 帐户](https://azure.microsoft.com/free/)。
 - 一个 Azure Batch 帐户。 有关在 Azure 门户中创建 Batch 帐户的指南，请参阅[使用 Azure 门户创建 Batch 帐户](batch-account-create-portal.md)。
 - 一个 Azure 存储帐户。 用于渲染作业的资产存储在 Azure 存储中。 可以在设置 Batch 帐户时自动创建存储帐户。 也可以使用现有的存储帐户。 若要详细了解存储帐户，请参阅[如何在 Azure 门户中创建、管理或删除存储帐户](https://docs.microsoft.com/azure/storage/storage-create-storage-account)。
+- BatchLabs（可选）。 [BatchLabs](https://azure.github.io/BatchLabs) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 虽然不是使用渲染服务所必需的，但它是一个有用的选项，可以开发和调试 Batch 解决方案。
 
 若要使用用于 Maya 的 Batch 插件，你需要：
 
-- Maya 2017
-- 用于 Maya 的 Arnold
-
-也可使用 [Azure 门户](https://portal.azure.com)创建预配置了 Maya、3ds Max 和 Arnold 的虚拟机的池。 可以使用门户来监视作业和诊断失败的任务，只需下载应用程序日志以及使用 RDP 或 SSH 以远程方式连接到各个 VM 即可。
+- [Autodesk Maya 2017](https://www.autodesk.com/products/maya/overview)。
+- 支持的渲染器，例如 Arnold for Maya 或 V-Ray for Maya。
 
 ## <a name="basic-batch-concepts"></a>基本 Batch 概念
 
@@ -57,13 +60,68 @@ Batch 是一项平台服务，用于在计算节点池中运行计算密集型�
 
 Batch 作业是在池中计算节点上运行的任务的集合。 当你提交渲染作业时，Batch 会将该作业分成多个任务，然后将这些任务分发到池中的计算节点上运行。
 
+可以使用 [Azure 门户](https://ms.portal.azure.com/)来监视作业和诊断失败的任务，只需下载应用程序日志以及使用 RDP 或 SSH 以远程方式连接到各个 VM 即可。 也可使用 [BatchLabs 工具](https://azure.github.io/BatchLabs)进行管理、监视和调试。
+
 有关 Batch 作业的详细信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)中的[作业](batch-api-basics.md#job)部分。
+
+## <a name="options-for-provisioning-required-applications"></a>用于预配所需应用程序的选项
+
+可能需要使用多个应用程序来渲染一个作业，例如，根据需要组合使用 Maya 和 Arnold 或者 3ds Max 和 V-Ray，以及其他第三方插件。 另外，某些客户可能需要这些应用程序的特定版本。 因此，可以使用多种方法来预配所需的应用程序和软件：
+
+### <a name="pre-configured-vm-images"></a>预配置的 VM 映像
+
+Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 Maya、3ds Max、Arnold 和 V-Ray，可以马上使用。 创建池时，可以在 [Azure 门户](https://portal.azure.com)、Maya 插件或 [BatchLabs](https://azure.github.io/BatchLabs) 中选择这些映像。
+
+可以在 Azure 门户和 BatchLabs 中安装某个已预装了应用程序的 VM 映像，如下所示：在 Batch 帐户的“池”部分选择“新建”，然后在“添加池”中从“映像类型”下拉列表选择“图形和渲染(Linux/Windows)”：
+
+![选择 Batch 帐户的映像类型](./media/batch-rendering-service/add-pool.png)
+
+向下滚动，单击“图形和渲染许可”打开“选择许可证”边栏选项卡，然后选择一个或多个软件许可证：
+
+![为池选择图形和渲染许可证](./media/batch-rendering-service/graphics-licensing.png)
+
+提供的特定许可证版本如下所示：
+
+- Maya 2017
+- 3ds Max 2018
+- Arnold for Maya 5.0.1.1
+- Arnold for 3ds Max 1.0.836
+- V-Ray for Maya 3.52.03
+- V-Ray for 3ds Max 3.60.01
+
+### <a name="custom-images"></a>自定义映像
+
+可以使用 Azure Batch 提供自己的自定义映像。 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅 [Use a custom image to create a pool of virtual machines](https://docs.microsoft.com/en-us/azure/batch/batch-custom-images)（使用自定义映像创建虚拟机池）。 请注意，Autodesk 和 Chaos Group 已分别对 Arnold 和 V-Ray 进行了修改，允许向我们自己的许可服务进行验证。 需确保所拥有的这些应用程序的版本提供此支持，否则，按使用付费许可将不起作用。 此许可证验证对于 Maya 或 3ds Max 来说不是必需的，因为当前的已发布版本在无外设（批处理/命令行模式）运行时不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
+
+## <a name="options-for-submitting-a-render-job"></a>用于提交渲染作业的选项
+
+可以通过多个选项向服务提交渲染作业，具体取决于所使用的 3D 应用程序：
+
+### <a name="maya"></a>Maya
+
+可以通过 Maya 来使用：
+
+- [用于 Maya 的 Batch 插件](https://docs.microsoft.com/en-us/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
+- [BatchLabs](https://azure.github.io/BatchLabs) 桌面应用程序
+- [Batch 模板 CLI](batch-cli-templates.md)
+
+### <a name="3ds-max"></a>3ds Max
+
+有了 3ds Max，即可使用：
+
+- [BatchLabs](https://azure.github.io/BatchLabs) 桌面应用程序（请参阅 [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax)，了解如何使用 3ds Max BatchLabs 模板）
+- [Batch 模板 CLI](batch-cli-templates.md)
+
+有了 3ds Max Batch 实验室模板，即可使用 Azure Batch 渲染服务来渲染 VRay 和 Arnold 场景。 适用于 VRay 和 Arnold 的模板有两个变体，一个用于标准场景，另一个用于较复杂的场景，需要资产和纹理的 3ds Max 路径文件（.mxp 文件）。 有关 3ds Max Batch 实验室模板的详细信息，请参阅 GitHub 上的 [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) 存储库。
+
+另外，可以使用 [Batch Python SDK](https://docs.microsoft.com/en-us/azure/batch/batch-python-tutorial) 将渲染服务与现有管道集成。
+
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>使用用于 Maya 的 Batch 插件提交渲染作业
 
 使用用于 Maya 的 Batch 插件时，可以直接从 Maya 将作业提交到 Batch 渲染服务。 下述各部分介绍如何从插件配置作业，然后进行提交。 
 
-### <a name="load-the-batch-plug-in-in-maya"></a>在 Maya 中加载 Batch 插件
+### <a name="load-the-batch-plug-in-for-maya"></a>加载用于 Maya 的 Batch 插件
 
 [GitHub](https://github.com/Azure/azure-batch-maya/releases) 上提供 Batch 插件。 将存档解压缩到所选目录： 可以直接从 azure_batch_maya 目录加载插件。
 
@@ -105,7 +163,7 @@ Batch 作业是在池中计算节点上运行的任务的集合。 当你提交�
 
 #### <a name="specify-a-new-or-existing-pool"></a>指定新池或现有池
 
-若要指定可在其中运行渲染作业的池，请选择“提交”选项卡。 该选项卡提供用于创建池或选择现有池的选项：
+若要指定可在其中运行渲染作业的池，请选择“提交”选项卡。该选项卡提供用于创建池或选择现有池的选项：
 
 - 可以“自动为此作业预配池”（默认选项）。 选择此选项时，Batch 会创建专用于当前作业的池，在渲染作业完成后再自动删除该池。 如果需要完成单个渲染作业，则此选项最适合。
 - 可以“重用现有的永久池”。 如果有空闲的现有池，则可指定该池来运行渲染作业，只需从下拉列表中将其选中即可。 重用现有的永久池可以节省预配该池所需的时间。  
@@ -117,7 +175,7 @@ Batch 作业是在池中计算节点上运行的任务的集合。 当你提交�
 
 #### <a name="specify-the-os-image-to-provision"></a>指定用于预配的 OS 映像
 
-可以在“Env”（环境）选项卡上指定用于预配池中计算节点的 OS 映像的类型。 Batch 目前支持下述用于渲染作业的映像选项：
+可以在“Env”（环境）选项卡上指定用于预配池中计算节点的 OS 映像的类型。Batch 目前支持下述用于渲染作业的映像选项：
 
 |操作系统  |映像  |
 |---------|---------|
@@ -126,13 +184,13 @@ Batch 作业是在池中计算节点上运行的任务的集合。 当你提交�
 
 #### <a name="choose-a-vm-size"></a>选择 VM 大小
 
-可以在“Env”选项卡上指定 VM 大小。 有关可用 VM 大小的详细信息，请参阅 [Azure 中 Linux VM 的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)和 [Azure 中 Windows VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。 
+可以在“Env”选项卡上指定 VM 大小。有关可用 VM 大小的详细信息，请参阅 [Azure 中 Linux VM 的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)和 [Azure 中 Windows VM 的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。 
 
 ![在“Env”选项卡上指定 VM OS 映像和大小](./media/batch-rendering-service/environment.png)
 
 #### <a name="specify-licensing-options"></a>指定许可选项
 
-可以在“Env”选项卡上指定想要使用的许可证。 选项包括：
+可以在“Env”选项卡上指定想要使用的许可证。选项包括：
 
 - Maya：默认启用。
 - Arnold：启用的前提是在 Maya 中检测到 Arnold 为活动的渲染引擎。
@@ -146,7 +204,7 @@ Batch 作业是在池中计算节点上运行的任务的集合。 当你提交�
 
 #### <a name="manage-persistent-pools"></a>管理永久池
 
-可以在“池”选项卡上管理现有的永久池。 从列表中选择一个池即可显示该池的当前状态。
+可以在“池”选项卡上管理现有的永久池。从列表中选择一个池即可显示该池的当前状态。
 
 在“池”选项卡上，还可以删除池以及重设池中的 VM 数。 可以在不同工作负荷之间将池大小重设为 0 个节点，避免产生额外的费用。
 
@@ -158,7 +216,7 @@ Batch 作业是在池中计算节点上运行的任务的集合。 当你提交�
 
 #### <a name="specify-scene-parameters"></a>指定场景参数
 
-Batch 插件会检测当前正在 Maya 中使用的渲染引擎，并在“提交”选项卡上显示相应的渲染设置。 这些设置包括开始帧、结束帧、输出前缀和帧步骤。 可以在插件中指定不同的设置，以便替代场景文件渲染设置。 对插件设置所做的更改无法持久回退成场景文件渲染设置，因此，可以按作业逐个进行更改，这样就不需要重新上传场景文件。
+Batch 插件会检测当前正在 Maya 中使用的渲染引擎，并在“提交”选项卡上显示相应的渲染设置。这些设置包括开始帧、结束帧、输出前缀和帧步骤。 可以在插件中指定不同的设置，以便替代场景文件渲染设置。 对插件设置所做的更改无法持久回退成场景文件渲染设置，因此，可以按作业逐个进行更改，这样就不需要重新上传场景文件。
 
 如果在 Maya 中选择的渲染引擎不受支持，插件会发出警告。
 
@@ -166,7 +224,7 @@ Batch 插件会检测当前正在 Maya 中使用的渲染引擎，并在“提�
 
 #### <a name="resolve-asset-paths"></a>解析资产路径
 
-加载插件时，插件会扫描场景文件，看其中是否有任何外部文件引用。 这些引用显示在“资产”选项卡中。 如果引用的路径无法解析，插件会尝试在多个默认位置查找该文件，其中包括：
+加载插件时，插件会扫描场景文件，看其中是否有任何外部文件引用。 这些引用显示在“资产”选项卡中。如果引用的路径无法解析，插件会尝试在多个默认位置查找该文件，其中包括：
 
 - 场景文件的位置 
 - 当前项目的 sourceimages 目录
@@ -186,9 +244,9 @@ Batch 插件会检测当前正在 Maya 中使用的渲染引擎，并在“提�
 
 #### <a name="upload-assets-to-an-asset-project"></a>将资产上传到资产项目
 
-提交渲染作业时，在“资产”选项卡中显示的已引用文件会自动作为资产项目上传到 Azure 存储。 也可使用“资产”选项卡上的“上传”按钮，在独立于渲染作业的情况下上传资产文件。 资产项目在“项目”字段中指定名称，默认情况下是根据当前的 Maya 项目命名的。 上传资产文件时，会保留本地文件结构。 
+提交渲染作业时，在“资产”选项卡中显示的已引用文件会自动作为资产项目上传到 Azure 存储。 也可使用“资产”选项卡上的“上传”按钮，在独立于渲染作业的情况下上传资产文件。资产项目在“项目”字段中指定名称，默认情况下是根据当前的 Maya 项目命名的。 上传资产文件时，会保留本地文件结构。 
 
-上传以后，资产可供任意数目的渲染作业引用。 所有上传的资产均可供引用资产项目的任何作业使用，不管这些资产是否包括在场景中。 若要更改下一作业所引用的资产项目，请更改“资产”选项卡的“项目”字段中的名称。 如果不想上传某些引用的文件，请使用列表旁边的绿色按钮将其取消选中。
+上传以后，资产可供任意数目的渲染作业引用。 所有上传的资产均可供引用资产项目的任何作业使用，不管这些资产是否包括在场景中。 若要更改下一作业所引用的资产项目，请更改“资产”选项卡的“项目”字段中的名称。如果不想上传某些引用的文件，请使用列表旁边的绿色按钮将其取消选中。
 
 #### <a name="submit-and-monitor-the-render-job"></a>提交和监视渲染作业
 

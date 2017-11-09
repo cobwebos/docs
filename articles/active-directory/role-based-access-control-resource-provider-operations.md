@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager 提供程序操作 | Microsoft Docs"
-description: "可对 Microsoft Azure Resource Manager 资源提供程序使用的操作的详细信息"
+title: "Azure 资源管理器提供程序操作 | Microsoft Docs"
+description: "可对 Microsoft Azure 资源管理器资源提供程序使用的操作的详细信息"
 services: active-directory
 documentationcenter: 
 author: jboeshart
@@ -12,16 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
-# <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager 资源提供程序操作
+# <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
-本文档列出可对每个 Microsoft Azure Resource Manager 资源提供程序使用的操作。 可在自定义角色中使用这些操作，针对 Azure 中的资源提供基于角色的访问控制 (RBAC) 的精细权限。 请注意，此列表并不详尽，随着每个提供程序的更新，可能会添加或删除操作。 操作字符串遵循格式 `Microsoft.<ProviderName>/<ChildResourceType>/<action>`。 如需最新的详尽列表，请使用 `Get-AzureRmProviderOperation`（在 PowerShell 中）或 `azure provider operations show`（在 Azure CLI 中）列出 Azure 资源提供程序的操作。
+本文档列出可对每个 Microsoft Azure 资源管理器资源提供程序使用的操作。 可在自定义角色中使用这些操作，针对 Azure 中的资源提供基于角色的访问控制 (RBAC) 的精细权限。 请注意，此列表并不详尽，随着每个提供程序的更新，可能会添加或删除操作。 操作字符串遵循格式 `Microsoft.<ProviderName>/<ChildResourceType>/<action>`。 如需最新的详尽列表，请使用 `Get-AzureRmProviderOperation`（在 PowerShell 中）或 `azure provider operations show`（在 Azure CLI 中）列出 Azure 资源提供程序的操作。
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
@@ -168,31 +167,6 @@ ms.lasthandoff: 05/18/2017
 |/service/reports/byTime/read|获取按时间段聚合的报告|
 |/service/reports/byApi/read|获取按 API 聚合的报告|
 |/service/reports/byProduct/read|获取按产品聚合的报告。|
-
-## <a name="microsoftappservice"></a>Microsoft.AppService
-
-| 操作 | 说明 |
-|---|---|
-|/appidentities/Read|返回已注册到网关的资源（网站）。|
-|/appidentities/Write|创建新的应用标识。|
-|/appidentities/Delete|删除现有的应用标识。|
-|/deploymenttemplates/listMetadata/Action|列出与 API 应用包关联的 UI 元数据。|
-|/deploymenttemplates/generate/Action|返回用于预配 API 应用实例的部署模板。|
-|/gateways/Read|返回网关实例。|
-|/gateways/Write|创建新网关，或更新现有的网关。|
-|/gateways/Delete|删除现有的网关实例。|
-|/gateways/listLoginUris/Action|填充令牌存储并返回 OAuth 登录 URI。|
-|/gateways/listKeys/Action|返回网关机密。|
-|/gateways/tokens/Write|创建使用给定名称的新 Zumo 令牌。|
-|/gateways/registrations/Read|返回已注册到网关的资源（网站）。|
-|/gateways/registrations/Write|将资源（网站）注册到网关。|
-|/gateways/registrations/Delete|从网关中取消注册资源（网站）。|
-|/apiapps/Read|返回 API 应用实例。|
-|/apiapps/Write|创建新的 API 应用，或更新现有的 API 应用。|
-|/apiapps/Delete|删除现有的 API 应用实例。|
-|/apiapps/listStatus/Action|返回 API 应用状态。|
-|/apiapps/listKeys/Action|返回 API 应用机密。|
-|/apiapps/apidefinitions/Read|返回 API 应用的 API 定义。|
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -810,7 +784,7 @@ ms.lasthandoff: 05/18/2017
 |/labs/ListVhds/action|列出可用于创建自定义映像的磁盘映像。|
 |/labs/GenerateUploadUri/action|生成用于将自定义磁盘映像上传到实验室的 URI。|
 |/labs/CreateEnvironment/action|在实验室中创建虚拟机。|
-|/labs/ClaimAnyVm/action|在实验室中声明随机可声明的虚拟机。|
+|/labs/ClaimAnyVm/action|在实验室中认领随机可认领虚拟机。|
 |/labs/ExportResourceUsage/action|将实验室资源使用情况导出到存储帐户|
 |/labs/users/delete|删除用户配置文件。|
 |/labs/users/read|读取用户配置文件。|
@@ -1104,9 +1078,9 @@ ms.lasthandoff: 05/18/2017
 
 | 操作 | 说明 |
 |---|---|
-|/agreements/offers/plans/read|返回给定 Marketplace 项的协议|
-|/agreements/offers/plans/sign/action|为给定 Marketplace 项的协议签名|
-|/agreements/offers/plans/cancel/action|取消给定 Marketplace 项的协议|
+|/agreements/offers/plans/read|返回给定应用商店项的协议|
+|/agreements/offers/plans/sign/action|为给定应用商店项的协议签名|
+|/agreements/offers/plans/cancel/action|取消给定应用商店项的协议|
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -1316,7 +1290,7 @@ ms.lasthandoff: 05/18/2017
 | 操作 | 说明 |
 |---|---|
 |/register/action|将订阅注册到资源提供程序。|
-|/linkTargets/read|列出不与 Azure 订阅关联的现有帐户。 若要将此 Azure 订阅链接到工作区，请使用此操作在“创建工作区”操作的客户 ID 属性中返回的客户 ID。|
+|/linkTargets/read|列出不与 Azure 订阅关联的现有帐户。 要将此 Azure 订阅链接到工作区，请使用此操作在“创建工作区”操作的客户 ID 属性中返回的客户 ID。|
 |/workspaces/write|创建新的工作区，或者通过提供现有工作区中的客户 ID 链接到现有工作区。|
 |/workspaces/read|获取现有工作区|
 |/workspaces/delete|删除工作区。 如果该工作区在创建时已链接到现有工作区，则不会删除它链接到的工作区。|
@@ -2224,4 +2198,3 @@ ms.lasthandoff: 05/18/2017
 - 查看[内置的 RBAC 角色](role-based-access-built-in-roles.md)。
 
 - 了解如何[按用户](role-based-access-control-manage-assignments.md)或[按资源](role-based-access-control-configure.md)管理访问权限分配 
-

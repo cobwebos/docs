@@ -20,6 +20,7 @@
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [按状态对任务计数](batch-get-task-counts.md)
 ### [使用自定义映像创建池](batch-custom-images.md)
+### [在虚拟网络中创建池](batch-virtual-network.md)
 ### [高效列表查询](batch-efficient-list-queries.md)
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
 ### [Linux 计算节点](batch-linux-nodes.md)
@@ -42,11 +43,11 @@
 #### [运行作业和任务](./scripts/batch-cli-sample-run-job.md)
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
-## [PowerShell](/powershell/module/azurerm.batch)
+## [Azure PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
-## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
+## [Node.js](/nodejs/api/overview/azure/batch)
 ## [Python SDK](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html)
 ## [REST](/rest/api/batchservice)
 ## [批处理诊断日志](batch-diagnostics.md)
@@ -62,9 +63,10 @@
 ## [Azure Batch 计算节点环境变量](batch-compute-node-environment-variables.md)
 
 # 相关内容
+## [Batch AI](../batch-ai/overview.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
-## [使用批处理和数据工厂进行数据处理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Azure 中的 Batch、HPC 和大型计算解决方案](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
+## [使用批处理和数据工厂进行数据处理](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
+## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

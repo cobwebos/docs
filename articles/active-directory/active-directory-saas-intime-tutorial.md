@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: 4bb22c92ad7f6963be6ca15073f7f01da99ba2bb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>教程：Azure Active Directory 与 InTime 的集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 08/10/2017
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 InTime 测试用户](#create-a-intime-test-user) - 在 InTime 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -113,7 +112,7 @@ ms.lasthandoff: 08/10/2017
 
     b. 在“标识符”文本框中，键入 URL：`https://auth.intimesoft.com/auth/realms/master`
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![证书下载链接](./media/active-directory-saas-intime-tutorial/tutorial_intime_certificate.png) 
 
@@ -227,5 +226,4 @@ ms.lasthandoff: 08/10/2017
 [201]: ./media/active-directory-saas-intime-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-intime-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-intime-tutorial/tutorial_general_203.png
-
 

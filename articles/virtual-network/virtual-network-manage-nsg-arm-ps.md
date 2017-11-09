@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: edb23ae41e175061607d3a191c839e1194fa862b
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>使用 PowerShell 管理网络安全组
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 02/28/2017
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 ## <a name="retrieve-information"></a>检索信息
-可以查看你的现有 NSG、检索现有 NSG 的规则和查找与 NSG 关联的资源。
+可以查看现有 NSG、检索现有 NSG 的规则和查找与 NSG 关联的资源。
 
 ### <a name="view-existing-nsgs"></a>查看现有 NSG
 若要查看订阅中所有现有的 NSG，请运行 `Get-AzureRmNetworkSecurityGroup` cmdlet。
@@ -244,7 +243,7 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                ]
 
 ### <a name="change-a-rule"></a>更改规则
-若要将上面创建的规则更改为仅允许来自 **Internet** 的入站流量，请按照以下步骤进行操作。
+要将上面创建的规则更改为仅允许来自 **Internet** 的入站流量，请按照以下步骤进行操作。
 
 1. 运行以下命令来检索现有 NSG 并将其存储在变量中：
 
@@ -515,5 +514,4 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
 
 ## <a name="next-steps"></a>后续步骤
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
+ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 242b6e5f2f1a67f78f5dba4a5b5beb68abdd6111
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>使用 AzCopy on Windows 传输数据
 AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令将数据复制到 Microsoft Azure Blob、文件和表存储以及从这些位置复制数据。 可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。
@@ -299,7 +298,7 @@ AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myf
 
 请注意，不会下载空文件夹。
 
-## <a name="upload-files-to-file-storage"></a>将文件上传到文件存储
+## <a name="upload-files-to-an-azure-file-share"></a>将文件上传到 Azure 文件共享
 
 让我们了解使用 AzCopy 上传文件的多种方式。
 
@@ -934,7 +933,7 @@ AzCopy 默认情况下使用服务器端的异步复制。 指定此选项以执
 
 **适用对象：**表
 
-## <a name="known-issues-and-best-practices"></a>已知问题和最佳做法
+## <a name="known-issues-and-best-practices"></a>已知问题和最佳实践
 
 让我们了解一些已知问题和最佳做法。
 

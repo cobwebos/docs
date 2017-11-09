@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
 ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>非对称路由与多个网络路径
 本文说明当网络源与目标之间有多个路径时，正向和返回网络流量如何选择不同的路由。
@@ -41,7 +40,7 @@ ms.lasthandoff: 07/06/2017
 ## <a name="stateful-devices"></a>有状态设备
 为了路由，路由器将查看数据包的 IP 标头。 某些设备看起来在数据包的更深处。 这些设备通常会查看第 4 层（传输控制协议 (TCP) 或用户数据报协议 (UDP)），甚至第 7 层（应用程序层）标头。 这几种设备要么是安全设备，要么是带宽优化设备。 
 
-防火墙是有状态设备的常见示例。 防火墙根据各种字段（例如协议、TCP/UDP 端口、URL 标头），允许或拒绝数据包通过其接口。 此级别的数据包检查在设备上造成沉重的处理负载。 为了改善性能，防火墙将检查流程的第一个数据包。 如果允许数据包继续传递，防火墙会将流程信息保存在其状态表中。 根据最初的决定，允许与此流程相关的所有后续数据包。 属于现有流程的数据包可以抵达防火墙。 如果防火墙没有以前的状态信息，则丢弃数据包。
+防火墙是有状态设备的常见示例。 防火墙根据各种字段（例如协议、TCP/UDP 端口、URL 标头），允许或拒绝数据包通过其接口。 此级别的数据包检查在设备上造成沉重的处理负载。 为了改善性能，防火墙会检查流程的第一个数据包。 如果允许数据包继续传递，防火墙会将流程信息保存在其状态表中。 根据最初的决定，允许与此流程相关的所有后续数据包。 属于现有流程的数据包可以抵达防火墙。 如果防火墙没有以前的状态信息，则丢弃数据包。
 
 ## <a name="asymmetric-routing-with-expressroute"></a>非对称路由与 ExpressRoute
 通过 Azure ExpressRoute 连接到 Microsoft 时，网络会发生以下变化：
@@ -53,9 +52,9 @@ ms.lasthandoff: 07/06/2017
 
 ![非对称路由与 ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting1.png)
 
-然后，打开 ExpressRoute，并通过 ExpressRoute 使用 Microsoft 所提供的服务。 Microsoft 提供的所有其他服务都通过 Internet 使用。 在连接到 ExpressRoute 的边缘服务器上部署不同的防火墙。 Microsoft 通过 ExpressRoute，针对特定服务向网络播发更明确的前缀。 路由基础结构选择 ExpressRoute 作为这些前缀的首选路径。 如果不是通过 ExpressRoute 向 Microsoft 播发公共 IP 地址，Microsoft 将通过 Internet 来与公共 IP 地址通信。 从网络到 Microsoft 的正向流量使用 ExpressRoute，来自 Microsoft 的反向流量使用 Internet。 当边缘服务器上的防火墙看到了在状态表中找不到的流程的响应数据包时，将丢弃返回流量。
+然后启用 ExpressRoute 并使用 Microsoft 通过 ExpressRoute 提供的服务。 Microsoft 提供的所有其他服务都通过 Internet 使用。 在连接到 ExpressRoute 的边缘服务器上部署不同的防火墙。 Microsoft 通过 ExpressRoute，针对特定服务向网络播发更明确的前缀。 路由基础结构选择 ExpressRoute 作为这些前缀的首选路径。 如果不是通过 ExpressRoute 向 Microsoft 播发公共 IP 地址，Microsoft 将通过 Internet 来与公共 IP 地址通信。 从网络到 Microsoft 的正向流量使用 ExpressRoute，来自 Microsoft 的反向流量使用 Internet。 当边缘服务器上的防火墙看到了在状态表中找不到的流程的响应数据包时，将丢弃返回流量。
 
-如果选择将同一网络地址转译 (NAT) 池用于 ExpressRoute 和 Internet，将会发现网络中专用 IP 地址上的客户端有类似的问题。 Windows Update 等服务的请求通过 Internet 传递，因为这些服务的 IP 地址不通过 ExpressRoute 播发。 但是，返回流量通过 ExpressRoute 返回。 如果 Microsoft 从 Internet 和 ExpressRoute 收到具有相同子网掩码的 IP 地址，则首选基于 Internet 的 ExpressRoute。 如果在网络边缘上面向 ExpressRoute 的防火墙或其他有状态设备没有任何有关流程的先前信息，将丢弃属于该流程的数据包。
+如果选择将同一网络地址转译 (NAT) 池用于 ExpressRoute 和 Internet，会发现网络中专用 IP 地址上的客户端有类似的问题。 Windows Update 等服务的请求通过 Internet 传递，因为这些服务的 IP 地址不通过 ExpressRoute 播发。 但是，返回流量通过 ExpressRoute 返回。 如果 Microsoft 从 Internet 和 ExpressRoute 收到具有相同子网掩码的 IP 地址，则首选基于 Internet 的 ExpressRoute。 如果在网络边缘上面向 ExpressRoute 的防火墙或其他有状态设备没有任何有关流程的先前信息，将丢弃属于该流程的数据包。
 
 ## <a name="asymmetric-routing-solutions"></a>非对称路由解决方案
 有两个主要选项可以解决非对称路由问题。 一个是通过路由，另一个是使用基于源的 NAT (SNAT)。
@@ -72,5 +71,4 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="asymmetric-routing-detection"></a>非对称路由检测
 跟踪路由是确保网络流量遍历预期路径的最佳方式。 如果预期从本地 SMTP 服务器到 Microsoft 的流量采用 Internet 路径，则预期跟踪路由是从 SMTP 服务器到 Office 365。 结果证明，流量确实离开了网络前往 Internet，而不是前往 ExpressRoute。
-
 

@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | 
 description: "为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和使用情况分析。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: d94abbd24aee5217cc460e0c48df177aaff80920
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 1960fa0e17ea9aa0ca15bc3ecb8ce5b1f6630a60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -149,7 +148,7 @@ ms.lasthandoff: 08/02/2017
 
 ### <a name="analysis"></a>分析
 
-* [在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)<br/>包含有关使用遥测数据进行调试、诊断搜索和钻取代码的信息。
+* **[在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)**<br/>包含有关使用遥测数据进行调试、诊断搜索和钻取代码的信息。
 * **[使用 Application Insights 门户](app-insights-dashboards.md)**<br/> 包含有关仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测数据导出功能的信息。
 * **[分析](app-insights-analytics-tour.md)** - 功能强大的查询语言。
 
@@ -162,4 +161,3 @@ ms.lasthandoff: 08/02/2017
 ### <a name="automation"></a>自动化
 
 * [自动创建 Application Insights 资源](app-insights-powershell.md)
-

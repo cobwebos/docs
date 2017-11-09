@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: saurabh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>使用 Application Insights 排查云服务问题
 你可以使用 [Azure SDK 2.8](https://azure.microsoft.com/downloads/) 和 Azure 诊断扩展模块 1.5，将云服务的 Azure 诊断数据直接发送到 Application Insights。 可以将由 Azure 诊断收集的日志（&mdash;包括应用程序日志、Windows 事件日志、ETW 日志和性能计数器&mdash;）发送到 Application Insights。 然后，你可以在 Application Insights 门户 UI 中可视化此信息。 接着，你可以使用 Application Insights SDK 深入分析来自应用程序和系统的指标与日志，以及来自 Azure 诊断的基础结构级别的数据。
@@ -47,7 +46,7 @@ ms.lasthandoff: 06/02/2017
 
 4) 要将 Azure 诊断配置为向 Application Insights 发送 Azure 诊断代理收集的所有性能计数器和错误级别日志，请启用“将诊断数据发送到 Application Insights”选项。 
 
-    如果想进一步配置要将哪些数据发送到 Application Insights，则必须手动编辑每个角色的 diagnostics.wadcfgx 文件。 若要了解有关手动更新配置的详细信息，请参阅[配置 Azure 诊断以将数据发送到 Application Insights](#configure-azure-diagnostics-to-send-data-to-application-insights)。
+    如果想进一步配置要将哪些数据发送到 Application Insights，则必须手动编辑每个角色的 diagnostics.wadcfgx 文件。 要了解有关手动更新配置的详细信息，请参阅[配置 Azure 诊断以将数据发送到 Application Insights](#configure-azure-diagnostics-to-send-data-to-application-insights)。
 
 将云服务配置为向 Application Insights 发送 Azure 诊断数据后，可按常规操作将云服务部署到 Azure，并确保 Azure 诊断扩展已启用。 有关详细信息，请参阅[使用 Visual Studio 发布云服务](../vs-azure-tools-publishing-a-cloud-service.md)。  
 
@@ -80,4 +79,3 @@ Azure 诊断日志类型以下列方式映射到 Application Insights 概念：
 [4]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/role-designer-appinsights-serviceconfig.png
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
-

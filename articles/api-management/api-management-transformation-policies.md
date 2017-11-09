@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -234,7 +233,7 @@ ms.lasthandoff: 07/06/2017
   
 应用 [<choose\>](api-management-advanced-policies.md#choose) 策略语句时，后端服务基 URL 可能会再次更改为 `http://contoso.com/api/8.2` 或 `http://contoso.com/api/9.1`，具体取决于版本请求查询参数的值。 例如，如果值为 `"2013-15"`，最终请求 URL 将变为 `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`。  
   
-如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，若要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
+如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
   
 ### <a name="example"></a>示例  
   
@@ -278,11 +277,11 @@ ms.lasthandoff: 07/06/2017
  使用 `set-body` 策略设置传入和传出请求的消息正文。 可以使用 `context.Request.Body` 属性或 `context.Response.Body` 访问消息正文，具体取决于策略是在入站节中还是在出站节中。  
   
 > [!IMPORTANT]
->  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 若要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。  
+>  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。  
 >   
 >  在使用 `set-body` 策略时，请注意以下事项。  
 >   
->  -   若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为你是在显式提供全新的正文内容。  
+>  -   要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，你是在显式提供全新的正文内容。  
 > -   将响应的内容保留在入站管道中并不合理，因为尚无响应。  
 > -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。  
 > -   如果在没有消息正文的情况下使用此策略（例如在入站 GET 中使用），则会引发异常。  
@@ -705,4 +704,3 @@ OriginalUrl.
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
-

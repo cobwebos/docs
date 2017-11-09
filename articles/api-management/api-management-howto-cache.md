@@ -3,7 +3,7 @@ title: "添加缓存以提高 Azure API 管理中的性能 | Microsoft Docs"
 description: "了解如何改善滞后时间、带宽消耗和 API 管理服务调用的 web 服务负载。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: d4ba7c276b0ad8539cfbad9b9a6afe193af3a0b8
-
-
+ms.openlocfilehash: e85979859cca40b852e1f39ccaedf6e2781f84a1
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。
 
-本指南将介绍如何为 API 添加响应缓存，以及为示例 Echo API 操作配置策略。 然后，你可以从开发人员门户调用操作以验证缓存起作用。
+本指南介绍如何为 API 添加响应缓存，以及为示例 Echo API 操作配置策略。 然后，可以从开发人员门户调用操作以验证缓存起作用。
 
 > [!NOTE]
 > 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
@@ -34,22 +34,22 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 执行本指南中的步骤之前，API 管理服务实例必须已配置 API 和产品。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 
 ## <a name="configure-caching"> </a>为缓存配置操作
-在此步骤中，你将查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
+在此步骤中，将查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
 
 > [!NOTE]
 > 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 有关详细信息，请参阅 [Azure API 管理入门][Get started with Azure API Management]。
 > 
 > 
 
-若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。
+若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
 
 ![发布者门户][api-management-management-console]
 
-在左侧“API 管理”菜单中，单击“API”，然后单击“Echo API”。
+在左侧“API 管理”菜单中，单击“API”，并单击“Echo API”。
 
 ![Echo API][api-management-echo-api]
 
-单击“操作”选项卡，然后在“操作”列表中单击“GET 资源(已缓存)”操作。
+单击“操作”选项卡，并在“操作”列表中单击“GET 资源(已缓存)”操作。
 
 ![Echo API 操作][api-management-echo-api-operations]
 
@@ -59,22 +59,22 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 要为操作启用缓存，请选中“ **启用** ”复选框。 在此示例中，已启用缓存。
 
-每个操作的响应基于根据“查询字符串参数变化”和“标头变化”字段中的值进行键控。 如果您要缓存基于查询字符串参数或标头的多个响应，可以在这两个字段中对它们进行配置。
+每个操作的响应基于根据“查询字符串参数变化”和“标头变化”字段中的值进行键控。 如果要缓存基于查询字符串参数或标头的多个响应，可以在这两个字段中对它们进行配置。
 
 **持续时间** 指定缓存响应的过期时间间隔。 在此示例中，时间间隔是 **3600** 秒，相当于一小时。
 
 在此示例中使用缓存配置，对“ **GET 资源（缓存）** ”操作的第一个请求将从后端服务返回一个响应。 将缓存此响应，由指定的标头和查询字符串参数进行键控。 采用匹配的参数，对操作的后续调用会返回缓存的响应，直到缓存时间间隔过期。
 
 ## <a name="caching-policies"> </a>查看缓存策略
-在此步骤中，你会查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
+在此步骤中，会查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
 
 在“ **缓存** ”选项卡上为操作配置缓存设置时，为操作添加缓存策略。 可以在策略编辑器中查看并编辑这些策略。
 
-在左侧“API 管理”菜单中单击“策略”，然后从“操作”下拉列表中选择“Echo API/GET 资源(已缓存)”。
+在左侧“API 管理”菜单中单击“策略”，并从“操作”下拉列表中选择“Echo API/GET 资源(已缓存)”。
 
 ![策略范围操作][api-management-operation-dropdown]
 
-这将在策略编辑器中显示此操作的策略。
+这会在策略编辑器中显示此操作的策略。
 
 ![API 管理策略编辑器][api-management-policy-editor]
 
@@ -107,15 +107,15 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 ![开发人员门户][api-management-developer-portal-menu]
 
-单击顶部菜单中的“API”，然后选择“Echo API”。
+单击顶部菜单中的“API”，并选择“Echo API”。
 
 ![Echo API][api-management-apis-echo-api]
 
-> 如果必须只有一个 API 得到配置或对您的帐户可见，然后单击 API 使您直接进入该 API 的操作。
+> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
 > 
 > 
 
-选择“GET 资源(已缓存)”操作，然后单击“打开控制台”。
+选择“GET 资源(已缓存)”操作，并单击“打开控制台”。
 
 ![打开控制台][api-management-open-console]
 
@@ -125,13 +125,13 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 保留 param1 和 param2 的默认值。
 
-从“ **订阅密钥** ”下拉列表中选择所需的密钥。 如果你的帐户只有一个订阅，则已处于选中状态。
+从“ **订阅密钥** ”下拉列表中选择所需的密钥。 如果帐户只有一个订阅，则已处于选中状态。
 
 在“请求标头”文本框中输入“sampleheader:value1”。
 
 单击“ **HTTP Get** ”并记下响应标头。
 
-在“请求标头”文本框中输入“sampleheader:value2”，然后单击“HTTP Get”。
+在“请求标头”文本框中输入“sampleheader:value2”，并单击“HTTP Get”。
 
 请注意，sampleheader 的值仍是响应中的 value1。 尝试一些不同的值，请注意返回来自第一次调用的缓存响应。
 
@@ -171,9 +171,3 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 [Review the caching policies]: #caching-policies
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

@@ -25,7 +25,7 @@
             }
         }
    
-    这样你就可以通过推送处理程序服务流程访问移动客户端实例。
+    这样便可以通过推送处理程序服务流程访问移动客户端实例。
 4. 创建 **MobileServiceClient** 后，将以下代码添加到 **OnCreate** 方法：
    
        // Set the current instance of TodoActivity.

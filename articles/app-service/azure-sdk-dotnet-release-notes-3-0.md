@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: dea4a174aaf3727d66e9d69d32d433ff24e0d06d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK for .NET 3.0 发行说明
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 03/22/2017
 
 发布日期：2017/03/07
  
-此版本中未引入任何对 Azure SDK 3.0 的重大更改。 此外，将此 SDK 用于现有云服务项目也无需任何升级过程。 若要在无需升级过程的情况下允许使用 Azure SDK 3.0，则需将 Azure SDK 3.0 安装到与 Azure SDK 2.9 相同的目录中。 大多数组件没有更改主版本 2.9，而只是更新了内部版本号。
+此版本中未引入任何对 Azure SDK 3.0 的重大更改。 此外，将此 SDK 用于现有云服务项目也无需任何升级过程。 要在无需升级过程的情况下允许使用 Azure SDK 3.0，则需将 Azure SDK 3.0 安装到与 Azure SDK 2.9 相同的目录中。 大多数组件没有更改主版本 2.9，而只是更新了内部版本号。
 
 ## <a name="visual-studio-2017-rtw"></a>Visual Studio 2017 RTW
 
@@ -46,13 +45,12 @@ ms.lasthandoff: 03/22/2017
 
 ### <a name="known-issues"></a>已知问题
 
-- 删除与 Visual Studio 2015 使用并列配置的 Visual Studio 2017 时，Azure .NET SDK 3.0 引入了一个问题。  如果已为 Visual Studio 2015 安装 Azure SDK，卸载 Visual Studio 2017 时，将删除 Microsoft Azure 存储模拟器和 Microsoft Azure 计算模拟器。  在 Visual Studio 2015 中创建和调试新的云服务项目时，这将生成错误。 若要解决此问题，请从 Web 平台安装程序重新安装 Azure SDK。  此问题将在未来的 Visual Studio 2017 更新中解决。  。
+- 删除与 Visual Studio 2015 使用并列配置的 Visual Studio 2017 时，Azure .NET SDK 3.0 引入了一个问题。  如果已为 Visual Studio 2015 安装 Azure SDK，卸载 Visual Studio 2017 时，将删除 Microsoft Azure 存储模拟器和 Microsoft Azure 计算模拟器。  在 Visual Studio 2015 中创建和调试新的云服务项目时，这会生成错误。 若要解决此问题，请从 Web 平台安装程序重新安装 Azure SDK。  此问题会在未来的 Visual Studio 2017 更新中解决。  。
 
  
 ### <a name="azure-in-role-cache"></a>Azure 角色中缓存 
 
-- 从 2016 年 11 月 30 日起，将不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
-
+- 从 2016 年 11 月 30 日起，不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
 
 
 

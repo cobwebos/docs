@@ -3,7 +3,7 @@ title: "使用 Windows VM MSI 访问 Azure 资源管理器"
 description: "本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure 资源管理器。"
 services: active-directory
 documentationcenter: 
-author: elkuzmen
+author: bryanla
 manager: mbaldwin
 editor: bryanla
 ms.service: active-directory
@@ -11,16 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 10/24/2017
 ms.author: elkuzmen
+ms.openlocfilehash: 17c2e72603715b5704fa56e18f68d531a1e44a53
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 150c8ff025fa71657aa91cdef728a893d62a5337
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>使用 Windows VM 托管服务标识 (MSI) 访问资源管理器
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -59,7 +57,7 @@ ms.lasthandoff: 09/14/2017
 2.  在左侧导航栏中，单击“配置”。 
 3.  此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4.  务必单击“保存”，以保存配置。  
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-configured.png)
+    ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果启用了 MSI，列表中会显示“ManagedIdentityExtensionforWindows”。
 
@@ -88,7 +86,7 @@ ms.lasthandoff: 09/14/2017
 4.  使用 Powershell 的 Invoke-WebRequest，向本地 MSI 终结点发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost/50342/oauth2/token -Method GET -Body @resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
@@ -97,7 +95,7 @@ ms.lasthandoff: 09/14/2017
     接下来，提取完整响应，响应以 JavaScript 对象表示法 (JSON) 格式字符串的形式存储在 $response 对象中。 
     
     ```powershell
-    $content = $repsonse.Content | ConvertFrom-Json
+    $content = $response.Content | ConvertFrom-Json
     ```
     接下来，从响应中提取访问令牌。
     
@@ -124,5 +122,4 @@ ms.lasthandoff: 09/14/2017
 - 有关 MSI 的概述，请参阅[托管服务标识概述](../active-directory/msi-overview.md)。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
-
 

@@ -13,17 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 7f1d55b90af4e5397d74a8e37b44b5a88530897d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 10cc1daf89212635243cbfe8f7b598a567d0f7c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
-API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 目前，可以针对所需值检查客户端证书的指纹。 还可以针对已上载到 API 管理的现有证书检查指纹。  
+API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 目前，可以针对所需值检查客户端证书的指纹。 还可以针对已上传到 API 管理的现有证书检查指纹。  
 
 有关使用客户端证书保护对 API 后端服务的访问（即，API 管理到后端）的信息，请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
 
@@ -69,9 +67,9 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 </choose>
 ```
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>针对已上载到 API 管理的证书检查指纹
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>针对已上传到 API 管理的证书检查指纹
 
-以下示例演示如何针对已上载到 API 管理的证书，检查客户端证书的指纹： 
+以下示例演示如何针对已上传到 API 管理的证书，检查客户端证书的指纹： 
 
 ```
 <choose>
@@ -87,6 +85,5 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 ## <a name="next-step"></a>后续步骤
 
 *  [如何使用客户端证书身份验证确保后端服务安全](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
-*  [如何上载证书](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
-
+*  [如何上传证书](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
 

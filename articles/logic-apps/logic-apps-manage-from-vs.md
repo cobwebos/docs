@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
 ms.author: LADocs; klam
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: a5bf24de1a7a2b6d4c1ae6416c95d83ef7506da3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-your-logic-apps-with-visual-studio-cloud-explorer"></a>使用 Visual Studio Cloud Explorer 管理逻辑应用
 
 尽管 [Azure 门户](https://portal.azure.com/)提供了设计和管理 Azure 逻辑应用的极佳方法，但可以使用 Visual Studio Cloud Explorer 管理包括逻辑应用在内的许多 Azure 资产。 Visual Studio Cloud Explorer 支持浏览、管理、编辑和下载已发布的逻辑应用。 管理任务包括启用、禁用和查看运行历史记录。 
@@ -92,4 +90,3 @@ ms.lasthandoff: 08/04/2017
 * [查看常见示例和方案](logic-apps-examples-and-scenarios.md)
 * [视频：使用 Azure 逻辑应用自动执行业务流程](http://channel9.msdn.com/Events/Build/2016/T694)
 * [视频：将系统与 Azure 逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)
-

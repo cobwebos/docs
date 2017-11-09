@@ -1,6 +1,6 @@
 ---
 title: "在 Operations Management Suite (OMS) 中创建管理解决方案 | Microsoft 文档"
-description: "通过提供客户可添加到其 OMS 工作区的打包管理方案，管理解决方案可扩展 Operations Management Suite (OMS) 的功能。  本文提供有关如何创建要在你自己的环境中使用或可供客户使用的管理解决方案的详细信息。"
+description: "通过提供客户可添加到其 OMS 工作区的打包管理方案，管理解决方案可扩展 Operations Management Suite (OMS) 的功能。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
 ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -54,7 +53,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 ## <a name="parameters"></a>parameters
 [parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
-用户通过 [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
+用户通过 [Azure 应用商店](operations-management-suite-solutions.md#finding-and-installing-management-solutions)或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
 用户安装解决方案[另一种方法](operations-management-suite-solutions.md#finding-and-installing-management-solutions)时，必须为所有标准参数和所有其他参数提供一个值。
 
@@ -78,10 +77,10 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 | description |参数的可选说明。  显示在参数旁边信息气球。 |
 
 ### <a name="standard-parameters"></a>标准参数
-下表列出了所有管理解决方案的标准参数。  从 Azure Marketplace 或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。
+下表列出了所有管理解决方案的标准参数。  从 Azure 应用商店或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。
 
 > [!NOTE]
-> Azure Marketplace 和快速入门模板中的用户界面正在等待表中的参数名称。  如果使用不同的参数名称，则将对用户进行提示，这些参数不会自动填充。
+> Azure 应用商店和快速入门模板中的用户界面正在等待表中的参数名称。  如果使用不同的参数名称，则将对用户进行提示，这些参数不会自动填充。
 >
 >
 
@@ -131,10 +130,10 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
     }
 
 
-请参阅解决方案的其他元素中语法为 **parameters('parameter name')** 的参数值。  例如，若要访问工作区名称，将使用 **parameters('workspaceName')**
+请参阅解决方案的其他元素中语法为 **parameters('parameter name')** 的参数值。  例如，要访问工作区名称，将使用 **parameters('workspaceName')**
 
 ## <a name="variables"></a>变量
-[Variables](../azure-resource-manager/resource-group-authoring-templates.md#variables) 是将在管理解决方案的其余部分使用的值。  这些值不公开给安装解决方案的用户。  它们旨在向作者提供一个位置，供作者在该位置中管理可在整个解决方案中使用多次的值。 应将任何特定于解决方案的值放在变量中，而不是在 **resources** 元素中对其进行硬编码。  这使代码更具可读性，并允许在更高版本中轻松地更改这些值。
+[Variables](../azure-resource-manager/resource-group-authoring-templates.md#variables) 是会在管理解决方案的其余部分使用的值。  这些值不公开给安装解决方案的用户。  它们旨在向作者提供一个位置，供作者在该位置中管理可在整个解决方案中使用多次的值。 应将任何特定于解决方案的值放在变量中，而不是在 **resources** 元素中对其进行硬编码。  这使代码更具可读性，并允许在更高版本中轻松地更改这些值。
 
 下面是具有在解决方案中使用的典型参数的 **variables** 元素示例。
 
@@ -163,14 +162,14 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 在此情况下，引用整个解决方案中语法为 **variables('variable name').property** 的变量值。  例如，若要访问 Solution Name 变量，需使用 **variables('Solution').Name**。
 
 ## <a name="resources"></a>资源
-[Resources](../azure-resource-manager/resource-group-authoring-templates.md#resources) 用于定义管理解决方案要安装和配置的不同资源。  这将是模板的最大且最复杂的部分。  可在[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md#resources)中获取资源元素的结构和完整说明。  本文档的其他文章中详述了通常需定义的其他资源。 
+[Resources](../azure-resource-manager/resource-group-authoring-templates.md#resources) 用于定义管理解决方案要安装和配置的不同资源。  这会是模板的最大且最复杂的部分。  可在[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md#resources)中获取资源元素的结构和完整说明。  本文档的其他文章中详述了通常需定义的其他资源。 
 
 
 ### <a name="dependencies"></a>依赖项
 **dependsOn** 元素指定对另一个资源的[依赖](../azure-resource-manager/resource-group-define-dependencies.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](operations-management-suite-solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](operations-management-suite-solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="oms-workspace-and-automation-account"></a>OMS 工作区和自动化帐户
-管理解决方案需要 [OMS 工作区](../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)，但作为作者，你应考虑以下几点。
+管理解决方案需要 [OMS 工作区](../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)，但作为作者，应考虑以下几点。
 
 ## <a name="solution-resource"></a>解决方案资源
 每个解决方案在 **resources** 元素中都需要资源项，用于定义解决方案本身。  该资源项的类型为 **Microsoft.OperationsManagement/solutions**，并且具有以下结构。 这包括常用于定义解决方案属性的[标准参数](#parameters)和[变量](#variables)。
@@ -245,4 +244,3 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 * [将 runbook 和其他自动化资源添加](operations-management-suite-solutions-resources-automation.md)到管理解决方案。
 * 了解[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。
-

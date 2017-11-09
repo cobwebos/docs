@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-logic-apps-features"></a>使用逻辑应用功能
 
@@ -87,7 +85,7 @@ ms.lasthandoff: 06/24/2017
 
 ## <a name="repeat-actions-over-a-list-with-foreach"></a>使用 forEach 对列表重复操作
 
-forEach 循环可指定一个重复执行操作数组。 如果不是数组，则工作流将失败。 例如，如果有一个 action1，它输出了大量邮件，而你想发送每封邮件，则可以将此 forEach 语句包括在以下操作的属性中：`forEach : "@action('action1').outputs.messages"`
+forEach 循环可指定一个重复执行操作数组。 如果不是数组，则工作流会失败。 例如，如果有一个 action1，它输出了大量邮件，而你想发送每封邮件，则可以将此 forEach 语句包括在以下操作的属性中：`forEach : "@action('action1').outputs.messages"`
 
 ## <a name="edit-the-code-definition-for-a-logic-app"></a>编辑逻辑应用的代码定义
 
@@ -122,8 +120,7 @@ forEach 循环可指定一个重复执行操作数组。 如果不是数组，�
 2. 转到 `When_a_feed-item_is_published` 操作，找到 `queries` 部分，然后将该查询值替换为：`"feedUrl": "#@{parameters('currentFeedUrl')}"` 
 
     若要联接两个或更多符串，还可以使用 `concat` 函数。 
-    例如，`"@concat('#',parameters('currentFeedUrl'))"` 
-    的工作方式与上面相同。
+    例如，`"@concat('#',parameters('currentFeedUrl'))"` 的工作方式与上面相同。
 
 3.  完成后，选择“保存”。 
 

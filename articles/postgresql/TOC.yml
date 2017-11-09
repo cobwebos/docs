@@ -53,6 +53,8 @@
           href: concepts-extensions.md
         - name: 服务器日志
           href: concepts-server-logs.md
+        - name: 高可用性
+          href: concepts-high-availability.md
     - name: 资源
       items:
         - name: 定价层
@@ -67,6 +69,8 @@
           href: concepts-firewall-rules.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
+    - name: 监视
+      href: concepts-monitoring.md
     - name: 开发
       items:
         - name: 连接库
@@ -91,14 +95,20 @@
           href: howto-migrate-using-dump-and-restore.md
         - name: 导入和导出
           href: howto-migrate-using-export-and-import.md
-    - name: 自定义服务器配置参数
+    - name: 配置服务器参数
       items:
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
-    - name: 服务器日志
+    - name: 访问服务器日志
       items:
+        - name: Azure 门户
+          href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-using-cli.md
+    - name: 监视
+      items:
+        - name: 针对指标创建警报
+          href: howto-alert-on-metric.md
 - name: 引用
   items:
     - name: Azure CLI
@@ -107,6 +117,8 @@
       href: /rest/api/postgresql
 - name: 资源
   items:
+    - name: 部署模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价
@@ -123,3 +135,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 支持选项
       href: 'https://azure.microsoft.com/support/options/'
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'

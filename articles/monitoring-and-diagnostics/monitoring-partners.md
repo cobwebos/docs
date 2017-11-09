@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/16/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
 ms.openlocfilehash: 46b6ec12655b64b8fce6e103d5d71a4e8021890e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
 | --- | --- | --- |
-| [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![Partner Logo][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
-| [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![Partner Logo][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
-| [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
-| [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
+| [![合作伙伴徽标][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![合作伙伴徽标][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![合作伙伴徽标][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
+| [![合作伙伴徽标][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![合作伙伴徽标][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![合作伙伴徽标][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |
+| [![合作伙伴徽标][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![合作伙伴徽标][datadog-logo]<br/>**Datadog**][datadog-anchor] | [![合作伙伴徽标][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |
+| [![合作伙伴徽标][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] | [![合作伙伴徽标][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![合作伙伴徽标][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
+| [![合作伙伴徽标][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![合作伙伴徽标][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![合作伙伴徽标][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 Alert Logic Log Manager 通过 Azure Monitor API 收集 VM、应用程序和 Azure 平台日志进行安全分析和数据保留，包括 Azure 活动日志。  使用这些信息可以检测不法行为，确保满足合规性要求。
@@ -71,7 +70,7 @@ Datadog 是适用于云规模应用程序的全球领先监视服务，将服务
 [查看相关文档。][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
-Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用程序服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
+Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标以外，Dynatrace 还可以实现环境的端到端可视化，显示从客户端到数据库层的事务。 基于 AI 的问题关联与完全集成的根本原因分析（包括代码和数据库的方法级洞察），简化了故障排除和性能优化工作。
 
 [查看相关文档。][dynatrace-doc]
 
@@ -159,4 +158,3 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic 文档。"
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk 文档。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文档。"
-

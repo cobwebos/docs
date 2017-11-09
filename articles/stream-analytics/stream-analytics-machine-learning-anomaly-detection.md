@@ -3,7 +3,7 @@ title: "Azure 用法指南（预览版）中的异常情况检测 | Microsoft Do
 description: "使用流分析和机器学习来检测异常。"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: dubansal
 manager: jhubbard
 ms.service: stream-analytics
 ms.devlang: na
@@ -11,15 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
+ms.author: dubansal
+ms.openlocfilehash: 43a2a9784668fad2aa5b1441cfd37751c0c240b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 7ab489f6ae7da2640ba199b20e7727da60497918
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-the-anomalydetection-operator"></a>使用 ANOMALYDETECTION 运算符
 
 > [!IMPORTANT]
@@ -100,8 +98,8 @@ ANOMALYDETECTION 期望输入时列是一致的。 通过聚合翻转或跳跃�
 - 使用 ANOMALYDETECTION 函数的非分区查询产生结果时，计算延迟平均约为 25 ms。
 - 随着计算量的增加，分区查询中出现的延迟将与分区数略有不同。 但是，延迟与所有分区中可比较的事件总数的非分区事例大致相同。
 - 在读取非实时数据时，快速引入了大量数据。 目前，处理此数据的速度明显减慢。 此类情况中的延迟会随窗口中数据点数目变化呈线性增加，但不受窗口大小或事件间隔本身的影响。 要降低非实时事例中的延迟，请考虑使用较小的窗口大小。 或者，考虑从当前时间开始作业。 以下是关于非分区查询中延迟的几个示例： 
-    - 检测窗口中如果有 60 个数据点，就能造成时长 10 秒的延迟，吞吐量为 3 Mbps。 
-    - 当数据点为 600 个时，延迟可高达 80 秒，吞吐量将至 0.4 Mbps。
+    - 检测窗口中如果有 60 个数据点，就能造成时长 10 秒的延迟，吞吐量为 3 MBps。 
+    - 当数据点为 600 个时，延迟可高达 80 秒，吞吐量将至 0.4 MBps。
 
 ## <a name="example"></a>示例
 
@@ -186,5 +184,4 @@ ANOMALYDETECTION 期望输入时列是一致的。 通过聚合翻转或跳跃�
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

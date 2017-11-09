@@ -14,12 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>API 问题故障排除指南
 以下是在管理员如何通过 API 与 Azure Mobile Engagement 进行交互这一方面可能会遇到的问题。
@@ -85,7 +84,7 @@ ms.lasthandoff: 12/08/2016
 
 ### <a name="causes"></a>原因
 * 如果未正确集成项目，则许多项目会在 Azure Mobile Engagement UI 中禁用，但还是会在 API 中无提示地失败，因此请务必在 UI 中测试相同的功能，以检查其是否能正常工作。
-* Azure Mobile Engagement 和你尝试使用的 Azure Mobile Engagement 的许多高级功能，都需要先作为单独的步骤使用 SDK 分别集成到应用，然后才能使用这些功能。
+* Azure Mobile Engagement 和尝试使用的 Azure Mobile Engagement 的许多高级功能，都需要先作为单独的步骤使用 SDK 分别集成到应用，才能使用这些功能。
 
 ### <a name="see-also"></a>另请参阅
 * [故障排除指南 - SDK][Link 25]
@@ -120,5 +119,4 @@ ms.lasthandoff: 12/08/2016
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
 

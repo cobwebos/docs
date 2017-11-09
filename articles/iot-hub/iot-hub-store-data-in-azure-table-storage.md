@@ -1,6 +1,6 @@
 ---
 title: "将 IoT 中心消息保存到 Azure 数据存储 | Microsoft Docs"
-description: "使用 Azure 函数应用将 IoT 中心消息保存到 Azure 表存储。 IoT 中心消息包含 IoT 设备发送的传感器数据等信息。"
+description: "使用 IoT 中心消息路由将 IoT 中心消息保存到 Azure Blob 存储中。 IoT 中心消息包含 IoT 设备发送的传感器数据等信息。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -13,18 +13,17 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
+ms.date: 10/04/2017
 ms.author: xshi
+ms.openlocfilehash: aa33800de82b27d4819fe0eade127c2a40e3a493
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 06503f9564e00ef62587d02f2da4778974e246c5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-table-storage"></a>将包含传感器数据的 IoT 中心消息保存到 Azure 表存储
+# <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>将包含传感器数据的 IoT 中心消息保存到 Azure Blob 存储
 
-![端到端关系图](media/iot-hub-get-started-e2e-diagram/3.png)
+![端到端关系图](media/iot-hub-store-data-in-azure-table-storage/1_route-to-storage.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -35,8 +34,7 @@ ms.lasthandoff: 08/16/2017
 ## <a name="what-you-do"></a>准备工作
 
 - 创建 Azure 存储帐户。
-- 准备 IoT 中心连接以读取消息。
-- 创建并部署 Azure 函数应用。
+- 准备 IoT 中心，将消息路由到存储。
 
 ## <a name="what-you-need"></a>所需条件
 
@@ -61,146 +59,34 @@ ms.lasthandoff: 08/16/2017
 
 3. 单击“创建” 。
 
-## <a name="prepare-your-iot-hub-connection-to-read-messages"></a>准备 IoT 中心连接以读取消息
+## <a name="prepare-your-iot-hub-to-route-messages-to-storage"></a>准备 IoT 中心，将消息路由到存储
 
-IoT 中心公开一个与事件中心兼容的内置终结点，使应用程序能够读取 IoT 中心消息。 同时，应用程序可以使用使用者组从 IoT 中心读取数据。 在创建用于从 IoT 中心读取数据的 Azure 函数应用之前，请执行以下操作：
+IoT 中心以本机方式支持将消息以 blob 形式路由到 Azure 存储。
 
-- 获取 IoT 中心终结点的连接字符串。
-- 为 IoT 中心创建使用者组。
+### <a name="add-storage-as-a-custom-endpoint"></a>将存储添加为自定义终结点
 
-### <a name="get-the-connection-string-of-your-iot-hub-endpoint"></a>获取 IoT 中心终结点的连接字符串
+在 Azure 门户中导航到 IoT 中心。 单击“终结点” > “添加”。 命名该终结点并选择“Azure 存储容器”作为终结点类型。 使用选取器选择在上一节中创建的存储帐户。 创建存储容器并选择它，然后单击“确定”。
 
-1. 打开 IoT 中心
+  ![在 IoT 中心中创建自定义终结点](media\iot-hub-store-data-in-azure-table-storage\2_custom-storage-endpoint.png)
 
-2. 在“IoT 中心”窗格中的“消息”下面，单击“终结点”。
+### <a name="add-a-route-to-route-data-to-storage"></a>添加路由，将数据路由到存储
 
-3. 在右窗格中的“内置终结点”下面，单击“事件”。
+单击“路由” > “添加”，输入路由的名称。 选择“设备消息”作为数据源，选择刚刚创建的存储终结点作为路由中的终结点。 输入 `true` 作为查询字符串，然后单击“保存”。
 
-4. 在“属性”窗格中，记下以下值：
-   - 事件中心兼容终结点
-   - 与事件中心兼容的名称
+  ![在 IoT 中心中创建路由](media\iot-hub-store-data-in-azure-table-storage\3_create-route.png)
+  
+### <a name="add-a-route-for-hot-path-telemetry-optional"></a>添加热路径遥测的路由（可选）
 
-   ![在 Azure 门户中获取 IoT 中心终结点的连接字符串](media\iot-hub-store-data-in-azure-table-storage\2_azure-portal-iot-hub-endpoint-connection-string.png)
-
-5. 在“IoT 中心”窗格中的“设置”下面，单击“共享访问策略”。
-
-6. 单击“iothubowner”。
-
-7. 记下“主密钥”值。
-
-8. 按如下所示创建 IoT 中心终结点的连接字符串：
-
-   `Endpoint=<Event Hub-compatible endpoint>;SharedAccessKeyName=iothubowner;SharedAccessKey=<Primary key>`
-
-   > [!NOTE]
-   > 将 `<Event Hub-compatible endpoint>` 和 `<Primary key>` 替换为前面记下的值。
-
-### <a name="create-a-consumer-group-for-your-iot-hub"></a>为 IoT 中心创建使用者组
-
-1. 打开 IoT 中心
-
-2. 在“IoT 中心”窗格中的“消息”下面，单击“终结点”。
-
-3. 在右窗格中的“内置终结点”下面，单击“事件”。
-
-4. 在“属性”窗格中的“使用者组”下面输入一个名称并记下该名称。
-
-5. 单击“保存” 。
-
-## <a name="create-and-deploy-an-azure-function-app"></a>创建并部署 Azure 函数应用
-
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“新建” > “计算” > “Function App” > “创建”。
-
-2. 输入函数应用所需的信息。
-
-   ![在 Azure 门户中创建函数应用](media\iot-hub-store-data-in-azure-table-storage\3_azure-portal-create-function-app.png)
-
-   * **应用名称**：函数应用的名称。 该名称必须全局唯一。
-
-   * **资源组**：使用 IoT 中心所用的同一资源组。
-
-   * **存储帐户**：创建的存储帐户。
-
-   * **固定仪表板**：选中此选项可以方便地从仪表板访问函数应用。
-
-3. 单击“创建”。
-
-4. 创建函数应用后，请将其打开。
-
-5. 在该函数应用中，通过执行以下操作创建一个新函数：
-
-   a. 单击“新建函数”。
-
-   b. 为“语言”选择“JavaScript”，为“方案”选择“数据处理”。
-
-   c. 依次单击“创建此函数”、“新建函数”。
-
-   d. 为语言选择“JavaScript”，为方案选择“数据处理”。
-
-   e. 单击“EventHubTrigger JavaScript”模板。
-
-   f. 输入模板所需的信息。
-
-      * **为函数命名**：函数的名称。
-
-      * **事件中心名称**：前面记下的与事件中心兼容的名称。
-
-      * **事件中心连接**：若要添加所创建的 IoT 中心终结点的连接字符串，请单击“新建”。
-
-   g. 单击“创建” 。
-
-6. 执行以下操作配置函数的输出：
-
-   a. 单击“集成” > “新建输出” > “Azure 表存储” > “选择”。
-
-      ![在 Azure 门户中将表存储添加到函数应用](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
-
-   b. 输入所需的信息。
-
-      * **表参数名称**：指定要在 Azure 函数代码中使用的 `outputTable`。
-      
-      * **表名称**：使用 `deviceData`。
-
-      * **存储帐户连接**：单击“新建”，选择或输入存储帐户。 如果未显示该存储帐户，请参阅[存储帐户要求](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)。
-      
-   c. 单击“保存” 。
-
-7. 在“触发器”下面，单击“Azure 事件中心(eventHubMessages)”。
-
-8. 在“事件中心使用者组”下，输入创建的使用者组的名称，并单击“保存”。
-
-9. 单击你在左侧创建的函数，然后单击右侧的“查看文件”。
-
-10. 将 `index.js` 中的代码替换为以下代码：
-
-   ```javascript
-   'use strict';
-
-   // This function is triggered each time a message is received in the IoT hub.
-   // The message payload is persisted in an Azure storage table
- 
-   module.exports = function (context, iotHubMessage) {
-    context.log('Message received: ' + JSON.stringify(iotHubMessage));
-    var date = Date.now();
-    var partitionKey = Math.floor(date / (24 * 60 * 60 * 1000)) + '';
-    var rowKey = date + '';
-    context.bindings.outputTable = {
-     "partitionKey": partitionKey,
-     "rowKey": rowKey,
-     "message": JSON.stringify(iotHubMessage)
-    };
-    context.done();
-   };
-   ```
-
-11. 单击“保存” 。
-
-现已创建函数应用。 它会在表存储中存储 IoT 中心收到的消息。
+IoT 中心默认将未匹配任何其他路由的所有消息路由到内置终结点。 由于所有遥测消息现在均与将消息路由到存储的规则匹配，所以你需要添加另一个路由，用于将消息写入到内置终结点。 无需支付额外费用，即可将消息路由到多个终结点。
 
 > [!NOTE]
-> 可以使用“运行”按钮测试该函数应用。 单击“运行”，将向 IoT 中心发送测试消息。 收到该消息后，应会触发函数应用的启动并将该消息保存到表存储。 “日志”窗格记录了过程详细信息。
+> 如果未对遥测消息执行其他处理，则可以跳过此步骤。
 
-## <a name="verify-your-message-in-your-table-storage"></a>在表存储中验证消息
+从“路由”窗格单击“添加”，然后输入路由的名称。 选择“设备消息”作为数据源，选择“事件”作为终结点。 输入 `true` 作为查询字符串，然后单击“保存”。
+
+  ![在 IoT 中心中创建热路径路由](media\iot-hub-store-data-in-azure-table-storage\4_hot-path-route.png)
+
+## <a name="verify-your-message-in-your-storage-container"></a>在存储容器中验证消息
 
 1. 在设备上运行示例应用程序，将消息发送到 IoT 中心。
 
@@ -208,13 +94,12 @@ IoT 中心公开一个与事件中心兼容的内置终结点，使应用程序�
 
 3. 打开存储资源管理器，单击“添加 Azure 帐户” > “登录”，登录到 Azure 帐户。
 
-4. 单击 Azure 订阅 >“存储帐户”> 存储帐户 >“表” > “deviceData”。
+4. 单击 Azure 订阅 >“存储帐户”> 你的存储帐户 >“ Blob 容器”> 你的容器。
 
-   此时应会显示设备发送到 IoT 中心的、记录在 `deviceData` 表中的消息。
+   此时会显示设备发送到 IoT 中心的、记录在 blob 容器中的消息。
 
 ## <a name="next-steps"></a>后续步骤
 
-现已成功创建 Azure 存储帐户，以及可将 IoT 中心收到的消息存储在表存储中的 Azure 函数应用。
+你已成功创建 Azure 存储帐户，并在该存储帐户下将消息从 IoT 中心路由到了 Blob 容器中。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

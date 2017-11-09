@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述
 
 为确保应用程序及其用户之间的所有通信都通过加密路径进行，适用于许多 Web 应用的常见方案是支持 HTTP 到 HTTPS 自动重定向。 过去用户曾使用创建专用的后端池等技术，其唯一目的在于将通过 HTTP 接收的请求重定向到 HTTPS。  应用程序网关现在可以重定向通过应用程序网关的流量。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。 应用程序网关重定向支持并不局限于 HTTP -> HTTPS 重定向。 它是一种泛型重定向机制，使用它可以在应用程序网关上将一个侦听器上接收到的流量重定向到另一个侦听器。 它还支持重定向到外部站点。 应用程序网关重定向支持具有以下功能：
@@ -37,4 +35,3 @@ ms.lasthandoff: 07/20/2017
 ### <a name="next-steps"></a>后续步骤
 
 [在应用程序网关上配置 URL 重定向](application-gateway-configure-redirect-powershell.md)
-

@@ -4,7 +4,7 @@
 > 
 
 1. 在项目中打开 `info.plist` 文件
-2. 右键单击列表 (`Information Property List`) 的第一项，然后添加新行
+2. 右键单击列表 (`Information Property List`) 的第一项，并添加新行
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push1.png)
 3. 在新行中输入 `Required background modes`

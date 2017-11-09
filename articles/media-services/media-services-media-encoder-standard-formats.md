@@ -1,6 +1,6 @@
 ---
-title: "媒体编码器标准格式和编解码器"
-description: "本主题概述媒体编码器标准格式和编解码器。"
+title: "Media Encoder Standard 格式和编解码器"
+description: "本主题概述 Media Encoder Standard 格式和编解码器。"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 382913f0501c692cc1ee460d2264118414ad20c3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>媒体编码器标准格式和编解码器
-本文档包含最常见的导入和导出文件格式的列表，你可以将这些格式与媒体编码器标准配合使用。
+# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
+本文档包含最常见的导入和导出文件格式的列表，可以将这些格式与 Media Encoder Standard 配合使用。
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 | 文件格式（文件扩展名） | 支持 |
@@ -45,7 +44,7 @@ ms.lasthandoff: 11/17/2016
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>输入容器中的音频格式
-媒体编码器标准支持在输入容器中带有以下音频格式：
+Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 * MXF、GXF 和 QuickTime 文件，其中的音频曲目具有交错的立体声或 5.1 示例
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 11/17/2016
 
 * MXF、GXF 和 QuickTime 文件，其中的音频以独立 PCM 轨道的形式携带，但可以从文件元数据推导频道映射（到立体声或 5.1 的映射）
 
-请注意，将在不久的将来提供对显式/用户提供频道映射的支持。
+请注意，会在不久的将来提供对显式/用户提供频道映射的支持。
 
 ## <a name="input-video-codecs"></a>输入视频编解码器
 | 输入视频编解码器 | 支持 |
@@ -112,5 +111,4 @@ ms.lasthandoff: 11/17/2016
 [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md)
 
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)
-
 

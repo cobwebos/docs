@@ -12,16 +12,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2681dd3792a351fecc0c72eb7fe546113a451d24
-ms.openlocfilehash: 7b9b222be1a131d2a80d37404cbdd309b61785f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/13/2017
-
-
+ms.openlocfilehash: 43ab7ed75313863d2912063169ccc089af6052c2
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Azure SQL 数据库基准检验概述
 ## <a name="overview"></a>概述
@@ -34,9 +32,9 @@ Microsoft Azure SQL 数据库提供了三个具有多个性能级别的[服务�
 通过使用每小时事务数表示基本服务层的吞吐量、使用每分钟事务数表示标准服务层的吞吐量、使用每秒事务数表示高级服务层的吞吐量，可更轻松地快速将每个服务层的性能潜力与应用程序的要求联系起来。
 
 ## <a name="correlating-benchmark-results-to-real-world-database-performance"></a>将基准检验结果与实际数据库性能进行关联
-请务必了解，ASDB 与所有基准检验一样只具有代表性和指示性。 使用基准检验应用程序完成的事务率不会与使用其他应用程序可能完成的事务率相同。 基准检验包含不同事务类型的集合，这些事务针对包含一系列表和数据类型的架构运行。 虽然基准检验执行普遍适用于所有 OLTP 工作负荷的相同基本操作，但它并不代表任何特定类别的数据库或应用程序。 基准检验的目标是为在上调或下调性能级别时可预期的数据库相对性能提供合理的指导。 实际上，数据库具有不同的大小和复杂度，会遇到工作负荷的不同组合，并且将以不同方式进行响应。 例如，IO 密集型应用程序可能会更快地达到 IO 阈值，或者 CPU 密集型应用程序可能会更快地达到 CPU 限制。 不能保证任何特定数据库在不断增加的负载下会以与基准检验相同的方式扩展。
+请务必了解，ASDB 与所有基准检验一样只具有代表性和指示性。 使用基准检验应用程序完成的事务率不会与使用其他应用程序可能完成的事务率相同。 基准检验包含不同事务类型的集合，这些事务针对包含一系列表和数据类型的架构运行。 虽然基准检验执行普遍适用于所有 OLTP 工作负荷的相同基本操作，但它并不代表任何特定类别的数据库或应用程序。 基准检验的目标是为在上调或下调性能级别时可预期的数据库相对性能提供合理的指导。 实际上，数据库具有不同的大小和复杂度，会遇到工作负荷的不同组合，并且以不同方式进行响应。 例如，IO 密集型应用程序可能会更快地达到 IO 阈值，或者 CPU 密集型应用程序可能会更快地达到 CPU 限制。 不能保证任何特定数据库在不断增加的负载下会以与基准检验相同的方式扩展。
 
-基准检验及其方法将在下面更详细地说明。
+基准检验及其方法会在下面更详细地说明。
 
 ## <a name="benchmark-summary"></a>基准检验摘要
 ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数据库操作组合的性能。 尽管在设计基准检验时考虑到了云计算，但已将数据库架构、数据填充和事务设计为广泛代表 OLTP 工作负荷中最常用的基本元素。
@@ -76,8 +74,8 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 | Update Lite |20 |
 | Update Heavy |3 |
 | Insert Lite |3 |
-| Insert Heavy |2 |
-| 删除 |2 |
+| Insert Heavy |#N/A |
+| 删除 |#N/A |
 | CPU Heavy |10 |
 
 ## <a name="users-and-pacing"></a>用户和步调
@@ -134,4 +132,3 @@ Azure SQL 数据库基准检验可以度量在所有可用的服务层和性能�
 [服务层和性能级别](sql-database-service-tiers.md)
 
 [单一数据库的性能指南](sql-database-performance-guidance.md)
-

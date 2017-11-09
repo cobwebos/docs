@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>将 Azure 存储帐户与 Azure CDN 集成
 启用 CDN 可以缓存 Azure 存储的内容。 它通过在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 Blob 和计算实例的静态内容，为开发人员提供一个传送高带宽内容的全球性解决方案。
@@ -45,7 +44,7 @@ ms.lasthandoff: 08/22/2017
 
 3. 在“名称”字段中，键入子域名称。 此条目可包含 3-24 个小写字母和数字。
    
-    此值将成为用于对订阅的 Blob、队列或表资源进行寻址的 URI 中的主机名。 若要对 Blob 服务中的容器资源进行寻址，需使用以下格式的 URI，其中 *&lt;StorageAccountLabel&gt;* 是指在“输入 URL”中键入的值：
+    此值将成为用于对订阅的 Blob、队列或表资源进行寻址的 URI 中的主机名。 若要对 BLOB 服务中的容器资源进行寻址，需使用以下格式的 URI，其中 *&lt;StorageAccountLabel&gt;* 是指在“输入 URL”中键入的值：
    
     http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
    
@@ -122,4 +121,3 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 [cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
 [cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
 [cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 
-

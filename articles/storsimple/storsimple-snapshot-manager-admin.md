@@ -14,18 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5e3528d490cd11fab3fb10126713f81694d7e2d0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: a99b3d7336c3dc1a1f249915d6971a49f4b69be6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>使用 StorSimple Snapshot Manager 管理 StorSimple 解决方案
 
 ## <a name="overview"></a>概述
-StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单元，可以简化 Microsoft Azure StorSimple 环境中的保护和备份管理。 借助 StorSimple Snapshot Manager，可以将数据中心和云中的 Microsoft Azure StorSimple 数据作为单一集成的存储解决方案进行管理，这样可以简化备份流程并降低成本。
+StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单元，可以简化 Microsoft Azure StorSimple 环境中的数据保护和备份管理。 借助 StorSimple Snapshot Manager，可以将数据中心和云中的 Microsoft Azure StorSimple 数据作为单一集成的存储解决方案进行管理，这样可以简化备份流程并降低成本。
 
 StorSimple Snapshot Manager 中心管理控制台可用于创建本地数据和云数据的一致时间点备份副本。 例如，可以将控制台用于：
 
@@ -62,5 +60,4 @@ StorSimple Snapshot Manager 可用于监视和管理当前、 计划和已完成
 
 ## <a name="next-steps"></a>后续步骤
 [下载 StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)。
-
 

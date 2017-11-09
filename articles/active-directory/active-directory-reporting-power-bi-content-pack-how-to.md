@@ -10,19 +10,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/18/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: ba3f9f74fd7ba658b4e082775e471ed65a386fed
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
-作为 IT 管理员，了解用户如何使用 Azure Active Directory 功能十分重要。 这样才能规划 IT 基础结构和通信，提高使用率并充分利用 AAD 功能。 使用 Azure Active Directory Power BI 内容包可以进一步分析数据，了解如何针对极度依赖的各种功能，通过该数据深入洞察 Azure Active Directory 中发生的情况。  将 Azure Active Directory API 集成到 Power BI 中以后，即可轻松下载预建的内容包，并通过 Power BI 提供的丰富的可视化体验洞察 Azure Active Directory 中的所有活动。 可以轻松地创建自己的仪表板并将其与组织中的任何其他人共享。 
+作为 IT 管理员，了解用户如何使用 Azure Active Directory 功能十分重要。这样才能规划 IT 基础结构和通信，提高使用率并充分利用 AAD 功能。 使用 Azure Active Directory Power BI 内容包可以进一步分析数据，了解如何针对极度依赖的各种功能，通过该数据深入洞察 Azure Active Directory 中发生的情况。  将 Azure Active Directory API 集成到 Power BI 中以后，即可轻松下载预建的内容包，并通过 Power BI 提供的丰富的可视化体验洞察 Azure Active Directory 中的所有活动。 可以轻松地创建自己的仪表板并将其与组织中的任何其他人共享。 
 
 本主题提供的分步说明介绍如何在环境中安装和使用内容包。
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 07/20/2017
 
 应用使用情况和趋势报表：了解在组织中使用的应用、哪些应用使用最频繁以及相应的使用时间。 可以通过此报表了解最近在组织中推出的应用的使用情况，或者了解哪些应用常用。 这样可以发现用户不使用的应用，从而改进使用情况。
 
-按位置和用户划分的登录：了解使用 Azure Identity 执行的所有登录以及相应用户的身份。 可以通过此功能更深入地了解单个登录，并获取下面这样的问题的答案：
+按位置和用户划分的登录：了解使用 Azure Identity 执行的所有登录以及相应的用户身份。 可以通过此功能更深入地了解单个登录，并获取下面这样的问题的答案：
 
 - 该用户从何处登录？
 - 哪个用户的登录次数最多？从何处登录？ 
@@ -108,7 +107,7 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
  
 ![Azure Active Directory Power BI 内容包](./media/active-directory-reporting-power-bi-content-pack-how-to/11.png) 
 
-将可视化效果固定到仪表板：可以自定义仪表板，使报表包含你自己的可视化效果，然后将该效果固定到仪表板。 在下面的示例中，我添加了名为“登录状态”的新筛选器并将其包括到了报表中。 我还将可视化效果从条形图改成了折线图，因此可以将这个新的视觉对象固定到仪表板。
+将可视化效果固定到仪表板：可以自定义仪表板，使报表包含自己的可视化效果，然后将该效果固定到仪表板。 在下面的示例中，我添加了名为“登录状态”的新筛选器并将其包括到了报表中。 我还将可视化效果从条形图改成了折线图，因此可以将这个新的视觉对象固定到仪表板。
 
 ![Azure Active Directory Power BI 内容包](./media/active-directory-reporting-power-bi-content-pack-how-to/12.png) 
 
@@ -150,4 +149,3 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
 ## <a name="next-steps"></a>后续步骤
 
 有关报告的概述，请参阅 [Azure Active Directory 报告](active-directory-reporting-azure-portal.md)。
-

@@ -16,14 +16,12 @@ ms.workload: identity
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 75cafa6868d54f9d8a7e0dbe9f2a9e85ed43f16f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
 使用以下信息和示例更深入地了解 Azure Active Directory (Azure AD) 基于组的许可。
@@ -200,6 +198,16 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 >[!TIP]
 > 单击与“更改用户许可证”相关的项可显示应用于单个用户的许可证更改的详细信息。
 
+## <a name="deleting-a-group-with-an-assigned-license"></a>使用分配的许可证删除组
+
+无法使用所分配的有效许可证删除组。 管理员在删除组时可能未意识到这会导致从用户中删除许可证 - 因此，我们需要先从组中删除任何许可证，然后才能删除组。
+
+在 Azure 门户中尝试删除组时可能会看到如下错误通知：![屏幕截图“组删除失败”](media/active-directory-licensing-group-advanced/groupdeletionfailed.png)
+
+请转到组的“许可证”选项卡，查看是否分配有任何许可证。 如果是，请删除这些许可证，然后再重试删除组。
+
+尝试通过 PowerShell 或图形 API 删除组时，可能会看到类似的错误。 使用的是从本地同步的组时，如果无法在 Azure AD 中删除组，Azure AD Connect 也可能会报告错误。 在所有此类情况下，请务必检查是否有任何许可证分配给组，并先删除这些许可证。
+
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 
 如果使用基于组的许可，最好是熟悉以下限制和已知问题的列表。
@@ -230,4 +238,3 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 * [将许可证分配到 Azure Active Directory 中的组](active-directory-licensing-group-assignment-azure-portal.md)
 * [识别和解决 Azure Active Directory 中组的许可问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
-

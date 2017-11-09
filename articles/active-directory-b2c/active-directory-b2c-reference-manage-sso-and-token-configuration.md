@@ -12,13 +12,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 05/02/2017
 ms.author: sama
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 068adc72976ec8429312f1909d0fd65460b73e98
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C：使用自定义策略管理 SSO 和令牌自定义
 与使用内置策略相比，使用自定义策略能够以相同的力度控制令牌、会话和单一登录 (SSO) 配置。  若要了解每项设置的作用，请参阅[此文档](#active-directory-b2c-token-session-sso)。
@@ -67,7 +65,7 @@ ms.lasthandoff: 05/04/2017
 ```
 对于 ACR，请删除包含 Key="AuthenticationContextReferenceClaimPattern" 的 `<Item>`。
 
-**使用者 (sub) 声明**：此选项默认为 ObjectID，如果你要切换为 `Not Supported`，请执行以下操作：
+**使用者 (sub) 声明**：此选项默认为 ObjectID，如果要切换为 `Not Supported`，请执行以下操作：
 
 将以下代码行 
 ```XML
@@ -93,4 +91,3 @@ ms.lasthandoff: 05/04/2017
 **Web 应用会话生存期(分钟)**：若要更改 Web 应用会话生存期，需要修改 `<SessionExpiryInSeconds>` 元素的值。  内置策略中的默认值为 86400 秒（1440 分钟）。
 
 **Web 应用会话超时**：若要更改 Web 应用会话超时，需要修改 `<SessionExpiryType>` 的值。  适用的值为 `Absolute` 和 `Rolling`。
-

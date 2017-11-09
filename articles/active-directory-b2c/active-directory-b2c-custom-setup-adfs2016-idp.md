@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
+ms.openlocfilehash: 8713fc7dd27023e1244ccb00673dd1652689baf5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 6cd0d19e5fd90cb9fb6d3fc4c17119476d7b4f62
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -102,7 +100,7 @@ ms.lasthandoff: 08/28/2017
     可能会自动添加前缀 `B2C_1A_`。
 6.  在“文件上传”中，**选择带有私钥的证书 .pfx 文件。 注意：此证书（带私钥）应与为 ADFS 信赖方颁发和供其使用的证书相同。
 ![上传策略密钥](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-cert.png)
-7.  单击“创建”
+7.  单击“创建” 
 8.  确认已创建密钥 `B2C_1A_ADFSSamlCert`。
 
 ## <a name="add-a-claims-provider-in-your-extension-policy"></a>在扩展策略中添加声明提供程序
@@ -155,8 +153,10 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="register-the-adfs-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>注册 ADFS 帐户声明提供程序以注册或登录用户旅程
 至此，已设置标识提供者。  但是，它不能在任何注册/登录屏幕中使用。 现在需要将 ADFS 帐户标识提供者添加到用户 `SignUpOrSignIn` 用户旅程。 为使其可用，需创建现有模板用户旅程的副本。  然后对其进行修改，以便它包含 ADFS 标识提供者：
-    >[!NOTE]
-    >If you previously copied the `<UserJourneys>` element from base file of your policy to the extension file (TrustFrameworkExtensions.xml) you can skip this section.
+
+>[!NOTE]
+>如果以前已将策略基本文件中的 `<UserJourneys>` 元素复制到扩展文件 (TrustFrameworkExtensions.xml)，则可以跳过本部分。
+
 1.  打开策略的基文件（例如 TrustFrameworkBase.xml）。
 2.  找到 `<UserJourneys>` 元素并复制整个 `<UserJourneys>` 节点的内容。
 3.  打开扩展文件（例如 TrustFrameworkExtensions.xml）并找到 `<UserJourneys>` 元素。 如果该元素不存在，请添加一个。
@@ -188,7 +188,7 @@ ms.lasthandoff: 08/28/2017
 > * 确保 `TechnicalProfileReferenceId` 设置为前面创建的技术配置文件 (Contoso-SAML2)。
 
 ## <a name="upload-the-policy-to-your-tenant"></a>将策略上传到租户
-1.  在 [Azure 门户](https://portal.azure.com) 中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后打开“Azure AD B2C”边栏选项卡。
+1.  在 [Azure 门户](https://portal.azure.com) 中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md) ，然后打开“Azure AD B2C”边栏选项卡。
 2.  选择“标识体验框架”。
 3.  打开“所有策略”边栏选项卡。
 4.  选择“上传策略”。
@@ -228,4 +228,3 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="download-the-complete-policy-files"></a>下载完整的策略文件
 可选：建议在完成“自定义策略入门”演练后，使用你自己的自定义策略文件来构建方案。 [仅供参考的策略示例文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-adfs2016-app)
-

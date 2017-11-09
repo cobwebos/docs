@@ -14,12 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.translationtype: HT
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>有关 Azure Marketplace 中的虚拟机产品/服务的发布后指南
 本文介绍如何在 Azure Marketplace 中更新实时虚拟机产品。 其中将指导你完成将一个或多个新 SKU 添加到现有产品的过程。 此外，还将引导你完成删除从 Marketplace 的实时虚拟机产品或 SKU 的过程。
@@ -337,4 +336,3 @@ ms.lasthandoff: 05/17/2017
 * [作为发布者获取支持](marketplace-publishing-get-publisher-support.md)
 * [创建本地 VM 映像](marketplace-publishing-vm-image-creation-on-premise.md)
 * [在 Azure 预览门户中创建运行 Windows 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

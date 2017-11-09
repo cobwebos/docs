@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 672b36fc80d8826247b3104ca8c5ffb13e45fa59
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: e8837b8d62bb8caeee9460661438368c2d11697a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
 Azure API 管理提供 `ProxyError` 对象，允许发布服务器响应错误情况，后者可能发生在处理针对代理的请求时。 `ProxyError` 对象可通过 [context.LastError](api-management-policy-expressions.md#ContextVariables) 属性访问，并可被策略用在 `on-error` 策略节。 本主题提供的参考针对 Azure API 管理中的错误处理功能。  
@@ -49,7 +48,7 @@ Azure API 管理提供 `ProxyError` 对象，允许发布服务器响应错误�
  在处理请求期间，内置的步骤与请求范围内的策略一起执行。 如果发生错误，处理会立即跳转到 `on-error` 策略节。 `on-error` 策略节适用于任何范围，而 API 发布者则可配置自定义行为，例如将错误记录到事件中心，或者创建新的需要返回到调用方的响应。  
   
 > [!NOTE]
->  默认情况下，`on-error` 节不存在于策略中。 若要将 `on-error` 节添加到策略，请在策略编辑器中浏览到所需策略，然后将其添加进去。 有关配置策略的详细信息，请参阅 [API 管理中的策略](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)。  
+>  默认情况下，`on-error` 节不存在于策略中。 要将 `on-error` 节添加到策略，请在策略编辑器中浏览到所需策略，然后将其添加进去。 有关配置策略的详细信息，请参阅 [API 管理中的策略](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)。  
 >   
 >  如果没有 `on-error` 节，则在出现错误情况时，调用方会收到 400 或 500 HTTP 响应消息。  
   
@@ -111,7 +110,7 @@ Azure API 管理提供 `ProxyError` 对象，允许发布服务器响应错误�
 |源|条件|原因|消息|  
 |------------|---------------|------------|-------------|  
 |rate-limit|超出速率限制|RateLimitExceeded|超出速率限制|  
-|quota|超出配额|QuotaExceeded|超出调用卷配额。 配额将在 xx:xx:xx 复原。 -或- 超出带宽配额。 配额将在 xx:xx:xx 复原。|  
+|quota|超出配额|QuotaExceeded|超出调用卷配额。 配额会在 xx:xx:xx 复原。 -或- 超出带宽配额。 配额会在 xx:xx:xx 复原。|  
 |jsonp|回调参数值无效（包含错误字符）|CallbackParameterInvalid|回调参数 {callback-parameter-name} 的值不是有效的 JavaScript 标识符。|  
 |ip-filter|无法分析请求中的调用方 IP|FailedToParseCallerIP|无法确定调用方的 IP 地址。 访问被拒绝。|  
 |ip-filter|调用方 IP 不在允许列表中|CallerIpNotAllowed|不允许调用方 IP 地址 {ip-address}。 访问被拒绝。|  

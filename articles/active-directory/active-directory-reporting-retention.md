@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: 933d251903f4ca74902e984e7a1581a75345ee7f
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 047f18acf192c75ac5904d7cfe10f19ad18e2888
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
 
@@ -61,6 +60,7 @@ ms.lasthandoff: 09/09/2017
 | :--                    | :--           | :--                 | :--                 |
 | 目录审核        | 7 天        | 30 天             | 30 天             |
 | 登录活动       | 不适用           | 30 天             | 30 天             |
+| Azure MFA 使用情况        | 90 天       | 90 天             | 90 天             |
 
 **安全信号**
 
@@ -70,4 +70,3 @@ ms.lasthandoff: 09/09/2017
 | 有风险的登录 | 7 天        | 30 天             | 90 天             |
 
 ---
-

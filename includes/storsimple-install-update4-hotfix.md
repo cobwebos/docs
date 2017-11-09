@@ -9,9 +9,9 @@
 
     ![安装目录](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号（例如 **4011839**），然后单击“搜索”。
+3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号（例如 **4011839**），并单击“搜索”。
    
-    随后将显示修补程序列表，例如“适用于 StorSimple 8000 系列的累积软件捆绑包更新 4.0”。
+    随后会显示修补程序列表，例如“适用于 StorSimple 8000 系列的累积软件捆绑包更新 4.0”。
    
     ![搜索目录](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
@@ -79,13 +79,13 @@
     ```
 
     > [!NOTE]
-    > 当更新仍在进行时，cmdlet 偶尔会报告 `False`。 为了确保完成修补程序更新，请等待几分钟再重新运行此命令，然后检查 `RunInProgress` 是否为 `False`。 如果是，则表示修补程序更新完成。
+    > 当更新仍在进行时，cmdlet 偶尔会报告 `False`。 为了确保完成修补程序更新，请等待几分钟再重新运行此命令，并检查 `RunInProgress` 是否为 `False`。 如果是，则表示修补程序更新完成。
 
 6. 完成软件更新后，请检查系统软件版本。 键入：
    
     `Get-HcsSystem`
    
-    你应该会看到以下版本：
+    应该会看到以下版本：
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    *  `HcsSoftwareVersion: 6.3.9600.17820`
@@ -153,7 +153,7 @@
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. 使用 `Get-HcsUpdateStatus` 命令监视安装进度。 当 `RunInProgress` 更改为 `False` 时，即表示更新完成。
-4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1 以完全访问权限登录，然后检查磁盘固件版本。 键入：
+4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1 以完全访问权限登录，并检查磁盘固件版本。 键入：
    
    `Get-HcsFirmwareVersion`
    
@@ -244,7 +244,7 @@
               WD:WD4001FYYG-01SL3:VR08
               WD:WD4001FYYG-01SL3:VR08
    
-    在第二个控制器上运行 `Get-HcsFirmwareVersion` 命令，验证软件版本是否已更新。 然后可以退出维护模式。 为此，请针对每个设备控制器键入以下命令：
+    在第二个控制器上运行 `Get-HcsFirmwareVersion` 命令，验证软件版本是否已更新。 然后即可退出维护模式。 为此，请针对每个设备控制器键入以下命令：
    
    `Exit-HcsMaintenanceMode`
 

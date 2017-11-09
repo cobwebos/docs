@@ -12,32 +12,32 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/21/2017
+ms.date: 9/19/2017
 ms.author: subramar
+ms.openlocfilehash: e18dcad73486ab7610c53c269fbc81de73b5147e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
 > * [C# - Windows](service-fabric-create-your-first-application-in-visual-studio.md)
-> * [Java-Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+> * [Java - Linux（预览版）](service-fabric-create-your-first-linux-application-with-java.md)
+> * [C# - Linux（预览版）](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
 >
 
-Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 本教程介绍了如何使用 C# (.NET Core) 创建适用于 Linux 的应用程序并构建服务。
+Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 本教程介绍如何在 .NET Core 2.0 中使用 C# 创建适用于 Linux 的应用程序和生成服务。
 
 ## <a name="prerequisites"></a>先决条件
 开始之前，请确保已[设置 Linux 开发环境](service-fabric-get-started-linux.md)。 如果使用的是 Mac OS X，则可以[使用 Vagrant 在虚拟机中设置 Linux 单机环境](service-fabric-get-started-mac.md)。
 
 还需要安装 [Service Fabric CLI](service-fabric-cli.md)
 
-### <a name="install-and-set-up-the-generators-for-csharp"></a>安装和设置适用于 CSharp 的生成器
-Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模板生成器从终端创建 Service Fabric CSharp 应用程序。 请执行以下步骤，确保已经有可以在计算机上运行的适用于 CSharp 的 Service Fabric yeoman 模板生成器。
+### <a name="install-and-set-up-the-generators-for-c"></a>为 C# 安装和设置生成器
+Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模板生成器从终端创建 Service Fabric 应用程序。 遵循以下步骤安装适用于 C# 的 Service Fabric Yeoman 模板生成器：
+
 1. 在计算机上安装 nodejs 和 NPM
 
   ```bash
@@ -56,7 +56,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
   ```
 
 ## <a name="create-the-application"></a>创建应用程序
-Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 CSharp 的 Service Fabric [Yeoman](http://yeoman.io/) 生成器是在上一步安装的，利用它可以轻松地创建第一个服务，以及在以后添加其他服务。 让我们使用 Yeoman 来创建具有单项服务的应用程序。
+Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 C# 的 Service Fabric [Yeoman](http://yeoman.io/) 生成器是在上一步安装的，利用它可以轻松地创建第一个服务，以及在以后添加其他服务。 让我们使用 Yeoman 来创建具有单项服务的应用程序。
 
 1. 在终端中键入以下命令以开始生成基架：`yo azuresfcsharp`
 2. 命名应用程序。
@@ -126,7 +126,6 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)
 * [使用 Service Fabric CLI 与 Service Fabric 群集交互](service-fabric-cli.md)
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
 * [Service Fabric CLI 入门](service-fabric-cli.md)
@@ -134,4 +133,3 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-csharp/yeoman-csharp.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-csharp/sfx-primary.png
-

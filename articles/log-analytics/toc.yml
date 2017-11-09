@@ -1,0 +1,271 @@
+- name: Azure Log Analytics 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Log Analytics？
+      href: log-analytics-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 收集 - Azure VM
+      href: log-analytics-quick-collect-azurevm.md
+    - name: 收集 - Linux 计算机
+      href: log-analytics-quick-collect-linux-computer.md
+    - name: 收集 - Windows 计算机
+      href: log-analytics-quick-collect-windows-computer.md
+- name: 教程
+  items:
+    - name: 1 - 分析数据
+      href: log-analytics-tutorial-viewdata.md
+    - name: 2 - 可视化数据
+      href: log-analytics-tutorial-dashboards.md
+    - name: 3 - 根据数据发出警报
+      href: log-analytics-tutorial-response.md
+- name: 示例
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: 概念
+  items:
+    - name: 工作区升级
+      href: log-analytics-log-search-upgrade.md
+    - name: Log Analytics 常见问题解答
+      href: log-analytics-faq.md
+    - name: 数据使用
+      href: log-analytics-usage.md
+    - name: 管理访问权限
+      href: log-analytics-manage-access.md
+    - name: 适用于服务提供商的功能
+      href: log-analytics-service-providers.md
+    - name: 日志搜索
+      items:
+        - name: 日志搜索概述
+          href: log-analytics-log-search-new.md
+        - name: 日志搜索常见问题解答
+          href: log-analytics-log-search-faq.md
+        - name: 日志搜索门户
+          href: log-analytics-log-search-portals.md
+- name: 操作指南
+  items:
+    - name: 创建 Log Analytics 工作区
+      href: log-analytics-quick-create-workspace.md
+    - name: 收集数据
+      items:
+        - name: 连接的源
+          items:
+            - name: Windows 代理
+              href: log-analytics-windows-agents.md
+            - name: Linux 代理
+              href: log-analytics-agent-linux.md
+            - name: Azure 虚拟机
+              href: log-analytics-azure-vm-extension.md
+            - name: Azure 资源
+              href: log-analytics-azure-storage.md
+            - name: Azure 存储中的诊断或日志数据
+              href: log-analytics-azure-storage-iis-table.md
+            - name: Operations Manager
+              href: log-analytics-om-agents.md
+            - name: 配置管理器
+              href: log-analytics-sccm.md
+            - name: OMS 网关
+              href: log-analytics-oms-gateway.md
+        - name: 数据源
+          items:
+            - name: 数据源概述
+              href: log-analytics-data-sources.md
+            - name: Windows 事件
+              href: log-analytics-data-sources-windows-events.md
+            - name: 自定义 JSON 数据
+              href: log-analytics-data-sources-json.md
+            - name: Collectd 性能数据
+              href: log-analytics-data-sources-collectd.md
+            - name: Nagios 和 Zabbix 警报
+              href: log-analytics-data-sources-alerts-nagios-zabbix.md
+            - name: Syslog
+              href: log-analytics-data-sources-syslog.md
+            - name: 性能计数器
+              href: log-analytics-data-sources-performance-counters.md
+            - name: Linux 应用程序性能
+              href: log-analytics-data-sources-linux-applications.md
+            - name: IIS 日志
+              href: log-analytics-data-sources-iis-logs.md
+            - name: 自定义日志
+              href: log-analytics-data-sources-custom-logs.md
+            - name: 自定义字段
+              href: log-analytics-custom-fields.md
+    - name: 查询数据
+      items:
+        - name: 语言文档
+          href: 'https://docs.loganalytics.io'
+        - name: 从旧式语言转换
+          href: log-analytics-log-search-transition.md
+        - name: 跨工作区搜索
+          href: log-analytics-cross-workspace-search.md
+        - name: 从搜索结果执行操作
+          href: log-analytics-log-search-takeaction.md
+        - name: 使用计算机组
+          href: log-analytics-computer-groups.md
+        - name: Flow 连接器
+          href: log-analytics-flow-tutorial.md
+    - name: 旧式日志搜索
+      items:
+        - name: 日志搜索概述
+          href: log-analytics-log-searches.md
+        - name: 搜索参考
+          href: log-analytics-search-reference.md
+          items:
+            - name: 正则表达式
+              href: log-analytics-log-searches-regex.md
+    - name: 分析数据
+      items:
+        - name: 仪表板
+          href: log-analytics-dashboards.md
+        - name: 视图设计器
+          items:
+            - name: 概述
+              href: log-analytics-view-designer.md
+            - name: 磁贴参考
+              href: log-analytics-view-designer-tiles.md
+            - name: 可视化部分参考
+              href: log-analytics-view-designer-parts.md
+            - name: 筛选器
+              href: log-analytics-view-designer-filters.md
+        - name: Power BI
+          href: log-analytics-powerbi.md
+    - name: 创建警报
+      items:
+        - name: 了解警报
+          href: log-analytics-alerts.md
+        - name: 警报操作
+          href: log-analytics-alerts-actions.md
+        - name: 创建警报规则
+          items:
+            - name: OMS 门户
+              href: log-analytics-alerts-creating.md
+            - name: REST API
+              href: log-analytics-api-alerts.md
+            - name: 资源管理器模板
+              href: ../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md
+        - name: Webhook 操作示例
+          href: log-analytics-alerts-webhooks.md
+        - name: 警报管理解决方案
+          href: log-analytics-solution-alert-management.md
+    - name: 管理
+      items:
+        - name: 管理工作区成本
+          href: log-analytics-manage-cost-storage.md
+        - name: 创建工作区
+          href: log-analytics-manage-del-workspace.md
+    - name: 使用解决方案
+      items:
+        - name: 解决方案概述
+          href: log-analytics-add-solutions.md
+        - name: 目标解决方案
+          href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: 活动 Log Analytics
+          href: log-analytics-activity.md
+        - name: AD 运行状况检查
+          href: log-analytics-ad-assessment.md
+        - name: AD 复制状态
+          href: log-analytics-ad-replication-status.md
+        - name: 代理运行状况
+          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: 警报管理
+          href: log-analytics-solution-alert-management.md
+        - name: Application Insights 连接器
+          href: log-analytics-app-insights-connector.md
+        - name: Azure SQL 分析
+          href: log-analytics-azure-sql.md
+        - name: Azure Web 应用分析
+          href: log-analytics-azure-web-apps-analytics.md
+        - name: 容量和性能
+          href: log-analytics-capacity.md
+        - name: 更改跟踪
+          href: log-analytics-change-tracking.md
+        - name: 容器
+          href: log-analytics-containers.md
+        - name: DNS Analytics
+          href: log-analytics-dns.md
+        - name: IT Service Management Connector
+          href: log-analytics-itsmc-overview.md
+          items:
+            - name: IT Service Management 连接
+              href: log-analytics-itsmc-connections.md
+        - name: Key Vault
+          href: log-analytics-azure-key-vault.md
+        - name: 逻辑应用 B2B 消息
+          items:
+            - name: 逻辑应用 B2B 消息解决方案
+              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: 逻辑应用 B2B 自定义跟踪架构
+              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: 恶意软件评估
+          href: log-analytics-malware.md
+        - name: 网络分析
+          href: log-analytics-azure-networking-analytics.md
+        - name: 网络性能监视器
+          href: log-analytics-network-performance-monitor.md
+        - name: Office 365
+          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: SCOM 运行状况检查
+          href: log-analytics-scom-assessment.md
+        - name: 安全审核
+          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: 将 Service Fabric 与 Azure PowerShell 配合使用
+          href: log-analytics-service-fabric.md
+          items:
+            - name: 将 Service Fabric 与 Azure 资源管理器配合使用
+              href: log-analytics-service-fabric-azure-resource-manager.md
+        - name: 服务映射
+          href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: SQL 运行状况检查
+          href: log-analytics-sql-assessment.md
+        - name: Surface Hub
+          href: log-analytics-surface-hubs.md
+        - name: 更新管理
+          href: ../operations-management-suite/oms-solution-update-management.md
+        - name: VMware
+          href: log-analytics-vmware.md
+        - name: Windows 分析
+          items:
+            - name: 更新符合性
+              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+            - name: 升级就绪情况
+              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+        - name: 传输数据
+          href: log-analytics-wire-data.md
+    - name: 开发
+      items:
+        - name: 数据收集器 API
+          href: log-analytics-data-collector-api.md
+        - name: PowerShell cmdlet
+          href: log-analytics-powershell-workspace-configuration.md
+        - name: 资源管理器模板
+          href: log-analytics-template-workspace-configuration.md
+        - name: 日志搜索 API
+          href: log-analytics-log-search-api.md
+          items:
+            - name: Python
+              href: log-analytics-log-search-api-python.md
+        - name: 警报 API
+          href: log-analytics-api-alerts.md
+- name: 引用
+  items:
+    - name: 语言参考
+      href: 'https://docs.loganalytics.io/docs/Language-Reference'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.operationalinsights
+    - name: REST
+      href: /rest/api/loganalytics
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=log-analytics'
+    - name: Windows 分析
+      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'

@@ -13,14 +13,12 @@ ms.devlang:
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6ffb2d2da1e2439df6f5da543411e3c2c68d3435
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-file-shares-with-windows-vms"></a>通过 Windows VM 使用 Azure 文件共享 
 
 可以使用 Azure 文件共享的方式存储和访问 VM 中的文件。 例如，可以存储希望所有 VM 共享的脚本或应用程序配置文件。 本主题介绍如何创建和装载 Azure 文件共享，以及如何上传和下载文件。
@@ -76,4 +74,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>后续步骤
 
 也可以通过 PowerShell 创建和管理文件共享。 有关详细信息，请参阅 [在 Windows 上开始使用 Azure 文件存储](../../storage/files/storage-dotnet-how-to-use-files.md)。
-

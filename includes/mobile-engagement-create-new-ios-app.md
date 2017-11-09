@@ -1,7 +1,7 @@
-1. 启动 **Xcode**，然后在弹出窗口中，选择“创建新的 Xcode 项目”。
+1. 启动 **Xcode**，并在弹出窗口中，选择“创建新的 Xcode 项目”。
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-new-project.png)
-2. 选择“单一视图应用程序”，然后单击“下一步”。
+2. 选择“单一视图应用程序”，并单击“下一步”。
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-simple-view.png)
 3. 依次填写“产品名称”、“组织名称”和“组织标识符”。 根据应用，在“语言”选择中，选择“Objective-C”或“Swift”。

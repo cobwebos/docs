@@ -16,16 +16,15 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>在 Azure 中备份 Windows 虚拟机
 
-可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以仅还原特定的文件。 本文介绍了如何将单个文件还原到运行 Windows Server 和 IIS 的 VM。 如果尚没有 VM 可使用，可以参考 [Windows 快速入门](quick-create-portal.md)创建一个 VM。 本教程将介绍如何执行下列操作：
+可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以仅还原特定的文件。 本文介绍了如何将单个文件还原到运行 Windows Server 和 IIS 的 VM。 如果尚没有 VM 可使用，可以参考 [Windows 快速入门](quick-create-portal.md)创建一个 VM。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份
@@ -106,7 +105,6 @@ ms.lasthandoff: 07/28/2017
 
 > [!div class="nextstepaction"]
 > [监视虚拟机](tutorial-monitoring.md)
-
 
 
 

@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
 ms.openlocfilehash: 7841fcf0b5f4dcb409abf8bfb804c2e03dad6d3a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis 缓存示例
 本主题提供 Azure Redis 缓存示例的列表，包括连接到缓存、从缓存读取数据和将数据写入缓存，以及使用 ASP.NET Redis 缓存提供程序等方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。
@@ -68,6 +67,5 @@ ms.lasthandoff: 07/06/2017
 [Retwis](https://github.com/SyntaxC4-MSFT/retwis) 示例是 Redis Hello World。 它是最小的 Twitter 样式的社交网络克隆，是通过 [Predis](https://github.com/nrk/predis) 客户端使用 Redis 和 PHP 编写的。 源代码旨在是非常简单，并且在同一时间以显示其他 Redis 数据结构。
 
 ## <a name="bandwidth-monitor"></a>带宽监视器
-借助[带宽监视器](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)示例，可监视客户端上使用的带宽。 若要测量带宽、请在缓存客户端计算机上运行该示例，对缓存执行调用，然后观察带宽监视器示例报告的带宽。
-
+借助[带宽监视器](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)示例，可监视客户端上使用的带宽。 要测量带宽、请在缓存客户端计算机上运行该示例，对缓存执行调用，并观察带宽监视器示例报告的带宽。
 

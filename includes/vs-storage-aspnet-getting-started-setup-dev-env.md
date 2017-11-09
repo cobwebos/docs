@@ -22,10 +22,10 @@
 
 ### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>使用“连接的服务”连接到 Azure 存储帐户
 
-1. 在“解决方案资源管理器”中右键单击项目，然后从上下文菜单中选择“添加”->“连接的服务”。
+1. 在“解决方案资源管理器”中右键单击项目，并从上下文菜单中选择“添加”->“连接的服务”。
 
-1. 在“添加连接的服务”对话框中，选择“Azure 存储”，然后选择“配置”。
+1. 在“添加连接的服务”对话框中，选择“Azure 存储”，并选择“配置”。
 
     ![“连接的服务”对话框](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-1. 在“Azure 存储”对话框中，选择需要使用的 Azure 存储帐户，然后选择“添加”。
+1. 在“Azure 存储”对话框中，选择需要使用的 Azure 存储帐户，并选择“添加”。

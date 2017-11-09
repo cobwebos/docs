@@ -14,16 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 331d82a987aebe422ca2f560d856dad9f1b733f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/05/2017
-
+ms.openlocfilehash: 54b715695e24786ec4e8dfcabefc648d76179c8b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>使用 Express 在 Azure 云服务中生成 Node.js Web 应用程序
 Node.js 包含核心运行时中最小的一个功能集。
-开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 在本教程中，你将使用 [Express][Express] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
+开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 在本教程中，将使用 [Express][Express] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
 
 以下是已完成应用程序的屏幕快照：
 
@@ -60,7 +59,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    
         PS C:\node\expressapp\WebRole1> express
    
-    系统将提示你是否覆盖之前创建的应用程序。 输入 **y** 或 **yes** 以继续操作。 Express 将生成用于生成应用程序的 app.js 文件和一个文件夹结构。
+    系统会提示是否覆盖之前创建的应用程序。 输入 **y** 或 **yes** 以继续操作。 Express 将生成用于生成应用程序的 app.js 文件和一个文件夹结构。
    
     ![express 命令的输出](./media/cloud-services-nodejs-develop-deploy-express-app/node23.png)
 3. 若要安装在 package.json 文件中定义的其他依赖项，请输入以下命令：
@@ -89,7 +88,7 @@ Node.js 包含核心运行时中最小的一个功能集。
     ![包含 Welcome to Express 的网页。](./media/cloud-services-nodejs-develop-deploy-express-app/node28.png)
 
 ## <a name="modifying-the-view"></a>修改视图
-现在，你将修改视图以显示消息“Welcome to Express in Azure”。
+现在，将修改视图以显示消息“Welcome to Express in Azure”。
 
 1. 请输入以下命令来打开 index.jade 文件：
    
@@ -102,7 +101,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    
    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. 保存文件并退出记事本。
-4. 刷新浏览器，你将看到所做的更改。
+4. 刷新浏览器，会看到所做的更改。
    
    ![浏览器窗口，其中的页面包含 Welcome to Express in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node32.png)
 
@@ -123,6 +122,5 @@ Node.js 包含核心运行时中最小的一个功能集。
 [Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: http://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
-
 
 

@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 2d0794781946195fc6fbab413299012e6949a4bc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: d33babd331570624ca6a0fc967c79dbc467a1b40
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="active-directory-conditional-access-device-policies-for-office-365-services"></a>Office 365 服务的 Active Directory 条件访问设备策略
 
@@ -42,9 +41,8 @@ Azure Active Directory (Azure AD) 强制实施条件访问策略，以帮助确�
 
 必须使用 Azure AD 设备注册服务来注册设备。
 
-当本地用户要进行身份验证时，需要 Active Directory 联合身份验证服务 (AD FS)（1.0 版以及更高版本）。 当标识提供者不支持多重身份验证时，针对工作区加入的多重身份验证将失败。 例如，不能将多重身份验证与 AD FS 2.0 一起使用。 在启用 Azure AD 设备注册服务的多重身份验证之前，确保本地 AD FS 与多重身份验证配合使用，并且有效的多重身份验证方法已准备就绪。 例如，Windows Server 2012 R2 上的 AD FS 具有多重身份验证功能。 在启用 Azure AD 设备注册服务的多重身份验证之前，还必须在 AD FS 服务器上设置其他有效的身份验证（多重身份验证）方法。 有关 AD FS 中受支持的多重身份验证方法的详细信息，请参阅[为 AD FS 配置额外的身份验证方法](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)。
+当本地用户要进行身份验证时，需要 Active Directory 联合身份验证服务 (AD FS)（1.0 版以及更高版本）。 当标识提供者不支持多重身份验证时，针对 Workplace Join 的多重身份验证将失败。 例如，不能将多重身份验证与 AD FS 2.0 一起使用。 在启用 Azure AD 设备注册服务的多重身份验证之前，确保本地 AD FS 与多重身份验证配合使用，并且有效的多重身份验证方法已准备就绪。 例如，Windows Server 2012 R2 上的 AD FS 具有多重身份验证功能。 在启用 Azure AD 设备注册服务的多重身份验证之前，还必须在 AD FS 服务器上设置其他有效的身份验证（多重身份验证）方法。 有关 AD FS 中受支持的多重身份验证方法的详细信息，请参阅[为 AD FS 配置额外的身份验证方法](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)。
 
 ## <a name="next-steps"></a>后续步骤
 
 *   对于常见问题解答，请参阅 [Azure Active Directory 条件访问常见问题解答](active-directory-conditional-faqs.md)。
-

@@ -13,33 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: a0d2909ca69f06b6d08deaa25f35d55d9f9828fe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 183d60cbbbc8d02f7cd3cacc160453c45717ef0d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
-<a id="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more" class="xliff"></a>
-
-# 用户预配到 Azure AD 库应用程序需要数小时或更长时间
+# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>用户预配到 Azure AD 库应用程序需要数小时或更长时间
 
 首次为应用程序启用自动预配时，初始同步可能会持续 20 分钟至几小时，具体取决于 Azure AD 目录的大小与作用域中的预配用户数量。 
 
 在初始同步之后同步速度会变快，因为在初始同步后，预配服务已储存了代表两个系统状态的水印，提高了之后的同步性能。
 
-<a id="how-to-improve-provisioning-performance" class="xliff"></a>
-
-## 如何提高预配性能
+## <a name="how-to-improve-provisioning-performance"></a>如何提高预配性能
 
 如果初始同步所需时间不止几个小时，可执行以下操作来提高性能：
 
 -   **用户范围筛选器** 使用范围筛选器，可优化预配服务通过筛选用户（基于特定属性值）从 Azure AD 提取的数据。 有关范围筛选器的详细信息，请参阅[使用范围筛选器进行基于属性的应用程序预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters)。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)
-
 

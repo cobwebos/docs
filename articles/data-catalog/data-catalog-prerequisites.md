@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 6ae024e59d29d20c223243b71aceae1db7eefdf5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: 3fdef7bb58a5cd5dfbe4d37d9baf9c8e392ebe42
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure 数据目录先决条件
 
@@ -52,4 +51,3 @@ Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的�
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Configuring Authentication Policies](https://technet.microsoft.com/library/dn486781.aspx)（配置身份验证策略）。
-

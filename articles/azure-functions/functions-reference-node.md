@@ -16,20 +16,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
+ms.openlocfilehash: 1aaeeed2740179555c024792562a950f4fd6b29d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 641afd78aae145c5e1b16a08567a22c1aafe59a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
-> [!div class="op_single_selector"]
-> * [C# 脚本](functions-reference-csharp.md)
-> * [F# 脚本](functions-reference-fsharp.md)
-> * [JavaScript](functions-reference-node.md)
-> 
-> 
+[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Azure Functions 的 JavaScript 体验可以轻松导出一个函数，可以将该函数作为 `context` 对象进行传递，用以与运行时进行通信，以及用以通过绑定来接收和发送数据。
 
@@ -54,14 +48,14 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 
 `direction === "in"` 的绑定作为函数参数传递，这意味着可以使用 [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 动态处理新输入（例如，通过使用 `arguments.length` 循环访问所有输入）。 如果只有一个触发器并且没有其他输入，则此功能非常方便，因为可以在不引用 `context` 对象的情况下可预见地访问触发器数据。
 
-参数总是以其在 function.json 中出现的顺序传递给函数，即使没有在 exports 语句中指定它们。 例如，如果具有 `function(context, a, b)` 并将其更改为 `function(context, a)`，仍然可以通过参考 `arguments[3]` 获取函数代码中的值 `b`。
+参数总是以其在 function.json 中出现的顺序传递给函数，即使没有在 exports 语句中指定它们。 例如，如果具有 `function(context, a, b)` 并将其更改为 `function(context, a)`，仍然可以通过参考 `arguments[2]` 获取函数代码中的值 `b`。
 
 所有绑定，无论方向如何，也在 `context` 对象上传递（请参阅下面的脚本）。 
 
 ## <a name="context-object"></a>上下文对象
 运行时使用 `context` 对象将数据传入和传出函数，并能与其进行通信。
 
-上下文对象始终是函数的第一个参数，必须包含在函数中，因为它具有正确使用运行时所需的 `context.done` 和 `context.log` 等方法。 可以按个人喜好为对象命名（例如 `ctx` 或 `c`）。
+`context` 对象始终是函数的第一个参数，必须包含在函数中，因为它具有正确使用运行时所需的 `context.done` 和 `context.log` 等方法。 可以按个人喜好为对象命名（例如 `ctx` 或 `c`）。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -202,7 +196,7 @@ Functions 允许定义向控制台进行写入时使用的阈值跟踪级别，�
 }  
 ```
 
-**consoleLevel** 的值对应于 `context.log` 方法的名称。 要为控制台禁用所有跟踪日志记录，请将 **consoleLevel** 设置为 _off_。 有关 host.json 文件的详细信息，请参阅 [host.json 参考主题](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)。
+**consoleLevel** 的值对应于 `context.log` 方法的名称。 要为控制台禁用所有跟踪日志记录，请将 **consoleLevel** 设置为 _off_。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
 ## <a name="http-triggers-and-bindings"></a>HTTP 触发器和绑定
 
@@ -335,8 +329,5 @@ function GetEnvironmentVariable(name)
 
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
-* [Azure Functions C# 开发人员参考](functions-reference-csharp.md)
-* [Azure Functions F# 开发人员参考](functions-reference-fsharp.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-
 

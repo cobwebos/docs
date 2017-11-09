@@ -9,18 +9,17 @@ editor:
 tags: top-support-issue
 ms.assetid: 73f2672c-602e-4766-8948-2b180115d299
 ms.service: virtual-machines-linux
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: required
 ms.date: 01/10/2017
 ms.devlang: na
 ms.author: delhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: c6d4ed45133dc3f4b1f3d17fb5a87d3bf77aa3f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: 391653e8bb85489bb3ec3554e347ace09f92095d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-linux-virtual-machine-in-azure"></a>排查在 Azure 中重新启动或调整现有 Linux 虚拟机时遇到的经典部署问题
 > [!div class="op_single_selector"]
@@ -29,20 +28,20 @@ ms.lasthandoff: 04/03/2017
 > 
 > 
 
-当你尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
+尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关 Resource Manager 版本，请参阅[此处](../restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关 Resource Manager 版本，请参阅[此处](../restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
 ## <a name="collect-audit-logs"></a>收集审核日志
 若要开始故障排除，请收集审核日志，以识别与问题相关的错误。
 
-在 Azure 门户中，单击“浏览” > “虚拟机” >  *你的 Linux 虚拟机*  > “设置” > “审核日志”。
+在 Azure 门户中，单击“浏览” > “虚拟机” >  *Linux 虚拟机* > “设置” > “审核日志”。
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>问题：启动已停止的 VM 时发生错误
-你尝试启动已停止的 VM，但出现分配失败。
+尝试启动已停止的 VM，但出现分配失败。
 
 ### <a name="cause"></a>原因
 必须在托管云服务的原始群集上尝试发出启动已停止 VM 的请求。 但是，群集没有足够的空间可完成该请求。
@@ -61,26 +60,25 @@ ms.lasthandoff: 04/03/2017
 > 
 
 ## <a name="issue-error-when-resizing-an-existing-vm"></a>问题：调整现有 VM 的大小时发生错误
-你尝试调整现有 VM 的大小，但出现分配失败。
+尝试调整现有 VM 的大小，但出现分配失败。
 
 ### <a name="cause"></a>原因
 必须在托管云服务的原始群集上尝试发出调整 VM 大小的请求。 但是，群集不支持请求的 VM 大小。
 
 ### <a name="resolution"></a>解决方法
-减少请求的 VM 大小，然后重试调整大小请求。
+减少请求的 VM 大小，并重试调整大小请求。
 
-* 单击“浏览全部” > “虚拟机(经典)” >  *你的虚拟机*  > “设置” > “大小”。 有关详细步骤，请参阅[调整虚拟机的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
+* 单击“浏览全部” > “虚拟机(经典)” > *虚拟机* > “设置” > “大小”。 有关详细步骤，请参阅[调整虚拟机的大小](https://msdn.microsoft.com/library/dn168976.aspx)。
 
 如果无法减少 VM 大小，请遵循以下步骤：
 
 * 创建新的云服务，确保它不链接到地缘组，并且未与链接到地缘组的虚拟网络相关联。
 * 在其中创建更大的新 VM。
 
-可以在同一个云服务中合并所有 VM。 如果现有的云服务和基于区域的虚拟网络相关联，你可以将新云服务连接到现有虚拟网络。
+可以在同一个云服务中合并所有 VM。 如果现有的云服务和基于区域的虚拟网络相关联，可以将新云服务连接到现有虚拟网络。
 
 如果现有的云服务未与基于区域的虚拟网络相关联，则必须删除现有云服务中的 VM，并在新云服务中从其磁盘重新创建 VM。 然而，请务必记得新的云服务将有新的名称和 VIP，因此需要为所有目前将此信息用于现有云服务的依赖性更新该信息。
 
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中创建新的 Linux VM 时遇到问题，请参阅[排查在 Azure 中新建 Linux 虚拟机时遇到的部署问题](../troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
 

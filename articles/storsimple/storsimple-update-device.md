@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9c0a113e50fdb78307b8030f9b0d95b696f3f234
 ms.openlocfilehash: 8490110942741b049b6d44ac93697303cef40e8a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述
@@ -64,7 +63,7 @@ ms.lasthandoff: 01/25/2017
 或者，也可以使用 Windows PowerShell for StorSimple 应用常规（普通模式）更新。
 
 > [!IMPORTANT]
-> 虽然用户可以使用 Windows PowerShell for StorSimple 安装常规更新，但我们强烈建议通过 Azure 经典门户安装常规更新。 从 Update 1 开始，将在从此门户安装更新之前执行预检查。 这些预检查将排除故障并确保更流畅的体验。 
+> 虽然用户可以使用 Windows PowerShell for StorSimple 安装常规更新，但我们强烈建议通过 Azure 经典门户安装常规更新。 从 Update 1 开始，会在从此门户安装更新之前执行预检查。 这些预检查将排除故障并确保更流畅的体验。 
 > 
 > 
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 01/25/2017
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
 ### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>步骤 2：进入维护模式 <a name="step2">
-连接到控制台后，确定是否有要安装的更新，然后进入维护模式安装更新。
+连接到控制台后，确定是否有要安装的更新，并进入维护模式安装更新。
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
@@ -107,17 +106,16 @@ ms.lasthandoff: 01/25/2017
 * 常规修补程序 
 * 维护模式修补程序  
 
-以下过程将介绍如何使用 Windows PowerShell for StorSimple 安装常规修补程序和维护模式修补程序。
+以下过程介绍如何使用 Windows PowerShell for StorSimple 安装常规修补程序和维护模式修补程序。
 
 [!INCLUDE [storsimple-install-regular-hotfixes](../../includes/storsimple-install-regular-hotfixes.md)]
 
 [!INCLUDE [storsimple-install-maintenance-mode-hotfixes](../../includes/storsimple-install-maintenance-mode-hotfixes.md)]
 
-## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>在对设备执行恢复出厂设置时更新将会发生什么情况？
+## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>在对设备执行恢复出厂设置时更新会发生什么情况？
 如果将设备恢复出厂设置，则所有更新都将丢失。 注册并配置恢复出厂设置的设备后，将需要通过 Azure 经典门户和/或 Windows PowerShell for StorSimple 手动安装更新。 有关恢复出厂设置的详细信息，请参阅[将设备恢复为出厂默认设置](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何[使用 Windows PowerShell for StorSimple 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)。
 * 详细了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

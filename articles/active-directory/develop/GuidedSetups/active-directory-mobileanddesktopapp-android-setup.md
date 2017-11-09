@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a43d7e30a6f4176afba27f0de2c2c116df741080
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="set-up-your-project"></a>设置项目
 
 > 想要改为下载此示例的 Android Studio 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)并跳到[配置步骤](#create-an-application-express)，在执行前配置代码示例。
@@ -29,9 +28,9 @@ ms.contentlocale: zh-cn
 
 ### <a name="create-a-new-project"></a>创建新项目 
 1.  打开 Android Studio，转到： `File` > `New` > `New Project`
-2.  命名应用程序，然后单击 `Next`
-3.  务必选择 API 21 或更新版本 (Android 5.0)，然后单击 `Next`
-4.  保留 `Empty Activity`，然后依次单击 `Next` 和 `Finish`
+2.  命名应用程序，并单击 `Next`
+3.  务必选择 API 21 或更新版本 (Android 5.0)，并单击 `Next`
+4.  保留 `Empty Activity`，并依次单击 `Next` 和 `Finish`
 
 
 ### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>向项目添加 Microsoft 身份验证库 (MSAL)
@@ -108,5 +107,4 @@ compile 'com.android.volley:volley:1.0.0'
         android:visibility="invisible" />
 </LinearLayout>
 ```
-
 

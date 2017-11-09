@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: 86b9a3d93745045904c6038583b9bc6ebac5667e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
 
 
@@ -48,7 +46,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>从 Azure 管理门户获取预配报告
 
-若要获取给定应用程序的预配报告信息，首先请启动 [Azure 管理门户](https://portal.azure.com)，然后浏览到为其配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
+要获取给定应用程序的预配报告信息，首先请启动 [Azure 管理门户](https://portal.azure.com)，然后浏览到为其配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
 
 “Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate”
 
@@ -80,7 +78,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 * **导出事件** - 每当 Azure AD 预配服务向目标系统写入用户帐户或组对象时，将记录“导出”事件。 这些事件记录发生相应事件时，Azure AD 预配服务写入的所有用户属性及其值。 如果向目标系统写入用户帐户或组对象时出错，此处会显示该错误。
 
-* **进程托管事件** - 如果预配服务在尝试某个操作时遇到失败，然后根据退让时间间隔重试该操作，则会发生进程托管。 每当某个预配操作被淘汰时，将记录“托管”事件。
+* **进程托管事件** - 如果预配服务在尝试某个操作时遇到失败，并根据退让时间间隔重试该操作，则会发生进程托管。 每当某个预配操作被停用时，将记录“托管”事件。
 
 查看单个用户的预配事件时，这些事件通常按以下顺序显示：
 
@@ -105,7 +103,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 3. 在“日期范围”菜单中，选择要搜索的日期范围
 
-4. 在“搜索”栏中，输入要搜索的用户的用户 ID。 ID 值的格式应该与在属性映射配置中选作主要匹配 ID（例如 userPrincipalName 或员工 ID 编号）的任何值相匹配。 所需 ID 值将显示在“目标”列中。
+4. 在“搜索”栏中，输入要搜索的用户的用户 ID。 ID 值的格式应该与在属性映射配置中选作主要匹配 ID（例如 userPrincipalName 或员工 ID 编号）的任何值相匹配。 所需 ID 值会显示在“目标”列中。
 
 5. 按 Enter 开始搜索。 首先会返回最近的预配事件。
 
@@ -116,7 +114,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>有关查看预配审核日志的提示
 
-为了尽可能方便地在 Azure 门户查看信息，请选择“列”按钮，然后选择以下各列：
+为了尽可能方便地在 Azure 门户查看信息，请选择“列”按钮，并选择以下各列：
 
 * **日期** - 显示事件发生的日期。
 * **目标** - 显示作为事件主题的应用名称和用户 ID。
@@ -135,5 +133,4 @@ Azure Active Directory 包含一个[用户帐户预配服务](active-directory-s
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)

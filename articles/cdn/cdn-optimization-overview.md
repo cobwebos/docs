@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>针对方案优化 Azure 内容传送
 
@@ -115,7 +114,6 @@ Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供
 动态站点加速包括各种对动态内容延迟和性能有益的技术。 这些技术包括路由和网络优化、TCP 优化等。 
 
 此优化可用于加速许多响应都不可缓存的 Web 应用。 例如，搜索结果、签出事务或实时数据。 可以继续对静态数据使用核心 CDN 缓存功能。 
-
 
 
 

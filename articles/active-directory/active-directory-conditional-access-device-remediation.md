@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 7ba8a79df39c135ef1831b46d38babeedfb722ba
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>在 Windows 设备上无法切换位置
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="supported-browser"></a>支持的浏览器
 
-如果管理员配置了条件访问策略，则你只能使用支持的浏览器访问组织的资源。 Windows 设备仅支持 **Internet Explorer** 和 **Edge**。
+如果管理员配置了条件访问策略，则你只能使用支持的浏览器访问组织的资源。 Windows 设备仅支持 **Internet Explorer** 和 **Microsoft Edge**。
 
 查看错误页的详细信息部分，可以轻松判断无法访问资源的原因是否为使用了不受支持的浏览器：
 
@@ -160,5 +159,4 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 条件访问](active-directory-conditional-access.md)
-
 

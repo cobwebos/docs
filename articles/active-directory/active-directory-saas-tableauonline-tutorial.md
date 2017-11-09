@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 443fab1198a91a4d5749e6421f7b8603fc75a81e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>教程：Azure Active Directory 与 Tableau Online 集成
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 06/20/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>从库中添加 Tableau Online
-若要配置 Tableau Online 与 Azure AD 的集成，需要从库中将 Tableau Online 添加到托管 SaaS 应用列表。
+要配置 Tableau Online 与 Azure AD 的集成，需要从库中将 Tableau Online 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Tableau Online，请执行以下步骤：**
 
@@ -62,7 +61,7 @@ ms.lasthandoff: 06/20/2017
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/20/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tableau Online 测试用户](#creating-a-tableau-online-test-user)** - 在 Tableau Online 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 Tableau Online 测试用户](#creating-a-tableau-online-test-user)** - 在 Tableau Online 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -115,7 +114,7 @@ ms.lasthandoff: 06/20/2017
 
     b. 在“标识符”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/<instancename>`
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
@@ -191,7 +190,7 @@ ms.lasthandoff: 06/20/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -199,7 +198,7 @@ ms.lasthandoff: 06/20/2017
  
 ### <a name="creating-a-tableau-online-test-user"></a>创建 Tableau Online 测试用户
 
-在本部分中，将在 Tableau Online 中创建一个名为“Britta Simon”的用户。
+在本部分中，会在 Tableau Online 中创建一个名为“Britta Simon”的用户。
 
 1. 在“Tableau Online”上，单击“设置”，然后单击“身份验证”部分。 向下滚动到“选择用户”部分。 依次单击“添加用户”、“输入电子邮件地址”。
    
@@ -215,9 +214,9 @@ ms.lasthandoff: 06/20/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Tableau Online，请执行以下步骤：**
+**要将 Britta Simon 分配到 Tableau Online，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -263,5 +262,4 @@ ms.lasthandoff: 06/20/2017
 [201]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_203.png
-
 

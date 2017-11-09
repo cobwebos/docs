@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 52827723477677bc292c645e2390c435fbad3ee4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/08/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-pre-requisites-for-creating-a-data-service-offer-for-the-azure-marketplace"></a>为 Azure 应用商店创建数据服务产品/服务的技术先决条件
 > [!IMPORTANT]
-> **本次我们将不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
+> **本次我们不再载入任何新的数据服务发布服务器。新的 dataservices 将不会获准出现在列表中。** 如果想要在 AppSource 上发布 SaaS 业务应用程序，可以在[此处](https://appsource.microsoft.com/partners)找到更多信息。 如果想要在 Azure 应用商店上发布 IaaS 应用程序或开发人员服务，可以在[此处](https://azure.microsoft.com/marketplace/programs/certified/)找到更多信息。
 > 
 > 
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 12/08/2016
 在 Azure 应用商店中发布数据服务时，发布者可在多项技术之间作出抉择。 支持的主要技术如下所述。 无论使用何种技术发布数据服务，最终用户均通过 Azure 应用商店服务公开的“OData 源”使用数据。 有关 OData 服务的完整信息可在 [http://www.odata.org/](http://www.odata.org/) 上找到
 
 ## <a name="sql-azure-database"></a>SQL Azure 数据库
-在 SQL Azure 中准备好数据集是发布者的责任。 你将需要订阅 Azure、预配数据库的相应大小，并将数据上传到 SQL Azure DB。 发布者还负责使其数据始终处于最新状态。 有关订阅 Azure 服务的详细信息可在 [https://azure.microsoft.com/services/sql-database/](https://azure.microsoft.com/services/sql-database/) 上找到
+在 SQL Azure 中准备好数据集是发布者的责任。 需要订阅 Azure、预配数据库的相应大小，并将数据上传到 SQL Azure DB。 发布者还负责使其数据始终处于最新状态。 有关订阅 Azure 服务的详细信息可在 [https://azure.microsoft.com/services/sql-database/](https://azure.microsoft.com/services/sql-database/) 上找到
 
 将数据移至 SQL Azure 时，Azure 应用商店将公开表和视图。 发布者可指定向最终用户公开的表/视图和列。 另外，内容提供商也可指定最终用户查询的列和仅在有效负载中返回的列。 这可高度灵活地决定应公开的数据库数据。 可查询的列需要一个或多个数据库索引的支持。
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 12/08/2016
 
 需要以 HTTP 参数形式或在 HTTP 标头（键值对）中提供授权信息（如 API 密钥、身份验证令牌等），也支持基本身份验证。 需要提供有效密钥，并且所有通过 Azure 应用商店提出的请求均通过该密钥提出。 用户监视和计费在 Azure 应用商店层进行。
 
-服务返回的错误需要映射到 HTTP 状态代码。 如果服务返回包含错误的 XML，这些错误将由 Azure 应用商店服务映射到 HTTP 状态代码。
+服务返回的错误需要映射到 HTTP 状态代码。 如果服务返回包含错误的 XML，这些错误由 Azure 应用商店服务映射到 HTTP 状态代码。
 
 ## <a name="soap-based-web-services"></a>基于 SOAP 的 Web 服务
 协议：**仅 HTTPS**
@@ -68,4 +67,3 @@ OData 服务无需仅根据后端数据库运行。 OData 支持使用任何种�
 或者，如果要查看整体过程和每个发布阶段的相应文章，请访问文章[入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)。
 
 [link-acct]:marketplace-publishing-accounts-creation-registration.md
-

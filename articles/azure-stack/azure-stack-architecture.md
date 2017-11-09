@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Development Kit architecture | Microsoft Docs
-description: View the Microsoft Azure Stack Development Kit architecture.
+title: "Microsoft Azure 堆栈开发工具包体系结构 |Microsoft 文档"
+description: "查看 Microsoft Azure 堆栈开发工具包体系结构。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -12,46 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: ece8cb785ffcceaed476fa729e7471dc7831c155
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: e8ff17e069bd9237bf06cd79b4c222c50a999eda
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit architecture
-The Azure Stack Development Kit is a single-node deployment of Azure Stack. All the components are installed in virtual machines running on a single host machine. 
+# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure 堆栈开发工具包体系结构
 
-## <a name="logical-architecture-diagram"></a>Logical architecture diagram
-The following diagram illustrates the logical architecture of the Azure Stack development kit and its components.
+*适用范围： Azure 堆栈开发工具包*
+
+Azure 堆栈开发工具包是单节点部署的 Azure 堆栈。 所有组件安装在单主机计算机上运行的虚拟机中。 
+
+## <a name="logical-architecture-diagram"></a>逻辑体系结构示意图
+下图说明了 Azure 堆栈开发工具包和及其组件的逻辑体系结构。
 
 ![](media/azure-stack-architecture/image1.png)
 
-## <a name="virtual-machine-roles"></a>Virtual machine roles
-The Azure Stack development kit offers services using the following VMs on the host:
+## <a name="virtual-machine-roles"></a>虚拟机角色
+Azure 堆栈开发工具包提供了以下虚拟机使用主机上的服务：
 
-| Name | Description |
+| 名称 | 说明 |
 | ----- | ----- |
-| **AzS-ACS01** | Azure Stack storage services.|
-| **AzS-ADFS01** | Active Directory Federation Services (ADFS).  |
-| **AzS-BGPNAT01** | Edge router and provides NAT and VPN capabilities for Azure Stack. |
-| **AzS-CA01** | Certificate authority services for Azure Stack role services.|
-| **AzS-DC01** | Active Directory, DNS, and DHCP services for Microsoft Azure Stack.|
-| **AzS-ERCS01** | Emergency Recovery Console VM. |
-| **AzS-GWY01** | Edge gateway services such as VPN site-to-site connections for tenant networks.|
-| **AzS-NC01** | Network Controller, which manages Azure Stack network services.  |
-| **AzS-SLB01** | Load balancing multiplexer services in Azure Stack for both tenants and Azure Stack infrastructure services.  |
-| **AzS-SQL01** | Internal data store for Azure Stack infrastructure roles.  |
-| **AzS-WAS01** | Azure Stack administrative portal and Azure Resource Manager services.|
-| **AzS-WASP01**| Azure Stack user (tenant) portal and Azure Resource Manager services.|
-| **AzS-XRP01** | Infrastructure management controller for Microsoft Azure Stack, including the Compute, Network, and Storage resource providers.|
+| **AzS ACS01** | Azure Stack 存储服务。|
+| **AzS ADFS01** | Active Directory 联合身份验证服务 (ADFS)。  |
+| **AzS BGPNAT01** | 边缘路由器，为 Azure Stack 提供 NAT 和 VPN 功能。 |
+| **AzS CA01** | Azure Stack 角色服务的证书颁发机构服务。|
+| **AzS DC01** | Microsoft Azure Stack 的 Active Directory、DNS 和 DHCP 服务。|
+| **AzS ERCS01** | 紧急恢复控制台 VM。 |
+| **AzS GWY01** | 边缘网关服务，例如租户网络的 VPN 站点到站点连接。|
+| **AzS NC01** | 用于管理 Azure Stack 网络服务的网络控制器。  |
+| **AzS SLB01** | Azure Stack 中用于租户和 Azure Stack 基础结构服务的负载均衡多路复用器服务。  |
+| **AzS SQL01** | Azure Stack 基础结构角色的内部数据存储。  |
+| **AzS WAS01** | Azure Stack 管理门户和 Azure 资源管理器服务。|
+| **AzS WASP01**| Azure Stack 用户（租户）门户和 Azure 资源管理器服务。|
+| **AzS XRP01** | Microsoft Azure Stack 的基础结构管理控制器，包括计算、网络和存储资源提供程序。|
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy Azure Stack](azure-stack-deploy.md)
+## <a name="next-steps"></a>后续步骤
+[部署 Azure Stack](azure-stack-deploy.md)
 
-[First scenarios to try](azure-stack-first-scenarios.md)
-
+[尝试的第一个方案](azure-stack-first-scenarios.md)
 

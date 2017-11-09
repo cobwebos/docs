@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 90e08b9cf2feb93de4877bec9734352949896dca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>教程：Azure Active Directory 与 Salesforce 沙盒集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 07/12/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Salesforce 沙盒测试用户](#creating-a-salesforce-sandbox-test-user)** - 在 Salesforce 沙盒中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。
+3. **[创建 Salesforce 沙盒测试用户](#creating-a-salesforce-sandbox-test-user)** - 在 Salesforce 沙盒中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -140,14 +139,14 @@ ms.lasthandoff: 07/12/2017
 9. 在顶部菜单中，单击“设置”。
 
     ![配置单一登录](./media/active-directory-saas-salesforcesandbox-tutorial/IC781024.png)
-10. 在左侧导航窗格中，单击“安全控制”，然后单击“单一登录设置”。
+10. 在左侧导航窗格中，单击“安全控制”，并单击“单一登录设置”。
 
     ![配置单一登录](./media/active-directory-saas-salesforcesandbox-tutorial/IC781025.png)
 11. 在“单一登录设置”部分中，执行以下步骤：![配置单一登录](./media/active-directory-saas-salesforcesandbox-tutorial/IC781026.png)
      
-     a.在“横幅徽标”下面，选择“删除上传的徽标”。  选择“已启用 SAML”。 
+     a.  选择“已启用 SAML”。 
 
-     b.保留“数据库类型”设置，即设置为“共享”。  单击“新建” 。
+     b.  单击“新建” 。
 
 12. 在“SAML 单一登录设置”部分中，执行以下步骤：
 
@@ -155,13 +154,13 @@ ms.lasthandoff: 07/12/2017
 
     a.在“名称”文本框中，键入配置的名称（例如：SPSSOWAAD\_Test）。 
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将“SMAL 实体 ID”值粘贴到“证书颁发者”文本框。
+    b. 将“SMAL 实体 ID”值粘贴到“证书颁发者”文本框。
 
     c. 在“实体 ID”文本框中，输入 **https://test.salesforce.com**（如果它是要添加到目录的第一个 Salesforce 沙盒实例）。 如果已添加 Salesforce 沙盒实例，则对于**实体 ID** 键入**登录 URL**，其格式应为：`http://company.my.salesforce.com`  
  
     d.单击“下一步”。 单击“浏览”以上传已下载的证书。  
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于“SAML 标识类型”，选择“断言包含用户对象的联合 ID”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对于“SAML 标识类型”，选择“断言包含用户对象的联合 ID”。
  
     f. 对于“SAML 标识位置”，请选择“标识位于 Subject 语句的 NameIdentifier 元素中”。
 
@@ -174,22 +173,22 @@ ms.lasthandoff: 07/12/2017
     j. 单击“保存” 。
 
 ### <a name="enable-your-domain"></a>启用域
-本部分假定你已创建域。  有关详细信息，请参阅[定义域名](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US)。
+本部分假定已创建域。  有关详细信息，请参阅[定义域名](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US)。
 
 **若要启用域，请执行以下步骤：**
 
-1. 在左侧导航窗格中，单击“域管理”，然后单击“我的域”。
+1. 在左侧导航窗格中，单击“域管理”，并单击“我的域”。
    
      ![配置单一登录](./media/active-directory-saas-salesforcesandbox-tutorial/IC781029.png)
    
    >[!NOTE]
-   >请确保你的域配置正确。 
+   >请确保域配置正确。 
 
-2. 在“登录页设置”部分中，单击“编辑”，然后对于“身份验证服务”，选择上一部分中的 SAML 单一登录设置名称，最后单击“保存”。
+2. 在“登录页设置”部分中，单击“编辑”，并对于“身份验证服务”，选择上一部分中的 SAML 单一登录设置名称，最后单击“保存”。
    
    ![配置单一登录](./media/active-directory-saas-salesforcesandbox-tutorial/IC781030.png)
 
-配置域后，你的用户应使用域 URL 登录到 Salesforce 沙盒。  
+配置域后，用户应使用域 URL 登录到 Salesforce 沙盒。  
 
 若要获取 URL 的值，请单击上一部分中创建的 SSO 配置文件。    
 
@@ -220,7 +219,7 @@ ms.lasthandoff: 07/12/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-salesforcesandbox-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -241,7 +240,7 @@ ms.lasthandoff: 07/12/2017
 
 **若要将 Britta Simon 分配到 Salesforce 沙盒，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -288,5 +287,4 @@ ms.lasthandoff: 07/12/2017
 [201]: ./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_general_203.png
-
 

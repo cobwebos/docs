@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
+ms.openlocfilehash: 2b03853bf07e05c07fd730d5e8a8563963887921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 06b60925af778b3647d0accad51f65da67234cf5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 > [!NOTE]
@@ -60,7 +59,7 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 3. 获取“Media Encoder Premium Workflow”媒体处理器。
 4. 创建作业和任务。
 
-    在大多数情况下，该任务的配置字符串为空（如以下示例中所示）。 在某些高级方案中（要求你动态设置运行时属性），你需要为编码任务提供 XML 字符串。 此类方案的示例包括：创建一个覆盖层、并行或依序媒体拼接、字幕。
+    在大多数情况下，该任务的配置字符串为空（如以下示例中所示）。 在某些高级方案中（要求动态设置运行时属性），需要为编码任务提供 XML 字符串。 此类方案的示例包括：创建一个覆盖层、并行或依序媒体拼接、字幕。
 5. 向该任务添加输入资产。
 
     1. 第 1 个 - 工作流资产。
@@ -228,4 +227,3 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

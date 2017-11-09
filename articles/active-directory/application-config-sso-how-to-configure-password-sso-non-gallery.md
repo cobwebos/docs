@@ -13,19 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 03200aeb1b6ca6f01a78c95e9014f5290c114e6a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: f629ec99824199306ebf825901beaa99d83d434d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
-<a id="how-to-configure-password-single-sign-on-for-a-non-gallery-application" class="xliff"></a>
-
-# 如何配置非库应用程序的密码单一登录
-
-除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，可以添加已存在于组织中的任何应用程序或任何你可能使用的来自供应商（该供应商不属于 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)的一部分）的第三方应用程序。
+除了 Azure AD 应用程序库中存在的选项外，还可以在所需应用程序未在此处列出时选择添加**非库应用程序**。 使用此功能，可以添加已存在于组织中的任何应用程序或任何你可能使用的来自供应商（该供应商尚不在 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)中）的第三方应用程序。
 
 添加非库应用程序后，可以通过在 [Azure 门户](https://portal.azure.com/)中的“企业应用程序”上选择“单一登录”导航项，来配置此应用程序使用的单一登录方法。
 
@@ -43,7 +39,7 @@ ms.lasthandoff: 04/11/2017
 
 -   **支持需要多个登录字段的应用程序**，这适用于不只需要用户名和密码字段才能登录的应用程序
 
--   **自定义标签**，即指用户输入其凭据时，将在[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)上看到的用户名和密码输入字段的标签
+-   **自定义标签**，即指用户输入其凭据时，会在[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)上看到的用户名和密码输入字段的标签
 
 -   允许**用户**为正在[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)上手动键入的任何现有应用程序帐户提供自己的用户名和密码
 
@@ -55,15 +51,13 @@ ms.lasthandoff: 04/11/2017
 
 下面介绍如何对使用**添加非库应用程序**体验添加的任何应用程序启用[基于密码的单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)。
 
-<a id="overview-of-steps-required" class="xliff"></a>
-
-## 所需步骤概述
+## <a name="overview-of-steps-required"></a>所需步骤概述
 
 从 Azure AD 库中配置应用程序时需：
 
 -   [添加非库应用程序](#add-a-non-gallery-application)
 
--   [将应用程序配置为使用密码单一登录](#configure-the-application-for-password-single-sign-on)
+-   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 
 -   [将应用程序分配给用户或组](#assign-the-application-to-a-user-or-a-group)
 
@@ -71,13 +65,11 @@ ms.lasthandoff: 04/11/2017
 
     -   [直接将应用程序分配给组](#assign-an-application-to-a-group-directly)
 
-<a id="add-a-non-gallery-application" class="xliff"></a>
+## <a name="add-a-non-gallery-application"></a>添加非库应用程序
 
-## 添加非库应用程序
+若要从 Azure AD 库添加应用程序，请按照以下步骤操作：
 
-若要从 Azure AD 库添加应用程序，请执行以下步骤：
-
-1.  打开 [Azure 门户](https://portal.azure.com)，以全局管理员或共同管理员身份登录
+1.  打开 [Azure 门户](https://portal.azure.com)，并以“全局管理员”或“共同管理员”身份登录
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
@@ -91,13 +83,11 @@ ms.lasthandoff: 04/11/2017
 
 7.  在“名称”文本框中输入应用程序的名称。 选择“添加”。
 
-在很短一段时间后，便能看到应用程序的配置边栏选项卡。
+稍等片刻，便能看到应用程序的配置边栏选项卡。
 
-<a id="configure-the-application-for-password-single-sign-on" class="xliff"></a>
+## <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
 
-## 将应用程序配置为使用密码单一登录
-
-要为应用程序配置单一登录，请执行以下步骤：
+若要为应用程序配置单一登录，请按照以下步骤操作：
 
 1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
 
@@ -113,23 +103,21 @@ ms.lasthandoff: 04/11/2017
 
 6.  选择要配置单一登录的应用程序。
 
-7.  应用程序加载后，在应用程序的左侧导航菜单中，单击“单一登录”。
+7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
 8.  选择“基于密码的登录”模式。
 
-9.  输入“登录 URL”。 这是用户在其中输入用户名和密码进行登录时的 URL。 确保登录字段在 URL 中可见。
+9.  输入“登录 URL”。 这就是用户在其中输入用户名和密码进行登录时的 URL。 确保登录字段在 URL 中可见。
 
 10. 将用户分配到应用程序。
 
-11. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，然后代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
+11. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
-<a id="assign-a-user-to-an-application-directly" class="xliff"></a>
+## <a name="assign-a-user-to-an-application-directly"></a>直接将用户分配到应用程序
 
-## 直接将用户分配到应用程序
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
-若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
-
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
 
@@ -143,7 +131,7 @@ ms.lasthandoff: 04/11/2017
 
 6.  从列表中选择要向其分配用户的应用程序。
 
-7.  应用程序加载后，在应用程序的左侧导航菜单中，单击“用户和组”。
+7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
 8.  单击“用户和组”列表顶部的“添加”按钮，打开“添加分配”边栏选项卡。
 
@@ -151,21 +139,19 @@ ms.lasthandoff: 04/11/2017
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
-11. 将鼠标悬停在列表中的**用户**上以显示**复选框**。 单击用户头像或徽标旁边的复选框，将用户添加到“已选择”列表。
+11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：**如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框将此用户添加到“已选择”列表。
+12. **可选：**如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
 
-13. 选择完所有用户后，单击“选择”按钮将所有已选择的用户添加到要分配给应用程序的用户和组的列表中。
+13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
 14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器可选择要分配给所选用户的角色。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
-<a id="assign-an-application-to-a-group-directly" class="xliff"></a>
+## <a name="assign-an-application-to-a-group-directly"></a>直接将应用程序分配给组
 
-## 直接将应用程序分配给组
-
-若要直接将一个或多个组分配到应用程序，请执行以下步骤：
+要直接将一个或多个组分配到应用程序，请遵循以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
 
@@ -181,7 +167,7 @@ ms.lasthandoff: 04/11/2017
 
 6.  从列表中选择要向其分配用户的应用程序。
 
-7.  应用程序加载后，在应用程序的左侧导航菜单中，单击“用户和组”。
+7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
 8.  单击“用户和组”列表顶部的“添加”按钮，打开“添加分配”边栏选项卡。
 
@@ -201,8 +187,5 @@ ms.lasthandoff: 04/11/2017
 
 在很短一段时间后，所选用户便能够在访问面板中启动这些应用程序。
 
-<a id="next-steps" class="xliff"></a>
-
-## 后续步骤
-[使用应用程序代理提供到应用的单一登录](active-directory-application-proxy-sso-using-kcd.md)
-
+## <a name="next-steps"></a>后续步骤
+[使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)

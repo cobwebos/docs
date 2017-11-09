@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL 数据库内存中技术 | Microsoft 文档"
-description: "Azure SQL 数据库内存中技术大幅提升了事务和分析工作负荷的性能。 了解如何利用这些技术。"
+description: "Azure SQL 数据库内存中技术大幅提升了事务和分析工作负荷的性能。"
 services: sql-database
 documentationCenter: 
 author: jodebrui
@@ -9,18 +9,17 @@ editor:
 ms.assetid: 250ef341-90e5-492f-b075-b4750d237c05
 ms.service: sql-database
 ms.custom: develop databases
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jodebrui
+ms.openlocfilehash: 8930595821cc7662c4ff792b73eb357f1ba29307
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 4cb45551c486263f26947e5684d54b4f2ecc7410
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -529,4 +528,3 @@ GO
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
 - [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
-

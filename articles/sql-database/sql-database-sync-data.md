@@ -9,18 +9,18 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: load & move data
-ms.workload: na
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
+ms.reviewer: douglasl
+ms.openlocfilehash: 34bc9588745eb24d8b8c2e81389a9e5144497b34
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 926938a8ed20167e1f17a9883007cd993897f14a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -98,11 +98,13 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 ### <a name="requirements"></a>要求
 
--   每个表都必须有主键。
+-   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果不得不这样做，请先删除行，再使用新的主键值重新创建此行。 
 
 -   表不能包含非主键标识列。
 
 -   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
+
+-   必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
 ### <a name="limitations-on-service-and-database-dimensions"></a>服务和数据库维度方面的限制
 
@@ -140,6 +142,11 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>数据同步如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
 数据同步不会处理循环引用。 请务必避免循环引用。 
 
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>如何使用数据同步导出和导入数据库？
+将数据库导出为 .bacpac 文件，并导入它来新建数据库后，必须执行以下两步操作，才能在新数据库中使用数据同步：
+1.  使用[此脚本](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)清理新数据库上的数据同步对象和端表。 此脚本将从数据库中删除所有相应数据同步对象。
+2.  重新创建包含新数据库的同步组。 如果不再需要旧同步组，请删除它。
+
 ## <a name="next-steps"></a>后续步骤
 
 有关 SQL 数据同步的详细信息，请参阅：
@@ -150,8 +157,6 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
 
--   [下载完整的 SQL 数据同步技术文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
-
 -   [下载 SQL 数据同步 REST API 文档](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 有关 SQL 数据库的详细信息，请参阅：
@@ -159,4 +164,3 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 -   [SQL 数据库概述](sql-database-technical-overview.md)
 
 -   [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)
-

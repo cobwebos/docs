@@ -11,22 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2017
+ms.date: 10/06/2017
 ms.author: bwren
+ms.openlocfilehash: 38cb11befe844178572981abb29fe5439286dbc1
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 10b7f3ad23d9c5451bc7ff82b8927c260230f6da
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
-
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>转换到 Azure Log Analytics 新查询语言
-
-> [!NOTE]
-> 若要了解有关新的 Log Analytics 查询语言的详细信息和工作区的升级过程，请参阅[将 Azure Log Analytics 工作区升级到新的日志搜索](log-analytics-log-search-upgrade.md)。
-
-本文提供有关转换到新的 Log Analytics 查询语言的帮助内容，前提是用户已熟悉旧的语言。
+Log Analytics 最近实现了新的查询语言。  本文提供有关转换到此 Log Analytics 语言的帮助内容，前提是你已熟悉旧的语言，但需要一些帮助。
 
 ## <a name="language-converter"></a>语言转换器
 
@@ -50,7 +44,7 @@ ms.lasthandoff: 08/28/2017
 |                        | Type=Event Computer=RegEx("@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | 日期比较        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &#124; where TimeGenerated between (datetime(2017-05-01) .. datetime(2017-05-31)) |
-| 布尔比较     | Type=Heartbeat IsGatewayInstalled=false  | 检测信号 | where IsGatewayInstalled == false |
+| 布尔比较     | Type=Heartbeat IsGatewayInstalled=false  | 检测信号 \| where IsGatewayInstalled == false |
 | 排序                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Event \| sort by Computer asc, EventLog desc, EventLevelName asc |
 | 区别               | Type=Event &#124; dedup Computer \| select Computer | Event &#124; summarize by Computer, EventLog |
 | 扩展列         | Type=Perf CounterName="% Processor Time" &#124; EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION | Perf &#124; where CounterName == "% Processor Time" \| extend Utilization = iff(CounterValue > 50, "HIGH", "LOW") |
@@ -65,4 +59,3 @@ ms.lasthandoff: 08/28/2017
 ## <a name="next-steps"></a>后续步骤
 - 查看使用新查询语言的[查询编写教程](https://go.microsoft.com/fwlink/?linkid=856078)。
 - 若要深入了解新查询语言的所有命令、运算符和函数，请参阅[查询语言参考](https://go.microsoft.com/fwlink/?linkid=856079)。  
-

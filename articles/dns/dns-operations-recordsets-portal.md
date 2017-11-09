@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
 > [!div class="op_single_selector"]
@@ -42,7 +40,7 @@ ms.lasthandoff: 06/01/2017
 ## <a name="view-a-record-set"></a>查看记录集
 
 1. 在 Azure 门户中，转到“**DNS 区域**”边栏选项卡。
-2. 搜索记录集，然后选择它。 这将打开记录集属性。
+2. 搜索记录集，并选择它。 这会打开记录集属性。
 
     ![搜索记录集](./media/dns-operations-recordsets-portal/searchset500.png)
 
@@ -58,7 +56,7 @@ ms.lasthandoff: 06/01/2017
 
     ![添加记录](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. 单击边栏选项卡顶部的“**保存**”以保存你的设置。 然后关闭该边栏选项卡。
+3. 单击边栏选项卡顶部的“保存”以保存设置。 然后关闭该边栏选项卡。
 4. 将在角落中看到正在保存该记录。
 
     ![保存记录集](./media/dns-operations-recordsets-portal/saving150.png)
@@ -67,14 +65,14 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="update-a-record"></a>更新记录
 
-更新现有记录集的记录时，可以更新的字段取决于你正在使用的记录类型。
+更新现有记录集的记录时，可以更新的字段取决于正在使用的记录类型。
 
 1. 在记录集的“**记录集属性**”边栏选项卡中，搜索记录。
 2. 修改记录。 修改记录时，可以更改记录的可用设置。 在下面的示例中，已选择“**IP 地址**”字段，并且 IP 地址正在修改中。
 
     ![修改记录](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. 单击边栏选项卡顶部的“**保存**”以保存你的设置。 在右上角中，你将看到该记录已保存的通知。
+3. 单击边栏选项卡顶部的“保存”以保存设置。 在右上角中，会看到该记录已保存的通知。
 
     ![已保存记录集](./media/dns-operations-recordsets-portal/saved150.png)
 
@@ -85,11 +83,11 @@ ms.lasthandoff: 06/01/2017
 Azure 门户可用于从记录集中删除记录。 请注意，从记录集中删除最后一条记录不会删除记录集。
 
 1. 在记录集的“**记录集属性**”边栏选项卡中，搜索记录。
-2. 单击你想要删除的记录。 然后选择“**删除**”。
+2. 单击要删除的记录。 然后选择“删除”。
 
     ![删除记录](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. 单击边栏选项卡顶部的“**保存**”以保存你的设置。
+3. 单击边栏选项卡顶部的“保存”以保存设置。
 4. 删除记录后，记录在“**DNS 区域**”边栏选项卡中的值将反映删除操作。
 
 ## <a name="delete"></a>删除记录集
@@ -99,7 +97,7 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
     ![删除记录集](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
 2. 将出现一条消息，询问你是否想要删除记录集。
-3. 验证该名称与要删除的记录集是否匹配，然后单击“**是**”。
+3. 验证该名称与要删除的记录集是否匹配，并单击“**是**”。
 4. 在“**DNS 区域**”边栏选项卡中，确认记录集不再出现。
 
 ## <a name="work-with-ns-and-soa-records"></a>使用 NS 和 SOA 记录
@@ -120,11 +118,10 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 
 ### <a name="delete-soa-or-ns-record-sets"></a>删除 SOA 或 NS 记录集
 
-不能在创建区域时自动创建的区域顶点处（名称 =“@”）删除 SOA 和 NS 记录集。 删除该区域时，将自动删除这些记录集。
+不能在创建区域时自动创建的区域顶点处（名称 =“@”）删除 SOA 和 NS 记录集。 删除该区域时，会自动删除这些记录集。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure DNS 的详细信息，请参阅 [Azure DNS 概述](dns-overview.md)。
 * 有关自动执行 DNS 的详细信息，请参阅[使用 .NET SDK 创建 DNS 区域和记录集](dns-sdk.md)。
 * 有关反向 DNS 记录的详细信息，请参阅 [Azure 中的反向 DNS 和支持概述](dns-reverse-dns-overview.md)。
-

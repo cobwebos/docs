@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -45,13 +44,13 @@ ms.lasthandoff: 03/10/2017
 
 对于安全群集，始终至少需要部署一个有效的（未吊销或过期）证书（主要或辅助），否则，群集无法正常运行。
 
-若要删除辅助证书，以防将其用于群集安全，请导航到“安全”边栏选项卡，并从辅助证书的上下文菜单中选择“删除”选项。
+要删除辅助证书，以防将其用于群集安全，请导航到“安全”边栏选项卡，并从辅助证书的上下文菜单中选择“删除”选项。
 
-如果你的目的是删除标记为主要的证书，则需要首先将其与辅助证书交换，然后在升级完成后删除辅助证书。
+如果目的是删除标记为主要的证书，则需要首先将其与辅助证书交换，然后在升级完成后删除辅助证书。
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
 
-执行以下步骤的前提是，你熟悉 Resource Manager 的工作原理，并已使用 Resource Manager 模板至少部署了一个 Service Fabric 群集，同时已准备好你在设置此群集时使用的模板。 此外，还有一个前提就是，你可以熟练使用 JSON。
+执行以下步骤的前提是，熟悉 Resource Manager 的工作原理，并已使用 Resource Manager 模板至少部署了一个 Service Fabric 群集，同时已准备好你在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
 > [!NOTE]
 > 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 下载。 
@@ -64,7 +63,7 @@ ms.lasthandoff: 03/10/2017
 
 **请确保执行所有步骤**
 
-**步骤 1：**打开用于部署群集的 Resource Manager 模板。 （如果已从上述存储库下载此示例，则使用 5-VM-1-NodeTypes-Secure_Step1.JSON 部署安全的群集，然后打开该模板）。
+**步骤 1：**打开用于部署群集的 Resource Manager 模板。 （如果已从上述存储库下载此示例，则使用 5-VM-1-NodeTypes-Secure_Step1.JSON 部署安全的群集，并打开该模板）。
 
 **步骤 2：**向模板的参数部分添加**两个新参数**“secCertificateThumbprint”和“secCertificateUrlValue”，类型为“string”。 可复制以下代码片段，并将其添加到该模板。 根据具体的模板源，可能已经存在这些定义，如果是这样，请转至下一步。 
  
@@ -161,7 +160,7 @@ ms.lasthandoff: 03/10/2017
 ![Json_Pub_Setting3][Json_Pub_Setting3]
 
 
-**步骤 5：**对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "vaultCertificates":，位于 "OSProfile" 下。 你应该会看到类似下面的屏幕。
+**步骤 5：**对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "vaultCertificates":，位于 "OSProfile" 下。 应该会看到类似下面的屏幕。
 
 
 ![Json_Pub_Setting4][Json_Pub_Setting4]
@@ -240,7 +239,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplatePa
 
 ```
 
-部署完成后，使用新证书连接到群集，然后执行一些查询。 如果能够执行这些查询， 然后便可删除旧的证书。 
+部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 然后便可删除旧证书。 
 
 如果使用自签名证书，请务必将它们导入本地 TrustedPeople 证书存储。
 
@@ -286,7 +285,7 @@ Get-ServiceFabricClusterHealth
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>通过门户添加客户端证书 - 管理员或只读
 
-1. 导航到“安全”边栏选项卡，然后选择“安全”边栏选项卡顶部的“+ 身份验证”按钮。
+1. 导航到“安全”边栏选项卡，并选择“安全”边栏选项卡顶部的“+ 身份验证”按钮。
 2. 在“添加身份验证”边栏选项卡上，选择“身份验证类型”-“只读客户端”或“管理员客户端”
 3. 现在选择授权方法。 向 Service Fabric 指出是要使用使用者名称还是指纹来查找此证书。 通常情况下，采用使用者名称的授权方法并不是很好的安全做法。 
 
@@ -294,7 +293,7 @@ Get-ServiceFabricClusterHealth
 
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>使用门户删除客户端证书 - 管理员或只读
 
-若要删除辅助证书，以防将其用于群集安全，请导航到“安全”边栏选项卡，并从特定证书的上下文菜单中选择“删除”选项。
+要删除辅助证书，以防将其用于群集安全，请导航到“安全”边栏选项卡，并从特定证书的上下文菜单中选择“删除”选项。
 
 
 
@@ -312,6 +311,5 @@ Get-ServiceFabricClusterHealth
 [Json_Pub_Setting3]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_16.PNG
 [Json_Pub_Setting4]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_17.PNG
 [Json_Pub_Setting5]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_18.PNG
-
 
 

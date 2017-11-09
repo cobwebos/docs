@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
 ms.openlocfilehash: 68031d548bdbeda9a83d1bceaaea7c5bbcab3188
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>使用远程桌面连接到 Microsoft Azure Linux VM
 > [!IMPORTANT] 
@@ -30,17 +28,17 @@ ms.lasthandoff: 06/26/2017
 ## <a name="overview"></a>概述
 RDP（远程桌面协议）是用于 Windows 的专用协议。 我们如何使用 RDP 远程连接至 Linux VM（虚拟机）？
 
-此指南将为你提供答案！ 它将帮助你在 Microsoft Azure Linux VM 上安装和配置 xrdp，帮助你从一台 Windows 计算机通过远程桌面连接与其连接。 在本指南中，我们将使用运行 Ubuntu 或 OpenSUSE 的 Linux VM 作为示例。
+此指南将提供答案！ 它将帮助你在 Microsoft Azure Linux VM 上安装和配置 xrdp，帮助你从一台 Windows 计算机通过远程桌面连接与其连接。 在本指南中，我们将使用运行 Ubuntu 或 OpenSUSE 的 Linux VM 作为示例。
 
 Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过远程桌面连接连接到 Linux 服务器。 RDP 比 VNC（虚拟网络计算）的性能更好。 VNC 通过 JPEG 质量的图形呈现，可能会很慢，而 RDP 快速又清晰。
 
 > [!NOTE]
-> 你必须已有运行 Linux 的 Microsoft Azure VM。 若要创建和设置 Linux VM，请参阅 [Azure Linux VM 教程](createportal.md)。
+> 必须已有运行 Linux 的 Microsoft Azure VM。 若要创建和设置 Linux VM，请参阅 [Azure Linux VM 教程](createportal.md)。
 > 
 > 
 
 ## <a name="create-an-endpoint-for-remote-desktop"></a>为远程桌面创建终结点
-在本文档中，我们将使用默认终结点 3389 进行远程连接。 将 3389 终结点设置为 Linux VM 的`Remote Desktop`，如下所示：
+在本文档中，我们将使用默认终结点 3389 进行远程连接。将 3389 终结点设置为 Linux VM 的`Remote Desktop`，如下所示：
 
 ![图像](./media/remote-desktop/endpoint-for-linux-server.png)
 
@@ -83,7 +81,7 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 
 对于 Ubuntu，安装后，在启动时会自动启动并启用 xrdp。
 
-## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>如果你使用的是比 Ubuntu 12.04LTS 更高的 Ubuntu 版本，请使用 xfce
+## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>如果使用的是比 Ubuntu 12.04LTS 更高的 Ubuntu 版本，请使用 xfce
 因为 xrdp 的当前版本对高于 Ubuntu 12.04LTS 的 Ubuntu 版本不支持 Gnome 桌面，我们将改而使用 `xfce` 桌面。
 
 若要安装 `xfce`，请使用此命令：
@@ -114,4 +112,3 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 
 ## <a name="next-steps"></a>后续步骤
 有关使用 xrdp 的详细信息，请参阅 [http://www.xrdp.org/](http://www.xrdp.org/)。
-

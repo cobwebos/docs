@@ -12,7 +12,7 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 
 ### <a name="gwipwithconnection"></a> 修改本地网关的“GatewayIpAddress”- 存在网关连接
 
-如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 如果网关连接已存在，首先需要删除该连接。 删除连接后，可修改网关 IP 地址并重新创建一个新的连接。 此外可同时修改地址前缀。 这将导致 VPN 连接中断一段时间。 修改网关 IP 地址时，不需删除 VPN 网关。 只需删除连接。
+如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 如果网关连接已存在，首先需要删除该连接。 删除连接后，可修改网关 IP 地址并重新创建一个新的连接。 此外可同时修改地址前缀。 这会导致 VPN 连接中断一段时间。 修改网关 IP 地址时，不需删除 VPN 网关。 只需删除连接。
  
 
 1. 删除连接。 可以使用“Get-AzureRmVirtualNetworkGatewayConnection”cmdlet 查找连接的名称。

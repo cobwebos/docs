@@ -12,22 +12,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 191a5d12fa899db48bbb751409ce3a732a56095e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: eddbc6e977b52e3a068a1b55792512b966a58c18
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="pricing"></a>定价
 
 ## <a name="compute-cost"></a>计算成本
-Azure Cloud Shell 在免费提供的计算机上运行，但需要附加 Azure 文件共享才能使用。 
+Azure Cloud Shell 在 Azure 免费提供的计算机上运行，但需要 Azure 文件共享才能使用。 
 
 ## <a name="storage-cost"></a>存储成本
-Cloud Shell 默认在文件共享中创建 5GB 映像以持久保留 $HOME 目录。 Azure 文件共享会产生常规成本。
+Cloud Shell 要求装载新的或现有的 Azure 文件共享才能在不同的会话中持久保存文件。 存储会产生普通的费用。
 
 查看[此处了解有关 Azure 文件成本的详细信息](https://azure.microsoft.com/pricing/details/storage/files/)。 

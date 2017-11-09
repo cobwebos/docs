@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>在 Microsoft Operations Management Suite (OMS) 中跟踪 B2B 通信
 
 通过集成帐户设置两个运行的业务流程或应用程序的 B2B 通信后，这些实体可以彼此交换消息。 若要检查这些消息是否得到正确处理，可以在 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪 AS2、X12 和 EDIFACT 消息。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
@@ -41,7 +39,7 @@ ms.lasthandoff: 07/21/2017
 * 如果尚未准备好，请在 OMS 中[将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
 > [!NOTE]
-> 满足上述要求后，应在 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中有一个工作区。 应使用同一 OMS 工作区在 OMS 中跟踪 B2B 通信。 
+> 满足上述要求后，应在 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中有一个工作区。 应使用相同的 OMS 工作区来跟踪你在 OMS 上的 B2B 通信。 
 >  
 > 如果没有 OMS 工作区，了解[如何创建 OMS 工作区](../log-analytics/log-analytics-get-started.md)。
 
@@ -49,13 +47,13 @@ ms.lasthandoff: 07/21/2017
 
 若要让 OMS 跟踪逻辑应用的 B2B 消息，必须将逻辑应用 B2B 解决方案添加到 OMS 门户。 详细了解如何[将解决方案添加到 OMS](../log-analytics/log-analytics-get-started.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“更多服务”。 搜索“Log Analytics”，再选择“Log Analytics”，如下所示：
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“更多服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
 
    ![查找 Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
 2. 在“Log Analytics”下，查找并选择 OMS 工作区。 
 
-   ![选择 OMS 工作区](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![选择你的 OMS 工作区](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
 3. 在“管理”下，选择“OMS 门户”。
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>加密 Azure 虚拟机
 如果用户的虚拟机未加密，Azure 安全中心会向用户发送警报。 这些警报会显示为“高严重级别”，建议加密这些虚拟机。
@@ -58,15 +57,15 @@ Azure 磁盘加密先决条件配置脚本将设置加密 Azure 虚拟机所需�
 3. 使用 **CTRL-A** 选择页面上的所有文本，然后使用 **CTRL-C** 将页面上的所有文本复制到剪贴板。
 4. 打开“记事本”，将复制的文本粘贴到记事本中。
 5. 在 C: 驱动器上创建名为 **AzureADEScript**的新文件夹。
-6. 保存记事本文件 – 单击“文件”，然后单击“另存为”。 在文件名称文本框中，输入 **"ADEPrereqScript.ps1"**，然后单击“保存”。 （确保对名称使用引号，否则会使用 .txt 文件扩展名保存文件）。
+6. 保存记事本文件 – 单击“文件”，并单击“另存为”。 在文件名称文本框中，输入 **"ADEPrereqScript.ps1"**，并单击“保存”。 （确保对名称使用引号，否则会使用 .txt 文件扩展名保存文件）。
 
 保存脚本内容以后，即可在 PowerShell ISE 中打开脚本：
 
 1. 在“开始”菜单中，单击“Cortana”。 向 **Cortana** 询问“PowerShell”，只需在 Cortana 搜索文本框中键入 **PowerShell** 即可。
-2. 右键单击“Windows PowerShell ISE”，然后单击“以管理员身份运行”。
-3. 在“管理员: Windows PowerShell ISE”窗口中，单击“视图”，然后单击“显示脚本窗格”。
+2. 右键单击“Windows PowerShell ISE”，并单击“以管理员身份运行”。
+3. 在“管理员: Windows PowerShell ISE”窗口中，单击“视图”，并单击“显示脚本窗格”。
 4. 如果在窗口右侧看到“命令”窗格，请单击窗格右上角的“x”将其关闭。 如果文本看起来太小，请使用“CTRL+加号”（加号即“+”符号）。 如果文本太大，请使用“CTRL+减号”（减号即“-”符号）。
-5. 单击“文件”，然后单击“打开”。 导航到 **C:\AzureADEScript** 文件夹，然后双击“ADEPrereqScript”。
+5. 单击“文件”，并单击“打开”。 导航到 **C:\AzureADEScript** 文件夹，并双击“ADEPrereqScript”。
 6. **ADEPrereqScript** 内容此时会显示在 PowerShell ISE 中并用颜色进行标记，更清楚地显示各种组件，例如命令、参数和变量。
 
 此时会显示如下图所示的内容。
@@ -90,21 +89,21 @@ Azure 磁盘加密先决条件脚本会要求用户在启动脚本后提供以�
 
 执行以下步骤，加密 Azure 虚拟机：
 
-1. 如果关闭了 PowerShell ISE，可打开一个提升了权限的 PowerShell ISE 实例。 如果尚未打开 PowerShell ISE，可按本文中的前述说明操作。 如果关闭了脚本，则请打开 **ADEPrereqScript.ps1**，单击“文件”，然后单击“打开”并从 **c:\AzureADEScript** 文件夹选择脚本。 如果从一开始就遵循了本文的说明操作，则可直接转到下一步。
+1. 如果关闭了 PowerShell ISE，可打开一个提升了权限的 PowerShell ISE 实例。 如果尚未打开 PowerShell ISE，可按本文中的前述说明操作。 如果关闭了脚本，则请打开 **ADEPrereqScript.ps1**，单击“文件”，单击“打开”并从 **c:\AzureADEScript** 文件夹选择脚本。 如果从一开始就遵循了本文的说明操作，则可直接转到下一步。
 2. 在 PowerShell ISE 的控制台（PowerShell ISE 的底部窗格）中，键入 **cd c:\AzureADEScript** 再按 **ENTER**，将焦点变到脚本本地。
-3. 在计算机上设置执行策略，以便运行脚本。 在控制台中键入 **Set-ExecutionPolicy Unrestricted**，然后按 ENTER。 如果看到一个对话框，其中说明了更改执行策略的效果，请单击“全部选是”或“是”（如果看到“全部选是”，则可选择该选项 – 如果没有看到“全部选是”，则单击“是”）。
+3. 在计算机上设置执行策略，以便运行脚本。 在控制台中键入 **Set-ExecutionPolicy Unrestricted**，并按 ENTER。 如果看到一个对话框，其中说明了更改执行策略的效果，请单击“全部选是”或“是”（如果看到“全部选是”，则可选择该选项 – 如果没有看到“全部选是”，则单击“是”）。
 4. 登录到 Azure 帐户。 在控制台中，键入 **Login-AzureRmAccount** 并按 **ENTER**。 此时会出现一个对话框，可在其中输入凭据（请确保有权更改虚拟机 – 如果没有相应的权限，将无法对虚拟机加密。 如果不确定是否有权限，请询问订阅所有者或管理员）。 此时会看到**环境**、**帐户**、**TenantId****SubscriptionId** 和 **CurrentStorageAccount** 的相关信息。 将 **SubscriptionId** 复制到记事本。 在步骤 6 中需用到此 ID。
 5. 查找虚拟机所属的订阅及其位置。 转到 [https://portal.azure.com](ttps://portal.azure.com) 登录。  在页面左侧，单击“虚拟机”。 此时会看到虚拟机的列表及所属的订阅。
 
    ![虚拟机](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
-6. 回到 PowerShell ISE。 设置运行脚本所需的订阅上下文。 在控制台中，键入 **Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>**（将 **< your_subscription_Id >** 替换为实际订阅 ID），然后按 **ENTER**。 此时会看到环境、**帐户**、**TenantId**、**SubscriptionId** 和 **CurrentStorageAccount** 的相关信息。
+6. 回到 PowerShell ISE。 设置运行脚本所需的订阅上下文。 在控制台中，键入 **Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>**（将 **< your_subscription_Id >** 替换为实际订阅 ID），并按 **ENTER**。 此时会看到环境、**帐户**、**TenantId**、**SubscriptionId** 和 **CurrentStorageAccount** 的相关信息。
 7. 现在可以运行脚本了。 单击“运行脚本”按钮或按键盘上的 **F5**。
 
    ![执行 PowerShell 脚本](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. 脚本要求提供 **resourceGroupName:** - 输入需要使用的*资源组*的名称，然后按 **ENTER**。 如果没有资源组，请输入需要用于新资源组的名称。 如果已经有需要使用的 *资源组* （例如包含虚拟机的资源组），请输入现有资源组的名称。
-9. 脚本要求提供 **keyVaultName:** - 输入需要使用的 *密钥保管库* 的名称，然后按 ENTER。 如果没有资源组，请输入需要用于新资源组的名称。 如果用户已经有了一个需要使用的密钥保管库，则可输入现有 *密钥保管库*的名称。
-10. 脚本要求提供**位置:** - 输入需要加密的 VM 所在位置的名称，然后按 **ENTER**。 如果不记得位置，请返回步骤 5。
-11. 脚本要求提供 **aadAppName:** - 输入需要使用的 *Azure Active Directory* 应用程序的名称，然后按 **ENTER**。 如果没有资源组，请输入需要用于新资源组的名称。 如果已经有一个需要使用的 Azure Active Directory 应用程序，请输入现有 Azure Active Directory 应用程序的名称。
+8. 脚本要求提供 **resourceGroupName:** - 输入需要使用的*资源组*的名称，并按 **ENTER**。 如果没有资源组，请输入需要用于新资源组的名称。 如果已经有需要使用的 *资源组* （例如包含虚拟机的资源组），请输入现有资源组的名称。
+9. 脚本要求提供 **keyVaultName:** - 输入需要使用的 *密钥保管库* 的名称，并按 ENTER。 如果没有资源组，请输入需要用于新资源组的名称。 如果用户已经有了一个需要使用的密钥保管库，则可输入现有 *密钥保管库*的名称。
+10. 脚本要求提供**位置:** - 输入需要加密的 VM 所在位置的名称，并按 **ENTER**。 如果不记得位置，请返回步骤 5。
+11. 脚本要求提供 **aadAppName:** - 输入需要使用的 *Azure Active Directory* 应用程序的名称，并按 **ENTER**。 如果没有资源组，请输入需要用于新资源组的名称。 如果已经有一个需要使用的 Azure Active Directory 应用程序，请输入现有 Azure Active Directory 应用程序的名称。
 12. 此时会显示登录对话框。 提供凭据（是的，已登录过一次，但现在需再次登录）。
 13. 脚本会运行，并会在完成时要求用户复制 **aadClientID****aadClientSecret****diskEncryptionKeyVaultUrl** 和 **keyVaultResourceId** 的值。 将这些值都复制到剪贴板，然后粘贴到记事本中。
 14. 回到 PowerShell ISE，将光标置于最后一行末尾，然后按 **ENTER**。
@@ -132,7 +131,7 @@ Azure 磁盘加密先决条件脚本会要求用户在启动脚本后提供以�
 
 **$vmName = <’your_vm_name’>**
 
-将 **<’your_vm_name’>** 替换为 VM 的名称（确保名称使用单引号），然后按 **ENTER**。
+将 **<’your_vm_name’>** 替换为 VM 的名称（确保名称使用单引号），并按 **ENTER**。
 
 若要确认是否输入了正确的 VM 名称，请键入：
 
@@ -156,7 +155,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 无论使用哪种方法，都会出现一个对话框，告知用户操作需要 10-15 分钟才能完成。 单击 **“是”**。
 
-在加密进程正在进行时，可回到 Azure 门户查看虚拟机的状态。 在页面左侧单击“虚拟机”，然后在“虚拟机”边栏选项卡中单击要加密的虚拟机的名称。 在显示的边栏选项卡中，会注意到“状态”为“正在更新”。 这说明加密正在进行。
+在加密进程正在进行时，可回到 Azure 门户查看虚拟机的状态。 在页面左侧单击“虚拟机”，并在“虚拟机”边栏选项卡中单击要加密的虚拟机的名称。 在显示的边栏选项卡中，会注意到“状态”为“正在更新”。 这说明加密正在进行。
 
 ![有关 VM 的更多详细信息](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
 
@@ -164,7 +163,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 ![PowerShell 输出](./media/security-center-disk-encryption/security-center-disk-encryption-fig10.png)
 
-若要展示一下虚拟机现在已加密，可回到 Azure 门户，然后单击页面左侧的“虚拟机”。 单击已加密的虚拟机的名称。 在“设置”边栏选项卡中，单击“磁盘”。
+要展示一下虚拟机现在已加密，可回到 Azure 门户，并单击页面左侧的“虚拟机”。 单击已加密的虚拟机的名称。 在“设置”边栏选项卡中，单击“磁盘”。
 
 ![设置选项](./media/security-center-disk-encryption/security-center-disk-encryption-fig11.png)
 
@@ -179,4 +178,3 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报）- 了解如何管理和响应安全警报
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
-

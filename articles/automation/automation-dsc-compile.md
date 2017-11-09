@@ -13,14 +13,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e0aa7db15451bd3ea868932455127e000619aa5d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
 使用 Azure 自动化时可通过两种方法编译 Desired State Configuration (DSC) ：使用 Azure 门户，或者使用 Windows PowerShell。 下表将帮助你根据每种方法的特征确定何时应使用哪种方法：
@@ -49,7 +47,7 @@ ms.lasthandoff: 04/27/2017
 1. 从自动化帐户中，单击“DSC 配置”。
 2. 单击某个配置以打开其边栏选项卡。
 3. 单击“编译”。
-4. 如果该配置没有参数，系统将提示你确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”边栏选项卡让用户提供参数值。 有关参数的详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
+4. 如果该配置没有参数，系统会提示确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”边栏选项卡让用户提供参数值。 有关参数的详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
 5. “编译作业”边栏选项卡随即打开，用户可跟踪编译作业的状态，且会将由于此作业引起的节点配置（MOF 配置文档）放在 Azure 自动化 DSC“拉”服务器上。
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>使用 Windows PowerShell 编译 DSC 配置
@@ -108,7 +106,7 @@ Configuration ParametersExample
 }
 ```
 
-你可以在 Azure 自动化 DSC 门户或 Azure PowerShell 中编译使用基本参数的 DSC 配置：
+可以在 Azure 自动化 DSC 门户或 Azure PowerShell 中编译使用基本参数的 DSC 配置：
 
 ### <a name="portal"></a>门户
 
@@ -244,11 +242,11 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="importing-node-configurations"></a>导入节点配置
 
-你还可以导入已在 Azure 外部编译的节点配置 (MOF)。 其中一个优点是可以对节点配置进行签名。
+还可以导入已在 Azure 外部编译的节点配置 (MOF)。 其中一个优点是可以对节点配置进行签名。
 已签名的节点配置由 DSC 代理在托管节点上进行本地验证，确保应用于节点的配置来自于授权源。
 
 > [!NOTE]
-> 你可以将已签名的配置导入 Azure 自动化帐户，但 Azure 自动化目前不支持编译已签名的配置。
+> 可以将已签名的配置导入 Azure 自动化帐户，但 Azure 自动化目前不支持编译已签名的配置。
 
 > [!NOTE]
 > 节点配置文件不得大于 1 MB，以便将其导入 Azure 自动化。
@@ -274,7 +272,6 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ```powershell
 Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"
 ```
-
 
 
 

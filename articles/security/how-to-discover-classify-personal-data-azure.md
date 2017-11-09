@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: 6ccb064a9a76e7041d4f365b3997673dc9182e0b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 953df2f0dbbccc153b0a4206c9c0b5f5ea9a51a7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>在 Microsoft Azure 中发现、识别个人数据并对其进行分类
 
@@ -201,4 +200,3 @@ HDInsight 教程将引导你完成整个过程。 该教程介绍先决条件，
 [什么是 Azure Rights Management？](https://docs.microsoft.com/information-protection/understand-explore/what-is-azure-rms)
 
 [Azure 信息保护：就绪、设置、保护！](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/21/azure-information-protection-ready-set-protect/)
-

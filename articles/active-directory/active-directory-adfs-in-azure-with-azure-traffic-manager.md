@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS | Microsoft Docs"
-description: "在本文档中，你将学习如何在 Azure 中部署 AD FS 以实现高可用性。"
+description: "在本文档中，学习如何在 Azure 中部署 AD FS 以实现高可用性。"
 keywords: "使用 Azure 流量管理器部署 Ad fs, 使用 Azure 流量管理器部署 adfs, 多个数据中心, 地理区域数据中心, 多个地理区域数据中心, 在 Azure 中部署 AD FS, 部署 Azure ADFS, Azure ADFS, Azure AD FS, 部署 ADFS, 部署 AD FS, Azure 中的 ADFS, 在 Azure 中部署 ADFS, 在 Azure 中部署 AD FS, ADFS Azure, AD FS 简介, Azure, Azure 中的 AD FS, IaaS, ADFS, 将 ADFS 移到 Azure"
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 3170abb4f9bd7f7996b1c0dd2e20f648ea1b9fe5
-ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
-
-
+ms.openlocfilehash: 077710049894d2690299ce0fcb0ead9911aa4bb6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS
 [AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md) （Azure 中的 AD FS 部署）提供了有关如何在 Azure 中为组织部署简单 AD FS 基础结构的分步指导。 本文提供后续步骤，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在 Azure 中创建跨地理区域的 AD FS 部署。 Azure 流量管理器使用各种可用的路由方法来应对基础结构的不同需求，有助于为组织创建分布各地的高可用性和高性能 AD FS 基础结构。
@@ -38,16 +38,16 @@ ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
 * **新地理区域 VNET 中的域控制器和 AD FS 服务器：** 建议在新地理区域中部署域控制器，这样，新区域中的 AD FS 服务器就不需要联系另一个远端网络中的域控制器来完成身份验证，从而可以提高性能。
 * **存储帐户：** 存储帐户与某个区域关联。 由于要在新地理区域中部署计算机，因此必须创建要在该区域中使用的新存储帐户。  
 * **网络安全组：** 与存储帐户一样，在一个区域中创建的网络安全组不能在另一个地理区域中使用。 因此，需要为新地理区域中的 INT 和外围网络子网创建类似于第一个地理区域中的新网络安全组。
-* **公共 IP 地址的 DNS 标签：** Azure 流量管理器只能通过 DNS 标签引用终结点。 因此，必须为外部负载平衡器的公共 IP 地址创建 DNS 标签。
-* **Azure 流量管理器：** 使用 Microsoft Azure 流量管理器可以控制用户流量的分布，根据需要将用户流量分布到在全球不同数据中心运行的服务终结点。 Azure 流量管理器在 DNS 级别工作。 它使用 DNS 响应将最终用户流量定向到全球分布的终结点。 然后，客户端直接连接到这些终结点。 性能、加权和优先级均有不同的路由选项，可以轻松选择最符合组织需求的路由选项。 
+* **公共 IP 地址的 DNS 标签：** Azure 流量管理器只能通过 DNS 标签引用终结点。 因此，必须为外部负载均衡器的公共 IP 地址创建 DNS 标签。
+* **Azure 流量管理器：**使用 Microsoft Azure 流量管理器可以控制用户流量的分布，根据需要将用户流量分布到在全球不同数据中心运行的服务终结点。 Azure 流量管理器在 DNS 级别工作。 它使用 DNS 响应将最终用户流量定向到全球分布的终结点。 客户端然后直接连接到这些终结点。 性能、加权和优先级均有不同的路由选项，可以轻松选择最符合组织需求的路由选项。 
 * **两个区域之间的 VNet 到 VNet 连接：** 不需要在虚拟网络本身之间建立连接。 由于每个虚拟网络均可访问域控制器，并且本身都有 AD FS 和 WAP 服务器，因此不同区域中的虚拟网络之间不需要建立任何连接即可正常工作。 
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>集成 Azure 流量管理器的步骤
 ### <a name="deploy-ad-fs-in-the-new-geographical-region"></a>在新地理区域中部署 AD FS
 遵循 [AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md) （Azure 中的 AD FS 部署）中的步骤和指导，在新地理区域中部署相同的拓朴。
 
-### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>面向 Internet 的（公共）负载平衡器中公共 IP 地址的 DNS 标签
-如前所述，Azure 流量管理器只能通过 DNS 标签引用终结点，因此，请务必为外部负载平衡器的公共 IP 地址创建 DNS 标签。 以下屏幕截图显示如何配置公共 IP 地址的 DNS 标签。 
+### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>面向 Internet 的（公共）负载均衡器中公共 IP 地址的 DNS 标签
+如前所述，Azure 流量管理器只能通过 DNS 标签引用终结点，因此，请务必为外部负载均衡器的公共 IP 地址创建 DNS 标签。 以下屏幕截图显示如何配置公共 IP 地址的 DNS 标签。 
 
 ![DNS 标签](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/eastfabstsdnslabel.png)
 
@@ -64,7 +64,7 @@ ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
    * 加权
      
      **性能** 是实现高响应度 AD FS 基础结构的建议选项。 但是，可以根据部署需求选择最合适的路由方法。 AD FS 功能不受所选路由选项的影响。 有关详细信息，请参阅 [Traffic Manager traffic routing methods](../traffic-manager/traffic-manager-routing-methods.md) （流量管理器流量路由方法）。 在上面的示例屏幕截图中，可以看到选择了 **性能** 方法。
-3. **配置终结点：** 在流量管理器页中，单击终结点并选择“添加”。 此时将打开类似于以下屏幕截图的“添加终结点”页
+3. **配置终结点：** 在流量管理器页中，单击终结点并选择“添加”。 此时会打开类似于以下屏幕截图的“添加终结点”页
    
    ![配置终结点](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/eastfsendpoint.png)
    
@@ -76,7 +76,7 @@ ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
    
    **目标资源类型：** 选择公共 IP 地址作为此属性的值。 
    
-   **目标资源：** 此选项用于选择订阅下面可用的不同 DNS 标签。 选择与你在配置的终结点对应的 DNS 标签。
+   **目标资源：** 此选项用于选择订阅下面可用的不同 DNS 标签。 选择对应于所要配置终结点的 DNS 标签。
    
    针对要让 Azure 流量管理器将流量路由到的每个地理区域添加终结点。
    有关如何在流量管理器中添加/配置终结点的详细信息和详细步骤，请参阅 [Add, disable, enable or delete endpoints](../traffic-manager/traffic-manager-endpoints.md)
@@ -90,7 +90,7 @@ ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
    > 
 5. **修改 Azure 流量管理器的 DNS 记录：** 联合身份验证服务应该是 Azure 流量管理器 DNS 名称的 CNAME。 在公共 DNS 记录中创建 CNAME，使尝试访问联合身份验证服务的用户确实可以访问 Azure 流量管理器。
    
-    例如，若要将联合身份验证服务 fs.fabidentity.com 指向流量管理器，需要对 DNS 资源记录进行以下更新：
+    例如，要将联合身份验证服务 fs.fabidentity.com 指向流量管理器，需要对 DNS 资源记录进行以下更新：
    
     <code>fs.fabidentity.com IN CNAME mysts.trafficmanager.net</code>
 
@@ -101,12 +101,12 @@ ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
 ![路由测试](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/pingtest.png)
 
 ### <a name="ad-fs-sign-in-test"></a>AD FS 登录测试
-测试 AD FS 的最简单方法是使用 IdpInitiatedSignon.aspx 页。 若要执行此操作，必须在 AD FS 属性中启用 IdpInitiatedSignOn。 请遵循以下步骤来验证你的 AD FS 设置
+测试 AD FS 的最简单方法是使用 IdpInitiatedSignon.aspx 页。 若要执行此操作，必须在 AD FS 属性中启用 IdpInitiatedSignOn。 请遵循以下步骤来验证 AD FS 设置
 
 1. 使用 PowerShell 在 AD FS 服务器上运行以下 cmdlet，以将它设置为启用。 
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true
 2. 从任何外部计算机访问 https://<yourfederationservicedns>/adfs/ls/IdpInitiatedSignon.aspx
-3. 你应会看到如下所示的 AD FS 页：
+3. 应会看到如下所示的 AD FS 页：
    
     ![ADFS 测试 - 身份验证质询](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/adfstest1.png)
    
@@ -122,10 +122,4 @@ ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
 ## <a name="next-steps"></a>后续步骤
 * [管理 Azure 流量管理器配置文件](../traffic-manager/traffic-manager-manage-profiles.md)
 * [添加、禁用、启用或删除终结点](../traffic-manager/traffic-manager-endpoints.md) 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

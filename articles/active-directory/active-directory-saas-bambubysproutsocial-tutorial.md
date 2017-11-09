@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 985966d26f6ed0dcd4db47589abf94260ce62bf0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
 
@@ -62,7 +61,7 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>从库中添加 Bambu by Sprout Social
-若要配置 Bambu by Sprout Social 与 Azure AD 的集成，需要从库中将 Bambu by Sprout Social 添加到托管 SaaS 应用列表。
+要配置 Bambu by Sprout Social 与 Azure AD 的集成，需要从库中将 Bambu by Sprout Social 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Bambu by Sprout Social，请执行以下步骤：**
 
@@ -82,7 +81,7 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_search.png)
 
-5. 在结果窗格中，选择“Bambu by Sprout Social”，然后单击“添加”按钮以添加该应用程序。
+5. 在结果窗格中，选择“Bambu by Sprout Social”，并单击“添加”按钮以添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_addfromgallery.png)
 
@@ -95,9 +94,9 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 
 若要配置和测试 Bambu by Sprout Social 与 Azure AD 的单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Bambu by Sprout Social 测试用户](#creating-a-bambu-by-sprout-social-test-user)** - 在 Bambu by Sprout Social 中创建 Britta Simon 的对应用户，该用户与其在 Azure AD 中的表现形式具有链接关系。
+3. **[创建 Bambu by Sprout Social 测试用户](#creating-a-bambu-by-sprout-social-test-user)** - 在 Bambu by Sprout Social 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -119,7 +118,7 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 
     ![配置单一登录](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_url.png)
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存 XML 文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
 
     ![配置单一登录](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_certificate.png) 
 
@@ -131,7 +130,7 @@ To enable single sign-on with Bambu by Sprout Social, it must be configured to u
 
     ![配置单一登录](./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_bambubysproutsocial_configure.png) 
 
-7. 若要在 **Bambu by Sprout Social** 中配置单一登录，需要将下载的“元数据 XML”和“SAML 单一登录服务 URL”发送到 [Bambu by Sprout Social 支持](mailto:support@getbambu.com)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
+7. 要在 **Bambu by Sprout Social** 中配置单一登录，需要将下载的“元数据 XML”和“SAML 单一登录服务 URL”发送到 [Bambu by Sprout Social 支持](mailto:support@getbambu.com)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -183,7 +182,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
  
 ### <a name="creating-a-bambu-by-sprout-social-test-user"></a>创建 Bambu by Sprout Social 测试用户
 
-应用程序支持实时用户预配，且进行身份验证后，将在应用程序中自动创建用户。
+应用程序支持实时用户预配，且进行身份验证后，会在应用程序中自动创建用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -191,9 +190,9 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Bambu by Sprout Social，请执行以下步骤：**
+**要将 Britta Simon 分配到 Bambu by Sprout Social，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -241,5 +240,4 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
 [201]: ./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-bambubysproutsocial-tutorial/tutorial_general_203.png
-
 

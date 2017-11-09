@@ -3,7 +3,7 @@ title: "使用持续交付启用远程调试 | Microsoft Docs"
 description: "了解在使用持续交付部署到 Azure 时如何启用远程调试"
 services: cloud-services
 documentationcenter: .net
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 ms.assetid: 7d423639-3b2f-4ca5-ac5a-9ac19a217c29
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/18/2016
-ms.author: kraigb
+ms.author: mikejo
+ms.openlocfilehash: c2bd67afc0c289de94019497e57b57f97a759f3a
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: a10b142283cf19295330238ac7289329b2d1f70e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="enable-remote-debugging-when-using-continuous-delivery-to-publish-to-azure"></a>使用持续交付功能发布到 Azure 时如何启用远程调试
 使用[持续交付](cloud-services-dotnet-continuous-delivery.md)发布到 Azure 时，可通过执行以下步骤，在 Azure 中针对云服务或虚拟机启用远程调试。
@@ -40,8 +39,7 @@ ms.lasthandoff: 08/28/2017
         msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of the certificate added to the cloud service>";RemoteDebuggerConnectorVersion="2.7" "<path to your VS solution file>"
    
     `VSX64RemoteDebuggerPath` 是 Visual Studio 远程工具中 msvsmon.exe 所在的文件夹的路径。
-    
-            `RemoteDebuggerConnectorVersion` 是云服务中的 Azure SDK 版本。 它也应该与随 Visual Studio 一起安装的版本匹配。
+    `RemoteDebuggerConnectorVersion` 是云服务中的 Azure SDK 版本。 它也应该与随 Visual Studio 一起安装的版本匹配。
 5. 使用上一步中生成的包和 .cscfg 文件发布到目标云服务。
 6. 将证书（.pfx 文件）导入到装有 Visual Studio 和用于 .NET 的 Azure SDK 的计算机。 请确保导入到 `CurrentUser\My` 证书存储，否则附加到 Visual Studio 中的调试器会失败。
 
@@ -96,5 +94,4 @@ ms.lasthandoff: 08/28/2017
     ```
 
 6. 将证书导入到装有 Visual Studio 和用于 .NET 的 Azure SDK 的计算机。
-
 

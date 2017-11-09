@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: d607449a16e886337ab1bd96213fbb4231124353
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-service-fabric-reliable-state-manager-and-reliable-collection-internals"></a>Azure Service Fabric 可靠状态管理器和可靠集合内部
 本文档深入探讨可靠状态管理器和可靠集合，了解核心组件如何在后台工作。
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 05/04/2017
 
 ##  <a name="local-persistence-model-log-and-checkpoint"></a>本地持久性模型：日志和检查点
 可靠状态管理器和可靠集合都遵循一个名为日志和检查点的持久性模型。
-在此模型中，每个状态更改先记录在磁盘上，然后再应用于内存中。
+在此模型中，每个状态更改先记录在磁盘上，再应用于内存中。
 仅在某些时候保存自身的完整状态（又称 检查点）。
 其优点是增量转变成磁盘上只能追加的顺序写入，从而提高了性能。
 
@@ -55,5 +53,4 @@ ms.lasthandoff: 05/04/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-
 

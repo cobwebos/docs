@@ -15,17 +15,15 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 173353d67772c2549aa1b8ec9f2a471bd1c65677
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
-如果你在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 
+如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 
@@ -39,7 +37,7 @@ ms.lasthandoff: 09/20/2017
 | **REGISTRY_CONFIG_ERROR** | 注册表中缺少应用程序的某个项，原因可能是 [PowerShell 脚本](multi-factor-authentication-nps-extension.md#install-the-nps-extension)不是在安装后运行的。 错误消息应包括缺少的项。 请确保在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下创建该项。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 请求缺少必需的 Radius userName\Identifier 属性。请验证 NPS 是否能够接收 RADIUS 请求 | 此错误通常反映了安装问题。 必须在可以接收 RADIUS 请求的 NPS 服务器上安装 NPS 扩展。 安装为 RRAS 和 RDG 等服务的依赖项的 NPS 服务器无法接收 Radius 请求。 安装在此类安装中的 NPS 扩展无法正常工作并会出错，因为它无法读取身份验证请求中的详细信息。 |
 | **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |
-| **USERNAME_CANONICALIZATION_ERROR** | 验证该用户是否在你的本地 Active Directory 实例中存在，以及 NPS 服务是否有权访问目录。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
+| **USERNAME_CANONICALIZATION_ERROR** | 验证该用户是否在本地 Active Directory 实例中存在，以及 NPS 服务是否有权访问目录。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
 
 
    
@@ -59,7 +57,7 @@ ms.lasthandoff: 09/20/2017
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | 调用方租户无权针对用户执行身份验证 | 检查租户域和用户主体名称 (UPN) 的域是否相同。 例如，确保 user@contoso.com 正在尝试向 Contoso 租户进行身份验证。 UPN 代表 Azure 中的租户的有效用户。 |
 | **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](./end-user/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
-| **AuthenticationMethodNotSupported** | 指定的身份验证方法不受支持。 | 请收集包含此错误的所有日志，然后[联系支持人员](#contact-microsoft-support)。 联系支持人员时，请提供用户名以及触发该错误的辅助验证方法。 |
+| **AuthenticationMethodNotSupported** | 指定的身份验证方法不受支持。 | 请收集包含此错误的所有日志，并[联系支持人员](#contact-microsoft-support)。 联系支持人员时，请提供用户名以及触发该错误的辅助验证方法。 |
 | **BecAccessDenied** | MSODS Bec 调用返回了拒绝访问错误，原因可能是租户中未定义用户名 | 该用户在本地 Active Directory 中存在，但未由 AD Connect 同步到 Azure AD。 或者，租户中缺少该用户。 请将该用户添加到 Azure AD，并让其根据[管理双重验证设置](./end-user/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
 | **InvalidFormat** 或 **StrongAuthenticationServiceInvalidParameter** | 电话号码采用了无法识别的格式 | 请让用户更正其验证电话号码。 |
 | **InvalidSession** | 指定的会话无效或已过期 | 完成会话花费的时间超过三分钟。 验证用户是否在发起身份验证请求后的三分钟内输入了验证码或者对应用通知做出了响应。 如果仍未解决问题，请检查客户端、NAS 服务器、NPS 服务器和 Azure MFA 终结点之间是否未出现网络延迟。  |
@@ -82,7 +80,7 @@ ms.lasthandoff: 09/20/2017
 
 ## <a name="errors-that-require-support"></a>需要支持人员解决的错误
 
-如果你遇到以下错误之一，我们建议[联系支持人员](#contact-microsoft-support)来获得诊断帮助。 没有任何一组标准步骤可以解决这些错误。 联系支持人员时，请务必尽量详细地包含有关哪些步骤导致出错的信息以及租户信息。
+如果遇到以下错误之一，我们建议[联系支持人员](#contact-microsoft-support)来获得诊断帮助。 没有任何一组标准步骤可以解决这些错误。 联系支持人员时，请务必尽量详细地包含有关哪些步骤导致出错的信息以及租户信息。
 
 | 错误代码 | 错误消息 |
 | ---------- | ------------- |
@@ -134,6 +132,5 @@ ms.lasthandoff: 09/20/2017
    ```
 
 4. 压缩 C:\NPS 文件夹的内容，并将压缩文件附加到支持案例中。
-
 
 

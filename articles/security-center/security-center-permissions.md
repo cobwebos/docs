@@ -14,24 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: 0aaa99dda44d2020afd3e841e84020eb4ff87a85
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
 Azure 安全中心使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../active-directory/role-based-access-built-in-roles.md)。
 
-安全中心会评估资源的配置以识别安全问题和漏洞。 如果你分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
+安全中心会评估资源的配置以识别安全问题和漏洞。 如果分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
 
 除这些角色外，还有两个特定的安全中心角色：
 
-* 安全读取者：属于此角色的用户有权查看安全中心。 该用户可查看建议、警报、安全策略和安全状态，但不能更改。
-* 安全管理员：属于此角色的用户拥有与安全读取者相同的权限，此外，还可以更新安全策略、关闭警报和建议。
+* **安全读者**：属于此角色的用户对安全中心具有查看权限。 该用户可查看建议、警报、安全策略和安全状态，但不能更改。
+* **安全管理员**：属于此角色的用户具有与安全读者相同的权限，此外，还可以更新安全策略、关闭警报和建议。
 
 > [!NOTE]
 > 安全角色（安全读取者和安全管理员）只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。
@@ -58,11 +56,10 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../active-directory
 >
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍安全中心如何使用 RBAC 将权限分配给用户，并辨别每个角色允许的操作。 现在，已熟悉监视订阅安全状态所需的角色分配，请编辑安全策略，然后应用建议，了解如何：
+本文介绍安全中心如何使用 RBAC 将权限分配给用户，并辨别每个角色允许的操作。 现在，已熟悉监视订阅安全状态所需的角色分配，请编辑安全策略，并应用建议，了解如何：
 
 - [在安全中心设置安全策略](security-center-policies.md)
 - [管理安全中心的安全建议](security-center-recommendations.md)
 - [监视 Azure 资源的安全运行状况](security-center-monitoring.md)
 - [管理和响应安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 - [监视合作伙伴安全解决方案](security-center-partner-solutions.md)
-

@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions Cosmos DB 绑定 | Microsoft Docs"
-description: "了解如何在 Azure Functions 中使用 Azure Cosmos DB 绑定。"
+title: "适用于函数的 Azure Cosmos DB 绑定 | Microsoft Docs"
+description: "了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -9,33 +9,104 @@ editor:
 tags: 
 keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
 ms.assetid: 3d8497f0-21f3-437d-ba24-5ece8c90ac85
-ms.service: functions
+ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/26/2017
+ms.date: 09/19/2017
 ms.author: glenga
+ms.openlocfilehash: d05c0342e771e229a7175570ad227c4359980990
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: fb79e2ad7514ae2cf48b9a5bd486e54b9b407bee
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="azure-functions-cosmos-db-bindings"></a>Azure Functions Cosmos DB 绑定
+# <a name="azure-cosmos-db-bindings-for-functions"></a>适用于函数的 Azure Cosmos DB 绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-本文介绍如何在 Azure Functions 中为 Azure Cosmos DB 绑定进行配置和编写代码。 Azure Functions 支持 Cosmos DB 的输入和输出绑定。
+本文介绍如何在 Azure Functions 中为 Azure Cosmos DB 绑定进行配置和编写代码。 函数支持 Azure Cosmos DB 的触发器、输入和输出绑定。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-有关 Cosmos DB 的详细信息，请参阅 [Cosmos DB 简介](../documentdb/documentdb-introduction.md)和[生成 Cosmos DB 控制台应用程序](../documentdb/documentdb-get-started.md)。
+有关无服务器计算及 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算](..\cosmos-db\serverless-computing-database.md)。
+
+<a id="trigger"></a>
+<a id="cosmosdbtrigger"></a>
+
+## <a name="azure-cosmos-db-trigger"></a>Azure Cosmos DB 触发器
+
+Azure Cosmos DB 触发器使用 [Azure Cosmos DB 更改源](../cosmos-db/change-feed.md)来侦听跨分区的更改。 触发器需要第二个集合，该集合用于存储各分区的_租用_。
+
+必须提供受监视的集合和包含租用的集合，触发器才能正常工作。
+
+Azure Cosmos DB 触发器支持以下属性：
+
+|属性  |说明  |
+|---------|---------|
+|**类型** | 必须设置为 `cosmosDBTrigger`。 |
+|**name** | 函数代码中使用的变量名称，表示发生更改的文档列表。 | 
+|**direction** | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|**connectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
+|**databaseName** | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
+|**collectionName** | 受监视的集合的名称。 |
+| **leaseConnectionStringSetting** | （可选）应用设置的名称，该应用设置包含指向保留租用集合的服务的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 |
+| **leaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
+| **leaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
+| **createLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
+| **leaseCollectionThroughput** | （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用该设置。 使用门户创建绑定时，将自动设置该参数。
+
+>[!NOTE] 
+>用于连接到租用集合的连接字符串必须具有写入权限。
+
+可以在 Azure 门户中的函数“集成”选项卡中设置这些属性，或者通过编辑 `function.json` 项目文件进行设置。
+
+## <a name="using-an-azure-cosmos-db-trigger"></a>使用 Azure Cosmos DB 触发器
+
+本部分包含如何使用 Azure Cosmos DB 触发器的示例。 这些示例假定触发器元数据如下所示：
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "<connection-app-setting>",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+ 
+有关如何在门户中从函数应用创建 Azure Cosmos DB 触发器的示例，请参阅[创建由 Azure Cosmos DB 触发的函数](functions-create-cosmos-db-triggered-function.md)。 
+
+### <a name="trigger-sample-in-c"></a>C# 中的触发器示例 #
+```cs 
+    #r "Microsoft.Azure.Documents.Client"
+    using Microsoft.Azure.Documents;
+    using System.Collections.Generic;
+    using System;
+    public static void Run(IReadOnlyList<Document> documents, TraceWriter log)
+    {
+        log.Verbose("Documents modified " + documents.Count);
+        log.Verbose("First document Id " + documents[0].Id);
+    }
+```
+
+
+### <a name="trigger-sample-in-javascript"></a>JavaScript 中的触发器示例
+```javascript
+    module.exports = function (context, documents) {
+        context.log('First document Id modified : ', documents[0].id);
+
+        context.done();
+    }
+```
 
 <a id="docdbinput"></a>
 
 ## <a name="documentdb-api-input-binding"></a>DocumentDB API 输入绑定
-DocumentDB API 输入绑定检索 Cosmos DB 文档，并将其传递给函数的命名输入参数。 可根据调用函数的触发器确定文档 ID。 
+DocumentDB API 输入绑定会检索 Azure Cosmos DB 文档，并将其传递给函数的命名输入参数。 可根据调用函数的触发器确定文档 ID。 
 
 在 *function.json* 中，DocumentDB API 输入绑定具有以下属性：
 
@@ -46,8 +117,8 @@ DocumentDB API 输入绑定检索 Cosmos DB 文档，并将其传递给函数的
 |**databaseName** | 包含文档的数据库。        |
 |**collectionName**  | 包含文档的集合的名称。 |
 |**id**     | 要检索的文档的 ID。 此属性支持绑定参数。 有关详细信息，请参阅[绑定到绑定表达式中的自定义输入属性](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)。 |
-|**sqlQuery**     | 用于检索多个文档的 Cosmos DB SQL 查询。 该查询支持运行时绑定，如以下示例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。        |
-|**连接**     |内含 Cosmos DB 连接字符串的应用设置的名称。        |
+|**sqlQuery**     | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该查询支持运行时绑定，如以下示例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。        |
+|**连接**     |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
 |**direction**     | 必须设置为 `in`。         |
 
 不能同时设置 ID 和 sqlQuery 属性。 如果两者均未设置，则检索整个集合。
@@ -144,7 +215,7 @@ module.exports = function (context) {
     "direction": "in",
     "databaseName": "MyDb",
     "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
     "connection": "CosmosDBConnection"
 }
 ```
@@ -189,7 +260,7 @@ DocumentDB API 输出绑定允许将新文档写入 Azure Cosmos DB 数据库。
 |**databaseName** | 包含在其中创建文档的集合的数据库。     |
 |**collectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**     | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*。 这是因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。  |
-|**连接**     |内含 Cosmos DB 连接字符串的应用设置的名称。        |
+|**连接**     |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
 |**direction**     | 必须设置为 `out`。         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>使用 DocumentDB API 输出绑定
@@ -229,7 +300,7 @@ DocumentDB API 输出绑定允许将新文档写入 Azure Cosmos DB 数据库。
 }
 ```
 
-且需要按下列格式为每个记录创建 Cosmos DB 文档：
+并且需要按下列格式为每个记录创建 Azure Cosmos DB 文档：
 
 ```json
 {
@@ -331,4 +402,3 @@ module.exports = function (context) {
   context.done();
 };
 ```
-

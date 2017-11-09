@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用的 AS2 消息解码 
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 07/06/2017
    
     ![搜索“AS2”](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage1.png)
 
-4. 如果以前未创建与集成帐户的任何连接，系统会提示你现在创建该连接。 命名你的连接，并选择要连接的集成帐户。
+4. 如果以前未创建与集成帐户的任何连接，系统会提示现在创建该连接。 为连接命名，并选择要连接的集成帐户。
    
     ![创建集成连接](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage2.png)
 
@@ -92,5 +91,4 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md) 
-
 

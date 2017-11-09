@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: b9f5bc85d6fca466be7abbe67b400856e1635459
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/08/2017
-
+ms.openlocfilehash: fea8cd403cbf21acee2194e8e3888e4001663cdd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sql-data-warehouse-documentation"></a>SQL 数据仓库文档
 
 了解如何使用将 SQL Server 关系数据库与大规模并行处理相结合的 SQL 数据仓库。 教程和其他文档介绍了如何将数据加载到数据仓库，然后分析、管理和导出数据。
@@ -114,6 +112,5 @@ ms.lasthandoff: 04/08/2017
         </div>
     </li>
 </ul>
-
 
 

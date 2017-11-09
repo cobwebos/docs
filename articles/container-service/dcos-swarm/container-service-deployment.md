@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: 0ef256537bf095e2a5d582bd345a9c8dcede2095
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: caf6b470c334793931594df56ee13c4de9c8ba93
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>使用 Azure 门户部署 Docker 容器托管解决方案
 
@@ -49,9 +48,9 @@ ms.lasthandoff: 07/25/2017
 
 
 ## <a name="create-a-cluster-by-using-the-azure-portal"></a>使用 Azure 门户创建群集
-1. 登录到 Azure 门户，选择“新建”，并在 Azure Marketplace 中搜索“Azure 容器服务”。
+1. 登录到 Azure 门户，选择“新建”，并在 Azure 应用商店中搜索“Azure 容器服务”。
 
-    ![Marketplace 中的 Azure 容器服务](./media/container-service-deployment/acs-portal1.png)  <br />
+    ![应用商店中的 Azure 容器服务](./media/container-service-deployment/acs-portal1.png)  <br />
 
 2. 单击“Azure 容器服务”，并单击“创建”。
 
@@ -107,7 +106,7 @@ ms.lasthandoff: 07/25/2017
 
     ![部署状态](./media/container-service-deployment/acs-portal8.png)  <br />
 
-部署需要数分钟才能完成。 然后，Azure 容器服务群集即可供使用。
+部署需要数分钟才能完成。 然后，Azure 容器服务群集便可供使用。
 
 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>使用快速入门模板创建群集
@@ -212,4 +211,3 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 * [Work with Azure Container Service and DC/OS](container-service-mesos-marathon-rest.md)
 * [Work with Azure Container Service and Docker Swarm](container-service-docker-swarm.md)
 * [Work with Azure Container Service and Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md)（使用 Azure 容器服务和 Kubernetes）
-

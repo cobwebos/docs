@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: e8ca7fdacf8361570d88260b3c359ee6e2fd3e17
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>教程：配置 Google Apps 实现自动用户预配
 
@@ -106,7 +105,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      
      ![键入域名][22]
 
-    d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证你拥有该域名。 有关如何验证域与 Google Apps 的完整说明，请参阅[验证站点所有权与 Google Apps ](https://support.google.com/webmasters/answer/35179)。
+    d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何验证域与 Google Apps 的完整说明，请参阅[验证站点所有权与 Google Apps ](https://support.google.com/webmasters/answer/35179)。
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对所有要添加到 Google Apps 的其他域重复上述步骤。
      
@@ -179,4 +178,3 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 [26]: ./media/active-directory-saas-google-apps-provisioning-tutorial/gapps-admin.png
 [27]: ./media/active-directory-saas-google-apps-provisioning-tutorial/gapps-admin-privileges.png
 [28]: ./media/active-directory-saas-google-apps-provisioning-tutorial/gapps-auth.png
-

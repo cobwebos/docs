@@ -13,15 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 10/24/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
+ms.openlocfilehash: 07927f1660681af35428747b51a8c14ba6153a7a
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: f333354311b16c00a0d43a691f139f5f80383d1a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据
 
@@ -80,7 +79,7 @@ ms.lasthandoff: 09/13/2017
 
     此命令会提取约为 60 MB 的 .csv 文件。
 
-4. 使用以下命令在 HDInsight 存储上创建目录，然后将文件复制到该目录：
+4. 使用以下命令在 HDInsight 存储上创建目录，并将文件复制到该目录：
 
     ```
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -166,9 +165,6 @@ ms.lasthandoff: 09/13/2017
     ```
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
-
-   > [!NOTE]
-   > 在此示例中，由于已连接到运行 HiveServer2 的 HDInsight 群集的头节点，因此使用 `localhost`。
 
 4. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
@@ -323,4 +319,3 @@ ms.lasthandoff: 09/13/2017
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
-

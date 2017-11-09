@@ -16,12 +16,11 @@ ms.date: 07/20/2017
 ms.author: sureshja
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
-ms.openlocfilehash: 2dc166a346c58d43e9ed60332f47619c1de89816
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/11/2017
-
+ms.openlocfilehash: d5e18f41d6eb69ccb7eafaa4de2646c4c38df5e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-the-azure-active-directory-application-manifest"></a>了解 Azure Active Directory 应用程序清单
 与 Azure Active Directory (AD) 集成的应用程序必须向 Azure AD 租户注册，提供应用程序的持久性标识配置。 在运行时查阅此配置，启用允许应用程序通过 Azure AD 外部和代理身份验证/授权的方案。 有关 Azure AD 应用程序模型的详细信息，请参阅[添加、更新和删除应用程序][ADD-UPD-RMV-APP]一文。
@@ -30,13 +29,13 @@ ms.lasthandoff: 02/11/2017
 实际上有多个可用的选项可以更新应用程序的标识配置属性，这些选项因功能与难度而有所不同，包括：
 
 * **[Azure 门户][AZURE-PORTAL] 的 Web 用户界面**可让你更新应用程序的最常见属性。 这是更新应用程序属性最快且最不容易出错的方法，但无法像下面两种方法一样提供对所有属性的完全访问权限。
-* 对于需要在其中更新 Azure 经典门户中未公开的属性的更高级方案，可以修改**应用程序清单**。 这是本文的重点，将在下一部分中开始详细讨论。
+* 对于需要在其中更新 Azure 经典门户中未公开的属性的更高级方案，可以修改**应用程序清单**。 这是本文的重点，会在下一部分中开始详细讨论。
 * 还可以**编写使用[图形 API][GRAPH-API] 的应用程序**来更新应用程序，这是最费力的方法。 如果要编写管理软件或需要自动定期更新应用程序属性，这可能是个不错的选择。
 
 ## <a name="using-the-application-manifest-to-update-an-applications-identity-configuration"></a>使用应用程序清单更新应用程序的标识配置
-借助 [Azure 门户][AZURE-PORTAL]，可以使用内联清单编辑器通过更新应用程序清单来管理应用程序的标识配置。 还可以下载应用程序清单并将其作为 JSON 文件上传。 不会将实际的文件存储在目录中。 应用程序清单只是 Azure AD 图形 API 应用程序实体上的 HTTP GET 操作，上载是应用程序实体上的 HTTP PATCH 操作。
+借助 [Azure 门户][AZURE-PORTAL]，可以使用内联清单编辑器通过更新应用程序清单来管理应用程序的标识配置。 还可以下载应用程序清单并将其作为 JSON 文件上传。 不会将实际的文件存储在目录中。 应用程序清单只是 Azure AD 图形 API 应用程序实体上的 HTTP GET 操作，上传是应用程序实体上的 HTTP PATCH 操作。
 
-因此，若要了解应用程序清单的格式和属性，需要参考图形 API [应用程序实体][APPLICATION-ENTITY]文档。 可通过应用程序清单上载执行的更新示例包括：
+因此，若要了解应用程序清单的格式和属性，需要参考图形 API [应用程序实体][APPLICATION-ENTITY]文档。 可通过应用程序清单上传执行的更新示例包括：
 
 * **声明 Web API 所公开的权限范围 (oauth2Permissions)**。 有关使用 oauth2Permissions 委派权限范围实现用户模拟的信息，请参阅[将应用程序与 Azure Active Directory 集成][INTEGRATING-APPLICATIONS-AAD]中的“向其他应用程序公开 Web API”主题。 如前所述，图形 API [Entity and Complex Type][APPLICATION-ENTITY]（实体和复杂类型）参考文章中介绍了应用程序实体属性，包括属于 [OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 类型集合的 oauth2Permissions 属性。
 * **声明应用公开的应用程序角色 (appRoles)**。 应用程序实体的 appRoles 属性是 [AppRole][APPLICATION-ENTITY-APP-ROLE] 类型的集合。 请参阅[使用 Azure AD 在云应用程序中执行基于角色的访问控制][RBAC-CLOUD-APPS-AZUREAD]一文获取实现示例。
@@ -53,7 +52,7 @@ ms.lasthandoff: 02/11/2017
 
 1. 登录到 [Azure 门户][AZURE-PORTAL]。
 2. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-3. 从左侧导航窗格中选择“Azure Active Directory”扩展，然后单击“应用注册”。
+3. 从左侧导航窗格中选择“Azure Active Directory”扩展，并单击“应用注册”。
 4. 在列表中查找想要更新的应用程序并单击此应用程序。
 5. 在应用程序页面中，单击“清单”打开内联清单编辑器。 
 6. 可使用此编辑器直接编辑清单。 请注意，如前文所述，清单遵从[应用程序实体][APPLICATION-ENTITY]的架构：例如，假设要在资源应用程序 (API) 中实现/公开名为“Employees.Read.All”的新权限，则只需将新的/第二个元素添加到 oauth2Permissions 集合，如下所示：
@@ -81,7 +80,7 @@ ms.lasthandoff: 02/11/2017
         }
         ],
    
-    条目必须唯一，因此必须为 `"id"` 属性生成新的全局唯一 ID (GUID)。 在本例中，由于我们指定了 `"type": "User"`，此权限可由资源/API 应用程序注册所在的 Azure AD 租户所验证的任何帐户同意。 这授予代表帐户进行访问的客户端应用程序权限。 说明和显示名称字符串将在同意期间使用，并显示在 Azure 门户中。
+    条目必须唯一，因此必须为 `"id"` 属性生成新的全局唯一 ID (GUID)。 在本例中，由于我们指定了 `"type": "User"`，此权限可由资源/API 应用程序注册所在的 Azure AD 租户所验证的任何帐户同意。 这授予代表帐户进行访问的客户端应用程序权限。 说明和显示名称字符串会在同意期间使用，并显示在 Azure 门户中。
 6. 更新清单完成后，请单击“保存”，保存清单。  
    
 现在，保存清单时，可以向注册客户端应用程序提供之前添加的新权限的访问权限。 此时可以使用 Azure 门户的 Web UI，而不是编辑客户端应用程序的清单：  
@@ -91,7 +90,7 @@ ms.lasthandoff: 02/11/2017
 3. 随后将转到“选择权限”页，此页显示可用于资源应用程序的“应用程序权限”和“委托权限”列表。 选择新权限，以将其添加到客户端请求的权限列表。 此新权限将存储在客户端应用程序标识配置的“requiredResourceAccess”集合属性中。
 
 
-就这么简单。 现在，你的应用程序将使用其新标识配置来运行。
+就这么简单。 现在，应用程序将使用其新标识配置来运行。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure AD 中应用程序的应用程序对象与服务主体对象之间关系的详细信息，请参阅 [Application and service principal objects in Azure AD][AAD-APP-OBJECTS]（Azure AD 中的应用程序对象和服务主体对象）。
@@ -115,5 +114,4 @@ ms.lasthandoff: 02/11/2017
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
-
 

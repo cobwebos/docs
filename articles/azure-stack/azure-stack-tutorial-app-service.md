@@ -1,6 +1,6 @@
 ---
-title: Make web, mobile, and API apps available to your Azure Stack users | Microsoft Docs
-description: Tutorial to install the App Service resource provider and create offers that give your Azure Stack users the ability to create web, mobile, and API apps.
+title: "使 web、 移动和 API apps 适用于 Azure 堆栈用户 |Microsoft 文档"
+description: "安装 App Service 资源提供程序和创建教程提供，为 Azure 堆栈用户提供能够创建 web、 移动和 API 应用。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -11,86 +11,84 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 11ecaa8ec017a9eb1285928e3d3d367ddfc43022
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Make web, mobile, and API apps available to your Azure Stack users
+# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>向 Azure 堆栈用户提供 web、 移动和 API 应用
 
-As an Azure Stack cloud administrator, you can create offers that let your users (tenants) create Azure Functions and web, mobile, and API applications. By providing access to these on-demand, cloud-based apps to your users, you can save them time and resources. To set this up, you will:
+作为 Azure 堆栈云管理员，你可以创建提供使你的用户 （租户） 创建 Azure 函数和 web、 移动和 API 的应用程序。 通过向你的用户提供访问按需、 基于云的应用，你可以将它们保存时间和资源。 若要对此进行设置，你将：
 
 > [!div class="checklist"]
-> * Deploy the App Service resource provider
-> * Create an offer
-> * Test the offer
+> * 部署应用程序服务资源提供程序
+> * 创建产品
+> * 测试产品/服务
 
-## <a name="deploy-the-app-service-resource-provider"></a>Deploy the App Service resource provider
+## <a name="deploy-the-app-service-resource-provider"></a>部署应用程序服务资源提供程序
 
-1. [Prepare the Azure Stack Development Kit host](azure-stack-app-service-before-you-get-started.md). This includes deploying the SQL Server resource provider, which is required for creating some apps.
-2. [Download the installer and helper scripts](azure-stack-app-service-deploy.md#download-the-required-components).
-3. [Run the helper script to create required certificates](azure-stack-app-service-deploy.md#create-certificates-required-by-app-service-on-azure-stack).
-4. [Install the App Service resource provider](azure-stack-app-service-deploy.md#use-the-installer-to-download-and-install-app-service-on-azure-stack) (it will take a couple hours to install and for all the worker roles to appear).
-5. [Validate the installation](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
+1. [准备 Azure 堆栈开发工具包主机](azure-stack-app-service-before-you-get-started.md)。 这包括部署 SQL Server 资源提供程序，这是创建一些应用程序需要。
+2. [下载安装程序和帮助程序脚本](azure-stack-app-service-deploy.md)。
+3. [运行用于创建所需的证书的帮助程序脚本](azure-stack-app-service-deploy.md)。
+4. [安装 App Service 资源提供程序](azure-stack-app-service-deploy.md)(它将需要几个小时才能安装和所有辅助角色才会显示)。
+5. [验证安装](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation)。
 
-## <a name="create-an-offer"></a>Create an offer
+## <a name="create-an-offer"></a>创建产品
 
-As an example, you can create an offer that lets users create DNN web content management systems. It requires the SQL Server service which you already enabled by installing the SQL Server resource provider.
+例如，你可以创建提议，使用户可以创建 DNN web 内容的管理系统。 它需要已启用通过安装 SQL Server 资源提供程序的 SQL Server 服务。
 
-1.  [Set a quota](azure-stack-setting-quotas.md) and name it *AppServiceQuota*. Select **Microsoft.Web** for the **Namespace** field.
-2.  [Create a plan](azure-stack-create-plan.md). Name it *TestAppServicePlan*, select the the **Microsoft.SQL** service, and **AppService Quota** quota.
+1.  [设置配额](azure-stack-setting-quotas.md)并将其命名*AppServiceQuota*。 选择**Microsoft.Web**为**Namespace**字段。
+2.  [创建计划](azure-stack-create-plan.md)。 将其命名为*TestAppServicePlan*，选择**Microsoft.SQL**服务，和**AppService 配额**配额。
 
     > [!NOTE]
-    > To let users create other apps, other services might be required in the plan. For example, Azure Functions requires that the plan     include the **Microsoft.Storage** service, while Wordpress requires **Microsoft.MySQL**.
+    > 以允许用户创建其他应用，其他服务可能要求在计划中。 例如，Azure 函数需要计划包含**Microsoft.Storage**服务，而 Wordpress 需要**Microsoft.MySQL**。
     > 
     >
 
-3.  [Create an offer](azure-stack-create-offer.md), name it **TestAppServiceOffer** and select the **TestAppServicePlan** plan.
+3.  [创建提议](azure-stack-create-offer.md)，将其命名为**TestAppServiceOffer**和选择**TestAppServicePlan**计划。
 
-## <a name="test-the-offer"></a>Test the offer
+## <a name="test-the-offer"></a>测试产品/服务
 
-Now that you've deployed the App Service resource provider and created an offer, you can sign in as a user, subscribe to the offer, and create an app. For this example, we'll create a DNN Platform content management system. You must first create a SQL database and then the DNN web app.
+现在，部署 App Service 资源提供程序并创建提议后，你可以以用户身份登录、 订阅产品，和创建的应用程序。 对于此示例中，我们将创建一个 DNN 平台的内容管理系统。 你必须先创建 SQL 数据库，然后选择 DNN web 应用。
 
-### <a name="subscribe-to-the-offer"></a>Subscribe to the offer
-1. Sign in to the Azure Stack portal (https://portal.local.azurestack.external) as a tenant.
-2. Click **Get a subscription** > type **TestAppServiceSubscription** under **Display Name** > **Select an offer** > **TestAppServiceOffer** > **Create**.
+### <a name="subscribe-to-the-offer"></a>订阅产品
+1. 以租户身份登录到 Azure 堆栈门户 (https://portal.local.azurestack.external)。
+2. 单击**获取订阅**> 类型**TestAppServiceSubscription**下**显示名称** > **选择产品** >  **TestAppServiceOffer** > **创建**。
 
-### <a name="create-a-sql-database"></a>Create a SQL database
+### <a name="create-a-sql-database"></a>创建 SQL 数据库
 
-1. Click **+** > **Data + Storage** > **SQL Database**.
-2. Leave the defaults for the fields, except as follows:
-    - **Database Name**: DNNdb
-    - **Max Size in MB**: 100
-    - **Subscription**: TestAppServiceOffer
-    - **Resource Group**: DNN-RG
-3. Click **Login Settings**, enter credentials for the database, and then click **OK**. You'll use these credentials later in these steps.
-4. Click **SKU** > select the SQL SKU that you created for the SQL Hosting Server > **OK**.
-5. Click **Create**.
+1. 单击 **+**   > **数据 + 存储** > **SQL 数据库**。
+2. 将字段的默认值，如下所示保留除外：
+    - **数据库名称**: DNNdb
+    - **以 mb 为单位的最大大小**: 100
+    - **订阅**: TestAppServiceOffer
+    - **资源组**: DNN RG
+3. 单击**登录设置**，对于数据库中，输入凭据，然后单击**确定**。 在这些步骤的更高版本中，你将使用这些凭据。
+4. 单击**SKU** > 选择你创建了 SQL 宿主服务器的 SQL SKU >**确定**。
+5. 单击“创建” 。
 
-### <a name="create-a-dnn-app"></a>Create a DNN app    
+### <a name="create-a-dnn-app"></a>创建 DNN 应用    
 
-1. Click **+** > **See all** > **DNN Platform preview** > **Create**.
-2. Type *DNNapp* under **App name** and select **TestAppServiceOffer** under **Subscription**.
-3. Click **Configure required settings** > **Create New** > type an **App Service plan** name.
-4. Click **Pricing tier** > **F1 Free** > **Select** > **OK**.
-5. Click **Database** and enter the information for the SQL database you created earlier.
-6. Click **Create**.
+1. 单击 **+**   > **查看所有** > **DNN 平台预览版** > **创建**。
+2. 类型*DNNapp*下**应用名称**和选择**TestAppServiceOffer**下**订阅**。
+3. 单击**配置所需设置** > **新建**> 类型**App Service 计划**名称。
+4. 单击**定价层** > **F1 免费** > **选择** > **确定**。
+5. 单击**数据库**和输入前面创建的 SQL 数据库的信息。
+6. 单击“创建” 。
 
-In this tutorial, you learned how to:
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> * Deploy the App Service resource provider
-> * Create an offer
-> * Test the offer
+> * 部署应用程序服务资源提供程序
+> * 创建产品
+> * 测试产品/服务
 
-Advance to the next tutorial to learn how to:
+前进到下一步的教程，若要了解如何：
 
 > [!div class="nextstepaction"]
-> [Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
-
+> [将应用部署到 Azure 和 Azure 堆栈](user/azure-stack-solution-pipeline.md)

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: a3d5cb909dbfcb00f3fbfa0165bb6cd58eb18688
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Azure SQL 数据库连接器入门
 使用 Azure SQL 数据库连接器，为管理表中数据的组织创建工作流。 
@@ -35,7 +34,7 @@ ms.lasthandoff: 05/26/2017
 若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="connect-to-azure-sql-database"></a>连接到 Azure SQL 数据库
-需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SQL 数据库，首先创建 SQL 数据库*连接*。 若要创建连接，输入通常用于访问要连接到的服务的凭据。 因此在 SQL 数据库中，输入 SQL 数据库凭据以创建连接。 
+在逻辑应用能够访问任何服务前，需要先创建到该服务的*连接*。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SQL 数据库，首先创建 SQL 数据库*连接*。 若要创建连接，输入通常用于访问要连接到的服务的凭据。 因此在 SQL 数据库中，输入 SQL 数据库凭据以创建连接。 
 
 #### <a name="create-the-connection"></a>创建连接
 > [!INCLUDE [Create the connection to SQL Azure](../../includes/connectors-create-api-sqlazure.md)]
@@ -59,13 +58,13 @@ ms.lasthandoff: 05/26/2017
    
     ![](./media/connectors-create-api-sqlazure/sample-table.png)
    
-    如果提示你提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-sqlazure.md#create-the-connection)介绍了这些属性。 
+    如果提示提供连接信息，则输入详细信息以创建连接。 本主题中的[创建连接](connectors-create-api-sqlazure.md#create-the-connection)介绍了这些属性。 
    
    > [!NOTE]
    > 在此示例中，我们从表中返回一行。 若要查看此行中的数据，添加使用表中的字段创建文件的另一项操作。 例如，添加一个 OneDrive 操作，该操作使用 FirstName 和 LastName 字段在云存储帐户中创建新文件。 
    > 
    > 
-5. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
+5. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
@@ -73,5 +72,4 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
-
 

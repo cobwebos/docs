@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
@@ -90,7 +89,7 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 
 通过比较，队列的消息发送功能直接映射到主题，其消息接收功能会映射到订阅。 这意味着订阅支持先前有关队列的描述中的模式：竞争使用者、临时分离、负荷量和负载均衡。
 
-创建主题与创建队列类似，如之前部分中的示例所示。 创建服务 URI，并使用 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 类来创建命名空间客户端。 然后，可使用 [CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) 方法创建主题。 例如：
+创建主题与创建队列类似，如之前部分中的示例所示。 创建服务 URI，并使用 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 类来创建命名空间客户端。 然后，可以使用 [CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) 方法创建主题。 例如：
 
 ```csharp
 TopicDescription dataCollectionTopic = namespaceClient.CreateTopic("DataCollectionTopic");
@@ -103,7 +102,7 @@ SubscriptionDescription myAgentSubscription = namespaceClient.CreateSubscription
 SubscriptionDescription myAuditSubscription = namespaceClient.CreateSubscription(myTopic.Path, "Dashboard");
 ```
 
-然后，可创建主题客户端。 例如：
+然后，可以创建主题客户端。 例如：
 
 ```csharp
 MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider);
@@ -166,5 +165,4 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 * [服务总线中转消息传送 REST 教程](service-bus-brokered-tutorial-rest.md)
 * [主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)
 * [Brokered Messaging: Advanced Filters sample](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)（中转消息传送：高级筛选器示例）
-
 

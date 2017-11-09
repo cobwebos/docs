@@ -3,7 +3,7 @@ title: "在流、逻辑应用、函数和 Web 作业之间进行选择 | Microso
 description: "比较和对比来自 Microsoft 的 4 个云集成服务，并决定应使用哪个服务。"
 services: functions,app-service\logic
 documentationcenter: na
-author: cephalin
+author: ggailey777
 manager: wpickett
 tags: 
 keywords: "microsoft flow、流、逻辑应用、azure functions、函数、azure webjobs、webjobs，事件处理、动态计算、无服务器体系结构"
@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 10/11/2017
 ms.author: glenga
 ms.custom: mvc
+ms.openlocfilehash: ab0aa377f9803d74d8a7a94bdb4c7b780e3ae41d
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 1c39b2d9943532c8ccf0a11d3cf4bc8896669cfb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
 本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
@@ -29,7 +28,7 @@ ms.lasthandoff: 09/20/2017
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure 应用服务 WebJobs](../app-service-web/web-sites-create-web-jobs.md)
+* [Azure 应用服务 WebJobs](../app-service/web-sites-create-web-jobs.md)
 
 将分散的系统"粘附"在一起时，所有这些服务很有用。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每个服务都有其独特的优点，进行比较并不能解决“哪个服务最佳？”的问题， 而是“哪个服务最适合于这种情况？”问题。 通常，这些服务的组合是快速构建可扩展、全功能的集成解决方案的最佳方法。
 
@@ -51,7 +50,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | 目标受众 |办公室工作人员、业务用户 |IT 专业人士、开发人员 |
 | 方案 |自助服务 |关键任务 |
 | 设计工具 |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
-| DevOps |临时，在生产中开发 |[Azure 资源管理](../logic-apps/logic-apps-arm-provision.md)中的源控件、测试、支持及自动化和可管理性 |
+| DevOps |临时，在生产中开发 |[Azure 资源管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源控件、测试、支持及自动化和可管理性 |
 | 管理员体验 |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | “安全” |标准做法：对敏感数据的[数据主权](https://wikipedia.org/wiki/Technological_Sovereignty)、[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
 
@@ -67,6 +66,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 
 函数是对 WebJobs 的自然演化，它保留了 WebJobs 中最佳的内容，并进行了改进。 这些改进包括： 
 
+* [无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用模型。
 * 直接在浏览器中进行简化的开发、测试和代码的运行。
 * 内置集成有多个 Azure 服务和第三方服务，如 [GitHub WebHook](https://developer.github.com/webhooks/creating/)。
 * 按使用付费，无需为[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)付费。
@@ -80,17 +80,19 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | --- | --- | --- |
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
-| 运行类型 |触发、计划（通过计时器触发器） |触发的、连续的、计划的 |
+| 运行类型 |触发、计划（通过计时器触发器） |触发、连续、计划 |
 | 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage-blob.md) |[Azure 存储](functions-bindings-storage-blob.md)、[Azure 服务总线](functions-bindings-service-bus.md) |
-| 浏览器开发 |受支持 | 不支持 |
-| Windows 脚本（.cmd、.bat） |实验 |受支持 |
-| PowerShell |实验 |受支持 |
-| C# |受支持 |受支持 |
-| F# |受支持 |不支持 |
-| Bash |实验 |受支持 |
-| PHP |实验 |受支持 |
-| Python |实验 |受支持 |
-| JavaScript |受支持 |受支持 |
+| 浏览器开发 |支持 |不支持 |
+| C# |支持 |支持 |
+| F# |支持 |不支持 |
+| JavaScript |支持 |支持 |
+| Java |支持 | 不支持 |
+| Bash |试验 |支持 |
+| Windows 脚本（.cmd、.bat） |试验 |支持 |
+| PowerShell |试验 |支持 |
+| PHP |试验 |支持 |
+| Python |试验 |支持 |
+| TypeScript |试验 |不支持 |
 
 要使用函数，还是要使用 WebJobs，这最终取决于已对应用服务执行何操作。 如果已有想为其运行代码片段的应用服务应用，且想要在同一 DevOps 环境中同时管理它们，请使用 WebJobs。 在以下情况下，请使用 Functions。
 
@@ -123,5 +125,4 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 * [集成简化，来自 Charles Lamanna](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [逻辑应用实时网络广播](http://aka.ms/logicappslive)
 * [Microsoft Flow 的常见问题](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-
 

@@ -1,9 +1,9 @@
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>在云设备上创建公共终结点
 
 1. 登录到 Azure 门户。
-2. 转到“虚拟机”，然后选择并单击正用作云设备的虚拟机。
+2. 转到“虚拟机”，并选择并单击正用作云设备的虚拟机。
     
-3. 你需要创建一个网络安全组 (NSG) 规则来控制虚拟机内部和外部的通信流。 执行以下步骤来创建 NSG 规则。
+3. 需要创建一个网络安全组 (NSG) 规则来控制虚拟机内部和外部的通信流。 执行以下步骤来创建 NSG 规则。
     1. 选择“网络安全组”。
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt1.png)
 
@@ -35,7 +35,7 @@
     2. 单击“+ 关联”。
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
 
-    3. 选择你的虚拟网络，然后选择相应的子网。
+    3. 选择虚拟网络，然后选择相应的子网。
     4. 单击“确定”创建规则。
 
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)

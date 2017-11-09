@@ -15,28 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: c581b1468630a9f28204592c936360b72f42f0d8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述
-Active Directory 联合身份验证服务 (AD FS) 将在 Microsoft Azure Active Directory 中签名其令牌，确保这些令牌不会遭到篡改。 这种签名可以基于 SHA1 或 SHA256。 Azure Active Directory 现在支持使用 SHA256 算法签名的令牌，我们建议将令牌签名算法设置为 SHA256 以获得最高安全级别。 本指南介绍将令牌签名算法设置为更安全的 SHA256 级别所要执行的步骤。
+Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active Directory 中签名其令牌，确保这些令牌不会遭到篡改。 这种签名可以基于 SHA1 或 SHA256。 Azure Active Directory 现在支持使用 SHA256 算法签名的令牌，我们建议将令牌签名算法设置为 SHA256 以获得最高安全级别。 本指南介绍将令牌签名算法设置为更安全的 SHA256 级别所要执行的步骤。
 
 >[!NOTE]
 >Microsoft 建议使用 SHA256 作为令牌签名算法，因为它比 SHA1 更安全，但 SHA1 仍受支持。
 
 ## <a name="change-the-token-signing-algorithm"></a>更改令牌签名算法
-使用下面两个过程之一设置签名算法后，AD FS 将使用 SHA256 为 Office 365 信赖方信任令牌签名。 你无需进行任何额外的配置更改，并且这种更改不影响你访问 Office 365 或其他 Azure AD 应用程序的能力。
+使用下面两个过程之一设置签名算法后，AD FS 将使用 SHA256 为 Office 365 信赖方信任令牌签名。 无需进行任何额外的配置更改，并且这种更改不影响你访问 Office 365 或其他 Azure AD 应用程序的能力。
 
 ### <a name="ad-fs-management-console"></a>AD FS 管理控制台
 1. 在 AD FS 主服务器上打开 AD FS 管理控制台。
-2. 展开 AD FS 节点，然后单击“信赖方信任”。
+2. 展开 AD FS 节点，并单击“信赖方信任”。
 3. 右键单击 Office 365/Azure 信赖方信任并选择“属性”。
-4. 选择“高级”选项卡，然后选择安全哈希算法 SHA256。
+4. 选择“高级”选项卡，并选择安全哈希算法 SHA256。
 5. 单击 **“确定”**。
 
 ![SHA256 签名算法--MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
@@ -49,5 +48,4 @@ Active Directory 联合身份验证服务 (AD FS) 将在 Microsoft Azure Active 
 
 ## <a name="also-read"></a>另请参阅
 * [Repair Office 365 trust with Azure AD Connect](connect/active-directory-aadconnect-federation-management.md#repairthetrust)（使用 Azure AD Connect 修复 Office 365 信任）
-
 

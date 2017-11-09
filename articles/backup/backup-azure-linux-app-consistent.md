@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 4/12/2017
 ms.author: anuragm;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
 ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Azure Linux VM 的应用程序一致性备份（预览版）
 
 本文介绍 Linux 操作前脚本和操作后脚本框架，以及如何使用该框架创建 Azure Linux VM 的应用程序一致性备份。
@@ -99,4 +97,3 @@ ms.lasthandoff: 05/12/2017
 
 ## <a name="next-steps"></a>后续步骤
 [配置 VM 到恢复服务保管库的备份](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
-

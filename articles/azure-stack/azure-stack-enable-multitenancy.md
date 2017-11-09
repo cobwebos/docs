@@ -1,6 +1,6 @@
 ---
-title: Enable multi-tenancy in Azure Stack | Microsoft Docs
-description: Learn how to support multiple Azure Active Directory directories in Azure Stack
+title: "启用 Azure 堆栈中的多租户 |Microsoft 文档"
+description: "了解如何支持 Azure 堆栈中的多个 Azure Active Directory 目录"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -11,44 +11,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ed1d9d20c06ea0478a439775020fd35941b3d640
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.openlocfilehash: 3a90057b43e3f2074e72f3d0f896b35b4884368b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="enable-multi-tenancy-in-azure-stack"></a>启用 Azure 堆栈中的多租户
 
-# <a name="enable-multi-tenancy-in-azure-stack"></a>Enable multi-tenancy in Azure Stack
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-You can configure Azure Stack to support users from multiple Azure Active Directory (Azure AD) tenants to use services in Azure Stack. As an example, consider the following scenario:
+你可以配置 Azure 堆栈，以支持来自多个 Azure Active Directory (Azure AD) 租户，若要使用 Azure 堆栈中的服务的用户。 例如，考虑以下方案：
 
- - You are the Service Administrator of contoso.onmicrosoft.com, where Azure Stack is installed.
- - Mary is the Directory Administrator of fabrikam.onmicrosoft.com, where guest users are located. 
- - Mary's company receives IaaS and PaaS services from your company, and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack resources in contoso.onmicrosoft.com.
+ - 你是 contoso.onmicrosoft.com，服务管理员 Azure 堆栈的安装位置。
+ - Mary 是 fabrikam.onmicrosoft.com 的，目录管理员是 fabrikam.onmicrosoft.com 的来宾用户所在的位置。 
+ - Mary 的公司收到你的公司，IaaS 和 PaaS 服务，并需要允许来宾目录 (fabrikam.onmicrosoft.com) 中的用户登录并在 contoso.onmicrosoft.com 中使用 Azure 堆栈的资源。
 
-This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack.  In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack deployment in Contoso.  
+本指南提供了所需的步骤，在此方案中，上下文中配置多租户 Azure 堆栈中。  在此方案中，你和 Mary 必须完成步骤以使用户从 Fabrikam 登录并使用从 Azure 堆栈部署在 Contoso 中的服务。  
 
-## <a name="before-you-begin"></a>Before you begin
-There are a few pre-requisites to account for before you configure multi-tenancy in Azure Stack:
+## <a name="before-you-begin"></a>开始之前
+有几个先决条件，来应对之前在 Azure 堆栈中配置多租户：
   
- - You and Mary must coordinate administrative steps across both the directory Azure Stack is installed in (Contoso), and the guest directory (Fabrikam).  
- - Make sure you've [installed](azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack.
- - [Download the Azure Stack Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
+ - 你和 Mary 必须协调跨 Azure 堆栈 (Contoso) 中的安装的目录和来宾目录 (Fabrikam) 的管理步骤。  
+ - 请确保你已[安装](azure-stack-powershell-install.md)和[配置](azure-stack-powershell-configure-admin.md)PowerShell for Azure 堆栈。
+ - [下载 Azure 堆栈 Tools](azure-stack-powershell-download.md)，并将连接和标识模块导入：
 
     ````PowerShell
         Import-Module .\Connect\AzureStack.Connect.psm1
         Import-Module .\Identity\AzureStack.Identity.psm1
     ```` 
- - Mary will require [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) access to Azure Stack. 
+ - Mary 将需要[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)到 Azure 堆栈的访问。 
 
-## <a name="configure-azure-stack-directory"></a>Configure Azure Stack directory
-In this section, you configure Azure Stack to allow sign-ins from Fabrikam Azure AD directory tenants.
+## <a name="configure-azure-stack-directory"></a>配置 Azure 堆栈目录
+在本部分中，你将配置为允许来自 Fabrikam Azure AD 目录租户的登录的 Azure 堆栈。
 
-### <a name="onboard-guest-directory-tenant"></a>Onboard guest directory tenant
-Next, onboard the Guest Directory Tenant (Fabrikam) to Azure Stack.  This step configures Azure Resource Manager to accept users and service principals from the guest directory tenant.
+### <a name="onboard-guest-directory-tenant"></a>板载来宾 directory 租户
+下一步上, 架到 Azure 堆栈来宾目录租户 (Fabrikam)。  此步骤配置为接受用户和来宾 directory 租户中的服务主体的 Azure 资源管理器。
 
 ````PowerShell
 $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
@@ -67,11 +67,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 
 
-## <a name="configure-guest-directory"></a>Configure guest directory
-After you complete steps in the Azure Stack directory, Mary must provide consent to Azure Stack accessing the guest directory and register Azure Stack with the guest directory. 
+## <a name="configure-guest-directory"></a>配置来宾目录
+完成 Azure 堆栈目录中的步骤后，Mary 必须向 Azure 堆栈访问来宾目录提供同意的情况下，并使用来宾目录注册 Azure 堆栈。 
 
-### <a name="registering-azure-stack-with-the-guest-directory"></a>Registering Azure Stack with the guest directory
-Once the guest directory administrator has provided consent for Azure Stack to access Fabrikam's directory, they must register Azure Stack with Fabrikam's directory tenant.
+### <a name="registering-azure-stack-with-the-guest-directory"></a>向来宾目录注册 Azure 堆栈
+一旦来宾目录管理员已提供 Azure 堆栈，以访问 Fabrikam 的目录的许可，它们必须为 Fabrikam 的 directory 租户注册 Azure 堆栈。
 
 ````PowerShell
 $tenantARMEndpoint = "https://management.local.azurestack.external"
@@ -84,13 +84,12 @@ Register-AzSWithMyDirectoryTenant `
  -DirectoryTenantName $guestDirectoryTenantName ` 
  -Verbose 
 ````
-## <a name="direct-users-to-sign-in"></a>Direct users to sign in
-Now that you and Mary have completed the steps to onboard Mary's directory, Mary can direct Fabrikam users to sign in.  Fabrikam users (that is, users with the fabrikam.onmicrosoft.com suffix) sign in by visiting https://portal.local.azurestack.external.  
+## <a name="direct-users-to-sign-in"></a>直接用户登录
+现在，你和 Mary 已完成到板载 Mary 目录的步骤，Mary 可以直接 Fabrikam 用户登录。  Fabrikam 用户 （即，具有 fabrikam.onmicrosoft.com 后缀的用户） 通过访问 https://portal.local.azurestack.external 登录。  
 
-Mary will direct any [foreign principals](../active-directory/active-directory-understanding-resource-access.md) in the Fabrikam directory (that is, users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  If they do not use this URL, they are sent to their default directory (Fabrikam) and receive an error that says their admin has not consented.
+Mary 将指示任何[外部主体](../active-directory/active-directory-understanding-resource-access.md)Fabrikam 目录 （即，而不使用后缀 fabrikam.onmicrosoft.com Fabrikam 目录中的用户） 中使用 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com 进行登录。如果它们不使用此 URL，它们发送到其默认目录 (Fabrikam)，并收到一个错误，指出不同意其管理员。
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>后续步骤
 
-- [Manage delegated providers](azure-stack-delegated-provider.md)
-- [Azure Stack key concepts](azure-stack-key-features.md)
-
+- [管理委派的提供程序](azure-stack-delegated-provider.md)
+- [Azure 堆栈的关键概念](azure-stack-key-features.md)

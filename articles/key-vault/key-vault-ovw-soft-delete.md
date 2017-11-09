@@ -5,13 +5,12 @@ ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 07/10/2017
+ms.date: 09/25/2017
+ms.openlocfilehash: 384b65bc89401780b174c143d84b3b8f552fba3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: c873b153ef9c7d5f55672a5918c9dc4fb7256701
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -22,7 +21,9 @@ Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象�
 
 ## <a name="supporting-interfaces"></a>支持接口
 
-软删除功能最初通过 REST、.NET/C# 和 PowerShell 接口提供。 有关详细信息，请参阅参考文献 [Key Vault 参考](https://docs.microsoft.com/azure/key-vault/)。
+软删除功能最初通过 REST、.NET/C#、PowerShell 和 CLI 接口提供。
+
+有关常规信息，请参阅参考文献 [Key Vault 参考](https://docs.microsoft.com/azure/key-vault/)了解详细信息。
 
 ## <a name="scenarios"></a>方案
 
@@ -36,7 +37,7 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 有此功能时，对 Key Vault 或 Key Vault 对象的 DELETE 操作是软删除，因此可以有效地在给定保留期内保留资源，同时通过外观提示已删除对象。 该服务还提供用于恢复已删除对象的机制，从实质上撤销删除。 
 
-软删除是可选 Key Vault 行为，在此版本中默认未启用。 有关为 Key Vault 启用软删除的详细信息，请参阅所选接口 [Key Vault 参考](https://docs.microsoft.com/azure/key-vault/)文献中的具体指南。
+软删除是可选 Key Vault 行为，在此版本中默认未启用。 
 
 ### <a name="key-vault-recovery"></a>Key Vault 恢复
 
@@ -67,6 +68,10 @@ Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resour
 
 一种例外情况是，Azure 订阅已被标记为“不可删除”。 在这种情况下，只有服务可以执行实际删除，并且将作为计划的进程执行此操作。 
 
+## <a name="next-steps"></a>后续步骤
 
+以下两个指南提供有关使用软删除的主要使用方案。
 
+- [如何将 Key Vault 软删除与 PowerShell 配合使用](key-vault-soft-delete-powershell.md) 
+- [如何将 Key Vault 软删除与 CLI 配合使用](key-vault-soft-delete-cli.md)
 

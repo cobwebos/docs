@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
+ms.openlocfilehash: 0f06d2e3f9550c2afce2d52fdd060a5069629a63
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="deploy-a-spring-boot-application-on-a-kubernetes-cluster-in-the-azure-container-service"></a>在 Azure 容器服务中将 Spring Boot 应用程序部署于 Kubernetes 群集上
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 [Spring Framework] 是一种常用的开源框架，可帮助 Java 开发人员创建 Web、移动和 API 应用程序。 本教程使用通过 [Spring Boot] 创建的示例应用，其为使用 Spring 进行快速入门的惯例方法。
 
@@ -298,7 +298,7 @@ ms.lasthandoff: 08/12/2017
 
 有关使用 Azure 上的 Spring Boot 的详细信息，请参阅以下文章：
 
-* [将 Spring Boot 应用程序部署到 Azure App Service](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [将 Spring Boot 应用程序部署到 Azure 应用服务](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 * [在 Azure 容器服务中将 Spring Boot 应用程序部署于 Linux 上](container-service-deploy-spring-boot-app-on-linux.md)
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]和[用于 Visual Studio Team Services 的 Java 工具]。
@@ -365,4 +365,3 @@ Kubernetes 网站中有多篇文章讨论有关在私有注册表中使用映像
 [KB05]: ./media/container-service-deploy-spring-boot-app-on-kubernetes/KB05.png
 [KB06]: ./media/container-service-deploy-spring-boot-app-on-kubernetes/KB06.png
 [KB07]: ./media/container-service-deploy-spring-boot-app-on-kubernetes/KB07.png
-

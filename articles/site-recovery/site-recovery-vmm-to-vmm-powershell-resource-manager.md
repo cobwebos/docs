@@ -12,56 +12,31 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 10/19/2017
 ms.author: sutalasi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 118dd3a69f140d57a3779e86c658982d58dbb718
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: c978c2e31e775f56824d765491f6d7b73648b8ae
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>使用 PowerShell (Resource Manager) 将 VMM 云中的 Hyper-V 虚拟机复制到辅助 VMM 站点
-> [!div class="op_single_selector"]
-> * [Azure 门户](site-recovery-vmm-to-vmm.md)
-> * [经典门户](site-recovery-vmm-to-vmm-classic.md)
-> * [PowerShell - 资源管理器](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
->
->
 
-欢迎使用 Azure Site Recovery！ 如果要将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点，请参考本文。
+本文说明设置 Azure Site Recovery 以便将 System Center VMM 云中的 Hyper-V 虚拟机复制到辅助站点中的 System Center VMM 云时，如何使用 PowerShell 自动完成常见任务。
 
-本文说明当你设置 Azure Site Recovery 以便将 System Center VMM 云中的 Hyper-V 虚拟机复制到辅助站点中的 System Center VMM 云时，如何使用 PowerShell 来自动完成所要执行的常见任务。
 
-本文包含方案的先决条件，并演示
-
-* 如何设置恢复服务保管库
-* 在源 VMM 服务器和目标 VMM 服务器上安装 Azure Site Recovery 提供程序
-* 在保管库中注册 VMM 服务器
-* 为 VMM 云配置复制策略。 策略中的所有复制设置将应用到所有受保护的虚拟机
-* 为虚拟机启用保护。
-* 单独测试或作为恢复计划的一部分测试 VM 的故障转移情况，确保一切正常。
-* 单独执行或作为恢复计划的一部分执行 VM 的计划内或计划外故障转移，确保一切正常。
-
-如果在设置本方案时遇到问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)中发贴。
-
-> [!NOTE]
-> Azure 提供两个不同的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md)用于创建和处理资源：Azure Resource Manager 模型与经典模型。 Azure 还有两个门户 – 支持经典部署模型的 Azure 经典门户，以及支持两种部署模型的 Azure 门户。 本文介绍资源管理器部署模型。
->
->
 
 ## <a name="on-premises-prerequisites"></a>本地先决条件
 下面是在主要和辅助本地站点中部署此方案所要满足的条件：
 
 | **先决条件** | **详细信息** |
 | --- | --- |
-| **VMM** |建议在主站点和辅助站点中各部署一个 VMM 服务器。<br/><br/> 也可以[在单个 VMM 服务器上的云之间复制](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)。 为此，至少需要在 VMM 服务器上配置两个云。<br/><br/> VMM 服务器应当至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 VMM 服务器上必须配置了一个或多个云，所有云中必须设置了 Hyper-V 容量配置文件。 <br/><br/>云必须包含一个或多个 VMM 主机组。<br/><br/>若要详细了解如何设置 VMM 云，请参阅[配置 VMM 云结构](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。<br/><br/> VMM 服务器应具有 Internet 访问权限。 |
-| **Hyper-V** |Hyper-V 服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器应包含一个或多个 VM。<br/><br/>  Hyper-V 主机服务器应位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果在 Windows Server 2012 R2 上的群集中运行 Hyper-V，应安装[更新 2961977](https://support.microsoft.com/kb/2961977)<br/><br/> 如果在 Windows Server 2012 上的群集中运行 Hyper-V，请注意，如果使用基于静态 IP 地址的群集，将不会自动创建群集代理。 你需要手动配置群集代理。 [了解详细信息](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。 |
+| **VMM** |建议在主站点和辅助站点中各部署一个 VMM 服务器。<br/><br/> 也可以在单个 VMM 服务器上的云之间复制。 为此，至少需要在 VMM 服务器上配置两个云。<br/><br/> VMM 服务器应当至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 VMM 服务器上必须配置了一个或多个云，所有云中必须设置了 Hyper-V 容量配置文件。 <br/><br/>云必须包含一个或多个 VMM 主机组。 VMM 服务器应具有 Internet 访问权限。 |
+| **Hyper-V** |Hyper-V 服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器应包含一个或多个 VM。<br/><br/>  Hyper-V 主机服务器应位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果在 Windows Server 2012 R2 上的群集中运行 Hyper-V，应安装[更新 2961977](https://support.microsoft.com/kb/2961977)<br/><br/> 如果在 Windows Server 2012 上的群集中运行 Hyper-V，请注意，如果使用基于静态 IP 地址的群集，不会自动创建群集代理。 需要手动配置群集代理。 [了解详细信息](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。 |
 | **提供程序** |在站点恢复部署期间，需要在 VMM 服务器上安装 Azure Site Recovery 提供程序。 提供程序通过 HTTPS 443 与站点恢复通信，以协调复制。 数据复制是通过 LAN 或 VPN 连接在主要和辅助 Hyper-V 服务器之间发生的。<br/><br/> 在 VMM 服务器上运行的提供程序需有权访问以下 URL：*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com；、*.blob.core.windows.net 和 *.store.core.windows.net。<br/><br/> 此外，还要允许从 VMM 服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)的防火墙通信，并允许 HTTPS (443) 协议。 |
 
 ### <a name="network-mapping-prerequisites"></a>网络映射先决条件
-网络映射在主要和辅助 VMM 服务器上的 VMM VM 网络之间进行映射：
+网络映射在主要和辅助 VMM 服务器上的 VMM VM 网络之间进行映射，以便执行以下操作：
 
 * 故障转移后，以最佳方式在辅助 Hyper-V 主机上放置副本 VM。
 * 将副本 VM 连接到适当的 VM 网络。
@@ -76,22 +51,21 @@ ms.lasthandoff: 04/27/2017
 * [如何在 VMM 中配置逻辑网络](http://go.microsoft.com/fwlink/p/?LinkId=386307)
 * [如何在 VMM 中配置 VM 网络和网关](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[详细了解](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) 网络映射的工作原理。
 
 ### <a name="powershell-prerequisites"></a>PowerShell 必决条件
-确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 有关设置 PowerShell 的信息，请参阅 [Guide to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（Azure PowerShell 安装和配置指南）。 安装并配置 PowerShell 后，可在[此处](/powershell/azure/overview)查看该服务的所有可用 cmdlet。
+确保已将 Azure PowerShell 准备就绪。 如果已使用 PowerShell，则升级到 0.8.10 或更高版本。 有关设置 PowerShell 的信息，请参阅 [Guide to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（Azure PowerShell 安装和配置指南）。 安装并配置 PowerShell 后，可在[此处](/powershell/azure/overview)查看该服务的所有可用 cmdlet。
 
 若要获取有关使用 cmdlet 的帮助提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门指南](/powershell/azure/get-started-azureps)。
 
 ## <a name="step-1-set-the-subscription"></a>步骤 1：设置订阅
-1. 从 Azure powershell 登录到你的 Azure 帐户：使用以下 cmdlet
+1. 从 Azure powershell 登录到 Azure 帐户：使用以下 cmdlet
 
         $UserName = "<user@live.com>"
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
         Login-AzureRmAccount #-Credential $Cred
-2. 获取你的订阅的列表。 其中还会列出每个订阅的 subscriptionID。 记下你希望在其中创建恢复服务保管库的订阅的订阅 ID    
+2. 获取订阅的列表。 其中还会列出每个订阅的 subscriptionID。 记下希望在其中创建恢复服务保管库的订阅的订阅 ID    
 
         Get-AzureRmSubscription
 3. 通过提及订阅 ID 设置要在其中创建恢复服务保管库的订阅
@@ -102,7 +76,7 @@ ms.lasthandoff: 04/27/2017
 1. 如果还没有 Azure Resource Manager 资源组，则创建一个
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
-2. 创建新的恢复服务保管库，并将所创建的 ASR 保管库对象保存在变量（后面将用到）中。 你还可以使用 Get-AzureRMRecoveryServicesVault cmdlet 检索 ASR 保管库对象后期创建：-
+2. 创建新的恢复服务保管库，并将恢复服务保管库对象保存在变量（后面将用到）中。 也可以在创建后使用 Get-AzureRMRecoveryServicesVault cmdlet 检索保管库对象：-
 
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
@@ -157,7 +131,7 @@ ms.lasthandoff: 04/27/2017
         $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
-    > VMM 云包含的 Hyper-V 主机可能运行不同版本的 Windows Server（如 Hyper-V 先决条件中所示），但复制策略是特定于 OS 版本的。 如果不同的主机运行在不同的操作系统版本上，则请为每类 OS 版本创建不同的复制策略。 例如，如果你有 5 个主机运行在 Windows Servers 2012 上，3 个主机运行在 Windows Server 2012 R2 上，则请创建两种复制策略 – 一种策略用于一种类型的操作系统版本。
+    > VMM 云包含的 Hyper-V 主机可能运行不同版本的 Windows Server（如 Hyper-V 先决条件中所示），但复制策略是特定于 OS 版本的。 如果不同的主机运行在不同的操作系统版本上，则请为每类 OS 版本创建不同的复制策略。 例如，如果有 5 个主机运行在 Windows Server 2012 上，3 个主机运行在 Windows Server 2012 R2 上，请创建两个复制策略 - 一个策略用于一种类型的操作系统版本。
 
 1. 通过运行以下命令获取主保护容器（主 VMM 云）和恢复保护容器（恢复 VMM 云）：
 
@@ -172,7 +146,7 @@ ms.lasthandoff: 04/27/2017
 3. 开始将保护容器（VMM 云）与复制策略相关联：
 
        $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
-4. 等待策略关联作业完成。 你可以使用以下 PowerShell 代码段来查看作业是否已完成。
+4. 等待策略关联作业完成。 可以使用以下 PowerShell 代码段来查看作业是否已完成。
 
        $job = Get-AzureRmSiteRecoveryJob -Job $associationJob
 
@@ -195,7 +169,7 @@ ms.lasthandoff: 04/27/2017
 1. 第一条命令将获取当前 Azure Site Recovery 保管库的服务器。 该命令将 Microsoft Azure Site Recovery 服务器存储在 $Servers 数组变量中。
 
         $Servers = Get-AzureRmSiteRecoveryServer
-2. 以下命令获取源 VMM 服务器和目标 VMM 服务器的站点恢复网络。
+2. 以下命令获取源 VMM 服务器和目标 VMM 服务器的 Site Recovery 网络。
 
         $PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
 
@@ -205,7 +179,7 @@ ms.lasthandoff: 04/27/2017
     > 在服务器数组中，源 VMM 服务器可以是一个，也可以是第二个。 查看 VMM 服务器的名称，获取相应的网络
 
 
-1. 最后一个 cmdlet 将在主网络与恢复网络之间创建映射。 该 cmdlet 将主要网络指定为 $PrimaryNetworks 的第一个元素，将恢复网络指定为 $RecoveryNetworks 的第一个元素。
+1. 最后一个 cmdlet 会在主网络与恢复网络之间创建映射。 该 cmdlet 将主要网络指定为 $PrimaryNetworks 的第一个元素，将恢复网络指定为 $RecoveryNetworks 的第一个元素。
 
         New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
@@ -242,11 +216,11 @@ ms.lasthandoff: 04/27/2017
 
           $jobResult = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
-## <a name="test-your-deployment"></a>测试你的部署
-若要测试你的部署，可针对一台虚拟机运行测试故障转移，或者创建一个包括多个虚拟机的恢复计划并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟你的故障转移和恢复机制。
+## <a name="test-your-deployment"></a>测试部署
+要测试部署，可针对一台虚拟机运行测试故障转移，或者创建一个包括多个虚拟机的恢复计划并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟故障转移和恢复机制。
 
 > [!NOTE]
-> 你可以在 Azure 门户中为应用程序创建恢复计划。
+> 可以在 Azure 门户中为应用程序创建恢复计划。
 >
 >
 
@@ -321,4 +295,3 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](/powershell/module/azurerm.recoveryservices.backup/#recovery) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
-

@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 8b0417d131bc25225e777285b9e4bfbaa97aad8f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 9dc12bc2e313bcb2000724d035156c5054d14e1c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
 
@@ -59,7 +58,7 @@ ms.lasthandoff: 03/29/2017
 
 
 ## <a name="adding-github-from-the-gallery"></a>从库中添加 GitHub
-若要配置 GitHub 与 Azure AD 的集成，需要从库中将 GitHub 添加到托管 SaaS 应用列表。
+要配置 GitHub 与 Azure AD 的集成，需要从库中将 GitHub 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 GitHub，请执行以下步骤：**
 
@@ -79,7 +78,7 @@ ms.lasthandoff: 03/29/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-github-tutorial/tutorial_github_search02.png)
 
-5. 在结果窗格中，选择“GitHub”，然后单击“添加”按钮添加该应用程序。
+5. 在结果窗格中，选择“GitHub”，并单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-github-tutorial/tutorial_github_search_result02.png)
 
@@ -95,13 +94,13 @@ ms.lasthandoff: 03/29/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 GitHub 测试用户](#creating-a-GitHub-test-user)** - 在 GitHub 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 GitHub 测试用户](#creating-a-GitHub-test-user)** - 在 GitHub 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 GitHub 应用程序中配置单一登录。
+在本部分中，会在 Azure 管理门户中启用 Azure AD 单一登录并在 GitHub 应用程序中配置单一登录。
 
 **若要配置 GitHub 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -117,9 +116,9 @@ ms.lasthandoff: 03/29/2017
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_saml011.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入 `https://github.com/orgs/<entity-id>/sso` 值
+    a. 在“登录 URL”文本框中，键入 `https://github.com/orgs/<entity-id>/sso` 值
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>`
 
     > [!NOTE] 
     > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。 
@@ -132,11 +131,11 @@ ms.lasthandoff: 03/29/2017
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
 
-6. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
+6. 在“创建新证书”对话框中，单击日历图标，并选择“到期日期”。 然后单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_general_300.png)
 
-7. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
+7. 在“SAML 签名证书”部分中，选择“激活新证书”，并单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_04.png)
 
@@ -144,7 +143,7 @@ ms.lasthandoff: 03/29/2017
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_general_400.png)
 
-9. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+9. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-github-tutorial/tutorial_github_05.png) 
 
@@ -166,9 +165,9 @@ ms.lasthandoff: 03/29/2017
 
 14. 配置以下字段：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **登录 URL**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 单一登录服务 URL”
+    a. **登录 URL**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 单一登录服务 URL”
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **颁发者**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 实体 ID”
+    b. **颁发者**：输入 Azure AD 上的“配置 GitHub”部分中显示的“SAML 实体 ID”
 
     c. **公共证书**：在记事本中打开从 Azure AD 下载的证书，并复制包括“BEGIN CERTIFICATE”和“END CERTIFICATE”在内的内容
 
@@ -203,7 +202,7 @@ ms.lasthandoff: 03/29/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-github-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -231,11 +230,11 @@ ms.lasthandoff: 03/29/2017
 
 4. 在“邀请成员”对话框页上，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件”文本框中，键入 Britta Simon 帐户的电子邮件地址。
+    a. 在“电子邮件”文本框中，键入 Britta Simon 帐户的电子邮件地址。
 
     ![邀请人员](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_10.png "邀请人员")
     
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“发送邀请”。
+    b. 单击“发送邀请”。
 
     ![邀请人员](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_11.png "邀请人员")
 
@@ -249,9 +248,9 @@ ms.lasthandoff: 03/29/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 GitHub，请执行以下步骤：**
+**要将 Britta Simon 分配到 GitHub，请执行以下步骤：**
 
-1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -279,7 +278,7 @@ ms.lasthandoff: 03/29/2017
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 GitHub 磁贴时，你应自动登录到 GitHub 应用程序。 一开始将以组织帐户登录，但随后需要使用个人帐户登录。
+单击访问面板中的 GitHub 磁贴时，应自动登录到 GitHub 应用程序。 一开始以组织帐户登录，但随后需要使用个人帐户登录。
 
 
 ## <a name="additional-resources"></a>其他资源
@@ -302,4 +301,3 @@ ms.lasthandoff: 03/29/2017
 [201]: ./media/active-directory-saas-github-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-github-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-github-tutorial/tutorial_general_203.png
-

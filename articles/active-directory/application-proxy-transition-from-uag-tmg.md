@@ -15,12 +15,11 @@ ms.date: 07/27/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: 6c9f70493155de6989b26fd4e8bcf1dff01c835c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compare-remote-access-solutions"></a>比较远程访问解决方案
 
@@ -65,4 +64,3 @@ Azure Active Directory 应用程序代理是 Microsoft 提供的两个远程访�
 
 - [使用 Azure AD 应用程序提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)
 - [从 Forefront TMG 和 UAG 转换为应用程序代理](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)。
-

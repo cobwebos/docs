@@ -12,16 +12,14 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2017
+ms.date: 10/04/2017
 ms.author: ryanwi
+ms.openlocfilehash: a4bada3c099e348e2aa188fe08a67ef170ad50ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: f93298e6483fd8c9dfda835964aeebd1a430af69
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>创建你的第一个 C# Service Fabric 有状态 Reliable Services 应用程序
 
 了解如何在数分钟内在 Windows 上部署你的第一个适用于 .NET 的 Service Fabric 应用程序。 完成后，你会有一个本地群集，与 Reliable Service 应用程序一起运行。
@@ -104,13 +102,13 @@ Visual Studio 会创建应用程序项目和有状态服务项目，并在解决
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 提供以视觉方式呈现群集的功能。 它包括部署到其中的应用程序集，以及充当组成成分的物理节点集。
 
-在左窗格中，展开“群集”>“节点”，然后查找运行代码的节点。
+在左窗格中，展开“群集”>“节点”，并查找运行代码的节点。
 
 单击“操作”>“停用（重启）”来模拟计算机重启。
 
 ![在 Service Fabric 资源管理器中停止节点][sfx-stop-node]
 
-随着你在一个节点上进行的计算无缝地故障转移到另一个节点，你应立即在 Visual Studio 中看到命中了断点。
+随着你在一个节点上进行的计算无缝地故障转移到另一个节点，应立即在 Visual Studio 中看到命中了断点。
 
 
 接下来，返回到诊断事件查看器并观察消息。 计数器在继续递增，即使事件实际上来自不同的节点。
@@ -119,7 +117,7 @@ Visual Studio 会创建应用程序项目和有状态服务项目，并在解决
 
 ## <a name="cleaning-up-the-local-cluster-optional"></a>清理本地群集（可选）
 
-请记住，此本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集会继续在后台运行。 做好停止本地群集的准备以后，有多个选项可以选择。
+请记住，此本地群集是真实的。 停止调试器会删除应用程序实例，并注销应用程序类型。 不过，群集会继续在后台运行。 做好停止本地群集的准备以后，有多个选项可以选择。
 
 ### <a name="keep-application-and-trace-data"></a>保留应用程序和跟踪数据
 
@@ -148,4 +146,3 @@ Visual Studio 会创建应用程序项目和有状态服务项目，并在解决
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
-

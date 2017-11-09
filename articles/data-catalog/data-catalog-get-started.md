@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure 数据目录入门
 Azure 数据目录是一个完全托管的云服务，具有企业数据资产的注册系统和发现系统的功能。 有关详细的概述，请参阅 [What is Azure Data Catalog](data-catalog-what-is-data-catalog.md)（什么是 Azure 数据目录）。
@@ -175,7 +174,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 2. 在搜索框中输入 `cycles` ，并按 **ENTER**。
    
     ![Azure 数据目录 - 基本文本搜索](media/data-catalog-get-started/data-catalog-basic-text-search.png)
-3. 确认是否在结果中看到全部四个表和数据库 (AdventureWorks2014)。 可以单击工具栏上的按钮切换**网格视图**和**列表视图**，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。 也可在搜索结果中指定**每页显示的结果数**。
+3. 确认是否在结果中看到全部四个表和数据库 (AdventureWorks2014)。 可以单击工具栏上的按钮切换**网格视图**和**列表视图**，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。 **每页显示的结果数** 。
    
     ![Azure 数据目录 - 基本文本搜索结果](media/data-catalog-get-started/data-catalog-basic-text-search-results.png)
    
@@ -363,5 +362,4 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 * [How to document data assets](data-catalog-how-to-documentation.md)
 * [How to connect to data assets](data-catalog-how-to-connect.md)
 * [How to manage data assets](data-catalog-how-to-manage.md)
-
 

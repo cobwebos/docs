@@ -15,20 +15,19 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 06/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 5fc5c74c7671f64bd1312ad6939e629c0277110c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
-本文介绍如何在组织中采用 **Azure 数据目录**。 若要成功采用 **Azure 数据目录**，请将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
+本文介绍如何在组织中采用 **Azure 数据目录**。 要成功采用 **Azure 数据目录**，请将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
 
 ## <a name="introducing-the-azure-data-catalog"></a>Azure 数据目录简介
 对于要如何在职场内找到有关数据资产的专家信息，人们的期望已经改变。 今天，由于人们普遍在职场内使用 Yammer 等社交媒体工具，他们无不期望能够快速获取关于各种主题的帮助与建议。 **Azure 数据目录**帮助企业和团队在中心存储库中合并有关企业数据资产的信息。 数据使用者可以发现这些数据资产，并获得行业专家提供的知识。
 
-本文介绍如何使用 **Azure 数据目录**来开始这一切的方法。 本文将以 Adventure Works 这家虚构公司描述典型的数据目录采用方案。
+本文介绍如何使用 **Azure 数据目录**来开始这一切的方法。 本文以 Adventure Works 这家虚构公司描述典型的数据目录采用方案。
 
 **什么是 Azure 数据目录？**
 
@@ -164,7 +163,6 @@ ms.lasthandoff: 06/21/2017
 * [Azure 数据目录文档](https://azure.microsoft.com/documentation/services/data-catalog/)
 * [Azure Data Catalog common scenarios](data-catalog-common-scenarios.md)
 * [Register data sources](data-catalog-get-started.md)
-* [Search data sources](data-catalog-get-started.md)
+* [搜索数据源](data-catalog-get-started.md)
 * [Annotate data sources](data-catalog-get-started.md)
 * [Crowdsourcing metadata](data-catalog-get-started.md)
-

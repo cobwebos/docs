@@ -14,22 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 2a7ecec310f4e321417364eee854409b2f85e2d3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
-
+ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-an-integration-account"></a>什么是集成帐户？
 
 集成帐户可让企业集成应用管理包括架构、映射、证书、合作伙伴和协议在内的项目。 创建的任何集成应用都使用集成帐户来访问这些架构、映射和证书等等。
 
 ## <a name="create-an-integration-account"></a>创建集成帐户
 
-1.    登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。
 
     ![选择“更多服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
@@ -41,15 +38,15 @@ ms.lasthandoff: 03/10/2017
 
     ![选择“添加”](./media/logic-apps-enterprise-integration-accounts/account-3.png)
 
-4. 为集成帐户命名，然后选择要使用的 Azure 订阅。 可以创建新的**资源组**，或选择现有的资源组。 然后选择一个用于托管集成帐户的**位置**和一个**定价层**。 
+4. 为集成帐户命名，并选择要使用的 Azure 订阅。 可以创建新的**资源组**，或选择现有的资源组。 然后选择一个用于托管集成帐户的位置和一个定价层。 
 
     准备就绪后，选择“创建”。
 
     ![提供集成帐户的详细信息](./media/logic-apps-enterprise-integration-accounts/account-4.png)
 
-    Azure 将在选定位置预配你的集成帐户，此过程在 1 分钟内应可完成。
+    Azure 会在选定位置预配集成帐户，此过程在 1 分钟内应可完成。
 
-5. 刷新页面。 此时可以看到已列出你的新集成帐户。
+5. 刷新页面。 此时可以看到已列出新集成帐户。
 
     ![显示了新的集成帐户](./media/logic-apps-enterprise-integration-accounts/account-5.png) 
 
@@ -68,7 +65,7 @@ ms.lasthandoff: 03/10/2017
 > 在开始之前，请确保集成帐户和逻辑应用位于*相同的 Azure 位置*。
 
 
-1. 在 Azure 门户中选择你的逻辑应用，然后检查逻辑应用的位置。
+1. 在 Azure 门户中选择逻辑应用，然后检查逻辑应用的位置。
 
     ![选择逻辑应用并检查位置](./media/logic-apps-enterprise-integration-accounts/linkaccount-1.png)
 
@@ -80,7 +77,7 @@ ms.lasthandoff: 03/10/2017
 
     ![选择集成帐户](./media/logic-apps-enterprise-integration-accounts/linkaccount-3.png)
 
-    随后你将收到一条通知，指出你的集成帐户已链接到逻辑应用，并且逻辑应用现在可以访问该集成帐户中的所有项目。
+    随后将收到一条通知，指出集成帐户已链接到逻辑应用，并且逻辑应用现在可以访问该集成帐户中的所有项目。
 
     ![逻辑应用已链接到集成帐户](./media/logic-apps-enterprise-integration-accounts/linkaccount-5.png)
 
@@ -108,7 +105,7 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="move-your-integration-account"></a>移动集成帐户
 
-若要将集成帐户移到另一个 Azure 订阅或资源组，请执行以下步骤。
+要将集成帐户移到另一个 Azure 订阅或资源组，请执行以下步骤。
 
 > [!IMPORTANT]
 > 移动集成帐户后，必须更新所有脚本才能使用新资源 ID。
@@ -131,5 +128,4 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关协议的详细信息](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
-
 

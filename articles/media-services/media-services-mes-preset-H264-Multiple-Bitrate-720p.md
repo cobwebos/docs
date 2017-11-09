@@ -1,6 +1,6 @@
 ---
 title: "H264 多比特率 720p Media Encoder Standard 预设 - Azure | Microsoft 文档"
-description: "本主题概述 **H264 多比特率 720p** 任务预设。"
+description: "本主题概述了 **H264 多比特率 720p** 任务预设。"
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
-ms.openlocfilehash: ac5794c190097f05a94d9ab39a8191a508b28703
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: 564e430ad1c9dcf1ee126d136b37009c74400401
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="h264-multiple-bitrate-720p"></a>H264 多比特率 720p
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
@@ -263,4 +261,3 @@ ms.lasthandoff: 01/27/2017
   ]  
 }  
 ```
-

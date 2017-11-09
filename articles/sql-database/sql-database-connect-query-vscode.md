@@ -11,22 +11,21 @@ editor:
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: d07194d4f92b2b32b506813a4b1bb5c84e2f98ac
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询
 
-[Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows，并且支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 本快速入门演示了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
+[Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows，并且支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 本快速入门演示了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，并使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +64,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
+2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。
 
    ![连接信息](./media/sql-database-connect-query-dotnet/server-name.png) 
@@ -83,7 +82,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    ![SQL 语言模式](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-your-database"></a>连接到您的数据库
+## <a name="connect-to-your-database"></a>连接到数据库
 
 使用 Visual Studio Code 建立到 Azure SQL 数据库服务器的连接。
 
@@ -95,7 +94,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 2. 键入 **sqlcon** 并按 **ENTER**。
 
-3. 按 **ENTER** 选择“创建连接配置文件”。 这将为 SQL Server 实例创建连接配置文件。
+3. 按 **ENTER** 选择“创建连接配置文件”。 这会为 SQL Server 实例创建连接配置文件。
 
 4. 按照提示为新的连接配置文件指定连接属性。 指定每个值后，按 **ENTER** 继续。 
 
@@ -109,7 +108,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
    | 输入此配置文件的名称 | 配置文件名称，例如 mySampleDatabase。 | 保存配置文件名称可以在后续登录时加快连接速度。 | 
 
-5. 按 **ESC** 键关闭信息消息，该消息通知你，配置文件已创建并连接。
+5. 按 ESC 键关闭信息消息，该消息通知你，配置文件已创建并且已连接。
 
 6. 验证状态栏中的连接。
 
@@ -136,7 +135,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 通过以下代码使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品插入到 SalesLT.Product 表中。
 
-1. 在“编辑器”窗口中删除以前的查询，然后输入以下查询：
+1. 在“编辑器”窗口中删除以前的查询，并输入以下查询：
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -164,7 +163,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 通过以下代码使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句，以便更新此前添加的新产品。
 
-1.  在“编辑器”窗口中删除以前的查询，然后输入以下查询：
+1.  在“编辑器”窗口中删除以前的查询，并输入以下查询：
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -178,7 +177,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 通过以下代码使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句，以便删除此前添加的新产品。
 
-1. 在“编辑器”窗口中删除以前的查询，然后输入以下查询：
+1. 在“编辑器”窗口中删除以前的查询，并输入以下查询：
 
    ```sql
    DELETE FROM [SalesLT].[Product]
@@ -190,5 +189,5 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ## <a name="next-steps"></a>后续步骤
 
 - 若要使用 SQL Server Management Studio 进行连接和查询，请参阅[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)。
+- 若要使用 Azure 门户进行连接和查询，请参阅[使用 Azure 门户 SQL 查询编辑器进行连接和查询](sql-database-connect-query-portal.md)。
 - 有关使用 Visual Studio Code 的 MSDN 杂志文章，请参阅[“利用 MSSQL 扩展创建数据库 IDE”博客文章](https://msdn.microsoft.com/magazine/mt809115)。
-

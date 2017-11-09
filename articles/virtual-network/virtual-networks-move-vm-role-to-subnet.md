@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: b094f8338394ef2e84cad3070936d715411326a4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>使用 PowerShell 将 VM（经典）和云服务角色实例移动到其他子网
 可以使用 PowerShell 将 VM（经典）从一个子网移动到同一虚拟网络 (VNet) 中的另一个子网。 可以通过编辑 CSCFG 文件（而不是使用 PowerShell）移动角色实例。
@@ -49,7 +48,7 @@ ms.lasthandoff: 02/28/2017
     | Update-AzureVM
 
 ## <a name="to-move-a-role-instance-to-another-subnet"></a>将角色实例移到另一个子网
-若要移动角色实例，请编辑 CSCFG 文件。 在以下示例中，要将虚拟网络 *VNETName* 中的“Role0”从其当前的子网移到 *Subnet-2*。 由于已部署角色实例，只需将子网名称更改为“Subnet-2”。 请务必编辑此示例以反映所处环境。
+若要移动角色实例，请编辑 CSCFG 文件。 在以下示例中，要将虚拟网络 VNETName 中的“Role0”从其当前的子网移到 VNETName*Subnet-2*。 由于已部署角色实例，只需将子网名称更改为“Subnet-2”。 请务必编辑此示例以反映所处环境。
 
     <NetworkConfiguration>
         <VirtualNetworkSite name="VNETName" />
@@ -59,4 +58,3 @@ ms.lasthandoff: 02/28/2017
            </InstanceAddress>
         </AddressAssignments>
     </NetworkConfiguration> 
-

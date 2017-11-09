@@ -9,19 +9,17 @@ editor:
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/25/2017
 ms.author: genli
+ms.openlocfilehash: 3011ef7eced5a24ba07d06e2db2f5e4d344b94de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 524f6303f71590de75f7eb8fd2a9082c35dfa651
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
 Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题的故障排除步骤。 

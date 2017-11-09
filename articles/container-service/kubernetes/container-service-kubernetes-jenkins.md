@@ -17,15 +17,16 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: briar
 ms.custom: mvc
+ms.openlocfilehash: c4b833b4d3234adc3f44a84f253ff9b8d78b1e23
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 85ac34444cc54b9c6fe9d5d3fcd1ab53bf1dc0d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="jenkins-integration-with-azure-container-service-and-kubernetes"></a>Jenkins 与 Azure 容器服务和 Kubernetes 的集成 
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+
 本教程逐步讲解使用 Jenkins 平台将多容器应用程序持续集成到 Azure 容器服务 Kubernetes 的过程。 工作流将使用部署滚动更新来更新 Docker 中心内的容器映像并升级 Kubernetes 组合。 
 
 ## <a name="high-level-process"></a>高级过程
@@ -122,11 +123,11 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 - 可重新生成和更新的容器化应用程序。 可以使用 Golang 中编写的此示例容器应用程序：https://github.com/chzbrgr71/go-web 
 
 > [!NOTE]
-> 必须在你自己的 GitHub 帐户中必须执行以下步骤。 可任意克隆上述存储库，但必须使用你自己的帐户来配置 Webhook 和 Jenkins 访问。
+> 必须在自己的 GitHub 帐户中必须执行以下步骤。 可任意克隆上述存储库，但必须使用自己的帐户来配置 Webhook 和 Jenkins 访问。
 >
 
 ### <a name="step-1-deploy-initial-v1-of-application"></a>步骤 1：部署应用程序的初始 v1 版本
-1. 在开发人员计算机中使用以下命令生成应用。 将 `myrepo` 替换为你自己的值。
+1. 在开发人员计算机中使用以下命令生成应用。 将 `myrepo` 替换成自己的值。
     
     ```bash
     git clone https://github.com/chzbrgr71/go-web.git
@@ -163,7 +164,7 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 
 ### <a name="step-3-create-the-jenkins-workflow"></a>步骤 3：创建 Jenkins 工作流
 1. 创建 Jenkins 项。
-2. 提供名称（例如“go-web”），然后选择“自由格式的项目”。 
+2. 提供名称（例如“go-web”），并选择“自由格式的项目”。 
 3. 选中“GitHub 项目”并提供 GitHub 存储库的 URL。
 4. 在“源代码管理”中，提供 GitHub 存储库 URL 和凭据。 
 5. 添加“执行 shell”类型的“生成步骤”并使用以下文本：
@@ -184,11 +185,11 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 
 ![Jenkins 生成步骤](./media/container-service-kubernetes-jenkins/jenkins-build-steps.png)
     
-7. 保存 Jenkins 项，然后使用“立即生成”测试。
+7. 保存 Jenkins 项，并使用“立即生成”测试。
 
 ### <a name="step-4-connect-github-webhook"></a>步骤 4：连接 GitHub Webhook
 1. 在创建的 Jenkins 项中，单击“配置”。
-2. 在“生成触发器”下，选择“用于 GITScm 轮询的 GitHub 挂钩触发器”，然后单击“保存”。 这会自动配置 GitHub Webhook。
+2. 在“生成触发器”下，选择“用于 GITScm 轮询的 GitHub 挂钩触发器”，并单击“保存”。 这会自动配置 GitHub Webhook。
 3. 在 go-web 的 GitHub 存储库中，单击“设置”>“Webhook”。
 4. 验证是否已成功添加 Jenkins Webhook URL。 URL 应以“github-webhook”结尾。
 
@@ -209,4 +210,3 @@ sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.ku
 - 部署 Azure 容器注册表并在安全存储库中存储映像。 请参阅 [Azure 容器注册表文档](https://docs.microsoft.com/azure/container-registry)。
 - 在 Jenkins 中生成包含并列部署和自动化测试的复杂工作流。
 - 有关使用 Jenkins 和 Kubernetes 进行持续集成/持续部署 (CI/CD) 的详细信息，请参阅 [Jenkins 博客](https://jenkins.io/blog/2015/07/24/integrating-kubernetes-and-jenkins/)。
-

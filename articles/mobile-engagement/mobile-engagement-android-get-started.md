@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
 ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>适用于 Android 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -27,12 +27,12 @@ ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
 本教程演示使用 Mobile Engagement 的简单广播方案。 在本教程中，将创建一个空白 Android 应用，该应用使用 Google Cloud Messaging (GCM) 收集基本数据以及接收推送通知。
 
 ## <a name="prerequisites"></a>先决条件
-完成本教程需要你安装 [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
+完成本教程需要 [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
 
 它还需要 [Mobile Engagement Android SDK](https://aka.ms/vq9mfn)。
 
 > [!IMPORTANT]
-> 要完成此教程，需要一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started)。
+> 要完成此教程，需要一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started)。
 >
 >
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: dc255a930bf71e6ef6d964bc5e3472a38ce4e467
 
     ![][5]
 
-Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演示应用。
+Android Studio 现在已经创建了会在其中集成 Mobile Engagement 的演示应用。
 
 ### <a name="include-the-sdk-library-in-your-project"></a>将 SDK 库包含到项目中
 1. 下载 [Mobile Engagement Android SDK](https://aka.ms/vq9mfn)。
@@ -74,7 +74,7 @@ Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演�
 3. 确定此 SDK 当前版本的 .jar 库，将其复制到剪贴板。
 
       ![][6]
-4. 导航到“项目”  部分 (1)，将 .jar 粘贴在库文件夹中 (2)。
+4. 导航到“项目”部分 (1)，将 .jar 粘贴在库文件夹中 (2)。
 
       ![][7]
 5. 要加载库，请同步项目。
@@ -82,7 +82,7 @@ Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演�
       ![][8]
 
 ### <a name="connect-your-app-to-mobile-engagement-backend-with-the-connection-string"></a>使用连接字符串将应用连接到 Mobile Engagement 后端
-1. 将下面的代码行复制到 creation 活动（只能在应用程序的一个位置完成，通常为 main 活动）。 对于此示例应用，打开“src”->“main”->“java”文件夹下的“MainActivity”，然后添加以下内容：
+1. 将下面的代码行复制到 creation 活动（只能在应用程序的一个位置完成，通常为 main 活动）。 对于此示例应用，打开“src”->“main”->“java”文件夹下的“MainActivity”，并添加以下内容：
 
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
         engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -114,9 +114,9 @@ Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演�
              android:exported="false"
              android:label="<Your application name>"
              android:process=":Engagement"/>
-3. 在粘贴的代码中，替换标签中的 `"<Your application name>"`，该标签位于“设置”菜单中，在该菜单中可以看到设备运行的服务。 例如，你可以在该标签中添加“Service”一词。
+3. 在粘贴的代码中，替换标签中的 `"<Your application name>"`，该标签位于“设置”菜单中，在该菜单中可以看到设备运行的服务。 例如，可以在该标签中添加“Service”一词。
 
-### <a name="send-a-screen-to-mobile-engagement"></a>将屏幕发送到 Mobile Engagement
+### <a name="send-a-screen-to-mobile-engagement"></a>发送屏幕到 Mobile Engagement
 要开始发送数据并确保用户处于活动状态，必须将至少一个屏幕（活动）发送到 Mobile Engagement 后端。
 
 转到 **MainActivity.java**，并添加以下内容，将 **MainActivity** 的基类替换给 **EngagementActivity**：
@@ -134,7 +134,7 @@ Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演�
 
 如果希望在应用中保留 `ActionBar` ，请参阅 [高级 Android 报告](mobile-engagement-android-advanced-reporting.md)。
 
-## <a name="connect-app-with-real-time-monitoring"></a>将应用与实时监视相连
+## <a name="connect-app-with-real-time-monitoring"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ## <a name="enable-push-notifications-and-in-app-messaging"></a>启用推送通知和应用内消息传送
@@ -145,7 +145,7 @@ Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演�
 1. 导航回 SDK 下载内容，复制“res”  文件夹。
 
     ![][10]
-2. 返回到 Android Studio，选择项目文件的“main”  目录，然后粘贴，将资源添加到项目。
+2. 返回到 Android Studio，选择项目文件的“main”目录，然后粘贴，将资源添加到项目。
 
     ![][11]
 
@@ -170,9 +170,3 @@ Android Studio 现在已经创建了将在其中集成 Mobile Engagement 的演�
 [9]: ./media/mobile-engagement-android-get-started/app-connection-info-page.png
 [10]: ./media/mobile-engagement-android-get-started/copy-resources.png
 [11]: ./media/mobile-engagement-android-get-started/paste-resources.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

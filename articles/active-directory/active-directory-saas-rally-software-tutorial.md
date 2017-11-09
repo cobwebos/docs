@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 6481c9ef0ca71419ccfa6f7956f4702985743df3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>教程：Azure Active Directory 与 Rally Software 集成
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 08/16/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Rally Software
-2. 配置和测试 Azure AD 单一登录
+2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-rally-software-from-the-gallery"></a>从库中添加 Rally Software
 要配置 Rally Software 与 Azure AD 的集成，需要从库中将 Rally Software 添加到托管 SaaS 应用列表。
@@ -247,7 +246,7 @@ ms.lasthandoff: 08/16/2017
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Rally Software 磁贴时，应自动登录到 Rally Software 应用程序。
 
@@ -271,5 +270,4 @@ ms.lasthandoff: 08/16/2017
 [201]: ./media/active-directory-saas-rally-software-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-rally-software-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-rally-software-tutorial/tutorial_general_203.png
-
 

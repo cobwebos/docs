@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 09/21/2017
 ms.author: jgao
+ms.openlocfilehash: 34550ed33cd81bcbf5b405a5e5c09d25adf5e6ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: a7e389037a458c91d67643f7c0fca0691c22224f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure Marketplace 中发布 HDInsight 应用程序
 可在基于 Linux 的 HDInsight 群集上安装 Azure HDInsight 应用程序。 在本文中，你将了解如何在 Azure Marketplace 中发布 HDInsight 应用程序。 有关在 Azure Marketplace 中发布的一般信息，请参阅[在 Azure Marketplace 中发布产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。
@@ -41,16 +40,17 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 ## <a name="define-the-application"></a>定义应用程序
 在 Marketplace 中发布应用程序，分为两个步骤。 首先，定义 createUiDef.json 文件。 CreateUiDef.json 文件指示应用程序与哪些群集兼容。 然后，从 Azure 门户中发布模板。 下面是一个示例 createUiDef.json 文件：
 
-    {
-        "handler": "Microsoft.HDInsight",
-        "version": "0.0.1-preview",
-        "clusterFilters": {
-            "types": ["Hadoop", "HBase", "Storm", "Spark"],
-            "tiers": ["Standard", "Premium"],
-            "versions": ["3.4"]
-        }
+```json
+{
+    "handler": "Microsoft.HDInsight",
+    "version": "0.0.1-preview",
+    "clusterFilters": {
+        "types": ["Hadoop", "HBase", "Storm", "Spark"],
+        "tiers": ["Standard", "Premium"],
+        "versions": ["3.4"]
     }
-
+}
+```
 
 | 字段 | 说明 | 可能的值 |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
   > [!IMPORTANT]
   > 应用程序安装脚本的名称对特定群集必须唯一。 脚本名称必须具有以下格式：
   > 
-  > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
+  > "name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
   > 脚本名称有三个部分：
   > 
@@ -112,5 +112,4 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 * 了解如何[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)并添加更多应用程序。 
 * 了解如何[使用 Azure 资源管理器模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 * 了解如何[在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)，访问 HDInsight 群集、测试 HDInsight 应用程序以及托管 HDInsight 应用程序。
-
 

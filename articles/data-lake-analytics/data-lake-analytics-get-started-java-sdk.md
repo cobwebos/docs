@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>通过 Java SDK 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何使用 Azure Data Lake Analytics Java SDK 来创建 Azure Data Lake 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户和处理作业。 有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Analytics](data-lake-analytics-overview.md)。
 
-在本教程中，你将开发一个 Java 控制台应用程序，其中包含常见的管理任务示例以及创建测试数据和提交作业示例。  若要通过其他支持的工具来完成此教程，请单击本节顶部的选项卡。
+在本教程中，将开发一个 Java 控制台应用程序，其中包含常见的管理任务示例以及创建测试数据和提交作业示例。  若要通过其他支持的工具来完成此教程，请单击本节顶部的选项卡。
 
 ## <a name="prerequisites"></a>先决条件
 * Java 开发工具包 (JDK) 8（使用 Java 1.8 版）。
@@ -41,11 +40,11 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 1. 打开 IntelliJ，使用 **命令行应用** 模板创建一个新的 Java 项目。
-2. 右键单击屏幕左侧的项目并单击“添加框架支持”。 选择 “Maven”，然后单击“确定”。
+2. 右键单击屏幕左侧的项目并单击“添加框架支持”。 选择 “Maven”，并单击“确定”。
 3. 打开新创建的 **"pom.xml"** 文件，并在 **\</版本>** 标记和 **\</项目>** 标记之间添加以下文本段：
 
     >[!NOTE]
-    >此步骤是临时的，直到在 Maven 中提供 Azure Data Lake Analytics SDK。 在 Maven 中提供 SDK 后，将更新本文。 以后将在 Maven 中提供所有 SDK 更新。
+    >此步骤是临时的，直到在 Maven 中提供 Azure Data Lake Analytics SDK。 在 Maven 中提供 SDK 后，将更新本文。 以后会在 Maven 中提供所有 SDK 更新。
     >
 
         <repositories>
@@ -96,13 +95,13 @@ ms.lasthandoff: 06/20/2017
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
-4. 依次转到“文件”、“设置”、“生成”、“执行”和“部署”。 依次选择“生成工具”、“Maven”和“导入”。 然后单击“自动导入 Maven 项目”。
+4. 依次转到“文件”、“设置”、“生成”、“执行”和“部署”。 依次选择“生成工具”、“Maven”和“导入”。 然后选中“自动导入 Maven 项目”。
 5. 打开 **Main.java**，将现有代码替换为以下代码。 此外，为代码片段中调用的参数提供值，例如 **localFolderPath****_adlaAccountName****_adlsAccountName** 和 **_resourceGroupName**，并为 **CLIENT-ID** **CLIENT-SECRET****TENANT-ID** 和 **SUBSCRIPTION-ID** 替换占位符。
 
     此代码贯穿 Data Lake Store 和 Data Lake Analytics 帐户的整个创建过程，在存储中创建文件、运行作业、获取作业状态、下载作业输出，并在最后删除帐户。
 
    > [!NOTE]
-   > 目前 Azure Data Lake Service 存在一个已知问题。  如果示例应用程序中断或遇到错误，你可能需要手动删除该脚本创建的 Data Lake Store 和 Data Lake Analytics 帐户。  如果你不熟悉该门户， [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md) 指南将帮助你入门。
+   > 目前 Azure Data Lake Service 存在一个已知问题。  如果示例应用程序中断或遇到错误，可能需要手动删除该脚本创建的 Data Lake Store 和 Data Lake Analytics 帐户。  如果不熟悉该门户，[使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md) 指南将帮助你入门。
    >
    >
 
@@ -350,4 +349,3 @@ ms.lasthandoff: 06/20/2017
 * 若要了解 U-SQL，请参阅 [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL 语言入门）和 [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348)（U-SQL 语言参考）。
 * 有关管理任务，请参阅 [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
-

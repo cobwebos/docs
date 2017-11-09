@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 6523ee3179dafd79528093b856b0ec10fafb4f7b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 06/28/2017
 
     ![配置单一登录](./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -121,13 +120,13 @@ ms.lasthandoff: 06/28/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Jitbit Helpdesk 客户端支持团队](https://www.jitbit.com/support/)获取此值。 
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。  在“标识符”文本框中，键入以下 URL：`https://www.jitbit.com/web-helpdesk/`
+    b.  在“标识符”文本框中，键入以下 URL：`https://www.jitbit.com/web-helpdesk/`
 
     
  
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_certificate.png) 
 
@@ -153,9 +152,9 @@ ms.lasthandoff: 06/28/2017
    
     ![身份验证设置](./media/active-directory-saas-jitbit-helpdesk-tutorial/ic777683.png "身份验证设置")
     
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择“启用 SAML 2.0 单一登录”，通过“OneLogin”使用单一登录 (SSO) 进行登录。
+    a. 选择“启用 SAML 2.0 单一登录”，通过“OneLogin”使用单一登录 (SSO) 进行登录。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“终结点 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    b. 在“终结点 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后再粘贴到“X.509 证书”文本框中
 
@@ -188,9 +187,9 @@ ms.lasthandoff: 06/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-jitbit-helpdesk-tutorial/create_aaduser_04.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入名称“BrittaSimon”。
+    a. 在“名称”文本框中，键入名称“BrittaSimon”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -220,9 +219,9 @@ ms.lasthandoff: 06/28/2017
 
     ![创建](./media/active-directory-saas-jitbit-helpdesk-tutorial/ic777686.png "创建")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“用户名”文本框中，键入用户名“BrittaSimon”，即 Azure 门户中的用户名。
+   a. 在“用户名”文本框中，键入用户名“BrittaSimon”，即 Azure 门户中的用户名。
 
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“电子邮件”文本框中，键入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
+   b. 在“电子邮件”文本框中，键入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
 
    c. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
@@ -243,7 +242,7 @@ ms.lasthandoff: 06/28/2017
 
 **若要将 Britta Simon 分配到 Jitbit Helpdesk，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -292,5 +291,4 @@ ms.lasthandoff: 06/28/2017
 [201]: ./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-jitbit-helpdesk-tutorial/tutorial_general_203.png
-
 

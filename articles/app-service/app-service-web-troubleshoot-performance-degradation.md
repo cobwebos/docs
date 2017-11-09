@@ -1,6 +1,6 @@
 ---
 title: "应用服务中 Web 应用性能缓慢 | Microsoft Docs"
-description: "本文帮助排查 Azure App Service 中 Web 应用性能缓慢的问题。"
+description: "本文帮助排查 Azure 应用服务中 Web 应用性能缓慢的问题。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -16,17 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 1cfe7ec37ad8b24a8bd9ab2bf67e95675a57b675
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中 Web 应用性能缓慢的问题
 本文将帮助排查 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中 Web 应用性能缓慢的问题。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 
 ## <a name="symptom"></a>症状
 浏览 Web 应用时，网页加载缓慢，并且有时还会超时。
@@ -124,17 +123,17 @@ Application Insights Profiler 提供每个 Web 调用响应时间的统计信息
 
 远程分析非常有用，如果进程的 CPU 使用率偏高并且进程运行速度比预期缓慢，或者 HTTP 请求的延迟高于平时，可以远程分析进程并获取 CPU 采样调用堆栈，以分析进程活动和代码繁忙的路径。
 
-有关详细信息，请参阅 [Azure App Service 中的远程分析支持](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)。
+有关详细信息，请参阅 [Azure 应用服务中的远程分析支持](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)。
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>手动设置诊断跟踪
 如果有权访问 Web 应用程序源代码，使用应用程序诊断可以捕获 Web 应用程序生成的信息。 ASP.NET 应用程序可使用 `System.Diagnostics.Trace` 类将信息记录到应用程序诊断日志。 但是需要更改代码并重新部署应用程序。 如果应用在测试环境中运行，则推荐使用此方法。
 
 有关如何在应用程序中配置日志记录的详细说明，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](web-sites-enable-diagnostic-log.md)。
 
-#### <a name="use-the-azure-app-service-support-portal"></a>使用 Azure App Service 支持门户
+#### <a name="use-the-azure-app-service-support-portal"></a>使用 Azure 应用服务支持门户
 在 Web 应用中，可通过查看 HTTP 日志、事件日志、进程转储等信息来排查与 Web 应用相关的问题。 可以使用支持门户 (**http://&lt;your app name>.scm.azurewebsites.net/Support**) 访问所有这些信息。
 
-Azure App Service 支持门户具有三个不同的选项卡，用于支持常见故障排除方案的三个步骤：
+Azure 应用服务支持门户具有三个不同的选项卡，用于支持常见故障排除方案的三个步骤：
 
 1. 观察当前行为
 2. 通过收集诊断信息和运行内置分析器进行分析
@@ -146,7 +145,7 @@ Azure App Service 支持门户具有三个不同的选项卡，用于支持常�
 
 如果想要下载数据，数据默认情况下会存储在 D:\home\data\DaaS 文件夹中。
 
-有关 Azure App Service 支持门户的详细信息，请参阅 [New Updates to Support Site Extension for Azure Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)（用于支持 Azure 网站的站点扩展的最新更新）。
+有关 Azure 应用服务支持门户的详细信息，请参阅 [New Updates to Support Site Extension for Azure Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)（用于支持 Azure 网站的站点扩展的最新更新）。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 Web 应用随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为 Web 应用的 Kudu 控制台或 SCM 仪表板。
@@ -187,4 +186,3 @@ AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的�
  ![重新启动 Web 应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 还可以使用 Azure Powershell 管理 Web 应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
-

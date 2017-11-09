@@ -15,12 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
 ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 
@@ -58,14 +57,14 @@ ms.lasthandoff: 04/13/2017
 * 目标设备不能具有与源设备相同的名称。
 * 源和目标设备的类型必须相同。 只能将配置为文件服务器的虚拟阵列故障转移到另一个文件服务器。 这同样适用于 iSCSI 服务器。
 * 对于文件服务器 DR，我们建议将目标设备加入到与源相同的域。 此配置可确保自动解决共享权限问题。 仅限故障转移到相同域中的目标设备。
-* DR 的可用目标设备是所含容量等于或大于源设备的设备。 已连接到你的服务，但没有足够空间的设备不能用作目标设备。
+* DR 的可用目标设备是所含容量等于或大于源设备的设备。 已连接到服务，但没有足够空间的设备不能用作目标设备。
 
 ### <a name="other-considerations"></a>其他注意事项
 
 * 对于计划的故障转移 
   
   * 建议使所有卷或共享在源设备上脱机。
-  * 建议你先进行设备备份，然后再继续执行故障转移以最大程度减少数据丢失。 
+  * 建先进行设备备份，再继续执行故障转移以最大程度减少数据丢失。 
 * 对于未计划的故障转移，设备使用最近备份还原数据。
 
 ### <a name="device-failover-prechecks"></a>设备故障转移预检查
@@ -81,7 +80,7 @@ ms.lasthandoff: 04/13/2017
   * 有效 IQN（不超过 220 个字符）。
   * 有效 CHAP 密码（长并为 12-16 个字符）。
 
-如果上述任一预检查失败，都无法继续执行 DR。 需要解决这些问题，然后重试 DR。
+如果上述任一预检查失败，都无法继续执行 DR。 需要解决这些问题，并重试 DR。
 
 成功完成 DR 后，源设备上的云数据所有权将转移到目标设备。 源设备不再可用于门户中。 对源设备上的所有卷/共享的访问权限将受阻止，目标设备会变为活动状态。
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 04/13/2017
 
 ## <a name="fail-over-to-a-virtual-array"></a>故障转移到 Virtual Array
 
-我们建议你在运行此过程之前，先预配、配置另一个 StorSimple 虚拟阵列并将其注册到 StorSimple Device Manager 服务。
+我们建议在运行此过程之前，先预配、配置另一个 StorSimple 虚拟阵列并将其注册到 StorSimple Device Manager 服务。
 
 > [!IMPORTANT]
 > 
@@ -106,11 +105,11 @@ ms.lasthandoff: 04/13/2017
 
 2. 使卷/共享在主机上脱机。 若要使卷/共享脱机，请参考主机的操作系统特定说明。 如果尚未脱机，则需要通过执行以下操作使设备上的所有卷/共享脱机。
    
-    1. 转到“设备”边栏选项卡，并选择你的设备。
+    1. 转到“设备”边栏选项卡，并选择设备。
    
     2. 转到“设置”>“管理”>“共享”（或“设置”>“管理”>“卷”）。 
    
-    3. 选择一个共享/卷，右键单击它，然后选择“脱机”。 
+    3. 选择一个共享/卷，右键单击它，并选择“脱机”。 
    
     4. 当系统提示确认时，选中“我了解使此共享脱机的影响”。 
    
@@ -120,10 +119,10 @@ ms.lasthandoff: 04/13/2017
 
 4. 在 **设备仪表板** 边栏选项卡中，单击 **停用** 。
 
-5. 在“停用”边栏选项卡中，系统将提示你进行确认。 设备停用是不可撤消的*永久性*过程。 还将提醒你使主机上的共享/卷脱机。 键入设备名称以确认，然后单击“停用”。
+5. 在“停用”边栏选项卡中，系统会提示进行确认。 设备停用是不可撤消的*永久性*过程。 还将提醒你使主机上的共享/卷脱机。 键入设备名称以确认，并单击“停用”。
    
     ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
-6. 此时停用操作将启动。 停用操作成功完成后，你将收到通知。
+6. 此时停用操作将启动。 停用操作成功完成后，将收到通知。
    
     ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. 在“设备”页上，设备状态现在将更改为“已停用”。
@@ -141,10 +140,10 @@ ms.lasthandoff: 04/13/2017
     4. 单击“故障转移”。
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
-11. 故障转移作业将启动，你将收到通知。 转到“设备”>“作业”以监视故障转移。
+11. 故障转移作业将启动，将收到通知。 转到“设备”>“作业”以监视故障转移。
     
      ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
-12. 在“作业”边栏选项卡中，你将看到为源设备创建的故障转移作业。 此作业执行 DR 预检查。
+12. 在“作业”边栏选项卡中，会看到为源设备创建的故障转移作业。 此作业执行 DR 预检查。
     
     ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
@@ -162,11 +161,11 @@ ms.lasthandoff: 04/13/2017
 
 **在 DR 期间出现云连接中断问题**
 
-如果云连接在 DR 启动后和设备还原完成之前中断，DR 将失败。 你会收到失败通知。 用于 DR 的目标设备将标记为“不可用” 。 不能将同一目标设备用于将来的 DR。
+如果云连接在 DR 启动后和设备还原完成之前中断，DR 会失败。 会收到失败通知。 用于 DR 的目标设备将标记为“不可用”。 不能将同一目标设备用于将来的 DR。
 
 **没有兼容的目标设备**
 
-如果可用目标设备的空间不足，你将看到一个错误，指示没有兼容的目标设备。
+如果可用目标设备的空间不足，会看到一个错误，指示没有兼容的目标设备。
 
 **预检查失败**
 
@@ -174,12 +173,11 @@ ms.lasthandoff: 04/13/2017
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>业务连续性灾难恢复 (BCDR)
 
-当整个 Azure 数据中心停止运行时，将会启动业务连续性灾难恢复 (BCDR) 方案。 这可能会影响 StorSimple Device Manager 服务和关联的 StorSimple 设备。
+当整个 Azure 数据中心停止运行时，会启动业务连续性灾难恢复 (BCDR) 方案。 这可能会影响 StorSimple Device Manager 服务和关联的 StorSimple 设备。
 
-如果 StorSimple 设备在发生灾难的前一刻才注册，可能需要删除这些 StorSimple 设备。 你可以重新创建和配置发生灾难的这些设备。
+如果 StorSimple 设备在发生灾难的前一刻才注册，可能需要删除这些 StorSimple 设备。 可以重新创建和配置发生灾难的这些设备。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关如何[使用本地 Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md) 的详细信息。
-
 

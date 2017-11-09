@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: 72f1ed52c9e0f39009efc54967d7cc68517182a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/02/2017
-
+ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
 > [!div class="op_single_selector"]
@@ -77,11 +76,11 @@ ms.lasthandoff: 03/02/2017
 
   ![显示“立即备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
-5. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，然后单击“备份”。
+5. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，并单击“备份”。
 
   ![设置保留立即备份恢复点的最后一天](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-  部署通知会告知你备份作业已触发，并且你可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+  部署通知会告知你备份作业已触发，并且可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 6. 若要查看或跟踪初始备份的状态，请在保管仪表板的“备份作业”磁贴上，单击“正在进行”。
 
@@ -104,6 +103,5 @@ ms.lasthandoff: 03/02/2017
 ## <a name="next-steps"></a>后续步骤
 现已保护 VM，请参阅以下文章了解 VM 管理任务以及如何还原 VM。
 
-* [管理和监视你的虚拟机](backup-azure-manage-vms.md)
+* [管理和监视虚拟机](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-arm-restore-vms.md)
-

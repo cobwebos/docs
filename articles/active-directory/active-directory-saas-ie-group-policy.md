@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/02/2017
+ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 06e55977eb2840c8325d70a9fdfd95023bbf380d
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
-ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
-ms.openlocfilehash: 53ce95811bbeb306ae986fda91d3387db4e71998
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
@@ -30,7 +29,7 @@ ms.lasthandoff: 07/18/2017
 访问面板扩展也适用于 [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) 和 [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998)，两者都不需要管理员权限即可安装。
 
 ## <a name="prerequisites"></a>先决条件
-* 已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入你的域。
+* 已设置 [Active Directory 域服务](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，并且已将用户的计算机加入域。
 * 必须拥有“编辑设置”权限才能编辑组策略对象 (GPO)。 默认情况下，以下安全组的成员拥有此权限：域管理员、企业管理员和组策略创建者和所有者。 [了解详细信息。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>步骤 1：创建分发点
@@ -40,7 +39,7 @@ ms.lasthandoff: 07/18/2017
 2. 在“服务器管理器”窗口中，转到“文件和存储服务”。
    
     ![打开文件和存储服务](./media/active-directory-saas-ie-group-policy/files-services.png)
-3. 转到“共享”选项卡。 然后单击“任务” > “新建共享...”
+3. 转到“共享”选项卡。然后单击“任务” > “新建共享...”
    
     ![打开文件和存储服务](./media/active-directory-saas-ie-group-policy/shares.png)
 4. 完成“新建共享向导”并设置权限，确保可以从用户的计算机访问该共享位置。 [了解有关共享的详细信息。](https://technet.microsoft.com/library/cc753175.aspx)
@@ -58,16 +57,16 @@ ms.lasthandoff: 07/18/2017
 3. 在“组策略管理”窗口的左窗格中，查看组织单位 (OU) 层次结构并确定想要应用组策略的范围。 例如，可以选择一个小型 OU 并将其部署到少量用户以进行测试，或者选择一个顶级 OU 并将其部署到整个组织。
    
    > [!NOTE]
-   > 如果想要创建或编辑组织单位 (OU)，请切换回到“服务器管理器”，然后转到“工具” > “Active Directory 用户和计算机”。
+   > 如果想要创建或编辑组织单位 (OU)，请切换回到“服务器管理器”，并转到“工具” > “Active Directory 用户和计算机”。
    > 
    > 
-4. 选择 OU 后，请右键单击它，然后选择“在这个域中创建 GPO 并在此处链接它...”
+4. 选择 OU 后，请右键单击它，并选择“在这个域中创建 GPO 并在此处链接它...”
    
     ![创建新 GPO](./media/active-directory-saas-ie-group-policy/create-gpo.png)
 5. 在“新建 GPO”提示窗口中，输入新组策略对象的名称。
    
     ![为新 GPO 命名](./media/active-directory-saas-ie-group-policy/name-gpo.png)
-6. 右键单击创建的组策略对象，然后选择“编辑”。
+6. 右键单击创建的组策略对象，并选择“编辑”。
    
     ![编辑新 GPO](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
@@ -77,10 +76,10 @@ ms.lasthandoff: 07/18/2017
    
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
-3. 右键单击“软件安装”，然后选择“新建” > “包...”
+3. 右键单击“软件安装”，并选择“新建” > “包...”
    
     ![创建新的软件安装包](./media/active-directory-saas-ie-group-policy/new-package.png)
-4. 转到包含[步骤 1：创建分发点](#step-1-create-the-distribution-point)中所述安装程序包的共享文件夹，选择 .msi 文件，然后单击“打开”。
+4. 转到包含[步骤 1：创建分发点](#step-1-create-the-distribution-point)中所述安装程序包的共享文件夹，选择 .msi 文件，并单击“打开”。
    
    > [!IMPORTANT]
    > 如果该共享也位于此服务器上，请验证是否可以通过网络文件路径（而不是本地文件路径）访问此 .msi。
@@ -90,7 +89,7 @@ ms.lasthandoff: 07/18/2017
     ![从共享文件夹中选择安装包。](./media/active-directory-saas-ie-group-policy/select-package.png)
 5. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。 然后单击“确定”。
    
-    ![选择“已分配”，然后单击“确定”。](./media/active-directory-saas-ie-group-policy/deployment-method.png)
+    ![选择“已分配”，并单击“确定”。](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
 扩展现已部署到选定的 OU。 [了解有关组策略软件安装的详细信息。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
@@ -101,11 +100,11 @@ ms.lasthandoff: 07/18/2017
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
-2. 右键单击“加载项列表”，然后选择“编辑”。
+2. 右键单击“加载项列表”，并选择“编辑”。
     ![编辑加载项列表。](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
-3. 在“加载项列表”窗口中，选择“已启用”。 然后，在“选项”部分中单击“显示...”。
+3. 在“加载项列表”窗口中，选择“已启用”。 然后，在“选项”部分下单击“显示...”。
    
-    ![单击“启用”，然后单击“显示...”](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
+    ![单击“启用”，并单击“显示...”](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
 4. 在“显示内容”窗口中执行以下步骤：
    
    1. 对于第一列（“值名称”字段），请复制并粘贴以下类 ID：`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
@@ -135,13 +134,13 @@ ms.lasthandoff: 07/18/2017
    > 
    
     ![请记得在“用户设置”下查找此设置。](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
-3. 右键单击上述设置，然后选择“编辑”。
+3. 右键单击上述设置，并选择“编辑”。
 4. 在标题为“对表单上的用户名和密码打开自动完成功能”的窗口中选择“禁用”。
    
     ![选择“禁用”](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
 5. 单击“确定”应用这些更改并关闭窗口。
 
-用户将不再能存储其凭据或使用自动完成功能来访问以前存储的凭据。 但是，此策略允许用户对其他类型的表单字段（例如搜索字段）继续使用自动完成功能。
+用户不再能存储其凭据或使用自动完成功能来访问以前存储的凭据。 但是，此策略允许用户对其他类型的表单字段（例如搜索字段）继续使用自动完成功能。
 
 > [!WARNING]
 > 如果在用户选择存储某些凭据之后才启用此策略，此策略*不会*清除已存储的凭据。
@@ -152,9 +151,9 @@ ms.lasthandoff: 07/18/2017
 遵循以下步骤验证是否已成功部署扩展：
 
 1. 如果扩展是使用“计算机配置”部署的，请登录到属于[步骤 2：创建组策略对象](#step-2-create-the-group-policy-object)中选择的 OU 的客户端计算机。 如果扩展是使用“用户配置”部署的，请务必使用属于该 OU 的用户的身份登录。
-2. 可能要登录好几次才能在此计算机上完全更新组策略更改。 若要强制更新，请打开“命令提示”窗口，然后运行以下命令：`gpupdate /force`
+2. 可能要登录好几次才能在此计算机上完全更新组策略更改。 要强制更新，请打开“命令提示”窗口，并运行以下命令：`gpupdate /force`
 3. 必须重新启动计算机才能开始安装。 安装扩展时，启动花费的时间可能比平时要长很多。
-4. 重新启动后，打开 **Internet Explorer**。 在窗口右上角单击“工具”（齿轮图标），然后选择“管理加载项”。
+4. 重新启动后，打开 **Internet Explorer**。 在窗口右上角单击“工具”（齿轮图标），并选择“管理加载项”。
    
     ![转到“工具”>“管理加载项”](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
 5. 在“管理加载项”窗口中，检查“访问面板扩展”是否已安装且其“状态”设置为“已启用”。
@@ -165,5 +164,4 @@ ms.lasthandoff: 07/18/2017
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
 * [Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md)
-
 

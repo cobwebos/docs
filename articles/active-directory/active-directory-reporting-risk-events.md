@@ -11,15 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: a454199137f8ccc99ddbef66758fd1cabd8fd486
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -30,10 +29,9 @@ ms.lasthandoff: 08/16/2017
 - [具有已泄漏凭据的用户](#leaked-credentials) 
 - [从匿名 IP 地址登录](#sign-ins-from-anonymous-ip-addresses) 
 - [不可能前往异常位置](#impossible-travel-to-atypical-locations) 
-- [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations)
 - [从受感染的设备登录](#sign-ins-from-infected-devices) 
 - [从具有可疑活动的 IP 地址登录](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-
+- [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations)（**Azure Active Directory Premium P2** 版本独有）
 
 ![风险事件](./media/active-directory-reporting-risk-events/91.png)
 
@@ -184,4 +182,3 @@ Microsoft 对检测过程的持续投入使得：
 
 已检测的风险事件表示保护身份的一个重要方面，还可以选择手动解决它们，或者甚至通过配置条件性访问策略实施自动的响应。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](active-directory-identityprotection.md)。
  
-

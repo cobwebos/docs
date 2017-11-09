@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
+ms.openlocfilehash: 7123a2d44d3b7c332afe30fb0fcea88ca29e313a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 763f97855695a51d8fb6050cf1404c787b72c6f6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>使用 Azure 媒体服务传送实时流
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 07/20/2017
 
 Microsoft Azure 媒体服务提供了相应的 API 用来请求媒体服务启动操作（例如创建、启动、停止或删除频道）。 这些操作是长时运行的。
 
-媒体服务 .NET SDK 提供了用来发送请求并等待操作完成的 API（在内部，这些 API 以特定的时间间隔轮询操作进度）。 例如，当调用 channel.Start() 时，该方法将在频道启动后返回。 还可以使用异步版本：await channel.StartAsync()（有关基于任务的异步模式的信息，请参阅 [TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)。 发送操作请求并且在操作完成之前一直轮询操作状态的 API 称作“轮询方法”。 建议为富客户端应用程序和/或有状态服务使用这些方法（特别是异步版本）。
+媒体服务 .NET SDK 提供了用来发送请求并等待操作完成的 API（在内部，这些 API 以特定的时间间隔轮询操作进度）。 例如，当调用 channel.Start() 时，该方法会在频道启动后返回。 还可以使用异步版本：await channel.StartAsync()（有关基于任务的异步模式的信息，请参阅 [TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)。 发送操作请求并且在操作完成之前一直轮询操作状态的 API 称作“轮询方法”。 建议为富客户端应用程序和/或有状态服务使用这些方法（特别是异步版本）。
 
 某些情况下，应用程序不能等待长时运行的 http 请求并且希望手动轮询操作进度。 一个典型的示例是与无状态 web 服务进行交互的浏览器：当浏览器请求创建频道时，web 服务会启动一个长时运行的操作并将操作 ID 返回到浏览器。 然后，浏览器可以根据该 ID 询问 web 服务来获取操作状态。 媒体服务 .NET SDK 提供了非常适用于此情况的 API。 这些 API 称为“非轮询方法”。
 “非轮询方法”具有以下命名模式：Send*OperationName*Operation（例如，SendCreateOperation）。 Send*OperationName*Operation 方法返回 **IOperation** 对象；返回的对象包含可以用来跟踪操作的信息。 Send*OperationName*OperationAsync 方法将返回 **Task<IOperation>**。
@@ -42,7 +41,7 @@ Microsoft Azure 媒体服务提供了相应的 API 用来请求媒体服务启�
 
 ## <a name="example"></a>示例
 
-以下示例定义了一个名为 **ChannelOperations** 的类。 可以将该类定义用作你的 web 服务类定义的起点。 为简单起见，以下示例使用了方法的非异步版本。
+以下示例定义了一个名为 **ChannelOperations** 的类。 可以将该类定义用作 web 服务类定义的起点。 为简单起见，以下示例使用了方法的非异步版本。
 
 示例还展示了客户端可以如何使用该类。
 
@@ -204,5 +203,4 @@ Microsoft Azure 媒体服务提供了相应的 API 用来请求媒体服务启�
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

@@ -13,12 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 01be1b14e838c4f1b6f2498111fb8369c2bbb92a
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="query-your-azure-search-index"></a>查询 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -36,7 +35,7 @@ ms.lasthandoff: 06/08/2017
 ## <a name="types-of-queries"></a>查询类型
 Azure 搜索提供了许多选项，可以创建功能非常强大的查询。 将用到两个主要查询类型，即 `search` 和 `filter`。 `search` 查询可在索引中全部可搜索字段内搜索一个或多个词，其工作原理与 Google 或必应等搜索引擎相同。 `filter` 查询可对索引中的全部可筛选字段计算布尔表达式。 与 `search` 查询不同，`filter` 查询会精确匹配字段的内容，这意味着字符串字段会区分大小写。
 
-可单独使用 search 和 filter，也可一起使用。 如果一起使用，则会先对整个索引应用 filter，然后再对 filter 的结果执行 search。 filter 可减少 search 查询需要处理的文档集，因此是一种非常有用的技术，可用于提高查询性能。
+可单独使用 search 和 filter，也可一起使用。 如果一起使用，则会先对整个索引应用 filter，再对 filter 的结果执行 search。 filter 可减少 search 查询需要处理的文档集，因此是一种非常有用的技术，可用于提高查询性能。
 
 filter 表达式的语法是 [OData filter 语言](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search)的子集。 对于 search 查询，可以使用[简化的语法](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)或 [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search)，下面讨论这两种语法。
 
@@ -67,4 +66,4 @@ Azure 搜索可轻松对搜索结果进行分页。 使用 `top` 和 `skip` 参�
 
 + 在 Azure 门户中使用[搜索资源管理器](search-explorer.md)。 通过部署[示例索引](search-get-started-portal.md)，使用门户中的工具可在几分钟内查询索引。
 
-+ 使用 [Fiddler](search-fiddler.md) 或 Chrome Postman 将查询提交到已上传到搜索服务的索引。 这两种工具都支持对 HTTP 终结点的 REST 调用。 
++ 使用 Telerik Fiddler 或 Chrome Postman 将查询提交到已上传到搜索服务的索引。 这两种工具都支持对 HTTP 终结点的 REST 调用。 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
 本文提供了有关对[用于 Linux 的 OMS 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)进行配置以收集特定应用程序的性能计数器的详细信息。  本文中包括的应用程序有：  
@@ -33,7 +32,7 @@ ms.lasthandoff: 05/09/2017
 ### <a name="configure-mysql-credentials"></a>配置 MySQL 凭据
 MySQL OMI 提供程序需要预先配置 MySQL 用户并安装 MySQL 客户端库，才能从 MySQL 实例中查询性能和运行状况信息。  这些凭据存储在 Linux 代理上存储的一个身份验证文件中。  该身份验证文件指定了 MySQL 实例正在侦听的绑定地址和端口以及用于收集指标的凭据。  
 
-在安装用于 Linux 的 OMS 代理期间，MySQL OMI 提供程序将在 MySQL my.cnf 配置文件（默认位置）中扫描绑定地址和端口并对 MySQL OMI 身份验证文件进行部分设置。
+在安装用于 Linux 的 OMS 代理期间，MySQL OMI 提供程序会在 MySQL my.cnf 配置文件（默认位置）中扫描绑定地址和端口并对 MySQL OMI 身份验证文件进行部分设置。
 
 MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth` 处。
 
@@ -79,7 +78,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 | 操作 | 示例 | 说明
 |:--|:--|:--|
-| autoupdate *false\|true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否将自动更新身份验证文件。 |
+| autoupdate *false\|true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |
 | delete *default\|port_num* | mycimprovauth 3308 | 删除由默认值或端口号指定的实例。 |
 | help | mycimprov help | 输出可使用的命令列表。 |

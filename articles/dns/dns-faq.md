@@ -11,27 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 09/22/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f365574a12047f6952209dc3883af32a2e9ecd1e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/22/2017
-
+ms.openlocfilehash: 9d786ce4d06ec95a647a755bed51f824e72ad04c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
 ## <a name="about-azure-dns"></a>关于 Azure DNS
 
 ### <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
-域名系统或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管你的域，你可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理你的 DNS 记录。
+域名系统或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。
 
-Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 我们使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答。 这为你的域提供更快的性能和高可用性。
+Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 我们使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答。 这为域提供更快的性能和高可用性。
 
-Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用资源管理器功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
+Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用 Resource Manager 功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS 的费用是多少？
 
@@ -57,7 +55,7 @@ DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.co
 
 不一定。
 
-你无需购买域即可托管 Azure DNS 中的 DNS 区域。 没有域名也可随时创建 DNS 区域。 仅当此区域的 DNS 查询定向到分配给该区域的 Azure DNS 名称服务器时，才会解析这些查询。
+无需购买域即可托管 Azure DNS 中的 DNS 区域。 没有域名也可随时创建 DNS 区域。 仅当此区域的 DNS 查询定向到分配给该区域的 Azure DNS 名称服务器时，才会解析这些查询。
 
 需购买域名才可将 DNS 区域链接到全局 DNS 层级结构，利用此结构可从全球各地查询 DNS 以查找 DNS 区域和找到相应的 DNS 记录。
 
@@ -76,12 +74,9 @@ Azure DNS 仅支持托管“静态”DNS 域，其中对某给定的 DNS 记录�
 我们正在待办列表中跟踪这项功能。 可使用反馈站点[记录你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)。
 
 ### <a name="does-azure-dns-support-private-domains"></a>Azure DNS 是否支持“私有”域？
+对“私有”域的支持是使用专用 DNS 区域实现的。  此功能目前以预览版的形式提供。  专用 DNS 区域与面向 Internet 的 Azure DNS 区域使用相同的工具托管，但它们只能从指定的虚拟网络中解析。  有关详细信息，请参阅[概述](private-dns-overview.md)。
 
-否。 Azure DNS 当前仅支持面向 Internet 的域。
-
-我们正在待办列表中跟踪这项功能。 可使用反馈站点[记录你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/10737696-enable-split-dns-for-providing-both-public-and-int)。
-
-若要了解 Azure 中的内部 DNS 选项，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
+有关 Azure 中其他内部 DNS 选项的信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支持 DNSSEC？
 
@@ -91,7 +86,7 @@ Azure DNS 仅支持托管“静态”DNS 域，其中对某给定的 DNS 记录�
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支持区域传送 (AXFR/IXFR)？
 
-否。 Azure DNS 当前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/azurerm.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlets](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
+否。 Azure DNS 当前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/azurerm.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
 
 我们正在待办列表中跟踪这项功能。 可使用反馈站点[记录你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)。
 
@@ -155,8 +150,9 @@ Azure DNS 由 Azure Resource Manager 托管，且受益于 Azure Resource Manage
 
 [详细了解 Azure DNS](dns-overview.md)
 <br>
+[详细了解如何将 Azure DNS 用于专用域](private-dns-overview.md)
+<br>
 [详细了解 DNS 区域和记录](dns-zones-records.md)
 <br>
-[开始使用 Azure DNS](dns-getstarted-portal.md)
-
+[Azure DNS 入门](dns-getstarted-portal.md)
 

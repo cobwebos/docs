@@ -12,16 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/26/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e6cb3a0e259d0889ad8934211152e6832449f67b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 19228fc57f09dee00eb7f1c72c560c7b27e825a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>如何在 Windows VM 中重置远程桌面服务或其登录密码
 如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置。 可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展重置密码。 如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azure/overview)，并登录到 Azure 订阅。 也可以对[使用经典部署模型创建的 VM 执行这些步骤](reset-rdp.md)。
@@ -33,25 +31,25 @@ ms.lasthandoff: 04/27/2017
 - [使用 Azure PowerShell 进行重置](#vmaccess-extension-and-powershell)
 
 ## <a name="azure-portal"></a>Azure 门户
-若要展开门户菜单，请单击左上角的三栏，然后单击“虚拟机”：
+要展开门户菜单，请单击左上角的三栏，并单击“虚拟机”：
 
 ![浏览 Azure VM](./media/reset-rdp/Portal-Select-VM.png)
 
 ### <a name="reset-the-local-administrator-account-password"></a>**重置本地管理员帐户密码**
 
-选择 Windows 虚拟机，然后单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡：
+选择 Windows 虚拟机，并单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡：
 
 ![密码重置页](./media/reset-rdp/Portal-RM-PW-Reset-Windows.png)
 
-输入用户名和新密码，然后单击“更新”。 尝试重新连接到 VM。
+输入用户名和新密码，并单击“更新”。 尝试重新连接到 VM。
 
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**重置远程桌面服务配置**
 
-选择 Windows 虚拟机，然后单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡。 
+选择 Windows 虚拟机，并单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡。 
 
 ![重置 RDP 配置](./media/reset-rdp/Portal-RM-RDP-Reset.png)
 
-从下拉菜单中选择“仅重置配置”，然后单击“更新”。 尝试重新连接到 VM。
+从下拉菜单中选择“仅重置配置”，并单击“更新”。 尝试重新连接到 VM。
 
 
 ## <a name="vmaccess-extension-and-powershell"></a>VMAccess 扩展和 PowerShell
@@ -97,5 +95,4 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" 
 [使用 RDP 或 SSH 连接到 Azure 虚拟机](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
 

@@ -1,4 +1,4 @@
-* 在“添加 vCenter”中，指定 vSphere 主机或 vCenter 服务器的友好名称，然后指定服务器的 IP 地址或 FQDN。 除非已将 VMware 服务器配置为在不同的端口上侦听请求，否则请保留 443 作为端口号。 选择要连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。 单击 **“确定”**。
+* 在“添加 vCenter”中，指定 vSphere 主机或 vCenter 服务器的友好名称，并指定服务器的 IP 地址或 FQDN。 除非已将 VMware 服务器配置为在不同的端口上侦听请求，否则请保留 443 作为端口号。 选择要连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。 单击 **“确定”**。
 
     ![VMware](./media/site-recovery-add-vcenter/vmware-server.png)
 

@@ -3,7 +3,7 @@ title: "Azure Functions Blob 存储绑定 | Microsoft Docs"
 description: "了解如何在 Azure Functions 中使用 Azure 存储触发器和绑定。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 10/27/2017
 ms.author: glenga
+ms.openlocfilehash: 79b9dbee89a4e33a1768343b9242d6b2b1118355
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b123578dbac48018f674f85ec923e4c6e65fb9f8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions Blob 存储绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -276,7 +275,7 @@ module.exports = function(context) {
 
 ```cs
 // Copy blob from input to output, based on a queue trigger
-public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
+public static void Run(string myQueueItem, Stream myInputBlob, out Stream myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
@@ -298,5 +297,4 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

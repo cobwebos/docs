@@ -14,15 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a643b01057386722aa73df6fa3937c923c378ef
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 75fc134a5535e6113331470cf61df9c06eb8e2ab
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-universal"></a>如何在 Windows Universal 上使用 Engagement API
-本文档是[如何在 Windows Universal 上集成 Engagement](mobile-engagement-windows-store-integrate-engagement.md) 文档的附加内容：它提供了有关如何使用 Engagement API 报告应用程序统计信息的全部详细信息。
+本文档是[如何在 Windows Universal 上集成 Engagement](mobile-engagement-windows-store-integrate-engagement.md) 文档的附加内容：它提供了有关如何使用 Engagement API 来报告应用程序统计信息的深入详细信息。
 
 请记住，如果只希望 Engagement 报告应用程序的会话、活动、崩溃和技术信息，则最简单的方法是从 `Page` 类继承所有 `EngagementPage` 子类。
 
@@ -38,7 +37,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 ### <a name="session-and-activity"></a>`Session` 和 `Activity`
 *活动*通常与应用程序的一个页面相关联，即，*活动*在页面显示时开始，并在页面关闭时停止：当使用 `EngagementPage` 类对 Engagement SDK 进行集成时，会出现此情况。
 
-但也可通过使用 Engagement API 手动控制*活动*。 这样就可以在若干子部分中拆分给定的页面，以获取有关该页面幕使用情况的详细信息（例如，了解对话框在该页面内使用的频率和时长）。
+但也可通过使用 Engagement API 手动控制活动。 这样就可以在若干子部分中拆分给定的页面，以获取有关该页面的使用情况的详细信息（例如，了解对话框在该页面内使用的频率和时长）。
 
 ## <a name="reporting-activities"></a>报告活动
 ### <a name="user-starts-a-new-activity"></a>用户启动新活动
@@ -48,7 +47,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 需在每次用户活动更改时调用 `StartActivity()`。 对此函数的第一次调用会启动一个新的用户会话。
 
 > [!IMPORTANT]
-> 应用程序关闭时，SDK 会自动调用 EndActivity 方法。 因此，每当用户的活动更改时，强烈建议调用 StartActivity 方法，从不调用 EndActivity 方法，因为调用此方法会强制结束当前的会话。
+> 应用程序关闭时，SDK 会自动调用 EndActivity 方法。 因此，每当用户的活动更改时，强烈建议调用 StartActivity 方法，绝不能调用 EndActivity 方法，因为调用此方法会强制结束当前的会话。
 > 
 > 
 
@@ -174,7 +173,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
             EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
 ## <a name="reporting-crashes"></a>报告崩溃
-代理提供两种方法来解决崩溃。
+代理提供两种处理崩溃的方法。
 
 ### <a name="send-an-exception"></a>发送异常
 #### <a name="reference"></a>引用
@@ -189,15 +188,15 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 
             EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
 
-如果执行了以上操作，会话和作业将在发送崩溃后立即关闭。
+如果执行了以上操作，会话和作业会在发送崩溃后立即关闭。
 
 ### <a name="send-an-unhandled-exception"></a>发送未经处理的异常
 #### <a name="reference"></a>引用
             void SendCrash(Exception e)
 
-如果已**禁用** Engagement 自动**崩溃**报告，则 Engagement 还会提供发送未处理异常的方法。 这在应用程序 UnhandledException 事件处理程序内使用该方法时尤其有用。
+如果已禁用 Engagement 自动崩溃报告，则 Engagement 还会提供发送未处理异常的方法。 这在应用程序 UnhandledException 事件处理程序内使用该方法时尤其有用。
 
-此方法被调用后，会**始终**终止 Engagement 会话和作业。
+此方法被调用后，会始终终止 Engagement 会话和作业。
 
 #### <a name="example"></a>示例
 可以使用此方法实现自己的 UnhandledExceptionEventArgs 处理程序。 例如，添加 `App.xaml.cs` 文件的 `Current_UnhandledException` 方法：
@@ -210,7 +209,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
                EngagementAgent.Instance.SendCrash(e.Exception,false);
             }
 
-在“Public App(){}”内的 App.xaml.cs 中添加：
+在 App.xaml.cs 内的“Public App(){}”中添加：
 
             Application.Current.UnhandledException += Current_UnhandledException;
 
@@ -277,10 +276,10 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线（\_）。
+这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线 (\_)。
 
 #### <a name="size"></a>大小
-其他参数的限制为每次调用 **1024** 个字符。
+extras 在每次调用中限制为 **1024** 个字符。
 
 ## <a name="reporting-application-information"></a>报告应用程序信息
 ### <a name="reference"></a>引用
@@ -288,7 +287,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 
 可使用 SendAppInfo() 函数手动报告跟踪信息（或任何其他应用程序特定信息）。
 
-请注意，此数据可以增量方式发送：仅为给定设备保留给定密钥的最新值。 如同事件其他信息一样，使用字典\<对象、对象\>附加数据。
+请注意，此数据可以增量方式发送：仅为给定设备保留给定密钥的最新值。 如同事件其他信息一样，使用 Dictionary\<object, object\> 附加数据。
 
 ### <a name="example"></a>示例
             Dictionary<object, object> appInfo = new Dictionary<object, object>()
@@ -305,7 +304,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线（\_）。
+这意味着，密钥必须以至少一个字母开头，后跟字母、数字或下划线 (\_)。
 
 #### <a name="size"></a>大小
 应用程序信息仅限于每次调用 **1024** 个字符。
@@ -317,9 +316,8 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 ## <a name="logging"></a>日志记录
 ### <a name="enable-logging"></a>启用日志记录
 可以将 SDK 配置为在 IDE 控制台中生成测试日志。
-默认情况下不启用这些日志。 若要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
+默认情况下不启用这些日志。 要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
-
 

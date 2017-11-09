@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.translationtype: HT
-ms.sourcegitcommit: 29d4a361f98c63dab30155855d603a809eb804c8
 ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Spark on HDInsight 和 Azure Data Lake Store 性能优化指南
 
@@ -88,8 +87,7 @@ ms.lasthandoff: 01/14/2017
 
 假设当前的某个群集由 8 个 D4v2 节点构成，该群集正在运行 2 个应用，包括要运行的应用。  
 
-
-            **步骤 1：确定群集中运行的应用数目** – 已知群集中正在运行 2 个应用，包括要运行的应用。  
+**步骤 1：确定群集中运行的应用数目** – 已知群集中正在运行 2 个应用，包括要运行的应用。  
 
 **步骤 2：设置执行器内存** – 对于本示例，我们确定 6GB 执行器内存对于 I/O 密集型作业已足够。  
 
@@ -120,5 +118,4 @@ ms.lasthandoff: 01/14/2017
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)
     num-executors = 16    
-
 

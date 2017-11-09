@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 混合标识设计注意事项 - 确定多重身份验证要求"
-description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查你选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
+description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
 documentationcenter: 
 services: active-directory
 author: femila
@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfb4104dd58f2af8b3ffed7491c91ae6c6557ddc
-ms.openlocfilehash: f5006b6ce1b409fae5e540d8414e8e56651f9349
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: 5b3a8ce6e4203dfb3700f324e32687dd910118af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的多重身份验证要求
 在充斥移动性的当下，用户访问云中和任何设备中的数据和应用程序，确保该信息安全变得尤为重要。  每天都会有关于安全漏洞的新闻头条。  尽管并不能保证避免此类漏洞，但多重身份验证提供了额外的安全层，可帮助防止利用这些漏洞。
 首先评估多重身份验证的组织要求。 即，组织要尝试保护的内容。  在针对设置和启用组织用户的多重身份验证确定技术要求时，此评估非常重要。
 
 > [!NOTE]
-> 如果不熟悉 MFA 及其作用，强烈建议你阅读[什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)一文，然后再继续阅读本节。
+> 如果不熟悉 MFA 及其作用，强烈建议阅读[什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)一文，然后再继续阅读本节。
 > 
 > 
 
@@ -50,7 +49,7 @@ ms.lasthandoff: 05/05/2017
 * 用户是否需要培训如何设置和实施多重身份验证？
 * 什么是贵公司想要为其用户启用多重身份验证的关键方案？
 
-在回答完上述问题后，将能够了解本地是否存在已实施的多重身份验证。 在针对设置和启用组织用户的多重身份验证确定技术要求时，此评估非常重要。 务必回答以下问题：
+在回答完上述问题后，能够了解本地是否存在已实施的多重身份验证。 在针对设置和启用组织用户的多重身份验证确定技术要求时，此评估非常重要。 务必回答以下问题：
 
 * 贵公司是否需要使用 MFA 保护特权帐户？
 * 贵公司出于合规性原因，是否需要为某些应用程序启用 MFA？
@@ -62,5 +61,4 @@ ms.lasthandoff: 05/05/2017
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

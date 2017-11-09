@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 6cb0269e87f7ecffe7030b86237fb88fd58ef77b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 44476bbf0e878e347d176077e08706d1afd44479
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning.md)。
@@ -46,7 +45,7 @@ ms.lasthandoff: 05/08/2017
 选择“自动”选项会显示一个分为四部分的屏幕：
 
 ### <a name="admin-credentials"></a>管理员凭据
-在此处输入的凭据是 Azure AD 连接到应用程序的用户管理 API 所必需的。 所需输入取决于应用程序。 若要了解凭据类型以及具体应用程序的要求，请参阅[具体应用程序的配置教程](active-directory-saas-app-provisioning.md#list-of-apps-that-support-automated-user-provisioning)。
+在此处输入的凭据是 Azure AD 连接到应用程序的用户管理 API 所必需的。 所需输入取决于应用程序。 若要了解凭据类型以及具体应用程序的要求，请参阅[具体应用程序的配置教程](active-directory-saas-app-provisioning.md)。
 
 选择“测试连接”按钮后，即可让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用，对凭据进行测试。
 
@@ -66,7 +65,7 @@ ms.lasthandoff: 05/08/2017
 ### <a name="settings"></a>设置
 管理员可以在此部分启动和停止所选应用程序的 Azure AD 预配服务，以及选择性地清除预配缓存并重新启动该服务。
 
-如果是第一次为应用程序启用预配功能，则将“预配状态”更改为“开”即可启用该服务。 这会导致 Azure AD 预配服务执行初始同步，在同步过程中读取“用户和组”部分所分配的用户，查询其目标应用程序，然后执行在 Azure AD 的“映射”部分定义的预配操作。 在此过程中，预配服务会存储所托管用户帐户的相关缓存数据，因此在执行取消预配操作时，不会影响目标应用程序中从来不在分配范围内的非托管帐户。 初始同步以后，预配服务会自动按十分钟的时间间隔同步用户和组对象。
+如果是第一次为应用程序启用预配功能，则将“预配状态”更改为“开”即可启用该服务。 这会导致 Azure AD 预配服务执行初始同步，在同步过程中读取“用户和组”部分所分配的用户，查询其目标应用程序，并执行在 Azure AD 的“映射”部分定义的预配操作。 在此过程中，预配服务会存储所托管用户帐户的相关缓存数据，因此在执行取消预配操作时，不会影响目标应用程序中从来不在分配范围内的非托管帐户。 初始同步以后，预配服务会自动按十分钟的时间间隔同步用户和组对象。
 
 将“预配状态”更改为“关”会直接暂停预配服务。 在这种状态下，Azure 不会创建、更新或删除应用中的任何用户或组对象。 将状态改回“开”会导致服务恢复。
 
@@ -85,4 +84,3 @@ ms.lasthandoff: 05/08/2017
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG
-

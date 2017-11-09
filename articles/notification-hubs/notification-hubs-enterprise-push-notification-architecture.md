@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
-
-
+ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
-当今企业正在逐渐趋向为其最终用户（外部）或员工（内部）创建移动应用程序。 它们已经拥有现成的后端系统，无论是大型机还是一些 LoB 应用程序都必须集成到移动应用程序体系结构中。 本指南将介绍如何最好地实现此集成，并针对常见场景建议可能的解决方案。
+当今企业正在逐渐趋向为其最终用户（外部）或员工（内部）创建移动应用程序。 它们已经拥有现成的后端系统，无论是大型机还是一些 LoB 应用程序都必须集成到移动应用程序体系结构中。 本指南介绍如何最好地实现此集成，并针对常见场景建议可能的解决方案。
 
 一个常见需求是在后端系统中发生了用户感兴趣的事件时，通过其移动应用程序向用户发送推送通知。 例如 某个在 iPhone 上安装了银行应用的客户想要在记入她帐户的借方金额超过特定值时收到通知，或者在 Intranet 方案中，某个在 Windows Phone 上安装了预算审批应用的财务部门员工，希望在收到审批请求时获得通知。
 
@@ -33,7 +33,7 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
 ## <a name="architecture"></a>体系结构
 ![][1]
 
-此体系结构图中的关键部分是 Azure 服务总线，它提供了主题/订阅编程模型（可在[服务总线 Pub/Sub 编程]中找到有关它的更多内容）。 接收方，在本示例中是移动后端（通常是 [Azure 移动服务]，它将启动到移动应用的推送）不直接从后端系统接收消息，我们改用 [Azure 服务总线]提供的中间抽象层，移动后端通过它可从一个或多个后端系统接收消息。 需要为每个后端系统创建服务总线主题，例如帐户、人力资源、财务等，它们基本上是将启动要作为推送通知发送的消息的感兴趣的“主题”。 后端系统将向这些主题发送消息。 移动后端可以通过创建服务总线订阅来订阅一个或多个此类主题。 这将授权移动后端从相应的后端系统接收通知。 移动后端将继续在其订阅上侦听消息，一条消息到达后，它将立即返回并将该消息作为通知发送到通知中心。 然后，通知中心最终将该消息传送到移动应用。 因此，若要汇总关键组件，我们使用了：
+此体系结构图中的关键部分是 Azure 服务总线，它提供了主题/订阅编程模型（可在[服务总线 Pub/Sub 编程]中找到有关它的更多内容）。 接收方，在本示例中是移动后端（通常是 [Azure 移动服务]，它将启动到移动应用的推送）不直接从后端系统接收消息，我们改用 [Azure 服务总线]提供的中间抽象层，移动后端通过它可从一个或多个后端系统接收消息。 需要为每个后端系统创建服务总线主题，例如帐户、人力资源、财务等，它们基本上是将启动要作为推送通知发送的消息的感兴趣的“主题”。 后端系统将向这些主题发送消息。 移动后端可以通过创建服务总线订阅来订阅一个或多个此类主题。 这会授权移动后端从相应的后端系统接收通知。 移动后端将继续在其订阅上侦听消息，一条消息到达后，它将立即返回并将该消息作为通知发送到通知中心。 然后，通知中心最终将该消息传送到移动应用。 因此，若要汇总关键组件，我们使用了：
 
 1. 后端系统（LoB/旧系统）
    * 创建服务总线主题
@@ -51,17 +51,17 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
 
 ## <a name="sample"></a>示例：
 ### <a name="prerequisites"></a>先决条件
-你应完成以下教程以熟悉相关概念以及常见的创建和配置步骤：
+应完成以下教程以熟悉相关概念以及常见的创建和配置步骤：
 
 1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
-2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，然后接收通知。
+2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，并接收通知。
 
 ### <a name="sample-code"></a>代码示例
 完整的示例代码可在[通知中心示例]中找到。 它分为三个组件：
 
 1. **EnterprisePushBackendSystem**
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 此项目使用 WindowsAzure.ServiceBus Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
+    a. 此项目使用 WindowsAzure.ServiceBus Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
    
     b. 这是一个简单 C# 控制台应用，模拟启动要传送到移动应用的消息的 LoB 系统。
    
@@ -77,7 +77,7 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
             SendMessage(connectionString);
         }
    
-    c. `CreateTopic` 用于创建服务总线主题，我们将在其中发送消息。
+    c. `CreateTopic` 用于创建服务总线主题，我们会在其中发送消息。
    
         public static void CreateTopic(string connectionString)
         {
@@ -124,7 +124,7 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
         }
 2. **ReceiveAndSendNotification**
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
+    a. 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
    
     b. 这是另一个 C# 控制台应用，我们将它作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 它将是移动后端的一部分。
    
@@ -204,7 +204,7 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
             await hub.SendWindowsNativeNotificationAsync(message);
         }
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 若要将此项发布为 **WebJob**，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 要将此项发布为 **WebJob**，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”
    
     ![][2]
    
@@ -212,12 +212,12 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
    
     ![][3]
    
-    g. 将该作业配置为“连续运行”，以便在你登录到 [Azure 经典门户]时，应看到如下内容：
+    g. 将该作业配置为“连续运行”，以便在登录到 [Azure 经典门户]时，应看到如下内容：
    
     ![][4]
 3. **EnterprisePushMobileApp**
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 这是一个 Windows 应用商店应用程序，它将从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示它。 这基于[通知中心 - Windows 通用教程]构建。  
+    a. 这是一个 Windows 应用商店应用程序，它将从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示它。 这基于[通知中心 - Windows 通用教程]构建。  
    
     b. 确保应用程序已启用接收 toast 通知。
    
@@ -240,12 +240,12 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
         }
 
 ### <a name="running-sample"></a>运行示例：
-1. 确保你的 WebJob 成功运行并且计划为“连续运行”。
-2. 运行 **EnterprisePushMobileApp**，这将启动 Windows 应用商店应用。
-3. 运行 **EnterprisePushBackendSystem** 控制台应用程序，这将模拟 LoB 后端并将开始发送消息，你应该会看到如下所示的 toast 通知：
+1. 确保 WebJob 成功运行并且计划为“连续运行”。
+2. 运行 **EnterprisePushMobileApp**，这会启动 Windows 应用商店应用。
+3. 运行 **EnterprisePushBackendSystem** 控制台应用程序，这会模拟 LoB 后端并将开始发送消息，应该会看到如下所示的 toast 通知：
    
     ![][5]
-4. 这些消息最初发送到服务总线主题，这些主题由 Web 作业中的服务总线订阅监视。 收到消息后，将创建通知并将其发送到移动应用。 当你转到 [Azure 经典门户]中 Web 作业的“日志”链接时，可以仔细查看 Web 作业日志来确认处理：
+4. 这些消息最初发送到服务总线主题，这些主题由 Web 作业中的服务总线订阅监视。 收到消息后，将创建通知并将其发送到移动应用。 转到 [Azure 经典门户]中 Web 作业的“日志”链接时，可以仔细查看 Web 作业日志来确认处理：
    
     ![][6]
 
@@ -262,12 +262,6 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
 [Azure 移动服务]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure 服务总线]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [服务总线 Pub/Sub 编程]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJob]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
+[Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
 [通知中心 - Windows 通用教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure 经典门户]: https://manage.windowsazure.com/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

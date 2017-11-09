@@ -14,16 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c05081685532aecbe29e9bf380f0278e775ad6b7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
-故障分析服务是在 Microsoft Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对你的应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
+故障分析服务是在 Microsoft Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
 
 操作指用于测试某个服务的单独故障。 服务开发人员可将这些操作用作构造块来编写复杂的方案。 例如：
 
@@ -91,11 +89,11 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 ## <a name="using-the-fault-analysis-service"></a>使用故障分析服务
 **C#**
 
-故障分析服务功能位于 Microsoft.ServiceFabric NuGet 包中的 System.Fabric 命名空间中。 若要使用故障分析服务功能，请在你的项目中作为一个引用包含 nuget 程序包。
+故障分析服务功能位于 Microsoft.ServiceFabric NuGet 包中的 System.Fabric 命名空间中。 要使用故障分析服务功能，请在项目中作为一个引用包含 nuget 程序包。
 
 **PowerShell**
 
-若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块将自动加载以供使用。
+若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块会自动加载以供使用。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建真正的云级服务，必须确保在部署之前和之后，服务能够承受现实的故障。 在当今的服务世界中，能够快速创新以及将代码投入生产环境非常重要。 故障分析服务能够帮助服务开发人员确切实现该目的。
@@ -104,4 +102,3 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png
-

@@ -10,18 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 10/31/2017
 ms.author: sstein
+ms.openlocfilehash: 1509a4f05ceb3a54aad790553183616c97b4bee2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 115aa01ee6e3bd539086d80df1dcd94b3b7e2723
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -48,7 +47,7 @@ Wingtip SaaS 应用使用单租户数据模型，在该模型中，每个地点�
 
 数据库性能管理包括：编译和分析性能数据，并对该数据作出反应，即通过调整参数，使应用程序的响应时间维持在可接受的范围。 托管多个租户时，如果工作负荷不可预测，则可以使用弹性数据库池这种经济有效的方式，为一组数据库提供资源并进行相应的管理。 就某些工作负荷模式来说，只要有两个 S3 数据库就可以在池中进行管理。
 
-![介质](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
+![应用程序关系图](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
 
 应监视池和池中的数据库，确保二者的性能处于可接受的范围内。 请根据所有数据库的聚合工作负荷的需要来调整池配置，确保池 eDTU 适合总体工作负荷。 请调整单个数据库的最小和最大 eDTU 值，使之符合特定的应用程序要求。
 
@@ -87,7 +86,7 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../a
 
 | 演示 | 方案 |
 |:--|:--|
-| 2 | 生成正常强度负载（约 40 DTU） |
+| #N/A | 生成正常强度负载（约 40 DTU） |
 | 3 | 生成单个数据库的突发时间更长且频率更高的负载|
 | 4 | 生成单个数据库的 DTU 突发更高的负载（约 80 DTU）|
 | 5 | 在正常负载的基础上生成单个租户的高负载（约 95 DTU）|
@@ -115,11 +114,11 @@ Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发
 
 池资源利用率聚合了池中所有数据库的数据库利用率。 数据库图表显示了五个最繁忙的数据库：
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
+![数据库图表](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
 由于池中除排名前五的数据库外还有其他数据库，因此池利用率可以显示没有反映在前五数据库图表中的活动。 有关其他详细信息，请单击“数据库资源利用率”：
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
+![数据库资源利用率](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
 
 ## <a name="set-performance-alerts-on-the-pool"></a>对池设置性能警报
@@ -205,16 +204,19 @@ Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发
 1. 使用 **F5** 执行该脚本。
 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，打开 Pool1。
+1. 在 [Azure 门户](https://portal.azure.com)，浏览到 tenants1 服务器上的数据库列表。 
+1. 单击“contosoconcerthall”数据库。
+1. 单击“contosoconcerthall”所在的池。 在“弹性数据库池”部分中找到该池。
+
 1. 检查“弹性池监视”图表，查找增加的池 eDTU 使用率。 一到两分钟后，较高的负载就会开始进入，很快就会看到池达到 100% 利用率。
-1. 检查“弹性数据库监视”屏幕，其中会显示过去一小时内最繁忙的数据库。 据屏幕显示，contosoconcerthall 数据库很快就会成为最繁忙的 5 个数据库之一。
-1. 单击“弹性数据库监视”图表将打开“数据库资源利用率”页面，可在其中监视任何数据库。 这样即可隔离 contosoconcerthall 数据库的屏幕。
-1. 在数据库列表中，单击 contosoconcerthall。
-1. 单击“定价层 (缩放 DTU)”打开“配置性能”页，可在其中设置数据库的独立性能级别。
-1. 单击“标准”选项卡打开标准层中的缩放选项。
-1. 将 DTU 滑块滑至右侧，选择 100 DTU。 请注意，这对应于服务目标 S3。
-1. 单击“应用”将数据库移出池，使之成为标准 S3 数据库。
-1. 缩放完成后，在弹性池和数据库边栏选项卡上监视对 contosoconcerthall 数据库以及 Pool1 造成的影响。
+2. 检查“弹性数据库监视”屏幕，其中会显示过去一小时内最繁忙的数据库。 据屏幕显示，contosoconcerthall 数据库很快就会成为最繁忙的 5 个数据库之一。
+3. 单击“弹性数据库监视”图表将打开“数据库资源利用率”页面，可在其中监视任何数据库。 这样即可隔离 contosoconcerthall 数据库的屏幕。
+4. 在数据库列表中，单击 contosoconcerthall。
+5. 单击“定价层 (缩放 DTU)”打开“配置性能”页，可在其中设置数据库的独立性能级别。
+6. 单击“标准”选项卡打开标准层中的缩放选项。
+7. 将 DTU 滑块滑至右侧，选择 100 DTU。 请注意，这对应于服务目标 S3。
+8. 单击“应用”将数据库移出池，使之成为标准 S3 数据库。
+9. 缩放完成后，在弹性池和数据库边栏选项卡上监视对 contosoconcerthall 数据库以及 Pool1 造成的影响。
 
 一旦 contosoconcerthall 数据库上的高负载降低，就应迅速让该数据库返回池中以降低其成本。 如不确定这种情况何时会发生，则可在数据库上设置一个警报，当数据库的 DTU 使用率降至池中单个数据库的最大值以下时将会触发该警报。 练习 5 介绍如何将数据库移至池中。
 
@@ -249,4 +251,3 @@ Wingtip 是一个 SaaS 应用，而 SaaS 应用上的实际负载通常是偶发
 * [SQL 弹性池](sql-database-elastic-pool.md)
 * [Azure 自动化](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md) -“设置和使用 Log Analytics”教程
-

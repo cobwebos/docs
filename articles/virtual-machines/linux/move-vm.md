@@ -15,12 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1fe1ab201bb1cd1c6dbfffe288f5c5be1f049d28
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: 4695a9c934f97f2b2d448c4990e7ad5533e38e9f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Linux VM。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
@@ -37,7 +36,7 @@ ms.lasthandoff: 04/03/2017
 
     azure group show <resourceGroupName>
 
-若要将 VM 及其资源移到其他资源组，请使用 **azure resource move** CLI 命令。 以下示例说明如何移动 VM 及其所需的大多数通用资源。 我们使用 **-i** 参数，并针对要移动的资源传入逗号分隔的 ID 列表（不包含空格）。
+要将 VM 及其资源移到其他资源组，请使用 **azure resource move** CLI 命令。 以下示例说明如何移动 VM 及其所需的大多数通用资源。 我们使用 **-i** 参数，并针对要移动的资源传入逗号分隔的 ID 列表（不包含空格）。
 
     vm=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Compute/virtualMachines/<vmName>
     nic=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/networkInterfaces/<nicName>
@@ -49,7 +48,7 @@ ms.lasthandoff: 04/03/2017
 
     azure resource move --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag -d "<destinationResourceGroup>"
 
-如果要将 VM 及其资源移到其他订阅，请添加 **--destination-subscriptionId &#60;destinationSubscriptionID&#62;** 参数来指定目标订阅。
+如果要将 VM 及其资源移到其他订阅，请添加 --destination-subscriptionId &#60;destinationSubscriptionID&#62; 参数来指定目标订阅。
 
 如果从 Windows 计算机上的命令提示符操作，需要在声明变量名称时在其前面添加 **$**。 在 Linux 中不需要这样做。
 
@@ -59,5 +58,4 @@ ms.lasthandoff: 04/03/2017
 
 ## <a name="next-steps"></a>后续步骤
 可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../resource-group-move-resources.md)。    
-
 

@@ -1,7 +1,7 @@
 ---
 title: "Azure Data Lake 工具：使用针对 Visual Studio Code 的 Azure Data Lake 工具 | Microsoft Docs"
 description: "了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 "
-Keywords: "VScode, Azure Data Lake 工具, 本地运行, 本地调试, 预览存储文件, 上传到存储路径"
+Keywords: "VScode, Azure Data Lake 工具, 本地运行, 本地调试, 预览存储文件, 上传到存储路径, 下载, 上传"
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/14/2017
+ms.date: 10/10/2017
 ms.author: jejiang
+ms.openlocfilehash: e724a8db4424a1e608ae7ee5625cd4cc16f6078f
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 833d14af47454a01fa3c97ffa854d688dd35871f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
-
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
 了解如何使用针对 Visual Studio Code (VS Code) 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 这些信息也包含在以下视频中：
@@ -32,43 +30,13 @@ ms.lasthandoff: 08/24/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-可在 VS Code 支持的平台上安装 Data Lake 工具。 支持的平台包括 Windows、Linux 和 MacOS。 不同平台的先决条件如下：
+针对 VSCode 的 Azure Data Lake 工具支持 Windows、Linux 和 MacOS。  
 
-- Windows
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
 
-    - [Visual Studio Code]( https://www.visualstudio.com/products/code-vs.aspx)。
-    - [Java SE Runtime Environment 版本 8 更新 77 或更高版本](https://java.com/download/manual.jsp)。 将 java.exe 路径添加到系统环境变量路径。 有关配置说明，请参阅[如何设置或更改 Path 系统变量？]( https://www.java.com/download/help/path.xml) 该路径类似于 C:\Program Files\Java\jdk1.8.0_77\jre\bin。
-    - [.NET Core SDK 1.0.3 或 .NET Core 1.1 运行时](https://www.microsoft.com/net/download)。
-    
-- Linux（建议 Ubuntu 14.04 LTS）
-
-    - [Visual Studio Code]( https://www.visualstudio.com/products/code-vs.aspx)。 若要安装 Code，请输入以下命令：
-
-              sudo dpkg -i code_<version_number>_amd64.deb
-
-    - [Mono 4.2.x](http://www.mono-project.com/docs/getting-started/install/linux/)。 
-
-        - 若要更新 deb 包源，请输入以下命令：
-
-                sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-                echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots 4.2.4.4/main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
-                sudo apt-get update
-
-        - 若要安装 Mono，请输入以下命令：
-
-                sudo apt-get install mono-complete
-
-            > [!NOTE] 
-            > 不支持 Mono 4.6。 安装 4.2.x 之前，请完全卸载版本 4.6。  
-
-        - [Java SE Runtime Environment 版本 8 更新 77 或更高版本](https://java.com/download/manual.jsp)。 有关安装说明，请参阅[适用于 Java 的 Linux 64 位安装说明]( https://java.com/en/download/help/linux_x64_install.xml)页。
-        - [.NET Core SDK 1.0.3 或 .NET Core 1.1 运行时](https://www.microsoft.com/net/download)。
-- MacOS
-
-    - [Visual Studio Code]( https://www.visualstudio.com/products/code-vs.aspx)。
-    - [Mono 4.2.4](http://download.mono-project.com/archive/4.2.4/macos-10-x86/). 
-    - [Java SE Runtime Environment 版本 8 更新 77 或更高版本](https://java.com/download/manual.jsp)。 有关安装说明，请参阅[适用于 Java 的 Linux 64 位安装说明](https://java.com/en/download/help/mac_install.xml)页。
-    - [.NET Core SDK 1.0.3 或 .NET Core 1.1 运行时](https://www.microsoft.com/net/download)。
+对于 MacOS 和 Linux：
+- [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)。 
+- [Mono 5.2.x](http://www.mono-project.com/download/)。
 
 ## <a name="install-data-lake-tools"></a>安装 Data Lake 工具
 
@@ -77,49 +45,16 @@ ms.lasthandoff: 08/24/2017
 **安装 Data Lake 工具**
 
 1. 打开 Visual Studio Code。
-2. 按 Ctrl+P，并输入以下命令：
-```
-ext install usql-vscode-ext
-```
-可看到 Visual Studio Code 扩展的列表。 其中一个是 **Azure Data Lake 工具**。
+2. 单击左侧窗格中的“扩展”。 在搜索框中，输入“Azure Data Lake”。
+3. 单击“Azure Data Lake 工具”旁边的“安装”。 数秒后，“安装”按钮将变为“重载”。
+4. 单击“重载”，激活“Azure Data Lake 工具”扩展。
+5. 单击“重载窗口”以进行确认。 在“扩展”窗格中，可以看到“Azure Data Lake 工具”。
 
-3. 选择“Azure Data Lake 工具”旁的“安装”。 数秒后，“安装”按钮会变为“重载”。
-4. 选择“重载”激活扩展。
-5. 选择“确定”以确认。 在“扩展”窗格中，可看到“Azure Data Lake 工具”。
-    ![针对 Visual Studio Code 的 Data Lake 工具扩展窗格](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
+    ![“针对 Visual Studio Code 的 Data Lake 工具扩展”窗格](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
 
+ 
 ## <a name="activate-azure-data-lake-tools"></a>激活 Azure Data Lake 工具
 创建新的 .usql 文件，或打开现有的 .usql 文件以激活扩展。 
-
-## <a name="connect-to-azure"></a>连接到 Azure
-
-必须首先接到 Azure 帐户，才能在 Data Lake Analytics 中编译和运行 U-SQL 脚本。
-
-**连接到 Azure 的方法**
-
-1.  按 Ctrl+Shift+P 打开命令面板。 
-2.  输入 **ADL: Login**。 登录信息显示在“输出”窗格中。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具命令面板](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
-    ![针对 Visual Studio Code 设备的 Data Lake 工具登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
-3. 按住 Ctrl 键并单击登录 URL：https://aka.ms/devicelogin 以打开登录网页。 在文本框中输入代码 **G567LX42V** 并选择“继续”。
-
-   ![针对 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
-4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
-
-    > [!NOTE] 
-    > 如果帐户已启用双重身份验证，我们建议使用手机身份验证，而不要使用 PIN 码。
-
-若要注销，请输入命令 **ADL: Logout**
-
-## <a name="list-your-data-lake-analytics-accounts"></a>列出 Data Lake Analytics 帐户
-
-若要测试连接，请获取 Data Lake Analytics 帐户的列表。
-
-**列出 Azure 订阅下 Data Lake Analytics 帐户的方法**
-
-1. 按 Ctrl+Shift+P 打开命令面板。
-2. 输入 **ADL: List Accounts**。 帐户随即显示在“输出”窗格中。
 
 ## <a name="open-the-sample-script"></a>打开示例脚本
 打开命令面板 (Ctrl+Shift+P)，并输入 **ADL: Open Sample Script**。 这会打开此示例的另一个实例。 还可以对此实例编辑、配置和提交脚本。
@@ -146,7 +81,8 @@ ext install usql-vscode-ext
                       D( DepID, DepName );
          
         OUTPUT @departments
-            TO “/Output/departments.csv”
+            TO "/Output/departments.csv"
+        USING Outputters.Csv();
 
     脚本创建具有 /output 文件夹中某些数据的 departments.csv 文件。
 
@@ -163,11 +99,11 @@ ext install usql-vscode-ext
         > [!NOTE] 
         > 如果设置无效，则使用默认值。
 
-    ![针对 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
+        ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
 
-    需要使用 Data Lake Analytics 计算帐户编译并运行 U-SQL 作业。 必须先配置此计算机帐户，才能编译和运行 U-SQL 作业。
+        需要使用 Data Lake Analytics 计算帐户编译并运行 U-SQL 作业。 需要先配置此计算机帐户，然后才能编译和运行 U-SQL 作业。
     
-保存配置后，帐户、数据库和架构信息会显示在对应 .usql 文件左下角的状态栏上。 
+        保存配置后，帐户、数据库和架构信息会显示在对应 .usql 文件左下角的状态栏上。 
  
  
 与打开文件相比，打开文件夹可以：
@@ -189,7 +125,7 @@ U-SQL 脚本通过 Data Lake Analytics 服务远程进行编译。 发出 **comp
 1. 按 Ctrl+Shift+P 打开命令面板。 
 2. 输入“ADL: Submit Job”。  也可以右键单击脚本文件，并选择“ADL: Submit Job”。 
 
-提交 U-SQL 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 如果提交成功，还会显示作业 URL。 可在 Web 浏览器中打开该作业 URL，跟踪作业实时状态。
+提交 U-SQL 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 如果提交成功，还会显示作业 URL。 可以在 Web 浏览器中打开作业 URL，跟踪实时作业状态。
 
 若要启用输出作业详细信息，请在 **vscode for u-sql_settings.json** 文件中设置 **jobInformationOutputPath**。
  
@@ -214,6 +150,8 @@ U-SQL 脚本通过 Data Lake Analytics 服务远程进行编译。 发出 **comp
 ![针对 Visual Studio Code 的 Data Lake 工具代码隐藏](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-behind.png)
 
 ![针对 Visual Studio Code 的 Data Lake 工具代码隐藏脚本文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-behind-call.png) 
+
+支持本地运行和本地调试。有关说明，请参阅[使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)。
 
 ## <a name="use-assemblies"></a>使用程序集
 
@@ -282,6 +220,36 @@ OUTPUT @d1
     USING Outputters.Tsv();
 ```
 
+## <a name="connect-to-azure"></a>连接到 Azure
+
+必须首先接到 Azure 帐户，才能在 Data Lake Analytics 中编译和运行 U-SQL 脚本。
+
+**连接到 Azure 的方法**
+
+1.  按 Ctrl+Shift+P 打开命令面板。 
+2.  输入 **ADL: Login**。 登录信息显示在“输出”窗格中。
+
+    ![针对 Visual Studio Code 的 Data Lake 工具命令面板](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
+    ![针对 Visual Studio Code 设备的 Data Lake 工具登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
+3. 按住 Ctrl 键并单击登录 URL：https://aka.ms/devicelogin 以打开登录网页。 在文本框中输入代码 **G567LX42V** 并选择“继续”。
+
+   ![用于 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
+4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
+
+    > [!NOTE] 
+    > 如果帐户已启用双重身份验证，我们建议使用手机身份验证，而不要使用 PIN 码。
+
+若要注销，请输入命令 **ADL: Logout**
+
+## <a name="list-your-data-lake-analytics-accounts"></a>列出 Data Lake Analytics 帐户
+
+若要测试连接，请获取 Data Lake Analytics 帐户的列表。
+
+**列出 Azure 订阅下 Data Lake Analytics 帐户的方法**
+
+1. 按 Ctrl+Shift+P 打开命令面板。
+2. 输入 **ADL: List Accounts**。 帐户随即显示在“输出”窗格中。
+
 
 ## <a name="access-the-data-lake-analytics-catalog"></a>访问 Data Lake Analytics 目录
 
@@ -302,144 +270,51 @@ OUTPUT @d1
 3.  等待显示帐户的作业列表
 4.  从作业列表中选择作业，Data Lake 工具会在 Azure 门户中打开作业详细信息，并在 VS Code 中显示 JobInfo 文件。
 
-![针对 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
 
-## <a name="azure-data-lake-storage-integration"></a>Azure Data Lake Storage 集成
+## <a name="azure-data-lake-storage-integration"></a>Azure Data Lake 存储集成
 
-可以使用 Azure Data Lake Storage 相关的命令来执行以下操作：
- - 浏览 Azure Data Lake Storage 资源。 
- - 预览 Azure Data Lake Storage 文件。  
- - 在 VS Code 中将文件上传到 Azure Data Lake Storage。 
+可以使用 Azure Data Lake 存储相关的命令来执行以下操作：
+ - 浏览 Azure Data Lake 存储资源。 [列出存储路径](#list-the-storage-path)。 
+ - 预览 Azure Data Lake 存储文件。 [预览存储文件](#preview-the-storage-file)。 
+ - 在 VS Code 中将文件上传到 Azure Data Lake 存储。 [上传文件](#upload-file)。
+ - 直接从 VS Code 的 Azure Data Lake 存储下载文件。 [下载文件](#download-file)。
 
-### <a name="list-the-storage-path"></a>列出存储路径 
-可以通过命令面板或右键单击来列出存储路径。
+## <a name="list-the-storage-path"></a>列出存储路径 
 
 **通过命令面板列出存储路径**
 
-1.  打开命令面板 (Ctrl+Shift+P)，并输入 **ADL: List Storage Path**。
+右键单击脚本编辑器，再选择“ADL:列出存储路径”。
 
-    ![针对 Visual Studio Code 的 Data Lake 工具列出存储路径](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-storage.png)
+选择列表中的文件夹，也可以单击“输入路径”或“从根目录浏览”（以“输入路径”为例）。 -> 选择 ADLA 帐户。 -> 转到或输入存储文件夹路径（例如，/output/）。 -> 命令面板根据输入内容列出路径信息。
 
-2.  选择用于列出存储路径的首选方法。 这段使用“输入路径”作为示例。
-
-    ![在针对 Visual Studio Code 的 Data Lake 工具中列出存储路径的方法之一](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account-selectoneway.png)
-
-    > [!NOTE]
-    >- VS Code 会保留每个 Data Lake Analytics 帐户中上次访问的路径。 例如：/tt/ss。
-    >- 从根路径浏览：所选 Data Lake Analytics 帐户中的列表根路径，或本地路径。
-    >- 输入路径：列出所选 Data Lake Analytics 帐户中的指定路径，或列出本地路径。
-    
-3. 选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具选择“更多”](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
-
-4. 选择“更多”可列出更多 Data Lake Analytics 帐户并选择 Data Lake Analytics 帐户。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
-
-5.  输入 Azure 存储路径。 例如 /output。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具输入存储路径](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-path.png)
-
-6.  结果：命令面板基于输入内容列出路径信息。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具列出存储路径结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-path.png)
+![针对 Visual Studio Code 的 Data Lake 工具列出存储路径结果](./media/data-lake-analytics-data-lake-tools-for-vscode/list-storage-path.png)
 
 列出相对路径的一种更便利方法是右键单击上下文菜单。
 
 **通过右键单击列出存储路径**
 
-1.  右键单击路径字符串以选择“List Storage Path”。
+右键单击路径字符串，选择“列出存储路径”即可继续。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具右键单击上下文菜单](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
+![针对 Visual Studio Code 的 Data Lake 工具右键单击上下文菜单](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
 
-2. 所选相对路径会显示在命令面板中。
 
-   ![针对 Visual Studio Code 的 Data Lake 工具：所选相对路径](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-relative-path.png)
+## <a name="preview-the-storage-file"></a>预览存储文件
 
-3.  选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
+右键单击脚本编辑器，再选择“ADL:预览存储文件”。
 
-       ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+选择 ADLA 帐户。 -> 输入 Azure 存储文件路径（例如，/output/SearchLog.txt）。 -> 结果就是，文件在 VSCode 中打开。
 
-4.  结果：命令面板列出当前路径的文件夹和文件。
+   ![用于 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/preview-storage-file.png)
 
-       ![针对 Visual Studio Code 的 Data Lake 工具：从当前路径列出](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-current.png)
+预览存储文件的另一种方法是，通过脚本编辑器中文件完整路径或文件相对路径的右键单击菜单。 
 
-### <a name="preview-the-storage-file"></a>预览存储文件
-可以通过命令面板或右键单击来预览存储文件。
-
-**通过命令面板预览存储文件**
-
-1.  打开命令面板 (Ctrl+Shift+P)，并输入 **ADL: Preview Storage File**。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具预览存储文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-preview.png)
-
-2.  选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具列出帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
-
-3.  选择“更多”可列出更多 Data Lake Analytics 帐户并选择 Data Lake Analytics 帐户。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
-
-4.  输入 Azure 存储路径或文件。 例如 /output/SearchLog.txt。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具输入存储路径和文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-preview-file.png)
-
-5.  结果：命令面板基于输入内容列出路径信息。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
-
-**通过右键单击列出存储路径**
-
-1.  若要预览文件，请右键单击文件路径。
-
-   ![针对 Visual Studio Code 的 Data Lake 工具右键单击上下文菜单](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-preview.png) 
-
-2.  选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具选择帐户](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
-
-3.  结果：VS Code 显示文件的预览结果。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具预览文件结果](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
-
-### <a name="upload-a-file"></a>上传文件 
+## <a name="upload-file"></a>上传文件 
 
 可以通过输入命令 **ADL: Upload File** 或 **ADL: Upload File through Configuration** 上传文件。
 
-**通过 ADL: Upload File 命令上传文件**
-1. 按 Ctrl+Shift+P 打开命令面板，或右键单击脚本编辑器并输入 **Upload File**。
-2.  若要上传文件，请输入本地路径。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具输入本地路径](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-input-local-path.png)
-
-3. 选择一种列出存储路径的方法。 这段使用“输入路径”作为示例。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具列出存储路径](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account-selectoneway.png)
-    >[!NOTE]
-    >- VS Code 会保留每个 Data Lake Analytics 帐户中上次访问的路径。 例如：/tt/ss。
-    >- 从根路径浏览：所选 Data Lake Analytics 帐户中的列表根路径，或本地路径。
-    >- 输入路径：列出所选 Data Lake Analytics 帐户中的指定路径，或列出本地路径。
-
-4. 选择本地路径中的某个帐户，或选择一个 Data Lake Analytics 帐户。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具右键单击存储](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
-
-5. 输入 Azure 存储路径。 例如：/output。
-
-       ![Data Lake Tools for Visual Studio Code enter storage path](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-preview-file.png)
-
-6. 查找 Azure 存储路径。 选择“选择当前文件夹”。
-
-    ![针对 Visual Studio Code 的 Data Lake 工具选择文件夹](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-choose-current-folder.png)
-
-7.  结果：“输出”窗口显示文件上传状态。
-
-       ![针对 Visual Studio Code 的 Data Lake 工具上传状态](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-status.png)    
-
 **通过 ADL: Upload File through Configuration 命令上传文件**
-1.  按 Ctrl+Shift+P 打开命令面板，或右键单击脚本编辑器并输入 **Upload File through Configuration**。
+1.  右键单击脚本编辑器，再选择“通过配置上传文件”。
 2.  VS Code 显示 JSON 文件。 可以输入文件路径，并同时上传多个文件。 指令会显示在“输出”窗口中。 若要继续上传文件，请保存 (Ctrl+S) JSON 文件。
 
        ![针对 Visual Studio Code 的 Data Lake 工具文件路径](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-file.png)
@@ -448,9 +323,58 @@ OUTPUT @d1
 
        ![针对 Visual Studio Code 的 Data Lake 工具上传状态](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-status.png)     
 
-将文件上传到存储的另一种方法是在脚本编辑器中通过文件完整路径或文件相对路径上的右键单击菜单。 输入本地文件路径并选择帐户。 “输出”窗口显示上传状态。 
+与此同时，可以监视[上传状态](#check-storage-tasks-status)。
 
-### <a name="open-azure-storage-explorer"></a>打开 Azure 存储资源管理器
+**通过 ADL: Upload File 命令上传文件**
+
+右键单击脚本编辑器，再选择“上传文件”。
+
+输入本地文件路径。 -> 选择列表中的文件夹，也可以单击“输入路径”或“从根目录浏览”（以“输入路径”为例）。 -> 选择 ADLA 帐户。 -> 转到或输入存储文件夹路径（例如，/output/）。 -> 单击“选择当前文件夹”，指定上传目标。
+
+![针对 Visual Studio Code 的 Data Lake 工具上传状态](./media/data-lake-analytics-data-lake-tools-for-vscode/upload-file.png)    
+
+
+将文件上传到存储的另一种方法是，通过脚本编辑器中文件完整路径或文件相对路径的右键单击菜单。
+
+与此同时，可以监视[上传状态](#check-storage-tasks-status)。
+
+## <a name="download-file"></a>下载文件 
+可以输入命令“ADL:下载存储文件”或“ADL:通过配置下载存储文件”，从而下载文件。
+
+**通过输入“ADL:通过配置下载文件”命令下载文件的具体步骤**
+1. 右键单击脚本编辑器，再选择“通过配置下载存储文件”。
+2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 指令会显示在“输出”窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
+
+    ![针对 Visual Studio Code 的 Data Lake 工具使用 config 下载文件](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
+
+3.  结果：“输出”窗口显示文件上传状态。
+
+    ![结果：针对 Visual Studio Code 的 Data Lake 工具下载多个文件](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-file-result.png)     
+
+与此同时，可以监视[下载状态](#check-storage-tasks-status)。
+
+**通过输入“ADL:下载存储文件”命令下载文件的具体步骤**
+
+右键单击脚本编辑器，再选择“下载存储文件”。
+
+选择列表中的文件夹，也可以单击“输入路径”或“从根目录浏览”（以“输入路径”为例）。 -> 选择 ADLA 帐户。 -> 转到或输入存储文件夹路径（例如，/output/）-> 选择要下载的文件。
+
+   ![针对 Visual Studio Code 的 Data Lake 工具的下载状态](./media/data-lake-analytics-data-lake-tools-for-vscode/download-file.png) 
+
+   在结果图片中，文件被另存为临时文件夹。 可以通过 VSCode 菜单“文件” -> “首选项” -> “设置”，自行为参数 usql.defaultLocalFolderForDownload 设置默认下载路径。
+
+下载存储文件的另一种方法是，通过脚本编辑器中文件完整路径或文件相对路径的右键单击菜单。
+
+与此同时，可以监视[下载状态](#check-storage-tasks-status)。
+
+## <a name="check-storage-tasks-status"></a>检查存储任务的状态
+完成下载和上传时，状态显示在状态栏底部。
+1. 单击下面的状态栏，即可在“输出”面板中查看下载和上传状态。
+
+   ![针对 Visual Studio Code 的 Data Lake 工具检查存储状态](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
+
+
+## <a name="open-azure-storage-explorer"></a>打开 Azure 存储资源管理器
 可以通过输入命令 **ADL: Open Web Azure Storage Explorer** 或从右键单击上下文菜单中选择该命令来打开“Azure 存储资源管理器”。
 
 **打开 Azure 存储资源管理器**
@@ -461,7 +385,7 @@ OUTPUT @d1
 
 Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web 查找路径和预览文件。
 
-### <a name="local-run-and-local-debug-for-windows-users"></a>Windows 用户的本地运行和本地调试
+## <a name="local-run-and-local-debug-for-windows-users"></a>Windows 用户的本地运行和本地调试
 在将代码发布到 Data Lake Analytics 之前，U-SQL 本地运行可测试本地数据并在本地验证脚本。 使用本地调试功能可以在将代码提交到 Data Lake Analytics 之前完成以下任务： 
 - 调试 C# 代码隐藏。 
 - 逐步执行代码。 
@@ -484,16 +408,16 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
     - U-SQL 函数
     - U-SQL 开窗函数
  
-    ![针对 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-objects.png)
  
 -   IntelliSense 自动完成 Data Lake Analytics 元数据：Data Lake 工具在本地下载 Data Lake Analytics 元数据信息。 IntelliSense 功能自动填充 Data Lake Analytics 元数据中的对象，包括数据库、架构、表、视图、表值函数、过程和 C# 程序集。
  
-    ![针对 Visual Studio Code 的 Data Lake 工具 IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 元数据](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-complete-metastore.png)
 
 -   IntelliSense 错误标记：Data Lake 工具使用下划线标出 U-SQL 和 C# 编辑错误。 
 -   语法突出显示：Data Lake 工具使用不同颜色来区分变量、关键字、数据类型和函数等项。 
 
-    ![针对 Visual Studio Code 的 Data Lake 工具语法突出显示](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具语法突出显示](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -501,7 +425,6 @@ Data Lake 工具会在 Azure 门户中打开 Azure 存储路径。 可以从 Web
 - 有关 Data Lake Analytics 的入门信息，请参阅[教程：Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
 - 有关用于 Visual Studio 的 Data Lake 工具的信息，请参阅[教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 - 有关开发程序集的信息，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)。
-
 
 
 

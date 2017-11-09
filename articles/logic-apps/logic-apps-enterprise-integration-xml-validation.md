@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
-ms.openlocfilehash: ae0bb2cb090402f61bb10299e50024f1f2938489
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
-
+ms.openlocfilehash: 8558efffa354cc4bb93820c837077ee997924c95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="validate-xml-for-enterprise-integration"></a>验证企业集成的 XML
 
-通常在 B2B 方案中，协议中的合作伙伴必须确保他们交换的消息有效，然后才能开始处理数据。 可以使用 Enterprise Integration Pack 中的 XML 验证连接器针对预定义的架构验证文档。
+通常在 B2B 方案中，协议中的合作伙伴必须确保他们交换的消息有效，才能开始处理数据。 可以使用 Enterprise Integration Pack 中的 XML 验证连接器针对预定义的架构验证文档。
 
 ## <a name="validate-a-document-with-the-xml-validation-connector"></a>使用 XML 验证连接器验证文档
 
-1. 创建逻辑应用并[将应用链接到包含要用于验证 XML 数据的架构的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。
+1. 创建逻辑应用并[将应用链接到包含用于验证 XML 数据的架构的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。
 
 2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。
 
@@ -56,11 +54,10 @@ ms.lasthandoff: 02/07/2017
 
     ![](./media/logic-apps-enterprise-integration-xml/xml-5.png)
 
-现在已完成设置验证连接器。 在实际应用程序中，你可能想要将已验证的数据存储在业务线 (LOB) 应用（如 SalesForce）中。 若要将已验证的输出发送到 Salesforce，请添加操作。
+现在已完成设置验证连接器。 在实际应用程序中，你可能想要将已验证的数据存储在业务线 (LOB) 应用（如 SalesForce）中。 要将已验证的输出发送到 Salesforce，请添加操作。
 
 若要测试验证操作，请向 HTTP 终结点发出请求。
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")   
-
 

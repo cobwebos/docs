@@ -1,5 +1,5 @@
 ---
-title: "Azure 安全中心定价 | Microsoft Docs"
+title: "升级到安全中心的标准层以增强安全性 | Microsoft Docs"
 description: "本文提供有关 Azure 安全中心定价的信息。"
 services: security-center
 documentationcenter: na
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/19/2017
 ms.author: terrylan
+ms.openlocfilehash: 0a8fb526602692db6737842c24649b686bea5dad
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: cd4001a3280c83875f30b04d5d38caec26f4f0b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="azure-security-center-pricing"></a>Azure 安全中心定价
+# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>升级到安全中心的标准层以增强安全性
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络攻击的智能检测功能。
 
 ## <a name="pricing-tiers"></a>定价层
 安全中心分两个层提供：
 
-- 免费层在所有 Azure 订阅上自动启用，并提供安全策略、持续的安全评估和切实可行的安全建议来帮助你保护 Azure 资源
+- 免费层在所有 Azure 订阅上自动启用，并提供安全策略、持续的安全评估和切实可行的安全建议来帮助你保护 Azure 资源。
 - 标准层将免费层的功能扩展到私有云和其他公有云中运行的工作负载，并在混合云工作负载中提供了统一的安全管理和威胁防护。 标准层还增加了高级威胁检测功能，它使用内置行为分析和机器学习识别攻击和零时差攻击，并使用访问和应用程序控件减小在网络攻击和恶意软件下的曝光面，此外还有更多其他操作。 标准层在前 60 天免费。
 
 有关详细信息，请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -68,4 +67,3 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png
-

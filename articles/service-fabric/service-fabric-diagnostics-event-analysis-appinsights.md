@@ -12,16 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 10/15/2017
 ms.author: dekapur
+ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
-
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
 Azure Application Insights 是用于应用程序监视和诊断的可扩展平台。 它具有强大的分析和查询工具、可自定义的仪表板和可视化效果，以及包括自动报警在内的其他选项。 推荐使用该平台为 Service Fabric 应用程序和服务进行监视和诊断。
@@ -30,7 +28,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ### <a name="creating-an-ai-resource"></a>创建 AI 资源
 
-若要创建 AI 资源，请转到 Azure Marketplace 并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
+若要创建 AI 资源，请转到 Azure 应用商店并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
 
 ![新建 Application Insights 资源](media/service-fabric-diagnostics-event-analysis-appinsights/create-new-ai-resource.png)
 
@@ -39,6 +37,9 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 使用事件聚合工具配置 AI 需要 AI 检测密钥。 设置 AI 资源后（验证部署后需要几分钟时间），请导航至该资源，并在左侧导航栏上查找“属性”部分。 将打开新的边栏选项卡，显示“检测密钥”。 若要更改订阅或资源的资源组，也可在此完成。
 
 ### <a name="configuring-ai-with-wad"></a>使用 WAD 配置 AI
+
+>[!NOTE]
+>目前仅适用于 Windows 群集。
 
 可通过两种方式将数据从 WAD 发送到 Azure AI，这一过程是通过向 WAD 配置添加 AI 接收器实现，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所述。
 
@@ -52,7 +53,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 在 Resource Manager 模板的“WadCfg”中，通过应用以下两项更改添加“接收器”：
 
-1. 添加接收器配置：
+1. 在声明完 `DiagnosticMonitorConfiguration` 后，直接添加接收器配置：
 
     ```json
     "SinksConfig": {
@@ -66,7 +67,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
     ```
 
-2. 通过在“WadCfg”的“DiagnosticMonitorConfiguration”中添加以下行，将该接收器包含到 DiagnosticMonitorConfiguration 中：
+2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
 
     ```json
     "sinks": "applicationInsights"

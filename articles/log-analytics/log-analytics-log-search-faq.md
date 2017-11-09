@@ -11,16 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 10/17/2017
 ms.author: bwren
+ms.openlocfilehash: bf48cbc52a1ed96ed1bb49b1879d5cd7aece945c
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics 新日志搜索常见问题解答和已知问题
 
 本文提供包括有关[将 Log Analytics 升级到新的查询语言](log-analytics-log-search-upgrade.md)的常见问题解答和已知问题。  决定升级工作区前，请通读全文。
@@ -30,6 +28,10 @@ ms.lasthandoff: 09/07/2017
 
 ### <a name="question-i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>问：我有大量警报规则。 升级后，是否需要采用新的语言再次创建这些规则？  
 不需要，在升级过程中，警报规则会自动转换为新的搜索语言。  
+
+### <a name="question-i-have-alert-rules-with-webhook-and-runbook-actions-will-these-continue-to-work-when-i-upgrade"></a>问：我有关于 webhook 和 runbook 操作的预警规则。 升级后这些规则还会继续工作吗？
+
+不会，webhook 和 runbook 操作中发生了一些更改，这可能要求对有效负载的处理方式进行一些更改。 我们所做的这些更改旨在标准化各种输出格式和减小有效负载的大小。 有关这些格式的详细信息，请参阅[将操作添加到 Log Analytics 中的警报规则](log-analytics-alerts-actions.md)。
 
 
 ## <a name="computer-groups"></a>计算机组
@@ -48,7 +50,7 @@ ms.lasthandoff: 09/07/2017
 ## <a name="dashboards"></a>仪表板
 
 ### <a name="question-can-i-still-use-dashboards-in-an-upgraded-workspace"></a>问：是否可以在升级后的工作区中使用仪表板？
-可以继续使用工作区升级前添加到“我的仪表板”的任何磁贴，但无法编辑这些磁贴或创建新磁贴。  可以继续使用[视图设计器](log-analytics-view-designer.md)创建和编辑视图，也可以在 Azure 门户中创建仪表板。
+升级后，我们会开始弃用“我的仪表板”。  可以继续使用工作区升级前添加到仪表板的任何磁贴，但无法编辑这些磁贴或创建新磁贴。  可以继续使用[视图设计器](log-analytics-view-designer.md)（具有更丰富的功能集）创建和编辑视图，也可在 Azure 门户中创建仪表板。
 
 
 ## <a name="log-searches"></a>日志搜索
@@ -58,6 +60,21 @@ ms.lasthandoff: 09/07/2017
 
 ### <a name="question-why-are-my-query-results-not-sorted"></a>问：为什么我的查询结果未排序？
 默认情况下，新的查询语言中不对结果进行排序。  使用 [sort 运算符](https://go.microsoft.com/fwlink/?linkid=856079)以便按一个或多个属性对结果进行排序。
+
+### <a name="question-where-did-the-metrics-view-go-after-i-upgraded"></a>问：升级后“指标”视图位于何处？
+“指标”视图以图形形式表示日志搜索中的性能数据。  升级后此视图将不再可用。  可使用 [render 运算符](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator)设置时间图表中查询的输出格式。
+
+### <a name="question-where-did-minify-go-after-i-upgraded"></a>问题：升级后“缩小”选项位于何处？
+“缩小”是一个功能，提供搜索结果的汇总视图。  升级后，“缩小”选项不再显示在“日志搜索”门户中。  可使用新搜索语言中的 [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) 或 [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster) 获得与之类似的功能。 
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | reduce by RenderedDescription
+
+    Event
+    | where TimeGenerated > ago(10h)
+    | evaluate autocluster_v2()
+
 
 ### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>已知问题：列表中的搜索结果可能包括不含数据的属性
 列表中的日志搜索结果可能会显示不含数据的属性。  升级之前，这些属性将不包括在内。  此问题将会得到解决，以便不会显示空的属性。
@@ -77,6 +94,18 @@ ms.lasthandoff: 09/07/2017
 可以在 [Azure Log Analytics 中用于创建和编辑日志查询的门户](log-analytics-log-search-portals.md)参看两个门户的比较。  两者均具有明显的优势，因此可根据需求做出最佳选择。  在高级分析门户中写入查询，然后将其粘贴到其他位置（如视图设计器），这是一种很常见的做法。  执行该操作时，应了解[需要考虑的问题](log-analytics-log-search-portals.md#advanced-analytics-portal)。
 
 
+### <a name="question--after-upgrade-i-get-an-error-trying-to-run-queries-and-am-also-seeing-errors-in-my-views"></a>问：升级后，收到一个“尝试运行查询”错误并且还在我的视图中看到错误。
+
+升级后，浏览器需要访问以下地址，才能运行 Log Analytics 查询。  如果浏览器通过防火墙访问 Azure 门户，则必须允许访问这些地址。
+
+| Uri | IP | 端口 |
+|:---|:---|:---|
+| portal.loganalytics.io | 动态 | 80,443 |
+| api.loganalytics.io    | 动态 | 80,443 |
+| docs.loganalytics.io   | 动态 | 80,443 |
+
+
+
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="question-does-anything-change-with-powerbi-integration"></a>问：PowerBI 集成会发生改变吗？
@@ -86,10 +115,12 @@ ms.lasthandoff: 09/07/2017
 目前，可导出到 Power BI 的 Log Analytics 查询的大小限制为 8 MB。  很快将增加此限制。
 
 
-##<a name="powershell-cmdlets"></a>PowerShell cmdlet
+## <a name="powershell-cmdlets"></a>PowerShell cmdlet
 
 ### <a name="question-does-the-log-search-powershell-cmdlet-get-updated-after-i-upgrade"></a>问：升级后，日志搜索 PowerShell cmdlet 是否会更新？
-[Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/Get-AzureRmOperationalInsightsSearchResults) 尚未升级到新的搜索语言。  请继续通过此 cmdlet 使用旧的查询语言，即使工作区已经升级。  cmdlet 的更新文档将在其更新后可用。
+所有工作区的升级完成后，[Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/Get-AzureRmOperationalInsightsSearchResults) 将弃用。  使用 [Invoke-LogAnalyticsQuery cmdlet](https://dev.loganalytics.io/documentation/Tools/PowerShell-Cmdlets) 在升级后的工作区中执行日志搜索。
+
+
 
 
 ## <a name="resource-manager-templates"></a>资源管理器模板
@@ -125,28 +156,26 @@ ms.lasthandoff: 09/07/2017
 ### <a name="known-issue-capacity-and-performance-solution"></a>已知问题：容量和性能解决方案
 [容量和性能](log-analytics-capacity.md)视图中的某些部分可能为空。  不久便会提供此问题的解决办法。
 
-### <a name="known-issue-device-health-solution"></a>已知问题：设备运行状况解决方案
-[设备运行状况解决方案](https://docs.microsoft.com/windows/deployment/update/device-health-monitor)不会在升级后的工作区中收集数据。  不久便会提供此问题的解决办法。
-
 ### <a name="known-issue-application-insights-connector"></a>已知问题：Application Insights 连接器
 升级后的工作区中当前不支持 [Application Insights 连接器解决方案](log-analytics-app-insights-connector.md)中的观点。  目前正在对此问题的解决办法进行分析。
+
+### <a name="known-issue-backup-solution"></a>已知问题：备份解决方案
+备份解决方案不会在升级后的工作区中收集数据。 不久将公布适用于升级后的工作区的新备份解决方案。
 
 ## <a name="upgrade-process"></a>升级过程
 
 ### <a name="question-i-have-several-workspaces-can-i-upgrade-all-workspaces-at-the-same-time"></a>问：我有多个工作区。 是否可以同时升级所有工作区？  
-不会。  升级适用于单次单个工作区。 当前没有方法可以一次性升级多个工作区。 请注意，所升级的工作区的其他用户也会受影响。  
+不能。  升级适用于单次单个工作区。 当前没有方法可以一次性升级多个工作区。 请注意，所升级的工作区的其他用户也会受影响。  
 
 ### <a name="question-will-existing-log-data-collected-in-my-workspace-be-modified-if-i-upgrade"></a>问：如果升级，是否将修改工作区中收集的现有日志数据？  
-不会。 可用于工作区搜索的日志数据不受升级影响。 已保存的搜索、警报和视图将自动转换为新的搜索语言。  
+不能。 可用于工作区搜索的日志数据不受升级影响。 已保存的搜索、警报和视图将自动转换为新的搜索语言。  
 
 ### <a name="question-what-happens-if-i-dont-upgrade-my-workspace"></a>问：如果不升级工作区，会发生什么情况？  
 旧的日志搜索将在几个月后弃用。 系统会自动升级此时间前仍未升级的工作区。
 
-### <a name="question-i-didnt-choose-to-upgrade-but-my-workspace-has-been-upgraded-anyway-what-happened"></a>问：未选择升级，但工作区仍进行了升级！ 发生了什么情况？  
-此工作区的另一个管理员可能升级了该工作区。 请注意，正式发布新语言后，系统会自动升级所有工作区。  
+### <a name="question-can-i-revert-back-after-i-upgrade"></a>问：升级后是否可以还原？
+在正式发布之前，升级后可以还原工作区。  现在，新的语言已正式发布，已删除此功能，因为我们开始停用旧的平台。
 
-### <a name="question-i-have-upgraded-by-mistake-and-now-need-to-cancel-it-and-restore-everything-back-what-should-i-do"></a>问：不小心进行了升级，现在需要将其取消并还原所有内容。 我该怎么办？  
-没问题。  由于升级之前创建了工作区快照，所以可将其还原。 请记住，升级后会丢失已保存的搜索、警报或视图。  若要还原工作区环境，请按照[升级后是否可以还原？](log-analytics-log-search-upgrade.md#can-i-go-back-after-i-upgrade)中的步骤进行操作
 
 
 ## <a name="views"></a>视图
@@ -161,4 +190,3 @@ ms.lasthandoff: 09/07/2017
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[将工作区升级到新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)。
-

@@ -4,7 +4,7 @@
 * Azure 负载均衡器使用公用端口侦听从 Internet 传入的虚拟机流量。
 * 虚拟机使用专用端口侦听传入流量（通常发送到虚拟机上运行的应用程序或服务）。
 
-使用 Azure 门户创建终结点时，将为 IP 协议和众所周知的网络协议的 TCP 或 UDP 端口提供默认值。 对于自定义终结点，需要指定正确的 IP 协议（TCP 或 UDP），以及公用和专用端口。 若要将传入流量随机分布到多个虚拟机，需要创建包含多个终结点的负载均衡集。
+使用 Azure 门户创建终结点时，将为 IP 协议和众所周知的网络协议的 TCP 或 UDP 端口提供默认值。 对于自定义终结点，需要指定正确的 IP 协议（TCP 或 UDP），以及公用和专用端口。 要将传入流量随机分布到多个虚拟机，需要创建包含多个终结点的负载均衡集。
 
 创建终结点后，可以使用访问控制列表 (ACL) 定义规则，根据传入流量的源 IP 地址允许或拒绝终结点的公用端口的传入流量。 但是，如果虚拟机位于 Azure 虚拟网络中，则应改为使用网络安全组。 有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/virtual-networks-nsg.md)。
 
@@ -14,8 +14,8 @@
 >
 
 ## <a name="create-an-endpoint"></a>创建终结点
-1. 如果你尚未登录 [Azure 门户](https://portal.azure.com)，请先登录。
-2. 单击“虚拟机”，然后单击要配置的虚拟机的名称。
+1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请先登录。
+2. 单击“虚拟机”，并单击要配置的虚拟机的名称。
 3. 在“设置”组中，单击“终结点”。 “终结点”页面列出虚拟机的所有当前终结点。 （此示例中的是 Windows VM。 如果是 Linux VM，则默认显示一个 SSH 终结点。）
 
    <!-- ![Endpoints](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png) -->
@@ -27,7 +27,7 @@
 7. 在“公用端口”中，键入来自 Internet 的传入流量的端口号。 在“专用端口”中，键入虚拟机正在侦听的端口号。 这些端口号可以不同。 确保已将虚拟机的防火墙配置为允许与协议（在步骤 6 中）和专用端口对应的流量。
 10. 单击“确定” 。
 
-新终结点将在“终结点”页面上列出。
+新终结点会在“终结点”页面上列出。
 
 ![成功创建终结点](./media/virtual-machines-common-classic-setup-endpoints/endpointcreated.png)
 
@@ -42,7 +42,7 @@
 如果虚拟机位于 Azure 虚拟网络中，则建议使用网络安全组（而不是 ACL）。 有关详细信息，请参阅[关于网络安全组](../articles/virtual-network/virtual-networks-nsg.md)。
 
 1. 如果尚未登录 Azure 门户，请先登录。
-2. 单击“虚拟机”，然后单击要配置的虚拟机的名称。
+2. 单击“虚拟机”，并单击要配置的虚拟机的名称。
 3. 单击“终结点” 。 从列表中选择适当的终结点。 ACL 列表位于页面底部。
 
    ![指定 ACL 详细信息](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)

@@ -1,7 +1,7 @@
 ---
 title: "AzureApplication Insights for DevOps 概述 | Microsoft Docs"
 description: "了解如何在 DevOps 环境中使用 Application Insights。"
-author: CFreemanwa
+author: mrbullwinkle
 services: application-insights
 documentationcenter: 
 manager: carmonm
@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.custom: mvc
+ms.topic: overview
 ms.date: 06/26/2017
-ms.author: bwren
+ms.author: mbullwin
+ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: afcfc6bb27506dbcc44217680e779318107b33d9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 
@@ -236,4 +236,3 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 * 在 [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) 或 [Azure](app-insights-azure.md) 上托管的已部署的应用。
 * [网页](app-insights-javascript.md) - 单页应用或普通网页 - 单独使用此方法，或者将它与任何服务器选项结合使用。
 * [可用性测试](app-insights-monitor-web-app-availability.md)：通过公共 Internet 测试应用。
-

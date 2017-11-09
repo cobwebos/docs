@@ -20,21 +20,28 @@
 ### [示例输入数据](stream-analytics-sample-data-input.md)
 ### [通用查询模式](stream-analytics-stream-analytics-query-patterns.md)
 ### [开窗函数](stream-analytics-window-functions.md)
+
 ### [使用引用数据](stream-analytics-use-reference-data.md)
 ### [测试查询](stream-analytics-test-query.md)
 ### [集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md)
+### [集成 JavaScript UDA](stream-analytics-javascript-user-defined-aggregates.md)
 ### [集成 REST API 和机器学习](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [创建输出](stream-analytics-define-outputs.md)
-### [输出到 Azure Functions](stream-analytics-functions-redis.md)
 ### [输出到 Data Lake Store](stream-analytics-data-lake-output.md)
 ### [输出到 Cosmos DB](stream-analytics-documentdb-output.md)
+
+## 使用 Visual Studio 工具
+### [安装](stream-analytics-tools-for-visual-studio-install.md)
+### [入门](stream-analytics-tools-for-visual-studio.md)
+### [设置 CI/CD 管道](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 监视和优化
 ### [添加警报](stream-analytics-set-up-alerts.md)
 ### [监视作业](stream-analytics-monitoring.md)
 ### [以编程方式监视作业](stream-analytics-monitor-jobs.md)
 ### [使用 PowerShell 监视作业](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [优化流单元](stream-analytics-streaming-unit-consumption.md)
+### [了解和调整流式处理单元](stream-analytics-streaming-unit-consumption.md)
+### [利用查询并行度](stream-analytics-parallelization.md)
 ### [通过扩展增大吞吐量](stream-analytics-scale-jobs.md)
 ### [机器学习功能缩放](stream-analytics-scale-with-machine-learning-functions.md)
 
@@ -48,17 +55,17 @@
 ### [作业关系图和指标](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO 调试](stream-analytics-select-into.md)
 ### [事件顺序处理](stream-analytics-out-of-order-and-late-events.md)
+### [事件排序注意事项](stream-analytics-out-of-order-and-late-events.md)
 ### [事件中心读取器限制](stream-analytics-event-hub-consumer-groups.md)
 ### [诊断日志](stream-analytics-job-diagnostic-logs.md)
 
 ## 自动化
-### [适用于 Visual Studio 的工具](stream-analytics-tools-for-visual-studio.md)
 ### [使用 Management .NET SDK](stream-analytics-dotnet-management-sdk.md)
-### [一键式 PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+### [一键式 Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
-## [PowerShell](/powershell/module/azurerm.streamanalytics)
+## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [查询语言](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
-ms.openlocfilehash: d0488999f55b7ccc393f4852f22c6adf4a031b1f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/13/2017
-
-
+ms.openlocfilehash: 26c0256f6fa299551d92e9bcd058ca359d8c85b3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
 Microsoft Azure Service Fabric 是面向高度可缩放、高度可靠分布式应用程序的下一代云应用程序平台。 其中引入了许多用于打包、部署、更新和管理分布式云应用程序的新功能。 
@@ -28,13 +26,13 @@ Microsoft Azure Service Fabric 是面向高度可缩放、高度可靠分布式�
 本简介指南介绍如何将应用程序从云服务迁移到 Service Fabric。 内容侧重于云服务与 Service Fabric 之间的体系结构与设计差异。
 
 ## <a name="applications-and-infrastructure"></a>应用程序和基础结构
-云服务与 Service Fabric 之间的最基本差异在于 VM、工作负荷及应用程序之间的关系。 此处的工作负荷定义为你编写的、用来执行特定任务或提供服务的代码。
+云服务与 Service Fabric 之间的最基本差异在于 VM、工作负荷及应用程序之间的关系。 此处的工作负荷定义为编写的、用来执行特定任务或提供服务的代码。
 
-* **云服务涉及到将应用程序部署为 VM。** 你编写的代码与 VM 实例（如 Web 角色或辅助角色）密切结合。 在云服务中部署工作负荷就是要部署一个或多个运行该工作负荷的 VM 实例。 应用程序与 VM 没有区别，因此对于应用程序没有正式的定义。 可将应用程序视为云服务部署中的一组 Web 角色或辅助角色实例，或视为整个云服务部署。 在此示例中，应用程序显示为一组角色实例。
+* **云服务涉及到将应用程序部署为 VM。** 编写的代码与 VM 实例（如 Web 角色或辅助角色）密切结合。 在云服务中部署工作负荷就是要部署一个或多个运行该工作负荷的 VM 实例。 应用程序与 VM 没有区别，因此对于应用程序没有正式的定义。 可将应用程序视为云服务部署中的一组 Web 角色或辅助角色实例，或视为整个云服务部署。 在此示例中，应用程序显示为一组角色实例。
 
 ![云服务应用程序和拓扑][1]
 
-* **Service Fabric 涉及到将应用程序部署至现有的 VM 或运行 Service Fabric 的 Windows 或 Linux 计算机。** 你编写的服务完全与底层的基础结构分离（由 Service Fabric 应用程序平台抽象化），因此可将应用程序部署在多个环境。 Service Fabric 中的工作负荷称为“服务”，一个或多个服务将在 Service Fabric 应用程序平台上运行的且正式定义的应用程序中分组。 可将多个应用程序部署到单个 Service Fabric 群集。
+* **Service Fabric 涉及到将应用程序部署至现有的 VM 或运行 Service Fabric 的 Windows 或 Linux 计算机。** 编写的服务完全与底层的基础结构分离（由 Service Fabric 应用程序平台抽象化），因此可将应用程序部署在多个环境。 Service Fabric 中的工作负载称为“服务”，一个或多个服务在 Service Fabric 应用程序平台上运行的且正式定义的应用程序中进行分组。 可将多个应用程序部署到单个 Service Fabric 群集。
 
 ![Service Fabric 应用程序和拓扑][2]
 
@@ -42,7 +40,7 @@ Service Fabric 本身是在 Windows 或 Linux 中运行的应用程序平台层�
 Service Fabric 应用程序模型有许多优点：
 
 * 快速部署。 创建 VM 实例可能非常耗时。 在 Service Fabric 中，只需部署 VM 一次即可构成托管 Service Fabric 应用程序平台的群集。 此后，可将应用程序包快速部署到该群集。
-* 高密度托管。 在云服务中，一个辅助角色 VM 托管一个工作负荷。 在 Service Fabric 中，应用程序与运行它们的 VM 分离，这意味着你可以将大量应用程序部署到少量 VM，从而降低大量部署所需的总体成本。
+* 高密度托管。 在云服务中，一个辅助角色 VM 托管一个工作负荷。 在 Service Fabric 中，应用程序与运行它们的 VM 分离，这意味着可以将大量应用程序部署到少量 VM，从而降低大量部署所需的总体成本。
 * Service Fabric 平台可在任何配备 Windows Server 或 Linux 计算机的位置（无论是 Azure 还是本地）运行。 该平台在底层基础结构上面提供一个抽象层，因此应用程序可在不同的环境中运行。 
 * 分布式应用程序管理。 Service Fabric 平台不仅能够托管分布式应用程序，而且能够帮助管理这些应用程序的生命周期，不管托管 VM 或计算机的生命周期如何。
 
@@ -68,7 +66,7 @@ Service Fabric 应用程序还可以选择在整个应用程序中使用相同�
 大多数云服务应用程序由多个层组成。 同样，Service Fabric 应用程序由多个服务组成（通常是许多的服务）。 二种常见的通信模型是直接通信，以及通过外部持久性存储通信。
 
 ### <a name="direct-communication"></a>直接通信
-使用直接通信时，层之间可以通过各自公开的终结点直接通信。 在无状态环境（例如云服务）中，这意味着需要选择 VM 角色的实例（随机或者通过循环机制来平衡负载），然后直接连接到其终结点。
+使用直接通信时，层之间可以通过各自公开的终结点直接通信。 在无状态环境（例如云服务）中，这意味着需要选择 VM 角色的实例（随机或者通过循环机制来平衡负载），并直接连接到其终结点。
 
 ![云服务直接通信][5]
 
@@ -91,7 +89,7 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 ![Service Fabric 直接通信][8]
 
 ## <a name="next-steps"></a>后续步骤
-从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将应用程序的整个基础结构保持大致相同。 以下文章提供了帮助你将 Web 角色和辅助角色迁移到 Service Fabric 无状态服务的指导。
+从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将应用程序的整个基础结构保持大致相同。 以下文章提供了帮助将 Web 角色和辅助角色迁移到 Service Fabric 无状态服务的指导。
 
 * [简单迁移：将 Web 角色或辅助角色转换为 Service Fabric 无状态服务](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
@@ -105,4 +103,3 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 [9]: ./media/service-fabric-cloud-services-migration-differences/cloud-services-architecture.png
 [10]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-simple.png
 [11]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-full.png
-

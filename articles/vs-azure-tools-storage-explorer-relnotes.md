@@ -14,26 +14,85 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
+ms.openlocfilehash: c1a3370d29b47da752e4ab1ea67ccc1a4cdd94df
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 63a24f6b153390533bba0888fd1051508c65bf6e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
-本文包含 Azure 存储资源管理器 0.8.16（预览版）以及之前版本的发行说明。
+本文包含 Azure 存储资源管理器 0.9.0（预览版）以及之前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+
+## <a name="version-091--090-preview"></a>版本 0.9.1 / 0.9.0（预览版）
+10/20/2017
+
+### <a name="download-azure-storage-explorer-091-preview"></a>下载 Azure 存储资源管理器 0.9.1（预览版）
+- [适用于 Windows 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新增
+* 预览版对 Azure Cosmos DB 的支持：
+    * [联机文档](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * 创建数据库和集合
+    * 操作数据
+    * 查询、创建或删除文档
+    * 更新存储过程、用户定义的函数或触发器
+    * 使用连接字符串连接到并管理数据库
+* 改善了上传/下载许多小型 blob 时的性能。
+* 当 blob 上传组或 blob 下载组中出现故障时增加了“全部重试”操作。
+* 现在，在 blob 上传/下载期间，如果检测到网络连接断开，则存储资源管理器会暂停迭代。 然后，在重新建立网络连接后，你可以恢复迭代。
+* 增加了通过上下文菜单“全部关闭”、“关闭其他”和“关闭”选项卡的能力。
+* 存储资源管理器现在使用本机对话框和本机上下文菜单。
+* 存储资源管理器现在更易于访问。 改进包括：
+    * 针对 Windows 上的 NVDA 和 Mac 上的 VoiceOver，改进了屏幕阅读器支持
+    * 改进了高对比度主题
+    * 键盘 Tab 键次序和键盘焦点修复
+
+### <a name="fixes"></a>修复项
+* 过去，如果尝试下载具有无效 Windows 文件名的 blob，则操作将失败。 现在，存储资源管理器将检测 blob 名称是否有效，并且会询问你是要对其进行编码还是跳过该 blob。 存储资源管理器还会检测文件名看起来是否已编码并且在上传前会询问是否要对其进行解码。
+* 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 此问题已解决。
+* 支持多种形式的连接字符串和回归的 SAS URI。 我们已解决了所有已知问题，但是如果遇到了进一步的问题，请向我们发送反馈。
+* 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，对于受此 bug 影响的那些用户，可以手动[从此处](https://azure.microsoft.com/en-us/features/storage-explorer/)下载最新版本的存储资源管理器。
+
+### <a name="known-issues"></a>已知问题
+* 存储资源管理器不支持 ADFS 帐户。
+* “查看资源管理器”和“查看帐户管理”的快捷键应当分别为 Ctrl/Cmd+Shift+E 和 Ctrl/Cmd+Shift+A。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 帐户设置面板可能显示需重新输入凭据以筛选订阅。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+```
+./StorageExplorer.exe --disable-gpu
+```
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-0816-preview"></a>版本 0.8.16（预览版）
 8/21/2017
 
 ### <a name="download-azure-storage-explorer-0816-preview"></a>下载 Azure 存储资源管理器 0.8.16（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [下载适用于 Windows 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [下载适用于 Mac 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [下载适用于 Linux 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>新建
 * 打开 Blob 时，如果检测到更改，存储资源管理器会提示上传已下载的文件
@@ -42,13 +101,13 @@ ms.lasthandoff: 08/22/2017
 
 
 ### <a name="fixes"></a>修复项
-* 对于某些 Blob 类型，在发生上传冲突期间选择“替换”有时会导致重新开始上传。 
+* 对于某些 Blob 类型，在发生上传冲突期间选择“替换”有时会导致重新开始上传。
 * 在版本 0.8.15 中，上传有时会停滞在 99%。
 * 将文件上传到文件共享时，如果选择上传到某个不存在的目录，上传将会失败。
 * 存储资源管理器为共享访问签名和表查询生成错误的时间戳。
 
 
-已知问题
+### <a name="known-issues"></a>已知问题
 * 目前无法正常使用名称和密钥连接字符串。 下一个版本会修复此问题。 在此之前，可以使用附加名称和密钥的功能。
 * 如果尝试打开具有无效 Windows 文件名的文件，下载操作会导致“找不到文件”错误。
 * 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是 Azure 存储节点库的局限性。
@@ -72,43 +131,9 @@ ms.lasthandoff: 08/22/2017
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0814-preview"></a>版本 0.8.14（预览版）
-2017/06/22
-
-### <a name="download-azure-storage-explorer-0814-preview"></a>下载 Azure 存储资源管理器 0.8.14（预览版）
-* [下载适用于 Windows 的 Azure 存储资源管理器 0.8.14（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [下载适用于 Mac 的 Azure 存储资源管理器 0.8.14（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [下载适用于 Linux 的 Azure 存储资源管理器 0.8.14（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
-
-### <a name="new"></a>新建
-
-* 已将 Electron 版本更新为 1.7.2，以便利用若干关键安全更新
-* 现可从帮助菜单快速访问联机疑难解答指南
-* 存储资源管理器疑难解答[指南][2]
-* 连接到 Azure Stack 订阅相关[说明][3]
-
-### <a name="known-issues"></a>已知问题
-
-* 用鼠标单击 Linux 中删除文件夹确认对话框上的按钮无反应。 解决方法是使用 Enter 键
-* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择
-* 同时上传 3 组以上的 blob 或文件可能导致错误
-* 帐户设置面板可能显示需重新输入凭据才能筛选订阅
-* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
-* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。 
-* Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
-
-    ```
-    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get dist-upgrade
-    ```
-
-
-
-
 ## <a name="previous-releases"></a>以前的版本
 
+* [版本 0.8.14](#version-0814)
 * [版本 0.8.13](#version-0813)
 * [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
 * [版本 0.8.9/0.8.8](#version-089--088)
@@ -125,6 +150,33 @@ ms.lasthandoff: 08/22/2017
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
 
+
+### <a name="version-0814"></a>版本 0.8.14
+2017/06/22
+
+### <a name="new"></a>新建
+
+* 已将 Electron 版本更新为 1.7.2，以便利用若干关键安全更新
+* 现可从帮助菜单快速访问联机疑难解答指南
+* 存储资源管理器疑难解答[指南][2]
+* 连接到 Azure Stack 订阅相关[说明][3]
+
+### <a name="known-issues"></a>已知问题
+
+* 用鼠标单击 Linux 中删除文件夹确认对话框上的按钮无反应。 解决方法是使用 Enter 键
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择
+* 同时上传 3 组以上的 blob 或文件可能导致错误
+* 帐户设置面板可能显示需重新输入凭据才能筛选订阅
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
 
 ### <a name="version-0813"></a>版本 0.8.13
 05/12/2017
@@ -150,7 +202,7 @@ ms.lasthandoff: 08/22/2017
 * 同时上传 3 组以上的 blob 或文件可能导致错误
 * 帐户设置面板可能显示需重新输入凭据才能筛选订阅
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
-* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。 
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
 
     ```
@@ -172,7 +224,7 @@ ms.lasthandoff: 08/22/2017
 * 现可折叠左侧面板
 * 发现现与下载同时运行
 * 在 Blob 容器、文件共享和表编辑器中使用统计信息来查看资源或所选内容的大小
-* 现可登录到基于 Azure Active Directory (AAD) 的 Azure Stack 帐户。 
+* 现可登录到基于 Azure Active Directory (AAD) 的 Azure Stack 帐户。
 * 现可将超过 32 MB 的存档文件上传到高级存储帐户
 * 改进的辅助功能支持
 * 现可通过转到“编辑”-&gt;“SSL 证书”-&gt;“导入证书”来添加受信任的 Base-64 编码 X.509 SSL 证书
@@ -183,8 +235,8 @@ ms.lasthandoff: 08/22/2017
 * 已修复：为仿真器队列和表生成 SAS 会导致无效的 URL
 * 已修复：现可在启用代理时扩展高级存储帐户
 * 已修复：如果选择了 1 个或 0 个帐户，帐户管理页上的应用按钮无效
-* 已修复：上传需要解决冲突的 blob 可能失败 - 已在 0.8.11 中修复 
-* 已修复：0.8.11 中正在发送的反馈损坏 - 已在 0.8.12 中修复 
+* 已修复：上传需要解决冲突的 blob 可能失败 - 已在 0.8.11 中修复
+* 已修复：0.8.11 中正在发送的反馈损坏 - 已在 0.8.12 中修复
 
 #### <a name="known-issues"></a>已知问题
 
@@ -193,7 +245,7 @@ ms.lasthandoff: 08/22/2017
 * 同时上传 3 组以上的 blob 或文件可能导致错误。
 * 帐户设置面板可能显示需重新输入凭据才能筛选订阅。
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
-* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。 
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * Ubuntu 14.04 安装需要更新或升级 gcc 版本 - 升级步骤如下：
 
     ```
@@ -275,7 +327,7 @@ ms.lasthandoff: 08/22/2017
 * 现可在不同选项卡中打开多个编辑器。 单击可打开临时选项卡；双击可打开永久选项卡。也可通过单击临时选项卡，将其变为永久选项卡
 * 已显著提升上传和下载的性能及稳定性，尤其是对于快速计算机上的大文件
 * 现可在 blob 容器中创建空白“虚拟”文件夹
-* 已重新引入通过新的增强子字符串搜索进行的限定范围搜索，因此现可通过两种方式进行搜索： 
+* 已重新引入通过新的增强子字符串搜索进行的限定范围搜索，因此现可通过两种方式进行搜索：
     * 全局搜索 - 在搜索文本框中输入搜索词即可
     * 限定范围的搜索 - 单击节点旁边的放大镜图标，然后在路径末尾添加一个搜索词，或右键单击并选择“从此处搜索”
 * 我们已添加多个主题：浅色（默认）、深色、高对比度黑色和高对比度白色。 转到“编辑”-&gt;“主题”可更改主题首选项
@@ -293,12 +345,12 @@ ms.lasthandoff: 08/22/2017
 * 已修复：不能在空表上打开“查询面板”
 * 已修复：“搜索”中的各种 bug
 * 已修复：单击“加载更多”时，加载的资源数从 50 增加到了 100
-* 已修复：首次运行时，如已登录帐户，现默认选择该帐户的所有订阅 
+* 已修复：首次运行时，如已登录帐户，现默认选择该帐户的所有订阅
 
 #### <a name="known-issues"></a>已知问题
 
 * 此版本的存储资源管理器不在 Ubuntu 14.04 上运行
-* 若要为同一资源打开多个选项卡，请勿连续单击同一资源。 单击另一资源，然后返回，然后单击原始资源以在另一选项卡中再次打开 
+* 若要为同一资源打开多个选项卡，请勿连续单击同一资源。 单击另一资源，然后返回，然后单击原始资源以在另一选项卡中再次打开
 * 快速访问仅适用于基于订阅的项。 此版本不支持本地资源或通过密钥或 SAS 令牌附加的资源
 * 快速访问可能需要几秒钟时间导航至目标资源，具体取决于所拥有的资源数
 * 同时上传 3 组以上的 blob 或文件可能导致错误
@@ -463,7 +515,7 @@ ms.lasthandoff: 08/22/2017
 
 ### <a name="known-issues-amp-mitigations"></a>已知问题 &amp; 缓解措施
 
-* 大型 blob 文件无法正常下载 - 建议在我们处理此问题期间使用 AzCopy 
+* 大型 blob 文件无法正常下载 - 建议在我们处理此问题期间使用 AzCopy
 * 如果无法找到或无法写入主文件夹，则不会检索或缓存帐户凭据
 * 如果正在添加、编辑或导入具有不明确数值（如“1”或“1.0”）的属性的实体，并且用户尝试将其作为 `Edm.String` 发送，则该值将通过客户端 API 作为 Edm.Double 返回
 * 导入包含多行记录的 CSV 文件时，数据可能被截或加密
@@ -491,7 +543,7 @@ ms.lasthandoff: 08/22/2017
 
 #### <a name="fixes"></a>修复项
 
-* 已修复：上传或下载大量 blob (500+) 有时可能导致应用白屏 
+* 已修复：上传或下载大量 blob (500+) 有时可能导致应用白屏
 * 已修复：设置 blob 容器公共访问级别时，新值在重置容器焦点前不会更新。 此外，对话框始终默认为“无公共访问”，而不是实际的当前值。
 * 总体更佳的键盘/辅助功能和 UI 支持
 * 痕迹导航历史记录文本在出现较长空格时换行
@@ -501,7 +553,7 @@ ms.lasthandoff: 08/22/2017
 
 #### <a name="known-issues"></a>已知问题
 
-* Linux 安装需要更新或升级 gcc 版本 - 升级步骤如下： 
+* Linux 安装需要更新或升级 gcc 版本 - 升级步骤如下：
     * `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get upgrade`

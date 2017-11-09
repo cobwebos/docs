@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>通过 REST API 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/20/2017
 使用 Azure Active Directory 进行身份验证的方法有两种。
 
 ### <a name="end-user-authentication-interactive"></a>最终用户身份验证（交互式）
-使用此方法时，应用程序将提示用户登录，所有操作将在用户的上下文中执行。 
+使用此方法时，应用程序会提示用户登录，所有操作会在用户的上下文中执行。 
 
 遵循以下步骤进行交互式身份验证：
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/20/2017
    > 
    > 
    
-    在本教程中，可以替换上述 URL 中的占位符值，并将此值粘贴到 Web 浏览器地址栏中。 随后用户将重定向，以便使用 Azure 登录名进行身份验证。 成功登录后，响应将显示在浏览器地址栏中。 响应格式如下：
+    在本教程中，可以替换上述 URL 中的占位符值，并将此值粘贴到 Web 浏览器地址栏中。 随后用户将重定向，以便使用 Azure 登录名进行身份验证。 成功登录后，响应会显示在浏览器地址栏中。 响应格式如下：
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 2. 捕获响应中的授权代码。 在本教程中，可以从 Web 浏览器的地址栏复制授权代码，然后在 POST 请求中将其传递给令牌终结点，如下所示：
@@ -346,5 +345,4 @@ ms.lasthandoff: 06/20/2017
 * 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 * 若要了解使用其他工具来完成此教程，请单击页面顶部的选项卡选择器。
-
 

@@ -1,11 +1,11 @@
 ---
-title: "创建专用 Docker 容器注册表 - Azure CLI | Microsoft 文档"
-description: "开始使用 Azure CLI 2.0 创建和管理专用 Docker 容器注册表"
+title: "快速入门 - 使用 Azure CLI 在 Azure 中创建专用 Docker 注册表"
+description: "快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。"
 services: container-registry
 documentationcenter: 
-author: stevelas
-manager: balans
-editor: cristyg
+author: neilpeterson
+manager: timlt
+editor: tysonn
 tags: 
 keywords: 
 ms.assetid: 29e20d75-bf39-4f7d-815f-a2e47209be7d
@@ -14,137 +14,150 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2017
-ms.author: stevelas
+ms.date: 10/16/2017
+ms.author: nepeters
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 6b3fb9a3ea090f0083e8f113ddf13312fe42b59a
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
-# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建专用 Docker 容器注册表
-使用 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 中的命令从 Linux、Mac 或 Windows 计算机创建容器注册表并管理其设置。 也可以使用 [Azure 门户](container-registry-get-started-portal.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
+# <a name="create-a-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建容器注册表
 
+Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。
 
-* 有关背景和概念，请参阅[概述](container-registry-intro.md)
-* 如需容器注册表 CLI 命令（`az acr` 命令）的帮助，请在任一命令中传递 `-h` 参数。
+本快速入门需要运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
+还必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
 
-## <a name="prerequisites"></a>先决条件
-* **Azure CLI 2.0**：若要安装并开始使用 CLI 2.0，请参阅[安装说明](/cli/azure/install-azure-cli)。 运行 `az login` 登录到 Azure 订阅。 有关详细信息，请参阅 [CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。
-* **资源组**：在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 CLI 2.0 创建资源组，请查看 [CLI 2.0 参考](/cli/azure/group)。
-* **存储帐户**（可选）：创建一个标准的 Azure [存储帐户](../storage/common/storage-introduction.md)，用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令会自动创建一个存储帐户。 若要使用 CLI 2.0 创建存储帐户，请查看 [CLI 2.0 参考](/cli/azure/storage/account)。 当前不支持高级存储。
-* **服务主体**（可选）：使用 CLI 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表（或创建并分配新的服务主体），或者启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
+## <a name="create-a-resource-group"></a>创建资源组
 
-## <a name="create-a-container-registry"></a>创建容器注册表
-运行 `az acr create` 命令可以创建容器注册表。
+使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-> [!TIP]
-> 创建注册表时，请指定仅包含字母和数字的全局唯一顶级域名。 示例中的注册表名称为 `myRegistry1`，但需要将它替换成自己的唯一名称。
->
->
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
-以下命令使用少量参数在资源组 `myResourceGroup` 中创建容器注册表 `myRegistry1`，并且使用基本 sku：
-
-```azurecli
-az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
 ```
 
-* `--storage-account-name` 是可选项。 如果未指定，则会创建一个存储帐户，其名称由注册表名称以及指定资源组中的一个时间戳组成。
+## <a name="create-a-container-registry"></a>创建容器注册表
+
+在本快速入门中，我们将创建*基本*注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的扩展详细信息，请参阅[容器注册表 SKU](container-registry-skus.md)。
+
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
+
+使用 [az acr create](/cli/azure/acr#create) 命令创建 ACR 实例。
+
+注册表的名称必须是唯一的。 以下示例使用 myContainerRegistry007。 将其更新为唯一值。
+
+```azurecli
+az acr create --name myContainerRegistry007 --resource-group myResourceGroup --sku Basic
+```
 
 创建注册表时，输出与下面类似：
 
-```azurecli
+```json
 {
   "adminUserEnabled": false,
-  "creationDate": "2017-06-06T18:36:29.124842+00:00",
-  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ContainerRegistry
-/registries/myRegistry1",
-  "location": "southcentralus",
-  "loginServer": "myregistry1.azurecr.io",
-  "name": "myRegistry1",
+  "creationDate": "2017-09-08T22:32:13.175925+00:00",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry007",
+  "location": "eastus",
+  "loginServer": "myContainerRegistry007.azurecr.io",
+  "name": "myContainerRegistry007",
   "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
   "sku": {
     "name": "Basic",
     "tier": "Basic"
   },
   "storageAccount": {
-    "name": "myregistry123456789"
+    "name": "mycontainerregistr223140"
   },
   "tags": {},
   "type": "Microsoft.ContainerRegistry/registries"
 }
-
 ```
 
+本快速入门的剩余部分使用 `<acrname>` 作为容器注册表名称的占位符。
 
-请特别注意：
+## <a name="log-in-to-acr"></a>登录到 ACR
 
-* `id` - 注册表在订阅中的标识符，分配服务主体时需要使用它。
-* `loginServer` - 为[登录到注册表](container-registry-authentication.md)而指定的完全限定名称。 在本示例中，名称为 `myregistry1.exp.azurecr.io`（全部小写）。
-
-## <a name="assign-a-service-principal"></a>分配服务主体
-使用 CLI 2.0 命令可将 Azure Active Directory 服务主体分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
-
-### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>创建服务主体并分配注册表访问权限
-在以下命令中，新服务主体有权以“所有者”角色身份访问使用 `--scopes` 参数传递的注册表标识符。 使用 `--password` 参数指定一个强密码。
+在推送和拉取容器映像之前，必须登录到 ACR 实例。 为此，请使用 [az acr login](/cli/azure/acr#login) 命令。
 
 ```azurecli
-az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --password myPassword
+az acr login --name <acrname>
 ```
 
+完成后，该命令会返回“登录成功”消息。
 
+## <a name="push-image-to-acr"></a>将映像推送到 ACR
 
-### <a name="assign-an-existing-service-principal"></a>分配现有的服务主体
-如果已有一个服务主体并想要为它分配对注册表的“所有者”角色访问权限，请运行类似于以下示例的命令。 使用 `--assignee` 参数传递服务主体应用 ID：
+要将映像推送到 Azure 容器注册表，首先必须具有一个映像。 如果需要，请运行以下命令，从 Docker 中心拉取预创建映像。
 
-```azurecli
-az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --assignee myAppId
+```bash
+docker pull microsoft/aci-helloworld
 ```
 
+需要使用 ACR 登录服务器名称标记此映像。 运行以下命令，返回 ACR 实例的登录服务器名称。
 
-
-## <a name="manage-admin-credentials"></a>管理管理员凭据
-管理员帐户是为每个容器注册表自动创建的，默认情况下已禁用。 以下示例演示 `az acr` CLI 命令如何管理容器注册表的管理员凭据。
-
-### <a name="obtain-admin-user-credentials"></a>获取管理员用户凭据
 ```azurecli
-az acr credential show -n myRegistry1
+az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-### <a name="enable-admin-user-for-an-existing-registry"></a>为现有注册表启用管理员用户
-```azurecli
-az acr update -n myRegistry1 --admin-enabled true
+使用 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) 命令标记映像。 使用 ACR 实例的登录服务器名称替换 <acrLoginServer>。
+
+```bash
+docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-### <a name="disable-admin-user-for-an-existing-registry"></a>为现有注册表禁用管理员用户
-```azurecli
-az acr update -n myRegistry1 --admin-enabled false
+最后，使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将映像推送到 ACR 实例。 使用 ACR 实例的登录服务器名称替换 <acrLoginServer>。
+
+```bash
+docker push <acrLoginServer>/aci-helloworld:v1
 ```
 
-## <a name="list-images-and-tags"></a>列出映像和标记
-使用 `az acr` CLI 命令查询存储库中的映像和标记。
+## <a name="list-container-images"></a>列出容器映像
 
-> [!NOTE]
-> 目前，容器注册表不支持使用 `docker search` 命令查询映像和标记。
-
-
-### <a name="list-repositories"></a>列出存储库
-以下示例使用 JSON（JavaScript 对象表示法）格式列出注册表中的存储库：
+以下示例列出了注册表中的存储库：
 
 ```azurecli
-az acr repository list -n myRegistry1 -o json
+az acr repository list -n <acrname> -o table
 ```
 
-### <a name="list-tags"></a>列出标记
-以下示例使用 JSON 格式列出 **samples/nginx** 存储库中的标记：
+输出：
+
+```bash
+Result
+----------------
+aci-helloworld
+```
+
+以下示例列出了 aci-helloworld 存储库中的标记。
 
 ```azurecli
-az acr repository show-tags -n myRegistry1 --repository samples/nginx -o json
+az acr repository show-tags -n <acrname> --repository aci-helloworld -o table
+```
+
+输出：
+
+```bash
+Result
+--------
+v1
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要资源组、ACR 实例和所有容器映像，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。
+
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
 
+在本快速入门教程中，你已使用 Azure CLI 创建 Azure 容器注册表。 如果要对 Azure 容器实例使用 Azure 容器注册表，请继续学习 Azure 容器实例教程。
+
+> [!div class="nextstepaction"]
+> [Azure 容器实例教程](../container-instances/container-instances-tutorial-prepare-app.md)

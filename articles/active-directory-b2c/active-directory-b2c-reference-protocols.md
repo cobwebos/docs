@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 8e7e7bc7633370057f8dc596ad04a3f1d796a7d2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # Azure AD B2C：身份验证协议
 通过支持两种行业标准协议（OpenID Connect 和 OAuth 2.0），Azure Active Directory B2C (Azure AD B2C) 为应用提供标识即服务。 这是符合标的服务，但这些协议的任意两个实现之间仍然存在微妙的差异。 
 
-如果是通过直接发送和处理 HTTP 请求而不是使用开放源库来编写代码，本指南中的信息才有所帮助。 建议先阅读此页面，然后再深入了解每个特定协议的详细信息。 但如果已熟悉 Azure AD B2C，则可以直接转到[协议参考指南](#protocols)。
+如果是通过直接发送和处理 HTTP 请求而不是使用开放源库来编写代码，本指南中的信息才有所帮助。 建议先阅读此页面，再深入了解每个特定协议的详细信息。 但如果已熟悉 Azure AD B2C，则可以直接转到[协议参考指南](#protocols)。
 
 <!-- TODO: Need link to libraries above -->
 
@@ -50,7 +49,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 * **资源所有者**通常是最终用户。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
 
-* **OAuth 客户端**是你的应用。 它由其应用程序 ID 标识。 通常作为最终用户与之交互的一方。 还会从授权服务器请求令牌。 资源所有者必须授予客户端授权才能访问资源。
+* **OAuth 客户端**是应用。 它由其应用程序 ID 标识。 通常作为最终用户与之交互的一方。 还会从授权服务器请求令牌。 资源所有者必须授予客户端授权才能访问资源。
 
 * **资源服务器**是资源或数据所在的位置。 它信任授权服务器，以安全地对 OAuth 客户端进行验证和授权。 它还会使用持有者访问令牌，确保可以授予对资源的访问权限。
 
@@ -68,7 +67,7 @@ OAuth 2.0 和 OpenID Connect 的 Azure AD B2C 实现广泛使用了持有者令�
 
 某些安全令牌具有防止未授权方使用令牌的内置机制，但持有者令牌不具有这种机制。 它们必须在安全通道中传输，例如传输层安全性 (HTTPS)。 
 
-如果持有者令牌在安全通道外传输，则恶意方就可以利用中间人攻击来获得令牌，并使用它对受保护资源进行未经授权的访问。 存储或缓存持有者令牌以供以后使用时，也应遵循同样的安全原则。 请始终确保你的应用以安全的方式传输和存储持有者令牌。
+如果持有者令牌在安全通道外传输，则恶意方就可以利用中间人攻击来获得令牌，并使用它对受保护资源进行未经授权的访问。 存储或缓存持有者令牌以供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。
 
 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](http://tools.ietf.org/html/rfc6750)。
 
@@ -80,5 +79,4 @@ OAuth 2.0 和 OpenID Connect 的 Azure AD B2C 实现广泛使用了持有者令�
 * [使用 OAuth 2.0 构建移动和本机应用程序](active-directory-b2c-reference-oauth-code.md)
 * [使用 OpenID Connect 构建 Web 应用](active-directory-b2c-reference-oidc.md)
 * [使用 OAuth 2.0 隐式流构建单页应用](active-directory-b2c-reference-spa.md)
-
 

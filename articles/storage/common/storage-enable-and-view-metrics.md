@@ -3,7 +3,7 @@ title: "在 Azure 门户中启用存储度量值 | Microsoft Docs"
 description: "如何为 Blob、队列、表和文件服务启用存储度量值"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: 8abb4f968c1fa84e03c8cc807826d3684713847a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1525a2258dd6ab8e72e8607826523eca8121483c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>启用 Azure 存储度量值并查看度量值数据
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -27,19 +26,19 @@ ms.lasthandoff: 08/22/2017
 ## <a name="overview"></a>概述
 创建新的存储帐户时默认情况下会启用存储度量。 可通过 [Azure 门户](https://portal.azure.com)或 Windows PowerShell 配置监视，也可通过一个存储客户端库以编程方式配置监视。
 
-可以为指标数据配置保留期：此期限用于确定存储服务保留指标并针对存储指标所需的空间向你收费的时长。 通常，由于分钟度量值需要大量额外的空间，因此，应对分钟度量值而非小时度量值使用较短的保留期。 应该选择恰当的保留期，以便有足够的时间分析数据，并下载任何需要保留下来进行脱机分析或报告的度量值。 请记住，从存储帐户下载度量值数据时，也需要付费。
+可以为指标数据配置保留期：此期限用于确定存储服务保留指标并针对存储指标所需的空间向你收费的时长。 通常，由于分钟度量值需要大量额外的空间，因此，应对分钟度量值而非小时度量值使用较短的保留期。 选择恰当的保留期，以便有足够的时间分析数据，并下载任何需要保留下来进行脱机分析或报告的指标。 请记住，从存储帐户下载指标数据时，也需要付费。
 
 ## <a name="how-to-enable-metrics-using-the-azure-portal"></a>如何使用 Azure 门户启用指标
 请按照下列步骤在 [Azure 门户](https://portal.azure.com)中启用指标：
 
 1. 导航到存储帐户。
-1. 在“菜单”边栏选项卡上选择“诊断”
+1. 在“菜单”窗格中选择“诊断”。
 1. 确保“状态”设置为“打开”。
 1. 选择希望监视的服务的度量值。
 1. 指定用来指示保留度量值和日志数据的时间长度的保留期策略。
 1. 选择“保存”。
 
-请注意，[Azure 门户](https://portal.azure.com)目前不允许在存储帐户中配置分钟指标；必须通过 PowerShell 或编程方式启用分钟指标。
+[Azure 门户](https://portal.azure.com)目前不允许在存储帐户中配置分钟指标；必须通过 PowerShell 或编程方式启用分钟指标。
 
 ## <a name="how-to-enable-metrics-using-powershell"></a>如何使用 PowerShell 启用度量值
 可以使用本地计算机上的 PowerShell 在存储帐户中配置存储度量值，具体方法是：使用 Azure PowerShell cmdlet Get-AzureStorageServiceMetricsProperty 检索当前设置，然后使用 cmdlet Set-AzureStorageServiceMetricsProperty 更改当前设置。
@@ -101,12 +100,12 @@ blobClient.SetServiceProperties(properties);
 在将存储分析度量值配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录度量值。 可以将图表配置为每小时查看 [Azure 门户](https://portal.azure.com)中的指标：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)中的存储帐户。
-1. 在要查看其指标的服务的“菜单”边栏选项卡中，选择“指标”。
+1. 在要查看其指标的服务的“菜单”窗格中，选择“指标”。
 1. 在要配置的图表上选择“编辑”。
-1. 在“编辑图表”边栏选项卡中，选择“时间范围”、“图表类型”，以及想要在图表中显示的指标。
+1. 在“编辑图表”窗格中，选择“时间范围”、“图表类型”，以及想要在图表中显示的指标。
 1. 选择“确定”
 
-若要为长期存储下载度量值或在本地分析这些度量值，则需要：
+若要为长期存储下载指标或在本地分析这些指标，则需要：
 
 * 使用识别这些表并允许查看和下载这些表的工具。
 * 编写自定义应用程序或脚本来读取和存储表。
@@ -143,7 +142,7 @@ blobClient.SetServiceProperties(properties);
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-在这个分钟度量值数据示例中，分区键按分钟使用时间。 行键可识别行中存储的信息的类型，其中包含两条信息，即访问类型和请求类型：
+在这个分钟度量值数据示例中，分区键按分钟使用时间。 行键可识别行中所存储信息的类型。 行键由两条信息（即访问类型和请求类型）组成：
 
 * 访问类型是 user 或 system，其中 user 是指用户对存储服务发出的所有请求，而 system 是指存储分析发出的请求。
 * 请求类型是 all（在这种情况下是摘要行）或可识别的特定 API，如 QueryEntity 或 UpdateEntity。
@@ -151,10 +150,10 @@ blobClient.SetServiceProperties(properties);
 上面的示例数据显示一分钟的所有记录（从上午 11:00 开始），因此，QueryEntities 请求数加 QueryEntity 请求数再加 UpdateEntity 请求数的和为 7，这是显示在 user:All 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 user:All 行得到平均端到端延迟为 104.4286。
 
 ## <a name="metrics-alerts"></a>度量警报
-应考虑在 [Azure 门户](https://portal.azure.com)中设置警报，以便存储指标可以自动通知存储服务行为的重要更改。 如果使用存储资源管理器工具下载这种采用分隔格式的指标数据，则可以使用 Microsoft Excel 分析数据。 有关可用存储资源管理器工具的列表，请参阅 [Azure 存储客户端工具](storage-explorers.md)。 可以在“警报规则”边栏选项卡（可在存储帐户菜单边栏选项卡中的“监视”下进行访问）。
+应考虑在 [Azure 门户](https://portal.azure.com)中设置警报，以便存储指标可以自动通知存储服务行为的重要更改。 如果使用存储资源管理器工具下载这种采用分隔格式的指标数据，则可以使用 Microsoft Excel 分析数据。 有关可用存储资源管理器工具的列表，请参阅 [Azure 存储客户端工具](storage-explorers.md)。 可以在“警报规则”窗格中（可在存储帐户菜单窗格中的“监视”下进行访问）配置警报。
 
 > [!IMPORTANT]
-> 在存储事件与记录对应每小时或分钟度量数据的时间之间可能存在延迟。 对于分钟度量，可能会一次写入几分钟的数据。 这可能会导致将前面几分钟的事务聚合到当前分钟的事务中。 发生此情况时，警报服务可能没有已配置警报间隔内的所有可用度量数据，这可能会导致意外触发警报。
+> 在存储事件与记录对应每小时或分钟度量数据的时间之间可能存在延迟。 记录分钟度量时，可能会一次写入几分钟的数据。 前面几分钟的事务可能会聚合到当前分钟的事务中。 发生此情况时，警报服务可能没有已配置警报间隔内的所有可用度量数据，这可能会导致意外触发警报。
 >
 
 ## <a name="accessing-metrics-data-programmatically"></a>以编程方式访问度量值数据
@@ -215,4 +214,3 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤
 [启用存储日志记录和访问日志数据](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
-

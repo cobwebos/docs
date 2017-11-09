@@ -1,6 +1,6 @@
 ---
 title: "拆分/合并安全配置 | Microsoft 文档"
-description: "设置用于加密的 x409 证书"
+description: "使用拆分/合并服务设置用于加密的 x409 证书以实现弹性缩放。"
 metakeywords: Elastic Database certificates security
 services: sql-database
 documentationcenter: 
@@ -9,18 +9,17 @@ author: torsteng
 ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: 7e6ccf51a4b75eef16a7df5c1a1018954af8e5dd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/22/2017
-
+ms.openlocfilehash: 94a4d5331aa2ed42a81e2e0bf890408f2db98fa7
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 若要使用拆分/合并服务，必须正确配置安全性。 该服务是 Microsoft Azure SQL 数据库弹性扩展功能的一部分。 有关详细信息，请参阅[弹性缩放拆分和合并服务教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
@@ -34,7 +33,7 @@ ms.lasthandoff: 06/22/2017
 ## <a name="to-obtain-certificates"></a>获取证书
 可从公共证书颁发机构 (CA) 或 [Windows 证书服务](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)中获取证书。 这些方法是获取证书的首选方法。
 
-如果这些选项不可用，你可以生成**自签名证书**。
+如果这些选项不可用，可以生成**自签名证书**。
 
 ## <a name="tools-to-generate-certificates"></a>用于生成证书的工具
 * [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
@@ -49,7 +48,7 @@ ms.lasthandoff: 06/22/2017
 * 从 [Windows 8.1：下载工具包和工具](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)获取 WDK
 
 ## <a name="to-configure-the-ssl-certificate"></a>配置 SSL 证书
-若要对通信进行加密并对服务器进行身份验证，需要使用 SSL 证书。 从下面的三个方案中选择最适合的方案，然后执行其所有步骤：
+若要对通信进行加密并对服务器进行身份验证，需要使用 SSL 证书。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
 
 ### <a name="create-a-new-self-signed-certificate"></a>创建新的自签名证书
 1. [创建自签名证书](#create-a-self-signed-certificate)
@@ -68,7 +67,7 @@ ms.lasthandoff: 06/22/2017
 2. [在服务配置文件中更新 SSL 证书](#update-ssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>配置客户端证书
-若要对服务请求进行身份验证，需要使用客户端证书。 从下面的三个方案中选择最适合的方案，然后执行其所有步骤：
+若要对服务请求进行身份验证，需要使用客户端证书。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
 
 ### <a name="turn-off-client-certificates"></a>禁用客户端证书
 1. [禁用基于客户端证书的身份验证](#turn-off-client-certificate-based-authentication)
@@ -95,7 +94,7 @@ ms.lasthandoff: 06/22/2017
 可将对服务终结点的访问限制为特定范围的 IP 地址。
 
 ## <a name="to-configure-encryption-for-the-store"></a>为存储配置加密
-若要加密存储在元数据存储中的凭据，需要使用证书。 从下面的三个方案中选择最适合的方案，然后执行其所有步骤：
+若要加密存储在元数据存储中的凭据，需要使用证书。 从下面的三个方案中选择最适合的方案，并执行其所有步骤：
 
 ### <a name="use-a-new-self-signed-certificate"></a>使用新的自签名证书
 1. [创建自签名证书](#create-a-self-signed-certificate)
@@ -127,7 +126,7 @@ ms.lasthandoff: 06/22/2017
 在服务配置文件的 <AccessControl name=""> 节中配置访问控制组中的规则。 
 
 在网络访问控制列表文档中对格式进行了说明。
-例如，若要仅允许范围 100.100.0.0 到 100.100.255.255 中的 IP 访问 HTTPS 终结点，规则将如下所示：
+例如，要仅允许范围 100.100.0.0 到 100.100.255.255 中的 IP 访问 HTTPS 终结点，规则将如下所示：
 
     <AccessControl name="Retricted">
       <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
@@ -194,7 +193,7 @@ ms.lasthandoff: 06/22/2017
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 
-输入密码，然后使用以下选项导出证书：
+输入密码，并使用以下选项导出证书：
 
 * 是，导出私钥
 * 导出所有扩展属性
@@ -301,7 +300,7 @@ ms.lasthandoff: 06/22/2017
 * -e，带有证书过期日期
 * MyID.pvk 和 MyID.cer，带有用于此客户端证书的唯一文件名
 
-此命令将提示创建密码，然后使用一次该密码。 使用强密码。
+此命令会提示创建密码，然后使用一次该密码。 使用强密码。
 
 ## <a name="create-pfx-files-for-client-certificates"></a>为客户端证书创建 PFX 文件
 针对每个生成的客户端证书，执行：
@@ -312,14 +311,14 @@ ms.lasthandoff: 06/22/2017
 
     MyID.pvk and MyID.cer with the filename for the client certificate
 
-输入密码，然后使用以下选项导出证书：
+输入密码，并使用以下选项导出证书：
 
 * 是，导出私钥
 * 导出所有扩展属性
 * 将向其颁发此证书的单个用户应选择导出密码
 
 ## <a name="import-client-certificate"></a>导入客户端证书
-为其颁发了客户端证书的每个用户都应将密钥对导入到将用于与服务通信的计算机中：
+为其颁发了客户端证书的每个用户都应将密钥对导入到用于与服务通信的计算机中：
 
 * 在 Windows 资源管理器中，双击 .PFX 文件
 * 至少使用以下选项将证书导入到个人存储中：
@@ -355,7 +354,7 @@ ms.lasthandoff: 06/22/2017
 
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
-输入密码，然后使用以下选项导出证书：
+输入密码，并使用以下选项导出证书：
 
 * 是，导出私钥
 * 导出所有扩展属性
@@ -402,7 +401,7 @@ ms.lasthandoff: 06/22/2017
 在**证书导出向导**中：
 
 1. 单击“下一步”。
-2. 选择“是”，然后选择“导出私钥”。
+2. 选择“是”，并选择“导出私钥”。
 3. 单击“下一步”。
 4. 选择所需的输出文件格式。
 5. 选中所需的选项。
@@ -446,12 +445,11 @@ ms.lasthandoff: 06/22/2017
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
 ## <a name="other-security-considerations"></a>其他安全注意事项
-使用 HTTPS 终结点时，本文档中介绍的 SSL 设置将对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于你在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
+使用 HTTPS 终结点时，本文档中介绍的 SSL 设置将对服务及其客户端之间的通信进行加密。 这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。 但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。 在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分： 
 
     <Setting name="ElasticScaleMetadata" value="Server=…" />
 
 对此数据库中存储的凭据进行加密。 但是，最佳做法是，确保服务部署的 Web 角色和辅助角色保持最新且是安全的，因为它们都有权访问元数据数据库和用于加密和解密存储凭据的证书。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
 

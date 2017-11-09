@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
 ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-azure-backup-server-v2"></a>安装 Azure 备份服务器 v2
 
 Azure 备份服务器可帮助保护虚拟机 (VM)、工作负载、文件和文件夹等。 Azure 备份服务器 v2 以 Azure 备份服务器 v1 为基础进行构建，提供了在 v1 中不可用的新功能。 有关 v1 与 v2 之间的功能比较，请参阅 [Azure 备份服务器保护矩阵](backup-mabs-protection-matrix.md)。 
 
 备份服务器 v2 中的其他功能是针对备份服务器 v1 的升级。 但是，备份服务器 v1 不是安装备份服务器 v2 的先决条件。 如果要从备份服务器 v1 升级到备份服务器 v2，请在备份服务器保护服务器上安装备份服务器 v2。 现有备份服务器设置保持不变。
 
-可以在 Windows Server 2012 R2 或 Windows Server 2016 上安装备份服务器 v2。 若要利用新功能（如 System Center 2016 Data Protection Manager Modern Backup Storage），必须在 Windows Server 2016 上安装备份服务器 v2。 升级到或安装备份服务器 v2 之前，请阅读[安装先决条件](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)。
+可以在 Windows Server 2012 R2 或 Windows Server 2016 上安装备份服务器 v2。 若要利用新功能（如 System Center 2016 Data Protection Manager 新式备份存储），必须在 Windows Server 2016 上安装备份服务器 v2。 升级到或安装备份服务器 v2 之前，请阅读[安装先决条件](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)。
 
 > [!NOTE]
 > Azure 备份服务器的基本代码与 System Center Data Protection Manager 相同。 备份服务器 v1 相当于 Data Protection Manager 2012 R2，而备份服务器 v2 相当于 Data Protection Manager 2016。 本文有时会引用 Data Protection Manager 文档。
@@ -175,9 +173,9 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
    若要完成保护组创建，请完成向导。
 
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>将旧存储迁移到 Modern Backup Storage
-升级到或安装备份服务器 v2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用 Modern Backup Storage。 默认情况下，保护组不会进行更改。 它们会继续按照初始设置运行。 
+升级到或安装备份服务器 v2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用新式备份存储。 默认情况下，保护组不会进行更改。 它们会继续按照初始设置运行。 
 
-可以选择更新保护组以使用 Modern Backup Storage。 若要更新保护组，请使用保留数据选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
+可以选择更新保护组以使用新式备份存储。 若要更新保护组，请使用保留数据选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
 
 1. 在管理员控制台中，选择“保护”功能。 在“保护组成员”列表中，右键单击成员，然后选择“停止保护成员”。
 
@@ -189,7 +187,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
   ![“从组中删除”对话框](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
-3. 创建一个使用 Modern Backup Storage 的保护组。 包括未受保护的数据源。
+3. 创建一个使用新式备份存储的保护组。 包括未受保护的数据源。
 
 
 ## <a name="add-disks-to-increase-legacy-storage"></a>添加磁盘以增大旧存储
@@ -244,7 +242,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
   
 ### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>通过 Azure 将旧保护组从旧版本中移出并同步新版本
 
-Azure 备份服务器和 OS 均更新后，便可以使用 Modern Backup Storage 保护新的数据源。 但已受保护的数据源会继续以之前存储在 Azure 备份服务器时的保护方式接受保护，但所有新保护均使用 Modern Backup Storage。
+Azure 备份服务器和 OS 均更新后，便可以使用新式备份存储保护新的数据源。 但已受保护的数据源会继续以之前存储在 Azure 备份服务器时的保护方式接受保护，但所有新保护均使用 Modern Backup Storage。
 
 以下步骤可以将数据源从旧保护模式迁移到 Modern Backup Storage。
 
@@ -287,6 +285,5 @@ Azure 备份服务器和 OS 均更新后，便可以使用 Modern Backup Storage
 - [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
-- [将 Modern Backup Storage 与备份服务器一起使用](backup-mabs-add-storage.md)
-
+- [将新式备份存储与备份服务器一起使用](backup-mabs-add-storage.md)
 

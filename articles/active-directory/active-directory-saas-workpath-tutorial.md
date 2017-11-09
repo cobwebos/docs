@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
 ms.openlocfilehash: f4efa56d2c0374a977c1e46dad64b596cc9c3ea8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>教程：Azure Active Directory 与 Workpath 的集成
 
@@ -261,5 +260,4 @@ Workpath 支持实时用户预配。 进行身份验证后，会自动在应用�
 [201]: ./media/active-directory-saas-workpath-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workpath-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workpath-tutorial/tutorial_general_203.png
-
 

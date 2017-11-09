@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 ASP.NET Web 服务器入门 - 使用 | Microsoft Docs"
+title: "Azure AD v2 ASP.NET Web 服务器入门 - 使用 | Microsoft 文档"
 description: "通过基于传统 Web 浏览器的使用 OpenID Connect 标准的应用程序，对 ASP.NET 解决方案实现 Microsoft 登录"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,18 +15,17 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加控制器来处理登录和注销请求
 
 此步骤演示如何创建新控制器来公开登录和注销方法。
 
-1.  右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
+1.  右键单击 `Controllers` 文件夹，并选择`Add` > `Controller`
 2.  选择 `MVC (.NET version) Controller – Empty`。
 3.  单击“添加”
 4.  将其命名为 `HomeController`，然后单击“添加”
@@ -74,7 +73,7 @@ public void SignOut()
 
 在 Visual Studio 中，创建新视图来添加登录按钮并在身份验证后显示用户信息：
 
-1.  右键单击 `Views\Home` 文件夹，然后选择`Add View`
+1.  右键单击 `Views\Home` 文件夹，并选择`Add View`
 2.  将它命名为 `Index`。
 3.  向文件添加以下 HTML，其中包括登录按钮：
 
@@ -117,13 +116,13 @@ else
 ```
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
-> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![使用 Microsoft 登录](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[本页](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines")。
+> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![使用 Microsoft 登录](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[本页](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "品牌准则")。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 下面的代码使用该属性来显示作为登录的一部分被检索的用户声明。
 
-1.  右键单击 `Controllers` 文件夹，然后选择`Add` > `Controller`
+1.  右键单击 `Controllers` 文件夹，并选择`Add` > `Controller`
 2.  选择 `MVC {version} Controller – Empty`。
 3.  单击“添加”
 4.  将其命名为 `ClaimsController`
@@ -166,7 +165,7 @@ public class ClaimsController : Controller
 
 在 Visual Studio 中创建新视图，以在网页上显示用户的声明：
 
-1.  右键单击 `Views\Claims` 文件夹，然后选择`Add View`
+1.  右键单击 `Views\Claims` 文件夹，并选择`Add View`
 2.  将它命名为 `Index`。
 3.  将以下 HTML 添加到文件：
 
@@ -199,4 +198,3 @@ public class ClaimsController : Controller
 </body>
 </html>
 ```
-

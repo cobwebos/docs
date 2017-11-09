@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: e460e734973622fb0d5745adfc4c1aa0178dd22e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
@@ -84,18 +83,48 @@ ms.lasthandoff: 08/31/2017
 以下步骤假定已在环境中使用[快速](./connect/active-directory-aadconnect-get-started-express.md)或[自定义](./connect/active-directory-aadconnect-get-started-custom.md)设置配置了 Azure AD Connect。
 
 1. 若要配置和启用密码写回，请登录到 Azure AD Connect 服务器并启动“Azure AD Connect”配置向导。
-2. 在“欢迎”屏幕中，单击“配置”。
+2. 在“欢迎”屏幕上，单击“配置”。
 3. 在“其他任务”屏幕上，单击“自定义同步选项”，并选择“下一步”。
 4. 在“连接到 Azure AD”屏幕上输入全局管理员凭据，并选择“下一步”。
 5. 在“连接目录”和“域和 OU 筛选”屏幕上，可以选择“下一步”。
 6. 在“可选功能”屏幕上，选中“密码写回”旁边的框，并单击“下一步”。
    ![在 Azure AD Connect 中启用密码写回][Writeback]
 7. 在“准备配置”屏幕上，单击“配置”并等待进程完成。
-8. 看到配置完成后，可以单击“退出”
+8. 看到配置完成后，单击“退出”
+
+## <a name="active-directory-permissions"></a>Active Directory 权限
+
+在 Azure AD Connect 实用工具中指定的帐户必须对该林中**或者**要纳入 SSPR 范围的用户 OU 中的**每个域**的根对象拥有“重置密码”、“更改密码”、“对‘lockoutTime’的写权限”和“对‘pwdLastSet’的写权限”扩展权限。
+
+如果不确定上面指的是哪个帐户，请打开 Azure Active Directory Connect 配置 UI，并单击“查看当前配置”选项。 需要将权限添加到的帐户列在“已同步的目录”下面
+
+设置这些权限允许每个林的 MA 服务帐户代表该林中的用户帐户管理密码。 **如果忘记分配这些权限，即使写回看上去配置正确，用户在尝试从云中管理本地密码时也会遇到错误。**
+
+> [!NOTE]
+> 将这些权限复制到目录中的所有对象可能需要一小时或更久。
+>
+
+设置适当的权限以便执行密码写回
+
+1. 使用具有适当域管理权限的帐户打开“Active Directory 用户和计算机”
+2. 在“视图”中，确保打开“高级功能”
+3. 在左侧面板中，右键单击表示域根的对象，并选择属性
+    * 单击“安全性”选项卡
+    * 然后单击“高级”。
+4. 在“权限”选项卡中，单击“添加”
+5. 选择要将权限应用到的帐户（通过 Azure AD Connect 安装程序）
+6. 在“应用到”下拉框中，选择“下级用户对象”
+7. 在“权限”下选中对应于以下内容的框
+    * 使密码不过期
+    * 重置密码
+    * 更改密码
+    * 写入 lockoutTime
+    * 写入 pwdLastSet
+8. 单击“应用”/“确定”，直到已应用并退出所有打开的对话框。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
-有关许可的信息，请参阅主题[密码写回所需的许可证](active-directory-passwords-licensing.md#licenses-required-for-password-writeback)或以下站点
+有关许可的信息，请参阅[密码写回所需的许可证](active-directory-passwords-licensing.md#licenses-required-for-password-writeback)或以下站点
 
 * [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)
 * [企业移动性 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
@@ -160,9 +189,9 @@ ms.lasthandoff: 08/31/2017
 下面介绍了在用户提交密码重置请求之后、但该请求到达本地环境之前，为了确保最高的服务可靠性和安全性，该请求所要经历的加密步骤。
 
 * **步骤 1 - 使用 2048 位 RSA 密钥进行密码加密** - 用户提交要写回本地的密码之后，首先会使用 2048 位 RSA 密钥来加密提交的密码本身。
-* **步骤 2 - 使用 AES-GCM 进行包级别的加密** - 然后，使用 AES-GCM 加密整个包（密码 + 所需的元数据）。 这可以防止任何人通过查看/篡改内容来直接访问底层服务总线通道。
-* **步骤 3 - 所有通信通过 TLS/SSL 发生** - 与服务总线的所有通信都在 SSL/TLS 通道中发生。 这可以保护未经授权的第三方发送的内容。
-* **每隔 6 个月自动滚动更新密钥** - 将每隔 6 个月，或者每当在 Azure AD Connect 中禁用/重新启动密码写回时，自动滚动更新所有这些密钥，确保最高的服务安全性与可靠性。
+* **步骤 2 - 使用 AES-GCM 进行包级别的加密** - 然后，使用 AES-GCM 加密整个包（密码 + 所需的元数据）。 此加密可以防止对底层服务总线通道具有直接访问权限的任何人查看/篡改内容。
+* **步骤 3 - 所有通信通过 TLS/SSL 发生** - 与服务总线的所有通信都在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
+* **每隔 6 个月自动滚动更新密钥** - 将每隔 6 个月，或者每当在 Azure AD Connect 中禁用/重新启用密码写回时，自动滚动更新所有密钥，确保最高的服务安全性与可靠性。
 
 ### <a name="password-writeback-bandwidth-usage"></a>密码写回带宽用量
 
@@ -183,18 +212,16 @@ ms.lasthandoff: 08/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
-
-* [**快速入门**](active-directory-passwords-getting-started.md) - 启动并运行 Azure AD 自助服务密码管理 
-* [**授权**](active-directory-passwords-licensing.md) - 配置 Azure AD 授权
-* [**数据**](active-directory-passwords-data.md) - 了解所需的数据以及如何使用它进行密码管理
-* [**推出**](active-directory-passwords-best-practices.md) - 使用此处提供的指南计划 SSPR 并将其部署到用户
-* [**自定义**](active-directory-passwords-customize.md) - 自定义公司的 SSPR 体验的外观。
-* [**策略**](active-directory-passwords-policy.md) - 了解并设置 Azure AD 密码策略
-* [**报告**](active-directory-passwords-reporting.md) - 了解用户是否访问 SSPR 功能，以及在何时何处进行访问
-* [深入技术探究](active-directory-passwords-how-it-works.md) - 了解幕后的工作原理
-* [**常见问题**](active-directory-passwords-faq.md) - 如何？ 为什么？ 什么？ 何处？ 谁？ 何时？ - 常见问题的答案
-* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何解决使用 SSPR 时遇到的常见问题
+* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
+* [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+* [是否有许可问题？](active-directory-passwords-licensing.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
+* [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "在 Azure AD Connect 中启用密码写回"
-

@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.lasthandoff: 04/25/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure 导入/导出服务元数据和属性文件格式
-可将一个或多个 Blob 的元数据和属性指定为导入作业或导出作业的一部分。 若要设置将创建为导入作业一部分的 Blob 的元数据或属性，应在包含所要导入数据的硬盘驱动器上提供一个元数据或属性文件。 对于导出作业，元数据和属性将写入到在返回的硬盘驱动器上包含的元数据或属性文件。  
+可将一个或多个 Blob 的元数据和属性指定为导入作业或导出作业的一部分。 要设置将创建为导入作业一部分的 Blob 的元数据或属性，应在包含所要导入数据的硬盘驱动器上提供一个元数据或属性文件。 对于导出作业，元数据和属性将写入到在返回的硬盘驱动器上包含的元数据或属性文件。  
   
 ## <a name="metadata-file-format"></a>元数据文件格式  
 元数据文件的格式如下所示：  
@@ -73,4 +72,3 @@ ms.lasthandoff: 04/25/2017
 ## <a name="next-steps"></a>后续步骤
 
 有关设置 Blob 元数据和属性的详细规则，请参阅[设置 Blob 属性](/rest/api/storageservices/set-blob-properties)、[设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata)以及[设置和检索 Blob 资源的属性与元数据](/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)。
-

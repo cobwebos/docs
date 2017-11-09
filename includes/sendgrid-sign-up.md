@@ -5,10 +5,10 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 2. 在左侧菜单中，单击“新建”。
 
     ![command-bar-new][command-bar-new]
-3. 单击“外接程序”，然后单击“SendGrid 电子邮件传递”。
+3. 单击“外接程序”，并单击“SendGrid 电子邮件传递”。
 
     ![sendgrid-store][sendgrid-store]
-4. 完成注册表单，然后选择“创建”。
+4. 完成注册表单，并选择“创建”。
 
     ![sendgrid-create][sendgrid-create]
 5. 输入“名称”标识 Azure 设置中的 SendGrid 服务。 名称的长度必须介于 1 到 100 个字符之间，并只能包含字母字符、短划线、句点和下划线。 名称在订阅的 Azure 应用商店项目的列表中必须是唯一的。
@@ -41,17 +41,17 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 1. 单击“管理”。
 
     ![manage][manage]
-2. 在 SendGrid 仪表板中，选择“设置”，然后选择左侧菜单中的“API 密钥”。
+2. 在 SendGrid 仪表板中，选择“设置”，并选择左侧菜单中的“API 密钥”。
 
     ![api-keys][api-keys]
 
-3. 单击“创建 API 密钥”下拉列表，然后选择“常规 API 密钥”。
+3. 单击“创建 API 密钥”下拉列表，并选择“常规 API 密钥”。
 
     ![general-api-key][general-api-key]
 4. 至少提供“此密钥名称”和对“邮件发送”的完全访问权限，并选择“保存”。
 
     ![access][access]
-5. 此时将显示一次 API。 请务必安全存储该 API。
+5. 此时会显示一次 API。 请务必安全存储该 API。
 
 ### <a name="to-find-your-sendgrid-credentials"></a>查找 SendGrid 凭据
 1. 单击密钥图标，查找“用户名”。

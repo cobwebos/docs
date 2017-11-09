@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
+ms.openlocfilehash: d1e0a112040f6aa4cfa9e8c323507b1c0a223f3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 3aa6bdac17a78b78490f255b0e86e1c210b64cc6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容
 > [!div class="op_single_selector"]
@@ -198,5 +197,4 @@ URL：**路径** + 资产文件 mp4 名称
 [媒体服务操作 REST API 概述](media-services-rest-how-to-use.md)
 
 [配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)
-
 

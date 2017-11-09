@@ -1,6 +1,6 @@
 ---
-title: Key features and concepts in Azure Stack | Microsoft Docs
-description: Learn about the key features and concepts in Azure Stack.
+title: "Azure Stack 中的重要功能和概念 | Microsoft Docs"
+description: "了解 Azure Stack 中的重要功能和概念。"
 services: azure-stack
 documentationcenter: 
 author: Heathl17
@@ -12,136 +12,137 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c361d5b47a22689e7bf6749067a39e12df25c84a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.openlocfilehash: fd16748e1369b8abcab38ce1945f72c681c344b8
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="key-features-and-concepts-in-azure-stack"></a>Key features and concepts in Azure Stack
-If you’re new to Microsoft Azure Stack, these terms and feature descriptions might be helpful.
+# <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack 中的重要功能和概念
 
-## <a name="personas"></a>Personas
-There are two varieties of users for Microsoft Azure Stack, the cloud operator (provider) and the tenant (consumer).
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-* A **cloud operator** can configure Azure Stack and manage offers, plans, services, quotas, and pricing to provide resources for their tenants.  Cloud operators also manage capacity and respond to alerts.  
-* A **tenant** (also referred to as a user) consumes services that the cloud administrator offers. Tenants can provision, monitor, and manage services that they have subscribed to, such as Web Apps, Storage, and Virtual Machines.
+如果不太熟悉 Microsoft Azure Stack，本文的术语和功能说明可能会有所帮助。
 
-## <a name="portal"></a>Portal
-The primary methods of interacting with Microsoft Azure Stack are the administrator portal, user portal, and PowerShell.
+## <a name="personas"></a>角色
+有两个类型的 Microsoft Azure 堆栈，云操作员 （提供程序） 和租户 （使用者） 的用户。
 
-The Azure Stack portals are each backed by separate instances of Azure Resource Manager.  A cloud operator uses the administrator portal to manage Azure Stack, and to do things like create tenant offerings.  The user portal (also referred to as the tenant portal) provides a self-service experience for consumption of cloud resources, like virtual machines, storage accounts, and Web Apps. For more information, see [Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md).
+* A**云操作员**可以配置 Azure 堆栈和管理产品/服务、 计划、 服务、 配额和定价若要为其租户提供资源。  云操作员还管理容量，并响应警报。  
+* **租户**（也称为用户）使用云管理员提供的服务。 租户可以预配、监视和管理他们订阅的服务，例如 Web 应用、存储和虚拟机。
 
-## <a name="identity"></a>Identity 
-Azure Stack uses either Azure Active Directory (AAD) or Active Directory Federation Services (AD FS) as an identity provider.  
+## <a name="portal"></a>门户
+与 Microsoft Azure Stack 交互的主要方法包括管理员门户、用户门户和 PowerShell。
+
+每个 Azure Stack 门户由 Azure 资源管理器的单独实例提供支持。  云操作员使用管理员门户来管理 Azure 堆栈，并执行某些操作，如创建产品的租户。  用户门户（也称为租户门户）提供自助服务体验让用户使用云资源，例如虚拟机、存储帐户和 Web 应用。 有关详细信息，请参阅 [Using the Azure Stack administrator and user portals](azure-stack-manage-portals.md)（使用 Azure Stack 管理员门户和用户门户）。
+
+## <a name="identity"></a>标识 
+Azure 堆栈使用 Azure Active Directory (AAD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供程序。  
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory is Microsoft's cloud-based, multi-tenant identity provider.  Most hybrid scenarios use Azure Active Directory as the identity store.
+Azure Active Directory 是 Microsoft 的基于云的多租户标识提供者。  大多数混合方案中使用 Azure Active Directory 作为标识存储。
 
-### <a name="active-directory-federation-services"></a>Active Directory Federation Services
-You may choose to use Active Directory Federation Services (AD FS) for disconnected deployments of Azure Stack.  Azure Stack, resource providers, and other applications work much the same way with AD FS as they do with Azure Active Directory. Azure Stack includes its own AD FS and Active Directory instance, and an Active Directory Graph API. Azure Stack Development Kit supports the following AD FS scenarios:
+### <a name="active-directory-federation-services"></a>Active Directory 联合身份验证服务
+对于断开连接的 Azure Stack 部署，可以选择使用 Active Directory 联合身份验证服务 (AD FS)。  Azure Stack、资源提供者和其他应用程序使用 AD FS 的方式与它们使用 Azure Active Directory 的方式非常类似。 Azure Stack 包含自身的 AD FS 和 Active Directory 实例，另外还包含 Active Directory 图形 API。 Azure 堆栈开发工具包支持以下 AD FS 方案：
 
-- Sign in to the deployment by using AD FS.
-- Create a virtual machine with secrets in Key Vault
-- Create a vault for storing/accessing secrets
-- Create custom RBAC roles in subscription
-- Assign users to RBAC roles on resources
-- Create system-wide RBAC roles through Azure PowerShell
-- Sign in as a user through Azure PowerShell
-- Create service principals use them to sign in to Azure PowerShell
+- 通过使用 AD FS 登录到部署。
+- 使用 Key Vault 中的机密创建虚拟机
+- 创建保管库用于存储/访问机密
+- 在订阅中创建自定义 RBAC 角色
+- 将资源的用户分配到 RBAC 角色
+- 通过 Azure PowerShell 创建系统范围的 RBAC 角色
+- 以用户身份通过 Azure PowerShell 登录
+- 创建服务主体并使用它们登录到 Azure PowerShell
 
 
-## <a name="regions-services-plans-offers-and-subscriptions"></a>Regions, services, plans, offers, and subscriptions
-In Azure Stack, services are delivered to tenants using regions, subscriptions, offers, and plans. Tenants can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services.
+## <a name="regions-services-plans-offers-and-subscriptions"></a>区域、服务、计划、产品和订阅
+在 Azure Stack 中，使用区域、订阅、服务和计划将服务传送到租户。 租户可以订阅多个产品。 产品可以包含一个或多个计划，计划可以包含一个或多个服务。
 
 ![](media/azure-stack-key-features/image4.png)
 
-Example hierarchy of a tenant’s subscriptions to offers, each with varying plans and services.
+租户产品订阅的示例层次结构，每个订阅包含不同的计划和服务。
 
-### <a name="regions"></a>Regions
-Azure Stack regions are a basic element of scale and management. An organization may have multiple regions with resources available in each region. Regions may also have different service offerings available. In Azure Stack Development Kit, only a single region is supported, and is automatically named *local*.
+### <a name="regions"></a>区域
+Azure Stack 区域是规模与管理的基本要素。 组织可以创建多个区域，并在每个区域中分配资源。 还可以在区域中包含不同的服务产品。 在 Azure 堆栈开发工具包中，单个区域受支持，然后将自动命名*本地*。
 
-### <a name="services"></a>Services
-Microsoft Azure Stack enables providers to deliver a wide variety of services and applications, such as virtual machines, SQL Server databases, SharePoint, Exchange, and more.
+### <a name="services"></a>服务
+提供者可以使用 Microsoft Azure Stack 传送多种多样的服务和应用程序，例如虚拟机、SQL Server 数据库、SharePoint、Exchange，等等。
 
-### <a name="plans"></a>Plans
-Plans are groupings of one or more services. As a provider, you create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include.
+### <a name="plans"></a>计划
+计划是对一个或多个服务的分组。 提供者可以创建要提供给租户的计划。 反过来，租户可以订阅产品/服务，以便使用其所包括的计划和服务。
 
-Each service added to a plan can be configured with quota settings to help you manage your cloud capacity. Quotas can include restrictions such as VM, RAM, and CPU limits and are applied per user subscription. Quotas can be differentiated by location. For example, a plan containing compute services from Region A could have a quota of two virtual machines, 4 GB RAM, and 10 CPU cores.
+可以使用配额设置来配置已添加到计划的每个服务，以帮助管理云容量。 配额可以包括限制（例如 VM、RAM 和 CPU 限制），并应用到每个用户订阅。 配额可按位置区分。 例如，包含从区域 A 的计算服务的规划可能有两个虚拟机、 4 GB RAM 和 10 个 CPU 内核的配额。
 
-When creating an offer, the service administrator can include a **base plan**. These base plans are included by default when a tenant subscribes to that offer. When a user subscribes (and the subscription is created), the user has access to all the resource providers specified in those base plans (with the corresponding quotas).
+服务管理员在创建时提供产品，可以包括**基本计划**。 当租户订阅该产品时，默认会包括这些基本计划。 如果用户订阅了 （和创建订阅），用户将有权访问 （具有相应的配额） 这些基本计划中指定的所有资源提供程序。
 
-The service administrator can also include **add-on plans** in an offer. Add-on plans are not included by default in the subscription. Add-on plans are additional plans (quotas) available in an offer that a subscription owner can add to their subscriptions.
+服务管理员还可以在产品中包含**附加计划**。 默认情况下，订阅中不包含附加计划。 附加计划是产品中提供的额外计划（配额），订阅所有者可将其添加到自己的订阅中。
 
-### <a name="offers"></a>Offers
-Offers are groups of one or more plans that providers present to tenants to buy (subscribe to). For example, Offer Alpha can contain Plan A containing a set of compute services and Plan B containing a set of storage and network services.
+### <a name="offers"></a>产品
+产品是提供者提供给租户购买（订阅）的一个或多个计划。 例如，产品 Alpha 可能包含计划 A 和计划 B，这两个计划分别包含一组计算服务和一组存储与网络服务。
 
-An offer comes with a set of base plans, and service administrators can create add-on plans that tenants can add to their subscription.
+产品附带一组基本计划。服务管理员可以创建附加计划，租户可将这些附加计划添加到其订阅中。
 
-### <a name="subscriptions"></a>Subscriptions
-A subscription is how tenants buy your offers. A subscription is a combination of a tenant with an offer. A tenant can have subscriptions to multiple offers. Each subscription applies to only one offer. A tenant’s subscriptions determine which plans/services they can access.
+### <a name="subscriptions"></a>订阅
+租户可通过订阅购买产品。 订阅是租户与产品的组合。 租户可以购买多个产品的订阅。 每个订阅仅适用于一个产品。 租户的订阅确定了他们可以访问哪些计划/服务。
 
-Subscriptions help providers organize and access cloud resources and services.
+订阅可帮助组织和访问云资源和服务提供程序。
 
-For the administrator, a Default Provider Subscription is created during deployment. This subscription can be used to manage Azure Stack, deploy further resource providers, and create plans and offers for tenants. It should not be used to run customer workloads and applications. 
+对于管理员，在部署过程时，会创建默认提供程序订阅。 此订阅可以用于管理 Azure 堆栈，进一步部署资源提供程序，并为租户创建计划，并提供。 不应该用于运行客户工作负荷和应用程序。 
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
-By using Azure Resource Manager, you can work with your infrastructure resources in a template-based, declarative model.   It provides a single interface that you can use to deploy and manage your solution components. For full information and guidance, see the [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md).
+## <a name="azure-resource-manager"></a>Azure 资源管理器
+借助 Azure 资源管理器，可在基于模板的声明性模型中使用基础结构资源。   它提供可用于部署和管理你的解决方案组件的单一界面。 有关完整信息和指南，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
-### <a name="resource-groups"></a>Resource groups
-Resource groups are collections of resources, services, and applications—and each resource has a type, such as virtual machines, virtual networks, public IPs, storage accounts, and websites. Each resource must be in a resource group and so resource groups help logically organize resources, such as by workload or location.  In Microsoft Azure Stack, resources such as plans and offers are also managed in resource groups.
+### <a name="resource-groups"></a>资源组
+资源组是资源、服务和应用程序的集合 — 每个资源都有一种类型，例如虚拟机、虚拟网络、公共 IP、存储帐户和网站。 每个资源必须在资源组中，因此，资源组有助于以逻辑方式组织资源，例如，按工作负荷或位置进行组织。  在 Microsoft Azure Stack 中，计划和产品等资源也资源组中管理。
  
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager templates
-With Azure Resource Manager, you can create a template (in JSON format) that defines deployment and configuration of your application. This template is known as an Azure Resource Manager template and provides a declarative way to define deployment. By using a template, you can repeatedly deploy your application throughout the app lifecycle and have confidence your resources are deployed in a consistent state.
+### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+使用 Azure 资源管理器中，你可以创建模板 （采用 JSON 格式），用于定义部署和配置你的应用程序。 此模板称为 Azure 资源管理器模板，并提供声明性方式定义部署。 使用模板可以在整个应用程序生命周期内反复部署该应用程序，并确保以一致的状态部署资源。
 
-## <a name="resource-providers-rps"></a>Resource providers (RPs)
-Resource providers are web services that form the foundation for all Azure-based IaaS and PaaS services. Azure Resource Manager relies on different RPs to provide access to services.
+## <a name="resource-providers-rps"></a>资源提供程序 (RPs)
+资源提供程序属于 Web 服务，构成了所有基于 Azure 的 IaaS 和 PaaS 服务的基础。 Azure 资源管理器依赖于不同的 RPs 以提供对服务的访问。
 
-There are four foundational RPs: Network, Storage, Compute and KeyVault. Each of these RPs helps you configure and control its respective resources. Service administrators can also add new custom resource providers.
+有四个基础 RP：网络、存储、计算和 KeyVault。 每个这些 RPs 可帮助你配置和控制其各自的资源。 服务管理员还可以添加新的自定义资源提供程序。
 
-### <a name="compute-rp"></a>Compute RP
-The Compute Resource Provider (CRP) allows Azure Stack tenants to create their own virtual machines. The CRP includes the ability to create virtual machines as well as Virtual Machine extensions. The Virtual Machine extension service helps provide IaaS capabilities for Windows and Linux virtual machines.  As an example, you can use the CRP to provision a Linux virtual machine and run Bash scripts during deployment to configure the VM.
+### <a name="compute-rp"></a>计算 RP
+Azure Stack 租户可以使用计算资源提供程序 (CRP) 创建自己的虚拟机。 CRP 包括创建虚拟机和虚拟机扩展的功能。 虚拟机扩展服务可帮助提供适用于 Windows 和 Linux 虚拟机的 IaaS 功能。  例如，可以使用 CRP 预配一个 Linux 虚拟机，并在部署期间运行 Bash 脚本来配置该 VM。
 
-### <a name="network-rp"></a>Network RP
-The Network Resource Provider (NRP) delivers a series of Software Defined Networking (SDN) and Network Function Virtualization (NFV) features for the private cloud.  You can use the NRP to create resources like software load balancers, public IPs, network security groups, virtual networks.
+### <a name="network-rp"></a>网络 RP
+网络资源提供程序 (NRP) 为私有云提供了一系列软件定义的网络 (SDN) 和网络功能虚拟化 (NFV) 功能。  NRP 可用于创建资源，如软件负载平衡器、 公共 Ip 网络安全组，虚拟网络。
 
-### <a name="storage-rp"></a>Storage RP
-The Storage RP delivers four Azure-consistent storage services: blob, table, queue, and account management. It also offers a storage cloud administration service to facilitate service provider administration of Azure-consistent Storage services. Azure Storage provides the flexibility to store and retrieve large amounts of unstructured data, such as documents and media files with Azure Blobs, and structured NoSQL based data with Azure Tables. For more information on Azure Storage, see [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md).
+### <a name="storage-rp"></a>存储 RP
+存储 RP 提供四个 Azure 一致的存储服务：Blob、表、队列和帐户管理。 它还提供存储云管理服务，用于简化 Azure 一致的存储服务的服务提供程序管理。 Azure 存储空间提供的灵活性来存储和检索大量非结构化数据，如文档和使用 Azure Blob、 媒体文件和结构化的 NoSQL 基于 Azure 表的数据。 有关 Azure 存储的详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
 
-#### <a name="blob-storage"></a>Blob storage
-Blob storage stores any data set. A blob can be any type of text or binary data, such as a document, media file, or application installer. Table storage stores structured datasets. Table storage is a NoSQL key-attribute data store, which allows for rapid development and fast access to large quantities of data. Queue storage provides reliable messaging for workflow processing and for communication between components of cloud services.
+#### <a name="blob-storage"></a>Blob 存储
+Blob 存储可存储任意数据集。 Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 表存储可存储结构化数据集。 表存储是一个 NoSQL“键-属性”数据存储，可以用于实现快速开发以及快速访问大量数据。 队列存储为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
 
-Every blob is organized under a container. Containers also provide a useful way to assign security policies to groups of objects. A storage account can contain any number of containers, and a container can contain any number of blobs, up to the 500 TB capacity limit of the storage account. Blob storage offers three types of blobs, block blobs, append blobs, and page blobs (disks). Block blobs are optimized for streaming and storing cloud objects, and are a good choice for storing documents, media files, backups etc. Append blobs are similar to block blobs, but are optimized for append operations. An append blob can be updated only by adding a new block to the end. Append blobs are a good choice for scenarios such as logging, where new data needs to be written only to the end of the blob. Page blobs are optimized for representing IaaS disks and supporting random writes, and may be up to 1 TB. An Azure virtual machine network attached IaaS disk is a VHD stored as a page blob.
+每个 Blob 组织在容器中。 容器还提供了一种有用的方式来向对象组分配安全策略。 一个存储帐户可以包含任意数目的容器，一个容器可以包含任意数目的 Blob，直至达到存储帐户的容量限制 500 TB。 Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁盘）。 块 Blob 进行了相应的优化来流化和存储云对象，并且是用于存储文档、介质文件和备份等对象的不错选择。追加 Blob 类似于块 Blob，但针对追加追加操作进行了优化。 追加 Blob 仅可以通过将新的块添加到末尾来进行更新。 对于需要新数据只能写入到 Blob 结尾的情况，例如日志记录，追加 Blob 是一个不错的选择 。 页 blob 进行了优化来表示 IaaS 磁盘和支持随机写入，并且可以达 1 TB。 Azure 虚拟机网络连接的 IaaS 磁盘是一个 VHD，存储为页 Blob。
 
-#### <a name="table-storage"></a>Table storage
-Table storage is Microsoft’s NoSQL key/attribute store – it has a design without schemas, making it different from traditional relational databases. Since data stores lack schemas, it's easy to adapt your data as the needs of your application evolve. Table storage is easy to use, so developers can create applications quickly. Table storage is a key-attribute store, meaning that every value in a table is stored with a typed property name. The property name can be used for filtering and specifying selection criteria. A collection of properties and their values comprise an entity. Since Table storage lack schemas, two entities in the same table can contain different collections of properties, and those properties can be of different types. You can use Table storage to store flexible datasets, such as user data for web applications, address books, device information, and any other type of metadata that your service requires. You can store any number of entities in a table, and a storage account may contain any number of tables, up to the capacity limit of the storage account.
+#### <a name="table-storage"></a>表存储
+表存储是 Microsoft 的 NoSQL 键/属性存储 – 它采用无架构设计，因此不同于传统的关系数据库。 由于数据存储没有架构，因此可以随着应用程序需求的变化，使数据适应存储。 表存储易于使用，因此开发人员可以快速创建应用程序。 表存储是一种“键-属性”存储，这意味着表中的每个值都是随所键入的一个属性名称存储的。 属性名称可以用来筛选和指定选择条件。 属性集合及其值构成了实体。 由于表存储没有架构，因此同一表中的两个实体可以包含不同的属性集合，并且这些属性可以属于不同的类型。 可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及服务需要的任何其他类型的元数据。 可以在表中存储任意数量的实体，并且一个存储帐户可以包含任意数量的表，直至达到存储帐户的容量极限。
 
-#### <a name="queue-storage"></a>Queue Storage
-Azure Queue storage provides cloud messaging between application components. In designing applications for scale, application components are often decoupled, so that they can scale independently. Queue storage delivers asynchronous messaging for communication between application components, whether they are running in the cloud, on the desktop, on an on-premises server, or on a mobile device. Queue storage also supports managing asynchronous tasks and building process work flows.
+#### <a name="queue-storage"></a>队列存储
+Azure 队列存储用于在应用程序组件之间进行云消息传送。 在设计应用程序以实现伸缩性时，通常要将各个应用程序组件分离，使其可以独立地进行伸缩。 队列存储提供的异步消息传送适用于在应用程序组件之间进行通信，无论这些应用程序组件是运行在云中、桌面上、本地服务器上还是移动设备上。 队列存储还支持管理异步任务以及构建过程工作流。
 
 ### <a name="keyvault"></a>KeyVault
-The KeyVault RP provides management and auditing of secrets, such as passwords and certificates. As an example, a tenant can use the KeyVault RP to provide administrator passwords or keys during VM deployment.
+KeyVault RP 针对密码和证书等机密提供管理与审核。 例如，在 VM 部署期间，租户可以使用 KeyVault RP 来提供管理员密码或密钥。
 
-## <a name="role-based-access-control-rbac"></a>Role Based Access Control (RBAC)
-You can use RBAC to grant system access to authorized users, groups, and services by assigning them roles at a subscription, resource group, or individual resource level. Each role defines the access level a user, group, or service has over Microsoft Azure Stack resources.
+## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
+可以使用 RBAC 向已获授权的用户、组和服务授予系统访问权限：在订阅、资源组或单个资源的级别为其分配角色即可。 每个角色定义了用户、组或服务对 Microsoft Azure Stack 资源拥有的访问级别。
 
-Azure RBAC has three basic roles that apply to all resource types: Owner, Contributor, and Reader. Owner has full access to all resources including the right to delegate access to others. Contributor can create and manage all types of Azure resources but can’t grant access to others. Reader can only view existing Azure resources. The rest of the RBAC roles in Azure allow management of specific Azure resources. For instance, the Virtual Machine Contributor role allows creation and management of virtual machines but does not allow management of the virtual network or the subnet that the virtual machine connects to.
+Azure RBAC 具有适用于所有资源类型的三个基本角色： 所有者、 参与者和读取器。 “所有者”拥有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 “参与者”可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。 “读取者”只能查看现有 Azure 资源。 Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，“虚拟机参与者”角色允许创建和管理虚拟机，但不允许管理虚拟机连接到的虚拟网络或子网。
 
-## <a name="usage-data"></a>Usage data
-Microsoft Azure Stack collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack can be viewed via a REST API. There is an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
+## <a name="usage-data"></a>使用情况数据
+Microsoft Azure 堆栈收集和使用数据聚合跨所有资源提供程序，并将其传输到 Azure 以进行处理通过 Azure 商务。 可以通过 REST API 收集 Azure 堆栈上的使用情况数据。 可以使用 Azure 一致的租户 API 以及提供程序和委派提供程序 API 从所有租户订阅获取使用情况数据。 可以使用这些数据来集成外部工具或服务，以实现计费或费用分摊。 后已通过 Azure 商务处理使用情况，可以在 Azure 的计费门户中查看它。
 
-## <a name="in-development-build-of-azure-stack-development-kit"></a>In-development build of Azure Stack Development Kit
-In-development builds let early-adopters evaluate the most recent version of the Azure Stack Development Kit. They’re incremental builds based on the most recent major release. While major versions will continue to be released every few months, the in-development builds will release intermittently between the major releases.
+## <a name="in-development-build-of-azure-stack-development-kit"></a>在开发 Azure 堆栈开发工具包的内部版本
+在开发内部版本让早期采用者评估 Azure 堆栈开发工具包的最新版本。 它们是基于最新主要版本的增量内部版本。 主要版本每隔几个月持续发布，开发中内部版本在主要版本的发布间隔期间歇性发布。
 
-In-development builds will provide the following benefits:
-- Bug fixes
-- New features
-- Other improvements
+开发中内部版本提供以下好处：
+- Bug 修复
+- 新增功能
+- 其他改进
 
-## <a name="next-steps"></a>Next steps
-[Deploy Azure Stack Development Kit](azure-stack-deploy.md)
-
+## <a name="next-steps"></a>后续步骤
+[Azure 堆栈部署先决条件](azure-stack-deploy.md)
 

@@ -3,7 +3,7 @@ title: "Azure Application Insights 常见问题解答 | Microsoft Docs"
 description: "有关 Application Insights 的常见问题。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 8a6a8027b93d0d5b353c41c103d2c9ad5faa70c1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: 7dcfea240a8dbb416226e76f8941cfe8147e2b39
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -105,7 +104,7 @@ ms.lasthandoff: 05/17/2017
 * HTTP 请求
 * [依赖项](app-insights-asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB, 表, blob 存储和队列。 
 * [异常](app-insights-asp-net-exceptions.md)和堆栈跟踪。
-* [性能计数器](app-insights-performance-counters.md) - 如果使用[状态监视器](app-insights-monitor-performance-live-website-now.md)、Azure 监视 (app-insights-azure-web-apps.md) 或 [Application Insights 收集编写器](app-insights-java-collectd.md)。
+* [性能计数器](app-insights-performance-counters.md) - 如果使用[状态监视器](app-insights-monitor-performance-live-website-now.md)、[Azure 监视](app-insights-azure-web-apps.md)或 [Application Insights 收集编写器](app-insights-java-collectd.md)。
 * [自定义编码的事件和指标](app-insights-api-custom-events-metrics.md)。
 * 如果配置相应的收集器，则会[跟踪日志](app-insights-asp-net-trace-logs.md)。
 
@@ -168,7 +167,7 @@ ms.lasthandoff: 05/17/2017
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
 ## <a name="post"></a>如何在诊断搜索中查看 POST 数据？
-我们不自动记录 POST 数据，但你可以使用 TrackTrace 调用：将数据放置在消息参数中。 相比对字符串属性的限制，这具有更长的大小限制，尽管你无法对其进行筛选。
+我们不自动记录 POST 数据，但可以使用 TrackTrace 调用：将数据放置在消息参数中。 相比对字符串属性的限制，这具有更长的大小限制，尽管你无法对其进行筛选。
 
 ## <a name="should-i-use-single-or-multiple-application-insights-resources"></a>应使用单个 Application Insights 资源还是多个 Application Insights 资源？
 
@@ -187,13 +186,13 @@ ms.lasthandoff: 05/17/2017
 * JavaScript SDK 在 Web 客户端上设置了用于识别返回用户的用户 cookie，以及用于对活动进行分组的会话 cookie。
 * 如果没有客户端脚本，可以[在服务器设置 cookie](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)。
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
-* 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContect()](app-insights-api-custom-events-metrics.md#authenticated-users) 的调用。
+* 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users) 的调用。
 
 ## <a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
-| 你应看到 | 如何获取 | 为何需要它 |
+| 应看到 | 如何获取 | 为何需要它 |
 | --- | --- | --- |
 | 可用性图表 |[Web 测试](app-insights-monitor-web-app-availability.md) |知道 Web 应用已启动 |
-| 服务器应用性能：响应时间、... |[将 Application Insights 添加到项目](app-insights-asp-net.md)或[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md)（或编写你自己的代码以[跟踪依赖项](app-insights-api-custom-events-metrics.md#trackdependency)） |检测性能问题 |
+| 服务器应用性能：响应时间、... |[将 Application Insights 添加到项目](app-insights-asp-net.md)或[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md)（或编写自己的代码以[跟踪依赖项](app-insights-api-custom-events-metrics.md#trackdependency)） |检测性能问题 |
 | 依赖项遥测 |[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md) |诊断数据库或其他外部组件问题 |
 | 获取异常的堆栈跟踪 |[在代码中插入 TrackException 调用](app-insights-asp-net-exceptions.md)（但有些会自动报告） |检测和诊断异常 |
 | 搜索日志跟踪 |[添加日志记录适配器](app-insights-asp-net-trace-logs.md) |诊断异常、性能问题 |
@@ -237,7 +236,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 ## <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Azure Web 应用和 Application Insights 之间是否有数据传输费用？
 
 * 如果 Azure Web 应用托管在具有 Application Insights 集合终结点的数据中心内，则不收取费用。 
-* 如果主机数据中心没有集合终结点，那么应用的遥测将会产生 [ Azure 传出费用](https://azure.microsoft.com/pricing/details/bandwidth/)。
+* 如果主机数据中心没有集合终结点，那么应用的遥测会产生 [ Azure 传出费用](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 这与 Application Insights 资源的托管位置无关。 它只取决于终结点的分布情况。
 
@@ -281,4 +280,3 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
-

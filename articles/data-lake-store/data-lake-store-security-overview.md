@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: 59bff7e1f7bdfc1786c4ee47ab2a652e2df85289
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/07/2017
-
+ms.openlocfilehash: e72dd7e84ce3961274cf312649cc679abc576aae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store 中的安全
 许多企业都开始利用大数据分析获取业务见解，以帮助他们做出明智的决策。 组织的环境可能复杂、规范化，不同的用户越来越多。 确保更安全地存储关键业务数据并向个人用户授予访问权限的正确级别，这一点对企业来说至关重要。 Azure Data Lake Store 旨在帮助企业实现这些安全要求。 在本文中，了解 Data Lake Store 的安全功能，包括：
@@ -93,7 +92,7 @@ Data Lake Store 还针对帐户中存储的数据提供加密。 可以选择加
 ### <a name="auditing-logs"></a>审核日志
 为遵守法规，如果需要深入探讨特定事件，组织可能需要足够的审核跟踪。 Data Lake Store 内置监视和审核，会记录所有的帐户管理活动。
 
-为帐户管理审核轨迹，、查看和选择要记录的列。 还可以导出审核日志到 Azure 存储空间。
+为帐户管理审核轨迹，、查看和选择要记录的列。 还可以导出审核日志到 Azure 存储。
 
 ![审核日志](./media/data-lake-store-security-overview/audit-logs.png "审核日志")
 
@@ -115,5 +114,4 @@ Data Lake Store 还针对帐户中存储的数据提供加密。 可以选择加
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [Data Lake 存储入门](data-lake-store-get-started-portal.md)
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-
 

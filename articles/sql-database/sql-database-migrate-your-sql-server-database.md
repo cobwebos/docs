@@ -9,21 +9,19 @@ editor:
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: mvc,load & move data
+ms.custom: mvc,migrate
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Active
 ms.date: 09/01/2017
 ms.author: carlrab
+ms.openlocfilehash: 526222944974c08f92aec2a8418e9b42401bc4d3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8206cba416df4d43594678428632ff161a9564d6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>将 SQL Server 数据库迁移至 Azure SQL 数据库
 
 将 SQL Server 数据库移至 Azure SQL 数据库很简单，与在 Azure 中创建空 SQL 数据库然后使用 [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 将数据导入到 Azure 一样简单。 在本教程中，学习：
@@ -128,7 +126,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 5. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-6. 单击“确定”，然后关闭“防火墙设置”页。
+6. 单击“确定”，并关闭“防火墙设置”页。
 
 现在可使用之前步骤中创建的服务器管理员帐户，通过使用 SQL Server Management Studio、Data Migration Assistant，或所选的任意其他工具从此 IP 地址连接到 SQL 数据库服务器及其数据库。
 
@@ -280,6 +278,5 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 > [!div class="nextstepaction"]
 > [保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
-
 
 

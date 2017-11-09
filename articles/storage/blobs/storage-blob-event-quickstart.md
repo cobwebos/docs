@@ -6,22 +6,17 @@ keywords:
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 08/18/2017
-ms.topic: hero-article
+ms.topic: article
 ms.service: storage
+ms.openlocfilehash: f364d7b25a75012f33a282111c9624d51b65b42f
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: a68d5c4ee8ad69cd888765a96566a7ca6c13cff3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
-
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>将 Blob 存储事件路由到自定义 Web 终结点（预览版）
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Blob 存储事件，然后触发可查看结果的事件。 
-
-> [!IMPORTANT]
-> 若要完成本教程，必须注册 Blob 存储事件预览版。  在[此处](storage-blob-event-overview.md#join-the-preview)详细了解预览计划。
 
 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 为了简化本文中的示例，我们将事件发送到仅收集消息的 URL。 请使用名为 [RequestBin](https://requestb.in/) 的第三方开源工具创建该 URL。
 
@@ -57,7 +52,7 @@ az group create --name <resource_group_name> --location westcentralus
 Blob 存储帐户是将非结构化数据作为 Blob（对象）存储在 Azure 存储的专用存储帐户。 Blob 存储帐户类似于现有通用存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 对于仅需要块 blob 或追加 blob 存储的应用程序，我们建议使用 Blob 存储帐户。
 
 > [!NOTE]
-> 预览版的 Blob 存储事件仅适用于 westcentralus 位置的存储帐户。
+> 事件网格当前处于预览阶段，并且仅在 westcentralus 和 westus2 区域的存储帐户中提供。
 
 将 `<storage_account_name>` 替换为存储帐户的唯一名称，将 `<resource_group_name>` 替换为此前创建的资源组。
 
@@ -145,4 +140,3 @@ az group delete --name <resource_group_name>
 
 - [对 Blob 存储事件作出反应](storage-blob-event-overview.md)
 - [关于事件网格](../../event-grid/overview.md)
-

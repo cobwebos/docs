@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
 预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中概述的步骤。
@@ -77,7 +76,7 @@ ms.lasthandoff: 01/30/2017
 ## <a name="how-to-normalize-data"></a>如何规范化数据？
 数据规范化将数值重新调整到指定范围。 常用的数据规范化方法包括：
 
-* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这将最小值缩放为 0，最大值缩放为 1。
+* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会最小值缩放为 0，最大值缩放为 1。
 * **Z 分数规范化**：基于平均值和标准偏差缩放数据：将数据和平均值之间的差除以标准偏差。
 * **小数缩放**：通过移动属性值的小数点缩放数据。  
 
@@ -103,5 +102,4 @@ ms.lasthandoff: 01/30/2017
 > 《数据挖掘：概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
 > 
 > 
-
 

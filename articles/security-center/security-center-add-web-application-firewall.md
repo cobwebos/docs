@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 安全中心中添加 web 应用程序防火墙 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议“添加 web 应用程序防火墙”和完成应用程序保护”。"
+description: "本文档介绍如何实现 Azure 安全中心建议**添加 web 应用程序防火墙**和**完成应用程序保护**。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
-
+ms.openlocfilehash: e858db97c3e7a832ad01e16a60d486a758109d7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>在 Azure 安全中心中添加 web 应用程序防火墙
 为保护 web 应用程序，Azure 安全中心可能会建议从 Microsoft 合作伙伴添加 web 应用程序防火墙 (WAF)。 本文档将举例说明如何应用此建议。
 
 为任何面向公众的 IP（实例级 IP 或负载均衡 IP）显示 WAF 建议，该 IP 具有与开放入站 Web 端口 (80,443) 关联的网络安全组。
 
-安全中心建议设置 WAF，有助于防范针对虚拟机和应用服务环境上 Web 应用程序的攻击。 应用服务环境 (ASE) 是 Azure 应用服务的[高级](https://azure.microsoft.com/pricing/details/app-service/)服务计划选项，可提供完全隔离和专用的环境，以便安全地运行 Azure 应用服务应用。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/app-service-app-service-environments-readme.md)。
+安全中心建议设置 WAF，有助于防范针对虚拟机和应用服务环境上 Web 应用程序的攻击。 应用服务环境 (ASE) 是 Azure 应用服务的[高级](https://azure.microsoft.com/pricing/details/app-service/)服务计划选项，可提供完全隔离和专用的环境，以便安全地运行 Azure 应用服务应用。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/environment/intro.md)。
 
 > [!NOTE]
 > 本文档通过使用示例部署介绍该服务。  本文档不是一份分步指南。
@@ -48,20 +46,20 @@ ms.lasthandoff: 05/10/2017
 6. 会打开“Web 应用程序防火墙”边栏选项卡，可在其中执行“VM 配置”步骤和提供“WAF 信息”。 选择“VM 配置”。
 7. 在“VM 配置”边栏选项卡中输入启动要运行此 WAF 的虚拟机所需的信息。
    ![VM 配置][4]
-8. 返回到“ Web 应用程序防火墙”边栏选项卡，然后选择“WAF 信息”。 在“WAF 信息”边栏选项卡中可对此 WAF 本身进行配置。 通过步骤 7 可对要在其上运行 WAF 的虚拟机进行配置，通过步骤 8 可对此 WAF 本身进行预配。
+8. 返回到“ Web 应用程序防火墙”边栏选项卡，并选择“WAF 信息”。 在“WAF 信息”边栏选项卡中可对此 WAF 本身进行配置。 通过步骤 7 可对要在其上运行 WAF 的虚拟机进行配置，通过步骤 8 可对此 WAF 本身进行预配。
 
 ## <a name="finalize-application-protection"></a>完成应用程序保护
 1. 返回到“建议”边栏选项卡。 创建此 WAF 后，会生成一个名为“完成应用程序保护”的新条目。 通过此条目，可知道需要完成将此 WAF 连接在 Azure 虚拟网络内的过程才可使其保护此应用程序。
 
    ![完成应用程序保护][5]
 
-2. “完成应用程序保护”。 此时会打开一个新的边栏选项卡。 可看到有一个 web 应用程序需要路由其流量。
-3. 选择此 web 应用程序。 会打开一个边栏选项卡，提供完成此 web 应用程序防火墙设置的步骤。 完成这些步骤，然后选择“限制”。 然后，安全中心会进行连接。
+2. 选择“完成应用程序保护”。 此时会打开一个新的边栏选项卡。 可看到有一个 web 应用程序需要路由其流量。
+3. 选择此 web 应用程序。 会打开一个边栏选项卡，提供完成此 web 应用程序防火墙设置的步骤。 完成这些步骤，并选择“限制”。 然后，安全中心会进行连接。
 
    ![限制流量][6]
 
 > [!NOTE]
-> 可以通过将应用程序添加到现有的 WAF 部署来保护安全中心中的多个 Web 应用程序。
+> 可以通过将应用程序添加到现有的 WAF 部署来保护安全中心中的多个 web 应用程序。
 >
 >
 
@@ -70,7 +68,7 @@ ms.lasthandoff: 05/10/2017
 ## <a name="next-steps"></a>后续步骤
 本文档演示了如何实现安全中心建议“添加 web 应用程序”。 若要了解有关配置 web 应用程序防火墙的详细信息，请参阅以下内容：
 
-* [为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
+* [为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
@@ -88,4 +86,3 @@ ms.lasthandoff: 05/10/2017
 [4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
-

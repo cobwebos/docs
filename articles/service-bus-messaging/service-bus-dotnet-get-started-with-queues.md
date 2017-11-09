@@ -12,14 +12,13 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 10/16/2017
 ms.author: sethm
+ms.openlocfilehash: c381489c3cb5b42505d0cdf01618edb370793304
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -57,7 +56,7 @@ ms.lasthandoff: 08/15/2017
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，搜索“Microsoft Azure 服务总线”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，并关闭此对话框。
+2. 单击“浏览”选项卡，搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 08/15/2017
         }
     }
     ```
-3. 运行该程序并检查 Azure 门户：在命名空间“概览”边栏选项卡中单击队列的名称。 此时会显示队列的“基本信息”边栏选项卡。 请注意，“活动消息计数”值现在应为 1。 每次运行发件人应用程序而没有检索消息时，该值会增加 1。 另请注意，每次应用向队列添加消息时，队列的当前大小都会递增。
+3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击队列的名称。 此时会显示队列的“基本信息”窗口。 请注意，“活动消息计数”值现在应为 1。 每次运行发件人应用程序而没有检索消息时，该值会增加 1。 另请注意，每次应用向队列添加消息时，队列的当前大小都会递增。
    
       ![消息大小][queue-message]
 
@@ -179,7 +178,7 @@ ms.lasthandoff: 08/15/2017
    
     ![队列长度][queue-message-receive]
 
-祝贺你！ 已创建队列、发送和接收消息。
+祝贺你！ 你现在已创建队列、将消息发送到该队列，以及从该队列接收消息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -190,5 +189,4 @@ ms.lasthandoff: 08/15/2017
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
-[github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 

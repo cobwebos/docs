@@ -11,15 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 4ef5ec3d8f4b96d4a318e01b449d3baad8a6324a
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 0fa1ac4f9e9711332c568e84f86d132508eb185f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
@@ -63,6 +62,10 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 - **Azure 上的 SAP HANA（大型实例）：**用于在通过 SAP HANA TDI 认证的、部署在不同 Azure 区域中的大型实例模具中的硬件上运行 HANA 实例的产品的官方名称。 本技术部署指南中广泛使用的相关术语“HANA 大型实例”是“Azure 上的 SAP HANA（大型实例）”的简称。
 - 跨界：描述这样一种方案：将 VM 部署到在本地数据中心与 Azure 之间建立了站点到站点、多站点或 ExpressRoute 连接的 Azure 订阅。 在一般的 Azure 文档中，此类部署也称为跨界方案。 连接的原因是为了将本地域、本地 Active Directory/OpenLDAP 和本地 DNS 扩展到 Azure。 本地布局会扩展到 Azure 订阅的 Azure 资产。 经过这种扩展后，VM 可以成为本地域的一部分。 本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是大多数 SAP 资产的典型部署方案。 有关更多详细信息，请参阅 [VPN 网关的设计和规划](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)和[使用 Azure 门户创建具有站点到站点连接的 VNet](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 指南。
 - **租户：**在 HANA 大型实例模具中部署的客户会隔离到“租户”中。 租户在网络、存储和计算层中相互隔离。 因此，分配给不同租户的存储和计算单元在 HANA 大型实例模具级别上无法相互看到或进行通信。 客户可以选择部署到不同的租户中。 即使这样，HANA 大型实例模具级别上的租户之间也不进行通信。
+- SKU 类别：对于 HANA 大型实例，提供以下两类 SKU。
+    - 类型 I 类：S72、S72m、S144、S144m、S192 和 S192m
+    - 类型 II 类：S384、S384m、S384xm、S576、S768 和 S960
+
 
 有关在 Azure 公有云上部署 SAP 工作负荷的主题，已发布的各种其他资源中都有所介绍。 强烈建议由拥有相关经验的人员来规划和执行 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续学习之前，应该先阅读以下资源，其中提供了更多信息：
 
@@ -123,7 +126,7 @@ Azure 大型实例模具本身包含以下组件：
 
 与 Azure VM 一样，Azure 上的 SAP HANA（大型实例）是在多个 Azure 区域中提供的。 若要提供灾难恢复功能，可以选择启用。 一个地缘政治区域中的各种大型实例模具相互连接在一起。 例如，在美国西部和美国东部的 HANA 大型实例模具是通过专用网络链接连接的，目的是进行 DR 复制。 
 
-如同可以为 Azure 虚拟机选择不同的 VM 类型一样，可以从针对 SAP HANA 的不同工作负荷类型定制的具有不同 SKU 的 HANA 大型实例中进行选择。 SAP 基于 Intel 处理器世代为各种工作负荷应用内存对处理器插槽比率 - 提供了四种不同的 SKU 类型：
+如同可以为 Azure 虚拟机选择不同的 VM 类型一样，可以从针对 SAP HANA 的不同工作负荷类型定制的具有不同 SKU 的 HANA 大型实例中进行选择。 SAP 基于 Intel 处理器世代为各种工作负荷应用内存对处理器插槽比率。 下表显示提供的 SKU 类型。
 
 从 2017 年 7 月开始，Azure 上的 SAP HANA（大型实例）以多种配置在多个 Azure 区域发布，其中包括美国西部和美国东部、澳大利亚东部、澳大利亚东南部、西欧、北欧：
 
@@ -183,7 +186,7 @@ Azure 大型实例模具本身包含以下组件：
 | SKU | 内存大小 | 存储大小 | 使用多个数据库时的大小 |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768 GB HANA 实例<br /> 或 1x512 GB 实例 + 1x256 GB 实例<br /> 或 3x256 GB 实例 | 
-| S72m | 768 GB | 3 TB | 3x512GB HANA 实例<br />或 1x512 GB 实例 + 1x1 TB 实例<br />或 6x256 GB 实例<br />或 1x1.5 TB 实例 | 
+| S72m | 1.5 TB | 6 TB | 3x512GB HANA 实例<br />或 1x512 GB 实例 + 1x1 TB 实例<br />或 6x256 GB 实例<br />或 1x1.5 TB 实例 | 
 | S192m | 4 TB | 16 TB | 8x512 GB 实例<br />或 4x1 TB 实例<br />或 4x512 GB 实例 + 2x1 TB 实例<br />或 4x768 GB 实例 + 2x512 GB 实例<br />或 1x4 TB 实例 |
 | S384xm | 8 TB | 22 TB | 4x2 TB 实例<br />或 2x4 TB 实例<br />或 2x3 TB 实例 + 1x2 TB 实例<br />或 2x2.5 TB 实例 + 1x3 TB 实例<br />或 1x8 TB 实例 |
 
@@ -356,7 +359,7 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 ### <a name="encryption-of-data-at-rest"></a>静态数据加密
 用于 HANA 大型实例存储允许数据透明加密存储在磁盘上。 在部署 HANA 大型实例单位时，可以选择启用这种加密。 还可以选择已在部署后将更改为加密卷。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
 
-使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 对于 II 类 SKU 的 HANA 大型实例，需使用 OS 方法加密启动 LUN。 
+使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 对于 II 类 SKU 的 HANA 大型实例，需使用 OS 方法加密启动 LUN。 有关更多信息，请联系 Microsoft Service Management 团队。
 
 
 ## <a name="networking"></a>联网
@@ -483,6 +486,5 @@ HANA 大型实例未建立直接 Internet 连接。 这会限制某些功能，�
 
 > [!IMPORTANT] 
 > 如果使用了多个 ExpressRoute 线路，则应当使用“AS 路径前追加”和“本地首选 BGP”设置来确保对流量进行正确路由。
-
 
 

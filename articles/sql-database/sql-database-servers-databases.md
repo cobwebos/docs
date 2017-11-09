@@ -1,6 +1,6 @@
 ---
 title: "创建并管理 Azure SQL 服务器和数据库 | Microsoft Docs"
-description: "了解 Azure SQL 数据库服务器和数据库概念，以及如何使用 Azure 门户、PowerShell、Azure CLI、Transact-SQL 和 REST API 创建并管理服务器和数据库。"
+description: "了解 Azure SQL 数据库服务器和数据库的概念，以及如何创建和管理服务器和数据库。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -12,17 +12,15 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.date: 07/19/2017
+ms.workload: On Demand
+ms.date: 10/11/2017
 ms.author: carlrab
+ms.openlocfilehash: 3bd39b9a63cd4a18eabee3d1737daac56b3e37df
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 4585be186554d5d7aa9bc79029b6f8506b278701
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
-
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
 Azure SQL 数据库是 Microsoft Azure 中的托管数据库，通过一组定义的[针对不同工作负载的计算和存储资源](sql-database-service-tiers.md)在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建而成。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。 
@@ -134,6 +132,7 @@ Azure 数据库逻辑服务器：
 |[Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule)|获取服务器的防火墙规则|
 |[Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule)|修改服务器中的防火墙规则|
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|从服务器中删除防火墙规则。|
+| New-AzureRmSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建[*虚拟网络规则*](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 
 > [!TIP]
 > 有关 PowerShell 快速入门教程，请参阅[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-get-started-portal.md)。 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -145,25 +144,25 @@ Azure 数据库逻辑服务器：
 
 | Cmdlet | 说明 |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#create) |创建数据库|
-|[az sql db list](/cli/azure/sql/db#list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
-|[az sql db list-editions](/cli/azure/sql/db#list-editions)|列出可用的服务目标和存储上限|
-|[az sql db list-usages](/cli/azure/sql/db#list-usages)|返回数据库使用情况|
-|[az sql db show](/cli/azure/sql/db#show)|获取数据库或数据仓库|
-|[az sql db update](/cli/azure/sql/db#update)|更新数据库|
-|[az sql db delete](/cli/azure/sql/db#delete)|删除数据库|
-|[az group create](/cli/azure/group#create)|创建资源组|
-|[az sql server create](/cli/azure/sql/server#create)|创建服务器|
-|[az sql server list](/cli/azure/sql/server#list)|列出服务器|
-|[az sql server list-usages](/cli/azure/sql/server#list-usages)|返回服务器使用情况|
-|[az sql server show](/cli/azure/sql/server#show)|获取服务器|
-|[az sql server update](/cli/azure/sql/server#update)|更新服务器|
-|[az sql server delete](/cli/azure/sql/server#delete)|删除服务器|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#create)|配置服务器防火墙规则|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#list)|列出服务器上的防火墙规则|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#show)|显示防火墙规则的详细信息|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule#update)|更新防火墙规则|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#delete)|删除防火墙规则|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |创建数据库|
+|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
+|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|列出可用的服务目标和存储上限|
+|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|返回数据库使用情况|
+|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|获取数据库或数据仓库|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|更新数据库|
+|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|删除数据库|
+|[az group create](/cli/azure/group#az_group_create)|创建资源组|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|创建服务器|
+|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|列出服务器|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|返回服务器使用情况|
+|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|获取服务器|
+|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|更新服务器|
+|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|删除服务器|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|配置服务器防火墙规则|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|列出服务器上的防火墙规则|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|显示防火墙规则的详细信息|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|更新防火墙规则|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|删除防火墙规则|
 
 > [!TIP]
 > 有关 Azure CLI 快速入门教程，请参阅[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-get-started-cli.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建单个 Azure SQL 数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
@@ -219,7 +218,7 @@ Azure 数据库逻辑服务器：
 |[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
 |[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
 |[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](/api/sql/databases/update)|更新现有的数据库。|
+|[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
 |[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
 |[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|获取防火墙规则。|
@@ -231,4 +230,3 @@ Azure 数据库逻辑服务器：
 - 若要了解 Azure SQL 数据库服务，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)。
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 2a5e8f6d1443681c43db95da5cef0b7f2ef92291
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
 
@@ -62,7 +61,7 @@ ms.lasthandoff: 06/16/2017
 
     ![Active Directory][1]
 
-2. 导航到“企业应用程序”。 转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
     
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/16/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 TeamSeer 测试用户](#creating-a-teamseer-test-user)** - 在 TeamSeer 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 TeamSeer 测试用户](#creating-a-teamseer-test-user)** - 在 TeamSeer 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -114,9 +113,9 @@ ms.lasthandoff: 06/16/2017
      在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
-    > 该值不是实际值。 使用实际登录 URL 更新该值。 若要获取该值，请与 [TeamSeer 客户端支持团队](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 
+    > 此值不是真实值。 使用实际登录 URL 更新该值。 若要获取该值，请与 [TeamSeer 客户端支持团队](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
@@ -189,7 +188,7 @@ ms.lasthandoff: 06/16/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -232,7 +231,7 @@ ms.lasthandoff: 06/16/2017
 
 **若要将 Britta Simon 分配到 TeamSeer，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -278,5 +277,4 @@ ms.lasthandoff: 06/16/2017
 [201]: ./media/active-directory-saas-teamseer-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-teamseer-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-teamseer-tutorial/tutorial_general_203.png
-
 

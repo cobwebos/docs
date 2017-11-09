@@ -24,9 +24,17 @@ sections:
         style: icon48
         items:
           - image:
-              src: /azure/app-service-api/media/index/cli.svg
+              src: /azure/event-grid/media/index/cli.svg
             text: Azure CLI
             href: /azure/event-grid/custom-event-quickstart
+          - image:
+              src: /azure/event-grid/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/event-grid/custom-event-quickstart-powershell
+          - image:
+              src: /azure/event-grid/media/index/portal.svg
+            text: Azure 门户
+            href: /azure/event-grid/custom-event-quickstart-portal
   - title: 分步教程
     items:
       - type: paragraph
@@ -35,6 +43,7 @@ sections:
         style: ordered
         items:
           - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">使用逻辑应用监视对 VM 的更改</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">调整已上传图像的大小</a>
   - title: 引用
     items:
       - type: list
@@ -42,7 +51,7 @@ sections:
         className: cardsD
         items:
           - title: 命令行
-            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p>
+            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
           - title: REST API
             html: <p><a href="/rest/api/eventgrid">REST</a></p>
           - title: 架构

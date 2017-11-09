@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 19f6ea37f892054ee5d7bf793a32364dff264058
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/14/2017
-
+ms.openlocfilehash: d8e740e969f68c85842f42c109328423da1b4414
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>如何：通过下载交付资产
-本主题介绍已上载到媒体服务的媒体资产的交付选项。 你可以采用众多的应用程序方案来交付媒体服务内容。 你可以下载媒体资产，或使用定位器访问媒体资产。 你可以将媒体内容发送到其他应用程序或其他内容提供商。 为了提高性能和可缩放性，你还可以使用内容传送网络 (CDN) 来传送内容。
+本主题介绍已上传到媒体服务的媒体资产的交付选项。 可以采用众多的应用程序方案来交付媒体服务内容。 可以下载媒体资产，或使用定位器访问媒体资产。 可以将媒体内容发送到其他应用程序或其他内容提供商。 为了提高性能和伸缩性，还可以使用内容传送网络 (CDN) 来传送内容。
 
 此示例演示如何将媒体资产从媒体服务下载到本地计算机。 该代码将按作业 ID 查询与媒体服务帐户关联的作业，并访问其 **OutputMediaAssets** 集合（即运行作业后生成的、包含一个或多个输出媒体资产的集）。 此示例演示如何通过作业下载输出媒体资产，但也可运用相同的方法下载其他资产。
 
@@ -88,5 +87,4 @@ ms.lasthandoff: 03/14/2017
 
 ## <a name="see-also"></a>另请参阅
 [传送流式处理内容](media-services-deliver-streaming-content.md)
-
 

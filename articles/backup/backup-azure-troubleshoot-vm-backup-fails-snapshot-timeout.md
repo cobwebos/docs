@@ -12,17 +12,15 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: genli;markgal;
+ms.openlocfilehash: f3195fa83479986a3e605abce618c78bcdb64dac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: d2dda47bb3ba5a397ad9626ca4705214dd2560f8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure 备份故障排除：代理和/或扩展的问题
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的备份故障。
@@ -70,8 +68,11 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>不支持指定的磁盘配置
 
-当前 Azure 备份不支持大于 1023 GB 的磁盘大小。 请拆分磁盘，确保磁盘大小小于此限制。 要拆分磁盘，需要将数据从大于 1023 GB 的磁盘复制到新创建的小于 1023 GB 的磁盘。
-
+当前 Azure 备份不支持[大于 1023GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm) 的磁盘大小。 
+- 如果有大于 1 TB 的磁盘，请[附加小于 1 TB 的新磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) <br>
+- 然后，将大于 1TB 的磁盘中的数据复制到新创建的小于 1TB 的磁盘。 <br>
+- 确保已复制所有数据并删除大于 1 TB 的磁盘
+- 启动备份
 
 ## <a name="causes-and-solutions"></a>原因和解决方案
 
@@ -177,5 +178,4 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 6. 单击“卸载”。
 
 此过程会导致在下一次备份期间重新安装扩展。
-
 

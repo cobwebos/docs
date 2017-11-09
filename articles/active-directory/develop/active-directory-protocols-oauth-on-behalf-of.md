@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: 0bb74816f216f0965c3ec780c4895cf7e488c3cf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # 代理流中使用委派用户标识的服务到服务调用
 OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服务/web API，而后者又需要调用另一个服务/web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Azure Active Directory (Azure AD) 提供的访问令牌。
@@ -43,24 +42,24 @@ OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服�
 在 Azure AD 中注册客户端应用程序和中间层服务。
 ### 注册中间层服务
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶栏上单击你的帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
-3. 单击左侧导航栏中的“更多服务”，然后选择“Azure Active Directory”。
+2. 在顶栏上单击帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
+3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”并选择“新建应用程序注册”。
 5. 输入应用程序的友好名称，并选择应用程序类型。 根据应用程序类型将登录 URL 或重定向 URL 设置为基 URL。 单击“创建”，创建应用程序。
-6. 在 Azure 门户中选择应用程序，然后单击“设置”。 在“设置”菜单中选择“密钥”并添加密钥 - 选择 1 年或 2 年密钥持续时间。 保存此页时，将显示密钥值，请复制该值并将其保存在安全位置 - 稍后在实现中配置应用程序设置时需要此密钥 - 此密钥值将不再显示，也无法通过其他任何方式检索，因此，在 Azure 门户中显示后，请尽快记下此值。
+6. 在 Azure 门户中选择应用程序，并单击“设置”。 在“设置”菜单中选择“密钥”并添加密钥 - 选择 1 年或 2 年密钥持续时间。 保存此页时，会显示密钥值，请复制该值并将其保存在安全位置 - 稍后在实现中配置应用程序设置时需要此密钥 - 此密钥值不再显示，也无法通过其他任何方式检索，因此，在 Azure 门户中显示后，请尽快记下此值。
 
 ### 注册客户端应用程序
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶栏上单击你的帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
-3. 单击左侧导航栏中的“更多服务”，然后选择“Azure Active Directory”。
+2. 在顶栏上单击帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
+3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”并选择“新建应用程序注册”。
 5. 输入应用程序的友好名称，并选择应用程序类型。 根据应用程序类型将登录 URL 或重定向 URL 设置为基 URL。 单击“创建”，创建应用程序。
-6. 配置应用程序的权限 - 在“设置”菜单中，选择“所需权限”部分，单击“添加”，单击“选择 API”，然后在文本框中键入中间层服务的名称。 然后单击“选择权限”并选择“访问 <服务名称>”。
+6. 配置应用程序的权限 - 在“设置”菜单中，选择“所需权限”部分，单击“添加”，单击“选择 API”，并在文本框中键入中间层服务的名称。 然后单击“选择权限”并选择“访问*服务名称*”。
 
 ### 配置已知的客户端应用程序
 在此方案中，中间层服务无需用户干预，就要获取用户对访问下游 API 的许可。 因此，在身份验证过程的许可步骤中必须提前显示授权访问下游 API 的选项。
 为实现此目的，请遵循以下步骤将 Azure AD 中的客户端应用注册显式绑定到中间层服务的注册，从而将客户端和中间层所需的许可合并到单个对话中。
-1. 导航到中间层服务注册，然后单击“清单”打开清单编辑器。
+1. 导航到中间层服务注册，并单击“清单”打开清单编辑器。
 2. 在清单中找到 `knownClientApplications` 数组属性，然后将客户端应用程序的客户端 ID 添加为元素。
 3. 单击保存按钮保存清单。
 
@@ -201,4 +200,3 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 详细了解 OAuth 2.0 协议和使用客户端凭据执行服务到服务身份验证的其他方法。
 * [在 Azure AD 中使用 OAuth 2.0 客户端凭据授予执行服务到服务身份验证](active-directory-protocols-oauth-service-to-service.md)
 * [Azure AD 中的 OAuth 2.0](active-directory-protocols-oauth-code.md)
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 09/06/2017
 ms.author: maroche
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
@@ -264,5 +263,4 @@ ms.lasthandoff: 09/07/2017
 * 我们已在顶部导航栏中添加了新的“用户”按钮和菜单。 通过此菜单，用户可以查看用于登录 Azure 数据目录的帐户，并在需要时对其进行注销。 此菜单还显示目录名称，这对使用 Azure 数据目录 REST API 的开发人员很有用。
 * 仅适用于标准版：将所有者添加到数据资产时，Azure 数据目录现在支持用户帐户和安全组作为所有者。 要将安全组添加为所选数据资产的所有者，可以输入组的显示名称或组的 UPN 电子邮件地址（如果有的话）。
 * 支持 Azure Blob 存储数据源。 现在，用户可以注册和发现 Azure 存储 Blob 和目录。
-
 

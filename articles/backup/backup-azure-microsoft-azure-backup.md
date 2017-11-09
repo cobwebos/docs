@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>准备使用 Azure 备份服务器来备份工作负荷
 > [!div class="op_single_selector"]
@@ -276,4 +275,3 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 * [SQL Server 备份](backup-azure-backup-sql.md)
 * [SharePoint Server 备份](backup-azure-backup-sharepoint.md)
 * [备用服务器备份](backup-azure-alternate-dpm-server.md)
-

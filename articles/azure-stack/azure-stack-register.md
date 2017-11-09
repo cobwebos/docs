@@ -1,6 +1,6 @@
 ---
-title: Register Azure Stack | Microsoft Docs
-description: Register Azure Stack with your Azure subscription.
+title: "注册 Azure 堆栈 |Microsoft 文档"
+description: "向你的 Azure 订阅中注册 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -12,90 +12,84 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 10/27/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: f71ec571fee8e59ea9061cd619914b81a5bf701a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.openlocfilehash: 24cde66a132ae2e1ba0eb9b1564915746e5ca448
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
-# <a name="register-azure-stack-with-your-azure-subscription"></a>Register Azure Stack with your Azure Subscription
+# <a name="register-azure-stack-with-your-azure-subscription"></a>注册你的 Azure 订阅的 Azure 堆栈
 
-For Azure Active Directory deployments, you can register Azure Stack with Azure to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. 
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+
+你可以注册[Azure 堆栈](azure-stack-poc.md)与 Azure 下载从 Azure 应用商店项以及设置回向 Microsoft 报告的商业数据。 
 
 > [!NOTE]
->Registration is recommended because it enables you to test important Azure Stack functionality, like marketplace syndication and usage reporting. After you register Azure Stack, usage is reported to Azure commerce. You can see it under the subscription you used for registration. Azure Stack Development Kit users will not be charged for any usage they report.
+>建议注册，因为它使你可以测试重要 Azure 堆栈功能，例如 marketplace 联合和使用情况报告。 注册 Azure 堆栈后，使用情况报告给 Azure 商务。 你可以在用于注册的订阅下看到它。 Azure 堆栈开发工具包用户不收取任何使用这些报告。
 >
 
 
-## <a name="get-azure-subscription"></a>Get Azure subscription
+## <a name="get-azure-subscription"></a>获取 Azure 订阅
 
-Before registering Azure Stack with Azure, you must have:
+在之前向 Azure 注册 Azure 堆栈，您必须：
 
-- The subscription ID for an Azure subscription. To get the ID, sign in to Azure, click **More services** > **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the **Subscription ID**. China, Germany, and US government cloud subscriptions are not currently supported.
-- The username and password for an account that is an owner for the subscription (MSA/2FA accounts are supported)
-- The Azure Active Directory for the Azure subscription. You can find this directory in Azure by hovering over your avatar at the top right corner of the Azure portal. 
-- Registered the Azure Stack resource provider (see the **Register Azure Stack Resource Provider** section below for details)
+- Azure 订阅的订阅 ID。 若要获取的 ID，登录到 Azure，单击**更多的服务** > **订阅**，单击你想要使用，的订阅并在列表视图**Essentials**可以找到**订阅 ID**。 当前不支持中国、 德国和我们政府云订阅。
+- 用户名和密码是订阅的所有者的帐户 （MSA/2FA 帐户也支持）。
+- Azure 订阅与 Azure Active Directory。 通过将鼠标悬停在 Azure 门户右上角用户标识，可以在 Azure 中找到此目录。 
+- [注册 Azure 堆栈资源提供程序](#register-azure-stack-resource-provider-in-azure)。
 
-If you don’t have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/en-us/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.
+如果你没有满足这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/en-us/free/?b=17.06)。 注册 Azure 堆栈会产生任何费用在你的 Azure 订阅。
 
 
 
-## <a name="register-azure-stack-resource-provider-in-azure"></a>Register Azure Stack resource provider in Azure
+## <a name="register-azure-stack-resource-provider-in-azure"></a>在 Azure 中注册 Azure 堆栈资源提供程序
 > [!NOTE] 
-> This step only needs to be completed once in an Azure Stack environment.
+> 此步骤只需在 Azure 堆栈环境中一次完成。
 >
 
-1. Start Powershell ISE as an administrator.
-2. Log in to the Azure account that is an owner of the Azure subscription with -EnvironmentName parameter set to "AzureCloud".
-3. Register the Azure resource provider "Microsoft.AzureStack".
+1. 以管理员身份启动 Powershell ISE。
+2. 登录到是-EnvironmentName 参数设置为"AzureCloud"的 Azure 订阅的所有者的 Azure 帐户。
+3. 注册 Azure 资源提供程序"Microsoft.AzureStack"。
 
-Example: 
+示例： 
 ```Powershell
 Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 ```
 
 
-## <a name="register-azure-stack-with-azure"></a>Register Azure Stack with Azure
+## <a name="register-azure-stack-with-azure"></a>向 Azure 注册 Azure 堆栈
 
 > [!NOTE]
->All these steps must be completed on the host computer.
+>必须在主计算机上完成所有这些步骤。
 >
 
-1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). 
-2. Copy the [RegisterWithAzure.ps1 script](https://go.microsoft.com/fwlink/?linkid=842959) to a folder (such as C:\Temp).
-3. Start PowerShell ISE as an administrator.    
-4. Run the RegisterWithAzure.ps1 script, replacing the following placeholders:
-    - *YourAccountName* is the owner of the Azure subscription
-    - *YourID* is the Azure subscription ID that you want to use to register Azure Stack
-    - *YourDirectory* is the name of your Azure Active Directory tenant that your Azure subscription is a part of.
+1. [安装适用于 Azure 堆栈 PowerShell](azure-stack-powershell-install.md)。 
+2. 复制[RegisterWithAzure.psm1 脚本](https://go.microsoft.com/fwlink/?linkid=842959)（如 C:\Temp) 的文件夹。
+3. 以管理员身份启动 PowerShell ISE 并导入 RegisterWithAzure 模块。    
+4. 从 RegisterWithAzure.psm1 脚本中，运行添加 AzsRegistration 模块。 替换以下占位符： 
+    - *YourCloudAdminCredential*是一个包含 domain\cloudadmin 的本地域凭据的 PowerShell 对象 （对于开发工具包中，为 azurestack\cloudadmin）。
+    - *YourAzureSubscriptionID*是你想要用于注册 Azure 堆栈的 Azure 订阅的 ID。
+    - *YourAzureDirectoryTenantName*是与你的 Azure 订阅关联的 Azure 租户目录的名称。 将在此目录租户中创建注册资源。 
+    - *YourPrivilegedEndpoint*是的名称[特权的终结点](azure-stack-privileged-endpoint.md)。
 
     ```powershell
-    RegisterWithAzure.ps1 -azureSubscriptionId YourID -azureDirectoryTenantName YourDirectory -azureAccountId YourAccountName
+    Add-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -AzureDirectoryTenantName $YourAzureDirectoryTenantName  -AzureSubscriptionId $YourAzureSubscriptionId -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Development 
     ```
-    
-    For example:
-    
-    ```powershell
-    C:\temp\RegisterWithAzure.ps1 -azureSubscriptionId "5e0ae55d-0b7a-47a3-afbc-8b372650abd3" `
-    -azureDirectoryTenantName "contoso.onmicrosoft.com" `
-    -azureAccountId serviceadmin@contoso.onmicrosoft.com
-    ```
-    
-5. At the two prompts, press Enter.
-6. In the pop-up login window, enter your Azure subscription credentials.
+5. 在弹出的登录窗口中，输入你的 Azure 订阅凭据。
 
-## <a name="verify-the-registration"></a>Verify the registration
+## <a name="verify-the-registration"></a>验证注册
 
-1. Sign in to the administrator portal (https://adminportal.local.azurestack.external).
-2. Click **More Services** > **Marketplace Management** > **Add from Azure**.
-3. If you see a list of items available from Azure (such as WordPress), your activation was successful.
+1. 登录到管理员门户 (https://adminportal.local.azurestack.external)。
+2. 单击**更多的服务** > **应用商店管理** > **添加从 Azure**。
+3. 如果你看到的项 （如 WordPress) 的 Azure 上提供的列表，已成功激活。
 
-## <a name="next-steps"></a>Next steps
+> [!NOTE]
+> 完成注册后，将不再显示未注册的活动警告。
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+## <a name="next-steps"></a>后续步骤
 
+[连接到 Azure Stack](azure-stack-connect-azure-stack.md)
 

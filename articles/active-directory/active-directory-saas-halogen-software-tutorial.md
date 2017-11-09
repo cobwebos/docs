@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
 ms.openlocfilehash: e09fa93038965e4880a23002bac6917ad2a077f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>教程：Azure Active Directory 与 Halogen Software 集成
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/26/2017
 
 ## <a name="adding-halogen-software-from-the-gallery"></a>从库中添加 Halogen Software
 
-若要配置 Halogen Software 与 Azure AD 的集成，需要从库中将 Halogen Software 添加到托管 SaaS 应用列表。
+要配置 Halogen Software 与 Azure AD 的集成，需要从库中将 Halogen Software 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Halogen Software，请执行以下步骤：**
 
@@ -91,7 +90,7 @@ ms.lasthandoff: 06/26/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Halogen Software 测试用户](#creating-a-halogen-software-test-user)** - 在 Halogen Software 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+3. **[创建 Halogen Software 测试用户](#creating-a-halogen-software-test-user)** - 在 Halogen Software 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -115,14 +114,14 @@ ms.lasthandoff: 06/26/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/<companyname>`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：`https://global.halogensoftware.com/<companyname>``https://global.hgncloud.com/<companyname>`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://global.halogensoftware.com/<companyname>``https://global.hgncloud.com/<companyname>`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Halogen Software 客户端支持团队](https://support.halogensoftware.com/)获取这些值。 
  
 
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
+4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_certificate.png) 
 
@@ -144,9 +143,9 @@ ms.lasthandoff: 06/26/2017
 
     ![什么是 Azure AD Connect][14]
 
-     a.在“横幅徽标”下面，选择“删除上传的徽标”。 选择 **NameID** 作为**唯一标识符**。
+     a. 选择 **NameID** 作为**唯一标识符**。
 
-     b.保留“数据库类型”设置，即设置为“共享”。 对于“唯一标识符映射到”，请选择“用户名”。
+     b. 对于“唯一标识符映射到”，请选择“用户名”。
   
      c. 要上载已下载的元数据文件，请单击“浏览”选择该文件，并单击“上载文件”。
  
@@ -155,7 +154,7 @@ ms.lasthandoff: 06/26/2017
     >[!NOTE]
     >需要等待消息“*SAML 测试已完成。请关闭此窗口*”。 然后，关闭打开的浏览器窗口。 仅在测试完成的情况下，才会启用“启用 SAML”复选框。 
      
-     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“启用 SAML”。
+     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“启用 SAML”。
     
      f. 单击“保存更改”。 
 
@@ -187,9 +186,9 @@ ms.lasthandoff: 06/26/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-halogen-software-tutorial/create_aaduser_04.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名称”文本框中，键入名称“BrittaSimon”。
+    a. 在“名称”文本框中，键入名称“BrittaSimon”。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -203,7 +202,7 @@ ms.lasthandoff: 06/26/2017
 
 1. 以管理员身份登录到 **Halogen Software** 应用程序。
 
-2. 单击“用户中心”选项卡，然后单击“创建用户”。
+2. 单击“用户中心”选项卡，并单击“创建用户”。
    
     ![什么是 Azure AD Connect][300]  
 
@@ -211,15 +210,15 @@ ms.lasthandoff: 06/26/2017
    
     ![什么是 Azure AD Connect][301]
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“名字”文本框中，键入用户的名字（如“Britta”）。
+    a. 在“名字”文本框中，键入用户的名字（如“Britta”）。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。 
+    b. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。 
 
     c. 在 Azure 门户的“用户名”文本框中，键入用户名“Britta Simon”。
 
     d. 在“密码”文本框中，键入 Britta 的密码。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存” 。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -227,9 +226,9 @@ ms.lasthandoff: 06/26/2017
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Halogen Software，请执行以下步骤：**
+**要将 Britta Simon 分配到 Halogen Software，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -287,4 +286,3 @@ ms.lasthandoff: 06/26/2017
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: 1a6c4b19261aa34e668554ccad2b6340cddf9bf5
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C：向具有 LinkedIn 帐户的使用者提供注册和登录
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
@@ -51,5 +50,4 @@ ms.lasthandoff: 08/08/2017
 5. 单击“标识提供者类型”，选择“LinkedIn”，并单击“确定”。
 6. 单击“设置此标识提供者”，并输入之前创建的 LinkedIn 应用程序的客户端 ID 和客户端密码。
 7. 单击“确定”，并单击“创建”以保存 LinkedIn 配置。
-
 

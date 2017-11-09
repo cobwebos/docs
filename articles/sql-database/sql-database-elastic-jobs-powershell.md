@@ -8,18 +8,17 @@ author: ddove
 ms.assetid: 737d8d13-5632-4e18-9cb0-4d3b8a19e495
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
+ms.openlocfilehash: 12ace2ff3bcb967ec5e0ae88d3ce79a53836dd5e
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
@@ -232,7 +231,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="to-define-an-elastic-database-shard-map-target"></a>定义弹性数据库分片映射目标
 要针对分片集（使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)创建）中的所有数据库执行作业，请将分片映射用作数据库目标。 本示例要求使用弹性数据库客户端库创建分片应用程序。 请参阅[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
-必须将分片映射管理器数据库设置为数据库目标，然后将特定分片映射指定为目标。
+必须将分片映射管理器数据库设置为数据库目标，并将特定分片映射指定为目标。
 
     $shardMapCredentialName = "{Credential Name}"
     $shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -486,7 +485,7 @@ ms.lasthandoff: 08/22/2017
 
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
-    New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName 
+    New-AzureSqlJobTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
 ## <a name="to-create-a-custom-database-collection-target"></a>创建自定义数据库集合目标
 使用 [**New-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) 可以自定义数据库集合目标，从而让执行操作跨多个已定义数据库目标。 创建数据库组之后，数据库可与自定义集合目标相关联。
@@ -524,7 +523,7 @@ ms.lasthandoff: 08/22/2017
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
-可以使用作业跨一组数据库来执行查询，然后将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
+可以使用作业跨一组数据库来执行查询，并将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
 
 如果不存在指定的目标表，则自动创建该表。 新表与返回的结果集的架构相符。 如果脚本返回多个结果集，弹性数据库作业只将第一个结果集发送到目标表。
 
@@ -645,4 +644,3 @@ ms.lasthandoff: 08/22/2017
 [1]: ./media/sql-database-elastic-jobs-powershell/cmd-prompt.png
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
-

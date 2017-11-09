@@ -1,6 +1,6 @@
 ---
 title: "Operations Management Suite (OMS) 中的警报管理解决方案 | Microsoft Docs"
-description: "Log Analytics 中的警报管理解决方案可帮助你分析环境中的所有警报。  除了整合 OMS 内生成的警报之外，它还会将连接的 System Center Operations Manager 管理组中的警报导入到 Log Analytics。"
+description: "Log Analytics 中的警报管理解决方案有助于分析环境中的所有警报。  除了整合 OMS 内生成的警报之外，它还会将连接的 System Center Operations Manager 管理组中的警报导入到 Log Analytics。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 4a394ead09794c52e92dbd2db8be8166d1fab83b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中的警报管理解决方案
 
 ![警报管理图标](media/log-analytics-solution-alert-management/icon.png)
 
-警报管理解决方案可帮助你分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](log-analytics-alerts.md)或是[从 Nagios 或 Zabbix 导入](log-analytics-linux-agents.md)的源。  解决方案还从任何[连接的 System Center Operations Manager 管理组](log-analytics-om-agents.md)导入警报。
+警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](log-analytics-alerts.md)或是[从 Nagios 或 Zabbix 导入](log-analytics-linux-agents.md)的源。  解决方案还从任何[连接的 System Center Operations Manager 管理组](log-analytics-om-agents.md)导入警报。
 
 ## <a name="prerequisites"></a>先决条件
 解决方案处理 Log Analytics 存储库中具有 Alert 类型的任何记录，因此必须执行收集这些记录所需的任何配置。
@@ -136,4 +135,3 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](log-analytics-alerts.md)。
-

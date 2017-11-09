@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述
 接下来将详细介绍如何在 Windows Phone Silverlight 应用中集成  Azure Mobile Engagement。 如果想要先进行尝试，请确保完成我们的 [15 分钟教程](mobile-engagement-windows-phone-get-started.md)。
@@ -46,12 +45,11 @@ ms.lasthandoff: 02/09/2017
 
 ### <a name="from-200-to-330"></a>从 2.0.0 至 3.3.0
 #### <a name="test-logs"></a>测试日志
-现在可以启用/禁用/筛选由 SDK 生成的控制台日志。 若要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
+现在可以启用/禁用/筛选由 SDK 生成的控制台日志。 要对其自定义，请将属性 `EngagementAgent.Instance.TestLogEnabled` 更新为 `EngagementTestLogLevel` 枚举中提供的值之一，例如：
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
 ### <a name="upgrade-from-older-versions"></a>从较旧版本升级
 请参阅[升级过程](mobile-engagement-windows-phone-upgrade-procedure.md)
-
 

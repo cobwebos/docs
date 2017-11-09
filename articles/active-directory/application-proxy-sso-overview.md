@@ -1,5 +1,5 @@
 ---
-title: "管理 Azure AD 应用程序代理的 SSO | Microsoft 文档"
+title: "管理 Azure AD 应用程序代理的 SSO | Microsoft Docs"
 description: "了解有关使用应用程序代理进行单一登录的基础知识"
 services: active-directory
 documentationcenter: 
@@ -15,14 +15,12 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Azure AD 应用程序代理如何提供单一登录？
 
 单一登录是 Azure AD 应用程序代理的一个关键要素。  它提供最佳的用户体验，因为用户只需登录到云中的 Azure Active Directory。 用户在 Azure Active Directory 中完成身份验证后，应用程序代理连接器会处理本地应用程序的身份验证。 后端应用程序无法辨别远程用户通过应用程序代理登录与在已加入域的设备上使用普通登录方法的差异。 
@@ -81,4 +79,3 @@ ms.lasthandoff: 08/25/2017
 - [使用应用程序代理通过密码保管库进行单一登录](application-proxy-sso-azure-portal.md)
 - [使用应用程序代理通过 Kerberos 约束委派进行单一登录](active-directory-application-proxy-sso-using-kcd.md)
 - [使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-ping-access.md) 
-

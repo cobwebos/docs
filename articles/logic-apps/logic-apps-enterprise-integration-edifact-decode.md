@@ -14,25 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 39d9661adc90e6113e2152d844473f9f4caa755a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/17/2017
-
-
+ms.openlocfilehash: e3787b48037360bf6066ddce2bacba6842213b2d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
-使用解码 EDIFACT 消息连接器，可验证 EDI 和特定于合作伙伴的属性、将交换拆分为事务集或保留整个交换，以及为已处理的交易生成确认。 若要使用此连接器，必须将此连接器添加到你的逻辑应用中的现有触发器。
+使用解码 EDIFACT 消息连接器，可验证 EDI 和特定于合作伙伴的属性、将交换拆分为事务集或保留整个交换，以及为已处理的交易生成确认。 要使用此连接器，必须将此连接器添加到逻辑应用中的现有触发器。
 
 ## <a name="before-you-start"></a>开始之前
 
 需要具有以下各项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义的、与你的 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
 * 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
 
@@ -40,13 +37,13 @@ ms.lasthandoff: 05/17/2017
 
 1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
 
-2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加一个触发器，然后向逻辑应用中添加一个操作。
+2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
 
 3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
    
     ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. 如果以前未创建与集成帐户的任何连接，系统会提示你现在创建该连接。 为你的连接命名，并选择要连接的集成帐户。
+3. 如果以前未创建与集成帐户的任何连接，系统会提示现在创建该连接。 为连接命名，并选择要连接的集成帐户。
    
     ![创建集成帐户](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
@@ -87,14 +84,14 @@ ms.lasthandoff: 05/17/2017
   * 针对交换中的其他组控制编号检查组控制编号。 
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为事务集 - 出错时暂停事务集：将交换拆分为事务集并分析每个事务集。 
+  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 将交换拆分为事务集 - 出错时暂停交换：将交换拆分为事务集并分析每个事务集。 
-  如果交换中的一个或多个事务集未能通过验证，X12 解码操作会将该交换中的所有事务集输出到 `badMessages`。
-  * 保留交换 - 出错时暂停事务集：保留交换并处理整个批量交换。 
+  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
+  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 保留交换 - 出错时暂停交换：保留交换并处理整个批量交换。 
-  如果交换中的一个或多个事务集未能通过验证，X12 解码操作会将该交换中的所有事务集输出到 `badMessages`。
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
 * 生成技术（控制）和/或功能确认（如果已配置）。
   * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。
   * 功能确认会确认接受或拒绝收到的交换或组
@@ -104,5 +101,4 @@ ms.lasthandoff: 05/17/2017
 
 ## <a name="next-steps"></a>后续步骤
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
-
 

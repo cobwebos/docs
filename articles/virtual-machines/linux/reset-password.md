@@ -12,17 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 7/3/2017
 ms.author: delhan
+ms.openlocfilehash: d24d1f194b74b9da6a463d3efd741b402102fde3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: bd48128a078821b7a4baa02d5d7ceecc6de99608
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/11/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>如何在 Azure VM 上重置本地 Linux 密码
 
 本文介绍了几种重置本地 Linux 虚拟机 (VM) 密码的方法。 如果用户帐户已过期或者只是想要创建新帐户，则可以使用以下方法来创建新的本地管理员帐户并重新获得对 VM 的访问权限。

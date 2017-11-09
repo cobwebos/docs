@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: 1ba56eb9539a4295fdaaab523cfd2a7e1587ef54
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -85,10 +84,10 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | 特小型      | 1         | 0.768        | 20                   | 1/低 |
 | 小型           | 1         | 1.75         | 225                  | 1/中 |
-| 中型          | 2         | 3.5 GB       | 490                  | 1/中 |
+| 中型          | #N/A         | 3.5 GB       | 490                  | 1/中 |
 | 大型           | 4         | 7            | 1000                 | 2/高 |
 | 超大型      | 8         | 14           | 2040                 | 4/高 |
-| A5              | 2         | 14           | 490                  | 1/中 |
+| A5              | #N/A         | 14           | 490                  | 1/中 |
 | A6              | 4         | 28           | 1000                 | 2/高 |
 | A7              | 8         | 56           | 2040                 | 4/高 |
 
@@ -108,11 +107,11 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_A1_v2  | 1         | 2            | 10                   | 1/中                 |
-| Standard_A2_v2  | 2         | 4            | 20                   | 2/中                 |
+| Standard_A1_v2  | 1         | #N/A            | 10                   | 1/中                 |
+| Standard_A2_v2  | #N/A         | 4            | 20                   | 2/中                 |
 | Standard_A4_v2  | 4         | 8            | 40                   | 4/高                     |
 | Standard_A8_v2  | 8         | 16           | 80                   | 8/高                     |
-| Standard_A2m_v2 | 2         | 16           | 20                   | 2/中                 |
+| Standard_A2m_v2 | #N/A         | 16           | 20                   | 2/中                 |
 | Standard_A4m_v2 | 4         | 32           | 40                   | 4/高                     |
 | Standard_A8m_v2 | 8         | 64           | 80                   | 8/高                     |
 
@@ -121,10 +120,10 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3.5          | 50                   | 1/中 |
-| Standard_D2     | 2         | 7            | 100                  | 2/高 |
+| Standard_D2     | #N/A         | 7            | 100                  | 2/高 |
 | Standard_D3     | 4         | 14           | 200                  | 4/高 |
 | Standard_D4     | 8         | 28           | 400                  | 8/高 |
-| Standard_D11    | 2         | 14           | 100                  | 2/高 |
+| Standard_D11    | #N/A         | 14           | 100                  | 2/高 |
 | Standard_D12    | 4         | 28           | 200                  | 4/高 |
 | Standard_D13    | 8         | 56           | 400                  | 8/高 |
 | Standard_D14    | 16        | 112          | 800                  | 8/非常高 |
@@ -133,11 +132,11 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3.5          | 50                   | 1/中 |
-| Standard_D2_v2  | 2         | 7            | 100                  | 2/高 |
+| Standard_D2_v2  | #N/A         | 7            | 100                  | 2/高 |
 | Standard_D3_v2  | 4         | 14           | 200                  | 4/高 |
 | Standard_D4_v2  | 8         | 28           | 400                  | 8/高 |
 | Standard_D5_v2  | 16        | 56           | 800                  | 8/极高 |
-| Standard_D11_v2 | 2         | 14           | 100                  | 2/高 |
+| Standard_D11_v2 | #N/A         | 14           | 100                  | 2/高 |
 | Standard_D12_v2 | 4         | 28           | 200                  | 4/高 |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8/高 |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/极高 |
@@ -146,7 +145,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 ## <a name="g-series"></a>G 系列
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_G1     | 2         | 28           | 384                  |1/高 |
+| Standard_G1     | #N/A         | 28           | 384                  |1/高 |
 | Standard_G2     | 4         | 56           | 768                  |2/高 |
 | Standard_G3     | 8         | 112          | 1,536                |4/非常高 |
 | Standard_G4     | 16        | 224          | 3,072                |8/极高 |
@@ -169,7 +168,7 @@ Azure H 系列虚拟机是下一代高性能计算 VM，旨在满足高端计算
 \*支持 RDMA
 
 ## <a name="configure-sizes-for-cloud-services"></a>配置云服务的大小
-你可以指定角色实例的虚拟机大小作为[服务定义文件](cloud-services-model-and-package.md#csdef)描述的服务模型的一部分。 角色大小确定了 CPU 核心数目、内存容量，以及分配给正在运行的实例的本地文件系统大小。 根据应用程序的资源要求选择角色大小。
+可以指定角色实例的虚拟机大小作为[服务定义文件](cloud-services-model-and-package.md#csdef)描述的服务模型的一部分。 角色大小确定了 CPU 核心数目、内存容量，以及分配给正在运行的实例的本地文件系统大小。 根据应用程序的资源要求选择角色大小。
 
 下面是一个将 Web 角色实例的角色大小设置为 [Standard_D2](#general-purpose-d) 的示例：
 
@@ -181,10 +180,10 @@ Azure H 系列虚拟机是下一代高性能计算 VM，旨在满足高端计算
 
 ## <a name="changing-the-size-of-an-existing-role"></a>更改现有角色的大小
 
-工作负荷性质更改或有新的 VM 大小可用时，可能需要更改角色的大小。 为此，必须在服务定义文件中更改 VM 大小（如上所示），然后重新打包云服务并进行部署。 不能直接从门户或 PowerShell 更改 VM 大小。
+工作负荷性质更改或有新的 VM 大小可用时，可能需要更改角色的大小。 为此，必须在服务定义文件中更改 VM 大小（如上所示），并重新打包云服务并进行部署。 不能直接从门户或 PowerShell 更改 VM 大小。
 
 >[!TIP]
-> 用户可能希望在不同的环境（例如 测试和生产）中为角色使用不同的 VM 大小。 一种办法是在项目中创建多个服务定义文件 (.csdef)，然后使用 CSPack 工具在自动生成期间为每个环境创建不同的云服务包。 若要了解云服务包的元素以及如何创建云服务包，请参阅[什么是云服务模型以及如何打包？](cloud-services-model-and-package.md)
+> 用户可能希望在不同的环境（例如 测试和生产）中为角色使用不同的 VM 大小。 一种办法是在项目中创建多个服务定义文件 (.csdef)，并使用 CSPack 工具在自动生成期间为每个环境创建不同的云服务包。 若要了解云服务包的元素以及如何创建云服务包，请参阅[什么是云服务模型以及如何打包？](cloud-services-model-and-package.md)
 >
 >
 
@@ -198,4 +197,3 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)。
 * 针对 HPC 工作负荷，了解关于[高性能计算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的详细信息。
-

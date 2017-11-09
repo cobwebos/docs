@@ -57,6 +57,10 @@
           href: concepts-servers.md
         - name: 支持的版本
           href: concepts-supported-versions.md
+        - name: 服务器日志
+          href: concepts-server-logs.md
+        - name: 高可用性
+          href: concepts-high-availability.md
     - name: 资源
       items:
         - name: 定价层
@@ -71,10 +75,12 @@
           href: concepts-firewall-rules.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
+    - name: 监视
+      href: concepts-monitoring.md
     - name: 开发
       items:
-        - name: 连接库
-          href: concepts-connection-libraries.md
+        - name: 驱动程序和工具兼容性
+          href: concepts-compatibility.md
         - name: 应用程序开发
           href: concepts-database-application-development.md
     - name: 迁移数据库
@@ -99,6 +105,8 @@
       items:
         - name: Azure 门户
           href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
     - name: 连接应用程序
       items:
         - name: 连接字符串
@@ -111,6 +119,18 @@
       items:
         - name: Azure 门户
           href: howto-server-parameters.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-using-cli.md
+    - name: 访问服务器日志
+      items:
+        - name: Azure 门户
+          href: howto-configure-server-logs-in-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-logs-in-cli.md
+    - name: 监视
+      items:
+        - name: 针对指标创建警报
+          href: howto-alert-on-metric.md
 - name: 引用
   items:
     - name: Azure CLI
@@ -119,6 +139,8 @@
       href: /rest/api/mysql
 - name: 资源
   items:
+    - name: 部署模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价
@@ -135,3 +157,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 支持选项
       href: 'https://azure.microsoft.com/support/options/'
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'

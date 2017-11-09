@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -27,7 +26,7 @@ Azure 逻辑应用提供一组丰富的工具和模式，帮助确保集成可�
 
 ## <a name="retry-policies"></a>重试策略
 
-重试策略是最基本的异常和错误处理类型。 如果初始请求超时或失败（导致 429 或 5xx 响应的任何请求），此策略将定义是否应重试操作。 默认情况下，所有操作都会以 20 秒间隔额外重试 4 次。 因此，如果第一个请求收到 `500 Internal Server Error` 响应，则工作流引擎会暂停 20 秒，然后再次尝试请求。 如果进行所有重试之后，响应仍然是异常或失败，则工作流会继续进行，并将操作状态标记为 `Failed`。
+重试策略是最基本的异常和错误处理类型。 如果初始请求超时或失败（导致 429 或 5xx 响应的任何请求），此策略将定义是否应重试操作。 默认情况下，所有操作都会以 20 秒间隔额外重试 4 次。 因此，如果第一个请求收到 `500 Internal Server Error` 响应，则工作流引擎会暂停 20 秒，再次尝试请求。 如果进行所有重试之后，响应仍然是异常或失败，则工作流会继续进行，并将操作状态标记为 `Failed`。
 
 可以在特定操作的**输入**中配置重试策略。 例如，可将重试策略配置为每隔 1 小时尝试多达 4 次。 有关输入属性的完整详细信息，请参阅[工作流操作和触发器][retryPolicyMSDN]。
 
@@ -113,9 +112,9 @@ Azure 逻辑应用提供一组丰富的工具和模式，帮助确保集成可�
 
 尽管从范围中捕获失败非常有用，但可能还需要借助上下文来确切了解失败的操作以及返回的任何错误或状态代码。 `@result()` 工作流函数提供有关范围中所有操作的结果的上下文。
 
-`@result()` 采用单个参数、范围名称，并从该范围中返回所有操作结果的数组。 这些操作对象包含与 `@actions()` 对象相同的属性，包括操作开始时间、操作结束时间、操作状态、操作输入、操作相关 ID 和操作输出。 若要发送范围中失败的任何操作的上下文，可以轻松地将 `@result()` 函数与 `runAfter` 搭配使用。
+`@result()` 采用单个参数、范围名称，并从该范围中返回所有操作结果的数组。 这些操作对象包含与 `@actions()` 对象相同的属性，包括操作开始时间、操作结束时间、操作状态、操作输入、操作相关 ID 和操作输出。 要发送范围中失败的任何操作的上下文，可以轻松地将 `@result()` 函数与 `runAfter` 搭配使用。
 
-若要对范围中状态为 `Failed` 的*每个*操作执行操作，或者将结果数组筛选为失败的操作，可将 `@result()` 与**[筛选数组](../connectors/connectors-native-query.md)**操作和 **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)** 循环搭配使用。 可以采用筛选的结果数组并使用 **ForEach** 循环对每个失败执行操作。 以下示例（后面随附了详细的说明）发送一个 HTTP POST 请求，其中包含范围 `My_Scope` 中失败的任何操作的响应正文。
+要对范围中状态为 `Failed` 的*每个*操作执行操作，或者将结果数组筛选为失败的操作，可将 `@result()` 与**[筛选数组](../connectors/connectors-native-query.md)**操作和 **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)** 循环搭配使用。 可以采用筛选的结果数组并使用 **ForEach** 循环对每个失败执行操作。 以下示例（后面随附了详细的说明）发送一个 HTTP POST 请求，其中包含范围 `My_Scope` 中失败的任何操作的响应正文。
 
 ```json
 "Filter_array": {
@@ -208,7 +207,7 @@ Azure 逻辑应用提供一组丰富的工具和模式，帮助确保集成可�
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure 诊断和遥测
 
 上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 
-[Azure 诊断](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供了一种简单方式，可将所有工作流事件（包括所有运行和操作状态）发送到 Azure 存储帐户或 Azure 事件中心。 若要评估运行状态，可以监视日志和指标，或将它们发布到偏好的任何监视工具中。 一种潜在选项是通过 Azure 事件中心将所有事件流式传输到[流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以编写从诊断日志进行的任何异常、平均值或失败的实时查询。 流分析可以轻松输出到其他数据源，如队列、主题、SQL、Azure Cosmos DB 和 Power BI。
+[Azure 诊断](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供了一种简单方式，可将所有工作流事件（包括所有运行和操作状态）发送到 Azure 存储帐户或 Azure 事件中心。 要评估运行状态，可以监视日志和指标，或将它们发布到偏好的任何监视工具中。 一种潜在选项是通过 Azure 事件中心将所有事件流式传输到[流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以编写从诊断日志进行的任何异常、平均值或失败的实时查询。 流分析可以轻松输出到其他数据源，如队列、主题、SQL、Azure Cosmos DB 和 Power BI。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -219,4 +218,3 @@ Azure 逻辑应用提供一组丰富的工具和模式，帮助确保集成可�
 
 <!-- References -->
 [retryPolicyMSDN]: https://docs.microsoft.com/rest/api/logic/actions-and-triggers#Anchor_9
-

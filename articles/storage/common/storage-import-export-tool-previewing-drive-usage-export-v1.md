@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="previewing-drive-usage-for-an-export-job"></a>预览导出作业的驱动器使用情况
 在创建导出作业之前，需要选择一组要导出的 blob。 Microsoft Azure 导入/导出服务允许使用一系列 blob 路径或 blob 前缀来表示选定的 blob。  
   
@@ -80,4 +78,3 @@ Number of drives needed:        3
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 导入/导出工具参考](../storage-import-export-tool-how-to-v1.md)
-

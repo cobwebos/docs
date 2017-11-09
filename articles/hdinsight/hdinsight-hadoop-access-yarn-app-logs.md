@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 798bd85dc136853a73e8a675f7a060a2ad2cf246
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 90323af4a1f4526ab9b26811c8679337076112d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上访问 YARN 应用程序日志
 本主题说明如何访问 Azure HDInsight 中基于 Windows 的 Hadoop 群集上已完成的 YARN (Yet Another Resource Negotiator) 应用程序的日志
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/08/2017
 * 为完成应用程序而进行的尝试的相关信息
 * 任何给定应用程序尝试所用的容器
 
-在 HDInsight 群集上，由 Azure Resource Manager 将这项信息存储到默认存储帐户的默认容器中的历史记录存储中。 可以通过 REST API 检索有关已完成的应用程序的此类泛型数据：
+在 HDInsight 群集上，由 Azure 资源管理器将这项信息存储到默认 Azure 存储帐户的默认容器中的历史记录存储中。 可以通过 REST API 检索有关已完成的应用程序的此类泛型数据：
 
     GET on https://<cluster-dns-name>.azurehdinsight.net/ws/v1/applicationhistory/apps
 
@@ -63,7 +62,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 在该位置中，*user* 是启动应用程序的用户名，*applicationId* 是 YARN RM 分配的应用程序唯一标识符。
 
-无法直接阅读聚合日志，因为它们是以 [TFile][T-file]（由容器编制索引的[二进制格式][binary-format]）编写。 YARN 提供 CLI 工具，可针对你感兴趣的应用程序或容器，将这些日志转储成纯文本。 你可以直接在群集节点上（通过 RDP 连接到节点之后）运行以下 YARN 命令之一，以纯文本格式查看这些日志：
+无法直接阅读聚合日志，因为它们是以 [TFile][T-file]（由容器编制索引的[二进制格式][binary-format]）编写。 YARN 提供 CLI 工具，可针对你感兴趣的应用程序或容器，将这些日志转储成纯文本。 可以直接在群集节点上（通过 RDP 连接到节点之后）运行以下 YARN 命令之一，以纯文本格式查看这些日志：
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
@@ -82,4 +81,3 @@ YARN ResourceManager UI 在群集头节点上运行，且可以通过 Azure 门�
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]:http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
-

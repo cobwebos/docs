@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7513f405d5c7c05a8e6e2b7b0e6313f23a319c84
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 OMS 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Log Analytics，其中相应的记录会在 OMS 存储库中创建。  
@@ -200,16 +199,6 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
 | 查询 | 说明 |
 |:--- |:--- |
-| Type=Syslog |所有 Syslog。 |
-| Type=Syslog SeverityLevel=error |具有错误严重级别的所有 Syslog 记录。 |
-| Type=Syslog &#124; measure count() by Computer |按计算机计算的 Syslog 记录数目。 |
-| Type=Syslog &#124; measure count() by Facility |按设施计算的 Syslog 记录数目。 |
-
->[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
-
-> | 查询 | 说明 |
-|:--- |:--- |
 | Syslog |所有 Syslog。 |
 | Syslog &#124; where SeverityLevel == "error" |具有错误严重级别的所有 Syslog 记录。 |
 | Syslog &#124; summarize AggregatedValue = count() by Computer |按计算机计算的 Syslog 记录数目。 |
@@ -219,4 +208,3 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。
 * 使用[自定义字段](log-analytics-custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
 * [配置 Linux 代理](log-analytics-linux-agents.md)以收集其他类型的数据。
-

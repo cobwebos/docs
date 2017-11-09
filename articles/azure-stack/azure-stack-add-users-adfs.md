@@ -1,6 +1,6 @@
 ---
-title: Add users for Azure Stack ADFS | Microsoft Docs
-description: Learn how to add users for ADFS deployments of Azure Stack
+title: "将用户添加为 Azure 堆栈 ADFS |Microsoft 文档"
+description: "了解如何添加 Azure 堆栈的 ADFS 部署的用户"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -11,24 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 5ff45235cffead8c665d5c8610edca3c787ac267
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: 2cad56caa182a9abdca02944000b1506953af3f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-users-in-the-azure-stack-development-kit"></a>Add users in the Azure Stack Development Kit
+# <a name="add-users-in-the-azure-stack-development-kit"></a>将用户添加 Azure 堆栈开发工具包中
 
-To add additional users to the Development Kit deployment, you must add them to the Azure Stack Development Kit directory using Microsoft Management Console from the Azure Stack host computer.
-1.  On the Azure Stack host computer, open Microsoft Management Console.
-2.  Click **File > Add or remove snap-in**.
-3.  Select **Active Directory Users and Computers** > **AzureStack.local** > **Users**.
-4.  Click **Action** > **New** > **User**.
-5.  In the New Object – User window, provide and confirm a password
-6.  Click **Next** to finalize the values and click Finish to create the user.
+*适用范围： Azure 堆栈开发工具包*
 
+若要将其他用户添加到开发工具包部署，必须将它们添加到 Azure 堆栈主机计算机中使用 Microsoft 管理控制台的 Azure 堆栈开发工具包目录中。
+1.  Azure 堆栈主机计算机上，打开 Microsoft 管理控制台。
+2.  单击**文件 > 添加或删除管理单元**。
+3.  选择**Active Directory 用户和计算机** > **AzureStack.local** > **用户**。
+4.  单击**操作** > **新** > **用户**。
+5.  在新建对象 – 用户窗口中，提供并确认密码
+6.  单击**下一步**以完成值并单击完成创建用户。
 
 

@@ -15,18 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 7926627aaa3f0da935131f491d927ab5cb4b35c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>在 Azure 中的 Linux VM 上配置 LVM
 本文介绍如何在 Azure 虚拟机中配置逻辑卷管理器 (LVM)。 尽管可以在任何连接到虚拟机的磁盘上配置 LVM，但默认情况下，大多数云映像不会在 OS 磁盘上配置 LVM。 这是为了防止重复卷组相关的问题，因为 OS 磁盘可能曾经连接到相同分发和类型的 VM（例如在执行恢复方案期间）。 因此建议只在数据磁盘上使用 LVM。
 
 ## <a name="linear-vs-striped-logical-volumes"></a>线性与条带化逻辑卷
-LVM 可用于将多个物理磁盘合并成单个存储卷。 默认情况下，LVM 通常会创建线性逻辑卷，这意味着，物理存储是串连在一起的。 在此情况下，读取/写入操作通常只发送到单个磁盘。 相比之下，我们也可以创建条带化逻辑卷，其中的读取和写入将分布到卷组（类似于 RAID0）中的多个磁盘。 出于性能考虑，你可能希望创建条带化逻辑卷，以便读取和写入操作利用所有附加的数据磁盘。
+LVM 可用于将多个物理磁盘合并成单个存储卷。 默认情况下，LVM 通常会创建线性逻辑卷，这意味着，物理存储是串连在一起的。 在此情况下，读取/写入操作通常只发送到单个磁盘。 相比之下，我们也可以创建条带化逻辑卷，其中的读取和写入将分布到卷组（类似于 RAID0）中的多个磁盘。 出于性能的考虑，你可能希望创建条带化逻辑卷，以便读取和写入操作利用所有附加的数据磁盘。
 
 本文档介绍如何将多个数据磁盘合并成单个卷组，然后创建条带化逻辑卷。 下面是通用化的步骤，适用于大多数分发。 在大多数情况下，Azure 上用于管理 LVM 的实用工具和工作流与其他环境中的基本上相同。 像往常一样，另请咨询 Linux 供应商配合特定分发使用 LVM 的文档和最佳实践。
 
@@ -178,4 +177,3 @@ LVM 可用于将多个物理磁盘合并成单个存储卷。 默认情况下，
     # sudo yum install util-linux
     # sudo fstrim /datadrive
     ```
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4d568fb2eca418ca939f7a76ac24197a0457fe47
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-1"></a>部署本地 StorSimple 设备 (Update 1)
 > [!div class="op_single_selector"]
@@ -267,5 +266,4 @@ StorSimple Manager 服务可以管理多个 StorSimple 设备。 执行以下步
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-virtual-device-u2.md)。
 * 使用 [StorSimple Manager 服务](storsimple-manager-service-administration.md) 管理 StorSimple 设备。
-
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 8f4174f0ed74706b8275c8b1f0a62753f2834fa2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-profile-data-sources"></a>数据配置文件数据源
 ## <a name="introduction"></a>介绍
@@ -70,7 +69,7 @@ ms.lasthandoff: 11/17/2016
 >
 
 ## <a name="viewing-data-profile-information"></a>查看数据配置文件信息
-找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 若要查看数据配置文件，请在数据目录门户窗口选择数据资产，然后选择“数据配置文件”。
+找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 要查看数据配置文件，请在数据目录门户窗口选择数据资产，并选择“数据配置文件”。
 
 ![](media/data-catalog-data-profile/data-catalog-view.png)
 
@@ -93,4 +92,3 @@ ms.lasthandoff: 11/17/2016
 ## <a name="see-also"></a>另请参阅
 * [How to register data sources](data-catalog-how-to-register.md)
 * [Azure 数据目录入门](data-catalog-get-started.md)
-

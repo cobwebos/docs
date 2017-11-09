@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric Docker Compose 预览版"
+title: "Azure Service Fabric Docker Compose 部署预览版"
 description: "Azure Service Fabric 接受 Docker Compose 格式，因此可以更轻松地安排使用 Service Fabric 的现有容器。 这种支持目前处于预览状态。"
 services: service-fabric
 documentationcenter: .net
@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: subramar
+ms.openlocfilehash: 92d1951de8c8c80f7b47033dc751cd65a63c43f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: e05d1a3d6111e3bbc34008226bcd1fdf35935450
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="docker-compose-application-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 应用程序支持（预览版）
+# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
 
-Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义多容器应用程序。 为了让客户轻松地熟练使用 Docker 来安排 Azure Service Fabric 中的现有容器应用程序，我们在平台中增加了对 Docker Compose 的本机预览支持。 Service Fabric 可接受 `docker-compose.yml` 文件的版本 3 和更高版本。 
+Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义多容器应用程序。 为了让客户轻松地熟练使用 Docker 来安排 Azure Service Fabric 中的现有容器应用程序，我们在平台中添加了对 Docker Compose 部署的本机预览支持。 Service Fabric 可接受 `docker-compose.yml` 文件的版本 3 和更高版本。 
 
 由于这种支持处于预览状态，因此仅支持一部分 Compose 指令。 例如，不支持应用程序升级。 但是，始终可以删除并部署应用程序，而不是对其进行升级。
 
@@ -31,29 +30,43 @@ Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义
 
 > [!NOTE]
 > 此功能处于预览状态，在生产环境中不受支持。
+> 以下示例基于运行时版本 6.0 和 SDK 版本 2.8。
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>在 Service Fabric 上部署一个 Docker Compose 文件
 
-以下命令创建一个 Service Fabric 应用程序（在上一示例中名为 `fabric:/TestContainerApp`），可以像对任何其他 Service Fabric 应用程序一样对该应用程序进行监视和托管。 指定的应用程序名称可用于运行状况查询。
+以下命令创建一个 Service Fabric 应用程序（名为 `fabric:/TestContainerApp`），可以像对任何其他 Service Fabric 应用程序一样对该应用程序进行监视和托管。 指定的应用程序名称可用于运行状况查询。
+Service Fabric 会将“DeploymentName”识别为 Compose 部署的标识符。
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-通过在 PowerShell 中运行以下命令，根据 docker-compose.yml 文件创建 Service Fabric Compose 应用程序：
+通过在 PowerShell 中运行以下命令，根据 docker-compose.yml 文件创建 Service Fabric Compose 部署：
 
 ```powershell
-New-ServiceFabricComposeDeployment -DeploymentName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
+New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` 和 `RegistryPassword` 指容器注册表用户名和密码。 创建完应用程序后，可以使用以下命令检查其状态：
+`RegistryUserName` 和 `RegistryPassword` 指容器注册表用户名和密码。 创建完部署后，可以使用以下命令检查其状态：
 
 ```powershell
-Get-ServiceFabricComposeDeploymentStatus -DeploymentName fabric:/TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
 ```
 
-若要通过 PowerShell 删除 Compose 应用程序，请使用以下命令：
+若要通过 PowerShell 删除 Compose 部署，请使用以下命令：
 
 ```powershell
-Remove-ServiceFabricComposeDeployment  -DeploymentName fabric:/TestContainerApp
+Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
+```
+
+若要通过 PowerShell 启动 Compose 部署升级，请使用以下命令：
+
+```powershell
+Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
+```
+
+接受升级之后，可以使用以下命令跟踪升级进度：
+
+```powershell
+Get-ServiceFabricComposeDeploymentUpgrade -Deployment TestContainerApp
 ```
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl)
@@ -61,19 +74,31 @@ Remove-ServiceFabricComposeDeployment  -DeploymentName fabric:/TestContainerApp
 或者，可以使用以下 Service Fabric CLI 命令：
 
 ```azurecli
-sfctl compose create --application-id fabric:/TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
+sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
-创建应用程序后，可以使用以下命令检查其状态：
+创建部署后，可以使用以下命令检查其状态：
 
 ```azurecli
-sfctl compose status --application-id TestContainerApp [ --timeout ]
+sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-若要删除 Compose 应用程序，请使用以下命令：
+若要删除 Compose 部署，请使用以下命令：
 
 ```azurecli
-sfctl compose remove  --application-id TestContainerApp [ --timeout ]
+sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
+```
+
+若要启动 Compose 部署升级，请使用以下命令：
+
+```powershell
+sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+接受升级之后，可以使用以下命令跟踪升级进度：
+
+```powershell
+sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
 ## <a name="supported-compose-directives"></a>支持的 Compose 指令
@@ -103,7 +128,7 @@ sfctl compose remove  --application-id TestContainerApp [ --timeout ]
 
 例如，如果指定的应用程序名称为 `fabric:/SampleApp/MyComposeApp`，则 `<ServiceName>.MyComposeApp.SampleApp` 将是注册的 DNS 名称。
 
-## <a name="differences-between-compose-instance-definition-and-service-fabric-application-model-type-definition"></a>Compose（实例定义）和 Service Fabric 应用程序模型（类型定义）之间的差异
+## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Compose 部署（实例定义）与 Service Fabric 应用模型（类型定义）
 
 docker-compose.yml 文件描述一组包括属性和配置在内的可部署容器。
 例如，该文件可以包含环境变量和端口。 还可以在 docker-compose.yml 文件中指定放置约束、资源限制和 DNS 名称等部署参数。
@@ -118,4 +143,3 @@ docker-compose.yml 文件描述一组包括属性和配置在内的可部署容�
 
 * 了解 [Service Fabric 应用程序模型](service-fabric-application-model.md)
 * [Service Fabric CLI 入门](service-fabric-cli.md)
-

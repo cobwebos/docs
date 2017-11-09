@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/06/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: e5c4785428b2150e951923e98079e00808a82d87
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -480,7 +479,7 @@ az vm availability-set create \
 ## <a name="create-the-linux-vms"></a>创建 Linux VM
 已创建用于支持可访问 Internet 的 VM 的网络资源。 现在创建 VM，并使用 SSH 密钥进行保护。 在此情况下，我们需要基于最新的 LTS 创建 Ubuntu VM。 可使用 [az vm image list](/cli/azure/vm/image#list) 查找其他映像，如[查找 Azure VM 映像](cli-ps-findimage.md)中所述。
 
-我们还将指定要用于身份验证的 SSH 密钥。 如果没有 SSH 公钥对，可[进行创建](mac-create-ssh-keys.md)或使用 `--generate-ssh-keys` 参数创建。 如果已有密钥对，此参数则使用 `~/.ssh` 中现有的密钥。
+我们还将指定用于身份验证的 SSH 密钥。 如果没有 SSH 公钥对，可[进行创建](mac-create-ssh-keys.md)或使用 `--generate-ssh-keys` 参数创建。 如果已有密钥对，此参数则使用 `~/.ssh` 中现有的密钥。
 
 使用 [az vm create](/cli/azure/vm#create) 命令并结合所有资源和信息来创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
 
@@ -579,4 +578,3 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 现在，已准备好开始使用多个网络组件和 VM。 可以使用此处介绍的核心组件，通过此示例环境来构建应用程序。
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 35413d597c3b6b1c7600241a78572b63f982d175
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“设备摘要”边栏选项卡
 
@@ -35,7 +34,7 @@ StorSimple Device Manager 设备边栏选项卡提供已注册到给定 StorSimp
 
 ## <a name="management"></a>管理
 
-在 StorSimple 设备边栏选项卡中，你将看到用于管理 StorSimple 设备的选项。 在该边栏选项卡的顶部和左侧可看到管理命令。 使用这些选项可以添加共享或卷，也可以对虚拟阵列进行更新或故障转移。
+在 StorSimple 设备边栏选项卡中，会看到用于管理 StorSimple 设备的选项。 在该边栏选项卡的顶部和左侧可看到管理命令。 使用这些选项可以添加共享或卷，也可以对虚拟阵列进行更新或故障转移。
 
 “概要”区域捕获一些重要属性（如状态、型号、软件版本），并提供指向阵列的 **Web UI** 的链接。 如果在内部网络上，则可以直接启动[本地 Web UI](storsimple-ova-web-ui-admin.md) 来管理虚拟阵列。
 
@@ -43,7 +42,7 @@ StorSimple Device Manager 设备边栏选项卡提供已注册到给定 StorSimp
 
 ## <a name="storsimple-device-summary"></a>StorSimple 设备概要
 
-* “警报”磁贴提供虚拟阵列的所有活动警报的快照，这些警报按警报严重性分组。 单击该磁贴可打开“警报”边栏选项卡，然后单击单个警报可查看有关该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
+* “警报”磁贴提供虚拟阵列的所有活动警报的快照，这些警报按警报严重性分组。 单击该磁贴可打开“警报”边栏选项卡，并单击单个警报可查看有关该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
 
 * “容量”磁贴显示所预配的主存储，以及虚拟设备相对于可用于同一虚拟设备的总存储剩余的存储空间。 **已预配**是指已准备且已分配供使用的存储量，**剩余**是指可以在此设备上预配的剩余容量。 **剩余分层**容量是可以预配的可用容量（包括云），而**剩余本地**是附加到此虚拟阵列的磁盘上剩余的容量。
 
@@ -56,5 +55,4 @@ StorSimple Device Manager 设备边栏选项卡提供已注册到给定 StorSimp
 - [管理 StorSimple 虚拟阵列上的共享](storsimple-virtual-array-manage-shares.md)
     
 - [管理 StorSimple 虚拟阵列上的卷](storsimple-virtual-array-manage-volumes.md)
-
 

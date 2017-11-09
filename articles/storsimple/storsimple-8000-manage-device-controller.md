@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 75c1bdb570967b6d1902697597f0b5bf3f4ffb7c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/08/2017
 
 我们建议通过 StorSimple 设备管理器服务管理设备控制器。 如果只能使用 Windows PowerShell for StorSimple 执行某个操作，本教程会提供相应的说明。
 
-阅读本教程之后，你将能够：
+阅读本教程之后，能够：
 
 * 重新启动或关闭 StorSimple 设备控制器
 * 关闭 StorSimple 设备
@@ -91,7 +90,7 @@ ms.lasthandoff: 07/08/2017
 本部分说明如何从远程计算机关闭正在运行的或有故障的 StorSimple 设备。 在关闭两个设备控制器后，设备会关闭。 以物理方式移动设备或者不再使用设备时，才需要执行关闭操作。
 
 > [!IMPORTANT]
-> 关闭设备之前，请检查设备组件的运行状况。 导航到设备，单击“设置”>“硬件运行状况”。 在“状态和硬件运行状况”边栏选项卡中，检查所有组件的 LED 状态是否为绿色。 只有状况正常的设备才显示绿色状态。 如果正在关闭设备以便更换有故障的组件，将会看到相应组件的状态为故障（红色）或降级（黄色）。
+> 关闭设备之前，请检查设备组件的运行状况。 导航到设备，单击“设置”>“硬件运行状况”。 在“状态和硬件运行状况”边栏选项卡中，检查所有组件的 LED 状态是否为绿色。 只有状况正常的设备才显示绿色状态。 如果正在关闭设备以便更换有故障的组件，会看到相应组件的状态为故障（红色）或降级（黄色）。
 
 
 #### <a name="to-shut-down-a-storsimple-device"></a>关闭 StorSimple 设备
@@ -126,7 +125,7 @@ ms.lasthandoff: 07/08/2017
 
 **问：** 如果设备上的两个控制器都运行正常并已打开，重新启动或关闭主动控制器会发生什么情况？
 
-**答：** 如果设备上的两个控制器都运行正常并已打开，系统会提示确认。 你可以选择：
+**答：** 如果设备上的两个控制器都运行正常并已打开，系统会提示确认。 可以选择：
 
 * **重启主动控制器** – 系统会告知，重启主动控制器将导致设备故障转移到被动控制器。 控制器重启。
 * **关闭主动控制器** – 系统会告知，关闭主动控制器会导致停机。 还需要在设备上按电源按钮打开控制器。
@@ -136,7 +135,7 @@ ms.lasthandoff: 07/08/2017
 **答：** 如果设备上的被动控制器不可用或已关闭，并且你选择：
 
 * **重启主动控制器** – 系统会告知，继续该操作会导致服务暂时中断，并提示确认。
-* **关闭主动控制器** – 系统会告知，继续操作会导致停机。 还需要按下一个或两个控制器上的电源按钮打开设备。 系统会提示你进行确认。
+* **关闭主动控制器** – 系统会告知，继续操作会导致停机。 还需要按下一个或两个控制器上的电源按钮打开设备。 系统会提示进行确认。
 
 **问：** 什么情况下无法重新启动或关闭控制器？
 
@@ -152,14 +151,13 @@ ms.lasthandoff: 07/08/2017
 
 **问：** 控制器故障转移是否对 I/O 造成任何影响？
 
-**答：** 在控制器故障转移后，发起程序与主动控制器之间的 TCP 连接将会重置，但是，在被动控制器接管操作后，会重新建立该连接。 在此操作期间，发起程序与设备之间的 I/O 活动可能会出现临时（小于 30 秒）的暂停。
+**答：** 在控制器故障转移后，发起程序与主动控制器之间的 TCP 连接会重置，但是，在被动控制器接管操作后，会重新建立该连接。 在此操作期间，发起程序与设备之间的 I/O 活动可能会出现临时（小于 30 秒）的暂停。
 
 **问：** 关闭或拆下控制器后，如何使控制器恢复工作？
 
-**答：** 若要使控制器恢复工作，必须根据[更换 StorSimple 设备上的控制器模块](storsimple-8000-controller-replacement.md)中所述将它插入机箱。
+**答：** 要使控制器恢复工作，必须根据[更换 StorSimple 设备上的控制器模块](storsimple-8000-controller-replacement.md)中所述将它插入机箱。
 
 ## <a name="next-steps"></a>后续步骤
 * 如果使用本教程中所列的过程无法解决你遇到的 StorSimple 设备控制器相关问题，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
 * 有关如何使用 StorSimple 设备管理器服务的详细信息，请转到[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
-
 

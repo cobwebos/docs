@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: e547469dc61eddd1d772571ab0919532ac91f128
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
@@ -246,7 +244,7 @@ ms.lasthandoff: 08/23/2017
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [标识服务器部署 - 缓存](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **步骤** | <p>IdentityServer 具有简单的内置内存中缓存。 尽管对于小规模本机应用而言这很合适，但是，出于以下原因，它无法根据中间层和后端应用程序缩放：</p><ul><li>这些应用程序同时由许多用户访问。 在同一个存储中保存所有访问令牌会产生隔离问题，并且在大规模运行时会带来难题：如果用户数目众多，并且每个用户的令牌数与应用代表他们访问的资源数相当，则可能意味着需要执行极大量的开销极高的查找操作</li><li>这些应用程序通常部署在分布式拓扑中，其中的多个节点必须能够访问同一个缓存</li><li>在进程回收和停用后，缓存的令牌必须能够幸存</li><li>出于上述所有原因，在实施 Web 应用时，建议使用 Azure Redis 缓存等可缩放的替代方案来覆盖标识服务器的默认令牌缓存</li></ul>|
+| **步骤** | <p>IdentityServer 具有简单的内置内存中缓存。 尽管对于小规模本机应用而言这很合适，但是，出于以下原因，它无法根据中间层和后端应用程序缩放：</p><ul><li>这些应用程序同时由许多用户访问。 在同一个存储中保存所有访问令牌会产生隔离问题，并且在大规模运行时会带来难题：如果用户数目众多，并且每个用户的令牌数与应用代表他们访问的资源数相当，则可能意味着需要执行极大量的开销极高的查找操作</li><li>这些应用程序通常部署在分布式拓扑中，其中的多个节点必须能够访问同一个缓存</li><li>在进程回收和停用后，缓存的令牌必须能够幸存</li><li>出于上述所有原因，在实施 Web 应用程序时，建议使用 Azure Redis 缓存等可缩放的替代方案来覆盖标识服务器的默认令牌缓存</li></ul>|
 
 ## <a id="binaries-signed"></a>确保部署的应用程序的二进制文件经过数字签名
 
@@ -362,7 +360,7 @@ ms.lasthandoff: 08/23/2017
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Azure Active Directory 对 Web 应用程序执行新式身份验证](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[使用 Redis 作为 ADAL 令牌缓存](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
-| **步骤** | <p>ADAL（Active Directory 身份验证库）使用的默认缓存是依赖于静态存储、可在进程范围内使用的内存中缓存。 尽管这很适合用于本机应用程序，但是，出于以下原因，它无法根据中间层和后端应用程序缩放：</p><ul><li>这些应用程序同时由许多用户访问。 在同一个存储中保存所有访问令牌会产生隔离问题，并且在大规模运行时会带来难题：如果用户数目众多，并且每个用户的令牌数与应用代表他们访问的资源数相当，则可能意味着需要执行极大量的开销极高的查找操作</li><li>这些应用程序通常部署在分布式拓扑中，其中的多个节点必须能够访问同一个缓存</li><li>在进程回收和停用后，缓存的令牌必须能够幸存</li></ul><p>出于上述所有原因，在实施 Web 应用时，建议使用 Azure Redis 缓存等可缩放的替代方案来覆盖默认的 ADAL 令牌缓存。</p>|
+| **步骤** | <p>ADAL（Active Directory 身份验证库）使用的默认缓存是依赖于静态存储、可在进程范围内使用的内存中缓存。 尽管这很适合用于本机应用程序，但是，出于以下原因，它无法根据中间层和后端应用程序缩放：</p><ul><li>这些应用程序同时由许多用户访问。 在同一个存储中保存所有访问令牌会产生隔离问题，并且在大规模运行时会带来难题：如果用户数目众多，并且每个用户的令牌数与应用代表他们访问的资源数相当，则可能意味着需要执行极大量的开销极高的查找操作</li><li>这些应用程序通常部署在分布式拓扑中，其中的多个节点必须能够访问同一个缓存</li><li>在进程回收和停用后，缓存的令牌必须能够幸存</li></ul><p>出于上述所有原因，在实施 Web 应用程序时，建议使用 Azure Redis 缓存等可缩放的替代方案来覆盖默认的 ADAL 令牌缓存。</p>|
 
 ## <a id="tokenreplaycache-adal"></a>确保使用 TokenReplayCache 防止 ADAL 身份验证令牌重放
 
@@ -562,7 +560,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -573,7 +571,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| **组件**               | Azure 存储空间 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用 |

@@ -12,15 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 09/15/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 71b0d4add7e642487f6d67cda692c500ee78b0e6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: 332326ce4188385aa6e569c812e16c3daa68bd5d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>如何为 Azure Redis 缓存配置异地复制功能
 
@@ -103,6 +101,9 @@ ms.lasthandoff: 07/08/2017
 - [是否可以链接不同大小的两个缓存？](#can-i-link-two-caches-with-different-sizes)
 - [是否可以在启用群集时使用异地复制？](#can-i-use-geo-replication-with-clustering-enabled)
 - [当缓存位于 VNET 中时是否可以使用异地复制？](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [什么是 Redis 异地复制的复制计划？](#what-is-the-replication-schedule-for-redis-geo-replication)
+- [异地复制需要多长时间？](#how-long-does-geo-replication-replication-take)
+- [复制恢复点是否受保证？](#is-the-replication-recovery-point-guaranteed)
 - [是否可以使用 PowerShell 或 Azure CLI 管理异地复制？](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
 - [跨 Azure 区域复制数据的费用是多少？](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
 - [尝试删除链接缓存时为何操作会失败？](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
@@ -141,6 +142,18 @@ ms.lasthandoff: 07/08/2017
 - 支持在同一 VNET 中的缓存间进行异地复制。
 - 也支持不同 VNET 中的缓存间异地复制，只要两个 VNET 都以这样一种方式进行配置，即最终 VNET 中的资源可以通过 TCP 连接到达彼此。
 
+### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>什么是 Redis 异地复制的复制计划？
+
+复制不按特定计划进行，而是以连续和异步方式进行，即 对主缓存进行的所有写入都会即时地异步复制到辅助缓存。
+
+### <a name="how-long-does-geo-replication-replication-take"></a>异地复制需要多长时间？
+
+复制以递增、异步和连续方式进行，所用时间通常不会与区域间的延迟相差太多。 在特定情况下的特定时间，辅助缓存可能需要从主缓存执行数据的完全同步。 在这种情况下，复制时间取决于多种因素，如：主缓存上的负载、缓存计算机上的可用带宽、区域间延迟等。例如，基于某种测试，我们发现美国东部和美国西部区域中完整 53 GB 异地复制对的复制时间可能是介于 5 到 10 分钟之间的任何值。
+
+### <a name="is-the-replication-recovery-point-guaranteed"></a>复制恢复点是否受保证？
+
+当前，对于异地复制模式下的缓存，持久性和导入/导出功能处于禁用状态。 因此，在客户启动故障转移情况下，或在异地复制对之间的复制链接中断的情况下，辅助缓存会保留到该时间点为止从主缓存同步的内存中数据。 在这种情况下不提供任何恢复点保证。
+
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>是否可以使用 PowerShell 或 Azure CLI管理异地复制？
 
 当前只能使用 Azure 门户管理异地复制。
@@ -167,5 +180,4 @@ ms.lasthandoff: 07/08/2017
 ## <a name="next-steps"></a>后续步骤
 
 了解有关 [Azure Redis 缓存高级层](cache-premium-tier-intro.md)的更多信息。
-
 

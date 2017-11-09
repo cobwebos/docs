@@ -1,6 +1,6 @@
 ---
-title: "将文件从 Azure StorSimple 上载到 Azure 媒体服务帐户中 | Microsoft Docs"
-description: "本文简述 Azure StorSimple 数据管理器。 本文还提供了其他教程的链接，这些教程介绍了如何从 StorSimple 提取数据并将其作为资产上载到 Azure 媒体服务帐户。"
+title: "将文件从 Azure StorSimple 上传到 Azure 媒体服务帐户中 | Microsoft Docs"
+description: "本文简述 Azure StorSimple 数据管理器。 本文还提供了其他教程的链接，这些教程介绍了如何从 StorSimple 提取数据并将其作为资产上传到 Azure 媒体服务帐户。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/27/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 866bc2c05acafa5ce6bf535bfce2de577cf98c0b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 636d55c15aa383208ffb39d5224123831af962c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>将文件从 Azure StorSimple 上载到 Azure 媒体服务帐户中
+# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>将文件从 Azure StorSimple 上传到 Azure 媒体服务帐户中
 
-本文简述 Azure StorSimple 数据管理器。 本文还提供了其他教程的链接，这些教程介绍了如何从 StorSimple 提取数据并将这些数据作为资产上载到 Azure 媒体服务 (AMS) 帐户。
+本文简述 Azure StorSimple 数据管理器。 本文还提供了其他教程的链接，这些教程介绍了如何从 StorSimple 提取数据并将这些数据作为资产上传到 Azure 媒体服务 (AMS) 帐户。
 
 > 
 > [!NOTE]
@@ -32,9 +31,9 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="overview"></a>概述
 
-在媒体服务中，可以将数字文件上载到资产中。 资产可包含视频、音频、图像、缩略图集合、文本轨迹和隐藏式字幕文件（以及这些文件的相关元数据。）上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
+在媒体服务中，可以将数字文件上传到资产中。 资产可包含视频、音频、图像、缩略图集合、文本轨迹和隐藏式字幕文件（以及这些文件的相关元数据。）上传文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
 
-[Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) 使用云存储作为本地解决方案的扩展，可跨本地存储和云存储自动将数据分层。 在将数据发送到云之前，StorSimple 设备会删除数据中的重复项并压缩数据，因此能够以极高的效率将大型文件发送到云中。 [StorSimple 数据管理器](../storsimple/storsimple-data-manager-overview.md)服务提供相应的 API 让你从 StorSimple 提取数据并以 AMS 资产的形式呈现数据。
+[Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) 使用云存储作为本地解决方案的扩展，可跨本地存储和云存储自动将数据分层。 在将数据发送到云之前，StorSimple 设备会删除数据中的重复项并压缩数据，因此能够以极高的效率将大型文件发送到云中。 [StorSimple 数据管理器](../storsimple/storsimple-data-manager-overview.md)服务提供相应的 API，让你从 StorSimple 提取数据并以 AMS 资产的形式呈现数据。
 
 ## <a name="get-started"></a>入门
 
@@ -57,5 +56,4 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以对上载的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。
-
+现在可以对上传的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。

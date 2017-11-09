@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 8f693bc51fc9635fae4376137e7e573bf74da7cb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-pricing-and-billing"></a>服务总线定价和计费
 服务总线推出标准和[高级](service-bus-premium-messaging.md)两种层级。 可为创建的每个服务总线服务命名空间选择一个服务层级，且此层级选择会应用到该命名空间内创建的所有实体。
@@ -99,4 +98,3 @@ ms.lasthandoff: 08/30/2017
 * 有关服务总线定价和计费的一些常见问题解答，请参阅[服务总线常见问题解答](service-bus-faq.md#pricing)。
 
 [Azure portal]: https://portal.azure.com
-

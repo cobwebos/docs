@@ -2,25 +2,28 @@
 
 ## [什么是 SQL 数据仓库？](sql-data-warehouse-overview-what-is.md)
 ## [数据仓库工作负荷](sql-data-warehouse-overview-workload.md)
-## [分布式数据](sql-data-warehouse-distributed-data.md)
-## [常见问题](sql-data-warehouse-overview-faq.md)
 
 # 入门
 
 ## [入门教程](sql-data-warehouse-get-started-tutorial.md)
+## [弹性查询教程](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 
-
-
 # 如何
+
+## 服务功能
+### [MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
+### [性能层](performance-tiers.md)
+### [数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [常见问题](sql-data-warehouse-overview-faq.md)
 
 ## 备份和还原
 
 ### [备份概述](sql-data-warehouse-backups.md)
 ### [还原概述](sql-data-warehouse-restore-database-overview.md)
 #### [Azure 门户](sql-data-warehouse-restore-database-portal.md)
-#### [PowerShell](sql-data-warehouse-restore-database-powershell.md)
+#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
 #### [REST](sql-data-warehouse-restore-database-rest-api.md)
 
 ## 连接
@@ -34,7 +37,7 @@
 
 ## 创建
 ### [Azure 门户](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 ### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 开发
@@ -80,6 +83,8 @@
 ### [Power BI 可视化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 ### [流分析](sql-data-warehouse-integrate-azure-stream-analytics.md)
 
+### [将弹性查询与 SQL 数据库和 SQL 数据仓库配合使用](how-to-use-elastic-query-with-sql-data-warehouse.md)
+
 ## 加载
 
 ### 概念
@@ -115,15 +120,17 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### 资源类
+#### [指南](resource-classes-for-workload-management.md)
+#### [分析工作负荷](analyze-your-workload.md)
 
 ## 性能
 
 ### [概述](sql-data-warehouse-overview-manage-user-queries.md)
 ### [列存储压缩](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [监视](sql-data-warehouse-manage-monitor.md)
-### [工作负载](sql-data-warehouse-develop-concurrency.md)
 
-## “安全”
+## 安全
 
 ### [概述](sql-data-warehouse-overview-manage-security.md)
 ### [审核](sql-data-warehouse-auditing-overview.md)

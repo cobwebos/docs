@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.translationtype: HT
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -129,4 +128,3 @@ Windows 10 客户端 SKU 支持企业状态漫游，但服务器 SKU 不支持�
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-

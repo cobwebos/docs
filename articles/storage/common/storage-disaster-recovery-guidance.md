@@ -3,7 +3,7 @@ title: "Azure 存储中断时怎么办 | Microsoft Docs"
 description: "Azure 存储中断时怎么办"
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
@@ -13,15 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: c768bdbb8e1ce2aae3eb5b6db0e48977366c83fb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1d9ccc1c81260379b5e645d338cbf1fa265e18d4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>在 Azure 存储中断时该怎么办
 Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各种不可控因素会导致一个或多个区域出现计划外服务中断，对我们造成影响。 为了帮助你应对这些偶发事件，我们提供了下述针对 Azure 存储服务的概述性指导。
 
@@ -54,7 +52,7 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 有关存储空间异地故障转移体验的一些观点：
 
 * 只能通过 Azure 存储团队触发存储空间异地故障转移 – 不需客户操作。
-* 针对 Blob、表、队列和文件的现有存储服务终结点在故障转移后保持不变；需要更新 DNS 条目才能从主要区域切换到次要区域。
+* 现存的 blob、表格、队列和文件的存储服务终结点在故障转移后将保持不变；Microsoft 提供的 DNS 入口将需要更新，以从主要区域切换到次要区域。  Microsoft 将作为异地故障转移进程的一部分自动执行此更新。
 * 在异地故障转移之前和过程中，由于灾难的影响，将无法对存储帐户进行写入访问，但如果存储帐户已配置为 RA-GRS，仍然可以从次要区域进行读取。
 * 完成异地故障转移且传播 DNS 更改后，将恢复对存储帐户的读取和写入访问权限；这会指向之前的辅助终结点。 
 * 请注意，如果存储帐户配置了 GRS 或 RA-GRS，则将具有写入访问权限。 
@@ -71,5 +69,4 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 * 文件 – 使用 [AzCopy](storage-use-azcopy.md) 或 [Azure PowerShell](storage-powershell-guide-full.md) 将文件复制到其他区域的其他存储帐户。
 
 若要深入了解如何创建充分利用 RA-GRS 功能的应用程序，请参阅[使用 RA-GRS 存储设计高可用性应用程序](../storage-designing-ha-apps-with-ragrs.md)
-
 

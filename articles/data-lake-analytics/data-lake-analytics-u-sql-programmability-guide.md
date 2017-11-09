@@ -13,15 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: e4e298475d7be7d51c8bd55be498371ed6ce77a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
-
+ms.openlocfilehash: bba8fff7997340e563c604f571604ee8d06eb719
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/30/2017
 ---
-
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
 U-SQL 是为大数据类型的工作负荷设计的查询语言。 U-SQL 的一个独有特点是将类似 SQL 的声明性语言与 C# 提供的可扩展性和可编程性结合起来。 本指南着重介绍通过 C# 实现的 U-SQL 语言的可扩展性和可编程性。
@@ -32,98 +29,95 @@ U-SQL 是为大数据类型的工作负荷设计的查询语言。 U-SQL 的一�
 
 ## <a name="get-started-with-u-sql"></a>U-SQL 入门  
 
-请看以下 U-SQL 脚本：
+查看以下 U-SQL 脚本：
 
 ```
 @a  = 
-    SELECT * FROM 
-        (VALUES
-            ("Contoso",   1500.0, "2017-03-39"),
-            ("Woodgrove", 2700.0, "2017-04-10")
-        ) AS 
-              D( customer, amount );
+  SELECT * FROM 
+    (VALUES
+       ("Contoso",   1500.0, "2017-03-39"),
+       ("Woodgrove", 2700.0, "2017-04-10")
+    ) AS D( customer, amount );
+
 @results =
-    SELECT
-        customer,
+  SELECT
+    customer,
     amount,
     date
-    FROM @a;    
+  FROM @a;    
 ```
 
-该脚本定义了 @a 行集并使用 @a 创建了 @results 行集。
+此脚本定义两个行集：`@a` 和 `@results`。 行集 `@results` 从 `@a`定义。
 
 ## <a name="c-types-and-expressions-in-u-sql-script"></a>U-SQL 脚本中的 C# 类型及表达式
 
-U-SQL 表达式是与 U-SQL 逻辑运算（如 `AND`、`OR` 和 `NOT`）配合使用的 C# 表达式。 U-SQL 表达式可与 SELECT、0EXTRACT、WHERE、HAVING、GROUP BY 和 DECLARE 配合使用。
-
-例如，以下脚本将字符串分析为 SELECT 子句中的 DateTime 值。
+U-SQL 表达式是与 U-SQL 逻辑运算（如 `AND`、`OR` 和 `NOT`）配合使用的 C# 表达式。 U-SQL 表达式可与 SELECT、0EXTRACT、WHERE、HAVING、GROUP BY 和 DECLARE 配合使用。 例如，以下脚本将字符串分析为 DateTime 值。
 
 ```
 @results =
-    SELECT
-        customer,
+  SELECT
+    customer,
     amount,
     DateTime.Parse(date) AS date
-    FROM @a;    
+  FROM @a;    
 ```
 
-以下脚本将字符串分析为 DECLARE 语句中的 DateTime 值。
+以下代码片段将字符串分析为 DECLARE 语句中的 DateTime 值。
 
 ```
-DECLARE @d DateTime = ToDateTime.Date("2016/01/01");
+DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
 ### <a name="use-c-expressions-for-data-type-conversions"></a>使用 C# 表达式进行数据类型转换
+
 以下示例演示如何使用 C# 表达式执行日期时间数据转换。 在此特定方案中，字符串日期/时间数据转换为标准日期时间（采用午夜 00:00:00 时间表示法）。
 
 ```
-DECLARE @dt String = "2016-07-06 10:23:15";
+DECLARE @dt = "2016-07-06 10:23:15";
 
 @rs1 =
-    SELECT 
-        Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
-        dt AS olddt
-    FROM @rs0;
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+  SELECT 
+    Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
+    dt AS olddt
+  FROM @rs0;
+
+OUTPUT @rs1 
+  TO @output_file 
+  USING Outputters.Text();
 ```
 
 ### <a name="use-c-expressions-for-todays-date"></a>使用 C# 表达式显示今天的日期
-可使用下面的 C# 表达式拉取今天的日期：
 
-```
-DateTime.Now.ToString("M/d/yyyy")
-```
+可使用下面的 C# 表达式拉取今天的日期：`DateTime.Now.ToString("M/d/yyyy")`
 
 以下示例演示如何在脚本中使用此表达式：
 
 ```
 @rs1 =
-    SELECT
-        MAX(guid) AS start_id,
-        MIN(dt) AS start_time,
-        MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
-        MIN(USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)) AS start_fiscalperiod,
-        DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
+  SELECT
+    MAX(guid) AS start_id,
+    MIN(dt) AS start_time,
+    MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
+    MIN(USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)) AS start_fiscalperiod,
+    DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
+    user,
+    des
+  FROM @rs0
+  GROUP BY user, des;
 ```
-
-
-
 ## <a name="using-net-assemblies"></a>使用 .NET 程序集
-U-SQL 扩展性模型很大程度取决于添加自定义代码的能力。 目前，U-SQL 提供添加你自己的基于 Microsoft .NET 的代码的简单方法（具体而言是 C#）。 但是，你也可以添加用其他 .NET 语言编写的自定义代码，例如 VB.NET 或 F#。 
+
+U-SQL 扩展性模型很大程度取决于从 .NET 程序集添加自定义代码的能力。 
 
 ### <a name="register-a-net-assembly"></a>注册 .NET 程序集
 
-使用 CREATE ASSEMBLY 语句将 .NET 程序集放入 U-SQL 数据库。 如果程序集位于数据库，则 U-SQL 脚本可以通过 REFERENCE ASSEMBLY 语句使用这些程序集。 
+使用 `CREATE ASSEMBLY` 语句将 .NET 程序集放入 U-SQL 数据库。 之后，U-SQL 脚本可以通过 `REFERENCE ASSEMBLY` 语句使用这些程序集。 
 
 以下代码演示如何注册程序集：
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
-    FROM "/myassembly.dll";
+   FROM "/myassembly.dll";
 ```
 
 以下代码演示如何引用程序集：
@@ -143,7 +137,6 @@ U-SQL 当前使用 .NET Framework 4.5 版本。 因此请确保自己的程序�
 每个上传的程序集 DLL、资源文件（如不同的运行时、本机程序集或配置文件）最大可为 400 MB。 部署的资源（通过 DEPLOY RESOURCE 或引用程序集部署）的总大小及其附加文件不能超过 3 GB。
 
 最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果同时需要 NewtonSoft Json.Net 库的版本 7 和版本 8，则需要将它们注册到两个不同的数据库。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
-
 
 ## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数 (UDF)
 U-SQL 用户定义的函数或 UDF 是编程例程，可接受参数、执行操作（例如复杂计算）并将操作的结果以值的形式返回。 UDF 的返回值只能是单个标量。 与任何其他 C# 标量函数相似，U-SQL UDF可在 U-SQL 基本脚本中进行调用。
@@ -200,7 +193,7 @@ public static string GetFiscalPeriod(DateTime dt)
 
 它能简单地计算会计月份及季度并返回字符串值。 对于 6 月（第一个会计季度的第一个月），我们使用“Q1:P1”。 对于 7 月，我们使用“Q1:P2”，以此类推。
 
-这是将用于 U-SQL 项目的一个常规 C# 函数。
+这是用于 U-SQL 项目的一个常规 C# 函数。
 
 下面是此方案中代码隐藏部分的样子：
 
@@ -248,9 +241,7 @@ namespace USQL_Programmability
 
             return "Q" + FiscalQuarter.ToString() + ":" + FiscalMonth.ToString();
         }
-
     }
-
 }
 ```
 
@@ -476,7 +467,7 @@ the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-若要在输出器中处理 UDT，则必须使用 ToString() 方法将其序列化，或创建一个自定义输出器。
+要在输出器中处理 UDT，则必须使用 ToString() 方法将其序列化，或创建一个自定义输出器。
 
 目前不能在 GROUP BY 中使用 UDT。 如果在 GROUP BY 中使用 UDT，将引发以下错误：
 
@@ -555,7 +546,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 U-SQL UDT 定义是常规 C# 类型，可包括对运算符（如 +/==/!=）的重写。 它还可包括静态方法。 例如，如果将此 UDT 用作 U-SQL MIN 聚合函数的参数，则必须定义 < 运算符重写。
 
-本指南先前演示了示例 - 从 Qn:Pn (Q1:P10) 格式的特定日期确定会计时段。 以下示例展示如何定义会计时段值的自定义类型。
+本指南先前演示了示例：从 `Qn:Pn (Q1:P10)` 格式的特定日期确定会计时段。 以下示例展示如何定义会计时段值的自定义类型。
 
 以下示例演示了代码隐藏部分和用于该部分的自定义 UDT 和 IFormatter 接口：
 
@@ -658,9 +649,9 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-定义的类型包括两个数字：季度和月份。 运算符 ==/!=/>/< 和静态方法 ToString() 在此处定义。
+定义的类型包括两个数字：季度和月份。 运算符 `==/!=/>/<` 和静态方法 `ToString()` 在此处定义。
 
-如前文所述，UDT 可在 SELECT 表达式中使用，但不能在未进行自定义序列化的情况下在 OUTPUTTER/EXTRACTOR 中使用。 必须使用 ToString() 将其序列化为字符串，或将其与 OUTPUTTER/EXTRACTOR 配合使用。
+如前文所述，UDT 可在 SELECT 表达式中使用，但不能在未进行自定义序列化的情况下在 OUTPUTTER/EXTRACTOR 中使用。 必须使用 `ToString()` 将其序列化为字符串，或将其与自定义 OUTPUTTER/EXTRACTOR 配合使用。
 
 接下来讨论 UDT 的用法。 在代码隐藏部分中，已将 GetFiscalPeriod 函数更改为以下值：
 
@@ -1509,7 +1500,7 @@ USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="use-user-defined-processors"></a>使用用户定义的处理器
-用户定义的处理器或称 UDP 是一种 U-SQL UDO，可让你通过应用可编程性功能处理传入的行。 使用 UDP 可以根据需要合并列、修改值和添加新列。 从基本意义上说，它有助于处理行集，以生成所需的数据元素。
+用户定义的处理器 (UDP) 是一种 U-SQL UDO，可让你通过应用可编程性功能处理传入的行。 使用 UDP 可以根据需要合并列、修改值和添加新列。 从基本意义上说，它有助于处理行集，以生成所需的数据元素。
 
 若要定义 UDP，需使用 `SqlUserDefinedProcessor` 属性创建 `IProcessor` 接口，这对于 UDP 是可选的。
 
@@ -2123,7 +2114,7 @@ public class EmptyUserReducer : IReducer
 **SqlUserDefinedReducer** 是用户定义的化简器定义的可选属性。 可用于定义 IsRecursive 属性。
 
 * bool     IsRecursive    
-* **true** = 指示此减除器是否是幂等的
+* **true** = 指示此化简器是否关联和可交换
 
 主要可编程性对象是输入和输出。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
 
@@ -2184,7 +2175,7 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-在此用例场景中，化简器将跳过具有空用户名的行。 对于行集中的每一行，它读取所需的每一列，然后计算用户名的长度。 仅当用户名值长度大于 0 时，它才输出实际行。
+在此用例场景中，化简器将跳过具有空用户名的行。 对于行集中的每一行，它读取所需的每一列，并计算用户名的长度。 仅当用户名值长度大于 0 时，它才输出实际行。
 
 下面是使用自定义化简器的基本 U-SQL 脚本：
 
@@ -2220,4 +2211,3 @@ OUTPUT @rs2
     TO @output_file 
     USING Outputters.Text();
 ```
-

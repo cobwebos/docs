@@ -11,13 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c48dc5cb5dd6dfa09ff9718e78f8d560886851be
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: ea6e6c4044a0163ae36d6790755b67c5066251a8
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 04/27/2017
 
 ## <a name="telemetry-correlation-data-model"></a>遥测关联数据模型
 
-Application Insights 定了义用于分配遥测关联的[数据模型](application-insights-data-model.md)。 若要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使单个层失去了遥测功能，也仍可关联其他组件报告的遥测。
+Application Insights 定了义用于分配遥测关联的[数据模型](application-insights-data-model.md)。 要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使单个层失去了遥测功能，也仍可关联其他组件报告的遥测。
 
 分布式逻辑操作通常由一系列小规模操作（某个组件处理的请求）构成。 这些操作由[请求遥测](application-insights-data-model-request-telemetry.md)定义。 每个请求遥测具有自身的 `id`，用于对自身进行唯一全局标识。 与此请求关联的所有遥测（跟踪、异常等）应将 `operation_parentId` 设置为请求 `id` 的值。
 
@@ -35,7 +34,7 @@ Application Insights 定了义用于分配遥测关联的[数据模型](applicat
 
 可以结合 `dependency.id` 使用 `operation_Id`、`operation_parentId` 和 `request.id` 生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
 
-在微服务环境中，来自组件的跟踪可能会进入不同的存储。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，需要查询每个存储中的数据。 如果存储数目极大，你需要提示后续查找位置。
+在微服务环境中，来自组件的跟踪可能会进入不同的存储。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，需要查询每个存储中的数据。 如果存储数目极大，需要提示后续查找位置。
 
 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段定义发起依赖项请求的组件，第二个字段定义哪个组件返回依赖项调用的响应。
 
@@ -111,4 +110,3 @@ ASP.NET Classic 有一个新的 Http 模块 [Microsoft.AspNet.TelemetryCorrelati
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](app-insights-platforms.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
-

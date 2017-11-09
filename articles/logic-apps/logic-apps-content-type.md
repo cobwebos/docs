@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="handle-content-types-in-logic-apps"></a>在逻辑应用中处理内容类型
 
@@ -48,13 +47,13 @@ ms.lasthandoff: 07/06/2017
 
 ### <a name="schema-and-schema-generator"></a>架构和架构生成器
 
-可以使用请求触发器为预计要接收的有效负载输入 JSON 架构。 此架构可让设计器生成令牌，方便你使用请求的内容。 如果尚未准备好架构，请选择“使用示例有效负载生成架构”，以便从示例有效负载生成 JSON 架构。
+可以使用请求触发器为预计要接收的有效负载输入 JSON 架构。 此架构可让设计器生成令牌，以便使用请求的内容。 如果尚未准备好架构，请选择“使用示例有效负载生成架构”，以便从示例有效负载生成 JSON 架构。
 
 ![架构](./media/logic-apps-http-endpoint/manualtrigger.png)
 
 ### <a name="parse-json-action"></a>“Parse JSON”操作
 
-可以使用 `Parse JSON` 操作将 JSON 内容分析成适合在逻辑应用中使用的令牌。 此操作与请求触发器类似，可让你为要分析的内容输入或生成 JSON 架构。 此工具为使用服务总线、Azure Cosmos DB 等的数据提供了很大的方便。
+可以使用 `Parse JSON` 操作将 JSON 内容分析成适合在逻辑应用中使用的令牌。 此操作与请求触发器类似，用户能为要分析的内容输入或生成 JSON 架构。 此工具为使用服务总线、Azure Cosmos DB 等的数据提供了很大的方便。
 
 ![分析 JSON](./media/logic-apps-content-type/ParseJSON.png)
 
@@ -111,5 +110,4 @@ CustomerName=Frank&Address=123+Avenue
 ```
 
 目前，没有适用于表单数据的本机函数，因此仍可通过使用类似于 `@string(body('formdataAction'))` 的函数手动访问数据来使用工作流中的数据。 如果希望传出的请求也包含 `application/x-www-url-formencoded` 内容类型标头，可将请求添加到操作正文，而无需执行类似于 `@body('formdataAction')` 的任何强制转换。 但是，仅当正文是 `body` 输入中的唯一参数时，此方法才有效。 如果尝试在 `application/json` 请求中使用 `@body('formdataAction')`，将发生运行时错误，因为发送了编码的正文。
-
 

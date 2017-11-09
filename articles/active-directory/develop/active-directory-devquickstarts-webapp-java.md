@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: a20017a63ebed745e2d101d556e93594325533dc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/18/2017
-
+ms.openlocfilehash: 5358404881b65d217ab36a41ca04a73f2c462c86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Java Web 应用登录和注销
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -44,9 +43,9 @@ ms.lasthandoff: 03/18/2017
 若要设置应用对用户进行身份验证，请先执行以下操作，在租户中注册用户：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏中，单击你的帐户名。 在“目录”列表下选择要注册应用的 Active Directory 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
-4. 单击“应用注册”，然后选择“添加”。
+2. 在顶部栏中，单击帐户名。 在“目录”列表下选择要注册应用的 Active Directory 租户。
+3. 在左窗格中，单击“更多服务”，并选择“Azure Active Directory”。
+4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建一个 **Web 应用程序和/或 WebAPI**。
   * “名称”向用户描述应用。
   * “登录 URL”是应用的基 URL。 框架的默认 URL 为 http://localhost:8080/adal4jsample/。
@@ -173,7 +172,7 @@ ms.lasthandoff: 03/18/2017
 ## <a name="step-3-create-the-java-web-app-files-web-inf"></a>步骤 3：创建 Java Web 应用文件 (WEB-INF)
 在此步骤中，请将 Java Web 应用配置为使用 OpenID Connect 身份验证协议。 需要使用 ADAL4J 发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
 
-1. 打开位于 \webapp\WEB-INF\, 中的 web.xml 文件，然后在 XML 中输入应用配置值。 该 XML 文件应包含以下代码：
+1. 打开位于 \webapp\WEB-INF\, 中的 web.xml 文件，并在 XML 中输入应用配置值。 该 XML 文件应包含以下代码：
 
     ```xml
 
@@ -257,7 +256,7 @@ ms.lasthandoff: 03/18/2017
     </beans>
     ```
 
- 此代码告知 Web 应用要使用 Spring，以及在哪里查找我们将在下一部分编写的 JSP 文件。
+ 此代码告知 Web 应用要使用 Spring，以及在哪里查找我们会在下一部分编写的 JSP 文件。
 
 ## <a name="step-4-create-the-jsp-view-files-for-basicfilter-mvc"></a>步骤 4：创建 JSP 视图文件（适用于 BasicFilter MVC）
 在 WEB-INF 中设置 Web 应用的过程目前只完成了一半。 接下来，需要为 Web 应用将要执行的 BasicFilter 模型视图控制器 (MVC) 创建 JSP 文件。 我们已经提示过需要在配置过程中创建一些文件。
@@ -266,7 +265,7 @@ ms.lasthandoff: 03/18/2017
 
 若要创建 JSP 文件，请执行以下操作：
 
-1. 创建 index.jsp 文件（在 \webapp\) 下面），然后粘贴以下代码：
+1. 创建 index.jsp 文件（在 \webapp\) 下面），并粘贴以下代码：
 
     ```jsp
     <html>
@@ -298,7 +297,7 @@ ms.lasthandoff: 03/18/2017
     </html>
     ```
 3. 若要生成该安全网页，请在 \webapp 中创建名为 \secure 的文件夹，因此，目录现在为 \webapp\secure。
-4. 在 \webapp\secure 目录中创建 aad.jsp 文件，然后粘贴以下代码：
+4. 在 \webapp\secure 目录中创建 aad.jsp 文件，并粘贴以下代码：
 
     ```jsp
 
@@ -344,9 +343,9 @@ ms.lasthandoff: 03/18/2017
 
 1. 在根目录中创建一个名为 adal4jsample 的文件夹，用于存储所有 Java 文件。
 
-    本示例将在 Java 文件中使用命名空间 com.microsoft.aad.adal4jsample。 大多数 IDE 为此创建嵌套的文件夹结构（例如 /com/microsoft/aad/adal4jsample）。 你也可以这样做，但不是非要这样做。
+    本示例会在 Java 文件中使用命名空间 com.microsoft.aad.adal4jsample。 大多数 IDE 为此创建嵌套的文件夹结构（例如 /com/microsoft/aad/adal4jsample）。 也可以这样做，但不是非要这样做。
 
-2. 在此文件夹中创建名为 JSONHelper.java 的文件，到时将要使用它来帮助分析令牌中的 JSON 数据。 若要创建该文件，请粘贴以下代码：
+2. 在此文件夹中创建名为 JSONHelper.java 的文件，到时会要使用它来帮助分析令牌中的 JSON 数据。 若要创建该文件，请粘贴以下代码：
 
     ```Java
 
@@ -568,7 +567,7 @@ ms.lasthandoff: 03/18/2017
 
     ```
 
-3. 创建名为 HttpClientHelper.java 的文件，到时将要使用它来帮助分析 Azure AD 终结点中的 HTTP 数据。 若要创建该文件，请粘贴以下代码：
+3. 创建名为 HttpClientHelper.java 的文件，到时会要使用它来帮助分析 Azure AD 终结点中的 HTTP 数据。 若要创建该文件，请粘贴以下代码：
 
     ```Java
 
@@ -1298,7 +1297,7 @@ ms.lasthandoff: 03/18/2017
 ## <a name="step-7-create-the-authentication-model-and-controller-files-for-basicfilter"></a>步骤 7：创建身份验证模型和控制器文件（适用于 BasicFilter）
 我承认 Java 代码可能相当冗长，但我们很快就要完成了。 在编写 BasicFilter Servlet 来处理请求之前，需要编写 ADAL4J 所需的其他一些帮助器文件。
 
-1. 创建名为 AuthHelper.java 的文件，它将会提供用于确定已登录用户状态的方法。 方法包括：
+1. 创建名为 AuthHelper.java 的文件，它会提供用于确定已登录用户状态的方法。 方法包括：
 
  * **isAuthenticated()**：返回有关用户是否已登录的信息。
  * **containsAuthenticationData()**：返回有关令牌是否包含数据的信息。
@@ -1711,16 +1710,15 @@ public class BasicFilter implements Filter {
 /targets 目录中现在应该包含 adal4jsample.war 文件。 可在 Tomcat 容器中部署该文件并访问 URL http://localhost:8080/adal4jsample/。
 
 > [!NOTE]
-> 使用最新的 Tomcat 服务器可以轻松部署 .war 文件。 转到 http://localhost:8080/manager/ 并遵循有关上载 adal4jsample.war 文件的说明即可。 它会为你自动部署正确的终结点。
+> 使用最新的 Tomcat 服务器可以轻松部署 .war 文件。 转到 http://localhost:8080/manager/ 并遵循有关上传 adal4jsample.war 文件的说明即可。 它会自动部署正确的终结点。
 
 
 ## <a name="next-steps"></a>后续步骤
 现已创建一个正常运行的 Java 应用，它可以对用户进行身份验证，使用 OAuth 2.0 安全调用 Web API，以及获取有关用户的基本信息。 如果尚未在租户中填充用户，现在便可执行此操作。
 
-如需其他参考，可通过以下两种方法之一获取已完成的示例（不包括你的配置值）：
+如需其他参考，可通过以下两种方法之一获取已完成的示例（不包括配置值）：
 
 * 下载以 [.zip 文件](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip)提供的示例。
 * 输入以下命令，从 GitHub 克隆该文件：
 
  ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
-

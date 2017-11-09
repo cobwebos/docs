@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>使用 Azure 在 Linux 虚拟机上设置 Tomcat7
 Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache Software Foundation (ASF) 开发的一个开源 Web 服务器和 servlet 容器。 Tomcat 实现了 Sun Microsystems 提出的 Java Servlet 和 JavaServer Pages (JSP) 规范。 Tomcat 提供用于运行 Java 代码的纯 Java HTTP Web 服务器环境。 在最简单的配置中，Tomcat 在单个操作系统进程中运行。 此进程运行 Java 虚拟机 (JVM)。 浏览器向 Tomcat 发出的每个 HTTP 请求都作为 Tomcat 进程中的单独线程进行处理。  
@@ -28,9 +27,9 @@ Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache S
 > [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 我们建议在大多数新部署中使用 Resource Manager 模型。 若要使用 Resource Manager 模板通过 Open JDK 和 Tomcat 部署 Ubuntu VM，请参阅[此文](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)。
 
-在本文中，我们将在 Linux 映像中安装 Tomcat7，并将其部署到 Azure。  
+在本文中，我们会在 Linux 映像中安装 Tomcat7，并将其部署到 Azure。  
 
-你将学习以下内容：  
+将学习以下内容：  
 
 * 如何在 Azure 中创建虚拟机。
 * 如何准备适用于 Tomcat7 的虚拟机。
@@ -41,10 +40,10 @@ Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache S
 本文假设读者具备 Tomcat 和 Linux 的基本实践知识。  
 
 ## <a name="phase-1-create-an-image"></a>阶段 1：创建映像
-在此阶段，我们将在 Azure 中使用 Linux 映像创建虚拟机。  
+在此阶段，我们会在 Azure 中使用 Linux 映像创建虚拟机。  
 
 ### <a name="step-1-generate-an-ssh-authentication-key"></a>步骤 1：生成 SSH 身份验证密钥
-SSH 是面向系统管理员的重要工具。 但是，我们并不建议基于人工确定的密码配置访问安全性。 恶意用户可以根据用户名和弱密码侵入你的系统。
+SSH 是面向系统管理员的重要工具。 但是，我们并不建议基于人工确定的密码配置访问安全性。 恶意用户可以根据用户名和弱密码侵入系统。
 
 好消息是，有办法使远程访问保持打开状态，而无需担心密码。 此方法包括使用非对称加密进行身份验证。 用户的私钥是授予身份验证的密钥。 甚至可以锁定用户的帐户，以禁止密码身份验证。
 
@@ -58,7 +57,7 @@ SSH 是面向系统管理员的重要工具。 但是，我们并不建议基于
 2. 运行 Puttygen.exe。
 3. 单击“生成”生成密钥。 在此过程中，可以通过将鼠标放在窗口中的空白区域上来增加随机性。  
    ![显示“生成新密钥”按钮的 PuTTY 密钥生成器屏幕截图][1]
-4. 生成过程结束后，Puttygen.exe 将显示新的公钥。  
+4. 生成过程结束后，Puttygen.exe 会显示新的公钥。  
    ![显示新公钥和“保存私钥”按钮的 PuTTY 密钥生成器屏幕截图][2]
 5. 选择并复制公钥，然后将它保存到名为 publicKey.pem 的文件中。 不要单击“保存公钥”，因为保存的公钥的文件格式不同于所需的公钥。
 6. 单击“保存私钥”，并将其保存到名为 privateKey.ppk 的文件中。
@@ -72,7 +71,7 @@ SSH 是面向系统管理员的重要工具。 但是，我们并不建议基于
 3. 对于“SSH 身份验证密钥”，请从 publicKey.pem 文件中复制密钥值，其中包含由 PuTTYgen 生成的公钥。  
 ![门户中的“SSH 身份验证密钥”框][4]
 
-4. 根据需要配置其他设置，然后单击“创建”。  
+4. 根据需要配置其他设置，并单击“创建”。  
 
 ## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>阶段 2：准备用于 Tomcat7 的虚拟机
 在此阶段，我们将为 Tomcat 流量配置终结点，然后连接到新的虚拟机。
@@ -82,13 +81,13 @@ Azure 中的终结点由 TCP 或 UDP 协议以及公用和专用端口组成。 
 
 TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 终结点打开此端口，则你和其他 Internet 客户端可以访问 Tomcat 页。  
 
-1. 在门户中，单击“浏览” > “虚拟机”，然后单击创建的虚拟机。  
+1. 在门户中，单击“浏览” > “虚拟机”，并单击创建的虚拟机。  
    ![虚拟机目录的屏幕截图][5]
-2. 若要将终结点添加到虚拟机，请单击“终结点”框。
+2. 要将终结点添加到虚拟机，请单击“终结点”框。
    ![显示“终结点”框的屏幕截图][6]
 3. 单击 **“添加”**。  
 
-   1. 对于终结点，请在“终结点”中输入终结点的名称，然后在“公用端口”中输入 80。  
+   1. 对于终结点，请在“终结点”中输入终结点的名称，并在“公用端口”中输入 80。  
 
       如果将其设置为 80，则无需在 URL 中包括用于访问 Tomcat 的端口号。 例如 http://tomcatdemo.cloudapp.net。    
 
@@ -97,12 +96,12 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
       ![显示“添加”命令、“公用端口”和“专用端口”的 UI 屏幕截图][7]
 4. 单击“确定”将该终结点添加到虚拟机。
 
-### <a name="step-2-connect-to-the-image-you-created"></a>步骤 2：连接到你创建的映像
-你可以选择用于连接到虚拟机的任何 SSH 工具。 本示例使用 PuTTY。  
+### <a name="step-2-connect-to-the-image-you-created"></a>步骤 2：连接到创建的映像
+可以选择用于连接到虚拟机的任何 SSH 工具。 本示例使用 PuTTY。  
 
 1. 从门户获取虚拟机的 DNS 名称。
     1. 单击“浏览” > “虚拟机”。
-    2. 选择虚拟机的名称，然后单击“属性”。
+    2. 选择虚拟机的名称，并单击“属性”。
     3. 在“属性”磁贴中，查看“域名”框中的 DNS 名称。  
 
 2. 从“SSH”框中获取 SSH 连接的端口号。  
@@ -113,7 +112,7 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
 4. 下载后，单击可执行文件 Putty.exe。 在 PuTTY 配置中，使用从虚拟机的属性获取的主机名和端口号配置基本选项。   
 ![显示 PuTTY 配置主机名和端口选项的屏幕截图][9]
 
-5. 在左窗格中，单击“连接” > “SSH” > “身份验证”，然后单击“浏览”指定 privateKey.ppk 文件的位置。 privateKey.ppk 文件包含 PuTTYgen 在本文“第 1 阶段：创建映像”部分中生成的私钥。  
+5. 在左窗格中，单击“连接” > “SSH” > “身份验证”，并单击“浏览”指定 privateKey.ppk 文件的位置。 privateKey.ppk 文件包含 PuTTYgen 在本文“第 1 阶段：创建映像”部分中生成的私钥。  
 ![显示“连接”目录层次结构和“浏览”按钮的屏幕截图][10]
 
 6. 单击“打开”。 此时可能会通过一个消息框提醒你。 如果已正确配置 DNS 名称和端口号，请单击“是”。
@@ -122,7 +121,7 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
 7. 系统会提示输入用户名。  
 ![显示用户名输入位置的屏幕截图][12]
 
-8. 输入在本文“第 1 阶段：创建映像”部分中创建虚拟机时使用的用户名。 你将看到如下内容：  
+8. 输入在本文“第 1 阶段：创建映像”部分中创建虚拟机时使用的用户名。 会看到如下内容：  
 ![显示身份验证确认的屏幕截图][13]
 
 ## <a name="phase-3-install-software"></a>第 3 阶段：安装软件
@@ -145,7 +144,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 * 若要创建一个包含 JDK 文件的目录，请执行以下命令：  
 
         sudo mkdir /usr/lib/jvm  
-* 若要将 JDK 文件解压到 /usr/lib/jvm/ 目录，请执行以下命令：  
+* 要将 JDK 文件解压到 /usr/lib/jvm/ 目录，请执行以下命令：  
 
         sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
 
@@ -158,7 +157,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 * 若要创建一个包含 JDK 文件的目录，请执行以下命令：  
 
         sudo mkdir /usr/lib/jvm  
-* 若要将 JDK 文件解压到 /usr/lib/jvm/ 目录，请执行以下命令：  
+* 要将 JDK 文件解压到 /usr/lib/jvm/ 目录，请执行以下命令：  
 
         sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
 * 将 Oracle JDK 设置为默认 Java 虚拟机：  
@@ -231,7 +230,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 
     sudo /etc/init.d/tomcat7 restart  
 
-打开浏览器，然后输入 URL **http://<your tomcat server DNS name>/manager/html**。 对于本文中的示例，URL 为 http://tomcatexample.cloudapp.net/manager/html。  
+打开浏览器，并输入 URL **http://<your tomcat server DNS name>/manager/html**。 对于本文中的示例，URL 为 http://tomcatexample.cloudapp.net/manager/html。  
 
 连接后，应会看到如下内容：  
 ![Tomcat Web 应用程序管理器的屏幕截图][18]
@@ -286,7 +285,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 
 这已在 CentOS 6.3 上进行了测试。
 
-### <a name="permission-denied-when-you-upload-project-files-to-varlibtomcat7webapps"></a>将项目文件上载到 /var/lib/tomcat7/webapps/ 时，权限被拒绝
+### <a name="permission-denied-when-you-upload-project-files-to-varlibtomcat7webapps"></a>将项目文件上传到 /var/lib/tomcat7/webapps/ 时，权限被拒绝
 #### <a name="symptom"></a>症状
   使用 SFTP 客户端（例如 FileZilla）连接到虚拟机并导航到 /var/lib/tomcat7/webapps/ 来发布站点时，收到如下错误消息：  
 
@@ -295,7 +294,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
      Error:    /var/lib/tomcat7/webapps/info.jsp: open for write: permission denied
      Error:    File transfer failed
 #### <a name="possible-root-cause"></a>可能的根本原因
-  你无权访问 /var/lib/tomcat7/webapps 文件夹。  
+  无权访问 /var/lib/tomcat7/webapps 文件夹。  
 #### <a name="solution"></a>解决方案  
   需要获取 root 帐户权限。 可将该文件夹的所有权从 root 更改为在设置计算机时使用的用户名。 下面是使用 azureuser 帐户名称的示例：  
 
@@ -331,4 +330,3 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 [16]:media/setup-tomcat/virtual-machines-linux-setup-tomcat7-linux-16.png
 [17]:media/setup-tomcat/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]:media/setup-tomcat/virtual-machines-linux-setup-tomcat7-linux-18.png
-

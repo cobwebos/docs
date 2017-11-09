@@ -1,6 +1,6 @@
 ---
-title: "可以通过 Azure Site Recovery 保护哪些工作负荷？"
-description: "Azure Site Recovery 可以协调本地虚拟机和物理服务器到 Azure 或辅助本地站点的复制、故障转移和恢复，从而保护工作负荷和应用程序"
+title: "可以通过 Azure Site Recovery 保护哪些工作负荷？ | Microsoft Docs"
+description: "介绍可以通过将灾难恢复与 Azure Site Recovery 服务配合使用来保护的工作负荷。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,21 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/08/2017
+ms.date: 10/30/2017
 ms.author: raynew
+ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
-本文介绍可以使用 Azure Site Recovery 服务复制的工作负荷和应用程序。
 
-请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
+本文介绍可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务复制的工作负荷和应用程序。
+
+
 
 ## <a name="overview"></a>概述
+
 组织需要制定业务连续性和灾难恢复 (BCDR) 策略来确保工作负荷和数据在计划内和计划外停机期间保持安全和可用，并尽快恢复正常运行。
 
 站点恢复就是能够帮助实现 BCDR 策略的一个 Azure 服务。 使用站点恢复，可将应用程序感知的复制部署到云或辅助站点中。 无论应用是基于 Windows 还是 Linux，是在物理服务器、VMware 还是 Hyper-V 上运行，都可以使用站点恢复来协调复制，执行灾难恢复测试，以及运行故障转移和故障回复。
@@ -34,6 +35,7 @@ ms.lasthandoff: 09/06/2017
 Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange、Dynamics、SQL Server 和 Active Directory。 Microsoft 还与 Oracle、SAP 和 Red Hat 等领先供应商密切合作。 可以针对每个应用自定义复制解决方案。
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>为何要使用站点恢复来复制应用程序？
+
 站点恢复可帮助实现应用程序级的保护和恢复，如下所述：
 
 * 不区分应用，为受支持计算机上运行的任何工作负荷提供复制。
@@ -158,5 +160,5 @@ Azure Site Recovery 可以将环境中的关键组件复制到冷远程站点或
 [了解](site-recovery-citrix-xenapp-and-xendesktop.md)如何保护 Citrix XenApp 和 XenDesktop 部署。 也可参阅 [Citrix 的白皮书](https://aka.ms/citrix-xenapp-xendesktop-with-asr)，其中提供了相同的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-[检查先决条件](site-recovery-prereq.md)
 
+Azure VM 复制[入门](azure-to-azure-quickstart.md)。

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>使用游戏应用实现 Mobile Engagement
 ## <a name="overview"></a>概述
@@ -63,12 +61,10 @@ ms.lasthandoff: 03/01/2017
 * 超过 20 级的用户花费开始超过每周 10 美元。
 * 用户倾向于购买处于 16 级、24 级和 32 级的高级程序包。
 
-通过这种分析，移动项目总监决定创建特定的推送通知序列来提高应用内的销售量。 他创建了三个推送序列，并将它们称为：欢迎计划、销售计划和非活动计划。 有关详细信息，请参阅[操作手册](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)
-    ![][1]
+通过这种分析，移动项目总监决定创建特定的推送通知序列来提高应用内的销售量。 他创建了三个推送序列，并将它们称为：欢迎计划、销售计划和非活动计划。 有关详细信息，请参阅[操作手册](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
 
 <!--Image references-->
 
 [1]: ./media/mobile-engagement-game-scenario/notification-scenario.png
 
 <!--Link references-->
-

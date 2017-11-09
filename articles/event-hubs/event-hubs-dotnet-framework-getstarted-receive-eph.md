@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/12/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: c97cd41e503b5f2792f55e27038a2e07e254826e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/14/2017
-
+ms.openlocfilehash: 5d2f6f53af182a8ac0430de0ca3701a9a30e0bf4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>使用 .NET Framework 从 Azure 事件中心接收事件
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 06/14/2017
 
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。
 
-本教程显示如何编写 .NET Framework 控制台应用程序，以使用**[事件处理程序主机][EventProcessorHost]**从事件中心接收消息。 若要使用 .NET Framework 发送事件，请参阅[使用 .NET Framework 将事件发送到 Azure 事件中心](event-hubs-dotnet-framework-getstarted-send.md)一文，或者单击左侧目录中的相应发送语言。
+本教程显示如何编写 .NET Framework 控制台应用程序，以使用**[事件处理程序主机][EventProcessorHost]**从事件中心接收消息。 要使用 .NET Framework 发送事件，请参阅[使用 .NET Framework 将事件发送到 Azure 事件中心](event-hubs-dotnet-framework-getstarted-send.md)一文，或者单击左侧目录中的相应发送语言。
 
 [事件处理程序主机][EventProcessorHost]是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用[事件处理程序主机][Event Processor Host]，可跨多个接收方拆分事件，即使在不同节点中托管也是如此。 此示例演示如何为单一接收方使用[事件处理程序主机][EventProcessorHost]。 [扩大事件处理][Scale out Event Processing with Event Hubs]示例显示如何将[事件处理程序主机][EventProcessorHost]用于多个接收方。
 
@@ -46,11 +45,11 @@ ms.lasthandoff: 06/14/2017
 
 若要使用[事件处理程序主机][EventProcessorHost]，必须有一个 [Azure 存储帐户][Azure Storage account]：
 
-1. 登录到 [Azure 门户][Azure portal]，然后单击屏幕左上角的“新建”。
-2. 单击“存储”，然后单击“存储帐户”。
+1. 登录到 [Azure 门户][Azure portal]，并单击屏幕左上角的“新建”。
+2. 单击“存储”，并单击“存储帐户”。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
-3. 在“创建存储帐户”  边栏选项卡中，键入存储帐户的名称。 选择 Azure 订阅、资源组和创建该资源的位置。 然后单击“创建” 。
+3. 在“创建存储帐户”  边栏选项卡中，键入存储帐户的名称。 选择 Azure 订阅、资源组和创建该资源的位置。 然后单击“创建”。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 4. 在存储帐户列表中，单击新建的存储帐户。
@@ -63,13 +62,13 @@ ms.lasthandoff: 06/14/2017
 1. 在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Receiver**。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
-2. 在解决方案资源管理器中，右键单击“Receiver”项目，然后单击“为解决方案管理 NuGet 包”。
-3. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 单击“安装” 并接受使用条款。
+2. 在解决方案资源管理器中，右键单击“Receiver”项目，并单击“为解决方案管理 NuGet 包”。
+3. 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 单击“安装” 并接受使用条款。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     Visual Studio 下载、安装 [Azure 服务总线事件中心 - EventProcessorHost NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)及其所有依赖项并添加对它们的引用。
-4. 右键单击 **Receiver** 项目，单击“添加”，然后单击“类”。 将新类命名为 **SimpleEventProcessor**，然后单击“添加”以创建该类。
+4. 右键单击 **Receiver** 项目，单击“添加”，并单击“类”。 将新类命名为 **SimpleEventProcessor**，然后单击“添加”以创建该类。
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 5. 在 SimpleEventProcessor.cs 文件的顶部添加以下语句：
@@ -156,7 +155,7 @@ ms.lasthandoff: 06/14/2017
 
 7. 运行程序，并确保没有任何错误。
   
-祝贺你！ 现在你已使用事件处理程序主机从事件中心接收消息。
+祝贺你！ 现在已使用事件处理程序主机从事件中心接收消息。
 
 
 > [!NOTE]
@@ -186,4 +185,3 @@ ms.lasthandoff: 06/14/2017
 [Azure Storage account]:../storage/common/storage-create-storage-account.md
 [Event Processor Host]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
 [Azure portal]: https://portal.azure.com
-

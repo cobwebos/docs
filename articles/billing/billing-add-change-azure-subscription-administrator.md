@@ -12,19 +12,18 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/12/2017
+ms.topic: troubleshooting
+ms.date: 10/19/2017
 ms.author: genli
+ms.openlocfilehash: 178d7fbc17464f7c9a4bc891453d0999e4ba62c3
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 29fee079bd8b2775d7b45fa37cadb73635a2eb60
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>添加或更改管理订阅或服务的 Azure 管理员角色
 
-用户可以更改管理 Azure 订阅或管理订阅中使用的 Azure 服务的 Azure 管理员。 若要查看 Azure 计费信息及管理订阅，必须以帐户管理员身份登录[帐户中心](https://account.windowsazure.com/Home/Index)。 
+用户可以更改管理 Azure 订阅或管理订阅中使用的 Azure 服务的 Azure 管理员。 若要查看 Azure 计费信息及管理订阅，必须以帐户管理员身份登录“帐户中心”。 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
@@ -39,7 +38,7 @@ ms.lasthandoff: 09/13/2017
 
     ![显示所选所有者角色的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-### <a name="add-or-change-co-administrator"></a>添加或更改协同管理员
+## <a name="add-or-change-co-administrator"></a>添加或更改协同管理员
 
 仅所有者可添加为协同管理员。 无法将具有参与者、读者等角色的其他用户添加为协同管理员。
 
@@ -101,7 +100,7 @@ ms.lasthandoff: 09/13/2017
 
 | 管理角色 | 限制 | 说明 |
 | --- | --- | --- |
-| 帐户管理员 (AA) |每个 Azure 帐户 1 个帐户管理员 |这是注册或购买了 Azure 订阅的人员，有权访问[帐户中心](https://account.windowsazure.com/Home/Index)并执行各种管理任务。 其中包括能够创建订阅、取消订阅、更改订阅的帐单，以及更改服务管理员。 |
+| 帐户管理员 (AA) |每个 Azure 帐户 1 个帐户管理员 |这是注册或购买了 Azure 订阅的人员，有权访问[帐户中心](https://account.azure.com/Subscriptions)并执行各种管理任务。 其中包括能够创建订阅、取消订阅、更改订阅的帐单，以及更改服务管理员。 |
 | 服务管理员 (SA) |每个 Azure 订阅 1 个服务管理员 |此角色有权管理 [Azure 门户](https://portal.azure.com)中的服务。 默认情况下，新订阅的帐户管理员也是服务管理员。 |
 | [Azure 经典门户](https://manage.windowsazure.com)中的共同管理员 (CA) |每个订阅 200 个共同管理员 |此角色具有与服务管理员一样的访问特权，但不能更改订阅与 Azure 目录之间的关联关系。 |
 
@@ -116,4 +115,3 @@ ms.lasthandoff: 09/13/2017
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-

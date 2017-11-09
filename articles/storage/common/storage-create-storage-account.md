@@ -3,7 +3,7 @@ title: "如何在 Azure 门户中创建、管理或删除存储帐户 | Microsof
 description: "在 Azure 门户中创建新的存储帐户、管理帐户访问密钥或删除存储帐户。 了解标准和高级存储帐户。"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
@@ -12,18 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords:
-- sql13.swb.windowsazurestorage.connect.f1
-ms.date: 01/23/2017
-ms.author: robinsh
+f1_keywords: sql13.swb.windowsazurestorage.connect.f1
+ms.date: 10/11/2017
+ms.author: tamram
+ms.openlocfilehash: c9630e575de15b404bd91cbeefc60d698c5da667
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 848f6b07e51b58b00b81dd42ca1d478fdba20d06
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="about-azure-storage-accounts"></a>关于 Azure 存储帐户
+
 [!INCLUDE [storage-selector-portal-create-storage-account](../../../includes/storage-selector-portal-create-storage-account.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -34,6 +33,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 [!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
 ## <a name="storage-account-billing"></a>存储帐户计费
+
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，选择“新建” -> “存储” -> “存储帐户”。
+2. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“更多服务”。 然后向下滚动到“存储”，接着选择“存储帐户”。 在显示的“存储帐户”窗口中，选择“添加”。
 3. 输入存储帐户的名称。 有关如何使用存储帐户名称在 Azure 存储中定位对象的详细信息，请参阅 [存储帐户终结点](#storage-account-endpoints)。
    
    > [!NOTE]
@@ -79,12 +79,12 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 
 5. 选择存储帐户的类型：“常规用途”或“Blob 存储”。 “常规用途”是默认值。
    
-    如果已选择“常规用途”，则指定性能层：“标准”或“高级”。 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](storage-introduction.md)和[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)。
+    如果已选择“常规用途”，则指定性能层：“标准”或“高级”。 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](storage-introduction.md)和[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../virtual-machines/windows/premium-storage.md)。
    
     如果已选择“Blob 存储”，则指定访问层：“经常访问”或“不常访问”。 默认设置为“热”。 有关如何使用存储帐户名称在 Azure 存储中定位对象的详细信息，请参阅 [Azure Blob 存储：不常访问和经常访问的层](../blobs/storage-blob-storage-tiers.md) 以了解更多详细信息。
 6. 选择存储帐户的复制选项：“LRS”、“GRS”、“RA-GRS”或“ZRS”。 默认值为“RA-GRS”。 有关 Azure 存储复制选项的更多详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 7. 选择想在其中创建新存储帐户的订阅。
-8. 指定新资源组或选择现有资源组。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。
+8. 指定新资源组或选择现有资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 9. 选择存储帐户的地理区域。 有关哪些服务在哪个区域中可用的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services) 。
 10. 单击“创建”以创建存储帐户。
 
@@ -149,5 +149,4 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 * [配置 Azure 存储连接字符串](../storage-configure-connection-string.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * 访问 [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
-
 

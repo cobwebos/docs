@@ -1,5 +1,5 @@
 ---
-title: "如何使用 Twilio 实现语音和短信功能 (.NET) | Microsoft Docs"
+title: "如何使用 Twilio 实现语音和短信功能 (.NET) | Microsoft 文档"
 description: "了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 采用 .NET 编写的代码示例。"
 services: 
 documentationcenter: .net
@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
 ms.openlocfilehash: 1442e3af26ae87e645cf207228ed1197b2afdd4d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -49,11 +48,11 @@ API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在�
 * **&lt;Hangup&gt;**：结束呼叫。
 * **&lt;Play&gt;**：播放音频文件。
 * **&lt;Pause&gt;**：安静地等待指定的时间（以秒为单位）。
-* **&lt;Record&gt;**：录制呼叫方的声音并返回包含该录音的文件的 URL。
-* **&lt;Redirect&gt;**：将对呼叫或 SMS 的控制转移到其他 URL 上的 TwiML。
+* **&lt;Record&gt;**：录制呼叫方的声音并返回包含该录音的文件 URL。
+* **&lt;Redirect&gt;**：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
 * **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费
 * **&lt;Say&gt;**：将文本转换为呼叫中生成的语音。
-* **&lt;Sms&gt;**：发送 SMS 消息。
+* **&lt;Sms&gt;**：发送短信。
 
 ### <a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -70,16 +69,16 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 
 ## <a id="CreateAccount"></a>创建 Twilio 帐户
-准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级您的帐户。
+准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级帐户。
 
-注册 Twilio 帐户时，您将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对您的帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”和“身份验证令牌”的字段中。
+注册 Twilio 帐户时，将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对帐户进行未经授权的访问，请保护身份验证令牌。 帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <a id="create_app"></a>创建 Azure 应用程序
-托管启用 Twilio 的应用程序的 Azure 应用程序与其他任何 Azure 应用程序没有区别。 您需添加 Twilio .NET 库并将角色配置为使用 Twilio .NET 库。
+托管启用 Twilio 的应用程序的 Azure 应用程序与其他任何 Azure 应用程序没有区别。 需添加 Twilio .NET 库并将角色配置为使用 Twilio .NET 库。
 有关创建初始 Azure 项目的信息，请参阅[使用 Visual Studio 创建 Azure 项目][vs_project]。
 
 ## <a id="configure_app"></a>将应用程序配置为使用 Twilio 库
-Twilio 提供了一系列可包装 Twilio 各个方面的 .NET 帮助程序库，使您能够以简单且轻松地方式与 Twilio REST API 和 Twilio 客户端进行交互，从而生成 TwiML 响应。
+Twilio 提供了一系列可包装 Twilio 各个方面的 .NET 帮助程序库，因此，能够以简单且轻松地方式与 Twilio REST API 和 Twilio 客户端进行交互，从而生成 TwiML 响应。
 
 Twilio 为 .NET 开发人员提供了 5 个库：
 库|说明
@@ -99,12 +98,12 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 默认情况下，Microsoft Visual Studio 2010 安装 1.2 版的 NuGet。 安装 Twilio 库需要 1.6 或更高版本的 NuGet。 有关安装或更新 NuGet 的信息，请参阅 [http://nuget.org/][nuget]。
 
 > [!NOTE]
-> 若要安装 NuGet 的最新版本，必须首先使用 Visual Studio Extension Manager 卸载已加载的版本。 为此，您必须以管理员的身份运行 Visual Studio。 否则，“卸载”按钮将处于禁用状态。
+> 若要安装 NuGet 的最新版本，必须首先使用 Visual Studio Extension Manager 卸载已加载的版本。 为此，必须以管理员的身份运行 Visual Studio。 否则，“卸载”按钮将处于禁用状态。
 >
 >
 
-### <a id="use_nuget"></a>向您的 Visual Studio 项目添加 Twilio 库：
-1. 在 Visual Studio 中打开您的解决方案。
+### <a id="use_nuget"></a>向 Visual Studio 项目添加 Twilio 库：
+1. 在 Visual Studio 中打开解决方案。
 2. 右键单击“引用”。
 3. 单击“管理 NuGet 包”。
 4. 单击“联机”。
@@ -137,9 +136,9 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 
 若要深入了解传入到 **CallResource.Create** 方法中的参数，请参阅 [http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]。
 
-如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用您自己的站点来提供 TwiML 响应。 有关详细信息，请参阅[如何：从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
+如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的站点来提供 TwiML 响应。 有关详细信息，请参阅[如何：从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-## <a id="howto_send_sms"></a>如何：发送 SMS 消息
+## <a id="howto_send_sms"></a>如何：发送短信
 以下屏幕截图演示如何使用 **MessageResource** 类发送短信。 “呼叫方”号码由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须验证 Twilio 帐户的“被呼叫方”号码。
 
     // Use your account SID and authentication token instead
@@ -164,15 +163,15 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
         Console.WriteLine(ex.Message);
     }
 
-## <a id="howto_provide_twiml_responses"></a>如何：从您自己的网站提供 TwiML 响应
+## <a id="howto_provide_twiml_responses"></a>如何：从你自己的网站提供 TwiML 响应
 当应用程序启动对 Twilio API 的调用时（例如通过 **CallResource.Create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 [如何：发起传出呼叫](#howto_make_call)中的示例使用 Twilio 提供的 URL [http://twimlets.com/message][twimlet_message_url] 返回该响应。
 
 > [!NOTE]
-> 虽然 TwiML 专供 Web 服务使用，但您可以在浏览器中查看 TwiML。 例如，单击 [http://twimlets.com/message][twimlet_message_url] 可查看空 &lt;Response&gt; 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。
+> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [http://twimlets.com/message][twimlet_message_url] 可查看空 &lt;Response&gt; 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。
 >
 >
 
-您可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。 您可以使用任何语言创建返回 HTTP 响应的站点。 本主题假设要从 ASP.NET 一般处理程序承载该 URL。
+可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 HTTP 响应的站点。 本主题假设要从 ASP.NET 一般处理程序承载该 URL。
 
 以下 ASP.NET 处理程序将生成在呼叫时表述 **Hello World** 的 TwiML 响应。
 
@@ -208,7 +207,7 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
         }
     }
     
-如上面的示例中所示，TwiML 响应只是一个 XML 文档。 Twilio.TwiML 库包含将为您生成 TwiML 的类。 以下示例将生成与上面所示相同的响应，但该响应会使用 **VoiceResponse** 类。
+如上面的示例中所示，TwiML 响应只是一个 XML 文档。 Twilio.TwiML 库包含将生成 TwiML 的类。 以下示例将生成与上面所示相同的响应，但该响应会使用 **VoiceResponse** 类。
 
     using System.Web;
     using Twilio.TwiML;
@@ -274,4 +273,3 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/console
 [verify_phone]: https://www.twilio.com/console/phone-numbers/verified
-

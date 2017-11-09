@@ -2,13 +2,13 @@
 若要基于上述方案创建经典 VNet，请执行以下步骤。
 
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
-2. 单击“新建” > “网络” > “虚拟网络”，请注意，“选择部署模型”列表已显示“经典”，然后单击“创建”，如下图所示。
+2. 单击“新建” > “网络” > “虚拟网络”，请注意，“选择部署模型”列表已显示“经典”，并单击“创建”，如下图所示。
    
     ![在 Azure 门户中创建 VNet](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
-3. 在“虚拟网络”边栏选项卡中，键入 VNet 的**名称**，然后单击“地址空间”。 为 VNet 及其第一个子网配置地址空间设置，然后单击“确定”。 下图显示了我们的方案的 CIDR 块设置。
+3. 在“虚拟网络”边栏选项卡中，键入 VNet 的**名称**，并单击“地址空间”。 为 VNet 及其第一个子网配置地址空间设置，并单击“确定”。 下图显示了我们的方案的 CIDR 块设置。
    
     ![“地址空间”边栏选项卡](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-4. 单击“资源组”并选择要将 VNet 添加到的资源组，或者单击“新建资源组”将 VNet 添加到新资源组。 下图显示了名为 **TestRG**的新资源组的资源组设置。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
+4. 单击“资源组”并选择要将 VNet 添加到的资源组，或者单击“新建资源组”将 VNet 添加到新资源组。 下图显示了名为 **TestRG**的新资源组的资源组设置。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
    
     ![“创建资源组”边栏选项卡](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 5. 如有必要，更改 VNet 的“订阅”和“位置”设置。 
@@ -22,7 +22,7 @@
 9. 用户会看到其 VNet 的**配置**，如下所示。 
    
     ![在门户中创建 VNet](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure6.png)
-10. 单击“子网” > “添加”，然后为子网键入**名称**并指定“地址范围(CIDR 块)”，然后单击“确定”。 下图显示了当前方案的设置。
+10. 单击“子网” > “添加”，为子网键入**名称**并指定“地址范围(CIDR 块)”，然后单击“确定”。 下图显示了当前方案的设置。
     
     ![在 Azure 门户中创建 VNet](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
 

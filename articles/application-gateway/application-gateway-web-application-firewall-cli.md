@@ -3,7 +3,7 @@ title: "配置 Web 应用程序防火墙：Azure 应用程序网关 | Microsoft 
 description: "本文将简要介绍如何在现有的或新的应用程序网关上开始使用 Web 应用程序防火墙。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: c9c740a3a1a28a1a9a4f2abf579fe2adb54e4f47
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 999d1ad3ee54d84e155254655dbb7a39ac60572c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>使用 Azure CLI 在新的或现有应用程序网关上配置 Web 应用程序防火墙
 
@@ -161,4 +160,3 @@ az network public-ip show \
 若要了解如何自定义 WAF 规则，请参阅[通过 Azure CLI 2.0 自定义 Web 应用程序防火墙规则](application-gateway-customize-waf-rules-cli.md)。
 
 [scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png
-

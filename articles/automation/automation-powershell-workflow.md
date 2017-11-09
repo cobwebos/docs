@@ -3,7 +3,7 @@ title: "了解 Azure 自动化的 PowerShell 工作流 | Microsoft Docs"
 description: "本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异，并介绍适用于自动化 runbook 的概念。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 84bf133e-5343-4e0e-8d6c-bb14304a70db
@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 4de812c7f863e42a6ed10c2312d61b8377e06431
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/22/2017
-
+ms.openlocfilehash: 6dce88bdd85a28ce05e1621b08a0f4b148b02627
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解自动化 runbook 的关键 PowerShell 工作流概念 
 Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Windows PowerShell 工作流类似于 Windows PowerShell 脚本，但包括一些可能会让新用户产生混淆的重大差异。  本文旨在提供有关使用 PowerShell 工作流编写 runbook 的帮助，但我们建议使用 PowerShell 编写 runbook，除非是需要检查点的情况。  编写 PowerShell 工作流 runbook 时存在几个语法差异，这些差异会增加编写有效工作流时所需的工作量。  
 
-工作流是一系列编程的连接步骤，用于执行长时间运行的任务，或者要求跨多个设备或托管节点协调多个步骤。 与标准脚本相比，工作流的好处包括能够同时执行针对多台设备的操作以及自动从故障中恢复的能力。 Windows PowerShell 工作流是使用 Windows Workflow Foundation 的 Windows PowerShell 脚本。 尽管工作流是使用 Windows PowerShell 语法编写的并通过 Windows PowerShell 启动，但它将由 Windows Workflow Foundation 进行处理。
+工作流是一系列编程的连接步骤，用于执行长时间运行的任务，或者要求跨多个设备或托管节点协调多个步骤。 与标准脚本相比，工作流的好处包括能够同时执行针对多台设备的操作以及自动从故障中恢复的能力。 Windows PowerShell 工作流是使用 Windows Workflow Foundation 的 Windows PowerShell 脚本。 尽管工作流是使用 Windows PowerShell 语法编写的并通过 Windows PowerShell 启动，但它由 Windows Workflow Foundation 进行处理。
 
 有关本文中主题的完整详细信息，请参阅 [Windows PowerShell 工作流简介](http://technet.microsoft.com/library/jj134242.aspx)。
 
@@ -38,18 +37,18 @@ Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Wind
 
 工作流名称与自动化 Runbook 的名称匹配。 如果正在导入某个 Runbook，其文件名必须与工作流名称匹配，并且必须以 *.ps1* 结尾。
 
-若要将参数添加到工作流，请使用 **Param** 关键字，与使用脚本时相同。
+要将参数添加到工作流，请使用 **Param** 关键字，与使用脚本时相同。
 
 ## <a name="code-changes"></a>代码更改
 除了几个重大更改以外，PowerShell 工作流代码看起来几乎与 PowerShell 脚本代码完全相同。  以下各部分介绍要使 PowerShell 脚本能够在工作流中运行所需进行的更改。
 
 ### <a name="activities"></a>活动
-活动是工作流中的特定任务。 就像脚本由一个或多个命令构成一样，工作流由一个或多个按顺序执行的活动构成。 Windows PowerShell 工作流在运行工作流时，会自动将许多 Windows PowerShell cmdlet 转换为活动。 在 Runbook 中指定其中的某个 cmdlet 时，相应的活动由 Windows Workflow Foundation 运行。 对于这些没有相应活动的 cmdlet，Windows PowerShell 工作流将自动在 [InlineScript](#inlinescript) 活动中运行该 cmdlet。 有一组 cmdlet 已被排除，不能包含在工作流中，除非你显式将它们包含在 InlineScript 块中。 有关这些概念的更多详细信息，请参阅[在脚本工作流中使用活动](http://technet.microsoft.com/library/jj574194.aspx)。
+活动是工作流中的特定任务。 就像脚本由一个或多个命令构成一样，工作流由一个或多个按顺序执行的活动构成。 Windows PowerShell 工作流在运行工作流时，会自动将许多 Windows PowerShell cmdlet 转换为活动。 在 Runbook 中指定其中的某个 cmdlet 时，相应的活动由 Windows Workflow Foundation 运行。 对于这些没有相应活动的 cmdlet，Windows PowerShell 工作流会自动在 [InlineScript](#inlinescript) 活动中运行该 cmdlet。 有一组 cmdlet 已被排除，不能包含在工作流中，除非显式将它们包含在 InlineScript 块中。 有关这些概念的更多详细信息，请参阅[在脚本工作流中使用活动](http://technet.microsoft.com/library/jj574194.aspx)。
 
 工作流活动共享一组公用参数来配置其操作。 有关工作流通用参数的详细信息，请参阅 [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx)。
 
 ### <a name="positional-parameters"></a>位置参数
-无法针对工作流中的活动和 cmdlet 使用位置参数。  这意味着您必须使用参数名称。
+无法针对工作流中的活动和 cmdlet 使用位置参数。  这意味着必须使用参数名称。
 
 例如，请注意下面的代码，用于获取所有正在运行的服务。
 
@@ -63,7 +62,7 @@ Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Wind
     }
 
 ### <a name="deserialized-objects"></a>反序列化的对象
-工作流中的对象已反序列化。  这意味着其属性仍然可用，但其方法将不再可用。  例如，请注意以下 PowerShell 代码，使用服务对象的 Stop 方法停止一项服务。
+工作流中的对象已反序列化。  这意味着其属性仍然可用，但其方法不再可用。  例如，请注意以下 PowerShell 代码，使用服务对象的 Stop 方法停止一项服务。
 
     $Service = Get-Service -Name MyService
     $Service.Stop()
@@ -90,7 +89,7 @@ Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Wind
 
 
 ## <a name="inlinescript"></a>InlineScript
-需要将一个或多个命令作为传统 PowerShell 脚本而不是 PowerShell 工作流运行时，**InlineScript** 活动非常有用。  尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令将由 Windows PowerShell 处理。
+需要将一个或多个命令作为传统 PowerShell 脚本而不是 PowerShell 工作流运行时，**InlineScript** 活动非常有用。  尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令由 Windows PowerShell 处理。
 
 InlineScript 使用如下所示的语法。
 
@@ -99,7 +98,7 @@ InlineScript 使用如下所示的语法。
       <Script Block>
     } <Common Parameters>
 
-您可以通过将输出分配到一个变量，以返回来自 InlineScript 的输出。 下面的示例停止一项服务，然后输出服务名称。
+可以通过将输出分配到一个变量，以返回来自 InlineScript 的输出。 下面的示例停止一项服务，并输出服务名称。
 
     Workflow Stop-MyService
     {
@@ -171,7 +170,7 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
     }
 
 
-可以使用 **ForEach-Parallel** 构造同时处理集合中每个项的命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 将在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。
+可以使用 **ForEach-Parallel** 构造同时处理集合中每个项的命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。
 
     ForEach -Parallel ($<item> in $<collection>)
     {
@@ -180,7 +179,7 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
     }
     <Activity3>
 
-下面的示例是类似于前面的示例，用于并行复制文件。  在这种情况下，每个文件复制完成之后都将显示一条消息。  只有在所有文件均复制完成之后，才会显示最终的完成消息。
+下面的示例是类似于前面的示例，用于并行复制文件。  在这种情况下，每个文件复制完成之后都会显示一条消息。  只有在所有文件均复制完成之后，才会显示最终的完成消息。
 
     Workflow Copy-Files
     {
@@ -200,7 +199,7 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 >
 
 ## <a name="checkpoints"></a>检查点
-“检查点”是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时将从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。
+“检查点”是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。
 
 在以下示例代码中，Activity2 后发生的异常导致工作流结束。 当工作流再次运行时，它会通过运行 Activity2 来启动，因为此活动刚好在设置的上一个检查点之后。
 
@@ -210,9 +209,9 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
     <Exception>
     <Activity3>
 
-应在可能容易出现异常并且在工作流继续时不应重复进行的活动之后设置检查点。 例如，您的工作流可能会创建一个虚拟机。 你可以在命令之前和之后设置一个检查点以创建虚拟机。 如果创建失败，则当再次启动工作流时将重复命令。 如果创建成功但工作流随后失败，则恢复工作流时不会再次创建虚拟机。
+应在可能容易出现异常并且在工作流继续时不应重复进行的活动之后设置检查点。 例如，工作流可能会创建一个虚拟机。 可以在命令之前和之后设置一个检查点以创建虚拟机。 如果创建失败，则当再次启动工作流时会重复命令。 如果创建成功但工作流随后失败，则恢复工作流时不会再次创建虚拟机。
 
-下面的示例将多个文件复制到某个网络位置，并在每个文件复制完成后设置检查点。  如果网络位置丢失，则工作流将以错误结束。  重新启动工作流时，它将从上一个检查点处继续，这意味着只会跳过已复制的文件。
+下面的示例将多个文件复制到某个网络位置，并在每个文件复制完成后设置检查点。  如果网络位置丢失，则工作流以错误结束。  重新启动工作流时，它将从上一个检查点处继续，这意味着只会跳过已复制的文件。
 
     Workflow Copy-Files
     {
@@ -255,10 +254,9 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
      }
 
 
-此外，如果你使用配置了服务主体的运行方式帐户进行身份验证，则不需要此处理。  
+此外，如果使用配置了服务主体的运行方式帐户进行身份验证，则不需要此处理。  
 
 关于检查点的详细信息，请参阅[向脚本工作流添加检查点](http://technet.microsoft.com/library/jj574114.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
-

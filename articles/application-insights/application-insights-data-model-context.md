@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: sergkanz
-ms.translationtype: HT
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
 ms.openlocfilehash: d6a0cad8bda6ca68aa691867e84f540c5ac9f6f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -138,4 +137,3 @@ SDK 版本。 请参阅 https://github.com/Microsoft/ApplicationInsights-Home/bl
 - 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 查看标准上下文属性集合[配置](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
-

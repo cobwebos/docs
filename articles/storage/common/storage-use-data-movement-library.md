@@ -12,14 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 09/27/2017
 ms.author: seguler
+ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7db1761a9a3b8a74a39b2d441849fb89d44cd42b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 
@@ -50,45 +49,30 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 ## <a name="setup"></a>设置  
 
 1. 访问 [.NET Core 安装指南](https://www.microsoft.com/net/core)安装 .NET Core。 选择环境时，请选择命令行选项。 
-2. 通过命令行创建项目的目录。 导航到此目录，并键入 `dotnet new` 创建 C# 控制台项目。
-3. 在 Visual Studio Code 中打开此目录。 在命令行中键入 `code .` 可快速完成此步骤。  
+2. 通过命令行创建项目的目录。 导航到此目录，并键入 `dotnet new console -o <sample-project-name>` 创建 C# 控制台项目。
+3. 在 Visual Studio Code 中打开此目录。 通过在 Windows 中命令行上键入 `code .` 可快速完成此步骤。  
 4. 从 Visual Studio Code 应用商店安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新启动 Visual Studio Code。 
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
-6. 现在，应用程序的 `.vscode` 目录下应会包含一个 `launch.json` 文件。 在此文件中，将 `externalConsole` 值更改为 `true`。
+6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 ` "console": "externalTerminal"`
 7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，并验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。 
 
 ## <a name="add-data-movement-library-to-your-project"></a>将数据移动库添加到项目
 
-1. 将最新版本的数据移动库添加到 `project.json` 文件的 `dependencies` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.5.0"` 
-2. 将 `"portable-net45+win8"` 添加到 `imports` 节。 
-3. 此时应会显示一条提示，指出要还原项目。 请单击“还原”按钮。 也可以从命令行还原项目，在项目的根目录中键入 `dotnet restore` 命令即可。
+1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` 
+2. 此时应会显示一条提示，指出要还原项目。 请单击“还原”按钮。 也可以从命令行还原项目，在项目的根目录中键入 `dotnet restore` 命令即可。
 
-修改 `project.json`：
+修改 `<project-name>.csproj`：
 
-    {
-      "version": "1.0.0-*",
-      "buildOptions": {
-        "debugType": "portable",
-        "emitEntryPoint": true
-      },
-      "dependencies": {
-        "Microsoft.Azure.Storage.DataMovement": "0.5.0"
-      },
-      "frameworks": {
-        "netcoreapp1.1": {
-          "dependencies": {
-            "Microsoft.NETCore.App": {
-              "type": "platform",
-              "version": "1.1.0"
-            }
-          },
-          "imports": [
-            "dnxcore50",
-            "portable-net45+win8"
-          ]
-        }
-      }
-    }
+    <Project Sdk="Microsoft.NET.Sdk">
+
+        <PropertyGroup>
+            <OutputType>Exe</OutputType>
+            <TargetFramework>netcoreapp2.0</TargetFramework>
+        </PropertyGroup>
+        <ItemGroup>
+            <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
+            </ItemGroup>
+        </Project>
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>设置应用程序的主干
 第一项操作是设置应用程序的“主干”代码。 此代码提示我们输入存储帐户名和帐户密钥，并使用这些凭据创建 `CloudStorageAccount` 对象。 此对象用来与所有传输方案中的存储帐户交互。 该代码还会提示我们选择要执行的传输操作类型。 
@@ -98,6 +82,7 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 ```csharp
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -210,7 +195,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-此代码提示我们输入本地文件的路径、新的或现有容器的名称，以及新 Blob 的名称。 `TransferManager.UploadAsync` 方法使用此信息执行上传。 
+此代码提示我们输入本地文件的路径、新的或现有容器的名称，以及新 Blob 的名称。 `TransferManager.UploadAsync`  方法使用此信息执行上传。 
 
 点击 `F5` 运行应用程序。 可通过使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
 
@@ -584,7 +569,6 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 在本入门教程中，我们创建了可与 Azure 存储交互的、在 Windows、Linux 和 macOS 上运行的应用程序。 本入门教程重点介绍有关 Blob 存储的操作。 但是，也可以针对文件存储运用这些知识。 若要了解详细信息，请查看 [Azure 存储数据移动库参考文档](https://azure.github.io/azure-storage-net-data-movement)。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
-
 
 
 

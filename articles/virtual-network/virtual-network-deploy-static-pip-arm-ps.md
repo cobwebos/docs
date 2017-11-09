@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: fb071365d8d716085d1b1bd1cb52fffc830fd75c
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: e4c413d3cb5c242a16f3e534dafe322785a35141
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态公共 IP 地址的 VM
 
@@ -75,8 +74,8 @@ $pipName               = "PIPWEB1"
 $dnsName               = "iaasstoryws1"
 ```
 
-## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>步骤 2 - 为你的 VM 创建必要的资源
-在创建 VM 之前，你需要可供 VM 使用的资源组、VNet、公共 IP 和 NIC。
+## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>步骤 2 - 为 VM 创建必要的资源
+在创建 VM 之前，需要可供 VM 使用的资源组、VNet、公共 IP 和 NIC。
 
 1. 创建新的资源组。
 
@@ -121,7 +120,7 @@ $dnsName               = "iaasstoryws1"
     ```
 
 ## <a name="step-3---create-the-vm"></a>步骤 3 - 创建 VM
-现在，所有必需的资源均已就绪，你可以创建新的 VM 了。
+现在，所有必需的资源均已就绪，可以创建新的 VM 了。
 
 1. 创建 VM 配置对象。
 
@@ -247,5 +246,4 @@ $dnsName               = "iaasstoryws1"
         EndTime             : [Subscription Id]
         Error               : 
         ErrorText           : 
-
 

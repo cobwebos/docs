@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: bf46da35a55608d7e4656c9dd3ad9d5f2253e225
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>教程：Azure Active Directory 与 Mimecast Personal Portal 的集成
 
@@ -111,14 +110,14 @@ ms.lasthandoff: 07/13/2017
 
     ![配置单一登录](./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
     | |     
     | ----------------------------------------|
     | `https://webmail-uk.mimecast.com`|
     | `https://webmail-us.mimecast.com`|
     | |
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
 
     | |     
     | --- |
@@ -133,7 +132,7 @@ ms.lasthandoff: 07/13/2017
  
 
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_certificate.png) 
 
@@ -163,9 +162,9 @@ ms.lasthandoff: 07/13/2017
    
     ![身份验证配置文件](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795001.png "身份验证配置文件")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“描述”文本框中，键入配置名称。
+    a. 在“描述”文本框中，键入配置名称。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“对 Mimecast Personal Portal 强制实施 SAML 身份验证”。
+    b. 选择“对 Mimecast Personal Portal 强制实施 SAML 身份验证”。
    
     c. 对于“提供程序”，选择“Azure Active Directory”。
    
@@ -208,7 +207,7 @@ ms.lasthandoff: 07/13/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-mimecast-personal-portal-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -220,7 +219,7 @@ ms.lasthandoff: 07/13/2017
 
 为了使 Azure AD 用户能够登录到 Mimecast Personal Portal，必须将其预配到 Mimecast Personal Portal 中。 对于 Mimecast Personal Portal，需要手动执行预配。
 
-需要注册一个域，然后才能创建用户。
+需要注册一个域，才能创建用户。
 
 **若要配置用户预配，请执行以下步骤：**
 
@@ -242,13 +241,13 @@ ms.lasthandoff: 07/13/2017
    
     ![保存](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
+    a. 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“全局名称”文本框中，将“用户名”键入为“BrittaSimon”。
+    b. 在“全局名称”文本框中，将“用户名”键入为“BrittaSimon”。
 
     c. 在“密码”和“确认密码”文本框中，键入用户的“密码”。
    
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“保存” 。
+    b. 单击“保存” 。
 
 >[!NOTE]
 >可以使用 Mimecast Personal Portal 提供的任何其他 Mimecast Personal Portal 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。 
@@ -261,7 +260,7 @@ ms.lasthandoff: 07/13/2017
 
 要将 Britta Simon 分配到 Mimecast Personal Portal，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -308,5 +307,4 @@ ms.lasthandoff: 07/13/2017
 [201]: ./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_203.png
-
 

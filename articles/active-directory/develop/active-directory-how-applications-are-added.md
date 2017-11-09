@@ -15,16 +15,14 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 65c8a2c020d5ef7ce47905927a248b9e73d2ed1b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/29/2017
-
-
+ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
-在 Azure Active Directory 实例中查看应用程序列表时，最初让令人费解的事情之一是不知道应用程序来自何处，以及它们为何会出现在那里。  本文将全面概述如何在目录中表示应用程序，并提供上下文帮助你了解应用程序如何进入你的目录。
+在 Azure Active Directory 实例中查看应用程序列表时，最初让令人费解的事情之一是不知道应用程序来自何处，以及它们为何会出现在那里。  本文将全面概述如何在目录中表示应用程序，并提供上下文帮助你了解应用程序如何进入目录。
 
 ## <a name="what-services-does-azure-ad-provide-to-applications"></a>Azure AD 为应用程序提供哪些服务？
 应用程序将添加到 Azure AD，以利用 Azure AD 提供的一个或多个服务。  这些服务包括：
@@ -35,7 +33,7 @@ ms.lasthandoff: 03/29/2017
 * 用户设置和同步
 * 基于角色的访问控制；使用目录定义应用程序角色，以便在应用程序中执行基于角色的授权检查。
 * oAuth 授权服务（Office 365 和其他 Microsoft 应用程序使用这些服务来授予对 API/资源的访问权限。）
-* 应用程序发布和代理；将应用程序从专用网络发布到 Internet
+* 应用程序发布和代理；将应用从专用网络发布到 Internet
 
 ## <a name="how-are-applications-represented-in-the-directory"></a>如何在目录中表示应用程序？
 Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象和服务主体对象。  “home”/“owner”或“publishing”目录中注册了一个应用程序对象；此外，有一个或多个服务主体对象表示运行应用程序的每个目录中的应用程序。  
@@ -74,14 +72,14 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 
 与 Azure AD 集成的应用程序发布者/供应商需要有一个发布目录。  （某个 SAAS 目录）。
 
-你自己添加的应用程序包括：
+自己添加的应用程序包括：
 
-* 你开发的应用程序（与 AAD 集成）
+* 开发的应用程序（与 AAD 集成）
 * 为了进行单一登录而连接的应用程序
 * 使用 Azure AD 应用程序代理发布的应用程序。
 
 ### <a name="a-couple-of-notes-and-exceptions"></a>说明和例外情况
-* 并非所有服务主体都会往后指向应用程序对象。  是吗？ 最初生成 Azure AD 时，提供给应用程序的服务存在很多的限制，使用服务主体便足以建立应用程序标识。  原始服务主体在形式上更接近于 Windows Server Active Directory 服务帐户。  出于此原因，你仍可以使用 Azure AD PowerShell 创建服务主体，而无需首先创建应用程序对象。  Graph API 在创建服务主体之前需要一个应用程序对象。
+* 并非所有服务主体都会往后指向应用程序对象。  是吗？ 最初生成 Azure AD 时，提供给应用程序的服务存在很多的限制，使用服务主体便足以建立应用程序标识。  原始服务主体在形式上更接近于 Windows Server Active Directory 服务帐户。  出于此原因，仍可以使用 Azure AD PowerShell 创建服务主体，而无需首先创建应用程序对象。  Graph API 在创建服务主体之前需要一个应用程序对象。
 * 上述信息当前并非全部都是以编程方式公开的。  只能在 UI 中使用以下功能：
   * 声明转换规则
   * 属性映射（用户设置）
@@ -96,10 +94,10 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 * 注册/登录与 Azure Active Directory 集成的第三方应用（例如：[Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx)）
   * 在注册/登录期间，系统会要求用户向应用程序授予访问其配置文件的权限和其他权限。  第一个授权者会导致生成一个服务主体，表示要添加到目录中的应用程序。
 * 注册/登录到 [Office 365](http://products.office.com/) 等 Microsoft Online Services
-  * 当你订阅 Office 365 或开始试用时，将在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
+  * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
   * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
-* 在 Azure 管理门户中添加你正在开发的应用，具体请参阅：https://msdn.microsoft.com/library/azure/dn132599.aspx
-* 使用 Visual Studio 添加你正在开发的应用程序，具体请参阅：
+* 在 Azure 管理门户中添加正在开发的应用，请参阅：https://msdn.microsoft.com/library/azure/dn132599.aspx
+* 使用 Visual Studio 添加正在开发的应用，请参阅：
   * [ASP.Net 身份验证方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
   * [连接的服务](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 * 添加要用于使用 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/dn768219.aspx)的应用
@@ -112,7 +110,7 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 * 从 Azure AD 应用程序库添加应用程序（预先集成的第三方应用程序）
 * 使用 Azure AD 应用程序代理发布应用程序
 
-你目录中的所有用户都有权添加他们正在开发的应用程序，并决定要共享哪些应用程序/授予对其组织数据的访问权限。  *请记住，用户注册/登录应用和授权可能会导致创建服务主体。*
+目录中的所有用户都有权添加他们正在开发的应用程序，并决定要共享哪些应用程序/授予对其组织数据的访问权限。  *请记住，用户注册/登录应用和授权可能会导致创建服务主体。*
 
 一开始这听上去可能令人忧虑，不过，请记住以下事项：
 
@@ -121,7 +119,7 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 * 用户为了业务目的使用其组织帐户登录/注册应用程序是一个好现象。  如果他们以后离开了组织，他们将无法访问所用应用程序中的帐户。
 * 记录与哪个应用程序共享了哪些数据是一个很好的做法。  数据的流动性比以往更明显，因此，明确记录哪个用户与哪些应用程序共享了哪些数据会很有用。
 * 为 oAuth 使用 Azure AD 的应用程序将明确决定用户可向应用程序授予哪些权限，以及哪些权限需要管理员的许可。  不言而喻，只有管理员才能授予较大范围的更重要的权限。
-* 添加应用程序和允许应用程序访问其数据的用户将会添加到审核事件，以便你可以在 Azure 管理门户中查看审核报告，以确定应用程序是如何添加到目录中的。
+* 添加应用程序和允许应用程序访问其数据的用户会添加到审核事件，以便可以在 Azure 管理门户中查看审核报告，以确定应用程序是如何添加到目录中的。
 
 **注意：***到目前为止，Microsoft 本身已使用默认配置运行了好几个月。*
 
@@ -146,4 +144,3 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]:../media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
-

@@ -12,12 +12,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
 ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/10/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-search-index"></a>创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -66,5 +65,4 @@ ms.lasthandoff: 12/10/2016
 设计索引时，请循序渐进完成规划阶段，认真思考每个决策。 设计索引时，必须牢记搜索用户体验和业务需求，因为必须为每个字段分配 [适当的属性](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。 部署索引后再进行更改会重新生成并重新加载数据。
 
 如果数据存储要求随时间的推移而改变，可以通过添加或删除分区增加或减少容量。 有关详细信息，请参阅 [Azure 中管理搜索服务](search-manage.md)或[服务限制](search-limits-quotas-capacity.md)。
-
 

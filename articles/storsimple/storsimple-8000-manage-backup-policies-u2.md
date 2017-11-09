@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 569dbfdeb7dcd526cb5a54b487ea1bfb59b13cc6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 门户中使用 StorSimple 设备管理器服务管理备份策略
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 07/08/2017
 
 本教程介绍如何使用 StorSimple 设备管理器服务的“备份策略”边栏选项卡控制 StorSimple 卷的备份过程和备份保留。 此外还介绍如何完成手动备份。
 
-备份卷时，可以选择创建本地快照或云快照。 若要备份本地固定卷，建议指定云快照。 如果对本地固定卷进行大量的本地快照操作，同时使用包含大量改动的数据集，则可能导致本地空间快速用尽。 如果选择进行本地快照操作，建议用户在备份最新状态时拍摄较少的每日快照，将其保留一天，然后再删除。
+备份卷时，可以选择创建本地快照或云快照。 若要备份本地固定卷，建议指定云快照。 如果对本地固定卷进行大量的本地快照操作，同时使用包含大量改动的数据集，则可能导致本地空间快速用尽。 如果选择进行本地快照操作，建议用户在备份最新状态时拍摄较少的每日快照，将其保留一天，再删除。
 
 拍摄本地固定卷的云快照时，只将更改的数据复制到云，对其进行重复数据删除和压缩。
 
@@ -99,5 +98,4 @@ ms.lasthandoff: 07/08/2017
 ## <a name="next-steps"></a>后续步骤
 
 了解有关如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
-
 

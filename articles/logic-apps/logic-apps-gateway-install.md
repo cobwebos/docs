@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 07/13/2017
-ms.author: LADocs; dimazaid; estfan
+ms.date: 09/14/2017
+ms.author: LADocs; millopis; estfan
+ms.openlocfilehash: b3c1e2afadea91f010c3e4b43206b6d30a75ec38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/14/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -52,6 +51,7 @@ ms.lasthandoff: 07/14/2017
 *   [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
+
 ## <a name="requirements"></a>要求
 
 **最低**：
@@ -75,16 +75,19 @@ ms.lasthandoff: 07/14/2017
 
 * 不要在会关闭、休眠或未连接到 Internet 的计算机上安装该网关，因为网关在这种情况下无法运行。 此外，在通过无线网络工作时，网关性能可能会下降。
 
-* 安装期间，必须使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](https://docs.microsoft.com/azure/active-directory/sign-up-organization)（而不是 Microsoft 帐户）登录。 
+* 安装期间，必须使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](https://docs.microsoft.com/azure/active-directory/sign-up-organization)（而不是 Microsoft 帐户）登录。
 
-  后期在 Azure 门户中创建网关资源并将其与网关安装关联时，必须仍使用此工作或学校帐户。 在逻辑应用和本地数据源之间建立连接时，请选中此网关资源。 [为何必须使用 Azure AD 工作或学校帐户？](#why-azure-work-school-account)
+  > [!TIP]
+  > 如果要使用安装了包含 MSDN 订阅的 Visual Studio 的 Microsoft 帐户，请先使用 Microsoft 帐户[在 Azure Active Directory 中创建一个目录（租户）](../active-directory/develop/active-directory-howto-tenant.md)或使用默认目录。 将具有密码的用户添加到该目录，然后向该用户提供对订阅的访问权限。 然后在网关安装期间可以使用此用户名和密码登录。
+
+  稍后在 Azure 门户中创建网关资源并将其与网关安装关联时，必须使用同一工作或学校帐户。 在逻辑应用和本地数据源之间建立连接时，请选中此网关资源。 [为何必须使用 Azure AD 工作或学校帐户？](#why-azure-work-school-account)
 
   > [!TIP]
   > 如果注册了 Office 365 产品但未提供实际工作电子邮件，登录地址可能类似于 jeff@contoso.onmicrosoft.com。 
 
 * 如果使用版本低于 14.16.6317.4 的安装程序安装了现有网关，则无法通过运行最新的安装程序更改网关位置。 但是，可以使用最新的安装程序来安装改用所需位置的新网关。
   
-  如果网关安装程序的版本低于 14.16.6317.4，但尚未安装网关，则你可以下载并使用最新的安装程序。
+  如果网关安装程序的版本低于 14.16.6317.4，但尚未安装网关，则可以下载并使用最新的安装程序。
 
 <a name="install-gateway"></a>
 
@@ -145,10 +148,20 @@ ms.lasthandoff: 07/14/2017
 
 4. 提供要迁移、还原或接管的网关的名称和恢复密钥。
 
+<a name="windows-service-account"></a>
+
+## <a name="windows-service-account"></a>Windows 服务帐户
+
+本地数据网关以 Windows 服务的形式运行，并设置为使用 `NT SERVICE\PBIEgwService` 作为 Windows 服务登录凭据。 默认情况下，在安装网关的计算机中，网关拥有“作为服务登录”权限。 若要创建和维护 Azure 门户中的网关，Windows 服务帐户必须至少具有“参与者”权限。 
+
+> [!NOTE]
+> Windows 服务帐户与用于连接到本地数据源的帐户或用于登录到云服务的 Azure 工作或学校帐户不同。
+
 <a name="restart-gateway"></a>
+
 ## <a name="restart-the-gateway"></a>重新启动网关
 
-网关以 Windows 服务的形式运行。 与其他任何 Windows 服务一样，可以通过多种方式启动和停止该服务。 例如，可以在运行网关的计算机上使用提升的权限打开命令提示符，然后运行以下任一命令：
+与其他任何 Windows 服务一样，可以通过多种方式启动和停止该服务。 例如，可以在运行网关的计算机上使用提升的权限打开命令提示符，并运行以下任一命令：
 
 * 若要启动该服务，请运行以下命令：
   
@@ -157,13 +170,6 @@ ms.lasthandoff: 07/14/2017
 * 若要启动该服务，请运行以下命令：
   
     `net start PBIEgwService`
-
-### <a name="windows-service-account"></a>Windows 服务帐户
-
-本地数据网关设置为将 `NT SERVICE\PBIEgwService` 用作 Windows 服务登录凭据。 默认情况下，在安装网关的计算机中，网关拥有“作为服务登录”权限。
-
-> [!NOTE]
-> Windows 服务帐户与用于连接到本地数据源的帐户或用于登录到云服务的 Azure 工作或学校帐户不同。
 
 ## <a name="configure-a-firewall-or-proxy"></a>配置防火墙或代理
 
@@ -221,17 +227,17 @@ TcpTestSucceeded       : True
 
 当云中的用户与连接到本地数据源的元素交互时：
 
-1. 网关云服务将创建一个查询以及用于数据源的加密凭据，然后将该查询发送到队列以供网关进行处理。
+1. 网关云服务将创建一个查询以及用于数据源的加密凭据，并将该查询发送到队列以供网关进行处理。
 
 2. 网关云服务分析该查询，并将请求推送到 Azure 服务总线。
 
 3. 本地数据网关会针对挂起的请求轮询 Azure 服务总线。
 
-4. 网关会获取查询，对凭据进行解密，然后使用这些凭据连接到数据源。
+4. 网关会获取查询，对凭据进行解密，并使用这些凭据连接到数据源。
 
 5. 网关将查询发送到数据源以便执行。
 
-6. 结果将从数据源发回给网关，然后发送到网关云服务。 网关云服务随后使用结果。
+6. 结果将从数据源发回给网关，并发送到网关云服务。 网关云服务随后使用结果。
 
 <a name="faq"></a>
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -257,7 +263,7 @@ TcpTestSucceeded       : True
 可以借助第三方工具 Azure Speed Test 应用来测量吞吐量。
 
 **问**：从网关运行对数据源的查询时的延迟是多少？ 最佳体系结构是什么？ <br/>
-**答**：若要减少网络延迟，请在网关安装在尽可能靠近数据源的位置处。 如果可以在实际数据源上安装网关，这种距离可最大程度降低造成的延迟。 还需考虑数据中心。 例如，如果服务使用美国西部的数据中心，而你在 Azure VM 中托管了 SQL Server，则 Azure VM 也应该位于美国西部。 这种距离可最大程度降低延迟并避免 Azure VM 产生传出费用。
+**答**：若要减少网络延迟，请将网关安装在尽可能靠近数据源的位置。 如果可以在实际数据源上安装网关，这种距离可最大程度降低造成的延迟。 还需考虑数据中心。 例如，如果服务使用美国西部的数据中心，而你在 Azure VM 中托管了 SQL Server，则 Azure VM 也应该位于美国西部。 这种距离可最大程度降低延迟并避免 Azure VM 产生传出费用。
 
 **问**：如何将结果发送回云？ <br/>
 **答**：可通过 Azure 服务总线发送结果。
@@ -283,7 +289,7 @@ TcpTestSucceeded       : True
 **答**：使用恢复密钥可在发生灾难后迁移或恢复网关设置。
 
 **问**：是否有使用网关实现高可用性方案的计划？ <br/>
-**答**：我们正在规划这些方案，但目前没有时间表。
+**答**：我们正在规划这些方案，但还没有时间表。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -336,4 +342,3 @@ TcpTestSucceeded       : True
 * [从逻辑应用连接到本地数据](../logic-apps/logic-apps-gateway-connection.md)
 * [企业集成功能](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)
-

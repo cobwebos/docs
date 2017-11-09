@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -114,7 +113,7 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
 1. 登录到在其中安装了 VMware vSphere PowerCLI 的 VM。
 2. 打开 VMware vSphere PowerCLI 控制台。
-3. 确保启用脚本的执行策略。 如果已禁用，请以管理员模式启动 VMware vSphere PowerCLI 控制台，然后运行以下命令将它启用：
+3. 确保启用脚本的执行策略。 如果已禁用，请以管理员模式启动 VMware vSphere PowerCLI 控制台，并运行以下命令将它启用：
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
@@ -129,7 +128,7 @@ Site Recovery Deployment Planner 公共预览版是一个命令行工具，目�
 
             Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
 
-6. 在记事本中打开输出文件，然后将要分析的所有 VM 的名称复制到另一文件（例如 ProfileVMList.txt）中，每行一个 VM 名称。 此文件将用作命令行工具的 *-VMListFile* 参数的输入。
+6. 在记事本中打开输出文件，并将要分析的所有 VM 的名称复制到另一文件（例如 ProfileVMList.txt）中，每行一个 VM 名称。 此文件将用作命令行工具的 *-VMListFile* 参数的输入。
 
     ![Deployment Planner 中的 VM 名称列表](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
@@ -160,7 +159,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 
 VM 配置会在分析操作开始时捕获一次，存储在名为 VMDetailList.xml 的文件中。 生成报告时使用此信息。 从分析开始到结束都不捕获 VM 配置中发生的任何更改（例如，核心、磁盘或 NIC 数增加）。 如果分析的 VM 配置在分析过程中发生了更改，则可在公共预览版中通过下述解决方法在生成报告时获取最新的 VM 详细信息：
 
-* 备份 VMdetailList.xml 文件，然后将其从当前位置删除。
+* 备份 VMdetailList.xml 文件，并将其从当前位置删除。
 * 生成报告时传递 -User 和 -Password 参数。
 
 该分析命令在分析目录中生成多个文件。 请勿删除任何文件，因为这样做会影响报告生成。
@@ -257,7 +256,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com 
 ## <a name="growth-factor-considerations"></a>增长系数考虑因素
 **为何在对部署进行计划时应考虑增长系数？**
 
-假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护然后再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
+假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护，再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
 
 例如，假设你目前的 VM 适合标准存储复制帐户。 在随后的三个月中，可能会发生多项变化：
 
@@ -612,4 +611,3 @@ Azure Site Recovery Deployment Planner 公共预览版 1.0 存在以下已知问
 * 该工具仅适用于 VMware 到 Azure 的方案，而不适用于 Hyper-V 到 Azure 的部署。 对于 Hyper-V 到 Azure 的方案，请使用 [Hyper-V Capacity Planner 工具](./site-recovery-capacity-planning-for-hyper-v-replication.md)。
 * Microsoft Azure 美国政府版和中国区域版不支持 GetThroughput 操作。
 * 如果 vCenter 服务器中有两个或更多个 VM 跨不同的 ESXi 主机使用相同的名称或 IP 地址，该工具将无法分析 VM。 在此版本中，该工具将跳过 VMListFile 中针对重复 VM 名称或 IP 地址的分析。 解决方法是使用 ESXi 主机而不是 vCenter 服务器来分析 VM。 必须针对每个 ESXi 主机运行一个实例。
-

@@ -4,7 +4,7 @@
 在扫描和应用更新之前需要执行以下步骤：
 
 1. 创建设备数据的云快照。
-2. 确保控制器的固定 IP 可路由，并且可以连接到 Internet。 这些固定 IP 将用于提供设备更新。 可以通过设备的 Windows PowerShell 界面，在每个控制器上运行以下 cmdlet 来测试 IP：
+2. 确保控制器的固定 IP 可路由，并且可以连接到 Internet。 这些固定 IP 用于提供设备更新。 可以通过设备的 Windows PowerShell 界面，在每个控制器上运行以下 cmdlet 来测试 IP：
    
      `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network> `
    

@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
+ms.openlocfilehash: f0d2644903181cd2e20166feae4f90ddd4037fa8
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: ea1666007b88cdf45017b0bd91e100dc1218fb2b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 ## <a name="what-is-app-service-authentication--authorization"></a>什么是应用服务身份验证/授权？
@@ -27,10 +26,7 @@ ms.lasthandoff: 09/07/2017
 
 应用服务使用联合标识，即通过第三方标识提供者来存储帐户并进行用户身份验证。 应用程序依赖于提供者的标识信息，因此不需自行存储该信息。 应用服务支持现有的五个标识提供者：Azure Active Directory、Facebook、Google、Microsoft 帐户和 Twitter。 应用可以使用任意数目的此类标识提供者，为用户提供登录方式选项。 可以通过集成其他标识提供者或[自己的自定义标识解决方案][custom-auth]，扩大内置支持。
 
-参阅以下教程之一即可立即入门：
-
-* [将身份验证添加到 iOS 应用][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova] 应用）
-* [Azure 应用服务中 API 应用的用户身份验证][apia-user]
+如果想要立即开始，请参阅以下教程之一：[向 iOS 应用添加身份验证][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova]）。
 
 ## <a name="how-authentication-works-in-app-service"></a>应用服务中的身份验证机制
 若要使用其中某个标识提供者进行身份验证，首先需对标识提供者进行配置，使之了解应用程序。 然后，标识提供者会提供 ID 和机密，再由用户将其提供给应用服务。 这样即可确立信任关系，使应用服务能够验证标识提供者提供的用户声明，例如身份验证令牌。
@@ -69,9 +65,9 @@ ms.lasthandoff: 09/07/2017
 > 
 > 
 
-对于服务到服务方案，应用服务可通过 Azure Active Directory 保护应用程序。 调用应用程序只需提供 Azure Active Directory 服务主体授权令牌即可，而该令牌可通过在 Azure Active Directory 中提供客户端 ID 和客户端机密来获取。 [API 应用的服务主体身份验证][apia-service]教程介绍了使用 ASP.NET API 应用的此类方案的示例。
+对于服务到服务方案，应用服务可通过 Azure Active Directory 保护应用程序。 调用应用程序只需提供 Azure Active Directory 服务主体授权令牌即可，而该令牌可通过在 Azure Active Directory 中提供客户端 ID 和客户端机密来获取。 [API 应用的服务主体身份验证][apia-service] 教程介绍了使用 ASP.NET API 应用的此类方案的示例。
 
-若要通过应用服务身份验证处理服务到服务方案，可使用客户端证书或基本身份验证。 有关 Azure 中客户端证书的信息，请参阅[如何为 Web 应用配置 TLS 相互身份验证](../app-service-web/app-service-web-configure-tls-mutual-auth.md)。 有关 ASP.NET 中基本身份验证的信息，请参阅 [ASP.NET Web API 2 中的身份验证筛选器](http://www.asp.net/web-api/overview/security/authentication-filters)。
+若要通过应用服务身份验证处理服务到服务方案，可使用客户端证书或基本身份验证。 有关 Azure 中客户端证书的信息，请参阅[如何为 Web 应用配置 TLS 相互身份验证](app-service-web-configure-tls-mutual-auth.md)。 有关 ASP.NET 中基本身份验证的信息，请参阅 [ASP.NET Web API 2 中的身份验证筛选器](http://www.asp.net/web-api/overview/security/authentication-filters)。
 
 从应用服务逻辑应用到 API 应用的服务帐户身份验证是一个特殊情况，该情况在[在逻辑应用中使用在应用服务中托管的自定义 API](../logic-apps/logic-apps-custom-hosted-api.md) 中进行了详细介绍。
 
@@ -80,7 +76,7 @@ ms.lasthandoff: 09/07/2017
 
 * 只允许经过身份验证的请求访问应用程序。
   
-    如果浏览器收到匿名请求，应用服务会将其重定向到所选标识提供者的页面，方便用户登录。 如果请求来自移动设备，则返回“401 未授权”HTTP 响应。
+    如果浏览器发送匿名请求，应用服务会将其重定向到所选标识提供者的页面，方便用户登录。 如果请求来自移动设备，则返回“401 未授权”HTTP 响应。
   
     此选项根本不需在应用中编写任何身份验证代码。 如需进行更细致的授权，可通过代码获取用户信息。
 * 允许所有请求访问应用程序，但需验证经过身份验证的请求，在 HTTP 标头中传递身份验证信息。
@@ -116,11 +112,6 @@ ms.lasthandoff: 09/07/2017
 
 若要使用此处未提供的其他标识系统，也可使用[移动应用 .NET 服务器 SDK 中的预览版自定义身份验证支持][custom-auth]，后者适用于 Web 应用、移动应用或 API 应用。
 
-### <a name="web-applications"></a>Web 应用程序
-以下教程介绍如何向 Web 应用程序添加身份验证：
-
-* [Azure App Service 入门 - 第 2 部分][web-getstarted]
-
 ### <a name="mobile-applications"></a>移动应用程序
 以下教程介绍如何通过服务器定向流向移动客户端添加身份验证：
 
@@ -150,14 +141,11 @@ ms.lasthandoff: 09/07/2017
 
 * [使用适用于 iOS 的 Google 登录 SDK](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
-### <a name="api-applications"></a>API 应用程序
-以下教程介绍了如何保护 API 应用：
+<!-- ### API applications
+The following tutorials show how to protect your API apps:
 
-* [Azure 应用服务中 API 应用的用户身份验证][apia-user]
-* [Azure 应用服务中 API 应用的服务主体身份验证][apia-service]
-
-[apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
-[apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
+* [User authentication for API Apps in Azure App Service][apia-user]
+* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
@@ -167,15 +155,14 @@ ms.lasthandoff: 09/07/2017
 [Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
 [Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
 
-[AAD]: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook]: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md
-[Google]: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md
-[MSA]: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter]: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md
+[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
+[Google]: app-service-mobile-how-to-configure-google-authentication.md
+[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 
 [ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
-

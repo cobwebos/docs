@@ -3,7 +3,7 @@ title: "静态数据的 Azure 存储服务加密 | Microsoft Docs"
 description: "使用 Azure 存储服务加密功能可在存储数据时在服务端加密 Azure Blob 存储，并在检索数据时解密数据。"
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
-ms.author: robinsh
+ms.author: tamram
+ms.openlocfilehash: 772c36c8310a4bf30c62def507382fe74427e0d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bac7b3292f21aa97d02a18dd58f79a4f10485b7d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
 静态数据的 Azure 存储服务加密 (SSE) 可帮助你保护数据，使你的组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
@@ -61,7 +60,7 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 SSE 具有以下限制：
 
 * 不支持经典存储帐户的加密。
-* 现有数据 - SSE 只将加密启用加密之后新建的数据。 例如，如果创建新的 Resource Manager 存储帐户但未打开加密，然后将 blob 或存档 VHD 上传到该存储帐户，然后打开 SSE，则那些 Blob 不会被加密，除非重新写入或复制。
+* 现有数据 - SSE 只将加密启用加密之后新建的数据。 例如，如果创建新的 Resource Manager 存储帐户但未打开加密，然后将 blob 或存档 VHD 上传到该存储帐户，并打开 SSE，则那些 Blob 不会被加密，除非重新写入或复制。
 * Marketplace 支持 - 使用 [Azure 门户](https://portal.azure.com)、PowerShell 和 Azure CLI 为 Marketplace 中创建的 VM 启用加密。 VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入会加密。
 * 表和队列数据将不会加密。
 
@@ -84,7 +83,7 @@ AzCopy 是一个 Windows 命令行实用程序，专用于使用具有优化性�
 有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
 #### <a name="using-smb"></a>使用 SMB
-Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以从本地客户端或在 Azure 中装载文件共享。 装载后，可以使用 Robocopy 等工具将文件复制到 Azure 文件共享。 有关详细信息，请参阅[如何在 Windows 上装载 Azure 文件共享](../files/storage-how-to-use-files-windows.md)和[如何在 Linux 上装载 Azure 文件共享](../storage-how-to-use-files-linux.md)。
+Azure 文件在云端通过标准 SMB 协议提供文件共享。 可以从本地客户端或在 Azure 中装载文件共享。 装载后，可以使用 Robocopy 等工具将文件复制到 Azure 文件共享。 有关详细信息，请参阅[如何在 Windows 上装载 Azure 文件共享](../files/storage-how-to-use-files-windows.md)和[如何在 Linux 上装载 Azure 文件共享](../files/storage-how-to-use-files-linux.md)。
 
 
 #### <a name="using-the-storage-client-libraries"></a>使用存储客户端库
@@ -128,7 +127,7 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 **问：如何加密现有 Resource Manager 存储帐户中的当前数据？**
 
-答：可以随时在 Resource Manager 存储帐户中启用 SSE。 但是，不会加密已经存在的数据。 要加密现有数据，可将它们复制到另一个名称或另一个容器，然后删除未加密的版本。
+答：可以随时在 Resource Manager 存储帐户中启用 SSE。 但是，不会加密已经存在的数据。 要加密现有数据，可将它们复制到另一个名称或另一个容器，并删除未加密的版本。
 
 **问：我使用高级存储，可以使用 SSE 吗？**
 
@@ -188,5 +187,4 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 ## <a name="next-steps"></a>后续步骤
 Azure 存储提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 有关详细信息，请访问[存储安全指南](../storage-security-guide.md)。
-
 

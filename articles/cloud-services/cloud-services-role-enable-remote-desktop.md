@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 413e72e9a39fcde84f56bfc61a6bc72dbadf1c97
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
 
 > [!div class="op_single_selector"]
@@ -49,7 +47,7 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
    * 若要启用远程桌面，请选中“**启用远程桌面**”复选框。 若要禁用远程桌面，请清除该复选框。
    * 创建一个要在与角色实例的远程桌面连接中使用的帐户。
    * 更新现有帐户的密码。
-   * **选择要用于身份验证的已上载证书（使用“证书”****页上的“上载”**），或者创建新证书。
+   * 选择要用于身份验证的已上传证书（使用“证书”页上的“上传”），或者创建新证书。
    * 更改远程桌面配置的到期日期。
 
 5. 完成配置更新时，请单击“**确定**”（复选标记）。
@@ -137,4 +135,3 @@ Azure 经典门户使用远程桌面扩展方法，以便即使在部署应用�
 ## <a name="additional-resources"></a>其他资源
 [如何配置云服务](cloud-services-how-to-configure.md)
 [云服务常见问题 - 远程桌面](cloud-services-faq.md)
-

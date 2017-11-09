@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
 ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -31,12 +30,12 @@ ms.lasthandoff: 04/19/2017
 > 
 > 
 
-本文演示如何为预先存在的 VNet 添加虚拟网络网关。 本文将演示为预先存在的 VNet 添加虚拟网络 (VNet) 网关、重设其大小并进行删除的步骤。 此配置的步骤专用于使用 Resource Manager 部署模型创建的、将在 ExpressRoute 配置中使用的 VNet。 有关 ExpressRoute 的虚拟网络网关和网关配置设置的详细信息，请参阅[关于 ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)。 
+本文演示如何为预先存在的 VNet 添加虚拟网络网关。 本文将演示为预先存在的 VNet 添加虚拟网络 (VNet) 网关、重设其大小并进行删除的步骤。 此配置的步骤专用于使用 Resource Manager 部署模型创建的、会在 ExpressRoute 配置中使用的 VNet。 有关 ExpressRoute 的虚拟网络网关和网关配置设置的详细信息，请参阅[关于 ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)。 
 
 
 ## <a name="before-beginning"></a>开始之前
 
-此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 我们将此列表用于我们的示例步骤。 你可以复制列表作为参考，并将列表中的值替换为自己的值。
+此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 我们将此列表用于我们的示例步骤。 可以复制列表作为参考，并将列表中的值替换为自己的值。
 
 **配置参考列表**
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 04/19/2017
 * 网关类型 =“ExpressRoute” ExpressRoute 配置需要此类型。
 * 网关公共 IP 名称 =“MyERGWVIP”
 
-可以先观看这些步骤的[视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，然后再开始配置。
+可以先观看这些步骤的[视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，再开始配置。
 
 ## <a name="create-the-gateway-subnet"></a>创建网关子网
 
@@ -70,7 +69,7 @@ ms.lasthandoff: 04/19/2017
 
 ## <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
-1. 在门户左侧单击 **+**，然后在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，然后单击该条目。 单击“虚拟网络网关”边栏选项卡底部的“创建”。 这会打开“创建虚拟网络网关”边栏选项卡。
+1. 在门户左侧单击 **+**，并在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目。 单击“虚拟网络网关”边栏选项卡底部的“创建”。 这会打开“创建虚拟网络网关”边栏选项卡。
 2. 在“创建虚拟网络网关”边栏选项卡中，填写虚拟网络网关的值。
 
     ![创建虚拟网络网关边栏选项卡字段](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "创建虚拟网络网关边栏选项卡字段")

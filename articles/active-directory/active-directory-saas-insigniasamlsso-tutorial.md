@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: ac2f5dad7c0af29772b4c4064cc9700ebcf2a22d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>教程：Azure Active Directory 与 Insignia SAML SSO 集成
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 09/13/2017
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Insignia SAML SSO 客户端支持团队](http://www.insigniasoftware.com/insignia/Techsupport.aspx)获取这些值。 
  
 
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_insigniasamlsso_certificate.png) 
 
@@ -233,5 +232,4 @@ ms.lasthandoff: 09/13/2017
 [201]: ./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_general_203.png
-
 

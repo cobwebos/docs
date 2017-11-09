@@ -11,14 +11,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 06/29/2017
+ms.openlocfilehash: 1a581752e3803e9c9aba826b23db14a76080b4ec
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: a7555464879826c5e4f55929d23163b002664e81
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Go 语言进行连接并查询数据
 本快速入门演示如何使用以 [Go](https://golang.org/) 语言 (golang) 编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
@@ -28,7 +26,7 @@ ms.lasthandoff: 08/23/2017
 - [创建 DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-go-and-pq-connector"></a>安装 Go 和 pq 连接器
-在自己的计算机上安装 [Go](https://golang.org/doc/install) 和[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。 根据自己的平台执行以下步骤：
+在自己的计算机上安装 [Go](https://golang.org/doc/install) 和[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。 根据自己的平台执行相应步骤：
 
 ### <a name="windows"></a>Windows
 1. 根据[安装说明](https://golang.org/doc/install)[下载](https://golang.org/dl/)和安装用于 Microsoft Windows 的 Go。
@@ -100,9 +98,9 @@ ms.lasthandoff: 08/23/2017
 ## <a name="connect-and-create-a-table"></a>进行连接并创建表
 使用以下代码进行连接，使用 **CREATE TABLE** SQL 语句创建表，然后使用 **INSERT INTO** SQL 语句将行添加到表中。
 
-代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
+代码将导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 PostgreSQL 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（用于命令行中的打印输入和输出）。
 
-代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码多次调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行多个 SQL 命令。 每次都会使用自定义 checkError() 方法来检查是否发生错误，以及是否在发生错误时死机退出。
+代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL 数据库，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码多次调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行多个 SQL 命令。 每次都将使用自定义 checkError() 方法来检查是否发生错误，以及是否在发生错误时死机退出。
 
 将 `HOST`、`DATABASE`、`USER` 和 `PASSWORD` 参数替换为你自己的值。 
 
@@ -166,9 +164,9 @@ func main() {
 ## <a name="read-data"></a>读取数据
 使用以下代码进行连接，并使用 **SELECT** SQL 语句来读取数据。 
 
-代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
+代码将导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 PostgreSQL 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（用于命令行中的打印输入和输出）。
 
-代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 select 查询通过调用方法 [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) 来运行，生成的行保留在类型为[行](https://golang.org/pkg/database/sql/#Rows)的变量中。 代码使用 [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) 方法来读取当前行中的列数据值，并使用迭代器 [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) 来循环访问相关行，直到再也没有行存在。 每行的列值列显到控制台。每次都会使用自定义 checkError() 方法来检查是否发生错误，以及是否在发生错误时死机退出。
+代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL 数据库，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 select 查询通过调用方法 [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) 来运行，生成的行保留在类型为[行](https://golang.org/pkg/database/sql/#Rows)的变量中。 代码使用 [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) 方法来读取当前行中的列数据值，并使用迭代器 [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) 来循环访问相关行，直到再也没有行存在。 每行的列值列显到控制台。每次都将使用自定义 checkError() 方法检查是否发生错误，以及是否在发生错误时死机退出。
 
 将 `HOST`、`DATABASE`、`USER` 和 `PASSWORD` 参数替换为你自己的值。 
 
@@ -231,11 +229,11 @@ func main() {
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 **UPDATE** SQL 语句更新数据。
+使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据。
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
 
-代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码通过调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行 SQL 语句，以便更新表。 一个自定义的 checkError() 方法，用于检查是否发生错误，以及在发生错误时是否死机退出。
+代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL 数据库，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码通过调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行 SQL 语句，以便更新表。 使用自定义 checkError() 方法检查是否发生错误，以及是否在发生错误时死机退出。
 
 将 `HOST`、`DATABASE`、`USER` 和 `PASSWORD` 参数替换为你自己的值。 
 ```go
@@ -284,11 +282,11 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>删除数据
-使用以下代码进行连接，并使用 **DELETE** SQL 语句读取数据。 
+使用以下代码进行连接，并使用 **DELETE** SQL 语句删除数据。 
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](http://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
 
-代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码通过调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行 SQL 语句，以便更新表。 一个自定义的 checkError() 方法，用于检查是否发生错误，以及在发生错误时是否死机退出。
+代码通过调用 [sql.Open()](http://godoc.org/github.com/lib/pq#Open) 方法来连接到 Azure Database for PostgreSQL 数据库，并使用 [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) 方法来检查连接。 将始终使用[数据库句柄](https://golang.org/pkg/database/sql/#DB)来存储数据库服务器的连接池。 代码通过调用 [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) 方法来运行 SQL 语句，以便从表中删除行。 使用自定义 checkError() 方法检查是否发生错误，以及是否在发生错误时死机退出。
 
 将 `HOST`、`DATABASE`、`USER` 和 `PASSWORD` 参数替换为你自己的值。 
 ```go
@@ -339,4 +337,3 @@ func main() {
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用导出和导入功能迁移数据库](./howto-migrate-using-export-and-import.md)
-

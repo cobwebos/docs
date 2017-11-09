@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
 ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>将 Intel Edison 连接到 Azure IoT 中心 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -159,14 +157,14 @@ ms.lasthandoff: 07/13/2017
 ### <a name="set-password"></a>设置密码
 1. 在`Set up options`页面上，单击`Enable Security`。
 2. 可为 Intel® Edison 开发板设置自定义名称。 这是可选的。
-3. 为开发板键入密码，然后单击`Set password`。
+3. 为开发板键入密码，并单击`Set password`。
 4. 记下密码，稍后会用到此密码。
 
 ### <a name="connect-wi-fi"></a>连接 Wi-Fi
 1. 在`Set up options`页面上，单击`Connect Wi-Fi`。 计算机将扫描可用的 Wi-Fi 网络，此过程最长可能需要 1 分钟。
 2. 从`Detected Networks`下拉列表中，选择网络。
 3. 从`Security`下拉列表中，选择网络的安全类型。
-4. 提供登录名和密码信息，然后单击`Configure Wi-Fi`。
+4. 提供登录名和密码信息，并单击`Configure Wi-Fi`。
 5. 记下 IP 地址，稍后会用到此地址。
 
 > [!NOTE]
@@ -233,4 +231,3 @@ ms.lasthandoff: 07/13/2017
 此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

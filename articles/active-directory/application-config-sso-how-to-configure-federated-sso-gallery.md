@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 76078566c93f2b0359c1157cdcdb5b15a1402996
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 1b1d00718981b2c7d11f5b88428d02e16dd0b34d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的联合单一登录
 
 通过企业单一登录功能启用的 Azure AD 库中的所有应用程序都具有可用的分步教程。 可以访问[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)，获取详细的分步指南。
@@ -88,9 +86,9 @@ ms.lasthandoff: 06/20/2017
 
 9.  在“域和 URL”中输入所需的值。 应从应用程序供应商处获取这些值。
 
-   1. 若要将应用程序配置为 SP 启动的 SSO，“登录 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
+   1. 要将应用程序配置为 SP 启动的 SSO，“登录 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
 
-   2. 若要将应用程序配置为 IdP 启动的 SSO，“回复 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
+   2. 要将应用程序配置为 IdP 启动的 SSO，“回复 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
 
 10. **可选：**如果要查看非必需值，请单击“显示高级 URL 设置”。
 
@@ -165,13 +163,13 @@ ms.lasthandoff: 06/20/2017
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  转到“SAML 签名证书”部分，然后单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
 Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
 
 ## <a name="assign-users-to-the-application"></a>将用户分配到应用程序
 
-若要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
@@ -213,7 +211,6 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)
-
 
 
 

@@ -12,44 +12,36 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2017
+ms.date: 10/13/2017
 ms.author: yurid
+ms.openlocfilehash: 1cebb6edecd13c6ab32c6854bfd6fe908c1f71f4
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f4e3f74ce3f342eecf633cd748e2b7b21b2ccdd2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
-本文档介绍如何在安全中心配置安全策略，指导用户完成执行此任务所必需的步骤。
+# <a name="set-security-policies-in-security-center"></a>在安全中心设置安全策略
+本文档介绍如何在安全中心配置安全策略，指导用户完成执行此任务所必需的步骤。 
 
->[!NOTE] 
->自 2017 年 6 月初开始，安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
->
 
-## <a name="what-are-security-policies"></a>什么是安全策略？
-安全策略定义一组控件，这些控件是针对指定订阅中的资源建议的。 在安全中心，用户需根据公司安全需求和应用程序类型或每个订阅中数据的敏感性，为 Azure 订阅定义策略。
+## <a name="how-security-policies-work"></a>安全策略工作原理
+安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略，并监视策略遵循情况。 
+
+> [!NOTE]
+> 现在可以使用 Azure 策略（功能受限的预览版）来扩展安全中心策略。 单击[此处](http://aka.ms/getpolicy)加入预览版，或者查看[此处](security-center-azure-policy.md)的文档。
 
 例如，开发或测试用资源的安全要求可能不同于生产应用型资源。 同样，使用管控数据（例如个人身份信息）的应用程序可能需要更高级别的安全性。 在 Azure 安全中心启用的安全策略可以通过安全建议和监视帮助用户确定可能的漏洞并缓解威胁造成的危害。 阅读 [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) （Azure 安全中心规划和操作指南），详细了解如何确定适当的选项。
 
-## <a name="set-security-policies"></a>设置安全策略
-可为每个订阅配置安全策略。 若要修改安全策略，用户必须是该订阅的所有者或参与者。 登录到 Azure 门户，按照后续步骤在安全中心配置安全策略：
+## <a name="edit-security-policies"></a>编辑安全策略
+可以在安全中心为每个 Azure 订阅编辑默认的安全策略。 若要修改安全策略，你必须是该订阅的所有者、参与者或安全管理员。 登录到 Azure 门户，按照后续步骤在安全中心配置安全策略： 
 
-1. 单击“安全中心”仪表板中的“策略”磁贴。
-2. 在打开的“安全策略”边栏选项卡中，选择要启用安全策略的订阅。
+1.  在“安全中心”仪表板的“通用”下单击“安全策略”。
+2.  选择要在其上启用安全策略的订阅。
+3.  在“策略组件”部分单击“安全策略”。
+4.  这是安全中心分配的默认策略。 可以打开/关闭可用的安全建议。
+5.  编辑完后，单击“保存”。
 
-    ![定义策略](./media/security-center-policies/security-center-policies-fig1-ga.png)
-3. 所选订阅的“安全策略”边栏选项卡在打开时会显示一组选项。 此边栏选项卡中的可用选项包括：
-
-   * **预防策略**：使用此选项配置每个订阅的策略。  
-   * **电子邮件通知**：使用此选项配置电子邮件通知，让其在每天第一次出现警报时发送，以及在警报的严重性高的情况下发送。 只能根据订阅策略配置电子邮件首选项。 请阅读 [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) （在 Azure 安全中心提供安全方面的联系细节），详细了解如何配置电子邮件通知。
-   * **定价层**：使用此选项升级所选定价层。 请参阅[安全中心定价](security-center-pricing.md)，详细了解各种定价选项。
-4. 确保“从虚拟机收集数据”选项为“启用”。 通过此选项，可使用 Microsoft Monitoring Agent（Operations Management Suite 和 Log Analytics 服务同样使用此代理）实现对现有和新资源的自动日志收集。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。
-
-5. 在“安全策略”边栏选项卡中，单击“保护策略”查看可用选项。 单击“启用”，启用此订阅相关的安全建议。
-
-    ![选择安全策略](./media/security-center-policies/security-center-policies-fig7.png)
+## <a name="available-security-policy-options"></a>可用的安全策略选项
 
 若要了解每个选项，可使用下表作为参考：
 
@@ -68,15 +60,9 @@ ms.lasthandoff: 07/28/2017
 | 存储加密 |目前，此功能仅适用于 Azure Blob 和文件。 在启用存储服务加密以后，只会加密新数据，该存储帐户中的任何现有文件仍会保持不加密状态。 |
 | JIT 网络访问 |当启用了恰时访问时，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 需要选择应锁定 VM 上的哪些端口的入站流量。 有关详细信息，请参阅[使用恰时功能管理虚拟机访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)。 |
 
-配置所有选项以后，在包含建议的“安全策略”边栏选项卡中单击“确定”，并在包含初始设置的“安全策略”边栏选项卡中单击“保存”。
 
-> [!NOTE]
-> 定价层仍适用于资源组级别。 有关详细信息，请访问[定价](https://azure.microsoft.com/pricing/details/security-center/)页。
->
->
-
-## <a name="see-also"></a>另请参阅
-在本文档中，已经学习了如何在 Azure 安全中心中配置安全策略。 若要详细了解 Azure 安全中心，请参阅以下内容：
+## <a name="next-step"></a>后续步骤
+本文档中已经介绍了如何在安全中心配置安全策略。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Azure Security Center planning and operations guide](security-center-planning-and-operations-guide.md)（Azure 安全中心规划和操作指南）。 了解如何规划并理解设计注意事项，以便采用 Azure 安全中心。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
@@ -84,4 +70,3 @@ ms.lasthandoff: 07/28/2017
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md)（通过 Azure 安全中心监视合作伙伴解决方案）。 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
-

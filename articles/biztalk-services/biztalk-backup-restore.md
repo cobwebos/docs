@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: c55d1ab124441c42101b4ad60924a9ea28231408
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 
@@ -43,26 +42,26 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 * 对 EDI 控制编号进行备份以便保持控制编号的连续性。 如果消息是在最后的备份后处理的，则还原此备份内容可能会导致重复的控制编号。
 * 如果批次含有活动消息，请在运行备份**之前**处理该批次。 在创建备份（根据需要或计划）时，永远不会存储批中的消息。 
   
-    **如果对某一批次中的活动消息执行备份，将不会备份这些消息，因此这些消息将丢失。**
+    **如果对某一批次中的活动消息执行备份，不会备份这些消息，因此这些消息将丢失。**
 * 可选：在 BizTalk 服务门户中，停止任何管理操作。
 
 ## <a name="create-a-backup"></a>创建备份
-备份可以随时进行并由您完全控制。 本部分列出了使用 Azure 经典门户创建备份的步骤，包括：
+备份可以随时进行并由你完全控制。 本部分列出了使用 Azure 经典门户创建备份的步骤，包括：
 
 [按需备份](#backupnow)
 
 [计划备份](#backupschedule)
 
 #### <a name="backupnow"></a>按需备份
-1. 在 Azure 经典门户中，选择“BizTalk 服务”，然后选择要备份的 BizTalk 服务。
+1. 在 Azure 经典门户中，选择“BizTalk 服务”，并选择要备份的 BizTalk 服务。
 2. 在“仪表板”选项卡上，选择页面底部的“备份”。
 3. 输入备份名称。 例如，输入 *myBizTalkService*BU*Date*。
 4. 选择 blob 存储帐户并选择复选标记以开始备份。
 
-完成备份后，在存储帐户中创建一个使用您输入的备份名称的容器。 此容器包含您的 BizTalk 服务备份配置。
+完成备份后，在存储帐户中创建一个使用输入的备份名称的容器。 此容器包含 BizTalk 服务备份配置。
 
 #### <a name="backupschedule"></a>计划备份
-1. 在 Azure 经典门户中，选择“BizTalk 服务”，选择要计划备份的 BizTalk 服务名称，然后选择“配置”选项卡。
+1. 在 Azure 经典门户中，选择“BizTalk 服务”，选择要计划备份的 BizTalk 服务名称，并选择“配置”选项卡。
 2. 将“备份状态”设置为“自动”。 
 3. 选择用于存储备份的“存储帐户”，输入创建备份的“频率”，以及保留备份的时长（**保留天数**）：
    
@@ -93,7 +92,7 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 1. 在 Azure 经典门户中，选择“新建” > “应用服务” > “BizTalk 服务” > “还原”：
    
     ![还原备份][Restore]
-2. 在“备份 URL”中，选择文件夹图标，然后展开存储 BizTalk 服务配置备份的 Azure 存储帐户。 展开容器，然后在右窗格中选择相应的备份 .txt 文件。 
+2. 在“备份 URL”中，选择文件夹图标，并展开存储 BizTalk 服务配置备份的 Azure 存储帐户。 展开容器，并在右窗格中选择相应的备份 .txt 文件。 
    <br/><br/>
    选择“打开”。
 3. 在“还原 BizTalk 服务”页上，为还原的 BizTalk 服务输入“BizTalk 服务名称”并验证“域 URL”、“版本”和“区域”。 **创建新的 SQL 数据库实例**用于跟踪数据库：
@@ -101,7 +100,7 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
     ![][RestoreBizTalkService]
    
     选择“下一步”箭头。
-4. 验证 SQL 数据库的名称，输入将在其中创建 SQL 数据库的物理服务器，以及该服务器的用户名/密码。
+4. 验证 SQL 数据库的名称，输入会在其中创建 SQL 数据库的物理服务器，以及该服务器的用户名/密码。
 
     如果要配置 SQL 数据库版本、大小和其他属性，请选择“配置高级数据库设置”。 
 
@@ -110,17 +109,17 @@ Azure BizTalk 服务包括备份和还原功能。 本主题介绍如何使用 A
 1. 为 BizTalk 服务新建存储帐户，或者输入现有存储帐户。
 2. 选择复选标记以开始还原。
 
-还原成功完成后，新 BizTalk 服务将在 Azure 经典门户的 BizTalk 服务页上的挂起状态中列出。
+还原成功完成后，新 BizTalk 服务会在 Azure 经典门户的 BizTalk 服务页上的挂起状态中列出。
 
 ### <a name="postrestore"></a>还原备份后
-BizTalk 服务始终在“挂起”状态中还原。 在此状态下，您可在新环境正常运行前进行任何配置更改，其中包括：
+BizTalk 服务始终在“挂起”状态中还原。 在此状态下，可在新环境正常运行前进行任何配置更改，其中包括：
 
 * 如果使用 Azure BizTalk 服务 SDK 创建 BizTalk 服务应用程序，可能需要更新这些应用程序中的访问控制 (ACS) 凭据以使用还原的环境。
-* 还原 BizTalk 服务以复制现有的 BizTalk 服务环境。 在此情况中，如果有在使用源 FTP 文件夹的原始 BizTalk 服务门户中配置的协议，您可能需要在新还原的环境中更新协议，以使用不同的源 FTP 文件夹。 否则，可能有两个不同的协议尝试提取同一条消息。
+* 还原 BizTalk 服务以复制现有的 BizTalk 服务环境。 在此情况中，如果有在使用源 FTP 文件夹的原始 BizTalk 服务门户中配置的协议，可能需要在新还原的环境中更新协议，以使用不同的源 FTP 文件夹。 否则，可能有两个不同的协议尝试提取同一条消息。
 * 如果还原以具有多个 BizTalk 服务环境，请确保针对 Visual Studio 应用程序、PowerShell cmdlet、REST Api 或贸易合作伙伴管理 OM API 中正确的环境。
 * 最好在新还原的 BizTalk 服务环境中配置自动化备份。
 
-要在 Azure 经典门户中启动 BizTalk 服务，请选择还原的 BizTalk 服务，然后选择任务栏中的“恢复”。 
+要在 Azure 经典门户中启动 BizTalk 服务，请选择还原的 BizTalk 服务，并选择任务栏中的“恢复”。 
 
 ## <a name="what-gets-backed-up"></a>备份的内容
 在创建某一备份时，将备份以下项目：
@@ -212,5 +211,4 @@ BizTalk 服务始终在“挂起”状态中还原。 在此状态下，您可�
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
-
 

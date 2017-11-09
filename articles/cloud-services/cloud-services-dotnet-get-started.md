@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
+ms.openlocfilehash: bb5897a392e500de685421769c414441ddfeb6a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
@@ -36,7 +35,7 @@ ms.lasthandoff: 08/22/2017
 应用程序使用 [以队列为中心的工作模式](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
 ## <a name="alternative-architecture-websites-and-webjobs"></a>替代体系结构：网站和 Web 作业
-本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 网站](/services/web-sites/)中运行前端，并为后端使用 [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 功能（目前以预览版提供）。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)。 有关如何选择最适合方案的服务信息，请参阅 [Azure 网站、云服务和虚拟机比较](../app-service-web/choose-web-site-cloud-service-vm.md)。
+本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 网站](/services/web-sites/)中运行前端，并为后端使用 [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 功能（目前以预览版提供）。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务信息，请参阅 [Azure 网站、云服务和虚拟机比较](../app-service/choose-web-site-cloud-service-vm.md)。
 
 ## <a name="what-youll-learn"></a>学习内容
 * 如何通过安装 Azure SDK 来让计算机可以进行 Azure 开发。
@@ -401,7 +400,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 ### <a name="add-code-files"></a>添加代码文件
 在本部分，将代码文件从已下载的解决方案复制到新的解决方案。 以下各节会显示并解释此代码的关键部分。
 
-要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，然后单击“添加”&amp;gt;“现有项” - 。 选择所需的文件，并单击“添加” 。 如果询问你是否想要替换现有文件，请单击“是”。
+要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，并单击“添加”&gt;“现有项”  - 。 选择所需的文件，并单击“添加” 。 如果询问你是否想要替换现有文件，请单击“是”。
 
 1. 在 ContosoAdsCommon 项目中，删除 *Class1.cs* 文件，并在其原位置添加来自下载项目的 *Ad.cs* 和 *ContosoAdscontext.cs* 文件。
 2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
@@ -780,4 +779,3 @@ Contoso 广告应用程序有意保持入门教程的简单性。 例如，它�
 * [如何管理云服务](cloud-services-how-to-manage.md)
 * [Azure 存储](/documentation/services/storage/)
 * [如何选择云服务提供商](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-

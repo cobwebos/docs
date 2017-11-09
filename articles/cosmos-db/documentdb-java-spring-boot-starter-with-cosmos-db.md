@@ -15,14 +15,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: robmcm;yungez;kevinzha
-ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
 ms.openlocfilehash: 273cc750857c5e466882060a38ac0f3475811e98
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-the-spring-boot-starter-with-azure-cosmos-db-documentdb-api"></a>如何将 Spring Boot Starter 与 Azure Cosmos DB DocumentDB API 配合使用
 
 ## <a name="overview"></a>概述
@@ -308,7 +306,7 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 
 * [用于 Azure 的 Spring Boot DocumenDB Starter](https://github.com/Microsoft/azure-spring-boot-starters/tree/master/azure-documentdb-spring-boot-starter-sample)
 
-* [将 Spring Boot 应用程序部署到 Azure App Service](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
+* [将 Spring Boot 应用程序部署到 Azure 应用服务](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 
 * [在 Azure 容器服务中运行 Kubernetes 群集上的 Spring Boot 应用程序](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
@@ -347,4 +345,3 @@ Azure Cosmos DB 是一种全球分布式数据库服务，它允许开发人员�
 [JV01]: ./media/documentdb-java-spring-boot-starter-with-cosmos-db/JV01.png
 [JV02]: ./media/documentdb-java-spring-boot-starter-with-cosmos-db/JV02.png
 [JV03]: ./media/documentdb-java-spring-boot-starter-with-cosmos-db/JV03.png
-

@@ -15,14 +15,12 @@ ms.date: 06/26/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 1869b7a4ef42536a3cd909ba2983ae0fe97185a9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>如何要求对用户或组进行双重验证
 
 要求双重验证有两种方法。 第一个选项是为 Azure 多重身份验证 (MFA) 启用每个单独用户。 单独启用用户时，他们始终会执行双重验证（会有一些例外情况，如当他们从受信任的 IP 地址登录时，或者被记住的设备功能打开时）。 第二个选项是设置条件性访问策略，可要求在某些情况下进行双重验证。
@@ -82,7 +80,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 ### <a name="use-powershell"></a>使用 PowerShell
 若要更改用户状态，请使用 [Azure AD PowerShell](/powershell/azure/overview)，更改 `$st.State`。 有三种可能的状态：
 
-* 已启用
+* Enabled
 * 强制
 * 已禁用  
 

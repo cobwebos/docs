@@ -15,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 06/06/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure 搜索：代码示例、演示、视频和教程
 借助以下视频、演示、教程和示例应用更快入门。
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/08/2017
 | 链接 | 说明 |
 |-------|-------------|
 |[搜索分析器演示](http://alice.unearth.ai) | 一个实时演示网站，显示标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 自然语言处理器的查询输出。 对于每个搜索术语输入，可以查看每个分析器输出的并行比较。 |
-|[New York City (NYC) Jobs portal demo for Azure Search](http://aka.ms/azjobsdemo)（New York City (NYC) Jobs 门户对 Azure 搜索的演示） | 使用 NYC Open Data Initiative 中的数据来演示 Azure 搜索功能的实时 ASP.NET 网站。 该应用使用[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)。 你可以修改代码来试用 [Lucene 语法](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 |
+|[New York City (NYC) Jobs portal demo for Azure Search](http://aka.ms/azjobsdemo)（New York City (NYC) Jobs 门户对 Azure 搜索的演示） | 使用 NYC Open Data Initiative 中的数据来演示 Azure 搜索功能的实时 ASP.NET 网站。 该应用使用[简单查询语法](https://msdn.microsoft.com/library/azure/dn798920.aspx)。 可以修改代码来试用 [Lucene 语法](https://msdn.microsoft.com/library/azure/mt589323.aspx)。 |
 |[Tate Art Gallery Demo](https://rawgit.com/liamca/azure-search-tate-art-gallery/master/Demo/index.html)（Tate Art Gallery 演示） | 使用 Tate Art Gallery 中示例数据的托管 ASP.NET 网站。 请先尝试搜索“现代”、“照片”和“画像”等词。
 |[Azure Search Demo Site](https://searchsamples.azurewebsites.net/#/)（Azure 搜索演示站点） | Azure 搜索的演示应用集合。 使用 Azure 搜索试用媒体搜索、地理位置搜索和产品库存应用。 |
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 06/08/2017
 
 | 链接 | 已发布 | 详细信息 |
 | --- | --- | --- |
-| [Channel9 Build 2016：“应用程序学习和适应：Azure 机器学习 + 搜索”](https://channel9.msdn.com/Events/Build/2016/P458) |2016 年 5 月 |17 分钟。 Liam Cavanagh 介绍将“为你推荐的项目”功能添加到 Azure 搜索应用程序的好处，及如何通过机器学习生成有关用户偏好的见解。 |
+| [Channel9 Build 2016：“应用程序学习和适应：Azure 机器学习 + 搜索”](https://channel9.msdn.com/Events/Build/2016/P458) |2016 年 5 月 |17 分钟。 Liam Cavanagh 介绍将“推荐的项目”功能添加到 Azure 搜索应用程序的好处，及如何通过机器学习生成有关用户偏好的见解。 |
 | [Channel9 Build 2016：“智能数据驱动的应用程序学习和适应”](https://channel9.msdn.com/Events/Build/2016/B857) |2016 年 5 月 |1 小时。 了解如何将机器学习和 Azure 搜索一起用于创建复杂数据驱动的应用程序。 |
 | [Channel9 Data Exposed：“Azure 搜索中的自定义分析器、搜索分析和门户查询”](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search) |2016 年 1 月 |15 分钟。 自定义分析器可以配置标记器和令牌筛选器。 可以通过搜索分析深入了解用户输入的搜索词和搜索索引的效力。 搜索浏览器是内置的查询工具，通过它可以在门户内部试用查询功能。 |
 | [Channel9 Data Exposed：“Azure 搜索增强功能”](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements) |2015 年 11 月 |17 分钟。 StackExchange 数据的数据提取。 在 Azure 门户中创建索引。 了解索引器爬网支持的数据源，将数据拉取到 Azure 搜索索引。 语言分析器。 Lucene 查询表达式。 |
@@ -101,5 +100,4 @@ ms.lasthandoff: 06/08/2017
 | [如何向搜索应用程序添加建议](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/) |了解如何实现建议，通常称为自动完成。 该演示介绍了多个主题，包括创建利用 Azure 搜索建议的 MVC4 应用程序、利用 Twitter typeahead.js 库使用 JavaScript 生成高效的自动建议组件及使用模糊建议实现即使在用户拼错单词时也可返回建议。 |
 | [TechNet 虚拟实验室：构建 Microsoft Azure 搜索应用程序](http://go.microsoft.com/?linkid=9874663) |提供开发环境、工具、文档和数据的虚拟实验室。 需要拥有一个 Azure 帐户、一个试用版订阅或 Azure 个人订阅才能完成此实验室。 |
 | [将 SQL Server 数据与 Azure 搜索同步](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/) |介绍如何将 SQL Server 关系数据库中的数据加载到 Azure 搜索索引的博客文章。 |
-
 

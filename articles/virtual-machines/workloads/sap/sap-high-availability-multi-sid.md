@@ -17,14 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: b48df78df9f53ac7bf0804f55a8d36a2fe2f86b4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
 
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
@@ -131,7 +129,7 @@ ms.lasthandoff: 05/10/2017
 
 ### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器
 
-若要在同一个 WSFC 群集中创建多个 SAP ASCS/SCS 实例，请使用 PowerShell 将 IP 地址添加到现有的 Azure 内部负载均衡器。 每个 IP 地址需有自身的负载均衡规则、探测端口、前端 IP 池和后端池。
+要在同一个 WSFC 群集中创建多个 SAP ASCS/SCS 实例，请使用 PowerShell 将 IP 地址添加到现有的 Azure 内部负载均衡器。 每个 IP 地址需有自身的负载均衡规则、探测端口、前端 IP 池和后端池。
 
 以下脚本将新的 IP 地址添加到现有负载均衡器。 更新环境的 PowerShell 变量。 该脚本将为所有 SAP ASCS/SCS 端口创建全部所需的负载均衡规则。
 
@@ -212,7 +210,7 @@ $ILB | Set-AzureRmLoadBalancer
 Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
-运行脚本后，结果将显示在 Azure 门户中，如以下屏幕截图所示：
+运行脚本后，结果会显示在 Azure 门户中，如以下屏幕截图所示：
 
 ![Azure 门户中的新前端 IP 池][sap-ha-guide-figure-6005]
 
@@ -273,4 +271,3 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 - [网络限制：Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure 负载均衡器的多个 VIP][load-balancer-multivip-overview]
 - [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]
-

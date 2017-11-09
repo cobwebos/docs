@@ -10,7 +10,7 @@
 ### [云服务](cdn-cloud-service-with-cdn.md)
 ### [存储](cdn-create-a-storage-account-with-cdn.md)
 ### [跨域资源共享](cdn-cors.md)
-### [将自定义域映射到 CDN](cdn-map-content-to-custom-domain.md)
+### [将自定义域添加到 CDN 终结点](cdn-map-content-to-custom-domain.md)
 ### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
 ## 优化内容
 ### [优化概述](cdn-optimization-overview.md)
@@ -19,7 +19,7 @@
 ####[动态站点加速](cdn-dynamic-site-acceleration.md)
  
 ## 管理
-### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
+### [使用 Azure PowerShell 进行管理](cdn-manage-powershell.md)
 ### 配置生存时间
 #### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
 #### [存储 Blob 服务内容](cdn-manage-expiration-of-blob-content.md)
@@ -37,11 +37,14 @@
 ### [HTTP/2 支持](cdn-http2.md)
 
 ## 分析
-### [分析使用模式](cdn-analyze-usage-patterns.md)
-### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
-### [查看实时统计信息](cdn-real-time-stats.md)
-### [分析边缘节点性能](cdn-edge-performance.md)
-### [使用诊断日志导出指标](cdn-log-analysis.md)
+### [分析 Azure CDN 使用模式](cdn-log-analysis.md)
+#### [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)
+#### [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)
+#### [Azure 诊断日志](cdn-azure-diagnostic-logs.md)
+### Verizon 中用于 Azure CDN 的分析工具
+#### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
+#### [查看实时统计信息](cdn-real-time-stats.md)
+#### [分析边缘节点性能](cdn-edge-performance.md)
 
 ## 开发
 ### [.NET](cdn-app-dev-net.md)
@@ -53,7 +56,7 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)

@@ -15,14 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: e368ae8b249fe3c33371794160440e472b0f35e3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/30/2017
-
-
-
+ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-bcp"></a>使用 bcp 加载数据
 > [!div class="op_single_selector"]
@@ -33,7 +30,7 @@ ms.lasthandoff: 01/30/2017
 > 
 > 
 
-**[bcp][bcp]** 是一个命令行批量加载实用工具，用于在 SQL Server、数据文件和 SQL 数据仓库之间复制数据。 使用 bcp 实用程序可将大量的行导入 SQL 数据仓库表，或将 SQL Server 表中的数据导出到数据文件。 除非与 queryout 选项一起使用，否则 bcp 不需要 Transact-SQL 方面的知识。
+**[bcp][bcp]** 是一个命令行批量加载实用程序，用于在 SQL Server、数据文件和 SQL 数据仓库之间复制数据。 使用 bcp 实用程序可将大量的行导入 SQL 数据仓库表，或将 SQL Server 表中的数据导出到数据文件。 除非与 queryout 选项一起使用，否则 bcp 不需要 Transact-SQL 方面的知识。
 
 bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻松方式。 通过 bcp 加载/提取数据时，建议的确切数据量取决于 Azure 数据中心的网络连接。  通常，使用 bcp 可以轻松地加载和提取维度表，但是，不建议使用 bcp 来加载或提取大量数据。  Polybase 是用于加载和提取大量数据的推荐工具，因为它能够更好地利用 SQL 数据仓库的大规模并行处理体系结构。
 
@@ -42,7 +39,7 @@ bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻�
 * 使用简单的命令行实用程序将数据载入 SQL 数据仓库。
 * 使用简单的命令行实用程序从 SQL 数据仓库提取数据。
 
-本教程将说明如何：
+本教程会说明如何：
 
 * 使用 bcp in 命令将数据导入表中
 * 使用 bcp out 命令从表中导出数据
@@ -52,7 +49,7 @@ bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻�
 > 
 
 ## <a name="prerequisites"></a>先决条件
-若要逐步完成本教程，你需要：
+要逐步完成本教程，需要：
 
 * 一个 SQL 数据仓库数据库。
 * 已安装 bcp 命令行实用工具
@@ -64,7 +61,7 @@ bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻�
 > 
 
 ## <a name="import-data-into-sql-data-warehouse"></a>将数据导入 SQL 数据仓库
-在本教程中，你将在 Azure SQL 数据仓库中创建一个表，然后将数据导入该表。
+在本教程中，会在 Azure SQL 数据仓库中创建一个表，然后将数据导入该表。
 
 ### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>步骤 1：在 Azure SQL 数据仓库中创建表
 在命令提示符下，使用 sqlcmd 运行以下查询，以在实例上创建表：
@@ -133,15 +130,15 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20150101 |1 |3 |
 | 20150201 |1 |3 |
 | 20150301 |1 |3 |
-| 20150401 |2 |4 |
-| 20150501 |2 |4 |
-| 20150601 |2 |4 |
+| 20150401 |#N/A |4 |
+| 20150501 |#N/A |4 |
+| 20150601 |#N/A |4 |
 | 20150701 |3 |1 |
 | 20150801 |3 |1 |
 | 20150801 |3 |1 |
-| 20151001 |4 |2 |
-| 20151101 |4 |2 |
-| 20151201 |4 |2 |
+| 20151001 |4 |#N/A |
+| 20151101 |4 |#N/A |
+| 20151201 |4 |#N/A |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>步骤 4：基于新加载的数据创建统计信息
 Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。 有关统计信息的详细说明，请参阅开发主题组中的[统计信息][Statistics]主题。 以下快速示例说明如何基于此示例中加载的表创建统计信息
@@ -157,7 +154,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="export-data-from-sql-data-warehouse"></a>从 SQL 数据仓库导出数据
-在本教程中，你将从 Azure SQL 数据仓库中的表创建数据文件。 我们将上面创建的数据导出到名为 DimDate2_export.txt 的新数据文件。
+在本教程中，将从 Azure SQL 数据仓库中的表创建数据文件。 我们将上面创建的数据导出到名为 DimDate2_export.txt 的新数据文件。
 
 ### <a name="step-1-export-the-data"></a>步骤 1：导出数据
 在 bcp 实用程序中，可以使用以下命令来连接并导出数据（相应地替换其中的值）：
@@ -165,7 +162,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-你可以通过打开新文件来验证是否已正确导出数据。 文件中的数据应与以下文本匹配：
+可以通过打开新文件来验证是否已正确导出数据。 文件中的数据应与以下文本匹配：
 
 ```
 20150301,1,3
@@ -206,4 +203,3 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
-

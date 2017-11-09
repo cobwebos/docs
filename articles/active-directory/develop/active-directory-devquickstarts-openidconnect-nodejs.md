@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 13317b016f9ff3955f376b858645c42668b0de42
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Node.js Web 应用登录和注销
 此处，我们使用 Passport 进行以下操作：
@@ -47,11 +46,11 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 ## <a name="step-1-register-an-app"></a>步骤 1：注册应用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在页面顶部的菜单中选择你的帐户。 在“目录”列表下选择要注册应用程序的 Active Directory 租户。
+2. 在页面顶部的菜单中选择帐户。 在“目录”列表下选择要注册应用程序的 Active Directory 租户。
 
-3. 在屏幕左侧的菜单中，选择“更多服务”，然后选择“Azure Active Directory”。
+3. 在屏幕左侧的菜单中，选择“更多服务”，并选择“Azure Active Directory”。
 
-4. 选择“应用注册”，然后选择“添加”。
+4. 选择“应用注册”，并选择“添加”。
 
 5. 根据提示创建一个 **Web 应用程序**和/或 **WebAPI**。
   * 应用程序的“名称”向用户描述应用程序。
@@ -76,7 +75,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 2. 此外，还需要 `passport-azure-ad`:
     * `npm install passport-azure-ad`
 
-这将安装 `passport-azure-ad` 依赖的库。
+这会安装 `passport-azure-ad` 依赖的库。
 
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>步骤 3：将应用设置为使用 passport-node-js 策略
 此处，我们将 Express 配置为使用 OpenID Connect 身份验证协议。  Passport 用于执行各种操作，包括发出登录和注销请求、管理用户的会话和获取有关用户的信息。
@@ -141,7 +140,7 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
     }
     ));
     ```
-Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有策略写入器都依循类似的模式。 查看该策略，你会发现，我们已将它作为一个函数来传递，其中包含一个令牌和一个用作参数的 done。 策略完成其工作后将返回。 然后，我们需要存储用户并隐藏令牌，因此不需要再次请求它。
+Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有策略写入器都依循类似的模式。 查看该策略，会发现，我们已将它作为一个函数来传递，其中包含一个令牌和一个用作参数的 done。 策略完成其工作后将返回。 然后，我们需要存储用户并隐藏令牌，因此不需要再次请求它。
 
 > [!IMPORTANT]
 上述代码使用了正好地服务器上进行身份验证的任何用户。 这就是所谓的自动注册。 建议要求所有人都必须先经历你所确定的注册过程，然后才能对生产服务器进行身份验证。 这通常是在使用者应用中看到的模式，允许你在 Facebook 上注册，然后要求你提供额外的信息。 如果这不是示例应用程序，我们就只能从返回的令牌对象中提取用户的电子邮件地址，然后要求他们填写其他信息。 由于这是测试服务器，因此，我们将它们添加到内存中的数据库。
@@ -287,7 +286,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 2.  我们详细探讨一下：
 
   * `/` 路由将重定向到 index.ejs 视图，并在请求中传递用户（如果存在）。
-  * `/account` 路由首先确保*我们已经过身份验证*（我们将在以下示例进行实现），然后在请求中传递用户，以便我们可以获取有关该用户的其他信息。
+  * `/account` 路由首先确保*我们已经过身份验证*（我们会在以下示例进行实现），然后在请求中传递用户，以便我们可以获取有关该用户的其他信息。
   * `/login` 路由将从 `passport-azuread` 调用 azuread-openidconnect 身份验证器。 如果不成功，它会将用户重定向回 /login。
   * `/logout` 路由只是调用 logout.ejs（和路由），以便清除 Cookie 并将用户返回到 index.ejs。
 
@@ -405,7 +404,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
     ```
 
 ##<a name="next-steps"></a>后续步骤
-最后，生成并运行应用。 运行 `node app.js`，然后转至 `http://localhost:3000`。
+最后，生成并运行应用。 运行 `node app.js`，并转至 `http://localhost:3000`。
 
 使用个人 Microsoft 帐户或者工作或学校帐户登录，随后你会看到该用户的标识在 /account 列表中的显示方式。 Web 应用现在使用行业标准的协议进行保护，可使用个人和工作/学校帐户来验证用户。
 
@@ -418,4 +417,3 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
 [使用 Azure AD 保护 Web API](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

@@ -13,22 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: calebb
+ms.openlocfilehash: be3631db20ae744965f9f6677c536ade45e34c49
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0f7d847c98e790c542f3a3e666b9a887099a6cbc
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的控制 
 
 使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 在条件访问策略中，定义在特定条件下（“出现这种情况时”）的响应（“这样做”）。 在条件访问的上下文中， 
 
 - “**如何发生这种情况**”称为**条件语句**
+
 - “**则执行这种操作**”称为**控制**
 
 ![控制](./media/active-directory-conditional-access-controls/11.png)
@@ -54,7 +53,7 @@ ms.lasthandoff: 09/13/2017
 - 满足所有选定控制 (AND) 
 - 满足一个选定控制 (OR)
 
-![控制](./media/active-directory-conditional-access-controls/51.png)
+![控制](./media/active-directory-conditional-access-controls/17.png)
 
 
 
@@ -91,6 +90,63 @@ ms.lasthandoff: 09/13/2017
 利用核准客户端应用程序，可以要求客户端应用程序必须支持 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。 要求必须为核准客户端应用程序的条件访问策略亦称为[基于应用程序的条件访问策略](active-directory-conditional-access-mam.md)。 有关支持的核准客户端应用程序列表，请参阅[核准客户端应用程序要求](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)。
 
 
+### <a name="terms-of-use"></a>使用条款
+
+在向某个资源授予访问权限之前，可以要求租户中的用户同意相关使用条款。 作为管理员，可以通过上传 PDF 文档配置和自定义使用条款。 如果用户属于此控制范围，则仅在同意使用条款的情况下才授予某个应用程序的访问权限。 
+
+
+### <a name="custom-controls"></a>自定义控件 
+
+可以在条件访问中创建将用户重定向至兼容服务的自定义控件，以满足 Azure Active Directory 之外的其他要求。 这允许用户使用某个外部的多重身份验证和验证提供程序，强制实施条件访问规则或建立自己的自定义服务。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。 
+
+## <a name="custom-controls"></a>自定义控件
+
+条件访问中的自定义控件可将用户重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
+
+通过这些控件可以将某些外部或自定义服务用作条件访问控制，并在一般情况下扩展条件访问的功能。
+
+提供商当前提供的兼容服务包括：
+
+- 双重安全性
+
+- RSA
+
+- Trusona
+
+有关这些服务的详细信息，请直接与提供商联系。
+
+### <a name="creating-custom-controls"></a>创建自定义控件
+
+若要创建自定义控件，应首先联系想使用的控件的提供商。 每个非 Microsoft 提供商在注册、订阅或以其他方式加入服务以及指示想要与条件访问集成方面都有自己的进程和要求。 此时，提供商将提供采用 JSON 格式的数据块。 使用此数据可使提供商和条件访问一起服务于租户，创建新控件，并确定条件访问如何判断用户是否通过提供商成功执行了验证。
+
+复制 JSON 数据，然后将其粘贴到相关文本框中。 不要对 JSON 做任何更改，除非用户明确理解所做的更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
+
+创建自定义控件的选项位于“条件访问”页的“管理”部分中。
+
+![控制](./media/active-directory-conditional-access-controls/82.png)
+
+单击“新建自定义控件”，打开包含控件 JSON 数据文本框的边栏选项卡。  
+
+
+![控制](./media/active-directory-conditional-access-controls/81.png)
+
+
+### <a name="deleting-custom-controls"></a>删除自定义控件
+
+若要删除自定义控件，必须先确定它未在任何条件访问策略中使用。 完成后：
+
+1. 转到“自定义控件”列表
+
+2. 单击...  
+
+3. 选择“删除”。
+
+### <a name="editing-custom-controls"></a>编辑自定义控件
+
+若要编辑自定义控件，必须删除当前控件，然后使用更新的信息创建新控件。
+
+
+
 
 ## <a name="session-controls"></a>会话控制
 
@@ -110,4 +166,3 @@ ms.lasthandoff: 09/13/2017
 - 若要了解如何配置条件访问策略，请参阅 [Azure Active Directory 中的条件访问入门](active-directory-conditional-access-azure-portal-get-started.md)。
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](active-directory-conditional-access-best-practices.md)。 
-

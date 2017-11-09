@@ -10,14 +10,12 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
+ms.openlocfilehash: ea281e9c83bb37f78c248c6c4011a7da60b45c01
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
-
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
 本快速入门介绍如何使用经过配置的适用于 Azure 的工具和插件在 Ubuntu Linux VM 上安装 [Jenkins](https://jenkins.io)。 完成后，你会有一个在 Azure 中运行的 Jenkins 服务器，并可生成 [GitHub](https://github.com) 中的示例 Java 应用。
@@ -43,7 +41,7 @@ ms.lasthandoff: 08/28/2017
 * 输入“用户名”。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
 * 选择“密码”作为“身份验证类型”，然后输入密码。 密码必须包含一个大写字符、一个数字和一个特殊字符。
 * 使用“myJenkinsResourceGroup”作为“资源组”。
-* 从“位置”下拉列表中选择“美国东部”[Azure 区域](https://azure.microsoft.com/regions/)。
+* 从“位置”下拉列表中选择“美国东部”[Azure 区域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 选择“确定”，转到“配置更多选项”选项卡。输入用于标识 Jenkins 服务器的唯一域名，然后选择“确定”。
 
@@ -113,4 +111,3 @@ Jenkins 服务器现在已就绪，可以生成代码了。
 
 > [!div class="nextstepaction"]
 > [将 Azure VM 作为 Jenkins 代理添加](jenkins-azure-vm-agents.md)
-

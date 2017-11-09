@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
 本文提供用于从 Azure AD B2C 收集日志的步骤，以便可以诊断自定义策略存在的问题。
@@ -118,4 +116,3 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 ## <a name="next-steps"></a>后续步骤
 
 浏览 Application Insights 中的数据，从而帮助你了解标识体验框架基础 B2C 如何运作来提供你自己的标识体验。
-

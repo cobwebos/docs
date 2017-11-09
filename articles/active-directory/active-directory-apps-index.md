@@ -11,20 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
+ms.openlocfilehash: 3910c62e61d77f479da9fae2e1a8c0575c543281
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: ea2dc2762b556da837fa1d6674e01aba32face92
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
 
-每个主要功能区都有简介，同时也根据你要查找的信息指导需要阅读的文章。
+每个主要功能区都有简介，同时也根据要查找的信息指导需要阅读的文章。
 
 ## <a name="overview-articles"></a>概述文章
 对于只需要 Azure AD 应用程序管理功能的简要说明的用户，以下文章是很好的起点。
@@ -49,21 +48,21 @@ ms.lasthandoff: 07/20/2017
 
 ## <a name="single-sign-on-sso"></a>单一登录 (SSO)
 ### <a name="federated-single-sign-on-sign-into-many-apps-using-one-identity"></a>联合单一登录：使用一个标识登录多个应用程序
-单一登录可让用户只使用一组凭据，访问各种不同的应用程序和服务。 可以通过联合方法启用单一登录。 当用户尝试登录联合应用时，将被重定向到其组织的官方登录页面（由 Azure Active Directory 呈现），一旦身份验证成功，即重定向回到应用。
+单一登录可让用户只使用一组凭据，访问各种不同的应用程序和服务。 可以通过联合方法启用单一登录。 当用户尝试登录联合应用时，会被重定向到其组织的官方登录页面（由 Azure Active Directory 呈现），一旦身份验证成功，即重定向回到应用。
 
 | 文章指南 |  |
 |:---:| --- |
 | 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](active-directory-appssoaccess-whatis.md) |
 | 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](http://aka.ms/aadfederatedapps)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
 | 超过 150 个应用教程，讲解如何为 [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md) |
-| 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](active-directory-saas-custom-apps.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
+| 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
 | 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
 | 如何设置应用的证书过期日期，以及如何续订证书 |[在 Azure Active Directory 中管理用于联合单一登录的证书](active-directory-sso-certs.md) |
 
 联合单一登录适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对联合应用程序的访问权限](#managing-access-to-applications)。
 
 ### <a name="password-based-single-sign-on-account-sharing-and-sso-for-non-federated-apps"></a>基于密码的单一登录：非联合应用的帐户共享和 SSO
-若要启用单一登录到应用程序不支持联合身份验证，Azure AD 提供的密码管理功能，可安全地存储密码的 SaaS 应用并自动将用户登录到这些应用。 你可以轻松分发新建帐户的凭据，并与多人共享团队帐户。 用户无需要知道他们有权访问的帐户凭据。
+要启用单一登录到应用程序不支持联合身份验证，Azure AD 提供的密码管理功能，可安全地存储密码的 SaaS 应用并自动将用户登录到这些应用。 可以轻松分发新建帐户的凭据，并与多人共享团队帐户。 用户无需要知道他们有权访问的帐户凭据。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -80,17 +79,17 @@ ms.lasthandoff: 07/20/2017
 | 文章指南 |  |
 |:---:| --- |
 | Azure AD 应用程序代理及其工作原理的概述 |[提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md) |
-| 有关如何配置应用程序代理以及如何发布第一个应用的教程 |[如何设置 Azure AD 应用代理](active-directory-application-proxy-enable.md)<br /><br />[如何以无提示方式安装应用代理连接器](active-directory-application-proxy-silent-installation.md)<br /><br />[如何使用应用代理发布应用程序](active-directory-application-proxy-publish.md)<br /><br />[如何使用你自己的域名](active-directory-application-proxy-custom-domains.md) |
+| 有关如何配置应用程序代理以及如何发布第一个应用的教程 |[如何设置 Azure AD 应用代理](active-directory-application-proxy-enable.md)<br /><br />[如何以无提示方式安装应用代理连接器](active-directory-application-proxy-silent-installation.md)<br /><br />[如何使用应用代理发布应用程序](active-directory-application-proxy-publish.md)<br /><br />[如何使用自己的域名](active-directory-application-proxy-custom-domains.md) |
 | 如何对使用应用代理发布的应用程序启用单一登录和条件性访问 |[使用应用程序代理的单一登录](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件性访问和应用程序代理](active-directory-application-proxy-conditional-access.md) |
 | 有关如何对以下方案使用应用程序代理的指导 |[如何支持本机客户端应用程序](active-directory-application-proxy-native-client.md)<br /><br />[如何支持声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[如何支持在单独网络和位置上发布的应用程序](active-directory-application-proxy-connectors.md) |
 | 应用程序代理故障排除指南 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
 
 应用程序代理适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对应用程序的访问权限](#managing-access-to-applications)。
 
-你也可能对 [Azure AD 域服务](../active-directory-domain-services/active-directory-ds-overview.md)感兴趣，这些服务可让你将本地应用程序迁移到 Azure，同时又满足这些应用程序的标识需求。
+也可能对 [Azure AD 域服务](../active-directory-domain-services/active-directory-ds-overview.md)感兴趣，这些服务可让你将本地应用程序迁移到 Azure，同时又满足这些应用程序的标识需求。
 
 ### <a name="enabling-single-sign-on-between-azure-ad-and-on-premises-ad"></a>在 Azure AD 与本地 AD 之间启用单一登录
-如果你的组织在本地维护 Windows Server Active Directory，并在云中维护 Azure Active Directory，则你可能想在这两个系统之间启用单一登录。 Azure AD Connect（将这两个系统集成在一起的工具）提供多个设置单一登录的选项：建立与 ADFS 的联合或其他联合提供程序，或启用密码同步。
+如果组织在本地维护 Windows Server Active Directory，并在云中维护 Azure Active Directory，则你可能想在这两个系统之间启用单一登录。 Azure AD Connect（将这两个系统集成在一起的工具）提供多个设置单一登录的选项：建立与 ADFS 的联合或其他联合提供程序，或启用密码同步。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -104,7 +103,7 @@ ms.lasthandoff: 07/20/2017
 Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。 Azure AD 自助密码重置适用于 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)。 对本地 AD 进行密码写回是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
 
 ### <a name="conditional-access-enforce-additional-security-requirements-for-high-risk-apps"></a>条件性访问：强制高风险应用符合额外的安全要求
-对应用程序和资源设置单一登录后，可以在每次登录该应用程序时，强制符合特定的安全要求，进一步保护机密应用的安全。 例如，你可以使用 Azure AD 来要求每次访问特定的应用都需要执行多重身份验证，而不管该应用原本是否支持该功能。 条件性访问的另一个常见示例是请求用户连接到组织信任的网络，以便能够访问特别机密的应用程序。
+对应用程序和资源设置单一登录后，可以在每次登录该应用程序时，强制符合特定的安全要求，进一步保护机密应用的安全。 例如，可以使用 Azure AD 来要求每次访问特定的应用都需要执行多重身份验证，而不管该应用原本是否支持该功能。 条件性访问的另一个常见示例是请求用户连接到组织信任的网络，以便能够访问特别机密的应用程序。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -145,7 +144,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。
 
 ### <a name="building-applications-that-integrate-with-azure-ad"></a>构建与 Azure AD 集成的应用程序
-如果你的组织正在开发或维护业务线 (LoB) 应用程序，或者如果你是 Azure Active Directory 客户的应用开发人员，以下教程可帮助你将应用程序与 Azure AD 集成。
+如果组织正在开发或维护业务线 (LoB) 应用程序，或者如果是 Azure Active Directory 客户的应用开发人员，以下教程可帮助将应用程序与 Azure AD 集成。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -153,11 +152,11 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 | 应用程序供应商如何将其应用添加到 Azure AD 应用库 |[列出 Azure Active Directory 应用程序库中的应用程序](active-directory-app-gallery-listing.md) |
 | 如何使用 Azure Active Directory 管理对开发的应用程序的访问 |[如何为已开发的应用程序启用用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[将用户分配到应用](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[将组分配到应用](active-directory-applications-guiding-developers-assigning-groups.md) |
 
-如果你正在开发面向消费者的应用程序，可能对使用 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 感兴趣，这可以让你不必开发自己的标识系统即可管理用户。 [了解详细信息](../active-directory-b2c/active-directory-b2c-overview.md)。
+如果正在开发面向消费者的应用程序，可能对使用 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 感兴趣，这可以让你不必开发自己的标识系统即可管理用户。 [了解详细信息](../active-directory-b2c/active-directory-b2c-overview.md)。
 
 ## <a name="managing-access-to-applications"></a>管理对应用程序的访问
 ### <a name="using-groups-and-self-service-to-manage-who-has-access-to-which-apps"></a>使用组和自助服务管理谁可以访问哪些应用
-为了帮助管理谁有权访问哪些资源，Azure Active Directory 可让你使用组设置分配和权限级别。 IT 可以选择启用自助功能，以便在需要时，用户可以直接请求权限。
+为了帮助管理谁有权访问哪些资源，Azure Active Directory 允许使用组大规模地设置分配和权限。 IT 可以选择启用自助功能，以便在需要时，用户可以直接请求权限。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -169,7 +168,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 基于组的应用程序访问管理适用于 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)。 自助组管理、自助应用程序管理以及动态组是 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 功能。
 
 ### <a name="b2b-collaboration-enable-partner-access-to-applications"></a>B2B 协作：启用应用程序的合作访问
-如果你的公司与其他公司合作，可能需要管理公司应用程序的合作访问。 Azure Active Directory B2B 协作提供简单且安全的方式来与合作伙伴共享应用程序。
+如果公司与其他公司合作，可能需要管理公司应用程序的合作访问。 Azure Active Directory B2B 协作提供简单且安全的方式来与合作伙伴共享应用程序。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -194,7 +193,7 @@ B2B 协作目前适用于[所有版本的 Azure Active Directory](https://azure.
 访问面板适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ### <a name="reports-easily-audit-app-access-changes-and-monitor-sign-ins-to-apps"></a>报告：轻松审核应用访问更改及监视应用登录
-Azure Active Directory 提供多个报告和警报，以帮助你监视组织对应用程序的访问。 你可以在应用发生异常登录时收到警报，还可以跟踪用户访问应用程序的时间及更改原因。
+Azure Active Directory 提供多个报告和警报，帮助你监视组织对应用程序的访问。 可以在应用发生异常登录时收到警报，还可以跟踪用户访问应用程序的时间及更改原因。
 
 | 文章指南 |  |
 |:---:| --- |
@@ -213,4 +212,3 @@ Azure Active Directory 提供多个报告和警报，以帮助你监视组织对
 [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure 多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)
-

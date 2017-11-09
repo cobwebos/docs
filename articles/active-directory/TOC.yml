@@ -1,6 +1,8 @@
+- name: 管理访问概述
+  href: manage-access-to-azure-resources.md
 - name: Azure 中的资源访问权限
   href: active-directory-understanding-resource-access.md
-- name: 基于角色的访问控制
+- name: 基于角色的访问控制 (RBAC)
   href: role-based-access-control-what-is.md
   items:
     - name: 管理访问权限分配
@@ -31,10 +33,16 @@
       href: role-based-access-control-troubleshooting.md
     - name: 资源提供程序操作
       href: role-based-access-control-resource-provider-operations.md
+- name: RBAC 的 Privileged Identity Management (PIM)
+  href: pim-azure-resource.md
+- name: 用于 Azure 管理的条件访问
+  href: conditional-access-azure-management.md
 - name: 托管服务标识
   href: msi-overview.md
   items:
-    - name: 为 Windows VM 配置 MSI
+    - name: 如何登录或获取令牌
+      href: msi-how-to-get-access-token-using-msi.md
+    - name: 为 Azure VM 配置 MSI
       items:
         - name: 使用 Azure 门户
           href: msi-qs-configure-portal-windows-vm.md
@@ -44,7 +52,9 @@
           href: msi-qs-configure-cli-windows-vm.md
         - name: 使用 Azure 资源管理器模板
           href: msi-qs-configure-template-windows-vm.md
-    - name: 将 MSI 访问权限分配给 Azure 资源
+        - name: 使用 Azure SDK
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: 向 VM MSI 授予对资源管理器的访问权限
       items:
         - name: 使用 Azure 门户
           href: msi-howto-assign-access-portal.md
@@ -52,23 +62,37 @@
           href: msi-howto-assign-access-powershell.md
         - name: 使用 Azure CLI
           href: msi-howto-assign-access-cli.md
-    - name: 使用 MSI 访问 Azure 资源管理器
+    - name: 使用 VM MSI 访问 Azure Data Lake Store
       items:
-        - name: 在 Windows VM 上
+        - name: 从 Windows VM 访问
+          href: msi-tutorial-windows-vm-access-datalake.md
+        - name: 从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-datalake.md
+    - name: 使用 VM MSI 访问 Azure 资源管理器
+      items:
+        - name: 从 Windows VM 访问
           href: msi-tutorial-windows-vm-access-arm.md
-        - name: 在 Linux VM 上
+        - name: 从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-arm.md
-    - name: 使用 MSI 访问 Azure 存储
+    - name: 使用 VM MSI 访问 Azure SQL
       items:
-        - name: 在 Windows VM 上
+        - name: 从 Windows VM 访问
+          href: msi-tutorial-windows-vm-access-sql.md
+    - name: 使用 VM MSI 访问 Azure 存储
+      items:
+        - name: 使用访问密钥从 Windows VM 访问
           href: msi-tutorial-windows-vm-access-storage.md
-        - name: 在 Linux VM 上
+        - name: 使用 SAS 从 Windows VM 访问
+          href: msi-tutorial-windows-vm-access-storage-sas.md
+        - name: 使用访问密钥从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-storage.md
-    - name: 使用 MSI 访问非 Azure AD 资源
+        - name: 使用 SAS 从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-storage-sas.md
+    - name: 使用 VM MSI 访问 Azure Key Vault
       items:
-        - name: 在 Windows VM 上
+        - name: 从 Windows VM 访问
           href: msi-tutorial-windows-vm-access-nonaad.md
-        - name: 在 Linux VM 上
+        - name: 从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-nonaad.md
     - name: 反馈和已知问题
       href: msi-known-issues.md

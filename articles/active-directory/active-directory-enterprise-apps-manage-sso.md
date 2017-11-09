@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2017
+ms.date: 09/19/2017
 ms.author: curtand
 ms.reviewer: asmalser
+ms.openlocfilehash: 882180a553fffee05a612cf70ddd9a0f30108415
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 73c0917702e2c222f3dc09ddfa2d6d54cf005abf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>管理适用于企业应用的单一登录
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 09/06/2017
 ## <a name="single-sign-on-modes"></a>单一登录模式
 “单一登录”始于“模式”菜单，可用于配置单一登录模式。 可用选项包括：
 
-* **基于 SAML 的登录** - 如果应用程序允许使用 SAML 2.0 协议通过 Azure Active Directory 进行完整的联合身份验证单一登录，则会提供此选项。
+* **基于 SAML 的登录** - 如果应用程序支持使用 SAML 2.0 协议、WS 联合身份验证或 OpenID 连接协议通过 Azure Active Directory 进行完整的联合身份验证单一登录，则会提供此选项。
 * **基于密码的登录** - 如果 Azure AD 允许对此应用程序使用密码来填写表单，则会提供此选项。
 * **链接登录** - 以前称为“现有单一登录”。此选项允许管理员在其用户的 Azure AD 访问面板或 Office 365 应用程序启动程序中放置一个此应用程序的链接。
 
@@ -98,4 +97,3 @@ ms.lasthandoff: 09/06/2017
 [3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
 [4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
 [5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG
-

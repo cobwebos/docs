@@ -16,7 +16,7 @@ articles/sql-data-warehouse-get-started-provision.md
 
     <!-- ![sql server firewall](../articles/sql-database/media/sql-database-get-started/sql-server-firewall.png) -->
 
-2. 查看显示的客户端 IP 地址，并使用所选的浏览器验证该地址是否为你在 Internet 上使用的 IP 地址（确认自己的 IP 地址）。 有时出于各种原因，这些 IP 地址并不匹配。
+2. 查看显示的客户端 IP 地址，并使用所选的浏览器验证该地址是否在 Internet 上使用的 IP 地址（确认自己的 IP 地址）。 有时出于各种原因，这些 IP 地址并不匹配。
 
     <!-- ![your IP address](../articles/sql-database/media/sql-database-get-started/your-ip-address.png) -->
 
@@ -28,7 +28,7 @@ articles/sql-data-warehouse-get-started-provision.md
     > 可以在服务器上向单个 IP 地址或整个地址范围打开 SQL 数据库防火墙。 打开防火墙后，SQL 管理员和用户可以登录到服务器上他们拥有有效凭据的任何数据库。
     >
 
-4. 在工具栏上单击“保存”以保存此服务器级防火墙规则，然后单击“确定”。
+4. 在工具栏上单击“保存”以保存此服务器级防火墙规则，并单击“确定”。
 
     ![添加客户端 IP](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png)
 

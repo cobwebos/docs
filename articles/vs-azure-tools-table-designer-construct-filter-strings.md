@@ -14,16 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98b06b14ca7897cce884f6d80f998661cacb7ea4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>为表设计器构造筛选字符串
 ## <a name="overview"></a>概述
-若要筛选 Visual Studio **表设计器**中显示在 Azure 表中的数据，可以构造一个筛选器字符串并将其输入到筛选器字段中。 筛选器字符串语法由 WCF 数据服务进行定义，与 SQL WHERE 子句类似，但通过 HTTP 请求发送给表服务。 **表设计器**会处理正确的编码，因此，要筛选所需的属性值，只需要在筛选器字段中输入属性名、比较运算符、条件值以及可选的布尔运算符。 不需要像构造 URL 以通过[存储服务 REST API 参考](http://go.microsoft.com/fwlink/p/?LinkId=400447)来查询表时那样包括 $filter 查询选项。
+要筛选 Visual Studio **表设计器**中显示在 Azure 表中的数据，可以构造一个筛选器字符串并将其输入到筛选器字段中。 筛选器字符串语法由 WCF 数据服务进行定义，与 SQL WHERE 子句类似，但通过 HTTP 请求发送给表服务。 **表设计器**会处理正确的编码，因此，要筛选所需的属性值，只需要在筛选器字段中输入属性名、比较运算符、条件值以及可选的布尔运算符。 不需要像构造 URL 以通过[存储服务 REST API 参考](http://go.microsoft.com/fwlink/p/?LinkId=400447)来查询表时那样包括 $filter 查询选项。
 
 WCF 数据服务基于[开放数据协议](http://go.microsoft.com/fwlink/p/?LinkId=214805) (OData)。 有关筛选器系统查询选项 (**$filter**) 的详细信息，请参阅 [OData URI Conventions specification](http://go.microsoft.com/fwlink/p/?LinkId=214806)（OData URI 约定规范）。
 
@@ -95,4 +94,3 @@ WCF 数据服务基于[开放数据协议](http://go.microsoft.com/fwlink/p/?Lin
 以下示例将返回 CustomerSince 属性等于 2008-07-10 的实体：
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
-

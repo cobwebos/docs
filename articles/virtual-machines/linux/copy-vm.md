@@ -1,4 +1,4 @@
---- 
+---
 title: "使用 Azure CLI 2.0 复制 Linux VM | Microsoft 文档"
 description: "了解如何使用 Azure CLI 2.0 和托管磁盘创建 Azure Linux VM 的副本。"
 services: virtual-machines-linux
@@ -12,22 +12,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 09/25/2017
 ms.author: cynthn
+ms.openlocfilehash: 98b27f5f86cdb17893a5c98950a2299f8aa30105
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7983061a933370803669480296d7625106e1360c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
----                    
-               
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
+---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>使用 Azure CLI 2.0 和托管磁盘创建 Azure Linux VM 的副本
 
 
 本文说明了如何使用 Azure CLI 2.0 和 Azure Resource Manager 部署模型创建运行 Linux 的 Azure 虚拟机 (VM) 的副本。 还可以使用 [Azure CLI 1.0](copy-vm-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
-还可以[上载 VHD 并从中创建 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+还可以[上传 VHD 并从中创建 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +43,9 @@ ms.lasthandoff: 08/22/2017
 以下示例解除分配资源组**myResourceGroup** 中名为 **myVM** 的 VM：
 
 ```azurecli
-az vm deallocate --resource-group myResourceGroup --name myVM
+az vm deallocate \
+    --resource-group myResourceGroup \
+    --name myVM
 ```
 
 ## <a name="step-2-copy-the-source-vm"></a>步骤 2：复制源 VM
@@ -58,7 +58,9 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 1.  使用 [az vm list](/cli/azure/vm#list) 列出每个 VM 及其 OS 磁盘的名称。 以下示例列出了名为 **myResourceGroup** 的资源组中的所有 VM：
     
     ```azurecli
-    az vm list -g myTestRG --query '[].{Name:name,DiskName:storageProfile.osDisk.name}' --output table
+    az vm list -g myResourceGroup \
+         --query '[].{Name:name,DiskName:storageProfile.osDisk.name}' \
+         --output table
     ```
 
     输出类似于以下示例：
@@ -72,7 +74,8 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 1.  通过使用 [az disk create](/cli/azure/disk#create) 创建新的托管磁盘来复制磁盘。 以下示例基于名为 **myDisk** 的托管磁盘创建名为 **myCopiedDisk** 的磁盘：
 
     ```azurecli
-    az disk create --resource-group myResourceGroup --name myCopiedDisk --source myDisk
+    az disk create --resource-group myResourceGroup \
+         --name myCopiedDisk --source myDisk
     ``` 
 
 1.  现在请使用 [az disk list](/cli/azure/disk#list) 验证资源组中的托管磁盘。 以下示例列出了名为 **myResourceGroup** 的资源组中的托管磁盘：
@@ -80,8 +83,6 @@ az vm deallocate --resource-group myResourceGroup --name myVM
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
     ```
-
-1.  跳到[“步骤 3：设置虚拟网络”](#step-3-set-up-a-virtual-network)。
 
 
 ## <a name="step-3-set-up-a-virtual-network"></a>步骤 3：设置虚拟网络
@@ -96,23 +97,29 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 1.  使用 [az network vnet create](/cli/azure/network/vnet#create) 创建虚拟网络。 以下示例创建一个名为 **myVnet** 的虚拟网络和一个名为 **mySubnet** 的子网：
 
     ```azurecli
-    az network vnet create --resource-group myResourceGroup --location westus --name myVnet \
-        --address-prefix 192.168.0.0/16 --subnet-name mySubnet --subnet-prefix 192.168.1.0/24
+    az network vnet create --resource-group myResourceGroup \
+        --location eastus --name myVnet \
+        --address-prefix 192.168.0.0/16 \
+        --subnet-name mySubnet \
+        --subnet-prefix 192.168.1.0/24
     ```
 
 1.  使用 [az network public-ip create](/cli/azure/network/public-ip#create) 创建公共 IP。 以下示例创建一个名为 **myPublicIP** 的公共 IP，其 DNS 名称为 **mypublicdns**。 （DNS 名称必须唯一，因此请提供唯一名称。）
 
     ```azurecli
-    az network public-ip create --resource-group myResourceGroup --location westus \
-        --name myPublicIP --dns-name mypublicdns --allocation-method static --idle-timeout 4
+    az network public-ip create --resource-group myResourceGroup \
+        --location eastus --name myPublicIP --dns-name mypublicdns \
+        --allocation-method static --idle-timeout 4
     ```
 
 1.  使用 [az network nic create](/cli/azure/network/nic#create) 创建 NIC。
     以下示例创建一个附加到 **mySubnet** 子网且名为 **myNic** 的 NIC：
 
     ```azurecli
-    az network nic create --resource-group myResourceGroup --location westus --name myNic \
-        --vnet-name myVnet --subnet mySubnet --public-ip-address myPublicIP
+    az network nic create --resource-group myResourceGroup \
+        --location eastus --name myNic \
+        --vnet-name myVnet --subnet mySubnet \
+        --public-ip-address myPublicIP
     ```
 
 ## <a name="step-4-create-a-vm"></a>步骤 4：创建 VM
@@ -122,13 +129,12 @@ az vm deallocate --resource-group myResourceGroup --name myVM
 指定复制的要用作 OS 磁盘的托管磁盘 (--attach-os-disk)，如下所示：
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myCopiedVM \
-    --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic --size Standard_DS1_v2 --os-type Linux \
+az vm create --resource-group myResourceGroup \
+    --name myCopiedVM --nics myNic \
+    --size Standard_DS1_v2 --os-type Linux \
     --attach-os-disk myCopiedDisk
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何使用 Azure CLI 管理新 VM，请参阅 [Azure Resource Manager 的 Azure CLI 命令](../azure-cli-arm-commands.md)。
-

@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 048697f87383662506fb851bb3ea510c2cddf043
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
 本主题介绍有关将基于符合 SAML 2.0 的 SP-Lite 配置文件的标识提供者作为首选安全令牌服务 (STS)/标识提供者的信息。  如果已经在本地拥有可以使用 SAML 2.0 访问的用户目录和密码存储，这将非常有用。 该现有的用户目录可用于登录到 Office 365 和其他受 Azure AD 保护的资源。 SAML 2.0 SP-Lite 配置文件基于广泛使用的安全断言标记语言 (SAML) 联合标识标准来提供登录和属性交换框架。
@@ -271,4 +269,3 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 - [使用 Azure AD Connect 进行 Active Directory 联合身份验证服务的管理和自定义](active-directory-aadconnect-federation-management.md)
 - [Azure AD 联合身份验证兼容性列表](active-directory-aadconnect-federation-compatibility.md)
 - [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)
-

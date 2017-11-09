@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3de3024e93aee7ace0e243eef0beb4008dc50db5
-ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/09/2017
-
+ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement 文档
 
 了解如何使用 Mobile Engagement 提高移动应用的采用率、保有率和盈利能力。 教程、SDK 和其他文档介绍了如何深入分析应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。
@@ -208,6 +206,5 @@ ms.lasthandoff: 02/09/2017
 </ul>
 
 ---
-
 
 

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
 ms.openlocfilehash: 5f8559450b24effd40a38879aeae3a8dd03944a3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 
 Azure Active Directory (Azure AD) 支持自定义 B2B 协作用户的 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 可以在“属性”选项卡下查看或编辑通过 SAML 令牌发送到应用程序的声明。
@@ -52,4 +50,3 @@ Azure Active Directory (Azure AD) 支持自定义 B2B 协作用户的 SAML 令�
 * [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 * [B2B 协作用户令牌](active-directory-b2b-user-token.md)
 * [B2B 协作当前限制](active-directory-b2b-current-limitations.md)
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: ea90a62ffee9c766985f76e1c0abc1585bebc69b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: c9772df2c216d465ca6e90e69bce011969dd4f02
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -101,10 +100,10 @@ status | 操作的状态。 例如，“失败”或“成功”。
 源 | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
 类型 | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
-数据 | 包含用于准确找到错误起源的数据。 将会根据数据大小截断数据。
+数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
 数据错误根据 operationName 值采用以下架构：
-* 序列化事件。 事件读取操作期间发生序列化事件。 当输入的数据由以下任一原因而不满足查询架构时将发生此类事件：
+* 序列化事件。 事件读取操作期间发生序列化事件。 当输入的数据由以下任一原因而不满足查询架构时会发生此类事件：
     * 事件序列化（反序列化）期间类型不匹配：标识导致出错的字段。
     * 无法读取事件，序列化无效：列出输入数据中发生错误的相关位置信息。 包括用于 blob 输入的 blob 名称、偏移量和数据示例。
 * 发送事件。 写入操作期间发生发送事件。 它们标识导致错误的流式处理事件。
@@ -127,4 +126,3 @@ status | 操作的状态。 例如，“失败”或“成功”。
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
 * [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

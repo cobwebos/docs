@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fa1c3d9cb07d417f5dbde41d6269fb1d157c3104
-ms.openlocfilehash: a6a97cd187036222f5a47e55670da613117a2318
-ms.contentlocale: zh-cn
-ms.lasthandoff: 01/12/2017
-
+ms.openlocfilehash: 8e3f496c2868cc3430e0efd47805aec2205168aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -38,7 +37,7 @@ ms.lasthandoff: 01/12/2017
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
-当我们想要添加多个顶级域时，问题便油然而生。  例如，假设你已设置 Azure AD 和本地环境之间的联合。  在本文中我使用 bmcontoso.com。  现在我已添加第二个顶级域 bmfabrikam.com。
+当我们想要添加多个顶级域时，问题便油然而生。  例如，假设已设置 Azure AD 和本地环境之间的联合。  在本文中我使用 bmcontoso.com。现在我已添加第二个顶级域 bmfabrikam.com。
 
 ![域](./media/active-directory-multiple-domains/domains.png)
 
@@ -65,9 +64,9 @@ ms.lasthandoff: 01/12/2017
 
 `-SupportMultipleDomain` 的另一个功用是确保 AD FS 系统在颁发给 Azure AD 的令牌中包含正确的颁发者值。 它通过使用用户 UPN 的域部分并将其设置为 IssuerUri 中的域（即 https://{upn suffix}/adfs/services/trust）来实现此目的。 
 
-因此，在 Azure AD 或 Office 365 上进行身份验证期间，将使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证将会失败。 
+因此，在 Azure AD 或 Office 365 上进行身份验证期间，将使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证会失败。 
 
-例如，如果用户的 UPN 是 bsimon@bmcontoso.com,，AD FS 颁发的令牌中的 IssuerUri 元素将设置为 http://bmcontoso.com/adfs/services/trust。 这将与 Azure AD 配置匹配，并且身份验证会成功。
+例如，如果用户的 UPN 是 bsimon@bmcontoso.com，AD FS 颁发的令牌中的 IssuerUri 元素将设置为 http://bmcontoso.com/adfs/services/trust。 这会与 Azure AD 配置匹配，并且身份验证会成功。
 
 以下是实现此逻辑的自定义声明规则：
 
@@ -82,7 +81,7 @@ ms.lasthandoff: 01/12/2017
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>如何更新 AD FS 与 Azure AD 之间的信任
 如果未设置 AD FS 与 Azure AD 实例之间的联合信任，可能需要重新创建此信任。  这是因为当我们最初未使用 `-SupportMultipleDomain` 参数进行设置时，系统将 IssuerUri 设置为默认值。  在下面的屏幕截图中，可看到 IssuerUri 设置为 https://adfs.bmcontoso.com/adfs/services/trust。
 
-回过头来，如果我们已成功地在 Azure AD 门户中添加新域，然后再尝试使用 `Convert-MsolDomaintoFederated -DomainName <your domain>` 转换，我们会收到以下错误。
+回过头来，如果我们已成功地在 Azure AD 门户中添加新域，再尝试使用 `Convert-MsolDomaintoFederated -DomainName <your domain>` 转换，我们会收到以下错误。
 
 ![联合错误](./media/active-directory-multiple-domains/trust1.png)
 
@@ -96,7 +95,7 @@ ms.lasthandoff: 01/12/2017
 
 使用以下步骤来添加其他顶级域。  如果已添加域且未使用 `-SupportMultipleDomain` 参数，请从删除及更新原始域的步骤开始。  如果尚未添加顶级域，可以从使用 Azure AD Connect 的 PowerShell 来添加域开始。
 
-请使用以下步骤来删除 Microsoft Online 信任，然后更新原始域。
+请使用以下步骤来删除 Microsoft Online 信任，并更新原始域。
 
 1. 在 AD FS 联合服务器上，打开“AD FS 管理”。 
 2. 展开左侧的“信任关系”和“信赖方信任”
@@ -118,7 +117,7 @@ ms.lasthandoff: 01/12/2017
 
 1. 从桌面或开始菜单启动 Azure AD Connect
 2. 选择“添加其他 Azure AD 域”![添加其他 Azure AD 域](./media/active-directory-multiple-domains/add1.png)
-3. 输入你的 Azure AD 和 Active Directory 凭据
+3. 输入 Azure AD 和 Active Directory 凭据
 4. 选择希望为联合配置的第二个域。
    ![添加其他 Azure AD 域](./media/active-directory-multiple-domains/add2.png)
 5. 单击“安装”
@@ -135,10 +134,10 @@ ms.lasthandoff: 01/12/2017
 ## <a name="support-for-sub-domains"></a>子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  这表示 IssuerUri 需要与父项匹配。
 
-假设我有 bmcontoso.com，后来再添加 corp.bmcontoso.com。  这意味着 corp.bmcontoso.com 中的用户 IssuerUri 必须为 **http://bmcontoso.com/adfs/services/trust**。  但是，为 Azure AD 实施的上述标准规则将包含颁发者的令牌生成为 **http://corp.bmcontoso.com/adfs/services/trust。** 这与域的所需值不匹配，身份验证将失败。
+假设我有 bmcontoso.com，后来再添加 corp.bmcontoso.com。这意味着 corp.bmcontoso.com 中的用户 IssuerUri 必须为 **http://bmcontoso.com/adfs/services/trust**。  但是，为 Azure AD 实施的上述标准规则将包含颁发者的令牌生成为 **http://corp.bmcontoso.com/adfs/services/trust。** 这与域的所需值不匹配，身份验证会失败。
 
 ### <a name="how-to-enable-support-for-sub-domains"></a>如何启用子域的支持
-若要解决此问题，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，你必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。 
+若要解决此问题，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。 
 
 以下声明将执行此操作：
 
@@ -150,7 +149,7 @@ ms.lasthandoff: 01/12/2017
 请使用以下步骤添加自定义声明，以支持子域。
 
 1. 打开“AD FS 管理”
-2. 右键单击 Microsoft Online RP 信任，然后选择“编辑声明规则”
+2. 右键单击 Microsoft Online RP 信任，并选择“编辑声明规则”
 3. 选择第三个声明规则并替换![编辑声明](./media/active-directory-multiple-domains/sub1.png)
 4. 将当前的声明：
    
@@ -163,5 +162,4 @@ ms.lasthandoff: 01/12/2017
     ![替换声明](./media/active-directory-multiple-domains/sub2.png)
 
 5. 单击“确定”。  单击“应用”。  单击“确定”。  关闭“AD FS 管理”。
-
 

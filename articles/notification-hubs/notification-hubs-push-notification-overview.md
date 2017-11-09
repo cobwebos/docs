@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 1/17/2017
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 58458cdc99cc8f78e63c9640a7c71a8ce5dc70f1
 ms.openlocfilehash: a1be0b13cd1feb582a23965df142e44d90ac6851
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs"></a>Azure 通知中心
 ## <a name="overview"></a>概述
@@ -45,7 +44,7 @@ Azure 通知中心提供易用的多平台扩展式推送引擎。 使用单个�
 * [Windows](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
 
 ## <a name="how-push-notifications-work"></a>推送通知的工作原理
-推送通知通过称为*平台通知系统* (PNS) 的特定于平台的基础结构进行传送。 它们只是单纯的推送功能，使用提供的句柄向设备传送消息，而没有通用接口。 若要跨应用的 iOS、Android 和 Windows 版本将通知发送给所有客户，开发人员必须使用 APNS（Apple Push Notification 服务）、FCM (Firebase Cloud Messaging) 和 WNS（Windows 通知服务），同时将发送操作批量化。
+推送通知通过称为*平台通知系统* (PNS) 的特定于平台的基础结构进行传送。 它们只是单纯的推送功能，使用提供的句柄向设备传送消息，而没有通用接口。 要跨应用的 iOS、Android 和 Windows 版本将通知发送给所有客户，开发人员必须使用 APNS（Apple Push Notification 服务）、FCM (Firebase Cloud Messaging) 和 WNS（Windows 通知服务），同时将发送操作批量化。
 
 从较高层面讲，推送的工作原理如下：
 
@@ -67,7 +66,7 @@ Azure 通知中心提供易用的多平台扩展式推送引擎。 使用单个�
 * **缩放**：
 
   * 根据 PNS 指导原则，每次启动应用时都必须刷新设备令牌。 这意味着，仅仅是为了保持令牌的最新状态，后端就必须处理大量的流量和数据库访问。 当设备数目增长到几亿甚至几十亿时，创建和维护此基础结构所需的成本是巨大的。
-  * 大多数 PNS 不支持广播到多台设备。 这意味着，仅仅是广播到&100; 万台设备就需要对 PNS 发出&100; 万次调用。 以最低的延迟缩放这种流量大小并非易事。
+  * 大多数 PNS 不支持广播到多台设备。 这意味着，仅仅是广播到 100 万台设备就需要对 PNS 发出 100 万次调用。 以最低的延迟缩放这种流量大小并非易事。
 * **路由**：
   
   * 尽管 PNS 提供了向设备发送消息的方式，但大多数应用通知面向用户或兴趣组。 这意味着，后端必须维护一个注册表，用于将设备与兴趣组、用户、属性等相关联。此项开销增大了应用的面市时间和维护成本。
@@ -102,23 +101,23 @@ Azure 通知中心提供易用的多平台扩展式推送引擎。 使用单个�
 * **丰富的遥测**
   
   * 可在 Azure 门户中或者以编程方式使用常规的推送、设备、错误和操作遥测。
-  * 每项消息遥测将会跟踪从发出初始请求调用，到服务成功批处理外推操作的每个推送过程。
-  * 平台通知系统反馈将会传达来自平台通知系统的所有反馈以帮助调试。
-* **可缩放性** 
+  * 每项消息遥测会跟踪从发出初始请求调用，到服务成功批处理外推操作的每个推送过程。
+  * 平台通知系统反馈会传达来自平台通知系统的所有反馈以帮助调试。
+* **伸缩性** 
   
   * 无需重建体系结构或者将设备分片，即可快速地向数百万台设备发送消息。
 * **安全性**
 
   * 共享访问机密 (SAS) 或联合身份验证。
 
-## <a name="integration-with-app-service-mobile-apps"></a>与 App Service Mobile Apps 集成
+## <a name="integration-with-app-service-mobile-apps"></a>与应用服务移动应用集成
 为了在 Azure 服务之间促成完美且统一的体验， [应用服务移动应用] 原生支持使用通知中心推送通知。 [应用服务移动应用] 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用开发平台，该平台向移动开发人员提供一组丰富的功能。
 
-Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
+移动应用开发人员可以借助以下工作流来利用通知中心：
 
 1. 检索设备 PNS 句柄
 2. 通过便利的移动应用客户端 SDK 注册 API 将设备注册到通知中心
-   * 请注意，出于安全方面的考虑，Mobile Apps 将在注册中去除所有标记。 直接从后端使用通知中心将标记与设备相关联。
+   * 请注意，出于安全方面的考虑，移动应用会在注册中去除所有标记。 直接从后端使用通知中心将标记与设备相关联。
 3. 从应用后端使用通知中心发送通知
 
 以下是这种集成为开发人员带来的便利：
@@ -155,4 +154,3 @@ Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
 [templates]: notification-hubs-templates-cross-platform-push-messages.md
 [Azure 门户]: https://portal.azure.com
 [tags]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
-

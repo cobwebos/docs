@@ -8,4 +8,4 @@
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-通常在附近的区域中创建资源组和资源。 若要查看 Azure Web 应用的所有支持位置，请运行 `az appservice list-locations` 命令。 
+通常在附近的区域中创建资源组和资源。 若要查看应用服务计划的所有支持位置，请运行 `az appservice list-locations` 命令。

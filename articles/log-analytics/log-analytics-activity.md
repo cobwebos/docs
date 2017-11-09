@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
 ms.openlocfilehash: 1ad56a54f094f3c314596b3a7c9fecd09647d065
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/09/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-azure-activity-logs"></a>查看 Azure 活动日志
 
 ![“Azure 活动日志”符号](./media/log-analytics-activity/activity-log-analytics.png)
@@ -43,7 +40,7 @@ Activity Log Analytics 解决方案有助于分析和搜索所有 Azure 订阅�
 - 确定影响资源的故障或服务运行状况问题
 - 使用日志搜索功能，将用户活动、自动缩放操作、授权更改和服务运行状况与环境中的其他日志或指标关联起来
 
-<sup>1</sup>默认情况下，Log Analytics 将 Azure 活动日志保留 90 天，即使在免费层也是如此。 或者，将工作区保留期设置为少于 90 天。 如果工作区保留期长于 90 天，活动日志将在工作区保留期时段内得到保留。
+<sup>1</sup>默认情况下，Log Analytics 将 Azure 活动日志保留 90 天，即使在免费层也是如此。 或者，将工作区保留期设置为少于 90 天。 如果工作区保留期长于 90 天，活动日志会在工作区保留期时段内得到保留。
 
 Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如果日志存储时间超过 90 天，将对存储超过 90 天的数据收取数据保留费。
 
@@ -68,9 +65,9 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 执行以下步骤，为工作区配置 Activity Log Analytics 解决方案。
 
-1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
+1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
 2. 配置活动日志，以转到 Log Analytics 工作区。
-    1. 在 Azure 门户中，选择工作区，然后单击“Azure 活动日志”。
+    1. 在 Azure 门户中，选择工作区，并单击“Azure 活动日志”。
     2. 对于每个订阅，单击订阅名称。  
         ![添加订阅](./media/log-analytics-activity/add-subscription.png)
     3. 在“SubscriptionName”边栏选项卡中，单击“连接”。  
@@ -93,10 +90,10 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 | 边栏选项卡 | 说明 |
 | --- | --- |
-| Azure 活动日志条目 | 显示所选日期范围内排名前列的 Azure 活动日志条目记录总数的条形图，并显示前 10 个活动调用方的列表。 单击该条形图，为 <code>Type=AzureActivity</code> 运行日志搜索。 单击某个调用方项，运行日志搜索，从而为该项返回所有活动日志条目。 |
-| 按状态分类的活动日志 | 为所选日期范围内的 Azure 活动日志状态显示圆环图。 此外还显示前十个状态记录的列表。 单击该图表，为 <code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> 运行日志搜索。 单击某个状态项，运行日志搜索，从而为该状态记录返回所有活动日志条目。 |
-| 按资源分类的活动日志 | 显示包含活动日志的资源总数，并列出前十个为每个资源显示记录计数的资源。 单击全部区域，为 <code>Type=AzureActivity &#124; measure count() by Resource</code> 运行日志搜索，这将显示解决方案可以使用的所有 Azure 资源。 单击某个资源以运行日志搜索，从而为该资源返回所有活动记录。 |
-| 按资源提供程序分类的活动日志 | 显示生成活动日志的资源提供程序的总数，并列出前十个资源提供程序。 单击全部区域，为 <code>Type=AzureActivity &#124; measure count() by ResourceProvider</code> 运行日志搜索，这将显示所有的 Azure 资源提供程序。 单击某个资源提供程序以运行日志搜索，从而为该提供程序返回所有活动记录。 |
+| Azure 活动日志条目 | 显示所选日期范围内排名前列的 Azure 活动日志条目记录总数的条形图，并显示前 10 个活动调用方的列表。 单击该条形图可针对 <code>Type=AzureActivity</code> 运行日志搜索。 单击某个调用方项，运行日志搜索，从而为该项返回所有活动日志条目。 |
+| 按状态分类的活动日志 | 为所选日期范围内的 Azure 活动日志状态显示圆环图。 此外还显示前十个状态记录的列表。 单击该图表可针对 <code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> 运行日志搜索。 单击某个状态项，运行日志搜索，从而为该状态记录返回所有活动日志条目。 |
+| 按资源分类的活动日志 | 显示包含活动日志的资源总数，并列出前十个为每个资源显示记录计数的资源。 单击全部区域可针对 <code>Type=AzureActivity &#124; measure count() by Resource</code> 运行日志搜索，这会显示解决方案可以使用的所有 Azure 资源。 单击某个资源以运行日志搜索，从而为该资源返回所有活动记录。 |
+| 按资源提供程序分类的活动日志 | 显示生成活动日志的资源提供程序的总数，并列出前十个资源提供程序。 单击全部区域可针对 <code>Type=AzureActivity &#124; measure count() by ResourceProvider</code> 运行日志搜索，这会显示所有 Azure 资源提供程序。 单击某个资源提供程序以运行日志搜索，从而为该提供程序返回所有活动记录。 |
 
 ![Azure 活动日志仪表板](./media/log-analytics-activity/activity-log-dash.png)
 
@@ -104,4 +101,3 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 - 在发生特定活动时创建[警报](log-analytics-alerts-creating.md)。
 - 使用[日志搜索](log-analytics-log-searches.md)查看活动日志中的详细信息。
-

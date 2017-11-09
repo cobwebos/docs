@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: f2b0a1d4bc44f8d0cd57c61e2d78950cb6a99854
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 集成
 
@@ -116,7 +115,7 @@ ms.lasthandoff: 06/28/2017
     > [!NOTE] 
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [InsideView 支持团队](mailto:support@insideview.com)获取此值。
  
-4. 在“SAML 签名证书”部分中，单击“证书(原始)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-insideview-tutorial/tutorial_insideview_certificate.png) 
 
@@ -138,9 +137,9 @@ ms.lasthandoff: 06/28/2017
 
     ![添加新 SAML](./media/active-directory-saas-insideview-tutorial/ic794136.png "Add a New SAML")
    
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“STS 名称”文本框中，键入配置名称。
+    a. 在“STS 名称”文本框中，键入配置名称。
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“SamlP/WS-Fed 未经请求的终结点”文本框中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL 值。
+    b. 在“SamlP/WS-Fed 未经请求的终结点”文本框中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL 值。
     
     c. 打开从 Azure 门户中下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“STS 证书”文本框中。
 
@@ -181,7 +180,7 @@ ms.lasthandoff: 06/28/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-insideview-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -206,7 +205,7 @@ ms.lasthandoff: 06/28/2017
 
 若要将 Britta Simon 分配到 InsideView，请执行以下步骤：
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -252,5 +251,4 @@ ms.lasthandoff: 06/28/2017
 [201]: ./media/active-directory-saas-insideview-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-insideview-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-insideview-tutorial/tutorial_general_203.png
-
 

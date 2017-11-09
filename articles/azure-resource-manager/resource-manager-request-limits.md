@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 对于每个订阅和租户，Resource Manager 将每小时的读取请求数限制为 15,000 个，将每小时的写入请求数限制为 1,200 个。 这些限制适用于每个 Azure Resource Manager 实例；每个 Azure 区域中有多个实例，Azure Resource Manager 部署到所有 Azure 区域。  因此，在实践中，限制实际上比上面列出的要高得多，因为用户请求通常是由多个不同的实例提供服务。
 
 如果应用程序或脚本达到这些限制，则需要限制请求。 本主题说明如何在达到限制之前确定剩余的请求数，以及达到限制时如何做出响应。
 
-达到限制时，你会收到 HTTP 状态代码“429 请求过多”。
+达到限制时，会收到 HTTP 状态代码“429 请求过多”。
 
-请求数划归到订阅或租户。 如果订阅中有多个并发应用程序在发出请求，这些应用程序的请求数将会累加，共同确定剩余的请求数。
+请求数划归到订阅或租户。 如果订阅中有多个并发应用程序在发出请求，这些应用程序的请求数会累加，共同确定剩余的请求数。
 
 划归到订阅的请求涉及到传递订阅 ID，例如，检索订阅中的资源组。 划归到租户的请求不包括订阅 ID，例如，检索有效的 Azure 位置。
 
@@ -112,4 +111,3 @@ silly: returnObject
 
 * 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 * 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](resource-manager-async-operations.md)。
-

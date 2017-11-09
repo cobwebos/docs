@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
+ms.openlocfilehash: a3d4e5367dd41ce2ade7033cefcc774dcec9c82c
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: b69bbd00b85fdf093ac1ccf021515d9b44ea7f55
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -40,8 +39,7 @@ Azure Functions 工具包含在 [Visual Studio 2017 版本 15.3](https://www.vis
 
 ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
->[!NOTE]  
->安装或升级到 Visual Studio 2017 15.3 版后，必须手动更新用于 Azure Functions 的 Visual Studio 2017 工具。 可以在“扩展和更新...” > “更新” > “Visual Studio Marketplace” > “Azure Functions 和 Web 作业工具” > “更新”下的“工具”中更新工具。 
+[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-install-note.md)] 
 
 若要创建和部署函数，还需要：
 
@@ -57,7 +55,7 @@ Azure Functions 工具包含在 [Visual Studio 2017 版本 15.3](https://www.vis
 
 使用 Azure Functions 模板创建新项目时，将会获得一个包含以下文件的空 C# 项目：
 
-* **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) 参考文章。
+* **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
     
 * **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件可以在其他 Azure 服务中指定设置（例如连接字符串）。 针对项目中的函数所需的每个连接，请将新键添加到 **Values** 数组。 有关详细信息，请参阅 Azure Functions 核心工具主题中的[本地设置文件](functions-run-local.md#local-settings-file)。
 
@@ -138,4 +136,3 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
 若要详细了解 Azure Functions 核心工具，请参阅[在本地编写 Azure 函数代码并对其进行测试](functions-run-local.md)。  
 若要详细了解如何将函数作为 .NET 类库进行开发，请参阅[搭配使用 Azure Functions 和 .Net 类库](functions-dotnet-class-library.md)。 本主题还举例说明了如何使用属性来声明 Azure Functions 支持的各种类型的绑定。    
-

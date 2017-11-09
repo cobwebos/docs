@@ -4,7 +4,7 @@ description: "了解和解决现有 Azure AD 域服务托管域的不匹配目�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 10/30/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ca9ff29f5f91b8d796a29706ab49a82e417d1ecd
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 拥有使用 Azure 经典门户启用的现有托管域。 导航到新的 Azure 门户并查看托管域时，会看到以下错误消息：
@@ -32,7 +31,7 @@ ms.lasthandoff: 07/08/2017
 ## <a name="whats-causing-this-error"></a>什么导致了该错误？
 如果托管域和在其中启用它的虚拟网络属于两个不同的 Azure AD 租户，将导致该错误。 例如，你有一个名为“contoso.com”的托管域，并已为 Contoso 的 Azure AD 租户启用。 然后，在其中启用该托管域的 Azure 虚拟网络属于 Fabrikam，Fabrikam 是另一个 Azure AD 租户。
 
-新的 Azure 门户（具体指的是 Azure AD 域服务扩展）基于 Azure Resource Manager 生成。 在新式 Azure Resource Manager 环境中，将强制实施特定限制，以提供更高的安全性和实现对资源更好的基于角色的访问控制 (RBAC)。 为 Azure AD 租户启用 Azure AD 域服务是一项敏感操作，因为可能导致凭据哈希同步到托管域。 此操作要求用户是目录的租户管理员。 此外，还必须具有对在其中启用托管域的虚拟网络的管理权限。 若要使 RBAC 检查持续工作，托管域和虚拟网络应属于相同的 Azure AD 租户。
+新的 Azure 门户（具体指的是 Azure AD 域服务扩展）基于 Azure 资源管理器生成。 在新式 Azure 资源管理器环境中，将强制实施特定限制，以提供更高的安全性和实现对资源更好的基于角色的访问控制 (RBAC)。 为 Azure AD 租户启用 Azure AD 域服务是一项敏感操作，因为可能导致凭据哈希同步到托管域。 此操作要求用户是目录的租户管理员。 此外，还必须具有对在其中启用托管域的虚拟网络的管理权限。 若要使 RBAC 检查持续工作，托管域和虚拟网络应属于相同的 Azure AD 租户。
 
 简言之，无法在属于另一 Azure AD 租户“fabrikam.com”所有的 Azure 订阅的虚拟网络中为 Azure AD 租户“contoso.com”启用托管域。 Azure 经典门户不基于 Resource Manager 平台生成，也不强制实施此类限制。
 
@@ -56,12 +55,11 @@ ms.lasthandoff: 07/08/2017
 ## <a name="resolution"></a>解决方法
 可通过两个选择来解决不匹配目录错误。 可以：
 
-- 单击“删除”按钮，删除现有托管域。 使用 [Azure 门户](https://portal.azure.com)重新创建，使托管域和在其中可用的虚拟网络均属于 Azure AD 目录。 必须重新加入新创建的托管域，所有计算机以前加入的是已删除的域。
+- 单击“删除”按钮，删除现有托管域。 使用 [Azure 门户](https://portal.azure.com)重新创建，使托管域和在其中可用的虚拟网络均属于 Azure AD 目录。 将以前加入已删除域的所有计算机重新加入新创建的托管域。
 
-- 联系 Azure 支持人员将包含虚拟网络的 Azure 订阅移到 Azure AD 目录，Azure AD 目录是托管域所属的目录。 单击“新建支持请求”并在支持请求的“详细信息”部分指定不匹配目录。 在支持请求中添加错误消息中提供的信息。
+- 将包含虚拟网络的 Azure 订阅移到托管域所属的 Azure AD 目录。 按照[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)一文中的步骤进行操作。
 
 
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [故障排除指南 - Azure AD 域服务](active-directory-ds-troubleshooting.md)
-

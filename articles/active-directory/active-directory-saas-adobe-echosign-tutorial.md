@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: b413772de1af1fbb128d29b81e5831cfd6a39ab4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -89,7 +88,7 @@ ms.lasthandoff: 06/23/2017
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Adobe Sign 测试用户](#creating-an-adobe-sign-test-user)** - 目的是在 Adobe Sign 中拥有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建 Adobe Sign 测试用户](#creating-an-adobe-sign-test-user)** - 在 Adobe Sign 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -118,7 +117,7 @@ ms.lasthandoff: 06/23/2017
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(Base64)”，然后在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
 
@@ -141,9 +140,9 @@ ms.lasthandoff: 06/23/2017
    
    ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML 设置")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 对于“SAML 模式”，选择“SAML 强制”。
+   a. 对于“SAML 模式”，选择“SAML 强制”。
    
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 选择“允许 EchoSign 帐户管理员使用 EchoSign 凭据登录”。
+   b. 选择“允许 EchoSign 帐户管理员使用 EchoSign 凭据登录”。
    
    c. 对于“用户创建”，选择“自动添加通过 SAML 验证了身份的用户”。
 
@@ -151,9 +150,9 @@ ms.lasthandoff: 06/23/2017
 
        ![SAML 设置](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "SAML 设置")
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“IdP 实体 ID”文本框中。
+    a. 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“IdP 实体 ID”文本框中。
     
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“IDP 登录 URL”文本框中。
+    b. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“IDP 登录 URL”文本框中。
    
     c. 将从 Azure 门户复制的“注销 URL”粘贴到“IdP 注销 URL”文本框中。
 
@@ -188,7 +187,7 @@ ms.lasthandoff: 06/23/2017
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-adobe-echosign-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -215,9 +214,9 @@ ms.lasthandoff: 06/23/2017
    
    ![创建用户](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "创建用户")
    
-   a.在“横幅徽标”下面，选择“删除上传的徽标”。 键入希望在相关文本框中预配的有效 AAD 帐户的“电子邮件地址”、“名字”和“姓氏”。
+   a. 键入希望在相关文本框中预配的有效 AAD 帐户的“电子邮件地址”、“名字”和“姓氏”。
    
-   b.在“磁贴徽标”下面，选择“删除上传的徽标”。 单击“创建用户”。
+   b. 单击“创建用户”。
 
 >[!NOTE]
 >Azure Active Directory 帐户持有者收到一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。 
@@ -230,7 +229,7 @@ ms.lasthandoff: 06/23/2017
 
 **若要将 Britta Simon 分配到 Adobe Sign，请执行以下步骤：**
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -275,5 +274,4 @@ ms.lasthandoff: 06/23/2017
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-
 

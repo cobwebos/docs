@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 4b46e1627a229b0649d9ccd2550cd28fda9849f8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-devices-using-the-azure-portal---preview"></a>使用 Azure 门户管理设备 - 预览版
 
@@ -197,7 +196,6 @@ ms.lasthandoff: 08/25/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Active Directory 中的设备管理简介](device-management-introduction.md)
-
 
 
 

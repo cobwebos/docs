@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 4065727aef04d7969d438c6ef79127bb44568be1
-ms.contentlocale: zh-cn
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="set-up-your-project"></a>设置项目
 
 本部分提供分步说明，介绍如何创建新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“登录 Microsoft”集成，使其能查询需要令牌的 Web API。
@@ -74,7 +73,7 @@ public partial class App : Application
 ```
 
 ## <a name="create-your-applications-ui"></a>创建应用程序 UI
-下一节说明应用程序可如何查询受保护的后端服务器，例如 Microsoft Graph。 项目模板中应自动创建了 MainWindow.xaml 文件。 打开此文件，然后按照下面的说明进行操作：
+下一节说明应用程序可如何查询受保护的后端服务器，例如 Microsoft Graph。 项目模板中应自动创建了 MainWindow.xaml 文件。 打开此文件，并按照下面的说明进行操作：
 
 将应用程序的 `<Grid>` 替换为以下内容：
 
@@ -92,4 +91,3 @@ public partial class App : Application
     </StackPanel>
 </Grid>
 ```
-

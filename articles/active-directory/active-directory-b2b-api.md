@@ -15,17 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: c85e05b38b4a9525e13ec510a17b7ef4841198d7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
-已经有许多客户和我们说他们想要以最适合其组织的方式自定义邀请过程。 使用我们的 API，你就可以实现该想法。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+已经有许多客户和我们说他们想要以最适合其组织的方式自定义邀请过程。 使用我们的 API，便可以实现该想法。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>邀请 API 的功能
 该 API 提供以下功能：
@@ -37,7 +35,7 @@ ms.lasthandoff: 04/13/2017
     "invitedUserEmailAddress": "gsamoogle@gmail.com"
     ```
 
-2. 自定义你希望用户在接受其邀请后登陆的位置。
+2. 自定义希望用户在接受其邀请后登陆的位置。
 
     ```
     "inviteRedirectUrl": "https://myapps.microsoft.com/"
@@ -65,7 +63,7 @@ ms.lasthandoff: 04/13/2017
 
   在这种情况下，将通过可嵌入电子邮件模板的 API、即时消息或所选择的其他分发方法收到兑换 URL。
 
-6. 最后，如果你是管理员，可以选择以成员身份邀请用户。
+6. 最后，如果是管理员，可以选择以成员身份邀请用户。
 
     ```
     "invitedUserType": "Member"
@@ -115,4 +113,3 @@ New-AzureADMSInvitation
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-

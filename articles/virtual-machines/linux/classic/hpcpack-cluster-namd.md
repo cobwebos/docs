@@ -15,15 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD
-本文介绍在 Azure 虚拟机上运行 Linux 高性能计算 (HPC) 工作负荷的一种方式。 在学习过程中，会在包含 Linux 计算节点的 Azure 上设置一个 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，然后运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 仿真，以计算和直观呈现大型生物分子系统的结构。  
+本文介绍在 Azure 虚拟机上运行 Linux 高性能计算 (HPC) 工作负荷的一种方式。 在学习过程中，将在包含 Linux 计算节点的 Azure 上设置一个 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，并运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 仿真，以计算和直观呈现大型生物分子系统的结构。  
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 09/15/2017
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>为 Linux 节点设置文件共享
 现在，请设置 SMB 文件共享，并在所有 Linux 节点上装入共享文件夹，以允许 Linux 节点使用通用路径访问 NAMD 文件。 下面是在头节点上装载共享文件夹的步骤。 对于 CentOS 6.6 这种目前不支持 Azure 文件服务的分发版，建议使用共享。 如果 Linux 节点支持 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/files/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 有关 HPC Pack 的其他文件共享选项，请参阅 [Get started with Linux compute nodes in an HPC Pack Cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
 
-1. 在头节点上创建一个文件夹，然后通过设置读/写权限将其与所有人共享。 在本示例中，\\\\CentOS66HN\Namd 是文件夹的名称，其中 CentOS66HN 是头节点的主机名称。
+1. 在头节点上创建一个文件夹，并通过设置读/写权限将其与所有人共享。 在本示例中，\\\\CentOS66HN\Namd 是文件夹的名称，其中 CentOS66HN 是头节点的主机名称。
 2. 在共享文件夹中创建一个名为 namd2 的子文件夹。 在 namd2 中创建名为 namdsample 的另一个子文件夹。
 3. 使用 **tar** 的一个 Windows 版本或可以操作 .tar 存档文件的其他 Windows 实用工具，解压缩文件夹中的 NAMD 文件。 
    
@@ -221,7 +220,7 @@ host CENTOS66LN-03 ++cpus 2
 ## <a name="submit-a-namd-job"></a>提交 NAMD 作业
 现在可以在 HPC 群集管理器中提交 NAMD 作业。
 
-1. 连接到群集头节点，并启动 HPC 群集管理器。
+1. 连接到群集头节点，然后启动 HPC 群集管理器。
 2. 在“资源管理”中，确保 Linux 计算节点处于“联机”状态。 如果节点未处于联机状态，请选择它们并单击“联机”。
 3. 在“作业管理”中，单击“新作业”。
 4. 为作业输入一个名称，如 *hpccharmrun*。
@@ -230,7 +229,7 @@ host CENTOS66LN-03 ++cpus 2
 5. 在“作业详细信息”页中，在“作业资源”下，将资源类型选为“节点”，并将“最小数量”设置为 3。 我们会在 3 个 Linux 节点上运行此作业，每个节点有 4 个核心。
    
    ![作业资源][job_resources]
-6. 在左侧导航栏中单击“编辑任务”，然后单击“添加”将任务添加到作业。    
+6. 在左侧导航栏中单击“编辑任务”，并单击“添加”将任务添加到作业。    
 7. 在“任务详细信息和 I/O 重定向”页中设置以下值。
    
    * **命令行** -
@@ -397,4 +396,3 @@ exit ${RTNSTS}
 [creds]:media/hpcpack-cluster-namd/creds.png
 [task_details]:media/hpcpack-cluster-namd/task_details.png
 [vmd_view]:media/hpcpack-cluster-namd/vmd_view.png
-

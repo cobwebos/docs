@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
 ## <a name="overview"></a>概述
@@ -57,13 +56,13 @@ ms.lasthandoff: 11/17/2016
 | 否。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |VMDK |在某些 VMware 版本中，OS 磁盘偶尔会引起警报并干扰正常操作。 在此版本中已修复了此问题。 |
-| 2 |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
+| #N/A |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
 | 3 |支持包 |在软件的早期版本中，当包大小超过 1 GB 时，支持包集合则会失败。 在此版本中已修复了此问题。 |
 | 4 |云访问 |在上一版本中，如果 StorSimple Virtual Array 没有网络连接并且进行了重启，本地 UI 则会出现连接问题。 在此版本中已修复了此问题。 |
 | 5 |监视图表 |在之前的版本中，在进行了设备故障转移操作后，云容量利用率图表在 Azure 经典门户中会显示不正确的值。 在当前版本中已修复了此问题。 |
 
 ## <a name="known-issues-in-the-update-01"></a>更新 0.1 中的已知问题
-下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 **此版本中发行说明的问题标有星号。此列表中几乎所有的问题都从 StorSimple Virtual Array 的正式版本中延续下来的。**
+下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 **此版本中发行说明的问题标有星号。此列表中几乎所有问题都是从 StorSimple Virtual Array 的正式版本中延续下来的。**
 
 | 否。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
@@ -75,14 +74,13 @@ ms.lasthandoff: 11/17/2016
 | **6.** |分层卷或共享 |不支持对适用于 StorSimple 分层卷的应用程序进行字节范围锁定。 如果启用了字节范围锁定，则 StorSimple 分层将不起作用。 |建议的措施包括： <br></br>在应用程序逻辑中关闭字节范围锁定。<br></br>选择将此应用程序的数据放置在本地固定卷中，而不是分层卷中。<br></br>*附加说明*：如果使用本地固定卷并且已启用字节范围锁定，则可以使本地固定卷联机，即使在还原完成之前也是如此。 在这种情况下，如果正在进行还原，则必须等待还原完成。 |
 | **7.** |分层共享 |处理大型文件可能会导致分层速度变慢。 |处理大型文件时，建议最大的文件应小于共享大小的 3%。 |
 | **8.** |共享的已用容量 |即使共享上没有任何数据时，也可能会看到共享消耗。 这是因为共享的已用容量中包括元数据。 | |
-| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这将在更高版本中实现。 |
+| **9.** |灾难恢复 |只能将文件服务器灾难恢复到源设备所在的同一域中。 此版本中不支持灾难恢复到其他域中的目标设备。 |这会在更高版本中实现。 |
 | **10.** |Azure PowerShell |在此版本中，不可以通过 Azure PowerShell 管理 StorSimple 虚拟设备。 |所有对虚拟设备的管理应通过 Azure 经典门户和本地 Web UI 进行。 |
 | **11.** |密码更改 |虚拟数组设备控制台仅接受 en-US 键盘格式的输入。 | |
-| **12.** |CHAP |CHAP 凭据一旦创建之后便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，然后再使它们联机，以使更改生效。 |这些问题将在更高版本中得以解决。 |
-| **13.** |iSCSI 服务器 |在 StorSimple Manager服务和 iSCSI 主机中，为 iSCSI 卷显示的“已用存储”可能有所不同。 |iSCSI 主机具有“文件系统”视图。<br></br>设备能够查看当卷处于最大大小时所分配的快。 |
+| **12.** |CHAP |CHAP 凭据一旦创建便无法删除。 此外，如果要修改 CHAP 凭据，首先需要使这些卷脱机，再使它们联机，以使更改生效。 |这些问题会在更高版本中得以解决。 |
+| **13.** |iSCSI 服务器 |在 StorSimple Manager 服务和 iSCSI 主机中，显示的 iSCSI 卷的“已用存储”可能有所不同。 |iSCSI 主机具有“文件系统”视图。<br></br>设备能够查看当卷处于最大大小时所分配的快。 |
 | **14.** |文件服务器 * |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple Virtual Array 上[安装更新](storsimple-ova-install-update-01.md)。
-
 

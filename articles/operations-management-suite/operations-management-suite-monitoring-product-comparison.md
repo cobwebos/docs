@@ -1,6 +1,6 @@
 ---
 title: "Microsoft 监视产品比较 | Microsoft 文档"
-description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护你的本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
+description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 监视产品比较
-本文在以下方面比较了 Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics：体系结构、如何监视资源的逻辑以及如何对所收集数据执行分析。  旨在使你基本了解它们的差异和相对优势。  
+本文在以下方面比较了 Operations Management Suite (OMS) 中的 System Center Operations Manager (SCOM) 和 Log Analytics：体系结构、如何监视资源的逻辑以及如何对所收集数据执行分析。  这是为了让用户对它们的区别和相对优势有基本了解。  
 
 ## <a name="basic-architecture"></a>基本体系结构
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-所有 SCOM 组件均安装在你的数据中心中。  [代理安装](http://technet.microsoft.com/library/hh551142.aspx)在由 SCOM 管理的 Windows 和 Linux 计算机上。  代理连接到可与 SCOM 数据库和数据仓库通信的[管理服务器](https://technet.microsoft.com/library/hh301922.aspx)。  代理依赖于域身份验证来连接到管理服务器。  受信任的域之外的代理可以执行证书身份验证或连接到[网关服务器](https://technet.microsoft.com/library/hh212823.aspx)。
+所有 SCOM 组件均安装在数据中心中。  [代理安装](http://technet.microsoft.com/library/hh551142.aspx)在由 SCOM 管理的 Windows 和 Linux 计算机上。  代理连接到可与 SCOM 数据库和数据仓库通信的[管理服务器](https://technet.microsoft.com/library/hh301922.aspx)。  代理依赖于域身份验证来连接到管理服务器。  受信任的域之外的代理可以执行证书身份验证或连接到[网关服务器](https://technet.microsoft.com/library/hh212823.aspx)。
 
 SCOM 需要两个 SQL 数据库，一个用于操作数据，另一个数据仓库支持报告和数据分析。  [报告服务器](https://technet.microsoft.com/library/hh298611.aspx)运行 SQL 报告服务，以报告数据仓库中的数据。 
 
@@ -49,7 +48,7 @@ Log Analytics 可从以下三个来源之一收集数据：
 ![Log Analytics 体系结构](media/operations-management-suite-monitoring-product-comparison/log-analytics-architecture.png)
 
 ### <a name="integrating-scom-and-log-analytics"></a>集成 SCOM 和 Log Analytics
-当 SCOM 用作 Log Analytics 的数据源时，你可以在混合监视环境中利用这两个产品的功能。  除了继续从 SCOM 运行管理包外，还可通过操作控制台配置由 OMS 管理的现有 SCOM 代理。  
+当 SCOM 用作 Log Analytics 的数据源时，可以在混合监视环境中利用这两个产品的功能。  除了继续从 SCOM 运行管理包外，还可通过操作控制台配置由 OMS 管理的现有 SCOM 代理。  
 连接的 SCOM 管理组中的数据通过以下四种方法之一传递到 Log Analytics：
 
 * 事件和性能数据由代理收集并传递到 SCOM。  然后，SCOM 中的管理服务器将该数据传递到 Log Analytics。
@@ -65,11 +64,11 @@ SCOM 和 Log Analytics 使用从代理收集的相似数据，但在以下方面
 
 管理包包含多个工作流，每个工作流可执行一些不同的监视功能，例如对性能计数器进行采样、检查服务状态或运行脚本。  每个工作流独立运行并定义其自己的结果，例如它将写入哪个数据库以及是否生成警报。 
 
-可重写工作流的详细信息，例如运行频率、视为错误的阈值和所生成警报的严重性。  还可以通过添加你自己的工作流提供其他功能。
+可重写工作流的详细信息，例如运行频率、视为错误的阈值和所生成警报的严重性。  还可以通过添加自己的工作流提供其他功能。
 
 ![重写](media/operations-management-suite-monitoring-product-comparison/scom-overrides.png)
 
-管理包安装在 Operations Manager 数据库中，并通过管理服务器自动分配到代理。  每个代理将自动下载管理包，并加载与它们安装的应用程序相关的工作流。  代理所收集的数据将传递回管理服务器，以供插入 SCOM 数据库和数据仓库。  操作控制台允许你通过管理包中包含的自定义视图、仪表板和报告查看和分析此数据。
+管理包安装在 Operations Manager 数据库中，并通过管理服务器自动分配到代理。  每个代理会自动下载管理包，并加载与它们安装的应用程序相关的工作流。  代理所收集的数据将传递回管理服务器，以供插入 SCOM 数据库和数据仓库。  操作控制台允许通过管理包中包含的自定义视图、仪表板和报告查看和分析此数据。
 
 下图阐释了管理包的分发过程。
 
@@ -77,7 +76,7 @@ SCOM 和 Log Analytics 使用从代理收集的相似数据，但在以下方面
 
 ### <a name="log-analytics"></a>Log Analytics
 #### <a name="event-and-performance-collection"></a>事件和性能收集
-Log Analytics 使用 Windows 事件日志、IIS 日志和 Syslog 等源从代理系统中收集事件和性能计数器。  你可以定义通过 Log Analytics 门户收集哪些数据的条件，然后创建日志查询分析所收集的数据。  创建 OMS 工作区时定义一组标准条件，并且可以为特定应用程序定义其他数据。 
+Log Analytics 使用 Windows 事件日志、IIS 日志和 Syslog 等源从代理系统中收集事件和性能计数器。  你可以定义通过 Log Analytics 门户收集哪些数据的条件，并创建日志查询分析所收集的数据。  创建 OMS 工作区时定义一组标准条件，并且可以为特定应用程序定义其他数据。 
 
 ![在 Log Analytics 中定义事件日志](media/operations-management-suite-monitoring-product-comparison/log-analytics-definedata.png)
 
@@ -92,7 +91,7 @@ Log Analytics 使用 Windows 事件日志、IIS 日志和 Syslog 等源从代理
 
 例如，[更改跟踪解决方案](https://technet.microsoft.com/library/mt484099.aspx)可检测代理系统上的配置更改，并将事件写入到可通过汇总已检测更改的多个图形视图分析的 OMS 存储库。  可从汇总视图深入探索到显示该解决方案所收集的详细数据的日志查询。
 
-尽管你可以选择要添加到你的订阅的解决方案，但当前无法创建你自己的解决方案。  你可以选择事件和性能计数器，根据自己的日志查询收集和创建自定义视图。
+尽管可以选择要添加到订阅的解决方案，但当前无法创建自己的解决方案。  可以选择事件和性能计数器，根据自己的日志查询收集和创建自定义视图。
 
 下图总结了 Log Analytics 的监视逻辑。
 
@@ -100,7 +99,7 @@ Log Analytics 使用 Windows 事件日志、IIS 日志和 Syslog 等源从代理
 
 ## <a name="health-monitoring"></a>运行状况监视
 ### <a name="operations-manager"></a>Operations Manager
-SCOM 可对应用程序的不同组件进行建模，并提供每个组件的实时运行状况。  这不仅使你可以随着时间的推移查看检测到的错误和性能，还可以在任一给定时间验证应用程序或系统及其每个组件的实际运行状况。  因为它了解应用程序可用的时间段，因此 SCOM 中的运行状况引擎还支持可随时间推移分析和报告应用程序可用性的服务级别协议 (SLA)。
+SCOM 可对应用程序的不同组件进行建模，并提供每个组件的实时运行状况。  这样，不仅可以查看随着时间推移而检测到的错误和性能，还能验证应用程序或系统及其每个组件在任何给定时间的实际运行状况。  因为它了解应用程序可用的时间段，因此 SCOM 中的运行状况引擎还支持可随时间推移分析和报告应用程序可用性的服务级别协议 (SLA)。
 
 例如，下面的视图显示了由 SCOM 监视的 SQL 数据库引擎的实时运行状况。  数据库引擎之一的每个数据库的运行状况显示在视图的下半部分。
 
@@ -128,7 +127,7 @@ SCOM 和 Log Analytics 分别提供不同的功能来分析收集的数据。  S
 
 ### <a name="operations-manager"></a>Operations Manager
 #### <a name="views"></a>视图
-操作控制台中的视图允许你以不同格式查看 SCOM 收集的不同数据类型，通常使用表格查看事件、警报和状态数据，使用折线图查看性能数据。  视图最小程度地分析或合并数据，但允许你根据特定条件进行筛选。 
+操作控制台中的视图允许以不同格式查看 SCOM 收集的不同数据类型，通常使用表格查看事件、警报和状态数据，使用折线图查看性能数据。  视图最小程度地分析或合并数据，但允许根据特定条件进行筛选。 
 
 ![视图](media/operations-management-suite-monitoring-product-comparison/scom-views.png)
 
@@ -148,7 +147,7 @@ SCOM 和 Log Analytics 分别提供不同的功能来分析收集的数据。  S
 #### <a name="reports"></a>报告
 SCOM 中的报告分析数据仓库中表格形式的数据。  可以打印和计划这些数据，以便通过不同的文件格式（包括 PDF、CSV 和 Word）自动提交。  报告使用数据仓库中的数据，因此它们尤其适合长期趋势的分析。
 
-管理包通常为特定应用程序提供自定义报告。  你还可以从通用报告库中进行选择，可为你自己的应用程序自定义这些报告，或用于执行临时分析。
+管理包通常为特定应用程序提供自定义报告。  还可以从通用报告库中进行选择，可为自己的应用程序自定义这些报告，或用于执行临时分析。
 
 下面是性能报告示例，显示了由 Active Directory 管理包收集的数据。
 
@@ -157,7 +156,7 @@ SCOM 中的报告分析数据仓库中表格形式的数据。  可以打印和�
 ### <a name="log-analytics"></a>Log Analytics
 Log Analytics 具有[查询语言](https://technet.microsoft.com/library/mt484120.aspx)，可用于对来自多个应用程序的数据执行分析，无需创建自定义视图或报告。  因为 OMS 在云中实现，因此查询和数据分析的性能不受任何硬件限制约束，并且可以快速分析包括数百万条记录的查询。 
 
-Log Analytics 中的查询也是其他功能的基础。  你可以保存查询、将其结果导出到 Excel 或使其定期自动运行并在其结果与特定条件匹配时生成警报。  
+Log Analytics 中的查询也是其他功能的基础。  可以保存查询、将其结果导出到 Excel 或使其定期自动运行并在其结果与特定条件匹配时生成警报。  
 
 ![日志查询流](media/operations-management-suite-monitoring-product-comparison/log-analytics-query-flow.png)
 
@@ -165,12 +164,11 @@ Log Analytics 中的查询也是其他功能的基础。  你可以保存查询�
 
 ![日志查询](media/operations-management-suite-monitoring-product-comparison/log-analytics-query.png)
 
-除了提供临时分析，还可以保存 Log Analytics 中的查询以供将来使用，这些查询还会添加到你的 [OMS 仪表板](http://technet.microsoft.com/library/mt484090.aspx)，如以下示例所示。
+除了提供临时分析，还可以保存 Log Analytics 中的查询以供将来使用，这些查询还会添加到 [OMS 仪表板](http://technet.microsoft.com/library/mt484090.aspx)，如以下示例所示。
 
 ![OMS 仪表板](media/operations-management-suite-monitoring-product-comparison/log-analytics-dashboard.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 部署 [System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh205987.aspx)。
 * 注册 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics)。  
-
 

@@ -9,7 +9,7 @@
 2. 在命令窗口中键入“gem install azure”以安装 gem 和依赖项。
 
 ### <a name="import-the-package"></a>导入包
-使用常用的文本编辑器将以下内容添加到你要在其中使用存储的 Ruby 文件的顶部：
+使用常用的文本编辑器将以下内容添加到要在其中使用存储的 Ruby 文件的顶部：
 
 ```ruby
 require "azure"
@@ -28,4 +28,4 @@ signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
 sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
-将命名空间值设置为你创建的值，而不是整个 URL 的值。 例如，使用 **"yourexamplenamespace"**，而不是 "yourexamplenamespace.servicebus.windows.net"。
+将命名空间值设置为创建的值，而不是整个 URL 的值。 例如，使用 **"yourexamplenamespace"**，而不是 "yourexamplenamespace.servicebus.windows.net"。

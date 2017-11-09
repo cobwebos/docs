@@ -1,5 +1,5 @@
 ---
-title: "部署和浏览使用 Azure SQL 数据库的多租户 SaaS 应用程序 | Microsoft Docs"
+title: "多租户 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档"
 description: "部署和浏览 Wingtip SaaS 多租户应用程序，演示使用 Azure SQL 数据库的 SaaS 模式。"
 keywords: "sql 数据库教程"
 services: sql-database
@@ -10,18 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
+ms.openlocfilehash: f624485d32901abb5f0d01c86fc30ddaaae261a3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 14d2fd007e88c9cb20cf2b4a24262e2bebc42d63
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>部署和浏览使用 Azure SQL 数据库的多租户 Wingtip 应用程序 - Wingtip SaaS
 
@@ -203,4 +202,3 @@ ms.lasthandoff: 09/13/2017
 * 若要了解弹性池，请参阅[什么是 Azure SQL 弹性池](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
 * 若要了解弹性作业，请参阅[管理扩大的云数据库](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
 * 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](https://docs.microsoft.com/azure/sql-database/sql-database-design-patterns-multi-tenancy-saas-applications)
-

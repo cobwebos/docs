@@ -7,10 +7,10 @@
 
 ### <a name="creating-the-resource-group"></a>创建资源组
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“新建”按钮，然后依次单击“管理”、“资源组”。
+2. 单击左上角的“新建”按钮，并依次单击“管理”、“资源组”。
 
     ![创建新资源组](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
-3. 将资源组命名为 *CdnConsoleTutorial*。  选择你的订阅，并选择离你最近的位置。  可以根据需要单击“固定到仪表板”复选框，将资源组固定到门户中的仪表板。  这可以方便稍后查找该资源组。  完成选择后，单击“创建”。
+3. 将资源组命名为 *CdnConsoleTutorial*。  选择订阅，并选择离你最近的位置。  可以根据需要单击“固定到仪表板”复选框，将资源组固定到门户中的仪表板。  这可以方便稍后查找该资源组。  完成选择后，单击“创建”。
 
     ![为资源组命名](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。  单击该资源组将它打开。  记下**订阅 ID**。  稍后需要用到此信息。
@@ -27,7 +27,7 @@
 >
 > 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
-> 执行 [Assign application to role](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
+> 执行“Assign application to role”（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。[](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
 >
 >
 
@@ -39,7 +39,7 @@
 如果想要使用交互式个人用户身份验证而不是服务主体身份验证，操作过程与适用于服务主体的过程非常类似。  事实上，需要遵循的过程基本相同，只是要做一些轻微的更改。
 
 > [!IMPORTANT]
-> 仅当选择使用个人用户身份验证而不是服务主体身份验证时，才要执行以下步骤。
+> 仅当选择使用个人用户身份验证而不是服务主体身份验证时，才要执行后续步骤。
 >
 >
 

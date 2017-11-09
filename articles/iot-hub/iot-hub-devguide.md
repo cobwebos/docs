@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 10/13/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: adb9a12899e9040cd83d522c734448989636fe29
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 27b296092335ec5b95e8f259756aaf9572da1c16
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中心开发人员指南
 
@@ -49,11 +48,11 @@ Azure IoT 中心提供：
 * [在设备上调用直接方法][devguide-directmethods]说明直接方法的生命周期，介绍有关如何从后端应用调用设备方法以及在设备上处理直接方法的信息。
 * [在多台设备上计划作业][devguide-jobs]介绍如何在多台设备上计划作业。 此文章介绍如何提交作业，以在执行直接方法，使用设备孪生更新设备时执行任务。 它还介绍如何查询作业的状态。
 * [参考 - 选择通信协议][devguide-protocol]介绍了用于设备通信且受 IoT 中心支持的通信协议，并列出了应该打开的端口。
-* [参考 - IoT 中心终结点][devguide-endpoints]说明了每个 IoT 中心针对运行时和管理操作公开的各种终结点。 此文章还介绍了如何在 IoT 中心创建附加终结点，以及如何使用现场网关使设备能够连接到非标准方案中的 IoT 中心终结点。
+* [参考 - IoT 中心终结点][devguide-endpoints]说明了每个 IoT 中心针对运行时和管理操作公开的各种终结点。 此文还介绍了如何在 IoT 中心创建附加终结点，以及如何在非标准方案中使用现场网关实现到 IoT 中心终结点的连接。
 * [参考 - 设备孪生、作业和消息路由的 IoT 中心查询语言][devguide-query]介绍了可用于从中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
-* [参考 - 配额和限制][devguide-quotas]总结了 IoT 中心服务中设置的配额，以及当超过配额时可以预期看到的限制行为。
+* [参考 - 配额和限制][devguide-quotas]总结了 IoT 中心服务中设置的配额，以及当超过配额时会发生的限制。
 * [参考 - 定价][devguide-pricing]提供有关 IoT 中心的不同 SKU 和定价的常规信息，以及 IoT 中心如何将各种 IoT 中心功能作为消息计量的详细信息。
-* [参考 - 设备和服务 SDK][devguide-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的 Azure IoT SDK。 此文章包括指向联机 API 文档的链接。
+* [参考 - 设备和服务 SDK][devguide-sdks] 列出了用于开发与 IoT 中心交互的设备和服务应用的 Azure IoT SDK。 此文章包括指向联机 API 文档的链接。
 * [参考 - IoT 中心 MQTT 支持][devguide-mqtt]详细介绍了 IoT 中心如何支持 MQTT 协议。 此文章介绍对内置到 Azure IoT SDK 的 MQTT 协议的支持，并提供有关直接使用 MQTT 协议的信息。
 * [词汇表][devguide-glossary]是与 IoT 中心相关的常见术语的列表。
 
@@ -79,4 +78,3 @@ Azure IoT 中心提供：
 [devguide-messages-c2d]: iot-hub-devguide-messages-c2d.md
 [devguide-format]: iot-hub-devguide-messages-construct.md
 [devguide-protocol]: iot-hub-devguide-protocols.md
-

@@ -19,7 +19,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 
 ### <a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
 
-如果你有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。 这将导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
+如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
 
 
 1. 删除连接。

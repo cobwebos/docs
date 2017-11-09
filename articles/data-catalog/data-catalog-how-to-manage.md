@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 391ea72390c589bf86ed9be58e44ce8b20eab837
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/06/2017
-
+ms.openlocfilehash: 8b9159b7bc4f7b2dac12d9012c6c903e75a6ac16
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>管理 Azure 数据目录中的数据资产
 ## <a name="introduction"></a>介绍
@@ -74,4 +73,3 @@ Azure 数据目录设计用于发现数据源，使用户能够轻松发现和�
 
 ## <a name="summary"></a>摘要
 数据目录的元数据和数据资产发现众包模型允许所有目录用户参与和发现。 数据目录标准版设计用于所有权和管理，限制特定数据资产的可见性和使用。
-

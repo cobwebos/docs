@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
+ms.openlocfilehash: 7a611912ae55eb22103539dbba9f1a06aaa543b7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: ca27c55f97d1b1d9694bf79282b7714283927ee7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
 
@@ -32,7 +31,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 
 ## <a name="what-you-learn"></a>学习内容
 
-了解如何创建连接 IoT 中心和邮箱的逻辑应用，以监视温度并发送通知。 当温度高于 30 C 时，客户端应用程序将在发送到 IoT 中心的消息中标记 `temperatureAlert = "true"`。 该消息将触发逻辑应用以发送电子邮件通知。
+了解如何创建连接 IoT 中心和邮箱的逻辑应用，以监视温度并发送通知。 当温度高于 30 C 时，客户端应用程序会在发送到 IoT 中心的消息中标记 `temperatureAlert = "true"`。 该消息将触发逻辑应用以发送电子邮件通知。
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -67,10 +66,10 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 
 ### <a name="add-a-service-bus-queue"></a>添加服务总线队列
 
-1. 打开服务总线命名空间，然后单击“+ 队列”。
-1. 为队列输入名称，然后单击“创建”。
-1. 打开服务总线队列，然后依次单击“共享访问策略” > “+ 添加”。
-1. 为该策略输入名称，选中“管理”，然后单击“创建”。
+1. 打开服务总线命名空间，并单击“+ 队列”。
+1. 为队列输入名称，并单击“创建”。
+1. 打开服务总线队列，并依次单击“共享访问策略” > “+ 添加”。
+1. 为该策略输入名称，选中“管理”，并单击“创建”。
 
    ![在 Azure 门户中添加服务总线队列](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2_add-service-bus-queue-azure-portal.png)
 
@@ -141,18 +140,18 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
       ![在 Azure 门户中为逻辑应用创建服务总线连接](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7_create-service-bus-connection-in-logic-app-azure-portal.png)
 
    1. 创建服务总线连接后，单击“继续”。
-   1. 选择创建的队列，然后向“最大消息计数”输入 `175`
+   1. 选择创建的队列，并向“最大消息计数”输入 `175`
 
       ![在逻辑应用中，为服务总线连接指定最大消息计数](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8_specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
    1. 单击“保存”按钮保存所做的更改。
 
 1. 创建 SMTP 服务连接。
    1. 依次单击“新建步骤” > “添加操作”。
-   1. 键入 `SMTP`，在搜索结果中单击“SMTP”服务，然后单击“SMTP - 发送电子邮件”。
+   1. 键入 `SMTP`，在搜索结果中单击“SMTP”服务，并单击“SMTP - 发送电子邮件”。
 
       ![在 Azure 门户中，在逻辑应用中创建 SMTP 连接](media/iot-hub-monitoring-notifications-with-azure-logic-apps/9_create-smtp-connection-logic-app-azure-portal.png)
 
-   1. 输入邮箱的 SMTP 信息，然后单击“创建”。
+   1. 输入邮箱的 SMTP 信息，并单击“创建”。
 
       ![在 Azure 门户中，在逻辑应用中输入 SMTP 连接信息](media/iot-hub-monitoring-notifications-with-azure-logic-apps/10_enter-smtp-connection-info-logic-app-azure-portal.png)
 
@@ -176,4 +175,3 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 逻辑应用已创建成功，它可以连接 IoT 中心和邮箱，以监视温度并发送通知。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

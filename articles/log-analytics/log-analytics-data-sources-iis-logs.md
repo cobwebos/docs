@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: bwren
+ms.openlocfilehash: 20155e7f0ad817993b5926a1a83b8683ab124075
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 2114bdafb3b9fe2eb0632271840b8b70a76d10f1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics 中的 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  
@@ -71,17 +70,6 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 | 查询 | 说明 |
 |:--- |:--- |
-| Type=W3CIISLog |所有 IIS 日志记录。 |
-| Type=W3CIISLog scStatus=500 |返回状态为 500 的所有 IIS 日志记录。 |
-| Type=W3CIISLog &#124; Measure count() by cIP |按客户端 IP 地址的 IIS 日志条目计数。 |
-| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |按主机的 URL www.contoso.com 的 IIS 日志条目的计数。 |
-| Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |每台 IIS 计算机接收的总字节数。 |
-
->[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
-
-> | 查询 | 说明 |
-|:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
 | W3CIISLog &#124; summarize count() by cIP |按客户端 IP 地址的 IIS 日志条目计数。 |
@@ -92,4 +80,3 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 * 配置 Log Analytics 以收集其他[数据源](log-analytics-data-sources.md)进行分析。
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。
 * 在 Log Analytics 中配置警报，以主动通知你在 IIS 日志中找到的重要情况。
-

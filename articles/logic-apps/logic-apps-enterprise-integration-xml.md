@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 02/27/2017
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
-ms.openlocfilehash: 9d40c5028fd8b3ab20f7562dce9274664e4e56ac
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: 3fec4935f5317be4bf8c9e05f1c24a7c05381b1e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>在逻辑应用中验证和转换 XML、编码和解码平面文件，以及扩展消息功能
 
 使用逻辑应用可以处理发送和接收的 XML 消息。 此功能是 Enterprise Integration Pack 随附的。 对于那些具有 BizTalk Server 使用背景的用户来说，Enterprise Integration Pack 提供的功能是类似的，可以转换和验证消息、使用平面文件，甚至可以使用 XPath 扩展或提取消息中的特定属性。 
@@ -41,4 +39,3 @@ Enterprise Integration Pack 包括：
 
 ## <a name="learn-more"></a>了解详细信息
 [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")
-

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 78a165d831796bb6bb23e51f415383eb925115ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C：构建 .NET Web API
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 05/03/2017
 * 在应用程序中包含一个 **Web 应用**或 **Web API**。
 * 为 Web 应用使用“重定向 URI”`https://localhost:44332/`。 这是用于本代码示例的 Web 应用客户端的默认位置。
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此信息。
-* 在“应用 ID URI”中输入应用标识符。
+* 在“应用 ID URI”中输入应用标识符。 复制完整的应用 ID URI。 稍后需要用到此信息。
 * 通过“发布范围”菜单添加权限。
 
   [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -69,7 +68,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>更新 Azure AD B2C 配置
 
-我们的示例配置为使用演示租户的策略和客户端 ID。 如果你想要使用自己的租户，需要执行以下操作：
+我们的示例配置为使用演示租户的策略和客户端 ID。 如果想要使用自己的租户，需要执行以下操作：
 
 1. 打开 `TaskService` 项目中的 `web.config`，然后
     * 将 `ida:Tenant` 的值替换为租户名称
@@ -83,11 +82,12 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     * 将 `ida:SignUpSignInPolicyId` 的值替换为“注册或登录”策略名称
     * 将 `ida:EditProfilePolicyId` 的值替换为“编辑配置文件”策略名称
     * 将 `ida:ResetPasswordPolicyId` 的值替换为“重置密码”策略名称
+    * 将 `api:ApiIdentifier` 的值替换为“应用 ID URI”
 
 
 ## <a name="secure-the-api"></a>保护 API
 
-如果某个客户端调用你的 API，你可以使用 OAuth 2.0 持有者令牌来保护 API（例如 `TaskService`）。 这可以确保仅当向 API 发出的每个请求包含持有者令牌时，该请求才有效。 API 可以使用适用于 .NET 的开放式 Web 接口 (OWIN) 库来接受和验证持有者令牌。
+如果某个客户端调用 API，可以使用 OAuth 2.0 持有者令牌来保护 API（例如 `TaskService`）。 这可以确保仅当向 API 发出的每个请求包含持有者令牌时，该请求才有效。 API 可以使用适用于 .NET 的开放式 Web 接口 (OWIN) 库来接受和验证持有者令牌。
 
 ### <a name="install-owin"></a>安装 OWIN
 
@@ -103,7 +103,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TaskService
 
 ### <a name="add-an-owin-startup-class"></a>添加 OWIN 启动类
 
-将 OWIN 启动类添加到名为 `Startup.cs` 的 API。  右键单击项目，选择“添加”和“新建项”，然后搜索“OWIN”。 当你的应用程序启动时，该 OWIN 中间件将调用 `Configuration(…)` 方法。
+将 OWIN 启动类添加到名为 `Startup.cs` 的 API。  右键单击项目，选择“添加”和“新建项”，并搜索“OWIN”。 当应用程序启动时，该 OWIN 中间件将调用 `Configuration(…)` 方法。
 
 在本示例中，我们已将类声明更改为 `public partial class Startup`，并实现了 `App_Start\Startup.Auth.cs` 中的类的另一部分。 在 `Configuration` 方法中，我们添加了对 `Startup.Auth.cs` 中定义的 `ConfigureAuth` 的调用。 修改后，`Startup.cs` 如下所示：
 
@@ -211,5 +211,4 @@ public IEnumerable<Models.Task> Get()
 
 ## <a name="edit-your-policies"></a>编辑策略
 
-使用 Azure AD B2C 保护 API 之后，可以试验登录/注册策略，查看它们对 API 产生的影响（也许没有影响）。 可以操作策略中的应用程序声明，然后更改 Web API 中提供的用户信息。 如本文前面所述，添加的任何声明都可供 `ClaimsPrincipal` 对象中的 .NET MVC Web API 使用。
-
+使用 Azure AD B2C 保护 API 之后，可以试验登录/注册策略，查看它们对 API 产生的影响（也许没有影响）。 可以操作策略中的应用程序声明，并更改 Web API 中提供的用户信息。 如本文前面所述，添加的任何声明都可供 `ClaimsPrincipal` 对象中的 .NET MVC Web API 使用。

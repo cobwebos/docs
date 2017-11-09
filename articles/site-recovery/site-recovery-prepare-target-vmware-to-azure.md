@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 5/31/2017
 ms.author: bsiva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: c84a775564769ddc796aa9d75add019ef1003175
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="prepare-target-vmware-to-azure"></a>准备目标（VMware 到 Azure）
 > [!div class="op_single_selector"]
 > * [VMware 到 Azure](./site-recovery-prepare-target-vmware-to-azure.md)
@@ -37,7 +35,7 @@ ms.lasthandoff: 06/15/2017
 
 ## <a name="prepare-target"></a>准备目标
 
-完成“**步骤 1: 选择保护目标**”和“**步骤 2: 准备源**”后，将转到“**步骤 3: 目标**”
+完成“**步骤 1: 选择保护目标**”和“**步骤 2: 准备源**”后，会转到“**步骤 3: 目标**”
 
 ![准备目标](./media/site-recovery-prepare-target-vmware-to-azure/prepare-target-vmware-to-azure.png)
 
@@ -52,4 +50,3 @@ ms.lasthandoff: 06/15/2017
 
 ## <a name="next-steps"></a>后续步骤
 [配置复制设置](./site-recovery-setup-replication-settings-vmware.md)。
-

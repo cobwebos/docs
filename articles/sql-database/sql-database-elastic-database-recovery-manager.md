@@ -8,19 +8,17 @@ author: ddove
 ms.assetid: 45520ca3-6903-4b39-88ba-1d41b22da9fe
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: ce043e53d64a79c0ba37b500f8af9231e5372044
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 967a64fa41a9f9ff16ce173b76231052b22cda99
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) 类使 ADO.Net 应用程序能够轻松检测并更正分片数据库环境中全局分片映射 (GSM) 与本地分片映射 (LSM) 中的任何不一致性。 
@@ -34,12 +32,12 @@ RecoveryManager 类是[弹性数据库客户端库](sql-database-elastic-databas
 有关术语定义，请参阅[弹性数据库工具词汇表](sql-database-elastic-scale-glossary.md)。 若要了解如何使用 **ShardMapManager** 来管理分片解决方案中的数据，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。
 
 ## <a name="why-use-the-recovery-manager"></a>为何使用恢复管理器？
-在分片数据库环境中，每个数据库有一个租户，而每个服务器有多个数据库。 环境中也可能有多个服务器。 每个数据库映射在分片映射中，以便将调用路由到正确的服务器和数据库。 根据**分片键**跟踪数据库，将为每个分片分配**一系列键值**。 例如，分片键可能代表从“D”到“F”的客户名称。 所有分片（也称为数据库）及其映射范围的映射都包含在**全局分片映射 (GSM)** 中。 每个数据库还包含分片上所包含范围的映射，称为**本地分片映射 (LSM)**。 当应用连接到分片时，将在应用中缓存映射以供快速检索。 LSM 用于验证缓存的数据。 
+在分片数据库环境中，每个数据库有一个租户，而每个服务器有多个数据库。 环境中也可能有多个服务器。 每个数据库映射在分片映射中，以便将调用路由到正确的服务器和数据库。 根据**分片键**跟踪数据库，将为每个分片分配**一系列键值**。 例如，分片键可能代表从“D”到“F”的客户名称。 所有分片（也称为数据库）及其映射范围的映射都包含在**全局分片映射 (GSM)** 中。 每个数据库还包含分片上所包含范围的映射，称为**本地分片映射 (LSM)**。 当应用连接到分片时，会在应用中缓存映射以供快速检索。 LSM 用于验证缓存的数据。 
 
 GSM 和 LSM 可能因以下原因变得不同步：
 
 1. 删除其范围被认为不再被使用的分片，或重命名分片。 删除分片导致**孤立的分片映射**。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 分片可能需要删除或分片位置需要更新，具体取决于更改的目的。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](sql-database-recovery-using-backups.md)。
-2. 发生异地故障转移事件。 若要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，然后更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作可为异地冗余的数据库启用顺畅的管理，并避免人工操作。 若要了解在出现数据中心服务中断时用于恢复数据库的选项，请参阅[业务连续性](sql-database-business-continuity.md)和[灾难恢复](sql-database-disaster-recovery.md)。
+2. 发生异地故障转移事件。 要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，并更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作可为异地冗余的数据库启用顺畅的管理，并避免人工操作。 若要了解在出现数据中心服务中断时用于恢复数据库的选项，请参阅[业务连续性](sql-database-business-continuity.md)和[灾难恢复](sql-database-disaster-recovery.md)。
 3. 分片或 ShardMapManager 数据库将还原到较早的时间点。 若要了解使用备份的时点恢复，请参阅[使用备份恢复](sql-database-recovery-using-backups.md)。
 
 有关 Azure SQL 数据库弹性数据库工具、异地复制和还原的详细信息，请参阅以下内容： 
@@ -101,7 +99,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 
 * RecoveryToken 参数枚举特定分片的 GSM 与 LSM 之间映射的差异。 
 * [MappingDifferenceResolution 枚举](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx)指示用于解决分片映射之间差异的方法。 
-* LSM 包含正确映射时，建议使用 **MappingDifferenceResolution.KeepShardMapping**，因此应该使用分片中的映射。 这通常是因为发生故障转移：分片现在驻留在新的服务器上。 由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），所以 GSM 上将不再存在映射。 因此，必须使用 LSM 重新建立分片映射。
+* LSM 包含正确映射时，建议使用 **MappingDifferenceResolution.KeepShardMapping**，因此应该使用分片中的映射。 这通常是因为发生故障转移：分片现在驻留在新的服务器上。 由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），所以 GSM 上不再存在映射。 因此，必须使用 LSM 重新建立分片映射。
 
 ## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>还原分片之后将分片附加到 ShardMap
 [AttachShard 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx)可将给定的分片附加到分片映射。 然后，它将检测任何分片映射不一致性，并更新映射以匹配分片时间点还原的分片。 假设对数据库也进行了重命名以反映原始数据库名称（在还原分片之前），因为时间点还原默认为追加时间戳的新数据库。 
@@ -128,7 +126,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 发生异地故障转移时，使辅助数据库可供写入访问，并成为新的主数据库。 服务器的名称（根据具体的配置，有时还包括数据库的名称）可能与原始主副本不同。 因此，必须修复 GSM 和 LSM 分片的映射条目。 同样地，如果数据库还原到不同的名称或位置，或到较早的时间点，可能会在分片映射中造成不一致。 分片映射管理器会将开放连接分发给正确的数据库。 这种分发基于分片映射中的数据以及作为应用程序请求目标的分片键值。 异地故障转移之后，必须使用准确的服务器名称、数据库名称和已恢复数据库的分片映射更新这些信息。 
 
 ## <a name="best-practices"></a>最佳实践
-异地故障转移和恢复是通常由应用程序的云管理员特意使用 Azure SQL 数据库的某个业务连续性功能管理的操作。 规划业务连续性需要实施相应的流程、过程和措施，以确保业务运营能够持续而不中断。 应该在此工作流中使用 RecoveryManager 类随附的方法，以确保根据采取的恢复操作使 GSM 和 LSM 保持最新状态。 可以执行五个基本步骤来确保在故障转移事件后，GSM 和 LSM 能反映准确的信息。 可将执行这些步骤的应用程序代码集成到现有的工具和工作流中。 
+异地故障转移和恢复是通常由应用程序的云管理员特意使用 Azure SQL 数据库的某个业务连续性功能管理的操作。 规划业务连续性需要实施相应的流程、过程和措施，以确保业务运营能够持续而不中断。 应该在此工作流中使用 RecoveryManager 类随附的方法，以确保根据采取的恢复操作使 GSM 和 LSM 保持最新状态。 可以执行五个基本步骤来确保在故障转移事件后，GSM 和 LSM 能反映准确的信息。 可将执行这些步骤的应用程序代码集成到现有工具和工作流。 
 
 1. 从 ShardMapManager 检索 RecoveryManager。 
 2. 从分片映射中分离旧分片。
@@ -139,7 +137,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 此示例将执行以下步骤：
 
 1. 从反映故障转移事件之前分片位置的分片映射中删除分片。
-2. 将分片附加到反映新分片位置的分片映射（参数“Configuration.SecondaryServer”是新的服务器名称，但是相同的数据库名称）。
+2. 将分片附加到反映新分片位置的分片映射（参数“Configuration.SecondaryServer”是新的服务器名称，但是数据库名称相同）。
 3. 通过检测每个分片的 GSM 与 LSM 之间的映射差异来检索恢复令牌。 
 4. 通过信任来自每个分片 LSM 的映射解决不一致情况。 
    
@@ -170,5 +168,4 @@ GSM 和 LSM 可能因以下原因变得不同步：
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
-
 

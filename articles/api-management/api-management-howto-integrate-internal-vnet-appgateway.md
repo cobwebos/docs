@@ -12,14 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2017
+ms.date: 09/19/2017
 ms.author: sasolank
+ms.openlocfilehash: 834a81c36557feffaa01c256dad0338617486773
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8131ded6b74e9c544bf70b1a4659ed07e5def04d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
 
@@ -33,6 +32,16 @@ ms.lasthandoff: 08/23/2017
 * 使用单个 API 管理资源，并向外部使用者提供在 API 管理中定义的一部分 API。
 * 提供配套的方式让客户启用和禁用通过公共 Internet 对 API 管理的访问。 
 
+## <a name="prerequisites"></a>先决条件
+
+若要执行本文中所述的步骤，必须具有：
+
++ 一个有效的 Azure 订阅。
+
+    [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
++ 一个 APIM 实例。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
+
 ##<a name="scenario"> </a> 方案
 本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其充当本地和云 API 的单一前端。 另外，介绍如何使用应用程序网关中提供的 PathBasedRouting 功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
 
@@ -42,7 +51,7 @@ ms.lasthandoff: 08/23/2017
 
 ## <a name="before-you-begin"> </a> 准备工作
 
-1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
+1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)的“Windows PowerShell”部分下载并安装最新版本。
 2. 创建一个虚拟网络，并为 API 管理和应用程序网关创建单独的子网。 
 3. 如果想要为虚拟网络创建自定义 DNS 服务器，请在开始部署之前创建。 确保在虚拟网络中的新子网内创建的虚拟机可以解析和访问所有 Azure 服务终结点，使该服务器可正常工作。
 
@@ -349,4 +358,3 @@ VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接�
 * 详细了解 API 管理和 VNET
   * [只能在 VNET 内使用 API 管理](api-management-using-with-internal-vnet.md)
   * [在 VNET 中使用 API 管理](api-management-using-with-vnet.md)
-

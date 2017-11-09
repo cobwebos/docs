@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 08bb5140bb35bbd120aaa506afeab8ad247f81e1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
 Azure Active Directory 允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0 客户端凭据授予流程和 On-Behalf-Of 流中就是如此。
@@ -83,7 +81,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 注册证书
-若要将 Azure AD 中的证书凭据与客户端应用程序相关联，则需要编辑应用程序清单。
+要将 Azure AD 中的证书凭据与客户端应用程序相关联，则需要编辑应用程序清单。
 拥有证书后需计算：
 - `$base64Thumbprint`，证书哈希的 base64 编码
 - `$base64Value`，证书原始数据的 base64 编码
@@ -104,4 +102,3 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 将所做的编辑保存到应用程序清单中并上传到 Azure AD。 keyCredentials 属性具有多个值，因此可上传多个证书实现更丰富的密钥管理。
-

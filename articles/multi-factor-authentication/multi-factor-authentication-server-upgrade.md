@@ -15,24 +15,21 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.openlocfilehash: 3a2fb7413fa1391969d00ad281fd1ade3e0f40a8
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-
-
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
-本文将指导你完成 Azure 多重身份验证 (MFA) 服务器 v6.0 或更高版本的升级过程。 如果需要升级旧版 PhoneFactor 代理，请参阅[将 PhoneFactor 代理升级到 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-upgrade.md)。
+本文指导完成 Azure 多重身份验证 (MFA) 服务器 v6.0 或更高版本的升级过程。 如果需要升级旧版 PhoneFactor 代理，请参阅[将 PhoneFactor 代理升级到 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server-upgrade.md)。
 
-如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，然后才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
+如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
 
 ## <a name="install-the-latest-version-of-azure-mfa-server"></a>安装最新版本的 Azure MFA 服务器
 
-1. 参照[下载 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server)中的说明，获取最新版本的 Azure MFA 服务器。
+1. 参照[下载 Azure 多重身份验证服务器](multi-factor-authentication-get-started-server.md#download-the-mfa-server)中的说明，获取最新版本的 Azure MFA 服务器。
 2. 在主 MFA 服务器上备份位于 C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata（假定为默认安装位置）中的 MFA 服务器数据文件。
 3. 如果运行多个服务器以实现高可用性，请将验证 MFA 服务器的客户端系统更改为停止向要升级的服务器发送流量。 如果使用负载均衡器，请从负载均衡器中删除 MFA 服务器，完成升级后再将服务器添加回场中。
 4. 在每个 MFA 服务器上运行新的安装程序。 首先升级从属服务器，因为它们可以读取主服务器复制的旧数据文件。 
@@ -51,7 +48,7 @@ ms.lasthandoff: 09/20/2017
 
   如果看到内容为“需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本”的错误消息，请从 [Microsoft 下载中心](https://www.microsoft.com/download/)下载并安装最新的更新程序包。 同时安装 x86 和 x64 版本。
 
-4. 安装已更新的用户门户软件后，将在步骤 1 中备份的 web.config 文件与新的 web.config 文件进行比较。 如果新的 web.config 文件中不存在新属性，则将 web.config 备份复制到虚拟目录以覆盖新文件。 另一种做法是将备份文件中的 appSettings 值和 Web 服务 SDK URL 复制/粘贴到新的 web.config。
+4. 安装已更新的用户门户软件后，会在步骤 1 中备份的 web.config 文件与新的 web.config 文件进行比较。 如果新的 web.config 文件中不存在新属性，则将 web.config 备份复制到虚拟目录以覆盖新文件。 另一种做法是将备份文件中的 appSettings 值和 Web 服务 SDK URL 复制/粘贴到新的 web.config。
 
 如果用户门户在多个服务器上运行，则对所有这些服务器重复上述安装步骤。 
 
@@ -90,7 +87,7 @@ ms.lasthandoff: 09/20/2017
 ### <a name="install-new-ad-fs-adapters"></a>安装新的 AD FS 适配器
 
 > [!IMPORTANT] 
-> 你的用户无需执行本部分的步骤 3 至步骤 8 中的双重验证。 如果在多个群集中配置了 AD FS，可以独立地删除、升级和还原场中的每个群集，以免停机。
+> 用户无需执行本部分的步骤 3 至步骤 8 中的双重验证。 如果在多个群集中配置了 AD FS，可以独立地删除、升级和还原场中的每个群集，以免停机。
 
 1. 从场中删除部分 AD FS 服务器。 更新这些服务器，其他服务器仍正常运行。
 2. 在从 AD FS 场中删除的每个服务器上安装新的 AD FS 适配器。 如果在每个 AD FS 服务器上安装了 MFA 服务器，则可以通过 MFA 服务器管理 UX 进行更新。 如果没有，则通过运行 MultiFactorAuthenticationAdfsAdapterSetup64.msi 进行更新。 
@@ -116,4 +113,3 @@ ms.lasthandoff: 09/20/2017
 - [将 MFA 服务器与 Windows Server Active Directory 同步](multi-factor-authentication-get-started-server-dirint.md)
 
 - 为应用程序[配置 Windows 身份验证](multi-factor-authentication-get-started-server-windows.md)
-

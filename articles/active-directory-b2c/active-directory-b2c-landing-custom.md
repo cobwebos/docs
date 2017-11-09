@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略在应用程序中注册用户和让用户登录
 自定义策略是定义 Azure AD B2C 租户行为的配置文件。 标识开发人员可以完全编辑自定义策略来完成数量几乎不受限制的任务。
@@ -41,7 +40,6 @@ ms.lasthandoff: 05/10/2017
 
 ## <a name="whats-new"></a>新增功能
 请经常查阅此处，以了解有关将来对 Azure Active Directory B2C 进行的更改。 我们还会使用 @AzureAD 在推特上发表任何更新。
-
 
 
 

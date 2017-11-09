@@ -1,6 +1,6 @@
 ---
 title: "了解如何在逻辑应用中使用 FTP 连接器 | Microsoft Docs"
-description: "使用 Azure 应用服务创建逻辑应用。 通过连接到 FTP 服务器管理文件。 你可以在 FTP 服务器中执行各种操作，例如上传、更新、获取和删除文件。"
+description: "使用 Azure 应用服务创建逻辑应用。 通过连接到 FTP 服务器管理文件。 可以在 FTP 服务器中执行各种操作，例如上传、更新、获取和删除文件。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 61bfbedfd4f1e84b6976099323a32f3a720634c0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP 连接器入门
 使用 FTP 连接器在 FTP 服务器上监视、管理和创建文件。 
@@ -43,13 +42,13 @@ ms.lasthandoff: 05/26/2017
 > 
 > 
 
-在此示例中，我将演示如何使用“FTP - 添加或修改文件时”触发器，在 FTP 服务器上添加或修改文件时启动逻辑应用工作流。 在企业示例中，你可以使用此触发器监视 TFP 文件夹中表示客户订单的新文件。  然后可以使用 FTP 连接器操作（如**获取文件内容**）来获取订单内容，以便进行进一步处理并将其存储到订单数据库中。
+在此示例中，我将演示如何使用“FTP - 添加或修改文件时”触发器，在 FTP 服务器上添加或修改文件时启动逻辑应用工作流。 在企业示例中，可以使用此触发器监视 TFP 文件夹中表示客户订单的新文件。  然后可以使用 FTP 连接器操作（如**获取文件内容**）来获取订单内容，以便进行进一步处理并将其存储到订单数据库中。
 
-1. 在逻辑应用设计器上的搜索框中输入 *ftp*，然后选择“FTP - 添加或修改文件时”触发器。   
+1. 在逻辑应用设计器上的搜索框中输入 *ftp*，并选择“FTP - 添加或修改文件时”触发器。   
    ![FTP 触发器图 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)  
    “添加或修改文件时”控件打开  
    ![FTP 触发器图 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
-2. 选择位于控件右侧的“...”。 这将打开文件夹选取器控件  
+2. 选择位于控件右侧的“...”。 这会打开文件夹选取器控件  
    ![FTP 触发器图 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
 3. 选择“>”（向右箭头），并通过浏览查找要监视新文件或已修改文件的文件夹。 选择该文件夹，注意文件夹现在显示在“文件夹”控件中。  
    ![FTP 触发器图 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
@@ -72,14 +71,14 @@ ms.lasthandoff: 05/26/2017
 3. 输入 *FTP* 搜索与 FTP 相关的所有操作。
 4. 选择“FTP - 获取文件内容”作为要在 FTP 文件夹中找到新文件或已修改文件时采取的操作。      
    ![FTP 操作图 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
-   “获取文件内容”控件打开。 **注意：**系统将提示你授权逻辑应用访问你的 FTP 服务器帐户（如果之前尚未这样做）。  
+   “获取文件内容”控件打开。 **注意：**系统会提示授权逻辑应用访问 FTP 服务器帐户（如果之前尚未这样做）。  
    ![FTP 操作图 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
 5. 选择“文件”控件（**FILE*** 下方的空白处）。 此处可以使用在 FTP 服务器上找到的新文件或已修改文件的任何属性。  
 6. 选择“文件内容”选项。  
    ![FTP 操作图 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
 7. 控件更新，指示“FTP - 获取文件内容”操作将获取 FTP 服务器上新文件或已修改文件的“文件内容”。      
    ![FTP 操作图 5](./media/connectors-create-api-ftp/ftp-action-5.png)     
-8. 保存所做工作，然后将文件添加到 FTP 文件夹以测试你的工作流。    
+8. 保存所做工作，然后将文件添加到 FTP 文件夹以测试工作流。    
 
 在这种情况下，使用在 FTP 服务器上发现新文件或已修改文件时，监视 FTP 服务器上的文件夹并启动工作流的触发器配置了逻辑应用。 
 
@@ -93,5 +92,4 @@ ms.lasthandoff: 05/26/2017
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
-
 

@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 7740861cccfe0ba4e8ae0694f6d5c5fec3df47ef
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 233e4eea8439320c1c7446e2c2b2e9d379351a3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户创建具有静态公共 IP 地址的 VM
 
@@ -45,18 +44,18 @@ ms.lasthandoff: 02/28/2017
 
 1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
 2. 在门户左上角，单击“**新建**”>>“**计算**”>“**Windows Server 2012 R2 Datacenter**”。
-3. 在“**选择部署模型**”列表中，选择“**Resource Manager**”，然后单击“**创建**”。
-4. 在“**基本信息**”边栏选项卡中，输入如下所示的 VM 信息，然后单击“**确定**”。
+3. 在“**选择部署模型**”列表中，选择“**Resource Manager**”，并单击“**创建**”。
+4. 在“**基本信息**”边栏选项卡中，输入如下所示的 VM 信息，并单击“**确定**”。
    
     ![Azure 门户 - 基本信息](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
-5. 在“**选择大小**”边栏选项卡中，单击“**A1 标准**”（如下所示），然后单击“**选择**”。
+5. 在“**选择大小**”边栏选项卡中，单击“**A1 标准**”（如下所示），并单击“**选择**”。
    
     ![Azure 门户 - 选择大小](./media/virtual-network-deploy-static-pip-arm-portal/figure2.png)
-6. 在“**设置**”边栏选项卡中，单击“**公共 IP 地址**”，然后在“**创建公共 IP 地址**”边栏选项卡的“**分配**”下，单击“**静态**”，如下所示。 然后，单击“**确定**”。
+6. 在“**设置**”边栏选项卡中，单击“**公共 IP 地址**”，并在“**创建公共 IP 地址**”边栏选项卡的“**分配**”下，单击“**静态**”，如下所示。 然后，单击“确定”。
    
     ![Azure 门户 - 创建公共 IP 地址](./media/virtual-network-deploy-static-pip-arm-portal/figure3.png)
 7. 在“**设置**”边栏选项卡中，单击“**确定**”。
-8. 查看“**摘要**”边栏选项卡（如下所示），然后单击“**确定**”。
+8. 查看“**摘要**”边栏选项卡（如下所示），并单击“**确定**”。
    
     ![Azure 门户 - 创建公共 IP 地址](./media/virtual-network-deploy-static-pip-arm-portal/figure4.png)
 9. 请注意仪表板中的新磁贴。
@@ -65,5 +64,4 @@ ms.lasthandoff: 02/28/2017
 10. 创建 VM 后，“**设置**”边栏选项卡将如下所示
     
     ![Azure 门户 - 创建公共 IP 地址](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
-
 

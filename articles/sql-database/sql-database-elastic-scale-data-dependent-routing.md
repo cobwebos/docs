@@ -9,19 +9,17 @@ editor:
 ms.assetid: cad09e15-5561-4448-aa18-b38f54cda004
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: ff9f3ee4e44f7d0b51a6724304b0ec0f967f7d88
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/14/2017
-
-
+ms.openlocfilehash: 2246dd12b922fcbc2e2b58890b3d56253810849c
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="data-dependent-routing"></a>数据依赖型路由
 **数据依赖型路由**是使用查询中的数据将请求路由到相应数据库的功能。 在使用分片数据库时，它是一种基础模式。 请求上下文也可用于路由请求，尤其是当分片键不是查询的一部分时。 将应用程序中使用数据依赖路由的每个特定查询和事务限制为针对每个请求访问单一数据库。 对于 Azure SQL 数据库弹性工具，这种路由是通过 ADO.NET 应用程序中的 **[ShardMapManager 类](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**实现的。
@@ -44,7 +42,7 @@ ms.lasthandoff: 04/14/2017
 如果应用程序本身无法处理分片映射，在工厂方法中使用的凭据应该对**全局分片映射**数据库仅有只读权限。 这些凭据通常与用于到分片映射管理器的开放连接的凭据不同。 另请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。 
 
 ## <a name="call-the-openconnectionforkey-method"></a>调用 OpenConnectionForKey 方法
-**[ShardMap.OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)**将返回 ADO.Net 连接，该连接可随时基于 **key** 参数的值将命令分发到相应的数据库中。 **ShardMapManager** 将分片信息缓存在应用程序中，因此这些请求通常不会针对**全局分片映射**数据库调用数据库查找。 
+**[ShardMap.OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)**将返回 ADO.Net 连接，该连接可随时基于 key 参数的值将命令分发到相应的数据库中。 **ShardMapManager** 将分片信息缓存在应用程序中，因此这些请求通常不会针对**全局分片映射**数据库调用数据库查找。 
 
     // Syntax: 
     public SqlConnection OpenConnectionForKey<TKey>(
@@ -119,14 +117,13 @@ int newPersonId = 4321;
 </code></pre>
 
 
-当你生成弹性数据库示例应用程序时，将自动下载需要实现暂时性故障处理的程序包。 [Enterprise Library - 暂时性故障处理应用程序块](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)也将单独提供程序包。 使用版本 6.0 或更高版本。 
+生成弹性数据库示例应用程序时，会自动下载需要实现暂时性故障处理的程序包。 [Enterprise Library - 暂时性故障处理应用程序块](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)也将单独提供程序包。 使用版本 6.0 或更高版本。 
 
 ## <a name="transactional-consistency"></a>事务一致性
-确保分片的所有局部操作的事务属性。 例如，通过数据依赖路由提交的事务将在目标分片范围内执行以供连接。 此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
+确保分片的所有局部操作的事务属性。 例如，通过数据依赖路由提交的事务会在目标分片范围内执行以供连接。 此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
 
 ## <a name="next-steps"></a>后续步骤
 若要分离分片或重新附加分片，请参阅[使用 RecoveryManager 类解决分片映射问题](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
 

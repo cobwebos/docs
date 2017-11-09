@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
+ms.openlocfilehash: 3f1c7bb1795828899148a8ba8a0461a06947d40d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f69fa4f838b22ccbb25186c08cac9744bb31c6d1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集
 
@@ -86,8 +85,8 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * 要自定义菜单，可右键单击菜单中的任意位置，并单击“自定义”。
    * “设置”和“所有设置”：显示该群集的“设置”边栏选项卡，可让你访问该群集的详细配置信息。
    * **仪表板**、**群集仪表板**和 **URL：这些是访问群集仪表板（即可用于基于 Linux 群集的 Ambari Web）的所有途径。-**安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
-   * 缩放群集：可更改此群集的辅助角色节点数。
-   * 删除：删除群集。
+   * **缩放群集**：可更改此群集的辅助角色节点数。
+   * **删除**：删除群集。
    * 快速启动：显示可帮助你开始使用 HDInsight 的信息。
    * **用户：用于设置 Azure 订阅上其他用户对此群集的*门户管理*权限。
 
@@ -96,28 +95,28 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
      >
      >
    * 标记：标记可让你设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，并对与特定项目关联的所有服务使用一个公用值。
-   * Ambari 视图：Ambari Web 的链接。
+   * **Ambari 视图**：Ambari Web 的链接。
 
      > [!IMPORTANT]
      > 若要管理 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
      >
      >
 
-     使用情况：
+     **使用情况**：
 
      ![Azure 门户 HDInsight 群集使用情况](./media/hdinsight-administer-use-management-portal/hdinsight-portal-cluster-usage.png)
 5. 单击“设置”。
 
     ![Azure 门户 HDInsight 群集使用情况](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
-   * 属性：查看群集属性。
-   * 群集 AAD 标识：
-   * Azure 存储密钥：查看默认存储帐户及其密钥。 存储帐户是在群集创建过程中完成的配置。
-   * 群集登录：更改群集 HTTP 用户的用户名和密码。
-   * 外部元存储：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。
-   * 缩放群集：增加和减少群集辅助角色节点的数量。
-   * 远程桌面：启用和禁用远程桌面 (RDP) 访问，以及配置 RDP 用户名。  RDP 用户名必须不同于 HTTP 用户名。
-   * 记录合作伙伴：
+   * **属性**：查看群集属性。
+   * **群集 AAD 标识**：
+   * **Azure 存储密钥**：查看默认存储帐户及其密钥。 存储帐户是在群集创建过程中完成的配置。
+   * **群集登录**：更改群集 HTTP 用户的用户名和密码。
+   * **外部元存储**：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。
+   * **缩放群集**：增加和减少群集辅助角色节点的数量。
+   * **远程桌面**：启用和禁用远程桌面 (RDP) 访问，以及配置 RDP 用户名。  RDP 用户名必须不同于 HTTP 用户名。
+   * **记录合作伙伴**：
 
      > [!NOTE]
      > 这是可用设置的常规列表；并非所有存在的设置都适用于所有群集类型。
@@ -127,19 +126,19 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
     属性部分会列出如下内容：
 
-   * 主机名：群集名称。
-   * 群集 URL。
-   * 状态：包括 Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization
-   * 区域：Azure 位置。 有关受支持的 Azure 位置的列表，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)中的“区域”下拉列表框。
-   * 已创建的数据。
-   * 操作系统：Windows 或 Linux。
-   * 类型：Hadoop、HBase、Storm、Spark。
-   * 版本。 请参阅 [HDInsight 版本](hdinsight-component-versioning.md)
-   * 订阅：订阅名称。
-   * 订阅 ID。
-   * 主数据源。 用作默认 Hadoop 文件系统的 Azure Blob 存储帐户。
-   * 辅助角色节点定价层。
-   * 头节点定价层。
+   * **主机名**：群集名称。
+   * **群集 URL**。
+   * **状态**：包括 Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization
+   * **区域**：Azure 位置。 有关受支持的 Azure 位置的列表，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)中的“区域”下拉列表框。
+   * **已创建的数据**。
+   * **操作系统**：**Windows** 或 **Linux**。
+   * **类型**：Hadoop、HBase、Storm、Spark。
+   * **版本**。 请参阅 [HDInsight 版本](hdinsight-component-versioning.md)
+   * **订阅**：订阅名称。
+   * **订阅 ID**。
+   * **主数据源**。 用作默认 Hadoop 文件系统的 Azure Blob 存储帐户。
+   * **辅助角色节点定价层**。
+   * **头节点定价层**。
 
 ## <a name="delete-clusters"></a>删除群集
 删除群集不会删除默认的存储帐户或任何链接的存储帐户。 可以使用相同的存储帐户和相同的元存储来重新创建群集。
@@ -211,7 +210,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
 可以通过许多方式对此过程进行程序性处理：
 
-* 用户 Azure 数据工厂。 请参阅 [Azure HDInsight 链接服务](../data-factory/data-factory-compute-linked-services.md)和[使用 Azure 数据工厂进行转换和分析](../data-factory/data-factory-data-transformation-activities.md)，了解按需的和自定义的 HDInsight 链接服务。
+* 用户 Azure 数据工厂。 请参阅 [Azure HDInsight 链接服务](../data-factory/compute-linked-services.md)和[使用 Azure 数据工厂进行转换和分析](../data-factory/transform-data.md)，了解按需的和自定义的 HDInsight 链接服务。
 * 使用 Azure PowerShell。  请参阅[分析航班延误数据](hdinsight-analyze-flight-delay-data.md)。
 * 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 HDInsight 群集](hdinsight-administer-use-command-line.md)。
 * 使用 HDInsight .NET SDK。 请参阅[提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
@@ -378,4 +377,3 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop 命令行"
-

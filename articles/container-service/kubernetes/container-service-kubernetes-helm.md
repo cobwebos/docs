@@ -16,14 +16,15 @@ ms.workload: na
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
+ms.openlocfilehash: 9dd137de99864fbac2c73400a88956f6afa324db
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 703b516c8fd443d2bb751530a8f62496b020cb5d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>使用 Helm 在 Kubernetes 群集上部署容器 
+# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>使用 Helm 在 Kubernetes 群集上部署容器
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 [Helm](https://github.com/kubernetes/helm/) 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 pt-get 和 Yum 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。 本文演示了如何在 Azure 容器服务中部署的 Kubernetes 群集上使用 Helm。
 
@@ -154,5 +155,4 @@ sudo mysql –h v1-mariadb
 ## <a name="next-steps"></a>后续步骤
 
 * 有关管理 Kubernetes 图表的详细信息，请参阅 [Helm 文档](https://github.com/kubernetes/helm/blob/master/docs/index.md)。 
-
 

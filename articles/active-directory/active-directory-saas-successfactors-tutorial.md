@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
-ms.openlocfilehash: a0a101c34ffd4adb6816d9db8313d10b0ffbb3ae
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/23/2017
-
+ms.openlocfilehash: e85a38ccbe25263ac42bc76351416b023fb77c87
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>教程：Azure Active Directory 与 SuccessFactors 集成
 本教程的目的是说明如何将 SuccessFactors 与 Azure Active Directory (Azure AD) 集成。
@@ -45,7 +44,7 @@ ms.lasthandoff: 02/23/2017
 
 测试本教程中的步骤应遵循以下建议：
 
-* 不应使用生产环境，除非有此必要。
+* 除非必要，请勿使用生产环境。
 * 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
@@ -57,7 +56,7 @@ ms.lasthandoff: 02/23/2017
 2. 配置并测试 Azure AD 单一登录
 
 ## <a name="adding-successfactors-from-the-gallery"></a>从库添加 SuccessFactors
-若要配置 SuccessFactors 与 Azure AD 的集成，需要从库中将 SuccessFactors 添加到托管 SaaS 应用列表。
+要配置 SuccessFactors 与 Azure AD 的集成，需要从库中将 SuccessFactors 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 SuccessFactors，请执行以下步骤：**
 
@@ -77,7 +76,7 @@ ms.lasthandoff: 02/23/2017
 6. 在“搜索”框中，键入“SuccessFactors”。
    
     ![配置单一登录][5]
-7. 在结果面板中，选择“SuccessFactors”，然后单击“完成”以添加该应用程序。
+7. 在结果面板中，选择“SuccessFactors”，并单击“完成”以添加该应用程序。
    
     ![配置单一登录][6]
 
@@ -90,24 +89,24 @@ ms.lasthandoff: 02/23/2017
 
 若要配置和测试 SuccessFactors 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 SuccessFactors 测试用户](#creating-a-successfactors-test-user)** - 使链接到 Britta Simon 的 Azure AD 表示形式的 SuccessFactors 中具有 Britta Simon 的对应用户。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+3. **[创建 SuccessFactors 测试用户](#creating-a-successfactors-test-user)** - 在 SuccessFactors 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-在本部分中，将在经典门户中启用 Azure AD 单一登录，并在 SuccessFactors 应用程序中配置单一登录。
+在本部分中，会在经典门户中启用 Azure AD 单一登录，并在 SuccessFactors 应用程序中配置单一登录。
 
 **若要配置 SuccessFactors 的 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 经典门户中的“SuccessFactors”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录][7]
-2. 在“你希望用户如何登录 SuccessFactors”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 SuccessFactors”页上，选择“Microsoft Azure AD 单一登录”，并单击“下一步”。
    
     ![配置单一登录][8]
-3. 在“配置应用 URL”页上，执行以下步骤，然后单击“下一步”。
+3. 在“配置应用 URL”页上，执行以下步骤，并单击“下一步”。
    
     ![配置单一登录][9]
    
@@ -162,7 +161,7 @@ ms.lasthandoff: 02/23/2017
    
     d.单击“下一步”。 对于“需要强制签名”，选择“响应（客户生成/IdP/AP）”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于“启用 SAML 标志”选择“启用”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对于“启用 SAML 标志”选择“启用”。
    
     f. 对于“登录请求签名（SF 生成/SP/RP）”选择“否”。
    
@@ -175,7 +174,7 @@ ms.lasthandoff: 02/23/2017
     > [!NOTE] 
     > 证书内容必须具有开始证书和结束证书标记。
 
-1. 导航到 SAML V2，然后执行以下步骤：
+1. 导航到 SAML V2，并执行以下步骤：
    
     ![在应用端配置单一登录][13]
    
@@ -187,7 +186,7 @@ ms.lasthandoff: 02/23/2017
    
     d.单击“下一步”。 对于“NameID 格式”，选择“未指定”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于“启用 sp 启动的登录 (AuthnRequest)”选择“是”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对于“启用 sp 启动的登录 (AuthnRequest)”选择“是”。
    
     f. 在“发送请求作为公司颁发者”文本框中放置 Azure AD 应用程序配置向导中“远程登录 URL”的值。
 2. 如果希望登录用户名不区分大小写，请执行这些步骤。
@@ -201,9 +200,9 @@ ms.lasthandoff: 02/23/2017
     ![配置单一登录][29]
 
     > [!NOTE] 
-    > 如果尝试启用此功能，系统将会检查是否会创建重复的 SAML 登录名。 例如，如果客户具有用户名 User1 和 user1。 取消区分大小写会认定它们重复。 系统将提供一条错误消息，且不会启用该功能。 客户需要更改其中一个用户名，以使其实际拼写不同。 
+    > 如果尝试启用此功能，系统会检查是否会创建重复的 SAML 登录名。 例如，如果客户具有用户名 User1 和 user1。 取消区分大小写会认定它们重复。 系统将提供一条错误消息，且不会启用该功能。 客户需要更改其中一个用户名，以使其实际拼写不同。 
 
-1. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
+1. 在 Azure 经典门户中，选择“单一登录配置确认”，并单击“完成”，关闭“配置单一登录”对话框。
    
     ![应用程序][14]
 2. 在“单一登录确认”页上，单击“完成”。
@@ -231,7 +230,7 @@ ms.lasthandoff: 02/23/2017
    
     ![创建 Azure AD 测试用户][20]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    a. 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -240,7 +239,7 @@ ms.lasthandoff: 02/23/2017
    
     ![创建 Azure AD 测试用户][21]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a. 在“名字”文本框中，键入“Britta”。  
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -248,7 +247,7 @@ ms.lasthandoff: 02/23/2017
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户][22]
@@ -256,7 +255,7 @@ ms.lasthandoff: 02/23/2017
    
     ![创建 Azure AD 测试用户][23]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
+    a. 写下“新密码”的值。
    
     b. 单击“完成”。  
 
@@ -271,7 +270,7 @@ ms.lasthandoff: 02/23/2017
 
 ![分配用户][24]
 
-**若要将 Britta Simon 分配到 SuccessFactors，请执行以下步骤：**
+**要将 Britta Simon 分配到 SuccessFactors，请执行以下步骤：**
 
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
@@ -331,4 +330,3 @@ ms.lasthandoff: 02/23/2017
 [27]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_09.png
 [28]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_10.png
 [29]: ./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_10.png
-

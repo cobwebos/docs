@@ -18,7 +18,7 @@
 > 出于以下原因，应该将此升级安排在规划的维护时段：
 > 
 > * 在重新安装适配器之前，以前已外部化的内容将无法使用。
-> * 在卸载旧版 StorSimple Adapter for SharePoint 之后、安装新版之前，任何上载到站点的内容都将存储在内容数据库中。 安装新适配器之后，需将该内容移到 StorSimple 设备。 可以使用 SharePoint 随附的 Microsoft` RBS Migrate()` PowerShell cmdlet 来迁移内容。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。 
+> * 在卸载旧版 StorSimple Adapter for SharePoint 之后、安装新版之前，任何上传到站点的内容都将存储在内容数据库中。 安装新适配器之后，需将该内容移到 StorSimple 设备。 可以使用 SharePoint 随附的 Microsoft` RBS Migrate()` PowerShell cmdlet 来迁移内容。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。 
 > 
 > 
 
@@ -29,5 +29,5 @@
    > 这会自动禁用内容数据库上的 RBS。 但是，现有 BLOB 将保留在 StorSimple 设备上。 由于已禁用 RBS 且 BLOB 尚未迁移回到内容数据库，对这些 BLOB 的任何请求都会失败。 
    > 
    > 
-2. 安装新的 StorSimple Adapter for SharePoint。 新适配器将自动识别以前已为 RBS 启用或禁用的内容数据库，并使用以前的设置。
+2. 安装新的 StorSimple Adapter for SharePoint。 新适配器会自动识别以前已为 RBS 启用或禁用的内容数据库，并使用以前的设置。
 

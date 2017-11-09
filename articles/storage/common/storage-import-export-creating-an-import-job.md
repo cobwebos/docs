@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
 ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.lasthandoff: 04/06/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
@@ -53,13 +52,13 @@ ms.lasthandoff: 04/06/2017
 
  Azure 导入/导出工具还会在准备每个驱动器时为其生成清单文件。 清单文件中包含：
 
--   所有要上载的文件的枚举，以及从这些文件到 Blob 的映射。
+-   所有要上传的文件的枚举，以及从这些文件到 Blob 的映射。
 
 -   每个文件的段校验和。
 
 -   有关要与每个 Blob 关联的元数据和属性的信息。
 
--   当要上载的 Blob 名称与容器中现有 Blob 的名称相同时所要执行的操作列表。 可能的选项包括：a) 使用文件覆盖 Blob，b) 保留现有 Blob 并跳过上载文件，c) 将后缀追加到名称，使之不与其他文件冲突。
+-   当要上传的 Blob 名称与容器中现有 Blob 的名称相同时所要执行的操作列表。 可能的选项包括：a) 使用文件覆盖 Blob，b) 保留现有 Blob 并跳过上传文件，c) 将后缀追加到名称，使之不与其他文件冲突。
 
 ## <a name="obtaining-your-shipping-location"></a>获取寄送位置
 
@@ -108,4 +107,3 @@ ms.lasthandoff: 04/06/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
-

@@ -14,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>在本地 Docker 容器中调试应用
 ## <a name="overview"></a>概述
 Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发和验证应用程序的一致性方法。
 每次进行代码更改后，不需要重新启动该容器。
-本文将演示如何使用“编辑和刷新”功能在本地 Docker 容器中启动 ASP.NET Core Web 应用，进行任何必要的更改，然后刷新浏览器查看这些更改。
+本文将演示如何使用“编辑和刷新”功能在本地 Docker 容器中启动 ASP.NET Core Web 应用，进行任何必要的更改，并刷新浏览器查看这些更改。
 本文还将说明如何为调试设置断点。
 
 > [!NOTE]
@@ -51,26 +50,26 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 [!INCLUDE [Add docker support](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
 ## <a name="3-edit-your-code-and-refresh"></a>3.编辑代码并刷新
-若要快速重复更改，可以在容器中启动应用程序，并继续进行更改，然后就像使用 IIS Express 一样查看这些更改。
+要快速重复更改，可以在容器中启动应用程序，并继续进行更改，然后就像使用 IIS Express 一样查看这些更改。
 
-1. 将解决方案配置设置为 `Debug`，并按 **&lt;CTRL + F5>** 以生成 docker 映像并在本地运行它。
+1. 将解决方案配置设置为 `Debug`，并按“&lt;CTRL + F5>”，以生成 docker 映像并在本地运行它。
 
-    容器映像已生成并在 Docker 容器中运行后，Visual Studio 将在默认浏览器中启动 Web 应用。
+    容器映像已生成并在 Docker 容器中运行后，Visual Studio 会在默认浏览器中启动 Web 应用。
     如果使用的是 Microsoft Edge 浏览器或以其他方式出现错误，请参阅[故障排除](vs-azure-tools-docker-troubleshooting-docker-errors.md)部分。
-2. 请转到“关于”页，将在此页中进行更改。
+2. 请转到“关于”页，会在此页中进行更改。
 3. 返回到 Visual Studio 并打开 `Views\Home\About.cshtml`。
 4. 将以下 HTML 内容添加到文件末尾，并保存更改。
 
     ```
     <h1>Hello from a Docker Container!</h1>
     ```
-5. 查看输出窗口，当 .NET 生成完成并且你看到这些行时，切换回浏览器并刷新“关于”页。
+5. 查看输出窗口，在 .NET 版本完成后你会看到这些行，切回浏览器并刷新“关于”页。
 
    ```
    Now listening on: http://*:80
    Application started. Press Ctrl+C to shut down
    ```
-6. 你的更改已应用！
+6. 更改已应用！
 
 ## <a name="4-debug-with-breakpoints"></a>4.使用断点进行调试
 通常，更改将需要利用 Visual Studio 的调试功能进行进一步检查。
@@ -111,8 +110,7 @@ Visual Studio Tools for Docker 提供了在本地 Linux Docker 容器中开发�
 
 ## <a name="presentations"></a>演示文稿
 * [Steve Lasker：VS Live Las Vegas 2016 - Docker e2e](https://github.com/SteveLasker/Presentations/blob/master/VSLive2016/Vegas/)
-* [ASP.NET Core @ build 2016 简介 -“你在哪里”演示](https://channel9.msdn.com/Events/Build/2016/B810)
+* [ASP.NET Core @ 版本 2016 简介 - 你在哪里演示](https://channel9.msdn.com/Events/Build/2016/B810)
 * [在容器中开发 .NET 应用，第 9 频道](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
-

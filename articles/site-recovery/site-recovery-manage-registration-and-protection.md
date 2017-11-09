@@ -12,76 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 10/3/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: f57c88cbace41af233f542880c6199b3e278700e
-ms.openlocfilehash: c8d893dbac1a4f6cb3f05f857e186bca155e5865
-ms.lasthandoff: 01/05/2017
-
-
+ms.openlocfilehash: 471d68742668e2b1b1c72579cee9dd493f1bd042
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
+本文介绍了如何从恢复服务保管库中取消注册服务器，以及如何禁用对计算机的 Site Recovery 保护。
 
-Azure Site Recovery 服务有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该服务可以协调虚拟机和物理服务器的复制、故障转移与恢复。 虚拟机可复制到 Azure 中，也可复制到本地数据中心中。 如需快速概览，请阅读[什么是 Azure Site Recovery？](site-recovery-overview.md)
 
-本文介绍如何从 Azure 门户的恢复服务保管库中取消注册服务器，以及如何禁用受 Site Recovery 保护的计算机的保护。
-
-请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
-
-## <a name="unregister-a-connected-configuration-server"></a>注销已连接的配置服务器
-
-如果将 VMware VM 或 Windows/Linux 物理服务器复制到 Azure，则可从保管库中注销已连接的配置服务器，如下所示：
-
-1. 禁用计算机保护。 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。
-2. 取消任何策略的关联。 在“Site Recovery 基础结构” > “对于 VMWare 和物理机” > “复制策略”中，右键单击关联的策略。 右键单击配置服务器 > “取消关联”。
-3. 删除任何其他本地进程或主目标服务器。 在“Site Recovery 基础结构” > “对于 VMWare 和物理机” > “配置服务器”中，右键单击服务器 > “删除”。
-4. 删除配置服务器。
-5. 手动卸载在主目标服务器（单独的服务器或在配置服务器上运行的服务器）上运行的移动服务。
-6. 卸载任何其他的进程服务器。
-7. 卸载配置服务器。
-8. 在配置服务器上，卸载由 Site Recovery 安装的 MySQL 实例。
-9. 在配置服务器的注册表中删除项 ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``。
-
-## <a name="unregister-a-unconnected-configuration-server"></a>注销未连接的配置服务器
+## <a name="unregister-a--configuration-server"></a>取消注册配置服务器
 
 如果将 VMware VM 或 Windows/Linux 物理服务器复制到 Azure，则可从保管库中注销未连接的配置服务器，如下所示：
 
-1. 禁用计算机保护。 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。 选择“停止管理计算机”。
-2. 删除任何其他本地进程或主目标服务器。 在“Site Recovery 基础结构” > “对于 VMWare 和物理机” > “配置服务器”中，右键单击服务器 > “删除”。
-3. 删除配置服务器。
-4. 手动卸载在主目标服务器（单独的服务器或在配置服务器上运行的服务器）上运行的移动服务。
-5. 卸载任何其他的进程服务器。
-6. 卸载配置服务器。
-7. 在配置服务器上，卸载由 Site Recovery 安装的 MySQL 实例。
-8. 在配置服务器的注册表中删除项 ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``。
+1. [禁用对虚拟机的保护](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
+2. [取消关联](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy)并[删除](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy)所有复制策略
+3. [删除配置服务器](site-recovery-vmware-to-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
 
-## <a name="unregister-a-connected-vmm-server"></a>取消注册连接的 VMM 服务器
+## <a name="unregister-a-vmm-server"></a>取消注册 VMM 服务器
 
-根据最佳实践要求，我们建议在 VMM 服务器连接到 Azure 之后取消注册该服务器。 这样可确保正确清理 VMM 服务器（以及其他具有配对云的 VMM 服务器）上的设置。 只有在连接出现永久性问题时，才应删除未连接的服务器。 如果未连接 VMM 服务器，需手动运行一个脚本来清理设置。
-
-1. 停止将云中的 VM 复制到要删除的 VMM 服务器上。
-2. 删除由需要删除的 VMM 服务器上的云使用的任何网络映射。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “网络映射”中，右键单击网络映射 > “删除”。
-3. 取消复制策略与要删除的 VMM 服务器上的云的关联。  在“Site Recovery 基础结构” > “对于 System Center VMM” >  “复制策略”中，右键单击关联的策略。 右键单击云“取消关联”。
-4. 删除 VMM 服务器或主动 VMM 节点。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “VMM 服务器”中，右键单击服务器 > “删除”。
-5. 手动卸载 VMM 服务器上的提供程序。 如果有一个群集，请从所有节点删除。
-6. 若要复制到 Azure，请从已删除云的 Hyper-V 主机中手动删除 Microsoft 恢复服务代理。
-
-
-
-### <a name="unregister-an-unconnected-vmm-server"></a>取消注册未连接的 VMM 服务器
-
-1. 停止将云中的 VM 复制到要删除的 VMM 服务器上。
+1. 停止在要删除的 VMM 服务器上复制云中的虚拟机。
 2. 删除由需要删除的 VMM 服务器上的云使用的任何网络映射。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “网络映射”中，右键单击网络映射 > “删除”。
 3. 记下 VMM 服务器的 ID。
 4. 取消复制策略与要删除的 VMM 服务器上的云的关联。  在“Site Recovery 基础结构” > “对于 System Center VMM” >  “复制策略”中，右键单击关联的策略。 右键单击云“取消关联”。
 5. 删除 VMM 服务器或主动节点。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “VMM 服务器”中，右键单击服务器 > “删除”。
-6. 在 VMM 服务器上下载并运行[清理脚本](http://aka.ms/asr-cleanup-script-vmm)。 使用“以管理员身份运行”选项打开 PowerShell，以更改默认 (LocalMachine) 范围的执行策略。 在脚本中，指定要删除的 VMM 服务器的 ID。 脚本会从服务器中删除注册和云配对信息。
-5. 在任何其他包含云的 VMM 服务器上运行清理脚本，这些云已与需要删除的 VMM 服务器上的云配对。
+6. 如果 VMM 服务器处于“已断开连接”状态，请对 VMM 服务器下载并运行[清理脚本](http://aka.ms/asr-cleanup-script-vmm)。 使用“以管理员身份运行”选项打开 PowerShell，以更改默认 (LocalMachine) 范围的执行策略。 在脚本中，指定要删除的 VMM 服务器的 ID。 脚本会从服务器中删除注册和云配对信息。
+5. 在所有辅助 VMM 服务器上，运行清理脚本。
 6. 在任何其他被动 VMM 群集节点（已安装提供程序）上运行清理脚本。
 7. 手动卸载 VMM 服务器上的提供程序。 如果有一个群集，请从所有节点删除。
-8. 若要复制到 Azure，可从已删除云的 Hyper-V 主机中删除 Microsoft 恢复服务代理。
+8. 若要将虚拟机复制到 Azure，需要在已删除的云中从 Hyper-V 主机中卸载 Microsoft 恢复服务代理。
 
 ## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>取消注册 Hyper-V 站点中的 Hyper-V 主机
 
@@ -89,12 +51,13 @@ Azure Site Recovery 服务有助于实现业务连续性和灾难恢复 (BCDR) �
 
 1. 禁用位于主机上的 Hyper-V VM 的复制。
 2. 取消关联 Hyper-V 站点的策略。 在“Site Recovery 基础结构” > “对于 Hyper-V 站点” >  “复制策略”中，右键单击关联的策略。 右键单击站点 >“取消关联”。
-3. 删除 Hyper-V 主机。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “Hyper-V 主机”中，右键单击服务器 > “删除”。
-4. 从 Hyper-V 站点中删除所有主机后，将该站点删除。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “Hyper-V 站点”中，右键单击站点 > “删除”。
-5. 在每个已删除的 Hyper-V 主机上运行以下脚本。 该脚本清理服务器上的设置，并从保管库中取消注册该服务器。
+3. 删除 Hyper-V 主机。 依次转到“Site Recovery 基础结构” > “对于 Hyper-V 站点” > “Hyper-V 主机”，右键单击服务器，再单击“删除”。
+4. 从 Hyper-V 站点中删除所有主机后，将该站点删除。 依次转到“Site Recovery 基础结构” > “对于 Hyper-V 站点” > “Hyper-V 站点”，右键单击站点，再单击“删除”。
+5. 如果 Hyper-V 主机处于“已断开连接”状态，请对已删除的每个 Hyper-V 主机运行以下脚本。 该脚本清理服务器上的设置，并从保管库中取消注册该服务器。
 
 
-        `` pushd .
+
+        pushd .
         try
         {
              $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -172,69 +135,83 @@ Azure Site Recovery 服务有助于实现业务连续性和灾难恢复 (BCDR) �
             $error[0]
             Write-Host "FAILED" -ForegroundColor "Red"
         }
-        popd``
+        popd
 
 
 
-## <a name="disable-protection-for-a-vmware-vm-or-physical-server"></a>禁用对 VMware VM 或物理服务器的保护
+## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>禁用对 VMware VM 或物理服务器（VMware 到 Azure）的保护
 
-1. 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。
-2. 在“删除计算机”中，选择以下选项之一：
-    - **禁用对计算机的保护（推荐）**。 使用此选项可停止复制计算机。 将自动清理 Site Recovery 设置。 此选项仅在以下情况下显示：
-        - **已调整 VM 卷的大小** - 调整卷大小时，虚拟机将进入临界状态。 选择此选项将禁用保护，同时保留 Azure 中的恢复点。 在重新启用对虚拟机的保护时，调整过大小的卷的数据将被传输到 Azure。
-        - **最近已运行故障转移** - 运行故障转移来测试环境以后，选择此选项即可再次开始保护本地计算机。 此选项禁用每个虚拟机，然后用户需重新启用对虚拟机的保护。 通过此选项禁用虚拟机不会影响 Azure 中的副本虚拟机。 请勿从计算机中卸载移动服务。
-    - **停止管理计算机**。 如果选择此选项，将仅从保管库删除计算机。 不会影响虚拟机的本地保护设置。 若要删除计算机上的设置并从 Azure 订阅中删除计算机，需要通过卸载移动服务来清理设置。
+1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
+2. 在“禁用复制”页中，选择下列选项之一：
+    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理配置服务器上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理配置服务器上的复制配置。 
 
-## <a name="disable-protection-for-a-hyper-v-vm-in-a-vmm-cloud"></a>在 VMM 云中禁用对 Hyper-V VM 的保护
+> [!NOTE]
+> 这两个选项都不会从受保护的服务器中卸载移动服务，需要手动卸载。 如果打算使用相同的配置服务器重新保护服务器，可以跳过卸载移动服务这一步。
 
-1. 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。
-2. 在“删除计算机”中，选择以下选项之一：
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>禁用对 Hyper-V 虚拟机（Hyper-V 到 Azure）的保护
 
-    - **禁用对计算机的保护（推荐）**。 使用此选项可停止复制计算机。 将自动清理 Site Recovery 设置。
-    - **停止管理计算机**。 如果选择此选项，将仅从保管库删除计算机。 不会影响虚拟机的本地保护设置。 若要删除计算机上的设置并从 Azure 订阅中删除计算机，需根据以下说明手动清理设置。 请注意，若选择删除虚拟机及其硬盘，将从目标位置删除它们。
+> [!NOTE]
+> 要在没有 VMM 服务器的情况下将 Hyper-V VM 复制到 Azure，请执行此过程。 若要使用 System Center VMM 到 Azure 方案复制虚拟机，请按照[禁用对使用 System Center VMM 到 Azure 方案复制的 Hyper-V 虚拟机的保护](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)中的说明操作
 
-### <a name="clean-up-protection-settings---replication-to-a-secondary-vmm-site"></a>清理保护设置 - 复制到辅助 VMM 站点
+1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
+2. 在“禁用复制”中，可以选择下列选项：
+     - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 
 
-若已选择“停止管理计算机”且要复制到辅助站点，则请在主服务器上运行此脚本，以便清理主虚拟机的设置。 在 VMM 控制台中，单击“PowerShell”按钮打开 VMM PowerShell 控制台。 将 SQLVM1 替换为你的虚拟机名称。
-
-         ``$vm = get-scvirtualmachine -Name "SQLVM1"
-         Set-SCVirtualMachine -VM $vm -ClearDRProtection``
-2. 在辅助 VMM 服务器上，运行此脚本以清理辅助虚拟机的设置：
-
-        ``$vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force``
-3. 在辅助 VMM 服务器上刷新 Hyper-V 主机服务器上的虚拟机，以便在 VMM 控制台中重新检测辅助 VM。
-4. 上述步骤清理 VMM 服务器上的复制设置。 若要停止虚拟机的复制，请在主 VM 和辅助 VM 上运行以下脚本。 将 SQLVM1 替换为你的虚拟机名称。
-
-        ``Remove-VMReplication –VMName “SQLVM1”``
-
-### <a name="clean-up-protection-settings---replication-to-azure"></a>清理保护设置 - 复制到 Azure
-
-1. 若已选择“停止管理计算机”且要复制到 Azure，请通过 VMM 控制台使用 PowerShell 在源 VMM 服务器上运行此脚本。
-        ``$vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection``
-2. 上述步骤清理 VMM 服务器上的复制设置。 若要停止运行在 Hyper-V 主机服务器上的虚拟机的复制，请运行以下脚本。 将 SQLVM1 替换为你的虚拟机的名称，将 host01.contoso.com 替换为 Hyper-V 主机服务器的名称。
-
-        ``$vmName = "SQLVM1"
-        $hostName  = "host01.contoso.com"
-        $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName
-        $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
-        $replicationService.RemoveReplicationRelationship($vm.__PATH)``
+    > [!NOTE]
+    > 如果选择“删除”选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
+1. 在源 Hyper-V 主机服务器上，取消复制虚拟机。 将 SQLVM1 替换为虚拟机名称，并通过管理 PowerShell 运行以下脚本
 
 
-## <a name="disable-protection-for-a-hyper-v-vm-in-a-hyper-v-site"></a>在 Hyper-V 站点中禁用对 Hyper-V VM 的保护
+    
+    $vmName = "SQLVM1"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    
 
-若要在没有 VMM 服务器的情况下将 Hyper-V VM 复制到 Azure，请执行此过程。
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>禁用对使用 System Center VMM 到 Azure 方案复制到 Azure 的 Hyper-V 虚拟机的保护
 
-1. 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。
-2. 在“删除计算机”中，可以选择以下选项：
+1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
+2. 在“禁用复制”中，选择下列选项之一：
 
-   - **禁用对计算机的保护（推荐）**。 使用此选项可停止复制计算机。 将自动清理 Site Recovery 设置。
-   - **停止管理计算机**。 如果选择此选项，将仅从保管库删除计算机。 不会影响虚拟机的本地保护设置。 若要删除计算机上的设置并从 Azure 订阅中删除虚拟机，需手动清理设置。 如果你选择删除虚拟机及其硬盘，将从目标位置删除它们。
-3. 若已选择“停止管理计算机”，请在源 Hyper-V 主机服务器上运行此脚本，删除虚拟机的复制。 将 SQLVM1 替换为你的虚拟机名称。
+    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 
 
-        $vmName = "SQLVM1"
-        $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"
-        $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"
-        $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    > [!NOTE]
+    > 如果选择“删除”选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
+3. 在 VMM 控制台中使用 PowerShell（需要 管理员权限），在源 VMM 服务器上运行此脚本。 将占位符 SQLVM1 替换为虚拟机名称。
+
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+4. 上述步骤清理 VMM 服务器上的复制设置。 若要停止运行在 Hyper-V 主机服务器上的虚拟机的复制，请运行以下脚本。 将 SQLVM1 替换为虚拟机的名称，将 host01.contoso.com 替换为 Hyper-V 主机服务器的名称。
+
+    
+    $vmName = "SQLVM1"  $hostName  = "host01.contoso.com"  $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName  $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName  $replicationService.RemoveReplicationRelationship($vm.__PATH)
+    
+       
+ 
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>禁用对使用 System Center VMM 到 VMM 方案复制到辅助 VMM 服务器的 Hyper-V 虚拟机的保护
+
+1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
+2. 在“禁用复制”中，选择下列选项之一：
+
+    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 运行下面的一组脚本，清理本地虚拟机上的复制设置。
+> [!NOTE]
+> 如果选择“删除”选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
+
+3. 在 VMM 控制台中使用 PowerShell（需要 管理员权限），在源 VMM 服务器上运行此脚本。 将占位符 SQLVM1 替换为虚拟机名称。
+
+         $vm = get-scvirtualmachine -Name "SQLVM1"
+         Set-SCVirtualMachine -VM $vm -ClearDRProtection
+4. 在辅助 VMM 服务器上，运行下面的脚本，清理辅助虚拟机的设置：
+
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Remove-SCVirtualMachine -VM $vm -Force
+5. 在辅助 VMM 服务器上刷新 Hyper-V 主机服务器上的虚拟机，以便在 VMM 控制台中重新检测辅助 VM。
+6. 上述步骤清理 VMM 服务器上的复制设置。 若要停止虚拟机的复制，请在主 VM 和辅助 VM 上运行以下脚本。 将 SQLVM1 替换为虚拟机名称。
+
+        Remove-VMReplication –VMName “SQLVM1”
+
+
+
 

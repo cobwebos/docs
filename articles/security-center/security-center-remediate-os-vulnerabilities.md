@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>修正 Azure 安全中心中的 OS 漏洞
 Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检查是否存在可能使 VM 和计算机更易受到攻击的配置。 当 OS 配置与建议的配置规则不匹配时，安全中心建议解决漏洞，并建议更改配置以修复这些漏洞。
@@ -41,7 +40,7 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
 
    ![修正 OS 漏洞][2]
 
-  仪表板顶部提供：
+  仪表板顶部显示：
 
   - 按严重性分类的 VM 和计算机 OS 配置失败的规则总数。
   - 按类型分类的 VM 和计算机 OS 配置失败的规则总数。
@@ -52,7 +51,7 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
   - CCEID：规则的 CCE 唯一标识符。 安全中心使用通用配置枚举 (CCE) 来分配配置规则的唯一标识符。
   - 名称：失败的规则的名称
   - 规则类型：注册表项、安全策略或审核策略
-  - VM 和计算机数**：应用失败的规则的 VM 和计算机的总数
+  - **VM 和计算机数**： 应用失败的规则的 VM 和计算机的总数
   - 规则严重性：CCE 严重性值（紧急、重要或警告）
   - **状态**：该建议的当前状态：
 
@@ -111,4 +110,3 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
 [4]: ./media/security-center-remediate-os-vulnerabilities/search.png
 [5]: ./media/security-center-remediate-os-vulnerabilities/log-search.png
 [6]: ./media/security-center-remediate-os-vulnerabilities/search-results.png
-

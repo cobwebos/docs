@@ -14,19 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
 ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/19/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>如何使用 Azure 计划程序生成复杂的计划和高级循环
 ## <a name="overview"></a>概述
 Azure 计划程序作业的核心是*计划*。 计划确定了计划程序何时以及如何执行作业。
 
-Azure 计划程序允许你为作业指定不同的一次性计划和重复性计划。 *一次性*计划在指定的时间触发一次 - 实际上，它们是只执行一次的*重复性*计划。 重复性计划根据预先确定的频率触发。
+Azure 计划程序允许为作业指定不同的一次性计划和重复性计划。 *一次性*计划在指定的时间触发一次 - 实际上，它们是只执行一次的*重复性*计划。 重复性计划根据预先确定的频率触发。
 
 由于具有这种灵活性，Azure 计划程序可让你支持各种业务方案：
 
@@ -35,7 +33,7 @@ Azure 计划程序允许你为作业指定不同的一次性计划和重复性�
 * 请求外部数据 – 例如，每隔 15 分钟从 NOAA 提取新的滑雪天气报告
 * 图像处理 – 例如，在每个工作日的非高峰时间，使用云计算来压缩当天上传的图像
 
-在本文中，我们将会演练你可以使用 Azure 计划程序创建的示例作业。 我们将提供用于描述每个计划的 JSON 数据。 如果你熟悉[计划程序 REST API](https://msdn.microsoft.com/library/mt629143.aspx)，可以使用与此相同的 JSON 来[创建 Azure 计划程序作业](https://msdn.microsoft.com/library/mt629145.aspx)。
+在本文中，我们会演练可以使用 Azure 计划程序创建的示例作业。 我们将提供用于描述每个计划的 JSON 数据。 如果熟悉[计划程序 REST API](https://msdn.microsoft.com/library/mt629143.aspx)，可以使用与此相同的 JSON 来[创建 Azure 计划程序作业](https://msdn.microsoft.com/library/mt629145.aspx)。
 
 ## <a name="supported-scenarios"></a>支持的方案
 本主题中的许多示例演示了 Azure 计划程序支持的各种方案。 从广义上讲，这些示例演示了如何为多种行为模式创建计划，这些行为模式包括：
@@ -53,7 +51,7 @@ Azure 计划程序作业中的日期遵循 [ISO-8601 规范](http://en.wikipedia
 Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://en.wikipedia.org/wiki/ISO_8601)并包括日期和时间部分。 未指定 UTC 偏差的日期时间将假定为 UTC。  
 
 ## <a name="how-to-use-json-and-rest-api-for-creating-schedules"></a>如何：使用 JSON 和 REST API 来创建计划
-若要使用 [Azure 计划程序 REST API](https://msdn.microsoft.com/library/mt629143) 创建简单的计划，请先[使用资源提供程序注册订阅](https://msdn.microsoft.com/library/azure/dn790548.aspx)（计划程序的提供程序名称是 *Microsoft.Scheduler*），然后[创建作业集合](https://msdn.microsoft.com/library/mt629159.aspx)，最后[创建作业](https://msdn.microsoft.com/library/mt629145.aspx)。 在创建作业时，可以使用类似于以下摘录内容的 JSON 指定计划和循环：
+要使用 [Azure 计划程序 REST API](https://msdn.microsoft.com/library/mt629143) 创建简单的计划，请先[使用资源提供程序注册订阅](https://msdn.microsoft.com/library/azure/dn790548.aspx)（计划程序的提供程序名称是 *Microsoft.Scheduler*），然后[创建作业集合](https://msdn.microsoft.com/library/mt629159.aspx)，最后[创建作业](https://msdn.microsoft.com/library/mt629145.aspx)。 在创建作业时，可以使用类似于以下摘录内容的 JSON 指定计划和循环：
 
     {
         "startTime": "2012-08-04T00:00Z", // optional
@@ -83,8 +81,8 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | ***frequency*** |*frequency* 表示重复作业的频率单位的频率字符串。 支持的值为“minute”、“hour”、“day”、“week”或“month”。 |
 | ***interval*** |*interval* 是一个正整数，表示确定作业运行*频率*的间隔。 例如，如果 *interval* 为 3，*frequency* 为“week”，则作业每隔 3 周重复一次。 对于每月频率，Azure 计划程序支持最长 18 个月的*间隔*；对于每周频率，支持最长 78 周；对于每日频率，最长支持 548 天。 对于小时和分钟频率，支持的范围为 1 <= *interval* <= 1000。 |
 | ***endTime*** |*endTime* 字符串指定一个日期时间，如果超过此日期时间，则不应执行作业。 发生在过去的 *endTime* 是无效项。 如果未指定 *endTime* 或 count，作业将无限期运行。 不能为同一个作业同时指定 *endTime* 和 *count*。 |
-| ***count*** |<p>*count* 是一个正整数（大于零），用于指定此作业在完成之前应运行的次数。</p><p>*count* 表示作业在被确定为已完成之前要运行的次数。 例如，对于 *count* 为 5 并且开始日期为星期一的每日执行的作业，该作业将在星期五执行后完成。 如果开始时间发生在过去，则基于创建时间计算第一次执行时间。</p><p>如果未指定 *endTime* 或 *count*，作业将无限期运行。 不能为同一个作业同时指定 *endTime* 和 *count*。</p> |
-| ***schedule*** |指定了频率的作业将根据循环执行更改其循环。 *schedule* 包含基于分钟、小时、星期、月份日次和周次的修改。 |
+| ***count*** |<p>*count* 是一个正整数（大于零），用于指定此作业在完成之前应运行的次数。</p><p>*count* 表示作业在被确定为已完成之前要运行的次数。 例如，对于 *count* 为 5 并且开始日期为星期一的每日执行的作业，该作业会在星期五执行后完成。 如果开始时间发生在过去，则基于创建时间计算第一次执行时间。</p><p>如果未指定 *endTime* 或 *count*，作业将无限期运行。 不能为同一个作业同时指定 *endTime* 和 *count*。</p> |
+| ***schedule*** |指定了频率的作业会根据循环执行更改其循环。 *schedule* 包含基于分钟、小时、星期、月份日次和周次的修改。 |
 
 ## <a name="overview-job-schema-defaults-limits-and-examples"></a>概述：作业架构默认值、限制和示例
 在了解概述后，让我们详细讨论其中的每个元素。
@@ -110,16 +108,16 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 
 让我们查看 *startTime* 在过去，并且指定了 *recurrence* 但未指定 *schedule* 的情况下会发生的情况示例。  假设当前时间为 2015-04-08 13:00，*startTime* 为 2015-04-07 14:00，*recurrence* 为每隔 2 天（定义方式为 *frequency*: day，*interval*: 2）。请注意，*startTime* 在过去，即发生在当前时间以前
 
-在这些条件下，*首次执行*将为 2015-04-09 14:00\. 计划程序引擎将从开始时间计算执行循环。  过去的所有实例将被丢弃。 引擎将使用将来发生的下一个实例。  在本例中，*startTime* 为 2015-04-07 2:00pm，因此，下一个实例为从该时间算起的 2 天，即 2015-04-09 2:00pm。
+在上述情况下，首次执行时间为 2015-04-09 14:00\. 计划程序引擎从开始时间计算执行循环。  过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。  在本例中，*startTime* 为 2015-04-07 2:00pm，因此，下一个实例为从该时间算起的 2 天，即 2015-04-09 2:00pm。
 
-请注意，不管 startTime 是 2015-04-05 14:00 还是 2015-04-01 14:00\.，第一次执行时间均相同。在第一次执行后，将使用计划循环计算后续执行 – 依次为 2015-04-11 2:00pm、2015-04-13 2:00pm、2015-04-15 2:00pm 等。
+请注意，首次执行时间是相同的，即使 startTime 为 2015-04-05 14:00 或 2015-04-01 14:00\。 在首次执行后，将使用计划循环计算后续执行 – 依次为 2015-04-11 2:00pm、2015-04-13 2:00pm、2015-04-15 2:00pm 等。
 
 最后，如果为作业指定了计划，但未在计划中设置小时和/或分钟，则小时和分钟分别默认为第一次执行的小时和/或分钟。
 
 ## <a name="deep-dive-schedule"></a>深入探讨：*schedule*
 一方面，*schedule* 可以*限制*作业执行的次数。  例如，如果频率为“month”的作业具有仅在 31 号运行的 *schedule*，该作业仅在包含 31<sup></sup> 号的月份运行。
 
-另一方面，*schedule* 还可以*增加*作业执行的次数。 例如，如果频率为“month”的作业具有在1 号和 2 号运行的 *schedule*，则该作业将在每月的 1<sup></sup> 号和 2<sup></sup> 号运行，而不只是在每月运行一次。
+另一方面，*schedule* 还可以*增加*作业执行的次数。 例如，如果频率为“month”的作业具有在1 号和 2 号运行的 schedule，则该作业将在每月的 1<sup></sup> 号和 2<sup></sup> 号运行，而不只是在每月运行一次。
 
 如果指定了多个计划元素，则求值顺序为大到小 – 周次、月份日次、星期、小时和分钟。
 
@@ -136,7 +134,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
 以下是循环计划的不同示例 – 着重于计划对象及其子元素。
 
-以下计划均假定 *interval* 设为 1\. 此外，用户必须假设正确的频率符合 *schedule*，例如，不能使用频率“day”，并且计划中不能包含“monthDays”修改。 上面介绍了此类限制。
+下面的所有计划都假设 interval 设置为 1\. 此外，必须假设正确的频率符合 schedule，例如，不能使用频率“day”，并且计划中不能包含“monthDays”修改。 上面介绍了此类限制。
 
 | **示例** | **说明** |
 |:--- |:--- |
@@ -145,7 +143,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | <code>{"minutes":[15], "hours":[5,17]}</code> |在每天的 5:15 AM 和 5:15 PM 运行 |
 | <code>{"minutes":[15,45], "hours":[5,17]}</code> |在每天的 5:15AM、5:45AM、5:15PM 和 5:45PM 运行 |
 | <code>{"minutes":[0,15,30,45]}</code> |每隔 15 分钟运行一次 |
-| <code>{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}</code> |每隔一小时运行一次。 此作业每隔一小时运行一次。 分钟由 *startTime*（如果已指定）控制，如果未指定 startTime，则由创建时间控制。 例如，如果开始时间或创建时间（以适用的为准）为 12:25 PM，则作业将在 00:25、01:25、02:25 ... 23:25 运行。 该计划相当于为作业指定了 *frequency* 为“hour”、*interval* 为 1 且无 *schedule*。 区别是，也可以配合不同的 *frequency* 和 *interval* 使用此计划来创建其他作业。 例如，如果 *frequency* 为“month”，则该计划将每月运行一次，而不是像 *frequency* 为“day”时那样每天运行一次 |
+| <code>{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}</code> |每隔一小时运行一次。 此作业每隔一小时运行一次。 分钟由 *startTime*（如果已指定）控制，如果未指定 startTime，则由创建时间控制。 例如，如果开始时间或创建时间（以适用的为准）为 12:25 PM，则作业会在 00:25、01:25、02:25 ... 23:25 运行。 该计划相当于为作业指定了 *frequency* 为“hour”、*interval* 为 1 且无 *schedule*。 区别是，也可以配合不同的 *frequency* 和 *interval* 使用此计划来创建其他作业。 例如，如果 *frequency* 为“month”，则该计划将每月运行一次，而不是像 *frequency* 为“day”时那样每天运行一次 |
 | <code>{minutes:[0]}</code> |每隔一小时整点运行。 此作业也是每隔一小时运行一次，不过是在整点运行（例如 12AM、1AM、2AM，等等）。这相当于作业频率为 "hour"，startTime 为零分钟，并且在频率为 "day" 时无计划。但是，如果频率为 "week" 或 "month"，则计划分别只会在一个星期日期或月份日期执行。 |
 | <code>{"minutes":[15]}</code> |在过去每隔一小时的第 15 分钟运行。 以下作业将每隔一小时运行，从 00:15AM、1:15AM、2:15AM 等开始，在 10:15PM 和 11:15PM 结束。 |
 | <code>{"hours":[17], "weekDays":["saturday"]}</code> |在每周星期六的 5PM 运行 |
@@ -158,7 +156,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | <code>{"weekDays":["sunday"]}</code> |在星期日的开始时间运行 |
 | <code>{"weekDays":["tuesday", "thursday"]}</code> |在星期二和星期四的开始时间运行 |
 | <code>{"minutes":[0], "hours":[6], "monthDays":[28]}</code> |在每个月 28 号的 6AM 运行（假设 frequency 为 month） |
-| <code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code> |在月份最后一天的 6AM 运行。 如果你要在月份的最后一天运行作业，请使用 -1 而不是日期 28、29、30 或 31。 |
+| <code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code> |在月份最后一天的 6AM 运行。 如果要在月份的最后一天运行作业，请使用 -1 而不是日期 28、29、30 或 31。 |
 | <code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code> |在每月第一天和最后一天的 6AM 运行 |
 | <code>{monthDays":[1,-1]}</code> |在每月第一天和最后一天的开始时间运行 |
 | <code>{monthDays":[1,14]}</code> |在每月第一天和第 14 天的开始时间运行 |
@@ -168,7 +166,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}</code> |在每月结束后第三个星期五的开始时间运行 |
 | <code>{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code> |在每月第一个和最后一个星期五的 5:15AM 运行 |
 | <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code> |在每月第一个和最后一个星期五的开始时间运行 |
-| <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}</code> |在每月第五个星期五的开始时间运行。 如果月份中没有第五个星期五，则不运行作业，因为该作业计划为只在第五个星期五运行。 如果你想要在月份的最后一个星期五运行作业，可以考虑为循环使用 -1 而不是 5。 |
+| <code>{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}</code> |在每月第五个星期五的开始时间运行。 如果月份中没有第五个星期五，则不运行作业，因为该作业计划为只在第五个星期五运行。 如果想要在月份的最后一个星期五运行作业，可以考虑为循环使用 -1 而不是 5。 |
 | <code>{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}</code> |在月份的最后一个星期五每隔 15 分钟运行一次 |
 | <code>{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}</code> |在每月第三个星期三的 5:15AM、5:45AM、5:15PM 和 5:45PM 运行 |
 
@@ -190,5 +188,4 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
  [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
 
  [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
 

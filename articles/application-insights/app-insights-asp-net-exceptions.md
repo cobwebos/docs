@@ -3,7 +3,7 @@ title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常
 description: "从 ASP.NET 应用中捕获异常以及请求遥测。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
@@ -11,14 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
-ms.author: bwren
+ms.date: 09/19/2017
+ms.author: mbullwin
+ms.openlocfilehash: cb87b166a32c47395f99c9cd59442a7ccd65b7ed
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 8c73344b07e07cc89a18a10648b1a9c82c4b361a
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -33,8 +32,8 @@ ms.lasthandoff: 08/17/2017
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
   * [Web 窗体](#web-forms)
   * [MVC](#mvc)
-  * [Web API 1*](#web-api-1)
-  * [Web API 2*](#web-api-2)
+  * [Web API 1*](#web-api-1x)
+  * [Web API 2*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>使用 Visual Studio 诊断异常
@@ -58,15 +57,19 @@ ms.lasthandoff: 08/17/2017
 ![有关异常的 CodeLens 通知。](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>使用 Azure 门户诊断故障
-在应用的 Application Insights 概述中，故障磁贴显示了异常和失败的 HTTP 请求图表，以及导致最常见故障的请求 URL 的列表。
+Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应用程序中的失败。 若要开始，请单击位于“调查”部分中的 Application Insights 资源菜单中的“失败”选项。 此时应看到一个显示请求的失败率趋势的全屏视图，其中包括多少个请求将要失败以及多少个用户受到影响。 在右侧将看到一些最有用的特定于所选失败操作的分发，包括前 3 个响应代码、前 3 个异常类型以及前 3 种失败依赖项类型。 
 
-![依次选择“设置”、“故障”](./media/app-insights-asp-net-exceptions/012-start.png)
+![失败会审视图（“操作”选项卡）](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
-单击浏览列表中某个失败的异常类型，以获取该异常的单次出现情况（可在此处查看详细信息和堆栈跟踪）：
+只需单击一下，即可查看其中每个子集的操作具有代表性的示例。 具体而言，若要诊断异常，可以单击要在“异常详细信息”边栏选项卡中显示的特定异常的计数，如下所示：
 
-![选择失败请求的实例，并在异常详细信息下，访问异常实例。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![“异常详细信息”边栏选项卡](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
 
-**或者，**可先使用请求列表并查找与其相关的异常。
+**或者，**可以切换到“异常”选项卡，从异常的总体视图开始，而不是查看特定失败操作的异常：
+
+![失败会审视图（“异常”选项卡）](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
+
+这里可以看到为所监视的应用收集的所有异常。
 
 *没有显示异常？请参阅[捕获异常](#exceptions)。*
 
@@ -77,8 +80,7 @@ ms.lasthandoff: 08/17/2017
 有几种选项：
 
 * [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](app-insights-diagnostic-search.md)所依据的字符串属性和数值指标。
-* 
-            [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) 允许发送较长的数据，例如 POST 信息。
+* [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) 允许发送较长的数据，例如 POST 信息。
 * [TrackException()](#exceptions) 可发送堆栈跟踪。 [有关异常的详细信息](#exceptions)。
 * 如果已使用 Log4Net 或 NLog 等记录框架，可以[捕获这些日志](app-insights-asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
 
@@ -432,14 +434,13 @@ VB
 
 .NET Framework 通过对间隔中的异常数进行计数并除以间隔长度计算异常率。
 
-请注意，它与 Application Insights 通过计数 TrackException 报告计算得出的“异常”计数不同。 采样间隔不同，SDK 不会为所有经处理和未经处理的异常发送 TrackException 报告。
+这与 Application Insights 门户通过对 TrackException 报告计数计算得出的“异常”计数不同。 采样间隔不同，SDK 不会为所有经处理和未经处理的异常发送 TrackException 报告。
 
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>后续步骤
-* [监视 REST、SQL 以及对其他依赖项的调用](app-insights-asp-net-dependencies.md)
+* [监视 REST、SQL 以及其他对依赖项的调用](app-insights-asp-net-dependencies.md)
 * [监视器页面加载时间、浏览器异常和 AJAX 调用](app-insights-javascript.md)
 * [监视性能计数器](app-insights-performance-counters.md)
-

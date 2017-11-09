@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: bfb41f254d74bef843461a058ee5b2ced7fc45ec
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: 4041cacd72b1db74012497287030faf5d05ee6bf
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本主题旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本主题是特定领域的深入探讨，其他主题中也简要描述了这些概念。
@@ -58,7 +57,7 @@ sourceAnchor 属性区分大小写。 “JohnDoe”与“johndoe”是不同的�
 
 如果有多个林，并且不在林和域之间移动用户，则 **objectGUID** 是适当的属性（即使在本例中）。
 
-如果要在林和域之间移动用户，必须查找不会更改的属性或者在移动时可随用户移动的属性。 建议的方法是引入合成属性。 可以保存 GUID 等信息的属性也可能适用。 在对象创建期间，将创建新的 GUID 创建并对用户加上戳记。 可以在同步引擎服务器中创建自定义同步规则，根据 **objectGUID** 创建此值，然后在 ADDS 中更新选择的属性。 当移动对象时，请务必同时复制此值的内容。
+如果要在林和域之间移动用户，必须查找不会更改的属性或者在移动时可随用户移动的属性。 建议的方法是引入合成属性。 可以保存 GUID 等信息的属性也可能适用。 在对象创建期间，将创建新的 GUID 创建并对用户加上戳记。 可以在同步引擎服务器中创建自定义同步规则，根据 **objectGUID** 创建此值，并在 ADDS 中更新选择的属性。 当移动对象时，请务必同时复制此值的内容。
 
 另一个解决方案是选择已知不会更改的现有属性。 常用的属性包括 **employeeID**。 如果打算使用包含字母的属性，请确保属性值的大小写（大写与小写）不会更改。 例如，包含用户姓名的属性就是不应使用的不当属性。 因为在结婚或离婚时，此姓名很可能会更改，所以不适用于此属性。 这也是无法在 Azure AD Connect 安装向导中选择 **userPrincipalName**、**mail** 和 **targetAddress** 等属性的原因之一。 这些属性还包含“@”字符，sourceAnchor 中不允许此字符。
 
@@ -68,7 +67,7 @@ sourceAnchor 属性区分大小写。 “JohnDoe”与“johndoe”是不同的�
 出于此原因，Azure AD Connect 实施以下限制：
 
 * 只能在初始安装期间设置 sourceAnchor 属性。 如果重新运行安装向导，此选项是只读的。 如果需要更改此设置，必须卸载然后重新安装。
-* 如果你要安装其他 Azure AD Connect 服务器，则必须选择以前所用的同一 sourceAnchor 属性。 如果以前使用 DirSync，现在想要迁移到 Azure AD Connect，则必须使用 **objectGUID**，因为这是 DirSync 所用的属性。
+* 如果要安装其他 Azure AD Connect 服务器，则必须选择以前所用的同一 sourceAnchor 属性。 如果以前使用 DirSync，现在想要迁移到 Azure AD Connect，则必须使用 **objectGUID**，因为这是 DirSync 所用的属性。
 * 如果 sourceAnchor 值在对象导出到 Azure AD 之后发生更改，Azure AD Connect Sync 将引发错误，并且不允许在更正问题且在源目录中改回 sourceAnchor 之前，对此对象进行任何其他更改。
 
 ## <a name="using-msds-consistencyguid-as-sourceanchor"></a>将 msDS-ConsistencyGuid 用作 sourceAnchor
@@ -81,7 +80,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 2. 对于任何给定的本地 AD 用户对象，如果其 msDS-ConsistencyGuid 属性未填充，Azure AD Connect 会将其 objectGUID 值写回到本地 Active Directory 中的 msDS-ConsistencyGuid 属性。 填充 msDS-ConsistencyGuid 属性以后，Azure AD Connect 就会将对象导出到 Azure AD。
 
 >[!NOTE]
-> 一旦将本地 AD 对象导入 Azure AD Connect（即，导入 AD 连接器空间并投影到 Metaverse），就再也不能更改其 sourceAnchor 值。 若要为给定的本地 AD 对象指定 sourceAnchor 值，请先配置其 msDS-ConsistencyGuid 属性，然后再将其导入 Azure AD Connect。
+> 一旦将本地 AD 对象导入 Azure AD Connect（即，导入 AD 连接器空间并投影到 Metaverse），就再也不能更改其 sourceAnchor 值。 要为给定的本地 AD 对象指定 sourceAnchor 值，请先配置其 msDS-ConsistencyGuid 属性，然后再将其导入 Azure AD Connect。
 
 ### <a name="permission-required"></a>所需的权限
 若要使用此功能，必须向用来通过本地 Active Directory 进行同步的 AD DS 帐户授予对本地 Active Directory 中的 msDS-ConsistencyGuid 属性的写入权限。
@@ -120,7 +119,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 
 | 设置 | 说明 |
 | --- | --- |
-| 让 Azure 为我管理源定位点 | 如果想要 Azure AD 为你选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
+| 让 Azure 为我管理源定位点 | 如果想要 Azure AD 选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
 | 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
 
 ### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>如何启用 ConsistencyGuid 功能 - 现有部署
@@ -151,9 +150,15 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 
    ![为现有部署启用 ConsistencyGuid - 步骤 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
 
-分析期间（步骤 4），如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定该属性未由现有应用程序使用，则需联系支持部门，了解如何取消显示该错误。
+分析期间（步骤 4），如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果先前已在 Azure AD Connect 主服务器上启用了 ConsistencyGuid 功能，并且要尝试在暂存服务器上执行相同的操作，也会发生此错误。
 
 ![为现有部署启用 ConsistencyGuid - 错误](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeploymenterror.png)
+
+ 如果确定其他现有应用程序不使用该属性，则可以通过在指定“/SkipLdapSearchcontact”的情况下重启 Azure AD Connect 向导来取消显示该错误。 为此，请在命令提示符下运行以下命令：
+
+```
+"c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
+```
 
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>对 AD FS 或第三方联合身份验证配置的影响
 如果使用 Azure AD Connect 管理本地 AD FS 部署，Azure AD Connect 会自动更新声明规则，使用同一 AD 属性作为 sourceAnchor。 这样可确保由 ADFS 生成的 ImmutableID 声明与导出到 Azure AD 的 sourceAnchor 值一致。
@@ -181,10 +186,10 @@ Azure AD Connect（1.1.524.0 及更高版本）现在可以方便地将 msDS-Con
 ### <a name="custom-domain-state-and-upn"></a>自定义域状态和 UPN
 必须确保 UPN 后缀包含已验证的域。
 
-John 是 contoso.com 中的用户。 在将用户同步到 Azure AD 目录 contoso.onmicrosoft.com 之后，希望 John 使用本地 UPN john@contoso.com 登录到 Azure。 为此，需要将 contoso.com 添加为 Azure AD 中的自定义域并进行验证，才能开始同步用户。 如果 John 的 UPN 后缀（例如 contoso.com）与 Azure AD 中已验证的域不匹配，Azure AD 会将该 UPN 后缀替换为 contoso.onmicrosoft.com。
+John 是 contoso.com 中的用户。在将用户同步到 Azure AD 目录 contoso.onmicrosoft.com 之后，希望 John 使用本地 UPN john@contoso.com 登录到 Azure。为此，需要将 contoso.com 添加为 Azure AD 中的自定义域并进行验证，才能开始同步用户。 如果 John 的 UPN 后缀（例如 contoso.com）与 Azure AD 中已验证的域不匹配，Azure AD 会将该 UPN 后缀替换为 contoso.onmicrosoft.com。
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>不可路由的本地域与 Azure AD 的 UPN
-有些组织使用不可路由的域（例如 contoso.local）或简单的单标签域（例如 contoso）。 在 Azure AD 中，无法验证不可路由的域。 Azure AD Connect 只能同步到 Azure AD 中已验证的域。 创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。 因此，如果不想要同步到默认的 onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。
+有些组织使用不可路由的域（例如 contoso.local）或简单的单标签域（例如 contoso）。 在 Azure AD 中，无法验证不可路由的域。 Azure AD Connect 只能同步到 Azure AD 中已验证的域。 创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。因此，如果不想要同步到默认的 onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。
 
 有关添加和验证域的详细信息，请阅读[将自定义域名添加到 Azure Active Directory](../active-directory-add-domain.md)。
 
@@ -192,4 +197,3 @@ Azure AD Connect 将检测你是否在不可路由的域环境中运行，并在
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-

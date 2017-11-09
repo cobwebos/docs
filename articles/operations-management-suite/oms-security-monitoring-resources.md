@@ -1,6 +1,6 @@
 ---
 title: "监视 Operations Management Suite 安全和审核解决方案中的资源 | Microsoft 文档"
-description: "本文档帮助你使用 OMS 安全和审核功能监视你的资源和标识安全问题。"
+description: "本文档帮助你使用 OMS 安全和审核功能监视资源和标识安全问题。"
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,21 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 81d7d09f48d08943623b24e7e7a26847a0d129fe
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 2f73266b65a4eda6c8751a2d56bc3f11bf4e6a57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-resources-in-operations-management-suite-security-and-audit-solution"></a>监视 Operations Management Suite 安全和审核解决方案中的资源
-本文档帮助你使用 OMS 安全和审核功能监视你的资源和标识安全问题。
+本文档帮助你使用 OMS 安全和审核功能监视资源和标识安全问题。
 
 ## <a name="what-is-oms"></a>什么是 OMS？
-Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护你的本地和云基础结构。 有关 OMS 的详细信息，请参阅文章 [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx)。
+Microsoft Operations Management Suite (OMS) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 有关 OMS 的详细信息，请参阅文章 [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx)。
 
 ## <a name="monitoring-resources"></a>监视资源
-无论何时，你都希望在第一时间阻止安全事件发生。 但是，不可能防止所有安全事件。 发生安全事件时，你需要确保最大程度地降低其影响。  以下三个重要建议可用于最大程度地降低安全事件的数量和影响：
+无论何时，都希望在第一时间阻止安全事件发生。 但是，不可能防止所有安全事件。 发生安全事件时，需要确保最大程度地降低其影响。  以下三个重要建议可用于最大程度地降低安全事件的数量和影响：
 
 * 定期评估环境中的漏洞。
 * 定期检查所有计算机系统和网络设备，确保它们已安装所有最新修补程序。
@@ -68,14 +67,14 @@ OMS 安全和审核解决方案允许 IT 人员主动监视所有资源，这有
 
 ![监视更新](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig3.png)
 
-逻辑应用于更新数据，云服务记录数据。 如果找到缺失的更新，它们将显示在“更新”仪表板上。 你可以使用“更新”仪表板处理缺失的更新，并制订将其应用到需要这些更新的服务器的计划。 按照下面的步骤访问“更新”仪表板：
+逻辑应用于更新数据，云服务记录数据。 如果找到缺失的更新，它们会显示在“更新”仪表板上。 可以使用“**更新**”仪表板处理缺失的更新，并制订将其应用到需要这些更新的服务器的计划。 按照下面的步骤访问“更新”仪表板：
 
 1. 在“Microsoft Operations Management Suite”主仪表板中，单击“安全和审核”磁贴。
 2. 在“安全和审核”仪表板中，单击“安全域”下的“更新评估”。 “更新”仪表板显示，如下所示：
 
 ![更新评估](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig4.png)
 
-在此仪表板中，你可以执行更新评估，了解计算机的当前状态并处理最严重的威胁。 通过使用“关键更新或安全更新”磁贴，IT 管理员能够访问有关缺少的更新的详细信息，如下所示：
+在此仪表板中，可以执行更新评估，了解计算机的当前状态并处理最严重的威胁。 通过使用“关键更新或安全更新”磁贴，IT 管理员能够访问有关缺少的更新的详细信息，如下所示：
 
 ![搜索结果](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig5.png)
 
@@ -100,17 +99,16 @@ OMS 安全和审核解决方案允许 IT 人员主动监视所有资源，这有
 
 作为常规监视策略的一部分，必须包括标识监视。 IT 管理员应查看是否存在具有多次尝试的特定有效用户名。 这可能表示获取了实际用户名并尝试暴力攻击的攻击者，或使用已过期的硬编码密码的自动工具。
 
-此仪表板允许 IT 人员快速标识与公司资源的标识和访问相关的潜在威胁。 它对于标识潜在趋势也特别重要，例如在“登录超时”磁贴中，你可以看见在一段时间内执行了多少次失败登录尝试。 在这种情况下，计算机 **FileServer** 收到了 35 次登录尝试。 单击此计算机可了解其更多详细信息。 
+此仪表板允许 IT 人员快速标识与公司资源的标识和访问相关的潜在威胁。 它对于标识潜在趋势也特别重要，例如在“登录超时”磁贴中，可以看见在一段时间内执行了多少次失败登录尝试。 在这种情况下，计算机 **FileServer** 收到了 35 次登录尝试。 单击此计算机可了解其更多详细信息。 
 
 ![更多详细信息](./media/oms-security-monitoring-resources/oms-security-monitoring-resources-fig7-new.png)
 
-为此计算机生成的报告中包括有关此模式的重要详细信息。 注意到 **ACCOUNT** 列提供了用于尝试访问系统的用户帐户、**TIMEGENERATED** 列提供了尝试完成的时间间隔、**LOGONTYPENAME** 列提供了此尝试的完成位置。 如果这些尝试按程序在系统中本地执行，**PROCESS** 列将显示进程的名称。 在从程序尝试登录的方案中，你已有可用的进程名称，现在可以在目标系统中执行进一步调查。
+为此计算机生成的报告中包括有关此模式的重要详细信息。 注意到 **ACCOUNT** 列提供了用于尝试访问系统的用户帐户、**TIMEGENERATED** 列提供了尝试完成的时间间隔、**LOGONTYPENAME** 列提供了此尝试的完成位置。 如果这些尝试按程序在系统中本地执行，**PROCESS** 列会显示进程的名称。 在从程序尝试登录的方案中，已有可用的进程名称，现在可以在目标系统中执行进一步调查。
 
 ## <a name="see-also"></a>另请参阅
-在本文档中，了解了如何使用 OMS 安全和审核解决方案监视你的资源。 若要了解有关 OMS 安全的详细信息，请参阅以下文章：
+在本文档中，了解了如何使用 OMS 安全和审核解决方案监视资源。 若要了解有关 OMS 安全的详细信息，请参阅以下文章：
 
 * [Operations Management Suite (OMS) 概述](operations-management-suite-overview.md)
 * [Operations Management Suite 安全和审核解决方案入门](oms-security-getting-started.md)
 * [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](oms-security-responding-alerts.md)
-
 

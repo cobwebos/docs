@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - PowerShell | Microsoft 文档"
-description: "本文将介绍如何使用 PowerShell 通过“下一跃点”功能查找下一跃点类型和 ip 地址。"
+description: "本文介绍如何使用 PowerShell 通过“下一跃点”功能查找下一跃点类型和 ip 地址。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: ef559fbbd3e8448d64167552cacee04790418343
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>使用 PowerShell 通过 Azure 网络观察程序中的“下一跃点”功能找到下一跃点类型
 
 > [!div class="op_single_selector"]
@@ -37,7 +35,7 @@ ms.lasthandoff: 05/27/2017
 
 在此方案中，将使用 Azure 门户来查找下一跃点类型和 IP 地址。
 
-此方案假定你已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
 
 ## <a name="scenario"></a>方案
 
@@ -65,7 +63,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="get-the-network-interfaces"></a>获取网络接口
 
-需要虚拟机上的 NIC 的 IP 地址，在此示例中我们将在虚拟机上检索 NIC。 如果已知道要在虚拟机上测试的 IP 地址，则可以跳过此步骤。
+需要虚拟机上的 NIC 的 IP 地址，在此示例中我们会在虚拟机上检索 NIC。 如果已知道要在虚拟机上测试的 IP 地址，则可以跳过此步骤。
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -104,7 +102,6 @@ NextHopIpAddress NextHopType           RouteTableId
 ## <a name="next-steps"></a>后续步骤
 
 通过访问[使用网络观察程序进行 NSG 审核](network-watcher-nsg-auditing-powershell.md)，了解如何以编程方式查看网络安全组设置
-
 
 
 

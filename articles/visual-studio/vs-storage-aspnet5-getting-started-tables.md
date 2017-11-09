@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
+ms.openlocfilehash: 8d05fe3ed9a5c66f186a930d4107162c1f322c05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 63f208c091b0fc5ce569460c133d84eb68b8f362
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>如何开始使用 Azure 表存储和 Visual Studio 连接服务
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -33,7 +32,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 有关使用 Azure 表存储的更多常规信息，请参阅 [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md)（通过 .NET 开始使用 Azure 表存储）。
 
-若要开始，首先需要在存储帐户中创建表。 我们将向你展示如何使用代码创建 Azure 表。 此外，我们将展示如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是用 C\# 代码编写的，并使用了 Azure Storage Client Library for .NET。
+若要开始，首先需要在存储帐户中创建表。 我们将向你展示如何使用代码创建 Azure 表。 此外，我们将展示如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是用 C\# 代码编写的，并使用了用于 .NET 的 Azure 存储客户端库。
 
 **注意：**在 ASP.NET Core 中执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
 
@@ -185,5 +184,4 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-
 

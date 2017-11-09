@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 21cbbb10065df9ae9c63b775a6526ea9c4f92136
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 4787e4033e1afda6339b0b917263ecc165e400ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="input-metadata"></a>输入元数据
 编码作业与要在其上执行某些编码任务的输入资产（或资产）相关联。  完成任务后，会生成一个输出资产。  输出资产包含视频、音频、缩略图、清单等。输出资产还包含提供输入资产相关元数据的文件。 元数据 XML 文件的名称采用下列格式：&lt;asset_id&gt;_metadata.xml（例如，41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml），其中 &lt;asset_id&gt; 是输入资产的 AssetId 值。  
@@ -33,7 +32,7 @@ ms.lasthandoff: 07/06/2017
 > 
 > 
 
-## <a name="AssetFiles"></a>AssetFiles 元素（根元素）
+## <a name="AssetFiles"></a> AssetFiles 元素（根元素）
 包含用于编码作业的 [AssetFile 元素](media-services-input-metadata-schema.md#AssetFile)集合。  
 
 请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -70,7 +69,7 @@ ms.lasthandoff: 07/06/2017
 | **节目**<br /><br /> minOccurs=“0” | |资产文件采用 MPEG-TS 格式时，所有[节目元素](media-services-input-metadata-schema.md#Programs)的集合。 |
 | **VideoTracks**<br /><br /> minOccurs=“0” | |每个物理资产文件可包含交错成适当容器格式的零个或多个视频轨。 此元素包含所有 [VideoTracks 元素](media-services-input-metadata-schema.md#VideoTracks)（属于资产文件）的集合。 |
 | **AudioTracks**<br /><br /> minOccurs=“0” | |每个物理资产文件可包含交错成适当容器格式的零个或多个音频轨。 此元素包含所有 [AudioTracks 元素](media-services-input-metadata-schema.md#AudioTracks)（属于资产文件）的集合。 |
-| **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |资产文件的元数据表示为键\值字符串。 例如：<br /><br /> **&lt;元数据键 =“language” 值="eng" /&gt;** |
+| **元数据**<br /><br /> minOccurs=“0” maxOccurs =“unbounded” |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |资产文件的元数据表示为键\值字符串。 例如：<br /><br /> **&lt;Metadata key="language" value="eng" /&gt;** |
 
 ## <a name="TrackType"></a> TrackType
 请参阅本主题末尾处的 XML 示例：[XML 示例](media-services-input-metadata-schema.md#xml)。  
@@ -646,5 +645,4 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

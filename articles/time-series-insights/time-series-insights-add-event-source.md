@@ -1,6 +1,6 @@
 ---
 title: "向 Azure 时序见解环境添加事件源 | Microsoft Docs"
-description: "在本教程中，你将事件源连接到时序见解环境"
+description: "在本教程中，将事件源连接到时序见解环境"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,22 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: ffa2eaf3680e68ac14aabf49b6308caeb173fd43
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 123ecca28f0d970851487827d0d18e244ce6d98e
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/18/2017
 ---
-
-# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>使用 Ibiza 门户为时序见解环境创建事件源
+# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建事件源
 
 时序见解事件源派生自事件代理（例如 Azure 事件中心）。 时序见解直接连接到事件源，不需用户编写一行代码即可引入数据流。 时序见解目前支持 Azure 事件中心和 Azure IoT 中心。 将来会添加更多的事件源。
 
 ## <a name="steps-to-add-an-event-source-to-your-environment"></a>将事件源添加到环境的步骤
 
-1.  登录到 [Ibiza 门户](https://portal.azure.com)。
-2.  在 Ibiza 门户左侧的菜单中，单击“所有资源”。
+1.  登录到 [Azure 门户](https://portal.azure.com)。
+2.  在 Azure 门户左侧的菜单中，单击“所有资源”。
 3.  选择时序见解环境。
 
   ![创建时序见解事件源](media/add-event-source/getstarted-create-event-source-1.png)
@@ -55,4 +53,3 @@ ms.lasthandoff: 07/01/2017
 
 * [发送事件](time-series-insights-send-events.md)到事件源
 * 在[时序见解门户](https://insights.timeseries.azure.com)中查看环境
-

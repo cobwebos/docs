@@ -15,13 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 1d5ea7263cc44a1873b5009edf4f106cc91e0067
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: 25c543528119410dff0684845a713dcb0d6151d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>使用 PowerShell 创建 Azure Cosmos DB 帐户
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 05/31/2017
 * 上述示例创建具有两个区域的数据库帐户。 还可能创建单区域（指定为写入区域并且故障转移优先级值为 0）或多区域数据库帐户。 有关详细信息，请参阅[多区域数据库帐户][scaling-globally]。
 * 位置必须是已正式推出 Azure Cosmos DB 的区域。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
-## <a id="update-documentdb-account-powershell"></a>更新 DocumentDB 数据库帐户
+## <a id="update-documentdb-account-powershell"></a>更新 Cosmos DB 数据库帐户
 
 此命令可更新 Azure Cosmos DB 数据库帐户属性。 这包括一致性策略和数据库帐户所在的位置。
 
@@ -99,7 +97,7 @@ ms.lasthandoff: 05/31/2017
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
 
-## <a id="delete-documentdb-account-powershell"></a>删除 DocumentDB 数据库帐户
+## <a id="delete-documentdb-account-powershell"></a>删除 Cosmos DB 数据库帐户
 
 此命令可删除现有 Azure Cosmos DB 数据库帐户。
 
@@ -112,7 +110,7 @@ ms.lasthandoff: 05/31/2017
 
     Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="get-documentdb-properties-powershell"></a>获取 DocumentDB 数据库帐户的属性
+## <a id="get-documentdb-properties-powershell"></a>获取 Cosmos DB 数据库帐户的属性
 
 此命令可获取现有 Azure Cosmos DB 数据库帐户的属性。
 
@@ -207,4 +205,3 @@ ms.lasthandoff: 05/31/2017
 [azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 [rp-rest-api]: https://docs.microsoft.com/rest/api/documentdbresourceprovider/
-

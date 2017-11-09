@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: d42b96b0fb02b6c2df364d5e19f3345991ee03b1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/04/2017
-
-
+ms.openlocfilehash: 94e945a52b9df7c495de1611baa08083357670c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>使用 Node.js 保护 Web API
 > [!NOTE]
@@ -29,7 +27,7 @@ ms.lasthandoff: 05/04/2017
 > 
 > 
 
-使用 Azure Active Directory (Azure AD) v2.0 终结点时，可以使用 [OAuth 2.0](active-directory-v2-protocols.md) 访问令牌来保护 Web API。 同时拥有个人 Microsoft 帐户以及工作或学校帐户的用户可以使用 OAuth 2.0 访问令牌安全访问你的 Web API。
+使用 Azure Active Directory (Azure AD) v2.0 终结点时，可以使用 [OAuth 2.0](active-directory-v2-protocols.md) 访问令牌来保护 Web API。 同时拥有个人 Microsoft 帐户以及工作或学校帐户的用户可以使用 OAuth 2.0 访问令牌安全访问 Web API。
 
 *Passport* 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用模块化结构，可以在不造成干扰的情况下放入任何基于 Express 的应用程序或 Resitify Web 应用程序。 在 Passport 中，有一套综合性策略支持使用用户名和密码、Facebook、Twitter 或其他选项进行身份验证。 我们针对 Azure AD 开发了一项策略。 本文介绍如何安装该模块及添加 Azure AD `passport-azure-ad` 插件。
 
@@ -125,7 +123,7 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许多操作系统不提供 DTrace。 可以放心地忽略此错误消息。
 
 
-## <a name="5-install-passportjs-in-your-web-api"></a>5：将在 Passport.js 安装到 Web API
+## <a name="5-install-passportjs-in-your-web-api"></a>5：会在 Passport.js 安装到 Web API
 1.  在命令行提示符下，将目录切换到 **azuread**。
 
 2.  安装 Passport.js：
@@ -240,7 +238,7 @@ Server.js 文件保存 Web API 服务器的大多数功能。 大部分代码将
 3.  保存文件。 稍后将要使用此文件。
 
 ## <a name="10-create-a-config-file-to-store-your-azure-ad-settings"></a>10：创建一个配置文件用于存储 Azure AD 设置
-此代码文件将配置参数从 Azure AD 门户传递到 Passport.js。 在本文开头部分向门户添加 Web API 时，已创建了这些配置值。 在你复制代码后，我们将解释要输入其中的哪些参数值。
+此代码文件将配置参数从 Azure AD 门户传递到 Passport.js。 在本文开头部分向门户添加 Web API 时，已创建了这些配置值。 在复制代码后，我们将解释要输入其中的哪些参数值。
 
 1.  在命令行中，将目录切换到 **azuread**：
 
@@ -263,7 +261,7 @@ Server.js 文件保存 Web API 服务器的大多数功能。 大部分代码将
 
 ### <a name="required-values"></a>必需的值
 
-*   **IdentityMetadata**：`passport-azure-ad` 将在此处查找适用于标识提供者 (IDP) 的配置数据，以及用于验证 JSON Web 令牌 (JWT) 的密钥。 如果使用 Azure AD，可能不需要更改此值。
+*   **IdentityMetadata**：`passport-azure-ad` 会在此处查找适用于标识提供者 (IDP) 的配置数据，以及用于验证 JSON Web 令牌 (JWT) 的密钥。 如果使用 Azure AD，可能不需要更改此值。
 
 *   audience：来自门户的重定向 URI。
 
@@ -307,9 +305,9 @@ Server.js 文件保存 Web API 服务器的大多数功能。 大部分代码将
 ## <a name="12-add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>12：使用 Mongoose 添加 MongoDB 模型和架构信息
 接下来，在 REST API 服务中连接这三个文件。
 
-本文使用 MongoDB 来存储任务。 *步骤 4* 将介绍此操作。
+本文使用 MongoDB 来存储任务。 *步骤 4* 介绍此操作。
 
-在步骤 11 创建的 Config.js 文件中，数据库名为 *tasklist*。 该名称也是在 mongoose_auth_local 连接 URL 末尾处输入的内容。 不需要在 MongoDB 中事先创建此数据库。 首次运行服务器应用程序时，将会创建该数据库（假设该数据库尚不存在）。
+在步骤 11 创建的 Config.js 文件中，数据库名为 *tasklist*。 该名称也是在 mongoose_auth_local 连接 URL 末尾处输入的内容。 不需要在 MongoDB 中事先创建此数据库。 首次运行服务器应用程序时，会创建该数据库（假设该数据库尚不存在）。
 
 已告知服务器要使用哪个 MongoDB 数据库。 接下来，需要编写一些额外的代码，为服务器的任务创建模型和架构。
 
@@ -365,7 +363,7 @@ var Task = mongoose.model('Task');
 现已创建可以使用的数据库模型，接下来请添加用于 REST API 服务器的路由。
 
 ### <a name="about-routes-in-restify"></a>关于 Restify 中的路由
-Restify 中路由的工作原理与使用 Express 堆栈时的工作原理完全相同。 可以使用客户端应用程序应该调用的 URI 定义路由。 通常，需要在单独的文件中定义路由。 本教程将在 Server.js 中放置路由。 对于生产用途，我们建议在各自的文件中构建路由。
+Restify 中路由的工作原理与使用 Express 堆栈时的工作原理完全相同。 可以使用客户端应用程序应该调用的 URI 定义路由。 通常，需要在单独的文件中定义路由。 本教程会在 Server.js 中放置路由。 对于生产用途，我们建议在各自的文件中构建路由。
 
 Restify 路由的典型模式是：
 
@@ -629,7 +627,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     `$npm install -g jsontool`
 
-    这将全局安装 JSON 工具。
+    这会全局安装 JSON 工具。
 
 2.  确保 MongoDB 实例正在运行：
 
@@ -694,7 +692,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 ### <a name="use-the-oidcbearerstrategy-thats-included-with-passport-azure-ad"></a>使用 passport-azure-ad 包含的 oidcbearerstrategy
 到目前为止，我们已构建一个典型的 REST TODO 服务器，其中不包含任何授权种类。 现在，请添加身份验证。
 
-首先，指出你要使用 Passport。 在前面的服务器配置后面紧接着插入以下代码：
+首先，指出要使用 Passport。 在前面的服务器配置后面紧接着插入以下代码：
 
 ```Javascript
 // Start using Passport.js.
@@ -756,7 +754,7 @@ passport.use(oidcStrategy);
 Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式。 所有策略编写器都遵循该模式。 向策略传递使用令牌和 `done` 作为参数的 `function()`。 策略会在完成所有任务后返回。 存储用户和令牌，这样一来，就不需要再次请求。
 
 > [!IMPORTANT]
-> 前面的代码会将所有可以进行身份验证的用户转到服务器。 这就是所谓的自动注册。 在生产服务器上，你会希望所有人都先经历指定的注册过程，然后才能进入服务器。 通常会在消费类应用中看到这种模式。 应用可能会允许使用 Facebook 注册，但随后会要求输入其他信息。 如果在本教程中没有使用命令行程序，可从返回的令牌对象中提取电子邮件。 然后，可以要求用户输入其他信息。 由于这是测试服务器，可以直接将用户添加到内存中数据库。
+> 前面的代码会将所有可以进行身份验证的用户转到服务器。 这就是所谓的自动注册。 在生产服务器上，会希望所有人都先经历指定的注册过程，才能进入服务器。 通常会在消费类应用中看到这种模式。 应用可能会允许使用 Facebook 注册，但随后会要求输入其他信息。 如果在本教程中没有使用命令行程序，可从返回的令牌对象中提取电子邮件。 然后，可以要求用户输入其他信息。 由于这是测试服务器，可以直接将用户添加到内存中数据库。
 > 
 > 
 
@@ -808,7 +806,7 @@ next();
 
     `$sudo mongod`
 
-2.  切换到 **azuread** 目录，然后使用 curl：
+2.  切换到 **azuread** 目录，并使用 curl：
 
     `$ cd azuread`
 
@@ -846,5 +844,4 @@ next();
 
 ### <a name="get-security-updates-for-our-products"></a>获取关于我们产品的安全更新
 我们建议注册，以便在发生安全事件时获得通知。 在 [Microsoft 技术安全通知](https://technet.microsoft.com/security/dd252948)页上订阅安全顾问警报。
-
 

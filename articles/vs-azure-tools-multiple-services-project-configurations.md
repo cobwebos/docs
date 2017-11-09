@@ -14,18 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
+ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 24b2530b23211c654072a6edc8a31e53989bf0a8
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>使用多种服务配置来配置 Azure 项目
 Azure 云服务项目包括两个配置文件：ServiceDefinition.csdef 和 ServiceConfiguration.cscfg。 这些文件将与 Azure 云服务应用程序一起打包并部署到 Azure。
 
-* 
-            **ServiceDefinition.csdef** 文件包含 Azure 环境根据云服务应用程序所需而确定的必备元数据，包括应用程序包含哪些角色。 此文件还包含适用于所有实例的配置设置。 可以在运行时使用 Azure 服务托管运行时 API 读取这些配置设置。 在 Azure 中运行服务时，无法更新此文件。
+* **ServiceDefinition.csdef** 文件包含 Azure 环境根据云服务应用程序所需而确定的必备元数据，包括应用程序包含哪些角色。 此文件还包含适用于所有实例的配置设置。 可以在运行时使用 Azure 服务托管运行时 API 读取这些配置设置。 在 Azure 中运行服务时，无法更新此文件。
 * **ServiceConfiguration.cscfg** 文件将设置服务定义文件中定义的配置设置的值，并指定要为每个角色运行的实例的数目。 在 Azure 中运行云服务时，可以更新此文件。
 
 Azure Tools for Microsoft Visual Studio 提供可用于设置存储在这些文件中的配置设置的属性页。 要访问这些属性页，请在解决方案资源管理器中，双击 Azure 云服务项目下的角色引用，或右键单击角色引用，并选择“属性”，如下图所示。
@@ -107,5 +105,4 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 | 生成事件 |在此页中，可以设置生成前和生成后事件。 |
 | 开发 |在此页中，可以指定生成配置说明，以及运行任何生成后事件的条件。 |
 | Web |在此页中，可以配置与 Web 服务器相关的设置。 |
-
 

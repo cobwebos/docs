@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心富推送
 ## <a name="overview"></a>概述
@@ -39,7 +39,7 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
 
 ## <a name="webapi-project"></a>WebAPI 项目
 1. 在 Visual Studio 中，打开在[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程中创建的 **AppBackend** 项目。
-2. 获取要用于通知用户的映像，并将其置于项目目录的 **img** 文件夹中。
+2. 获取用于通知用户的映像，并将其置于项目目录的 **img** 文件夹中。
 3. 单击“解决方案资源管理器”中的“显示所有文件”，右键单击该文件夹以“包括在项目中”。
 4. 通过选定的映像，将“属性”窗口中的“生成操作”更改为“嵌入的资源”。
    
@@ -47,7 +47,7 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
 5. 在 **Notifications.cs** 中，添加以下 using 语句：
    
         using System.Reflection;
-6. 使用以下代码更新整个 **Notifications** 类。 请确保将占位符替换为您的通知中心凭据和图像文件名。
+6. 使用以下代码更新整个 **Notifications** 类。 请确保将占位符替换为通知中心凭据和图像文件名。
    
         public class Notification {
             public int Id { get; set; }
@@ -125,8 +125,8 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
    
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，然后选择“发布”。
-9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。 在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布” 。
+8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，并选择“发布”。
+9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布” 。
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
 已将应用后端修改为只发送通知的 *ID*，将更改 iOS 应用以处理该 ID，并从后端检索丰富的消息。
@@ -142,7 +142,7 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
     ![][IOS4]
 6. 单击情节提要中的“主页视图控制器”，并确保它将 **homeViewController** 作为其“自定义类”和标识检查器下方的“情节提要 ID”。
 7. 为映像视图控制器执行同样的操作，确保 **imageViewController** 充当相应的内容。
-8. 然后，新建标题为 **imageViewController** 的视图控制器类来处理刚才创建的 UI。
+8. 然后，创建一个名为 **imageViewController** 的新视图控制器类来处理刚创建的 UI。
 9. 在 **imageViewController.h** 中，将以下代码添加到控制器的接口声明中。 请务必按住 Ctrl 键并从情节提要图像视图拖动到这些属性中，以链接两者：
    
         @property (weak, nonatomic) IBOutlet UIImageView *myImage;
@@ -347,17 +347,11 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
 
 ## <a name="run-the-application"></a>运行应用程序
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
-2. 在 iOS 应用 UI 中，输入相同值的用户名和密码进行身份验证，然后单击“登录”。
-3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息”，将转到选择要包括在应用后端中的映像。
-4. 也可以单击“发送推送”并立即按下设备的主页按钮。 几分钟后，您将收到推送通知。 如果您点击推送通知或单击“详细信息”，将转到您的应用和富图像内容。
+2. 在 iOS 应用 UI 中，输入相同值的用户名和密码进行身份验证，并单击“登录”。
+3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息”，会转到选择要包括在应用后端中的映像。
+4. 也可以单击“发送推送”并立即按下设备的主页按钮。 几分钟后会收到推送通知。 如果点击推送通知或单击“详细信息”，会转到应用和富图像内容。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

@@ -13,102 +13,76 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/14/2017
+ms.date: 10/23/2017
 ms.author: echuvyrov
+ms.openlocfilehash: d8c357474e040f2e35c51dec0c7785cf98381a37
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
-ms.sourcegitcommit: 8727e15448a74b68277c5bdd82c573e817254f80
-ms.openlocfilehash: da567097be38ac649c6bf1de1508de24d21cb877
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/24/2017
 ---
+# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>安装和配置 Terraform 以在 Azure 中预配 VM 和其他基础结构
+ 
+借助 Terraform，可以轻松使用[简单模板语言](https://www.terraform.io/docs/configuration/syntax.html)来定义、预览和部署云基础结构。 本文介绍使用 Terraform 在 Azure 中预配资源的必要步骤。 
 
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>安装和配置 Terraform 以在 Azure 中预配 VM 和其他基础结构 
-本文详细介绍安装和配置 Terraform 以在 Azure 中预配虚拟机等资源的必要步骤。 将了解如何创建和使用 Azure 凭据来启用 Terraform，从而安全地预配云资源。
-
-借助 HashiCorp Terraform，可以轻松使用 HashiCorp 配置语言 (HCL) 这种自定义模板化语言来定义和部署云基础结构。 此自定义语言[易于编写和理解](terraform-create-complete-vm.md)。 此外，还可以使用 `terraform plan` 命令在提交基础结构更改之前直观呈现这些更改。 请遵循以下步骤开始在 Azure 中使用 Terraform。
+> [!TIP]
+> Terraform 属于 [Azure Cloud Shell Bash 体验](/azure/cloud-shell/quickstart)的一部分并使用凭据和 [Azure Terraform 模块](https://registry.terraform.io/modules/Azure)预先配置。
 
 ## <a name="install-terraform"></a>安装 Terraform
-若要安装 Terraform，请将适用于操作系统的程序包[下载](https://www.terraform.io/downloads.html)到单独安装目录。 下载内容包含一个可执行文件，应为其定义全局路径。 有关如何在 Linux 和 Mac 上设置路径的说明，请转到[此网页](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux)。 有关如何在 Windows 上设置路径的说明，请转到[此网页](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows)。 若要验证安装，请运行 `terraform` 命令。 输出中应会显示可用 Terraform 选项的列表。
 
-接下来，需要允许 Terraform 访问 Azure 订阅，以便预配基础结构。
+若要安装 Terraform，请将适用于操作系统的程序包[下载](https://www.terraform.io/downloads.html)到单独安装目录。 下载内容包含一个可执行文件，应为其定义全局路径。 有关如何在 Linux 和 Mac 上设置路径的说明，请转到[此网页](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux)。 有关如何在 Windows 上设置路径的说明，请转到[此网页](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows)。 
+
+使用 `terraform` 目录验证路径配置。 输出中应会显示可用 Terraform 选项的列表：
+
+```bash
+azureuser@Azure:~$ terraform
+Usage: terraform [--version] [--help] <command> [args]
+```
 
 ## <a name="set-up-terraform-access-to-azure"></a>设置 Terraform 对 Azure 的访问权限
-要使 Terraform 能够在 Azure 中预配资源，需要在 Azure Active Directory (Azure AD) 中创建两个实体：Azure AD 应用程序和 Azure AD 服务主体。 然后，在 Terraform 脚本中使用这些实体的标识符。 服务主体是全局 Azure AD 应用程序的本地实例。 使用服务主体可对全局资源进行精细的本地访问控制。
 
-创建 Azure AD 应用程序和 Azure AD 服务主体的方法有许多种。 目前最简单快捷的方法是使用 Azure CLI 2.0，[可在 Windows、Linux 或 Mac 上下载并安装](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)此工具。 还可以使用 PowerShell 或 Azure CLI 1.0 创建必要的安全基础结构。 下面说明如何使用所有这些方法为 Azure 配置 Terraform。
+配置 [Azure AD 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)，以使 Terraform 将资源预配到 Azure。 服务主体可向你授予 Terraform 脚本，使用凭据在 Azure 订阅中预配资源。
 
-### <a name="use-azure-cli-20-for-windows-linux-or-mac-users"></a>使用 Azure CLI 2.0（适用于 Windows、Linux 或 Mac 用户） 
-下载并安装 [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) 后，发出以下命令，登录以管理 Azure 订阅：
+创建 Azure AD 应用程序和 Azure AD 服务主体的方法有许多种。 目前最简单快捷的方法是使用 Azure CLI 2.0，[可在 Windows、Linux 或 Mac 上下载并安装](/cli/azure/install-azure-cli)此工具。
 
-```
+发出以下命令，登录以管理 Azure 订阅：
+
+```azurecli-interactive
 az login
-```
-
->[!NOTE]
->如果使用中文版、Azure 德语版或 Azure 政府云，需要先配置 Azure CLI 才能使用该云。 可以运行以下代码来实现此目的：
-
-```
-az cloud set --name AzureChinaCloud|AzureGermanCloud|AzureUSGovernment
 ```
 
 如果有多个 Azure 订阅，`az login` 命令可返回其详细信息。 设置 `SUBSCRIPTION_ID` 环境变量，用于保存从要使用的订阅返回的 `id` 字段值。 
 
 设置要用于此会话的订阅。
 
-```
+```azurecli-interactive
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
 查询帐户，以获取订阅 ID 和租户 ID 值。
 
-```
+```azurecli-interactive
 az account show --query "{subscriptionId:id, tenantId:tenantId}"
 ```
 
 接下来，为 Terraform 创建单独凭据。
 
-```
+```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
 将返回 appId、password、sp_name 和 tenant。 记下 appId 和 password。
 
-若要确认凭据（服务主体），请打开新的 shell 并运行以下命令： 请将 sp_name、password 和 tenant 替换为返回值：
+若要测试凭据，打开新的 shell 并运行以下命令，并对 sp_name、密码和租户使用返回的值：
 
-```
+```azurecli-interactive
 az login --service-principal -u SP_NAME -p PASSWORD --tenant TENANT
 az vm list-sizes --location westus
 ```
 
-### <a name="use-powershell-for-windows-users"></a>使用 PowerShell（适用于 Windows 用户） 
-若要使用 Windows 计算机编写和执行 Terraform 脚本，并将 PowerShell 用于配置任务，请使用合适的 PowerShell 工具来配置计算机。 
+## <a name="configure-terraform-environment-variables"></a>配置 Terraform 环境变量
 
-1. 遵循[安装和配置 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) 中的步骤安装 PowerShell 工具。 
-
-2. 通过 PowerShell 控制台下载并执行 [azure-setup.ps1 脚本](https://github.com/echuvyrov/terraform101/blob/master/azureSetup.ps1)。
-
-3. 若要运行 azure-setup.ps1 脚本，请通过 PowerShell 控制台下载该脚本并执行 `./azure-setup.ps1 setup` 命令。 然后使用管理特权登录到 Azure 订阅。
-
-4. 出现提示时，提供应用程序名称（所需的任意字符串）。 （可选）出现提示时，提供强密码。 如果未提供密码，系统会使用 .NET 安全库生成强密码。
-
-### <a name="use-azure-cli-10-for-linux-or-mac-users"></a>使用 Azure CLI 1.0（适用于 Linux 或 Mac 用户）
-若要在包含 Azure CLI 1.0 的 Linux 计算机或 Mac 上开始使用 Terraform，请在计算机上安装适当的库。  
-
-1. 遵循[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 中的步骤安装 Azure xPlat CLI 工具。 
-
-2. 遵循[下载 jq](https://stedolan.github.io/jq/download/) 中的说明下载并安装 JSON 处理器。
-
-3. 通过控制台下载并执行 [azure-setup.sh 脚本](https://github.com/mitchellh/packer/blob/master/contrib/azure-setup.sh) bash 脚本。
-
-4. 若要运行 azure-setup.sh 脚本，请通过控制台下载该脚本并执行 `./azure-setup setup` 命令。 然后使用管理特权登录到 Azure 订阅。
- 
-5. 出现提示时，提供应用程序名称（所需的任意字符串）。 （可选）出现提示时，提供强密码。 如果未提供密码，系统会使用 .NET 安全库生成强密码。
-
-上述所有脚本会创建 Azure AD 应用程序和服务主体。 服务主体会在订阅中获取参与者或所有者级别的访问权限。 由于授予的访问权限级别高，因此应始终保护由这些脚本生成的安全信息。 记下这些脚本提供的安全信息的所有四个部分：appId、password、subscription_id 和 tenant_id。
-
-## <a name="set-environment-variables"></a>设置环境变量。
-创建并配置 Azure AD 服务主体之后，需要告知 Terraform 要使用的租户 ID、订阅 ID、客户端 ID 和客户端机密。 为此，可以根据[使用 Terraform 创建基本基础结构](terraform-create-complete-vm.md)中所述，在 Terraform 脚本中嵌入这些值。 或者，可以设置以下环境变量（这样可以避免意外签入或共享凭据）：
+配置 Terraform 以在创建 Azure 资源时，从服务主体使用租户 ID、订阅 ID、客户端 ID 和客户端密码。 设置以下环境变量，[Azure Terraform 模块](https://registry.terraform.io/modules/Azure)将自动使用该变量。
 
 - ARM_SUBSCRIPTION_ID
 - ARM_CLIENT_ID
@@ -117,7 +91,7 @@ az vm list-sizes --location westus
 
 可以使用此示例 shell 脚本设置这些变量：
 
-```
+```bash
 #!/bin/sh
 echo "Setting environment variables for Terraform"
 export ARM_SUBSCRIPTION_ID=your_subscription_id
@@ -126,8 +100,53 @@ export ARM_CLIENT_SECRET=your_password
 export ARM_TENANT_ID=your_tenant_id
 ```
 
-此外，如果将 Terraform 与中国区 Azure 或者 Azure 政府或 Azure 德国配合使用，需要相应地设置 ENVIRONMENT 变量。
+## <a name="run-a-sample-script"></a>运行示例脚本
+
+在空白目录下创建文件 `test.tf`，并粘贴到以下脚本中。 
+
+```tf
+provider "azurerm" {
+}
+resource "azurerm_resource_group" "rg" {
+        name = "testResourceGroup"
+        location = "westus"
+}
+```
+
+保存文件并运行 `terraform init`。 此命令将下载创建 Azure 资源组所需的 Azure 模块。 可以看到以下输出：
+
+```
+* provider.azurerm: version = "~> 0.3"
+
+Terraform has been successfully initialized!
+```
+
+使用 `terraform plan` 预览脚本，然后使用 `terraform apply` 创建 `testResouceGroup` 资源：
+
+```
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  + azurerm_resource_group.rg
+      id:       <computed>
+      location: "westus"
+      name:     "testResourceGroup"
+      tags.%:   <computed>
+
+azurerm_resource_group.rg: Creating...
+  location: "" => "westus"
+  name:     "" => "testResourceGroup"
+  tags.%:   "" => "<computed>"
+azurerm_resource_group.rg: Creation complete after 1s
+```
 
 ## <a name="next-steps"></a>后续步骤
-现已安装 Terraform 并配置 Azure 凭据，接下来可以开始将基础结构部署到 Azure 订阅。 接下来，了解如何[使用 Terraform 创建基础结构](terraform-create-complete-vm.md)。
+
+已安装 Terraform 并配置 Azure 凭据，接下来可以开始将基础结构部署到 Azure 订阅。 然后，创建空的 Azure 资源组，测试安装。
+
+> [!div class="nextstepaction"]
+> [使用 Terraform 创建 Azure VM](terraform-create-complete-vm.md)
 

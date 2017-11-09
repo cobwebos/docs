@@ -12,14 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/02/2017
+ms.date: 10/31/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 5c60fa737c0133482af8b653f795bf9086c39969
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: 3030336f5efca5029e0e790372495df11cdc8aeb
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>了解 Azure Active Directory 体系结构
 使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
@@ -54,9 +53,9 @@ Azure AD 体系结构的组件包括主副本和辅助副本。
 
 ### <a name="scalability"></a>可伸缩性
 
-可伸缩性是指服务根据不断提高的性能需求进行扩展的能力。 将数据分区可实现写入可伸缩性。 若要实现读取可伸缩性，可将数据从一个分区复制到分发在世界各地的多个辅助副本。
+可伸缩性是指服务根据不断提高的性能需求进行扩展的能力。 将数据分区可实现写入伸缩性。 要实现读取伸缩性，可将数据从一个分区复制到分发在世界各地的多个辅助副本。
 
-来自目录应用程序的请求通常会路由到它们在物理上最靠近的数据中心。 写入操作将以透明方式重定向到主副本，以提供读写一致性。 由于在大多数情况下目录通常为读取操作提供服务，因此辅助副本可以大幅扩展分区的规模。
+来自目录应用程序的请求通常会路由到它们在物理上最靠近的数据中心。 写入操作以透明方式重定向到主副本，以提供读写一致性。 由于在大多数情况下目录通常为读取操作提供服务，因此辅助副本可以大幅扩展分区的规模。
 
 目录应用程序连接到最靠近的数据中心。 这可以改善性能，因此可实现扩展。 由于一个目录分区可以包含许多辅助副本，因此，可将辅助副本放置在比较靠近目录客户端的位置。 只有写入密集型的内部目录服务组件才直接以活动的主副本为目标。
 
@@ -84,8 +83,8 @@ Azure AD 的副本存储在分布于世界各地的数据中心内。 有关详�
 
 Azure AD 可跨数据中心运行，其特征如下：
 
- * 身份验证、Graph 其他 AD 服务驻留在网关服务的后面。 网关管理这些服务的负载均衡。 如果使用事务运行状况探测检测到任何不正常的服务器，网关将自动故障转移。 网关根据这些运行状况探测，将流量动态路由到正常的数据中心。
- * 对于*读取*操作，目录提供辅助副本以及在多个数据中心运行的、采用主动-主动配置的相应前端服务。 当整个数据中心发生故障时，流量将自动路由到其他数据中心。
+ * 身份验证、Graph 其他 AD 服务驻留在网关服务的后面。 网关管理这些服务的负载均衡。 如果使用事务运行状况探测检测到任何不正常的服务器，网关会自动故障转移。 网关根据这些运行状况探测，将流量动态路由到正常的数据中心。
+ * 对于*读取*操作，目录提供辅助副本以及在多个数据中心运行的、采用主动-主动配置的相应前端服务。 当整个数据中心发生故障时，流量会自动路由到其他数据中心。
  *  对于*写入*操作，目录将通过计划的（将新的主副本同步到旧的主副本）或紧急故障转移过程，跨数据中心故障转移主（主控）副本。 通过将所有提交项复制到至少两个数据中心来实现数据持久性。
 
 **数据一致性**
@@ -118,5 +117,4 @@ Azure AD 实施所有数据的每日备份，因此，在发生任何逻辑删�
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 开发人员指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
-
 

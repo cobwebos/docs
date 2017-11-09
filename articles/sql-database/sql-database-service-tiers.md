@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL 数据库服务 | Microsoft Docs"
-description: "了解 SQL 数据库服务层"
+description: "了解单一数据库和池数据库的服务层以提供性能级别和存储大小。"
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -13,15 +13,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Active
 ms.date: 08/20/2017
 ms.author: carlrab
+ms.openlocfilehash: 55f59fddee008eb42b7252d6368a56873a6abd16
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 0183e9c60da7c216a6268dfec3874eb76270f71d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>什么是 Azure SQL 数据库服务层
 
@@ -35,8 +34,8 @@ ms.lasthandoff: 08/30/2017
 |目标工作负荷|开发和生产|开发和生产|开发和生产|对因服务故障而造成的数据丢失，工作负荷的容错时间可达 5 分钟|
 |运行时间 SLA|99.99%|99.99%|99.99%|在预览版中不适用|
 |备份保留|7 天|35 天|35 天|35 天|
-|CPU|低|低、中、高|中、高|中|
-|IO 吞吐量|低  | 中 | 数量级高于标准版|与高级版相同|
+|CPU|低|低、中、高|中、高|中型|
+|IO 吞吐量|低  | 中型 | 数量级高于标准版|与高级版相同|
 |IO 延迟|高于高级版|高于高级版|低于基本版和标准版|与高级版相同|
 |列存储索引和内存中 OLTP|不适用|不适用|支持|支持|
 |||||
@@ -80,5 +79,4 @@ ms.lasthandoff: 08/30/2017
 - 了解 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)
 * 详细了解 [DTU 和 eDTU](sql-database-what-is-a-dtu.md)。
 * 要了解如何监视 DTU 的使用情况，请参阅[监视和性能优化](sql-database-troubleshoot-performance.md)。
-
 

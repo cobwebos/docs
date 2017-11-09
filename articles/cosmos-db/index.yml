@@ -15,7 +15,7 @@ metadata:
   ms.date: 07/24/2017
   ms.author: carolz
 abstract:
-  description: Azure Cosmos DB 是一个全局分布式数据库服务，可让你跨数目不限的地理区域，根据全面的 SLA 弹性、独立缩放吞吐量与存储。  使用 Cosmos DB 可通过一系列流行 API 和编程模型开发文档、键/值或图形数据库。 参考我们的快速入门、教程和示例了解如何使用 Cosmos DB。
+  description: Azure Cosmos DB 是一个全球分布式数据库服务，使用它可以跨任意数量的地理区域，根据全面的 SLA，灵活、独立地缩放吞吐量与存储。  使用 Cosmos DB 可通过一系列流行 API 和编程模型开发文档、键/值或图形数据库。 参考我们的快速入门、教程和示例了解如何使用 Cosmos DB。
 sections:
   - title: 5 分钟快速入门
     items:
@@ -75,6 +75,7 @@ sections:
           - html: 使用 Azure Cosmos DB 查询数据：<a href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>
           - html: 使用 Azure Cosmos DB 进行全球数据库复制：<a href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>
           - html: <a href="local-emulator">使用仿真程序本地开发应用程序</a>
+          - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器</a>
   - title: 示例
     items:
       - type: list

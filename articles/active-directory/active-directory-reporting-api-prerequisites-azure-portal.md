@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
+ms.openlocfilehash: 58ebf74e166cdcae2c54b134cb99552333fafa24
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 5fafd83c337e3c73260d89cdad7409a01ce5855b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>访问 Azure AD 报告 API 的先决条件
 
@@ -112,6 +111,11 @@ ms.lasthandoff: 08/07/2017
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/15.png)
 
+7. 单击“授予权限”，并单击“是”。
+
+    ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/17.png)
+
+
 ## <a name="gather-configuration-settings"></a>收集配置设置 
 本部分介绍了如何从目录中获取以下设置：
 
@@ -189,5 +193,4 @@ ms.lasthandoff: 08/07/2017
 ## <a name="next-steps"></a>后续步骤
 * 是否要以编程方式从 Azure AD 报告 API 中访问数据？ 请查看 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
 * 如果要查找有关 Azure Active Directory 报告的详细信息，请参阅 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)。  
-
 

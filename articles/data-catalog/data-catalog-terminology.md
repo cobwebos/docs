@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e9e1009bc20679a907e4bd2387865a6000b4a898
-ms.contentlocale: zh-cn
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 557b529f45c7fbc286b7e1893d4b4688e088ed91
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
 ## <a name="catalog"></a>目录
@@ -83,4 +82,3 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 ## <a name="see-also"></a>另请参阅
 * [什么是 Azure 数据目录？](data-catalog-what-is-data-catalog.md) - 本文概述了 Azure 数据目录服务、它所提供的价值以及所支持的方案。
 * [ Azure 数据目录入门](data-catalog-get-started.md) - 本文提供了介绍如何使用 Azure 数据目录进行数据源发现的端到端教程。  
-

@@ -11,14 +11,14 @@
 > 
 > 
 
-在逻辑应用中使用 Azure SQL 数据库之前，请先连接到你的 SQL 数据库。 可以在 Azure 门户中的逻辑应用内轻松地执行此操作。  
+在逻辑应用中使用 Azure SQL 数据库之前，请先连接到 SQL 数据库。 可以在 Azure 门户中的逻辑应用内轻松地执行此操作。  
 
 按照以下步骤操作，即可连接到 Azure SQL 数据库：  
 
-1. 创建逻辑应用。 在逻辑应用设计器中，添加触发器，然后添加操作。 在下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“sql”。 选择其中一个操作：  
+1. 创建逻辑应用。 在逻辑应用设计器中，添加触发器，并添加操作。 在下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“sql”。 选择其中一个操作：  
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/sql-actions.png)
-2. 如果以前尚未创建任何与 SQL 数据库的连接，系统会提示你输入连接详细信息：  
+2. 如果以前尚未创建任何与 SQL 数据库的连接，系统会提示输入连接详细信息：  
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/connection-details.png) 
 3. 输入 SQL 数据库详细信息。 带有星号的属性必填。
@@ -27,12 +27,12 @@
    | --- | --- |
    | 通过网关连接 |将该属性保留未选中状态。 在连接到本地 SQL Server 时，会使用该属性。 |
    | 连接名称 * |为连接输入任何名称。 |
-   | SQL Server 名称 * |输入服务器名称；这有点类似于 *servername.database.windows.net*。 该服务器名称将显示在 Azure 门户中的 SQL 数据库属性中，也会显示在连接字符串中。 |
-   | SQL 数据库名称 * |输入你的 SQL 数据库的名称。 该名称将列在连接字符串中的 SQL 数据库属性中：Initial Catalog=*yoursqldbname*。 |
+   | SQL Server 名称 * |输入服务器名称；这有点类似于 *servername.database.windows.net*。 该服务器名称会显示在 Azure 门户中的 SQL 数据库属性中，也会显示在连接字符串中。 |
+   | SQL 数据库名称 * |输入 SQL 数据库的名称。 该名称将列在连接字符串中的 SQL 数据库属性中：Initial Catalog=*yoursqldbname*。 |
    | 用户名 * |输入在创建 SQL 数据库时创建的用户名。 该用户名将列在 Azure 门户中的 SQL 数据库属性中。 |
    | 密码 * |输入在创建 SQL 数据库时创建的密码。 |
    
-    这些凭据将用于授权逻辑应用进行连接，然后访问你的 SQL 数据。 完成之后，连接详细信息会类似于下面这样：  
+    这些凭据用于授权逻辑应用进行连接，然后访问 SQL 数据。 完成之后，连接详细信息会类似于下面这样：  
    
     ![SQL Azure 连接创建步骤](./media/connectors-create-api-sqlazure/sample-connection.png) 
 4. 选择“创建” 。 

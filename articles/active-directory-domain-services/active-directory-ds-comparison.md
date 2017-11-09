@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 09a68c7f4e7169a6ca02e33e89e0f048155fa88c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>如何确定 Azure AD 域服务是否适合具体的用例
 凭借 Azure AD 域服务，可以在 Azure 基础结构服务中部署工作负荷，而无需担心如何维护 Azure 中的标识基础结构。 此托管服务不同于自行部署和管理的典型 Windows Server Active Directory 部署。 此服务易于部署，并提供自动化的运行状况监视和修正。 我们正在持续改进该服务，以求添加对常见部署方案的支持。
@@ -52,7 +51,7 @@ ms.lasthandoff: 07/08/2017
 | [**地理分散的部署**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>托管服务
-Azure AD 域服务域由 Microsoft 管理。 用户无需考虑如何修补、更新、监视、备份域，以及确保域的可用性。 Microsoft Azure 将以服务的形式针对托管域提供这些管理任务。
+Azure AD 域服务域由 Microsoft 管理。 用户无需考虑如何修补、更新、监视、备份域，以及确保域的可用性。 Microsoft Azure 以服务的形式针对托管域提供这些管理任务。
 
 #### <a name="secure-deployments"></a>安全部署
 托管域是根据 Microsoft 针对 AD 部署的安全建议被安全锁定的。 这些建议源于 AD 产品团队数十年的 AD 部署工程设计和支持经验。 在 DIY 部署中，需要执行特定的部署步骤才能锁定/保护部署。
@@ -71,7 +70,7 @@ AAD DS 托管域上未提供这些提升的权限。 无法针对 AAD-DS 托管�
 通过 Azure AD 域服务，可以使用企业凭据向托管域进行身份验证。 证书与 Azure AD 租户保持同步。 对于已同步的租户，Azure AD Connect 可确保本地的凭据更改同步到 Azure AD。 使用 DIY 域设置时，可能需要设置与你的本地 AD 之间的 AD 域信任关系，使用户能够使用其企业凭据进行身份验证。 或者，可能需要设置 AD 复制，确保将用户密码同步到 Azure 域控制器虚拟机。
 
 #### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
-你没有 Active Directory 域服务托管域的“域管理员”权限。 因此无法配置基于帐户的（传统）Kerberos 约束委派。 但可配置更安全的基于资源的约束委派。
+没有 Active Directory 域服务托管域的“域管理员”权限。 因此无法配置基于帐户的（传统）Kerberos 约束委派。 但可配置更安全的基于资源的约束委派。
 [详细信息](active-directory-ds-enable-kcd.md)
 
 #### <a name="custom-ou-structure"></a>自定义 OU 结构
@@ -110,7 +109,7 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 * **将本地域扩展到 Azure：**可以使用 VPN/ExpressRoute 连接将 Azure 虚拟网络连接到本地网络。 此设置使 Azure VM 能够加入本地 AD。 另一种做法是将 Azure 中本地域的副本域控制器升级为 VM。 然后，将它设置为通过与本地目录建立的 VPN/ExpressRoute 连接进行复制。 此部署模式可以有效地将本地域扩展到 Azure。
 
 > [!NOTE]
-> 你可能觉得 DIY 选项更适合你的部署用例。 欢迎各位[分享反馈](active-directory-ds-contact-us.md)，让我们了解哪些功能可在你们今后选择 Azure AD 域服务时提供帮助。 此外，这些反馈可帮助我们改进服务，使其更好地满足部署需求，适合具体的用例。
+> 可能觉得 DIY 选项更适合部署用例。 欢迎各位[分享反馈](active-directory-ds-contact-us.md)，让我们了解哪些功能可在你们今后选择 Azure AD 域服务时提供帮助。 此外，这些反馈可帮助我们改进服务，使其更好地满足部署需求，适合具体的用例。
 >
 >
 
@@ -120,4 +119,3 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 * [功能 - Azure AD 域服务](active-directory-ds-features.md)
 * [部署方案 - Azure AD 域服务](active-directory-ds-scenarios.md)
 * [在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-

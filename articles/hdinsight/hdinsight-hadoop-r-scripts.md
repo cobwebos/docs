@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 5b9b793d49217acd9f0c6c518596a7afb5600d69
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 R
 
@@ -63,19 +62,19 @@ R 与 Azure Blob 存储 (WASB) 兼容，这样，存储在此的数据可以在 
         <tr><td>节点类型</td>
             <td>指定在其上运行自定义脚本的节点。 可以选择“所有节点”<b></b>、“仅限头节点”<b></b>或“仅限辅助角色节点”<b></b>。
         <tr><td>parameters</td>
-            <td>根据脚本的需要，指定参数。 但是，用于安装 R 的脚本不需要任何参数，因此，你可以将此项保留为空。</td></tr>
+            <td>根据脚本的需要，指定参数。 但是，用于安装 R 的脚本不需要任何参数，因此，可以将此项保留为空。</td></tr>
     </table>
 
-    你可以添加多个脚本操作，以在群集上安装多个组件。 在添加了脚本后，单击复选标记以开始创建群集。
+    可以添加多个脚本操作，以在群集上安装多个组件。 在添加了脚本后，单击复选标记以开始创建群集。
 
-你还可以通过 Azure PowerShell 或 HDInsight .NET SDK 使用脚本在 HDInsight 上安装 R。 有关这些过程的说明在本文后面提供。
+还可以通过 Azure PowerShell 或 HDInsight .NET SDK 使用脚本在 HDInsight 上安装 R。 有关这些过程的说明在本文后面提供。
 
 ## <a name="run-r-scripts"></a>运行 R 脚本
 本部分介绍如何在安装有 HDInsight 的 Hadoop 群集上运行 R 脚本。
 
-1. **与群集建立远程桌面连接**：在门户中，对创建的安装有 R 的群集启用远程桌面，然后连接到该群集。 有关说明，请参阅[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。
+1. **与群集建立远程桌面连接**：在门户中，对创建的安装有 R 的群集启用远程桌面，并连接到该群集。 有关说明，请参阅[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。
 2. **打开 R 控制台**：R 安装将 R 控制台的链接放置在头节点的桌面上。 单击它以打开 R 控制台。
-3. **运行 R 脚本**：通过粘贴并选择 R 脚本，然后按 ENTER，可以从 R 控制台直接运行该脚本。 下面是一个简单的示例脚本，该脚本将生成 1 到 100 的数字，然后将其乘以 2。
+3. **运行 R 脚本**：通过粘贴并选择 R 脚本，并按 ENTER，可以从 R 控制台直接运行该脚本。 下面是一个简单的示例脚本，该脚本将生成 1 到 100 的数字，然后将其乘以 2。
 
         library(rmr2)
         library(rhdfs)
@@ -114,4 +113,3 @@ R 与 Azure Blob 存储 (WASB) 兼容，这样，存储在此的数据可以在 
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
-

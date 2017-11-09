@@ -2,10 +2,10 @@
 
 ### <a name="install-raspbian"></a>安装 Raspbian
 
-如果这是你首次使用 Raspberry Pi，需使用套件中随附的 SD 卡上的 NOOBS 来安装 Raspbian 操作系统。 [Raspberry Pi 软件指南][lnk-install-raspbian]介绍了如何在 Raspberry Pi 上安装操作系统。 本教程假定你已在 Raspberry Pi 上安装 Raspbian 操作系统。
+如果这是你首次使用 Raspberry Pi，则需使用套件中随附的 SD 卡上的 NOOBS 来安装 Raspbian 操作系统。 [Raspberry Pi 软件指南][lnk-install-raspbian]介绍了如何在 Raspberry Pi 上安装操作系统。 本教程假定已在 Raspberry Pi 上安装 Raspbian 操作系统。
 
 > [!NOTE]
-> [适用于 Raspberry Pi 3 的 Microsoft Azure IoT 初学者套件][lnk-starter-kits]随附的 SD 卡已安装 NOOBS。 可以从该卡启动 Raspberry Pi，然后选择安装 Raspbian OS。
+> [适用于 Raspberry Pi 3 的 Microsoft Azure IoT 初学者套件][lnk-starter-kits]随附的 SD 卡已安装 NOOBS。 可以从该卡启动 Raspberry Pi，并选择安装 Raspbian OS。
 
 ### <a name="set-up-the-hardware"></a>安装硬件
 
@@ -39,7 +39,7 @@
 - 将 Raspberry Pi 连接到套件中提供的电源。
 - 使用套件中提供的以太网电缆将 Raspberry Pi 连接到网络。 也可为 Raspberry Pi 设置[无线连接][lnk-pi-wireless]。
 
-你现在已经完成 Raspberry Pi 的硬件设置。
+现在已经完成 Raspberry Pi 的硬件设置。
 
 ### <a name="sign-in-and-access-the-terminal"></a>登录并访问终端
 
@@ -78,7 +78,7 @@ sudo nano /boot/config.txt
 `#dtparam=spi=on`
 
 - 若要取消注释行，请删除开头的 `#`。
-- 保存所做的更改（按 **Ctrl-O**，然后按 **Enter**），然后退出编辑器（按 **Ctrl-X**）。
+- 保存所做的更改（按 **Ctrl-O**，并按 **Enter**），并退出编辑器（按 **Ctrl-X**）。
 - 若要启用 SPI，请重新启动 Raspberry Pi。 重新启动会断开终端的连接，在 Raspberry Pi 重新启动后需再次登录：
 
   ```sh

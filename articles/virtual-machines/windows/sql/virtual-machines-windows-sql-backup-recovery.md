@@ -15,13 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: f05ef18fb33942883ba164985721ce2d4f79d3fa
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 65557938673c5442758396a47873be1016e0f71b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 ## <a name="overview"></a>概述
@@ -41,10 +39,10 @@ Azure 存储维护每个 Azure VM 磁盘的 3 个副本，以确保数据不会�
 下列部分介绍特定于 Azure 虚拟机中支持的不同 SQL Server 版本的信息。
 
 ## <a name="sql-server-virtual-machines"></a>SQL Server 虚拟机
-如果你的 SQL Server 实例在 Azure 虚拟机上运行，数据库文件已驻留在 Azure 中的数据磁盘上。 这些磁盘驻留在 Azure Blob 存储中。 因此，备份数据库的原因和捕获更改的方式略有不同。 请考虑以下代码。 
+如果 SQL Server 实例在 Azure 虚拟机上运行，数据库文件已驻留在 Azure 中的数据磁盘上。 这些磁盘驻留在 Azure Blob 存储中。 因此，备份数据库的原因和捕获更改的方式略有不同。 请考虑以下代码。 
 
-* 你不再需要执行数据库备份以针对硬件或介质故障提供保护，因为 Microsoft Azure 在 Microsoft Azure 服务中提供了此保护。
-* 你仍需要执行数据库备份以针对用户错误提供保护，或者满足存档目的、法规原因或管理目的。
+* 不再需要执行数据库备份以针对硬件或介质故障提供保护，因为 Microsoft Azure 在 Microsoft Azure 服务中提供了此保护。
+* 仍需要执行数据库备份以针对用户错误提供保护，或者满足存档目的、法规原因或管理目的。
 * 可以直接在 Azure 中存储备份文件。 有关详细信息，请参阅以下部分，其中提供了适用于不同版本的 SQL Server 的指导。
 
 ## <a name="sql-server-2016"></a>SQL Server 2016
@@ -72,7 +70,7 @@ SQL Server 2014 包括以下增强功能：
 ## <a name="sql-server-2012"></a>SQL Server 2012
 有关 SQL Server 2012 中 SQL Server 备份和还原的详细信息，请参阅 [SQL Server 数据库的备份和还原 (SQL Server 2012)](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)。
 
-从 SQL Server 2012 SP1 累积更新 2 起，你可以备份到 Azure Blob 存储服务以及从该服务中还原。 通过此增强功能，可以对在 Azure 虚拟机或本地实例上运行的 SQL Server 备份 SQL Server 数据库。 有关详细信息，请参阅[使用 Azure Blob 存储服务执行 SQL Server 备份和还原](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)。
+从 SQL Server 2012 SP1 累积更新 2 起，可以备份到 Azure Blob 存储服务以及从该服务中还原。 通过此增强功能，可以对在 Azure 虚拟机或本地实例上运行的 SQL Server 备份 SQL Server 数据库。 有关详细信息，请参阅[使用 Azure Blob 存储服务执行 SQL Server 备份和还原](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)。
 
 使用 Azure Blob 存储服务的一些好处包括能够避开 16 个附加磁盘的限制、易于管理、备份文件直接可用于在 Azure 虚拟机上运行的其他 SQL Server 实例，或者用于本地实例以进行迁移或灾难恢复。 有关使用 Azure Blob 存储服务进行 SQL Server 备份的所有好处，请参阅[使用 Azure Blob 存储服务执行 SQL Server 备份和还原](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)中的*好处*部分。
 
@@ -89,5 +87,4 @@ SQL Server 2014 包括以下增强功能：
 尽管备份和还原可用于迁移数据，但是，Azure VM 上的 SQL Server 可能还存在更便捷的数据迁移路径。 有关迁移选项和建议的完整讨论，请参阅[将数据库迁移到 Azure VM 上的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 
 请查看其他[有关在 Azure 虚拟机中运行 SQL Server 的资源](virtual-machines-windows-sql-server-iaas-overview.md)。
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar;chackdan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c83c4db0ada77998354b3fca4e2297335899a9bd
-ms.openlocfilehash: 20a3277370583ccf93b36191a70149ed7d814238
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/16/2017
-
+ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务
@@ -47,16 +46,16 @@ Azure Service Fabric 提供了多个升级模式，可支持开发和生产群�
 ## <a name="upgrade-with-a-diff-package"></a>使用差异包升级
 Service Fabric 应用程序可以通过预配一个完整且独立的应用程序包进行升级。 此外，还可以通过使用一个仅包含已更新应用程序文件、已更新应用程序清单和服务清单文件的差异包对应用程序进行升级。
 
-完整的应用程序包中包含启动和运行 Service Fabric 应用程序所需的所有文件。 差异包仅包含在最后一次设置与当前升级之间更改的文件，以及完整的应用程序清单和服务清单文件。 如果应用程序清单或服务清单中存在任何无法在生成布局中找到的引用，系统将在映像存储中搜索这些引用。
+完整的应用程序包中包含启动和运行 Service Fabric 应用程序所需的所有文件。 差异包仅包含在最后一次设置与当前升级之间更改的文件，以及完整的应用程序清单和服务清单文件。 如果应用程序清单或服务清单中存在任何无法在生成布局中找到的引用，系统会在映像存储中搜索这些引用。
 
 向群集首次安装应用程序时，需要完整的应用程序包。 后续更新可以是完整的应用程序包或差异包。
 
 在以下情况下，使用差异包将是一个不错的选择：
 
-* 当你拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时，首选差异包。
-* 当你的部署系统直接从应用程序生成过程产生生成布局时，首选差异包。 在这种情况下，即使代码未发生任何更改，新生成的程序集也将获得不同的校验和。 使用完整的应用程序包需要你更新所有代码包上的版本。 使用差异包时，你只提供更改的文件和其中的版本已更改的清单文件。
+* 拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时，首选差异包。
+* 当部署系统直接从应用程序生成过程产生生成布局时，首选差异包。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 若要使用完整的应用程序包，需要更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
 
-如果应用程序是使用 Visual Studio 升级的，将自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
+如果应用程序是使用 Visual Studio 升级的，会自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
 
 例如，让我们从以下应用程序开始（为便于理解，这里提供了版本号）：
 
@@ -70,7 +69,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-现在，假设你只想要使用 PowerShell 和差异包来更新 service1 的代码包。 现在，更新的应用程序使用以下文件夹结构：
+现在，假设只想使用 PowerShell 和差异包来更新 service1 的代码包。 现在，更新的应用程序使用以下文件夹结构：
 
 ```text
 app1           2.0.0      <-- new version
@@ -82,7 +81,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-在本例中，你已将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单以反映代码包更新。 应用程序包的文件夹使用以下结构：
+在本例中，已将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单以反映代码包更新。 应用程序包的文件夹使用以下结构：
 
 ```text
 app1/
@@ -100,4 +99,3 @@ app1/
 了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-

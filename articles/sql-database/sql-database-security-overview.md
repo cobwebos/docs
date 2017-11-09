@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL 数据库安全概述 | Microsoft 文档"
-description: "了解有关 Azure SQL 数据库和 SQL Server 安全性的信息，包括云与本地 SQL Server 在身份验证、授权、连接安全性、加密和合规性方面的差异。"
+description: "了解 Azure SQL 数据库和 SQL Server 的安全性，包括云与本地 SQL Server 之间的差异。"
 services: sql-database
 documentationcenter: 
 author: tmullaney
@@ -12,15 +12,14 @@ ms.custom: security
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: thmullan;jackr
+ms.openlocfilehash: 181ad8471c0d0cb24d8f4eae6bddd9d750b4ee61
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: de2b70a6a6bc557902fbe1fe1391696ec9998d70
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="securing-your-sql-database"></a>保护 SQL 数据库
 
@@ -84,4 +83,3 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 - 有关使用 SQL 数据库中的访问控制功能的介绍，请参阅[控制访问](sql-database-control-access.md)。
 - 有关数据库审核的讨论，请参阅 [SQL 数据库审核](sql-database-auditing.md)。
 - 有关威胁检测的讨论，请参阅 [SQL 数据库威胁检测](sql-database-threat-detection.md)。
-

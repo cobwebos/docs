@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
 ms.openlocfilehash: c179c39a43da0aa35e945acceacbf27fe8e328f3
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -70,7 +69,7 @@ ms.lasthandoff: 07/18/2017
 ## <a name="410-08252015"></a>4.1.0 (08/25/2015)
 * 处理 Android M 的新权限模型。
 * 现在，可以在运行时配置位置功能，而不是使用 `AndroidManifest.xml`。
-* 修复了权限 bug：如果你使用 `ACCESS_FINE_LOCATION`，则不再需要 `ACCESS_COARSE_LOCATION`。
+* 修复了权限 bug：如果使用 `ACCESS_FINE_LOCATION`，则不再需要 `ACCESS_COARSE_LOCATION`。
 * 稳定性改进。
 
 ## <a name="400-07062015"></a>4.0.0 (07/06/2015)
@@ -89,5 +88,4 @@ ms.lasthandoff: 07/18/2017
 * 删除了在设备之间发送和接收消息的 API。
 * 安全性改进。
 * 删除了 Google Play 和 SmartAd 跟踪。
-
 

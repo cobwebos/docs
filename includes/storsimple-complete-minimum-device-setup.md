@@ -9,7 +9,7 @@
     ![设备快速启动页](./media/storsimple-complete-minimum-device-setup/Device_Quick_Start_page_1M.png)
 3. 在“基本设置”  页上，执行以下操作：
    
-   1. 为你的设备提供“友好名称”  。 默认设备名称可反映设备型号和序列号等信息。 可分配最多包含 64 个字符的友好名称来管理设备。
+   1. 为设备提供“友好名称”。 默认设备名称可反映设备型号和序列号等信息。 可分配最多包含 64 个字符的友好名称来管理设备。
    2. 基于部署设备的地理位置设置“时区”  。 设备将此时区用于所有计划操作。
    3. 在“DNS 设置”下，为“辅助 DNS 服务器”提供地址。 如果使用的是 IPv6，将基于 Windows PowerShell 接口中提供的 IPv6 前缀填充字段。 
       如果未配置辅助 DNS 服务器，则无法保存设备配置。
@@ -17,7 +17,7 @@
       
       ![StorSimple 最低要求设备设置基本设置](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupBasicSettings1-include.png)
 4. 单击箭头图标。 ![StorSimple 箭头图标](./media/storsimple-complete-minimum-device-setup/HCS_ArrowIcon-include.png)
-5. 在“网络接口”  页上，为控制器 0 和控制器 1 提供固定 IP 地址。 如果已为 IPv4 配置 DATA 0 接口，需要以 IPv4 格式提供固定 IP 地址。 如果已为 IPv6 配置提供前缀，固定 IP 地址将自动填充到这些字段中。
+5. 在“网络接口”  页上，为控制器 0 和控制器 1 提供固定 IP 地址。 如果已为 IPv4 配置 DATA 0 接口，需要以 IPv4 格式提供固定 IP 地址。 如果已为 IPv6 配置提供前缀，固定 IP 地址会自动填充到这些字段中。
 
     > [!NOTE] 
     > - 控制器的固定 IP 地址需为子网内可由设备 IP 地址访问的可用 IP。
@@ -26,7 +26,7 @@
     ![StorSimple 最低要求设备设置网络接口](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
 1. 单击选中图标 ![StorSimple 选中图标](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png)提供地址。
-   将返回到设备“ **快速启动** ”页。
+   将返回到设备“快速启动”页。
    
    > [!NOTE]
    > 通过访问“ **配置** ”页可随时修改所有其他设备设置。

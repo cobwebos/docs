@@ -1,5 +1,5 @@
 # 概述
-## [Azure VM 上的 SQL Server 是什么？](virtual-machines-windows-sql-server-iaas-overview.md) 
+## [Windows SQL Server VM](virtual-machines-windows-sql-server-iaas-overview.md) 
 ## [定价](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [常见问题](virtual-machines-windows-sql-server-iaas-faq.md)
  
@@ -16,8 +16,8 @@
 #### [自动 - 使用模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [手动 - 先决条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [手动 - 教程](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [负载均衡器 - 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [负载均衡器 - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [负载均衡器 - Azure 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [负载均衡器 - Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [多个区域](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### 故障转移群集实例
 #### [配置](virtual-machines-windows-portal-sql-create-failover-cluster.md)
@@ -36,7 +36,7 @@
 ## [应用程序模式](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 # 引用
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
 ## [SQL Server 驱动程序](https://msdn.microsoft.com/library/mt654049.aspx)

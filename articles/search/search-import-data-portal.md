@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>使用门户将数据导入到 Azure 搜索中
 Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导，用于将数据加载到索引中。 
@@ -97,7 +96,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 
 搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。 
 
-结果将以详细的 JSON 格式返回，方便用户检查整个文档。
+结果以详细的 JSON 格式返回，方便用户检查整个文档。
 
 ## <a name="edit-an-existing-indexer"></a>编辑现有索引器
 如前所述，导入数据向导会创建**索引器**，用户可以在门户中将其修改为独立构造。
@@ -105,7 +104,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 在服务仪表板中，双击“索引器”磁贴可滑出为订阅创建的所有索引器的列表。 双击某一索引器可运行、编辑或删除它。 在索引编制过程中，可以将索引替换为另一个现有索引、更改数据源和设置错误阈值选项。
 
 ## <a name="edit-an-existing-index"></a>编辑现有索引器
-向导还创建了**索引**。 在 Azure 搜索中，对索引进行结构更新将需要重新生成该索引。 重新生成时，需要删除该索引，并使用修改后的架构（包含所要的更改）重新创建索引，然后重新加载数据。 结构更新包括更改数据类型和重命名或删除字段。
+向导还创建了**索引**。 在 Azure 搜索中，对索引进行结构更新将需要重新生成该索引。 重新生成时，需要删除该索引，并使用修改后的架构（包含所要的更改）重新创建索引，重新加载数据。 结构更新包括更改数据类型和重命名或删除字段。
 
 不需要重新生成的编辑包括添加新字段、更改评分配置文件、更改建议器或更改语言分析器。 有关详细信息，请参阅 [更新索引](https://msdn.microsoft.com/library/azure/dn800964.aspx) 。
 
@@ -120,5 +119,4 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
-
 

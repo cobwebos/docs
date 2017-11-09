@@ -6,9 +6,9 @@
 1. 启动 Internet Explorer 并导航到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
     ![安装目录](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
-3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号（例如 **3186843**），然后单击“搜索”。
+3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号（例如 **3186843**），并单击“搜索”。
    
-    随后将显示修补程序列表，例如“适用于 StorSimple 8000 系列的累积软件捆绑包更新 3.0”。
+    随后会显示修补程序列表，例如“适用于 StorSimple 8000 系列的累积软件捆绑包更新 3.0”。
    
     ![搜索目录](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 4. 单击 **“添加”**。 该更新随即添加到购物篮中。
@@ -76,13 +76,13 @@
     ```
 
     > [!NOTE] 
-    > 当更新仍在进行时，cmdlet 偶尔会报告 `False`。 为了确保完成修补程序更新，请等待几分钟再重新运行此命令，然后检查 `RunInProgress` 是否为 `False`。 如果是，则表示修补程序更新完成。
+    > 当更新仍在进行时，cmdlet 偶尔会报告 `False`。 为了确保完成修补程序更新，请等待几分钟再重新运行此命令，并检查 `RunInProgress` 是否为 `False`。 如果是，则表示修补程序更新完成。
 
 1. 完成软件更新后，请检查系统软件版本。 键入：
    
     `Get-HcsSystem`
    
-    你应该会看到以下版本：
+    应该会看到以下版本：
    
    * `HcsSoftwareVersion: 6.3.9600.17759`
    * `CisAgentVersion:  1.0.9343.0`
@@ -91,7 +91,7 @@
      如果在应用更新后版本号并未更改，则表示此修补程序未成功应用。 如果出现这种情况，请联系 [Microsoft 支持](../articles/storsimple/storsimple-contact-microsoft-support.md)获取进一步的帮助。
      
      > [!IMPORTANT]
-     > 必须先通过 `Restart-HcsController` cmdlet 重新启动主动控制器，然后应用剩余的更新。 
+     > 必须先通过 `Restart-HcsController` cmdlet 重新启动主动控制器，并应用剩余的更新。 
      > 
      > 
 2. 重复步骤 3-5 安装 LSI 驱动程序和固件修补程序 **KB3186859**。 安装修补程序后，请使用 `Get-HcsSystem` cmdlet。 LSI 版本应为：
@@ -151,7 +151,7 @@
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. 使用 `Get-HcsUpdateStatus` 命令监视安装进度。 当 `RunInProgress` 更改为 `False` 时，即表示更新完成。
-4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1 以完全访问权限登录，然后检查磁盘固件版本。 键入：
+4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1 以完全访问权限登录，并检查磁盘固件版本。 键入：
    
    `Get-HcsFirmwareVersion`
    
@@ -213,7 +213,7 @@
          SEAGATE:ST4000NM0023:XMGG
          SEAGATE:ST4000NM0023:XMGG
    
-    在第二个控制器上运行 `Get-HcsFirmwareVersion` 命令，验证软件版本是否已更新。 然后可以退出维护模式。 为此，请针对每个设备控制器键入以下命令：
+    在第二个控制器上运行 `Get-HcsFirmwareVersion` 命令，验证软件版本是否已更新。 然后即可退出维护模式。 为此，请针对每个设备控制器键入以下命令：
    
    `Exit-HcsMaintenanceMode`
 5. 退出维护模式时，控制器会重新启动。 成功应用磁盘固件更新并且设备退出维护模式后，将返回 Azure 经典门户。 请注意，门户在 24 小时内可能不会显示已安装维护模式更新。

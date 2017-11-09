@@ -1,6 +1,6 @@
 ---
-title: "了解 Azure Marketplace 付款报表 | Microsoft Docs"
-description: "了解如何查看和引入 Azure Marketplace 付款报表。"
+title: "了解 Azure 应用商店付款报表 | Microsoft Docs"
+description: "了解如何查看和引入 Azure 应用商店付款报表。"
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
@@ -14,25 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e86e4dcc39f9d34dc04afbdccb017d89969f548f
-ms.openlocfilehash: fade348a599c41a7f099e7bbd8b45a3b4ccbf910
-ms.contentlocale: zh-cn
-ms.lasthandoff: 02/11/2017
-
-
+ms.openlocfilehash: 5a89e9ba4376d0c4f49feb3783692e28a28902a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="understand-your-azure-marketplace-payout-reports"></a>了解 Azure Marketplace 付款报表
+# <a name="understand-your-azure-marketplace-payout-reports"></a>了解 Azure 应用商店付款报表
 ## <a name="access-and-view-your-payout-reports"></a>访问和查看付款报表
 尽管我们转换到开发人员中心，但一些付款报表可通过 https://dev.windows.com/zh-cn 处的开发人员中心获取，而其他报表仍可在 https://publish.windowsazure.com 处的发布门户中找到。
 
-对于与现代付款关联的任何 Marketplace 产品/服务，付款报表现在可在**开发人员中心**中获取；这当前包括：
+对于与现代付款关联的任何应用商店产品/服务，付款报表现在可在**开发人员中心**中获取；这当前包括：
 
 * VM
 * B+C 产品/服务
 * 在 EA 下提供的数据和开发人员服务
 
-以下项的付款报告仍将在**发布门户**中提供：
+以下项的付款报告仍会在**发布门户**中提供：
 
 * Web Direct 下提供的数据和开发人员服务（仍使用传统付款系统）。
 
@@ -72,8 +70,8 @@ ms.lasthandoff: 02/11/2017
 ### <a name="read-your-payout-reports"></a>阅读付款报表
 每个季度付款报表会记录该季度内发生的所有交易。
 
-* 如果正在查找与特定季度相关的总帐条目，请从下拉列表中选择该季度的付款报表。 例如，如果你对 2015 年 4 月到 6 月的总帐条目感兴趣，请从下拉列表中选择该日期范围。
-* 如果正在查找与特定季度相关的付款详细信息，请选择后续季度的付款报表。 例如，如果你对 2015 年 4 月到 6 月的总付款感兴趣，这些金额将显示在 2015 年 7 月到 9 月的后续付款报表中。
+* 如果正在查找与特定季度相关的总帐条目，请从下拉列表中选择该季度的付款报表。 例如，如果对 2015 年 4 月到 6 月的总帐条目感兴趣，请从下拉列表中选择该日期范围。
+* 如果正在查找与特定季度相关的付款详细信息，请选择后续季度的付款报表。 例如，如果对 2015 年 4 月到 6 月的总付款感兴趣，这些金额会显示在 2015 年 7 月到 9 月的后续付款报表中。
   ![readingpayoutreport][6]
 * “财务摘要”面板按类别显示余额、贷方和借方。
 * 总帐条目显示各项交易。
@@ -88,7 +86,7 @@ ms.lasthandoff: 02/11/2017
 ![ledgerdefinitions][8]
 
 ## <a name="payout-questions"></a>付款问题
-如果你对付款有问题，请与我们的支持团队联系。
+如果对付款有问题，请与我们的支持团队联系。
 
 ![payoutquestions][9]
 
@@ -109,4 +107,3 @@ ms.lasthandoff: 02/11/2017
 [7]: ./media/marketplace-publishing-report-payout/financialdefinitions.png
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
-

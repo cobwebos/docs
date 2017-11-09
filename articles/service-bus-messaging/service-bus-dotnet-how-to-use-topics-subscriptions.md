@@ -12,20 +12,17 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/30/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 43064ddbdfec3e2ddae8de8c69f6c03dc7f8f45e
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-## <a name="what-will-be-accomplished"></a>将要完成的任务
 
 本教程涵盖以下步骤：
 
@@ -51,7 +48,7 @@ ms.lasthandoff: 07/01/2017
 ## <a name="2-create-a-topic-using-the-azure-portal"></a>2.使用 Azure 门户创建主题
 
 1. 登录到 [Azure 门户][azure-portal]。
-2. 在门户的左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“更多服务”）。
+2. 在门户左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“更多服务”或“所有资源”）。
 3. 单击要在其中创建主题的命名空间。 此时会显示命名空间概览边栏选项卡：
    
     ![创建主题][createtopic1]
@@ -82,8 +79,8 @@ ms.lasthandoff: 07/01/2017
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，搜索“Microsoft Azure 服务总线”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，然后关闭此对话框。
+1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
+2. 单击“浏览”选项卡，搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”项。 单击“安装”以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -157,7 +154,7 @@ ms.lasthandoff: 07/01/2017
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. 将以下代码添加到 `Main` 方法中。 将 `connectionString` 变量设置为在创建命名空间时获得的连接字符串，并将 `topicName` 设置为在创建主题时使用的名称。
+3. 将以下代码添加到 `Main` 方法中。 将 `connectionString` 变量设置为在创建命名空间时获得的连接字符串，并将 `topicName` 设置为在创建主题时使用的名称。 另请确保将 `<your subscription name>` 替换为在步骤 3 创建的订阅的名称。 
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -225,4 +222,3 @@ ms.lasthandoff: 07/01/2017
 [createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 [azure-portal]: https://portal.azure.com
-

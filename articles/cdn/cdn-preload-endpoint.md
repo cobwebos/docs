@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
 ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -33,10 +32,10 @@ ms.lasthandoff: 06/08/2017
 > 
 > 
 
-本教程将逐步指导你在所有 Azure CDN 边缘节点上预加载缓存的内容。
+本教程会逐步指导在所有 Azure CDN 边缘节点上预加载缓存的内容。
 
 ## <a name="walkthrough"></a>演练
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含你想要预加载的终结点的 CDN 配置文件。  配置文件边栏选项卡随即打开。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含要预加载的终结点的 CDN 配置文件。  配置文件边栏选项卡随即打开。
 2. 单击列表中的终结点。  终结点边栏选项卡打开。
 3. 从 CDN 终结点的边栏选项卡，单击“加载”按钮。
    
@@ -48,7 +47,7 @@ ms.lasthandoff: 06/08/2017
 4. 在“**路径**”文本框中输入想要加载的每个资产的完整路径（例如，`/pictures/kitten.png`）。
    
    > [!TIP]
-   > 输入文本后，将会出现更多“**路径**”文本框，以便允许你生成包含多个资产的列表。  通过单击省略号 (...) 按钮，可以从列表中删除资产。
+   > 输入文本后，会出现更多“**路径**”文本框，以便允许生成包含多个资产的列表。  通过单击省略号 (...) 按钮，可以从列表中删除资产。
    > 
    > 路径必须是符合以下[正则表达式](https://msdn.microsoft.com/library/az24scfc.aspx)的相对 URL：  
    > >加载单个文件路径 `@"^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$"`；  
@@ -71,5 +70,4 @@ ms.lasthandoff: 06/08/2017
 ## <a name="see-also"></a>另请参阅
 * [清除 Azure CDN 终结点](cdn-purge-endpoint.md)
 * [Azure CDN REST API 参考 - 清除或预加载终结点](https://msdn.microsoft.com/library/mt634451.aspx)
-
 

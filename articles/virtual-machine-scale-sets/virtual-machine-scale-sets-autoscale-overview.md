@@ -1,10 +1,10 @@
 ---
-title: "自动缩放和虚拟机规模集 | Microsoft Docs"
-description: "了解如何使用诊断和自动缩放资源自动缩放规模集中的虚拟机。"
+title: "Azure 虚拟机规模集自动缩放概述 | Microsoft Docs"
+description: "了解可以通过哪些不同的方法，根据性能或固定的计划自动缩放 Azure 虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: Thraka
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
@@ -13,242 +13,135 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
-ms.author: adegeo
+ms.date: 10/19/2017
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 868523a3aca441a47218297be2ce9f9e46dd84a1
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>如何使用自动缩放和虚拟机规模集
-在规模集内自动缩放虚拟机是指按需在规模集内创建或删除虚拟机，以符合性能需求。 当工作量增大时，应用程序可能需要额外的资源才能有效执行任务。
+# <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
+Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的最低性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
 
-自动缩放是一个自动化过程，可帮助减少管理开销。 通过减少开销，使用户无需持续监控系统性能或决定如何管理资源。 缩放是一个灵活的过程。 当负载增加时可添加更多的资源。 当需求减少时可通过删除资源来使成本最小化，同时维持性能级别。
 
-使用 Azure Resource Manager 模板、Azure PowerShell、Azure CLI 或 Azure 门户在规模集上设置自动缩放。
+## <a name="benefits-of-autoscale"></a>自动缩放的好处
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载递增是一致性的，而不只是短暂的需求，则可以配置自动缩放规则来增加规模集中的 VM 实例数。
 
-## <a name="set-up-scaling-by-using-resource-manager-templates"></a>使用 Resource Manager 模板设置缩放
-可使用模板以单次协调的操作来部署所有资源，而无需单独部署和管理应用程序的每个资源。 在模板中，会定义应用程序资源，并针对不同的环境指定部署参数。 模板中包含可用于为部署构造值的 JSON 和表达式。 若要了解详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或内存）、应用程序负载必须满足给定阈值的时间，以及要添加到规模集的 VM 实例数。
 
-在模板中，可以指定容量元素：
+在夜间或周末，应用程序需求可能会降低。 如果这种负载递减在一段时间内是一致性的，则可以配置自动缩放规则来减少规模集中的 VM 实例数。 这种缩减措施可以减少运行规模集所需的成本，因为只要运行满足当前需求所需的实例数。
 
-```json
-"sku": {
-  "name": "Standard_A0",
-  "tier": "Standard",
-  "capacity": 3
-},
-```
 
-容量会识别缩放集中的虚拟机数目。 您可以部署具有不同值的模板，以便手动更改容量。 如果部署模板只是为了更改容量，则可以仅包含具有更新容量的 SKU 元素。
+## <a name="use-host-based-metrics"></a>使用基于主机的指标
+可以创建内置于 VM 实例提供的主机指标中的自动缩放规则。 通过主机指标可以洞察规模集中 VM 实例的性能，而无需安装或配置附加的代理和数据集合。 使用这些指标的自动缩放规则可以增加或减少 VM 实例数目来响应 CPU 使用率、内存需求或磁盘访问。
 
-可以将 autoscaleSettings 资源和诊断扩展组合使用，从而自动调整规模集的容量。
+可通过以下工具之一创建使用基于主机的指标的自动缩放规则：
 
-### <a name="configure-the-azure-diagnostics-extension"></a>配置 Azure 诊断扩展
-仅当缩放集中每个虚拟机上的指标收集成功时，才能完成自动缩放。 Azure 诊断扩展提供监视和诊断功能，符合自动缩放资源的指标收集需求。 您可以安装扩展作为 Resource Manager 模板的一部分。
+- [Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
 
-此示例显示在模板中用来配置诊断扩展的变量：
+若要创建使用更详细性能指标的自动缩放规则，可在 VM 实例上[安装并配置 Azure 诊断扩展](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)，或者[将应用程序配置为使用 App Insights](#application-level-metrics-with-app-insights)。
 
-```json
-"diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
-"accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/', 'Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
-"wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
-"wadperfcounter": "<PerformanceCounters scheduledTransferPeriod=\"PT1M\"><PerformanceCounterConfiguration counterSpecifier=\"\\Processor(_Total)\\Thread Count\" sampleRate=\"PT15S\" unit=\"Percent\"><annotation displayName=\"Thread Count\" locale=\"en-us\"/></PerformanceCounterConfiguration></PerformanceCounters>",
-"wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId=\"')]",
-"wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
-"wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
-```
+使用基于主机的指标、Azure 诊断扩展中的来宾内 VM 指标和 App Insights 的自动缩放规则可使用以下配置设置。
 
-部署模板时需要提供参数。 在此示例中，提供了存储帐户（在其中存储数据）和规模集（从其中收集数据）的名称。 此外，在此 Windows Server 示例中，只会收集 Thread Count 性能计数器。 Windows 或 Linux 中所有可用的性能计数器都可以用来收集诊断信息，并且可以包含在扩展配置中。
+### <a name="metric-sources"></a>指标源
+自动缩放规则可以使用来自以下源之一的指标：
 
-此示例显示模板中扩展的定义：
+| 指标源        | 使用案例                                                                                                                     |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------|
+| 当前规模集    | 适用于无需附加代理即可安装或配置的基于主机的指标。                                  |
+| 存储帐户      | Azure 诊断扩展会将性能指标写入 Azure 存储，然后，可使用 Azure 存储来触发自动缩放规则。 |
+| 服务总线队列    | 应用程序或其他组件可将 Azure 服务总线队列中的消息传输到触发器规则。                   |
+| Application Insights | 安装在应用程序中的检测包，可直接从应用流式传输指标。                         |
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "Microsoft.Insights.VMDiagnosticsSettings",
-      "properties": {
-        "publisher": "Microsoft.Azure.Diagnostics",
-        "type": "IaaSDiagnostics",
-        "typeHandlerVersion": "1.5",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "xmlCfg": "[base64(concat(variables('wadcfgxstart'),variables('wadmetricsresourceid'),variables('wadcfgxend')))]",
-          "storageAccount": "[variables('diagnosticsStorageAccountName')]"
-        },
-        "protectedSettings": {
-          "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-          "storageAccountKey": "[listkeys(variables('accountid'), variables('apiVersion')).key1]",
-          "storageAccountEndPoint": "https://core.windows.net"
-        }
-      }
-    }
-  ]
-}
-```
 
-当诊断扩展运行时，会存储数据并将其收集到一个表中，该表位于指定的存储帐户中。 在 WADPerformanceCounter 表中，可以找到收集的数据：
+### <a name="autoscale-rule-criteria"></a>自动缩放规则条件
+创建自动缩放规则时，可使用以下基于主机的指标。 如果使用 Azure 诊断扩展或 App Insights，可以定义要通过自动缩放规则监视和使用的指标。
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountBefore2.png)
+| 指标名称               |
+|---------------------------|
+| CPU 百分比            |
+| 网络传入                |
+| 网络传出               |
+| 磁盘读取字节数           |
+| 磁盘写入字节数          |
+| 磁盘读取操作次数/秒  |
+| 磁盘写入操作次数/秒 |
+| 剩余 CPU 信用额度     |
+| 已用 CPU 信用额度      |
 
-### <a name="configure-the-autoscalesettings-resource"></a>配置 autoScaleSettings 资源
-autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规模集中虚拟机的数量还是减少虚拟机的数量。
+创建用于监视给定指标的自动缩放规则时，规则会检查以下指标聚合操作之一：
 
-此示例显示模板中资源的配置：
+| 聚合类型 |
+|------------------|
+| 平均值          |
+| 最小值          |
+| 最大值          |
+| 总计            |
+| 最后一个             |
+| 计数            |
 
-```json
-{
-  "type": "Microsoft.Insights/autoscaleSettings",
-  "apiVersion": "2015-04-01",
-  "name": "[concat(parameters('resourcePrefix'),'as1')]",
-  "location": "[resourceGroup().location]",
-  "dependsOn": [
-    "[concat('Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
-  ],
-  "properties": {
-    "enabled": true,
-    "name": "[concat(parameters('resourcePrefix'),'as1')]",
-    "profiles": [
-      {
-        "name": "Profile1",
-        "capacity": {
-          "minimum": "1",
-          "maximum": "10",
-          "default": "1"
-        },
-        "rules": [
-          {
-            "metricTrigger": {
-              "metricName": "\\Processor(_Total)\\Thread Count",
-              "metricNamespace": "",
-              "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-              "timeGrain": "PT1M",
-              "statistic": "Average",
-              "timeWindow": "PT5M",
-              "timeAggregation": "Average",
-              "operator": "GreaterThan",
-              "threshold": 650
-            },
-            "scaleAction": {
-              "direction": "Increase",
-              "type": "ChangeCount",
-              "value": "1",
-              "cooldown": "PT5M"
-            }
-          },
-          {
-            "metricTrigger": {
-              "metricName": "\\Processor(_Total)\\Thread Count",
-              "metricNamespace": "",
-              "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-              "timeGrain": "PT1M",
-              "statistic": "Average",
-              "timeWindow": "PT5M",
-              "timeAggregation": "Average",
-              "operator": "LessThan",
-              "threshold": 550
-            },
-            "scaleAction": {
-              "direction": "Decrease",
-              "type": "ChangeCount",
-              "value": "1",
-              "cooldown": "PT5M"
-            }
-          }
-        ]
-      }
-    ],
-    "targetResourceUri": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]"
-  }
-}
-```
+使用以下运算符之一将指标与定义的阈值进行比较时，会触发自动缩放规则：
 
-在上述示例中，创建了两个规则来定义自动缩放操作。 第一个规则定义扩大操作，第二个规则定义缩小操作。 在规则中提供了这些值：
+| 运算符                 |
+|--------------------------|
+| 大于             |
+| 大于或等于 |
+| 小于                |
+| 小于等于    |
+| 等于                 |
+| 不等于             |
 
-| 规则 | 说明 |
-| ---- | ----------- |
-| metricName        | 此值与在诊断扩展的 wadperfcounter 变量中定义的性能计数器相同。 上述示例使用的是 Thread Count 计数器。    |
-| metricResourceUri | 此值是虚拟机规模集的资源标识符。 此标识符包含资源组的名称、资源提供程序的名称和要缩放的缩放集的名称。 |
-| timeGrain         | 此值是收集的指标的粒度。 在前面的示例中，数据以每隔一分钟的时间进行收集。 此值用于 timeWindow。 |
-| statistic         | 此值可确定如何组合指标以调节自动缩放操作。 可能的值包括：Average、Min、Max。 |
-| timeWindow        | 此值是收集实例数据的时间范围。 它必须介于 5 分钟和 12 个小时之间。 |
-| timeAggregation   | 此值可确定应如何随着时间的推移组合收集的数据。 默认值为 Average。 可能的值包括：Average、Minimum、Maximum、Last、Total、Count。 |
-| operator          | 此值是用于比较指标数据和阈值的运算符。 可能的值包括：Equals、NotEquals、GreaterThan、GreaterThanOrEqual、LessThan、LessThanOrEqual。 |
-| 阈值         | 此值是触发缩放操作的值。 请确保在扩大操作的阈值与缩小操作的阈值之间提供足够大的差异。 如果为两种操作设置的值相同，系统则会期待常量更改，这会阻止其实现缩放操作。 例如，同时设置为 600，前面示例中的线程则不起作用。 |
-| direction         | 此值可确定在达到阈值时执行的操作。 可能的值为 Increase 或 Decrease。 |
-| type              | 此值是应发生的操作类型，且必须设置为 ChangeCount。 |
-| value             | 此值是在规模集中添加或删除的虚拟机数量。 此值必须大于或等于 1。 |
-| cooldown          | 此值是自上次缩放操作后，至下次操作发生之前要等待的时间。 此值必须介于一分钟到一周之间。 |
 
-根据所使用的性能计数器，会以不同的方式使用模板配置中的某些元素。 在前面的示例中，性能计数器是 Thread Count，扩大操作的阈值为 650，缩小操作的阈值为 550。 如果使用诸如 %Processor Time 之类的计数器，则将阈值设置为 CPU 使用率的百分比，以确定缩放操作。
+### <a name="actions-when-rules-trigger"></a>规则触发时的操作
+自动缩放规则触发时，规模集可通过以下方式之一自动缩放：
 
-触发缩放操作（如高负载）时，规模集的容量会根据模板中的值而增加。 例如，在容量设置为 3 且缩放操作值设置为 1 的缩放集中：
+| 缩放操作     | 使用案例                                                                                                                               |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 增加计数   | 要创建的 VM 实例的固定数目。 在 VM 数量较少的规模集中很有用。                                           |
+| 增加百分比 | VM 实例的增加数量百分比。 非常适用于较大的规模集，在其中按固定数量增加 VM 无法明显提高性能。 |
+| 增加计数至   | 创建任意数量的 VM 实例来达到所需的最大数量。                                                            |
+| 减少计数至   | 要删除的 VM 实例的固定数目。 在 VM 数量较少的规模集中很有用。                                           |
+| 减少百分比 | VM 实例的减少数量百分比。 非常适用于较大的规模集，在其中按固定数量增加 VM 无法明显降低资源消耗和成本。 |
+| 减少计数至   | 删除任意数量的 VM 实例来达到所需的最小数量。                                                            |
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ResourceExplorerBefore.png)
 
-在当前负载导致平均线程计数超过 650 的阈值时：
+## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Azure 诊断扩展中的来宾内 VM 指标
+Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能指标并将其保存到 Azure 存储。 这些性能指标包含有关 VM 状态的更详细信息，例如磁盘的 *AverageReadTime*，或 CPU 的 *PercentIdleTime*。 可以根据对 VM 性能的更详细认知，而不仅仅是 CPU 使用率或内存消耗量的百分比，来创建自动缩放规则。
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountAfter.png)
+若要使用 Azure 诊断扩展，必须为 VM 实例创建 Azure 存储帐户，安装 Azure 诊断代理，然后将 VM 配置为向存储帐户流式传输特定的性能计数器。
 
-触发扩大操作，使规模集的容量增加 1：
+有关详细信息，请参阅有关如何在 [Linux VM](../virtual-machines/linux/diagnostic-extension.md) 或 [Windows VM](../virtual-machines/windows/ps-extensions-diagnostics.md) 上启用 Azure 诊断扩展的文章。
 
-```json
-"sku": {
-  "name": "Standard_A0",
-  "tier": "Standard",
-  "capacity": 4
-},
-```
 
-结果是向规模集添加一个虚拟机：
+## <a name="application-level-metrics-with-app-insights"></a>App Insights 中的应用程序级指标
+若要更深入地洞察应用程序的性能，可以使用 Application Insights。 在应用程序中安装一个小型检测包，用于监视应用并将遥测数据发送到 Azure。 可以监视应用程序响应时间、页面加载性能和会话计数等指标。 基于可能对客户体验造成影响的、可采取行动的见解触发规则时，可以使用这些应用程序指标创建粒度级的嵌入式自动缩放规则。
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ResourceExplorerAfter.png)
+有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../application-insights/app-insights-overview.md)。
 
-经过五分钟的冷却期间之后，如果虚拟机上的线程平均数目仍然超过 600，则会向缩放集再添加一个虚拟机。 如果平均线程计数保持在 550 以下，则缩放集的容量会减少 1，并且从缩放集中删除一个虚拟机。
 
-## <a name="set-up-scaling-using-azure-powershell"></a>使用 Azure PowerShell 设置缩放
+## <a name="scheduled-autoscale"></a>计划的自动缩放
+还可以基于计划创建自动缩放规则。 使用这些基于计划的规则可在固定的时间自动缩放 VM 实例的数目。 使用基于性能的规则时，在触发自动缩放规则和预配新的 VM 实例之前，应用程序的性能可能会受影响。 如果能够预见到这种需求，可以预配更多的 VM 实例，并使其随时可用于满足更多的客户用途和应用程序的需求。
 
-若要查看使用 PowerShell 设置自动缩放的示例，请参阅 [Azure 监视器 PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)。
+以下示例是能够从基于计划的自动缩放规则中受益的情景：
 
-## <a name="set-up-scaling-using-azure-cli"></a>使用 Azure CLI 设置缩放
+- 在工作日开始且客户需求增大时自动增加 VM 实例数。 在工作日结束且应用程序用量较低时，在夜间自动减少 VM 实例数以最大程度地降低资源成本。
+- 如果某个部门在月份或财政周期的某些时段重度使用某个应用程序，则自动增加 VM 实例数来适应额外的需求。
+- 开展市场营销活动、促销或假日销售时，可以在预测客户需求之前自动增加 VM 实例数。 
 
-若要查看使用 Azure CLI 设置自动缩放的示例，请查看 [Azure 监视器跨平台 CLI 快速入门示例](../monitoring-and-diagnostics/insights-cli-samples.md)。
-
-## <a name="set-up-scaling-using-the-azure-portal"></a>使用 Azure 门户设置缩放
-
-若要查看使用 Azure 门户设置自动缩放的示例，请查看[使用 Azure 门户创建虚拟机规模集](virtual-machine-scale-sets-portal-create.md)。
-
-## <a name="investigate-scaling-actions"></a>调查缩放操作
-
-* **Azure 门户**  
-当前使用门户可以获取有限数量的信息。
-
-* **Azure 资源浏览器**  
-要浏览规模集的当前状态，这是最适合的工具。 遵循此路径，你应该看到所创建的规模集的实例视图：  
-**订阅 > {你的订阅} > resourceGroups > {你的资源组} > 提供程序 > Microsoft.Compute > virtualMachineScaleSets > {你的规模集} > virtualMachines**
-
-* **Azure PowerShell**  
-使用此命令可获取一些信息：
-
-  ```powershell
-  Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
-  Get-Autoscalesetting -ResourceGroup rainvmss -DetailedOutput
-  ```
-
-* 就像连接任何其他虚拟机一样连接到 jumpbox 虚拟机，然后可以远程访问规模集中的虚拟机，以监视单个进程。
 
 ## <a name="next-steps"></a>后续步骤
-* 请参阅[自动缩放虚拟机规模集中的虚拟机](virtual-machine-scale-sets-windows-autoscale.md)，以查看有关如何创建已配置自动缩放的规模集的示例。
+可通过以下工具之一创建使用基于主机的指标的自动缩放规则：
 
-* 在 [Azure 监视器 PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)中查找 Azure 监视器监视功能的示例
+- [Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
 
-* 若要了解有关通知功能的相关信息，请参阅[使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)。
+本概述文章详细介绍了如何使用自动缩放规则来横向缩放以及增加或减少规模集中的 VM 实例数目。 还可以纵向缩放，以增大或减小 VM 实例的大小。 有关详细信息，请参阅[虚拟机规模集的纵向自动缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
-* 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](virtual-machine-scale-sets-windows-manage.md)。
 
-* 了解[高级自动缩放方案](virtual-machine-scale-sets-advanced-autoscale.md)的相关信息。
-
+若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)。

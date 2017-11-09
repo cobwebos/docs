@@ -10,24 +10,23 @@ tags:
 ms.assetid: 2510fb3f-c8f2-437a-8f49-9d5f6c96e75b
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: a49be9d5037af120e429a9cc7ae77ceda5e03236
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 61251eb9b125209ffd15adafdb0bace495e7cadd
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-你需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是[环形缓冲区目标](http://msdn.microsoft.com/library/ff878182.aspx)。
+需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是[环形缓冲区目标](http://msdn.microsoft.com/library/ff878182.aspx)。
 
 本主题演示一个 Transact-SQL 代码示例：
 
@@ -47,7 +46,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
   * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
@@ -225,7 +224,7 @@ GO
 
 为了查看结果，我们单击了 **target_data_XML** 列标题下的单元格。
 
-然后，在结果窗格中，我们单击了 **target_data_XML** 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
+然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
 输出显示在以下块中。 结果看起来很长，但其实只是两个 **<event>** 元素。
 
@@ -331,7 +330,7 @@ GO
 ```
 
 
-事件会话的定义将会更新，但不会删除。 然后可以将环形缓冲区的另一个实例添加到事件会话：
+事件会话的定义会更新，但不会删除。 然后可以将环形缓冲区的另一个实例添加到事件会话：
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -350,7 +349,7 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 * [SQL 数据库中扩展事件的注意事项](sql-database-xevent-db-diff-from-svr.md)，对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的某些方面。
 
-可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，你必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，你可以在运行示例时确定是否要做出细微的更改。
+可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，可以在运行示例时确定是否要做出细微的更改。
 
 * Azure SQL 数据库的代码示例：[SQL 数据库中扩展事件的事件文件目标代码](sql-database-xevent-code-event-file.md)
 
@@ -360,4 +359,3 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
-

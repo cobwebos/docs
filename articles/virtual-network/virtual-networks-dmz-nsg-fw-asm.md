@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>示例 2 – 构建外围网络以通过防火墙和 NSG 保护应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -39,7 +39,7 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 * 一个代表 DNS 服务器的 Windows Server（“DNS01”）
 
 > [!NOTE]
-> 虽然本示例使用了 Barracuda NextGen Firewall，但你也可以使用多种不同的网络虚拟设备。
+> 虽然本示例使用了 Barracuda NextGen Firewall，但也可以对此示例使用多种不同的网络虚拟设备。
 > 
 > 
 
@@ -79,22 +79,22 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 将这些规则绑定到每个子网后，如果有从 Internet 到 Web 服务器的入站 HTTP 请求，那么规则 3（允许）和规则 5（拒绝）均适用，但由于规则 3 具有较高的优先级，因此只应用规则 3 并忽略规则 5。 这样就会允许 HTTP 请求传往防火墙。 如果相同的流量尝试传往 DNS01 服务器，则会先应用规则 5（拒绝），因此不允许该流量传递到服务器。 规则 6（拒绝）阻止前端子网与后端子网对话（规则 1 和 4 允许的流量除外），这可在攻击者入侵前端上的 Web 应用程序时保护后端网络，攻击者只能对后端的“受保护”网络进行有限访问（只能访问 AppVM01 服务器上公开的资源）。
 
-有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 若要锁定双向流量需要用户定义的路由，这在另一示例中进行了探究，你可以在[主要安全边界文档][HOME]中查找。
+有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 要锁定双向流量需要用户定义的路由，这在另一示例中进行了探究，可以在[主要安全边界文档][HOME]中查找。
 
 上述 NSG 规则与[示例 1 - 使用 NSG 构建简单的外围网络][Example1]中的 NSG 规则非常相似。 请查看该文档中的 NSG 说明，详细了解每个 NSG 规则及其属性。
 
 ## <a name="firewall-rules"></a>防火墙规则
-电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的其余内容将介绍如何通过供应商的管理客户端（即，不使用 Azure 门户或 PowerShell）来配置防火墙本身。
+电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的其余内容介绍如何通过供应商的管理客户端（即，不使用 Azure 门户或 PowerShell）来配置防火墙本身。
 
 有关下载客户端和连接到本示例所用 Barracuda 的说明，可在以下位置找到：[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 需要在防火墙上创建转发规则。 本示例只将 Internet 流量入站路由到防火墙，再传送到 Web 服务器，因此只需要一条转发 NAT 规则。 在本示例使用的 Barracuda NextGen Firewall 上，此规则就是目标 NAT 规则（“Dst NAT”），由它传递此流量。
 
-若要创建以下规则（或验证现有的默认规则），请访问 Barracuda NG Admin 客户端仪表板，导航到“设置”选项卡，然后在“操作配置”部分中单击“规则集”。 此时将出现名为“主规则”的网格，其中显示了该防火墙的现有活动规则和已停用规则。 此网格右上角有一个绿色“+”小按钮，单击此按钮即可创建新规则（注意：防火墙可能会“禁止”更改规则，如果你看到带有“锁定”标记的按钮且无法创建或编辑规则，请单击此按钮以“解除锁定”，从而允许编辑规则集）。 如果你想要编辑现有规则，请选择该规则，右键单击并选择“编辑规则”。
+要创建以下规则（或验证现有的默认规则），请访问 Barracuda NG Admin 客户端仪表板，导航到“设置”选项卡，并在“操作配置”部分中单击“规则集”。 此时会出现名为“主规则”的网格，其中显示了该防火墙的现有活动规则和已停用规则。 此网格右上角有一个绿色“+”小按钮，单击此按钮即可创建新规则（注意：防火墙可能会“禁止”更改规则，如果看到带有“锁定”标记的按钮且无法创建或编辑规则，请单击此按钮以“解除锁定”，从而允许编辑规则集）。 如果想要编辑现有规则，请选择该规则，右键单击并选择“编辑规则”。
 
 创建一条新规则并为其命名，例如“WebTraffic”。 
 
-目标 NAT 规则图标类似于： ![目标 NAT 图标][2]
+“目标 NAT 规则”图标类似于：![“目标 NAT”图标][2]
 
 规则的外观类似于：
 
@@ -104,21 +104,21 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 另外，对于“来自 Internet 的目标规则”，还要指明连接方法，最好选择“动态 SNAT”。 
 
-尽管只创建了一条规则，但正确设置其优先级仍然很重要。 如果在防火墙上所有规则的网格中，此新规则位于底部（在“BLOCKALL”规则之下），它将永远不会派上用场。 请确保针对 Web 流量新建的规则位于 BLOCKALL 规则之上。
+尽管只创建了一条规则，但正确设置其优先级仍然很重要。 如果在防火墙上所有规则的网格中，此新规则位于底部（在“BLOCKALL”规则之下），它将永远不会起作用。 请确保针对 Web 流量新建的规则位于 BLOCKALL 规则之上。
 
 创建规则后，必须将其推送到防火墙并激活，否则，规则更改不会生效。 以下部分介绍了推送和激活过程。
 
 ## <a name="rule-activation"></a>规则激活
-修改规则集以添加此规则后，必须将规则集上载到防火墙并激活。
+修改规则集以添加此规则后，必须将规则集上传到防火墙并激活。
 
 ![防火墙规则激活][4]
 
-管理客户端右上角是按钮群集。 单击“发送更改”按钮将修改后的规则发送到防火墙，然后单击“激活”按钮。
+管理客户端右上角是按钮群集。 单击“发送更改”按钮将修改后的规则发送到防火墙，并单击“激活”按钮。
 
 激活防火墙规则集后，此示例环境即构建完成。 （可选）运行“参考”部分中的后续构建脚本，将应用程序添加到此环境以测试下面的流量方案。
 
 > [!IMPORTANT]
-> 你不会直接连接 Web 服务器，了解这一点很重要。 当浏览器从 FrontEnd001.CloudApp.Net 请求 HTTP 页面时，HTTP 终结点（端口 80）会将此流量传递到防火墙，而不是 Web 服务器。 然后，防火墙根据上面创建的规则，通过 NAT 将该请求传送到 Web 服务器。
+> 不会直接连接 Web 服务器，了解这一点很重要。 当浏览器从 FrontEnd001.CloudApp.Net 请求 HTTP 页面时，HTTP 终结点（端口 80）会将此流量传递到防火墙，而不是 Web 服务器。 然后，防火墙根据上面创建的规则，通过 NAT 将该请求传送到 Web 服务器。
 > 
 > 
 
@@ -127,8 +127,8 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 1. Internet 用户从 FrontEnd001.CloudApp.Net（面向 Internet 的云服务）请求 HTTP 页面
 2. 云服务通过端口 80 上的开放终结点将流量传递到 10.0.1.4:80 上的防火墙本地接口
 3. 前端子网开始处理入站规则：
-   1. NSG 规则 1 (DNS) 不适用，将转到下一规则
-   2. NSG 规则 2 (RDP) 不适用，将转到下一规则
+   1. NSG 规则 1 (DNS) 不适用，会转到下一规则
+   2. NSG 规则 2 (RDP) 不适用，会转到下一规则
    3. NSG 规则 3（Internet 到防火墙）适用，允许流量，停止处理规则
 4. 流量抵达防火墙的内部 IP 地址 (10.0.1.4)
 5. 防火墙转发规则将此流量视为端口 80 流量，并将它重定向到 Web 服务器 IIS01
@@ -136,9 +136,9 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 7. IIS01 请求 AppVM01 上的 SQL Server 提供信息
 8. 前端子网上没有出站规则，允许流量
 9. 后端子网开始处理入站规则：
-   1. NSG 规则 1 (DNS) 不适用，将转到下一规则
-   2. NSG 规则 2 (RDP) 不适用，将转到下一规则
-   3. NSG 规则 3（Internet 到防火墙）不适用，将转到下一规则
+   1. NSG 规则 1 (DNS) 不适用，会转到下一规则
+   2. NSG 规则 2 (RDP) 不适用，会转到下一规则
+   3. NSG 规则 3（Internet 到防火墙）不适用，会转到下一规则
    4. NSG 规则 4（IIS01 到 AppVM01）适用，允许流量，停止规则处理
 10. AppVM01 接收 SQL 查询并做出响应
 11. 后端子网上没有出站规则，因此允许响应
@@ -154,7 +154,7 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 1. Internet 上的服务器管理员在 BackEnd001.CloudApp.Net:xxxxx 上请求与 AppVM01 的 RDP 会话，其中 xxxxx 是通过 RDP 访问 AppVM01 所用的随机分配端口号（在 Azure 门户上或通过 PowerShell 可以找到分配的端口）
 2. 防火墙只在 FrontEnd001.CloudApp.Net 地址上侦听，因此不参与此流量的传送
 3. 后端子网开始处理入站规则：
-   1. NSG 规则 1 (DNS) 不适用，将转到下一规则
+   1. NSG 规则 1 (DNS) 不适用，会转到下一规则
    2. NSG 规则 2 (RDP) 适用，允许流量，停止规则处理
 4. 由于没有出站规则，将应用默认规则并允许返回流量
 5. 已启用 RDP 会话
@@ -181,9 +181,9 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 1. IIS01 请求 AppVM01 上的文件
 2. 前端子网上没有出站规则，允许流量
 3. 后端子网开始处理入站规则：
-   1. NSG 规则 1 (DNS) 不适用，将转到下一规则
-   2. NSG 规则 2 (RDP) 不适用，将转到下一规则
-   3. NSG 规则 3（Internet 到防火墙）不适用，将转到下一规则
+   1. NSG 规则 1 (DNS) 不适用，会转到下一规则
+   2. NSG 规则 2 (RDP) 不适用，会转到下一规则
+   3. NSG 规则 3（Internet 到防火墙）不适用，会转到下一规则
    4. NSG 规则 4（IIS01 到 AppVM01）适用，允许流量，停止规则处理
 4. AppVM01 接收请求并以文件做出响应（假设已获得访问授权）
 5. 后端子网上没有出站规则，因此允许响应
@@ -209,8 +209,8 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
 1. Internet 用户从 FrontEnd001.CloudApp.Net（面向 Internet 的云服务）请求 SQL 数据
 2. 由于没有为 SQL 开放终结点，此流量不会通过云服务抵达防火墙
 3. 如果出于某种原因而开放了终结点，前端子网将开始处理入站规则：
-   1. NSG 规则 1 (DNS) 不适用，将转到下一规则
-   2. NSG 规则 2 (RDP) 不适用，将转到下一规则
+   1. NSG 规则 1 (DNS) 不适用，会转到下一规则
+   2. NSG 规则 2 (RDP) 不适用，会转到下一规则
    3. NSG 规则 2（Internet 到防火墙）适用，允许流量，停止处规则处理
 4. 流量抵达防火墙的内部 IP 地址 (10.0.1.4)
 5. 防火墙上没有 SQL 的任何转发规则，将丢弃流量
@@ -223,7 +223,7 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
 ## <a name="references"></a>参考
 ### <a name="main-script-and-network-config"></a>主脚本和网络配置
 将完整脚本保存在 PowerShell 脚本文件中。 将网络配置保存到名为“NetworkConf2.xml”的文件中。
-如有需要，请修改用户定义的变量。 运行脚本，然后根据上面的防火墙规则设置说明操作。
+如有需要，请修改用户定义的变量。 运行脚本，并根据上面的防火墙规则设置说明操作。
 
 #### <a name="full-script"></a>完整脚本
 此脚本基于用户定义的变量执行以下操作：
@@ -571,7 +571,7 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "使用 NSG 的入站外围网络"
-[2]: ./media/virtual-networks-dmz-nsg-fw-asm/dstnaticon.png "目标 NAT 图标"
+[2]: ./media/virtual-networks-dmz-nsg-fw-asm/dstnaticon.png "“目标 NAT”图标"
 [3]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallrule.png "防火墙规则"
 [4]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallruleactivate.png "防火墙规则激活"
 
@@ -579,9 +579,3 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 [Example1]: ./virtual-networks-dmz-nsg-asm.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

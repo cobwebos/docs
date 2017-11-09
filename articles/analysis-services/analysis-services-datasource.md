@@ -4,7 +4,7 @@ description: "介绍 Azure Analysis Services 中数据模型支持的数据源�
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 6ec63319-ff9b-4b01-a1cd-274481dc8995
@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: a0fe91568d747148b3940e9c90db15481c765a9c
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 5ba7ef5aa2cccad7cda3cb39459a5a5722516524
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 Azure Analysis Services 服务器支持连接到云中的数据源和组织中的本地数据源。 始终添加其他受支持的数据源。 请经常返回查看。 
@@ -84,7 +83,7 @@ Azure Analysis Services 服务器支持连接到云中的数据源和组织中�
 
 **指定数据源提供程序**
 
-1. 在 SSDT >“表格模型浏览器” > “数据源”中，右键单击数据源连接，然后单击“编辑数据源”。
+1. 在 SSDT >“表格模型浏览器” > “数据源”中，右键单击数据源连接，并单击“编辑数据源”。
 2. 在“编辑连接”中，单击“高级”，打开“高级属性”窗口。
 3. 在“设置高级属性” > “提供程序”中，选择适当的提供程序。
 
@@ -103,5 +102,4 @@ Azure Analysis Services 服务器支持连接到云中的数据源和组织中�
 ## <a name="next-steps"></a>后续步骤
 如有本地数据源，请务必安装[本地网关](analysis-services-gateway.md)。   
 若要深入了解如何在 SSDT 或 SSMS 中管理服务器，请参阅[管理服务器](analysis-services-manage.md)。
-
 

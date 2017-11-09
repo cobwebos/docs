@@ -14,12 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
 ms.openlocfilehash: 280001f9057825b9dcd98c5180340a54e2e239cf
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
@@ -68,9 +67,9 @@ ms.lasthandoff: 07/20/2017
 参数。 如果该文件不存在，必须先通过添加以下条目创建该文件： 
 - options sunrpc tcp_max_slot_table_entries=128
 
-**第四个步骤**是检查 HANA 大型实例单元的系统时间。 部署实例时使用的是系统时区，表示 HANA 大型实例标记所在 Azure 区域的位置。 你可以任意更改自己拥有的实例的系统时间或时区。 执行该步骤并在租户中排列更多实例可以防止今后需要调整新交付的实例的时区。 在接管后，Microsoft 运营部门并不了解你在实例上设置的系统时区。 因此，新部署的实例可能不会在与切换到的实例相同的时区中设置。 因此，客户需要负责检查接管后的实例的时区，并根据需要调整。 
+**第四个步骤**是检查 HANA 大型实例单元的系统时间。 部署实例时使用的是系统时区，表示 HANA 大型实例标记所在 Azure 区域的位置。 可以任意更改自己拥有的实例的系统时间或时区。 执行该步骤并在租户中排列更多实例可以防止今后需要调整新交付的实例的时区。 在接管后，Microsoft 运营部门并不了解你在实例上设置的系统时区。 因此，新部署的实例可能不会在与切换到的实例相同的时区中设置。 因此，客户需要负责检查接管后的实例的时区，并根据需要调整。 
 
-**第五个步骤**是检查 etc/hosts。 接管刀片服务器后，它们将会根据不同的用途而分配有不同的 IP 地址（参阅下一部分）。 检查 etc/hosts 文件。 如果将单元添加到了现有的租户，请不要料想会使用以前交付的系统的 IP 地址正确维护新部署的系统的 etc/hosts。 因此，客户需负责检查设置是否正确，使新部署的实例能够与租户中以前部署的单元交互并解析其名称。 
+**第五个步骤**是检查 etc/hosts。 接管刀片服务器后，它们会根据不同的用途而分配有不同的 IP 地址（参阅下一部分）。 检查 etc/hosts 文件。 如果将单元添加到了现有的租户，请不要料想会使用以前交付的系统的 IP 地址正确维护新部署的系统的 etc/hosts。 因此，客户需负责检查设置是否正确，使新部署的实例能够与租户中以前部署的单元交互并解析其名称。 
 
 ## <a name="networking"></a>网络
 假设已遵循以下文档中的建议，这些文档介绍了如何设计 Azure VNet，并将这些 VNet 连接到 HANA 大型实例：
@@ -82,7 +81,7 @@ ms.lasthandoff: 07/20/2017
 
 分配有两个 IP 地址的单元的分布形式应如下所示：
 
-- 应该为 eth0.xx 分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 此 IP 地址将用于在 OS 的 /etc/hosts 中进行维护。
+- 应该为 eth0.xx 分配一个位于提交给 Microsoft 的服务器 IP 池地址范围以外的 IP 地址。 此 IP 地址用于在 OS 的 /etc/hosts 中进行维护。
 - 应该为 eth1.xx 分配一个用来与 NFS 通信的 IP 地址。 因此，**不**需要在 etc/hosts 中维护这些地址即可在租户中允许实例间的通信流量。
 
 对于 HANA 系统复制或 HANA 横向扩展部署用例，不适合使用分配有两个 IP 地址的刀片式服务器配置。 如果只分配了两个 IP 地址，且希望部署此类配置，请联系 Azure 上的 SAP HANA 服务管理部门，让其在第三个 VLAN 中分配第三个 IP 地址。 对于在三个 NIC 端口上分配了三个 IP 地址的 HANA 大型实例单元，请注意以下使用规则：
@@ -115,7 +114,7 @@ Azure 上的 SAP HANA 服务管理部门可遵循 [SAP HANA 存储要求](http:/
 
 阅读本文档并了解 HANA 大型实例单元时，将会发现，单元随附相当大的 HANA/data 磁盘卷，并且还有 HANA/log/backup 卷。 HANA/data 卷之所以这么大是因为，我们为客户提供的存储快照使用的是同一磁盘卷。 也就是说，如果存储快照更多，分配的存储卷中的快照占用的空间就更多。 HANA/log/backup 卷并不是用于放置数据库备份的卷。 它的大小适合用作 HANA 事务日志备份的备份卷。 在今后发布的存储快照自助服务版本中，这一特定卷将能包含更频繁生成的快照。 而且，这样一来，还可以更频繁地复制到灾难恢复站点，前提是希望启用 HANA 大型实例基础结构提供的灾难恢复功能。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
-除了提供的存储以外，你还可以购买更多存储容量，增量为 1 TB。 可以将此附加存储作为新卷添加到 HANA 大型实例。
+除了提供的存储以外，还可以购买更多存储容量，增量为 1 TB。 可以将此附加存储作为新卷添加到 HANA 大型实例。
 
 在 Azure 上的 SAP HANA 服务管理部门的帮助下进行载入期间，客户指定 sidadm 用户和 sapsys 组的用户 ID (UID) 和组 ID (GID)（例如：1000,500）。在安装 SAP HANA 系统期间，必须使用与此相同的值。 若要在一个单元上部署多个 HANA 实例，将获得多组卷（每个实例一组卷）。 因此，需要在部署时定义：
 
@@ -476,7 +475,6 @@ rpm –qa | grep gtk2
 
 
  
-
 
 
 

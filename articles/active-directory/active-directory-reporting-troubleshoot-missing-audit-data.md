@@ -12,17 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 18af51e95a283a5cd33688484a0d7477eb4b957d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 4e63c9b48125e3c7283be5fe88cab211509f88f4
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2017
 ---
-
 # <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a>在 Azure Active Directory 活动日志中找不到已执行的某些操作
 
 
@@ -39,10 +37,9 @@ ms.lasthandoff: 05/08/2017
 
 ## <a name="resolution"></a>解决方法
 
-等待 15 分钟到 1 小时，然后再看操作是否显示在日志中。 如果仍未看到操作，请向我们提交一个支持票证，我们会进行调查。
+等待 15 分钟到 1 小时，再看操作是否显示在日志中。 如果仍未看到操作，请向我们提交一个支持票证，我们会进行调查。
 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅 [Azure Active Directory 报告常见问题解答](active-directory-reporting-faq.md)。
-
 

@@ -3,7 +3,7 @@ title: "如何在 Azure API 管理策略中使用属性"
 description: "了解如何在 Azure API 管理策略中使用属性。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 6f39b00f-cf6e-4cef-9bf2-1f89202c0bc0
@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 3b0fe2a300038e13cc488bdb4f50f8be270ea8f4
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: 517f434c8f7fabc1402fb938d5ff5c733b86f2fd
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用属性
 API 管理策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和属性构造策略语句。 
@@ -34,7 +32,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 | 密钥 |布尔值 |确定值是否为密钥以及是否应加密。 |
 | 标记 |字符串数组 |可选标记，提供用来筛选属性列表。 |
 
-可在发布者门户的“属性”选项卡上配置属性。 在以下示例中，配置了三个属性。
+可在发布者门户的“属性”选项卡上配置属性。在以下示例中，配置了三个属性。
 
 ![属性][api-management-properties]
 
@@ -47,7 +45,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
 ## <a name="to-use-a-property"></a>使用属性
-若要使用策略中的属性，可将属性名称置于一对双的大括号中（例如 `{{ContosoHeader}}`），如以下示例所示。
+要使用策略中的属性，可将属性名称置于一对双的大括号中（例如 `{{ContosoHeader}}`），如以下示例所示。
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,11 +82,11 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 ![添加属性][api-management-properties-add-property-menu]
 
-“名称”和“值”是必需值。 如果此属性值为密钥，请选中“这是密钥”复选框。 输入一个或多个用于组织属性的可选标记，然后单击“保存”。
+“名称”和“值”是必需值。 如果此属性值为密钥，请选中“这是密钥”复选框。 输入一个或多个用于组织属性的可选标记，并单击“保存”。
 
 ![添加属性][api-management-properties-add-property]
 
-保存新属性后，系统会使用新属性的名称填充“搜索属性”文本框，然后显示新属性。 若要显示所有属性，请清除“搜索属性”文本框，然后按 Enter。
+保存新属性后，系统会使用新属性的名称填充“搜索属性”文本框，并显示新属性。 要显示所有属性，请清除“搜索属性”文本框，并按 Enter。
 
 ![属性][api-management-properties-property-saved]
 
@@ -99,7 +97,7 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 ![编辑属性][api-management-properties-edit]
 
-进行所需的更改，然后单击“保存”。 如果更改属性名称，则会自动更新引用该属性的策略，让其使用新名称。
+进行所需的更改，并单击“保存”。 如果更改属性名称，则会自动更新引用该属性的策略，让其使用新名称。
 
 ![编辑属性][api-management-properties-edit-property]
 
@@ -122,11 +120,11 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 若要了解如何使用 REST API 删除属性，请参阅 [Delete a property using the REST API](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete)（使用 REST API 删除属性）。
 
 ## <a name="to-search-and-filter-properties"></a>搜索和筛选属性
-“属性”选项卡包含搜索和筛选功能，用于管理属性。 若要按属性名称筛选属性列表，请在“搜索属性”文本框中输入搜索词。 若要显示所有属性，请清除“搜索属性”文本框，然后按 Enter。
+“属性”选项卡包含搜索和筛选功能，用于管理属性。 若要按属性名称筛选属性列表，请在“搜索属性”文本框中输入搜索词。 要显示所有属性，请清除“搜索属性”文本框，并按 Enter。
 
 ![搜索][api-management-properties-search]
 
-若要按标记值筛选属性列表，请将一个或多个标记输入到“按标记筛选”文本框中。 若要显示所有属性，请清除“按标记筛选”文本框，然后按 Enter。
+要按标记值筛选属性列表，请将一个或多个标记输入到“按标记筛选”文本框中。 要显示所有属性，请清除“按标记筛选”文本框，并按 Enter。
 
 ![筛选器][api-management-properties-filter]
 
@@ -153,5 +151,4 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
 [api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
-
 

@@ -5,7 +5,7 @@
 
 1. 转到 StorSimple 设备并单击“备份策略”。
 
-2. 在策略的表格式列表中，选择并单击要修改的策略。 单击右键以调用上下文菜单，然后选择“添加计划”。
+2. 在策略的表格式列表中，选择并单击要修改的策略。 单击右键以调用上下文菜单，并选择“添加计划”。
 
     ![管理计划](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
@@ -13,7 +13,7 @@
 
     ![管理计划](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
-4. 备份策略创建完成后，你将收到通知。 备份策略列表也将更新。
+4. 备份策略创建完成后，将收到通知。 备份策略列表也将更新。
 
     ![管理计划](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
 

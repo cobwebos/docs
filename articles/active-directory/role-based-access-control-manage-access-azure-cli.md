@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
+ms.openlocfilehash: 77315171754304c965f296670fbba3a4751a3656
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 73e3211416a1d110f1714872290a4156f3d194f7
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/20/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>使用 Azure 命令行接口管理基于角色的访问控制
 > [!div class="op_single_selector"]
@@ -32,7 +31,7 @@ ms.lasthandoff: 07/20/2017
 
 在使用 Azure 命令行接口 (CLI) 管理 RBAC 之前，必须具备以下先决条件：
 
-* Azure CLI 0.8.8 版或更高。 若要安装最新版本并将其与 Azure 订阅相关联，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
+* Azure CLI 0.8.8 版或更高。 要安装最新版本并将其与 Azure 订阅相关联，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
 * Azure CLI 中的 Azure Resource Manager。 转到[将 Azure CLI 用于 Resource Manager](../xplat-cli-azure-resource-manager.md) 了解详细信息。
 
 ## <a name="list-roles"></a>列出角色
@@ -103,7 +102,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
     azure role assignment create
 
 ### <a name="assign-a-role-to-group-at-the-subscription-scope"></a>将角色分配给订阅范围内的组
-若要将角色分配给订阅范围内的组，请使用：
+要将角色分配给订阅范围内的组，请使用：
 
     azure role assignment create --objectId  <group object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
@@ -112,7 +111,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure 命令行 - 按组创建的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
 
 ### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>将角色分配给订阅范围内的应用程序
-若要将角色分配给订阅范围内的应用程序，请使用：
+要将角色分配给订阅范围内的应用程序，请使用：
 
     azure role assignment create --objectId  <applications object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
@@ -121,7 +120,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
  ![RBAC Azure 命令行 - 按应用程序创建的 Azure 角色分配](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-2.png)
 
 ### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>将角色分配给资源组范围内的用户
-若要将角色分配给资源组范围内的用户，请使用：
+要将角色分配给资源组范围内的用户，请使用：
 
     azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
 
@@ -130,7 +129,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure 命令行 - 按用户创建的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-3.png)
 
 ### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>将角色分配给资源范围内的组
-若要将角色分配给资源范围内的组，请使用：
+要将角色分配给资源范围内的组，请使用：
 
     azure role assignment create --objectId <group id> --role "<name of role>" --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
 
@@ -151,7 +150,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ## <a name="create-a-custom-role"></a>创建自定义角色
 若要创建自定义的角色，请使用：
 
-    azure role create --inputfile <file path>
+    azure role definition create --role-definition <file path>
 
 以下示例创建名为“虚拟机操作员”的自定义角色。 该自定义角色授权访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作，并授权访问虚拟机启动、重启和监视操作。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
 
@@ -160,9 +159,9 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure 命令行 - Azure 角色创建 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
 
 ## <a name="modify-a-custom-role"></a>修改自定义角色
-若要修改自定义角色，请先使用 `azure role show` 命令检索角色定义。 然后，对该角色定义文件作出所需更改。 最后，使用 `azure role set` 保存修改后的角色定义。
+若要修改自定义角色，请先使用 `azure role definition list` 命令检索角色定义。 然后，对该角色定义文件做出所需更改。 最后，使用 `azure role definition update` 保存修改后的角色定义。
 
-    azure role set --inputfile <file path>
+    azure role definition update --role-definition <file path>
 
 以下示例将 *Microsoft.Insights/diagnosticSettings/* 操作添加到“操作”，并且向虚拟机操作员自定义角色的 **AssignableScopes** 添加了 Azure 订阅。
 
@@ -171,7 +170,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure 命令行 - Azure 角色集 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
 
 ## <a name="delete-a-custom-role"></a>删除自定义角色
-若要删除自定义角色，请先使用 `azure role show` 命令确定角色的 **ID**。 然后，使用 `azure role delete` 命令通过指定 **ID** 来删除该角色。
+若要删除自定义角色，请先使用 `azure role definition list` 命令确定角色的 **ID**。 然后，使用 `azure role definition delete` 命令通过指定 **ID** 来删除该角色。
 
 以下示例删除了*虚拟机操作员*自定义角色。
 
@@ -183,7 +182,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 以下命令列出可在所选订阅中进行分配的所有角色。
 
 ```
-azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+azure role definition list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
 ```
 
 ![RBAC Azure 命令行 - Azure 角色列表 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
@@ -191,12 +190,11 @@ azure role list --json | jq '.[] | {"name":.properties.roleName, type:.propertie
 在下面的示例中，*虚拟机操作员*自定义角色在 *Production4* 订阅中不可用，因为该订阅不在角色的 **AssignableScopes** 中。
 
 ```
-azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+azure role definition list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
 ```
 
 ![RBAC Azure 命令行 - 自定义角色的 Azure 角色列表 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
 

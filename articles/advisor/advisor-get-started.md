@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
 ms.openlocfilehash: a662841bebda460d4225e080f16705b3f16fdc46
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
 了解如何通过 Azure 门户访问顾问，以及如何获取、实现、搜索和刷新建议。
@@ -51,7 +49,7 @@ ms.lasthandoff: 03/31/2017
 
 顾问中的“建议”边栏选项卡提供有关建议的其他信息。 
 
-1. 登录 [Azure 门户](https://portal.azure.com)，然后启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
+1. 登录 [Azure 门户](https://portal.azure.com)，并启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
 
 2. 在“顾问建议”仪表板上，单击“获取建议”。
 
@@ -66,7 +64,7 @@ ms.lasthandoff: 03/31/2017
 
 可以搜索特定订阅或资源组的建议。 还可以按状态搜索建议。
 
-1. 登录 [Azure 门户](https://portal.azure.com)，然后启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
+1. 登录 [Azure 门户](https://portal.azure.com)，并启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
 
 2. 通过筛选订阅、资源组和建议状态（“活跃”或“暂停”）搜索建议。
 
@@ -76,9 +74,9 @@ ms.lasthandoff: 03/31/2017
 
 ## <a name="snooze-or-dismiss-advisor-recommendations"></a>推迟或解除顾问建议
 
-1. 登录 [Azure 门户](https://portal.azure.com)，然后启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
+1. 登录 [Azure 门户](https://portal.azure.com)，并启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
 
-2. 单击“获取建议”，然后在建议列表中，单击某个建议。
+2. 单击“获取建议”，并在建议列表中，单击某个建议。
 
 3. 在“建议”边栏选项卡上，单击“暂停”。  
 
@@ -95,4 +93,3 @@ ms.lasthandoff: 03/31/2017
 * [顾问安全性建议](advisor-security-recommendations.md)
 -  [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问成本建议](advisor-performance-recommendations.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
+ms.openlocfilehash: 1b3da4d6e4593f3c71995ef9331fcea2d5b6ec19
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b813172fc1fc1cc683f463f05370c95bfec10f8d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -393,4 +392,3 @@ $Encryptedpassword
 [functions13]:./media/network-watcher-alert-triggered-packet-capture/functions13.png
 [functions14]:./media/network-watcher-alert-triggered-packet-capture/functions14.png
 [scenario]:./media/network-watcher-alert-triggered-packet-capture/scenario.png
-

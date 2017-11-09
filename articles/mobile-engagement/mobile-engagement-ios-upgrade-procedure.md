@@ -14,17 +14,16 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c4b5b8bc05365ddc63b0d7a6a3c63eaee31af957
 ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
-ms.contentlocale: zh-cn
-ms.lasthandoff: 12/14/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-procedures"></a>升级过程
 如果已将较旧版本的 Engagement 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
 
-对于每个新版本的 SDK，你必须首先替换（移除并重新导入 xcode）EngagementSDK 和 EngagementReach 文件夹。
+对于每个新版本的 SDK，必须首先替换（移除并重新导入 xcode）EngagementSDK 和 EngagementReach 文件夹。
 
 ## <a name="from-300-to-400"></a>从 3.0.0 至 4.0.0
 ### <a name="xcode-8"></a>XCode 8
@@ -94,7 +93,7 @@ XCode 8 可能会重置你的应用推送功能，请在你选定目标的 `capa
 
 如果应用程序或其中一个第三方库实现了 `UNUserNotificationCenterDelegate`，则可以跳过此部分。
 
-SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现来提供解决此冲突的可能性。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
+SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现，从而让你有机会解决此冲突。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
 
 可通过两种方式实现此目的：
 
@@ -165,13 +164,13 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
       }
 
 ## <a name="from-200-to-300"></a>从 2.0.0 至 3.0.0
-放弃了对 iOS 4.X 的支持。 从此版本开始，你的应用程序的部署目标必须至少为 iOS 6。
+放弃了对 iOS 4.X 的支持。 从此版本开始，应用程序的部署目标必须至少为 iOS 6。
 
-如果你在应用程序中使用 Reach，那么为了接收远程通知，必须将 `remote-notification` 值添加到你的 Info.plist 文件中的 `UIBackgroundModes` 数组。
+如果在应用程序中使用 Reach，那么为了接收远程通知，必须将 `remote-notification` 值添加到 Info.plist 文件中的 `UIBackgroundModes` 数组。
 
-在你的应用程序委托中，需要将方法 `application:didReceiveRemoteNotification:` 替换为 `application:didReceiveRemoteNotification:fetchCompletionHandler:`。
+在应用程序委托中，需要将方法 `application:didReceiveRemoteNotification:` 替换为 `application:didReceiveRemoteNotification:fetchCompletionHandler:`。
 
-AEPushDelegate.h 接口已弃用，你需要移除所有引用。 这包括从你的应用程序委托中移除 `[[EngagementAgent shared] setPushDelegate:self]` 和委托方法：
+AEPushDelegate.h 接口已弃用，需要移除所有引用。 这包括从应用程序委托中移除 `[[EngagementAgent shared] setPushDelegate:self]` 和委托方法：
 
     -(void)willRetrieveLaunchMessage;
     -(void)didFailToRetrieveLaunchMessage;
@@ -179,15 +178,15 @@ AEPushDelegate.h 接口已弃用，你需要移除所有引用。 这包括从�
 
 ## <a name="from-1160-to-200"></a>从 1.16.0 至 2.0.0
 以下部分介绍如何将 SDK 集成从由 Capptain SAS 提供的 Capptain 服务迁移到 Azure Mobile Engagement 支持的应用。
-如果从较早版本进行迁移，请参阅 Capptain 网站先迁移到 1.16，然后再应用以下过程。
+如果从较早版本进行迁移，请参阅 Capptain 网站先迁移到 1.16，再应用以下过程。
 
 > [!IMPORTANT]
-> Capptain 和 Mobile Engagement 不是相同的服务，以下提供的过程仅重点描述如何迁移客户端应用。 迁移应用中的 SDK 不会将你的数据从 Capptain 服务器迁移到 Mobile Engagement 服务器
+> Capptain 和 Mobile Engagement 不是相同的服务，以下提供的过程仅重点描述如何迁移客户端应用。 迁移应用中的 SDK 不会将数据从 Capptain 服务器迁移到 Mobile Engagement 服务器
 > 
 > 
 
 ### <a name="agent"></a>代理
-方法 `registerApp:` 已替换为新方法 `init:`。 你的应用程序委托必须相应地进行更新，并使用连接字符串︰
+方法 `registerApp:` 已替换为新方法 `init:`。 应用程序委托必须相应地进行更新，并使用连接字符串︰
 
             - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             {
@@ -196,7 +195,7 @@ AEPushDelegate.h 接口已弃用，你需要移除所有引用。 这包括从�
               [...]
             }
 
-已从 SDK 移除 SmartAd 跟踪，你只需要移除 `AETrackModule` 类的所有实例
+已从 SDK 移除 SmartAd 跟踪，只需要移除 `AETrackModule` 类的所有实例
 
 ### <a name="class-name-changes"></a>类名更改
 作为品牌重塑的一部分，有几个类/文件名需要进行更改。
@@ -215,5 +214,4 @@ AEPushDelegate.h 接口已弃用，你需要移除所有引用。 这包括从�
 * 类 `CapptainTableViewController` 已重命名为 `EngagementTableViewController`。
 * 类 `CapptainUtils` 已重命名为 `EngagementUtils`。
 * 类 `CapptainViewController` 已重命名为 `EngagementViewController`。
-
 

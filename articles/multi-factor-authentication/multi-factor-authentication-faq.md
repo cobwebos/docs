@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 023dee623ca6ec35ab77578c97e5bf197b4bfe75
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
@@ -52,9 +51,9 @@ ms.lasthandoff: 09/20/2017
 
 **问：通过电话或短信进行身份验证时，我的组织是否需要付费？**
 
-否。对于通过 Azure 多重身份验证拨打的每个电话或者向用户发送的每条短信，你都不需要付费。 如果使用预身份验证 MFA 提供程序，则需要为每次身份验付费，但不需要为使用的方法付费。
+否。对于通过 Azure 多重身份验证拨打的每个电话或者向用户发送的每条短信，都不需要付费。 如果使用预身份验证 MFA 提供程序，则需要为每次身份验付费，但不需要为使用的方法付费。
 
-你的用户可能需要为收到的电话或短信支付费用，取决于个人电话服务。
+用户可能需要为收到的电话或短信支付费用，取决于个人电话服务。
 
 **问：按用户计费模式的收费依据是所有启用的用户，还是执行双重验证的用户？**
 
@@ -78,9 +77,9 @@ ms.lasthandoff: 09/20/2017
 
 **问：组织是否可以随时在“按用户”和“按身份验证”使用量计费模式之间切换？**
 
-如果你的组织以独立服务的形式（采用基于使用量的计费模式）购买了 MFA，则你可以在创建 MFA 提供程序时选择计费模式。 创建 MFA 提供程序后，无法更改计费模式。 不过，可以删除 MFA 提供程序，再创建采用不同计费模型的新提供程序。
+如果组织以独立服务的形式（采用基于使用量的计费模式）购买了 MFA，则可以在创建 MFA 提供程序时选择计费模式。 创建 MFA 提供程序后，无法更改计费模式。 不过，可以删除 MFA 提供程序，再创建采用不同计费模型的新提供程序。
 
-创建 MFA 提供程序时，可将它链接到 Azure Active Directory（也称为“Azure AD 租户”）。 如果当前 MFA 提供程序已与 Azure AD 租户相关联，可以安全删除 MFA 提供程序，再创建与同一 Azure AD 租户关联的新 MFA 提供程序。 或者，如果你购买了足够多的 MFA、Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
+创建 MFA 提供程序时，可将它链接到 Azure Active Directory（也称为“Azure AD 租户”）。 如果当前 MFA 提供程序已与 Azure AD 租户相关联，可以安全删除 MFA 提供程序，再创建与同一 Azure AD 租户关联的新 MFA 提供程序。 或者，如果购买了足够多的 MFA、Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
 
 如果 MFA 提供程序未与 Azure AD 租户相关联，或将新的 MFA 提供程序与其他 Azure AD 租户相关联，用户设置和配置选项不会转移到新的 MFA 提供程序。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
 
@@ -90,13 +89,13 @@ ms.lasthandoff: 09/20/2017
 
 在某些情况下，是。
 
-如果目录中包含*按用户* Azure 多重身份验证提供程序，则你可以添加 MFA 许可证。 拥有许可证的用户不会计入基于使用量的按用户计费。 对于没有许可证的用户，仍可通过 MFA 提供程序启用 MFA。 如果为配置为使用多重身份验证的所有用户购买并分配许可证，可以删除 Azure 多重身份验证提供程序。 如果将来的用户数超过许可证数，你始终可以创建另一个按用户的 MFA 提供程序。
+如果目录中包含*按用户* Azure 多重身份验证提供程序，则可以添加 MFA 许可证。 拥有许可证的用户不会计入基于使用量的按用户计费。 对于没有许可证的用户，仍可通过 MFA 提供程序启用 MFA。 如果为配置为使用多重身份验证的所有用户购买并分配许可证，可以删除 Azure 多重身份验证提供程序。 如果将来的用户数超过许可证数，始终可以创建另一个按用户的 MFA 提供程序。
 
 如果目录中有按身份验证计费的 Azure 多重身份验证提供程序，始终都会按每次身份验证付费，只要 MFA 提供程序已与订阅相关联。 可以将 MFA 许可证分配给用户，但仍要为每个双重验证请求付费，不管该请求是否来自拥有 MFA 许可证的用户。
 
 **问：组织是否必须使用并同步标识才能使用 Azure 多重身份验证？**
 
-如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，你只能在本地部署 Azure 多重身份验证服务器或 Azure 多重身份验证 SDK。
+如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，只能在本地部署 Azure 多重身份验证服务器或 Azure 多重身份验证 SDK。
 
 许可模式需要 Azure Active Directory，因为在购买许可证并将其分配给目录中的用户时，许可证将添加到 Azure AD 租户。
 
@@ -104,7 +103,7 @@ ms.lasthandoff: 09/20/2017
 
 **问：如果用户的手机未收到响应，或者用户没带手机，我该怎么告诉他们？**
 
-但愿你的用户已配置多种验证方法。 请告诉他们再次尝试登录，但需要在登录页上选择另一种验证方法。
+但愿用户已配置多种验证方法。 请告诉他们再次尝试登录，但需要在登录页上选择另一种验证方法。
 
 可以让用户转到[最终用户故障排除指南](./end-user/multi-factor-authentication-end-user-troubleshoot.md)。
 
@@ -119,9 +118,9 @@ ms.lasthandoff: 09/20/2017
 
 **问：如果用户无法登录到非浏览器应用，该怎么办？**
 
-如果组织仍然使用传统客户端，并且[允许使用应用密码](multi-factor-authentication-whats-next.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](./end-user/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，然后使用其用户名和*应用密码*而不是普通的密码登录。
+如果组织仍然使用传统客户端，并且[允许使用应用密码](multi-factor-authentication-whats-next.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](./end-user/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
 
-如果组织不使用传统客户端，则你不应该允许用户创建应用密码。
+如果组织不使用传统客户端，则应不允许用户创建应用密码。
 
 > [!NOTE]
 > 适用于 Office 2013 客户端的新式验证
@@ -179,7 +178,7 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 - 该用户的管理员已在 Azure AD 中为其启用 MFA，但没有为其帐户注册安全信息。
 - 该用户已在 Azure AD 中启用自助密码重置。 以后如果用户忘记了密码，安全信息可帮助他们重置密码。
 - 该用户访问的应用程序配置了一个要求使用 MFA 的条件访问策略，但该应用程序以前未注册 MFA。
-- 该用户正在将某个设备注册到 Azure AD（包括 Azure AD Join），并且你的组织要求使用 MFA 进行设备注册，但该用户以前未注册 MFA。
+- 该用户正在将某个设备注册到 Azure AD（包括 Azure AD Join），并且组织要求使用 MFA 进行设备注册，但该用户以前未注册 MFA。
 - 该用户正在 Windows 10 中生成 Windows Hello for Business（需要 MFA），但以前未注册 MFA。
 - 组织已创建并启用一个 MFA 注册策略，该策略已应用到该用户。
 - 该用户以前已注册 MFA，但选择的验证方法后来被管理员禁用。 因此，该用户必须再次完成 MFA 注册，以选择新的默认验证方法。
@@ -188,12 +187,12 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 ## <a name="errors"></a>错误
 **问：如果用户在使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
 
-告诉他们按照此过程从移动应用中删除帐户，然后重新添加：
+告诉他们按照此过程从移动应用中删除帐户，并重新添加：
 
-1. 转到 [Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，然后使用组织帐户登录。
+1. 转到 [Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，并使用组织帐户登录。
 2. 选择“其他安全性验证”。
 3. 从移动应用中删除现有帐户。
-4. 单击“配置”，然后按照说明重新配置移动应用。
+4. 单击“配置”，并按照说明重新配置移动应用。
 
 **问：如果用户在登录非浏览器应用程序时看到 0x800434D4L 错误消息，该怎么办？**
 
@@ -202,10 +201,9 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 此错误的解决方法是，使用不同的用户帐户执行管理员相关操作和非管理员操作。 稍后，可以在管理员帐户与非管理员帐户之间链接邮箱，以便能够使用非管理员帐户登录到 Outlook。 若要详细了解此解决方案，请了解如何[让管理员能够打开和查看用户邮箱的内容](http://help.outlook.com/141/gg709759.aspx?sl=1)。
 
 ## <a name="next-steps"></a>后续步骤
-如果此处未解答你的问题，请在页面底部留言。 或者，通过一些其他方法获得帮助：
+如果此处未解答问题，请在页面底部留言。 或者，通过一些其他方法获得帮助：
 
 * 在 [Microsoft 支持知识库](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)中搜索常见技术问题的解决方法。
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。
 * 对于旧版 PhoneFactor 客户，如果有疑问或需要重置密码方面的帮助，请使用[密码重置](mailto:phonefactorsupport@microsoft.com)链接建立支持案例。
 * 通过 [Azure 多重身份验证服务器 (PhoneFactor) 支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID 和看到错误的用户的 ID。
-

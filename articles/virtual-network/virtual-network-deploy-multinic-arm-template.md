@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e2e10d3531fbbe2ed09dc34a6c3b14ff5df1a937
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 85bfa264c6cf2b0586816a47b3ab72f3aee8ec96
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-a-template"></a>使用模板创建具有多个 NIC 的 VM
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
@@ -34,21 +33,21 @@ ms.lasthandoff: 04/27/2017
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。
+以下步骤使用名为 *IaaSStory* 的资源组作为主资源组，并在名为 *IaaSStory-BackEnd* 的资源组中实现后端服务器。
 
 ## <a name="prerequisites"></a>先决条件
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成以下步骤：
 
 1. 导航到[模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)。
 2. 在模板页中“**父资源组**”的右侧，单击“**部署到 Azure**”。
-3. 如果需要，更改参数值，然后按照 Azure 预览门户中的步骤部署资源组。
+3. 如果需要，更改参数值，并按照 Azure 预览门户中的步骤部署资源组。
 
 > [!IMPORTANT]
-> 请确保你的存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
+> 请确保存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
 > 
 
 ## <a name="understand-the-deployment-template"></a>了解部署模板
-在部署随本文档提供的模板之前，请确保你了解其用途。 通过以下步骤可大致了解该模板：
+在部署随本文档提供的模板之前，请确保了解其用途。 通过以下步骤可大致了解该模板：
 
 1. 导航到[模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)。
 2. 单击 **azuredeploy.json** 以打开模板文件。
@@ -97,7 +96,7 @@ ms.lasthandoff: 04/27/2017
 
 6. 请注意，**vmSize** 包含值 *Standard_DS3*。 只有某些 VM 大小允许使用多个 NIC。 可以通过阅读文章 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来确定哪些 VM 大小支持多个 NIC。
 
-7. 向下滚动到“**资源**”，并留意第一个元素。 它描述存储帐户。 此存储帐户将用于维护每个数据库 VM 使用的数据磁盘。 在此方案中，每个数据库 VM 有一个存储在常规存储中的 OS 磁盘，以及两个存储在 SSD（高级）存储中的数据磁盘。
+7. 向下滚动到“**资源**”，并留意第一个元素。 它描述存储帐户。 此存储帐户用于维护每个数据库 VM 使用的数据磁盘。 在此方案中，每个数据库 VM 有一个存储在常规存储中的 OS 磁盘，以及两个存储在 SSD（高级）存储中的数据磁盘。
 
     ```json
     {
@@ -114,7 +113,7 @@ ms.lasthandoff: 04/27/2017
     },
     ```
 
-8. 向下滚动到下一个资源，如下所示。 此资源表示用于访问每个数据库 VM 中的数据库的 NIC。 请注意，在此资源中使用 **copy** 函数。 此模板允许根据需要部署任意多个 VM，这取决于 **dbCount** 参数。 因此，你需要为数据库访问创建相同数量的 NIC，每个 VM 一个。
+8. 向下滚动到下一个资源，如下所示。 此资源表示用于访问每个数据库 VM 中的数据库的 NIC。 请注意，在此资源中使用 **copy** 函数。 此模板允许根据需要部署任意多个 VM，这取决于 **dbCount** 参数。 因此，需要为数据库访问创建相同数量的 NIC，每个 VM 一个。
 
     ```json
     {
@@ -146,7 +145,7 @@ ms.lasthandoff: 04/27/2017
     },
     ```
 
-9. 向下滚动到下一个资源，如下所示。 此资源表示每个数据库 VM 中用于管理的 NIC。 同样，你需要为每个数据库 VM 创建一个此类 NIC。 请注意链接 NSG 的 **networkSecurityGroup** 元素，它仅允许访问连接到此 NIC 的 RDP/SSH。
+9. 向下滚动到下一个资源，如下所示。 此资源表示每个数据库 VM 中用于管理的 NIC。 同样，需要为每个数据库 VM 创建一个此类 NIC。 请注意链接 NSG 的 **networkSecurityGroup** 元素，它仅允许访问连接到此 NIC 的 RDP/SSH。
 
     ```json
     {
@@ -237,17 +236,17 @@ ms.lasthandoff: 04/27/2017
 ## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>通过使用单击部署来部署 ARM 模板
 
 > [!IMPORTANT]
-> 请确保先执行[先决条件](#Pre-requisites)步骤，然后再按照下面的说明操作。
+> 请确保先执行[先决条件](#Pre-requisites)步骤，再按照下面的说明操作。
 > 
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 若要使用单击部署来部署此模板，请打开[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)，在“**后端资源组(参见文档)**”右侧单击“**部署至 Azure**”，如有必要替换默认参数值，然后按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要使用单击部署来部署此模板，请打开[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)，在“**后端资源组(参见文档)**”右侧单击“**部署至 Azure**”，如有必要替换默认参数值，并按照门户中的说明进行操作。
 
 下图显示在部署之后新资源组的内容。
 
 ![后端资源组](./media/virtual-network-deploy-multinic-arm-template/Figure2.png)
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
-若要使用 PowerShell 部署下载的模板，请通过完成[安装和配置 PowerShell](/powershell/azure/overview) 一文中的步骤来安装并配置 PowerShell，然后完成以下步骤：
+要使用 PowerShell 部署下载的模板，请通过完成[安装和配置 PowerShell](/powershell/azure/overview) 一文中的步骤来安装并配置 PowerShell，并完成以下步骤：
 
 运行 **`New-AzureRmResourceGroup`** cmdlet 以使用模板创建资源组。
 
@@ -283,7 +282,7 @@ TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署模板
 若要使用 Azure CLI 部署模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../cli-install-nodejs.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **`azure config mode`** 命令切换到 Resource Manager 模式（如下所示）。
 
     ```azurecli
@@ -295,7 +294,7 @@ TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates
         info:    New mode is arm
 
 3. 打开[参数文件](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json)，选择其内容，然后将其保存到计算机上的文件中。 对于本示例，我们将参数文件保存到 *parameters.json*。
-4. 运行 **`azure group deployment create`** cmdlet，使用你在前面下载并修改的模板和参数文件部署新 VNet。 在输出后显示的列表说明了所用的参数。
+4. 运行 **`azure group deployment create`** cmdlet，使用在前面下载并修改的模板和参数文件部署新 VNet。 在输出后显示的列表说明了所用的参数。
 
     ```azurecli
     azure group create -n IaaSStory-Backend -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json -e parameters.json
@@ -317,5 +316,4 @@ TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates
         data:    Tags: null
         data:
         info:    group create command OK
-
 

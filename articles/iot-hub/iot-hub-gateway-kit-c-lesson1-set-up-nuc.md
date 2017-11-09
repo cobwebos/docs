@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: b9e842a93dfdb7699158a11978aa622c31382d28
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/26/2017
-
+ms.openlocfilehash: 1a3a92ab8d08c6ed6f047208217c46022027157e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>将 Intel NUC 设置为 IoT 网关
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/26/2017
 
   > 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
-## <a name="what-you-will-learn"></a>你要学习的知识
+## <a name="what-you-will-learn"></a>要学习的知识
 
 本课介绍以下内容：
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 06/26/2017
 
 此时需要键盘和监视器才能获取 Intel NUC 设备的 IP 地址。 如果已知道 IP 地址，可跳到本部分的步骤 3。
 
-1. 按下电源按钮打开 Intel NUC，然后登录。
+1. 按下电源按钮打开 Intel NUC，并登录。
 
    默认用户名和密码都是 `root`。
 
@@ -163,7 +162,7 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 vim log.txt
 ```
 
-然后，你将看到 log.txt，将每隔 5 秒编写的网关 Hello World 模块的日志记录消息的 JSON 格式输出的内容。
+然后，会看到 log.txt，将每隔 5 秒编写的网关 Hello World 模块的日志记录消息的 JSON 格式输出的内容。
 ![log.txt 目录视图](media/iot-hub-gateway-kit-lessons/lesson1/logtxtview.png)
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
@@ -174,5 +173,4 @@ vim log.txt
 
 ## <a name="next-steps"></a>后续步骤
 [使用 IoT 网关将设备连接到 Azure IoT 中心](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-
 

@@ -12,14 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 10/31/2017
 ms.author: danlep
+ms.openlocfilehash: 7624a905f81024fa87f15164efc56a300843972d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: c52a054e4fc8f61f871acd9f35b9a3e6247e48ef
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>在 Batch 池中使用支持 RDMA 或启用 GPU 的实例
 
@@ -34,13 +33,9 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="subscription-and-account-limits"></a>订阅和帐户限制
 
-* 配额 - 一个或多个 Azure 配额可能会限制添加到 Batch 池中的节点数量或类型。 当选择支持 RDMA 的、启用 GPU 的或其他多核 VM 大小时，更有可能会受到限制。 根据所创建的 Batch 帐户类型，配额可应用到本帐户或你的订阅中。
+* **配额** - [每个 Batch 帐户的专用内核配额](batch-quota-limit.md#resource-quotas)可能会限制添加到 Batch 池的节点数量或类型。 当选择支持 RDMA、启用 GPU 或其他多核 VM 大小时，更有可能会达到配额。 默认情况下，该配额为 20 个内核。 如果使用它们，单独的配额也将适用于[低优先级 VM](batch-low-pri-vms.md)。 
 
-    * 如果在“Batch 服务”配置中创建 Batch 帐户，则将受限于[每个 Batch 帐户的专用内核配额](batch-quota-limit.md#resource-quotas)。 默认情况下，该配额为 20 个内核。 如果使用它们，单独的配额也将适用于[低优先级 VM](batch-low-pri-vms.md)。 
-
-    * 如果在“用户订阅”配置中创建帐户，你的订阅将会限制每个区域的 VM 内核数量。 请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。 该订阅还会将区域配额应用于某些 VM 大小（包括 HPC 和 GPU 实例）。 在用户订阅配置中，其他配额不会应用于 Batch 帐户。 
-
-  在 Batch 中使用专用 VM 大小时，需要增加一个或多个配额。 若要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
+如果需要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
 
 * 区域可用性 - 计算密集型 VM 在创建 Batch 帐户的区域可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
@@ -54,11 +49,11 @@ ms.lasthandoff: 07/28/2017
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | SUSE Linux Enterprise Server 12 HPC 或<br/>基于 CentO 的 HPC<br/>(Microsoft Azure Marketplace) | Intel MPI 5 | 启用节点间通信，禁用并发任务执行 |
-| [NC 系列*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS.<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 8.0 驱动程序 | 不适用 | 
-| [NV 系列](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS<br/>Red Hat Enterprise Linux 7.3<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA GRID 4.3 驱动程序 | 不适用 |
+| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC 或<br/>基于 CentO 的 HPC<br/>(Microsoft Azure Marketplace) | Intel MPI 5 | 启用节点间通信，禁用并发任务执行 |
+| [NC 系列*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 驱动程序 | 不适用 | 
+| [NV 系列](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA GRID 4.3 驱动程序 | 不适用 |
 
-*基于 CentOS 且具备 Intel MPI 的 7.3 HPC 支持在 NC24r VM 上连接 RDMA。
+*基于 Ubuntu 16.04 LTS 或 CentOS 且具备 Intel MPI 的 7.3 HPC （来自 Azure Marketplace）支持在 NC24r VM 上连接 RDMA。
 
 
 
@@ -67,10 +62,10 @@ ms.lasthandoff: 07/28/2017
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 或<br/>Windows Server 2012 (Microsoft Azure Marketplace) | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，禁用并发任务执行 |
-| [NC 系列*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 或 <br/>Windows Server 2012 R2 (Microsoft Azure Marketplace) | NVIDIA Tesla 驱动程序或 CUDA Toolkit 8.0 驱动程序| 不适用 | 
+| [NC 系列*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 或 <br/>Windows Server 2012 R2 (Microsoft Azure Marketplace) | NVIDIA Tesla 驱动程序或 CUDA Toolkit 9.0 驱动程序| 不适用 | 
 | [NV 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>Windows Server 2012 R2 (Microsoft Azure Marketplace) | NVIDIA GRID 4.3 驱动程序 | 不适用 |
 
-*具备 HpcVMDrivers 扩展和 Microsoft MPI/Intel MPI 的 Windows Server 2012 R2 支持在 NC24r VM 上连接 RDMA。
+*具备 HpcVMDrivers 扩展和 Microsoft MPI/Intel MPI 的 Windows Server 2012 R2（来自 Azure Marketplace）支持在 NC24r VM 上连接 RDMA。
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows 池 - 云服务配置
 
@@ -98,13 +93,7 @@ ms.lasthandoff: 07/28/2017
 
 * [应用程序包](batch-application-packages.md) - 将压缩的安装程序包添加到 Batch 帐户，然后在池中配置程序包引用。 此设置可将程序包上传到池的所有节点并解压。 如果程序包是安装程序，请创建一个启动任务命令行，以在所有池节点上静默安装该应用。 也可以在节点运行计划的任务时安装程序包。
 
-* [自定义池映像](batch-api-basics.md#pool) - 创建包含 VM 大小所需的驱动程序、软件或其他设置的自定义 Windows 或 Linux VM 映像。 如果已在用户订阅配置中创建了 Batch 帐户，请为 Batch 池指定自定义映像。 （Batch 服务配置中的帐户不支持自定义映像。）自定义映像只能用于虚拟机配置中的池。
-
-  > [!IMPORTANT]
-  > 在 Batch 池中，目前不支持使用由托管磁盘或高级存储创建的自定义映像。
-  >
-
-
+* [自定义池映像](batch-custom-images.md) - 创建包含 VM 大小所需的驱动程序、软件或其他设置的自定义 Windows 或 Linux VM 映像。 
 
 * [Batch Shipyard](https://github.com/Azure/batch-shipyard) 将自动配置 GPU 和 RDMA，以便透明地用于 Azure Batch 上的容器化工作负荷。 Batch Shipyard 完全由配置文件驱动。 提供众多的示例配方配置来启用 GPU 和 RDMA 工作负荷，例如 [CNTK GPU 配方](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI)，它可在 N 系列 VM 上预先配置 GPU 驱动程序，并以 Docker 映像形式加载 Microsoft Cognitive Toolkit 软件。
 
@@ -130,21 +119,18 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>示例：NC VM 池上的 NVIDIA Tesla 驱动程序
 
-若要在 Linux NC 节点的池上运行 CUDA 应用程序，需要在节点上安装 CUDA Toolkit 8.0。 该工具包安装了所需的 NVIDIA Tesla GPU 驱动程序。 以下是使用 GPU 驱动程序部署自定义 Ubuntu 16.04 LTS 映像的示例步骤：
+若要在 Linux NC 节点的池上运行 CUDA 应用程序，需要在节点上安装 CUDA Toolkit 9.0。 该工具包安装了所需的 NVIDIA Tesla GPU 驱动程序。 以下是使用 GPU 驱动程序部署自定义 Ubuntu 16.04 LTS 映像的示例步骤：
 
-1. 部署运行 Ubuntu 16.04 LTS 的 Azure NC6 VM。 例如：在美国中南部区域创建 VM。 请确保使用标准存储而非托管磁盘创建 VM。
+1. 部署运行 Ubuntu 16.04 LTS 的 Azure NC6 VM。 例如：在美国中南部区域创建 VM。 请确保创建具有托管磁盘的 VM。
 2. 请照以下步骤连接 VM 并[安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms)。
-3. 撤销 Linux 代理，然后使用 Azure CLI 1.0 命令捕获 Linux VM 映像。 有关详细步骤，请参阅[捕获在 Azure 上运行的 Linux 虚拟机](../virtual-machines/linux/capture-image-nodejs.md)。 记下映像 URI。
-  > [!IMPORTANT]
-  > 请勿使用 Azure CLI 2.0 命令捕获 Azure Batch 的映像。 目前，CLI 2.0 命令仅捕获使用托管磁盘创建的 VM。
-  >
-4. 在支持 NC VM 的区域中创建具有用户订阅配置的 Batch 帐户。
-5. 通过 Batch API 或 Azure 门户，使用自定义映像创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：
+3. 取消设置 Linux 代理，然后[捕获 Linux VM 映像](../virtual-machines/linux/capture-image.md)。
+4. 在支持 NC VM 的区域中创建 Batch 帐户。
+5. 通过 Batch API 或 Azure 门户，[使用自定义映像](batch-custom-images.md)创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：
 
 | 设置 | 值 |
 | ---- | ---- |
 | **映像类型** | 自定义映像 |
-| **自定义映像** | 窗体的图像 URI`https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
+| **自定义映像** | 映像名称 |
 | **节点代理 SKU** | batch.node.ubuntu 16.04 |
 | **节点大小** | NC6 标准 |
 

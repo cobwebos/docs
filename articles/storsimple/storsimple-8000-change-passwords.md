@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 7762f8499c67672f0a2ffed99e98baea4c940fa0
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple 设备管理器服务更改 StorSimple 密码
 
@@ -61,7 +60,7 @@ Azure 门户中的“设备设置”选项包含可以在由 StorSimple 设备�
 ## <a name="set-the-storsimple-snapshot-manager-password"></a>设置 StorSimple Snapshot Manager 密码
 StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员以本地和云快照的形式管理 StorSimple 设备的备份。
 
-在 StorSimple Snapshot Manager 中配置设备时，系统将提示用户提供设备 IP 地址和密码对存储设备进行身份验证。
+在 StorSimple Snapshot Manager 中配置设备时，系统会提示用户提供设备 IP 地址和密码对存储设备进行身份验证。
 
 可以通过 Azure 门户设置或更改 StorSimple Snapshot Manager 的密码。 执行以下步骤设置或更改 StorSimple Snapshot Manager 密码。
 
@@ -96,5 +95,4 @@ StorSimple Snapshot Manager 密码现在应已更新。
 * 详细了解 [StorSimple 安全性](storsimple-8000-security.md)。
 * 详细了解如何[修改设备配置](storsimple-8000-modify-device-config.md)。
 * 了解有关如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
-
 

@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: d61da54fc3172a730740e2b94a89fe787c4f121d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 59942e989d622c2486edf181d76e13344c71e6f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/13/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Hadoop 服务启用堆转储
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 07/13/2017
 
 ## <a name="whichServices"></a>服务
 
-你可以启用以下服务的堆转储：
+可以启用以下服务的堆转储：
 
 * **hcatalog** - tempelton
 * **hive** - hiveserver2、metastore、derbyserver
@@ -42,7 +41,7 @@ ms.lasthandoff: 07/13/2017
 * **yarn** - resourcemanager、nodemanager、timelineserver
 * **hdfs** - datanode、secondarynamenode、namenode
 
-你还可以启用映射的堆转储，并减少由 HDInsight 运行的流程数。
+还可以启用映射的堆转储，并减少由 HDInsight 运行的流程数。
 
 ## <a name="configuration"></a>了解堆转储配置
 
@@ -64,14 +63,14 @@ ms.lasthandoff: 07/13/2017
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**+** 指示是否启用了此选项。 默认为禁用。
++ 指示是否启用了此选项。 默认为禁用。
 
 > [!WARNING]
-> 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果你启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
+> 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
 
 ### <a name="dump-location"></a>转储位置
 
-转储文件的默认位置是当前的工作目录。 你可以使用以下选项来控制文件的存储位置：
+转储文件的默认位置是当前的工作目录。 可以使用以下选项来控制文件的存储位置：
 
     -XX:HeapDumpPath=/path
 
@@ -97,7 +96,7 @@ ms.lasthandoff: 07/13/2017
     出现提示时，在该站点中使用群集的 HTTP 帐户名（默认为 admin）和密码进行身份验证。
 
    > [!NOTE]
-   > Ambari 可能会再次提示你输入用户名和密码。 如果是这样，请重新输入相同的帐户名和密码
+   > Ambari 可能会再次提示输入用户名和密码。 如果是这样，请重新输入相同的帐户名和密码
 
 2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”选项卡。
 
@@ -107,7 +106,7 @@ ms.lasthandoff: 07/13/2017
 
     ![筛选的列表](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. 查找需为其启用堆转储的服务的 **\*\_OPTS** 条目，然后添加希望启用的选项。 在下图中，已将 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 添加到 **HADOOP\_NAMENODE\_OPTS** 条目：
+4. 查找需为其启用堆转储的服务的 **\*\_OPTS** 条目，并添加希望启用的选项。 在下图中，已将 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 添加到 **HADOOP\_NAMENODE\_OPTS** 条目：
 
     ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
@@ -116,11 +115,11 @@ ms.lasthandoff: 07/13/2017
 
     使用“保存”按钮保存所做的更改。 可以输入简短的说明，描述所做的更改。
 
-5. 一旦应用了所做的更改，“需要重启”图标将显示在一个或多个服务旁边。
+5. 一旦应用了所做的更改，“需要重启”图标会显示在一个或多个服务旁边。
 
     ![需要重新启动图标和重新启动按钮](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
 
-6. 选择需要重启的每个服务，然后使用“服务操作”按钮以“打开维护模式”。 维护模式可以防止重启服务时从该服务生成警报。
+6. 选择需要重启的每个服务，并使用“服务操作”按钮以“打开维护模式”。 维护模式可以防止重启服务时从该服务生成警报。
 
     ![打开维护模式菜单](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
 
@@ -132,5 +131,4 @@ ms.lasthandoff: 07/13/2017
    > 其他服务的“重启”按钮条目可能会有所不同。
 
 8. 一旦重启服务，可使用“服务操作”按钮“关闭维护模式”。 这样一来，Ambari 就可以继续监视服务的警报。
-
 

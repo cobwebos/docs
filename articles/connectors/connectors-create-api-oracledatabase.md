@@ -15,16 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: mandia; ladocs
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: cc64441617eb5e7d5e70c1cf5c491a672428bc51
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/11/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
-使用 Oracle 数据库连接器，可以创建使用现有数据库中数据的组织工作流。 此连接器可以连接到本地 Oracle 数据库，或者连接到安装了 Oracle 数据库的 Azure 虚拟机。 借助此连接器，你可以：
+使用 Oracle 数据库连接器，可以创建使用现有数据库中数据的组织工作流。 此连接器可以连接到本地 Oracle 数据库，或者连接到安装了 Oracle 数据库的 Azure 虚拟机。 借助此连接器，可以：
 
 * 通过向客户数据库添加新客户或在订单数据库中更新订单生成工作流。
 * 使用操作获取数据行、插入新行，甚至删除。 例如，在 Dynamics CRM Online 中创建记录时（触发器），则在 Oracle 数据库中插入行（操作）。 
@@ -47,7 +46,7 @@ ms.lasthandoff: 07/11/2017
   [用于 Windows x64 的 64 位 ODAC 12c Release 4 (12.1.0.2.4)](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > 如果未安装 Oracle 客户端，则在你尝试创建或使用连接时，会发生错误。 请参阅本主题中的常见错误。
+    > 如果未安装 Oracle 客户端，则在尝试创建或使用连接时，会发生错误。 请参阅本主题中的常见错误。
 
 
 ## <a name="add-the-connector"></a>添加连接器
@@ -61,20 +60,20 @@ ms.lasthandoff: 07/11/2017
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 选择“保存”。 保存时，将自动生成请求 URL。 
+3. 选择“保存”。 保存时，会自动生成请求 URL。 
 
-4. 选择“新步骤”，然后选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
+4. 选择“新步骤”，并选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > 这也是查看适用于任何连接器的触发器和操作的最快方式。 键入连接器的部分名称，例如 `oracle`。 设计器会列出任何触发器和任何操作。 
 
-5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。 选择“通过本地数据网关连接”。 输入 Oracle 服务器名称、身份验证方法、用户名、密码，然后选择网关：
+5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。 选择“通过本地数据网关连接”。 输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
-6. 连接后，从列表中选择一个表，然后向表中输入行 ID。 你需要知道表的标识符。 如果你不知道该标识符，请与 Oracle DB 管理员联系，从 `select * from yourTableName` 获取输出。 这样即可获取进一步操作所需的标识信息。
+6. 连接后，从列表中选择一个表，并向表中输入行 ID。 需要知道表的标识符。 如果不知道该标识符，请与 Oracle DB 管理员联系，从 `select * from yourTableName` 获取输出。 这样即可获取进一步操作所需的标识信息。
 
     在以下示例中，从“人力资源”数据库返回了作业数据： 
 
@@ -84,16 +83,16 @@ ms.lasthandoff: 07/11/2017
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **保存**逻辑应用，然后选择“运行”。 关闭设计器，然后在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，你应该会收到一封电子邮件，其中包含你添加的信息。
+8. **保存**逻辑应用，并选择“运行”。 关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
 
 
 ### <a name="workflow-ideas"></a>工作流创意
 
-* 你想要监视 #oracle 哈希标记，并将推文置于数据库中，使之可以在其他应用程序中查询和使用。 在逻辑应用中添加`Twitter - When a new tweet is posted`触发器，然后输入 **#oracle** 哈希标记。 然后添加`Oracle Database - Insert row`操作并选择表：
+* 想要监视 #oracle 哈希标记，并将推文置于数据库中，使之可以在其他应用程序中查询和使用。 在逻辑应用中添加`Twitter - When a new tweet is posted`触发器，并输入 **#oracle** 哈希标记。 然后添加`Oracle Database - Insert row`操作并选择表：
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
-* 此时会向服务总线队列发送消息。 你想要获取这些消息并将其置于数据库中。 在逻辑应用中，添加`Service Bus - when a message is received in a queue`触发器，并选择队列。 然后添加`Oracle Database - Insert row`操作并选择表：
+* 此时会向服务总线队列发送消息。 想要获取这些消息并将其置于数据库中。 在逻辑应用中，添加`Service Bus - when a message is received in a queue`触发器，并选择队列。 然后添加`Oracle Database - Insert row`操作并选择表：
 
     ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
@@ -131,9 +130,8 @@ ms.lasthandoff: 07/11/2017
 
 若要提问、解答问题和了解其他逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。 
 
-你可以在 [http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish) 上投票并提交自己的创意，帮助改进逻辑应用和连接器。 
+可以在 [http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish) 上投票并提交自己的创意，帮助改进逻辑应用和连接器。 
 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)，并在我们的 [API 列表](apis-list.md)中了解逻辑应用中的可用连接器。
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 06/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>使用逻辑应用和 Functions 在 Visual Studio 中构建无服务器应用
 
@@ -46,18 +45,17 @@ ms.lasthandoff: 06/02/2017
 1. 在 Visual Studio 中，单击“新建项目”添加一个项目
 1. 在“云”类别中，选择创建 Azure“资源组”项目  
  * 如果未列出该类别或项目，请确保已安装用于 Visual Studio 的 Azure SDK
-1. 指定项目的名称和位置，选择“确定”，然后根据 Visual Studio 的提示选择模板。  可以选择从“空白”模板、逻辑应用或其他资源开始。  但是，在本例中，我们将使用 Azure 快速入门模板开始构建无服务器应用。
-1. 通过“Azure 快速入门”
-   “选择 Azure 快速入门模板”选择显示模板 ![][1]
-1. 选择无服务器快速入门模板：**101-logic-app-and-function-app**，然后单击“确定”
+1. 指定项目的名称和位置，选择“确定”，并根据 Visual Studio 的提示选择模板。  可以选择从“空白”模板、逻辑应用或其他资源开始。  但是，在本例中，我们将使用 Azure 快速入门模板开始构建无服务器应用。
+1. 选择以从“Azure 快速入门”显示模板 ![选择 Azure 快速入门模板][1]
+1. 选择无服务器快速入门模板：**101-logic-app-and-function-app**，并单击“确定”
 
-快速入门模板将在资源组项目中创建部署模板。  该模板包含一个可调用 Azure Functions 并返回结果的简单逻辑应用。  如果在解决方案资源管理器中打开 `azuredeploy.json` 文件，可以看到无服务器应用的资源。
+快速入门模板会在资源组项目中创建部署模板。  该模板包含一个可调用 Azure Functions 并返回结果的简单逻辑应用。  如果在解决方案资源管理器中打开 `azuredeploy.json` 文件，可以看到无服务器应用的资源。
 
 ## <a name="deploying-the-serverless-application"></a>部署无服务器应用程序
 
 在 Visual Studio 中打开逻辑应用可视化设计器之前，需要预先部署 Azure 资源组。  这样，设计器便可与逻辑应用中的资源和服务建立连接并使用这种连接。  若要开始，只需部署创建的解决方案。
 
-1. 在 Visual Studio 中右键单击该项目，选择“部署”，然后创建**新的**部署。 ![选择新的资源部署][2]
+1. 在 Visual Studio 中右键单击该项目，选择“部署”，并创建**新**部署 ![选择新的资源部署][2]
 1. 选择有效的 Azure 订阅和资源组
 1. 选择**部署**解决方案
 1. 输入逻辑应用和 Azure Function App 的名称。  Azure 函数名称必须全局唯一
@@ -68,18 +66,18 @@ ms.lasthandoff: 06/02/2017
 
 将解决方案部署到任一资源组后，可以使用可视化设计器来编辑和更改逻辑应用。
 
-1. 在解决方案资源管理器中右键单击 `azuredeploy.json` 文件，然后选择“使用逻辑应用设计器打开”
-1. 选择解决方案已部署到的**资源组**和**位置**，然后选择“确定”
+1. 在解决方案资源管理器中右键单击 `azuredeploy.json` 文件，并选择“使用逻辑应用设计器打开”
+1. 选择解决方案已部署到的**资源组**和**位置**，并选择“确定”
 
-现在，逻辑应用可视化设计器应与 Visual Studio 一起显示。  可以继续添加步骤，修改工作流，然后保存更改。  还可以从 Visual Studio 创建逻辑应用。  如果在模板导航器中右键单击“资源”，可以选择将一个**逻辑应用**添加到项目。  空的逻辑应用将载入可视化设计器，而不会预先部署到资源组。
+现在，逻辑应用可视化设计器应与 Visual Studio 一起显示。  可以继续添加步骤，修改工作流，并保存更改。  还可以从 Visual Studio 创建逻辑应用。  如果在模板导航器中右键单击“资源”，可以选择将一个**逻辑应用**添加到项目。  空的逻辑应用将载入可视化设计器，而不会预先部署到资源组。
 
 ### <a name="managing-and-viewing-run-history-for-a-deployed-logic-app"></a>管理和查看已部署逻辑应用的运行历史记录
 
-还可以在 Azure 中管理和查看已部署的逻辑应用的运行历史记录。  如果在 Visual Studio 中打开“Cloud Explorer”工具，可以右键单击任一逻辑应用，然后选择编辑、禁用、查看属性或查看运行历史记录。  单击编辑还可将已发布的逻辑应用下载到 Visual Studio 资源组项目中。  这意味着，即使已开始在 Azure 门户中构建逻辑应用，也仍可以从 Visual Studio 导入和管理它。
+还可以在 Azure 中管理和查看已部署的逻辑应用的运行历史记录。  如果在 Visual Studio 中打开“Cloud Explorer”工具，可以右键单击任一逻辑应用，并选择编辑、禁用、查看属性或查看运行历史记录。  单击编辑还可将已发布的逻辑应用下载到 Visual Studio 资源组项目中。  这意味着，即使已开始在 Azure 门户中构建逻辑应用，也仍可以从 Visual Studio 导入和管理它。
 
 ## <a name="developing-an-azure-function-in-visual-studio"></a>在 Visual Studio 中开发 Azure 函数
 
-部署模板将会针对 `azuredeploy.json` 变量中指定的 git 存储库部署解决方案中包含的所有 Azure 函数。  如果在解决方案中创作了函数项目，请将其签入源代码管理（GitHub、Visual Studio Team Services 等）并更新 `repo` 变量，然后，模板将会部署该 Azure 函数。
+部署模板会针对 `azuredeploy.json` 变量中指定的 git 存储库部署解决方案中包含的所有 Azure 函数。  如果在解决方案中创作了函数项目，请将其签入源代码管理（GitHub、Visual Studio Team Services 等）并更新 `repo` 变量，然后，模板会部署该 Azure 函数。
 
 ### <a name="creating-an-azure-function-project"></a>创建 Azure 函数项目
 
@@ -94,4 +92,3 @@ ms.lasthandoff: 06/02/2017
 <!-- Image references -->
 [1]: ./media/logic-apps-serverless-get-started-vs/select-template.png
 [2]: ./media/logic-apps-serverless-get-started-vs/deploy.png
-

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 8f2fcb46789d000cd66164508f1159338dcae5f9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 791edd4e56c7957458d49f6f3bd87b67e96db7a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 07/08/2017
 
         azure login
 
-    系统将提示你提供用户名和密码。 如果有多个 Azure 订阅，可以使用 `azure account set <subscriptionname>` 来设置 Azure CLI 命令使用的订阅。
+    系统会提示提供用户名和密码。 如果有多个 Azure 订阅，可以使用 `azure account set <subscriptionname>` 来设置 Azure CLI 命令使用的订阅。
 
 2. 使用以下命令切换到 Azure Resource Manager 模式：
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 07/08/2017
 
     * 将 `storagekey` 替换为上一步中获取的密钥。
 
-    * 对于 `--defaultStorageContainer` 参数，请使用你为群集使用的同一个名称。
+    * 对于 `--defaultStorageContainer` 参数，请使用为群集使用的同一个名称。
 
     * 将 `admin` 和 `httppassword` 替换为通过 HTTPS 访问群集时要使用的用户名和密码。
 
@@ -148,4 +147,3 @@ ms.lasthandoff: 07/08/2017
 * [为 Storm on HDInsight 开发 Java 拓扑](hdinsight-storm-develop-java-topology.md)
 * [在 Storm on HDInsight 中使用 Python 组件](hdinsight-storm-develop-python-topology.md)
 * [使用 Storm on HDInsight 部署和监视拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/26/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 2b627250df62bbe3299869ef3812947afbb8f29f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume-update-2"></a>使用 StorSimple Manager 服务克隆卷 (Update 2)
 [!INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
@@ -32,7 +31,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 本教程介绍如何使用备份集克隆单个卷， 并说明了“暂时性”克隆和“永久性”克隆的差异。
 
 > [!NOTE]
-> 本地固定卷将克隆为分层卷。 若需对克隆卷进行本地固定，可在成功完成克隆操作后将克隆转换为本地固定卷。 若要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-manage-volumes-u2.md#change-the-volume-type)。
+> 本地固定卷将克隆为分层卷。 若需对克隆卷进行本地固定，可在成功完成克隆操作后将克隆转换为本地固定卷。 要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-manage-volumes-u2.md#change-the-volume-type)。
 > 
 > 如果尝试在克隆后立即将克隆卷从分层卷转换为本地固定卷（此时仍为暂时性克隆），转换操作会失败，并出现以下错误消息：
 > 
@@ -53,7 +52,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 3. 单击“克隆”开始克隆所选卷。
 4. 在克隆卷向导的“指定名称和位置”下执行以下操作：
    
-   1. 标识目标设备。 这是将在其中创建克隆的位置。 可以选择同一设备，也可以指定其他设备。 如果选择与其他云服务提供商（不是 Azure）关联的卷，则目标设备的下拉列表仅显示物理设备。 不能在虚拟设备上克隆与其他云服务提供商关联的卷。
+   1. 标识目标设备。 这是会在其中创建克隆的位置。 可以选择同一设备，也可以指定其他设备。 如果选择与其他云服务提供商（不是 Azure）关联的卷，则目标设备的下拉列表仅显示物理设备。 不能在虚拟设备上克隆与其他云服务提供商关联的卷。
       
       > [!NOTE]
       > 确保该克隆所需的容量低于目标设备的可用容量。
@@ -62,7 +61,7 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
    2. 指定克隆的唯一卷名称。 该名称必须包含 3 到 127 个字符。 
       
       > [!NOTE]
-      > 即使克隆的是本地固定卷，“将卷克隆为”字段也会是“分层卷”。 不能更改此设置；但是，如果也需对克隆卷进行本地固定，可在成功创建克隆后将克隆转换为本地固定卷。 若要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-manage-volumes-u2.md#change-the-volume-type)。
+      > 即使克隆的是本地固定卷，“将卷克隆为”字段也会是“分层卷”。 不能更改此设置；但是，如果也需对克隆卷进行本地固定，可在成功创建克隆后将克隆转换为本地固定卷。 要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-manage-volumes-u2.md#change-the-volume-type)。
       > 
       > 
       
@@ -94,23 +93,22 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 ## <a name="transient-vs-permanent-clones"></a>暂时性克隆与永久性克隆
 仅在克隆到其他设备时才创建暂时性克隆。 可以将特定卷从备份集克隆到 StorSimple Manager 所托管的其他设备。 暂时性克隆会引用原始卷中的数据，并会使用该数据在目标设备上进行本地读写操作。 
 
-对暂时性克隆执行云快照操作以后，生成的克隆将是“永久性”克隆。 在此过程中，将会在云中创建数据的副本，复制该数据的时间取决于数据大小和 Azure 延迟（此为 Azure 到 Azure 复制）。 此过程可能需要数天到数周的时间。 暂时性克隆通过此方式成为永久性克隆，不再引用从其克隆的原始卷数据。 
+对暂时性克隆执行云快照操作以后，生成的克隆将是“永久性”克隆。 在此过程中，会在云中创建数据的副本，复制该数据的时间取决于数据大小和 Azure 延迟（此为 Azure 到 Azure 复制）。 此过程可能需要数天到数周的时间。 暂时性克隆通过此方式成为永久性克隆，不再引用从其克隆的原始卷数据。 
 
 ## <a name="scenarios-for-transient-and-permanent-clones"></a>进行暂时性克隆和永久性克隆的方案
 以下部分描述了可以使用暂时性克隆和永久性克隆的示例方案。
 
 ### <a name="item-level-recovery-with-a-transient-clone"></a>使用暂时性克隆进行项目级恢复
-需要恢复一个一年前创建的 Microsoft PowerPoint 演示文稿文件。 IT 管理员确定了该时间范围内的特定备份，并筛选出相应的卷。 然后，该管理员对卷进行克隆，找到你要的文件，将其提供给你。 此方案使用暂时性克隆。 
+需要恢复一个一年前创建的 Microsoft PowerPoint 演示文稿文件。 IT 管理员确定了该时间范围内的特定备份，并筛选出相应的卷。 然后，该管理员对卷进行克隆，找到要的文件，将其提供给用户。 此方案使用暂时性克隆。 
 
 ![可用视频](./media/storsimple-clone-volume-u2/Video_icon.png) **可用视频**
 
 若要观看演示如何在 StorSimple 中使用克隆和还原功能来恢复已删除文件的视频，请单击[此处](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)。
 
 ### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>使用永久性克隆在生产环境中进行测试
-你需要在生产环境中对测试 Bug 进行验证。 你在生产环境中创建了卷的克隆，然后对该克隆执行云快照操作，以便创建独立的克隆卷。 此方案使用永久性克隆。  
+需要在生产环境中对测试 Bug 进行验证。 用户在生产环境中创建了卷的克隆，并对该克隆执行云快照操作，以便创建独立的克隆卷。 此方案使用永久性克隆。  
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[从备份集还原 StorSimple 卷](storsimple-restore-from-backup-set-u2.md)。
 * 了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
 

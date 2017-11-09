@@ -14,20 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.contentlocale: zh-cn
-ms.lasthandoff: 03/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>创建 Azure Mobile Engagement 应用
-本文将介绍如何使用 **Quick Create** 方法创建新的 **Azure Mobile Engagement** 应用。 本文还介绍如何导航到 **Mobile Engagement** 门户，以便对应用开始进行监视和管理。 
+本文介绍如何使用 **Quick Create** 方法创建新的 **Azure Mobile Engagement** 应用。 本文还介绍如何导航到 **Mobile Engagement** 门户，以便对应用开始进行监视和管理。 
 
 请注意，必须至少添加一组“基本集成”，才能够收集应用的数据并发送推送通知。 [Mobile Engagement 集成](mobile-engagement-windows-store-integrate-engagement.md)中提供了完整的集成文档。
 
 > [!IMPORTANT]
-> 若要完成任何 Azure Mobile Engagement 教程，必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免费试用</a>。
+> 若要完成任何 Azure Mobile Engagement 教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免费试用</a>。
 > 
 > 
 
@@ -48,5 +47,4 @@ ms.lasthandoff: 03/01/2017
 [定义 Mobile Engagement 策略](mobile-engagement-define-your-mobile-engagement-strategy.md)
 
 [Azure Mobile Engagement 入门](mobile-engagement-windows-store-dotnet-get-started.md) （可以在页面顶部选择其他移动平台）。
-
 

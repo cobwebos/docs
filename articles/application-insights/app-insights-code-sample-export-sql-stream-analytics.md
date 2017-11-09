@@ -5,6 +5,7 @@ services: application-insights
 documentationcenter: 
 author: noamben
 manager: carmonm
+editor: mrbullwinkle
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
@@ -12,13 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
-ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 6fc9394cbc60a1ea9bc9989d271f1008acf0379b
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/12/2017
-
+ms.author: mbullwin
+ms.openlocfilehash: e935350fbcdeb7a3192778b3dafb288aac281886
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -37,27 +37,27 @@ ms.lasthandoff: 04/12/2017
 1. [为网页设置 Application Insights](app-insights-javascript.md)。 
    
     （本示例侧重于处理来自客户端浏览器的页面视图数据，但你也可以针对 [Java](app-insights-java-get-started.md) 或 [ASP.NET](app-insights-asp-net.md) 应用的服务器端设置 Application Insights，并处理请求、依赖项和其他服务器遥测数据。）
-2. 发布应用，然后观察 Application Insights 资源中出现的遥测数据。
+2. 发布应用，并观察 Application Insights 资源中出现的遥测数据。
 
 ## <a name="create-storage-in-azure"></a>在 Azure 中创建存储
 连续导出始终将数据输出到 Azure 存储帐户，因此首先需要创建存储。
 
 1. 在 [Azure 门户][portal]上的订阅中创建存储帐户。
    
-    ![在 Azure 门户中，依次选择“添加”、“数据”、“存储”。 选择“经典”，然后选择“创建”。 为存储提供一个名称。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
+    ![在 Azure 门户中，依次选择“添加”、“数据”、“存储”。 选择“经典”，并选择“创建”。 为存储提供一个名称。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 2. 创建容器
    
-    ![在新存储中选择“容器”，单击“容器”磁贴，然后单击“添加”](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
+    ![在新存储中选择“容器”，单击“容器”磁贴，并单击“添加”](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
 3. 复制存储访问密钥
    
     稍后需要使用它来设置流分析服务的输入。
    
-    ![在存储中，依次打开“设置”、“密钥”，然后复制主访问密钥](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
+    ![在存储中，依次打开“设置”、“密钥”，并复制主访问密钥](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
 
 ## <a name="start-continuous-export-to-azure-storage"></a>开始向 Azure 存储连续导出
 1. 在 Azure 门户中，浏览到为应用程序创建的 Application Insights 资源。
    
-    ![依次选择“浏览”、“Application Insights”、你的应用程序](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
+    ![依次选择“浏览”、“Application Insights”、应用程序](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
 2. 创建连续导出。
    
     ![依次选择“设置”、“连续导出”、“添加”](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
@@ -74,13 +74,13 @@ ms.lasthandoff: 04/12/2017
 1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](app-insights-metrics-explorer.md)中会显示统计图表，[诊断搜索](app-insights-diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 在门户中检查导出的数据 - 选择“浏览”，选择你的存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，然后打开“Azure”>“存储”。 （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，然后打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
+2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，并打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
    
     ![在 Visual Studio 中，依次打开“Server Browser”、“Azure”、“存储”](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
    
     记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
 
-事件将以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析将数据移到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
+事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析将数据移到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
 
 ## <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
 再次在 [Azure 门户][portal]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
@@ -89,14 +89,14 @@ ms.lasthandoff: 04/12/2017
 
 确保数据库服务器允许访问 Azure 服务：
 
-![依次选择“浏览”、“服务器”、你的服务器、“设置”、“防火墙”、“允许访问 Azure”](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
+![依次选择“浏览”、“服务器”、服务器、“设置”、“防火墙”、“允许访问 Azure”](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-db"></a>在 Azure SQL 数据库中创建表
 使用偏好的管理工具连接到在上一部分中创建的数据库。 本演练将使用 [SQL Server 管理工具](https://msdn.microsoft.com/ms174173.aspx) (SSMS)。
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/31-sql-table.png)
 
-创建新查询，然后执行以下 T-SQL：
+创建新查询，并执行以下 T-SQL：
 
 ```SQL
 
@@ -141,7 +141,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 本示例使用页面视图中的数据。 若要查看其他可用的数据，请检查 JSON 输出，并查看[导出数据模型](app-insights-export-data-model.md)。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
-在[经典 Azure 门户](https://manage.windowsazure.com/)中，选择 Azure 流分析服务，然后创建新的流分析作业：
+在[经典 Azure 门户](https://manage.windowsazure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/37-create-stream-analytics.png)
 
@@ -274,5 +274,4 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 [metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [start]: app-insights-overview.md
-
 

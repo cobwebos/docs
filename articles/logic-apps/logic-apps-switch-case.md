@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: LADocs; deli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 303cb9950f46916fbdd58762acd1608c925c1328
-ms.openlocfilehash: 196f6d03567cbad8e061d45be546bc86015ede2e
-ms.contentlocale: zh-cn
-ms.lasthandoff: 04/04/2017
-
+ms.openlocfilehash: 338b6a5b549d7bf81186550295608438ac4aee32
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>使用 Switch 语句在逻辑应用中执行不同操作
 
 创作工作流时，通常需要根据对象或表达式的值执行不同操作。 例如，可能想让逻辑应用根据 HTTP 请求的状态代码或电子邮件中的所选选项执行不同的操作。
@@ -42,7 +40,7 @@ ms.lasthandoff: 04/04/2017
 
 为了演示 Switch 语句的工作原理，此示例将创建一个监视上传到 Dropbox 的文件的逻辑应用。 当上传新文件时，逻辑应用会向选择是否将这些文件传输到 SharePoint 的审批人发送电子邮件。 该应用使用根据审批人选择的值执行不同操作的 switch 语句。
 
-1. 创建一个逻辑应用，然后选择此触发器：“Dropbox - 创建文件时”。
+1. 创建一个逻辑应用，并选择此触发器：“Dropbox - 创建文件时”。
 
    ![使用“Dropbox - 当创建文件时”触发器](./media/logic-apps-switch-case/dropbox-trigger.jpg)
 
@@ -59,7 +57,7 @@ ms.lasthandoff: 04/04/2017
 
 3. 添加 Switch 语句。
 
-   - 选择“+ 新步骤” > “...更多” > “添加 Switch 案例”。 
+   - 选择“+ 新步骤” > “...更多”** > “添加 Switch 案例”。 
    - 现在，我们要根据“发送审批电子邮件”操作的 `SelectedOptions` 输出来选择要执行的操作。 
    可在“添加动态内容”选择器中找到此字段。
    - 当审批者选择了 `Approve` 时，使用“案例 1”进行处理。
@@ -112,7 +110,7 @@ ms.lasthandoff: 04/04/2017
 
 * `"Switch"` 是 Switch 语句的名称，可对其进行重命名以提高可读性。 
 * `"type": "Switch"` 指示该操作是一个 Switch 语句。 
-* 在此示例中，`"expression"` 是审批人选择的选项，将针对稍后将在定义中声明的每个案例对其进行求值。 
+* 在此示例中，`"expression"` 是审批人选择的选项，将针对稍后会在定义中声明的每个案例对其进行求值。 
 * `"cases"` 可以包含任意数量的案例。 对于每个案例，`"Case *"` 是案例的默认名称，可重命名以提高可读性。 
 `"case"` 指定 Switch 表达式用于比较的案例标签，它必须是常量和唯一值。 如果没有任何案例与 Switch 表达式相匹配，则执行 `"default"` 下的操作。
 

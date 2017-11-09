@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
 ms.author: parakhj
-ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
 ms.openlocfilehash: a54aec23d951610118246e9f70cdd27752ef39a6
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Azure Active Directory B2C：向用户提供使用 WeChat 帐户的注册和登录功能
 
@@ -49,5 +48,4 @@ ms.lasthandoff: 08/08/2017
 7. 输入先前作为**客户端 ID** 复制的**应用密钥**。
 8. 输入先前作为**客户端机密**复制的**应用机密**。
 9. 单击“确定”，并单击“创建”以保存 WeChat 配置。
-
 

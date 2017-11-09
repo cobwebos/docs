@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
+ms.openlocfilehash: 958ee2f12ebbd46472972a3012ec59aecbc23126
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 780f94f9863f73834ab72e9daf4362bea28242e9
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
@@ -31,7 +30,7 @@ ms.lasthandoff: 08/30/2017
 > [!NOTE]
 > - 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 >
-> - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。
+> - 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。 并不一定要实际将许可证分配给用户使其成为动态组的成员，但确实需要在租户中具有涵盖所有此类用户所需的最小许可证数。 例如：如果你在租户的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 Azure AD Premium P1 或更高版本的 1,000 个许可证，才能满足许可证要求。
 >
 > - 可以创建设备或用户的动态组，但不能创建同时包含用户和设备对象的规则。
 
@@ -40,17 +39,19 @@ ms.lasthandoff: 08/30/2017
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
 1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 2. 选择“用户和组”。
-3. 选择“所有组”。
+3. 选择“所有组”，然后选择“新组”。
 
-   ![打开“组”边栏选项卡](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
-4. 在“所有组”中，选择“新组”。
+   ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/new-group-creation.png)
 
-   ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
-5. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，并选择“添加动态查询”。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
+4. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，并选择“添加动态查询”。 可以使用规则生成器生成一个简单的规则，或自己编写一个高级规则。 本文包含有关可用的用户和设备属性，以及高级规则示例的详细信息。
 
    ![添加动态成员身份规则](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
-6. 在“动态成员身份规则”边栏选项卡上的“添加动态成员身份高级规则”框中输入规则，并在边栏选项卡底部选择“创建”。
-7. 在“组”边栏选项卡中，选择“创建”以创建该组。
+
+5. 创建规则之后，选择边栏选项卡底部的“添加查询”。
+6. 在“组”边栏选项卡中，选择“创建”以创建该组。
+
+> [!TIP]
+> 如果你输入的高级规则不正确，组创建则可能会失败。 通知将显示在门户的右上角；它包含系统无法接受规则的原因说明。 请仔细阅读，了解如何调整规则以使其生效。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>构造高级规则的正文
 可以为动态组成员身份创建的高级规则，本质上是一种由三部分组成并生成 true 或 false 结果的二进制表达式。 这三部分如下：
@@ -119,15 +120,13 @@ ms.lasthandoff: 08/30/2017
 
 
 ## <a name="query-error-remediation"></a>查询错误更正
-下表列出了可能的错误以及当发生这些错误时更正的方法
+下表列出了常见错误以及更正方法
 
 | 查询分析错误 | 错误用法 | 更正的用法 |
 | --- | --- | --- |
-| 错误: 不支持的属性。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/>属性应匹配[支持的属性列表](#supported-properties)中的一个属性。 |
-| 错误: 不支持对属性使用运算符。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/>属性为布尔值类型。 对布尔值类型使用上面列出的受支持运算符（-eq 或 -ne）。 |
-| 错误: 查询编译错误。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上述受支持属性列表中的一个属性。(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")正则表达式中有错误。 |
-| 错误: 二进制表达式的格式不正确。 |(user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
-| 错误: 在设置动态成员身份期间发生未知的错误。 |(user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询包含多个错误。 括号的位置不正确。 |
+| 错误: 不支持的属性。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>请确保该属性在[支持的属性列表](#supported-properties)中。 |
+| 错误: 不支持对属性使用运算符。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>属性类型不支持所使用的运算符（在此示例中，-contains 不能用于布尔类型）。 请对该属性类型使用正确的运算符。 |
+| 错误: 查询编译错误。 |1. (user.department -eq "Sales") (user.department -eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1.缺少运算符。 使用 -and 或 -or 这两个联接谓词<br/><br/>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br/><br/>2. 与 -match 一起使用的正则表达式出错<br/><br/>(user.userPrincipalName -match ".*@domain.ext")，或者：(user.userPrincipalName -match "@domain.ext$")|
 
 ## <a name="supported-properties"></a>支持的属性
 下面是可以在高级规则中使用的所有用户属性：
@@ -278,7 +277,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意字符串值 |(device.displayName -eq "Rob Iphone”)
- deviceOSType | 任意字符串值 | (device.deviceOSType -eq "IOS")
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -或 (device.deviceOSType -eq "iPhone")
  deviceOSVersion | 任意字符串值 | (device.OSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
@@ -294,7 +293,73 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
+## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>将动态成员身份更改为静态，或反之
+可更改在组中管理成员身份的方式。 想要在系统中保留相同的组名称和 ID，使针对组的任何现有引用仍然有效时，这很有用；创建新组需要更新这些引用。
 
+我们正在更新 Azure 门户以支持此功能。 在此期间，可按如下所示使用 [Azure 经典门户](https://manage.windowsazure.com)（遵照[此处](active-directory-accessmanagement-groups-with-advanced-rules.md#changing-dynamic-membership-to-static-and-vice-versa)的说明）或使用 PowerShell cmdlet。
+
+> [!WARNING]
+> 将现有的静态组更改为动态组时，将从组中删除所有现有的成员，然后会处理成员身份规则以添加新成员。 如果使用组来控制对应用或资源的访问，则在完全处理成员身份规则前，原始成员可能无法进行访问。
+>
+> 建议事先测试新的成员身份规则，确保组中的新成员身份符合预期。
+
+**使用 PowerShell 更改组中的成员身份管理**
+
+> [!NOTE]
+> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)（即**预览版**）使用 cmdlet。 可从[此处](https://www.powershellgallery.com/packages/AzureADPreview)安装该预览版。
+
+下面是在现有组中切换成员身份管理的函数示例。 请注意，必须小心正确地操作 GroupTypes 属性，并保留其中可能包含的与动态成员身份无关的任何值。
+
+```
+#The moniker for dynamic groups as used in the GroupTypes property of a group object
+$dynamicGroupTypeString = "DynamicMembership"
+
+function ConvertDynamicGroupToStatic
+{
+    Param([string]$groupId)
+
+    #existing group types
+    [System.Collections.ArrayList]$groupTypes = (Get-AzureAdMsGroup -Id $groupId).GroupTypes
+
+    if($groupTypes -eq $null -or !$groupTypes.Contains($dynamicGroupTypeString))
+    {
+        throw "This group is already a static group. Aborting conversion.";
+    }
+
+
+    #remove the type for dynamic groups, but keep the other type values
+    $groupTypes.Remove($dynamicGroupTypeString)
+
+    #modify the group properties to make it a static group: i) change GroupTypes to remove the dynamic type, ii) pause execution of the current rule
+    Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "Paused"
+}
+
+function ConvertStaticGroupToDynamic
+{
+    Param([string]$groupId, [string]$dynamicMembershipRule)
+
+    #existing group types
+    [System.Collections.ArrayList]$groupTypes = (Get-AzureAdMsGroup -Id $groupId).GroupTypes
+
+    if($groupTypes -ne $null -and $groupTypes.Contains($dynamicGroupTypeString))
+    {
+        throw "This group is already a dynamic group. Aborting conversion.";
+    }
+    #add the dynamic group type to existing types
+    $groupTypes.Add($dynamicGroupTypeString)
+
+    #modify the group properties to make it a static group: i) change GroupTypes to add the dynamic type, ii) start execution of the rule, iii) set the rule
+    Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "On" -MembershipRule $dynamicMembershipRule
+}
+```
+将组设为静态：
+```
+ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
+```
+将组设为动态：
+```
+ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
+```
 ## <a name="next-steps"></a>后续步骤
 以下文章提供了有关 Azure Active Directory 中的组的更多信息。
 
@@ -303,4 +368,3 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-

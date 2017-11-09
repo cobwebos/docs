@@ -10,7 +10,7 @@
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |主机箱 |
-   | 2 |EBOD 机箱 |
+   | #N/A |EBOD 机箱 |
 2. 找到主机箱与 EBOD 机箱的序号。 序号标签粘贴在每个机箱的背面。 两个机箱上的序号必须相同。 如果序号不相同，请立即[联系 Microsoft 支持](../articles/storsimple/storsimple-contact-microsoft-support.md)。 参考下图找到序号。
    
     ![显示序号的机箱后视图](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
@@ -35,7 +35,7 @@
       | A |主机箱 |
       | B |EBOD 机箱 |
       | 1 |控制器 0 |
-      | 2 |控制器 1 |
+      | #N/A |控制器 1 |
       | 3 |EBOD 控制器 0 |
       | 4 |EBOD 控制器 1 |
       | 5, 6 |主机箱上的 SAS 端口（标记为 EBOD） |

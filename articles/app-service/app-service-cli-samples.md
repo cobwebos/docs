@@ -16,12 +16,11 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5c995ca118676935f4f9b0c72c266b9d52c181cb
-ms.contentlocale: zh-cn
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 6718694af487929d193dae54ecb2d85ece64887a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/10/2017
 |-|-|
 |**创建应用**||
 | [从 GitHub 创建 Web 应用并部署代码](./scripts/app-service-cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| 从公共 GitHub 存储库创建 Azure Web 应用并部署代码。 |
-| [从 GitHub 使用连续部署创建 Web 应用](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| 从你拥有的 GitHub 存储库通过连续发布创建 Azure Web 应用。 |
+| [从 GitHub 使用连续部署创建 Web 应用](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| 从拥有的 GitHub 存储库通过连续发布创建 Azure Web 应用。 |
 | [从本地 Git 存储库创建 Web 应用并部署代码](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | 从本地 Git 存储库创建 Azure Web 应用并配置代码推送。 |
 | [创建 Web 应用并将代码部署到过渡环境](./scripts/app-service-cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | 使用用于暂存代码更改的部署槽创建 Azure Web 应用。 |
 | [在 Docker 容器中创建 ASP.NET Core Web 应用](./scripts/app-service-cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| 在 Linux 上创建 Azure Web 应用并从 Docker Hub 加载 Docker 映像。 |
