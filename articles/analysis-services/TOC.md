@@ -20,6 +20,7 @@
 ## [安装并配置本地数据网关](analysis-services-gateway-install.md)
 ## [获取客户端库](analysis-services-data-providers.md)
 ## [备份和还原](analysis-services-backup.md)
+## [配置查询副本横向扩展](analysis-services-scale-out.md)
 ## [使用 Excel 进行连接](analysis-services-connect-excel.md)
 ## [使用 Power BI 进行连接](analysis-services-connect-pbi.md)
 ## [创建 .odc 文件](analysis-services-odc.md)

@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 42d617ffeb8c2fee6be6d747b39d80b09774a1c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ca91721e691eca239478c4ac8b85e2652babdfd
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-user-permissions-at-the-file-and-folder-levels"></a>管理文件和文件夹级别的用户权限
 
-[已加入域的 HDInsight 群集](hdinsight-domain-joined-introduction.md)对 Azure Active Directory (Azure AD) 用户使用强身份验证，同时对各种服务（例如 YARN 和 Hive）使用基于角色的访问控制 (RBAC) 策略。 如果群集的默认数据存储是 Azure 存储或 Windows Azure 存储 Blob (WASB)，则还可以强制实施文件和文件夹级别权限。 可以使用 Apache Ranger 来控制已同步的 Azure AD 用户和组对群集文件的访问。
+[已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-introduction.md)对 Azure Active Directory (Azure AD) 用户使用强身份验证，同时对各种服务（例如 YARN 和 Hive）使用基于角色的访问控制 (RBAC) 策略。 如果群集的默认数据存储是 Azure 存储或 Windows Azure 存储 Blob (WASB)，则还可以强制实施文件和文件夹级别权限。 可以使用 Apache Ranger 来控制已同步的 Azure AD 用户和组对群集文件的访问。
 <!-- [synchronized Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md). -->
 
 已加入域的 HDInsight 群集的 Apache Ranger 实例上已预配置了 Ranger-WASB 服务。 Ranger-WASB 服务是类似于 Ranger-HDFS 的策略管理引擎，但强制实施的 Ranger 访问策略不同。 在 Ranger-WASB 服务中，如果传入的资源请求没有匹配的 Ranger 策略，则默认响应为 DENY。 Ranger 服务不会向 WASB 传递权限检查。
@@ -69,7 +69,7 @@ resource: path=/app-logs/{USER}, user: {USER}, recursive=true, permissions: all,
 
 ## <a name="manage-file-and-folder-level-permissions-with-apache-ranger"></a>使用 Apache Ranger 管理文件和文件夹级别权限
 
-请遵循[这些说明](hdinsight-domain-joined-configure.md)预配新的已加入域的群集（如果尚未这样做）。
+请遵循[这些说明](./domain-joined/apache-domain-joined-configure.md)预配新的已加入域的群集（如果尚未这样做）。
 
 浏览到 `https://<YOUR CLUSTER NAME>.azurehdinsight.net/ranger/` 打开 Ranger-WASB。 输入创建群集时定义的群集管理员用户名和密码。
 
@@ -117,8 +117,8 @@ resource: path=/app-logs/{USER}, user: {USER}, recursive=true, permissions: all,
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在已加入域的 HDInsight 中配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
-* [管理已加入域的 HDInsight 群集](hdinsight-domain-joined-manage.md)
+* [在已加入域的 HDInsight 中配置 Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
+* [管理已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-manage.md)
 * [管理 Ambari - 授权用户访问 Ambari](hdinsight-authorize-users-to-ambari.md)
 
 <!-- * [Synchronize Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md) -->

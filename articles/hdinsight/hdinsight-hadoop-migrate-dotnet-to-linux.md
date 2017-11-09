@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: df931d0f76498506cfc946501e4d385d0dfead80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 978606aa5f16842f8198ee67a65b476b4f560ab7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 
@@ -33,7 +33,7 @@ Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsigh
 有关 Mono 与 .NET 间兼容性的详细信息，请参阅 [Mono 兼容性 (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) 文档。
 
 > [!IMPORTANT]
-> SCP.NET 框架与 Mono 兼容。 有关将 SCP.NET 与 Mono 配合使用的详细信息，请参阅[使用 Visual Studio 为 HDInsight 上的 Apache Storm 开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)。
+> SCP.NET 框架与 Mono 兼容。 有关将 SCP.NET 与 Mono 配合使用的详细信息，请参阅[使用 Visual Studio 为 HDInsight 上的 Apache Storm 开发 C# 拓扑](storm/apache-storm-develop-csharp-visual-studio-topology.md)。
 
 ## <a name="automated-portability-analysis"></a>自动可移植性分析
 
@@ -74,8 +74,8 @@ Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsigh
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 HDInsight 上将 C# 与 MapReduce 配合使用](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [在 HDInsight 上将 C# 与 MapReduce 配合使用](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [将 C# 用户定义函数与 Hive 和 Pig 配合使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [将 C# 用户定义函数与 Hive 和 Pig 配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [为 HDInsight 上的 Storm 开发 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [为 HDInsight 上的 Storm 开发 C# 拓扑](storm/apache-storm-develop-csharp-visual-studio-topology.md)

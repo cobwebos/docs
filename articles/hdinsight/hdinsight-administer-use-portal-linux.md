@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ashishtha
-ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 704d76808fbc5f7bde98d2fca291ac7c2796db88
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -89,7 +89,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **标记**：允许设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，并对与特定项目关联的所有服务使用一个公用值。
     * **诊断并解决问题**：显示疑难解答信息。
     * 锁定：添加锁防止群集遭到修改或删除。
-    * **自动化脚本**：为群集显示并导出 Azure Resource Manager 模板。 当前，只能导出相关的 Azure 存储帐户。 请参阅[使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
+    * **自动化脚本**：为群集显示并导出 Azure 资源管理器模板。 当前，只能导出相关的 Azure 存储帐户。 请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
     * **快速入门**：显示可帮助你开始使用 HDInsight 的信息。
     * **适用于 HDInsight 的工具**：HDInsight 相关工具的帮助信息。
     * **群集登录**：显示群集登录信息。
@@ -163,7 +163,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     >balancer
     ```
 
-    有关使用 HBase shell 的详细信息，请参阅 [HDInsight 中的 Apache HBase 示例入门](hdinsight-hbase-tutorial-get-started-linux.md)。
+    有关使用 HBase shell 的详细信息，请参阅 [HDInsight 中的 Apache HBase 示例入门](hbase/apache-hbase-tutorial-get-started-linux.md)。
 
 * Storm
 
@@ -209,7 +209,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 * 用户 Azure 数据工厂。 有关创建按需 HDInsight 链接服务的信息，请参阅[在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)。
 * 使用 Azure PowerShell。  请参阅[分析航班延误数据](hdinsight-analyze-flight-delay-data.md)。
 * 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 HDInsight 群集](hdinsight-administer-use-command-line.md)。
-* 使用 HDInsight .NET SDK。 请参阅[提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。
+* 使用 HDInsight .NET SDK。 请参阅[提交 Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
 
@@ -289,7 +289,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 每个群集都绑定到一个 Azure 订阅。 订阅 ID 显示在群集的“概要”磁贴上。 请参阅[列出和显示群集](#list-and-show-clusters)。
 
 ## <a name="find-the-resource-group"></a>查找资源组
-在 Azure Resource Manager 模式中，使用 Azure Resource Manager 组创建每个 HDInsight 群集。 群集所属的 Resource Manager 组显示在以下位置：
+在 Azure 资源管理器模式下，使用 Azure 资源管理器组创建每个 HDInsight 群集。 群集所属的 Resource Manager 组显示在以下位置：
 
 * 群集列表包含“资源组”列。
 * 群集“概要”磁贴。  
@@ -341,7 +341,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 ## <a name="connect-to-a-cluster"></a>连接到群集
 
-* [将 Hive 与 HDInsight 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)
+* [将 Hive 与 HDInsight 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>后续步骤
@@ -353,10 +353,10 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 * [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [深入了解如何使用 Ambari Web UI](hdinsight-hadoop-manage-ambari.md)
 * [有关使用 Ambari REST API 的详细信息](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [在 HDInsight 中使用 Hive](hdinsight-use-hive.md)
-* [在 HDInsight 中使用 Pig](hdinsight-use-pig.md)
-* [在 HDInsight 中使用 Sqoop](hdinsight-use-sqoop.md)
-* [Azure HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [在 HDInsight 中使用 Hive](hadoop/hdinsight-use-hive.md)
+* [在 HDInsight 中使用 Pig](hadoop/hdinsight-use-pig.md)
+* [在 HDInsight 中使用 Sqoop](hadoop/hdinsight-use-sqoop.md)
+* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com

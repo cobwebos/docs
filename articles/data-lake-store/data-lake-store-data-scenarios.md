@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 5c3e4a4d98922533bcf901108d58329cb951b01c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c48c0931ede6d17078c64cbb1e1dacd21098f792
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>使用 Azure Data Lake Store 满足大数据要求
 大数据处理的四个主要阶段：
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 可用工具如下：
 
 * [Azure 流分析](../stream-analytics/stream-analytics-data-lake-output.md) - 可使用 Azure Data Lake Store 输出将引入事件中心的事件写入到 Azure Data Lake。
-* [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) - 可直接将数据从 Storm 群集写入到 Data Lake Store。
+* [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) - 可直接将数据从 Storm 群集写入到 Data Lake Store。
 * [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – 可接收事件中心内的事件，然后使用 [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) 将其写入到 Data Lake Store。
 
 ### <a name="relational-data"></a>关系数据

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.openlocfilehash: 6e6e7a199547135bd9695ff0867e8d5a98341b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>用于数据科学团队项目的平台和工具
 
@@ -61,7 +61,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight **Spark 群集**的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/hdinsight-apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight **Spark 群集**的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -86,7 +86,7 @@ Hive 允许在很大程度上未结构化的数据上投影结构。 定义结�
 
 对于数据科学家而言，Hive 可以在 Hive 查询中运行 Python 用户定义的函数 (UDF) 来处理记录。 这种能力大大扩展了数据分析中的 Hive 查询功能。 具体而言，Hive 可让数据科学家使用他们最熟悉的语言（包括类似于 SQL 的 HiveQL 和 Python）开展可缩放的特征工程。 
 
-有关 Azure HDInsight Hive 群集的详细信息，请参阅[在 HDInsight 中将 Hive 和 HiveQL 与 Hadoop 配合使用](../../hdinsight/hdinsight-use-hive.md)。 若要了解如何使用 Azure HDInsight Hive 群集生成可缩放的端到端数据科学解决方案，请参阅[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)。
+有关 Azure HDInsight Hive 群集的详细信息，请参阅[在 HDInsight 中将 Hive 和 HiveQL 与 Hadoop 配合使用](../../hdinsight/hadoop/hdinsight-use-hive.md)。 若要了解如何使用 Azure HDInsight Hive 群集生成可缩放的端到端数据科学解决方案，请参阅[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)。
 
 
 ## <a name="azure-file-storage"></a>Azure 文件存储 

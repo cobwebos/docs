@@ -3,7 +3,7 @@ title: "在 Azure 中的 Linux VM 上运行自定义脚本 | Microsoft 文档"
 description: "使用自定义脚本扩展自动化 Linux VM 配置任务"
 services: virtual-machines-linux
 documentationcenter: 
-author: neilpeterson
+author: danielsollondon
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,20 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: nepeters
-ms.openlocfilehash: 1dde64aac72c11ccfccf4fdb676279692befaadd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danis
+ms.openlocfilehash: 3f8eeb71027d9bdd5c72570bd07d673136646e6c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展
-自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 自定义脚本扩展与 Azure Resource Manager 模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
+自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 自定义脚本扩展与 Azure 资源管理器模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
 
-本文档详细说明如何从 Azure CLI 和 Azure Resource Manager 模板使用自定义脚本扩展，同时详细说明了 Linux 系统上的故障排除步骤。
+本文档详细说明如何从 Azure CLI 和 Azure 资源管理器模板使用自定义脚本扩展，同时详细说明了 Linux 系统上的故障排除步骤。
 
 ## <a name="extension-configuration"></a>扩展配置
-自定义脚本扩展配置指定脚本位置和要运行命令等设置。 此配置可以存储在配置文件中、在命令行中指定，或者在 Azure Resource Manager 模板中指定。 敏感数据可以存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
+自定义脚本扩展配置指定脚本位置和要运行命令等设置。 此配置可以存储在配置文件中、在命令行中指定，或者在 Azure 资源管理器模板中指定。 敏感数据可以存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
 ### <a name="public-configuration"></a>公共配置
 架构：

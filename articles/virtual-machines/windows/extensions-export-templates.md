@@ -3,7 +3,7 @@ title: "导出包含 VM 扩展的 Azure 资源组 | Microsoft 文档"
 description: "导出包含虚拟机扩展的 Resource Manager 模板。"
 services: virtual-machines-windows
 documentationcenter: 
-author: neilpeterson
+author: danielsollondon
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: nepeters
-ms.openlocfilehash: cc3c705f1c9123de75ced016a5b39eb1a86b0f73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danis
+ms.openlocfilehash: 739ae7995fca41fe8abb7cd54ccb72ff3bc43854
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
 ![模板导出](./media/extensions-export-templates/template-export.png)
 
-Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一个参数文件以及多个示例部署脚本（例如 PowerShell 和 Azure CLI）。 目前可以使用下载按钮下载导出的模板、将其作为新模板添加到模板库，或使用部署按钮重新对其进行部署。
+Azure 资源管理器自动化脚本生成一个资源管理器模板、一个参数文件以及多个示例部署脚本（例如 PowerShell 和 Azure CLI）。 目前可以使用下载按钮下载导出的模板、将其作为新模板添加到模板库，或使用部署按钮重新对其进行部署。
 
 ## <a name="configure-protected-settings"></a>配置受保护的设置
 
@@ -76,7 +76,7 @@ Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一
 
 ### <a name="step-2---get-protected-settings-properties"></a>步骤 2 - 获取受保护设置属性
 
-由于每个受保护的设置都有一组必需的属性，因此需收集这些属性的列表。 可以在 [Azure Resource Manager schema on GitHub](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json)（GitHub 上的 Azure Resource Manager 架构）中找到受保护设置配置的每个参数。 此架构仅包括本文档概述部分列出的扩展的参数集。 
+由于每个受保护的设置都有一组必需的属性，因此需收集这些属性的列表。 可以在 [GitHub 上的 Azure 资源管理器架构](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json)中找到受保护设置配置的每个参数。 此架构仅包括本文档概述部分列出的扩展的参数集。 
 
 从架构存储库中搜索所需的扩展（在本示例中为 `IaaSDiagnostics`）。 找到扩展的 `protectedSettings` 对象以后，记下每个参数。 以 `IaasDiagnostic` 扩展为例，所需参数为 `storageAccountName`、`storageAccountKey` 和 `storageAccountEndPoint`。
 
@@ -148,7 +148,7 @@ Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一
 }
 ```
 
-如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md)。
+如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)。
 
 以 `IaasDiagnostic` 扩展为例，会在 Resource Manager 模板的参数部分创建以下参数。
 

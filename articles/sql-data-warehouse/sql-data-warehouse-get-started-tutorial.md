@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: quickstart
-ms.date: 01/26/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 39efa954fa1eb3d7d93dbeceac48b96d865349ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/06/2017
+ms.author: elbutter
+ms.openlocfilehash: 791990b6c544a416fc73bea69dc884e0b49d088e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>SQL 数据仓库入门
 
@@ -198,7 +198,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
     WITH
     (
         TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytpublic.blob.core.windows.net/'
+        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
     );
     ```
 
@@ -239,7 +239,7 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
     ```
 5. 创建外部表。 这些表引用 Azure Blob 存储中存储的数据。 运行以下 T-SQL 命令以创建若干外部表，这些表都指向我们之前在外部数据源中定义的 Azure blob。
 
-```sql
+  ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
     (
         [DateID] int NOT NULL,
@@ -405,14 +405,14 @@ SQL 数据仓库是旨在执行大规模并行处理的一种特殊类型的数�
     )
     WITH
     (
-        LOCATION = 'Weather2013',
+        LOCATION = 'Weather',
         DATA_SOURCE = NYTPublic,
         FILE_FORMAT = uncompressedcsv,
         REJECT_TYPE = value,
         REJECT_VALUE = 0
     )
     ;
-```
+  ```
 
 ### <a name="import-the-data-from-azure-blob-storage"></a>从 Azure Blob 存储导入数据。
 
@@ -430,7 +430,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     AS SELECT * FROM [ext].[Date]
     OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
     ;
-    
+
     CREATE TABLE [dbo].[Geography]
     WITH
     ( 
@@ -441,7 +441,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     SELECT * FROM [ext].[Geography]
     OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
     ;
-    
+
     CREATE TABLE [dbo].[HackneyLicense]
     WITH
     ( 
@@ -451,7 +451,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     AS SELECT * FROM [ext].[HackneyLicense]
     OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
     ;
-    
+
     CREATE TABLE [dbo].[Medallion]
     WITH
     (
@@ -461,7 +461,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     AS SELECT * FROM [ext].[Medallion]
     OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
     ;
-    
+
     CREATE TABLE [dbo].[Time]
     WITH
     (
@@ -471,7 +471,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     AS SELECT * FROM [ext].[Time]
     OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
     ;
-    
+
     CREATE TABLE [dbo].[Weather]
     WITH
     ( 
@@ -481,7 +481,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     AS SELECT * FROM [ext].[Weather]
     OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
     ;
-    
+
     CREATE TABLE [dbo].[Trip]
     WITH
     (
@@ -495,9 +495,9 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
 
 2. 在加载数据的同时查看数据。
 
-   假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 运行以下使用动态管理视图 (DMV) 的查询以显示负载的状态。 开始查询后，在 SQL 数据仓库执行繁重任务的同时，可享用咖啡和小吃。
-    
-    ```sql
+  假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 运行以下使用动态管理视图 (DMV) 的查询以显示负载的状态。 开始查询后，在 SQL 数据仓库执行繁重任务的同时，可享用咖啡和小吃。
+
+  ```sql
     SELECT
         r.command,
         s.request_id,
@@ -523,7 +523,8 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     ORDER BY
         nbr_files desc, 
         gb_processed desc;
-    ```
+  ```
+
 
 3. 查看所有系统查询。
 
@@ -563,7 +564,7 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
     > [!NOTE]
     > 更改规模时，查询无法运行。 缩放会**终止**当前运行的查询。 操作完成后，可重启这些查询。
     >
-    
+
 5. 选择所有列中的前 100 万个条目，针对行程数据执行扫描操作。 如果希望很快就能获得结果，请选择更少的行。 记下运行此操作所花费的时间。
 
     ```sql
@@ -626,11 +627,11 @@ SQL 数据仓库支持名为 CREATE TABLE AS SELECT (CTAS) 的关键语句。 �
 
     > [!NOTE]
     > SQL 数据仓库不会自动管理统计信息。 统计信息对于查询性能非常重要，我们强烈建议创建并更新统计信息。
-    > 
+    >
     > **基于涉及联接的列、WHERE 子句中使用的列以及 GROUP BY 中的列创建信息统计可以获得最大的效益。**
     >
 
-3. 再次根据“先决条件”中的步骤运行查询，并观察性能是否出现任何差异。 尽管查询性能的差异不像扩展实例那样明显，但仍可注意到速度有所提升。 
+4. 再次根据“先决条件”中的步骤运行查询，并观察性能是否出现任何差异。 尽管查询性能的差异不像扩展实例那样明显，但仍可注意到速度有所提升。 
 
 ## <a name="next-steps"></a>后续步骤
 

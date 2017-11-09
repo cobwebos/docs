@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/06/2017
+ms.date: 10/01/2017
 ms.author: maroche
-ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2eab8ce96399c7d6da9b4afbccdfd8b836f0c9f3
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
@@ -239,7 +239,7 @@ ms.lasthandoff: 10/11/2017
 * 支持注册和发现 Azure SQL 数据仓库对象和数据库。 有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)。
 * 支持注册和发现作为容器的 SQL Server Analysis Services 模型和 SQL Server Reporting Services 服务器。 注册 SSAS 和 SSRS 对象时，Azure 数据目录会为 SSAS 模型和 SSRS 服务器以及报表和其他对象创建条目。 可以使用 Azure 数据目录门户发现并且批注容器。 除搜索和筛选目录内容外，用户还可以搜索和筛选模型或服务器的内容。
 * 支持通过 HTTP/HTTPS 注册和发现 SQL Server Analysis Services 对象。 用户现在可以替代服务器名称使用 URL（如 https://servername/olap/msmdpump.dll）连接到 SSAS 服务器，并且除 Windows 身份验证外，还能使用基本身份验证和匿名连接。 有关通过 HTTP/HTTPS 连接到 SSAS 的详细信息，请参阅 [配置对 Analysis Services 的 HTTP 访问](https://msdn.microsoft.com/library/gg492140.aspx)。
-* 支持 HDInsight 上的 Hive 数据源。 现在，用户可以在 HDInsight 本地数据源中注册和发现 Apache Hive 的 Hive 表。 有关 HDInsight 上的 Hive 的详细信息，请参阅 [HDInsight documentation center](../hdinsight/hdinsight-use-hive.md)（HDInsight 文档中心）。
+* 支持 HDInsight 上的 Hive 数据源。 现在，用户可以在 HDInsight 本地数据源中注册和发现 Apache Hive 的 Hive 表。 有关 HDInsight 上的 Hive 的详细信息，请参阅 [HDInsight documentation center](../hdinsight/hadoop/hdinsight-use-hive.md)（HDInsight 文档中心）。
 * 支持注册和发现作为容器的 Oracle 数据库和 HDFS 群集。 注册 Oracle 表和视图或 HDFS 时，Azure 数据目录会为数据库、表和视图创建条目。 可以使用 Azure 数据目录门户发现并且批注数据库。 除搜索和筛选目录内容外，用户还可以搜索和筛选数据库或群集的内容。
 * 支持手动注册未知的数据源类型。 用户可以使用 Azure 数据目录门户手动输入数据源信息，以便批注和发现数据源注册工具未显式支持的数据源。
 * 支持注册和发现作为容器的 SQL Server 数据库。 注册 SQL Server 表和视图时，Azure 数据目录会为数据库、表和视图创建条目。 可以使用 Azure 数据目录门户发现并且批注数据库。 除搜索和筛选目录内容外，用户还可以搜索和筛选数据库的内容。

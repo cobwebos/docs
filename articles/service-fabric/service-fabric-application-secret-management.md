@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d71924cda8bb3bffbe221946d80dba150359e38e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab60d37c8a6189b25ce35d2659999542ca5c8d6b
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="managing-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在群集中安装证书
-必须在群集中的每个节点上安装此证书。 在运行时，将使用此证书解密服务的 Settings.xml 中存储的值。 有关设置说明，请参阅[如何使用 Azure Resource Manager 创建群集][service-fabric-cluster-creation-via-arm]。 
+必须在群集中的每个节点上安装此证书。 在运行时，将使用此证书解密服务的 Settings.xml 中存储的值。 有关设置说明，请参阅[如何使用 Azure 资源管理器创建群集][service-fabric-cluster-creation-via-arm]。 
 
 ## <a name="encrypt-application-secrets"></a>加密应用程序机密
 Service Fabric SDK 提供内置的机密加密和解密函数。 可以在生成时加密机密值，在服务代码中以编程方式解密和读取机密值。 

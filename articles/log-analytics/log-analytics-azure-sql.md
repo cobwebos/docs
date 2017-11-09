@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: a1214d8327075ee081124d42aeb78846e09ff588
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -102,7 +102,16 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 每个透视提供有关订阅、服务器、弹性池和数据库级别的概述。 此外，每个透视在右侧显示特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 
-| 透视 | 说明 | | 按类型列出的资源 | 对监视的所有资源进行计数的透视。 向下钻取会提供 DTU 和 GB 指标的摘要。 | | 见解 | 提供对智能见解的分层向下钻取。 详细了解智能见解。 | | 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | | 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | | 阻塞 | 提供对数据库上发生的 SQL 阻塞的分层向下钻取。 | | 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 | | 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | | 查询等待 | 按等待类别提供对查询等待统计信息的分层向下钻取。 |
+| 透视 | 说明 |
+| --- | --- |
+| 资源（按类型） | 对监视的所有资源进行计数的透视。 向下钻取会提供 DTU 和 GB 指标的摘要。 |
+| 洞察力 | 提供对智能见解的分层向下钻取。 详细了解智能见解。 |
+| Errors | 提供对数据库上发生的 SQL 错误的分层向下钻取。 |
+| 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 |
+| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 |
+| 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |
+| 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 |
+| 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 |
 
 ### <a name="intelligent-insights-report"></a>智能见解报告
 

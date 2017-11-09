@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 3030336f5efca5029e0e790372495df11cdc8aeb
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: fa25f0435df79a78d39e8f89d702d3b64db79d65
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>了解 Azure Active Directory 体系结构
-使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
+使用 Azure Active Directory (Azure AD) 可以安全地管理用户对 Azure 服务和资源的访问。 Azure AD 随附了整套标识管理功能。 有关 Azure AD 功能的信息，请参阅[什么是 Azure Active Directory？](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
-在 Azure AD 中可以创建及管理用户和组，并使用权限来允许和拒绝对企业资源的访问。 有关标识管理的信息，请参阅 [Azure 标识管理基础知识](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)。
+在 Azure AD 中可以创建及管理用户和组，并使用权限来允许和拒绝对企业资源的访问。 有关标识管理的信息，请参阅 [Azure 标识管理基础知识](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)。
 
 ## <a name="azure-ad-architecture"></a>Azure AD 体系结构
 Azure AD 的地理分布式体系结构整合了全面监视、自动重新路由、故障转移和恢复功能，使我们能够为客户提供企业级的可用性与性能。
@@ -79,7 +79,7 @@ Azure AD 体系结构的组件包括主副本和辅助副本。
 
 ### <a name="data-centers"></a>数据中心
 
-Azure AD 的副本存储在分布于世界各地的数据中心内。 有关详细信息，请参阅 [Azure 数据中心](https://azure.microsoft.com/en-us/overview/datacenters)。
+Azure AD 的副本存储在分布于世界各地的数据中心内。 有关详细信息，请参阅 [Azure 数据中心](https://azure.microsoft.com/overview/datacenters)。
 
 Azure AD 可跨数据中心运行，其特征如下：
 
@@ -113,8 +113,8 @@ Azure AD 实施所有数据的每日备份，因此，在发生任何逻辑删�
 
 **安全操作**
 
-我们针对任一操作采用多重身份验证 (MFA) 等操作控制，并针对所有操作实施审核。 此外，我们使用适时提升系统，授予必要的临时访问权限让客户完成任何日常的按需操作任务。 有关详细信息，请参阅 [The Trusted Cloud](https://azure.microsoft.com/en-us/support/trust-center)（受信任的云）。
+我们针对任一操作采用多重身份验证 (MFA) 等操作控制，并针对所有操作实施审核。 此外，我们使用适时提升系统，授予必要的临时访问权限让客户完成任何日常的按需操作任务。 有关详细信息，请参阅 [The Trusted Cloud](https://azure.microsoft.com/support/trust-center)（受信任的云）。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Active Directory 开发人员指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+[Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 

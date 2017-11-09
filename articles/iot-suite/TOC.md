@@ -8,6 +8,41 @@
 ### [部署预配置解决方案](iot-suite-remote-monitoring-deploy.md)
 ### [操作预配置解决方案](iot-suite-remote-monitoring-explore.md)
 
+## 远程监视（旧版）
+### [什么是预配置的解决方案？](iot-suite-v1-what-are-preconfigured-solutions.md)
+### [常见问题](iot-suite-v1-faq.md)
+
+### 入门
+#### [预配置的解决方案入门](iot-suite-v1-getstarted-preconfigured-solutions.md)
+#### [azureiotsuite.com 权限](iot-suite-v1-permissions.md)
+#### [远程监视解决方案演练](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
+#### [连接 Raspberry Pi](iot-suite-v1-raspberry-pi-kit-get-started.md)
+##### 使用 C
+###### [模拟数据](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
+###### [使用实际传感器](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
+###### [实施固件更新](iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md)
+##### 使用 Node.js
+###### [模拟数据](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
+###### [使用实际传感器](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
+###### [实施固件更新](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+#### 连接 Intel NUC 网关
+##### [模拟数据](iot-suite-v1-gateway-kit-get-started-simulator.md)
+##### [使用实际传感器](iot-suite-v1-gateway-kit-get-started-sensortag.md)
+
+### 如何
+#### 连接模拟设备
+##### [Windows 上的 C](iot-suite-v1-connecting-devices.md)
+##### [Linux 上的 C](iot-suite-v1-connecting-devices-linux.md)
+##### [Node.js](iot-suite-v1-connecting-devices-node.md)
+#### [将逻辑应用连接到远程监视解决方案](iot-suite-v1-logic-apps-tutorial.md)
+#### [自定义预配置解决方案](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
+#### [在远程监视解决方案中使用动态遥测](iot-suite-v1-dynamic-telemetry.md)
+#### [在远程监视解决方案中创建自定义规则](iot-suite-v1-custom-rule.md)
+#### [远程监视解决方案中的设备信息](iot-suite-v1-remote-monitoring-device-info.md)
+
+
+
+
 ## 预见性维护
 ### [前瞻性维护解决方案概述](iot-suite-predictive-overview.md)
 ### [前瞻性维护解决方案演练](iot-suite-predictive-walkthrough.md)

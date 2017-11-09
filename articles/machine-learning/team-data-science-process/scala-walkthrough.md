@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;deguhath
-ms.openlocfilehash: 8f1d9ab5186684c4aac806ace4ebfd38ca1fb306
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19e963a56e8f905bb89d0162c65e893ae7515a97
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
 本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](http://aka.ms/datascienceprocess)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 [Spark](http://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中的迭代算法的最佳选择。 [Spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) 包提供了一组统一的高级 API，它们构建在数据帧之上，可以帮助创建和优化实际机器学习管道。 [MLlib](http://spark.apache.org/mllib/) 是 Spark 的可扩展机器学习库，为此分布式环境提供建模功能。
 
-[HDInsight Spark](../../hdinsight/hdinsight-apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 Jupyter Scala 笔记本的支持，并且可运行 Spark SQL 交互式查询以便对存储在 Azure Blob 存储中的数据进行转换、筛选和可视化。 本文中的 Scala 代码片段提供解决方案，并显示相关图表，以可视化安装在 Spark 群集上的 Jupyter 笔记本中运行的数据。 这些主题中的建模步骤具有代码，显示每种类型模型的定型、评估、保存和使用方式。
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 Jupyter Scala 笔记本的支持，并且可运行 Spark SQL 交互式查询以便对存储在 Azure Blob 存储中的数据进行转换、筛选和可视化。 本文中的 Scala 代码片段提供解决方案，并显示相关图表，以可视化安装在 Spark 群集上的 Jupyter 笔记本中运行的数据。 这些主题中的建模步骤具有代码，显示每种类型模型的定型、评估、保存和使用方式。
 
 本文中的设置步骤和代码适用于 Azure HDInsight 3.4 Spark 1.6。 但是，本文和 [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb)中的代码是通用的，应该可以在任何 Spark 群集上使用。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与本文中显示的稍有不同。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
+* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 
 ![HDInsight 群集类型配置](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -86,7 +86,7 @@ Spark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用
 * `%%local` 后续行中的代码会在本地执行。 代码必须是有效的 Scala 代码。
 * `%%sql -o <variable name>` 针对 `sqlContext` 执行 Hive 查询。 如果传递了 `-o` 参数，则查询的结果以 Spark 数据帧的形式保存在 `%%local` Scala 上下文中。
 
-若要详细了解 Jupyter notebook 内核及调用的其 `%%`（如 `%%local`）预定义“magic”，请参阅[适用于 HDInsight 上具有 HDInsight Spark Linux 群集的 Jupyter notebook 的内核](../../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)。
+若要详细了解 Jupyter notebook 内核及调用的其 `%%`（如 `%%local`）预定义“magic”，请参阅[适用于 HDInsight 上具有 HDInsight Spark Linux 群集的 Jupyter notebook 的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 
 ### <a name="import-libraries"></a>导入库
 使用以下代码导入 Spark、MLlib 和其他需要的库。

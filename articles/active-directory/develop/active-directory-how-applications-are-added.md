@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a97c6af38b1d3191447ad16a789a034a9d475422
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 在 Azure Active Directory 实例中查看应用程序列表时，最初让令人费解的事情之一是不知道应用程序来自何处，以及它们为何会出现在那里。  本文将全面概述如何在目录中表示应用程序，并提供上下文帮助你了解应用程序如何进入目录。
@@ -84,8 +84,8 @@ Azure AD 中的应用程序是使用 2 个对象表示的：应用程序对象�
   * 声明转换规则
   * 属性映射（用户设置）
 * 有关服务主体和应用程序对象的详细信息，请参阅 Azure AD Graph REST API 参考文档。  *提示*：目前，阅读 Azure AD 图形 API 文档是获得 Azure AD 架构参考信息的最佳捷径。  
-  * [应用程序](https://msdn.microsoft.com/library/azure/dn151677.aspx)
-  * [服务主体](https://msdn.microsoft.com/library/azure/dn194452.aspx)
+  * [应用程序](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [服务主体](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="how-are-apps-added-to-my-azure-ad-instance"></a>如何将应用程序添加到 Azure AD 实例？
 可以使用多种方法将应用程序添加到 Azure AD：

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: c1061811d205494969047fa3f91cbf449a25d8ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9b73f6691af957e42236ef9a223411a0296f96f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -187,7 +187,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 7. 打开文件夹，并检查文件夹中的文件。 inputdata 包含 input.log 文件（其中有输入数据），script 文件夹包含 HiveQL 脚本文件。
 
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>使用 Resource Manager 模板创建数据工厂
-准备好存储帐户、输入数据和 HiveQL 脚本后，便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 本教程使用 Azure 门户部署 Azure Resource Manager 模板，从而创建数据工厂。 还可以使用 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template) 部署 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/quickstart-create-data-factory-dot-net.md)。
+准备好存储帐户、输入数据和 HiveQL 脚本后，便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 本教程使用 Azure 门户部署 Azure 资源管理器模板，从而创建数据工厂。 还可以使用 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template) 部署 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/quickstart-create-data-factory-dot-net.md)。
 
 1. 单击以下映像以登录到 Azure，并在 Azure 门户中打开 Resource Manager 模板。 该模板位于 https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json。 请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分，以便详细了解模板中定义的实体。 
 
@@ -489,7 +489,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 删除 **adfjobs** 和 **adfyourdatafactoryname-linkedservicename-datetimestamp** 文件夹。 adfjobs 容器包含来自 Azure 数据工厂的作业日志。
 
 ### <a name="delete-the-resource-group"></a>删除资源组
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 用于将解决方案作为组来部署、管理和监视。  删除资源组会删除组内的所有组件。  
+[Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)用于将解决方案作为组来部署、管理和监视。  删除资源组会删除组内的所有组件。  
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击左侧窗格中的“资源组”。
@@ -564,7 +564,7 @@ folderPath 指定保留输出数据的文件夹的路径：
 ## <a name="next-steps"></a>后续步骤
 在本文中，学习了如何使用 Azure 数据工厂创建按需 HDInsight 群集以处理 Hive 作业。 若要了解更多信息，请参考以下文章：
 
-* [Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight 文档](https://azure.microsoft.com/documentation/services/hdinsight/)
 * [数据工厂文档](https://azure.microsoft.com/documentation/services/data-factory/)

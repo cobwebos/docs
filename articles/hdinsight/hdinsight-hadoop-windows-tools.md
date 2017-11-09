@@ -10,11 +10,11 @@ ms.date: 05/17/2017
 ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: e4f231c1f9b903d6cc7f2b062b30d2a072be8493
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9e4476334db95c66650f663dc3d8d13df2c5b52
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Hadoop 生态系统中工作
 
@@ -28,27 +28,27 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 可以使用 PowerShell 完成的任务示例：
 
 * [使用 PowerShell 创建群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [使用 PowerShell 运行 Hive 查询](hdinsight-hadoop-use-hive-powershell.md)
+* [使用 PowerShell 运行 Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)
 * [使用 PowerShell 管理群集](hdinsight-administer-use-powershell.md)
 
-请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 的步骤来获取最新版本。 如果脚本需要修改后才能使用 Azure Resource Manager 的新 cmdlet，请参阅[迁移到基于 Azure Resource Manager 的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
+请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 的步骤来获取最新版本。 如果脚本需要修改后才能使用 Azure 资源管理器的新 cmdlet，请参阅[迁移到基于 Azure 资源管理器的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>可在浏览器中运行的实用工具
 以下实用工具提供可在浏览器中运行的 Web UI：
 * [Azure Cloud Shell（预览）](https://docs.microsoft.com/azure/cloud-shell/quickstart)是可在浏览器和 Azure 门户中运行的交互式命令行 shell。
 * [Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 是 Azure 门户中提供的管理和监视实用工具，可用于管理不同类型的作业，例如：
     * [将 Ambari 与 REST API 配合使用](hdinsight-hadoop-manage-ambari-rest-api.md)
-    * [Ambari 中的 Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md)
+    * [Ambari 中的 Hive 视图](hadoop/apache-hadoop-use-hive-ambari-view.md)
     * [Ambari 中的 Tez 视图](hdinsight-debug-ambari-tez-view.md)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>用于 Visual Studio 的 Data Lake (Hadoop) 工具
 使用用于 Visual Studio 的 Data Lake 工具可以部署和管理 Storm 拓扑。 Data Lake 工具还会安装 SCP.NET SDK 用于通过 Visual Studio 开发 C# Storm 拓扑。
 
-在转到下面的示例之前，请[安装并试用用于 Visual Studio 的 Data Lake 工具](hdinsight-hadoop-visual-studio-tools-get-started.md)。 
+在转到下面的示例之前，请[安装并试用用于 Visual Studio 的 Data Lake 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。 
 
 可以使用用于 Visual Studio 的 Data Lake 工具完成的任务示例：
-* [通过 Visual Studio 部署和管理 Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
-* [使用 Visual Studio 开发 Storm 的 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md) 软件包中包含可连接到数据库（例如 Azure Cosmos DB 和 SQL 数据库）的 Storm 拓扑的示例模板。
+* [通过 Visual Studio 部署和管理 Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [使用 Visual Studio 开发 Storm 的 C# 拓扑](storm/apache-storm-develop-csharp-visual-studio-topology.md) 软件包中包含可连接到数据库（例如 Azure Cosmos DB 和 SQL 数据库）的 Storm 拓扑的示例模板。
 
 ## <a name="visual-studio-and-the-net-sdk"></a>Visual Studio 和 .NET SDK 
 
@@ -56,8 +56,8 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 
 可在 Visual Studio 中使用 .NET SDK 完成的任务示例：
 * [通过 .NET Framework 应用程序创建群集和使用 HDInsight](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-* [使用 .NET SDK 运行 Hive 查询](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-* [在 Hadoop 上将 C# 用户定义的函数与 Hive 和 Pig 流式处理配合使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [使用 .NET SDK 运行 Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
+* [在 Hadoop 上将 C# 用户定义的函数与 Hive 和 Pig 流式处理配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
 > 提示：如果在基于 Windows 的 HDInsight 群集中运行 .NET 解决方案，现在正好可以计划迁移到基于 Linux 的群集。 有关详细信息，请参阅[将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。
 
@@ -68,15 +68,15 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 * 本地开发和运行 Scala Spark 应用程序。
 
 以下文章介绍了相关信息： 
-* Intellij IDEA：[使用用于 Intellij 的 Azure 工具包插件和 Scala SDK 创建 Spark 应用程序。](hdinsight-apache-spark-intellij-tool-plugin.md)
-* 用于 Eclipse 的 Eclipse IDE 或 Scala IDE：[创建 Spark 应用程序和用于 Eclipse 的 Azure 工具包](hdinsight-apache-spark-eclipse-tool-plugin.md) 
+* Intellij IDEA：[使用用于 Intellij 的 Azure 工具包插件和 Scala SDK 创建 Spark 应用程序。](spark/apache-spark-intellij-tool-plugin.md)
+* 用于 Eclipse 的 Eclipse IDE 或 Scala IDE：[创建 Spark 应用程序和用于 Eclipse 的 Azure 工具包](spark/apache-spark-eclipse-tool-plugin.md) 
 
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>Spark 上面向数据科研人员的 Notebook 
 HDInsight 中的 Apache Spark 群集包含可与 Jupyter Notebook 配合使用的 Zeppelin Notebook 和内核。 
 
-* [了解如何配合 Spark 群集上的内核和 Jupyter Notebook 来测试 Spark 应用程序](hdinsight-apache-spark-zeppelin-notebook.md)
-* [了解如何使用 Spark 群集上的 Zeppelin Notebook 来运行 Spark 作业](hdinsight-apache-spark-jupyter-notebook-kernels.md) 
+* [了解如何配合 Spark 群集上的内核和 Jupyter Notebook 来测试 Spark 应用程序](spark/apache-spark-zeppelin-notebook.md)
+* [了解如何使用 Spark 群集上的 Zeppelin Notebook 来运行 Spark 作业](spark/apache-spark-jupyter-notebook-kernels.md) 
 
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>在 Windows 上运行基于 Linux 的工具和技术

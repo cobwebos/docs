@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 7198fa8d1a512d10ca7022078aa2ea7bde3a4c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76179b6a8eb7066c90828d33729b557f5e37c17a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件（预览）
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 计划事件是 Azure 元数据服务下的一个子服务。 该服务负责显示有关即将发生的事件（例如，重新启动）的信息，使应用程序可做好准备并限制中断。 它可用于所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 计划事件给予虚拟机时间来执行预防性任务，以最大限度地降低事件的影响。 
 
-计划事件可同时用于 Linux 和 Windows VM。 有关 Linux 上计划事件的信息，请参阅 [Linux VM 的计划事件](../windows/scheduled-events.md)。
+计划事件可同时用于 Linux 和 Windows VM。 有关 Linux 上计划事件的信息，请参阅 [Linux VM 的计划事件](../linux/scheduled-events.md)。
 
 ## <a name="why-scheduled-events"></a>为何使用计划事件？
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/15/2017
 ms.author: shlo
-ms.openlocfilehash: 82b1dc036b53fbc1f0159d77ce102dcd054ea722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7851a24e7053e03cc28927ffae3a2b69a3291635
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -155,8 +155,8 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 &nbsp; | 澳大利亚东南部 | 澳大利亚东南部
 日本 | 日本东部 | 日本东部
 &nbsp; | 日本西部 | 日本东部
-韩国 | 韩国中部 | 韩国南部
-&nbsp; | 韩国南部 | 韩国南部
+韩国 | 韩国中部 | 韩国中部
+&nbsp; | 韩国南部 | 韩国中部
 印度 | 印度中部 | 印度中部
 &nbsp; | 印度西部 | 印度中部
 &nbsp; | 印度南部 | 印度中部

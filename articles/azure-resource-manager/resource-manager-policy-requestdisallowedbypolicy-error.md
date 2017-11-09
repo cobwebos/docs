@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 07/12/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 3b11dc6afac716ef391976093839547e8fd37a91
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e821c0369c6f01a7f09361c1093259429a79fa6
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -64,4 +64,4 @@ az policy definition show --name regionPolicyAssignment
 有关详细信息，请参阅以下文章：
 
 - [资源策略概述](resource-manager-policy.md)
-- [通过门户查看策略分配](resource-manager-policy-portal.md#view-policy-assignments)
+- [通过门户查看策略分配](resource-manager-policy-portal.md)

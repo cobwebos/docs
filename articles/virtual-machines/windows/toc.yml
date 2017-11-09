@@ -380,6 +380,8 @@
           href: how-to-use-perfInsights.md
         - name: 性能诊断 VM 扩展
           href: performance-diagnostics-vm-extension.md
+        - name: 使用嵌套虚拟化
+          href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: 引用
   items:
     - name: Azure CLI
