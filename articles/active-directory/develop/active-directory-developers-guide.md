@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1baf98616eb48bd3ae45b78ab1ac31e711fa655d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>针对开发人员的 Azure Active Directory
 Azure Active Directory 是一项云标识服务，开发人员可以使用它将任何用户登录到 Microsoft 支持的工作或学校帐户。  本文档介绍了如何使用行业的标准身份验证协议、OAuth 与 OpenID Connect 向应用程序添加 Azure AD 支持。
@@ -59,16 +59,9 @@ Azure Active Directory 是一项云标识服务，开发人员可以使用它将
 | [术语表](active-directory-dev-glossary.md)                                      | 本文档通篇使用的术语和单词的定义 |
 | [更多参考资料...](active-directory-developers-guide-index.md#reference)|     |
 
-## <a name="help--support"></a>帮助和支持
-可以通过这些地方获取在 Azure Active Directory 上进行开发的帮助。
-
-|  |  
-|---|
-|[Stack Overflow 的 `azure-active-directory` 和 `adal` 标记](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
-|[有关 Azure Active Directory 的反馈](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)|
-| [试用 Microsoft 开发人员聊天（限时免费）](http://aka.ms/devchat) |
-
-<br />
 
 > [!NOTE]
 > 若需登录 Microsoft 个人帐户，可以考虑使用 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)。  Azure AD v2.0 终结点将 Microsoft 个人帐户和 Microsoft 工作帐户（由 Azure AD 提供）统一成单个身份验证系统。
+
+
+[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]

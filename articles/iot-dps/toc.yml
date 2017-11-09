@@ -29,12 +29,15 @@
       href: concepts-service.md
     - name: 安全概念
       href: concepts-security.md
+    - name: 安全
 - name: 操作指南
   items:
     - name: 管理设备注册
       href: how-to-manage-enrollments.md
     - name: 将 HSM 与 SDK 配合使用
       href: use-hsm-with-sdk.md
+    - name: 控制对预配服务的访问
+      href: how-to-control-access.md
 - name: 引用
   items:
     - name: REST

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3e15370c7602276ef323708632b324fe05497f41
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cabfbda3ea31a81248e7f87b79a5637063091be0
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 本教程使用安装的 [HDInsight Storm][HDInsight Storm]，其中随附了现成可用的事件中心 Spout。
 
-1. 请按照 [HDInsight Storm - 入门](../hdinsight/hdinsight-storm-overview.md)过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
+1. 请按照 [HDInsight Storm - 入门](../hdinsight/storm/apache-storm-overview.md)过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
 2. 将 `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` 文件复制到本地开发环境。 其中包含 events-storm-spout。
 3. 使用以下命令将程序包安装到本地 Maven 存储中。 这样，在后面的步骤中，便可以在 Storm 项目中将它添加为引用。
 
@@ -246,8 +246,8 @@ ms.lasthandoff: 10/11/2017
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md
-[HDInsight 传感器分析教程]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
+[HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
+[HDInsight 传感器分析教程]:../hdinsight/storm/apache-storm-sensor-data-analysis.md
 
 <!-- Images -->
 

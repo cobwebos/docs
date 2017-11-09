@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 958ee2f12ebbd46472972a3012ec59aecbc23126
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 5e101c4b92868181a6b627d060a9c8e72a7837c4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
@@ -296,7 +296,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>将动态成员身份更改为静态，或反之
 可更改在组中管理成员身份的方式。 想要在系统中保留相同的组名称和 ID，使针对组的任何现有引用仍然有效时，这很有用；创建新组需要更新这些引用。
 
-我们正在更新 Azure 门户以支持此功能。 在此期间，可按如下所示使用 [Azure 经典门户](https://manage.windowsazure.com)（遵照[此处](active-directory-accessmanagement-groups-with-advanced-rules.md#changing-dynamic-membership-to-static-and-vice-versa)的说明）或使用 PowerShell cmdlet。
+我们正在更新 Azure 门户以支持此功能。 在此期间，可按如下所示使用 [Azure 经典门户](https://manage.windowsazure.com)（遵照[此处](active-directory-accessmanagement-groups-with-advanced-rules.md)的说明）或使用 PowerShell cmdlet。
 
 > [!WARNING]
 > 将现有的静态组更改为动态组时，将从组中删除所有现有的成员，然后会处理成员身份规则以添加新成员。 如果使用组来控制对应用或资源的访问，则在完全处理成员身份规则前，原始成员可能无法进行访问。

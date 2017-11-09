@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 5b28e15d643497dbdf827b3976ad7dcdc73507b1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 1e715b54c78d42d88d2082e9b0e9f942bec72abd
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/31/2017
 [Azure 门户] (https://portal.azure.com/) 中提供的报告可解答以下问题。
 
 > [!NOTE]
-> 必须是[全局管理员](active-directory-assign-admin-roles.md#assign-or-remove-administrator-roles)，并且必须通过访问报告选项卡或审核日志至少一次，选择代表组织收集这些数据。 只有在完成此过程后，才能为组织收集数据。
+> 必须是[全局管理员](active-directory-assign-admin-roles.md)，并且必须通过访问报告选项卡或审核日志至少一次，选择代表组织收集这些数据。 只有在完成此过程后，才能为组织收集数据。
 
 * 有多少人已注册了密码重置？
 * 谁已经注册了密码重置？
@@ -78,13 +78,7 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 
 如果需要检索或存储的数据超过此时间范围，我们建议将数据保存在外部数据库中，并使用该 API 来查询生成的差异数据。 我们建议在组织中开始使用 SSPR 时开始检索此数据并将其保存在外部，然后从此时间点开始继续跟踪差异数据。
 
-## <a name="how-to-download-password-reset-registration-events-quickly-with-powershell"></a>如何使用 PowerShell 快速下载密码重置注册事件
-
-除了直接使用 Azure AD 报告和事件 API 以外，还可以使用以下 PowerShell 脚本来查询目录中最新的注册事件。 如果想要查看最近谁已注册，或者想要确保密码重置的部署按预期进行，这种做法将非常有用。
-
-* [Azure AD SSPR 注册活动 PowerShell 脚本](https://gallery.technet.microsoft.com/scriptcenter/azure-ad-self-service-e31b8aee)
-
-### <a name="description-of-report-columns-in-azure-portal"></a>Azure 门户中报告列的说明
+## <a name="description-of-report-columns-in-azure-portal"></a>Azure 门户中报告列的说明
 
 以下列表详细说明每个报告列：
 
@@ -93,7 +87,7 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 * **日期和时间** – 尝试日期和时间。
 * **已注册数据** – 用户在密码重置注册期间提供的身份验证数据。
 
-### <a name="description-of-report-values-in-azure-portal"></a>Azure 门户中报告值的说明
+## <a name="description-of-report-values-in-azure-portal"></a>Azure 门户中报告值的说明
 
 下表描述了每个列的不同允许值：
 
@@ -198,11 +192,11 @@ Azure AD 报告和事件 API 支持检索密码重置和密码重置注册报告
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [如何成功推出 SSPR？](active-directory-passwords-best-practices.md)
 * [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](active-directory-passwords-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](active-directory-passwords-data.md)
 * [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
 * [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)

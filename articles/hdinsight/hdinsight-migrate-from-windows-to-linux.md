@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: f2695d4f15fe984cd02cba9ff66033b90d0a4dc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3bba2cfd765505a167fe4776f81d06445a8c39c
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 
@@ -188,8 +188,8 @@ Pig 和 MapReduce 工作负荷在基于 Linux 的群集上很相似。 但是，
 基于 Linux 的 HDInsight 不提供远程桌面功能。 可以改用 SSH 远程连接到群集头节点。 有关详细信息，请参阅以下文档：
 
 * [将 Hive 与 SSH 配合使用](hdinsight-hadoop-use-hive-ssh.md)
-* [将 Pig 与 SSH 配合使用](hdinsight-hadoop-use-pig-ssh.md)
-* [将 MapReduce 与 SSH 配合使用](hdinsight-hadoop-use-mapreduce-ssh.md)
+* [将 Pig 与 SSH 配合使用](hadoop/apache-hadoop-use-pig-ssh.md)
+* [将 MapReduce 与 SSH 配合使用](hadoop/apache-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
 
@@ -200,11 +200,11 @@ Pig 和 MapReduce 工作负荷在基于 Linux 的群集上很相似。 但是，
 
 | 对于基于 Windows 的群集，我使用... | 对于基于 Linux 的群集... |
 | --- | --- |
-| **Hive 编辑器** |[Ambari 中的 Hive 视图](hdinsight-hadoop-use-hive-ambari-view.md) |
+| **Hive 编辑器** |[Ambari 中的 Hive 视图](hadoop/apache-hadoop-use-hive-ambari-view.md) |
 | 运行 `set hive.execution.engine=tez;` 以启用 Tez |Tez 是基于 Linux 的群集的默认执行引擎，因此不再需要 set 语句。 |
 | C# 用户定义函数 | 有关通过基于 Linux 的 HDInsight 验证 C# 组件的信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | 服务器上的 CMD 文件或脚本作为 Hive 作业的一部分调用 |使用 Bash 脚本 |
-| 从远程桌面运行 `hive` 命令 |使用 [Beeline](hdinsight-hadoop-use-hive-beeline.md)，或者[从 SSH 会话使用 Hive](hdinsight-hadoop-use-hive-ssh.md) |
+| 从远程桌面运行 `hive` 命令 |使用 [Beeline](hadoop/apache-hadoop-use-hive-beeline.md)，或者[从 SSH 会话使用 Hive](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -233,7 +233,7 @@ Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作�
 
 | 对于基于 Windows 的群集，我使用... | 对于基于 Linux 的群集... |
 | --- | --- |
-| Storm 仪表板 |Storm 仪表板不可用。 请参阅[在基于 Linux 的 HDInsight 上部署和管理 Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)，了解提交拓扑的方法 |
+| Storm 仪表板 |Storm 仪表板不可用。 请参阅[在基于 Linux 的 HDInsight 上部署和管理 Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md)，了解提交拓扑的方法 |
 | Storm UI |可在 https://CLUSTERNAME.azurehdinsight.net/stormui 获得 Storm UI |
 | 使用 Visual Studio 创建、部署和管理 C# 或混合拓扑 |可以使用 Visual Studio 在基于 Linux 的 Storm on HDInsight 上创建、部署和管理 C# (SCP.NET) 或混合拓扑。 它只能与在 2016 年 10 月 28 日之后创建的群集一起使用。 |
 

@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: 1cce8a0c31a7bb7e4c6e228261b27244a762b441
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 810133d91382bffbcd728f9484e075da04da0fd8
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -302,7 +302,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/containerservice.svg" alt="" />
-                                                <p>Azure 容器服务</p>
+                                                <p>Azure 容器服务 (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -386,7 +386,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
-                                                <p>Azure 容器服务</p>
+                                                <p>Azure 容器服务 (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1352,8 +1352,8 @@ ms.lasthandoff: 11/01/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure 容器服务</h3>
-                                                    <p>使用 Kubernetes、DC/OS 或 Docker Swarm 缩放和协调容器</p>
+                                                    <h3>Azure 容器服务 (AKS)</h3>
+                                                    <p>使用 Kubernetes 大规模运行容器化应用程序</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2019,8 +2019,8 @@ ms.lasthandoff: 11/01/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure 容器服务</h3>
-                                                    <p>使用 Kubernetes、DC/OS 或 Docker Swarm 缩放和协调容器</p>
+                                                    <h3>Azure 容器服务 (AKS)</h3>
+                                                    <p>使用 Kubernetes 大规模运行容器化应用程序</p>
                                                 </div>
                                             </div>
                                         </div>

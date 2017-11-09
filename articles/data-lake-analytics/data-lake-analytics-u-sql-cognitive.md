@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: a651fe045d7eb1265f698ebb89843fd4c2b1c436
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec48a07af0aba78f2e508bad232f34102f0c2073
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>教程：U-SQL 的认知功能入门
 
@@ -78,7 +78,7 @@ REFERENCE ASSEMBLY ImageOcr;
 
 OUTPUT @tags_serialized
     TO "/tags.csv"
-    USING Outputers.Csv();
+    USING Outputters.Csv();
 ```
 有关更多示例，请查看“后续步骤”部分中的“U-SQL/认知示例”。
 

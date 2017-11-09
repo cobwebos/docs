@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 8fbf201343f6710d2781a4b56ae54833ed4c06cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa00f176ff56c13033907e134fc236c291308028
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>在 Azure 应用商店中发布和管理产品/服务
 本文旨在帮助开发人员创建、部署和管理在 Azure 应用商店中列出的解决方案，以便其他 Azure 客户和合作伙伴可进行购买和使用。
@@ -99,9 +99,6 @@ ms.lasthandoff: 10/11/2017
 * [将定价还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
 * [将计费模型还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
 * [将列出的 SKU 的可见性设置还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
-* [更改云解决方案提供商经销商激励](marketplace-publishing-csp-incentive.md)
-* [了解付款报告](marketplace-publishing-report-payout.md)
-* [作为发布者获取支持](marketplace-publishing-get-publisher-support.md)
 
 ## <a name="additional-resources"></a>其他资源
 [设置 Azure PowerShell](marketplace-publishing-powershell-setup.md)

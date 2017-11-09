@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: ad9aa6aee0a9f6407da6e9f45df71f8feb8b1500
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df6cd9651d63ccea175fc8417d9f7dd2a9161f57
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="authorize-users-for-ambari-views"></a>授权用户访问 Ambari 视图
 
-[已加入域的 HDInsight 群集](hdinsight-domain-joined-introduction.md)提供企业级功能，包括基于 Azure Active Directory 的身份验证。 可以同步新用户
+[已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-introduction.md)提供企业级功能，包括基于 Azure Active Directory 的身份验证。 可以同步新用户
 <!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> added to Azure AD groups that have been provided access to the cluster, allowing those specific users to perform certain actions. Currently, working with users, groups, and permissions in Ambari is only supported when using a domain-joined HDInsight cluster.
 
 Active Directory 用户可以使用他们的域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Hue、Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。
@@ -32,7 +32,7 @@ Active Directory 用户可以使用他们的域凭据登录到群集节点。 �
 > [!WARNING]
 > 不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 更改密码将导致无法通过群集使用脚本操作或执行缩放操作。
 
-请遵循[这些说明](hdinsight-domain-joined-configure.md)预配新的已加入域的群集（如果尚未这样做）。
+请遵循[这些说明](./domain-joined/apache-domain-joined-configure.md)预配新的已加入域的群集（如果尚未这样做）。
 
 ## <a name="access-the-ambari-management-page"></a>访问 Ambari 管理页
 
@@ -123,7 +123,7 @@ Tez 视图实例可让用户监视和调试 Hive 查询与 Pig 脚本提交的�
 
     ![角色列表视图 - 用户](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[创建 HDInsight 群集](hdinsight-domain-joined-configure.md#create-hdinsight-cluster)。
+* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure.md#create-hdinsight-cluster)。
 
     ![角色列表视图 - 组](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
@@ -143,8 +143,8 @@ Tez 视图实例可让用户监视和调试 Hive 查询与 Pig 脚本提交的�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在已加入域的 HDInsight 中配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
-* [管理已加入域的 HDInsight 群集](hdinsight-domain-joined-manage.md)
-* [将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)
+* [在已加入域的 HDInsight 中配置 Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
+* [管理已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-manage.md)
+* [将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
 
 <!-- * [Synchronize Azure AD users to the cluster](hdinsight-sync-aad-users-to-cluster.md) -->

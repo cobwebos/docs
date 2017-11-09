@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/16/2017
 ms.author: stevelas
-ms.openlocfilehash: 630bc088fcb6d3c7e5bb3a9713107c3fb6653ec6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: dae97084bdaab77efd38169cdf7e70c827b0b5ab
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
 
@@ -43,21 +43,7 @@ Azure 容器注册表 (ACR) 分为多个服务层（称为“SKU”）。 这些
 
 下表详细介绍了基本、标准和高级服务层的功能和限制。
 
-| 功能 | 基本 | 标准 | 高级 |
-|---|---|---|---|---|
-| 存储 | 10 GiB | 100 GiB| 500 GiB |
-| 每分钟读取操作数<sup>1、2</sup> | 1,000 | 300,000 | 10,000,000 |
-| 每分钟写入操作数<sup>1、3</sup> | 100 | 500 | 2,000 |
-| 下载带宽 (MBps)<sup>1</sup> | 30 | 60 | 100 |
-| 上传带宽 (MBps)<sup>1</sup> | 10 | 20 | 50 |
-| Webhook | #N/A | 10 | 100 |
-| 异地复制 | 不适用 | 不适用 | [支持（预览版）](container-registry-geo-replication.md) |
-
-<sup>1</sup>读取操作数、写入操作数和带宽是最小估计值。 ACR 旨在随使用情况增多提升性能。
-
-<sup>2</sup>[docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) 根据映像中的层数和清单检索行为转换为多个读取操作。
-
-<sup>3</sup>[docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) 根据必须推送的层数转换为多个写入操作。 `docker push` 包含 ReadOps，用于检索现有映像的清单。
+[!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
 ## <a name="manage-registry-size"></a>管理注册表大小
 每个 SKU 的存储约束旨在与典型方案保持一致，即基本 SKU 适用于入门，标准 SKU 适用于大部分生产应用程序，高级 SKU 适用于超大规模提升性能和[异地复制](container-registry-geo-replication.md)。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。

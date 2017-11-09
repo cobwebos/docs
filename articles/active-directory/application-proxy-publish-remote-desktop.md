@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/03/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5eb681e5f5c3b5944ff2d101056ae7c7cd60fac2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 - 用户启动 RDP 连接后，RD 网关开始发挥作用。 RD 网关处理通过 Internet 传入的加密 RDP 流量，并将其转换到用户要连接的本地服务器。 在此方案中，RD 网关接收的流量来自 Azure AD 应用程序代理。
 
 >[!TIP]
->如果以前尚未部署 RDS，或者在开始之前想要了解详细信息，请了解如何[使用 Azure Resource Manager 和 Azure 应用商店无缝部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)。
+>如果以前尚未部署 RDS，或者在开始之前想要了解详细信息，请了解如何[使用 Azure 资源管理器和 Azure 应用商店无缝部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)。
 
 ## <a name="requirements"></a>要求
 
@@ -49,9 +49,6 @@ ms.lasthandoff: 10/11/2017
 - 应该[已部署 RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) 并[已启用应用程序代理](active-directory-application-proxy-enable.md)。
 
 - 此方案假定你的最终用户通过 Windows 7 或 Windows 10 桌面版（通过 RD 网页连接）上的 Internet Explorer 进行访问。 如果需要支持其他操作系统，请参阅[对其他客户端配置的支持](#support-for-other-client-configurations)。
-
-  >[!NOTE]
-  >当前不支持 Windows 10 Creator 的更新。
 
 - 在 Internet Explorer 中，启用 RDS ActiveX 外接程序。
 

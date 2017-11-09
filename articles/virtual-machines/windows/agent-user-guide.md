@@ -3,7 +3,7 @@ title: "Azure 虚拟机代理概述 | Microsoft 文档"
 description: "Azure 虚拟机代理概述"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: danielsollondon
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: nepeters
-ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danis
+ms.openlocfilehash: f3e4ab075f7cd75bac2d66f0391227c0de6e11a0
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 
@@ -31,7 +31,7 @@ Microsoft Azure 虚拟机代理（AM 代理）是受保护的轻型进程，用�
 
 ### <a name="azure-gallery-image"></a>Azure 库映像
 
-Azure VM 代理默认安装在任何通过 Azure 库映像部署的 Windows 虚拟机上。 从门户、PowerShell、命令行接口或 Azure Resource Manager 模板部署 Azure 库映像时，也会安装 Azure VM 代理。 
+Azure VM 代理默认安装在任何通过 Azure 库映像部署的 Windows 虚拟机上。 从门户、PowerShell、命令行接口或 Azure 资源管理器模板部署 Azure 库映像时，也会安装 Azure VM 代理。 
 
 ### <a name="manual-installation"></a>手动安装
 
@@ -47,7 +47,7 @@ msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /q
 
 ### <a name="powershell"></a>PowerShell
 
-可以使用 Azure Resource Manager PowerShell 模块检索有关 Azure 虚拟机的信息。 运行 `Get-AzureRmVM` 会返回大量信息，包括 Azure VM 代理的预配状态。
+可以使用 Azure 资源管理器 PowerShell 模块检索有关 Azure 虚拟机的信息。 运行 `Get-AzureRmVM` 会返回大量信息，包括 Azure VM 代理的预配状态。
 
 ```PowerShell
 Get-AzureRmVM

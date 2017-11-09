@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jgao
-ms.openlocfilehash: b44321619f2aa94a6d98624ab1ee35a598fb6fc8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b2ca9dd60187904d9d22e8308e31ed46b1213e6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询 
 
@@ -29,7 +29,7 @@ HDInsight 交互式查询群集包括可用来运行交互式 Hive 查询的 Zep
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具备以下项：
 
-* **HDInsight 交互式查询群集**。 若要创建 HDInsight 群集，请参阅[创建群集](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)。  请确保选择“交互式查询”类型。 
+* **HDInsight 交互式查询群集**。 若要创建 HDInsight 群集，请参阅[创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。  请确保选择“交互式查询”类型。 
 
 ## <a name="create-a-zeppelin-note"></a>创建 Zeppelin 笔记
 
@@ -76,9 +76,9 @@ HDInsight 交互式查询群集包括可用来运行交互式 Hive 查询的 Zep
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  若要了解更多信息，请参阅下列文章：
 
-* [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Hive 数据](./hdinsight-connect-hive-power-bi.md)。
-* [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](./hdinsight-connect-excel-hive-odbc-driver.md)。
-* [使用 Power Query 将 Excel 连接到 Hadoop](./hdinsight-connect-excel-power-query.md)。
-* [使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
+* [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Hive 数据](hadoop/apache-hadoop-connect-hive-power-bi.md)。
+* [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
+* [使用 Power Query 将 Excel 连接到 Hadoop](hadoop/apache-hadoop-connect-excel-power-query.md)。
+* [使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 * [使用用于 Visual Studio Code 的 Azure HDInsight 工具](hdinsight-for-vscode.md)。
 * [将数据上传到 HDInsight](./hdinsight-upload-data.md)。

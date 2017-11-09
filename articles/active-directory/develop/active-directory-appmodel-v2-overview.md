@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1e286044fb1a1b367fcac2dc14c47f68d5ed120d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6a7c6bdf3deaee3a3949fe409a7fab6b7664695
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>在单个应用中登录 Microsoft 帐户和 Azure AD 用户
 在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用开发人员需要集成两个单独的系统。  **Azure AD v2.0 终结点**推出了新的身份验证 API 版本，可让你通过一个简单的集成登录这两种类型的帐户。  使用 v2.0 终结点的应用还可以通过其中一种帐户从 [Microsoft Graph](https://graph.microsoft.io) 使用 REST API。
@@ -49,13 +49,8 @@ ms.lasthandoff: 10/11/2017
 * [v2.0 终结点中的范围和许可](active-directory-v2-scopes.md)
 * [Microsoft Graph](https://graph.microsoft.io)
 
-## <a name="help--support"></a>帮助和支持
-可以通过这些地方获取在 Azure Active Directory 上进行开发的帮助。
-
-* [Stack Overflow 的 `azure-active-directory` 和 `adal` 标记](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)
-* [有关 Azure Active Directory 的反馈](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)
-
-
 > [!NOTE]
 > 如果只需从 Azure Active Directory 登录工作和学校帐户，则应从我们的 [Azure AD 开发人员指南](active-directory-developers-guide.md)开始。  V2.0 终结点供显式需要登录 Microsoft 个人帐户的开发人员使用。
 
+
+[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]

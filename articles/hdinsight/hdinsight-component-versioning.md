@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
-ms.openlocfilehash: 412fc8b76d2b5ac45532d3ccb7a2ab7361d53596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1098ea7f7ab7765f9769dd2e398eb3b62c5557b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
 
@@ -174,7 +174,7 @@ Azure HDInsight 提供了两个类别的大数据云产品/服务：_标准_和_
 
 | HDInsight Premium 功能 | 说明 |
 | --- | --- |
-| 已加入域的 HDInsight 群集 |将 HDInsight 群集加入 Azure Active Directory (Azure AD) 域以实现企业级安全性。 在 HDInsight Premium 中，可以配置企业中可以通过 Azure AD 进行身份验证以登录到 HDInsight 群集的员工的列表。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，并将数据访问权限的大小限制为仅满足使用需求。 最后，管理员可以审核员工访问的数据以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。 有关详细信息，请参阅 [Configure domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。 |
+| 已加入域的 HDInsight 群集 |将 HDInsight 群集加入 Azure Active Directory (Azure AD) 域以实现企业级安全性。 在 HDInsight Premium 中，可以配置企业中可以通过 Azure AD 进行身份验证以登录到 HDInsight 群集的员工的列表。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，并将数据访问权限的大小限制为仅满足使用需求。 最后，管理员可以审核员工访问的数据以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。 有关详细信息，请参阅 [Configure domain-joined HDInsight clusters](./domain-joined/apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。 |
 
 ### <a name="cluster-types-supported-in-hdinsight-premium"></a>HDInsight Premium 支持的群集类型
 下表列出了 HDInsight Premium 中支持的群集类型。

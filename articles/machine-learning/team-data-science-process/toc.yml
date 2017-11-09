@@ -79,8 +79,23 @@
           maintainContext: true
         - name: 平台和工具
           href: platforms-and-tools.md
-        - name: 自定义 Hadoop
-          href: customize-hadoop-cluster.md
+        - name: HDInsight 群集上的 R 和 Python
+          items:
+            - name: HDInsight 上的 Spark 简介
+              href: ../../hdinsight/spark/apache-spark-overview.md
+              maintainContext: true
+            - name: 在 Azure HDInsight 中创建 Apache Spark 群集
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md
+              maintainContext: true
+            - name: Jupyter Notebook 的 PySpark 内核
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md
+              maintainContext: true
+            - name: HDInsight 上的 R Server
+              href: ../../hdinsight/r-server/r-server-overview.md
+              maintainContext: true
+            - name: 开始使用 R Server on HDInsight
+              href: ../../hdinsight/r-server/r-server-get-started.md
+              maintainContext: true
         - name: Azure 机器学习工作区
           href: ../studio/create-workspace.md
           maintainContext: true

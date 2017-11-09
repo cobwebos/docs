@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>使用 ASP.NET Core 生成应用程序的 Web 服务前端
 默认情况下，Azure Service Fabric 服务不提供用于访问 Web 的公共接口。 若要向 HTTP 客户端公开应用程序的功能，需要创建一个 Web 项目作为入口点，然后从该处与单个服务进行通信。
@@ -210,12 +210,6 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     ![浏览器中显示的有状态计数器值][browser-aspnet-counter-value]
    
     定期刷新浏览器，以查看计数器更新值。
-
-## <a name="kestrel-and-weblistener"></a>Kestrel 和 WebListener
-
-默认的 ASP.NET Core Web 服务器称为 Kestrel，[目前尚不支持处理直接 Internet 流量](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel)。 因此，Service Fabric 的 ASP.NET Core 无状态服务模板默认使用 [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener)。 
-
-若要详细了解 Service Fabric 服务中的 Kestrel 和 WebListener，请参阅 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)。
 
 ## <a name="connecting-to-a-reliable-actor-service"></a>连接到 Reliable Actors 服务
 本教程着重介绍添加与有状态服务通信的 Web 前端。 但是可以遵循十分类似的模型来与执行组件交流。 创建 Reliable Actor 项目时，Visual Studio 自动生成接口项目。 可以使用该接口在 Web 项目中生成执行组件代理来与执行组件通信。 系统会自动提供通信通道。 因此你无需像本教程中所述的处理有状态服务一样创建 `ServiceRemotingListener`。

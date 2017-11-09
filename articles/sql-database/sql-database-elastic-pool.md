@@ -120,7 +120,7 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 1. 通过如下方式来估算池所需的 eDTU：
 
    MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>
-   <并发高峰数据库的数目** X 每一数据库的高峰 DTU 使用率**）
+   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率 **** ）
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。 有关基于 eDTU 池大小的池存储限制，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels)。
 3. 选择步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。
 4. 请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)，查找大于步骤 3 中估计值的最低 eDTU 池大小。

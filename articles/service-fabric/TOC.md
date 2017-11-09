@@ -136,11 +136,30 @@
 ## [与 API 管理集成](service-fabric-api-management-overview.md)
 
 ## 监视和诊断
-### [概述](service-fabric-diagnostics-overview.md)
-### [运行状况模型](service-fabric-health-introduction.md)
-### [有状态的 Reliable Services 中的诊断](service-fabric-reliable-services-diagnostics.md)
-### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
-### [用于可靠服务远程处理的性能计数器](service-fabric-reliable-serviceremoting-diagnostics.md)
+### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
+### 生成事件
+#### [生成平台级别事件](service-fabric-diagnostics-event-generation-infra.md)
+##### [运行通道](service-fabric-diagnostics-event-generation-operational.md)
+##### [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)
+##### [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)
+##### [性能指标](service-fabric-diagnostics-event-generation-perf.md)
+##### [监视服务远程处理](service-fabric-reliable-serviceremoting-diagnostics.md)
+#### [生成应用程序级别事件](service-fabric-diagnostics-event-generation-app.md)
+### 检查应用程序和群集运行状况
+#### [监视 Service Fabric 运行状况](service-fabric-health-introduction.md)
+#### [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [添加自定义运行状况报告](service-fabric-report-health.md)
+#### [使用系统运行状况报告进行故障排除](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [查看运行状况报告](service-fabric-view-entities-aggregated-health.md)
+### 聚合事件
+#### [使用 EventFlow 聚合事件](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### 使用 Azure 诊断聚合事件
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### 分析事件
+#### [使用 Application Insights 分析事件](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [使用 OMS 分析事件](service-fabric-diagnostics-event-analysis-oms.md)
+### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # 操作指南
 ## 设置开发环境
@@ -317,30 +336,12 @@
 #### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## 监视和诊断
-### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
-### 生成事件
-#### [生成平台级别事件](service-fabric-diagnostics-event-generation-infra.md)
-##### [运行通道](service-fabric-diagnostics-event-generation-operational.md)
-##### [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)
-##### [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)
-##### [性能指标](service-fabric-diagnostics-event-generation-perf.md)
-#### [生成应用程序级别事件](service-fabric-diagnostics-event-generation-app.md)
-### 检查应用程序和群集运行状况
-#### [监视 Service Fabric 运行状况](service-fabric-health-introduction.md)
-#### [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-#### [添加自定义运行状况报告](service-fabric-report-health.md)
-#### [使用系统运行状况报告进行故障排除](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-#### [查看运行状况报告](service-fabric-view-entities-aggregated-health.md)
-#### [监视 Windows Server 容器](service-fabric-diagnostics-containers-windowsserver.md)
-### 聚合事件
-#### [使用 EventFlow 聚合事件](service-fabric-diagnostics-event-aggregation-eventflow.md)
-#### 使用 Azure 诊断聚合事件
-##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
-##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
-### 分析事件
-#### [使用 Application Insights 分析事件](service-fabric-diagnostics-event-analysis-appinsights.md)
-#### [使用 OMS 分析事件](service-fabric-diagnostics-event-analysis-oms.md)
-### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
+### OMS
+#### [设置 OMS Log Analytics](service-fabric-diagnostics-oms-setup.md)
+#### [添加 OMS 代理](service-fabric-diagnostics-oms-agent.md)
+#### [监视容器](service-fabric-diagnostics-oms-containers.md)
+### 性能监视
+#### [通过 WAD 监视性能](service-fabric-diagnostics-perf-wad.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)

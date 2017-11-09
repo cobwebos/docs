@@ -3,7 +3,7 @@ title: "使用 Azure MFA 和第三方 VPN 的高级方案"
 description: "用于将 Azure MFA 与 Cisco、Citrix 和 Juniper 集成的分步配置指南。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 1f94a214-d6f6-48a8-8a12-006b5896ae45
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
-ms.author: kgremban
-ms.openlocfilehash: 61cf29acac22d546e1b75604f799993ad6ff9042
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: joflore
+ms.openlocfilehash: 9daad3fab3990297cea6651c474e29e5c4002364
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>使用 Azure 多重身份验证和第三方 VPN 解决方案的高级方案
 Azure 多重身份验证可用于与各种第三方 VPN 解决方案无缝连接。 本文重点介绍 Cisco® ASA VPN 设备、Citrix NetScaler SSL VPN 设备和 Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN 设备。 我们创建了配置指南来处理这三个常用设备。 多重身份验证服务器还可与将 RADIUS、 LDAP、 IIS 或基于声明的身份验证用于 AD FS 的大多数其他系统集成。 可以在 [MFA 服务器配置](multi-factor-authentication-get-started-server.md#next-steps)中找到更多详细信息。

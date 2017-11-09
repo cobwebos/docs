@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 3a4764ddf2dea68bf25bd46b9691429ad3341678
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aba231a91efafa48837e45435efd51769b12374b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理对资源的访问权限
 Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方案，它提供一套稳健的功能来管理对本地和云应用程序及资源（包括诸如 Office 365 的 Microsoft 联机服务和众多非 Microsoft SaaS 应用程序）的安全访问。 本文提供了概述，但如果要立即开始使用 Azure AD 组，请遵循[在 Azure AD 中管理安全组](active-directory-accessmanagement-manage-groups.md)中的说明。 若要了解如何使用 PowerShell 来管理 Azure Active directory 中的组，则可以在[用于管理组的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-v2-cmdlets.md) 中阅读更多信息。
@@ -66,7 +66,7 @@ Azure AD 访问管理解决方案的核心是安全组。 使用安全组管理�
 ## <a name="getting-started-with-access-management"></a>访问管理入门
 已准备就绪？ 可以尝试一些可以使用 Azure AD 组完成的基本任务。 使用这些功能可向不同的人员组提供对组织中不同资源的特定访问权限。 下面是基本的首要步骤列表。
 
-* [创建简单规则以配置组的动态成员身份](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
+* [创建简单规则以配置组的动态成员身份](active-directory-accessmanagement-manage-groups.md)
 * [使用组管理对 SaaS 应用程序的访问](active-directory-accessmanagement-group-saasapps.md)
 * [为最终用户启用自助组管理功能](active-directory-accessmanagement-self-service-group-management.md)
 * [使用 Azure AD Connect 将本地组同步到 Azure](active-directory-aadconnect.md)

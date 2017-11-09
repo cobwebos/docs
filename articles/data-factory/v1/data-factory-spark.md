@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 5220ca664d5c7584f3aada0bb707099f91d5650f
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 0eff48ec65a01a2fc3fa9f7652dd8e1a0fc8dd2a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -56,7 +56,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
 
 ### <a name="prerequisites"></a>先决条件
 1. 遵循[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)演练中的说明创建一个**通用 Azure 存储帐户**。  
-2. 遵循[在 Azure HDInsight 中创建 Apache Spark 群集](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)教程中的说明**在 Azure HDInsight 中创建一个 Apache Spark 群集**。 将在步骤 1 中创建的 Azure 存储帐户与此群集相关联。  
+2. 遵循[在 Azure HDInsight 中创建 Apache Spark 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)教程中的说明**在 Azure HDInsight 中创建一个 Apache Spark 群集**。 将在步骤 1 中创建的 Azure 存储帐户与此群集相关联。  
 3. 下载并查看位于以下网址的 python 脚本文件 **test.py**：[https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)。  
 3.  将 **test.py** 上传到你的 Azure Blob 存储中 **adfspark** 容器中的 **pyFiles** 文件夹。 如果该容器和文件夹不存在，则创建它们。
 
@@ -234,7 +234,7 @@ Spark 活动是 Azure 数据工厂支持的[数据转换活动](data-factory-dat
     ![Jupyter 查询结果](media/data-factory-spark/jupyter-notebook-results.png)
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)部分。 
+有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)部分。 
 
 ### <a name="troubleshooting"></a>故障排除
 你将 **getDebugInfo** 设置为 **Always**，所以你会在 Azure Blob 容器的 **pyFiles** 文件夹中看到一个 **log** 子文件夹。 日志文件夹中的日志文件提供了更多详细信息。 当发生错误时，此日志文件尤其有用。 在生产环境中，建议将其设置为 **Failure**。

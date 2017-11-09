@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e89be04a0d6fe90a89e293e67d42f0204eb7000a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 640e051a909b1b9457b20cbd507b418342297c6e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 简介
 Reliable Actors 是基于[虚拟执行组件](http://research.microsoft.com/en-us/projects/orleans/)模式的 Service Fabric 应用程序框架。 Reliable Actors API 提供单一线程编程模型，该模型是基于 Service Fabric 所提供的可扩展性和可靠性保证构建的。
@@ -143,7 +143,7 @@ Reliable Actors 运行时提供简单的基于轮次的访问模型用于访问�
 执行组件运行时在它控制调用这些方法的情况下提供这些并发保证。 例如，它为响应客户端请求而执行的方法调用和计时器与提醒回调提供这些保证。 但是，如果执行组件代码在执行组件运行时提供的机制之外直接调用这些方法，则运行时不能提供任何并发保证。 例如，如果在与执行组件方法返回的任务不相关联的某项任务的上下文中调用方法，则运行时不能提供并发性保证。 如果通过执行组件依据其自身创建的线程调用方法，那么运行时也不能提供并发性保证。 因此，若要执行后台操作，执行组件应使用遵从基于轮次的并发的[执行组件计时器和执行组件提醒](service-fabric-reliable-actors-timers-reminders.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 从生成第一个 Reliable Actors 服务开始：
+从生成第一个 Reliable Actors 服务开始：
    * [.NET 上的 Reliable Actors 入门](service-fabric-reliable-actors-get-started.md)
    * [Java 上的 Reliable Actors 入门](service-fabric-reliable-actors-get-started-java.md)
 

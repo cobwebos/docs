@@ -244,32 +244,36 @@
               href: gremlin-support.md
         - name: 表 API
           items:
-            - name: 表存储概述
-              href: table-storage-overview.md
-            - name: 表存储设计指南
-              href: table-storage-design-guide.md
-            - name: 表存储 REST API
-              href: /rest/api/storageservices/Table-Service-Concepts
-            - name: 教程
+            - name: 表开发
+              href: table-support.md
+            - name: Azure 表存储
               items:
-                - name: .NET
-                  href: table-storage-how-to-use-dotnet.md
-                - name: 'F#'
-                  href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-                - name: Node.js
-                  href: table-storage-cloud-service-nodejs.md
-                - name: Java
-                  href: table-storage-how-to-use-java.md
-                - name: Node.js
-                  href: table-storage-how-to-use-nodejs.md
-                - name: C++
-                  href: table-storage-how-to-use-c-plus.md
-                - name: PHP
-                  href: table-storage-how-to-use-php.md
-                - name: Python
-                  href: table-storage-how-to-use-python.md
-                - name: Ruby
-                  href: table-storage-how-to-use-ruby.md
+                - name: 表存储概述
+                  href: table-storage-overview.md
+                - name: 表存储设计指南
+                  href: table-storage-design-guide.md
+                - name: 表存储 REST API
+                  href: /rest/api/storageservices/Table-Service-Concepts
+                - name: 如何
+                  items:
+                    - name: .NET
+                      href: table-storage-how-to-use-dotnet.md
+                    - name: 'F#'
+                      href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+                    - name: Node.js
+                      href: table-storage-cloud-service-nodejs.md
+                    - name: Java
+                      href: table-storage-how-to-use-java.md
+                    - name: Node.js
+                      href: table-storage-how-to-use-nodejs.md
+                    - name: C++
+                      href: table-storage-how-to-use-c-plus.md
+                    - name: PHP
+                      href: table-storage-how-to-use-php.md
+                    - name: Python
+                      href: table-storage-how-to-use-python.md
+                    - name: Ruby
+                      href: table-storage-how-to-use-ruby.md
         - name: 更改源
           href: change-feed.md
         - name: 地理空间
