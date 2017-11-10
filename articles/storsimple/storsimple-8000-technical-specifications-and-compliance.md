@@ -24,7 +24,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="overview"></a>概述
 
-#N/A 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
+Microsoft Azure StorSimple 设备的硬件组件遵循本文中概述的技术规格和法规标准。 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
 
 ## <a name="power-and-cooling-module-specifications"></a>电源和散热模块规格
 

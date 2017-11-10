@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: 9336743b92130e37b1df2992aab806696f8276aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e332504509ae98e280d1c8585b0b294e0e07cb
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>在 Azure 中将按需“突发”节点添加到 HPC Pack 群集
 如果在 Azure 中设置了 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，则可能希望有一种方法能够快速增加/减少群集容量，而无需维护一组预配置的计算节点 VM。 本文介绍了如何按需将“突发”节点（云服务中运行的辅助角色实例）作为计算资源添加到 Azure 中的头节点。 
 
 > [!IMPORTANT] 
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ![突发节点][burst]
 
@@ -42,10 +43,10 @@ ms.lasthandoff: 10/11/2017
 * **内核配额** - 可能需要增加核心配额，尤其是在选择部署具有多核大小的多个 Azure 节点时。 若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 
 ## <a name="step-1-create-a-cloud-service-and-a-storage-account-for-the-azure-nodes"></a>步骤 1：为 Azure 节点创建云服务和存储帐户
-使用 Azure 经典门户或等效工具配置部署 Azure 节点时所需的以下资源：
+使用 Azure 门户或等效工具来配置 Azure 节点部署时所需的以下资源：
 
-* 新的 Azure 云服务
-* 新的 Azure 存储帐户
+* 新的 Azure 云服务（经典）
+* 新的 Azure 存储帐户（经典）
 
 > [!NOTE]
 > 请勿重复使用订阅中的现有云服务。 
@@ -60,7 +61,11 @@ ms.lasthandoff: 10/11/2017
 ## <a name="step-2-configure-an-azure-management-certificate"></a>步骤 2：配置 Azure 管理证书
 要将 Azure 节点添加为计算资源，头节点上必须有管理证书，并必须将相应证书上传到用于部署的 Azure 订阅。
 
-对于此案例，可以选择 HPC Pack 在头节点上自动安装和配置的**默认 HPC Azure 管理证书**。 此证书对进行测试和概念证明部署很有用。 若要使用此证书，请将文件 C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer 从头节点 VM 上传到订阅。 若要在 [Azure 经典门户](https://manage.windowsazure.com)中上传证书， > 请单击“设置”>“管理证书”。
+对于此案例，可以选择 HPC Pack 在头节点上自动安装和配置的**默认 HPC Azure 管理证书**。 此证书对进行测试和概念证明部署很有用。 要使用此证书，请将文件 C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer 从头节点 VM 上传到订阅。 要在 [Azure 门户](https://portal.azure.com)中上传证书：
+
+1. 单击“订阅” > your_subscription_name。
+
+2. 单击“管理证书” > “上传”。
 
 有关配置管理证书的其他选项，请参阅[为 Azure 突发部署配置 Azure 管理证书的方案](http://technet.microsoft.com/library/gg481759.aspx)。
 
