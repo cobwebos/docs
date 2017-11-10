@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3be8836ae6b877bc4caa98f0467147b008c42aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdb5fdb094a185db12ee08969a12e556dab96389
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>在 Azure 中创建 .NET Service Fabric 应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。 
@@ -57,12 +57,14 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
 右键单击“开始”菜单中的 Visual Studio 图标，再选择“以管理员身份运行”。 若要将调试程序附加到服务，需要以管理员身份运行 Visual Studio。
 
-从克隆的存储库中打开 Voting.sln Visual Studio 解决方案。
+从克隆的存储库中打开 Voting.sln Visual Studio 解决方案。  
+
+默认情况下，Voting 应用程序被设置为在端口 8080 上侦听。  应用程序端口在 */VotingWeb/PackageRoot/ServiceManifest.xml* 文件中进行设置。  可以通过更新**终结点**元素的 **Port** 属性来更改应用程序端口。  若要在本地部署和运行应用程序，应用程序端口必须为打开状态且在你的计算机上可用。  如果更改应用程序端口，在整篇文章中为“8080”替换新的应用程序端口值。
 
 若要部署应用程序，请按 F5。
 
 > [!NOTE]
-> 首次运行和部署应用程序时，Visual Studio 会创建用于调试的本地群集。 此操作可能需要一段时间才能生效。 群集创建状态显示在 Visual Studio 输出窗口中。
+> 首次运行和部署应用程序时，Visual Studio 会创建用于调试的本地群集。 此操作可能需要一段时间才能生效。 群集创建状态显示在 Visual Studio 输出窗口中。  在输出中，将看到消息“应用程序 URL 未进行设置或不是 HTTP/HTTPS URL，因此浏览器不会对应用程序打开。”  此消息不指示错误，但该浏览器将不会自动启动。
 
 部署完成后，启动浏览器并打开网页 `http://localhost:8080`（应用程序的 Web 前端）。
 
@@ -114,14 +116,15 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 若要停止调试会话，请按 Shift+F5。
 
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
-若要将应用程序部署到 Azure 群集，可以创建自己的群集，也可以使用合作群集。
+若要将应用程序部署到 Azure，需要运行该应用程序的 Service Fabric 群集。 
 
-合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。 若要使用合作群集，请[按照说明操作](http://aka.ms/tryservicefabric)。 
+### <a name="join-a-party-cluster"></a>加入 Party 群集
+合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。 
 
-若要了解如何创建自己的群集，请参阅[在 Azure 上创建你的第一个 Service Fabric 群集](service-fabric-get-started-azure-cluster.md)。
+登录并[加入 Windows 群集](http://aka.ms/tryservicefabric)。 请记住**连接终结点**值，该值将在以下步骤中使用。
 
 > [!Note]
-> Web 前端服务配置为侦听端口 8080 上是否有传入流量。 请确保此端口在群集中处于打开状态。 如果使用的是合作群集，此端口已处于打开状态。
+> 默认情况下，Web 前端服务被配置为侦听端口 8080 上是否有传入流量。 端口 8080 在 Party 群集中打开。  如果需要更改应用程序端口，将其更改为在 Party 群集中打开的端口之一。
 >
 
 ### <a name="deploy-the-application-using-visual-studio"></a>使用 Visual Studio 部署应用程序
@@ -129,9 +132,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 1. 在解决方案资源管理器中，右键单击“投票”，再选择“发布”。 此时，“发布”对话框显示。
 
-    ![“发布”对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
+    ![发布对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. 在“连接终结点”字段中，键入群集的连接终结点，再单击“发布”。 注册合作群集时，浏览器中会提供连接终结点。 例如，`winh1x87d1d.westus.cloudapp.azure.com:19000`。
+2. 将 Party 群集页面中的“连接终结点”复制到“连接终结点”字段，然后单击“发布”。 例如，`winh1x87d1d.westus.cloudapp.azure.com:19000`。
+
+    群集中的每个应用程序都必须具有唯一名称。  Party 群集是一个公共、共享的环境，但是可能与现有应用程序存在冲突。  如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
 3. 打开浏览器，键入群集地址（后跟“:8080”），转到群集中的应用程序。例如，`http://winh1x87d1d.westus.cloudapp.azure.com:8080`。 此时，应该能够看到应用程序在 Azure 群集中运行。
 
