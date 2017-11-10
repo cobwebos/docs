@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: a3d4e5367dd41ce2ade7033cefcc774dcec9c82c
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 1f0d50331aa3986e80542902fd528f98e1c91bc2
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -35,11 +35,9 @@ Azure Functions 工具提供以下优势：
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure Functions 工具包含在 [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保在 Visual Studio 2017 版本 15.3 安装中包含 Azure 开发工作负荷：
+Azure Functions Tools 随附在 [Visual Studio 2017 版本 15.4](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2017 时随附了Azure 开发工作负荷：
 
 ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-install-note.md)] 
 
 若要创建和部署函数，还需要：
 
@@ -105,7 +103,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
     } 
     ````
  
-    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上面的示例中，第一个参数应用了 **QueueTrigger** 属性，表示队列触发的函数。 队列名称和连接字符串设置名称作为参数传递。  
+    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数。 队列名称和连接字符串设置名称作为参数传递。  
 
 ## <a name="testing-functions"></a>测试函数
 
