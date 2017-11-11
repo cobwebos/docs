@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/10/2017
 ms.author: twooley
-ms.openlocfilehash: b2ba7ec922341464ea7160d08e475999c941c42a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf454a438f088d8079352ac60ce845185b741327
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>监视运行状况和 Azure 堆栈中的警报
 
@@ -36,7 +36,7 @@ Azure 堆栈包括基础结构监视功能，您可以查看运行状况和 Azur
  
  作为 Azure 堆栈操作员，您可以查看组件的运行状况状态，在管理员门户中，通过 REST API 和 PowerShell。
  
-若要在门户中查看运行状况状态，请单击你想要查看中的区域**区域管理**磁贴。 你可以查看基础结构角色和资源提供程序的运行状况状态。 在此版本中，计算资源提供程序不会报告运行状况状态。
+若要在门户中查看运行状况状态，请单击你想要查看中的区域**区域管理**磁贴。 你可以查看基础结构角色和资源提供程序的运行状况状态。
 
 ![基础结构角色的列表](media/azure-stack-monitor-health/image2.png)
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 8ee171708364c3e29476302bef04a715df650b9b
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将 App Service 资源提供程序添加到 AD FS 保护的连接断开的 Azure 堆栈环境
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 10/18/2017
 
     ![App Service 安装程序](media/azure-stack-app-service-deploy/image07.png)    
 
-12. 查看角色实例和 SKU 选项。 默认值填充实例和 ASDK 部署中的每个角色的最小 SKU 的最小数。 核心和内存要求摘要提供有助于规划你的部署。 进行选择后，单击**下一步**。
+12. 查看角色实例和 SKU 选项。 默认值填充实例和 ASDK 部署中的每个角色的最小 SKU 的最小数。 VCPU 和内存要求的摘要可用于帮助规划你的部署。 进行选择后，单击**下一步**。
 
      > [!NOTE]
      > 对于生产部署，按照中的指导[容量规划 Azure 堆栈中的 Azure App Service 服务器角色](azure-stack-app-service-capacity-planning.md)。
@@ -119,11 +119,11 @@ ms.lasthandoff: 10/18/2017
 
     | 角色 | 最小实例 | 最小的 SKU | 说明 |
     | --- | --- | --- | --- |
-    | 控制器 | 1 | Standard_A1-（1 个内核，1792 MB） | 管理和维护 App Service 云的运行状况。 |
-    | 管理 | 1 | Standard_A2-（2 核，3584 MB） | 管理的应用程序服务 Azure 资源管理器和 API 终结点、 门户 （管理员、 租户、 函数门户） 的扩展和数据服务。 若要支持故障转移，增加到 2 的建议的实例。 |
-    | 发布者 | 1 | Standard_A1-（1 个内核，1792 MB） | 发布通过 FTP 和 web 部署的内容。 |
-    | FrontEnd | 1 | Standard_A1-（1 个内核，1792 MB） | 将请求路由到 App Service 应用程序。 |
-    | 共享工作线程 | 1 | Standard_A1-（1 个内核，1792 MB） | 主机 web API 应用和 Azure 函数应用。 你可能想要添加更多实例。 作为一个操作员，你可以定义您的产品，并选择任何 SKU 层。 层必须具有至少一个核心。 |
+    | 控制器 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 管理和维护 App Service 云的运行状况。 |
+    | 管理 | 1 | Standard_A2-（2 Vcpu、 3584 MB） | 管理的应用程序服务 Azure 资源管理器和 API 终结点、 门户 （管理员、 租户、 函数门户） 的扩展和数据服务。 若要支持故障转移，增加到 2 的建议的实例。 |
+    | 发布者 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 发布通过 FTP 和 web 部署的内容。 |
+    | FrontEnd | 1 | Standard_A1-（1 vCPU、 1792 MB） | 将请求路由到 App Service 应用程序。 |
+    | 共享工作线程 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 主机 web API 应用和 Azure 函数应用。 你可能想要添加更多实例。 作为一个操作员，你可以定义您的产品，并选择任何 SKU 层。 层必须具有一个 vCPU 的最小值。 |
 
     ![App Service 安装程序](media/azure-stack-app-service-deploy/image08.png)    
 
