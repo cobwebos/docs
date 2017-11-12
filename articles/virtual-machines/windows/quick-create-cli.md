@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5939af4cf071664415d57ccbaee3413d61aa69e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc92640f1ff46bac25c11fe246deed514030d9b
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建 Windows 虚拟机
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详细介绍如何使用 Azure CLI 部署运行 Windows Server 2016 的虚拟机。 部署完成后，我们将连接到服务器并安装 IIS。
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门教程详细介绍了如何使用 Azure CLI 部署运行 Windows Server 2016 的虚拟机。 部署完成后，我们将连接到服务器并安装 IIS。
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

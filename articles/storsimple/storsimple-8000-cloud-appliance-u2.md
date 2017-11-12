@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2017
+ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 1ece5b1b2ba8e4d26fe633fe7c7c60f4187f9d6b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
 
@@ -183,6 +183,18 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 [!INCLUDE [Create public endpoints on a cloud appliance](../../includes/storsimple-8000-create-public-endpoints-cloud-appliance.md)]
 
 建议从同一虚拟网络中的另一个虚拟机进行连接，因为这种做法可将虚拟网络上的公共终结点数目减到最少。 在此情况下，请通过远程桌面会话连接到虚拟机，然后就像在局域网中配置任何其他 Windows 客户端一样配置该虚拟网络。 无需附加公共端口号，因为该端口是已知的。
+
+## <a name="get-private-ip-for-the-cloud-appliance"></a>获取云设备的专用 IP
+
+若要将云设备连接到同一虚拟网络中的主机服务器，需使用云设备的内部或专用 IP 地址。 执行以下步骤，获取云设备的专用 IP 地址
+
+1. 转到云设备的底层虚拟机。 虚拟机名称与云设备名称相同。 转到“所有资源”，提供云设备和订阅的名称，并选择“虚拟机”作为类型。 在提供的虚拟机列表中，选择并单击对应于云设备的虚拟机。
+
+     ![选择云设备的虚拟机](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
+
+2. 转到“设置”>“网络”。 在右窗格中，可看到云设备的专用 IP 地址。 记下该地址。
+
+    ![获取云设备的专用 IP 地址](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
 ## <a name="work-with-the-storsimple-cloud-appliance"></a>使用 StorSimple 云设备
 

@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: hero-article
-ms.date: 06/13/2017
+ms.date: 11/02/2017
 ms.custom: mvc
-ms.openlocfilehash: 0da8e52ae568e1e471cb5556cfde063bdd94911c
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 80e995d19fa7d2def95a78d8e89fbac78643c013
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 为 MySQL 服务器创建 Azure 数据库
 本快速入门教程介绍如何使用 Azure CLI 在大约 5 分钟内在 Azure 资源组中为 MySQL 服务器创建 Azure 数据库。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。
@@ -24,7 +24,7 @@ ms.lasthandoff: 10/30/2017
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#set) 命令选择帐户下的特定订阅 ID。
 ```azurecli-interactive
@@ -58,7 +58,7 @@ az mysql server create --resource-group myresourcegroup --name myserver4demo --l
 az mysql server firewall-rule create --resource-group myresourcegroup --server myserver4demo --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 ## <a name="configure-ssl-settings"></a>配置 SSL 设置
-默认情况下，在服务器和客户端应用程序之间强制实施 SSL 连接。  这可通过 Internet 加密数据流确保“传输中”数据的安全性。  为使本快速入门教程更简单，我们为服务器禁用 SSL 连接。  建议不要对生产服务器进行此操作。  有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。
+默认情况下，在服务器和客户端应用程序之间强制实施 SSL 连接。 此默认设置可通过 Internet 加密数据流确保“传输中”数据的安全性。 为使本快速入门教程更简单，请禁用服务器的 SSL 连接。 建议不要对生产服务器禁用 SSL。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。
 
 以下示例禁止在 MySQL 服务器上强制实施 SSL。
  

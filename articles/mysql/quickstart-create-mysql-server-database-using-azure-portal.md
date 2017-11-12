@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 10/16/2017
-ms.openlocfilehash: 73785cf8c4f1539cb52254ba316ed7d888b683aa
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.date: 11/01/2017
+ms.openlocfilehash: a8cea099103bd6a306e41770e47b1279f5dbcdea
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MySQL 服务器
 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 此快速入门介绍了如何使用 Azure 门户在大约五分钟内创建 Azure Database for MySQL 服务器。  
@@ -70,19 +70,21 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 
 3.  在“防火墙规则”标题下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。 
 
-    对于本快速入门，请在每个列的框中填充以下值，启用到服务器的所有 IP 地址：
+   ![连接安全性 - 防火墙规则](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
 
-    规则名称 | 起始 IP | 结束 IP 
-    ---|---|---
-    AllowAllIps |  0.0.0.0 | 255.255.255.255
-    
-    允许所有 IP 地址是不安全的。 提供此示例是为了简单起见，但在实际方案中，需了解为应用程序和用户添加的准确的 IP 地址范围。 
+   对于本快速入门，请在每个列的框中填充以下值，启用到服务器的所有 IP 地址：
+
+   规则名称 | 起始 IP | 结束 IP 
+   ---|---|---
+   AllowAllIps |  0.0.0.0 | 255.255.255.255
+   
+   允许所有 IP 地址是不安全的。 提供此示例是为了简单起见，但在实际方案中，需了解为应用程序和用户添加的准确的 IP 地址范围。 
 
 4. 在“连接安全性”页的上部工具栏中，选择“保存”。 等到指示更新已成功完成的通知出现后，再继续操作。 
 
-    > [!NOTE]
-    > 连接到 Azure Database for MySQL 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 3306。
-    > 
+   > [!NOTE]
+   > 连接到 Azure Database for MySQL 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 3306。
+   > 
 
 ## <a name="get-the-connection-information"></a>获取连接信息
 若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你此前可能已在本快速入门文章中记下这些值。 如果没有记下这些值，可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息。

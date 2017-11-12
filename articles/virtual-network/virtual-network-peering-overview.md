@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7d3e6a34b5851a5a35a530b18efc3db3e2249274
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/24/2017
 
 ## <a name="requirements-constraints"></a>要求和约束
 
-* 在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。 在不同区域中的虚拟网络之间建立对等互连的功能目前已在美国中西部、加拿大中部和美国西部 2 区推出预览版。 可以[注册订阅](virtual-network-create-peering.md)以获取预览版。
+* 在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。 在不同区域中的虚拟网络之间建立对等互连的功能目前已在美国中西部、加拿大中部和美国西部 2 区推出预览版。 在不同区域中进行虚拟网络对等互连之前，必须先[注册订阅](virtual-network-create-peering.md#register)（针对预览版）。 如果尚未完成预览版的注册，则无法在不同区域创建虚拟网络之间的对等互连。
     > [!WARNING]
     > 跨区域创建的虚拟网络对等互连与正式版中的对等互连相比，可用性和可靠性级别可能不同。 虚拟网络对等互连的功能可能存在约束，不一定可在所有 Azure 区域中使用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)（Azure 虚拟网络更新）页。
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/24/2017
 
 可以将指向对等虚拟网络中虚拟机的用户定义的路由表配置为“下一个跃点”IP 地址，以便启用服务链。 使用服务链，可以通过用户定义的路由将流量从一个虚拟网络定向到对等虚拟网络中的虚拟设备。
 
-用户也可以有效构建中心辐射型环境，允许中心在其中托管基础结构组件，如网络虚拟设备。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经在中心虚拟网络中运行的网络虚拟设备。 简言之，通过虚拟网络对等互连，用户定义的路由中的下一个跃点 IP 地址可以成为对等虚拟网络中虚拟机的 IP 地址。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md)。 若要了解如何创建中心和分支网络拓扑，请参阅[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)
+用户也可以有效构建中心辐射型环境，允许中心在其中托管基础结构组件，如网络虚拟设备。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经在中心虚拟网络中运行的网络虚拟设备。 简言之，通过虚拟网络对等互连，用户定义的路由中的下一个跃点 IP 地址可以成为对等虚拟网络中虚拟机的 IP 地址。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md)。 若要了解如何创建中心和分支网络拓扑，请参阅[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)。
 
 ## <a name="gateways-and-on-premises-connectivity"></a>网关和本地连接
 
