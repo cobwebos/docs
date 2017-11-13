@@ -1,6 +1,6 @@
 ---
 title: "设置 Azure Service Fabric 群集 | Microsoft Docs"
-description: "快速入门 - 在 Azure 上创建 Windows 或 Linux Service Fabric 群集。"
+description: "本快速入门介绍如何在 Azure 上创建 Windows 或 Linux Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: facb9643e0bb848f0ea9aadf447f05af218fdd0f
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: caf76bb739fa92982c511c8e3e6c6aaf2bf9d6c1
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>在 Azure 上创建第一个 Service Fabric 群集
-[Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 本快速入门可帮助你在数分钟内通过 [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) 或 [Azure 门户](http://portal.azure.com)创建一个运行在 Windows 或 Linux 上的五节点型群集。  
+[Azure Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 本快速入门介绍如何在数分钟内通过 [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) 或 [Azure 门户](http://portal.azure.com)创建一个运行在 Windows 或 Linux 上的五节点型群集。 还可以将 Azure CLI 用于此任务。  
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,49 +32,49 @@ ms.lasthandoff: 10/17/2017
 
 ### <a name="create-the-cluster"></a>创建群集
 
-1. 单击 Azure 门户左上角的“新建”按钮。
-2. 搜索“Service Fabric”，然后从返回的结果中选择“Service Fabric 群集”。  单击“创建” 。
-3. 填充 Service Fabric 的“基本信息”表单。 对于“操作系统”，请选择想要群集节点运行的 Windows 或 Linux 版本。 在此处输入的用户名和密码用于登录到虚拟机。 对于“资源组”，请创建一个新的资源组。 资源组是在其中创建并集中管理 Azure 资源的逻辑容器。 完成后，单击“确定”。
+1. 在 Azure 门户左上角选择“新建”。
+2. 搜索“Service Fabric”，然后从返回的结果中选择“Service Fabric 群集”。 然后，选择“创建”。
+3. 填充 Service Fabric 的“基本信息”表单。 对于“操作系统”，请选择想要群集节点运行的 Windows 或 Linux 版本。 在此处输入的用户名和密码用于登录到虚拟机。 对于“资源组”，请创建一个新的资源组。 资源组是在其中创建并集中管理 Azure 资源的逻辑容器。 完成后，请选择“确定”。
 
-    ![群集设置输出][cluster-setup-basics]
+    ![群集设置输出的屏幕截图][cluster-setup-basics]
 
-4. 填充“群集配置”表单。  对于“节点类型计数”，请输入“1”。
+4. 填充“群集配置”表单。 对于“节点类型计数”，请输入“1”。
 
-5. 选择“节点类型 1 (主)”并填充“节点类型配置”表单。  输入节点类型名称，将 [耐久性层](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) 设置为“Bronze”。  选择 VM 大小。
+5. 选择“节点类型 1 (主)”并填充“节点类型配置”表单。 输入节点类型名称，将[耐久性层](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)设置为“Bronze”。 然后选择 VM 大小。
 
-    节点类型定义 VM 大小、VM 数、自定义终结点，以及该类型 VM 的其他设置。 定义的每个节点类型均作为独立的虚拟机规模集设置，用于以集的形式部署和管理虚拟机。 每个节点类型可以独立扩展或缩减、打开不同的端口集，并且可以有不同的容量指标。  第一个节点类型（主节点类型）用于托管 Service Fabric 系统服务，必须包含至少五个 VM。
+    节点类型定义 VM 大小、VM 数、自定义终结点，以及该类型 VM 的其他设置。 定义的每个节点类型均作为独立的虚拟机规模集设置，用于以集的形式部署和管理虚拟机。 每个节点类型可以独立扩展或缩减，可以打开不同的端口集，并且有不同的容量指标。 第一个节点类型（主节点类型）用于托管 Service Fabric 系统服务。 此节点类型必须包含至少五个 VM。
 
-    对于任何生产部署，[容量规划](service-fabric-cluster-capacity.md)都是一个重要的步骤。  但就此快速入门来说，不会运行应用程序，因此请选择“DS1_v2 Standard”VM 大小。  请选择“Silver”作为[可靠性层](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)，并选择 5 作为初始虚拟机规模集容量。  
+    对于任何生产部署，[容量规划](service-fabric-cluster-capacity.md)都是一个重要的步骤。 但就此快速入门来说，不会运行应用程序，因此请选择“DS1_v2 Standard”VM 大小。 请选择“Silver”作为[可靠性层](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)，并指定 5 作为初始虚拟机规模集容量。  
 
     自定义终结点会在 Azure 负载均衡器中打开端口，允许通过群集上运行的应用程序进行连接。  输入“80, 8172”打开端口 80 和 8172。
 
-    请勿勾选“配置高级设置”框，该框用于自定义 TCP/HTTP 管理终结点、应用程序端口范围、[放置约束](service-fabric-cluster-resource-manager-configure-services.md#placement-constraints)和[容量属性](service-fabric-cluster-resource-manager-metrics.md)。    
+    请勿选中“配置高级设置”框，该框用于自定义 TCP/HTTP 管理终结点、应用程序端口范围、[放置约束](service-fabric-cluster-resource-manager-configure-services.md#placement-constraints)和[容量属性](service-fabric-cluster-resource-manager-metrics.md)。    
+    
+    ![节点类型配置的屏幕截图][node-type-config]
 
     选择“确定”。
 
-6. 在“群集配置”表单中，将“诊断”设置为“开”。  就本快速入门来说，不需输入任何 [Fabric 设置](service-fabric-cluster-fabric-settings.md)属性。  在“Fabric 版本”中，选择“自动”升级模式，让 Microsoft 自动更新运行群集的 Fabric 代码的版本。  若要在升级时[选择受支持的版本](service-fabric-cluster-upgrade.md)，请将模式设置为“手动”。 
-
-    ![节点类型配置][node-type-config]
+6. 在“群集配置”表单中，将“诊断”设置为“开”。 就本快速入门来说，不需输入任何 [Fabric 设置](service-fabric-cluster-fabric-settings.md)属性。  在“Fabric 版本”中，选择“自动”升级模式，让 Microsoft 自动更新运行群集的 Fabric 代码的版本。  要[选择可以升级到的受支持的版本](service-fabric-cluster-upgrade.md)，请将模式设置为“手动”。     
 
     选择“确定”。
 
-7. 填充“安全性”表单。  就本快速入门来说，请选择“不安全”。  但是，强烈建议为生产型工作负荷创建安全群集，因为任何人都可以匿名连接到不安全的群集并执行管理操作。  
+7. 填充“安全性”表单。 就本快速入门来说，请选择“不安全”。 请注意，通常应为生产工作负荷创建安全群集。 任何人都可以匿名连接到不安全群集，并执行管理操作。  
 
-    证书在 Service Fabric 中用于提供身份验证和加密，为群集及其应用程序提供全方位的保护。 若要详细了解如何在 Service Fabric 中使用证书，请参阅 [Service Fabric 群集安全方案](service-fabric-cluster-security.md)。  若要允许使用 Azure Active Directory 进行用户身份验证，或者要设置证书以确保应用程序安全性，请[从 Resource Manager 模板创建群集](service-fabric-cluster-creation-via-arm.md)。
+   Service Fabric 使用证书来提供身份验证和加密，为群集及其应用程序提供全方位的保护。 有关详细信息，请参阅 [Service Fabric 群集安全方案](service-fabric-cluster-security.md)。 若要允许使用 Azure Active Directory 进行用户身份验证，或者要设置证书以确保应用程序安全性，请参阅[从资源管理器模板创建群集](service-fabric-cluster-creation-via-arm.md)。
 
     选择“确定”。
 
-8. 查看摘要。  若要下载根据输入的设置生成的 Resource Manager 模板，请选择“下载模板和参数”。  选择“创建”可创建群集。
+8. 查看摘要。 若要下载根据输入的设置生成的Azure 资源管理器模板，请选择“下载模板和参数”。 选择“创建”可创建群集。
 
-    可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。
+    可以在通知栏中查看群集创建进度。 （选择屏幕右上角状态栏附近的“铃铛”图标。）如果在创建群集时曾经选择“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。
 
-### <a name="connect-to-the-cluster-using-powershell"></a>使用 PowerShell 连接到群集
-使用 PowerShell 进行连接，验证群集是否正在运行。  ServiceFabric PowerShell 模块与 [Service Fabric SDK](service-fabric-get-started.md) 一起安装。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。   
+### <a name="connect-to-the-cluster-by-using-powershell"></a>使用 PowerShell 连接到群集
+通过 PowerShell 进行连接，验证群集是否正在运行。 Service Fabric PowerShell 模块与 [Service Fabric SDK](service-fabric-get-started.md) 一起安装。 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet 可建立到群集的连接。   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint quickstartcluster.westus2.cloudapp.azure.com:19000
 ```
-有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 **HealthState** 应该为“正常”。
+有关如何连接到群集的其他示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。 连接到群集以后，请使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 显示群集中节点的列表，以及每个节点的状态信息。 每个节点的 HealthState 应该为“正常”。
 
 ```powershell
 PS C:\Users\sfuser> Get-ServiceFabricNode |Format-Table
@@ -89,19 +89,21 @@ NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion  ConfigV
 ```
 
 ### <a name="remove-the-cluster"></a>删除群集
-Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 因此，若要彻底删除 Service Fabric 群集，还需删除组成该群集的所有资源。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。 若要了解如何通过其他方式删除群集，或者删除资源组中的部分（而非全部）资源，请参阅[删除群集](service-fabric-cluster-delete.md)
+Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 若要彻底删除 Service Fabric 群集，还需删除组成该群集的所有资源。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。 若要了解如何通过其他方式删除群集，或者删除资源组中的部分（而非全部）资源，请参阅[删除群集](service-fabric-cluster-delete.md)。
 
 在 Azure 门户中删除资源组：
-1. 导航到要删除的 Service Fabric 群集。
-2. 在群集基本信息页上单击**资源组**名称。
-3. 在“资源组基本信息”页中单击“删除资源组”，并按照该页上的说明进行操作，以完成资源组的删除。
-    ![删除资源组][cluster-delete]
+1. 浏览到要删除的 Service Fabric 群集。
+2. 在群集基本信息页上选择资源组名称。
+3. 在“资源组基本信息”页上，选择“删除资源组”。 然后按照该页面上的说明进行操作，以完成资源组的删除。
+    ![“资源组基本信息”页的屏幕截图，突出显示了“删除资源组”][cluster-delete]
 
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-1. 将 [Azure Powershell 模块 4.0 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)下载到计算机上。
+若要创建群集，另一种方法是使用 PowerShell。 方法如下：
 
-2. 运行 [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster) cmdlet，创建一个受 X.509 证书保护的五节点型 Service Fabric 群集。 该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。 设置 *-OS* 参数可选择群集节点上运行的 Windows 或 Linux 的版本。 根据需要自定义参数。 
+1. 将 [Azure PowerShell 模块 4.0 或更高版本](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)下载到计算机上。
+
+2. 运行 [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster) cmdlet，创建一个受 X.509 证书保护的五节点型 Service Fabric 群集。 该命令创建一个自签名证书，并将其上传到新的密钥保管库。 该证书也会复制到本地目录。 设置 *-OS* 参数可选择群集节点上运行的 Windows 或 Linux 的版本。 根据需要自定义参数。 
 
     ```powershell
     #Provide the subscription Id
@@ -138,9 +140,9 @@ Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 因
     -OS WindowsServer2016DatacenterwithContainers -VmSku $vmsku -KeyVaultName $vaultname
     ```
 
-    此命令可能需要 10 到 30 分钟才能完成，在完成后，会获得类似于以下内容的输出。 可以通过输出了解证书、其所上传到的 KeyVault，以及其所复制到的本地文件夹。     
+    此命令可能需要 10 到 30 分钟才能完成。 可以通过输出了解证书、其所上传到的密钥保管库，以及其所复制到的本地文件夹。     
 
-3. 复制整个输出，将其保存到一个文本文件，因为需要参阅该文件。 从输出中记下以下信息。 
+3. 复制整个输出，将其保存到一个文本文件（需要在以后参阅该文件）。 从输出中记下以下信息： 
 
     - CertificateSavedLocalPath
     - CertificateThumbprint
@@ -149,7 +151,7 @@ Service Fabric 群集由群集资源本身以及其他 Azure 资源组成。 因
 
 ### <a name="install-the-certificate-on-your-local-machine"></a>在本地计算机上安装证书
   
-要连接到群集，需将证书安装到当前用户的“个人(我的)”存储。 
+若要连接到群集，请将证书安装到当前用户的“个人(我的)”存储。 
 
 运行以下内容：
 
@@ -199,6 +201,7 @@ $groupname="mysfclustergroup"
 Remove-AzureRmResourceGroup -Name $groupname -Force
 ```
 ## <a name="use-azure-cli"></a>使用 Azure CLI
+若要创建群集，另一种方法是使用 CLI。 方法如下：
 
 1. 在计算机上安装 [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 2. 登录到 Azure，选择要在其中创建群集的订阅。
@@ -206,7 +209,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
    az login
    az account set --subscription <GUID>
    ```
-3. 运行 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) 命令，创建一个受 X.509 证书保护的五节点型 Service Fabric 群集。 该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。 设置 -os 参数，选择群集节点上运行的 Windows 或 Linux 的版本。 根据需要自定义参数。
+3. 运行 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) 命令，创建一个受 X.509 证书保护的五节点型 Service Fabric 群集。 该命令创建一个自签名证书，并将其上传到新的密钥保管库。 该证书也会复制到本地目录。 设置 -os 参数，选择群集节点上运行的 Windows 或 Linux 的版本。 根据需要自定义参数。
 
     ```azurecli
     #!/bin/bash
@@ -228,7 +231,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
 
     # Create secure five node Linux cluster. Creates a key vault in a resource group
     # and creates a certficate in the key vault. The certificate's subject name must match 
-    # the domain that you use to access the Service Fabric cluster.  The certificate is downloaded locally.
+    # the domain that you use to access the Service Fabric cluster. The certificate is downloaded locally.
     az sf cluster create --resource-group $ResourceGroupName --location $Location --certificate-output-folder . \
         --certificate-password $Password --certificate-subject-name $Subject --cluster-name $ClusterName \
         --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName --vault-resource-group $VaultGroupName \
@@ -236,7 +239,7 @@ Remove-AzureRmResourceGroup -Name $groupname -Force
     ```
     
 ### <a name="connect-to-the-cluster"></a>连接至群集
-运行以下 CLI 命令，使用证书连接到群集。  使用客户端证书进行身份验证时，证书详细信息必须与部署到群集节点的证书匹配。  为自签名证书使用 `--no-verify` 选项。
+运行以下 CLI 命令，使用证书连接到群集。  使用客户端证书进行身份验证时，请确保证书详细信息与部署到群集节点的证书匹配。 为自签名证书使用 `--no-verify` 选项。
 
 ```azurecli
 az sf cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 --pem ./linuxcluster201709161647.pem --no-verify
@@ -250,7 +253,7 @@ az sf cluster health
 
 ### <a name="connect-to-the-nodes-directly"></a>直接连接到节点 
 
-若要连接到 Linux 群集中的节点，可以使用 SSH 连接到节点，只需指定端口号（3389 以上）即可。 例如，对于此前创建的五个节点群集，命令如下所示：
+若要连接到 Linux 群集中的节点，可以使用安全外壳 (SSH) 命令。 指定一个 3389 以后的端口号。 例如，对于此前创建的五个节点群集，命令如下所示：
 ```bash
 ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3389
 ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3390

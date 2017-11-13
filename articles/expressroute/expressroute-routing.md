@@ -3,7 +3,7 @@ title: "Azure ExpressRoute 路由要求 | Microsoft 文档"
 description: "本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。"
 documentationcenter: na
 services: expressroute
-author: osamazia
+author: ganesr
 manager: ganesr
 editor: 
 ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: osamam
-ms.openlocfilehash: a7d1e177e08d37913afa3cb203f0e4085c171f70
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.date: 11/03/2017
+ms.author: ganesr
+ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -174,6 +174,8 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 欧洲西部 | 12076:51002 |
 | 英国南部 | 12076:51024 |
 | 英国西部 | 12076:51025 |
+| 法国中部 | 12076:51030 |
+| 法国南部 | 12076:51031 |
 | **亚太区** | |
 | 东亚 | 12076:51010 |
 | 亚洲东南部 | 12076:51011 |

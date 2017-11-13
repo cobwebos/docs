@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2017
 ms.author: kaanan
-ms.openlocfilehash: 0ef91f6f952b901bcda981e5375be0b84e1ca0a3
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: fef70ca56761565d7b2fa329a17929b978d54cb8
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/26/2017
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
-| **美国政府云** |美国爱荷华州政府、美国弗吉尼亚州政府、美国 DoD 中部、美国 DoD 东部  |芝加哥、达拉斯、纽约、西雅图、硅谷、华盛顿特区 |
+| **美国政府云** |美国亚利桑那州政府、美国爱荷华州政府、美国德克萨斯州政府、美国弗吉尼亚州政府、美国国防部中部、美国国防部东部  |芝加哥、达拉斯、纽约、西雅图、硅谷、华盛顿特区 |
 | **中国** |中国北部、中国东部 |北京、上海 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 

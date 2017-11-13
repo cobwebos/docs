@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: c319979cce23da69965d4fbab037919461f67b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -177,7 +177,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
         "interval": <<int>>,             // optional, how often to fire (default to 1)
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
-        "timeZone": <<default UTC>>
+        "timeZone": "UTC"
         "schedule": {                    // optional (advanced scheduling specifics)
           "hours": [<<0-24>>],
           "weekDays": ": [<<Monday-Sunday>>],
@@ -189,6 +189,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
                     "occurrence": <<1-5>>
                }
            ] 
+        }
       }
     },
    "pipelines": [
@@ -202,7 +203,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
                         "type": "Expression",
                         "value": "<parameter 1 Value>"
                     },
-                    "<parameter 2 Name> : "<parameter 2 Value>"
+                    "<parameter 2 Name>" : "<parameter 2 Value>"
                 }
            }
       ]
@@ -210,17 +211,57 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 }
 ```
 
+> [!IMPORTANT]
+>  参数属性是管道中的必需属性。 即使管道不使用任何参数，也请包括一个空的 json 作为参数，因为该属性必须存在。
+
+
 ### <a name="overview-scheduler-trigger-schema"></a>概述：计划程序触发器架构
 下表提供了与触发器中的循环和计划相关的主要元素的高级概述：
 
 JSON 属性 |     说明
 ------------- | -------------
 startTime | startTime 采用日期时间格式。 对于简单的计划，startTime 是第一个匹配项。 对于复杂的计划，触发器的启动时间不早于 startTime。
+endTime | 指定触发器的结束日期时间。 触发器在这个时间之后不执行。 发生在过去的 endTime 是无效项。
+timezone | 目前仅支持 UTC。 
 recurrence | recurrence 对象指定触发器的循环规则。 recurrence 对象支持以下元素：frequency、interval、endTime、count 和 schedule。 如果定义了 recurrence，则必须定义 frequency；recurrence 的其他元素是可选项。
 frequency | 表示触发器重复的频率的单元。 支持的值为：`minute`、`hour`、`day`、`week` 或 `month`。
 interval | interval 是一个正整数。 它表示确定触发器运行频率的频率间隔。 例如，如果 interval 为 3，frequency 为“week”，则触发器每 3 周重复一次。
-endTime | 指定触发器的结束日期时间。 触发器在这个时间之后不执行。 发生在过去的 endTime 是无效项。
 schedule | 指定了频率的触发器会根据循环计划更改其循环。 schedule 包含基于分钟、小时、星期、月份日次和周次的修改。
+
+
+### <a name="schedule-trigger-example"></a>计划触发器示例
+
+```json
+{
+    "properties": {
+        "name": "MyTrigger",
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Hour",
+                "interval": 1,
+                "startTime": "2017-11-01T09:00:00-08:00",
+                "endTime": "2017-11-02T22:00:00-08:00"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToBlobPipeline"
+                },
+                "parameters": {}
+            },
+            {
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToAzureSQLPipeline"
+                },
+                "parameters": {}
+            }
+        ]
+    }
+}
+```
 
 ### <a name="overview-scheduler-trigger-schema-defaults-limits-and-examples"></a>概述：计划程序触发器架构默认值、限制和示例
 
@@ -251,7 +292,7 @@ startTime 值 | 不按计划循环 | 按计划循环
 ### <a name="deep-dive-schedule"></a>深入探讨：schedule
 一方面，schedule 可以限制触发器执行的次数。 例如，如果频率为“month”的触发器具有仅在 31 日运行的 schedule，该触发器仅在包含 31 日的月份运行。
 
-另一方面，schedule 还可以增加触发器执行的次数。 例如，如果频率为“month”的触发器具有在 1 日和 2 日运行的 schedule，则该触发器将在每月的 1 日和 2 日运行，而不只是在每月运行一次。
+然后，计划还可以增加触发器执行的次数。 例如，如果频率为“month”的触发器具有在 1 日和 2 日运行的 schedule，则该触发器将在每月的 1 日和 2 日运行，而不只是在每月运行一次。
 
 如果指定了多个计划元素，则求值顺序为大到小 – 周次、月份日次、星期、小时和分钟。
 
@@ -262,9 +303,9 @@ JSON 名称 | 说明 | 有效值
 --------- | ----------- | ------------
 分钟数 | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
 小时 | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul>
-工作日 | 运行触发器的星期日期。 只能配合每周频率指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六或星期日</li><li>上述任意值的数组（最大数组大小为 7）</li></p>不区分大小写</p>
+工作日 | 运行触发器的星期日期。 只能配合每周频率指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六或星期日</li><li>任意值的数组（最大数组大小为 7）</li></p>不区分大小写</p>
 monthlyOccurrences | 确定运行触发器的月份日期。 只能配合每月频率指定。 | MonthlyOccurence 对象的数组：`{ "day": day,  "occurrence": occurence }`。 <p> day 是运行触发器的星期日期，例如，`{Sunday}` 表示月份中的每个星期日。 必需。<p>Occurrence 是月份中重复的日期，例如，`{Sunday, -1}` 表示月份中的最后一个星期日。 可选。
-monthDays | 运行触发器的月份日期。 只能配合每月频率指定。 | <ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li><li>上述值的数组</li>
+monthDays | 运行触发器的月份日期。 只能配合每月频率指定。 | <ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li><li>值组成的数组</li>
 
 
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划

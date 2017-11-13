@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: 810133d91382bffbcd728f9484e075da04da0fd8
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 72583761a5e19c5585f760b919a664597fb51f7e
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -300,7 +300,7 @@ ms.lasthandoff: 11/06/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/container-service/">
+                                            <a href="/azure/aks/">
                                                 <img src="media/index/containerservice.svg" alt="" />
                                                 <p>Azure 容器服务 (AKS)</p>
                                             </a>
@@ -384,7 +384,7 @@ ms.lasthandoff: 11/06/2017
                                     <h3>容器</h3>
                                     <ul>
                                         <li>
-                                            <a href="/azure/container-service/">
+                                            <a href="/azure/aks/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
                                                 <p>Azure 容器服务 (AKS)</p>
                                             </a>
@@ -1342,7 +1342,7 @@ ms.lasthandoff: 11/06/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/container-service/">
+                                <a href="/azure/aks/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2009,7 +2009,7 @@ ms.lasthandoff: 11/06/2017
                         <a href="#containers">容器</a>
                         <ul id="containers" class="cardsA">
                             <li>
-                                <a href="/azure/container-service/">
+                                <a href="/azure/aks/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
