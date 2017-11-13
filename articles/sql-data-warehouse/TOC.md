@@ -120,6 +120,8 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### [自动化计算级别](manage-compute-with-azure-functions.md)
+
 ### 资源类
 #### [指南](resource-classes-for-workload-management.md)
 #### [分析工作负荷](analyze-your-workload.md)

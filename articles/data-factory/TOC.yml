@@ -55,10 +55,12 @@
       href: concepts-integration-runtime.md
 - name: 操作指南
   items:
-    - name: 移动数据
+    - name: 复制数据
       items:
-        - name: 复制活动概述
+        - name: 将数据从支持的源复制到目标
           href: copy-activity-overview.md
+        - name: 读取或写入分区的数据
+          href: how-to-read-write-partitioned-data.md
         - name: 连接器
           items:
             - name: Amazon Redshift
@@ -71,6 +73,8 @@
               href: connector-azure-cosmos-db.md
             - name: Azure Data Lake Store
               href: connector-azure-data-lake-store.md
+            - name: Azure Database for MySQL
+              href: connector-azure-database-for-mysql.md
             - name: Azure 文件存储
               href: connector-azure-file-storage.md
             - name: Azure 搜索
@@ -168,6 +172,8 @@
       items:
         - name: If Condition 活动
           href: control-flow-if-condition-activity.md
+        - name: Until 活动
+          href: control-flow-until-activity.md
         - name: Web 活动
           href: control-flow-web-activity.md
         - name: 查找活动
@@ -178,6 +184,8 @@
           href: control-flow-execute-pipeline-activity.md
         - name: For Each 活动
           href: control-flow-for-each-activity.md
+        - name: Wait 活动
+          href: control-flow-wait-activity.md
         - name: 表达式语言
           href: control-flow-expression-language-functions.md
         - name: 系统变量
@@ -190,6 +198,8 @@
           href: store-credentials-in-key-vault.md
         - name: 为自承载集成运行时加密凭据
           href: encrypt-credentials-self-hosted-integration-runtime.md
+        - name: 数据工厂服务标识
+          href: data-factory-service-identity.md
     - name: 监视和管理
       items:
         - name: 使用 SDK

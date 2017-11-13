@@ -15,6 +15,12 @@
       href: container-registry-get-started-powershell.md
 - name: 教程
   items:
+    - name: Azure 容器实例
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure 容器服务 (AKS)
+      href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
     - name: 异地复制（预览版）
       items:
         - name: 1 - 准备容器注册表
@@ -23,12 +29,6 @@
           href: container-registry-tutorial-deploy-app.md
         - name: 3 - 更新 Web 应用程序
           href: container-registry-tutorial-deploy-update.md
-    - name: Azure 容器实例
-      href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure 容器服务 (AKS)
-      href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Service Fabric
-      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: 概念
   items:
     - name: 容器注册表 SKU
@@ -57,13 +57,19 @@
       href: /rest/api/containerregistry
     - name: PowerShell
       href: /powershell/module/azurerm.containerregistry
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.containerregistry/registries
 - name: 资源
   items:
-    - name: 路线图
-      href: 'https://aka.ms/acr/roadmap'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: 路线图
+      href: 'https://aka.ms/acr/roadmap'
+    - name: 提供产品反馈
+      href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'

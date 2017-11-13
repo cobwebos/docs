@@ -246,6 +246,8 @@
           items:
             - name: 表开发
               href: table-support.md
+            - name: 使用 PowerShell 进行的表 API 操作
+              href: table-powershell.md
             - name: Azure 表存储
               items:
                 - name: 表存储概述
@@ -254,7 +256,7 @@
                   href: table-storage-design-guide.md
                 - name: 表存储 REST API
                   href: /rest/api/storageservices/Table-Service-Concepts
-                - name: 如何
+                - name: 开发
                   items:
                     - name: .NET
                       href: table-storage-how-to-use-dotnet.md
@@ -274,6 +276,8 @@
                       href: table-storage-how-to-use-python.md
                     - name: Ruby
                       href: table-storage-how-to-use-ruby.md
+                    - name: PowerShell
+                      href: table-storage-how-to-use-powershell.md
         - name: 更改源
           href: change-feed.md
         - name: 地理空间

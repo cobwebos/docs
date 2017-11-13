@@ -1,6 +1,6 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: HDInsight 上的多用户群集
+- name: HDInsight 上的企业安全性
   items:
     - name: 概述
       href: apache-domain-joined-introduction.md
@@ -13,6 +13,8 @@
   items:
     - name: 配置已加入域的 HDInsight
       href: apache-domain-joined-configure.md
+    - name: 使用 Azure AD DS 配置已加入域的 HDInsight
+      href: apache-domain-joined-configure-using-azure-adds.md
     - name: 配置 Hive 策略
       href: apache-domain-joined-run-hive.md
     - name: 容量计划

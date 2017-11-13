@@ -28,7 +28,13 @@
 - name: 概念
   items:
     - name: 工作区升级
-      href: log-analytics-log-search-upgrade.md
+      items:
+        - name: 升级概述
+          href: log-analytics-log-search-upgrade.md
+        - name: 更改摘要
+          href: log-analytics-log-search-upgrade-changes.md
+        - name: 升级常见问题解答
+          href: log-analytics-log-search-faq.md
     - name: Log Analytics 常见问题解答
       href: log-analytics-faq.md
     - name: 数据使用
@@ -41,8 +47,6 @@
       items:
         - name: 日志搜索概述
           href: log-analytics-log-search-new.md
-        - name: 日志搜索常见问题解答
-          href: log-analytics-log-search-faq.md
         - name: 日志搜索门户
           href: log-analytics-log-search-portals.md
 - name: 操作指南

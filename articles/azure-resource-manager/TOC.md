@@ -71,9 +71,7 @@
 
 ## 设置资源策略
 ### [什么是资源策略？](resource-manager-policy.md)
-### 示例
-#### [标记](resource-manager-policy-tags.md)
-#### [命名约定](resource-manager-policy-naming-convention.md)
+### [命名约定](resource-manager-policy-naming-convention.md)
 
 ## 审核
 ### [查看活动日志](resource-group-audit.md)
@@ -89,6 +87,7 @@
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### 虚拟机部署错误
