@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: bcf42ebb081517d247690ee57c2be274784ef29d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署本地 StorSimple 设备（Update 3 及更高版本）
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 | [步骤 1：创建新服务](#step-1-create-a-new-service) |设置 StorSimple 设备的云管理和存储。 *如果其他 StorSimple 设备有现有服务，请跳过此步骤*。 |
 | [步骤 2：获取服务注册密钥](#step-2-get-the-service-registration-key) |使用此密钥来注册 StorSimple 设备，并将其连接到管理服务。 |
 | [步骤 3︰通过 Windows PowerShell for StorSimple 配置和注册设备](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |要使用管理服务完成设置，请将设备连接到网络并将其注册到 Azure。 |
-| [步骤 4：完成最低版本的设备安装](#step-4-complete-minimum-device-setup)</br>[可选：更新 StorSimple 设备](#scan-for-and-apply-updates) |使用管理服务来完成设备安装，并启用以使其能够提供存储。 |
+| [步骤 4：完成最低版本的设备安装](#step-4-complete-minimum-device-setup)</br>[最佳做法：更新 StorSimple 设备](#scan-for-and-apply-updates) |使用管理服务来完成设备安装，并启用以使其能够提供存储。 |
 | [步骤 5：创建卷容器](#step-5-create-a-volume-container) |创建容以预配卷。 卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 |
 | [步骤 6：创建卷](#step-6-create-a-volume) |在服务器的 StorSimple 设备上预配存储卷。 |
 | [步骤 7：装载、初始化和格式化卷](#step-7-mount-initialize-and-format-a-volume)</br>[可选：配置 MPIO](storsimple-8000-configure-mpio-windows-server.md) |将服务器连接到设备提供的 iSCSI 存储。 根据情况配置 MPIO，以确保服务器可以容许链接、网络和接口故障。 |
@@ -127,6 +127,8 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 [!INCLUDE [storsimple-8000-complete-minimum-device-setup-u2](../../includes/storsimple-8000-complete-minimum-device-setup-u2.md)]
 
+完成最低要求的设备设置以后，最好能够[扫描并应用最新更新](#scan-for-and-apply-updates)。
+
 ## <a name="step-5-create-a-volume-container"></a>步骤 5：创建卷容器
 卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 需要创建卷容器后才可以开始在 StorSimple 设备上预配卷。
 
@@ -181,7 +183,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 [!INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
 ## <a name="scan-for-and-apply-updates"></a>扫描并应用更新
-更新设备可能需要几个小时。 有关如何安装最新更新的详细步骤，请访问[安装 Update 4](storsimple-8000-install-update-4.md)。
+更新设备可能需要几个小时。 有关如何安装最新更新的详细步骤，请访问[安装 Update 5](storsimple-8000-install-update-5.md)。
 
 
 ## <a name="get-the-iqn-of-a-windows-server-host"></a>获取 Windows Server 主机的 IQN

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: badaefb4986f573362babea81d704bf2be067d6b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 28ceb7345c0d74e2a7d7911d5b4bf24a0ceb214a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -153,7 +153,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 具体取决于系统的性能和下载速度，安装可能需要最小为 20 分钟或长时间为几个小时。 如果 MySQLAdapter 边栏选项卡不可用，刷新管理门户。
 
 > [!NOTE]
-> 如果安装需要超过 90 分钟，则可能会失败，并在屏幕上，在日志文件中，你将看到失败消息。 从失败的步骤重试部署。 不符合建议的内存和核心规范的系统可能不能部署 MySQL RP。
+> 如果安装需要超过 90 分钟，则可能会失败，并在屏幕上，在日志文件中，你将看到失败消息。 从失败的步骤重试部署。 不符合建议的内存和 vCPU 规范的系统可能不能部署 MySQL RP。
 
 
 

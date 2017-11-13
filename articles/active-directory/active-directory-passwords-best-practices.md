@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 0be1616f5df915e566dc73c15dbea2e53177aa1c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-successfully-rollout-self-service-password-reset"></a>如何成功推出自助服务密码重置
 
@@ -38,8 +38,8 @@ ms.lasthandoff: 10/31/2017
 10. 一段时间过后，可以通过查看 [Azure AD 提供的报告](active-directory-passwords-reporting.md)来了解用户注册和使用此功能的情况。
 11. 准备就绪后，为所有用户启用密码重置，将“已启用自助服务密码重置”切换开关设置为“所有”。 
 
-    > [!IMPORTANT]
-    > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅我们的[深入分析文章](active-directory-passwords-how-it-works.md)。
+   > [!IMPORTANT]
+   > 请使用用户而不是管理员来测试 SSPR，因为 Microsoft 对 Azure 管理员类型帐户强制实施强身份验证要求。 有关管理员密码策略的详细信息，请参阅[密码策略文章](active-directory-passwords-policy.md#administrator-password-policy-differences)。
 
 ## <a name="email-based-rollout"></a>基于电子邮件的启用
 

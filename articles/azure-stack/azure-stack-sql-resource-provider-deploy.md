@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 329970d8717053ab7126fb8fb6a4a119ccbff6b7
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 6e65af68dcd2306aabda65efdf8fe056c0d9b4a4
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 10/18/2017
 - 注册资源提供程序与本地 Azure 资源管理器 （用户和管理员）。
 
 > [!NOTE]
-> 如果安装需要超过 90 分钟，则可能会失败，用户看到失败消息在屏幕上，在日志文件中，但部署的重试从失败的步骤。 不符合建议的内存和核心规范的系统可能不能部署 SQL RP。
+> 如果安装需要超过 90 分钟，则可能会失败，用户看到失败消息在屏幕上，在日志文件中，但部署的重试从失败的步骤。 不符合建议的内存和 vCPU 规范的系统可能不能部署 SQL RP。
 >
 
 下面是你可以从 PowerShell 运行的示例提示 （但根据需要更改的帐户信息和密码）：

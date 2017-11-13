@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 29f33d01cc6b640a566dc371f4b9c704978da091
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 98892a0919b1ba49308fd3bc51c735977bbff437
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>在 Azure 中部署和管理 StorSimple 虚拟设备
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 你会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[在 Azure 中部署和管理 StorSimple 虚拟设备](storsimple-8000-cloud-appliance-u2.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 StorSimple 8000 系列虚拟设备是 Microsoft Azure StorSimple 解决方案附带的一项额外功能。 StorSimple 虚拟设备在 Microsoft Azure 虚拟网络中的虚拟机上运行，可用于备份和克隆来自主机的数据。 本教程介绍如何在 Azure 中部署和管理虚拟设备，适用于运行软件版本 Update 2 和更低版本的所有虚拟设备。
 
@@ -33,7 +36,7 @@ StorSimple 虚拟设备可以在两种模型中使用：标准 8010（前身为 
 | **Azure VM** |Standard_A3（4 核，7 GB 内存） |Standard_DS3（4 核，14 GB 内存） |
 | **版本兼容性** |运行 pre-Update 2 或更高版本的设备版本 |运行 Update 2 或更高版本的设备版本 |
 | **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的所有 Azure 区域<br></br> 请使用[此列表](https://azure.microsoft.com/en-us/regions/services)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。 |
-| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../virtual-machines/windows/premium-storage.md) |
+| **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br>了解如何[创建高级存储帐户](../storage/common/storage-premium-storage.md) |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案、低延迟、高性能工作负荷 <br></br>用于灾难恢复的辅助设备 |
 
 <sup>1</sup>*前身为 1100*。
@@ -63,7 +66,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 | **服务数据加密密钥** |在物理设备上重新生成密钥，并使用新密钥更新虚拟设备。 |无法从虚拟设备重新生成。 |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>虚拟设备先决条件
-以下部分说明 StorSimple 虚拟设备的配置先决条件。 在部署虚拟设备之前，请查看 [有关使用虚拟设备的安全注意事项](storsimple-security.md)。
+以下部分说明 StorSimple 虚拟设备的配置先决条件。 在部署虚拟设备之前，请查看 [有关使用虚拟设备的安全注意事项](storsimple-8000-security.md#storsimple-cloud-appliance-security)。
 
 #### <a name="azure-requirements"></a>Azure 要求
 预配虚拟设备之前，需要在 Azure 环境中做好以下准备：
@@ -82,7 +85,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 创建虚拟设备之前，请对 Azure StorSimple 服务进行以下更新：
 
 * 针对要用作虚拟设备主机服务器的 VM 添加 [访问控制记录](storsimple-manage-acrs.md) 。
-* 使用与虚拟设备位于同一区域中的 [存储帐户](storsimple-manage-storage-accounts.md#add-a-storage-account) 。 使用不同区域中的存储帐户可能导致性能不佳。 可以配合虚拟设备使用标准或高级存储帐户。 如何创建[标准存储帐户](../storage/common/storage-create-storage-account.md)或[高级存储帐户](../virtual-machines/windows/premium-storage.md)的详细信息
+* 使用与虚拟设备位于同一区域中的 [存储帐户](storsimple-manage-storage-accounts.md#add-a-storage-account) 。 使用不同区域中的存储帐户可能导致性能不佳。 可以配合虚拟设备使用标准或高级存储帐户。 如何创建[标准存储帐户](../storage/common/storage-create-storage-account.md)或[高级存储帐户](../storage/common/storage-premium-storage.md)的详细信息
 * 用于创建虚拟设备的存储帐户应该与用于存储数据的存储帐户不同。 使用相同的存储帐户可能会导致性能不佳。
 
 在开始之前，请确保已准备好以下信息：

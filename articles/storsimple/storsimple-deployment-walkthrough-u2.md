@@ -12,21 +12,24 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3286db40856c9f0eb2564c01f1483870952a19e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6107f64ae86af9b0ee873c8313ebba5371737f4d
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-2"></a>部署本地 StorSimple 设备 (Update 2)
+
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 你会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[部署本地 StorSimple 设备 (Update 2)](storsimple-8000-deployment-walkthrough-u2.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
+
 > [!div class="op_single_selector"]
 > * [Update 2 和更高版本 ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
 > * [正式版](storsimple-deployment-walkthrough.md)
-> 
-> 
 
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple 设备部署。 本部署教程适用于 StorSimple 8000 系列 Update 2。 本系列教程包括 StorSimple 设备的配置清单、配置先决条件和详细配置步骤。

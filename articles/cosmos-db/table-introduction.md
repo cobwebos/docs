@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 68c9f37b6e241d39911acff9c12aa4c978b4215d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 11/02/2017
 * 保证高可用性。
 * [自动编制辅助索引](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
 
-这些应用程序无需更改代码便可使用表 API 迁移到 Azure Cosmos DB，并可充分利用高级功能。 表 API 适用于 .NET 和 Python。
+为 Azure 表存储编写的应用程序无需更改代码便可使用表 API 迁移到 Azure Cosmos DB，并可充分利用高级功能。 表 API 有一个适用于 .NET 的客户端 SDK。
 
-建议观看以下视频。在视频中，Aravind Ramachandran 介绍了适用于 Azure Cosmos DB 的表 API 的入门方法：
+建议观看以下视频。在视频中，Aravind Ramachandran 介绍了 Azure Cosmos DB 表 API 的入门方法：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 
@@ -64,5 +64,5 @@ ms.lasthandoff: 11/02/2017
 * [使用表 API 查询表数据](tutorial-query-table.md)
 * [了解如何使用表 API 设置 Azure Cosmos DB 全局分发](tutorial-global-distribution-table.md)
 * [Azure Cosmos DB 表 .NET API](table-sdk-dotnet.md)
-* [用于 Python 的 Azure Cosmos DB 表 SDK](table-sdk-python.md)
+
 

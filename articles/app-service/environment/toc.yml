@@ -38,6 +38,8 @@
       href: integrate-with-application-gateway.md
     - name: 基于模板创建 ASE
       href: create-from-template.md
+    - name: 强制隧道配置
+      href: forced-tunnel-support.md
 - name: 引用
   items:
     - name: 管理地址

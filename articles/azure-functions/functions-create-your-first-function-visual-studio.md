@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 016179372d69dc63f5e5226723d87ac6e74b31fd
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: aeac4feaeea376ae5231d9c24d44d94f8132af42
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
@@ -35,12 +35,10 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/ser
 
 若要完成本教程，请安装：
 
-* [Visual Studio 2017 版本 15.3](https://www.visualstudio.com/vs/preview/) 或更高版本，包括 **Azure 开发**工作负荷。
+* [Visual Studio 2017 版本 15.4](https://www.visualstudio.com/vs/) 或更高版本，包括 Azure 开发工作负荷。
 
     ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
     
-[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-install-note.md)] 
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>在 Visual Studio 中创建 Azure Functions 项目
@@ -51,9 +49,9 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/ser
 
 ## <a name="create-the-function"></a>创建函数
 
-1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。 选择 **Azure Function**，然后单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“添加” > “新建项”。 选择“Azure Function”，在“名称”处输入 `HttpTriggerCSharp.cs`，再单击“添加”。
 
-2. 选择 **HttpTrigger**，键入“函数名称”，针对“访问权限”选择“匿名”，然后单击“创建”。 创建的函数可以通过 HTTP 请求从任何客户端访问。 
+2. 选择“HttpTrigger”，再对“访问权限”选择“匿名”，然后单击“确定”。 创建的函数可以通过 HTTP 请求从任何客户端访问。 
 
     ![创建新的 Azure Function](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
 

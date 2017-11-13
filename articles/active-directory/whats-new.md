@@ -1,27 +1,35 @@
 ---
 title: "新增功能 Azure Active Directory 发行说明 | Microsoft Docs"
-description: "使用这些发行说明来随时了解 Azure Active Directory (Azure AD) 中的最新版本、已知问题、bug 修复、已弃用功能和更改计划。"
+description: "了解 Azure Active Directory (Azure AD) 中的新增功能，其中包括最新的发行说明、已知问题、bug 修复、对立功能和即将进行的更改。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
 editor: 
+featureFlags: clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1d98233e1bfc2c9a926d7c61737286ec6e4fc422
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 93b80744f68546e37934c987f45d7e2747d64f83
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
+
+
+
+
+> 通过在你收藏的 RSS 源读取器中订阅此[源](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3F%22&locale=en-us)随时了解 Azure Active Directory 中的新增功能。
+
+
 
 我们一直在改进 Azure Active Directory。 为了让大家随时了解最新的开发成果，本主题提供了以下方面的信息：
 

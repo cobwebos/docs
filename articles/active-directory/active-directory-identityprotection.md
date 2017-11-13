@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3aaf2b717937fdf62de423f5d9219be5ce0ad60
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
@@ -34,7 +34,7 @@ Azure Active Directory Identity Protection 是 Azure AD Premium P2 版本的功�
 
 ## <a name="getting-started"></a>入门
 
-Microsoft 对基于云的标识的保护期超过十年。 通过 Azure Active Directory Identity Protection，可以在环境中使用与 Microsoft 用于保护标识相同的保护系统。
+Microsoft 在基于云的标识保护方面拥有数十载的经验。 通过 Azure Active Directory Identity Protection，可以在环境中使用与 Microsoft 用于保护标识相同的保护系统。
 
 大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 近年来，攻击者越来越擅于使用第三方违规，以及使用复杂的网络钓鱼攻击。 攻击者获取较低权限的用户帐户的访问权限后，即可通过横向移动，轻松访问重要的公司资源。
 
@@ -67,7 +67,7 @@ Azure Active Directory Identity Protection 不只是一个监视和报告工具�
 
 **基于风险的条件性访问策略：**
 
-* 通过阻止登录或请求多重身份验证质询来缓解有风险登录的策略。
+* 通过阻止登录或需要多重身份验证来降低风险的策略
 * 阻止或保护有风险用户帐户的策略
 * 要求用户注册多重身份验证的策略
 
@@ -81,7 +81,7 @@ Azure Active Directory Identity Protection 不只是一个监视和报告工具�
 | :--                          | ---                                |  ---   |
 | 全局管理员         | 对 Identity Protection 具有完全访问权限、载入 Identity Protection| |
 | 安全管理员       | 对 Identity Protection 具有完全访问权限 | 载入 Identity Protection、重置用户密码 |
-| 安全读者              | 对 Identity Protection 具有只读访问权限 | 载入 Identity Protection、修改用户、配置策略、重置密码 |
+| 安全读者              | 对 Identity Protection 的只读访问 | 载入 Identity Protection、修改用户、配置策略、重置密码 |
 
 
 

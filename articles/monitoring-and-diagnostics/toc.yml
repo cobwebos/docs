@@ -152,10 +152,10 @@
           href: azure-diagnostics-streaming-event-hubs.md
         - name: 故障排除
           href: azure-diagnostics-troubleshooting.md
-    - name: 使用 Azure Monitor 指标资源管理器
-      items:
-        - name: 创建指标图表
-          href: monitoring-metric-charts.md
+    - name: 在指标资源管理器中创建指标图表
+      href: monitoring-metric-charts.md
+    - name: 向 Grafana 发送指标
+      href: monitor-send-to-grafana.md
 - name: 引用
   items:
     - name: Azure CLI

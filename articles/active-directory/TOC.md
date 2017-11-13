@@ -87,7 +87,6 @@
 #### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
-### [启用专用组](active-directory-accessmanagement-dedicated-groups.md)
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
 ### 管理组设置
@@ -254,7 +253,6 @@
 ##### [经典门户](active-directory-add-manage-domain-names.md)
 ### [管理目录](active-directory-administer.md)
 ### [多个目录](active-directory-licensing-directory-independence.md)
-### [O365 目录](active-directory-manage-o365-subscription.md)
 ### [自助服务注册](active-directory-self-service-signup.md)
 #### [接管非托管目录](domains-admin-takeover.md)
 ### [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)

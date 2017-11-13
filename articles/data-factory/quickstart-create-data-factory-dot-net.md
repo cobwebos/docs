@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
-ms.openlocfilehash: 579311b28abb650c6527fe1160ebf875ce7e8c82
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: e27c1a8e130d20eb0ba0e5c001fc9a435e07c1cd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -78,7 +78,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 将以下代码添加到 **Main** 方法以设置变量。 将占位符替换为自己的值。
+2. 将以下代码添加到 **Main** 方法以设置变量。 将占位符替换为自己的值。 目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     ```csharp
     // Set variables
@@ -87,8 +87,6 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     string authenticationKey = "<your authentication key for the application>";
     string subscriptionId = "<your subscription ID where the data factory resides>";
     string resourceGroup = "<your resource group where the data factory resides>";
-    // Currently, Data Factory V2 allows you to create data factories only in the East US and East US2 regions. 
-    // Note that the data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions
     string region = "East US 2";
     string dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
     string storageAccount = "<your storage account name to copy data>";
@@ -103,7 +101,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     string pipelineName = "Adfv2QuickStartPipeline";    // name of the pipeline
     ```
 
-3. 向 **Main** 方法中添加用于创建 **DataFactoryManagementClient** 类的实例的以下代码。 将使用此对象创建数据工厂、链接服务、数据集以及管道。 还将使用此对象来监视管道运行详细信息。
+3. 在 **Main** 方法中添加用于创建 **DataFactoryManagementClient** 类的实例的以下代码。 将使用此对象创建数据工厂、链接服务、数据集以及管道。 还将使用此对象来监视管道运行详细信息。
 
     ```csharp
     // Authenticate and create a data factory management client

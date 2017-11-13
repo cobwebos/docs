@@ -12,16 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 06/14/2017
+ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: d15c30dad9fb4bbe9082d6a3c72cd20ed42bbc3e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77bb769a094c2a619c0c75363e23ae3ee561c1e4
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
-## <a name="introduction"></a>介绍
 
 本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，就能让使用多个 Azure 资源的应用程序在云中启动并运行。
 
@@ -52,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 在开始开发 Azure 应用程序之前，需要下载工具并设置开发环境：
 
 1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
-2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤适用于 Visual Studio 2015，但也适用于 Visual Studio 2017。
+2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2017。
 3. 当提示是要运行还是保存安装程序时，单击“运行”。
 4. 在“Web 平台安装程序”中，单击“安装”，并继续安装。
 5. 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
@@ -77,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 4. 单击“确定”以创建“ProductsServer”项目。
 5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，并重新启动 Visual Studio。
 6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，并单击“管理 NuGet 程序包”。
-7. 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 选择“WindowsAzure.ServiceBus”包。
+7. 单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 选择“WindowsAzure.ServiceBus”包。
 8. 单击“安装” 并接受使用条款。
 
    ![][13]
@@ -198,6 +197,8 @@ ms.lasthandoff: 10/11/2017
       </behaviors>
     </system.serviceModel>
     ```
+    就此示例来说，由“transportClientEndpointBehavior”引发的错误只是一个警告，不是阻止问题。
+    
 13. 仍在 App.config 文件中，在 `<appSettings>` 元素中，将连接字符串值替换为之前从门户获取的连接字符串。
 
     ```xml
@@ -230,7 +231,7 @@ ms.lasthandoff: 10/11/2017
     ![][18]
 
 7. 回到“新建 ASP.NET Web 应用程序”对话框，单击“确定”创建 MVC 应用。
-8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet.md)的步骤操作。 然后，返回到本教程并继续执行下一步。
+8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet.md#publish-to-azure)的步骤操作。 然后，返回到本教程并继续执行下一步。
 10. 在解决方案资源管理器中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 然后，单击“添加”。
 
     ![][17]
@@ -274,7 +275,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 4. 在解决方案资源管理器中，展开 Views\Shared 文件夹，然后双击 **_Layout.cshtml**以在 Visual Studio 编辑器中将其打开。
-5. 将每一处 **My ASP.NET Application** 更改为 **LITWARE's Products**。
+5. 将每一处 **My ASP.NET Application** 更改为 **Northwind Traders Products**。
 6. 删除“Home”、“About”和“Contact”链接。 在下面的示例中，删除突出显示的代码。
 
     ![][41]
@@ -332,7 +333,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 如果尚未打开在 [创建 ASP.NET 应用程序](#create-an-aspnet-application) 一节中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
 2. 采用与“创建本地服务器”部分类似的步骤，将 NuGet 包添加到项目“引用”中。 在解决方案资源管理器中，右键单击“ProductsPortal”项目，并单击“管理 NuGet 程序包”。
-3. 搜索“服务总线”，然后选择“WindowsAzure.ServiceBus”项。 然后，完成安装过程并关闭此对话框。
+3. 搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”项。 然后，完成安装过程并关闭此对话框。
 4. 在解决方案资源管理器中，右键单击“ProductsPortal”项目，并单击“添加”，再单击“现有项”。
 5. 从 **ProductsServer** 控制台项目导航到 **ProductsContract.cs** 文件。 单击以突出显示 ProductsContract.cs。 单击“添加”旁边的向下箭头，并单击“添加为链接”。
 
@@ -455,7 +456,7 @@ ms.lasthandoff: 10/11/2017
 若要了解有关 Azure 中继的详细信息，请参阅以下资源：  
 
 * [什么是 Azure 中继？](relay-what-is-it.md)  
-* [如何使用中继](service-bus-dotnet-how-to-use-relay.md)  
+* [如何使用 Azure 中继](relay-wcf-dotnet-get-started.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png

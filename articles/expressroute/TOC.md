@@ -36,12 +36,19 @@
 ### [Azure 门户](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
 ### [Azure CLI](how-to-routefilter-cli.md)
+## [从公共对等互连移到 Microsoft 对等互连](how-to-move-peering.md)
 ## [将线路从经典部署转移到 Resource Manager 部署](expressroute-howto-move-arm.md)
 ## [将关联的虚拟网络从经典部署迁移到 Resource Manager 部署](expressroute-migration-classic-resource-manager.md)
 ## 为 ExpressRoute 配置路由器
 ### [配置路由器](expressroute-config-samples-routing.md)
 ### [NAT 的路由器配置示例](expressroute-config-samples-nat.md)
 ## [为 ExpressRoute 配置网络性能监视器](how-to-npm.md)
+## 经典部署模型文章
+### [修改线路](expressroute-howto-circuit-classic.md)
+### [创建和修改对等互连配置](expressroute-howto-routing-classic.md)
+### [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
+### [配置 ExpressRoute 和 S2S 并存连接](expressroute-howto-coexist-classic.md)
+### [将网关添加到 VNet](expressroute-howto-add-gateway-classic.md)
 
 ## 最佳实践
 ### [网络安全和云服务最佳实践](../best-practices-network-security.md)

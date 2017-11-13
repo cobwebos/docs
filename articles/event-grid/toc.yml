@@ -46,6 +46,15 @@
       href: subscription-creation-schema.md
     - name: 事件架构
       href: event-schema.md
+      items:
+        - name: Azure 订阅
+          href: event-schema-subscriptions.md
+        - name: Blob 存储
+          href: event-schema-blob-storage.md
+        - name: 事件中心
+          href: event-schema-event-hubs.md
+        - name: 资源组
+          href: event-schema-resource-groups.md
 - name: 资源
   items:
     - name: Azure 路线图

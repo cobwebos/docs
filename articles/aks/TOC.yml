@@ -51,12 +51,14 @@
       href: /rest/api/aks
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 提供产品反馈
+      href: 'https://github.com/Azure/AKS/issues'
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
