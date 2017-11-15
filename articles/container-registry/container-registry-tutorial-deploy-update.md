@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 76e6e1b826f37bfea7a8463808566191753e4f2d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 05c5149ed6c8502c31539f31bfff046f98dc633d
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="push-an-updated-image-to-regional-deployments"></a>将已更新的映像推送到区域部署
 
@@ -91,6 +91,20 @@ docker run -d -p 8080:80 <acrName>.azurecr.io/acr-helloworld:v1
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
+输出应如下所示：
+
+```bash
+The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
+c003ed6fc8b8: Pushed
+02b11afef3fd: Layer already exists
+cf17b6f921be: Layer already exists
+c93ae914d31e: Layer already exists
+2eea44510cee: Layer already exists
+670f809bd6d5: Layer already exists
+a75caa09eb1f: Layer already exists
+v1: digest: sha256:e44c0956a21c91e1f5f7bc83f23f1de710c798246df1e0e508c0c88025449646 size: 1792
+```
+
 ## <a name="view-the-webhook-logs"></a>查看 Webhook 日志
 
 复制映像时，可以看到 Azure 容器注册表 Webhook 正在触发。
@@ -123,7 +137,7 @@ Webhook 通知 Web 应用，新的映像已推送到注册表，后者会自动�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已更新一个新版 Web 应用程序容器并将其推送到了异地复制的注册表。 Azure 容器注册表中的 Webhook 告知应用服务已发生此项更新，后者触发了从复制的注册表进行本地提取的操作。
+在本教程中，我们已更新一个新版 Web 应用程序容器并将其推送到了异地复制的注册表。 Azure 容器注册表中的 Webhook 告知用于容器的 Web 应用已发生此项更新，更新触发了从注册表副本进行的本地提取操作。
 
 在本教程（教程系列的最后一部分）中执行的操作包括：
 

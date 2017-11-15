@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 7346b4a146a228efdc3824ba989f3de77a4df8ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d26adec8c273d015a671c745f2136fc6251fd291
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 OData 连接器](v1/data-factory-odata-connector.md)。
 
-## <a name="supported-scenarios"></a>支持的方案
+## <a name="supported-capabilities"></a>支持的功能
 
 可以将数据从 OData 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -61,11 +61,9 @@ OData 链接的服务支持以下属性：
 ```json
 {
     "name": "ODataLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "OData",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         },
@@ -82,11 +80,9 @@ OData 链接的服务支持以下属性：
 ```json
 {
     "name": "ODataLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "OData",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url": "<endpoint of OData source>",
             "authenticationType": "Basic",
             "userName": "<username>",
@@ -108,11 +104,9 @@ OData 链接的服务支持以下属性：
 ```json
 {
     "name": "ODataLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "OData",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url": "<endpoint of on-premises OData source>",
             "authenticationType": "Windows",
             "userName": "<domain>\\<user>",

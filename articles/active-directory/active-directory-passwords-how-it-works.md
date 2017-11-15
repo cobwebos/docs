@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 71310534ec62b62bcd408d75060859c79bc470cf
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: fd9515120049dd3837a43c95de8a9b6822719e19
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -88,6 +88,23 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 用户可以选择提供更多的身份验证方法（如果管理员已启用这些方法）。
 
 如果没有为用户注册最少数目的所需方法，他们将看到一个错误页面，让他们请求管理员重置其密码。
+
+#### <a name="changing-authentication-methods"></a>更改身份验证方法
+
+假设最初的策略仅注册了一种身份验证方法（用于重置或解锁），若将其更改为两种会发生什么？
+
+| 注册的方法数 | 必选方法数 | 结果 |
+| :---: | :---: | :---: |
+| 大于等于 1 | 1 | 能够重置或解锁 |
+| 1 | #N/A | 不可重置或解锁 |
+| 2 或更大 | #N/A | 能够重置或解锁 |
+
+若更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
+
+示例： 
+1. 通过 2 种身份验证方法配置的初始策略要求只能使用办公电话和安全性问题。 
+2. 管理员将策略更改为不再使用安全性问题，而是允许使用移动电话和备用电子邮件。
+3. 未填写移动电话、备用电子邮件字段的用户无法重置密码。
 
 ### <a name="how-secure-are-my-security-questions"></a>如何保护安全问题
 
@@ -169,6 +186,7 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 > [!NOTE]
 > 用户可以通过单击取消或关闭窗口的控件来隐藏密码重置注册门户，但在完成注册之前，当他们每次登录时，系统都会提示他们注册。
 >
+> 如果已登录，此操作不会中断用户的连接。
 
 ### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>用户必须在几天后重新确认其身份验证信息
 
@@ -190,7 +208,7 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 
 ## <a name="on-premises-integration"></a>本地集成
 
-如果已安装、配置并启用 Azure AD Connect，则可以使用以下附加选项进行本地集成。
+如果已安装、配置并启用 Azure AD Connect，则可以使用以下附加选项进行本地集成。 如果这些选项显示为灰色，则说明写回配置不正确，有关详细信息请参阅[配置密码写回](active-directory-passwords-writeback.md#configuring-password-writeback)。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>将密码写回到本地目录
 
@@ -214,6 +232,9 @@ SSPR 的工作原理 该选项在界面中意味着什么？ 请继续阅读，�
 3. **B2B 用户** - 使用新的 [Azure AD B2B 功能](active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
 若要测试此方案，请让上述合作伙伴用户之一转到 http://passwordreset.microsoftonline.com。 只要他们定义了备用电子邮件或身份验证电子邮件，密码重置就能按预期方式工作。
+
+> [!NOTE]
+> 已被授予 Azure AD 租户来宾访问权限的 Microsoft 帐户（如 Hotmail.com、Outlook.com 的电子邮件地址或其他私人电子邮件地址）将无法使用 Azure AD SSPR，并需要按文章[如果无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)中的信息来重置其密码。
 
 ## <a name="next-steps"></a>后续步骤
 

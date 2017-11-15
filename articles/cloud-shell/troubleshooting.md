@@ -12,29 +12,43 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 4c99ae37b66200244514ee554c9696cf18c1b800
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 89d5d8df9327c6136fbd00078f6a34f78d85032e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Azure Cloud Shell 故障排除
 
 Azure Cloud Shell 中问题的已知解决方法包括：
 
-## <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
+## <a name="general-resolutions"></a>常规解决方法
+
+### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 - **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure 策略而失败。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure 策略。
 
-## <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
+### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
  - **详细信息**：使用 Azure Active Directory 订阅时，无法创建存储。
  - **解决方法**：使用能够创建存储资源的 Azure 订阅。 Azure AD 订阅无法创建 Azure 资源。
 
-## <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>终端输出 - 错误：无法连接终端：无法建立 websocket。 按 `Enter` 重新连接。
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>终端输出 - 错误：无法连接终端：无法建立 websocket。 按 `Enter` 重新连接。
  - **详细信息**：Cloud Shell 需要能够与 Cloud Shell 基础结构建立 websocket 连接。
  - **解决方法**：检查是否已将网络设置配置为允许向域（*.console.azure.com）发送 https 请求和 websocket 请求。
+
+## <a name="bash-resolutions"></a>Bash 解决方法
+
+### <a name="cannot-run-az-login"></a>无法运行 az login
+
+- **详细信息**：无法运行 `az login`，原因是已在用于登录 Cloud Shell 或 Azure 门户的帐户下进行身份验证。
+- **解决方法**：利用用于登录或注销的帐户并对目标 Azure 帐户重新进行身份验证。
+
+### <a name="cannot-run-the-docker-daemon"></a>无法运行 docker 守护程序
+
+- **详细信息**：Cloud Shell 利用容器托管 shell 环境，因此不允许运行守护程序。
+- **解决方法**：利用默认安装的 [docker-machine](https://docs.docker.com/machine/overview/) 管理远程 Docker 主机中的 docker 容器。
 
 ## <a name="powershell-resolutions"></a>PowerShell 解决方法
 

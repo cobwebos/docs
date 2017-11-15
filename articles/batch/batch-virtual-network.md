@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: v-dotren
-ms.openlocfilehash: 3c62bff7ba37f7e45d73fa2cf67a4aee3b4a7a38
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: f34647afc600b72704859952d0a40edad4a3b40f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -62,7 +62,12 @@ Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例�
 * Batch 服务需要与池计算节点进行通信来计划任务。 若要启用此通信，请在你的 Batch 帐户所在的区域中为 Batch 服务使用的每个 IP 地址添加用户定义的路由。 若要获取 Batch 服务的 IP 地址列表，请联系 Azure Support。
 
 * 确保经由本地网络设备发送到 Azure 存储（具体而言是采用 `<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 格式的 URL）的出站流量没有被阻止。
-    
+
+添加用户定义的路由时，请为每个相关批处理 IP 地址前缀定义路由，并将“下一个跃点类型”设置为“Internet”。 请参阅以下示例：
+
+![用户定义的路由](./media/batch-virtual-network/user-defined-route.png)
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
+- 有关创建用户定义的路由的详细信息，请参阅[创建用户定义的路由 - Azure 门户](../virtual-network/create-user-defined-route-portal.md)。

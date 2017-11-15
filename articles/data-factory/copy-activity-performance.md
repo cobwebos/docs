@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/08/2017
 ms.author: jingwang
-ms.openlocfilehash: 3f2b95e57e34905bf1128e9aee2862110a598f75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 本文介绍：
 
 * 支持的源和接收器数据存储的[性能参考数字](#performance-reference)，可帮助用户规划项目；
-* 可在不同情况下提高复制吞吐量的功能，包括[云数据移动单元](#cloud-data-movement-units)、[并行复制](#parallel-copy)和[暂存复制](#staged-copy)；
+* 可在不同情况下提高复制吞吐量的功能，包括[云数据移动单元](#cloud-data-movement-units)、[并行复制](#parallel-copy)和[分步复制](#staged-copy)；
 * 有关如何优化性能和调整影响复制性能的关键因素的[性能优化指南](#performance-tuning-steps)。
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ![性能矩阵](./media/copy-activity-performance/CopyPerfRef.png)
 
 >[!IMPORTANT]
->在 Azure 数据工厂版本 2 中，在 Azure Integration Runtime 上执行复制活动时，云数据移动单元数下限为两个。
+>在 Azure 数据工厂版本 2 中，对 Azure Integration Runtime 执行复制活动时，允许的云数据移动单元数下限为两个。 如果未指定，请参阅[云数据移动单元](#cloud-data-movement-units)了解使用的默认数据移动单元数。
 
 需要注意的要点：
 
@@ -84,13 +84,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 **DMU 仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**，而不适用于[自承载 Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)。
 
-**为复制活动运行提供支持的云数据移动单元数下限为两个。** 下表列出了不同复制方案中使用的默认 DMU 数目。
+**为复制活动运行提供支持的云数据移动单元数下限为两个。** 如果未指定，下表列出了不同复制方案中使用的默认 DMU 数目：
 
 | 复制方案 | 服务决定的默认 DMU 数目 |
 |:--- |:--- |
-| 在基于文件的存储之间复制数据 | 2 到 16 个，具体取决于文件的数量和大小。 |
-| 从 Salesforce/Dynamics 复制数据 | 4 |
-| 所有其他复制方案 | #N/A |
+| 在基于文件的存储之间复制数据 | 4 到 16 个，具体取决于文件的数量和大小。 |
+| 所有其他复制方案 | 4 |
 
 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 **cloudDataMovementUnits** 属性的**允许值**为 2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 

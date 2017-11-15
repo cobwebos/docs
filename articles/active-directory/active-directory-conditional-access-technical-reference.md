@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 4bcca3ee5862a0455b6064d0f9c0a91388db9516
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 316157a7a8ed920e9f3b15e24e15035db4cefc6c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件访问技术参考
 
@@ -82,11 +82,7 @@ ms.lasthandoff: 11/01/2017
 
 ## <a name="device-platform-condition"></a>设备平台条件
 
-在条件访问策略中，可配置设备平台条件，将策略绑定到客户端上的操作系统。
-
-![将访问策略绑定到客户端 OS](./media/active-directory-conditional-access-technical-reference/41.png)
-
-Azure AD 条件性访问支持以下设备平台：
+在条件访问策略中，可配置设备平台条件，将策略绑定到客户端上的操作系统。 Azure AD 条件性访问支持以下设备平台：
 
 - Android
 
@@ -96,7 +92,12 @@ Azure AD 条件性访问支持以下设备平台：
 
 - Windows
 
-- macOS（预览）
+- macOS
+
+
+![将访问策略绑定到客户端 OS](./media/active-directory-conditional-access-technical-reference/41.png)
+
+
 
 
 
@@ -131,8 +132,8 @@ Azure AD 条件性访问支持以下设备平台：
 | Windows Server 2016    | Chrome                      | 即将支持 |
 | Windows Server 2012 R2 | Internet Explorer、Chrome   | ![勾选标记][1] |
 | Windows Server 2008 R2 | Internet Explorer、Chrome   | ![勾选标记][1] |
-| macOS                  | Safari                      | ![勾选标记][1] |
-| macOS                  | Chrome                      | 即将支持 |
+| macOS                  | Chrome、Safari              | ![勾选标记][1] |
+
 
 > [!NOTE]
 > 对于 Chrome 支持，必须使用 Windows 10 创意者更新（版本 1703）或更高版本。<br>
@@ -153,7 +154,7 @@ Azure AD 条件性访问支持以下设备平台：
 | Dynamics CRM 应用| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
 | “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Office 365 Exchange Online| Windows 10|
 | 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务| Android 和 iOS|
-| Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
+| Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS|
 | Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）| Office 365 SharePoint Online| Windows 8.1、Windows 7|
 | Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持| Office 365 SharePoint Online| Windows 10|
 | Office 2016 for macOS（只有 Word、Excel、PowerPoint、OneNote）。 将来计划提供 OneDrive for Business 支持| Office 365 SharePoint Online| Mac OS X|
@@ -165,6 +166,7 @@ Azure AD 条件性访问支持以下设备平台：
 | PowerBI 应用。 适用于 Android 的 Power BI 应用当前不支持基于设备的条件访问。| PowerBI 服务| Windows 10、Windows 8.1、Windows 7 和 iOS|
 | Skype for Business| Office 365 Exchange Online| Android、IOS|
 | Visual Studio Team Services 应用| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
+
 
 
 

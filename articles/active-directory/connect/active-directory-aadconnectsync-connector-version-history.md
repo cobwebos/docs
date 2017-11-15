@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.openlocfilehash: 98eb9b3a58737da2436eed591d69a900166c6af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6df124a38c748294e92183df272dc266a0afc51
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
 
 > [!NOTE]
 > 本主题仅适用于 FIM 和 MIM。 不支持将这些连接器安装在 Azure AD Connect 上。 升级到指定的版本时，已发布的连接器将预安装在 AADConnect 上。
+
 
 本主题列出所有已发布的连接器版本。
 
@@ -37,6 +38,29 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 * [PowerShell 连接器](active-directory-aadconnectsync-connector-powershell.md)参考文档
 * [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)参考文档
 
+## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
+
+### <a name="fixed-issues"></a>已解决的问题：
+
+* Lotus Notes：
+  * 筛选自定义认证者选项
+  * 修复了类 ImportOperations 的导入，以便决定哪些操作可在“示图”模式下运行，哪些操作可在“搜索”模式下运行。
+* 泛型 LDAP：
+  * OpenLDAP 目录使用 DN 而非 entryUUI 作为定位点。 增加了 GLDAP 连接器的新选项，用于修改定位点
+* 泛型 SQL：
+  * 修复了具有 varbinary(max) 类型的导出到字段。
+  * 将二进制数据从数据源添加到 CSEntry 对象时，DataTypeConversion 函数在零字节时失败。 修复了 CSEntryOperationBase 类的 DataTypeConversion 函数。
+
+
+
+
+### <a name="enhancements"></a>增强功能：
+
+* 泛型 SQL：
+  * 在“全局参数”页下的通用 SQL 管理代理配置窗口中，添加了具有命名参数或未命名参数的执行存储过程的模式配置功能。 在“全局参数”页中有一个复选框（其标签为“使用命名参数执行存储过程”），用于选择执行存储过程的模式是否使用命名参数。
+    * 当前，仅限在数据库 IBM DB2 和 MSSQL 中执行具有命名参数的存储过程。 对于数据库 Oracle 和 MySQL，此方法不起作用： 
+      * MySQL 的 SQL 语法不支持存储过程中的命名参数。
+      * 用于 Oracle 的 ODBC 驱动程序不支持存储过程中的命名参数。
 
 ## <a name="116040-aadconnect-116140"></a>1.1.604.0 (AADConnect 1.1.614.0)
 
@@ -203,6 +227,22 @@ Lotus：
 * [KB2932635](https://support.microsoft.com/kb/2932635) - 5.3.1003，2014 年 2 月  
 * [KB2899874](https://support.microsoft.com/kb/2899874) - 5.3.0721，2013 年 10 月
 * [KB2875551](https://support.microsoft.com/kb/2875551) - 5.3.0534，2013 年 8 月
+
+## <a name="troubleshooting"></a>故障排除 
+
+> [!NOTE]
+> 在更新 Microsoft Identity Manager 或 AADConnect 时使用任意 ECMA2 连接器。 
+
+要满足匹配，必须在升级过程中刷新连接器定义，否则将在应用程序事件日志中接收到如下错误，报表警告 ID 6947：“AAD连接器配置 ("X.X.XXX.X") 中的程序集版本低于 C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll 的实际版本 ("X.X.XXX.X")”。
+
+执行以下操作以刷新定义：
+* 打开连接器实例的属性面板
+* 单击“连接/连接到”选项卡
+  * 输入连接器帐户的密码
+* 依次单击每个属性选项卡
+  * 如果此连接器类型具有“分区”选项卡，该选项卡中包含“刷新”按钮，请单击该选项卡上的“刷新”按钮
+* 在访问过所有属性选项卡后，单击“确认”按钮保存更改。
+
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

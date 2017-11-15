@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2017
-ms.openlocfilehash: b9287c7151c96aaccbcda81c111cfe36ead5ab38
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: b43ed29bda4412fb57bcb772da00f6405c3f1c26
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>服务部署和环境设置的故障排除
 以下信息可帮助确定在设置模型管理环境时出错的原因。
@@ -30,13 +30,13 @@ ms.lasthandoff: 10/13/2017
 需要在订阅中具有足够的可用资源，以便可以预配环境资源。
 
 ### <a name="subscription-caps"></a>订阅上限
-订阅可能有计费上限，这会阻止你预配环境资源。 去除该上限可允许预配。
+订阅可能有计费上限，这会阻止你预配环境资源。 取消上限可实现预配。
 
 ### <a name="enable-debug-and-verbose-options"></a>启用调试和详细选项
 在设置命令中使用 `--debug` 和 `--verbose` 标志可在预配环境时显示调试和跟踪信息。
 
 ```
-az ml env setup -l <loation> -n <name> -c --debug --verbose 
+az ml env setup -l <location> -n <name> -c --debug --verbose 
 ```
 
 ## <a name="service-deployment"></a>服务部署
@@ -89,7 +89,9 @@ Python 示例：
 ```
 
 ## <a name="other-common-problems"></a>其他常见问题
-- 如果 `env setup` 命令失败，请确保订阅中有足够的可用内核。
-- 请勿在 Web 服务名称中使用下划线 (_)（如 my_webservice）。
-- 如果在调用 Web 服务时收到“502 错误的网关”错误，请重试。 这通常意味着尚未将容器部署到群集。
-- 如果在创建服务时收到“CrashLoopBackOff”错误，请检查日志。 这通常是由于 init 函数中缺少依赖关系。
+- 如果 `env setup` 命令失败，并出现 `LocationNotAvailableForResourceType`，可能是因为机器学习资源位置（区域）错误。 请确保使用 `-l` 参数指定的位置是 `eastus2`、`westcentralus` 或 `australiaeast`。
+- 如果 `env setup` 命令失败，并出现 `Resource quota limit exceeded`，请确保订阅中有足够的内核，且资源未在其他进程中耗尽。
+- 如果 `env setup` 命令失败，并出现 `Invalid environment name. Name must only contain lowercase alphanumeric characters`，请确保服务名称中不包含大写字母、符号或下划线 (_)（如 my_environment 所示）。
+- 如果 `service create` 命令失败，并出现 `Service Name: [service_name] is invalid. The name of a service must consist of lower case alphanumeric characters (etc.)`，请确保服务名称在 3 到 32 个字符之间；以小写字母数字字符开头和结尾；且不包含大写字母，以及除连字符 (-) 和句点 (. )，或下划线 (_) 以外的其他符号（如 my_webservice 所示）。
+- 如果在调用 Web 服务时出现 `502 Bad Gateway` 错误，请重试。 这通常意味着尚未将容器部署到群集。
+- 如果在创建服务时出现 `CrashLoopBackOff` 错误，请检查日志。 这通常是由于 init 函数中缺少依赖关系。

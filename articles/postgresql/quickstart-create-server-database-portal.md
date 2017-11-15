@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 08/10/2017
-ms.openlocfilehash: 3a76e816f9b1fa484789f548899d7e8e7043febb
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库服务器
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 10/24/2017
 
     psql 参数 |建议的值|说明
     ---|---|---
-    --host | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 显示的示例服务器为 **mypgserver-20170401.postgres.database.azure.com**。请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
+    --host | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 显示的示例服务器为 mypgserver-20170401.postgres.database.azure.com。请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     --port | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 
     --username | 服务器管理员登录名 |此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username@servername。
     --dbname | postgres | 首次连接时系统生成的默认数据库名称。 以后可创建自己的数据库。
@@ -151,7 +151,7 @@ ms.lasthandoff: 10/24/2017
     > [!TIP]
     > 如果未将防火墙配置为允许 Cloud Shell 的 IP 地址，则会出现以下错误：
     > 
-    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required.Specify SSL options and retry.
+    > psql: 致命错误: 主机"138.91.195.82"、用户"mylogin"、数据库"postgres"没有 pg_hba.conf 条目，SSL 出现致命错误: 需要 SSL 连接。 请指定 SSL 选项，然后重试。
     > 
     > 若要解决此错误，请确保服务器配置符合本文“配置服务器级防火墙规则”部分相关步骤的要求。
 
@@ -199,13 +199,13 @@ ms.lasthandoff: 10/24/2017
 
 6. 在左侧的“浏览器”窗格中，展开“服务器”节点。 选择服务器，例如“Azure PostgreSQL Server”。 单击该服务器与它建立连接。
 
-7. 展开服务器节点，然后展开其下的“数据库”。 列表应包括现有的 *postgres* 数据库，以及任何新建的用户数据库，例如在上一部分创建的 **mypgsqldb**。 请注意，在使用用于 PostgreSQL 的 Azure 数据库时，可为单个服务器创建多个数据库。
+7. 展开服务器节点，然后展开其下的“数据库”。 列表应包括现有的 postgres 数据库，以及任何新建的用户数据库，例如在上一部分创建的 mypgsqldb。 请注意，在使用用于 PostgreSQL 的 Azure 数据库时，可为单个服务器创建多个数据库。
 
 8. 右键单击“数据库”，选择“创建”菜单，并选择“数据库”。
 
 9. 在“数据库”字段中键入所选的数据库名称，例如 **mypgsqldb**，如示例所示。
 
-10. 从列表框中选择数据库的“所有者”。 选择服务器管理员登录名，例如 **mylogin**。
+10. 从列表框中选择数据库的“所有者”。 选择服务器管理员登录名，例如 mylogin。
 
 11. 选择“保存”创建新的空白数据库。
 
@@ -221,9 +221,9 @@ ms.lasthandoff: 10/24/2017
 > 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请在门户中执行以下步骤来删除本快速入门创建的资源。
 
 若要删除包括新建服务器在内的整个资源组，请执行以下操作：
-1. 在门户中找到自己的资源组。 在左侧菜单中，选择“资源组”。 然后选择资源组的名称（例如 **myresourcegroup**）。
+1. 在门户中找到自己的资源组。 在左侧菜单中，选择“资源组”。 然后选择资源组的名称，例如 myresourcegroup。
 
-2. 在资源组页上，选择“删除”。 在文本框中键入确认删除的资源组的名称（例如 **myresourcegroup**）。 选择“删除”。
+2. 在资源组页上，选择“删除”。 在文本框中键入确认删除的资源组的名称，例如 myresourcegroup。 选择“删除”。
 
 仅删除新建的服务器：
 1. 在门户中找到自己的服务器（如果尚未将其打开）。 在左侧菜单中选择“所有资源”。 然后搜索所创建的服务器。
@@ -232,7 +232,7 @@ ms.lasthandoff: 10/24/2017
 
     ![“删除”按钮](./media/quickstart-create-database-portal/12-delete.png)
 
-3. 确认要删除的服务器名称并显示其下受影响的数据库。 在文本框中键入服务器名称（例如 **mypgserver-20170401**）。 选择“删除”。
+3. 确认要删除的服务器名称并显示其下受影响的数据库。 在文本框中键入服务器名称，例如 mypgserver-20170401。 选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

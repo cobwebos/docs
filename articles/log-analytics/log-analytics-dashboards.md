@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>创建适用于 Log Analytics 的自定义仪表板
 
->[!NOTE]
-> 如果工作区已升级至[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则不能创建新仪表板或编辑现有仪表板。 
-
 本指南可帮助你了解 Log Analytics 仪表板如何直观显示所有已保存的日志搜索，从而提供单个可重用功能区来查看环境。
+
+>[!NOTE]
+> 如果工作区已升级至[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则不能编辑现有“我的仪表板”。 如果工作区未添加任何“我的仪表板”磁贴，则升级后的工作区中不会出现“我的仪表板”。 
 
 ![示例仪表板](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 

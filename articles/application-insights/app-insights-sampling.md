@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ed612a0e2101397fb1074de61db07d2361f8463
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/01/2017
 
 被采样丢弃的数据点将无法在任何 Application Insights 功能（如[连续导出](app-insights-export-telemetry.md)）中使用。
 
-当运行基于 SDK 的自适应采样或固定速率采样时，不会运行引入采样。 如果 SDK 的采样率小于 100%，将忽略设定的引入采样率。
+当运行基于 SDK 的自适应采样或固定速率采样时，不会运行引入采样。 请注意，如果在 Visual Studio 中或通过使用状态监视器启用 ASP.NET SDK 并且禁用引入采样，此时将默认启用自适应采样。 如果 SDK 的采样率小于 100%，将忽略设定的引入采样率。
 
 > [!WARNING]
 > 磁贴上显示的值指示为引入采样所设定的值。 如果 SDK 采样不在运行，它并不表示实际采样率。

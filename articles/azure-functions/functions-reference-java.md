@@ -11,13 +11,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: dc9a1b6061c41cd623e1ddb3bb9dbb87530a13d5
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e8a4b0cc620c887aac3cc442154429b43336d8f1
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 > [!div class="op_single_selector"]
@@ -164,10 +164,11 @@ public static String echoLength(byte[] content) {
 package com.example;
 
 import com.microsoft.azure.serverless.functions.annotation.BindingName;
+import java.util.Optional;
 
 public class MyClass {
-    public static String echo(String in, @BindingName("item") MyObject obj) {
-        return "Hello, " + in + " and " + obj.getKey() + ".";
+    public static String echo(Optional<String> in, @BindingName("item") MyObject obj) {
+        return "Hello, " + in.orElse("Azure") + " and " + obj.getKey() + ".";
     }
 
     private static class MyObject {
@@ -210,7 +211,7 @@ public class MyClass {
 }
 ```
 
-因此，调用此函数时，HTTP 请求有效负载会为参数 `in` 传递 `String` 并将 Azure 表存储 `MyObject` 类型传递给参数 `obj`。
+因此，调用此函数时，HTTP 请求有效负载会为参数 `in` 传递可选 `String` 并将 Azure 表存储 `MyObject` 类型传递给参数 `obj`。 使用 `Optional<T>` 类型来处理可能为 NULL 的函数输入。
 
 ## <a name="outputs"></a>Outputs
 
@@ -271,11 +272,34 @@ public class MyClass {
 
 | 专用类型      |       目标        | 典型用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage`  |    HTTP 触发器     | 获取方法、标头或查询 |
-| `HttpResponseMessage` | HTTP 输出绑定 | 返回除 200 之外的状态   |
+| `HttpRequestMessage<T>`  |    HTTP 触发器     | 获取方法、标头或查询 |
+| `HttpResponseMessage<T>` | HTTP 输出绑定 | 返回除 200 之外的状态   |
 
 > [!NOTE] 
 > 还可使用 `@BindingName` 注释来获取 HTTP 标头和查询。 例如，`@Bind("name") String query` 可循环访问 HTTP 请求标头和查询，并将该值传递给方法。 例如，如果请求 URL 为 `http://example.org/api/echo?name=test`，则 `query` 将为 `"test"`。
+
+### <a name="metadata"></a>Metadata
+
+元数据来自不同的源，例如 HTTP 标头、HTTP 查询和[触发器元数据](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties)。 配合使用 `@BindingName` 注释和元数据名称来获取值。
+
+例如，如果所请求的URL 为 `http://{example.host}/api/metadata?name=test`，则下列代码片段中的 `queryValue` 将为 `"test"`。
+
+```Java
+package com.example;
+
+import java.util.Optional;
+import com.microsoft.azure.serverless.functions.annotation.*;
+
+public class MyClass {
+    @FunctionName("metadata")
+    public static String metadata(
+        @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
+        @BindingName("name") String queryValue
+    ) {
+        return body.orElse(queryValue);
+    }
+}
+```
 
 ## <a name="functions-execution-context"></a>函数执行上下文
 
@@ -294,7 +318,7 @@ import com.microsoft.azure.serverless.functions.ExecutionContext;
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         if (req.isEmpty()) {
-            context.getLogger().warning("Empty request body received in " + context.getInvocationId());
+            context.getLogger().warning("Empty request body received by function " + context.getFunctionName() + " with invocation " + context.getInvocationId());
         }
         return String.format(req);
     }

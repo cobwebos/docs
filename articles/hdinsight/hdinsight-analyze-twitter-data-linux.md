@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 11/02/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Hive 和 Hadoop 分析 Twitter 数据
 
@@ -158,6 +158,9 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
     > * `consumer_key`
     > * `access_token`
     > * `access_token_secret`
+
+    > [!TIP]
+    > 调整最后一行的主题筛选器以跟踪常用关键字。 运行脚本时，使用常用关键字可以更快捕获数据。
 
 6. 使用 **Ctrl+X**，并使用 **Y** 以保存该文件。
 
@@ -312,19 +315,22 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
-       FROM tweets
-       WHERE text like "%Azure%"
-       GROUP BY name,screen_name
-       ORDER BY cc DESC LIMIT 10;
+   FROM tweets
+   WHERE text like "%Azure%"
+   GROUP BY name,screen_name
+   ORDER BY cc DESC LIMIT 10;
    ```
 
     这会在消息文本中返回最多 10 篇包含 **Azure** 一词的推文。
+
+    > [!NOTE]
+    > 如果已更改 `gettweets.py` 脚本中的筛选器，请将 Azure 替换为用过的筛选器之一。
 
 ## <a name="next-steps"></a>后续步骤
 
 你已了解如何将非结构化 JSON 数据集转换为结构化 Hive 表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
 
-* [HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se

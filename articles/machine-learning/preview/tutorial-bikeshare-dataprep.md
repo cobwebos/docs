@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 6d1845e27c6b0fff66b80a683f59d14238e2ad71
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4918a820ca07a7d83dfb544ee9f0bbeb66d22722
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>共享自行车教程：使用 Azure Machine Learning Workbench 执行高级数据准备
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -493,7 +493,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ### <a name="remove-columns"></a>删除列
 
-在行程数据中，每个行表示一个自行车骑乘事件。 对于本教程，只需要使用“starttime”和“start station”列。 通过以下方法删除其他列：以多选方式同时选择这两个列，右键单击列标题并选择“保留列”。 其他列将被删除。
+在行程数据中，每个行表示一个自行车骑乘事件。 对于本教程，只需使用“开始时间”和“起始站 ID”列。 通过以下方法删除其他列：以多选方式同时选择这两个列，右键单击列标题并选择“保留列”。 其他列将被删除。
 
 ![图像：“保留列”选项](media/tutorial-bikeshare-dataprep/tripdatakeepcolumn.png)
 

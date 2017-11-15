@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3062c7c060c3730c5edef3ada16f3a5077cf5558
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
 
@@ -146,6 +146,11 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 |:--- |:--- |:--- |
 | 无法完成 <*device name*> 的备份。 |备份作业失败。 |无法创建备份。 考虑以下操作之一：<ul><li>连接问题可能正在阻止备份操作成功完成。 请确保没有任何连接问题。 有关排查连接问题的详细信息，请转到虚拟设备的[本地 Web UI](storsimple-ova-web-ui-admin.md)。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul> 解决问题、清除警报并重试操作。 |
 | 无法完成 <*device name*> 的克隆。 |克隆作业失败。 |无法创建克隆。 考虑以下操作之一：<ul><li>备份列表可能无效。 刷新列表以验证它是否仍然有效。</li><li>连接问题可能正在阻止克隆操作成功完成。 请确保没有任何连接问题。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul>解决问题、清除警报并重试操作。 |
+
+### <a name="networking-alerts"></a>网络警报
+| 警报文本 | 事件 | 详细信息/建议的操作 |
+|:--- |:--- |:--- |
+| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关 Azure 门户中 URL 模式的详细信息，请参阅 [StorSimple 虚拟数组网络需求](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules)。|
 
 ### <a name="performance-alerts"></a>性能警报
 

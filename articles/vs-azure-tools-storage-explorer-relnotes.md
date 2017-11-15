@@ -14,27 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: c1a3370d29b47da752e4ab1ea67ccc1a4cdd94df
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: cf077fef6df2fd21cf51f6b4fd4e26a4b5081247
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
-本文包含 Azure 存储资源管理器 0.9.0（预览版）以及之前版本的发行说明。
+本文包含 Azure 存储资源管理器 0.9.2（预览版）及先前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
+## <a name="version-092"></a>版本 0.9.2
+2017/11/01
+
+### <a name="download-azure-storage-explorer-092-preview"></a>下载 Azure 存储资源管理器 0.9.2（预览版）
+- [适用于 Windows 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>修补程序
+* 根据本地时区编辑表实体的 Edm.DateTime 值时，可能发生意外的数据更改。 编辑器现使用纯文本文本框，以便始终如一地精确控制 Edm.DateTime 值。
+* 在附有名称和密钥时无法启动一组 blob 的上传/下载。 此问题已解决。
+* 如果选择了帐户的一个或多个订阅，以前的存储资源管理器仅会提示重新验证过时帐户。 现在，即使完全筛选掉该帐户，存储资源管理器仍会提示。
+* 适用于 Azure 美国政府版的终结点域不正确。 此问题已解决。
+* 有时很难单击“管理帐户”面板上的“应用”按钮。 不会再发生此问题。
+
+### <a name="new"></a>新建
+* 预览版对 Azure Cosmos DB 的支持：
+    * [联机文档](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * 创建数据库和集合
+    * 操作数据
+    * 查询、创建或删除文档
+    * 更新存储过程、用户定义的函数或触发器
+    * 使用连接字符串连接到并管理数据库
+* 改善了上传/下载许多小型 blob 时的性能。
+* 当 blob 上传组或 blob 下载组中出现故障时增加了“全部重试”操作。
+* 现在，在 blob 上传/下载期间，如果检测到网络连接断开，则存储资源管理器会暂停迭代。 然后，在重新建立网络连接后，你可以恢复迭代。
+* 增加了通过上下文菜单“全部关闭”、“关闭其他”和“关闭”选项卡的能力。
+* 存储资源管理器现在使用本机对话框和本机上下文菜单。
+* 存储资源管理器现在更易于访问。 改进包括：
+    * 针对 Windows 上的 NVDA 和 Mac 上的 VoiceOver，改进了屏幕阅读器支持
+    * 改进了高对比度主题
+    * 键盘 Tab 键次序和键盘焦点修复
+
+### <a name="fixes"></a>修复项
+* 过去，如果尝试下载具有无效 Windows 文件名的 blob，则操作将失败。 现在，存储资源管理器将检测 blob 名称是否有效，并且会询问你是要对其进行编码还是跳过该 blob。 存储资源管理器还会检测文件名看起来是否已编码并且在上传前会询问是否要对其进行解码。
+* 在上传 blob 期间，目标 blob 容器的编辑器有时候不能正确刷新。 此问题已解决。
+* 支持多种形式的连接字符串和回归的 SAS URI。 我们已解决了所有已知问题，但是如果遇到了进一步的问题，请向我们发送反馈。
+* 在 0.9.0 版中，对于某些用户，更新通知损坏。 此问题已修复，并且受此 bug 影响的用户可[从此处](https://azure.microsoft.com/en-us/features/storage-explorer/)手动下载最新版本的存储资源管理器。
+
+### <a name="known-issues"></a>已知问题
+* 存储资源管理器不支持 ADFS 帐户。
+* “查看资源管理器”和“查看帐户管理”的快捷键应当分别为 Ctrl/Cmd+Shift+E 和 Ctrl/Cmd+Shift+A。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 帐户设置面板可能显示需重新输入凭据以筛选订阅。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+```
+./StorageExplorer.exe --disable-gpu
+```
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
+
 ## <a name="version-091--090-preview"></a>版本 0.9.1 / 0.9.0（预览版）
 10/20/2017
-
 ### <a name="download-azure-storage-explorer-091-preview"></a>下载 Azure 存储资源管理器 0.9.1（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [下载适用于 Windows 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [下载适用于 Mac 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [下载适用于 Linux 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
 
-### <a name="new"></a>新增
+### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
     * [联机文档](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
     * 创建数据库和集合
@@ -86,13 +154,30 @@ ms.lasthandoff: 10/23/2017
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0816-preview"></a>版本 0.8.16（预览版）
-8/21/2017
 
-### <a name="download-azure-storage-explorer-0816-preview"></a>下载 Azure 存储资源管理器 0.8.16（预览版）
-* [下载适用于 Windows 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [下载适用于 Mac 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [下载适用于 Linux 的 Azure 存储资源管理器 0.8.16（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+## <a name="previous-releases"></a>以前的版本
+
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
+* [版本 0.8.9/0.8.8](#version-089--088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-0816"></a>版本 0.8.16
+2017/8/21
 
 ### <a name="new"></a>新建
 * 打开 Blob 时，如果检测到更改，存储资源管理器会提示上传已下载的文件
@@ -131,26 +216,6 @@ ms.lasthandoff: 10/23/2017
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="previous-releases"></a>以前的版本
-
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
-* [版本 0.8.9/0.8.8](#version-089--088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
-
-
 ### <a name="version-0814"></a>版本 0.8.14
 2017/06/22
 
@@ -179,7 +244,7 @@ ms.lasthandoff: 10/23/2017
     ```
 
 ### <a name="version-0813"></a>版本 0.8.13
-05/12/2017
+2017/05/12
 
 #### <a name="new"></a>新建
 
@@ -559,7 +624,7 @@ ms.lasthandoff: 10/23/2017
     * `sudo apt-get upgrade`
     * `sudo apt-get dist-upgrade`
 
-11/18/2015
+2015/11/18
 ### <a name="version-07201511160"></a>版本 0.7.20151116.0
 
 #### <a name="new"></a>新建

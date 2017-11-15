@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 52d03c535d63aa1985a0991f309f2db1e189717e
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c18ca8e81fefdee723714c6535160e75ef4d698d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
@@ -151,13 +151,13 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 若要上传 SSL 证书，请在 Web 应用的左侧导航窗格中单击“SSL 证书”。
 
-单击“上传证书”。
+单击“上传证书”。 
 
 在“PFX 证书文件”中选择 PFX 文件。 在“证书密码”中，键入导出 PFX 文件时创建的密码。
 
 单击“上传” 。
 
-![上传证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate.png)
+![上传证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
 应用服务上传完证书后，该证书将显示在“SSL 证书”页中。
 
@@ -311,6 +311,10 @@ New-AzureRmWebAppSSLBinding `
     -CertificatePassword <PFX_password> `
     -SslState SniEnabled
 ```
+## <a name="public-certificates-optional"></a>公用证书（可选）
+可向自己的 Web 应用上传[公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)。 可在应用服务或应用服务环境 (ASE) 中，通过 Web 应用使用公用证书。 若要将证书存储在 LocalMachine 证书存储中，则需要在应用服务环境中使用 Web 应用。 有关详细信息，请参阅[如何向 Web 应用配置公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
+
+![上传公用证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
 ## <a name="next-steps"></a>后续步骤
 

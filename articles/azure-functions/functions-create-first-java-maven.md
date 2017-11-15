@@ -11,14 +11,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/03/2017
+ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 50fd59c288312c7aa5ffe6abf1318a5ec2f406e6
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: ebe9351641f3c4ddade0ea456e8784d59acf9332
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>通过 Java 和 Maven 创建你的第一个函数（预览版）
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/18/2017
 若要通过 Java 开发函数应用，必须安装以下软件：
 
 -  最新版本的 [.NET Core](https://www.microsoft.com/net/core)。
--  [Java 开发人员工具包](https://www.azul.com/downloads/zulu/) 1.8 版。
+-  [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)，版本 8。
 -  [Azure CLI](https://docs.microsoft.com/cli/azure)
 -  [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 -  [Node.js](https://nodejs.org/download/) 8.6 或更高版本。

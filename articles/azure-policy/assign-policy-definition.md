@@ -5,24 +5,26 @@ services: azure-policy
 keywords: 
 author: Jim-Parker
 ms.author: jimpark
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 2e0962ae02dd8132d878792634abc1f63b2c29a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db5112c858d2a2c54813d9c9a3670a45fcbdb993
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>创建策略分配，识别 Azure 环境中的不合规资源
-了解 Azure 中符合性的第一步需要了解自己当前资源的状况。 本快速入门教程指导你完成创建策略分配的过程，以识别未使用 SQL Server 12.0 版本的资源。 此过程结束时，应已成功识别哪些服务器的版本不同，也就是不符合要求。
+了解 Azure 中符合性的第一步需要了解自己当前资源的状况。 本快速入门教程指导你完成创建策略分配的过程，以识别未使用托管磁盘的虚拟机。
+
+此过程结束时，应已成功识别哪些虚拟机未使用托管磁盘，也就是不符合要求。
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="opt-in-to-azure-policy"></a>选择加入 Azure 策略
 
-Azure 策略现已在有限预览版中提供，因此需要注册才能请求访问权限。
+Azure 策略现已在公共预览版中提供，因此需要注册才能请求访问权限。
 
 1. 在 https://aka.ms/getpolicy 转到 Azure 策略，然后选择左侧窗格中的“注册”。
 
@@ -32,11 +34,11 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
 
    ![选择加入使用 Azure 策略](media/assign-policy-definition/preview-opt-in.png)
 
-   我们可能需要一两天时间来接受注册请求，具体视情况而定。 我们接受请求后，你将获得电子邮件通知，告知可以开始使用服务。
+   在预览版中，将自动批准请求。 请预留 30 分钟，以便系统完成注册。
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
-本快速入门创建一个策略分配，并分配“需要 SQL Server 版本 12.0”定义。 
+在此快速入门中，我们将创建一个策略分配，分配“审核缺少托管磁盘的虚拟机”策略定义。
 
 1. 选择 Azure 策略页左侧窗格中的“分配”。
 2. 选择“分配”窗格顶部的“分配策略”。
@@ -53,11 +55,11 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
    - 应用标记和值
    - 需要 SQL Server 版本 12.0
 
-4. 搜索策略定义，查找定义“需要 SQL Server 版本 12.0”。 单击该策略，再单击“选择”。
+4. 搜索策略定义，找到“审核不使用托管磁盘的 VM”定义。 单击该策略，再单击“分配”。
 
    ![找到正确的策略定义](media/assign-policy-definition/select-available-definition.png)
 
-5. 提供策略分配的显示名称。 在此示例中，我们使用“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明详细介绍了此策略分配如何确保此环境中创建的所有 SQL Server 版本均为 12.0。
+5. 提供策略分配的显示名称。 在此示例中，我们使用“审核缺少托管磁盘的 VM”。 还可根据需要添加“说明”。 该说明详细介绍了此策略分配如何标识所有在此环境中创建，而不使用托管磁盘的虚拟机。
 6. 将定价层更改为“标准”，确保策略应用于现有资源。
 
    Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于我们处于受限预览版，尚未发布定价模型，因此你不会收到选择标准的帐单。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/)。
@@ -108,4 +110,3 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
 
 > [!div class="nextstepaction"]
 > [创建和管理策略](./create-manage-policy.md)
-

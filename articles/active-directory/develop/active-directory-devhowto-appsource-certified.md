@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/03/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: d8e2f8fc19ff879e6a7b632f033fd0ed9d77392a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca5105ff8ec45e703a3fb8e0cbb8666eb0b2c38e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 [Microsoft AppSource](https://appsource.microsoft.com/) 是一个可供业务用户发现、尝试和管理业务线 SaaS 应用程序（独立 SaaS 和现有 Microsoft SaaS 产品的加载项）的目的地。
@@ -108,9 +108,9 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="get-support"></a>获取支持
-对于 Azure Active Directory 集成，我们使用 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory) 以及社区来提供支持。 
+对于 Azure Active Directory 集成，我们使用 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) 以及社区来提供支持。 
 
-强烈建议先在 Stack Overflow 上提问并浏览现有问题，查看是否已有人提出过相同疑问。 请务必将提问或评论用 `[azure-active-directory]` 标记。
+强烈建议先在 Stack Overflow 上提问并浏览现有问题，查看是否已有人提出过相同疑问。 请务必将提问或评论用 [`[azure-active-directory]` 和 `[appsource]`](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) 标记。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

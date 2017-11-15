@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/02/2017
 ms.author: babanisa
-ms.openlocfilehash: e798a1e751cb9e789bc479a6f842fb7f8f703bbf
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: a0bcc9650fda10c099887b74b408551b12cde667
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
@@ -50,6 +50,8 @@ ms.lasthandoff: 10/23/2017
 * 高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
 * 内置事件 - 使用资源定义的内置事件快速启动和运行。
 * 自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
+
+有关事件网格、事件中心和服务总线之间的比较，请参阅[在传送消息的 Azure 服务之间进行选择](compare-messaging-services.md)。
 
 ## <a name="built-in-publisher-and-handler-integration"></a>内置发布者和处理程序集成
 
@@ -100,14 +102,6 @@ Azure 事件网格提供了多个极大地改进无服务器的功能、运维�
 ![应用程序集成](./media/overview/app_integration.png)
 
 事件网格将应用与其他服务连接。 例如，创建一个自定义主题以将应用的事件数据发送到事件网格，并利用其可靠交付、高级路由和与 Azure 的直接集成。 或者，可使用具有逻辑应用的事件网格来处理任何位置的数据，而无需编写代码。 
-
-## <a name="how-is-event-grid-different-from-other-azure-integration-services"></a>事件网格与其他 Azure 集成服务有何不同？
-
-事件网格是启用事件驱动、反应编程的事件底板。 它与 Azure 服务深度集成，并可与第三方服务集成。 事件消息包含你需要对服务和应用程序中的更改做出响应的信息。 事件网格不是数据管道，并且不提供已更新的实际对象。
-
-服务总线非常适用于传统的企业应用程序，这些应用程序需要事务、排序、重复检测和即时一致性。 事件网格专为反应模型中的速度、规模、广度和低成本设计。 它非常适合无服务器体系结构。
-
-事件网格补充了逻辑应用和事件中心等其他 Azure 服务。 事件网格触发逻辑应用，以开始其工作流。 事件中心与事件网格协同工作，使你能够对事件中心捕获的事件作出反应，并生成数据入口和转换管道。
 
 ## <a name="how-much-does-event-grid-cost"></a>事件网格的费用是多少？
 

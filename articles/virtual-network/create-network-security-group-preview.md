@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2017
+ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>使用网络和应用程序安全组（预览版）筛选网络流量
 
@@ -44,6 +44,7 @@ ms.lasthandoff: 10/11/2017
     
     ```azurecli-interactive
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    az provider register --namespace Microsoft.Network
     ``` 
 
 5. 输入以下命令，确认已针对预览版进行了注册：
@@ -52,7 +53,9 @@ ms.lasthandoff: 10/11/2017
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
-    在上一命令返回的输出中的“状态”显示为 Registered 之前，不要继续执行剩余的步骤。 如果在完成注册之前继续执行，则剩余的步骤将失败。
+    > [!WARNING]
+    > 注册可能需要多达一小时才能完成。 在上一命令返回的输出中的“状态”显示为 Registered 之前，不要继续执行剩余的步骤。 如果在完成注册之前继续执行，则剩余的步骤将失败。
+
 6. 运行以下 bash 脚本，创建资源组：
 
     ```azurecli-interactive
@@ -160,7 +163,6 @@ ms.lasthandoff: 10/11/2017
       --name myNic1 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "WebServers" "AppServers"
 
@@ -169,7 +171,6 @@ ms.lasthandoff: 10/11/2017
       --name myNic2 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "AppServers"
 
@@ -178,12 +179,11 @@ ms.lasthandoff: 10/11/2017
       --name myNic3 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "DatabaseServers"
     ```
 
-    只有在步骤 9 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 *myWebNic*，只有 *WebRule* 会生效，因为该网络接口是 *WebServers* 应用程序安全组的成员并且该规则将 *WebServers* 应用程序安全组指定为其目标。 *AppRule* 和 *DatabaseRule* 规则不会应用于 *myWebNic*，因为该网络接口不是 *AppServers* 和 *DatabaseServers* 应用程序安全组的成员。
+    只有在步骤 9 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 myNic1，只有 WebRule 会生效，因为该网络接口是 WebServers 应用程序安全组的成员并且该规则将 WebServers 应用程序安全组指定为其目标。 AppRule 和 DatabaseRule 规则不会应用于 myNic1，因为该网络接口不是 AppServers 和 DatabaseServers 应用程序安全组的成员。
 
 13. 为每个服务器类型创建一台虚拟机，将对应的网络接口附加到每台虚拟机。 此示例将创建 Windows 虚拟机，但是你可以将 *win2016datacenter* 更改为 *UbuntuLTS* 来改为创建 Linux 虚拟机。
 
@@ -239,7 +239,8 @@ ms.lasthandoff: 10/11/2017
     Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
     ```
 
-    在上一命令返回的输出中的 **RegistrationState** 列显示 *Registered* 之前，不要继续执行剩余的步骤。 如果在完成注册之前继续执行，则剩余的步骤将失败。
+    > [!WARNING]
+    > 注册可能需要多达一小时才能完成。 在上一命令返回的输出中的“RegistrationState”显示为“Registered”之前，不要继续执行剩余的步骤。 如果在完成注册之前继续执行，则剩余的步骤将失败。
         
 6. 创建资源组：
 
@@ -343,7 +344,6 @@ ms.lasthandoff: 10/11/2017
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $webAsg,$appAsg
 
     $nic2 = New-AzureRmNetworkInterface `
@@ -351,7 +351,6 @@ ms.lasthandoff: 10/11/2017
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $appAsg
 
     $nic3 = New-AzureRmNetworkInterface `
@@ -359,11 +358,10 @@ ms.lasthandoff: 10/11/2017
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    只有在步骤 8 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 *myWebNic*，只有 *WebRule* 会生效，因为该网络接口是 *WebServers* 应用程序安全组的成员并且该规则将 *WebServers* 应用程序安全组指定为其目标。 *AppRule* 和 *DatabaseRule* 规则不会应用于 *myWebNic*，因为该网络接口不是 *AppServers* 和 *DatabaseServers* 应用程序安全组的成员。
+    只有在步骤 8 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 myNic1，只有 WebRule 会生效，因为该网络接口是 WebServers 应用程序安全组的成员并且该规则将 WebServers 应用程序安全组指定为其目标。 AppRule 和 DatabaseRule 规则不会应用于 myNic1，因为该网络接口不是 AppServers 和 DatabaseServers 应用程序安全组的成员。
 
 13. 为每个服务器类型创建一台虚拟机，将对应的网络接口附加到每台虚拟机。 此示例将创建 Windows 虚拟机，但在执行脚本之前，可以将 *-Windows* 更改为 *-Linux*，将 *MicrosoftWindowsServer* 更改为 *Canonical*，将 *WindowsServer* 更改为 *UbuntuServer* 并将 *2016-Datacenter* 更改为 *14.04.2-LTS*，从而改为创建 Linux 虚拟机。
 

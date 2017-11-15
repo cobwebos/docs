@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 8ff991ffb05bb92f047cc8dfc40e80b704379898
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>配置 Azure 多重身份验证设置 - 公共预览版
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 10/30/2017
 
 | 功能 | 说明 | 
 |:--- |:--- |
+| [阻止/解除阻止用户](#block/unblock-users) |阻止/解除阻止用户可防止用户收到身份验证请求。 |
 | [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 |
 | [免验证一次](#one-time-bypass) |“一次性跳过”可让用户通过“跳过”多重身份验证来进行身份验证，不过只能跳过一次。 |
 | [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于多重身份验证。 |
@@ -37,6 +38,23 @@ ms.lasthandoff: 10/30/2017
 | [应用密码](#app-passwords) |应用密码允许非 MFA 感知应用程序免于进行多重身份验证并继续工作。 |
 | [为已记住设备和浏览器记住多重身份验证](#remember-multi-factor-authentication-for-devices-that-users-trust) |允许在用户使用 MFA 成功登录后的指定天数内记住设备。 |
 | [可选择验证方法](#selectable-verification-methods) |允许选择可供用户使用的身份验证方法。 |
+
+## <a name="blockunblock-users"></a>阻止/解除阻止用户
+阻止/解除阻止用户可用于防止用户收到身份验证请求。 将自动拒绝任何针对受阻止用户的身份验证尝试。 自受阻日起，受阻止用户在 90 天内会受到阻止。
+
+### <a name="block-a-user"></a>阻止用户
+1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 导航到“Azure Active Directory” > “MFA 服务器” > “阻止/解除阻止用户”。
+3. 单击“添加”以阻止某个用户。
+4. 选择“复制组”，输入 username@domain.com 作为受阻止用户名，并在“原因”字段输入注释。
+5. 单击“添加”，完成阻止用户操作。
+
+### <a name="unblock-a-user"></a>解除阻止用户
+1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 导航到“Azure Active Directory” > “MFA 服务器” > “阻止/解除阻止用户”。
+3. 单击“操作”列中要解除阻止的用户旁的“解除阻止”。
+4. 在“解除阻止原因”字段输入注释。
+5. 单击“解除阻止”完成解除阻止用户操作。
 
 ## <a name="fraud-alert"></a>欺诈警报
 管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。  用户可以通过移动应用或电话来报告欺诈行为。

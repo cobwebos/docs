@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 79d4084deb6d8c028918690c339c21c720e63594
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2879e72636ffc7603e29fe8f8233a065fe6f897c
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文将演示如何在 [Azure 应用服务](../app-service/app-service-web-overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](web-sites-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
@@ -33,10 +33,10 @@ ms.lasthandoff: 10/11/2017
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>从现有备份还原应用
-1. 在 Azure 门户中应用的“设置”边栏选项卡上，单击“备份”以显示“备份”边栏选项卡。 然后，单击“还原”。
+1. 在 Azure 门户中应用的“设置”页上，单击“备份”以显示“备份”页。 然后，单击“还原”。
    
     ![选择“立即还原”][ChooseRestoreNow]
-2. 在“还原”边栏选项卡中，首先选择备份源。
+2. 在“还原”页中，首先选择备份源。
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
@@ -59,9 +59,9 @@ ms.lasthandoff: 10/11/2017
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>从存储帐户中下载或删除备份
-1. 在 Azure 门户的主“浏览”边栏选项卡中，选择“存储帐户”。 将显示现有存储帐户的列表。
-2. 选择包含要下载或删除的备份的存储帐户。随机会显示该存储帐户的边栏选项卡。
-3. 在存储帐户边栏选项卡中，选择所需的容器
+1. 在 Azure 门户的主“浏览”页中，选择“存储帐户”。 将显示现有存储帐户的列表。
+2. 选择包含要下载或删除的备份的存储帐户。 此时显示存储帐户页。
+3. 在存储帐户页中，选择所需的容器
    
     ![查看容器][ViewContainers]
 4. 选择要下载或删除的备份文件。
@@ -72,12 +72,21 @@ ms.lasthandoff: 10/11/2017
 <a name="OperationLogs"></a>
 
 ## <a name="monitor-a-restore-operation"></a>监视还原操作
-若要查看有关应用还原操作成功与否的详细信息，请导航到 Azure 门户中的“活动日志”边栏选项卡。  
+若要查看有关应用还原操作成功与否的详细信息，请导航到 Azure 门户中的“活动日志”页。  
  
 
 向下滚动以查找所需的还原操作，并单击以选中。
 
-“详细信息”边栏选项卡会显示与还原操作相关的可用信息。
+“详细信息”页会显示与还原操作相关的可用信息。
+
+## <a name="automate-with-scripts"></a>使用脚本自动化
+
+可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动备份管理。
+
+相关示例如下所示：
+
+- [Azure CLI 示例](app-service-cli-samples.md)
+- [Azure PowerShell 示例](app-service-powershell-samples.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

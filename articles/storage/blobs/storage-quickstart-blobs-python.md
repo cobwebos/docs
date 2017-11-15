@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 44ec416a814ff6a5fef79ef21e2f54ce4ce4da17
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 76e23d85b392f8120914f6170040c6b3c450aba6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>使用 Python 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 blob。 
@@ -32,25 +32,7 @@ ms.lasthandoff: 10/17/2017
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>使用 Azure 门户创建存储帐户
-
-首先，创建用于本快速入门的新通用存储帐户。 
-
-1. 转到 [Azure 门户](https://portal.azure.com)，使用 Azure 帐户登录。 
-2. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户 - blob、文件、表、队列”。 
-3. 输入存储帐户的名称。 名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 不能与其他名称重复。
-4. 将 `Deployment model` 设置为“资源管理器”。
-5. 将“`Account kind`”设置为“常规用途”。
-6. 将“`Performance`”设置为“标准”。 
-7. 将“`Replication`”设置为“本地冗余存储(LRS)”。
-8. 将“`Storage service encryption`”设置为“禁用”。
-9. 将“`Secure transfer required`”设置为“禁用”。
-10. 选择订阅。 
-11. 对于“`resource group`”，创建一个新资源组，并为其赋予唯一名称。 
-12. 选择要用于存储帐户的“`Location`”。
-13. 选中“固定到仪表板”，然后单击“创建”，创建存储帐户。 
-
-创建存储帐户后，它被固定到仪表板。 单击可将其打开。 在“设置”下，单击“访问密钥”。 选择一个密钥并将存储帐户名称复制到剪贴板，然后将其粘贴到记事本，以供将来使用。
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git)是基本的 Python 应用程序。  
@@ -100,8 +82,10 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 
 有了云 Blob 容器后，可以实例化 CloudBlockBlob 对象（该对象指向你感兴趣的特定 blob），然后执行上传、下载、复制等操作。
 
-此部分将实例化对象，新建容器，然后设置容器的权限，以便 blob 成为公共 blob。 容器名称为 quickstartblobs。 
+> [!IMPORTANT]
+> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
+此部分将实例化对象，新建容器，然后设置容器的权限，以便 blob 成为公共 blob。 容器名称为 quickstartblobs。 
 
 ```python 
 # Create the BlockBlockService that is used to call the Blob service for the storage account

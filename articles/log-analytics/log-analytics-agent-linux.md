@@ -1,6 +1,6 @@
 ---
-title: "将 Linux 计算机连接到 Operations Management Suite (OMS) | Microsoft Docs"
-description: "本文介绍了如何使用 OMS Agent for Linux 将在 Azure 中、其他云中或本地托管的 Linux 计算机连接到 OMS。"
+title: "将 Linux 计算机连接到 Azure Log Analytics | Microsoft Docs"
+description: "本文介绍了如何使用适用于 Linux 的 OMS 代理将在 Azure 中、其他云中或本地托管的 Linux 计算机连接到 Log Analytics。"
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/29/2017
+ms.date: 11/07/2017
 ms.author: magoedte
-ms.openlocfilehash: c9902e1b8644c2b0a894f9cde98f2056564775c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56c666d1a18937df21a6aca8acde87beda1cad8e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
-# <a name="connect-your-linux-computers-to-operations-management-suite-oms"></a>将 Linux 计算机连接到 Operations Management Suite (OMS) 
+# <a name="connect-your-linux-computers-to-log-analytics"></a>将 Linux 计算机连接到 Log Analytics 
 
-对于作为物理服务器或虚拟机驻留在本地数据中心的 Linux 计算机和容器解决方案（例如 Docker）以及云托管服务（例如 Amazon Web Services (AWS) 或 Microsoft Azure）中的虚拟机，可以使用 Microsoft Operations Management Suite (OMS) 收集和处理从其中生成的数据。 还可以使用 OMS 中可用的管理解决方案来主动管理 Linux VM 的生命周期，比如使用更改跟踪来标识配置更改，使用更新管理来管理软件更新。 
+对于作为物理服务器或虚拟机驻留在本地数据中心的 Linux 计算机和容器解决方案（例如 Docker）以及云托管服务（例如 Amazon Web Services (AWS) 或 Microsoft Azure）中的虚拟机，可以使用 Azure Log Analytics 收集和处理从其中生成的数据。 还可以使用 [Azure 自动化](../automation/automation-intro.md)中可用的管理解决方案来主动管理 Linux VM 的生命周期，比如使用更改跟踪来标识配置更改，使用更新管理来管理软件更新。 
 
-OMS Agent for Linux 通过 TCP 端口 443 与 OMS 服务进行出站通信；如果计算机连接到防火墙或代理服务器以通过 Internet 进行通信，则请查看[对代理进行配置以便与 HTTP 代理服务器或 OMS 网关一起使用](#configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway)，了解需要应用哪些配置更改。  如果使用 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 监视计算机，该计算机可以与 OMS 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 Operations Manager 监视。  受 Operations Manager 管理组监视并与 OMS 集成的 Linux 计算机不通过管理组接收数据源配置和转发收集的数据。  无法将 OMS 代理配置为向多个工作区报告。  
+适用于 Linux 的 OMS 代理通过 TCP 端口 443 与 Log Analytics 和 Azure 自动化服务进行出站通信；如果计算机连接到防火墙或代理服务器以通过 Internet 进行通信，则请查看[对代理进行配置以便与代理服务器或 OMS 网关一起使用](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway)，了解需要应用哪些配置更改。  如果使用 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 监视计算机，该计算机可以与 Log Analytics 服务进行多宿主连接，以便收集数据并将数据转发到该服务，且仍受 Operations Manager 监视。  受 Operations Manager 管理组监视并与 Log Analytics（目前指 Operations Manager 操作控制台中的 Operations Management Suite）集成的 Linux 计算机不通过管理组接收数据源配置和转发收集的数据。  无法将 OMS 代理配置为向多个 Log Analytics 工作区报告。  
 
-如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将代理配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 OMS Linux Agent 配置为通过 OMS 网关与 OMS 服务进行通信的详细信息和步骤，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
+如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将代理配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 OMS Linux 代理配置为通过 OMS 网关与服务进行通信的详细信息和步骤，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。  
 
-下图描绘了代理管理的 Linux 计算机与 OMS 之间的连接（包括方向和端口）。
+下图描绘了代理管理的 Linux 计算机与 Log Analytics 之间的连接（包括方向和端口）。
 
-![直接代理与 OMS 通信的示意图](./media/log-analytics-agent-linux/log-analytics-agent-linux-communication.png)
+![直接代理与 Azure 服务通信的示意图](./media/log-analytics-agent-linux/log-analytics-agent-linux-communication.png)
 
 ## <a name="system-requirements"></a>系统要求
 开始之前，请查看以下详细信息来验证是否满足先决条件。
@@ -47,7 +47,7 @@ OMS Agent for Linux 通过 TCP 端口 443 与 OMS 服务进行出站通信；如
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
 ### <a name="network"></a>网络
-下面的信息列出了 Linux 代理与 OMS 进行通信时必需的代理和防火墙配置信息。 流量从网络传出到 OMS 服务。 
+下面的信息列出了 Linux 代理与 Log Analytics 和 Azure 自动化进行通信时必需的代理和防火墙配置信息。 流量从网络传出到此服务。 
 
 |代理资源| 端口 |  
 |------|---------|  
@@ -73,7 +73,7 @@ PAM | 可插拔身份验证模块 |
 
 **程序包** | **版本** | **说明**
 ----------- | ----------- | --------------
-omsagent | 1.4.1 | Operations Management Suite Agent for Linux
+omsagent | 1.4.0 | Operations Management Suite Agent for Linux
 omsconfig | 1.1.1 | 配置 OMS Agent 的代理
 omi | 1.2.0 | Open Management Infrastructure (OMI)：一款轻型 CIM 服务器
 scx | 1.6.3 | 操作系统性能指标的 OMI CIM 提供程序
@@ -91,22 +91,31 @@ OMS Agent for Linux 与 System Center Operations Manager 代理共享代理二�
 ### <a name="system-configuration-changes"></a>系统配置更改
 在安装 OMS Agent for Linux 程序包后，将应用下列其他系统范围的配置更改。 卸载 omsagent 程序包时会删除这些项目。
 
-* 创建一个名为 `omsagent` 的非特权用户。 omsagent 守护程序以此帐户身份运行。
-* 在 /etc/sudoers.d/omsagent 中创建一个 sudoers “include” 文件。 此文件会授权 omsagent 重新启动 syslog 和 omsagent 守护程序。 如果安装的 sudo 版本不支持 sudo “include” 指令，则会将这些条目写入 /etc/sudoers。
-* 修改 syslog 配置，以将事件子集转发到代理。 有关详细信息，请参阅下面的“配置数据收集”部分。
+* 创建一个名为 `omsagent` 的非特权用户。 这是 omsagent 守护程序运行时使用的帐户。
+* 在 /etc/sudoers.d/omsagent 中创建一个 sudoers “include” 文件。 这会授权 omsagent 重新启动 syslog 和 omsagent 守护程序。 如果安装的 sudo 版本不支持 sudo “include” 指令，则会将这些条目写入 /etc/sudoers。
+* 修改 syslog 配置，以将事件子集转发到代理。 有关详细信息，请参阅下面的**配置数据收集**一节
 
 ### <a name="upgrade-from-a-previous-release"></a>从以前的版本升级
 此版本支持从早于 1.0.0-47 的版本升级。 使用 `--upgrade` 命令执行安装时，会将代理的所有组件都升级到最新版本。
 
 ## <a name="installing-the-agent"></a>安装代理
 
-本部分介绍如何使用 bunndle 安装 OMS Agent for Linux，其中包含每个代理组件的 Debian 和 RPM 程序包。  可以直接安装或提取它来检索各个程序包。  
+本部分介绍如何使用 bunndle 手动安装适用于 Linux 的 OMS 代理，其中包含每个代理组件的 Debian 和 RPM 程序包。  可以直接安装或提取它来检索各个程序包。  如果计划在 Azure Linux VM 上安装代理，请参阅[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)主题，了解如何使用 Log Analytics VM 扩展安装代理。  请按照*启用 Log Analytics VM 扩展*部分中的步骤执行操作。  对于环境中托管的 Linux 计算机，可以使用[从托管在环境中的 Linux 计算机上收集数据](log-analytics-quick-collect-linux-computer.md)一文中介绍的脚本化方法简化安装流程。  
 
-首先，需要 OMS 工作区 ID 和密钥，可通过切换到 [OMS 经典门户](https://mms.microsoft.com)来找到它们。  在“概述”页面上，从顶部菜单中选择“设置”，然后导航到“连接的源\Linux 服务器”。  可在“工作区 ID”和“主键”的右侧看到值。  将它们复制并粘贴到喜爱的编辑器中。    
+> [!NOTE]
+> 尽管上面引用的两篇文章面向刚开始使用 Log Analytics 的用户并旨在帮助他们快速开始使用此服务，但配置计算机的步骤具有相关性。  对于已有工作区并希望连接 Linux 计算机的情况，如果是 Azure Linux VM 或是在 Azure 外部托管的计算机，请选择现有工作区，复制工作区 ID 和密钥并将其传递到脚本。  
 
-1. 从 GitHub 下载最新的 [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x64.sh) 或 [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x86.sh)。  
-2. 使用 scp/sftp 将相应的捆绑包（x86 或 x64）传输到 Linux 计算机。
-3. 使用 `--install` 或 `--upgrade` 参数安装捆绑包。 
+在安装适用于 Linux 的 OMS 代理前，需要先获得 Log Analytics 工作区的工作区 ID 和秘钥。  
+
+1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
+2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
+3. 在 Log Analytics 工作区列表中，选择计算机要向其报告的工作区。
+3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+4. 选择“已连接的源”，然后选择“Linux 服务器”。   
+5. “工作区 ID”和“主密钥”右侧的值。 将它们复制并粘贴到喜爱的编辑器中。  
+6. 从 GitHub 下载最新的 [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x64.sh) 或 [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x86.sh)。  
+7. 使用 scp/sftp 将相应的捆绑包（x86 或 x64）传输到 Linux 计算机。
+8. 使用 `--install` 或 `--upgrade` 参数安装捆绑包。 
 
     > [!NOTE]
     > 如果安装任何现有的程序包（例如在已安装 System Center Operations Manager Agent for Linux 时），请使用 `--upgrade` 参数。 若要在安装过程中连接到 Operations Management Suite，请提供 `-w <WorkspaceID>` 和 `-s <Shared Key>` 参数。
@@ -128,7 +137,7 @@ sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <sh
 ```
 
 ## <a name="configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway"></a>将代理配置为使用代理服务器或 OMS 网关
-适用于 Linux 的 OMS 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 OMS 服务进行通信。  支持匿名身份验证和基本身份验证（用户名/密码）。  
+适用于 Linux 的 OMS 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log Analytics 服务进行通信。  支持匿名身份验证和基本身份验证（用户名/密码）。  
 
 ### <a name="proxy-configuration"></a>代理配置
 代理配置值具有以下语法：
@@ -171,8 +180,8 @@ sudo rm /etc/opt/microsoft/omsagent/proxy.conf /etc/opt/microsoft/omsagent/conf/
 sudo /opt/microsoft/omsagent/bin/service_control restart 
 ```
 
-## <a name="onboarding-with-operations-management-suite"></a>使用 Operations Management Suite 载入
-如果在安装捆绑包时未提供工作区 ID 和密钥，代理随后必须向 Operations Management Suite 注册。
+## <a name="onboarding-with-log-analytics"></a>使用 Log Analytics 载入
+如果在安装捆绑包时未提供工作区 ID 和密钥，代理随后必须向 Log Analytics 注册。
 
 ### <a name="onboarding-using-the-command-line"></a>使用命令行载入
 运行 omsadmin.sh 命令，并为工作区提供工作区 ID 和密钥。 必须以根用户身份（使用 sudo 提升）运行此命令：
@@ -181,7 +190,7 @@ cd /opt/microsoft/omsagent/bin
 sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
 ```
 
-### <a name="onboarding-using-a-file"></a>使用文件载入
+### <a name="register-using-a-file"></a>使用文件注册
 1.  创建文件 `/etc/omsagent-onboard.conf`。 该文件必须可供根用户读写。
 `sudo vi /etc/omsagent-onboard.conf`
 2.  在该文件中插入以下行（包含工作区 ID 和共享密钥）：
@@ -189,7 +198,7 @@ sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
         WORKSPACE_ID=<WorkspaceID>  
         SHARED_KEY=<Shared Key>  
    
-3.  运行以下命令以载入到 OMS 中：`sudo /opt/microsoft/omsagent/bin/omsadmin.sh`
+3.  运行以下命令以向 Log Analytics 注册：`sudo /opt/microsoft/omsagent/bin/omsadmin.sh`
 4.  成功载入后将删除该文件。
 
 ## <a name="enable-the-oms-agent-for-linux-to-report-to-system-center-operations-manager"></a>允许 OMS Agent for Linux 向 System Center Operations Manager 报告
@@ -228,18 +237,18 @@ omsagent 的日志轮换配置位于此处：`/etc/logrotate.d/omsagent-<workspa
 
 ## <a name="troubleshooting"></a>故障排除
 
-### <a name="issue-unable-to-connect-through-proxy-to-oms"></a>问题：无法通过代理连接到 OMS
+### <a name="issue-unable-to-connect-through-proxy-to-log-analytics"></a>问题：无法通过代理连接到 Log Analytics
 
 #### <a name="probable-causes"></a>可能的原因
 * 在载入期间指定的代理不正确
-* OMS 服务终结点不在数据中心的允许列表中 
+* Log Analytics 和 Azure 自动化服务终结点不在数据中心的允许列表中 
 
 #### <a name="resolutions"></a>解决方法
-1. 使用以下命令（启用了 `-v` 选项）通过 OMS Agent for Linux 重新载入到 OMS 服务中。 此 settubg 允许通过代理服务器连接到 OMS 服务的代理能够进行详细输出。 
+1. 使用以下命令（启用了 `-v` 选项）通过适用于 Linux 的 OMS 代理重新载入到 Log Analytics 服务中。 这允许通过代理服务器连接到 OMS 服务的代理能够进行详细输出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
 2. 请查看[将代理配置为使用代理服务器或 OMS 网关](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
-* 仔细检查下列 OMS 服务终结点是否在允许列表中：
+* 仔细检查下列 Log Analytics 服务终结点是否在允许列表中：
 
     |代理资源| 端口 |  
     |------|---------|  
@@ -261,22 +270,36 @@ omsagent 的日志轮换配置位于此处：`/etc/logrotate.d/omsagent-<workspa
 3. 请按照本主题前文所述的安装说明使用正确的工作区 ID 和工作区密钥重新载入。
 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>问题：载入后，日志文件中立即显示 500 和 404 错误
-此错误是第一次将 Linux 数据上传到 OMS 工作区时发生的已知问题。 此错误不会影响发送的数据或服务体验。
+这是第一次将 Linux 数据上传到 Log Analytics 工作区时发生的已知问题。 这不会影响发送的数据或服务体验。
 
-### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>问题：OMS 门户中未显示任何数据
+### <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>问题：Azure 门户中未显示任何数据
 
 #### <a name="probable-causes"></a>可能的原因
 
-- 载入到 OMS 服务失败
-- 与 OMS 服务的连接受阻
+- 载入到 Log Analytics 服务失败
+- 与 Log Analytics 服务的连接受阻
 - 备份了 OMS Agent for Linux 数据
 
 #### <a name="resolutions"></a>解决方法
-1. 通过检查是否存在以下文件，来检查是否已成功载入 OMS 服务：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. 通过检查是否存在以下文件，来检查是否已成功载入 Log Analytics 服务：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. 使用 `omsadmin.sh` 命令行指令重新载入
 3. 如果使用代理，请参阅之前提供的代理解决方法步骤。
-4. 在某些情况下，当 OMS Agent for Linux 无法与 OMS 服务通信时，代理上的数据会在整个缓冲区（大小 50 MB）中排队。 OMS Agent for Linux 应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`。 
+4. 在某些情况下，当适用于 Linux 的 OMS 代理无法与此服务通信时，代理上的数据会在整个缓冲区（大小 50 MB）中排队。 OMS Agent for Linux 应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`。 
 
     >[!NOTE]
     >此问题已在代理版本 1.1.0-28 及更高版本中解决。
 
+### <a name="issue-omsagent-creates-excessive-number-of-user-process-on-computer-and-never-terminates-them"></a>问题：OMSAgent 在计算机上创建过多用户进程并且从不终止它们
+启用支持管理 Linux VM 的管理解决方案时，它将在 Linux 代理上启动大量进程。 但在进程结束前，某个已知问题会导致另一个进程启动。 
+
+#### <a name="resolutions"></a>解决方法
+要更改 OMSAgent 可生成的用户进程数量，可以使用 omsadmin.sh 配置代理。默认情况下会生成 75 个进程，更改限制前，应首先运行以下命令来查看当前运行的 OMSAgent 进程数量：`ps aux | grep -E '^omsagent' | wc -l`。  
+可通过运行以下命令确认当前设置的限制：`cat /etc/security/limits.conf | grep -E '^omsagent'`
+
+使用以下命令配置自定义进程限制，或将进程限制设置回默认值。
+
+1. 设置 OMSAgent 的进程限制：`sudo /opt/microsoft/omsagent/bin/omsadmin.sh -n <specific number limit>`。<br>请注意，可设置的限制下限值是 5 个。  
+
+2. 将 OMSAgent 的进程限制设置回默认值：`sudo /opt/microsoft/omsagent/bin/omsadmin.sh -N`
+
+可通过运行以下命令验证是否已应用新设置：`cat /etc/security/limits.conf | grep -E '^omsagent'`。  如果未看到已应用新配置，则可能是因为设置的进程限制值过低。  

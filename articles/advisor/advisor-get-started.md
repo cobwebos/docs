@@ -14,76 +14,119 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: a662841bebda460d4225e080f16705b3f16fdc46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc89cd29e1e8038f0ff317ff6acee332218ebce7
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
-了解如何通过 Azure 门户访问顾问，以及如何获取、实现、搜索和刷新建议。
+了解如何通过 Azure 门户访问顾问，以及如何获取和实现建议。
 
 ## <a name="get-advisor-recommendations"></a>获取顾问建议
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在左窗格中，单击“更多服务”。
-
-3. 在服务菜单窗格中，在“监视和管理”下，单击“Azure 顾问”。  
+2. 在左窗格中，单击“顾问”。  如果左窗格中未显示“顾问”，请单击“更多服务”。  在服务菜单窗格中，在“监视和管理”下，单击“顾问”。
  将显示顾问仪表板。
 
-   ![使用 Azure 门户访问 Azure 顾问](./media/advisor-overview/advisor-azure-portal-menu.png) 
+   ![使用 Azure 门户访问 Azure 顾问](./media/advisor-get-started/advisor-portal-menu.png) 
 
-4. 在顾问仪表板上，选择要接收建议的订阅。  
-顾问仪表板显示针对所选订阅的个性化建议。 
+4. 顾问仪表板将显示针对所有所选订阅的建议的摘要。  可通过订阅筛选器下拉列表，选择要显示建议的订阅。
 
-5. 若要获取特定类别的建议，请单击其中一个选项卡：“高可用性”、“安全”、“性能”或“成本”。
+5. 若要获取特定类别的建议，请单击其中一个选项卡：“高可用性”、“安全性”、“性能”或“成本”。
  
 > [!NOTE]
-> 若要访问顾问建议，必须先向顾问*注册订阅*。 订阅所有者启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是*一次性操作*。 注册订阅后，可通过订阅、资源组或特定资源的所有者、参与者或读者身份访问顾问建议。
+> 要为订阅使用 Azure 顾问，订阅所有者必须启动顾问仪表板。  此操作向顾问注册订阅。  从此时起，订阅的任何所有者、参与者或读者均可访问该订阅的顾问建议。  
 
-  ![Azure 顾问仪表板](./media/advisor-overview/advisor-all-tab.png)
+  ![Azure 顾问仪表板](./media/advisor-overview/advisor-dashboard.png)
 
 ## <a name="get-advisor-recommendation-details-and-implement-a-solution"></a>获取顾问建议详细信息并实现解决方案
 
-顾问中的“建议”边栏选项卡提供有关建议的其他信息。 
+可以在顾问中选择建议以查看详细信息 - 例如建议操作和受影响的资源 - 并实现针对建议的解决方案。  
 
-1. 登录 [Azure 门户](https://portal.azure.com)，并启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2. 在“顾问建议”仪表板上，单击“获取建议”。
+2. 选择一个建议类别并显示该类别下的建议列表，或选择“全部”选项卡来查看所有建议。
 
-3. 在建议列表中，单击要详细查看的建议。  
-“建议”边栏选项卡随即显示。
+3. 单击要详细查看的建议。
 
-4. 在“建议”边栏选项卡上，查看可用于解决潜在问题或利用节约成本方法的操作的有关信息。 
-  
-  ![“顾问建议”边栏选项卡](./media/advisor-overview/advisor-recommendation-action-example.png)
+4. 查看建议的相关信息，以及建议适用的资源。
 
-## <a name="search-for-advisor-recommendations"></a>搜索顾问建议
+5. 单击“推荐操作”以实现该建议。
 
-可以搜索特定订阅或资源组的建议。 还可以按状态搜索建议。
+## <a name="filter-advisor-recommendations"></a>筛选顾问建议
 
-1. 登录 [Azure 门户](https://portal.azure.com)，并启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
+可以通过筛选建议，深度获取最重要的信息。  可按订阅、资源类型或建议状态进行筛选。  
 
-2. 通过筛选订阅、资源组和建议状态（“活跃”或“暂停”）搜索建议。
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-3. 若要显示基于搜索筛选条件的顾问建议列表，请单击“获取建议”。
+2.  使用顾问仪表板上的下拉列表，按订阅、资源类型或建议状态进行筛选。
 
-  ![顾问搜索筛选条件](./media/advisor-get-started/advisor-search.png)
+    ![顾问搜索筛选条件](./media/advisor-get-started/advisor-filters.png)
 
 ## <a name="snooze-or-dismiss-advisor-recommendations"></a>推迟或解除顾问建议
 
-1. 登录 [Azure 门户](https://portal.azure.com)，并启动 [Azure 顾问](https://aka.ms/azureadvisordashboard)。
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2. 单击“获取建议”，并在建议列表中，单击某个建议。
+2. 导航至要推迟或消除的建议。
 
-3. 在“建议”边栏选项卡上，单击“暂停”。  
+3. 单击建议。
 
-   ![顾问建议操作示例](./media/advisor-get-started/advisor-snooze.png)
+4. 单击“推迟”。 
 
-4. 指定推迟时间段，或选择“从不”以解除该建议。
+5. 指定推迟时间段，或选择“从不”以解除该建议。
 
+## <a name="exclude-subscriptions-or-resource-groups-from-advisor"></a>从顾问中排除订阅或资源组
+
+对于某些资源组或订阅，你可能不希望接收与其相关的顾问建议 - 例如“测试”资源。  可以将顾问配置为仅为特定订阅或资源组生成建议。
+
+> [!NOTE]
+> 只有订阅所有者可以向顾问添加或从中排除订阅或资源组。  如果不具有所需的订阅或资源组权限，则用户界面中的添加或排除选项为禁用状态。
+
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
+
+2. 单击操作栏中的“配置”。
+
+3. 如果不想接收有关某个订阅或资源组的顾问建议，可取消选中它。
+
+    ![顾问配置资源示例](./media/advisor-get-started/advisor-configure-resources.png)
+
+4. 单击“应用”按钮。
+
+## <a name="configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation"></a>针对低使用率虚拟机建议，配置平均 CPU 使用率规则
+
+顾问可监视虚拟机 14 天的使用情况，并识别出利用率较低的虚拟机。 如果在 4 天或 4 天以上，虚拟机的平均 CPU 使用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则会被视为利用率较低的虚拟机。
+
+若要加强对低使用率虚拟机的标识，可在每个订阅的基础上调整平均 CPU 使用率。  可将平均 CPU 使用率规则设置为 5%、10%、15% 或 20%。
+
+> [!NOTE]
+> 要调整用于标识低使用率虚拟机的平均 CPU 使用率规则，操作者必须是订阅所有者。  如果缺少订阅或资源组所需的相关权限，则用户界面中的添加或排除选项是禁用的。 
+
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
+
+2. 单击操作栏中的“配置”。
+
+3. 单击“规则”选项卡。
+
+4. 选择要为其调整平均 CPU 使用率规则的订阅，然后单击“编辑”。
+
+5. 选择所需的平均 CPU 使用率值，然后单击“应用”。
+
+6. 单击“刷新建议”来更新现有建议，以便使用新平均 CPU 使用率规则。 
+
+   ![顾问配置建议规则示例](./media/advisor-get-started/advisor-configure-rules.png)
+
+## <a name="download-your-advisor-recommendations"></a>下载顾问建议
+
+可使用顾问下载建议摘要。  可下载 PDF 文件或 CSV 文件格式的建议。  通过下载建议，可轻松与同事共享建议数据，或根据建议数据执行自己的分析。
+
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
+
+2. 在操作栏中，单击“以 CSV 格式下载”或“以 PDF 格式下载”。
+
+下载选项与在顾问仪表板中应用的筛选器密切相关。  如果在选择下载选项的同时，正在查看某个特定的建议类别或建议，则所下载的摘要将仅包括该类别或建议的相关信息。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 53075d20aff073ff46dcd6dccaefea5fc8ec3483
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 14c565bb67480681e1d398a0a21a11448f405e4e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -176,6 +176,11 @@ ms.lasthandoff: 10/31/2017
   > **答：**进行密码重置的会话生存期为 15 分钟。 从密码重置操作开始算，用户有 15 分钟的时间来重置其密码。 此时间段到期后，电子邮件和短信的一次性密码将无效。
   >
   >
+* 问：可否阻止用户重置其密码？
+
+  > 答：可以。如果通过组来启用自助服务密码重置，则可以将用户从允许其使用此功能的组中删除。
+  >
+  >
 
 ## <a name="password-change"></a>密码更改
 
@@ -187,6 +192,11 @@ ms.lasthandoff: 10/31/2017
 * **问：当用户的本地密码过期时，他们是否可以在 Office 门户中收到通知？**
 
   > **答：**如果根据[使用 ADFS 发送密码策略声明](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)中的说明使用 ADFS，则目前这是可以的。 如果使用密码哈希同步，则目前这不可以。 这是因为我们不从本地同步密码策略，因此我们无法将过期通知发布到云体验。 在任一情况下，都还可以[使用 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
+  >
+  >
+* 问：可否阻止用户更改其密码？
+
+  > 答：对于仅限云的用户，无法阻止。 对于本地用户，可为其选中 `User cannot change password`，以禁止其更改密码。
   >
   >
 
@@ -263,14 +273,14 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [如何成功推出 SSPR？](active-directory-passwords-best-practices.md)
 * [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](active-directory-passwords-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](active-directory-passwords-data.md)
 * [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
 * [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
 * [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

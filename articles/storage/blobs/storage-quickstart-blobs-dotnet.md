@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.openlocfilehash: fdba4588fbb2c46efb3fc4de1a9e53414264444a
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9c5628307e76bd30d2dd59f284f2c4b30d434223
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>使用 .NET 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 
@@ -34,25 +34,7 @@ ms.lasthandoff: 10/31/2017
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>使用 Azure 门户创建存储帐户
-
-首先，创建用于本快速入门的新通用存储帐户。 
-
-1. 转到 [Azure 门户](https://portal.azure.com)，使用 Azure 帐户登录。 
-2. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户 - blob、文件、表、队列”。 
-3. 输入存储帐户的名称。 名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 不能与其他名称重复。
-4. 将 `Deployment model` 设置为“资源管理器”。
-5. 将“`Account kind`”设置为“常规用途”。
-6. 将“`Performance`”设置为“标准”。 
-7. 将“`Replication`”设置为“本地冗余存储(LRS)”。
-8. 将“`Storage service encryption`”设置为“禁用”。
-9. 将“`Secure transfer required`”设置为“禁用”。
-10. 选择订阅。 
-11. 对于“`resource group`”，创建一个新资源组，并为其赋予唯一名称。 
-12. 选择要用于存储帐户的“`Location`”。
-13. 选中“固定到仪表板”，然后单击“创建”，创建存储帐户。 
-
-创建存储帐户后，它被固定到仪表板。 单击可将其打开。 在“设置”下，单击“访问密钥”。 选择一个密钥并将连接字符串复制到剪贴板，然后将其粘贴到文本编辑器，以供将来使用。
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
@@ -116,9 +98,12 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_cbd5f95c-6ab8-4cbf-b
 
 有了 CloudBlobContainer 后，就可以创建 CloudBlockBlob 对象（该对象指向你感兴趣的特定 blob）的实例，然后执行上传、下载、复制等操作。
 
+> [!IMPORTANT]
+> 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+
 在本部分中，将创建对象的实例、创建新容器，并对容器设置权限，使 blob 公开，只需 URL 即可对其进行访问。 容器名称为 quickstartblobs。 
 
-此示例使用 **CreateIfNotExists**，因为我们想要每次运行示例时都创建新容器。 在整个应用程序中使用相同容器的生产环境中，建议仅调用 **CreateIfNotExists** 一次， 或提前创建容器，这样就无需在代码中创建它。
+此示例使用 CreateIfNotExists，因为我们想要每次运行示例时都创建新容器。 在整个应用程序中使用相同容器的生产环境中，建议仅调用 **CreateIfNotExists** 一次， 或提前创建容器，这样就无需在代码中创建它。
 
 ```csharp
 // Create a CloudStorageAccount instance pointing to your storage account.

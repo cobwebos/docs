@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: e7663f931594c0626a173562b846f3f9324d8ba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>重新训练现有预测 Web 服务
 本文档介绍了以下方案的重新训练流程：
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
    2. 将训练实验部署为重新训练的 Web 服务。
    3. 使用此训练实验 Batch 执行服务 (BES) 以重新训练模型。
 2. 使用 Azure 机器学习 PowerShell cmdlet 更新预测实验。
-   1. 登录到 Azure Resource Manager 帐户。
+   1. 登录到 Azure 资源管理器帐户。
    2. 获取 Web 服务定义。
    3. 将 Web 服务定义导出为 JSON。
    4. 将引用更新到 JSON 中的 iLearner blob。
@@ -86,9 +86,10 @@ ms.lasthandoff: 10/11/2017
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）中的文件上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。  
 
-要更新 Azure 存储信息，必须检索 Azure 经典门户存储帐户的存储帐户名称、密钥和容器信息，并更新相应的信息。运行实验后，生成的工作流应类似于以下内容：
+要更新 Azure 存储信息，就必须从 Azure 经典门户检索存储帐户的存储帐户名称、密钥和容器信息，然后在代码中更新对应的值。
+运行试验之后，生成的工作流应与以下内容类似：
 
-![运行后生成的工作流][4]代码中的 ng 值。
+![运行后生成的工作流][4]
 
 1. 登录到 Azure 经典门户。
 2. 在左侧导航列中，单击“**存储**”。
@@ -119,7 +120,9 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
             }
         },
 
-以下是重新训练输出的示例：![重新训练输出][6]
+以下是重新训练输出的示例：
+
+![重新训练输出][6]
 
 ## <a name="evaluate-the-retraining-results"></a>评估重新训练结果
 运行应用程序时，输出包括 URL 和访问评估结果所需的共享访问签名令牌。
@@ -133,7 +136,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 ## <a name="retrain-the-web-service"></a>重新训练 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。
 
-## <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure Resource Manager
+## <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure 资源管理器
 首先必须使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境中登录 Azure 帐户。
 
 ## <a name="get-the-web-service-definition-object"></a>获取 Web 服务定义对象

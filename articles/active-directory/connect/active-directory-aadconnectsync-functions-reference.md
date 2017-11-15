@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 0f556c786fdfdf775e00e68740351e7630e0e002
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 591fa6048553db4c347449a68ea4e39f3772d643
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数参考
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -615,12 +615,12 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 结果可能是“20140905081453.0Z”
 
 - - -
-### <a name="guid"></a>GUID
+### <a name="guid"></a>Guid
 **说明：**  
 函数 GUID 生成新的随机 GUID
 
 **语法：**  
-`str GUID()`
+`str Guid()`
 
 - - -
 ### <a name="iif"></a>IIF

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: f27f038e0507270c0bfe200cb8c86622ebac5372
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -109,13 +109,29 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 
 
 ## <a name="using-a-computer-group-in-a-log-search"></a>在日志搜索中使用计算机组
-通过将计算机组的别名视为函数，可以在查询中使用计算机组，通常使用以下语法：
+通过将计算机组的别名视为函数，可在查询中使用从日志搜索中创建的计算机组，通常使用以下语法：
 
   `Table | where Computer in (ComputerGroup)`
 
 例如，可以使用以下语法仅返回名为 mycomputergroup 的计算机组中的计算机的 UpdateSummary 记录。
  
   `UpdateSummary | where Computer in (mycomputergroup)`
+
+
+导入的计算机组及其包含的计算机存储在 ComputerGroup 表中。  例如，以下查询会从 Active Directory 返回域计算机组中的计算机列表。 
+
+  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+
+以下查询将仅针对域计算机中的计算机返回 UpdateSummary 记录。
+
+  ```
+  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+  UpdateSummary | where Computer in (ADComputers)
+  ```
+
+
+
+  
 
 >[!NOTE]
 > 如果工作区仍然使用[旧的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则在日志搜索中请使用以下语法来引用计算机组。  指定“类别”是可选的，并且仅当在不同类别中具有同名的计算机组时才需要。 
