@@ -3,8 +3,8 @@ title: "Azure 堆栈开发工具包部署先决条件 |Microsoft 文档"
 description: "查看 Azure 堆栈开发工具包 （云操作员） 的环境和硬件要求。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: 32a21d9b-ee42-417d-8e54-98a7f90f7311
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/11/2017
-ms.author: erikje
-ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/14/2017
+ms.author: jeffgilb
+ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure 堆栈部署先决条件
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 \*你将需要更多数量如果你计划将添加的许多建议容量这样[应用商店项](azure-stack-download-azure-marketplace-item.md)从 Azure。
 
-**数据磁盘驱动器配置：**所有数据驱动器都必须都是相同的类型 （所有 SAS 或 SATA） 和容量。 如果使用 SAS 磁盘驱动器，则必须通过单个路径 （提供任何 MPIO，多路径支持） 附加磁盘驱动器。
+**数据磁盘驱动器配置：**所有数据驱动器都必须都是相同的类型 （所有 SAS、 所有 SATA 或所有 NVMe） 和容量。 如果使用 SAS 磁盘驱动器，则必须通过单个路径 （提供任何 MPIO，多路径支持） 附加磁盘驱动器。
 
 **HBA 配置选项**
 
@@ -56,6 +56,7 @@ ms.lasthandoff: 10/11/2017
 * RAID SSD (如果为未指定/未知的媒体类型\*)
 * SATA SSD + SATA HDD
 * SAS SSD + SAS HDD
+* 使用 NVMe
 
 \*如果不使用传递的功能的 RAID 控制器无法识别的媒体类型。 此类控制器会将 HDD 和 SSD 标记为未指定。 在这种情况下，固态硬盘将用作而不是缓存设备的持久存储。 因此，你可以部署这些各个 Ssd 上的开发工具包。
 
