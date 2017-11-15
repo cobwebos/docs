@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: sngun
-ms.openlocfilehash: ae489cfab1effca8fa33c4e2693b8b5229eda9c5
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f45b65c1cb16a79a44e873e3e001e0f5c12a8e37
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure 堆栈 PowerShell  
 
@@ -82,7 +82,7 @@ Set-PSRepository `
 
 ## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>在断开连接或部分连接方案中安装 PowerShell
 
-中断开连接的情况下，必须首先下载到计算机具有 internet 连接的 PowerShell 模块，然后将它们传输到安装了 Azure 堆栈开发工具包。
+在断开连接或部分连接方案中，必须首先下载到计算机具有 internet 连接的 PowerShell 模块，然后将它们传输到安装了 Azure 堆栈开发工具包。
 
 > [!IMPORTANT]
 > AzureRM 1.2.11 PowerShell 模块的版本附带的重大更改的列表。 若要从 1.2.10 升级版本，请参阅迁移指南： [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration)。

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 11/11/2017
 ms.author: sngun
-ms.openlocfilehash: 5ef64e727615d17ae550efbc7ea427936d7d4c3b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>安装和配置 CLI 用于 Azure 堆栈
 
@@ -204,6 +204,15 @@ az group create \
 如果成功创建资源组前, 一个命令将输出新创建的资源的以下属性：
 
 ![资源组创建输出](media/azure-stack-connect-cli/image1.png)
+
+## <a name="known-issues"></a>已知问题
+有一些你必须了解在 Azure 堆栈中使用 CLI 时的已知的问题：
+
+* CLI 交互模式即 `az interactive` Azure 堆栈中尚不支持命令。
+* 若要获取 Azure 堆栈中可用的虚拟机映像的列表，请使用`az vm images list --all`命令而不是`az vm image list`命令。 指定`--all`选项可确保响应返回仅 Azure 堆栈环境中可用的映像。 
+* 在 Azure 中提供的虚拟机映像别名不可能适用于 Azure 堆栈。 在使用虚拟机映像，你必须使用整个 URN 参数 (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) 而不是图像别名。 此 URN 必须与派生自相匹配的映像规范`az vm images list`命令。
+* 默认情况下，CLI 2.0 中"Standard_DS1_v2"用作默认虚拟机映像大小。 但是，此大小尚不位于 Azure 堆栈，因此，你需要指定`--size`参数显式时创建虚拟机。 你可以通过使用 Azure 堆栈中可用的虚拟机大小的列表`az vm list-sizes --location <locationName>`命令。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/13/2017
 ms.author: helaw
-ms.openlocfilehash: ffad7bfd4ffcd9159dea23b70640f0ee761fbae0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9109c58b29d5f09f1a86068a87c5e7f839228af
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure 资源管理器模板注意事项
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
 开发应用程序时，请务必确保模板可在 Azure 和 Azure Stack 之间移植。  本主题提供有关开发 Azure 资源管理器[模板](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)的注意事项，以便用户可以为应用程序创建原型以及在 Azure 中测试部署而无需访问 Azure Stack 环境。
+
+## <a name="resource-provider-availability"></a>资源提供程序的可用性
+已经是可用或在 Azure 堆栈中的预览中的 Microsoft Azure 服务都必须使用你打算部署的模板。
 
 ## <a name="public-namespaces"></a>公共命名空间
 由于 Azure Stack 托管在数据中心中，它的服务终结点命名空间与 Azure 公有云不同。 因此，资源管理器模板中的硬编码公共终结点失败时尝试将它们部署到 Azure 堆栈。 但是，可以使用 *reference* 和 *concatenate* 函数基于在部署过程中从资源提供程序检索到的值动态构建服务终结点。 例如，无需在模板中指定 *blob.core.windows.net*，检索 [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) 可动态设置 *osDisk.URI* 终结点：
@@ -73,7 +76,6 @@ Resource Manager [函数](../../azure-resource-manager/resource-group-template-f
       }
     }
     ]
-
 
 ## <a name="next-steps"></a>后续步骤
 * [通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)

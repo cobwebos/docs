@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/11/2017
 ms.author: helaw
-ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a8e871a3a44cb14503832d2f3a096712f8112a7
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure 堆栈故障排除
 
@@ -37,16 +37,6 @@ Azure 堆栈技术开发工具包中作为评估环境，因为没有从 Microso
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>在部署结束时，PowerShell 会话仍处于打开状态，并不显示任何输出
 选择了时，此行为可能是只需 PowerShell 命令窗口中，默认行为的结果。 开发工具包部署实际上已成功，但选择窗口时，该脚本已暂停。 你可以验证这是通过查找单词"select"命令窗口的标题栏中的这种情况。  按 ESC 键取消选择它，并在它后面应显示完成消息。
-
-## <a name="templates"></a>模板
-### <a name="azure-template-wont-deploy-to-azure-stack"></a>Azure 模板会将部署到 Azure 堆栈
-请确保：
-
-* 模板必须使用 Microsoft Azure 服务已可用或在 Azure 堆栈中的预览。
-* 用于特定资源的 Api 支持的本地 Azure 堆栈实例，以及您的目标 ("local"在 Azure 堆栈开发工具包中，"East US"或"印度南部"在 Azure 中的 vs) 的有效位置。
-* 你查看[本文](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md)Test-azurermresourcegroupdeployment cmdlet，有关该捕获 Azure 资源管理器语法中的细微差异。
-
-你还可以使用中已提供的 Azure 堆栈模板[GitHub 存储库](http://aka.ms/AzureStackGitHub/)来帮助你开始。
 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="default-image-and-gallery-item"></a>默认映像和库项
@@ -75,20 +65,6 @@ Azure 堆栈技术开发工具包中作为评估环境，因为没有从 Microso
 ## <a name="storage"></a>存储
 ### <a name="storage-reclamation"></a>存储回收
 它可能需要长达十四个小时回收容量才会显示在门户中。 空间回收取决于各种因素包括在块 blob 存储区的使用情况百分比为内部的容器文件。 因此，具体取决于将删除多少数据，就不能保证的垃圾回收器运行时无法回收的空间量。
-
-## <a name="powershell"></a>PowerShell
-### <a name="resource-providers-not-registered"></a>资源提供程序未注册
-连接到租户订阅使用 PowerShell 时，你将注意到资源提供程序不会自动注册。 使用[Connect 模块](https://github.com/Azure/AzureStack-Tools/tree/master/Connect)，或从 PowerShell 运行以下命令 (后[安装并连接](azure-stack-connect-powershell.md)作为租户): 
-  
-       Get-AzureRMResourceProvider | Register-AzureRmResourceProvider
-
-## <a name="cli"></a>CLI
-
-* CLI 交互模式即 `az interactive` Azure 堆栈中尚不支持命令。
-* 若要获取 Azure 堆栈中可用的虚拟机映像的列表，请使用`az vm images list --all`命令而不是`az vm image list`命令。 指定`--all`选项可确保响应返回仅 Azure 堆栈环境中可用的映像。 
-* 在 Azure 中提供的虚拟机映像别名不可能适用于 Azure 堆栈。 在使用虚拟机映像，你必须使用整个 URN 参数 (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) 而不是图像别名。 和此 URNmust 派生自一样映像规格`az vm images list`命令。
-* 默认情况下，CLI 2.0 中"Standard_DS1_v2"用作默认虚拟机映像大小。 但是，此大小尚不位于 Azure 堆栈，因此，你需要指定`--size`参数显式时创建虚拟机。 你可以通过使用 Azure 堆栈中可用的虚拟机大小的列表`az vm list-sizes --location <locationName>`命令。
-
 
 ## <a name="windows-azure-pack-connector"></a>Windows Azure 包连接器
 * 如果在部署 Azure 堆栈开发工具包后，你可以更改 azurestackadmin 帐户的密码，则不再可以配置多云模式。 因此，它将不能连接到目标 Windows Azure Pack 环境。
