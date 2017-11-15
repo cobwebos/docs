@@ -21,10 +21,10 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# 使用客户端凭据（共享密钥或证书）进行服务到服务调用
+# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用客户端凭据（共享密钥或证书）进行服务到服务调用
 OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了更高级别的保证，Azure AD 还允许调用服务以将证书（而不是共享密钥）用作凭据。
 
-## 客户端凭据授权流关系图
+## <a name="client-credentials-grant-flow-diagram"></a>客户端凭据授权流关系图
 下图说明了客户端凭据授权流在 Azure Active Directory (Azure AD) 中的工作原理。
 
 ![OAuth2.0 客户端凭据授权流](media/active-directory-protocols-oauth-service-to-service/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
@@ -34,20 +34,20 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 3. 使用访问令牌向受保护资源进行身份验证。
 4. 受保护资源中的数据返回到 Web 应用程序。
 
-## 在 Azure AD 中注册服务
+## <a name="register-the-services-in-azure-ad"></a>在 Azure AD 中注册服务
 在 Azure Active Directory (Azure AD) 中注册调用服务和接收服务。 有关详细说明，请参阅 [Integrating applications with Azure Active Directory](active-directory-integrating-applications.md)（将应用程序与 Azure Active Directory 集成）。
 
-## 请求访问令牌
+## <a name="request-an-access-token"></a>请求访问令牌
 若要请求访问令牌，对特定于租户的 Azure AD 终结点使用 HTTP POST。
 
 ```
 https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
-## 服务到服务访问令牌请求
+## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### 第一种情况：使用共享密钥访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
@@ -57,7 +57,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 | client_secret |必填 |在 Azure AD 中输入为调用 Web 服务或 daemon 应用程序注册的密钥。 要创建密钥，请在 Azure 门户中，单击“Active Directory”，切换目录，并依次单击应用程序、“设置”、“密钥”并添加密钥。|
 | resource |必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，单击“Active Directory”，切换目录，并依次单击服务应用程序、“设置”和“属性” |
 
-#### 示例
+#### <a name="example"></a>示例
 以下 HTTP POST 请求 https://service.contoso.com/ Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
 
 ```
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### 第二种情况：使用证书访问令牌请求
+### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 使用证书的服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
@@ -81,7 +81,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
-#### 示例
+#### <a name="example"></a>示例
 以下 HTTP POST 使用证书请求 https://service.contoso.com/ Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
 
 ```
@@ -92,7 +92,7 @@ Content-Type: application/x-www-form-urlencoded
 resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b3bf&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
 ```
 
-### 服务到服务访问令牌响应
+### <a name="service-to-service-access-token-response"></a>服务到服务访问令牌响应
 
 成功响应包含具有以下参数的 JSON OAuth 2.0 响应：
 
@@ -105,7 +105,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | not_before |访问令牌可用的时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至令牌有效时间的秒数。|
 | resource |接收 Web 服务的应用 ID URI。 |
 
-#### 响应示例
+#### <a name="example-of-response"></a>响应示例
 下面的示例演示对 Web 服务的访问令牌请求的成功响应。
 
 ```
@@ -118,6 +118,6 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 }
 ```
 
-## 另请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure AD 中的 OAuth 2.0](active-directory-protocols-oauth-code.md)
 * [使用共享密钥的服务到服务调用的 C# 示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)和[使用证书的服务到服务调用的 C# 示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

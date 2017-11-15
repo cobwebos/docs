@@ -21,10 +21,10 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# 代理流中使用委派用户标识的服务到服务调用
+# <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委派用户标识的服务到服务调用
 OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服务/web API，而后者又需要调用另一个服务/web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Azure Active Directory (Azure AD) 提供的访问令牌。
 
-## 代理流示意图
+## <a name="on-behalf-of-flow-diagram"></a>代理流示意图
 假设已在应用程序中使用 [OAuth 2.0 授权代码授权流](active-directory-protocols-oauth-code.md)对用户进行身份验证。 此时，应用程序已获得访问令牌（令牌 A），其中包含用户对访问中间层 Web API (API A) 的声明和许可。 现在，API A 需要向下游 Web API (API B) 发出身份验证请求。
 
 所遵循的步骤构成代理流，并借助以下关系图进行说明。
@@ -38,9 +38,9 @@ OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服�
 4. 令牌 B 设置在向 API B 发出的请求的 authorization 标头中。
 5. API B 返回受保护资源中的数据。
 
-## 在 Azure AD 中注册应用程序和服务
+## <a name="register-the-application-and-service-in-azure-ad"></a>在 Azure AD 中注册应用程序和服务
 在 Azure AD 中注册客户端应用程序和中间层服务。
-### 注册中间层服务
+### <a name="register-the-middle-tier-service"></a>注册中间层服务
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶栏上单击帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
 3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
@@ -48,7 +48,7 @@ OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服�
 5. 输入应用程序的友好名称，并选择应用程序类型。 根据应用程序类型将登录 URL 或重定向 URL 设置为基 URL。 单击“创建”，创建应用程序。
 6. 在 Azure 门户中选择应用程序，并单击“设置”。 在“设置”菜单中选择“密钥”并添加密钥 - 选择 1 年或 2 年密钥持续时间。 保存此页时，会显示密钥值，请复制该值并将其保存在安全位置 - 稍后在实现中配置应用程序设置时需要此密钥 - 此密钥值不再显示，也无法通过其他任何方式检索，因此，在 Azure 门户中显示后，请尽快记下此值。
 
-### 注册客户端应用程序
+### <a name="register-the-client-application"></a>注册客户端应用程序
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶栏上单击帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
 3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
@@ -56,14 +56,14 @@ OAuth 2.0 代理流适用于这样的用例：其中应用程序调用某个服�
 5. 输入应用程序的友好名称，并选择应用程序类型。 根据应用程序类型将登录 URL 或重定向 URL 设置为基 URL。 单击“创建”，创建应用程序。
 6. 配置应用程序的权限 - 在“设置”菜单中，选择“所需权限”部分，单击“添加”，单击“选择 API”，并在文本框中键入中间层服务的名称。 然后单击“选择权限”并选择“访问*服务名称*”。
 
-### 配置已知的客户端应用程序
+### <a name="configure-known-client-applications"></a>配置已知的客户端应用程序
 在此方案中，中间层服务无需用户干预，就要获取用户对访问下游 API 的许可。 因此，在身份验证过程的许可步骤中必须提前显示授权访问下游 API 的选项。
 为实现此目的，请遵循以下步骤将 Azure AD 中的客户端应用注册显式绑定到中间层服务的注册，从而将客户端和中间层所需的许可合并到单个对话中。
 1. 导航到中间层服务注册，并单击“清单”打开清单编辑器。
 2. 在清单中找到 `knownClientApplications` 数组属性，然后将客户端应用程序的客户端 ID 添加为元素。
 3. 单击保存按钮保存清单。
 
-## 服务到服务访问令牌请求
+## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 若要请求访问令牌，请使用以下参数向特定于租户的 Azure AD 终结点发出 HTTP POST。
 
 ```
@@ -71,7 +71,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 ```
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### 第一种情况：使用共享密钥访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
@@ -84,7 +84,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 | requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
 | 作用域 |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
-#### 示例
+#### <a name="example"></a>示例
 以下 HTTP POST 请求 https://graph.windows.net Web API 的访问令牌。 `client_id` 标识请求访问令牌的服务。
 
 ```
@@ -103,7 +103,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### 第二种情况：使用证书访问令牌请求
+### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 使用证书的服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
@@ -119,7 +119,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
-#### 示例
+#### <a name="example"></a>示例
 以下 HTTP POST 使用证书请求 https://graph.windows.net Web API 的访问令牌。 `client_id` 标识请求访问令牌的服务。
 
 ```
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-## 服务到服务访问令牌响应
+## <a name="service-to-service-access-token-response"></a>服务到服务访问令牌响应
 成功响应是具有以下参数的 JSON OAuth 2.0 响应。
 
 | 参数 | 说明 |
@@ -153,7 +153,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | id_token |请求的 ID 令牌。 调用服务可以使用此令牌验证用户的身份，并开始与用户建立会话。 |
 | refresh_token |所请求的访问令牌的刷新令牌。 当前访问令牌过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
 
-### 成功响应示例
+### <a name="success-response-example"></a>成功响应示例
 以下示例演示对 https://graph.windows.net web API 的访问令牌请求的成功响应。
 
 ```
@@ -171,7 +171,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 }
 ```
 
-### 错误响应示例
+### <a name="error-response-example"></a>错误响应示例
 如果已对下游 API 设置条件访问策略（如多重身份验证），则在尝试获取下游 API 的访问令牌时，Azure AD 令牌终结点会返回错误响应。 中间层服务应向客户端应用程序显示此错误，以便客户端应用程序可以提供用户交互，以满足条件访问策略。
 
 ```
@@ -186,17 +186,17 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 }
 ```
 
-## 使用访问令牌访问受保护资源
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>使用访问令牌访问受保护资源
 现在，中间层服务可以通过在 `Authorization` 标头中设置令牌，使用上面获取的令牌向下游 Web API 发 出身份验证请求。
 
-### 示例
+### <a name="example"></a>示例
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 详细了解 OAuth 2.0 协议和使用客户端凭据执行服务到服务身份验证的其他方法。
 * [在 Azure AD 中使用 OAuth 2.0 客户端凭据授予执行服务到服务身份验证](active-directory-protocols-oauth-service-to-service.md)
 * [Azure AD 中的 OAuth 2.0](active-directory-protocols-oauth-code.md)

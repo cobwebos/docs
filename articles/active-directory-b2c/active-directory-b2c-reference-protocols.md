@@ -20,14 +20,14 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# Azure AD B2C：身份验证协议
+# <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C：身份验证协议
 通过支持两种行业标准协议（OpenID Connect 和 OAuth 2.0），Azure Active Directory B2C (Azure AD B2C) 为应用提供标识即服务。 这是符合标的服务，但这些协议的任意两个实现之间仍然存在微妙的差异。 
 
 如果是通过直接发送和处理 HTTP 请求而不是使用开放源库来编写代码，本指南中的信息才有所帮助。 建议先阅读此页面，再深入了解每个特定协议的详细信息。 但如果已熟悉 Azure AD B2C，则可以直接转到[协议参考指南](#protocols)。
 
 <!-- TODO: Need link to libraries above -->
 
-## 基础知识
+## <a name="the-basics"></a>基础知识
 每个使用 Azure AD B2C 的应用都需要在 [Azure 门户](https://portal.azure.com)的 B2C 目录中注册。 应用注册过程将收集一些值并将其分配给应用：
 
 * 用于唯一标识应用的 **应用程序 ID** 。
@@ -53,14 +53,14 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 * **资源服务器**是资源或数据所在的位置。 它信任授权服务器，以安全地对 OAuth 客户端进行验证和授权。 它还会使用持有者访问令牌，确保可以授予对资源的访问权限。
 
-## 策略
+## <a name="policies"></a>策略
 可以说，Azure AD B2C 策略是服务最重要的功能。 Azure AD B2C 通过引入策略来扩展标准 OAuth 2.0 和 OpenID Connect 协议。 这些协议允许 Azure AD B2C 执行简单身份验证和授权以外的更多功能。 
 
 策略充分描述了使用者标识体验，包括注册、登录和配置文件编辑。 可以在管理 UI 中定义策略。 通过在 HTTP 认证请求中使用特殊的查询参数来执行策略。 
 
 策略不是 OAuth 2.0 和 OpenID Connect 的标准功能，因此应该花时间去了解它们。 有关详细信息，请参阅 [Azure AD B2C 策略参考指南](active-directory-b2c-reference-policies.md)。
 
-## 令牌
+## <a name="tokens"></a>令牌
 OAuth 2.0 和 OpenID Connect 的 Azure AD B2C 实现广泛使用了持有者令牌，包括表示为 JSON Web 令牌 (JWT) 的持有者令牌。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。
 
 持有者是可以提供令牌的任何一方。 参与方必须先经 Azure AD 验证才能接收持有者令牌。 但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。
@@ -73,7 +73,7 @@ OAuth 2.0 和 OpenID Connect 的 Azure AD B2C 实现广泛使用了持有者令�
 
 若要深入了解 Azure AD B2C 中使用的不同类型令牌，请参阅 [Azure AD 令牌参考](active-directory-b2c-reference-tokens.md)。
 
-## 协议
+## <a name="protocols"></a>协议
 准备好查看一些示例请求时，可以从以下教程中的其中一篇开始。 每篇教程对应于特定的身份验证方案。 如果在确定适当的流时需要帮助，请查看[使用 Azure AD B2C 可以构建的应用类型](active-directory-b2c-apps.md)。
 
 * [使用 OAuth 2.0 构建移动和本机应用程序](active-directory-b2c-reference-oauth-code.md)
