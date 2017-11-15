@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cdb5fdb094a185db12ee08969a12e556dab96389
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 40b29ccb454caf5462807d6c24ca3f470865d368
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>在 Azure 中创建 .NET Service Fabric 应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。 
@@ -64,7 +64,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 若要部署应用程序，请按 F5。
 
 > [!NOTE]
-> 首次运行和部署应用程序时，Visual Studio 会创建用于调试的本地群集。 此操作可能需要一段时间才能生效。 群集创建状态显示在 Visual Studio 输出窗口中。  在输出中，将看到消息“应用程序 URL 未进行设置或不是 HTTP/HTTPS URL，因此浏览器不会对应用程序打开。”  此消息不指示错误，但该浏览器将不会自动启动。
+> 首次运行和部署应用程序时，Visual Studio 会创建用于调试的本地群集。 此操作可能需要一段时间才能生效。 群集创建状态显示在 Visual Studio 输出窗口中。  在输出中，将看到消息“应用程序 URL 不是集或 HTTP/HTTPS URL，因此将不会对应用程序打开浏览器。”  此消息不指示错误，但该浏览器将不会自动启动。
 
 部署完成后，启动浏览器并打开网页 `http://localhost:8080`（应用程序的 Web 前端）。
 
@@ -87,20 +87,20 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 3. 后端服务接收传入请求，并将更新后的结果存储在可靠字典中（结果复制到群集内的多个节点，并保留在磁盘上）。 应用程序的所有数据都存储在群集中，因此无需使用数据库。
 
 ## <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
-在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据需要针对自己的方案调整调试体验。 在此应用程序中，我们使用可靠字典将数据存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以将“应用程序调试模式”作为 Visual Studio 中“投票”项目的属性进行更改。
+在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据需要针对自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以将“应用程序调试模式”作为 Visual Studio 中“投票”项目的属性进行更改。
 
 若要查看代码，请完成以下步骤：
-1. 打开 VotesController.cs 文件，并在 Web API 的 Put 方法（第 47 行）中设置断点。可以在 Visual Studio 的解决方案资源管理器中搜索此文件。
+1. 打开 /VotingWeb/Controllers/VotesController.cs 文件，并在 Web API 的 Put 方法（第 47 行）中设置一个断点。你可以在 Visual Studio 的解决方案资源管理器中搜索此文件。
 
-2. 打开 VoteDataController.cs 文件，并在此 Web API 的 Put 方法（第 50 行）中设置断点。
+2. 打开 /VotingData/ControllersVoteDataController.cs 文件，并在此 Web API 的 Put 方法（第 50 行）中设置一个断点。
 
 3. 返回到浏览器，再单击投票选项或添加新的投票选项。 点击 Web 前端 API 控制器中的第一个断点。
     - 此时，浏览器中的 JavaScript 将请求发送到前端服务中的 Web API 控制器。
     
     ![添加投票前端服务](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    - 首先，为后端服务构建 ReverseProxy (1) 的 URL。
-    - 然后我们将向 ReverseProxy (2) 发送 HTTP PUT 请求。
+    - 首先，为后端服务构建 ReverseProxy 的 URL (1)。
+    - 然后，向 ReverseProxy 发送 HTTP PUT 请求 (2)。
     - 最后，将后端服务的响应返回到客户端 (3)。
 
 4. 按 F5 以继续操作
@@ -108,9 +108,9 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     
     ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    - 在方法的第一行（图中标识为 1）中，我们将使用 `StateManager` 获取或添加 `counts` 可靠字典。
+    - 在方法 (1) 的第一行，`StateManager` 获取或添加一个可靠字典 `counts`。
     - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）负责创建此事务。
-    - 接下来，我们在事务中更新投票选项的相关键值，并提交操作（图中标识为3）。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
+    - 在事务中更新投票选项的相关键值，并提交操作 (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
 5. 按 F5 以继续操作
 
 若要停止调试会话，请按 Shift+F5。
@@ -138,12 +138,12 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
     群集中的每个应用程序都必须具有唯一名称。  Party 群集是一个公共、共享的环境，但是可能与现有应用程序存在冲突。  如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
-3. 打开浏览器，键入群集地址（后跟“:8080”），转到群集中的应用程序。例如，`http://winh1x87d1d.westus.cloudapp.azure.com:8080`。 此时，应该能够看到应用程序在 Azure 群集中运行。
+3. 打开浏览器，键入群集地址（后跟“:8080”），转到群集中的应用程序，例如，`http://winh1x87d1d.westus.cloudapp.azure.com:8080`。 此时，应该能够看到应用程序在 Azure 群集中运行。
 
 ![应用程序前端](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
-可以跨群集轻松缩放 Service Fabric 服务，以便适应服务负载变化。 可以通过更改群集中运行的实例数量来缩放服务。 服务缩放方式有多种，可以使用 PowerShell 或 Service Fabric CLI (sfctl) 脚本/命令。 在此示例中，我们使用的是 Service Fabric Explorer。
+可以跨群集轻松缩放 Service Fabric 服务，以便适应服务负载变化。 可以通过更改群集中运行的实例数量来缩放服务。 服务缩放方式有多种，可以使用 PowerShell 或 Service Fabric CLI (sfctl) 脚本/命令。 在此示例中，使用 Service Fabric Explorer。
 
 Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集 HTTP 管理端口 19080（例如，`http://winh1x87d1d.westus.cloudapp.azure.com:19080`）。
 
@@ -161,22 +161,17 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 
     ![Service Fabric Explorer 缩放服务](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scaled-service.png)
 
-    现在可以看到，服务有两个实例。在树视图中可以查看实例的运行节点。
+    一段时间后，可以看到该服务有两个实例。  在树视图中，会看到实例运行的节点。
 
-通过这一简单的管理任务，我们让前端服务用来处理用户负载的资源数量翻了一番。 有必要了解的是，服务无需有多个实例，便能可靠运行。 如果服务出现故障，Service Fabric 可确保在群集中运行新的服务实例。
+通过这一简单的管理任务，用于前端服务处理用户负载的资源数量翻了一番。 有必要了解的是，服务无需有多个实例，便能可靠运行。 如果服务出现故障，Service Fabric 可确保在群集中运行新的服务实例。
 
 ## <a name="perform-a-rolling-application-upgrade"></a>执行应用程序滚动升级
 将新更新部署到应用程序时，Service Fabric 会安全地分阶段发布更新。 借助滚动升级，可以杜绝升级时的故障时间，并在出错时自动回滚。
 
 若要升级应用程序，请执行以下操作：
 
-1. 在 Visual Studio 中，打开 Index.cshtml 文件。可以在 Visual Studio 的解决方案资源管理器中搜索此文件。
-2. 通过添加一些文本来更改页面标题。例如：
-    ```html
-        <div class="col-xs-8 col-xs-offset-2 text-center">
-            <h2>Service Fabric Voting Sample v2</h2>
-        </div>
-    ```
+1. 在 Visual Studio 中打开 /VotingWeb/Views/Home/Index.cshtml 文件。
+2. 通过添加 <h2> 或更新相应文本更改页标题。 例如，将标题更改为“Service Fabric 投票示例 v2”。
 3. 保存文件。
 4. 在解决方案资源管理器中，右键单击“投票”，再选择“发布”。 此时，“发布”对话框显示。
 5. 单击“清单版本”按钮，更改服务和应用程序的版本。
@@ -187,7 +182,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 
     ![“发布”对话框中的升级设置](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 8. 打开浏览器，并转到端口 19080 上的群集地址（例如，`http://winh1x87d1d.westus.cloudapp.azure.com:19080`）。
-9. 单击树视图中的“应用程序”节点，再单击右侧窗格中的“进行中的升级”。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。
+9. 单击树视图中的“应用程序”节点，再单击右侧窗格中的“进行中的升级”。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
     ![Service Fabric Explorer 中的升级视图](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Service Fabric 在升级群集中每个节点上的服务后等待两分钟，从而确保升级安全性。 预计整个更新大约需要 8 分钟的时间。

@@ -1,6 +1,6 @@
 ---
-title: "同步数据（预览版）| Microsoft Docs"
-description: "本文概述了 Azure SQL 数据同步（预览版）。"
+title: "Azure SQL 数据同步（预览版）| Microsoft 文档"
+description: "本文概述了 Azure SQL 数据同步（预览版）"
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 34bc9588745eb24d8b8c2e81389a9e5144497b34
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/08/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>使用 Azure SQL 数据同步跨多个云和本地数据库同步数据（预览版）
 
 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨多个 SQL 数据库和 SQL Server 实例双向同步选定数据。
 
@@ -44,7 +44,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 -   同步数据库包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
 
 > [!NOTE]
-> 如果使用本地数据库，必须[配置本地代理](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-sql-data-sync)。
+> 如果使用本地数据库，必须[配置本地代理](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync)。
 
 ![在数据库之间同步数据](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -58,7 +58,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 
 -   **全局分布式应用程序：**许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
 
-不建议将 SQL 数据同步用于以下方案：
+数据同步不适合以下方案：
 
 -   灾难恢复
 
@@ -77,48 +77,6 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 -   **解决冲突：**SQL 数据同步提供两个冲突解决选项，即“中心胜出”或“成员胜出”。
     -   如果选择“中心胜出”，中心内的更改始终覆盖成员内的更改。
     -   如果选择“成员胜出”，成员内的更改覆盖中心内的更改。 如果有多个成员，最终值取决于哪个成员最先同步。
-
-## <a name="limitations-and-considerations"></a>限制和注意事项
-
-### <a name="performance-impact"></a>性能影响
-SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层并根据需要升级。
-
-### <a name="eventual-consistency"></a>最终一致性
-由于 SQL 数据同步是基于触发器的服务，因此无法保证事务一致性。 Microsoft 保证最终执行所有更改，且 SQL 数据同步不会导致数据丢失。
-
-### <a name="unsupported-data-types"></a>不支持的数据类型
-
--   FileStream
-
--   SQL/CLR UDT
-
--   XMLSchemaCollection（支持 XML）
-
--   Cursor、Timestamp、Hierarchyid
-
-### <a name="requirements"></a>要求
-
--   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果不得不这样做，请先删除行，再使用新的主键值重新创建此行。 
-
--   表不能包含非主键标识列。
-
--   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
-
--   必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
-
-### <a name="limitations-on-service-and-database-dimensions"></a>服务和数据库维度方面的限制
-
-|                                                                 |                        |                             |
-|-----------------------------------------------------------------|------------------------|-----------------------------|
-| **维度**                                                      | **限制**              | **解决方法**              |
-| 任何数据库可属于的同步组的数量上限。       | 5                      |                             |
-| 一个同步组中包含的终结点的数量上限              | 30                     | 创建多个同步组 |
-| 一个同步组中包含的本地终结点的数量上限。 | 5                      | 创建多个同步组 |
-| 数据库、表、架构和列名称                       | 每个名称 50 个字符 |                             |
-| 同步组中的表                                          | 500                    | 创建多个同步组 |
-| 同步组中的表列                              | 1000                   |                             |
-| 表中的数据行大小                                        | 24MB                  |                             |
-| 最小同步间隔                                           | 5 分钟              |                             |
 
 ## <a name="common-questions"></a>常见问题
 
@@ -143,15 +101,63 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 数据同步不会处理循环引用。 请务必避免循环引用。 
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>如何使用数据同步导出和导入数据库？
-将数据库导出为 .bacpac 文件，并导入它来新建数据库后，必须执行以下两步操作，才能在新数据库中使用数据同步：
+将数据库导出为 `.bacpac` 文件，并导入文件来新建数据库后，必须执行以下两步操作，才能在新数据库中使用数据同步：
 1.  使用[此脚本](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)清理新数据库上的数据同步对象和端表。 此脚本将从数据库中删除所有相应数据同步对象。
 2.  重新创建包含新数据库的同步组。 如果不再需要旧同步组，请删除它。
+
+## <a name="sync-req-lim"></a> 要求和限制
+
+### <a name="general-requirements"></a>一般要求
+
+-   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果不得不这样做，请先删除行，再使用新的主键值重新创建此行。 
+
+-   表不能包含非主键标识列。
+
+-   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
+
+-   必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
+
+### <a name="general-considerations"></a>一般注意事项
+
+#### <a name="eventual-consistency"></a>最终一致性
+由于 SQL 数据同步是基于触发器的服务，因此无法保证事务一致性。 Microsoft 保证最终执行所有更改，且 SQL 数据同步不会导致数据丢失。
+
+#### <a name="performance-impact"></a>性能影响
+SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层并根据需要升级。
+
+### <a name="general-limitations"></a>一般限制
+
+#### <a name="unsupported-data-types"></a>不支持的数据类型
+
+-   FileStream
+
+-   SQL/CLR UDT
+
+-   XMLSchemaCollection（支持 XML）
+
+-   Cursor、Timestamp、Hierarchyid
+
+#### <a name="limitations-on-service-and-database-dimensions"></a>服务和数据库维度方面的限制
+
+| **维度**                                                      | **限制**              | **解决方法**              |
+|-----------------------------------------------------------------|------------------------|-----------------------------|
+| 任何数据库可属于的同步组的数量上限。       | 5                      |                             |
+| 一个同步组中包含的终结点的数量上限              | 30                     | 创建多个同步组 |
+| 一个同步组中包含的本地终结点的数量上限。 | 5                      | 创建多个同步组 |
+| 数据库、表、架构和列名称                       | 每个名称 50 个字符 |                             |
+| 同步组中的表                                          | 500                    | 创建多个同步组 |
+| 同步组中的表列                              | 1000                   |                             |
+| 表中的数据行大小                                        | 24MB                  |                             |
+| 最小同步间隔                                           | 5 分钟              |                             |
+|||
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 SQL 数据同步的详细信息，请参阅：
 
--   [SQL 数据同步入门](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL 数据同步入门](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL 数据同步最佳实践](sql-database-best-practices-data-sync.md)
+-   [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -162,5 +168,4 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 有关 SQL 数据库的详细信息，请参阅：
 
 -   [SQL 数据库概述](sql-database-technical-overview.md)
-
 -   [数据库生命周期管理](https://msdn.microsoft.com/library/jj907294.aspx)

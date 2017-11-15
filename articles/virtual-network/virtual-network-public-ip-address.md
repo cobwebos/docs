@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 5bffea350061231e1dc664b3abcbf79950a54402
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e52dc76608a83d446ccc8503d17445a8d6a61ae4
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>创建、更改或删除公共 IP 地址
 
@@ -48,11 +48,11 @@ ms.lasthandoff: 10/11/2017
     |设置|必需？|详细信息|
     |---|---|---|
     |SKU|是|引入 SKU 之前创建的所有公共 IP 地址均为基本 SKU 公共 IP 地址。  创建公共 IP 地址后，无法更改此 SKU。 独立虚拟机、可用性集内的虚拟机或虚拟机规模集可使用基本 SKU 或标准 SKU。  不允许在可用性集或规模集内的虚拟机之间混用 SKU。 基本 SKU：如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“无”。 可选择一个可用性区域，保证公共 IP 地址具有一个特定区域。 标准 SKU：标准 SKU 公共 IP 可关联到虚拟机或负载均衡器前端。 如果要在支持可用性区域的区域内创建公共 IP 地址，“可用性区域”设置默认设为“区域冗余”。 有关可用性区域的详细信息，请参阅“可用性区域”设置。 将地址关联到标准负载均衡器时需使用标准 SKU。 若要了解标准 负载均衡器的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 标准 SKU 目前为预览版本。 创建标准 SKU 公共 IP 地址之前，必须先完成[注册标准 SKU 预览版](#register-for-the-standard-sku-preview)中的步骤，然后在支持位置（区域）中创建该公共 IP 地址。 有关支持位置的列表，请参阅[区域可用性](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability)；有关其他区域支持，请密切关注 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页面。 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。|
-    |Name|是|该名称在所选的资源组中必须唯一。|
+    |名称|是|该名称在所选的资源组中必须唯一。|
     |IP 版本|是| 选择 IPv4 或 IPv6。 虽然可将公共 IPv4 地址分配给多个 Azure 资源，但只可将 IPv6 公共 IP 地址分配给面向 Internet 的负载均衡器。 负载均衡器可将 IPv6 流量负载均衡到 Azure 虚拟机。 详细了解如何[将 IPv6 流量负载均衡到虚拟机](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果已选择“标准 SKU”，则不可选择“IPv6”。 仅在使用标准 SKU 时才可创建 IPv4 地址。|
     |IP 地址分配|是|动态：仅在将公共 IP 地址与附加到虚拟机的网络接口相关联并首次启动该虚拟机后，才分配动态地址。 如果网络接口所附加到的虚拟机停止（解除分配），动态地址可能发生更改。 如果虚拟机重启或停止（但未解除分配），该地址将保持不变。 **静态：**静态地址是在创建公共 IP 地址时分配的。 即使虚拟机处于停止（解除分配）状态，静态地址也不改变。 仅当删除网络接口时才释放该地址。 创建网络接口后，可更改分配方法。 如果选择 IPv6 作为“IP 版本”，则分配方法为“动态”。 如果选择“标准”作为 SKU，则分配方法为“静态”。|
     |空闲超时（分钟）|否|不依赖于客户端发送 keep-alive 消息，将 TCP 或 HTTP 连接保持打开的分钟数。 如果选择 IPv6 作为“IP 版本”，则不能更改此值。 |
-    |DNS 名称标签|否|必须在创建该名称的 Azure 位置（所有订阅和所有客户位置）中保持唯一。 Azure 公共 DNS 服务会自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 将 *location.cloudapp.azure.com*（其中的 location 是所选的位置）追加到提供的名称后面，创建完全限定的 DNS 名称。 如果选择同时创建这两个地址版本，则会将相同的 DNS 名称分配给 IPv4 和 IPv6 地址。 Azure DNS 服务包含 IPv4 A 和 IPv6 AAAA 名称记录，并在查找 DNS 名称时对这两种记录做出响应。 客户端选择要与哪个地址（IPv4 或 IPv6）通信。|
+    |DNS 名称标签|否|必须在创建该名称的 Azure 位置（所有订阅和所有客户位置）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。 如果选择同时创建这两个地址版本，则会将相同的 DNS 名称分配给 IPv4 和 IPv6 地址。 Azure 的默认 DNS 服务包含 IPv4 A 和 IPv6 AAAA 名称记录，并在查找 DNS 名称时响应这两个记录。 客户端选择要与哪个地址（IPv4 或 IPv6）通信。 除了使用带有默认后缀的 DNS 名称标签，还可以改用 Azure DNS 服务来配置带有自定义后缀（可解析为公用 IP 地址）的 DNS 名称。 有关详细信息，请参阅[将 Azure DNS 与 Azure 公用 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
     |创建 IPv6（或 IPv4）地址|否| 为“IP 版本”选择的选项决定了是显示 IPv6 还是 IPv4。 例如，如果选择 IPv4 作为“IP 版本”，则此处将显示 IPv6。 如果选择“标准”作为 SKU，则无法选择创建 IPv6 地址。
     |名称（仅在勾选“创建 IPv6 (或 IPv4)地址”复选框时可见）|是，如果选择“创建 IPv6”（或 IPv4）复选框。|该名称必须不同于在此列表中的第一个“名称”中输入的名称。 如果选择同时创建 IPv4 和 IPv6 地址，门户将创建两个单独的公共 IP 地址资源，每个资源中分配有一个 IP 地址版本。|
     |IP 地址分配（仅在“创建 IPv6 (或 IPv4)地址”复选框时可见）|是，如果选择“创建 IPv6”（或 IPv4）复选框。|如果复选框显示“创建 IPv4 地址”，可选择分配方法。 如果复选框显示“创建 IPv6 地址”，则不能选择分配方法，因为必须采用“动态”方法。|

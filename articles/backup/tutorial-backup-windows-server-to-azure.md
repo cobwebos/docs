@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: f81f23862e783de07b5ec5aebad7f0a781168bd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -116,23 +116,19 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 3. 单击“下一步”，导航到“选择要备份的项”页面。
 
-4. 单击“添加项”，然后在打开的对话框中选择“系统状态”以及要备份的文件或文件夹。 然后单击“确定”。
+4. 单击“添加项”，然后在打开的对话框中选择“系统状态”，以及要备份的文件或文件夹。 然后单击“确定”。
 
 5. 单击“下一步”。
 
-6. 在“指定备份计划”页面上，指定需触发文件和文件夹备份的时间（哪天或哪周）。 系统状态备份计划自动配置。 
+6. 在“指定备份计划(系统状态)”页上，指定需为系统状态触发文件和文件夹备份的具体时间（哪天或哪周），然后单击“下一步”。 
 
-    ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
- 
-
-
-7.  在“选择保留策略”页上，为文件和文件夹备份副本选择“保留策略”。 系统状态备份的保留期自动设置为 60 天。
+7.  在“选择保留策略”页上，为系统状态的文件和文件夹备份副本选择“保留策略”，然后单击“下一步”。
+8. 同样，为选择的文件和文件夹选择备份计划和保留策略。 
 8.  在“选择初始备份类型”页面上，使“自动通过网络”选项保持选中状态，然后单击“下一步”。
 9.  在“确认”页上检查信息，并单击“完成”。
 10. 在向导完成创建备份计划后，请单击“**关闭**”。
 
 ## <a name="perform-an-ad-hoc-back-up"></a>执行即席备份
-
 
 备份作业运行时表示计划已建立。 但服务器尚未备份。 运行按需备份是灾难恢复最佳做法，可确保服务器的数据弹性。
 
@@ -140,8 +136,9 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
     ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
-2.  在“确认”页上，检查“立即备份”向导用于备份服务器的设置。 然后单击“**备份**”。
-3.  单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
+2.  在“立即备份”向导上，从“文件和文件夹”或“系统状态”中选择要备份的内容，然后单击“下一步”。 
+3. 在“确认”页上，检查“立即备份”向导用于备份服务器的设置。 然后单击“**备份**”。
+4.  单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 4.  完成初始备份后，MARS 代理控制台的“作业”窗格中会显示“作业已完成”状态。
 
 

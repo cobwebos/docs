@@ -12,17 +12,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3793df974175a5c41b83800f73748c52c8223572
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06c14bdd24dd24a98b3838a2ba73b657ce56785a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 系列更新 2.2 发行说明
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
-以下发行说明描述 StorSimple 8000 系列更新 2.2 的新功能，并标识其重要的待解决问题。 其中也包含此版本中随附的 StorSimple 软件更新列表。 
+以下发行说明描述 StorSimple 8000 系列更新 2.2 的新功能，并标识其重要的待解决问题。 其中也包含此版本中随附的 StorSimple 软件更新列表。
 
 更新 2.2 可应用于任何运行 Release (GA)、更新 0.1 到更新 2.1 的 StorSimple 设备。 与更新 2.2 相关联的设备版本是 6.3.9600.17708。
 

@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure Site Recovery 故障转移到辅助站点后的 VM 连接 | Microsoft Docs"
+title: "使用 Azure Site Recovery 故障转移到辅助站点后连接 VM | Microsoft 文档"
 description: "使用 Azure Site Recovery 故障转移到辅助站点后连接 Azure VM 的联网指南。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
+manager: prateek9us
 editor: 
 ms.assetid: 67d73590-185c-49b2-a097-597bf54747a9
 ms.service: site-recovery
@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
-ms.author: raynew
-ms.openlocfilehash: 7b27fc568c77b44ab2366d297ca9e7685439143e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/05/2017
+ms.author: pratshar
+ms.openlocfilehash: ce33a90a303a10de8ff198754e8e39c334035537
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="vm-connectivity-after-failover-to-a-secondary-site"></a>故障转移到辅助站点后的 VM 连接
+# <a name="connecting-to-vms-after-failover-to-a-secondary-site"></a>故障转移到辅助站点后连接 VM
 
 查看部署先决条件后，阅读本文了解如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V 虚拟机 (VM) 复制到辅助站点时计划网络。 
 

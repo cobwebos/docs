@@ -1,5 +1,5 @@
 ---
-title: "远程连接到 StorSimple 设备 | Microsoft 文档"
+title: "远程连接到 StorSimple 设备 | Microsoft Docs"
 description: "介绍如何配置设备进行远程管理，以及如何通过 HTTP 或 HTTPS 连接到 Windows PowerShell for StorSimple。"
 services: storsimple
 documentationcenter: 
@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec625a604660489812b1a8c133fa0156a422b605
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[远程连接到你的 StorSimple 8000 系列设备](storsimple-8000-remote-connect.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 
 ## <a name="overview"></a>概述
 可以使用 Windows PowerShell 远程处理连接到 StorSimple 设备。 采用这种方式进行连接时，不会看到菜单。 （仅当在设备上使用串行控制台进行连接时，才会看到菜单。）借助 Windows PowerShell 远程处理，可连接到特定的运行空间。 也可以指定显示语言。 

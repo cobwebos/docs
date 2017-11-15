@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: zivr
-ms.openlocfilehash: be062ce9cfbe7486ef500dd9d27418cbf245d6e0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: b31955e19883f9fe2e7ed6cf7f5076eaf52577c0
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>处理 Linux 虚拟机的计划内维护通知
 
@@ -65,6 +65,8 @@ az vm get-instance-view  - g rgName  -n vmName
 | LastOperationResultCode               | 上次尝试在 VM 上启动维护的结果 ||
 
 
+
+
 ## <a name="start-maintenance-on-your-vm-using-cli"></a>使用 CLI 在 VM 上启动维护
 
 如果 `IsCustomerInitiatedMaintenanceAllowed` 设置为 true，以下调用会在 VM 上启动维护。
@@ -74,6 +76,28 @@ az vm perform-maintenance rgName vmName
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
+
+## <a name="classic-deployments"></a>经典部署
+
+如果你仍在使用由经典部署模型部署的旧 VM，则可以使用 CLI 1.0 查询 VM，并启动维护。
+
+通过键入以下内容确保在正确模式下使用经典 VM：
+
+```
+azure config mode asm
+```
+
+若要获取名为 myVM 的 VM 维护状态，请键入：
+
+```
+azure vm show myVM 
+``` 
+
+若要在名为 myVM 的经典 VM 上在 myService 服务和 myDeployment 部署中启动维护，请键入：
+
+```
+azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
+```
 
 
 ## <a name="faq"></a>常见问题
@@ -91,17 +115,17 @@ az vm perform-maintenance rgName vmName
 
 **问：我已在另一个区域中设置灾难恢复。我是否安全？**
 
-**答：**每个 Azure 区域都与同一地理位置（例如美国、欧洲或亚洲）中的另一区域配对。 将逐一对配对的区域进行计划内 Azure 更新，尽量减少停机时间并降低应用程序中断风险。 在计划内维护期间，Azure 可能会为用户计划类似的时段来启动维护，但在配对区域之间计划的维护时段将是不同的。  
+**答：**每个 Azure 区域都与同一地理位置（例如美国、欧洲或亚洲）中的另一区域配对。 将逐一对配对的区域进行计划内 Azure 更新，尽量减少停机时间并降低应用程序中断风险。 在计划内维护期间，Azure 可能会为用户计划类似的时间窗口来启动维护，但在配对区域之间计划的维护时段将是不同的。  
 
 有关 Azure 区域的详细信息，请参阅“Azure 中虚拟机的区域和可用性”。  可在此处查看完整的区域对列表。
 
 **问：如何收到有关计划内维护的通知？**
 
-**答：**计划内维护波是通过将计划设置到一个或多个 Azure 区域启动的。 不久以后，电子邮件通知将发送到订阅所有者（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
+**答：**一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久以后，电子邮件通知将发送到订阅所有者（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
 
 **问：我在门户、Powershell 或 CLI 中看不到任何计划内维护的指示，是哪里出错了？**
 
-**答：**在计划内维护波期间，与计划内维护相关的信息仅适用于将受到计划内维护波影响的 VM。 换而言之，如果看不到数据，则可能是维护波已完成（或未启动）或虚拟机已在更新的服务器中托管。
+**答：**一次计划内维护期间，与计划内维护相关的信息仅适用于将受到一次计划内维护影响的 VM。 换而言之，如果你看不到数据，则可能是这次维护已完成（或未启动）或虚拟机已在更新的服务器中托管。
 
 **问：是否应在虚拟机上启动维护？**
 
@@ -127,19 +151,19 @@ az vm perform-maintenance rgName vmName
 
 **问：我收到了一封有关硬件解除的电子邮件，这与计划内维护相同吗？**
 
-**答：**虽然硬件解除授权是计划内维护事件，但我们尚未将此用例加入新体验。  我们想如果客户收到两封关于两个不同的计划内维护波的类似电子邮件会感到困惑。
+**答：**虽然硬件解除授权是计划内维护事件，但我们尚未将此用例加入新体验。  我们想如果客户收到两封关于两次不同的计划内维护的类似电子邮件会感到困惑。
 
 **问：我在 VM 上看不到任何维护信息，是哪里出错了？**
 
 **答：**有很多原因会导致在 VM 上看不到任何维护信息：
 1.  使用的是标记为“Microsoft 内部”的订阅。
-2.  VM 未计划进行维护。 可能维护波已结束、已取消或已修改，因此 VM 不再受其影响。
+2.  VM 未计划进行维护。 可能是这次维护已结束、已取消或已修改，因此你的 VM 不再受其影响。
 3.  未将“维护”列添加到 VM 列表视图。 虽然我们已向默认视图添加此列，但配置为查看非默认列的客户必须手动将“维护”列添加到其 VM 列表视图。
 
 **问：我的 VM 已计划进行第二次维护，为什么？**
 
 **答：**在多种用例下，在已完成维护性的重新部署后，会看到 VM 已计划进行维护：
-1.  我们已取消维护波，并已使用不同的有效负载重启它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。
+1.  我们已取消这次维护，并使用不同的有效负载重新启动它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。
 2.  由于硬件故障，已在另一个节点上对 VM 进行服务修复
 3.  选择了停止（解除分配）VM 并将其重启
 4.  已经为 VM 启用了**自动关闭**

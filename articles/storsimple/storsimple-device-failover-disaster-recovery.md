@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02373633f2a30c6cd50e30b77a9faac2922926e6
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple 设备的故障转移和灾难恢复
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到 [StorSimple 设备的故障转移和灾难恢复](storsimple-8000-device-failover-disaster-recovery.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 本教程介绍发生灾难时故障转移 StorSimple 设备所要执行的步骤。 使用故障转移可将数据中心的源设备中的数据迁移到位于相同或不同地理位置的另一个物理设备甚至虚拟设备。 
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: zivr
-ms.openlocfilehash: cf9a624574cc5d63e17537d07d23bf38cc9d442a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 80c029866f3d28712be823692f3bf4ce6e210405
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>处理 Windows 虚拟机的计划内维护通知
 
@@ -87,8 +87,7 @@ function MaintenanceIterator
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
-        $rg = $rgList[$rgIdx]
-        $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+        $rg = $rgList[$rgIdx]        $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
@@ -110,6 +109,23 @@ function MaintenanceIterator
 ```powershell
 Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
+
+## <a name="classic-deployments"></a>经典部署
+
+如果你仍在使用由经典部署模型部署的旧 VM，则可以使用 PowerShell 查询 VM，并启动维护。
+
+若要获取 VM 的维护状态，请键入：
+
+```
+Get-AzureVM -ServiceName <Service name> -Name <VM name>
+```
+
+若要在经典 VM 上启动维护，请键入：
+
+```
+Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
+```
+
 
 ## <a name="faq"></a>常见问题
 

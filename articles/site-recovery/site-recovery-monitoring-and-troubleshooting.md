@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad1e0bcb2e2c073c8fb186f5a9d8bcb0bac588a0
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>监视虚拟机和物理服务器的保护及其故障排除
 本监视与故障排除指南可帮助你了解如何跟踪 Azure Site Recovery 的复制运行状况，并掌握相关的故障排除方法。
 
 ## <a name="understand-the-components"></a>了解组件
 ### <a name="vmware-virtual-machine-or-physical-server-site-deployment-for-replication-between-on-premises-and-azure"></a>针对本地与 Azure 之间复制的 VMware 虚拟机或物理服务器站点部署
-若要设置本地 VMware 虚拟机或物理服务器与 Azure 之间的数据库恢复，需要在虚拟机或服务器上设置配置服务器、主目标服务器和进程服务器组件。 如果启用源服务器保护，Azure Site Recovery 会安装 Microsoft Azure 应用服务的移动应用功能。 在本地中断或源服务器故障转移到 Azure 后，客户需要在 Azure 中设置进程服务器，并在本地设置主目标服务器，以在本地重新生成源服务器。
+若要设置本地 VMware 虚拟机或物理服务器与 Azure 之间的数据库恢复，需要在虚拟机或服务器上设置配置服务器、主目标服务器和进程服务器组件。 启用对源服务器的保护后，如果尚未部署最新版本，Azure Site Recovery 将从所选的进程服务器安装移动服务。 在本地中断或源服务器故障转移到 Azure 后，客户需要在 Azure 中设置进程服务器，并在本地设置主目标服务器，以在本地重新生成源服务器。
 
 ![针对本地与 Azure 之间复制的 VMware/物理站点部署](media/site-recovery-monitoring-and-troubleshooting/image18.png)
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 ![显示特定作业的错误详细信息的对话框](media/site-recovery-monitoring-and-troubleshooting/image5.png)
 
-在上述示例中，另一个正在进行的操作可能导致保护配置失败。 根据建议解决此问题，并单击“**重启**”，再次启动操作。
+在上述示例中，另一个正在进行的操作可能导致保护配置失败。 根据建议解决此问题，然后单击“重启”以再次启动该操作。
 
 ![“作业”选项卡中的“重启”按钮](media/site-recovery-monitoring-and-troubleshooting/image6.png)
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 93b80744f68546e37934c987f45d7e2747d64f83
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 766ab10c853eb56a1203686d21d0e131c44a41b5
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -40,6 +40,18 @@ ms.lasthandoff: 11/07/2017
 -   更改计划 
 
 请经常返回本页面，因为我们每月都会更新。
+
+## <a name="november-2017"></a>2017 年 11 月
+
+类型：已弃用的功能  
+服务类别：ACS  
+产品功能：访问控制服务 
+
+<a name="acs-retirement"></a>
+
+Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 ACS）将于 2018 年下半年停用。  包括详细计划和高级别迁移指南等在内的详细信息，将在未来几周内提供。 在此期间，有关 ACS 的任何问题，请在此页留下评论，我们的团队成员将会帮助解答。
+
+---
 
 
 ## <a name="october-2017"></a>2017 年 10 月

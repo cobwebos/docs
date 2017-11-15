@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/25/2017
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: d03e45b839e3630e7f5df4b3144b823955920088
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 285c5abf574544737f3d30981a6c5b8f9548922a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 系列 Update 2 发行说明
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 以下发行说明描述 StorSimple 8000 系列 Update 2 的新功能，并标识重要的待解决问题。 其中还包含此版本随附的 StorSimple 软件、驱动程序和磁盘固件更新的列表。 
 
@@ -87,7 +90,7 @@ Update 2 推出以下新功能。
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |
 | 13 |克隆和 DR |运行更新 1 的 StorSimple 设备不能对运行更新 1 前的软件的设备克隆或执行灾难恢复。 |需要将目标设备更新为更新 1 以允许这些操作 |是 |是 |
 | 14 |迁移 |当卷组没有关联的卷时，5000-7000 系列设备上用于迁移的配置备份可能会出现故障。 |删除所有不含关联卷的空卷组，并重新配置备份。 |是 |否 |
-| 15 |Azure PowerShell cmdlet 和本地固定卷 |无法通过 Azure PowerShell cmdlet 创建本地固定卷。 （通过 Azure PowerShell 创建的任何卷都会被分层。）另外，不要使用 Azure PowerShell cmdlet 来修改本地固定卷的任何属性，因为这会带来将卷类型修改为分层卷的负面影响。 |请始终使用 StorSimple Manager 服务来配置或修改本地固定卷。 |是 |否 |
+| 15 |Azure PowerShell cmdlet 和本地固定卷 |无法通过 Azure PowerShell cmdlet 创建本地固定卷。 （通过 Azure PowerShell 创建的任何卷都会被分层。） |始终使用 StorSimple Manager 服务来配置本地固定卷。 |是 |否 |
 | 16 |本地固定卷的可用空间 |如果删除本地固定卷，可能不会立即更新新卷的可用空间。 StorSimple Manager 服务大约会每隔一小时更新本地可用的空间。 |请等待一个小时，再尝试创建新卷。 |是 |否 |
 | 17 |本地固定卷 |还原作业会在“备份目录”中显示临时快照备份，但仅会在还原作业期间显示。 此外，它还在“**备份策略**”页上显示一个前缀为 **tmpCollection** 的虚拟磁盘组，但仅会在还原作业期间显示。 |如果还原作业仅具有本地固定卷或混合了本地固定卷与分层卷，则可能发生此问题。 如果还原作业仅包含分层卷，不会发生此问题。 无需用户干预。 |是 |否 |
 | 18 |本地固定卷 |如果取消还原作业，并随即发生控制器故障转移，还原作业会显示“**失败**”而不是“**已取消**”。 如果还原作业失败，并随即发生控制器故障转移，还原作业会显示“**已取消**”而不是“**失败**’。 |如果还原作业仅具有本地固定卷或混合了本地固定卷与分层卷，则可能发生此问题。 如果还原作业仅包含分层卷，不会发生此问题。 无需用户干预。 |是 |否 |

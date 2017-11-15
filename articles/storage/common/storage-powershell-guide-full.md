@@ -11,13 +11,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2017
+ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
@@ -26,7 +26,7 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何： 
 
 > [!div class="checklist"]
-> * 列出存储帐户
+> * 列出存储器帐户
 > * 获取对现有存储帐户的引用
 > * 创建存储帐户 
 > * 设置存储帐户属性
@@ -165,7 +165,7 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
 再生成其中一个密钥，然后再次对其进行检索以查看新值。
 
 > [!NOTE] 
-> 为生产存储帐户再生成密钥之前，应进行仔细的规划。 再生成一个或两个密钥将无法再访问使用已再生成密钥的任何应用程序。 有关详细信息，请参阅[再生成存储访问密钥](storage-create-storage-account.md#regenerate-storage-access-keys)。
+> 为生产存储帐户再生成密钥之前，应进行仔细的规划。 再生成一个或两个密钥将无法再访问使用已再生成密钥的任何应用程序。 有关详细信息，请参阅[重新生成存储访问密钥](storage-create-storage-account.md#regenerate-storage-access-keys)。
 
 
 ### <a name="delete-a-storage-account"></a>删除存储帐户 
@@ -216,6 +216,12 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 * [如何使用 PowerShell 管理 blob](../blobs/storage-how-to-use-blobs-powershell.md)
 * [如何使用 PowerShell 管理文件](../files/storage-how-to-use-files-powershell.md)
 * [如何使用 PowerShell 管理队列](../queues/storage-powershell-how-to-use-queues.md)
+* [使用 PowerShell 执行 Azure 表存储操作](../../cosmos-db/table-storage-how-to-use-powershell.md)
+
+Azure Cosmos DB 表 API 提供了用于表存储的高级功能，如统包全局分发、低延迟读取和写入、自动辅助索引和专用吞吐量。 
+
+* 有关详细信息，请参阅 [Azure Cosmos DB 表 API](../../cosmos-db/table-introduction.md) 
+* 若要了解如何使用 PowerShell 执行 Azure Cosmos DB 表 API 操作，请参阅[使用 PowerShell 执行 Azure Cosmos DB 表 API 操作](../../cosmos-db/table-powershell.md)。
 
 ## <a name="azures-independently-deployed-clouds"></a>Azure 的独立部署云
 
@@ -239,7 +245,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 你已了解如何： 
 
 > [!div class="checklist"]
-> * 列出存储帐户
+> * 列出存储器帐户
 > * 获取对现有存储帐户的引用
 > * 创建存储帐户 
 > * 设置存储帐户属性

@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d45bb37c8417785db0ea38be4375a998b6d9f109
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e1387bfb3487c148c8befcf3f8bf23bba35661f
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple Manager 服务监视 StorSimple 设备
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[使用 StorSimple Manager 服务监视 StorSimple 设备](storsimple-8000-monitor-device.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 可以使用 StorSimple Manager 服务监视 StorSimple 解决方案中的特定设备。 可以基于 I/O 性能、容量使用量、网络吞吐量和设备性能指标创建自定义图表。 
 

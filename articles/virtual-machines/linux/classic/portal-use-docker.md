@@ -15,25 +15,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.openlocfilehash: 932744208d9d53c87e31dcdf9e34539750be4bdb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5c1822b7304c0360da866ddb504483f5a53432f
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>将 Docker VM 扩展与 Azure 经典门户结合使用
 > [!IMPORTANT] 
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。 可以使用由 [Azure Linux 代理]管理的 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量容器的 Docker VM。
 
 > [!NOTE]
-> 本主题介绍如何从 Azure 经典门户创建 Docker VM。 若要了解如何通过命令行创建 Docker VM，请参阅[如何从 Azure 命令行接口 (Azure CLI) 使用 Docker VM 扩展]。 若要查看容器及其优点的综合讨论，请参阅 [Docker 高级白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
+> 本主题介绍如何从 Azure 门户创建 Docker VM。 若要了解如何通过命令行创建 Docker VM，请参阅[如何从 Azure 命令行接口 (Azure CLI) 使用 Docker VM 扩展]。 若要查看容器及其优点的综合讨论，请参阅 [Docker 高级白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 > 
 > 
 
 ## <a name="create-a-new-vm-from-the-image-gallery"></a>从映像库创建新的 VM
-第一个步骤需要可支持 Docker VM 扩展的 Linux 映像中的 Azure VM，使用映像库的 Ubuntu 14.04 LTS 映像作为示例服务器映像，并将 Ubuntu 14.04 Desktop 用作客户端。 在门户中，单击左下角的“+ 新建”以创建新的 VM 实例，并从可用选项或从完整映像库中选择 Ubuntu 14.04 LTS 映像，如下所示。
+第一个步骤需要可支持 Docker VM 扩展的 Linux 映像中的 Azure VM，使用映像库的 Ubuntu 14.04 LTS 映像作为示例服务器映像，并将 Ubuntu 14.04 Desktop 用作客户端。 在门户中，单击“+ 新建”以创建新的 VM 实例，并从可用选项或从完整映像库中选择 Ubuntu 14.04 LTS 映像，如下所示。
 
 > [!NOTE]
 > 目前，只有 2014 年 7 月以后发布的 Ubuntu 14.04 LTS 映像才支持 Docker VM 扩展。
@@ -67,11 +68,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="add-the-docker-vm-extension"></a>添加 Docker VM 扩展
 要添加 Docker VM 扩展，请找到创建的 VM 实例，向下滚动到“扩展”，然后单击它以打开“VM 扩展”，如下所示。
-
-> [!NOTE]
-> 只有预览版门户支持此功能：https://portal.azure.com/
-> 
-> 
 
 ![](media/portal-use-docker/ClickExtensions.png)
 

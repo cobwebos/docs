@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 33c65bf2eecff3914f3227c76f7d638a4507e1f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 815d4bd539db8aebf2ee1eb62aef13b554b9cc47
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[更改 StorSimple 设备上的设备模式](storsimple-8000-device-modes.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 本文简要介绍了适合 StorSimple 设备运行的各种模式。 StorSimple 设备客户端可在下述三种模式下运行：正常、维护和恢复。 
 
 阅读本文后，用户会了解：

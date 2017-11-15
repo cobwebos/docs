@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/11/2017
+ms.date: 11/03/2017
 ms.author: manuaery
-ms.openlocfilehash: 22eb95bf0e3a20893acbb860ad10cfe6a3bcf088
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c892cbc4acd5531100f45c26a1b81cd5468d255
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本地固定卷：常见问题 (FAQ)
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到 [StorSimple 本地固定卷：常见问题 (FAQ)](storsimple-8000-local-volume-faq.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 下面是在创建 StorSimple 本地固定卷、将分层卷转换为本地固定卷（或反之），或备份与还原本地固定卷时可能遇到的问题及其解答。
 

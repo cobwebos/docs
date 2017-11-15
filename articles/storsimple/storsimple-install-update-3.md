@@ -12,29 +12,31 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72b004a6c2604e0fc20b71b4b69217622f8f9ea0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b99b9cd52dd28f7f62b5d8d5ffe32339a67f82a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="install-update-3-on-your-storsimple-8000-series-device"></a>在 StorSimple 8000 系列设备上安装 Update 3
+
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 
 ## <a name="overview"></a>概述
 
 本教程介绍如何通过 Azure 经典门户使用修补程序方法在运行早期软件版本的 StorSimple 设备上安装 Update 3。 如果是在 StorSimple 设备的非 DATA 0 网络接口上配置网关，且用户正在尝试从 pre-Update 1 软件版本进行更新，则可使用修补程序方法。
 
-Update 3 包含设备软件、LSI 驱动程序和固件、Storport 和 Spaceport 的更新。 如果从 Update 2 或更早版本进行更新，则还需应用 iSCSI 更新、WMI 更新以及在某些情况下应用磁盘固件更新。 设备软件、WMI、iSCSI、LSI 驱动程序、Spaceport 和 Storport 修补程序为非中断性更新，可以通过 Azure 经典门户应用。 磁盘固件更新为中断性更新，只能通过设备的 Windows PowerShell 接口应用。 
+Update 3 包含设备软件、LSI 驱动程序和固件、Storport 和 Spaceport 的更新。 如果从 Update 2 或更早版本进行更新，则还需应用 iSCSI 更新、WMI 更新，以及在某些情况下应用磁盘固件更新。 设备软件、WMI、iSCSI、LSI 驱动程序、Spaceport 和 Storport 修补程序均为非中断性更新。 可以通过 Azure 经典门户应用这些更新。 磁盘固件更新为中断性更新，只能通过设备的 Windows PowerShell 接口应用。
 
 > [!IMPORTANT]
 > * 在安装之前需进行一组手动的和自动的预检查，以便确定设备在硬件状态和网络连接性方面的运行状况。 仅当用户从 Azure 经典门户应用更新时，才会执行这些预检查。
-> * 建议通过 Azure 经典门户安装软件更新和驱动程序更新。 如果在门户中进行预更新网关检查失败，则只能转到设备的 Windows PowerShell 接口安装更新。 根据需从其进行更新的版本，更新可能需要 1.5-2.5 小时进行安装。 维护模式更新必须通过设备的 Windows PowerShell 接口进行安装。 由于维护模式更新为中断性更新，因此会导致设备停机。
+> * 建议通过 Azure 经典门户安装软件更新和驱动程序更新。 只有在门户中进行预更新网关检查失败时，才能转到设备的 Windows PowerShell 接口安装更新。 根据需从其进行更新的版本，更新可能需要 1.5-2.5 小时进行安装。 维护模式更新必须通过设备的 Windows PowerShell 接口进行安装。 由于维护模式更新为中断性更新，因此会导致设备停机。
 > * 如果运行可选的 StorSimple Snapshot Manager，请确保在更新设备之前已将 Snapshot Manager 版本升级到 Update 2。
-> 
-> 
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
@@ -42,15 +44,14 @@ Update 3 包含设备软件、LSI 驱动程序和固件、Storport 和 Spaceport
 执行以下步骤，将设备更新到 [Update 3](storsimple-update3-release-notes.md)。
 
 > [!NOTE]
-> 如果应用 Update 2 或更高版本（包括 Update 2.1），Microsoft 可以从设备拉取其他诊断信息。 因此，当运营团队确定有问题的设备以后，我们就可以更好地从设备中收集信息并诊断问题。 用户如果接受 Update 2 或更高版本，我们就能够提供此主动支持。
-> 
-> 
+> 如果应用 Update 2 或更高版本（包括 Update 2.1），Microsoft 可以从设备拉取其他诊断信息。 此数据有助于识别遇到问题的 StorSimple 设备并帮助诊断问题。 用户如果接受 Update 2 或更高版本，我们就能够提供此主动支持。
+
 
 [!INCLUDE [storsimple-install-update2-via-portal](../../includes/storsimple-install-update2-via-portal.md)]
 
-确保设备运行的是 **StorSimple 8000 系列 Update 3 (6.3.9600.17759)**。 还应修改“上次更新日期”。 
-   - 如果用户是从 Update 2 之前的版本进行更新，则还会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。
-     维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。 在某些情况下，如果运行的是 Update 1.2，则磁盘固件可能已更新，因此不需安装任何维护模式更新。
+确保设备运行的是 **StorSimple 8000 系列 Update 3 (6.3.9600.17759)**。 将修改“上次更新日期”。 
+   - 如果要从 Update 2 之前的版本进行更新，将看到维护模式更新可用。 此消息可能会在安装更新后继续显示 24 小时。
+     维护模式更新为中断性更新，它会导致设备停机。 仅可以通过设备的 Windows PowerShell 接口应用这些更新。 在某些情况下，如果运行的是 Update 1.2，则磁盘固件可能已更新，而且不需安装任何维护模式更新。
    - 如果是从 Update 2 或更高版本更新，则设备现在应已更新。 可以跳过下一步。
 
 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB3121899，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。 

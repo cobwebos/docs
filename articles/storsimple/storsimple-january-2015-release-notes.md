@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/16/2016
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2fc50f7faddb4b61ea5e7d328469fc3cc0eb6f3e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2b147f32f10208b8daa391095a7d0094a0c2c09
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-02-release-notes---january-2015"></a>StorSimple 8000 系列 Update 0.2 发行说明 - 2015 年 1 月
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 以下发行说明描述了 2015 年 1 月发行的 Microsoft Azure StorSimple 的重大待解决问题。 其中也包含此版本中随附的 StorSimple 软件和固件更新的列表。 这是在 StorSimple 8000 系列发行版本于 2014 年 7 月正式发布后的第二个发行版本。
 
@@ -54,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 | 1 |恢复出厂设置 |在某些情况下，执行恢复出厂设置时，StorSimple 设备可能会卡住并显示以下消息：“正在进行出厂重置(阶段 8)”。 如果在该 cmdlet 正在运行时按下 CTRL+C，就会发生这种情况。 |在启动恢复出厂设置后不要按 CTRL+C。 如果已处于此状态，请联系 Microsoft 支持部门以执行后续步骤。 |是 |否 |
 | #N/A |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，然后存储池会脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 3 |云快照失败 |在极少数情况下，云快照可能会失败并出现错误“达到最大备份限制”。 如果同一设备上从已删除的同一原始卷执行的联机克隆数超过 255，则会发生这种情况。 | |是 |是 |
-| 4 |错误的控制器 ID |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。  在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
+| 4 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。  在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
 | 5 |设备监视图表 |在 StorSimple Manager 服务中，如果在设备的代理服务器配置中启用“基本”或“NTLM”身份验证，设备监视图表不再工作。 |针对注册到 StorSimple Manager 服务的设备修改 Web 代理配置，将身份验证设置为“无”。 为此，请运行 Windows PowerShell for StorSimple Set-HcsWebProxy cmdlet。 |是 |是 |
 | 6 |存储帐户 |此版本不支持使用存储服务删除存储帐户， 否则会导致无法检索用户数据。 | |是 |是 |
 | 7 |设备故障转移 |不支持从同一源设备将某个卷容器多次故障转移到不同的目标设备。 |从单个不活动的设备故障转移到多个设备，会使第一个故障转移设备上卷容器丢失数据所有权。 进行此类故障转移后，在 Azure 经典门户中查看这些卷容器时，会发现它们的显示或表现有所不同。 |是 |否 |

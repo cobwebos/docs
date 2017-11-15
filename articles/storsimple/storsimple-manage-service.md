@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2017
+ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee22a31e9c0ec23d9b042dc894cafe0fc346e742
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>在 Azure 经典门户中部署 StorSimple Manager 服务
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[在 Azure 经典门户中部署 StorSimple Manager 服务](storsimple-8000-manage-service.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 
 ## <a name="overview"></a>概述
 StorSimple Manager 服务在 Microsoft Azure 中运行并连接到多台 StorSimple 设备。 在创建该服务后，可以使用它从在浏览器中运行的 Microsoft Azure 经典门户中管理设备。 这使得可以从单个中央位置监视连接到 StorSimple Manager 服务的所有设备，因此最大限度地降低了管理负担。
