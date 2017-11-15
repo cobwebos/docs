@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
 可以将 IP 地址分配到与其他 Azure 资源通信的 Azure 资源，也可以将其分配到本地网络和 Internet。 可以在 Azure 中使用两种类型的 IP 地址：公共地址和专用地址。
@@ -141,9 +141,8 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 | 资源 | 动态 | 静态 | 多个 IP 地址 |
 | --- | --- | --- | --- |
-| VM（在*独立*云服务中） |是 |是 |是 |
-| PaaS 角色实例（在*独立*云服务中） |是 |否 |是 |
-| VM 或 PaaS 角色实例（在 VNet 中） |是 |是 |是 |
+| VM（在独立云服务或 VNet 中） |是 |是 |是 |
+| PaaS 角色实例（在独立云服务或 VNet 中） |是 |否 |否 |
 | 内部负载均衡器前端 |是 |是 |是 |
 | 应用程序网关前端 |是 |是 |是 |
 

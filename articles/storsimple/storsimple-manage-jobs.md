@@ -12,19 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 7d9377bb8f3cb8c587823c2d71d61dfb9b50f52f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 426fd3ec76157670c9d192f007adacc4284abb42
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-jobs"></a>使用 StorSimple Manager 服务查看和管理 StorSimple 作业
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 [!INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
 ## <a name="overview"></a>概述
-“作业”页提供了一个中央门户，用于查看和管理在连接到 StorSimple Manager 服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、失败的作业。 结果以表格形式呈现。 
+“作业”页提供了一个中央门户，用于查看和管理在连接到 StorSimple Manager 服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、失败的作业。 结果以表格形式呈现。
 
 ![“作业”页](./media/storsimple-manage-jobs/HCS_JobsPage.png)
 

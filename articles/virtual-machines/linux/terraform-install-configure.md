@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: d8c357474e040f2e35c51dec0c7785cf98381a37
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 533add8948544e37dc27623a2f51aad1054b1bef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>安装和配置 Terraform 以在 Azure 中预配 VM 和其他基础结构
  
 借助 Terraform，可以轻松使用[简单模板语言](https://www.terraform.io/docs/configuration/syntax.html)来定义、预览和部署云基础结构。 本文介绍使用 Terraform 在 Azure 中预配资源的必要步骤。 
 
 > [!TIP]
-> Terraform 属于 [Azure Cloud Shell Bash 体验](/azure/cloud-shell/quickstart)的一部分并使用凭据和 [Azure Terraform 模块](https://registry.terraform.io/modules/Azure)预先配置。
+> [Bash in Azure Cloud Shell 体验中](/azure/cloud-shell/quickstart)默认安装 Terraform。 它还预先配置了凭据和 [Azure Terraform 模块](https://registry.terraform.io/modules/Azure)。 通过使用 Cloud Shell，可跳过本文档的安装/设置部分。
 
 ## <a name="install-terraform"></a>安装 Terraform
 
@@ -47,9 +47,7 @@ Usage: terraform [--version] [--help] <command> [args]
 
 发出以下命令，登录以管理 Azure 订阅：
 
-```azurecli-interactive
-az login
-```
+   `az login`
 
 如果有多个 Azure 订阅，`az login` 命令可返回其详细信息。 设置 `SUBSCRIPTION_ID` 环境变量，用于保存从要使用的订阅返回的 `id` 字段值。 
 

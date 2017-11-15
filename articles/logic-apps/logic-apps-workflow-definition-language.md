@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 0f8c8e2c22310f6de9f5bedff79a87b887bc0fb1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 36eee42b7b10dfb62e569d665f62a94fc94365be
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言架构
 
@@ -264,7 +264,6 @@ ms.lasthandoff: 10/31/2017
 |json|将参数转换为 JSON 类型值，这与 `string()` 相反。 例如，以下函数返回数组而不是字符串形式的 `[1,2,3]`： <p>`json('[1,2,3]')` <p>同样，可以将字符串转换为对象。 例如，以下函数返回 `{ "abc" : "xyz" }`： <p>`json('{"abc" : "xyz"}')` <p> **参数数目**：1 <p> **名称**：字符串 <p> **说明**：必需。 要转换为本机类型值的字符串。 <p>`json()` 函数也支持 XML 输入。 例如，以下对象的参数值： <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>将转换为以下 JSON： <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|将参数自变量转换为浮点数。 例如，以下函数返回 `10.333`： <p>`float('10.333')` <p> **参数数目**：1 <p> **名称**：值 <p> **说明**：必需。 要转换为浮点数的值。|  
 |bool|将参数转换为布尔值。 例如，以下函数返回 `false`： <p>`bool(0)` <p> **参数数目**：1 <p> **名称**：值 <p> **说明**：必需。 要转换为布尔值的值。|  
-|coalesce|返回传入的参数中的第一个非 null 对象。 **注意**：空字符串不为 null。 例如，如果未定义参数 1 和 2，则以下函数返回 `fallback`：  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **参数数目**：1 ... *n* <p> **名称**：对象*n* <p> **说明**：必需。 要检查是否为 null 的对象。|  
 |base64|返回输入字符串的 base64 表示形式。 例如，以下函数返回 `c29tZSBzdHJpbmc=`： <p>`base64('some string')` <p> **参数数目**：1 <p> **名称**：字符串 1 <p> **说明**：必需。 要编码为 base64 表示形式的字符串。|  
 |base64ToBinary|返回 base64 编码字符串的二进制表示形式。 例如，以下函数返回 `some string` 二进制表示形式： <p>`base64ToBinary('c29tZSBzdHJpbmc=')` <p> **参数数目**：1 <p> **名称**：字符串 <p> **说明**：必需。 base64 编码的字符串。|  
 |base64ToString|返回 based64 编码字符串的字符串表示形式。 例如，以下函数返回 `some string`： <p>`base64ToString('c29tZSBzdHJpbmc=')` <p> **参数数目**：1 <p> **名称**：字符串 <p> **说明**：必需。 base64 编码的字符串。|  
@@ -280,7 +279,6 @@ ms.lasthandoff: 10/31/2017
 |uriComponentToBinary|返回 URI 编码字符串的二进制表示形式。 例如，以下函数返回 `You Are:Cool/Awesome` 二进制表示形式： <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **参数数目**：1 <p> **名称**：字符串<p> **说明**：必需。 URI 编码的字符串。|  
 |uriComponentToString|返回 URI 编码字符串的字符串表示形式。 例如，以下函数返回 `You Are:Cool/Awesome`： <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **参数数目**：1<p> **名称**：字符串<p> **说明**：必需。 URI 编码的字符串。|  
 |xml|返回值的 XML 表示形式。 例如，以下函数返回 `'\<name>Alan\</name>'` 表示的 XML 内容： <p>`xml('\<name>Alan\</name>')` <p>`xml()` 函数也支持 JSON 对象输入。 例如，参数 `{ "abc": "xyz" }` 将转换为 XML 内容：`\<abc>xyz\</abc>` <p> **参数数目**：1<p> **名称**：值<p> **说明**：必需。 要转换为 XML 的值。|  
-|xpath|返回与 xpath 表达式计算结果值的 xpath 表达式匹配的 XML 节点数组。 <p> **示例 1** <p>假设参数 `p1` 的值是以下 XML 的字符串表示形式： <p>`<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>` <p>此代码：`xpath(xml(parameters('p1'), '/lab/robot/name')` <p>返回 <p>`[ <name>R1</name>, <name>R2</name> ]` <p>而此代码： <p>`xpath(xml(parameters('p1'), ' sum(/lab/robot/parts)')` <p>返回 <p>`13` <p> <p> **示例 2** <p>假设 XML 内容如下： <p>`<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>` <p>此代码：`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')` <p>而此代码： <p>`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')` <p>返回 <p>`<Location xmlns="http://abc.com">xyz</Location>` <p>而此代码：`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')` <p>返回 <p>``xyz`` <p> **参数数目**：1 <p> **名称**：Xml <p> **说明**：必需。 要在其中计算 XPath 表达式的 XML。 <p> **参数数目**：2 <p> **名称**：XPath <p> **说明**：必需。 要计算的 XPath 表达式。|  
 |数组|将参数转换为数组。 例如，以下函数返回 `["abc"]`： <p>`array('abc')` <p> **参数数目**：1 <p> **名称**：值 <p> **说明**：必需。 要转换为数组的值。|
 |createArray|从参数创建数组。 例如，以下函数返回 `["a", "c"]`： <p>`createArray('a', 'c')` <p> **参数数目**：1 ... *n* <p> **名称**：任意 *n* <p> **说明**：必需。 要合并成数组的值。|
 |triggerFormDataValue|返回与表单数据或表单编码触发器输出中的键名匹配的单个值。  如果有多个匹配项，会出错。  例如，以下函数返回 `bar`：`triggerFormDataValue('foo')`<br /><br />**参数数目**：1<br /><br />**名称**：键名<br /><br />**说明**：必需。 要返回的表单数据值的键名。|
@@ -289,6 +287,18 @@ ms.lasthandoff: 10/31/2017
 |formDataValue|返回与表单数据或表单编码操作输出中的键名匹配的单个值。  如果有多个匹配项，会出错。  例如，以下函数返回 `bar`：`formDataValue('someAction', 'foo')`<br /><br />**参数数目**：1<br /><br />**名称**：操作名称<br /><br />**说明**：必需。 包含表单数据或表单编码响应的操作的名称。<br /><br />**参数数目**：2<br /><br />**名称**：键名<br /><br />**说明**：必需。 要返回的表单数据值的键名。|
 |formDataMultiValues|返回与表单数据或表单编码操作输出中的键名匹配的值数组。  例如，以下函数返回 `["bar"]`：`formDataMultiValues('someAction', 'foo')`<br /><br />**参数数目**：1<br /><br />**名称**：操作名称<br /><br />**说明**：必需。 包含表单数据或表单编码响应的操作的名称。<br /><br />**参数数目**：2<br /><br />**名称**：键名<br /><br />**说明**：必需。 要返回的表单数据值的键名。|
 |multipartBody|返回操作的多部件输出中的某个部件的正文。<br /><br />**参数数目**：1<br /><br />**名称**：操作名称<br /><br />**说明**：必需。 包含多部件响应的操作的名称。<br /><br />**参数数目**：2<br /><br />**名称**：索引<br /><br />**说明**：必需。 要检索的部件的索引。|
+
+### <a name="manipulation-functions"></a>操作函数
+ 
+这些函数适用于 XML 和对象。
+ 
+|函数名称|说明|  
+|-------------------|-----------------| 
+|coalesce|返回传入的参数中的第一个非 null 对象。 **注意**：空字符串不为 null。 例如，如果未定义参数 1 和 2，则以下函数返回 `fallback`：  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **参数数目**：1 ... *n* <p> **名称**：对象*n* <p> **说明**：必需。 要检查是否为 null 的对象。|
+|addProperty|返回一个具有其他属性的对象。 如果在运行时已存在此属性，将会引发错误。 例如，以下函数返回对象 `{ "abc" : "xyz", "def": "uvw" }`： <p>`addProperty(json('{"abc" : "xyz"}'), 'def', 'uvw')` <p> **参数数目**：1 <p> **名称**：对象 <p> **说明**：必需。 要将新属性添加到的对象。 <p> **参数数目**：2 <p> **名称**：属性名称 <p> **说明**：必需。 新属性的名称。 <p> **参数数目**：3 <p> **名称**：值 <p> **说明**：必需。 要分配给新属性的值。|
+|setProperty|返回一个对象，该对象具有其他属性或具有已设置为给定值的现有属性。 例如，以下函数返回对象 `{ "abc" : "uvw" }`： <p>`setProperty(json('{"abc" : "xyz"}'), 'abc', 'uvw')` <p> **参数数目**：1 <p> **名称**：对象 <p> **说明**：必需。 要在其中设置属性的对象。<p> **参数数目**：2 <p> **名称**：属性名称<p> **说明**：必需。 新属性或现有属性的名称。 <p> **参数数目**：3 <p> **名称**：值 <p> **说明**：必需。 要分配给属性的值。|
+|removeProperty|返回一个对象，此对象的某个属性已被删除。 如果要删除的属性不存在，则会返回原始对象。 例如，以下函数返回对象 `{ "abc" : "xyz" }`： <p>`removeProperty(json('{"abc" : "xyz", "def": "uvw"}'), 'def')` <p> **参数数目**：1 <p> **名称**：对象 <p> **说明**：必需。 要从中删除属性的对象。<p> **参数数目**：2 <p> **名称**：属性名称 <p> **说明**：必需。 要删除的属性名称。 <p>|
+|xpath|返回与 xpath 表达式计算结果值的 xpath 表达式匹配的 XML 节点数组。 <p> **示例 1** <p>假设参数 `p1` 的值是以下 XML 的字符串表示形式： <p>`<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>` <p>此代码：`xpath(xml(parameters('p1')), '/lab/robot/name')` <p>返回 <p>`[ <name>R1</name>, <name>R2</name> ]` <p>而此代码： <p>`xpath(xml(parameters('p1')), ' sum(/lab/robot/parts)')` <p>返回 <p>`13` <p> <p> **示例 2** <p>假设 XML 内容如下： <p>`<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>` <p>此代码：`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')` <p>而此代码： <p>`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')` <p>返回 <p>`<Location xmlns="http://abc.com">xyz</Location>` <p>而此代码：`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')` <p>返回 <p>``xyz`` <p> **参数数目**：1 <p> **名称**：Xml <p> **说明**：必需。 要在其中计算 XPath 表达式的 XML。 <p> **参数数目**：2 <p> **名称**：XPath <p> **说明**：必需。 要计算的 XPath 表达式。|
 
 ### <a name="math-functions"></a>数学函数  
 
@@ -305,9 +315,9 @@ ms.lasthandoff: 10/31/2017
 |max|可通过两种不同的模式来调用此函数。 <p>如果 `max` 采用数组，该函数将返回 `2`： <p>`max([0,1,2])` <p>或者，此函数可以采用值的逗号分隔列表，此时也返回 `2`： <p>`max(0,1,2)` <p> **注意**：所有值必须为数字，因此，如果参数为数组，该数组必须仅包含数字。 <p> **参数数目**：1 <p> **名称**：集合或值 <p> **说明**：必需。 要在其中查找最大值的值数组，或者集的第一个值。 <p> **参数数目**：2 ... *n* <p> **名称**：值 *n* <p> **说明**：可选 如果第一个参数是一个值，则可以传递其他值，这样就会返回所有传递值的最大值。|  
 |range|生成从特定数字开始的整数数组。 定义返回数组的长度。 <p>例如，以下函数返回 `[3,4,5,6]`： <p>`range(3,4)` <p> **参数数目**：1 <p> **名称**：起始索引 <p> **说明**：必需。 数组中的第一个整数。 <p> **参数数目**：2 <p> **名称**：计数 <p> **说明**：必需。 此值为数组中的整数数目。|  
 |rand|生成指定范围内的随机整数（仅包括第一个边界）。 例如，以下函数返回 `0` 或“1”： <p>`rand(0,2)` <p> **参数数目**：1 <p> **名称**：最小值 <p> **说明**：必需。 可返回的最小整数。 <p> **参数数目**：2 <p> **名称**：最大值 <p> **说明**：必需。 此值为可返回的最大整数后的下一个整数。|  
-  
+ 
 ### <a name="date-functions"></a>日期函数  
-  
+
 |函数名称|说明|  
 |-------------------|-----------------|  
 |utcnow|返回字符串形式的当前时间戳，例如：`2017-03-15T13:27:36Z` <p>`utcnow()` <p> **参数数目**：1 <p> **名称**：格式 <p> **说明**：可选 [单个格式说明符](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)或[自定义格式模式](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)，指示如何设置此时间戳值的格式。 如果未提供格式，则使用 ISO 8601 格式 ("o")。|  

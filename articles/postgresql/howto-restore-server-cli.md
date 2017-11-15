@@ -1,6 +1,6 @@
 ---
-title: "如何在用于 PostgreSQL 的 Azure 数据库中备份和还原服务器 | Microsoft Docs"
-description: "了解如何使用 Azure CLI 在用于 PostgreSQL 的 Azure 数据库中备份和还原服务器。"
+title: "如何在 Azure Database for PostgreSQL 中备份和还原服务器 | Microsoft Docs"
+description: "了解如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器。"
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 871887e67d686a965a0648d2c6f0c72b3008db05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 0cfce63b1523f939dc2d706dba771e56ce9ccd6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>如何使用 Azure CLI 在用于 PostgreSQL 的 Azure 数据库中备份和还原服务器
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器
 
 使用用于 PostgreSQL 的 Azure 数据库将服务器数据库还原到 7 至 35 天以前的日期。
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 > 如果在本地安装并使用 Azure CLI，本操作指南要求使用 Azure CLI 2.0 或更高版本。 若要确认版本，请在 Azure CLI 命令提示符下输入 `az --version`。 若要安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
-## <a name="back-up-happens-automatically"></a>自动备份
+## <a name="backup-happens-automatically"></a>自动进行备份
 使用用于 PostgreSQL 的 Azure 数据库时，数据库服务每 5 分钟自动备份一次服务。 
 
 对于基本层，备份将保留 7 天。 对于标准层，备份将保留 35 天。 有关详细信息，请参阅[用于 PostgreSQL 的 Azure 数据库定价层](concepts-service-tiers.md)

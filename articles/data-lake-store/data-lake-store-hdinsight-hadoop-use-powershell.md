@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/01/2017
 ms.author: nitinme
-ms.openlocfilehash: 0e2e0d02677013252b0806558535fe970b5c50b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc46e3987f3710bc73ef13a2c195b68f78bd104d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>使用 Azure PowerShell 创建具有 Data Lake Store 的 HDInsight 群集（作为其他存储）
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>对 Data Lake Store 设置基于角色访问的身份验证
-每个 Azure 订阅都会与 Azure Active Directory 关联。 使用 Azure 经典门户或 Azure Resource Manager API 访问订阅资源的用户和服务必须首先进行 Azure Active Directory 身份验证。 通过在 Azure 资源上为这些用户和服务分配相应角色，向其授予访问权限。  对于服务，服务主体会识别 Azure Active Directory (AAD) 中的服务。 本部分介绍如何通过创建应用程序服务主体和通过 Azure PowerShell 向应用程序服务主体分配角色，向 HDInsight 等应用程序服务授予 Azure 资源（先前创建的 Azure Data Lake Store 帐户）访问权限。
+每个 Azure 订阅都会与 Azure Active Directory 关联。 使用 Azure 门户或 Azure 资源管理器 API 访问订阅资源的用户和服务必须首先进行 Azure Active Directory 身份验证。 通过在 Azure 资源上为这些用户和服务分配相应角色，向其授予访问权限。  对于服务，服务主体会识别 Azure Active Directory (AAD) 中的服务。 本部分介绍如何通过创建应用程序服务主体和通过 Azure PowerShell 向应用程序服务主体分配角色，向 HDInsight 等应用程序服务授予 Azure 资源（先前创建的 Azure Data Lake Store 帐户）访问权限。
 
 若要设置 Azure Data Lake 的 Active Directory 身份验证，必须执行以下任务。
 
@@ -264,6 +264,7 @@ ms.lasthandoff: 10/11/2017
 可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，并使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
 ## <a name="see-also"></a>另请参阅
+* [配合使用 Data Lake Store 和 Azure HDInsight 群集](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [门户：创建 HDInsight 群集以使用 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

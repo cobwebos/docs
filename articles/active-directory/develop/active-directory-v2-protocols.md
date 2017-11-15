@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# v2.0 协议 - OAuth 2.0 和 OpenID Connect
+# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 协议 - OAuth 2.0 和 OpenID Connect
 v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 与 OAuth 2.0）提供标识即服务。  尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。  如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个开放源代码库，则可以参考此处提供的有用信息。
 <!-- TODO: Need link to libraries above -->
 
@@ -30,7 +30,7 @@ v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 
 >
 >
 
-## 基础知识
+## <a name="the-basics"></a>基础知识
 几乎在所有的 OAuth 和 OpenID Connect 流中，都有四个参与交换的对象：
 
 ![OAuth 2.0 角色](../../media/active-directory-v2-flows/protocols_roles.png)
@@ -40,7 +40,7 @@ v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 
 * **OAuth 客户端**是应用，按照其应用程序 ID 进行标识。它通常是与最终用户交互的对象，并向授权服务器请求令牌。  客户端必须获得资源所有者授权才能访问资源。
 * **资源服务器**是资源或数据所在的位置。  它信任授权服务器安全验证和授权 OAuth 客户端，并使用 Bearer access_token 来确保可以授予对资源的访问权限。
 
-## 应用注册
+## <a name="app-registration"></a>应用注册
 所有使用 v2.0 终结点的应用都必须先在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 上注册，才能使用 OAuth 或 OpenID Connect 进行交互。  应用注册进程会收集一些值并将其分配到应用：
 
 * 用于唯一标识应用的 **应用程序 ID**
@@ -49,7 +49,7 @@ v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 
 
 请了解如何 [注册应用](active-directory-v2-app-registration.md)获取详细信息。
 
-## 终结点
+## <a name="endpoints"></a>终结点
 注册后，应用将通过向 v2.0 终结点发送请求来与 Azure AD 通信：
 
 ```
@@ -68,12 +68,12 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 有关如何与这些终结点交互的详细信息，请选择以下特定的应用类型。
 
-## 令牌
+## <a name="tokens"></a>令牌
 OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包括表示为 JWT 的持有者令牌。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 从这个意义上来说，“持有者”是可以提供令牌的任何一方。 虽然某一方必须首先通过 Azure AD 的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。 如果持有者令牌以明文传输，则恶意方可以利用中间人攻击来获得令牌并使用它来对受保护资源进行未经授权的访问。 当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](http://tools.ietf.org/html/rfc6750)。
 
 有关 v2.0 终结点中使用的不同类型令牌的更多详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。
 
-## 协议
+## <a name="protocols"></a>协议
 如果已准备好查看部分示例请求，请从下列教程之一开始。  每个教程对应于特定的身份验证方案。  如果在确定适当的流时需要帮助，请查看[可使用 v2.0 构建的应用类型](active-directory-v2-flows.md)。
 
 * [使用 OAuth 2.0 构建移动和本机应用程序](active-directory-v2-protocols-oauth-code.md)

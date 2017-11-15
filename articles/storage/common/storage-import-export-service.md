@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 导入/导出将数据传入/传出 Blob 存储 | Microsoft Docs"
-description: "了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入/传出到 Blob 存储。"
+title: "使用 Azure 导入/导出将数据传入/传出 Azure 存储 | Microsoft Docs"
+description: "了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入/传出到 Azure 存储。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: fb5b059ad8dc87f445bd84a5fe3bb90822d13f94
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 221bd7662eb4974395c7f970961d5bfb556417f4
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
-本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 和文件存储。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure blob 存储或 Azure 文件存储。 
+本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
 
 > [!IMPORTANT] 
-> 此服务仅接受内部 SATA HDD 或 SSD。 不支持任何其他设备。 请勿发送外部 HDD 或 NAS 设备等，因为在可能的情况下可能会将其返回或丢弃。
+> 此服务仅接受内部 SATA HDD 或 SSD。 不支持任何其他设备。 请勿发送外部 HDD、NAS 设备等，因为可能会将其返回（若可能）或丢弃。
 >
 >
 
-如果将磁盘上的数据导入 Azure Blob 存储，请执行以下步骤。
+如果将磁盘上的数据导入 Azure 存储，请执行以下步骤。
 ### <a name="step-1-prepare-the-drives-using-waimportexport-tool-and-generate-journal-files"></a>步骤 1：使用 WAImportExport 工具准备驱动器，并生成日志文件。
 
-1.  标识要导入到 Azure blob 存储的数据。 导入的数据可以是本地服务器或网络共享中的目录和独立文件。
+1.  标识要导入 Azure 存储的数据。 导入的数据可以是本地服务器或网络共享中的目录和独立文件。
 2.  根据数据的总大小，采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
 3.  直接使用 SATA 或通过外部 USB 适配器将硬盘驱动器附加到 Windows 计算机。
 4.  在每个硬盘驱动器上创建一个 NTFS 卷，并向该卷分配一个驱动器号。 没有装入点。
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/18/2017
 
 * 将数据迁移到云：将大量数据快速且经济高效地转移到 Azure。
 * 内容分发：将数据快速发送到客户站点。
-* 备份：将本地数据备份后存储在 Azure Blob 存储中。
+* 备份：将本地数据备份后存储在 Azure 存储中。
 * 数据恢复：恢复存储在存储中的大量数据，然后将其递送到本地位置。
 
 ## <a name="prerequisites"></a>先决条件
@@ -90,13 +90,13 @@ ms.lasthandoff: 10/18/2017
 必须拥有 Azure 订阅以及一个或多个存储帐户才能使用导入/导出服务。 每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
 
 ### <a name="data-types"></a>数据类型
-可使用 Azure 导入/导出服务将数据复制到块 Blob、页 Blob 或文件中。 与之相反，只能使用此服务从 Azure 存储中导出**块** Blob、**页** Blob 或**追加** Blob。 该服务不支持导出 Azure 文件，只能将文件导入 Azure 存储。
+可使用 Azure 导入/导出服务将数据复制到“块”Blob、“页”Blob 或文件中。 与之相反，只能使用此服务从 Azure 存储中导出**块** Blob、**页** Blob 或**追加** Blob。 该服务仅支持将 Azure 文件导入到 Azure 存储。 当前暂不支持导出 Azure 文件。
 
 ### <a name="job"></a>作业
 要开始从存储进行导入或导出的过程，首先要创建一个“作业”。 作业可以是“导入作业”或“导出作业”：
 
-* 需要将本地数据传输到 Azure 存储帐户中的 Blob 时，可创建导入作业。
-* 若要将当前在存储帐户中以 blob 形式存储的数据传输到寄送给我们的硬盘，请创建导出作业。 创建作业时，需通知导入/导出服务：要将一个或多个硬盘驱动器运送到 Azure 数据中心。
+* 需要将本地数据传输到 Azure 存储帐户时，可创建导入作业。
+* 若要将当前在存储帐户中存储的数据传输到寄送给我们的硬盘，请创建导出作业。 创建作业时，需通知导入/导出服务：要将一个或多个硬盘驱动器运送到 Azure 数据中心。
 
 * 对于导入作业，需要寄送包含数据的硬盘驱动器。
 * 对于导出作业，需要寄送空硬盘驱动器。
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/18/2017
 ### <a name="waimportexport-tool"></a>WAImportExport 工具
 创建**导入**作业的第一步是准备需要通过寄送进行数据导入的驱动器。 要准备驱动器，必须将其连接到本地服务器，然后在本地服务器上运行 WAImportExport 工具。 使用此 WAImportExport 工具可以方便地将数据复制到驱动器、使用 BitLocker 加密驱动器上的数据，以及生成驱动器日志文件。
 
-日志文件存储有关作业和驱动器的基本信息，例如驱动器序列号和存储帐户名称。 此日志文件不存储在该驱动器上。 它在导入作业创建期间使用。 本文稍后将提供有关创建作业的分步详细信息。
+日志文件存储有关作业和驱动器的基本信息，例如驱动器序列号和存储帐户名称。 此日志文件不存储在该驱动器上。 它在导入作业创建期间使用。 本文后面提供了有关作业创建过程的分步详细信息。
 
 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 请参阅[操作系统](#operating-system)部分以了解受支持的特定 OS 版本。
 
@@ -294,7 +294,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 
 **事务成本**
 
-将数据导入 Blob 存储没有事务费用。 将数据从 Blob 存储导出时，需支付标准的传出费用。 有关事务费用的更多详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)
+将数据导入 Azure 存储没有事务费用。 将数据从 Blob 存储导出时，需支付标准的传出费用。 有关事务费用的更多详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 
@@ -304,7 +304,6 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 
 1. 标识要导入 Azure 文件存储的数据。 导入的数据可以是本地服务器或网络共享中的目录和独立文件。  
 2. 根据数据总大小确定所需驱动器数目。 采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
-3. 确定目标存储帐户、容器、虚拟目录和 Blob。
 4. 确定要复制到每个磁盘驱动器的目录和/或独立文件。
 5. 为数据集和驱动器集创建 CSV 文件。
     
@@ -500,9 +499,9 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 为导入作业准备硬盘驱动器时，目标由数据集 CSV 文件中的 DstBlobPathOrPrefix 字段指定。 该目标是存储帐户中的目标容器，可以将硬盘驱动器中的数据复制到其中。 在该目标容器中，将为硬盘驱动器中的文件夹创建虚拟目录，为文件创建 Blob。 
 
-**如果驱动器的文件已存在于我的存储帐户中，该服务是否会覆盖我的存储帐户中的现有 Blob？**
+**如果驱动器的文件已存在于我的存储帐户中，该服务是否会覆盖我的存储帐户中的现有 Blob 或文件？**
 
-准备驱动器时，可以使用数据集 CSV 文件中名为 /Disposition:<rename|no-overwrite|overwrite> 的字段指定是否应覆盖或忽略目标文件。 默认情况下，该服务会将新文件重命名，而不是覆盖现有 Blob。
+准备驱动器时，可以使用数据集 CSV 文件中名为 /Disposition:<rename|no-overwrite|overwrite> 的字段指定是否应覆盖或忽略目标文件。 默认情况下，该服务会将新文件重命名，而不是覆盖现有 Blob 或文件。
 
 **WAImportExport 工具是否与 32 位操作系统兼容？**
 不是。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 版本的完整列表，请参阅[先决条件](#pre-requisites)中的“操作系统”部分。

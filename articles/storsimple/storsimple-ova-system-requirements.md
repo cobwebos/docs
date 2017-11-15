@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/10/2017
+ms.date: 10/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 4dc228ce8a7a73dd32bde77d529698bdcb7f490c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/12/2017
 * **存储客户端的软件要求** - 介绍受支持的虚拟化平台、Web 浏览器、iSCSI 发起程序、SMB 客户端、最低虚拟设备要求，以及这些操作系统的任何其他要求。
 * **StorSimple 设备的网络要求** - 提供有关需要在防火墙中打开以允许 iSCSI、云和管理流量的端口的信息。
 
-本文中发布的 StorSimple 系统要求信息仅适用于 StorSimple Virtual Arrays。
+本文中发布的 StorSimple 系统要求信息仅适用于 StorSimple 虚拟阵列。
 
 * 对于 8000 系列设备，请转到 [System requirements for your StorSimple 8000 series device](storsimple-system-requirements.md)（StorSimple 8000 系列设备的系统要求）。
 * 对于 7000 系列设备，请转到 [System requirements for your StorSimple 5000-7000 series device](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)（StorSimple 5000-7000 系列设备的系统要求）。
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/12/2017
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
 | 磁盘空间<sup>1</sup> |OS 磁盘 - 80 GB <br></br>数据磁盘 - 500 GB 到 8 TB |
 | 网络接口的最小数目 |1 |
-| 最小 Internet 带宽<sup>2</sup> |5 Mbps |
+| Internet 带宽 2<sup></sup> |所需最小带宽：5 Mbps <br> 建议带宽：100 Mbps <br> 数据传输速度与 Internet 带宽成正比。 例如，100 GB 的数据以 5 Mbps 的速度传输 2 天可能导致备份失败，因为每日备份无法在一天内完成。 带宽为 100 Mbps 时，可以在 2.5 小时内传输 100 GB 的数据。   |
 
 <sup>1</sup> - 精简预配
 
@@ -64,13 +64,13 @@ ms.lasthandoff: 10/12/2017
 | Google Chrome |最新版本 |使用 Chrome 46 测试 |
 
 ### <a name="supported-storage-clients"></a>受支持的存储客户端
-以下软件要求适用于访问 StorSimple Virtual Array（配置为 iSCSI 服务器）的 iSCSI 发起程序。
+以下软件要求适用于访问 StorSimple 虚拟阵列（配置为 iSCSI 服务器）的 iSCSI 发起程序。
 
 | **受支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
-以下软件要求适用于访问 StorSimple Virtual Array（配置为文件服务器）的 SMB 客户端。
+以下软件要求适用于访问 StorSimple 虚拟阵列（配置为文件服务器）的 SMB 客户端。
 
 | **SMB 版本** |
 | --- |
@@ -106,14 +106,14 @@ ms.lasthandoff: 10/12/2017
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
-通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 虚拟阵列和 StorSimple Device Manager 服务依赖于其他的 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。 
+通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 虚拟阵列和 StorSimple 设备管理器服务依赖于其他的 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。 
 
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，也可以使用以下信息设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
 > 
 > * 设备（源）IP 应始终设置为所有已启用云的网络接口。 
-> * 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
+> * 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 > 
 > 
 
@@ -128,6 +128,5 @@ ms.lasthandoff: 10/12/2017
 | `https://*.partners.extranet.microsoft.com/*` |支持包 |
 | `http://*.data.microsoft.com ` |Windows 中的遥测服务，请参阅[update for customer experience and diagnostic telemetry](https://support.microsoft.com/en-us/kb/3068708)（客户体验和诊断遥测的更新） |
 
-## <a name="next-step"></a>后续步骤
-* [Prepare the portal to deploy your StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)（准备门户以部署 StorSimple Virtual Array）
-
+## <a name="next-steps"></a>后续步骤
+* [准备门户以部署 StorSimple 虚拟阵列](storsimple-virtual-array-deploy1-portal-prep.md)

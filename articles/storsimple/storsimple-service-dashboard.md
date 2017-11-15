@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2016
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 596431b7279b753ca4da838eb028cdde2022ce02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 62273c0093876f136d97eedf5a509f0b306a1379
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-dashboard"></a>使用 StorSimple Manager 服务仪表板
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[使用 StorSimple Manager 服务仪表板](storsimple-8000-service-dashboard.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 “StorSimple Manager 服务仪表板”页提供连接到 StorSimple Manager 服务的所有设备的摘要视图，突出显示那些需要系统管理员注意的内容。 本教程对“仪表板”页进行介绍，说明了仪表板内容和功能，并描述了可从此页执行的任务。
 
@@ -67,5 +70,5 @@ StorSimple Manager 服务仪表板显示以下信息：
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [排除 StorSimple 设备故障](storsimple-troubleshoot-operational-device.md)。
-* 了解如何使用 [StorSimple Manager 服务以管理 StorSimple 设备](storsimple-manager-service-administration.md) 的详细内容。
+* 详细了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
 

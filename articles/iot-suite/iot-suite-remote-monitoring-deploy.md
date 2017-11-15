@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: babcf20b58af1415e0e658e0a622cb056e34642b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 159397ba4fc93628acbf2bb53edf5eb88fd0cac7
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>部署远程监视预配置解决方案
 
@@ -39,13 +39,17 @@ ms.lasthandoff: 10/31/2017
 
 将预配置解决方案部署到 Azure 订阅之前，必须选择一些配置选项：
 
-1. 使用 Azure 帐户凭据登录 [azureiotsuite.com](https://www.azureiotsuite.com)，并单击“+”创建解决方案。
+1. 使用 Azure 帐户凭据登录 [azureiotsuite.com](https://www.azureiotsuite.com)，并单击“+”创建新的解决方案：
 
-1. 单击“远程监视”磁贴上的“选择”。
+    ![创建新的解决方案](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
+
+1. 单击“远程监视预览”磁贴上的“选择”。
+
+    ![选择远程监视](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
 1. 在“创建远程监视解决方案”页上，为远程监视预配置解决方案输入**解决方案名称**。
 
-1. 选择“基本”或“企业”部署。 如果部署解决方案是为了了解其工作原理或为了运行演示，请选择“基本”选项以将成本降到最低。
+1. 选择“基本”或“标准”部署。 如果部署解决方案的目的是要了解其工作原理或运行演示，请选择“基本”选项，使成本降到最低。
 
 1. 选择 **Java** 或 **.NET** 作为语言。 所有微服务都可用作 Java 或 .NET 实现。
 
@@ -53,7 +57,9 @@ ms.lasthandoff: 10/31/2017
 
 1. 选择要用于预配解决方案的“订阅”和“区域”。
 
-1. 单击“创建解决方案”  开始预配过程。 此过程通常需要数分钟的运行时间。
+1. 单击“创建解决方案”  开始预配过程。 此过程通常需要数分钟的运行时间：
+
+    ![远程监视解决方案详细信息](media/iot-suite-remote-monitoring-deploy/createform.png)
 
 有关故障排除的信息，请参阅 GitHub 存储库中的[部署失败时该如何操作](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails)。
 
@@ -61,12 +67,16 @@ ms.lasthandoff: 10/31/2017
 
 预配过程完成后，可以登录到远程监视预配置解决方案。
 
-1. 在“预配解决方案”页上，选择新的远程监视解决方案。
+1. 在“预配解决方案”页上，选择新的远程监视解决方案：
+
+    ![选择新的解决方案](media/iot-suite-remote-monitoring-deploy/choosenew.png)
 
 1. 可以在显示的面板中查看有关远程监视解决方案的信息。 选择“解决方案仪表板”连接到远程监视解决方案。
 
     > [!NOTE]
     > 使用完远程监视解决方案后，可以将其从此面板中删除。
+
+    ![解决方案面板](media/iot-suite-remote-monitoring-deploy/solutionpanel.png)
 
 1. 远程监视解决方案仪表板将显示在浏览器中。
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 8660bd09ea09e2c4c81da9c3ef66a1a448d3db43
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -279,7 +279,7 @@ SSH 实现容器和客户端之间的安全通信。 要让自定义 Docker 映�
     > [!NOTE]
     > 此配置不允许从外部建立到容器的连接。 只能通过 Kudu/SCM 站点使用 SSH。 Kudu/SCM 站点使用发布凭据进行身份验证。
 
-* [COPY](https://docs.docker.com/engine/reference/builder/#copy) 指令指示 Docker 引擎将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 /etc/ssh/ 目录。 配置文件应基于[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)。
+* [COPY](https://docs.docker.com/engine/reference/builder/#copy) 指令指示 Docker 引擎将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 /etc/ssh/ 目录。 配置文件应基于[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config)。
 
     ```docker
     COPY sshd_config /etc/ssh/
@@ -333,7 +333,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 
 ## <a name="use-a-private-image-from-docker-hub-optional"></a>使用 Docker 中心的专用映像（可选）
 
-在“创建 Web 应用”中，使用 `az webapp create` 命令指定 Docker 中心的映像。[](#create-a-web-app) 这完全适用于公共映像。 若要使用专用映像，需在 Azure Web 应用中配置 Docker 帐户 ID 和密码。
+在[创建 Web 应用](#create-a-web-app)中，使用 `az webapp create` 命令指定 Docker 中心的映像。 这完全适用于公共映像。 若要使用专用映像，需在 Azure Web 应用中配置 Docker 帐户 ID 和密码。
 
 在 Cloud Shell 中的 `az webapp create` 命令后附加 [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set)。 替换 \<app_name>，并使用 Docker ID 和密码替换 _<docker-id>_ 和 _<password>_。
 
@@ -493,7 +493,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-在 Cloud Shell 中运行 [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) 命令，将自定义 Docker 映像分配到 Web 应用。 替换 \<app_name>、\<docker-registry-server-url>、_<registry-username>_ 和 _<password>_。 对于 Azure 容器注册表，\<docker-registry-server-url> 采用 `https://<azure-container-registry-name>.azurecr.io` 格式。 
+在 Cloud Shell 中运行 [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) 命令，将自定义 Docker 映像分配到 Web 应用。 替换 *\<app_name>*、*\<docker-registry-server-url>*、_\<registry-username>_ 和 _\<password>_。 对于 Azure 容器注册表，\<docker-registry-server-url> 采用 `https://<azure-container-registry-name>.azurecr.io` 格式。 
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -534,4 +534,5 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 ## <a name="next-steps"></a>后续步骤
 
-[Linux 上的 Azure 应用服务常见问题解答](app-service-linux-faq.md)
+> [!div class="nextstepaction"]
+> [在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用](tutorial-docker-python-postgresql-app.md)

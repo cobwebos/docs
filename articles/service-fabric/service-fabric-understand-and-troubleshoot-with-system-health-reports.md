@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -55,6 +55,18 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 * **SourceId**：System.Federation
 * **属性**：以 Neighborhood 开头，包含节点信息。
 * **后续步骤**：调查邻近区域丢失原因；例如，检查群集节点之间的通信。
+
+### <a name="rebuild"></a>重新生成
+
+“故障转移管理器”服务 (FM) 管理有关群集节点的信息。 当 FM 失去数据并陷入数据丢失时，将无法保证它具有关于群集节点的最新信息。 在这种情况下，系统将经历“重新生成”，并且 System.FM 将从群集中的所有节点收集数据，以便重新生成其状态。 有时，由于网络或节点问题，重新生成可能会陷入卡滞或停滞。 “故障转移主管理器”服务 (FMM) 也可能会发生这种情况。 FMM 是一项无状态的系统服务，用于跟踪所有 FM 在群集中的位置。 FMM 主节点始终是 ID 最接近 0 的节点。 如果删除该节点，将触发“重新生成”。
+当出现上面任意一种情况，System.FM 或 System.FMM 将通过错误报表对其进行标记。 重新生成可能会卡滞在以下两个阶段之一：
+
+* 正在等待广播：FM/FMM 等待其他节点的广播消息回复。 后续步骤：调查节点之间是否存在网络连接问题。   
+* 正在等待节点：FM/FMM 已收到来自其他节点的广播答复，正在等待特定节点的答复。 运行状况报告列出 FM/FMM 正在等待发出响应的节点。 后续步骤：调查 FM/FMM 和列出节点之间的网络连接。 调查每个列出的节点是否存在其他可能问题。
+
+* SourceID：System.FM 或 System.FMM
+* 属性：重新生成。
+* 后续步骤：调查节点之间的网络连接，以及在运行状况报告的说明中列出的任何特定节点的状态。
 
 ## <a name="node-system-health-reports"></a>节点系统运行状况报告
 **System.FM** 表示故障转移管理器 (Failover Manager) 服务，是管理群集节点信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 节点实体随节点状态一起删除。 有关详细信息，请参阅 [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)。

@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/12/2017
 ---
-# v2.0 协议 — OAuth 2.0 授权代码流
+# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 — OAuth 2.0 授权代码流
 OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。  使用应用模型 v2.0 的 OAuth 2.0 实现，可以将登录名及 API 访问添加到移动应用和桌面应用。  本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
 
 > [!NOTE]
@@ -31,12 +31,12 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问�
 
 有关 OAuth 2.0 授权代码流的说明，请参阅 [OAuth 2.0 规范 4.1 节](http://tools.ietf.org/html/rfc6749)。  它用于在大部分的应用类型（包括 [Web 应用](active-directory-v2-flows.md#web-apps)和[本地安装应用](active-directory-v2-flows.md#mobile-and-native-apps)）中执行身份验证与授权。  它可让应用程序安全地获取 access_tokens，用于访问以 v2.0 终结点保护的资源。  
 
-## 协议图
+## <a name="protocol-diagram"></a>协议图
 从较高层面讲，本机/移动应用程序的整个身份验证流有点类似于：
 
 ![OAuth 授权代码流](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
-## 请求授权代码
+## <a name="request-an-authorization-code"></a>请求授权代码
 授权代码流始于客户端将用户定向到的 `/authorize` 终结点。  在这项请求中，客户端指示必须向用户获取的权限：
 
 ```
@@ -74,7 +74,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 用户经过身份验证并同意后，v2.0 终结点将使用 `response_mode` 参数中指定的方法，将响应返回到位于所指示的 `redirect_uri` 的应用。
 
-#### 成功的响应
+#### <a name="successful-response"></a>成功的响应
 使用 `response_mode=query` 的成功响应如下所示：
 
 ```
@@ -88,7 +88,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | 代码 |应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。  Authorization_codes 的生存期很短，通常约 10 分钟后即过期。 |
 | state |如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
 
-#### 错误响应
+#### <a name="error-response"></a>错误响应
 错误响应可能也发送到 `redirect_uri`，让应用可以适当地处理：
 
 ```
@@ -102,7 +102,7 @@ error=access_denied
 | error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
-#### 授权终结点错误的错误代码
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>授权终结点错误的错误代码
 下表描述了可在错误响应的 `error` 参数中返回的各个错误代码。
 
 | 错误代码 | 说明 | 客户端操作 |
@@ -115,7 +115,7 @@ error=access_denied
 | temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可以向用户说明，其响应由于临时状态而延迟。 |
 | invalid_resource |目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 |这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 
-## 请求访问令牌
+## <a name="request-an-access-token"></a>请求访问令牌
 已获取 authorization_code 并获得用户授权，现在可以将 `POST` 请求发送到 `/token` 终结点，兑换 `code` 以获取所需资源的 `access_token`：
 
 ```
@@ -148,7 +148,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |必填 |用于获取 authorization_code 的相同 redirect_uri 值。 |
 | client_secret |Web 应用所需 |在应用程序注册门户中为应用程序创建的应用程序机密。  其不应用于本机应用程序，因为设备无法可靠地存储 client_secrets。  Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 |
 
-#### 成功的响应
+#### <a name="successful-response"></a>成功的响应
 成功的令牌响应如下：
 
 ```
@@ -169,7 +169,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 作用域 |access_token 有效的范围。 |
 | refresh_token |OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。  Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。  有关更多详细信息，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。 <br> **注意：**仅当已请求 `offline_access` 作用域时提供。 |
 | id_token |无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。  有关 id_token 的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 <br> **注意：**仅当已请求 `openid` 作用域时提供。 |
-#### 错误响应
+#### <a name="error-response"></a>错误响应
 错误响应如下所示：
 
 ```
@@ -194,7 +194,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | trace_id |帮助诊断的请求唯一标识符。 |
 | correlation_id |帮助跨组件诊断的请求唯一标识符。 |
 
-#### 令牌终结点错误的错误代码
+#### <a name="error-codes-for-token-endpoint-errors"></a>令牌终结点错误的错误代码
 | 错误代码 | 说明 | 客户端操作 |
 | --- | --- | --- |
 | invalid_request |协议错误，例如，缺少必需的参数。 |修复并重新提交请求。 |
@@ -206,7 +206,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | interaction_required |请求需要用户交互。 例如，需要额外的身份验证步骤。 |使用同一资源重试请求。 |
 | temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可以向用户说明，其响应由于临时状态而延迟。 |
 
-## 使用访问令牌
+## <a name="use-the-access-token"></a>使用访问令牌
 已经成功获取 `access_token`，现在可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌。
 
 > [!TIP]
@@ -220,7 +220,7 @@ Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## 刷新访问令牌
+## <a name="refresh-the-access-token"></a>刷新访问令牌
 Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。  为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`：
 
 ```
@@ -253,7 +253,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |必填 |用于获取 authorization_code 的相同 redirect_uri 值。 |
 | client_secret |Web 应用所需 |在应用程序注册门户中为应用程序创建的应用程序机密。  其不应用于本机应用，因为设备无法可靠地存储 client_secrets。  Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 |
 
-#### 成功的响应
+#### <a name="successful-response"></a>成功的响应
 成功的令牌响应如下：
 
 ```
@@ -275,7 +275,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | refresh_token |新的 OAuth 2.0 刷新令牌。 应该将旧刷新令牌替换为新获取的这个刷新令牌，以确保刷新令牌的有效期尽可能地长。 <br> **注意：**仅当已请求 `offline_access` 作用域时提供。 |
 | id_token |无符号 JSON Web 令牌 (JWT)。 应用程序可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。  有关 id_token 的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 <br> **注意：**仅当已请求 `openid` 作用域时提供。 |
 
-#### 错误响应
+#### <a name="error-response"></a>错误响应
 ```
 {
   "error": "invalid_scope",

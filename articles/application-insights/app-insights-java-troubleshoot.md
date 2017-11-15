@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5a729139e122693b4199607919c876bda45fd4b5
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6b1cfa2b52e8e9e2b6a8ab87be6d4269cbe3f1cf
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -124,6 +124,13 @@ ms.lasthandoff: 11/01/2017
 **数据在门户中保留多长时间？是否安全？**
 
 请参阅[数据保留和隐私][data]。
+
+## <a name="debug-logging"></a>调试日志记录
+Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.microsoft.applicationinsights.core.dependencies.http` 下的 Application Insights 核心 jar 中重定位。 这将允许 Application Insights 处理一段基本代码中存在不同版本的同一 `org.apache.http` 的方案。 
+
+>[!NOTE]
+>如果为应用中的所有命名空间启用了调试级别日志记录，则所有执行中模块（包括重命名为 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`）都将遵循它。 Application Insights 将无法为这些调用应用筛选，因为进行日志调用的是 Apache 库。 调试级别日志记录将生成大量日志数据，因此不建议在实时生产实例中使用。
+
 
 ## <a name="next-steps"></a>后续步骤
 **我为 Java 服务器应用设置了 Application Insights。接下来还可以做些什么？**

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 5c33f08e54d522e0eea13a3e267f14f407fc59b6
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9d61f46070e6956c60f1135b98a9ebe71011b922
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -94,7 +94,7 @@ Microsoft 对任何 Azure 管理员角色（例如，全局管理员、支持管
 
 ## <a name="set-password-expiration-policies-in-azure-active-directory"></a>在 Azure Active Directory 中设置密码过期策略
 
-Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块将用户密码设置为永不过期。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 本指南适用于其他提供程序（如 Microsoft Intune 和 Office 365），这些提供程序也依赖于 Microsoft Azure Active Directory 提供标识和目录服务。
+Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块将用户密码设置为永不过期。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 本指南适用于其他提供程序（如 Microsoft Intune 和 Office 365），这些提供程序也依赖于 Microsoft Azure Active Directory 提供标识和目录服务。 这是策略中唯一可更改的部分。
 
 > [!NOTE]
 > 只能将未通过目录同步进行同步的用户帐户的密码配置为永不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)。
@@ -128,18 +128,21 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
    * 要将某一个用户的密码设置为永不过期，请使用用户主体名称 (UPN) 或该用户的用户 ID 运行以下 cmdlet：`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
    * 要将组织中所有用户的密码设置为永不过期，请运行以下 cmdlet：`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
+   > [!WARNING]
+   > 如果设置了 `-PasswordNeverExpires $true`，则密码仍将按 `pwdLastSet` 属性来计算期限。 这意味着如果将密码设置为永不过期，然后以 `pwdLastSet` 为参照过去了 90+ 天，此时更改了 `-PasswordNeverExpires $false`，则所有 `pwdLastSet` 大于 90 天的密码都需要在下次登录时进行更改。 此更改可能会影响很多用户。 
+
 ## <a name="next-steps"></a>后续步骤
 
 以下链接提供了有关使用 Azure AD 进行密码重置的其他信息
 
-* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [如何成功推出 SSPR？](active-directory-passwords-best-practices.md)
 * [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](active-directory-passwords-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](active-directory-passwords-data.md)
 * [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
 * [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
 * [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

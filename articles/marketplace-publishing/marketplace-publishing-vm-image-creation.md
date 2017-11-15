@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e37c55dbcc8de49aee32272b2f51b0792bef132c
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -290,6 +290,8 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
 创建的共享访问签名 URI 应符合以下要求：
 
+注意：以下说明仅适用于非托管磁盘，这是唯一支持的类型。
+
 * 为 VHD 生成共享访问签名 URI 时，“列出”和“读取”权限已足够使用。 请不要提供“写入”或“删除”访问权限。
 * 访问的持续时间应至少是三 (3) 周，从创建共享访问签名 URI 时算起。
 * 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
@@ -430,7 +432,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
 2.  下载后，请安装
 
-3.  使用以下代码创建一个 PowerShell 文件并将它保存在本地
+3.  使用下面的代码创建 PowerShell（或其他脚本可执行文件）文件并将其保存到本地
 
           $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
           azure storage container list vhds -c $conn
@@ -442,9 +444,9 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
     b. `<Storage Account Key>`：指定存储帐户密钥
 
-    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016
+    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：10-25-2016T00:00:00Z。
 
-    d.单击“下一步”。 `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 则值应为“11/02/2016”。
+    d.单击“下一步”。 `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 值应为 11/02/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：11-02-2016T00:00:00Z。
 
     以下是更新适当参数后的代码示例
 
@@ -452,7 +454,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
           azure storage container list vhds -c $conn
           azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
 
-4.  在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。
+4.  在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。 可以使用 OS 上可用的任何脚本编辑器。
 
 5.  运行脚本，脚本将提供容器级别访问权限所对应的 SAS URL
 
@@ -515,7 +517,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 |复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-
+|复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0（az 命令）时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>后续步骤
 填写完 SKU 详细信息后，可前进到 [Azure 应用商店市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，然后执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure 应用商店，使公众都可以看到和购买。  

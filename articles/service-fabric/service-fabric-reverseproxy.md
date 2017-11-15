@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 08/08/2017
+ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 3168a8129e2e73d7ab1de547679aabd10d8f7112
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f29860519d4dce76f0b7f866852484b93ce7b02
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
@@ -114,9 +114,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
 ## <a name="special-handling-for-port-sharing-services"></a>针对端口共享服务进行特殊处理
-无法访问某个服务时，Azure 应用程序网关会尝试重新解析服务地址以及重试请求。 这是应用程序网关的主要优势之一，因为客户端代码不需要实现自身的服务解析和解析循环。
-
-无法访问某个服务时，通常表示服务实例或副本已在其常规生命周期中转移到其他节点。 发生这种情况时，应用程序网关可能会收到网络连接错误，指出在原来解析过的地址上的某个终结点不再处于开放状态。
+无法访问某个服务时，Service Fabric 反向代理会尝试重新解析服务地址以及重试请求。 无法访问某个服务时，通常表示服务实例或副本已在其常规生命周期中转移到其他节点。 发生这种情况时，反向代理可能会收到网络连接错误，指出在原来解析过的地址上的某个终结点不再处于开放状态。
 
 不过，副本或服务实例可能会共享主机进程，在通过基于 http.sys 的 Web 服务器进行托管的情况下还可能会共享端口，这些 Web 服务器包括：
 
@@ -124,21 +122,21 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 * [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-在这样的情形下，可能会出现 Web 服务器出现在主机进程中并且能够响应请求，而被解析的服务实例或副本却再也不能在主机上使用的情况。 这种情况下，网关会从 Web 服务器收到 HTTP 404 响应。 因此，HTTP 404 具有两种不同的含义：
+在这样的情形下，可能会出现 Web 服务器出现在主机进程中并且能够响应请求，而被解析的服务实例或副本却再也不能在主机上使用的情况。 这种情况下，网关会从 Web 服务器收到 HTTP 404 响应。 因此，HTTP 404 响应可能有两种不同的含义：
 
 - 情况 #1：服务地址正确，但用户请求的资源不存在。
 - 情况 #2：服务地址不正确，且用户请求的资源可能在其他节点上。
 
-第一种情况是正常的 HTTP 404，属于用户错误。 在第二种情况中，用户请求的资源确实存在。 但是，应用程序网关找不到该资源，因为服务本身已移动。 应用程序网关需要重新解析地址，并重试请求。
+第一种情况是正常的 HTTP 404，属于用户错误。 在第二种情况中，用户请求的资源确实存在。 反向代理找不到该资源，因为服务本身已移动。 反向代理需要重新解析地址，并重试请求。
 
-因此，应用程序网关需要通过某种方式来区分这两种情况。 为了进行这种区分，需要从服务器获得提示。
+因此，反向代理需要通过某种方式来区分这两种情况。 为了进行这种区分，需要从服务器获得提示。
 
-* 默认情况下，应用程序网关假设第二种情况属于事实，因此会尝试重新解析和重新发出请求。
-* 若要向应用程序网关指示第一种情况属于事实，服务应返回以下 HTTP 响应标头：
+* 默认情况下，反向代理假设第二种情况属于事实，因此会尝试重新解析和重新发出请求。
+* 若要向反向代理指示第一种情况属于事实，服务应返回以下 HTTP 响应标头：
 
   `X-ServiceFabric : ResourceNotFound`
 
-此 HTTP 响应标头指示的是正常的 HTTP 404 情形，即所请求的资源不存在，因此应用程序网关不会尝试重新解析服务地址。
+此 HTTP 响应标头指示的是正常的 HTTP 404 情形，即所请求的资源不存在，因此反向代理不会尝试重新解析服务地址。
 
 ## <a name="setup-and-configuration"></a>安装和配置
 
@@ -150,9 +148,9 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 ### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>通过 Azure 资源管理器模板启用反向代理
 
-可以使用 [Azure Resource Manager 模板](service-fabric-cluster-creation-via-arm.md)在 Service Fabric 中为群集启用反向代理。
+可以使用 [Azure 资源管理器模板](service-fabric-cluster-creation-via-arm.md)在 Service Fabric 中为群集启用反向代理。
 
-请参阅[在安全群集中配置 HTTPS 反向代理](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster)中的 Azure Resource Manager 模板示例，使用证书配置安全反向代理并处理证书滚动更新。
+请参阅[在安全群集中配置 HTTPS 反向代理](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster)中的 Azure 资源管理器模板示例，使用证书配置安全反向代理并处理证书滚动更新。
 
 首先，获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Resource Manager 模板。 然后，可以使用以下步骤启用反向代理：
 
@@ -309,7 +307,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     }
   ```
 > [!NOTE]
-> 在现有群集上使用不同于群集证书的证书来启用反向代理时，请在启用反向代理之前在群集上安装反向代理证书并更新 ACL。 在执行步骤 1-4 开始部署以启用反向代理之前，请使用上述设置完成 [Azure Resource Manager 模板](service-fabric-cluster-creation-via-arm.md)部署。
+> 在现有群集上使用不同于群集证书的证书来启用反向代理时，请在启用反向代理之前在群集上安装反向代理证书并更新 ACL。 在执行步骤 1-4 开始部署以启用反向代理之前，请使用上述设置完成 [Azure 资源管理器模板](service-fabric-cluster-creation-via-arm.md)部署。
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [GitHub 上的示例项目](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)中服务之间的 HTTP 通信示例。

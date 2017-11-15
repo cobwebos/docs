@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 96925f251cf4984a11516a962740e19a7b9589dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 906450f75557820bb27762707c3328b08b23cccb
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
-了解 Azure 顾问及其主要功能，获取常见问题的答案。
+了解 Azure 顾问的主要功能，获取常见问题的答案。
 
 ## <a name="what-is-advisor"></a>顾问是什么？
 顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
@@ -32,43 +32,38 @@ ms.lasthandoff: 10/11/2017
 * 提高资源的性能、安全性和高可用性，同时确定机会减少总体 Azure 支出。
 * 通过提议的内联操作获取建议。
 
-可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，选择“浏览”，并滚动到“Azure 顾问”。 顾问仪表板显示针对所选订阅的个性化建议。 
+可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“更多服务”菜单中搜索它。
 
-建议分为四类： 
+顾问仪表板显示针对所有订阅的个性化建议。  可为特定的订阅和资源类型应用筛选器，以显示相关建议。  建议分为四类： 
 
 * **高可用性**：确保并提高关键业务应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
-
 * **安全性**：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
-
 * **性能**：提高应用程序的速度。 有关详细信息，请参阅[顾问性能建议](advisor-performance-recommendations.md)。
+* 成本：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
 
-* **成本**：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
-
-  ![顾问建议类型](./media/advisor-overview/advisor-all-tab-examples.png)
+  ![顾问建议类型](./media/advisor-overview/advisor-dashboard.png)
 
 > [!NOTE]
-> 若要访问顾问建议，必须先向顾问*注册订阅*。 订阅所有者启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是*一次性操作*。 注册订阅后，可通过订阅、资源组或特定资源的所有者、参与者或读者身份访问顾问建议。
+> 要为订阅使用 Azure 顾问，订阅所有者必须启动顾问仪表板。  此操作向顾问注册订阅。  从此时起，订阅的任何所有者、参与者或读者均可访问该订阅的顾问建议。 
 
-可以单击一个建议，了解有关它的详细信息。 还可了解可执行的操作，通过这些操作获取商机或解决问题。 
+可以单击“类别”以显示此类别建议的列表，并选择某个建议以了解相关详细信息。  还可了解可执行的操作，通过这些操作获取商机或解决问题。
 
-顾问通过内联操作或文档链接提供建议。 单击内联操作，转到“用户指南之旅”以实现该操作。 单击文档链接会转到介绍如何手动实现该操作的文档。 
+![顾问建议类别](./media/advisor-overview/advisor-ha-category-example.png) 
 
-顾问每小时更新建议。 如果不打算立即采取建议的操作，可将它推迟指定时间段或解除。 
+选择推荐的操作以实现该建议。  系统将打开一个简单界面以帮助你实现建议，或为你提供有助于实现建议的参考文档。  顾问确认建议已实现的时间可能长达一天。
+
+如果不打算立即采取建议的操作，可将它推迟指定时间段或解除。  如果不想接收某个特定订阅或资源组的相关建议，可通过配置，使顾问仅生成某些指定订阅和资源组的相关建议。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-do-i-access-advisor"></a>如何访问顾问？
-可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，选择“浏览”，并滚动到“Azure 顾问”。 顾问仪表板显示针对所选订阅的个性化建议。 
+可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“更多服务”菜单中搜索它。
 
-还可通过虚拟机资源边栏选项卡查看顾问建议。 选择虚拟机，并滚动到菜单中的顾问建议。 
+还可通过虚拟机资源接口查看顾问建议。 选择虚拟机，并滚动到菜单中的顾问建议。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>需要哪些权限才能访问顾问？
 
-若要访问顾问建议，必须先向顾问*注册订阅*。 订阅所有者启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是*一次性操作*。 注册订阅后，可通过订阅、资源组或特定资源的所有者、参与者或读者身份访问顾问建议。
-
-### <a name="how-often-are-advisor-recommendations-updated"></a>顾问建议更新的频率是多久？
-
-顾问建议每小时更新。
+要获顾问取针对订阅提出的建议，必须首先将订阅注册到顾问。 订阅所有者启动顾问仪表板即可注册订阅。 这是一次性操作。 注册订阅后，可以订阅的所有者、参与者或读者身份访问顾问建议。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>顾问为哪些资源提供建议？
 
@@ -76,7 +71,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>是否可以暂停或关闭建议？
 
-若要暂停或关闭建议，请单击“暂停”按钮或链接。 可指定暂停时间段或选择“从不”以关闭该建议。
+若要推迟或消除建议，请单击“推迟”链接。 可指定暂停时间段或选择“从不”以关闭该建议。
 
 ## <a name="next-steps"></a>后续步骤
 

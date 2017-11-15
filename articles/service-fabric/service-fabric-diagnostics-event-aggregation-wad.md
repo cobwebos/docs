@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2017
+ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5773361fdec4cb8ee54fa2856f6aa969d5dac4e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e417458a16a5f23d8b89cbf87ab2713fab352046
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -35,10 +35,10 @@ ms.lasthandoff: 10/11/2017
 以下工具可用于执行本文档中的某些操作：
 
 * [Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)（与 Azure 云服务相关，但包含有用的信息和示例）
-* [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+* [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager 客户端](https://github.com/projectkudu/ARMClient)
-* [Azure Resource Manager 模板](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure 资源管理器客户端](https://github.com/projectkudu/ARMClient)
+* [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="log-and-event-sources"></a>日志和事件源
 
@@ -52,21 +52,21 @@ ms.lasthandoff: 10/11/2017
  从你的应用程序和服务代码发出，使用 Visual Studio 模板提供的 EventSource 帮助器类写出的事件。 有关如何从应用程序写入 EventSource 日志的详细信息，请参阅[在本地计算机开发设置中监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。
 
 ## <a name="deploy-the-diagnostics-extension"></a>部署诊断扩展
-收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集的每个 VM 上。 诊断扩展将收集每个 VM 上的日志，并将它们上传到指定的存储帐户。 根据使用的是 Azure 门户还是 Azure Resource Manager，步骤稍有不同。 另外，步骤还会根据扩展是在创建群集时部署的，还是针对现有群集部署的，而有所不同。 让我们看看每个方案的步骤。
+收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集的每个 VM 上。 诊断扩展将收集每个 VM 上的日志，并将它们上传到指定的存储帐户。 根据使用的是 Azure 门户还是 Azure 资源管理器，步骤稍有不同。 另外，步骤还会根据扩展是在创建群集时部署的，还是针对现有群集部署的，而有所不同。 让我们看看每个方案的步骤。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>在通过 Azure 门户创建群集过程中部署诊断扩展
 若要在创建群集过程中将诊断扩展部署到群集中的 VM，需使用下图所示的“诊断设置”面板 - 请确保诊断设置为“打开”（默认设置）。 创建群集后，无法使用门户更改这些设置。
 
 ![门户中有关创建群集的 Azure 诊断设置](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics.png)
 
-使用门户创建群集时，强烈建议先下载模板，**然后再单击“确定”**创建群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板设置 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。 以后，需要通过模板进行更改，因为无法使用门户进行某些更改。
+使用门户创建群集时，强烈建议先下载模板，**然后再单击“确定”**创建群集。 有关详细信息，请参阅[使用 Azure 资源管理器模板设置 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。 以后，需要通过模板进行更改，因为无法使用门户进行某些更改。
 
-### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 在创建群集过程中部署诊断扩展
+### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>使用 Azure 资源管理器在创建群集过程中部署诊断扩展
 若要使用 Resource Manager 创建群集，需要在创建群集之前，将诊断配置 JSON 添加到整个 Resource Manager 模板。 我们将在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。 可以在 Azure 示例库中的以下位置找到该示例：[包含诊断 Resource Manager 模板示例的五节点群集](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)。
 
 若要查看 Resource Manager 模板中的诊断设置，请打开 azuredeploy.json 文件并搜索 **IaaSDiagnostics**。 若要使用此模板创建群集，请在上面的链接中选择“**部署到 Azure**”按钮。
 
-或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureRmResourceGroupDeployment` 命令，使用修改后的模板创建群集。 有关要在命令中传入哪些参数，请参阅以下代码。 有关如何使用 PowerShell 部署资源组的详细信息，请参阅[使用 Azure Resource Manager 模板部署资源组](../azure-resource-manager/resource-group-template-deploy.md)一文。
+或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureRmResourceGroupDeployment` 命令，使用修改后的模板创建群集。 有关要在命令中传入哪些参数，请参阅以下代码。 有关如何使用 PowerShell 部署资源组的详细信息，请参阅[使用 Azure 资源管理器模板部署资源组](../azure-resource-manager/resource-group-template-deploy.md)一文。
 
 ### <a name="deploy-the-diagnostics-extension-to-an-existing-cluster"></a>将诊断扩展部署到现有群集
 如果现有的群集上未部署诊断或者你要修改现有配置，可以添加或更新配置。 修改用于创建现有群集的 Resource Manager 模板，或者如前所述从门户下载该模板。 执行以下任务可修改 template.json 文件。
@@ -174,7 +174,7 @@ ms.lasthandoff: 10/11/2017
 
 从 5.4 版本的 Service Fabric 开始，可收集运行状况和加载指标事件。 这些事件反映了由系统或你的代码使用 [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) 或 [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) 等运行状况或加载报告 API 生成的事件。 这允许随时间聚合和查看系统运行状况，以及基于运行状况或加载事件进行警报。 要查看 Visual Studio 的诊断事件查看器中的这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000008”添加到 ETW 提供程序列表中。
 
-若要收集这些事件，请修改资源管理器模板，以包含
+若要收集群集中的事件，请将资源管理器模板的 WadCfg 中的 `scheduledTransferKeywordFilter` 修改为 `4611686018427387912`。
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -191,11 +191,15 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="collect-reverse-proxy-events"></a>收集反向代理事件
 
-从 5.7 版本的 Service Fabric 开始，可收集[反向代理](service-fabric-reverseproxy.md)事件。
-反向代理会将事件发到两个通道，其中一个包含反映请求处理故障的错误事件，而另一个包含关于在反向代理处理的所有请求的详细事件。 
+从 Service Fabric 的 5.7 版本开始，可通过数据和消息通道收集[反向代理](service-fabric-reverseproxy.md)事件。 
 
-1. 收集错误事件：若要查看 Visual Studio 的诊断事件查看器中的这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000010”添加到 ETW 提供程序列表中。
-若要收集 Azure 群集中的这些事件，请修改资源管理器模板，以包含
+反向代理通过主数据和消息通道仅推送错误事件 - 反映请求处理失败和关键问题。 详细通道包含与反向代理处理的所有请求有关的详细事件。 
+
+若要查看 Visual Studio 的诊断事件查看器中的错误事件，请将“Microsoft-ServiceFabric:4:0x4000000000000010”添加到 ETW 提供程序列表中。 对于所有请求遥测，将 ETW 提供程序列表中的 Microsoft-ServiceFabric 条目更新为“Microsoft-ServiceFabric:4:0x4000000000000020”。
+
+对于在 Azure 中运行的群集：
+
+若要在主数据和消息通道中选取跟踪，请将资源管理器模板的 WadCfg 中的 `scheduledTransferKeywordFilter` 值修改为 `4611686018427387920`。
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -210,8 +214,7 @@ ms.lasthandoff: 10/11/2017
     }
 ```
 
-2. 收集所有请求处理事件：在 Visual Studio 的诊断事件查看器中，将 ETW 提供程序列表中的 Microsoft ServiceFabric 条目更新为“Microsoft-ServiceFabric:4:0x4000000000000020”。
-对于 Azure Service Fabric 群集，请修改资源管理器模板，以包含
+若要收集所有请求处理事件，通过将资源管理器模板的 WadCfg 中的 `scheduledTransferKeywordFilter` 值更改为 `4611686018427387936`，可开启数据和消息详细通道。
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -225,9 +228,8 @@ ms.lasthandoff: 10/11/2017
       }
     }
 ```
-> 建议谨慎启用收集此通道中的事件，因为这将收集通过反向代理的所有流量，且可快速消耗存储容量。
 
-对于 Azure Service Fabric 群集，所有节点中的事件均在 SystemEventTable 中进行收集并聚合。
+启用收集来自此详细通道的事件会快速生成大量跟踪并消耗存储容量。 请只有在绝对必要的情况下才开启。
 有关详细的反向代理事件疑难解答，请参阅[反向代理诊断指南](service-fabric-reverse-proxy-diagnostics.md)。
 
 ## <a name="collect-from-new-eventsource-channels"></a>从新的 EventSource 通道收集
@@ -248,31 +250,13 @@ ms.lasthandoff: 10/11/2017
         }
 ```
 
-若要收集性能计数器或事件日志，请参考[使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中提供的示例修改 Resource Manager 模板。 然后重新发布 Resource Manager 模板。
+若要收集性能计数器或事件日志，请参考[使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中提供的示例修改资源管理器模板。 然后重新发布 Resource Manager 模板。
 
 ## <a name="collect-performance-counters"></a>收集性能计数器
 
-若要从群集中收集性能指标，请将性能计数器添加到群集中的 Resource Manager 模板“WadCfg > DiagnosticMonitorConfiguration”。 对于我们建议收集的性能计数器，请参阅 [Service Fabric 性能计数器](service-fabric-diagnostics-event-generation-perf.md)。
-
-例如，我们将在此处设置一个性能计数器，每隔 15 秒采样（可更改并遵循“PT \<时间>\<单位>”格式，例如，PT3M 每隔 3 分钟采样），每分钟传输到适当的存储表中。
-
-  ```json
-  "PerformanceCounters": {
-      "scheduledTransferPeriod": "PT1M",
-      "PerformanceCounterConfiguration": [
-          {
-              "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-              "sampleRate": "PT15S",
-              "unit": "Percent",
-              "annotation": [
-              ],
-              "sinks": ""
-          }
-      ]
-  }
-  ```
+若要从群集中收集性能指标，请将性能计数器添加到群集中的 Resource Manager 模板“WadCfg > DiagnosticMonitorConfiguration”。 有关修改 `WadCfg` 以收集特定性能计数器的步骤，请参阅[通过 WAD 监控性能](service-fabric-diagnostics-perf-wad.md)。 对于我们建议收集的性能计数器列表，请参阅 [Service Fabric 性能计数器](service-fabric-diagnostics-event-generation-perf.md)。
   
-如果使用 Application Insights 接收器（如下面部分所述）并想要这些指标显示在 Application Insights 中，请确保将接收器名称添加到“sinks”部分，如上所示。 此外，请考虑创建一个单独的表来接受性能计数器的数据，使其不会被已启用的来自他日志通道的数据挤出。
+如果使用 Application Insights 接收器（如下面部分所述）并想要这些指标显示在 Application Insights 中，请确保将接收器名称添加到“sinks”部分，如上所示。 这将自动向你的 Application Insights 资源发送单独配置的性能计数器。
 
 
 ## <a name="send-logs-to-application-insights"></a>将日志发送到 Application Insights

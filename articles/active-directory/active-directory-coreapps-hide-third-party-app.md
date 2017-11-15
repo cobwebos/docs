@@ -15,20 +15,20 @@ ms.date: 10/11/2017
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 28b6885e7e74a44f4d00f4a804a93e74f6eec685
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 976cbb1341493186b9996d250ebca8f2f3688fdf
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="hide-a-third-party-application-from-users-experience-in-azure-active-directory"></a>使第三方应用程序不出现在用户在 Azure Active Directory 中的体验中
 
 如果有不希望显示在用户的访问面板或 Office 365 启动器上的第三方应用程序（不是由 Microsoft 发布的应用），可使用一个选项隐藏此应用磁贴。 隐藏该应用后，用户仍对该应用具有权限，但不会看到该应用显示在其应用启动器上。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。
 
-## <a name="hiding-a-users-access-panel"></a>隐藏用户的访问面板
-使用以下步骤隐藏用户的访问面板和 Office 365 应用启动器
+## <a name="hiding-a-third-party-app-from-a-users-experience"></a>从用户的体验中隐藏第三方应用
+使用以下步骤在用户的访问面板和 Office 365 应用启动器中隐藏第三方应用
 
-### <a name="how-do-i-hide-an-app-from-users-access-panel-and-o365-app-launchers"></a>如何使应用不显示在用户的访问面板和 O365 应用启动器上？
+### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>如何使第三方应用不显示在用户的访问面板和 O365 应用启动器上？
 
 1.  使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2.  选择“更多服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。

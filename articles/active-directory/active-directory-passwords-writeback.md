@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9733774570f3148e0092f42c1321b4fac1c80b54
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
@@ -91,6 +91,8 @@ ms.lasthandoff: 10/31/2017
    ![在 Azure AD Connect 中启用密码写回][Writeback]
 7. 在“准备配置”屏幕上，单击“配置”并等待进程完成。
 8. 看到配置完成后，单击“退出”
+
+如需了解有关密码写回的故障排除任务，请参阅故障排除文章中的[密码写回疑难解答](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback)部分。
 
 ## <a name="active-directory-permissions"></a>Active Directory 权限
 
@@ -212,15 +214,15 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [如何成功推出 SSPR？](active-directory-passwords-best-practices.md)
 * [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](active-directory-passwords-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](active-directory-passwords-data.md)
 * [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
 * [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 

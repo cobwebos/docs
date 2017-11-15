@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: tutorial
-ms.date: 06/06/2017
+ms.date: 11/03/2017
 ms.custom: mvc
-ms.openlocfilehash: 92ae809646cb956b0b7cb71cf2a21610bb2d610f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f38484e000b05a57cad9bc95abb255414d0162
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>设计第一个 Azure Database for MySQL 数据库
 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 使用 Azure 门户可以轻松管理服务器和设计数据库。
@@ -41,7 +41,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 2. 单击“Azure Database for MySQL”磁贴，然后单击“创建”。
 
-在示例中，用以下信息填写 Azure Database for MySQL 窗体：
+在此示例中，用以下信息填写 Azure Database for MySQL 窗体：
 
 | **设置** | 建议的值 | **字段说明** |
 |---|---|---|
@@ -98,7 +98,7 @@ USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>在数据库中创建表
-现已介绍了如何连接 Azure Database for MySQL 数据库，接下来将演示如何完成一些基本任务。
+现已介绍了如何连接 Azure Database for MySQL 数据库，接下来你可以完成一些基本任务：
 
 首先，创建表并加载一些数据。 创建一个存储清单信息的表。
 ```sql
@@ -110,7 +110,7 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>将数据加载到表
-创建表后，可以向其中插入一些数据。 在打开的命令提示窗口中，运行以下查询来插入几行数据。
+表格创建好后，可向其插入一些数据。 在打开的命令提示窗口中，运行以下查询来插入几行数据。
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

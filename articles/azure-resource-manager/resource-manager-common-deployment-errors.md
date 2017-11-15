@@ -1,6 +1,6 @@
 ---
 title: "排查常见的 Azure 部署错误 | Microsoft Docs"
-description: "说明如何解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误。"
+description: "说明如何解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误。"
 services: azure-resource-manager
 documentationcenter: 
 tags: top-support-issue
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: d6dc0ffac1a3e688f93af903f51f798270b63711
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebb469289afc36b08c90ae9839f5bdba41cd90b
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
+# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
-本主题介绍我们可能会遇到的一些常见 Azure 部署错误，并提供有关如何解决这些错误的信息。 如果找不到部署错误的错误代码，请参阅[查找错误代码](#find-error-code)。
+本文介绍我们可能会遇到的一些常见 Azure 部署错误，并提供有关如何解决这些错误的信息。 如果找不到部署错误的错误代码，请参阅[查找错误代码](#find-error-code)。
 
 ## <a name="error-codes"></a>错误代码
 
@@ -61,6 +61,7 @@ ms.lasthandoff: 10/11/2017
 | PrivateIPAddressNotInSubnet | 指定的 IP 地址超出子网范围。 更改 IP 地址，使之在子网范围内。 | [IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PropertyChangeNotAllowed | 无法在已部署的资源上更改某些属性。 更新资源时，请限制为对允许的属性进行更改。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | 订阅包含阻止尝试在部署期间执行的操作的资源策略。 查找阻止该操作的策略。 如果可能，请修改部署，以满足策略中的限制。 | [解决策略问题](resource-manager-policy-requestdisallowedbypolicy-error.md) |
+| ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等待删除操作完成。 | |
 | ResourceGroupNotFound | 检查部署的目标资源组的名称。 该名称必须已在订阅中存在。 检查订阅上下文。 | [Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | 部署引用了一个无法解析的资源。 验证所用的 **reference** 函数是否包含方案所需的参数。 | [解决引用问题](resource-manager-not-found-errors.md) |

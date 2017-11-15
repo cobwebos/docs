@@ -20,7 +20,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# 参考 - 选择通信协议
+# <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
 IoT 中心允许设备使用以下协议进行设备端通信：
 
@@ -51,7 +51,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 > [!WARNING]
 > 使用 HTTPS 时，每台设备应每 25 分钟或更长时间轮询一次从云到设备的消息。 但在开发期间，可按低于 25 分钟的更高频率进行轮询。
 
-## 端口号
+## <a name="port-numbers"></a>端口号
 
 设备可在 Azure 中使用各种协议来与 IoT 中心通信。 通常，选择的协议根据解决方案的具体要求而定。 下表列出了必须打开的、使设备能够使用特定协议的出站端口：
 
@@ -66,7 +66,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 在 Azure 区域创建 IoT 中心后，该 IoT 中心会在生存期内保留同一 IP 地址。 但为保证服务质量，如果 Microsoft 调整 IoT 中心的大小，则向其分配新的 IP 地址。
 
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 若要深入了解 IoT 中心如何实现 MQTT 协议，请参阅[使用 MQTT 协议与 IoT 中心通信][lnk-mqtt-support]。
 

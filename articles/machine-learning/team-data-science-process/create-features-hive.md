@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 0c8c2ab8c7daceb13fd39d2a109148a40430d59a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a967a8fccfe0dc051a7cf3a4a2fcefad2a2f187f
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入的 Hive 用户定义函数 (UDFs) 以及为其提供的脚本。
@@ -37,18 +37,18 @@ ms.lasthandoff: 10/11/2017
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 * 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。
 * 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](move-hive-tables.md)，先将数据上传到 Hive 表。
-* 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md#headnode)。
+* 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)。
 
 ## <a name="hive-featureengineering"></a>功能生成
 在本部分中，介绍使用 Hive 查询可用其生成功能的方法的几个示例。 如果已生成其他功能，则可将其作为列添加到现有表，或创建具有这些其他功能和主密钥的新表，新表之后可联接到原始表。 以下是显示的示例：
 
-1. [基于功能生成的频率](#hive-frequencyfeature)
+1. [基于频率的功能生成](#hive-frequencyfeature)
 2. [二元分类中分类变量的风险](#hive-riskfeature)
 3. [从日期时间字段中提取功能](#hive-datefeatures)
 4. [从文本字段中提取功能](#hive-textfeatures)
 5. [计算 GPS 坐标之间的距离](#hive-gpsdistance)
 
-### <a name="hive-frequencyfeature"></a>基于频率生成功能
+### <a name="hive-frequencyfeature"></a>基于频率的功能生成
 通常用于计算分类变量级别的频率，或多个分类变量中某些组合级别的频率。 用户可使用以下脚本计算这些频率：
 
         select
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ### <a name="hive-riskfeature"></a>二元分类中分类变量的风险
-在二元分类中，如果使用的模型只采用数字特征，则需要将非数字分类变量装换为数字特征。 通过使用数字风险替代非数字级别来完成此操作。 在此部分中，将演示计算分类变量的风险值（对数几率）的某些泛型 Hive 查询。
+在二元分类中，如果使用的模型只采用数字特征，则需要将非数字分类变量装换为数字特征。 通过使用数字风险替代非数字级别来完成此操作。 此部分将演示计算分类变量的风险值（对数几率）的某些泛型 Hive 查询。
 
         set smooth_param1=1;
         set smooth_param2=20;
@@ -83,12 +83,12 @@ ms.lasthandoff: 10/11/2017
             group by <column_name1>, <column_name2>
             )b
 
-在此示例中，将变量 `smooth_param1` 和 `smooth_param2` 设置为平滑处理数据中计算的风险值。 风险值必须介于 -Inf 和 Inf 之间。 风险值 > 0 指示目标值等于 1 的概率大于 0.5。
+在此示例中，将变量 `smooth_param1` 和 `smooth_param2` 设置为平滑处理数据中计算的风险值。 风险值必须介于 -Inf 和 Inf 之间。 风险值 > 0，指示目标值等于 1 的概率大于 0.5。
 
 计算风险表之后，用户可通过将其联接到风险表来将风险值分配到表。 前面部分中提供了 Hive 联接查询。
 
 ### <a name="hive-datefeatures"></a>从日期时间字段中提取功能
-Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认日期时间格式为“yyyy-MM-dd 00:00:00”（例如，“1970-01-01 12:21:32”）。 在本部分中，将演示从日期时间字段中提取某月的某天、某月的示例，以及将日期时间字符串转换为某种格式而不是使用默认日期时间字符串格式的其他示例。
+Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认日期时间格式为“yyyy-MM-dd 00:00:00”（例如，“1970-01-01 12:21:32”）。 本部分将演示从日期时间字段中提取某月、某月中某天的示例，以及将非默认格式的日期时间字符串转换为默认格式的日期时间字符串。
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
@@ -114,7 +114,7 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         from <databasename>.<tablename>;
 
 ### <a name="hive-gpsdistance"></a>计算 GPS 坐标集之间的距离
-本部分中给出的查询可直接应用于纽约出租车行程数据。 此查询旨在演示如何应用 Hive 中的嵌入数学函数以生成功能。
+本部分中给出的查询可直接应用于纽约出租车行程数据。 此查询旨在演示如何应用 Hive 中嵌入的数学函数来生成功能。
 
 此查询中使用的字段为提取和减少位置的 GPS 坐标，名为*提取\_经度*、*提取\_纬度*、*减少\_经度*、*减少\_纬度*。 计算提取和减少坐标之间直接距离的查询为：
 
@@ -143,20 +143,20 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
 ## <a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，将讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
 
-1. **Java 堆空间**：对于涉及联接大数据集或处理长记录的查询，一个常见错误为“堆空间不足”。 可以通过将参数 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 设置为所需的值来对其进行优化。 下面是一个示例：
+1. Java 堆空间：对于涉及联接大数据集或处理长记录的查询，一个常见错误为“堆空间不足”。 可以通过将参数 *mapreduce.map.java.opts* 和 *mapreduce.task.io.sort.mb* 设置为所需的值来对其进行优化。 下面是一个示例：
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     此参数会将 4GB 内存分配到 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
 
-1. **DFS 块大小**：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块大小为 128MB，则任何小于或不大于 128MB 的数据将存储在单个块中，而大于 128MB 的数据则会分配其他块。 选择非常小的块大小会导致 Hadoop 中开销变大，因为名称节点必须处理更多查找属于文件的相关块的请求。 处理千兆字节（或更大）数据的推荐设置为：
+1. DFS 块大小：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块大小为 128MB，则任何小于或不大于 128MB 的数据将存储在单个块中，而大于 128MB 的数据则会分配其他块。 选择非常小的块大小会导致 Hadoop 中开销变大，因为名称节点必须处理更多查找属于文件的相关块的请求。 处理千兆字节（或更大）数据的推荐设置为：
    
         set dfs.block.size=128m;
-2. **优化 Hive 中的联接操作**：映射/归纳框架中的联接操作通常发生在归纳阶段，有时，可通过规划映射阶段（也称为“映射联接”）中的联接来实现巨大的提升。 若要指导 Hive 在可能时执行此操作，可以设置：
+2. 优化 Hive 中的联接操作：映射/归约框架中的联接操作通常发生在归约阶段，有时可通过规划映射阶段（也称为“映射联接”）中的联接来实现巨大的提升。 若要指导 Hive 尽可能执行此操作，请设置：
    
         set hive.auto.convert.join=true;
-3. **将映射器数指定为 Hive**：虽然 Hadoop 允许用户设置归纳器数量，但是映射器数量通常不由用户设置。 允许对此数量进行一定程度控制的技巧是，选择 Hadoop 变量 *mapred.min.split.size* 和 *mapred.max.split.size*，因为每个映射任务的大小由以下内容决定：
+3. 将映射器数指定为 Hive：虽然 Hadoop 允许用户设置归约器数量，但是映射器数量通常不由用户设置。 允许对此数量在一定程度进行控制的技巧是，选择 Hadoop 变量 mapred.min.split.size 和 mapred.max.split.size，因为每个映射任务的大小由以下内容决定：
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 64bd0a3ec0598fd7f78e93e510f0a6443f3edbd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1c59b558587fa70989ce8a5028c2ed132ce4f74b
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Data Lake Store 作为默认存储的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -112,7 +112,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>对 Data Lake Store 设置基于角色访问的身份验证
-每个 Azure 订阅都与一个 Azure AD 实体相关联。 使用 Azure 门户或 Azure Resource Manager API 访问订阅资源的用户和服务首先必须使用 Azure AD 进行身份验证。 通过在 Azure 资源上为这些用户和服务分配相应角色，向其授予访问权限。 对于服务，服务主体用于标识 Azure AD 中的服务。
+每个 Azure 订阅都与一个 Azure AD 实体相关联。 使用 Azure 门户或 Azure 资源管理器 API 访问订阅资源的用户和服务首先必须使用 Azure AD 进行身份验证。 通过在 Azure 资源上为这些用户和服务分配相应角色，向其授予访问权限。 对于服务，服务主体用于标识 Azure AD 中的服务。
 
 本部分说明如何向应用程序服务（例如 HDInsight）授予对 Azure 资源（前面创建的 Data Lake Store 帐户）的访问权限。 为此，可为应用程序创建一个服务主体，并通过 PowerShell 向其分配角色。
 
@@ -250,6 +250,7 @@ ms.lasthandoff: 10/11/2017
 可以使用 `hdfs dfs -put` 命令将一些文件上传到 Data Lake Store，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
 ## <a name="see-also"></a>另请参阅
+* [配合使用 Data Lake Store 和 Azure HDInsight 群集](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure 门户：创建使用 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

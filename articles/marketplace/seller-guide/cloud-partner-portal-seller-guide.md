@@ -1,30 +1,35 @@
 ---
 title: "Azure 应用商店卖家指南 | Microsoft Docs"
-description: "本指南适用于想要向 IT 专业人员和开发人员销售 Azure 认证虚拟机映像的独立软件供应商 (ISV) 业务用户和产品经理。"
+description: "本指南适用于想要向 IT 专业人员和开发人员销售 Azure 认证虚拟机映像和托管应用程序的独立软件供应商 (ISV) 业务用户和产品经理。"
 documentationcenter: 
-author: rupeshazure
-manager: hamidm
+author: divacc
+manager: prkumar
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: rupesk@microsoft.com
-ms.robots: NOINDEX, NOFOLLOW
-ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.author: divacc@microsoft.com
+ms.openlocfilehash: 0985c7da429202cc6003df73c6ca17714b5a1287
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure 应用商店卖家指南
 
-欢迎使用 Azure 应用商店卖家指南。 本指南适用于想要向 IT 专业人员和开发人员销售 Azure 认证虚拟机映像的独立软件供应商 (ISV) 业务用户和产品经理。 [应用商店](https://azuremarketplace.microsoft.com/)能够为世界各地的 Azure 客户提供极佳的产品市场宣传和曝光度。
-
+欢迎使用 Azure 应用商店卖家指南。 本指南专为想要向 IT 专业人员和开发人员销售 Azure 认证虚拟机映像和托管应用程序的独立软件供应商 (ISV) 业务用户和产品经理而设。 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 能够为世界各地的 Azure 客户提供极佳的产品市场宣传和曝光度。
 
 > [!NOTE]
-> 如果有意向业务用户销售服务型软件 (SaaS) 成品，可以研究要使用哪种选项将产品列在 [AppSource](https://appsource.microsoft.com) 中。
+> 如果想要销售[托管应用程序](https://docs.microsoft.com/en-us/azure/managed-applications/overview)，应按照说明将其在 Azure Marketplace 的[此处](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app)列出。
+
+> [!NOTE]
+> 如果有意向 IT 专业人员和开发人员出售软件即服务 (SaaS) 成品，可联系 saas-on-amp@microsoft.com 详细了解相关选择。
+
+> [!NOTE]
+> 如果有意向业务用户销售服务型软件 (SaaS) 成品，可以研究要使用哪种选项在 [AppSource](https://appsource.microsoft.com) 列出产品。
+
 
 完成本指南后，就会知道可在何处找到有关这些主题的详细信息：
 
@@ -43,9 +48,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="whats-the-azure-marketplace"></a>什么是 Azure 应用商店？
 
-Azure 应用商店是一个在线应用程序和服务市场，其中各种规模的 ISV（从创业公司到大型企业）可向全球 Azure 客户提供解决方案。 应用商店允许 Azure 发布者向希望在 Azure 中快速开发基于云的应用程序和移动解决方案的其他专业人员分发和销售虚拟机映像。 应用商店支持多种多样的产品，从支持数据处理的端到端数据分析应用程序、数据存储、分析层到分层电子商务应用（数据、服务和 Internet）。
+Azure 应用商店是一个在线应用程序和服务市场，其中各种规模的 ISV（从创业公司到大型企业）可向全球 Azure 客户提供解决方案。 Marketplace 允许 Azure 发布者向希望在 Azure 中快速开发基于云的应用程序和移动解决方案的其他专业人员分发和销售虚拟机映像、托管应用程序和 SaaS 应用程序。 Azure Marketplace 支持多种多样的产品，从支持数据处理的端到端数据分析应用程序、数据存储、分析层到分层电子商务应用（数据、服务和 Internet）。
 
-云客户在搜索符合独特需求的解决方案时面临着多种挑战。 应用商店提供一种方法来解决这些挑战，可让客户与创新的 ISV 解决方案互动，如下表中所述：
+云客户在搜索符合独特需求的解决方案时面临着多种挑战。 Azure Marketplace 提供一种方法来解决这些挑战，可让客户与创新的 ISV 解决方案互动，如下表中所述：
 
 | 客户需求 | Azure 应用商店解决方案 |
 | --- | --- |
@@ -54,14 +59,14 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 | 需要对第三方应用程序和服务使用可缩放的部署机制 | 允许对第三方应用程序和服务创建和配置可缩放的部署 |
 | 需要使用新的应用程序与服务来集成和使用现有解决方案 | 轻松地将第三方应用程序和服务与 Azure 上的现有解决方案集成 |
 
-应用商店为全球客户打造了优质、多样化和强健的 Azure 合作伙伴生态系统。 主要优势包括：
+Azure Marketplace 为全球客户打造了优质、多样化和强健的 Azure 合作伙伴生态系统。 主要优势包括：
 
 - 在统一的位置供应 Microsoft 与合作伙伴开发的基于 Azure 的产品。
 - 产品超过 5,000 个。
 - 集成的平台体验。
 - 简化的配置、部署和管理。
 
-## <a name="is-the-marketplace-right-for-my-business"></a>应用商店是否适合我的业务？
+## <a name="is-azure-marketplace-right-for-my-business"></a>Azure Marketplace 是否适合我的业务？
 
 此时此刻，可能会疑惑，Azure 应用商店是否适合业务。 如果适合，它能够带来哪种优势？ 应用商店创造了新的销售机会：
 
@@ -74,23 +79,32 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 应用商店面向多种客户群。 此外，Azure 具有所有云提供商中增长最快的客户群之一。 可以接触 IT 专业人员和开发人员，这些人员涉及多个行业，就职于公共和私营部门，服务的公司从初创企业横跨到大型企业。
 
-## <a name="how-does-the-marketplace-work"></a>如何使用应用商店？
+## <a name="how-does-marketplace-work"></a>如何使用 Marketplace？
 
-操作非常容易。 获得批准后，即可创建 Azure 认证的虚拟机映像并将其发布到应用商店。 在这里，Azure 客户几分钟内即可查找、购买并部署产品。 更棒的是，客户可以放心部署解决方案。 他们知道配置的环境可在 Azure 上顺利运行，并且基础结构在几分钟内就能启动。
+操作非常容易。 获得批准后，即可创建 Azure 认证的虚拟机映像或托管应用程序并将其发布到 Marketplace。 在这里，Azure 客户几分钟内即可查找、购买并部署产品。 更棒的是，客户可以放心部署解决方案。 他们知道配置的环境可在 Azure 上顺利运行，并且基础结构在几分钟内就能启动。
 
-云合作伙伴门户是在应用商店中创建产品的中心。 虚拟机映像中已预先配置完整安装的操作系统以及一个或多个应用程序。 若要认证映像使其随时可供发布，必须满足某些先决条件。 详情请参见下一节。
+云合作伙伴门户是在应用商店中创建产品的中心。 若要认证产品/服务，使其随时可供发布，必须满足某些先决条件。 详情请参见下一节。
 
 
 ## <a name="whats-next"></a>后续步骤
 
-可能认为 Azure 应用商店确实很适合产品。 那么，如何开始？ 本部分旨在介绍如何按以下方法在应用商店（图 1）中准备和运行： 
+可能认为 Azure 应用商店确实很适合产品。 那么，如何开始？ 本部分重点介绍在 Marketplace（图 1）上启动并运行虚拟机映像的方法： 
 * 通过 Azure 认证。
 * 获取销售产品的批准。
-* 在云合作伙伴门户中创建产品。 
+* 通过云合作伙伴门户创建并发布产品/服务。 
 
 ![在 Azure 应用商店中销售产品的过程](./media/cloud-partner-portal-seller-guide/processforselling.png)
 
 图 1：在 Azure 应用商店中销售产品的过程
+
+根据计划发布的工作负载（虚拟机或托管应用程序），按照不同过程来发布产品/服务。 以下内容主要介绍虚拟机产品/服务的发布。
+
+> [!NOTE]
+> 如果想要销售[托管应用程序](https://docs.microsoft.com/en-us/azure/managed-applications/overview)，应按照说明将其在 Azure Marketplace 的[此处](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app)列出。
+
+> [!NOTE]
+> 如果有意向 IT 专业人员和开发人员出售软件即服务 (SaaS) 成品，可联系 saas-on-amp@microsoft.com 详细了解相关选择。
+
 
 首先，需要满足一系列技术和非技术先决条件，并准备好虚拟机映像。 然后，指定产品的名称并注册为卖方。 最后，添加市场营销内容并提交发布。 在应用商店中推出产品之前，可以先在预览/过渡环境中检查产品。
 
@@ -103,6 +117,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 ![通过 Azure 认证规定的要求](./media/cloud-partner-portal-seller-guide/azurecertified.png)
 
 图 2：通过 Azure 认证规定的要求
+
 
 ### <a name="technical-prerequisites"></a>技术先决条件
 
@@ -147,13 +162,15 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 ## <a name="how-do-i-nominate-my-product-and-get-approved"></a>如何指定产品名称并获得批准？
 
-现在，可以请求批准在应用商店中销售产品（图 3）。 在 Microsoft 服务中可以轻松指定产品的名称、完成发布过程并注册为卖方。
+现在，可以请求批准在应用商店中销售产品（图 3）。 
+
+在 Microsoft 服务中可以轻松指定产品的名称、完成发布过程并注册为卖方。 你将经历不同的提名流程，具体取决于计划发布的工作负载（虚拟机或托管应用程序）。
 
 ![获得在 Azure 应用商店中销售产品的批准](./media/cloud-partner-portal-seller-guide/gettingapprovedsteps.png)
 
 图 3：获得在 Azure 应用商店中销售产品的批准
 
-获得批准的第一个步骤是在注册和发布之前为产品[命名](https://createopportunity.azurewebsites.net/)。 批准最长需要 3 个工作日。
+若要发布虚拟机产品/服务，可在[此处](https://createopportunity.azurewebsites.net/)提名你的产品。 批准最长需要 3 个工作日。
 
 获得批准后，将收到以下信息：
 
@@ -172,17 +189,19 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 ## <a name="what-about-best-practices"></a>最佳做法是什么？
 
-下面一些工具和最佳做法有助于实现作为 Marketplace 卖方的最大价值。
+下面的一些最佳做法有助于 Marketplace 上的卖家获取最大价值。
 
 ### <a name="azure-test-drives"></a>Azure 体验版
 
 [Azure 体验版](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/test-drives?page=1)是向潜在客户展示产品，并让他们在购买之前试用的极佳方式。 体验版可帮助提高转换率和发展潜在客户。
 
-提供联系信息后，客户便可访问预生成的体验版。 他们可在真实的应用场景中亲自手动、自行试用产品的主要功能和优势。
+提供联系信息后，客户便可访问预生成的体验版。 他们可在真实的应用场景中亲自手动、自行试用产品的主要功能和优势。 还有更好的？ 发布与产品/服务相关的体验版，你可获得多达 36％ 的潜在顾客。
 
-目前，只能在经典发布门户中发布产品的体验版。 若要了解详细信息，请转到[如何发布新的体验版](https://github.com/Azure/AzureTestDrive/wiki)文档。
+在你加入时，我们会为你提供在云合作伙伴门户发布体验版所需的所有指导。 详细了解 [Azure 体验版](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)。
 
-详细了解 [Azure 体验版](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)。
+###<a name="lead-generation"></a>开发潜在顾客
+
+在 Azure Marketplace 上列出产品的一大好处是，对于对你的产品感兴趣或已经部署你的产品的客户，我们会将相关的高质量线索发送给你。 此外，我们会将这些线索直接发送到你的 CRM，以便你可以快速采取行动并跟进，创造更多的商机，达成更多的交易。 销售线索生成的整合需要几分钟时间，并在云合作伙伴门户的发布过程中完成。
 
 ### <a name="go-to-market-checklist"></a>上市查检表
 
@@ -198,21 +217,20 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 
 ## <a name="what-about-reports"></a>如何使用报告？
 
-应用商店会提供订单、使用情况和客户相关报告，这些报告可通过应用商店的[发布者报告门户](https://reports.azure.com)进行访问。 除了有帮助的见解和分析外，可导航的表格中提供了原始数据，且此数据可下载为 CSV 或 XLS 文件。
+Marketplace 会提供与订单、使用情况和客户相关的报告，可通过云合作伙伴门户的“见解”部分访问这些报告。 除了有帮助的见解和分析外，可导航的表格中提供了原始数据，且此数据可下载为 CSV 或 XLS 文件。
 
-[此视频](https://player.vimeo.com/video/200859918)抢先介绍了报告功能和优势，其中包括：
+“见解”的一些功能和好处包括：
 
-- 报告类型：在主页上提供订单、使用情况和客户趋势的摘要快照。
+- 报告类型：“见解”主页上提供订单、使用情况、部署和客户趋势的摘要快照。
 - 详细的订单、使用情况和客户数据。
 - 以每月摘要或六个月趋势视图形式显示的订单和使用情况。
-- 以标准形式显示的多项见解。
 - 按以下要素列出的用途/订单信息：
   - 市场
   - 通道
   - 潮流产品
   - 应用商店许可证类型
 
-详细报告会显示客户信息（例如公司名称、地理位置，甚至邮政编码），因此可比较客户。 以下列表包含我们提供的有关客户的特定属性：
+详细报告会显示客户信息（例如公司名称、地理位置，甚至邮政编码），因此你可比较客户，为卖家提供补偿。 以下列表包含我们提供的有关客户的特定属性：
 
 - Reseller
 - FirstName
@@ -221,7 +239,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 - CompanyName
 - TransactionDate
 - SubscriptionName
-- AzureSubscriptionId
+- AzureSubscriptionId（仅适用于 PAYG 客户）
 - CloudInstanceName
 - OrderCount
 - CustomerCountryRegion
@@ -229,7 +247,7 @@ Azure 应用商店是一个在线应用程序和服务市场，其中各种规�
 - CustomerCommunicationCulture
 - CustomerZipCode
 
-我们还通过帮助文档、词汇表和录制的演示提供培训。 如果在报告方面需要帮助或支持，请打开[支持票证](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=636233723471685249)。
+我们还通过帮助文档、词汇表和录制的演示提供培训。 如果需要有关报告的帮助或支持，可随时通过云合作伙伴门户开具支持票证。
 
 欢迎加入我们的 ISV 卖方社区，期待看到产品/服务。
 

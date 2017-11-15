@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/20/2017
+ms.date: 11/08/2017
 ms.author: gauravbh
-ms.openlocfilehash: b4fda06f85c7dab52ff38558b0d928193e0694f6
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 41eaff13cf55d58f58b33bc05d39a6665d51ea29
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace 中的 Azure 托管应用程序
 
@@ -122,7 +122,7 @@ SKU 在 Marketplace 中显示在父级产品/服务下。 它在 Azure 门户中
    填写以下字段：
 
    * 当前版本：输入你上传的程序包的版本。 它应采用格式 `{number}.{number}.{number}{number}`。
-   * **选择程序包文件：**此程序包包含压缩为 .zip 程序包的必需文件。 有关详细信息，请参阅[创建服务目录应用程序](publish-service-catalog-app.md)。
+   * 选择程序包文件：此程序包中包含压缩为 .zip 包的两个必需文件。 其中一个文件是资源管理器模板，用于定义要为托管应用程序部署的资源。 另一个文件定义[用户界面](create-uidefinition-overview.md)，以便使用者通过门户部署托管应用程序。 在用户界面中，可以指定让使用者能够提供参数值的元素。
    * **PrincipalId：**此属性是针对客户订阅中的资源被授予了访问权限的用户、用户组或应用程序的 Azure Active Directory (Azure AD) 标识符。 Role Definition 描述权限。
    * Role Definition：此属性是 Azure AD 提供的所有基于角色的访问控制 (RBAC) 内置角色的列表。 你可以选择最合适的角色用于代表客户管理资源。
 

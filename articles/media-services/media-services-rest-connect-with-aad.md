@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: willzhan;juliako
-ms.openlocfilehash: 1c62857699fb29b3583363e1c6f2dc7874635f40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.author: willzhan;juliako;johndeu
+ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API
 
@@ -86,21 +86,14 @@ Azure 媒体服务团队发布了 Azure Active Directory (Azure AD) 身份验证
 |应用程序类型 |应用程序 |JWT 属性 |
 |---|---|---|
 |客户端 |客户应用程序或解决方案 |appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6"。 将在下一部分中注册到 Azure AD 的应用程序客户端 ID。 |
-|标识提供者 (IDP) | 作为 IDP 的 Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"。  GUID 是 Microsoft 租户 (microsoft.onmicrosoft.com) 的 ID。 每个租户都有自己的唯一 ID。 |
+|标识提供者 (IDP) | 作为 IDP 的 Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/" GUID 是 Microsoft 租户的 ID (microsoft.onmicrosoft.com)。 每个租户都有自己的唯一 ID。 |
 |安全令牌服务 (STS)/OAuth 服务器 |作为 STS 的 Azure AD | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"。 GUID 是 Microsoft 租户 (microsoft.onmicrosoft.com) 的 ID。 |
 |资源 | 媒体服务 REST API |aud: " https://rest.media.azure.net "。 访问令牌的接收人或受众。 |
 
 ## <a name="steps-for-setup"></a>设置步骤
 
-若要注册并设置用于 Azure AD 身份验证的 Azure AD 应用程序，并获取访问令牌来调用 Azure 媒体服务 REST API 终结点，请完成以下步骤：
+若要注册和设置 Azure Active Directory (AAD) 应用程序并获取用于调用 Azure 媒体服务 REST API 终结点的密钥，请参阅[通过 Azure 门户开始使用 Azure AD 身份验证](media-services-portal-get-started-with-aad.md)
 
-1.  在 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中，将 Azure AD 应用程序（例如，wzmediaservice）注册到 Azure AD 租户（例如，microsoft.onmicrosoft.com）。 无论注册的是 Web 应用程序，还是本机应用程序，都没有问题。 此外，还可以选择任意登录 URL 和回复 URL（例如，两个 URL 都为 http://wzmediaservice.com）。
-2. 在 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中，转到应用程序的“配置”选项卡。 记下“客户端 ID”。 然后，在“密钥”下，生成“客户端密钥”（客户端密码）。 
-
-    > [!NOTE] 
-    > 记下客户端密钥。 它不会再次显示。
-    
-3.  在 [Azure 门户](http://ms.portal.azure.com)中，转到媒体服务帐户。 选择“访问控制(IAM)”窗格。 添加具有所有者或参与者角色的新成员。 对于主体，搜索在第 1 步中注册的应用程序名称（在此示例中，为 wzmediaservice）。
 
 ## <a name="info-to-collect"></a>要收集的信息
 
@@ -138,9 +131,9 @@ Azure 媒体服务团队发布了 Azure Active Directory (Azure AD) 身份验证
 
 一些读者可能会问：刷新令牌在哪里？ 本文为什么不使用刷新令牌？
 
-刷新令牌并不旨在刷新访问令牌。 相反，它的用途是规避最终用户身份验证或用户干预，在早期生成的令牌过期时仍可以获得有效的访问令牌。 刷新令牌的更准确名称可能是“规避用户重新登录令牌"。
+刷新令牌并不旨在刷新访问令牌。 它的用途是规避最终用户身份验证并在早期生成的令牌过期时仍获得有效的访问令牌。 刷新令牌的更准确名称可能是“规避用户重新登录令牌"。
 
-如果使用 OAuth 2.0 授权流（用户名和密码，以用户身份操作），刷新令牌有助于获取续订的访问令牌，无需请求用户干预。 不过，对于本文中介绍的 OAuth 2.0 客户端凭据授权流，客户端是以自身身份操作。 根本就无需用户干预，所以授权服务器不需要（也不会）提供刷新令牌。 如果调试“GetUrlEncodedJWT”方法，将会注意到，来自令牌终结点的响应包含访问令牌，但不含刷新令牌。
+如果使用 OAuth 2.0 授权流（用户名和密码，以用户身份操作），刷新令牌有助于获取续订的访问令牌，无需请求用户干预。 不过，对于本文中介绍的 OAuth 2.0 客户端凭据授权流，客户端是以自身身份操作。 完全无需用户干预，所以授权服务器不需要提供刷新令牌。 如果调试“GetUrlEncodedJWT”方法，将会注意到，来自令牌终结点的响应包含访问令牌，但不含刷新令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

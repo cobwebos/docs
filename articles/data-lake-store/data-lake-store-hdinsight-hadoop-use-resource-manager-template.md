@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 模板来创建 HDInsight 和 Data Lake Store | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板创建和使用包含 Azure Data Lake Store 的 HDInsight 群集"
+description: "使用 Azure 资源管理器模板创建和使用包含 Azure Data Lake Store 的 HDInsight 群集"
 services: data-lake-store,hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: f6121a447acec69d354f5c1fbc7499561f471197
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c57904b7789f632d105b21c459fa1c53a8c73d04
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
-# <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含 Data Lake Store的 HDInsight 群集
+# <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Data Lake Store的 HDInsight 群集
 > [!div class="op_single_selector"]
 > * [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -138,4 +138,5 @@ Found 1 items
 
 
 ## <a name="next-steps"></a>后续步骤
-* [从 Azure 存储 blob 复制数据到 Data Lake Store](data-lake-store-copy-data-wasb-distcp.md)
+* [从 Azure 存储 Blob 复制数据到 Data Lake Store](data-lake-store-copy-data-wasb-distcp.md)
+* [配合使用 Data Lake Store 和 Azure HDInsight 群集](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

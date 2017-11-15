@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: 58f3d160c1f2a32025b706f10863e0055d67bfcd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c9d555130d806728f9d3a82f49e81b18c1e5125
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 排除 HDFS 故障
 
 了解在 Apache Ambari 中使用 Hadoop 分布式文件系统 (HDFS) 有效负载时遇到的常见问题及其解决方法。
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>如何从群集内访问本地 HDFS
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>如何从群集内访问本地 HDFS？
 
 ### <a name="issue"></a>问题
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 10/11/2017
     ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>如何在群集中强制禁用 HDFS 安全模式
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>如何在群集中强制禁用 HDFS 安全模式？
 
 ### <a name="issue"></a>问题
 
@@ -227,8 +227,11 @@ HDInsight 群集已减少到很少的节点。 节点数低于或接近于 HDFS 
     The filesystem under path '/' is HEALTHY
     ```
 
-3. 如果确定没有缺失、损坏或正在复制的块，或者这些块可以忽略，请运行以下命令使名称节点退出安全模式：
+3. 如果确定没有缺失、损坏或复制不足的块，或者这些块可以忽略，请运行以下命令使名称节点退出安全模式：
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
     ```
+
+### <a name="see-also"></a>另请参阅
+[使用 Azure HDInsight 进行故障排除](hdinsight-troubleshoot-guide.md)

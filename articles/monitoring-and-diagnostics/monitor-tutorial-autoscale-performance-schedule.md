@@ -10,20 +10,23 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 7e8d97657e03b0eaff76365d3988f51c773e3b55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a85e288fa6f7d6c7138b7fea8319bd8dee01c2c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>基于性能数据或调度为 Azure 资源创建自动缩放设置 | Microsoft 文档
 
-通过自动缩放设置，你可以根据预设的条件添加/删除服务实例。 这些设置可以通过门户进行创建。 此方法提供一个基于浏览器的用户界面，用于创建和配置自动缩放设置。 此教程将逐步介绍以下过程：
+通过自动缩放设置，你可以根据预设的条件添加/删除服务实例。 这些设置可以通过门户进行创建。 此方法提供一个基于浏览器的用户界面，用于创建和配置自动缩放设置。 
 
-1. 创建应用服务
-2. 配置自动缩放设置
-3. 触发扩大操作
-4. 触发缩小操作
+在本教程中，将介绍以下内容： 
+> [!div class="checklist"]
+> * 创建 Web 应用和应用服务计划
+> * 基于 Web 应用接收的请求数量，配置缩小和扩大的自动缩放规则
+> * 触发扩大操作并监视实例数的增加情况
+> * 触发缩小操作并监视实例数的减少情况
+> * 清理资源
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -32,12 +35,15 @@ ms.lasthandoff: 10/11/2017
 登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>创建 Web 应用和应用服务计划
-1. 在左侧导航窗格单击“新建”选项
-2. 搜索并选择“Web 应用”项，然后单击“创建”
-3. 选择一个应用名称，例如 MyTestScaleWebApp。 新建资源组 *myResourceGroup，并将其放置在你选择的资源组中。
-4. 几分钟内，应会预配你的资源。 在本教程的后面部分，我们将引用刚刚创建的 Web 应用及相对应的应用服务计划。
+在左侧导航窗格单击“新建”选项
 
-    ![在门户中新建应用服务](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
+搜索并选择“Web 应用”项，然后单击“创建”
+
+选择一个应用名称，例如 MyTestScaleWebApp。 新建资源组 *myResourceGroup，并将其放置在你选择的资源组中。
+
+几分钟内，应会预配你的资源。 在本教程的后面部分，使用 Web 应用及相对应的应用服务计划。
+
+    ![Create a new app service in the portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
 ## <a name="navigate-to-autoscale-settings"></a>导航到自动缩放设置
 1. 在左侧导航窗格选择“监视”选项。 页面加载后，选择“自动缩放”选项卡。
@@ -59,7 +65,7 @@ ms.lasthandoff: 10/11/2017
   ![导航到自动缩放设置](./media/monitor-tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrence-profile"></a>创建重复配置文件
+## <a name="create-recurrance-profile"></a>创建重复配置文件
 
 1. 在默认配置文件下，单击“添加缩放条件”链接
 
@@ -67,11 +73,11 @@ ms.lasthandoff: 10/11/2017
 
 3. 确保已将“缩放模式”设置为“基于指标缩放”
 
-4. 对于“实例限制”，将“最小值”设置为“1”，将“最大值”设置为“2”，将“默认值”设置为“1”。 这将确保此配置文件不会将服务计划自动缩放为拥有的实例数少于 1 个或多于 2 个。 如果此配置文件没有足够的数据来用于作出决策，它将使用默认的实例数（在此示例中为 1）。
+4. 对于“实例限制”，将“最小值”设置为“1”，将“最大值”设置为“2”，将“默认值”设置为“1”。 该设置将确保此配置文件不会将服务计划自动缩放为拥有的实例数少于 1 个或多于 2 个。 如果此配置文件没有足够的数据来用于作出决策，它将使用默认的实例数（在此示例中为 1）。
 
 5. 对于“调度”，选择“重复特定日期”
 
-6. 将此配置文件设置为从星期一到星期五的上午九点到下午六点 (PST) 重复。 这将确保此配置文件仅在星期一到星期五的上午九点到下午六点适用并处于活动状态。 在所有其他时间段，“默认”配置文件是自动缩放设置使用的配置文件。
+6. 将此配置文件设置为从星期一到星期五的上午九点到下午六点 (PST) 重复。 该设置将确保此配置文件仅在星期一到星期五的上午九点到下午六点适用并处于活动状态。 在所有其他时间段，“默认”配置文件是自动缩放设置使用的配置文件。
 
 ## <a name="create-a-scale-out-rule"></a>创建扩大规则
 
@@ -150,7 +156,7 @@ ms.lasthandoff: 10/11/2017
 
 6. 你将看到一个图表，它会按照时间的推移反映应用服务计划的实例计数。
 
-7. 几分钟后，实例计数应从 2 下降到 1。 此过程至少需要 10 分钟。  
+7. 几分钟后，实例计数应从 2 下降到 1。 此过程至少需要 100 分钟。  
 
 8. 在此图表下是该自动缩放设置执行的每个缩放操作对应的活动日志条目集
 
@@ -168,7 +174,16 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程创建了简单的 Web 应用和应用服务计划。 然后创建了自动缩放设置，它将根据 Web 应用收到的请求数缩放应用服务计划。 若要了解有关自动缩放设置的详细信息，请继续查看自动缩放概述。
+在本教程中：  
+> [!div class="checklist"]
+> * 已创建 Web 应用和应用服务计划
+> * 基于 Web 应用接收的请求数，已配置缩小和扩大的自动缩放规则
+> * 已触发扩大操作并已监视实例数的增加情况
+> * 已触发缩小操作并已监视实例数的减少情况
+> * 清理资源
+
+
+若要了解有关自动缩放设置的详细信息，请继续查看[自动缩放概述](monitoring-overview-autoscale.md)。
 
 > [!div class="nextstepaction"]
-> [存档监视数据](./monitor-tutorial-archive-monitoring-data.md)
+> [存档监视数据](monitor-tutorial-archive-monitoring-data.md)

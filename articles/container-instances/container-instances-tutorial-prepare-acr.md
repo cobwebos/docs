@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
+editor: mmacy
 tags: acs, azure-container-service
 keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 11/07/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 8cb00210ee260383d546be4faf141c133661156b
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 848f6cbde49efdcfe96fc58ebc4160e0ea39f3f2
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -54,13 +54,19 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 az group create --name myResourceGroup --location eastus
 ```
 
-使用“az acr create”[](/cli/azure/acr#create)命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。 以下示例中使用名称 mycontainerregistry082。
+使用 [az acr create](/cli/azure/acr#create) 命令创建 Azure 容器注册表。 容器注册表名称在 Azure 中必须唯一，并且必须包含 5-50 个字母数字字符。 将 `<acrName>` 替换为注册表的唯一名称：
+
+```azurecli
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
+```
+
+以创建名为 mycontainerregistry082 的 Azure 容器注册表为例：
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
 ```
 
-在本教程的其余部分，使用 `<acrname>` 作为所选容器注册表名称的占位符。
+在本教程的其余部分，使用 `<acrName>` 作为所选容器注册表名称的占位符。
 
 ## <a name="container-registry-login"></a>容器注册表登录
 
@@ -70,7 +76,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 az acr login --name <acrName>
 ```
 
-完成后，该命令会返回“登录成功”消息。
+该命令在完成后会返回消息 `Login Succeeded`。
 
 ## <a name="tag-container-image"></a>标记容器映像
 
@@ -89,13 +95,21 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-要获取 loginServer 名称，请运行以下命令：
+若要获取 loginServer 名称，请运行以下命令。 将 `<acrName>` 替换为容器注册表的名称。
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-使用容器注册表的 loginServer 标记 aci-tutorial-app 映像。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本号。
+示例输出：
+
+```
+Result
+------------------------
+mycontainerregistry082.azurecr.io
+```
+
+使用容器注册表的 loginServer 标记 aci-tutorial-app 映像。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本号。 将 `<acrLoginServer>` 替换为刚才执行的 `az acr show` 命令的结果。
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -117,12 +131,23 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-向注册表推送 aci-tutorial-app 映像。
-
-使用以下示例，将容器注册表 loginServer 名称替换为环境中的 loginServer。
+使用 `docker push` 命令将 aci-tutorial-app 映像推送到注册表。 将 `<acrLoginServer>` 替换为在先前步骤中获得的完整登录服务器名称。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
+```
+
+`push` 操作应需要几秒钟到几分钟的时间（具体取决于 Internet 连接），输出应如下所示：
+
+```bash
+The push refers to a repository [mycontainerregistry082.azurecr.io/aci-tutorial-app]
+3db9cac20d49: Pushed
+13f653351004: Pushed
+4cd158165f4d: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05715 size: 1576
 ```
 
 ## <a name="list-images-in-azure-container-registry"></a>列出 Azure 容器注册表中的映像

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 88feffc13690a3a33f757a43972c5ef1fe967b7f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 75408dc88b23b615971a23dc6235c563229d75aa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>准备异地复制的 Azure 容器注册表
 
@@ -247,10 +247,10 @@ v1: digest: sha256:c515bcebf249b591b558318e2d0ec21d1320340dbf335730eb32372ff7d34
 > * 基于应用程序源代码生成了 Docker 容器映像
 > * 将容器映像推送到了注册表
 
-请继续学习下一教程，了解如何将容器部署到多个 Azure 应用服务实例，并使用异地复制在本地提供映像。
+请继续学习下一教程，了解如何将容器部署到多个用于容器的 Web 应用实例，并使用异地复制在本地提供映像。
 
 > [!div class="nextstepaction"]
-> [将容器部署到 Azure 应用服务](container-registry-tutorial-deploy-app.md)
+> [从 Azure 容器注册表部署 Web 应用](container-registry-tutorial-deploy-app.md)
 
 <!-- IMAGES -->
 [tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png

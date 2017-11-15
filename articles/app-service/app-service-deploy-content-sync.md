@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 010e7dc492abefaa3afe814c0322af9f6fe5acd2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04d1d226093f131a521f32f47c333ff9aefc6f3b
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
 本教程说明如何通过从流行的云存储服务（例如 Dropbox 与 OneDrive）同步内容，来部署到 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)。 
@@ -46,5 +46,5 @@ ms.lasthandoff: 10/11/2017
    
     ![部署历史记录](./media/app-service-deploy-content-sync/onedrive_sync.png)
 
-[从 Dropbox 部署](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)中提供了有关 Dropbox 部署的详细信息。 
+有关 Dropbox 部署的详细信息，请参阅 [从 Dropbox 部署] (https://azure.microsoft.com/en-in/blog/new-deploy-to-windows-azure-web-sites-from-dropbox/)。
 

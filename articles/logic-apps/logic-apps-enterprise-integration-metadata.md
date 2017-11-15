@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 473da6436ad39709359b579162a6b60efc38d61f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>在集成帐户中为逻辑应用管理项目元数据
 
-可以在集成帐户中定义项目的自定义元数据，并且在运行时期间为逻辑应用检索该元数据。 例如，可以指定项目的元数据（如合作伙伴、协议、架构和映射）- 所有使用键/值对的存储元数据。 目前，项目无法通过 UI 创建元数据，但可以使用 REST API 创建元数据。 若要在 Azure 门户中创建或选择合作伙伴、协议或架构时添加元数据，请选择“以 JSON 编辑”。 若要在逻辑应用中检索项目元数据，可以使用集成帐户项目查找功能。
+可以在集成帐户中定义项目的自定义元数据，并且在运行时期间为逻辑应用检索该元数据。 例如，可以指定项目的元数据（如合作伙伴、协议、架构和映射）- 所有使用键/值对的存储元数据。 目前，项目无法通过 UI 创建元数据，但可以使用 REST API 创建元数据。 若要在 Azure 门户中创建或选择合作伙伴、协议或架构时添加元数据，请选择“编辑”。 若要在逻辑应用中检索项目元数据，可以使用集成帐户项目查找功能。
 
 ## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>在集成帐户中将元数据添加到项目
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 2. 将项目添加到集成帐户，例如[合作伙伴](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner)、[协议](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements)或[架构](logic-apps-enterprise-integration-schemas.md)。
 
-3.  选择项目，选择“以 JSON 编辑”并输入元数据详细信息。
+3.  选择项目，选择“编辑”并输入元数据详细信息。
 
     ![输入元数据](media/logic-apps-enterprise-integration-metadata/image1.png)
 

@@ -5,19 +5,22 @@ services: azure-policy
 keywords: 
 author: Jim-Parker
 ms.author: jimpark
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 3f9ef7886af20845eddc4c1e71d60911e4b22eca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02afe946e5e1ad9730ab07df19676e90485ecf98
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-using-powershell"></a>使用 PowerShell 创建策略分配，识别 Azure 环境中的不合规资源
 
-了解 Azure 中符合性的第一步需要了解当前资源的状况。 本快速入门教程指导你完成创建策略分配的过程，通过策略定义 - 需要 SQL Server 版本 12.0 来识别不符合的资源。 此过程结束时，应已成功识别哪些服务器的版本不同，也就是不符合要求。
+了解 Azure 中符合性的第一步需要了解自己当前资源的状况。 本快速入门教程指导你完成创建策略分配的过程，以识别未使用托管磁盘的虚拟机。
+
+此过程结束时，应已成功识别哪些虚拟机未使用托管磁盘，也就是不符合要求。
+
 
 PowerShell 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述如何使用 PowerShell 创建策略分配，识别 Azure 环境中的不合规资源。
 
@@ -29,7 +32,7 @@ PowerShell 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 ## <a name="opt-in-to-azure-policy"></a>选择加入 Azure 策略
 
-Azure 策略现已在有限预览版中提供，因此需要注册才能请求访问权限。
+Azure 策略现已在公共预览版中提供，因此需要注册才能请求访问权限。
 
 1. 在 https://aka.ms/getpolicy 转到 Azure 策略，然后选择左侧窗格中的“注册”。
 
@@ -39,11 +42,11 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
 
    ![选择加入使用 Azure 策略](media/assign-policy-definition/preview-opt-in.png)
 
-   我们可能需要一两天时间来接受注册请求，具体视情况而定。 我们接受请求后，你将获得电子邮件通知，告知可以开始使用服务。
+   在预览版中，将自动批准请求。 请预留 30 分钟，以便系统完成注册。
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
-本快速入门创建一个策略分配，并分配“需要 SQL Server 版本 12.0”定义。 此策略分配识别不符合策略定义中所设置条件的资源。
+在此快速入门中，我们将创建一个策略分配，分配“审核缺少托管磁盘的虚拟机”定义。 此策略分配识别不符合策略定义中所设置条件的资源。
 
 按照下列步骤操作以创建新的策略分配。
 
@@ -62,15 +65,15 @@ Azure 策略附带可供使用的内置策略定义。 内置策略定义示例�
 接下来，使用 `New-AzureRmPolicyAssignment` cmdlet 将策略定义分配给所需范围。
 
 对于本教程，我们为该命令提供以下信息：
-- 策略分配的显示名称。 此示例中，我们使用“需要 SQL Server 版本 12.0 分配”。
-- **策略** - 指的是策略定义，即为用于创建分配的依据。 此示例中指的是策略定义 - 需要 SQL Server 版本 12.0
+- 策略分配的显示名称。 在此示例中，我们使用“审核缺少托管磁盘的虚拟机”。
+- **策略** - 指的是策略定义，即为用于创建分配的依据。 在此示例中，即策略定义 - 审核缺少托管磁盘的虚拟机
 - 范围 - 范围用于确定在其中实施策略分配的资源或资源组。 它可以从订阅延伸至资源组。 此示例中，我们向 FabrikamOMS 资源组分配该策略定义。
-- **$definition** - 需要提供策略定义的资源 ID。此示例中，我们使用以下策略定义 - 需要 SQL Server 12.0 - 的 ID。
+- $definition - 需要提供策略定义的资源 ID。在此示例中，我们使用策略定义“缺少托管磁盘的审核虚拟机”的 ID。
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "FabrikamOMS"
 $definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/e5662a6-4747-49cd-b67b-bf8b01975c4c
-New-AzureRMPolicyAssignment -Name Require SQL Server version 12.0 Assignment -Scope $rg.ResourceId -PolicyDefinition $definition
+New-AzureRMPolicyAssignment -Name Audit Virtual Machines without Managed Disks Assignment -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 你现已准备好识别不合规的资源，了解环境的符合性状态。
@@ -89,7 +92,7 @@ New-AzureRMPolicyAssignment -Name Require SQL Server version 12.0 Assignment -Sc
 本教程系列中的其他指南建立在本快速入门的基础之上。 如何打算继续浏览后续教程，请勿清除本快速入门中创建的资源。 如果不打算继续，则通过运行以下命令删除创建的分配：
 
 ```powershell
-Remove-AzureRmPolicyAssignment -Name “Require SQL Server version 12.0 Assignment” -Scope /subscriptions/ bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
+Remove-AzureRmPolicyAssignment -Name “Audit Virtual Machines without Managed Disks Assignment” -Scope /subscriptions/ bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,6 +1,6 @@
 ---
 title: "部署 Azure 资源的多个实例 | Microsoft Docs"
-description: "在部署资源时使用 Azure Resource Manager 模板中的复制操作和数组执行多次迭代。"
+description: "在部署资源时使用 Azure 资源管理器模板中的复制操作和数组执行多次迭代。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e6d68612be4b7d4e1d6cea13e0f29636931abd8
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中部署资源或属性的多个实例
-本主题演示如何在 Azure Resource Manager 模板中进行迭代操作，以创建多个资源实例或资源上的多个属性实例。
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
+本主题演示如何在 Azure 资源管理器模板中进行迭代操作，以创建多个资源实例或资源上的多个属性实例。
 
 如果需要向模板添加能够指定是否部署了某个资源的逻辑，请参阅[有条件地部署资源](#conditionally-deploy-resource)。
+
+有关在数组变量中创建多个元素的示例，请参阅[变量](resource-group-authoring-templates.md#variables)。
 
 ## <a name="resource-iteration"></a>资源迭代
 若要创建某个资源类型的多个实例，请向该资源类型添加 `copy` 元素。 在 copy 元素中，为此循环指定迭代次数和名称。 计数值必须是不超过 800 的正整数。 Resource Manager 将并行创建资源。 因此，不保证创建的顺序。 若要在序列中创建循环访问的资源，请参阅[串行复制](#serial-copy)。 
@@ -507,6 +509,6 @@ Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为
 有关使用密码或 SSH 密钥部署虚拟机的示例，请参阅[用户名或 SSH 条件模板](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json)。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关模板区段的信息，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
-* 若要了解如何部署模板，请参阅[使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。
+* 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
+* 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。
 

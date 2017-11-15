@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 11/03/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 2189dc7900f03a45c360fceffbcd7c1ff36f7e48
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a4145f70af429274c3c908d3dedef63c5f973bf6
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
 
@@ -41,29 +41,11 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
  
 ## <a name="tables-in-azure-cosmos-db"></a>Azure Cosmos DB 中的表 
 
-Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduction.md)（预览），这些应用程序需要采用无架构设计的键-值存储。 [Azure 表存储](../storage/common/storage-introduction.md) SDK 和 REST API 可用于处理 Azure Cosmos DB。 可以使用 Azure Cosmos DB 创建具有高吞吐量要求的表。 Azure Cosmos DB 当前在公共预览版中支持吞吐量优化表（非正式地称为“高级表”）。 
+Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduction.md)（预览版），这些应用程序需要采用无架构设计的键-值存储并且具有高吞吐量需求。 [Azure 表存储](../storage/common/storage-introduction.md) SDK 和 REST API 可用于处理 Azure Cosmos DB 中的表。   
 
-可以继续对具有高存储和低吞吐量要求的表使用 Azure 表存储。
+本教程供熟悉 Azure 表存储 SDK 并想要通过 Azure Cosmos DB 使用高级功能的开发人员使用。 本教程基于[通过 .NET 开始使用 Azure 表存储](table-storage-how-to-use-dotnet.md)，并演示如何利用辅助索引、预配的吞吐量和多宿主等附加功能。 本教程说明如何使用 Azure 门户创建 Azure Cosmos DB 帐户，生成并部署表 API 应用程序。 还将演练用于创建和删除表，以及插入、更新、删除和查询表数据的 .NET 示例。 
 
-如果当前使用 Azure 表存储，可以通过“高级表”预览获得以下好处：
-
-- 具有多宿主的统包[全局分发](distribute-data-globally.md)与[自动和手动故障转移](regional-failover.md)
-- 支持针对所有属性的自动架构不可知索引（“辅助索引”）和快速查询 
-- 支持跨任意数量的区域实现[存储和吞吐量的独立缩放](partition-data.md)
-- 支持[按表的专用吞吐量](request-units.md)，可以从每秒数百个请求扩展到每秒数百万个请求
-- 支持[五个可调整一致性级别](consistency-levels.md)，可基于应用程序需要权衡可用性、延迟和一致性
-- 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- 使用现有的 Azure 存储 .NET SDK，而不会更改应用程序的任何代码
-
-预览期间，Azure Cosmos DB 使用 .NET SDK 支持表 API。 可从 NuGet 下载 [Azure 存储预览版 SDK](https://aka.ms/premiumtablenuget)，其具有与 [Azure 存储 SDK](https://www.nuget.org/packages/WindowsAzure.Storage) 相同的类和方法签名，但也可以使用表 API 连接到 Azure Cosmos DB 帐户。
-
-若要详细了解复杂的 Azure 表存储任务，请参阅：
-
-* [Azure Cosmos DB 简介：表 API](table-introduction.md)
-* 有关可用 API 的完整详细信息的表服务参考文档[用于 .NET 的存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-
-### <a name="about-this-tutorial"></a>关于本教程
-本教程供熟悉 Azure 表存储 SDK 并想要通过 Azure Cosmos DB 使用高级功能的开发人员使用。 本教程基于[通过 .NET 开始使用 Azure 表存储](table-storage-how-to-use-dotnet.md)，并演示如何利用辅助索引、预配的吞吐量和多宿主等附加功能。 涵盖如何使用 Azure 门户创建 Azure Cosmos DB 帐户，生成并部署表应用程序。 还将演练用于创建和删除表，以及插入、更新、删除和查询表数据的 .NET 示例。 
+## <a name="prerequisites"></a>先决条件
 
 如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
@@ -72,14 +54,6 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
 现在首先在 Azure 门户中创建 Azure Cosmos DB 帐户。  
-
-> [!TIP]
-> * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)。
-> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
-> * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，并直接跳到[设置 Visual Studio 解决方案](#SetupVS)。
-<!---Loc Comment: Please, check link [Set up your Visual Studio solution] since it's not redirecting to any location.---> 
->
->
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
@@ -112,7 +86,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 ```
 
 > [!NOTE]
-> 要将此应用与标准 Azure 表存储配合使用，需要更改 `app.config file` 中的连接字符串。 将帐户名用作 Table-account 名称，将密钥用作 Azure 存储主密钥。 <br>
+> 要将此应用与 Azure 表存储配合使用，需要更改 `app.config file` 中的连接字符串。 将帐户名用作 Table-account 名称，将密钥用作 Azure 存储主密钥。 <br>
 >`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
 > 
 >
@@ -135,10 +109,10 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 >
 
 ## <a name="azure-cosmos-db-capabilities"></a>Azure Cosmos DB 功能
-Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。 可以通过以下 `appSettings` 配置值启用新功能。 我们未向预览版 Azure 存储 SDK 引入任何新签名或重载。 这样便能够同时连接到标准表和高级表，并使用其他 Azure 存储服务，如 Blob 和队列。 
+Azure Cosmos DB 表 API 支持大量 Azure 表存储中不可用的功能。 可以通过以下 `appSettings` 配置值启用新功能。 不向未在 Azure 存储 SDK 中的表 API 添加任何新签名或重载。 这样便能够同时连接到 Azure 表存储和 Azure Cosmos DB 中的表，并使用其他 Azure 存储服务，如 Blob 和队列。 
 
 
-| 键 | 说明 |
+| 密钥 | 说明 |
 | --- | --- |
 | TableConnectionMode  | Azure Cosmos DB 支持两种连接模式。 在`Gateway`模式下，将始终向 Azure Cosmos DB 网关发出请求，该网关会将其转发到相应的数据分区。 在`Direct`连接模式下，客户端会提取表到分区的映射，且会直接针对数据分区发出请求。 建议使用`Direct`（默认）。  |
 | TableConnectionProtocol | Azure Cosmos DB 支持两种连接协议 - `Https` 和 `Tcp`。 默认为 `Tcp`，并推荐使用该协议，因为它更轻质。 |

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
+ms.date: 11/07/2017
 ms.author: sethm
-ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bea3b56cea81362b25e696a672bf2a00e26d3ef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
-Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些“中转”消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送结构的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
+Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些“中转”消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
 
 服务总线中构成消息传送功能的核心的消息传送实体是队列、主题和订阅，以及规则/操作。
 
@@ -30,7 +30,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 队列为一个或多个竞争使用方提供*先入先出* (FIFO) 消息传递方式。 也就是说，接收方预计会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。 使用队列的主要优点是，实现应用程序组件的“临时分离”。 换而言之，由于消息持久存储在队列中，因此创建方（发送方）和使用方（接收方）不必同时发送和接收消息。 此外，创建方不必等待使用方的答复即可继续处理并发送更多消息。
 
-相关的优点是“负载分级”，它允许创建方和使用方以不同速率发送和接收消息。 在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这会直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载均衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们以其最大速率拉取消息）也是如此。 此模式通常称为“使用者竞争”模式。
+相关的优点是“负载分级”，它允许创建方和使用方以不同速率发送和接收消息。 在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这会直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过基于拉取的该负载均衡，以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们以其最大速率拉取消息）也是如此。 此模式通常称为“使用者竞争”模式。
 
 使用队列在消息创建方与使用方之间中继可在个组件之间提供固有的松散耦合。 由于创建方和使用方互不相识，因此，可升级使用方，不会对创建方产生任何影响。
 
@@ -52,7 +52,7 @@ MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateS
 QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 ```
 
-可以随后向队列发送消息。 例如，如果具有名为 `MessageList` 的中转消息列表，将出现此代码，类似如下形式：
+可以随后向队列发送消息。 例如，如果具有名为 `MessageList` 的中转消息列表，将出现类似以下所示的代码：
 
 ```csharp
 for (int count = 0; count < 6; count++)
@@ -82,7 +82,7 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 
 如果应用程序出于某种原因无法处理消息，则其可对收到的消息调用 [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) 方法（而不是 [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 方法）。 这可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) 操作）。
 
-请注意，如果应用程序在处理消息之后，但在发出 **Complete** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作“至少处理一次”，即每条消息至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑，此重复可基于消息的 **MessageId** 属性实现，无论传送次数多少，均保持不变。 这称为“仅一次”处理。
+请注意，如果应用程序在处理消息之后，但在发出 **Complete** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作“至少处理一次”，即每条消息至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应用程序中需具备其他逻辑用于检测重复，这可通过消息中的 MessageId 属性实现（在整个传输尝试中，该属性保持不变）。 这称为“仅一次”处理。
 
 ## <a name="topics-and-subscriptions"></a>主题和订阅
 与每条消息都由单个使用方处理的队列相比，主题和订阅通过发布/订阅模式提供“一对多”通信方式。 这对于扩展到大量接收方而言十分有用，每个发布的消息对向该主题注册的每个订阅均可用。 取决于可在每个订阅时设置的筛选器规则，消息会发送到一个主题和传送到一个或多个关联订阅。 订阅可使用其他筛选器限制其要接收的消息。 消息发送到主题的方式和发送到队列的方式相同，但不会直接从主题被接收。 相反，会从订阅接收。 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 从订阅接收消息的方式与从队列接收的方式相同。
@@ -155,7 +155,7 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 使用此订阅筛选器，仅 `StoreName` 属性设置为 `Store1` 的消息会被复制到 `Dashboard` 订阅的虚拟队列。
 
-有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类。 另请参阅[中转消息传送：高级筛选器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)和[主题筛选器](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)示例。
+有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类。 另请参阅[中转消息传送：高级筛选器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)和[主题筛选器](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)示例。
 
 ## <a name="next-steps"></a>后续步骤
 有关使用服务总线消息传送的详细信息和示例，请参阅以下高级主题。
@@ -163,6 +163,5 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线中转消息传送 .NET 教程](service-bus-brokered-tutorial-dotnet.md)
 * [服务总线中转消息传送 REST 教程](service-bus-brokered-tutorial-rest.md)
-* [主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)
 * [Brokered Messaging: Advanced Filters sample](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)（中转消息传送：高级筛选器示例）
 

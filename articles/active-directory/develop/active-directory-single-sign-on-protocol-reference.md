@@ -21,14 +21,14 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# 单一登录 SAML 协议
+# <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 本文介绍了 Azure Active Directory (Azure AD) 针对单一登录支持的 SAML 2.0 身份验证请求和响应。
 
 下面的协议流程图描述了单一登录序列。 云服务（服务提供者）使用 HTTP 重定向绑定将 `AuthnRequest`（身份验证请求）元素传递给 Azure AD（标识提供者）。 然后，Azure AD 使用 HTTP POST 绑定将 `Response` 元素发布到云服务。
 
 ![单一登录工作流](media/active-directory-single-sign-on-protocol-reference/active-directory-saml-single-sign-on-workflow.png)
 
-## AuthnRequest
+## <a name="authnrequest"></a>AuthnRequest
 为了请求用户身份验证，云服务将 `AuthnRequest` 元素发送到 Azure AD。 下面显示了一个示例 SAML 2.0 `AuthnRequest`：
 
 ```
@@ -55,7 +55,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 
-### 颁发者
+### <a name="issuer"></a>颁发者
 `AuthnRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的一个 **ServicePrincipalNames** 完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。
 
 下面是一段包含 `Issuer` 元素的示例 SAML 摘录：
@@ -64,7 +64,7 @@ Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
 ```
 
-### NameIDPolicy
+### <a name="nameidpolicy"></a>NameIDPolicy
 此元素请求在响应中使用特定名称 ID 格式，在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。
 
 下面是一个示例 `NameIdPolicy` 元素：
@@ -82,21 +82,21 @@ Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 
 Azure AD 将忽略 `AllowCreate` 属性。
 
-### RequestAuthnContext
+### <a name="requestauthncontext"></a>RequestAuthnContext
 `RequestedAuthnContext` 元素指定所需的身份验证方法。 在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。 Azure AD 只支持一个 `AuthnContextClassRef` 值：`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`
 
-### Scoping
+### <a name="scoping"></a>Scoping
 包含标识提供者列表的 `Scoping` 元素在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。
 
 如果提供，请不要包含 `ProxyCount` 属性、`IDPListOption` 或 `RequesterID` 元素，因为它们不受支持。
 
-### 签名
+### <a name="signature"></a>签名
 请不要在 `AuthnRequest` 元素中包含 `Signature` 元素，因为 Azure AD 不支持签名的身份验证请求。
 
-### 使用者
+### <a name="subject"></a>使用者
 Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
 
-## 响应
+## <a name="response"></a>响应
 当请求的登录成功完成时，Azure AD 会将响应发布到云服务。 下面是登录尝试成功的响应示例：
 
 ```
@@ -142,13 +142,13 @@ Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
 </samlp:Response>
 ```
 
-### 响应
+### <a name="response"></a>响应
 `Response` 元素包含授权请求的结果。 Azure AD 将设置 `Response` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它还设置以下属性：
 
 * `Destination`：登录成功完成时，此属性将设置为服务提供者（云服务）的 `RedirectUri`。
 * `InResponseTo`：设置为发起响应的 `AuthnRequest` 元素的 `ID` 属性。
 
-### 颁发者
+### <a name="issuer"></a>颁发者
 Azure AD 将 `Issuer` 元素设置为 `https://login.microsoftonline.com/<TenantIDGUID>/`，其中，<TenantIDGUID> 是 Azure AD 租户的租户 ID。
 
 例如，具有 Issuer 元素的示例响应看起来类似于这样：
@@ -157,7 +157,7 @@ Azure AD 将 `Issuer` 元素设置为 `https://login.microsoftonline.com/<Tenant
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### 状态
+### <a name="status"></a>状态
 `Status` 元素传递登录的成功或失败状态。 它包含 `StatusCode` 元素，此元素包含用于表示请求状态的一个代码或一组嵌套代码。 它还包含 `StatusMessage` 元素，此元素包含登录过程中生成的自定义错误消息。
 
 <!-- TODO: Add a authentication protocol error reference -->
@@ -177,17 +177,17 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### Assertion
+### <a name="assertion"></a>Assertion
 除了 `ID`、`IssueInstant` 和 `Version` 以外，Azure AD 还在响应的 `Assertion` 元素中设置以下元素。
 
-#### 颁发者
+#### <a name="issuer"></a>颁发者
 此元素设置为 `https://sts.windows.net/<TenantIDGUID>/`，其中，<TenantIDGUID> 是 Azure AD 租户的租户 ID。
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-#### 签名
+#### <a name="signature"></a>签名
 Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字签名，可供云服务用来对源进行身份验证，以验证断言的完整性。
 
 为了生成此数字签名，Azure AD 会在其元数据文档的 `IDPSSODescriptor` 元素中使用签名密钥。
@@ -198,7 +198,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
     </ds:Signature>
 ```
 
-#### 使用者
+#### <a name="subject"></a>使用者
 指定断言中语句主题的主体。 它包含 `NameID` 元素，用于表示经过身份验证的用户。 `NameID` 值是一个目标标识符，它只定向到作为令牌受众的服务提供者。 它是持久性的 - 可吊销，但永远不可重新分配。 它也是不透明的，因为它不会透露有关用户的信息，也不能用作属性查询的标识符。
 
 `SubjectConfirmation` 元素的 `Method` 属性始终设置为 `urn:oasis:names:tc:SAML:2.0:cm:bearer`。
@@ -212,7 +212,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
 </Subject>
 ```
 
-#### 条件
+#### <a name="conditions"></a>条件
 此元素指定用于定义 SAML 断言可接受用法的条件。
 
 ```
@@ -228,7 +228,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
 * `NotBefore` 属性值等于或略晚于（不到一秒）`Assertion` 元素的 `IssueInstant` 属性值。 Azure AD 不考虑自身与云服务（服务提供者）之间的任何时间差，并且不对此时间添加任何缓冲。
 * `NotOnOrAfter` 属性值比 `NotBefore` 属性值晚 70 分钟。
 
-#### 目标受众
+#### <a name="audience"></a>目标受众
 包含用于标识目标受众的 URI。 Azure AD 将此元素的值设置为发起登录的 `AuthnRequest` 的 `Issuer` 元素值。 若要评估 `Audience` 值，请使用应用程序注册期间指定的 `App ID URI` 值。
 
 ```
@@ -239,7 +239,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
 
 与 `Issuer` 值一样，`Audience` 值必须与表示 Azure AD 中云服务的服务主体名称之一完全匹配。 但是，如果 `Issuer` 元素值不是 URI 值，响应中的 `Audience` 值是带有 `spn:` 前缀的 `Issuer` 值。
 
-#### AttributeStatement
+#### <a name="attributestatement"></a>AttributeStatement
 包含有关使用者或用户的声明。 以下摘录包含一个示例 `AttributeStatement` 元素。 省略号表示该元素可以包含多个属性和属性值。
 
 ```
@@ -257,7 +257,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
 * **Name 声明**：`Name` 属性值 (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) 是经过身份验证的用户的用户主体名称，例如 `testuser@managedtenant.com`。
 * **ObjectIdentifier 声明**：`ObjectIdentifier` 属性值 (`http://schemas.microsoft.com/identity/claims/objectidentifier`) 是表示 Azure AD 中已经过身份验证用户的目录对象的 `ObjectId`。 `ObjectId`是已经过身份验证的用户的不可变、全局唯一且可重复使用的安全标识符。
 
-#### AuthnStatement
+#### <a name="authnstatement"></a>AuthnStatement
 此元素断言在特定时间以特定方式对断言使用者进行身份验证。
 
 * `AuthnInstant` 属性指定在 Azure AD 上对用户进行身份验证的时间。

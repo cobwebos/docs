@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>使用 Azure Functions 创建无服务器 API
 
@@ -61,7 +61,8 @@ ms.lasthandoff: 10/11/2017
 1. 在左侧导航栏中单击该函数的名称，导航回到开发页。
 1. 单击“获取函数 URL”并复制该 URL。 应会看到它现在使用了 `/api/hello` 路由。
 1. 将 URL 复制到新的浏览器标签页或偏好的 REST 客户端中。 浏览器默认使用 GET。
-1. 运行该函数并确认它是否正常工作。 可能需要提供“name”参数作为查询字符串来配合快速启动代码。
+1. 在 URL 中将参数添加到查询字符串，如 `/api/hello/?name=John`
+1. 按“Enter”确认其正常工作。 应当可以看到响应“Hello John”
 1. 也可以尝试使用其他 HTTP 方法调用终结点，确认是否未执行该函数。 为此，需要使用 REST 客户端，例如 cURL、Postman 或 Fiddler。
 
 ## <a name="proxies-overview"></a>代理概述
@@ -85,9 +86,8 @@ ms.lasthandoff: 10/11/2017
 重复[创建 Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的 Function App 将充当后端。
 
 1. 在门户中导航到新的前端 Function App。
-1. 选择“设置”。 然后，将“启用 Azure Functions 代理(预览版)”切换为“开”。
-1. 选择“平台设置”，并选择“应用程序设置”。
-1. 向下滚动到“应用设置”，并创建一个包含“HELLO_HOST”键的新设置。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 这是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
+1. 选择“平台功能”，并选择“应用程序设置”。
+1. 向下滚动到存储键/值对的“应用程序设置”，然后使用键“HELLO_HOST”创建新设置。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 这是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
 
     > [!NOTE] 
     > 建议在主机配置中使用应用设置，以防止对代理的环境依赖关系进行硬编码。 使用应用设置意味着可以在环境之间移动代理配置，并应用特定于环境的应用设置。
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/11/2017
 
 接下来，使用代理来为解决方案创建模拟 API。 这样，客户端开发便可以继续进行，而无需完全实现后端。 以后在开发时，可以创建新的 Function App 来支持此逻辑并将代理重定向到此逻辑。
 
-为了创建此模拟 API，我们将创建一个新代理，但这一次我们使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并找到“应用服务编辑器”。 单击该按钮会在新选项卡中打开应用服务编辑器。
+为了创建此模拟 API，我们将创建一个新代理，但这一次我们使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并在“开发工具”下找到“应用服务编辑器”。 单击该按钮会在新选项卡中打开应用服务编辑器。
 
 在左侧导航栏中选择 `proxies.json`。 这是用于存储所有代理的配置的文件。 如果使用某种 [Functions 部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)，则此文件是在源代码管理中维护的文件。 若要详细了解此文件，请参阅[代理高级配置](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)。
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 10/11/2017
 
 这会添加一个不带 backendUri 属性的新代理“GetUserByName”。 此代理不会调用另一个资源，而是使用响应重写来修改代理的默认响应。 也可以将请求和响应重写与后端 URL 结合使用。 在代理需要修改标头、查询参数等元素的旧式系统时，这种做法特别有效。若要详细了解请求和响应重写，请参阅[修改代理中的请求和响应](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses)。
 
-通过使用浏览器或偏好的 REST 客户端调用 `/api/users/{username}` 终结点来测试模拟 API。 请务必将 _{username}_ 替换为表示用户名的字符串值。
+通过使用浏览器或偏好的 REST 客户端调用 `<YourProxyApp>.azurewebsites.net/api/users/{username}` 终结点来测试模拟 API。 请务必将 _{username}_ 替换为表示用户名的字符串值。
 
 ## <a name="next-steps"></a>后续步骤
 

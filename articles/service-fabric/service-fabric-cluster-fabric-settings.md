@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: bfbfc5b46985d3413510ba69cbdfc688f46f0f1b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
@@ -596,7 +596,7 @@ PropertyGroup|X509NameMap，默认值为 None|动态| |
 | PeriodicApiSlowTraceInterval | 以秒为单位的时间，默认值为 5 分钟 |动态| 指定以秒为单位的时间范围。 PeriodicApiSlowTraceInterval 定义 API 监视器追溯慢速 API 调用的时间间隔。 |
 | NodeDeactivationMaxReplicaCloseDuration | 以秒为单位的时间，默认值为 900 |动态|指定以秒为单位的时间范围。 在节点停用过程中，如果服务主机具有进入关闭状态的副本，系统在终止这类服务主机前所等待的时间。 |
 | FabricUpgradeMaxReplicaCloseDuration | 以秒为单位的时间，默认值为 900 |动态| 指定以秒为单位的时间范围。 在结构升级过程中，如果服务主机具有进入关闭状态的副本，系统在终止这类服务主机前所等待的时间。 |
-|GracefulReplicaShutdownMaxDuration|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态|指定以秒为单位的时间范围。 如果服务主机具有进入关闭状态的副本，则该配置决定系统在终止这类服务主机前所等待的时间。|
+|GracefulReplicaShutdownMaxDuration|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态|指定以秒为单位的时间范围。 如果服务主机具有进入关闭状态的副本，则该配置决定系统在终止这类服务主机前所等待的时间。 如果此值设置为 0，则不会指示关闭副本。|
 |ReplicaChangeRoleFailureRestartThreshold|int，默认值为 10|动态| 整数。 指定在主升级过程中 API 故障的次数，超过此次数后应用自动缓解措施（副本重启）。 |
 |ReplicaChangeRoleFailureWarningReportThreshold|int，默认值为 2147483647|动态| 整数。 指定在主升级过程中 API 故障的次数，超过此次数后引发警告运行状况报告。|
 

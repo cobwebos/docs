@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: 6fbd96935f444d8b0c6d068ebd0d28e612f19816
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5477068ddab46bbe0fdbdda754227642ed97bb36
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>备份资源管理器部署中的 Windows 系统状态
 本文介绍了如何将 Windows Server 系统状态备份到 Azure。 本教程旨在引导完成基本操作。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 如果还没有 Azure 订阅，可以先创建一个 [免费帐户](https://azure.microsoft.com/free/)，这样就可以访问任何 Azure 服务。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
-要备份文件和文件夹，需要在要存储数据的区域内创建一个恢复服务保管库。 还需要确定复制存储的方式。
+要备份 Windows Server 系统状态，需要在想要存储数据的区域内创建一个恢复服务保管库。 还需要确定复制存储的方式。
 
 ### <a name="to-create-a-recovery-services-vault"></a>创建恢复服务保管库
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com/)，请使用 Azure 订阅登录。
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
     或
     * 选择“使用现有项”，并单击下拉菜单查看可用的资源组列表。
 
-  有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+  有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
 7. 单击“位置”，为保管库选择地理区域  。 此选项决定了备份数据要发送到的地理区域。
 
@@ -135,6 +135,9 @@ ms.lasthandoff: 10/11/2017
     保管库凭据下载到 Downloads 文件夹。 下载完保管库凭据以后，会显示一个弹出窗口，询问用户是要打开还是要保存凭据。 单击“保存” 。 如果意外地单击了“打开”，可以让尝试打开保管库凭据的对话框关闭。 不能打开保管库凭据。 继续下一步。 保管库凭据位于 Downloads 文件夹中。   
 
     ![保管库凭据下载完毕](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
+> [!NOTE]
+> 保管库凭据只能保存到打算使用代理的 Windows Server 的本地位置。 
+>
 
 ## <a name="install-and-register-the-agent"></a>安装并注册代理
 
@@ -163,40 +166,13 @@ ms.lasthandoff: 10/11/2017
 
 现已安装代理，且已向保管库注册计算机。 接下来可以配置和计划备份。
 
-## <a name="back-up-windows-server-system-state-preview"></a>备份 Windows Server 系统状态（预览版）
-初始备份包括三项任务：
+## <a name="back-up-windows-server-system-state"></a>备份 Windows Server 系统状态 
+初始备份包括两个任务：
 
-* 使用 Azure 备份代理启用系统状态备份
 * 计划备份
-* 首次备份文件和文件夹
+* 首次备份系统状态
 
 若要完成初始备份，请使用 Microsoft Azure 恢复服务代理。
-
-### <a name="to-enable-system-state-backup-using-the-azure-backup-agent"></a>使用 Azure 备份代理启用系统状态备份
-
-1. 在 PowerShell 会话中，可通过运行以下命令来停止 Azure 备份引擎。
-
-  ```
-  PS C:\> Net stop obengine
-  ```
-
-2. 打开 Windows 注册表。
-
-  ```
-  PS C:\> regedit.exe
-  ```
-
-3. 向以下注册表项添加指定的 DWord 值。
-
-  | 注册表路径 | 注册表项 | DWord 值 |
-  |---------------|--------------|-------------|
-  | HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider | TurnOffSSBFeature | #N/A |
-
-4. 通过在提升的命令提示符下执行以下命令来重启备份引擎。
-
-  ```
-  PS C:\> Net start obengine
-  ```
 
 ### <a name="to-schedule-the-backup-job"></a>计划备份作业
 
@@ -216,11 +192,7 @@ ms.lasthandoff: 10/11/2017
 
 6. 单击“下一步”。
 
-7. 系统状态的备份和保留计划自定设置为在当地时间每周日晚上 9:00 进行备份，设置的保留期为 60 天。
-
-   > [!NOTE]
-   > 系统状态的备份和保留策略均为自动备份。 除了 Windows Server 系统状态之外，如果还想备份文件和文件夹，请仅根据向导指定备份文件的备份和保留策略。 
-   >
+7. 在后续页中选择系统状态备份所需的备份频率和保留策略。 
 
 8. 在“确认”页上复查信息，并单击“**完成**”。
 
@@ -234,88 +206,21 @@ ms.lasthandoff: 10/11/2017
 
     ![立即备份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“**备份**”。
+3. 在出现的“选择备份项”屏幕上选择“系统状态”，然后单击“下一步”。
+
+4. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“**备份**”。
 
 4. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 
-5. 如果在服务器上备份文件和文件夹，除了 Windows Server 系统状态之外，“立即备份”向导将仅备份文件。 若要进行临时的系统状态备份，请执行以下 PowerShell 命令：
 
-    ```
-    PS C:\> Start-OBSystemStateBackup
-    ```
-
-  完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
+完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
 
   ![IR 完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
-
-## <a name="frequently-asked-questions"></a>常见问题
-
-以下问题和答案可提供补充信息。
-
-### <a name="what-is-the-staging-volume"></a>什么是暂存卷？
-
-暂存卷表示 Windows Server 备份暂存系统状态备份的中间位置，该位置本机可用。 然后由 Azure 备份代理将此中间备份压缩并加密，通过安全的 HTTPS 协议将其发送到配置的恢复服务保管库。 我们强烈建议在非 Windows 操作系统的卷中创建暂存卷。**如果在系统状态备份中发现问题，进行故障排除的第一步就是对暂存卷的位置进行检查。** 
-
-### <a name="how-can-i-change-the-staging-volume-path-specified-in-the-azure-backup-agent"></a>如何更改 Azure 备份代理中指定的暂存卷路径？
-
-暂存卷默认位于缓存文件夹中。 
-
-1. 若要更改此位置，请在提升的命令提示符中使用以下命令：
-  ```
-  PS C:\> Net stop obengine
-  ```
-
-2. 然后更新以下注册表项，使路径指向新的暂存卷文件夹。
-
-  |注册表路径|注册表项|值|
-  |-------------|------------|-----|
-  |HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config\CloudBackupProvider | SSBStagingPath | 新的暂存卷位置 |
-
-暂存路径区分大小写，并且必须与服务器上的路径完全相同。 
-
-3. 更改暂存卷路径后，请重启备份引擎：
-  ```
-  PS C:\> Net start obengine
-  ```
-4. 若要选取更改后的路径，请打开 Microsoft Azure 恢复服务代理，然后触发系统状态的临时备份。
-
-### <a name="why-is-the-system-state-default-retention-set-to-60-days"></a>为何要将系统状态的默认保留期设置为 60 天？
-
-系统状态备份的使用寿命与为 Windows Server Active Directory 角色设置的“逻辑删除生存期”设置相同。 逻辑删除生存期条目的默认值为 60 天。 此值可在目录服务 (NTDS) config 对象上设置。
-
-### <a name="how-do-i-change-the-default-backup-and-retention-policy-for-system-state"></a>如何更改系统备份的默认备份和保留策略？
-
-若要更改系统备份的默认备份和保留策略，请执行以下操作：
-1. 停止备份引擎。 在提升的命令提示符下运行以下命令。
-
-  ```
-  PS C:\> Net stop obengine
-  ```
-
-2. 在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider 中添加或更新以下注册表项条目。
-
-  |注册表名称|说明|值|
-  |-------------|-----------|-----|
-  |SSBScheduleTime|用于配置备份时间。 默认值为当地时间晚上 9 点。|DWord：HHMM（十进制）格式，例如 2130 表示当地时间晚上 9:30|
-  |SSBScheduleDays|用于配置在指定的时间执行系统状态备份的日期。 单个数字指代星期几。 0 表示星期日，1 表示星期一，由此类推。 备份的默认日期为星期日。|DWord：在星期几运行备份（十进制），例如 1230 表示计划在星期一、星期二、星期三和星期日进行备份。|
-  |SSBRetentionDays|用于配置备份保留的天数。 默认值为 60。 允许的最大值为 180。|DWord：备份保留的天数（十进制）。|
-
-3. 使用以下命令重启备份引擎。
-    ```
-    PS C:\> Net start obengine
-    ```
-
-4. 打开 Microsoft Azure 恢复服务代理。
-
-5. 单击“计划备份”，然后单击“下一步”，直到更改反映出来。
-
-6. 单击“完成”应用更改。
-
 
 ## <a name="questions"></a>有疑问？
 如果有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何 [备份 Windows 计算机](backup-configure-vault.md)。
-* 备份文件和文件夹后，可以 [管理保管库和服务器](backup-azure-manage-windows-server.md)。
+* 至此，你已备份 Windows Server 系统状态，接下来可以[管理保管库和服务器](backup-azure-manage-windows-server.md)了。
 * 如果需要还原备份，请参阅[将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)一文。

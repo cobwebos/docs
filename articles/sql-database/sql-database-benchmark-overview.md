@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 43ab7ed75313863d2912063169ccc089af6052c2
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: fb8a5f205ddc143dc47349829048f46f88963d05
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Azure SQL 数据库基准检验概述
 ## <a name="overview"></a>概述
@@ -106,7 +106,7 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 | 标准 (S2) |50 |7.1 GB |
 | 高级 (P1) |100 |14 GB |
 | 高级 (P2) |200 |28 GB |
-| 高级 (P6/P3) |800 |114 GB |
+| 高级 (P6) |800 |114 GB |
 
 ## <a name="measurement-duration"></a>度量持续时间
 有效地运行基准检验需要稳定状态度量持续时间至少为 1 小时。

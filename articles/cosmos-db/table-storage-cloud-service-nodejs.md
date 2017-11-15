@@ -1,5 +1,5 @@
 ---
-title: "使用表存储构建 Web 应用 (Node.js) | Microsoft Docs"
+title: "Azure 表存储：生成 Web 应用 Node.js | Microsoft Docs"
 description: "本教程以“使用 Express 构建 Web 应用程序”教程为基础，演示如何添加 Azure 存储服务和 Azure 模块。"
 services: cosmos-db
 documentationcenter: nodejs
@@ -12,15 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e931f0457511963b87c1b14fe873593bcb000c7
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="nodejs-web-application-using-storage"></a>使用存储构建 Node.js Web 应用程序
+# <a name="azure-table-storage-nodejs-web-application"></a>Azure 表存储：Node.js Web 应用程序
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
 ## <a name="overview"></a>概述
 本教程通过用于 Node.js 的 Microsoft Azure 客户端库与数据管理服务配合使用，来扩展在[使用 Express 生成 Node.js Web 应用程序]教程中创建的应用程序。 将扩展应用程序以创建可部署到 Azure 的基于 Web 的任务列表应用程序。 用户可以通过任务列表来检索任务、添加新任务以及将任务标记为已完成。
 

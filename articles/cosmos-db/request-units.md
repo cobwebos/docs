@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: 83cbc622975344ec2a5700d2e10a5c77371e9899
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc544a776293e94114d8c07d89df588a17aa1962
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 现已推出：Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)。 了解[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 ![吞吐量计算器][5]
 
 ## <a name="introduction"></a>介绍
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 由 Microsoft 提供，是全球分布式多模型数据库。 使用 Azure Cosmos DB，无需租用虚拟机、部署软件或监视数据库。 Azure Cosmos DB 由 Microsoft 顶尖工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 可以使用选择的 API 访问数据，因为 [DocumentDB SQL](documentdb-sql-query.md)（文档）、MongoDB（文档）、[Azure 表存储](https://azure.microsoft.com/services/storage/tables/)（键值）和 [Gremlin](https://tinkerpop.apache.org/gremlin.html)（图）都可在本地获得支持。 Azure Cosmos DB 的货币是请求单位 (RU)。 借助 RU，无需保留读取/写入容量或预配 CPU、内存和 IOPS。
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 由 Microsoft 提供，是全球分布式多模型数据库。 使用 Azure Cosmos DB，无需租用虚拟机、部署软件或监视数据库。 Azure Cosmos DB 由 Microsoft 顶尖工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 可以使用自己选择的 API 访问数据，例如可以通过 [DocumentDB API](documentdb-introduction.md)、MongoDB API 和[表 API](table-introduction.md) 使用 SQL 以及通过[图形 API](graph-introduction.md) 使用 Gremlin，这些都是本机支持的。 Azure Cosmos DB 的货币是请求单位 (RU)。 借助 RU，无需保留读取/写入容量或预配 CPU、内存和 IOPS。
 
 Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图形查询等）的许多 API。 并非所有请求都是相同的，因此系统会根据请求所需的计算量为它们分配规范化数量的请求单位。 操作的请求单位数是确定性的，可以通过响应标头跟踪 Azure Cosmos DB 中的任何操作消耗的请求单位数。 
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图�
 * 如何评估应用程序的请求单位需求？
 * 如果超过集合的请求单位容量会发生什么情况？
 
-由于 Azure Cosmos DB 是多模型数据库，请务必为文档 API 引用集合/文档，为图形 API 引用图形/节点，为表 API 引用表/实体。 在本文档中，将通用化到容器/项的概念。
+由于 Azure Cosmos DB 是多模型数据库，因此请务必注意，本文针对文档 API 引用集合/文档，针对图形 API 引用图形/节点，针对表 API 引用表/实体。 本文引用集合、图形或表的概念并将其视为容器，还引用文档、节点或实体的概念并将其视为项。
 
 ## <a name="request-units-and-request-charges"></a>请求单位和请求费用
 Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满足应用程序的吞吐量需求。  由于应用程序加载和访问模式会随着时间推移而更改，借助 Azure Cosmos DB，可以轻松增加或减少保留供应用程序使用的吞吐量。
@@ -55,7 +55,7 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>指定 Azure Cosmos DB 中的请求单位容量
 启用新集合、表或图形时，指定希望保留的每秒请求单位数（每秒 RU 数）。 Azure Cosmos DB 会根据预配的吞吐量分配物理分区来托管集合，并拆分/重新均衡分区中不断增长的数据。
 
-如果为集合预配的请求单位数大于或等于 2,500，Azure Cosmos DB 要求指定分区键。 以后将集合的吞吐量扩展到 2,500 个请求单位以上时，也需要使用分区键。 因此，强烈建议在创建容器时配置[分区键](partition-data.md)，不管初始吞吐量有多大。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键，以便 Azure Cosmos DB 能够统一缩放集合/表/图形与请求。 
+如果为集合预配的请求单位数大于或等于 2,500，Azure Cosmos DB 要求指定分区键。 以后将集合的吞吐量扩展到 2,500 个请求单位以上时，也需要使用分区键。 因此，强烈建议在创建容器时配置[分区键](partition-data.md)，不管初始吞吐量有多大。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放集合/表/图形与请求。 
 
 > [!NOTE]
 > 分区键是一个逻辑边界而不是物理边界。 因此，不需要限制非重复分区键值的数目。 事实上，分区键值宁多勿少，因为 Azure Cosmos DB 提供的负载均衡选项较多。
@@ -98,9 +98,9 @@ await client.ReplaceOfferAsync(offer);
 
 * 项大小。 随着大小的增加，用来读取或写入数据的单位数也随之增加。
 * 项属性计数。 假设默认为所有属性创建索引，用于写入文档/节点/实体的单位数将随着属性计数的增加而增加。
-* **数据一致性**。 当使用“强”或“有限过期”的数据一致性级别时，将占用更多单位数来读取项。
+* **数据一致性**。 当使用“强”或“有限过期”的数据一致性级别时，读取项会占用更多单位数。
 * **已创建索引的属性**。 每个容器的索引策略都可确定默认情况下要进行索引的属性类别。 通过限制已创建索引的属性数目或通过启用延迟索引编制，可以减少请求单位消耗。
-* **文档索引**。 默认情况下，会自动为每个项创建索引，如果选择不为其中一些项创建索引，则将占用更少的请求单位。
+* **文档索引**。 默认情况下会自动为每个项创建索引。 如果选择不为某些项创建索引，则使用的请求单位数将会减少。
 * **查询模式**。 查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、投影、UDF 数和源数据集的大小都会影响查询操作的成本。
 * **脚本使用情况**。  正如查询一样，存储过程和触发器也是根据所执行的操作的复杂性来使用请求单位的。 在开发应用程序时，检查请求费用标头，以更好地了解每个操作消耗请求单位容量的方式。
 
@@ -296,7 +296,7 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 ```
 
 > [!NOTE]
-> 文档在 Azure Cosmos DB 中已缩小，所以系统计算的上述文档的大小略小于 1 KB。
+> 文档在 Azure Cosmos DB 中已压缩，所以系统计算的上述文档的大小略小于 1 KB。
 > 
 > 
 
@@ -322,7 +322,7 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 > 
 > 
 
-使用此信息，我们可以根据预计的每秒操作和查询数量来估计此应用程序的 RU 需求：
+使用此信息，可以根据预计的每秒操作和查询数量来估计此应用程序的 RU 需求：
 
 | 操作/查询 | 每秒的估计数量 | 所需的 RU |
 | --- | --- | --- |
@@ -332,7 +332,7 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 | 按食品组进行选择 |10 |700 |
 | 选择前 10 个 |15 |总计 150 |
 
-在此示例中，我们认为平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
+在此示例中，预计的平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
 
 ## <a id="RequestRateTooLarge"></a>超过 Azure Cosmos DB 中保留的吞吐量限制
 前面提到，如果预算为空，请求单位消耗以每秒速率进行评估。 对于超过容器预配的请求单位速率的应用程序，将限制对该集合的请求数，直到速率降低到保留级别之下。 被限制时，服务器将抢先结束请求、引发 RequestRateTooLargeException（HTTP 状态代码 429）并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。

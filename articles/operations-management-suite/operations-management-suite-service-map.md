@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 2e5475a0563549ddfaa2c146e4acf94c019841ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7109a3b21feac396d8c20c7e72a8987f72a909a
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>使用 Operations Management Suite 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -224,11 +224,26 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="operations-management-suite-performance-integration"></a>Operations Management Suite 性能集成
-“计算机性能”窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。 若要获取网络性能数据，还必须在 Operations Management Suite 中启用 Wire Data 2.0 解决方案。
+“计算机性能”窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
 
 ![“计算机性能”窗格](media/oms-service-map/machine-performance.png)
 
+若要查看性能数据，就可能需要[启用相应的 Log Analytics 性能计数器](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)。  要启用的计数器：
 
+Windows:
+- Processor(*)\% Processor Time
+- Memory\% Committed Bytes In Use
+- Network Adapter(*)\Bytes Sent/sec
+- Network Adapter(*)\Bytes Received/sec
+
+Linux：
+- Processor(*)\% Processor Time
+- Memory(*)\% Used Memory
+- Network Adapter(*)\Bytes Sent/sec
+- Network Adapter(*)\Bytes Received/sec
+
+若要获取网络性能数据，还必须在 Operations Management Suite 中启用 Wire Data 2.0 解决方案。
+ 
 ## <a name="operations-management-suite-security-integration"></a>Operations Management Suite 安全性集成
 在 Operations Management Suite 工作区中启用并配置服务映射以及安全和审核之后，这两个解决方案会自动集成。
 
@@ -247,7 +262,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-log-searches.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
-除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure Resource Manager API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure Resource Manager API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
+除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
 >[!NOTE]
 >随着服务映射功能增加，这些字段可能会更改。

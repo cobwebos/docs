@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 6ccd8728697040b4c783d8a1e51bc68c09ef7001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>通过逻辑应用保护对自定义 API 的调用
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>第 1 部分：为逻辑应用创建 Azure AD 应用程序标识
 
-逻辑应用将使用此 Azure AD 应用程序标识根据 Azure AD 进行身份验证。 只需为目录将此标识设置一次。 例如，可选择为所有逻辑应用使用相同标识，但也可为每个逻辑应用创建唯一标识。 可在 Azure 门户、[Azure 经典门户](#app-identity-logic-classic)中设置这些标识或者使用 [PowerShell](#powershell)。
+逻辑应用将使用此 Azure AD 应用程序标识根据 Azure AD 进行身份验证。 只需为目录将此标识设置一次。 例如，可选择为所有逻辑应用使用相同标识，但也可为每个逻辑应用创建唯一标识。 可以在 Azure 门户中或者使用 [PowerShell](#powershell) 设置这些标识。
 
 **在 Azure 门户中为逻辑应用创建应用程序标识**
 
@@ -94,39 +94,11 @@ ms.lasthandoff: 10/11/2017
 
    ![复制并保存密钥以供后续使用](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
 
-<a name="app-identity-logic-classic"></a>
-
-**在 Azure 经典门户中为逻辑应用创建应用程序标识**
-
-1. 在 Azure 经典门户中，选择“[Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory)”。
-
-2. 选择用于 Web 应用或 API 应用的同一目录。
-
-3. 在“应用程序”选项卡上，选择页面底部的“添加”。
-
-4. 为应用程序标识提供名称，然后选择“下一步”（向右箭头）。
-
-5. 在“应用属性”下，提供格式化的唯一字符串，作为“登录 URL”和“应用 ID URI”的域，然后选择“完成”（复选标记）。
-
-6. 在“配置”选项卡上，复制并保存逻辑应用的“客户端 ID”，以便在第 3 部分使用。
-
-7. 在“密钥”下，打开“选择持续时间”列表。 选择密钥的持续时间。
-
-   创建的密钥将充当逻辑应用的应用程序标识的“机密”或密码。
-
-8. 在页面底部，选择“保存”。 可能需要等待几秒钟。
-
-9. 在“密钥”下，务必复制并保存当前显示的密钥。 
-
-   在第 3 部分配置逻辑应用时，将此密钥指定为“机密”或密码。
-
-有关详细信息，请了解如何[将应用服务应用程序配置为使用 Azure Active Directory 登录](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
-
 <a name="powershell"></a>
 
 **在 PowerShell 中为逻辑应用创建应用程序标识**
 
-可使用 PowerShell 通过 Azure Resource Manager 执行此任务。 在 PowerShell 中运行以下命令：
+可使用 PowerShell 通过 Azure 资源管理器执行此任务。 在 PowerShell 中运行以下命令：
 
 1. `Switch-AzureMode AzureResourceManager`
 
@@ -140,7 +112,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>第 2 部分：为 Web 应用或 API 应用创建 Azure AD 应用程序标识
 
-如果已部署 Web 应用或 API 应用，则可在 Azure 门户中开启身份验证并创建应用程序标识。 否则，可以[在使用 Azure Resource Manager 模板部署时开启身份验证](#authen-deploy)。 
+如果已部署 Web 应用或 API 应用，则可在 Azure 门户中开启身份验证并创建应用程序标识。 否则，可以[在使用 Azure 资源管理器模板部署时开启身份验证](#authen-deploy)。 
 
 **在 Azure 门户中为已部署的应用创建应用程序标识并开启身份验证**
 
@@ -154,9 +126,9 @@ ms.lasthandoff: 10/11/2017
 
    ![为 Web 应用或 API 应用创建应用程序标识](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
-4. 在“身份验证/授权”页面，选择“保存”。
+4. 在“身份验证/授权”页上，选择“保存”。
 
-现在必须找到与 Web 应用或 API 应用关联的应用程序标识的客户端 ID 和租户 ID。 第 3 部分需使用这些 ID。 因此，请对Azure 门户或 [Azure 经典门户](#find-id-classic)继续执行这些步骤。
+现在必须找到与 Web 应用或 API 应用关联的应用程序标识的客户端 ID 和租户 ID。 第 3 部分需使用这些 ID。 因此，请对 Azure 门户继续执行这些步骤。
 
 **在 Azure 门户中查找 Web 应用或 API 应用的应用程序标识的客户端 ID 和租户 ID**
 
@@ -177,42 +149,16 @@ ms.lasthandoff: 10/11/2017
 
 5. 在不保存更改的情况下，关闭“Azure Active Directory 设置”页面。
 
-<a name="find-id-classic"></a>
-
-**在 Azure 经典门户中，查找 Web 应用或 API 应用的应用程序标识的客户端 ID 和租户 ID**
-
-1. 在 Azure 经典门户中，选择“[Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory)”。
-
-2.  选择用于 Web 应用或 API 应用的目录。
-
-3. 在“搜索”框中，查找并选择 Web 应用或 API 应用的应用程序标识。
-
-4. 在“配置”选项卡上，复制“客户端 ID”并保存该 GUID，以便在第 3 部分使用。
-
-5. 获取客户端 ID 后，在“配置”选项卡底部选择“查看终结点”。
-
-6. 复制“联合元数据文档”的 URL，然后浏览到该 URL。
-
-7. 在打开的元数据文档中，查找根 EntityDescriptor ID 元素，它的 entityID 属性的格式为：`https://sts.windows.net/{GUID}` 
-
-   此属性中的 GUID 就是你的特定租户的 GUID（租户 ID）。
-
-8. 复制并保存该租户 ID，以便在第 3 部分使用，必要时还可在 Web 应用或 API 应用的部署模板中使用。
-
-有关详细信息，请参阅以下主题：
-
-* [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)
-
 <a name="authen-deploy"></a>
 
-**使用 Azure Resource Manager 模板部署时开启身份验证**
+**使用 Azure 资源管理器模板部署时开启身份验证**
 
 还必须为 Web 应用或 API 应用创建 Azure AD 应用程序标识，该标识不能与逻辑应用的应用标识相同。 若要创建应用程序标识，请在 Azure 门户中按照先前在第 2 部分中的步骤操作。 
 
 也可以按照第 1 部分的步骤操作，但对于“登录 URL”和“应用 ID URI”，请确保使用 Web 应用或 API 应用的实际 `https://{URL}`。 执行这些步骤时，请务必保存客户端 ID 和租户 ID，以便在应用的部署模板和第 3 部分使用。
 
 > [!NOTE]
-> 为 Web 应用或 API 应用创建 Azure AD 应用程序标识时，必须使用 Azure 门户或 Azure 经典门户，而不是 PowerShell。 PowerShell commandlet 没有设置可让用户登录到网站的必需权限。
+> 为 Web 应用或 API 应用创建 Azure AD 应用程序标识时，必须使用 Azure 门户，而不是 PowerShell。 PowerShell commandlet 没有设置可让用户登录到网站的必需权限。
 
 获得客户端 ID 和租户 ID 后，将这些 ID 作为 Web 应用或 API 应用的子资源包含在部署模板中：
 

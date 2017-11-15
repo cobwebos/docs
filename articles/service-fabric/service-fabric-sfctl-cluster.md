@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: dc2ed59d6adaca97b23dddcb7ec968d90171b483
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2af214a9aa3c67818e8ce64f204ebda32c35abc7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
@@ -54,36 +54,12 @@ ms.lasthandoff: 10/11/2017
 
 |参数|说明|
 | --- | --- |
-| --applications-health-state-filter| 用于筛选应用程序运行状态
-                                                    objects returned in the result of cluster health
-                                                    query based on their health state. The possible
-                                                    values for this parameter include integer value
-                                                    obtained from members or bitwise operations on
-                                                    members of HealthStateFilter enumeration. Only
-                                                    applications that match the filter are returned.
-                                                    All applications are used to evaluate the
-                                                    aggregated health state. If not specified, all
-                                                    entries are returned. The state values are flag
-                                                    based enumeration, so the value could be a
-                                                    combination of these values obtained using
-                                                    bitwise 'OR' operator. For example, if the
-                                                    provided value is 6 then health state of
-                                                    applications with HealthState value of OK (2)
-                                                    and Warning (4) are returned. - Default -
-                                                    Default value. Matches any HealthState. The
-                                                    value is zero. - None - Filter that doesn't
-                                                    match any HealthState value. Used in order to
-                                                    return no results on a given collection of
-                                                    states. The value is 1. - Ok - Filter that
-                                                    matches input with HealthState value Ok. The
-                                                    value is 2. - Warning - Filter that matches
-                                                    input with HealthState value Warning. The value
-                                                    is 4. - Error - Filter that matches input with
-                                                    HealthState value Error. The value is 8. - All -
-                                                    Filter that matches input with any HealthState value. The value is 65535.|
-| --events-health-state-filter | 用于根据运行状态筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。
-值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。| | --exclude-health-statistics | 指示是否作为查询结果的一部分返回运行状况统计数据。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状态的子实体数。| |   --include-system-application-health-statistics| 指示运行状况统计信息是否应包含 fabric:/System 应用程序运行状况统计信息。 默认值为 False。 如果 IncludeSystemApplicationHealthStatistics 设置为 true，则运行状况统计信息包含属于 fabric: / System 应用程序的实体。 否则，查询结果仅包含用户应用程序的运行状况统计信息。 若要应用此参数，必须将运行状况统计信息包含在查询结果中。| | --nodes-health-state-filter | 用于根据运行状态筛选群集运行状况查询结果中返回的节点运行状态对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的节点。 所有节点用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的节点的运行状态。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。
-值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。| | --timeout -t | 服务器超时，以秒为单位。  默认值：60。|
+| --applications-health-state-filter| 用于根据运行状态筛选群集运行状况查询结果中返回的应用程序运行状态对象。 此参数的可能值包括从成员获取的整数值或对 HealthStateFilter 枚举成员进行位运算获取的整数值。 仅返回与筛选器匹配的应用程序。  所有应用程序都用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为“OK”(2) 和“Warning”(4) 的应用程序的运行状态。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 不返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+| --events-health-state-filter   | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 不返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。  值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+|--exclude-health-statistics                   | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。|
+ |   --include-system-application-health-statistics| 指示运行状况统计信息是否应包括 fabric:/System 应用程序的运行状况统计信息。 默认值为 False。 如果 IncludeSystemApplicationHealthStatistics 设置为 true，则运行状况统计信息包含属于 fabric:/System 应用程序的实体。 否则，查询结果仅包含用户应用程序的运行状况统计信息。 应用此参数后，查询结果中必须包含运行状况统计信息。|
+| --nodes-health-state-filter    | 用于根据运行状态筛选群集运行状况查询结果中返回的节点运行状态对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的节点。 所有节点用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的节点的运行状态。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 不返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。  值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+| --timeout -t                   | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -118,8 +94,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="sfctl-cluster-provision"></a>sfctl cluster provision
 预配 Service Fabric 群集的代码包或配置包。
-
-        Validate and provision the code or configuration packages of a Service Fabric cluster.
+验证和预配 Service Fabric 群集的代码包或配置包。
 
 ### <a name="arguments"></a>参数
 
@@ -169,7 +144,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
 取消预配 Service Fabric 群集的代码包或配置包。
 
-        Unprovision the code or configuration packages of a Service Fabric cluster.
+取消预配 Service Fabric 群集的代码包或配置包。
 
 ### <a name="arguments"></a>参数
 |参数|说明|
@@ -184,43 +159,46 @@ ms.lasthandoff: 10/11/2017
 |--debug         | 提高日志记录详细程度，以显示所有调试日志。|
  |   --help -h       | 显示此帮助消息并退出。|
  |   --output -o     | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
- |   --query         | JMESPath 查询字符串。 有关详细信息和示例，
-                      请参阅 http://jmespath.org/。|
+ |   --query         | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
  |   --verbose       | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
 
 
 ## <a name="sfctl-cluster-upgrade"></a>sfctl cluster upgrade
 开始升级 Service Fabric 群集的代码或配置版本。
-
-        Validate the supplied upgrade parameters and start upgrading the code or configuration
-        version of a Service Fabric cluster if the parameters are valid.
+如果参数有效，验证提供的升级参数并对 Service Fabric 群集的代码或配置版本启动升级。
 
 ### <a name="arguments"></a>参数
 |参数|说明|
 | --- | --- |
-|    --app-health-map                      | 应用程序名称对的 JSON 编码字典，以及
-                                            引发错误之前的最大不正常百分比。|
- |   --app-type-health-map                 | 应用程序类型对的 JSON 编码字典
-                                            name and maximum percentage unhealthy before raising
-                                            error.|
- | --code-version | 群集代码版本。| | --config-version | 群集配置版本。| | --delta-health-evaluation | 完成每个升级域后启用增量运行状况评估，而不是绝对运行状况评估。| | --delta-unhealthy-nodes | 群集升级期间允许的最大节点运行状况降级百分比。  默认值：10。
-在开始升级时的节点状态与运行状况评估时的节点状态之间测得的增量值。 完成每个升级域的升级后会执行该检查，确保群集的全局状态在容许的限制内。| | --failure-action | 可能的值包括：“Invalid”、“Rollback”、“Manual”。| | --force-restart | 强制重启。| | --health-check-retry | 运行状况检查重试超时时间，以毫秒为单位。| | --health-check-stable | 运行状况检查稳定持续时间，以毫秒为单位。| | --health-check-wait | 运行状况检查等待持续时间，以毫秒为单位。| | --replica-set-check-timeout | 升级副本集检查超时时间，以秒为单位。| | --rolling-upgrade-mode | 可能的值包括：“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”、“Monitored”。  默认值：UnmonitoredAuto。| | --timeout -t | 服务器超时时间，以秒为单位。  默认值：60。| | --unhealthy-applications | 报告错误之前允许的不正常应用程序的最大百分比。
-例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果会向上舍入，以容许少量应用程序发生一次故障。 | | --unhealthy-nodes | 报告错误之前允许的不正常节点的最大百分比。
-例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 在大型群集中，某些节点始终处于关闭或故障待修状态，因此，应将此百分比配置为容许此类节点。| | --upgrade-domain-delta-unhealthy-nodes | 群集升级期间允许的最大升级域节点运行状况降级百分比。
-默认值：15。
-在开始升级时的升级域节点状态与运行状况评估时的升级域节点状态之间测得的增量值。 完成每个升级域的升级后，针对所有已完成的升级域执行该检查，确保升级域的状态在容许的限制内。| | --upgrade-domain-timeout | 升级域超时时间，以毫秒为单位。| | --upgrade-timeout | 升级超时时间，以毫秒为单位。| | --warning-as-error | 警告的严重性被视为与错误相同。|
+|    --app-health-map                      | 应用程序名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。|
+ |   --app-type-health-map                 | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。|
+ |   --code-version                        | 群集代码版本。|
+ |   --config-version                      | 群集配置版本。|
+ |   --delta-health-evaluation             | 每个升级域完成后，启用增量运行状况评估，而不是绝对运行状况评估。|
+ |   --delta-unhealthy-nodes               | 群集升级过程中允许的节点运行状况降级最大百分比。  默认值：10。 在开始升级时的节点状态与运行状况评估时的节点状态之间测得的增量值。 每个升级域升级完成后执行检查，确保群集的全局状态在允许的限制内。|
+ |   --failure-action                      | 可能的值包括：“Invalid”、“Rollback”和“Manual”。|
+ |   --force-restart                       | 强制重启。|
+ |   --health-check-retry                  | 运行状况检查重试超时时间，以毫秒为单位。|
+ |   --health-check-stable                 | 运行状况检查稳定持续时间，以毫秒为单位。|
+  |  --health-check-wait                   | 运行状况检查等待持续时间，以毫秒为单位。|
+  |  --replica-set-check-timeout           | 升级副本集检查超时时间，以秒为单位。|
+ |   --rolling-upgrade-mode                | 可能的值包括：“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值：UnmonitoredAuto。|
+  |  --timeout -t                          | 服务器超时，以秒为单位。  默认值：60。|
+  |  --unhealthy-applications              | 报告错误之前允许的最大不正常应用程序百分比。 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。|
+ |   --unhealthy-nodes                     | 报告错误之前允许的最大不正常节点百分比。 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。|
+ |   --upgrade-domain-delta-unhealthy-nodes| 群集升级过程中允许的升级域节点运行状况降级最大百分比。 默认值：15。 在开始升级时的升级域节点状态与运行状况评估时的升级域节点状态之间测得的增量值。 每个升级域升级完成后对所有已完成的升级域执行检查，以便确保升级域的状态在允许的限制内。|
+ |   --upgrade-domain-timeout              | 升级域超时时间，以毫秒为单位。|
+ |   --upgrade-timeout                     | 升级超时时间，以毫秒为单位。|
+ |   --warning-as-error                    | 将警告的严重性视为与错误相同。|
 
 ### <a name="global-arguments"></a>全局参数
-    |参数|说明|
+|参数|说明|
 | --- | --- |
 |--debug                               | 提高日志记录详细程度，以显示所有调试日志。|
 |    --help -h                             | 显示此帮助消息并退出。|
-|    --output -o                           | 输出格式。  允许的值：json、jsonc、table、tsv。
-                                            默认值：json。|
-|    --query                               | JMESPath 查询字符串。 有关详细信息和示例，
-                                            请参阅 http://jmespath.org/。|
-|    --verbose                             | 提高日志记录详细程度。 使用 --debug 可获取完整调试
-                                            日志。|
+|    --output -o                           | 输出格式。  允许的值：json、jsonc、table、tsv。 默认值：json。|
+|    --query                               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+|    --verbose                             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

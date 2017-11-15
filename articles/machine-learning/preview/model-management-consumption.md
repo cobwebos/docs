@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 8b2f806b81bbc6d9328ab179644b79b97d68e7b9
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 39023712f72d5ac874de1f20a110bef9703ed5e8
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="consuming-web-services"></a>使用 Web 服务
 将模型部署为实时 Web 服务后，可以从各种平台和应用程序向其发送数据并获取预测数据。 实时 Web 服务公开了一个用于获取预测数据的 REST API。 可以采用单行或多行格式向 Web 服务发送数据，从而一次获取一行或多行预测数据。
 
-使用 Azure 机器学习 Web 服务，外部应用程序可以通过对服务 URL 进行 HTTP POST 调用以同步方式与预测模型进行通信。 若要进行 Web 服务调用，客户端应用程序需要指定在部署预测时创建的 API 密钥，并将请求数据置于 POST 请求正文中。
+使用 [Azure 机器学习 Web 服务](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy)，外部应用程序可通过对服务 URL 进行 HTTP POST 调用以同步与预测模型进行通信。 若要进行 Web 服务调用，客户端应用程序需要指定在部署预测时创建的 API 密钥，并将请求数据置于 POST 请求正文中。
 
 请注意，API 密钥仅在群集部署模式下可用。 本地 Web 服务没有密钥。
 

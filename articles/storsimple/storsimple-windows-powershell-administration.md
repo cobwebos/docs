@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: af135518f66eb8c94c183f28191f016fcd601ae1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 811c06c6355ae881037cceb573ae0f96fa1ec2ad
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 根据弃用计划，StorSimple 设备管理器将自动迁移至新的 Azure 门户。 你将收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 若要查看本文中新的 Azure 门户版本，请转到[使用用于 StorSimple 的 Windows PowerShell 来管理设备](storsimple-8000-windows-powershell-administration.md)。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
 Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure StorSimple 设备的命令行接口。 顾名思义，该命令行接口是内置于某个受约束运行空间的一个基于 Windows PowerShell 的命令行接口。 对于命令行，从用户的角度看，所谓限制的运行空间就好像是受限制的 Windows PowerShell 版本。 此命令行接口在保持 Windows PowerShell 的某些基本功能的同时，还提供附加的专用 cmdlet，它们都是专门针对管理 Microsoft Azure StorSimple 设备而设计的。 
 

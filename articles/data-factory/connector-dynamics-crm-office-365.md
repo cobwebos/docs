@@ -11,18 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 11/02/2017
 ms.author: jingwang
-ms.openlocfilehash: 74a4fca2ff5a0f913b5cb195f42482339e6200cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1af330596052a92237469aba4729474e7fe417aa
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-from-dynamics-365dynamics-crm-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics 365/Dynamics CRM 复制数据
+
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Dynamics 365/Dynamics CRM 复制数据， 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
-## <a name="supported-scenarios"></a>支持的方案
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+
+## <a name="supported-capabilities"></a>支持的功能
 
 可以将数据从 Dynamics 365/Dynamics CRM 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -39,6 +43,7 @@ ms.lasthandoff: 10/11/2017
 > 要使用 Dynamics 连接器，请将密码存储在 Azure Key Vault 中，并在执行数据复制时允许从中拉取 ADF 复制活动。 请参阅如何在[链接的服务属性](#linked-service-properties)部分进行配置。
 
 ## <a name="getting-started"></a>入门
+
 可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
 以下部分提供了有关各属性的详细信息，这些属性用于定义特定于 Dynamics 的数据工厂实体。

@@ -12,17 +12,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36be252baffe3b6ff84fcdf2d85a97101bec2371
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 要查看有关新 Azure 门户的本文章的版本，请转至 [StorSimple 设备的技术规格和符合性](storsimple-8000-technical-specifications-and-compliance.md)。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 ## <a name="overview"></a>概述
-#N/A 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
+Microsoft Azure StorSimple 设备的硬件组件遵循本文中概述的技术规格和法规标准。 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
 
 ## <a name="power-and-cooling-module-specifications"></a>电源和散热模块规格
 StorSimple 设备有两个 100-240V 双风扇且符合 SBB 标准的电源散热模块 (PCM)。 这提供了冗余电源配置。 如果 PCM 发生故障，设备将继续在另一个 PCM 上正常运行，直至发生故障的模块被更换。  

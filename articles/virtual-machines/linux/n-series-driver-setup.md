@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 11/06/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f8cd4fc37caca7fa6094a4780078d9ed882ba3c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 46f8b2c20d9ce31ef3f782d098de09952701bbcc
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -205,13 +205,13 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 
 ## <a name="install-cuda-drivers-for-nc-vms"></a>安装适用于 NC VM 的 CUDA 驱动程序
 
-下面是从 NVIDIA CUDA 工具包 8.0 在 Linux NC VM 上安装 NVIDIA 驱动程序的步骤。 
+从 NVIDIA CUDA 工具包在 Linux NC VM 上安装 NVIDIA 驱动程序的步骤如下。 
 
 C 和 C++ 开发人员可以选择安装完整的工具包来生成 GPU 加速应用程序。 有关详细信息，请参阅 [CUDA 安装指南](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)。
 
 
 > [!NOTE]
-> 在本文发布时，此处提供的 CUDA 驱动程序下载链接是最新的。 有关最新 CUDA 驱动程序，请访问 [NVIDIA](http://www.nvidia.com/) 网站。
+> 在本文发布时，此处提供的 CUDA 驱动程序下载链接是最新的。 有关最新 CUDA 驱动程序，请访问 [NVIDIA](https://developer.nvidia.com/cuda-zone) 网站。
 >
 
 若要安装 CUDA 工具包，请建立到每个虚拟机的 SSH 连接。 若要验证系统是否具有支持 CUDA 的 GPU，请运行以下命令：
@@ -273,20 +273,16 @@ sudo reboot
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>基于 CentOS 的 7.3 或 Red Hat Enterprise Linux 7.3
 
-> [!IMPORTANT]
-> 请勿运行 `sudo yum update` 更新 CentOS 7.3 或 Red Hat Enterprise Linux 7.3 上的内核版本。 目前，一旦更新内核版本，驱动程序安装和更新将无法正常工作。
->
-
 1. 安装适用于 Hyper-V 的最新 Linux 集成服务。
 
   > [!IMPORTANT]
-  > 如果在 NC24r VM 上安装了基于 CentOS 的 HPC 映像，请跳至步骤 3。 由于 Azure RDMA 驱动程序和 Linux 集成服务预安装在映像中，因此不应升级 LIS，默认情况下内核更新已禁用。
+  > 如果在 NC24r VM 上安装了基于 CentOS 的 HPC 映像，请跳至步骤 3。 由于 Azure RDMA 驱动程序和 Linux 集成服务会预安装在 HPC 映像中，因此，不应升级 LIS，默认情况下内核更新已禁用。
   >
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
  
-  tar xvzf lis-rpms-4.2.3.tar.gz
+  tar xvzf lis-rpms-4.2.3-1.tar.gz
  
   cd LISISO
  
@@ -304,7 +300,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9-0-local-9.0.176-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-9.0.176-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -354,8 +350,9 @@ sudo reboot
 
 ## <a name="troubleshooting"></a>故障排除
 
-* Ubuntu 16.04 LTS 上运行 4.4.0-75 Linux 内核的 Azure N 系列 VM 上的 CUDA 驱动程序存在已知问题。 如果要从早期的内核版本进行升级，请至少升级到内核版本 4.4.0-77。 
+* Ubuntu 16.04 LTS 上运行 4.4.0-75 Linux 内核的 Azure N 系列 VM 上的 CUDA 驱动程序存在已知问题。 如果要从早期的内核版本进行升级，请至少升级到内核版本 4.4.0-77。
 
+* 你可以使用 nvidia-smi 设置持久性模式，以便在需要查询卡时该命令的输出更快。 若要设置持久性模式，请执行 `nvidia-smi -pm 1`。 请注意，如果重启 VM，此模式设置将消失。 你可以始终将该模式设置编写为在启动时执行。
 
 
 ## <a name="next-steps"></a>后续步骤

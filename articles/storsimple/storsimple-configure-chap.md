@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 83ad256522ca19a19b3fe46fcc48e9cb37cbe246
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>为 StorSimple 设备配置 CHAP
+> [!NOTE]
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 若要查看本文的适用于新 Azure 门户的版本，请转到[配置 StorSimple 设备的 CHAP](storsimple-8000-configure-chap.md)。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+
 本教程介绍如何为 StorSimple 设备配置 CHAP。 本文详述的过程适用于 StorSimple 8000 系列和 StorSimple 1200 设备。
 
 CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程客户端身份的身份验证方案。 该验证基于共享密码或机密。 CHAP 可以是单向或相互（双向）的。 单向 CHAP 是指目标对发起程序进行身份验证的情况。 另一方面，相互或反向 CHAP 则要求目标对发起程序进行身份验证，再由发起程序对目标进行身份验证。 发起程序身份验证可以在不进行目标身份验证的情况下实施。 但是，目标身份验证只能在也实施发起程序身份验证的情况下实施。 

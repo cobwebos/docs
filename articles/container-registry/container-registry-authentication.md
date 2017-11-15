@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 容器注册表进行身份验证 | Microsoft Docs"
-description: "如何使用 Azure Active Directory 服务主体或管理员帐户来登录 Azure 容器注册表"
+title: "使用 Azure 容器注册表进行身份验证"
+description: "Azure 容器注册表的身份验证选项包括 Azure Active Directory 服务主体直接登录和注册表登录。"
 services: container-registry
 documentationcenter: 
 author: stevelas
 manager: balans
-editor: cristyg
+editor: mmacy
 tags: 
 keywords: 
 ms.assetid: 128a937a-766a-415b-b9fc-35a6c2f27417
@@ -14,21 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 11/05/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d7d2ae0e9b1f7850332d151d78a4a5fdb013777
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37514e7b90afe1162aa4bbd2869326a691f75c4e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
-若要在 Azure 容器注册表中使用容器映像，则使用 `docker login` 命令进行登录。 可使用 **[Azure Active Directory 服务主体](../active-directory/active-directory-application-objects.md)**或特定于注册表的**管理员帐户**登录。 本文提供了有关这些标识的详细信息。
+
+可通过几种方法使用 Azure 容器注册表进行身份验证，并且每种方法适用于一种或多种注册表使用方案。
+
+可以通过[单次登录](#individual-login-with-azure-ad)来登录注册表目录，应用程序和容器业务流程协调程序可以通过使用 Azure Active Directory (Azure AD) [服务主体](#service-principal)执行无人参与或“无外设”身份验证。
+
+Azure 容器注册表不支持未经身份验证的 Docker 操作或匿名访问。 对于公共映像，可以使用 [Docker 中心](https://docs.docker.com/docker-hub/)。
+
+## <a name="individual-login-with-azure-ad"></a>使用 Azure AD 进行单次登录
+
+直接使用注册表时（例如向开发工作站拉取映像和从中推送映像），可通过在 [Azure CLI](/cli/azure/install-azure-cli) 中使用 [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) 命令进行身份验证：
+
+```azurecli
+az acr login --name <acrName>
+```
+
+使用 `az acr login` 登录时，CLI 将使用执行 `az login` 时创建的令牌和注册表对会话进行无缝身份验证。 以这种方式登录后，系统会缓存凭据并且后续 `docker` 命令将不再需要用户名或密码。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 配合使用 `az acr login` 和 Azure 标识可提供[基于角色的访问](../active-directory/role-based-access-control-configure.md)。
 
 ## <a name="service-principal"></a>服务主体
 
-可向注册表分配服务主体，并将其用于基本 Docker 身份验证。 建议在大多数情况下使用服务主体。 向 `docker login` 命令提供服务主体的应用 ID 和密码，如以下示例所示：
+可以为注册表分配[服务主体](../active-directory/develop/active-directory-application-objects.md)，并且应用程序或服务可以将其用于无外设身份验证。 服务主体允许通过[基于角色的访问](../active-directory/role-based-access-control-configure.md)来访问注册表，并且可以为注册表分配多个服务主体。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
+
+可用的角色如下：
+
+  * **读者**：拉取
+  * **参与者**：拉取和推送
+  * **所有者**：拉取、推送和为其他用户分配角色
+
+服务主体在推送和拉取方案中启用到注册表的“无外设”连接，如下所示：
+
+  * *读者*：从注册表到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）的容器部署。 还可从容器注册表进行拉取并推送到相关 Azure 服务，例如 [AKS](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.md) 和 [Service Fabric](/azure/service-fabric/) 等。
+
+  * *参与者*：生成容器映像并将它们推送到注册表的持续集成和部署解决方案（如 Visual Studio Team Services (VSTS) 或 Jenkins）。
+
+> [!TIP]
+> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) 命令重新生成服务主体的密码。
+>
+
+还可以直接使用服务主体登录。 向 `docker login` 命令提供服务主体的应用 ID 和密码：
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -36,35 +69,37 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 登录后，Docker 会缓存凭据，因此无需记住应用 ID。
 
-> [!TIP]
-> 如需要，可通过运行 `az ad sp reset-credentials` 命令重新生成服务主体的密码。
->
-
-服务主体允许对注册表[基于角色的访问](../active-directory/role-based-access-control-configure.md)。 可用的角色如下：
-  * 读者（仅限拉取访问权限）。
-  * 参与者（拉取和推送）。
-  * 所有者（拉取、推送到其他用户并为其他用户分配角色）。
-
-匿名访问在 Azure 容器注册表上不可用。 对于公共映像，可以使用 [Docker 中心](https://docs.docker.com/docker-hub/)。
-
-可将多个服务主体分配到注册表中，这样就可为不同的用户或应用程序定义访问权限。 服务主体也在开发人员或 DevOps 方案中启用到注册表的“无外设”连接，如以下示例所示：
-
-  * 从注册表到业务流程系统的容器部署（包括 DC/OS、Docker Swarm 和 Kubernetes）。 还可将容器注册表拉取到相关 Azure 服务，例如[容器服务](../container-service/index.yml)、[应用服务](../app-service/index.yml)、[批处理](../batch/index.md)和 [Service Fabric](/azure/service-fabric/) 等。
-
-  * 构建容器映像并将它们推送到注册表的持续集成和部署解决方案（例如 Visual Studio Team Services 或 Jenkins）。
-
+可能会看到推荐使用 `--password-stdin` 参数的安全警告，具体取决于安装的 Docker 版本。 虽然本文中未介绍它的用法，但我们建议按照此最佳做法进行操作。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
 
 ## <a name="admin-account"></a>管理员帐户
-每创建一个注册表，会自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#create-a-container-registry)或使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md#create-a-container-registry)等启用它并管理凭据。 每个管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果帐户已启用，则可将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
+
+每个容器注册表包含一个管理员用户帐户，此帐户默认禁用。 可以在 [Azure 门户](container-registry-get-started-portal.md#create-a-container-registry)中或通过使用 Azure CLI 启用管理员用户并管理其凭据。
+
+> [!IMPORTANT]
+> 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 建议不要与多个用户共享管理员帐户凭据。 对于使用管理员帐户进行身份验证的所有用户，他们都将显示为对注册表具有推送和拉取访问权限的单个用户。 更改或禁用此帐户会禁用使用凭据的所有用户的注册表访问权限。 建议用户和服务主体在无外设方案中使用单个标识。
+>
+
+管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果管理员帐户已启用，则可将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
 
 ```
 docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 ```
 
-> [!IMPORTANT]
-> 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 不建议与其他用户共享管理员帐户凭据。 所有用户对于注册表都显示为单个用户。 更改或禁用此帐户会禁用所有使用凭据的用户的注册表访问权限。
->
+同样，为增强安全性，Docker 建议使用 `--password-stdin` 参数而不是在命令行上提供密码。 还可以仅指定用户名，而不指定 `-p`，并在出现提示时输入密码。
 
-### <a name="next-steps"></a>后续步骤
-* [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)。
-* 有关容器注册表预览版中身份验证的详细信息，请参阅[博客文章](https://blogs.msdn.microsoft.com/stevelasker/2016/11/17/azure-container-registry-user-accounts/)。
+若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az_acr_update) 命令的 `--admin-enabled` 参数：
+
+```azurecli
+az acr update -n <acrName> --admin-enabled true
+```
+
+可以在 Azure 门户中启用管理员用户，操作方法如下：导航你的注册表，在“设置”下选择“访问密钥”，然后在“管理员用户”下选择“启用”。
+
+![在 Azure 门户中启用管理员用户的用户界面][auth-portal-01]
+
+## <a name="next-steps"></a>后续步骤
+
+* [使用 Azure CLI 推送第一个映像](container-registry-get-started-azure-cli.md)
+
+<!-- IMAGES -->
+[auth-portal-01]: ./media/container-registry-authentication/auth-portal-01.png

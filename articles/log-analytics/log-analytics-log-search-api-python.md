@@ -4,23 +4,26 @@ description: "Log Analytics 日志搜索 API 允许任何 REST API 客户端从 
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/28/2017
+ms.date: 11/03/2017
 ms.author: bwren
-ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8a4ec7a6ddf2daeca6ead11460fa076a7eb5c94
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>使用 Python 脚本从 Log Analytics 中检索数据
 [Log Analytics 日志搜索 API](log-analytics-log-search-api.md) 允许任何 REST API 客户端从 Log Analytics 工作区中检索数据。  本文提供了使用 Log Analytics 日志搜索 API 的示例 Python 脚本。  
+
+>[!NOTE]
+> 本文对 Log Analytics 中的查询语言使用日志搜索 API。  将针对已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)的工作区，对本文进行更新。
 
 ## <a name="authentication"></a>身份验证
 此脚本使用 Azure Active Directory 中的服务主体向工作区进行身份验证。  服务主体允许客户端应用程序请求服务对帐户进行身份验证，即使客户端没有帐户名称，也是如此。 在运行此脚本之前，必须使用[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)中所述的过程创建服务主体。  需要向脚本提供应用程序 ID、租户 ID 和身份验证密钥。 

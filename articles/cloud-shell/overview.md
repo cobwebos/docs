@@ -12,18 +12,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/02/2017
 ms.author: juluk
-ms.openlocfilehash: 44d2ac2fd35621ab8cd8d7584744139ee3bab5c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3acea56ea414f0c43333a02274e91226db29d454
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell（预览版）的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
 它使用户能够灵活选择最适合自己工作方式的 shell 体验。
 Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
+
+通过 Azure 门户中的 Cloud Shell 图标启动：
+
+![门户启动](media/overview/portal-launch-icon.png)
+
+利用 Bash 或 PowerShell 中的 shell 选择器下拉列表：
 
 ![Cloud Shell 中的 Bash](media/overview/overview-bash-pic.png)
 
@@ -44,7 +50,7 @@ Cloud Shell 预安装了常用的命令行工具和语言支持，因此可以�
 查看 [Bash 体验](features.md#tools)和 [PowerShell 体验](features-powershell.md#tools)的完整工具列表。
 
 ### <a name="automatic-authentication"></a>自动化身份验证
-Cloud Shell 能够安全地自动针对每个会话执行身份验证以立即通过 Azure CLI 2.0 访问资源。
+Cloud Shell 能够安全地自动针对每个会话执行身份验证以立即通过 Azure CLI 2.0 或 Azure PowerShell cmdlet 访问资源。
 
 ### <a name="connect-your-azure-file-storage"></a>连接 Azure 文件存储
 Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 `clouddrive` 来持久保存 $Home 目录。
@@ -90,7 +96,7 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 在 [Cloud Shell 中的 Bash](quickstart.md) 和 [Cloud Shell 中的 PowerShell](quickstart-powershell.md) 的快速入门中尝试这些示例。
 
 ## <a name="pricing"></a>定价
-承载 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
+托管 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
 
 ## <a name="supported-browsers"></a>支持的浏览器
 建议为 Cloud Shell 使用 Chrome、Edge 和 Safari。

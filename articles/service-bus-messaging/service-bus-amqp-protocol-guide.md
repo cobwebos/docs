@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/08/2017
 ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 2ef07d78a9d81fac933f2c3359e9ee48f86e6790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
 高级消息队列协议 1.0 是一种标准化组帧和传输协议，能够以异步、安全且可靠的方式在两方之间传输消息。 它是 Azure 服务总线消息传送和 Azure 事件中心的主要协议。 这两种服务还支持 HTTPS。 同时支持的专用 SBMP 协议即将淘汰并由 AMQP 取代。
 
 AMQP 1.0 是中间件供应商（例如 Microsoft 和 Red Hat）与许多消息传送中间件用户（例如代表金融服务行业的 JP Morgan Chase）广泛合作的成果。 OASIS 是 AMQP 协议和扩展规范的技术标准化论坛，它已获 ISO/IEC 19494 国际标准的官方批准。
 
-## 目标
+## <a name="goals"></a>目标
 
 本文简要说明 AMQP 1.0 消息传送规范的核心概念以及当前正由 OASIS AMQP 技术委员定案的一小部分草稿扩展规范，并说明 Azure 服务总线如何根据这些规范进行实现和构建。
 
 目的是要让在任何平台上使用任何现有 AMQP 1.0 客户端堆栈的开发人员通过 AMQP 1.0 与 Azure 服务总线交互。
 
-常见的通用型 AMQP 1.0 堆栈（例如 Apache Proton 或 AMQP.NET Lite）已实现所有核心 AMQP 1.0 手势。 这些基本手势有时以更高级别的 API 包装；Apache Proton 甚至提供两个 API：命令式 Messenger API 和反应式 Reactor API。
+常见的通用型 AMQP 1.0 堆栈（例如 Apache Proton 或 AMQP.NET Lite）已实现所有核心 AMQP 1.0 协议。 这些基本手势有时以更高级别的 API 包装；Apache Proton 甚至提供两个 API：命令式 Messenger API 和反应式 Reactor API。
 
 在以下介绍中，我们假设 AMQP 连接、会话和链接的管理以及帧传输和流量控制的处理都由相应的堆栈（例如 Apache Proton-C）处理，而不需要应用程序开发人员特别注意。 抽象假设存在一些 API 基元（例如连接能力）以及创建某种形式的 sender 和 receiver 抽象对象的能力，并分别具有 `send()` 和 `receive()` 的某种形式的操作。
 
 介绍 Azure 服务总线的高级功能（例如消息浏览或会话管理）时，以 AMQP 术语说明这些功能，但也可作为一种分层虚拟实现，基于此假设的 API 抽象。
 
-## AMQP 是什么？
+## <a name="what-is-amqp"></a>AMQP 是什么？
 
 AMQP 是一种组帧和传输协议。 组帧表示它为以网络连接的任一方向流入的二进制数据流提供结构。 该结构针对要在已连接方之间交换的不同数据块（称为“帧”）提供略图。 传输功能确保通信双方都可以对于何时应发送帧以及传输何时应视为完成建立共识。
 
@@ -48,13 +48,13 @@ AMQP 是一种组帧和传输协议。 组帧表示它为以网络连接的任�
 
 AMQP 1.0 协议被设计为可扩展，允许进一步规范以增强其功能。 本文档中介绍的三个扩展规范会说明这点。 在通过可能难以设置本机 AMQP TCP 端口的现有 HTTPS/WebSockets 基础结构进行的通信中，绑定规范定义如何通过 WebSockets 将 AMQP 分层。 以请求/响应方式与消息传送基础结构交互，以便进行管理或提供高级功能时，AMQP 管理规范定义所需的基本交互基元。 在联合授权模型集成中，AMQP 基于声明的安全规范定义如何关联和续订与链接关联的授权令牌。
 
-## 基本 AMQP 方案
+## <a name="basic-amqp-scenarios"></a>基本 AMQP 方案
 
 本部分说明 AMQP 1.0 与 Azure 服务总线的基本使用方式，其中包括创建连接、会话和链接，以及与服务总线实体（例如队列、主题和订阅）相互传输消息。
 
 了解 AMQP 工作原理的最权威来源是 AMQP 1.0 规范，但此规范是为了精确引导实现而编写，而非用于传授协议知识。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[此视频课程][this video course]。
 
-### 连接和会话
+### <a name="connections-and-sessions"></a>连接和会话
 
 AMQP 将通信程序称为容器；其中包含节点，即这些容器内的通信实体。 队列可以是此类节点。 AMQP 允许多路复用，因此单个连接可用于节点之间的许多通信路径；例如，应用程序客户端可以同时从一个队列接收，并通过相同的网络连接发送到另一个队列。
 
@@ -81,7 +81,7 @@ Azure 服务总线目前只对每个连接使用一个会话。 服务总线标�
 
 连接、通道和会话是暂时性的。 如果基础连接失效，则必须重新创建连接、TLS 隧道、SASL 授权上下文和会话。
 
-### 链接
+### <a name="links"></a>链接
 
 AMQP 通过链接传输消息。 链接是在能以单个方向传输消息的会话中创建的通信路径；传输状态协商通过链接在已连接方之间双向进行。
 
@@ -97,7 +97,7 @@ AMQP 通过链接传输消息。 链接是在能以单个方向传输消息的�
 
 正在连接的客户端也必须使用本地节点名称来创建链接；服务总线不规范这些节点名称，并且不进行解释。 AMQP 1.0 客户端堆栈通常使用方案，以确保这些暂时节点名称是客户端范围内的唯一名称。
 
-### 传输
+### <a name="transfers"></a>传输
 
 建立链接后，即可通过该链接传输消息。 在 AMQP 中，使用明确的协议手势运行传输（传输行为原语），以通过链接将消息从发送者转到接收者。 传输在“安置好”时完成，这意味着双方已建立该传输结果的共识。
 
@@ -117,7 +117,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 为了弥补可能的重复发送，服务总线支持重复检测队列和主题（可选功能）。 重复检测在用户定义的时段内记录所有传入消息的消息 ID，并以无消息方式放弃在该相同时段内使用相同消息 ID 发送的所有消息。
 
-### 流量控制
+### <a name="flow-control"></a>流量控制
 
 除了以前介绍过的会话级别流量控制模型以外，每个链接都有自己的流量控制模型。 会话级别流量控制可防止容器必须一次处理太多帧，链接级别流量控制让应用程序负责控制它想要从链接处理的消息数目以及时机。
 
@@ -141,49 +141,49 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 下表中的箭头显示行为原语流程方向。
 
-#### 创建消息接收者
+#### <a name="create-message-receiver"></a>创建消息接收者
 
 | 客户端 | 服务总线 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link id}<br/>) |客户端作为接收者附加到实体 |
 | 附加到链接末尾的服务总线回复 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link id}<br/>) |
 
-#### 创建消息发送者
+#### <a name="create-message-sender"></a>创建消息发送者
 
 | 客户端 | 服务总线 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |无操作 |
 | 无操作 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
 
-#### 创建消息发送者（错误）
+#### <a name="create-message-sender-error"></a>创建消息发送者（错误）
 
 | 客户端 | 服务总线 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |无操作 |
 | 无操作 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
-#### 关闭消息接收者/发送者
+#### <a name="close-message-receiversender"></a>关闭消息接收者/发送者
 
 | 客户端 | 服务总线 |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |无操作 |
 | 无操作 |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
-#### 发送（成功）
+#### <a name="send-success"></a>发送（成功）
 
 | 客户端 | 服务总线 |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |无操作 |
 | 无操作 |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
-#### 发送（错误）
+#### <a name="send-error"></a>发送（错误）
 
 | 客户端 | 服务总线 |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |无操作 |
 | 无操作 |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
-#### 接收
+#### <a name="receive"></a>接收
 
 | 客户端 | 服务总线 |
 | --- | --- |
@@ -191,7 +191,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | 无操作 |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=**receiver**,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |无操作 |
 
-#### 多消息接收
+#### <a name="multi-message-receive"></a>多消息接收
 
 | 客户端 | 服务总线 |
 | --- | --- |
@@ -201,11 +201,11 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | 无操作 |< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |无操作 |
 
-### 消息
+### <a name="messages"></a>消息
 
 以下部分说明服务总线使用标准 AMQP 消息部分中的哪些属性，以及它们如何映射到服务总线 API 集。
 
-#### 标头的值开始缓存响应
+#### <a name="header"></a>标头的值开始缓存响应
 
 | 字段名称 | 使用情况 | API 名称 |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### properties
+#### <a name="properties"></a>properties
 
 | 字段名称 | 使用情况 | API 名称 |
 | --- | --- | --- |
@@ -233,18 +233,18 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | group-sequence |用于标识消息在会话内的相对序列号的计数器。 服务总线会将其忽略。 |无法通过服务总线 API 访问。 |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
-## 高级服务总线功能
+## <a name="advanced-service-bus-capabilities"></a>高级服务总线功能
 
 本部分介绍 Azure 服务总线的高级功能，这些功能基于 AMQP 的 OASIS 技术委员会目前正在开发的 AMQP 草稿扩展。 服务总线实现这些草稿的最新版本，并且采用这些草稿达到标准状态时所引进的更改。
 
 > [!NOTE]
-> 服务总线消息高级操作通过请求/响应模式受到支持。 [服务总线中的 AMQP 1.0：基于请求/响应的操作](service-bus-amqp-request-response.md)文档中详细介绍了这些操作。
+> 服务总线消息高级操作通过请求/响应模式受到支持。 [服务总线中的 AMQP 1.0：基于请求/响应的操作](service-bus-amqp-request-response.md)文章中详细介绍了这些操作。
 > 
 > 
 
-### AMQP 管理
+### <a name="amqp-management"></a>AMQP 管理
 
-AMQP 管理规范是在此介绍的第一个草稿扩展。 此规范定义一组基于 AMQP 协议的协议手势，以便通过 AMQP 进行消息基础结构的管理交互。 此规范定义泛型操作（例如“创建”、“读取”、“更新”和“删除”），以便管理消息传送基础结构内的实体和一组查询操作。
+AMQP 管理规范是本文中介绍的第一个草稿扩展。 此规范定义一组基于 AMQP 协议的协议，以便通过 AMQP 进行消息基础结构的管理交互。 此规范定义泛型操作（例如“创建”、“读取”、“更新”和“删除”），以便管理消息传送基础结构内的实体和一组查询操作。
 
 上述所有手势都需要客户端与消息传送基础结构之间的请求/响应交互，因此此规范定义如何制作 AMQP 上交互模式的模型：客户端连接到消息传送基础结构、启动会话，并创建一组链接。 在某一个链接上，客户端扮演发送者，而在其他链接上扮演接收者，因此创建一组可作为双向通道的链接。
 
@@ -263,7 +263,7 @@ AMQP 管理规范是在此介绍的第一个草稿扩展。 此规范定义一�
 
 服务总线目前不实现管理规范的任何核心功能，但是对基于声明的安全性功能以及将在以下部分中介绍的几乎所有高级功能而言，管理规范所定义的请求/响应模式是重要的基础。
 
-### 基于声明的授权
+### <a name="claims-based-authorization"></a>基于声明的授权
 
 AMQP 基于声明的授权 (CBS) 规范草案基于管理规范的请求/响应模式，主要说明如何配合使用联合安全令牌与 AMQP 的广义模型。
 
@@ -316,7 +316,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 
 客户端后续负责跟踪令牌过期时间。 令牌过期时，服务总线将立即删除相应实体连接上的所有链接。 若要避免这种情况，客户端随时可以通过具有相同 put-token 手势的虚拟 $cbs 管理节点，使用新的令牌来替换节点的令牌，且不干扰在不同链接上流动的有效负载流量。
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 若要了解有关 AMQP 的详细信息，请访问以下链接：
 

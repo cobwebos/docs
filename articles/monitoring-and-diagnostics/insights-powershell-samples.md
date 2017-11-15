@@ -1,8 +1,8 @@
 ---
 title: "Azure 监视器 PowerShell 快速入门示例。 | Microsoft 文档"
 description: "使用 PowerShell 访问 Azure 监视器功能，如自动缩放、警报、webhook 和搜索活动日志。"
-author: kamathashwin
-manager: orenr
+author: rboucher
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: ashwink
-ms.openlocfilehash: 48f064884c2a6d0a55cc58a44169ed03c62de46d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: robb
+ms.openlocfilehash: 60048ab8e0118bc67850aa6ad91c82dcf8122b1d
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
-本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
+本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。 通过 Azure Monitor 可自动缩放云服务、虚拟机和 Web 应用。 还可发送警报通知或根据配置的遥测数据的值调用 Web URL。
 
 > [!NOTE]
-> 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及以下命令仍包含“insights”。
+> 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及以下命令仍包含“insights”一词。
 > 
 > 
 
@@ -41,13 +41,13 @@ ms.lasthandoff: 10/11/2017
 Login-AzureRmAccount
 ```
 
-这要求进行登录。 登录后，将看到帐户、TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令。
+会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令：
 
 ```PowerShell
 Get-AzureRmSubscription
 ```
 
-要将工作上下文更改为其他订阅，请使用以下命令。
+若要将工作环境更改为另一订阅，请使用以下命令：
 
 ```PowerShell
 Set-AzureRmContext -SubscriptionId <subscriptionid>
@@ -101,7 +101,7 @@ Get-AzureRmLog -MaxEvents 1000
 > 
 
 ## <a name="retrieve-alerts-history"></a>检索警报历史记录
-若要查看所有警报事件，可以使用以下示例查询 Azure Resource Manager 日志。
+若要查看所有警报事件，可以使用以下示例查询 Azure 资源管理器日志。
 
 ```PowerShell
 Get-AzureRmLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
@@ -139,9 +139,9 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 `Get-AzureRmAlertRule` 支持其他参数。 有关详细信息，请参阅 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx)。
 
 ## <a name="create-metric-alerts"></a>创建指标警报
-可以使用 `Add-AlertRule` cmdlet 来创建、更新或禁用警报规则。
+可使用 `Add-AlertRule` cmdlet 来创建、更新或禁用警报规则。
 
-可以分别使用 `New-AzureRmAlertRuleEmail` 和 `New-AzureRmAlertRuleWebhook` 创建电子邮件和 webhook 属性。 在警报规则 cmdlet 中，将这些作为操作分配给警报规则的**操作**属性。
+可以分别使用 `New-AzureRmAlertRuleEmail` 和 `New-AzureRmAlertRuleWebhook` 创建电子邮件和 webhook 属性。 在警报规则 cmdlet 中，将这些属性作为操作分配给警报规则的“操作”属性。
 
 下表描述了用于使用指标创建警报的参数和值。
 
@@ -204,7 +204,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 资源（例如 Web 应用、VM、云服务或虚拟机规模集）只能有一种为其配置的自动缩放设置。
 但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅[如何自动缩放应用程序](../cloud-services/cloud-services-how-to-scale.md)。
 
-下面列出了要使用的步骤：
+请使用以下步骤：
 
 1. 创建规则。
 2. 创建配置文件，将之前创建的规则映射到该配置文件。
@@ -219,7 +219,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 $rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-接下来，创建向内扩展规则，实例计数减少。
+随后，创建向内扩展规则，实例计数减少。
 
 ```PowerShell
 $rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
@@ -243,7 +243,7 @@ $webhook_scale = New-AzureRmAutoscaleWebhook -ServiceUri "https://example.com?my
 $notification1= New-AzureRmAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-最后，创建自动缩放设置以添加上面创建的配置文件。
+最后，创建自动缩放设置以添加之前创建的配置文件。 
 
 ```PowerShell
 Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
@@ -289,7 +289,7 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活动日志的日志配置文件
-可以创建日志配置文件并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 注意，目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzureRmContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
+可以创建日志配置文件并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzureRmContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
 
 ### <a name="get-a-log-profile"></a>获取日志配置文件
 若要提取现有日志配置文件，请使用 `Get-AzureRmLogProfile` cmdlet。
@@ -312,14 +312,19 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 ```
 
 ### <a name="add-log-profile-with-retention-and-eventhub"></a>添加具有保留期和 EventHub 的日志配置文件
-除了将数据路由到存储帐户，还可以流式传输到事件中心。 请注意，在此预览版本中，存储帐户配置是必需的，但事件中心配置是可选的。
+除了将数据路由到存储帐户，还可以流式传输到事件中心。 在此预览版本中，存储帐户配置是必需的，但事件中心配置是可选的。
 
 ```PowerShell
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>配置诊断日志
-许多 Azure 服务都提供其他日志和遥测，这些日志和遥测可以配置为在 Azure 存储帐户中保存数据，并将数据发送到事件中心以及/或者发送到 OMS Log Analytics 工作区。 该操作只能在资源级别执行，并且存储帐户或事件中心应与配置诊断设置的目标资源处于相同的区域中。
+许多 Azure 服务提供额外的日志和遥测，可执行以下一项或多项操作： 
+ - 配置为将数据存储在 Azure 存储帐户中
+ - 发送到事件中心
+ - 发送到 OMS Log Analytics 工作区。 
+
+只能在资源级别执行该操作。 存储帐户或事件中心应与配置诊断设置的目标资源处于相同的区域中。
 
 ### <a name="get-diagnostic-setting"></a>获取诊断设置
 ```PowerShell

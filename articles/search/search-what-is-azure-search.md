@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 06/26/2017
 ms.author: ashmaka
-ms.openlocfilehash: f1a3e91a5de1962d2c060e030b3d662b0f4c1da8
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9893be47ec0c2f58ca206ec7c1bce13734513390
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 和工具，以便基于 Web、移动和企业应用程序中的数据添加丰富的搜索体验。
@@ -30,11 +30,10 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 | 类别 | 功能 |
 |----------|----------|
-|全文搜索和文本分析 | [**全文搜索**](search-lucene-query-architecture.md)是大多数基于搜索的应用的主要用例。 查询可以使用支持的语法进行表述。 <br/><br/>[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)提供逻辑运算符、短语搜索运算符、后缀运算符和优先运算符。<br/><br/>[Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)包括简单语法中的所有操作，以及模糊搜索、邻近搜索、术语提升和正则表达式扩展。| 
+|全文搜索和文本分析 | [全文搜索](search-lucene-query-architecture.md)是大多数基于搜索的应用的主要用例。 查询可以使用支持的语法进行表述。 <br/><br/>[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)提供逻辑运算符、短语搜索运算符、后缀运算符和优先运算符。<br/><br/>[Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)包括简单语法中的所有操作，以及模糊搜索、邻近搜索、术语提升和正则表达式扩展。| 
 | 数据集成 | Azure 搜索索引接受来自任何源的数据，前提是以 JSON 数据结构提交这些数据。 <br/><br/> （可选）对于 Azure 中支持的数据源，可以使用[**索引器**](search-indexer-overview.md)自动爬网式搜索 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-documentdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以便将搜索索引的内容与主要数据存储同步。 Azure Blob 索引器可以执行“文档破解”来实现[主要文件格式的索引编制](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文档。 |
-| 搜索分析 | [**自定义词汇分析器**](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)适用于使用拼音匹配和正则表达式的复杂搜索查询。 |
-| 语言支持 | Lucene 的[**语言分析器**](https://docs.microsoft.com/rest/api/searchservice/language-support)和采用 56 种不同语言的 Microsoft 自然语言处理器智能处理特定于语言的语言学，包括谓词时态、词性、不规则复数名词（例如“mouse”与“mice”）、词取消复合、词拆分（对于不带空格的语言）等。 |
-| 地理搜索 | Azure 搜索可以智能地处理、筛选和显示地理位置。 它可以让用户基于搜索结果与物理位置的临近程度浏览数据。 [观看此视频](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)或[查看此示例](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)了解详细信息。 |
+| 语言分析 | 分析器是在编制索引和搜索操作期间用于处理文本的组件。 有两种类型。 <br/><br/>[自定义词汇分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)用于使用拼音匹配和正则表达式的复杂搜索查询。 <br/><br/>Lucene 或 Microsoft 的[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)用于智能处理特定于语言的语言学，包括谓词时态、词性、不规则复数名词（例如“mouse”与“mice”）、词取消复合、词拆分（对于不带空格的语言）等。 |
+| 地理搜索 | Azure 搜索可以处理、筛选和显示地理位置。 它可以让用户基于搜索结果与物理位置的临近程度浏览数据。 [观看此视频](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)或[查看此示例](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)了解详细信息。 |
 | 用户体验功能 | 可在搜索栏中为提前键入查询启用[**搜索建议**](https://docs.microsoft.com/rest/api/searchservice/suggesters)。 当用户输入部分搜索输入内容时，会显示索引中实际文档的建议。 <br/><br/>通过单个查询参数实现[**分面导航**](https://docs.microsoft.com/azure/search/search-faceted-navigation)。 Azure 搜索返回一个分面导航结构，可以将该结构用作类别列表背后的代码，用于自定向筛选（例如，按价格范围或品牌来筛选目录项）。 <br/><br/> 可以使用[**筛选器**](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)将分面导航纳入到应用程序的 UI 中，改进查询表述，以及基于用户或开发人员指定的条件进行筛选。 可以使用 OData 语法创建筛选器。<br/><br/> [命中项突出显示](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)向搜索结果中的匹配关键字应用文本格式设置。 可以选择哪些字段返回突出显示的片段。<br/><br/>[**排序**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)通过索引架构覆盖多个字段，可以使用一个搜索参数在查询时进行切换。<br/><br/> 通过 Azure 搜索所提供的对搜索结果的优化控制，[**分页**](search-pagination-page-layout.md)和限制搜索结果将变得更简单。  
 | 相关性 | [**简单计分**](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)是 Azure 搜索的主要优势。 计分配置文件用于在文档中自行将相关性建模为值的函数。 例如，你可能希望较新产品或打折产品显示在搜索结果的顶部位置。 也可以基于已跟踪和单独存储的客户搜索首选项将标记用于个性化计分，来生成计分配置文件。 |
 | 监视和报告 | 可以收集并分析[**搜索流量分析**](search-traffic-analytics.md)，以根据用户键入到搜索框的内容来解锁见解。 <br/><br/>门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。 还可以轻松监视索引和文档计数，以便可以根据需要调整容量。 有关详细信息，请参阅[服务管理](search-manage.md)。 |

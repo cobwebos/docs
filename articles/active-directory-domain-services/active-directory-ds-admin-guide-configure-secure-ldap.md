@@ -4,7 +4,7 @@ description: "为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 93afa49166c5b31d23237c308b9d34f6d6f3507d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05af1ccc9702891980e60a1c1db4c527ffbed0fa
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 本文说明如何为 Azure AD 域服务托管域启用安全轻量目录访问协议 (LDAPS)。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的轻量目录访问协议 (LDAP)。
@@ -55,29 +55,34 @@ ms.lasthandoff: 10/11/2017
 ## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>任务 1 - 获取安全 LDAP 的证书
 第一个任务涉及到获取证书，该证书用于对托管域进行安全 LDAP 访问。 可以使用两个选项：
 
-* 从证书颁发机构获取证书。 颁发机构可以是公共证书颁发机构。
+* 从公共证书颁发机构获取证书。
 * 创建自签名证书。
-
-### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>选项 A（建议）- 从证书颁发机构获取安全 LDAP 证书
-如果组织从公共证书颁发机构获取其证书，则需要从该公共证书颁发机构获取安全 LDAP 证书。
-
-请求证书时，请务必满足[安全 LDAP 证书的要求](#requirements-for-the-secure-ldap-certificate)中所述的所有要求。
 
 > [!NOTE]
 > 需要使用安全 LDAP 连接到托管域的客户端计算机必须信任安全 LDAP 证书的颁发者。
 >
+
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>选项 A（建议）- 从证书颁发机构获取安全 LDAP 证书
+如果组织从公共证书颁发机构获取其证书，则请从该公共证书颁发机构获取安全 LDAP 证书。
+
+> [!TIP]
+> 为具有“onmicrosoft.com”域后缀的托管域使用自签名证书。
+> 如果托管域的 DNS 域名以“.onmicrosoft.com”结尾，则无法从公共证书颁发机构获取安全 LDAP 证书。 由于 Microsoft 拥有“onmicrosoft.com”域，因此公共证书颁发机构将拒绝向具有此后缀的域颁发安全 LDAP 证书。 在此方案中将创建自签名证书，并使用它来配置安全 LDAP。
 >
 
+确保由公共证书颁发机构颁发的证书满足[安全 LDAP 证书要求](#requirements-for-the-secure-ldap-certificate)中列出的全部要求。
+
+
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>选项 B - 为安全 LDAP 创建自签名证书
-如果不想使用公共证书颁发机构颁发的证书，可以选择为安全 LDAP 创建自签名证书。
+如果不想使用公共证书颁发机构颁发的证书，可以选择为安全 LDAP 创建自签名证书。 如果托管域的 DNS 域名以“.onmicrosoft.com”结尾，请选择此选项。
 
 **使用 PowerShell 创建自签名证书**
 
 在 Windows 计算机上以**管理员**身份打开新的 PowerShell 窗口，并输入以下命令创建新的自签名证书。
-
-    $lifetime=Get-Date
-
-    New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
+```
+$lifetime=Get-Date
+New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
+```
 
 在上述示例中，请将“*.contoso100.com”替换为托管域的 DNS 域名。例如，如果创建了名为“contoso100.onmicrosoft.com”的托管域，则将上述脚本中的“*.contoso100.com”替换为“*.contoso100.onmicrosoft.com”。
 
