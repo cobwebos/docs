@@ -4,7 +4,7 @@ description: "了解 Azure HDInsight 上的 Spark 群集所提供的 Jupyter 笔
 keywords: "spark 中的 jupyter 笔记本,jupyter spark"
 services: hdinsight
 documentationcenter: 
-author: maxluk
+author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
-ms.author: maxluk
-ms.openlocfilehash: 74c761caf1a4d51f199ba0315535ccac63eaf37a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: nitinme
+ms.openlocfilehash: 8ac45408dab31566be3089cbf2cd7d31d54b1655
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核 
 

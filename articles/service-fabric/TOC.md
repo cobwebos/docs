@@ -250,8 +250,6 @@
 ### [在 Eclipse 中调试 Java 服务](service-fabric-debugging-your-application-java.md)
 ### [在本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## [将 API 管理和 Service Fabric 部署到 Azure](service-fabric-api-management-quick-start.md)
-
 ## 从云服务迁移
 ### [比较云服务和 Service Fabric](service-fabric-cloud-services-migration-differences.md)
 ### [迁移到 Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -265,7 +263,6 @@
 #### [Azure 资源管理器](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
-#### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### 升级应用程序
@@ -281,11 +278,8 @@
 ##### [运行工作负荷期间](service-fabric-testability-workload-tests.md)
 ##### [使用测试方案](service-fabric-testability-scenarios.md)
 ##### [使用节点转换 API](service-fabric-node-transition-apis.md)
-#### [对应用程序进行负载测试](service-fabric-vso-load-test.md)
 
-### 设置持续集成
-#### [使用 VSTS 设置持续集成](service-fabric-set-up-continuous-integration.md)
-#### [使用 Jenkins 部署 Linux Java 应用程序](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### [使用 Jenkins 部署 Linux Java 应用程序](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 
 ## 创建和管理群集
 ### Azure 上的群集
@@ -319,21 +313,6 @@
 ### [可视化群集](service-fabric-visualizing-your-cluster.md)
 ### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 ### [修补群集节点](service-fabric-patch-orchestration-application.md)
-
-### 管理和协调群集资源
-#### [群集 Resource Manager 概述](service-fabric-cluster-resource-manager-introduction.md)
-#### [群集 Resource Manager 体系结构](service-fabric-cluster-resource-manager-architecture.md)
-#### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
-#### [应用程序组概述](service-fabric-cluster-resource-manager-application-groups.md)
-#### [配置群集 Resource Manager 设置](service-fabric-cluster-resource-manager-configure-services.md)
-#### [资源消耗度量值](service-fabric-cluster-resource-manager-metrics.md)
-#### [使用服务相关性](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-#### [服务放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-#### [管理群集](service-fabric-cluster-resource-manager-management-integration.md)
-#### [群集碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-#### [均衡群集](service-fabric-cluster-resource-manager-balancing.md)
-#### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
-#### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## 监视和诊断
 ### OMS

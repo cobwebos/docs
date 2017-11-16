@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 08f860dcf0f1d6c69cee02261b2a4989fc5c694a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92339548768878d03b864853172f3e94ad899693
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
 
@@ -52,7 +52,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 - **Service principal** 是与帐户关联的 Azure Active Directory (AAD) 服务主体。
 - **FINGRP** 是在 AAD 中创建的用户组，其中包含财务组织中的用户。
 
-有关如何创建 AAD 应用程序（以及创建服务主体）的说明，请参阅[创建 AAD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。 有关如何在 AAD 中创建用户组的说明，请参阅[在 Azure Active Directory 中管理组](../active-directory/active-directory-accessmanagement-manage-groups.md)。
+有关如何创建 AAD 应用程序（以及创建服务主体）的说明，请参阅[创建 AAD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。 有关如何在 AAD 中创建用户组的说明，请参阅[在 Azure Active Directory 中管理组](../active-directory/active-directory-groups-create-azure-portal.md)。
 
 需要考虑一些要点。
 

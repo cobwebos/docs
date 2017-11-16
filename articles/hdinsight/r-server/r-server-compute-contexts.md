@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: e15a263879ddc0edabc301201019f4209eee1058
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 24df96f55b0f207d8576bd05c2c83a884e7fc2bd
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Compute context options for R Server on HDInsight（适用于 HDInsight 上的 R Server 的计算上下文选项）
 
@@ -83,6 +83,5 @@ Microsoft R Server on Azure HDInsight 通过设置计算上下文来控制执行
 
 * [Hadoop 的 R Server 概述](r-server-overview.md)
 * [R Server for Hadoop 入门](r-server-get-started.md)
-* [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中添加）](r-server-install-r-studio.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](r-server-storage.md)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)之后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 4. 删除任何正在运行的应用程序实例
 5. 删除应用程序实例
 
-在 Visual Studio 中，按 F5 部署应用程序，然后将调试程序附加到所有应用程序实例。 可以按 **Ctrl+F5** 部署应用程序而不进行调试，也可以使用发布配置文件将应用程序发布到本地或远程群集。 有关详细信息，请参阅[使用 Visual Studio 将应用程序发布到远程群集](service-fabric-publish-app-remote-cluster.md)。
+在 Visual Studio 中，按 F5 部署应用程序，然后将调试程序附加到所有应用程序实例。 可以按 **Ctrl+F5** 部署应用程序而不进行调试，也可以使用发布配置文件将应用程序发布到本地或远程群集。 
 
 ### <a name="application-debug-mode"></a>应用程序调试模式
 Visual Studio 提供一个名为“应用程序调试模式”的属性，它控制 Visual Studio 在调试时如何处理应用程序部署。

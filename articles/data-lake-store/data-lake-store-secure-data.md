@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 70483cc7edf0aa9eaac03bbd0dc9b7e8b946a7ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7cadb45202c7221876d377546e7c17199ec15809
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>保护 Azure Data Lake Store 中存储的数据
 保护 Azure Data Lake Store 中的数据包含三个步骤。
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>在 Azure Active Directory 中创建安全组
-有关如何创建 AAD 安全组和如何添加用户到组的说明，请参阅[管理 Azure Active Directory 中的安全组](../active-directory/active-directory-accessmanagement-manage-groups.md)。
+有关如何创建 AAD 安全组和如何添加用户到组的说明，请参阅[管理 Azure Active Directory 中的安全组](../active-directory/active-directory-groups-create-azure-portal.md)。
 
 > [!NOTE] 
 > 可以使用 Azure 门户在 Azure AD 中向组添加用户和其他组。 不过，要将服务主体添加到组，请使用 [Azure AD 的 PowerShell 模块](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)。
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 > ```
  
 ## <a name="assign-users-or-security-groups-to-azure-data-lake-store-accounts"></a>将用户或安全组分配给 Azure Data Lake Store 帐户
-将用户或安全组分配到 Azure Data Lake Store 后，可使用 Azure 门户和 Azure Resource Manager API 控制帐户上的管理操作访问权限。 
+将用户或安全组分配到 Azure Data Lake Store 后，可使用 Azure 门户和 Azure 资源管理器 API 控制帐户上的管理操作访问权限。 
 
 1. 打开 Azure Data Lake Store 帐户。 在左窗格中，单击“浏览”，单击“Data Lake Store”，并在“Data Lake Store”边栏选项卡，单击要向其分配用户或安全组的帐户的名称。
 
@@ -125,7 +125,7 @@ Azure Data Lake Store 允许进一步在网络级别锁定访问权限。 可启
 ![防火墙设置和 IP 访问](./media/data-lake-store-secure-data/firewall-ip-access.png "防火墙设置和 IP 地址")
 
 ## <a name="remove-security-groups-for-an-azure-data-lake-store-account"></a>删除 Azure Data Lake Store 帐户的安全组
-从 Azure Data Lake Store 帐户删除安全组时，使用 Azure 门户 和 Azure Resource Manager API 仅会更改此帐户上的管理操作访问权限。
+从 Azure Data Lake Store 帐户删除安全组时，使用 Azure 门户 和 Azure 资源管理器 API 仅会更改此帐户上的管理操作访问权限。
 
 1. 在“Data Lake Store 帐户”边栏选项卡中，单击“设置”。 在“设置”边栏选项卡中，单击“用户”。
    

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: terrylan
-ms.openlocfilehash: 8d00882caf5411240c5f0a3533c78c3dbe361ef2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e816f151ea1f71770f00d6d77b65395fe080da3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云 (SaaS) 应用提供单一登录，并提供对你在本地运行的 Web 应用的访问。
@@ -57,7 +57,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 
 * [单一登录概述](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../active-directory/active-directory-appssoaccess-whatis.md)
-* [将 Azure Active Directory 单一登录与 SaaS 应用相集成](../active-directory/active-directory-sso-integrate-saas-apps.md)
+* [将 Azure Active Directory 单一登录与 SaaS 应用相集成](../active-directory/active-directory-enterprise-apps-manage-sso.md)
 
 ## <a name="reverse-proxy"></a>反向代理
 使用 Azure AD 应用程序代理可以在专用网络内部发布本地应用程序（例如 [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) 站点、[Outlook Web 应用](https://technet.microsoft.com/library/jj657718.aspx)和基于 [IIS](http://www.iis.net/) 的应用），并网络之外的用户提供安全访问。 应用程序代理为许多类型的本地 Web 应用程序和 Azure AD 支持的数以千计的 SaaS 应用程序提供远程访问和单一登录 (SSO)。 员工可以从家中他们自己的设备登录到应用，并通过此基于云的代理进行身份验证。
@@ -67,7 +67,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 * [启用 Azure AD 应用程序代理](../active-directory/active-directory-application-proxy-enable.md)
 * [使用 Azure AD 应用程序代理发布应用程序](../active-directory/active-directory-application-proxy-publish.md)
 * [使用应用程序代理的单一登录](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
-* [使用条件性访问](../active-directory/active-directory-application-proxy-conditional-access.md)
+* [使用条件性访问](../active-directory/application-proxy-enable-remote-access-sharepoint.md)
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。 MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码和第三方 OAuth 令牌）来提供强大的身份验证。

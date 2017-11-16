@@ -16,6 +16,7 @@
 ### [MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
 ### [性能层](performance-tiers.md)
 ### [数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [容量限制](sql-data-warehouse-service-capacity-limits.md)
 ### [常见问题](sql-data-warehouse-overview-faq.md)
 
 ## 备份和还原
@@ -147,7 +148,7 @@
 
 # 引用
 
-## [容量限制](sql-data-warehouse-service-capacity-limits.md)
+
 ## T-SQL
 ### [完整参考信息](https://docs.microsoft.com/sql/t-sql/language-reference/)
 ### [SQL DW 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)

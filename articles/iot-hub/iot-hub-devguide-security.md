@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 11/13/2017
 ms.author: dobett
-ms.openlocfilehash: a038a46c98af5b434456e1bb979fc6cd8e009d76
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 24cdfa1deb7b597023288bdc59ff7e196b69580d
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -64,7 +64,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 安全凭据（例如对称密钥）永远不会通过网络发送。
 
 > [!NOTE]
-> 如同 [Azure Resource Manager][lnk-azure-resource-manager] 中的所有提供程序一样，Azure IoT 中心资源提供程序也通过 Azure 订阅受到保护。
+> 如同 [Azure 资源管理器][lnk-azure-resource-manager]中的所有提供程序一样，Azure IoT 中心资源提供程序也通过 Azure 订阅受到保护。
 
 有关如何构造和使用安全令牌的详细信息，请参阅 [IoT 中心安全令牌][lnk-sas-tokens]。
 
@@ -470,7 +470,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-sas-tokens]: iot-hub-devguide-security.md#security-tokens
 [lnk-amqp]: https://www.amqp.org/
 [lnk-azure-resource-manager]: ../azure-resource-manager/resource-group-overview.md
-[lnk-cbs]: https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc
+[lnk-cbs]: https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc
 [lnk-event-hubs-publisher-policy]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab
 [lnk-management-portal]: https://portal.azure.com
 [lnk-sasl-plain]: http://tools.ietf.org/html/rfc4616

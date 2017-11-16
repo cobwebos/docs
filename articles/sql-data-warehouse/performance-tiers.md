@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/23/2017
+ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: ffeaec73a38939783174c71641c3618f4f8a3c1b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c403a73d03fd5152e2c0617b3e3784926c28f5c3
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Azure SQL 数据仓库性能层（预览）
 SQL 数据仓库提供两个已针对分析工作负荷进行优化的性能层。 本文介绍性能层的概念，以帮助选择最适合工作负荷的性能层。 
@@ -100,7 +100,7 @@ SQL 数据仓库在单个数据仓库中提供行业领先的并发性。 为了
 并发槽位还确定 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
 ### <a name="concurrency-slots"></a>并发槽位
-使用并发槽位可以方便地跟踪可用于执行查询的资源。 这些槽位就像是演唱会的门票，因为座位有限，必须预订。 同样，SQL 数据仓库的计算资源量也是有限的。 查询需要通过获取并发槽位来预留计算资源。 在查询可以开始执行之前，必须预留足够的并发槽位。 查询完成后，会释放其并发槽位。 
+使用并发槽位可以方便地跟踪可用于执行查询的资源。 这些槽位就像是演唱会的门票，因为席位有限，必须预订。 同样，SQL 数据仓库的计算资源量也是有限的。 查询需要通过获取并发槽位来预留计算资源。 在查询可以开始执行之前，必须预留足够的并发槽位。 查询完成后，会释放其并发槽位。 
 
 * “弹性优化”性能层可扩展到 240 个并发槽位。
 * “计算优化”性能层可扩展到 1200 个并发槽位。

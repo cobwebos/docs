@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 11/15/2017
 ms.author: rajanaki
-ms.openlocfilehash: 34086044db752f09f1282517b59856091e85c2fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc832d06611c10901d4370dc7467f0b681d89cbd
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure Resource Manager 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
 > [!div class="op_single_selector"]
 > * [Azure 门户](site-recovery-vmm-to-azure.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
@@ -122,7 +122,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
 ## <a name="step-2-create-a-recovery-services-vault"></a>步骤 2：创建恢复服务保管库
-1. 在 Azure Resource Manager 中创建一个资源组（如果没有）
+1. 在 Azure 资源管理器中创建一个资源组（如果没有）
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. 创建新的恢复服务保管库，并将所创建的 ASR 保管库对象保存在变量（后面将用到）中。 还可以使用 Get-AzureRMRecoveryServicesVault cmdlet 检索 ASR 保管库对象后期创建：-
@@ -220,7 +220,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ## <a name="step-8-configure-network-mapping"></a>步骤 8：配置网络映射
 在开始网络映射之前，请验证源 VMM 服务器上的虚拟机是否已连接到一个 VM 网络。 此外，请创建一个或多个 Azure 虚拟机。
 
-在 [Create a virtual network with a site-to-site VPN connection using Azure Resource Manager and PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)（使用 Azure Resource Manager 和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络）中，了解更多有关如何使用 Azure Resource Manager 和 PowerShell 创建虚拟网络的信息。
+在[使用 Azure 资源管理器和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)中，了解更多有关如何使用 Azure 资源管理器和 PowerShell 创建虚拟网络的信息。
 
 请注意，可以将多个虚拟机网络映射到单个 Azure 网络。 如果目标网络具有多个子网，并且其中一个子网与源虚拟机所在的子网同名，则在故障转移后副本虚拟机将连接到该目标子网。 如果没有具有匹配名称的目标子网，则虚拟机将连接到网络中的第一个子网。
 
@@ -306,4 +306,4 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解](/powershell/module/azurerm.recoveryservices.backup/#recovery) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
+[详细了解](/powershell/module/azurerm.recoveryservices.backup/#recovery) Azure Site Recovery 和 Azure 资源管理器 PowerShell cmdlet。

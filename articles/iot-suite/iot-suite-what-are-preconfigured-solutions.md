@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5c5fa4927073ff52418a940fce59ca1f6b57daa6
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT 套件是什么？
 
@@ -90,7 +90,7 @@ IoT 套件预配置解决方案在设计时遵循相同的原则和目标。
 
 * [Azure IoT 中心](../iot-hub/index.md)。 该服务提供设备到云和云到设备的消息传送功能，并充当云和其他主要 IoT 套件服务的网关。 该服务允许从设备大量接收消息，并将命令发送给设备。 使用该服务，还能够[管理自己的设备](../iot-hub/iot-hub-device-management-overview.md)。 例如，可以配置、重启一个或多个连接到该中心的设备，或对其执行恢复出厂设置。
 * [Azure 事件中心](../event-hubs/index.md)。 可以通过此服务将大量事件引入到云。 请参阅 [Azure IoT 中心与 Azure 事件中心的比较](../iot-hub/iot-hub-compare-event-hubs.md)。
-* [Azure 时序见解](../time-series-insights/index.md)。 预配置解决方案使用此服务分析和显示设备的遥测数据。
+* [Azure 时序见解](../time-series-insights/index.yml)。 预配置解决方案使用此服务分析和显示设备的遥测数据。
 * [Azure 容器服务](../container-service/index.yml)。 此服务托管和管理预配置解决方案中的微服务。
 * 用于数据存储的 [Azure Cosmos DB](../cosmos-db/index.yml) 和 [Azure 存储](../storage/index.yml)。
 * [Azure 流分析](../stream-analytics/index.md)。 预测性维护预配置解决方案使用该服务来处理传入遥测、执行聚合以及检测事件。 此预配置解决方案也会使用流分析来处理包含数据（例如元数据或来自设备的命令响应）的信息消息。
