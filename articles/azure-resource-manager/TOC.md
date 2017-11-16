@@ -69,10 +69,6 @@
 ### [用于访问订阅的身份验证 API](resource-manager-api-authentication.md)
 ### [锁定资源](resource-group-lock-resources.md)
 
-## 设置资源策略
-### [什么是资源策略？](resource-manager-policy.md)
-### [命名约定](resource-manager-policy-naming-convention.md)
-
 ## 审核
 ### [查看活动日志](resource-group-audit.md)
 ### [查看部署操作](resource-manager-deployment-operations.md)

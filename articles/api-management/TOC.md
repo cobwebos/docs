@@ -53,7 +53,7 @@
 ### [使用托管服务标识](api-management-howto-use-managed-service-identity.md)
 ### 与 Service Fabric 集成
 #### [概述](../service-fabric/service-fabric-api-management-overview.md)
-#### [快速入门](../service-fabric/service-fabric-api-management-quick-start.md)
+#### [教程](../service-fabric/service-fabric-tutorial-deploy-api-management.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/azure/overview)
