@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 08/25/2017
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: f7a43d0a7255b326cd550fbcbb92bba93905d293
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a56e6026ed0c2c873030625fa7a9b35b92faf930
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="reacting-to-blob-storage-events-preview"></a>响应 Blob 存储事件（预览版）
 
@@ -80,7 +80,7 @@ Blob 存储事件包含响应数据更改所需的所有信息。  可以识别 
 
 ```
 
-有关详细信息，请参阅 [Blob 存储事件架构](../../event-grid/event-schema.md#azure-blob-storage)。
+有关详细信息，请参阅 [Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md)。
 
 ## <a name="filtering-events"></a>筛选事件
 可按事件类型以及已创建或已删除对象的容器名称和 blob 名称来筛选 blob 事件订阅。  事件网格中的使用者筛选器基于“开始时间”和“结束时间”的匹配进行筛选，将含有匹配使用者的事件传送给订阅方。

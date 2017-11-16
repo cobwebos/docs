@@ -4,7 +4,7 @@ description: "预处理和清理数据以为机器学习做准备。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
 ms.service: machine-learning
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/09/2017
 ms.author: bradsev
-ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f0c1f0f549e746cc99db3b47f6c90bb51145d5d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
-预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中概述的步骤。
+预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](overview.md) 中概述的步骤。
 
 根据数据存储位置及其格式，可在各种环境（如 SQL、Hive、或 Azure 机器学习工作室）中，使用各种工具和语言（如 R 或 Python）执行预处理和清理任务（如数据浏览任务）。 由于 TDSP 本质上是迭代的，所以这些任务可以在进程工作流中的各个步骤发生。
 

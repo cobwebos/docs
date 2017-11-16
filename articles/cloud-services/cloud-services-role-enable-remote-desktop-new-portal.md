@@ -14,20 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
-ms.openlocfilehash: 0ff7fde5f3753aa6a24fb0af54d68d0dc0bd96a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9ae4442f57170746eb0de94849b09625be51264
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [Azure 经典门户](cloud-services-role-enable-remote-desktop.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
->
->
 
 可以通过远程桌面访问在 Azure 中运行的角色的桌面。 可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
@@ -47,7 +44,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
     ![云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Details.png)
 
    > [!WARNING]
-   > 当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。 为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。 要避免重新启动，请[上载云服务的证书](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate)，并返回到此对话框。
+   > 当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。 为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。 要避免重新启动，请[上载云服务的证书](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate)，并返回到此对话框。
    >
    >
 3. 在“**角色**”中，选择要更新的角色，或选择“**全部**”以选择所有角色。
@@ -70,5 +67,5 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 
 ## <a name="additional-resources"></a>其他资源
 
-[如何配置云服务](cloud-services-how-to-configure.md)
+[如何配置云服务](cloud-services-how-to-configure-portal.md)
 [云服务常见问题 - 远程桌面](cloud-services-faq.md)

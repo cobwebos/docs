@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: joflore
-ms.reviewer: alexwe
-ms.openlocfilehash: 266985c5602b835c710a74f1736fb51eade5c707
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.reviewer: richagi
+ms.openlocfilehash: 18d5cd8f3904a0c6ea89df440d917785510409cb
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>选择适合自己的 Azure 多重身份验证解决方案
 因为 Azure 多重身份验证 (MFA) 的种类繁多，我们必须从以下问题着手，以便找出最合适的版本。  这些问题包括：

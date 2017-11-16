@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/16/2017
 ms.author: joflore
-ms.reviewer: yossib
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 5250c0cbc71450eb66f79226a1ecb062a9335ee3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 93d9880caca78167d8ba10eeb0368febf75574b8
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 使用 Azure MFA 服务器的“目录集成”部分可与 Active Directory 或其他 LDAP 目录集成。 可以配置属性来匹配目录架构，并设置用户自动同步。

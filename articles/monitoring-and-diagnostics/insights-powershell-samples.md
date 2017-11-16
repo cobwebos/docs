@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: robb
-ms.openlocfilehash: 60048ab8e0118bc67850aa6ad91c82dcf8122b1d
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21123299fbab59b388aacc4a802f3a9ec1d80632
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。 通过 Azure Monitor 可自动缩放云服务、虚拟机和 Web 应用。 还可发送警报通知或根据配置的遥测数据的值调用 Web URL。
@@ -202,7 +202,7 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 ## <a name="create-and-manage-autoscale-settings"></a>创建和管理自动缩放设置
 资源（例如 Web 应用、VM、云服务或虚拟机规模集）只能有一种为其配置的自动缩放设置。
-但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅[如何自动缩放应用程序](../cloud-services/cloud-services-how-to-scale.md)。
+但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅[如何自动缩放应用程序](../cloud-services/cloud-services-how-to-scale-portal.md)。
 
 请使用以下步骤：
 

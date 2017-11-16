@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: barlan
-ms.reviewer: yossib
+ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 6cfda4550628cdde6a796e1b59a2fb914394da60
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 7ff9f621b4ab583eed9338161e7e146405dffe96
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 本文解答有关双重验证的最常见问题。 

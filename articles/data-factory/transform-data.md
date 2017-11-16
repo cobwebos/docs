@@ -3,7 +3,7 @@ title: "使用 Azure 数据工厂转换数据 | Microsoft Docs"
 description: "了解如何在 Azure 数据工厂中利用 Hadoop、机器学习或 Azure Data Lake Analytics 转换或处理数据。"
 services: data-factory
 documentationcenter: 
-author: sharonlo101
+author: shengcmsft
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: shlo
-ms.openlocfilehash: 832c4f232a3821225c8086b636de713da2b967a0
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.date: 11/09/2017
+ms.author: shengc
+ms.openlocfilehash: 88ff71956c82d79fb244f1a687debeb726291ae8
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]

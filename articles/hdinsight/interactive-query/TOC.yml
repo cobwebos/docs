@@ -107,9 +107,6 @@
         - name: 管理群集
           href: ../domain-joined/apache-domain-joined-manage.md
           maintainContext: true
-        - name: 管理用户权限
-          href: ../hdinsight-add-acls-at-file-folder-levels.md
-          maintainContext: true
     - name: 分析大数据
       items:
         - name: 使用 Power Query 进行分析
@@ -172,7 +169,7 @@
               maintainContext: true
             - name: 使用 REST 安装应用
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
-            - name: 将 HDInsight 应用发布到 Azure 应用商店
+            - name: 将 HDInsight 应用发布到 Azure Marketplace
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
     - name: 安全
@@ -188,9 +185,6 @@
           maintainContext: true
         - name: 授权用户访问 Ambari 视图
           href: ../hdinsight-authorize-users-to-ambari.md
-          maintainContext: true
-        - name: 管理文件和文件夹级别的用户权限
-          href: ../hdinsight-add-acls-at-file-folder-levels.md
           maintainContext: true
     - name: 管理
       items:

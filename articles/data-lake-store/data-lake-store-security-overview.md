@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: e72dd7e84ce3961274cf312649cc679abc576aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b71c7e7f1ea58a273beb58717102522ad0f8c4a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store 中的安全
 许多企业都开始利用大数据分析获取业务见解，以帮助他们做出明智的决策。 组织的环境可能复杂、规范化，不同的用户越来越多。 确保更安全地存储关键业务数据并向个人用户授予访问权限的正确级别，这一点对企业来说至关重要。 Azure Data Lake Store 旨在帮助企业实现这些安全要求。 在本文中，了解 Data Lake Store 的安全功能，包括：
@@ -65,7 +65,7 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Az
 ### <a name="using-acls-for-operations-on-file-systems"></a>使用 ACL 对文件系统执行操作
 Data Lake Store 是一个类似于 Hadoop 分布式文件系统 (HDFS) 的分层文件系统，它支持 [POSIX Acl](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)。 控制读取 (r)、写入 (w)，对所有者角色、所有者组和其他用户及组执行 (x) 资源的权限。 在 Data Lake Store 公共预览版中（当前发行版），在根文件夹、子文件夹和个人文件上启用 ACL。 有关 ACL 在 Data Lake Store 上下文中的工作原理的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。
 
-我们建议使用[安全组](../active-directory/active-directory-accessmanagement-manage-groups.md)为多个用户定义 ACL。 将用户添加到安全组，然后将文件的 ACL 或文件夹分配给该安全组。 若要提供自定义访问权限，该操作会很有用，因为用户最多可添加九个自定义访问条目。 有关如何使用 Azure Active Directory 安全组更好地保护 Data Lake Store 中存储的数据的详细信息，请参阅[将 ACL 用户或安全组分配到 Azure Data Lake Store 文件系统](data-lake-store-secure-data.md#filepermissions)。
+我们建议使用[安全组](../active-directory/active-directory-groups-create-azure-portal.md)为多个用户定义 ACL。 将用户添加到安全组，然后将文件的 ACL 或文件夹分配给该安全组。 若要提供自定义访问权限，该操作会很有用，因为用户最多可添加九个自定义访问条目。 有关如何使用 Azure Active Directory 安全组更好地保护 Data Lake Store 中存储的数据的详细信息，请参阅[将 ACL 用户或安全组分配到 Azure Data Lake Store 文件系统](data-lake-store-secure-data.md#filepermissions)。
 
 ![列出标准及自定义访问权限](./media/data-lake-store-security-overview/adl.acl.2.png "列出标准及自定义访问权限")
 
@@ -86,7 +86,7 @@ Data Lake Store 还针对帐户中存储的数据提供加密。 可以选择加
 ## <a name="auditing-and-diagnostic-logs"></a>审核和诊断日志
 可以使用审核或诊断日志，具体取决于是否正在寻找与管理或数据相关的活动日志。
 
-* 与管理相关的活动使用 Azure Resource Manager API，并且通过审核日志显示在 Azure 门户中。
+* 与管理相关的活动使用 Azure 资源管理器 API，并且通过审核日志显示在 Azure 门户中。
 * 与数据相关的活动使用 WebHDFS REST API，并且通过诊断日志显示在 Azure 门户中。
 
 ### <a name="auditing-logs"></a>审核日志

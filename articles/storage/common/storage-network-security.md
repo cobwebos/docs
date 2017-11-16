@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: b178be71824e427d88a811d87f1aeb6e5f80dbcc
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 2e155231e430a8333095fdcd92a727a17c6d1e8c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -81,7 +81,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 1. [安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
 2. 显示存储帐户默认规则的状态。
 ```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkAcls.defaultAction
+az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
 ```
 
 3. 将默认规则设置为默认拒绝网络访问。  
@@ -173,14 +173,14 @@ az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "my
 
 3. 为虚拟网络和子网添加网络规则。  
 ```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "TestVNET" --name "default" --query id --output tsv)
-az storage account network-rule add --resource-group myresourcegroup --account-name mystorageaccount --subnet $subnetid
+subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
 ```
 
 4. 为虚拟网络和子网删除网络规则。 
 ```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "TestVNET" --name "default" --query id --output tsv)
-az storage account network-rule remove --resource-group myresourcegroup --account-name mystorageaccount --subnet $subnetid
+subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
 ```
 
 > [!IMPORTANT]
@@ -340,7 +340,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 1. [安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
 2. 显示存储帐户的网络规则例外。
 ```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkAcls.bypass
+az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
 ```
 
 3. 配置存储帐户的网络规则例外。

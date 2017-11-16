@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9b7490fd51a2a39e6438856041fb25110ddde69
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -79,7 +79,7 @@ OS 更新的难题在于，它们通常需要重新启动计算机，而这会�
 
 一般来说是不可以的。 Service Fabric 在本地临时磁盘上存储状态，这意味着，如果将虚拟机转移到另一台主机，数据不会随着它一起移动。 在正常操作中，这是没有问题的，因为其他节点可使新节点保持最新状态。 但是，如果停止所有节点，又将它们重新启动，则很有可能大多数节点在新主机上启动，使得系统无法恢复。
 
-如果在部署应用程序之前想要创建群集来测试应用程序，我们建议将这些群集动态创建为[持续集成/持续部署管道](service-fabric-set-up-continuous-integration.md)的一部分。
+如果在部署应用程序之前想要创建群集来测试应用程序，我们建议将这些群集动态创建为[持续集成/持续部署管道](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)的一部分。
 
 
 ### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>如何升级操作系统（例如从 Windows Server 2012 升级到 Windows Server 2016）？

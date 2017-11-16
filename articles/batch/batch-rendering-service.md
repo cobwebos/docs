@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: 08658bbebfc9f457a3f057178f6b002a88338f1e
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch 渲染服务入门
 
@@ -91,7 +91,7 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 
 ### <a name="custom-images"></a>自定义映像
 
-可以使用 Azure Batch 提供自己的自定义映像。 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅 [Use a custom image to create a pool of virtual machines](https://docs.microsoft.com/en-us/azure/batch/batch-custom-images)（使用自定义映像创建虚拟机池）。 请注意，Autodesk 和 Chaos Group 已分别对 Arnold 和 V-Ray 进行了修改，允许向我们自己的许可服务进行验证。 需确保所拥有的这些应用程序的版本提供此支持，否则，按使用付费许可将不起作用。 此许可证验证对于 Maya 或 3ds Max 来说不是必需的，因为当前的已发布版本在无外设（批处理/命令行模式）运行时不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
+可以使用 Azure Batch 提供自己的自定义映像。 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅 [Use a custom image to create a pool of virtual machines](https://docs.microsoft.com/azure/batch/batch-custom-images)（使用自定义映像创建虚拟机池）。 请注意，Autodesk 和 Chaos Group 已分别对 Arnold 和 V-Ray 进行了修改，允许向我们自己的许可服务进行验证。 需确保所拥有的这些应用程序的版本提供此支持，否则，按使用付费许可将不起作用。 此许可证验证对于 Maya 或 3ds Max 来说不是必需的，因为当前的已发布版本在无外设（批处理/命令行模式）运行时不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
 
 ## <a name="options-for-submitting-a-render-job"></a>用于提交渲染作业的选项
 
@@ -101,7 +101,7 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 
 可以通过 Maya 来使用：
 
-- [用于 Maya 的 Batch 插件](https://docs.microsoft.com/en-us/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
+- [用于 Maya 的 Batch 插件](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
 - [BatchLabs](https://azure.github.io/BatchLabs) 桌面应用程序
 - [Batch 模板 CLI](batch-cli-templates.md)
 
@@ -114,7 +114,7 @@ Azure 提供 Windows 和 Linux 映像，每个都预先安装了单一版本的 
 
 有了 3ds Max Batch 实验室模板，即可使用 Azure Batch 渲染服务来渲染 VRay 和 Arnold 场景。 适用于 VRay 和 Arnold 的模板有两个变体，一个用于标准场景，另一个用于较复杂的场景，需要资产和纹理的 3ds Max 路径文件（.mxp 文件）。 有关 3ds Max Batch 实验室模板的详细信息，请参阅 GitHub 上的 [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) 存储库。
 
-另外，可以使用 [Batch Python SDK](https://docs.microsoft.com/en-us/azure/batch/batch-python-tutorial) 将渲染服务与现有管道集成。
+另外，可以使用 [Batch Python SDK](https://docs.microsoft.com/azure/batch/batch-python-tutorial) 将渲染服务与现有管道集成。
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>使用用于 Maya 的 Batch 插件提交渲染作业

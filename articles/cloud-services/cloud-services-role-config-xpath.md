@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71adbca34390bda3a7d4067742ffb3a28201449
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>使用 XPath 将角色配置设置公共为环境变量
 在云服务辅助角色或 Web 角色服务定义文件中，可以将运行时配置值公开为环境变量。 支持以下 XPath 值（分别对应于 API 值）。
@@ -166,5 +166,5 @@ ms.lasthandoff: 10/11/2017
 
 创建 [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) 包。
 
-为角色启用[远程桌面](cloud-services-role-enable-remote-desktop.md)。
+为角色启用[远程桌面](cloud-services-role-enable-remote-desktop-new-portal.md)。
 

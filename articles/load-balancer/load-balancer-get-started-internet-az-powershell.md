@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2017
 ms.author: kumud
-ms.openlocfilehash: 2945e04814f3d1e5b281391485def47f4b463d88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9987fe1273dc05a2ad10c65325ad1d487d38247e
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-powershell"></a>使用 PowerShell 通过区域冗余的公共 IP 地址前端创建公共负载均衡器标准
 
@@ -86,6 +86,13 @@ $bepool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```powershell
 $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
   -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
+```
+
+## <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
+ 使用以下命令创建负载均衡器规则：
+
+```powershell
+   $rule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器

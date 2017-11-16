@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/03/2017
-ms.author: cristyg
+ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 8b744f6b33a04a707c56e6fc8a4638118170b668
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 217b9f2f0dfed5b095e1bac1c8146abf4753fadc
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-secure-cluster-in-azure-by-using-powershell"></a>使用 PowerShell 在 Azure 中创建安全群集
 本文是教程系列中的第一篇文章，介绍如何使用 Azure Service Fabric 群集和容器将 .NET 应用程序移到云中。 以下步骤说明如何创建在 Azure 中运行的 Service Fabric 群集（Windows 或 Linux）。 完成本教程后，云中会运行一个可在其中部署应用程序的安全群集。
