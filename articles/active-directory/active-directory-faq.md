@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 4c8a3885f34942bbd85d34f26e26ff5d7a432189
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 241ad78abfa964c9f64e97cc8201933913f88e1e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -56,7 +56,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 如果其他人需要使用同一个订阅登录和访问服务，则可将其添加为共同管理员。 此角色具有与服务管理员一样的访问特权，但不能更改订阅与 Azure 目录之间的关联关系。  有关订阅管理员的其他信息，请参阅[如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)和[Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated-directory.md)。
 
 
-Azure AD 提供另一组管理员角色来管理与目录和标识相关的功能。  这些管理员将有权访问 Azure 门户或 Azure 经典门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)。
+Azure AD 提供另一组管理员角色来管理与目录和标识相关的功能。  这些管理员将有权访问 Azure 门户或 Azure 经典门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
 
 另外，Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合性的企业级管理和安全解决方案来弥补其他 Web 服务（例如 Office 365 和 Microsoft Azure）的不足。
 
@@ -132,7 +132,6 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 对于 Azure AD 帐户，管理员可以使用以下选项之一重置密码：
 
 - [在 Azure 门户中重置帐户](active-directory-users-reset-password-azure-portal.md)
-- [在经典门户中重置帐户](active-directory-create-users-reset-password.md)
 - [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
@@ -199,7 +198,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **答：** 使用 Azure AD 条件访问，可以针对每个应用程序分配独特的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
-有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)。
+有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access-azure-portal.md)。
 
 - - -
 **问：SaaS 应用的自动用户预配是什么？**

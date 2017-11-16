@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3b634bc36e01f8586b6645515942c049701c30e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>通过快速设置开始使用 Azure AD Connect
 有单林拓扑和用于身份验证的 **密码同步** 时，便可使用 Azure AD Connect [快速设置](active-directory-aadconnectsync-implement-password-synchronization.md)。 **快速设置** 是默认选项，用于最常见的部署方案。 只需按几下鼠标即可将本地目录扩展到云中。
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
    ![连接到 Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)如果收到错误消息并出现连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“下一步”。  
    ![连接到 AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
-7. 只有在未完成[先决条件](active-directory-aadconnect-prerequisites.md)中的[验证域](../active-directory-add-domain.md)步骤时，才会显示 [**Azure AD 登录配置**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration)页。
+7. 只有在未完成[先决条件](active-directory-aadconnect-prerequisites.md)中的[验证域](../active-directory-domains-add-azure-portal.md)步骤时，才会显示 [**Azure AD 登录配置**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration)页。
    ![未验证的域](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
    如果看到此页，请查看标记为“未添加”和“未验证”的每个域。 确保使用的域都已在 Azure AD 中验证。 验证域后，请单击“刷新”符号。
 8. 在“准备好配置”屏幕上，单击“安装”。

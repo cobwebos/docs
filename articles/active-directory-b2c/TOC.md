@@ -90,6 +90,7 @@
 ## 引用
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)
 ### [SSO 会话提供程序](active-directory-b2c-reference-sso-custom.md)
+### [语言自定义](active-directory-b2c-language-customization-custom.md)
 ### [信任框架定义](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 
 # 引用
