@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 413828d79d79c181c662bc7cfb4114345de57f90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure 虚拟机、云服务和 Web 应用自动缩放概述
 本文介绍了 Microsoft Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
@@ -69,7 +69,7 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 ## <a name="autoscale-settings"></a>自动缩放设置
 自动缩放使用下列术语和结构。
 
-- **自动缩放设置**：由自动缩放引擎读取，用于确定是进行扩展还是进行缩减。 它包含一个或多个配置文件、目标资源的信息，以及通知设置。
+- **自动缩放设置**：由自动缩放引擎读取，用于确定是进行扩展还是缩减。 它包含一个或多个配置文件、目标资源的信息，以及通知设置。
 
     - **自动缩放配置文件**是以下项的组合：
 
@@ -110,7 +110,7 @@ Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.micros
 | 服务 | 架构和文档 |
 | --- | --- |
 | Web 应用 |[缩放 Web 应用](insights-how-to-scale.md) |
-| 云服务 |[自动缩放云服务](../cloud-services/cloud-services-how-to-scale.md) |
+| 云服务 |[自动缩放云服务](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | 虚拟机：经典 |[缩放经典虚拟机可用性集](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | 虚拟机：Windows 规模集 |[缩放 Windows 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | 虚拟机：Linux 规模集 |[缩放 Linux 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |

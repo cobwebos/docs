@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: architecture
-ms.date: 10/23//2017
+ms.date: 11/15/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 39092028d8317f8881b4e0772dcb87b05c064b6a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL 数据仓库 - 大规模并行处理 (MPP) 体系结构
 了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。 
@@ -57,7 +57,7 @@ SQL 数据仓库使用 Azure 存储保护用户数据。  由于数据通过 Azu
 ### <a name="data-movement-service"></a>数据移动服务
 数据移动服务 (DMS) 是一项数据传输技术，它可协调计算节点间的数据移动。 某些查询需要移动数据以确保并行查询返回准确的结果。 需要移动数据时，DMS 可确保正确的数据到达正确的位置。 
 
-## <a name="distributions"></a>分布区
+## <a name="distributions"></a>分发
 
 分布区是存储和处理针对分布式数据运行的并行查询的基本单位。 SQL 数据仓库运行查询时，工作会被分割成 60 个并行运行的小型查询。 每个小型查询各在一个数据分布区上运行。 每个计算节点管理其中一个或多个分布区。 具有最多计算资源的数据仓库的每个分布区占 1 个计算节点。 具有最少计算资源的数据仓库的所有分布区都在 1 个计算节点上。  
 
@@ -76,7 +76,7 @@ SQL 数据仓库使用 Azure 存储保护用户数据。  由于数据通过 Azu
 
 选择分布列时需考虑到性能，例如特异性、数据倾斜，以及在系统上运行的查询类型。
 
-## <a name="round-robin-distributed-tables"></a>轮循机制分布表
+## <a name="round-robin-distributed-tables"></a>轮循分布表
 轮循机制表是最简单的表，在被用作负载临时表时，它可创造和提供高速性能。
 
 轮循机制分布表在表中均匀分布数据，但不会进行进一步优化。 首先随机选择一个分布区，然后将行的缓冲区按顺序分配给分布区。 将数据加载到轮循机制表速度很快，但就查询性能而言，哈希分布式表的性能更佳。 轮循机制表上的联接要求重新安排数据，因此这需要花费更多时间。

@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: f5d244fc747b923989407afd50927cda2b8d4a0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: afda0bc79a26c8cb9736c754a681ebb602e41af1
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
-> [!div class="op_single_selector"]
-> * [Azure 门户](cloud-services-custom-domain-name-portal.md)
-> * [Azure 经典门户](cloud-services-custom-domain-name.md)
-> 
-> 
-
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 http://contoso.cloudapp.net）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。
 
 但是，还可以在自己的域名（例如 **contoso.com**）上公开应用程序。此文章介绍了如何保留或配置云服务 Web 角色的自定义域名称。
@@ -62,7 +56,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
 > [!NOTE]
 > 由于 A 记录映射到静态 IP 地址，因此它无法自动解析云服务 IP 地址的更改。 第一次部署到空槽（生产槽或暂存槽）时，将分配云服务所用的 IP 地址。如果删除针对该槽的部署，则 Azure 将释放该 IP 地址，将来任何一次部署到该槽都可能给定新的 IP 地址。
 > 
-> 为方便起见，在暂存和生产部署之间切换或对现有部署执行就地升级时，将保留给定（生产或暂存）部署槽的 IP 地址。 有关执行这些操作的详细信息，请参阅[如何管理云服务](cloud-services-how-to-manage.md)。
+> 为方便起见，在暂存和生产部署之间切换或对现有部署执行就地升级时，将保留给定（生产或暂存）部署槽的 IP 地址。 有关执行这些操作的详细信息，请参阅[如何管理云服务](cloud-services-how-to-manage-portal.md)。
 > 
 > 
 
@@ -139,7 +133,7 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* [如何管理云服务](cloud-services-how-to-manage.md)
+* [如何管理云服务](cloud-services-how-to-manage-portal.md)
 * [如何将 CDN 内容映射到自定义域](../cdn/cdn-map-content-to-custom-domain.md)
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。

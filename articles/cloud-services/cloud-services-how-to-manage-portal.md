@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 4650cebe18153e3b10bbec685a66a590348c99e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9af1fdeb5cfe69631cabe13bd341b43319175aae
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
-> [!div class="op_single_selector"]
-> * [Azure 门户](cloud-services-how-to-manage-portal.md)
-> * [Azure 经典门户](cloud-services-how-to-manage.md)
->
->
-
 在 Azure 门户的“云服务(经典)”区域中，可以更新服务角色或部署、将预留部署提升到生产、将资源链接到云服务，以便查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
 
 有关如何缩放云服务的详细信息，请参阅[此文](cloud-services-how-to-scale-portal.md)。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 17f6918371678ac849198bff4e3b3eea8678c660
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
 我们先在 Azure 中设置一个虚拟网络 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 接下来，将现有云服务角色添加预先创建的 VNet，然后将它们连接到域控制器。
@@ -128,7 +128,7 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 </ServiceConfiguration>
 ```
 
-接下来，请生成云服务项目并将它部署到 Azure。 有关将云服务包部署到 Azure 的帮助，请参阅[如何创建和部署云服务](cloud-services-how-to-create-deploy.md#how-to-deploy-a-cloud-service)
+接下来，请生成云服务项目并将它部署到 Azure。 有关将云服务包部署到 Azure 的帮助，请参阅[如何创建和部署云服务](cloud-services-how-to-create-deploy-portal.md)
 
 ## <a name="connect-your-webworker-roles-to-the-domain"></a>将 Web/辅助角色连接到域
 在 Azure 上部署云服务项目后，请使用 AD 域扩展将角色实例连接到自定义 AD 域。 要将 AD 域扩展添加到现有云服务部署并加入自定义域，请在 PowerShell 中执行以下命令：

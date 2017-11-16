@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.openlocfilehash: a76bcba5ab4ca8e1a4899e4aa28f734c09af2aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96c4ed88db5e24f439825aee5afe457a1e8c81d7
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>为 Azure 云服务保留固定的虚拟 IP 地址
-更新托管于 Azure 中的云服务时，可能需要确保该服务的虚拟 IP 地址 (VIP) 不发生更改。 许多域管理服务使用域名系统 (DNS) 注册域名。 仅当 VIP 保持不变时，DNS 才适用。 可使用 Azure Tools 中的**发布向导**来确保云服务的 VIP 在更新时不更改。 有关如何将 DNS 域管理用于云服务的详细信息，请参阅[为 Azure 云服务配置自定义域名](cloud-services/cloud-services-custom-domain-name.md)。
+更新托管于 Azure 中的云服务时，可能需要确保该服务的虚拟 IP 地址 (VIP) 不发生更改。 许多域管理服务使用域名系统 (DNS) 注册域名。 仅当 VIP 保持不变时，DNS 才适用。 可使用 Azure Tools 中的**发布向导**来确保云服务的 VIP 在更新时不更改。 有关如何将 DNS 域管理用于云服务的详细信息，请参阅[为 Azure 云服务配置自定义域名](cloud-services/cloud-services-custom-domain-name-portal.md)。
 
 ## <a name="publish-a-cloud-service-without-changing-its-vip"></a>发布云服务，而不更改其 VIP
 在特定环境（如生产环境）中第一次将云服务部署到 Azure 时，其 VIP 就已分配。 VIP 仅会在显式删除部署或部署更新过程将其隐式删除时发生更改。 若要保留 VIP，则切勿删除部署，且务必确保 Visual Studio 不会自动删除部署。 

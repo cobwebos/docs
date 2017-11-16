@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: b4b33143ad6e24fc40acafbe4ad37b7152d2b8d4
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: ec5463a785c9afe53ebae558d15027e541a60f6a
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
 本文介绍了如何在安全中心配置安全策略。 
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/07/2017
 
 | 策略 | 策略的用途 |
 | --- | --- |
-| 系统更新 |从 Windows 更新或 Windows Server Update Services 检索包含可用安全更新和关键更新的每日列表。 检索的列表取决于为虚拟机配置的服务，并且会建议用户应用缺少的更新。 对于 Linux 系统，该策略会使用发行版提供的包管理系统确定包含可用更新的包。 此外还会查看是否存在 [Azure 云服务](../cloud-services/cloud-services-how-to-configure.md) 虚拟机提供的安全更新和关键更新。 |
+| 系统更新 |从 Windows 更新或 Windows Server Update Services 检索包含可用安全更新和关键更新的每日列表。 检索的列表取决于为虚拟机配置的服务，并且会建议用户应用缺少的更新。 对于 Linux 系统，该策略会使用发行版提供的包管理系统确定包含可用更新的包。 此外还会查看是否存在 [Azure 云服务](../cloud-services/cloud-services-how-to-configure-portal.md) 虚拟机提供的安全更新和关键更新。 |
 | OS 漏洞 |每天分析操作系统配置，确定可能导致虚拟机受攻击的问题。 此策略还建议通过配置更改解决这些漏洞。 若要详细了解受监视的具体配置，请参阅[建议的基准配置列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 （目前不对 Windows Server 2016 提供完全支持。） |
 | 终结点保护 |建议为所有 Windows 虚拟机 (VM) 设置终结点保护，以便确定并删除病毒、间谍软件以及其他恶意软件。 |
 | 磁盘加密 |建议在所有虚拟机中启用磁盘加密，增强静态数据保护。 |
