@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.openlocfilehash: 85e24587f07a4dc65a2f116499f3f7e00c3ac2b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0ffb0b82acd002cb02adc6e82a447d2b788496f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="manage-your-azure-ad-directory"></a>管理 Azure AD 目录
 
@@ -121,4 +121,4 @@ Azure AD 要求删除目录之前必须符合特定的条件。 这可以降低�
 * [Azure 多重身份验证论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
 * [Stack Overflow for Azure 问题](http://stackoverflow.com/questions/tagged/azure)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
-* [在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)
+* [在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)

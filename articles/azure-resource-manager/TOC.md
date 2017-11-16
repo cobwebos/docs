@@ -9,14 +9,6 @@
 ## [模板的 VS Code 扩展](resource-manager-vscode-extension.md)
 ## [Visual Studio 与 Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
-# 示例
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## Azure PowerShell
-### [部署模板](resource-manager-samples-powershell-deploy.md)
-
-## Azure CLI
-### [部署模板](resource-manager-samples-cli-deploy.md)
-
 # 如何
 ## 创建模板
 ### [模板节](resource-group-authoring-templates.md)
