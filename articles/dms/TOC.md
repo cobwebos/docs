@@ -5,11 +5,14 @@
 ## [创建服务 - 门户](quickstart-create-data-migration-service-portal.md)
 
 # 教程
-## [将 SQL Server 迁移到 Azure SQL](tutorial-sql-server-to-azure-sql.md)
+## [将 SQL Server 迁移到 Azure SQL DB](tutorial-sql-server-to-azure-sql.md)
+
+# 操作指南
+## [使用 PowerShell 迁移 SQL Server](howto-sql-server-to-azure-sql-powershell.md)
 
 # 资源
 ## [用户语音反馈](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Azure 路线图](https://azure.microsoft.com/en-us/roadmap/)
 ## [数据库迁移指南](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
-## [定价](https://azure.microsoft.com/pricing/details/dms/)
+## [定价](https://aka.ms/dms-pricing)
