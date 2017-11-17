@@ -17,6 +17,7 @@
 #### [将 Azure AD 与批处理服务配合使用](batch-aad-auth.md)
 #### [将 Azure AD 与 Batch 管理配合使用](batch-aad-auth-management.md)
 ### [计算密集型 VM](batch-pool-compute-intensive-sizes.md)
+### [容器工作负荷](batch-docker-container-workloads.md)
 ### [并发节点任务](batch-parallel-node-tasks.md)
 ### [按状态对任务计数](batch-get-task-counts.md)
 ### [使用自定义映像创建池](batch-custom-images.md)

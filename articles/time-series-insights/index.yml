@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Time Series Insights 文档
+metadata:
+  title: Azure Time Series Insights 文档 - 教程和 API 参考 | Microsoft Docs
+  description: 了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。
+  services: time-series-insights
+  author: kfile
+  manager: jhubbard
+  ms.service: time-series-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/13/2017
+  ms.author: kfile
+abstract:
+  description: 了解如何设置时序见解环境，以及如何浏览和分析 IoT 解决方案或所连接对象的时序数据。 文档介绍了先决条件、操作方法、API 参考和其他文档，可帮助你在几分钟内入门。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何部署 Log Analytics，并配置从 Azure、其他云提供程序和本地资源收集数据。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/time-series-insights/media/index/time-series-insights.svg'
+            text: 探索 Azure 时序见解
+            href: /azure/time-series-insights/time-series-quickstart
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: <p><a href="/rest/api/time-series-insights/time-series-insights-reference-queryapi">查询 API</a></p><p><a href="/rest/api/time-series-insights/time-series-insights-reference-query-syntax">查询语法</a></p>

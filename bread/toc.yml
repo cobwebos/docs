@@ -34,7 +34,7 @@
       tocHref: /azure/app-service/
       topicHref: /azure/app-service/
       items:
-        - name: 容器的 Web 应用
+        - name: Linux 上的应用服务
           tocHref: /azure/app-service/containers/
           topicHref: /azure/app-service/containers/
         - name: 应用服务环境
@@ -58,18 +58,27 @@
     - name: 自动化
       tocHref: /azure/automation/
       topicHref: /azure/automation/
+    - name: Azure Databricks
+      tocHref: /azure/azure-databricks/
+      topicHref: /azure/azure-databricks/
     - name: 容器注册表
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
+    - name: 成本管理
+      tocHref: /azure/cost-management/
+      topicHref: /azure/cost-management/
     - name: 函数
       tocHref: /azure/azure-functions/
       topicHref: /azure/azure-functions/
-    - name: Government
+    - name: 'Azure Government '
       tocHref: /azure/azure-government/
       topicHref: /azure/azure-government/
-    - name: 德国
+    - name: Azure Germany
       tocHref: /azure/germany/
       topicHref: /azure/germany/
+    - name: Azure 中国世纪互联
+      tocHref: /azure/china/
+      topicHref: /azure/china/
     - name: Azure 门户
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
@@ -91,6 +100,9 @@
     - name: 批处理
       tocHref: /azure/batch/
       topicHref: /azure/batch/
+    - name: Batch AI
+      tocHref: /azure/batch-ai/
+      topicHref: /azure/batch-ai/
     - name: 计费
       tocHref: /azure/billing/
       topicHref: /azure/billing/
@@ -116,6 +128,9 @@
         - name: 必应 Web 搜索
           tocHref: /azure/cognitive-services/bing-web-search/
           topicHref: /azure/cognitive-services/bing-web-search/
+        - name: 语音
+          tocHref: /azure/cognitive-services/Speech/
+          topicHref: /azure/cognitive-services/Speech/
         - name: 计算机视觉
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/
@@ -143,6 +158,9 @@
     - name: 容器实例
       tocHref: /azure/container-instances/
       topicHref: /azure/container-instances/
+    - name: AKS
+      tocHref: /azure/aks/
+      topicHref: /azure/aks/
     - name: 容器服务
       tocHref: /azure/container-service/
       topicHref: /azure/container-service/
@@ -189,6 +207,31 @@
     - name: HDInsight
       tocHref: /azure/hdinsight/
       topicHref: /azure/hdinsight/
+      items:
+        - name: Hadoop
+          tocHref: /azure/hdinsight/hadoop
+          topicHref: /azure/hdinsight/hadoop/apache-hadoop-introduction
+        - name: HBase
+          tocHref: /azure/hdinsight/hbase
+          topicHref: /azure/hdinsight/hbase/apache-hbase-overview
+        - name: 交互式查询
+          tocHref: /azure/hdinsight/interactive-query
+          topicHref: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
+        - name: Kafka
+          tocHref: /azure/hdinsight/kafka
+          topicHref: /azure/hdinsight/kafka/apache-kafka-introduction
+        - name: 企业安全性
+          tocHref: /azure/hdinsight/domain-joined
+          topicHref: /azure/hdinsight/domain-joined/apache-domain-joined-introduction
+        - name: R Server
+          tocHref: /azure/hdinsight/r-server
+          topicHref: /azure/hdinsight/r-server-overview
+        - name: Spark
+          tocHref: /azure/hdinsight/spark
+          topicHref: /azure/hdinsight/spark/apache-spark-overview
+        - name: Storm
+          tocHref: /azure/hdinsight/storm
+          topicHref: /azure/hdinsight/storm/apache-storm-overview
     - name: IoT 中心
       tocHref: /azure/iot-hub/
       topicHref: /azure/iot-hub/
@@ -223,10 +266,10 @@
         - name: 数据科学虚拟机
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/virtual-machine-overview
-    - name: 应用商店消费者
+    - name: Marketplace 消费者
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
-    - name: 应用商店发布
+    - name: Marketplace 发布
       tocHref: /azure/marketplace-publishing/
       topicHref: /azure/marketplace-publishing/
     - name: 媒体服务
@@ -339,6 +382,9 @@
     - name: 流分析
       tocHref: /azure/stream-analytics/
       topicHref: /azure/stream-analytics/
+    - name: 时序见解
+      tocHref: /azure/time-series-insights/
+      topicHref: /azure/time-series-insights/
     - name: 流量管理器
       tocHref: /azure/traffic-manager/
       topicHref: /azure/traffic-manager/

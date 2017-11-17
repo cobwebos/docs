@@ -11,7 +11,7 @@
 ### [存储](cdn-create-a-storage-account-with-cdn.md)
 ### [跨域资源共享](cdn-cors.md)
 ### [将自定义域添加到 CDN 终结点](cdn-map-content-to-custom-domain.md)
-### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
+### [在自定义域上配置 HTTPS](cdn-custom-ssl.md)
 ## 优化内容
 ### [优化概述](cdn-optimization-overview.md)
 ####[大型文件优化](cdn-large-file-optimization.md)

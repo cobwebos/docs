@@ -17,6 +17,8 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: 创建函数 - Java/Maven
       href: functions-create-first-java-maven.md
+    - name: 创建函数 - Linux
+      href: functions-create-first-azure-function-azure-cli-linux.md
     - name: 触发器
       items:
         - name: Blob 存储
@@ -47,6 +49,8 @@
       href: functions-openapi-definition.md
     - name: 4 - 使用事件网格调整图像大小
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 5 - 基于自定义映像的函数
+      href: functions-create-function-linux-custom-image.md
 - name: 示例
   items:
     - name: 代码示例

@@ -67,11 +67,11 @@
 ### [源代码管理与 GitHub Enterprise 的集成](automation-scenario-source-control-integration-with-github-ent.md)
 ### [源代码管理与 VSTS 的集成](automation-scenario-source-control-integration-with-VSTS.md)
 ### [从 Log Analytics 警报调用 Azure 自动化 Runbook](automation-invoke-runbook-from-omsla-alert.md)
-### [在 Azure 自动化 PowerShell runbook 中部署 Azure Resource Manager 模板](automation-deploy-template-runbook.md)
+### [在 Azure 自动化 PowerShell runbook 中部署 Azure 资源管理器模板](automation-deploy-template-runbook.md)
 ## 解决方案
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 #### [管理多个 VM 的更新](manage-update-multi.md)
-#### [将 SCCMr 与 OMS 更新管理集成](oms-solution-updatemgmt-sccmintegration.md)
+#### [将 SCCM 与 OMS 更新管理集成](oms-solution-updatemgmt-sccmintegration.md)
 ### [更改跟踪](../log-analytics/log-analytics-change-tracking.md)
 ### [跟踪 VM 中的更改](automation-vm-change-tracking.md)
 ### [使用清单收集管理 VM](automation-vm-inventory.md)

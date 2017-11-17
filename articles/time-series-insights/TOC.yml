@@ -1,0 +1,76 @@
+- name: Azure Time Series Insights
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于时序见解
+      href: time-series-insights-overview.md
+- name: 快速入门
+  items:
+    - name: 探索时序见解
+      href: time-series-quickstart.md
+- name: 概念
+  items:
+    - name: 规划环境
+      href: time-series-insights-environment-planning.md
+    - name: 在资源管理器中将数据可视化
+      href: time-series-insights-explorer.md
+    - name: 缓解限制
+      href: time-series-insights-environment-mitigate-latency.md
+    - name: 诊断和故障排除
+      href: time-series-insights-diagnose-and-solve-problems.md
+    - name: 开发
+      items:
+        - name: 身份验证和授权
+          href: time-series-insights-authentication-and-authorization.md
+        - name: '使用 C# 查询数据'
+          href: time-series-insights-query-data-csharp.md
+        - name: '使用 C# 管理参考数据'
+          href: time-series-insights-manage-reference-data-csharp.md
+        - name: 共享自定义视图
+          href: time-series-insights-parameterized-urls.md
+- name: 操作指南
+  items:
+    - name: 创建环境
+      href: time-series-insights-get-started.md
+    - name: 授予数据访问权限
+      href: time-series-insights-data-access.md
+    - name: 连接到事件中心
+      href: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - name: 连接到 IoT 中心
+      href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: 创建参考数据集
+      href: time-series-insights-add-reference-data-set.md
+    - name: 发送事件
+      href: time-series-insights-send-events.md
+    - name: 缩放环境
+      href: time-series-insights-how-to-scale-your-environment.md
+- name: 引用
+  items:
+    - name: 查询 API
+      href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+    - name: 查询语法
+      href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+- name: 资源
+  items:
+    - name: 相关服务
+      items:
+        - name: Azure IoT 套件
+          href: /azure/iot-suite/
+        - name: Azure 事件中心
+          href: /azure/event-hubs/
+        - name: Azure 流分析
+          href: /azure/stream-analytics/
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+    - name: 支持选项
+      href: 'https://azure.microsoft.com/support/options/'

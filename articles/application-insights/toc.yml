@@ -91,6 +91,8 @@
       items:
         - name: Azure
           items:
+            - name: 添加连续监视
+              href: app-insights-vsts-continuous-monitoring.md
             - name: 探查器
               href: app-insights-profiler.md
             - name: 启用 Profiler
