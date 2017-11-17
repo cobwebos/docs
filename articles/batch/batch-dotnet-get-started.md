@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf2b506c6d12e6337161aba889b23ad5eca83d96
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 83f751c6b5e44705509804e6872bb16d7c2e1d18
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>通过适用于 .NET 的 Batch 客户端库开始构建解决方案
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/20/2017
 必须拥有 **Visual Studio 2015 或更高版本**才能生成示例项目。 可以在 [Visual Studio 产品概述][visual_studio]中找到免费试用版的 Visual Studio。
 
 ### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* 代码示例
-[DotNetTutorial][github_dotnettutorial] 示例是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击“azure-batch-samples-master.zip[github_samples_zip]”直接下载链接，即可下载所有示例。[] 将 ZIP 文件的内容解压缩后，可在以下文件夹中找到该解决方案：
+[DotNetTutorial][github_dotnettutorial] 示例是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击[azure-batch-samples-master.zip][github_samples_zip]”直接下载链接，即可下载所有示例。 将 ZIP 文件的内容解压缩后，可在以下文件夹中找到该解决方案：
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
@@ -323,7 +323,7 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
         pool = batchClient.PoolOperations.CreatePool(
             poolId: poolId,
             targetDedicatedComputeNodes: 3,                                             // 3 compute nodes
-            virtualMachineSize: "small",                                                // single-core, 1.75 GB memory, 225 GB disk
+            virtualMachineSize: "small",                                                // single-vCPU, 1.75 GB memory, 225 GB disk
             cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));   // Windows Server 2012 R2
 
         // Create and assign the StartTask that will be executed when compute nodes join the pool.

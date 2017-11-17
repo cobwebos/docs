@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 7574fdf8787e799e4d73fe32df9c1ad5be93abf1
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 290f2e837cae9bdb95cf8acb486938632927ca8c
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中向用户分配管理员角色
 本文介绍如何将管理角色分配给 Azure Active Directory (Azure AD) 中的用户。 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-azure-portal.md)。 默认情况下添加的用户没有管理员权限，但随时可以为其分配角色。
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
    ![打开“所有用户”组](./media/active-directory-users-assign-role-azure-portal/create-users-open-users-blade.png)
 1. 从列表中选择用户。
-2. 对于所选用户，选择“目录角色”，并为用户分配“目录角色”列表中的一个角色。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。
+2. 对于所选用户，选择“目录角色”，并为用户分配“目录角色”列表中的一个角色。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
 
       ![为用户分配角色](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 6. 选择“保存”。

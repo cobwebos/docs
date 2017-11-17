@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-policy
 manager: jochan
 ms.custom: mvc
-ms.openlocfilehash: b784c79166eb614988d84b4553bb95e4d1e457af
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ef1114f6b1259e4f0d60260febb39bc70b181fbc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure 策略？
 
@@ -51,7 +51,7 @@ Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策�
 
 可通过 Azure 门户、PowerShell 或 Azure CLI 来分配上述任意策略。
 
-若要了解有关策略定义结构的详细信息，请查看本文中的[策略定义结构](../azure-resource-manager/resource-manager-policy.md#policy-definition-structure)部分。
+若要了解有关策略定义结构的详细信息，请查看本文中的[策略定义结构](policy-definition.md)部分。
 
 ## <a name="policy-assignment"></a>策略分配
 
@@ -68,7 +68,7 @@ Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策�
 <!--
 Next link should point to new Concept page for Parameters
 -->
-有关策略参数的详细信息，请参阅[资源策略概述 - 参数](../azure-resource-manager/resource-manager-policy.md#parameters)。
+有关策略参数的详细信息，请参阅[资源策略概述 - 参数](policy-definition.md#parameters)。
 
 ## <a name="initiative-definition"></a>计划定义
 计划定义是策略定义的集合，专为实现一个单一的总体目标而量身定制。 计划定义可以简化管理和分配策略定义。 它们通过将一组策略组合为一个单独的项来实现简化。 例如，可以创建一个标题为“启用 Azure 安全中心中的监视”的计划，用于专门监视 Azure 安全中心中的所有可用的安全建议。

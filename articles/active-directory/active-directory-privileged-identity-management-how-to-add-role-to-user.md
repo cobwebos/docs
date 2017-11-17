@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim;oldportal;it-pro;
-ms.openlocfilehash: 3ac07bb7b070f44595c099a454b3d0dbc66126c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af1ed4fab00d5304a25d28149e2ce9adcc3168fd
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management：如何添加或删除用户角色
-全局管理员（或公司管理员）可以使用 Azure Active Directory (AD) 来更新要将哪些用户**永久**分配到 Azure AD 中的角色。 为此，可以使用 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember` 等 PowerShell cmdlet。 或者，可以根据[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)中所述使用 Azure 经典门户。
+全局管理员（或公司管理员）可以使用 Azure Active Directory (AD) 来更新要将哪些用户**永久**分配到 Azure AD 中的角色。 为此，可以使用 `Add-MsolRoleMember` 和 `Remove-MsolRoleMember` 等 PowerShell cmdlet。 或者，可以根据[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)中所述使用 Azure 经典门户。
 
 Azure AD Privileged Identity Management 应用程序还允许特权角色管理员分配永久的角色。 此外，特权角色管理员可将用户设置为管理员角色的**合格**用户。 合格管理员可在需要时激活角色，在完成任务后，其权限随即失效。
 

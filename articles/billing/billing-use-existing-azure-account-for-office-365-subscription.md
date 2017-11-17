@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: cjiang
-ms.openlocfilehash: c1bf73bce96d231990bd42b4f840d97ce518dc9e
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: cd6103924571ea6fee0cb1e696884a6106082d7a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>使用 Azure 帐户注册 Office 365 订阅
-如果是 Azure 订阅者，则可以使用 Azure 帐户注册 Office 365 订阅。 如果是拥有 Azure 订阅的组织的成员，可在现有 Azure Active Directory (Azure AD) 中为用户创建 Office 365 订阅。 使用帐户（必须在 Azure Active Directory 租户中具有全局管理员或计费管理员权限）注册 Office 365 订阅。 有关详细信息，请参阅[在 Azure AD 中检查我的帐户权限](#RoleInAzureAD)和[在 Azure Active Directory 中分配管理员角色](../active-directory/active-directory-assign-admin-roles.md)。
+如果是 Azure 订阅者，则可以使用 Azure 帐户注册 Office 365 订阅。 如果是拥有 Azure 订阅的组织的成员，可在现有 Azure Active Directory (Azure AD) 中为用户创建 Office 365 订阅。 使用帐户（必须在 Azure Active Directory 租户中具有全局管理员或计费管理员权限）注册 Office 365 订阅。 有关详细信息，请参阅[在 Azure AD 中检查我的帐户权限](#RoleInAzureAD)和[在 Azure Active Directory 中分配管理员角色](../active-directory/active-directory-assign-admin-roles-azure-portal.md)。
 
 如果已具有 Office 365 帐户和 Azure 订阅，则可以[将 Office 365 租户与 Azure 订阅关联](billing-add-office-365-tenant-to-azure-subscription.md)。
 

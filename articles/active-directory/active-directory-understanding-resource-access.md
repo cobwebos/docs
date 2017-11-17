@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: e5ac068e37d921530272e5eb3dc76d976a86a742
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9492afeda8c11d9d4df866e416a2c2c7e1684569
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="understanding-resource-access-in-azure"></a>了解 Azure 中的资源访问权限
 
@@ -53,7 +53,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)
 * 有关 Azure Active Directory 如何与 Azure 订阅相关联的详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
-* 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
+* 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-understanding-resource-access/IC707931.png

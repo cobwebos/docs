@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: cbedb87722d1c230f3b8003cadd069947881f25d
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: e0b58142a2ed17d2cd4749b33e9e80ff1a01662a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/24/2017
 ### <a name="on-the-azure-active-directory-admin-center"></a>在 Azure Active Directory 管理中心
 
 1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保自己不被锁定在租户外部。
-2. 在 Azure AD 租户中添加一个或多个[自定义域名](../active-directory-add-domain.md)。 用户使用其中一个域名登录。
+2. 在 Azure AD 租户中添加一个或多个[自定义域名](../active-directory-domains-add-azure-portal.md)。 用户使用其中一个域名登录。
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 

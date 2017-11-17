@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 903fbe376cb3d75eb5ddc1eed4838cd10f3c6a28
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 54c979313a6ffa43008aa9870332b92d2b2f182a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理用于容器的 Web 应用
 
 通过本文中的命令，能够使用 Azure CLI 2.0 创建和管理用于容器的 Web 应用。
 你可以通过两种方式开始使用 CLI 的新版本：
 
-* 在计算机上[安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)。
+* 在计算机上[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 * 使用 [Azure Cloud Shell（预览版）](../../cloud-shell/overview.md)
 
 ## <a name="create-a-linux-app-service-plan"></a>创建 Linux 应用服务计划
@@ -104,7 +104,7 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
-* [安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+* [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell（预览版）](../../cloud-shell/overview.md)
 * [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [使用用于容器的 Web 应用进行持续部署](app-service-linux-ci-cd.md)

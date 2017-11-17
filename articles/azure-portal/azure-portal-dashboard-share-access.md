@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: ea0cf7ad074f95c2b49a92f9a8e32270a1d39b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50a965f9773524a36bedc3d040bf1a1ca391507f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 配置仪表板后，可将其发布，并与组织中的其他用户共享。 通过使用 Azure [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)，允许他人查看仪表板。 将一个用户或一组用户分配到某角色，该角色定义这些用户是否可以查看或修改已发布的仪表板。 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 但是，也可以将权限分配给包含若干个仪表板的资源组或单个仪表板。 例如，可以决定一组用户在整个订阅中应具有有限的权限，但对特定仪表板具有更高的访问权限。 将这些用户分配给该仪表板的角色。 
 
 ## <a name="publish-dashboard"></a>发布仪表板
-假设已配置完成要与订阅中的一组用户共享的仪表板。 下面的步骤描述了一个称为存储管理器的自定义组，但也可以将组命名为任何想要的名称。 有关创建 Active Directory 组并将用户添加到该组的详细信息，请参阅[在 Azure Active Directory 中管理组](../active-directory/active-directory-accessmanagement-manage-groups.md)。
+假设已配置完成要与订阅中的一组用户共享的仪表板。 下面的步骤描述了一个称为存储管理器的自定义组，但也可以将组命名为任何想要的名称。 有关创建 Active Directory 组并将用户添加到该组的详细信息，请参阅[在 Azure Active Directory 中管理组](../active-directory/active-directory-groups-create-azure-portal.md)。
 
 1. 在仪表板中，选择“共享”。
    

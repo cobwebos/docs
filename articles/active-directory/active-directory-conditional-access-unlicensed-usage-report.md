@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: 0f5f0eb79d8924ebe7e5848e1d8b761ea2e4983d
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 91b48098cc8ba2bb230b0536a9bcd121db79c533
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="unlicensed-usage-report"></a>未授权用户使用情况报表
 未授权用户使用情况报表可帮助你识别正在使用付费 Azure AD 功能的未授权用户。 这样可以更好地使用已购买的许可证，并且让你知道何时可能需要其他许可证。 
@@ -42,6 +42,6 @@ ms.lasthandoff: 10/18/2017
 这种情况也适用于 MFA / 位置策略和使用 Intune 的设备策略。
 
 ## <a name="see-also"></a>另请参阅
-* [在 Office 365 和其他连接到 Azure Active Directory 的应用中使用条件性访问](active-directory-conditional-access.md)
-* [Azure AD 的条件性访问入门](active-directory-conditional-access-azuread-connected-apps.md) 
+* [在 Office 365 和其他连接到 Azure Active Directory 的应用中使用条件性访问](active-directory-conditional-access-azure-portal.md)
+* [Azure AD 的条件性访问入门](active-directory-conditional-access-azure-portal-get-started.md) 
 

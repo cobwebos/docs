@@ -15,11 +15,11 @@ ms.date: 07/02/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.openlocfilehash: ea97fdc8d146ed524a932018b572ceda0982738b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 073d81e495b9cacbe81f375b09bfcad23aadb22e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="enable-application-proxy-in-the-classic-portal-and-download-connectors"></a>在经典门户中启用应用程序代理并下载连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
@@ -94,4 +94,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 现在，可以随时 [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
 
-如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors.md)的详细信息。
+如果应用程序位于单独网络或其他位置，可以使用连接器组将不同连接器组织到逻辑单元中。 了解有关 [使用应用程序代理连接器](active-directory-application-proxy-connectors-azure-portal.md)的详细信息。

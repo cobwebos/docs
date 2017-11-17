@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 3910c62e61d77f479da9fae2e1a8c0575c543281
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: d8ed395abb31a1cb41e35456ab5892a2e7c3a750
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/23/2017
 |:---:| --- |
 | 介绍 Azure AD 解决的应用程序管理问题	 |[使用 Azure Active Directory (AD) 管理应用程序](active-directory-enable-sso-scenario.md) |
 | Azure AD 中与启用单一登录、定义有权访问应用程序的人员，以及用户如何启动应用程序相关的各种功能概述 |[Azure Active Directory 中的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md) |
-| 探讨将应用程序集成到 Azure AD 时所涉及的不同步骤 |[将 Azure Active Directory 与应用程序集成](active-directory-integrating-applications-getting-started.md)<br /><br />[启用对 SaaS 应用的单一登录](active-directory-sso-integrate-saas-apps.md)<br /><br />[管理对应用的访问](active-directory-managing-access-to-apps.md) |
+| 探讨将应用程序集成到 Azure AD 时所涉及的不同步骤 |[将 Azure Active Directory 与应用程序集成](active-directory-integrating-applications-getting-started.md)<br /><br />[启用对 SaaS 应用的单一登录](active-directory-enterprise-apps-manage-sso.md)<br /><br />[管理对应用的访问](active-directory-managing-access-to-apps.md) |
 | 如何在 Azure AD 中表示应用程序的技术说明 |[如何以及为何将应用程序添加到 Azure AD](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>疑难解答文章
@@ -80,8 +80,8 @@ ms.lasthandoff: 10/23/2017
 |:---:| --- |
 | Azure AD 应用程序代理及其工作原理的概述 |[提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md) |
 | 有关如何配置应用程序代理以及如何发布第一个应用的教程 |[如何设置 Azure AD 应用代理](active-directory-application-proxy-enable.md)<br /><br />[如何以无提示方式安装应用代理连接器](active-directory-application-proxy-silent-installation.md)<br /><br />[如何使用应用代理发布应用程序](active-directory-application-proxy-publish.md)<br /><br />[如何使用自己的域名](active-directory-application-proxy-custom-domains.md) |
-| 如何对使用应用代理发布的应用程序启用单一登录和条件性访问 |[使用应用程序代理的单一登录](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件性访问和应用程序代理](active-directory-application-proxy-conditional-access.md) |
-| 有关如何对以下方案使用应用程序代理的指导 |[如何支持本机客户端应用程序](active-directory-application-proxy-native-client.md)<br /><br />[如何支持声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[如何支持在单独网络和位置上发布的应用程序](active-directory-application-proxy-connectors.md) |
+| 如何对使用应用代理发布的应用程序启用单一登录和条件性访问 |[使用应用程序代理的单一登录](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件性访问和应用程序代理](application-proxy-enable-remote-access-sharepoint.md) |
+| 有关如何对以下方案使用应用程序代理的指导 |[如何支持本机客户端应用程序](active-directory-application-proxy-native-client.md)<br /><br />[如何支持声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[如何支持在单独网络和位置上发布的应用程序](active-directory-application-proxy-connectors-azure-portal.md) |
 | 应用程序代理故障排除指南 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
 
 应用程序代理适用于所有版本的 Azure AD，每个用户最多十个应用。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来分配对应用程序的访问权限](#managing-access-to-applications)。
@@ -107,9 +107,8 @@ Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure
 
 | 文章指南 |  |
 |:---:| --- |
-| 跨 Azure AD、Office365 和 Intune 提供的条件性访问功能简介 |[使用条件性访问管理风险](active-directory-conditional-access.md) |
-| 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](active-directory-application-proxy-conditional-access.md) |
-
+| 跨 Azure AD、Office365 和 Intune 提供的条件性访问功能简介 |[使用条件性访问管理风险](active-directory-conditional-access-azure-portal.md) |
+| 如何为以下类型的资源启用条件性访问 |[SaaS 应用的条件性访问](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Office 365 服务的条件性访问](active-directory-conditional-access-device-policies.md)<br /><br />[本地应用程序的条件性访问](active-directory-conditional-access-azure-portal.md)<br /><br />[通过 Azure AD 应用代理发布的本地应用程序的条件性访问](application-proxy-enable-remote-access-sharepoint.md) |
 | 如何向 Azure Active Directory 注册设备以启用基于设备的条件性访问策略 |[Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)<br /><br />[如何为加入域的 Windows 设备启用自动设备注册](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 设备的步骤](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Windows 7 设备的步骤](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | 如何使用 Microsoft Authenticator 应用进行双重验证 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
@@ -162,8 +161,8 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 |:---:| --- |
 | Azure AD 访问管理功能的概述 |[管理对应用的访问简介](active-directory-managing-access-to-apps.md)<br /><br />[Azure AD 中的访问管理工作原理](active-directory-manage-groups.md)<br /><br />[如何使用组管理对 SaaS 应用程序的访问权限](active-directory-accessmanagement-group-saasapps.md) |
 | 启用应用程序和组的自助管理 |[自助应用程序管理](active-directory-self-service-application-access.md)<br /><br />[自助组管理](active-directory-accessmanagement-self-service-group-management.md) |
-| 有关在 Azure AD 中设置组的说明 |[如何创建安全组](active-directory-accessmanagement-manage-groups.md)<br /><br />[如何指定组所有者](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[如何使用“所有用户”组](active-directory-accessmanagement-dedicated-groups.md) |
-| 使用动态组通过基于属性的成员资格规则自动填充组成员资格 |[动态组成员身份：高级规则 ](active-directory-accessmanagement-groups-with-advanced-rules.md)<br /><br />[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
+| 有关在 Azure AD 中设置组的说明 |[如何创建安全组](active-directory-groups-create-azure-portal.md)<br /><br />[如何指定组所有者](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[如何使用“所有用户”组](active-directory-accessmanagement-dedicated-groups.md) |
+| 使用动态组通过基于属性的成员资格规则自动填充组成员资格 |[动态组成员身份：高级规则 ](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
 
 基于组的应用程序访问管理适用于 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)。 自助组管理、自助应用程序管理以及动态组是 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 功能。
 

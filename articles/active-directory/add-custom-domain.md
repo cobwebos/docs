@@ -14,11 +14,11 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 2ea119b56f467f57b5929dec05bfd645028578ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2f0287202e1b39f395354b1124078b7b0dc95a7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>快速入门：将自定义域名添加到 Azure Active Directory
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 如果组织使用多个自定义域名，例如“contoso.com”和“contosobank.com”，最多可以添加 900 个域名。 本文中的步骤可帮助你添加每个域名。
 
 ### <a name="learn-more"></a>了解详细信息
-[Azure AD 中自定义域名的概念性概述](active-directory-add-domain-concepts.md)
+[Azure AD 中自定义域名的概念性概述](active-directory-domains-manage-azure-portal.md)
 
 [管理自定义域名](active-directory-domains-manage-azure-portal.md)
 

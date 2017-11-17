@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 321c87f242f2c24eb2b28be2dc69cde278117b97
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: eddc1988e094a50ba7e41331a576846aa26f77a4
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件性访问开发人员指南
 
@@ -28,7 +28,7 @@ Azure Active Directory (AD) 提供了多种保护应用和服务安全的方法�
 * 仅允许已注册 Intune 的设备访问特定服务
 * 限制用户位置和 IP 范围
 
-有关条件性访问完整功能的详细信息，请参阅 [Azure 经典门户中的条件访问](../active-directory-conditional-access.md)。 
+有关条件性访问完整功能的详细信息，请参阅 [Azure 经典门户中的条件访问](../active-directory-conditional-access-azure-portal.md)。 
 
 在本文中，我们将重点介绍条件性访问对构建适用于 Azure AD 应用的开发人员的意义。  本文假定你了解[单租户](active-directory-integrating-applications.md)和[多租户](active-directory-devhowto-multi-tenant-overview.md)应用及[常见的身份验证模式](active-directory-authentication-scenarios.md)。
 
@@ -48,7 +48,7 @@ Azure Active Directory (AD) 提供了多种保护应用和服务安全的方法�
 * 使用 ADAL.js 的单页应用
 * 调用资源的 Web 应用
 
-条件性访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件性访问策略，请参阅 [Azure Active Directory 条件性访问入门](../active-directory-conditional-access-azuread-connected-apps.md)。
+条件性访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件性访问策略，请参阅 [Azure Active Directory 条件性访问入门](../active-directory-conditional-access-azure-portal-get-started.md)。
 
 根据具体的情况，企业客户随时可以应用和删除条件性访问策略。  应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。 
 
@@ -218,7 +218,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>另请参阅
 
-* 若要详细了解这些功能，请参阅 [Azure AD 中的条件性访问](../active-directory-conditional-access.md)。
+* 若要详细了解这些功能，请参阅 [Azure AD 中的条件性访问](../active-directory-conditional-access-azure-portal.md)。
 * 若要获取 Azure AD 代码示例，请参阅[代码示例 Github 存储库](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)。 
 * 有关 ADAL SDK 和访问参考文档的详细信息，请参阅[库指南](active-directory-authentication-libraries.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](active-directory-devhowto-multi-tenant-overview.md)。

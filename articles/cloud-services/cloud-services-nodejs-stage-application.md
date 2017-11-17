@@ -3,7 +3,7 @@ title: "暂存云服务部署 (Node.js) | Microsoft Docs"
 description: "了解如何使用虚拟 IP (VIP) 交换将 Azure 应用程序部署到过渡环境，然后再将其部署到生产环境。"
 services: cloud-services
 documentationcenter: nodejs
-author: TomArcher
+author: craigshoemaker
 manager: routlaw
 editor: 
 ms.assetid: d65d26a6-b424-49cd-a88c-7ef46bb112a8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: tarcher
-ms.openlocfilehash: b3000ed769e8c60eccb21e26f53ce7ccb7e68d7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: e35bbd31f39722c2e95ce58772dc6bd5eaf839a0
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="staging-an-application-in-azure"></a>在 Azure 中暂存应用程序
 可以先将要测试的已打包应用程序部署到 Azure 中的过渡环境，然后再将该应用程序移动到用户可通过 Internet 对其进行访问的生产环境。 过渡环境与生产环境完全一样，只不过访问暂存应用程序时必须使用由 Azure 生成的经过模糊处理的 URL。 在验证应用程序能够正常运行后，可以通过执行虚拟 IP (VIP) 交换将其部署到生产环境。

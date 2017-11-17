@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: 520e4dfaadf1d476447a600ef2b3d092b6955a89
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 54b6a6984e66f32642336f4ea5e1e9f4ec9d03f3
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>在 Azure 堆栈中提供的自定义虚拟机映像
 
@@ -100,7 +100,7 @@ Azure 堆栈中运算符可以提供自定义虚拟机映像为其用户。 可�
           -EnableAdfsAuthentication:$true
 
         $TenantID = Get-AzsDirectoryTenantId `
-          -ADFS 
+          -ADFS `
           -EnvironmentName AzureStackAdmin 
 
         Login-AzureRmAccount `
@@ -150,7 +150,7 @@ Remove-AzsVMImage `
 | **发布服务器** |用户使用时它们将映像部署的 VM 映像发布者名称段。 一个示例是**Microsoft**。 不包括空格或其他特殊字符在此字段中。 |
 | **产品/服务** |用户使用用户部署的 VM 映像时的 VM 映像提供名称段。 一个示例是**WindowsServer**。 不包括空格或其他特殊字符在此字段中。 |
 | **sku** |用户使用用户部署的 VM 映像时的 VM 映像的 SKU 名称段。 一个示例是**Datacenter2016**。 不包括空格或其他特殊字符在此字段中。 |
-| **version** |用户使用用户部署的 VM 映像时的 VM 映像版本。 此版本采用以下格式 *\#。\#。\#*. 一个示例是**1.0.0**。 不包括空格或其他特殊字符在此字段中。 |
+| **version** |用户使用用户部署的 VM 映像时的 VM 映像版本。 此版本采用以下格式 *\#。\#。\#* 一个示例是**1.0.0**。 不包括空格或其他特殊字符在此字段中。 |
 | **osType** |图像的 osType 必须是**Windows**或**Linux**。 |
 | **osDiskLocalPath** |OS 磁盘 VHD 上载到 Azure 堆栈的 VM 映像为本地路径。 |
 | **dataDiskLocalPaths** |本地路径可以作为 VM 映像的一部分上载的数据磁盘的可选数组。 |

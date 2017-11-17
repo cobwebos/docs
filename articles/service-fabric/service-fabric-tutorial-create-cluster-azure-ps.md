@@ -109,7 +109,7 @@ New-AzureRmServiceFabricCluster -Name $clustername -ResourceGroupName $groupname
 
 创建过程可能需要几分钟。 配置完成后，该参数会输出在 Azure 中创建的群集的相关信息。 此外，它还会将群集证书复制到为此参数所指定路径上的 -CertificateOutputFolder 目录。
 
-请记下群集的 **ManagementEndpoint** URL，它可能类似于以下 URL：https://mycluster.westeurope.cloudapp.azure.com:19080。
+请记下群集的 **ManagementEndpoint** URL，它可能类似于以下 URL： https://mycluster.westeurope.cloudapp.azure.com:19080 。
 
 ## <a name="import-the-certificate"></a>导入证书
 

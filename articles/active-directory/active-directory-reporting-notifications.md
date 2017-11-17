@@ -16,11 +16,11 @@ ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e561061cadd88e2c5670e27f2a66ef21002e30b0
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: fa8ca5940bb437c1e5c3939262db000544b04e36
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Azure Active Directory 报告通知
 ## <a name="what-reports-generate-email-notifications"></a>哪些报告可生成电子邮件通知
@@ -47,5 +47,5 @@ ms.lasthandoff: 10/18/2017
 ## <a name="whats-next"></a>后续步骤
 * 想要知道可以使用哪些安全、审核和活动报告吗？ 请查看 [Azure AD 安全、审核和活动报告](active-directory-view-access-usage-reports.md)
 * [Azure Active Directory 高级版入门](active-directory-get-started-premium.md)
-* [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
+* [向“登录”和“访问面板”页添加公司品牌](customize-branding.md)
 

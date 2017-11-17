@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: 5477068ddab46bbe0fdbdda754227642ed97bb36
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 5481e9139f18cb88ce5152776fa18df3f9441c80
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>备份资源管理器部署中的 Windows 系统状态
 本文介绍了如何将 Windows Server 系统状态备份到 Azure。 本教程旨在引导完成基本操作。
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/09/2017
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com/)，请使用 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，并在资源列表中，键入“恢复服务”并单击“恢复服务保管库”。
 
-    ![创建恢复服务保管库步骤 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
+    ![创建恢复服务保管库步骤 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
 
     如果在订阅中有恢复服务保管库，则会列出这些保管库。
 3. 在“恢复服务保管库”菜单中，单击“添加”。

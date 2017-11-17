@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 030fb1d87547a4fc78d54a855bca961202f28837
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: f2b172208185e343c9c10d55036c20d60346778c
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="customize-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/31/2017
 
 在所有情况下，最多会向 100 个收件人发送通知。
 
-若要了解有关不同管理员角色以及如何分配它们的详细信息，请参阅文档[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
+若要了解有关不同管理员角色以及如何分配它们的详细信息，请参阅文档[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)
 
 ### <a name="disable-contact-your-administrator-emails"></a>禁用“联系管理员”电子邮件
 
@@ -100,16 +100,16 @@ SharePoint Online 和 Office 2010 的某些功能取决于用户能否勾选此�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](active-directory-passwords-best-practices.md)
+* [如何成功推出 SSPR？](active-directory-passwords-best-practices.md)
 * [重置或更改密码](active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](active-directory-passwords-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](active-directory-passwords-data.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](active-directory-passwords-data.md)
 * [哪些身份验证方法可供用户使用？](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
 * [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
 * [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
