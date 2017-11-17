@@ -15,7 +15,7 @@
   items:
     - name: 使用 Terraform 模块创建 VM 群集
       href: terraform-create-vm-cluster-module.md
-    - name: 使用 Cloud Shell 创建 VM 群集
+    - name: 使用 Terraform 和 HCL 创建 VM 群集
       href: terraform-create-vm-cluster-with-infrastructure.md
     - name: 为 VM 规模集预配基础结构
       href: terraform-create-vm-scaleset-network-disks-hcl.md

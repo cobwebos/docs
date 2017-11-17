@@ -34,32 +34,21 @@
 #### [使用任务在云服务角色上安装 .NET](cloud-services-dotnet-install-dotnet.md)
 
 ### 配置远程桌面
-#### [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
-#### [经典门户](cloud-services-role-enable-remote-desktop.md)
-#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [门户](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## 部署
-### 在门户中创建和部署云服务
-#### [Azure 门户](cloud-services-how-to-create-deploy-portal.md)
-#### [经典门户](cloud-services-how-to-create-deploy.md)
+### [在门户中创建和部署云服务](cloud-services-how-to-create-deploy-portal.md)
 ### [在 PowerShell 中创建空云服务容器](cloud-services-powershell-create-cloud-container.md)
-### 配置自定义域名
-#### [门户](cloud-services-custom-domain-name-portal.md)
-#### [经典门户](cloud-services-custom-domain-name.md)
+### [配置自定义域名](cloud-services-custom-domain-name-portal.md)
 ### [暂存云服务部署 (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [连接到自定义域控制器](cloud-services-connect-to-custom-domain.md)
 
 ## 管理服务
-### 常见管理任务
-#### [Azure 门户](cloud-services-how-to-manage-portal.md)
-#### [经典门户](cloud-services-how-to-manage.md)
-### 配置云服务
-#### [Azure 门户](cloud-services-how-to-configure-portal.md)
-#### [经典门户](cloud-services-how-to-configure.md)
+### [常见管理任务](cloud-services-how-to-manage-portal.md)
+### [配置云服务](cloud-services-how-to-configure-portal.md)
 ### [使用 Azure 自动化管理云服务](automation-manage-cloud-services.md)
-### 配置自动缩放
-#### [Azure 门户](cloud-services-how-to-scale-portal.md)
-#### [经典门户](cloud-services-how-to-scale.md)
+### [配置自动缩放](cloud-services-how-to-scale-portal.md)
 ### [使用 Python 管理 Azure 资源](cloud-services-python-how-to-use-service-management.md)
 
 ### [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
@@ -71,9 +60,7 @@
 
 ## 管理证书
 ### [云服务和管理证书](cloud-services-certs-create.md)
-### 配置 SSL 
-#### [门户](cloud-services-configure-ssl-certificate-portal.md)
-#### [经典门户](cloud-services-configure-ssl-certificate.md)
+### [配置 SSL](cloud-services-configure-ssl-certificate-portal.md)
 
 ## 监视
 ### [监视云服务](cloud-services-how-to-monitor.md)

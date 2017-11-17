@@ -2,6 +2,7 @@
 ## [什么是流分析？](stream-analytics-introduction.md)
 ## [Storm 与流分析的比较](stream-analytics-comparison-storm.md)
 
+
 # 入门
 ## [处理 IoT 流数据](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 ## [实时欺诈检测](stream-analytics-real-time-fraud-detection.md)
@@ -13,7 +14,9 @@
 ### [社交媒体](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [使用机器学习实现实时评分](stream-analytics-machine-learning-integration-tutorial.md)
 ### [实时事件处理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [IoT Edge 上的流分析（预览版）](stream-analytics-edge.md)
 ### [Azure 用法指南（预览版）中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
+### [使用流分析进行高频率交易模拟](stream-analytics-high-frequency-trading.md)
 
 ## 创建作业
 ### [创建输入](stream-analytics-define-inputs.md)

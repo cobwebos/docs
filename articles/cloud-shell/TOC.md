@@ -14,6 +14,9 @@
 ## [在 PowerShell 中保留存储](persisting-shell-storage-powershell.md)
 ## [使用窗口](using-the-shell-window.md)
 
+# 示例
+## [在 Bash 中使用 Terraform 部署 Azure 资源](example-terraform-bash.md)
+
 # [定价](pricing.md)
 
 # [故障排除](troubleshooting.md)

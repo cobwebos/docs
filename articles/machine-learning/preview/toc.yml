@@ -41,6 +41,8 @@
           href: roaming-and-collaboration.md
     - name: 使用用于 AI 的 Visual Studio Code 工具
       href: quickstart-visual-studio-tools.md
+    - name: 使用 Azure IoT Edge AI 工具包
+      href: use-azure-iot-edge-ai-toolkit.md
     - name: 配置计算环境
       items:
         - name: 配置试验
@@ -88,6 +90,8 @@
           href: how-to-scale-clusters.md
         - name: 部署 Web 服务
           href: model-management-service-deploy.md
+        - name: 部署到 IoT Edge 设备
+          href: deploy-to-iot-edge-device.md
         - name: 使用 Web 服务
           href: model-management-consumption.md
         - name: 收集模型数据

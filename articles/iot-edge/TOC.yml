@@ -1,61 +1,61 @@
-- name: Azure IoT 中心设备预配服务文档
+- name: Azure IoT Edge 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 IoT 设备预配
-      href: about-iot-dps.md
+    - name: 关于 Azure IoT Edge
+      href: how-iot-edge-works.md
 - name: 快速入门
-  expanded: true
   items:
-    - name: 设置自动预配
-      href: quick-setup-auto-provision.md
-    - name: 创建模拟设备
-      items:
-        - name: TPM
-          href: quick-create-simulated-device.md
-        - name: X.509
-          href: quick-create-simulated-device-x509.md
+    - name: 部署到 Edge 设备 - Windows
+      href: quickstart.md
+    - name: 部署到 Edge 设备 - Linux
+      href: quickstart-linux.md
 - name: 教程
   items:
-    - name: 1 - 设置云资源
-      href: tutorial-set-up-cloud.md
-    - name: 2 - 设置设备
-      href: tutorial-set-up-device.md
-    - name: 3 - 将设备预配到 IoT 中心
-      href: tutorial-provision-device-to-hub.md
-    - name: 4 - 将设备预配到多个中心
-      href: tutorial-provision-multiple-hubs.md
-- name: 概念
-  items:
-    - name: 设备概念
-      href: concepts-device.md
-    - name: 服务概念
-      href: concepts-service.md
-    - name: 安全概念
-      href: concepts-security.md
+    - name: 模拟 Edge 设备 - Windows
+      href: tutorial-simulate-device-windows.md
+    - name: 模拟 Edge 设备 - Linux
+      href: tutorial-simulate-device-linux.md
+    - name: '开发 C# 模块'
+      href: tutorial-csharp-module.md
+    - name: 部署 Azure 流分析
+      href: tutorial-deploy-stream-analytics.md
+    - name: 部署 Azure 机器学习
+      href: tutorial-deploy-machine-learning.md
+    - name: 部署 Azure Functions
+      href: tutorial-deploy-function.md
 - name: 操作指南
   items:
-    - name: 管理设备注册
-      href: how-to-manage-enrollments.md
-    - name: 将 HSM 与 SDK 配合使用
-      href: use-hsm-with-sdk.md
-    - name: 控制对预配服务的访问
-      href: how-to-control-access.md
-- name: 引用
+    - name: 创建网关设备
+      href: how-to-create-gateway-device.md
+    - name: 大规模部署和监视
+      href: how-to-deploy-monitor.md
+    - name: 预配 IoT Core 设备
+      href: how-to-install-iot-core.md
+- name: 概念
   items:
-    - name: REST
-      href: /rest/api/iot-dps
+    - name: IoT Edge 模块
+      href: iot-edge-modules.md
+      items:
+        - name: 开发
+          href: module-development.md
+        - name: 组合
+          href: module-composition.md
+    - name: IoT Edge 运行时
+      href: iot-edge-runtime.md
+    - name: 部署
+      href: module-deployment-monitoring.md
+    - name: 安全
+      href: security.md
 - name: 资源
   items:
-    - name: Azure IoT 中心
-      href: 'https://azure.microsoft.com/services/iot-hub/'
     - name: Azure IoT 已认证设备目录
       href: 'https://catalog.azureiotsuite.com/'
     - name: Azure IoT 开发人员中心
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
-    - name: 设备资源管理器工具
+    - name: DeviceExplorer 工具
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: iothub-diagnostics 工具
       href: 'https://github.com/Azure/iothub-diagnostics'
