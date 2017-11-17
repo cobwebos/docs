@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: 5f099201d9018a6f8577cb3daf127d09560fb94b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69c7984d0620b4a0fd40252129023093c09d6e56
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-本文提供了将自定义域名与通过流量管理器进行负载均衡的 Azure 应用服务配合使用的一般说明。
+本文提供了将自定义域名与一个[应用服务](app-service-web-overview.md)应用配合使用的一般说明，该应用已与[流量管理器](../traffic-manager/traffic-manager-overview.md)集成以进行负载均衡。
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -49,21 +49,18 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-要将自定义域与 Azure 应用服务中的 Web 应用关联，必须通过使用向你出售域名的域注册机构所提供的工具在 DNS 表中为自定义域添加新条目。 使用以下步骤找到并使用这些 DNS 工具。
+要将自定义域与 Azure 应用服务中的 Web 应用关联，必须在 DNS 表中为自定义域添加新条目。 请通过使用来自域提供商的管理工具执行此操作。
 
-1. 登录到在域注册机构注册的帐户，并查找用于管理 DNS 记录的页面。 查找网站中标签为“域名”、“DNS”或“名称服务器管理”的链接或区域。 通过查看帐户信息，并查找诸如“我的域”这样的链接，通常可以找到此页面的链接。
-2. 找到域名管理页后，再找允许编辑 DNS 记录的链接。 此链接可能作为“区域文件”、“DNS 记录”或“高级”配置链接列出。
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+虽然各个域提供商的具体情况不同，但你都需从自定义域名（例如 **contoso.com**）映射到与 Web 应用集成的流量管理器域名 (**contoso.trafficmanager.net**)。
    
-   * 该页面将很可能有几个已经创建的记录，例如将 '**@**' 或 '\*' 与“域驻留”页面关联的条目。 它还可能包含用于常见子域（例如 **www**）的记录。
-   * 该页将涉及 **CNAME 记录**，或者提供用于选择记录类型的下拉列表。 它还可能涉及其他记录，例如 **A 记录**和 **MX 记录**。 在某些情况下，CNAME 记录将通过其他名称（例如**别名记录**）调用。
-   * 该页还提供了用于从 **主机名** 或 **域名** **映射** 到另一域名的字段。
-3. 虽然各个注册机构的具体情况不同，但是一般而言，是 *从* 自定义域名（例如 **contoso.com**）映射 *到* 用于 Web 应用的流量管理器域名 (**contoso.trafficmanager.net**)。
-   
-   > [!NOTE]
-   > 另外，如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，要提前将 **www.contoso.com** 绑定到 Web 应用，请创建一条从 **awverify.www** 到 **contoso.trafficmanager.net** 的 CNAME 记录。 然后，可以将“www.contoso.com”添加到 Web 应用，而不必更改“www”CNAME 记录。 有关详细信息，请参阅[在自定义域中为 Web 应用创建 DNS 记录][CREATEDNS]。
-   > 
-   > 
-4. 在注册机构添加或修改完 DNS 记录后，请保存这些更改。
+> [!NOTE]
+> 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，要先将 **www.contoso.com** 绑定到 Web 应用，请创建一条从 **awverify.www** 到 **contoso.trafficmanager.net** 的 CNAME 记录。 然后，可以将“www.contoso.com”添加到 Web 应用，而不必更改“www”CNAME 记录。 有关详细信息，请参阅[在自定义域中为 Web 应用创建 DNS 记录][CREATEDNS]。
+> 
+> 
+
+在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
 
 <a name="enabledomain"></a>
 
@@ -72,8 +69,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
-
-[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
