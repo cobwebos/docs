@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 278aa67013eb2cabcf5efa7e0de21e9cff0519ba
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 00fc998666574f0b85b968cba174d328a300e861
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>保护 Azure AD 中的特权访问
 保护特权访问是帮助保护现代组织中的业务资产的首要步骤。 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
@@ -66,7 +66,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 * 启用 [Azure 多重身份验证](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
 * 启用 [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
 * 启用 [Azure AD Identity Protection](../active-directory-identityprotection.md)
-* 启用[条件性访问控制](../active-directory-conditional-access.md)
+* 启用[条件性访问控制](../active-directory-conditional-access-azure-portal.md)
 
 若要深入了解如何构建完整的安全路线图，请参阅[针对企业结构设计的 Microsoft 云安全性](http://aka.ms/securecustomer)文档中的“客户责任和路线图”部分。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或访问[网络安全解决方案网页](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)。
 

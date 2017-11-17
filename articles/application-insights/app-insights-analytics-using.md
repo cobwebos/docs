@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 50161c71443a3cc0192ab2db771bb258058e233c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="using-analytics-in-application-insights"></a>使用 Application Insights 中的 Analytics
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/01/2017
 ### <a name="write-a-query"></a>编写查询
 ![架构显示](./media/app-insights-analytics-using/150.png)
 
-首先，请查看左侧列出的所有表的名称（或者 [range](https://docs.loganalytics.io/queryLanguage/query_language_rangeoperator.html) 或 [union](https://docs.loganalytics.io/queryLanguage/query_language_unionoperator.html) 运算符）。 使用 `|` 创建[运算符](https://docs.loganalytics.io/learn/cheatsheets/useful_operators.html)的分隔竖线。 
+首先，请查看左侧列出的所有表的名称（或者 [range](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/range-operator) 或 [union](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/union-operator) 运算符）。 使用 `|` 创建[运算符](https://docs.loganalytics.io/docs/Learn/References/Useful-operators)的分隔竖线。 
 
 IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信息图标（或按 CTRL+空格键）可以获取更长的说明，以及演示如何使用每个元素的示例。
 
@@ -49,7 +49,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 1. 可以在查询中使用单个换行符。
 2. 将光标放在要运行的查询的内部或末尾。
-3. 检查查询的时间范围。 （可以更改该时间范围，或者通过在查询中包含自己的 [`where...timestamp...`](https://docs.loganalytics.io/concepts/concepts_datatypes_timespan.html) 来重写该值。）
+3. 检查查询的时间范围。 （可以更改该时间范围，或者通过在查询中包含自己的 [`where...timestamp...`](https://docs.loganalytics.io/docs/Learn/Tutorials/Date-and-time-operations) 来重写该值。）
 3. 单击“运行”运行查询。
 4. 不要在查询中插入空行。 可以通过使用空行分隔多个查询，将这些分隔的查询保留在一个查询中。 只会运行光标所在处的查询。
 
@@ -71,7 +71,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 > [!NOTE]
 > 在浏览器中排序、分组和筛选不会重新运行查询。 这些操作只会重新排列最后一个查询返回的结果。 
 > 
-> 若要在返回结果之前在服务器中执行这些任务，请使用 [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)、[summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 和 [where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) 运算符编写查询。
+> 若要在返回结果之前在服务器中执行这些任务，请使用 [sort](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)、[summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 和 [where](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) 运算符编写查询。
 > 
 > 
 
@@ -99,7 +99,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
     但是，可以使用下拉菜单更改时间范围筛选器。
 
-    或者，通过在查询中包含自己的 [`where  ... timestamp ...` 子句](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)来重写自动范围。 例如：
+    或者，通过在查询中包含自己的 [`where  ... timestamp ...` 子句](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)来重写自动范围。 例如：
 
     `requests | where timestamp > ago('2d')`
 
@@ -107,10 +107,10 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
     请尽量避免达到限制。 使用时间范围筛选器，或使用如下所示的运算符：
 
-  * [top 100 by timestamp](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 
-  * [take 100](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)
-  * [summarize ](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 
-  * [where timestamp > ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
+  * [top 100 by timestamp](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
+  * [take 100](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
+  * [summarize ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
+  * [where timestamp > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
 
 （希望结果中包含 1 万行以上？ 请考虑改用[连续导出](app-insights-export-telemetry.md)。 Analytics 旨在用于分析，而不是检索原始数据。）
 
@@ -121,7 +121,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 如果有多个正确类型的列，可以选择 x 和 y 轴以及一个维度列作为拆分结果的依据。
 
-默认情况下，结果最初以表的形式显示，可以手动选择图表。 但也可以在查询末尾使用 [render 指令](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html)选择图表。
+默认情况下，结果最初以表的形式显示，可以手动选择图表。 但也可以在查询末尾使用 [render 指令](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator)选择图表。
 
 ### <a name="analytics-diagnostics"></a>Analytics Diagnostics
 

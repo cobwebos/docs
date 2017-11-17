@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3810c6fc3e6d6abf6e41047a303f8d0ecfe1c7ec
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Azure AD 密码安全性多层方法
 
@@ -37,7 +37,7 @@ Azure AD 整合了以下常用功能用于保护密码：
 * 密码复杂性要求
 * 常规和定期密码过期
 
-有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](active-directory-passwords.md)主题。
+有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](active-directory-passwords-update-your-own-password.md)主题。
 
 ## <a name="azure-ad-password-protections"></a>Azure AD 密码保护
 
@@ -74,7 +74,7 @@ Microsoft 会持续分析[数据破解](https://www.privacyrights.org/data-breac
 
   ![Microsoft 帐户被锁定](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](active-directory-passwords.md)主题。
+有关 Azure Active Directory 中密码重置的信息，请参阅 [面向 IT 专业人员的 Azure AD 自助服务密码重置](active-directory-passwords-update-your-own-password.md)主题。
 
   >[!NOTE]
   >如果是 Azure AD 管理员，可以使用 [Windows Hello](https://www.microsoft.com/windows/windows-hello) 来完全避免用户创建传统密码。

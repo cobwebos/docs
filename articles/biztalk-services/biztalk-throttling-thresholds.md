@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 145e7470bbc01c676a1fb5856c0f9a8726e667fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39fc5ef36bb581c3a81c9948fda048f6cb75eb7e
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk 服务：限制
 
@@ -63,7 +63,6 @@ Azure BizTalk 服务跟踪限制状态（正常状态与受限制状态)以及�
 
 ## <a name="see-also"></a>另请参阅
 * [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk 服务：使用 Azure 经典门户预配](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk 服务：预配状态图表](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 * [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk 服务：备份和还原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

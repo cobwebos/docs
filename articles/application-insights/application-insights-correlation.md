@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: ea6e6c4044a0163ae36d6790755b67c5066251a8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -81,7 +81,7 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 - `dependency` 映射到采用 `span.kind = client` 设置的 **Span**
 - `request` 和 `dependency` 的 `id` 映射到 **Span.Id**
 - `operation_Id` 映射到 **TraceId**
-- `operation_ParentId` 映射到 `ChileOf` 类型的 **Reference**
+- `operation_ParentId` 映射到 `ChildOf` 类型的 **Reference**
 
 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 

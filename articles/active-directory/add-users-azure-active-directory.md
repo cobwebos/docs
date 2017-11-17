@@ -15,11 +15,11 @@ ms.date: 11/07/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 3df0324cae65418f35743b6543753c405dee01d0
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 0e46ff82c4177de6b33e5df8714318bff83fbb34
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>快速入门：将新用户添加到 Azure Active Directory
 此文章介绍了如何使用 Azure 门户或通过同步本地 Windows Server AD 用户帐户数据，在 Azure Active Directory (Azure AD) 中一次添加一个你组织中的新用户。 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/07/2017
    ![选择“添加”命令](./media/add-users-azure-active-directory/add-user.png)
 4. 输入用户的详细信息，如**名称**和**用户名**。 用户名的域名部分必须是初始默认域名“[domain name].onmicrosoft.com”，或已验证的非联合[自定义域名](add-custom-domain.md)（例如“contoso.com”）。
 5. 复制或以其他方式记下生成的用户密码，以便在此过程完成后可以提供给用户。
-6. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。
+6. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
 7. 在“用户”上，选择“创建”。
 8. 以安全方式将生成的密码分发给新用户，以便用户可以登录。
 

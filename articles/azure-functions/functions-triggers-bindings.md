@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: glenga
-ms.openlocfilehash: 74933d9c3535ab71f47c792e20bfbc35e589ec08
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 借助 Azure Functions，可以编写通过“触发器”和“绑定”响应 Azure 中的事件和其他服务的代码。 本文是所有支持编程语言的触发器和绑定的概念性概述。 此处介绍所有绑定通用的功能。
@@ -243,7 +243,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 相应参考主题中会详细介绍每种触发器的元数据属性。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
 
-例如，由于 blob 触发器有一些延迟，因此你可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#storage-blob-trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
+例如，由于 blob 触发器有一些延迟，因此你可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#blob-storage-trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
 
 ```json
   "bindings": [

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.openlocfilehash: be3a797c4a405fd2f6636e67f4c961dd6d143486
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b27363a38c1a5955e062d1e5c036b542341e16bc
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>故障排除：“Active Directory”项缺失或不可用
 关于使用 Azure Active Directory 功能和服务的很多说明都以“转到 Azure 管理门户并单击‘Active Directory’”开头。 但是，如果未出现 Active Directory 扩展或菜单项或者它被标记为**不可用**，该怎么办？ 本主题旨在提供帮助。 其中描述了 **Active Directory** 未出现或不可用的情况，并解释了如何继续执行操作。
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 若要创建访问控制命名空间或多重身份验证提供程序，请单击“+新建” > “应用服务” > “Active Directory”。
 
-要获取对目录的管理权限，请让管理员为帐户分配管理员角色。 有关详细信息，请参阅[分配管理员角色](active-directory-assign-admin-roles.md)。
+要获取对目录的管理权限，请让管理员为帐户分配管理员角色。 有关详细信息，请参阅[分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
 
 ## <a name="active-directory-is-not-available"></a>Active Directory 不可用
 当单击“+新建” > “应用服务”时，会显示“Active Directory”项。 具体而言，当前用户可以使用任何 Active Directory 功能（如“目录”、“访问控制”或“Multi-Factor Auth 提供程序”）时，会显示 Active Directory 项。

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/01/2017
 ms.author: maroche
-ms.openlocfilehash: cf32ef4c80fa0ee68ce3dc1289467a419aab39c9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7d4ed0cc06e8b218b2b63c1d899701ba2eafd648
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure 数据目录先决条件
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/03/2017
 ## <a name="azure-subscription"></a>Azure 订阅
 只有 Azure 订阅的所有者或共同所有者才可以设置数据目录。
 
-Azure 订阅可帮助组织云服务资源的访问权限，例如数据目录。 订阅还可帮助控制资源使用情况的报告、计费及付费方式。 每一个订阅可以有单独的计费和付款设置，因此，根据部门、项目、区域办事处等，可以有不同的订阅和计划。 每个云服务属于某一个订阅，故在设置 Azure 数据目录之前，必须先有一个订阅。 有关详细信息，请参阅 [Manage accounts, subscriptions, and administrative roles](../active-directory/active-directory-assign-admin-roles.md)（管理帐户、订阅和管理角色）。
+Azure 订阅可帮助组织云服务资源的访问权限，例如数据目录。 订阅还可帮助控制资源使用情况的报告、计费及付费方式。 每一个订阅可以有单独的计费和付款设置，因此，根据部门、项目、区域办事处等，可以有不同的订阅和计划。 每个云服务属于某一个订阅，故在设置 Azure 数据目录之前，必须先有一个订阅。 有关详细信息，请参阅 [Manage accounts, subscriptions, and administrative roles](../active-directory/active-directory-assign-admin-roles-azure-portal.md)（管理帐户、订阅和管理角色）。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 要设置 Azure 数据目录，须使用 Azure Active Directory (Azure AD) 用户账户登录。

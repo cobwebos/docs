@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: b1bc18307227a728e2bc8fd95e30fdc1cbdb8c59
-ms.contentlocale: zh-cn
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell 删除虚拟网络网关（经典）
 > [!div class="op_single_selector"]
@@ -48,7 +47,7 @@ Add-AzureAccount
 
 ## <a name="export"></a>步骤 2：导出并查看网络配置文件
 
-在计算机上创建一个目录，然后将网络配置文件导出到该目录。 使用此文件查看当前配置信息并修改网络配置。
+在计算机上创建一个目录，并将网络配置文件导出到该目录。 使用此文件查看当前配置信息并修改网络配置。
 
 本例中，网络配置文件导出到 C:\AzureNet。
 
@@ -60,9 +59,9 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 ## <a name="delete"></a>步骤 3：删除虚拟网络网关
 
-删除虚拟网络网关时，通过该网关的所有 VNet 连接都将断开。 如果 P2S 客户端连接到 VNet，它们将断开连接且不发出警告。
+删除虚拟网络网关时，通过该网关的所有 VNet 连接都将断开。 如果 P2S 客户端连接到 VNet，它们会断开连接且不发出警告。
 
-此示例将删除虚拟网络网关。 确保使用网络配置文件中虚拟网络的全名。
+此示例删除虚拟网络网关。 确保使用网络配置文件中虚拟网络的全名。
 
 ```powershell
 Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"

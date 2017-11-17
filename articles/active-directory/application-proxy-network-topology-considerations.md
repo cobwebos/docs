@@ -15,11 +15,11 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15c392c6e94abaff7c28bc672cfe61c7551ede4d
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 10/11/2017
 
 越来越多的组织正在将其网络移入托管环境。 这样，便可以将应用放在同样属于企业网络一部分的托管环境中，而这些应用仍会保留在域中。 在这种情况下，可向新的应用程序位置应用前面部分中所述的模式。 考虑此选项时，请参阅 [Azure AD 域服务](../active-directory-domain-services/active-directory-ds-overview.md)。
 
-此外，考虑使用[连接器组](active-directory-application-proxy-connectors.md)针对不同位置和网络中的应用进行连接器排列组织。 
+此外，考虑使用[连接器组](active-directory-application-proxy-connectors-azure-portal.md)针对不同位置和网络中的应用进行连接器排列组织。 
 
 ## <a name="common-use-cases"></a>常见用例
 
@@ -174,5 +174,5 @@ ms.lasthandoff: 10/11/2017
 
 - [启用应用程序代理](active-directory-application-proxy-enable.md)
 - [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
-- [启用条件性访问](active-directory-application-proxy-conditional-access.md)
+- [启用条件性访问](application-proxy-enable-remote-access-sharepoint.md)
 - [解决使用应用程序代理时遇到的问题](active-directory-application-proxy-troubleshoot.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 93645aa5765d533b45fe2266f061ad61c0bf45d7
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 5bf687afa8f42292a3b21b19a572c76926fef1cd
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure Web 应用流量
 > [!NOTE]
@@ -49,7 +49,7 @@ Azure 流量管理器使用三种不同的路由方法。 下面的列表中介�
 * 对于同一区域中将 Web 应用与另一 Azure 云服务一起使用的部署，可以组合使用两种类型的终结点以启用混合方案。
 * 在一个配置文件中，只能为每个区域指定一个 Web 应用终结点。 当选择某个 Web 应用作为一个区域的终结点后，该区域中的其余 Web 应用对于该配置文件会变为不可选择状态。
 * 在 Azure 流量管理器配置文件中指定的 Web 应用终结点将出现在配置文件中 Web 应用“配置”页面的“域名”部分下，但无法在该位置进行配置。
-* 在将 Web 应用添加到配置文件后，该 Web 应用门户页面的仪表板上的“网站 URL”会显示该 Web 应用的自定义域 URL（如果已经设置了一个）。 否则，它将显示流量管理器配置文件 URL（例如，`contoso.trafficmgr.com`）。 在 Web 应用的“配置”页面的“域名”部分下将可以看到 Web 应用的直接域名和流量管理器 URL。
+* 在将 Web 应用添加到配置文件后，该 Web 应用门户页面的仪表板上的“网站 URL”会显示该 Web 应用的自定义域 URL（如果已经设置了一个）。 否则，它将显示流量管理器配置文件 URL（例如，`contoso.trafficmanager.net`）。 在 Web 应用的“配置”页面的“域名”部分下将可以看到 Web 应用的直接域名和流量管理器 URL。
 * 自定义域名将正常工作，但除了将它们添加到 Web 应用之外，还必须配置 DNS 映射，使之指向流量管理器 URL。 有关如何为 Azure Web 应用设置自定义域的信息，请参阅[为 Azure 网站配置自定义域名](app-service-web-tutorial-custom-domain.md)。
 * 只能将标准或高级模式下的 Web 应用添加到 Azure 流量管理器配置文件。
 

@@ -15,17 +15,13 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 1b08a0b376cbcae8522364c9b6ef22e9c0176438
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 477f20bd552460176be92f1db70bb0f76de8bac1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
-> [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-application-proxy-connectors-azure-portal.md)
-> * [Azure 经典门户](active-directory-application-proxy-connectors.md)
->
 
 客户在越来越多的方案和应用程序中使用 Azure AD 的应用程序代理。 因此，我们通过启用更多拓扑使应用代理更加灵活。 可以创建应用程序代理连接器组，以便分配特定连接器以服务特定应用程序。 此功能提供更多控制以及优化应用程序代理部署的方法。 
 

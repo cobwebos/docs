@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: bdbdebe069b3150bed4aa26f1f6e677a66f75f32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e4af248a1aafbd34a62c75e792746514456577b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -99,10 +99,10 @@ ms.lasthandoff: 10/11/2017
 | 步骤 | 资源 |
 | --- | --- |
 | 转到 Azure AD 管理门户 | [Azure AD 管理门户 - 公司品牌](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| 上传登录页的资产（英雄徽标、小型徽标、标签等）。 或者，如果拥有 AD FS，也可以使用与 ADFS 登录页相同的资产 | [在登录页和访问面板页中添加公司品牌：可自定义的元素](active-directory-add-company-branding.md) |
+| 上传登录页的资产（英雄徽标、小型徽标、标签等）。 或者，如果拥有 AD FS，也可以使用与 ADFS 登录页相同的资产 | [在登录页和访问面板页中添加公司品牌：可自定义的元素](customize-branding.md) |
 | 等待几分钟时间使更改完全生效 |  |
 | 使用 POC 用户凭据登录到 https://myapps.microsoft.com |  |
-| 在浏览器中查看呈现效果 | [在登录页和访问面板页中添加公司品牌](active-directory-add-company-branding.md) |
+| 在浏览器中查看呈现效果 | [在登录页和访问面板页中添加公司品牌](customize-branding.md) |
 | 也可以在其他设备中查看呈现效果 |  |
 
 ### <a name="considerations"></a>注意事项
@@ -173,7 +173,7 @@ ms.lasthandoff: 10/11/2017
 
 | 先决条件 | 资源 |
 | --- | --- |
-| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | [Microsoft Azure 应用商店上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Microsoft Azure 应用商店上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
+| SaaS 应用程序的测试环境。 HipChat 和 Twitter 就是密码 SSO 的示例。 而其他的任何应用程序都需要 html 登录窗体页面的确切 URL。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Microsoft Azure Marketplace 上的 HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | 应用程序的测试帐户。 | [注册 Twitter](https://twitter.com/signup?lang=en)<br/>[免费注册：HipChat](https://www.hipchat.com/sign_up) |
 | 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
@@ -208,7 +208,7 @@ ms.lasthandoff: 10/11/2017
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure 应用商店上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
+| 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
 | 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ - 企业移动性和安全性博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
@@ -379,7 +379,7 @@ ms.lasthandoff: 10/11/2017
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 在租户中启用自助密码管理。 | [Azure Active Directory 中针对 IT 管理员的密码重置](active-directory-passwords.md) |
+| 在租户中启用自助密码管理。 | [Azure Active Directory 中针对 IT 管理员的密码重置](active-directory-passwords-update-your-own-password.md) |
 | 启用密码写回，以便在本地管理密码。 请注意，此操作需要特定的 Azure AD Connect 版本 | [密码写回先决条件](active-directory-passwords-writeback.md) |
 | 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](active-directory-passwords-writeback.md) |
 

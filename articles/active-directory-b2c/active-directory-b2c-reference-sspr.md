@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 0508868e3b00c5771cc26038a3dd71fde6625a84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: beaf7dc6260db7509b2202c7801bcc0d2dd2c69e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-b2c-set-up-self-service-password-reset-for-your-consumers"></a>Azure Active Directory B2C：为使用者设置自助密码重置
 借助自助密码重置功能，使用者（已注册本地帐户）可以将密码重置为他们自己的密码。 这样可以显著减少支持人员的负担，尤其当有数百万使用者定期使用应用程序时。 目前，仅支持使用已验证的电子邮件地址作为一种恢复方法。 以后我们将添加其他恢复方法（已验证的电话号码、安全问题等）。
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 若要进行测试，请对任何具有作为标识提供者的本地帐户的登录策略使用“立即运行”功能。 在本地帐户登录页上（可在其中输入电子邮件地址和密码，或用户名和密码），单击“无法访问帐户？”以验证使用者体验。
 
 > [!NOTE]
-> 可使用[公司品牌打造功能](../active-directory/active-directory-add-company-branding.md)自定义自助密码重置页面。
+> 可使用[公司品牌打造功能](../active-directory/customize-branding.md)自定义自助密码重置页面。
 > 
 > 
 

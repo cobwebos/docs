@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3da53852eaad7a37f19d906d2ee27b72d35c513f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2a83e8dcd054576b4a99533cdfbb9f5605cd6f9
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -46,8 +46,8 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>获取对用户配置文件、日历、电子邮件、联系人、文件等的访问权限
 **Azure AD 是一款面向 Office 365 和其他 Microsoft 业务服务的授权服务器。**  如果支持使用 Azure AD 登录到应用程序，或者支持将当前用户帐户链接到使用 OAuth 2.0 的 Azure AD 用户帐户，则可以请求对用户配置文件、日历、电子邮件、联系人、文件和其他信息的读取和写入访问权限。  可以顺利地将事件写入用户日历，以及在其 OneDrive 中读取或写入文件。  深入了解如何[访问 Office 365 API](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)。
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 应用商店中推广应用程序
-**向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些应用商店的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。  深入了解如何在 [Azure 应用商店](https://azure.microsoft.com/marketplace/partner-program/)中推广应用程序。
+### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 Marketplace 中推广应用程序
+**向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些应用商店的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。  深入了解如何在 [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/) 中推广应用程序。
 
 **用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Office 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。  深入了解 [Azure AD 访问面板](../active-directory-saas-access-panel-introduction.md)。
 
@@ -67,7 +67,7 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 
 **异常登录检测。**  Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。  通过支持 Azure AD 登录，应用程序将从这种保护中受益。 深入了解如何[查看 Azure Active Directory 访问报告](../active-directory-view-access-usage-reports.md)。
 
-**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。  可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。  深入了解 [Azure Active Directory 条件访问](../active-directory-conditional-access.md)。
+**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。  可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。  深入了解 [Azure Active Directory 条件访问](../active-directory-conditional-access-azure-portal.md)。
 
 ### <a name="easy-development"></a>易于开发
 **行业标准协议。**  Microsoft 承诺支持行业标准。  Azure AD 支持 SAML 2.0、OpenID Connect 1.0、OAuth 2.0 和 WS-Federation 1.2 身份验证协议。  Graph API 符合 OData 4.0 规范。  如果应用程序已支持使用 SAML 2.0 或 OpenID Connect 1.0 进行联合登录，则可以直接添加对 Azure AD 的支持。  深入了解 [Azure AD 支持的身份验证协议](active-directory-authentication-protocols.md)。

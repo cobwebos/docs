@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 42a6d7156a28aaeadea96f9134b0becc004816ba
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 4a33df43ca218545d6c684103a64f2cd1460913b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/24/2017
 
 _不_支持以下方案：
 
-- 用户登录到旧版 Office 客户端应用程序 - _不带_新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许传递身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access.md)功能（例如多重身份验证 (MFA)）保护用户帐户。
+- 用户登录到旧版 Office 客户端应用程序 - _不带_新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许传递身份验证支持，而且还有助于使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（例如多重身份验证 (MFA)）保护用户帐户。
 - 用户登录到 Skype for Business 客户端应用程序，包括 Skype for Business 2016。
 - 用户登录到 PowerShell v1.0。 建议改用 PowerShell v2.0。
 - Azure AD 域服务。

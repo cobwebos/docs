@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.openlocfilehash: 7af8fadca15e07e178f12db27fec2467f43c5d36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac5c39eac34221992803f3b27db241263f828b36
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 * 对 ADFS（2012 R2 或更高版本）保护的应用程序（信赖方信任），启用基于设备的条件性访问。
 
-这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)。
+这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)。
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
@@ -141,7 +141,7 @@ ms.lasthandoff: 10/11/2017
 ![排除故障，验证对设备注册配置的权限](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>其他信息
-* [使用条件性访问管理风险](../active-directory-conditional-access.md)
+* [使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)
 * [使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>后续步骤
