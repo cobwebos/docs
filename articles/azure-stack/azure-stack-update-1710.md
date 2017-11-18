@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: twooley
-ms.openlocfilehash: 32ca25998046caa6cf29410644f3cd86868b679d
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: acce605fe1f3157898b490c394d24037689a7cb6
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure 堆栈 1710年更新 （生成 20171020.1）
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/10/2017
 | 症状  | 原因  | 解决方法 |
 |---------|---------|---------|
 |当你执行更新，类似于以下错误<br>在"存储主机重新启动存储节点"步骤过程中可能发生<br> 更新操作计划。<br><br>**{"name":"重新启动存储主机"，"说明":"重新启动<br>存储的主机。"，"errorMessage":"键入 'Restart' 角色的<br>BareMetal 引发异常： \n\n 计算机<br>跳过主机名-05。无法检索其 LastBootUpTime<br>通过 WMI 服务，以下的错误消息：<br> RPC 服务器不可用。<br>(异常来自 HRESULT: 0x800706BA)。 \nat 重新启动主机** | 在某些配置中存在的潜在故障驱动导致此问题。 | 1.登录到基板管理控制器 (BMC) 的 web 接口并重新启动错误消息中的主机标识。<br><br>2.通过使用特权终结点来继续更新。 |
-| 当执行更新时，更新过程看起来停止<br> 步骤之后使进度"步骤： 运行步骤 2.4-安装<br> 更新"的更新操作计划。<br><br>此步骤后跟一系列的.nupkg 复制过程<br> 文件复制到内部基础结构，文件共享。 例如：<br><br>**将 1 文件复制到 content\PerfCollector\VirtualMachines 从<br>\VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\ <br>PerfCounterConfiguration**  | 问题是由填满基础结构的虚拟机并在 Windows Server 横向扩展文件服务器 (SOFS) 中的后续更新时将交付的问题上的磁盘的日志文件引起的。 | 请与 Microsoft 客户服务和支持 (CSS) 联系以获取帮助。 | 
+| 当执行更新时，更新过程看起来停止<br> 步骤之后使进度"步骤： 运行步骤 2.4-安装<br> 更新"的更新操作计划。<br><br>此步骤后跟一系列的.nupkg 复制过程<br> 文件复制到内部基础结构，文件共享。 例如：<br><br>**将 1 文件复制到 content\PerfCollector\VirtualMachines 从<br>\VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\ <br>PerfCounterConfiguration**<br><br>或者，你看到消息：<br><br>**WarningMessage:Task： 接口 LiveUpdate 调用<br>的角色 Cloud\Fabric\VirtualMachines 失败：<br>类型角色 VirtualMachines 引发 LiveUpdate<br>异常： 磁盘上没有足够的空间.**  | 问题是由填满基础结构的虚拟机并在 Windows Server 横向扩展文件服务器 (SOFS) 中的后续更新时将交付的问题上的磁盘的日志文件引起的。 | 请与 Microsoft 客户服务和支持 (CSS) 联系以获取帮助。 | 
 | 当你执行更新，类似于以下错误<br> 步骤期间可能会出现"步骤： 运行步骤 2.13.2-更新<br> *VM_Name*"的更新操作计划。 （虚拟机<br> 名称可能有所不同。）<br><br>**ActionPlanInstanceWarning ece/MachineName:<br> WarningMessage:Task： 调用的接口 LiveUpdate<br>角色 Cloud\Fabric\WAS 失败： 键入 LiveUpdate 角色的<br>是引发了异常： 过程中的出错存储<br>初始化： 尝试建立 API 时发生错误<br>调用到 Microsoft 存储服务: {"消息":"超时<br>与 Service Fabric 通信时出现。<br>异常类型： TimeoutException。<br>异常消息： 操作已超时。"}**  | 问题是由 Windows server 中将在后续的更新中修复 I/O 超时导致的。 | 请与 Microsoft CSS 联系以获取帮助。
 | 当你执行更新，类似于以下错误<br> 可能会出现在步骤"单步跳 21 的重新启动 SQL server 虚拟机。"<br><br>**键入的角色 VirtualMachines 引发 LiveUpdateRestart<br>异常： VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br>查询 VM MachineName-Sql01。-10/13/2017年 5:11:50 PM VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br> VM 被标记为 HighlyAvailable。-10/13/2017年 5:11:50 PM<br> VerboseMessage: [VirtualMachines:LiveUpdateRestart] 在<br>MS。在 Internal.ServerClusters.ExceptionHelp.Build<br>MS。Internal.ServerClusters.ClusterResource.BeginTakeOffline<br>（布尔强制） 在 Microsoft.FailoverClusters.PowerShell。<br>在 StopClusterResourceCommand.BeginTimedOperation() <br>Microsoft.FailoverClusters.PowerShell.TimedCmdlet.Wrapped<br>在 Microsoft.FailoverClusters.PowerShell ProcessRecord()。<br>FCCmdlet.ProcessRecord()-10/13/2017年 5:11:50 PM 警告<br>消息： 任务： 调用的接口 LiveUpdateRestart<br>角色 Cloud\Fabric\VirtualMachines 失败：** | 如果虚拟机无法重新启动，则可能出现此问题。 | 请与 Microsoft CSS 联系以获取帮助。
 | 当执行更新时，可能会出现错误：<br><br>**自 2017 年 1-10-22T01:37:37.5369944Z 角色 'SQL' 的类型关闭<br>引发了异常： 出错暂停节点<br>s45r1004 Sql01 站点参阅停止 SQL C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\Applications\ EnterpriseCloud <br>EngineApplicationType &#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 在<br>关闭、 C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br>应用程序 \EnterpriseCloudEngineApplicationType &#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br>Deployment\Classes\SQL\SQL.psm1： 行在 50 &#60;ScriptBlock &#62;，<br> &#60;没有文件 >： 行在 18 &#60;ScriptBlock &#62;、 &#60;没有文件 &#62;: 行 16** | 如果无法将虚拟机置于挂起状态，以排出角色，则可能出现此问题。 | 请与 Microsoft CSS 联系以获取帮助。
