@@ -14,30 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.openlocfilehash: 69ca030d1b7601df424fa9446e1d194a3f6bd50a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1957e63914d5f9f443a504ef90df49d79ec3e40f
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure 堆栈工具
 
-AzureStack 工具是承载可用于管理和将资源部署到 Azure 堆栈的 PowerShell 模块的 GitHub 存储库。 你可以下载并使用这些 PowerShell 模块到 Azure 堆栈开发工具包中，或基于 windows 的外部客户端，如果你打算建立 VPN 连接。 若要获取这些工具，克隆的 GitHub 存储库或下载 AzureStack 工具文件夹。 
-
-若要克隆存储库，下载[Git](https://git-scm.com/download/win)适用于 Windows，打开命令提示符窗口并运行以下脚本：
-
-```PowerShell
-# Change directory to the root directory 
-cd \
-
-# clone the repository
-git clone https://github.com/Azure/AzureStack-Tools.git --recursive
-
-# Change to the tools directory
-cd AzureStack-Tools
-```
-
-若要下载工具文件夹，请运行以下脚本：
+AzureStack 工具是承载可用于管理和将资源部署到 Azure 堆栈的 PowerShell 模块的 GitHub 存储库。 你可以下载并使用这些 PowerShell 模块到 Azure 堆栈开发工具包中，或基于 windows 的外部客户端，如果你打算建立 VPN 连接。 若要获取这些工具，克隆的 GitHub 存储库或通过运行以下脚本，下载 AzureStack 工具文件夹：
 
 ```PowerShell
 # Change directory to the root directory 
