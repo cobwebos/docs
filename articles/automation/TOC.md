@@ -32,6 +32,7 @@
 ### [配置 Runbook 输入参数](automation-runbook-input-parameters.md)
 ### [图形 Runbook 中的错误处理](automation-runbook-graphical-error-handling.md)
 ### [跟踪 Runbook 作业](automation-runbook-execution.md)
+### [创建观察程序任务](automation-watchers-tutorial.md)
 ### [更改 Runbook 设置](automation-runbook-settings.md)
 ### [管理 Azure 自动化数据](automation-managing-data.md)
 ### [从 Log Analytics 警报调用 Azure 自动化 Runbook](automation-invoke-runbook-from-omsla-alert.md)

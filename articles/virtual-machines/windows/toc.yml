@@ -80,15 +80,21 @@
           href: sizes-general.md
     - name: 维护和更新
       href: maintenance-and-updates.md
-    - name: 存储
+    - name: 磁盘存储
       href: about-disks-and-vhds.md
       items:
+        - name: 托管磁盘
+          href: managed-disks-overview.md
         - name: 高级存储
           href: premium-storage.md
         - name: 高级存储性能
           href: premium-storage-performance.md
         - name: 标准存储
           href: standard-storage.md
+        - name: 磁盘的可伸缩性目标
+          href: disk-scalability-targets.md
+        - name: 磁盘的备份和灾难恢复
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
     - name: 联网
       href: network-overview.md
     - name: 自动缩放应用程序
@@ -113,6 +119,8 @@
       items:
         - name: '使用 C#'
           href: csharp.md
+        - name: 使用专用磁盘
+          href: create-vm-specialized.md
         - name: '将模板与 C# 配合使用'
           href: csharp-template.md
         - name: 使用 Chef 创建 VM
@@ -154,6 +162,8 @@
           href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: 管理 VM
       items:
+        - name: 为 VM 预付 - 保留实例
+          href: prepay-reserved-vm-instances.md
         - name: 常见 PowerShell 任务
           href: ps-common-ref.md
         - name: 移动 VM
@@ -186,12 +196,10 @@
           href: cli-ps-findimage.md
         - name: 准备要上传的 VM
           href: prepare-for-upload-vhd-image.md
-        - name: 使用通用映像
-          href: create-vm-generalized-managed.md
-        - name: 使用专用磁盘
-          href: create-vm-specialized.md
         - name: 将 VM 捕获到映像
           href: capture-image-resource.md
+        - name: 使用通用映像
+          href: create-vm-generalized-managed.md
         - name: 使用 Packer 生成映像
           href: build-image-with-packer.md
         - name: 使用 Windows 客户端映像
@@ -241,8 +249,6 @@
               href: excel-cluster-hpcpack.md
     - name: 管理存储
       items:
-        - name: 了解托管磁盘
-          href: managed-disks-overview.md
         - name: 磁盘常见问题解答
           href: faq-for-disks.md
         - name: 添加磁盘
@@ -255,8 +261,6 @@
           href: detach-disk.md
         - name: 调整磁盘大小
           href: expand-os-disk.md
-        - name: 磁盘的备份和灾难恢复
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
         - name: 备份非托管磁盘

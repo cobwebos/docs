@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 数据工厂将本地数据复制到云中 | Microsoft Docs"
+title: "使用 Azure 数据工厂将数据从 SQL Server 复制到 BLob 存储 | Microsoft Docs"
 description: "了解如何在 Azure 数据工厂中使用自我托管的集成运行时将数据从本地数据存储复制到 Azure 云。"
 services: data-factory
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 24a4255a23f0b9b9da5d8c3cefeefb8fe250f2f1
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: afd7735712d03110a67509a7e94d336219a65b34
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="tutorial-copy-data-between-on-premises-and-cloud"></a>教程：在本地与云之间复制数据
+# <a name="tutorial-copy-data-from-on-premises-sql-server-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 复制到 Azure Blob 存储
 本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 本教程创建并使用 Azure 数据工厂的自承载 Integration Runtime (IR)，以便将本地数据存储与云数据存储相集成。  若要了解如何使用其他工具/SDK 创建数据工厂，请参阅[快速入门](quickstart-create-data-factory-dot-net.md)。
 
 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。 

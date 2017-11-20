@@ -29,8 +29,14 @@
       href: project-ic-tasks.md
 - name: 项目结构
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
-- name: 项目执行
-  href: project-execution.md
+- name: 项目规划和执行
+  items:
+    - name: 项目规划
+      href: team-data-science-process-project-templates.md
+    - name: 项目执行
+      items:
+        - name: 数据科学项目
+          href: project-execution.md
 - name: 示例
   href: walkthroughs.md
   items:

@@ -88,15 +88,21 @@
       href: endorsed-distros.md
     - name: 维护和更新
       href: maintenance-and-updates.md
-    - name: 存储
-      href: azure-vm-storage-overview.md
+    - name: 磁盘存储
+      href: about-disks-and-vhds.md
       items:
+        - name: 托管磁盘
+          href: managed-disks-overview.md
         - name: 高级存储
           href: premium-storage.md
         - name: 高级存储性能
           href: premium-storage-performance.md
         - name: 标准存储
           href: standard-storage.md
+        - name: 磁盘的可伸缩性目标
+          href: disk-scalability-targets.md
+        - name: 磁盘的备份和灾难恢复
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
     - name: 联网
       href: network-overview.md
     - name: 自动缩放应用程序
@@ -156,6 +162,8 @@
           href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: 管理 VM
       items:
+        - name: 为 VM 预付 - 保留实例
+          href: prepay-reserved-vm-instances.md
         - name: 常见 CLI 任务
           href: cli-manage.md
         - name: 移动 VM
@@ -312,8 +320,6 @@
               href: n-series-driver-setup.md
     - name: 管理存储
       items:
-        - name: 了解托管磁盘
-          href: managed-disks-overview.md
         - name: 磁盘常见问题解答
           href: faq-for-disks.md
         - name: 添加磁盘
@@ -328,8 +334,6 @@
           href: expand-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
-        - name: 磁盘的备份和灾难恢复
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 转换为托管磁盘

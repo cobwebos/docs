@@ -14,16 +14,16 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 5fc61fed674f0d2fc64bc29c064e7e872b4f2e68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 888717afe14f29fd50da6478c2bba077616a5379
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
 
-本主题介绍如何将现有 Node.js 后端应用程序从 Azure 移动服务升级到新的应用服务移动应用。 执行此升级时，现有移动服务应用程序可以继续正常运行。  如果需要升级 Node.js 后端应用程序，请参阅[升级 .NET 移动服务](app-service-mobile-net-upgrading-from-mobile-services.md)。
+本文介绍如何将现有 Node.js 后端应用程序从 Azure 移动服务升级到新的应用服务移动应用。 执行此升级时，现有移动服务应用程序可以继续正常运行。  如果需要升级 Node.js 后端应用程序，请参阅[升级 .NET 移动服务](app-service-mobile-net-upgrading-from-mobile-services.md)。
 
 将移动后端升级到 Azure App Service 后，该后端即可访问所有的应用服务功能，同时会根据[应用服务定价]而不是移动服务定价进行计费。
 
@@ -98,12 +98,12 @@ ms.lasthandoff: 10/11/2017
 3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。）
 
     可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
-4. 对于“应用服务计划”，请选择默认计划（位于 [标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
+4. 对于“应用服务计划”，请选择默认计划（位于 [标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/app-service-plan-manage.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
 
     做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。
 
 ### <a name="run-createviewssql"></a>运行 CreateViews.SQL
-带有基架的应用包含名为 `createViews.sql` 的文件。  必须对目标数据库执行此脚本。  可以通过“连接字符串”下的“设置”边栏选项卡从已迁移的移动服务获取目标数据库的连接字符串。  该字符串名为 `MS_TableConnectionString`。
+带有基架的应用包含名为 `createViews.sql` 的文件。  必须对目标数据库执行此脚本。  可以在“设置”页的“连接字符串”下从已迁移的移动服务获取目标数据库的连接字符串。  该字符串名为 `MS_TableConnectionString`。
 
 可以从 SQL Server Management Studio 或 Visual Studio 内部运行此脚本。
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 10/11/2017
 * 在下拉列表中，选择“SQL 数据库”
 * 在“SQL 数据库”下选择现有数据库，并单击“选择”。
 * 在“连接字符串”下，输入数据库的用户名和密码，并单击“确定”。
-* 在“添加数据连接”边栏选项卡中，单击“确定”。
+* 在“添加数据连接”页中，单击“确定”。
 
 查看已迁移的移动服务中目标数据库的连接字符串，即可找到用户名和密码。
 

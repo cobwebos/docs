@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 创建 Azure 数据工厂 | Microsoft Docs"
-description: "创建 Azure 数据工厂来将数据从 Azure Blob 存储中的一个位置复制到同一 Blob 存储中的另一位置。"
+title: "使用 Azure 数据工厂复制 Blob 存储中的数据 | Microsoft Docs"
+description: "创建 Azure 数据工厂，将 Azure Blob 存储的一个文件夹到另一个文件夹中的数据复制到同一 Blob 存储中的另一个位置。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,18 +13,18 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 63e4c654409651f6655da1bed6ab2f544cf024dd
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 8ee2f48db009da4660a03f91194c4e99f6ecac4a
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="create-an-azure-data-factory-and-pipeline-using-powershell"></a>使用 PowerShell 创建 Azure 数据工厂和管道
+# <a name="create-an-azure-data-factory-using-powershell"></a>使用 PowerShell 创建 Azure 数据工厂 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - GA](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [版本 2 - 预览版](quickstart-create-data-factory-powershell.md)
 
-此快速入门介绍了如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：使用 Spark 来转换数据](transform-data-using-spark.md)。 
+此快速入门介绍了如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure blob 存储中的一个文件夹复制到另一个文件夹。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：使用 Spark 来转换数据](transform-data-using-spark.md)。 
 
 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
