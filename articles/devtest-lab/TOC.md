@@ -55,6 +55,9 @@
 ### [配置虚拟网络](devtest-lab-configure-vnet.md)
 ### [选择 IP 配置选项](devtest-lab-shared-ip.md)
 
+## 管理数据磁盘
+### [附加和分离数据磁盘](devtest-lab-attach-detach-data-disk.md)
+
 ## [缩放实验室](devtest-lab-scale-lab.md)
 
 # 引用

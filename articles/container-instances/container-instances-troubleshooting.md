@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
+editor: mmacy
 tags: 
 keywords: 
 ms.assetid: 
@@ -14,20 +14,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 11/18/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: ff6da0ce95d0405714602c3872da34a2bff344d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 78bd45f7f71fd25e351d4e9b922a6a3f171437fd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>排查 Azure 容器实例的部署问题
 
-本文展示了如何排查向 Azure 容器实例部署容器时出现的问题。 还介绍了一些可能遇到的常见问题。
+本文展示了如何排查向 Azure 容器实例部署容器时出现的问题。 还介绍了一些可能会遇到的常见问题。
 
-## <a name="getting-diagnostic-events"></a>获取诊断事件
+## <a name="get-diagnostic-events"></a>获取诊断事件
 
 要查看容器内应用程序代码的日志，可使用 [az container logs](/cli/azure/container#logs) 命令。 但如果未成功部署容器，则需要查看由 Azure 容器实例资源提供程序提供的诊断信息。 要查看容器事件，请运行以下命令：
 
@@ -91,7 +91,7 @@ az container show -n mycontainername -g myresourcegroup
 
 一些常见问题导致了大部分部署错误。
 
-### <a name="unable-to-pull-image"></a>无法请求映像
+## <a name="unable-to-pull-image"></a>无法请求映像
 
 如果 Azure 容器实例最初无法请求印象，在最终失败前，它还会重试一段时间。 如果无法请求映像，会显示如下事件：
 
@@ -123,75 +123,54 @@ az container show -n mycontainername -g myresourcegroup
 
 要解决此问题，请删除容器并重试部署，请务必键入正确的映像名称。
 
-### <a name="container-continually-exits-and-restarts"></a>容器不断退出并重启
+## <a name="container-continually-exits-and-restarts"></a>容器不断退出并重启
 
-目前，Azure 容器实例仅支持长时间运行的服务。 如果容器运行至完成并退出，它会自动重启并再次运行。 如果发生这种情况，会显示如下事件。 请注意，容器成功启动，随后快速重启。 容器实例 API 包含一个 `retryCount` 属性，该属性会显示特定容器的重启次数。
+如果容器运行直至完成并自动重启，可能需要将[重启策略](container-instances-restart-policy.md)设置为“失败时”或“从不”。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
-```bash
-"events": [
-  {
-    "count": 5,
-    "firstTimestamp": "2017-08-03T22:21:55+00:00",
-    "lastTimestamp": "2017-08-03T22:23:22+00:00",
-    "message": "Pulling: pulling image \"alpine\"",
-    "type": "Normal"
-  },
-  {
-    "count": 5,
-    "firstTimestamp": "2017-08-03T22:21:57+00:00",
-    "lastTimestamp": "2017-08-03T22:23:23+00:00",
-    "message": "Pulled: Successfully pulled image \"alpine\"",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:57+00:00",
-    "lastTimestamp": "2017-08-03T22:21:57+00:00",
-    "message": "Created: Created container with id ad2bf9bc51761c5f935260b4bab53b164d52d9cbc045b16afcb26fb4d14d0a70",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:57+00:00",
-    "lastTimestamp": "2017-08-03T22:21:57+00:00",
-    "message": "Started: Started container with id ad2bf9bc51761c5f935260b4bab53b164d52d9cbc045b16afcb26fb4d14d0a70",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:58+00:00",
-    "lastTimestamp": "2017-08-03T22:21:58+00:00",
-    "message": "Created: Created container with id 7687b9bd15dc01731fa66fc45f6f0241495600602dd03841e559453245e7f70b",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:58+00:00",
-    "lastTimestamp": "2017-08-03T22:21:58+00:00",
-    "message": "Started: Started container with id 7687b9bd15dc01731fa66fc45f6f0241495600602dd03841e559453245e7f70b",
-    "type": "Normal"
-  },
-  {
-    "count": 13,
-    "firstTimestamp": "2017-08-03T22:21:59+00:00",
-    "lastTimestamp": "2017-08-03T22:24:36+00:00",
-    "message": "BackOff: Back-off restarting failed container",
-    "type": "Warning"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:22:13+00:00",
-    "lastTimestamp": "2017-08-03T22:22:13+00:00",
-    "message": "Created: Created container with id 72e347e891290e238135e4a6b3078748ca25a1275dbbff30d8d214f026d89220",
-    "type": "Normal"
-  },
-  ...
+容器实例 API 包括 `restartCount` 属性。 若要检查容器的重启次数，可以在 Azure CLI 2.0 中使用 [az container show](/cli/azure/container#az_container_show) 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
+
+```json
+...
+ "events": [
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:06+00:00",
+     "lastTimestamp": "2017-11-13T21:20:06+00:00",
+     "message": "Pulling: pulling image \"myregistry.azurecr.io/aci-tutorial-app:v1\"",
+     "type": "Normal"
+   },
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:14+00:00",
+     "lastTimestamp": "2017-11-13T21:20:14+00:00",
+     "message": "Pulled: Successfully pulled image \"myregistry.azurecr.io/aci-tutorial-app:v1\"",
+     "type": "Normal"
+   },
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:14+00:00",
+     "lastTimestamp": "2017-11-13T21:20:14+00:00",
+     "message": "Created: Created container with id bf25a6ac73a925687cafcec792c9e3723b0776f683d8d1402b20cc9fb5f66a10",
+     "type": "Normal"
+   },
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:14+00:00",
+     "lastTimestamp": "2017-11-13T21:20:14+00:00",
+     "message": "Started: Started container with id bf25a6ac73a925687cafcec792c9e3723b0776f683d8d1402b20cc9fb5f66a10",
+     "type": "Normal"
+   }
+ ],
+ "previousState": null,
+ "restartCount": 0
+...
+}
 ```
 
 > [!NOTE]
-> Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 Shell 本身不是长时间运行的服务，因此这些容器会立即退出并不断重启。
+> Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 由于 Shell 本身不是长时间运行的服务，因此如果这些容器配置了“始终”重启策略，会立即退出并不断重启。
 
-### <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
+## <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
 
 如果容器启动时间过长，但最终成功启动，请先查看容器映像大小。 Azure 容器实例按需请求容器映像，因此启动时间与映像大小直接相关。
 
@@ -212,7 +191,7 @@ microsoft/aci-helloworld               latest              7f78509b568e        1
 
 要减小容器启动时映像请求的影响，另一种方法是在希望使用 Azure 容器实例的相同区域中使用 Azure 容器注册表托管容器映像。 这会缩短容器映像需要经过的网络路径，显著缩短下载时间。
 
-### <a name="resource-not-available-error"></a>资源不可用错误
+## <a name="resource-not-available-error"></a>资源不可用错误
 
 由于 Azure 中的区域资源负载不同，尝试部署容器实例时可能会收到以下错误：
 
