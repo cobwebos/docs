@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell（预览版）概述 | Microsoft Docs"
+title: "Azure Cloud Shell 概述 | Microsoft Docs"
 description: "Azure Cloud Shell 的概述。"
 services: 
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/13/2017
 ms.author: juluk
-ms.openlocfilehash: 3acea56ea414f0c43333a02274e91226db29d454
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell（预览版）的概述
+# <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
 它使用户能够灵活选择最适合自己工作方式的 shell 体验。
 Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
@@ -33,7 +33,7 @@ Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
 
 ![Cloud Shell 中的 Bash](media/overview/overview-bash-pic.png)
 
-![Cloud Shell 中的 PowerShell](media/overview/overview-ps-pic.png)
+![PowerShell in Cloud Shell（预览版）](media/overview/overview-ps-pic.png)
 
 ## <a name="features"></a>功能
 ### <a name="browser-based-shell-experience"></a>基于浏览器的 shell 体验
@@ -42,19 +42,22 @@ Cloud Shell 能够访问以执行 Azure 管理任务为宗旨构建的基于浏�
 
 ### <a name="choice-of-preferred-shell-experience"></a>选择偏好的 shell 体验
 Azure Cloud Shell 使用户能够灵活选择最适合自己工作方式的 shell 体验。
-Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
+Linux 用户可以选择 Bash in Cloud Shell，而 Windows 用户可以选择 PowerShell in Cloud Shell（预览版）。
 
-### <a name="pre-configured-azure-workstation"></a>预配置的 Azure 工作站
-Cloud Shell 预安装了常用的命令行工具和语言支持，因此可以更快速地执行工作。
+### <a name="authenticated-and-configured-azure-workstation"></a>经身份验证的已配置 Azure 工作站
+Cloud Shell 由 Microsoft 管理，因此预装了常用的命令行工具和语言支持，可以提高工作速度。 此外，Cloud Shell 能够安全地自动执行身份验证以立即通过 Azure CLI 2.0 或 Azure PowerShell cmdlet 访问资源。
 
-查看 [Bash 体验](features.md#tools)和 [PowerShell 体验](features-powershell.md#tools)的完整工具列表。
+查看 [Bash 体验](features.md#tools)和 [PowerShell（预览版）体验](features-powershell.md#tools)的完整工具列表。
 
-### <a name="automatic-authentication"></a>自动化身份验证
-Cloud Shell 能够安全地自动针对每个会话执行身份验证以立即通过 Azure CLI 2.0 或 Azure PowerShell cmdlet 访问资源。
+### <a name="multiple-access-points"></a>多个访问点
+除了从 Azure 门户访问以外，还可从以下位置访问 Cloud Shell：
+* [Azure CLI 2.0“试用”文档](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
+* [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* [Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-### <a name="connect-your-azure-file-storage"></a>连接 Azure 文件存储
+### <a name="connect-your-azure-files-storage"></a>连接 Azure 文件存储
 Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 `clouddrive` 来持久保存 $Home 目录。
-首次启动时，Cloud Shell 会提示将替你创建资源组、存储帐户和文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
+首次启动时，Cloud Shell 会提示将替你创建资源组、存储帐户和文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将 Bash 和 PowerShell in Cloud Shell（预览版）使用。
 
 #### <a name="create-new-storage"></a>创建新存储
 ![](media/overview/basic-storage.png)
@@ -86,18 +89,18 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 * 将针对每个用户帐户为 Cloud Shell 分配一台计算机
 * 权限是按常规 Linux 用户设置的 (Bash)
 
-详细了解 [Cloud Shell 中的 Bash](features.md) 和 [Cloud Shell 中的 PowerShell](features-powershell.md) 的功能。
+详细了解 [Bash in Cloud Shell](features.md) 和 [PowerShell in Cloud Shell（预览版）](features-powershell.md)的功能。
 
 ## <a name="examples"></a>示例
 * 使用脚本将 Azure 管理任务自动化
 * 通过 Azure 门户和 Azure 命令行工具同时管理 Azure 资源
 * 体验 Azure CLI 2.0 或 Azure PowerShell cmdlet
 
-在 [Cloud Shell 中的 Bash](quickstart.md) 和 [Cloud Shell 中的 PowerShell](quickstart-powershell.md) 的快速入门中尝试这些示例。
+在 [Bash in Cloud Shell](quickstart.md) 和 [PowerShell in Cloud Shell（预览版）](quickstart-powershell.md)的快速入门中尝试这些示例。
 
 ## <a name="pricing"></a>定价
 托管 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
 
-## <a name="supported-browsers"></a>支持的浏览器
-建议为 Cloud Shell 使用 Chrome、Edge 和 Safari。
-虽然支持为 Cloud Shell 使用 Chrome、Firefox、Safari、IE 和 Edge，但 Cloud Shell 受制于具体的浏览器设置。
+## <a name="next-steps"></a>后续步骤
+[Bash in Cloud Shell 快速入门](quickstart.md)
+[PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md)

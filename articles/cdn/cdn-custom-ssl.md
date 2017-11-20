@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 内容交付网络自定义域上启用或禁用 HTTPS | Microsoft Docs"
+title: "在 Azure 内容交付网络自定义域上配置 HTTPS | Microsoft Docs"
 description: "了解如何在具有自定义域的 Azure CDN 终结点上启用或禁用 HTTPS。"
 services: cdn
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: casoper
-ms.openlocfilehash: 68a171ee6da58e6d84b466daf573577c909c7f5c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 82de79cde208cdce1ed7cbd600f1e804ff1d45ff
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="enable-or-disable-https-on-an-azure-content-delivery-network-custom-domain"></a>在 Azure 内容交付网络自定义域上启用或禁用 HTTPS
+# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>在 Azure 内容交付网络自定义域上配置 HTTPS
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-利用对 Microsoft Azure 内容交付网络 (CDN) 自定义域的 HTTPS 支持，可以通过 SSL 使用自己的域名传送安全内容，以提高在传输过程中数据的安全性。 通过一键式启用、完整的证书管理可简化为自定义域启用 HTTPS 的端到端工作流，所有这些都不会增加成本。
+Microsoft 支持对 Azure 内容交付网络 (CDN) 上的自定义域使用 HTTPS 协议。 借助 HTTPS 自定义域支持，可以通过 SSL 使用自己的域名传送安全内容以提高在传输过程中数据的安全性。 通过一键式启用、完整的证书管理可简化为自定义域启用 HTTPS 的工作流，所有这些都不会增加成本。
 
-在传输过程中确保所有 Web 应用程序敏感数据的隐私和数据完整性至关重要。 使用 HTTPS 协议可确保通过 Internet 发送敏感数据时对其进行加密。 它提供信任、身份验证并保护 Web 应用程序免受攻击。 默认情况下，Azure CDN 在 CDN 终结点上支持 HTTPS。 例如，如果从 Azure CDN 创建 CDN 终结点（如 `https://contoso.azureedge.net`），则会自动启用 HTTPS。 此外，借助自定义域 HTTPS 支持，还可以为自定义域（例如 `https://www.contoso.com`）启用安全交付。 
+在传输过程中确保 Web 应用程序敏感数据的隐私和数据完整性至关重要。 使用 HTTPS 协议可确保通过 Internet 发送敏感数据时对其进行加密。 它提供信任、身份验证并保护 Web 应用程序免受攻击。 默认情况下，Azure CDN 在 CDN 终结点上支持 HTTPS。 例如，如果从 Azure CDN 创建 CDN 终结点（如 `https://contoso.azureedge.net`），则会自动启用 HTTPS。 此外，借助自定义域 HTTPS 支持，还可以为自定义域（例如 `https://www.contoso.com`）启用安全交付。 
 
 HTTPS 功能的一些关键属性包括：
 
@@ -41,7 +41,7 @@ HTTPS 功能的一些关键属性包括：
 
 ## <a name="enabling-https"></a>启用 HTTPS
 
-若要启用 HTTPS，请执行下列步骤：
+若要在自定义域上启用 HTTPS，请执行以下步骤：
 
 ### <a name="step-1-enable-the-feature"></a>步骤 1：启用该功能 
 
@@ -66,7 +66,7 @@ HTTPS 功能的一些关键属性包括：
 在自定义域上启用 HTTPS 后，DigiCert 证书颁发机构 (CA) 会根据域的 [WHOIS](http://whois.domaintools.com/) 注册者信息，通过联系域的注册者来验证域的所有权。 通过 WHOIS 注册中列出的电子邮件地址（默认）或电话号码进行联系。 
 
 >[!NOTE]
->如果通过 DNS 提供商获得证书颁发机构授权 (CAA) 记录，则必须包含 DigiCert 作为一个有效的 CA。 CAA 记录允许域名所有者通过自己的 DNS 提供商指定哪些 CA 有权为其域名颁发证书。 如果某个 CA 收到具有 CAA 记录的域证书订单，但该 CA 未被列为授权的颁发者，则禁止向该域或子域颁发证书。
+>如果通过 DNS 提供商获得证书颁发机构授权 (CAA) 记录，则必须包含 DigiCert 作为一个有效的 CA。 CAA 记录允许域名所有者通过自己的 DNS 提供商指定哪些 CA 有权为其域名颁发证书。 如果某个 CA 收到具有 CAA 记录的域证书订单，但该 CA 未被列为授权的颁发者，则禁止向该域或子域颁发证书。 有关管理 CAA 记录的信息，请参阅[管理 CAA 记录](https://support.dnsimple.com/articles/manage-caa-record/)。 有关 CAA 记录工具，请参阅 [CAA 记录帮助器](https://sslmate.com/caa/)。
 
 ![WHOIS 记录](./media/cdn-custom-ssl/whois-record.png)
 
@@ -128,7 +128,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="disabling-https"></a>禁用 HTTPS
 
-启用 HTTPS 后，可以将其禁用。 若要禁用 HTTPS，请执行下列步骤：
+在自定义域上启用 HTTPS 后，可将其禁用。 若要禁用 HTTPS，请执行下列步骤：
 
 ### <a name="step-1-disable-the-feature"></a>步骤 1：禁用该功能 
 

@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9595b318b8bd974f778dc12b38cccd949a4e7a1a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="help-i-forgot-my-azure-ad-password"></a>请为我提供帮助，我忘记了 Azure AD 密码
+# <a name="reset-your-work-or-school-password"></a>重置工作或学校密码
 
-如果忘记了密码、从来没有从 IT 人员处收到过密码、帐户被锁定，或者需要更改密码，则可从我们这里寻求帮助。 如果知道密码并且只需要更改密码，请继续查看以下[更改我的密码](#change-my-password)部分。
+如果忘记了密码、从来没有从公司支持人员处收到过密码、帐户被锁定，或者需要更改密码，则可从我们这里寻求帮助。 如果知道密码并且只需要更改密码，请继续查看以下[更改我的密码](#change-my-password)部分。
 
    > [!NOTE]
    > 若要取回个人帐户（例如 Xbox、hotmail.com 或 outlook.com），请尝试[此文提供的建议](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/31/2017
    ![验证身份验证数据][Verification]
 
 4. IT 人员可能需要你进行更多验证，可能必须使用其他选择再次重复步骤 3 的操作。
-5. 在“选择新密码”页上，输入新密码并确认，然后单击“完成”。 建议密码采用 8-16 位字符，并且包含大小写字符、数字和特殊字符。
+5. 在“选择新密码”页上，输入新密码并确认，然后单击“完成”。 工作或学校密码可能有特定的要求；我们建议密码采用 8-16 位字符，并且包含大小写字符、数字和特殊字符。
 6. 看到“密码已重置”后，即可使用新密码登录。
 
     ![密码已重置][Complete]
@@ -95,6 +95,27 @@ ms.lasthandoff: 10/31/2017
 3. 单击“更改密码”
 4. 输入旧密码，设置并确认新密码，再单击“提交”
 
+## <a name="reset-password-at-login"></a>登录时重置密码
+
+如果管理员已启用该功能，Windows 10 Fall Creators Update 登录屏幕上现在会出现“重置密码”链接。
+
+![LoginScreen][LoginScreen]
+
+单击“重置密码”链接会在登录屏幕上打开 SSPR 体验，以便可以重置密码，而无需登录访问普通的基于 Web 的体验。
+
+1. 确认用户 ID，单击“下一步”
+2. 选择并确认用于验证的联系方式。 IT 人员可能要求进行其他验证，在此情况下，必须使用不同的选项再次重复此步骤。
+
+   ![ContactMethod][ContactMethod]
+
+3. 在“创建新密码”页上，输入新密码并确认，然后单击“下一步”。 建议密码采用 8-16 位字符，并且包含大小写字符、数字和特殊字符。
+
+   ![ResetPassword][ResetPassword]
+
+4. 出现“密码已重置”时，请单击“完成”
+
+此时应可访问帐户，否则应联系组织的 IT 人员，寻求进一步的帮助。
+
 ## <a name="common-problems-and-their-solutions"></a>常见问题及其解决方法
 
  以下是一些常见的错误案例及其解决方法：
@@ -116,3 +137,6 @@ ms.lasthandoff: 10/31/2017
 [Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "验证身份验证数据"
 [Change]: ./media/active-directory-passwords-update-your-own-password/reset-3-change.png "更改密码"
 [Complete]: ./media/active-directory-passwords-update-your-own-password/reset-4-complete.png "密码已重置"
+[LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Windows 10 Fall Creators Update 登录屏幕中的“重置密码”链接"
+[ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "验证身份验证数据"
+[ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "更改密码"

@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 08b07053dd1507bcf0564f3071642f66f06b3559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86e19d5bb942937779665eb60d9dc0654c16747d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>使用 Azure 应用服务 Web 应用配置 Python
 本教程介绍在 [Azure 应用服务 Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中创作和配置符合基本 Web 服务器网关接口 (WSGI) 的 Python 应用程序的选项。
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 其中讲解了 Git 部署的一些功能，如使用 requirements.txt 安装虚拟环境和包。
 
 ## <a name="bottle-django-or-flask"></a>Bottle、Django 还是 Flask？
-Azure 应用商店包含用于 Bottle、Django 和 Flask 框架的模板。 如果正在开发 Azure 应用服务中的第一个 Web 应用，可以通过 Azure 门户快速创建一个：
+Azure Marketplace 包含用于 Bottle、Django 和 Flask 框架的模板。 如果正在开发 Azure 应用服务中的第一个 Web 应用，可以通过 Azure 门户快速创建一个：
 
 * [使用 Bottle 创建 Web 应用](https://portal.azure.com/#create/PTVS.Bottle)
 * [使用 Django 创建 Web 应用](https://portal.azure.com/#create/PTVS.Django)
@@ -41,7 +41,7 @@ Azure 应用商店包含用于 Bottle、Django 和 Flask 框架的模板。 如�
 ## <a name="git-publishing"></a>Git 发布
 按照 [从本地 Git 部署到 Azure 应用服务](app-service-deploy-local-git.md)的说明为新创建的 Web 应用配置 Git 发布。 本教程使用 Git 来创建、管理 Python Web 应用以及将其发布到 Azure 应用服务。
 
-在设置 Git 发布之后，将创建 Git 存储库并使其与 Web 应用相关联。 随即会显示该存储库的 URL，之后其可用于将数据从本地开发环境推送到云。 要通过 Git 发布应用程序，请确保还安装了 Git 客户端，并按照提供的说明将 Web 应用内容推送到 Azure 应用服务。
+在设置 Git 发布之后，将创建 Git 存储库并使其与 Web 应用相关联。 随即会显示该存储库的 URL，可用于将数据从本地开发环境推送到云。 要通过 Git 发布应用程序，请确保还安装了 Git 客户端，并按照提供的说明将 Web 应用内容推送到 Azure 应用服务。
 
 ## <a name="application-overview"></a>应用程序概述
 接下来几节将创建以下文件。 这些文件应放在 Git 存储库的根目录中。
@@ -74,7 +74,7 @@ WSGI 是 [PEP 3333](http://www.python.org/dev/peps/pep-3333/) 所述的 Python �
 可以使用 `python app.py` 在本地运行此应用程序，并在 Web 浏览器中浏览到 `http://localhost:5555`。
 
 ## <a name="virtual-environment"></a>虚拟环境
-尽管上述示例应用程序不需要任何外部包，但应用程序很可能需要一些外部包。
+尽管上述示例应用不需要任何外部包，但应用程序很可能需要一些外部包。
 
 为了便于管理外部包依赖项，Azure Git 部署支持创建虚拟环境。
 
@@ -101,7 +101,7 @@ Requirements.txt 中列出的包将使用 pip 自动安装到虚拟环境中。 
 ## <a name="webconfig"></a>Web.config
 需要创建一个 web.config 文件以指定服务器处理请求的方式。
 
-请注意，如果存储库中有一个 Web.x.y 文件，其中 x.y 与所选的 Python 运行时匹配，则 Azure 会自动将相应的文件复制为 web.config。
+如果存储库中有一个 Web.x.y 文件，其中 x.y 与所选的 Python 运行时匹配，则 Azure 会自动将相应的文件复制为 web.config。
 
 以下 web.config 示例依赖于某个虚拟环境代理脚本（下一节介绍）。  它们与上述示例 `app.py` 中所用的 WSGI 处理程序配合使用。
 
@@ -356,7 +356,3 @@ Python 3.4 的示例 `web.config`：
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
-
-## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-

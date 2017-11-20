@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bf5f12e4a20d9692e311550fc7a02f14f0b4aaad
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -38,9 +38,9 @@ ms.lasthandoff: 11/07/2017
 ## <a name="types-of-sampling"></a>采样类型
 有三种备用采样方法：
 
-* **自适应采样**自动调整从 ASP.NET 应用的 SDK 所发送的遥测量。 默认从 SDK v 2.0.0-beta3 发送。 当前仅适用于 ASP.NET 服务器端遥测。 
+* **自适应采样**自动调整从 ASP.NET 应用的 SDK 所发送的遥测量。 从 SDK v 2.0.0-beta3 开始，这是默认的采样方法。 自适应采样目前仅适用于 ASP.NET 服务器端遥测。 
 * **固定速率采样**会减少从 ASP.NET 服务器和用户浏览器发送的遥测量。 用户设定速率。 客户端和服务器将同步其采样，以便在“搜索”中可以在多个相关页面视图和请求之间导航。
-* **引入采样**在 Azure 门户中正常工作。 它会以你设置的速率丢弃一些来自应用的遥测数据。 它不会减少遥测流量，但可帮助你保持在每月配额内。 引入采样的大优点是，无需重新部署应用就可设置它，并且它统一适用于所有服务器和客户端。 
+* **引入采样**在 Azure 门户中正常工作。 它会以设置的采样率丢弃一些来自应用的遥测数据。 它不会减少应用发送的遥测流量，但可帮助保持在每月配额内。 引入采样的大优点是，无需重新部署应用就可设置它，并且它统一适用于所有服务器和客户端。 
 
 如果自适应采样或固定速率采样正在运行，将禁用引入采样。
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/07/2017
 ## <a name="adaptive-sampling-at-your-web-server"></a>Web 服务器上的自适应采样
 自适应采样适用于 Application Insights SDK for ASP.NET v 2.0.0-beta3 及更高版本，默认处于启用状态。 
 
-自适应采样会影响从 Web 服务器应用发送至 Application Insights 服务的遥测量。 遥测量会自动调整，以保持在指定的最大流量率。
+自适应采样会影响从 Web 服务器应用发送至 Application Insights 服务终结点的遥测量。 遥测量会自动调整，以保持在指定的最大流量率。
 
 它无法在低遥测量下运行，因此调试中的应用或具有低使用量的网站不会受到影响。
 
@@ -75,7 +75,11 @@ ms.lasthandoff: 11/07/2017
 
 诸如请求速率和异常率等指标计数将进行调整以补偿采样率，以便它们在指标资源管理器中能够显示大约正确的值。
 
-**将项目的 NuGet** 包更新为最新的 Application Insights *预发行*版本：右键单击解决方案资源管理器中的项目、选择“管理 NuGet 包”、选中“包括预发行版本”，然后搜索 Microsoft.ApplicationInsights.Web。 
+### <a name="update-nuget-packages"></a>更新 NuGet 包 ###
+
+将项目的 NuGet 包更新为最新的 Application Insights 预发行版本。 在 Visual Studio 中，右键单击解决方案资源管理器中的项目、选择“管理 NuGet 包”、选中“包括预发行版本”，并搜索 Microsoft.ApplicationInsights.Web。 
+
+### <a name="configuring-adaptive-sampling"></a>配置自适应采样 ###
 
 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中，可以调整 `AdaptiveSamplingTelemetryProcessor` 节点中的多个参数。 显示的数字是默认值：
 
@@ -116,7 +120,7 @@ ms.lasthandoff: 11/07/2017
 **若要关闭**自适应采样，请从 applicationinsights-config 中删除 AdaptiveSamplingTelemetryProcessor 节点。
 
 ### <a name="alternative-configure-adaptive-sampling-in-code"></a>备选： 在代码中配置自适应采样
-除了在 .config 文件中调整采样以外，可以使用代码。 这样一来，可以指定在重新计算采样率时调用的回调函数。 例如，可以使用它来了解正在使用的采样率。
+除了在 .config 文件中设置采样参数以外，还可以编程方式设置这些值。 这样一来，可以指定在重新计算采样率时调用的回调函数。 例如，可以使用它来了解正在使用的采样率。
 
 从 .config 文件中删除 `AdaptiveSamplingTelemetryProcessor` 节点。
 
@@ -168,7 +172,7 @@ ms.lasthandoff: 11/07/2017
 ## <a name="sampling-for-web-pages-with-javascript"></a>使用 JavaScript 的网页采样
 可以针对任何服务器中的固定速率采样配置网页。 
 
-当[为 Application Insights 配置网页](app-insights-javascript.md)时，修改从 Application Insights 门户获取的代码段。 （在 ASP.NET 应用中，代码段通常出现在 _Layout.cshtml 中。）在检测密钥前插入类似于 `samplingPercentage: 10,` 的行：
+[为 Application Insights 配置网页](app-insights-javascript.md)时，修改从 Application Insights 门户获取的 JavaScript 代码片段。 （在 ASP.NET 应用中，代码段通常出现在 _Layout.cshtml 中。）在检测密钥前插入类似于 `samplingPercentage: 10,` 的行：
 
     <script>
     var appInsights= ... 
@@ -193,11 +197,13 @@ ms.lasthandoff: 11/07/2017
 ## <a name="fixed-rate-sampling-for-aspnet-web-sites"></a>ASP.NET 网站的固定速率采样
 固定速率采样会减少从 Web 服务器和 Web 浏览器发送的流量。 与自适应采样不同，它会按用户确定的固定速率来降低遥测。 它还将同步客户端和服务器采样，以便保留相关项，例如，如果在“搜索”中查看页面视图，可以查找其相关的请求。
 
-采样算法保留相关的项。 对于每个 HTTP 请求事件，它和相关的事件会被丢弃或传输。 
+采样算法保留相关的项。 对于每个 HTTP 请求事件，请求和相关的事件会一起被丢弃或传输。 
 
 在指标资源管理器中，诸如请求和异常计数等速率将乘以某个系数来补偿采样率，以便它们大致正确。
 
-1. **将项目的 NuGet 包更新为**最新的 Application Insights *预发行*版本。 右键单击解决方案资源管理器中的项目、选择“管理 NuGet 包”、选中“包括预发行版本”，并搜索 Microsoft.ApplicationInsights.Web。 
+### <a name="configuring-fixed-rate-sampling"></a>配置固定速率采样 ###
+
+1. **将项目的 NuGet 包更新为**最新的 Application Insights *预发行*版本。 在 Visual Studio 中，右键单击解决方案资源管理器中的项目、选择“管理 NuGet 包”、选中“包括预发行版本”，并搜索 Microsoft.ApplicationInsights.Web。 
 2. **禁用自适应采样**：在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中，删除或注释掉 `AdaptiveSamplingTelemetryProcessor` 节点。
    
     ```xml
@@ -233,7 +239,7 @@ ms.lasthandoff: 11/07/2017
 > 
 
 ### <a name="alternative-enable-fixed-rate-sampling-in-your-server-code"></a>备选：启用服务器代码中的固定速率采样
-除了在 .config 文件中设置采样参数以外，可以使用代码。 
+除了在 .config 文件中设置采样参数以外，还可以编程方式设置这些值。 
 
 *C#*
 
@@ -256,9 +262,9 @@ ms.lasthandoff: 11/07/2017
 （[了解遥测处理器](app-insights-api-filtering-sampling.md#filtering)。）
 
 ## <a name="when-to-use-sampling"></a>何时使用采样？
-如果使用 ASP.NET SDK 版本 2.0.0-beta3 或更高版本，会自动启用自适应采样。 无论使用何种 SDK 版本，都可以（在我们的服务器）使用引入采样。
+如果使用 ASP.NET SDK 版本 2.0.0-beta3 或更高版本，会自动启用自适应采样。 无论使用何种 SDK 版本，都可以启用引入采样，以允许 Application Insights 对收集的数据采样。
 
-对于大多数小型和中型应用程序，不需要采样。 通过收集所有用户活动的数据，获取最有用的诊断信息和最准确的统计。 
+一般情况下，对于大多数小型和中型应用程序，不需要采样。 通过收集所有用户活动的数据，获取最有用的诊断信息和最准确的统计。 
 
 采样的主要优势在于：
 
@@ -281,7 +287,7 @@ ms.lasthandoff: 11/07/2017
 
 **使用自适应采样：**
 
-在其他情形下，我们建议使用自适应采样。 在 ASP.NET 服务器 SDK 版本 2.0.0-beta3 或更高版本中，默认启用该采样。 它并没有将流量减少到特定最低速，因此它不会影响使用率较低的站点。
+如果使用其他采样格式的条件不适用，我们建议使用自适应采样。 在 ASP.NET 服务器 SDK 版本 2.0.0-beta3 或更高版本中，默认启用该采样。 它不会将流量减少到特定最低速率，因此不会影响使用率较低的站点。
 
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>如何知道采样是否在运行？
 若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](app-insights-analytics.md)：
@@ -330,7 +336,7 @@ ms.lasthandoff: 11/07/2017
 
 * 一种方法是从自适应采样开始，了解应用选定的速率（请参阅上述问题），然后使用该速率切换到固定速率采样。 
   
-    否则，就必须猜测。 分析 AI 中当前遥测使用量、观察出现的任何限制，并估计所收集的遥测量。 这三个输入以及所选的定价层暗示你可能想要减少收集的遥测的数量。 但是，用户数量的增加或遥测量中的某些其他变化可能导致估计无效。
+    否则，就必须猜测。 分析 Application Insights 中当前遥测使用量、观察出现的任何限制，并估计所收集的遥测量。 这三个输入以及所选的定价层暗示你可能想要减少收集的遥测的数量。 但是，用户数量的增加或遥测量中的某些其他变化可能导致估计无效。
 
 *如果我配置的采样百分比过低，会发生什么情况？*
 

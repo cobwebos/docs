@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 283428c603cc73d23f0afa94670a23dbb45068d5
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>如何：在 Azure 应用服务中监视 Web 应用
 [应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)在 [Azure 门户](https://portal.azure.com)中提供了内置监视功能。
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
 适用于托管在**基本**、**标准**和**高级**计划中的应用的唯一配额是**文件系统**。
 
-有关各种应用服务 SKU 可用的特定配额、限制和功能的详细信息，请参见：[Azure 订阅服务限制](../azure-subscription-service-limits.md#app-service-limits)
+有关各种应用服务 SKU 可用的特定配额、限制和功能的详细信息，请参阅：[Azure 订阅服务限制](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>配额强制执行
 如果应用程序的使用量超过 **CPU（短期）**、**CPU（天）**或**带宽**配额，则将终止该应用程序，直到配额重置。 在此期间，所有传入请求都将导致 **HTTP 403**。
@@ -72,15 +72,15 @@ ms.lasthandoff: 10/11/2017
 * **平均内存工作集**
   * 应用使用的平均内存量（以 MiB 为单位）。
 * **CPU 时间**
-  * 应用使用的 CPU 量（以秒为单位）。 有关此度量值的详细信息，请参阅：[CPU 时间与 CPU 百分比](#cpu-time-vs-cpu-percentage)
+  * 应用使用的 CPU 量（以秒为单位）。 有关此指标的详细信息，请参阅：[CPU 时间与 CPU 百分比](#cpu-time-vs-cpu-percentage)
 * **数据输入**
   * 应用使用的传入带宽量（以 MiB 为单位）。
 * **数据输出**
   * 应用使用的传出带宽量（以 MiB 为单位）。
 * **Http 2xx**
-  * 导致 http 状态代码的请求计数大于等于 200，但小于 300。
+  * 导致 HTTP 状态代码的请求计数大于等于 200，但小于 300。
 * **Http 3xx**
-  * 导致 http 状态代码的请求计数大于等于 300，但小于 400。
+  * 导致 HTTP 状态代码的请求计数大于等于 300，但小于 400。
 * **Http 401**
   * 导致 HTTP 401 状态代码的请求计数。
 * **Http 403**
@@ -90,9 +90,9 @@ ms.lasthandoff: 10/11/2017
 * **Http 406**
   * 导致 HTTP 406 状态代码的请求计数。
 * **Http 4xx**
-  * 导致 http 状态代码的请求计数大于等于 400，但小于 500。
+  * 导致 HTTP 状态代码的请求计数大于等于 400，但小于 500。
 * **Http 服务器错误**
-  * 导致 http 状态代码的请求计数大于等于 500，但小于 600。
+  * 导致 HTTP 状态代码的请求计数大于等于 500，但小于 600。
 * **内存工作集**
   * 应用当前使用的内存量（以 MiB 为单位）。
 * **请求**
@@ -101,7 +101,7 @@ ms.lasthandoff: 10/11/2017
 对于**应用服务计划**，可用度量值为：
 
 > [!NOTE]
-> 应用服务计划度量值仅适用于**基本**、**标准**和**高级** SKU 中的计划。
+> 应用服务计划指标仅适用于**基本**、**标准**和**高级**层中的计划。
 > 
 > 
 
@@ -121,11 +121,11 @@ ms.lasthandoff: 10/11/2017
 ### <a name="cpu-time-vs-cpu-percentage"></a>CPU 时间和 CPU 百分比
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
-有 2 个反映 CPU 使用率的度量值。 **CPU 时间**和 **CPU 百分比**
+有两个反映 CPU 使用率的指标。 **CPU 时间**和 **CPU 百分比**
 
 **CPU 时间**对托管在**免费**或**共享**计划中的应用很有用，因为这些应用的其中一个配额由应用所用的 CPU 时间定义。
 
-另一方面，**CPU 百分比**对托管在**基本**、**标准**和**高级**计划中的应用很有用，因为这些应用可以按比例扩大，并且该度量值能很好反映所有实例的总体使用情况。
+**CPU 百分比**对托管在**基本**、**标准**和**高级**计划中的应用很有用，因为这些应用可以按比例扩大，并且该指标能很好反映所有实例的总体使用情况。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>度量值粒度和保留策略
 应用程序和应用服务计划的度量值由具有下列粒度和保留策略的服务进行记录和聚合：
@@ -134,20 +134,20 @@ ms.lasthandoff: 10/11/2017
 * **小时**粒度级的度量值将保留 **30 天**
 * **天**粒度级的度量值将保留 **90 天**
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和度量值。
-可以在 [Azure 门户](https://portal.azure.com) 中查看影响应用程序的各种 **配额** 和 **度量值** 。
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标。
+可以在 [Azure 门户](https://portal.azure.com)中查看影响应用程序的各种**配额**和**指标**。
 
 可以在“设置”>**配额** 下找到 ![][quotas]
-**配额** 。 用户体验允许查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
+**配额** 。 在 UX 中可以查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
 
-可以直接从资源边栏选项卡中访问![][metrics]
-**度量值**。 还可以通过以下操作自定义图表：(1) **单击**图表，并选择 (2)“编辑图表”。
+可以直接从资源页访问![][metrics]
+**指标**。 还可以通过以下操作自定义图表：(1) **单击**图表，并选择 (2)“编辑图表”。
 可在此处更改要显示的 (3) **时间范围**、(4) **图表类型**和 (5) **度量值**。  
 
 可以在此处了解有关度量值的详细信息：[监视服务度量值](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
-可将应用或应用服务计划的度量值连接到警报；要了解相关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
 托管在基本、标准或高级应用服务计划中的应用服务应用支持**自动缩放**。 这样便可以配置监视应用服务计划度量值的规则，还能增加或减少根据需要提供其他资源或在过度预配时节约资金的实例计数。 可以在此处了解有关自动缩放的详细信息：[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及 [Azure 监视器自动缩放的最佳做法](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 
@@ -155,9 +155,6 @@ ms.lasthandoff: 10/11/2017
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
-
-## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
