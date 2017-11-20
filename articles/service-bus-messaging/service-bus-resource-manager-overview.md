@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 模板创建 Azure 服务总线资源 | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板自动创建服务总线资源"
+title: "使用资源管理器模板创建 Azure 服务总线资源 | Microsoft Docs"
+description: "使用 Azure 资源管理器模板自动创建服务总线资源"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -12,28 +12,28 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/10/2017
 ms.author: sethm
-ms.openlocfilehash: c8142d8edfd3a527b13d655bac21acf5332f2d14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ceeb138a7432e51cabe2597c680cb01ea9eac4a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建服务总线资源
+# <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
 
-本文介绍如何使用 Azure Resource Manager 模板、PowerShell 和服务总线资源提供程序创建和部署服务总线资源。
+本文介绍如何使用 Azure 资源管理器模板、PowerShell 和服务总线资源提供程序创建和部署服务总线资源。
 
-Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关编写 Azure Resource Manager 模板的详细信息，以及模板格式的讨论，请参阅 [Azure Resource Manager 模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 此模板以 JSON 编写并包含可用于为部署构造值的表达式。 有关编写 Azure 资源管理器模板的详细信息，以及模板格式的讨论，请参阅 [Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 > [!NOTE]
-> 本文中的示例演示如何使用 Azure Resource Manager 来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速启动模板库][Azure Quickstart Templates gallery]并搜索“服务总线”。
+> 本文中的示例演示如何使用 Azure 资源管理器来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速入门模板库][Azure Quickstart Templates gallery]并搜索“服务总线”。
 >
 >
 
 ## <a name="service-bus-resource-manager-templates"></a>服务总线 Resource Manager 模板
 
-这些服务总线 Azure Resource Manager 模板可供下载和部署。 单击以下链接可获得有关每个链接的详细信息，其中包含指向 GitHub 上的模板的链接：
+这些服务总线 Azure 资源管理器模板可供下载和部署。 单击以下链接可获得有关每个链接的详细信息，其中包含指向 GitHub 上的模板的链接：
 
 * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)
@@ -43,7 +43,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 
-以下过程描述如何使用 PowerShell 部署 Azure Resource Manager 模板以创建“标准”层服务总线命名空间和该命名空间中的一个队列。 本示例基于[创建包含队列的服务总线命名空间](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)模板。 大概的工作流如下所示：
+以下过程描述如何使用 PowerShell 部署 Azure 资源管理器模板以创建“标准”层服务总线命名空间和该命名空间中的一个队列。 本示例基于[创建包含队列的服务总线命名空间](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)模板。 大概的工作流如下所示：
 
 1. 安装 PowerShell。
 2. 创建模板和（可选）参数文件。
@@ -53,7 +53,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 6. 如果需要，设置部署模式。
 7. 部署模板。
 
-有关部署 Azure Resource Manager 模板的完整信息，请参阅[使用 Azure Resource Manager 模板部署资源][Deploy resources with Azure Resource Manager templates]。
+有关部署 Azure 资源管理器模板的完整信息，请参阅[使用 Azure 资源管理器模板部署资源][Deploy resources with Azure Resource Manager templates]。
 
 ### <a name="install-powershell"></a>安装 PowerShell
 
@@ -65,67 +65,72 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "serviceBusNamespaceName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the Service Bus namespace"
-            }
-        },
-        "serviceBusQueueName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the Queue"
-            }
-        },
-        "serviceBusApiVersion": {
-            "type": "string",
-            "defaultValue": "2015-08-01",
-            "metadata": {
-                "description": "Service Bus ApiVersion used by the template"
-            }
-        }
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Service Bus namespace"
+      }
     },
-    "variables": {
-        "location": "[resourceGroup().location]",
-        "sbVersion": "[parameters('serviceBusApiVersion')]",
-        "defaultSASKeyName": "RootManageSharedAccessKey",
-        "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]"
-    },
-    "resources": [{
-        "apiVersion": "[variables('sbVersion')]",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/Namespaces",
-        "location": "[variables('location')]",
-        "kind": "Messaging",
-        "sku": {
-            "name": "StandardSku",
-            "tier": "Standard"
-        },
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }],
-    "outputs": {
-        "NamespaceConnectionString": {
-            "type": "string",
-            "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
-        },
-        "SharedAccessPolicyPrimaryKey": {
-            "type": "string",
-            "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryKey]"
-        }
+    "serviceBusQueueName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Queue"
+      }
     }
+  },
+  "variables": {
+    "defaultSASKeyName": "RootManageSharedAccessKey",
+    "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]",
+    "sbVersion": "2017-04-01"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('serviceBusNamespaceName')]",
+      "type": "Microsoft.ServiceBus/Namespaces",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {},
+      "resources": [
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[parameters('serviceBusQueueName')]",
+          "type": "Queues",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
+          ],
+          "properties": {
+            "lockDuration": "PT5M",
+            "maxSizeInMegabytes": "1024",
+            "requiresDuplicateDetection": "false",
+            "requiresSession": "false",
+            "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
+            "deadLetteringOnMessageExpiration": "false",
+            "duplicateDetectionHistoryTimeWindow": "PT10M",
+            "maxDeliveryCount": "10",
+            "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+            "enablePartitioning": "false",
+            "enableExpress": "false"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "NamespaceConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
+    },
+    "SharedAccessPolicyPrimaryKey": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryKey]"
+    }
+  }
 }
 ```
 
@@ -145,13 +150,13 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
             "value": "<myQueueName>"
         },
         "serviceBusApiVersion": {
-            "value": "2015-08-01"
+            "value": "2017-04-01"
         }
     }
 }
 ```
 
-有关详细信息，请参阅[参数](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)主题。
+有关详细信息，请参阅[参数](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)一文。
 
 ### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>登录到 Azure 并设置 Azure 订阅
 
@@ -161,13 +166,13 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 Login-AzureRmAccount
 ```
 
-系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅。
+系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅：
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-此命令返回可用 Azure 订阅的列表。 通过运行以下命令为当前会话选择订阅。 将 `<YourSubscriptionId>` 替换为要使用的 Azure 订阅的 GUID。
+此命令返回可用 Azure 订阅的列表。 通过运行以下命令为当前会话选择订阅。 将 `<YourSubscriptionId>` 替换为要使用的 Azure 订阅的 GUID：
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
@@ -209,7 +214,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-若要改为指定参数文件，请使用以下命令。
+若要改为指定参数文件，请使用以下命令：
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -234,7 +239,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -Resour
 DeploymentName    : MyDemoDeployment
 ResourceGroupName : MyDemoRG
 ProvisioningState : Succeeded
-Timestamp         : 4/19/2016 10:38:30 PM
+Timestamp         : 4/19/2017 10:38:30 PM
 Mode              : Incremental
 TemplateLink      :
 Parameters        :
@@ -242,16 +247,16 @@ Parameters        :
                     ===============  =========================  ==========
                     serviceBusNamespaceName  String             <namespaceName>
                     serviceBusQueueName  String                 <queueName>
-                    serviceBusApiVersion  String                2015-08-01
+                    serviceBusApiVersion  String                2017-04-01
 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在已了解用于部署 Azure Resource Manager 模板的基本工作流和命令。 有关更多详细信息，请访问以下链接：
+现在已了解用于部署 Azure 资源管理器模板的基本工作流和命令。 有关更多详细信息，请访问以下链接：
 
-* [Azure Resource Manager 概述][Azure Resource Manager overview]
+* [Azure 资源管理器概述][Azure Resource Manager overview]
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源][Deploy resources with Azure Resource Manager templates]
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md

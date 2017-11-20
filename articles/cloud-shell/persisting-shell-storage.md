@@ -1,5 +1,5 @@
 ---
-title: "为 Azure Cloud Shell（预览版）中的 Bash 持久保存文件 | Microsoft Docs"
+title: "为 Bash in Azure Cloud Shell 持久保存文件 | Microsoft Docs"
 description: "演练 Azure Cloud Shell 中的 Bash 如何持久保存文件。"
 services: azure
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 8b8a82e1c1328d952a85ea5afd975a95f5a6e740
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a04342f77126afe1e0a2707f1d213e0a8eb5825d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-cloud-shell-storage-works"></a>Cloud Shell 存储的工作原理 
-Cloud Shell 通过以下两种方法持久保存文件： 
+## <a name="how-bash-in-cloud-shell-storage-works"></a>Bash in Cloud Shell 存储的工作原理 
+Bash in Cloud Shell 通过以下两种方法持久保存文件： 
 * 创建 `$Home` 目录的磁盘映像来持久保持目录中所有内容。 磁盘映像将作为 `acc_<User>.img` 保存在指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`，并会自动同步更改。 
 * 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
  
@@ -91,6 +91,6 @@ justin@Azure:~$
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
 ## <a name="next-steps"></a>后续步骤
-[Cloud Shell 快速入门](quickstart.md) <br>
-[了解 Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
+[了解 Microsoft Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
 [了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

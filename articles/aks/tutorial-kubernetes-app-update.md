@@ -1,5 +1,5 @@
 ---
-title: "Azure 上的 Kubernertes 教程 - 更新应用程序 | Microsoft Docs"
+title: "Azure 上的 Kubernetes 教程 - 更新应用程序 | Microsoft Docs"
 description: "AKS 教程 - 更新应用程序"
 services: container-service
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 76fd3665fdbc2faa023452f3f7f25e0b67b8fac8
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: e788a982d2580e90309df977c8e2e1cb22daadaf
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="update-an-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中更新应用程序
 
@@ -77,7 +77,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-转到 http://localhost:8080，查看更新后的应用程序。
+转到 http://localhost:8080 ，查看更新后的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 

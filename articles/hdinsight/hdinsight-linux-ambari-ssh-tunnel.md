@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 11/10/2017
 ms.author: larryfr
-ms.openlocfilehash: 4b606ea3797d685b9deacf72f1bd31e0ef007f98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f55abc84a8afea398cf0e95761d922b77e1c248
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Oozie 和其他 Web UI
 
@@ -48,7 +48,7 @@ Ambari 中的多个菜单仅通过 SSH 隧道工作。 这些菜单依赖于辅�
 
 ## <a name="prerequisites"></a>先决条件
 
-* SSH 客户端。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+* SSH 客户端。 大多数操作系统通过 `ssh` 命令提供 SSH 客户端。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 * 可配置为使用 SOCKS5 代理的 Web 浏览器。
 
@@ -74,9 +74,9 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 * **C** - 压缩所有数据，因为 Web 流量大多为文本。
 * **2** - 强制 SSH 仅尝试协议版本 2。
 * **q** - 静默模式。
-* **T** - 禁用 pseudo-tty 分配，因为我们将仅转发端口。
-* n - 防止读取 STDIN，因为我们将仅转发端口。
-* **N** - 不执行远程命令，因为我们将仅转发端口。
+* **T** - 禁用 pseudo-tty 分配，因为将仅转发端口。
+* **n** - 防止读取 STDIN，因为将仅转发端口。
+* **N** - 不执行远程命令，因为将仅转发端口。
 * **f** - 在后台运行。
 
 命令完成后，发送到本地计算机上端口 9876 的流量将路由到群集头节点。

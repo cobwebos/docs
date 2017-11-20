@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jingwang
-ms.openlocfilehash: d7da4c3c4aa902cf9ccb97ebd13b7d16940f2c32
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: ca5f8e43b6667aa1c2e3ac38e7ea00b5bd86b72f
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -187,11 +187,11 @@ ms.lasthandoff: 11/07/2017
 
 ### <a name="azure-table-as-sink"></a>Azure 表作为接收器
 
-要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSink”。 复制活动接收器部分中支持以下属性：
+若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”。 复制活动接收器部分中支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**AzureTableSink** |是 |
+| type | 复制活动接收器的 type 属性必须设置为：**AzureTableSink** |是 |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
 | azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用“AzureTableDefaultPartitionKeyValue”作为分区键。 |否 |
 | azureTableRowKeyName |指定列名称，使用列值作为行键。 如果未指定，对每一行使用 GUID。 |否 |

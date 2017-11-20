@@ -17,17 +17,18 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb6ade65879b245bf44800da3352354ba274ee5a
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions 托管计划比较
 
-## <a name="introduction"></a>介绍
-
 可在两种不同模式下运行 Azure Functions：消耗量计划和 Azure 应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 本文重点介绍消耗计划（一种[无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用模型）。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+
+>[!NOTE]  
+> Linux 托管目前仅在应用服务计划中提供。
 
 如果不熟悉 Azure Functions，请参阅 [Azure Functions 概述](functions-overview.md)。
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 10/18/2017
 
 ## <a name="app-service-plan"></a>应用服务计划
 
-在应用服务计划中，函数应用在基本、标准、高级或独立 SKU 中的专用 VM 上运行，类似于 Web 应用、API 应用和移动应用。 专用 VM 将分配到应用服务应用，这意味着函数主机始终会运行。
+在应用服务计划中，函数应用在基本、标准、高级或独立 SKU 中的专用 VM 上运行，类似于 Web 应用、API 应用和移动应用。 专用 VM 将分配到应用服务应用，这意味着函数主机始终会运行。 应用服务计划支持 Linux。
 
 对于以下情况，可以考虑使用应用服务计划：
 - 具有已运行其他应用服务实例的、未充分利用的现成 VM。
@@ -63,12 +64,13 @@ ms.lasthandoff: 10/18/2017
 - 所需 CPU 或内存选项超出消耗计划提供的选项。
 - 需要运行的时间超过消耗计划允许的最长执行时间（10 分钟）。
 - 需要仅对应用服务计划可用的功能，例如应用服务环境支持、VNET/VPN 连接性和更大的 VM。 
+- 想要在 Linux 上运行函数应用，或者想要提供要在其上运行函数的自定义映像。
 
 VM 使得成本不再取决于执行数量、执行时间和所用内存。 因此，支付的费用不会超过分配的 VM 实例的费用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
-借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。 还可以通过选择不同的应用服务计划来增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
+借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
 
-如果计划在应用服务计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-core-app-service-plans)。  
+如果计划在应用服务计划上运行 JavaScript 函数，则应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#considerations-for-javascript-functions)。  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
@@ -93,7 +95,7 @@ VM 使得成本不再取决于执行数量、执行时间和所用内存。 因�
 > [!NOTE]
 > 在消耗计划中使用 Blob 触发器时，如果函数应用处于空闲状态，则在处理新 Blob 时，可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 若要避免此初始延迟，请考虑以下选项之一：
 > - 将函数应用托管在应用服务计划中，并启用“始终可用”。
-> - 使用另一种机制来触发 Blob 处理，例如包含 Blob 名称的队列消息。 有关示例，请参阅[具有 Blob 输入绑定的队列触发器](functions-bindings-storage-blob.md#input-sample)。
+> - 使用另一种机制来触发 Blob 处理，例如包含 Blob 名称的队列消息。 有关示例，请参阅 [blob 输入和输出绑定的 C# 脚本和 JavaScript 示例](functions-bindings-storage-blob.md#input--output---example)。
 
 ### <a name="runtime-scaling"></a>运行时缩放
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: owend
-ms.openlocfilehash: 0e58862684e62a65cf11266cc0320a9acd781f07
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: a97f9648efef7f07659110d720c200dcd0a241a9
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/06/2017
 
 不论查询池中查询副本的数量如何，处理工作负载都不会分布在查询副本中。 一台服务器用作处理服务器。 查询副本在查询池中仅向针对在每个副本之间同步的模型的查询提供服务。 
 
-完成处理操作后，必须在处理服务器和查询副本服务器之间执行同步操作。 自动处理操作时，必须在成功完成处理操作后配置同步操作。
+完成处理操作后，必须在处理服务器和查询副本服务器之间执行同步操作。 自动处理操作时，必须在成功完成处理操作后配置同步操作。 可以在门户中手动执行同步，也可以通过使用 PowerShell 或 REST API 进行同步。
 
 > [!NOTE]
 > 标准定价层中的服务器可使用横向扩展。 每个查询副本与服务器的计费费率相同。
@@ -58,12 +58,10 @@ ms.lasthandoff: 11/06/2017
 
 主服务器上的表格模型与副本服务器同步。 同步完成后，查询池开始在副本服务器之间分发传入的查询。 
 
-### <a name="powershell"></a>PowerShell
-使用 [Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver) cmdlet。 指定 `-Capacity` 参数值大于 1。
 
 ## <a name="synchronization"></a>同步 
 
-预配新的查询副本时，Azure Analysis Services 会在所有副本中自动复制模型。 还可执行手动同步操作。 处理模型时，应进行同步，以便在查询副本中同步更新。
+预配新的查询副本时，Azure Analysis Services 会在所有副本中自动复制模型。 还可以使用门户或 REST API 执行手动同步。 处理模型时，应进行同步，以便在查询副本中同步更新。
 
 ### <a name="in-azure-portal"></a>在 Azure 门户中配置
 
@@ -72,12 +70,16 @@ ms.lasthandoff: 11/06/2017
 ![横向扩展滑块](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
+使用**同步**操作。
 
-同步模型   
-`POST https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
+#### <a name="synchronize-a-model"></a>同步模型   
+`POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
-获取模型同步的状态  
-`GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
+#### <a name="get-sync-status"></a>获取同步状态  
+`GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
+
+### <a name="powershell"></a>PowerShell
+若要从 PowerShell 运行同步，请[更新到最新](https://github.com/Azure/azure-powershell/releases) 5.01 版或更高版本 AzureRM 模块。 使用 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance)。
 
 ## <a name="connections"></a>连接
 

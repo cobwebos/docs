@@ -3,7 +3,7 @@ title: "使用 Azure CLI 2.0 管理 Azure DNS 中的 DNS 记录 | Microsoft 文�
 description: "当在 Azure DNS 上托管域时在 Azure DNS 上管理 DNS 记录集和记录。 记录集和记录上的操作的所有 CLI 2.0 命令。"
 services: dns
 documentationcenter: na
-author: jtuliani
+author: subsarma
 manager: carmonm
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
-ms.author: jonatul
-ms.openlocfilehash: 9543759d7ba88c7c5068021cebbeec6b8d63633e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/08/2017
+ms.author: subsarma
+ms.openlocfilehash: 47be36aee053b81913286f0119edb6c8caa7c456
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -105,6 +105,12 @@ az network dns record-set a create --resource-group myresourcegroup --zone-name 
 
 ```azurecli
 az network dns record-set aaaa set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
+```
+
+### <a name="create-an-caa-record"></a>创建 CAA 记录
+
+```azurecli
+az network dns record-set caa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-caa --flags 0 --tag "issue" --value "ca1.contoso.com"
 ```
 
 ### <a name="create-a-cname-record"></a>创建 CNAME 记录
@@ -208,9 +214,9 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 
 每个记录集包含[生存时间 (TTL)](dns-zones-records.md#time-to-live)、[元数据](dns-zones-records.md#tags-and-metadata)和 DNS 记录。 以下部分介绍如何修改其中的每个属性。
 
-### <a name="to-modify-an-a-aaaa-mx-ns-ptr-srv-or-txt-record"></a>修改 A、AAAA、MX、NS、PTR、SRV 或 TXT 记录
+### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>修改 A、AAAA、CAA、MX、NS、PTR、SRV 或 TXT 记录
 
-要修改现有的类型 A、AAAA、MX、NS、PTR、SRV 或 TXT 记录，首先应该添加一条新记录，再删除现有记录。 有关如何删除和添加记录的详细说明，请参阅本文中前面的部分。
+若要修改现有的 A、AAAA、CAA、MX、NS、PTR、SRV 或 TXT 类型的记录，应先添加一条新记录，再删除现有记录。 有关如何删除和添加记录的详细说明，请参阅本文中前面的部分。
 
 以下示例演示如何将一条“A”记录中的 IP 地址 1.2.3.4 修改为 IP 地址 5.6.7.8：
 

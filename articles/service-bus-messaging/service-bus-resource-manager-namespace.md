@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 模板创建服务总线命名空间 | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板创建服务总线命名空间"
+title: "使用 Azure 资源管理器模板创建服务总线命名空间 | Microsoft Docs"
+description: "使用 Azure 资源管理器模板创建服务总线命名空间"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: 0598ee93a38c07aa7b1102cdaf228c2a4b4dcf71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建服务总线命名空间
+# <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
 本文介绍如何使用 Azure 资源管理器模板，创建包含标准 SKU 的类型为 Messaging 的服务总线命名空间。 本文还定义了为执行部署指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
 
 有关完整的模板，请参阅 GitHub 上的[服务总线命名空间模板][Service Bus namespace template]。
 
 > [!NOTE]
-> 以下 Azure Resource Manager 模板可供下载和部署。 
+> 以下 Azure 资源管理器模板可供下载和部署。 
 > 
 > * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
@@ -48,9 +48,9 @@ ms.lasthandoff: 10/11/2017
 [![部署到 Azure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>parameters
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
-此模板定义以下参数。
+此模板定义以下参数：
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 要创建的服务总线命名空间的名称。
@@ -81,7 +81,7 @@ ms.lasthandoff: 10/11/2017
 
 ```
 
-模板定义了此参数允许的值（Standard 或 Premium），如果未指定任何值，则分配默认值 (Standard)。
+此模板定义该参数允许的值（Standard 或 Premium）。 如果未指定任何值，资源管理器将分配默认值 (Standard)。
 
 有关服务总线定价的详细信息，请参阅[服务总线定价和计费][Service Bus pricing and billing]。
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
 ```json
 "serviceBusApiVersion": { 
        "type": "string", 
-       "defaultValue": "2015-08-01", 
+       "defaultValue": "2017-04-01", 
        "metadata": { 
            "description": "Service Bus ApiVersion used by the template" 
        } 
@@ -135,7 +135,7 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已使用 Azure Resource Manager 创建并部署了资源，请通过阅读以下文章了解如何管理这些资源：
+现在，已使用 Azure 资源管理器创建并部署了资源，请通过阅读以下文章了解如何管理这些资源：
 
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
 * [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

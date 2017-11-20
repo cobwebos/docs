@@ -25,11 +25,8 @@
 ###### [模拟数据](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [使用实际传感器](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [实施固件更新](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
-#### 连接 Intel NUC 网关
-##### [模拟数据](iot-suite-v1-gateway-kit-get-started-simulator.md)
-##### [使用实际传感器](iot-suite-v1-gateway-kit-get-started-sensortag.md)
 
-### 如何
+### 操作指南
 #### 连接模拟设备
 ##### [Windows 上的 C](iot-suite-v1-connecting-devices.md)
 ##### [Linux 上的 C](iot-suite-v1-connecting-devices-linux.md)
@@ -51,7 +48,7 @@
 ### [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ### [已连接的工厂解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 
-# 如何
+# 操作指南
 ## 远程监视
 ### [执行高级监视](iot-suite-remote-monitoring-monitor.md)
 ### [使用规则检测问题](iot-suite-remote-monitoring-automate.md)

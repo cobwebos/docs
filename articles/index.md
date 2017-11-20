@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: 787b7c5dde571ae4f17354981a58957b3111aa20
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 33fa9122eff29b15943c47b0c690cd3fe8244550
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -647,7 +647,7 @@ ms.lasthandoff: 11/15/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/luis/home">
+                                            <a href="/azure/cognitive-services/luis/">
                                                 <img src="media/index/API_Luis.svg" alt="" />
                                                 <p>语言理解智能服务 (LUIS)</p>
                                             </a>
@@ -1701,7 +1701,7 @@ ms.lasthandoff: 11/15/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/virtual-machines/windows/managed-disks-overview">
+                                <a href="/azure/virtual-machines/windows/about-disks-and-vhds">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2653,7 +2653,7 @@ ms.lasthandoff: 11/15/2017
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Bing_Spell_Check.svg" alt="" />必应拼写检查</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/luis/home"><img src="media/index/API_Luis.svg" alt="" /><span>语言理解智能服务 (LUIS)&nbsp;<sup style="font-size:70%">预览</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/luis/"><img src="media/index/API_Luis.svg" alt="" /><span>语言理解智能服务 (LUIS)&nbsp;<sup style="font-size:70%">预览</sup></span></a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="media/index/API_LinguisticAnalysis.svg" alt="" /><span>语言分析&nbsp;<sup style="font-size:70%">预览</sup></span></a>

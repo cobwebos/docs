@@ -248,12 +248,12 @@
 ## 管理目录
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### 自定义域名
-#### [概述](active-directory-domains-manage-azure-portal.md)
-#### [管理域名](active-directory-domains-manage-azure-portal.md)
+#### [快速入门](add-custom-domain.md)
+#### [添加自定义域名](active-directory-domains-manage-azure-portal.md)
 ### [管理目录](active-directory-administer.md)
 ### [多个目录](active-directory-licensing-directory-independence.md)
 ### [自助服务注册](active-directory-self-service-signup.md)
-#### [接管非托管目录](domains-admin-takeover.md)
+### [接管非托管目录](domains-admin-takeover.md)
 ### [企业状态漫游](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [启用](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [组策略设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)

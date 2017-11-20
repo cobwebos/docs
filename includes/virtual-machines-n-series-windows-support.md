@@ -4,8 +4,12 @@
 
 | 操作系统 | 驱动程序 |
 | -------- |------------- |
-| Windows Server 2016 | [370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
-| Windows Server 2012 R2 | [370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
+| Windows Server 2016 | [385.41](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
+| Windows Server 2012 R2 | [385.41](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
+
+> [!NOTE]
+> Microsoft 将重新分发适用于 NV VM 的 NVIDIA GRID 驱动程序安装程序。 在 Azure NV VM 上仅安装这些 GRID 驱动程序。 这些驱动程序包括 Azure 中 GRID 虚拟 GPU 软件的授权。
+>
 
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC 实例 - NVIDIA Tesla 驱动程序
 

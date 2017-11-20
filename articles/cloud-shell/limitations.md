@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell（预览版）限制 | Microsoft Docs"
+title: "Azure Cloud Shell 限制 | Microsoft Docs"
 description: "Azure Cloud Shell 的限制概述"
 services: azure
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: juluk
-ms.openlocfilehash: 66f07481d6e62b4375dd2752c5e7d6f8e02d4a3c
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: bd947af4cca0ed240ba5811d6a5cd06ff7fffc82
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -70,7 +70,7 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 ### <a name="slow-startup-time"></a>启动速度缓慢
 
-在预览期，Azure Cloud Shell 中的 PowerShell 最长可能需要 60 秒才能完成初始化。
+PowerShell in Azure Cloud Shell（预览版）最长可能需要 60 秒才能完成初始化。
 
 ### <a name="no-home-directory-persistence"></a>$Home 目录没有持久性
 

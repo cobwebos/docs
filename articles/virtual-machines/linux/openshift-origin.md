@@ -15,22 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 1a40c4cc064b32aced7e976f40f6ed6a57e62204
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1860ede19202566947b68b715e6bd354f64c1085
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>在 Azure 中部署 OpenShift Origin
 
-可通过多种方式在 Azure 中部署 OpenShift Origin。 可以手动部署所有必要的 Azure 基础结构组件，然后按照 OpenShift Origin [文档](https://docs.openshift.org/3.6/welcome/index.html)进行操作。
-也可使用现有的资源管理器模板，该模板可简化 OpenShift Origin 群集的部署。 此类模板位于[此处](https://github.com/Microsoft/openshift-origin)。
+可使用两种方式之一在 Azure 中部署 OpenShift Origin：
 
-## <a name="deploy-using-the-openshift-origin-template"></a>使用 OpenShift Origin 模板进行部署
+- 可以手动部署所有必要的 Azure 基础结构组件，然后按照 OpenShift Origin [文档](https://docs.openshift.org/3.6/welcome/index.html)进行操作。
+- 也可使用现有的[资源管理器模板](https://github.com/Microsoft/openshift-origin)，该模板可简化 OpenShift Origin 群集的部署。
 
-为 `aadClientId` 参数使用前面创建的服务主体中的 `appId` 值。
+## <a name="deploy-by-using-the-openshift-origin-template"></a>使用 OpenShift Origin 模板进行部署
 
-以下示例使用所有必需的输入创建一个名为 **azuredeploy.parameters.json** 的参数文件。
+对 `aadClientId` 参数使用前面创建的服务主体中的 `appId` 值。
+
+以下示例使用所有必需的输入创建一个名为 azuredeploy.parameters.json 的参数文件。
 
 ```json
 {
@@ -92,13 +94,13 @@ ms.lasthandoff: 10/25/2017
 }
 ```
 
-### <a name="deploy-using-azure-cli"></a>使用 Azure CLI 进行部署
+### <a name="deploy-by-using-azure-cli"></a>使用 Azure CLI 进行部署
 
 
 > [!NOTE] 
-> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 az CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-以下示例使用名为 myOpenShiftCluster 的部署将 OpenShift 群集和所有相关资源部署到名为 myResourceGroup 的资源组。 它直接从 github 存储库引用模板并使用名为 **azuredeploy.parameters.json** 的本地参数文件。
+以下示例使用名为 myOpenShiftCluster 的部署将 OpenShift 群集和所有相关资源部署到名为 myResourceGroup 的资源组。 它使用名为 azuredeploy.parameters.json 的本地参数文件直接从 GitHub 存储库引用模板。
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \

@@ -2,8 +2,6 @@
 title: "了解活动日志警报中使用的 webhook 架构 | Microsoft 文档"
 description: "了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。"
 author: johnkemnetz
-manager: orenr
-editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 
@@ -14,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 75c71bcd16573d4f4dd3377c623aa9b414aa3906
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0e301f58ec0b5a14254935d6c269cc8006f4eff
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -90,37 +88,46 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 ###<a name="servicehealth"></a>ServiceHealth
 ```json
 {
-    "schemaId": "unknown",
+    "schemaId": "Microsoft.Insights/activityLogs",
     "data": {
-        "status": "Activated",
-        "context": {
-            "activityLog": {
-                "properties": {
-                    "title": "...",
-                    "service": "...",
-                    "region": "...",
-                    "communication": "...",
-                    "incidentType": "Incident",
-                    "trackingId": "...",
-                    "groupId": "...",
-                    "impactStartTime": "3/29/2017 3:43:21 PM",
-                    "impactMitigationTime": "3/29/2017 3:43:21 PM",
-                    "eventCreationTime": "3/29/2017 3:43:21 PM",
-                    "impactedServices": "[{...}]",
-                    "defaultLanguageTitle": "...",
-                    "defaultLanguageContent": "...",
-                    "stage": "Active",
-                    "communicationId": "...",
-                    "version": "0.1"
-                }
-            }
+    "status": "Activated",
+    "context": {
+        "activityLog": {
+        "channels": "Admin",
+        "correlationId": "bbac944f-ddc0-4b4c-aa85-cc7dc5d5c1a6",
+        "description": "Active: Virtual Machines - Australia East",
+        "eventSource": "ServiceHealth",
+        "eventTimestamp": "2017-10-18T23:49:25.3736084+00:00",
+        "eventDataId": "6fa98c0f-334a-b066-1934-1a4b3d929856",
+        "level": "Informational",
+        "operationName": "Microsoft.ServiceHealth/incident/action",
+        "operationId": "bbac944f-ddc0-4b4c-aa85-cc7dc5d5c1a6",
+        "properties": {
+            "title": "Virtual Machines - Australia East",
+            "service": "Virtual Machines",
+            "region": "Australia East",
+            "communication": "Starting at 02:48 UTC on 18 Oct 2017 you have been identified as a customer using Virtual Machines in Australia East who may receive errors starting Dv2 Promo and DSv2 Promo Virtual Machines which are in a stopped &quot;deallocated&quot; or suspended state. Customers can still provision Dv1 and Dv2 series Virtual Machines or try deploying Virtual Machines in other regions, as a possible workaround. Engineers have identified a possible fix for the underlying cause, and are exploring implementation options. The next update will be provided as events warrant.",
+            "incidentType": "Incident",
+            "trackingId": "0NIH-U2O",
+            "impactStartTime": "2017-10-18T02:48:00.0000000Z",
+            "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"}],\"ServiceName\":\"Virtual Machines\"}]",
+            "defaultLanguageTitle": "Virtual Machines - Australia East",
+            "defaultLanguageContent": "Starting at 02:48 UTC on 18 Oct 2017 you have been identified as a customer using Virtual Machines in Australia East who may receive errors starting Dv2 Promo and DSv2 Promo Virtual Machines which are in a stopped &quot;deallocated&quot; or suspended state. Customers can still provision Dv1 and Dv2 series Virtual Machines or try deploying Virtual Machines in other regions, as a possible workaround. Engineers have identified a possible fix for the underlying cause, and are exploring implementation options. The next update will be provided as events warrant.",
+            "stage": "Active",
+            "communicationId": "636439673646212912",
+            "version": "0.1.1"
         },
-        "properties": {}
+        "status": "Active",
+        "subscriptionId": "45529734-0ed9-4895-a0df-44b59a5a07f9",
+        "submissionTimestamp": "2017-10-18T23:49:28.7864349+00:00"
+        }
+    },
+    "properties": {}
     }
 }
 ```
 
-有关服务运行状况通知活动日志警报的特定架构详细信息，请参阅[服务运行状况通知](monitoring-service-notifications.md)。
+有关服务运行状况通知活动日志警报的特定架构详细信息，请参阅[服务运行状况通知](monitoring-service-notifications.md)。 此外，请了解如何[使用现有的问题管理解决方案配置服务运行状况 Webhook 通知](../service-health/service-health-alert-webhook-guide.md)。
 
 有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](monitoring-overview-activity-logs.md)。
 

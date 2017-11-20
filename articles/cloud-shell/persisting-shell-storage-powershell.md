@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Cloud Shell（预览版）中持久保存文件 | Microsoft Docs"
+title: "在 PowerShell in Azure Cloud Shell（预览版）中持久保存文件 | Microsoft Docs"
 description: "演练 Azure Cloud Shell 如何持久保存文件。"
 services: azure
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: damaerte
-ms.openlocfilehash: 933af3860bfe087a0b4db7eff53d4b978a1475da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66d0e20d670e49cdfe64614d1fc6f5739fde6155
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-cloud-shell-works"></a>Cloud Shell 工作原理
-Cloud Shell 通过以下方法持久保存文件： 
+## <a name="how-powershell-in-azure-cloud-shell-preview-works"></a>PowerShell in Azure Cloud Shell（预览版）工作原理
+PowerShell in Cloud Shell（预览版）通过以下方法持久保存文件： 
 * 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。
 
 ## <a name="list-cloud-drive-file-shares"></a>列出云驱动器文件共享

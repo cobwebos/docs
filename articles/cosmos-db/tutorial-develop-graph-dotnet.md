@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: denlee
 ms.custom: mvc
-ms.openlocfilehash: b1419e5aad9446b9d96450cfad79b200cda9a518
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613956416d35687c5f2fe0123a9a59182390b440
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用图形 API 进行开发
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值，及图形数据库，它们均受益于 Azure Cosmos DB 最核心的全球分布和水平缩放功能。 
@@ -53,7 +53,6 @@ Gremlin 是功能性编程语言，支持写入操作 (DML) 与查询和遍历�
 
 > [!TIP]
 > * 已有一个 Azure Cosmos DB 帐户？ 如果有，请跳到[设置 Visual Studio 解决方案](#SetupVS)
-> * 是否具有 Azure DocumentDB 帐户？ 如果有，则该帐户现为 Azure Cosmos DB 帐户，可以直接跳到[设置 Visual Studio 解决方案](#SetupVS)。  
 > * 如果使用 Azure Cosmos DB Emulator，请遵循 [Azure Cosmos DB Emulator](local-emulator.md) 中的步骤设置该模拟器，并直接跳到[设置 Visual Studio 解决方案](#SetupVS)。 
 >
 > 
@@ -86,7 +85,7 @@ string authKey = ConfigurationManager.AppSettings["AuthKey"];
 
 从门户复制 URI，并将其粘贴到上述终结点属性中的 `Endpoint` 上。 然后从门户复制“PRIMARY KEY”并将其粘贴到上述 `AuthKey` 属性。 
 
-![教程用于创建 C# 应用程序的 Azure 门户的屏幕截图。 显示一个 Azure Cosmos DB 帐户，其中在 Azure Cosmos DB 导航中突出显示了“密钥”按钮，以及在密钥边栏选项卡上突出显示了 URI 和 PRIMARY KEY 值] [要点] 
+![教程用于创建 C# 应用程序的 Azure 门户的屏幕截图。 显示一个 Azure Cosmos DB 帐户，其中在 Azure Cosmos DB 导航中突出显示了“密钥”按钮，并在“密钥”边栏选项卡上突出显示了 URI 和 PRIMARY KEY 值](./media/tutorial-develop-graph-dotnet/keys.png) 
  
 ## <a id="instantiate"></a>实例化 DocumentClient 
 接下来，创建 DocumentClient 的新实例。  

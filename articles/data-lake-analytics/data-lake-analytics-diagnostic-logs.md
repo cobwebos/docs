@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 11/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
 
@@ -36,11 +36,9 @@ ms.lasthandoff: 10/11/2017
 
     ![打开诊断以收集审核和请求日志](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. 从“诊断设置”中，将状态设置为“开启”并选择日志记录选项。
+3. 在“诊断设置”中，输入此日志记录配置的__名称__，然后选择日志记录选项。
 
     ![打开诊断以收集审核和请求日志](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "启用诊断日志")
-
-   * 将“状态”设置为“开启”，启用诊断日志记录。
 
    * 可选择以三种不同的方式存储/处理数据。
 
@@ -58,34 +56,14 @@ ms.lasthandoff: 10/11/2017
         > [!NOTE]
         > 单击“保存”按钮之前，必须选择“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 
-启用诊断设置后，可返回到“诊断日志”边栏选项卡查看日志。
-
-## <a name="view-logs"></a>查看日志
-
-### <a name="use-the-data-lake-analytics-view"></a>使用 Data Lake Analytics 视图
-
-1. 从 Data Lake Analytics 帐户边栏选项卡中的“监视”下，选择“诊断日志”，然后选择要显示日志的条目。
-
-    ![查看诊断日志记录](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "查看诊断日志记录")
-
-2. 日志按“审核日志”和“请求日志”分类。
-
-    ![日志条目](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
-
-   * 请求日志捕获 Data Lake Analytics 帐户上作出的每个 API 请求。
-   * 审核日志类似于请求日志，但提供操作的更详细分解。 例如，请求日志中的单个上传 API 调用可能会导致其审核日志中有多个“追加​​”操作。
-
-3. 单击日志条目的“下载”链接下载该日志。
-
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>使用包含日志数据的 Azure 存储帐户
 
-1. 打开与日志记录的 Data Lake Analytics 关联的 Azure 存储帐户边栏选项卡，并单击“Blob”。 “Blob 服务”边栏选项卡上会列出两个容器。
-
-    ![查看诊断日志记录](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志记录")
+1. 若要显示用于保存日志记录数据的 blob 容器，请打开 Data Lake Analytics 用于日志记录的 Azure 存储帐户，然后单击“Blob”。
 
    * 容器 **insights-logs-audit** 包含审核日志。
    * 容器 **insights-logs-requests** 包含请求日志。
-2. 在这些容器中，日志存储在以下结构下：
+
+2. 在这些容器中，日志存储在以下文件结构下：
 
         resourceId=/
           SUBSCRIPTIONS/

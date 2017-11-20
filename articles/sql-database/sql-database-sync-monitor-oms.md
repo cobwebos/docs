@@ -8,13 +8,13 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: e1099d2cd7eeccbe76d762028a0c5d5f95f53026
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="monitor-azure-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版） 
+# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 SQL 数据同步（预览版） 
 
 若要检查 SQL 数据同步活动日志并检测错误和警告，以前必须在 Azure 门户手动检查 SQL 数据同步，或者使用 PowerShell 或 REST API。 请按照本文中的步骤配置自定义解决方案，以便改进数据同步监控体验。 可以自定义该解决方案以适合你的方案。
 
@@ -24,19 +24,19 @@ ms.lasthandoff: 11/09/2017
 
 再也无需单独仔细查看每个同步组的日志就能查找问题。 通过使用自定义的 OMS (Operations Management Suite) 视图，你可以在一个位置监控任何订阅中的所有同步组。 此视图显示对 SQL 数据同步客户很重要的信息。
 
-![数据同步监控仪表板](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.jpg)
+![数据同步监控仪表板](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>自动电子邮件通知
 
-无需在 Azure 门户中手动或通过 PowerShell、REST API 检查日志。 你可以利用 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 创建警报，以便在发生错误时直接转到需要查看的电子邮件地址。
+不再需要在 Azure 门户中手动或通过 PowerShell、REST API 检查日志。 使用 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 可以创建这样的警报：在发生错误时直接发送到需要查看警报的人员的电子邮件地址。
 
-![数据同步电子邮件通知](media/sql-database-sync-monitor-oms/sync-email-notifications.jpg)
+![数据同步电子邮件通知](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
-## <a name="how-do-you-set-this-up"></a>如何设置该通知？ 
+## <a name="how-do-you-set-up-these-monitoring-features"></a>如何设置这些监视功能？ 
 
-通过执行以下操作，即可在不到一小时内为 SQL 数据同步实施自定义 OMS 监控解决方案。
+通过执行以下操作，即可在不到一小时的时间内为 SQL 数据同步实施自定义 OMS 监控解决方案：
 
-你将需要配置 3 个组件：
+需要配置三个组件：
 
 -   将 SQL 数据同步日志数据输送到 OMS 的 PowerShell runbook。
 
@@ -76,11 +76,11 @@ ms.lasthandoff: 11/09/2017
 
 4.  在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择“创建”。 现在你拥有了一个 runbook。
+5.  选择“创建” 。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的“变量”选项卡。
 
-7.  在“变量”页上，选择“添加变量”。 我们需要创建一个变量来存储 runbook 的上次执行时间。 如果你有多个 runbook，则每个 runbook 都需要一个变量。
+7.  在“变量”页上，选择“添加变量”。 创建一个变量来存储 runbook 的上次执行时间。 如果你有多个 runbook，则每个 runbook 都需要一个变量。
 
 8.  该变量名称设置为 `DataSyncLogLastUpdatedTime`，并将其类型设置为 DateTime。
 
@@ -92,11 +92,11 @@ ms.lasthandoff: 11/09/2017
 
     2.  同步组信息。
 
-    3.  OMS 信息。 在 OMS 门户查找此信息 |设置 |连接的源。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)。
+    3.  OMS 信息。 在 OMS 门户查找此信息 |设置 |连接的源。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
 
 11. 在“测试”窗格中运行 runbook。 检查以确保它已运行成功。
 
-    如果遇到错误，请确保已安装最新的PowerShell 模块。 你可以在自动化帐户的“模块库”中执行此操作。
+    如果遇到错误，请确保已安装最新的PowerShell 模块。 可以将**模块库**中的最新 PowerShell 模块安装到自动化帐户中。
 
 12. 单击“发布”。
 
@@ -114,11 +114,11 @@ ms.lasthandoff: 11/09/2017
 
 5.  将“定期”设置为“重复执行”，并设置所需间隔。 在脚本和 OMS 中，请在此处使用相同的间隔。
 
-6.  选择“创建”。
+6.  选择“创建” 。
 
 ### <a name="check-the-automation"></a>检查自动化
 
-若要监控你的自动化设置是否在按预期方式运行，请在自动化帐户的“概述”下，查找“监控”下的“作业统计信息”视图。 将此项固定到仪表板以便于查看。 成功运行的 runbook 显示为“已完成”，失败的运行显示为“失败”。
+若要监控你的自动化设置是否在按预期方式运行，请在自动化帐户的“概述”下，查找“监控”下的“作业统计信息”视图。 将此视图固定到仪表板以便于查看。 成功运行的 runbook 显示为“已完成”，失败的运行显示为“失败”。
 
 ## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>创建 OMS Log Reader 电子邮件通知警报
 
@@ -136,11 +136,11 @@ ms.lasthandoff: 11/09/2017
 
     1.  将聚合值设置为“大于”。
 
-    2.  在“大于”后，输入接收通知之前等待的阈值。 在数据同步中可能会出现暂时性的错误。建议将该阈值设置为 5，以减少干扰。
+    2.  在“大于”后，输入接收通知之前等待的阈值。 在数据同步中可能会出现暂时性的错误。若要减少干扰，请将阈值设置为 5。
 
 5.  在“操作”下，将“电子邮件通知”设置为“是”。 输入所需的电子邮件收件人。
 
-6.  单击“保存”。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
+6.  单击“保存” 。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
 
 ## <a name="create-an-oms-view-for-monitoring"></a>创建要监控的 OMS 视图。
 
@@ -168,7 +168,7 @@ ms.lasthandoff: 11/09/2017
 
         2.  在每个同步组的磁贴上，更新同步组名称。
 
-    3.  在每个磁贴上，请根据需要更新磁贴。
+    3.  在每个磁贴上，根据需要更新磁贴。
 
 4.  单击“保存”，视图即已准备就绪。
 
@@ -192,7 +192,8 @@ OMS 日志分析：可能会有与 OMS 相关的成本，具体要取决于你�
 有关 SQL 数据同步的详细信息，请参阅：
 
 -   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
--   [Azure SQL 数据同步入门](sql-database-get-started-sql-data-sync.md)
+-   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL 数据同步最佳实践](sql-database-best-practices-data-sync.md)
 -   [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：

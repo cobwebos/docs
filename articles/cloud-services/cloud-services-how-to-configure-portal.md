@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
-ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 409b3bb26648ef1b811dfaaf37690c8220046729
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
-> [!div class="op_single_selector"]
-> * [Azure 门户](cloud-services-how-to-configure-portal.md)
-> * [Azure 经典门户](cloud-services-how-to-configure.md)
->
->
-
 可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
 
 还可以管理云服务角色的实例，或者通过远程桌面进入这些角色中。
@@ -77,9 +71,9 @@ ms.lasthandoff: 10/11/2017
 可以在此处自定义用于磁贴的图表，也可以添加警报规则。
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>重新启动、重置映像或远程桌面
-此时无法使用 **Azure 门户**配置远程桌面。 不过，可以通过 [Azure 经典门户](cloud-services-role-enable-remote-desktop.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) 或 [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) 对其进行设置。
+可以通过 [Azure 门户(设置远程桌面)](cloud-services-role-enable-remote-desktop-new-portal.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) 或通过 [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) 设置远程桌面。
 
-首先，单击云服务实例
+若要重新启动、重置映像或远程登录到云服务，请单击云服务实例。
 
 ![云服务实例](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/22/2017
-ms.author: jonatul
-ms.openlocfilehash: 9d786ce4d06ec95a647a755bed51f824e72ad04c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/06/2017
+ms.author: subsarma
+ms.openlocfilehash: 1a2a23fb5de5b5b491f061512a15f7acb6721446
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 我们使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答。 这为域提供更快的性能和高可用性。
 
-Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用 Resource Manager 功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
+Azure DNS 服务基于 Azure 资源管理器。 因此，它可以利用 Resource Manager 功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS 的费用是多少？
 
@@ -132,13 +132,17 @@ Azure DNS 仅支持托管“静态”DNS 域，其中对某给定的 DNS 记录�
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>如何保护我的 DNS 区域不被意外删除？
 
-Azure DNS 由 Azure Resource Manager 托管，且受益于 Azure Resource Manager 的访问控制功能。 通过基于角色的访问控制，可控制哪些用户具有对 DNS 区域和记录集的读取权限或写权限。 可使用资源锁防止意外修改，或防止删除 DNS 区域和记录集。
+Azure DNS 由 Azure 资源管理器管理，且受益于 Azure 资源管理器的访问控制功能。 通过基于角色的访问控制，可控制哪些用户具有对 DNS 区域和记录集的读取权限或写权限。 可使用资源锁防止意外修改，或防止删除 DNS 区域和记录集。
 
 有关详细信息，请参阅[保护 DNS 区域和记录](dns-protect-zones-recordsets.md)。
 
 ### <a name="how-do-i-set-up-spf-records-in-azure-dns"></a>如何在 Azure DNS 中设置 SPF 记录？
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
+
+### <a name="do-azure-dns-nameservers-resolve-over-ipv6-"></a>Azure DNS 名称服务器是否通过 IPv6 解析？ 
+
+是的。 Azure DNS 名称服务器是双堆栈（同时具有 IPv4 和 IPv6 地址）。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，可以使用 nslookup 等工具（例如，`nslookup -q=aaaa <Azure DNS Nameserver>`）。
 
 ### <a name="how-do-i-set-up-an-international-domain-name-idn-in-azure-dns"></a>如何在 Azure DNS 中设置国际域名 (IDN)？
 

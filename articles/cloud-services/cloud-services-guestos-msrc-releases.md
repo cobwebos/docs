@@ -12,16 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 11/8/2017
 ms.author: raiye
-ms.openlocfilehash: b728e794132ab8eb91d5d77b3ed452f0c84b8823
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f753a30fa833aaf19069b01607c8beaadcc667f5
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="october-guest-os"></a>10 月来宾 OS
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 17-10 | [4041691] |Windows 10 更新 |5.12 |2017 年 10 月 10 日 |
+| Rel 17-10 | [4041678], [4041679], [4041687] |仅 Windows 安全性 |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
+| Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
+| Rel 17-10 | [4041681], [4041690], [4041693] |Windows 每月汇总 |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
+| 不适用 | [4038777] |9 月非安全性汇总 |2.67 |2017 年 9 月 12 日 |
+| 不适用 | [4038799] |9 月非安全性汇总 |3.54 |2017 年 9 月 12 日 |
+| 不适用 | [4038792] |9 月非安全性汇总 |4.47 |2017 年 9 月 12 日 |
+| 不适用 | [4040980] |9 月 .NET 非安全性汇总 |2.67 |2017 年 9 月 12 日 |
+| 不适用 | [4040979] |9 月 .NET 非安全性汇总 |3.54 |2017 年 9 月 12 日 |
+| 不适用 | [4040981] |9 月 .NET 非安全性汇总 |4.47 |2017 年 9 月 12 日 |
 
 ## <a name="september-guest-os"></a>9 月来宾 OS
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -535,6 +549,20 @@ ms.lasthandoff: 10/11/2017
 | 不适用 |[2999802] |在 Windows 中打印时，虚线变成实线 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 不适用 |[2896881] |在 Windows 中登录期间使用 AddPrinterConnection VBScript 命令映射用户的打印机时，登录时间过长 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
+[4041691]: http://support.microsoft.com/kb/4041691 
+[4041678]: http://support.microsoft.com/kb/4041678 
+[4041679]: http://support.microsoft.com/kb/4041679
+[4041687]: http://support.microsoft.com/kb/4041687
+[4040685]: http://support.microsoft.com/kb/4040685
+[4041681]: http://support.microsoft.com/kb/4041681
+[4041690]: http://support.microsoft.com/kb/4041690
+[4041693]: http://support.microsoft.com/kb/4041693
+[4038777]: http://support.microsoft.com/kb/4038777
+[4038799]: http://support.microsoft.com/kb/4038799
+[4038792]: http://support.microsoft.com/kb/4038792
+[4040980]: http://support.microsoft.com/kb/4040980
+[4040979]: http://support.microsoft.com/kb/4040979
+[4040981]: http://support.microsoft.com/kb/4040981
 
 [4038782]: http://support.microsoft.com/kb/4038782
 [4038779]: http://support.microsoft.com/kb/4038779

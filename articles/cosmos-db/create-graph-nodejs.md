@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
-ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 361f63141a8bf3f901eee6c93742f1a7fdc4348f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 Node.js 应用程序
 
@@ -75,9 +75,23 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
         });
     ```
 
-  配置均位于 `config.js` 中，后者可以在以下部分编辑。
+  配置均位于 `config.js` 中，后者可在[以下部分](#update-your-connection-string)中编辑。
 
-* 将使用 `client.execute` 方法执行一系列 Gremlin 步骤。
+* 将定义一系列函数以执行不同 Gremlin 操作。 以下是其中一个函数：
+
+    ```nodejs
+    function addVertex1(callback)
+    {
+        console.log('Running Add Vertex1'); 
+        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
+          if (err) callback(console.error(err));
+          console.log("Result: %s\n", JSON.stringify(results));
+          callback(null)
+        });
+    }
+    ```
+
+* 每个函数均通过 Gremlin 查询字符串参数执行 `client.execute` 方法。 下面是演示如何执行 `g.V().count()` 的示例：
 
     ```nodejs
     console.log('Running Count'); 
@@ -88,11 +102,28 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
     });
     ```
 
+* 然后在文件末尾，使用 `async.waterfall()` 方法调用所有方法。 这将依次执行它们：
+
+    ```nodejs
+    try{
+        async.waterfall([
+            dropGraph,
+            addVertex1,
+            addVertex2,
+            addEdge,
+            countVertices
+            ], finish);
+    } catch(err) {
+        console.log(err)
+    }
+    ```
+
+
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
 1. 打开 config.js 文件。 
 
-2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 config.endpoint 密钥。 
+2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。 
 
     `config.endpoint = "GRAPHENDPOINT";`
 

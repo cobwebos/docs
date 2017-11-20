@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/02/2017
+ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 11/04/2017
 Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更新，以及磁盘固件更新。  设备软件、Spaceport、Storport、安全更新和其他 OS 更新是非中断性更新。 可通过 Azure 门户或修补程序方法应用非中断性更新或常规更新。 磁盘固件更新为中断性更新，在设备处于维护模式时，使用设备的 Windows PowerShell 接口通过修补程序方法进行应用。
 
 > [!IMPORTANT]
+> * Update 5 是必需的更新，应立即安装。 有关详细信息，请参阅 [Update 5 发行说明](storsimple-update5-release-notes.md)。
 > * 在安装之前需进行一组手动的和自动的预检查，以便确定设备在硬件状态和网络连接性方面的运行状况。 仅当用户从 Azure 门户应用更新时，才会执行这些预检查。
 > * 如果要更新的设备运行的版本低于 Update 3，强烈建议使用修补程序方法安装更新。 如果遇到任何问题，请[记录支持票证](storsimple-8000-contact-microsoft-support.md)。
 > * 建议通过 Azure 门户安装软件更新和其他常规更新。 如果在门户中进行预更新网关检查失败，则只能转到设备的 Windows PowerShell 接口安装更新。 根据需从其进行更新的版本，安装更新可能需要 4 个小时（或更长时间）。 维护模式更新必须通过设备的 Windows PowerShell 接口进行安装。 由于维护模式更新为中断性更新，因此会导致设备停机。

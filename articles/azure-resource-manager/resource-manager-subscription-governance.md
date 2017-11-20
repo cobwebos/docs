@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5950bad397e4b0f08f998ea6756e3c258e84b63e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure 企业基架 - 出于合规目的监管订阅
 为了敏捷性和灵活性，企业越来越多地采用公有云。 它们利用云的优势来产生营收或优化企业资源。 Microsoft Azure 提供多种不同的服务，企业可以像构建块一样将它们组合，解决广泛的工作负荷与应用程序需求。 
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 ![基架组件](./media/resource-manager-subscription-governance/components.png)
 
 > [!NOTE]
-> Azure 自 2008 年推出以来不断快速发展。 这种发展要求 Microsoft 工程团队反复思考服务的管理和部署方式。 Azure Resource Manager 模型在 2014 年推出，现已取代经典部署模型。 组织可以使用 Resource Manager 更轻松地部署、管理和控制 Azure 资源。 Resource Manager 在创建资源时允许并行化，可以更快部署复杂、相互依赖的解决方案。 它还包括精细访问控制，能够使用元数据标记资源。 Microsoft 建议通过 Resource Manager 模型创建所有资源。 企业基架是专门针对 Resource Manager 模型设计的。
+> Azure 自 2008 年推出以来不断快速发展。 这种发展要求 Microsoft 工程团队反复思考服务的管理和部署方式。 Azure 资源管理器模型在 2014 年推出，现已取代经典部署模型。 组织可以使用 Resource Manager 更轻松地部署、管理和控制 Azure 资源。 Resource Manager 在创建资源时允许并行化，可以更快部署复杂、相互依赖的解决方案。 它还包括精细访问控制，能够使用元数据标记资源。 Microsoft 建议通过 Resource Manager 模型创建所有资源。 企业基架是专门针对 Resource Manager 模型设计的。
 > 
 > 
 
@@ -84,12 +84,12 @@ Azure 注册的三种常见模式为：
 > 关于命名约定：
 > * 如果可能，请审阅并采纳[模式与实践指南](../guidance/guidance-naming-conventions.md)。 可以借助此指南来确定一套有意义的命名标准。
 > * 对资源名称使用骆驼拼写法（例如，myResourceGroup 和 vnetNetworkName）。 注意：某些资源，例如存储帐户，只允许使用小写字母（不能包括其他特殊字符）。
-> * 考虑使用 Azure Resource Manager 策略（下一部分会介绍）强制实施命名标准。
+> * 考虑使用 Azure 资源管理器策略（下一部分会介绍）强制实施命名标准。
 > 
 > 前面的提示可帮助实现一致的命名约定。
 
 ## <a name="policies-and-auditing"></a>策略和审核
-基架的第二个支柱涉及到创建 [Azure Resource Manager 策略](resource-manager-policy.md)和[审核活动日志](resource-group-audit.md)。 使用 Resource Manager 可以控制 Azure 中的风险。 可以定义策略，通过限制、强制实施或审核特定的操作来确保数据所有权。 
+基架的第二个支柱涉及到创建 [Azure 策略](../azure-policy/azure-policy-introduction.md)和[审核活动日志](resource-group-audit.md)。 使用 Resource Manager 可以控制 Azure 中的风险。 可以定义策略，通过限制、强制实施或审核特定的操作来确保数据所有权。 
 
 * 策略是默认的**允许**系统。 通过针对资源定义并分配策略以便拒绝或审核针对资源执行的操作，来控制这些操作。
 * 策略由策略定义（采用某种策略定义语言，if-then 条件）描述。
@@ -102,11 +102,11 @@ Azure 注册的三种常见模式为：
 * **追加**：将指定的信息添加到资源。 例如，如果某个资源没有“CostCenter”标记，则添加该标记并使用默认值。
 
 ### <a name="common-uses-of-resource-manager-policies"></a>Resource Manager 策略的常见用途
-Azure Resource Manager 策略是 Azure 工具包中的一个强大工具。 使用这些策略可以避免意外的成本，通过标记识别资源的成本中心，以及确保满足法规要求。 将策略与内置审核功能相结合，可以创建复杂而灵活的解决方案。 策略允许公司针对“传统 IT”工作负荷和“敏捷”工作负荷（例如，开发客户应用程序）提供控制。 策略的最常见模式包括：
+Azure 资源管理器策略是 Azure 工具包中的一个强大工具。 使用这些策略可以避免意外的成本，通过标记识别资源的成本中心，以及确保满足法规要求。 将策略与内置审核功能相结合，可以创建复杂而灵活的解决方案。 策略允许公司针对“传统 IT”工作负荷和“敏捷”工作负荷（例如，开发客户应用程序）提供控制。 策略的最常见模式包括：
 
 * **地域法规遵从/数据所有权** - Azure 在全球各区域运营。 企业总是希望能够控制创建资源的位置（不管是为了确保数据所有权，还是只为了确保在靠近最终使用者的位置创建资源）。
 * **成本管理** - 一个 Azure 订阅可以包含多种类型和规模的资源。 公司总是希望标准订阅能够避免不必要地使用大型资源，否则每月需要损耗数百美元甚至更多。
-* **通过必需标记进行默认监管** - 要求使用标记，是最常见的且客户最想要的功能之一。 使用 Azure Resource Manager 策略，企业可以确保适当地标记资源。 最常见的标记包括：部门、资源所有者和环境类型（例如生产、测试、开发）
+* **通过必需标记进行默认监管** - 要求使用标记，是最常见的且客户最想要的功能之一。 使用 Azure 资源管理器策略，企业可以确保适当地标记资源。 最常见的标记包括：部门、资源所有者和环境类型（例如生产、测试、开发）
 
 **示例**
 

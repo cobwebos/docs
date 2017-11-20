@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 57f17c201cd50933517ee02b2bbbe7d6aceff9b2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6886d1239fa074a6316b243e574833f5554ac298
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -67,8 +67,8 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="faq"></a>常见问题
 
-* 所以你们会查看我的数据？
-  * 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
+* *那么，Microsoft 员工会查看我的数据？*
+  * 不能。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](app-insights-data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 

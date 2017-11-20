@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: na
 ms.date: 09/28/2017
 ms.author: markscu
-ms.openlocfilehash: 541086d4b2f0c52f9e03c3993311705b7475e9a6
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: b9e5181baedba7cc4783553221521f5b08a7bc4d
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -71,7 +71,7 @@ Azure Batch 提供多种功能来方便你使用低优先级 VM 并从中受益�
 
 -   当任务被中断时，Batch 将检测并自动请求任务以再次运行。
 
--   低优先级 VM 具有不同于专用 VM 的单独核心配额。 
+-   低优先级 VM 具有不同于专用 VM 的单独 vCPU 配额。 
     因为低优先级 VM 成本更低，因此，低优先级 VM 的配额高于专用 VM 的配额。 有关详细信息，请参阅 [Batch 服务的配额和限制](batch-quota-limit.md#resource-quotas)。    
 
 
@@ -155,12 +155,12 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 -   可对任务应用程序使用一个[环境变量](batch-compute-node-environment-variables.md)，使该应用程序能够确定它是在低优先级节点还是专用节点上运行。 该环境变量为 AZ_BATCH_NODE_IS_DEDICATED。
 
-## <a name="handling-preemption"></a>处理占用
+## <a name="handling-preemption"></a>处理取代
 
 VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作：
 
--   将已占用的 VM 的状态更新为“已占用”。
--   如果已占用的节点 VM 上有运行中的任务，这些任务将重新排队并重新运行。
+-   将已取代的 VM 的状态更新为“已取代”。
+-   如果已取代的节点 VM 上有运行中的任务，这些任务将重新排队并重新运行。
 -   VM 被实际删除，导致 VM 本地存储的所有数据丢失。
 -   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”和“正在启动”状态，然后可供任务计划使用。
 -   Azure 门户以指标形式提供取代计数。

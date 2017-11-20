@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 597d8e12377ca19b0c58eb2fc8bdb7597c1c6c07
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>管理 Azure 虚拟机备份
 > [!div class="op_single_selector"]
@@ -27,15 +27,15 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
-本文指导管理 VM 备份，并说明门户仪表板中提供的备份警报信息。 本文中的指导的适用范围是将 VM 用于恢复服务保管库。 本文不介绍如何创建虚拟机，也不说明如何保护虚拟机。 如需在 Azure 中使用恢复服务保管库保护 Azure Resource Manager 部署型 VM 的入门指导，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。
+本文指导管理 VM 备份，并说明门户仪表板中提供的备份警报信息。 本文中的指导的适用范围是将 VM 用于恢复服务保管库。 本文不介绍如何创建虚拟机，也不说明如何保护虚拟机。 如需在 Azure 中使用恢复服务保管库保护 Azure 资源管理器部署型 VM 的入门指导，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。
 
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>管理保管库和受保护的虚拟机
 在 Azure 门户中，恢复服务保管库仪表板可用于访问有关保管库的信息，包括：
 
-* 最新备份快照，即最新还原点 <br\>
-* 备份策略 <br\>
-* 所有备份快照的总大小 <br\>
-* 通过保管库进行保护的虚拟机的数目 <br\>
+* 最新备份快照，即最新还原点
+* 备份策略
+* 所有备份快照的总大小
+* 使用保管库保护的虚拟机的数目
 
 进行虚拟机备份时，许多管理任务一开始都是在仪表板中打开保管库。 但是，由于保管库可用来保护多个项（或多个 VM），因此若要查看特定 VM 的详细信息，请打开保管库项仪表板。 以下过程演示了如何先打开*保管库仪表板*，再继续打开*保管库项仪表板*。 两个过程都提供了“提示”，指出如何使用“固定到仪表板”命令将保管库和保管库项添加到 Azure 仪表板。 可以使用“固定到仪表板”来创建保管库或项目的快捷方式。 也可以通过快捷方式执行常用命令。
 
@@ -50,11 +50,11 @@ ms.lasthandoff: 10/11/2017
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“中心”菜单中，单击“**浏览**”，并在资源列表中，键入“**恢复服务**”。 开始键入时，会根据输入筛选该列表。 单击“**恢复服务保管库**”。
 
-    ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
+    ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
     此时会显示恢复服务保管库列表。
 
-    ![恢复服务保管库列表 ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
+    ![恢复服务保管库列表 ](./media/backup-azure-manage-vms/list-o-vaults.png)
 
    > [!TIP]
    > 如果将保管库固定到 Azure 仪表板，则打开 Azure 门户即可访问该保管库。 要将某个保管库固定到仪表板，可在保管库列表中，右键单击该保管库，然后选择“**固定到仪表板**”。
@@ -89,13 +89,13 @@ ms.lasthandoff: 10/11/2017
 
     在保管库项仪表板中，可以完成许多关键性的管理任务，例如：
 
-   * 更改策略或创建新的备份策略<br\>
-   * 查看还原点及其一致性状态 <br\>
-   * 虚拟机的按需备份 <br\>
-   * 停止保护虚拟机 <br\>
-   * 恢复对虚拟机的保护 <br\>
-   * 删除备份数据（或恢复点）<br\>
-   * [还原备份磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)  <br\>
+   * 更改策略或创建新的备份策略
+   * 查看还原点及其一致性状态
+   * 虚拟机的按需备份
+   * 停止保护虚拟机
+   * 恢复对虚拟机的保护
+   * 删除备份数据（或恢复点）
+   * [还原备份磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)
 
 以下过程的起点是保管库项仪表板。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 10/11/2017
     ![备份策略边栏选项卡](./media/backup-azure-manage-vms/backup-policy-blade.png)
 3. 在“**选择备份策略**”菜单中执行以下操作：
 
-   * 要更改策略，请选择其他策略，并单击“**保存**”。 新策略将立即应用于保管库。 <br\>
+   * 要更改策略，请选择其他策略，并单击“**保存**”。 新策略将立即应用于保管库。
    * 若要创建策略，请选择“**新建**”。
 
      ![虚拟机备份](./media/backup-azure-manage-vms/backup-policy-create-new.png)
@@ -148,7 +148,7 @@ ms.lasthandoff: 10/11/2017
 如果选择停止保护虚拟机，系统会询问你是否需要保留恢复点。 可以通过两种方法来停止保护虚拟机：
 
 * 停止所有将来的备份作业并删除所有恢复点，或
-* 停止所有将来的备份作业，但保留恢复点 <br/>
+* 停止所有将来的备份作业，但保留恢复点
 
 将恢复点保留在存储空间中需支付相关费用。 不过，保留恢复点的好处是，可以根据需要在以后还原虚拟机。 如需了解保留恢复点的成本，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/backup/)。 如果选择删除所有恢复点，则无法还原虚拟机。
 

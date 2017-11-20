@@ -2,6 +2,7 @@
 
 ## 概述
 ### [什么是解决方案？](storsimple-ova-overview.md)
+### [上市区域](storsimple-regions.md)
 
 ## 入门
 ### 计划
@@ -59,6 +60,7 @@
 ### [什么是解决方案？](storsimple-overview.md)
 ### [StorSimple 学习路线图](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [安全注意事项](storsimple-8000-security.md)
+### [上市区域](storsimple-regions.md)
 ### [常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)
 
 ## 入门

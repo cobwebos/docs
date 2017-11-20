@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5b3d1b9e0d176f29fbcc90410f1fe80085ec5fa8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/01/2017
 创建新的 Application Insights 资源时，基本计划是默认的计划，满足大多数客户的要求。
 
 * 在基本计划中，将按数据量（Application Insights 收到的遥测数据的字节数）对用户收费。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。
-对于[导入到 Analytics 中的表格数据](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import)，按发送到 Application Insights 的文件的未压缩大小来度量数据量。  
+对于[导入到 Analytics 中的表格数据](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)，按发送到 Application Insights 的文件的未压缩大小来度量数据量。  
 * 每个应用的头 1 GB 免费，因此，如果只是进行试验或开发，可能不需付费。
 * 定价未考虑[实时指标流](app-insights-live-stream.md)数据。
 * 已推出[连续导出](app-insights-export-telemetry.md)，在使用基本计划时需额外付费（按 GB）。
@@ -110,7 +110,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 发送数据时存在三种数量限值：
 
 * **采样：**可以使用此机制减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 这是你拥有的调整数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
-* **每日上限：**从 Azure 门户创建 Application Insights 资源时，此项设置为 500 GB/天。 从 Visual Studio 创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天），仅为了便于测试。 在这种情况下，可预期用户在将应用部署到生产环境之前，会提高每日上限。 除非为高流量应用程序请求了更高的最大值，否则最大上限是 500 GB/天。 设置每日上限时要格外小心，因为意图应是**永远不达到每日上限**，因为达到了会在当天的剩余时间内丢失数据，并且无法监视应用程序。 若要更改它，请使用从“数据量管理”边栏选项卡链接的“每日数据量上限”边栏选项卡（参见下文）。 请注意，某些订阅类型具有无法用于 Application Insights 的信用额度。 如果订阅有支出限制，“每日上限”边栏选项卡将提供如何去除此限制，并使每日上限提高到超过 32.3 MB/天的说明。  
+* **每日上限：**从 Azure 门户创建 Application Insights 资源时，此项设置为 100 GB/天。 从 Visual Studio 创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天），仅为了便于测试。 在这种情况下，可预期用户在将应用部署到生产环境之前，会提高每日上限。 除非为高流量应用程序请求了更高的最大值，否则最大上限是 1000 GB/天。 设置每日上限时要格外小心，因为意图应是**永远不达到每日上限**，因为达到了会在当天的剩余时间内丢失数据，并且无法监视应用程序。 若要更改它，请使用从“数据量管理”边栏选项卡链接的“每日数据量上限”边栏选项卡（参见下文）。 请注意，某些订阅类型具有无法用于 Application Insights 的信用额度。 如果订阅有支出限制，“每日上限”边栏选项卡将提供如何去除此限制，并使每日上限提高到超过 32.3 MB/天的说明。  
 * **限制**：此项将数据速率限制为每秒 32000 个事件，取 1 分钟的平均值。 
 
 

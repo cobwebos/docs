@@ -14,27 +14,24 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90aec90edcbbfb7833efd85752afc8f1937f5b5a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="approvals-preview"></a>审批（预览版）
+# <a name="approvals"></a>审批
 
 ## <a name="overview"></a>概述
 
 利用 Privileged Identity Management 的审批，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 继续阅读，了解如何配置角色和选择审批者。
 
->[!NOTE]
-请注意，此功能仍处于开发阶段，可能会遇到 bug。 此功能（包括文本和命名约定）可能有所更改，不应将其视为最终版本。
 
-
-## <a name="key-terminology"></a>关键术语
+## <a name="new-terminology"></a>新术语
 
 有资格的角色用户 – 有资格的角色用户是指组织内已分配到 Azure AD 角色的有资格用户（角色需要激活）。
 
-委派的审批者 – 委派的审批者是 Azure AD 内负责审批角色激活请求的一个或多个用户或组。
+*委派的审批者* - 委托的审批者是 Azure AD 内负责审批角色激活请求的一个或多个用户或组。
 
 ## <a name="scenarios"></a>方案
 

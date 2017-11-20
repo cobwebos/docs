@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: panarasi
-ms.openlocfilehash: 9e14e95793bcc81ad46783fd50ba223eec4ea360
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81c731f560ed9cdc56416076cd44cba504fa614d
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
-1. 在 [Azure 门户]中，选择应用服务。
+1. 在 [Azure 门户][8]中，选择应用服务。
 
 2. 单击“身份验证/授权”菜单选项。
 
@@ -166,9 +166,9 @@ ms.lasthandoff: 10/11/2017
 
     如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-6. 在 AndroidManifest.xml 的 <application> 节点中添加以下代码：
+6. 在 `<application>` 元素内添加以下 XML，更新 **AndroidManifest.xml** 文件：
 
-```xml
+    ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
@@ -177,15 +177,15 @@ ms.lasthandoff: 10/11/2017
         <data android:scheme="{url_scheme_of_your_app}" android:host="easyauth.callback" />
       </intent-filter>
     </activity>
-```
-
-1. 调用 `LoadApplication()` 之前，向 **MainActivity** 类的 **OnCreate** 方法添加以下代码：
+    ```
+    将 `{url_scheme_of_your_app}` 替换为 URL 方案。
+7. 调用 `LoadApplication()` 之前，向 **MainActivity** 类的 **OnCreate** 方法添加以下代码：
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
 
     此代码可确保验证器在应用加载前进行初始化。
-2. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
+8. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
 ## <a name="add-authentication-to-the-ios-app"></a>向 iOS 应用添加身份验证
 本部分演示如何在 iOS 应用项目中实现 **IAuthenticate** 接口。 如果不要支持 iOS 设备，请跳过本部分。
@@ -236,23 +236,23 @@ ms.lasthandoff: 10/11/2017
         }
 
     如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider] 选择不同的值。
-
-6. 通过添加 OpenUrl（UIApplication 应用、NSUrl URL、NSDictionary 选项）方法重载更新 AppDelegate 类
+    
+6. 通过添加 **OpenUrl** 方法重载更新 **AppDelegate** 类，如下所示：
 
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
-
-6. 调用 `LoadApplication()` 之前，向 **FinishedLaunching** 方法添加以下代码行：
+   
+7. 调用 `LoadApplication()` 之前，向 **FinishedLaunching** 方法添加以下代码行：
 
         App.Init(this);
 
     此代码可确保验证器在应用加载前进行初始化。
 
-6. 将“{url_scheme_of_your_app}”添加到 Info.plist 的 URL 方案中。
+8. 打开 Info.plist 并添加 **URL 类型**。 将“标识符”设置为所选的名称，将“URL 方案”设置为应用的 URL 方案，将“角色”设置为“无”。
 
-7. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
+9. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
 ## <a name="add-authentication-to-windows-10-including-phone-app-projects"></a>向 Windows 10（包括 Phone）应用项目添加身份验证
 本部分演示如何在 Windows 10 应用项目中实现“IAuthenticate”接口。 此相同的步骤适用于通用 Windows 平台 (UWP) 项目，但使用的是 **UWP** 项目（具有已注明的更改）。 如果不要支持 Windows 设备，请跳过本部分。
@@ -306,7 +306,7 @@ ms.lasthandoff: 10/11/2017
             return success;
         }
 
-    如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider] 选择不同的值。
+    如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
 1. 调用 `LoadApplication()` 之前，在 **MainPage** 类的构造函数中添加以下代码行：
 
@@ -326,12 +326,9 @@ ms.lasthandoff: 10/11/2017
                 ProtocolActivatedEventArgs protocolArgs = args as ProtocolActivatedEventArgs;
                 TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(protocolArgs.Uri);
             }
-
        }
 
-   如果该方法重写已存在，则添加上述代码段中的条件代码。  通用 Windows 项目不需要此代码。
-
-3. 在 Package.appxmanifest 中添加“{url_scheme_of_your_app}”。 
+3. 打开 Package.appxmanifest，添加 **Protocol** 声明。 将“显示名称”设置为所选的名称，将“名称”设置为应用的 URL 方案。
 
 4. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
@@ -355,3 +352,4 @@ ms.lasthandoff: 10/11/2017
 [5]: app-service-mobile-dotnet-how-to-use-client-library.md#serverflow
 [6]: app-service-mobile-dotnet-how-to-use-client-library.md#clientflow
 [7]: https://msdn.microsoft.com/library/azure/jj730936(v=azure.10).aspx
+[8]: https://portal.azure.com

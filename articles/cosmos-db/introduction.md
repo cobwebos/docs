@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/14/2017
+ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: d5ae2a68f749310d4d6a2514055fb258978eec9c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: f34790ad670b488159e945be9bf4ba378cc5e94a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -42,8 +42,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
     * 多种语言的 SDK 均支持以下数据模型的 API：
         * [Cosmos DB API](documentdb-introduction.md)：使用 SQL 查询功能的无架构 JSON 数据库引擎。
         * [MongoDB API](mongodb-introduction.md)：构建于 Cosmos DB 之上的 MongoDB 数据库服务。 与现有 MongoDB 库、驱动程序、工具和应用程序兼容。
-        * [表 API](table-introduction.md)：一种键/值存储数据库服务，构建它的目的是为 Azure 表存储应用程序提供高级功能。
+        * [表 API](table-introduction.md)：一种键/值数据库服务，构建它的目的是为 Azure 表存储应用程序提供高级功能。
         * [图形 (Gremlin) API](graph-introduction.md)：按照 [Apache TinkerPop 规范](http://tinkerpop.apache.org/)生成的图形数据库服务。
+        * [Cassandra API](cassandra-introduction.md)：基于 [Apache Cassandra](https://cassandra.apache.org/) 实现构建的键/值存储。 
         * 即将推出其他数据模型！
 
 * 在全球范围内按需求灵活缩放吞吐量和存储
@@ -55,7 +56,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
     * 对于典型的 1 KB 项，Cosmos DB 保证，在 99% 的情况下，同一 Azure 区域内读取操作的端到端延迟和已索引写入操作的端到端延迟分别低于 10 毫秒和 15 毫秒。 中间延迟明显更低（低于 5 毫秒）。
 
 * 确保提供“始终可用”的可用性
-    * 在单个区域内可用性为 99.99%。
+    * 为所有单区域帐户和具有松散一致性的所有多区域帐户提供 99.99% 的可用性 SLA，为所有多区域数据库帐户提供 99.999% 的读取可用性。
     * 部署到任意数量的 [Azure 区域](https://azure.microsoft.com/regions)以提高可用性。
     * [模拟一个或多个区域的故障](regional-failover.md)而保证不丢失任何数据。 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 11/01/2017
 ms.author: maroche
-ms.openlocfilehash: 0623847ea1e79c3a45a8fbdcc1d3a551864aefd6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: da7ac8f323f9b2ec6303fbc85aa570373a538bcf
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>如何查看 Azure 数据目录中的相关数据资产？
 借助 Azure 数据目录，可以查看与所选数据资产相关的数据资产，并查看它们之间的关系。 
@@ -30,6 +30,9 @@ ms.lasthandoff: 11/03/2017
 - Azure SQL 数据库
 - MySQL
 - Oracle
+
+> [!NOTE]
+> 要使数据目录导入两个数据资产之间的关系，必须同时注册这两个资产。 如果已单独添加其中一个数据资产，请重新添加该资产和另一个数据资产以导入它们之间的关系。
 
 ## <a name="view-related-data-assets"></a>查看相关数据资产
 若要查看与所选数据集相关的数据资产，请使用下图所示的“关系”选项卡： 

@@ -1,6 +1,6 @@
 ---
-title: "用于 Python 的 Azure 表存储 | Microsoft Docs"
-description: "了解有关用于 Python 的 Azure 表存储 SDK 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。"
+title: "用于 Python 的 Azure Cosmos DB 表 API | Microsoft Docs"
+description: "了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。"
 services: cosmos-db
 documentationcenter: python
 author: mimig
@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 11/15/2017
 ms.author: mimig1
 ms.custom: 
-ms.openlocfilehash: 6f6528498c26ff79b6c35891e93e4dbcffb322f5
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: a68b24fe91d3acb0f18d3d06d6252317bd671be4
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-table-storage-sdk-for-python-release-notes-and-resources"></a>用于 Python 的Azure 表存储 SDK：发行说明和资源
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>用于 Python 的 Azure Cosmos DB 表 API SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
+> * [Java](table-sdk-java.md)
+> * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
  
 
@@ -37,6 +39,10 @@ ms.lasthandoff: 11/06/2017
 
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* 正式发布版
+
 ### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
 * 预发行版 SDK
 
@@ -49,6 +55,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 | [0.37.1](#0.37.1) |2017 年 10 月 5 日 |--- |
 
 

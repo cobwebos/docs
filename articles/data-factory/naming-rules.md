@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/09/2017
 ms.author: shlo
-ms.openlocfilehash: 8f0207853097a3d31e06a722025f3964678414bf
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 085328a9bbe304004f25f46ba5c366e911ac3836
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
 下表提供了数据工厂项目的命名规则。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 中的命名规则](v1/data-factory-naming-rules.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 中的命名规则](v1/data-factory-naming-rules.md)。
 
 | 名称 | 名称唯一性 | 验证检查 |
 |:--- |:--- |:--- |

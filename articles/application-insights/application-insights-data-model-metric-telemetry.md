@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4cfdf3b70f6fdb2ddd5f89a72c931d3b6be54132
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: bd09e2a21c25097fa4b378cb2dbe2787edbb1967
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/01/2017
 
 预聚合指标遥测假定聚合期间为一分钟。
 
-Application Insights 支持几个已知的指标名称。 
+Application Insights 支持几个已知的指标名称。 这些指标已放入 performanceCounters 表。
 
 表示系统计数器和进程计数器的指标：
 
@@ -65,6 +65,8 @@ Application Insights 支持几个已知的指标名称。
 聚合指标的标准偏差。 不应为度量设置。
 
 ## <a name="custom-properties"></a>自定义属性
+
+自定义属性 `CustomPerfCounter` 设置为 `true` 的指标指示该指标表示 windows 性能计数器。 这些指标已放入 performanceCounters 表， 不在 customMetrics 中。 此外还分析此指标的名称，以提取类别、计数器和实例名称。
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 

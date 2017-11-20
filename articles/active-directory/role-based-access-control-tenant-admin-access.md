@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
 ms.author: andredm
-ms.openlocfilehash: cb6e5a398a1d7e20efbcc4a8900f9e8dea43ad2c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: c1f49e2c7836a56f37aafcaad0cb74278213a720
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>通过基于角色的访问控制，作为租户管理员提升访问权限
 
@@ -43,6 +43,30 @@ ms.lasthandoff: 11/07/2017
 > 印象中这是 Azure Active Directory 的全局属性，但是，它对于当前已登录用户基于每个用户工作。 如果在 Azure Active Directory 中具有全局管理员权限，可以对当前已登录到 Azure Active Directory 管理中心的用户调用 elevateAccess 功能。
 
 ![Azure AD 管理中心 - 属性 - Globaladmin 可以管理 Azure 订阅 - 屏幕截图](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="view-role-assignments-at-the--scope-using-powershell"></a>使用 PowerShell 查看“/”范围内的角色分配
+若要查看 **/** 范围内的**用户访问管理员**分配，请使用 `Get-AzureRmRoleAssignment` PowerShell cmdlet。
+    
+```
+Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
+```
+
+**示例输出**：
+
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
+Scope              : /    
+DisplayName        : username    
+SignInName         : username@somedomain.com    
+RoleDefinitionName : User Access Administrator    
+RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
+ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc    
+ObjectType         : User    
+
+## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>使用 Powershell 删除“/”范围内的角色分配：
+可以使用以下 PowerShell cmdlet 删除分配：
+```
+Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefinitionName "User Access Administrator" -Scope "/" 
+```
 
 ## <a name="use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>通过 REST API 使用 elevateAccess 提供租户访问权限
 

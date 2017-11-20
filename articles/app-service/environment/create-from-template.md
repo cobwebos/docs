@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: cdaf09d5558e0453b826b9a3e52500379ced5422
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: b3829f0e1b87451bf0706edc268359be5c4480bc
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -150,7 +150,7 @@ azuredeploy.parameters.json 的缩写示例如下所示：
 
 在 ASEv1 中，需手动管理所有资源。 它们包括基于 IP 的 SSL 所用的前端、辅助角色和 IP 地址。 扩大应用服务计划之前，需要先扩大要托管该计划的辅助角色池。
 
-ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配的每个内核付费。 包括未承载任何工作负荷的前端或辅助角色所使用的内核。 在 ASEv1 中，ASE 的默认最大规模为 55 个主机总数。 其中包括辅助角色和前端。 ASEv1 的一项优势是可在经典虚拟网络和资源管理器虚拟网络中进行部署。 若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]。
+ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配的每个 vCPU 付费。 包括未托管任何工作负荷的前端或辅助角色所使用的 vCPU。 在 ASEv1 中，ASE 的默认最大规模为 55 个主机总数。 其中包括辅助角色和前端。 ASEv1 的一项优势是可在经典虚拟网络和资源管理器虚拟网络中进行部署。 若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]。
 
 若要使用资源管理器模板创建 ASEv1，请参阅[使用资源管理器模板创建 ILB ASE v1][ILBASEv1Template]。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59492ccc64a70680d71ad1de0700ed30f9e45306
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>使用多种服务配置来配置 Azure 项目
 Azure 云服务项目包括两个配置文件：ServiceDefinition.csdef 和 ServiceConfiguration.cscfg。 这些文件将与 Azure 云服务应用程序一起打包并部署到 Azure。
@@ -30,7 +30,7 @@ Azure Tools for Microsoft Visual Studio 提供可用于设置存储在这些文�
 
 ![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-有关服务定义文件和服务配置文件的基础架构信息，请参阅 [Schema Reference](https://msdn.microsoft.com/library/azure/dd179398.aspx)（架构参考）。 有关服务配置的详细信息，请参阅[如何配置云服务](cloud-services/cloud-services-how-to-configure.md)。
+有关服务定义文件和服务配置文件的基础架构的信息，请参阅 [.csdef XML 架构](cloud-services/schema-csdef-file.md)和 [.cscfg XML 架构](cloud-services/schema-cscfg-file.md)文章。 有关服务配置的详细信息，请参阅[如何配置云服务](cloud-services/cloud-services-how-to-configure-portal.md)。
 
 ## <a name="configuring-role-properties"></a>配置角色属性
 Web 角色的属性页与辅助角色的属性页类似，不过存在少许差异，如以下部分中所述。
@@ -88,7 +88,7 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 ## <a name="certificates-page"></a>“证书”页
 可以在“证书”页上将证书与角色关联。 所添加的证书可用于在“终结点”属性页上配置 HTTPS 终结点。
 
-“证书”属性页会将有关证书的信息添加到服务配置。 请注意，证书不会与服务一起打包；必须通过 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)将证书单独上传到 Azure。
+“证书”属性页会将有关证书的信息添加到服务配置。 请注意，证书不会与服务一起打包；必须通过 [Azure 门户](http://portal.azure.com)将证书单独上传到 Azure。
 
 要将证书与角色关联，请提供证书的名称。 在“终结点”属性页上配置 HTTPS 终结点时，将使用此名称来引用证书。 接下来，指定证书存储是“本地计算机”还是“当前用户”，并指定存储的名称。 最后，输入证书的指纹。 如果证书位于“当前用户\个人(我的)”存储区中，可以通过从填充列表中选择证书来输入证书的指纹。 如果证书驻留在任何其他位置，则手动输入指纹值。
 

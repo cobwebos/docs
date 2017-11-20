@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 291ca51c83233294d882a94f886bc874e13e97be
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 3686057a267ef28d6a01ccc36775a399c64a0804
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
@@ -165,7 +165,7 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**DocumentDbCollectionSink** |是 |
+| type | 复制活动接收器的 type 属性必须设置为：**DocumentDbCollectionSink** |是 |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当nestedSeparator 是点时，输出数据集结构中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：`"Name": {"First": "[value maps to this column from source]"}`。 |否（默认值为点 `.`） |
 | writeBatchTimeout |超时之前等待操作完成的时间。<br/><br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 

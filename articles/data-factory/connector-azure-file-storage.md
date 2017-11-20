@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: edbab30d949daa8d564ec60e9f1650f38b01d942
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: c0a6a19cffafb940b13135fb3df4d7bdf57aa7ce
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Azure 文件存储复制数据
 
@@ -45,14 +45,14 @@ Azure 文件存储链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：FileServer。 | 是 |
-| host | 将 Azure 文件存储终结点指定为 `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
+| 主机 | 将 Azure 文件存储终结点指定为 `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
 | userid | 将要访问 Azure 文件存储的用户指定为 `"userid": "AZURE\\<storage name>"`。 | 是 |
 | password | 指定存储访问密钥。 将此字段标记为 SecureString。<br/> | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |对于源为“No”，对于接收器为“Yes” |
 
->[!TIP]
-> - 若要使用 Azure Integration Runtime 复制到 Azure 文件存储，请使用文件存储的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并按下例所示在链接的服务中进行关联。
-> - 若要使用 Azure 外部的自承载 Integration Runtime 从/向 Azure 文件存储复制数据，请记得在本地网络中打开出站 TCP 端口 445。
+>[!IMPORTANT]
+> - 若要使用 Azure Integration Runtime 将数据复制到 Azure 文件存储，请使用文件存储的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并按下例所示在链接服务中进行关联。
+> - 若要使用 Azure 外部的自托管 Integration Runtime 从/向 Azure 文件存储复制数据，请记得在本地网络中打开出站 TCP 端口 445。
 
 **示例：**
 

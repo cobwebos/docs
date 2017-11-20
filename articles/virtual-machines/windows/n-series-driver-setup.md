@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/07/2017
+ms.date: 11/09/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b480d10df777a2757c073ff77e1845d33d63163a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b16e57e06d5055fc0c2750385630a908e10bd217
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>为运行 Windows Server 的 N 系列 VM 安装 GPU 驱动程序
 若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，请安装支持的 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序安装信息。
@@ -50,13 +50,13 @@ ms.lasthandoff: 10/11/2017
 
 1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI 目录。
 
-2. 运行 nvidia-smi。 如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util 将显示 0%。
+2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-for-nc24r-vms"></a>NC24r VM 的 RDMA 网络
 
-可以在同一可用性集中部署的 NC24r VM 上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向 NC24r VM 添加 VM 扩展，请使用 Azure Resource Manager 的 [Azure PowerShell](/powershell/azure/overview) cmdlet。
+可以在同一可用性集中部署的 NC24r VM 上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向 NC24r VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](/powershell/azure/overview) cmdlet。
 
 > [!NOTE]
 > 当前，只有 Windows Server 2012 R2 支持 NC24r VM 上的 RDMA 网络。

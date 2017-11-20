@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 26837a72dd4539cd5b32e5b49a127a714f3a1426
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 40821d32c5bdfe51bb3cb205660d6f25b2c3fadc
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 也可以自行定义。 如果应用程序在对其具有管理访问权限的本地主机或虚拟机的 IIS 下运行，[Application Insights](app-insights-overview.md) 可以显示这些性能计数器。 图表指示实时应用程序可用的资源，并有助于确定服务器实例之间的不平衡负载。
@@ -83,7 +83,6 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
       @"\.NET CLR Memory([replace-with-application-process-name])\# GC Handles", "GC Handles")));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
-
 或者，可以执行与所创建自定义指标相同的操作：
 
 ``` C#
@@ -115,6 +114,9 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 
 * *异常率*是系统性能计数器。 CLR 会对所有引发的已处理和未经处理异常进行计数，并将总采样间隔除以间隔长度。 Application Insights SDK 会收集此结果，并将其发送到门户。
 * *异常*是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](app-insights-asp-net-exceptions.md)。 
+
+## <a name="performance-counters-in-aspnet-core-applications"></a>Asp.Net Core 应用程序中的性能计数器
+仅当应用程序针对完整的.NET Framework 时，才支持性能计数器。 无法收集 .Net Core 应用程序的性能计数器。
 
 ## <a name="alerts"></a>警报
 与其他指标一样，可以[设置警报](app-insights-alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”边栏选项卡，并单击“添加警报”。

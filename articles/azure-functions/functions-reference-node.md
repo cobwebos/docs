@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 1aaeeed2740179555c024792562a950f4fd6b29d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8050e116a48c69b2fccd6bdc1cf029dfdd6e6f28
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -317,9 +317,9 @@ function GetEnvironmentVariable(name)
 
 使用 JavaScript 函数时，请注意以下两节中的注意事项。
 
-### <a name="choose-single-core-app-service-plans"></a>选择单核心应用服务计划
+### <a name="choose-single-vcpu-app-service-plans"></a>选择单 vCPU 应用服务计划
 
-创建使用应用服务计划的 Function App 时，建议选择单核心计划，不要选择具有多个核心的计划。 目前，Functions 在单核心 VM 上运行 JavaScript 函数更为高效；使用较大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单核心 VM 实例来手动扩大，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。    
+创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单 vCPU VM 实例来手动扩大，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。    
 
 ### <a name="typescript-and-coffeescript-support"></a>TypeScript 和 CoffeeScript 支持
 因为目前还不能直接支持通过运行时自动编译 TypeScript 或 CoffeeScript，因此需要在部署时在运行时外部处理此类支持。 

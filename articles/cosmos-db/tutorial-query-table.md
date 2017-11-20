@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbb752692fbd618d9e7e14c8a80b582aad657b38
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB：如何使用表 API（预览版）查询表数据？
+# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB：如何使用表 API 查询表数据
 
-Azure Cosmos DB [表 API](table-introduction.md)（预览版）支持对键/值（表）数据进行 OData 和 [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) 查询。  
+Azure Cosmos DB [表 API](table-introduction.md) 支持针对键/值（表）数据进行 OData 和 [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) 查询。  
 
 本文涵盖以下任务： 
 
@@ -38,13 +38,13 @@ Azure Cosmos DB [表 API](table-introduction.md)（预览版）支持对键/值�
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-由于 Azure Cosmos DB 兼容 Azure 表存储 API，因此若要详细了解如何使用 Table API 进行查询，请参阅[查询表和实体] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities)。 
+有关如何使用表 API 进行查询的详细信息，请参阅[查询表和实体] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities)。 
 
-有关 Azure Cosmos DB 所提供的高级功能的详细信息，请参阅 [Azure Cosmos DB：表 API](table-introduction.md) 和[使用 .NET 通过表 API 进行开发](tutorial-develop-table-dotnet.md)。 
+有关 Azure Cosmos DB 所提供的高级功能的详细信息，请参阅 [Azure Cosmos DB 表 API](table-introduction.md) 和[使用 .NET 通过表 API 进行开发](tutorial-develop-table-dotnet.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使使这些查询生效，必须拥有 Azure Cosmos DB 帐户，且容器中必须包含实体数据。 没有这些内容？ 请学习[五分钟快速入门](https://aka.ms/acdbtnetqs)或者[开发人员教程](https://aka.ms/acdbtabletut)，创建帐户并填充数据库。
+若要使使这些查询生效，必须拥有 Azure Cosmos DB 帐户，且容器中必须包含实体数据。 没有这些内容？ 请学习[五分钟快速入门](create-table-dotnet.md)或者[开发人员教程](tutorial-develop-table-dotnet.md)，创建帐户并填充数据库。
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>PartitionKey 和 RowKey 的查询
 由于 PartitionKey 和 RowKey 属性构成实体的主键，因此可使用特殊语法确定实体，如下所示： 
@@ -109,9 +109,9 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 在本教程中，已完成以下内容：
 
 > [!div class="checklist"]
-> * 已了解如何使用表 API（预览版）进行查询 
+> * 已了解如何使用表 API 进行查询
 
 现在可继续学习下一教程，了解如何全局发布数据。
 
 > [!div class="nextstepaction"]
-> [全局分发数据](tutorial-global-distribution-documentdb.md)
+> [全局分发数据](tutorial-global-distribution-table.md)

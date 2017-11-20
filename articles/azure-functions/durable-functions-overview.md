@@ -1,5 +1,5 @@
 ---
-title: "Durable Functions 概述 - Azure"
+title: "Durable Functions 概述 - Azure（预览版）"
 description: "Azure Functions 的 Durable Functions 扩展简介。"
 services: functions
 author: cgillum
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="durable-functions-overview-azure-functions"></a>Durable Functions 概述 (Azure Functions)
+# <a name="durable-functions-overview-preview"></a>Durable Functions 概述（预览版）
 
 Durable Functions 是 [Azure Functions](functions-overview.md) 和 [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。
 
@@ -31,7 +31,7 @@ Durable Functions 是 [Azure Functions](functions-overview.md) 和 [Azure WebJob
 * 每当有函数处于等待状态时，可自动对进度执行检查点操作。 回收进程或重启 VM 时，从来不会丢失本地状态。
 
 > [!NOTE]
-> Durable Functions 是 Azure Functions 的高级扩展，并不适用于所有应用程序。 本文其余部分假设用户已非常熟悉 [Azure Functions](functions-overview.md) 概念，以及在无服务器应用程序开发过程中面临的挑战。
+> Durable Functions 处于预览状态，是 Azure Functions 的高级扩展，并非适用于所有应用程序。 本文其余部分假设用户已非常熟悉 [Azure Functions](functions-overview.md) 概念，以及在无服务器应用程序开发过程中面临的挑战。
 
 Durable Functions 的主要用例是简化无服务器应用程序中出现的复杂的有状态协调问题。 以下各节介绍可受益于 Durable Functions 的部分典型应用程序模式。
 

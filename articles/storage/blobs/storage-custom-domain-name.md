@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: tamram
-ms.openlocfilehash: cbc8654bf1755826afa2cf83e5476e88903e0854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfca37e3a369fdfb41b4064b72ccd027bd8cbd3
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>为 Blob 存储终结点配置自定义域名
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 [使用 *asverify* 子域注册自定义域](#register-a-custom-domain-using-the-asverify-subdomain)中介绍了中间方法。
 
 ## <a name="register-a-custom-domain"></a>注册自定义域
-如果不担心域暂时对用户不可用，或者自定义域当前未托管应用程序，则可以使用本过程注册自定义域。
+如果不担心域暂时对用户不可用，或者自定义域当前未托管应用程序，则可以使用本过程注册自定义域。 可以使用 Azure DNS 为 Azure Blob 存储配置自定义 DNS 名称。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage)。
 
 如果自定义域目前在支持不能有任何停机时间的应用程序，则请按照[使用 *asverify* 子域注册自定义域](#register-a-custom-domain-using-the-asverify-subdomain)中介绍的过程进行操作。
 

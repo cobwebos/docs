@@ -15,11 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00f6309114039db23a1d22f1eb70076b842dadca
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -54,6 +54,16 @@ Azure DNS 当前不支持购买域名。 如果想要购买域名，需要使用
 Azure DNS 支持 [通配符记录](https://en.wikipedia.org/wiki/Wildcard_DNS_record)。 具有匹配名称的任何查询都会返回通配符记录（除非存在与非通配符记录集更接近的匹配项）。 对于除 NS 和 SOA 外的所有记录类型，Azure DNS 都支持通配符记录集。
 
 若要创建通配符记录集，请使用记录集名称“\*”。 或者，还可以使用将“\*”作为最左边的标签的名称，例如，“\*.foo”。
+
+### <a name="caa-records"></a>CAA 记录
+
+CAA 记录允许域所有者指定哪些证书颁发机构 (CA) 有权为其域颁发证书。 这使 CA 可以避免在某些情况下错误颁发证书。 CAA 记录具有三个属性：
+* **Flags**：这是一个介于 0 和 255 之间的整数，用于根据 [RFC](https://tools.ietf.org/html/rfc6844#section-3) 表示具有特殊含义的关键标志
+* **Tag**：一个 ASCII 字符串，可以是以下项之一：
+    * **issue**：如果要指定有权颁发证书（所有类型）的 CA，请使用此项
+    * **issuewild**：如果要指定有权颁发证书（通配型证书）的 CA，请使用此项
+    * **iodef**：指定对于未经授权的证书颁发请求，CA 可以向其发送通知的电子邮件地址或主机名
+* **Value**：所选特定标记的值
 
 ### <a name="cname-records"></a>CNAME 记录
 
@@ -102,19 +112,19 @@ DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆
 
 ### <a name="tags"></a>标记
 
-标记是名称/值列表，Azure Resource Manager 利用它们来标记资源。  Azure Resource Manager 使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
+标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
-Azure DNS 支持使用 DNS 区域资源上的 Azure Resource Manager 标记。  它不支持 DNS 记录集的标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下所述。
+Azure DNS 支持使用 DNS 区域资源上的 Azure 资源管理器标记。  它不支持 DNS 记录集的标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下所述。
 
 ### <a name="metadata"></a>元数据
 
-作为记录集标记的替代方法，Azure DNS 支持使用“元数据”批注记录集。  与标记相类似，通过元数据可将名称/值对与每个记录集相关联。  这非常有用，例如可用于记录每个记录集的用途。  与标记不同的是，元数据不能用于提供 Azure 帐单的筛选视图，且不能在 Azure Resource Manager 策略中指定。
+作为记录集标记的替代方法，Azure DNS 支持使用“元数据”批注记录集。  与标记相类似，通过元数据可将名称/值对与每个记录集相关联。  这非常有用，例如可用于记录每个记录集的用途。  与标记不同的是，元数据不能用于提供 Azure 帐单的筛选视图，且不能在 Azure 资源管理器策略中指定。
 
 ## <a name="etags"></a>Etag
 
 假设两个人或两个进程尝试同时修改一条 DNS 记录。 哪一个占先？ 占先方是否知道他们/它们覆盖了其他人/进程创建的更改？
 
-Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 [Azure Resource Manager “标记”](#tags)不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 只要检索资源，就会检索其 Etag。 当更新资源时，可以选择传递回 Etag 的选项以便 Azure DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
+Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 [Azure 资源管理器“标记”](#tags)不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 只要检索资源，就会检索其 Etag。 当更新资源时，可以选择传递回 Etag 的选项以便 Azure DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
 
 默认情况下，Azure DNS PowerShell 使用 Etag 来阻止对区域和记录集的并发更改。 可选 -Overwrite 开关可用于取消 Etag 检查，这种情况下会覆盖发生的所有并发更改。
 

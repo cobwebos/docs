@@ -5,24 +5,30 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2017
+ms.date: 11/13/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: bcb072a2f2ab8c0e5097fca2c95309464483cb53
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 84f2fec61f791d4fc9264eaa01e24180696da853
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
-作为 CSP 合作伙伴，可以注册由 Cloudyn 提供的 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 它还演示如何立即开始查看成本数据。
+作为 CSP 合作伙伴，可以注册由 Cloudyn 提供的 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
 
 
 >[!NOTE]
->若要完成注册，必须是有权访问合作伙伴中心 API 的合作伙伴计划管理员。 需要配置合作伙伴中心 API 才能进行身份验证和数据访问。 有关详细信息，请参阅[连接到合作伙伴中心 API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx)。 此外，只有当直接 CSP 经销商注册了 Cloudyn 来为客户和订阅提供访问权限时，间接 CSP 用户才能使用 Cloudyn。
+
+>仅 CSP 直接合作伙伴和 CSP 间接提供程序可以完成 Cloudyn 注册。
+>
+>需要配置合作伙伴中心 API 才能进行身份验证和数据访问。 需要使用合作伙伴中心全局管理员帐户预配 API 访问权限。
+有关详细信息，请参阅[连接到合作伙伴中心 API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx)。
+>
+>CSP 间接经销商在其 CSP 间接提供程序注册到 Cloudyn 中后，可以访问 Cloudyn。 然后，CSP 间接经销商可以向 Azure 客户和订阅提供 Cloudyn 访问权限。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

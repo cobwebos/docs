@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: affa68b6aeedb031914b12dac711d93c7ed4a47a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: adfcf53f9fca0efafb538edfd65b95313dcf1559
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-user-defined-route---azure-cli"></a>创建用户定义的路由 - Azure CLI
 
@@ -293,6 +293,12 @@ ms.lasthandoff: 10/31/2017
         - **Ubuntu**：运行 `tracepath myvm-private` 命令。
       流量会先通过 10.0.2.4 (NVA)，然后才到达 10.0.1.4（专用子网中的虚拟机）。 
     - 连接到 myVm-Private 虚拟机并 ping myVm-Private 虚拟机，完成以上步骤。 跟踪路由显示先通过 10.0.2.4 再到达 10.0.0.4（公共子网中的虚拟机）的通信。
+      
+      > [!NOTE]
+      > 使用前面的步骤，可以确认 Azure 专用 IP 地址之间的路由。 如果想要转发或代理通过网络虚拟设备发送到公共 IP 地址的流量：
+      > - 设备必须提供网络地址转换或代理功能。 如果进行网络地址转换，设备必须将源 IP 地址转换为其自己的地址，然后再将该请求转发到公共 IP 地址。 无论设备是对源地址进行网络地址转换还是进行代理，Azure 都会将网络虚拟设备的专用 IP 地址转换为公共 IP 地址。 有关 Azure 用于将专用 IP 地址转换为公共 IP 地址的不同方法的详细信息，请参阅[了解出站连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+      > - 路由表中的其他路由，如前缀 0.0.0.0/0、下一跃点类型 VirtualAppliance 和下一跃点 IP 地址 10.0.2.4（在前面的示例脚本中）。
+      >
     - **可选**：使用 Azure 网络观察程序的下一跃点功能验证 Azure 中两个虚拟机之间的下一跃点。 使用网络观察程序之前，必须先为使用区域[创建 Azure 网络观察程序实例](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本教程中使用的区域是美国东部。 启用该区域的网络观察程序实例后，输入以下命令查看公共子网和专用子网中虚拟机之间的下一跃点信息：
      
         ```azurecli-interactive

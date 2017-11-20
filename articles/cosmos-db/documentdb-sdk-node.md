@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a13a5777161ab18840501d7d7e1d52192c22315
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -60,6 +60,14 @@ ms.lasthandoff: 10/11/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="1.14.0"/>1.14.0</a>
+* 添加了对会话一致性的支持。
+* 此 SDK 版本需要最新版本的 Azure Cosmos DB 模拟器（可从 https://aka.ms/cosmosdb-emulator 下载）。
+
+### <a name="1.13.0"/>1.13.0</a>
+* Splitproofed 跨分区查询。
+* 添加对带有前导和尾随斜杠（和对应测试）的资源链接的支持。
 
 ### <a name="1.12.2"/>1.12.2</a>
 *   npm 文档已修复。
@@ -177,6 +185,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.14.0](#1.14.0) |2017 年 11 月 9 日 |--- |
+| [1.13.0](#1.13.0) |2017 年 10 月 11 日 |--- |
 | [1.12.2](#1.12.2) |2017 年 8 月 10 日 |--- |
 | [1.12.1](#1.12.1) |2017 年 8 月 10 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 5 月 10 日 |--- |

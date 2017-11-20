@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/30/2017
 ms.author: gwallace
-ms.openlocfilehash: 9ea7f77d3bbe45de49c798fe3d51151e1a5a6658
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>使用 Node.js 从 Azure Blob 存储转入/转出对象
 
@@ -103,7 +103,11 @@ Sample finished running. When you hit <ENTER> key, the temporary files will be d
 
 验证文件后，按任意键可完成演示并删除测试文件。 至此，你已了解此示例的用途，接下来打开 index.js 文件来查看代码。 
 
-## <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
+## <a name="understand-the-sample-code"></a>理解示例代码
+
+下一步，我们演练示例代码，以便了解它的工作原理。
+
+### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 
 首先创建对用于访问和管理 Blob 存储的 `BlobService` 的引用。 这些对象相互关联 - 每个对象被列表中的下一个对象使用。
 
@@ -120,7 +124,7 @@ blobService.createContainerIfNotExists(blockBlobContainerName, { 'publicAccessLe
     if (error) return callback(error);
 ```
 
-## <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
+### <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
 
 Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的。 它们非常适合用于存储文本和二进制数据，这也是本快速入门使用这些块 blob 的原因。
 
@@ -141,7 +145,7 @@ console.log('   Uploaded Blob URL:', blobService.getUrl(CONTAINER_NAME, BLOCK_BL
 
 Blob 存储支持多种上传方法。 例如，若有一个内存流，则可以使用 [createBlockBlobFromStream](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromStream) 方法来替换 [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile)。
 
-## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
+### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
 下一步，此应用程序使用 [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented) 获取容器中的文件列表。 下面的代码检索 blob 列表，然后循环访问它们，显示找到的 blob 的 URI。 可以从命令窗口中复制 URI，然后将其粘贴到浏览器以查看文件。
 
@@ -158,7 +162,7 @@ blobService.listBlobsSegmented(CONTAINER_NAME, null, function (error, data) {
     console.log('\n');
 ```
 
-## <a name="download-blobs"></a>下载 Blob
+### <a name="download-blobs"></a>下载 Blob
 
 使用 [getBlobToLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_getBlobToLocalFile) 方法将 blob 下载到本地磁盘。
 
@@ -171,9 +175,9 @@ handleError(error);
 console.log('   Downloaded File:', DOWNLOADED_FILE_PATH, '\n');
 ```
 
-## <a name="clean-up-resources"></a>清理资源
+### <a name="clean-up-resources"></a>清理资源
 
-如果不再需要本快速入门中上传的 blob，可使用 [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) 和 [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists) 删除整个容器。 这还会同时删除创建的文件（如果不需要）。 当你按下 Enter 退出应用程序时，需要在应用程序中注意这一点。
+如果不再需要本快速入门中上传的 blob，可使用 [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) 和 [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists) 删除整个容器。 还可以删除创建的文件（如果不需要）。 当你按下 Enter 退出应用程序时，需要在应用程序中注意这一点。
 
 ```javascript
 console.log('6. Deleting block Blob\n');

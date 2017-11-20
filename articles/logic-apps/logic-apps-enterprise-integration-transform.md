@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>企业集成与 XML 转换
 ## <a name="overview"></a>概述
@@ -49,7 +49,12 @@ ms.lasthandoff: 10/11/2017
 4. 在搜索框中输入“转换”一词，以便在所有操作中筛选出要使用的操作  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. 选择“转换 XML”操作   
-6. 添加转换的 XML“内容”。 可使用在 HTTP 请求中收到的任何 XML 数据作为“内容”。 在此示例中，选择触发逻辑应用的 HTTP 请求的正文。
+6. 添加转换的 XML“内容”。 可使用在 HTTP 请求中收到的任何 XML 数据作为“内容”。 在此示例中，选择触发了逻辑应用的 HTTP 请求的正文。
+
+   > [!NOTE]
+   > 请确保“转换 XML”的内容是 XML。 如果内容不是 XML 格式或采用 base64 编码，则必须指定用于处理该内容的表达式。 例如，可以使用[函数](logic-apps-workflow-definition-language.md#functions)（如 ```@base64ToBinary```）来解码内容，或使用 ```@xml``` 来处理 XML 格式的内容。
+ 
+
 7. 选择要用于执行转换的“映射”的名称。 该映射必须已处于集成帐户中。 在前面的步骤中，已向逻辑应用授予了对包含映射的集成帐户的访问权限。      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. 保存工作  

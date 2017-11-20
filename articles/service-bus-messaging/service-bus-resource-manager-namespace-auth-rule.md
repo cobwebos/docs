@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 模板创建服务总线授权规则 | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则"
+title: "使用 Azure 资源管理器模板创建服务总线授权规则 | Microsoft Docs"
+description: "使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -12,36 +12,37 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/10/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: fbd2372829a1aefa2c080c0a8a72b9ff4375b16f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 384a2fce4bf338ffc4ab6690980c12ad7ff34a6e
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则
+# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
 
-本文介绍如何使用为服务总线命名空间和队列创建[授权规则](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)的 Azure Resource Manager 模板。 将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用为服务总线命名空间和队列创建[授权规则](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)的 Azure 资源管理器模板。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
 
 有关完整的模板，请参阅 GitHub 上的[服务总线授权规则模板][Service Bus auth rule template]。
 
 > [!NOTE]
-> 以下 Azure Resource Manager 模板可供下载和部署。
+> 以下 Azure 资源管理器模板可供下载和部署。
 > 
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
 > * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索“服务总线”。
+> 若要查找最新模板，请访问 [Azure 快速入门模板][Azure Quickstart Templates]库并搜索“服务总线”。
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>将部署什么内容？
-利用此模板，将为命名空间和消息传送实体（在此情况下为队列）部署服务总线授权规则。
+
+利用此模板，将为命名空间和消息传送实体（在此示例中为队列）部署服务总线授权规则。
 
 此模板使用[共享访问签名 (SAS)](service-bus-sas.md) 进行身份验证。 SAS 使应用程序能够使用在命名空间或在关联了特定权限的消息传送实体（队列或主题）上配置的访问密钥向服务总线进行身份验证。 然后，可以使用此密钥生成 SAS 令牌，客户端反过来可用它向服务总线进行身份验证。
 
@@ -51,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
@@ -86,9 +87,12 @@ ms.lasthandoff: 10/11/2017
 模板的服务总线 API 版本。
 
 ```json
-"serviceBusApiVersion": {
-"type": "string"
-}
+"serviceBusApiVersion": { 
+       "type": "string", 
+       "defaultValue": "2017-04-01", 
+       "metadata": { 
+           "description": "Service Bus ApiVersion used by the template" 
+       }
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
@@ -161,7 +165,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
+现在，已使用 Azure 资源管理器创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
 * [使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision.md)
 * [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

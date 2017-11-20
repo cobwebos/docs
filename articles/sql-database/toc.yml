@@ -370,6 +370,8 @@
           items:
             - name: 部署示例应用
               href: saas-multitenantdb-get-started-deploy.md
+            - name: 预配租户
+              href: saas-multitenantdb-provision-and-catalog.md
             - name: 监视数据库性能
               href: saas-multitenantdb-performance-monitoring.md
             - name: 运行临时查询

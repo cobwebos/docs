@@ -24,15 +24,13 @@
 ## 部署
 ### [虚拟网络](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Azure CLI 2.0](virtual-networks-create-vnet-arm-cli.md)
-#### [Azure CLI 1.0](virtual-networks-create-vnet-cli-nodejs.md)
+#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [模板](virtual-networks-create-vnet-arm-template-click.md)
 
 ### 网络安全组
 #### [Azure 门户](virtual-networks-create-nsg-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
-#### [Azure CLI 2.0](virtual-networks-create-nsg-arm-cli.md)
-#### [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md)
+#### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [模板](virtual-networks-create-nsg-arm-template.md)
 #### [应用程序安全组](create-network-security-group-preview.md)
 #### 经典
@@ -42,8 +40,7 @@
 ### 用户定义路由
 #### [Azure 门户](create-user-defined-route-portal.md)
 #### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md)
-#### [Azure CLI 1.0](virtual-network-create-udr-arm-cli-nodejs.md)
+#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
 #### [模板](virtual-network-create-udr-arm-template.md)
 #### 经典
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
@@ -67,8 +64,7 @@
 #### 创建具有静态公共 IP 地址的 VM
 ##### [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-##### [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md)
-##### [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md)
+##### [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [模板](virtual-network-deploy-static-pip-arm-template.md)
 ##### 经典
 ###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
@@ -84,8 +80,7 @@
 
 #### 创建具有多个网络接口的 VM
 ##### [Azure PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Azure CLI 2.0](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Azure CLI 1.0](../virtual-machines/linux/multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [模板](virtual-network-deploy-multinic-arm-template.md)
 
 ##### 经典
@@ -137,7 +132,7 @@
 #### 经典
 ##### 静态 IP 地址
 ###### [PowerShell](virtual-networks-reserved-private-ip.md)
-###### [CLI](virtual-networks-static-private-ip-cli-nodejs.md)
+###### [CLI](virtual-networks-static-private-ip-classic-cli.md)
 ##### [实例层级公共 IP 地址](virtual-networks-instance-level-public-ip.md)
 
 ### 经典
@@ -155,8 +150,7 @@
 ### 网络安全组
 #### [Azure 门户](virtual-network-manage-nsg-arm-portal.md)
 #### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
-#### [Azure CLI 2.0](virtual-network-manage-nsg-arm-cli.md)
-#### [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md)
+#### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
 #### [日志](virtual-network-nsg-manage-log.md)
 ### 网络接口 (NIC)

@@ -4,7 +4,7 @@ description: "了解如何使用 Spark Apache Spark 以流式方式 (DStream) �
 keywords: "kafka 示例, kafka zookeeper, spark 流式处理 kafka, spark 流式处理 kafka 示例"
 services: hdinsight
 documentationcenter: 
-author: maxluk
+author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
-ms.author: maxluk
-ms.openlocfilehash: 6608363f90b61fe60f26d3f9fafd77b1e2232838
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: larryfr
+ms.openlocfilehash: 652719a80133434ecb31c00738dcda261cfa0683
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>Kafka on HDInsight（预览版）的 Apache Spark 流式处理 (DStream) 示例
+# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
 了解如何使用 Spark Apache Spark 以流式方式 (DStream) 将数据传入或传出 Apache Kafka on HDInsight。 本示例使用在 Spark 群集上运行的 Jupyter 笔记本。
 > [!NOTE]
@@ -43,9 +43,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 1. 使用以下按钮登录到 Azure，并在 Azure 门户中打开模板。
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure 资源管理器模板位于 https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v2.1.json 中。
+    Azure 资源管理器模板位于 https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json。
 
     > [!WARNING]
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
@@ -60,7 +60,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **位置**：选择在地理上邻近的位置。
 
-    * **基群集名称**：此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdi** 创建名为 spark-hdi__ 的 Spark 群集和名为 **kafka-hdi** 的 Kafka 群集。
+    * **基群集名称**：此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdi** 将创建名为 __spark-hdi__ 的 Spark 群集和名为 **kafka-hdi** 的 Kafka 群集。
 
     * **群集登录用户名**：Spark 和 Kafka 群集的管理员用户名。
 

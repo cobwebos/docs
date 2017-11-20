@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6e8335b9c2f3609bf0c48c563205ffaee8575b20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>实施 Azure 企业基架的示例
 本主题通过示例介绍企业如何实施 [Azure 企业基架](resource-manager-subscription-governance.md)的建议事项。 其中使用一家虚构公司 Contoso 来演示常见方案的最佳实践。
@@ -68,7 +68,7 @@ Dave 为订阅分配了以下角色：
 * 另外，他还关心成本。 因此，他想要防止应用程序所有者不必要地创建成本不菲的虚拟机。  
 * 由于此应用程序为许多业务单位的开发人员提供服务，因此他想要使用业务单元和应用程序所有者标记每个资源。 使用这些标记，ETS 可向相应的团队计费。
 
-他创建了以下 [Resource Manager 策略](resource-manager-policy.md)：
+他创建了以下 [Azure 策略](../azure-policy/azure-policy-introduction.md)：
 
 | 字段 | 效果 | 说明 |
 | --- | --- | --- |
@@ -195,4 +195,4 @@ Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希�
 为了满足这些要求，Dave 启用了 Azure 安全中心。 他确保 Azure 安全中心正在监视这些资源，并向 DevOps 和安全团队提供了访问权限。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何创建 Resource Manager 模板，请参阅 [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md)（创建 Azure Resource Manager 模板的最佳实践）。
+* 若要了解如何创建资源管理器模板，请参阅[创建 Azure 资源管理器模板的最佳实践](resource-manager-template-best-practices.md)。
