@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 4a430fb250b9145166a3a212d416a4f1c754473f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: e9e0024c645d0e04e7cf9b17e440d7d8c10af232
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>预见性维护预配置解决方案演练
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/31/2017
 
 蓝色项是在部署预配置解决方案时，在同一区域中预配的 Azure 服务。 [预配页][lnk-azureiotsuite]显示了可部署预配置解决方案的区域列表。
 
-绿色项是表示飞机引擎的模拟设备。 可以在以下部分中了解有关这些模拟设备的详细信息。
+绿色项是表示飞机引擎的模拟设备。 可以在[模拟设备](#simulated-devices)部分了解有关这些模拟设备的详细信息。
 
 灰色项表示实现*设备管理*功能的组件。 当前的预见性维护预配置解决方案版本不会预配这些资源。 若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
 
@@ -65,7 +65,7 @@ IoT 中心会提供设备命令确认。
 **事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 然后，将这些值传递给某个 API，后者可公开用于计算引擎 RUL 的训练模型。 该 API 由预配为解决方案一部分的机器学习工作区公开。
 
 ## <a name="machine-learning"></a>机器学习
-机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 可以导航到预配解决方案 [azureiotsuite.com][lnk-azureiotsuite] 页面的磁贴中的机器学习工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。
+机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 可以导航到 [azureiotsuite.com][lnk-azureiotsuite] 页面的解决方案磁贴中的机器学习工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -78,10 +78,10 @@ IoT 中心会提供设备命令确认。
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
 
-[lnk-remote-monitoring]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-remote-monitoring]: iot-suite-v1-remote-monitoring-sample-walkthrough.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-faq]: iot-suite-faq.md
+[lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+[lnk-faq]: iot-suite-v1-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

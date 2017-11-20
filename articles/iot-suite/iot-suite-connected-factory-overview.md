@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2017
+ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 7fbb47390b6b1d918cbef0770ce1822591341866
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 3b56c91accfb6fe6358032e1dd329a931abfc3c1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>连接工厂预配置解决方案入门
 
@@ -54,7 +54,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 > [!NOTE]
 > 如果在部署预配置解决方案时遇到问题，请查看 [azureiotsuite.com 站点上的权限][lnk-permissions]和[连接工厂常见问题](iot-suite-faq-cf.md)。 如果问题仍然存在，请在[门户][lnk-portal]中创建服务票证。
 
-是否有你预期会看到但没有列出的解决方案详细信息？ 请在 [用户之声](https://feedback.azure.com/forums/321918-azure-iot)中向我们提供功能建议。
+是否有你预期会看到但没有列出的解决方案详细信息？ 请在[用户之声](https://feedback.azure.com/forums/321918-azure-iot)中提供功能建议。
 
 ## <a name="scenario-overview"></a>方案概述
 
@@ -302,5 +302,5 @@ OEE 使用与生产相关的关键运营参数来评价制造过程的效率。 
 [lnk-cfgithub]: https://github.com/Azure/azure-iot-connected-factory
 [lnk-rm-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [lnk-connect-cf]: iot-suite-connected-factory-gateway-deployment.md
-[lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+[lnk-permissions]: iot-suite-v1-permissions.md
+[lnk-faq]: iot-suite-v1-faq.md

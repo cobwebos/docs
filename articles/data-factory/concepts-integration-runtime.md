@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/15/2017
 ms.author: shlo
-ms.openlocfilehash: 7851a24e7053e03cc28927ffae3a2b69a3291635
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: c3cf9bfeabb65fa15941e3085d9f9146c3feef80
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -85,7 +85,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 ### <a name="compute-resource-and-scaling"></a>计算资源和缩放
 需要在本地计算机或专用网络中的虚拟机上安装自承载 IR。 目前，仅支持在 Windows 操作系统上运行自承载 IR。  
 
-为了获得高可用性和可伸缩性，可以通过在主动-主动模式中将逻辑实例与多个本地计算机相关联来向外扩展自承载 IR。  有关详细信息，请参阅操作方法指南下的创建和配置自承载 IR 主题，以了解详细信息。
+为了获得高可用性和可伸缩性，可以通过在主动-主动模式中将逻辑实例与多个本地计算机相关联来向外扩展自承载 IR。  有关详细信息，请参阅操作方法指南下的“如何创建和配置自承载 IR”一文。
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 集成运行时
 若要提升和切换现有 SSIS 工作负荷，可以创建 Azure-SSIS IR 以本机执行 SSIS 包。
@@ -96,7 +96,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 ### <a name="compute-resource-and-scaling"></a>计算资源和缩放
 Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 可以使用自己的 Azure SQL 数据库或托管实例（个人预览版）服务器托管附加到 SSIS 项目/包 (SSISDB) 的目录。 可以通过指定节点大小纵向扩展计算能力并通过指定群集中的节点数对其进行横向扩展。 可以在认为合适时停止和启动 Azure-SSIS 集成运行时以管理运行的成本。
 
-有关详细信息，请参阅操作方法指南下的创建和配置 Azure-SSIS IR 主题。  创建后，即可使用熟悉的工具（如 SQL Server 数据工具 (SSDT) 和 SQL Server Management Studio (SSMS)）部署和管理现有 SSIS 包，无需对其更改或仅做少量更改。
+有关详细信息，请参阅操作方法指南下的“如何创建和配置 Azure-SSIS IR”一文。  创建后，即可使用熟悉的工具（如 SQL Server 数据工具 (SSDT) 和 SQL Server Management Studio (SSMS)）部署和管理现有 SSIS 包，无需对其更改或仅做少量更改。
 
 有关 Azure-SSIS 运行时的详细信息，请参阅以下文章： 
 
@@ -123,7 +123,7 @@ Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 �
 ![要使用哪个 IR](media/concepts-integration-runtime/which-integration-runtime-to-use.png)
 
 ## <a name="integration-runtime-location"></a>集成运行时位置
-数据工厂位置是存储数据工厂元数据和启动管道触发所在的位置。 目前，支持的数据工厂位置有：美国东部、美国东部 2。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。 此行为通过多个区域中全局可用的 IR 来实现，以确保数据的合规性、有效性并减少网络对外费用。
+数据工厂位置是存储数据工厂元数据和启动管道触发所在的位置。 目前，支持的数据工厂位置有：美国东部、美国东部 2、西欧。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。 此行为通过多个区域中全局可用的 IR 来实现，以确保数据的合规性、有效性并减少网络对外费用。
 
 IR 位置定义其后端计算的位置，尤其是执行数据移动、活动分派和 SSIS 包执行的位置。 IR 位置可能与数据工厂所属的位置不同。 下图显示了数据工厂及其集成运行时的位置设置：
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 369e61b091c79df8ad2d874693aedc3b23e512c8
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 36cae39b7eaa0aff5f47f6a2511c7a0593f70b26
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>预见性维护预配置解决方案概述
 
@@ -83,7 +83,7 @@ Azure IoT 预测性维护解决方案使用通过此模板创建的回归模型�
 > [!NOTE]
 > 如果在部署预配置解决方案时遇到问题，请查看 [azureiotsuite.com 站点上的权限][lnk-permissions]和[常见问题][lnk-faq]。 如果问题仍然存在，请在[门户][lnk-portal]中创建服务票证。
 
-是否有你预期会看到但没有列出的解决方案详细信息？ 请在 [用户之声](https://feedback.azure.com/forums/321918-azure-iot)中向我们提供功能建议。
+是否有你预期会看到但没有列出的解决方案详细信息？ 请在[用户之声](https://feedback.azure.com/forums/321918-azure-iot)中提供功能建议。
 
 ## <a name="view-the-solution"></a>查看解决方案
 
@@ -149,11 +149,11 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 
 [lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF
-[lnk-faq]: iot-suite-faq.md
+[lnk-faq]: iot-suite-v1-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
-[lnk-permissions]: iot-suite-permissions.md
+[lnk-permissions]: iot-suite-v1-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

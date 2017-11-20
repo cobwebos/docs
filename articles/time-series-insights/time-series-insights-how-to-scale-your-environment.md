@@ -1,32 +1,31 @@
 ---
 title: "如何缩放 Azure 时序见解环境 | Microsoft Docs"
-description: "本教程介绍如何缩放 Azure 时序见解环境"
-keywords: 
+description: "本文介绍如何缩放 Azure 时序见解环境。 使用 Azure 门户增加或减少定价 SKU 中的容量。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: sandshadow
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: ba6bd1ab05bb7e24dd1bc307218e7a772fbde601
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: a6f10e14e3f9e5761734738caddc247d9e4a90cd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
-本教程介绍如何缩放时序见解环境。
+本文介绍如何使用 Azure 门户更改时序见解环境的容量。 容量是应用于入口速率、存储容量和所选 SKU 相关成本的乘数。 
 
-> [!NOTE]
-> 不允许跨 SKU 类型向上扩展。 不能将 S1 SKU 的环境转换为 S2 环境。
+可以使用 Azure 门户来增加或减少给定定价 SKU 中的容量。 
+
+但是，不允许更改定价层 SKU。 例如，不能将定价 SKU 为 S1 的环境转换为 S2，反之亦然。 
+
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU 入口速率和容量
 
@@ -44,12 +43,20 @@ ms.lasthandoff: 10/11/2017
 
 容量呈线性增长，因此容量为 2 的 S1 SKU 每日入口速率支持 2 GB（2 百万）的事件，每月支持 60 GB（6 千万）的事件。
 
-## <a name="changing-the-capacity-of-your-environment"></a>更改环境容量
+## <a name="change-the-capacity-of-your-environment"></a>更改环境容量
+1. 在 Azure 门户中，找到并选择自己的时序见解环境。 
 
-1. 在 Azure 门户中，选择想要更改其容量的环境。
-1. 在“设置”下，单击“配置”。
-1. 使用“容量”滑块来选择满足入口速率和存储容量需求的容量。
+2. 在“设置”标题下，选择“配置”。
+
+   ![configure.png](media/scale-your-environment/configure.png)
+
+3. 调整“容量”滑块来选择满足入口速率和存储容量需求的容量。 请注意，入口速率、存储容量和估计成本会动态更新，以显示更改产生的影响。 
+
+   ![滑块](media/scale-your-environment/slider.png)
+
+   或者，可以在滑块右侧的文本框中键入容量乘数的数字。 
+
+4. 选择“保存”以缩放环境。 在提交更改之前，进度指示器会短暂显示。 
 
 ## <a name="next-steps"></a>后续步骤
-
-* 验证新容量是否足以防止出现限制情况。 有关详细信息，请在[此处](time-series-insights-diagnose-and-solve-problems.md)参阅“环境可能受到了限制”一节。
+验证新容量是否足以防止出现限制情况。 有关详细信息，请参阅[如果环境受到限制](time-series-insights-diagnose-and-solve-problems.md)。

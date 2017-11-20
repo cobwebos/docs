@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/28/2017
-ms.openlocfilehash: cabba8ce04d62d35ca40b3ae35d9d40a6ec7b2b9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fcef59d38cce5f8860508ebeeda0b1b97f5e83f1
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="classify-iris-part-1-prepare-the-data"></a>鸢尾花分类（第 1 部分）：准备数据
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -69,7 +69,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    ![选择 iris](media/tutorial-classifying-iris/select_iris_csv.png)
 
    >[!IMPORTANT]
-   >确保从本练习的当前项目目录内部选择 iris.csv 文件， 否则后续步骤可能失败。 
+   >确保从本练习的当前项目目录内部选择 iris.csv 文件， 否则后续步骤可能失败。
+   
+4. 选择该文件之后，选择“完成”按钮。
 
 4. 此时会创建名为 iris-1.dsource 的新文件。 使用短划线 (-1) 为该文件进行唯一的命名，因为示例项目附带了没有编号的 iris.dsource 文件。  
 

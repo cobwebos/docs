@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 80a6caff51631637825d560d270198be0336e806
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f97b28d1588e959728163f7ab16d2550a79f610e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>管理多个 Azure 虚拟机的更新
+# <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
-使用更新管理可以管理 Azure 虚拟机的更新和修补程序。
-在 [Azure 自动化](automation-offering-get-started.md)帐户中，可以快速上架虚拟机、评估可用更新的状态、计划所需更新的安装以及查看部署结果，以验证更新是否已成功地应用到启用了更新管理的所有虚拟机。
+使用更新管理可以管理 Windows 和 Linux 计算机的更新和修补程序。
+在 [Azure 自动化](automation-offering-get-started.md)帐户中，可以快速上架计算机、评估可用更新的状态、计划所需更新的安装以及查看部署结果，以验证更新是否已成功地应用到启用了更新管理的所有虚拟机。
 
 ## <a name="prerequisites"></a>先决条件
 

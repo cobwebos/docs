@@ -1,55 +1,63 @@
 ---
-title: "向 Azure 时序见解环境发送事件 | Microsoft Docs"
-description: "本教程介绍将事件推送到时序见解环境的步骤"
-keywords: 
-services: tsi
-documentationcenter: 
+title: "如何向 Azure 时序见解环境发送事件 | Microsoft Docs"
+description: "本教程介绍如何创建和配置事件中心，并运行一个示例应用程序来推送要在 Azure 时序见解中显示的事件。"
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
-manager: jhubbard
-editor: 
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 07/21/2017
 ms.author: venkatja
-ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MarkMcGeeAtAquent
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 543fafac63423ab874c6c8e40d91a1ce0f161987
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>通过事件中心向时序见解环境发送事件
-
-本教程介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。
+本文介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
-1. 若要创建事件中心，请遵循事件中心[文档](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)中的说明。
+1. 若要创建事件中心，请遵循事件中心[文档](../event-hubs/event-hubs-create.md)中的说明。
 
-2. 请确保创建一个使用者组，由时序见解事件源独占使用。
+2. 在搜索栏中搜索“事件中心”。 在返回的列表中单击“事件中心”。
 
-  > [!IMPORTANT]
-  > 请确保该使用者组没有被任何其他服务（例如流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用“$Default”作为使用者组，则可能会被其他读取器重复使用。
+3. 单击事件中心的名称将其选中。
+
+4. 在中间配置窗口中的“实体”下，再次单击“事件中心”。
+
+5. 选择事件中心的名称对其进行配置。
 
   ![选择事件中心使用者组](media/send-events/consumer-group.png)
 
-3. 在事件中心创建“MySendPolicy”，用于在 csharp 示例中发送事件。
+6. 在“实体”下，选择“使用者组”。
+ 
+7. 请确保创建一个使用者组，由时序见解事件源独占使用。
+
+   > [!IMPORTANT]
+   > 请确保该使用者组没有被任何其他服务（例如流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用“$Default”作为使用者组，则可能会被其他读取器重复使用。
+
+8. 在“设置”标题下，选择“共享访问策略”。
+
+9. 在事件中心创建 **MySendPolicy**，用于在 csharp 示例中发送事件。
 
   ![选择共享访问策略，并单击“添加”按钮](media/send-events/shared-access-policy.png)  
 
   ![添加新的共享访问策略](media/send-events/shared-access-policy-2.png)  
 
 ## <a name="create-time-series-insights-event-source"></a>创建时序见解事件源
-1. 如果尚未创建事件源，请按[这些说明](time-series-insights-add-event-source.md)操作，以便创建事件源。
+1. 如果尚未创建事件源，请按[这些说明](time-series-insights-how-to-add-an-event-source-eventhub.md)操作，以便创建事件源。
 
-2. 指定“deviceTimestamp”作为时间戳属性名称 - 此属性在 csharp 示例中用作实际时间戳。 时间戳属性名称区分大小写，值在作为 JSON 发送到事件中心时必须采用 yyyy-MM-ddTHH:mm:ss.FFFFFFFK 格式。 如果此属性不存在于事件中，则会使用事件中心的排队时间。
+2. 指定 **deviceTimestamp** 作为时间戳属性名称 - 此属性在 C# 示例中用作实际时间戳。 时间戳属性名称区分大小写，值在作为 JSON 发送到事件中心时必须采用 yyyy-MM-ddTHH:mm:ss.FFFFFFFK 格式。 如果此属性不存在于事件中，则会使用事件中心的排队时间。
 
   ![创建事件源](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>用于推送事件的示例代码
-1. 转到事件中心策略“MySendPolicy”，复制带策略密钥的连接字符串。
+1. 转到名为 **MySendPolicy** 的事件中心策略。 复制包含策略密钥的**连接字符串**。
 
   ![复制 MySendPolicy 连接字符串](media/send-events/sample-code-connection-string.png)
 
@@ -163,6 +171,7 @@ namespace Microsoft.Rdx.DataGenerator
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
+
 ### <a name="sample-3"></a>示例 3
 
 #### <a name="input"></a>输入
@@ -235,5 +244,4 @@ namespace Microsoft.Rdx.DataGenerator
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
 ## <a name="next-steps"></a>后续步骤
-
-* 在[时序见解门户](https://insights.timeseries.azure.com)中查看环境
+在[时序见解资源管理器](https://insights.timeseries.azure.com)中查看环境。

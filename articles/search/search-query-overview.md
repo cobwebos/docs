@@ -1,5 +1,5 @@
 ---
-title: "查询 Azure 搜索索引 | Microsoft Docs"
+title: "Azure 搜索中的查询 | Microsoft Docs"
 description: "在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。"
 services: search
 manager: jhubbard
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 04/26/2017
+ms.date: 11/13/2017
 ms.author: ashmaka
-ms.openlocfilehash: 01be1b14e838c4f1b6f2498111fb8369c2bbb92a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: b1a96c2299e415db89f881fa72b150d50bb3c69c
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="query-your-azure-search-index"></a>查询 Azure 搜索索引
+# <a name="queries-in-azure-search"></a>Azure 搜索中的查询
 > [!div class="op_single_selector"]
 > * [概述](search-query-overview.md)
 > * [门户](search-explorer.md)

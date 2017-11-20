@@ -1,5 +1,5 @@
 ---
-title: "教程：在门户中创建第一个 Azure 搜索索引 | Microsoft Docs"
+title: "Azure 搜索门户页中的索引、查询和筛选器 | Microsoft Docs"
 description: "在 Azure 门户中使用预定义的示例数据生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。"
 services: search
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 06/26/2017
 ms.author: heidist
-ms.openlocfilehash: c49989058fdd98d623c5517060f725e5f7e436d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a67de3d385ccb1f65d026acfa0d4413df889bafe
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="tutorial-create-your-first-azure-search-index-in-the-portal"></a>教程：在门户中创建第一个 Azure 搜索索引
+# <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>在门户中创建、查询和筛选 Azure 搜索索引
 
 在 Azure 门户中，通过“导入数据”向导开始使用预定义的示例数据集快速生成索引。 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索。  
 
-这篇不包含代码的简介可帮助用户开始使用预定义的数据，使他们能够立即编写有趣的查询。 尽管门户工具不能取代代码，但可以帮助完成以下任务：
+这篇不包含代码的简介可帮助用户开始使用预定义的数据，使他们能够立即编写有趣的查询。 尽管门户工具不能取代代码，但可以用来完成以下任务：
 
 + 在没有丰富专业知识的情况下展开实践和学习
 + 在“导入数据”中编写代码之前制作索引原型
@@ -128,7 +128,7 @@ ms.lasthandoff: 10/11/2017
 
 **`search=seattle`**
 
-+ `search` 参数用于输入关键字来执行全文搜索，在本例中，将返回华盛顿州金县的结果列表，其中包含文档中任何可搜索字段内的 *Seattle*。 
++ **search**` 参数用于输入关键字来执行全文搜索，在本例中，将返回华盛顿州金县的结果列表，其中包含文档中任何可搜索字段内的 Seattle。 
 
 + **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 根据具体的文档，可能需要编写用于处理搜索结果的代码来提取重要元素。 
 
@@ -136,35 +136,48 @@ ms.lasthandoff: 10/11/2017
 
 **`search=seattle&$count=true&$top=100`**
 
-+ `&` 符号用于追加可以按任意顺序指定的搜索参数。 
++ **&** 符号用于追加可以按任意顺序指定的搜索参数。 
 
-+  `$count=true` 参数返回所有已返回文档的总计数。 可以通过监视 `$count=true` 报告的更改来验证筛选器查询。 
++  **$count=true** 参数返回所有已返回文档的总计数。 可以通过监视 **$count=true** 报告的更改来验证筛选器查询。 
 
-+ `$top=100` 返回所有文档中排名最高的 100 个文档。 默认情况下，Azure 搜索返回前 50 个最佳匹配项。 可以通过 `$top` 增加或减少返回的结果。
++ **$top=100** 返回所有文档中排名最高的 100 个文档。 默认情况下，Azure 搜索返回前 50 个最佳匹配项。 可以通过 **$top** 增加或减少返回的结果。
 
-**`search=*&facet=city&$top=2`**
 
-+ `search=*` 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有城市组成。
+## <a name="filter-query"></a> 筛选查询
 
-+  `facet` 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于城市数目。 Azure 搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
-
-+ `$top=2` 返回两个文档，演示如何使用 `top` 来减少或增加结果。
-
-**`search=seattle&facet=beds`**
-
-+ 此查询针对 *Seattle* 执行文本搜索后返回的床位分面。 可将 `"beds"` 指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组（包含 3 间卧室和 4 间卧室的房屋列表）。 
-
-+ 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
+追加 **$filter** 参数时，会将筛选器包括在搜索请求中。 
 
 **`search=seattle&$filter=beds gt 3`**
 
-+ `filter` 参数返回与提供的条件匹配的结果。 在本例中，条件为卧室数大于 3。 
++ **$filter** 参数返回与提供的条件匹配的结果。 在本例中，条件为卧室数大于 3。 
 
 + 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
 
+## <a name="facet-query"></a> 分面查询
+
+分面筛选器包括在搜索请求中。 可以使用分面参数，返回与所提供分面值匹配的文档的聚合计数。 
+
+**`search=*&facet=city&$top=2`**
+
++ **search=*** 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有城市组成。
+
++  **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于城市数目。 Azure 搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
+
++ **$top=2** 返回两个文档，演示如何使用 `top` 来减少或增加结果。
+
+**`search=seattle&facet=beds`**
+
++ 此查询针对 *Seattle* 执行文本搜索后返回的床位分面。 可将 beds 一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组（包含 3 间卧室和 4 间卧室的房屋列表）。 
+
++ 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
+
+## <a name="highlight-query"></a> 添加突出显示
+
+搜索词突出显示是对与关键字匹配的文本设置的格式，表示在特定字段中找到的匹配项。 如果搜索词深藏在说明中，可以添加搜索词突出显示来方便找到这些词。 
+
 **`search=granite countertops&highlight=description`**
 
-+ 搜索词突出显示是对与关键字匹配的文本设置的格式，表示在特定字段中找到的匹配项。 如果搜索词深藏在说明中，可以添加搜索词突出显示来方便找到这些词。 在本例中，使用带有格式的短语 `"granite countertops"` 可以更方便地在说明字段中看到该短语。
++ 在此示例中，格式化短语 granite countertops 更容易在说明字段中发现。
 
 **`search=mice&highlight=description`**
 
@@ -172,23 +185,29 @@ ms.lasthandoff: 10/11/2017
 
 + Azure 搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 搜索使用的默认分析器是标准的 Lucene 分析器。 
 
+## <a name="fuzzy-search"></a> 使用模糊搜索
+
+执行典型的搜索时，如果拼错单词（例如，将西雅图地区的 Samammish 高原拼写为“samamish”），则无法返回匹配项。 若要处理拼写错误，可以使用下一个示例所述的模糊搜索。
+
 **`search=samamish`**
 
-+ 执行典型的搜索时，如果拼错单词（例如，将西雅图地区的 Samammish 高原拼写为“samamish”），则无法返回匹配项。 若要处理拼写错误，可以使用下一个示例所述的模糊搜索。
++ 此示例将西雅图地区的一个街区拼错。
 
 **`search=samamish~&queryType=full`**
 
-+ 指定 `~` 符号并使用完整查询分析器时，将启用模糊搜索，它会解释并正确分析 `~` 语法。 
++ 指定 **~** 符号并使用完整查询分析器时，将启用模糊搜索，它会解释并正确分析 **~** 语法。 
 
-+ 选择启用完整查询分析器（设置 `queryType=full`）后，可以使用模糊搜索。 有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 搜索中的 Lucene 查询语法）。
++ 选择启用完整查询分析器（设置 **queryType=full**）后，可以使用模糊搜索。 有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 搜索中的 Lucene 查询语法）。
 
-+ 如果未指定 `queryType`，将使用默认的简单查询分析器。 简单查询分析器速度更快，但如果需要执行模糊搜索、正则表达式、近似搜索或其他高级查询类型，则需要使用完整语法。 
++ 如果未指定 **queryType**，将使用默认的简单查询分析器。 简单查询分析器速度更快，但如果需要执行模糊搜索、正则表达式、近似搜索或其他高级查询类型，则需要使用完整语法。 
+
+## <a name="geo-search"></a> 尝试地理空间搜索
+
+对于包含坐标的字段，支持通过 [edm.GeographyPoint 数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)执行地理空间搜索。 地域搜索是 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）中指定的一种筛选器类型。 
 
 **`search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`**
 
-+ 对于包含坐标的字段，支持通过 [edm.GeographyPoint 数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)执行地理空间搜索。 地域搜索是 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）中指定的一种筛选器类型。 
-
-+ 该示例查询将筛选位置数据的所有结果，这些结果与给定地点（以纬度和经度坐标的形式指定）之间的距离小于 5 公里。 通过添加 `$count`，可以查看在更改距离或坐标时会返回多少个结果。 
++ 该示例查询将筛选位置数据的所有结果，这些结果与给定地点（以纬度和经度坐标的形式指定）之间的距离小于 5 公里。 通过添加 **$count**，可以查看在更改距离或坐标时会返回多少个结果。 
 
 + 如果搜索应用程序具有“附近查找”功能或使用地图导航，地理空间搜索非常有用。 但它不属于全文搜索。 如果用户要求是按名称搜索城市或国家/地区，请添加包含该城市或国家/地区的名称的字段，并添加坐标。
 

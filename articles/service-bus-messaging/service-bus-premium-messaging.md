@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
-ms.author: darosa;sethm
-ms.openlocfilehash: a0c169e0580468e83a07c077f8c60e83d3fb52f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/10/2017
+ms.author: sethm
+ms.openlocfilehash: 613bb074063e436cdbd54fe5aee9c49109a2d8f2
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -60,12 +60,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 
-高级消息传送很容易入门，其操作过程类似于标准消息传送。 首先[创建一个命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“选择定价层”下选择“高级”。
 
 ![create-premium-namespace][create-premium-namespace]
 
-也可以[使用 Azure Resource Manager 模板创建高级命名空间](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/)。
-
+也可以[使用 Azure 资源管理器模板创建高级命名空间](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 * [Azure 服务总线高级消息传送简介（博客文章）](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure 服务总线高级消息传送简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
-* [如何使用 Service Bus 队列](service-bus-dotnet-get-started-with-queues.md)
+* [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 
 <!--Image references-->
 
