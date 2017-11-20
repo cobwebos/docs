@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/03/2017
 ms.author: mezha
-ms.openlocfilehash: 700f4c49bbcda1eccbcc7eafc703e625697fa2b4
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 2f62c0c6783c3cdaf1ffda3299673071b8e4a6f2
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure 内容交付网络资产
 
@@ -42,8 +42,6 @@ ms.lasthandoff: 11/06/2017
 
 有关详细信息，请参阅[设置令牌身份验证](#setting-up-token-authentication)中每个参数的详细配置示例。
 
-在生成加密令牌后，将其作为查询字符串追加​​到文件 URL 路径的末尾。 例如，`http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`。
-
 ## <a name="reference-architecture"></a>参考体系结构
 
 以下工作流关系图介绍了CDN 通过令牌身份验证来使用 Web 应用的工作原理。
@@ -64,15 +62,21 @@ ms.lasthandoff: 11/06/2017
 
 2. 将鼠标悬停在“HTTP Large”上，然后在浮出控件中单击“令牌身份验证”。 然后即可设置加密密钥和加密参数，如下所示：
 
-    1. 在“主密钥”框中输入唯一的加密密钥，并在“备份密钥”框中输入备份密钥（可选）。
-
-        ![CDN 令牌身份验证设置密钥](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+    1. 创建一个或多个加密密钥。 加密密钥区分大小写，可以包含字母数字字符的任意组合。 不允许其他任何类型的字符，包括空格。 最大长度为 250 个字符。 为了确保加密密钥随机，我们建议使用 OpenSSL 工具创建加密密钥。 OpenSSL 工具采用以下语法：`rand -hex <key length>`。 例如，`OpenSSL> rand -hex 32`。 为了避免停机，请创建主密钥和备用密钥。 更新主密钥时，可以使用备用密钥不间断地访问内容。
     
-    2. 使用加密工具设置加密参数。 使用加密工具，可根据过期时间、国家/地区、引用网站、协议和客户端 IP 的任意组合来允许或拒绝请求。 
+    2. 在“主密钥”框中输入唯一的加密密钥，并在“备份密钥”框中输入备份密钥（可选）。
 
-        ![CDN 加密工具](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+    3. 从每个密钥的“最低加密版本”下拉列表中选择其最低加密版本，单击“更新”：
+       - **V2**：指示该密钥可用于生成版本 2.0 和 3.0 令牌。 仅当要从旧版 2.0 加密密钥过渡到 3.0 版密钥时，才使用此选项。
+       - **V3**：（建议）指示该密钥只可用于生成 3.0 令牌。
 
-       在“加密工具”区域中，输入以下加密参数中的一个或多个值：  
+    ![CDN 令牌身份验证设置密钥](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+    
+    4. 使用加密工具设置加密参数并生成令牌。 使用加密工具，可根据过期时间、国家/地区、引用网站、协议和客户端 IP 的任意组合来允许或拒绝请求。 尽管可以组合用来构成令牌的参数数目与组合没有限制，但令牌的总长度限制为 512 个字符。 
+
+       ![CDN 加密工具](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+
+       在“加密工具”部分中，输入以下加密参数中的一个或多个值：  
 
        - ec_expire：在令牌过期后为其分配一个过期时间。 过期时间之后提交的请求会被拒绝。 此参数使用 Unix 时间戳，该时间戳基于自 `1/1/1970 00:00:00 GMT` 的标准时期开始所累计的总秒数。 （可以使用在线工具在标准时间与 Unix 时间之间进行转换。）例如，如果要令牌在 `12/31/2016 12:00:00 GMT` 时过期，请使用 Unix 时间戳值 `1483185600`，如下所示。 
     
@@ -116,13 +120,17 @@ ms.lasthandoff: 11/06/2017
             
          ![CDN ec_clientip 示例](./media/cdn-token-auth/cdn-token-auth-clientip.png)
 
-    3. 在输入加密参数值后，如果你已同时创建了主密钥和备份密钥，请从“要加密的密钥”列表中选择要加密的密钥类型，从“加密版本”列表中选择一个加密版本，然后单击“加密”。
+    5. 在输入加密参数值后，如果已同时创建了主密钥和备份密钥，请从“要加密的密钥”列表中选择要加密的密钥类型。
+    
+    6. 从“加密版本”列表中选择一个加密版本：“V2”表示版本 2，“V3”表示版本 3（建议）。 然后，单击“加密”生成令牌。
+
+    生成令牌后，它会显示在“生成的令牌”框中。 若要使用该令牌，请将其作为查询字符串追加​​到文件 URL 路径的末尾。 例如，`http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`。
         
-    4. 使用解密工具测试令牌令牌（可选）。 将令牌值粘贴到“要解密的令牌”框中。 从“要解密的密钥”下拉列表中选择要解密的加密密钥类型，然后单击“解密”。
+    7. 使用解密工具测试令牌令牌（可选）。 将令牌值粘贴到“要解密的令牌”框中。 从“要解密的密钥”下拉列表中选择加密密钥，然后单击“解密”。
 
-    5. 可以自定义请求被拒绝时返回的响应代码类型。 从“响应代码”下拉列表中选择代码，并单击“保存”。 默认情况下将选择 403 响应代码（禁止）。 对于某些响应代码，还可在“标头值”框中输入错误页面的 URL。 
+    解密令牌后，其参数会显示在“原始参数”框中。
 
-    6. 在生成加密令牌后，将其作为查询字符串追加​​到文件 URL 路径的末尾。 例如，`http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`。
+    8. 可以自定义请求被拒绝时返回的响应代码类型。 从“响应代码”下拉列表中选择代码，并单击“保存”。 默认情况下将选择 403 响应代码（禁止）。 对于某些响应代码，还可在“标头值”框中输入错误页面的 URL。 
 
 3. 在“HTTP Large”下，单击“规则引擎”。 使用此规则引擎来定义应用功能、启用令牌身份验证功能以及启用其他令牌身份验证相关功能的路径。 有关详细信息，请参阅[规则引擎引用](cdn-rules-engine-reference.md)。
 
@@ -151,4 +159,4 @@ ms.lasthandoff: 11/06/2017
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN 功能和提供程序定价
 
-有关信息，请参阅 [CDN 概述](cdn-overview.md)。
+有关功能的信息，请参阅 [CDN 概述](cdn-overview.md)。 有关定价的信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。

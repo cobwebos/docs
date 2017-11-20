@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/09/2017
 ms.author: mazha
-ms.openlocfilehash: 145067c2ce50b41c4783f4de4052c0e7cb529fc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba9c28f0e6df25b101b45edf836d0b95056cbc6f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium"></a>使用查询字符串控制 Azure CDN 缓存行为 - 高级
+# <a name="control-azure-content-delivery-network-caching-behavior-with-query-strings---premium"></a>使用查询字符串控制 Azure 内容交付网络缓存行为 - 高级
 > [!div class="op_single_selector"]
 > * [标准](cdn-query-string.md)
 > * [来自 Verizon 的高级 Azure CDN](cdn-query-string-premium.md)
@@ -28,34 +28,32 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="overview"></a>概述
-查询字符串缓存可以控制在文件包含查询字符串时被缓存的方式。
+使用 Azure 内容交付网络 (CDN)，可以控制针对包含查询字符串的 Web 请求缓存文件的方式。 在包含查询字符串的 Web 请求中，查询字符串是 `?` 字符后出现的请求部分。 查询字符串可以包含一个或多个参数，这些参数由 `&` 字符分隔。 例如，`http://www.domain.com/content.mov?data1=true&data2=false`。 如果请求中有多个查询字符串参数，参数的顺序并不重要。 
 
 > [!IMPORTANT]
-> 标准和高级 CDN 产品提供相同的查询字符串缓存功能，但用户界面不同。  本文档描述**来自 Verizon 的高级 Azure CDN** 的界面。  关于**来自 Akamai 的标准 Azure CDN** 和**来自 Verizon 的标准 Azure CDN**，请参阅[控制含查询字符串的 CDN 请求的缓存行为](cdn-query-string.md)。
-> 
-> 
+> 标准和高级 CDN 产品提供相同的查询字符串缓存功能，但用户界面不同。  本文介绍**来自 Verizon 的高级 Azure CDN** 的界面。 关于**来自 Akamai 的标准 Azure CDN** 和**来自 Verizon 的标准 Azure CDN**，请参阅[控制含查询字符串的 CDN 请求的缓存行为](cdn-query-string.md)。
+>
 
-有以下三种模式可用：
+可用的三种查询字符串模式如下：
 
-* **标准缓存**：这是默认模式。  CDN 边缘节点将来自请求者的查询字符串传递到第一个请求上的源并缓存该资产。  所有由边缘节点支持的该资产的后续请求将忽略查询字符串，直至缓存的资产到期。
-* **无缓存**：在此模式下，包含查询字符串的请求不会被缓存在 CDN 边缘节点。  边缘节点直接从源检索资产，并将其传递给每个请求的请求者。
-* **唯一缓存**：此模式将具有查询字符串的每个请求视为具有其自己的缓存的唯一资产。  例如，来自于源对 *foo.ashx?q=bar* 的请求做出的响应将缓存在边缘节点，并为具有该查询字符串的后续缓存返回该响应。  对 *foo.ashx?q=somethingelse* 做出的请求将作为具有其自己的生存时间的单独资产来缓存。
+- **标准缓存**：默认模式。 在此模式下，CDN 边缘节点将来自请求者的查询字符串传递到第一个请求上的源并缓存该资产。 所有由边缘节点处理的该资产的后续请求将忽略查询字符串，直至缓存的资产到期。
+- **无缓存**：在此模式下，包含查询字符串的请求不会被缓存在 CDN 边缘节点。 边缘节点直接从源检索资产，并将其传递给每个请求的请求者。
+- **唯一缓存**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，源对 `example.ashx?q=test1` 的请求做出的响应将缓存在边缘节点，并为具有同一查询字符串的后续缓存返回该响应。 `example.ashx?q=test2` 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>为高级 CDN 配置文件更改查询字符串缓存设置
-1. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
+1. 打开 CDN 配置文件，单击“管理”。
    
-    ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-query-string-premium/cdn-manage-btn.png)
+    ![CDN 配置文件管理按钮](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
-    随即 CDN 管理门户打开。
-2. 将鼠标悬停在“**HTTP 大**”选项卡上，然后悬停在“**缓存设置**”浮出控件。  单击“**查询字符串缓存**”。
+    CDN 管理门户打开。
+2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上。 单击“查询字符串缓存”。
    
     将显示查询字符串缓存选项。
    
     ![CDN 查询字符串缓存选项](./media/cdn-query-string-premium/cdn-query-string.png)
-3. 完成选择后，单击“**更新**”按钮。
+3. 选择查询字符串模式，单击“更新”。
 
 > [!IMPORTANT]
-> 设置更改不会立即显示，因为注册通过 CDN 传播需要时间。  对于<b>来自 Verizon 的 Azure CDN</b> 配置文件，传播通常会在 90 分钟内完成，但某些情况下可能更长。
-> 
-> 
+> 由于注册通过 CDN 传播需要时间，缓存字符串设置更改不会立即显示。 对于“来自 Verizon 的 Azure CDN 高级版”配置文件，传播通常在 90 分钟内完成，但某些情况下可能更长。
+ 
 

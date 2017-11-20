@@ -2,19 +2,19 @@
 title: "如何在 Azure 机器学习工作台中使用 Jupyter Notebook | Microsoft Docs"
 description: "Azure 机器学习工作台的 Jupyter Notebook 功能使用指南"
 services: machine-learning
-author: jopela
-ms.author: jopela
+author: rastala
+ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.date: 11/09/2017
+ms.openlocfilehash: 80cdd07bff865776a68897a7b8c1b3fe66b76b18
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>如何在 Azure 机器学习工作台中使用 Jupyter Notebook
 
@@ -31,12 +31,12 @@ Azure 机器学习工作台通过 Jupyter Notebook 的集成支持交互式数�
 - **服务器**：承载笔记本文件（.ipynb 文件）的 Web 服务器
 - **内核**：实际执行笔记本单元的运行时环境
 
-有关更多详细信息，请参阅官方 [Jupyter 文档](http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html)。 以下图表说明了该客户端、服务器和内核体系结构如何映射到 Azure ML 中的组件。
+有关更多详细信息，请参阅官方 [Jupyter 文档](http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html)。 下图描绘了该客户端、服务器和内核体系结构如何映射到 Azure ML 中的组件。
 
 ![笔记本体系结构](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-architecture.png)
 
 ## <a name="kernels-in-azure-ml-workbench-notebook"></a>Azure ML 工作台笔记本中的内核
-只需配置运行配置并计算项目中 `aml_config`文件夹中的目标就可以访问 Azure ML 工作台中的很多不同内核。 通过发出 `az ml computetarget attach` 命令添加新计算目标相当于添加新内核。
+配置运行配置并计算项目中 `aml_config`文件夹中的目标可以访问 Azure ML 工作台中的很多不同内核。 通过发出 `az ml computetarget attach` 命令添加新计算目标相当于添加新内核。
 
 >[!NOTE]
 >查看[配置执行](experimentation-service-configuration.md)以了解更多有关运行配置和计算目标的详细信息。
@@ -48,6 +48,9 @@ Azure 机器学习工作台通过 Jupyter Notebook 的集成支持交互式数�
 
 ### <a name="local-python-kernel"></a>本地 Python 内核
 此类 Python 内核支持在本地计算机上执行。 它与 Azure 机器学习的运行历史记录支持集成。 该内核的名称通常为“my_project_name local”。
+
+>[!NOTE]
+>不要使用“Python 3”内核。 它是 Jupyter 默认提供的独立内核。 它没有与 Azure 机器学习功能集成。
 
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Docker 中的 Python 内核（本地或远程）
 此类 Python 内核在本地计算机或远程 Linux 虚拟机中的 Docker 容器中运行。 该内核的名称通常为“my_project docker”。 相关的 `docker.runconfig` 文件将字段 `Framework` 设置为 `Python`。
@@ -104,6 +107,33 @@ $ az ml notebook start
 现在可以单击 `.ipynb` 笔记本文件，打开它并设置内核（如果尚未设置），然后启动交互式会话。
 
 ![项目仪表板](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-08.png)
+
+## <a name="use-magic-commands-to-manage-experiments"></a>使用 magic 命令管理试验
+
+可以在笔记本单元中使用 [magic 命令](http://ipython.readthedocs.io/en/stable/interactive/magics.html)来跟踪运行历史记录和保存输出，例如模型或数据集。
+
+若要跟踪单个笔记本单元的运行，可使用“%azureml history on”magic 命令。 启用历史记录后，每个单元运行将作为条目显示在运行历史记录中。
+
+```
+%azureml history on
+from azureml.logging import get_azureml_logger
+logger = get_azureml_logger()
+logger.log("Cell","Load Data")
+```
+
+若要禁用单元运行跟踪，可使用“%azureml history off”magic 命令。
+
+可以使用“%azureml upload”magic 命令保存运行中的模型和数据文件。 保存的对象作为输出显示在给定运行的运行历史记录视图中。
+
+```
+modelpath = os.path.join("outputs","model.pkl")
+with open(modelpath,"wb") as f:
+    pickle.dump(model,f)
+%azureml upload outputs/model.pkl
+```
+
+>[!NOTE]
+>必须将输出保存到名为“outputs”的文件夹
 
 ## <a name="next-steps"></a>后续步骤
 - 若要了解如何使用 Jupyter Notebook，请访问 [Jupyter 官方文档](http://jupyter-notebook.readthedocs.io/en/latest/)。    

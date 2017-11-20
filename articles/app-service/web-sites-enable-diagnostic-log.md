@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1366cd79248b2e0008234a5da0d87552e6530d80
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a9c5743c92ac48202c19c2f6f024238c147d8444
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -48,7 +48,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 将内容发布到某个 Web 应用时，应用服务 Web 应用还记录部署信息。 此操作自动执行，不会对部署日志记录进行配置设置。 部署日志记录允许确定部署失败的原因。 例如，如果使用自定义部署脚本，可能会使用部署日志记录确定该脚本失败的原因。
 
 ## <a name="enablediag"></a>如何启用诊断
-要在 [Azure 门户](https://portal.azure.com)中启用诊断，请转到 Web 应用的边栏选项卡，并依次单击“设置”>“诊断日志”。
+要在 [Azure 门户](https://portal.azure.com)中启用诊断，请转到 Web 应用的页，并依次单击“设置”>“诊断日志”。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![日志部分](./media/web-sites-enable-diagnostic-log/logspart.png)
@@ -113,7 +113,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 
     Save-AzureWebSiteLog -Name webappname
 
-这会将 **-Name** 参数指定的 Web 应用的日志保存到当前目录中名为 **logs.zip** 的文件。
+此命令会将 **-Name** 参数指定的 Web 应用的日志保存到当前目录中名为 **logs.zip** 的文件。
 
 > [!NOTE]
 > 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/)。
@@ -125,7 +125,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 
     azure site log download webappname
 
-这会将名为“webappname”的 Web 应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
+此命令将名为“webappname”的 Web 应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
 
 > [!NOTE]
 > 如果尚未安装 Azure 命令行接口 (Azure CLI)，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure CLI](../cli-install-nodejs.md)。
@@ -136,11 +136,11 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 Visual Studio Application Insights 可提供用于筛选和搜索日志的工具，以及用于将日志与请求和其他事件关联的工具。
 
 1. 在 Visual Studio 中，将 Application Insights SDK 添加到项目。
-   * 在解决方案资源管理器中，右键单击项目并选择“添加 Application Insights”。 本教程介绍所有步骤，包括创建 Application Insights 资源。 [了解详细信息](../application-insights/app-insights-asp-net.md)
+   * 在解决方案资源管理器中，右键单击项目并选择“添加 Application Insights”。 界面会引导你完成所有步骤，包括创建 Application Insights 资源。 [了解详细信息](../application-insights/app-insights-asp-net.md)
 2. 将跟踪侦听器包添加到项目。
    * 右键单击项目，并选择“管理 NuGet 包”。 选择 `Microsoft.ApplicationInsights.TraceListener` [了解详细信息](../application-insights/app-insights-asp-net-trace-logs.md)
 3. 上传项目并运行，以生成日志数据。
-4. 在 [Azure 门户](https://portal.azure.com/)中，浏览到新的 Application Insights 资源，并打开“搜索”。 会显示日志数据，以及请求、使用情况和其他遥测。 某些遥测可能需要几分钟才能到达：请单击“刷新”。 [了解详细信息](../application-insights/app-insights-diagnostic-search.md)
+4. 在 [Azure 门户](https://portal.azure.com/)中，浏览到新的 Application Insights 资源，并打开“搜索”。 随后应会显示日志数据，以及请求、使用情况和其他遥测。 某些遥测可能需要几分钟才能到达：请单击“刷新”。 [了解详细信息](../application-insights/app-insights-diagnostic-search.md)
 
 [了解有关使用 Application Insights 跟踪性能的详细信息](../application-insights/app-insights-azure-web-apps.md)
 
@@ -160,7 +160,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
     Get-AzureWebSiteLog -Name webappname -Tail
 
-这会连接到 **-Name** 参数指定的 Web 应用，并在该 Web 应用上出现日志事件时开始将信息流式传输到 PowerShell 窗口。 写入以 .txt、.log 或 .htm 结尾并存储在 /LogFiles 目录 (d:/home/logfiles) 中文件的所有信息将流式传输至本地控制台。
+此命令连接到 **-Name** 参数指定的 Web 应用，并在该 Web 应用上出现日志事件时开始将信息流式传输到 PowerShell 窗口。 写入以 .txt、.log 或 .htm 结尾并存储在 /LogFiles 目录 (d:/home/logfiles) 中文件的所有信息将流式传输至本地控制台。
 
 若要筛选特定事件（如错误），请使用 **-Message** 参数。 例如：
 
@@ -182,7 +182,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
     az webapp log tail --name webappname --resource-group myResourceGroup
 
-这会连接到名为“webappname”的 Web 应用，并在该 Web 应用上出现日志事件时开始将信息流式传输到窗口。 写入以 .txt、.log 或 .htm 结尾并存储在 /LogFiles 目录 (d:/home/logfiles) 中文件的所有信息将流式传输至本地控制台。
+此命令连接到名为“webappname”的 Web 应用，并在该 Web 应用上出现日志事件时开始将信息流式传输到窗口。 写入以 .txt、.log 或 .htm 结尾并存储在 /LogFiles 目录 (d:/home/logfiles) 中文件的所有信息将流式传输至本地控制台。
 
 若要筛选特定事件（如错误），请使用 **--Filter** 参数。 例如：
 
@@ -205,7 +205,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
 记录到文件系统或使用流式传输收到的每行都会采用以下格式：
 
-    {Date}  PID[{process id}] {event type/level} {message}
+    {Date}  PID[{process ID}] {event type/level} {message}
 
 例如，错误事件可能类似如下所示：
 
@@ -258,7 +258,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 >
 
 ### <a name="failed-request-traces"></a>失败请求跟踪
-失败请求跟踪存储在名为 **fr######.xml** 的 XML 文件中。 为了便于查看记录信息，在 XML 文件所在目录中提供了一个名为 **freb.xsl** 的 XSL 样式表。 在 Internet Explorer 中打开其中一个 XML 文件，使用 XSL 样式表提供易于阅读的跟踪信息。 显示结果类似如下所示：
+失败请求跟踪存储在名为 **fr######.xml** 的 XML 文件中。 为了便于查看记录信息，在 XML 文件所在目录中提供了一个名为 **freb.xsl** 的 XSL 样式表。 如果在 Internet Explorer 中打开其中一个 XML 文件，Internet Explorer 会使用 XSL 样式表提供易于阅读的跟踪信息。 这会显示类似如下内容：
 
 ![在浏览器中查看失败请求](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -282,7 +282,3 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 >
 >
-
-## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 有关从旧门户更改为新门户的指南，请参阅：[有关在 Azure 门户中导航的参考](http://go.microsoft.com/fwlink/?LinkId=529715)

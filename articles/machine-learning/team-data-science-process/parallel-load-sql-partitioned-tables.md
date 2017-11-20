@@ -4,7 +4,7 @@ description: "使用 SQL 分区表并行批量导入数据"
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
 ms.service: machine-learning
@@ -12,20 +12,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/09/2017
 ms.author: bradsev
-ms.openlocfilehash: 899f20b3642612386f2513c9c8649cd845be826e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77638ff52edbc2b782b21a4ca1c727a2b46f22f3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
 本文档介绍如何构建分区表来快速将数据并行批量导入 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
 * [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）。
-* 将数据库文件组添加到将保存已分区物理文件的数据库。该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成
+* 将数据库文件组添加到将保存已分区物理文件的数据库。 
+* 该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成。
 * 向每个数据库文件组中添加一个或多个文件（根据需要）。
   
   > [!NOTE]
@@ -55,18 +56,19 @@ ms.lasthandoff: 10/11/2017
     ')
 
 ## <a name="create-a-partitioned-table"></a>创建分区表
-根据映射到在上一步中创建的数据库文件组的数据架构，创建分区表。 当将数据批量导入到分区表时，会根据分区方案在文件组之中分布记录，如下所述。
+若要根据映射到在上一步中创建的数据库文件组的数据架构创建分区表，必须先创建分区函数和方案。 将数据批量导入到分区表时，会根据分区方案在文件组之中分布记录，如下所述。
 
-**要创建分区表，需要：**
-
-* [创建分区函数](https://msdn.microsoft.com/library/ms187802.aspx)，用于定义要包括在每个分区表中的值/边界范围，例如，按 2013 年的月份（某些 \_datetime\_ 字段）限制分区：
+### <a name="1-create-a-partition-function"></a>1.创建分区函数
+[创建分区函数](https://msdn.microsoft.com/library/ms187802.aspx)此函数用于定义要包括在每个分区表中的值/边界范围，例如，按 2013 年的月份（某些 \_datetime\_ 字段）限制分区：
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
             '20130201', '20130301', '20130401',
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
-* [创建分区方案](https://msdn.microsoft.com/library/ms179854.aspx)，将分区函数中的每个分区范围映射到物理文件组，例如：
+
+### <a name="2-create-a-partition-scheme"></a>2.创建分区方案
+[创建分区方案](https://msdn.microsoft.com/library/ms179854.aspx)。 此方案将分区函数中的每个分区范围映射到物理文件组，例如：
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -83,7 +85,9 @@ ms.lasthandoff: 10/11/2017
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* [创建分区表](https://msdn.microsoft.com/library/ms174979.aspx)（根据数据架构），并指定用于对表进行分区的分区方案和约束字段，例如：
+
+### <a name="3-create-a-partition-table"></a>3.创建分区表
+[创建分区表](https://msdn.microsoft.com/library/ms174979.aspx)（根据数据架构），并指定用于对表进行分区的分区方案和约束字段，例如：
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
@@ -91,6 +95,7 @@ ms.lasthandoff: 10/11/2017
 有关详细信息，请参阅[创建分区表和索引](https://msdn.microsoft.com/library/ms188730.aspx)。
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>批量导入每个分区表的数据
+
 * 可以使用 BCP、BULK INSERT 或其他方法（如 [SQL Server 迁移向导](http://sqlazuremw.codeplex.com/)）。 提供的示例使用 BCP 方法。
 * [更改数据库](https://msdn.microsoft.com/library/bb522682.aspx)，以将事务日志记录方案更改为 BULK_LOGGED 以最大限度降低日志记录开销，例如：
   
@@ -178,5 +183,5 @@ ms.lasthandoff: 10/11/2017
   > 
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>操作示例中的高级分析流程和技术
-有关 Cortana Analytics 过程中使用公用数据集的端到端演练示例，请参阅[操作中的 Cortana Analytics 过程：SQL Server](sql-walkthrough.md)。
+有关使用公用数据集的团队数据科学过程的端到端演练示例，请参阅[运行中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
 

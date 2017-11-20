@@ -15,34 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: c91b7232b2f87e0b4b5e659126b96a6ef8b4202c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 159f30fc59a050b9a4ff983e8ac84e424104b484
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>在 Azure 中部署 OpenShift 容器平台
 
-在 Azure 中部署 OpenShift 容器平台的方法有多种。 可以手动部署所有必要的 Azure 基础结构组件，然后按照 OpenShift 容器平台[文档](https://docs.openshift.com/container-platform/3.6/welcome/index.html)进行操作。
-也可使用现有的资源管理器模板，该模板可简化 OpenShift 容器平台群集的部署流程。 在[此处](https://github.com/Microsoft/openshift-container-platform/)可找到此类模板。
+可以使用多种方法之一在 Azure 中部署 OpenShift 容器平台：
 
-另一种做法是使用 [Azure Marketplace 产品/服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.openshift-container-platform?tab=Overview)。
+- 可以手动部署必要的 Azure 基础结构组件，然后按照 OpenShift 容器平台[文档](https://docs.openshift.com/container-platform/3.6/welcome/index.html)进行操作。
+- 也可使用现有的[资源管理器模板](https://github.com/Microsoft/openshift-container-platform/)，该模板可简化 OpenShift 容器平台群集的部署流程。
+- 另一种做法是使用 [Azure Marketplace 产品](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)。
 
-这两个选项均需要 Red Hat 订阅。 在部署期间，会将 RHEL 实例注册到 Red Hat 订阅并附加到包含 OpenShift 容器平台权利的池 ID。
-确保具有有效的 Red Hat 订阅管理员用户名、密码和池 ID（RHSM 用户名、RHSM 密码和池 ID）。 可通过登录 https://access.redhat.com 验证信息。
+所有选项均需要 Red Hat 订阅。 在部署期间，会将 Red Hat Enterprise Linux 实例注册到 Red Hat 订阅并附加到包含 OpenShift 容器平台权利的池 ID。
+确保具有有效的 Red Hat 订阅管理员 (RHSM) 用户名、密码和池 ID。 可通过登录 https://access.redhat.com 验证此信息。
 
-## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>使用 OpenShift 容器平台资源管理器模板进行部署
+## <a name="deploy-by-using-the-openshift-container-platform-resource-manager-template"></a>使用 OpenShift 容器平台资源管理器模板进行部署
 
-要使用资源管理器模板进行部署，需使用参数文件提供所有输入参数。 如果希望使用输入参数自定义任何未涵盖的部署项，请将 GitHub 存储库进行分叉并更改相应的项。
+要使用资源管理器模板进行部署，需使用参数文件提供输入参数。 若要使用输入参数自定义任何未涵盖的部署项，请将 GitHub 存储库进行分叉并更改相应的项。
 
-一些常见的自定义选项包括（但不限于）：
+一些常见的自定义选项包括但不限于：
 
-- VNet CIDR [azuredeploy.json 中的变量]
-- 堡垒 VM 大小 [azuredeploy.json 中的变量]
-- 命名约定 [azuredeploy.json 中的变量]
-- OpenShift 群集详细信息 - 通过主机文件修改 [deployOpenShift.sh]
+- 虚拟网络 CIDR（azuredeploy.json 中的变量）
+- 守护 VM 大小（azuredeploy.json 中的变量）
+- 命名约定（azuredeploy.json 中的变量）
+- OpenShift 群集详细信息，通过主机文件修改 (deployOpenShift.sh)
 
-### <a name="configure-parameters-file"></a>配置参数文件
+### <a name="configure-the-parameters-file"></a>配置参数文件
 
 为 `aadClientId` 参数使用前面创建的服务主体中的 `appId` 值。 
 
@@ -132,12 +133,12 @@ ms.lasthandoff: 10/25/2017
 }
 ```
 
-用相关信息替换 {} 中包含的项。
+将大括号中的项替换为具体的信息。
 
-### <a name="deploy-using-azure-cli"></a>使用 Azure CLI 进行部署
+### <a name="deploy-by-using-azure-cli"></a>使用 Azure CLI 进行部署
 
 > [!NOTE] 
-> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 az CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latesti)。
 
 以下示例使用名为 myOpenShiftCluster 的部署将 OpenShift 群集和所有相关资源部署到名为 myResourceGroup 的资源组。 它直接从 GitHub 存储库引用模板并使用名为 azuredeploy.parameters.json 的本地参数文件。
 
@@ -156,17 +157,17 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
 }
 ```
 
-## <a name="deploy-using-openshift-container-platform-marketplace-offer"></a>使用 OpenShift 容器平台 Marketplace 产品/服务进行部署
+## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>使用 OpenShift 容器平台 Azure Marketplace 产品进行部署
 
-使用 [Azure Marketplace 产品/服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.openshift-container-platform?tab=Overview)是将 OpenShift 容器平台部署到 Azure 中最简单的方式。
+使用 [Azure Marketplace 产品](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)是将 OpenShift 容器平台部署到 Azure 中最简单的方式。
 
-此选项虽然最为简单，但自定义功能有限。 产品/服务包括 3 个配置选项：
+此方法虽然最为简单，但自定义功能有限。 产品/服务包括 3 个配置选项：
 
-- 小型：使用 1 个主节点、1 个基础结构节点、2 个应用程序节点和 1 个堡垒节点部署非 HA 群集。 所有节点均为标准 DS2v2 VM 大小。 此群集总共需要 10 个内核，十分适合小型规模测试。
-- 中等：使用 3 个主节点、2 个基础结构节点、4 个应用程序节点和 1 个堡垒节点部署 HA 群集。 所有节点（除堡垒节点以外）均为标准 DS3v2 VM 大小。 堡垒节点为标准 DS2v2。 此群集需要 38 个内核。
-- 大型：使用 3 个主节点、2 个基础结构节点、6 个应用程序节点和 1 个堡垒节点部署 HA 群集。 主节点和基础结构节点为标准 DS3v2 VM 大小，应用程序节点为标准 DS4v2 VM 大小，堡垒节点为标准 DS2v2。 此群集需要 70 个内核。
+- **小型**：使用 1 个主节点、1 个基础结构节点、2 个应用程序节点和 1 个守护节点部署非高可用性 (HA) 群集。 所有节点均为标准 DS2v2 VM 大小。 此群集总共需要 10 个内核，十分适合小型规模测试。
+- **中型**：使用 3 个主节点、2 个基础结构节点、4 个应用程序节点和 1 个守护节点部署 HA 群集。 所有节点（守护节点除外）均为标准 DS3v2 VM 大小。 守护节点为标准 DS2v2。 此群集需要 38 个内核。
+- **大型**：使用 3 个主节点、2 个基础结构节点、6 个应用程序节点和 1 个守护节点部署 HA 群集。 主节点和基础结构节点为标准 DS3v2 VM 大小。 应用程序节点为标准 DS4v2 VM 大小，守护节点为标准 DS2v2。 此群集需要 70 个内核。
 
-对于中等和大型群集大小，提供配置 Azure 云提供程序的选项。 对于小型群集大小，则不提供配置 Azure 云提供程序的选项。
+对于中等和大型群集大小，提供配置 Azure 云解决方案提供程序的选项。 对于小型群集大小，则不提供配置 Azure 云解决方案提供程序的选项。
 
 ## <a name="connect-to-the-openshift-cluster"></a>连接到 OpenShift 群集
 
@@ -187,5 +188,5 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 - [部署后任务](./openshift-post-deployment.md)
-- [OpenShift 部署故障排除](./openshift-troubleshooting.md)
+- [在 Azure 中排查 OpenShift 部署问题](./openshift-troubleshooting.md)
 - [OpenShift 容器平台入门](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)

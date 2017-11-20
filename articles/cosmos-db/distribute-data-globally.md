@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2017
+ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f09c96aabe637582ef43b863f8381a6ecfbebbf5
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>如何使用 Azure Cosmos DB 在全球范围内分发数据
 Azure 无处不在 - 它的足迹遍布全球 30 多个地理区域，并且还在不断扩展。 借助其在全球范围的足迹，Azure 为其开发人员提供的特色功能之一是能够轻松生成、部署和管理全局分布式应用程序。 
@@ -40,10 +40,6 @@ Azure Cosmos DB 提供了以下功能，方便用户轻松编写全球规模的�
 
 ### <a id="RegionalPresence"></a>无处不在、分布广泛 
 Azure 通过上线[新区域](https://azure.microsoft.com/regions/)，不断扩大地理覆盖面。 Azure Cosmos DB 默认在所有新的 Azure 区域提供。 这样一来，只要 Azure 开辟了新的业务区域，就能够将该地理区域与 Azure Cosmos DB 数据库帐户关联。
-
-**Azure Cosmos DB 默认在所有 Azure 区域提供**
-
-![Azure Cosmos DB 在所有 Azure 区域提供](./media/distribute-data-globally/azure-regions.png)
 
 ### <a id="UnlimitedRegionsPerAccount"></a>将不限数量的区域与 Azure Cosmos DB 数据库帐户关联
 Azure Cosmos DB 允许将任意数量的 Azure 区域与 Azure Cosmos DB 数据库帐户关联。 除设有地理围栏限制的地域（例如，中国、德国）外，可与 Azure Cosmos DB 数据库帐户关联的区域数量没有限制。 下图显示一个配置跨越 25 个 Azure 区域的数据库帐户。  
@@ -104,7 +100,7 @@ Azure Cosmos DB 与[架构完全无关](http://www.vldb.org/pvldb/vol8/p1668-shu
 全球分布式数据库服务（如 Azure Cosmos DB）的主要好处在于，提供在全球任何位置以低延迟访问数据的权限。 Azure Cosmos DB 为各种数据库操作提供 P99 低延迟保证。 Azure Cosmos DB 采用的复制协议可确保数据库操作（理想情况下，读取和写入均适用）始终在客户端的本地区域执行。 Azure Cosmos DB 的延迟 SLA 包括对读取、（同步）索引写入和各种大小的请求和响应的查询均实现 P99。 写入的延迟保证包括持久的本地数据中心内的大多数仲裁提交。
 
 ### <a id="LatencyAndConsistency"></a>延迟与一致性的关系 
-为使全局分布式服务在全局分布式设置中提供较强的一致性，它需要同步复制写入或同步执行跨区域读取 - 光速和广域网可靠性决定了较强的一致性会导致数据库操作的高延迟和低可用。 因此，为了提供有保证的 P99 低延迟和 99.99 的可用性，该服务必须采用异步复制。 这进而还会要求服务必须提供[定义完善且宽松的一致性选项](consistency-levels.md) - 相比“强”而言较弱的（提供低延迟和可用性保证）且理想情况下强于“最终”一致性（提供直观的编程模型）。
+为使全局分布式服务在全局分布式设置中提供较强的一致性，它需要同步复制写入或同步执行跨区域读取 - 光速和广域网可靠性决定了较强的一致性会导致数据库操作的高延迟和低可用。 因此，为了针对所有采用宽松一致性的单区域帐户和多区域帐户提供有保证的 P99 低延迟和 99.99% 的可用性，以及针对所有多区域数据库帐户提供 99.999% 的读取可用性，该服务必须采用异步复制。 这进而还会要求服务必须提供[定义完善且宽松的一致性选项](consistency-levels.md) - 相比“强”而言较弱的（提供低延迟和可用性保证）且理想情况下强于“最终”一致性（提供直观的编程模型）。
 
 Azure Cosmos DB 确保无需读取操作便可跨多个区域联系副本，以提供特定的一致性级别保证。 同样，它可确保跨所有区域复制数据（即跨各区域异步复制写入）时不会阻止写入操作。 对于多区域数据库帐户，提供了多个宽松的一致性级别。 
 
@@ -117,7 +113,7 @@ Azure Cosmos DB 确保无需读取操作便可跨多个区域联系副本，以�
 Azure Cosmos DB 不会让用户在延迟和吞吐量之间做出选择。 它遵循 SLA，两者延迟均为 P99 并传递预配的吞吐量。 
 
 ## <a id="ConsistencyGuarantees"></a>一致性保证
-虽然[强一致性模型](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)是可编程性的黄金标准，但该模型导致的延迟代价太高（稳定状态下）且会损失可用性（遇到故障时）。 
+虽然[强一致性模型](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)是可编程性的黄金标准，但该模型导致的延迟代价太高（稳定状态下）且会降低可用性（遇到故障时）。 
 
 Azure Cosmos DB 为用户提供定义完善的编程模型，用于推断复制数据的一致性。 为了让用户能够生成多宿主应用程序，Azure Cosmos DB 公开的一致性模型设计为与区域无关，且不依赖执行读取和写入操作的区域。 
 
@@ -170,13 +166,13 @@ Azure Cosmos DB 的一致性 SLA 可保证 100% 的读取请求满足所请求�
 </table>
 
 ### <a id="ConsistencyAndAvailability"></a>一致性与可用性的关系
-[CAP 定理](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)的[不可能结果](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)证明遇到故障时，系统确实不可能保持可用并提供线性一致性。 数据库服务必须选择采用 CP 还是 AP - CP 系统会放弃可用性以支持线性一致性，而 AP 系统会放弃[线性一致性](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)以支持可用性。 Azure Cosmos DB 绝不会违反所请求的一致性级别，由此可准确判断其为 CP 系统。 但在实践中，一致性并不是一个“全有或者全无”的命题 - 介于线性一致性和最终一致性之间的一致性范畴中还存在多个定义完善的一致性模型。 在 Azure Cosmos DB 中，我们已尝试通过现实世界的适用性和直观的编程模型来确定多个宽松的一致性模型。 Azure Cosmos DB 通过提供 99.99 的可用性 SLA 和[多个宽松且定义完善的一致性级别](consistency-levels.md)，进行一致性与可用性的权衡取舍。 
+[CAP 定理](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)的[不可能结果](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)证明遇到故障时，系统确实不可能保持可用并提供线性一致性。 数据库服务必须选择采用 CP 还是 AP - CP 系统会放弃可用性以支持线性一致性，而 AP 系统会放弃[线性一致性](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)以支持可用性。 Azure Cosmos DB 绝不会违反所请求的一致性级别，由此可准确判断其为 CP 系统。 但在实践中，一致性并不是一个“全有或者全无”的命题 - 介于线性一致性和最终一致性之间的一致性范畴中还存在多个定义完善的一致性模型。 在 Azure Cosmos DB 中，我们已尝试通过现实世界的适用性和直观的编程模型来确定多个宽松的一致性模型。 Azure Cosmos DB 提供[多个宽松但完善定义的一致性级别](consistency-levels.md)进行一致性与可用性的权衡取舍，单个区域的所有帐户和使用的所有多区域帐户 99.99% 的可用性宽松一致性，99.999% 读取多区域数据库的所有帐户上的可用性。 
 
 ### <a id="ConsistencyAndAvailability"></a>一致性与延迟的关系
 Prof.Daniel Abadi 提出了更全面的 CAP 变体，名为 [PACELC](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)，该变体也用于稳定状态下的延迟和一致性的权衡取舍。 该定理认为在稳定状态下，数据库系统必须在一致性和延迟间做出选择。 通过多个宽松的一致性模型（由异步复制和本地读取、写入仲裁提供支持），Azure Cosmos DB 可确保所有读取和写入操作分别在读取和写入区域本地进行。  这允许 Azure Cosmos DB 针对一致性级别在区域内提供低延迟保证。  
 
 ### <a id="ConsistencyAndThroughput"></a>一致性与吞吐量的关系
-由于特定一致性模型的实现依赖于所选的[仲裁类型](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)，因此吞吐量也会根据所选一致性而有所不同。 例如，在 Azure Cosmos DB 中，强一致读取的吞吐量大约是最终一致读取的一半。 
+由于特定一致性模型的实现依赖于所选的[仲裁类型](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)，因此吞吐量也会根据所选一致性而有所不同。 例如，在 Azure Cosmos DB 中，强一致读取的 RU 费用大约是最终一致读取的两倍。 在这种情况下，需要在集合中预配两倍的 RU 才能实现相同的吞吐量。
  
 **Azure Cosmos DB 中特定一致性级别的读取容量关系**
 
@@ -207,7 +203,7 @@ Azure Cosmos DB 集合在两个维度进行分布：先在某个区域内分布�
 吞吐量更改时，Azure Cosmos DB 继续保持其可用性。 Azure Cosmos DB 以透明方式管理分区（例如，拆分、合并、克隆操作），并确保应用程序灵活增加或减少吞吐量时，操作不会降低性能或可用性。 
 
 ## <a id="AvailabilityGuarantees"></a>可用性保证
-Azure Cosmos DB 为每一个数据和控制平面操作提供 99.99% 的运行时间可用性 SLA。 如前面所述，Azure Cosmos DB 的可用性保证包括针对每一个数据和控制平面操作的绝对延迟上限。 可用性保证固定不变，不会随区域数量或区域间的地理距离而更改。 可用性保证适用于手动及自动故障转移。 Azure Cosmos DB 提供透明的多宿主 API，可确保应用程序能够针对逻辑终结点运行，并且在发生故障转移时能够以透明方式将请求路由到新区域。 换句话说，应用程序不需要在区域性故障转移时重新进行部署，并会保持可用性 SlA。
+Azure Cosmos DB 为所有单区域帐户和具有松散一致性的所有多区域帐户提供 99.99% 的可用性 SLA，为所有多区域数据库帐户提供 99.999% 的读取可用性。 如前面所述，Azure Cosmos DB 的可用性保证包括针对每一个数据和控制平面操作的绝对延迟上限。 可用性保证固定不变，不会随区域数量或区域间的地理距离而更改。 可用性保证适用于手动及自动故障转移。 Azure Cosmos DB 提供透明的多宿主 API，可确保应用程序能够针对逻辑终结点运行，并且在发生故障转移时能够以透明方式将请求路由到新区域。 换句话说，应用程序不需要在区域性故障转移时重新进行部署，并会保持可用性 SlA。
 
 ### <a id="AvailabilityAndConsistency"></a>可用性与一致性、延迟和吞吐量的关系
 [一致性与可用性的关系](#ConsistencyAndAvailability)、[延迟与可用性的关系](#LatencyAndAvailability)和[吞吐量与可用性的关系](#ThroughputAndAvailability)中介绍了可用性与一致性、延迟和吞吐量的关系。 

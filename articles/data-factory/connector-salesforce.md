@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 数据工厂从 Salesforce 复制数据 | Microsoft Docs"
-description: "了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Salesforce 复制到支持的接收器数据存储。"
+title: "使用 Azure 数据工厂从/向 Salesforce 复制数据 | Microsoft Docs"
+description: "了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Salesforce 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -11,29 +11,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 7978e955bf5516a853443555ab10a69dcf22d63f
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 017d03b76bd19a0b3a1e19c22233c61be9067d0d
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="copy-data-from-salesforce-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 复制数据
+# <a name="copy-data-fromto-salesforce-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - GA](v1/data-factory-salesforce-connector.md)
 > * [版本 2 - 预览版](connector-salesforce.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Salesforce 数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂中的复制活动从/向 Salesforce 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Salesforce 连接器](v1/data-factory-salesforce-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-可以将数据从 Salesforce 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可将数据从 Salesforce 复制到任何受支持的接收器数据存储，或者将数据从任何受支持的源数据存储复制到 Salesforce。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 Salesforce 连接器支持以下版本的 Salesforce：**开发人员版、专业版、企业版或不受限制版**。 并支持从 Salesforce **生产、沙盒和自定义域**复制数据。
+具体而言，Salesforce 连接器支持：
+
+- 以下版本的 Salesforce：**开发人员版、专业版、企业版或不受限制版**。
+- 从/向 Salesforce **生产、沙盒和自定义域**复制数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,15 +63,20 @@ Salesforce 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |类型属性必须设置为：**Salesforce**  |是 |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
-| password |指定用户帐户的密码。 |是 |
-| securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |
+| password |指定用户帐户的密码。<br/><br/>可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 |是 |
+| securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。<br/><br/>可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储安全令牌，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 |是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“No”，对于接收器为“Yes” |
 
-**示例：**
+>[!IMPORTANT]
+>若要显式将数据复制到 Salesforce，请使用接近 Salesforce 的位置[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并关联如下面示例中的链接服务。
+
+**示例：将凭据存储在 ADF 中**
 
 ```json
 {
+    "name": "SalesforceLinkedService",
     "properties": {
         "type": "Salesforce",
         "typeProperties": {
@@ -81,22 +89,59 @@ Salesforce 链接的服务支持以下属性：
                 "type": "SecureString",
                 "value": "<security token>"
             }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
         }
-    },
-    "name": "SalesforceLinkedService"
+    }
+}
+```
+
+**示例：在 Azure Key Vault 中存储凭据**
+
+```json
+{
+    "name": "SalesforceLinkedService",
+    "properties": {
+        "type": "Salesforce",
+        "typeProperties": {
+            "username": "<username>",
+            "password": {
+                "type": "AzureKeyVaultSecret",
+                "secretName": "<secret name of password in AKV>",
+                "store":{
+                    "referenceName": "<Azure Key Vault linked service>",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            "securityToken": {
+                "type": "AzureKeyVaultSecret",
+                "secretName": "<secret name of security token in AKV>",
+                "store":{
+                    "referenceName": "<Azure Key Vault linked service>",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
 }
 ```
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 Salesforce 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Salesforce 数据集支持的属性列表。
 
-要从 Salesforce 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为“SalesforceObject”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
-| tableName | Salesforce 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
+| type | type 属性必须设置为：**SalesforceObject**  | 是 |
+| objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
@@ -108,31 +153,38 @@ Salesforce 链接的服务支持以下属性：
 ```json
 {
     "name": "SalesforceDataset",
-    "properties":
-    {
-        "type": "RelationalTable",
+    "properties": {
+        "type": "SalesforceObject",
         "linkedServiceName": {
             "referenceName": "<Salesforce linked service name>",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
-            "tableName": "MyTable__c"
+            "objectApiName": "MyTable__c"
         }
     }
 }
 ```
 
-## <a name="copy-activity-properties"></a>复制活动属性
-
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Salesforce 源支持的属性列表。
-
-### <a name="salesforce-as-source"></a>以 Salesforce 作为源
-
-要从 Salesforce 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
+>[!NOTE]
+>为了向后兼容，从 Salesforce 中复制数据时，使用以前“RelationalTable”类型的数据集都将有效，而建议以切换到新的“SalesforceObject”类型。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
+| tableName | 在 Salesforce 中表的名称。 | 否（如果指定了活动源中的“query”） |
+
+## <a name="copy-activity-properties"></a>复制活动属性
+
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Salesforce 源和接收器支持的属性列表。
+
+### <a name="salesforce-as-source"></a>以 Salesforce 作为源
+
+要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”。 复制活动**源**部分支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 复制活动源的 type 属性必须设置为：**SalesforceSource** | 是 |
 | query |使用自定义查询读取数据。 可以使用 SQL-92 查询或 [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm)（Salesforce 对象查询语言 (SOQL)）查询。 例如：`select * from MyTable__c`。 | 否（如果指定了数据集中的“tableName”） |
 
 > [!IMPORTANT]
@@ -161,7 +213,7 @@ Salesforce 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SalesforceSource",
                 "query": "SELECT Col_Currency__c, Col_Date__c, Col_Email__c FROM AllDataType__c"
             },
             "sink": {
@@ -172,11 +224,61 @@ Salesforce 链接的服务支持以下属性：
 ]
 ```
 
+>[!NOTE]
+>为了向后兼容，从 Salesforce 中复制数据时，使用以前“RelationalSource”类型的复制源都将有效，而建议以切换到新的“SalesforceSource”类型。
+
+### <a name="salesforce-as-sink"></a>以 Salesforce 作为接收器
+
+要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”。 复制活动接收器部分中支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 复制活动接收器的 type 属性必须设置为：**SalesforceSink** | 是 |
+| writeBehavior | 操作写入行为。<br/>允许的值为：**Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
+| externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中，定义为“外部 Id 字段”和其相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
+| writeBatchSize | 每批中写入到 Salesforce 的数据行计数。 | 否（默认值为 5000） |
+| ignoreNullValues | 指示是否忽略 null 值从输入数据期间写入操作。<br/>允许的值为：true 和 false。<br>- **true**：保留目标中的数据对象时进行更新插入/更新操作保持不变，并插入在执行插入操作时定义默认值。<br/>- **false**：执行 upsert/update 操作时为 NULL 更新目标对象中的数据和执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+
+### <a name="example-salesforce-sink-in-copy-activity"></a>示例：复制活动中的 Salesforce 接收器
+
+```json
+"activities":[
+    {
+        "name": "CopyToSalesforce",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Salesforce input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "SalesforceSink",
+                "writeBehavior": "Upsert",
+                "externalIdFieldName": "CustomerId__c",
+                "writeBatchSize": 10000,
+                "ignoreNullValues": true
+            }
+        }
+    }
+]
+```
+
 ## <a name="query-tips"></a>查询提示
 
 ### <a name="retrieving-data-from-salesforce-report"></a>从 Salesforce 报表检索数据
 
-可通过将查询指定为 `{call "<report name>"}. Example: `"query": "{call \"TestReport\"}"`，从 Salesforce 报表检索数据。
+可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据。 示例：`"query": "{call \"TestReport\"}"`。
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>从 Salesforce 回收站中检索删除的记录
 
@@ -189,8 +291,8 @@ Salesforce 链接的服务支持以下属性：
 
 当指定 SOQL 或 SQL 查询时，请注意 DateTime 的格式差异。 例如：
 
-* **SOQL 示例**：`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', <datetime parameter>, <datetime parameter>)`
-* **SQL 示例**：`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', <datetime parameter>, <datetime parameter>)`
+* **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}"`
 
 ## <a name="data-type-mapping-for-salesforce"></a>Salesforce 的数据类型映射
 
@@ -218,6 +320,5 @@ Salesforce 链接的服务支持以下属性：
 | 文本（加密） |String |
 | 代码 |String |
 
-
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

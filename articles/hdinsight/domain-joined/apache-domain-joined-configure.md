@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.openlocfilehash: af75d63caca24f389345c964e2dc506a255bec19
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2c844ce8aec04c74a9c2dbecdd1b3effb286df97
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>配置已加入域的 HDInsight 群集（预览版）
 
@@ -31,13 +31,7 @@ ms.lasthandoff: 11/03/2017
 本文是本系列的第一个教程：
 
 * 启用 Apache Ranger，创建通过 Active Directory 域服务功能连接到 Azure AD 的 HDInsight 群集。
-* 通过 Apache Ranger 创建并应用 Hive 策略，并允许数据科学家等用户使用基于 ODBC 的工具（如 Excel、Tableau）连接到 Hive。Microsoft 致力于将其他工作负荷（如 HBase、Spark 和 Storm）尽快添加到已加入域的 HDInsight。
-
-最终拓扑的示例如下所示：
-
-![已加入域的 HDInsight 拓扑](./media/apache-domain-joined-configure/hdinsight-domain-joined-topology.png)
-
-由于 Azure AD 当前仅支持经典虚拟网络 (Vnet)，并且基于 Linux 的 HDInsight 群集仅支持基于 Azure 资源管理器的 Vnet，因此 HDInsight Azure AD 集成需要两个 Vnet 以及两者间的对等互连。 有关两个部署模型之间的比较信息，请参阅 [Azure 资源管理器与经典部署：了解资源的部署模型和状态](../../azure-resource-manager/resource-manager-deployment-model.md)。 两个 VNet 必须与 Azure AD DS 位于同一区域。
+* 通过 Apache Ranger 创建并应用 Hive 策略，并允许数据科学家等用户使用基于 ODBC 的工具（如 Excel、Tableau）连接到 Hive。Microsoft 致力于将其他工作负荷（如 HBase 和 Storm）尽快添加到已加入域的 HDInsight。
 
 Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso 是虚构的名称。 完成本教程的过程中，必须使用其他名称替代 *contoso*。 
 
@@ -45,8 +39,6 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 
 | 属性 | 值 |
 | --- | --- |
-| Azure AD VNet |contosoaadvnet |
-| Azure AD Vnet 资源组 |contosoaadrg |
 | Azure AD 目录 |contosoaaddirectory |
 | Azure AD 域名 |contoso (contoso.onmicrosoft.com) |
 | HDInsight VNet |contosohdivnet |
@@ -58,45 +50,50 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 ## <a name="prerequisite"></a>先决条件：
 * 熟悉 [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)及其[定价](https://azure.microsoft.com/pricing/details/active-directory-ds/)结构。
 * 请确保订阅已列入此公开预览的白名单。 可使用订阅 ID 向 hdipreview@microsoft.com 发送电子邮件来完成此操作。
-* SSL 证书由域的签名颁发机构进行签名。 该证书用于配置安全 LDAP。 不能使用自签名证书。
+* 由域的签名颁发机构或自签名证书签名的 SSL 证书。 配置安全 LDAP 时需要该证书。
 
 ## <a name="procedures"></a>过程
-1. 为 Azure AD 创建 Azure 经典 VNet。  
+1. 在 Azure 资源管理模式下创建 HDInsight VNet。
 2. 创建并配置 Azure AD 和 Azure AD DS。
-3. 在 Azure 资源管理模式下创建 HDInsight VNet。
-4. 对等互连两个 VNet。
-5. 创建 HDInsight 群集。
+3. 创建 HDInsight 群集。
 
 > [!NOTE]
-> 本教程假设你没有 Azure AD。 如果已有 Azure AD，可跳过步骤 2 中的部分。
+> 本教程假设你没有 Azure AD。 如果已有 Azure AD，可跳过该部分。
 > 
 > 
 
-## <a name="create-an-azure-virtual-network-classic"></a>创建 Azure 虚拟网络（经典）
-在本部分，将使用 Azure 门户创建虚拟网络（经典）。 在下一部分，将在虚拟网络中为 Azure AD 启用 Azure AD DS。 若要深入了解以下过程并了解如何使用其他虚拟网络创建方法，请参阅[使用 Azure 门户创建虚拟网络（经典）](../../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。
+## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>创建适用于 HDInsight 群集的 Resource Manager VNet
+在本部分中，将创建用于 HDInsight 群集的 Azure 资源管理器 VNet。 若要深入了解如何使用其他方法创建 Azure VNet，请参阅[创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
 
-**创建经典 VNet**
+创建 VNet 后，需要配置 Azure AD DS 以使用此 VNet。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 单击“新建” > “网络” > “虚拟网络”。
-3. 在“选择部署模型”中，选择“经典”，并单击“创建”。
-4. 输入或选择下列值：
+**创建 Resource Manager VNet**
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 依次单击“新建”、“网络”和“虚拟网络”。 
+3. 在“选择部署模型”中，选择“Resource Manager”，并单击“创建”。
+4. 键入或选择以下值：
    
-   * **名称**：contosoaadvnet
-   * **地址空间**：10.1.0.0/16
+   * **名称**：contosohdivnet
+   * **地址空间**：10.0.0.0/16。
    * **子网名称**：Subnet1
-   * **子网地址范围**：10.1.0.0/24
-   * **订阅**：（选择用于创建此 VNet 的订阅。）
-   * **ResourceGroup**：contosoaadrg
-   * **位置**：（为 HDInsight 群集选择区域。）
+   * **子网地址范围**：10.0.0.0/24
+   * **订阅**：（选择 Azure 订阅。）
+   * **资源组**：contosohdirg
+   * **位置**：（选择 Azure AD VNet 所在的同一位置。 例如 contosoaadvnet。）
+5. 单击“创建” 。
+
+**为 Resource Manager VNet 配置 DNS**
+
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“更多服务” > “虚拟网络”。 请确保不要单击“虚拟网络(经典)”。
+2. 单击“contosohdivnet”。
+3. 在新边栏选项卡的左侧，单击“DNS 服务器”。
+4. 单击“自定义”，并输入以下值：
+   
+   * 10.0.0.4
+   * 10.0.0.5     
      
-     > [!IMPORTANT]
-     > 必须选择支持 Azure AD DS 的位置。 有关详细信息，请参阅 [可用产品（按区域）](https://azure.microsoft.com/en-us/regions/services/)。 
-     > 
-     > 经典 VNet 和资源组 VNet 都必须位于与 Azure AD DS 相同的区域中。
-     > 
-     > 
-5. 单击“创建”以创建该 VNet  。
+5. 单击“保存” 。
 
 ## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>为 Azure AD 创建并配置 Azure AD DS
 可在本部分中：
@@ -121,44 +118,42 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 
 **创建 Azure AD 用户**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击“Active Directory” -> “contosoaaddirectory”。 
-2. 在顶部菜单中，单击“用户”。
-3. 单击“添加用户”。
-4. 输入“用户名”，并单击“下一步”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Active Directory” > “contosoaaddirectory” > “用户和组”。 
+2. 在菜单中单击“所有用户”。
+3. 单击“新建用户”。
+4. 输入“名称”和“用户名”，单击“下一步”。 
 5. 配置用户配置文件；在“角色”中选择“全局管理员”；并单击“下一步”。  创建组织单位时需要全局管理员角色。
-6. 单击“创建”，获取临时密码。
-7. 复制密码，并单击“完成”。 在本教程的后面部分中，将使用此全局管理员用户创建 HDInsight 群集。
+6. 创建临时密码的副本。
+7. 单击“创建” 。 在本教程的后面部分中，将使用此全局管理员用户创建 HDInsight 群集。
 
 请按照相同的过程再创建两个用户，“用户”角色为 hiveuser1 和 hiveuser2。 以下用户可用于[为已加入域的 HDInsight 群集配置 Hive 策略](apache-domain-joined-run-hive.md)。
 
 **创建 AAD DC 管理员组并添加 Azure AD 用户**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击“Active Directory” > “contosoaaddirectory”。 
-2. 在顶部菜单中，单击“组”。
-3. 单击“添加一个组”或“添加组”。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Active Directory” > “contosoaaddirectory” > “用户和组”。 
+2. 在顶部菜单中，单击“所有组”。
+3. 单击“新建组”。
 4. 输入或选择下列值：
    
    * **名称**：AAD DC 管理员。  不要更改组名称。
-   * **组类型**：安全。
-5. 单击“完成”。
-6. 单击“AAD DC 管理员”打开组。
-7. 单击“添加成员”。
-8. 选择上一步骤中创建的第一个用户，并单击“完成”。
-9. 重复相同步骤，再创建一个名为 **HiveUsers** 的组，并将两个 Hive 用户添加到组。
+   * **成员身份类型**：已分配。
+5. 单击“选择”。
+6. 单击“成员”。
+7. 选择上一步骤中创建的第一个用户，单击“选择”。
+8. 重复相同步骤，再创建一个名为 **HiveUsers** 的组，并将两个 Hive 用户添加到组。
 
 有关详细信息，请参阅 [Azure AD 域服务（预览版）- 创建 AAD DC 管理员组](../../active-directory-domain-services/active-directory-ds-getting-started.md)。
 
 **为 Azure AD 启用 Azure AD DS**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击“Active Directory” > “contosoaaddirectory”。 
-2. 在顶部菜单栏上，单击“配置”。
-3. 向下滚动到“域服务”，设置以下值：
-   
-   * **为该目录启用域服务**：是。
-   * **域服务的 DNS 域名**：这会显示 Azure 目录的默认 DNS 名称。 例如 contoso.onmicrosoft.com。
-   * **将域服务连接到此虚拟网络**：选择之前创建的经典虚拟网络，例如 **contosoaadvnet**。
-4. 单击页面底部的“保存”。 “对该目录启用域服务”旁边会显示“挂起...”。  
-5. 请等待“挂起...”消失和“IP 地址”填好。 两个 IP 地址都要填写。 这些 IP 地址属于域服务预配的域控制器。 相应的域控制器进行了预配并准备就绪之后，会显示每个 IP 地址。 记下这两个 IP 地址。 稍后需要它们。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “安全 + 标识” > “Azure AD 域服务” > “添加”。 
+2. 输入或选择下列值：
+   * **目录名称**：contosoaaddirectory
+   * **DNS 域名**：显示 Azure 目录的默认 DNS 名称。 例如 contoso.onmicrosoft.com。
+   * **位置**：选择所在的区域。
+   * **网络**：选择前面创建的虚拟网络和子网。 例如 **contosohdivnet**。
+3. 在摘要页中单击“确定”。 通知下面会显示“部署正在进行...”。
+4. 请等到“部署正在进行...”消失和“IP 地址”填好。 两个 IP 地址都要填写。 这些 IP 地址属于域服务预配的域控制器。 相应的域控制器进行了预配并准备就绪之后，会显示每个 IP 地址。 记下这两个 IP 地址。 稍后需要它们。
 
 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。
 
@@ -168,13 +163,11 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 
 **为 Azure AD 配置 LDAPS**
 
-1. 获取由域的签名颁发机构进行签名的 SSL 证书。 如果想要使用自签名证书，请联系 hdipreview@microsoft.com 以便处理异常。
-2. 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击“Active Directory” > “contosoaaddirectory”。 
-3. 在顶部菜单栏上，单击“配置”。
-4. 滚动到“域服务”。
-5. 单击“配置证书”。
-6. 按照说明指定证书文件和密码。 “对该目录启用域服务”旁边会显示“挂起...”。  
-7. 请等待“挂起...”消失和“安全 LDAP 证书”填好。  此操作至少需要 10 分钟。
+1. 获取由域的签名颁发机构进行签名的 SSL 证书。
+2. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure AD 域服务” > “contoso.onmicrosoft.com”。 
+3. 启用“安全 LDAP”。
+6. 按照说明指定证书文件和密码。  
+7. 请等到“安全 LDAP 证书”填好。 此操作至少需要 10 分钟。
 
 > [!NOTE]
 > 如果一些后台任务正在 Azure AD DS 上运行，则上传证书时可能会显示错误：<i>正在为此租户执行操作。请稍后重试</i>。  如果遇到此错误，请稍后再试。 预配第二个域控制器 IP 最多可能需要 3 小时。
@@ -182,59 +175,6 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 > 
 
 有关详细信息，请参阅[为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。
-
-## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>创建适用于 HDInsight 群集的 Resource Manager VNet
-在本部分中，将创建用于 HDInsight 群集的 Azure 资源管理器 VNet。 若要深入了解如何使用其他方法创建 Azure VNET，请参阅[创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
-
-创建 VNet 后，将配置 Resource Manager VNet 以使用与 Azure AD VNet 相同的 DNS 服务器。 如果遵循本教程中的步骤创建经典 VNet 和 Azure AD，则 DNS 服务器为 10.1.0.4 和 10.1.0.5。
-
-**创建 Resource Manager VNet**
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“网络”和“虚拟网络”。 
-3. 在“选择部署模型”中，选择“Resource Manager”，并单击“创建”。
-4. 键入或选择以下值：
-   
-   * **名称**：contosohdivnet
-   * **地址空间**：10.2.0.0/16。 请确保地址范围与经典 VNet 的 IP 地址范围不重叠。
-   * **子网名称**：Subnet1
-   * **子网地址范围**：10.2.0.0/24
-   * **订阅**：（选择 Azure 订阅。）
-   * **资源组**：contosohdirg
-   * **位置**：（选择与 Azure AD VNet 相同的位置，例如 contosoaadvnet。）
-5. 单击“创建” 。
-
-**为 Resource Manager VNet 配置 DNS**
-
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“更多服务” -> “虚拟网络”。 请确保不要单击“虚拟网络(经典)”。
-2. 单击“contosohdivnet”。
-3. 在新边栏选项卡的左侧，单击“DNS 服务器”。
-4. 单击“自定义”，并输入以下值：
-   
-   * 10.1.0.4
-   * 10.1.0.5
-     
-     这些 DNS 服务器 IP 地址必须与 Azure AD VNet（经典 VNet）中的 DNS 服务器匹配。
-5. 单击“保存” 。
-
-## <a name="peer-the-azure-ad-vnet-and-the-hdinsight-vnet"></a>对等互连 Azure AD VNet 和 HDInsight VNet
-**对等互连两个 VNet**
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，单击“更多服务”。
-3. 单击“虚拟网络”。 不要单击“虚拟网络(经典)”。
-4. 单击“contosohdivnet”。  这是 HDInsight VNet。
-5. 在边栏选项卡的左侧菜单上，单击“对等互连”。
-6. 在顶部菜单中，单击“添加”。 这会打开“添加对等互连”边栏选项卡。
-7. 在“添加对等互连”边栏选项卡上，设置或选择以下值：
-   
-   * **名称**：ContosoAADHDIVNetPeering
-   * **虚拟网络部署模型**：经典
-   * **订阅**：选择用于经典 (Azure AD) VNet 的订阅名称。
-   * **虚拟网络**：contosoaadvnet。
-   * **是否允许虚拟网络访问**：（检查）
-   * **是否允许转发的流量**：（检查）。 将其他两个复选框保留为未选中状态。
-8. 单击 **“确定”**。
 
 ## <a name="create-hdinsight-cluster"></a>创建 HDInsight 群集
 在本部分中，会在 HDInsight 中使用 Azure 门户或 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](../hdinsight-hadoop-create-windows-clusters-arm-templates.md)
@@ -249,7 +189,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
    * **订阅**：选择用于创建此群集的 Azure 订阅。
    * **群集配置**：
      
-     * **群集类型**：Hadoop。 已加入域的 HDInsight 当前仅在 Hadoop 群集上受支持。
+     * **群集类型**：Hadoop。 已加入域的 HDInsight 当前仅在 Hadoop、Spark 和交互式查询群集上受支持。
      * **操作系统**：Linux。  已加入域的 HDInsight 仅在基于 Linux 的 HDInsight 群集上受支持。
      * **版本**：HDI 3.6。 已加入域的 HDInsight 仅在 HDInsight 群集 3.6 版上受支持。
      * **群集类型**：PREMIUM
