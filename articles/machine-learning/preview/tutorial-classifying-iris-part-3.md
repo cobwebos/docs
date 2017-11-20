@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
-ms.date: 11/2/2017
-ms.openlocfilehash: b6cdd135d2d264c8b4ede1592c686cdeea3d0a59
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.date: 11/14/2017
+ms.openlocfilehash: 7fa7eb53876746f1934af8ca3428cfdacb56382d
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -119,8 +119,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 现在可以准备环境来操作化模型。
 
->[!NOTE]
->部署模型时，需要具有 Azure 订阅的所有者访问权限。
+
 
 ## <a name="prepare-to-operationalize-locally"></a>在本地准备操作化
 使用“本地模式”部署在本地计算机上的 Docker 容器中运行。
@@ -162,7 +161,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    第三行输出显示 **"registrationState": "Registering"**。 请稍候片刻并重复 show 命令，直到输出显示 "registrationState": "Registered"。
 
-3. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境：
+3. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
+
+请注意，以下设置命令要求你具有订阅的“参与者”访问权限。 如果你没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>

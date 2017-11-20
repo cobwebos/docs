@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/09/2017
+ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: e7b32aa2de5d6501e8d7894a936e9ab8b2f4f42f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdd457dbe6802f58f0167efb97d60628c17a97af
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储简介
 
@@ -80,7 +80,7 @@ Azure 队列服务用于存储和检索消息。 队列消息最大可以为 64 
 
 ## <a name="table-storage"></a>表存储
 
-标准 Azure 表存储现在是 Cosmos DB 的一部分。 若要查看该文档，请参阅 [Azure 表存储概述](../../cosmos-db/table-storage-overview.md)。 此外还发布了适用于 Azure 表存储的高级表，提供吞吐量优化表、全局分发和自动化辅助索引。 若要详细了解和尝试新的高级体验，请查看 [Azure Cosmos DB：表 API](https://aka.ms/premiumtables)。
+Azure 表存储现在是 Azure Cosmos DB 的一部分。 若要查看 Azure 表存储文档，请参阅 [Azure 表存储概述](../../cosmos-db/table-storage-overview.md)。 除了现有的 Azure 表存储服务，还有新的 Azure Cosmos DB 表 API 产品/服务，后者提供吞吐量优化表、全局分发和自动辅助索引。 若要详细了解和尝试新的高级体验，请查看 [Azure Cosmos DB 表 API](https://aka.ms/premiumtables)。
 
 ## <a name="disk-storage"></a>磁盘存储
 

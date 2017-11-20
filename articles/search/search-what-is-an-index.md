@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure 搜索索引 | Microsoft Azure | 托管云搜索服务"
-description: "Azure 搜索中的索引是什么以及如何使用？"
+title: "Azure 搜索中的索引 | Microsoft Docs"
+description: "了解 Azure 搜索中的索引概念以及如何使用索引。"
 services: search
 documentationcenter: 
 author: ashmaka
@@ -10,15 +10,15 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 11/08/2017
 ms.author: ashmaka
-ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="create-an-azure-search-index"></a>创建 Azure 搜索索引
+# <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
 > [!div class="op_single_selector"]
 > * [概述](search-what-is-an-index.md)
 > * [门户](search-create-index-portal.md)
@@ -27,8 +27,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="what-is-an-index"></a>什么是索引？
-*索引*是 Azure 搜索服务使用的*文档*及其他结构的永久存储。 文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
+在 Azure 搜索中，索引是 Azure 搜索服务使用的文档及其他结构的永久存储。 文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
 
 在 Azure 搜索中添加/上传文档以及提交搜索查询时，提交的是搜索服务中特定索引的请求。
 

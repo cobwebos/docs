@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 10/13/2017
-ms.openlocfilehash: 07d06e4de95fcc562bcc76ac5cc4f5cd3483ba6d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 7c74a9ebaae0b027277fe282b958a653ab498fc5
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>创建 Azure 机器学习预览帐户并安装 Azure Machine Learning Workbench
 Azure 机器学习是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -55,7 +55,7 @@ Azure 机器学习是集成式的端到端数据科学和高级分析解决方�
    订阅 | 用户的订阅 |选择要用于试验的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的相应订阅。
    资源组 | 你的资源组 | 可以创建新的资源组名称，也可以使用订阅中现有的。
    位置 | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
-   座席数 | #N/A | 输入座席数。 此项选择会影响[定价](https://azure.microsoft.com/pricing/details/machine-learning/)。 前两个座席是免费的。 对于本快速入门，请使用两个座席。 以后可根据需要在 Azure 门户中更新座席数。
+   席位数 | #N/A | 输入席位数。 此项选择会影响[定价](https://azure.microsoft.com/pricing/details/machine-learning/)。 前两个席位是免费的。 对于本快速入门，请使用两个席位。 以后可根据需要在 Azure 门户中更新席位数。
    存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 Azure 存储帐户。 或者选择“使用现有资源组”，并从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
    试验帐户的工作区 | 唯一的名称 | 为新工作区提供一个名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。
    分配工作区的所有者 | 你的帐户 | 选择自己的帐户作为工作区所有者。
@@ -93,33 +93,20 @@ Azure 机器学习是集成式的端到端数据科学和高级分析解决方�
    `C:\Users\<user>\AppData\Local\AmlWorkbench`
 
 ## <a name="install-azure-machine-learning-workbench-on-macos"></a>在 macOS 上安装 Azure Machine Learning Workbench
-在运行 macOS Sierra 的计算机上安装 Azure Machine Learning Workbench。
+在运行 macOS Sierra 或更高版本的计算机上安装 Azure Machine Learning Workbench。
 
-1. 使用 [Homebrew](http://brew.sh) 安装 openssl 库。 有关更多详细信息，请参阅 [Mac 上的 .NET Core 先决条件](https://docs.microsoft.com/dotnet/core/macos-prerequisites)。
-   ```
-   # install Homebrew first if you don't have it already
-   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-   # install latest openssl needed for .NET Core 1.x
-   brew update
-   brew install openssl
-   mkdir -p /usr/local/lib
-   ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-   ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-   ```
-
-2. 下载最新的 Azure Machine Learning Workbench 安装程序 [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg)。
+1. 下载最新的 Azure Machine Learning Workbench 安装程序 [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg)。
 
    >[!IMPORTANT]
    >将安装程序整个下载到磁盘上，然后在磁盘中运行安装程序。 不要直接从浏览器的下载小组件运行安装程序。
 
-3. 在 Finder 中双击下载的安装程序**AmlWorkbench.dmg**。
+2. 在 Finder 中双击下载的安装程序**AmlWorkbench.dmg**。
 
-4. 遵照屏幕说明完成安装。
+3. 遵照屏幕说明完成安装。
 
    安装程序会下载所有必要的从属组件（例如 Python、Miniconda）和其他相关库。 完成安装所有组件可能需要大约半个小时。 
 
-5. Azure Machine Learning Workbench 现已安装到以下目录中： 
+4. Azure Machine Learning Workbench 现已安装到以下目录中： 
 
    `/Applications/AmlWorkbench.app`
 

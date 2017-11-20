@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB 的表 API 简介 | Microsoft Docs"
 description: "了解如何通过常用 OSS MongoDB API 使用 Azure Cosmos DB 以低延迟存储和查询大量键值对数据。"
 services: cosmos-db
-author: bhanupr
+author: mimig
 manager: jhubbard
 editor: monicar
 documentationcenter: 
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2017
-ms.author: arramac
-ms.openlocfilehash: 68c9f37b6e241d39911acff9c12aa4c978b4215d
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.date: 11/15/2017
+ms.author: mimig1
+ms.openlocfilehash: 8e8a5d89080df54da1a951d94fac12592de29c50
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 表 API 简介
 
-[Azure Cosmos DB](introduction.md) 提供的表 API（预览）适用于为 Azure 表存储编写且需要以下高级功能的应用程序：
+[Azure Cosmos DB](introduction.md) 提供的表 API 适用于为 Azure 表存储编写且需要以下高级功能的应用程序：
 
 * [统包式全局分发](distribute-data-globally.md)。
 * 全球范围内[专用的吞吐量](partition-data.md)。
@@ -39,9 +39,9 @@ ms.lasthandoff: 11/06/2017
 > 
 
 ## <a name="table-offerings"></a>表产品/服务
-如果当前使用 Azure 表存储，可以通过移到 Azure Cosmos DB 表 API（预览版）获得以下好处：
+如果当前使用 Azure 表存储，可以通过移到 Azure Cosmos DB 表 API 获得以下好处：
 
-| | Azure 表存储 | Azure Cosmos DB 表 API（预览版） |
+| | Azure 表存储 | Azure Cosmos DB 表 API |
 | --- | --- | --- |
 | 延迟 | 快速，但对延迟没有上限。 | 读取操作和写入操作的低至个位数的毫秒级延迟（通过以下统计数据提供支持：在全球任何位置，对于任何规模，99% 的情况下读取操作的延迟 < 10 毫秒、写入操作的延迟 < 15 毫秒）。 |
 | 吞吐量 | 可变吞吐量模型。 表的可伸缩性限制为 20,000 个操作/秒。 | 使用 SLA 支持的[每个表专用保留吞吐量](request-units.md)实现高度可缩放。 帐户没有吞吐量上限，每个表支持 >1000 万个操作/秒。 |
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/06/2017
 | 查询 | 执行查询时使用主键的索引，否则进行扫描。 | 查询可以利用属性的自动索引缩短查询时间。 Azure Cosmos DB 数据库引擎能够支持聚合查询、地理空间查询和排序查询。 |
 | 一致性 | 在主要区域内实现强一致性。 在辅助区域内实现最终一致性。 | [五个定义完善的一致性级别](consistency-levels.md)可基于应用程序需要权衡可用性、延迟、吞吐量和一致性。 |
 | 定价 | 存储优化。 | 吞吐量优化。 |
-| SLA | 99.99% 可用性。 | 在单个区域中达到 99.99% 可用性，并能够添加更多区域以实现更高的可用性。 针对通用版本的[行业领先综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
+| SLA | 99.99% 可用性。 | 在公开发布时，为所有单区域帐户和具有松散一致性的所有多区域帐户提供 99.99% 的可用性 SLA，为所有多区域数据库帐户提供 99.999% 的读取可用性方面的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
 
 ## <a name="get-started"></a>入门
 
@@ -64,5 +64,7 @@ ms.lasthandoff: 11/06/2017
 * [使用表 API 查询表数据](tutorial-query-table.md)
 * [了解如何使用表 API 设置 Azure Cosmos DB 全局分发](tutorial-global-distribution-table.md)
 * [Azure Cosmos DB 表 .NET API](table-sdk-dotnet.md)
-
+* [Azure Cosmos DB 表 Java API](table-sdk-java.md)
+* [Azure Cosmos DB 表 Node.js API](table-sdk-nodejs.md)
+* [用于 Python 的 Azure Cosmos DB 表 SDK](table-sdk-python.md)
 

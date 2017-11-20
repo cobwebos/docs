@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: 6dcc5c55fae5e2494526c492a1453747b4d6e179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b5552bbb3a56a95e616a79bf9adeabe68d01216
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -75,11 +75,12 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [Web 活动](control-flow-web-activity.md) | Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。 
 [Lookup 活动](control-flow-lookup-activity.md) | Lookup 活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步被后续活动所引用。 
 [Get Metadata 活动](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。 
-Do Until 活动 | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。
-If Condition 活动 | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 
+[Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
+[If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。
+[Wait 活动](control-flow-wait-activity.md) | 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
 
 ## <a name="pipeline-json"></a>管道 JSON
-让我们深入了解如何以 JSON 格式定义管道。 管道的泛型结构如下所示：
+下面介绍如何以 JSON 格式定义管道： 
 
 ```json
 {
@@ -175,7 +176,7 @@ retry | 最大重试次数 | Integer | 不能。 默认值为 0
 retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不能。 默认为 20 秒
 
 ### <a name="control-activity"></a>控制活动
-控制活动具有以下顶级结构。
+控制活动具有以下顶级结构：
 
 ```json
 {
@@ -358,7 +359,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 ## <a name="scheduling-pipelines"></a>计划管道
 管道由触发器计划 有不同类型的触发器（允许管道在时钟计划上触发的计划触发器，以及按需触发管道的手动触发器）。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。 
 
-若要使你的触发器启动管道运行，必须包含对触发器定义中的特定管道的管道引用。 管道和触发器具有 n-m 关系。 多个触发器可启动单个管道，而同一触发器可启动多个管道。 定义管道后，必须启动触发器，以使其开始触发管道。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。 
+若要使你的触发器启动管道运行，必须包含对触发器定义中的特定管道的管道引用。 管道和触发器具有 n-m 关系。 多个触发器可以启动单个管道，并且同一个触发器可以启动多个管道。 定义管道后，必须启动触发器，以使其开始触发管道。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)一文。 
 
 例如，假设有一个计划触发器“触发器 A”，我希望使用该触发器启动我的管道“MyCopyPipeline”。 定义该触发器，如以下示例中所示：
 

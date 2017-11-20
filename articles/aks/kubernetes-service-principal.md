@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a532c8f69bfb19d26538aafe7c74f062dee06d9f
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 6c61d99f1d023ac643455faae10ef284f1f5bb14
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 的服务主体
 
@@ -34,13 +34,13 @@ AKS 群集需要 [Azure Active Directory 服务主体](../active-directory/devel
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者为 Kubernetes 群集预先创建一个服务主体。
 
-还需安装并配置 Azure CLI 2.0.20 或更高版。 若要查找版本，请运行 az --version。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+还需安装并配置 Azure CLI 2.0.21 或更高版本。 若要查找版本，请运行 az --version。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-sp-with-aks-cluster"></a>使用 AKS 群集创建 SP
 
 使用 `az aks create` 命令部署 AKS 群集时，可以选择自动生成服务主体。
 
-在以下示例中，已经创建了 AKS 群集，但由于未指定现有的服务主体，因此为群集创建了一个服务主体。 若要完成此操作，帐户必须具有创建服务主体所需的相应权限。 
+在以下示例中，已经创建了 AKS 群集，但由于未指定现有的服务主体，因此为群集创建了一个服务主体。 若要完成此操作，帐户必须具有创建服务主体所需的相应权限。
 
 ```azurecli
 az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys

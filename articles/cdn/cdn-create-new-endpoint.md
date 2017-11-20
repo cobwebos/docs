@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b211c2076840b6eff7c21cb481da569ca6bc49a4
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 80e8e85f058a5cec2e3ae6a6cff5cb8a363370e1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-azure-cdn"></a>Azure CDN 入门
 本文介绍如何通过创建新 CDN 配置文件和终结点启用 Azure CDN。
@@ -82,7 +82,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
    > 使用 HTTPS 访问 CDN 内容具有以下限制：
    > 
    > * 必须使用 CDN 提供的 SSL 证书。 不支持第三方证书。
-   > * HTTPS 对 Azure CDN 自定义域的支持仅在 **Verizon 的 Azure CDN** 产品（标准版和高级）中可用。 在 **Akamai 的 Azure CDN** 产品上不受支持。 有关详细信息，请参阅[在 Azure CDN 自定义域上启用或禁用 HTTPS](cdn-custom-ssl.md)。
+   > * HTTPS 对 Azure CDN 自定义域的支持仅在 **Verizon 的 Azure CDN** 产品（标准版和高级）中可用。 在 **Akamai 的 Azure CDN** 产品上不受支持。 有关详细信息，请参阅[在 Azure CDN 自定义域上配置 HTTPS](cdn-custom-ssl.md)。
   
 9. 单击“创建”  按钮创建新的终结点。
    

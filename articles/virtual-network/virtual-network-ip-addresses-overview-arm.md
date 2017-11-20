@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.openlocfilehash: d243455be9439a686ecdf6dfa3aadf2802a0714d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -145,29 +145,22 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="allocation-method"></a>分配方法
 
-可以根据资源所附加到的子网的地址范围来分配专用 IP 地址。 子网本身的地址范围是虚拟网络的地址范围的一部分。
+可以根据资源所部署到的虚拟网络子网的地址范围来分配专用 IP 地址。 分配专用 IP 地址有两种方法：
 
-分配专用 IP 地址有两种方法：*动态*或*静态*。 默认分配方法为*动态*，即自动从资源的子网分配 IP 地址（使用 DHCP）。 停止和启动该资源时，此 IP 地址可能更改。
-
-可将分配方法设置为*静态*，确保 IP 地址始终相同。 指定“静态”时，会指定属于资源子网一部分的有效 IP 地址。
-
-静态专用 IP 地址通常用于：
-
-* 充当域控制器或 DNS 服务器的虚拟机。
-* 需要使用 IP 地址的防火墙规则的资源。
-* 其他应用/资源通过 IP 地址访问的资源。
+- **动态**：Azure 保留每个子网地址范围中的前四个地址，不分配这些地址。 Azure 将下一个可用的地址分配给子网地址范围中的资源。 例如，如果子网的地址范围为 10.0.0.0/16，且地址 10.0.0.0.4-10.0.0.14 已分配（.0-.3 为保留地址），则 Azure 会将 10.0.0.15 分配给资源。 动态方法是默认的分配方法。 动态 IP 地址在分配后，仅在以下情况下才会释放：网络接口已删除、已分配到同一虚拟网络中的另一子网，或者分配方法已更改为静态，这种情况下会指定另一 IP 地址。 默认情况下，当分配方法从动态更改为静态时，Azure 会将以前的动态分配的地址作为静态地址分配。
+- **静态**：由你选择并分配子网地址范围中的地址。 分配的地址可以是子网地址范围中的任何地址，前提是该地址不是子网地址范围中的头四个地址，也不是当前已分配给子网中任何其他资源的地址。 只有在删除网络接口之后，静态地址才会释放。 如果将分配方法更改为动态，Azure 会动态地将以前分配的静态 IP 地址作为动态地址分配，即使该地址是子网地址范围中的下一个可用地址。 如果将网络接口分配给同一虚拟网络中的另一子网，则该地址也会更改。但是，若要将网络接口分配给另一子网，必须先将分配方法从静态更改为动态。 将网络接口分配给另一子网以后，即可将分配方法改回为静态，并根据新子网的地址范围分配 IP 地址。
 
 ### <a name="virtual-machines"></a>虚拟机
 
-可将专用 IP 地址分配到 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机的**网络接口**。 如果虚拟机有多个网络接口，会将专用 IP 地址分配到每个网络接口。 可将网络接口的分配方法指定为动态或静态。
+可将一个或多个专用 IP 地址分配给 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机的一个或多个**网络接口**。 可将每个专用 IP 地址的分配方法指定为动态或静态。
 
 #### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>内部 DNS 主机名解析（针对虚拟机）
 
 所有 Azure 虚拟机都默认配置了 [Azure 托管的 DNS 服务器](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution)，除非显式配置了自定义 DNS 服务器。 这些 DNS 服务器为驻留在同一个虚拟网络内的虚拟机提供内部名称解析。
 
-创建虚拟机时，主机名到其专用 IP 地址的映射将添加到 Azure 托管的 DNS 服务器。 如果虚拟机有多个网络接口，主机名会映射到主要网络接口的专用 IP 地址。
+创建虚拟机时，主机名到其专用 IP 地址的映射将添加到 Azure 托管的 DNS 服务器。 如果虚拟机有多个网络接口，或者一个网络接口有多个 IP 配置，主机名会映射到主要网络接口的主要 IP 配置的专用 IP 地址。
 
-使用 Azure 托管的 DNS 服务器配置的虚拟机可将同一虚拟网络中的所有虚拟机的主机名解析为其专用 IP 地址。
+使用 Azure 托管的 DNS 服务器配置的虚拟机可将同一虚拟网络中的所有虚拟机的主机名解析为其专用 IP 地址。 若要在连接的虚拟网络中解析虚拟机的主机名，必须使用自定义 DNS 服务器。
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>内部负载均衡器 (ILB) 和应用程序网关
 
