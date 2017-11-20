@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/23/2017
+ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 15b0bbd1da3cb6ae4efc92b6210304c1a4ca2977
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 1497535e1c40b77a588ae292ae3d3e4f6ab7daa3
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/09/2017
 ---
-# <a name="compute-optimized"></a>计算优化
+# <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 
 [!INCLUDE [virtual-machines-common-sizes-compute](../../../includes/virtual-machines-common-sizes-compute.md)]
 

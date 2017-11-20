@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 322cf2ebbe83d00fcebcec618e07141d26f4f255
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a619943abaf8835e591872cba0ed046d4c6c4a9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="introduction-to-app-service-environments"></a>应用服务环境简介 #
  
@@ -48,13 +48,13 @@ ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及
 
 辅助角色是托管客户应用的角色。 辅助角色有 3 种固定大小：
 
-* 单核/3.5 GB RAM
-* 双核/7 GB RAM
-* 四核/14 GB RAM
+* 一个 vCPU/3.5 GB RAM
+* 两个 vCPU/7 GB RAM
+* 四个 vCPU/14 GB RAM
 
 客户无需管理前端和辅助角色。 客户扩展其应用服务计划时，会自动添加所有基础结构。 在 ASE 中创建或缩放应用服务计划时，将在适当的情况下添加或删除所需的基础结构。
 
-ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划核心也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的相关信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
+ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的相关信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持 ##
 
@@ -68,13 +68,15 @@ ASE 既可以是面向 Internet 的（使用公共 IP 地址），也可以是�
 
 有关如何在虚拟网络和本地网络中使用 ASE 的详细信息，请参阅[应用服务环境网络注意事项][ASENetwork]。
 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
+
 ## <a name="app-service-environment-v1"></a>应用服务环境 v1 ##
 
 应用服务环境有两个版本：ASEv1 和 ASEv2。 上述信息基于 ASEv2。 本部分说明 ASEv1 和 ASEv2 之间的差异。 
 
 在 ASEv1 中，需手动管理所有资源。 它们包括基于 IP 的 SSL 所用的前端、辅助角色和 IP 地址。 扩大应用服务计划之前，需要先扩大要托管该计划的辅助角色池。
 
-ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配的每个内核付费。 包括未托管任何工作负荷的前端或辅助角色所使用的内核。 在 ASEv1 中，ASE 的默认最大规模为 55 个主机总数。 其中包括辅助角色和前端。 ASEv1 的一项优势是可在经典虚拟网络和资源管理器虚拟网络中进行部署。 若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]。
+ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配的每个 vCPU 付费。 包括未托管任何工作负荷的前端或辅助角色所使用的 vCPU。 在 ASEv1 中，ASE 的默认最大规模为 55 个主机总数。 其中包括辅助角色和前端。 ASEv1 的一项优势是可在经典虚拟网络和资源管理器虚拟网络中进行部署。 若要深入了解 ASEv1，请参阅[应用服务环境 v1 简介][ASEv1Intro]。
 
 <!--Links-->
 [Intro]: ./intro.md

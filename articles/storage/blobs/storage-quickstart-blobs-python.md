@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 76e23d85b392f8120914f6170040c6b3c450aba6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4a197af41f5450d84e1c18e15198d1febb02bab1
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>使用 Python 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 blob。 
@@ -73,7 +73,11 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 
 验证文件后，按任意键可完成演示并删除测试文件。 既然现在已了解此示例的用途，打开 example.py 文件可查看代码。 
 
-## <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
+## <a name="understand-the-sample-code"></a>理解示例代码
+
+下一步，我们演练示例代码，以便了解它的工作原理。
+
+### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。
 
 * 实例化 BlockBlobService 对象，该对象指向存储帐户中的 Blob 服务。 
@@ -98,7 +102,7 @@ block_blob_service.create_container(container_name)
 # Set the permission so the blobs are public.
 block_blob_service.set_container_acl(container_name, public_access=PublicAccess.Container)
 ```
-## <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
+### <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
 
 Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 blob，此快速入门中使用的便是它。  
 
@@ -128,7 +132,7 @@ Blob 存储支持多种上传方法。 例如，若有一个内存流，则可�
 
 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 blob 主要用于用于备份 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
 
-## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
+### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
 使用 list_blobs 方法获取容器中的文件的列表。 此方法会返回一个生成器。 下面的代码检索 blob 列表，然后循环访问它们，显示在容器中找到的 blob 的名称。  
 
@@ -140,7 +144,7 @@ print("\nList blobs in the container")
         print("\t Blob name: " + blob.name)
 ```
 
-## <a name="download-the-blobs"></a>下载 Blob
+### <a name="download-the-blobs"></a>下载 Blob
 
 使用 get\_blob\_to\_path 方法将 blob 下载到本地磁盘。 以下代码将下载前面部分所上传的 blob。 会将“_DOWNLOADED”添加为 blob 名称的前缀，以便可以在本地磁盘上同时看到这两个文件。 
 
@@ -152,7 +156,7 @@ print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
-## <a name="clean-up-resources"></a>清理资源
+### <a name="clean-up-resources"></a>清理资源
 如果不再需要此本快速入门中上传的 blob，可使用 delete\_container 删除整个容器。 如果不再需要已创建的文件，可使用 delete\_blob 方法将文件删除。
 
 ```python

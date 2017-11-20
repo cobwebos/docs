@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: cshoe
 ms.custom: aaddev
-ms.openlocfilehash: a0b8ff6894a1f30fd8d18beef234737573691af9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 6f67a2cf2baabfa10c6a8e81b085ca6991b981dd
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="secure-nodejs-web-api-with-azure-active-directory"></a>使用 Azure Active Directory 保护 Node.js Web API
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/19/2017
 
 ### <a name="configure-the-project-to-use-active-directory"></a>将项目配置为使用 Active Directory
 
-若要开始配置应用程序，需要通过 Azure CLI 获取几个特定于帐户的值。 CLI 的最简单入门方法是使用 Azure Cloud Shell。
+若要开始配置应用程序，可以通过 Azure CLI 获取几个特定于帐户的值。 CLI 的最简单入门方法是使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

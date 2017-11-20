@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Shell（预览版）中的 PowerShell 快速入门 | Microsoft Docs"
-description: "Cloud Shell 中的 PowerShell 快速入门"
+title: "PowerShell in Azure Cloud Shell（预览版）快速入门 | Microsoft Docs"
+description: "PowerShell in Cloud Shell 快速入门"
 services: Azure
 documentationcenter: 
 author: maertendmsft
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: fd1d340bc0408eaeb0b7b18235df109224eae5f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
+# <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）快速入门
 
-本文档详细介绍如何在 [Azure 门户](https://aka.ms/PSCloudPreview)中使用 Cloud Shell 中的 PowerShell。
+本文档详细介绍如何在 [Azure 门户](https://aka.ms/PSCloudPreview)中使用 PowerShell in Azure Cloud Shell。
 
 > [!NOTE]
-> 此外，还提供了 [Azure Cloud Shell 中的 Bash](quickstart.md) 快速入门。
+> 此外，还提供了 [Bash in Azure Cloud Shell](quickstart.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
@@ -227,7 +227,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 ### <a name="discover-webapps"></a>发现 WebApps
 
-进入 `WebApps` 文件夹可以轻松浏览存储资源
+进入 `WebApps` 文件夹可以轻松浏览 Web 应用资源
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -243,15 +243,15 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 
 
-# You can use Azure cmdlets to Start/Stop your web apps for example,
+# You can use Azure cmdlets to Start/Stop your web apps
 PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
 mywebapp1      Running  MyResourceGroup1     {mywebapp1.azurewebsites.net ...   West US
 
-# Refresh the current state with -force
-PS Azure:\MySubscriptionName\WebApps> dir -force
+# Refresh the current state with -Force
+PS Azure:\MySubscriptionName\WebApps> dir -Force
 
     Directory: Azure:\MySubscriptionName\WebApps
 
@@ -266,7 +266,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="list-available-commands"></a>列出可用命令
 
-在 `Azure` 驱动器下，键入 `Get-AzureRmCommand` 可获取区分上下文的 Azure 命令。
+在 `Azure` 驱动器下，键入 `Get-AzureRmCommand` 可获取特定于上下文的 Azure 命令。
 
 或者，始终可以使用 `Get-Command *azurerm* -Module AzureRM.*` 找出可用的 Azure 命令。
 
@@ -276,13 +276,13 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="get-help"></a>Get-Help
 
-键入 `Get-Help` 可获取有关 Azure Cloud Shell 中的 PowerShell 的信息。
+键入 `Get-Help` 可获取有关 PowerShell in Azure Cloud Shell 的信息。
 
 ``` Powershell
 PS Azure:\> Get-Help
 ```
 
-对于特定的命令，仍可以执行 Get-Help 再后接一个 cmdlet，例如：
+对于特定命令，仍可以执行 Get-Help 后接一个 cmdlet。
 
 ``` Powershell
 PS Azure:\> Get-Help Get-AzureRmVM
@@ -290,7 +290,7 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-file-storage-to-store-your-data"></a>使用 Azure 文件存储来存储数据
 
-可以创建一个脚本（例如 `helloworld.ps1`）并将其保存到云驱动器，以便在不同的 shell 会话中使用该脚本。
+可以创建一个脚本（例如 `helloworld.ps1`）并将其保存到 `CloudDrive`，以便在不同的 shell 会话中使用该脚本。
 
 ``` Powershell
 cd C:\users\ContainerAdministrator\CloudDrive
@@ -300,7 +300,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-下次使用 Cloud Shell 中的 PowerShell 时，`helloworld.ps1` 文件将出现在装载 Azure 文件共享的 `CloudDrive` 文件夹下。
+下次使用 PowerShell in Cloud Shell 时，`helloworld.ps1` 文件将出现在装载 Azure 文件共享的 `CloudDrive` 文件夹下。
 
 ## <a name="use-custom-profile"></a>使用自定义配置文件
 
@@ -310,13 +310,13 @@ Hello World!
 
 ## <a name="use-git"></a>使用 Git
 
-若要在 CloudShell 中克隆 git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可如下所示克隆存储库：
+若要在 Cloud Shell 中克隆 git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
 
  ``` PowerShell
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-由于注销会话或会话超时时， CloudShell 中的会话不会保留，因此下次登录时 Git 配置文件不会存在。 若要持久保存 Git 配置，必须将 .gitconfig 保存到 `CloudDrive` 并将其复制，或者在启动 `CloudShell` 时创建符号链接。 在 profile.ps1 中使用以下代码片段可创建 `CloudDrive` 的符号链接。
+由于注销或会话超时时，Cloud Shell 中的会话不会保留，因此下次登录时 Git 配置文件将不会存在。 若要持久保存 Git 配置，必须将 .gitconfig 保存到 `CloudDrive` 并将其复制，或者在启动 Cloud Shell 时创建符号链接。 在 profile.ps1 中使用以下代码片段可创建 `CloudDrive` 的符号链接。
 
  ``` PowerShell
  

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 57d9ebc5a9689a6f1d48464aa20ffdc7fa61b00f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4a6647e30657a6d2d076cd254069d96f99a0aa60
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -34,7 +34,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
     ![将脚本复制到主网页的开头。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
-3. **移动应用代码：**通过[按照此指南操作](app-insights-mobile-center-quickstart.md)，使用 Mobile Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights ，以进行分析。
+3. **移动应用代码：**通过[按照此指南操作](app-insights-mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
 4. **获取遥测：**在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: e695cb375492c163350bcd7bfcb1dbdbc3f3c48f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d18f5f9e75cd815b7f9622498f16624cf375d6bd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -149,7 +149,7 @@ Azure 门户和 PowerShell 均在后台使用[资源管理器 REST API](https://
 
 ## <a name="next-steps"></a>后续步骤
 
-* 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[使用策略来管理资源和控制访问](resource-manager-policy.md)。
+* 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)。
 * 有关部署资源时使用 Azure PowerShell 的说明，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](powershell-azure-resource-manager.md)。
 * 有关部署资源时使用 Azure CLI 的说明，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理器配合使用](xplat-cli-azure-resource-manager.md)。
 * 有关使用门户的说明，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。  

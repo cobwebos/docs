@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/13/2017
+ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e817e327b8890c91bd7db640b083fd6c5c11aa14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文逐步介绍了如何使用恢复服务保管库配置 Azure 备份报表，以及如何使用 Power BI 访问这些报表。 执行这些步骤后，可直接转到 Power BI，以便查看所有报表、自定义和创建报表。 
@@ -29,6 +29,7 @@ ms.lasthandoff: 10/11/2017
 2. 暂不支持为 Azure SQL、DPM 和 Azure 备份服务器配置报表。
 3. 如果为每个保管库配置同一存储帐户，可以跨保管库和订阅查看报表。 选择的存储帐户应与恢复服务保管库位于同一区域。
 4. 在 Power BI 中，报表按计划每 24 小时刷新一次。 还可以在 Power BI 中临时刷新报表，这样客户存储帐户中的最新数据可用于呈现报表。 
+5. 国家云当前不支持 Azure 备份报表。
 
 ## <a name="prerequisites"></a>先决条件
 1. 创建 [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)，以便为报表配置此帐户。 此存储帐户用于存储报表的相关数据。
@@ -50,19 +51,26 @@ ms.lasthandoff: 10/11/2017
 2. 在保管库下显示的项列表中，单击“监视和报表”部分下的“备份报表”，以配置报表的存储帐户。
 
       ![选择“备份报表”菜单项 - 第 2 步](./media/backup-azure-configure-reports/backup-reports-settings.PNG)
-3. 在“备份报表”边栏选项卡中，单击“配置”按钮。 此时，“Azure Application Insights”边栏选项卡打开，用于将数据推送到客户存储帐户。
+3. 在“备份报表”边栏选项卡上，单击“诊断设置”链接。 这将打开用于将数据推送到客户存储帐户的诊断设置 UI。
 
-      ![配置存储帐户 - 第 3 步](./media/backup-azure-configure-reports/configure-storage-account.PNG)
-4. 将“状态”切换按钮设置为“开”，并选中“存档到存储帐户”复选框，以便报表数据可以开始流向存储帐户。
+      ![启用诊断 - 第 3 步](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
+4. 单击“启用诊断”链接。 这将打开用于配置存储帐户的 UI。 
 
-      ![启用诊断 - 第 4 步](./media/backup-azure-configure-reports/set-status-on.png)
-5. 单击“存储帐户”选取器，从列表中选择用于存储报表数据的存储帐户，再单击“确定”。
+      ![启用诊断 - 第 4 步](./media/backup-azure-configure-reports/enable-diagnostics.png)
+5. 在“名称”字段中输入设置名称，并选中“存档到存储帐户”复选框，以便报表数据可以开始流入存储帐户。
 
-      ![选择存储帐户 - 第 5 步](./media/backup-azure-configure-reports/select-storage-account.png)
-6. 选中“Azure 备份报表”复选框，并移动滑块以选择此报表数据的保持期。 存储帐户中报表数据的保持期即为使用此滑块选择的时间段。
+      ![启用诊断 - 第 5 步](./media/backup-azure-configure-reports/select-setting-name.png)
+6. 单击“存储帐户”选取器，从列表中选择用于存储报表数据的相关订阅和存储帐户，再单击“确定”。
 
-      ![选择存储帐户 - 第 6 步](./media/backup-azure-configure-reports/save-configuration.png)
-7. 检查所有更改，再单击顶部的“保存”按钮，如上图所示。 此操作可确保保存所有更改，现在用于存储报表数据的存储帐户已配置完成。
+      ![选择存储帐户 - 第 6 步](./media/backup-azure-configure-reports/select-subscription-sa.png)
+7. 选中“日志”部分下的“Azure 备份报表”复选框，并移动滑块以选择此报表数据的保留期。 存储帐户中报表数据的保持期即为使用此滑块选择的时间段。
+
+      ![保存存储帐户 - 第 7 步](./media/backup-azure-configure-reports/save-diagnostic-settings.png)
+8. 检查所有更改，再单击顶部的“保存”按钮，如上图所示。 此操作可确保保存所有更改，现在用于存储报表数据的存储帐户已配置完成。
+
+9. “诊断设置”表现在应显示已为保管库启用的新设置。 如果它未显示，请刷新该表以查看更新的设置。
+
+      ![查看诊断设置 - 第 9 步](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
 > 通过保存存储帐户配置报表后，为了完成初始数据推送，应等待 24 小时。 应仅在此之后导入 Power BI 中的 Azure 备份内容包。 有关更多详细信息，请参阅[常见问题解答部分](#frequently-asked-questions)。 

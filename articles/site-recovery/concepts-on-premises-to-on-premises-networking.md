@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 故障转移到辅助站点后连接 VM | Microsoft 文档"
-description: "使用 Azure Site Recovery 故障转移到辅助站点后连接 Azure VM 的联网指南。"
+title: "设置使用 Azure Site Recovery 故障转移到辅助站点后要连接的 IP 地址 | Microsoft Docs"
+description: "说明如何设置使用 Azure Site Recovery 故障转移到辅助站点后用于连接 VM 的 IP 地址。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2017
+ms.date: 11/14/2017
 ms.author: pratshar
-ms.openlocfilehash: ce33a90a303a10de8ff198754e8e39c334035537
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 6baeda08b1c41cc024a02f51ca27be2829c46962
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="connecting-to-vms-after-failover-to-a-secondary-site"></a>故障转移到辅助站点后连接 VM
+# <a name="set-up-ip-addressing-to-connect-after-failover-to-a-secondary-site"></a>设置在故障转移到辅助站点后要连接的 IP 地址
 
 查看部署先决条件后，阅读本文了解如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V 虚拟机 (VM) 复制到辅助站点时计划网络。 
 

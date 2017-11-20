@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: johnkem
-ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -56,20 +56,36 @@ ms.lasthandoff: 10/11/2017
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 |资源类型|类别|类别显示名称|
 |---|---|---|
+|Microsoft.AnalysisServices/servers|引擎|引擎|
+|Microsoft.AnalysisServices/servers|服务|服务|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement 网关的相关日志|
 |Microsoft.Automation/automationAccounts|JobLogs|作业日志|
 |Microsoft.Automation/automationAccounts|JobStreams|作业流|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc 节点状态|
 |Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
+|Microsoft.DataFactory/factories|ActivityRuns|管道活动运行日志|
+|Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
+|Microsoft.DataFactory/factories|TriggerRuns|触发器运行日志|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
 |Microsoft.DataLakeStore/accounts|请求|请求日志|
+|Microsoft.Devices/IotHubs|连接|连接|
+|Microsoft.Devices/IotHubs|DeviceTelemetry|设备遥测|
+|Microsoft.Devices/IotHubs|C2DCommands|C2D 命令|
+|Microsoft.Devices/IotHubs|DeviceIdentityOperations|设备标识操作|
+|Microsoft.Devices/IotHubs|FileUploadOperations|文件上传操作|
+|Microsoft.Devices/IotHubs|路由|路由|
+|Microsoft.Devices/IotHubs|D2CTwinOperations|D2C 孪生操作|
+|Microsoft.Devices/IotHubs|C2DTwinOperations|C2D 孪生操作|
+|Microsoft.Devices/IotHubs|TwinQueries|孪生查询|
+|Microsoft.Devices/IotHubs|JobsOperations|作业操作|
+|Microsoft.Devices/IotHubs|DirectMethods|直接方法|
 |Microsoft.Devices/provisioningServices|DeviceOperations|设备操作|
 |Microsoft.Devices/provisioningServices|ServiceOperations|服务操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
+|Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|运行日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
@@ -78,6 +94,7 @@ ms.lasthandoff: 10/11/2017
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|网络安全组事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|网络安全组规则计数器|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|网络安全组规则流事件|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保护通知|
@@ -85,6 +102,11 @@ ms.lasthandoff: 10/11/2017
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|应用程序网关防火墙日志|
+|Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|网关诊断日志|
+|Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|隧道诊断日志|
+|Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|路由诊断日志|
+|Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|流量管理器探测运行状况结果事件|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM 计数器表|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery 作业|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery 事件|
@@ -93,7 +115,6 @@ ms.lasthandoff: 10/11/2017
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery 恢复点|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|
-|Microsoft.Sql/servers/databases|QueryStore|查询存储|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
 |Microsoft.Sql/servers/databases|Errors|Errors|

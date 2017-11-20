@@ -9,11 +9,11 @@ ms.reviewer: mawah, marhamil, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: eefede6196bedf208d9b14cee63632922223a6d6
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
 
@@ -52,9 +52,11 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 4. 在第 1 部分中，执行 SVM 训练不需要专用的 GPU，但第 2 部分所述的优化 DNN 将需要使用。 如果你没有强大的 GPU，又希望在多个 GPU 上进行训练，又或者没有 Windows 计算机，请考虑使用具有 Windows 操作系统的 Azure 深度学习虚拟机。 有关“一键式”部署指南，请参阅[此处](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)。 部署完成后，请通过远程桌面连接来连接 VM，在其中安装 Workbench，然后从 VM 本地执行代码。
 5. 需要安装 OpenCV 等多种 Python 库。 在 Workbench 上的“文件”菜单中单击“打开命令提示符”，运行以下命令安装这些依赖项：  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.0-cp35-cp35m-win_amd64.whl` 从 http://www.lfd.uci.edu/~gohlke/pythonlibs/ 下载 OpenCV 滚轮之后（准确的文件名和版本可能会有变化）
-    - `conda install matplotlib numpy pillow`
-    - `conda install -c conda-forge bqplot`
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` 从 http://www.lfd.uci.edu/~gohlke/pythonlibs/ 下载 OpenCV 滚轮之后（准确的文件名和版本可能会有变化）
+    - `conda install pillow`
+    - `pip install -U numpy`
+    - `pip install bqplot`
+    - `jupyter nbextension enable --py --sys-prefix bqplot`
 
 ### <a name="troubleshooting--known-bugs"></a>疑难解答/已知问题
 - 第 2 部分需要使用 GPU，否则在尝试优化 DNN 时会引发错误：“尚未实现在 CPU 上进行批量规范化训练”。
@@ -70,7 +72,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 2.  在“项目”页上单击 + 号，然后选择“新建项目”。
 3.  在“新建项目”窗格中，填写新项目的信息。
 4.  在“搜索项目模板”搜索框中，键入“图像分类”并选择模板。
-5.  单击“创建”。
+5.  单击“创建” 。
 
 执行这些步骤将创建如下所示的项目结构。 项目目录限制为小于 25 MB，因为 Azure 机器学习 Workbench 会在每次运行之后创建此文件夹的副本（以启用运行历史记录）。 因此，所有图像和临时文件都将保存到目录 ~/Desktop/imgClassificationUsingCntk_data 下（本文档中称为 DATA_DIR）。
 
@@ -91,12 +93,10 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 
 脚本 `0_downloadData.py` 将所有图像下载到 DATA_DIR/images/fashionTexture/ 目录。 这 428 个 URL 中可能有部分已断开。 这并不是问题，只是意味着我们用于培训和测试的图像数量略有减少。
 
-下图展示了属性“圆点”（左边两列）、“条纹”（中间两列）和“豹纹”（右边两列）的示例。 批注是根据上衣来完成的。
+下图展示了属性“圆点”（左侧）、“条纹”（中间）和“豹纹”（右侧）的示例。 批注是根据上衣来完成的。
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/examples_dotted.jpg"  alt="alt text" height="200">
-<img src="media/scenario-image-classification-using-cntk/examples_striped.jpg" alt="alt text" height="200">
-<img src="media/scenario-image-classification-using-cntk/examples_leopard.jpg" alt="alt text" height="200">
+<img src="media/scenario-image-classification-using-cntk/examples_all.jpg"  alt="alt text" width="700">
 </p>
 
 

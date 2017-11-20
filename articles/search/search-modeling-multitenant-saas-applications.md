@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2016
+ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>多租户 SaaS 应用程序与 Azure 搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 搜索生成的多租户应用程序。
 
 ## <a name="azure-search-concepts"></a>Azure 搜索概念
-作为一种搜索即服务解决方案，Azure 搜索允许开发人员将丰富的搜索体验添加到应用程序中，而无需管理任何基础结构或成为搜索领域的专家。 数据上传到服务，然后存储在云中。 通过对 Azure 搜索 API 发出简单请求，即可修改和搜索数据。 [此文](http://aka.ms/whatisazsearch)提供了服务概述。 在讨论设计模式之前，应务必了解 Azure 搜索中的某些概念。
+作为一种搜索即服务解决方案，Azure 搜索允许开发人员将丰富的搜索体验添加到应用程序中，而无需管理任何基础结构，或者成为信息检索方面的专家。 数据上载到服务，并存储在云中。 通过对 Azure 搜索 API 发出简单请求，即可修改和搜索数据。 [此文](http://aka.ms/whatisazsearch)提供了服务概述。 在讨论设计模式之前，应务必了解 Azure 搜索中的某些概念。
 
 ### <a name="search-services-indexes-fields-and-documents"></a>搜索服务、索引、字段和文档
 使用 Azure 搜索时，即已订阅一种*搜索服务*。 当数据上传到 Azure 搜索后，将存储在搜索服务内的一个*索引*中。 单个服务中可能有大量索引。 若要利用熟悉的数据库概念，搜索服务可以比作一个数据库，而服务中的索引可以比作数据库中的表。

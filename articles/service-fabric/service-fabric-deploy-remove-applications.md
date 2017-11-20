@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 6d0f85a839171c43d226741f54e0dc954b85601d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a1279ba9626ece30491c8fc899054873f6359e2
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
 > [!div class="op_single_selector"]
+> * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
-> * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
-> * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
+> * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 <br/>
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 2. 如果不再需要该应用程序类型，则将其取消注册
 3. 从映像存储中删除应用程序包
 
-如果使用 [Visual Studio 来部署和调试](service-fabric-publish-app-remote-cluster.md) 本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
+如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何 PowerShell 命令之前，请始终先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 连接到 Service Fabric 群集。 若要连接到本地部署群集，请运行以下命令：

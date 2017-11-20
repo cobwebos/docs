@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 26a5854735bd197fb114fce409a093251dc5c2f0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33fedd765acde666eef280ba7dfa72536bf1bd2
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/01/2017
 ![选择“表”，并使用“配置列”](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> 单击列标头，重新排列 Web 浏览器中的结果。 但请注意：对于大型结果集，会限制下载到浏览器的行数。 按此方式排序不一定会显示实际的最高或最低项。 若要对项进行可靠地排序，请使用 `top` 或 `sort` 运算符。
+> 单击列标头，重新排列 Web 浏览器中的结果。 但请注意：对于大型结果集，会限制下载到浏览器的行数。 按此方式排序只会对返回的结果集排序，不一定会显示实际的最高或最低项。 若要对项进行可靠地排序，请使用 `top` 或 `sort` 运算符。
 >
 >
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/01/2017
 
 结果相同，但其运行速度会较慢。 （还可编写 `order`，其为 `sort` 的别名。）
 
-还可使用表视图中的列标头对屏幕上的结果进行排序。 当然，如果已使用 `take` 或 `top` 来检索表中的部分内容，则仅会重新排列已检索到的记录。
+还可使用表视图中的列标头对屏幕上的结果进行排序。 当然，如果已使用 `take` 或 `top` 只检索表中的部分内容，则单击列标头仅会重新排列已检索到的记录。
 
 ## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)：按条件筛选
 
@@ -115,8 +115,9 @@ ms.lasthandoff: 11/01/2017
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="getting-the-right-type"></a>获取正确的类型
-查找失败的请求：
+### <a name="find-unsuccessful-requests"></a>查找失败的请求
+
+将字符串值转换为整数以使用大于比较：
 
 ```AIQL
 
@@ -240,7 +241,7 @@ ms.lasthandoff: 11/01/2017
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` 会将流中的数据点收集到 `by` 子句求值相等的组。 `by` 表达式中的每个值（即上述示例中的每个运算名称）会在结果表中生成一行。
+`Summarize` 会将流中的数据点收集到 `by` 子句求值相等的组。 `by` 表达式中的每个值（即上面示例中的每个唯一运算名称）会在结果表中生成一行。
 
 或者可按每天的时间对结果分组：
 
@@ -402,7 +403,7 @@ ms.lasthandoff: 11/01/2017
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-需将最后一行转换为日期时间。 目前只有表的 x 轴为日期时间时，才显示为标量。
+需将最后一行转换为日期时间。 目前只有图表的 x 轴为日期时间时，才显示为标量。
 
 `where` 子句排除单次会话 (sessionDuration = = 0)，并设置 x 轴的长度。
 

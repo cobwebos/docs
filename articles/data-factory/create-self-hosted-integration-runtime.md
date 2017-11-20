@@ -3,7 +3,7 @@ title: "在 Azure 数据工厂中创建自承载的集成运行时 | Microsoft D
 description: "了解如何在 Azure 数据工厂中创建自承载的集成运行时，从而允许数据工厂访问私有网络中存储的数据。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: spelluru
-ms.openlocfilehash: 63e4bb600d053a43c500b601a3942eb96ac16b07
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.author: abnarain
+ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -103,11 +103,11 @@ ms.lasthandoff: 10/19/2017
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
-一个自承载集成运行时可与多台本地计算机相关联。 这些计算机称为节点。 至多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
+一个自托管 Integration Runtime 可关联到多台本地计算机。 这些计算机称为节点。 至多可将 4 个节点与一个自承载集成运行时相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：
 1. 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与 Azure 数据工厂集成的云数据中的单点故障，从而确保最多 4 个节点的连续性。
 2. 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
-如[教程](tutorial-hybrid-copy-powershell.md)中所述，可以通过简单地从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时软件，并通过从 New-AzureRmDataFactoryV2IntegrationRuntimeKey cmdlet 中获取的任一身份验证密钥进行注册来关联多个节点
+如[教程](tutorial-hybrid-copy-powershell.md)中所述，可以通过直接从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自托管 Integration Runtime 软件，并通过使用从 New-AzureRmDataFactoryV2IntegrationRuntimeKey cmdlet 获取的任一身份验证密钥进行注册来关联多个节点
 
 > [!NOTE]
 > 不需要为关联每个节点而创建新的自承载集成运行时。

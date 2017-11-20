@@ -1,6 +1,6 @@
 ---
 title: "Azure Database for PostgreSQL 中的服务器概念 | Microsoft Docs"
-description: "本主题提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。"
+description: "本主题提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。"
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 67cf6b133e8e869ee3a157d79d68602760d9137c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/08/2017
+ms.openlocfilehash: 46e109c25f8cbdba9b3769db7563259f7c6705d4
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
 本文提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。
@@ -47,9 +47,16 @@ Azure Database for PostgreSQL 服务器：
 |||
 
 ## <a name="how-do-i-manage-a-server"></a>如何管理服务器？
-可通过使用 Azure 门户或 [Azure CLI](/cli/azure/postgres).来管理 Azure Database for PostgreSQL 服务器。
+可使用 [Azure 门户](https://portal.azure.com)或 [Azure CLI](/cli/azure/postgres) 管理 Azure Database for PostgreSQL 服务器。
+
+## <a name="server-parameters"></a>服务器参数
+PostgreSQL 服务器参数可确定服务器的配置。 在 Azure Database for PostgreSQL 中，可通过 Azure 门户或 Azure CLI 查看和编辑参数列表。 
+
+由于是 Postgres 的托管服务，Azure Database for PostgreSQL 中的可配置参数是本地 Postgres 实例中的参数的子集（有关 Postgres 参数的详细信息，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/9.6/static/runtime-config.html)）。 在创建时为每个参数使用了默认值，启用了 Azure Database for PostgreSQL 服务器。 用户不能配置需要服务器重启或超级用户访问权限才能使更改生效的参数。
+
 
 ## <a name="next-steps"></a>后续步骤
 - 有关该服务的概述，请参阅 [Azure Database for PostgreSQL 概述](overview.md)。
 - 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](concepts-service-tiers.md)。
 - 有关连接到服务的信息，请参阅 [Azure Database for PostgreSQL 的连接库](concepts-connection-libraries.md)。
+- 通过 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 查看和编辑服务器参数。

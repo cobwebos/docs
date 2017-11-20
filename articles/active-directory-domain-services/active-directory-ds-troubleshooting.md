@@ -4,7 +4,7 @@ description: "Azure AD 域服务故障排除指南"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 34335db77a5e414af4cfa77d6223ab5290bae614
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
 
 ## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>无法为 Azure AD 目录启用 Azure AD 域服务
-如果尝试为目录启用 Azure AD 域服务时遇到失败或切换回“已禁用”状态，请参考本部分来排查错误。
+如果尝试为目录启用 Azure AD 域服务，本部分可帮助排查错误。
 
 选择对应于所遇到的错误消息的故障排除步骤。
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 10/16/2017
 >
 >
 
-```
+```powershell
 $InformationPreference = "Continue"
 $WarningPreference = "Continue"
 

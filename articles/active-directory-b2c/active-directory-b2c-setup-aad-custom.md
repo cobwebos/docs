@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: 6c073d70debfdc3560405955d65fa9ccaa7d8b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b91c75ec73a8b47a67241e3b69c2ed68d5f9b2a
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C：使用 Azure AD 帐户登录
 
@@ -52,6 +52,9 @@ ms.lasthandoff: 10/11/2017
 1. 输入应用程序的名称（例如 `Azure AD B2C App`）。
 1. 选择“Web 应用/API”作为应用程序类型。
 1. 对于“登录 URL”，输入以下 URL，其中 `yourtenant` 替换为 Azure AD B2C 租户的名称 (`fabrikamb2c.onmicrosoft.com`)：
+
+    >[!NOTE]
+    >“登录 URL”中“yourtenant”的值必须全小写。
 
     ```
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp

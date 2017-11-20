@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 11/09/2017
 ms.author: shlo
-ms.openlocfilehash: 25581fa1aa2086accabc9b480d936ebae0338dd3
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8fb656a86689e59c3408b1e2a9274737430eb127
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
 Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
@@ -60,7 +60,7 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 名称 | `Until` 活动的名称。 | String | 是
 type | 必须设置为 Until。 | String | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
-timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 | 否
+timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否
 活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
 
 ## <a name="example-1"></a>示例 1

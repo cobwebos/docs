@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>使用 BizTalk 服务状态可以和不可以执行的操作
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 根据 BizTalk 服务的当前状态，有一些操作不一定能够在 BizTalk 服务上完成。
 
-例如，在 Azure 经典门户中预配新的 BizTalk 服务。 在其成功完成后，BizTalk 服务处于 `active` 状态。 在活动状态下，可以停止、挂起和删除 BizTalk 服务。 如果停止 BizTalk 服务并且停止失败，则 BizTalk 服务将转到 `StopFailed` 状态。 在 `StopFailed` 状态下，可以重新启动 BizTalk 服务。 如果尝试执行某一不允许的操作，例如恢复，会发生以下错误：
+例如，预配新的 BizTalk 服务。 在其成功完成后，BizTalk 服务处于 `active` 状态。 在活动状态下，可以停止、挂起和删除 BizTalk 服务。 如果停止 BizTalk 服务并且停止失败，则 BizTalk 服务将转到 `StopFailed` 状态。 在 `StopFailed` 状态下，可以重新启动 BizTalk 服务。 如果尝试执行某一不允许的操作，例如恢复，会发生以下错误：
 
 `Operation not allowed`
 
@@ -52,7 +52,6 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="see-also"></a>另请参阅
-* [使用 Azure 经典门户创建 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [可在 BizTalk 服务中的“仪表板”、“监视”和“缩放”选项卡中执行的操作](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [使用 BizTalk 服务中的开发人员版、基本版、标准版和高级版可获取的内容](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 * [如何备份和还原 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 11/09/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41c3a449b39d6ef77e1dd0cf10699f8debcad475
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 0f824dad7ba5b661941e952383025e5171f32e55
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="mounting-an-azure-file-share-with-azure-container-instances"></a>装载与 Azure 容器实例的 Azure 文件共享
+# <a name="mount-an-azure-file-share-with-azure-container-instances"></a>装载与 Azure 容器实例的 Azure 文件共享
 
 默认情况下，Azure 容器实例是无状态的。 如果容器崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 本文介绍如何装载 Azure 文件共享，以用于 Azure 容器实例。
 
@@ -185,16 +185,16 @@ az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
 定义模板后，即可创建容器并使用 Azure CLI 为其装载卷。 假设模板文件名为 azuredeploy.json，参数文件名为 azuredeploy.parameters.json，则命令行为：
 
 ```azurecli-interactive
-az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
+az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group $ACI_PERS_RESOURCE_GROUP
 ```
 
-启动容器后，可将通过 seanmckenna/aci-hellofiles 映像部署的简单 Web 应用用于指定安装路径下 Azure 文件共享中的管理文件。 通过以下方式获取 Web 应用的 IP 地址：
+启动容器后，可使用通过 **seanmckenna/aci-hellofiles** 映像部署的简单 Web 应用管理指定装载路径下 Azure 文件共享中的文件。 使用 [az container show](/cli/azure/container#az_container_show) 命令获取 Web 应用的 IP 地址：
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name hellofiles -o table
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles -o table
 ```
 
-可使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com)之类的工具检索及检查写入到文件共享的文件。
+可使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)之类的工具检索及检查写入到文件共享的文件。
 
 >[!NOTE]
 > 若要深入了解如何使用 Azure 资源管理器模板、参数文件，以及如何使用 Azure CLI 进行部署，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md)。

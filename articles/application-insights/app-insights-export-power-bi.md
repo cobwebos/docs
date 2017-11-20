@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe708b14fac971d18d95fd1619907023ec35af89
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ae204b79be228d55b30bb543dd25efdd9c3f0436
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](http://www.powerbi.com/) 是一套商业分析工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](app-insights-overview.md) 的数据。
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/01/2017
 可以使用三种建议的方法将 Application Insights 数据导出到 Power BI。 可以单独使用其中一种方法，或者结合使用这些方法。
 
 * [Power BI 适配器](#power-pi-adapter) - 通过应用设置完整的遥测仪表板。 图表集是预定义的，但可以从其他源任何添加自己的查询。
-* [导出 Analytics 查询](#export-analytics-queries) - 使用 Analytics 编写任何所需的查询，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
+* [**导出 Analytics 查询**](#export-analytics-queries) - 使用 Analytics 或通过使用情况漏斗图编写任何所需的查询，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
 * [连续导出和流分析](app-insights-export-stream-analytics.md) - 这需要完成更多操作来实现设置。 如果想要长时间保留数据，此方法非常有用。 否则，建议使用其他方法。
 
 ## <a name="power-bi-adapter"></a>Power BI 适配器
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/01/2017
 完成初始导入后，仪表板和报告会持续每日更新。 可以控制数据集的刷新计划。
 
 ## <a name="export-analytics-queries"></a>导出 Analytics 查询
-可以使用这种方法编写所需的任何 Analytics 查询，然后将其导出到 Power BI 仪表板。 （可以添加到适配器创建的仪表板。）
+可以使用这种方法编写所需的任何 Analytics 查询或从使用情况漏斗图导出，然后将其导出到 Power BI 仪表板。 （可以添加到适配器创建的仪表板。）
 
 ### <a name="one-time-install-power-bi-desktop"></a>一次性操作：安装 Power BI Desktop
 若要导入 Application Insights 查询，可以使用 Power BI Desktop（桌面版）。 但是，随后可以将其发布到 Web 或 Power BI 云工作区。 
@@ -82,10 +82,32 @@ ms.lasthandoff: 11/01/2017
     ![选择可视化效果](./media/app-insights-export-power-bi/publish-power-bi.png)
 4. 定期手动刷新报告，或者在选项页中设置按计划刷新。
 
+### <a name="export-a-funnel"></a>导出漏斗图
+1. [生成漏斗图](usage-funnels.md)
+2. 单击 Power BI 按钮 
+
+   ![PowerBI 按钮](./media/app-insights-export-power-bi/button.png)
+   
+3. 在 Power BI Desktop 中，选择“获取数据”、“空查询”，并在查询编辑器的“视图”下面，选择“高级查询编辑器”。
+
+   ![空查询](./media/app-insights-export-power-bi/blankquery.png)
+
+   将导出的 M 语言脚本粘贴到高级查询编辑器中。 
+
+   ![高级查询编辑器](./media/app-insights-export-power-bi/advancedquery.png)
+
+4. 从查询中选择项并选择“漏斗图可视化效果”
+
+   ![选择序列和漏斗图](./media/app-insights-export-power-bi/selectsequence.png)
+
+5. 更改标题使其有意义，并将报表发布到 Power BI 云工作区。 
+
+   ![更改标题](./media/app-insights-export-power-bi/changetitle.png)
+
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="401-or-403-unauthorized"></a>401 或 403 未授权 
-若未更新刷新令牌，可能会导致此问题。 请尝试以下步骤，确保仍拥有访问权限。 如果你具有访问权限且刷新凭据不起作用，请打开支持票证。
+若未更新过刷新令牌，可能会出现此问题。 请尝试以下步骤，确保仍拥有访问权限。 如果具有访问权限且刷新凭据不起作用，请开具支持票证。
 
 1. 登录到 Azure 门户，确保可访问资源
 2. 尝试刷新仪表板的凭据

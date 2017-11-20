@@ -17,13 +17,13 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: f0729286afdf01ea0ce0e0060f4d7415fa122014
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8d021538b34c96c1d486c9508df9d4ee91404337
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="use-powershell-to-sync-between-an-azure-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步
+# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 SQL 数据库和 SQL Server 本地数据库之间进行同步
 
 此 PowerShell 示例将数据同步配置为在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步。 
 
@@ -393,8 +393,9 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 有关 SQL 数据同步的详细信息，请参阅：
 
 -   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)
--   [Azure SQL 数据同步入门](../sql-database-get-started-sql-data-sync.md)
+-   [设置 Azure SQL 数据同步](../sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL 数据同步最佳实践](../sql-database-best-practices-data-sync.md)
+-   [使用 OMS Log Analytics 监视 Azure SQL 数据同步](../sql-database-sync-monitor-oms.md)
 -   [Azure SQL 数据同步问题疑难解答](../sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：

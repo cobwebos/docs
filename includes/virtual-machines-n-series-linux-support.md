@@ -6,7 +6,11 @@
 
 | 分发 | 驱动程序 |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>基于 CentOS 的 7.3 | NVIDIA GRID 4.3，驱动程序分支为 R367|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>基于 CentOS 的 7.3 | NVIDIA GRID 5.0，驱动程序分支为 R384|
+
+> [!NOTE]
+> Microsoft 将重新分发适用于 NV VM 的 NVIDIA GRID 驱动程序安装程序。 在 Azure NV VM 上仅安装这些 GRID 驱动程序。 这些驱动程序包括 Azure 中 GRID 虚拟 GPU 软件的授权。
+>
 
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC 实例 - NVIDIA Tesla 驱动程序
 | 分发 | 驱动程序 |

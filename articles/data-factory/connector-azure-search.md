@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ebf63cd6d0f9e62d1001d74ce06b4849e08c0de0
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 2b6219dc509b1af8f196f056b489a31fa331acaf
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
@@ -51,7 +51,7 @@ Azure 搜索链接的服务支持以下属性：
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 > [!IMPORTANT]
-> 将数据从云数据存储复制到 Azure 搜索索引时，需要使用 connectVia 中的显式区域在 Azure 搜索链接服务中引用 Azure 集成运行时。 将此区域设置为 Azure 搜索所在的位置。 可在 [Azure 集成运行时] (concepts-integration-runtime.md#azure-integration-runtime) 中了解详细信息。
+> 将数据从云数据存储复制到 Azure 搜索索引时，需要使用 connectVia 中的显式区域在 Azure 搜索链接服务中引用 Azure 集成运行时。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
 
 **示例：**
 

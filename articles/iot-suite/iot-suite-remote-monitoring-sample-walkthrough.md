@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: a4b28e8a1269374a24e169f9363401109bacc471
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="remote-monitoring-preconfigured-solution-architecture"></a>远程监视预配置解决方案体系结构
 
@@ -141,5 +141,6 @@ Cosmos DB 数据库在预配置解决方案中存储数据。 **storage-adapter*
 
 * [使用 Azure IoT 的远程监视预配置解决方案 (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
 * [使用 Azure IoT 的远程监视预配置解决方案 (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
+* [远程监视预配置解决方案体系结构](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
 有关远程监视预配置解决方案的其他概念性信息，请参阅[自定义预配置解决方案](iot-suite-remote-monitoring-customize.md)。

@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jingwang
-ms.openlocfilehash: 3c066aab8641377705047f6b0ebd0e18c2afbac8
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 2bfc59931bbbb08ad1cd0328cf624b7350f92ec0
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,7 @@ Amazon S3 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“AmazonS3”。 | 是 |
-| accessKeyID | 机密访问键 ID。 |是 |
+| accessKeyId | 机密访问键 ID。 |是 |
 | secretAccessKey | 机密访问键本身。 将此字段标记为 SecureString。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 

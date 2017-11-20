@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 68800ab14cbca367fd97827a923a2edc377e9aee
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 本文概述了 Azure Cosmos DB 的几个常见用例。  本文中的建议可以作为使用 Cosmos DB 开发应用程序的一个起点。   
@@ -39,7 +39,7 @@ Azure Cosmos DB 是一种全球分步的多模型数据库，广泛用于应用�
 
 下面介绍了 Azure Cosmos DB 的几个属性，这些属性使 Cosmos DB 非常适用于想要实现全球分布的高性能应用程序。
 
-* Azure Cosmos DB 采用本机方式对数据进行分区，以实现高可用性和可伸缩性。 Azure Cosmos DB 99.99% 的保证可靠性、吞吐量、低延迟和一致性。
+* Azure Cosmos DB 采用本机方式对数据进行分区，以实现高可用性和可伸缩性。 Azure Cosmos DB 为所有单区域帐户和具有松散一致性的所有多区域帐户提供对可用性、吞吐量和一致性的 99.99% 保证，为所有多区域数据库帐户提供 99.999% 的读取可用性。
 * Azure Cosmos DB 采用由 SSD 提供支持的存储，具有低延迟毫秒级响应时间。
 * Azure Cosmos DB 支持最终、一致前缀、会话和受限停滞等一致性级别，从而实现充分的灵活性和较高的性价比。 Azure Cosmos DB 在级别一致性方面的灵活性超过任何其他数据库服务。 
 * Azure Cosmos DB 提供了灵活的数据友好型定价模式，独立测量存储和吞吐量。

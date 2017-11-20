@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: a294a3f92163f78bace56654c284c4e83623b829
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 2b2f35b3241bd1700bb1fb3319d38fdfda2545f9
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="sprint-1---november-2017"></a>冲刺 (sprint) 1 - 2017 年 11 月 
 
@@ -127,13 +127,13 @@ ms.lasthandoff: 11/09/2017
 - 映像构造服务现在支持为 Azure IoT 服务/设备构建映像。
 
 ### <a name="sample-projects"></a>示例项目
-- Classifying Iris 示例项目：
+- [_Classifying Iris_](./tutorial-classifying-iris-part-1.md) 示例项目：
     - `iris_pyspark.py` 已重命名为 `iris_spark.py`。
-    - `iris_score.py` 已重命名为 `iris-score.py`。
+    - `iris_score.py` 已重命名为 `score_iris.py`。
     - `iris.dprep` 和 `iris.dsource` 已更新以反映最新的数据准备引擎更新。
     - `iris.ipynb` Notebook 已经过修改，可在 HDInsight 群集中工作。
     - 运行历史记录已在 `iris.ipynb` Notebook 单元格中打开。
-- “使用自行车共享数据的高级数据准备”示例项目的“处理错误值”步骤已修复。
-- “成人人口普查数据 MMLSpark”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
-- 分布式超参数优化示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
-- 新的示例项目“使用 CNTK 的图像分类”。
+- [](./tutorial-bikeshare-dataprep.md)“使用自行车共享数据的高级数据准备”示例项目的“处理错误值”步骤已修复。
+- [](https://github.com/Azure/MachineLearningSamples-mmlspark)“针对成人人口普查数据的 MMLSpark”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
+- [](./scenario-distributed-tuning-of-hyperparameters.md)“分布式超参数优化”示例项目 `docker.runconfig` 的格式已从 JSON 更新到 YAML。
+- 新建示例项目“使用 CNTK 的图像分类”[](./scenario-image-classification-using-cntk.md)。

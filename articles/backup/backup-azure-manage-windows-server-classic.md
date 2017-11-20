@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 11/10/2017
 ms.author: markgal;
-ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecc2eb996546810dad169dc25175ab10ebb164aa
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>使用经典部署模型管理 Azure 备份保管库和服务器
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 > Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 11 月 30 日之后，将无法使用 PowerShell 创建备份保管库。 在 2017 年 11 月 30 日之前：
 >- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >

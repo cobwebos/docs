@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 11/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fcd3b9647833d15d0fd7913f3be55f18f665d094
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 25fd7ca3a7a6f2bd9b361bd459a707bad49449e4
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -51,6 +51,15 @@ ms.lasthandoff: 10/26/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name11901190"></a><a name="1.19.0"/>1.19.0
+
+* 在 API 参考文档、程序集中的元数据信息和 NuGet 包中品牌从 Azure DocumentDB 更改为 Azure Cosmos DB。 
+* 通过以直接连接模式发送的请求的响应公开诊断信息和延迟。 在 ResourceResponse 类中属性名称是 RequestDiagnosticsString 和 RequestLatency。
+* 此 SDK 版本需要最新版本的 Azure Cosmos DB 模拟器（可从 https://aka.ms/cosmosdb-emulator 下载）。 
+
+### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
+
+* 对 Microsoft 友元程序集进行了内部更改。
 
 ### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
 
@@ -261,6 +270,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.19.0](#1.19.0) |2017 年 11 月 10 日 |--- |
+| [1.18.1](#1.18.1) |2017 年 11 月 7 日 |--- |
 | [1.18.0](#1.18.0) |2017 年 10 月 17 日 |--- |
 | [1.17.0](#1.17.0) |2017 年 8 月 10 日 |--- |
 | [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |

@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>使用 Azure Functions 创建无服务器 API
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/08/2017
 
 ## <a name="proxies-overview"></a>代理概述
 
-在下一部分，将通过代理呈现 API。 Azure Functions 代理是一个预览功能，可将请求转发到其他资源。 定义 HTTP 终结点的过程与定义 HTTP 触发器类似，但调用终结点时不能写入要执行的代码，而要提供远程实现的 URL。 这样，便可以将多个 API 源组合到可方便客户端使用的单个 API 图面中。 如果要以微服务的形式构建 API，这种做法特别有效。
+在下一部分，将通过代理呈现 API。 Azure Functions 代理可将请求转发到其他资源。 定义 HTTP 终结点的过程与定义 HTTP 触发器类似，但调用终结点时不能写入要执行的代码，而要提供远程实现的 URL。 这样，便可以将多个 API 源组合到可方便客户端使用的单个 API 图面中。 如果要以微服务的形式构建 API，这种做法特别有效。
 
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
@@ -75,7 +75,7 @@ ms.lasthandoff: 11/08/2017
 - [Linux 上的应用服务](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)中的 Docker 容器
 - 其他任何托管 API
 
-若要了解有关代理的详细信息，请参阅[使用 Azure Functions 代理（预览版）]。
+若要了解有关代理的详细信息，请参阅[使用 Azure Functions 代理]。
 
 ## <a name="create-your-first-proxy"></a>创建第一个代理
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/08/2017
 ### <a name="creating-a-proxy-on-the-frontend"></a>在前端上创建代理
 
 1. 在门户中导航回到前端 Function App。
-1. 在左侧导航栏中，单击“代理(预览版)”旁边的加号“+”。
+1. 在左侧导航栏中，单击“代理”旁边的加号“+”。
     ![创建代理](./media/functions-create-serverless-api/creating-proxy.png)
 1. 使用表中指定的代理设置。 
 
@@ -187,9 +187,9 @@ ms.lasthandoff: 11/08/2017
 以下参考文档可以帮助进一步开发 API：
 
 - [Azure Functions HTTP 和 Webhook 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
-- [使用 Azure Functions 代理（预览版）]
+- [使用 Azure Functions 代理]
 - [记录 Azure Functions API（预览版）](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[使用 Azure Functions 代理（预览版）]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[使用 Azure Functions 代理]: https://docs.microsoft.com/azure/azure-functions/functions-proxies

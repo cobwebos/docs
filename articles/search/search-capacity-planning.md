@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 26f5e71f3d00161a92de702209e224008ec8a5ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>在 Azure 搜索中缩放用于查询和索引工作负荷的资源级别
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。
 
-在[基本层](http://aka.ms/azuresearchbasic)或某个[标准层](search-limits-quotas-capacity.md)中设置服务时，可以使用资源配置。 对于这些层中的可计费服务，购买的容量以*搜索单位* (SU) 为增量，其中每个分区和副本被视为一个 SU。 
+在[基本层](http://aka.ms/azuresearchbasic)或某个[标准层](search-limits-quotas-capacity.md)中设置服务时，可以使用资源配置。 对于这些层中的服务，购买的容量以*搜索单位* (SU) 为增量，其中每个分区和副本被视为一个 SU。 
 
 使用的 SU 越少，帐单费用也就相应地越少。 只要设置服务，就会产生费用。 如果暂时不使用某个服务，避免计费的唯一方法就是删除该服务，需要该服务时再重新创建。
 
@@ -51,21 +51,19 @@ ms.lasthandoff: 10/11/2017
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并选择搜索服务。
 2. 在“设置”中打开“缩放”边栏选项卡，并使用滑块来增加或减少分区和副本数目。
 
-如果需要使用基于脚本或基于代码的预配方法，可以改用[管理 REST API](https://msdn.microsoft.com/library/azure/dn832687.aspx)。
+如果需要使用基于脚本或基于代码的预配方法，可以改用[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services)。
 
 一般而言，搜索应用程序所需的副本数多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
 > [!NOTE]
-> 预配服务后，无法升级到更高的 SKU。 需要在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅 [Create an Azure Search service in the portal](search-create-service-portal.md)（在门户中创建 Azure 搜索服务）。
+> 预配服务后，无法升级到更高的 SKU。 必须在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅 [Create an Azure Search service in the portal](search-create-service-portal.md)（在门户中创建 Azure 搜索服务）。
 >
 >
 
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>高可用性
-由于扩展的过程比较简单而且相对较快，因此我们通常建议从一个分区以及一个或两个副本开始，并随着不断构建查询卷而进行扩展。 对于“基本”和 S1 层中的许多服务而言，一个分区即可提供足够的存储和 I/O（每个分区 1500 万个文档）。
-
-查询工作负荷主要是在副本上运行。 如果需要更高的吞吐量或高可用性，也许需要增加副本。
+由于扩展的过程比较简单而且相对较快，因此我们通常建议从一个分区以及一个或两个副本开始，并随着不断构建查询卷而进行扩展。 查询工作负荷主要是在副本上运行。 如果需要更高的吞吐量或高可用性，也许需要增加副本。
 
 针对高可用性的一般建议是：
 
@@ -73,6 +71,8 @@ ms.lasthandoff: 10/11/2017
 * 对于读/写工作负荷（查询以及添加、更新或删除单个文档时的索引编制），需有三个或更多个副本才能实现高可用性
 
 Azure 搜索的服务级别协议 (SLA) 针对查询操作，以及由文档添加、更新或删除操作构成的索引更新。
+
+基本层最多能有一个分区和三个副本。 如果希望灵活地立即响应对索引编制和查询吞吐量的需求波动，请考虑使用标准层中的一个。
 
 ### <a name="index-availability-during-a-rebuild"></a>重建期间的索引可用性
 
@@ -89,9 +89,9 @@ Azure 搜索的高可用性与查询以及不涉及重建索引的索引更新�
 ## <a name="increase-query-performance-with-replicas"></a>使用副本提高查询性能
 如果出现查询延迟，则表明需要增加副本。 一般而言，改善查询性能的第一步是增加此类资源。 添加副本时，将有更多的索引副本联机，可支持更大的查询工作负荷，通过多个副本对请求进行负载均衡。
 
-我们无法提供可靠的每秒查询数 (QPS) 预测：查询性能取决于查询和竞争工作负荷的复杂性。 一般来说，一个“基本”或 S1 SKU 副本可以提供大约 15 QPS，但吞吐量会因为查询的复杂性（多面向查询较为复杂）和网络延迟而或高或低。 此外，必须认识到，尽管添加副本会明显提高规模和性能，但最终效果不一定有线性改善：添加三个副本并不保证带来三倍的吞吐量。
+我们无法提供可靠的每秒查询数 (QPS) 预测：查询性能取决于查询和竞争工作负荷的复杂性。 尽管添加副本会明显提高性能，但结果不一定有线性改善：添加三个副本并不保证带来三倍的吞吐量。
 
-有关的 QPS 详细信息，包括预测工作负荷 QPS 的方法，请参阅[管理搜索服务](search-manage.md)。
+有关估计工作负荷的 QPS 的指南，请参阅 [Azure 搜索的性能和优化注意事项](search-performance-optimization.md)。
 
 ## <a name="increase-indexing-performance-with-partitions"></a>使用分区提高索引性能
 需要以近乎实时的速度刷新数据的搜索应用程序，需要的分区数在比例上要多于副本。 添加分区可将读/写操作分配到更多的计算资源。 此外，还能提供更多磁盘空间来存储更多的索引和文档。

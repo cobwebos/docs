@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 18719a8f49c74973947517161f7306c233a9323f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 X12 消息
 
@@ -65,6 +65,16 @@ ms.lasthandoff: 10/11/2017
     例如：
 
     ![选择要解码的 X12 平面文件消息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+
+   > [!NOTE]
+   > 消息数组的实际消息内容或有效负载无论是对的还错的都采用 base64 编码。 因此，必须指定用于处理此内容的表达式。
+   > 下面是一个用于处理 XML 格式内容的示例，可以在代码视图中输入此示例或在设计器中使用表达式生成器生成。
+   > ``` json
+   > "content": "@xml(base64ToBinary(item()?['Payload']))"
+   > ```
+   > ![内容示例](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
+   >
+
 
 ## <a name="x12-decode-details"></a>X12 解码详细信息
 

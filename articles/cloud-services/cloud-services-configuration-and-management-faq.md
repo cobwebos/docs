@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/20/2017
+ms.date: 11/09/2017
 ms.author: genli
-ms.openlocfilehash: 2ce497146abf664b0084cd96963523812f166e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a20ee1df23df683c49444e8fb3ffdb2085b174f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
@@ -181,6 +181,19 @@ Microsoft 持续监测服务器、网络和应用程序，以检测威胁。 Azu
 ## <a name="how-can-i-add-tags-to-my-azure-cloud-service"></a>如何将标记添加到 Azure 云服务？ 
 
 云服务是一个经典资源。 只有通过 Azure 资源管理器创建的资源才支持标记。 无法将标记应用到云服务等经典资源。 
+
+## <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Azure 门户中即将推出的可帮助管理和监视应用程序的云服务功能是什么？
+
+* 即将推出为远程桌面协议 (RDP) 生成新证书的功能。 或者，可运行以下脚本：
+
+```powershell
+$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My" -KeyLength 20 48 -KeySpec "KeyExchange"
+$password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
+```
+* 选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0)，可以设置每个位置值。
+* 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
+
 
 ## <a name="how-to-enable-http2-on-cloud-services-vm"></a>如何在云服务 VM 上启用 HTTP/2？
 

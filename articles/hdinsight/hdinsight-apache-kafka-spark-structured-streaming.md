@@ -12,15 +12,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 9eb39989bdec330e47e6233be5c1347ff716bed2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: df767617842d5f331b5c4dda6d87d6a999ee1d1b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>将 Spark 结构化流式处理与 Kafka on HDInsight（预览版）配合使用
+# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>将 Spark 结构化流式处理与 Kafka on HDInsight 配合使用
 
 了解如何使用 Spark 结构化流式处理读取 Apache Kafka on Azure HDInsight 中的数据。
 
@@ -52,7 +52,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     此模板可创建以下资源：
 
-    * Kafka on HDInsight 3.5 群集。
+    * Kafka on HDInsight 3.6 群集。
     * Spark on HDInsight 3.6 群集。
     * 包含 HDInsight 群集的 Azure 虚拟网络。
 

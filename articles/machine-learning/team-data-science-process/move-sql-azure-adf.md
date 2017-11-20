@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 8f0186900caf6bff19e15ef6b99c1f49fbf90a81
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bbf969927e96053df055ac6e347bb8fb746054c8
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
 本主题演示如何使用 Azure 数据工厂 (ADF)，通过 Azure Blob 存储将数据从本地 SQL Server 数据库移到 SQL Azure 数据库。
@@ -80,32 +80,14 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 有关设置说明和数据管理网关的详细信息，请参阅[使用数据管理网关在本地源和云之间移动数据](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)
 
 ## <a name="adflinkedservices"></a>创建链接服务以连接到数据资源
-链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 [创建链接服务](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services)中提供了创建链接服务的分步过程。
+链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 在此方案中，我们有三个需要链接服务的资源：
 
-在此方案中，我们有三个链接服务所需的资源。
+1. 本地 SQL Server
+2. Azure Blob 存储
+3. Azure SQL 数据库
 
-1. [适用于本地 SQL Server 的链接服务](#adf-linked-service-onprem-sql)
-2. [适用于 Azure Blob 存储的链接服务](#adf-linked-service-blob-store)
-3. [适用于 Azure SQL 数据库的链接服务](#adf-linked-service-azure-sql)
+[创建链接服务](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services)中提供了创建链接服务的分步过程。
 
-### <a name="adf-linked-service-onprem-sql"></a>适用于本地 SQL Server 数据库的链接服务
-若要创建适用于本地 SQL Server 的链接服务，请执行以下操作：
-
-* 在 Azure 经典门户的 ADF 登陆页面上，单击“数据存储”
-* 选择 "SQL"，然后输入本地 SQL Server 的用户名和密码凭据。 请将服务器名称输入为**完全限定的服务器名称\实例名称 (servername\instancename)**。 将链接服务命名为 *adfonpremsql*。
-
-### <a name="adf-linked-service-blob-store"></a>适用于 Blob 的链接服务
-若要创建适用于 Azure Blob 存储帐户的链接服务，请执行以下操作：
-
-* 在 Azure 经典门户的 ADF 登陆页面上，单击“数据存储”
-* 选择“Azure 存储帐户”
-* 输入 Azure Blob 存储帐户密钥和容器名称。 将链接服务命名为 adfds。
-
-### <a name="adf-linked-service-azure-sql"></a>适用于 Azure SQL 数据库的链接服务
-若要创建适用于 Azure SQL 数据库的链接服务，请执行以下操作：
-
-* 在 Azure 经典门户的 ADF 登陆页面上，单击“数据存储”
-* 选择“Azure SQL”，并输入 Azure SQL 数据库的*用户名*和*密码*凭据。 必须将 username 指定为 user@servername。   
 
 ## <a name="adf-tables"></a>定义和创建表以指定访问数据集的方式
 使用以下基于脚本的过程，创建指定数据集的结构、位置和可用性的表。 可使用 JSON 文件定义表。 若要深入了解这些文件的结构，请参阅[数据集](../../data-factory/v1/data-factory-create-datasets.md)。
@@ -311,9 +293,6 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
-请确认（在单击图表时）可在 Azure 经典门户中的 ADF 上看到如下所示的管道
-
-![ADF 管道](./media/move-sql-azure-adf/DJP1kji.png)
 
 ## <a name="adf-pipeline-start"></a>启动管道
 现在可使用以下命令来运行管道：

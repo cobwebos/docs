@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/13/2017
 ms.author: jingwang
-ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 841e053418dedb6b41262d1277ab4bdc9d4800c6
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -88,7 +88,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 | 复制方案 | 服务决定的默认 DMU 数目 |
 |:--- |:--- |
-| 在基于文件的存储之间复制数据 | 4 到 16 个，具体取决于文件的数量和大小。 |
+| 在基于文件的存储之间复制数据 | 4 到 32 个，具体取决于文件的数量和大小。 |
 | 所有其他复制方案 | 4 |
 
 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 **cloudDataMovementUnits** 属性的**允许值**为 2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
@@ -133,7 +133,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 | 复制方案 | 由服务确定的默认并行复制计数 |
 | --- | --- |
-| 在基于文件的存储之间复制数据 |介于 1 和 32 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或自承载 Integration Runtime 计算机的物理配置。 |
+| 在基于文件的存储之间复制数据 |介于 1 和 64 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或自承载 Integration Runtime 计算机的物理配置。 |
 | 将数据从任何源数据存储复制到 Azure 表存储 |4 |
 | 所有其他复制方案 |1 |
 

@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 11/09/2017
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d876bb1759600fa29a26730bfa8b4ec19db1e442
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3d3de79c7f2465791ec68f850df2fc6317880f9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>在经典门户中管理常见的 Azure 备份作业和触发器警报
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 >从 2017 年 3 月份开始，无法再使用经典门户来创建备份保管库。
 >
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 11 月 30 日之后，将无法使用 PowerShell 创建备份保管库。 在 2017 年 11 月 30 日之前：
 >- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 

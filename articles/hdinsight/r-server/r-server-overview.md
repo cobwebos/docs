@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 47896493fdaf651b8cf74a1ddf4fcffdd51d2972
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 R Server 和开放源代码 R 功能简介
 
@@ -44,7 +44,9 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 也可以将 [Azure 文件](../../storage/files/storage-how-to-use-files-linux.md)服务用作边缘节点上的存储选项。 Azure 文件可让你将 Azure 存储中创建的文件共享装载到 Linux 文件系统。 若要深入了解 R Server on HDInsight 群集的数据存储选项，请参阅 [R Server on HDInsight 群集的 Azure 存储选项](r-server-storage.md)。
 
 ## <a name="access-r-server-on-the-cluster"></a>访问群集上的 R Server
-可以在边缘节点上使用浏览器连接到 R Server，前提是在预配过程中选择包含 RStudio Server。 如果在预配群集时未安装它，可以在稍后添加。 若要深入了解如何在创建群集后安装 RStudio Server，请参阅[在 HDInsight 群集上安装 RStudio Server](r-server-install-r-studio.md)。 还可以使用 SSH / PuTTY 连接到 R Server 以访问 R 控制台。 
+可以使用浏览器连接到边缘节点上的 R Server。 它是在群集创建过程中默认安装的。 有关详细信息，请参阅 [HDInsight 上的 R Server 入门](r-server-get-started.md)。
+
+还可以使用 SSH/PuTTY 通过命令行连接到 R Server，以访问 R 控制台。 
 
 ## <a name="develop-and-run-r-scripts"></a>开发和运行 R 脚本
 创建和运行的 R 脚本可以使用 8000 多种开放源代码 R 包中的任何一种，此外，还可以使用 ScaleR 库中可用的并行化分布式例程。 一般而言，使用边缘节点上的 R Server 运行的脚本将在该节点上的 R 解释程序内运行。 但需要调用计算上下文设置为 Hadoop Map Reduce (RxHadoopMR) 或 Spark (RxSpark) 的 ScaleR 函数的这些步骤除外。 在这种情况下，函数将以分布方式跨与引用数据关联的群集的数据（任务）节点运行。 有关不同计算上下文选项的详细信息，请参阅[适用于 R Server on HDInsight 的计算上下文选项](r-server-compute-contexts.md)。
@@ -87,7 +89,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 由于头节点是冗余的，且并非所有数据节点都受影响，因此在此时间段运行的所有作业可能会变慢。 但是，这些作业应该都可运行完成。 除非发生需要重建群集的灾难性故障，否则任何自定义软件或本地数据在这些维护事件中都将保留。
 
 ## <a name="learn-about-ide-options-for-r-server-on-an-hdinsight-cluster"></a>了解适用于 HDInsight 群集上 R Server 的 IDE 选项
-HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 最新版本的 HDInsight 提供了一个默认选项，用于在边缘节点上安装 [RStudio Server](https://www.rstudio.com/products/rstudio-server/) 的社区版作为基于浏览器的 IDE。 使用 RStudio Server 作为 IDE 来开发和执行 R 脚本，与仅使用 R 控制台相比，可以大幅提高生产力。 如果选择不在创建群集时添加 RStudio Server，而想在以后添加，则请参阅[在 HDInsight 群集上安装 RStudio Server](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-install-r-studio)。+
+HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 最新版本的 HDInsight 在边缘节点上提供 RStudio Server 的默认安装，作为基于浏览器的 IDE。 使用 RStudio Server 作为 IDE 来开发和执行 R 脚本，与仅使用 R 控制台相比，可以大幅提高生产力。
 
 另一个完整 IDE 选项是安装桌面 IDE，并使用它通过远程 Map Reduce 或 Spark 计算上下文来访问群集。 选项包括 Microsoft 的[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS)、RStudio 和 Walware 的基于 Eclipse 的 [StatET](http://www.walware.de/goto/statet)。
 
@@ -100,6 +102,5 @@ HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 �
 要了解如何使用 HDInsight 群集上的 R Server 的详细信息，请参阅下列主题：
 
 * [HDInsight 上的 R Server 入门](r-server-get-started.md)
-* [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中安装）](r-server-install-r-studio.md)
 * [适用于 HDInsight 上的 R Server 的计算上下文选项](r-server-compute-contexts.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](r-server-storage.md)

@@ -4,7 +4,7 @@ description: "了解有关 StorSimple Virtual Array 的软件和网络要求的�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/16/2017
+ms.date: 11/14/2017
 ms.author: alkohli
-ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/06/2017
 * **存储客户端的软件要求** - 介绍受支持的虚拟化平台、Web 浏览器、iSCSI 发起程序、SMB 客户端、最低虚拟设备要求，以及这些操作系统的任何其他要求。
 * **StorSimple 设备的网络要求** - 提供有关需要在防火墙中打开以允许 iSCSI、云和管理流量的端口的信息。
 
-本文中发布的 StorSimple 系统要求信息仅适用于 StorSimple 虚拟阵列。
+本文中发布的 StorSimple 系统要求信息仅适用于 StorSimple Virtual Arrays。
 
 * 对于 8000 系列设备，请转到 [System requirements for your StorSimple 8000 series device](storsimple-system-requirements.md)（StorSimple 8000 系列设备的系统要求）。
 * 对于 7000 系列设备，请转到 [System requirements for your StorSimple 5000-7000 series device](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)（StorSimple 5000-7000 系列设备的系统要求）。
@@ -41,7 +41,10 @@ ms.lasthandoff: 11/06/2017
 | **虚拟机监控程序** | **版本** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 和更高版本 |
-| VMware ESXi |5.5 和 6.0 |
+| VMware ESXi |5.0、5.5 和 6.0 <br> （不支持 6.5。） |
+
+> [!IMPORTANT]
+> 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
 | **组件** | **要求** |
@@ -64,13 +67,13 @@ ms.lasthandoff: 11/06/2017
 | Google Chrome |最新版本 |使用 Chrome 46 测试 |
 
 ### <a name="supported-storage-clients"></a>受支持的存储客户端
-以下软件要求适用于访问 StorSimple 虚拟阵列（配置为 iSCSI 服务器）的 iSCSI 发起程序。
+以下软件要求适用于访问 StorSimple Virtual Array（配置为 iSCSI 服务器）的 iSCSI 发起程序。
 
 | **受支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
-以下软件要求适用于访问 StorSimple 虚拟阵列（配置为文件服务器）的 SMB 客户端。
+以下软件要求适用于访问 StorSimple Virtual Array（配置为文件服务器）的 SMB 客户端。
 
 | **SMB 版本** |
 | --- |
@@ -79,8 +82,8 @@ ms.lasthandoff: 11/06/2017
 | SMB 3.02 |
 
 > [!IMPORTANT]
-> 不要将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器；这会导致不受支持的配置。 
-> 
+> 不要将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器；这会导致不受支持的配置。
+
 
 ### <a name="supported-storage-format"></a>受支持的存储格式
 仅支持 Azure 块 blob 存储。 页 blob 不受支持。 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
@@ -106,7 +109,7 @@ ms.lasthandoff: 11/06/2017
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
-通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 虚拟阵列和 StorSimple 设备管理器服务依赖于其他的 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。 
+通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 虚拟阵列和 StorSimple Device Manager 服务依赖于其他的 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。 
 
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，也可以使用以下信息设置创建安全环境所需的高级防火墙规则。
 
@@ -129,4 +132,4 @@ ms.lasthandoff: 11/06/2017
 | `http://*.data.microsoft.com ` |Windows 中的遥测服务，请参阅[update for customer experience and diagnostic telemetry](https://support.microsoft.com/en-us/kb/3068708)（客户体验和诊断遥测的更新） |
 
 ## <a name="next-steps"></a>后续步骤
-* [准备门户以部署 StorSimple 虚拟阵列](storsimple-virtual-array-deploy1-portal-prep.md)
+* [Prepare the portal to deploy your StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)（准备门户以部署 StorSimple Virtual Array）

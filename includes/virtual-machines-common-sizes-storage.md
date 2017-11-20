@@ -1,5 +1,6 @@
+存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库。 本文提供有关 vCPU、数据磁盘和 NIC 的数量，以及此分组中每种大小的存储吞吐量和网络性能的信息。 
 
-Ls-系列针对需要低延迟临时存储的工作负荷，如 NoSQL 数据库（包括 Cassandra、MongoDB、Cloudera 和 Redis）进行了优化。 Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。  
+Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。  
 
 ## <a name="ls-series"></a>Ls 系列
 
@@ -13,7 +14,7 @@ ACU：180-240
 | Standard_L32s* | 32 | 256  | 5,630 | 64             | NA/NA (0)          | 40,000 / 1,000                            | 8 / 20000 | 
  
 
-Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/storage/common/storage-premium-storage.md)。 
+Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)。 
 
 *实例对于专用于单个客户的硬件独立。
 

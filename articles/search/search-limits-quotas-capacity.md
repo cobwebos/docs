@@ -13,23 +13,23 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/07/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 60e63401e3915e62e1ec5ac03cd548c291580b24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
 
-* **免费**层是 Azure 订阅随附的多租户共享服务。 它是为现有订阅者提供的选项（无需额外费用），以便可以在注册专用资源前试用服务。
+* **免费**层是 Azure 订阅随附的多租户共享服务。 
 * **基本**层为小规模生产工作负荷提供专用计算资源。
 * **标准**层在专用计算机上运行，在每个级别上都具有更多存储和处理容量。 标准层共有四个级别：S1、S2、S3 以及 S3 高密度 (S3 HD)。
 
 > [!NOTE]
-> 服务已在特定层上进行预配。 如果需要跳转层来获取更多容量，必须预配新服务（无就地升级）。 有关详细信息，请参阅[选择 SKU 或层](search-sku-tier.md)。 若要详细了解在已预配的服务内调整容量，请参阅[缩放查询和为工作负荷编制索引的资源级别](search-capacity-planning.md)。
+> 服务已在特定层上进行预配。 跳转层以获取容量涉及预配新的服务（不会就地升级）。 有关详细信息，请参阅[选择 SKU 或层](search-sku-tier.md)。 若要详细了解在已预配的服务内调整容量，请参阅[缩放查询和为工作负荷编制索引的资源级别](search-capacity-planning.md)。
 >
 
 ## <a name="per-subscription-limits"></a>每个订阅限制
@@ -66,16 +66,11 @@ ms.lasthandoff: 10/11/2017
 
 要保持较低的文档大小，务必将不可查询数据从请求中排除。 图像和其他二进制数据不可直接查询，并且不应存储在索引中。 要将不可查询的数据集成到搜索结果中，请定义用于存储资源的 URL 引用的不可搜索字段。
 
-## <a name="workload-limits-queries-per-second"></a>工作负荷限制（每秒查询次数）
-| 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |
-| --- | --- | --- | --- | --- | --- | --- |
-| QPS |不适用 |每个副本大约 3 个 |每个副本大约 15 个 |每个副本大约 60 个 |每个副本大于 60 个 |每个副本大于 60 个 |
+## <a name="queries-per-second-qps"></a>每秒查询次数 (QPS)
 
-每秒查询次数 (QPS) 是基于启发所得的近似值，它使用模拟及实际的客户工作负荷获得估计值。 精确的 QPS 吞吐量因数据和查询性质而异。
+每个客户必须独立制定 QPS 估计值。 索引大小和复杂性、查询大小和复杂性以及流量大小是 QPS 的主要决定因素。 当此类因素未知时，没有方法能提供有意义的估计值。
 
-虽然上面提供粗略的估计值，但实际查询率难以确定，尤其是在吞吐量基于可用带宽和系统资源竞争的免费共享服务中。 在免费层中，计算资源和存储资源由多个订阅者共享，因此解决方案 QPS 将始终随同时运行的其他工作负荷量的不同而有所不同。
-
-在标准级别中，由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何计算工作负荷的 QPS 的指南，请参阅[管理搜索解决方案](search-manage.md)中的最佳实践部分。
+针对专用资源（基本层和标准层）上运行的服务进行计算时，估计值更可预测。 由于能够控制更多参数，因此可以更精确地评估 QPS。 有关如何方法估算的指南，请参阅 [Azure 搜索的性能和优化](search-performance-optimization.md)。
 
 ## <a name="api-request-limits"></a>API 请求限制
 * 每个请求最大 16 MB <sup>1</sup>

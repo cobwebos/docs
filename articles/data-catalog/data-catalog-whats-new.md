@@ -13,16 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 11/13/2017
 ms.author: maroche
-ms.openlocfilehash: 2eab8ce96399c7d6da9b4afbccdfd8b836f0c9f3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2839c265596d98834fb4071dea1684d5a6669907
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
+
+## <a name="whats-new-for-november-2017"></a>2017 年 11 月新增功能 
+截至 2017 年 11 月，已添加到 Azure 数据目录的功能如下：
+
+* 支持直接链接到数据目录门户中的特定业务术语表术语。 用户可以从业务术语表复制链接，然后将其嵌入到文档、电子邮件、报表或其他位置，以便直接链接到术语表术语定义。
+* 支持 Azure Active Directory 服务主体。 数据目录管理员可以使用服务主体授权客户端应用程序访问目录，并可以授予这些应用程序特定权限就像他们可以向用户和安全组授予权限一样。 有关其他信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/active-directory-application-objects.md)。
+* 支持在使用数据目录数据源注册工具连接到 Azure SQL 数据库和 Azure SQL 数据仓库数据源时进行 Azure Active Directory 身份验证。 有关其他信息，请参阅[将 Azure Active Directory 身份验证用于 SQL 数据库或 SQL 数据仓库身份验证](../sql-database/sql-database-aad-authentication.md)。
+
 
 ## <a name="whats-new-for-september-2017"></a>2017 年 9 月新增功能 
 截至 2017 年 9 月，已添加到 Azure 数据目录的功能如下：

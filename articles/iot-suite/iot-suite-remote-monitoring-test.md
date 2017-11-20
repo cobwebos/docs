@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 732ec45003481b0e2f2eca03b6ae13772d325ef1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 0e6cc412fdb3ea7b9d8291b9f963e6412ae994a9
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>使用模拟设备测试解决方案
 
@@ -39,6 +39,10 @@ ms.lasthandoff: 10/31/2017
 | 名称   | 值      |
 | ------ | ----------- |
 | 状态 | "on"、"off" |
+| 联机 | true、false |
+
+> [!NOTE]
+> 对于所有模拟类型来说，**联机**遥测值是必需的。
 
 *方法*
 
@@ -173,7 +177,7 @@ ms.lasthandoff: 10/31/2017
       "SwitchOff": {
         "Type": "javascript",
         "Path": "SwitchOff-method.js"
-      },
+      }
     }
     ```
 
@@ -267,7 +271,11 @@ ms.lasthandoff: 10/31/2017
 
 若要在本地测试和调试更改，请参阅[设备模拟概述](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
-配置项目，将新的**灯泡**设备文件复制到输出目录。
+配置项目，将新的“灯泡”设备文件复制到输出目录：
+
+* 如果使用 Visual Studio，请确保将上一部分中创建的三个新的灯泡文件复制到解决方案中的“服务”项目。 然后使用**解决方案资源管理器**将其标记为要复制到输出目录。
+
+* 如果使用 Visual Studio Code，请打开 **Services.csproj** 文件并添加在上一部分中创建的三个新的灯泡文件。 请参阅 **Services.csproj** 文件中的现有设备模型文件条目作为示例。
 
 若要在已部署的解决方案中测试新设备，请参阅以下文档之一：
 
@@ -299,12 +307,12 @@ ms.lasthandoff: 10/31/2017
 1. 使用以下命令将**设备模拟** GitHub 存储库克隆到本地计算机（如果尚未这样做）：
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
+    git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-1. 每种设备类型都有一个 JSON 模型文件，并且在 `data/devicemodels` 文件夹中具有关联的脚本。 定义模拟**冷却器**设备类型的文件为：
-    * `data/devicemodels/chiller-01.json`
-    * `data/devicemodels/scripts/chiller-01-state.js`
+1. 每种设备类型都有一个 JSON 模型文件，并且在 `Services/data/devicemodels` 文件夹中具有关联的脚本。 定义模拟**冷却器**设备类型的文件为：
+    * `Services/data/devicemodels/chiller-01.json`
+    * `Services/data/devicemodels/scripts/chiller-01-state.js`
 
 ### <a name="specify-the-new-telemetry-type"></a>指定新的遥测类型
 

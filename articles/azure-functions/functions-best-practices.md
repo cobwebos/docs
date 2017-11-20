@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3df59afe595265fba88f7274154a36d42139859
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d59ef16de433ac9691f6996eab2bf56f056feb88
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -66,8 +66,7 @@ ms.lasthandoff: 10/18/2017
 
 如果已处理队列项，则允许函数不执行任何操作。
 
-利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器](functions-bindings-storage-queue.md#trigger)文档中的**处理有害队列消息**。
- 
+利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue.md#trigger---poison-messages)文档中的**处理有害队列消息**。 
 
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一函数应用中混合测试和生产代码
 
@@ -97,4 +96,3 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 由于 Azure Functions 使用 Azure 应用服务，用户还应该了解应用服务准则。
 * [模式和实践 HTTP 性能优化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
-

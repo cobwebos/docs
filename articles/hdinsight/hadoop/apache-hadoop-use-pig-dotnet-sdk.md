@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 11/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 27ecba06f2251aaf742f2221982cad5cb9602769
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c828a7b63e70669ed38ecea898442a3978e67ba7
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业
 
@@ -57,7 +57,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 3. 单击“确定”以创建该项目  。
 
-4. 从“工具”菜单中选择“库包管理器”或“Nuget 包管理器”，并选择“包管理器控制台”。
+4. 从“工具”菜单中选择“库包管理器”或“NuGet 包管理器”，并选择“包管理器控制台”。
 
 5. 若要安装 .NET SDK 包，请使用以下命令：
 
@@ -121,10 +121,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 7. 若要启动应用程序，请按 **F5**。
 
 8. 若要退出应用程序，请按 **ENTER**。
-
-## <a name="summary"></a>摘要
-
-如你所见，.NET SDK for Hadoop 可让你创建 .NET 应用程序，从而将 Pig 作业提交到 HDInsight 群集和监视作业状态。
 
 ## <a name="next-steps"></a>后续步骤
 

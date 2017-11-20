@@ -1,6 +1,6 @@
 ---
 title: "BizTalk 服务中的“仪表板”、“监视”、“缩放”、“配置”和“混合连接” | Microsoft Docs"
-description: "了解 BizTalk 服务经典门户选项卡上的控件和监视性能：“仪表板”、“监视”、“缩放”、“配置”和“混合连接”。 MABS, WABS"
+description: "了解有关 BizTalk 服务的控件和监视性能"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>查看“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 创建 BizTalk 服务和部署应用程序后，可以更改某些 BizTalk 服务设置和监视应用程序性能。 
 
-打开 Azure 经典门户时，系统会自动打开“所有项目”选项卡。要查看 BizTalk 服务，请在“所有项目”选项卡上选择你的 BizTalk 服务，或者选择“BIZTALK 服务”选项卡，并选择你的 BizTalk 服务名称。
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 此时会打开一个新窗口，其中包含以下选项卡： 本主题介绍这些选项卡。
 
@@ -84,9 +84,9 @@ ms.lasthandoff: 10/11/2017
 <br/><br/>
 <ol>
 <li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
-<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
+<li>选择存储帐户和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
 <li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
-<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成辅助密钥”。</li>
+<li>选择存储帐户和“重新生成辅助密钥”。</li>
 </ol>
 <br/>
 此过程称为“变换密钥”。 其目的是让用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。</td>
@@ -169,7 +169,7 @@ ms.lasthandoff: 10/11/2017
 </tr>
 <tr>
 <td><strong>订阅名称</strong></td>
-<td>列出托管 BizTalk 服务的订阅。 订阅控制对 Azure 经典门户的访问。</td>
+<td>列出托管 BizTalk 服务的订阅。 订阅控制访问。</td>
 </tr>
 <tr>
 <td><strong>订阅 ID</strong></td>
@@ -177,7 +177,7 @@ ms.lasthandoff: 10/11/2017
 </tr>
 </table>
 
-[BizTalk 服务：使用 Azure 经典门户进行设置](http://go.microsoft.com/fwlink/p/?LinkID=302280)列出了创建 BizTalk 服务的步骤。
+[BizTalk 服务：预配](http://go.microsoft.com/fwlink/p/?LinkID=302280)列出了用于创建 BizTalk 服务的步骤。
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>任务栏中的“管理”、“连接信息”、“同步密钥”和“删除”：
 <table border="1">
@@ -206,9 +206,9 @@ ms.lasthandoff: 10/11/2017
 <br/><br/>
 <ol>
 <li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
-<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
+<li>选择存储帐户和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
 <li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
-<li>在 Azure 经典门户中，选择“存储帐户”和“重新生成辅助密钥”。</li>
+<li>选择存储帐户和“重新生成辅助密钥”。</li>
 </ol>
 <br/>
 此过程称为“变换密钥”。 其目的是让用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。</td>
@@ -329,7 +329,7 @@ ms.lasthandoff: 10/11/2017
 [BizTalk 服务：备份和还原](biztalk-backup-restore.md)提供了详细信息。 
 
 ## <a name="HybridConnections"></a>混合连接
-混合连接可将 Web 应用或 Azure 应用服务中的移动应用等 Azure 应用程序连接到使用静态 TCP 端口的本地资源，例如 SQL Server、MySQL、HTTP Web API 和大多数自定义 Web 服务。 可以在 Azure 经典门户中的 BizTalk 服务内管理混合连接。
+混合连接可将 Web 应用或 Azure 应用服务中的移动应用等 Azure 应用程序连接到使用静态 TCP 端口的本地资源，例如 SQL Server、MySQL、HTTP Web API 和大多数自定义 Web 服务。 在 BizTalk 服务内管理混合连接。
 
 若要在 Azure BizTalk 服务中创建或管理混合连接，请参阅[混合连接](integration-hybrid-connection-overview.md)。
 
@@ -343,7 +343,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="see-also"></a>另请参阅
 * [混合连接](integration-hybrid-connection-overview.md)  
 * [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](biztalk-editions-feature-chart.md)  
-* [BizTalk 服务：使用 Azure 经典门户预配](biztalk-provision-services.md)  
+* [BizTalk 服务：预配](biztalk-provision-services.md)  
 * [BizTalk 服务：BizTalk 服务状态图表](biztalk-service-state-chart.md)  
 * [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

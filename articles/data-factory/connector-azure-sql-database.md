@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 16d03e5235999ec284d5ca622c1ea88151774bfd
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: a5d2994eb1203274454fc31c3ee9bf7a21562f75
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -222,7 +222,7 @@ GO
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：SqlSink | 是 |
+| type | 复制活动接收器的 type 属性必须设置为：**SqlSink** | 是 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | sqlWriterStoredProcedureName |在目标表中更新/插入数据的存储过程的名称。 |否 |

@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 28965ec8290c8ab22255f9001cc6c3905dda4b8b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 59e6db7caf4988623e6d2f93e986b423db7d7248
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
@@ -103,7 +103,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 ### <a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
 
-对于.NET 应用程序和函数，使用托管服务身份最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 本节演示如何开始使用库。
+对于.NET 应用程序和函数，使用托管服务身份最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
 
 1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用。
 
@@ -119,7 +119,7 @@ string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https:
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
 
-若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅[应用服务和 KeyVault MSI.NET 示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要了解有关 Microsoft.Azure.Services.AppAuthentication 及其公开的操作的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]以及[将应用服务和 KeyVault 与 MSI.NET 配合使用示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ### <a name="using-the-rest-protocol"></a>使用 REST 协议
 
@@ -208,3 +208,6 @@ $tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVers
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+
+[Microsoft.Azure.Services.AppAuthentication 参考]: https://go.microsoft.com/fwlink/p/?linkid=862452

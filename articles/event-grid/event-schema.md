@@ -6,171 +6,40 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/07/2017
 ms.author: babanisa
-ms.openlocfilehash: e251cbfe7c4d8dfbd492817a8fa7af48e6b379df
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: caa709fdc2a59472ee812bde91f7300396aa5755
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
-本文提供事件的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象包含特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
+本文介绍为所有事件提供的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象包含特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
 事件会发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 如果只存在单个事件，则数组长度为 1。 数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。
- 
-## <a name="event-properties"></a>事件属性
 
-所有事件包含以下相同的顶级数据：
+## <a name="event-schema"></a>事件架构
 
-| 属性 | 类型 | 说明 |
-| -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| 数据 | 对象 | 特定于资源提供程序的事件数据。 |
-
-## <a name="available-event-sources"></a>可用事件源
-
-以下事件源通过事件网格发布要使用的事件：
-
-* 资源组（管理操作）
-* Azure 订阅（管理操作）
-* 事件中心
-* 自定义主题
-
-## <a name="azure-subscriptions"></a>Azure 订阅
-
-Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
-
-### <a name="available-event-types"></a>可用事件类型
-
-- Microsoft.Resources.ResourceWriteSuccess：在资源创建或更新操作成功时引发。  
-- Microsoft.Resources.ResourceWriteFailure：在资源创建或更新操作失败时引发。  
-- Microsoft.Resources.ResourceWriteCancel：在取消资源创建或更新操作时引发。  
-- Microsoft.Resources.ResourceDeleteSuccess：在资源删除操作成功时引发。  
-- Microsoft.Resources.ResourceDeleteFailure：在资源删除操作失败时引发。  
-- Microsoft.Resources.ResourceDeleteCancel：在取消资源删除操作时引发。 取消模板部署时会出现此情况。
-
-### <a name="example-event-schema"></a>示例事件架构
+以下示例显示所有事件发布者使用的属性：
 
 ```json
 [
-    {
-    "topic":"/subscriptions/{subscription-id}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
+  {
+    "topic": string,
+    "subject": string,    
+    "id": string,
+    "eventType": string,
+    "eventTime": string,
+    "data":{
+      object-unique-to-each-publisher
     }
+  }
 ]
 ```
 
-
-
-## <a name="resource-groups"></a>资源组
-
-资源组现在可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
-
-### <a name="available-event-types"></a>可用事件类型
-
-- Microsoft.Resources.ResourceWriteSuccess：在资源创建或更新操作成功时引发。  
-- Microsoft.Resources.ResourceWriteFailure：在资源创建或更新操作失败时引发。  
-- Microsoft.Resources.ResourceWriteCancel：在取消资源创建或更新操作时引发。  
-- Microsoft.Resources.ResourceDeleteSuccess：在资源删除操作成功时引发。  
-- Microsoft.Resources.ResourceDeleteFailure：在资源删除操作失败时引发。  
-- Microsoft.Resources.ResourceDeleteCancel：在取消资源删除操作时引发。 取消模板部署时会出现此情况。
-
-### <a name="example-event"></a>示例事件
-
-```json
-[
-    {
-    "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
-    }
-]
-```
-
-
-
-## <a name="event-hubs"></a>事件中心
-
-当前仅在通过“捕获”功能将文件自动发送至存储时才会发出事件中心事件。
-
-### <a name="available-event-types"></a>可用事件类型
-
-- **Microsoft.EventHub.CaptureFileCreated**：在创建捕获文件时引发。
-
-### <a name="example-event"></a>示例事件
-
-此示例事件显示“捕获”功能在存储文件时引发的事件中心事件的架构： 
-
-```json
-[
-    {
-        "topic": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{event-hubs-ns}",
-        "subject": "eventhubs/eh1",
-        "eventType": "Microsoft.EventHub.CaptureFileCreated",
-        "eventTime": "2017-07-11T00:55:55.0120485Z",
-        "id": "bd440490-a65e-4c97-8298-ef1eb325673c",
-        "data": {
-            "fileUrl": "https://gridtest1.blob.core.windows.net/acontainer/eventgridtest1/eh1/1/2017/07/11/00/54/54.avro",
-            "fileType": "AzureBlockBlob",
-            "partitionId": "1",
-            "sizeInBytes": 0,
-            "eventCount": 0,
-            "firstSequenceNumber": -1,
-            "lastSequenceNumber": -1,
-            "firstEnqueueTime": "0001-01-01T00:00:00",
-            "lastEnqueueTime": "0001-01-01T00:00:00"
-        },
-    }
-]
-
-```
-
-
-## <a name="azure-blob-storage"></a>Azure Blob 存储
-
-### <a name="available-event-types"></a>可用事件类型
-
-- **Microsoft.Storage.BlobCreated**：在创建 blob 时引发。
-- **Microsoft.Storage.BlobDeleted**：在删除 blob 时引发。
-
-### <a name="example-event"></a>示例事件
-
-此示例事件显示在创建 blob 时引发的存储事件的架构： 
+例如，为 Azure Blob 存储事件发布的架构是：
 
 ```json
 [
@@ -197,35 +66,30 @@ Azure 订阅现在可从 Azure 资源管理器发出管理事件，例如，在�
   }
 ]
 ```
+ 
+## <a name="event-properties"></a>事件属性
 
+所有事件均包含以下相同的顶级数据：
 
+| 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| 数据 | 对象 | 特定于资源提供程序的事件数据。 |
 
+若要了解数据对象中的属性，请参阅事件源：
 
-## <a name="custom-topics"></a>自定义主题
+* [Azure 订阅（管理操作）](event-schema-subscriptions.md)
+* [Blob 存储](event-schema-blob-storage.md)
+* [事件中心](event-schema-event-hubs.md)
+* [资源组（管理操作）](event-schema-resource-groups.md)
 
-自定义事件的数据有效负载由你定义，可以是任何格式正确的 JSON 对象。 顶级数据应包含与标准资源所定义事件相同的字段。 将事件发布到自定义主题时，应考虑对事件主题建模，以辅助路由和筛选。
-
-### <a name="example-event"></a>示例事件
-
-以下示例显示自定义主题的一个事件：
-````json
-[
-  {
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.EventGrid/topics/myeventgridtopic",
-    "subject": "/myapp/vehicles/motorcycles",    
-    "id": "b68529f3-68cd-4744-baa4-3c0498ec19e2",
-    "eventType": "recordInserted",
-    "eventTime": "2017-06-26T18:41:00.9584103Z",
-    "data":{
-      "make": "Ducati",
-      "model": "Monster"
-    }
-  }
-]
-
-````
+对于自定义主题，事件发布者确定数据对象。 顶级数据应包含与标准资源所定义事件相同的字段。 将事件发布到自定义主题时，应考虑对事件主题建模，以辅助路由和筛选。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
+* 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。

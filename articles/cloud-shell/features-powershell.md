@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Shell（预览版）中的 PowerShell 功能 | Microsoft Docs"
-description: "Azure Cloud Shell 中的 PowerShell 功能概述"
+title: "PowerShell in Azure Cloud Shell（预览版）功能 | Microsoft Docs"
+description: "PowerShell in Azure Cloud Shell 功能概述"
 services: Azure
 documentationcenter: 
 author: maertendMSFT
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: damaerte
-ms.openlocfilehash: ffe5298678de6cc16af0ea29c7d887330f77589d
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 13289d9b18b4c53a2569b9a8772715b38ed22cf7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="features--tools-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中 PowerShell 的功能和工具
+# <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）的功能和工具
 
 [!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > 此外还提供 [Bash](features.md) 的功能和工具。
 
-Cloud Shell 中的 PowerShell 在 `Windows Server 2016` 上运行。
+PowerShell in Cloud Shell（预览版）在 `Windows Server 2016` 上运行。
 
 ## <a name="features"></a>功能
 
 ### <a name="secure-automatic-authentication"></a>安全自动身份验证
 
-Cloud Shell 中的 PowerShell 安全并自动地验证帐户对 Azure PowerShell 的访问权限。
+PowerShell in Cloud Shell（预览版）安全并自动地验证帐户对 Azure PowerShell 的访问权限。
 
 ### <a name="files-persistence-across-sessions"></a>不同会话中的文件持久性
 
@@ -45,7 +45,7 @@ Cloud Shell 中的 PowerShell 安全并自动地验证帐户对 Azure PowerShell
 
 ### <a name="azure-drive-azure"></a>Azure 驱动器 (Azure:)
 
-Cloud Shell 中的 PowerShell 在启动时会打开 Azure 驱动器 (`Azure:`)。
+PowerShell in Cloud Shell（预览版）启动后，用户会进入 Azure 驱动器 (`Azure:`) 路径下。
 使用 Azure 驱动器可以轻松发现和浏览 Azure 资源，例如计算、网络、存储等，类似于文件系统导航。
 可以继续使用熟悉的 [Azure PowerShell cmdlet](https://docs.microsoft.com/en-us/powershell/azure) 来管理这些资源。
 直接在 Azure 门户中或者通过 Azure PowerShell cmdlet 对 Azure 资源所做的任何更改会立即反映在 Azure 驱动器中。
@@ -109,6 +109,6 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 ## <a name="next-steps"></a>后续步骤
 
-[Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md)
+[使用 PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md)
 
 [了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/)

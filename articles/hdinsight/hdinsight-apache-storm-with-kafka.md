@@ -13,15 +13,15 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/12/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 97b89b9c6ef88c1611ccad7963a0aa8e7eb82318
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 50a22877241c77ccb1a7df24ab7df006094a439f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
+# <a name="use-apache-kafka-with-storm-on-hdinsight"></a>将 Apache Kafka 与 HDInsight 中的 Storm 配合使用
 
 了解如何使用 Apache Storm 执行对 Apache Kafka 的读写操作。 本示例还演示如何将数据从 Storm 拓扑保存到由 HDInsight 使用的 HDFS 兼容文件系统。
 
@@ -68,7 +68,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure 资源管理器模板位于https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json。 它创建以下资源：
+    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v2.json**。 它创建以下资源：
     
     * Azure 资源组
     * Azure 虚拟网络

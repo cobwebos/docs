@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/8/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2f7696e207b077f8ae31751f0b6e15459aa1ed52
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: bcbf536390786b61544d3e09638d89e6b3b5c004
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 10/23/2017
     Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
     ```
 
-    此命令将提供 Azure Resource Manager 模板的输入。
+    此命令将提供 Azure 资源管理器模板的输入。
 
     有关如何在密钥保管库中创建自签名证书的示例，请参阅[Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
 
@@ -503,7 +503,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>如何针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换？
 
-如果有两个包含 Azure 负载均衡器前端的虚拟机规模集，并且它们处于同一订阅和区域中，可以解除分配它们的公共 IP 地址，并将公共 IP 地址分配给其他资源。 有关示例，请参阅 [VIP 交换：Azure Resource Manager 中的蓝绿部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。 但这确实意味着延迟，因为要在网络一级解除分配/分配资源。 更快的做法是将 Azure 应用程序网关与两个后端池和路由规则结合使用。 也可以使用支持快速切换暂存槽和生产槽的 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)托管应用程序。
+如果有两个包含 Azure 负载均衡器前端的虚拟机规模集，并且它们处于同一订阅和区域中，可以解除分配它们的公共 IP 地址，并将公共 IP 地址分配给其他资源。 有关示例，请参阅 [VIP 交换：Azure 资源管理器中的蓝绿部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。 但这确实意味着延迟，因为要在网络一级解除分配/分配资源。 更快的做法是将 Azure 应用程序网关与两个后端池和路由规则结合使用。 也可以使用支持快速切换暂存槽和生产槽的 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)托管应用程序。
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>如何为静态专用 IP 地址分配指定专用 IP 地址范围？
 
@@ -577,7 +577,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>如何更改虚拟机规模集中的 VM 数目？
 
-若要更改虚拟机规模集中的 VM 数量，请参阅[更改虚拟机规模集的实例计数](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)。
+若要在 Azure 门户中更改虚拟机规模集中的 VM 数，请从“VM 规模集属性”部分，单击“缩放”边栏选项卡，并使用滚动条。 有关更改实例计数的其他方法，请参阅[更改虚拟机规模集的实例计数](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)。
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>如何定义达到特定阈值时触发的自定义警报？
 
@@ -627,7 +627,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>如何在现有资源组中创建规模集？
 
-尚不能通过 Azure 门户在现有资源组中创建规模集，但从 Azure Resource Manager 模板部署规模集时，可以指定现有资源组。 也可以在使用 Azure PowerShell 或 CLI 创建规模集时指定现有资源组。
+尚不能通过 Azure 门户在现有资源组中创建规模集，但从 Azure 资源管理器模板部署规模集时，可以指定现有资源组。 也可以在使用 Azure PowerShell 或 CLI 创建规模集时指定现有资源组。
 
 ### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>可以将规模集移至另一个资源组吗？
 

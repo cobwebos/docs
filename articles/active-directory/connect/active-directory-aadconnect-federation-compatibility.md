@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 11/08/2017
 ms.author: billmath
-ms.openlocfilehash: bce5867017647764546d872d97943d5d4f01f2d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed1e9276425b2c8577275e7ec6b57f54e5f7ae92
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD 联合身份验证兼容性列表
 Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单一登录与增强的应用程序访问安全性，以便在不使用任何非 Microsoft 解决方案的情况下实施混合部署和仅限云的部署。 与大多数 Microsoft Online 服务一样，Office 365 可与 Azure Active Directory 集成，以利用目录服务、身份验证和授权。 Azure Active Directory 还为数千种 SaaS 应用程序与本地 Web 应用程序提供单一登录。 有关支持的 SaaS 应用程序，请参阅 Azure Active Directory 应用程序库。
@@ -46,6 +46,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 * [Centrify](#centrify) 
 * [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
 * [DigitalPersona 复合身份验证](#digitalpersona-composite-authentication)
+* [ForgeRock 标识平台访问管理 V5.x](#forgerock-identity-platform-access-management-v5x)
 * [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
 * [IceWall Federation Version 3.0](#icewall-federation-version-30) 
 * [Memority](#memority)
@@ -186,6 +187,17 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 
 有关详细信息，请参阅 [DigitalPersona 复合身份验证](http://www.crossmatch.com/uploadedFiles/Support/Reference_Material/DigitalPersona-Office-365-Deployment-Guide.pdf)。
 
+## <a name="forgerock-identity-platform-access-management-v5x"></a>ForgeRock 标识平台访问管理 V5.x
+
+下面是此单一登录体验的方案支持对照表：
+
+| 客户端 | 支持 | 异常 |
+| --- | --- | --- |
+| 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） |支持 |无|
+| 富客户端应用程序（如 Lync、Office Subscription、CRM） |支持 |无|
+| 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） |支持 |无 |
+
+有关详细信息，请参阅 [ForgeRock 标识平台访问管理 V5.x](https://backstage.forgerock.com/knowledge/kb/article/a98278517)。
 
 ## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
 

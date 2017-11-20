@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Shell（预览版）中的 Bash 快速入门 | Microsoft Docs"
-description: "Cloud Shell 中的 Bash 快速入门"
+title: "Bash in Azure Cloud Shell 快速入门 | Microsoft Docs"
+description: "Bash in Cloud Shell 快速入门"
 services: 
 documentationcenter: 
 author: jluk
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Bash in Azure Cloud Shell 快速入门
 
-本文档详细介绍如何在 [Azure 门户](https://ms.portal.azure.com/)中使用 Azure Cloud Shell 中的 Bash。
+本文档详细介绍如何在 [Azure 门户](https://ms.portal.azure.com/)中使用 Bash in Azure Cloud Shell。
 
 > [!NOTE]
-> 此外，还提供了 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入门。
+> 此外，还提供了 [PowerShell in Azure Cloud Shell](quickstart-powershell.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 1. 从 Azure 门户的顶部导航栏启动 **Cloud Shell** <br>
 ![](media/quickstart/shell-icon.png)
-2. 选择用于创建存储帐户和 Azure 文件共享的订阅
+2. 选择用于创建存储帐户和 Microsoft Azure 文件共享的订阅
 3. 选择“创建存储”
 
 > [!TIP]
@@ -77,6 +77,6 @@ ms.lasthandoff: 10/11/2017
 运行 `az group delete -n MyRG`
 
 ## <a name="next-steps"></a>后续步骤
-[了解如何为 Cloud Shell 中的 Bash 持久保存文件](persisting-shell-storage.md) <br>
+[了解如何为 Bash in Cloud Shell 持久保存文件](persisting-shell-storage.md) <br>
 [了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure 文件存储](../storage/files/storage-files-introduction.md) <br>

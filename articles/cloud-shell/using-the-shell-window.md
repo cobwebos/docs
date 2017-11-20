@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Cloud Shell（预览版）窗口 | Microsoft Docs"
+title: "使用 Azure Cloud Shell 窗口 | Microsoft Docs"
 description: "概述如何使用 Azure Cloud Shell 窗口。"
 services: azure
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: 59cd03f6e04e9b096fe740e8a7140e602c0baa58
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 5d376ea0bce1088206aa369decf92b1b7523918a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
 

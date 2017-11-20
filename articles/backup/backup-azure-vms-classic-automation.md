@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/2/2017
+ms.date: 11/9/2017
 ms.author: markgal;trinadhk;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f0f06adb8177ce2d17aa0b40666470279c04e22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88ca71f83696c5865405799cddc3645778261408
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-azurermbackup-cmdlets-to-back-up-virtual-machines"></a>使用 AzureRM.Backup cmdlet 来备份虚拟机
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 本文演示如何使用 Azure PowerShell 来备份和恢复 Azure VM。 Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 和经典。 本文介绍如何使用经典部署模型将数据备份到备份保管库。 如果尚未在订阅中创建备份保管库，请参阅[使用 AzureRM.RecoveryServices.Backup cmdlet 来备份虚拟机](backup-azure-vms-automation.md)一文中的 Resource Manager 版本。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 > [!IMPORTANT]
-> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 10 月 15 日之后，将无法使用 PowerShell 创建备份保管库。 2017 年 11 月 1 日之前：
+> 现在可将备份保管库升级到恢复服务保管库。 有关详细信息，请参阅文章[将备份保管库升级到恢复服务保管库](backup-azure-upgrade-backup-to-recovery-services.md)。 Microsoft 鼓励将备份保管库升级到恢复服务保管库。<br/> 2017 年 11 月 30 日之后，将无法使用 PowerShell 创建备份保管库。<br/> 在 2017 年 11 月 30 日之前：
 >- 其余所有备份保管库都将自动升级到恢复服务保管库。
 >- 将无法在经典门户中访问备份数据。 而是使用 Azure 门户在恢复服务保管库中访问备份数据。
 >
@@ -246,7 +246,7 @@ PS C:\> $details = Get-AzureRmBackupJobDetails -Job $restorejob
 ```
 
 ### <a name="build-the-vm"></a>构建 VM
-从还原的磁盘构建 VM 时，可以使用旧版 Azure 服务管理 PowerShell cmdlet、新的 Azure Resource Manager 模板甚至 Azure 门户。 在快速示例中，我们将演示如何使用 Azure 服务管理 cmdlet 来实现此目的。
+从还原的磁盘构建 VM 时，可以使用旧版 Azure 服务管理 PowerShell cmdlet、新的 Azure 资源管理器模板甚至 Azure 门户。 在快速示例中，我们将演示如何使用 Azure 服务管理 cmdlet 来实现此目的。
 
 ```
 $properties  = $details.Properties

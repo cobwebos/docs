@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: cde5983710185d1e46a5601b16bbfb1c0fcae382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17ff07648b210fe207b514381e98dd372375e092
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 
@@ -159,27 +159,53 @@ ms.lasthandoff: 10/11/2017
 
     ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon11.png)
 
-14. 在“SAML SingleSignOn 插件配置”页上单击“添加其他标识提供者”按钮，配置标识提供者的设置。
+14. 在“SAML 单一登录插件配置”页上单击“添加新 IdP”按钮，配置标识提供者的设置。
 
     ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon4.png)
 
-15. 在此页上执行以下步骤：
+15. 在“选择 SAML 标识提供者”页上，执行以下步骤：
 
-    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon5.png)
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon5a.png)
  
-    a. 添加标识提供者（例如 Azure AD）的“名称”。
+    a. 设置“Azure AD”作为 IdP 类型。
     
-    b. 添加标识提供者（例如 Azure AD）的“说明”。
+    b. 添加标识提供者（例如 Azure AD）的“名称”。
+    
+    c. 添加标识提供者（例如 Azure AD）的“说明”。
+    
+    d.单击“下一步”。 单击“下一步”。
+    
+16. 在“标识提供者配置”页上，单击“下一步”按钮。
 
-    c. 单击“XML”，并选择已从 Azure 门户下载的“元数据”文件。
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon5b.png)
 
-    d. 单击“加载”按钮。
+17. 在“导入 SAML IdP 元数据”页上，执行以下步骤：
 
-    e. 此时会读取 IdP 元数据，并根据屏幕截图中突出显示的内容来填充字段。 
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon5c.png)
 
-16. 单击“保存设置”按钮保存设置。
+    a. 单击“加载文件”按钮，然后选择在步骤 5 中下载的元数据 XML 文件。
 
-    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon6.png)
+    b. 单击“导入”按钮。
+    
+    c. 在导入成功之前，请等待片刻。
+    
+    d.单击“下一步”。 单击“下一步”按钮。
+    
+18. 在“用户 ID 属性和转换”页上，单击“下一步”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon5d.png)
+    
+19. 在“用户创建和更新”页上，单击“保存并下一步”保存设置。   
+    
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon6a.png)
+    
+20. 在“测试设置”页上，单击“跳过测试并手动配置”暂时跳过用户测试。 此测试将在下一部分中执行，并需要在 Azure 门户中进行某些设置。 
+    
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon6b.png)
+    
+21. 在出现的显示“跳过测试意味着...”对话框中，单击“确定”。
+    
+    ![配置单一登录](./media/active-directory-saas-samlssojira-tutorial/addon6c.png)
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
