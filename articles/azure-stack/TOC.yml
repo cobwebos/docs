@@ -63,6 +63,8 @@
           href: azure-stack-integrate-identity.md
         - name: 发布终结点
           href: azure-stack-integrate-endpoints.md
+        - name: 外部监视
+          href: azure-stack-integrate-monitor.md
         - name: 安全
           href: azure-stack-integrate-security.md
     - name: 管理
@@ -177,7 +179,7 @@
               href: azure-stack-app-service-configure-deployment-sources.md
         - name: 充实 Marketplace
           items:
-            - name: 应用商店概述
+            - name: Marketplace 概述
               href: azure-stack-marketplace.md
             - name: 下载 Marketplace 项
               href: azure-stack-download-azure-marketplace-item.md
