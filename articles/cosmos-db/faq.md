@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: f7949fe4acbc4efa394bf8bfb34e912a6c861ba3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1d2a5e5d639e2aa0023e99b73f87a68e19afc239
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -70,7 +70,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 也可以使用 [Azure Cosmos DB 模拟器](local-emulator.md)在本地免费开发和测试应用程序，而无需创建 Azure 订阅。 如果对应用程序在 Azure Cosmos DB 模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure Cosmos DB 帐户。
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>如何获取与 Azure Cosmos DB 相关的其他帮助？
-如需任何帮助，请在 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) 或 [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)上联系我们，或者通过向 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 发送邮件安排与 Azure Cosmos DB 工程团队进行一对一交谈。 
+如需任何帮助，请在 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) 或 [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)上联系我们，或者通过向 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 发送邮件安排与 Azure Cosmos DB 工程团队进行一对一交谈。 
 
 <a id="try-cosmos-db"></a>
 ## <a name="try-azure-cosmos-db-subscriptions"></a>试用 Azure Cosmos DB 订阅
@@ -201,10 +201,10 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 对于 REST API，有大量的终结点/查询选项不受 Azure Cosmos DB 表 API 的支持：
 | REST 方法 | REST 终结点/查询选项 | 文档 URL | 说明 |
 | ------------| ------------- | ---------- | ----------- |
-| GET、PUT | /?restype=service@comp=properties| [设置表服务属性](https://docs.microsoft.com/en-us/rest/api/storageservices/set-table-service-properties)和[获取表服务属性](https://docs.microsoft.com/en-us/rest/api/storageservices/get-table-service-properties) | 此终结点用于设置 CORS 规则、存储分析配置和日志记录设置。 CORS 目前不受支持，Azure Cosmos DB 与 Azure 存储表中以不同的方式处理分析和日志记录 |
-| OPTIONS | /<table-resource-name> | [预检 CORS 表请求](https://docs.microsoft.com/en-us/rest/api/storageservices/preflight-table-request) | 这是 Azure Cosmos DB 目前不支持的 CORS 部分。 |
-| GET | /?restype=service@comp=stats | [获取表服务统计信息](https://docs.microsoft.com/en-us/rest/api/storageservices/get-table-service-stats) | 提供有关主节点与辅助节点之间的数据复制速度的信息。 由于复制是写入的一部分，因此在 Cosmos DB 中不需要此选项。 |
-| GET、PUT | /mytable?comp=acl | [获取表 ACL](https://docs.microsoft.com/en-us/rest/api/storageservices/get-table-acl) 和[设置表 ACL](https://docs.microsoft.com/en-us/rest/api/storageservices/set-table-acl) | 获取和设置用于管理共享访问签名 (SAS) 的存储访问策略。 尽管支持 SAS，但其设置和管理方式不同。 |
+| GET、PUT | /?restype=service@comp=properties| [设置表服务属性](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties)和[获取表服务属性](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | 此终结点用于设置 CORS 规则、存储分析配置和日志记录设置。 CORS 目前不受支持，Azure Cosmos DB 与 Azure 存储表中以不同的方式处理分析和日志记录 |
+| OPTIONS | /<table-resource-name> | [预检 CORS 表请求](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | 这是 Azure Cosmos DB 目前不支持的 CORS 部分。 |
+| GET | /?restype=service@comp=stats | [获取表服务统计信息](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | 提供有关主节点与辅助节点之间的数据复制速度的信息。 由于复制是写入的一部分，因此在 Cosmos DB 中不需要此选项。 |
+| GET、PUT | /mytable?comp=acl | [获取表 ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) 和[设置表 ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | 获取和设置用于管理共享访问签名 (SAS) 的存储访问策略。 尽管支持 SAS，但其设置和管理方式不同。 |
 
 此外，Azure Cosmos DB 表 API 仅支持 JSON 格式，而不支持 ATOM。
 
@@ -229,7 +229,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 可以通过以下任一方式分享反馈：
 
 * [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
-* [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
+* [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
 * [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-cosmosdb)
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>连接到表 API 需要使用哪个连接字符串？
@@ -249,7 +249,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 可以使用 Azure 门户浏览此数据。 也可以使用表 API 代码或下一个问题答案中提到的工具。 
 
 ### <a name="which-tools-work-with-the-table-api"></a>哪些工具适用于表 API？ 
-可以使用 [Azure 存储资源管理器](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
+可以使用 [Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
 
 灵活地采用之前指定格式的连接字符串的工具可以支持新的表 API。 [Azure 存储客户端工具](../storage/common/storage-explorers.md)页上提供了表工具的列表。 
 
@@ -266,7 +266,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 是，可以创建 CloudTableClient 的两个不同实例并使其通过连接字符串指向其自身的 URI 来实现此目的。
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>如何将现有 Azure 表存储应用程序迁移到此服务？
-支持使用 [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy) 和 [Azure Cosmos DB 数据迁移工具](import-data.md)。
+支持使用 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 和 [Azure Cosmos DB 数据迁移工具](import-data.md)。
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>如何为此服务扩展存储大小，比如，最初我有 *n* GB 的数据，但一段时间后我的数据会增长到 1 TB？ 
 Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以监视并有效地增加存储。 
@@ -422,130 +422,117 @@ Azure Cosmos DB 是基于 SLA 的系统，在可用性、延迟和吞吐量方�
 <a id="cassandra"></a> 
 ## <a name="develop-with-the-apache-cassandra-api-preview"></a>使用 Apache Cassandra API（预览版）进行开发
 
-### <a name="what-is-the-protocol-version-supported-in-the-preview-do-you-plan-to-support-other-protocols"></a>预览版支持哪个协议版本？ 你们是否打算支持其他协议？
-Azure Cosmos DB 的 Apache Cassandra API 目前支持 CQL 版本 4。 若要提供有关其他模型支持的反馈，请使用 [Uservoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)创建请求，或者向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
+### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>个人预览版支持哪个协议版本？ 是否打算支持其他协议？
+Azure Cosmos DB 的 Apache Cassandra API 目前支持 CQL 版本 4。 如果有与支持其他协议相关的反馈，请通过 [UserVoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)告知我们或者向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
+
+### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>为何要求选择表的吞吐量？
+Azure Cosmos DB 根据表的创建位置（门户或 CQL）设置容器的默认吞吐量。 Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障。 如果引擎可以针对租户的操作实施调控，则可以做到这一点。 设置吞吐量可确保在吞吐量和延迟方面获得保障，因为平台会保留此容量，并保证操作成功。 可以弹性更改吞吐量以便使季节性应用受益并节省成本。
+
+[Azure Cosmos DB 中的请求单位数](request-units.md)一文介绍了吞吐量概念。 表的吞吐量平均分布到各个基础物理分区中。  
+
+### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>通过 CQL 创建的表的默认吞吐量是多少 RU/s？ 如何更改该默认值？
+Azure Cosmos DB 使用每秒请求单位数 (RU/s) 作为所提供的吞吐量的单位。 通过 CQL 创建的表具有 400 RU。 可以通过门户将 RU 更改为 10,000 RU。 如果在个人预览版中需要 10,000 RU 以上的容量，可以首先通过门户创建表。 或者，如果希望 CQL 具有此容量，请通过 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 联系我们。 
+
+CQL
+```
+CREATE TABLE keyspaceName.tablename (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=1200
+```
+
+.NET
+```csharp
+int provisionedThroughput = 400;
+var simpleStatement = new SimpleStatement($"CREATE TABLE {keyspaceName}.{tableName} (user_id int PRIMARY KEY, lastname text)");
+var outgoingPayload = new Dictionary<string, byte[]>();
+outgoingPayload["cosmosdb_provisioned_throughput"] = Encoding.UTF8.GetBytes(provisionedThroughput.ToString());
+simpleStatement.SetOutgoingPayload(outgoingPayload); 
+``` 
+
+### <a name="what-happens-when-throughput-is-exceeded"></a>超出吞吐量时，会发生什么情况？ 
+Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障。 如果引擎可以针对租户的操作实施调控，则可以做到这一点。 这可以通过设置吞吐量来实现，并可确保在吞吐量和延迟方面获得保障，因为平台会保留此容量，并保证操作成功。 当超出此容量时，会收到超载错误消息，指出已超出了容量。 0x1001 超载：无法处理此请求，因为“请求速率太大”。 此时，必须查明是哪些操作及其数据量导致了此问题。 可以通过门户中的指标了解超出了预配容量的已消耗容量。 然后，你需要确保容量差不多是在所有基础分区中平均消耗的。 如果你看到大多数吞吐量是由一个分区消耗的，则说明存在工作负载倾斜。 
+
+相关指标显示了吞吐量在若干小时内、若干天内以及每七天内在各个分区中的使用情况或总体使用情况。 有关详细信息，请参阅[使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)。
+
+[Azure Cosmos DB 诊断日志记录](logging.md)一文中介绍了诊断日志。
+
+### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>主键是否映射到 Azure Cosmos DB 的分区键概念？
+是，分区键用来将实体放置在正确位置。 在 Azure Cosmos DB 中，它用来查找存储在物理分区中的正确逻辑分区。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。 此处，必须记住的一点是，逻辑分区目前不应当超出 10 GB 限制。 
+
+### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>当收到指示分区已满的“配额已满”通知时，会发生什么情况？
+Azure Cosmos DB 是基于 SLA 的系统，可提供无限缩放，并在延迟、吞吐量、可用性和一致性方面提供保障。 它的 Cassandra API 也允许无限制的数据存储。 此无限制的存储是通过使用分区作为键概念的数据水平横向扩展实现的。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。
+
+应当遵循每个逻辑分区的实体数或项数不超过 10 GB 的限制。 为确保应用程序能够很好地进行缩放，建议*不要*创建热分区，即，将所有信息存储在一个分区内并查询它。 只有当存在数据倾斜时，也就是说，当一个分区键有大量数据（即超过 10 GB）时，才会发生此错误。 可以使用存储门户查明数据的分布。 若要修复此错误，请重新创建表并选择一个细粒度的主键（分区键），这可以实现更好的数据分布。
+
+### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>是否可以将 Cassandra API 作为键值存储用于数百万或数十亿单独的分区键？
+Azure Cosmos DB 可以通过对存储进行横向扩展来存储无限的数据。 这与吞吐量无关。 你始终可以仅使用 Cassandra API 通过指定正确的主键/分区键来存储和检索键/值。 这些单独的键获取其自己的逻辑分区并存在于物理分区之上，且不会出现问题。 
 
 ### <a name="is-it-possible-to-create-multiple-tables-with-apache-cassandra-api-of-azure-cosmos-db"></a>是否可以使用 Azure Cosmos DB 的 Apache Cassandra API 创建多个表？
-Azure Cosmos DB 是资源调控的系统，适用于数据和控制平面活动。 与集合和表一样，容器是针对特定的吞吐量容量预配的运行时实体。 快速连续创建这些容器属于非预期的活动，可能会受到限制。 如果测试活动会立即删除/创建表，请尝试隔离这些活动，或者在删除数据后重用现有的表。
+是，可以使用 Apache Cassandra API 创建多个表。 这些表中的每一个都被视为用于吞吐量和存储的单元。 
 
-### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>最多可以创建几个表？
-可创建的表数没有实际限制。 如果需要创建极大量的表（总稳定大小超过 10 TB），而不是像平时那样创建几十或几百个，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
+### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>是否可以连续创建多个表？
+Azure Cosmos DB 是资源调控的系统，适用于数据和控制平面活动。 与集合和表一样，容器是针对给定的吞吐量容量预配的运行时实体。 快速连续创建这些容器是非预期的活动，会被限制。 如果存在立即删除/创建表的测试，请尽量将它们隔开。
 
-### <a name="what-is-the-maximum-number-of-keyspaces-that-can-be-created"></a>最多可以创建几个键空间？ 
-可创建的键空间数没有实际限制，因为它们是元数据容器。 如果需要创建极大量的键空间，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
+### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>最多可以创建几个表？
+表数目没有物理限制，如果需要创建数量很多（远远超过平常的数十个或数百个）的表（其中，稳定的总大小超过 10 TB 数据），请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
 
-### <a name="is-it-possible-to-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>从普通的表启动后，是否可以引入大量数据？ 
-存储容量是自动管理的，推入更多的数据时，存储容量将会增大。 这可以确保提供足够的吞吐量来支持这么多的数据，让我们自信地导入所需数量的数据。
+### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>最多可以创建多少个键空间？ 
+键空间数目没有物理限制，因为它们是元数据容器，如果由于某种原因，你有大量的键空间，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
+
+### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>从普通的表启动后，是否可以引入大量数据？ 
+存储容量是自动管理的，推入更多的数据时，存储容量将会增大。 因此，您可以放心地导入所需数量的数据，不需要管理和预配节点等等。 
 
 ### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>是否可以提供 yaml 文件设置来配置 Azure Cosmos DB 的 Apache Casssandra API 行为？
-Azure Cosmos DB 的 Apache Cassandra API 是一个平台服务。 它提供协议级的兼容性来执行操作。 它可以消除管理、监视和配置的复杂性。 开发人员和用户无需担心可用性、逻辑删除、键缓存、行缓存、布隆筛选器和其他许多设置。 Azure Cosmos DB Apache Cassandra API 注重于提供所需的读取和写入性能且不产生开销。
+Azure Cosmos DB 的 Apache Cassandra API 是一项平台服务。 它提供协议级的兼容性来执行操作。 它消除了管理、监视和配置的复杂性。 开发人员/用户无需担心可用性、逻辑删除、键缓存、行缓存、布隆筛选器和其他许多设置。 Azure Cosmos DB 的 Apache Cassandra API 注重于提供所需的读取和写入性能，不会产生配置和管理开销。
 
 ### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Azure Cosmos DB 的 Apache Cassandra API 是否支持节点添加/群集状态/节点状态命令？
-Apache Cassandra API 是一个平台服务，使用它可以轻松做出容量规划，以及应对吞吐量方面的弹性需求。 借助 Azure Cosmos DB，可以预配所需的吞吐量。 然后，可以在一整天中多次上调和下调吞吐量，而无需担心如何添加/删除或管理节点。 这也意味着，不需要使用节点或群集管理工具。 
+Apache Cassandra API 是一项平台服务，使用它可以轻松做出容量规划，以及应对吞吐量和存储方面的弹性需求。 借助 Azure Cosmos DB，可以预配所需的吞吐量。 然后，可以在一整天中多次上调和下调吞吐量，而无需担心如何添加/删除或管理节点。 这意味着也不需要使用节点、群集管理工具。 
 
-### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation"></a>有关创建键空间的各项配置设置有什么变化？
-出于可用性和低延迟的原因，Azure Cosmos DB 提供现成的全局分发。 不需要设置副本。 在将数据写入或分发到的任何区域中，所有写入始终是持久提交的仲裁，同时可提供性能保障。 出于此原因，`Simple Strategy` 和 `Network Topology Strategy` 等配置设置将被忽略。 
+### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>有关创建键空间的各项配置设置（例如简单/网络）会是怎样的？
+出于可用性和低延迟的原因，Azure Cosmos DB 提供现成的全局分发。 不需要设置副本等等。所有写入均在你进行写入的区域中经过仲裁永久认可，同时提供性能保障。  
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filters-caching-read-repair-changes-gcgrace-and-compression-memtableflushperiod"></a>布隆筛选器、缓存、读取修复更改、gc_grace 和 compression memtable_flush_period 等表元数据的各项设置有什么变化？
-Azure Cosmos DB 为读/写操作提供性能和吞吐量，无需更改任何配置设置，也不会造成意外处理这些设置的风险。 这就消除了难以管理和维护的整套配置设置。
-
-### <a name="what-is-the-default-consistency-of-an-apache-cassandra-api-account"></a>Apache Cassandra API 帐户的默认一致性是什么？
-Azure Cosmos DB 原生支持 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)中所述的五个一致性级别。 Apache Cassandra API 目前仅支持会话一致性。 
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-etc"></a>布隆筛选器、缓存、读取修复更改、gc_grace 和 compression memtable_flush_period 等表元数据的各项设置有什么变化？
+Azure Cosmos DB 为读/写操作提供性能和吞吐量，无需更改任何配置设置，也不会意外处理这些设置。  
 
 ### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Cassandra 表是否支持生存时间 (TTL)？ 
-是的，表支持 TTL。 
+是的，支持 TTL。 
 
-### <a name="what-is-the-default-throughput-of-a-table-when-created-through-cql-what-if-i-need-to-change-it"></a>通过 CQL 创建的表的默认吞吐量是多少？ 如何更改该默认值？
-Azure Cosmos DB 使用每秒请求单位数 (RU/s) 作为所提供的吞吐量的单位。 通过 CQL 创建的表默认预配了 400 RU/s。 可以在 Azure 门户中更改表的吞吐量，最大可提高到 10,000 RU。 如果在预览期需要 10,000 RU/s 以上的吞吐量，请使用 Azure 门户创建表。 或者，如果需要对 CQL 使用此功能，请通过 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 联系我们。 
-
-###  <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-what-should-i-monitor"></a>是否可以监视节点状态、副本状态、gc 和 OS 参数？ 应该监视哪些参数？
-Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无需担心如何管理和监视基础结构。 需要监视的指标是吞吐量，可通过 Azure 门户中“Azure Cosmos DB 指标”页上的“吞吐量”选项卡查看。 这些图表指出了是否已受到限制，以及是要提高还是降低吞吐量。 有关详细信息，请参阅[监视 Azure Cosmos DB](monitor-accounts.md) 和[使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)。
+### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>以前是否可以使用各种工具监视节点状态、副本状态、gc 和 OS 参数？ 现在需要监视什么？
+Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无需担心如何管理和监视基础结构。 你只需要在门户指标中关注可用的吞吐量，以查明你是否受到限制并增大或减小该吞吐量。 监视 [SLA](monitor-accounts.md)。
+使用[指标](use-metrics.md) 使用[诊断日志](logging.md)。
 
 ### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>哪些客户端 SDK 适用于 Azure Cosmos DB 的 Apache Cassandra API？
-我们已使用 C#、Java、Python 和 Node Apache Cassandra 驱动程序对 Apache Cassandra API 进行测试。 如果你使用了其他驱动程序并需要帮助，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。
-
-### <a name="how-do-i-get-ru-capacity-planning-for-the-apache-cassandra-api"></a>如何获取 Apache Cassandra API 的 RU 容量规划？
-Azure Cosmos DB 提供[容量规划器](https://www.documentdb.com/capacityplanner)。 提供实体的 JSON 表示形式后，规划器即可获取时点读/写所需的 RU 数。 对于查询和其他操作，现有驱动程序会返回包含 RU 消耗信息的元数据。 可以利用该信息完成准确的规划。 
+在个人预览版中，Apache Cassandra SDK 的使用 CQLv3 的客户端驱动程序用于客户端程序。 如果你使用其他驱动程序或者遇到问题，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件。 
 
 ### <a name="is-composite-primary-key-supported"></a>是否支持复合主键？
 是的，可以使用正则语法创建复合分区键。 
 
 ### <a name="can-i-use-sstable-loader-for-data-loading"></a>是否可以使用 sstable 加载程序加载数据？
-不可以，目前不支持 sstable 加载程序。 
+否，预览版不支持 sstable 加载程序。 
 
-### <a name="can-an-on-premise-cassandra-cluster-be-paired-with-the-azure-cosmos-db-apache-cassandra-api"></a>本地 Cassandra 群集是否可与 Azure Cosmos DB Apache Cassandra API 配对？
-请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件并描述具体的情景。 本服务针对云环境提供优化的体验，且不产生操作开销。
+### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>本地 Cassandra 群集是否可与 Azure Cosmos DB 的 Apache Cassandra API 配对？
+目前，Azure Cosmos DB 针对云环境提供了优化的体验，且不产生操作开销。 如果需要配对，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件并在其中提供你的方案的说明。
 
-### <a name="do-i-need-to-take-snapshots-and-incremental-backups"></a>是否需要创建快照和增量备份？ 
-Azure Cosmos DB 的所有 API 每隔四小时生成两个免费的完整备份。 因此，可确保客户无需创建备份计划。 如果想要修改备份的保留期和频率，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
+### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API 是否提供完整备份？ 
+Azure Cosmos DB 的所有 API 目前都提供间隔四小时的两个免费完整备份。 这可确保你不需要设置备份计划等等。如果希望修改保留期和频率，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件或提交支持案例。 [Azure Cosmos DB 的自动联机备份和还原](online-backup-and-restore.md)一文中提供了有关备份功能的信息。 
 
-### <a name="where-can-i-provide-feedback-if-a-feature-in-the-regular-cassandra-api-does-not-work"></a>如果常规 Cassandra API 中的某个功能失效，可在哪里提供反馈？
-请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。
+### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>当某个区域出现故障时，Cassandra API 帐户如何处理故障转移？ 
+Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)）。 
 
-### <a name="where-can-i-suggest-new-features-for-the-apache-cassandra-api"></a>可在哪里提议 Apache Cassandra API 的新功能？
-请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。或者，可以在 [Uservoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)站点上提供反馈。 
+可为帐户添加任意数目的区域，并通过提供故障转移优先级控制可将帐户故障转移到的区域。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。 
 
-### <a name="why-do-i-need-to-choose-a-throughput-level"></a>为何需要选择吞吐量级别？
-Azure Cosmos DB 根据表的创建位置、门户或 CQL 设置容器的默认吞吐量。 
-
-Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障。 之所以能够提供这种保障，是因为引擎可以针对租户的操作实施调控。 设置吞吐量可确保在吞吐量和延迟方面获得保障，因为平台会保留此容量，并保证操作成功。 有关详细信息，请参阅 [Azure Cosmos DB 中的请求单位](request-units.md)。
-
-通过使用吞吐量规范，可以弹性更改吞吐量，以利用应用程序的季节性，满足吞吐量需求并节省成本。
-
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-regular-cassandra-with-the-azure-cosmos-db-cassandra-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>将数据引入到常规 Cassandra 时，我从未收到过“配额已满”通知（表示分区已满）。 但使用 Azure Cosmos DB Cassandra API 时，我却收到了此消息。 是此服务有限制，迫使我更改现有的应用程序吗？
-
-Azure Cosmos DB 是基于 SLA 的系统，可提供无限缩放，并在延迟、吞吐量、可用性和一致性方面提供保障。 为了确保获得有保障的高级性能，需确保数据大小和索引可管理且可缩放。 根据分区键针对实体或项数实施 10-GB 限制的目的是确保 Azure Cosmos DB 提供强大的查找和查询性能。 若要确保即使针对 Azure 存储，应用程序也能很好地进行缩放，建议*不要*创建热分区，即，将所有信息存储在一个分区内并查询它。 
-
-### <a name="how-does-the-cassandra-api-handle-failover-if-a-region-goes-down"></a>在某个区域出现故障时，Cassandra API 如何处理故障转移？ 
-Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的全球分布式平台。 为了确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域。 可以根据[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)中所述，使用门户设置区域的优先级。 
-
-可为帐户添加任意数目的区域，并通过提供故障转移优先级控制可将帐户故障转移到的区域。 当然，还需要在帐户中提供一个应用程序以使用数据库。 这样，客户就不会遇到停机情况。  
-
-### <a name="is-the-apache-cassandra-api-enabled-for-backups"></a>是否可为 Apache Cassandra API 启用备份？
-可以，Azure Cosmos DB Cassandra API 提供与 Azure Cosmos DB 相同的备份。 可自动创建备份。 有关详细信息，请参阅[使用 Azure Cosmos DB 联机备份和还原](online-backup-and-restore.md)。
- 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Apache Cassandra API 是否默认对实体的所有属性编制索引？
-是，默认情况下 Azure Cosmos DB 会对实体的所有属性进行索引。 有关详细信息，请参阅 [Azure Cosmos DB：索引策略](indexing-policies.md)。 这样可以获得有保障的性能，以及一致的索引和持久的仲裁提交写入。 
+是，默认情况下 Azure Cosmos DB 会对实体的所有属性进行索引。 有关详细信息，请参阅 [Azure Cosmos DB：索引策略](indexing-policies.md)。 这样始终可以获得有保障的性能，以及一致的索引和持久的仲裁提交写入。 
 
 ### <a name="does-this-mean-i-do-not-have-to-create-multiple-indexes-to-satisfy-the-queries"></a>这是否意味着无需创建多个索引即可满足查询要求？ 
 是，Azure Cosmos DB 针对所有属性提供自动索引，无需任何架构定义。 此自动化功能使开发人员能够将重心放在应用程序上，而不必担心索引的创建和管理。 有关详细信息，请参阅 [Azure Cosmos DB：索引策略](indexing-policies.md)。
 
-### <a name="can-i-change-the-indexing-policy"></a>是否可以更改索引策略？
-是，可以提供索引定义来更改索引策略。 有关详细信息，请参阅 [Azure Cosmos DB 功能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)。 需要适当地将这些设置编码并转义。 有关详细信息，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
-
-下面是 app.config 文件中采用 JSON 字符串格式的示例：
-
-```csharp
-{
-  "indexingMode": "consistent",
-  "automatic": true,
-  "includedPaths": [
-    {
-      "path": "/somepath",
-      "indexes": [
-        {
-          "kind": "Range",
-          "dataType": "Number",
-          "precision": -1
-        },
-        {
-          "kind": "Range",
-          "dataType": "String",
-          "precision": -1
-        } 
-      ]
-    }
-  ],
-  "excludedPaths": 
-[
- {
-      "path": "/anotherpath"
- }
-]
-}
-```
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>是否可以在本地将新的 Cassandra API SDK 用于模拟器？
-[本地模拟器](local-emulator.md)目前不支持 Cassandra API。 
+我们计划在将来支持此功能。 
+
+### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-changefeed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>平台形式的 Azure Cosmos DB 似乎拥有许多功能，例如，更改源和其他功能。 这些功能是否将添加到 Cassandra API 中？ 
+Apache Cassandra API 提供了与 Apache Cassandra 相同的 CQL 功能。 我们确实打算研究在将来支持各种功能的可行性。
+
+### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>常规 Cassandra API 的功能 x 目前不工作，可以在哪里提供反馈？
+请通过 [uservoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)提供反馈。
 
 <a id="moving-to-cosmos-db"></a>
 ## <a name="questions-from-documentdb-customers"></a>DocumentDB 客户提出的问题
@@ -565,7 +552,7 @@ Azure Cosmos DB 在 2010 年以“Project Florence”的名义开始解决开发
 
 ### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>如何确保 DocumentDB 资源可继续在 Azure Cosmos DB 上运行？
 
-完全不需要进行任何更改。 DocumentDB 资源现在称为 Azure Cosmos DB 资源，迁移后，服务不会发生任何中断。
+不需要进行任何更改。 DocumentDB 资源现在称为 Azure Cosmos DB 资源，迁移后，服务不会发生任何中断。
 
 ### <a name="what-changes-do-i-need-to-make-for-my-app-to-work-with-azure-cosmos-db"></a>要进行哪些更改才能让应用配合 Azure Cosmos DB 工作？
 

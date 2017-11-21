@@ -1,6 +1,6 @@
 ---
 title: "什么是 Azure Databricks？ | Microsoft Docs"
-description: "Azure Databricks 是基于 Apache Spark 的数据分析平台。"
+description: "了解什么是 Azure Databricks 以及它如何将 Databricks 上的 Spark 带入到 Azure 中。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。"
 services: azure-databricks
 documentationcenter: 
 author: nitinme
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: 4361c29f81aae3e22e00f4cd854306c27adc2dbc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7ced38cda2669cf03e51f50fbbbeea0344da9277
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 

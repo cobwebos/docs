@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: 2b2f35b3241bd1700bb1fb3319d38fdfda2545f9
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="sprint-1---november-2017"></a>冲刺 (sprint) 1 - 2017 年 11 月 
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/10/2017
 
 ### <a name="operationalization"></a>实施
 - 在其名称中有“score”的 Web 服务不再失败。
-- 用户现在只需具有对 Azure 资源组的所有者访问权限，即可创建部署环境。 不再需要拥有整个订阅的所有者访问权限。
+- 用户现在只需对 Azure 资源组或订阅具有参与者访问权限，即可创建部署环境。 不再需要拥有整个订阅的所有者访问权限。
 - 操作化 CLI 现已可在 Linux 中使用选项卡自动完成功能。
 - 映像构造服务现在支持为 Azure IoT 服务/设备构建映像。
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: b8df9623bf3826807ba066d4e625c3138c80c5b7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 50190642f59aa8fa7d5cce8bfde5cec9fcfbe7e4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB：数据迁移工具
 
@@ -210,7 +210,7 @@ CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添�
 ## <a id="AzureTableSource"></a>从 Azure 表存储导入
 借助 Azure 表存储源导入程序选项，可以从单个 Azure 表存储表导入。 可以选择性地筛选要导入的表实体。 
 
-从 Azure 表存储导入的数据可以输出到 Azure Cosmos DB 表和实体以用于表 API，或者输出到集合和文档以用于 DocumentDB API。  
+从 Azure 表存储导入的数据可以输出到 Azure Cosmos DB 表和实体以用于表 API，或者输出到集合和文档以用于 DocumentDB API。 不过，表 API 只能在命令行实用程序中用作目标，无法使用数据迁移工具用户界面导出到表 API。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。 
 
 ![Azure 表存储源选项的屏幕截图](./media/import-data/azuretablesource.png)
 
@@ -522,20 +522,6 @@ Azure Cosmos DB - 顺序记录导入程序具有下列高级附加选项：
       }
     ]
     }]
-
-## <a id="tableapibulkexport"></a>导出到表 API（批量导入）
-
-使用 Azure Cosmos DB 表 API 导出程序可将信息从 Azure 表存储源导出到 Azure Cosmos DB 表 API 数据库。 
-
-可以通过 Azure 门户中的“连接字符串”页检索要导出到的 Azure Cosmos DB 表 API 帐户的连接字符串。 使用屏幕右侧的“复制”按钮 ![Azure 门户中的连接字符串屏幕截图](./media/import-data/copy-button.png) 复制整个字符串。
-
-![Azure 门户中的连接字符串屏幕截图](./media/import-data/connection-string.png)
-
-## <a id="tableapiseqtarget"></a>导出到表 API（顺序记录导入）
-
-使用 Azure Cosmos DB 表 API 导出程序可将信息从 Azure 表存储源导出到 Azure Cosmos DB 表 API 数据库。
-
-可以通过 Azure 门户中的“连接字符串”页检索要导出到的 Azure Cosmos DB 表 API 帐户的连接字符串，如上面[导出到表 API（批量导入）](#tableapibulkexport)的图中所示。
 
 ## <a name="advanced-configuration"></a>高级配置
 在高级配置屏幕中，指定要向其中写入错误的日志文件的位置。 本页适用的规则如下：
