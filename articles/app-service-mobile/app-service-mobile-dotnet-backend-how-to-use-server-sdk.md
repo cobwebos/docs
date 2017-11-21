@@ -63,8 +63,8 @@ ms.lasthandoff: 10/11/2017
 要安装该 SDK，请在 Visual Studio 中右键单击服务器项目，选择“管理 NuGet 包”，搜索 [Microsoft.Azure.Mobile.Server] 包，并单击“安装”。
 
 ### <a name="server-project-setup"></a>初始化服务器项目
-初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 要在 Visual Studio 中添加此类，请右键单击服务器项目，选择“添加” >
-“新建项”，并选择“Web” > “常规” > “OWIN Startup 类”。  将生成具有以下属性的类：
+初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 要在 Visual Studio 中添加此类，请右键单击服务器项目，选择 **添加** >
+**新建项** ，并选择 **Web** > **常规** > **OWIN Startup 类**。  将生成具有以下属性的类：
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 

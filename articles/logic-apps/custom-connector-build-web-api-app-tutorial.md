@@ -94,8 +94,8 @@ ms.lasthandoff: 10/11/2017
 
 1. 在 Visual Studio 项目中安装 Swashbuckle Nuget 包（如果尚未这样做）。
 
-   1. 在 Visual Studio 中，选择“工具”>“NuGet 包管理器”> 
-   “包管理器控制台”。************
+   1. 在 Visual Studio 中，选择 **工具** > **NuGet 包管理器** > 
+   **包管理器控制台**。
 
    2. 在“包管理器控制台”中，如果尚未进入应用的项目目录，请转到该位置（运行 `Set-Location "project-path"`），并运行以下 PowerShell cmdlet： 
    
