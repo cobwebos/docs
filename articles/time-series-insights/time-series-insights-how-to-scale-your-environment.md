@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: a6f10e14e3f9e5761734738caddc247d9e4a90cd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/15/2017
 
    ![configure.png](media/scale-your-environment/configure.png)
 
-3. 调整“容量”滑块来选择满足入口速率和存储容量需求的容量。 请注意，入口速率、存储容量和估计成本会动态更新，以显示更改产生的影响。 
+3. 调整“容量”滑块来选择满足入口速率和存储容量需求的容量。 请注意，**入口速率**、**存储容量**和**估计成本**会动态更新，以显示更改产生的影响。 
 
    ![滑块](media/scale-your-environment/slider.png)
 
@@ -59,4 +59,5 @@ ms.lasthandoff: 11/15/2017
 4. 选择“保存”以缩放环境。 在提交更改之前，进度指示器会短暂显示。 
 
 ## <a name="next-steps"></a>后续步骤
-验证新容量是否足以防止出现限制情况。 有关详细信息，请参阅[如果环境受到限制](time-series-insights-diagnose-and-solve-problems.md)。
+> [!div class="nextstepaction"]
+> [验证新容量是否足以防止出现限制情况](time-series-insights-diagnose-and-solve-problems.md)。

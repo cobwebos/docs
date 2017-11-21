@@ -1,6 +1,6 @@
 ---
-title: "快速入门：使用 Azure 门户创建 Azure Databricks 工作区 | Microsoft Docs"
-description: "本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集。"
+title: "快速入门：使用 Azure 门户在 Azure Databricks 上运行第一个 Spark 作业 | Microsoft Docs"
+description: "本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。"
 services: azure-databricks
 documentationcenter: 
 author: nitinme
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: 9d4ee88cf3788071ba6b1eca909c1fe5e6044d03
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d384a1aef89941c2c9b547e5e0d05bb562578393
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="quickstart-get-started-with-azure-databricks-using-the-azure-portal"></a>快速入门：通过 Azure 门户开始使用 Azure Databricks
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
 本快速入门介绍如何创建一个 Azure Databricks 工作区，并在该工作区中创建一个 Apache Spark 群集。 最后，介绍如何在 Databricks 群集中运行 Spark 作业。 有关 Azure Databricks 的详细信息，请参阅[什么是 Azure Databricks？](what-is-azure-databricks.md)
 
@@ -31,7 +31,11 @@ ms.lasthandoff: 11/15/2017
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。 
 
-1. 在 Azure 门户中，依次单击 **+**、“数据 + 分析”、“Azure Databricks (预览)”。 在“Azure Databricks”下，单击“创建”。
+1. 在 Azure 门户中，依次单击 **+**、“数据 + 分析”、“Azure Databricks (预览)”。 
+
+    ![Azure 门户上的 Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
+
+2. 在“Azure Databricks (预览版)”下，单击“创建”。
 
     > [!NOTE]
     > Azure Databricks 目前以受限预览版提供。 如果希望我们考虑将你的 Azure 订阅列入预览版的白名单，必须填写[注册表单](https://databricks.azurewebsites.net/)。

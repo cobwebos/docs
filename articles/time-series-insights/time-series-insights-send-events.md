@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 543fafac63423ab874c6c8e40d91a1ce0f161987
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>通过事件中心向时序见解环境发送事件
 本文介绍如何创建和配置事件中心并运行示例应用程序来推送事件。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在[时序见解](https://insights.timeseries.azure.com)中查看你的环境。
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/15/2017
 
 3. 单击事件中心的名称将其选中。
 
-4. 在中间配置窗口中的“实体”下，再次单击“事件中心”。
+4. 在中间的配置窗口中，在“实体”下，再次单击“事件中心”。
 
 5. 选择事件中心的名称对其进行配置。
 
@@ -244,4 +244,5 @@ namespace Microsoft.Rdx.DataGenerator
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
 ## <a name="next-steps"></a>后续步骤
-在[时序见解资源管理器](https://insights.timeseries.azure.com)中查看环境。
+> [!div class="nextstepaction"]
+> [在时序见解资源管理器中查看环境](https://insights.timeseries.azure.com)。

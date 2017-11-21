@@ -141,7 +141,7 @@ ms.lasthandoff: 10/11/2017
    ![“所需权限”>“添加”](./media/custom-connector-azure-active-directory-authentication/add-api-access1-select-permissions.png)
 
 7. 当“添加 API 访问权限”菜单打开时，请选择“选择 API” > 
-“Windows Azure 服务管理 API” > “选择”。****************
+“Windows Azure 服务管理 API” > “选择”。
 
    ![选择 API](./media/custom-connector-azure-active-directory-authentication/add-api-access2-select-api.png)
 

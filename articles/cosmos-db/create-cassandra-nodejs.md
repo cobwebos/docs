@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 1ce764a3395b0ddb9e78f1247fd55fabbeecb04e
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 76850d6403fc4e87e95f5842b87b258d652c2c35
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>快速入门：使用 Node.js 和 Azure Cosmos DB 生成 Cassandra 应用
 
@@ -193,6 +193,8 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 2. 运行 `node uprofile.js` 启动 node 应用程序。
 
 3. 通过命令行验证结果是否符合预期。
+
+    ![查看并验证输出](./media/create-cassandra-nodejs/output.png)
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。 
 
