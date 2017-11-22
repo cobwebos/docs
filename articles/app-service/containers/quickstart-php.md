@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 47b3f3b0a0faab6daa4ff64230128fc0ad3510e9
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 34da73e5feca1782f3e107fd30d268df4f9883d8
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 PHP Web 应用
 
@@ -71,14 +71,14 @@ php -S localhost:8080
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>使用内置映像创建 Web 应用
+## <a name="create-a-web-app"></a>创建 Web 应用
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
+浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app_name>.azurewebsites.net
 ```
 
 ![空 Web 应用页面](media/quickstart-php/app-service-web-service-created.png)
@@ -126,7 +126,7 @@ PHP 示例代码在包含内置映像的 Web 应用中运行。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
-使用本地文本编辑器打开 PHP 应用中的 `index.php` 文件，并对 `echo` 旁边的字符串中的文本稍微进行更改：
+在本地目录中，打开 PHP 应用中的 `index.php` 文件，并对 `echo` 旁边的字符串中的文本略加更改：
 
 ```php
 echo "Hello Azure!";

@@ -10,13 +10,13 @@ ms.service: iot-suite
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 11/10/2017
 ms.author: carolz
-ms.openlocfilehash: 9726304918cbbc85e32e2095d2f1d4701fb8a71e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8a5b79b0393b8dc92082e47128118f6531acac0
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="iot-suite-documentation"></a>IoT 套件文档
 
@@ -24,7 +24,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/iot-suite/iot-suite-overview">
+        <a href="/azure/iot-suite/iot-suite-what-are-preconfigured-solutions">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -60,7 +60,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
         </a>
     </li>
     <li>
-        <a href="/azure/iot-suite/iot-suite-getstarted-preconfigured-solutions">
+        <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -70,7 +70,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>IoT 预配置解决方案入门</h3>
+                        <h3>部署远程监视预配置解决方案</h3>
                     </div>
                 </div>
             </div>

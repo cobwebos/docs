@@ -49,7 +49,7 @@ sections:
         style: unordered
         items:
           - html: <a href="service-fabric-tutorial-create-dotnet-app">部署 .NET 应用程序</a>
-          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">将现有 .NET 应用程序容器化</a>
+          - html: <a href="service-fabric-host-app-in-a-container">将现有 .NET 应用程序容器化</a>
           - html: <a href="service-fabric-tutorial-create-container-images">创建 Linux 容器应用程序</a>
           - html: 创建和管理 <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> 或 <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> 群集
   - title: 免费 Pluralsight 视频培训
