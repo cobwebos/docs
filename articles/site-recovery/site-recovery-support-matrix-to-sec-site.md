@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: c0f86e13e21f2af323e0a306b381054b6eb76755
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/01/2017
 
 **部署** | **详细信息** 
 --- | ---
-**VMware 到 VMware** | 本地 VMware VM 到辅助 VMware 站点的灾难恢复。<br/><br/> 下载 [InMage Scout 用户指南](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)
+**VMware 到 VMware** | 本地 VMware VM 到辅助 VMware 站点的灾难恢复。<br/><br/> 下载 [InMage Scout 用户指南](https://aka.ms/asr-scout-user-guide)
 **Hyper-V 到 Hyper-V** | VMM 云中的本地 Hyper-V VM 到辅助 VMM 云的灾难恢复。<br></br> 如果没有 VMM，则不支持。
 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/01/2017
 
 **部署** | **支持**
 --- | ---
-**VMware VM/物理服务器** | vCenter 5.5 或 6.0（仅支持 5.5 功能）
+**VMware VM/物理服务器** | vCenter 5.5、6.0 和 6.5（仅支持 5.5 功能）
 **Hyper-V（包含 VMM）** | Windows Server 2016 和带最新更新的 Windows Server 2012 R2。<br/><br/> Windows Server 2016 主机应由 VMM 2016 托管。<br/><br/> 目前不支持混合使用 Windows Server 2016 和 2012 R2 主机的 VMM 2016 云。<br/><br/> 当前不支持包括现有 VMM 2012 R2 到 System Center 2016 的升级的部署。
 
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/01/2017
 
 **VMware/物理服务器** | **Hyper-V（包含 VMM）**
 --- | ---
-64 位 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 及其更高版本<br/><br/> Red Hat Enterprise Linux 6.7、7.1、7.2 <br/><br/> CentOS 6.5、6.6、6.7、7.0、7.1、7.2 <br/><br/> Oracle Enterprise Linux 6.4/6.5（运行 Red Hat 兼容内核），或 Unbreakable Enterprise Kernel Release 3 (UEK3)） <br/><br/> SUSE Linux Enterprise Server 11 SP3 | [Hyper-V 支持](https://technet.microsoft.com/library/mt126277.aspx)的所有来宾操作系统
+64 位 Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、带 SP1（或更高版本）的 Windows Server 2008 R2<br/><br/> Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2 <br/><br/> Oracle Enterprise Linux 6.4、6.5、6.8（运行 Red Hat 兼容内核），或 Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3、11 SP4  | [Hyper-V 支持](https://technet.microsoft.com/library/mt126277.aspx)的所有来宾操作系统
 
 ## <a name="linux-machine-storage"></a>Linux 计算机存储
 
@@ -104,15 +104,15 @@ VHD/VHDX | 不适用 | 是（最多 16 个磁盘）
 第 2 代 VM | 不适用 | 是
 共享群集磁盘 | 是  | 否
 加密磁盘 | 否 | 否
-UEFI| 否 | 不适用
+UEFI| 是 | 不适用
 NFS | 否 | 否
 SMB 3.0 | 否 | 否
 RDM | 是 | 不适用
-磁盘 > 1 TB | 否 | 是
+磁盘 > 1 TB | 是 | 是
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是 | 是
 存储空间 | 否 | 是
-热添加/移除磁盘 | 否 | 否
-排除磁盘 | 否 | 是
+热添加/移除磁盘 | 是 | 否
+排除磁盘 | 是 | 是
 多路径 (MPIO) | 不适用 | 是
 
 ## <a name="vaults"></a>保管库

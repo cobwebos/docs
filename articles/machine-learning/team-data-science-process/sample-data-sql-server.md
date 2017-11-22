@@ -4,7 +4,7 @@ description: "对 Azure 上 SQL Server 中的数据进行采样"
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgeonlun
 editor: cgronlun
 ms.assetid: 33c030d4-5cca-4cc9-99d7-2bd13a3926af
 ms.service: machine-learning
@@ -12,25 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: fbd83ad59a9db1daca4ba16402031e2c1c5b7991
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd669f3951b1f7f05932634f039a04e02993399f
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
-本文档介绍了如何使用 SQL 或 Python 编程语言对存储在 Azure 上 SQL Server 中的数据进行采样。 还介绍了如何通过将采样数据保存到文件、上传到 Azure blob，然后读取到 Azure 机器学习工作室，将数据移至 Azure 机器学习中。
+本文介绍了如何使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样。 还介绍了如何通过将采样数据保存到文件、上传到 Azure blob，然后读取到 Azure 机器学习工作室，将数据移至 Azure 机器学习中。
 
 Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 和 [Pandas](http://pandas.pydata.org/) 库进行采样。
 
 > [!NOTE]
-> 本文档中的示例 SQL 代码假设该数据在 Azure 上的 SQL Server 中。 如果不存在，请参阅[将数据移至 Azure 上的 SQL Server](move-sql-server-virtual-machine.md)，获取有关如何将数据移至 Azure 上 SQL Server 的说明的主题。
+> 本文档中的示例 SQL 代码假设该数据在 Azure 上的 SQL Server 中。 如果不存在，请参阅“[将数据移动到 Azure 上的 SQL Server](move-sql-server-virtual-machine.md)”文章，获取有关如何将数据移动到 Azure 上的 SQL Server 的说明。
 > 
 > 
 
-以下**菜单**所链接到的主题将描述如何从不同的存储环境采样数据。 
+以下“菜单”所链接到的文章将描述如何从不同的存储环境对数据采样。 
 
 [!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
 
@@ -42,7 +42,7 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
 ## <a name="SQL"></a>使用 SQL
 本部分介绍了几种使用 SQL 针对数据库中的数据执行简单随机采样的方法。 请根据数据大小及其分发方式选择一种方法。
 
-下面的两个项目显示了如何使用 SQL Server 中的 newid 执行采样。 选择的方法取决于想要进行采样的随机程度（假设以下示例代码中的 pk_id 是自动生成的主密钥）。
+以下两项显示了如何使用 SQL Server 中的 `newid` 执行采样。 选择的方法取决于想要进行采样的随机程度（假设以下示例代码中的 pk_id 是自动生成的主密钥）。
 
 1. 不太严格的随机采样
    
@@ -53,7 +53,7 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample 也可用于采样，如下所示。 如果数据大小较大（假设不同页面上的数据各不相关）并且想要在一个合理时间完成查询，此方法可能更好。
+Tablesample 也可用于数据采样。 如果数据大小较大（假设不同页面上的数据各不相关）并且想要在一个合理时间完成查询，此方法可能更好。
 
     SELECT *
     FROM <table_name> 
@@ -117,7 +117,7 @@ Python 中的 [Pandas](http://pandas.pydata.org/) 库提供一组丰富的数据
 ![blob 读取器][2]
 
 ## <a name="the-team-data-science-process-in-action-example"></a>运行中的团队数据科学过程示例
-有关使用公用数据集的团队数据科学过程的端到端演练示例，请参阅[运行中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
+有关使用公用数据集的团队数据科学过程的演练示例，请参阅[运行中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

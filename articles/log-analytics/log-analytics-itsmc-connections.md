@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: bbec5773987b29eb62d10d17b88efcda29889612
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e801d484ffb40a0d4aed517a741c45dc76b62b37
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>将 ITSM 产品/服务与 IT Service Management Connector（预览版）相连接
-本文提供有关如何将 ITSM 产品/服务连接到 OMS 中的 IT Service Management Connector，以集中管理工作项的信息。 有关 IT Service Management Connector 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
+本文提供有关如何将 ITSM 产品/服务连接到 OMS 中的 IT Service Management Connector (ITSMC)，以集中管理工作项的信息。 有关 ITSMC 的详细信息，请参阅 [ITSMC 概述](log-analytics-itsmc-overview.md)。
 
 支持以下产品/服务：
 
@@ -31,14 +31,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-oms"></a>将 System Center Service Manager 连接到 OMS 中的 IT Service Management Connector
 
-以下部分提供有关如何将 System Center Service Manager 产品连接到 OMS 中的 IT Service Management Connector 的详细信息。
+以下部分提供有关如何将 System Center Service Manager 产品连接到 OMS 中的 ITSMC 的详细信息。
 
 ### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector。
-详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
@@ -46,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="connection-procedure"></a>连接过程
 
-使用以下过程将 System Center Service Manager 实例连接到 IT Service Management Connector：
+按照以下过程将 System Center Service Manager 实例连接到 ITSMC：
 
 1. 转到“OMS” >“设置” > “连接的源”。
 2. 选择“ITSM Connector”，单击“添加新连接”。
@@ -59,12 +58,12 @@ ms.lasthandoff: 10/11/2017
 
 | **字段** | **说明** |
 | --- | --- |
-| **Name**   | 键入要与 IT Service Management Connector 连接的 System Center Service Manager 实例的名称。  以后在此实例中配置工作项/查看详细日志分析时，需要使用此名称。 |
+| **Name**   | 键入要与 ITSMC 连接的 System Center Service Manager 实例的名称。  以后在此实例中配置工作项/查看详细日志分析时，需要使用此名称。 |
 | **选择连接类型**   | 选择“System Center Service Manager”。 |
 | **服务器 URL**   | 键入 Service Manager Web 应用的 URL。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Service Manager Web 应用的详细信息。
 | **客户端 ID**   | 键入（使用自动脚本）生成的、用于对 Web 应用进行身份验证的客户端 ID。 [此处](log-analytics-itsmc-service-manager-script.md)提供了有关自动化脚本的详细信息。|
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
-| **数据同步范围**   | 选择要通过 IT Service Management Connector 同步的 Service Manager 工作项。  这些工作项将导入到 Log Analytics。 **选项：**“事件”、“更改请求”。|
+| **数据同步范围**   | 选择需要通过 ITSMC 同步的 Service Manager 工作项。  这些工作项将导入到 Log Analytics。 **选项：**“事件”、“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
@@ -72,13 +71,13 @@ ms.lasthandoff: 10/11/2017
 
 - 选定的工作项将从 Service Manager 导入 OMS **Log Analytics**。 可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
 
-- 在此 Service Manager 实例中，可以通过 OMS 从 OMS 警报或日志搜索创建事件。
+- 在此 Service Manager 实例中，可以通过 OMS 从 OMS 警报、日志搜索或 Azure 警报创建事件。
 
-详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)和[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)。
+详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)、[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)和[根据 Azure 警报日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>创建和部署 Service Manager Web 应用服务
 
-为了将本地 Service Manager 与 OMS 中的 IT Service Management Connector 相连接，Microsoft 已在 GitHub 中创建一个 Service Manager Web 应用。
+为了将本地 Service Manager 与 OMS 中的 ITSMC 连接，Microsoft 已在 GitHub 中创建一个 Service Manager Web 应用。
 
 若要为 Service Manager 设置 ITSM Web 应用，请执行以下操作：
 
@@ -99,7 +98,7 @@ ms.lasthandoff: 10/11/2017
 
 该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和**客户端机密**。
 
-请保存这些值，因为在与 IT Service Management Connector 建立连接时需要用到。
+保存这些值，因为在与 ITSMC 建立连接时需要使用。
 
 **检查 Web 应用安装**
 
@@ -109,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="configure-the-hybrid-connection"></a>配置混合连接
 
-使用以下过程来配置混合连接，以便将 Service Manager 实例与 OMS 中的 IT Service Management Connector 相连接。
+按照以下过程配置混合连接，将 Service Manager 实例与 OMS 中的 ITSMC 连接。
 
 1. 在“Azure 资源”下面找到 Service Manager Web 应用。
 2. 单击“设置” > “网络”。
@@ -161,7 +160,7 @@ ms.lasthandoff: 10/11/2017
 ![混合连接成功](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
-> 创建混合连接后，请通过访问部署的 Service Manager Web 应用来验证和测试该连接。 请确保该连接成功后，再尝试连接到 OMS 中的 IT Service Management Connector。
+> 创建混合连接后，请通过访问部署的 Service Manager Web 应用来验证和测试该连接。 在确保连接成功后，再尝试连接到 OMS 中的 ITSMC。
 
 下图显示了成功连接的详细信息：
 
@@ -169,13 +168,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-oms"></a>将 ServiceNow 连接到 OMS 中的 IT Service Management Connector
 
-以下部分提供有关如何将 ServiceNow 产品连接到 OMS 中的 IT Service Management Connector 的详细信息。
+以下部分提供有关如何将 ServiceNow 产品连接到 OMS 中的 ITSMC 的详细信息。
 
 ### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow 支持的版本 – Fuji、Geneva、Helsinki。
 
 ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
@@ -185,7 +184,6 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 
 ### <a name="connection-procedure"></a>**连接过程**
-
 使用以下过程创建 ServiceNow 连接：
 
 1. 转到“OMS” > “设置” > “连接的源”。
@@ -200,14 +198,14 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 | **字段** | **说明** |
 | --- | --- |
-| **Name**   | 键入要与 IT Service Management Connector 连接的 ServiceNow 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
+| **Name**   | 键入需要与 ITSMC 连接的 ServiceNow 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
 | **选择连接类型**   | 选择“ServiceNow”。 |
-| **用户名**   | 键入在 ServiceNow 应用中创建的、用于支持连接到 IT Service Management Connector 的集成用户名。 详细信息：[创建 ServiceNow 应用用户角色](#create-integration-user-role-in-servicenow-app)。|
+| **用户名**   | 键入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。 详细信息：[创建 ServiceNow 应用用户角色](#create-integration-user-role-in-servicenow-app)。|
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 OMS 服务中的任何位置。  |
-| **服务器 URL**   | 键入要连接到 IT Service Management Connector 的 ServiceNow 实例的 URL。 |
+| **服务器 URL**   | 键入需要连接到 ITSMC 的 ServiceNow 实例的 URL。 |
 | **客户端 ID**   | 键入前面生成的、用于 OAuth2 身份验证的客户端 ID。  有关生成客户端 ID 和机密的详细信息：[OAuth 设置](http://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
-| **数据同步范围**   | 选择要通过 IT Service Management Connector 同步到 OMS 的 ServiceNow 工作项。  选定的值将导入到 Log Analytics。   **选项：**“事件”和“更改请求”。|
+| **数据同步范围**   | 选择要通过 ITSMC 同步到 OMS 的 ServiceNow 工作项。  选定的值将导入到 Log Analytics。   **选项：**“事件”和“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
@@ -215,10 +213,10 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 成功连接并同步后：
 
 - 选定的工作项将从 ServiceNow 连接导入到 OMS Log Analytics。  可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
-- 在此 ServiceNow 实例中，可以通过 OMS 警告或日志搜索创建警报和事件。  
+- 在此 ServiceNow 实例中，可以通过 OMS 警告、日志搜索或 Azure 警报创建警报和事件。  
 
 
-详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)和[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)。
+详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)、[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)和[根据 Azure 警报日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 应用中创建集成用户角色
 
@@ -230,7 +228,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
     如果用户角色尚未创建，状态会显示为“未完成”。
 
-4.  在“创建集成用户”旁边的文本框中，输入可连接到 OMS 中的 IT Service Management Connector 的用户的用户名。
+4.  在“创建集成用户”旁边的文本框中，输入可连接到 OMS 中的 ITSMC 的用户的用户名。
 5.  输入此用户的密码，并单击“确定”。  
 
 >[!NOTE]
@@ -262,14 +260,15 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 ## <a name="connect-provance-to-it-service-management-connector-in-oms"></a>将 Provance 连接到 OMS 中的 IT Service Management Connector
 
-以下部分提供有关如何将 Provance 产品连接到 OMS 中的 IT Service Management Connector 的详细信息。
+以下部分提供有关如何将 Provance 产品连接到 OMS 中的 ITSMC 的详细信息。
+
 
 ### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
 
-- 已安装 IT Service Management Connector。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
 
 - 用户角色：管理员。
@@ -289,32 +288,32 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 | **字段** | **说明** |
 | --- | --- |
-| **Name**   | 键入要与 IT Service Management Connector 连接的 Provance 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
+| **Name**   | 键入需要与 ITSMC 连接的 Provance 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
 | **选择连接类型**   | 选择“Provance”。 |
-| **用户名**   | 键入可连接到 IT Service Management Connector 的用户名。    |
+| **用户名**   | 键入可以连接到 ITSMC 的用户名。    |
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 OMS 服务中的任何位置。|
-| **服务器 URL**   | 键入要连接到 IT Service Management Connector 的 Provance 实例的 URL。 |
+| **服务器 URL**   | 键入需要连接到 ITSMC 的 Provance 实例的 URL。 |
 | **客户端 ID**   | 键入在 Provance 实例中生成的、用于对此连接进行身份验证的客户端 ID。  有关客户端 ID 的详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。 |
-| **数据同步范围**   | 选择要通过 IT Service Management Connector 同步到 OMS 的 Provance 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。|
+| **数据同步范围**   | 选择需要通过 ITSMC 同步到 OMS 的 Provance 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
 
 成功连接并同步后：
 
 - 选定的工作项将从 Provance 连接导入到 OMS **Log Analytics**。  可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
-- 在此 Provance 实例中，可以通过 OMS 警告或日志搜索创建事件。
+- 在此 Provance 实例中，可以通过 OMS 警告、日志搜索或 Azure 警报创建事件。
 
-详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)和[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)。
+详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)、[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)和[根据 Azure 警报日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-oms"></a>将 Cherwell 连接到 OMS 中的 IT Service Management Connector
 
-以下部分提供有关如何将 Cherwell 产品连接到 OMS 中的 IT Service Management Connector 的详细信息。
+以下部分提供有关如何将 Cherwell 产品连接到 OMS 中的 ITSMC 的详细信息。
 
 ### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
-- 已安装 IT Service Management Connector。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已生成客户端 ID。 详细信息：[为 Cherwell 生成客户端 ID](#generate-client-id-for-cherwell)。
 - 用户角色：管理员。
 
@@ -334,22 +333,22 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 | **字段** | **说明** |
 | --- | --- |
-| **Name**   | 键入要连接到 IT Service Management Connector 的 Cherwell 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
+| **Name**   | 键入需要连接到 ITSMC 的 Cherwell 实例名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
 | **选择连接类型**   | 选择“Cherwell”。 |
-| **用户名**   | 键入可连接到 IT Service Management Connector 的 Cherwell 用户名。 |
+| **用户名**   | 键入可以连接到 ITSMC 的 Cherwell 用户名。 |
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 OMS 服务中的任何位置。|
-| **服务器 URL**   | 键入要连接到 IT Service Management Connector 的 Cherwell 实例的 URL。 |
+| **服务器 URL**   | 键入需要连接到 ITSMC 的 Cherwell 实例的 URL。 |
 | **客户端 ID**   | 键入在 Cherwell 实例中生成的、用于对此连接进行身份验证的客户端 ID。   |
-| **数据同步范围**   | 选择要通过 IT Service Management Connector 同步的 Cherwell 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。 |
+| **数据同步范围**   | 选择需要通过 ITSMC 同步的 Cherwell 工作项。  这些工作项将导入到 Log Analytics。   **选项：**“事件”、“更改请求”。 |
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 成功连接并同步后：
 
 - 选定的工作项将从 Cherwell 连接导入到 OMS Log Analytics。 可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
-- 可以在此 Cherwell 实例中通过 OMS 创建事件。 详细信息：“为 OMS 警报创建 ITSM 工作项”和“从 OMS 日志创建 ITSM 工作项”。
+- 在此 Cherwell 实例中，可以通过 OMS 警告、日志搜索或 Azure 警报创建事件。
 
-详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)和[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)。
+详细信息：[为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)、[从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)和[根据 Azure 警报日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>为 Cherwell 生成客户端 ID
 
@@ -364,7 +363,6 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 ## <a name="next-steps"></a>后续步骤
  - [为 OMS 警报创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)
-
  - [从 OMS 日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
-
-- [查看连接的日志分析](log-analytics-itsmc-overview.md#using-the-solution)
+ - [根据 Azure 警报日志创建 ITSM 工作项](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [查看连接的日志分析](log-analytics-itsmc-overview.md#using-the-solution)

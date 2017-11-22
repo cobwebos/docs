@@ -3,7 +3,7 @@ title: "什么是 Azure 搜索 | Microsoft Docs"
 description: "Azure 搜索是完全托管的托管云搜索服务。 通过此功能概述，了解详细信息。"
 services: search
 manager: jhubbard
-author: ashmaka
+author: HeidiSteen
 documentationcenter: 
 ms.assetid: 50bed849-b716-4cc9-bbbc-b5b34e2c6153
 ms.service: search
@@ -11,18 +11,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/26/2017
-ms.author: ashmaka
-ms.openlocfilehash: 9893be47ec0c2f58ca206ec7c1bce13734513390
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/10/2017
+ms.author: heidist
+ms.openlocfilehash: 63c7bcc1bf4e650f913d31e5687c31257a85bfee
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
-Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 和工具，以便基于 Web、移动和企业应用程序中的数据添加丰富的搜索体验。
+Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的内容添加丰富的搜索体验。
 
-功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了搜索技术固有的复杂性。 除 API 以外，Azure 门户还提供管理和原型制作支持。 基础结构和可用性由 Microsoft 管理。
+功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了信息检索固有的复杂性。 除了 API，Azure 门户还通过原型制作和查询索引工具，提供管理和内容管理支持。 因为服务在云中运行，所以基础结构和可用性由 Microsoft 管理。
 
 <a name="feature-drilldown"></a>
 

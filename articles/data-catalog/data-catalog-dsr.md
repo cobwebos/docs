@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/15/2017
 ms.author: maroche
-ms.openlocfilehash: 1f637acffdbf31f6c69124282f50dc5830ad9f5b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6589edd535b513f8d1eb47e69f4fbcdd96a2f10d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
@@ -42,32 +42,32 @@ ms.lasthandoff: 11/03/2017
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Data Lake Store 文件</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Blob 存储</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure 存储目录</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure 存储表</td>
@@ -75,10 +75,10 @@ ms.lasthandoff: 11/03/2017
       <td>✓</td>
       <td>✓</td>
       <td>
-        <font size="2"></font>
+        <font size="2">
       </td>
       <td>
-        <font size="2"></font>
+        <font size="2">
       </td>
     </tr>
     <tr>
@@ -86,364 +86,364 @@ ms.lasthandoff: 11/03/2017
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HDFS 文件</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Hive 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>Hive 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>MySQL 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>MySQL 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Oracle Database 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>Oracle Database 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>其他（通用资产）</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure SQL 数据仓库表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI、SQL Server 数据工具</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL 数据仓库视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI、SQL Server 数据工具</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 维度</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 度量</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services 报表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>浏览器</font></td>
-      <td><font size=2>仅本机模式服务器。不支持 SharePoint 模式。</font></td>
+      <td>浏览器</td>
+      <td>仅本机模式服务器。 不支持 SharePoint 模式。</td>
     </tr>
     <tr>
       <td>SQL Server 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI、SQL Server 数据工具</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
+      <td></td>
     </tr>
     <tr>
       <td>SQL Server 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel、Power BI、SQL Server 数据工具</font></td>
-      <td><font size=2></font></td>
+      <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
+      <td></td>
     </tr>
     <tr>
       <td>Teradata 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>Teradata 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Excel</font></td>
-      <td><font size=2></font></td>
+      <td>Excel</td>
+      <td></td>
     </tr>
     <tr>
       <td>SAP HANA 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2>Power BI</font></td>
-      <td><font size=2></font></td>
+      <td>Power BI Desktop</td>
+      <td></td>
     </tr>
     <tr>
       <td>DB2 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>DB2 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>文件系统文件</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>FTP 目录</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>FTP 文件</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HTTP 报表</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HTTP 终结点</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>HTTP 文件</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>OData 实体集</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>OData 函数</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>PostgreSQL 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>PostgreSQL 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>SAP HANA 视图</td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td> Salesforce 对象</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>SharePoint 列表 </td>
       <td>✓</td>
       <td></td>
       <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Azure Cosmos DB 集合</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>通用 ODBC 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>通用 ODBC 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Cassandra 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>以通用 ODBC 资产形式发布</font></td>
+      <td></td>
+      <td>以通用 ODBC 资产形式发布</td>
     </tr>
     <tr>
       <td>Cassandra 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>以通用 ODBC 资产形式发布</font></td>
+      <td></td>
+      <td>以通用 ODBC 资产形式发布</td>
     </tr>
     <tr>
       <td>Sybase 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>Sybase 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>MongoDB 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>以通用 ODBC 资产形式发布</font></td>
+      <td></td>
+      <td>以通用 ODBC 资产形式发布</td>
     </tr>
     <tr>
       <td>MongoDB 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2>以通用 ODBC 资产形式发布</font></td>
+      <td></td>
+      <td>以通用 ODBC 资产形式发布</td>
     </tr>
 </table>
 
-如果需要其他源的支持，请向 [Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)提交功能请求。
+如果想查看支持的具体数据源，请通过转到 [Azure 反馈论坛的数据目录](https://feedback.azure.com/forums/906052-data-catalog)提出建议（如果已有人建议则可表达你的支持）。
 
 
 ## <a name="data-source-reference-specification"></a>数据源引用规范
@@ -462,519 +462,948 @@ ms.lasthandoff: 11/03/2017
       <td>容器</td>
       <td>Data Lake</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Azure Data Lake Store</td>
-      <td>表</td>
-      <td>目录、文件</td>
+      <td>Table</td>
+      <td>Directory, file</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Azure 存储</td>
-      <td>容器</td>
-      <td>容器</td>
+      <td>Azure Storage</td>
+      <td>Container</td>
+      <td>Container</td>
       <td>
-        <font size=2> 协议：azure-blob <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容器 </font>
+        
+            Protocol: azure-blobs
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; container
+        
       </td>
     </tr>
     <tr>
-      <td>Azure 存储</td>
-      <td>表</td>
-      <td>Blob、目录</td>
+      <td>Azure Storage</td>
+      <td>Table</td>
+      <td>Blob, directory</td>
       <td>
-        <font size=2> 协议：azure-blob <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名称 </font>
+        
+            Protocol: azure-blobs
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; container
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
+        
       </td>
     </tr>
     <tr>
-      <td>Azure 存储</td>
-      <td>容器</td>
-      <td>容器</td>
+      <td>Azure Storage</td>
+      <td>Container</td>
+      <td>Container</td>
       <td>
-        <font size=2> 协议：azure 表 <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 </font>
+        
+            Protocol: azure-tables
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+        
       </td>
     </tr>
     <tr>
-      <td>Azure 存储</td>
-      <td>表</td>
-      <td>表</td>
+      <td>Azure Storage</td>
+      <td>Table</td>
+      <td>Table</td>
       <td>
-        <font size=2> 协议：azure 表 <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 域 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帐户 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名称 </font>
+        
+            Protocol: azure-tables
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
+        
       </td>
     </tr>
     <tr>
       <td>Cosmos</td>
-      <td>容器</td>
-      <td>虚拟群集</td>
+      <td>Container</td>
+      <td>Virtual cluster</td>
       <td>
-        <font size=2> 协议：cosmos <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: cosmos
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Cosmos</td>
-      <td>表</td>
-      <td>流、流集、视图</td>
+      <td>Table</td>
+      <td>Stream, stream set, view</td>
       <td>
-        <font size=2> 协议：cosmos <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: cosmos
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Datazen</td>
-      <td>容器</td>
-      <td>站点</td>
+      <td>Container</td>
+      <td>Site</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Datazen</td>
-      <td>报表</td>
-      <td>报表、仪表板</td>
+      <td>Report</td>
+      <td>Report, dashboard</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>DB2</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：db2 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: db2
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>DB2</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：db2 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 </font>
+        
+            Protocol: db2
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+        
       </td>
     </tr>
     <tr>
-      <td>文件系统</td>
-      <td>表</td>
-      <td>文件</td>
+      <td>File system</td>
+      <td>Table</td>
+      <td>File</td>
       <td>
-        <font size=2> 协议：文件 <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 路径 </font>
+        
+            Protocol: file
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; path
+        
       </td>
     </tr>
     <tr>
       <td>FTP</td>
-      <td>表</td>
-      <td>目录、文件</td>
+      <td>Table</td>
+      <td>Directory, file</td>
       <td>
-        <font size=2> 协议：ftp <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: ftp
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Hadoop 分布式文件系统</td>
-      <td>容器</td>
-      <td>群集</td>
+      <td>Hadoop Distributed File System</td>
+      <td>Container</td>
+      <td>Cluster</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Hadoop 分布式文件系统</td>
-      <td>表</td>
-      <td>目录、文件</td>
+      <td>Hadoop Distributed File System</td>
+      <td>Table</td>
+      <td>Directory, file</td>
       <td>
-        <font size=2> 协议：webhdfs <br>身份验证：{基本、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: webhdfs
+            <br>Authentication: {basic, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Hive</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：hive <br>身份验证：{HDInsight、基本、用户名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>connectionProperties： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器协议：{hive2} </font>
+        
+            Protocol: hive
+            <br>Authentication: {HDInsight, basic, username, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>connectionProperties:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2}
+        
       </td>
     </tr>
     <tr>
       <td>Hive</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：hive <br>身份验证：{HDInsight、基本、用户名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>connectionProperties： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器协议：{hive2} </font>
+        
+            Protocol: hive
+            <br>Authentication: {HDInsight, basic, username, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>connectionProperties:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2}
+        
       </td>
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>容器</td>
-      <td>站点</td>
+      <td>Container</td>
+      <td>Site</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>报表</td>
-      <td>报表、仪表板</td>
+      <td>Report</td>
+      <td>Report, dashboard</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>HTTP</td>
-      <td>表</td>
-      <td>终结点、文件</td>
+      <td>Table</td>
+      <td>Endpoint, file</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>MySQL</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：mysql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: mysql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>MySQL</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：mysql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: mysql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>OData</td>
-      <td>容器</td>
-      <td>实体容器</td>
+      <td>Container</td>
+      <td>Entity container</td>
       <td>
-        <font size=2> 协议：odata <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: odata
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>OData</td>
-      <td>表</td>
-      <td>实体集、函数</td>
+      <td>Table</td>
+      <td>Entity set, function</td>
       <td>
-        <font size=2> 协议：odata <br>身份验证：{无、基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 资源 </font>
+        
+            Protocol: odata
+            <br>Authentication: {none, basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resource
+        
       </td>
     </tr>
     <tr>
       <td>Oracle Database</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：oracle <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: oracle
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Oracle Database</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：oracle <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: oracle
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>PostgreSQL</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：postgresql <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: postgresql
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>PostgreSQL</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：postgresql <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: postgresql
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>Power BI</td>
-      <td>容器</td>
-      <td>站点</td>
+      <td>Power BI Desktop</td>
+      <td>Container</td>
+      <td>Site</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>Power BI</td>
-      <td>报表</td>
-      <td>报表、仪表板</td>
+      <td>Power BI Desktop</td>
+      <td>Report</td>
+      <td>Report, dashboard</td>
       <td>
-        <font size=2> 协议：http <br>身份验证：{无、基本、windows、oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: http
+            <br>Authentication: {none, basic, windows, oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Power Query</td>
-      <td>表</td>
-      <td>数据混合</td>
+      <td>Table</td>
+      <td>Data mashup</td>
       <td>
-        <font size=2> 协议：power-query <br>身份验证：{oauth} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: power-query
+            <br>Authentication: {oauth}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
       <td>Salesforce</td>
-      <td>表</td>
-      <td>对象</td>
+      <td>Table</td>
+      <td>Object</td>
       <td>
-        <font size=2> 协议：salesforce-com <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 登录服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 类 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 项名称 </font>
+        
+            Protocol: salesforce-com
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginServer
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName
+        
       </td>
     </tr>
     <tr>
       <td>SAP HANA</td>
-      <td>容器</td>
-      <td>服务器</td>
+      <td>Container</td>
+      <td>Server</td>
       <td>
-        <font size=2> 协议：sap-hana-sql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 </font>
+        
+            Protocol: sap-hana-sql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+        
       </td>
     </tr>
     <tr>
       <td>SAP HANA</td>
-      <td>表</td>
-      <td>查看</td>
+      <td>Table</td>
+      <td>View</td>
       <td>
-        <font size=2> 协议：sap-hana-sql <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: sap-hana-sql
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SharePoint</td>
-      <td>表</td>
-      <td>列出</td>
+      <td>Table</td>
+      <td>List</td>
       <td>
-        <font size=2> 协议：sharepoint 列表 <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL </font>
+        
+            Protocol: sharepoint-list
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+        
       </td>
     </tr>
     <tr>
-      <td>SQL 数据仓库</td>
-      <td>命令</td>
-      <td>存储过程</td>
+      <td>SQL Data Warehouse</td>
+      <td>Command</td>
+      <td>Stored procedure</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>SQL 数据仓库</td>
+      <td>SQL Data Warehouse</td>
       <td>TableValuedFunction</td>
-      <td>Table-valued 函数</td>
+      <td>Table-valued function</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>SQL 数据仓库</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>SQL Data Warehouse</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: tds
+          <br>Authentication: {protocol, windows}
+          <br>Address:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
-      <td>SQL 数据仓库</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>SQL Data Warehouse</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>命令</td>
-      <td>存储过程</td>
+      <td>Command</td>
+      <td>Stored procedure</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
       <td>TableValuedFunction</td>
-      <td>Table-valued 函数</td>
+      <td>Table-valued function</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：tds <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: tds
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 多维度</td>
-      <td>容器</td>
-      <td>模型</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>Container</td>
+      <td>Model</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 多维度</td>
+      <td>SQL Server Analysis Services multidimensional</td>
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{KPI} </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 多维度</td>
-      <td>度量</td>
-      <td>度量</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>Measure</td>
+      <td>Measure</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{度量值} </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 多维度</td>
-      <td>表</td>
-      <td>维度</td>
+      <td>SQL Server Analysis Services multidimensional</td>
+      <td>Table</td>
+      <td>Dimension</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{维度} </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Dimension}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 表格</td>
-      <td>容器</td>
-      <td>模型</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>Container</td>
+      <td>Model</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 表格</td>
+      <td>SQL Server Analysis Services tabular</td>
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{KPI} </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 表格</td>
-      <td>度量</td>
-      <td>度量</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>Measure</td>
+      <td>Measure</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{度量值} </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure}
+        
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services 表格</td>
-      <td>表</td>
-      <td>表</td>
+      <td>SQL Server Analysis Services tabular</td>
+      <td>Table</td>
+      <td>Table</td>
       <td>
-        <font size=2> 协议：分析服务 <br>身份验证：{windows、基本、匿名、无} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象类型：{表} </font>
+        
+            Protocol: analysis-services
+            <br>Authentication: {windows, basic, anonymous, none}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Table}
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services</td>
-      <td>容器</td>
-      <td>服务器</td>
+      <td>Container</td>
+      <td>Server</td>
       <td>
-        <font size=2> 协议：报表服务 <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本：{ReportingService2010} </font>
+        
+            Protocol: reporting-services
+            <br>Authentication: {windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010}
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services</td>
-      <td>报表</td>
-      <td>报表</td>
+      <td>Report</td>
+      <td>Report</td>
       <td>
-        <font size=2> 协议：报表服务 <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 路径 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本：{ReportingService2010} </font>
+        
+            Protocol: reporting-services
+            <br>Authentication: {windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; path
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010}
+        
       </td>
     </tr>
     <tr>
       <td>Teradata</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：teradata <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: teradata
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Teradata</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, view</td>
       <td>
-        <font size=2> 协议：teradata <br>身份验证协议：{协议、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            Protocol: teradata
+            <br>Authentication: {protocol, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server Master Data Services</td>
-      <td>容器</td>
-      <td>模型</td>
+      <td>Container</td>
+      <td>Model</td>
       <td>
-        <font size="2"> 协议：mssql-mds <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本 </font>
+        <font size="2">
+          Protocol: mssql-mds
+          <br>Authentication: {windows}
+          <br>Address:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version
+        
       </td>
     </tr>
     <tr>
       <td>SQL Server Master Data Services</td>
-      <td>表</td>
-      <td>实体</td>
+      <td>Table</td>
+      <td>Entity</td>
       <td>
-        <font size="2"> 协议：mssql-mds <br>身份验证：{windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 模型 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 版本 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 实体 </font>
+        <font size="2">
+          Protocol: mssql-mds
+          <br>Authentication: {windows}
+          <br>Address:
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entity
+        
       </td>
     </tr>
     <tr>
       <td>Azure Cosmos DB</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: document-db
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Azure Cosmos DB</td>
-      <td>集合</td>
-      <td>集合</td>
+      <td>Collection</td>
+      <td>Collection</td>
       <td>
-        <font size=2> 协议：document-db <br>身份验证：{azure-access-key} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 集合 </font>
+        
+            Protocol: document-db
+            <br>Authentication: {azure-access-key}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; collection
+        
       </td>
     </tr>
     <tr>
-      <td>泛型 ODBC</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Generic ODBC</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：odbc <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            Protocol: odbc
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; options
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
-      <td>泛型 ODBC</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Generic ODBC</td>
+      <td>Table</td>
+      <td>Table, View</td>
       <td>
-        <font size=2> 协议：odbc <br>身份验证：{基本、windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选项 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 </font>
+        
+            Protocol: odbc
+            <br>Authentication: {basic, windows}
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; options
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+        
       </td>
     </tr>
     <tr>
       <td>Sybase</td>
-      <td>容器</td>
-      <td>数据库</td>
+      <td>Container</td>
+      <td>Database</td>
       <td>
-        <font size=2> 协议：sybase <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 </font>
+        
+            protocol: sybase
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+        
       </td>
     </tr>
     <tr>
       <td>Sybase</td>
-      <td>表</td>
-      <td>表、视图</td>
+      <td>Table</td>
+      <td>Table, View</td>
       <td>
-        <font size=2> 协议：sybase <br>身份验证：{基本，windows} <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 服务器 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据库 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 架构 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 对象 </font>
+        
+            protocol: sybase
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; database
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; schema
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object
+        
       </td>
     </tr>
     <tr>
-      <td>其他（以上均不是）</td>
+      <td>Other (none of the above)</td>
       <td>\*</td>
       <td>\*</td>
       <td>
-        <font size=2> 协议：通用资产 <br>地址： <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 资产 ID </font>
+        
+            Protocol: generic-asset
+            <br>Address:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId
+        
       </td>
     </tr>
 </table>

@@ -1,20 +1,20 @@
 ---
-title: "Azure SQL 数据同步最佳实践 | Microsoft 文档"
+title: "Azure SQL 数据同步最佳做法 | Microsoft Docs"
 description: "了解有关配置和运行 Azure SQL 数据同步的最佳实践"
 services: sql-database
-ms.date: 11/2/2017
+ms.date: 11/13/2017
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7492fffd1c18a149ef12174c79d64b47afbaa3e4
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7d9529fc8acd9347b0505b1c578febc1c2219b37
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="best-practices-for-azure-sql-data-sync-preview"></a>Azure SQL 数据同步（预览版）最佳实践 
+# <a name="best-practices-for-sql-data-sync-preview"></a>SQL 数据同步最佳做法（预览版） 
 
 本文介绍了 SQL 数据同步（预览版）最佳实践。
 
@@ -48,50 +48,36 @@ ms.lasthandoff: 11/08/2017
 
 -   更改凭据的权限（即，在设置同步后更改权限）。
 
-## <a name="locate-hub"></a> 在哪里定位中心数据库
+## <a name="setup"></a>设置
 
-### <a name="enterprise-to-cloud-scenario"></a>企业到云方案
+### <a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
 
-为了最大程度的减小延迟，请使中心数据库位于同步组数据库流量最密集的位置。
-
-### <a name="cloud-to-cloud-scenario"></a>云到云方案
-
--   如果同步组中的所有数据库位于一个数据中心，则中心数据库应位于同一个数据中心。 此配置会减少延迟并降低在数据中心之间的数据传输成本。
-
--   如果同步组中的数据库位于多个数据中心，则中心数据库应位于与大部分数据库和数据库流量相同的数据中心。
-
-### <a name="mixed-scenarios"></a>混合方案
-
-对更复杂的同步组配置应用上述指南。
-
-## <a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
-
-### <a name="sql-database-instance-size"></a>SQL 数据库实例大小
+#### <a name="sql-database-instance-size"></a>SQL 数据库实例大小
 
 创建新 SQL 数据库实例时，请设置最大大小，以使其始终大于你部署的数据库。 如果未将最大大小设置为大于部署的数据库，则同步会失败。 虽然没有自动增长设置，但你可以在创建数据库后执行 ALTER DATABASE 来增加数据库大小。 请确保始终保持在 SQL 数据库实例大小限制之内。
 
 > [!IMPORTANT]
 > SQL 数据同步会为每个数据库存储额外的元数据。 请确保在计算所需的空间时考虑此元数据。 增加的开销量由表宽度（例如，窄表会需要更多的开销）和流量大小控制。
 
-## <a name="table-considerations-and-constraints"></a> 表考虑因素和约束
+### <a name="table-considerations-and-constraints"></a> 表考虑因素和约束
 
-### <a name="selecting-tables"></a>选择表
+#### <a name="selecting-tables"></a>选择表
 
-并不是数据库中的所有表都需要在一个[同步组](#sync-group)中。 选择在同步组中包括和排除哪些表（或哪些表包括在其他同步组中）都可能会影响效率和成本。 请在同步组中仅包括业务需求所需的表以及所依赖的表。
+并不是数据库中的所有表都需要在一个同步组中。 选择在同步组中包括和排除哪些表（或哪些表包括在其他同步组中）都可能会影响效率和成本。 请在同步组中仅包括业务需求所需的表以及所依赖的表。
 
-### <a name="primary-keys"></a>主键
+#### <a name="primary-keys"></a>主键
 
 同步组中的每个表均必须具有主键。 SQL 数据同步（预览版）服务无法同步没有主键的任何表。
 
 在投入生产之前，请测试初始和正在进行的同步性能。
 
-## <a name="provisioning-destination-databases"></a> 预配目标数据库
+### <a name="provisioning-destination-databases"></a> 预配目标数据库
 
 SQL 数据同步（预览版）提供了基本的数据库自动预配。
 
 本部分讨论 SQL 数据同步（预览版）预配的限制。
 
-### <a name="auto-provisioning-limitations"></a>自动预配限制
+#### <a name="auto-provisioning-limitations"></a>自动预配限制
 
 SQL 数据同步（预览版）自动预配的限制如下。
 
@@ -109,39 +95,87 @@ SQL 数据同步（预览版）自动预配的限制如下。
 
 -   不会在目标数据库上创建视图和存储的过程。
 
-### <a name="recommendations"></a>建议
+#### <a name="recommendations"></a>建议
 
 -   请仅在尝试服务时使用自动预配功能。
 
 -   对于生产环境，应预配数据库架构。
 
-## <a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免缓慢且昂贵的初始同步
+### <a name="locate-hub"></a> 在哪里定位中心数据库
+
+#### <a name="enterprise-to-cloud-scenario"></a>企业到云方案
+
+为了最大程度的减小延迟，请使中心数据库位于同步组数据库流量最密集的位置。
+
+#### <a name="cloud-to-cloud-scenario"></a>云到云方案
+
+-   如果同步组中的所有数据库位于一个数据中心，则中心数据库应位于同一个数据中心。 此配置会减少延迟并降低在数据中心之间的数据传输成本。
+
+-   如果同步组中的数据库位于多个数据中心，则中心数据库应位于与大部分数据库和数据库流量相同的数据中心。
+
+#### <a name="mixed-scenarios"></a>混合方案
+
+对更复杂的同步组配置应用上述指南。
+
+## <a name="sync"></a>同步
+
+### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免缓慢且昂贵的初始同步
 
 本部分讨论了同步组的初始同步，以及你可以采取哪些措施来避免花费时间过长且成本高于正常值的初始同步。
 
-### <a name="how-initial-synchronization-works"></a>初始同步的工作原理
+#### <a name="how-initial-synchronization-works"></a>初始同步的工作原理
 
 创建同步组时，请先仅处理一个数据库中的数据。 如果数据在多个数据库中，SQL 数据同步（预览版）会将每一行都视为需要解决的冲突。 此冲突解决会导致初始同步变得缓慢，花费数天到数月时间才能完成，具体要取决于数据库大小。
 
 此外，如果数据库位于不同的数据中心，初始同步的成本将高于必要值，因为每一行都必须在不同数据中心之间传输。
 
-### <a name="recommendation"></a>建议
+#### <a name="recommendation"></a>建议
 
 如果可能，请先仅处理同步组中的一个数据库的数据。
 
-## <a name="design-to-avoid-synchronization-loops"></a> 设计以避免同步循环
+### <a name="design-to-avoid-synchronization-loops"></a> 设计以避免同步循环
 
 如果同步组中有循环引用，则会引起同步循环，导致一个数据库中的每个更改都会在同步组中的数据库之间无限循环复制。 请避免同步循环，因为这会降低性能，并大大增加成本。
 
-## <a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免过时的数据库和同步组
+### <a name="handling-changes-that-fail-to-propagate"></a> 处理无法传播的更改
+
+#### <a name="reasons-that-changes-fail-to-propagate"></a>更改无法传播的原因
+
+更改可能会因多种原因无法传播。 部分原因包括：
+
+-   架构/数据类型不兼容。
+
+-   尝试在不可为 NULL 的列中插入 NULL。
+
+-   违反外键约束。
+
+#### <a name="what-happens-when-changes-fail-to-propagate"></a>如果更改无法传播，会发生什么情况？
+
+-   同步组显示它处于警告状态。
+
+-   详细信息显示在门户 UI 日志查看器中。
+
+-   如果问题在 45 天未解决，数据库将过时。
+
+> [!NOTE]
+> 这些更改即不再传播。 恢复的唯一方法是重新创建同步组。
+
+#### <a name="recommendation"></a>建议
+
+通过门户和日志界面定期监控同步组和数据库运行状况。
+
+
+## <a name="maintenance"></a>维护
+
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免过时的数据库和同步组
 
 同步组或同步组中的数据库可能会过时。 如果同步组的状态为“过时”，则会停止运行。 如果数据库的状态为“过时”，数据可能会丢失。 请尽力避免出现这些情况，以免要从这些情况中恢复。
 
-### <a name="avoid-out-of-date-databases"></a>避免过时的数据库
+#### <a name="avoid-out-of-date-databases"></a>避免过时的数据库
 
 如果数据库离线长达 45 天或更多，其状态将设置为“过时”。 通过确保没有任何数据库离线长达 45 天或更多，避免数据库出现过时状态。
 
-### <a name="avoid-out-of-date-sync-groups"></a>避免过时的同步组
+#### <a name="avoid-out-of-date-sync-groups"></a>避免过时的同步组
 
 如果同步组中的任何更改在 45 天或更长时间内无法传播到同步组中的其他数据库，则同步组的状态将设置为“过时”。 通过定期检查同步组的历史记录日志，避免同步组出现过时状态。 确保所有冲突已解决，更改在同步组数据库之间成功传播。
 
@@ -163,11 +197,11 @@ SQL 数据同步（预览版）自动预配的限制如下。
 
 -   更新失败的行中的数据值以与目标数据库的架构或外键兼容。
 
-## <a name="avoid-deprovisioning-issues"></a> 避免取消预配问题
+### <a name="avoid-deprovisioning-issues"></a> 避免取消预配问题
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
-### <a name="scenario"></a>方案
+#### <a name="scenario"></a>方案
 
 1. 使用 SQL 数据库实例和本地 SQL Server 数据库创建与本地代理 1 关联的同步组 A。
 
@@ -177,7 +211,7 @@ SQL 数据同步（预览版）自动预配的限制如下。
 
 4. 现在，同步组 A 操作失败，并显示以下错误：“当前操作无法完成，因为尚未为同步预配数据库，或者你没有访问同步配置表的权限。”
 
-### <a name="solution"></a>解决方案
+#### <a name="solution"></a>解决方案
 
 通过从不向多个代理注册数据库，可完全避免这种情况。
 
@@ -189,34 +223,7 @@ SQL 数据同步（预览版）自动预配的限制如下。
 
 3. 部署每个受影响的同步组（其中预配了数据库）。
 
-## <a name="handling-changes-that-fail-to-propagate"></a> 处理无法传播的更改
-
-### <a name="reasons-that-changes-fail-to-propagate"></a>更改无法传播的原因
-
-更改可能会因多种原因无法传播。 部分原因包括：
-
--   架构/数据类型不兼容。
-
--   尝试在不可为 NULL 的列中插入 NULL。
-
--   违反外键约束。
-
-### <a name="what-happens-when-changes-fail-to-propagate"></a>如果更改无法传播，会发生什么情况？
-
--   同步组显示它处于警告状态。
-
--   详细信息显示在门户 UI 日志查看器中。
-
--   如果问题在 45 天未解决，数据库将过时。
-
-> [!NOTE]
-> 这些更改即不再传播。 恢复的唯一方法是重新创建同步组。
-
-### <a name="recommendation"></a>建议
-
-通过门户和日志界面定期监控同步组和数据库运行状况。
-
-## <a name="modifying-your-sync-group"></a> 修改同步组
+### <a name="modifying-your-sync-group"></a> 修改同步组
 
 请勿尝试从同步组中删除数据库，然后在不先部署其中一个更改的情况下编辑同步组。
 
@@ -228,7 +235,8 @@ SQL 数据同步（预览版）自动预配的限制如下。
 有关 SQL 数据同步的详细信息，请参阅：
 
 -   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
--   [Azure SQL 数据同步入门](sql-database-get-started-sql-data-sync.md)
+-   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)
+-   [使用 OMS Log Analytics 监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)
 -   [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：

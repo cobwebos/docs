@@ -13,15 +13,15 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 1721f985214b9a9fbefed628308b1a72f5cc186a
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight（预览版）
+# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight
 
 了解如何通过 Azure 虚拟网络直接连接到 Kafka on HDInsight。 本文档提供有关使用以下配置连接到 Kafka 的信息：
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/06/2017
 
 HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户端（生成者和使用者）必须使用以下连接方法之一：
 
-* 在 Kafka on HDInsight 所在的同一个虚拟网络中运行客户端。 [HDInsight 上的 Apache Kafka（预览版）入门](apache-kafka-get-started.md)文档中使用了此配置。 客户端直接在 HDInsight 群集节点上运行，或者在同一网络中的另一个虚拟机上运行。
+* 在 Kafka on HDInsight 所在的同一个虚拟网络中运行客户端。 [Apache Kafka on HDInsight 快速入门](apache-kafka-get-started.md)中使用了此配置。 客户端直接在 HDInsight 群集节点上运行，或者在同一网络中的另一个虚拟机上运行。
 
 * 将专用网络（例如本地网络）连接到虚拟网络。 此配置允许本地网络中的客户端直接使用 Kafka。 若要启用此配置，请执行以下任务：
 

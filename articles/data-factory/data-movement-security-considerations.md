@@ -13,13 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
-ms.openlocfilehash: 9caea4191a2ca99e6e98cc8ce7ca9ca0c7b8dc87
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: bba2781d43aff9e462246cfe21961695e48196d8
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1 - GA](v1/data-factory-data-movement-security-considerations.md)
+> * [版本 2 - 预览版](data-movement-security-considerations.md)
+
 本文介绍了 Azure 数据工厂中数据移动服务用于保护数据的基本安全基础结构。 Azure 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
 > [!NOTE]
@@ -27,7 +31,7 @@ ms.lasthandoff: 10/26/2017
 
 在数据工厂解决方案中，可以创建一个或多个数据[管道](concepts-pipelines-activities.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
 
-尽管数据工厂仅在**美国东部**和**美国东部 2** 区域（预览版 2）中推出，但数据移动服务已在[全球多个区域](concepts-integration-runtime.md#azure-ir)推出。 如果数据移动服务尚未部署到该区域，数据工厂服务可确保数据不会离开某个地理区域，除非在明确指示服务使用备用区域。 
+尽管数据工厂仅在美国东部、美国东部 2 和西欧区域（预览版 2）中推出，但数据移动服务已在[全球多个区域](concepts-integration-runtime.md#azure-ir)推出。 如果数据移动服务尚未部署到该区域，数据工厂服务可确保数据不会离开某个地理区域，除非在明确指示服务使用备用区域。 
 
 除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂本身不存储任何其他数据。 它允许创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 它还允许使用 SDK 与 Azure Monitor 来监视和管理工作流。
 

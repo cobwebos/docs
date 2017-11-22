@@ -13,16 +13,16 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>使用 Azure SQL 数据同步跨多个云和本地数据库同步数据（预览版）
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>使用 SQL 数据同步（预览版）跨多个云和本地数据库同步数据
 
 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨多个 SQL 数据库和 SQL Server 实例双向同步选定数据。
 
@@ -44,7 +44,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 -   同步数据库包含数据同步的元数据和日志。同步数据库必须是与中心数据库位于同一区域的 Azure SQL 数据库。 同步数据库的创建者和所有者均为客户。
 
 > [!NOTE]
-> 如果使用本地数据库，必须[配置本地代理](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync)。
+> 如果使用本地数据库，必须[配置本地代理](sql-database-get-started-sql-data-sync.md#add-on-prem)。
 
 ![在数据库之间同步数据](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -78,38 +78,11 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
     -   如果选择“中心胜出”，中心内的更改始终覆盖成员内的更改。
     -   如果选择“成员胜出”，成员内的更改覆盖中心内的更改。 如果有多个成员，最终值取决于哪个成员最先同步。
 
-## <a name="common-questions"></a>常见问题
-
-### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>数据同步以什么频率同步数据？ 
-最小频率是每隔五分钟。
-
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>数据同步是否可以用于只在 SQL Server 本地数据库之间同步？ 
-无法直接关闭。 但是，可以间接地在 SQL Server 本地数据库之间同步，方法是在 Azure 中创建一个中心数据库，然后将本地数据库添加到同步组。
-   
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>是否可以将生产数据库中的数据种子植入到空数据库，然后使它们保持同步？ 
-是的。 通过从原始数据库编写脚本，在新数据库中手动创建架构。 创建架构后，将表添加到同步组以复制数据并使其同步。
-
-### <a name="why-do-i-see-tables-that-i-did-not-create"></a>为什么出现了未创建的表？  
-数据同步在数据库中创建用于跟踪的端表。 请不要删除这些表，否则数据同步会停止工作。
-   
-### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>有一条错误消息指出“无法在列 \<column\> 中插入值 NULL。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
-此错误消息表示存在两个以下问题之一：
-1.  可能存在一个不包含主键的表。 若要解决此问题，请将主键添加到要同步的所有表。
-2.  CREATE INDEX 语句中可能存在 WHERE 子句。 同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
- 
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>数据同步如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
-数据同步不会处理循环引用。 请务必避免循环引用。 
-
-### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>如何使用数据同步导出和导入数据库？
-将数据库导出为 `.bacpac` 文件，并导入文件来新建数据库后，必须执行以下两步操作，才能在新数据库中使用数据同步：
-1.  使用[此脚本](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)清理新数据库上的数据同步对象和端表。 此脚本将从数据库中删除所有相应数据同步对象。
-2.  重新创建包含新数据库的同步组。 如果不再需要旧同步组，请删除它。
-
 ## <a name="sync-req-lim"></a> 要求和限制
 
 ### <a name="general-requirements"></a>一般要求
 
--   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果不得不这样做，请先删除行，再使用新的主键值重新创建此行。 
+-   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
 
 -   表不能包含非主键标识列。
 
@@ -151,12 +124,51 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | 最小同步间隔                                           | 5 分钟              |                             |
 |||
 
+## <a name="faq-about-sql-data-sync"></a>SQL 数据同步常见问题解答
+
+### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>SQL 数据同步（预览版）服务的价格是多少？
+
+预览期间，不对 SQL 数据同步（预览版）服务本身收取任何费用。  但是，对于传入和传出 SQL 数据库实例的数据移动，仍然会产生数据传输费用。 有关价格，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
+
+### <a name="what-regions-support-data-sync"></a>哪些区域支持数据同步？
+
+SQL 数据同步（预览版）适用于所有公共云区域。
+
+### <a name="is-a-sql-database-account-required"></a>是否需要 SQL 数据库帐户？ 
+
+是的。 必须拥有 SQL 数据库帐户才能托管中心数据库。
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>数据同步是否可以用于只在 SQL Server 本地数据库之间同步？ 
+无法直接关闭。 但是，可以间接地在 SQL Server 本地数据库之间同步，方法是在 Azure 中创建一个中心数据库，然后将本地数据库添加到同步组。
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>是否可以将生产数据库中的数据种子植入到空数据库，然后使它们保持同步？ 
+是的。 通过从原始数据库编写脚本，在新数据库中手动创建架构。 创建架构后，将表添加到同步组以复制数据并使其同步。
+
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>我应该使用 SQL 数据同步备份和还原数据库吗？
+
+不建议使用 SQL 数据同步（预览版）创建数据备份。 由于 SQL 数据同步（预览版）的同步没有版本控制，因此无法备份和还原到特定时间点。 此外，SQL 数据同步（预览版）不会备份其他 SQL 对象（如存储过程），并且不会快速执行还原操作的等效操作。
+
+对于推荐的备份技术，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
+
+### <a name="is-collation-supported-in-sql-data-sync"></a>SQL 数据同步是否支持排序规则？
+
+是的。 SQL 数据同步在以下情况下支持排序规则：
+
+-   如果所选同步架构表不在中心或成员数据库中，则部署同步组时，该服务会使用空目标数据库中选择的排序规则设置自动创建相应的表和列。
+
+-   如果要同步的表已经存在于中心和成员数据库中，则 SQL 数据同步要求中心数据库和成员数据库之间的主键列具有相同的排序规则，以成功部署同步组。 主键列以外的列没有排序规则限制。
+
+### <a name="is-federation-supported-in-sql-data-sync"></a>SQL 数据同步是否支持联合？
+
+联合根数据库可用于 SQL 数据同步（预览版）服务，没有任何限制。 不能将联合数据库终结点添加到当前版本的 SQL 数据同步（预览版）。
+
 ## <a name="next-steps"></a>后续步骤
 
 有关 SQL 数据同步的详细信息，请参阅：
 
--   [Azure SQL 数据同步入门](sql-database-get-started-sql-data-sync.md)
+-   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL 数据同步最佳实践](sql-database-best-practices-data-sync.md)
+-   [使用 OMS Log Analytics 监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)
 -   [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: a3eedacac5efb53f82e46a56285713dece56ffe8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea3b1f50bada3c1301f8661f8f0b4866cb1c732c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
 
@@ -108,7 +108,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 ## <a name="next-steps"></a>后续步骤
 
-按照[快速入门指南](service-fabric-api-management-quick-start.md)操作，使用 API 管理创建首个 Service Fabric 群集，并通过 API 管理向服务发送请求。
+按照[教程](service-fabric-tutorial-deploy-api-management.md)操作，使用 API 管理创建首个 Service Fabric 群集，并通过 API 管理向服务发送请求。
 
 <!-- links -->
 

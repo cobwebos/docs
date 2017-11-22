@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
-ms.reviewer: alexwe
-ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.reviewer: richagi
+ms.openlocfilehash: 4900707baa875ae4527d82e8189d5bc4d319ae0c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>配置 Azure 多重身份验证设置 - 公共预览版
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/08/2017
 
 | 功能 | 说明 | 
 |:--- |:--- |
-| [阻止/解除阻止用户](#block/unblock-users) |阻止/解除阻止用户可防止用户收到身份验证请求。 |
+| [阻止和解除阻止用户](#block-and-unblock) |阻止/解除阻止用户可防止用户收到身份验证请求。 |
 | [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 |
 | [免验证一次](#one-time-bypass) |“一次性跳过”可让用户通过“跳过”多重身份验证来进行身份验证，不过只能跳过一次。 |
 | [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于多重身份验证。 |
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/08/2017
 | [为已记住设备和浏览器记住多重身份验证](#remember-multi-factor-authentication-for-devices-that-users-trust) |允许在用户使用 MFA 成功登录后的指定天数内记住设备。 |
 | [可选择验证方法](#selectable-verification-methods) |允许选择可供用户使用的身份验证方法。 |
 
-## <a name="blockunblock-users"></a>阻止/解除阻止用户
+## <a name="block-and-unblock"></a>阻止和解除阻止
 阻止/解除阻止用户可用于防止用户收到身份验证请求。 将自动拒绝任何针对受阻止用户的身份验证尝试。 自受阻日起，受阻止用户在 90 天内会受到阻止。
 
 ### <a name="block-a-user"></a>阻止用户
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/08/2017
 
 ### <a name="configuration-options"></a>配置选项
 
-- **在收到欺诈报告时阻止用户** - 如果用户报告了欺诈，则阻止其帐户。
+- **报告欺诈时阻止用户** - 如果用户报告欺诈，那么他们的帐户将被阻止 90 天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
 - **初始问候期间报告欺诈的代码** - 当用户接收电话呼叫来执行双重验证时，他们通常按 # 来确认其登录。 如果他们想要报告欺诈，则可在按 # 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
 
 > [!NOTE]

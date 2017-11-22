@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: 
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: bb0d996b950a31e3eaaaa9d90a6b96617b58192f
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4042c3606155d1d37947afccafd64652c9659894
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="templates-for-azure-policy"></a>Azure 策略模板
 
-下表包含 Azure 策略的 json 模板链接。
+下表包含 Azure 策略的 json 模板链接。 这些示例位于 [Azure 策略示例存储库](https://github.com/Azure/azure-policy)。
 
 | | |
 |---|---|
 |**计算**||
 | [已批准的 VM 映像](scripts/allowed-custom-images.md) | 要求在环境中仅部署已批准的自定义映像。 指定已批准的映像 ID 的数组。 |
-| [使用托管磁盘创建 VM](scripts/create-vm-managed-disk.md) | 如果创建了未使用托管磁盘的虚拟机，则进行审核。|
+| [在 VM 未使用托管磁盘时审核](scripts/create-vm-managed-disk.md) | 如果创建了未使用托管磁盘的虚拟机，则进行审核。|
 | [如果扩展不存在，则进行审核](scripts/audit-ext-not-exist.md) | 如果扩展不是通过虚拟机部署的，则进行审核。 指定扩展发布者和类型以检查是否已部署扩展。 |
 | [允许自定义资源组中的 VM 映像](scripts/allow-custom-vm-image.md) |  要求自定义映像来自已批准的资源组。 指定已批准的资源组的名称。 |
 | [拒绝混合使用权益](scripts/deny-hybrid-use.md) | 禁止使用 Azure 混合使用权益 (AHUB)。 想禁止使用本地许可证时使用。 |
@@ -39,6 +39,11 @@ ms.lasthandoff: 11/04/2017
 | [使用托管磁盘创建 VM](scripts/use-managed-disk-vm.md) | 要求虚拟机使用托管磁盘。|
 |**监视**||
 | [审核诊断设置](scripts/audit-diag-setting.md) | 如果未对指定资源类型启用诊断设置，则进行审核。 指定一个资源类型的数组以检查是否已启用诊断设置。 |
+|**名称和文本约定**||
+| [允许多种名称模式](scripts/allow-multiple-name-patterns.md) | 允许资源使用多种名称模式中的一种。 |
+| [需要类似模式](scripts/enforce-like-pattern.md) | 确保资源名称符合模式的类似条件。 |
+| [需要匹配模式](scripts/enforce-match-pattern.md) | 确保资源名称与命名模式匹配。 |
+| [需要标记匹配模式](scripts/enforce-tag-match-pattern.md) | 确保标记值与文本模式匹配。 |
 |**网络**||
 | [允许的应用程序网关 SKU](scripts/allowed-app-gate-sku.md) | 要求应用程序网关使用已批准的 SKU。 指定一个已批准的 SKU 的数组。 |
 | [如果未对区域启用网络观察程序，则进行审核](scripts/net-watch-not-enabled.md) | 如果未对指定区域启用网络观察程序，则进行审核。 指定区域的名称以检查是否启用了网络观察程序。 |
@@ -62,6 +67,7 @@ ms.lasthandoff: 11/04/2017
 | [审核 DB 级别的威胁检测设置](scripts/audit-db-threat-det-setting.md) | 如果 SQL 数据库安全警报策略未设置成指定状态，则审核这些策略。 指定一个值，该值指示威胁检测是启用还是禁用状态。  |
 | [审核 SQL Server 级别审核设置](scripts/audit-sql-ser-leve-audit-setting.md) | 如果 SQL 服务器审核设置不匹配指定的设置，则审核这些设置。 指定用于指示应启用或禁用审核设置的值。 |
 | [审核服务器级别的威胁检测设置](scripts/audit-sql-ser-threat-det-setting.md) | 如果 SQL 数据库安全警报策略未设置成指定状态，则审核这些策略。 指定一个值，该值指示威胁检测是启用还是禁用状态。  |
+| [无 Azure Active Directory 管理员时审核](scripts/audit-no-aad-admin.md) | SQL 服务器未分配有任何 Azure Active Directory 管理员时进行审核。 |
 | [允许的 SQL DB SKU](scripts/allowed-sql-db-skus.md) | 要求 SQL 数据库使用已批准的 SKU。 指定一个允许的 SKU ID 的数组或允许的 SKU 名称的数组。 |
 |**存储**||
 | [允许的存储帐户和虚拟网络的 SKU](scripts/allowed-skus-storage.md) | 要求存储帐户和虚拟机使用已批准的 SKU。 使用内置策略以确保使用已批准的 SKU。 指定已批准的虚拟机 SKU 数组和已批准的存储帐户 SKU 数组。 |

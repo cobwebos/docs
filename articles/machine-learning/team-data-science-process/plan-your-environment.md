@@ -4,7 +4,7 @@ description: "规划高级分析时需考虑一系列关键问题。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
 ms.service: machine-learning
@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: bradsev
-ms.openlocfilehash: 42d1de8a27f8979db5662094e8bd74a6f5ccac55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
-将环境设置为对数据集执行高级分析处理时，应计划包括哪些资源？ 本文为一系列提出的问题提供建议，有助于确定与用户情况相关的任务和资源。 [什么是 Team Data Science Process (TDSP)？](overview.md)中概述了预测分析的高级步骤顺序。 每个步骤都需要与用户特定情况相关的任务特定资源。 确定方案的关键问题涉及数据物流、特征、数据集的质量以及执行分析要使用的工具和语言。
+将环境设置为对数据集执行高级分析处理时，应计划包括哪些资源？ 本文为一系列提出的问题提供建议，有助于确定与用户方案相关的任务和资源。 [什么是 Team Data Science Process (TDSP)？](overview.md)中概述了预测分析的高级步骤顺序。 每个步骤都需要与用户特定方案相关的任务特定资源。 确定方案的关键问题涉及数据物流、特征、数据集的质量以及执行分析要使用的工具和语言。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="logistic-questions-data-locations-and-movement"></a>物流问题：数据位置和移动
-物流问题涉及**数据源**的位置、Azure 中的**目标**和移动数据的要求，包括时间安排、数量和涉及的资源。 在分析过程中可能需要移动几次数据。 一种常见方案是先将本地数据移到 Azure 上某种形式的存储中，再移到机器学习工作室。
+物流问题涉及数据源的位置、Azure 中的目标和移动数据的要求，包括时间安排、数量和涉及的资源。 在分析过程中可能需要移动几次数据。 一种常见方案是先将本地数据移到 Azure 上某种形式的存储中，再移到机器学习工作室。
 
 1. **数据源是什么？** 位于本地还是在云中？ 例如：
    
@@ -42,12 +42,12 @@ ms.lasthandoff: 10/11/2017
    * HDInsight（Azure 上的 Hadoop）或 Hive 表
    * Azure 机器学习
    * 可安装的 Azure 虚拟硬盘。
-3. **计划如何移动数据？** 以下主题概述了用于将数据引入或载入不同存储和处理环境的过程和资源。
+3. **计划如何移动数据？** 以下文章概述了用于将数据引入或载入不同存储和处理环境的过程和资源：
    
    * [将数据载入存储环境以进行分析](ingest-data.md)
    * [将训练数据从各种数据源导入 Azure 机器学习工作室](../studio/import-data.md)。
 4. **是否需要按定期计划移动数据或在迁移期间修改数据？** 请在以下情况下考虑使用 Azure 数据工厂 (ADF)：需要连续迁移数据，尤其是对于可访问本地和云资源的混合方案；需要处理或修改数据；或者已在迁移期间添加业务逻辑。 有关详细信息，请参阅[使用 Azure 数据工厂将数据从本地 SQL Server 移到 SQL Azure](move-sql-azure-adf.md)
-5. **要将多少数据移动到 Azure？** 大规模数据集可能会超过某些环境的存储容量。 有关示例，请参阅下一部分中针对机器学习工作室大小限制的讨论。 在这种情况下，可在分析过程中使用数据的示例。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](sample-data.md)。
+5. **要将多少数据移动到 Azure？** 非常大的数据集可能会超过某些环境的存储容量。 有关示例，请参阅下一部分中针对机器学习工作室大小限制的讨论。 在这种情况下，可在分析过程中使用数据的示例。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](sample-data.md)。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>数据特征问题：类型、格式和大小
 这些问题是规划存储和处理环境的关键，这两方面适用于不同类型数据且有各自的特定限制。

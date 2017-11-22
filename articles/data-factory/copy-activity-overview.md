@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 9629a86e72e0d5943f0e50e04268720fbedf6c35
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 36443ec86c15edce27bdc4f50cabcaf2e14936bc
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -65,6 +65,10 @@ ms.lasthandoff: 11/04/2017
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
 * 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
 * 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
+
+## <a name="supported-regions"></a>支持的区域
+
+为复制活动提供支持的服务面向 [Azure Integration Runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中列出的区域和地理位置全球发布。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 有关某区域内数据工厂和数据移动的可用性，请参阅[服务（按区域）](https://azure.microsoft.com/regions/#services)。
 
 ## <a name="configuration"></a>配置
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 89d469b330644b8f5b82a343ea4408d5b8d10b12
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 84f542340f62194a31817a8e358d75c0d0f103ee
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/03/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="enabling-aks-preview-for-your-azure-subscription"></a>为 Azure 订阅启用 AKS 预览版
 AKS 为预览版时，创建新群集需要订阅上的功能标记。 可以为任意数量的订阅请求此功能，只要你想使用。 使用 `az provider register` 命令注册 AKS 提供程序：
@@ -48,10 +48,10 @@ az provider register -n Microsoft.ContainerService
 
 使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。
 
-以下示例在 westus2 位置创建名为 myResourceGroup 的资源组。
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westus2
+az group create --name myResourceGroup --location eastus
 ```
 
 输出：
@@ -59,7 +59,7 @@ az group create --name myResourceGroup --location westus2
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "westus2",
+  "location": "eastus",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -74,7 +74,7 @@ az group create --name myResourceGroup --location westus2
 以下示例创建一个具有一个节点的名为 myK8sCluster 的群集。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myK8sCluster --agent-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
 ```
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。

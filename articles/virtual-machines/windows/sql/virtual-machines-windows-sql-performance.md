@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: jroth
-ms.openlocfilehash: e502be189a29590ebe0d848b3ec43611db8d035d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6386678bdac3630f3e003187ff3d12c0ce053b90
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的性能最佳实践
 
@@ -113,7 +113,7 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 
   * 如果使用的不是高级存储（开发/测试方案），建议添加 [VM 大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)支持的最大数量的数据磁盘并使用磁盘条带化。
 
-* **缓存策略**：对于高级存储数据磁盘，请只在托管数据文件和 TempDB 的数据磁盘上启用读取缓存。 如果使用的不是高级存储，不要在任何数据磁盘上启用任何缓存。 有关配置磁盘缓存的说明，请参阅以下主题：[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) 和 [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)。
+* **缓存策略**：对于高级存储数据磁盘，请只在托管数据文件和 TempDB 的数据磁盘上启用读取缓存。 如果使用的不是高级存储，不要在任何数据磁盘上启用任何缓存。 有关配置磁盘缓存的说明，请参阅以下主题。 有关经典 (ASM) 部署模型，请参阅 [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) 和 [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)。 有关 Azure 资源管理器部署模型，请参阅 [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) 和 [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1)。
 
   > [!WARNING]
   > 请在更改 Azure VM 磁盘的缓存设置时停止 SQL Server 服务，以免出现数据库损坏的情况。
