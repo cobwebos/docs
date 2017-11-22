@@ -4,7 +4,7 @@ description: "如何使用 Azure Data Lake 对数据集进行数据浏览和二�
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 91a8207f-1e57-4570-b7fc-7c5fa858ffeb
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 5c4ec4578d7d59ae128448be7378f6104d0ce601
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/13/2017
+ms.author: bradsev; weig
+ms.openlocfilehash: b18b454d1fcdfb2b6e8ea77508f779aeabdc87a0
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](http://aka.ms/datascienceprocess) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
@@ -28,13 +28,13 @@ ms.lasthandoff: 10/11/2017
 
 Data Lake Analytics 也是 Cortana Analytics 套件的重要部分，可与 Azure SQL 数据仓库、Power BI 以及数据工厂协同工作。 这为用户提供了完整的云大数据和高级分析平台。
 
-本演练首先介绍了使用 Data Lake Analytics 完成任务所需的先决条件和资源，这些任务将形成数据科学过程，同时介绍了如何安装它们。 然后概述了使用 U-SQL 进行数据处理的步骤，最后介绍了如何将 Python 和 Hive 与 Azure 机器学习工作室配合使用以构建和部署预测模型。 
+本演练首先介绍了如何安装完成数据科学处理任务所需的先决条件和资源。 然后概述了使用 U-SQL 进行数据处理的步骤，最后介绍了如何将 Python 和 Hive 与 Azure 机器学习工作室配合使用以构建和部署预测模型。 
 
 ### <a name="u-sql-and-visual-studio"></a>U-SQL 和 Visual Studio
 本演练建议使用 Visual Studio 编辑 U-SQL 脚本来处理数据集。 此处所述的 U-SQL 脚本将提供在单独的文件中。 此过程包括数据的引入、浏览和采样。 它还介绍了如何从 Azure 门户运行 U-SQL 脚本化作业。 为关联的 HDInsight 群集中的数据创建了 Hive 表，便于在 Azure 机器学习工作室中构建和部署二进制分类模型。  
 
 ### <a name="python"></a>Python
-本演练中还包括了一部分，其中介绍了如何将 Azure 机器学习工作室与 Python 配合使用以构建和部署预测模型。  针对此过程中的步骤，我们提供了包含 Python 脚本的 Jupyter Notebook。 此 Notebook 包括适用于其他功能设计步骤和模型构建的代码，例如，多类分类建模和回归建模，以及此处提到的二进制分类模型。 回归任务用于根据其他小费特征预测小费的金额。 
+本演练中还包括了一部分，其中介绍了如何将 Azure 机器学习工作室与 Python 配合使用以构建和部署预测模型。 针对此过程中的步骤，本演练提供了包含 Python 脚本的 Jupyter Notebook。 此 Notebook 包括适用于其他功能设计步骤和模型构建的代码，例如，多类分类建模和回归建模，以及此处提到的二进制分类模型。 回归任务用于根据其他小费特征预测小费的金额。 
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 Azure 机器学习工作室用于生成和部署预测模型。 有两种方法可完成此操作：在 HDInsight (Hadoop) 群集上使用 Python 脚本或使用 Hive 表。
@@ -49,7 +49,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 * [建议] Visual Studio 2013 或更高版本。 如果尚未安装这些版本之一，可从 [Visual Studio Community](https://www.visualstudio.com/vs/community/) 下载免费的 Community 版本。
 
 > [!NOTE]
-> 除了 Visual Studio，还可以使用 Azure 门户提交 Azure Data Lake 查询。 我们会在名为**使用 U-SQL 处理数据**的部分中提供相关说明，可从中了解如何使用 Visual Studio 以及在门户中完成此操作。 
+> 除了 Visual Studio，还可以使用 Azure 门户提交 Azure Data Lake 查询。 说明在名为**使用 U-SQL 处理数据**的部分提供，可从中了解如何使用 Visual Studio 以及在门户中完成此操作。 
 > 
 > 
 
@@ -63,11 +63,11 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 * Azure 机器学习工作室帐户
 * 用于 Visual Studio 的 Azure Data Lake 工具（推荐）
 
-本部分说明了每种资源的创建方法。 如果选择将 Azure 机器学习与 Hive 表配合使用以构建模型，而不使用 Python，那么还需预配 HDInsight (Hadoop) 群集。 在以下相应部分中会对此备选过程进行描述。
+本部分说明了每种资源的创建方法。 如果选择将 Azure 机器学习与 Hive 表配合使用以构建模型，而不使用 Python，那么还需预配 HDInsight (Hadoop) 群集。 此备选过程在“选项 2”部分描述。
 
 
 > [!NOTE]
-> **Azure Data Lake Store** 可创建为默认存储，它可单独创建，也可在创建 **Azure Data Lake Analytics** 时创建。 单独创建每种资源的方法会在下面进行说明，但是不需要单独创建 Data Lake 存储帐户。
+> **Azure Data Lake Store** 可创建为默认存储，它可单独创建，也可在创建 **Azure Data Lake Analytics** 时创建。 会提到单独创建每种资源的方法，但是不需要单独创建 Data Lake 存储帐户。
 >
 > 
 
@@ -89,7 +89,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
 ### <a name="set-up-an-azure-machine-learning-studio-account"></a>设置 Azure 机器学习工作室帐户
-从 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)页面注册/登录到 Azure 机器学习工作室。 单击“立即开始”按钮，并选择“免费工作区”或“标准工作区”。 完成此操作后，就能够在 Azure 机器学习工作室中创建试验。  
+从 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)页面注册/登录到 Azure 机器学习工作室。 单击“立即开始”按钮，并选择“免费工作区”或“标准工作区”。 现在可以在 Azure 机器学习工作室中创建试验了。  
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>安装 Azure Data Lake 工具 [推荐]
 从 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)（用于 Visual Studio 的 Azure Data Lake 工具）中，为 Visual Studio 版本安装 Azure Data Lake 工具。
@@ -101,18 +101,21 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 ## <a name="the-nyc-taxi-trips-dataset"></a>NYC 出租车行程数据集
-此处我们使用的示例为公开发布的数据集 - [NYC 出租车行程数据集](http://www.andresmh.com/nyctaxitrips/)。 NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个车程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证编号和出租车（出租车的唯一 ID）编号。 数据涵盖 2013 年的所有行程，并每月在以下两个数据集中提供：
+此处使用的示例为公开发布的数据集 - [NYC 出租车行程数据集](http://www.andresmh.com/nyctaxitrips/)。 NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个车程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证编号和出租车（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
-* 'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
-  
-       medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count, trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
+'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
+
+       medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-* 'trip_fare' CSV 包含每个行程所付费用的详细信息，例如付款类型、费用金额、附加税和税金、小费和通行税，以及支付的总金额等。 下面是一些示例记录：
-  
+
+
+
+'trip_fare' CSV 包含每个行程所付费用的详细信息，例如付款类型、费用金额、附加税和税金、小费和通行税，以及支付的总金额等。 下面是一些示例记录：
+
        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
@@ -139,7 +142,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
 > [!NOTE]
-> 可以使用 Azure 门户来执行 U-SQL，而不使用 Visual Studio。 可在门户中导航到 Azure Data Lake Analytics 资源，并直接提交查询，如下图所述。
+> 可以使用 Azure 门户来执行 U-SQL，而不使用 Visual Studio。 可在门户中导航到 Azure Data Lake Analytics 资源，并直接提交查询，如下图所示：
 > 
 > 
 
@@ -169,7 +172,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-因为第一行中存在标题，因此请移除标题，并将列类型更改为合适的类型。 可使用 **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ 将已处理的数据保存到 Azure Data Lake 存储，或使用 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** 将已处理的数据保存到 Azure Blob 存储帐户。 
+由于第一行中存在标题，因此需移除标题，并将列类型更改为合适的类型。 可使用 **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ 将已处理的数据保存到 Azure Data Lake 存储，或使用 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** 将已处理的数据保存到 Azure Blob 存储帐户。 
 
     // change data types
     @trip =
@@ -201,7 +204,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
     USING Outputters.Csv();  
 
-同样，我们可以读入费用数据集。 右键单击 Azure Data Lake Store，可在“Azure 门户”-->“数据资源管理器”或 Visual Studio 中的“文件资源管理器”中，选择查看数据。 
+同样，可以读入费用数据集。 右键单击 Azure Data Lake Store，可在“Azure 门户”-->“数据资源管理器”或 Visual Studio 中的“文件资源管理器”中，选择查看数据。 
 
  ![10](./media/data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
@@ -280,7 +283,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 
 ### <a name="explore"></a>数据浏览
-对数据进行浏览可更好地了解数据。
+使用以下脚本对数据进行浏览可更好地了解数据。
 
 了解已付小费和未付小费的行程分布：
 
@@ -439,17 +442,17 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
  ![14](./media/data-lake-walkthrough/14-USQL-jobs-portal.PNG)
 
-现在可在 Azure Blob 存储或 Azure 门户中检查输出文件。 下一步中，我们将使用分层采样数据进行建模。
+现在可在 Azure Blob 存储或 Azure 门户中检查输出文件。 下一步请使用分层采样数据建模。
 
  ![15](./media/data-lake-walkthrough/15-U-SQL-output-csv.PNG)
 
  ![16](./media/data-lake-walkthrough/16-U-SQL-output-csv-portal.PNG)
 
 ## <a name="build-and-deploy-models-in-azure-machine-learning"></a>在 Azure 机器学习中生成和部署模型
-我们将演示两个可用于将数据拉取到 Azure 机器学习中进行构建的选项 
+可以使用两个选项，将数据拉取到 Azure 机器学习中进行构建 
 
 * 在第一个选项中，使用已写入到 Azure Blob 的抽样数据（在上述**数据采样**步骤中），并使用 Python 从 Azure 机器学习构建和部署模型。 
-* 在第二个选项中，使用 Hive 查询直接在 Azure Data Lake 中查询数据。 此选项要求创建新的 HDInsight 群集，或使用现有的 HDInsight 群集，其中 Hive 表指向 Azure Data Lake 存储中的 NY 出租车数据。  下面将讨论这两个选项。 
+* 在第二个选项中，使用 Hive 查询直接在 Azure Data Lake 中查询数据。 此选项要求创建新的 HDInsight 群集，或使用现有的 HDInsight 群集，其中 Hive 表指向 Azure Data Lake 存储中的 NY 出租车数据。  以下部分讨论这两个选项。 
 
 ## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>选项 1：使用 Python 生成和部署机器学习模型
 若要使用 Python 生成和部署机器学习模型，请在本地计算机上或 Azure 机器学习工作室中创建 Jupyter Notebook。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 中提供的 Jupyter Notebook 包含完整代码，可用于浏览、可视化数据、功能设计、建模和部署。 本文只介绍建模和部署。 
@@ -509,7 +512,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
             df1[col] = df1[col].astype(float)
 
 ### <a name="build-machine-learning-models"></a>生成机器学习模型
-在这里，我们将生成二进制分类模型以预测是否为行程支付了小费。 在 Jupyter Notebook 中，可找到另外两种模型：多类分类和回归模型。
+在这里，请生成一个二进制分类模型以预测是否为行程支付了小费。 在 Jupyter Notebook 中，可找到另外两种模型：多类分类和回归模型。
 
 * 首先需要创建 scikit-learn 模型中可用的虚拟变量
   
@@ -555,7 +558,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
        ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>生成 Web 服务 API 并在 Python 中使用
-生成完成后，需要使机器学习模型可操作化。 此处我们以二进制逻辑模型为例。 请确保本地计算机中的 scikit-learn 版本为 0.15.1。 如果使用的是 Azure 机器学习工作室，则无需担心这点。
+生成完成后，需要使机器学习模型可操作化。 此处以二进制逻辑模型为例。 请确保本地计算机中的 scikit-learn 版本为 0.15.1。 如果使用的是 Azure 机器学习工作室，则无需担心这点。
 
 * 在 Azure 机器学习工作室设置中查找工作区凭据。 在 Azure 机器学习工作室中，单击“设置” --> “名称” --> “授权令牌”。 
   
@@ -595,16 +598,16 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，然后将其用于创建和部署模型。 此方法使用指向 Azure Data Lake Store 的 Hive 表。 使用此方法需要预配单独的 Azure HDInsight 群集，并在其中创建 Hive 表。 以下部分介绍了如何执行该操作。 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>创建 HDInsight Linux 群集
-从 [Azure 门户](http://portal.azure.com)创建 HDInsight 群集 (Linux)。有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的**创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集**部分。
+从 [Azure 门户](http://portal.azure.com)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的**创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集**部分。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>在 HDInsight 中创建 Hive 表
-现在，我们将使用上一步中存储在 Azure Data Lake Store 中的数据来创建 Hive 表，该表会在 HDInsight 群集中的 Azure 机器学习工作室中使用。 请转到刚创建的 HDInsight 群集。 单击“设置” --> “属性” --> “群集 AAD 标识” --> “ADLS 访问”，请确保已将 Azure Data Lake Store 帐户添加到具有读取、写入和执行权限的列表中。 
+现在，请使用上一步存储在 Azure Data Lake Store 中的数据来创建 Hive 表，该表会在 HDInsight 群集中的 Azure 机器学习工作室中使用。 请转到已创建的 HDInsight 群集。 单击“设置” --> “属性” --> “群集 AAD 标识” --> “ADLS 访问”，请确保已将 Azure Data Lake Store 帐户添加到具有读取、写入和执行权限的列表中。 
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
-然后单击“设置”按钮旁的“仪表板”，随即会弹出一个窗口。 在页面的右上角，单击“Hive 视图”，然后将看到“查询编辑器”。
+然后单击“设置”按钮旁的“仪表板”，随即会弹出一个窗口。 在页面的右上角，单击“Hive 视图”，然后会看到“查询编辑器”。
 
  ![20](./media/data-lake-walkthrough/20-HDI-dashboard.PNG)
 
@@ -643,12 +646,12 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
     LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
 
 
-查询运行完成后，将看到类似下面的结果：
+查询运行完成后，会看到类似下面的结果：
 
  ![22](./media/data-lake-walkthrough/22-Hive-Query-results.PNG)
 
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中生成和部署模型
-我们现在可以通过 Azure 机器学习生成和部署预测是否为行程支付小费的模型。 分层采样数据可在二进制分类（是否支付小费）问题中使用。 可通过 Azure 机器学习工作室生成和部署使用多类分类 (tip_class) 和回归 (tip_amount) 的预测模型，但是此处只介绍如何处理使用二进制分类模型的内容。
+现在可以通过 Azure 机器学习生成和部署预测是否为行程支付小费的模型。 分层采样数据可在二进制分类（是否支付小费）问题中使用。 可通过 Azure 机器学习工作室生成和部署使用多类分类 (tip_class) 和回归 (tip_amount) 的预测模型，但是此处只介绍如何处理使用二进制分类模型的内容。
 
 1. 使用**数据输入和输出**部分的**导入数据**模块，将数据放入 Azure 机器学习。 有关详细信息，请参阅[导入数据模块](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)参考页。
 2. 在“属性”面板中，选择“Hive 查询”作为**数据源**。
@@ -659,7 +662,7 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
    
    ![23](./media/data-lake-walkthrough/23-reader-module-v3.PNG)  
 
-下图中显示的是从 Hive 表读取数据的二进制分类试验的示例。
+下图中显示的是从 Hive 表读取数据的二进制分类试验的示例：
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 

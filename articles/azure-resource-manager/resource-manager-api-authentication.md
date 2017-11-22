@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 身份验证和 Resource Manager | Microsoft Docs"
-description: "指导开发人员使用 Azure Resource Manager API 和 Azure Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。"
+description: "指导开发人员使用 Azure 资源管理器 API 和 Azure Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。"
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/27/2016
+ms.date: 11/15/2017
 ms.author: dugill;tomfitz
-ms.openlocfilehash: 3a4f60ce392c5f6c1a42f13187a0cc0fbd9f6d3e
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
 ## <a name="introduction"></a>介绍
-本主题面向需要创建应用来管理客户 Azure 资源的软件开发人员，介绍如何使用 Azure Resource Manager API 进行身份验证，并获取其他订阅中资源的访问权限。
+本文面向需要创建应用来管理客户 Azure 资源的软件开发人员，介绍如何使用 Azure 资源管理器 API 进行身份验证，并获取其他订阅中资源的访问权限。
 
 应用可通过多种方式访问 Resource Manager API：
 
 1. **用户 + 应用访问**：适用于代表登录用户访问资源的应用。 此方法适用于仅处理“交互式管理”Azure 资源的应用，例如 Web 应用和命令行工具。
 2. **仅限应用的访问**：适用于运行守护程序服务和计划作业的应用。 应用的标识获得资源的直接访问权限。 此方法适用于需要长期无提示（无人参与）访问 Azure 的应用。
 
-本主题提供创建应用来利用这两种授权方法的逐步说明。 其中说明如何使用 REST API 或 C# 执行每个步骤。 完整的 ASP.NET MVC 应用程序可在 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) 中找到。
+本文提供创建应用来利用这两种授权方法的逐步说明。 其中说明如何使用 REST API 或 C# 执行每个步骤。 完整的 ASP.NET MVC 应用程序可在 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) 中找到。
 
 ## <a name="what-the-web-app-does"></a>Web 应用的功能
 Web 应用：
@@ -37,11 +37,11 @@ Web 应用：
 1. 将 Azure 用户登录。
 2. 请求用户授予 Resource Manager 的访问权限给 Web 应用。
 3. 获取用户和应用访问令牌来访问 Resource Manager。
-4. 使用令牌（来自步骤 3）调用 Resource Manager，并将应用的服务主体分配给订阅中的角色，使应用能够长期访问订阅。
+4. 使用令牌（来自步骤 3）将应用的服务主体分配给订阅中的角色。 此步骤为应用提供长期访问订阅的权限。
 5. 获取仅限应用的访问令牌。
 6. 使用令牌（来自步骤 5）通过 Resource Manager 管理订阅中的资源。
 
-下面是 Web 应用程序的端到端流程。
+下面是 Web 应用程序的流程。
 
 ![Resource Manager 身份验证流](./media/resource-manager-api-authentication/Auth-Swim-Lane.png)
 
@@ -66,9 +66,9 @@ Web 应用：
 ![连接订阅](./media/resource-manager-api-authentication/sample-ux-7.png)
 
 ## <a name="register-application"></a>注册应用程序
-在开始编写代码之前，请先使用 Azure Active Directory (AD) 注册 Web 应用。 应用注册会在 Azure AD 中为应用创建一个中心标识。 该标识保留有关应用程序的基本信息，例如应用程序用来进行身份验证和访问 Azure Resource Manager API 的 OAuth 客户端 ID、回复 URL 和凭据。 应用注册还会记录应用程序在代表用户访问 Microsoft API 时所需的各种委派权限。
+在开始编写代码之前，请先使用 Azure Active Directory (AD) 注册 Web 应用。 应用注册会在 Azure AD 中为应用创建一个中心标识。 该标识保留有关应用程序的基本信息，例如应用程序用来进行身份验证和访问 Azure 资源管理器 API 的 OAuth 客户端 ID、回复 URL 和凭据。 应用注册还会记录应用程序在代表用户访问 Microsoft API 时所需的各种委派权限。
 
-由于应用访问其他订阅，必须将它配置为多租户应用程序。 若要通过验证，请提供与 Azure Active Directory 关联的域。 若要查看与 Azure Active Directory 关联的域，请登录[经典门户](https://manage.windowsazure.com)。 选择 Azure Active Directory，并选择“域”。
+由于应用访问其他订阅，必须将它配置为多租户应用程序。 若要通过验证，请提供与 Azure Active Directory 关联的域。 若要查看与 Azure Active Directory 关联的域，请登录门户。
 
 以下示例演示如何使用 Azure PowerShell 注册应用。 必须拥有最新版本（2016 年 8 月）Azure PowerShell 才能正常运行此命令。
 
@@ -90,7 +90,7 @@ Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留�
 若要了解如何使用证书创建 AD 应用，请参阅[使用 Azure PowerShell 创建服务主体来访问资源](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)或[使用 Azure CLI 创建服务主体来访问资源](resource-group-authenticate-service-principal-cli.md)。
 
 ## <a name="get-tenant-id-from-subscription-id"></a>从订阅 ID 获取租户 ID
-若要请求可用于调用 Resource Manager 的令牌，应用程序需要知道托管 Azure 订阅的 Azure AD 租户的租户 ID。 用户很可能知道其订阅 ID，但可能不知道其用于 Azure Active Directory 的租户 ID。 若要获取用户的租户 ID，请让用户提供订阅 ID。发送有关订阅的请求时，请提供该订阅 ID：
+若要请求可用于调用 Resource Manager 的令牌，应用程序需要知道托管 Azure 订阅的 Azure AD 租户的租户 ID。 用户很可能知道其订阅 ID，但可能不知道其用于 Azure Active Directory 的租户 ID。 若要获取用户的租户 ID，请让用户提供订阅 ID。 发送有关订阅的请求时，请提供该订阅 ID：
 
     https://management.azure.com/subscriptions/{subscription-id}?api-version=2015-01-01
 
@@ -99,14 +99,14 @@ Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留�
 ## <a name="get-user--app-access-token"></a>获取用户和应用访问令牌
 应用程序使用 OAuth 2.0 授权请求将用户重定向到 Azure AD - 以验证用户的凭据并取回授权代码。 应用程序使用授权代码来访问 Resource Manager 的令牌。 [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) 方法创建授权请求。
 
-本主题说明用于对用户进行身份验证的 REST API 请求。 也可以使用帮助库在代码中执行身份验证。 有关这些库的详细信息，请参阅 [Azure Active Directory 身份验证库](../active-directory/active-directory-authentication-libraries.md)。 若要通过指南了解如何在应用程序中集成标识管理，请参阅 [Azure Active Directory 开发人员指南](../active-directory/active-directory-developers-guide.md)。
+本问说明用于对用户进行身份验证的 REST API 请求。 也可以使用帮助库在代码中执行身份验证。 有关这些库的详细信息，请参阅 [Azure Active Directory 身份验证库](../active-directory/active-directory-authentication-libraries.md)。 若要通过指南了解如何在应用程序中集成标识管理，请参阅 [Azure Active Directory 开发人员指南](../active-directory/active-directory-developers-guide.md)。
 
 ### <a name="auth-request-oauth-20"></a>授权请求 (OAuth 2.0)
 将 Open ID Connect/OAuth2.0 授权请求发送到 Azure AD 授权终结点：
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-[request an authorization code](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code)（请求授权代码）主题中介绍了适用于此请求的查询字符串参数。
+[request an authorization code](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code)（请求授权代码）一文中介绍了适用于此请求的查询字符串参数。
 
 以下示例演示如何请求 OAuth2.0 授权：
 
@@ -117,9 +117,9 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
     code=AAABAAAAiL****FDMZBUwZ8eCAA&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="auth-request-open-id-connect"></a>授权请求 (Open ID Connect)
-如果不只想要代表用户访问 Azure Resource Manager，而且还要允许用户使用其 Azure AD 帐户登录应用程序，请发出 Open ID Connect 授权请求。 使用 Open ID Connect，应用程序也可以从 Azure AD 接收 id_token，应用可以使用它来将用户登录。
+如果不只想要代表用户访问 Azure 资源管理器，而且还要允许用户使用其 Azure AD 帐户登录应用程序，请发出 Open ID Connect 授权请求。 使用 Open ID Connect，应用程序也可以从 Azure AD 接收 id_token，应用可以使用它来将用户登录。
 
-[Send the sign-in request](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request)（发送登录请求）主题中介绍了适用于此请求的查询字符串参数。
+[Send the sign-in request](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request)（发送登录请求）一文中介绍了适用于此请求的查询字符串参数。
 
 下面是一个示例 Open ID Connect 请求：
 
@@ -132,11 +132,11 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
     code=AAABAAAAiL*****I4rDWd7zXsH6WUjlkIEQxIAA&id_token=eyJ0eXAiOiJKV1Q*****T3GrzzSFxg&state=M_12tMyKaM8&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="token-request-oauth20-code-grant-flow"></a>令牌请求（OAuth2.0 代码授予流）
-既然应用程序已从 Azure AD 收到授权代码，现在可以获取 Azure Resource Manager 的访问令牌。  将 OAuth2.0 代码授予令牌请求发布到 Azure AD 令牌终结点：
+既然应用程序已从 Azure AD 收到授权代码，现在可以获取 Azure 资源管理器的访问令牌。  将 OAuth2.0 代码授予令牌请求发布到 Azure AD 令牌终结点：
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-有关适用于此请求的查询字符串参数，请参阅[使用授权代码](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)主题。
+有关适用于此请求的查询字符串参数，请参阅[使用授权代码](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)一文。
 
 以下示例演示如何使用密码凭据来请求代码授予令牌：
 
@@ -167,7 +167,7 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039858","not_before":"1432035958","resource":"https://management.core.windows.net/","access_token":"eyJ0eXAiOiJKV1Q****M7Cw6JWtfY2lGc5A","refresh_token":"AAABAAAAiL9Kn2Z****55j-sjnyYgAA","scope":"user_impersonation","id_token":"eyJ0eXAiOiJKV*****-drP1J3P-HnHi9Rr46kGZnukEBH4dsg"}
 
 #### <a name="handle-code-grant-token-response"></a>处理代码授予令牌响应
-成功的令牌响应包含 Azure Resource Manager 的（用户 + 应用）访问令牌。 应用程序使用此访问令牌来代表用户访问 Resource Manager。 Azure AD 颁发的访问令牌生存期为一小时。 Web 应用程序不太可能需要续订（用户 + 应用）访问令牌。 如果需要续订访问令牌，请使用应用程序在令牌响应中收到的刷新令牌。 将 OAuth2.0 令牌请求发布到 Azure AD 令牌终结点：
+成功的令牌响应包含 Azure 资源管理器的（用户 + 应用）访问令牌。 应用程序使用此访问令牌来代表用户访问 Resource Manager。 Azure AD 颁发的访问令牌生存期为一小时。 Web 应用程序不太可能需要续订（用户 + 应用）访问令牌。 如果需要续订访问令牌，请使用应用程序在令牌响应中收到的刷新令牌。 将 OAuth2.0 令牌请求发布到 Azure AD 令牌终结点：
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
@@ -182,10 +182,10 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
 
     grant_type=refresh_token&refresh_token=AAABAAAAiL9Kn2Z****55j-sjnyYgAA&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-尽管刷新令牌可用于获取 Azure Resource Manager 的新访问令牌，但它们并不适合应用程序脱机访问。 刷新令牌生存期有限，且刷新令牌绑定到用户。 如果用户离开了组织，使用该刷新令牌的应用程序将失去访问权限。 此方法不适合团队用来管理其 Azure 资源的应用程序。
+尽管刷新令牌可用于获取 Azure 资源管理器的新访问令牌，但它们并不适合应用程序脱机访问。 刷新令牌生存期有限，且刷新令牌绑定到用户。 如果用户离开了组织，使用该刷新令牌的应用程序将失去访问权限。 此方法不适合团队用来管理其 Azure 资源的应用程序。
 
 ## <a name="check-if-user-can-assign-access-to-subscription"></a>检查用户是否可以分配订阅的访问权限
-现在，应用程序已获取令牌，可代表用户访问 Azure Resource Manager。 下一步是将应用程序连接到订阅。 在连接之后，即使用户不存在（长期脱机访问），仍然可以管理这些订阅。
+现在，应用程序已获取令牌，可代表用户访问 Azure 资源管理器。 下一步是将应用程序连接到订阅。 在连接之后，即使用户不存在（长期脱机访问），仍然可以管理这些订阅。
 
 对于要连接的每个订阅，可调用 [Resource Manager 列出权限](https://docs.microsoft.com/rest/api/authorization/permissions) API 来确定用户是否拥有订阅的访问管理权限。
 
@@ -203,13 +203,13 @@ ASP.NET MVC 示例应用的 [UserCanManagerAccessForSubscription](https://github
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-权限 API 将返回多个权限。 每个权限包括允许的操作 (actions) 和禁止的操作 (notactions)。 如果某个操作出现在任何权限的允许操作列表中，并且不在该权限的禁止操作列表中，则用户可执行该操作。 **microsoft.authorization/roleassignments/write** 是授予访问管理权限的操作。 应用程序必须分析权限结果，以便在每个权限的 actions 和 notactions 中的此操作字符串上查找 regex 匹配项。
+权限 API 将返回多个权限。 每个权限包括允许的操作 (**actions**) 和禁止的操作 (**notactions**)。 如果某个操作出现在任何权限的允许操作中，并且不在该权限的禁止操作中，则用户可执行该操作。 **microsoft.authorization/roleassignments/write** 是授予访问管理权限的操作。 应用程序必须分析权限结果，以便在每个权限的 **actions** 和 **notactions** 中的此操作字符串上查找 regex 匹配项。
 
 ## <a name="get-app-only-access-token"></a>获取仅限应用的访问令牌
 现在，已知道用户是否可以分配 Azure 订阅的访问权限。 后续步骤如下：
 
 1. 将相应的 RBAC 角色分配到订阅上的应用程序标识。
-2. 通过查询订阅上的应用程序权限或使用仅限应用的令牌访问 Resource Manager，来验证访问权限分配。
+2. 通过查询订阅上的应用程序权限或使用仅限应用的令牌访问资源管理器，来验证访问权限分配。
 3. 记录应用程序“已连接的订阅”数据结构中的连接 - 保存订阅的 ID。
 
 让我们仔细了解第一个步骤。 要将相应的 RBAC 角色分配到应用程序标识，必须确定：
@@ -217,9 +217,9 @@ ASP.NET MVC 示例应用的 [UserCanManagerAccessForSubscription](https://github
 * 用户 Azure Active Directory 中的应用程序标识的对象 ID
 * 应用程序需要在订阅上拥有的 RBAC 角色的标识符
 
-当应用程序对来自 Azure AD 的用户进行身份验证时，会在该 Azure AD 中创建应用程序的服务主体对象。 Azure 允许将 RBAC 角色分配到服务主体，以将直接访问权限授予 Azure 资源上的相应应用程序。 这正是我们想要执行的操作。 查询 Azure AD 图形 API，确定应用程序在已登录用户的 Azure AD 中的服务主体标识符。
+当应用程序对来自 Azure AD 的用户进行身份验证时，会在该 Azure AD 中创建应用程序的服务主体对象。 Azure 允许将 RBAC 角色分配到服务主体，以将直接访问权限授予 Azure 资源上的相应应用程序。 这正是需要执行的操作。 查询 Azure AD 图形 API，确定应用程序在已登录用户的 Azure AD 中的服务主体标识符。
 
-只有 Azure Resource Manager 的访问令牌 - 需要获取新的访问令牌来调用 Azure AD 图形 API。 Azure AD 中的每个应用程序都有权查询其本身的服务主体对象，因此，仅限应用的访问令牌已足够。
+只有 Azure 资源管理器的访问令牌 - 需要获取新的访问令牌来调用 Azure AD 图形 API。 Azure AD 中的每个应用程序都有权查询其本身的服务主体对象，因此，仅限应用的访问令牌已足够。
 
 <a id="app-azure-ad-graph" />
 
@@ -228,7 +228,7 @@ ASP.NET MVC 示例应用的 [UserCanManagerAccessForSubscription](https://github
 
 ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) 方法使用适用于 .NET 的 Active Directory 身份验证库来获取图形 API 的仅限应用的访问令牌。
 
-若要了解适用于此请求的查询字符串参数，请参阅[请求访问令牌](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token)主题。
+若要了解适用于此请求的查询字符串参数，请参阅[请求访问令牌](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token)一文。
 
 客户端凭据授予令牌的示例请求：
 
@@ -292,9 +292,9 @@ ASP.net MVC 示例应用的 [GetRoleId](https://github.com/dushyantgill/VipSwapp
 
     /subscriptions/{subscription_id}/providers/Microsoft.Authorization/roleDefinitions/{well-known-role-guid}
 
-下面是常用内置角色的已知 GUID：
+下面是常用内置角色的标识符：
 
-| 角色 | Guid |
+| 角色 | GUID |
 | --- | --- |
 | 读取器 |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | 参与者 |b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -336,14 +336,14 @@ ASP.net MVC 示例应用的 [GrantRoleToServicePrincipalOnSubscription](https://
 
     {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
 
-### <a name="get-app-only-access-token-for-azure-resource-manager"></a>获取 Azure Resource Manager 的仅限应用的访问令牌
+### <a name="get-app-only-access-token-for-azure-resource-manager"></a>获取 Azure 资源管理器的仅限应用的访问令牌
 若要验证应用程序是否具有所需的订阅访问权限，请使用仅限应用的令牌对订阅执行测试任务。
 
 若要获取仅限应用的访问令牌，请根据 [Get app-only access token for Azure AD Graph API](#app-azure-ad-graph)（获取 Azure AD 图形 API 的仅限应用的访问令牌）中的说明为资源参数使用不同的值：
 
     https://management.core.windows.net/
 
-ASP.NET MVC 示例应用程序的 [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) 方法使用适用于 .NET 的 Active Directory 身份验证库来获取 Azure Resource Manager 的仅限应用的访问令牌。
+ASP.NET MVC 示例应用程序的 [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) 方法使用适用于 .NET 的 Active Directory 身份验证库来获取 Azure 资源管理器的仅限应用的访问令牌。
 
 #### <a name="get-applications-permissions-on-subscription"></a>获取应用程序对订阅的权限
 若要检查应用程序是否具有 Azure 订阅上的所需访问权限，也可以调用 [Resource Manager 权限](https://docs.microsoft.com/rest/api/authorization/permissions) API。 此方式类似于用于确定用户是否具有订阅访问管理权限的方式。 不过，这次请使用上一步骤中收到的仅限应用的访问令牌来调用权限 API。
@@ -351,9 +351,9 @@ ASP.NET MVC 示例应用程序的 [ServicePrincipalHasReadAccessToSubscription](
 ASP.NET MVC 示例应用的 [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) 方法可实现此调用。
 
 ## <a name="manage-connected-subscriptions"></a>管理连接的订阅
-将相应的 RBAC 角色分配到订阅上的应用程序服务主体后，应用程序可以使用 Azure Resource Manager 的仅限应用的访问令牌来持续进行监视/管理。
+将相应的 RBAC 角色分配到订阅上的应用程序服务主体后，应用程序可以使用 Azure 资源管理器的仅限应用的访问令牌来持续进行监视/管理。
 
-如果订阅所有者使用经典门户或命令行工具删除应用程序的角色分配，应用程序再也无法访问该订阅。 在此情况下，应该通知用户，与订阅的连接是通过应用程序外部提供的，并为他们提供“修复”连接的选项。 “修复”只是重新创建脱机删除的角色分配。
+如果订阅所有者使用门户或命令行工具删除应用程序的角色分配，应用程序再也无法访问该订阅。 在此情况下，应该通知用户，与订阅的连接是通过应用程序外部提供的，并为他们提供“修复”连接的选项。 “修复”是重新创建脱机删除的角色分配。
 
 如同允许用户将其订阅连接到应用程序一样，必须允许用户断开连接订阅。 从访问管理的观点来讲，断开连接意味着删除应用程序服务主体在订阅上的角色分配。 （可选）也可能删除订阅的任何应用程序状态。
 只有对订阅拥有访问管理权限的用户才能断开连接订阅。
