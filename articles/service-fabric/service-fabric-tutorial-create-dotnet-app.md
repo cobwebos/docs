@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 341d275fbf9f80ac9e3363757d880b9546bdee13
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 497582138504250b3c4a77dab440d29ad928a7d8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 本教程是一个系列中的第一部分。  其中介绍了如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序以存储数据。 完成后，将生成一个投票应用程序，其中包含 ASP.NET Core Web 前端，用于将投票结果保存到群集的有状态后端服务中。 如果不想手动创建投票应用程序，可以[下载已完成应用程序的源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)，跳到[大致了解投票示例应用程序](#walkthrough_anchor)。
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/09/2017
    
    ![在新建服务对话框中选择 ASP.NET Web 服务](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png) 
 
-6. 下一页将提供一组 ASP.NET Core 项目模板。 本教程中，选择“Web 应用程序”。 
+6. 下一页将提供一组 ASP.NET Core 项目模板。 本教程中，选择“Web 应用程序(MVC)”。 
    
    ![选择 ASP.NET 项目类型](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
 

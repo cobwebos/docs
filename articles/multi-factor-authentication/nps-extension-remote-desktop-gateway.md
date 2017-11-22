@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: joflore
-ms.reviewer: jsnow
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 01c5284a609a2246e32052985ad3a8c0475eafa5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fb78d39b04868c9d8790bfd64147f47bdd4125c7
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 #  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -76,7 +76,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 了解详情，请参阅：[使用 Azure 快速入门部署 RDS](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) 和[基本 RDS 基础结构部署](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。 
 
 ### <a name="azure-mfa-license"></a>Azure MFA 许可证
-Azure MFA 许可证是必需的，可通过 Azure AD Premium、企业移动性 + 安全性 (EMS) 或 MFA 订阅获得。 有关详细信息，请参阅[如何获取 Azure 多重身份验证](multi-factor-authentication-versions-plans.md)。 出于测试目的，你可以使用一个试用订阅。
+Azure MFA 许可证是必需的，可通过 Azure AD Premium、企业移动性 + 安全性 (EMS) 或 MFA 订阅获得。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅[如何获取 Azure 多重身份验证](multi-factor-authentication-versions-plans.md)。 出于测试目的，你可以使用一个试用订阅。 
 
 ### <a name="windows-server-software"></a>Windows Server 软件
 NPS 扩展需要安装了 NPS 角色服务的 Windows Server 2008 R2 SP1 或更高版本。 本部分中的所有步骤均使用 Windows Server 2016 执行。

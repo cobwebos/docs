@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.openlocfilehash: 2cc128e8f7792a6a363aacf50f8724d689892c83
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 其中提供了有关数据工厂的常见问题的解答。  
@@ -152,7 +152,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 有关 Azure 数据工厂的定价详细信息，请参阅[数据工厂定价详细信息](https://azure.microsoft.com/pricing/details/data-factory/)。
 
 ## <a name="what-regions-support-azure-data-factory-version-2"></a>哪些区域支持 Azure 数据工厂版本 2？
-目前，可在美国东部和美国东部 2 区域中创建版本 2 数据工厂。 不过，在其他区域中，数据工厂可以使用集成运行时在数据存储之间移动数据、调度针对计算服务的活动，或者调度 SSIS 包。 有关详细信息，请参阅[数据工厂位置](concepts-integration-runtime.md#integration-runtime-location)。
+目前，可在美国东部区域、美国东部 2 区域和西欧区域中创建版本 2 数据工厂。 不过，在其他区域中，数据工厂可以使用集成运行时在数据存储之间移动数据、调度针对计算服务的活动，或者调度 SSIS 包。 有关详细信息，请参阅[数据工厂位置](concepts-integration-runtime.md#integration-runtime-location)。
 
 ## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>如何及时了解有关数据工厂的信息？
 有关 Azure 数据工厂的最新信息，请访问以下站点：

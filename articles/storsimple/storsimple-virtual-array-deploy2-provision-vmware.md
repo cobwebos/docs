@@ -4,7 +4,7 @@ description: "此教程为 StorSimple 虚拟阵列部署系列的第二个教程
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
@@ -12,25 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>概述
-本教程介绍如何在运行 VMware ESXi 5.5 及更高版本的主机系统上预配和连接 StorSimple 虚拟阵列。 本文适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
+本教程介绍如何在运行 VMware ESXi 5.0、5.5 或 6.0 的主机系统上预配和连接 StorSimple 虚拟阵列。 本文适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
 
 需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。
 
 ## <a name="provisioning-prerequisites"></a>预配先决条件
-在运行 VMware ESXi 5.5 及更高版本的主机系统上预配虚拟设备的先决条件如下所示。
+在运行 VMware ESXi 5.0、5.5 或 6.0 的主机系统上预配虚拟设备的先决条件如下所示。
 
 ### <a name="for-the-storsimple-device-manager-service"></a>对于 StorSimple Device Manager 服务
 在开始之前，请确保：
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>步骤 1：确保主机系统满足最小虚拟设备要求
 若要创建虚拟设备，需满足以下条件：
 
-* 有权访问运行 VMware ESXi Server 5.5 及更高版本的主机系统。
+* 有权访问运行 VMware ESXi Server 5.0、5.5 或 6.0 的主机系统。
 * 在系统上存在用于管理 ESXi 主机的 VMware vSphere 客户端。
 
   * 至少 4 个核心。
@@ -183,6 +183,9 @@ ms.lasthandoff: 10/11/2017
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
 虚拟机现已预配好。 下一步是启动该虚拟机并获取 IP 地址。
+
+> [!NOTE]
+> 建议不要在虚拟数组上安装 VMware 工具（如上述设置）。 安装 VMware 工具将产生不支持的配置。
 
 ## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>步骤 3：启动虚拟设备并获取 IP
 执行以下步骤，启动虚拟设备并与其进行连接。

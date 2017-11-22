@@ -4,7 +4,7 @@ description: "如何浏览存储在各个 Azure 环境中的数据。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 80a9dfae-e3a6-4cfb-aecc-5701cfc7e39d
 ms.service: machine-learning
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 1b99ce11709376294f6a2385b9f4ff3388b99ab7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97d344fd31d711454f3e4aa251361b86351cc283
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
-本文档所链接到的主题介绍如何对存储在三个不同 Azure 位置之一的数据采样：
+本文档所链接到的文章介绍如何对存储在三个不同 Azure 位置之一的数据采样：
 
 * **Azure Blob 容器数据**的采样方法是先以编程方式下载该数据，并使用样本 Python 代码对其采样。
 * **SQL Server 数据**通过使用 SQL 和 Python 编程语言采样。 

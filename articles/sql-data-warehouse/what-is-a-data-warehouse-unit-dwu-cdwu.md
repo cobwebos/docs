@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 10/23/2017
+ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 93f0d21c7214487ffa0c2c5e27bd6e468920418c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 介绍 Azure SQL 数据仓库的数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)。 包括针对如何选择合适的数据仓库单位数以及如何更改其数目的建议。 
@@ -52,16 +52,8 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 增加数据库单位时，将以线性方式增加计算资源。 计算优化性能层可提供最佳查询性能和最大规模，但入门价格也更高。 它专为对性能有持续需求的企业而设计。 这些系统最大限度利用缓存。 
 
 ### <a name="capacity-limits"></a>容量限制
-默认情况下，每个服务器（例如，myserver.database.windows.net）都具有一个配额，该配额限制该实例上的数据库大小和规模。 服务器可承载 SQL DW 和 SQL DB 数据库，但这些数据库均必须符合配额限制。 此配额通过数据库事务单位 (DTU) 进行计量，默认情况下，此配额设置为 54,000 以允许最多 6000 个 cDWU。 此配额仅仅只是安全限制。 可增加配额，具体方法为创建支持票证，并选择“配额”作为请求类型。 
+每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../sql-database/sql-database-what-is-a-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
-要计算 DTU 要求，请将以下乘数应用到 DTU 计算：
-
-| 性能层 | 计量单位 | DTU 乘数 | 示例                   |
-|:----------------:|----------------:|---------------:|--------------------------:|
-| 弹性       |  DWU            | 7.5            | DW6000 x 7.5 = 45,000 DTU |
-| 计算          | cDWU            | 9              | DW6000 x 7.5 = 54,000 DTU |
-
-在门户中查看 SQL Server 属性可了解当前 DTU 消耗量。
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 合适的数据仓库单位数很大程度上取决于工作负荷及已加载到系统的数据量。

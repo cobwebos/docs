@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: 69059b6169e1fac4d0abea2770b0de502f816113
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e1bb3e9f09ca7f5463228da4079b06ad2e771def
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/31/2017
 
 虚拟网络：可以让虚拟网络与 Azure 订阅相关联。
 
-子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+****子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 虚拟网络服务终结点：[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
@@ -141,6 +141,9 @@ RBAC 备用：
 - 对于任何给定的虚拟网络，每个 Azure SQL 数据库服务器最多可拥有 128 个 ACL 条目。
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
+
+- 如果启用 Azure SQL 数据库的虚拟网络服务终结点，会同时启用 MySQL 和 PostGres Azure 服务的终结点。 但是，启用终结点后，尝试从终结点连接到 MySQL 或 Postgres 实例会失败。
+    - 根本原因是 MySQL 和 PostGres 目前不支持 ACLing。
 
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
     - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]

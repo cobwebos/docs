@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL 数据同步入门（预览版） | Microsoft 文档"
-description: "此为 Azure SQL 数据同步（预览版）入门教程"
+title: "设置 Azure SQL 数据同步（预览版）| Microsoft Docs"
+description: "本教程演示如何设置 Azure SQL 数据同步（预览版）"
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -13,16 +13,16 @@ ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: ddcf6868a0fca88a52774e20623d25de31c063bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="get-started-with-azure-sql-data-sync-preview"></a>Azure SQL 数据同步入门（预览版）
+# <a name="set-up-sql-data-sync-preview"></a>设置 SQL 数据同步（预览版）
 本教程将介绍如何创建包含 Azure SQL 数据库和 SQL Server 实例的混合同步组，从而设置 Azure SQL 数据同步。 新的同步组进行了全面配置，可根据所设定的计划进行同步。
 
 阅读本教程的前提是，至少具有 SQL 数据库和 SQL Server 领域的一些经验。 
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/08/2017
 
     ![已添加新 SQL 数据库同步成员](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
-### <a name="add-an-on-premises-sql-server-database"></a>添加本地 SQL Server 数据库
+### <a name="add-on-prem"></a> 添加本地 SQL Server 数据库
 
 在“成员数据库”部分中，请根据需要选择“添加本地数据库”，从而将本地 SQL Server 数据库添加到同步组。 “配置本地数据库”页随即打开。
 
@@ -193,6 +193,83 @@ ms.lasthandoff: 11/08/2017
 
 4.  最后，选择“保存”。
 
+## <a name="faq-about-setup-and-configuration"></a>设置和配置的常见问题解答
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>数据同步以什么频率同步数据？ 
+最小频率是每隔五分钟。
+
+### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>SQL 数据同步是否能完全创建和预配表？
+
+如果同步架构表尚未在目标数据库中创建，则 SQL 数据同步（预览版）将使用所选列进行创建。 但是，此行为不会导致完全保真架构，原因如下：
+
+-   在目标表中仅创建所选的列。 如果源表中的某些列不是同步组的一部分，则不会在目标表中预配这些列。
+
+-   仅为所选列创建索引。 如果源表索引包含不是同步组一部分的列，则不会在目标表中预配这些索引。
+
+-   不会预配 XML 类型列上的索引。
+
+-   不会预配 CHECK 约束。
+
+-   不会预配源表上的现有触发器。
+
+-   不会在目标数据库上创建视图和存储的过程。
+
+考虑到这些限制，我们的建议如下：
+-   对于生产环境，请自行预配完全保真架构。
+-   若要试用服务，SQL 数据同步（预览版）的自动预配功能非常有用。
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>为什么出现了未创建的表？  
+数据同步在数据库中创建用于跟踪的端表。 请不要删除这些表，否则数据同步会停止工作。
+
+### <a name="is-my-data-convergent-after-a-sync"></a>同步后我的数据是否具有收敛性？
+
+不一定。 在具有一个中心和三个辐射（A、B 和 C）的同步组中，同步为中心到 A、中心到 B，和中心到 C。如果在中心到 A 同步后更改数据库 A，则下一次同步任务前，更改不会写入数据库 B 或数据库 C。
+
+### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>如何将架构更改应用到同步组？
+
+必须手动执行架构更改。
+
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>如何使用数据同步导出和导入数据库？
+将数据库导出为 `.bacpac` 文件，并导入文件来新建数据库后，必须执行以下两步操作，才能在新数据库中使用数据同步：
+1.  使用[此脚本](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)清理新数据库上的数据同步对象和端表。 此脚本将从数据库中删除所有相应数据同步对象。
+2.  重新创建包含新数据库的同步组。 如果不再需要旧同步组，请删除它。
+
+## <a name="faq-about-the-client-agent"></a>有关客户端代理的常见问题解答
+
+### <a name="why-do-i-need-a-client-agent"></a>为什么需要客户端代理？
+
+SQL 数据同步（预览版）服务通过客户端代理与 SQL Server 数据库进行通信。 此安全功能可防止与防火墙后的数据库进行直接通信。 SQL 数据同步（预览版）服务与代理通信时，使用加密连接和唯一令牌或代理密钥来执行此操作。 SQL Server 数据库使用连接字符串和代理密钥对代理进行身份验证。 这种设计为数据提供高度安全性。
+
+### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>可以运行多少个本地代理 UI 实例？
+
+只能运行一个 UI 实例。
+
+### <a name="how-can-i-change-my-service-account"></a>如何更改服务帐户？
+
+安装客户端代理后，更改服务帐户的唯一方法是卸载它，然后使用新的服务帐户安装新的客户端代理。
+
+### <a name="how-do-i-change-my-agent-key"></a>如何更改我的代理密钥？
+
+一个代理只能使用一次代理密钥。 删除并重新安装新代理后，不能重复使用它，它也不能被多个代理使用。 如果需要为现有代理创建新密钥，必须确保使用客户端代理和 SQL 数据同步（预览版）服务记录相同密钥。
+
+### <a name="how-do-i-retire-a-client-agent"></a>如何停用客户端代理？
+
+若要立即使代理失效或停用代理，请在门户中重新生成其密钥，但不要在代理 UI 中提交。 无论相应的代理处于联机还是脱机状态，重新生成密钥都会使以前的密钥失效。
+
+### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>如何将客户端代理移至另一台计算机？
+
+如果想要从另一台计算机上运行本地代理，请执行以下操作：
+
+1. 在所需的计算机上安装代理。
+
+2. 登录 SQL 数据同步（预览版）门户，为新代理重新生成代理密钥。
+
+3. 使用新代理的 UI 提交新代理密钥。
+
+4. 客户端代理下载以前已注册的本地数据库列表时，请稍候。
+
+5. 为显示为无法访问的所有数据库提供数据库凭据。 这些数据库必须可从安装代理的新计算机上访问。
+
 ## <a name="next-steps"></a>后续步骤
 祝贺。 已创建了一个包含 SQL 数据库实例和 SQL Server 数据库的同步组。
 
@@ -200,6 +277,7 @@ ms.lasthandoff: 11/08/2017
 
 -   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
 -   [Azure SQL 数据同步最佳实践](sql-database-best-practices-data-sync.md)
+-   [使用 OMS Log Analytics 监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)
 -   [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：

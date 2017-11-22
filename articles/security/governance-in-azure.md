@@ -1,6 +1,6 @@
 ---
 title: "Azure 中的监管 | Microsoft Docs"
-description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。"
+description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。"
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c63eb15e8d575da91fd8198ca9d486f7fdb2b38d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 10a92f301584d4e676da9a1eb229667925a6c72c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="governance-in-azure"></a>Azure 中的监管
 
@@ -225,14 +225,14 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 通过资源策略，可为组织创建标准规则。 可创建相应策略，确保使用适当的值标记资源。
 
 > [!Note]
-> 有关详细信息，请参阅[应用针对标记的资源策略](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags)。
+> 有关详细信息，请参阅[计费标记策略计划](../azure-policy/scripts/billing-tags-policy-init.md)。
 
 也可通过 Azure 门户查看标记的资源。
 
 订阅的[使用情况报告](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)包括标记名称和值，可用于按标记对成本进行细分。
 
 > [!Note]
-> 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)。
+> 有关标记的详细信息，请参阅[计费标记策略计划](../azure-policy/scripts/billing-tags-policy-init.md)。
 
 以下限制适用于标记：
 
@@ -438,7 +438,7 @@ Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解
 
 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。
 
-合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
+合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
 
 ## <a name="performance-alerting-and-monitoring"></a>性能警报和监视
 
@@ -475,7 +475,7 @@ Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 
 
 下面是主要工具：
 
-- **Azure Monitor** 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果在 Azure 中管理所有应用，并想要确定是否需要扩展或缩减资源，则 Azure Monitor 可以提供初始信息。
+- **Azure Monitor** 是用于监视 Azure 中运行的服务的基本工具。 它可以提供有关服务吞吐量和周边环境的基础结构级数据。 如果在 Azure 中管理所有应用，并想要确定是否需要增加或减少资源，则 Azure Monitor 可以提供初始信息。
 
 - **Application Insights** 可用于开发，并且可充当生产监视解决方案。 它的工作方式是在应用中安装一个包，提供更内在的动态视图。 其数据包括依赖项的响应时间、异常跟踪、调试快照和执行配置文件。 它提供强大的智能工具用于分析所有这些遥测数据，既能帮助你调试应用，也能帮助你了解用户将它用于哪种目的。 可以判断响应时间出现尖峰的原因是应用中出现某种问题，还是存在某种外部资源调配问题。 如果使用 Visual Studio，而应用出现错误，可以直接找到有问题的代码行，并修复错误。
 
@@ -486,8 +486,7 @@ Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 
-            [创建 Azure 资源管理器模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)。
+- [创建 Azure 资源管理器模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)。
 
 - [Azure 订阅监管实施示例](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-examples)。
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/01/2017
+ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: aff54b86da6a8a062a3f1c76aa69e32c60008274
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>为 ExpressRoute 配置网络性能监视器（预览版）
 
@@ -39,21 +39,27 @@ ms.lasthandoff: 11/02/2017
 
 * 查看之前某一时间的 ExpressRoute 系统状态
 
-**工作原理**
+## <a name="regions"></a>支持的区域
+
+通过使用以下任一区域托管的工作区，可以在世界上任何地方监视 ExpressRoute 线路：
+
+* 欧洲西部 
+* 美国东部 
+* 东南亚 
+
+## <a name="workflow"></a>工作流
 
 监视本地和 Azure 中的多个服务器上安装的代理。 代理相互通信，但不会发送数据，而是发送 TCP 握手数据包。 通过代理间的通信，Azure 可以映射流量可能经过的网络拓扑和路径。
 
-**Workflow**
-
-1. 在美国中西部区域创建一个 NPM 工作区。 这是目前支持此预览版的唯一区域。
+1. 在其中一个[受支持区域](#regions)创建 NPM 工作区。
 2. 安装和配置软件代理： 
     * 在本地服务器和 Azure VM 上安装监视代理。
     * 在监视代理服务器上配置设置，允许监视代理进行通信。 （打开防火墙端口等）
 3. 配置网络安全组 (NSG) 规则，允许 Azure VM 上安装的监视代理与本地监视代理进行通信。
-4. 请求将 NPM 工作区加入白名单
+4. 请求将 NPM 工作区加入白名单。
 5. 设置监视：自动发现和管理在 NPM 中可见的网络。
 
-如果已使用网络性能监视器监视其他对象或服务，并且在美国中西部已有工作区，则可以跳过步骤 1 和步骤 2，从步骤 3 开始配置。
+如果已使用网络性能监视器监视其他对象或服务，并且在一个受支持区域已有工作区，则可以跳过步骤 1 和步骤 2，从步骤 3 开始配置。
 
 ## <a name="configure"></a>步骤 1：创建工作区
 
@@ -66,8 +72,13 @@ ms.lasthandoff: 11/02/2017
   * “OMS 工作区”- 键入工作区的名称。
   * “订阅”- 若有多个订阅，请选择要与新工作区相关联的订阅。
   * “资源组”- 创建一个资源组或使用现有资源组。
-  * “位置”- 对此预览版必须选择“美国中西部”
+  * 位置 - 必须选择一个[受支持区域](#regions)。
   * “定价层”- 选择“免费”
+  
+  >[!NOTE]
+  >ExpressRoute 线路可以位于世界上任意位置，并且无需与工作区在同一区域。
+  >
+
 
   ![工作区](.\media\how-to-npm\4.png)<br><br>
 4. 单击“确定”保存和部署设置模板。 模板验证后，单击“创建”以部署工作区。
@@ -88,14 +99,14 @@ ms.lasthandoff: 11/02/2017
   >目前不支持 Linux 代理进行 ExpressRoute 监视。
   >
   >
-2. 接下来，复制“工作区 ID”和“主密钥”并粘贴到记事本。
+2. 接下来，将“工作区 ID”和“主密钥”复制到记事本。
 3. 在“配置代理”部分，下载 Powershell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
 
   ![PowerShell 脚本](.\media\how-to-npm\7.png)
 
 ### <a name="installagent"></a>2.2：在每个监视服务器上安装监视代理
 
-1. 运行安装程序，在要用于监视 ExpressRoute 的每个服务器上安装代理。 用于监视的服务器可以是 VM 或本地服务器，并且必须连接 Internet。 需要至少在本地安装一个代理，并在 Azure 中为要监视的每个网络段安装一个代理。
+1. 运行安装程序，在要用于监视 ExpressRoute 的每个服务器上安装代理。 用于监视的服务器可以是 VM 或本地服务器，并且必须连接 Internet。 需要至少在本地安装一个代理，并在 Azure 中在要监视的每个网络段上安装一个代理。
 2. 在“欢迎”页面上，单击“下一步”。
 3. 在“许可条款”页面上阅读许可协议，然后单击“我接受”。
 4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后单击“下一步”。
@@ -116,7 +127,7 @@ ms.lasthandoff: 11/02/2017
 
 ### <a name="proxy"></a>2.3：配置代理设置（可选）
 
-如果要使用 Web 代理访问 Internet，请执行以下步骤为 Microsoft Monitoring Agent 配置代理设置。 需针对每个服务器执行这些步骤。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是此情况，请参阅[使用脚本为 Microsoft Monitoring Agent 配置代理设置](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)。
+如果要使用 Web 代理访问 Internet，请执行以下步骤为 Microsoft Monitoring Agent 配置代理设置。 针对每个服务器执行这些步骤。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是此情况，请参阅[使用脚本为 Microsoft Monitoring Agent 配置代理设置](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)。
 
 使用控制面板为 Microsoft Monitoring Agent 配置代理设置：
 
@@ -136,11 +147,11 @@ ms.lasthandoff: 11/02/2017
 3. 单击“Azure Log Analytics (OMS)”选项卡。
 4. 在“状态”列中，应该会看到代理成功连接到 Operations Management Suite 服务。
 
-  ![状态](.\media\how-to-npm\12.png)
+  ![status](.\media\how-to-npm\12.png)
 
 ### <a name="firewall"></a>2.5：打开监视代理服务器上的防火墙端口
 
-若要使用 TCP 协议，需要打开防火墙端口以确保代理可以通信。
+若要使用 TCP 协议，必须打开防火墙端口以确保监视代理可以通信。
 
 可以运行 PowerShell 脚本，该脚本会创建网络性能监视器所需的注册表项，还会创建防火墙规则以允许监视代理彼此创建 TCP 连接。 该脚本创建的注册表项还指定是否记录调试日志和该日志文件的路径。 还会定义用于通信的代理 TCP 端口。 该脚本会自动设置这些注册表项的值，因此不应手动更改这些注册表项。
 
@@ -157,7 +168,7 @@ ms.lasthandoff: 11/02/2017
 
 ## <a name="opennsg"></a>步骤 3：配置网络安全组规则
 
-对于 Azure 中的监视代理服务器，需要配置网络安全组 (NSG) 规则，允许将 NPM 在端口上使用的 TCP 流量用于综合事务。 默认端口为 8084。 通过此操作，Azure VM 上安装的监视代理将可与本地监视代理进行通信。
+对于 Azure 中的监视代理服务器，必须配置网络安全组 (NSG) 规则，允许将 NPM 在端口上使用的 TCP 流量用于综合事务。 默认端口为 8084。 通过此操作，Azure VM 上安装的监视代理将可与本地监视代理进行通信。
 
 有关 NSG 的详细信息，请参阅[网络安全组](../virtual-network/virtual-networks-create-nsg-arm-portal.md)。
 
@@ -168,8 +179,7 @@ ms.lasthandoff: 11/02/2017
 >
 >
 
-若要开始使用 NPM 的 ExpressRoute 监视功能，必须先请求将你的工作区加入白名单。 [单击此处转到对应页面并填写请求窗体](https://go.microsoft.com/fwlink/?linkid=862263)。 （提示：可能需要在新窗口或新选项卡中打开此链接。） 加入白名单的过程可能至少需要一个工作日。 加入白名单后，我们将会向你发送电子邮件。
-
+若要开始使用 NPM 的 ExpressRoute 监视功能，必须先请求将你的工作区加入白名单。 [单击此处转到对应页面并填写请求窗体](https://aka.ms/npmcohort)。 （提示：可能需要在新窗口或新选项卡中打开此链接。） 加入白名单的过程可能至少需要一个工作日。 加入白名单完成后，将收到一封电子邮件。
 
 ## <a name="setupmonitor"></a>步骤 5：配置 NPM 进行 ExpressRoute 监视
 
@@ -189,7 +199,7 @@ ms.lasthandoff: 11/02/2017
 3. 在配置页面，导航到左侧面板上的“ExpressRoute 对等互连”选项卡。 单击“立刻发现”。
 
   ![发现](.\media\how-to-npm\13.png)
-4. 完成发现后，可以查看唯一线路名称和 VNet 名称的规则。 这些规则起初是禁用的。 需要启用规则，然后选择监视代理和阈值。
+4. 完成发现后，可以查看唯一线路名称和 VNet 名称的规则。 这些规则起初是禁用的。 请启用规则，然后选择监视代理和阈值。
 
   ![规则](.\media\how-to-npm\14.png)
 5. 启用规则并选择要监视的的值和代理后，需要等待约 30-60 分钟后值才会开始填充，“ExpressRoute 监视”磁贴也将变为可用。 看到监视磁铁后，NPM 也将开始监视 ExpressRoute 线路和连接资源。
@@ -229,6 +239,7 @@ NPM 页面包含一个 ExpressRoute 页面，其中显示 ExpressRoute 线路和
 
 ![筛选器](.\media\how-to-npm\topology.png)
 
-#### <a name="detailed-topology-view-of-a-particular-expressroute-circuit---with-vnet-connections"></a>特定 ExpressRoute 线路（具有 VNet 连接）的详细拓扑视图
+#### <a name="detailed-topology-view-of-a-circuit"></a>线路的详细拓扑图视图
 
+此视图显示 VNet 连接。
 ![详细拓扑图](.\media\how-to-npm\17.png)

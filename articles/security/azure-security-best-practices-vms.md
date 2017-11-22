@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7122e2f5f7ebc8ef0c6b2083257f26d8d2e5e345
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="vm-authentication-and-access-control"></a>VM 身份验证和访问控制
 
-保护 VM 安全的第一步是确保只有授权用户才能设置新的 VM。 可使用 [Azure Resource Manager 策略](../azure-resource-manager/resource-manager-policy.md)建立组织中的资源约定、创建自定义策略和将策略应用到资源，例如[资源组](../azure-resource-manager/resource-group-overview.md)。
+保护 VM 安全的第一步是确保只有授权用户才能设置新的 VM。 可使用 [Azure 策略](../azure-policy/azure-policy-introduction.md)建立组织中的资源约定、创建自定义策略和将策略应用到资源，例如[资源组](../azure-resource-manager/resource-group-overview.md)。
 
 属于该资源组的 VM 自然而然将继承该组的策略。 尽管我们建议使用此方法来管理 VM，但也可使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 来控制对单个 VM 策略的访问。
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 - [安全管理员](../active-directory/role-based-access-built-in-roles.md#security-manager)：可管理安全组件、安全策略和 VM。
 - [开发测试实验室用户](../active-directory/role-based-access-built-in-roles.md#devtest-labs-user)：可查看所有内容，以及连接、启动、重新启动和关闭 VM。
 
-不要在管理员之间共享帐户和密码，或在多个用户帐户或服务之间重复使用密码，特别是用于社交媒体或其他非管理活动的密码。 最好是使用 [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) 模板来安全设置 VM。 通过此方法可以增强部署选项并在整个部署中实施安全设置。
+不要在管理员之间共享帐户和密码，或在多个用户帐户或服务之间重复使用密码，特别是用于社交媒体或其他非管理活动的密码。 最好是使用 [Azure 资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)模板来安全设置 VM。 通过此方法可以增强部署选项并在整个部署中实施安全设置。
 
 未利用 RBAC 等功能实施数据访问控制的组织可能会向其用户分配超过需要的特权。 针对某些数据分配不适当的用户访问权限可能会直接导致数据泄露。
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
 
 与所有本地 VM 一样，Azure VM 应该由用户自行管理，因此，Azure 不会向这些 VM 推送 Windows 更新。 但是，我们依然建议启用 Windows 自动更新设置。 另一种方法是在另一个 VM 上或本地部署 [Windows Server 更新服务 (WSUS)](https://technet.microsoft.com/windowsserver/bb332157.aspx) 或其他适合的更新管理产品。 WSUS 和 Windows 更新都可使 VM 保持最新状态。 此外，我们建议使用扫描产品来验证是否所有 IaaS VM 都处于最新状态。
 
-Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新。 但是，无法保证映像在部署时为最新状态， 其版本可能比公共版略有滞后（最多几周）。 每个部署的第一步应是检查和安装所有 Windows 更新。 在部署自己或库中提供的映像时，采用此措施就特别重要。 默认情况下，作为 Azure 应用商店一部分提供的映像会自动更新。
+Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新。 但是，无法保证映像在部署时为最新状态， 其版本可能比公共版略有滞后（最多几周）。 每个部署的第一步应是检查和安装所有 Windows 更新。 在部署自己或库中提供的映像时，采用此措施就特别重要。 默认情况下，作为 Azure Marketplace 一部分提供的映像会自动更新。
 
 未实施软件更新策略的组织面临更多利用已修复的已知漏洞的威胁。 除了应对此类威胁以外，为了遵守行业法规，公司还必须证明他们在不断作出相应努力并使用正确的安全控制机制来帮助确保云中工作负荷的安全性。
 
@@ -122,7 +122,7 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 如果 VM 进程消耗的资源多过实际所需的量，可能会造成资源滥用的问题。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 因此，不仅要在出现问题时被动监视 VM 的访问，而且还要在正常运行期间针对基准性能进行主动监视。
 
-通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure Resource Manager 模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
+通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
 
 还可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
 

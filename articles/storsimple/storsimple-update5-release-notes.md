@@ -4,7 +4,7 @@ description: "介绍 StorSimple 8000 系列 Update 5 的新功能、问题和解
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2017
+ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: fa7360a44c48d4f15233b937f09285233533a0e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 672757e82bcf645b705f46a9975e09c9dc5eef92
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 发行说明
 
@@ -31,6 +31,7 @@ Update 5 可应用于任何运行 Update 0.1 到 Update 4 的 StorSimple 设备�
 在 StorSimple 解决方案中部署更新之前，请查看发行说明中所包含的信息。
 
 > [!IMPORTANT]
+> * Update 5 是必需的更新，必须立即安装。 有关详细信息，请参入如何[应用 Update 5](storsimple-8000-install-update-5.md)。
 > * Update 5 包含设备软件、磁盘固件、OS 安全性和其他 OS 更新。 安装此更新大约需要 4 小时。 磁盘固件更新是中断性更新，并且会导致设备出现故障时间。 建议应用 Update 5，使设备保持最新状态。
 > * 对于新版本，由于我们分阶段推出更新，可能不能立即看到更新。 请等待几天，再次扫描更新，因为很快就会提供这些更新。
 

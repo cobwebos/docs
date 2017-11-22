@@ -14,20 +14,22 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 323d574cbdeea1a2141d3c10d402e44e8af8ee19
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: f47e5dfb174a0c7b99111485cee74eb01df665c7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-use-azure-table-storage-from-java"></a>如何通过 Java 使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概述
 本指南演示如何使用 Azure 表存储服务执行常见方案。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 涉及的方案包括**创建**、**列出**和**删除**表，以及**插入**、**查询**、**修改**和**删除**表中的实体。 有关表的详细信息，请参阅[后续步骤](#Next-Steps)部分。
 
-注意：为在 Android 设备上使用 Azure 存储的开发人员提供了 SDK。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
+> [!NOTE]
+> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
+>
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -70,7 +72,11 @@ String storageConnectionString =
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 
 ## <a name="how-to-create-a-table"></a>如何：创建表
-利用 **CloudTableClient** 对象，可以获得表和实体的引用对象。 以下代码可创建 **CloudTableClient** 对象并使用它创建新的 **CloudTable** 对象，用于表示名为“people”的表。 （注意：还有其他方式可创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudStorageAccount**。）
+利用 **CloudTableClient** 对象，可以获得表和实体的引用对象。 以下代码可创建 **CloudTableClient** 对象并使用它创建新的 **CloudTable** 对象，用于表示名为“people”的表。 
+
+> [!NOTE]
+> 还有其他方式来创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount。
+>
 
 ```java
 try

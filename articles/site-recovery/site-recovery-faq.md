@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/19/2017
 ms.author: raynew
-ms.openlocfilehash: 0b2a36c293e899ebed9d1220dff043a85321cacf
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: ad6f70cf9c2f420e887031c8b240d2f831e6c359
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery：常见问题 (FAQ)
 本文包含有关 Azure Site Recovery 的常见问题。 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。
@@ -75,24 +75,9 @@ ms.lasthandoff: 10/25/2017
 是的。 使用站点恢复来协调分支机构的复制与故障转移时，可以在一个中心位置获得所有分支机构工作负载的统一视图。 不需要前往分支机构，就可以从总部轻松对所有分支机构运行故障转移和管理灾难恢复。
 
 ## <a name="pricing"></a>定价
+定价相关问题，请参阅 [Azure Site Recovery 定价](https://azure.microsoft.com/en-in/pricing/details/site-recovery/)中的常见问题解答。
 
-### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>使用 Azure Site Recovery 时，会产生哪些费用？
-使用 Site Recovery 时，会产生 Site Recovery 许可证、Azure 存储、存储事务和出站数据传输费用。 [了解详细信息](https://azure.microsoft.com/pricing/details/site-recovery)。
-
-Site Recovery 许可证费用根据受保护的实例收取，实例可以是 VM 或物理服务器。
-
-- 如果将 VM 磁盘复制到标准存储帐户，Azure 存储费用根据存储消耗量收取。 例如，如果源磁盘大小为 1 TB，使用了其中的 400 GB，则 Site Recovery 会在 Azure 中创建 1 TB VHD，但存储费用根据 400 GB（加上复制日志使用的存储空间量）收取。
-- 如果将 VM 磁盘复制到高级存储帐户，Azure 存储费用将按照预配的存储大小（已根据最接近的高级存储磁盘选项舍入）收取。 例如，如果源磁盘大小为 50 GB，则 Site Recovery 会在 Azure 中创建 50 GB 磁盘，Azure 会将此大小对应为最接近的高级存储磁盘 (P10)。  费用将按照 P10 计算，而不是按照 50 GB 磁盘大小计算。  [了解详细信息](https://aka.ms/premium-storage-pricing)。  如果使用高级存储，则还需要为复制日志记录使用一个标准存储帐户，用于这些日志的标准存储空间量也会计费。
-- 在进行测试故障转移或故障转移前，不创建磁盘。 在复制状态下，根据[存储定价计算器](https://azure.microsoft.com/en-in/pricing/calculator/)在“页 blob 和磁盘”目录下会发生存储费用。 这些费用基于高级/标准存储类型和数据冗余类型 - LRS、GRS、RA-GRS 等。
-- 如果选择在故障转移时使用托管磁盘，则在进行故障转移/测试故障转移后，会产生[托管磁盘费用](https://azure.microsoft.com/en-in/pricing/details/managed-disks/)。 复制期间不会产生托管磁盘费用。
-- 如果未选择在故障转移时使用托管磁盘，则在进行故障转移后，根据[存储定价计算器](https://azure.microsoft.com/en-in/pricing/calculator/)在“页 blob 和磁盘”目录下会发生存储费用。 这些费用基于高级/标准存储类型和数据冗余类型 - LRS、GRS、RA-GRS 等。
-- 在稳定状态复制期间会发生存储交易费用，且在进行故障转移/测试故障转移后，针对常规 VM 操作也会发生存储交易费用。 但这些费用低到可以忽略不计。
-
-测试故障转移期间也会产生 VM、存储、传出流量和存储事务方面的费用。
-
-
-
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 不会。站点恢复不拦截复制的数据，也不拥有虚拟机或物理服务器上运行哪些项目的任何相关信息。
 复制数据在本地 Hyper-V 主机、VMware 虚拟机监控程序或物理服务器和 Azure 存储或辅助站点之间交换。 站点恢复并不具有拦截该数据的能力。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  

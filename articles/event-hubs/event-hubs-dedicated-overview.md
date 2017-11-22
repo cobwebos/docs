@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: db8b119178de0e565b2064e9a52d5e9989d60d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613ea691e38b6f0bcd8873fc2ec6bcafb3cc6c78
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 | 发布者策略 | 是 | 是 |   
 | 使用者组 | 20 | 20 |
 | 消息重播 | 是 | 是 |
-| 最大吞吐量单位 | 20（可灵活调整至 100）   | 1 CU≈200 |
+| 最大吞吐量单位 | 20（可灵活调整至 100）   | 1 CU≈50 |
 | 中转连接 | 包括 1000 | 包括 100 K |
 | 其他中转连接 | 是 | 是 |
 | 消息保留 | 包括 1 天 | 包括最长 7 天 |
@@ -48,18 +48,25 @@ ms.lasthandoff: 10/11/2017
 * 与标准事件中心的 256 KB 相比，消息大小增至 1 MB。
 * 每次可重复性能。
 * 有保障的容量，满足迸发需求。
-* 容量单位 (CU) 可在 1 至 8 之间缩放 - 提供每秒高达两百万个入口事件。
-  * 容量单位 (CU) 管理专用事件中心的规模，其中，每个 CU 约可提供相当于 200 个吞吐量单位 (TU)。
+* 包括 Azure 事件中心的[捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)功能，提供与 micro-batch 和长期保留的集成
 * 零维护：由我们负责管理负载均衡、操作系统更新、安全修补程序及分区。
-* 固定的月度定价。
+* 固定小时定价。
+* 消息保留期长达 7 天，无需支付额外费用
 
 专用事件中心还会删除一些标准产品的吞吐量限制。 基本层的吞吐量单位可达每秒 1000 个事件，或者每个 TU 每秒 1 MB 的流入量和两倍的流出量。 专用规模产品对入口和出口事件计数不设限制。 这些限制仅由购买的事件中心处理容量管理。
+
+此保留的专用环境提供该层独有的其他功能，例如：
+
+* 控制群集中的命名空间数量
+* 指定每个命名空间的吞吐量限制
+* 配置每个命名空间下事件中心数量
+* 确定分区的数量限制
 
 该服务针对最大的遥测用户，也可提供给具有企业协议的客户。
 
 ## <a name="how-to-onboard"></a>如何加入
 
-专用事件中心平台通过企业协议提供，它具有不同大小的 CU。 每个 CU 提供约等于 200 吞吐量计价单位。 通过添加或删除 CU，可以在一个月内随时扩展或缩小容量，满足自身需求。 专用计划独一无二，用户可从事件中心产品团队处获得适合自己的灵活部署，提供一种亲身实践操作体验。 
+通过添加或删除 CU，可以在一个月内随时扩展或缩小容量，满足自身需求。 专用计划独一无二，用户可从事件中心产品团队处获得适合自己的灵活部署，提供一种亲身实践操作体验。 若要获得此 SKU，请联系（计费支持部门）[https://ms.portal.azure.com/#create/Microsoft.Support] 或 Microsoft 代表。
 
 ## <a name="next-steps"></a>后续步骤
 请与 Microsoft 销售代表或 Microsoft 支持部门联系，以获其他关于事件中心专用容量的详细信息。 还可访问以下链接，了解有关事件中心的详细信息：
