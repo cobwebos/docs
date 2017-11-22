@@ -1,5 +1,5 @@
 ---
-title: "Azure 上的 Kubernertes 教程 - 准备 ACR | Microsoft Docs"
+title: "Azure 上的 Kubernetes 教程 - 准备 ACR | Microsoft 文档"
 description: "AKS 教程 - 准备 ACR"
 services: container-service
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 22aa6c82aec7b8f6a16131878943fadd7762c1c0
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 15b54f6131c847551295061df6c6ad6a476a7da6
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -32,22 +32,22 @@ Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专�
 > * 标记 ACR 的容器映像
 > * 将映像上传到 ACR
 
-在后续教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成。 
+在后续教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成。
 
 ## <a name="before-you-begin"></a>开始之前
 
 在[上一教程](./tutorial-kubernetes-prepare-app.md)中，已经为一个 Azure Voting 应用程序示例创建了容器映像。 如果尚未创建 Azure Voting 应用映像，请返回到[教程 1：创建容器映像](./tutorial-kubernetes-prepare-app.md)。
 
-本教程要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+本教程要求运行 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create](/cli/azure/group#create) 命令创建资源组。 在此示例中，在 `westus2` 区域中创建了名为 `myResourceGroup` 的资源组。
+使用 [az group create](/cli/azure/group#create) 命令创建资源组。 在此示例中，在 `eastus` 区域中创建了名为 `myResourceGroup` 的资源组。
 
 ```azurecli
-az group create --name myResourceGroup --location westus2
+az group create --name myResourceGroup --location eastus
 ```
 
 使用 [az acr create](/cli/azure/acr#create) 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。
@@ -117,7 +117,7 @@ tiangolo/uwsgi-nginx-flask                           flask               788ca94
 
 ## <a name="push-images-to-registry"></a>将映像推送到注册表
 
-将 `azure-vote-front` 映像推送到注册表。 
+将 `azure-vote-front` 映像推送到注册表。
 
 使用以下示例，将 ACR loginServer 名称替换为环境中的 loginServer。
 

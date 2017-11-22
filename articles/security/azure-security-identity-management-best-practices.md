@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 许多人将标识视为安全性的新边界层，从传统的以网络为中心的角度来看可以接管这种角色。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](http://aka.ms/byodcg) 设备和云应用程序呈爆炸性增长之前，周边防御不如以前那么有效。
@@ -111,11 +111,11 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
-若组织只希望在关联有适当成本中心时允许操作，否则就拒绝请求，此时可以利用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 来创建自定义策略。
+若组织只希望在关联有适当成本中心时允许操作，否则就拒绝请求，此时可以利用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)来创建自定义策略。
 
 无法控制资源创建方式的组织更容易遇到用户创建的资源超过所需数目，因而滥用服务的情况。 强化资源创建过程是保护多租户方案的重要步骤。
 
-有关使用 Azure Resource Manager 创建策略的详细信息，请阅读[使用策略来管理资源和控制访问](../azure-resource-manager/resource-manager-policy.md)一文。
+有关使用 Azure 资源管理器创建策略的详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)一文。
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>指导开发人员利用适用于 SaaS 应用的标识功能
 在许多情况下，当用户访问可集成到本地或云目录的 [SaaS 应用](https://azure.microsoft.com/marketplace/active-directory/all/)时，会利用用户标识。 第一点也是最重要的一点，建议开发人员使用安全方法（如 [Microsoft 安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)）来开发这些应用。 Azure AD 通过以下方式简化了对开发人员的身份验证：将标识提供为一项服务、支持行业标准协议（例如 [OAuth 2.0](http://oauth.net/2/) 和 [OpenID Connect](http://openid.net/connect/)），并提供用于不同平台的开源库。

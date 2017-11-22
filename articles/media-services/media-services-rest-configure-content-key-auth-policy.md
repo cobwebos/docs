@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 11/14/2017
 ms.author: juliako
-ms.openlocfilehash: ed20fca35070c190bb63925d0a57cf919bcdd96c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33507d76839567c830c9e8152eeac70d5c0f2b7b
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -184,6 +184,10 @@ ms.lasthandoff: 10/11/2017
 本部分介绍如何创建内容密钥授权策略，以及如何将其与内容密钥相关联。 授权策略描述了必须达到什么授权要求才能确定用户是否有权接收密钥（例如，“验证密钥”列表是否包含令牌签名时使用的密钥）。
 
 要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构。
+
+> [!NOTE]
+> 内容密钥授权策略上的令牌限制在服务中尚不可用。
+
 
 #### <a id="schema"></a>令牌限制架构
     <?xml version="1.0" encoding="utf-8"?>
@@ -424,7 +428,7 @@ ms.lasthandoff: 10/11/2017
     public enum ContentKeyRestrictionType
     {
         Open = 0,
-        TokenRestricted = 1,
+        TokenRestricted = 1, // Not supported, reserved for future
         IPRestricted = 2,
     }
 

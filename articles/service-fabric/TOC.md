@@ -16,9 +16,8 @@
 ### [4 - 监视和诊断](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## 将现有 .NET 应用容器化
-### [1 - 在 Azure 上创建安全群集](service-fabric-tutorial-create-cluster-azure-ps.md)
-### [2 - 使用 Docker Compose 部署 .NET 应用](service-fabric-host-app-in-a-container.md)
-### [3 - 监视容器](service-fabric-tutorial-monitoring-wincontainers.md)
+### [1 - 使用 Docker Compose 部署 .NET 应用](service-fabric-host-app-in-a-container.md)
+### [2 - 监视容器](service-fabric-tutorial-monitoring-wincontainers.md)
 
 ## 创建 Linux 容器应用
 ### [1- 创建容器映像](service-fabric-tutorial-create-container-images.md)
@@ -284,7 +283,6 @@
 ## 创建和管理群集
 ### Azure 上的群集
 #### 创建
-##### [在 Azure 上创建第一个群集](service-fabric-get-started-azure-cluster.md)
 ##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
 #### 缩放

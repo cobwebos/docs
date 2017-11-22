@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1c9bfe567b1e0872abc7aba054127735d5f61754
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 461feb952f7e2eddba9c7218b3463868e8cb7965
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -85,20 +85,14 @@ ms.lasthandoff: 11/01/2017
 在配置服务器 VM 上，确保将系统时钟与时间服务器进行同步。
 时间必须在 15 分钟内得到同步。 如果时间差大于 15 分钟，则安装程序将失败。
 
-请确保配置服务器 VM 可以访问以下 URL：
+请确保配置服务器可以访问以下 URL：
 
-- *.accesscontrol.windows.net。 用于访问控制和标识管理。
-- *.backup.windowsazure.com。用于复制数据传输和协调。
-- *.blob.core.windows.net。 用于访问存储所复制数据的存储帐户。
-- *.hypervrecoverymanager.windowsazure.com。用于复制管理操作和协调。
-- time.nist.gov and time.windows.com。用于检查系统时间与全球时间之间的时间同步。
+   [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+    
+    - 任何基于 IP 地址的防火墙规则都应允许与 Azure 通信。
 
-Azure 政府云的 URL：
-
-- *.ugv.hypervrecoverymanager.windowsazure.us
-- *.ugv.backup.windowsazure.us
-- *.ugi.hypervrecoverymanager.windowsazure.us
-- *.ugi.backup.windowsazure.us
+- 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)和 HTTPS (443) 端口。
+    - 允许订阅的 Azure 区域的 IP 地址范围以及美国西部的 IP 地址范围（用于访问控制和标识管理）。
 
 任何基于 IP 地址的防火墙规则应允许与 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)，以及端口 443 (HTTPS) 和 9443（数据复制）进行通信。 确保允许订阅的 Azure 区域的 IP 地址范围，以及美国西部的 IP 地址范围（用于访问控制和标识管理）。
 
@@ -172,7 +166,7 @@ Azure 政府云的 URL：
 4. 选择“+vCenter”，以连接到 vCenter 服务器或 vSphere ESXi 主机。
 5. 在“添加 vCenter”中，为服务器指定一个友好名称。 然后，指定 IP 地址或 FQDN。
 6. 除非 VMware 服务器在不同的端口上侦听请求，否则请保持端口设置为 443。
-7. 选择要用于连接到服务器的帐户。 单击 **“确定”**。
+7. 选择要用于连接到服务器的帐户。 单击“确定”。
 
 Site Recovery 将使用指定的设置连接到 VMware 服务器，并且将发现 VM。
 

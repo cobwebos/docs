@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 3eb604321c244c6ceeb76d08ae39b21d1e777ece
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 373abb8f40a8acf557b7cd4a0d0b3fb55f4a545c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="model-management-command-line-interface-reference"></a>模型管理命令行接口参考
 
@@ -69,6 +69,8 @@ ms.lasthandoff: 11/09/2017
                      the active MLC env.
 
 **设置部署环境**
+
+该设置命令要求你具有订阅的“参与者”访问权限。 如果没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
 
 有两个部署选项：*本地*和*群集*。 设置 `--cluster`（或 `-c`）标志可启用预配 ACS 群集的群集部署。 基本设置语法如下：
 

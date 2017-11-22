@@ -11,11 +11,11 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 11/03/2017
-ms.openlocfilehash: b20e459c2c24bfa16a2f24fed07f2f214c45099a
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 9dc187b17471abe67abc49674b70889c1aca840e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 .NET (C#) 进行连接并查询数据
 本快速入门演示了如何使用 C# 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 C# 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/06/2017
 还需要：
 - 安装 [.NET Framework](https://www.microsoft.com/net/download)。 按照链接文章中的步骤来安装专用于平台（Windows、Ubuntu Linux 或 macOS）的 .NET。 
 - 安装 [Visual Studio](https://www.visualstudio.com/downloads/) 或 Visual Studio Code，用于键入和编辑代码。
-- 下载并安装 [Npgsql](https://github.com/npgsql/Npgsql/releases) 库。
+- 添加对 [Npgsql](https://www.nuget.org/packages/Npgsql/) Nuget 包的引用。
 
 ## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for PostgreSQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。

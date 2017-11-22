@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 标识和访问控制保护个人数据 | Microsoft Docs"
+title: "使用 Azure 标识和访问控制保护个人数据 | Microsoft 文档"
 description: "使用 Azure 标识和访问控制来帮助保护个人数据"
 services: security
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 11/13/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 7c66a95d5a056f59e0f28dba4e0880e72e74dc3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory 和多重身份验证：使用标识和访问控制保护个人数据
 
@@ -121,23 +121,23 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 
 #### <a name="how-do-i-enable-azure-to-use-mfa"></a>如何让 Azure 使用 MFA？
 
-如果用户的许可证包含 Azure 多重身份验证，则不需执行任何操作来启用 Azure MFA。 否则，需要在目录中创建多重身份验证提供程序。 为此，请执行以下步骤：
+如果用户拥有包括 Azure 多重身份验证的许可证，那么你只需按每个用户或组配置 Azure MFA 即可。 
 
-1. 在 Azure 经典门户中选择“Active Directory”（以管理员身份登录）。
+![启用了 MFA 的用户](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-2. 选择“多重身份验证提供程序”。
+如果当前没有许可证，则需要完成为你的方案确定最适合部署类型的整个过程。 可以从查看标题为[选择 Azure 多重身份验证解决方案](../multi-factor-authentication/multi-factor-authentication-get-started.md)的文章开始。 如果确定需要创建一个多重身份验证服务器， 则可按以下步骤操作：
 
-3. 选择“新建”，在“应用服务”下选择“多重身份验证提供程序”。
+1. 在 Azure 门户中选择“Active Directory”（以管理员身份登录）。
 
-4. 选择“快速创建”。
+2. 选择“MFA 服务器”
 
-5. 填写名称字段，并选择使用模型（基于身份验证或基于启用的用户）。
+3. 指定一个超时值。 
 
-6. 指定与 MFA 提供程序关联的目录。
+    ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-7. 单击“创建”  按钮。
+4. 单击“保存”
 
-![](media/protect-personal-data-identity-access-controls/quick-create.png)
+在此窗口中，你还可以选择“下载 MFA 服务器”。 有关如何设置部署的规模并对其进行规划的更多详细信息，请参阅[开始使用 Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)一文。
 
 有关如何管理多重身份验证提供程序的详细说明，请参阅 [Azure 多重身份验证提供程序入门](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)。
 
@@ -158,7 +158,7 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 5. 勾选用户名旁边的框。
 6. 在右侧的快速步骤下，选择“启用”。
 
-   ![](media/protect-personal-data-identity-access-controls/quick-create.png)
+   ![](media/protect-personal-data-identity-access-controls/mfa-bulk.png)
 
 7. 在打开的弹出窗口中确认你的选择。  启用 MFA 的用户在下次登录时必须注册。
 

@@ -1,36 +1,35 @@
 ---
-title: "使用 C# 管理 Azure 时序见解环境的引用数据 | Microsoft Docs"
-description: "本教程介绍了如何使用 C# 管理 Azure 时序见解环境的引用数据"
-keywords: 
+title: "使用 C# 管理 Azure 时序见解环境的参考数据 | Microsoft 文档"
+description: "本文介绍如何通过创建一个以 C# (c-sharp) .NET 语言编写的自定义应用来管理 Azure 时序见解环境中的参考数据。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: venkatgct
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 528a33cf01b2a0a07880dad62ba6bbaf4a605153
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: cd4d37ae2a68be3c061706f80055efb7e5387d98
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用 C# 管理 Azure 时序见解环境的引用数据
+# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用 C# 管理 Azure 时序见解环境的参考数据
 
-以下 C# 示例展示了如何管理 Azure 时序见解环境的引用数据。
-运行此示例前，请确保已完成下列步骤。
-1. 已参照[本文](time-series-insights-add-reference-data-set.md)创建了引用数据集。
-2. 通过 Azure Active Directory API 获取运行应用程序时所用的访问令牌。 此令牌应在每个查询 API 请求的 `Authorization` 头中传递。 若要了解如何设置非交互式应用程序，请参阅[身份验证和授权](time-series-insights-authentication-and-authorization.md)一文。
-3. 正确设置此示例开头定义的所有常量。
+本文将介绍你可以进行编译以管理 Azure 时序见解环境参考数据的 C＃ 示例代码。
 
-## <a name="c-sample"></a>C# 示例
+编译和运行示例代码之前，请确保已完成下列步骤：
+1. 已参照[本文](time-series-insights-add-reference-data-set.md)创建了参考数据集。
 
+2. 配置应用程序要用来进行授权的访问令牌。 请确保通过 Azure Active Directory API 获取令牌。 此令牌应在每个查询 API 请求的 `Authorization` 头中传递。 若要了解如何设置非交互式应用程序，请参阅[身份验证和授权](time-series-insights-authentication-and-authorization.md)一文。
+
+3. 编辑示例代码，以替换在代码开始处的 #DUMMY# 中指定的示例常数。 
+
+## <a name="c-sample-code"></a>C# 示例代码 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -233,5 +232,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>后续步骤
-
-有关完整的 API 参考，请参阅[引用数据 API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) 文档。
+有关完整的 REST API 参考，请参阅[参考数据 API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)。
