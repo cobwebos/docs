@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: pratshar
-ms.openlocfilehash: 9d6a806ec533259797080fbfee2c38f918ebd8a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1df7e04fc9cec5722747bafce7e2e5519b76315d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>两个 Azure 区域之间的网络映射
 
@@ -80,10 +80,10 @@ ms.lasthandoff: 10/11/2017
 按如下方式为目标虚拟机的各个网络接口选择 IP 地址：
 
 ### <a name="dhcp"></a>DHCP
-如果源虚拟机的网络接口使用 DHCP，则目标虚拟机的网络接口也设置为 DHCP。
+如果源虚拟机的网络接口使用的是 DHCP，则目标虚拟机的网络接口也设置为 DHCP。
 
 ### <a name="static-ip"></a>静态 IP
-如果源虚拟机的网络接口使用静态 IP，则目标虚拟机的网络接口也设置为使用静态 IP。 按如下方式选择静态 IP：
+如果源虚拟机的网络接口使用的是静态 IP，则目标虚拟机的网络接口也设置为使用静态 IP。 按如下方式选择静态 IP：
 
 #### <a name="same-address-space"></a>地址空间相同
 

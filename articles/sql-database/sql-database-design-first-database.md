@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: e4848eb366faea134a484c8a494fed6a83203116
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 329003c7c4abe89f4af04473ee3664605b2ea81f
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>设计第一个 Azure SQL 数据库
 
-Azure SQL 数据库与 Microsoft 云（“Azure”）中的数据库即服务 (DBaaS) 相关。 在本教程中，了解如何使用 Azure 门户 SQL 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 执行以下操作： 
+Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) 相关。 在本教程中，了解如何使用 Azure 门户 SQL 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) 执行以下操作： 
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据库
@@ -125,7 +125,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+5. 单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
 6. 单击“确定”，并关闭“防火墙设置”页。
 

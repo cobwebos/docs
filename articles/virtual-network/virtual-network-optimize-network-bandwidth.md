@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: steveesp
-ms.openlocfilehash: 914747983d4d974810836be66d6c6af343f58b60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d77440fe62bbd0e720e5ae60b15574dacc4180c0
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
 
@@ -51,11 +51,11 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
 
 ## <a name="linux-vm"></a>Linux VM
 
-默认情况下，RSS 在 Azure Linux VM 中始终已启用。 自 2017 年 1 月以后发布的 Linux 内核包含新的网络优化选项，可使 Linux VM 实现更高的网络吞吐量。
+默认情况下，RSS 在 Azure Linux VM 中始终已启用。 自 2017 年 12 月以后发布的 Linux 内核均包含新的网络优化选项，可使 Linux VM 实现更高的网络吞吐量。
 
-### <a name="ubuntu"></a>Ubuntu
+### <a name="ubuntu-for-new-deployments"></a>用于新部署的 Ubuntu
 
-若要获得优化功能，首先需更新到 2017 年 6 月以后的最新支持版本，该版本是：
+若要获得优化功能，请首先安装 16.04-LTS 的最新支持版本，例如：
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
@@ -75,35 +75,39 @@ apt-get -y upgrade
 可选命令：
 
 `apt-get -y dist-upgrade`
-#### <a name="ubuntu-azure-preview-kernel"></a>Ubuntu Azure 预览版内核
-> [!WARNING]
-> 就可用性和可靠性而言，此 Azure Linux 预览版内核与正式发布版本中的应用商店映像和内核可能不在同一级别。 该功能不受支持，可能存在功能限制，且可靠性可能比默认内核的低。 请勿将此内核用于生产工作负荷。
+#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>现有 VM 的 Ubuntu Azure 内核升级
 
-重要的吞吐量性能可通过安装建议的 Azure Linux 内核实现。 若要试用此内核，请将此行添加到 /etc/apt/sources.list
+重要的吞吐量性能可通过升级到 Azure Linux 内核来实现。 若要验证是否具有此内核，请检查你的内核版本。
 
 ```bash
-#add this to the end of /etc/apt/sources.list (requires elevation)
-deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe
+#Azure kernel name ends with "-azure"
+uname -r
+
+#sample output on Azure kernel:
+#4.11.0-1014-azure
 ```
 
 然后作为 root 运行这些命令。
 ```bash
+#run as root or preface with sudo
 apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
 apt-get install "linux-azure"
 reboot
 ```
 
 ### <a name="centos"></a>CentOS
 
-若要获得优化功能，首先需更新到 2017 年 7 月以后的最新支持版本，该版本是：
+若要获得最新的优化功能，请首先更新到最新支持版本，例如：
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.3",
+"Sku": "7.4",
 "Version": "latest"
 ```
 更新完成后，安装最新 Linux Integration Services (LIS)。
-吞吐量优化功能在从 4.2.2-2 开始的 LIS 中。 输入以下命令安装 LIS：
+从 4.2.2-2 开始，吞吐量优化位于 LIS 中，尽管更高版本包含更多改进。 输入以下命令以安装最新 LIS：
 
 ```bash
 sudo yum update
@@ -113,21 +117,21 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-若要获得优化功能，首先需更新到 2017 年 7 月以后的最新支持版本，该版本是：
+若要获得优化功能，请首先更新到最新支持版本，例如：
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
-"Sku": "7.3"
-"Version": "7.3.2017071923"
+"Sku": "7-RAW"
+"Version": "latest"
 ```
 更新完成后，安装最新 Linux Integration Services (LIS)。
 吞吐量优化功能在从 4.2 开始的 LIS 中。 输入以下命令下载并安装 LIS：
 
 ```bash
-mkdir lis4.2.2-2
-cd lis4.2.2-2
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
-tar xvzf lis-rpms-4.2.2-2.tar.gz
+mkdir lis4.2.3-1
+cd lis4.2.3-1
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
+tar xvzf lis-rpms-4.2.3-1.tar.gz
 cd LISISO
 install.sh #or upgrade.sh if prior LIS was previously installed
 ```

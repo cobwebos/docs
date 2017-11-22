@@ -1,6 +1,6 @@
 ---
 title: "使用 .NET 通过 Media Encoder Standard 对资产进行编码 | Microsoft Docs"
-description: "本主题介绍如何使用 .NET 通过 Media Encoder Standard 对资产进行编码。"
+description: "本文介绍如何使用 .NET 通过 Media Encoder Standard 对资产进行编码。"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 929592368501c54277748bf46b2160c9058db3fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cce668007030672aff7af60c70339c1e079c75b1
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 通过 Media Encoder Standard 对资产进行编码
-编码作业是媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 进行编码时，可以使用媒体服务内置的 Media Encoder。 你也可以使用媒体服务合作伙伴提供的编码器；可通过 Azure Marketplace 获取第三方编码器。 
+编码作业是媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 进行编码时，可以使用媒体服务内置的 Media Encoder。 另外，也可以使用媒体服务合作伙伴提供的编码器；第三方编码器可通过 Azure Marketplace 购得。 
 
-本主题介绍如何使用 .NET 通过 Media Encoder Standard (MES) 对资产进行编码。 Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+本文介绍如何使用 .NET 通过 Media Encoder Standard (MES) 对资产进行编码。 Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的其中一个编码器预设进行配置。
 
 建议始终将源文件编码为自适应比特率 MP4 集，然后使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需的格式。 
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 [格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES 预设
-Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的其中一个编码器预设进行配置。
 
 ### <a name="input-and-output-metadata"></a>输入和输出元数据
 如果使用 MES 为输入资产（或资产）编码，在该编码任务成功完成时，便能获取输出资产。 输出资产包含视频、音频、缩略图、清单等等，具体视你使用的编码预设而定。
@@ -61,7 +61,7 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
 * 指定使用[自适应流式处理](media-services-autogen-bitrate-ladder-with-mes.md)预设。 
 * 将一个编码任务添加到该作业。 
 * 指定要编码的输入资产。
-* 创建将包含所编码资产的输出资产。
+* 创建包含所编码资产的输出资产。
 * 添加事件处理程序以检查作业进度。
 * 提交作业。
 
@@ -181,6 +181,14 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
                 }
             }
         }
+
+
+## <a name="advanced-encoding-features-to-explore"></a>要浏览的高级编码功能
+* [如何生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [在编码期间生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [在编码期间剪辑视频](media-services-crop-video.md)
+* [自定义编码预设](media-services-custom-mes-presets-with-dotnet.md)
+* [使用图像叠加视频或给视频加水印](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

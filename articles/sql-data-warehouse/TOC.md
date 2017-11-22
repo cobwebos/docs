@@ -5,7 +5,7 @@
 
 # 入门
 
-## [入门教程](sql-data-warehouse-get-started-tutorial.md)
+## [加载数据教程](load-data-from-azure-blob-storage-using-polybase.md)
 ## [弹性查询教程](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)

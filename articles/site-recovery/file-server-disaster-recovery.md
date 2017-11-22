@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: a746ace47c4f1190b7a695014543670a1a9cf879
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 78ce74450ce933e2aced4b6e62504373de7954f8
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并协调本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括各种工作负荷的复制、故障转移和恢复。
 
-本文介绍如何使用 Azure Site Recovery 保护文件服务器，以及适合各种环境的其他建议。 
+本文介绍如何使用 Azure Site Recovery 保护文件服务器，以及适合各种环境的其他建议。     
 
 - [保护 Azure IaaS 文件服务器计算机](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines)
 - [保护本地文件服务器](#replicate-an-onpremises-file-server-using-azure-site-recovery)
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/01/2017
 
 下图中的图示旨在帮助决定要对文件服务器环境使用哪种策略。
 
-![决策树](media/site-recovery-file-server/decisiontree.png)
+![decisiontree](media/site-recovery-file-server/decisiontree.png)
 
 
 ### <a name="factors-to-consider-while-making-disaster-recovery-decision"></a>做出灾难恢复决策时要考虑的因素
