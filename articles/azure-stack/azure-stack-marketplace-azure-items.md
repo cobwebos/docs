@@ -1,6 +1,6 @@
 ---
 title: "可供 Azure 堆栈的 azure 应用商店项 |Microsoft 文档"
-description: "可以在 Azure 堆栈中使用这些 Azure marektplace 项。"
+description: "可以在 Azure 堆栈中使用这些 Azure 应用商店项。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: erikje
-ms.openlocfilehash: 09177c3d036c38c366253f9291d0096994cc123b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: d04a96e061c4f25e10b1582736012a3ada6f6a6b
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>可供 Azure 堆栈的 azure 应用商店项
 
@@ -29,15 +29,17 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店项目：
 |  | 项名称 | 说明 | 发布者 |
 | --- | --- | --- | --- |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.docker-arm?tab=Overview) | Linux 虚拟机的 docker 扩展。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [R Server 仅 SQL Server 2016 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.RServerOnlySQLServer2016Enterprise?tab=Overview) | R Server 仅 SQL Server 2016 Enterprise。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 Windows Server 2016 上的服务器 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016?tab=Overview) | Microsoft 机器学习服务器 9.2.1 Windows Server 2016 上。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习服务器 9.2.1 上 Ubuntu 16.04](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604?tab=Overview) | Microsoft 机器学习服务器 9.2.1 Ubuntu 16.04 上。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 CentOS Linux 7.2 上的服务器 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72?tab=Overview) | Microsoft 机器学习服务器 9.2.1 CentOS Linux 7.2 上。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [远程桌面服务 (RDS) 部署](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/rds.remote-desktop-services-basic-deployment?tab=Overview) | 创建基本的远程桌面服务 (RDS) 部署。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 试用版](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SharePointServer2013Trial?tab=Overview) | Microsoft SharePoint Server 2013 试用版 Windows Server 2012 Datacenter 和 Visual Studio 2017 社区版上。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 试用版](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SharePointServer2016Trial?tab=Overview) | Microsoft SharePoint Server 2016 试用版 Windows Server 2016 数据中心内。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 上的 SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2?tab=Overview) | SQL Server 2014 Service Pack 2。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | 智能、 任务关键型应用程序的数据库平台。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 开发人员](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016?tab=Overview) | 开发人员版本的 SQL Server 2016 SP1 事务，数据仓库、 商业智能和分析工作负荷。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 Express](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | Express 版本的 SQL Server 2016 SP1 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | 智能、 任务关键型应用程序的数据库平台。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 上的 SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2?tab=Overview) | SQL Server 2014 Service Pack 2。  **所需的下载：** SQL IaaS 扩展。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | 智能、 任务关键型应用程序的数据库平台。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 开发人员](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016?tab=Overview) | 开发人员版本的 SQL Server 2016 SP1 事务，数据仓库、 商业智能和分析工作负荷。  **所需的下载：** SQL IaaS 扩展。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 Express](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | Express 版本的 SQL Server 2016 SP1。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | 智能、 任务关键型应用程序的数据库平台。  **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview) | 为部署简单、 经济高效、 应用程序为中心和以用户为中心的企业级的解决方案。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.abantecart?tab=Overview) | 打开源电子商务购物车。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.activemq?tab=Overview) | 在 Java 中打开源消息代理。 | Bitnami |
@@ -154,18 +156,22 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店项目：
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine 销售 CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.x2enginesalescrm?tab=Overview) | Compact 市场营销、 销售和客户服务应用程序。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.xoops?tab=Overview) | CMS Web 门户和程序和创建动态网站。
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.zurmo?tab=Overview) | 打开源 CRM 系统： 移动、 社会、 和 Gamified。 | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [检查点 vSEC 安全管理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | 检查点 vSEC 提供高级、 多层次的威胁防护来保护 Azure 中的客户资产免受恶意软件和复杂的威胁。 | 检查点 |
 | ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef 自动执行](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | 生成、 部署和使用 Chef 自动执行，持续的自动化平台进行管理。 | Chef 软件，Inc |
-| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8"Jessie"backports 内核](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview) | Debian GNU/Linux 是最流行的 Linux 分发版之一。 | credativ |
+| ![](media/azure-stack-marketplace-azure-items/coreos.png) | [通过 CoreOS 容器 Linux](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CoreOS.CoreOS?tab=Overview) | 容器 Linux 是现代和最少的 Linux 分发，提供运行容器、 管理群集和无缝地将服务器更新的简单办法-启用仓库缩放的所有组件都计算。 | CoreOS |
+| ![](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview) | Ubuntu Server 是全球流行的 Linux 云环境。 | Canonical |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8"Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian?tab=Overview) | Debian GNU/Linux 是最流行的 Linux 分发版之一。 | credativ |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9"Stretch"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian9?tab=Overview) | Debian GNU/Linux 是最流行的 Linux 分发版之一。 | credativ |
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [LoadMaster 负载平衡器 ADC 内容交换机](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kemptech.vlm-azure?tab=Overview) | 图 4-7 层应用程序传递控制器 (ADC) 负载平衡器、 内容交换机和流量管理器。 | KEMP Technologies inc. |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 centOS 的 6.9](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased69?tab=Overview) | 这种 Linux 分发基于 CentOS，以及由恶意批软件。 | 恶意批软件 (以前称为 OpenLogic)  |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 centOS 的 7.3](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased73?tab=Overview) | 这种 Linux 分发基于 CentOS，以及由恶意批软件。 | 恶意批软件 (以前称为 OpenLogic) |
+| ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 centOS 的 7.4](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased74?tab=Overview) | 这种 Linux 分发基于 CentOS，以及由恶意批软件。 | 恶意批软件 (以前称为 OpenLogic) |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription?tab=Overview) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 代理 (BYOS)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription?tab=Overview) | 同类最佳打开源基础结构管理。 | SUSE |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Linux 的 deep Security 代理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-linux?tab=Overview) | 适用于 Linux 的 trend Micro Deep Security 扩展。 | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Windows 的 deep Security 代理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm?tab=Overview) | 适用于 Windows 的 trend Micro Deep Security 扩展。 | Trend Micro |
-| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown 软件工具](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown 软件工具 v7.1-迁移 + HA。 | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown 软件工具](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown 软件工具 v7.1-迁移 + HA。 | ZeroDown 软件 |
 
 
 ### <a name="next-steps"></a>后续步骤
 [下载的应用商店项](azure-stack-download-azure-marketplace-item.md)
-

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 28ceb7345c0d74e2a7d7911d5b4bf24a0ceb214a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: fdb4180ce11b29577299e329869144e99ead0f05
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -40,13 +40,14 @@ ms.lasthandoff: 11/11/2017
 - 为你创建的 MySQL 服务器
 - 下载并部署从应用商店创建 MySQL 服务器。
 
-![注意]从租户订阅，必须创建宿主服务器安装在多节点 Azure 堆栈上。 也不能从默认提供程序订阅中创建。 换而言之，则必须创建从租户门户或具有合适的登录名的 PowerShell 会话。 所有宿主服务器是应计费 Vm，并且必须具有合适的许可证。 服务管理员可以是该订阅的所有者。
+> [!NOTE]
+> 从租户订阅，必须创建宿主服务器安装在多节点 Azure 堆栈上。 也不能从默认提供程序订阅中创建。 换而言之，则必须创建从租户门户或具有合适的登录名的 PowerShell 会话。 所有宿主服务器是应计费 Vm，并且必须具有合适的许可证。 服务管理员可以是该订阅的所有者。
 
 ### <a name="required-privileges"></a>必需的权限
 系统帐户必须具有以下权限：
 
 1.  数据库： 创建、 删除
-2.  登录名： 创建、 设置、 Drop、 grant、 Revoke
+2.  登录名： 创建、 设置、 删除、 授予、 撤消
 
 ## <a name="deploy-the-resource-provider"></a>部署资源提供程序
 
@@ -60,6 +61,9 @@ ms.lasthandoff: 11/11/2017
     b. 在多节点系统中，主机必须是一个系统，可以访问特权终结点。
 
 3. [下载 MySQL 资源提供程序二进制文件文件](https://aka.ms/azurestackmysqlrp)和执行自动解压缩程序中，若要将内容提取到临时目录。
+
+    > [!NOTE]
+    > 如果你在 Azure 堆栈上运行生成 20170928.3 或更早版本，[下载此版本](https://aka.ms/azurestackmysqlrp1709)。
 
 4.  从特权终结点中检索 Azure 堆栈根证书。 为 ASDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
 
@@ -98,8 +102,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
-$domain = 'AzureStack'
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\MYSQLRP'
 
@@ -122,17 +130,18 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 # Run the installation script from the folder where you extracted the installation files
 # Find the ERCS01 IP address first and make sure the certificate
 # file is in the specified directory
-.$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
+. $tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint '10.10.10.10' `
-  -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert `
   -AcceptLicense
 
  ```
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 参数
 
+### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 参数
 你可以在命令行中指定这些参数。 如果你不希望这样做，或任何参数验证失败，系统会提示你提供所需的。
 
 | 参数名称 | 说明 | 注释或默认值 |
@@ -153,7 +162,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 具体取决于系统的性能和下载速度，安装可能需要最小为 20 分钟或长时间为几个小时。 如果 MySQLAdapter 边栏选项卡不可用，刷新管理门户。
 
 > [!NOTE]
-> 如果安装需要超过 90 分钟，则可能会失败，并在屏幕上，在日志文件中，你将看到失败消息。 从失败的步骤重试部署。 不符合建议的内存和 vCPU 规范的系统可能不能部署 MySQL RP。
+> 如果安装需要超过 90 分钟，则可能会失败，并在屏幕上，在日志文件中，你将看到失败消息。 从失败的步骤重试部署。 不符合建议的内存和核心规范的系统可能不能部署 MySQL RP。
 
 
 
@@ -189,14 +198,15 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
     - 数据库容量
     - 自动备份
     - 预留各部门的高性能服务器
-    - 等等。
-    SKU 名称应反映的属性，以便租户可以适当地将其数据库。 在 SKU 中的所有宿主服务器应具有相同的功能。
+ 
 
-    ![创建 MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+SKU 名称应反映的属性，以便租户可以适当地将其数据库。 在 SKU 中的所有宿主服务器应具有相同的功能。
+
+![创建 MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
 >[!NOTE]
-Sku 可以花费一个小时的时间无法在门户中显示。 无法创建一个数据库，直到创建 SKU。
+> Sku 可以花费一个小时的时间无法在门户中显示。 无法创建一个数据库，直到创建 SKU。
 
 
 ## <a name="to-test-your-deployment-create-your-first-mysql-database"></a>若要测试你的部署，创建你的第一个 MySQL 数据库
@@ -231,17 +241,17 @@ Sku 可以花费一个小时的时间无法在门户中显示。 无法创建一
 通过在 Azure 堆栈门户中添加其他 MySQL 服务器添加容量。 其他服务器可以添加到一种新的或现有的 SKU。 请确保服务器特征都相同。
 
 
-## <a name="making-mysql-databases-available-to-tenants"></a>向租户提供 MySQL 数据库
+## <a name="make-mysql-databases-available-to-tenants"></a>使 MySQL 数据库可供租户使用
 创建计划，并提供可使 MySQL 数据库供租户可用。 添加 Microsoft.MySqlAdapter 服务，添加一个配额，等等。
 
 ![创建计划，并提供要包括数据库](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
 
-## <a name="updating-the-administrative-password"></a>更新管理密码
+## <a name="update-the-administrative-password"></a>更新管理密码
 可以通过第一个更改它的 MySQL server 实例上修改密码。 浏览到**管理资源** &gt; **MySQL 宿主服务器**&gt;单击的宿主服务器上。 在设置面板中，单击密码。
 
 ![更新管理员密码](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
-## <a name="removing-the-mysql-adapter-resource-provider"></a>删除 MySQL 适配器资源提供程序
+## <a name="remove-the-mysql-resource-provider-adapter"></a>删除 MySQL 资源提供程序适配器
 
 若要删除资源提供程序，请务必首先删除任何依赖关系。
 
@@ -263,6 +273,5 @@ Sku 可以花费一个小时的时间无法在门户中显示。 无法创建一
 
 
 ## <a name="next-steps"></a>后续步骤
-
 
 尝试使用其他[PaaS 服务](azure-stack-tools-paas-services.md)如[SQL Server 资源提供程序](azure-stack-sql-resource-provider-deploy.md)和[应用程序服务资源提供程序](azure-stack-app-service-overview.md)。
