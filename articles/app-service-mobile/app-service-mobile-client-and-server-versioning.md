@@ -76,7 +76,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |不适用 |
 | HTML |[1.2.7](http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |不适用 |
 
-### <a name="mobile-services-server-sdks"></a>移动*服务*服务器 SDK
+### <a name="mobile-services-server-sdks"></a>移动 *服务* 服务器 SDK
 | 服务器平台 | 版本 | 接受的版本标头 |
 | --- | --- | --- |
 | .NET |[WindowsAzure.MobileServices.Backend.* 版本 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**无版本标头 ** |
