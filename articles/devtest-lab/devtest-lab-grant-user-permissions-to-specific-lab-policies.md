@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 在开发测试实验室中，策略是一种资源类型，可启用 RBAC 操作 **Microsoft.DevTestLab/labs/policySets/policies/**。 每个实验室策略都是策略资源类型中的一种资源，并可作为作用域分配给 RBAC 角色。
 
-例如，为了向用户授予对“允许的 VM 大小”策略的读取/写入权限，需要创建一个使用“Microsoft.DevTestLab/labs/policySets/policies/*”操作的自定义角色，然后将相应的用户分配给作用域 **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** 中的此自定义角色。
+例如，为了向用户授予对 **允许的 VM 大小** 策略的读取/写入权限，需要创建一个使用 **Microsoft.DevTestLab/labs/policySets/policies/*** 操作 的自定义角色，然后将相应的用户分配给作用域 **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** 中的此自定义角色。
 
 若要了解有关 RBAC 中自定义角色的详细信息，请参阅[自定义角色的访问控制](../active-directory/role-based-access-control-custom-roles.md)。
 

@@ -157,10 +157,10 @@
               href: azure-stack-mysql-resource-provider-deploy.md
             - name: 部署 SQL 资源提供程序
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: 创建 SQL 数据库
-              href: azure-stack-sql-resource-provider-databases.md
             - name: 将宿主服务器添加
               href: azure-stack-sql-resource-provider-hosting-servers.md
+            - name: 创建 SQL 数据库
+              href: azure-stack-sql-resource-provider-databases.md
         - name: 提供应用服务作为 PaaS
           items:
             - name: Azure Stack 上的应用服务概述
@@ -183,11 +183,11 @@
               href: azure-stack-marketplace.md
             - name: 下载 Marketplace 项
               href: azure-stack-download-azure-marketplace-item.md
-            - name: Azure Stack 的 Azure Marketplace 项
+            - name: Azure 堆栈的 azure 应用商店项
               href: azure-stack-marketplace-azure-items.md
             - name: 创建和发布 Marketplace 项
               href: azure-stack-create-and-publish-marketplace-item.md
-            - name: 使用 Marketplace 发布工具
+            - name: 使用应用商店发布工具
               href: azure-stack-marketplace-publisher.md
             - name: 创建自定义虚拟机映像
               href: azure-stack-add-vm-image.md
