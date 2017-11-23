@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: b35595d3dd91932888a26edc92dae81dd71682d8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 15ed35ab3a082db3376890992be3a29b6e042a2f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密
 Microsoft Azure 坚决致力于确保数据隐私权和数据所有权，通过各种先进技术来加密、控制和管理加密密钥，以及控制和审核对数据的访问，让用户能够控制 Azure 托管的数据。 这样，Azure 客户便可以灵活选择最符合其业务需求的解决方案。 在本文中，我们会介绍新的技术解决方案“适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密”，以帮助你保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 本文提供有关如何使用 Azure 磁盘加密功能的详细指导，包括支持的方案和用户体验。
@@ -149,6 +149,7 @@ Azure 磁盘加密管理解决方案可以解决以下业务需求：
 | Ubuntu | 14.04.5-DAILY-LTS | OS 和数据磁盘 |
 | Ubuntu | 12.10 | 数据磁盘 |
 | Ubuntu | 12.04 | 数据磁盘 |
+| RHEL | 7.4 | OS 和数据磁盘 |
 | RHEL | 7.3 | OS 和数据磁盘 |
 | RHEL | LVM 7.3 | OS 和数据磁盘 |
 | RHEL | 7.2 | OS 和数据磁盘 |

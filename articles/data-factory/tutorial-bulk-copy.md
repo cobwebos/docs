@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: f7683bc203c93993c0eb5aaed6ca788458546019
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: be23cd6b500fd186fdcbe6f5c2371f84e075e3e8
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/04/2017
 
 **准备接收器 Azure SQL 数据仓库**：
 
-1. 如果没有 Azure SQL 数据仓库，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md#create-a-sql-data-warehouse)一文了解创建数据仓库的步骤。
+1. 如果没有 Azure SQL 数据仓库，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)一文了解创建数据仓库的步骤。
 
 2. 在 SQL 数据仓库中创建相应的表架构。 可以使用[迁移实用工具](https://www.microsoft.com/download/details.aspx?id=49100)将架构从 Azure SQL 数据库**迁移**到 Azure SQL 数据仓库。 后面的步骤使用 Azure 数据工厂迁移/复制数据。
 

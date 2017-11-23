@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 11/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 848f6cbde49efdcfe96fc58ebc4160e0ea39f3f2
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 0beadcca2247fb64c03835c4cb1e1e4fb9426d6f
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -38,7 +38,7 @@ Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注�
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
+本教程要求运行 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
 若要完成本教程，需要 Docker 开发环境。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
 

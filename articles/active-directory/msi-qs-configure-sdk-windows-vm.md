@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: bryanla
-ms.openlocfilehash: 84fcb0181d635ecd8ebc68b31365fba9d6be21ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 25bbe7bbfbc32441cd3dbbb1e213fdce556b410b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>使用 Azure SDK 配置 VM 托管服务标识 (MSI)
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../includes/msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 ## <a name="azure-sdks-with-msi-support"></a>支持 MSI 的 Azure SDK 
 
@@ -37,7 +37,7 @@ Azure 通过一系列的 [Azure SDK](https://azure.microsoft.com/downloads) 支�
 
 | SDK 中 IsInRole 中的声明 | 示例 |
 | --- | ------ | 
-| .NET   | [从启用了 MSI 的 VM 管理资源](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| .NET   | [从已启用 MSI 的 VM 管理资源](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [从启用了 MSI 的 VM 管理存储](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
 | Node.js| [创建启用了 MSI 的 VM](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
 | Python | [创建启用了 MSI 的 VM](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |

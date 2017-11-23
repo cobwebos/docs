@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 2879e72636ffc7603e29fe8f8233a065fe6f897c
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 60b55acaf687dae76e054b428b8d6584d8eb09f8
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文将演示如何在 [Azure 应用服务](../app-service/app-service-web-overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](web-sites-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
 - [SQL 数据库](https://azure.microsoft.com/en-us/services/sql-database/)
 - [用于 MySQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/en-us/services/mysql)
 - [用于 PostgreSQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/en-us/services/postgres)
-- [ClearDB MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SuccessBricksInc.ClearDBMySQLDatabase?tab=Overview)
 - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 从备份还原适用于在**标准**和**高级**层中运行的应用。 有关向上缩放应用的信息，请参阅[在 Azure 中向上缩放应用](web-sites-scale.md)。 相比于**标准**层，**高级**层允许执行更多的每日备份量。

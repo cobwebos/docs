@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 05af1ccc9702891980e60a1c1db4c527ffbed0fa
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0d2e7e6f17fecb9809ac76fbfa0db860b7948a7e
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 本文说明如何为 Azure AD 域服务托管域启用安全轻量目录访问协议 (LDAPS)。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的轻量目录访问协议 (LDAP)。
@@ -79,9 +79,12 @@ ms.lasthandoff: 11/04/2017
 **使用 PowerShell 创建自签名证书**
 
 在 Windows 计算机上以**管理员**身份打开新的 PowerShell 窗口，并输入以下命令创建新的自签名证书。
-```
+
+```powershell
 $lifetime=Get-Date
-New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
+New-SelfSignedCertificate -Subject *.contoso100.com `
+  -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
+  -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
 在上述示例中，请将“*.contoso100.com”替换为托管域的 DNS 域名。例如，如果创建了名为“contoso100.onmicrosoft.com”的托管域，则将上述脚本中的“*.contoso100.com”替换为“*.contoso100.onmicrosoft.com”。

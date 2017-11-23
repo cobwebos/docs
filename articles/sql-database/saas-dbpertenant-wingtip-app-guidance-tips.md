@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: genemi
-ms.openlocfilehash: fbfaea938676991cf6280e5dd8c1e1190aa268a8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4c90d70bb3b043ef81a224f0f69107eaa6eb0547
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="guidance-and-tips-for-azure-sql-database-multi-tenant-saas-app-example"></a>SQL 数据库多租户 SaaS 应用示例指南和提示
 
 
-## <a name="download-and-unblock-the-wingtip-saas-scripts"></a>下载和取消阻止 Wingtip SaaS 脚本
+## <a name="download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts"></a>下载和取消阻止 Wingtip Tickets SaaS Database per Tenant 脚本
 
 从外部源下载和提取 zip 文件时，可执行内容（脚本、ddl）可能受 Windows 阻止。 从 zip 文件提取脚本时，在提取前请按以下步骤取消阻止 .zip 文件。 这可确保允许运行该脚本。
 
-1. 浏览到 [Wingtip SaaS github 存储库](https://github.com/Microsoft/WingtipSaaS)。
+1. 浏览到 [Wingtip Tickets SaaS Database per Tenant GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)。
 2. 单击“克隆或下载”。
 3. 单击“下载 ZIP”并保存文件。
-4. 右键单击“WingtipSaaS-master.zip”文件，并选择“属性”。
+4. 右键单击“WingtipTicketsSaaS-DbPerTenant-master.zip”文件，并选择“属性”。
 5. 在“常规”选项卡上，选择“取消阻止”。
 6. 单击 **“确定”**。
 7. 解压缩文件。
 
-脚本位于 ..\\WingtipSaaS-master\\Learning Modules 文件夹中。
+脚本位于 *..\\Learning Modules* 文件夹中。
 
 
-## <a name="working-with-the-wingtip-saas-powershell-scripts"></a>使用 Wingtip SaaS PowerShell 脚本
+## <a name="working-with-the-wingtip-tickets-saas-database-per-tenant-powershell-scripts"></a>使用 Wingtip Tickets SaaS Database per Tenant PowerShell 脚本
 
 若要充分利用示例，需深入了解提供的脚本。 使用断点并分步执行脚本，详细检查不同 SaaS 模式实现方式的详细信息。 为了轻松地分步执行提供的脚本和模块，获得最佳理解，建议使用 [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)。
 
@@ -73,10 +73,10 @@ ms.lasthandoff: 11/14/2017
 
 使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接和浏览应用程序服务器和数据库。
 
-部署最初有两个要连接的 SQL 数据库服务器 - tenants1-&lt;User&gt; 服务器和 catalog-&lt;User&gt; 服务器。 为确保成功连接演示，两台服务器的[防火墙规则](sql-database-firewall-configure.md)都允许所有 IP 通过。
+部署最初有两个要连接的 SQL 数据库服务器 - tenants1-dpt-&lt;User&gt; 服务器和catalog-dpt-&lt;User&gt;  服务器。 为确保成功连接演示，两台服务器的[防火墙规则](sql-database-firewall-configure.md)都允许所有 IP 通过。
 
 
-1. 打开 *SSMS* 并连接到 *tenants1-&lt;User&gt;.database.windows.net* 服务器。
+1. 打开 *SSMS* 并连接到 *tenants1-dpt-&lt;User&gt;.database.windows.net* 服务器。
 2. 单击“连接” > “数据库引擎...”：
 
    ![编录服务器](media/saas-dbpertenant-wingtip-app-guidance-tips/connect.png)
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/14/2017
 
    ![连接](media/saas-dbpertenant-wingtip-app-guidance-tips/tenants1-connect.png)
 
-4. 重复步骤 2-3，连接到 *catalog-&lt;User&gt;.database.windows.net* 服务器。
+4. 重复步骤 2-3，连接到 *catalog-dpt-&lt;User&gt;.database.windows.net* 服务器。
 
 
 成功连接后，会看到两个服务器。 你的数据库列表可能会有所不同，具体取决于已预配的租户。
@@ -96,5 +96,5 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)
+[部署 Wingtip Tickets SaaS Database per Tenant 应用程序](saas-dbpertenant-get-started-deploy.md)
 

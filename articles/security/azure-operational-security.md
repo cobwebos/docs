@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ec9e0fc7d67537a47d5c0d3bb376b60dc6ccffcd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8528eeb4eac8397beaa3d0dca37ce9eb33167b32
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
@@ -101,7 +101,7 @@ Azure 备份中的受保护数据存储在位于特定地理区域的备份保�
 [Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。
 
 
-[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
+[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
 
 
 ![管理解决方案](./media/azure-operational-security/azure-operational-security-fig4.png)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 834a81c36557feffaa01c256dad0338617486773
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: e138241139329b8bb956157ab55b7d22dc2a9b67
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/26/2017
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
-确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中提供了详细信息。
+确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](https://docs.microsoft.com/en-us/azure/azure-resource-manager/powershell-azure-resource-manager)中提供了详细信息。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -104,7 +104,7 @@ Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmS
 ```powershell
 New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
 ```
-Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 

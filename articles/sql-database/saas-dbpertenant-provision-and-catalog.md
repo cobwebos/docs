@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 64e70013c267a472a57b2cf172fa50d12a170515
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 17eb9b3ff059912e4fe3fafda0b9c435e3983888
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>SaaS 预配模式简介
 
-在使用单个租户数据库模型的 SaaS 应用程序中载入新租户时，必须预配新租户数据库。  该数据库必须在正确的位置和服务层级创建，必须使用适当的架构和参考数据初始化，然后必须在相应租户密钥下的目录中进行注册。  
+在使用单个租户数据库模型的 SaaS 应用程序中载入新租户时，必须预配新租户数据库。  该数据库必须在正确的位置和服务层级创建，必须使用适当的架构和引用数据初始化，然后必须在相应租户密钥下的目录中进行注册。  
 
 可使用不同方法预配数据库，这些方法可能包括执行 SQL 脚本、部署 bacpac 或复制模板数据库。  
 
@@ -70,7 +70,7 @@ Wingtip Tickets SaaS 租户各有数据库应用通过复制在目录服务器�
 
 ## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
 
-[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了 Wingtip SaaS 脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts)。
+[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了 Wingtip SaaS 脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
 
 
 ## <a name="provision-and-catalog-detailed-walkthrough"></a>预配和编录的详细演练
@@ -127,7 +127,7 @@ Wingtip Tickets SaaS 租户各有数据库应用通过复制在目录服务器�
 
 预配完成后，执行将返回到原始 Demo-ProvisionAndCatalog 脚本，这将在浏览器中打开新租户的“事件”页：
 
-   ![事件](media/saas-dbpertenant-provision-and-catalog/new-tenant.png)
+   ![活动](media/saas-dbpertenant-provision-and-catalog/new-tenant.png)
 
 
 ## <a name="provision-a-batch-of-tenants"></a>预配一批租户

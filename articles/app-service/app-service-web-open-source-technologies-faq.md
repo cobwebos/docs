@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: c0872619a4897b0ac40629df00053f3e49768f64
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的开放源代码技术常见问题解答
 
@@ -32,14 +32,6 @@ ms.lasthandoff: 11/04/2017
 有关数据库相关问题，请联系 [ClearDB 支持人员](https://www.cleardb.com/developers/help/support)。 
 
 有关 ClearDB 常见问题解答，请参阅 [ClearDB 常见问题解答](https://docs.microsoft.com/azure/store-cleardb-faq/)。
-
-## <a name="why-isnt-my-cleardb-database-listed-in-the-portal"></a>门户中为何未列出我的 ClearDB 数据库？
-
-如果是在 [Azure 门户](http://portal.azure.com/)中创建 ClearDB 数据库，则数据库不会出现在 [Azure 经典门户](http://manage.windowsazure.com/)中。 若要解决此问题，可以数据库手动链接到 Web 应用。
-
-同样，如果是在 [Azure 经典门户](http://manage.windowsazure.com/)中创建 ClearDB 数据库，则你不会在 [Azure 门户](http://portal.azure.com/)中看到数据库。 在这种情况下，没有任何解决方法可用。 
-
-有关详细信息，请参阅 [ClearDB MySQL 数据库与 Azure 应用服务搭配使用时的常见问题解答](https://docs.microsoft.com/azure/store-cleardb-faq/)。
 
 ## <a name="why-wasnt-my-cleardb-database-migrated-during-my-subscription-migration"></a>为何我的 ClearDB 数据库未在订阅迁移过程中进行迁移？
 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/11/2017
+ms.date: 11/20/2017
 ms.author: bryanla
-ms.openlocfilehash: a2138d0b99ed57cb78b99e3785f7192c1a323ba5
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: f43ec5bdbf32c3f7c4c1fb3a5aae8367bd050fc9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>使用 Windows VM 托管服务标识通过 SAS 凭据访问 Azure 存储
 
@@ -33,7 +33,11 @@ ms.lasthandoff: 10/12/2017
 > * 向 VM 授予对资源管理器中的存储帐户 SAS 的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索 SAS 
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -96,22 +100,22 @@ ms.lasthandoff: 10/12/2017
 Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM MSI 授予对存储帐户 SAS 的访问权限。   
 
 1. 导航回新创建的存储帐户。   
-2. 单击左侧面板中的“访问控制 (IAM)”。  
+2. 单击左侧面板中的“访问控制(IAM)”链接。  
 3. 单击页面顶部的“+ 添加”，为 VM 添加新的角色分配
 4. 在页面左侧，将“角色”设置为“存储帐户参与者”。  
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
-7. 最后，在“选择”下，从下拉列表中选择你的 Windows 虚拟机，然后单击“保存”。 
+7. 最后，在“选择”下，从下拉列表中选择 Windows 虚拟机，然后单击“保存”。 
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
 
-在本教程的剩余部分中，我们将从前面创建的 VM 开始工作。
+在本教程的剩余部分中，我们从先前创建的 VM 入手。
 
 在此部分中，将需要使用 Azure 资源管理器 PowerShell cmdlet。  如果尚未安装，请[下载最新版本](https://docs.microsoft.com/powershell/azure/overview)，然后再继续。
 
-1. 在 Azure 门户中，导航到“虚拟机”，转到你的 Windows 虚拟机，然后在“概述”页面中单击顶部的“连接”。
+1. 在 Azure 门户中，导航到“虚拟机”，转到 Windows 虚拟机，然后在“概述”页中单击顶部的“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。 
 3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
 4. 使用 Powershell 的 Invoke-WebRequest，向本地 MSI 终结点发出请求以获取 Azure 资源管理器的访问令牌。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
-ms.openlocfilehash: 3a81ab859bea5bfe53c7f761e0b40ad481c4c41a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 014a9c814e91e7d0677b7ea1d994c81384719548
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>使用模板配置 VM 托管服务标识
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../includes/msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>在 Azure VM 创建过程中或在现有 VM 上启用 MSI
 

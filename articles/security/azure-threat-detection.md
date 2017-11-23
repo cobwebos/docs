@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a7a1179f815395028c4d0324e2bfb6fbed77229c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 ## <a name="introduction"></a>介绍
@@ -402,7 +402,7 @@ Cloud App Security 通过以下方式将可见性集成到云端
 
 从这些源收集数据时，Cloud App Security 会对数据运行复杂的分析。 它会立即向你发出有关异常活动的警报，帮助你获得对云环境的深度了解。 可以在 Cloud App Security 中配置策略，并使用它来保护云环境中的所有内容。
 
-## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Azure 应用商店提供的第三方 ATD 功能
+## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Azure Marketplace 提供的第三方 ATD 功能
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 

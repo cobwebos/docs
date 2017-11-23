@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 6e816f151ea1f71770f00d6d77b65395fe080da3
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 85ea328bdea1aad28765712e3639f6719deab7e2
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云 (SaaS) 应用提供单一登录，并提供对你在本地运行的 Web 应用的访问。

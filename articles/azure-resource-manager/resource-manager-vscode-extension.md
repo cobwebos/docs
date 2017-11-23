@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 09/06/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: fbc0fd12999c9085c3c364f0d7115eb1ab1ddd74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71544726b4ec8701ef558bf50d15bddfabd830cc
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>使用 Visual Studio Code 扩展创建 Azure 资源管理器模板
 本文介绍在 Visual Studio Code 中安装和使用 Azure 资源管理器工具扩展有哪些好处。 可以在 VS Code 中创建不带扩展的资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 它会为用户建议可以在模板中使用的模板函数、参数和变量。
 
 若要完成本文的操作，需安装 [Visual Studio Code](https://code.visualstudio.com/)。
 
-若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。
+若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 
 ## <a name="create-the-template"></a>创建模板
 
@@ -179,8 +179,8 @@ ms.lasthandoff: 10/11/2017
          "value": "[resourceGroup().location]"
        },
        "storageUri": {
-         "type": "string",
-         "value": "[reference(variables('storageName'))]"
+         "type": "object",
+         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName')))]"
        }
    }
    ```
@@ -247,8 +247,8 @@ ms.lasthandoff: 10/11/2017
       "value": "[resourceGroup().location]"
     },
     "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageName'))]"
+      "type": "object",
+      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName')))]"
     }
   }
 }
@@ -295,6 +295,6 @@ az group delete --name examplegroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+* 若要详细了解模板的结构，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 * 若要了解存储帐户的属性，请查看[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。

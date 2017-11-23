@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 11/16/2017
 ms.author: glenga
-ms.openlocfilehash: 81331142aa6110d4e29e6fb30a90ce6e3a853439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d38482ebca736e4d7d0fe0b1b4b5dd0220de5b4
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-authentication-to-your-android-app"></a>将身份验证添加到 Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
-1. 在 [Azure 门户]中，选择应用服务。
+1. 在 [Azure 门户]中，选择“应用服务”。
 
 2. 单击“身份验证/授权”菜单选项。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
      发生此异常的原因是应用尝试以未经身份验证的用户身份访问后端，但 TodoItem 表现在要求身份验证。
 
-接下来，需要更新应用，以便在从移动应用后端请求资源之前对用户进行身份验证。 
+接下来，需要更新应用，以便在从移动应用后端请求资源之前对用户进行身份验证。
 
 ## <a name="add-authentication-to-the-app"></a>向应用程序添加身份验证
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
@@ -79,3 +79,4 @@ ms.lasthandoff: 10/11/2017
 
 <!-- URLs. -->
 [移动应用入门]: app-service-mobile-android-get-started.md
+[Azure 门户]: https://portal.azure.com/

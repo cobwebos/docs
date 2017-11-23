@@ -15,14 +15,12 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
 
 本指南介绍与部署和管理 Microsoft Azure 基础结构相关的核心概念。 对于不熟悉云计算或 Azure 本身的用户，本指南可帮助其快速了解相关概念、部署和管理的详细信息。 本指南的许多部分讨论了部署虚拟机等操作，还提供了链接，供深入了解技术详情。
@@ -517,4 +515,3 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 - [创建 Windows VM](/virtual-machines/windows/quick-create-portal.md)
 - [创建 Linux VM](../../virtual-machines/linux/quick-create-portal.md)
-

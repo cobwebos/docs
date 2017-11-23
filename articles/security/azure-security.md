@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b22ad29e593a9293a98acebca065f19ab2d9d5be
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -78,10 +78,10 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 此外，检测到特定事件时，可以将 OMS 安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 
-### <a name="azure-resource-manager"></a>Azure Resource Manager
-可以使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) 以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure Resource Manager 模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
+### <a name="azure-resource-manager"></a>Azure 资源管理器
+可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure 资源管理器模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
-基于 Azure Resource Manager 模板的部署因其标准的安全控制设置，有助于提高 Azure 中部署的解决方案的安全性，并且还可以集成到基于标准化模板的部署中。 这样可以降低手动部署期间可能发生的安全配置错误风险。
+基于 Azure 资源管理器模板的部署因其标准的安全控制设置，有助于提高 Azure 中部署的解决方案的安全性，并且还可以集成到基于标准化模板的部署中。 这样可以降低手动部署期间可能发生的安全配置错误风险。
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](https://docs.microsoft.com/azure/application-insights/) 是面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 用户可以使用 Application Insights 监视实时 Web 应用程序并自动检测性能异常。 Application Insights 内含强大的分析工具，有助于诊断问题并了解用户在应用中实际执行的操作。 它在应用程序运行时全程进行监视，包括测试期间以及发布或部署之后。
@@ -152,7 +152,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) 模型访问存储帐户的存储密钥的情况。
+可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](https://docs.microsoft.com/azure/storage/storage-security-guide)模型访问存储帐户的存储密钥的情况。
 
 ### <a name="shared-access-signature"></a>共享访问签名
 [共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
@@ -207,7 +207,7 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 强制隧道通常用于强制到 Internet 的外部流量通过本地安全代理和防火墙。
 
 #### <a name="virtual-network-security-appliances"></a>虚拟网络安全设备
-虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure 应用商店](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
+虽然网络安全组、用户定义的路由和强制隧道在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络层和传输层为用户提供了一定程度的安全性，但有时可能想要启用堆栈的更高级别安全性。 可以使用 Azure 合作伙伴安全设备解决方案访问这些增强的网络安全功能。 通过访问 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ### <a name="azure-virtual-network"></a>Azure 虚拟网络
 

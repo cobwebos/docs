@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 91e46d690d3e7c298bc3b4020cc383ca99c43c4f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f15378c50dbf80863305ed4d1f31ae75f46a7789
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="application-architecture-on-azure"></a>Azure 上的应用程序体系结构
 要在 Microsoft Azure 上帮助保护基于云的解决方案，坚实的体系结构基础是至关重要的。 架构师、设计师和实施者全部受益于应用程序和服务体系结构的扎实的知识。 此基础知识可帮助你了解基于云的解决方案的所有组件，并且更加轻松地将安全集成到设计和实现的各个方面。

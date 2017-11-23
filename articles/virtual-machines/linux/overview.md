@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ae4b8f423489bf417f1086368db9b1043cd7f396
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: cef9abddf980c695040e99995eb325eeb182fad4
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
 Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许根据客户端所需的任何规模，随时扩展和缩减解决方案。
@@ -53,7 +53,7 @@ Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 
 下面是从我们提供的系列（A、D、DS、G 和 GS）之一中选择 VM 大小的基本指导原则。
 * A 系列 VM 是高性价比的入门级 VM，适用于轻度工作负荷和开发/测试方案。 所有区域都广泛提供此系列 VM，它们可用于连接和使用虚拟机可用的所有标准资源。
 * A 系列大小 (A8 - A11) 是特殊的计算密集型配置，适用于高性能计算群集应用程序。
-* D 系列的 VM 旨在运行需要更高计算能力和临时磁盘性能的应用程序。 D 系列 VM 为临时磁盘提供更快的处理器、更高的内存内核比和固态驱动器 (SSD)。
+* D 系列的 VM 旨在运行需要更高计算能力和临时磁盘性能的应用程序。 D 系列 VM 为临时磁盘提供更快的处理器、更高的内存 vCPU 比和固态硬盘 (SSD)。
 * Dv2 系列是 D 系列的最新版本，具有更强大的 CPU。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 该系列基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 (Haskell) 处理器，通过 Intel Turbo Boost Technology 2.0 可以达到 3.2 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 * G 系列的 VM 可提供最大的内存，并在配备 Intel Xeon E5 V3 系列处理器的主机上运行。
 
@@ -80,17 +80,17 @@ Azure 正在支持它的大多数 Linux 发行版中推出 [cloud-init](http://c
 Microsoft 与合作伙伴紧密合作，以确保可用映像进行更新并针对 Azure 运行时进行优化。  有关合作伙伴的详细信息，请在下面查看其应用商店页。
 
 * Azure 上的 Linux - [认可的分发](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* SUSE - [Azure 应用商店 - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-* Redhat - [Azure 应用商店 - RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
-* Canonical - [Azure 应用商店 - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
-* Debian - [Azure 应用商店 - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD - [Azure 应用商店 - FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-* CoreOS - [Azure 应用商店 - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
-* RancherOS - [Azure 应用商店 - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
+* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* Redhat - [Azure Marketplace - RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Canonical - [Azure Marketplace - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
+* Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
+* FreeBSD - [Azure Marketplace - FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+* CoreOS - [Azure Marketplace - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
+* RancherOS - [Azure Marketplace - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami - [Bitnami Library for Azure](https://azure.bitnami.com/)
-* Mesosphere - [Azure 应用商店 - Azure 上的 Mesosphere DC/OS](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
-* Docker - [Azure 应用商店 - 具有 Docker Swarm 的 Azure 容器服务](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-* Jenkins - [Azure 应用商店 - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* Mesosphere - [Azure Marketplace - Azure 上的 Mesosphere DC/OS](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
+* Docker - [Azure Marketplace - 具有 Docker Swarm 的 Azure 容器服务](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
+* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
 ## <a name="getting-started-with-linux-on-azure"></a>Azure 上的 Linux 入门
 若要开始使用 Azure，需要 Azure 帐户、已安装 Azure CLI 和一对 SSH 公钥和私钥。

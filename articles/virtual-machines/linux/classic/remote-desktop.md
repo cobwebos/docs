@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.openlocfilehash: 2ad497a0244f9c7cdad34faf807cc9ed10ea704d
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 228f3153f47e0b147688fe958a767660976b08be
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>使用远程桌面连接到 Microsoft Azure Linux VM
 > [!IMPORTANT] 
@@ -49,18 +49,23 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 
 对于 Ubuntu，使用：
 
-    #sudo apt-get update
-    #sudo apt-get install ubuntu-desktop
-
+```bash
+sudo apt-get update
+sudo apt-get install ubuntu-desktop
+```
 
 对于 OpenSUSE，使用：
 
-    #sudo zypper install gnome-session
+```bash
+sudo zypper install gnome-session
+```
 
 ## <a name="install-xrdp"></a>安装 xrdp
 对于 Ubuntu，使用：
 
-    #sudo apt-get install xrdp
+```bash
+sudo apt-get install xrdp
+```
 
 对于 OpenSUSE，使用：
 
@@ -69,15 +74,18 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 > 
 > 
 
-    #sudo zypper in http://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_13.2/x86_64/xrdp-0.9.0git.1401423964-2.1.x86_64.rpm
-    #sudo zypper install tigervnc xorg-x11-Xvnc xterm remmina-plugin-vnc
-
+```bash
+sudo zypper in http://download.opensuse.org/repositories/X11:/RemoteDesktop/openSUSE_13.2/x86_64/xrdp-0.9.0git.1401423964-2.1.x86_64.rpm
+sudo zypper install tigervnc xorg-x11-Xvnc xterm remmina-plugin-vnc
+```
 
 ## <a name="start-xrdp-and-set-xdrp-service-at-boot-up"></a>启动时启动 xrdp 并设置 xdrp 服务
 对于 OpenSUSE，使用：
 
-    #sudo systemctl start xrdp
-    #sudo systemctl enable xrdp
+```bash
+sudo systemctl start xrdp
+sudo systemctl enable xrdp
+```
 
 对于 Ubuntu，安装后，在启动时会自动启动并启用 xrdp。
 
@@ -86,22 +94,29 @@ Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过�
 
 若要安装 `xfce`，请使用此命令：
 
-    #sudo apt-get install xubuntu-desktop
+```bash
+sudo apt-get install xubuntu-desktop
+```
 
 然后使用此命令启用 `xfce`：
 
-    #echo xfce4-session >~/.xsession
+```bash
+echo xfce4-session >~/.xsession
+```
 
 编辑配置文件 `/etc/xrdp/startwm.sh`：
 
-    #sudo vi /etc/xrdp/startwm.sh   
+```bash
+sudo vi /etc/xrdp/startwm.sh   
+```
 
 在 `/etc/X11/Xsession` 行之前添加 `xfce4-session` 行。
 
 若要重新启动 xrdp 服务，请使用：
 
-    #sudo service xrdp restart
-
+```bash
+sudo service xrdp restart
+```
 
 ## <a name="connect-your-linux-vm-from-a-windows-machine"></a>从 Windows 计算机连接 Linux VM
 在 Windows 计算机中，启动远程桌面客户端并输入 Linux VM DNS 名称。 或转到 Azure 门户中的 VM 仪表板并单击 `Connect` 连接到 Linux VM。 在这种情况下，将看到登录窗口：

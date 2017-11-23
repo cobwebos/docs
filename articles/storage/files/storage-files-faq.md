@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: renash
-ms.openlocfilehash: 871fc85d0b406d2de35a79eb2906ff2d6ada9570
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: da8ccf35dcc873a5c31842c6eb7bdf72879854c2
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>有关 Azure 文件的常见问题解答
 [Azure 文件](storage-files-introduction.md)在云中提供可以通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)（也称为通用 Internet 文件系统，简称 CIFS）访问的完全托管文件共享。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步（预览版）在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/07/2017
 本文回答了关于 Azure 文件特性和功能（包括 Azure 文件同步与 Azure 文件的使用）的常见问题。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
 
 1. 本文评论部分。
-2. [Azure 存储论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredata)。
+2. [Azure 存储论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuredata)。
 3. [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
 

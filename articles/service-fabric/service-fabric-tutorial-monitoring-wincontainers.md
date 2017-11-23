@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 16c9926d44f972d2b38028cb6ab1420de6b60533
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69a59ea9fb93f6e9f3f3eea66b1a9e973b1b4eea
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>使用 OMS 监视 Service Fabric 上的 Windows 容器
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 开始学习本教程之前，应做好以下准备：
-- 在 Azure 上拥有一个群集，或者[使用此教程创建一个群集](service-fabric-tutorial-create-cluster-azure-ps.md)
+- 在 Azure 上拥有一个群集，或者[使用此教程创建一个群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [将容器化的应用程序部署到该群集](service-fabric-host-app-in-a-container.md)
 
 ## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>在资源管理器模板中为群集设置 OMS

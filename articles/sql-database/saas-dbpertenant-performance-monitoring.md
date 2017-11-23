@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: a74a439eab3698e14e5b8e2db0d45a86e9f55f0e
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 450a5fc578948db044d9e0bb9db09508b2512aca
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -64,7 +64,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的源代码和脚本
 
-可在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github 存储库中查看 Wingtip Tickets SaaS Database Per Tenant 的脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS Database Per Tenant 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts)。
+可在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github 存储库中查看 Wingtip Tickets SaaS Database Per Tenant 的脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS Database Per Tenant 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
 
 ## <a name="provision-additional-tenants"></a>预配其他租户
 
@@ -72,7 +72,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 如果在之前的教程中已预配一批租户，则可跳到[模拟所有租户数据库上的使用情况](#simulate-usage-on-all-tenant-databases)部分。
 
-1. 在 PowerShell ISE 中打开 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 **$DemoScenario** = **1**，**预配一批租户**
 1. 按 **F5** 运行脚本。
 
@@ -94,7 +94,7 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../a
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 eDTU 为单位）、持续时间和间隔在各个数据库之间并不相同，模拟不可预测的租户活动。
 
-1. 在 PowerShell ISE 中打开 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 $DemoScenario = 2，生成正常强度负载。
 1. 按 **F5** 将负载应用到所有租户数据库。
 

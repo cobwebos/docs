@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: ad7434efcead9a250bda9958ade74e798609a25d
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 701a7296368cd8150eedf8cc50b989fdf6112101
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
-可在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github 存储库中查看 Wingtip Tickets SaaS Database Per Tenant 的脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS Database Per Tenant 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts)。
+可在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github 存储库中查看 Wingtip Tickets SaaS Database Per Tenant 的脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS Database Per Tenant 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>创建作业帐户数据库和新的作业帐户
 

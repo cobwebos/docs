@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 80cdd07bff865776a68897a7b8c1b3fe66b76b18
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 9d8a9f1c32578abff1d98e093469e1a780f6cd80
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>如何在 Azure 机器学习工作台中使用 Jupyter Notebook
 
 Azure 机器学习工作台通过 Jupyter Notebook 的集成支持交互式数据科学试验。 本文介绍如何有效利用此功能来提高交互式数据科学实验的速度和质量。
 
 ## <a name="prerequisites"></a>先决条件
-- [安装和创建 Azure 机器学习](/machine-learning/preview/quickstart-installation.md)。
+- [安装和创建 Azure 机器学习](quickstart-installation.md)。
 - 熟悉 [Jupyter Notebook](http://jupyter.org/)，因为本文不讲授如何使用 Jupyter。
 
 ## <a name="jupyter-notebook-architecture"></a>Jupyter Notebook 体系结构

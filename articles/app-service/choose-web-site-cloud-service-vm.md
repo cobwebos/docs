@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
 ## <a name="overview"></a>概述
@@ -48,7 +48,7 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 | 访问 Service Bus、存储空间、SQL 数据库之类的服务 |X |X |X |X | |
 | 托管多层体系结构的 web 或 web 服务层 |X |X |X |X | |
 | 托管多层体系结构的中间层 |X |X |X |X |应用服务 Web 应用可轻松托管 REST API 中间层，而 [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) 功能可托管后台处理作业。 可在专用网站中运行 WebJobs，实现层的独立可扩展性。 |
-| 集成的 MySQL-as-a-service 支持 |X |X |X | |云服务可以通过 ClearDB 的产品集成“MySQL 即服务”，但不作为 Azure 门户工作流的一部分。 |
+| 集成的 MySQL-as-a-service 支持 |X |X | | | |
 | 支持 ASP.NET、经典 ASP、Node.js、PHP、Python |X |X |X |X |Service Fabric 支持使用 [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) 创建 Web 前端，或者也可按[来宾可执行文件](../service-fabric/service-fabric-deploy-existing-app.md)的形式部署任何类型的应用程序（Node.js、Java 等）。 |
 | 向外扩展到多个实例且无需重新部署 |X |X |X |X |虚拟机可以扩大到多个实例，但必须编写这些虚拟机上运行的服务，来处理向外扩展。需要配置负载均衡器，跨计算机路由请求；还需要创建地缘组，防止因维护或硬件故障导致同时重新启动所有实例。 |
 | 支持 SSL |X |X |X |X |对于应用服务 Web 应用，只有基本和标准模式支持自定义域名的 SSL。 若要了解如何结合使用 SSL 和 Web 应用，请参阅[为 Azure 网站配置 SSL 证书](app-service-web-tutorial-custom-ssl.md)。 |
@@ -97,7 +97,7 @@ Azure 应用服务是托管公司网站的理想解决方案。 通过 Web 应�
 * 与 Azure Active Directory 集成
 
 ### <a id="iis6"></a> 我拥有在 Windows Server 2003 上运行的 IIS6 应用程序。
-Azure 应用服务可轻松避免在迁移较旧的 IIS6 应用程序时带来的基础结构成本。 Microsoft 已经创建[易于使用的迁移工具和详细的迁移指南](https://www.movemetowebsites.net/)，可利用它检查兼容性，并确定需要进行的任何更改。 因为与 Visual Studio、TFS 和常见的 CMS 工具集成，所以能够更轻松地将 IIS6 应用程序直接部署到云中。 部署后，Azure 门户可以提供强大的管理工具，帮助你通过缩减规模管理成本，并根据需要扩展规模来满足业务要求。 使用迁移工具可以：
+Azure 应用服务可轻松避免在迁移较旧的 IIS6 应用程序时带来的基础结构成本。 Microsoft 已经创建[易于使用的迁移工具和详细的迁移指南](https://www.migratetoazure.net/)，可利用它检查兼容性，并确定需要进行的任何更改。 因为与 Visual Studio、TFS 和常见的 CMS 工具集成，所以能够更轻松地将 IIS6 应用程序直接部署到云中。 部署后，Azure 门户可以提供强大的管理工具，帮助你通过缩减规模管理成本，并根据需要扩展规模来满足业务要求。 使用迁移工具可以：
 
 * 轻松快速地将旧版 Windows Server 2003 Web 应用程序迁移到云中。
 * 选择在本地保留附加的 SQL 数据库，以创建混合应用程序。
@@ -106,7 +106,7 @@ Azure 应用服务可轻松避免在迁移较旧的 IIS6 应用程序时带来�
 ### <a id="smallbusiness"></a>我是小型企业所有者，我需要使用一种成本较低的方式来托管站点，同时也要兼顾将来的业务增长。
 Azure 应用服务是适合该情况的强大解决方案，原因是其可免费使用且随后可按需添加更多功能。 每个免费的 Web 应用都附带 Azure 提供的域 (your_company.azurewebsites.net)，并且平台中包含集成的部署和管理工具，以及帮助用户轻松入门的应用程序库。 还有许多其他服务和扩展选项，让站点可以随着用户需求的增加而发展。 通过 Azure 应用服务，可以：
 
-* 从免费层开始，并根据需要向上扩展。
+* 从免费层开始，并根据需要提升。
 * 使用应用程序库快速设置流行的 Web 应用程序，如 WordPress。
 * 根据需要向应用程序添加其他 Azure 服务和功能。
 * 使用 HTTPS 保护 Web 应用。
@@ -174,7 +174,6 @@ Azure 应用服务是适合该情况的强大解决方案，原因是其可免�
 [Cloud Services]: /azure/cloud-services/
 [Virtual Machines]: /azure/virtual-machines/
 [Service Fabric]: /azure/service-fabric/
-[ClearDB]: http://www.cleardb.com/
 [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
 [Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
 [azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps

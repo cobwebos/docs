@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: sdanie
-ms.openlocfilehash: 0a5c95eab3fd01f611fc049e80c5c506857e0b81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b65d513d6418f13a6f3e10644c1892eecbcba1d
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-若要深入了解经典部署模型，请参阅 [Azure Resource Manager 与经典部署：了解部署模型和资源状态](../azure-resource-manager/resource-manager-deployment-model.md#classic-deployment-characteristics)。
+若要深入了解经典部署模型，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ## <a name="prerequisites"></a>先决条件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
     Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
-在可以将 Windows PowerShell 与 Azure Resource Manager 一起使用之前，需要具备以下项：
+在可以将 Windows PowerShell 与 Azure 资源管理器一起使用之前，需要具备以下项：
 
 * Windows PowerShell 3.0 版或 4.0 版。 若要查找 Windows PowerShell 的版本，请键入：`$PSVersionTable` 并验证 `PSVersion` 的值是否为 3.0 或 4.0。 若要安装兼容版本，请参阅 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)。
 
@@ -780,7 +780,7 @@ ms.lasthandoff: 10/11/2017
 要了解有关将 Windows PowerShell 与 Azure 配合使用的详细信息，请参阅以下资源：
 
 * [MSDN 上的 Azure Redis 缓存 cmdlet 文档](https://msdn.microsoft.com/library/azure/mt634513.aspx)
-* [Azure Resource Manager Cmdlet](http://go.microsoft.com/fwlink/?LinkID=394765)：了解如何在 AzureResourceManager 模块中使用这些 cmdlet。
+* [Azure 资源管理器 Cmdlet](http://go.microsoft.com/fwlink/?LinkID=394765)：了解如何在 Azure 资源管理器模块中使用这些 cmdlet。
 * [使用资源组来管理 Azure 资源](../azure-resource-manager/resource-group-template-deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
 * [Azure 博客](http://blogs.msdn.com/windowsazure)：了解 Azure 中的新功能。
 * [Windows PowerShell 博客](http://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。

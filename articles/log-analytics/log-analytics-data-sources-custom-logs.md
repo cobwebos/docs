@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 11/17/2017
 ms.author: bwren
-ms.openlocfilehash: e3a4c631cd69921fec60b3ae33a23c4c7c369194
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -56,10 +56,6 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 如果使用时间戳分隔符，则存储在 OMS 中的每个记录的 TimeGenerated 属性将填充为在日志文件中为相应条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Log Analytics 收集此条目的日期和时间。
 
-> [!NOTE]
-> 当前，从使用时间戳分隔符的日志收集记录时，Log Analytics 将其中的日期/时间视为 UTC。  不久以后会按各代理上的时区处理。
->
->
 
 1. 单击“浏览”，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”。
 2. 单击“下一步”。

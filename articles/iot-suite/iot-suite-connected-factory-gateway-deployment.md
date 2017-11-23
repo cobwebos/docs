@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: f6a69ecbeb09dc042eff7c1f95ee518e701b0507
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 32a62be9578ac802ee8fff1b0aa48e2d39362e63
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>在 Windows 或 Linux 上为已连接的工厂预配置解决方案部署网关
 
@@ -65,9 +65,9 @@ ms.lasthandoff: 11/14/2017
 
 1. 在命令提示符中通过以下代码一次性运行两个网关模块，为 IoT 中心配置网关：
 
-    `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+    `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
 
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
     * &lt;ApplicationName&gt; 是提供给 OPC UA 发布服务器的名称，采用 publisher.&lt;完全限定的域名&gt;格式。 例如，如果工厂网络名称是“myfactorynetwork.com”，则 ApplicationName 的值是“publisher.myfactorynetwork.com”。
     * &lt;IoTHubOwnerConnectionString&gt; 是在上一步中复制的 iothubowner 连接字符串。 此连接字符串仅用于此步骤中，在后续的步骤中无需再使用它：
@@ -78,9 +78,9 @@ ms.lasthandoff: 11/14/2017
 
 1. 使用以下命令，重启网关：
 
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
 
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
+    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
 
 1. 出于安全考虑，D:\\docker 文件夹中保存的这两个 X.509 证书包含私钥。 将此文件夹的访问限制为通过用于运行 Docker 容器的凭据（通常为管理员）进行访问。 右键单击 D:\\docker 文件夹，依次选择“属性”、“安全”、“编辑”。 为管理员提供完全控制，并删除其他人：
 
@@ -117,9 +117,9 @@ ms.lasthandoff: 11/14/2017
 
 1. 在 shell 中通过以下代码一次性运行两个网关模块，为 IoT 中心配置网关：
 
-    `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+    `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
 
-    `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+    `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
     * &lt;ApplicationName&gt; 是 OPC UA 应用程序的名称，该应用程序是网关以 publisher.&lt;完全限定的域名&gt;的格式创建的。 例如，publisher.microsoft.com。
     * &lt;IoTHubOwnerConnectionString&gt; 是在上一步中复制的 iothubowner 连接字符串。 此连接字符串仅用于此步骤中，在后续的步骤中无需再使用它：
@@ -130,9 +130,9 @@ ms.lasthandoff: 11/14/2017
 
 1. 使用以下命令，重启网关：
 
-    `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 --rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 --rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
 
-    `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
+    `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
 
 1. 出于安全考虑，/shared 文件夹中保存的这两个 X.509 证书包含私钥。 将此文件夹的访问限制为通过用于运行 Docker 容器的凭据进行访问。 若只需设置根的权限，请在文件夹中使用 `chmod` shell 命令。
 

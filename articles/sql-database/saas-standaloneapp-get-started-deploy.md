@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: sstein
-ms.openlocfilehash: ce0268f800dcf1900730d6ad9c476fb06320a79e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2ca290dfcb23215ffd727500e76076ae8b14fa6f
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 
-本教程中将部署和浏览 Wingtip 票证 SaaS Standlone 应用程序。 该应用程序旨在展示简化启用 SaaS 方案的 Azure SQL 数据库功能。
+本教程中将部署和浏览 Wingtip 票证 SaaS 独立应用程序。 该应用程序旨在展示简化启用 SaaS 方案的 Azure SQL 数据库功能。
 
 独立应用程序模式为每个租户部署包含单租户应用程序和单租户数据库的 Azure 资源组。  可以预配应用程序的多个实例，提供多租户解决方案。
 
@@ -50,11 +50,11 @@ ms.lasthandoff: 11/15/2017
 为提供的三个租户部署应用：
 
 1. 单击每个“部署到 Azure”按钮，打开 Azure 门户中的部署模板。 每个模板要求两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的用户名。 下一个步骤提供了设置这些值的详细信息。<br><br>
-    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>     &nbsp;&nbsp;Contoso 音乐厅
+    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>     &nbsp;&nbsp;**Contoso 音乐厅**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp;&nbsp;Dogwood Dojo
+    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp;&nbsp;**Dogwood Dojo**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>    &nbsp;&nbsp;Fabrikam 爵士乐俱乐部
+    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>    &nbsp;&nbsp;**Fabrikam 爵士乐俱乐部**
 
 2. 输入每个部署所需的参数值。
 
