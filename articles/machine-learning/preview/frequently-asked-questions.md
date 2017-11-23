@@ -9,11 +9,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 75dff9bc10294621218a89b809552c8abcd57017
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 33583fb3d9bca94592c05c4c39c802e673a2ea8a
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -165,7 +165,6 @@ Workbench 中的数据准备工具当前支持以下格式的引入：
 对于公共预览版，Workbench 支持来自以下来源的数据引入： 
 - 本地硬盘驱动器或映射的网络存储位置
 - Azure BLOB 或 Azure 存储（需要 Azure 订阅）
-- Azure Data Lake 或 Azure Data Lake 存储（需要 Azure 订阅）
 - Azure SQL Server
 - Microsoft SQL Server
 

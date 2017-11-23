@@ -1,6 +1,6 @@
-在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 不要忘记将 `<app_name>` 替换为唯一的应用名称。
+在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 
 
-以下命令中的运行时设置为 `NODE|6.9`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes](/cli/azure/webapp#list-runtimes)。 
+在以下示例中，将 `<app_name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `NODE|6.9`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes](/cli/azure/webapp#list-runtimes)。 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git

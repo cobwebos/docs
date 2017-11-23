@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9e5c929251259a86944121e504dc033bc99e3bc4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 035f51d9f12e887d2017b058f0b0471870f411f7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -56,7 +56,7 @@ Microsoft Azure 日志数据可导出到安全事件和事件管理 (SIEM) 系�
 云应用程序很复杂，包含很多移动部件。 日志可以为用户提供数据，确保应用程序始终处于正常运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以使用日志记录数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
 Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下主要类型进行分类：
--   控制/管理日志，使 Azure Resource Manager 的 CREATE、UPDATE 和 DELETE 操作可见。 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)就是此类日志的示例。
+-   控制/管理日志，使 Azure 资源管理器的 CREATE、UPDATE 和 DELETE 操作可见。 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)就是此类日志的示例。
 
 -   数据平面日志，使作为 Azure 资源的使用情况的一部分引发的事件可见。 此类日志的示例是虚拟机中的 Windows 事件系统、安全性、应用程序日志以及通过 Azure Monitor 配置的[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 
@@ -67,8 +67,8 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 
 | 日志类别 | 日志类型 | 用途 | 集成 |
 | ------------ | -------- | ------ | ----------- |
-|[活动日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager 资源上的控制平面事件| 提供相关信息，方便用户了解对订阅中的资源执行的操作。| Rest API 和 [Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
-|[Azure 诊断日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure Resource Manager 资源操作频繁生成的数据|   提供相关信息，以便深入了解资源本身执行的操作| Azure Monitor，[Stream](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
+|[活动日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure 资源管理器资源上的控制平面事件| 提供相关信息，方便用户了解对订阅中的资源执行的操作。| Rest API 和 [Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
+|[Azure 诊断日志](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据|   提供相关信息，以便深入了解资源本身执行的操作| Azure Monitor，[Stream](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD 报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-azure-portal)|日志和报告|关于用户和组管理的用户登录活动和系统活动信息|[Graph API](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[虚拟机和云服务](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows 事件日志和 Linux Syslog|  在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中使用 [WAD](https://docs.microsoft.com/en-us/azure/azure-diagnostics)（Windows Azure 诊断存储）的 Windows 和 Linux|
 |[存储分析](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|  REST API 或[客户端库](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
@@ -186,7 +186,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 -   [使用 PowerShell 在 Azure 虚拟机上设置诊断](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-extensions-diagnostics?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
--   [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+-   [使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="storage-analytics"></a>存储分析
 [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析日志记录可用于 [Blob、队列和表服务](https://docs.microsoft.com/azure/storage/storage-introduction)。 存储分析记录成功和失败的存储服务请求的详细信息。

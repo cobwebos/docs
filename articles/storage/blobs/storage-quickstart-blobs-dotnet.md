@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: 1eac4165c35cb116a359c074bd629c918b58097c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: ca4cb2dea9cdd2e46c3aef042e525acdfc09de8e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>使用 .NET 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 11/13/2017
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)：
-    
-    - **Azure 开发**
+
+- **Azure 开发**
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -83,9 +83,9 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_cbd5f95c-6ab8-4cbf-b
 
 验证文件后，按任意键可完成演示并删除测试文件。 既然现在已了解此示例的用途，打开 Program.cs 文件可查看代码。 
 
-## <a name="understand-the-sample-code"></a>理解示例代码
+## <a name="understand-the-sample-code"></a>了解示例代码
 
-下一步，我们演练示例代码，以便了解它的工作原理。
+接下来逐步介绍示例代码，以便展示其工作方式。
 
 ### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 

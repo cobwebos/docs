@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: c7ee06a00488b3f958127f6d7f57324c7ed14ab4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a157e612ca4fca06a57df478eaa20793c8b35d60
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -49,7 +49,7 @@ Azure 虚拟机的 Dv3 和 Ev3 系列支持嵌套虚拟化。 此功能可在支
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog。
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog。
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 
@@ -142,7 +142,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 3. 单击以选择“DHCP 服务器”复选框，单击“添加功能”，然后单击“下一步”直至完成向导。
   
-4. 单击“安装”。
+4. 单击“安装” 。
 
 #### <a name="configure-a-new-dhcp-scope"></a>配置新的 DHCP 作用域
 

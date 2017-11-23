@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: d77440fe62bbd0e720e5ae60b15574dacc4180c0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2f7a65d32f662d7e265e58c5fe7d9dea81a4e63c
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
 
@@ -33,7 +33,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled              : False
+    Enabled                 : False
     ```
 2. 输入以下命令启用 RSS：
 
@@ -44,7 +44,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
 3. 再次输入 `Get-NetAdapterRss` 命令，确认 RSS 在 VM 中已启用。 如果成功，将返回以下示例输出：
 
     ```powershell
-    Name                    :Ethernet
+    Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled              : True
     ```
@@ -55,26 +55,35 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
 
 ### <a name="ubuntu-for-new-deployments"></a>用于新部署的 Ubuntu
 
-若要获得优化功能，请首先安装 16.04-LTS 的最新支持版本，例如：
+Ubuntu Azure 内核在 Azure 上提供最佳网络性能，并且自 2017 年 9 月 21 日起已成为默认内核。 若要获得此内核，请首先安装 16.04-LTS 的最新支持版本，如下所述：
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
 "Sku": "16.04-LTS",
 "Version": "latest"
 ```
-更新完成后，输入以下命令获取最新内核：
+创建完成后，输入以下命令获取最新更新。 这些步骤也适用于当前正在运行 Ubuntu Azure 内核的 VM。
 
 ```bash
+#run as root or preface with sudo
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+```
+
+对于已经有了 Azure 内核但由于出错而无法进一步更新的现有 Ubuntu 部署，以下可选命令集可能会非常有用。
+
+```bash
+#optional steps may be helpful in existing deployments with the Azure kernel
+#run as root or preface with sudo
 apt-get -f install
 apt-get --fix-missing install
 apt-get clean
 apt-get -y update
 apt-get -y upgrade
+apt-get -y dist-upgrade
 ```
 
-可选命令：
-
-`apt-get -y dist-upgrade`
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>现有 VM 的 Ubuntu Azure 内核升级
 
 重要的吞吐量性能可通过升级到 Azure Linux 内核来实现。 若要验证是否具有此内核，请检查你的内核版本。
@@ -87,7 +96,7 @@ uname -r
 #4.11.0-1014-azure
 ```
 
-然后作为 root 运行这些命令。
+如果 VM 没有 Azure 内核，版本号将通常以“4.4”开头。 在这些情况下，请以 root 身份运行以下命令。
 ```bash
 #run as root or preface with sudo
 apt-get update
@@ -99,14 +108,14 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-若要获得最新的优化功能，请首先更新到最新支持版本，例如：
+若要获得最新优化，最好通过指定以下参数，创建具有最新支持版本的 VM：
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
 "Sku": "7.4",
 "Version": "latest"
 ```
-更新完成后，安装最新 Linux Integration Services (LIS)。
+新的和现有的 VM 可受益于安装最新 Linux Integration Services (LIS)。
 从 4.2.2-2 开始，吞吐量优化位于 LIS 中，尽管更高版本包含更多改进。 输入以下命令以安装最新 LIS：
 
 ```bash
@@ -117,14 +126,14 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-若要获得优化功能，请首先更新到最新支持版本，例如：
+若要获得优化，最好通过指定以下参数，创建具有最新支持版本的 VM：
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
 "Sku": "7-RAW"
 "Version": "latest"
 ```
-更新完成后，安装最新 Linux Integration Services (LIS)。
+新的和现有的 VM 可受益于安装最新 Linux Integration Services (LIS)。
 吞吐量优化功能在从 4.2 开始的 LIS 中。 输入以下命令下载并安装 LIS：
 
 ```bash

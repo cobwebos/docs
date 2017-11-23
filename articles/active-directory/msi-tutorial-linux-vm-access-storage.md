@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/30/2017
-ms.author: elkuzmen
-ms.openlocfilehash: d0b7b34c64692110c1c0d54d4a4d8b9d4186449b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.date: 11/20/2017
+ms.author: bryanla
+ms.openlocfilehash: 8096ef553f6e425a7e872ce33120ba2f41c6475d
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Linux VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -30,8 +30,11 @@ ms.lasthandoff: 10/31/2017
 > * 授予 VM 对资源管理器中存储帐户访问密钥的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索存储访问密钥  
 
+## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。

@@ -1,6 +1,6 @@
 ---
 title: "适用于 Azure 的 MongoDB、Angular 和 Node 教程 - 第 5 部分 | Microsoft Docs"
-description: "本教程系列的第 5 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同"
+description: "本教程系列介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用（所使用的 API 与用于 MongoDB 的 API 完全相同）；这是本教程系列的第 5 部分"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 09/05/2017
 ms.author: mimig
-ms.openlocfilehash: e752e18f6d579633c0cf553224ae7617b774ad0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 697ea4aedb025f4bff4b88df3370ed7c12e7b0d7
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 5 部分：使用 Mongoose 连接到 Azure Cosmos DB
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 开始教程的此部分之前，请确保已完成教程[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)的步骤。
 
 > [!TIP]
-> 本教程介绍分步生成应用程序的步骤。 若要下载完成的项目，可从 GitHub 上的 [angular-cosmosdb 存储库](https://github.com/Azure-Samples/angular-cosmosdb)获取完成的应用程序。
+> 本教程介绍生成应用程序的各个步骤。 若要下载完成的项目，可从 GitHub 上的 [angular-cosmosdb 存储库](https://github.com/Azure-Samples/angular-cosmosdb)获取完成的应用程序。
 
 ## <a name="use-mongoose-to-connect-to-azure-cosmos-db"></a>使用 Mongoose 连接到 Azure Cosmos DB
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
     npm i mongoose --save
     ```
 
-2. 现在，请在名为“mongo.js”的 server 文件夹中创建新文件。 在此文件中，请添加适用于 Azure Cosmos DB 数据库的所有连接信息。
+2. 现在，请在 server 文件夹中创建名为“mongo.js”的新文件。 在此文件中，请添加 Azure Cosmos DB 数据库的所有连接信息。
 
 3. 将以下代码复制到 mongo.js 中。 此代码：
     * 需要 Mongoose。
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
     const env = require('./env/environment');
 
     // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.dbName}:${env.key}@${env.dbName}.documents.azure.com:${env.cosmosPort}/?ssl=true`; //&replicaSet=globaldb`;
+    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
     function connect() {
      mongoose.set('debug', true);
@@ -91,28 +91,26 @@ ms.lasthandoff: 10/11/2017
 5. 从 mongo.js 文件可以知道，需包括 `dbName`、`key` 和 `cosmosPort`，因此请将以下代码复制到 environment.js 中。
 
     ```javascript
-    const cosmosPort = 1234; // replace with your port
-    const dbName = 'your-cosmos-db-name-goes-here';
-    const key = 'your-key-goes-here';
-
+    // TODO: replace if yours are different
     module.exports = {
-      dbName,
-      key,
-      cosmosPort
+      accountName: 'your-cosmosdb-account-name-goes-here',
+      databaseName: 'admin', 
+      key: 'your-key-goes-here',
+      port: 10255
     };
     ```
 
 ## <a name="get-the-connection-string-information"></a>获取连接字符串信息
 
-1. 在 environment.js 中，将 `cosmosPort` 的值更改为 10255。 （可以在 Azure 门户中查找 Cosmos DB 端口）
+1. 在 environment.js 中，将 `port` 的值更改为 10255。 （可以在 Azure 门户中查找 Cosmos DB 端口）
 
     ```javascript
-    const cosmosPort = 10255;
+    const port = 10255;
     ```
 
-2. 在 environment.js 中，将 `dbName` 的值更改为在[步骤 4](tutorial-develop-mongodb-nodejs-part4.md) 中创建的 Azure Cosmos DB 帐户的名称。 
+2. 在 environment.js 中，将 `accountName` 的值更改为在[步骤 4](tutorial-develop-mongodb-nodejs-part4.md) 中创建的 Azure Cosmos DB 帐户的名称。 
 
-3. 在 Terminal 窗口中使用以下 CLI 命令，检索适用于 Azure Cosmos DB 帐户的主密钥： 
+3. 在 Terminal 窗口中使用以下 CLI 命令，检索 Azure Cosmos DB 帐户的主密钥： 
 
     ```azure-cli-interactive
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
@@ -226,7 +224,7 @@ ms.lasthandoff: 10/11/2017
 
     ![Azure 门户中的新 Azure Cosmos DB 帐户](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
-   尚无 hero 存储在应用中，但我们会在本教程的下一步添加放置、推送和删除功能，以便通过目标为 Azure Cosmos DB 数据库的 Mongoose 连接从 UI 中添加、更新和删除 hero。 
+   尚无 hero 存储在应用中，但我们会在本教程的下一步添加放置、推送和删除功能，以便通过与 Azure Cosmos DB 数据库的 Mongoose 连接从 UI 中添加、更新和删除 hero。 
 
 ## <a name="next-steps"></a>后续步骤
 

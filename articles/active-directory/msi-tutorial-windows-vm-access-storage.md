@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2017
-ms.author: elkuzmen
-ms.openlocfilehash: cd3c2e0d1d1db08c5d97033068b154f600497c24
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.date: 11/20/2017
+ms.author: bryanla
+ms.openlocfilehash: e162134f52ceca9d77735893b847782d06e72cfe
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -31,8 +31,11 @@ ms.lasthandoff: 10/25/2017
 > * 授予 VM 对资源管理器中存储帐户访问密钥的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索存储访问密钥 
 
+## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -84,7 +87,7 @@ ms.lasthandoff: 10/25/2017
 稍后我们会将文件上传并下载到新存储帐户。 由于文件需要 blob 存储，我们需要创建用于存储文件的 blob 容器。
 
 1. 导航回新创建的存储帐户。
-2. 单击“Blob 服务”下左侧的“容器”链接。
+2. 在“Blob 服务”下单击左侧的“容器”链接。
 3. 单击页面顶部的“+ 容器”，将滑出“新建容器”面板。
 4. 为容器指定名称，选择访问级别，单击“确定”。 在本教程中的后面部分将使用所指定的名称。 
 
@@ -106,7 +109,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 MSI 
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
 
-在本教程的剩余部分中，我们将从前面创建的 VM 开始说明。 
+在本教程的剩余部分中，我们从先前创建的 VM 入手。 
 
 在此部分中，将需要使用 Azure 资源管理器 PowerShell cmdlet。  如果尚未安装，请[下载最新版本](https://docs.microsoft.com/powershell/azure/overview)，然后再继续。
 

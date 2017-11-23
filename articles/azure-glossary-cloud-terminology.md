@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbc4b8cdb0ff9255d0be02b998e67686921921ea
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -43,7 +43,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅[管理 Windows 虚拟机的可用性](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="classic-model"></a>Azure 经典部署模型
-用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure Resource Manager）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
+用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
 
 ## <a name="cli"></a>Azure 命令行接口 (CLI)
 一个命令行接口，可用于从 Windows、macOS 和 Linux 管理 Azure 服务。  某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 请参阅 [Azure CLI 2.0](/cli/azure/overview)
@@ -87,7 +87,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅 [Azure 产品/服务详细信息页](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>portal
-用于部署和管理 Azure 服务的安全 Web 门户。  有两个门户：[Azure 门户](http://portal.azure.com/)和[经典门户](http://manage.windowsazure.com/)。 有些服务可在这两个门户中使用，而有些服务则只能在其中一个部门中使用。 [Azure portal availability chart](https://azure.microsoft.com/features/azure-portal/availability/)（Azure 门户可用性图表）列出了哪些服务可在哪个门户中使用。
+用于部署和管理 Azure 服务的安全 Web 门户。
 
 ## <a name="region"></a>region
 某个地区内不跨国界且包含一个或多个数据中心的区域。 定价、区域性服务和优惠类型在区域级别公开。 一个区域通常与另一个区域配对，两者距离最多可达数百英里。 区域对可用作灾难恢复和高可用性方案的机制。 也称为位置。  
@@ -95,19 +95,19 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="resource"></a>resource
 属于 Azure 解决方案的一部分的项。 每个 Azure 服务可让你部署不同类型的资源，例如数据库或虚拟机。   
-请参阅 [Azure Resource Manager 概述](azure-resource-manager/resource-group-overview.md)
+请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="resource-group"></a>资源组
 Resource Manager 中的容器，用于保存应用程序的相关资源。 资源组可以包含应用程序的所有资源，也可以只包含逻辑分组在一起的资源。 可以根据对组织有利的原则，决定如何将资源分配到资源组。  
-请参阅 [Azure Resource Manager 概述](azure-resource-manager/resource-group-overview.md)
+请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="arm-template"></a>资源管理器模板
 一个 JSON 文件，它以声明方式定义一个或多个 Azure 资源，并定义所部署资源之间的依赖关系。 使用模板能够以一致方式反复部署资源。  
-请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)
+请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)
 
 ## <a name="resource-provider"></a>资源提供程序
 一种服务，提供可以通过 Resource Manager 进行部署和管理的资源。 每个资源提供程序提供用于处理所部署资源的操作。 可以通过 Azure 门户、Azure PowerShell 和多个编程 SDK 来访问资源提供程序。  
-请参阅 [Azure Resource Manager 概述](azure-resource-manager/resource-group-overview.md)
+请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="role"></a>role
 用于控制可分配给用户、组和服务的访问权限的方式。 角色能够对 Azure 资源执行创建、管理和读取等操作。  

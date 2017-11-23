@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 06/05/2017
+ms.date: 11/21/2017
 ms.author: sutalasi
-ms.openlocfilehash: 73a1f19177f23441f5f7165cf2bc92ba85e62aa5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5d0eb5b8cd5ba49a602d7000291270af31fb222
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="manage-replication-policy-for-vmware-to-azure"></a>管理从 VMware 复制到 Azure 的复制策略
 

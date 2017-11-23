@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 95d58c600bc43059025e739a8cdb062287f4ffb5
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4a2347fe9578b35c95d240c5c4dd2bf062077ece
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成 Cassandra 应用
 
@@ -29,13 +29,14 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在运行此示例之前，必须具备以下先决条件：
-    * [Python](https://www.python.org/downloads/) 版本 v2.7.14
-    * [Git](http://git-scm.com/)
-    * [Apache Cassandra 的 Python 驱动程序](https://github.com/datastax/python-driver)
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或做出承诺。
+有权访问 Azure Cosmos DB Cassandra API 预览程序。 如果尚未申请访问权限，请[立即注册](cassandra-introduction.md#sign-up-now)。
 
+此外：
+* [Python](https://www.python.org/downloads/) 版本 v2.7.14
+* [Git](http://git-scm.com/)
+* [Apache Cassandra 的 Python 驱动程序](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -132,7 +133,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 在 [Azure 门户](http://portal.azure.com/)中，单击“连接字符串”。 
 
-    使用屏幕右侧的 ![“复制”按钮](./media/create-cassandra-python/copy.png) 复制最上面的值“联系点”。
+    使用 ![“复制”按钮](./media/create-cassandra-python/copy.png) 复制最上面的值“联系点”。
 
     ![在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点](./media/create-cassandra-python/keys.png)
 

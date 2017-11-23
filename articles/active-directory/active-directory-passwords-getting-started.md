@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: c5ba922175a25776c6e27ee03fae9b2941235881
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0320cb33dcab63ea394cf8e13e9aef5cc75951fa
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Azure AD 自助密码重置快速部署
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/15/2017
 
 IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法来重置或解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户访问系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
 
-本指南假定已经有了一个可以运行的试用版或许可版 Azure Active Directory (Azure AD) 租户。 如需 Azure AD 设置帮助，请参阅 [Azure AD 入门](https://azure.microsoft.com/trial/get-started-active-directory/)。
+本指南假定已经有了一个可以运行的试用版或许可版 Azure Active Directory (Azure AD) 租户。 如需 Azure AD 设置帮助，请参阅 [Azure AD 入门](get-started-azure-ad.md)。
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>为 Azure AD 租户启用 SSPR
 
@@ -73,7 +73,7 @@ IT 管理员可以让用户通过自助密码重置 (SSPR) 这种简单的方法
 
 * [从 DirSync 或 Azure AD Sync 升级到 Azure AD Connect](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [通过快速设置开始使用 Azure AD Connect](./connect/active-directory-aadconnect-get-started-express.md)
-* [配置密码写回](active-directory-passwords-writeback.md#configuring-password-writeback)，将密码从 Azure AD 写回到本地目录
+* [配置密码写回](active-directory-passwords-writeback.md#configure-password-writeback)，将密码从 Azure AD 写回到本地目录
 
 ### <a name="on-premises-policy-change"></a>本地策略更改
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 15b54f6131c847551295061df6c6ad6a476a7da6
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 1848e15a2be8d89315657a6eabdb94617bd1b5bf
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -56,7 +56,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-在本教程的剩余部分中，使用 `<acrname>` 作为容器注册表名称的占位符。
+在本教程的剩余部分中，使用 `<acrName>` 作为容器注册表名称的占位符。
 
 ## <a name="container-registry-login"></a>容器注册表登录
 

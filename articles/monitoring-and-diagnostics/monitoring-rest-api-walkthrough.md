@@ -18,24 +18,23 @@ ms.dyn365.ops.version:
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: mcollier
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ab522b444c234e1159acfea1780bae1801c4d047
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
-本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure Monitor REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。         
+本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。         
 
 使用 Azure Monitor API 能够以编程方式检索可用的默认指标定义、粒度和指标值。 可将数据保存在独立的数据存储（例如 Azure SQL 数据库、Azure Cosmos DB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
 
-除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Microsoft Azure Monitor REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
+除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 
 ## <a name="authenticating-azure-monitor-requests"></a>对 Azure Monitor 请求进行身份验证
 第一步是对请求进行身份验证。
 
-针对 Azure 监视器 API 执行的所有任务都使用 Azure Resource Manager 身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)的文档。 还可以[通过 Azure 门户创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
+针对 Azure 监视器 API 执行的所有任务都使用 Azure 资源管理器身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password)的文档。 还可以[通过 Azure 门户创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
@@ -677,4 +676,3 @@ Invoke-RestMethod -Uri $request `
 * 查看 [Azure 监视器支持的指标](monitoring-supported-metrics.md)。
 * 查看 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 * 查看 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)。
-

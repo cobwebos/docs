@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
-ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e73a2424d3eb633f6bec63189786a67161750d4f
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
 AzCopy on Linux 是一个命令行实用工具，专用于使用具有优化性能的简单命令将数据复制到 Microsoft Azure Blob 和文件存储以及从这些位置复制数据。 可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。
@@ -559,7 +559,7 @@ azcopy \
     --recursive
 ```
 
-请注意，AzCopy 目前仅支持[帐户 SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1)。
+请注意，AzCopy 目前仅支持[帐户 SAS](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1)。
 
 ### <a name="journal-file-folder"></a>日志文件文件夹
 每次向 AzCopy 发出命令时，它都会检查默认文件夹中是否存在日志文件，或者通过此选项指定的文件夹中是否存在日志文件。 如果这两个位置中都不存在日志文件，AzCopy 则会将操作视为新操作并生成一个新的日志文件。
@@ -673,7 +673,7 @@ AzCopy 旨在最大程度上利用计算机资源来加快数据传输，如果�
 ### <a name="azure-storage-documentation"></a>Azure 存储文档：
 * [Azure 存储简介](../storage-introduction.md)
 * [创建存储帐户](../storage-create-storage-account.md)
-* [使用存储资源管理器管理 Blob](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
+* [使用存储资源管理器管理 Blob](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [将 Azure CLI 2.0 用于 Azure 存储](../storage-azure-cli.md)
 * [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [如何通过 Java 使用 Blob 存储](../blobs/storage-java-how-to-use-blob-storage.md)

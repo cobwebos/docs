@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: spelluru
-ms.openlocfilehash: 30173f8eea2ccbbcd44018596cf34b3769a64b50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d498705ef7f714b4f15b8d2722053bf3081b5045
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。 
@@ -53,6 +53,9 @@ ms.lasthandoff: 10/11/2017
                 "name": "LookupActivity",
                 "type": "Lookup",
                 "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
                     "dataset": { 
                         "referenceName": "LookupDataset", 
                         "type": "DatasetReference" 
@@ -230,7 +233,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="type-properties"></a>Type 属性
-Name | 说明 | 类型 | 必选
+名称 | 说明 | 类型 | 必选
 ---- | ----------- | ---- | --------
 dataset | 该数据集属性为查找提供数据集引用。 目前，支持的数据集类型包括：<ul><li>FileShareDataset</li><li>AzureBlobDataset</li><li>AzureSqlTableDataset</li><li>AzureTableDataset</li> | 键/值对 | 是
 源 | 特定于数据集的源属性，与复制活动源相同 | 键/值对 | 否

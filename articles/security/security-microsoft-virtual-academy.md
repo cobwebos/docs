@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: c5ebc3cb13359d824f022859078e4feb2b6869a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfcd248be48109203e91c93231d89d1d650a4b96
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy 中的 Azure 安全性课程
 Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和数据专业人员以及学生了解最新技术、构建自己的技能并提升他们的职业生涯。
@@ -57,9 +57,9 @@ Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和
 
 在此提供丰富演示内容的课程中，由安全专家和 Azure 工程师组成的团队将带你通过基本认证并探索 Azure 中的可能性。 了解如何设计和使用各种技术，确保具有在云中启动项目所需的安全性和体系结构。 深入了解数据中心运营、VM 配置、网络体系结构和存储基础结构。
 
-[深入了解 Azure Resource Manager 方案和模式](https://mva.microsoft.com/en-us/training-courses/deep-dive-into-azure-resource-manager-scenarios-and-patterns-13793?l=i1m06ZJYB_7001937557)
+[深入了解 Azure 资源管理器方案和模式](https://mva.microsoft.com/en-us/training-courses/deep-dive-into-azure-resource-manager-scenarios-and-patterns-13793?l=i1m06ZJYB_7001937557)
 
-与专家团队一起探索 Azure 资源管理器，这些专家将向你展示可轻松启动或停止应用程序基础结构元素的脚本和工具。 探索如何使用基于角色的访问控制 (RBAC) ，以使用 Azure Resource Manager 实现安全性。
+与专家团队一起探索 Azure 资源管理器，这些专家将向你展示可轻松启动或停止应用程序基础结构元素的脚本和工具。 探索如何使用基于角色的访问控制 (RBAC) ，以使用 Azure 资源管理器实现安全性。
 
 [Azure Rights Management Services 核心技能](https://mva.microsoft.com/en-us/training-courses/azure-rights-management-services-core-skills-10500?l=QLoxMwuCB_1805094681)
 

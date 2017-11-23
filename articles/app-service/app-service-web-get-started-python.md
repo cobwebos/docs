@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 10/26/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ae410c7fabac6d23a69922804a0a87fde63594a2
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: a17ff3ca73a824f4aa4b45a7cae9428a0fbc96d4
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-a-python-web-app-in-azure"></a>在 Azure 中创建 Python Web 应用
 
@@ -33,8 +33,8 @@ ms.lasthandoff: 10/27/2017
 
 完成本教程：
 
-1. [安装 Git](https://git-scm.com/)
-1. [安装 Python](https://www.python.org/downloads/)
+* <a href="https://git-scm.com/" target="_blank">安装 Git</a>
+* <a href="https://www.python.org/downloads/" target="_blank">安装 Python</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

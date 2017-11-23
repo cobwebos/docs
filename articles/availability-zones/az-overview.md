@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/28/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
+ms.openlocfilehash: 53c5c340dc4e91db29fbbb45893fabe6eec2bc5d
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: c6225d368044ee2b2ab24136c854f81ae473c9e1
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Azure 中的可用性区域（预览版）概述
 
 可用性区域可以在发生数据中心级故障时提供保护。 它们位于 Azure 地区内，并且每个都具有自己的独立电源、网络和冷却系统。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。 在地区中以物理和逻辑方式分隔可用性区域可以在发生区域级故障的情况下保护应用程序和数据。 
@@ -33,7 +31,7 @@ ms.lasthandoff: 09/23/2017
 ## <a name="regions-that-support-availability-zones"></a>支持可用性区域的地区
 
 - 美国东部 2
-- 西欧
+- 欧洲西部
 
 ## <a name="services-that-support-availability-zones"></a>支持可用性区域的服务
 
@@ -67,4 +65,3 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="next-steps"></a>后续步骤
 - [快速入门模板](http://aka.ms/azqs)
-

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 52645f7d7934c9b9cf628fec1c0edc763ce98796
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="customize-a-preconfigured-solution"></a>自定义预配置解决方案
 
@@ -228,55 +228,6 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 
 默认值为 10 分钟。 可以在 [TelmetryApiController.cs][lnk-telemetry-api-controller-02] 中更改此值。
 
-## <a name="manually-set-up-application-roles"></a>手动设置应用程序角色
-
-以下过程描述如何将 **Admin** 和 **ReadOnly** 应用程序角色添加到预配置解决方案中。 请注意，从 azureiotsuite.com 站点预配的预配置解决方案已经包含 **Admin** 和 **ReadOnly** 角色。
-
-**ReadOnly** 角色的成员可以看到仪表板和设备列表，但不能添加设备、更改设备属性或发送命令。  **Admin** 角色的成员具有对解决方案中所有功能的完全访问权限。
-
-1. 转到 [Azure 经典门户][lnk-classic-portal]。
-2. 选择 **Active Directory**。
-3. 单击在预配解决方案时所使用的 AAD 租户名称。
-4. 单击“**应用程序**”。
-5. 单击与预配置解决方案名称匹配的应用程序名称。 如果在列表中看不到你的应用程序，请选择“显示”下拉列表中的“我公司拥有的应用程序”，并单击复选标记。
-6. 在页面底部，单击“**管理清单**”，并单击“**下载清单**”。
-7. 此过程会将一个 .json 文件下载到本地计算机。 在所选的文本编辑器中打开此文件进行编辑。
-8. 在 .json 文件的第三行，可看到：
-
-   ```json
-   "appRoles" : [],
-   ```
-   将此行替换为以下代码：
-
-   ```json
-   "appRoles": [
-   {
-   "allowedMemberTypes": [
-   "User"
-   ],
-   "description": "Administrator access to the application",
-   "displayName": "Admin",
-   "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
-   "isEnabled": true,
-   "value": "Admin"
-   },
-   {
-   "allowedMemberTypes": [
-   "User"
-   ],
-   "description": "Read only access to device information",
-   "displayName": "Read Only",
-   "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
-   "isEnabled": true,
-   "value": "ReadOnly"
-   } ],
-   ```
-
-9. 保存更新后的 .json 文件（可以覆盖现有文件）。
-10. 在 Azure 经典门户中，选择页面底部的“管理清单”，并选择“上传清单”上传在上一步保存的 .json 文件。
-11. 现在已将 **Admin** 和 **ReadOnly** 角色添加到应用程序中。
-12. 要将其中一个角色分配给目录中的用户，请参阅 [azureiotsuite.com 站点上的权限][lnk-permissions]。
-
 ## <a name="feedback"></a>反馈
 
 本文档是否涵盖你感兴趣的自定义内容？ 请在 [用户之声](https://feedback.azure.com/forums/321918-azure-iot) 中添加功能建议，或写下对本文的评语。 
@@ -300,6 +251,5 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 [lnk-telemetry-api-controller-01]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L27
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
-[lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-cf-customize]: iot-suite-connected-factory-customize.md

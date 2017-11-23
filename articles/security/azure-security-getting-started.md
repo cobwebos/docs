@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1ee07f2284df925b8bbd9050de7ae40fa66bf65
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 构建 IT 资产或将其迁移到云提供商处时，需要依赖该组织来保护应用程序和数据，并且需要依赖该组织提供的服务和控制机制来管理基于云的资产的安全性。
@@ -131,10 +131,10 @@ IP 筛选器可以防止来宾虚拟机执行以下操作：
 * [**IP 转发**](../virtual-network/virtual-networks-udr-overview.md)。 虚拟网络安全设备必须能够接收不发送给自身的传入流量。 若要允许虚拟机接收发送到其他目标的流量，可为该虚拟机启用 IP 转发。
 * [**强制隧道**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 借助强制隧道，可以通过站点间 VPN 隧道，将虚拟网络中虚拟机生成的所有 Internet 绑定流量重定向或“强制”返回到本地位置，以便于检查和审核
 * [**终结点 ACL**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 可以通过定义终结点 ACL 来控制哪些计算机允许从 Internet 到虚拟网络上的虚拟机的入站连接。
-* [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/marketplace/)。 可以通过 Azure 应用商店访问大量的合作伙伴网络安全解决方案。
+* [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/marketplace/)。 可以通过 Azure Marketplace 访问大量的合作伙伴网络安全解决方案。
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Azure 如何实施虚拟网络和防火墙
-默认情况下，Azure 在所有主机和来宾虚拟机上实施数据包筛选防火墙。 Azure 应用商店中的 Windows OS 映像也默认启用 Windows 防火墙。 位于 Azure 面向公众的网络外围的负载均衡器会根据客户管理员所管理的 IP ACL 来控制通信。
+默认情况下，Azure 在所有主机和来宾虚拟机上实施数据包筛选防火墙。 Azure Marketplace 中的 Windows OS 映像也默认启用 Windows 防火墙。 位于 Azure 面向公众的网络外围的负载均衡器会根据客户管理员所管理的 IP ACL 来控制通信。
 
 如果 Azure 在正常操作过程中或灾难过程中移动某个客户的数据，它会通过专用加密通信通道来进行。 Azure 可以在虚拟网络和防火墙中采用的其他功能包括：
 

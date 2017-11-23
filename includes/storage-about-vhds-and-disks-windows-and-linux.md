@@ -1,7 +1,7 @@
 
 ## <a name="about-vhds"></a>关于 VHD
 
-Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)。 有关高级存储的详细信息，请参阅[高性能高级存储和 Azure VM](../articles/storage/common/storage-premium-storage.md)。
+Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)。 有关高级存储的详细信息，请参阅[高性能高级存储和 Azure VM](../articles/virtual-machines/windows/premium-storage.md)。
 
 Azure 支持固定的磁盘 VHD 格式。 固定格式在文件内对逻辑磁盘以线性方式布局，使磁盘偏移量 X 存储在 Blob 偏移量 X 的位置。在 Blob 末尾有一小段脚注，描述了 VHD 的属性。 通常，由于大多数磁盘中都有较大的未使用区域，因此固定格式会浪费空间。 不过，Azure 以稀疏格式存储 .vhd 文件，因此可兼获固定和动态格式磁盘的优点。 有关更多详细信息，请参阅[虚拟硬盘入门](https://technet.microsoft.com/library/dd979539.aspx)。
 
@@ -26,11 +26,11 @@ Azure 磁盘具备 99.999% 的可用性。 Azure 磁盘持续提供企业级持�
 
 标准存储受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准存储可以在一个数据中心进行本地复制，也可以通过主要数据中心和辅助数据中心实现异地冗余。 有关存储复制的详细信息，请参阅 [Azure 存储复制](../articles/storage/common/storage-redundancy.md)。 
 
-要详细了解如何将标准存储与 VM 磁盘结合使用，请参阅[标准存储和磁盘](../articles/storage/common/storage-standard-storage.md)。
+要详细了解如何将标准存储与 VM 磁盘结合使用，请参阅[标准存储和磁盘](../articles/virtual-machines/windows/standard-storage.md)。
 
 ### <a name="premium-storage"></a>高级存储 
 
-高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS、Ls 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/storage/common/storage-premium-storage.md)。
+高级存储受 SSD 支持，为运行 I/O 密集型工作负荷的 VM 提供高性能、低延迟的磁盘支持。 可以将高级存储与 DS、DSv2、GS、Ls 或 FS 系列的 Azure VM 结合使用。 有关详细信息，请参阅[高级存储](../articles/virtual-machines/windows/premium-storage.md)。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 

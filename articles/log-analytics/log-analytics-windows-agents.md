@@ -3,7 +3,7 @@ title: "将 Windows 计算机连接到 Azure Log Analytics | Microsoft 文档"
 description: "本文介绍了通过使用自定义版本的 Microsoft Monitoring Agent (MMA) 将本地基础结构中的 Windows 计算机连接到 Log Analytics 服务的步骤。"
 services: log-analytics
 documentationcenter: 
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: 
 ms.assetid: 932f7b8c-485c-40c1-98e3-7d4c560876d2
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5f04f3b9135167c0f339c58323ebd931b260109
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf3e596f8c287c60531a6911c5797b3de26e570
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 可使用安装程序、命令行或 Azure 自动化中的所需状态配置 (DSC) 安装代理。  
 
 >[!NOTE]
-为使虚拟机在 Azure 上运行，可使用[虚拟机扩展](log-analytics-azure-vm-extension.md)简化安装。
+为使虚拟机在 Azure 上运行，可使用[虚拟机扩展](../virtual-machines/windows/extensions-oms.md)简化安装。
 
 在连接 Internet 的计算机上，代理使用 Internet 连接向 OMS 发送数据。 对于没有连接 Internet 的计算机，可使用代理或 [OMS 网关](log-analytics-oms-gateway.md)。
 

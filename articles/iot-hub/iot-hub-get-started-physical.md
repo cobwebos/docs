@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: f4128b6b049aa876e170c56dcf2e40720644dc3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26a2d63aef21bd470d65d79e1abf8cefd2828419
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT 中心物理设备入门教程
 
@@ -33,12 +33,6 @@ ms.lasthandoff: 10/11/2017
 | Sparkfun ESP8266 Thing Dev      | [Arduino][Th_Ard]              |
 | Adafruit Feather M0             | [Arduino][M0_Ard]              |
 
-此外，还可以使用 IoT Edge 网关使设备能够连接到 IoT 中心。
-
-| 网关设备               | 编程语言 | 平台         |
-|------------------------------|----------------------|------------------|
-| Intel NUC（模型 DE3815TYKE） | C                    | [Wind River Linux][NUC_Lnx] |
-
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 
 
@@ -51,4 +45,3 @@ ms.lasthandoff: 10/11/2017
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md
 [Th_Ard]: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
 [M0_Ard]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
-[NUC_Lnx]: iot-hub-gateway-kit-c-lesson1-set-up-nuc.md
