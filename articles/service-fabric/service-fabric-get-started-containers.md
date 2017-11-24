@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 1b2daf04e060615569e8416d3ded344483518400
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 23e8b1023aebd5381fc89535ce265883d6a8fceb
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -294,8 +294,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
    > [!NOTE]
-   > hyperv 隔离模式在 Ev3 和 Dv3 Azure SKU 上提供，后者具有嵌套式虚拟化支持。 
-   >
+   > hyperv 隔离模式在 Ev3 和 Dv3 Azure SKU 上提供，后者具有嵌套式虚拟化支持。 确保在主机上安装了 hyperv 角色。 可通过连接到主机对此进行验证。
    >
 
 ## <a name="configure-resource-governance"></a>配置资源调控
@@ -325,7 +324,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
-只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-get-started-azure-cluster.md#remove-the-cluster)。  [Party 群集](https://try.servicefabric.azure.com/)会在数小时后自动删除。
+只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md#clean-up-resources)。  [Party 群集](https://try.servicefabric.azure.com/)会在数小时后自动删除。
 
 将映像推送到容器注册表以后，即可从开发计算机中删除本地映像：
 

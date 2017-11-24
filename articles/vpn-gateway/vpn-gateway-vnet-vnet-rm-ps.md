@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 46037efe0e2c30337d76790c46c16e300bfffd5f
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -59,13 +59,17 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="which-set-of-steps-should-i-use"></a>我应使用哪个步骤集？
 
-在本文中，可以看到两组不同的步骤。 一组步骤适用于[驻留在同一订阅中的 VNet](#samesub)，另一组适用于[驻留在不同订阅中的 VNet](#difsub)。 这两组步骤之间的主要区别在于是否可以在相同的 PowerShell 会话中创建并配置所有虚拟网络和网关资源。
-
-本文中的步骤使用各部分开头声明的变量。 如果已使用现有 VNet，请修改变量，反映自己环境中的设置。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
-
-## <a name="samesub"></a>如何连接同一订阅中的 VNet
+在本文中，可以看到两组不同的步骤。 一组步骤适用于[位于同一订阅中的 VNet](#samesub)。 此配置的步骤使用 TestVNet1 和 TestVNet4。
 
 ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+
+单独有一篇文章针对[位于不同订阅中的 VNet](#difsub)。 该配置的步骤使用 TestVNet1 和 TestVNet5。
+
+![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+
+这两组步骤之间的主要区别在于是否可以在相同的 PowerShell 会话中创建并配置所有虚拟网络和网关资源。 配置位于不同订阅中的 VNet 的连接时，必须使用单独的 PowerShell 会话。 可以根据需要组合配置，也可以只是选择要使用的配置。
+
+## <a name="samesub"></a>如何连接同一订阅中的 VNet
 
 ### <a name="before-you-begin"></a>开始之前
 
@@ -90,7 +94,7 @@ ms.lasthandoff: 10/31/2017
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
 * Connection(1to4)：VNet1toVNet4
-* Connection(1to5)：VNet1toVNet5
+* Connection(1to5)：VNet1toVNet5（适用于不同订阅中的 VNet）
 * ConnectionType：VNet2VNet
 
 **TestVNet4 的值：**
@@ -279,8 +283,6 @@ ms.lasthandoff: 10/31/2017
 4. 验证连接。 请参阅 [如何验证连接](#verify)部分。
 
 ## <a name="difsub"></a>如何连接不同订阅中的 VNet
-
-![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 例如，连接 TestVNet1 和 TestVNet5。 TestVNet1 和 TestVNet5 驻留在不同订阅中。 订阅不需要与相同的 Active Directory 租户相关联。 这些步骤与上一组的差别在于，一些配置步骤需要在第二个订阅的环境的单独 PowerShell 会话中执行。 尤其是当两个订阅属于不同的组织时。
 

@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 303ead6e1d98d464aeba2687c2a72a38bc1ce209
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 5a786e9baa275e029343571bdb9a6480334f5cf3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>什么是 Azure 中的虚拟机规模集？
 虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/20/2017
 > [!NOTE]
 > 当前，虚拟机规模集仅支持部署到单个可用性区域。 将来会支持多区域部署。
 
-也可以使用 JSON 模板与 [REST API](https://msdn.microsoft.com/library/mt589023.aspx) 来定义和部署规模集，就像定义和部署单个 Azure Resource Manager VM 一样。 因此，可以使用任何标准的 Azure Resource Manager 部署方法。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+也可以使用 JSON 模板与 [REST API](https://msdn.microsoft.com/library/mt589023.aspx) 来定义和部署规模集，就像定义和部署单个 Azure 资源管理器 VM 一样。 因此，可以使用任何标准的 Azure 资源管理器部署方法。 有关模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 可在 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)中找到一组虚拟机规模集的示例模板。 （查找标题中含有 **vmss** 的模板。）
 
@@ -78,9 +78,9 @@ $vmss.Sku.Capacity = 10
 Update-AzureRmVmss -ResourceGroupName resourcegroupname -Name scalesetname -VirtualMachineScaleSet $vmss
 ```
 
-若要通过 Azure Resource Manager 模板增加或减少规模集中的虚拟机数，请更改 **capacity** 属性并重新部署模板。 这种操作很简单，因此可以方便地将规模集与 Azure 自动缩放集成，或者在需要定义不受 Azure 自动缩放支持的自定义缩放事件时，方便地编写自己的自定义缩放层。 
+若要通过 Azure 资源管理器模板增加或减少规模集中的虚拟机数，请更改 **capacity** 属性并重新部署模板。 这种操作很简单，因此可以方便地将规模集与 Azure 自动缩放集成，或者在需要定义不受 Azure 自动缩放支持的自定义缩放事件时，方便地编写自己的自定义缩放层。 
 
-若要重新部署 Azure Resource Manager 模板以更改容量，可以定义一个小得多的模板，只包括 **SKU** 属性数据包和更新的容量。 [下面是一个示例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)。
+若要重新部署 Azure 资源管理器模板以更改容量，可以定义一个小得多的模板，只包括 **SKU** 属性数据包和更新的容量。 [下面是一个示例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)。
 
 
 ## <a name="monitoring-your-scale-set"></a>监视规模集
@@ -114,7 +114,7 @@ Update-AzureRmVmss -ResourceGroupName resourcegroupname -Name scalesetname -Virt
 
    [此 Linux 示例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-app-gateway)和[此 Windows 示例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-app-gateway)使用应用程序网关。  
 
-* **在 PaaS 群集管理器中将规模集部署为计算群集**：规模集有时描述为下一代辅助角色。 这是有效的描述，但也可能导致将规模集功能与 Azure 云服务功能混淆。 在某种意义上，规模集提供真正的辅助角色或辅助角色资源。 规模集是通用计算资源，独立于平台/运行时、可自定义且可集成到 Azure Resource Manager IaaS 中。
+* **在 PaaS 群集管理器中将规模集部署为计算群集**：规模集有时描述为下一代辅助角色。 这是有效的描述，但也可能导致将规模集功能与 Azure 云服务功能混淆。 在某种意义上，规模集提供真正的辅助角色或辅助角色资源。 规模集是通用计算资源，独立于平台/运行时、可自定义且可集成到 Azure 资源管理器 IaaS 中。
   
    云服务辅助角色虽然在平台/运行时支持方面受到限制（仅限 Windows 平台映像）， 但它也包括多项服务，如 VIP 交换，可配置的升级设置，以及特定于运行时/应用部署的设置。 这些服务*尚未*在规模集中提供，或者由 Azure Service Fabric 等其他更高级别 PaaS 服务提供。 可以将规模集视为支持 PaaS 的基础结构。 PaaS 解决方案（例如 [Service Fabric](https://azure.microsoft.com/services/service-fabric/)）基于该基础结构。
   
@@ -124,7 +124,7 @@ Update-AzureRmVmss -ResourceGroupName resourcegroupname -Name scalesetname -Virt
 * 一个规模集最多支持 1,000 个 VM。 如果创建和上传自己的自定义 VM 映像，则该限制为 300。 如需使用大型规模集时的注意事项，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。
 * 无需预先创建 Azure 存储帐户即可使用规模集。 规模集支持 Azure 托管磁盘，因此不需担心因单个存储帐户磁盘数不足而造成的性能问题。 有关详细信息，请参阅 [Azure 虚拟机规模集和托管磁盘](virtual-machine-scale-sets-managed-disks.md)。
 * 可以考虑使用 Azure 高级存储而不是 Azure 存储，以便加快 VM 预配速度、提高 VM 预配时间的可预测性，以及改进 I/O 性能。
-* 可以创建的 VM 数受到在其中进行部署的区域中核心配额的限制。 即使目前用于 Azure 云服务的核心数上限已较高，也仍可能需要联系客户支持来提高计算配额限制。 若要查询配额，请运行以下 Azure CLI 命令：`azure vm list-usage`。 或者，运行以下 PowerShell 命令：`Get-AzureRmVMUsage`。
+* 可以创建的 VM 数受到在其中进行部署的区域中 vCPU 配额的限制。 即使目前用于 Azure 云服务的 vCPU 数上限已较高，也仍可能需要联系客户支持来提高计算配额限制。 若要查询配额，请运行以下 Azure CLI 命令：`azure vm list-usage`。 或者，运行以下 PowerShell 命令：`Get-AzureRmVMUsage`。
 
 ## <a name="frequently-asked-questions-for-scale-sets"></a>有关规模集的常见问题
 **问：** 可在规模集中包含多少个 VM？

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/06/2017
-ms.openlocfilehash: 5bbfe63d159ba2d09a495908f69f707ed04a02f8
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b723cc23ccbda6c5d39627682116cc314dcf2c0e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>鸢尾花分类（第 2 部分）：生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -291,7 +291,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    `run.py` 完成时，Workbench 的运行历史记录列表视图中会出现一个图形。
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>在远程计算机上执行 Docker 容器
-若要在远程 Linux 计算机上的 Docker 容器中执行脚本，需要通过 SSH 访问（使用用户名和密码）该远程计算机。 此外，该远程计算机必须已安装并运行 Docker 引擎。 获得此类 Linux 计算机的最简单方法是在 Azure 上创建[基于 Ubuntu 的数据科学虚拟机 (DSVM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)。 
+若要在远程 Linux 计算机上的 Docker 容器中执行脚本，需要通过 SSH 访问（使用用户名和密码）该远程计算机。 此外，该远程计算机必须已安装并运行 Docker 引擎。 获取此类 Linux 计算机的最简单方法是在 Azure 上创建基于 Ubuntu 的数据科学虚拟机 (DSVM)。 了解[如何创建要在 Azure ML Workbench 中使用的 Ubuntu DSVM](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal)。
 
 >[!NOTE] 
 >不支持基于 CentOS 的 DSVM。
@@ -343,7 +343,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>在 HDInsight 群集中执行脚本
-还可以在实际 Spark 群集中运行此脚本。 
+还可以在 HDInsight Spark 群集中运行此脚本。 了解[如何创建要在 Azure ML Workbench 中使用的 HDInsight Spark 群集](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
+
+>![NOTE] HDInsight 群集必须使用 Azure Blob 作为主存储。 尚不支持使用 Azure Data Lake 存储。
 
 1. 如果有权访问 Azure HDInsight 群集的 Spark，请按如下所示生成 HDInsight 运行配置命令。 提供 HDInsight 群集名称、HDInsight 用户名和密码作为参数。 请使用以下命令：
 

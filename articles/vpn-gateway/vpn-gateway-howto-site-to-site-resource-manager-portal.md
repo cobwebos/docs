@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 41279502c16d0b23c91739dcb62e8f94f3b8bd67
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4f5e249238020429b6c6e0d39c580c83bc43969e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
@@ -50,15 +50,13 @@ ms.lasthandoff: 10/27/2017
 本文中的示例使用以下值。 可使用这些值创建测试环境，或参考这些值以更好地理解本文中的示例。 有关通用 VPN 网关设置的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
 * **VNet 名称：**TestVNet1
-* **地址空间：** 
-  * 10.11.0.0/16
-  * 10.12.0.0/16（可选，适用于本练习）
-* **子网：**
-  * FrontEnd：10.11.0.0/24
-  * BackEnd：10.12.0.0/24（可选，适用于本练习）
-* **GatewaySubnet：**10.11.255.0/27
+* **地址空间：**10.11.0.0/16 和 10.12.0.0/16（对于本练习可选）
+* **订阅：**要使用的订阅
 * **资源组：**TestRG1
 * **位置：**美国东部
+* **子网：**FrontEnd：10.11.0.0/24，BackEnd：10.12.0.0/24（对于本练习可选）
+* **网关子网名称：**GatewaySubnet（会在门户中自动填充）
+* **网关子网地址范围：**10.11.255.0/27
 * DNS 服务器：可选。 DNS 服务器的 IP 地址。
 * **虚拟网关名称：**VNet1GW
 * **公共 IP：**VNet1GWIP
@@ -67,6 +65,7 @@ ms.lasthandoff: 10/27/2017
 * **网关类型：**VPN
 * **局域网网关名称：**Site2
 * **连接名称：**VNet1toSite2
+* **共享密钥：**在此示例中，我们将使用 abc123。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
 
 ## <a name="CreatVNet"></a>1.创建虚拟网络
 
@@ -125,10 +124,21 @@ ms.lasthandoff: 10/27/2017
 
 有关更改网关 SKU 的步骤，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
+## <a name="addconnect"></a>如何将其他连接添加到 VPN 网关
+
+可以添加其他连接，前提是连接之间不存在地址空间重叠。
+
+1. 若要添加其他连接，请导航到 VPN 网关，然后单击“连接”打开“连接”页。
+2. 单击“+添加”添加连接。 调整连接类型以反映“VNet 到 VNet”（如果连接到另一个 VNet 网关）或“站点到站点”。
+3. 如果要使用“站点到站点”连接进行连接，并且尚未为要连接到的站点创建本地网络网关，则可以创建一个新的本地网络网关。
+4. 指定要使用的共享密钥，然后单击“确定”以创建连接。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 * 有关强制隧道的信息，请参阅[关于强制隧道](vpn-gateway-forced-tunneling-rm.md)。
 * 有关高可用性主动-主动连接的信息，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](vpn-gateway-highlyavailable.md)。
+* 有关如何限制发往虚拟网络中资源的网络流量的信息，请参阅[网络安全](../virtual-network/security-overview.md)。
+* 有关 Azure 如何在 Azure 资源、本地资源和 Internet 资源之间路由流量的信息，请参阅[虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)。
 * 有关使用 Azure 资源管理器模板创建站点到站点 VPN 连接的信息，请参阅[创建站点到站点 VPN 连接](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)。
-* 有关使用 Azure 资源管理器模板创建 vnet 到 vnet VPN 连接的信息，请参阅[部署 HBase 异地复制](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)。
+* 有关使用 Azure 资源管理器模板创建 Vnet 到 Vnet VPN 连接的信息，请参阅[部署 HBase 异地复制](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)。

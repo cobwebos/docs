@@ -15,11 +15,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 71038dd1957f5322acc3d54600481e663d855151
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: dc1664d382c6e59c125ef00d02a8848079d8bf8d
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="getting-started-with-an-azure-multi-factor-authentication-provider"></a>Azure 多重身份验证提供程序入门
 双重验证对于具有 Azure Active Directory 和 Office 365 用户的全局管理员默认可用。 但是，如果想充分利用[高级功能](multi-factor-authentication-whats-next.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
@@ -29,13 +29,15 @@ Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功
 需要 Azure 多重身份验证提供程序才能下载 SDK。
 
 > [!IMPORTANT]
-> 即使拥有 Azure MFA、AAD 高级版或 EMS 许可证，若要下载 SDK，也需要创建 Azure 多重身份验证提供程序。  如果处于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或 EMS 许可证的目录。 该配置将确保仅当执行双重验证的唯一用户数大于所拥有的许可证数时才进行计费。
+> 已宣布弃用 Azure 多重身份验证软件开发工具包 (SDK)。 对新客户不再支持此功能。 当前客户可以继续使用 SDK 到 2018 年 11 月 14 日。 在该时间后，调用 SDK 将失败。
+> [!IMPORTANT]
+>即使拥有 Azure MFA、AAD 高级版或 EMS 许可证，若要下载 SDK，也需要创建 Azure 多重身份验证提供程序。  如果处于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或 EMS 许可证的目录。 该配置将确保仅当执行双重验证的唯一用户数大于所拥有的许可证数时才进行计费。 
 
 ## <a name="what-is-an-mfa-provider"></a>什么是 MFA 提供程序？
 
-如果不具有 Azure 多重身份验证的许可证，则可以创建身份验证提供程序要求用户进行双重验证。 如果计划开发自定义应用并且要启用 Azure MFA，请创建身份验证提供程序并[下载 SDK](multi-factor-authentication-sdk.md)。
+如果不具有 Azure 多重身份验证的许可证，则可以创建身份验证提供程序要求用户进行双重验证。
 
-有两种身份验证提供程序，区别主要在于 Azure 订阅的收费方式。 基于身份验证的选项会计算一个月内对租户执行的身份验证次数。 此选项最适用于仅偶尔对大量用户进行身份验证的情况，例如需要将 MFA 用于自定义应用程序。 基于用户的选项会计算租户中一个月内执行双重验证的用户数量。 此选项最适用于部分用户有许可证，但需要为超出许可限制的更多用户扩展 MFA 的情况。
+有两种身份验证提供程序，区别主要在于 Azure 订阅的收费方式。 基于身份验证的选项会计算一个月内对租户执行的身份验证次数。 此选项最适用于仅偶尔对大量用户进行身份验证的情况。 基于用户的选项会计算租户中一个月内执行双重验证的用户数量。 此选项最适用于部分用户有许可证，但需要为超出许可限制的更多用户扩展 MFA 的情况。
 
 ## <a name="create-an-mfa-provider---public-preview"></a>创建 MFA 提供程序 - 公共预览版
 
@@ -51,8 +53,8 @@ Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功
       * 按身份验证 - 购买按身份验证收费的模型。 通常用于在面向使用者的应用程序中使用 Azure 多重身份验证的方案。
       * 按启用的用户 - 购买按每个启用的用户收费的模型。 通常用于员工访问 Office 365 等应用程序的方案。 若有已拥有 Azure MFA 许可证的用户，请选择此选项。
    - **订阅** – Azure 订阅，通过提供程序对其收取双重验证活动费用。 
-   - **目录** – 与提供程序关联的 Azure Active Directory 租户。 请注意以下事项：
-      * 无需 Azure AD 目录即可创建提供程序。 如果仅计划下载 Azure 多重身份验证服务器或 SDK，请将此框留空。
+   - **目录** – 与提供程序关联的 Azure Active Directory 租户。
+      * 无需 Azure AD 目录即可创建提供程序。 如果仅计划下载 Azure 多重身份验证服务器，请将此框留空。
       * 提供程序必须与 Azure AD 目录相关联才能利用高级功能。
       * 只能将一个提供程序与任意一个 Azure AD 目录相关联。
 
@@ -82,8 +84,8 @@ Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功
    2. **使用模型** - 可选择以下两个选项之一：
       * 按身份验证 - 购买按身份验证收费的模型。 通常用于在面向使用者的应用程序中使用 Azure 多重身份验证的方案。
       * 按启用的用户 - 购买按每个启用的用户收费的模型。 通常用于员工访问 Office 365 等应用程序的方案。 若有已拥有 Azure MFA 许可证的用户，请选择此选项。
-   3. **目录** – 与提供程序关联的 Azure Active Directory 租户。 请注意以下事项：
-      * 无需 Azure AD 目录即可创建提供程序。 如果仅计划下载 Azure 多重身份验证服务器或 SDK，请将此框留空。
+   3. **目录** – 与提供程序关联的 Azure Active Directory 租户。
+      * 无需 Azure AD 目录即可创建提供程序。 如果仅计划下载 Azure 多重身份验证服务器，请将此框留空。
       * 提供程序必须与 Azure AD 目录相关联才能利用高级功能。
       * 只能将一个提供程序与任意一个 Azure AD 目录相关联。  
       ![创建 MFA 提供程序](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)
@@ -101,7 +103,5 @@ Azure 多重身份验证提供程序用于利用 Azure MFA 完整版提供的功
 如果 MFA 提供程序未与 Azure AD 租户相关联，或者你将新的 MFA 提供程序与其他 Azure AD 租户相关联，则用户设置和配置选项不会进行转移。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
 
 ## <a name="next-steps"></a>后续步骤
-
-[下载多重身份验证 SDK](multi-factor-authentication-sdk.md)
 
 [配置多重身份验证设置](multi-factor-authentication-whats-next.md)

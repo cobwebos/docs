@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/22/2017
 ms.author: yurid
-ms.openlocfilehash: 274c50dad9b8a1d79a71a29b04cb8e44ad91893c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 829657664cf1e37b22d57c62614300a205b5e91c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
@@ -53,6 +53,45 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 * DUMPFILE：故障转储文件的名称。
 * PROCESSNAME：故障进程的名称。
 * PROCESSVERSION：故障进程的版本。
+
+### <a name="code-injection-discovered"></a>发现的代码注入
+代码注入是将可执行模块插入到正在运行的进程或线程中。  恶意软件使用此技术访问数据、隐藏或阻止其删除（例如持久存在）。 此警报指示故障转储中存在注入模块。 合法软件开发人员偶尔会出于非恶意原因执行代码注入，例如修改或扩展现有的应用程序或操作系统组件。  若要帮助区分恶意和非恶意注入模块，安全中心会检查注入模块是否符合描述可疑行为的配置文件。 该检查的结果由警报的“SIGNATURE”字段指示，并反映在警报严重性、警报描述和警报补救步骤中。 
+
+此警报提供以下附加字段：
+
+- ADDRESS：注入模块在内存中的位置。
+- IMAGENAME：注入模块的名称。 请注意，如果映像中未提供映像名称，这里可以为空。
+- SIGNATURE：指示注入模块是否符合描述可疑行为的配置文件。 
+
+下表显示了结果及其说明的示例：
+
+| 签名值                      | 说明                                                                                                       |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| 可疑的反射加载程序攻击 | 此可疑行为通常与独立于操作系统加载程序加载注入代码关联 |
+| 可疑的被注入攻击          | 表示通常对应于将代码注入到内存的恶意行为                                       |
+| 可疑的注入攻击         | 表示通常对应于在内存中使用注入代码的恶意行为                                   |
+| 可疑的注入调试程序攻击 | 表示通常与检测或规避调试程序相关联的恶意行为                         |
+| 可疑的注入远程攻击   | 表示通常与命令 n 控制 (C2) 方案关联的恶意行为                                 |
+
+下面是此类警报的示例：
+
+![代码注入警报](./media/security-center-alerts-type/security-center-alerts-type-fig21.png)
+
+### <a name="suspicious-code-segment"></a>可疑的代码段
+可疑的代码段指示已使用非标准方法（如反射注入和进程替换所使用的方法）分配的代码段。  此外，此警报还处理代码段的其他特征以提供有关所报告代码段功能和行为的上下文。
+
+此警报提供以下附加字段：
+
+- ADDRESS：注入模块在内存中的位置。
+- SIZE：可疑代码段的大小
+- STRINGSIGNATURES：此字段列出代码段中包含其函数名称的 API 的功能。 示例功能可能包括：
+    - 映像段描述符、x64 的动态代码执行、内存分配和加载程序功能、远程代码注入功能、劫持控件功能、读取环境变量、读取任意进程内存、查询或修改令牌权限、HTTP/HTTPS 网络通信和网络套接字通信。
+- IMAGEDETECTED：此字段指示 PE 映像是否已注入到检测到可疑代码段并且注入模块从其地址开始的进程。
+- SHELLCODE：此字段指示是否存在恶意有效负载通常使用以获取对额外安全敏感的操作系统功能的访问的行为。 
+
+下面是此类警报的示例：
+
+![可疑的代码段警报](./media/security-center-alerts-type/security-center-alerts-type-fig22.png)
 
 ### <a name="shellcode-discovered"></a>发现 Shellcode
 Shellcode 是在恶意软件利用软件漏洞之后运行的有效负载。 此警报指示故障转储分析检测到可执行代码表现出通常由恶意有效负载表现出的行为。 虽然非恶意软件可能会表现出此行为，但这在正常的软件开发实践中并不常见。

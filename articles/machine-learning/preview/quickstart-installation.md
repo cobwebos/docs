@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 10/13/2017
-ms.openlocfilehash: 7c74a9ebaae0b027277fe282b958a653ab498fc5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>创建 Azure 机器学习预览帐户并安装 Azure Machine Learning Workbench
-Azure 机器学习是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
+Azure 机器学习服务（预览版）是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 本快速入门介绍如何在 Azure 机器学习预览版中创建试验和模型管理帐户。 此外，介绍如何安装 Azure Machine Learning Workbench 桌面应用程序和 CLI 工具。 接下来，快速讲解 Azure 机器学习预览版功能，即如何使用[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)来生成模型，以便基于某些物理特征预测鸢尾花类型。  
 
@@ -108,7 +108,7 @@ Azure 机器学习是集成式的端到端数据科学和高级分析解决方�
 
 4. Azure Machine Learning Workbench 现已安装到以下目录中： 
 
-   `/Applications/AmlWorkbench.app`
+   `/Applications/Azure ML Workbench.app`
 
 ## <a name="run-azure-machine-learning-workbench-to-sign-in-for-the-first-time"></a>运行 Azure Machine Learning Workbench 以完成首次登录
 1. 安装过程完成后，请在安装程序的最后一个屏幕上选择“启动 Workbench”按钮。 如果已关闭安装程序，请在桌面上找到 Machine Learning Workbench 的快捷方式，并通过名为“Azure Machine Learning Workbench”的菜单启动该应用。
