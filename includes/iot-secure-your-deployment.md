@@ -50,22 +50,6 @@ IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控�
 ## <a name="securing-the-connection"></a>保护连接安全
 使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 支持 [TLS 1.2][lnk-tls12]、TLS 1.1 和 TLS 1.0（按此顺序）。 对 TLS 1.0 的支持仅为向后兼容性提供。 推荐使用 TLS 1.2，因为它提供最佳的安全性。
 
-Azure IoT 套件支持以下密码套件（按此顺序）。
-
-| 密码套件 | Length |
-| --- | --- |
-| TLS\_ECDHE\_RSA\_ 与 \_AES\_256\_CBC\_SHA384 (0xc028) ECDH secp384r1（等于 7680 位 RSA) FS |256 |
-| TLS\_ECDHE\_RSA\_ 与 \_AES\_128\_CBC\_SHA256 (0xc027) ECDH secp256r1（等于 3072 位 RSA) FS |128 |
-| TLS\_ECDHE\_RSA\_ 与 \_AES\_256\_CBC\_SHA (0xc014) ECDH secp384r1（等于 7680 位 RSA) FS |256 |
-| TLS\_ECDHE\_RSA\_ 与 \_AES\_128\_CBC\_SHA (0xc013) ECDH secp256r1（等于 3072 位 RSA) FS |128 |
-| TLS\_RSA\_ 与 \_AES\_256\_GCM\_SHA384 (0x9d) |256 |
-| TLS\_RSA\_ 与 \_AES\_128\_GCM\_SHA256 (0x9c) |128 |
-| TLS\_RSA\_ 与 \_AES\_256\_CBC\_SHA256 (0x3d) |256 |
-| TLS\_RSA\_ 与 \_AES\_128\_CBC\_SHA256 (0x3c) |128 |
-| TLS\_RSA\_ 与 \_AES\_256\_CBC\_SHA (0x35) |256 |
-| TLS\_RSA\_ 与 \_AES\_128\_CBC\_SHA (0x2f) |128 |
-| TLS\_RSA\_ 与 \_3DES\_EDE\_CBC\_SHA (0xa) |112 |
-
 ## <a name="securing-the-cloud"></a>保护云的安全
 Azure IoT 中心允许为每个安全密钥定义[访问控制策略][lnk-protocols]。 它使用以下一组权限向每个 IoT 中心的终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
@@ -82,7 +66,7 @@ Azure IoT 中心和其他可能是解决方案的一部分的服务允许使用 
 
 Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azure Blob 存储等）使用。 这些服务允许管理访问权限。 了解以下有关这些服务和可用选项的详细信息：
 
-* []Azure Cosmos DB[lnk-cosmosdb]：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
+* [Azure Cosmos DB][lnk-cosmosdb]：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
 * [Azure 流分析][lnk-asa]：云中处理的实时流，可让用户快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入了解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 * [Azure 应用服务][lnk-appservices]：一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快地构建 Web 应用和 API。
 * [Logic Apps][lnk-logicapps]：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 逻辑应用提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。

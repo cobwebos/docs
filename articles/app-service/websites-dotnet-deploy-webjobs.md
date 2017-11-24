@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
-ms.author: glenga
-ms.openlocfilehash: 59a453aab82d2f78bcc04774e26c8a557b8dbb26
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
+ms.openlocfilehash: 8793485f2f1967e8c14ef335f14f81c9b946f974
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 10/11/2017
 2. 在“项目名称”下拉列表中，选择要添加为 Web 作业的控制台应用程序项目。
    
     ![在“添加 Azure Web 作业”对话框中选择项目](./media/websites-dotnet-deploy-webjobs/aaw1.png)
-3. 完成[“添加 Azure Web 作业”](#configure)对话框，并单击“确定”。 
+3. 完成“添加 [Azure Web 作业](#configure) ”对话框，并单击“确定”。 
 
 ### <a id="convertnolink"></a> 不使用 Web 项目启用 WebJobs 部署
 1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业...”。 
