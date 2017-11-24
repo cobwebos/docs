@@ -34,7 +34,7 @@ ms.lasthandoff: 11/14/2017
 ## <a name="the-page-is-not-rendered-correctly"></a>页面未正确呈现
 即使没有收到特定的错误消息，应用程序也可能存在绘制或运行不正常的问题。 如果发布了文章路径，但应用程序需要存在于该路径外的内容时，可能发生此情况。
 
-例如，如果发布路径 https://yourapp/app，但应用程序调用 https://yourapp/media 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在本示例中为 http://yourapp/。
+例如，如果发布路径 https://yourapp/app ， 但应用程序调用 https://yourapp/media 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在本示例中为 http://yourapp/。
 
 如果更改路径以包含引用内容，但仍然需要用户登陆路径中更深的链接，请参阅博客文章 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)（在 Azure AD 访问面板和 Office 365 应用启动器中为应用程序代理应用程序设置正确的链接）。
 
