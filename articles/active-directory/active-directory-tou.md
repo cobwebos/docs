@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 11/17/2017
 ms.author: billmath
-ms.openlocfilehash: b6318b419a0ea87fd1fb56656b1161909876f338
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf7b64bd956c236f5c70bb7dcd209ecdcd7176dd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory 使用条款功能（预览）
 Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  这可确保用户看到法律要求或合规性要求的相关免责声明。
@@ -43,7 +43,8 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 2. 请确保此目录具有 Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。  如果没有此订阅，请[获取 Azure AD Premium](active-directory-get-started-premium.md) 或[开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。
 3. 可在 [https://aka.ms/catou](https://aka.ms/catou) 上查看 Azure AD 用户条款仪表板。
 
-
+>[!IMPORTANT]
+>条件访问策略控制（包括使用条款）不支持对服务帐户强制实施。  我们建议从条件访问策略中排除所有服务帐户。
 
 ## <a name="add-company-terms-of-use"></a>添加公司使用条款
 完成使用条款后，请使用以下过程添加它。
@@ -92,7 +93,6 @@ Azure AD 使用条款提供了易于使用的审核功能，使你可以看到�
 
 ## <a name="additional-information"></a>其他信息
 以下信息是需要注意的事项，可帮助你使用使用条款。
-
 
 在以下情况下，处于范围的用户必须在注销后登录才能符合新策略的要求：
  - 在使用条款上启用了条件访问策略

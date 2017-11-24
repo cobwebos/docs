@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 9f7fdb97fd121eecf9e7b2f4edc1b568c8114869
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0a3fca0c7d36122a09c825a3ed8edf11cc362b8b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>登录屏幕中的“Azure AD 密码重置”
 
 你已经部署了 Azure AD 自助密码重置 (SSPR)，但你的用户仍会在忘记密码时呼叫帮助台。 他们之所以呼叫帮助台，是因为不能通过 Web 浏览器来访问 SSPR。
 
-安装新的 Windows 10 Fall Creators Update 后，其设备加入了 Azure AD 的用户可以在其登录屏幕上看到“重置密码”链接。 单击该链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR) 
+安装新的 Windows 10 Fall Creators Update 后，其设备加入了 Azure AD 的用户可以在其登录屏幕上看到“重置密码”链接。 单击该链接后，用户就会体验到熟悉的与以前相同的自助密码重置 (SSPR)。
 
 若要使用户能够从 Windows 10 登录屏幕重置其 Azure AD 密码，需满足以下要求：
 
-* Windows 10 版本 1709，或者已加入 Azure AD 域的更新客户端。
+* Windows 10 版本 1709，或者[已加入 Azure AD](device-management-azure-portal.md) 的更新客户端。
 * 必须启用 Azure AD 自助密码重置。
 * 配置和部署设置，通过下述某个方法启用“重置密码”链接：
    * [Intune 设备配置文件](active-directory-passwords-login.md#configure-reset-password-link-using-intune)
@@ -90,7 +90,7 @@ ms.lasthandoff: 11/15/2017
 
 建议只使用此方法来测试设置更改。
 
-1. 使用管理凭据登录到已加入 Azure AD 域的设备。
+1. 使用管理凭据登录到已加入 Azure AD 的设备
 2. 以管理员身份运行 **regedit**
 3. 设置以下注册表项
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -104,7 +104,7 @@ ms.lasthandoff: 11/15/2017
 
 现在，用户在尝试登录时，可以看到“重置密码”链接，用于在登录屏幕进行自助密码重置体验。 此功能允许用户重置其密码，不需使用其他设备来访问 Web 浏览器。
 
-用户可以在[重置工作或学校密码](active-directory-passwords-update-your-own-password.md#reset-password-at-login)中发现此功能的使用指南
+用户可以在[重置工作或学校密码](active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)中发现此功能的使用指南
 
 ## <a name="common-issues"></a>常见问题
 

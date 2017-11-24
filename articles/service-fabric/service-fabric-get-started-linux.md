@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/19/2017
 ms.author: subramar
-ms.openlocfilehash: da9aff17c16e179be200677bfbfd1287fff269e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c77e357d56fc246de4e0e9af697e770c876d1d78
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -131,7 +131,7 @@ sudo apt-get install servicefabricsdkcommon
 ## <a name="set-up-the-service-fabric-cli"></a>设置 Service Fabric CLI
 
 [Service Fabric CLI](service-fabric-cli.md) 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。
-请按照 [Service Fabric CLI](service-fabric-cli.md) 中的说明安装 CLI。
+按照 [Service Fabric CLI](service-fabric-cli.md) 中的说明安装 CLI。
 
 
 ## <a name="set-up-yeoman-generators-for-containers-and-guest-executables"></a>为容器和来宾可执行文件安装 Yeoman 生成器
@@ -221,6 +221,7 @@ sudo apt-get install -f
 * [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
 * [在 Linux 上创建第一个 CSharp 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
+* [在 Windows 上准备 Linux 开发环境](service-fabric-local-linux-cluster-windows.md)
 * [使用 Service Fabric CLI 管理应用程序](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric Windows/Linux 差异](service-fabric-linux-windows-differences.md)
 * [Service Fabric CLI 入门](service-fabric-cli.md)

@@ -13,33 +13,101 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
-ms.openlocfilehash: e27c1a8e130d20eb0ba0e5c001fc9a435e07c1cd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5345c0fa6212127e9821adccc8cb4c339ce7ae28
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - GA](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [版本 2 - 预览版](quickstart-create-data-factory-dot-net.md)
 
-Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。 
-
-此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 该数据工厂中的管道将数据从 Azure blob 存储中的一个文件夹复制到另一个文件夹。
+此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+>
+> 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 存储帐户**。 可以将 blob 存储同时用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)创建一个。 
-* 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入**文件夹**，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
-* **Visual Studio** 2013、2015 或 2017。 本文中的演练使用 Visual Studio 2017。
-* **下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)**。
-* 按照[这些说明](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下稍后要使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 根据同一文章中的以下说明将应用程序分配到“参与者”角色。 
-*  
+
+### <a name="azure-subscription"></a>Azure 订阅
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+
+### <a name="azure-roles"></a>Azure 角色
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。 在 Azure 门户中，单击右上角的**用户名**，然后选择“权限”查看你在订阅中拥有的权限。 如果可以访问多个订阅，请选择相应的订阅。 有关将用户添加到角色的示例说明，请参阅[添加角色](../billing/billing-add-change-azure-subscription-administrator.md)一文。
+
+### <a name="azure-storage-account"></a>Azure 存储帐户
+在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为**源**和**目标**数据存储。 如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)创建一个。 
+
+#### <a name="get-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
+在本快速入门中，请使用 Azure 存储帐户的名称和密钥。 以下过程提供的步骤用于获取存储帐户的名称和密钥。 
+
+1. 启动 Web 浏览器并导航到 [Azure 门户](https://portal.azure.com)。 使用 Azure 用户名和密码登录。 
+2. 单击左侧菜单中的“更多服务 >”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
+
+    ![搜索存储帐户](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
+3. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择**你的存储帐户**。 
+4. 在“存储帐户”页的菜单上选择“访问密钥”。
+
+    ![获取存储帐户名称和密钥](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
+5. 将“存储帐户名称”和“key1”字段的值复制到剪贴板。 将这些值粘贴到记事本或任何其他编辑器中，然后进行保存。  
+
+#### <a name="create-input-folder-and-files"></a>创建 input 文件夹和文件
+此部分在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。 然后，在容器中创建名为 **input** 的文件夹，再将示例文件上传到 input 文件夹。 
+
+1. 在“存储帐户”页中，切换到“概述”，然后单击 **Blob**。 
+
+    ![选择 Blob 选项](media/quickstart-create-data-factory-dot-net/select-blobs.png)
+2. 在“Blob 服务”页中，单击工具栏上的“+ 容器”。 
+
+    ![“添加容器”按钮](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
+3. 在“新建容器”对话框中，输入 **adftutorial** 作为名称，然后单击“确定”。 
+
+    ![输入容器名称](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
+4. 在容器列表中单击 **adftutorial**。 
+
+    ![选择容器](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
+1. 在“容器”页中，单击工具栏上的“上传”。  
+
+    ![“上传”按钮](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
+6. 在“上传 blob”页中，单击“高级”。
+
+    ![单击“高级”链接](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
+7. 启动**记事本**，创建包含以下内容的名为 **emp.txt** 的文件：将其保存在 **c:\ADFv2QuickStartPSH** 文件夹中（如果 **ADFv2QuickStartPSH** 文件夹不存在，请创建）。
+    
+    ```
+    John, Doe
+    Jane, Doe
+    ```    
+8. 在 Azure 门户的“上传 blob”页上，浏览并选择 **emp.txt** 文件作为“文件”字段的值。 
+9. 输入 **input** 作为“上传到文件夹”字段的值。 
+
+    ![上传 blob 设置](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
+10. 确认文件夹是 **input**、文件是 **emp.txt**，然后单击“上传”。
+11. 应该会在列表中看到 **emp.txt** 文件和上传状态。 
+12. 通过单击边角处的 **X** 关闭“上传 blob”页。 
+
+    ![关闭“上传 blob”页](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
+1. 使“容器”页保持打开状态。 在本快速入门结束时可以使用它来验证输出。
+
+### <a name="visual-studio"></a>Visual Studio
+本文中的演练使用 Visual Studio 2017。 也可以使用 Visual Studio 2013 或 2015。
+
+### <a name="azure-net-sdk"></a>Azure .NET SDK
+在计算机上下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
+
+### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
+按照[此文](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)中的说明执行以下任务： 
+
+1. **创建 Azure Active Directory 应用程序**。 在 Azure Active Directory 中创建一个应用程序来表示正在本教程中创建的 .NET 应用程序。 对于登录 URL，可以提供虚拟 URL，如本文中所示 (`https://contoso.org/exampleapp`)。
+2. 按照本文的**获取应用程序 ID 和身份验证密钥**部分中的说明获取“应用程序 ID”和“身份验证密钥”。 记下这些值，以便稍后在本教程中使用。 
+3. 按照本文的**获取租户 ID** 部分中的说明获取**租户 ID**。 记下此值。 
+4. 将应用程序分配到订阅级别的**参与者**角色，以便应用程序可以在订阅中创建数据工厂。 按照本文的**将应用程序分配到角色**部分中的说明进行操作。 
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -253,7 +321,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>监视管道运行
 
-1. 在 **Main** 方法中添加以下代码用于持续检查管道运行状态，直到它完成数据复制为止。
+1. 在 **Main** 方法中添加以下代码用于持续检查状态，直到它完成数据复制为止。
 
     ```csharp
     // Monitor the pipeline run
@@ -397,8 +465,18 @@ Checking copy activity run details...
 }
 
 Press any key to exit...
-
 ```
+
+## <a name="verify-the-output"></a>验证输出
+该管道自动在 adftutorial Blob 容器中创建 output 文件夹， 然后将 emp.txt 文件从 input 文件夹复制到 output 文件夹。 
+
+1. 在 Azure 门户的“adftutorial”容器页中单击“刷新”，查看输出文件夹。 
+    
+    ![刷新](media/quickstart-create-data-factory-dot-net/output-refresh.png)
+2. 单击文件夹列表中的“output”。 
+2. 确认 **emp.txt** 已复制到 output 文件夹。 
+
+    ![刷新](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 若要以编程方式删除数据工厂，请向程序中添加以下代码行： 
