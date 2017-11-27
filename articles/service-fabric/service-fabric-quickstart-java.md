@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c8e598159d2139397952a5c11eac54dc38939f47
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c4966f3ddc95a7e7c97d09cd45abdb8443601b74
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-a-java-application"></a>创建 Java 应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
@@ -83,7 +83,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 合作群集是 Azure 上托管的免费限时 Service Fabric 群集。 这些群集由 Service Fabric 团队运行，任何人均可在其中部署应用程序和了解平台。 若要使用合作群集，请[按照说明操作](http://aka.ms/tryservicefabric)。 
 
-若要了解如何创建自己的群集，请参阅[在 Azure 上创建你的第一个 Service Fabric 群集](service-fabric-get-started-azure-cluster.md)。
+若要了解如何创建自己的群集，请参阅[在 Azure 上创建 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 > [!Note]
 > Web 前端服务配置为侦听端口 8080 上是否有传入流量。 请确保此端口在群集中处于打开状态。 如果使用的是合作群集，此端口已处于打开状态。
@@ -147,5 +147,5 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 > * 跨多个节点横向扩展应用程序
 
 * 详细了解如何[在 Java 上使用 Eclipse 调试服务](service-fabric-debugging-your-application-java.md)
-* 了解如何[使用 Jenkins 设置连续集成和部署](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+* 了解如何[使用 Jenkins 设置连续集成和部署](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 * 查看其他 [Java 示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)

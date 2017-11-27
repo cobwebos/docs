@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/23/2017
 ms.author: anwestg
-ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d2a9b9fbe2a057a6d36e80c89af83a543e90d3be
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将 App Service 资源提供程序添加到 AD FS 保护的连接断开的 Azure 堆栈环境
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 11/11/2017
         - 如果你使用 Active Directory 联合身份验证服务 (AD FS)，提供你的管理员帐户。 例如，cloudadmin@azurestack.local。 输入你的密码，然后单击**登录**。
     2. 在**Azure 堆栈订阅**框中，选择你的订阅。
     3. 在**Azure 堆栈位置**框中，选择对应于要部署到的区域的位置。 例如，选择**本地**如果你部署到 Azure 堆栈开发工具包。
-    4. 输入**资源组名称**为你的 App Service 部署。 默认情况下，它设置为**APPSERVICE\<移动\>**。
+    4. 输入**资源组名称**为你的 App Service 部署。 默认情况下，它设置为**APPSERVICE 本地**。
     5. 输入**存储帐户名称**你想要作为安装的一部分创建的应用程序服务。 默认情况下，它设置为**appsvclocalstor**。
     6. 单击“下一步”。
 

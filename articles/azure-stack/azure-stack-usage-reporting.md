@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.openlocfilehash: 5abc325a6e7c019dc3cb84f7f6ff63c3eb2ff76c
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: a4ca742e232a19cd890552bec08f4d11cca52020
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure 堆栈使用情况数据 
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/13/2017
 
 ## <a name="view-usage---csp-subscriptions"></a>查看使用情况-CSP 订阅
 
-如果你注册使用 CSP 订阅你 Azure 堆栈，请可以与在其中查看 Azure 消耗相同的方式来查看使用情况和费用。 Azure 堆栈使用将在你的发票和对帐文件，可通过包含[合作伙伴中心](https://partnercenter.microsoft.com/en-us/partner/home)。 每月更新对帐文件。 如果你需要访问新 Azure 堆栈使用情况信息，你可以使用合作伙伴中心 Api。
+如果你注册使用 CSP 订阅你 Azure 堆栈，请可以与在其中查看 Azure 消耗相同的方式来查看使用情况和费用。 Azure 堆栈使用将在你的发票和对帐文件，可通过包含[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)。 每月更新对帐文件。 如果你需要访问新 Azure 堆栈使用情况信息，你可以使用合作伙伴中心 Api。
 
    ![合作伙伴中心](media/azure-stack-usage-reporting/partner-center.png)
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/13/2017
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>我有我想要使用 Azure 堆栈上的 Windows Server 许可证，如何执行此操作？
 
-使用现有的许可证，则可避免生成用量计量表。 现有 Windows Server 许可证可在 Azure 堆栈中的"与 Azure 堆栈中使用现有的软件"部分所述[Azure 堆栈许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)。 客户需要将其 Windows Server 虚拟机部署中所述[的 Windows Server 许可证的混合权益](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing)才能使用其现有的许可证的主题。
+使用现有的许可证，则可避免生成用量计量表。 现有 Windows Server 许可证可在 Azure 堆栈中的"与 Azure 堆栈中使用现有的软件"部分所述[Azure 堆栈许可指南](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)。 客户需要将其 Windows Server 虚拟机部署中所述[的 Windows Server 许可证的混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)才能使用其现有的许可证的主题。
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>哪种订阅占用的资源收费？
 时提供的订阅[向 Azure 注册 Azure 堆栈](azure-stack-register.md)需要支付费用。
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/13/2017
 
 ## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>用户如何标识 Azure 计费门户中的 Azure 堆栈使用情况数据？
 
-用户可以看到的使用情况详细信息文件中的 Azure 堆栈使用情况数据。 若要了解有关如何获取的使用情况详细信息文件，请参阅[Azure 帐户中心文章中的说明下载使用量文件](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)。 使用情况详细信息文件包含标识 Azure 堆栈存储和虚拟机的 Azure 堆栈计量。 使用 Azure 堆栈中的所有资源都报告下名为"Azure 堆栈。"的区域
+用户可以看到的使用情况详细信息文件中的 Azure 堆栈使用情况数据。 若要了解有关如何获取的使用情况详细信息文件，请参阅[Azure 帐户中心文章中的说明下载使用量文件](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)。 使用情况详细信息文件包含标识 Azure 堆栈存储和虚拟机的 Azure 堆栈计量。 使用 Azure 堆栈中的所有资源都报告下名为"Azure 堆栈。"的区域
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>为什么 Azure 堆栈中报告的用法不匹配从 Azure 帐户中心生成报表？
 

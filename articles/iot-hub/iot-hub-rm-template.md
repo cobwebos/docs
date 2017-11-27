@@ -1,6 +1,6 @@
 ---
 title: "使用模板创建 Azure IoT 中心 (.NET) | Microsoft Docs"
-description: "如何使用 Azure Resource Manager 模板和 C# 程序创建 IoT 中心。"
+description: "如何使用 Azure 资源管理器模板和 C# 程序创建 IoT 中心。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 0f197a28e0c51b06d0b47a03c29fe1fde0c6b78d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f84ab26c43f33827479faed46db1de246920ae5
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 模板创建 IoT 中心 (.NET)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure 资源管理器模板创建 IoT 中心 (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-可以使用 Azure Resource Manager 以编程方式创建和管理 Azure IoT 中心。 本教程介绍如何使用 Azure Resource Manager 模板通过 C# 程序创建 IoT 中心。
+可以使用 Azure 资源管理器以编程方式创建和管理 Azure IoT 中心。 本教程介绍如何使用 Azure 资源管理器模板通过 C# 程序创建 IoT 中心。
 
 > [!NOTE]
-> Azure 提供了用于创建和使用资源的两个不同部署模型：[Azure Resource Manager 模型和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍了如何使用 Azure Resource Manager 部署模型。
+> Azure 提供了用于创建和使用资源的两个不同部署模型：[Azure 资源管理器模型和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍了如何使用 Azure 资源管理器部署模型。
 
 要完成本教程，需要以下各项：
 
 * Visual Studio 2015 或 Visual Studio 2017。
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需几分钟就能创建一个[免费帐户][lnk-free-trial]。
-* 可用于存储 Azure Resource Manager 模板文件的 [Azure 存储帐][lnk-storage-account]。
+* 可用于存储 Azure 资源管理器模板文件的 [Azure 存储帐][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
     using Microsoft.Rest;
     ```
 
-6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 **Your Azure Storage account name** 是要在其中存储 Azure Resource Manager 模板文件的 Azure 存储帐户的名称。 资源组名称是创建 IoT 中心时要使用的资源组名称。 名称可以是现有的资源组或新资源组。 **部署名称**是部署的名称，例如 **Deployment_01**。
+6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 **Your Azure Storage account name** 是要在其中存储 Azure 资源管理器模板文件的 Azure 存储帐户的名称。 资源组名称是创建 IoT 中心时要使用的资源组名称。 名称可以是现有的资源组或新资源组。 **部署名称**是部署的名称，例如 **Deployment_01**。
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -74,7 +74,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="submit-a-template-to-create-an-iot-hub"></a>提交模板以创建 IoT 中心
 
-使用 JSON 模板和参数文件在资源组中创建 IoT 中心。 还可以使用 Azure Resource Manager 模板更改现有 IoT 中心。
+使用 JSON 模板和参数文件在资源组中创建 IoT 中心。 还可以使用 Azure 资源管理器模板更改现有 IoT 中心。
 
 1. 在解决方案资源管理器中右键单击项目，单击“**添加**”，然后单击“**新建项**”。 将名为 **template.json** 的 JSON 文件添加到项目。
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-8. 将以下代码添加到 **CreateIoTHub** 方法以将模板和参数文件提交到 Azure Resource Manager：
+8. 将以下代码添加到 **CreateIoTHub** 方法以将模板和参数文件提交到 Azure 资源管理器：
 
     ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -203,10 +203,10 @@ ms.lasthandoff: 10/11/2017
 > 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 在完成后，可以通过 [Azure 门户][lnk-azure-portal]或者使用 **Remove-AzureRmResource** PowerShell cmdlet 删除该 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤
-现在，已经使用包含 C# 程序的 Azure Resource Manager 模板部署了 IoT 中心，你可能想要进一步探究：
+现在，已经使用包含 C# 程序的 Azure 资源管理器模板部署了 IoT 中心，你可能想要进一步探究：
 
 * 阅读了解 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
-* 有关 Azure Resource Manager 功能的详细信息，请参阅 [Azure Resource Manager 概述][lnk-azure-rm-overview]。
+* 有关 Azure 资源管理器功能的详细信息，请参阅 [Azure 资源管理器概述][lnk-azure-rm-overview]。
 
 若要详细了解如何开发 IoT 中心，请参阅以下文章：
 
@@ -215,7 +215,7 @@ ms.lasthandoff: 10/11/2017
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 Azure IoT Edge 模拟设备][lnk-iotedge]
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -229,4 +229,4 @@ ms.lasthandoff: 10/11/2017
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
