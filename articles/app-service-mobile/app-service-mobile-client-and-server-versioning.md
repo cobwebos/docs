@@ -79,7 +79,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 ### <a name="mobile-services-server-sdks"></a>移动 *服务* 服务器 SDK
 | 服务器平台 | 版本 | 接受的版本标头 |
 | --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* 版本 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**无版本标头 \*\* |
+| .NET |[WindowsAzure.MobileServices.Backend.* 版本 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |\*\* 无版本标头 \*\* |
 | Node.js |（即将支持） |**无版本标头** |
 
 <!-- TODO: add Node npm version -->
