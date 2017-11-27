@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: 
-ms.openlocfilehash: 9781fc75b3820a9248e495ccd63870c06472fa20
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1097b853ca0f461300f294e9f5baabf2ae4e15a1
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>用于 Node.js 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
@@ -34,6 +34,10 @@ ms.lasthandoff: 11/15/2017
 |**SDK 下载**|[NPM](https://www.npmjs.com/package/azure-storage)|
 |**API 文档**|[Node.js API 参考文档](http://azure.github.io/azure-storage-node/)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
+
+> [!IMPORTANT]
+> 如果已在预览期间创建表 API 帐户，请创建[新的表 API 帐户](create-table-dotnet.md#create-a-database-account)以使用正式发布的表 API SDK。
+>
 
 ## <a name="release-notes"></a>发行说明
 

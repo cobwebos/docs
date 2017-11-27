@@ -1,6 +1,6 @@
 ---
 title: "使用模板创建 Azure IoT 中心 (PowerShell) | Microsoft Docs"
-description: "如何使用 Azure Resource Manager 模板和 PowerShell 创建 IoT 中心。"
+description: "如何使用 Azure 资源管理器模板和 PowerShell 创建 IoT 中心。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: f83fac6cffc9e58582417324a4348ca3b6220f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 242c50b61b00bbf71b26e2aea1a66e2b2c55dbd5
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure Resource Manager 模板创建 IoT 中心 (PowerShell)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure 资源管理器模板创建 IoT 中心 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-可以使用 Azure Resource Manager 以编程方式创建和管理 Azure IoT 中心。 本教程介绍如何将 Azure Resource Manager 模板与 PowerShell 配合使用来创建 IoT 中心。
+可以使用 Azure 资源管理器以编程方式创建和管理 Azure IoT 中心。 本教程介绍如何将 Azure 资源管理器模板与 PowerShell 配合使用来创建 IoT 中心。
 
 > [!NOTE]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了如何使用 Azure Resource Manager 部署模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了如何使用 Azure 资源管理器部署模型。
 
 若要完成本教程，需要以下各项：
 
@@ -73,9 +73,9 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="submit-a-template-to-create-an-iot-hub"></a>提交模板以创建 IoT 中心
 
-使用 JSON 模板在资源组中创建 IoT 中心。 还可以使用 Azure Resource Manager 模板更改现有 IoT 中心。
+使用 JSON 模板在资源组中创建 IoT 中心。 还可以使用 Azure 资源管理器模板更改现有 IoT 中心。
 
-1. 使用文本编辑器创建名为 **template.json** 的 Azure Resource Manager 模板，并指定以下资源定义来创建新的标准 IoT 中心。 此示例在**美国东部**区域中添加 IoT 中心，在事件中心兼容的终结点上创建两个使用者组（**cg1** 和 **cg2**），并使用 **2016-02-03** API 版本。 此模板还要求以名为 **hubName** 的参数的形式传入 IoT 中心名称。 有关支持 IoT 中心的位置的最新列表，请参阅 [Azure 状态][lnk-status]：
+1. 使用文本编辑器创建名为 **template.json** 的 Azure 资源管理器模板，并指定以下资源定义来创建新的标准 IoT 中心。 此示例在**美国东部**区域中添加 IoT 中心，在事件中心兼容的终结点上创建两个使用者组（**cg1** 和 **cg2**），并使用 **2016-02-03** API 版本。 此模板还要求以名为 **hubName** 的参数的形式传入 IoT 中心名称。 有关支持 IoT 中心的位置的最新列表，请参阅 [Azure 状态][lnk-status]：
 
     ```json
     {
@@ -127,7 +127,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
     }
     ```
 
-2. 将 Azure Resource Manager 模板文件保存到本地计算机。 本示例假设将它保存在名为 **c:\templates** 的文件夹中。
+2. 将 Azure 资源管理器模板文件保存到本地计算机。 本示例假设将它保存在名为 **c:\templates** 的文件夹中。
 
 3. 运行以下命令部署新的 IoT 中心，并传递 IoT 中心的名称作为参数。 在此示例中，IoT 中心的名称是 `abcmyiothub`。 IoT 中心的名称必须全局唯一：
 
@@ -145,10 +145,10 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已使用 Azure Resource Manager 模板和 PowerShell 部署了一个 IoT 中心，接下来可以进一步进行探索：
+现在，已使用 Azure 资源管理器模板和 PowerShell 部署了一个 IoT 中心，接下来可以进一步进行探索：
 
 * 阅读了解 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
-* 有关 Azure Resource Manager 功能的详细信息，请参阅 [Azure Resource Manager 概述][lnk-azure-rm-overview]。
+* 有关 Azure 资源管理器功能的详细信息，请参阅 [Azure 资源管理器概述][lnk-azure-rm-overview]。
 
 若要详细了解如何开发 IoT 中心，请参阅以下文章：
 
@@ -157,7 +157,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 Azure IoT Edge 模拟设备][lnk-iotedge]
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -171,4 +171,4 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

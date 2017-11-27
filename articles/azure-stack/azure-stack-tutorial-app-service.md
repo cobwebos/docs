@@ -1,6 +1,6 @@
 ---
-title: "使 web、 移动和 API apps 适用于 Azure 堆栈用户 |Microsoft 文档"
-description: "安装 App Service 资源提供程序和创建教程提供，为 Azure 堆栈用户提供能够创建 web、 移动和 API 应用。"
+title: "使 web 应用程序和 API apps 适用于 Azure 堆栈用户 |Microsoft 文档"
+description: "安装 App Service 资源提供程序和创建教程提供，使你的 Azure 堆栈用户能够创建 web 应用程序和 API apps。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42d94eea8b9e4db611b821cd84e7d02f1d226293
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>向 Azure 堆栈用户提供 web、 移动和 API 应用
+# <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>使 web 应用程序和 API apps 适用于 Azure 堆栈用户
 
-作为 Azure 堆栈云管理员，你可以创建提供使你的用户 （租户） 创建 Azure 函数和 web、 移动和 API 的应用程序。 通过向你的用户提供访问按需、 基于云的应用，你可以将它们保存时间和资源。 若要对此进行设置，你将：
+作为 Azure 堆栈云管理员，你可以创建提供使你的用户 （租户） 创建 Azure 函数和 web 应用程序和 API 的应用程序。 通过向你的用户提供访问按需、 基于云的应用，你可以将它们保存时间和资源。 若要对此进行设置，你将：
 
 > [!div class="checklist"]
 > * 部署应用程序服务资源提供程序

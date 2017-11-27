@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 02227adeb8a9a7463506efa44ddc2977f8aae65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d22e1a20d18e06686f893b1f4ae22e6373633b3
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>使用 New-AzureRmIotHub cmdlet 创建 IoT 中心
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 可以使用 Azure PowerShell cmdlet 创建和管理 Azure IoT 中心。 本教程介绍如何使用 PowerShell 创建 IoT 中心。
 
 > [!NOTE]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了如何使用 Azure Resource Manager 部署模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了如何使用 Azure 资源管理器部署模型。
 
 若要完成本教程，需要以下各项：
 
@@ -124,7 +124,7 @@ Remove-AzureRmResourceGroup -Name MyIoTRG1
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 IoT Edge 模拟设备][lnk-iotedge]
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -135,4 +135,4 @@ Remove-AzureRmResourceGroup -Name MyIoTRG1
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

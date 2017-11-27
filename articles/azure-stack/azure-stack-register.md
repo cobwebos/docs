@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/21/2017
 ms.author: erikje
-ms.openlocfilehash: 977630741b8424c4c6bd5f5d492e33b9981b9cb5
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 6ce8f86592ece59e338578be86c2cb673c35dbc1
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>注册你的 Azure 订阅的 Azure 堆栈
 
@@ -42,22 +42,6 @@ ms.lasthandoff: 11/20/2017
 如果你没有满足这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/en-us/free/?b=17.06)。 注册 Azure 堆栈会产生任何费用在你的 Azure 订阅。
 
 
-
-## <a name="register-azure-stack-resource-provider-in-azure"></a>在 Azure 中注册 Azure 堆栈资源提供程序
-> [!NOTE] 
-> 应在 Azure 堆栈环境中一次完成此步骤。
->
-
-1. 以管理员身份启动 Powershell 会话。
-2. 登录到是 （你可以使用 Login-azurermaccount cmdlet 以登录和你登录时请务必-EnvironmentName 将参数设置为"AzureCloud"） 的 Azure 订阅的所有者的 Azure 帐户。
-3. 注册 Azure 资源提供程序"Microsoft.AzureStack。"
-
-**示例：** 
-```Powershell
-Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
-```
-
 ## <a name="register-azure-stack-with-azure"></a>向 Azure 注册 Azure 堆栈
 
 > [!NOTE]
@@ -66,7 +50,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 
 1. 打开 PowerShell 控制台以管理员身份和[安装适用于 Azure 堆栈 PowerShell](azure-stack-powershell-install.md)。  
 
-2. 添加将用于注册 Azure 堆栈的 Azure 帐户。 若要执行此操作，运行`Add-AzureRmAccount`不带任何参数的 cmdlet。 系统将提示你输入你的 Azure 帐户凭据，并且你可能必须为使用双因素身份验证，具体情况视你的帐户的配置。  
+2. 添加将用于注册 Azure 堆栈的 Azure 帐户。 若要执行此操作，运行`Add-AzureRmAccount`cmdlet 和 EnvironmentName 参数设置为"AzureCloud"。 系统将提示你输入你的 Azure 帐户凭据，并且你可能必须为使用双因素身份验证，具体情况视你的帐户的配置。 
+
+   ```Powershell
+   Add-AzureRmAccount -EnvironmentName "AzureCloud"
+   ```
 
 3. 如果你有多个订阅，运行以下命令以选择你想要使用：  
 
@@ -74,22 +62,28 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
       Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-4. 删除任何现有版本对应于注册的 Powershell 模块和[从 GitHub 下载的最新版本](azure-stack-powershell-download.md)。  
+4. 在你的 Azure 订阅中注册 AzureStack 资源提供程序。 为此，请运行以下命令：
 
-5. 从"AzureStack 工具主机"目录创建与前面步骤中，导航到"注册"文件夹，然后导入".\RegisterWithAzure.psm1"模块：  
+   ```Powershell
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
+
+5. 删除任何现有版本对应于注册的 Powershell 模块和[从 GitHub 下载的最新版本](azure-stack-powershell-download.md)。  
+
+6. 从"AzureStack 工具主机"目录创建与前面步骤中，导航到"注册"文件夹，然后导入".\RegisterWithAzure.psm1"模块：  
 
    ```powershell 
    Import-Module .\RegisterWithAzure.psm1 
    ```
 
-6. 在相同的 PowerShell 会话中，运行以下脚本。 提示输入凭据时，指定`azurestack\cloudadmin`作为用户和密码是什么你使用相同的本地管理员在部署过程。  
+7. 在相同的 PowerShell 会话中，运行以下脚本。 提示输入凭据时，指定`azurestack\cloudadmin`作为用户和密码是什么你使用相同的本地管理员在部署过程。  
 
    ```powershell
    $AzureContext = Get-AzureRmContext
    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
    Add-AzsRegistration `
        -CloudAdminCredential $CloudAdminCred `
-       -AzureSubscriptionId $AzureContext.Subscription.Id `
+       -AzureSubscriptionId $AzureContext.Subscription.SubscriptionId `
        -AzureDirectoryTenantName $AzureContext.Tenant.TenantId `
        -PrivilegedEndpoint AzS-ERCS01 `
        -BillingModel Development 
@@ -103,7 +97,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    | PrivilegedEndpoint | 预配置远程 PowerShell 控制台，它提供功能，如日志收集和其他文章部署任务。 开发工具包"AzS ERCS01"虚拟机上托管特权终结点。 如果你使用的集成的系统，请联系你的 Azure 堆栈运算符来获取此值。 若要了解详细信息，请参见[使用特权终结点](azure-stack-privileged-endpoint.md)主题。|
    | BillingModel | 使用你的订阅的计费模型。 允许的值为此参数是"容量"、"PayAsYouUse"和"开发"。 为开发工具包，此值设置为"开发"。 如果你使用的集成的系统，请联系你的 Azure 堆栈运算符来获取此值。 |
 
-7. 完成脚本后，你将看到一条消息"正在激活 Azure 堆栈 （此步骤可能需要 10 分钟的时间才能完成）。" 
+8. 完成脚本后，你将看到一条消息"正在激活 Azure 堆栈 （此步骤可能需要 10 分钟的时间才能完成）。" 
 
 ## <a name="verify-the-registration"></a>验证注册
 

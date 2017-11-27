@@ -46,7 +46,7 @@
         - name: 部署
           href: azure-stack-run-powershell-script.md
         - name: 安装 PowerShell
-          href: azure-stack-powershell-configure-quickstart.md
+          href: azure-stack-powershell-install.md
         - name: 注册
           href: azure-stack-register.md
         - name: 连接到 Azure Stack
