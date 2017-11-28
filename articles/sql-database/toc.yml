@@ -337,8 +337,10 @@
           href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: 多租户 SaaS
       items:
-        - name: 欢迎使用 Wingtips
+        - name: Wingtip Tickets 示例
           href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: 一般指南
+          href: saas-tenancy-wingtip-app-guidance-tips.md
         - name: 独立的应用程序
           items:
             - name: 部署示例应用

@@ -243,6 +243,7 @@
 ### [在 VS 中调试 .NET 服务](service-fabric-debugging-your-application.md)
 ### [常见错误和异常](service-fabric-errors-and-exceptions.md)
 ### [在本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+### [在 Windows 上设置 Linux 群集](service-fabric-local-linux-cluster-windows.md)
 
 ## 在 Linux 开发环境中工作
 ### [用于 Java 开发的 Eclipse 插件入门](service-fabric-get-started-eclipse.md)
@@ -278,7 +279,9 @@
 ##### [使用测试方案](service-fabric-testability-scenarios.md)
 ##### [使用节点转换 API](service-fabric-node-transition-apis.md)
 
-### [使用 Jenkins 部署 Linux Java 应用程序](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### 设置持续集成
+#### [使用 VSTS 设置持续集成](service-fabric-set-up-continuous-integration.md)
+#### [使用 Jenkins 部署 Linux 应用程序](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 
 ## 创建和管理群集
 ### Azure 上的群集
