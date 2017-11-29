@@ -7,14 +7,14 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 11/28/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 8afde912ca48297ae60eb7d05aa624a1d72c1637
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 16b56c71e2c81bead7c578a973840391996e845b
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure 堆栈诊断工具
 
@@ -29,43 +29,11 @@ Azure 堆栈为协同工作，并且彼此交互的组件的大型集合。 所�
  
 ## <a name="trace-collector"></a>跟踪收集器
  
-默认情况下，启用跟踪收集器。 持续在后台运行和 Azure 堆栈上从组件服务收集所有事件跟踪的 Windows (ETW) 日志并将它们存储在常见的本地共享上。 
+跟踪收集器默认启用的并在后台以从 Azure 堆栈组件服务收集所有事件跟踪的 Windows (ETW) 日志持续运行。 ETW 日志存储在具有五个天期限限制的常见本地共享。 一旦达到此限制，如创建新的被删除最旧的文件。 每个文件允许的默认最大大小为 200 MB。 大小检查定期出现 （每 2 分钟） 以及当前文件是否 > = 200 MB 时，将其保存并生成一个新文件。 生成每个事件会话的总文件大小上也没有 8 GB 的限制。 
 
-以下是需要了解的有关跟踪收集器的重要事项：
- 
-* 使用默认大小限制，跟踪器会持续运行。 默认值对于每个文件 (200 MB) 允许的最大大小是**不**截止大小。 大小检查定期出现 （当前每 2 分钟） 以及当前文件是否 > = 200 MB 时，将其保存并生成一个新文件。 在生成每个事件会话的总文件大小上也没有 8 GB （可配置） 限制。 一旦达到此限制，如创建新的被删除最旧的文件。
-* 上的日志没有 5 天的期限。 此限制也是可配置的。 
-* 每个组件通过 JSON 文件中定义的跟踪配置属性。 JSON 文件存储在**C:\TraceCollector\Configuration**。 如有必要，可以编辑这些文件，若要更改收集的日志期限和大小限制。 对这些文件的更改需要重新启动*Microsoft Azure 堆栈跟踪收集器*服务以使更改生效。
-
-下面的示例是 FabricRingServices XRP VM 中的操作的跟踪配置 JSON 文件： 
-
-```json
-{
-    "LogFile": 
-    {
-        "SessionName": "FabricRingServicesOperationsLogSession",
-        "FileName": "\\\\SU1FileServer\\SU1_ManagementLibrary_1\\Diagnostics\\FabricRingServices\\Operations\\AzureStack.Common.Infrastructure.Operations.etl",
-        "RollTimeStamp": "00:00:00",
-        "MaxDaysOfFiles": "5",
-        "MaxSizeInMB": "200",
-        "TotalSizeInMB": "5120"
-    },
-    "EventSources":
-    [
-        {"Name": "Microsoft-AzureStack-Common-Infrastructure-ResourceManager" },
-        {"Name": "Microsoft-OperationManager-EventSource" },
-        {"Name": "Microsoft-Operation-EventSource" }
-    ]
-}
-```
-
-* **MaxDaysOfFiles**。 此参数控制的文件，使的期限。 会删除较旧的日志文件。
-* **MaxSizeInMB**。 此参数控制单个文件的大小阈值。 如果达到大小，则创建一个新的.etl 文件。
-* **TotalSizeInMB**。 此参数控制从某一事件会话生成的.etl 文件的总大小。 如果总文件大小大于此参数值，将删除较旧的文件。
-  
 ## <a name="log-collection-tool"></a>日志收集工具
  
-PowerShell 命令**Get AzureStackLog**可以用于从 Azure 堆栈环境中的所有组件中收集日志。 它将它们保存在用户定义的位置中的 zip 文件中。 如果我们的技术支持团队需要你日志来帮助解决问题，它们可能会要求你运行此工具。
+PowerShell cmdlet **Get AzureStackLog**可以用于从 Azure 堆栈环境中的所有组件中收集日志。 它将它们保存在用户定义的位置中的 zip 文件中。 如果我们的技术支持团队需要你日志来帮助解决问题，它们可能会要求你运行此工具。
 
 > [!CAUTION]
 > 这些日志文件可能包含个人身份信息 (PII)。 考虑到这种之前你公开发布的任何日志文件。
@@ -78,38 +46,38 @@ PowerShell 命令**Get AzureStackLog**可以用于从 Azure 堆栈环境中的�
 *   **存储诊断日志**
 *   **ETW 日志**
 
-通过跟踪收集器收集和存储在从何处共享这些文件**Get AzureStackLog**检索这些引用。
+这些文件收集，并在共享中保存的跟踪收集器。 **Get AzureStackLog**然后可以使用 PowerShell cmdlet 收集它们在必要时。
  
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>若要在 Azure 堆栈开发工具包 (ASDK) 的系统上运行 Get AzureStackLog
 1. 以登录**AzureStack\CloudAdmin**主机上。
 2. 以管理员身份打开 PowerShell 窗口。
 3. 运行**Get AzureStackLog** PowerShell cmdlet。
 
-   **示例**
+**示例：**
 
-    收集所有角色的所有日志：
+  收集所有角色的所有日志：
 
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs
+  ```
 
-    从 VirtualMachines 和 BareMetal 角色收集的日志：
+  从 VirtualMachines 和 BareMetal 角色收集的日志：
 
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
+  ```
 
-    与过去 8 小时内筛选日志文件的日期，从 VirtualMachines 和 BareMetal 角色中收集日志：
+  与过去 8 小时内筛选日志文件的日期，从 VirtualMachines 和 BareMetal 角色中收集日志：
     
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
-    收集从 VirtualMachines 和 BareMetal 角色，日期为 8 小时前到 2 小时前之间的时间段筛选日志文件日志：
+  收集从 VirtualMachines 和 BareMetal 角色，日期为 8 小时前到 2 小时前之间的时间段筛选日志文件日志：
 
-    ```powershell
-    Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
-    ```
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  ```
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>若要在 Azure 堆栈上运行 Get AzureStackLog 集成系统
 
@@ -158,7 +126,7 @@ if($s)
    | 域                  | ECE                    | ECESeedRing        | 
    | FabricRing              | FabricRingServices     | FRP                |
    | 网关                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController |KeyVaultAdminResourceProvider|
+   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
    | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
    | NonPrivilegedAppGateway | NRP                    | SeedRing           |
    | SeedRingServices        | SLB                    | SQL                |   
@@ -166,6 +134,13 @@ if($s)
    | URP                     | UsageBridge            | virtualMachines    |  
    | 已                     | WASPUBLIC              | WDS                |
 
+
+### <a name="collect-logs-using-a-graphical-user-interface"></a>收集日志使用图形用户界面
+而不是提供 Get AzureStackLog cmdlet 来检索 Azure 堆栈日志所需的参数，你还可以利用位于在 http://aka.ms/AzureStackTools 主要 Azure 堆栈工具 GitHub 存储库中可用的开放源代码 Azure 堆栈工具。
+
+**ERCS_AzureStackLogs.ps1** PowerShell 脚本存储在 GitHub 工具存储库，并定期更新。 从管理的 PowerShell 会话中启动，此脚本连接到特权终结点，并使用提供的参数运行 Get AzureStackLog。 如果未不提供任何参数，该脚本将默认为提示输入通过图形用户界面的参数。
+
+若要了解更多有关 ERCS_AzureStackLogs.ps1 PowerShell 脚本你可以观看[简短视频](https://www.youtube.com/watch?v=Utt7pLsXEBc)或查看脚本的[自述文件](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md)位于 Azure 堆栈工具 GitHub 存储库。 
 
 ### <a name="additional-considerations"></a>其他注意事项
 
