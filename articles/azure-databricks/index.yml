@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure Databricks 预览版文档
 metadata:
   title: Azure Databricks 文档 - 教程 | Microsoft Docs
-  description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行了优化。
+  description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2017
   ms.author: nitinme
 abstract:
-  description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行了优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。
+  description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。
 sections:
   - title: 5 分钟快速入门
     items:
@@ -35,8 +35,8 @@ sections:
         style: ordered
         items:
           - html: '<a href="https://docs.azuredatabricks.net/user-guide/getting-started.html" target="_blank">Azure Databricks 入门</a>'
-          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-blob-storage" target="_blank">从 Azure 存储导入数据</a>'
-          - hmtl: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store" target="_blank">Import data from Azure Data Lake Store</a>'
+          - html: '<a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">从 Azure 存储导入数据</a>'
+          - hmtl: '<a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>'
           - html: '<a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">使用笔记本</a>'
           - html: '<a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">运行 Spark 作业</a>'
           - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">使用 Spark 数据源</a>'

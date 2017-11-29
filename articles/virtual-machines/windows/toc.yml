@@ -77,7 +77,7 @@
         - name: 高性能计算
           href: sizes-hpc.md
         - name: Azure 计算单元 (ACU)
-          href: sizes-general.md
+          href: acu.md
     - name: 维护和更新
       href: maintenance-and-updates.md
     - name: 磁盘存储

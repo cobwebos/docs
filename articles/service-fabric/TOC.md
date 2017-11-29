@@ -185,19 +185,10 @@
 #### [容器网络模式](service-fabric-networking-modes.md)
 
 ### 生成 Reliable Services 服务
-#### [概述](service-fabric-reliable-services-introduction.md)
-#### 概念
-##### [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
-##### [Reliable Services 生命周期 - Java](service-fabric-reliable-services-lifecycle-java.md)
-
 #### Reliable Collections
-##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
-##### [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
 ##### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
-##### [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 ##### [可靠的并发队列](service-fabric-reliable-services-reliable-concurrent-queue.md)
 ##### [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
-##### [可靠状态管理器和 Reliable Collection 内部](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### 入门
 ##### [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
