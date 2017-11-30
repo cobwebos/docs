@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: df6cd9651d63ccea175fc8417d9f7dd2a9161f57
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a96e7f4979965300a513e4d598bbd8566337a21f
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="authorize-users-for-ambari-views"></a>授权用户访问 Ambari 视图
 
 [已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-introduction.md)提供企业级功能，包括基于 Azure Active Directory 的身份验证。 可以同步新用户
-<!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> added to Azure AD groups that have been provided access to the cluster, allowing those specific users to perform certain actions. Currently, working with users, groups, and permissions in Ambari is only supported when using a domain-joined HDInsight cluster.
+<!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> added to Azure AD groups that have been provided access to the cluster, allowing those specific users to perform certain actions. Working with users, groups, and permissions in Ambari is supported for both domain-joined HDInsight cluster and standard HDInsight cluster.
 
 Active Directory 用户可以使用他们的域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Hue、Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。
 

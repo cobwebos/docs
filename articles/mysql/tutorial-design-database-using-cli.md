@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: tutorial
-ms.date: 11/03/2017
+ms.date: 11/28/2017
 ms.custom: mvc
-ms.openlocfilehash: dcd59442c0b3aa5d6ed1a9ef287949d1d17fa80f
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: f17f2cab39b42341886ed86e1c08569ca8f5eff0
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>设计第一个 Azure Database for MySQL 数据库
 
@@ -36,7 +36,7 @@ Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数�
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
-如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#set) 命令选择帐户下的特定订阅 ID。
+如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#az_account_set) 命令选择帐户下的特定订阅 ID。
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
@@ -56,9 +56,7 @@ az group create --name mycliresource --location westus
 以下示例在资源组 `mycliresource` 中的 `westus` 处创建名为 `mycliserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员登录名为 `myadmin`，密码为 `Password01!`。 该服务器是使用基本性能层以及在该服务器中的所有数据库之间共享的 50 个计算单元创建的。 可以根据应用程序需求增加或减少计算和存储。
 
 ```azurecli-interactive
-az mysql server create --resource-group mycliresource --name mycliserver
---location westus --user myadmin --password Password01!
---performance-tier Basic --compute-units 50
+az mysql server create --resource-group mycliresource --name mycliserver --location westus --admin-user myadmin --admin-password Password01! --performance-tier Basic --compute-units 50
 ```
 
 ## <a name="configure-firewall-rule"></a>配置防火墙规则

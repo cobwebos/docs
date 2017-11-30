@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: 23fa083ef8dc67767db68fd6e783203419b2becd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c5c93c8e8d108a9a5a29477a532d682659c9d512
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/15/2017
 | 通话的自定义呼叫方 ID | | |● |
 | 受信任的 IP | | |● |
 | 记住受信任的设备的 MFA |● |● |● |
-| MFA SDK | | |●（需要多重身份验证提供程序和完整的 Azure 订阅） |
+| MFA SDK | | |●（已弃用） | 
 | 适用于本地应用程序的 MFA | | |● |
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证

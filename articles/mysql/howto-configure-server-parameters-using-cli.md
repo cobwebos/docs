@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 10/12/2017
-ms.openlocfilehash: 3b811376e4c5445ee74124553c6bce247e4f8faf
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.date: 11/28/2017
+ms.openlocfilehash: 6a0d218a9b9cb41a87264cfd5f653bb631b0bce9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。 
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/12/2017
 - [Azure CLI 2.0](/cli/azure/install-azure-cli) 命令行实用工具或在浏览器中使用 Azure Cloud Shell。
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的服务器配置参数
-若要列出服务器中的所有可修改参数及其值，请运行 [az mysql server configuration list](/cli/azure/mysql/server/configuration#list) 命令。
+若要列出服务器中的所有可修改参数及其值，请运行 [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) 命令。
 
 可以列出资源组“myresourcegroup”下的服务器 myserver4demo.mysql.database.azure.com 的服务器配置参数。
 ```azurecli-interactive
@@ -41,7 +41,7 @@ az mysql server configuration list --resource-group myresourcegroup --server mys
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server myserver4demo
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>修改服务器配置参数值
-此外，你还可以修改某个服务器配置参数的值，这会更新 MySQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az mysql server configuration set](/cli/azure/mysql/server/configuration#set) 命令。 
+此外，你还可以修改某个服务器配置参数的值，这会更新 MySQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) 命令。 
 
 若要更新资源组“myresourcegroup”下的服务器 myserver4demo.mysql.database.azure.com 的服务器配置参数 slow\_query\_log。
 ```azurecli-interactive

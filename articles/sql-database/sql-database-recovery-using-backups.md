@@ -1,5 +1,5 @@
 ---
-title: "从备份还原 Azure SQL 数据库 | Microsoft Docs"
+title: "从备份还原 Azure SQL 数据库 | Microsoft 文档"
 description: "了解有关时间点还原的信息，它让你能够将 Azure SQL 数据库回滚到之前的时间点（最多 35 天）。"
 services: sql-database
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: Active
-ms.date: 10/13/2017
+ms.date: 11/20/2017
 ms.author: carlrab
-ms.openlocfilehash: bdef3c155317f32ce03aef920108922c40efc102
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: ea762816cf0aa4c5fcafd2010bfc06eb580219fa
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和[长期保留的备份](sql-database-long-term-retention.md)为数据库恢复提供这些选项。 可从数据库备份还原到：
@@ -54,7 +54,14 @@ SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和
 * 目标区域中正在处理的并行还原请求数。 
   
   对于非常大和/或活动的数据库，还原可能要花费几个小时。 如果一个区域出现长时间的服务中断，则可能是因为存在大量正在由其他区域处理的异地还原请求。 当存在很多请求时，则可能会延长该区域中数据库的恢复时间。 大部分数据库还原操作可在 12 小时内完成。
-  
+
+对于单个订阅，会在要提交和处理的并发还原请求数上有一些限制（包括时间点还原、地理还原和从长期保留备份中还原）：
+|  | **处理的并发请求数最多为 #** | **提交的并发请求数最多为 #** |
+| :--- | --: | --: |
+|单个数据库（每个订阅）|10|60|
+|弹性池（每个池）|4|200|
+||||
+
 没有任何内置功能用于执行批量还原。 [Azure SQL 数据库：完全恢复服务器](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)脚本是完成此任务的一种方法示例。
 
 > [!IMPORTANT]
@@ -73,7 +80,7 @@ SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和
 
 为了恢复目的，通常会将数据库还原到一个较早的点。 这样做时，可以将还原的数据库作为原始数据库的替代数据库，或使用它来检索数据，然后更新原始数据库。 
 
-* ***数据库替换***：如果还原的数据库旨在替换原始数据库，那么应验证性能级别和/或服务层是否合适，如有必要，还应调整该数据库的规模。 可以使用 T-SQL 中的 ALTER DATABASE 命令来重命名原始数据库，然后为还原的数据库指定原有的名称。 
+* ***数据库替换***：如果还原的数据库旨在替换原始数据库，那么应验证性能级别和/或服务层是否合适，如有必要，还应调整该数据库的规模。 可以使用 T-SQL 中的 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) 命令来重命名原始数据库，然后为还原的数据库指定原有的名称。 
 * ***数据恢复：***如果打算从还原的数据库检索数据以从用户或应用程序错误中恢复，则需要编写和执行要从还原的数据库将数据提取到原始数据库时所必需的数据恢复脚本。 尽管还原操作可能需要很长时间才能完成，但整个还原过程中，都可在数据库列表中看到还原数据库。 如果在还原期间删除数据库，将取消还原操作，则不会针对未完成还原的数据库向你收费。 
 
 ### <a name="azure-portal"></a>Azure 门户

@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 8930595821cc7662c4ff792b73eb357f1ba29307
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -61,7 +61,7 @@ Azure SQL 数据库采用以下内存中技术：
 - [内存中 OLTP 的概述和使用方案](https://msdn.microsoft.com/library/mt774593.aspx)（包括客户案例研究参考和入门信息）
 - [内存中 OLTP 的文档](http://msdn.microsoft.com/library/dn133186.aspx)
 - [列存储索引指南](https://msdn.microsoft.com/library/gg492088.aspx)
-- 混合事务/分析处理 (HTAP)，也称为[实时运行分析](https://msdn.microsoft.com/library/dn817827.aspx)
+- 混合事务/分析处理 (HTAP)，也称为[实时运营分析](https://msdn.microsoft.com/library/dn817827.aspx)
 
 有关内存中 OLTP 的快速入门教程：[快速入门 1：通过内存中 OLTP 技术加速 T-SQL 性能](http://msdn.microsoft.com/library/mt694156.aspx)（另一篇帮助用户入门的文章）
 
@@ -118,8 +118,6 @@ Azure SQL 数据库采用以下内存中技术：
 
 *降级到基本/标准层*：标准或基本层中的数据库不支持内存中 OLTP。 此外，不能将包含任何内存中 OLTP 对象的数据库移到标准或基本层。
 
-将数据库降级到标准/基本层之前，请删除所有内存优化表和表类型，以及所有本机编译的 T-SQL 模块。
-
 可通过编程方式了解给定的数据库是否支持内存中 OLTP。 可执行以下 Transact-SQL 查询：
 
 ```
@@ -128,6 +126,13 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 如果查询返回 **1**，则此数据库支持内存中 OLTP。
 
+将数据库降级到标准/基本层之前，请删除所有内存优化表和表类型，以及所有本机编译的 T-SQL 模块。 以下查询确定了将数据库降级为标准/基本版本前需要删除的所有对象：
+
+```
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
 
 *降级到较低的高级层*：内存优化表中的数据必须在（与数据库的定价层相关或在弹性池中可用的）内存中 OLTP 存储范围内。 如果尝试降低定价层或将数据库移动到可用内存中 OLTP 存储不足的池，操作会失败。
 
@@ -511,7 +516,7 @@ GO
 
 - [了解列存储索引](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [了解实时运行分析](http://msdn.microsoft.com/library/dn817827.aspx)
+- [了解实时运营分析](http://msdn.microsoft.com/library/dn817827.aspx)
 
 - 请参阅[有关常用工作负荷模式和迁移注意事项](http://msdn.microsoft.com/library/dn673538.aspx)（介绍内存中 OLTP 往往能够在其中提供显著性能改善的工作负荷模式）
 

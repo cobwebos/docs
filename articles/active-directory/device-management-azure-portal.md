@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cd13ecf50cf03c362f8da2da83ab698c4e8ba0cc
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 83a1ba0b97c0617884b1645ad54e259f04052f49
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>使用 Azure 门户管理设备
 
@@ -32,7 +32,30 @@ ms.lasthandoff: 11/14/2017
 
 - 提供有关如何使用 Azure 门户管理设备的信息
 
+## <a name="manage-devices"></a>管理设备 
 
+Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)或按照以下手动步骤转到此位置：
+
+1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+
+2. 在左侧导航栏中，单击“Active Directory”。
+
+    ![配置设备设置](./media/device-management-azure-portal/01.png)
+
+3. 在“管理”部分单击“设备”。
+
+    ![配置设备设置](./media/device-management-azure-portal/11.png)
+ 
+可在“设备”页上完成以下操作：
+
+- 配置设备管理设置
+
+- 查找设备
+
+- 执行设备管理任务
+
+- 查看与设备管理相关的审核日志  
+  
 
 ## <a name="configure-device-settings"></a>配置设备设置
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: glenga
-ms.openlocfilehash: a856c3b04dc458c0f1e0017066c35edd743565fd
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 6f6f89d62f1442198f80247cc5c433aa0c54030b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>搭配使用 Azure Functions 和 .Net 类库
 
@@ -429,10 +429,8 @@ public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureW
 
 ## <a name="next-steps"></a>后续步骤
 
-若要深入了解如何在 C# 脚本中使用 Azure Functions，请参阅 [Azure Functions C\# 脚本开发人员参考](functions-reference-csharp.md)。
-
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
+> [!div class="nextstepaction"]
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 <!-- NuGet packages --> 
 [Microsoft.Azure.WebJobs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs/2.1.0-beta1

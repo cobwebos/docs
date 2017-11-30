@@ -10,21 +10,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2017
-ms.openlocfilehash: b43ed29bda4412fb57bcb772da00f6405c3f1c26
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/16/2017
+ms.openlocfilehash: 8eafb16abeb939a16b1ddb024853300c453bcd9a
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>服务部署和环境设置的故障排除
 以下信息可帮助确定在设置模型管理环境时出错的原因。
 
 ## <a name="model-management-environment"></a>模型管理环境
-### <a name="owner-permission-required"></a>所需的所有者权限
-必须对 Azure 订阅具有所有者权限，才能注册机器学习计算。
-
-为 Web 服务部署设置群集也需要所有者权限。
+### <a name="contributor-permission-required"></a>需要参与者权限
+必须拥有对订阅或资源组的参与者访问权限，才能设置群集以便部署 Web 服务。
 
 ### <a name="resource-availability"></a>资源可用性
 需要在订阅中具有足够的可用资源，以便可以预配环境资源。
@@ -89,6 +87,7 @@ Python 示例：
 ```
 
 ## <a name="other-common-problems"></a>其他常见问题
+- 如果无法在 Windows 计算机上执行 azure-cli-ml 的 pip 安装，并看到错误 `cannot find the path specified`，需要启用长路径支持。 请访问 https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/。 
 - 如果 `env setup` 命令失败，并出现 `LocationNotAvailableForResourceType`，可能是因为机器学习资源位置（区域）错误。 请确保使用 `-l` 参数指定的位置是 `eastus2`、`westcentralus` 或 `australiaeast`。
 - 如果 `env setup` 命令失败，并出现 `Resource quota limit exceeded`，请确保订阅中有足够的内核，且资源未在其他进程中耗尽。
 - 如果 `env setup` 命令失败，并出现 `Invalid environment name. Name must only contain lowercase alphanumeric characters`，请确保服务名称中不包含大写字母、符号或下划线 (_)（如 my_environment 所示）。

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 10/30/2017
-ms.openlocfilehash: 6a63cccee5be89a1da8f9656c6e7d4c7422702ca
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 11/28/2017
+ms.openlocfilehash: 44b3c68b8df4006d3fe087e5ad4118d7616d3d9a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/31/2017
 ## <a name="restore-a-database-to-a-previous-point-in-time-by-using-the-azure-cli"></a>使用 Azure CLI 将数据库还原到以前的时间点
 使用 Azure Database for MySQL 可将服务器还原到以前的时间点。 将还原的数据复制到新服务器，并且现有服务器将保持不变。 例如，如果某个表在今天中午意外删除，可以还原到就在中午之前的时间。 然后可以从服务器的已还原副本中检索缺少的表和数据。 
 
-若要还原服务器，请使用 Azure CLI [az mysql server restore](/cli/azure/mysql/server#restore) 命令。
+若要还原服务器，请使用 Azure CLI [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore) 命令。
 
 ### <a name="run-the-restore-command"></a>运行还原命令
 

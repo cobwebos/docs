@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2017
+ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6a657177087ca01f4507b12048a88850aea1a03f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 开发人员词汇表
 本文包含一些核心 Azure Active Directory (AD) 开发人员概念的定义，帮助你了解 Azure AD 的应用程序开发。
@@ -33,6 +33,9 @@ ms.lasthandoff: 11/07/2017
 * 使用[“客户端凭据”授权](#authorization-grant)，客户端将提供唯一身份验证，在没有资源所有者的身份验证/授权情况下正常运行，因此该令牌有时可称为“仅限应用”令牌。
 
 如需更多详细信息，请参阅 [Azure AD 令牌参考][AAD-Tokens-Claims]。
+
+## <a name="application-id-client-id"></a>应用程序 ID（客户端 ID）
+Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应用程序及相关联的配置。  执行身份验证请求时将使用此应用程序 ID（[客户端 ID](https://tools.ietf.org/html/rfc6749#page-15)），开发时会向身份验证库提供它。 应用程序 ID（客户端 ID）不是密钥。 
 
 ## <a name="application-manifest"></a>应用程序清单
 [Azure 门户][AZURE-portal]提供的一项功能，可生成以 JSON 表示的应用程序标识配置，作为其关联 [Application][AAD-Graph-App-Entity] 实体和 [ServicePrincipal][AAD-Graph-Sp-Entity] 实体的更新机制。 如需更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
@@ -174,7 +177,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 一类[客户端应用程序](#client-application)，可在 Web 服务器上执行所有代码，并可将凭据安全地存储在服务器上，充当“机密”客户端。 如需更多详细信息，请参阅 [OAuth2 客户端类型和配置文件][OAuth2-Client-Types]。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure AD 开发人员指南][AAD-Dev-Guide]是用于所有 Azure AD 开发相关主题的门户，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Azure AD 身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基本知识。
+[Azure AD 开发人员指南][AAD-Dev-Guide]是用于所有 Azure AD 开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Azure AD 身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基本知识。  另外，还可在 [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
 
 请使用以下评论部分提供反馈，帮助我们改进和编写内容，包括有关新定义或更新现有定义的要求！
 

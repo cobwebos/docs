@@ -13,140 +13,84 @@ ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
-ms.author: billgib;genemi
-ms.openlocfilehash: 96e031835905057a9ab2b3ee4023b08de092dd8e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/17/2017
+ms.author: billgib
+ms.openlocfilehash: 094189e08002ce8d4a2f4f92a8c112eaf18ebe13
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="welcome-to-the-wingtip-tickets-sample-saas-azure-sql-database-tenancy-app"></a>欢迎使用 Wingtip Tickets 示例 SaaS Azure SQL 数据库租户应用
+# <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 
-欢迎使用 Wingtip Tickets 示例 SaaS Azure SQL 数据库租户应用程序及其教程。 数据库租户是指应用向为在应用程序中托管而付费的客户端提供的数据隔离模式。 目前，要进一步简化，每个客户端需拥有其自己的完整数据库，或与其他客户端共享数据库。
+三个示例均实现了同一个 Wingtip Tickets 应用程序。 此应用是面向小型场所（电影院、俱乐部等）的事件清单和票证 SaaS 应用。每个场所都是此应用的一个租户，并有自己的数据：场所详细信息、事件列表、客户、票证订单等。此应用与管理脚本和教程一起展示了一个端到端的 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
 
-## <a name="wingtip-tickets-app"></a>Wingtip Tickets 应用
+## <a name="three-saas-application-patterns"></a>三种 SaaS 应用程序模式
 
-Wingtip Tickets 示例应用程序说明了不同数据库租户模型对多租户 SaaS 应用程序设计和管理的影响。 随附的教程直接介绍了这些相同的影响。 Wingtip Tickets 在 Azure SQL 数据库的基础上构建。
+此应用有三个版本；每个版本在 Azure SQL 数据库上都使用了不同的数据库租户模式。  第一个示例使用单租户应用程序，并具有独立的单租户数据库。 第二个示例使用多租户应用，并且每个租户都具有一个数据库。 第三个示例使用多租户应用，并且具有分片式多租户数据库。
 
-Wingtip Tickets 旨在处理实际 SaaS 客户端使用的各种设计和管理方案。 Wingtip Tickets 中考虑了出现的使用模式。
+![三种租户模式][image-three-tenancy-patterns]
 
-在五分钟内即可在自己的 Azure 订阅中安装 Wingtip Tickets 应用。 安装包括插入多个租户的示例数据。 可以安全安装应用程序和所有模型的管理脚本，因为安装不会相互影响或相互干扰。
+ 每个示例均包含管理脚本和教程，其中介绍了可用于自己的应用程序的各种设计和管理模式。  每个示例均可在 5 分钟内完成部署。  可并行部署这三个示例，以比较它们在设计和管理方面的不同。
 
-#### <a name="code-in-github"></a>Github 中的代码
+## <a name="standalone-application-pattern"></a>独立应用程序模式
 
-应用程序代码和管理脚本均可从 GitHub 上获取：
+独立应用程序模式使用单个租户应用程序，并且每个租户具有单个租户数据库。 每个租户的应用均部署到单独的 Azure 资源组。 它可能位于服务提供商的订阅或租户的订阅中，并由提供商代表租户进行管理。 此模式提供了最佳的租户隔离，但是它的经济成本通常是最高的，因为无法跨多个租户共享资源。
 
-- “独立应用”模型：[WingtipTicketsSaaS-StandaloneApp 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
-- “每个租户一个数据库”模型：[WingtipTicketsSaaS-DbPerTenant 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)。
-- “分片多租户”模型：[WingtipTicketsSaaS-MultiTenantDB 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)。
+请查看相关[教程][docs-tutorials-for-wingtip-sa]和 GitHub [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa] 上的代码。
 
-对上面列出的所有模型重复使用 Wingtip Tickets 应用的同一代码基。 可以使用 Github 中的代码开始自己的 SaaS 项目。
+## <a name="database-per-tenant-pattern"></a>“每个租户一个数据库”模式
 
+“每个租户一个数据库”模式适用于注重租户隔离并想要运行集中式服务以经济高效地使用共享资源的服务提供商。 将为每个场所或租户创建数据库，并集中管理所有数据库。 数据库可以托管在弹性池中，以便可以均衡无法预测的租户工作负载模式，轻松并经济高效地进行性能管理。 目录数据库将保管租户与其数据库之间的映射。 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的分片映射管理功能管理此映射，从而为应用程序提供高效的连接管理功能。
 
+请查看相关[教程][docs-tutorials-for-wingtip-dpt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt] 上的代码。
 
-## <a name="major-database-tenancy-models"></a>主要的数据库租户模型
+## <a name="sharded-multi-tenant-database-pattern"></a>分片式多租户数据库模式
 
-Wingtip Tickets 是一个事件列表和票证 SaaS 应用程序。 Wingtip 按地点提供所需服务。 对每个地点应用以下各项：
+多租户数据库适用于希望降低每个租户的成本并可接受租户隔离性降低的服务提供商。 此模式可将大量租户封装到单个数据库，从而降低每个租户的成本。 可以通过跨多个数据库将租户分片来实现几乎无限制的缩放。  目录数据库也会将租户映射到数据库。  
 
-- 为在应用程序中托管付费。
-- 是 Wingtip 中的“租户”。
-- 主机事件。 涉及以下事件：
-    - 票证价格。
-    - 票证销售数。
-    - 购买票证的客户。
+此模式还可实现混合模型，在此模型中可以通过将多个租户置于一个数据库中来优化成本，或通过将单个租户置于他们自己的数据库中来优化隔离。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。
 
-应用与管理脚本和教程一起展示完整的 SaaS 方案。 该方案包括以下活动：
-
-- 租户预配。
-- 监视和管理性能。
-- 架构管理。
-- 跨租户报告和分析。
-
-所有这些活动都可根据需要以任意规模提供。
-
-
-
-## <a name="code-samples-for-each-tenancy-model"></a>每个租户模型的代码示例
-
-强调了一组应用程序模型。 但是，其他实现可以混合两个或更多模型的元素。
-
-#### <a name="standalone-app-model"></a>“独立应用”模型
-
-![“独立应用”模型][standalone-app-model-62s]
-
-此模型使用单租户应用程序。 因此，此模型只需一个数据库，并且仅为一个租户存储数据。 该租户与数据库中的其他租户完全隔离。
-
-将应用的实例出售给多个不同客户端时，为了使每个客户端独立运行，可以使用此模型。 客户端是唯一的租户。 数据库仅为一个客户端存储数据，但为客户端的多位客户存储数据。
-
-#### <a name="database-per-tenant"></a>每个租户一个数据库
-
-![“每个租户一个数据库”模型][database-per-tenant-model-35d]
-
-此模型时的应用程序实例中有多个租户。 但对于新租户，会分配另一个仅供该新租户使用的数据库。
-
-此模型为每个租户提供完全数据库隔离。 Azure SQL 数据库服务非常精妙，使此模型变得合理。
-
-- [SQL 数据库多租户 SaaS 应用示例简介][saas-dbpertenant-wingtip-app-overview-15d] - 提供有关此模型的详细信息。
-
-#### <a name="sharded-multi-tenant-databases-the-hybrid"></a>分片多租户数据库，混合型
-
-![“分片多租户数据库”模型，混合型][sharded-multitenantdb-model-hybrid-79m]
-
-此模型时的应用程序实例中有多个租户。 此外，此模型在其一些或所有数据库中也有多个租户。 此模型有利于提供不同的服务层，以便客户端通过支付更多费用实现完全数据库隔离。
-
-每个数据库的架构都包括租户标识符。 甚至在仅存储一个租户的数据库中都有租户标识符。
-
-- [SQL 数据库多租户 SaaS 应用示例简介][saas-multitenantdb-get-started-deploy-89i]
-
-
-
-## <a name="tutorials-for-each-tenancy-model"></a>每个租户模型的教程
-
-以下各项记录了每个租户模型：
-
-- 一组教程文章。
-- Github 存储库中存储的模型专用源代码：
-    - Wingtip Tickets 应用程序的代码。
-    - 管理方案的脚本代码。
-
-#### <a name="tutorials-for-management-scenarios"></a>管理方案教程
-
-每个模型的教程文章涵盖以下管理方案：
-
-- 租户预配。
-- 性能监视和管理。
-- 架构管理。
-- 跨租户报告和分析。
-- 将租户还原到以前的某个时间点。
-- 灾难恢复。
-
-
+请查看相关[教程][docs-tutorials-for-wingtip-mt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上的代码。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [SQL 数据库多租户 SaaS 应用示例简介][saas-dbpertenant-wingtip-app-overview-15d] - 提供有关此模型的详细信息。
+#### <a name="conceptual-descriptions"></a>概念说明
 
-- [多租户 SaaS 数据库租户模式][multi-tenant-saas-database-tenancy-patterns-60p]
+- 可在[多租户 SaaS 数据库租户模式][saas-tenancy-app-design-patterns-md]中查看此应用程序租户模式的详细说明
+
+#### <a name="tutorials-and-code"></a>教程和代码
+
+- 独立应用：
+    - [独立应用模式的教程][docs-tutorials-for-wingtip-sa]。
+    - [Github 上的独立应用模式的代码][github-code-for-wingtip-sa]。
+
+- 每个租户一个数据库：
+    - [“每个租户一个数据库”模式的教程][docs-tutorials-for-wingtip-dpt]。
+    - [Github 上的“每个租户一个数据库”模式的代码][github-code-for-wingtip-dpt]。
+
+- 分片式多租户：
+    - [分片式多租户模式的教程][docs-tutorials-for-wingtip-mt]。
+    - [Github 上的分片式多租户模式的代码][github-code-for-wingtip-mt]。
 
 
 
 <!-- Image references. -->
 
-[standalone-app-model-62s]: media/saas-tenancy-welcome-wingtip-tickets-app/model-standalone-app.png "“独立应用”模型"
+[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "三种租户模式。"
 
-[database-per-tenant-model-35d]: media/saas-tenancy-welcome-wingtip-tickets-app/model-database-per-tenant.png "“每个租户一个数据库”模型"
+<!-- Docs.ms.com references. -->
 
-[sharded-multitenantdb-model-hybrid-79m]: media/saas-tenancy-welcome-wingtip-tickets-app/model-sharded-multitenantdb-hybrid.png "“分片多租户数据库”模型，混合型"
+[saas-tenancy-app-design-patterns-md]: saas-tenancy-app-design-patterns.md
 
+<!-- WWWeb http references. -->
 
+[docs-tutorials-for-wingtip-sa]: https://aka.ms/wingtipticketssaas-sa
+[github-code-for-wingtip-sa]: https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp
 
-<!-- Article references. -->
+[docs-tutorials-for-wingtip-dpt]: https://aka.ms/wingtipticketssaas-dpt
+[github-code-for-wingtip-dpt]: https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant
 
-[saas-dbpertenant-wingtip-app-overview-15d]: saas-dbpertenant-wingtip-app-overview.md
-
-[multi-tenant-saas-database-tenancy-patterns-60p]: saas-tenancy-app-design-patterns.md
-
-[saas-multitenantdb-get-started-deploy-89i]: saas-multitenantdb-get-started-deploy.md
-
+[docs-tutorials-for-wingtip-mt]: https://aka.ms/wingtipticketssaas-mt
+[github-code-for-wingtip-mt]: https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb
 

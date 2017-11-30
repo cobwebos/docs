@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>使用 SQL 数据同步（预览版）跨多个云和本地数据库同步数据
 
@@ -80,16 +80,6 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 
 ## <a name="sync-req-lim"></a> 要求和限制
 
-### <a name="general-requirements"></a>一般要求
-
--   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
-
--   表不能包含非主键标识列。
-
--   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
-
--   必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
-
 ### <a name="general-considerations"></a>一般注意事项
 
 #### <a name="eventual-consistency"></a>最终一致性
@@ -98,7 +88,19 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将组中的一个
 #### <a name="performance-impact"></a>性能影响
 SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层并根据需要升级。
 
+### <a name="general-requirements"></a>一般要求
+
+-   每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
+
+-   必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
+
 ### <a name="general-limitations"></a>一般限制
+
+-   表不能包含非主键标识列。
+
+-   对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
+
+-   不支持 Azure Active Directory 身份验证。
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 

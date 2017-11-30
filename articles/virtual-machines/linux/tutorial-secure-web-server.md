@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e3ad8a5c08b739d8b2c6e224db0c8f88c1893ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2d6a0b00704e1d97be9a4c5bd00ba37374419e5
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>在 Azure 中的 Linux 虚拟机上使用 SSL 证书保护 Web 服务器
 若要保护 Web 服务器，可以使用安全套接字层 (SSL) 证书来加密 Web 流量。 这些 SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Linux 虚拟机 (VM)。 本教程介绍如何执行下列操作：
@@ -60,7 +60,7 @@ az keyvault create \
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>生成证书并存储在 Key Vault 中
-为供生产使用，应通过 [az keyvault certificate import](/cli/azure/certificate#import) 导入由受信任的提供程序签名的有效证书。 在本教程中，以下示例显示了如何使用 [az keyvault certificate create](/cli/azure/certificate#create) 生成使用默认证书策略的自签名证书：
+为供生产使用，应通过 [az keyvault certificate import](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) 导入由受信任的提供程序签名的有效证书。 在本教程中，以下示例显示了如何使用 [az keyvault certificate create](/cli/azure/keyvault/certificate#az_keyvault_certificate_create) 生成使用默认证书策略的自签名证书：
 
 ```azurecli-interactive 
 az keyvault certificate create \

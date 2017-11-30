@@ -3,7 +3,7 @@ title: "Azure Functions JavaScript 开发人员参考 | Microsoft 文档"
 description: "了解如何使用 JavaScript 开发函数。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
-ms.author: glenga
-ms.openlocfilehash: 8050e116a48c69b2fccd6bdc1cf029dfdd6e6f28
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.author: tdykstra
+ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: e0c608fe3a80c9d704774e592a1eba383bbdffe8
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 31a2fa3d3c87c16109514b130c95e731f401f8bd
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions Blob 存储绑定
 
@@ -309,7 +309,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 
 ### <a name="input--output---c-example"></a>输入和输出 - C# 示例
 
-以下示例是使用一个输入和两个输出 Blob 绑定的[预编译 C#](functions-dotnet-class-library.md) 函数。 在 *sample-images* 容器中创建映像 Blob 时，会触发该函数。 该函数创建该映像 Blob 的小型和中型副本。 
+下面的示例展示了使用一个 blob 触发器和两个输出 blob 绑定的[预编译 C#](functions-dotnet-class-library.md) 函数。 在 *sample-images* 容器中创建映像 Blob 时，会触发该函数。 该函数创建该映像 Blob 的小型和中型副本。 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -342,7 +342,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 ### <a name="input--output---c-script-example"></a>输入和输出 - C# 脚本示例
 
-以下示例演示 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
+下面的示例展示了 function.json 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本](functions-reference-csharp.md)代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -380,7 +380,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 C# 脚本代码如下所示：
 
 ```cs
-public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
+public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
@@ -389,7 +389,7 @@ public static void Run(string myQueueItem, Stream myInputBlob, out string myOutp
 
 ### <a name="input--output---javascript-example"></a>输入和输出 - JavaScript 示例
 
-以下示例演示 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码] (functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
+下面的示例展示了 function.json 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码] (functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 

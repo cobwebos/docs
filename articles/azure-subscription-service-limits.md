@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: byvinyal
-ms.openlocfilehash: ff5da6a07512c323cd281832d1ca8a4c0ec5a816
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: dc506ce0872721a6da1c440eead107396c249f5f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -64,6 +64,7 @@ ms.lasthandoff: 11/11/2017
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [数据库迁移服务](#database-migration-service-limits)
 * [DNS](#dns-limits)
 * [事件中心](#event-hubs-limits)
 * [IoT 中心](#iot-hub-limits)
@@ -262,6 +263,9 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 ### <a name="data-lake-store-limits"></a>Data Lake Store 限制
 [!INCLUDE [azure-data-lake-store-limits](../includes/azure-data-lake-store-limits.md)]
+
+### <a name="database-migration-service-limits"></a>数据库迁移服务限制
+[!INCLUDE [database-migration-service-limits](../includes/database-migration-service-limits.md)]
 
 ### <a name="stream-analytics-limits"></a>流分析限制
 [!INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]

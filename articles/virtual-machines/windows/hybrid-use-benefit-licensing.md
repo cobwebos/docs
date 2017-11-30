@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
+ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: 11b491b52fe359427c5e395d5d8c3be3cddcdc89
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c2b406530aec60299ea2db38ad9e34895fe36dcd
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益在 Azure 支持的任何平台（Windows Server 映像或 Windows 自定义映像）上部署新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/15/2017
 >
 
 > [!NOTE]
-> 即将推出将 Windows Server 的 Azure 混合权益与针对其他软件（例如 SQL Server）或任何第三方市场映像进行收费的 VM 搭配使用的做法。如果你遇到 409 错误，例如：不允许更改属性 ‘LicenseType'，说明你正在尝试转换或部署具有其他软件成本的新 Windows Server VM，这可能在该区域不受支持。
+> 即将推出将 Windows Server 的 Azure 混合权益与针对其他软件（例如 SQL Server）或任何第三方市场映像进行收费的 VM 搭配使用的做法。如果你遇到 409 错误，例如：不允许更改属性 ‘LicenseType'，说明你正在尝试转换或部署具有其他软件成本的新 Windows Server VM，这可能在该区域不受支持。 如果尝试寻找门户配置选项来执行转换，但在相应 VM 中看不到此选项，原因也是一样。
 >
 
 
@@ -82,6 +82,10 @@ Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
 
 ### <a name="portal"></a>门户
 从门户 VM 边栏选项卡中，可以通过选择"配置"选项将 VM 更新为使用 Azure 混合权益，然后切换“Azure 混合权益”选项
+
+> [!NOTE]
+> 如果在“配置”下看不到“Azure 混合权益”切换选项，这是因为选定 VM 类型（例如，通过自定义映像生成的 VM，或通过包含 SQL Server 或 Azure Marketplace 第三方软件等额外付费软件的映像生成的 VM）尚不支持这种转换。
+>
 
 ## <a name="upload-a-windows-server-vhd"></a>上传 Windows Server VHD
 若要在 Azure 中部署 Windows Server VM，首先需要创建包含基础 Windows 版本的 VHD。 必须先通过 Sysprep 妥善准备此 VHD，再将其上传到 Azure。 可以[阅读有关 VHD 要求和 Sysprep 进程](upload-generalized-managed.md)以及[针对服务器角色的 Sysprep 支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)的详细信息。 在运行 Sysprep 之前备份 VM。 
@@ -180,12 +184,14 @@ foreach ($vm in $vms) {"VM Name: " + $vm.Name, "   Azure Hybrid Benefit for Wind
 还可以[创建和部署虚拟机规模集](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)和设置 LicenseType 属性
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[如何使用 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
+详细了解[如何使用 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
-详细了解 [Windows Server 的 Azure 混合权益许可详细指南](http://go.microsoft.com/fwlink/?LinkId=859786)。
+详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/en-us/windows-server/get-started/azure-hybrid-benefit)。
 
-了解有关[使用 Resource Manager模板](../../azure-resource-manager/resource-group-overview.md)的详细信息。
+详细了解如何[使用资源管理器模板](../../azure-resource-manager/resource-group-overview.md)
 
-详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 使应用程序迁移到 Azure 的过程更经济高效](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)。
+详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
+
+详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 
 详细了解[常见问题](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)

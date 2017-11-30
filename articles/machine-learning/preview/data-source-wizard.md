@@ -7,11 +7,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: bed026e8f75618403efa3eed475371d1d2746bc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a0b014fe57f3e9d2ceeac94f3570353a9a07b27
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="data-source-wizard"></a>数据源向导 #
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 ![步骤 1](media/data-source-wizard/step1.png)
 
 ## <a name="step-3-select-data-file"></a>步骤 3：选择数据文件 ##
-对于文件/目录，指定文件路径。 从下拉列表中选择数据所在的位置，它可以是本地文件路径、Azure Blob 存储或 Azure Data Lake。 
+对于文件/目录，指定文件路径。 从下拉列表中选择数据所在的位置，它可以是本地文件路径或 Azure Blob 存储。 
 
 通过键入相关信息指定路径，或单击“浏览...” 按钮浏览路径。 可浏览目录或一个或多个文件。
 

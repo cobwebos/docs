@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 469bd74c0f144ff641fafe8c8f830b1fdbfa7690
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: eda6e19d27afbf07df853dd4cef5ece1a745034d
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构 
 
-本文介绍 Azure SQL 数据库连接体系结构，并说明如何使用不同的组件将流量定向到 Azure SQL 数据库实例。 借助这些 Azure SQL 数据库连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure 数据库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。 如果在阅读本文后有任何疑问，请通过 dmalik@microsoft.com 联系 Dhruv。 
+本文介绍 Azure SQL 数据库连接体系结构，并说明如何使用不同的组件将流量定向到 Azure SQL 数据库实例。 借助这些 Azure SQL 数据库连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure 数据库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。 
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
-下图提供了 Azure SQL Database 连接体系结构的高级别概述。 
+下图提供了 Azure SQL Database 连接体系结构的高级别概述。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/architecture-overview.png)
 
@@ -65,14 +65,14 @@ ms.lasthandoff: 10/31/2017
 | --- | --- |--- |
 | 澳大利亚东部 | 191.238.66.109 | 13.75.149.87 |
 | 澳大利亚东南部 | 191.239.192.109 | 13.73.109.251 |
-| 巴西南部 | 104.41.11.5 | |    
-| 加拿大中部 | 40.85.224.249 | |    
+| 巴西南部 | 104.41.11.5 | |
+| 加拿大中部 | 40.85.224.249 | |
 | 加拿大东部 | 40.86.226.166 | |
 | 美国中部 | 23.99.160.139 | 13.67.215.62 |
 | 东亚 | 191.234.2.139 | 52.175.33.150 |
 | 美国东部 1 | 191.238.6.43 | 40.121.158.30 |
 | 美国东部 2 | 191.239.224.107 | 40.79.84.180 |
-| 印度中部 | 104.211.96.159  | |   
+| 印度中部 | 104.211.96.159  | |
 | 印度南部 | 104.211.224.146  | |
 | 印度西部 | 104.211.160.80 | |
 | 日本东部 | 191.237.240.43 | 13.78.61.196 |
@@ -84,7 +84,7 @@ ms.lasthandoff: 10/31/2017
 | 美国中南部 | 23.98.162.75 | 13.66.62.124 |
 | 东南亚 | 23.100.117.95 | 104.43.15.0 |
 | 英国北部 | 13.87.97.210 | |
-| 英国南部 1 | 51.140.184.11 | |    
+| 英国南部 1 | 51.140.184.11 | |
 | 英国南部 2 | 13.87.34.7 | |
 | 英国西部 | 51.141.8.11  | |
 | 美国中西部 | 13.78.145.25 | |
@@ -95,12 +95,12 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="change-azure-sql-database-connection-policy"></a>更改 Azure SQL 数据库连接策略
 
-若要更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略，请使用 [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx)。 
+若要更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略，请使用 [REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx)。
 
-- 如果将连接策略设置为“代理”，则所有网络数据包均通过 Azure SQL 数据库网关进行传输。 对于此设置，需要允许仅出站到 Azure SQL 数据库网关 IP。 使用“代理”设置比使用“重定向”设置的延迟时间更长。 
-- 如果连接策略设置为“重定向”，则所有网络数据包直接向中间件代理传输。 对于此设置，需要允许出站到多个 IP。 
+- 如果将连接策略设置为“代理”，则所有网络数据包均通过 Azure SQL 数据库网关进行传输。 对于此设置，需要允许仅出站到 Azure SQL 数据库网关 IP。 使用“代理”设置比使用“重定向”设置的延迟时间更长。
+- 如果连接策略设置为“重定向”，则所有网络数据包直接向中间件代理传输。 对于此设置，需要允许出站到多个 IP。
 
-## <a name="script-to-change-connection-settings-via-powershell"></a>通过 PowerShell 编写脚本以更改连接设置 
+## <a name="script-to-change-connection-settings-via-powershell"></a>通过 PowerShell 编写脚本以更改连接设置
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
@@ -140,7 +140,7 @@ $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationCo
 $result = $AuthContext.AcquireToken(
 "https://management.core.windows.net/",
 $clientId,
-[Uri]$uri, 
+[Uri]$uri,
 [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
 )
 
@@ -160,7 +160,7 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>通过 Azure CLI 2.0 编写脚本以更改连接设置 
+## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>通过 Azure CLI 2.0 编写脚本以更改连接设置
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -169,20 +169,17 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 以下 CLI 脚本演示如何更改连接策略。
 
 <pre>
- # Get SQL Server ID
- sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+# Get SQL Server ID
+sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
 
 # Set URI
-uri="https://management.azure.com/$sqlserverid/connectionPolicies/Default?api-version=2014-04-01-preview"
-
-# Get Access Token 
-accessToken=$(az account get-access-token --query 'accessToken' -o tsv)
+id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy 
-curl -H "authorization: Bearer $accessToken" -X GET $uri
+az resource show --ids $id
 
-#Update connection policy 
-curl -H "authorization: Bearer $accessToken" -H "Content-Type: application/json" -d '{"properties":{"connectionType":"Proxy"}}' -X PUT $uri
+# Update connection policy 
+az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
 

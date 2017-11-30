@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: 5322b5f3231b067937b685c69b916ed74dfe9a6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da2dc87543fd8a0aa99e1de3018a310abe93fa3a
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
 本部分概述最重要的媒体服务概念。
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 对 Azure 存储进行的所有访问都要通过存储帐户完成。 一个 Media Service 帐户可与一个或多个存储帐户相关联。 一个帐户可以包含无限个容器，只要每个帐户的容器总大小不超过 500TB 即可。  媒体服务提供 SDK 级工具，可用于管理多个存储帐户，并在上传到这些帐户时基于指标或随机分发使资产分发达到负载均衡。 有关详细信息，请参阅[使用 Azure 存储](https://msdn.microsoft.com/library/azure/dn767951.aspx)。 
 
 ## <a name="jobs-and-tasks"></a>作业和任务
-[作业](https://https://docs.microsoft.com/rest/api/media/operations/job)通常用于处理（例如，索引或编码）音频/视频演示。 如果要处理多个视频，应为要编码的每个视频创建一个作业。
+[作业](https://docs.microsoft.com/en-us/rest/api/media/operations/job)通常用于处理（例如，索引或编码）音频/视频演示。 如果要处理多个视频，应为要编码的每个视频创建一个作业。
 
 作业包含有关要执行的处理的元数据。 每个作业包含一个或多个[任务](https://docs.microsoft.com/rest/api/media/operations/task)，这些任务指定一个原子处理任务、该任务的输入资产和输出资产、一个媒体处理器及其关联的设置。 作业中的各个任务可连接在一起，其中一个任务的输出资产指定为下一任务的输入资产。 因此，一个作业可以包含播放媒体所必需的全部处理过程。
 

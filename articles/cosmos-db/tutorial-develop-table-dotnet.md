@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB：在 .NET 中使用表 API 进行开发 | Microsoft Docs"
+title: "Azure Cosmos DB：在 .NET 中使用表 API 进行开发 | Microsoft 文档"
 description: "了解如何通过 .NET 使用 Azure Cosmos DB 的表 API 进行开发"
 services: cosmos-db
 documentationcenter: 
@@ -12,18 +12,18 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 0e77ecc591173ae29311c2a1508e5a8a907816ac
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 29e6187c59f34122e98819b5775af261494995ca
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值，及图形数据库，它们均受益于 Azure Cosmos DB 最核心的全球分布和水平缩放功能。
+Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
 本教程涵盖以下任务： 
 
@@ -72,6 +72,10 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
 现在首先在 Azure 门户中创建 Azure Cosmos DB 帐户。  
+ 
+> [!IMPORTANT]  
+> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。 
+>
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
@@ -88,7 +92,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 2. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-table-dotnet-getting-started.git
+    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
     ```
 
 3. 然后在 Visual Studio 中打开解决方案文件。 
@@ -99,24 +103,32 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 1. 在 [Azure 门户](http://portal.azure.com/)中，单击“连接字符串”。 
 
-    使用屏幕右侧的复制按钮复制“连接字符串”。
+    使用屏幕右侧的复制按钮复制“主连接字符串”。
 
     ![在“连接字符串”窗格中查看并复制“连接字符串”](./media/create-table-dotnet/connection-string.png)
 
 2. 在 Visual Studio 中，打开 app.config 文件。 
 
-3. 将“连接字符串”值粘贴到 app.config 文件，作为 CosmosDBStorageConnectionString 的值。 
+3. 取消注释第 8 行的 StorageConnectionString 并注释掉第 7 行的 StorageConnectionString，因为本教程不使用存储模拟器。 第 7 行和第 8 行现在应如下所示：
 
-    `<add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.net" />`    
+    ```
+    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    ```
 
-    > [!NOTE]
-    > 要将此应用与 Azure 表存储配合使用，需要更改 `app.config file` 中的连接字符串。 将帐户名用作 Table-account 名称，将密钥用作 Azure 存储主密钥。 <br>
-    >`<add key="StandardStorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
-    > 
+4. 将主连接字符串从门户粘贴到第 8 行的 StorageConnectionString 值。 粘贴引号内的字符串。
+   
+    > [!IMPORTANT]
+    > 如果终结点使用 documents.azure.com，表示已有预览帐户。必须[新建表 API 帐户](#create-a-database-account)，才能使用正式版表 API SDK。 
     >
 
-4. 保存 app.config 文件。
+    第 8 行现在应类似于：
+
+    ```
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
+    ```
+
+5. 保存 app.config 文件。
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
@@ -316,12 +328,9 @@ CloudTable table = tableClient.GetTableReference("people");
 table.DeleteIfExists();
 ```
 
-## <a name="clean-up-resources"></a>清理资源 
+## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请使用以下步骤删除本教程在 Azure 门户中创建的所有资源。   
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。 
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

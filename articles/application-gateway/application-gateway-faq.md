@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: 2ae53d5aceab21b08ccdae5bf5192529cd7f09da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f92af44df9863bbf48abb4afcf9b1505c843fadc
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -288,7 +288,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 * 防止自动程序、爬网程序和扫描程序
 
-* 检测常见应用程序错误配置（即 Apache、IIS 等）
+ * 检测常见应用程序错误配置（即 Apache、IIS 等）
 
 **问：WAF 是否也支持 DDoS 防护？**
 

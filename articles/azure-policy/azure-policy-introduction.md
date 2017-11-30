@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 82c3f4629da635d1006db91e236d38b1aa16695c
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 8ffa4c22c39bcd241b36b55bbcba24ac3f75fff2
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure 策略？
 
@@ -24,7 +24,7 @@ Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策�
 
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
 
-策略和基于角色的访问控制 (RABC) 之间存在一些主要区别。 RBAC 关注不同范围内的用户操作。 例如，你可能被添加到所需范围的资源组的参与者角色。 该角色允许你对该资源组做出更改。 策略关注部署期间的资源属性，以及现有资源。 例如，可通过策略控制能够预配的资源类型。 或者，可限制能够预配资源的位置。 不同于 RBAC，策略是默认的允许和明确拒绝系统。
+策略和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的用户操作。 例如，你可能被添加到所需范围的资源组的参与者角色。 该角色允许你对该资源组做出更改。 策略关注部署期间的资源属性，以及现有资源。 例如，可通过策略控制能够预配的资源类型。 或者，可限制能够预配资源的位置。 不同于 RBAC，策略是默认的允许和明确拒绝系统。
 
 若要使用策略，必须通过 RBAC 完成身份验证。 具体而言，帐户需要：
 

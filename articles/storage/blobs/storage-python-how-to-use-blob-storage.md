@@ -3,7 +3,7 @@ title: "如何通过 Python 使用 Azure Blob 存储（对象存储）| Microsof
 description: "使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 services: storage
 documentationcenter: python
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 0348e360-b24d-41fa-bb12-b8f18990d8bc
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: tamram
-ms.openlocfilehash: ae5ad68929a6779ed4944de82a609321a5c4b5ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94a0f95454f9243ef09ce37a62466bca4003a91
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-use-azure-blob-storage-from-python"></a>如何通过 Python 使用 Azure Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -34,13 +34,13 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="download-and-install-azure-storage-sdk-for-python"></a>下载并安装用于 Python 的 Azure 存储 SDK
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>下载和安装适用于 Python 的 Azure 存储 SDK
 
-用于 Python 的 Azure 存储 SDK 需要 Python 2.7、3.3、3.4、3.5 或 3.6，有 4 个不同的包：`azure-storage-blob`、`azure-storage-file`、`azure-storage-table` 和 `azure-storage-queue`。 在本教程中，我们将使用 `azure-storage-blob` 包。
+适用于 Python 的 Azure 存储 SDK 需要 Python 2.7、3.3、3.4、3.5 或 3.6，并且包含 4 个不同包：`azure-storage-blob`、`azure-storage-file`、`azure-storage-table` 和 `azure-storage-queue`。 在本教程中，我们要用到 `azure-storage-blob` 包。
  
 ### <a name="install-via-pypi"></a>通过 PyPi 安装
 
-若要通过 Python 包索引 (PyPI) 安装，请键入：
+要通过 Python 包索引 (PyPI) 安装，请键入：
 
 ```bash
 pip install azure-storage-blob

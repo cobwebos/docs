@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 2d6c1737edbc4e69dd7de4c8ce3d7b0899bfae51
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 5f31e32bb7cbd747af2e03699cfb2c6418828f8d
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -113,6 +113,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 转换完成后，可以通过 Azure 门户中的 StorSimple 设备管理器服务管理设备。 如果你没有看到用来迁移到 Azure 门户的选项，但你想要移动，则可[提交请求](https://aka.ms/ss8000-cx-signup)。
 
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-30"></a>在运行 Update 3.0 之前版本的设备上支持的操作
 Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 3.0 之前版本的设备上支持的操作。
 
 | 操作                                                                                                                       | 支持      |

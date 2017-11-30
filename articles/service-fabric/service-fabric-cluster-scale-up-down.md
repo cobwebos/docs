@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: d26a97ee0e5416fb1fe38ef0fb18fa4eb0e2963d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 249fb4903c7b2de3ce290850a7759a4793f10aa7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>使用自动缩放规则扩展可缩减 Service Fabric 群集
 虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可在 [Service Fabric nodetypes](service-fabric-cluster-nodetypes.md) 文档中了解有关详细信息。 由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此需要为每个节点类型/虚拟机规模集设置自动缩放规则。
@@ -72,8 +72,8 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 
 需以一次一个 VM 实例的形式执行以下步骤。 这可让系统服务（以及有状态服务）在要删除的 VM 实例上正常关闭，并在其他节点上创建新副本。
 
-1. 运行 [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) 加上“RemoveNode”可禁用要删除的节点（该节点类型的最高实例）。
-2. 运行 [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) 可确保节点确实转换为禁用。 如果没有，请等到节点已禁用。 此步骤不能一蹴而就。
+1. 运行 [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) 加上“RemoveNode”可禁用要删除的节点（该节点类型的最高实例）。
+2. 运行 [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) 可确保节点确实转换为禁用。 如果没有，请等到节点已禁用。 此步骤不能一蹴而就。
 3. 根据[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)中的示例/说明逐个更改 Nodetype 的 VM 数目。 删除的实例是最高 VM 实例。 
 4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目缩减到少于可靠性层所需的数目。 在[此处](service-fabric-cluster-capacity.md)了解有关可靠性层的详细信息。 
 
@@ -85,8 +85,8 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 
 必须以一次一个 VM 实例的形式执行以下步骤。 这可让系统服务（以及有状态服务）在要删除的 VM 实例上正常关闭，并在其他位置创建新副本。
 
-1. 运行 [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) 加上“RemoveNode”可禁用要删除的节点（该节点类型的最高实例）。
-2. 运行 [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) 可确保节点确实转换为禁用。 如果没有，请等到节点禁用。 此步骤不能一蹴而就。
+1. 运行 [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) 加上“RemoveNode”可禁用要删除的节点（该节点类型的最高实例）。
+2. 运行 [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) 可确保节点确实转换为禁用。 如果没有，请等到节点禁用。 此步骤不能一蹴而就。
 3. 根据[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)中的示例/说明逐个更改 Nodetype 的 VM 数目。 现在，删除最高 VM 实例。 
 4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目缩减到少于可靠性层所需的数目。 在[此处](service-fabric-cluster-capacity.md)了解有关可靠性层的详细信息。
 

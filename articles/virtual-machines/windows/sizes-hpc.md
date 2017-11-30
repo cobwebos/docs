@@ -1,6 +1,6 @@
 ---
 title: "Azure Windows VM 大小 - HPC | Microsoft Docs"
-description: "列出 Azure 中适用于 Windows 高性能计算虚拟机的各种大小。"
+description: "列出 Azure 中适用于 Windows 高性能计算虚拟机的各种大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。"
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: a0596d134e9c26877848f93d72f35bfd2c957570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc2cae8208baa211db2166c9d66a83153fa7b445
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="high-performance-compute-vm-sizes"></a>高性能计算 VM 大小
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
   > 目前，Windows Server 2016 在 Azure 中不支持 RDMA 连接。
   >
 
-* **可用性集或云服务** – 在同一个可用性集中（使用 Azure Resource Manager 部署模型时）或同一个云服务中（使用经典部署模型时）部署支持 RDMA 的 VM。 如果使用 Azure Batch，则支持 RDMA 的VM 必须位于同一池中。
+* **可用性集或云服务** – 在同一个可用性集中（使用 Azure 资源管理器部署模型时）或同一个云服务中（使用经典部署模型时）部署支持 RDMA 的 VM。 如果使用 Azure Batch，则支持 RDMA 的VM 必须位于同一池中。
 
 * **MPI**：Microsoft MPI (MS-MPI) 2012 R2 或更高版本、Intel MPI Library 5.x
 

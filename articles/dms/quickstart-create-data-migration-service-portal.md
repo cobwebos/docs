@@ -10,20 +10,31 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/08/2017
-ms.openlocfilehash: 4213a0ae73c38dcad403140e3d45e28f2d338020
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/17/2017
+ms.openlocfilehash: 9faac0716334d627cdde4c0ef16262670333b5d4
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-database-migration-service-instance-using-the-azure-portal"></a>使用 Azure 门户创建数据库迁移服务实例
+# <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 数据库迁移服务实例
 此快速入门中，使用 Azure 门户创建 Azure 数据库迁移服务的实例。  创建服务后，即可使用它将数据从本地 SQL Server 迁移到 Azure SQL 数据库。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 打开 Web 浏览器，导航到 [Microsoft Azure 门户](https://portal.azure.com/)。 输入登录到门户所需的凭据。 默认视图是服务仪表板。
+
+## <a name="register-the-resource-provider"></a>注册资源提供程序
+必须先注册 Microsoft.DataMigration 资源提供程序，然后才能创建首个数据库迁移服务。
+
+1. 在 Azure 门户中，依次选择“所有服务”和“订阅”。
+
+1. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
+
+1. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册”。
+
+![注册资源提供程序](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-azure-database-migration-service"></a>创建 Azure 数据库迁移服务
 1. 单击“+”创建新服务。  数据库迁移服务仍是预览版。  

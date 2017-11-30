@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0748e0ffa405fc02f6da7e2c412beec12510fde5
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
    ![新建对象](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
-3. 在“应用商店”搜索窗口中键入“资源组”。
+3. 在“Marketplace”搜索窗口中键入“资源组”。
 
    ![资源组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. 单击“资源组”。
@@ -368,7 +368,7 @@ Azure 将创建虚拟机。
 | --- | --- | --- | --- |
 | 选择相应的库项 |**Windows Server 2016 Datacenter** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |
 | 虚拟机配置**基本信息** |**名称** = cluster-fsw<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 所在的 Azure 位置 |**名称** = sqlserver-0<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 所在的 Azure 位置 |**名称** = sqlserver-1<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 所在的 Azure 位置 |
-| 虚拟机配置**大小** |大小 = DS1\_V2（单核，3.5 GB） |**大小** = DS2\_V2（双核，7 GB）</br>大小必须支持 SSD 存储（高级磁盘支持。 ） |**大小** = DS2\_V2（双核，7 GB） |
+| 虚拟机配置**大小** |大小 = DS1\_V2（1 个 vCPU、3.5GB） |大小 = DS2\_V2（2 个 vCPU、7GB）</br>大小必须支持 SSD 存储（高级磁盘支持。 ） |大小 = DS2\_V2（2 个 vCPU、7GB） |
 | 虚拟机配置**设置** |**存储**：使用托管磁盘。<br/>**虚拟网络** = autoHAVNET<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>自动生成**公共 IP 地址**。<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |**存储**：使用托管磁盘。<br/>**虚拟网络** = autoHAVNET<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>自动生成**公共 IP 地址**。<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |**存储**：使用托管磁盘。<br/>**虚拟网络** = autoHAVNET<br/>**子网** = sqlsubnet(10.1.1.0/24)<br/>自动生成**公共 IP 地址**。<br/>**网络安全组** = 无<br/>**监视诊断** = 已启用<br/>**诊断存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = sqlAvailabilitySet<br/> |
 | 虚拟机配置 **SQL Server 设置** |不适用 |**SQL 连接** = 专用（虚拟网络内部）<br/>**端口** = 1433<br/>**SQL 身份验证** = 禁用<br/>**存储配置** = 常规<br/>**自动修补** = 星期日 2:00<br/>**自动备份** = 已禁用</br>**Azure 密钥保管库集成** = 已禁用 |**SQL 连接** = 专用（虚拟网络内部）<br/>**端口** = 1433<br/>**SQL 身份验证** = 禁用<br/>**存储配置** = 常规<br/>**自动修补** = 星期日 2:00<br/>**自动备份** = 已禁用</br>**Azure 密钥保管库集成** = 已禁用 |
 

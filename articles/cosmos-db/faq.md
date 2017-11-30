@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 1d2a5e5d639e2aa0023e99b73f87a68e19afc239
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -431,7 +431,7 @@ Azure Cosmos DB 根据表的创建位置（门户或 CQL）设置容器的默认
 [Azure Cosmos DB 中的请求单位数](request-units.md)一文介绍了吞吐量概念。 表的吞吐量平均分布到各个基础物理分区中。  
 
 ### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>通过 CQL 创建的表的默认吞吐量是多少 RU/s？ 如何更改该默认值？
-Azure Cosmos DB 使用每秒请求单位数 (RU/s) 作为所提供的吞吐量的单位。 通过 CQL 创建的表具有 400 RU。 可以通过门户将 RU 更改为 10,000 RU。 如果在个人预览版中需要 10,000 RU 以上的容量，可以首先通过门户创建表。 或者，如果希望 CQL 具有此容量，请通过 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 联系我们。 
+Azure Cosmos DB 使用每秒请求单位数 (RU/s) 作为所提供的吞吐量的单位。 通过 CQL 创建的表具有 400 RU。 可以通过门户更改 RU。 
 
 CQL
 ```
