@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: mazha
-ms.openlocfilehash: ba9c28f0e6df25b101b45edf836d0b95056cbc6f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 2021b5b7602605a7c264e9cd575399077691da34
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-query-strings---premium"></a>使用查询字符串控制 Azure 内容交付网络缓存行为 - 高级
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/11/2017
 > 
 
 ## <a name="overview"></a>概述
-使用 Azure 内容交付网络 (CDN)，可以控制针对包含查询字符串的 Web 请求缓存文件的方式。 在包含查询字符串的 Web 请求中，查询字符串是 `?` 字符后出现的请求部分。 查询字符串可以包含一个或多个参数，这些参数由 `&` 字符分隔。 例如，`http://www.domain.com/content.mov?data1=true&data2=false`。 如果请求中有多个查询字符串参数，参数的顺序并不重要。 
+使用 Azure 内容交付网络 (CDN)，可以控制针对包含查询字符串的 Web 请求缓存文件的方式。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。 
 
 > [!IMPORTANT]
 > 标准和高级 CDN 产品提供相同的查询字符串缓存功能，但用户界面不同。  本文介绍**来自 Verizon 的高级 Azure CDN** 的界面。 关于**来自 Akamai 的标准 Azure CDN** 和**来自 Verizon 的标准 Azure CDN**，请参阅[控制含查询字符串的 CDN 请求的缓存行为](cdn-query-string.md)。

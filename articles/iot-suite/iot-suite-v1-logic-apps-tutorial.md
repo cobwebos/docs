@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: f4457b44c97fadc58406430fc0f31b3e0bac6682
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>教程：将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案
 [Microsoft Azure IoT 套件][lnk-internetofthings]远程监视预配置解决方案以一套端到端功能集演示 IoT 解决方案，是快速入门的好工具。 本教程引导将逻辑应用连接到 Microsoft Azure IoT 套件远程监视预配置解决方案。 下述步骤演示了如何将 IoT 解决方案连接到业务流程，更进一步地利用该方案。
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/06/2017
 
 若要完成本教程，需要使用 Visual Studio 2015 或 Visual Studio 2017 修改预配置解决方案后端中的操作。
 
-假设已经设置了远程监视预配置解决方案，请在 [Azure 门户][lnk-azureportal]中导航到该解决方案的资源组。 资源组的名称与在预配远程监视解决方案时选择的解决方案名称相同。 资源组中会显示解决方案的所有预配 Azure 资源，Azure 经典门户中提供的 Azure Active Directory 应用程序除外。 以下屏幕截图显示了远程监视预配置解决方案的“**资源组**”边栏选项卡示例：
+假设已经设置了远程监视预配置解决方案，请在 [Azure 门户][lnk-azureportal]中导航到该解决方案的资源组。 资源组的名称与在预配远程监视解决方案时选择的解决方案名称相同。 在资源组中，你可以查看解决方案的所有预配的 Azure 资源。 以下屏幕截图显示了远程监视预配置解决方案的“**资源组**”边栏选项卡示例：
 
 ![](media/iot-suite-v1-logic-apps-tutorial/resourcegroup.png)
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: c1b832895476e2f64bbae638db76f89890e5c804
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/14/2017
 
 “更改应用服务计划”将打开“应用服务计划”选择器。 选择要将此应用移到的现有计划。 
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > “选择应用服务计划”页已根据以下条件筛选： 
 > - 在同一资源组中 
 > - 在同一地理区域中 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="scale-an-app-service-plan"></a>缩放应用服务计划
 
-若要提高应用服务计划的定价层，请参阅[在 Azure 中扩展应用](web-sites-scale.md)。
+若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](web-sites-scale.md)。
 
 若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。
 

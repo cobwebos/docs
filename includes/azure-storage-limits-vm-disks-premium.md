@@ -21,8 +21,6 @@
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS<sup>1</sup> |
-| 每个 VM 的最大吞吐量 |GS5 VM 为 2,000 MB/秒<sup>1</sup> |
-
-<sup>1</sup>有关其他 VM 大小的限制，请参阅 [VM 大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+| 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS |
+| 每个 VM 的最大吞吐量 |GS5 VM 为 2,000 MB/秒 |
 

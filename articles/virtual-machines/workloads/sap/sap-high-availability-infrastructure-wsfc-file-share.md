@@ -1,6 +1,6 @@
 ---
-title: "对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享，完成 SAP HA 的 Azure 基础结构准备工作 | Microsoft Docs"
-description: "对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享，完成 SAP HA 的 Azure 基础结构准备工作"
+title: "针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构 | Microsoft Docs"
+description: "针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,13 +17,13 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2468b5d0996fee5e0106d0d314c16654558e9f4
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 3f9e2108a7714dcbfd4f2db583cb6ee4b803f65a
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="azure-infrastructure-preparation-for-sap-ha-using-windows-failover-cluster-and-file-share-for-sap-ascs-instance"></a>对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享，完成 SAP HA 的 Azure 基础结构准备工作
+# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -206,32 +206,32 @@ ms.lasthandoff: 10/25/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-本文描述在 Windows 故障转移群集 (WSFC) 上安装和配置高可用性 SAP 系统的 Azure 基础结构准备步骤，以及使用 Scale Out 文件共享作为一个选项来群集化 (A)SCS 实例。
+本文介绍在 Windows Server 故障转移群集 (WSFC) 上使用横向扩展文件共享作为群集化 SAP ASCS/SCS 实例的选项，安装和配置高可用性 SAP 系统所需的 Azure 基础结构准备步骤。
 
 ## <a name="prerequisite"></a>先决条件
 
-开始安装前，请务必先查看以下文档：
+在开始安装之前，请查看以下文章：
 
-* [体系结构指南 - 使用文件共享群集化 Windows 故障转移群集上的 SAP (A)SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
+* [体系结构指南：使用文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
 
 
 ## <a name="host-names-and-ip-addresses"></a>主机名和 IP 地址
 
 | 虚拟主机名角色 | 虚拟主机名 | 静态 IP 地址 | 可用性集 |
 | --- | --- | --- | --- |
-| 第一个群集节点 (A)SCS 群集 | ascs-1 | 10.0.6.4 | ascs-as |
-| 第二个群集节点 (A)SCS 群集 | ascs-2 | 10.0.6.5 | ascs-as |
-| 群集网络名称 |ascs-cl | 10.0.6.6 | n.a |
-| SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | n.a |
+| 第一个群集节点 ASCS/SCS 群集 | ascs-1 | 10.0.6.4 | ascs-as |
+| 第二个群集节点 ASCS/SCS 群集 | ascs-2 | 10.0.6.5 | ascs-as |
+| 群集网络名称 |ascs-cl | 10.0.6.6 | 不适用 |
+| SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | 不适用 |
 
 
-表 1：(A)SCS 群集
+**表 1**：ASCS/SCS 群集
 
-| SAP &lt;SID&gt; | SAP (A)SCS 实例编号 |
+| SAP \<SID> | SAP ASCS/SCS 实例编号 |
 | --- | --- |
 | PR1 | 00 |
 
-表 2：SAP (A)SCS 实例详细信息
+**表 2**：SAP ASCS/SCS 实例详细信息
 
 
 | 虚拟主机名角色 | 虚拟主机名 | 静态 IP 地址 | 可用性集 |
@@ -239,53 +239,56 @@ ms.lasthandoff: 10/25/2017
 | 第一个群集节点 | sofs-1 | 10.0.6.10 | sofs-as |
 | 第二个群集节点 | sofs-2 | 10.0.6.11 | sofs-as |
 | 第三个群集节点 | sofs-3 | 10.0.6.12 | sofs-as |
-| 群集网络名称 | sofs-cl | 10.0.6.13 | n.a |
-| SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | n.a |
+| 群集网络名称 | sofs-cl | 10.0.6.13 | 不适用 |
+| SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | 不适用 |
 
-表 3：SOFS 群集
-
-
-## <a name="deploy-vms-for-sap-ascs-cluster-dbms-cluster-and-sap-application-servers"></a>为 SAP (A)SCS 群集、DBMS 群集和 SAP 应用程序服务器部署 VM
-
-可以通过以下步骤准备 Azure 基础结构：
-* [准备体系结构模板 1、体系结构模板 2 和体系结构模板 3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
-
-* [Azure 虚拟网络][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]
-
-* [DNS IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]
-
-* [设置 SAP 虚拟机的静态 IP 地址][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]
-
-* [为 Azure 内部负载均衡器设置静态 IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]
-
-* [Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]
-
-* [更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]
-
-*  [向域添加 Windows 虚拟机，在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]
-
-* 使用 Windows Server 2016 时，建议配置 [Azure 云见证][deploy-cloud-witness]
+**表 3**：横向扩展文件服务器群集
 
 
-## <a name="deploy-scale-out-file-server-manually"></a>手动部署横向扩展文件服务器 
+## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>为 SAP ASCS/SCS 群集、数据库管理系统 (DBMS) 群集和 SAP 应用程序服务器实例部署 VM
 
-可按博客中 [Azure 中的存储空间直通][ms-blog-s2d-in-azure]所述，手动部署 SOFS 群集：  
+若要准备 Azure 基础结构，请完成以下操作：
+
+* [准备体系结构模板 1、2 和 3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]。
+
+* [创建 Azure 虚拟网络][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
+
+* [设置所需的 DNS IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]。
+
+* [设置 SAP 虚拟机的静态 IP 地址][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
+
+* [为 Azure 内部负载均衡器设置静态 IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
+
+* [为 Azure 内部负载均衡器设置默认 ASCS/SCS 负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
+
+* [更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
+
+* [将 Windows 虚拟机添加到域][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
+
+* [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
+
+* 使用 Windows Server 2016 时，我们建议配置 [Azure 云见证][deploy-cloud-witness]。
+
+
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手动部署横向扩展文件服务器群集 
+
+可以按博客 [Azure 中的存储空间直通][ms-blog-s2d-in-azure]中所述，通过执行以下代码手动部署 Microsoft 横向扩展文件服务器群集：  
 
 
 ```PowerShell
-# Set on Execution Policy  ALL cluster nodes!
+# Set an execution policy - all cluster nodes
 Set-ExecutionPolicy Unrestricted
 
-# Defines SOFS cluster nodes
+# Define Scale-Out File Server cluster nodes
 $nodes = ("sofs-1", "sofs-2", "sofs-3")
 
-# Add cluster and SOFS features
+# Add cluster and Scale-Out File Server features
 Invoke-Command $nodes {Install-WindowsFeature Failover-Clustering, FS-FileServer -IncludeAllSubFeature -IncludeManagementTools -Verbose}
 
 # Test cluster
 Test-Cluster -node $nodes -Verbose
 
-#Install cluster
+# Install cluster
 $ClusterNetworkName = "sofs-cl"
 $ClusterIP = "10.0.6.13"
 New-Cluster -Name $ClusterNetworkName -Node $nodes –NoStorage –StaticAddress $ClusterIP -Verbose
@@ -293,10 +296,10 @@ New-Cluster -Name $ClusterNetworkName -Node $nodes –NoStorage –StaticAddress
 # Set Azure Quorum
 Set-ClusterQuorum –CloudWitness –AccountName gorcloudwitness -AccessKey <YourAzureStorageAccessKey>
 
-# Enable Storage Spaces Direct S2D
+# Enable Storage Spaces Direct
 Enable-ClusterS2D
 
-# Create SOFS with SAP Global Host Name
+# Create Scale-Out File Server with an SAP global host name
 # SAPGlobalHostName
 $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
@@ -304,36 +307,40 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 ## <a name="deploy-scale-out-file-server-automatically"></a>自动部署横向扩展文件服务器
 
-此外，还可使用现有 VNET 和 Active Directory 环境中的 Azure 资源管理器模板来自动部署 SOFS：
+此外，还可使用现有虚拟网络和 Active Directory 环境中的 Azure 资源管理器模板来自动部署横向扩展文件服务器。
 
 > [!IMPORTANT]
->建议对使用三向镜像的 SOFS 提供 3 个（或更多）群集节点。
+> 我们建议为使用三向镜像的横向扩展文件服务器设置三个或更多群集节点。
 >
->因此，在 SOFS 资源管理器模板 UI 中，必须指定 VM 数。
+> 在横向扩展文件服务器资源管理器模板 UI 中，必须指定 VM 计数。
 >
 
-### <a name="using-managed-disks"></a>使用托管磁盘
+### <a name="use-managed-disks"></a>使用托管磁盘
 
-[Github][arm-sofs-s2d-managed-disks] 上提供了使用存储空间直通 (S2D) 和 Azure 托管磁盘部署横向扩展文件服务器 (SOFS) 的 Azure 资源管理器模板。
+[GitHub][arm-sofs-s2d-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
 
-建议使用托管磁盘。
+我们建议使用托管磁盘。
 
-![图 1：带托管磁盘的 SOFS 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
+![图 1：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
 
-图 1：带托管磁盘的 SOFS 资源管理器模板的 UI 屏幕
+_**图 1**：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
 
-VM 计数最小为 2，磁盘计数最小为 2（再加 1 个备用磁盘）= 3，SAP GLOBAL 主机网络名称为 sapglobalhost，文件共享为 sapmnt。
+在模板中，执行以下操作：
+1. 在“Vm 计数”框中，输入最小计数 **2**。
+2. 在“Vm 磁盘计数”框中，输入最小磁盘计数 **3**（2 个磁盘 + 1 个备用磁盘 = 3 个磁盘）。
+3. 在“Sofs 名称”框中，输入 SAP 全局主机网络名称 **sapglobalhost**。
+4. 在“共享名”框中，输入文件共享名 **sapmnt**。
 
-### <a name="using-non-managed-disks"></a>使用非托管磁盘
+### <a name="use-unmanaged-disks"></a>使用非托管磁盘
 
-[Github][arm-sofs-s2d-non-managed-disks] 上提供了使用存储空间直通 (S2D) 和 Azure 非托管磁盘部署横向扩展文件服务器 (SOFS) 的 Azure 资源管理器模板。
+[GitHub][arm-sofs-s2d-non-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 非托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
 
-![图 2：不带托管磁盘的 SOFS 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
+![图 2：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
 
-图 2：不带托管磁盘的 SOFS 资源管理器模板的 UI 屏幕
+_**图 2**：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
 
-请确保选择“高级存储”作为存储帐户类型。 其它设置与托管磁盘的设置相同。
+在“存储帐户类型”框中，选择“高级存储”。 其他所有设置与托管磁盘的设置相同。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 SAP (A)SCS 实例的 Windows 故障转移群集和文件共享中安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-file-share]
+* [在 Windows 故障转移群集和文件共享上为 SAP ASCS/SCS 实例安装 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-file-share]

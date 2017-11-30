@@ -1,5 +1,5 @@
 ---
-title: "如何向 Azure 时序见解环境添加事件中心事件源 | Microsoft Docs"
+title: "如何向 Azure 时序见解添加事件中心事件源 | Microsoft Docs"
 description: "本文介绍如何将已连接至事件中心的事件源添加到时序见解环境"
 services: time-series-insights
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: f3a9a1c7e57383925877f674a2e02f931e5c1e3c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>如何向时序见解环境添加事件中心事件源
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/15/2017
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 定位现有的时序见解环境。 在 Azure 门户左侧的菜单中，单击“所有资源”。 选择时序见解环境。
+2. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，单击“所有资源”。 选择时序见解环境。
 
 3. 在“环境拓扑”标题下，单击“事件源”。
 
@@ -76,10 +76,10 @@ ms.lasthandoff: 11/15/2017
    | 事件中心策略密钥 | 用于验证对服务总线命名空间的访问权限的共享访问密钥。 在此处键入主密钥或辅助密钥。
    | 事件中心使用者组 | 从事件中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。
    | 事件序列化格式 | JSON 是目前唯一可用的序列化。 事件消息必须采用此格式，否则将无法读取任何数据。 |
-   | 时间戳属性名称 | 若要确定此值，您需要了解传送到事件中心的消息数据的消息格式。 此值是消息数据中您想要用作事件时间戳的特定事件属性的**名称**。 该值区分大小写。 如果保留空白，事件源中的**事件排队时间**将用作事件时间戳。 |
+   | 时间戳属性名称 | 若要确定此值，您需要了解传送到事件中心的消息数据的消息格式。 此值是消息数据中您想要用作事件时间戳的特定事件属性的**名称**。 该值区分大小写。 如果留空，则事件源中的“事件排队时间”将用作事件时间戳。 |
 
 
-10. 选择“创建”添加新的事件源。
+10. 选择“创建”以添加新的事件源。
    
    ![单击创建](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
@@ -103,6 +103,6 @@ ms.lasthandoff: 11/15/2017
 5. 选择“创建”以创建新的使用者组。
 
 ## <a name="next-steps"></a>后续步骤
-- [定义数据访问策略](time-series-insights-data-access.md)以保护数据。
+- [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。
 - [发送事件](time-series-insights-send-events.md)到事件源。
-- 在[时序见解资源管理器](https://insights.timeseries.azure.com)中访问环境。
+- 在[时序见解资源管理器中访问环境](https://insights.timeseries.azure.com)。

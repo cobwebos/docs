@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 08ab3b38e4c1fbeb1fac67c5d1b6f6749f7a0a3e
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -82,12 +82,12 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 [了解 Cloud Shell 存储、更新文件共享和上传/下载文件。](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>概念
-* Cloud Shell 在按会话按用户提供的临时计算机上运行。
+* Cloud Shell 在按会话按用户提供的临时主机上运行
 * Cloud Shell 在 20 分钟没有交互活动后将超时
-* 只能通过所附加的文件共享访问 Cloud Shell
-* Cloud Shell 为 Bash 和 PowerShell 使用相同的文件共享
+* Cloud Shell 需要装载文件共享
+* Cloud Shell 对 Bash 和 PowerShell 使用相同的文件共享
 * 将针对每个用户帐户为 Cloud Shell 分配一台计算机
-* 权限是按常规 Linux 用户设置的 (Bash)
+* 在 Bash 中权限是按常规 Linux 用户设置的
 
 详细了解 [Bash in Cloud Shell](features.md) 和 [PowerShell in Cloud Shell（预览版）](features-powershell.md)的功能。
 
@@ -102,5 +102,5 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 托管 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
 
 ## <a name="next-steps"></a>后续步骤
-[Bash in Cloud Shell 快速入门](quickstart.md)
+[Bash in Cloud Shell 快速入门](quickstart.md) <br>
 [PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md)

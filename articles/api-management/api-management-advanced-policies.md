@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -268,26 +268,26 @@ ms.lasthandoff: 10/11/2017
 -   **策略范围：**所有范围  
   
 ##  <a name="LimitConcurrency"></a> 限制并发  
- `limit-concurrency` 策略阻止括住的策略在给定时间执行超过指定数量的请求。 超过阈值时，会向队列中添加新的请求，直到达到最大队列长度。 队列排满后，新请求将立即失败。
+ `limit-concurrency` 策略阻止括住的策略在给定时间执行超过指定数量的请求。 超过该数量后，新请求将立即失败并显示“429 请求过多”状态代码。
   
 ###  <a name="LimitConcurrencyStatement"></a> 策略语句  
   
 ```xml  
-<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+<limit-concurrency key="expression" max-count="number">
         <!— nested policy statements -->  
 </limit-concurrency>
 ``` 
 
 ### <a name="examples"></a>示例  
   
-####  <a name="ChooseExample"></a> 示例  
+#### <a name="example"></a>示例  
  下例演示了如何基于上下文变量的值限制转发到后端的请求数。
  
 ```xml  
 <policies>
   <inbound>…</inbound>
   <backend>
-    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
     <limit-concurrency/>
   </backend>
@@ -307,10 +307,8 @@ ms.lasthandoff: 10/11/2017
 |---------------|-----------------|--------------|--------------|  
 |key|一个字符串。 允许使用表达式。 指定并发作用域。 可以由多个策略共享。|是|不适用|  
 |max-count|一个整数。 指定允许输入策略的最大请求数。|是|不适用|  
-|timeout|一个整数。 允许使用表达式。 指定在失败并出现“429 请求数过多”消息之前请求进入作用域应等待的秒数|否|Infinity|  
-|max-queue-length|一个整数。 允许使用表达式。 指定最大队列长度。 队列已满时，尝试进入此策略的传入请求将被立即终止，并出现“429 请求数过多”消息。|否|Infinity|  
   
-###  <a name="ChooseUsage"></a> 使用  
+### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  

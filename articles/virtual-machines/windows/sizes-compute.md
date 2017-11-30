@@ -1,6 +1,6 @@
 ---
 title: "Azure Windows VM 大小 - 计算优化 | Microsoft Docs"
-description: "列出 Azure 中适用于 Windows 虚拟机的各种计算优化大小。"
+description: "列出 Azure 中适用于 Windows 虚拟机的各种计算优化大小。 针对此系列中的大小列出有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。"
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 1497535e1c40b77a588ae292ae3d3e4f6ab7daa3
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 0f393f0c5ed297e12f60e378c54778bdb384d200
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 

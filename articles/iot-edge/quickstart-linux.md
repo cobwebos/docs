@@ -1,19 +1,19 @@
 ---
-title: "快速入门 Azure IoT Edge + Linux | Microsoft Docs"
+title: "快速入门 Azure IoT Edge + Linux | Microsoft 文档"
 description: "通过在模拟边缘设备上运行分析来试用 Azure IoT Edge"
 services: iot-edge
 keywords: 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb93efcf00cb7b165c497d7ef38685f80bce84c0
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Linux 设备 - 预览
 
@@ -66,24 +66,26 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 在本主题中�
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 首先，IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 其次，IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。 
 
 在即将运行 IoT Edge 设备的计算机上，下载 IoT Edge 控件脚本：
-```python
+```cmd
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 使用上一节的 IoT Edge 设备连接字符串配置运行时：
-```python
+```cmd
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 启动运行时：
-```python
+```cmd
 sudo iotedgectl start
 ```
 
 检查 Docker，查看 IoT Edge 代理是否正作为模块运行：
-```python
+```cmd
 sudo docker ps
 ```
+
+![请参阅“Docker 中的 edgeAgent”](./media/tutorial-simulate-device-linux/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>部署模块
 
@@ -93,11 +95,21 @@ sudo docker ps
 
 此快速入门中，创建了新的 IoT Edge 设备，并在该设备上安装了 IoT Edge 运行时。 然后，使用了 Azure 门户推送 IoT Edge 模块，使其在不更改设备本身的情况下在设备上运行。 这种情况下，推送的模块创建可用于本教程的环境数据。 
 
-查看从 tempSensor 模块发送的消息：
+在运行模拟设备的计算机上再次打开命令提示符。 确认从云中部署的模块正在 IoT Edge 设备上运行：
 
-```cmd/sh
+```cmd
+sudo docker ps
+```
+
+![查看设备上的三个模块](./media/tutorial-simulate-device-linux/docker-ps2.png)
+
+查看从 tempSensor 模块发送到云的消息：
+
+```cmd
 sudo docker logs -f tempSensor
 ```
+
+![查看模块中的数据](./media/tutorial-simulate-device-linux/docker-logs.png)
 
 还可使用 [IoT 中心资源管理器工具][lnk-iothub-explorer]查看设备正在发送的遥测。 
 

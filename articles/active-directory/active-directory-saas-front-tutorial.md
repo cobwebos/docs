@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: d936bc50a66ac2a3c17038ff08351edf9902c99f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 944149746b05108040cd0cc340e882b39713f06e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>教程：Azure Active Directory 与 Front 集成
 
@@ -104,66 +104,60 @@ ms.lasthandoff: 10/11/2017
  
     ![“单一登录”对话框](./media/active-directory-saas-front-tutorial/tutorial_front_samlbase.png)
 
-3. 在“Front 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+3. 在“Front 域和 URL”部分中，执行以下步骤：
 
     ![配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_url1.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.frontapp.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.frontapp.com/sso/saml/callback`
-
-4. 如果要在 **SP** 发起的模式下配置应用程序，请选中“显示高级 URL 设置”：
-
-    ![配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_url2.png)
-
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.frontapp.com`
      
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值（本教程后面部分将进行介绍）或联系 [Front 客户端支持团队](mailto:support@frontapp.com)来获取这些值。 
+    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值（本教程后面部分将进行介绍）或联系 [Front 客户端支持团队](mailto:support@frontapp.com)获取这些值。 
 
-5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_certificate.png) 
 
-6. 单击“保存”按钮。
+5. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_general_400.png)
     
-7. 在“Front 配置”部分中，单击“配置 Front”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+6. 在“Front 配置”部分中，单击“配置 Front”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_configure.png) 
 
-8. 以管理员身份登录到 Front 租户。
+7. 以管理员身份登录到 Front 租户。
 
-9. 转到“设置(左侧边栏底部的齿轮图标) > 首选项”。
+8. 转到“设置(左侧边栏底部的齿轮图标) > 首选项”。
    
     ![在应用端配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 
-10. 单击“单一登录”链接。
+9. 单击“单一登录”链接。
    
     ![在应用端配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_001.png)
 
-11. 在“单一登录”下拉列表中选择“SAML”。
+10. 在“单一登录”下拉列表中选择“SAML”。
    
     ![在应用端配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_002.png)
 
-12. 在“入口点”文本框中放置 Azure AD 应用程序配置向导中“单一登录服务 URL”的值。
+11. 在“入口点”文本框中放置 Azure AD 应用程序配置向导中“单一登录服务 URL”的值。
     
     ![在应用端配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_003.png)
 
-13. 在记事本中打开下载的“证书(Base64)”文件，将其内容复制到剪贴板，然后将其粘贴到“签名证书”文本框中。
+12. 在记事本中打开下载的“证书(Base64)”文件，将其内容复制到剪贴板，然后将其粘贴到“签名证书”文本框中。
     
     ![在应用端配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_004.png)
 
-14. 在“服务提供商设置”部分中，执行以下步骤：
+13. 在“服务提供商设置”部分中，执行以下步骤：
 
     ![在应用端配置单一登录](./media/active-directory-saas-front-tutorial/tutorial_front_005.png)
 
     a. 复制“实体 ID”的值并将其粘贴到 Azure 门户中“Front 域和 URL”部分中的“标识符”文本框中。
 
-    b. 复制“ACS URL”的值并将其粘贴到 Azure 门户中“Front 域和 URL”部分中的“登录 URL”文本框中。
+    b. 复制“ACS URL”的值并将其粘贴到 Azure 门户中“Front 域和 URL”部分的“回复 URL”文本框中。
     
-15. 单击“保存”按钮。
+14. 单击“保存”按钮。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

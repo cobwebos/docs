@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: a573a7ef79e28c50ae0923849a88f88af40f21be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ba33399c9ea0f093de6c85328d6ec2b280da4a0
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="tutorial-configuring-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -35,9 +35,7 @@ ms.lasthandoff: 10/11/2017
 
 Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
 
-在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户和/或组表示需要访问 Salesforce 应用的用户。 确定后，可以按照此处的说明将这些用户分配到 Salesforce 应用：
-
-[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户或组需要访问 Salesforce 应用。 确定后，可按照此处的说明将这些用户分配到 Salesforce 应用：[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>将用户分配到 Salesforce 的重要提示
 
@@ -55,7 +53,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 >[!Tip]
 >还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Salesforce 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配：
+### <a name="configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配
 
 本部分的目的是概述如何对 Salesforce 启用 Active Directory 用户帐户的用户预配。
 
@@ -65,8 +63,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 选择 Salesforce 实例，然后选择“预配”选项卡。
 
-4. 将“预配模式”设置为“自动”。 
-![预配](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)
+4. 将“预配模式”设置为“自动”。
+
+    ![预配](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
    
@@ -74,17 +73,21 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
    
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 
-6. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“我的设置”。
+6. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
 
      ![启用自动用户设置](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
-7. 在左侧导航窗格中，单击“个人”展开相关部分，然后单击“重置我的安全令牌”。
+
+7. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
   
     ![启用自动用户设置](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
-8. 在“重置我的安全令牌”页上，单击“重置安全令牌”按钮。
+
+8. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
 
     ![启用自动用户设置](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
+
 9. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce.com 的包含新安全令牌的电子邮件。
-10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“套接字令牌”字段中。
+
+10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
 11. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
 
@@ -108,4 +111,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-* [配置单一登录](active-directory-saas-salesforce-tutorial.md)
+* [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

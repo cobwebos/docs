@@ -10,19 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 050758240c9670a6f120f069d736cf6d6475b534
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a03fb4f202bddb6454f703c998e95abf13d14fff
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
 
-> [!IMPORTANT]
-> 与支持团队沟通时，必须准备好内部版本号。 可以通过单击“帮助”菜单找到应用的内部版本号。 单击该内部版本号可将其复制到剪贴板中。 可将其粘贴到电子邮件或支持论坛以帮助报告问题。
-
-![检查版本号](media/known-issues-and-troubleshooting-guide/buildno.png)
+## <a name="find-the-workbench-build-number"></a>找到 Workbench 版本号
+与支持团队沟通时，请务必提供 Workbench 应用的版本号。 在 Windows 上，可以通过单击“帮助”菜单并选择“关于 Azure ML Workbench”找到版本号。 在 macOS 上，可以单击 **Azure ML Workbench** 菜单，然后选择“关于 Azure ML Workbench”。
 
 ## <a name="machine-learning-msdn-forum"></a>机器学习 MSDN 论坛
 我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛 URL 为 [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum)。 
@@ -75,10 +73,13 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
     >此限制不适用于 `.git`、`docs` 和 `outputs` 文件夹。 这些文件夹名称区分大小写。 使用大文件时，请参阅[保存更改并处理大文件](how-to-read-write-files.md)。
 
 - 允许的最大试验执行时间：7 天
+
 - 运行后 `outputs` 文件夹中跟踪文件的最大大小：512 MB
   - 这意味着，如果脚本在输出文件夹中生成了大于 512 MB 的文件，则不会收集该文件夹中的文件。 使用大文件时，请参阅[保存更改并处理大文件](how-to-read-write-files.md)。
 
 - 通过 SSH 连接到远程计算机或 Spark 群集时不支持 SSH 密钥。 目前仅支持用户名/密码模式。
+
+- 使用 HDInsight 群集作为计算目标时，它必须使用 Azure blob 作为主存储。 不支持使用 Azure Data Lake 存储。
 
 - Mac 上不支持文本群集转换。
 

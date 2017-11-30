@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions 计时器触发器 | Microsoft Docs"
+title: "Azure Functions 计时器触发器"
 description: "了解如何在 Azure Functions 中使用计时器触发器。"
 services: functions
 documentationcenter: na
@@ -17,42 +17,159 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 12beb090a95a31c7e83ae03a920016bdfbf474e3
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 2a62d70b22081e45bc318dd9fb624b37cf7069e3
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions 计时器触发器
 
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
-
-本文介绍了如何在 Azure Functions 中对计时器触发器进行配置和编写代码。 Azure Functions 有一个计时器触发器绑定，允许用户根据定义的计划运行函数代码。 
-
-计时器触发器支持多实例扩展。特定计时器函数的单个实例在所有实例上运行。
+本文介绍如何在 Azure Functions 中使用计时器触发器。 计时器触发器可以按计划运行函数。 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-<a id="trigger"></a>
+## <a name="example"></a>示例
 
-## <a name="timer-trigger"></a>计时器触发器
-函数的计时器触发器使用下列 JSON 对象（这些对象位于 function.json 的 `bindings` 数组中）：
+参阅语言特定的示例：
+
+* [预编译 C#](#trigger---c-example)
+* [C# 脚本](#trigger---c-script-example)
+* [F#](#trigger---f-example)
+* [JavaScript](#trigger---javascript-example)
+
+### <a name="c-example"></a>C# 示例
+
+以下示例演示每五分钟运行一次的[预编译 C# 函数](functions-dotnet-class-library.md)：
+
+```cs
+[FunctionName("TimerTriggerCSharp")]
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+{
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+}
+```
+
+### <a name="c-script-example"></a>C# 脚本示例
+
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。
+
+下面是 *function.json* 文件中的绑定数据：
 
 ```json
 {
-    "schedule": "<CRON expression - see below>",
-    "name": "<Name of trigger parameter in function signature>",
+    "schedule": "0 */5 * * * *",
+    "name": "myTimer",
     "type": "timerTrigger",
     "direction": "in"
 }
 ```
 
-`schedule` 的值是 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，其中包含以下六个字段： 
+C# 脚本代码如下所示：
 
-    {second} {minute} {hour} {day} {month} {day-of-week}
-&nbsp;
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log)
+{
+    if(myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}" );  
+}
+```
+
+### <a name="f-example"></a>F# 示例
+
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。
+
+下面是 *function.json* 文件中的绑定数据：
+
+```json
+{
+    "schedule": "0 */5 * * * *",
+    "name": "myTimer",
+    "type": "timerTrigger",
+    "direction": "in"
+}
+```
+
+F# 脚本代码如下所示：
+
+```fsharp
+let Run(myTimer: TimerInfo, log: TraceWriter ) =
+    if (myTimer.IsPastDue) then
+        log.Info("F# function is running late.")
+    let now = DateTime.Now.ToLongTimeString()
+    log.Info(sprintf "F# function executed at %s!" now)
+```
+
+### <a name="javascript-example"></a>JavaScript 示例
+
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。
+
+下面是 *function.json* 文件中的绑定数据：
+
+```json
+{
+    "schedule": "0 */5 * * * *",
+    "name": "myTimer",
+    "type": "timerTrigger",
+    "direction": "in"
+}
+```
+
+F# 脚本代码如下所示：
+
+```JavaScript
+module.exports = function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    if(myTimer.isPastDue)
+    {
+        context.log('Node.js is running late!');
+    }
+    context.log('Node.js timer trigger function ran!', timeStamp);   
+
+    context.done();
+};
+```
+
+## <a name="attributes-for-precompiled-c"></a>预编译 C# 的特性
+
+对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) 中定义的 [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)。
+
+该特性的构造函数采用 CRON 表达式，如以下示例中所示：
+
+```csharp
+[FunctionName("TimerTriggerCSharp")]
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+ ```
+
+如果按应用服务计划（而不是消耗计划）运行函数应用，可以指定 `TimeSpan`（而不是 CRON 表达式）。
+
+## <a name="configuration"></a>配置
+
+下表解释了在 *function.json* 文件和 `TimerTrigger` 特性中设置的绑定配置属性。
+
+|function.json 属性 | Attribute 属性 |说明|
+|---------|---------|----------------------|
+|**类型** | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 在函数代码中表示计时器对象的变量的名称。 | 
+|**schedule**|**ScheduleExpression**|在消耗计划中，可使用 CRON 表达式定义计划。 如果使用应用服务计划，还可使用 `TimeSpan` 字符串。 以下部分介绍 CRON 表达式。 可以将计划表达式放在应用设置中并将此属性设置为 **%** 签名中包装的值，如此示例：“%NameOfAppSettingWithCRONExpression%”中所示。 在本地进行开发时，应用设置将取 [local.settings.json 文件](functions-run-local.md#local-settings-file)的值。|
+
+### <a name="cron-format"></a>CRON 格式 
+
+Azure Functions 计时器触发器的 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)包含以下六个字段： 
+
+```
+{second} {minute} {hour} {day} {month} {day-of-week}
+```
+
 >[!NOTE]   
->许多在线的 cron 表达式会忽略 `{second}` 字段。 如果从其中一个进行复制，需要调整额外的 `{second}` 字段。 有关具体示例，请参阅下面的[计划示例](#examples)。
+>联机找到的许多 CRON 表达式会忽略 `{second}` 字段。 如果从这些字段之一复制，请添加缺少的 `{second}` 字段。
+
+### <a name="cron-time-zones"></a>CRON 时区
 
 CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为名为 `WEBSITE_TIME_ZONE` 的 Function App 创建新的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx)中所示。 
 
@@ -67,12 +184,9 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 ```json
 "schedule": "0 0 10 * * *",
 ``` 
+### <a name="cron-examples"></a>CRON 示例
 
-
-<a name="examples"></a>
-
-## <a name="schedule-examples"></a>计划示例
-以下是可用于 `schedule` 属性的 CRON 表达式的一些示例。 
+以下是一些可用于 Azure Functions 中计时器触发器的 CRON 表达式示例。 
 
 每隔五分钟触发一次：
 
@@ -110,9 +224,8 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 "schedule": "0 30 9 * * 1-5",
 ```
 
-<a name="usage"></a>
+## <a name="usage"></a>使用情况
 
-## <a name="trigger-usage"></a>触发器使用情况
 调用计时器触发器函数时，[计时器对象](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)传递到函数中。 以下 JSON 是计时器对象的示例表示形式。 
 
 ```json
@@ -127,68 +240,14 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 }
 ```
 
-<a name="sample"></a>
+## <a name="scale-out"></a>横向扩展
 
-## <a name="trigger-sample"></a>触发器示例
-假设在 function.json 的 `bindings` 数组中有以下计时器触发器：
-
-```json
-{
-    "schedule": "0 */5 * * * *",
-    "name": "myTimer",
-    "type": "timerTrigger",
-    "direction": "in"
-}
-```
-
-请参阅读取计时器对象的特定于语言的示例，以查看是否延迟运行。
-
-* [C#](#triggercsharp)
-* [F#](#triggerfsharp)
-* [Node.js](#triggernodejs)
-
-<a name="triggercsharp"></a>
-
-### <a name="trigger-sample-in-c"></a>C# 中的触发器示例 #
-```csharp
-public static void Run(TimerInfo myTimer, TraceWriter log)
-{
-    if(myTimer.IsPastDue)
-    {
-        log.Info("Timer is running late!");
-    }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}" );  
-}
-```
-
-<a name="triggerfsharp"></a>
-
-### <a name="trigger-sample-in-f"></a>F# 中的触发器示例 #
-```fsharp
-let Run(myTimer: TimerInfo, log: TraceWriter ) =
-    if (myTimer.IsPastDue) then
-        log.Info("F# function is running late.")
-    let now = DateTime.Now.ToLongTimeString()
-    log.Info(sprintf "F# function executed at %s!" now)
-```
-
-<a name="triggernodejs"></a>
-
-### <a name="trigger-sample-in-nodejs"></a>Node.js 中的触发器示例
-```JavaScript
-module.exports = function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
-
-    if(myTimer.isPastDue)
-    {
-        context.log('Node.js is running late!');
-    }
-    context.log('Node.js timer trigger function ran!', timeStamp);   
-
-    context.done();
-};
-```
+计时器触发器支持多实例扩展。特定计时器函数的单个实例在所有实例上运行。
 
 ## <a name="next-steps"></a>后续步骤
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
+> [!div class="nextstepaction"]
+> [转到有关使用计时器触发器的快速入门](functions-create-scheduled-function.md)
+
+> [!div class="nextstepaction"]
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)

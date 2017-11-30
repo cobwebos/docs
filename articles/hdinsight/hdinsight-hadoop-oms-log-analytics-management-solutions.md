@@ -13,19 +13,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: dc959f763e9a84199130bae845cb62c493676977
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9b2871a3dc7e8c3f36666d44e68c298f43fa6267
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="add-hdinsight-cluster-management-solutions-to-log-analytics"></a>将 HDInsight 群集管理解决方案添加到 Log Analytics
 
-HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytics 添加这些解决方案。 [管理解决方案](../log-analytics/log-analytics-add-solutions.md)可将功能添加到 OMS，为 Log Analytics 提供更多数据和分析工具。 这些解决方案从 HDInsight 群集中收集重要的性能指标，并提供搜索指标的工具。 这些解决方案还为 HDInsight 支持的大多数群集类型提供可视化和仪表板。 使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 
+HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytics 添加这些解决方案。 [管理解决方案](../log-analytics/log-analytics-add-solutions.md)可将功能添加到 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)，为 Log Analytics 提供更多数据和分析工具。 这些解决方案从 HDInsight 群集中收集重要的性能指标，并提供搜索指标的工具。 这些解决方案还为 HDInsight 支持的大多数群集类型提供可视化和仪表板。 使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 
 
-本文介绍如何将特定于群集的管理解决方案添加到 OMS 工作区。
+本文介绍如何将特定于群集的管理解决方案添加到 Operations Management Suite 工作区。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,15 +33,15 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytic
 
 ## <a name="add-cluster-specific-management-solutions"></a>添加特定于群集的管理解决方案
 
-在此部分中，会将 HBase 群集管理解决方案添加到现有的 OMS 工作区。
+在此部分中，会将 HBase 群集管理解决方案添加到现有的 Operations Management Suite 工作区。
 
 1. 在 Azure 门户中打开一个 HDInsigt 群集，依次单击“监视”、“打开 OMS 仪表板”。
 
-    ![打开 OMS 仪表板](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "Open OMS dashboard")
+    ![打开操作管理套件仪表板](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "打开 OMS 仪表板")
 
 1. 在 OMS 仪表板的左侧窗格中，单击“解决方案库”或“视图设计器”图标。
 
-    ![在 OMS 中添加管理解决方案](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "Add management solution in OMS")
+    ![在 Operations Management Suite 中添加管理解决方案](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "在 Operations Management Suite 中添加管理解决方案")
 
 2. 在解决方案库中，单击以下磁贴之一：
 
@@ -55,7 +55,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytic
 
      ![添加 HBase 管理解决方案](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/add-hbase-management-solution.png "Add HBase management solution")
 
-4. 应在 OMS 仪表板上看到“HBase 管理解决方案”的磁贴。 如果与 OMS 关联（作为本文的先决条件的一部分）的群集是 HBase 群集，该磁贴将显示群集的名称和群集中的节点数。
+4. 可在 OMS 仪表板上看到“HBase 管理解决方案”的磁贴。 如果与 Operations Management Suite 关联（作为本文的先决条件的一部分）的群集是 HBase 群集，该磁贴将显示群集的名称和群集中的节点数。
 
     ![已添加 HBase 管理解决方案](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/added-hbase-management-solution.png "HBase management solution added")
 
@@ -65,5 +65,5 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytic
 
 ## <a name="see-also"></a>另请参阅
 
-* [使用 OMS Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [使用 Operations Management Suite Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [在 Log Analytics 中创建警报规则](../log-analytics/log-analytics-alerts-creating.md)

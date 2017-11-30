@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB .NET SDK 和资源 | Microsoft Docs"
+title: "Azure Cosmos DB .NET SDK 和资源 | Microsoft 文档"
 description: "了解有关 .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET SDK 各版本之间所做的更改。"
 services: cosmos-db
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25fd7ca3a7a6f2bd9b361bd459a707bad49449e4
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: ee6d649ac1ab0813098b13750ccc1f6ebf82f684
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -51,6 +51,11 @@ ms.lasthandoff: 11/13/2017
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name11911191"></a><a name="1.19.1"/>1.19.1
+
+* 添加了通过使用 DocumentCollection 上的 UniqueKeyPolicy 属性来指定文档唯一索引的功能。
+* 修复了自定义 JsonSerializer 设置无法用于某些查询和存储过程执行的 bug。
+
 ### <a name="a-name11901190"></a><a name="1.19.0"/>1.19.0
 
 * 在 API 参考文档、程序集中的元数据信息和 NuGet 包中品牌从 Azure DocumentDB 更改为 Azure Cosmos DB。 
@@ -270,6 +275,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.19.1](#1.19.1) |2017 年 11 月 16 日 |--- |
 | [1.19.0](#1.19.0) |2017 年 11 月 10 日 |--- |
 | [1.18.1](#1.18.1) |2017 年 11 月 7 日 |--- |
 | [1.18.0](#1.18.0) |2017 年 10 月 17 日 |--- |

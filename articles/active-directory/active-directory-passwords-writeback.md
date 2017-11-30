@@ -6,21 +6,21 @@ keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 11/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ea2d910611f1935cadd8eaaf5760460f480f0c6c
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 8ca760c3f144cda15920dd401c6a8726d3d53da0
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
@@ -108,8 +108,8 @@ ms.lasthandoff: 11/20/2017
 
 设置这些权限后，每个林的 MA 服务帐户都可以代表相应林中的用户帐户管理密码。 
 
->[!IMPORTANT]
->如果疏忽了分配这些权限，即使写回服务似乎已正确配置，但用户仍会在尝试在云中管理本地密码时看到错误。
+> [!IMPORTANT]
+> 如果疏忽了分配这些权限，即使写回服务似乎已正确配置，但用户仍会在尝试在云中管理本地密码时看到错误。
 >
 
 > [!NOTE]
@@ -125,7 +125,6 @@ ms.lasthandoff: 11/20/2017
 5. 选取要将权限应用到的帐户（通过 Azure AD Connect 安装程序）。
 6. 在“应用到”下拉列表中，选择“子用户”对象。
 7. 在“权限”下，选中下面各项的框：
-    * **使密码不过期**
     * **重置密码**
     * **更改密码**
     * **写入 lockoutTime**

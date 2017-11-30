@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 38e771b8d7211e8f4f408a43b1ab2e293370ab9c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 265538a7e31d58a7d58c9e30870510eb66954f44
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -66,6 +66,15 @@ ms.lasthandoff: 10/25/2017
 可以，需要将名为 `WEBSITE_WEBDEPLOY_USE_SCM` 的应用设置设置为 *false*。
 
 ## <a name="language-support"></a>语言支持
+
+**我想要在 Node.js 应用程序中使用 websocket，要设置什么特殊设置或配置吗？**
+
+需要，请在服务器端 Node.js 代码中禁用 `perMessageDeflate`。 例如，如果要使用 socket.io，请执行以下操作：
+```
+var io = require('socket.io')(server,{
+  perMessageDeflate :false
+});
+```
 
 **是否支持未编译的 .NET Core 应用？**
 

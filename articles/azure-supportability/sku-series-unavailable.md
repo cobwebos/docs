@@ -3,41 +3,76 @@ title: "SKU 系列不可用 | Microsoft 文档"
 description: "对于该区域的选定订阅，某些 SKU 系列不可用。"
 services: Azure Supportability
 documentationcenter: 
-author: ganganarayanan
-manager: scotthit
+author: stevendotwang
+manager: rajatk
 editor: 
-ms.assetid: 5496728b-8da4-4c99-8557-a196be14c42d
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: gangan
-ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/09/2017
+ms.author: xingwan
+ms.openlocfilehash: 62964d0c5d75168226a35b25e5c256a1b57f3f81
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="sku-series-unavailable"></a>SKU 系列不可用
-在某些地区，某些 SKU 未自动在新订阅上可用。  当[某个区域中引入更强大的 SKU 而传统 SKU 的受欢迎程度下降](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/)时，可能会出现这种情况。
-当创建支持请求以增加计算核心配额时，会显示消息“对于该区域的选定订阅，某些 SKU 系列不可用”。
+# <a name="region-or-sku-unavailable"></a>区域或 SKU 不可用
+本文介绍如何解决 Azure 订阅无法访问区域或 VM SKU 的问题。
 
-可以在 [按区域的 Azure 服务](https://azure.microsoft.com/regions/#services) 页上查看 SKU 可用性。 
+## <a name="symptoms"></a>症状
 
-若要请求访问订阅中受限制的 SKU，请创建一个“订阅管理”支持请求。
+### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>部署虚拟机时，收到以下错误消息之一：
+```
+Code: SkuNotAvailable
+Message: The requested size for resource '<resource>' is currently not available in location 
+'<location>' zones '<zone>' for subscription '<subscriptionID>'. Please try another size or 
+deploy to a different location or zones. See https://aka.ms/azureskunotavailable for details.
+```
 
-* 在“基础知识”页上，选择“订阅管理”作为问题类型，并单击“下一步”。
+```
+Message: Your subscription doesn’t support virtual machine creation in <location>. Choose a 
+different location. Supported locations are <list of locations>
+```
+
+```
+Code: NotAvailableForSubscription
+Message: This size is currently unavailable in this location for this subscription
+```
+
+### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>购买保留虚拟机实例时，收到以下错误消息之一：
+
+```
+Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
+different location. Supported locations are: <list of locations>  
+```
+
+```
+Message: This size is currently unavailable in this location for this subscription
+```
+
+### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>在创建用于增加计算核心配额的支持请求时，无法选择某一区域或 SKU 系列。
+
+## <a name="solution"></a>解决方案
+首先，我们建议你考虑选择满足业务需求的备选区域或 SKU。 如果找不到合适的区域或 SKU，请按照以下步骤创建“订阅管理”[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
+
+
+- 在“基本信息”页上，选择“订阅管理”作为问题类型，选择订阅并单击“下一步”。
 
 ![“基本信息”边栏选项卡](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
-* 在“问题”页上，选择“其他一般问题”作为问题类型，并输入未看到的精确区域和 SKU。
-  这会有助于加快支持过程。
+
+-   在“问题”页上，选择“其他常规问题”作为问题类型。
+- 在“详细信息”部分中：
+  - 请指示是要部署虚拟机还是要购买保留虚拟机实例
+  - 请指定区域、SKU 以及计划部署或购买的虚拟机实例数
+
 
 ![问题](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
-* 在“联系信息”页上，输入详细联系信息，然后单击“创建”。
+-   输入联系人详细信息，然后单击“创建”。
 
 ![联系信息](./media/SKU-series-unavailable/ContactInformation.png)
 

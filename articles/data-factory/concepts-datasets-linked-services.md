@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: 
 ms.date: 09/05/2017
 ms.author: shlo
+ms.openlocfilehash: a13e19c7e1a22581b14d1a96e20b8a649c303fc3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f03c91b7b27a4fb39b996599efd11242a785b2b2
-ms.contentlocale: zh-cn
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure 数据工厂中的数据集和链接服务 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1 - GA](v1/data-factory-create-datasets.md)
@@ -185,7 +183,7 @@ culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的�
 详细了解数据工厂如何通过[架构和类型映射]( copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，以及何时指定结构信息。
 
 ## <a name="create-datasets"></a>创建数据集
-可以使用以下任一工具或 SDK 创建数据集：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell]((quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
+可以使用以下任一工具或 SDK 创建数据集：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
 
 ## <a name="v1-vs-v2-datasets"></a>V1 与V2 数据集
 
@@ -202,4 +200,3 @@ culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的�
 - [快速入门：使用 PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)
 - [快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)
 - 快速入门：使用 Azure 门户创建数据工厂
-

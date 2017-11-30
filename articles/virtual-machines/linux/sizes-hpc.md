@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM 大小 - HPC | Microsoft Docs"
-description: "列出 Azure 中适用于 Linux 高性能计算虚拟机的各种大小。"
+description: "列出 Azure 中适用于 Linux 高性能计算虚拟机的各种大小。 针对此系列中的大小列出有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。"
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 31a1ac1f58f52abd2d62e95a2de1a42ce678c43c
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: a235261dc477ab29dc17fe1e680e4e91ae2f4ede
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>高性能计算虚拟机大小
 

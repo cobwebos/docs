@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: 73c472140861a0d0d270021ab268e8c1113c23b5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>使用 Azure Log Analytics 监视 HDInsight 群集
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/15/2017
 
 * **一个 Azure 订阅**。 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
 
-* **一个 Azure HDInsight 群集**。 目前，可以将 Azure OMS 与以下 HDInsight 群集类型配合使用：
+* **一个 Azure HDInsight 群集**。 目前，可以将 Azure 操作管理套件与以下 HDInsight 群集类型配合使用：
 
     * Hadoop
     * HBase
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/15/2017
 
     需要几分钟来保存设置。  完成后，可以在顶部看到“打开 OMS 仪表板”按钮。 
 
-    ![打开 OMS 仪表板](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "Open OMS dashboard")
+    ![打开操作管理套件仪表板](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "打开 OMS 仪表板")
 
 5. 单击“打开 OMS 仪表板”。
 6. 在系统提示时输入 Azure 凭据。

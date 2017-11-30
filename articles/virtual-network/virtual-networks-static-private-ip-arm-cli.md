@@ -1,11 +1,11 @@
 ---
-title: "为 VM 配置专用 IP 地址 - Azure CLI 2.0 | Microsoft 文档"
-description: "了解如何使用 Azure 命令行接口 (CLI) 2.0 为虚拟机配置专用 IP 地址。"
+title: "为 VM 配置专用 IP 地址 - Azure CLI | Microsoft Docs"
+description: "了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: 
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 为虚拟机配置专用 IP 地址
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
-
-
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本 
-
-可以使用以下 CLI 版本之一完成任务： 
-
-- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI 
-- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) - 适用于资源管理部署模型（本文）的下一代 CLI
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
@@ -43,11 +35,11 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> 下面的示例 Azure CLI 2.0 命令需要已创建简单的环境。 若要运行本文档中所显示的命令，请首先构建[创建 VNet](virtual-networks-create-vnet-arm-cli.md) 中所述的测试环境。
+> 以下示例 Azure CLI 命令需要现有的简单环境。 若要运行本文档中所显示的命令，请首先构建[创建 VNet](virtual-networks-create-vnet-arm-cli.md) 中所述的测试环境。
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>在创建 VM 时指定静态专用 IP 地址
 
-若要在名为 *TestVNet* 的 VNet 的 *FrontEnd* 子网中使用静态专用 IP *192.168.1.101* 创建名为 *DNS01* 的 VM，请按照以下步骤进行操作：
+若要在名为 *TestVNet* 的 VNet 的 *FrontEnd* 子网中使用静态专用 IP *192.168.1.101* 创建名为 *DNS01* 的 VM，请完成以下步骤：
 
 1. 如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录 Azure 帐户。 
 
@@ -134,7 +126,7 @@ ms.lasthandoff: 10/11/2017
     * `--vnet-name`：要在其中创建 NIC 的 VNet 的名称。
     * `--subnet`：要在其中创建 NIC 的子网的名称。
 
-4. 运行 [azure vm create](/cli/azure/vm/nic#create) 命令，以使用上面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
+4. 运行 [azure vm create](/cli/azure/vm/nic#create) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
    
     ```azurecli
     az vm create \
@@ -169,7 +161,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>检索 VM 的静态专用 IP 地址信息
 
-若要查看创建的静态专用 IP 地址，请运行以下 Azure CLI 命令并观察 *Private IP alloc-method* 和 *Private IP address* 的值：
+运行以下 Azure CLI 命令以观察 *Private IP alloc-method* 和 *Private IP address* 的值：
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -204,13 +196,13 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>从 VM 中删除静态专用 IP 地址
 
-无法在用于 Resource Manager 部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须：
+无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须：
 - 创建使用动态 IP 的新 NIC
 - 将 VM 上的 NIC 设置为新创建的 NIC。 
 
-若要更改上述命令使用的 VM 的 NIC，请执行以下步骤。
+若要更改上述命令中使用的 VM 的 NIC，请完成以下步骤：
 
-1. 运行 **azure network nic create** 命令，以使用新 IP 地址通过动态 IP 分配创建新 NIC。 请注意，由于未指定任何 IP 地址，因此分配方法为“动态”。
+1. 运行 **azure network nic create** 命令，以使用新 IP 地址通过动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”。
 
     ```azurecli
     az network nic create     \

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: 84b219d31635af6fbdb6bd618e3a9bb4e4848809
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 47e023e7240cfae3553b220ebc44c95ec96d62a7
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>将 Service Fabric Linux 群集部署到 Azure 虚拟网络
 本教程是一个系列中的第一部分。 可以了解到如何使用 Azure CLI 将 Linux Service Fabric 群集部署到现有 Azure 虚拟网络 (VNET) 及子网。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 若要使用 PowerShell 创建 Windows 群集，请参阅[在 Azure 上创建安全的 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
@@ -45,6 +45,22 @@ ms.lasthandoff: 11/15/2017
 - 安装 [Azure CLI 2.0](/cli/azure/install-azure-cli)
 
 以下步骤将创建一个五节点 Service Fabric 群集。 若要计算在 Azure 中运行 Service Fabric 群集的成本，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
+
+## <a name="introduction"></a>介绍
+本教程将单个节点类型的五个节点群集部署到 Azure 的虚拟网络中。
+
+[Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集可以扩展到成千上万台计算机。 属于群集一部分的计算机或 VM 称为节点。 需为每个节点分配节点名称（字符串）。 节点具有各种特征，如放置属性。
+
+节点类型定义群集中一组虚拟机的大小、数量和属性。 每个已定义的节点类型均设置为[虚拟机规模集](/azure/virtual-machine-scale-sets/)，是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 节点类型用于定义一组群集节点（如“前端”或“后端”）的角色。  群集可以有多个节点类型，但主节点类型必须至少有 5 个 VM 供群集用于生产（或至少有 3 个 VM 用于测试群集）。  [Service Fabric 系统服务](service-fabric-technical-overview.md#system-services)位于主节点类型的节点上。
+
+## <a name="cluster-capacity-planning"></a>群集容量规划
+本教程部署单个节点类型中的五个节点群集。  对于任何生产群集部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
+
+- 群集需要的节点类型数目 
+- 每个节点类型的属性（例如，大小、主节点、面向 Internet 以及 VM 数量等）
+- 群集的可靠性和耐久性特征
+
+有关详细信息，请参阅[群集容量规划注意事项](service-fabric-cluster-capacity.md)。
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>登录到 Azure，然后选择订阅
 本指南使用 Azure CLI。 开始新的会话时，请登录到 Azure 帐户并选择订阅，然后执行 Azure 命令。

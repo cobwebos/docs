@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: b3e5976a84e0ec91a41d683a426b58635fd5abd6
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions 的 host.json 参考
 
@@ -139,21 +139,7 @@ ms.lasthandoff: 10/18/2017
 
 [事件中心触发器和绑定](functions-bindings-event-hubs.md)的配置设置。
 
-```json
-{
-    "eventHub": {
-      "maxBatchSize": 64,
-      "prefetchCount": 256,
-      "batchCheckpointFrequency": 1
-    }
-}
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------| 
-|maxBatchSize|64|每个接收循环收到的最大事件计数。|
-|prefetchCount|不适用|基础 EventProcessorHost 将要使用的默认 PrefetchCount。| 
-|batchCheckpointFrequency|1|创建 EventHub 游标检查点之前要处理的事件批数。| 
+[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="functions"></a>functions
 
@@ -179,23 +165,7 @@ ms.lasthandoff: 10/18/2017
 
 [http 触发器和绑定](functions-bindings-http-webhook.md)的配置设置。
 
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 10,
-        "dynamicThrottlesEnabled": false
-    }
-}
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------| 
-|routePrefix|api|应用到所有路由的路由前缀。 使用空字符串可删除默认前缀。 |
-|maxOutstandingRequests|-1|在任意给定时间搁置的未完成请求数上限（-1 表示不受限制）。 限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 调用方可以使用该响应来采取基于时间的重试策略。 此设置仅控制作业宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）不受此设置的影响。 |
-|maxConcurrentRequests|-1|要并行执行的 HTTP 函数数目上限（-1 表示不受限制）。 例如，如果在并发性较高时 HTTP 函数使用过多的系统资源，则可以设置限制。 或者，如果函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。|
-|dynamicThrottlesEnabled|false|导致请求处理管道定期检查系统性能计数器。 计数器包括连接、线程、进程、内存和 CPU。 如果任何计数器超出内置阈值 (80%)，则在计数器恢复正常级别之前，会拒绝请求并返回 429“太忙”响应。|
+[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 
@@ -260,21 +230,7 @@ ms.lasthandoff: 10/18/2017
 
 [服务总线触发器和绑定](functions-bindings-service-bus.md)的配置设置。
 
-```json
-{
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
-    }
-}
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------| 
-|maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 | 
-|prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
-|autoRenewTimeout|00:05:00|自动续订消息锁的最长持续时间。| 
+[!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
 ## <a name="singleton"></a>singleton
 

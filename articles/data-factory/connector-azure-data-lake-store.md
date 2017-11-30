@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: daba616debcf445e092697575465311f39e9466f
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 3b2fbab10836b138792efad7ea30f4f0d15905c3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,7 +55,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 | resourceGroupName | Data Lake Store 帐户所属的 Azure 资源组名称。 | 接收器所需 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
-有关不同身份验证类型的其他属性和 JSON 示例，请参阅以下相关部分：
+有关不同身份验证类型的更多属性和 JSON 示例，请分别参阅以下部分：
 
 - [使用服务主体身份验证](#using-service-principal-authentication)
 - [使用托管服务标识身份验证](#using-managed-service-identitiy-authentication)
@@ -71,7 +71,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 >[!TIP]
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
 >- 作为源，至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹内容，或者授予“读取”权限来复制单个文件。 对帐户级别访问控制 (IAM) 没有要求。
->- 作为接收器，则至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+>- 作为接收器，则至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来复制（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免使用此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示：
 
 支持以下属性：
 
@@ -106,11 +106,11 @@ Azure Data Lake Store 链接服务支持以下属性：
 }
 ```
 
-### <a name="using-managed-service-identitiy-authentication"></a>使用托管服务标识身份验证
+### <a name="using-managed-service-identity-authentication"></a>使用托管服务标识身份验证
 
 可将数据工厂与代表此特定数据工厂的[托管服务标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此服务标识进行 Data Lake Store 身份验证。 此指定工厂可通过此方法访问以及从/向 Data Lake Store 复制数据。
 
-若要使用托管服务标识 (MSI) 身份验证：
+若要使用托管服务标识 (MSI) 身份验证，请执行以下操作：
 
 1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)。
 2. 像使用服务主体时一样，向该服务标识授予对 Data Lake Store 的访问权限。 有关详细步骤，请参阅[服务到服务身份验证 - 将 Azure AD 应用程序分配给 Azure Data Lake Store 帐户文件或文件夹](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder)。
@@ -118,7 +118,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 >[!TIP]
 > 确保在 Azure Data Lake Store 中授予数据工厂服务标识适当的权限：
 >- 作为源，至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹内容，或者授予“读取”权限来复制单个文件。 对帐户级别访问控制 (IAM) 没有要求。
->- 作为接收器，则至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+>- 作为接收器，则至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来复制（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免使用此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示：
 
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 

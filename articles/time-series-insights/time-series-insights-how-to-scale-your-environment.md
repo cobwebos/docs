@@ -12,15 +12,15 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
-本文介绍如何使用 Azure 门户更改时序见解环境的容量。 容量是应用于入口速率、存储容量和所选 SKU 相关成本的乘数。 
+本文介绍如何使用 Azure 门户更改时序见解环境的容量。 容量是应用于入口速率、存储容量以及与所选 SKU 关联的成本的乘数。 
 
 可以使用 Azure 门户来增加或减少给定定价 SKU 中的容量。 
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/16/2017
 ## <a name="change-the-capacity-of-your-environment"></a>更改环境容量
 1. 在 Azure 门户中，找到并选择自己的时序见解环境。 
 
-2. 在“设置”标题下，选择“配置”。
+2. 在时序见解环境的菜单中，选择“配置”。
 
    ![configure.png](media/scale-your-environment/configure.png)
 

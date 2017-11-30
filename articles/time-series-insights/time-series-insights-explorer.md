@@ -3,7 +3,7 @@ title: "使用 Azure 时序见解资源管理器浏览数据 | Microsoft Docs"
 description: "本文介绍如何使用 Web 浏览器中的 Azure 时序见解资源管理器快速查看大数据的全局视图并验证 IoT 环境。"
 services: time-series-insights
 ms.service: time-series-insights
-author: kfile
+author: MarkMcGeeAtAquent
 ms.author: kfile
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 112c1a86e302c2549018fc3a8c6dbc22a689c8a6
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 35f7bf0504075e8bb0b99f8492b850df2b7ceae1
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 本文探讨时序见解资源管理器 Web 应用中可用的各种功能和选项。 在 Web 浏览器中使用时序见解资源管理器来创建数据的可视化效果。
@@ -50,10 +50,10 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
       - “拆分方式”：此下拉框显示分类列（字符串）
       - 可以启用梯级内插、显示最小值和最大值以及调整“度量值”旁“控制面板”的 Y 轴。  此外，可以调整显示的数据是计数、平均值或数据的总和。
       - 最多可以添加五个术语，在同一个 X 轴上查看。  使用“复制” 按钮添加其他术语，或者单击“添加”按钮添加新术语。
+     
+        ![术语编辑器面板](media/time-series-insights-explorer/explorer2.png)
 
-      ![术语编辑器面板](media/time-series-insights-explorer/explorer2.png)
-
-      - “谓词”：通过谓词，可以使用下面的操作数集快速筛选事件。 如果通过选择/单击执行搜索，谓词将基于该搜索自动更新。  支持的操作数类型包括：
+      - “谓词”：通过谓词，可以使用下面的操作数集快速筛选事件。 如果通过选择/单击执行搜索，谓词将基于该搜索自动更新。      支持的操作数类型包括：
 
          |操作  |支持的类型  |说明  |
          |---------|---------|---------|
@@ -107,4 +107,5 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 现在，你已了解时序见解资源管理器 Web 应用中可用的各种功能和选项。 
 
 ## <a name="next-steps"></a>后续步骤
-[在时序见解环境中诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)
+> [!div class="nextstepaction"]
+>[在时序见解环境中诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)
