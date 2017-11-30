@@ -20,7 +20,7 @@
 
 ## 创建作业
 ### [创建输入](stream-analytics-define-inputs.md)
-### [示例输入数据](stream-analytics-sample-data-input.md)
+### [测试查询和示例输入数据](stream-analytics-sample-data-input.md)
 ### [通用查询模式](stream-analytics-stream-analytics-query-patterns.md)
 ### [开窗函数](stream-analytics-window-functions.md)
 

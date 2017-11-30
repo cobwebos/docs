@@ -4,7 +4,7 @@ description: "了解如何使用 Azure CLI 在 Resource Manager 中创建面向 
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jennoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ba36b7f6d2ae3cc4d63829ffb757ff7b311e467b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8baf065a7aac0a38624197f8f6a1f6a84aaab2a8
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
 
@@ -34,15 +34,13 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
 本文介绍 Resource Manager 部署模型。 还可以[了解如何使用经典部署创建面向 Internet 的负载均衡器](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>使用 Azure CLI 部署解决方案
 
-以下步骤说明如何使用 Azure Resource Manager 和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
+以下步骤说明如何使用 Azure 资源管理器和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，再将其合成一个新资源。
 
 需要创建和配置以下对象才能部署负载均衡器：
 
@@ -52,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 * 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
-有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
+有关详细信息，请参阅 [Azure 资源管理器对负载均衡器的支持](load-balancer-arm.md)。
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>将 CLI 设置为使用 Resource Manager
 

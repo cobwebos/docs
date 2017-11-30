@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 50d185294131e42aaf8b541ab17495fcb40c89dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd16dd889cbe0f05d7e60f444c6c5fa2e65f64a4
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
@@ -29,8 +29,7 @@ ms.lasthandoff: 10/11/2017
 | --- | --- |
 |    deployed  | 获取部署在 Service Fabric 节点上的副本的详细信息。|
 |    deployed-list| 获取部署在 Service Fabric 节点上的副本的列表。|
-|    health    | 获取 Service Fabric 有状态服务副本或无状态服务实例的
-                   运行状况。|
+|    health    | 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。|
 |    info      | 获取有关 Service Fabric 分区的副本的信息。|
 |    list      | 获取有关 Service Fabric 服务分区的副本的信息。|
 |    remove    | 删除节点上运行的服务副本。|

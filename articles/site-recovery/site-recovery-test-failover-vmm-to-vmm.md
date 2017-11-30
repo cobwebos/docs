@@ -3,8 +3,8 @@ title: "Azure Site Recovery 中的测试故障转移（VMM 到 VMM）| Microsoft
 description: "Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。"
 services: site-recovery
 documentationcenter: 
-author: prateek9us
-manager: gauravd
+author: ponatara
+manager: abhemraj
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
-ms.author: pratshar
-ms.openlocfilehash: afc4790d5714ce7145c8f4291a05acc2e9882a9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/22/2017
+ms.author: ponatara
+ms.openlocfilehash: 2730cebc1cdc47db283ae851560d93fdbf50ee48
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Site Recovery 中的测试故障转移（VMM 到 VMM）
 

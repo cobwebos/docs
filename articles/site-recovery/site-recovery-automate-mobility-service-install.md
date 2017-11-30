@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 11/22/2017
 ms.author: krnese
-ms.openlocfilehash: bcc5f11afbecac8fe63935f3401dd3e2d767e8aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 118a2e775ae3d036f58989d9778104e372e8c701
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>使用 Azure Automation DSC 部署移动服务以复制 VM
 Operations Management Suite 提供了全面的备份和灾难恢复解决方案，可方便用户在业务连续性计划中使用。
@@ -216,7 +216,7 @@ configuration ASRMobilityService {
 
 ![导入模块](./media/site-recovery-automate-mobilitysevice-install/search-and-import-module.png)
 
-完成此操作后，转到安装了 Azure Resource Manager 模块的计算机，并导入新建的 DSC 配置。
+完成此操作后，转到安装了 Azure 资源管理器模块的计算机，并导入新建的 DSC 配置。
 
 ### <a name="import-cmdlets"></a>导入 cmdlet
 在 PowerShell 中，登录到 Azure 订阅。 修改 Cmdlet 以反映环境，并捕获变量中的 Automation 帐户信息：
@@ -473,8 +473,8 @@ Start-DscConfiguration .\ASRMobilityService -Wait -Force -Verbose
 
 若要在公司网络中实例化自己的 DSC 拉取服务器，以模拟可从 Automation DSC 获取的功能，请参阅[设置 DSC Web 拉取服务器](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396)。
 
-## <a name="optional-deploy-a-dsc-configuration-by-using-an-azure-resource-manager-template"></a>可选：使用 Azure Resource Manager 模板部署 DSC 配置
-本文目前重点介绍的是，如何通过创建自己的 DSC 配置来自动部署移动服务和 Azure VM 代理，以及如何确保它们在要保护的计算机上始终处于运行状态。 我们还有将此 DSC 配置部署到新的或现有 Azure 自动化帐户的 Azure Resource Manager 模板。 该模板将使用输入参数来创建包含环境变量的 Automation 资产。
+## <a name="optional-deploy-a-dsc-configuration-by-using-an-azure-resource-manager-template"></a>可选：使用 Azure 资源管理器模板部署 DSC 配置
+本文目前重点介绍的是，如何通过创建自己的 DSC 配置来自动部署移动服务和 Azure VM 代理，以及如何确保它们在要保护的计算机上始终处于运行状态。 我们还有将此 DSC 配置部署到新的或现有 Azure 自动化帐户的 Azure 资源管理器模板。 该模板将使用输入参数来创建包含环境变量的 Automation 资产。
 
 部署模板后，要加入计算机，可直接参阅本指南中的步骤 4。
 

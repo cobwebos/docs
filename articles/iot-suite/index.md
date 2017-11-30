@@ -1,22 +1,19 @@
 ---
 title: "Azure IoT 套件文档 - 教程和 API 参考 | Microsoft 文档"
-description: 
+description: "Azure IoT 套件的文档包括入门指南、操作方法文章、教程和 API 参考。"
 services: iot-suite
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
 ms.service: iot-suite
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 11/10/2017
+ms.date: 11/27/2017
 ms.author: carolz
-ms.openlocfilehash: e8a5b79b0393b8dc92082e47128118f6531acac0
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: ccd1546fdfaba2d754906b74984a7335a918e316
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="iot-suite-documentation"></a>IoT 套件文档
 
@@ -30,7 +27,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/iot-suite.svg" alt="" />
+                            <img src="media/index/iot-suite.svg" alt="Learn about IoT Suite" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -48,7 +45,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="Azure Video Library" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -66,7 +63,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="Deploy the remote monitoring preconfigured solution" />
                         </div>
                     </div>
                     <div class="cardText">

@@ -1,0 +1,40 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Location Based Services（预览版）文档
+metadata:
+  document_id: null
+  title: Azure Location Based Services（预览版）文档 | Microsoft Docs
+  meta.description: Use Azure Location Based Services (preview) to provide geospatial services to your web or mobile application.
+  services: location-based-services
+  author: philmea
+  manager: timlt
+  ms.service: location-based-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/22/2017
+  ms.author: philmea
+abstract:
+  description: Azure Location Based Services（预览版）为各行各业的开发人员提供强大的地理空间功能，并搭配了为 Web 和移动应用程序提供地理环境时所需的全新地图数据。 此服务是与 Azure One API 兼容的一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发简单、灵活且可跨多个媒体移植。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 启动使用 Azure Location Based Services（预览版）的地图搜索应用。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: 启动演示地图应用
+            href: /azure/location-based-services/quick-demo-map-app
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 生成地理空间 Web 应用程序，以使用 Azure Location Based Services（预览版）搜索兴趣点并规划通往相应位置的路线。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/location-based-services/tutorial-search-location">搜索兴趣点</a>
+          - html: <a href="/azure/location-based-services/tutorial-route-location">规划通往兴趣点的路线</a>
+          - html: <a href="/azure/location-based-services/tutorial-prioritized-routes">按旅行模式规划路线</a>

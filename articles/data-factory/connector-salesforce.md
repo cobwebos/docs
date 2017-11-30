@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/24/2017
 ms.author: jingwang
-ms.openlocfilehash: 017d03b76bd19a0b3a1e19c22233c61be9067d0d
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: d0db2bd3a7e4d93a8d0690fcb4535c4552cef7ab
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="copy-data-fromto-salesforce-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -248,13 +248,13 @@ Salesforce 链接的服务支持以下属性：
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Salesforce input dataset name>",
+                "referenceName": "<input dataset name>",
                 "type": "DatasetReference"
             }
         ],
         "outputs": [
             {
-                "referenceName": "<output dataset name>",
+                "referenceName": "<Salesforce output dataset name>",
                 "type": "DatasetReference"
             }
         ],

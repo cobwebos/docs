@@ -4,6 +4,7 @@
 # 入门
 ## [Azure 门户](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+## [Contact.java](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [Azure CLI](data-lake-analytics-get-started-cli2.md)
 
@@ -29,7 +30,7 @@
 ### [U-SQL R 扩展](data-lake-analytics-u-sql-r-extensions.md)
 ### [U-SQL 认知扩展](data-lake-analytics-u-sql-cognitive.md)
 ### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
-### [适用于 Visual Studio Code 的 U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
+### [适用于 Visual Studio Code 的 U-SQL 自定义代码](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 
 ## 调试 U-SQL 程序
 ### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

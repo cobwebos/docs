@@ -133,6 +133,8 @@
       href: distribute-data-globally.md
     - name: 分区
       href: partition-data.md
+    - name: 唯一键
+      href: unique-keys.md
     - name: 一致性
       href: consistency-levels.md
     - name: 吞吐量

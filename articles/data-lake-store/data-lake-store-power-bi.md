@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 32ae9949806e0cb762b87cb739f94ddf3704c2ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c77ccd29e3e22005c3339ed4e89dccfed725fa0
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>使用 Power BI 分析 Data Lake Store 中的数据
 本文介绍如何使用 Power BI Desktop 分析和可视化 Azure Data Lake Store 中存储的数据。

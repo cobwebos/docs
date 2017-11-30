@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/27/2017
 ms.author: jgao
-ms.openlocfilehash: 6da89b7b63231fe5886c82e84e06abc2ee7b3e38
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f53234ddd8362e74c421c18c8d500308f5a232a7
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>将交互式查询与 HDInsight 配合使用
 交互式查询（也称为 Hive LLAP 或 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Hive 查询速度和交互性。 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/03/2017
 
 * 使用 Visual Studio
 
-    请参阅[使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)。
+    请参阅[使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries)。
 
 * 使用 Visual Studio Code
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/03/2017
 * 了解如何[在 HDInsight 中创建交互式查询群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 * 了解如何[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
 * 了解如何[在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](../hdinsight-connect-hive-zeppelin.md)。
-* 了解如何[使用针对 Visual Studio 的 Data Lake 工具运行 Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)。
+* 了解如何[使用针对 Visual Studio 的 Data Lake 工具运行 Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries)。
 * 了解如何[使用用于 Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md)。
 * 了解如何[将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-ambari-view.md)
 * 了解如何[使用 Beeline 在 HDInsight 中提交 Hive 查询](../hadoop/apache-hadoop-use-hive-beeline.md)。

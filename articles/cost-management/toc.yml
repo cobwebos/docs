@@ -23,6 +23,10 @@
       href: tutorial-forecast-spending.md
     - name: 4 - 管理成本
       href: tutorial-manage-costs.md
+- name: 概念
+  items:
+    - name: 了解成本报告
+      href: understading-cost-reports.md
 - name: 资源
   items:
     - name: 成本管理视频

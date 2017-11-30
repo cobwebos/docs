@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 10/14/2016
 ms.author: Joe.Sack
-ms.suite: SQL
+ms.suite: sql
 ms.prod_service: sql-database
-ms.component: management
-ms.openlocfilehash: 663ab4aaf229f8a88d1116b34ccb74450aa66c9d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.component: migration
+ms.openlocfilehash: e562c33cabc7d39d1f6a911c21343f85da205c0b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-should-i-manage-my-azure-sql-database-after-migration"></a>应如何在迁移后管理我的 Azure SQL 数据库？
 

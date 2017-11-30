@@ -1,0 +1,51 @@
+- name: Azure Location Based Services 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Location Based Services
+      href: about-location-based-services.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 使用 Location Based Services 的地图应用
+      href: quick-demo-map-app.md
+- name: 教程
+  items:
+    - name: 1 - 搜索兴趣点
+      href: tutorial-search-location.md
+    - name: 2 - 规划通往兴趣点的路线
+      href: tutorial-route-location.md
+    - name: 3 - 按旅行模式规划多条路线
+      href: tutorial-prioritized-routes.md
+- name: 概念
+  items:
+    - name: 地理编码覆盖区域
+      href: geocoding-coverage.md
+    - name: 交通覆盖区域
+      href: traffic-coverage.md
+- name: 操作指南
+  items:
+    - name: 管理帐户和密钥
+      href: how-to-manage-account-keys.md
+    - name: 如何使用地图控件
+      href: how-to-use-map-control.md
+- name: 引用
+  items:
+    - name: Azure IoT 开发人员中心
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: 技术案例研究
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

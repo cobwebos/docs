@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: annahar
-ms.openlocfilehash: 922c33f712e160835256ad9ad040e523dfbf76db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 29c74c2cc58e7cab1364b2fc2c74951440dea0ab
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>使用 Azure 门户创建面向 Internet 的负载均衡器
 
@@ -32,8 +32,6 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
-
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
 本文介绍 Resource Manager 部署模型。
 
@@ -51,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 * 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
-可以在以下网页中获取有关 Azure Resource Manager 的负载均衡器组件的详细信息：[Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
+可以在以下网页中获取有关 Azure 资源管理器的负载均衡器组件的详细信息：[Azure 资源管理器对负载均衡器的支持](load-balancer-arm.md)。
 
 ## <a name="set-up-a-load-balancer-in-azure-portal"></a>在 Azure 门户中设置负载均衡器
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: d57235671389e02c7d397b1244cdddb7a20067cc
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 730dfcb8925a1a7edf8796ddaf86d2038fd9df44
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 10/14/2017
 
 ### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>由于端口被阻止，身份验证代理注册失败
 
-确保安装身份验证代理的服务器能够与我们的服务 URL 和[此处](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites)列出的端口通信。
+确保安装身份验证代理的服务器能够与我们的服务 URL 和[此处](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites)列出的端口通信。
 
 ### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>由于令牌或帐户授权错误，身份验证代理注册失败
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 10/14/2017
 
 ### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>由于端口被阻止，启用该功能失败
 
-确保安装 Azure AD Connect 的服务器能够与我们的服务 URL 和[此处](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites)列出的端口通信。
+确保安装 Azure AD Connect 的服务器能够与我们的服务 URL 和[此处](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites)列出的端口通信。
 
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>由于令牌或帐户授权错误，启用该功能失败
 

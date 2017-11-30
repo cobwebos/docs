@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 06/07/2017
 ms.author: rickbyh
 ms.workload: Inactive
-ms.openlocfilehash: c45f0ae655c544f51c8983c234591eef3da9dc6b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 16bd403fecbd24d7cea774bba8535f102501861f
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的条件性访问 (MFA)  
 
@@ -25,7 +25,7 @@ SQL 数据库和 SQL 数据仓库均支持 Microsoft 条件性访问。 下列�
 - 启用多重身份验证后，必须使用受支持的工具（如最新版 SSMS）进行连接。 有关详细信息，请参阅[配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>为 Azure SQL DB/DW 配置条件性访问  
-1.  登录门户，依次选择“Azure Active Directory”和“条件性访问”。 有关详细信息，请参阅 [Azure Active Directory 条件性访问技术参考](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference)。  
+1.  登录门户，依次选择“Azure Active Directory”和“条件性访问”。 有关详细信息，请参阅 [Azure Active Directory 条件性访问技术参考](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference)。  
   ![“条件性访问”边栏选项卡](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2.  在“条件性访问策略”边栏选项卡中，单击“新建策略”，提供一个名称，然后单击“配置规则”。  
