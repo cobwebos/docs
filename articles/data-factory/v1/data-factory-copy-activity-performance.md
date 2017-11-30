@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 11/14/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2aeb3820667f264e4a26860913e3f7b0e22e4c4a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1f774bb881c66ceeb9f3223b735b3f34462b6a8d
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!NOTE]
@@ -49,6 +49,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ![性能矩阵](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
+>[!IMPORTANT]
+>在 Azure 数据工厂版本 1 中，用于云到云复制的最小云数据移动单元数为两个。 如果未指定，请参阅[云数据移动单元](#cloud-data-movement-units)了解使用的默认数据移动单元数。
 
 **需要注意的要点：**
 * 使用以下公式计算吞吐量：[从源读取的数据大小]/[复制活动运行持续时间]。
@@ -90,9 +92,16 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 在此示例中，当**并发**值设置为 2 时，**活动运行 1** 和 **活动运行 2****并发**从两个活动时段复制数据，以提高数据移动性能。 但是，如果多个文件与活动运行 1 相关联，则数据移动服务一次只会将一个文件从源复制到目标位置。
 
 ### <a name="cloud-data-movement-units"></a>云数据移动单位
-**云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 DMU 可用于云到云复制操作，但不能用于混合复制。
+**云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 DMU 适用于云到云复制操作，但不适用于混合复制。
 
-默认情况下，数据工厂使用单个云 DMU 来执行单个复制活动运行。 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
+**为复制活动运行提供支持的云数据移动单元数下限为两个。** 如果未指定，下表列出了不同复制方案中使用的默认 DMU 数目：
+
+| 复制方案 | 服务决定的默认 DMU 数目 |
+|:--- |:--- |
+| 在基于文件的存储之间复制数据 | 2 到 16 个，具体取决于文件的数量和大小。 |
+| 所有其他复制方案 | #N/A |
+
+若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 **cloudDataMovementUnits** 属性的**允许值**为 2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 
 ```json
 "activities":[  
@@ -114,7 +123,6 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
     }
 ]
 ```
-**cloudDataMovementUnits** 属性的**允许值**为 1（默认值）、2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。
 
 > [!NOTE]
 > 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP/云 SFTP 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**时，才能设置为 8 或更高的值。

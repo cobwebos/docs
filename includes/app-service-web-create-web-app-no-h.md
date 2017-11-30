@@ -1,8 +1,6 @@
 在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp#create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/app-service-web-overview.md)。 
 
-该 Web 应用为代码提供托管空间，并提供一个 URL 用于查看已部署的应用。
-
-在以下命令中，将 *\<app_name>* 替换为唯一名称（有效字符是 `a-z`、`0-9` 和 `-`）。 如果 `<app_name>` 不是唯一名称，将收到错误消息“具有给定名称 <app_name> 的网站已存在。” Web 应用的默认 URL 为 `https://<app_name>.azurewebsites.net`。 
+在以下示例中，将 \<app_name> 替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`）。 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
@@ -32,7 +30,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 > Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`。 保存此 URL，因为稍后将需要它。
 >
 
-浏览到该站点查看新建的 Web 应用。
+浏览到新建的 Web 应用。
 
 ```bash
 http://<app_name>.azurewebsites.net

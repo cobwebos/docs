@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a40dc540884454fed9c374ba1365fdf7b85e4531
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 312ff3d4013c7406a9acd86185ab43a6602c539c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Node.js Web 应用
 
@@ -33,8 +33,8 @@ ms.lasthandoff: 10/27/2017
 
 完成本快速入门教程：
 
-* [安装 Git](https://git-scm.com/)
-* [安装 Node.js 和 NPM](https://nodejs.org/)
+* <a href="https://git-scm.com/" target="_blank">安装 Git</a>
+* <a href="https://nodejs.org/" target="_blank">安装 Node.js 和 NPM</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -78,11 +78,11 @@ npm start
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>使用内置映像创建 Web 应用
+## <a name="create-a-web-app"></a>创建 Web 应用
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)]
 
-浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
+浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -142,7 +142,7 @@ Node.js 示例代码在包含内置映像的 Web 应用中运行。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
-使用文本编辑器在 Node.js 应用中打开 `index.js` 文件，然后对 `response.end` 调用中的文本稍微进行更改：
+在本地目录中，打开 Node.js 应用中的 `index.js` 文件，然后对 `response.end` 调用中的文本略加更改：
 
 ```nodejs
 response.end("Hello Azure!");

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: b157e2f90fa2daf00cf71472eb799ee98797b4dc
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 7dae1d903b6cbb6a74f89443ec9601c6b4b9d078
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
 
@@ -164,9 +164,10 @@ GRS | 支持 |
 RA-GRS | 支持 |
 ZRS | 不支持 |  
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
+虚拟网络服务终结点（Azure 存储防火墙和虚拟网络）  | 否 | 不支持访问用于存储复制数据的缓存存储帐户上特定的 Azure 虚拟网络。 
 
 >[!IMPORTANT]
-> 确保按照[存储指南](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)配置源 Azure 虚拟机，以免产生任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的存储帐户。 如果自定义和选择自己的设置，请确保按照 (../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) 配置源 VM。
+> 确保观察 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) 虚拟机的 VM 磁盘可伸缩性和性能目标，以避免任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请确保遵循源 VM 的磁盘可伸缩性和性能目标。
 
 ## <a name="support-for-network-configuration"></a>网络配置支持
 **配置** | **支持/不支持** | **备注**

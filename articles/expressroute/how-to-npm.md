@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 9e459a42a9fd7caedfa255a7baf51273eef2265a
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>为 ExpressRoute 配置网络性能监视器（预览版）
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/15/2017
 1. 在资源的“网络性能监视器配置 - TCP 安装”页面上的“安装 OMS 代理”部分，单击与你的服务器处理器的对应代理，然后下载安装程序文件。
 
   >[!NOTE]
-  >目前不支持 Linux 代理进行 ExpressRoute 监视。
+  >必须在 Windows Server（2008 SP1 或更高版本）上安装代理。 不支持使用 Windows 桌面操作系统和 Linux 操作系统监视 ExpressRoute 线路。 
   >
   >
 2. 接下来，将“工作区 ID”和“主密钥”复制到记事本。
@@ -105,6 +105,8 @@ ms.lasthandoff: 11/15/2017
   ![PowerShell 脚本](.\media\how-to-npm\7.png)
 
 ### <a name="installagent"></a>2.2：在每个监视服务器上安装监视代理
+
+我们建议在 ExpressRoute 连接的每一端（即本地和 Azure VNET）至少安装两个代理来实现冗余。 使用以下步骤安装代理：
 
 1. 运行安装程序，在要用于监视 ExpressRoute 的每个服务器上安装代理。 用于监视的服务器可以是 VM 或本地服务器，并且必须连接 Internet。 需要至少在本地安装一个代理，并在 Azure 中在要监视的每个网络段上安装一个代理。
 2. 在“欢迎”页面上，单击“下一步”。

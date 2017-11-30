@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: f1314b05d7471b6251de2173dc590bdebdafb476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect 常见问题
 
@@ -43,8 +43,14 @@ ms.lasthandoff: 10/11/2017
 **是否支持 SLD（单一标签域）？**  
 Azure AD Connect 不支持使用 SLD 的本地林/域。
 
+**问：是否支持具有非连续 AD 域的林？**  
+Azure AD Connect 不支持包含非连续命名空间的本地林。
+
 **问：是否支持包含句点的 NetBios 名称？**  
 Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
+
+**问：是否支持纯 IPv6 环境？**  
+Azure AD Connect 不支持纯 IPv6 环境。
 
 ## <a name="federation"></a>联合
 **问：如果我收到一封电子邮件，要求我续订 Office 365 证书，我该怎么办？**  

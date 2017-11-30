@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ebda79442b8feb9f052c3ae455fa43aafb7b5a6a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
 
@@ -57,24 +57,27 @@ IoT Edge 可利用预构建的 Azure Service IoT Edge 模块来进行快速部�
 
 1. 在 Azure 门户中，导航到“创建资源 -> 存储”，单击“查看所有”，然后单击“存储帐户 - blob、文件、表、队列”。
 
-2. 输入你的存储帐户名称，并选择存储 IoT 中心的相同位置。 单击“创建”。 请记下名称以便稍后使用。
+2. 输入你的存储帐户名称，并选择存储 IoT 中心的相同位置。 单击“创建” 。 请记下名称以便稍后使用。
 
     ![新的存储帐户][1]
 
 3. 在 Azure 门户中，导航到你刚创建的存储帐户。 在“Blob 服务”下单击“浏览 blob”。 
-1. 为 ASA 模块创建一个新容器来存储数据。 将访问级别设置为“容器”。 单击“确定”。
+4. 为 ASA 模块创建一个新容器来存储数据。 将访问级别设置为“容器”。 单击 **“确定”**。
 
     ![存储设置][10]
 
-1. 在 Azure 门户中，导航到“创建资源” > “物联网”，然后选择“流分析作业”。
+5. 在 Azure 门户中，导航到“创建资源” > “物联网”，然后选择“流分析作业”。
 
-1. 输入一个名称，选择“Edge”作为宿主环境，并使用剩余的默认值。  单击“创建”。
+2. 输入一个名称，选择“Edge”作为宿主环境，并使用剩余的默认值。  单击“创建” 。
+
+    >[!NOTE]
+    >目前，在美国西部 2 区域中不支持 IoT Edge 上的 ASA 作业。 请另选一个位置。
 
     ![ASA 创建][5]
 
 2. 进入创建的作业，在“作业拓扑”下选择“输入”，单击“添加”。
 
-3. 输入名称 `temperature`，选择“数据流”作为源类型，并对其他参数使用默认值。 单击“创建”。
+3. 输入名称 `temperature`，选择“数据流”作为源类型，并对其他参数使用默认值。 单击“创建” 。
 
     ![ASA 输入][2]
 
@@ -83,7 +86,7 @@ IoT Edge 可利用预构建的 Azure Service IoT Edge 模块来进行快速部�
 
 4. 在“作业拓扑”下，选择“输出”，单击“添加”。
 
-5. 输入名称 `alert` 并使用默认值。 单击“创建”。
+5. 输入名称 `alert` 并使用默认值。 单击“创建” 。
 
     ![ASA 输出][3]
 
@@ -108,7 +111,7 @@ IoT Edge 可利用预构建的 Azure Service IoT Edge 模块来进行快速部�
 
 1. 选择“设置模块”，然后选择“导入 Azure Service IoT Edge 模块”。
 
-1. 选择订阅和你创建的 ASA Edge 作业。 然后选择存储帐户。 单击“保存”。
+1. 选择订阅和你创建的 ASA Edge 作业。 然后选择存储帐户。 单击“保存” 。
 
     ![设置模块][6]
 

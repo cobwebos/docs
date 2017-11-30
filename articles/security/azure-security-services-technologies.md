@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2016
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure 安全服务与技术
 在我们与当前和未来 Azure 客户的讨论中，我们经常被问及“你们是否有 Azure 必须提供的所有安全相关服务和技术的列表？”
 
-我们知道在用户要评估云服务提供商技术选项时，有这样的列表会很有帮助，以便用户可以在适当的时候用来进行更深的研究。
+了解以下信息有助于评估云服务提供程序选项。
 
 下面是我们初步提供的一个列表。 随着时间推移，此列表会像 Azure 那样不断增长变化。 此列表已进行分类，分类列表也会随时间的推移而增多。 请务必定期检查此页面，掌握我们最新的与安全相关的服务和技术。
 

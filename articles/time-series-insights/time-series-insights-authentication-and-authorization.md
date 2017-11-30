@@ -1,5 +1,5 @@
 ---
-title: "如何为调用 Azure 时序见解 API 的自定义应用程序配置身份验证和授权 | Microsoft Docs"
+title: "如何配置 Azure 时序见解中的身份验证和授权 API"
 description: "本文介绍如何为调用 Azure 时序见解 API 的自定义应用程序配置身份验证和授权。"
 services: time-series-insights
 ms.service: time-series-insights
@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 7772f6be0c60c1c2e59499d46e3c56975053e551
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: cab37f65541ecf8bfa58edcd40df0aed39b37680
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -24,15 +24,15 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="service-principal"></a>服务主体
 
-本节介绍如何将应用程序配置为代表其自身来访问时序见解 API。 然后，该应用程序可借助应用程序凭据而非用户凭据在时序见解环境中查询数据或发布引用数据。
+本节介绍如何将应用程序配置为代表其自身来访问时序见解 API。 然后，该应用程序可借助应用程序凭据而非用户凭据在时序见解环境中查询数据或发布参考数据。
 
-如果应用程序需访问时序见解，则必须设置 Azure Active Directory 应用程序，并在时序见解环境中分配数据访问策略。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
+如果应用程序须访问时序见解，则必须设置 Azure Active Directory 应用程序，并在时序见解环境中分配数据访问策略。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
 
-* 可将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。 例如，可仅允许应用读取特定时序见解环境中的数据。
+* 可将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需要的权限。 例如，可仅允许应用读取特定时序见解环境中的数据。
 * 职责发生变化时，无需更改应用的凭据。
 * 执行无人参与的脚本时，可使用证书或应用程序密钥自动进行身份验证。
 
-本文演示如何通过 Azure 门户执行这些步骤。 文中重点介绍了单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
+本主题演示如何通过 Azure 门户执行这些步骤。 文中重点介绍了单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
 设置流程包含三个高级步骤：
 
@@ -103,5 +103,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="next-steps"></a>后续步骤
 - 有关调用时序见解 API 的示例代码，请参阅[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
-- 有关 API 参考信息，请参阅[查询 API 参考](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
-- [在 Azure 门户创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+- 有关 API 参考信息，请参阅[查询 API 参考](/rest/api/time-series-insights/time-series-insights-reference-queryapi)。
+
+> [!div class="nextstepaction"]
+> [创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)

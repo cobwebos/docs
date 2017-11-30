@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 89bfedd282d04569bcf873fd7a9082791a94376b
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect 同步：操作任务和注意事项
 本主题旨在介绍 Azure AD Connect 同步的操作任务。
@@ -33,6 +33,11 @@ ms.lasthandoff: 11/08/2017
 使用处于暂存模式的服务器，可以在激活服务器之前更改配置和预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
 
 可以在安装过程中选择将服务器置于**暂存模式**。 此操作可以激活服务器进行导入和同步，但不会运行任何导出。 处于暂存模式的服务器不会运行密码同步或密码写回，即使在安装期间选择了这些功能。 如果禁用暂存模式，服务器将开始导出，启用密码同步，并启用密码写回。
+
+> [!NOTE]
+> 假设拥有已启用密码哈希同步功能的 Azure AD Connect。 如果启用暂存模式，则服务器停止同步本地 AD 的密码更改。 如果禁用暂存模式，则服务器从上次离开的位置恢复同步密码更改。 如果服务器长时间处于暂存模式，则服务器可能需要一段时间才能同步该时间段内发生的所有密码更改。
+>
+>
 
 仍然可以使用 Synchronization Service Manager 强制导出。
 

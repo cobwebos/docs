@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4900707baa875ae4527d82e8189d5bc4d319ae0c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 585e0ab016dcf489ab99f30a9db43b879a8d3070
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>配置 Azure 多重身份验证设置 - 公共预览版
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/15/2017
 | [可选择验证方法](#selectable-verification-methods) |允许选择可供用户使用的身份验证方法。 |
 
 ## <a name="block-and-unblock"></a>阻止和解除阻止
-阻止/解除阻止用户可用于防止用户收到身份验证请求。 将自动拒绝任何针对受阻止用户的身份验证尝试。 自受阻日起，受阻止用户在 90 天内会受到阻止。
+阻止/解除阻止用户可用于防止用户收到身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 自受阻日起，受阻止用户在 90 天内会受到阻止。
 
 ### <a name="block-a-user"></a>阻止用户
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/15/2017
 6. 在“服务设置”页面底部，选择“转到门户”。
 7. 在 Azure 多重身份验证管理门户中，单击“查看报告”下的“欺诈警报”。
 8. 指定要在报告中查看的日期范围。 还可以指定用户名、电话号码和用户状态。
-9. 单击“运行”。 这会显示欺诈警报的报告。 如果要导出报告，请单击“导出到 CSV”。
+9. 单击“运行”弹出欺诈警报报告。 如果要导出报告，请单击“导出到 CSV”。
 
 ## <a name="one-time-bypass"></a>免验证一次
 “免验证一次”允许用户在不执行双重验证的情况下进行身份验证，不过只会免除一次。 免验证是暂时性的，会在指定的秒数后过期。 在移动应用或电话无法接收通知或来电的情况下，可以启用“免验证一次”，使用户能够访问所需的资源。
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/15/2017
    ![免验证一次](./media/multi-factor-authentication-whats-next/onetimebypass.png)
 3. 选择“添加”。
 4. 如果有必要，请选择此免验证的复制组。
-5. 输入用户名（采用 username@domain.com 形式）、免验证将存在的秒数，以及免验证的原因。 
+5. 输入用户名（采用 username@domain.com 形式）、免验证将持续的秒数，以及免验证的原因。 
 6. 选择“添加”。 时间限制将立即生效，因此，用户需要在免验证一次过期前登录。 
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
@@ -110,16 +110,16 @@ ms.lasthandoff: 11/15/2017
 6. 在“服务设置”页面底部，选择“转到门户”。
 7. 在 Azure 多重身份验证管理门户中，在“查看报告”下，单击“免验证一次”。
 8. 指定要在报告中查看的日期范围。 还可以指定用户名、电话号码和用户状态。
-9. 单击“运行”。 这会显示免验证报告。 如果要导出报告，请单击“导出到 CSV”。
+9. 单击“运行”弹出免验证报告。 如果要导出报告，请单击“导出到 CSV”。
 
 ## <a name="custom-voice-messages"></a>自定义语音消息
 “自定义语音消息”允许将自己的录音或问候语用于双重验证。 可以在 Microsoft 录音之外额外使用自定义语音消息，或使用它来取代 Microsoft 录音。
 
-在开始之前，请注意以下事项：
+在开始之前，应注意以下限制：
 
 * 支持的文件格式为 .wav 和 .mp3。
 * 文件大小上限是 5MB。
-* 身份验证消息应少于 20 秒。 大于该长度的消息可能会导致验证失败，因为用户可能无法在消息完成前做出响应，从而导致验证超时。
+* 身份验证消息应少于 20 秒。 任何超过 20 秒的消息都可能会导致验证失败，因为用户可能无法在消息完成前做出响应，从而导致验证超时。
 
 ### <a name="set-up-a-custom-message"></a>设置自定义消息
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 11/15/2017
 6. 选择“添加”。
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的缓存
-使用缓存可以设置一个特定的时间段，使该时间段内的后续身份验证尝试自动成功。 缓存主要应用场合是当第一个请求仍在进行时，本地系统（例如 VPN）发送多个验证请求。 这样，在用户成功进行第一次验证后，后续请求会自动成功完成。 
+使用缓存可以设置一个特定的时间段，使该时间段内的后续身份验证尝试自动成功。 缓存主要应用场合是当第一个请求仍在进行时，本地系统（例如 VPN）发送多个验证请求。 在用户成功进行第一次验证后，缓存可以让后续请求自动成功完成。 
 
 到 Azure AD 的登录并未打算使用缓存。
 
@@ -199,11 +199,11 @@ ms.lasthandoff: 11/15/2017
 ### <a name="important-things-to-know-about-app-passwords"></a>有关应用密码的重要事项
 下面是你应该知道的有关应用密码的重要事项列表。
 
-* 对于每个应用，应当只需要为其输入一次应用密码。 用户不需要记录这些密码并且每次都输入它们。
+* 每个应用只需输入一次应用密码。 用户不需要记录这些密码并且每次都输入它们。
 * 实际的密码会自动生成，并非由用户提供。 这是因为自动生成的密码会使攻击者更难进行猜测，因而更安全。
 * 目前，每个用户的密码限制为 40 个。 
 * 缓存密码并在本地方案中使用该密码的应用可能启动失败，因为超出组织 ID 范畴的应用密码不可识别。例如 Exchange 电子邮件，这些电子邮件位于本地但存档邮件位于云中。 无法使用同一密码。
-* 对用户的帐户启用多重身份验证后，可以在大多数非浏览器客户端（例如 Outlook 和 Lync）上使用应用密码，但无法通过 Windows PowerShell 等非浏览器应用程序使用应用密码执行管理操作，即使该用户具有管理帐户。  请确保使用强密码创建服务帐户以运行 PowerShell 脚本，而不要为该帐户启用双重验证。
+* 用户的帐户启用多重身份验证后，应用密码就可用于 Outlook 和 Lync 等大多数非浏览器客户端。 即使用户具有管理帐户，也不能通过非浏览器应用程序（如 Windows PowerShell）来使用应用密码执行管理操作。  请使用强密码创建服务帐户来运行 PowerShell 脚本，并且不要为该帐户启用双重验证。
 
 > [!WARNING]
 > 在客户端同时与本地和云自动发现终结点通信的混合环境中，应用密码无效。 这是因为本地身份验证需要域密码，而云身份验证需要应用密码。
@@ -217,7 +217,7 @@ Microsoft 建议为每个设备创建一个应用密码，而不是为每个应�
 Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的联合（单一登录）。 如果组织与 Azure AD 联合 (SSO) 并且要使用 Azure 多重身份验证，则关于应用密码的以下信息对你很重要。 本部分仅适用于联合 (SSO) 客户。
 
 * 应用密码由 Azure AD 进行验证，从而绕过了联合。 仅在设置应用密码时，才会主动使用联合。
-* 与被动流程不同，对于联合 (SSO) 用户，我们从不转到标识提供者 (IdP)。 密码将存储在组织 ID 中。如果用户离开公司，则该信息必须通过 DirSync 实时流到组织 ID 中。 帐户禁用/删除可能需要长达三个小时才能同步，从而延迟了 Azure AD 中应用密码的禁用/删除。
+* 与被动流程不同，对于联合 (SSO) 用户，不会与标识提供者 (IdP) 联系。 密码将存储在组织 ID 中。如果用户离开公司，则该信息必须通过 DirSync 实时流到组织 ID 中。 帐户禁用/删除可能需要长达三个小时才能同步，从而延迟了 Azure AD 中应用密码的禁用/删除。
 * 应用密码不遵循“本地客户端访问控制”设置。
 * 没有为应用密码提供本地身份验证日志记录/审核功能。
 * 在对客户端使用双重验证时，某些先进的体系结构设计可能要求将组织用户名和密码与应用密码结合使用，具体取决于进行身份验证的位置。 对于针对本地基础结构进行身份验证的客户端，会使用组织用户名和密码。 对于针对 Azure AD 进行身份验证的客户端，会使用应用密码。
@@ -254,7 +254,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 在注册后，用户还可以通过在 Azure 门户或 Office 365 门户中更改设置来创建应用密码。 有关适用于用户的详细信息和详细步骤，请参阅[什么是 Azure 多重身份验证中的应用密码](./end-user/multi-factor-authentication-end-user-app-passwords.md)。
 
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>记住用户信任的设备的多重身份验证
-记住用户信任的设备和浏览器的多重身份验证是针对所有 MFA 用户的一项免费功能。 此功能允许在用户使用 MFA 执行成功登录后的指定天数内为用户提供绕过 MFA 的选项。 这可以尽量减少用户可能在同一设备上执行双重验证的次数，从而可以提高可用性。
+记住用户信任的设备和浏览器的多重身份验证是针对所有 MFA 用户的一项免费功能。 通过此设置，可在用户使用 MFA 执行成功登录后的指定天数内为用户提供绕过 MFA 的选项。 这可以尽量减少用户可能在同一设备上执行双重验证的次数，从而可以提高可用性。
 
 但是，如果帐户或设备遭到入侵，则记住信任的设备的 MFA 可能会影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user)。 此操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原 MFA
 
@@ -295,9 +295,9 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 | 方法 | 说明 |
 |:--- |:--- |
 | 拨打电话 |拨打自动语音电话。 用户接听电话，并按电话键盘上的 # 进行身份验证。 此电话号码不会同步到本地 Active Directory。 |
-| 向手机发送短信 |发送包含验证码的短信。 系统会提示用户使用验证码回复短信或在登录界面中输入验证码。 |
+| 向手机发送短信 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 双向短信已弃用，从 2018 年 11 月 14 日开始将不再支持。 配置使用双向短信的用户届时会自动切换到“电话呼叫”身份验证。|
 | 通过移动应用发送通知 |向手机或已注册设备发送推送通知。 用户将查看通知并选择**验证**来完成验证。 <br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
-| 通过移动应用发送验证码 |Microsoft Authenticator 应用每隔三十秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。<br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
+| 通过移动应用发送验证码 |Microsoft Authenticator 应用每隔 30 秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。<br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>如何启用/禁用身份验证方法
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: f9631e8a383b88421c55d9c42c8059df9e732800
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa98672551a2089f1a306c838295dd1980da0bca
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -94,6 +94,9 @@ PowerShell 使用 machine.config 中的配置来联系代理。 winhttp/netsh �
 | --- | --- | --- |
 | 403 |禁止 |代理尚未对请求的 URL 打开。 请重新访问代理配置，并确保已打开 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)。 |
 | 407 |需要代理身份验证 |代理服务器要求登录，但未提供任何登录信息。 如果代理服务器需要身份验证，请确保在 machine.config 中配置此项设置。另外，请确保对运行向导的用户和服务帐户使用域帐户。 |
+
+### <a name="proxy-idle-timeout-setting"></a>代理空闲超时设置
+Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Azure AD 最多可用 5 分钟的时间来处理该请求。 如果同一导出请求中包含大量具有大型组成员身份的组对象，则会出现这种情况。 确保将代理空闲超时配置为大于 5 分钟。 否则，Azure AD Connect 服务器上可能会出现 Azure AD 的间歇性连接问题。
 
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect 与 Azure AD 之间的通信模式
 如果已遵循上述步骤但仍无法连接，现在可以开始查看网络日志。 本部分说明正常和成功的连接模式。 此外，还将列出你在阅读网络日志时可能会忽略的常见辅助信息。

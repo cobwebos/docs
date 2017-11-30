@@ -1,5 +1,5 @@
 ---
-title: "如何向 Azure 时序见解环境添加 IoT 中心事件源 | Microsoft 文档"
+title: "如何向 Azure 时序见解添加 IoT 中心事件源 | Microsoft Docs"
 description: "本文介绍如何将已连接至 IoT 中心的事件源添加到时序见解环境"
 services: time-series-insights
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: ed31a0e725d1e0863e9c4695d4eccb324f60678a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>如何向 Azure 时序见解环境添加 IoT 中心事件源
 本文介绍如何使用 Azure 门户将从 IoT 中心读取数据的事件源添加到时序见解环境。
@@ -29,14 +29,14 @@ ms.lasthandoff: 11/15/2017
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 定位现有的时序见解环境。 在 Azure 门户左侧的菜单中，单击“所有资源”。 选择时序见解环境。
+2. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，单击“所有资源”。 选择时序见解环境。
 
 3. 在“环境拓扑”标题下，单击“事件源”。
    事件源 + 添加![](media/time-series-insights-how-to-add-an-event-source-iothub/1-event-sources.png)
 
 4. 单击“+ 添加”。
 
-5. 提供专属于此时间见解环境的“事件源名称”，如“事件流”。
+5. 提供专属于此时序见解环境的“事件源名称”，如“事件流”。
 
    ![填写表单中的前三个参数。](media/time-series-insights-how-to-add-an-event-source-iothub/2-import-option.png)
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/15/2017
 
    | 属性 | 说明 |
    | --- | --- |
-   | 订阅 ID | 选择其中创建有此 IoT 中心的订阅。
+   | 订阅 ID | 选择其中创建此 IoT 中心的订阅。
    | IoT 中心名称 | 选择 IoT 中心的名称。
    | IoT 中心策略名称 | 选择共享访问策略，可在 IoT 中心设置选项卡中找到此策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限。
    | IoT 中心策略密钥 | 密钥已预填充。

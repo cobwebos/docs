@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: baa3ac6473f180e220ec4973ced51369467bf158
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1adf5935e7fc01a24db6ada3c4cfe4ac0a4d55
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -296,7 +296,14 @@ Azure AD Connect 安装向导将始终创建此配置。
 ## <a name="group-based-filtering"></a>基于组的筛选
 首次使用[自定义安装设置](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)安装 Azure AD Connect 时，可配置基于组的筛选。 这种筛选专用于只需同步一小组对象的试验部署。 禁用基于组的筛选后，无法重新启用它。 *不支持*在自定义配置中使用基于组的筛选。 仅支持使用安装向导配置此功能。 完成试验后，请使用本主题所述的其他某个筛选选项。 将基于 OU 的筛选与基于组的筛选结合使用时，必须包含组和成员所在的 OU。
 
-同步多个 AD 林时，可以通过为每个 AD 连接器指定不同组来配置基于组的筛选。 如果要在一个 AD 林中同步某个用户，同一个用户在其他 AD 林中具有一个或多个相应 FSP（外部安全主体）对象，则必须确保用户对象及其所有相应 FSP 对象都在基于组的筛选范围内。 如果一个或多个 FSP 对象已通过基于组的筛选排除，用户对象将不会同步到 Azure AD。
+同步多个 AD 林时，可以通过为每个 AD 连接器指定不同组来配置基于组的筛选。 如果希望在一个 AD 林中同步某个用户，且同一用户在其他 AD 林中具有一个或多个相应的对象，则必须确保用户对象及其所有相应对象都在基于组的筛选范围内。 例如：
+
+* 在一个林中有某个用户，此用户在其他林中有一个相应 FSP（外部安全主体）对象。 这两个对象都必须在基于组的筛选范围内。 否则，用户不会同步到 Azure AD。
+
+* 在一个林中有某个用户，此用户在其他林中有一个相应的资源帐户（例如链接的邮箱）。 此外，已配置 Azure AD Connect，用于链接用户和资源帐户。 这两个对象都必须在基于组的筛选范围内。 否则，用户不会同步到 Azure AD。
+
+* 在一个林中有某个用户，此用户在其他林中有一个相应的邮件联系人。 此外，已配置 Azure AD Connect，用于链接用户和邮件联系人。 这两个对象都必须在基于组的筛选范围内。 否则，用户不会同步到 Azure AD。
+
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

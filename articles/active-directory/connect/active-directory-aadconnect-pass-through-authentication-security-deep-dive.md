@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5d2c581b25d34ea1b83f54292b5b65b2286e5a9d
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 4428f3da5dd9423aa60daa697e4ea15c99f92188
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/20/2017
 - 从身份验证代理到 Azure AD 的出站通信仅使用标准端口（80 和 443）。 不需打开防火墙上的入站端口。 
   - 端口 443 用于所有经过身份验证的出站通信。
   - 端口 80 仅用于下载证书吊销列表 (CRL)，以确保未吊销此功能所用的任何证书。
-  - 如需网络安全的完整列表，请参阅 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-prerequisites)。
+  - 如需网络安全的完整列表，请参阅 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites)。
 - 用户在登录期间提供的密码将在云中加密，再由本地身份验证代理接受，通过 Active Directory 进行验证。
 - 通过相互进行身份验证保护 Azure AD 和本地身份验证代理之间的 HTTPS 通道。
 - 此功能与条件访问策略（包括 Azure 多重身份验证）、标识保护和智能锁定等 Azure AD 云保护功能无缝集成。

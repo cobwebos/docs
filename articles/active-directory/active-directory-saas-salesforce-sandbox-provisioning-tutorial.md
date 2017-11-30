@@ -1,6 +1,6 @@
 ---
 title: "教程：Azure Active Directory 与 Salesforce Sandbox 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Salesforce Sandbox 之间配置单一登录。"
+description: "了解如何在 Azure Active Directory 和 Salesforce 沙盒之间配置单一登录。"
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d3c655a754f83284c386d2007c604a731367814
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6c5d01a831a76c497f42fe4af3d90f8c5dc5903
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 
@@ -28,16 +28,14 @@ ms.lasthandoff: 10/11/2017
 在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
-*   必须拥有 Salesforce Sandbox for Work 或 Salesforce Sandbox for Education 的有效租户。 免费试用帐户可用于任一服务。
+*   Salesforce Sandbox for Work 或 Salesforce Sandbox for Education 的有效租户。 免费试用帐户可用于任一服务。
 *   在 Salesforce Sandbox 中具有团队管理员权限的用户帐户。
 
 ## <a name="assigning-users-to-salesforce-sandbox"></a>将用户分配到 Salesforce Sandbox
 
 Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
 
-在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户和/或组表示需要访问 Salesforce Sandbox 应用的用户。 确定后，可以按照此处的说明将这些用户分配到 Salesforce Sandbox 应用：
-
-[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户或组需要访问 Salesforce Sandbox 应用。 确定后，可按照[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明将这些用户分配到 Salesforce Sandbox 应用
 
 ### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>将用户分配到 Salesforce Sandbox 的重要提示
 
@@ -55,7 +53,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 >[!Tip]
 >还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Salesforce Sandbox 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配：
+### <a name="configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配
 
 本部分的目的是概述如何对 Salesforce 沙盒启用 Active Directory 用户帐户的用户预配。
 
@@ -65,7 +63,8 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 选择 Salesforce Sandbox 实例，然后选择“预配”选项卡。
 
-4. 将“预配模式”设置为“自动”。 
+4. 将“预配模式”设置为“自动”。
+
     ![预配](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 5. 在“管理员凭据”部分中，提供以下配置设置：
@@ -74,17 +73,21 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
    
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 
-6. 若要获取 Salesforce Sandbox 安全令牌，请打开新选项卡并登录到同一个 Salesforce Sandbox 管理员帐户。 在页面右上角单击你的名字，然后单击“我的设置”。
+6. 若要获取 Salesforce Sandbox 安全令牌，请打开新选项卡并登录到同一个 Salesforce Sandbox 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
 
      ![启用自动用户设置](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
-7. 在左侧导航窗格中，单击“个人”展开相关部分，然后单击“重置我的安全令牌”。
+
+7. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
   
     ![启用自动用户设置](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
-8. 在“重置我的安全令牌”页上，单击“重置安全令牌”按钮。
+
+8. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
 
     ![启用自动用户设置](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
+
 9. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce Sandbox.com 的包含新安全令牌的电子邮件。
-10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“套接字令牌”字段中。
+
+10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
 11. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce Sandbox 应用。
 
@@ -100,7 +103,6 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 17. 单击“保存”。
 
-
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce Sandbox。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务在 Salesforce Sandbox 应用上执行的所有操作。
 
 现在可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Salesforce。
@@ -109,4 +111,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-* [配置单一登录](active-directory-saas-salesforcesandbox-tutorial.md)
+* [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)

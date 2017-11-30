@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b035c232bb58d653960190d4974cc3789d55a51d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6157ddaf320f942a704d32f066b821425596308
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 终结点
 ## <a name="overview"></a>概述
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
     ![“清除”按钮](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 对于**来自 Verizon 的 Azure CDN**（标准和高级），清除请求需要 2-3 分钟的时间来处理；对于**来自 Akamai 的 Azure CDN** ，大约需要 7 分钟。  在任何给定时间，Azure CDN 都有最多 50 个并发清除请求的限制。 
+> 对于**来自 Verizon 的 Azure CDN**（标准和高级），清除请求需要 2-3 分钟的时间来处理；对于**来自 Akamai 的 Azure CDN** ，大约需要 7 分钟。  在任何给定时间，Azure CDN 在配置文件级别拥有最多 50 个并发清除请求的限制。 
 > 
 > 
 

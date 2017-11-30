@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: 653166235a2fec79945a8e54aafdb8e697e8b634
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: dc12037928d5cc62c35535d45cf674865e3bfe25
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>将多重身份验证构建到自定义应用程序中 (SDK)
+
+> [!IMPORTANT]
+> 已宣布弃用 Azure 多重身份验证软件开发工具包 (SDK)。 对新客户不再支持此功能。 当前客户可以继续使用该 SDK 到 2018 年 11 月 14 日。 之后将无法再调用该 SDK。 
 
 使用 Azure 多重身份验证软件开发工具包 (SDK)，可将双重验证直接内置于 Azure AD 租户的应用程序登录或事务处理流程中。
 
@@ -35,30 +38,7 @@ ms.lasthandoff: 11/15/2017
 
 
 ## <a name="download-the-sdk"></a>下载该 SDK
-下载 Azure 多重身份验证 SDK 需要 [Azure 多重身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)。  即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。  若要下载 SDK，请导航到多重管理门户。 可以通过直接管理多重身份验证提供程序，或单击 MFA 服务设置页上的**“转到门户”**链接，导航到多重管理门户。
-
-### <a name="download-from-the-azure-classic-portal"></a>从 Azure 经典门户下载
-1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
-2. 在左侧选择“Active Directory”。
-3. 在“Active Directory”页的顶部，单击“**多重身份验证提供程序**”
-4. 在底部选择“**管理**”。 此时会打开一个新页面。
-5. 在左下方单击 **SDK**。
-   <center>![下载](./media/multi-factor-authentication-sdk/download.png)</center>
-6. 选择所需的语言，并单击一个关联的下载链接。
-7. 保存下载的内容。
-
-### <a name="download-from-the-service-settings"></a>从服务设置下载
-1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com) 。
-2. 在左侧选择“Active Directory”。
-3. 双击 Azure AD 的实例。
-4. 在顶部单击“配置”
-5. 在“多重身份验证”下选择“**管理服务设置**”
-   “![下载](./media/multi-factor-authentication-sdk/download2.png)”
-6. 在“服务设置”页上的屏幕底部单击“转到门户” 。 此时会打开一个新页面。
-   ![下载](./media/multi-factor-authentication-sdk/download3a.png)
-7. 在左下方单击 **SDK**。
-8. 选择所需的语言，并单击一个关联的下载链接。
-9. 保存下载的内容。
+下载 Azure 多重身份验证 SDK 需要 [Azure 多重身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)。  即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。 由于已弃用该 SDK，因此下载该 SDK 的公共方法已停用。 如果需要下载该 SDK，请向 Microsoft 提交支持案例。
 
 ## <a name="whats-in-the-sdk"></a>SDK 包括哪些内容？
 SDK 包括以下项：

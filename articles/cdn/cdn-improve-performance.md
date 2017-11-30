@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 86f1f8f0aaa9a699d2f816781cef65cda868ee55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4e27ec57543daed35811fff347f457b0dd2cd5c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 压缩是提高文件传输速度和增加页面负载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 这样可以减少带宽成本，并为用户提供更快的响应体验。
@@ -100,7 +100,7 @@ ms.lasthandoff: 10/11/2017
 > * 大于 128 个字节。
 > * 小于 1 MB。
 > 
-> 这些配置文件支持 gzip (GNU zip)、deflate、bzip2 或 br (Brotli) 编码。 对于 Brotli 编码，压缩仅在边缘完成。 客户端/浏览器必须发送 Brotli 编码请求，压缩资产必须首先已在原始端压缩。 
+> 这些配置文件支持 gzip (GNU zip)、deflate、bzip2 或 br (Brotli) 编码。 对于 Brotli 编码，需要在原始位置执行压缩。 客户端/浏览器必须发送 Brotli 编码请求，压缩资产必须首先已在原始端压缩。 
 
 > [!IMPORTANT]
 > 对于**来自 Akamai 的 Azure CDN** 配置文件，所有文件都适合压缩。 但文件必须为已[配置为压缩](#enabling-compression)的 MIME 类型。

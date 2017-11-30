@@ -4,7 +4,7 @@ description: "本文介绍与网络安全有关的 Microsoft 服务以及如何�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: StevenPo
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 925ba3c6-fe35-413a-98ea-e1a1461f3022
 ms.service: security
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1560ea8b224be0f6bc723f64d8f154805b2771e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 058cda5dd2e7e8026410a14d08d5714ce92822cd
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>网络安全中的 Microsoft 服务
-Microsoft 服务提供了综合的安全性、标识和网络安全方法。 Microsoft 服务提供了一系列安全和标识服务，贯穿于整个战略、规划、实施和持续支持，可帮助企业客户实施与其战略目标保持一致的整体安全解决方案。
+Microsoft 服务提供了综合的安全性、标识和网络安全方法。 Microsoft 服务提供一系列跨策略、规划、实施以及日常支持的安全和标识服务。 这些服务可帮助企业客户实施符合其战略目标的整体安全解决方案。
 
 通过直接联系问产品开发团队，我们可以创建集成的解决方案，增强产品的最新安全和标识功能，帮助保护客户的业务和推动创新。
 

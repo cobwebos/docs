@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: tarcher
-ms.openlocfilehash: 4b4c91805a7d5cbf37c8ba3fa3248e7cb0eb02b0
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 7048d5d1054906d712ac0422dacfe1ccca97fcc0
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置虚拟网络
-如文章[将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)中所述，在实验室中创建 VM 时，可指定已配置虚拟网络。 例如，可能需要使用 ExpressRoute 或站点到站点 VPN 配置的虚拟网络从 VM 访问公司网络资源。
+如文章[将 VM 添加到实验室](devtest-lab-add-vm.md)中所述，在实验室中创建 VM 时，可指定已配置的虚拟网络。 例如，可能需要使用 ExpressRoute 或站点到站点 VPN 配置的虚拟网络从 VM 访问公司网络资源。
 
 本文说明如何将现有虚拟网络添加到实验室的虚拟网络设置中，以便在创建 VM 时可进行选择。
 

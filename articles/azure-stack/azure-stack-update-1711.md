@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: andredm
-ms.openlocfilehash: 61917ea76f7f512776e4fe425dd8e475fa194bc1
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 4d98556f17fa834c497c2d1cd1854c9e6b02e021
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-stack-1711-update"></a>Azure 堆栈 1711年更新
 

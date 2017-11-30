@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 34ed5083b952c42d4ed119b6986db965eb9eb67a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: bfb37ae51400210ef80a0f267b294d1e2e465b76
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>将 Azure Functions 作为 IoT Edge 模块进行部署 - 预览版
 可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示了创建和部署 Azure Functions 以筛选 IoT Edge 模拟设备（该设备是 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程“在模拟设备上部署 Azure IoT Edge”部分中创建的）上的传感器数据的过程。 本教程介绍如何执行下列操作：     
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/15/2017
 ## <a name="set-up-a-docker-registry"></a>设置 Docker 注册表
 本教程将使用适用于 VS Code 的 Azure IoT Edge 扩展来创建 Azure Functions，并使用它生成 [Docker 映像](https://docs.docker.com/glossary/?term=image)。 然后，将此 Docker 映像推送到由 [Docker 注册表](https://docs.docker.com/glossary/?term=registry)托管的 [Docker 存储库](https://docs.docker.com/glossary/?term=repository)。 最后，将已封装为 [Docker 容器](https://docs.docker.com/glossary/?term=container)的 Docker 映像从注册表部署到 IoT Edge 设备。  
 
-在此教程中，可以使用任意兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务是 Azure 容器注册表和 Docker 中心：
+在此教程中，可以使用任意兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务分别是 Azure 容器注册表和 Docker 中心：
 
 - [Azure 容器注册表](https://docs.microsoft.com/en-us/azure/container-registry/)可通过[付费订阅](https://azure.microsoft.com/en-us/pricing/details/container-registry/)获取。 对于本教程，基本订阅即可。 
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 11/15/2017
             filteredMessage.Properties.Add("MessageType", "Alert");
             // Send the message        
             await output.AddAsync(filteredMessage);
-            log.Info("Received and transfered a message with temperature above the threshold");
+            log.Info("Received and transferred a message with temperature above the threshold");
         }
     }
     ```
@@ -139,10 +139,10 @@ ms.lasthandoff: 11/15/2017
 ## <a name="publish-a-docker-image"></a>发布 Docker 映像
 
 1. 生成 Docker 映像。
-    1. 在 VS Code 资源管理器中，单击 Docker 文件夹，以将其打开。 然后选择适用于所用容器平台的文件夹（linux-x64 或 windows-nano）。 
-    2. 右键单击 Dockerfile 文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
-    3. 在“选择文件夹”框中，导航到 Docker/linux-x64 文件夹，然后单击“选择文件夹作为 EXE_DIR”。 
-    4. 在 VS Code 窗口顶部的弹出文本框中，输入映像名称。 例如 `<docker registry address>/filterfunction:latest`；其中“Docker 注册表地址”是 Docker ID（若使用的是 Docker 中心），或类似于 `<your registry name>.azurecr.io`（若使用的是 Azure 容器注册表）。
+    1. 在 VS Code 资源管理器中，单击”Docker”文件夹，将其打开。 然后选择适用于所用容器平台的文件夹（linux-x64 或 windows-nano）。 
+    2. 右键单击“Dockerfile”文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
+    3. 在“选择文件夹”框中，导航到项目文件夹“FilterFunction”，然后单击“选择文件夹作为 EXE_DIR”。 
+    4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如 `<docker registry address>/filterfunction:latest`；其中“Docker 注册表地址”是 Docker ID（若使用的是 Docker 中心），或类似于 `<your registry name>.azurecr.io`（若使用的是 Azure 容器注册表）。
  
 4. 登录到 Docker。 在集成终端中，输入以下命令： 
 
@@ -158,20 +158,20 @@ ms.lasthandoff: 11/15/2017
         docker login -u <username> -p <password> <Login server>
         ```
         
-        若要查找此命令要使用的用户名、密码和登录服务器，请转到 [Azure 门户] (https://portal.azure.com)。 在“所有资源”中，单击 Azure 容器注册表的磁贴，以打开其属性，然后单击“访问密钥”。 复制“用户名”、“密码”和“登录服务器”字段中的值。 登录服务器应为以下格式：`<your registry name>.azurecr.io`。
+        若要查找此命令要使用的用户名、密码和登录服务器，请转到 [Azure 门户] (https://portal.azure.com)。 在“所有资源”中，单击 Azure 容器注册表的磁贴以打开其属性，然后单击“访问密钥”。 复制“用户名”、“密码”和“登录服务器”字段中的值。 登录服务器应为以下格式：`<your registry name>.azurecr.io`。
 
-3. 将映像推送到 Docker 存储库。 使用“视图 | 命令面板...| Edge: 推送 IoT Edge 模块 Docker 映像”菜单命令，并在 VS Code 窗口顶部的弹出文本框中输入映像名称。 使用步骤 1.c 所使用的同一个映像名称。
+3. 将映像推送到 Docker 存储库。 使用“视图 | 命令面板... | Edge: 推送 IoT Edge 模块 Docker 映像”菜单命令，并在 VS Code 窗口顶部的弹出文本框中输入映像名称。 使用步骤 1.c 所使用的同一个映像名称。
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>将注册表凭据添加到 Edge 设备
 在运行 Edge 设备的计算机上将注册表凭据添加到 Edge 运行时。 这将为此运行时提供拉取容器的访问权限。 
 
-- 在 Windows 上，请运行以下命令：
+- 在 Windows 上，运行以下命令：
     
     ```cmd/sh
     iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password> 
     ```
 
-- 在 Linux 上，请运行以下命令：
+- 在 Linux 上，运行以下命令：
     
     ```cmd/sh
     sudo iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password> 
@@ -179,7 +179,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="run-the-solution"></a>运行解决方案
 
-1. 在 Azure 门户中导航到 IoT 中心。
+1. 在 **Azure 门户**中导航到 IoT 中心。
 2. 转到“IoT Edge (预览版)”，然后选择 IoT Edge 设备。
 1. 选择“设置模块”。 
 2. 添加“tempSensor”模块。 只有之前未将“tempSensor”模块部署到 IoT Edge 设备时才需执行此步骤。
@@ -191,7 +191,7 @@ ms.lasthandoff: 11/15/2017
     1. 再次选择“添加 IoT Edge 模块”。
     2. 在“名称”字段中，输入 `filterfunction`。
     3. 在“映像”字段中，输入映像地址；例如 `<docker registry address>/filterfunction:latest`。
-    74. 单击“保存”。
+    74. 单击“保存” 。
 2. 单击“下一步”。
 3. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 这些模块会将所有消息发布到 Edge 运行时。 此运行时中的声明性规则将定义这些消息流经的位置。 本教程需要两个路由。 第一个路由会通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器模块。 第二个路由会将消息从筛选器模块传输到 IoT 中心。 在此路由中，`upstream` 是特殊目的地，它将告诉 Edge 中心将消息发送到 IoT 中心。 
 
@@ -210,15 +210,15 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-要监视从 IoT Edge 设备发送到 IoT 中心的“设备到云”消息：
+监视从 IoT Edge 设备发送到 IoT 中心的“设备到云”消息：
 1. 为 Azure IoT 工具包扩展配置适用于 IoT 中心的连接字符串： 
     1. 使用“视图 | 资源管理器”菜单命令，打开 VS Code 资源管理器。 
-    3. 在资源管理器中，单击“IOT 中心设备”，然后单击“...”。单击“设置 IoT Hub 连接字符串”，然后在弹出窗口中输入 IoT Edge 设备将连接到的 IoT 中心字符串。 
+    3. 在资源管理器中，单击“IOT 中心设备”，然后单击“...”。单击“设置 IoT 中心连接字符串”，然后在弹出窗口中输入 IoT Edge 设备所连接的 IoT 中心的连接字符串。 
 
-        若要找到此连接字符串，请在 Azure 门户中单击 IoT 中心的磁贴，然后单击“共享访问策略”。 在“共享访问策略”中，单击“iothubowner”策略，并复制“iothubowner”窗口中的 IoT 中心连接字符串。   
+        要找到此连接字符串，请在 Azure 门户中单击 IoT 中心的磁贴，然后单击“共享访问策略”。 在“共享访问策略”中，单击“iothubowner”策略，并复制“iothubowner”窗口中的 IoT 中心连接字符串。   
 
-1. 若要监视到达 IoT 中心的数据，请使用“视图 | 命令面板... | IoT: 开始监视设备到云消息”菜单命令。 
-2. 若要停止监视数据，请使用“视图 | 命令面板... | IoT: 停止监视设备到云邮件”菜单命令。 
+1. 要监视到达 IoT 中心的数据，请使用“视图 | 命令面板... | IoT: 开始监视 D2C 消息”菜单命令。 
+2. 要停止监视数据，请使用“视图 | 命令面板... | IoT: 停止监视 D2C 消息”菜单命令。 
 
 ## <a name="next-steps"></a>后续步骤
 

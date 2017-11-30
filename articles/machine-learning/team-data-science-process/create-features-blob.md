@@ -4,7 +4,7 @@ description: "如何使用 Panda Python 包为存储在 Azure blob 容器中的�
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 676b5fb0-4c89-4516-b3a8-e78ae3ca078d
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/21/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: ea6712fcedcc61c9f88e9daa8d576ac3d202da51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>使用 Panda 创建 Azure blob 存储数据功能
 此文档展示如何使用 [Pandas](http://pandas.pydata.org/) Python 包为存储在 Azure blob 容器中的数据创建功能。 在概括了如何加载数据到 Panda 数据帧后，文档介绍如何通过指示器值和装箱功能使用 Python 脚本生成分类功能。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 本文假定已创建 Azure blob 存储帐户，且已存入数据。 如果需要帐户设置说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
-要浏览和操作数据集，必须从 blob 源下载数据集到本地文件，然后将数据集加载到 Pandas 数据帧。 下面是此过程的所需步骤：
+要浏览并处理数据集，需要将其从 blob 源下载到本地文件。 然后将其加载到 Pandas 数据帧。 下面是此过程的所需步骤：
 
 1. 通过 blob 服务使用下方示例 Python 代码从 Azure blob 下载数据。 使用特定值替代下方代码中的变量：
    
@@ -93,8 +93,8 @@ ms.lasthandoff: 10/11/2017
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
-浏览过数据并创建必要功能后，可将数据（示例或定义数据）上传至 Azure blob 并在 Azure 机器学习中使用数据，操作步骤如下：请注意，也可在 Azure 机器学习工作室中创建其他功能。
+## <a name="sql-featuregen"></a>将数据写回 Azure blob，以便在 Azure 机器学习中使用
+要在 Azure 机器学习中使用已浏览、采样或功能化的数据，请将数据上传到 Azure blob。 还可在 Azure 机器学习工作室中创建其他功能。 以下步骤演示如何上传数据：
 
 1. 将数据帧写入本地文件
    
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/11/2017
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. 现在可使用 Azure 机器学习的[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)模块从 blob 读取数据，如下方屏幕截图所示：
+3. 现可使用 Azure 机器学习的[导入数据](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)模块从 blob 读取数据，如下方屏幕截图所示：
 
 ![blob 读取器](./media/data-blob/reader_blob.png)
 
