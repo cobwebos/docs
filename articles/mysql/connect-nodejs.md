@@ -89,7 +89,7 @@ ms.lasthandoff: 10/11/2017
 3. 单击服务器名称“myserver4demo”。
 4. 选择服务器的“属性”页，然后记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for MySQL - 服务器管理员登录名](./media/connect-nodejs/1_server-properties-name-login.png)
-5. 如果忘了服务器的登录信息，请导航到“概述”页，以查看服务器管理员登录名并重置密码（如果需要）。
+5. 如果忘了服务器的登录信息，请导航到“概览”页，查看服务器管理员登录名并重置密码（如果需要）。
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>在 Node.js 中运行 JavaScript 代码
 1. 将 JavaScript 代码粘贴到文本文件中，然后使用文件扩展名 .js 将其保存到项目文件夹中（例如 C:\nodejsmysql\createtable.js 或 /home/username/nodejsmysql/createtable.js）。
@@ -165,7 +165,7 @@ function queryDatabase(){
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码进行连接，并使用 SELECT SQL 语句来读取数据。 
+使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 结果数组用于保存查询结果。
 

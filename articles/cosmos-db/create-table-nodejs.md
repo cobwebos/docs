@@ -1,5 +1,5 @@
 ---
-title: "快速入门：将表 API 与 Node.js 配合使用 - Azure Cosmos DB | Microsoft 文档"
+title: "快速入门：将表 API 与 Node.js 配合使用 - Azure Cosmos DB | Microsoft Docs"
 description: "本快速入门介绍如何在 Azure 门户和 Node.js 中使用 Azure Cosmos DB 表 API 创建应用程序"
 services: cosmos-db
 documentationcenter: 

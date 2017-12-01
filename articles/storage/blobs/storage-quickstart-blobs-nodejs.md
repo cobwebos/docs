@@ -103,9 +103,9 @@ Sample finished running. When you hit <ENTER> key, the temporary files will be d
 
 验证文件后，按任意键可完成演示并删除测试文件。 至此，你已了解此示例的用途，接下来打开 index.js 文件来查看代码。 
 
-## <a name="understand-the-sample-code"></a>理解示例代码
+## <a name="understand-the-sample-code"></a>了解示例代码
 
-下一步，我们演练示例代码，以便了解它的工作原理。
+接下来逐步介绍示例代码，以便展示其工作方式。
 
 ### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 

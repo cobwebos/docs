@@ -73,9 +73,9 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 
 验证文件后，按任意键可完成演示并删除测试文件。 既然现在已了解此示例的用途，打开 example.py 文件可查看代码。 
 
-## <a name="understand-the-sample-code"></a>理解示例代码
+## <a name="understand-the-sample-code"></a>了解示例代码
 
-下一步，我们演练示例代码，以便了解它的工作原理。
+接下来逐步介绍示例代码，以便展示其工作方式。
 
 ### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。

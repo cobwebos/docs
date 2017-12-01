@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Insights 快速入门 | Microsoft 文档"
+title: "Azure Application Insights 快速入门 | Microsoft docs"
 description: "提供有关快速安装移动应用以使用 Application Insights 和 App Center 进行监控的说明"
 services: application-insights
 keywords: 
@@ -79,7 +79,7 @@ Analytics.trackEvent("Video clicked")
    | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |
    | **位置** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-3. 单击“创建”。
+3. 单击“创建” 。
 
 如果应用支持多个平台（iOS、Android 等），则最好创建单独的 Application Insights 资源，每个平台使用一个资源。
 
@@ -100,7 +100,7 @@ Analytics.trackEvent("Video clicked")
 
 为了在首次连接时提供更多的数据，会将 App Center 中最近 48 小时的自定义事件自动导出到 Application Insights。
 
-## <a name="start-monitoring-your-app"></a>开始监控应用
+## <a name="start-monitoring-your-app"></a>开始监视应用
 
 Application Insights 可以查询、分段、筛选和分析来自应用的自定义事件遥测，相比 App Center 提供的分析工具，其功能更为强大。
 
@@ -152,7 +152,7 @@ Application Insights 可以查询、分段、筛选和分析来自应用的自�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不希望继续将 Application Insights 和 App Center 一起使用，请关闭 App Center 中的导出并删除 Application Insights 资源。 这可防止 Application Insights 进一步收取此资源的费用。
+如果不希望继续将 Application Insights 和 App Center 一起使用，请关闭 App Center 中的导出并删除 Application Insights 资源。 这将防止 Application Insights 进一步收取此资源的费用。
 
 要关闭 App Center 中的导出，请执行以下操作：
 

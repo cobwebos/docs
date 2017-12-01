@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户中的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 myserver4demo）。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 myserver4demo）。
 3. 单击服务器名称。
 4. 选择服务器的“属性”页，然后记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for MySQL 服务器名称](./media/connect-csharp/1_server-properties-name-login.png)

@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
  ![Azure Database for MySQL 服务器名称](./media/connect-workbench/1-server-properties-name-login.png)
  
-5. 如果忘了服务器的登录信息，请导航到“概述”页，以查看服务器管理员登录名并重置密码（如果需要）。
+5. 如果忘了服务器的登录信息，请导航到“概览”页，查看服务器管理员登录名并重置密码（如果需要）。
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>使用 MySQL Workbench 连接服务器 
 若要使用 GUI 工具 MySQL Workbench 连接到 Azure MySQL 服务器，请执行以下操作：

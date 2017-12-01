@@ -95,13 +95,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-4. 将从门户复制的主连接字符串粘贴到第 8 行的 StorageConnectionString 值中。 粘贴引号内的字符串。 
+4. 将主连接字符串从门户粘贴到第 8 行的 StorageConnectionString 值。 粘贴引号内的字符串。 
 
     > [!IMPORTANT]
-    > 如果终结点使用 documents.azure.com，则意味着你有预览版帐户，需要创建[新的表 API 帐户](#create-a-database-account)才能使用正式发布的表 API SDK。 
+    > 如果终结点使用 documents.azure.com，表示已有预览帐户。必须[新建表 API 帐户](#create-a-database-account)，才能使用正式版表 API SDK。 
     > 
 
-    第 8 行现在应如下所示：
+    第 8 行现在应类似于：
 
     ```
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
