@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: f2e7b5b96b70333ae4ee92d24c354960008c7f00
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>之前开始使用 Azure 堆栈上的 App Service
 
@@ -68,7 +68,7 @@ Azure 堆栈上的 azure App Service 不是当前能够提供高可用性，因�
 
 在 Azure 堆栈开发工具包主机上运行脚本，并确保你作为 azurestack\CloudAdmin 运行 PowerShell。
 
-1. 在 PowerShell 会话中作为 azurestack\CloudAdmin 运行，从你在哪里提取的帮助程序脚本的文件夹中运行创建 AppServiceCerts.ps1 脚本。 脚本在 App Service 需要创建证书脚本所在的文件夹中创建四个证书。
+1. 在 PowerShell 会话中作为 azurestack\AzureStackAdmin 运行，从你在哪里提取的帮助程序脚本的文件夹中运行创建 AppServiceCerts.ps1 脚本。 脚本在 App Service 需要创建证书脚本所在的文件夹中创建四个证书。
 2. 输入密码来保护.pfx 文件，然后记下它。 必须输入在 App Service 上 Azure 堆栈安装程序。
 
 #### <a name="create-appservicecertsps1-parameters"></a>创建 AppServiceCerts.ps1 参数
@@ -76,7 +76,7 @@ Azure 堆栈上的 azure App Service 不是当前能够提供高可用性，因�
 | 参数 | 必需/可选 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | PfxPassword | 必选 | Null | 用于保护证书的私钥密码 |
-| domainName | 必选 | local.azurestack.external | Azure 堆栈区域和域后缀 |
+| DomainName | 必选 | local.azurestack.external | Azure 堆栈区域和域后缀 |
 
 ### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Azure 堆栈上的 Azure App Service 的生产部署所需证书
 
@@ -120,7 +120,7 @@ API 证书放置在管理角色和资源提供程序使用来保护 api 调用�
 | --- | --- |
 | sso.appservice。\<区域\>。\<DomainName\>。\<扩展\> | sso.appservice.redmond.azurestack.external |
 
-#### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>提取 Azure 堆栈 Azure 资源管理器根证书
+### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>提取 Azure 堆栈 Azure 资源管理器根证书
 
 在 PowerShell 会话中作为 azurestack\CloudAdmin 运行，从你在哪里提取的帮助程序脚本的文件夹中运行 Get AzureStackRootCert.ps1 脚本。 脚本在 App Service 需要创建证书脚本所在的文件夹中创建四个证书。
 
@@ -134,12 +134,10 @@ API 证书放置在管理角色和资源提供程序使用来保护 api 调用�
 
 Azure 应用程序服务要求使用文件服务器。 对于生产部署，文件服务器必须配置为高度可用并且能够处理故障。
 
-与仅 Azure 堆栈开发工具包部署配合使用，你可以使用此示例 Azure 资源管理器部署模板部署配置的单个节点文件服务器： https://aka.ms/appsvconmasdkfstemplate。
+与仅 Azure 堆栈开发工具包部署配合使用，你可以使用此示例 Azure 资源管理器部署模板部署配置的单个节点文件服务器： https://aka.ms/appsvconmasdkfstemplate。 单个节点文件服务器将在工作组中。
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>配置组和 Active Directory 中的帐户
 
->[!NOTE]
-> 在管理员命令提示符会话中配置文件服务器时，请执行所有以下命令。  **不要使用 PowerShell。**
 
 1. 创建以下 Active Directory 全局安全组：
     - FileShareOwners
@@ -159,7 +157,10 @@ Azure 应用程序服务要求使用文件服务器。 对于生产部署，文�
 
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>配置组和工作组中的帐户
 
-在工作组中，运行 net 和 WMIC 命令，以配置组和帐户。
+>[!NOTE]
+> 在管理员命令提示符会话中配置文件服务器时，请执行所有以下命令。  **不要使用 PowerShell。**
+
+当使用上面的 Azure 资源管理器模板，已经创建了用户。
 
 1. 运行以下命令以创建 FileShareOwner 和 FileShareUser 帐户。 替换<password>与你自己的值。
 ``` DOS
@@ -185,11 +186,11 @@ net localgroup FileShareOwners FileShareOwner /add
 
 #### <a name="provision-the-content-share-on-a-single-file-server-ad-or-workgroup"></a>设置一个文件服务器上的内容共享 (AD 或工作组)
 
-在单个文件服务器上，在提升的命令提示符运行以下命令。 将值为 < C:\WebSites > 替换为你的环境中的相应路径上。
+在单个文件服务器上，在提升的命令提示符运行以下命令。 将值为 C:\WebSites 替换为你的环境中的相应路径上。
 
 ```DOS
 set WEBSITES_SHARE=WebSites
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 md %WEBSITES_FOLDER%
 net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
@@ -223,7 +224,7 @@ net localgroup Administrators FileShareOwners /add
 #### <a name="active-directory"></a>Active Directory
 ```DOS
 set DOMAIN=<DOMAIN>
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant %DOMAIN%\FileShareOwners:(OI)(CI)(M)
@@ -234,7 +235,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 #### <a name="workgroup"></a>工作组
 ```DOS
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant FileShareOwners:(OI)(CI)(M)
@@ -251,7 +252,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 对于生产和高可用性的目的，你应使用完整版本的 SQL 2014 SP2 或更高版本，启用混合模式身份验证，并将部署中的[高度可用的配置](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)。
 
-Azure 堆栈 SQL 服务器上的 Azure 应用程序服务必须可从 App Service 的所有角色访问。 SQL Server 可以部署在 Azure 堆栈中的默认提供程序订阅。 也可以使用你的组织中的现有基础结构 （只要没有连接到 Azure 堆栈）。
+Azure 堆栈 SQL 服务器上的 Azure 应用程序服务必须可从 App Service 的所有角色访问。 SQL Server 可以部署在 Azure 堆栈中的默认提供程序订阅。 也可以使用你的组织中的现有基础结构 （只要没有连接到 Azure 堆栈）。 如果你使用的 Azure 应用商店映像，请记住相应地配置防火墙。 
 
 对于任何 SQL Server 角色，你可以使用默认实例或命名的实例。 但是，如果你使用的命名的实例，则务必手动启动 SQL Browser 服务然后打开端口 1434年。
 
@@ -269,12 +270,12 @@ Azure 堆栈 SQL 服务器上的 Azure 应用程序服务必须可从 App Servic
 
 执行以下步骤:
 
-1. 以 azurestack\cloudadmin 打开的 PowerShell 实例。
+1. 以 azurestack\AzureStackAdmin 打开的 PowerShell 实例。
 2. 转到下载并提取中的脚本的位置[先决条件步骤](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)。
 3. [安装 Azure 堆栈 PowerShell](azure-stack-powershell-install.md)。
 4. 运行**创建 AADIdentityApp.ps1**脚本。 当系统提示输入你的 Azure AD 租户 ID 时，输入将用于你的 Azure 堆栈部署，例如，myazurestack.onmicrosoft.com 的 Azure AD 租户 ID。
 5. 在**凭据**窗口中，输入你的 Azure AD 服务管理员帐户和密码。 单击 **“确定”**。
-6. 输入的证书文件路径和证书密码[前面创建的证书](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)。 默认情况下创建此步骤的证书是 sso.appservice.local.azurestack.external.pfx。
+6. 输入的证书文件路径和证书密码[前面创建的证书](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)。 默认情况下的此步骤是创建的证书**sso.appservice.local.azurestack.external.pfx**。
 7. 该脚本在 Azure AD 租户中创建新的应用程序。 记下 PowerShell 输出中返回应用程序 ID。 你需要在安装过程中的此信息。
 8. 打开一个新的浏览器窗口，并以登录到 Azure 门户 (portal.azure.com) **Azure Active Directory 服务管理员**。
 9. 打开 Azure AD 资源提供程序。
