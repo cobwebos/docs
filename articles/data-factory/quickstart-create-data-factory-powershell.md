@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 254dcb6642afc19f434df837c9073d2dd7314313
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: cb58fe167fe8b369f51e234badd8e419ebd284e4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>使用 PowerShell 创建 Azure 数据工厂 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,122 +31,37 @@ ms.lasthandoff: 11/20/2017
 >
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-### <a name="azure-subscription"></a>Azure 订阅
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
-
-### <a name="azure-roles"></a>Azure 角色
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。 在 Azure 门户中，单击右上角的**用户名**，然后选择“权限”查看你在订阅中拥有的权限。 如果可以访问多个订阅，请选择相应的订阅。 有关将用户添加到角色的示例说明，请参阅[添加角色](../billing/billing-add-change-azure-subscription-administrator.md)一文。
-
-### <a name="azure-storage-account"></a>Azure 存储帐户
-在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为**源**和**目标**数据存储。 如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)创建一个。 
-
-#### <a name="get-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
-在本快速入门中，请使用 Azure 存储帐户的名称和密钥。 以下过程提供的步骤用于获取存储帐户的名称和密钥。 
-
-1. 启动 Web 浏览器并导航到 [Azure 门户](https://portal.azure.com)。 使用 Azure 用户名和密码登录。 
-2. 单击左侧菜单中的“更多服务 >”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
-
-    ![搜索存储帐户](media/quickstart-create-data-factory-powershell/search-storage-account.png)
-3. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择**你的存储帐户**。 
-4. 在“存储帐户”页的菜单上选择“访问密钥”。
-
-    ![获取存储帐户名称和密钥](media/quickstart-create-data-factory-powershell/storage-account-name-key.png)
-5. 将“存储帐户名称”和“key1”字段的值复制到剪贴板。 将这些值粘贴到记事本或任何其他编辑器中，然后进行保存。  
-
-#### <a name="create-input-folder-and-files"></a>创建 input 文件夹和文件
-此部分在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。 然后，在容器中创建名为 **input** 的文件夹，再将示例文件上传到 input 文件夹。 
-
-1. 在“存储帐户”页中切换到“概览”，然后单击“Blob”。 
-
-    ![选择“Blob”选项](media/quickstart-create-data-factory-powershell/select-blobs.png)
-2. 在“Blob 服务”页中，单击工具栏上的“+ 容器”。 
-
-    ![“添加容器”按钮](media/quickstart-create-data-factory-powershell/add-container-button.png)    
-3. 在“新建容器”对话框中，输入 **adftutorial** 作为名称，然后单击“确定”。 
-
-    ![输入容器名称](media/quickstart-create-data-factory-powershell/new-container-dialog.png)
-4. 在容器列表中单击“adftutorial”。 
-
-    ![选择容器](media/quickstart-create-data-factory-powershell/seelct-adftutorial-container.png)
-1. 在“容器”页中，单击工具栏上的“上传”。  
-
-    ![“上传”按钮](media/quickstart-create-data-factory-powershell/upload-toolbar-button.png)
-6. 在“上传 Blob”页中，单击“高级”。
-
-    ![单击“高级”链接](media/quickstart-create-data-factory-powershell/upload-blob-advanced.png)
-7. 启动**记事本**，创建包含以下内容的名为 **emp.txt** 的文件：将其保存在 **c:\ADFv2QuickStartPSH** 文件夹中（如果 **ADFv2QuickStartPSH** 文件夹不存在，请创建）。
-    
-    ```
-    John, Doe
-    Jane, Doe
-    ```    
-8. 在 Azure 门户的“上传 Blob”页上，浏览并选择 **emp.txt** 文件作为“文件”字段的值。 
-9. 输入 **input** 作为“上传到文件夹”字段的值。 
-
-    ![上传 Blob 设置](media/quickstart-create-data-factory-powershell/upload-blob-settings.png)    
-10. 确认文件夹是 **input**、文件是 **emp.txt**，然后单击“上传”。
-11. 应该会在列表中看到 **emp.txt** 文件和上传状态。 
-12. 通过单击边角处的“X”关闭“上传 Blob”页。 
-
-    ![关闭“上传 Blob”页](media/quickstart-create-data-factory-powershell/close-upload-blob.png)
-1. 使“容器”页保持打开状态。 在本快速入门结束时可以使用它来验证输出。 
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-#### <a name="install-azure-powershell"></a>安装 Azure PowerShell
-安装最新的 Azure PowerShell（如果未在计算机上安装）。 
-
-1. 在 Web 浏览器中导航到 [Azure SDK 下载和 SDK](https://azure.microsoft.com/downloads/)页。 
-2. 在“命令行工具” -> “PowerShell”部分单击“Windows 安装”。 
-3. 若要安装 Azure PowerShell，请运行 **MSI** 文件。 
-
-有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。 
-
-#### <a name="log-in-to-azure-powershell"></a>登录到 Azure PowerShell
-
-1. 在计算机上启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行这些命令。
-
-    ![启动 PowerShell](media/quickstart-create-data-factory-powershell/search-powershell.png)
-1. 运行以下命令，并输入用于登录 Azure 门户的同一 Azure 用户名和密码：
-       
-    ```powershell
-    Login-AzureRmAccount
-    ```        
-2. 如果有多个 Azure 订阅，请运行以下命令，查看此帐户的所有订阅：
-
-    ```powershell
-    Get-AzureRmSubscription
-    ```
-3. 运行以下命令选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
-
-    ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
-    ```
+[!INCLUDE [data-factory-quickstart-prerequisites-2](../../includes/data-factory-quickstart-prerequisites-2.md)]
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
-1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"adfrg"`。
+1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"adfrg"`。 
    
      ```powershell
-    $resourceGroupName = "<Specify a name for the Azure resource group>";
+    $resourceGroupName = "ADFQuickStartRG";
     ```
-2. 定义一个用于数据工厂名称的变量。 
+
+    如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令
+2. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
-    $dataFactoryName = "<Specify a name for the data factory. It must be globally unique.>";
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+    如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令。 
+3. 定义一个用于数据工厂名称的变量。 
+
+    > [!IMPORTANT]
+    >  更新数据工厂名称，使之全局唯一。 例如 ADFTutorialFactorySP1127。 
+
+    ```powershell
+    $dataFactoryName = "ADFQuickStartFactory";
     ```
 1. 定义一个用于数据工厂位置的变量： 
 
     ```powershell
     $location = "East US"
     ```
-4. 若要创建 Azure 资源组，请运行以下命令： 
-
-    ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
-    ``` 
-    如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令。 
 5. 若要创建数据工厂，请运行以下 **Set-AzureRmDataFactoryV2** cmdlet： 
     
     ```powershell       
@@ -170,7 +85,7 @@ ms.lasthandoff: 11/20/2017
 1. 在 **C:\ADFv2QuickStartPSH** 文件夹中（如果 ADFv2QuickStartPSH 文件夹尚不存在，则创建它）创建一个名为 **AzureStorageLinkedService.json** 的 JSON 文件，使其包含以下内容。 
 
     > [!IMPORTANT]
-    > 在保存此文件之前，请将 &lt;accountName&gt; 和 &lt;accountKey&gt; 替换为你的 Azure 存储帐户的名称和密钥。
+    > 将 &lt;accountName&gt; 和 &lt;accountKey&gt; 分别替换为 Azure 存储帐户的名称和密钥，然后保存文件。
 
     ```json
     {
@@ -186,8 +101,8 @@ ms.lasthandoff: 11/20/2017
         }
     }
     ```
-
-2. 在 **Azure PowerShell** 中，切换到 **ADFv2QuickStartPSH** 文件夹。
+    如果使用记事本，请在“另存为”对话框中选择“所有文件”作为“另存为类型”字段的值。 否则，会为文件添加 `.txt` 扩展。 例如，`AzureStorageLinkedService.json.txt`。 如果先在文件资源管理器中创建该文件，然后再在记事本中将其打开，则可能看不到 `.txt` 扩展，因为系统默认设置“隐藏已知文件类型的扩展名”选项。 在执行下一步骤之前删除 `.txt` 扩展名。
+2. 在 **PowerShell** 中，切换到 **ADFv2QuickStartPSH** 文件夹。
 
 3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 创建链接服务：**AzureStorageLinkedService**。 
 
@@ -437,30 +352,7 @@ ms.lasthandoff: 11/20/2017
     "billedDuration": 14
     ```
 
-## <a name="verify-the-output"></a>验证输出
-该管道自动在 adftutorial Blob 容器中创建 output 文件夹， 然后将 emp.txt 文件从 input 文件夹复制到 output 文件夹。 
-
-1. 在 Azure 门户的“adftutorial”容器页中单击“刷新”，查看输出文件夹。 
-    
-    ![刷新](media/quickstart-create-data-factory-powershell/output-refresh.png)
-2. 单击文件夹列表中的“output”。 
-2. 确认 **emp.txt** 已复制到 output 文件夹。 
-
-    ![刷新](media/quickstart-create-data-factory-powershell/output-file.png)
-
-## <a name="clean-up-resources"></a>清理资源
-可以通过两种方式清理在快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，其中包括资源组中的所有资源。 若要使其他资源保持原封不动，请仅删除在此教程中创建的数据工厂。
-
-删除资源组时会删除所有资源，包括其中的数据工厂。 运行以下命令可以删除整个资源组： 
-```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
-```
-
-如果只需删除数据工厂，不需删除整个资源组，请运行以下命令： 
-
-```powershell
-Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
-```
+[!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)] 
 
 ## <a name="next-steps"></a>后续步骤
 此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 完成相关[教程](tutorial-copy-data-dot-net.md)来了解如何在更多方案中使用数据工厂。 

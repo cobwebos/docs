@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
-ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 411c5a43d8a3245fc4642596b3725dadf8745728
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Azure 内容交付网络 (CDN) 概述
-> [!NOTE]
-> 本文档介绍 Azure 内容交付网络 (CDN) 内涵、工作原理，以及每个 Azure CDN 产品的功能。  如果想要跳过此信息，直接转到有关如何创建 CDN 终结点的教程，请参阅 [使用 Azure CDN](cdn-create-new-endpoint.md)。  如果想要查看当前 CDN 节点位置的列表，请参阅 [Azure CDN POP 位置](cdn-pop-locations.md)。
-> 
-> 
+Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布置好的位置，以便提供最大的吞吐量，方便将内容交付给用户。 CDN 为开发人员提供了一个全局解决方案，通过在世界各地的物理节点缓存内容来交付高带宽内容。 
 
-Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布置好的位置，以便提供最大的吞吐量，方便将内容交付给用户。  CDN 为开发人员提供了一个全局解决方案，通过在世界各地的物理节点缓存内容来交付高带宽内容。 
+> [!NOTE]
+> 本文介绍 Azure CDN 和其工作原理，以及每个 Azure CDN 产品的功能。 若要跳过此信息去查看有关如何创建 CDN 终结点的教程，请参阅 [Azure CDN 入门](cdn-create-new-endpoint.md)。 若要查看当前 CDN 节点位置的列表，请参阅 [Azure CDN POP 位置](cdn-pop-locations.md)。
+> 
 
 使用 CDN 来缓存网站资产的优点包括：
 
 * 为最终用户提供更好的性能和用户体验，尤其是在使用的应用程序需要多次往返来加载内容时。
 * 大幅度缩放以更好地处理瞬间的高负载，例如在产品发布活动开始时。
-* 通过分发用户请求并通过边缘服务器来提供内容，可以减少发送到源的流量。
+* 通过分发用户请求并直接通过边缘服务器来提供内容，可以减少发送到源服务器的流量。
+
 
 ## <a name="how-it-works"></a>工作原理
 ![CDN 概述](./media/cdn-overview/cdn-overview.png)
@@ -90,13 +90,13 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 > 
 
 ## <a name="next-steps"></a>后续步骤
-若要开始使用 CDN，请参阅[使用 Azure CDN](cdn-create-new-endpoint.md)。
+若要开始使用 CDN，请参阅 [Azure CDN 入门](cdn-create-new-endpoint.md)。
 
 如果已经是 CDN 客户，则现在就可以通过 [Microsoft Azure 门户](https://portal.azure.com)或 [PowerShell](cdn-manage-powershell.md) 管理 CDN 终结点。
 
-若要在实际操作中了解 CDN，请查看 [Build 2016 会议视频](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)。
+若要在实际操作中了解 CDN，请观看 [Build 2016 会议视频](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)。
 
 了解如何通过 [.NET](cdn-app-dev-net.md) 或 [Node.js](cdn-app-dev-node.md) 实现 Azure CDN 的自动化。
 
-有关定价信息，请参阅 [CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)。
+如需定价信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 

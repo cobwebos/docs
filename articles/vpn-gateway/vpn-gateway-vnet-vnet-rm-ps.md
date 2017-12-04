@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 虚拟网络连接到另一 VNet：PowerShell | Microsoft 文档"
-description: "本文指导使用 Azure 资源管理器和 PowerShell 将虚拟网络连接在一起。"
+title: "使用 VNet 到 VNet 连接将 Azure 虚拟网络连接到另一 VNet：PowerShell | Microsoft Docs"
+description: "本文介绍如何使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起来。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 8a772680355a62c13dbe0361b5b58029642cf84d
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
-本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。 
+本文介绍如何使用 VNet 到 VNet 连接类型来连接虚拟网络。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。
 
 本文中的步骤适用于 Resource Manager 部署模型并使用 PowerShell。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
@@ -37,13 +37,15 @@ ms.lasthandoff: 11/18/2017
 >
 >
 
-将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 如果 VNet 位于同一区域，可能会考虑使用 VNet 对等互连进行连接。 VNet 对等互连不使用 VPN 网关。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
+## <a name="about"></a>关于连接 VNet
 
-可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑，如下图所示：
+使用 VNet 到 VNet 连接类型 (VNet2VNet) 将一个虚拟网络连接到另一个虚拟网络类似于创建到本地站点位置的 IPsec 连接。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道，二者在通信时使用同样的方式运行。 连接类型的差异在于本地网关的配置方式。 创建 VNet 到 VNet 连接时，看不到本地网关地址空间。 它是自动创建并填充的。 如果更新一个 VNet 的地址空间，另一个 VNet 会自动知道路由到更新的地址空间。
 
-![关于连接](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
+使用复杂的配置时，你可能更愿意使用 IPsec 连接类型，而非 VNet 到 VNet。 这样可以为本地网关指定路由流量所需的其他地址空间。 如果使用 IPsec 连接类型来连接 VNet，则需手动创建和配置本地网关。 有关详细信息，请参阅[站点到站点配置](vpn-gateway-create-site-to-site-rm-powershell.md)。
 
-### <a name="why-connect-virtual-networks"></a>为什么要连接虚拟网络？
+另外，如果 VNet 位于同一区域，可能需考虑使用 VNet 对等互连进行连接。 VNet 对等互连不使用 VPN 网关，价格和功能稍有不同。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
+
+### <a name="why"></a>为何创建 VNet 到 VNet 连接？
 
 你可能会出于以下原因而连接虚拟网络：
 
@@ -55,19 +57,22 @@ ms.lasthandoff: 11/18/2017
 
   * 在同一区域中，由于存在隔离或管理要求，可以设置多个虚拟网络连接在一起的多层应用程序。
 
-有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。
+可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
 
 ## <a name="which-set-of-steps-should-i-use"></a>我应使用哪个步骤集？
 
-在本文中，可以看到两组不同的步骤。 一组步骤适用于[位于同一订阅中的 VNet](#samesub)。 此配置的步骤使用 TestVNet1 和 TestVNet4。
+在本文中，可以看到两组不同的步骤。 一组步骤适用于[驻留在同一订阅中的 VNet](#samesub)，另一组适用于[驻留在不同订阅中的 VNet](#difsub)。
+两组的主要差异是，配置位于不同订阅中的 VNet 的连接时，必须使用单独的 PowerShell 会话。 
 
-![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+就本练习来说，可以将配置组合起来，也可以只是选择要使用的配置。 所有配置使用 VNet 到 VNet 连接类型。 网络流量在彼此直接连接的 VNet 之间流动。 在此练习中，流量不从 TestVNet4 路由到 TestVNet5。
 
-单独有一篇文章针对[位于不同订阅中的 VNet](#difsub)。 该配置的步骤使用 TestVNet1 和 TestVNet5。
+* [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
-![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+  ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-这两组步骤之间的主要区别在于是否可以在相同的 PowerShell 会话中创建并配置所有虚拟网络和网关资源。 配置位于不同订阅中的 VNet 的连接时，必须使用单独的 PowerShell 会话。 可以根据需要组合配置，也可以只是选择要使用的配置。
+* [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
+
+  ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="samesub"></a>如何连接同一订阅中的 VNet
 
@@ -284,7 +289,7 @@ ms.lasthandoff: 11/18/2017
 
 ## <a name="difsub"></a>如何连接不同订阅中的 VNet
 
-例如，连接 TestVNet1 和 TestVNet5。 TestVNet1 和 TestVNet5 驻留在不同订阅中。 订阅不需要与相同的 Active Directory 租户相关联。 这些步骤与上一组的差别在于，一些配置步骤需要在第二个订阅的环境的单独 PowerShell 会话中执行。 尤其是当两个订阅属于不同的组织时。
+在此方案中，连接 TestVNet1 和 TestVNet5。 TestVNet1 和 TestVNet5 驻留在不同订阅中。 订阅不需要与相同的 Active Directory 租户相关联。 这些步骤与上一组的差别在于，一些配置步骤需要在第二个订阅的环境的单独 PowerShell 会话中执行。 尤其是当两个订阅属于不同的组织时。
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>步骤 5 - 创建并配置 TestVNet1
 

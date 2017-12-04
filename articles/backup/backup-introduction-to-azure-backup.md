@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d26fb8caacdd775b62d704a4b474e68e2f5a3ec
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: b1212bf46261b3fc4cc22224223cf00ec53881cb
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的恢复服务保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
@@ -53,7 +53,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 | 组件 | 优点 | 限制 | 保护哪些内容？ | 备份存储在何处？ |
 | --- | --- | --- | --- | --- |
-| Azure 备份 (MARS) 代理 |<li>将文本和文件夹备份到物理或虚拟 Windows OS（VM 可以在本地或在 Azure 中）<li>无需单独的备份服务器。 |<li>每天备份三次 <li>不感知应用程序；仅支持文件、文件夹和卷级别的还原， <li>  不支持 Linux。 |<li>文件、 <li>文件夹 |恢复服务保管库 |
+| Azure 备份 (MARS) 代理 |<li>将文本和文件夹备份到物理或虚拟 Windows OS（VM 可以在本地或在 Azure 中）<li>无需单独的备份服务器。 |<li>每天备份三次 <li>不感知应用程序；仅支持文件、文件夹和卷级别的还原， <li>  不支持 Linux。 |<li>文件、 <li>文件夹、 <li>系统状态 |恢复服务保管库 |
 | System Center DPM |<li>应用程序感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可以使用恢复服务保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持 <li>使用 DPM 2012 R2 备份和还原 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>恢复服务保管库、<li> 本地附加磁盘、<li>  磁带（仅限本地） |
 | Azure 备份服务器 |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可以使用恢复服务保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持<li>备份和还原 VMware VM <li>不需要 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>恢复服务保管库、<li> 本地附加磁盘 |
 | Azure IaaS VM 备份 |<li>针对 Windows/Linux 的本地备份<li>无需安装特定代理<li>无需使用备份基础结构进行结构级备份 |<li>每天备份 VM 一次 <li>仅在磁盘级还原 VM<li>无法本地备份 |<li>VM、 <li>所有磁盘（使用 PowerShell） |<p>恢复服务保管库</p> |
