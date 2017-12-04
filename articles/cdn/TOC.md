@@ -21,8 +21,8 @@
 ## 管理
 ### [使用 Azure PowerShell 进行管理](cdn-manage-powershell.md)
 ### 配置生存时间
-#### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
-#### [存储 Blob 服务内容](cdn-manage-expiration-of-blob-content.md)
+#### [Azure Web 内容](cdn-manage-expiration-of-cloud-service-content.md)
+#### [Azure Blob 存储](cdn-manage-expiration-of-blob-content.md)
 ### [按国家/地区限制访问](cdn-restrict-access-by-country.md)
 ### [通过压缩文件来提高性能](cdn-improve-performance.md)
 ### 使用查询字符串缓存内容
