@@ -27,6 +27,10 @@
   items:
     - name: 了解成本报告
       href: understading-cost-reports.md
+- name: 操作指南
+  items:
+    - name: 使用成本管理报表
+      href: use-reports.md
 - name: 资源
   items:
     - name: 成本管理视频

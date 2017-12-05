@@ -133,6 +133,7 @@
 ## [网络安全咨询](azure-security-cyber-services.md)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [适用于 Azure Marketplace 映像的安全建议](security-recommendations-azure-marketplace-images.md)
+## [如何记录安全事件支持票证](azure-security-event-support-ticket.md)
 ## 方案
 ### [在 Azure 中管理个人数据](manage-personal-data-azure.md)
 ### [在 Azure 中发现、识别个人数据并对其进行分类](how-to-discover-classify-personal-data-azure.md)

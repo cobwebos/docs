@@ -247,6 +247,8 @@
       items:
         - name: 没有用于 .NET 的数据
           href: app-insights-asp-net-troubleshoot-no-data.md
+        - name: 快照调试器
+          href: app-insights-troubleshoot-snapshot-debugger.md
         - name: 分析
           href: app-insights-analytics-troubleshooting.md
         - name: Java

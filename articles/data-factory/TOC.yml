@@ -4,6 +4,8 @@
   items:
     - name: 数据工厂简介
       href: introduction.md
+    - name: 比较版本 1 和 2
+      href: compare-versions.md
 - name: 快速入门
   expanded: true
   items:
@@ -19,6 +21,8 @@
           href: quickstart-create-data-factory-rest-api.md
         - name: 门户
           href: quickstart-create-data-factory-portal.md
+        - name: 资源管理器模板
+          href: quickstart-create-data-factory-resource-manager-template.md
 - name: 教程
   items:
     - name: 1 - 将 SSIS 包部署到 Azure

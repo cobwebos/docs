@@ -31,6 +31,8 @@
 ### [U-SQL 认知扩展](data-lake-analytics-u-sql-cognitive.md)
 ### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
 ### [适用于 Visual Studio Code 的 U-SQL 自定义代码](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+### [适用于 Visual Studio Code 的 U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
+### [导出 U-SQL 数据库](data-lake-analytics-data-lake-tools-export-database.md)
 
 ## 调试 U-SQL 程序
 ### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

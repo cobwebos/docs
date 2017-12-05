@@ -70,9 +70,10 @@
 ### [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
 #### [使用 IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 #### [使用序列化程序](iot-hub-device-sdk-c-serializer.md)
-### 处理设备到云的消息
+### 路由消息
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
+#### [Node.js](iot-hub-node-node-process-d2c.md)
 ### 发送“云到设备”消息
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)

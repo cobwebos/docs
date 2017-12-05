@@ -63,7 +63,7 @@
       href: functions-cli-samples.md
 - name: 概念
   items:
-    - name: 托管计划比较
+    - name: 缩放和托管
       href: functions-scale.md
     - name: 触发器和绑定
       href: functions-triggers-bindings.md

@@ -59,6 +59,8 @@
       href: /powershell/module/azurerm.containerregistry
     - name: 资源管理器模板
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: Webhook 架构
+      href: container-registry-webhook-reference.md
 - name: 资源
   items:
     - name: 上市区域

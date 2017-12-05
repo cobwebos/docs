@@ -67,26 +67,20 @@
 
 ## 故障排除
 ### [常见部署错误](resource-manager-common-deployment-errors.md)
-### [了解部署错误](resource-manager-troubleshoot-tips.md)
-### 解决错误
 #### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
 #### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+#### [Linux 部署问题](../virtual-machines/linux/troubleshoot-deploy-vm.md)
 #### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+#### [Linux 预配和分配问题](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+#### [Windows 预配和分配问题](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
 #### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
-### 虚拟机部署错误
-#### Linux
-##### [部署问题](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-##### [预配和分配问题](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
-##### [常见错误消息](../virtual-machines/linux/error-messages.md)
-#### Windows
-##### [部署问题](../virtual-machines/windows/troubleshoot-deploy-vm.md)
-##### [预配和分配问题](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
-##### [常见错误消息](../virtual-machines/windows/error-messages.md)
+#### [Windows 部署问题](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+### [了解部署错误](resource-manager-troubleshoot-tips.md)
 
 # 引用
 ## [模板格式](/azure/templates/)

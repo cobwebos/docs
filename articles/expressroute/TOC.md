@@ -58,6 +58,7 @@
 
 ## 故障排除
 ### [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)
+### [重置故障线路](reset-circuit.md)
 ### [获取 ARP 表](expressroute-troubleshooting-arp-resource-manager.md)
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
 

@@ -127,6 +127,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: 使用托管服务标识
           href: app-service-managed-service-identity.md
+        - name: 在应用程序代码中使用 SSL 证书
+          href: app-service-web-ssl-cert-load.md
         - name: 配置 TLS 相互身份验证
           href: app-service-web-configure-tls-mutual-auth.md
     - name: 缩放应用
