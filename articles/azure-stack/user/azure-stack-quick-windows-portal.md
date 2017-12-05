@@ -5,15 +5,15 @@ services: azure-stack
 author: ErikjeMS
 manager: byronr
 ms.service: azure-stack
-ms.topic: azure-stack
+ms.topic: quickstart
 ms.date: 09/15/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: abca538f28bbc0a8f3f00311ca1a69d196f10272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64a623b3f5cb443e0676e7d89d7040837be95737
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>使用 Azure 堆栈门户创建 Windows 虚拟机
 

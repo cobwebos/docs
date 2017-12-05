@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: andredm
-ms.openlocfilehash: 4d98556f17fa834c497c2d1cd1854c9e6b02e021
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b9f45462fb108ff9cc9039cdb0d0a9ef318fc218
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-stack-1711-update"></a>Azure 堆栈 1711年更新
 
@@ -31,11 +31,11 @@ ms.lasthandoff: 11/30/2017
 
 ## <a name="build-reference"></a>生成参考
 
-Azure 堆栈 1711年更新生成号是**20171122.1**。
+Azure 堆栈 1711年更新生成号是**171201.3**。
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 你必须首先安装 Azure 堆栈[1710年更新](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710)应用此更新之前。
 
@@ -85,7 +85,7 @@ Azure 堆栈 1711年更新生成号是**20171122.1**。
 
 ### <a name="known-issues-post-installation"></a>已知的问题 （安装后）
 
-本部分包含安装后生成的已知的问题**20171122.1**。
+本部分包含安装后生成的已知的问题**20171201.3**。
 
 #### <a name="portal"></a>门户
 
@@ -108,7 +108,7 @@ Azure 堆栈 1711年更新生成号是**20171122.1**。
 
 - 如果重新启动基础结构角色实例，你可能会收到一条消息指出在重新启动失败。 但是，在重新启动实际成功。
 
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>应用商店
 - 当你尝试通过将项添加到 Azure 堆栈市场**从 Azure 中的添加**选项，并非所有的项可能下载可见。
 - 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
 
@@ -118,7 +118,7 @@ Azure 堆栈 1711年更新生成号是**20171122.1**。
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 - 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
  
-#### <a name="networking"></a>联网
+#### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。
