@@ -264,7 +264,7 @@ _图 2：两个群集中的 SAP 多 SID 配置_
 _图 3：多 SID SOFS 使用相同的 SAP 全局主机名_
 
 > [!IMPORTANT]
->对于第二个 SAP \<SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost 网络名称****。
+>对于第二个 SAP \<SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost> 网络名称。
 >因为已经设置了 SAPMNT 作为各种 SAP 系统的共享名称，若要重复使用 \<SAPGlobalHost> 网络名称，则必须使用相同 Volume1.
 >
 ><SID2> 全局主机的文件路径是 C:\ClusterStorage\\Volume1\usr\sap\<SID2>\SYS\.
