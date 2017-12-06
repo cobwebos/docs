@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: debadde78d937bcd4ec1df665aacfd1887fbcd02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03326304e438f3b716c43d268f07d8e22cd15ea3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>安装 Durable Functions 扩展和示例 (Azure Functions)
 
@@ -33,7 +33,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ### <a name="prerequisites"></a>先决条件
 
-* 安装[最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)（15.3 版或更高版本）。 在安装选项中包括 Azure 工具。
+* 安装[最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)（15.3 版或更高版本）。 在安装选项中包括 **Azure 开发**工作负荷。
 
 ### <a name="start-with-sample-functions"></a>从示例函数开始
 
@@ -61,7 +61,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在 [functions.azure.com](https://functions.azure.com/signin) 上创建一个新的函数应用。
 2. 对该函数应用进行配置以[使用 2.0 运行时版本](functions-versions.md)。
-3. 创建一个新函数，并选择 **Durable Functions 业务流程协调程序 - C#** 模板。
+3. 选择“C#”作为语言，选择“所有”作为方案，创建一个新的函数。 然后选择“Durable Functions 业务流程协调程序 - C#”模板。
 4. 在“未安装的扩展”下，单击“安装”来从 NuGet.org 下载扩展。
 
 ### <a name="copy-sample-code-to-the-function-app"></a>将示例代码复制到函数应用

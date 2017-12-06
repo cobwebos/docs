@@ -6,19 +6,19 @@ documentationCenter: na
 author: jeevansd
 manager: femila
 ms.reviewer: joflore
-ms.assetid: f39f0ddd-b504-4562-971f-77b88d1e75fb
+ms.assetid: 2263e583-3eb2-4a06-982d-33f5f54858f4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: ad03516f684acc59912ffc57f6e0712828bd03f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f1f16865a3adb55fc63c09c1dbdc9720b02f9c33
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>教程：Azure Active Directory 与 FileCloud 的集成
 
@@ -108,12 +108,12 @@ ms.lasthandoff: 10/11/2017
 
     ![FileCloud 域和 URL 单一登录信息](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudonline.com`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudonline.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [FileCloud 客户端支持团队](mailto:support@codelathe.com)获取这些值。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [FileCloud 客户端支持团队](mailto:support@codelathe.com)获取这些值。 
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -131,23 +131,23 @@ ms.lasthandoff: 10/11/2017
 
 8. 在左侧导航窗格上，单击“设置”。 
    
-    ![应用端上的“设置”部分](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
+    ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
 
 9. 在“设置”部分中单击“SSO”选项卡。 
    
-    ![应用端上的“单一登录”选项卡](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
+    ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
 
 10. 在“单一登录 (SSO) 设置”面板上选择“SAML”作为“默认 SSO 类型”。
    
-    ![应用端上的“单一登录设置”面板](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
+    ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
 
-11. 将从 Azure 门户复制的“SAML 实体 ID”粘贴到“IdP 终结点 URL”文本框中。
+11. 在“IdP 终结点 URL”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
-    ![“IDP 终结点 URL”文本框](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
+    ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
 
 12. 在记事本中打开下载的元数据文件，将其内容复制到剪贴板，并将其粘贴到“SAML 设置”面板上的“IdP 元数据”文本框中。
 
-    ![应用端上的“IDP 元数据”部分](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
+    ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
 
 13. 单击“保存”按钮。
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 10/11/2017
 本部分的目的是在 FileCloud 中创建名为 Britta Simon 的用户。 FileCloud 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，请在尝试访问 FileCloud 期间创建一个新用户。
 
 >[!NOTE]
->如果需要手动创建用户，则需要联系 [FileCloud 客户端支持团队](mailto:support@codelathe.com)。 
+>如果需要手动创建用户，则需要联系 [FileCloud 客户端支持团队](mailto:support@codelathe.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -226,9 +226,10 @@ ms.lasthandoff: 10/11/2017
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 FileCloud 磁贴时，应当会自动登录到 FileCloud 应用程序。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -38,7 +38,7 @@
 #### [部署资源](resource-group-template-deploy-portal.md)
 #### [导出模板](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [跨资源组部署](resource-manager-cross-resource-group-deployment.md)
+### [多个资源组或订阅](resource-manager-cross-resource-group-deployment.md)
 ### [与 Visual Studio Team Services 的持续集成](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [在部署期间传递安全值](resource-manager-keyvault-parameter.md)
 

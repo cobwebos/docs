@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/12/2017
+ms.date: 11/22/2017
 ms.author: pkc
-ms.openlocfilehash: 7bc0f70e99be04cd646c0b7c610f7c6e4a74dfc2
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: a3ab41d1aa6051e5d4021443c3fe581cbf4c880f
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -68,15 +68,15 @@ ms.lasthandoff: 10/13/2017
  
 下面是支持的 Service Fabric 版本的列表以及支持结束日期。
 
-| **Service Fabric 运行时群集** | 兼容的 SDK/NuGet 包版本 | **支持结束日期** |
-| --- | --- | --- |
-| 5.3.121 之前的所有群集版本 |低于或等于版本 2.3 |2017 年 1 月 20 日 |
-| 5.3.* |低于或等于版本 2.3 |2017 年 2 月 24 日 |
-| 5.4.* |低于或等于版本 2.4 |2017 年 5 月 10 日       |
-| 5.5.* |低于或等于版本 2.5 |2017 年 8 月 10 日    |
-| 5.6.* |低于或等于版本 2.6 |2017 年 10 月 13 日   |
-| 5.7.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
-| 6.0.* |版本 2.8 或更低版本 |最新版本，因此尚无结束日期
+| **群集中的 Service Fabric 运行时** | **可以直接从群集版本升级** |兼容的 SDK/NuGet 包版本 | **支持结束日期** |
+| --- | --- |--- | --- |
+| 5.3.121 之前的所有群集版本 | 5.1.158* |低于或等于版本 2.3 |2017 年 1 月 20 日 |
+| 5.3.* | 5.1.158.* |低于或等于版本 2.3 |2017 年 2 月 24 日 |
+| 5.4.* | 5.1.158.* |低于或等于版本 2.4 |2017 年 5 月 10 日       |
+| 5.5.* | 5.4.164.* |低于或等于版本 2.5 |2017 年 8 月 10 日    |
+| 5.6.* | 5.4.164.* |低于或等于版本 2.6 |2017 年 10 月 13 日   |
+| 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
+| 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |最新版本，因此尚无结束日期 |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用。
 我们会不时发布包含重要功能的版本，希望用户对这些功能提供反馈，这些版本将作为预览版发布。 这些预览版本应仅用于测试目的。 生产群集应始终运行支持的稳定 Service Fabric 版本。 预览版本始终以主版本号和次版本号 255 开头。 例如，如果看到 Service Fabric 版本 255.255.5703.949，则该版本应仅在测试群集中使用且处于预览状态。 这些预览版本也在 [Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric)上公布，并将提供有关包含的功能的详细信息。

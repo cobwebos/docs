@@ -3,7 +3,7 @@ title: "在本地站点中重新保护 Azure 上的虚拟机 | Microsoft Docs"
 description: "将 VM 故障转移到 Azure 之后，可以启动故障回复将 VM 恢复到本地。 了解如何在故障回复之前进行重新保护。"
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
-ms.author: ruturajd
-ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rajanaki
+ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的虚拟机
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 本文介绍了如何将 Azure 虚拟机从 Azure 重新保护到本地站点。 如[使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure](site-recovery-failover.md)中所述将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 后，准备对它们进行故障回复时，请遵循本文中的说明。
 
 > [!WARNING]
-> 如果[已完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机移至另一资源组或已删除 Azure 虚拟机，则无法进行故障回复。 如果禁用虚拟机的保护，则无法进行故障回复。
+> 如果[已完成迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)、已将虚拟机移至另一资源组或已删除 Azure 虚拟机，则无法进行故障回复。 如果禁用虚拟机的保护，则无法进行故障回复。 如果在 Azure（基于云）中首次创建虚拟机，则无法重新保护该回本地。 计算机应具有已在本地最初受保护和故障转移到 Azure 之前重新保护。
 
 
 在重新保护完成并且受保护的虚拟机正在复制后，可以在虚拟机上启动故障回复将其恢复到本地站点。
@@ -62,13 +62,20 @@ ms.lasthandoff: 10/11/2017
   * **主目标服务器**：主目标服务器接收故障回复数据。 创建的本地管理服务器默认情况下已安装主目标服务器。 但是，可能需要创建单独的故障回复用主目标服务器，具体取决于故障回复流量。
     * [Linux 虚拟机需要 Linux 主目标服务器](site-recovery-how-to-install-linux-master-target.md)。
     * Windows 虚拟机需要 Windows 主目标服务器。 可以重复使用本地进程服务器和主目标计算机。
+    * 主目标具有[在重新保护前要在主目标上检查的公共事项](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)中列出的其他先决条件。
 
-    主目标具有[在重新保护前要在主目标上检查的公共事项](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)中列出的其他先决条件。
+> [!NOTE]
+> 复制组的所有虚拟机应都为相同的操作系统类型（所有 Windows 或所有 Linux）。 混合操作系统的复制组当前不支持重新保护和故障回复到本地。 这是操作系统的因为主目标应为作为虚拟机相同和的复制组的所有虚拟机应都具有相同的主目标。 
+
+    
 
 * 执行故障回复时，本地需有配置服务器。 故障回复期间，虚拟机必须位于配置服务器数据库中。 否则，故障回复不会成功。 
 
 > [!IMPORTANT]
 > 请确保定期计划配置服务器备份。 如果发生灾难，请使用相同的 IP 地址还原服务器，以便故障回复正常工作。
+
+> [!WARNING]
+> 复制组仅应有 Windows VM 或 Linux VM，并不这二者的融合因为 replictaion 组中的所有 VM 都使用相同的主目标服务器和 Linux VM 需要的 Linux 主目标服务器和 Windows 虚拟机喜欢明智的做法。
 
 * 在 VMware 中的主目标虚拟机的配置参数中设置 `disk.EnableUUID=true` 设置。 如果此行不存在，请添加此行。 若要为虚拟机磁盘 (VMDK) 提供一致的 UUID，以便能够正确进行装载，则必须指定此设置。
 
@@ -170,6 +177,8 @@ ms.lasthandoff: 10/11/2017
 * 主目标服务器在磁盘上不能具有任何快照。 如果具有快照，则重新保护和故障回复会失败。
 
 * 主目标不能具有半虚拟化 SCSI 控制器。 控制器只能是 LSI 逻辑控制器。 如果没有 LSI 逻辑控制器，重新保护会失败。
+
+* 在任何给定的实例，主目标可以具有 atmst 60 磁盘附加到它。 如果正在重新保护到本地主目标虚拟机数之和总磁盘数超过 60，则重新保护到主目标会失败。 确保有足够的主目标的磁盘槽或部署更多的主目标服务器。
 
 <!--
 ### Failback policy

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
-ms.openlocfilehash: cb55bf1f1c7eeb0fc7608aca8d70818b5e3e06c0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 1ef4355f7234bc6a534d21a57fa52b480983b99b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的分片多租户应用程序
 
@@ -35,7 +35,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 此应用程序部署了三个示例租户的数据。 这些租户一起存储在一个多租户数据库中。
 
-任何人都可以从我们的 [Github 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
+任何人都可以从[我们的 GitHub 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
 
 #### <a name="learn-in-this-tutorial"></a>学习本教程
 
@@ -93,7 +93,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 > [!IMPORTANT]
 > 从外部源下载和提取 zip 文件时，可执行内容（脚本、ddl）可能受 Windows 阻止。 从 zip 文件提取脚本时，请按照以下步骤取消阻止 .zip 文件，然后再进行提取。 通过取消阻止 .zip 文件，确保允许脚本运行。
 
-1. 浏览到 [WingtipTicketsSaaS-MultiTenantDb github 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
+1. 浏览到 [WingtipTicketsSaaS-MultiTenantDb GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
 2. 单击“克隆或下载”。
 3. 单击“下载 ZIP”并保存文件。
 4. 右键单击“WingtipTicketsSaaS-MultiTenantDb-master.zip”文件，然后选择“属性”。
@@ -120,7 +120,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 中间的“事件中心”提供特定部署中租户的链接列表。
 
 1. 在 Web 浏览器中打开“事件中心”：
-    - http://events.wingtip-mt.&lt;USER&gt;.trafficmanager.net &nbsp; （替换为部署的用户值。）
+    - http://events.wingtip.&lt;USER&gt;.trafficmanager.net &nbsp;（替换为部署用户值。）
 
     ![事件中心](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -130,7 +130,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 该应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 租户特定的事件页需要租户名称包含在 URL 中。 此 URL 还包含特定用户值，并遵循以下格式：
 
-- http://events.wingtip-mt.&lt;USER&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip.&lt;USER&gt;.trafficmanager.net/*fabrikamjazzclub*
  
 事件应用将分析 URL 中的租户名，并采用哈希算法来创建密钥，以使用[分片映射管理](sql-database-elastic-scale-shard-map-management.md)来访问目录。 该目录将密钥映射到租户的数据库位置。 “事件中心”将列出在目录中注册的所有租户。 “事件中心”使用目录中扩展的元数据来检索与每个映射关联的租户名称以构造 URL。
 
@@ -156,7 +156,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 初始部署在 Tenants1 数据库中包括了三个示例租户。 让我们再创建一个租户，看看这会对已部署的应用程序有怎样的影响。 在此步骤中将快速创建新租户。
 
-1. 在“PowerShell ISE”中，打开...\\Learning Modules\ProvisionTenants\\Demo-ProvisionTenants.ps1。
+1. 在 PowerShell ISE 中打开 ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionTenants.ps1*。
 2. 按“F5”运行该脚本（目前保留默认值）。
 
    > [!NOTE]
@@ -174,7 +174,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 现在我们预配其他租户，这次是在自己的数据库中。
 
-1. 在....\\Learning Modules\\ProvisionTenants\\Demo-ProvisionTenants.ps1 中，将 $TenantName 修改为 Salix Salsa，将 $VenueType 修改为 dance，并将 $Scenario 修改为 2。
+1. 在 ...\\Learning Modules\\Provision and Catalog\*Demo-ProvisionTenants.ps1* 中，将 $TenantName 修改为 Salix Salsa，将 $VenueType 修改为 Dance，并将 $Scenario 修改为 2。
 
 2. 按 F5 再次运行脚本。
     - 此次按 F5 将预配单独数据库中的新租户。 数据库和租户在目录中注册。 然后，浏览器打开到租户的“事件”页。
@@ -239,7 +239,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 > - 如何查看池使用率来监视租户活动
 > - 如何删除示例资源以停止相关计费
 
-现在，尝试使用[预配租户教程](sql-database-saas-tutorial-provision-and-catalog.md)。
+现在，请尝试[预配和编录教程](sql-database-saas-tutorial-provision-and-catalog.md)。
 
 
 

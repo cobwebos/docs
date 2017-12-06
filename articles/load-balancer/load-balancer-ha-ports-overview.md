@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 7a77e6ecbf59944c62aa4ae014bf5b8a5a7f7f1f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -65,69 +65,10 @@ HA 端口为 NVA HA 方案提供几项优势：
 
 ## <a name="preview-sign-up"></a>预览版注册
 
-若要体验负载均衡器标准版中 HA 端口功能的预览版，请注册订阅以获取访问权限。 可以使用 Azure CLI 2.0 或 PowerShell。
+若要体验负载均衡器标准版中 HA 端口功能的预览版，请注册负载均衡器[标准预览版](https://aka.ms/lbpreview#preview-sign-up)的订阅。 可以使用 Azure CLI 2.0 或 PowerShell 注册。
 
 >[!NOTE]
->若要使用此功能，除了注册 HA 端口功能外，还需注册负载均衡器[标准版（预览版）](https://aka.ms/lbpreview#preview-sign-up)。 注册最多可能需要一小时。
-
-### <a name="sign-up-by-using-azure-cli-20"></a>使用 Azure CLI 2.0 注册
-
-1. 在提供程序中注册此功能：
-    ```cli
-    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-2. 上述操作最长可能需要 10 分钟才能完成。 可使用以下命令检查操作状态：
-
-    ```cli
-    az feature show --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-    当功能注册状态返回“已注册”时，操作成功，如下所示：
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowILBAllPortsRule",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-3. 在资源提供程序中重新注册订阅，完成预览版注册：
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-### <a name="sign-up-by-using-powershell"></a>使用 PowerShell 注册
-
-1. 在提供程序中注册此功能：
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    
-2. 上述操作最长可能需要 10 分钟才能完成。 可使用以下命令检查操作状态：
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    当功能注册状态返回“已注册”时，操作成功，如下所示：
-   
-    ```
-    FeatureName          ProviderName      RegistrationState
-    -----------          ------------      -----------------
-    AllowILBAllPortsRule Microsoft.Network Registered
-    ```
-    
-3. 在资源提供程序中重新注册订阅，完成预览版注册：
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
-
+>注册最多可能需要一小时。
 
 ## <a name="limitations"></a>限制
 

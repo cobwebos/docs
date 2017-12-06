@@ -33,6 +33,14 @@
       href: how-to-search-for-address.md
 - name: 引用
   items:
+    - name: 功能 API - REST
+      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
+    - name: 管理 API - REST
+      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
+    - name: 地图控件 API - Javascript
+      href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
+- name: 资源
+  items:
     - name: Azure IoT 开发人员中心
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure 路线图

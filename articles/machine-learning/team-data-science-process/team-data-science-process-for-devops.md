@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: e043de0aa4ed861139f50291a98c3300574e6078
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2ab36da70e2c08b770973f4c4d33eddfdebed9e1
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>用于开发人员运营的 Team Data Science Process
 
-本文探讨特定于高级分析和认知服务解决方案实施项目的开发人员运营 (DevOps) 功能。 其中参考了介绍特定于数据科学和 AI 项目与解决方案的数据科学过程和平台、DevOps 过程以及 DevOps 工具链的主题。
+本文探讨特定于高级分析和认知服务解决方案实施项目的开发人员运营 (DevOps) 功能。 这些培训材料与 Team Data Science Process (TDSP) 及 Microsoft 与开源代码软件和工具包相关，有助于构想、执行和交付数据科学解决方案。 其中参考了有关数据科学和 AI 项目与解决方案专用的 DevOps 工具链的主题。
 
-## <a name="lesson-path"></a>学习路径
+## <a name="lesson-path"></a>课程路径
 下表根据指定的级别提供指导，以帮助达到使用 Azure 技术实施数据科学解决方案所要完成的 DevOps 目标。
 
 | **目标**                                                  | **主题**                               | **资源**                                                                                                                                                                                                                                                       | **技术**                                                                                                                                                                                                                                                                                      | **级别**                                               | **先决条件**                                                                                                                                                                                                        |

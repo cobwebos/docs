@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 4cd65c01d75af8539f5fa13dbbd2aaec548aea0b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 646ade828e96810bdc3b07d4dc5c0276a1621969
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>如何为内部负载均衡器配置高可用性端口
 
@@ -41,13 +41,10 @@ ms.lasthandoff: 11/04/2017
 
 ## <a name="preview-sign-up"></a>预览版注册
 
-若要体验负载均衡器标准版中 HA 端口功能的预览版，请使用 Azure CLI 2.0 或 PowerShell 注册订阅，以获取访问权限。  可以注册订阅以获取
-
-1. [负载均衡器标准预览版](https://aka.ms/lbpreview#preview-sign-up)和 
-2. [HA 端口预览版](https://aka.ms/haports#preview-sign-up)。
+若要体验负载均衡器标准版中 HA 端口功能的预览版，请使用 Azure CLI 2.0 或 PowerShell 注册订阅，以获取访问权限。 注册[负载均衡器标准预览版](https://aka.ms/lbpreview#preview-sign-up)的订阅。
 
 >[!NOTE]
->要使用此功能，除了注册 HA 端口外，还需注册负载均衡器[标准版（预览版）](https://aka.ms/lbpreview#preview-sign-up)。 注册 HA 端口或负载均衡器标准版（预览版）最长可能需要一小时。
+>注册负载均衡器标准预览版最长可能需要一小时。
 
 ## <a name="configuring-ha-ports"></a>配置 HA 端口
 

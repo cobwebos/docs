@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: billgib
-ms.openlocfilehash: ec753027c8ce8040cbc574279a44eb24590fcb05
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: e7de7bb545e0ce04dc1b3dd398cc920213d09bae
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-sql-database"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -78,19 +78,18 @@ ms.lasthandoff: 11/22/2017
 * 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)。
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
-## <a name="get-the-wingtip-tickets-management-scripts"></a>获取 Wingtip Tickets 管理脚本
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
-[WingtipTicketsSaaS-MultiTenantDB](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库提供了管理脚本和应用程序源代码。 <!--See [Steps to download the Wingtip SaaS scripts](saas-tenancy-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts).-->
-
+在 [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。 
 
 ## <a name="provision-a-tenant-in-a-shared-database-with-other-tenants"></a>在拥有其他租户的共享数据库中预配租户
 
 若要了解 Wingtip Tickets 应用程序如何在共享数据库中实现新租户预配，请添加断点并单步执行工作流：
 
-1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\ProvisionAndCatalog\\Demo-ProvisionAndCatalog.ps1，并设置以下参数：
-   * $TenantName = Bushwillow Blues（新地点的名称）。
-   * $VenueType = blues（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
-   * $Scenario = 1，可在拥有其他租户的共享数据库中预配租户。
+1. 在 _PowerShell ISE_ 中，打开 ...\\Learning Modules\\ProvisionTenants\\_Demo-ProvisionTenants.ps1_，并设置以下参数：
+   * **$TenantName** = **Bushwillow Blues**，即新地点的名称。
+   * **$VenueType** = **blues**（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
+   * **$DemoScenario** = **1**，可在拥有其他租户的共享数据库中预配租户。
 
 1. 通过将游标置于 38 行（该行显示：New-Tenant `）的任意位置来添加断点，并按 F9。
 
@@ -121,10 +120,10 @@ ms.lasthandoff: 11/22/2017
 
 现在演练在自己的数据库中创建租户的过程：
 
-1. 仍然是在 ...\\Learning Modules\\ProvisionAndCatalog\\Demo-ProvisionAndCatalog.ps1 中，设置以下参数：
-   * $TenantName = Sequoia Soccer（新地点的名称）。
-   * $VenueType = soccer（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
-   * $Scenario = 2，可在拥有其他租户的共享数据库中预配租户。
+1. 在 ...\\Learning Modules\\ProvisionTenants\\_Demo-ProvisionTenants.ps1_ 中设置以下参数：
+   * **$TenantName** = **Sequoia Soccer**，即新地点的名称。
+   * **$VenueType** = **soccer**（预定义的地点类型之一）：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer（小写，不含空格）。
+   * **$DemoScenario** = **2**，用于将租户预配到其自身的数据库。
 
 1. 通过将游标置于 57 行（该行显示：&&nbsp;$PSScriptRoot\New-TenantAndDatabase `）的任意位置来添加新断点，并按 F9。
 
@@ -152,30 +151,31 @@ ms.lasthandoff: 11/22/2017
 
 本练习预配一批 17 个租户。 建议在开始其他 Wingtip Tickets 教程之前预配这批租户，以便可以使用更多数据库。
 
-1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\ProvisionAndCatalog\\Demo-ProvisionAndCatalog.ps1，将 $Scenario 参数更改为 3：
-   * $Scenario = 3，可将一批租户预配到共享数据库中。
+
+1. 在 *PowerShell ISE* 中，打开 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*，并将 *$DemoScenario* 参数更改为 4：
+   * **$DemoScenario** = **4**，可将一批租户预配到共享数据库中。
 1. 按 **F5** 运行脚本。
 
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>验证部署的一组租户 
-在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库：  
-
-* 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-\<USER\> 服务器。  SQL 数据库列表应包含共享的 tenants1 数据库和各自数据库中的租户的数据库：
+在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库。 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-\<USER\> 服务器。  SQL 数据库列表应包含共享的 tenants1 数据库和各自数据库中的租户的数据库：
 
    ![数据库列表](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
 虽然 Azure 门户显示了租户数据库，但是不允许查看共享数据库内的租户。 可以在 Wingtip Tickets 事件中心页查看租户的完整列表，也可以通过浏览目录查看：   
 
-1. 在浏览器中打开事件中心页 (http:events.wingtip-mt.\<USER\>.trafficmanager.net)  
+**使用 Wingtip Tickets 事件中心页** <br>
+在浏览器中打开事件中心页 (http:events.wingtip-mt.\<USER\>.trafficmanager.net)  
 
-   目录中提供租户及其相应数据库的完整列表。 tenantcatalog 数据库中提供 SQL 视图，该数据库将存储在“租户”表中的租户名称与“分片管理”表中的数据库名称连接起来。 该视图很好地展现了扩展存储在目录中的元数据的价值。
+**使用目录数据库** <br>
+目录中提供租户及其相应数据库的完整列表。 tenantcatalog 数据库中提供 SQL 视图，该数据库将存储在“租户”表中的租户名称与“分片管理”表中的数据库名称连接起来。 该视图很好地展现了扩展存储在目录中的元数据的价值。
 
-2. 在 SQL Server Management Studio (SSMS) 中，连接到位于 tenants1-mt.\<USER\>.database.windows.net 的租户服务器，登录名：developer，密码：P@ssword1
+1. 在 *SQL Server Management Studio (SSMS)*，连接到位于 **catalog-mt.\<USER\>.database.windows.net** 的租户服务器，登录名：**developer**，密码：**P@ssword1**
 
     ![“SSMS 连接”对话框](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
-2. 在对象资源管理器中，浏览到 tenantcatalog 数据库中的视图。
-2. 右键单击“TenantsExtended”视图，然后选择“选中前 1000 行”。 注意租户名称和不同租户的数据库之间的映射。
+1. 在对象资源管理器中，浏览到 tenantcatalog 数据库中的视图。
+1. 右键单击“TenantsExtended”视图，然后选择“选中前 1000 行”。 注意租户名称和不同租户的数据库之间的映射。
 
     ![SSMS 中的“ExtendedTenants”视图](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
       

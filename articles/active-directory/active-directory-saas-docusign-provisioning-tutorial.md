@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b509ffa934949200277ae431761d2accd4a02d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6a618c9cb93fe5b82e97f84c346e3dc448737e4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-configuring-docusign-for-user-provisioning"></a>教程：为 DocuSign 配置用户预配
 
@@ -41,9 +41,12 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>将用户分配到 DocuSign 的重要提示
 
-*   建议将单个 Azure AD 用户分配到 DocuSign 以测试预配配置。 其他用户和/或组可以稍后分配。
+*   建议将单个 Azure AD 用户分配到 DocuSign 以测试预配配置。 其他用户可以稍后分配。
 
 *   将用户分配到 DocuSign 时，必须选择有效的用户角色。 “默认访问权限”角色不可用于预配。
+
+> [!NOTE]
+> Azure AD 不支持使用 Docusign 应用程序预配组，只能预配用户。
 
 ## <a name="enable-user-provisioning"></a>启用用户预配
 
@@ -86,7 +89,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 单击“保存”。
 
-此操作会对“用户和组”部分中分配到 DocuSign 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 DocuSign 应用执行的所有操作。
+此操作会对“用户和组”部分中分配到 DocuSign 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 DocuSign 应用执行的所有操作。
 
 现可创建测试帐户。 验证该帐户是否已同步到 DocuSign 最多需等待 20 分钟时间。
 

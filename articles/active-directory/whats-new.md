@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 11/28/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9de535b2fb70181c68fb698e847dd8361bf54385
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f1538e1c26cfe658c7f42ccdd57d8bf5aca0b1fb
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -43,18 +43,20 @@ ms.lasthandoff: 11/22/2017
 
 ## <a name="november-2017"></a>2017 年 11 月
  
+### <a name="retiring-acs"></a>即将停用 ACS
+
 
 
 **类型：**更改计划  
 服务类别：ACS  
 产品功能：访问控制服务 
 
-**即将停用 ACS**
 
 Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 ACS）将于 2018 年底停用。  接下来几周内会提供更多信息，包括详细的计划和高级迁移指南。 在此期间，有关 ACS 的任何问题，请在此页留下评论，我们的团队成员会帮助解答。
 
 ---
 
+### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>限制对 Intune 托管浏览器的浏览器访问 
 
 
 **类型：**更改计划  
@@ -62,7 +64,6 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 **产品功能：**标识安全和保护
 
 
-**限制对 Intune 托管浏览器的浏览器访问** 
 
 
 通过此行为，可使用 Intune 托管浏览器作为批准应用，限制对 Office 365 以及其他已连接 Azure AD 的云应用的浏览器访问。 
@@ -82,6 +83,7 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用，适用于基于 Azure AD 应用的条件访问
 
  
 **类型：**更改计划  
@@ -89,7 +91,6 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 **产品功能：**标识安全和保护
 
 
-**新批准的客户端应用，适用于基于 Azure AD 应用的条件访问**
 
 
 计划将以下应用添加到[批准的客户端应用](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)列表：
@@ -108,6 +109,9 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
 ---
 
+### <a name="terms-of-use-support-for-multiple-languages"></a>使用条款支持多种语言
+
+
 
 **类型：**新功能    
 **服务类别：**使用条款  
@@ -115,7 +119,6 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
 
 
-**使用条款支持多种语言**
 
 
 管理员现可创建包含多个 PDF 文档的新使用条款 (TOU)。 可以使用相应语言来标记这些 PDF 文档。 属于相应范围内的用户可看到以基于其首选项的匹配语言显示的 PDF。 如果没有匹配的语言，则以默认语言显示。
@@ -124,13 +127,15 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 ---
  
 
+### <a name="realtime-password-writeback-client-status"></a>实时密码写回客户端状态
+
+
 
 **类型：**新功能  
 **服务类别：**SSPR  
 **产品功能：**用户身份验证
 
 
-**实时密码写回客户端状态**
  
 
 现可查看本地密码写回客户端的状态。 此选项位于[密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)页的“本地集成”部分中。 
@@ -145,6 +150,12 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
  
 ---
+
+
+### <a name="azure-ad-app-based-conditional-access"></a>Azure AD 基于应用的条件访问 
+
+
+
  
 **类型：**新功能  
 **服务类别：**Azure AD  
@@ -152,7 +163,6 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
 
 
-**Azure AD 基于应用的条件访问** 
 
 
 现可将对 Office 365 和其他已连接 Azure AD 的云应用的访问权限限于[批准的客户端应用](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)，这些应用支持使用[基于 Azure AD 的应用的条件访问](active-directory-conditional-access-mam.md)的 Intune 应用保护策略。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
@@ -180,6 +190,8 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
+### <a name="managing-azure-ad-devices-in-the-azure-portal"></a>在 Azure 门户中管理 Azure AD 设备
+
 
 
 **类型：**新功能  
@@ -188,7 +200,6 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
  
 
-**在 Azure 门户中管理 Azure AD 设备**
 
 
 现可在一个位置找到连接到 Azure AD 的所有设备以及与设备相关的活动。 在 Azure 门户中管理所有设备标识和设置有新的管理体验。 在此版本中，可以：
@@ -209,14 +220,13 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
+### <a name="support-for-macos-as-device-platform-for-azure-ad-conditional-access"></a>支持将 macOS 作为 Azure AD 条件访问的设备平台 
+
+
 
 **类型：**新功能    
 **服务类别：**条件访问  
 **产品功能：**标识安全和保护 
-
-
-
-**支持将 macOS 作为 Azure AD 条件访问的设备平台** 
  
 
 现可包括（或排除）macOS 作为 Azure AD 条件访问策略中的设备平台条件。 通过将 macOS 添加到支持的设备平台，可以：
@@ -236,13 +246,14 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
+### <a name="nps-extension-for-azure-mfa"></a>适用于 Azure MFA 的 NPS 扩展 
+
 
 **类型：**新功能    
 **服务类别：**MFA  
 **产品功能：**用户身份验证
 
 
-**适用于 Azure MFA 的 NPS 扩展** 
 
 
 适用于 Azure MFA 的网络策略服务器 (NPS) 扩展可以使用现有的服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。 
@@ -255,13 +266,13 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
+### <a name="restore-or-permanently-remove-deleted-users"></a>还原或永久删除已删除的用户
+
 
 **类型：**新功能    
 **服务类别：**用户管理  
 **产品功能：**目录 
 
-
-**还原或永久删除已删除的用户**
 
 
 在 Azure AD 管理中心，可以：
@@ -281,14 +292,12 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
-
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>新批准的客户端应用，适用于基于 Azure AD 应用的条件访问
 
  
 **类型：**已更改的功能  
 **服务类别：**条件访问  
 **产品功能：**标识安全和保护
-
-**新批准的客户端应用，适用于基于 Azure AD 应用的条件访问**
 
 
 以下应用已添加到[批准的客户端应用](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)列表：
@@ -307,14 +316,13 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
 ---
 
+### <a name="ability-to-or-between-controls-in-a-conditional-access-policy"></a>条件访问策略中控制之间的“OR”功能 
 
 
 **类型：**已更改的功能    
 **服务类别：**条件访问  
 **产品功能：**标识安全和保护
 
-
-**条件访问策略中控制之间的“OR”功能** 
  
 “OR”（需要一个选定控制）条件访问控制的功能已发布。 通过此功能，可创建访问控制间包含“OR”的策略。 例如，可以使用此功能创建一个策略，要求用户使用多重身份验证登录“OR”用户位于兼容设备上。
 
@@ -323,13 +331,13 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
  
 ---
 
+### <a name="aggregation-of-realtime-risk-events"></a>实时风险事件的聚合
 
 
 **类型：**已更改的功能    
 **服务类别：**标识保护  
 **产品功能：**标识安全和保护
 
-**实时风险事件的聚合**
 
 为改进管理体验，在 Azure AD Identity Protection 中，某一天源自同一 IP 地址的所有实时风险事件现按照每种风险事件类型聚合在一起。 此更改限制了显示的风险事件数量，但不会对用户安全性造成任何影响。
 
@@ -344,12 +352,15 @@ Microsoft Azure Active Directory 访问控制（也称作访问控制服务或 A
 
 ## <a name="october-2017"></a>2017 年 10 月
 
+
+### <a name="deprecating-azure-ad-reports"></a>弃用 Azure AD 报告
+
+
 **类型：**更改计划  
 **服务类别：**报告  
 **产品功能：**标识生命周期管理  
 
 
-**弃用 Azure AD 报告**
 
 Azure 门户提供：
 
@@ -360,12 +371,13 @@ Azure 门户提供：
 
 ---
 
+### <a name="automatic-sign-in-field-detection"></a>自动登录字段检测
+
+
 **类型：**已修复   
 **服务类别：**我的应用  
 **产品功能：**SSO  
 
-
-**自动登录字段检测**
 
 
 对于显示 HTML 用户名和密码字段的应用程序，Azure Active Directory 支持自动登录字段检测。  [如何自动捕获应用程序的登录字段](application-config-sso-problem-configure-password-sso-non-gallery.md#how-to-manually-capture-sign-in-fields-for-an-application)中介绍了这些步骤。 在 [Azure 门户](http://aad.portal.azure.com)中的“企业应用程序”页面上添加一个“非库”应用程序，即可找到此功能。 此外，可在此新应用程序中将“单一登录”模式配置为“基于密码的单一登录”，输入 Web URL，然后保存页面。
@@ -374,12 +386,14 @@ Azure 门户提供：
 
 ---
 
+### <a name="new-mfa-features"></a>新 MFA 功能
+
+
 **类型：**新功能  
 **服务类别：**MFA  
 **产品功能：**标识安全和保护  
 
 
-**新 MFA 功能**
 
 多重身份验证 (MFA) 是保护组织不可或缺的组成部分。 为使凭证的适应能力更强，体验更顺畅，添加了以下功能： 
 
@@ -393,12 +407,16 @@ Azure 门户提供：
 
 
 ---
+
+### <a name="introducing-terms-of-use"></a>引入了使用使用条款
+
+
+
 **类型：**新功能  
 **服务类别：**使用条款  
 **产品功能：**调控  
 
 
-**引入使用条款**
 
 Azure AD 使用条款提供一种向最终用户显示信息的简单方法。 这可确保用户看到法律要求或合规性要求的相关免责声明。
 
@@ -414,11 +432,14 @@ Azure AD 使用条款提供一种向最终用户显示信息的简单方法。 �
 
 
 ---
+
+### <a name="enhancements-to-privileged-identity-management"></a>特权标识管理的增强功能
+
+
 **类型：**新功能  
 **服务类别：**PIM  
 **产品功能：**Privileged Identity Management  
 
-**特权标识管理的增强功能**
 
 通过 Azure Active Directory Privileged Identity Management (PIM)，现在可管理、控制和监视对组织中 Azure 资源（预览版）的访问：
 
@@ -432,11 +453,14 @@ Azure 门户中利用 Azure 基于角色的访问控制 (RBAC) 功能的所有�
 
 
 ---
+
+### <a name="introducing-access-reviews"></a>引入了访问评审
+
+
 **类型：**新功能  
 **服务类别：**访问评审  
 **产品功能：**调控  
 
-**引入访问评审**
 
 
 访问评审（预览版）可使组织有效地管理组成员身份以及对企业应用程序的访问权限： 
@@ -451,12 +475,16 @@ Azure 门户中利用 Azure 基于角色的访问控制 (RBAC) 功能的所有�
 
 
 ---
+
+### <a name="hiding-third-party-applications-from-my-apps-and-the-office-365-launcher"></a>在“我的应用”和 Office 365 启动器中隐藏第三方应用程序
+
+
+
 **类型：**新功能  
 **服务类别：**我的应用  
 **产品功能：**SSO  
 
 
-**在“我的应用”和 Office 365 启动器中隐藏第三方应用程序**
 
 现在，可以通过“隐藏应用”属性更好地管理用户门户中显示的应用。 如果为后端服务显示的应用磁贴和重复的磁贴导致用户的应用启动器变得混杂，隐藏应用可帮助解决问题。 切换开关位于第三方应用的“属性”部分中，带有“对用户可见?”标签 还可以通过 PowerShell 以编程方式隐藏应用。 
 
@@ -470,12 +498,14 @@ Azure 门户中利用 Azure 基于角色的访问控制 (RBAC) 功能的所有�
 
 ## <a name="september-2017"></a>2017 年 9 月
 
+### <a name="hotfix-for-microsoft-identity-manager"></a>适用于 Microsoft Identity Manager 的修补程序
+
+
 **类型：**已更改的功能  
 **服务类别：**Microsoft Identity Manager  
 **产品功能：**标识生命周期管理  
 
 
-**适用于 Microsoft Identity Manager 的修补程序**
 
 现已推出 Microsoft Identity Manager (MIM) 2016 2016 Service Pack 1 (SP1) 截止 2017 年 9 月 25 日的修补程序汇总包（内部版本 4.4.1642.0）。 此汇总包：
 

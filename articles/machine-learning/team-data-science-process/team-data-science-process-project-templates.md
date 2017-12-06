@@ -1,6 +1,6 @@
 ---
 title: "Team Data Science Process 项目规划 - Azure | Microsoft 文档"
-description: TBD
+description: "Microsoft Project 和 Excel 模板，可帮助规划和管理数据科学项目。"
 documentationcenter: 
 author: bradsev
 manager: cgronlun
@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 11/27/2017
 ms.author: bradsev;
-ms.openlocfilehash: 554e653a1f1b060743a2f461327c58e9a60a56b1
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 7f99b0bc36a08f52148f032567771f21c56ce42e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 项目规划
 
-Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
+Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的生命周期。 本文提供了 Microsoft Project 和 Excel 模板的相关链接，可帮助你规划和管理这些项目阶段。
+
+该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
 - 了解业务
 - 数据采集和理解
@@ -31,8 +33,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 有关各个阶段的说明，请参阅 [Team Data Science Process 生命周期](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle)。
 
-本文提供了 Microsoft Project 和 Excel 模板的相关链接，可帮助你规划和管理这些项目阶段。 
-
+ 
 ## <a name="microsoft-project-template"></a>Microsoft Project 模板
 
 适用于 Team Data Science Process 的 Microsoft Project 模板可从此处获取：[Microsoft Project 模板](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
@@ -54,7 +55,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 ## <a name="next-steps"></a>后续步骤
 
-[执行数据科学项目](project-execution.md) 本文档介绍了如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。
+[数据科学项目的敏捷开发](agile-development.md) 此文档介绍如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。
 
 同时，还提供了相应的演练，用于演示特定方案处理过程中的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
 

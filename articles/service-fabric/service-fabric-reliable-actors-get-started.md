@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: vturecek
-ms.openlocfilehash: eb076c30eda63c37a8b555d40d5903cbbf0d426a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ internal class HelloWorld : Actor, IHelloWorld
     ![“添加新项目”对话框][6]    
     
     > [!NOTE]
-    > 控制台应用程序不是通常在 Service Fabric 中用作客户端的那种应用，但它非常便于使用 Service Fabric 仿真器进行调试和测试。
+    > 控制台应用程序不是通常在 Service Fabric 中用作客户端的那种应用，但它非常便于使用本地 Service Fabric 群集进行调试和测试。
 
 3. 控制台应用程序必须为 64 位的应用程序，以保持与接口项目和其他依赖项的兼容性。  在“解决方案资源管理器”中，右键单击“ActorClient”项目，并单击“属性”。  在“生成”选项卡上，将“平台目标”设置为“x64”。
     

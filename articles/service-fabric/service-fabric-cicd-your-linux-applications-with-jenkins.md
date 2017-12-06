@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2017
+ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: 4e1f2f7d63666315f363caa8fec272ec2b6f18fc
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: e9422745de1f46098f1a1b0605c2560f44c02f3c
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -42,24 +42,24 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
    > [!NOTE]
    > 确保将 8081 端口指定为群集上的自定义终结点。
    >
-2. 通过执行以下步骤克隆应用程序：
 
+2. 通过执行以下步骤克隆应用程序：
   ```sh
-git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
-cd service-fabric-java-getting-started/Services/JenkinsDocker/
-```
+  git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
+  cd service-fabric-java-getting-started/Services/JenkinsDocker/
+  ```
 
 3. 保留文件共享中 Jenkins 容器的状态：
   * 使用名称（如 ``sfjenkinsstorage1``）在群集所在的**同一区域**中创建 Azure 存储帐户。
   * 使用名称（如 ``sfjenkins``）在该存储帐户下创建一个**文件共享**。
   * 针对文件共享单击“连接”，并记下它在“从 Linux 进行连接”下显示的值，该值应如下所示：
-```sh
-sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
-```
+  ```sh
+  sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
+  ```
 
-> [!NOTE]
-> 必须在群集节点中安装 cifs-utils 包，才能安装 cifs 共享。         
->
+  > [!NOTE]
+  > 必须在群集节点中安装 cifs-utils 包，才能安装 cifs 共享。       
+  >
 
 4. 从步骤 3 使用 azure 存储详细信息更新 ```setupentrypoint.sh``` 脚本中的占位符值。
 ```sh
@@ -68,16 +68,33 @@ vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
   * 将 ``[REMOTE_FILE_SHARE_LOCATION]`` 替换为前面步骤 3 中的连接输出中的值 ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins``。
   * 将 ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` 替换为前面步骤 3 中的值 ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777``。
 
-5. 连接到群集并安装容器应用程序。
-```sh
-sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
-bash Scripts/install.sh
-```
-这会在群集上安装 Jenkins 容器，可以使用 Service Fabric Explorer 监视该容器。
+5. **仅限安全群集：**若要从 Jenkins 在安全群集上配置应用程序的部署，必须可从 Jenkins 容器中访问证书。 在 Linux 群集上，证书 (PEM) 只是从 X509StoreName 指定的存储中复制到容器中。 在 ContainerHostPolicies 下的 ApplicationManifest 中，添加此证书引用并更新指纹值。 指纹值必须是节点上的证书的指纹。
+  ```xml
+  <CertificateRef Name="MyCert" X509FindValue="[Thumbprint]"/>
+  ```
+  > [!NOTE]
+  > 指纹值必须与连接到安全群集所用的证书的指纹相同。 
+  >
 
-   > [!NOTE]
-   > 可能需要几分钟时间在群集上下载 Jenkins 映像。
-   >
+6. 连接到群集并安装容器应用程序。
+
+  **安全群集**
+  ```sh
+  sfctl cluster select --endpoint https://PublicIPorFQDN:19080  --pem [Pem] --no-verify # cluster connect command
+  bash Scripts/install.sh
+  ```
+
+  **非安全群集**
+  ```sh
+  sfctl cluster select --endpoint http://PublicIPorFQDN:19080 # cluster connect command
+  bash Scripts/install.sh
+  ```
+
+  这会在群集上安装 Jenkins 容器，可以使用 Service Fabric Explorer 监视该容器。
+
+    > [!NOTE]
+    > 可能需要几分钟时间在群集上下载 Jenkins 映像。
+    >
 
 ### <a name="steps"></a>步骤
 1. 在浏览器中转到 ``http://PublicIPorFQDN:8081``。 该 URL 提供了登录时所需的初始管理员密码的路径。 
@@ -112,8 +129,8 @@ ssh user@PublicIPorFQDN -p [port]
 现在，在终端中运行 ``docker info`` 时，输出中应会显示 Docker 服务正在运行。
 
 ### <a name="steps"></a>步骤
-  1. 拉取 Service Fabric Jenkins 容器映像：``docker pull raunakpandya/jenkins:9``
-  2. 运行容器映像：``docker run -itd -p 8080:8080 raunakpandya/jenkins:v9``
+  1. 拉取 Service Fabric Jenkins 容器映像：``docker pull sayantancs/jenkins:v9``
+  2. 运行容器映像：``docker run -itd -p 8080:8080 sayantancs/jenkins:v9``
   3. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器
   4. 执行以下步骤登录到 Jenkins 门户：
 
@@ -176,13 +193,19 @@ ssh user@PublicIPorFQDN -p [port]
 
     ![Service Fabric Jenkins 生成操作][build-step-dotnet]
   
-   h. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 此处需要提供有关在何处部署 Jenkins 编译的 Service Fabric 应用程序的群集详细信息。 还可以提供其他用于部署应用程序的应用程序详细信息。 有关工作方式的示例，请参阅以下屏幕截图：
+   h. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 此处需要提供有关在何处部署 Jenkins 编译的 Service Fabric 应用程序的群集详细信息。 可以通过从容器内部回显 echo Certificates_JenkinsOnSF_Code_MyCert_PEM 环境变量的值找到证书的路径。 此路径可用于客户端密钥和客户端证书字段。
+
+      ```sh
+      echo $Certificates_JenkinsOnSF_Code_MyCert_PEM
+      ```
+   
+    还可以提供其他用于部署应用程序的应用程序详细信息。 有关工作方式的示例，请参阅以下屏幕截图：
 
     ![Service Fabric Jenkins 生成操作][post-build-step]
 
-    > [!NOTE]
-    > 如果使用 Service Fabric 部署 Jenkins 容器映像，此处的群集可与托管 Jenkins 容器应用程序的群集相同。
-    >
+      > [!NOTE]
+      > 如果使用 Service Fabric 部署 Jenkins 容器映像，此处的群集可与托管 Jenkins 容器应用程序的群集相同。
+      >
 
 ## <a name="next-steps"></a>后续步骤
 现已配置 GitHub 和 Jenkins。 请考虑对存储库示例 https://github.com/sayantancs/SFJenkins 中的 ``MyActor`` 项目进行一些示例更改。 将更改推送到远程 ``master`` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 ``MyJob``。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集终结点。  

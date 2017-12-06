@@ -20,16 +20,19 @@
  
 ## 管理
 ### [使用 Azure PowerShell 进行管理](cdn-manage-powershell.md)
+### [按国家/地区限制访问](cdn-restrict-access-by-country.md)
+### [通过压缩文件来提高性能](cdn-improve-performance.md)
+### 控制缓存行为
+#### [缓存工作原理](cdn-how-caching-works.md)
+#### [使用缓存规则控制缓存行为](cdn-caching-rules.md)
+#### 使用查询字符串缓存内容
+##### [标准层](cdn-query-string.md)
+##### [高级层](cdn-query-string-premium.md)
+#### [清除缓存资产](cdn-purge-endpoint.md)
+#### [预加载缓存资产](cdn-preload-endpoint.md)
 ### 配置生存时间
 #### [Azure Web 内容](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Azure Blob 存储](cdn-manage-expiration-of-blob-content.md)
-### [按国家/地区限制访问](cdn-restrict-access-by-country.md)
-### [通过压缩文件来提高性能](cdn-improve-performance.md)
-### 使用查询字符串缓存内容
-#### [标准层](cdn-query-string.md)
-#### [高级层](cdn-query-string-premium.md)
-### [清除缓存资产](cdn-purge-endpoint.md)
-### [预加载缓存资产](cdn-preload-endpoint.md)
 ### [令牌身份验证](cdn-token-auth.md)
 ### [监视资源](cdn-resource-health.md)
 ### [用规则覆盖行为](cdn-rules-engine.md)

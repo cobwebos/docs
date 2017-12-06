@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: c5c93c8e8d108a9a5a29477a532d682659c9d512
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ddac8feedc8ded73e0f436c1e5dd6391016943a9
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/23/2017
 | 将短信用作第二个因素 |● |● |● |
 | 不支持 MFA 的客户端的应用密码 |● |● |● |
 | 管理员控制验证方法 |● |● |● |
-| 使用 MFA 保护非管理员帐户 | | |● |
+| 使用 MFA 保护非管理员帐户 |●（仅适用于 Office 365 应用程序） | |● |
 | PIN 模式 | | |● |
 | 欺诈警报 | | |● |
 | MFA 报告 | | |● |

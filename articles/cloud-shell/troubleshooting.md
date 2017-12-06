@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 59aec1cb6433e90caf683b4bce98c92e9f79fd18
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 233569303ea3651192aafe9681f58a9582625d29
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Azure Cloud Shell 故障排除
 
@@ -64,8 +64,9 @@ Azure Cloud Shell 中问题的已知解决方法包括：
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
-- **详细信息**：如果用户启动 GUI 应用，提示符不会返回。 例如，当用户克隆已启用双因素身份验证的专用 GitHub 存储库时，会显示用于完成双因素身份验证的对话框。
-- **解决方法**：按 `Ctrl+C` 退出命令。
+- **详细信息**：如果用户启动 GUI 应用，提示符不会返回。 例如，当用户克隆已启用双因素身份验证的专用 GitHub 存储库时，会显示用于完成双因素身份验证的对话框。  
+- **解决方法**：关闭再重新打开 shell。
+
 
 ### <a name="get-help--online-does-not-open-the-help-page"></a>运行 Get-help -online 不会打开帮助页
 

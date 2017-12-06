@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: billgib
-ms.openlocfilehash: 094189e08002ce8d4a2f4f92a8c112eaf18ebe13
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 2a36df0e45af5bcce5338d04b7e1ba44221ae964
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 
@@ -63,15 +63,15 @@ ms.lasthandoff: 11/20/2017
 
 - 独立应用：
     - [独立应用模式的教程][docs-tutorials-for-wingtip-sa]。
-    - [Github 上的独立应用模式的代码][github-code-for-wingtip-sa]。
+    - [GitHub 上的独立应用模式的代码][github-code-for-wingtip-sa]。
 
 - 每个租户一个数据库：
     - [“每个租户一个数据库”模式的教程][docs-tutorials-for-wingtip-dpt]。
-    - [Github 上的“每个租户一个数据库”模式的代码][github-code-for-wingtip-dpt]。
+    - [GitHub 上的“每个租户一个数据库”模式的代码][github-code-for-wingtip-dpt]。
 
 - 分片式多租户：
     - [分片式多租户模式的教程][docs-tutorials-for-wingtip-mt]。
-    - [Github 上的分片式多租户模式的代码][github-code-for-wingtip-mt]。
+    - [GitHub 上的分片式多租户模式的代码][github-code-for-wingtip-mt]。
 
 
 

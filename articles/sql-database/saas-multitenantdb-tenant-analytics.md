@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: ec93bbb477a047a028328964d3e152c1ab4bb58f
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 549b6abf5728e50ee365f40326263d391e4b26fd
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>使用提取的数据运行跨租户分析
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/21/2017
 若要完成本教程，请确保满足以下先决条件：
 
 - 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)。
-- 已从 GitHub 下载 Wingtip SaaS 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。
+- 已从 GitHub 下载 Wingtip SaaS 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](saas-multitenantdb-provision-and-catalog.md)。
 - 已创建作业帐户和作业帐户数据库。 请参阅[**架构管理教程**](saas-multitenantdb-schema-management.md#create-a-job-account-database-and-new-job-account)中的相应步骤。

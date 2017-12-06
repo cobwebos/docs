@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: damaerte
-ms.openlocfilehash: 66d0e20d670e49cdfe64614d1fc6f5739fde6155
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d0bc16bc951fce17235d8070012de44ebab89888
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
 ## <a name="how-powershell-in-azure-cloud-shell-preview-works"></a>PowerShell in Azure Cloud Shell（预览版）工作原理
 PowerShell in Cloud Shell（预览版）通过以下方法持久保存文件： 
-* 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。
+* 将指定的 Azure 文件共享装载为 `$Home` 目录中的 `clouddrive`，以便直接进行文件共享交互。
 
-## <a name="list-cloud-drive-file-shares"></a>列出云驱动器文件共享
-`Get-CloudDrive` 命令检索云驱动器当前在 Cloud Shell 中装载的文件共享信息。 <br>
+## <a name="list-cloud-drive-azure-file-shares"></a>列出云驱动器 Azure 文件共享
+`Get-CloudDrive` 命令检索云驱动器当前在 Cloud Shell 中装载的 Azure 文件共享信息。 <br>
 ![运行 Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
 ## <a name="unmount-cloud-drive"></a>卸载云驱动器
-随时可以卸载已装载到 Cloud Shell 的文件共享。 如果删除了文件共享，则在下一个会话中，系统会提示创建并装载一个新的文件共享。
+随时可以卸载已装载到 Cloud Shell 的 Azure 文件共享。 如果删除了 Azure 文件共享，则在下一个会话中，系统会提示创建并装载一个新的 Azure 文件共享。
 
-`Dismount-CloudDrive` 命令从当前存储帐户中卸载文件共享。 卸载云驱动器会终止当前会话。 在下一次会话期间，系统会提示用户创建并装载新的文件共享。
+`Dismount-CloudDrive` 命令从当前存储帐户中卸载 Azure 文件共享。 卸载云驱动器会终止当前会话。 在下一次会话期间，系统会提示用户创建并装载新的 Azure 文件共享。
 ![运行 Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!include [features-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
 ## <a name="next-steps"></a>后续步骤
 [PowerShell 快速入门](quickstart-powershell.md) <br>
-[了解 Azure 文件存储](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[了解 Azure 文件](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
 [了解存储标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

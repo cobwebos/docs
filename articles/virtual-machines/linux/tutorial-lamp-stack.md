@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: c00e6a190633348411f47490808739d570cafd69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8fcf411db844e227e0c4db0e690a1832f98b42f1
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="install-a-lamp-web-server-on-an-azure-vm"></a>在 Azure VM 上安装 LAMP Web 服务器
 本文逐步讲解如何在 Azure 中的 Ubuntu VM 上部署 Apache Web 服务器、MySQL 和 PHP（LAMP 堆栈）。 如果想要部署 NGINX Web 服务器，请参阅 [LEMP 堆栈](tutorial-lemp-stack.md)教程。 若要了解 LAMP 服务器的运作情况，可以选择性地安装并配置 WordPress 站点。 本教程介绍如何执行下列操作：
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 > * 在 LAMP 服务器上安装 WordPress
 
 
-有关 LAMP 堆栈的详细信息，包括针对生产环境的建议，请参阅 [Ubuntu 文档](https://help.ubuntu.com/community/ApacheMySQLPHP)。
+此设置用于快速测试或概念证明。 有关 LAMP 堆栈的详细信息，包括针对生产环境的建议，请参阅 [Ubuntu 文档](https://help.ubuntu.com/community/ApacheMySQLPHP)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -42,13 +42,12 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="install-apache-mysql-and-php"></a>安装 Apache、MySQL 和 PHP
 
-运行以下命令更新 Ubuntu 包源并安装 Apache、MySQL 和 PHP。 请注意命令末尾的插入符号 (^)。
+运行以下命令更新 Ubuntu 包源并安装 Apache、MySQL 和 PHP。 请注意命令末尾的脱字号 (^)，它是 `lamp-server^` 包名称的一部分。 
 
 
 ```bash
 sudo apt update && sudo apt install lamp-server^
 ```
-
 
 
 系统会提示安装包和其他依赖项。 出现提示时，请为 MySQL 设置 root 密码，并按 [Enter] 继续。 遵照剩余的提示操作。 此股从会安装最低要求的 PHP 扩展，这些扩展是通过 MySQL 使用 PHP 所必需的。 
@@ -78,15 +77,15 @@ apache2 -v
 mysql -V
 ```
 
-建议运行以下脚本来帮助保护 MySQL 的安装：
+若要帮助保护 MySQL 的安装，请运行 `mysql_secure_installation` 脚本。 如果只是设置临时服务器，则可以跳过此步骤。
 
 ```bash
 mysql_secure_installation
 ```
 
-输入 MySQL root 密码，并配置环境的安全设置。
+输入 MySQL 的 root 密码，并配置环境的安全设置。
 
-如果想要创建 MySQL 数据库，请添加用户或更改配置设置，并登录到 MySQL：
+如果想要试用 MySQL 功能（创建 MySQL 数据库、添加用户或更改配置设置），请登录到 MySQL。 此步骤非本教程必需步骤。
 
 ```bash
 mysql -u root -p

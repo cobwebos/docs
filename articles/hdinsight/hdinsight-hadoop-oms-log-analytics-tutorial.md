@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: nitinme
-ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>使用 Azure Log Analytics 监视 HDInsight 群集
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/18/2017
 
 * Log Analytics 工作区。 可将工作区视为独特的 Log Analytics 环境，其中包含自身的数据存储库、数据源和解决方案。 必须具有一个已创建的此类工作区，该工作区可以与 Azure HDInsight 群集关联。 有关说明，请参阅[创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)。
 
-## <a name="configure-hdinsight-cluster-to-use-log-analytics"></a>配置 HDInsight 群集以使用 Log Analytics
+## <a name="enable-log-analytics-by-using-the-portal"></a>使用门户启用 Log Analytics
 
 在本部分中，将配置现有 HDInsight Hadoop 群集，以使用 Azure Log Analytics 工作区来监视作业、调试日志等等。
 
@@ -62,6 +62,25 @@ ms.lasthandoff: 11/18/2017
 6. 在系统提示时输入 Azure 凭据。
 
     ![Operations Management Suite 门户](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-oms-portal.png "Operations Management Suite portal")
+
+## <a name="enable-log-analytics-by-using-azure-powershell"></a>使用 Azure PowerShell 启用 Log Analytics
+
+可以使用 Azure PowerShell 启用 Log Analytics。 cmdlet 为：
+
+```powershell
+Enable-AzureRmHDInsightOperationsManagementSuite
+```
+
+请参阅 [Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0)。
+
+若要禁用，cmdlet 为： 
+
+```powershell
+Disable-AzureRmHDInsightOperationsManagementSuite
+```
+
+请参阅 [Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0)。
+
 
 ## <a name="next-steps"></a>后续步骤
 * [将 HDInsight 群集管理解决方案添加到 Log Analytics](hdinsight-hadoop-oms-log-analytics-management-solutions.md)

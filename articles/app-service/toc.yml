@@ -13,8 +13,10 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 .NET 应用
+    - name: 创建 .NET Core 应用
       href: app-service-web-get-started-dotnet.md
+    - name: 创建 .NET Framework 应用
+      href: app-service-web-get-started-dotnet-framework.md
     - name: 创建 Node.js 应用
       href: app-service-web-get-started-nodejs.md
     - name: 创建 PHP 应用

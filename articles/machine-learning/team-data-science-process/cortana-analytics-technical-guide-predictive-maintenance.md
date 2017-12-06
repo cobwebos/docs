@@ -14,50 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 03ae6245e83c1f26546ec2a33c74dc9519847d7b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
-## <a name="important"></a>**重要说明**
-此文已弃用。 讨论仍与手头的问题相关，即航天工业的预测性维护，但如果需要最新信息，请参阅 [Solution Overview for Business Audiences](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)（面向商业受众的解决方案概述）。
+>[!Important]
+此文已弃用。 讨论仍与航天工业的预测性维护相关，但如果需要最新信息，请参阅[面向商业受众的解决方案概述](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)。
 
-## <a name="acknowledgements"></a>**致谢**
-本文由数据科学家 Yan Zhang、Gauher Shaheen、Fidan Boylu Uz 和 Microsoft 软件工程师 Dan Grecoe 共同编写。
 
-## <a name="overview"></a>**概述**
-解决方案模板可加速在 Cortana Intelligence Suite 上构建 E2E 演示的过程。 已部署的模板使用所需的 Cortana Intelligence 组件预配订阅，并在两者之间建立关系。 它还使用从数据生成器应用程序生成的数据示例来设定数据管道的种子（会在部署解决方案模板后在本地计算机上下载和安装数据生成器应用程序）。 生成器生成的数据将生成数据管道，并开始生成机器学习预测，然后可在 Power BI 仪表板上将其可视化。 部署过程会逐步引导用户完成设置解决方案凭据的多个步骤。 请务必记下凭据，例如在部署期间提供的解决方案名称、用户名和密码。  
+解决方案模板可加速在 Cortana Intelligence Suite 上构建 E2E 演示的过程。 已部署的模板使用所需的 Cortana Intelligence 组件预配订阅，并在两者之间建立关系。 它还使用从数据生成器应用程序中的数据示例来设定数据管道的种子（会在部署解决方案模板后在本地计算机上下载和安装数据生成器应用程序）。 生成器中的数据将生成数据管道，并开始生成机器学习预测，然后可在 Power BI 仪表板上将其可视化。
 
-本文档的目的是介绍参考体系结构和在订阅中作为此解决方案模板的一部分预配的组件，并说明如何将示例数据替换为自己的数据，以及如何修改解决方案模板。  
+部署过程会逐步引导用户完成设置解决方案凭据的多个步骤。 请务必记下这些凭据，例如在部署期间提供的解决方案名称、用户名和密码。 
+
+
+本文的目标是：
+- 介绍订阅中预配的参考体系结构和组件。
+- 演示如何将示例数据替换为自己的数据。 
+- 演示如何修改解决方案模板。  
 
 > [!TIP]
-> 可下载和打印[本文档的 PDF 版本](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)。
+> 可下载和打印[本文的 PDF 版本](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)。
 > 
 > 
 
-## <a name="overview"></a>**概述**
+## <a name="overview"></a>概述
 ![预见性维护体系结构](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
-部署解决方案时，会激活 Cortana Analytics Suite 中的 Azure 服务（事件中心、流分析、HDInsight、数据工厂、机器学习，等等）。 体系结构图展示了如何构造航天工业预测性维护解决方案模板。 可以通过在与解决方案部署一起创建的解决方案模板图表上单击 Azure 门户中的服务对其进行调查（HDInsight 除外，该服务是在要求相关管道活动运行时按需预配的，且随后进行了删除）。
+部署解决方案时，会激活 Cortana Analytics Suite 中的 Azure 服务（包括事件中心、流分析、HDInsight、数据工厂和机器学习）。 体系结构图展示了如何构造航天工业预测性维护解决方案模板。 可以通过在与解决方案部署一起创建的解决方案模板图表上单击 Azure 门户中的服务对其进行调查（HDInsight 除外，该服务是在要求相关管道活动运行时按需预配的，且随后进行了删除）。
 下载[图表的完全尺寸版本](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。
 
 以下部分介绍解决方案部分。
 
-## <a name="data-source-and-ingestion"></a>**数据源和引入**
+## <a name="data-source-and-ingestion"></a>数据源和引入
 ### <a name="synthetic-data-source"></a>综合数据源
-对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。 在解决方案模板图表上选择名为“预测性维护数据生成器”的第一个节点时，可以在属性栏中找到下载及安装此应用程序的说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)中的公开可用数据派生的。
+对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。
+
+若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)中的公开可用数据派生的。
 
 仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。
 
 ### <a name="azure-event-hub"></a>Azure 事件中心
 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)服务是综合数据源提供的输入接收者。
 
-## <a name="data-preparation-and-analysis"></a>**数据准备和分析**
+## <a name="data-preparation-and-analysis"></a>数据准备和分析
 ### <a name="azure-stream-analytics"></a>Azure 流分析
-使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)服务可为来自 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析，将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储](https://azure.microsoft.com/services/storage/)服务中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
+使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)对 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析。 然后可将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储服务](https://azure.microsoft.com/services/storage/)中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight 自定义聚合
 使用 HDInsight 运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析服务存档的原始事件聚合。
@@ -65,15 +70,15 @@ ms.lasthandoff: 11/17/2017
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定飞机引擎（根据收到的输入数据）的剩余使用寿命 (RUL)。 
 
-## <a name="data-publishing"></a>**数据发布**
-### <a name="azure-sql-database-service"></a>Azure SQL 数据库服务
-使用 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储（由 Azure 数据工厂管理）在 [Power BI](https://powerbi.microsoft.com) 仪表板中使用的 Azure 机器学习服务收到的预测数据。
+## <a name="data-publishing"></a>数据发布
+### <a name="azure-sql-database"></a>Azure SQL 数据库
+使用 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储在 [Power BI](https://powerbi.microsoft.com) 仪表板中使用的 Azure 机器学习服务收到的预测数据。
 
-## <a name="data-consumption"></a>**数据使用**
+## <a name="data-consumption"></a>数据使用
 ### <a name="power-bi"></a>Power BI
-使用 [Power BI](https://powerbi.microsoft.com) 服务显示仪表板，其中包含 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)服务提供的聚合和警报，以及 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)中存储的、使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务生成的 RUL 预测。
+使用 [Power BI](https://powerbi.microsoft.com) 显示仪表板，其中包含 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)提供的聚合和警报，以及 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)中存储的、使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)生成的 RUL 预测。
 
-## <a name="how-to-bring-in-your-own-data"></a>**如何输入自己的数据**
+## <a name="how-to-bring-in-your-own-data"></a>如何输入自己的数据
 本部分说明如何将自己的数据输入 Azure，以及对于放入此体系结构的数据，需要更改哪些方面。
 
 你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
@@ -81,7 +86,7 @@ ms.lasthandoff: 11/17/2017
 以下部分介绍引入新数据集需要修改的模板部分。
 
 ### <a name="azure-event-hub"></a>Azure 事件中心
-Azure 事件中心服务支持丰富的格式，可以使用 CSV 或 JSON 格式将数据发布到中心。 Azure 事件中心对数据不做任何特殊处理，但用户必须了解提供的数据。
+Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数据发布到中心。 Azure 事件中心对数据不做任何特殊处理，但用户必须了解提供的数据。
 
 本文档不会介绍如何引入数据，但可以使用事件中心 API，轻松将事件或数据发送到 Azure 事件中心。
 
@@ -142,7 +147,7 @@ Azure 事件中心服务支持丰富的格式，可以使用 CSV 或 JSON 格式
 
 有关 如何创建 Azure 机器学习试验的信息，请参阅[预见性维护：步骤 1（共 3 步），数据准备和特征设计](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)。
 
-## <a name="monitor-progress"></a>**监视进度**
+## <a name="monitor-progress"></a>监视进度
 启动数据生成器后，管道将开始冻结，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
 
 1. 某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，则会转到 [Azure 门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 随后出现的面板中有 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到名为 hour=17、hour=18 等的文件夹。 存在这些文件夹表明原始数据正在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
@@ -152,7 +157,7 @@ Azure 事件中心服务支持丰富的格式，可以使用 CSV 或 JSON 格式
    
     可在此处单击“新建查询”并查询行数（例如，select count(*) from PMResult）。 表中的行数会随数据库的增长而增加。
 
-## <a name="power-bi-dashboard"></a>**Power BI 仪表板**
+## <a name="power-bi-dashboard"></a>Power BI 仪表板
 
 设置 Power BI 仪表板，可视化 Azure 流分析数据（热路径）以及来自 Azure 机器学习（冷路径）的批量预测结果。
 
@@ -227,10 +232,10 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
    * 单击折线图右上角的“固定视觉对象”图标。 可能会显示“固定到仪表板”窗口让你选择仪表板。 选择“预测性维护演示”，然后单击“固定”。
    * 在仪表板上将鼠标悬停在此磁贴上，单击右上角的“编辑”图标，将其标题更改为“传感器 11 车队视图与阈值 48.26”，将副标题更改为“时间段内车队平均数”。
 
-## <a name="how-to-delete-your-solution"></a>**如何删除解决方案**
-在不经常使用解决方案的情况下，请务必停止数据生成器，因为运行数据生成器会产生较高的费用。 如果不使用解决方案，请将其删除。 删除解决方案会删除部署该解决方案时在订阅中预配的所有组件。 要删除解决方案，请在解决方案模板左侧面板中单击该解决方案的名称，并单击“删除”。
+## <a name="delete-your-solution"></a>删除解决方案
+在不经常使用解决方案的情况下，请务必停止数据生成器，因为运行数据生成器会产生较高的费用。 如果不使用解决方案，请将其删除。 删除解决方案会删除部署该解决方案时在订阅中预配的所有组件。 若要删除解决方案，请在解决方案模板左侧面板中单击该解决方案的名称，并单击“删除”。
 
-## <a name="cost-estimation-tools"></a>**成本估算工具**
+## <a name="cost-estimation-tools"></a>成本估算工具
 以下两个工具可帮助进一步了解在订阅中运行航天工业预见性维护的解决方案模板产生的总成本：
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: 660fe4fb9f962c835de9a2f900ceaabb4371b0db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -154,6 +154,21 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 ### <a name="solution"></a>解决方案
 
 若要解决此问题，请使用 [Troubleshooting tool for Azure Files mounting errors on Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)（用于 Linux 上 Azure 文件装载错误的故障排除工具）。 此工具可在以下方面提供帮助：验证客户端运行环境，检测会导致 Azure 文件访问失败的不兼容客户端配置，为自行修复提供规范指导，以及收集诊断跟踪。
+
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;': 输入/输出错误
+
+尝试使用 ls 命令列出 Azure 文件共享中的文件时，ls 命令挂起并出现以下错误：
+
+**ls: 无法访问 '&lt;path&gt;': 输入/输出错误**
+
+
+### <a name="solution"></a>解决方案
+将 Linux 内核升级到以下版本即可解决此问题：
+
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
+- 4.13 或更高的所有版本
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 

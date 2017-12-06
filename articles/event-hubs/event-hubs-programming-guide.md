@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/16/2017
 ms.author: sethm
-ms.openlocfilehash: 69c07cb31b1dc3ec3685448d8187ef3a57bd3821
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7d5f14d5a65253cf0aad1811ace419bf2f39f7db
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="event-hubs-programming-guide"></a>事件中心编程指南
 
@@ -117,10 +117,10 @@ var client = factory.CreateEventHubClient("MyEventHub");
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-请注意，单个批不能超过事件的 256-KB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。
+请注意，单个批不能超过事件的 256 KB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) 来确保批不超过 256 KB。 从 [CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch)，然后使用 [TryAdd](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.tryadd#Microsoft_ServiceBus_Messaging_EventDataBatch_TryAdd_Microsoft_ServiceBus_Messaging_EventData_) 添加事件来构造批。 最后，使用 [EventDataBatch.ToEnumerable](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.toenumerable) 获取要传递给 [EventHubClient.Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send) API 的底层事件。
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
-也可以通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 可以在异步版本中使用返回 [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) 对象的 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 和 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) 方法。 尽管此方法可以提高吞吐量，但它也会导致即使事件中心服务施加了限制，客户端也仍会继续发送事件，并可能导致客户端在未正常实现时发生失败或丢失消息。 此外，可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) 属性来控制客户端重试选项。
+也可以通过异步方式将事件发送到事件中心。 以异步方式发送可以增大客户端发送事件的速率。 可以在异步版本中使用返回 [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) 对象的 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send) 和 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendbatch) 方法。 尽管此方法可以提高吞吐量，但它也会导致即使事件中心服务施加了限制，客户端也仍会继续发送事件，并可能导致客户端在未正常实现时发生失败或丢失消息。 此外，可以在客户端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity.retrypolicy) 属性来控制客户端重试选项。
 
 ## <a name="create-a-partition-sender"></a>创建分区发送者
 尽管不使用分区键将事件发送到事件中心是最常见的情况，但在某些情况下，可能需要将事件直接发送到给定的分区。 例如：

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2017
+ms.date: 11/29/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 585e0ab016dcf489ab99f30a9db43b879a8d3070
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 11f3a3fdc5caf96ce672976067e47680822315d4
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>配置 Azure 多重身份验证设置 - 公共预览版
 
@@ -170,21 +170,40 @@ ms.lasthandoff: 11/23/2017
 
 无论是否启用了“受信任的 IP”，浏览器流都要求进行双重验证，较旧的丰富客户端应用都要求提供应用密码。 
 
-### <a name="to-enable-trusted-ips"></a>启用受信任的 IP
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧选择“Active Directory”。
-3. 选择要管理的目录。 
-4. 选择“配置”
-5. 在“多重身份验证”下，选择“管理服务设置”。
-6. 在“服务设置”页上，在“受信任的 IP”下有两个选项：
+### <a name="enable-named-locations-using-conditional-access"></a>使用条件访问启用命名位置
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧选择“Azure Active Directory” > “条件访问” > “命名位置”
+3. 选择“新建位置”
+4. 提供位置的名称
+5. 选择“标记为受信任位置”
+6. 以 CIDR 表示法指定 IP 范围（示例 192.168.1.1/24）
+7. 选择“创建”
+
+### <a name="enable-trusted-ips-using-conditional-access"></a>使用条件访问启用受信任 IP
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧选择“Azure Active Directory” > “条件访问” > “命名位置”
+3. 选择“配置 MFA 受信任的 IP”
+4. 在“服务设置”页上，在“受信任的 IP”下有两个选项：
    
-   * **对于联合用户从我的 Intranet 发起的请求** – 选中此框。 所有从公司网络登录的联合用户都将使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果该规则尚不存在，应在 AD FS 中创建以下规则：“c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);”
-
-
+   * **对于联合用户从我的 Intranet 发起的请求** – 选中此框。 所有从公司网络登录的联合用户都将使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果该规则尚不存在，应在 AD FS 中创建以下规则：“c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);”
 
    * **对于来自特定公共 IP 范围的请求** – 使用 CIDR 表示法在提供的文本框中输入 IP 地址。 例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。 最多可以输入 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
-7. 单击“保存” 。
-8. 应用更新后，单击“关闭”。
+5. 选择“保存”。
+
+### <a name="enable-trusted-ips-using-service-settings"></a>使用服务设置启用受信任 IP
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”
+3. 选择“多重身份验证”
+4. 在“多重身份验证”下，选择“服务设置”。
+5. 在“服务设置”页上，在“受信任的 IP”下有两个选项：
+   
+   * **对于联合用户从我的 Intranet 发起的请求** – 选中此框。 所有从公司网络登录的联合用户都将使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果该规则尚不存在，应在 AD FS 中创建以下规则：“c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);”
+
+   * **对于来自特定公共 IP 范围的请求** – 使用 CIDR 表示法在提供的文本框中输入 IP 地址。 例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。 最多可以输入 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
+6. 选择“保存”。
 
 ![受信任的 IP](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
@@ -239,11 +258,10 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 ### <a name="allow-app-password-creation"></a>允许创建应用密码
 默认情况下，用户无法创建应用密码。 为此，必须启用此功能。 若要允许用户创建应用密码，请使用以下过程：
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧选择“Active Directory”。
-3. 选择要管理的目录。 
-4. 选择“配置”
-5. 在“多重身份验证”下，选择“管理服务设置”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”
+3. 选择“多重身份验证”
+4. 在“多重身份验证”下，选择“服务设置”。
 6. 选中“允许用户创建用于登录到非浏览器应用的应用密码”旁边的单选按钮。
 
 ![创建应用密码](./media/multi-factor-authentication-whats-next/trustedips3.png)
@@ -270,16 +288,16 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 >当用户通过 Azure MFA 服务器或第三方 MFA 解决方案向 AD FS 执行双重验证时，此功能与 AD FS 的“使我保持登录”功能不兼容。 如果用户在 AD FS 上选择“使我保持登录”，并且还将其设备标记为“受信任，可以跳过 MFA”，则在“记住 MFA”天数期满后，他们将不能验证。 Azure AD 将请求全新双重验证，但 AD FS 将返回包含原始 MFA 声明和日期的令牌，而不是重新执行双重验证。 这会引发 Azure AD 和 AD FS 之间的验证循环。 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>启用“记住多重身份验证”
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧选择“Active Directory”。
-3. 选择要管理的目录。 
-4. 选择“配置”
-5. 在“多重身份验证”下，选择“管理服务设置”。
-6. 在“服务设置”页上，在“管理用户设备设置”下，选中“允许用户在其信任的设备上记住多重身份验证”复选框。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”
+3. 选择“多重身份验证”
+4. 在“多重身份验证”下，选择“服务设置”。
+5. 在“服务设置”页上的“管理记住多重身份验证设置”下，选中“允许用户在其信任的设备上记住多重身份验证”复选框。
+
    ![记住设备](./media/multi-factor-authentication-whats-next/remember.png)
-7. 设置希望允许受信任设备免除双重验证的天数。 默认值为 14 天。
-8. 单击“保存” 。
-9. 单击“**关闭**”。
+
+6. 设置希望允许受信任设备免除双重验证的天数。 默认值为 14 天。
+7. 选择“保存”。
 
 ### <a name="mark-a-device-as-trusted"></a>将设备标记为受信任的
 
@@ -300,13 +318,12 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 | 通过移动应用发送验证码 |Microsoft Authenticator 应用每隔 30 秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。<br>Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。 |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>如何启用/禁用身份验证方法
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧选择“Active Directory”。
-3. 选择要管理的目录。 
-4. 选择“配置”
-5. 在“多重身份验证”下，选择“管理服务设置”。
-6. 在“服务设置”页上的验证选项下，选择/取消选择要使用的选项。
-   ![验证选项](./media/multi-factor-authentication-whats-next/authmethods.png)
-7. 单击“保存” 。
-8. 单击“**关闭**”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”
+3. 选择“多重身份验证”
+4. 在“多重身份验证”下，选择“服务设置”。
+5. 在“服务设置”页上的“验证选项”下，选择/取消选择要使用的选项。
 
+   ![验证选项](./media/multi-factor-authentication-whats-next/authmethods.png)
+
+6. 单击“保存” 。

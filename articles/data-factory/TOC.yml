@@ -34,7 +34,14 @@
     - name: 4 - 批量复制数据
       href: tutorial-bulk-copy.md
     - name: 5 - 以增量方式复制数据
-      href: tutorial-incremental-copy-powershell.md
+      href: tutorial-incremental-copy-overview.md
+      items:
+        - name: 5.1 - 从一个表复制
+          href: tutorial-incremental-copy-powershell.md
+        - name: 5.2 - 从多个表复制
+          href: tutorial-incremental-copy-multiple-tables-powershell.md
+        - name: 5.3 - 使用更改跟踪功能
+          href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 - 转换云中的数据
       href: tutorial-transform-data-spark-powershell.md
     - name: 7 - 转换虚拟网络中的数据
@@ -228,6 +235,16 @@
           href: create-azure-ssis-integration-runtime.md
         - name: 将 Azure-SSIS 集成运行时加入 VNET
           href: join-azure-ssis-integration-runtime-virtual-network.md
+    - name: 在 Azure 中运行 SSIS 包
+      items:
+        - name: 创建 Azure-SSIS 集成运行时
+          href: create-azure-ssis-integration-runtime.md
+        - name: 将 Azure-SSIS 集成运行时加入 VNET
+          href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: 管理 Azure-SSIS 集成运行时
+          href: manage-azure-ssis-integration-runtime.md
+        - name: 配置 Azure-SSIS 集成运行时性能
+          href: configure-azure-ssis-integration-runtime-performance.md
 - name: 引用
   items:
     - name: .NET

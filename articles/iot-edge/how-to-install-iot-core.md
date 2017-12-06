@@ -10,11 +10,11 @@ ms.reviewer: veyalla
 ms.date: 11/17/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b6c8e77b16d784373e392d0ac97094050677cb84
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: d3ff260b4ac238ce7aaa2a63538dede7bd21a19c
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>在 Windows IoT Core 上安装 IoT Edge 运行时 - 预览
 
@@ -50,7 +50,7 @@ Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板
    * Python 3.6
    * IoT Edge 控件脚本 (iotedgectl.exe)
 
-在远程 PowerShell 窗口中可能会看见 iotedgectl.exe 工具中的信息输出为红色。 这不一定表示错误。 
+在远程 PowerShell 窗口中可能会看见 iotedgectl.exe 工具中的信息输出为绿色。 这不一定表示错误。 
 
 ## <a name="next-steps"></a>后续步骤
 

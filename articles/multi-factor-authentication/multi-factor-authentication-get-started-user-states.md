@@ -15,11 +15,11 @@ ms.date: 06/26/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 6a0f8cb76684a6efcc5e2d4be05493f18d5d4c76
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b73b5e47e3e14742e5094b8b0e979de7835cb9c7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>如何要求对用户或组进行双重验证
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 11/15/2017
 
 Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
-| 状态 | 说明 | 受影响的非浏览器应用 |
-|:---:|:---:|:---:|
-| 已禁用 |未加入多重身份验证 (MFA) 的新用户的默认状态。 |否 |
-| Enabled |用户已加入 Azure MFA 但尚未注册。 系统会在用户下次登录时提示注册。 |否。  它们继续工作，直到注册过程完成。 |
-| 强制 |用户已加入，并已完成 Azure MFA 的注册过程。 |是的。  应用需要应用密码。 |
+| 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用和新式身份验证 |
+|:---:|:---:|:---:|:--:|
+| 已禁用 |未加入多重身份验证 (MFA) 的新用户的默认状态。 |否 |否 |
+| Enabled |用户已加入 Azure MFA 但尚未注册。 系统会在用户下次登录时提示注册。 |否。  它们继续工作，直到注册过程完成。 | 是的。 会话的刷新令牌过期后，需要进行 MFA 注册。|
+| 强制 |用户已加入，并已完成 Azure MFA 的注册过程。 |是的。  应用需要应用密码。 |是的。 登录时要求执行 MFA。 |
 
 用户的状态反映管理员是否已在 Azure MFA 中登记用户以及用户是否已完成注册过程。
 

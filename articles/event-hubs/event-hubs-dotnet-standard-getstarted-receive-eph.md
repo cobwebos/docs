@@ -1,5 +1,5 @@
 ---
-title: "使用 .NET Standard 从 Azure 事件中心接收事件 | Microsoft 文档"
+title: "使用 .NET Standard 库从 Azure 事件中心接收事件 | Microsoft Docs"
 description: "使用 .NET Standard 中的 EventProcessorHost 接收消息入门"
 services: event-hubs
 documentationcenter: na
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a88b5da8fa504e0528caa7fa212d4cec26d1cf66
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
 
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 上提供了此示例。
 
-本教程演示如何编写使用 **EventProcessorHost** 从事件中心接收消息的 .NET Core 控制台应用程序。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 解决方案，将字符串替换为事件中心和存储帐户的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
+本教程介绍如何编写 .NET Core 控制台应用程序，以使用**事件处理程序主机**库从事件中心接收消息。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 解决方案，将字符串替换为事件中心和存储帐户的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,18 +37,18 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心  
 
-第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤操作，并继续执行以下步骤。  
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作，并继续学习本教程。  
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户  
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
 2. 在门户的左侧导航窗格中，依次单击“新建”、“存储”和“存储帐户”。  
-3. 完成“存储帐户”边栏选项卡中的字段，并单击“创建”。
+3. 完成存储帐户窗口中的字段，并单击“创建”。
 
     ![创建存储帐户][1]
 
-4. 看到“部署成功”消息后，单击新存储帐户名。 在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 为容器指定名称，并关闭“Blob 服务”边栏选项卡。  
-5. 单击左侧边栏选项卡中的“访问密钥”，复制存储容器、存储帐户的名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。  
+4. 看到“部署成功”消息后，单击新存储帐户名。 在“概要”窗口中单击“Blob”。 “Blob 服务”对话框打开时，单击顶部的“+ 容器”。 为容器指定名称，并关闭“Blob 服务”。  
+5. 单击左侧窗口中的“访问密钥”，复制存储容器、存储帐户的名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。  
 
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-通过执行以下步骤，将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 和 [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET 标准库 NuGet 包添加到项目中： 
+遵循以下步骤，将 [**Microsoft.Azure.EventHubs**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 和 [**Microsoft.Azure.EventHubs.Processor**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET Standard 库 NuGet 包添加项目： 
 
 1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
 2. 单击“浏览”选项卡，然后搜索“Microsoft.Azure.EventHubs”，并选择“Microsoft.Azure.EventHubs”包。 单击“安装”以完成安装，并关闭此对话框。

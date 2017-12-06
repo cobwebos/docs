@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Functions 中的触发器和绑定 | Microsoft 文档"
+title: "使用 Azure Functions 中的触发器和绑定"
 description: "了解如何使用 Azure Functions 中的触发器和绑定将代码执行连接到联机事件和基于云的服务。"
 services: functions
 documentationcenter: na
@@ -8,26 +8,25 @@ manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
-ms.assetid: cbc7460a-4d8a-423f-a63e-1cd33fef7252
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e3413c9e1055ca9198dae4a467bcf47372ad4ecb
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 借助 Azure Functions，可以编写通过“触发器”和“绑定”响应 Azure 中的事件和其他服务的代码。 本文是所有支持编程语言的触发器和绑定的概念性概述。 此处介绍所有绑定通用的功能。
 
 ## <a name="overview"></a>概述
 
-触发器和绑定是一种声明性方式，用于定义函数的调用方式以及函数要使用的数据。 “触发器”定义函数的调用方式。 一个函数必须只有一个触发器。 触发器具有关联数据，该数据通常是触发函数的有效负载。 
+触发器和绑定是一种声明性方式，用于定义函数的调用方式以及函数要使用的数据。 “触发器”定义函数的调用方式。 一个函数必须只有一个触发器。 触发器具有关联数据，该数据通常是触发函数的有效负载。
 
 输入和输出“绑定”提供从代码内连接到数据的声明性方式。 与触发器类似，可在函数配置中指定连接字符串和其他属性。 绑定是可选项，一个函数可以有多个输入和输出绑定。 
 
@@ -35,11 +34,13 @@ ms.lasthandoff: 11/10/2017
 
 可以在 Azure Functions 门户的“集成”选项卡中配置触发器和绑定。 实际上，UI 会修改函数目录中名为“function.json”的文件。 可以通过转到“高级编辑器”来编辑此文件。
 
-下表显示受 Azure Functions 支持的触发器和绑定。 
+## <a name="supported-bindings"></a>支持的绑定
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-### <a name="example-queue-trigger-and-table-output-binding"></a>示例：队列触发器和表输出绑定
+有关哪些绑定处于预览状态或已批准在生产环境中使用的信息，请参阅[支持的语言](supported-languages.md)。
+
+## <a name="example-queue-trigger-and-table-output-binding"></a>示例：队列触发器和表输出绑定
 
 假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列触发器和 Azure 表存储输出绑定即可实现此方案。 
 
@@ -126,9 +127,9 @@ function generateRandomId() {
 
 有关与 Azure 存储集成的更多代码示例和详细信息，请参阅[适用于 Azure 存储的 Azure Functions 触发器和绑定](functions-bindings-storage.md)。
 
-### <a name="binding-direction"></a>绑定方向
+## <a name="binding-direction"></a>绑定方向
 
-所有触发器和绑定都有 `direction` 属性：
+所有触发器和绑定在 *function.json* 文件中都有一个 `direction` 属性：
 
 - 对于触发器，方向始终为 `in`
 - 输入和输出绑定使用 `in` 和 `out`
@@ -243,7 +244,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 相应参考主题中会详细介绍每种触发器的元数据属性。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
 
-例如，由于 blob 触发器有一些延迟，因此你可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#blob-storage-trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
+例如，由于 blob 触发器有一些延迟，因此你可以使用队列触发器运行函数（请参阅 [Blob 存储触发器](functions-bindings-storage-blob.md#trigger)）。 队列消息将包含要触发的 blob 文件名。 使用 `queueTrigger` 元数据属性，可以全部在配置（而不是代码）中指定此行为。
 
 ```json
   "bindings": [

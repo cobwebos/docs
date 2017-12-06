@@ -15,14 +15,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: ac0399867e0cdab1825022c4ed73ce003cc8c7e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
-本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 函数。 若要支持此方案，还必须在函数应用中设置数据库连接字符串。 该方案使用针对数据库的大容量操作。 若要让函数处理移动应用表中的单个 CRUD 操作，应改为使用[移动应用绑定](functions-bindings-mobile-apps.md)。
+本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
+
+若要让函数处理移动应用表中的单个创建、读取、更新和删除 (CRUD) 操作，应改为使用[移动应用绑定](functions-bindings-mobile-apps.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,7 +61,7 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
     | 设置       | 建议的值 | 说明             | 
     | ------------ | ------------------ | --------------------- | 
     | **Name**  |  sqldb_connection  | 用于访问函数代码中存储的连接字符串。    |
-    | **值** | 复制的字符串  | 使用在上一部分中复制的连接字符串。 |
+    | **值** | 复制的字符串  | 粘贴在上一部分复制的连接字符串，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 |
     | **类型** | SQL 数据库 | 使用默认的 SQL 数据库连接。 |   
 
 3. 单击“保存” 。
@@ -84,7 +86,7 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
     using System.Threading.Tasks;
     ```
 
-4. 将现有 **Run** 函数替换为以下代码：
+4. 将现有 `Run` 函数替换为以下代码：
     ```cs
     public static async Task Run(TimerInfo myTimer, TraceWriter log)
     {
@@ -105,7 +107,7 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
     }
     ```
 
-    此示例命令会根据装运日期更新“状态”列。 应更新 32 行数据。
+    此示例命令会根据装运日期更新 `Status` 列。 应更新 32 行数据。
 
 5. 单击“保存”，查看下一次执行函数时的“日志”窗口，请注意 SalesOrderHeader 表中更新的行数。
 

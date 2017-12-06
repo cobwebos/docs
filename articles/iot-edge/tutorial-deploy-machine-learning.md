@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9b8475dcc51fb24fadd1faa4a2008b25a4464080
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: e061e599f365bf3d343cb59b8dc6a61e06627517
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
@@ -46,10 +46,10 @@ ms.lasthandoff: 11/15/2017
 1. 也可以在“添加模块”步骤中，再次选择“添加 IoT Edge 模块”。
 1. 在“名称”字段中，输入在上一节中设定的容器名称。 请参阅 [Azure IoT Edge 的 AI 工具包](https://aka.ms/aml-iot-edge-anomaly-detection)来帮助查找名称。
 1. 在“映像”字段中，输入在上一节中设定的容器的映像 URI。 请参阅 [Azure IoT Edge 的 AI 工具包](https://aka.ms/aml-iot-edge-anomaly-detection)来帮助查找映像。
-1. 单击“保存”。
+1. 单击“保存” 。
 1. 返回到“添加模块”步骤，单击“下一步”。
 1. 更新模块路由：
-1. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 这些模块会将所有消息发布到 Edge 运行时。 此运行时中的声明性规则将定义这些消息流经的位置。 本教程需要两个路由。 第一个路由通过“mlInput”终结点将消息从温度传感器传输到机器学习模块，这是所有 Azure 机器学习模块都使用的终结点。 第二个路由会将消息从机器学习模块传输到 IoT 中心。 在此路由中，“mlOutput”是所有 Azure 机器学习模块用于输出数据的 endput，“upstream”则是一个特殊目标，告知 Edge 中心将消息发送到 IoT 中心。 
+1. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 这些模块会将所有消息发布到 Edge 运行时。 此运行时中的声明性规则将定义这些消息流经的位置。 本教程需要两个路由。 第一个路由通过“amlInput”终结点将消息从温度传感器传输到机器学习模块，这是所有 Azure 机器学习模块都使用的终结点。 第二个路由会将消息从机器学习模块传输到 IoT 中心。 在此路由中，“amlOutput”是所有 Azure 机器学习模块用于输出数据的终结点，“$upstream”则是一个特殊目标，告知 Edge 中心将消息发送到 IoT 中心。 
 
     ```json
     {
