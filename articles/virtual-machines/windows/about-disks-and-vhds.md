@@ -1,6 +1,6 @@
 ---
-title: "关于 Microsoft Azure Windows VM 的磁盘和 VHD | Microsoft Docs"
-description: "了解 Azure 中 Windows 虚拟机磁盘和 VHD 的基础知识。"
+title: "关于 Microsoft Azure Windows VM 的非托管（页 blob）和托管磁盘存储 | Microsoft 文档"
+description: "了解有关 Azure 中的 Windows 虚拟机的非托管（页 blob）和托管磁盘存储的基础知识。"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: b1beecf2e4268e358285c1101edcb13f6d592948
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a8dc028e2e872820a209bcdde5cca57853dd419
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="about-disks-and-vhds-for-azure-windows-vms"></a>关于 Azure Windows VM 的磁盘和 VHD
+# <a name="about-disks-storage-for-azure-windows-vms"></a>关于 Azure Windows VM 的磁盘存储
 就像其他任何计算机一样，Azure 中的虚拟机将磁盘用作存储操作系统、应用程序和数据的位置。 所有 Azure 虚拟机都至少有两个磁盘，即 Windows 操作系统磁盘和临时磁盘。 操作系统磁盘基于映像创建，操作系统磁盘和该映像都存储在 Azure 存储帐户中的虚拟硬盘 (VHD) 内。 虚拟机还可以有一个或多个数据磁盘，而这些磁盘也存储为 VHD。 
 
 本文介绍磁盘的不同用法，以及可以创建和使用的不同类型的磁盘。 本文也适用于 [Linux 虚拟机](../linux/about-disks-and-vhds.md)。
@@ -79,6 +79,8 @@ fsutil behavior set DisableDeleteNotify 0
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>后续步骤
-* [附加磁盘](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)可为 VM 添加额外的存储。
-* [更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，使应用程序能够将 D: 盘用于数据。
+* [附加磁盘](attach-disk-portal.md)可为 VM 添加额外的存储。
+* [创建快照](snapshot-copy-managed-disk.md)。
+* [转换为托管磁盘](convert-unmanaged-to-managed-disks.md)。
+
 

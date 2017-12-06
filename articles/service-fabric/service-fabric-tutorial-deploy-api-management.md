@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/10/2017
 ms.author: ryanwi
-ms.openlocfilehash: 97bcf312621ec0fed28e26179d4c4aa101a8a92d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b3bf91a7ae5ed70456352ecdba9c0324f20f3555
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>部署 API 管理与 Service Fabric
 本教程是一个系列中的第三部分。  使用 Service Fabric 部署 Azure API 管理是一个高级方案。  当需要使用一组丰富的路由规则为后端 Service Fabric 服务发布 API 时，API 管理非常有用。 云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 在 Service Fabric 中，网关可以是专为流量入口（如 APP.NET Core 应用程序、事件中心、IoT 中心或 Azure API 管理）设计的任意无状态服务。 
@@ -326,7 +326,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="conclusion"></a>结束语
+## <a name="next-steps"></a>后续步骤
 本教程介绍了如何：
 
 > [!div class="checklist"]
@@ -335,6 +335,10 @@ az group delete --name $ResourceGroupName
 > * 创建 API 操作
 > * 配置后端策略
 > * 将 API 添加到产品
+
+接下来，请转到以下教程了解如何升级群集运行时。
+> [!div class="nextstepaction"]
+> [升级 Azure Service Fabric 群集运行时](service-fabric-tutorial-upgrade-cluster.md)
 
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 

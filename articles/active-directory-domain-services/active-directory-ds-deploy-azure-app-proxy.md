@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: c158c67a82e12501386179e19bc75fd852d7e308
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 157a10277f89643245746223f2cd1d73680ac700
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
@@ -56,7 +56,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 
 ## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>任务 2 - 预配已加入域的 Windows 服务器，以部署 Azure AD 应用程序代理连接器
-需要可在其上安装 Azure AD 应用程序代理连接器的已加入域的 Windows Server 虚拟机。 根据所发布的应用程序，可以选择预配多个要在其上安装连接器的服务器。 此部署选项提供更好的可用性，并可帮助处理较重的身份验证负载。
+需要可在其上安装 Azure AD 应用程序代理连接器的已加入域的 Windows Server 虚拟机。 对于某些应用程序，可以选择预配多个要在其上安装连接器的服务器。 此部署选项提供更好的可用性，并可帮助处理较重的身份验证负载。
 
 在已启用 Azure AD 域服务托管域的同一虚拟网络（或连接/对等虚拟网络）中预配多个连接器服务器。 同样，托管通过应用程序代理发布的应用程序的服务器需要安装在同一 Azure 虚拟网络中。
 
@@ -99,11 +99,11 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>部署说明 - 使用 Azure AD 应用程序代理发布 IWA（集成 Windows 身份验证）应用程序
-通过授予应用程序代理连接器权限来模拟用户并代表用户发送和接收令牌，以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 为连接器配置 kerberos 约束委派 (KCD) 以授予访问托管域上的资源所需的权限。 在托管域上使用基于资源的 KCD 机制提高安全性。
+通过授予应用程序代理连接器权限来模拟用户并代表用户发送和接收令牌，以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 为连接器配置 Kerberos 约束委派 (KCD) 以授予访问托管域上的资源所需的权限。 在托管域上使用基于资源的 KCD 机制提高安全性。
 
 
-### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器启用基于资源的 kerberos 约束委派
-应针对 kerberos 约束委派 (KCD) 配置 Azure 应用程序代理连接器，使其可以模拟托管域上的用户。 在 Azure AD 域服务托管域上，没有域管理员权限。 因此，**无法在托管域上配置传统帐户级 KCD**。
+### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器启用基于资源的 Kerberos 约束委派
+应针对 Kerberos 约束委派 (KCD) 配置 Azure 应用程序代理连接器，使其可以模拟托管域上的用户。 在 Azure AD 域服务托管域上，没有域管理员权限。 因此，**无法在托管域上配置传统帐户级 KCD**。
 
 请使用基于资源的 KCD，如[此文](active-directory-ds-enable-kcd.md)中所述。
 
@@ -113,12 +113,12 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 >
 
 可使用 Get-ADComputer PowerShell cmdlet 检索要在其上安装 Azure AD 应用程序代理连接器的计算机的设置。
-```
+```powershell
 $ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
 ```
 
 此后，可使用 Set-ADComputer cmdlet 为资源服务器设置基于资源的 KCD。
-```
+```powershell
 Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 

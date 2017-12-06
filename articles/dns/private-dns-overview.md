@@ -3,8 +3,8 @@ title: "将 Azure DNS 用于专用域 | Microsoft Docs"
 description: "Microsoft Azure 上的专用 DNS 托管服务概述。"
 services: dns
 documentationcenter: na
-author: garbrad
-manager: 
+author: KumudD
+manager: jennoc
 editor: 
 ms.assetid: 
 ms.service: dns
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2017
-ms.author: garbrad
-ms.openlocfilehash: ed47a9d850995aaf9e78bfde8b6a5fd80dc36918
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/20/2017
+ms.author: kumud
+ms.openlocfilehash: 95cf8ab2bd34e698e12452e062687219bad49eb6
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="using-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。  除了面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。  
@@ -39,14 +39,14 @@ Azure DNS 提供了可靠、安全的 DNS 服务来管理和解析虚拟网络�
 
 * **虚拟网络之间的主机名解析。** 不同于 Azure 提供的主机名，专用 DNS 区域可以在虚拟网络之间共享。  此功能简化了跨网络和服务发现方案，例如，虚拟网络对等互连。
 
-* **熟悉的工具和用户体验。** 为了降低学习难度，此新的产品/服务使用已经成熟的 Azure DNS 工具（PowerShell、资源管理器模板、REST API）并且会尽快支持使用 CLI 和门户。
+* **熟悉的工具和用户体验。** 为了降低学习难度，此新的产品/服务使用已经成熟的 Azure DNS 工具（PowerShell、资源管理器模板、REST API）。
 
 * **水平分割 DNS 支持。** Azure DNS 允许使用相同的名称创建在虚拟网络内与在公共 Internet 内分别解析为不同结果的区域。  水平分割 DNS 的典型方案是提供一个专用服务版本以在虚拟网络内部使用。
 
 
 ## <a name="pricing"></a>定价
 
-在托管预览版期间，专用 DNS 区域将免费。 在公开上市时，此功能将使用基于使用量的定价模型，这与现有的 Azure DNS 产品/服务类似。 
+在托管预览版期间，专用 DNS 区域免费。 在公开上市期间，此功能将使用基于使用量的定价模型，这与现有的 Azure DNS 产品/服务类似。 
 
 
 ## <a name="next-steps"></a>后续步骤

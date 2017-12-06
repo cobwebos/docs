@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 8af7064ad9873128b7d744b815e888c50953f377
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 90ba10990049cd1fb788d63a143eb1169191cf24
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>快速入门：使用 Java 和 Azure Cosmos DB 生成表 API 应用
 
@@ -43,6 +43,10 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
+
+> [!IMPORTANT] 
+> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -87,9 +91,24 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
    ![在“连接字符串”窗格中查看并复制所需的连接字符串信息](./media/create-table-java/connection-string.png)
 
-2. 打开 config.properties 文件，并将所需的连接字符串属性复制到配置文件中。
+2. 使用右侧的复制按钮，复制主连接字符串。
 
-3. 保存 config.properties 文件。
+3. 打开 C:\git-samples\storage-table-java-getting-started\src\main\resources 文件夹中的 config.properties。 
+
+5. 注释掉第 1 行，并取消注释掉第 2 行。 前两行现在应如下所示。
+
+    ```
+    #StorageConnectionString = UseDevelopmentStorage=true
+    StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
+    ```
+
+6. 将从门户复制的主连接字符串粘贴到第 2 行的 StorageConnectionString 值中。 
+
+    > [!IMPORTANT]
+    > 如果终结点使用 documents.azure.com，表示已有预览帐户。必须[新建表 API 帐户](#create-a-database-account)，才能使用正式版表 API SDK。
+    >
+
+7. 保存 config.properties 文件。
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
@@ -98,8 +117,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 1. 在 git 终端窗口中，运行 `cd` 切换到 storage-table-java-getting-started 文件夹。
 
     ```git
-    cd "C:\git-samples\
-storage-table-java-getting-started"
+    cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
 2. 在 git 终端窗口中，运行以下命令启动 Java 应用程序。

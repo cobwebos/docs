@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 83cf027d95018de61ea906268d8f24700203e0c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 920ddecbf81296fd83606f2908e432f5327d4b7e
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
 
@@ -32,14 +32,11 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-> [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是[经典部署模型](load-balancer-get-started-ilb-classic-cli.md)。
-
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 ## <a name="deploy-the-solution-by-using-the-azure-cli"></a>使用 Azure CLI 部署解决方案
 
-以下步骤说明如何使用 Azure Resource Manager 和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
+以下步骤说明如何使用 Azure 资源管理器和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，再将其合成一个新资源。
 
 需要创建和配置以下对象以部署负载均衡器：
 
@@ -49,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 * **入站 NAT 规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口
 * **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器
 
-有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
+有关详细信息，请参阅 [Azure 资源管理器对负载均衡器的支持](load-balancer-arm.md)。
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>将 CLI 设置为使用 Resource Manager
 
@@ -74,7 +71,7 @@ ms.lasthandoff: 10/11/2017
 
     在系统提示时输入 Azure 凭据。
 
-2. 将命令工具更改为 Azure Resource Manager 模式。
+2. 将命令工具更改为 Azure 资源管理器模式。
 
     ```azurecli
     azure config mode arm
@@ -82,7 +79,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure Resource Manager 中的所有资源将与资源组关联。 创建资源组（如果尚未这样做）。
+Azure 资源管理器中的所有资源将与资源组关联。 创建资源组（如果尚未这样做）。
 
 ```azurecli
 azure group create <resource group name> <location>

@@ -1,0 +1,26 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Migrate 文档
+metadata:
+  title: Azure Migrate 文档 - 教程和 API 参考 | Microsoft Docs
+  description: 了解如何评估要迁移到 Azure 的本地计算机
+  services: migration-planner
+  author: rayne-wiselman
+  manager: carmonm
+  ms.service: migration
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/22/2017
+  ms.author: raynew
+abstract:
+  description: Azure Migrate 可帮助发现和评估本地计算机是否适合迁移到 Azure，并为正在运行的 Azure VM 提供大小调整和成本估计。
+sections:
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何评估要迁移到 Azure 的 VMware VM
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-assessment-vmware">发现和评估本地 VMware VM</a>

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 41f26a4b03a6431aaad21bda6336b8840d2d923f
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: d60c898225b944801504f38d536262134a31e021
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介  
 Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Java 或 PHP。 只需为代码运行的时间付费，并可信任 Azure 会根据需要进行调整。 使用 Azure Functions，可在 Microsoft Azure 上开发[无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用程序。
@@ -31,7 +31,7 @@ Azure Functions 是用于在云中轻松运行小段代码或“函数”的一�
 ## <a name="features"></a>功能
 下面是 Functions 的一些主要功能：
 
-* **所选语言** - 可使用 C#、F#、Node.js、Java、PHP、Batch、bash 或任何可执行文件编写函数。
+* **语言选择** - 使用所选的 C#、F# 或 Javascript 编写函数。 有关其他选项，请参阅[支持的语言](supported-languages.md)。
 * **按使用付费定价模型** - 仅为运行代码所用的时间付费。 请参阅[定价部分](#pricing)中的使用托管计划选项。  
 * **引入自己的依赖项** - Functions 支持 NuGet 和 NPM，因此用户可以使用自己的常用库。  
 * **集成安全性** - 使用 OAuth 提供程序（如 Azure Active Directory、Facebook、Google、Twitter 和 Microsoft 帐户）保护 HTTP 触发的函数。  

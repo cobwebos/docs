@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: ce6edbdffe9704383676e990865cd4e2958f30fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: e962fd65244ceebfc7544dc5a1d1956dad811fea
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
@@ -80,7 +80,7 @@ $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
 ```
 若要一次性备份服务器中的所有数据库，应使用 --all-databases 选项。
-```
+```bash
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 

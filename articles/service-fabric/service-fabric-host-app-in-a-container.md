@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
-ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31c1cee5ddc4c8893da729af884ae7b7b8a58093
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -39,11 +39,14 @@ ms.lasthandoff: 10/11/2017
 4. 安装 [Azure PowerShell][link-azure-powershell-install]
 5. 安装[用于 Visual Studio 2017 的持续交付工具扩展][link-visualstudio-cd-extension]
 6. 创建 [Azure 订阅][link-azure-subscription]和 [Visual Studio Team Services 帐户][link-vsts-account]。 
-7. [在 Azure 上创建群集](service-fabric-tutorial-create-cluster-azure-ps.md)
+7. [在 Azure 上创建群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+
+## <a name="create-a-cluster-on-azure"></a>在 Azure 上创建群集
+在群集（一组已连接网络的虚拟机或物理计算机）上运行 Service Fabric 应用程序。 在创建和部署应用程序之前，[设置在 Azure 中运行的 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。 创建群集时，选择支持运行容器的 SKU（如包含容器的 Windows Server 2016 Datacenter）。
 
 ## <a name="containerize-the-application"></a>容器化应用程序
 
-现在 [Azure 中已在运行 Service Fabric 群集](service-fabric-tutorial-create-cluster-azure-ps.md)，可以创建和部署容器化应用程序了。 若要开始在容器中运行应用程序，我们需要在 Visual Studio 中添加对项目的 **Docker 支持**。 向应用程序添加 **Docker 支持**后，会发生两件事。 首先，将 Dockerfile 添加到项目。 此新文件描述容器映像的生成方式。 其次，解决方案中会添加一个新的 _docker compose_ 项目。 新项目包含一些 docker-compose 文件。 Docker-compose 文件可用于描述容器的运行方式。
+现在 Azure 中已在运行 Service Fabric 群集，可以创建和部署容器化应用程序了。 若要开始在容器中运行应用程序，我们需要在 Visual Studio 中添加对项目的 **Docker 支持**。 向应用程序添加 **Docker 支持**后，会发生两件事。 首先，将 Dockerfile 添加到项目。 此新文件描述容器映像的生成方式。 其次，解决方案中会添加一个新的 _docker compose_ 项目。 新项目包含一些 docker-compose 文件。 Docker-compose 文件可用于描述容器的运行方式。
 
 有关使用 [Visual Studio 容器工具][link-visualstudio-container-tools]的详细信息。
 

@@ -13,20 +13,20 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 11/28/2017
 ms.author: ddove
-ms.openlocfilehash: 604690325fd755dcf5c997cc281fe9e5825c51a4
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 18870b763546a9bccb77df85b01640cfd3c8b852
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 若要轻松地扩大 SQL Azure 上的数据库，请使用分片映射管理器。 分片映射管理器是一个特殊的数据库，它维护一个分片集中有关所有分片 （数据库）的全局映射信息。 元数据允许应用程序基于**分片键**值连接到正确的数据库。 此外，在集中的每个分片都包含跟踪本地分片数据的映射 （称为 **shardlet**）。 
 
 ![分片映射管理](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-了解如何构建这些映射对于分片映射管理至关重要。 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)中发现的 [ShardMapManager 类](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)来完成此操作。  
+了解如何构建这些映射对于分片映射管理至关重要。 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)中发现的 ShardMapManager 类（[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)、[Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)）来完成此操作。  
 
 ## <a name="shard-maps-and-shard-mappings"></a>分片映射
 对每个分片而言必须选择要创建的分片映射类型。 选择取决于数据库架构： 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/31/2017
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
+多租户模型将数个租户分配给单一数据库（可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，使用范围映射将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
@@ -48,16 +48,18 @@ ms.lasthandoff: 10/31/2017
 
 ![单一数据库上的多个租户][3] 
 
-### <a name="supported-net-types-for-sharding-keys"></a>支持的分片键的 .Net 类型
-Elastic Scale 支持将以下 .Net Framework 类型用作分片键：
+### <a name="supported-types-for-sharding-keys"></a>支持的分片键的类型
+灵活扩展支持将以下类型用作分片键：
 
-* integer
-* long
-* guid
-* byte[]  
-* datetime
-* timespan
-* datetimeoffset
+| .NET | Java |
+| --- | --- |
+| integer |integer |
+| long |long |
+| guid |uuid |
+| byte[]  |byte[] |
+| datetime | timestamp |
+| timespan | duration|
+| datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>列表和范围分片映射
 使用**各个分片键值的列表**或**分片键值的范围**可构造分片映射。 
@@ -78,7 +80,7 @@ Elastic Scale 支持将以下 .Net Framework 类型用作分片键：
 
 例如，**[0, 100)** 包括所有大于或等于 0 且小于 100 的整数。 请注意，多个范围可指向同一数据库，并且支持多个不连续的范围（例如，在下面的示例中，[100,200) 和 [400,600) 可同时指向数据库 C。）
 
-| 键 | 分片位置 |
+| 密钥 | 分片位置 |
 | --- | --- |
 | [1,50) |Database_A |
 | [50,100) |Database_B |
@@ -96,66 +98,111 @@ Elastic Scale 支持将以下 .Net Framework 类型用作分片键：
 3. **应用程序缓存**：每个用于访问 **ShardMapManager** 对象的应用程序实例都可维护其映射的本地内存中缓存。 它存储最近检索到的路由信息。 
 
 ## <a name="constructing-a-shardmapmanager"></a>构造 ShardMapManager
-**ShardMapManager** 对象是使用[工厂](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx)模式构造的。 通过 **[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** 方法可获取具有 **ConnectionString** 形式的凭据（包括用于保存 GSM 的服务器名称和数据库名称），并返回 **ShardMapManager** 的实例。  
+**ShardMapManager** 对象是使用工厂（[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)、[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory)）模式构造的。 通过 **ShardMapManagerFactory.GetSqlShardMapManager**（[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)、[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager)）方法可获取具有 **ConnectionString** 形式的凭据（包括用于保存 GSM 的服务器名称和数据库名称），并返回 **ShardMapManager** 的实例。  
 
 **请注意：**在应用程序的初始化代码内，每个应用域只应实例化 **ShardMapManager** 一次。 在同一个应用域中创建 ShardMapManager 的其他实例将导致应用程序的内存增加且 CPU 使用率增加。 **ShardMapManager** 可包含任意数量的分片映射。 尽管对于许多应用程序而言，单个分片映射可能是足够的，但有时针对不同的架构或出于特定目的，需使用不同的数据库集，在这些情况下多个分片可能更合适。 
 
-在此代码中，应用程序尝试使用 [TryGetSqlShardMapManage](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)r 方法打开现有的 **ShardMapManager**。  如果表示全局 **ShardMapManager** (GSM) 的对象尚未存在于数据库内，则客户端库会在此处使用 [CreateSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx) 方法创建这些对象。
+在此代码中，应用程序尝试使用 TryGetSqlShardMapManager（[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)、[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager)）方法打开现有的 **ShardMapManager**。  如果表示全局 **ShardMapManager** (GSM) 的对象尚未存在于数据库内，则客户端库会在此处使用 CreateSqlShardMapManager ([.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager), [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager)) 方法创建这些对象。
 
-    // Try to get a reference to the Shard Map Manager 
-     // via the Shard Map Manager database.  
-    // If it doesn't already exist, then create it. 
-    ShardMapManager shardMapManager; 
-    bool shardMapManagerExists = ShardMapManagerFactory.TryGetSqlShardMapManager(
+```csharp
+// Try to get a reference to the Shard Map Manager via the Shard Map Manager database.  
+// If it doesn't already exist, then create it. 
+ShardMapManager shardMapManager; 
+bool shardMapManagerExists = ShardMapManagerFactory.TryGetSqlShardMapManager(
                                         connectionString, 
                                         ShardMapManagerLoadPolicy.Lazy, 
                                         out shardMapManager); 
 
-    if (shardMapManagerExists) 
-     { 
-        Console.WriteLine("Shard Map Manager already exists");
-    } 
-    else
-    {
-        // Create the Shard Map Manager. 
-        ShardMapManagerFactory.CreateSqlShardMapManager(connectionString);
-        Console.WriteLine("Created SqlShardMapManager"); 
+if (shardMapManagerExists) 
+{ 
+    Console.WriteLine("Shard Map Manager already exists");
+} 
+else
+{
+    // Create the Shard Map Manager. 
+    ShardMapManagerFactory.CreateSqlShardMapManager(connectionString);
+    Console.WriteLine("Created SqlShardMapManager"); 
 
-        shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(
+    shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(
             connectionString, 
             ShardMapManagerLoadPolicy.Lazy);
 
-        // The connectionString contains server name, database name, and admin credentials 
-        // for privileges on both the GSM and the shards themselves.
-    } 
+// The connectionString contains server name, database name, and admin credentials for privileges on both the GSM and the shards themselves.
+} 
+```
 
-可以使用 Powershell 作为替代方法来创建新的分片映射管理器。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了一个示例。
+```Java
+// Try to get a reference to the Shard Map Manager in the shardMapManager database.
+// If it doesn't already exist, then create it.
+ShardMapManager shardMapManager = null;
+boolean shardMapManagerExists = ShardMapManagerFactory.tryGetSqlShardMapManager(shardMapManagerConnectionString,ShardMapManagerLoadPolicy.Lazy, refShardMapManager);
+shardMapManager = refShardMapManager.argValue;
+
+if (shardMapManagerExists) {
+    ConsoleUtils.writeInfo("Shard Map %s already exists", shardMapManager);
+}
+else {
+    // The Shard Map Manager does not exist, so create it
+    shardMapManager = ShardMapManagerFactory.createSqlShardMapManager(shardMapManagerConnectionString);
+    ConsoleUtils.writeInfo("Created Shard Map %s", shardMapManager);
+}
+```
+
+对于 .NET 版本，可以使用 Powershell 来创建新的分片映射管理器。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了一个示例。
 
 ## <a name="get-a-rangeshardmap-or-listshardmap"></a>获取 RangeShardMap 或 ListShardMap
-创建分片映射管理器后，使用 [TryGetRangeShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)、[TryGetListShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx) 或者 [GetShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) 方法获取 [RangeShardMap](https://msdn.microsoft.com/library/azure/dn807318.aspx) 或 [ListShardMap](https://msdn.microsoft.com/library/azure/dn807370.aspx)。
+创建分片映射管理器后，使用 TryGetRangeShardMap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap))、TryGetListShardMap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx), [Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap)) 或者 GetShardMap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx), [Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap)) 方法获取 RangeShardMap ([.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map)) 或 ListShardMap ([.NET](https://msdn.microsoft.com/library/azure/dn807370.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map))。
 
-    /// <summary>
-    /// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
-    /// </summary>
-    public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shardMapManager, string shardMapName)
+```csharp
+// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
+public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shardMapManager, string shardMapName)
+{
+    // Try to get a reference to the Shard Map.
+    RangeShardMap<T> shardMap;
+    bool shardMapExists = shardMapManager.TryGetRangeShardMap(shardMapName, out shardMap);
+
+    if (shardMapExists)
     {
-        // Try to get a reference to the Shard Map.
-        RangeShardMap<T> shardMap;
-        bool shardMapExists = shardMapManager.TryGetRangeShardMap(shardMapName, out shardMap);
+        ConsoleUtils.WriteInfo("Shard Map {0} already exists", shardMap.Name);
+    }
+    else
+    {
+        // The Shard Map does not exist, so create it
+        shardMap = shardMapManager.CreateRangeShardMap<T>(shardMapName);
+        ConsoleUtils.WriteInfo("Created Shard Map {0}", shardMap.Name);
+    }
 
-        if (shardMapExists)
-        {
-            ConsoleUtils.WriteInfo("Shard Map {0} already exists", shardMap.Name);
-        }
-        else
-        {
-            // The Shard Map does not exist, so create it
-            shardMap = shardMapManager.CreateRangeShardMap<T>(shardMapName);
-            ConsoleUtils.WriteInfo("Created Shard Map {0}", shardMap.Name);
-        }
+    return shardMap;
+} 
+```
 
-        return shardMap;
-    } 
+```Java
+// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
+static <T> RangeShardMap<T> createOrGetRangeShardMap(ShardMapManager shardMapManager,
+            String shardMapName,
+            ShardKeyType keyType) {
+    // Try to get a reference to the Shard Map.
+    ReferenceObjectHelper<RangeShardMap<T>> refRangeShardMap = new ReferenceObjectHelper<>(null);
+    boolean isGetSuccess = shardMapManager.tryGetRangeShardMap(shardMapName, keyType, refRangeShardMap);
+    RangeShardMap<T> shardMap = refRangeShardMap.argValue;
+
+    if (isGetSuccess && shardMap != null) {
+        ConsoleUtils.writeInfo("Shard Map %1$s already exists", shardMap.getName());
+    }
+    else {
+        // The Shard Map does not exist, so create it
+        try {
+            shardMap = shardMapManager.createRangeShardMap(shardMapName, keyType);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        ConsoleUtils.writeInfo("Created Shard Map %1$s", shardMap.getName());
+    }
+
+    return shardMap;
+}
+```
 
 ### <a name="shard-map-administration-credentials"></a>分片映射管理凭据
 用于管理和操作分片映射的应用程序不同于那些使用分片映射路由连接的应用程序。 
@@ -166,116 +213,6 @@ Elastic Scale 支持将以下 .Net Framework 类型用作分片键：
 
 ### <a name="only-metadata-affected"></a>仅元数据受影响
 用于填充或更改 **ShardMapManager** 数据的方法不会更改存储在分片本身中的用户数据。 例如，类似于 **CreateShard**、**DeleteShard**、**UpdateMapping** 等的方法仅影响分片映射元数据， 而不会删除、添加或更改分片中所包含的用户数据。 但是，这些方法旨在与你执行的单独操作结合使用，以创建或删除实际数据库，或者将行从一个分片移动到另一个分片，以使分片环境恢复均衡。  （弹性数据库工具附带的**拆分-合并**工具将使用这些 API 并安排在分片之间移动实际数据。）请参阅[使用弹性数据库拆分 / 合并工具进行缩放](sql-database-elastic-scale-overview-split-and-merge.md)。
-
-## <a name="populating-a-shard-map-example"></a>填充分片映射示例
-下面显示了用于填充特定分片映射的操作的示例序列。 此代码将执行下列步骤： 
-
-1. 将在分片映射管理器中创建新的分片映射。 
-2. 将两个不同分片的元数据添加到分片映射。 
-3. 将添加各种键范围映射，并且会显示分片映射的整体内容。 
-
-编写的代码可在发生错误时重新运行该方法。 每个请求将测试是否存在某个分片或映射，然后尝试创建该分片或映射。 该代码假设已在由字符串 **shardServer** 引用的服务器中创建名为 **sample_shard_0**、**sample_shard_1** 和 **sample_shard_2** 的数据库。 
-
-    public void CreatePopulatedRangeMap(ShardMapManager smm, string mapName) 
-        {            
-            RangeShardMap<long> sm = null; 
-
-            // check if shardmap exists and if not, create it 
-            if (!smm.TryGetRangeShardMap(mapName, out sm)) 
-            { 
-                sm = smm.CreateRangeShardMap<long>(mapName); 
-            } 
-
-            Shard shard0 = null, shard1=null; 
-            // Check if shard exists and if not, 
-            // create it (Idempotent / tolerant of re-execute) 
-            if (!sm.TryGetShard(new ShardLocation(
-                                     shardServer, 
-                                     "sample_shard_0"), 
-                                     out shard0)) 
-            { 
-                Shard0 = sm.CreateShard(new ShardLocation(
-                                            shardServer, 
-                                            "sample_shard_0")); 
-            } 
-
-            if (!sm.TryGetShard(new ShardLocation(
-                                    shardServer, 
-                                    "sample_shard_1"), 
-                                    out shard1)) 
-            { 
-                Shard1 = sm.CreateShard(new ShardLocation(
-                                             shardServer, 
-                                            "sample_shard_1"));  
-            } 
-
-            RangeMapping<long> rmpg=null; 
-
-            // Check if mapping exists and if not,
-            // create it (Idempotent / tolerant of re-execute) 
-            if (!sm.TryGetMappingForKey(0, out rmpg)) 
-            { 
-                sm.CreateRangeMapping(
-                          new RangeMappingCreationInfo<long>
-                          (new Range<long>(0, 50), 
-                          shard0, 
-                          MappingStatus.Online)); 
-            } 
-
-            if (!sm.TryGetMappingForKey(50, out rmpg)) 
-            { 
-                sm.CreateRangeMapping(
-                         new RangeMappingCreationInfo<long> 
-                         (new Range<long>(50, 100), 
-                         shard1, 
-                         MappingStatus.Online)); 
-            } 
-
-            if (!sm.TryGetMappingForKey(100, out rmpg)) 
-            { 
-                sm.CreateRangeMapping(
-                         new RangeMappingCreationInfo<long>
-                         (new Range<long>(100, 150), 
-                         shard0, 
-                         MappingStatus.Online)); 
-            } 
-
-            if (!sm.TryGetMappingForKey(150, out rmpg)) 
-            { 
-                sm.CreateRangeMapping(
-                         new RangeMappingCreationInfo<long> 
-                         (new Range<long>(150, 200), 
-                         shard1, 
-                         MappingStatus.Online)); 
-            } 
-
-            if (!sm.TryGetMappingForKey(200, out rmpg)) 
-            { 
-               sm.CreateRangeMapping(
-                         new RangeMappingCreationInfo<long> 
-                         (new Range<long>(200, 300), 
-                         shard0, 
-                         MappingStatus.Online)); 
-            } 
-
-            // List the shards and mappings 
-            foreach (Shard s in sm.GetShards()
-                         .OrderBy(s => s.Location.DataSource)
-                         .ThenBy(s => s.Location.Database))
-            { 
-               Console.WriteLine("shard: "+ s.Location); 
-            } 
-
-            foreach (RangeMapping<long> rm in sm.GetMappings()) 
-            { 
-                Console.WriteLine("range: [" + rm.Value.Low.ToString() + ":" 
-                        + rm.Value.High.ToString()+ ")  ==>" +rm.Shard.Location); 
-            } 
-        } 
-
-使用 PowerShell 脚本也可达到相同的结果。 [此处](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)提供了某些 PowerShell 示例。     
-
-填充完分片映射后，即可创建或改编数据访问应用程序，以便使用这些映射。 在需要更改**映射布局**之前，无需重新填充或操作映射。  
 
 ## <a name="data-dependent-routing"></a>数据依赖型路由
 分片映射管理器主要由需要数据库连接的应用程序用来执行特定于应用的数据操作。 这些连接必须与正确的数据库关联。 这称为**数据相关的路由**。 对于这些应用程序，通过使用在 GSM 数据库上具有只读访问权限的凭据，实例化来自工厂的分片映射管理器对象。 以后，单独的连接请求将提供连接相应分片数据库时所需的凭据。
@@ -289,32 +226,34 @@ Elastic Scale 支持将以下 .Net Framework 类型用作分片键：
 
 这些方法作为构建基块一同工作，以便在分片的数据库环境中修改数据的总体分发情况。  
 
-* 若要添加或删除分片：请使用 [Shardmap 类](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx)的 **[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)** 和 **[DeleteShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx)**。 
+* 若要添加或删除分片：请使用 Shardmap ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map)) 类的 **CreateShard** ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.createshard)) 和 **DeleteShard** ([.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx), [Java](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.elasticdb.shard.map._shard_map.deleteshard))。 
   
     若要执行这些操作，表示目标分片的服务器和数据库必须已经存在。 这些方法不会对数据库本身产生任何影响，仅对分片映射上的元数据产生影响。
-* 若要创建或删除映射到分片的点或范围：请使用 [RangeShardMapping 类](https://msdn.microsoft.com/library/azure/dn807318.aspx)的 **[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn841993.aspx)** 和 **[DeleteMapping](https://msdn.microsoft.com/library/azure/dn824200.aspx)**，以及 [ListShardMap](https://msdn.microsoft.com/library/azure/dn842123.aspx) 的 **[CreatePointMapping](https://msdn.microsoft.com/library/azure/dn807218.aspx)**
+* 若要创建或删除映射到分片的点或范围：请使用 RangeShardMapping ([.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map)) class 类的 **CreateRangeMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn841993.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.createrangemapping)) 和 **DeleteMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn824200.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.deletemapping))，以及 ListShardMap ([.NET](https://msdn.microsoft.com/library/azure/dn842123.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map)) 的 **CreatePointMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn807218.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map.createpointmapping))。
   
     许多不同的点或范围可映射到相同的分片。 这些方法仅影响元数据，而不会影响已显示在分片中的任何数据。 如果为了与 **DeleteMapping** 操作保持一致而需要将数据从数据库中删除，需要单独执行这些操作，但需要结合使用这些方法。  
-* 将现有的范围拆分为两个，或将相邻的范围合并为一个：请使用 **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)** 和 **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)**。  
+* 将现有的范围拆分为两个，或将相邻的范围合并为一个：请使用 **SplitMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.splitmapping)) 和 **MergeMappings** ([.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.mergemappings))。  
   
     请注意，拆分和合并操作**不更改键值要映射到的分片**。 拆分操作可将现有的范围拆分为两个部分，但在映射到相同分片时同时保留这两个部分。 对在已映射到相同分片的两个相邻的范围进行合并操作，从而可将其合并到单个范围中。  要在分片之间移动点或范围本身，需要将 **UpdateMapping** 与移动的实际数据结合使用，才能进行协调。  当需要移动数据时，可以使用弹性数据库工具中随附的**拆分 / 合并**服务，以将分片映射的更改与数据移动相协调。 
-* 将单独的点或范围重新映射（或移动）到不同的分片：请使用 **[UpdateMapping](https://msdn.microsoft.com/library/azure/dn824207.aspx)**。  
+* 将单独的点或范围重新映射（或移动）到不同的分片：请使用 **UpdateMapping** ([.NET](https://msdn.microsoft.com/library/azure/dn824207.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.updatemapping))。  
   
     由于可能需要将数据从一个分片移动到另一个分片，以便与 **UpdateMapping** 操作保持一致，因此需要单独执行此移动，但需要结合使用这些方法。
-* 若要在联机和脱机状态下执行映射：请使用 **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)** 和 **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)** 来控制映射的联机状态。 
+* 若要在联机和脱机状态下执行映射：请使用 **MarkMappingOffline** ([.NET](https://msdn.microsoft.com/library/azure/dn824202.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.markmappingoffline)) 和 **MarkMappingOnline** ([.NET](https://msdn.microsoft.com/library/azure/dn807225.aspx), [Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map.markmappingonline)) 来控制映射的联机状态。 
   
     仅当映射处于“脱机”状态时才允许在分片映射上进行某些操作，其中包括 **UpdateMapping** 和 **DeleteMapping**。 当映射处于脱机状态时，基于该映射中所包含的键的数据依赖请求将返回一个错误。 此外，当范围首次处于脱机状态时，所有到受影响的分片的连接都会自动终止，以防止因范围的更改而导致查询出现不一致或不完整的结果。 
 
 映射是 .Net 中的不可变对象。  以上会更改映射的所有方法也会使代码中任何对映射的引用失效。 为了更轻松地执行操作序列来更改映射的状态，所有会更改映射的方法都将返回新的映射引用，以便能够链接操作。 例如，若要在 shardmap sm 中删除包含索引键 25 的现有映射，可以执行以下命令： 
 
-        sm.DeleteMapping(sm.MarkMappingOffline(sm.GetMappingForKey(25)));
+```
+    sm.DeleteMapping(sm.MarkMappingOffline(sm.GetMappingForKey(25)));
+```
 
 ## <a name="adding-a-shard"></a>添加分片
 对于已经存在的分片映射，应用程序通常仅需要添加新分片，以处理预期的新键或键范围数据。 例如，由租户 ID 分片的应用程序可能需要为新的租户设置新分片，或者在每个新的月份开始之前，每月分片的数据可能需要设置新分片。 
 
 如果新的键值范围还不是现有映射的组成部分且无需移动数据，则添加新分片以及将新的键或范围关联到该分片非常简单。 有关添加新分片的详细信息，请参阅[添加新分片](sql-database-elastic-scale-add-a-shard.md)。
 
-但是，在需要移动数据的情况下，需要拆分/合并工具并结合使用必要的分片映射更新，才能安排在分片之间移动数据。 有关使用拆分 / 合并工具的详细信息，请参阅[拆分 / 合并概述](sql-database-elastic-scale-overview-split-and-merge.md) 
+但是，在需要移动数据的情况下，需要拆分/合并工具并结合使用必要的分片映射更新，才能安排在分片之间移动数据。 有关使用拆分合并工具的详细信息，请参阅[拆分/合并概述](sql-database-elastic-scale-overview-split-and-merge.md) 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

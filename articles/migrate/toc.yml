@@ -1,0 +1,40 @@
+- name: Azure Migrate 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Migrate
+      href: migrate-overview.md
+- name: 教程
+  items:
+    - name: 发现和评估 VMware VM
+      href: tutorial-assessment-vmware.md
+- name: 概念
+  items:
+    - name: 评估计算
+      href: concepts-assessment-calculation.md
+    - name: 依赖关系可视化
+      href: concepts-dependency-visualization.md
+- name: 操作指南
+  items:
+    - name: 发现和评估大型环境
+      href: how-to-scale-assessment.md
+    - name: 将计算机分组
+      href: how-to-create-a-group.md
+    - name: 使用计算机依赖关系将计算机分组
+      href: how-to-create-group-machine-dependencies.md
+    - name: 使用 VMware 标记将计算机分组
+      href: how-to-tag-v-center.md
+    - name: 使用组依赖关系优化组
+      href: how-to-create-group-dependencies.md
+    - name: 自定义评估
+      href: how-to-modify-assessment.md
+    - name: 在评估后迁移计算机
+      href: how-to-get-migration-tool.md
+    - name: 排查 Azure Migrate 问题
+      href: troubleshooting-general.md
+- name: 资源
+  items:
+    - name: Azure Migrate
+      href: 'https://azure.microsoft.com/migrate'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

@@ -139,7 +139,7 @@
 ### [计划](../connectors/connectors-native-recurrence.md)
 ### [服务总线](../connectors/connectors-create-api-servicebus.md)
 ### [SharePoint Online](../connectors/connectors-create-api-sharepointonline.md)
-### [SharePoint Server](../connectors/connectors-create-api-sharepointonline.md)
+### [SharePoint Server](../connectors/connectors-create-api-sharepointserver.md)
 ### [SQL Server](../connectors/connectors-create-api-sqlazure.md)
 ### [转换 XML](logic-apps-enterprise-integration-transform.md)
 ### [Twitter](../connectors/connectors-create-api-twitter.md)

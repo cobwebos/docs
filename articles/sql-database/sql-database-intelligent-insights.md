@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 86011610885ff913bfd70aa46389e4e39989d0a3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 823855d88396a14ff7e5428a12d71384cdfe95a1
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
@@ -49,8 +49,6 @@ Intelligent Insights 可分析 SQL 数据库性能，从而比较前一个小时
 
 用于衡量和检测数据库性能问题的指标基于查询持续时间、超时请求、过长的等待时间和出错的请求制定。 有关指标的详细信息，请参阅本文档的[检测指标](sql-database-intelligent-insights.md#detection-metrics)部分。
 
-## <a name="degradations-detected"></a>检测到性能下降
-
 识别的 SQL 数据库性能降低问题记录在诊断日志中，包含由以下属性组成的智能项：
 
 | 属性             | 详细信息              |
@@ -64,36 +62,49 @@ Intelligent Insights 可分析 SQL 数据库性能，从而比较前一个小时
 | 根本原因分析 | 对已识别问题的根本原因分析采用人类可读的格式。 一些见解可能包含可行的性能改进建议。 |
 |||
 
-## <a name="issues-state-lifecycle-active-verifying-and-complete"></a>问题状态生命周期：“活动”、“正在验证”和“已完成”
-
 在诊断日志中记录的性能问题通过问题生命周期的三种状态（“活动”、“正在验证”和“已完成”）中的一种进行标记。 检测到性能问题后，只要该问题由 SQL 数据库内置智能认定为存在，即将其标记为“活动”。 当系统认为该问题得到缓解时，它将进行验证，并且问题状态更改为“正在验证”。 在 SQL 数据库内置智能认为问题得到解决后，问题状态将标记为“已完成”。
 
 ## <a name="use-intelligent-insights"></a>使用 Intelligent Insights
 
-可将 Intelligent Insights 诊断日志发送到 Azure Log Analytics、Azure 事件中心和 Azure 存储。 有关详细信息，请参阅 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。 将日志发送到这三个目标中的一个后，使用 Microsoft 或第三方工具可将该日志用于自定义警报和监视开发。 
+Intelligent Insights 是一种智能性能诊断日志。 它可以与其他消费产品和特定应用程序（如 Azure Log Analytics、Azure 事件中心和 Azure 存储）或第三方产品集成。 
 
-有关使用 Intelligent Insights 排查 SQL 数据库性能问题的详细信息，请参阅[使用 Intelligent Insights 排查 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+与 Azure Log Analytics 一起提供的 Intelligent Insights 通常用于通过 Web 浏览器查看信息，可能是该产品入门的最简单方法之一。 与 Azure 事件中心一起提供的 Intelligent Insights 通常用于配置自定义监视和警报方案。 与 Azure 存储一起提供的 Intelligent insights 通常用于自定义应用程序开发，例如自定义报表就是如此，或者可能是数据存档和检索。
 
-## <a name="built-in-intelligent-insights-analytics-with-log-analytics"></a>使用 Log Analytics 的内置 Intelligent Insights 分析 
+Intelligent Insights 与其他产品（Azure Log Analytics、Azure 事件中心、Azure 存储或第三方消费产品）的集成是这样执行的：先启用 Intelligent Insights 日志记录 (SQLInsights log)，然后配置要流式传输到这些产品之一的 Intelligent Insights 日志数据。 有关如何启用 Intelligent Insights 日志记录以及如何配置要流式传输到消费产品的日志数据的详细信息，请参阅 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。 
 
-Log Analytics 解决方案在提供 Intelligent Insights 诊断日志数据之外还提供报告和警报功能。 以下示例显示了 Azure SQL Analytics 中的 Intelligent Insights 报告：
+有关将 Intelligent Insights 与 Azure Log Analytics 配合使用的实践概述和典型使用方案，请观看嵌入视频：
+
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
+>
+
+Intelligent Insights 在发现和排查 SQL 数据库性能问题方面出类拔萃。 若要使用 Intelligent Insights 排查 SQL 数据库性能问题，请参阅[使用 Intelligent Insights 解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+
+## <a name="set-up-intelligent-insights-with-log-analytics"></a>使用 Log Analytics 设置 Intelligent Insights 
+
+Log Analytics 解决方案在提供 Intelligent Insights 诊断日志数据之外还提供报告和警报功能。
+
+若要将 Intelligent Insights 与 Log Analytics 配合使用，配置要流式传输到 Log Analytics 的 Intelligent Insights 日志数据，请参阅 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。 
+
+以下示例显示了 Azure SQL Analytics 中的 Intelligent Insights 报告：
 
 ![智能见解报告](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 将 Intelligent Insights 诊断日志配置为向 SQL Analytics 流式传输数据后，可以[使用 SQL Analytics 监视 SQL 数据库](../log-analytics/log-analytics-azure-sql.md)。
 
-## <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights 日志的自定义集成
-
-有关使用 Microsoft 或第三方工具开发自定义警报和监视解决方案的详细信息，请参阅[使用 Intelligent Insights 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
-
 ## <a name="set-up-intelligent-insights-with-event-hubs"></a>使用事件中心设置 Intelligent Insights
 
-- 若要将 Intelligent Insights 配置为向事件中心流式传输日志事件，请参阅[将 Azure 诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)。
-- 若要将 Azure 事件中心用于自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。 
+若要将 Intelligent Insights 与事件中心配合使用，配置要流式传输到事件中心的 Intelligent Insights 日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)。
+
+若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。 
 
 ## <a name="set-up-intelligent-insights-with-storage"></a>使用存储设置 Intelligent Insights
 
-- 若要将 Intelligent Insights 配置为存储到“存储”，请参阅[流式传输到 Azure 存储中](sql-database-metrics-diag-logging.md#stream-into-storage)。
+若要将 Intelligent Insights 与存储配合使用，配置要流式传输到存储的 Intelligent Insights 日志数据，请参阅[流式传输到 Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)。
+
+## <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights 日志的自定义集成
+
+若要将 Intelligent Insights 与第三方工具配合使用或用于自定义警报和监视开发，请参阅[使用 Intelligent Insights 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
 
 ## <a name="detection-metrics"></a>检测指标
 

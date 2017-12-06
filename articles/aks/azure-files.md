@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2017
+ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 11457e6556e6400d8f58f71c71ab1e790bcef8f1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: bae60e7f78934deacac173767ca3013ce93cf9ad
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>将 Azure 文件与 Kubernetes 配合使用
 
@@ -28,52 +28,49 @@ ms.lasthandoff: 11/13/2017
 
 有关 Kubernetes 卷的详细信息，请参阅 [Kubernetes 卷][kubernetes-volumes]。
 
-## <a name="creating-a-file-share"></a>创建文件共享
+## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
-现有 Azure 文件共享可以与 Azure 容器服务配合使用。 如果需要创建一个文件共享，请使用以下命令集。
-
-使用 [az group create][az-group-create] 命令创建 Azure 文件共享的资源组。 存储帐户的资源组和 Kubernetes 群集必须位于同一区域。
+在使用 Azure 文件共享作为 Kubernetes 卷之前，必须创建 Azure 存储帐户和文件共享。 可以使用以下脚本来完成这些任务。 记下或更新参数值，其中一些值在创建 Kubernetes 卷时需要。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
+# Change these four parameters
+AKS_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+AKS_PERS_RESOURCE_GROUP=myAKSShare
+AKS_PERS_LOCATION=eastus
+AKS_PERS_SHARE_NAME=aksshare
 
-可使用 [az storage account create][az-storage-create] 命令创建 Azure 存储帐户。 存储帐户名称必须是唯一的。 使用唯一值更新 `--name` 参数的值。
+# Create the Resource Group
+az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 
-```azurecli-interactive
-az storage account create --name mystorageaccount --resource-group myResourceGroup --sku Standard_LRS
-```
+# Create the storage account
+az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
-使用 [az storage account keys list ][az-storage-key-list] 命令返回存储密钥。 使用唯一的存储帐户名称更新 `--account-name` 参数的值。
+# Export the connection string as an environment variable, this is used when creating the Azure file share
+export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
 
-记下密钥值之一，该值将用于后续步骤。
+# Create the file share
+az storage share create -n $AKS_PERS_SHARE_NAME
 
-```azurecli-interactive
-az storage account keys list --account-name mystorageaccount --resource-group myResourceGroup --output table
-```
-
-使用 [az storage share create][az-storage-share-create] 命令创建 Azure 文件共享。 使用在最后一步中收集的值更新 `--account-key` 值。
-
-```azurecli-interactive
-az storage share create --name myfileshare --account-name mystorageaccount --account-key <key>
+# Get storage account key
+STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_GROUP --account-name $AKS_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
 ```
 
 ## <a name="create-kubernetes-secret"></a>创建 Kubernetes 机密
 
-Kubernetes 需要凭据才能访问文件共享。 Azure 存储帐户名称和密钥被一次性存储在 [Kubernetes 机密][kubernetes-secret]中，并由每个 Azure 文件卷引用，而不是通过每个 pod 进行存储。 
+Kubernetes 需要凭据才能访问文件共享。 这些凭据存储在 [Kubernetes 机密][kubernetes-secret]中，创建 Kubernetes Pod 时将引用它。
 
-Kubernetes 机密清单中的值必须为 base64 编码的值。 使用以下命令返回已编码的值。
+创建 Kubernetes 机密时，必须对机密值进行 base64 编码。
 
-首先，对存储帐户的名称进行编码。 将 `storage-account` 替换为 Azure 存储帐户的名称。
+首先，对存储帐户的名称进行编码。 如果需要，将 `$AKS_PERS_STORAGE_ACCOUNT_NAME` 替换为 Azure 存储帐户的名称。
 
 ```azurecli-interactive
-echo -n <storage-account> | base64
+echo -n $AKS_PERS_STORAGE_ACCOUNT_NAME | base64
 ```
 
-其次，需要存储帐户访问密钥。 运行以下命令返回已编码的密钥。 将 `storage-key` 替换为在前面步骤中收集的密钥
+接下来，对存储帐户密钥进行编码。 如果需要，将 `$STORAGE_KEY` 替换为 Azure 存储帐户密钥的名称。
 
 ```azurecli-interactive
-echo -n <storage-key> | base64
+echo -n $STORAGE_KEY | base64
 ```
 
 创建名为 `azure-secret.yml` 的文件，并将其复制到以下 YAML 中。 使用在最后一步检索到的 base64 编码的值更新 `azurestorageaccountname` 和 `azurestorageaccountkey` 值。
@@ -89,15 +86,15 @@ data:
   azurestorageaccountkey: <base64_encoded_storage_account_key>
 ```
 
-使用 [kubectl apply][kubectl-apply] 命令创建机密。
+使用 [kubectl create][kubectl-create] 命令创建机密。
 
 ```azurecli-interactive
-kubectl apply -f azure-secret.yml
+kubectl create -f azure-secret.yml
 ```
 
 ## <a name="mount-file-share-as-volume"></a>将文件共享装载为卷
 
-通过在卷的规范中配置卷，可以将 Azure 文件共享装载到 pod。使用以下内容创建名为 `azure-files-pod.yml` 的新文件。 使用提供给 Azure 文件共享的名称更新 `share-name`。
+通过在卷的规范中配置卷，可以将 Azure 文件共享装载到 pod。使用以下内容创建名为 `azure-files-pod.yml` 的新文件。 使用提供给 Azure 文件共享的名称更新 `aksshare`。
 
 ```yaml
 apiVersion: v1
@@ -115,7 +112,7 @@ spec:
   - name: azure
     azureFile:
       secretName: azure-secret
-      shareName: <share-name>
+      shareName: aksshare
       readOnly: false
 ```
 
@@ -139,6 +136,6 @@ kubectl apply -f azure-files-pod.yml
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
-[kubectl-apply]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#apply
+[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [az-group-create]: /cli/azure/group#az_group_create

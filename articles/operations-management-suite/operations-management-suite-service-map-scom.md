@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af1f683f08ff6b70b23ff265f39b9a76f92f4be2
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>服务映射与 System Center Operations Manager 的集成
   > [!NOTE]
@@ -30,7 +30,7 @@ Operations Management Suite 服务映射可自动发现 Windows 和 Linux 系统
 通过服务映射与 System Center Operations Manager 的此集成，可以根据服务映射中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。
 
 ## <a name="prerequisites"></a>先决条件
-* 管理一组服务器的 Operations Manager 管理组。
+* 管理一组服务器的 Operations Manager 管理组（2012 R2 或更高版本）。
 * 已启用服务映射解决方案的 Operations Management Suite 工作区。
 * 由 Operations Manager 管理并可向服务映射发送数据的一组服务器（至少一台）。 支持 Windows 和 Linux 服务器。
 * 与 Operations Management Suite 工作区关联的、具有 Azure 订阅访问权限的服务主体。 有关详细信息，请参阅[创建服务主体](#creating-a-service-principal)。

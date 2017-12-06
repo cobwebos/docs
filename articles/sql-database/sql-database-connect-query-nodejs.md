@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/05/2017
+ms.date: 07/06/2017
 ms.author: carlrab
-ms.openlocfilehash: a0b716fa37b4f8071bc1b8260fa73e807e37f78d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: fc7bc80e332afeb284f9e71609d1d02b8193b6f7
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>使用 Node.js 查询 Azure SQL 数据库
 
@@ -29,29 +29,18 @@ ms.lasthandoff: 10/31/2017
 
 若要完成本快速入门教程，请确保符合以下条件：
 
-- Azure SQL 数据库。 此快速入门使用以下某个快速入门中创建的资源： 
-
-   - [创建 DB - 门户](sql-database-get-started-portal.md)
-   - [创建 DB - CLI](sql-database-get-started-cli.md)
-   - [创建 DB - PowerShell](sql-database-get-started-powershell.md)
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 - 针对用于本快速入门教程的计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
-- 已为操作系统安装 Node.js 和相关软件。
+
+- 已为操作系统安装 Node.js 和相关软件：
     - **MacOS**：安装 Homebrew 和 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)。
     - **Ubuntu**：安装 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)。
     - **Windows**：安装 Chocolatey 和 Node.js，然后安装 ODBC 驱动程序和 SQL CMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)。
 
 ## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
-获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称、数据库名称和登录信息。
-
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“概览”页上，查看如下图所示的完全限定的服务器名称。 可以将鼠标悬停在服务器名称上以打开“单击以复制”选项。 
-
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. 如果忘了 Azure SQL 数据库服务器的登录信息，请导航到 SQL 数据库服务器页，以查看服务器管理员名称并重置密码（如果需要）。
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
 > 对于在其上执行本教程操作的计算机，必须为其公共 IP 地址制定防火墙规则。 如果使用其他计算机或其他公共 IP 地址，则[使用 Azure 门户创建服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。 
@@ -144,5 +133,4 @@ ms.lasthandoff: 10/31/2017
 - 了解如何[使用 SSMS 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database.md)，或者如何[使用 .NET 设计你的第一个 Azure SQL 数据库](sql-database-design-first-database-csharp.md)。
 - 了解如何[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
 - 了解如何[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
-
 

@@ -213,6 +213,10 @@
           items:
             - name: 使用 VPN 进行连接
               href: azure-stack-connect-vpn.md
+            - name: 有关 VPN 网关
+              href: azure-stack-vpn-gateway-about-vpn-gateways.md
+            - name: VPN 网关设置
+              href: azure-stack-vpn-gateway-settings.md
             - name: 使用 ExpressRoute 进行连接
               href: azure-stack-connect-expressroute.md
     - name: 故障排除

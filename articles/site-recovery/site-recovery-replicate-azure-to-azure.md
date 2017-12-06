@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 5/22/2017
+ms.date: 11/21/2017
 ms.author: asgang
-ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc7dff33aa2c3e844c6a91024fcfc98148416f7e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>将 Azure 虚拟机复制到另一个 Azure 区域
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 2. **源位置：**指想要在其中保护虚拟机的 Azure 区域。 在本演示中，源位置为“东亚”
 
-3. **部署模型：**指源计算机的 Azure 部署模型。 可选择经典部署模型或 Resource Manager 部署模型，属于特定模型的计算机会在下一步中列出，以供保护。
+3. **部署模型：**指源计算机的 Azure 部署模型。 可选择经典部署模型或资源管理器部署模型，属于特定模型的计算机会在下一步中列出，以供保护。
 
       >[!NOTE]
       >
@@ -69,40 +69,40 @@ ms.lasthandoff: 10/11/2017
     ![启用复制](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 
-在“设置”部分，可配置目标站点属性
+在“设置”部分下，可配置目标站点属性
 
 1. **目标位置：**指要在其中复制源虚拟机数据的位置。 根据所选的计算机位置，Site Recovery 会提供合适目标区域的列表。
 
     > [!TIP]
     > 建议将目标位置设置为与恢复服务保管库相同的值。
 
-2. **目标资源组：**指所有复制的虚拟机所属的资源组。默认情况下，ASR 会在目标区域中创建新的资源组，其名称以“asr”作为后缀。 如果 ASR 创建的资源组已存在，则会重复使用。还可选择对其进行自定义，如以下部分所示。    
-3. **目标虚拟网络：**默认情况下，ASR 会在目标区域中创建新的虚拟网络，其名称以“asr”作为后缀。 这会映射到源网络并会用于任何将来的保护。
+2. **目标资源组：**它是所有复制虚拟机将属于的资源组。 默认情况下，Azure Site Recovery 会在目标位置中创建一个名称带有“asr”后缀的新资源组。 如果 Azure Site recovery 创建的资源组已存在，则会重复使用。 还可以选择对其进行自定义，如以下部分中所示。    
+3. **目标虚拟网络：**默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有“asr”后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。
 
     > [!NOTE]
     > [请查看网络详细信息](site-recovery-network-mapping-azure-to-azure.md)，了解有关网络映射的更多信息。
 
-4. **目标存储帐户：**默认情况下，ASR 会创建模拟源 VM 存储配置的新目标存储帐户。 如果 ASR 创建的存储帐户已存在，则会重复使用。
+4. **目标存储帐户：**默认情况下，Azure Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果 Azure Site Recovery 创建的存储帐户已存在，则会重复使用。
 
-5. **缓存存储帐户：**ASR 需要在源区域中称为缓存帐户的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。
+5. **缓存存储帐户：**Azure Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。
 
-6. **可用性集：**默认情况下，ASR 会在目标区域中创建新的可用集，其名称以“asr”作为后缀。 如果 ASR 创建的可用性集已存在，则会重复使用。
+6. **可用性集：**默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有“asr”后缀的新可用性集。 如果 Azure Site recovery 创建的可用性集已存在，则会重复使用。
 
-7.  **复制策略：**定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，ASR 会使用默认的恢复点保留期设置（“24 小时”）和应用一致性快照频率设置（“60 分钟”）创建新的复制策略。
+7.  **复制策略：**定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Azure Site Recovery 会使用恢复点保留期为“24 小时”、应用一致性快照频率为“60 分钟”的默认设置创建新的复制策略。
 
     ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ## <a name="customize-target-resources"></a>自定义目标资源
 
-如果想要更改 ASR 使用的默认值，可根据需要更改这些设置。
+如果想要更改 Azure Site Recovery 使用的默认值，可根据需要更改这些设置。
 
-1. **自定义：**单击以更改 ASR 使用的默认值。
+1. **自定义：**单击此项可更改 Azure Site Recovery 使用的默认值。
 
-2. **目标资源组：**可从订阅内目标位置存在的所有资源组列表中选择资源组。
+2. **目标资源组：**可从订阅内目标位置中存在的所有资源组列表中选择资源组。
 
 3. **目标虚拟网络：**可找到目标位置中所有虚拟网络的列表。
 
-4. **可用性集：**仅可向属于源区域可用性集的虚拟机添加可用性集设置。
+4. **可用性集：**仅可向属于源区域中可用性集的虚拟机添加可用性集设置。
 
 5. **目标存储帐户：**
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 10/11/2017
 虚拟机受到保护后，可在“复制的项”下检查 VM 运行状况的状态
 
 >[!NOTE]
->在初始复制期间，状态可能需要一段时间才能刷新，因而在一定时间内可能无法看到进度。 可单击边栏选项卡顶部的“刷新”按钮获取最新状态。
+>在初始复制期间，状态可能需要一些时间进行刷新，因此在一段时间内可能看不到进度。 可单击边栏选项卡顶部的“刷新”按钮获取最新状态。
 >
 
 ![启用复制](./media/site-recovery-replicate-azure-to-azure/replicateditems.PNG)

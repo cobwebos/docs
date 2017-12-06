@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -60,7 +60,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
    ![复制 Application Insights 检测密钥](media/functions-monitoring/copy-ai-key.png)
 
-1. 在函数应用的“应用程序设置”页中，[添加应用设置](functions-how-to-use-azure-function-app-settings.md#settings)名为 APPINSIGHTS_INSTRUMENTATIONKEY，并粘贴检测密钥。
+1. 在函数应用的“应用程序设置”页上，单击“添加新设置”[添加应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。 将新设置命名为 APPINSIGHTS_INSTRUMENTATIONKEY，并粘贴复制的检测密钥。
 
    ![将检测密钥添加到应用设置](media/functions-monitoring/add-ai-key.png)
 
@@ -68,7 +68,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 ## <a name="view-telemetry-data"></a>查看遥测数据
 
-若要从门户的函数应用导航到 Application Insights，请在函数应用的“概述”页上选择“Application Insights”链接。
+若要从门户中的函数应用导航到连接的 Application Insights 实例，请在函数应用的“概述”页上选择“Application Insights”链接。
 
 有关如何使用 Application Insights 的信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/application-insights/)。 本部分介绍如何在 Application Insights 中查看数据的一些示例。 如果已经熟悉 Application Insights，则可以直接转到[有关配置和自定义遥测数据的部分](#configure-categories-and-log-levels)。
 
@@ -84,7 +84,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 ![性能](media/functions-monitoring/performance.png)
 
-“服务器”选项卡显示资源利用率和每个服务器的吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例。 
+“服务器”选项卡显示资源利用率和每个服务器的吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例。
 
 ![服务器](media/functions-monitoring/servers.png)
 
@@ -94,7 +94,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
-借助 [Application Insights Analytics](../application-insights/app-insights-analytics.md) 可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取和操作数据的查询语言。
+借助 [Application Insights Analytics](../application-insights/app-insights-analytics.md) 可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。
 
 ![选择 Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -131,7 +131,7 @@ traces
 
 ## <a name="configure-categories-and-log-levels"></a>配置类别和日志级别
 
-无需进行任何自定义配置即可使用 Application Insights，但默认配置可能会导致大量数据。 如果使用的是 Visual Studio Azure 订阅，可能会达到 App Insights 的数据上限。 本文的剩余部分将演示如何配置和自定义函数发送到 Application Insights 的数据。
+无需进行任何自定义配置即可使用 Application Insights，但默认配置可能会导致大量数据。 如果使用的是 Visual Studio Azure 订阅，可能会达到 Application Insights 的数据上限。 本文的剩余部分将演示如何配置和自定义函数发送到 Application Insights 的数据。
 
 ### <a name="categories"></a>Categories
 
@@ -178,7 +178,7 @@ Host.json 文件配置函数应用发送到 Application Insights 的日志记录
 
 此示例设置以下规则：
 
-1. 对于类别为“Host.Results”或“Function”的日志，仅向 Application Insights 发送 `Error` 级别及更高级别。 `Information` 级别及以下级别的日志将被忽略。
+1. 对于类别为“Host.Results”或“Function”的日志，仅向 Application Insights 发送 `Error` 级别及更高级别。 `Warning` 级别及以下级别的日志将被忽略。
 2. 对于类别为“Host.Aggregator”的日志， 仅向 Application Insights 发送 `Information` 级别及更高级别。 `Debug` 级别及以下级别的日志将被忽略。
 3. 对于所有其他日志，仅向 Application Insights 发送 `Information` 级别及更高级别。
 
@@ -217,7 +217,7 @@ host.json 中的类别值控制所有以相同值开头的类别的日志记录�
 
 这些日志在一段[可配置](#configure-the-aggregator)的时间内提供函数调用的计数和平均值。 默认时段为 30 秒或 1,000 个结果，以先满足的条件为准。 
 
-这些日志在 Application Insights 中显示为“customMetrics”。 示例包括运行数、成功率和持续时间。
+日志位于 Application Insights 中的 **customMetrics** 表内。 示例包括运行数、成功率和持续时间。
 
 ![customMetrics 查询](media/functions-monitoring/custom-metrics-query.png)
 
@@ -225,7 +225,7 @@ host.json 中的类别值控制所有以相同值开头的类别的日志记录�
 
 ### <a name="other-categories"></a>其他类别
 
-除了已经列出的类别，其余类别的所有日志在 Application Insights 中显示为“traces”。
+除了已经列出的类别，其余类别的所有日志在 Application Insights 的 **traces** 表中提供。
 
 ![traces 查询](media/functions-monitoring/analytics-traces.png)
 
@@ -291,7 +291,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 以这种方式处理占位符，以便可以执行结构化日志记录。 Application Insights 存储除了消息字符串之外的参数名称值对。 结果是消息参数变为可以查询的字段。
 
-例如，如果记录器方法调用类似于前面的示例，则可以查询字段 `customDimensions.prop__rowKey`。 添加前缀以确保运行时添加的字段和函数代码添加的字段之间没有冲突。
+例如，如果记录器方法调用类似于前面的示例，则可以查询字段 `customDimensions.prop__rowKey`。 添加 `prop__` 前缀以确保运行时添加的字段和函数代码添加的字段之间没有冲突。
 
 此外，可以通过引用字段 `customDimensions.prop__{OriginalFormat}` 查询原始消息字符串。  
 
@@ -454,7 +454,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>依赖项
 
-依赖项不会自动显示，但可以编写自定义代码来显示依赖项。 [C# 自定义遥测部分](#custom-telemetry-in-c-functions)中的示例代码显示相关方式。 该示例代码会导致 Application Insights 中出现如下所示的应用程序映射：
+函数与其他服务之间的依赖关系不会自动显示，但可以编写自定义代码来显示依赖项。 [C# 自定义遥测部分](#custom-telemetry-in-c-functions)中的示例代码显示相关方式。 该示例代码会导致 Application Insights 中出现如下所示的应用程序映射：
 
 ![应用程序映射](media/functions-monitoring/app-map.png)
 
@@ -473,7 +473,7 @@ module.exports = function (context, req) {
 
 ### <a name="real-time-monitoring"></a>实时监视
 
-实时监视可通过在函数“监视”选项卡上单击“实时事件流”实现。实时事件流在浏览器的新选项卡的图表中显示
+实时监视可通过在函数“监视”选项卡上单击“实时事件流”实现。实时事件流在新浏览器选项卡的图表中显示
 
 > [!NOTE]
 > 存在一个已知问题，可能会导致数据无法进行填充。 可能需要关闭包含实时事件流的浏览器选项卡，并再次单击“实时事件流”，让它可以正确填充事件流数据。 

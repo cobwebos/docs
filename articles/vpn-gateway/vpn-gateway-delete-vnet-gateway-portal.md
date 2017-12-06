@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
 ms.openlocfilehash: 1d289c09465cb8d5e4bfa569441dffcbf562b3bf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/03/2017
 
 可以使用多种不同的方法来删除 VPN 网关配置中的虚拟网络网关。
 
-- 如果要删除所有信息并从头开始配置（例如，在测试环境中），可以删除资源组。 删除某个资源组时，会删除该组中的所有资源。 仅当不想保留资源组中的任何资源时，才建议使用此方法。 使用这种方法时，无法做到有选择性地删除一部分资源。
+- 如果要删除所有信息并从头开始配置（例如，在测试环境中），可以删除资源组。 删除某个资源组时，会删除该组中的所有资源。 仅不想要保留资源组中的任何资源时，才建议使用此方法。 使用这种方法时，无法做到有选择性地删除一部分资源。
 
 - 如果想要保留资源组中的某些资源，则删除虚拟网络网关的过程会略微复杂一些。 在删除虚拟网络网关之前，必须先删除任何依赖于该网关的资源。 遵循的步骤取决于创建的连接类型，以及每个连接的依赖资源。
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>删除网关的公共 IP 地址资源
 
-1. 在“所有资源”中，找到已分配给网关的公共 IP 地址资源。 如果虚拟网络网关采用主动-主动配置，则会显示两个公共 IP 地址。 
+1. 在“所有资源”中，找到已分配给网关的公共 IP 地址资源。 如果虚拟网络网关采用主动-主动配置，会显示两个公共 IP 地址。 
 2. 在公共 IP 地址的“概述”页上，单击“删除”，并单击“是”进行确认。
 
 ### <a name="to-delete-the-gateway-subnet"></a>删除网关子网

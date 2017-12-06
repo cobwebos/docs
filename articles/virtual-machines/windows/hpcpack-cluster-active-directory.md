@@ -1,23 +1,23 @@
 ---
 title: "HPC Pack 群集与 Azure Active Directory 配合使用 | Microsoft Docs"
-description: "了解如何将 Azure 中的 HPC Pack 2016 群集与 Azure Active Directory 集成"
+description: "了解如何将 Azure 中的 Microsoft HPC Pack 2016 群集与 Azure Active Directory 集成"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.assetid: 9edf9559-db02-438b-8268-a6cba7b5c8b7
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 11/14/2016
+ms.date: 11/16/2017
 ms.author: danlep
-ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb0e878c4e987d111a535603cede25c639087ca7
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>使用 Azure Active Directory 在 Azure 中管理 HPC Pack 群集
 对于在 Azure 中部署 HPC Pack 群集的管理员，[Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) 支持与 [Azure Active Directory](../../active-directory/index.md) (Azure AD) 的集成。
@@ -59,69 +59,66 @@ HPC Pack 群集与 Azure AD 的集成可帮助实现以下目标：
 
 
 ## <a name="step-1-register-the-hpc-cluster-server-with-your-azure-ad-tenant"></a>步骤 1：将 HPC 群集服务器注册到 Azure AD 租户
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”，并在订阅中单击所需的目录。 必须具有访问目录中的资源的权限。
-3. 单击“用户”，并确保存在已经创建或配置的用户帐户。
-4. 依次单击“应用程序” > “添加”，并单击“添加我的组织正在开发的应用程序”。 在向导中输入以下信息：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 如果你的帐户有权限访问多个 Azure AD 租户，请在右上角单击该帐户， 并将门户会话设置为所需的租户。 必须具有访问目录中的资源的权限。 
+3. 单击左侧服务导航窗格中的“Azure Active Directory”，然后单击“用户和组”，并确保已有创建或配置的用户帐户。
+4. 在“Azure Active Directory”中，依次单击“应用注册” > “新应用程序注册”。 输入以下信息：
     * **名称** - HPCPackClusterServer
-    * **类型**：选择“Web 应用程序和/或 Web API”
+    * 应用程序类型 - 选择“Web 应用/ API”
     * **登录 URL** - 示例的基 URL，默认情况下为 `https://hpcserver`
-    * **应用 ID URI** - `https://<Directory_name>/<application_name>`。 例如，将 `<Directory_name`> 替换为 Azure AD 租户的全名（如 `hpclocal.onmicrosoft.com`），并将 `<application_name>` 替换为之前选择的名称。
+    * 单击“创建” 。
+5. 添加应用后，在“应用注册”列表中选择该应用。 然后单击“设置” > “属性”。 输入以下信息：
+    * 为“多租户”选择“是”。
+    * 将“应用 ID URI”更改为 `https://<Directory_name>/<application_name>`。 例如，将 `<Directory_name`> 替换为 Azure AD 租户的全名（如 `hpclocal.onmicrosoft.com`），并将 `<application_name>` 替换为之前选择的名称。
+6. 单击“保存”。 保存完成时，在应用页上单击“清单”。 通过查找 `appRoles` 设置并添加以下应用程序角色来编辑清单，然后单击“保存”：
 
-5. 添加应用后，单击“配置”。 配置以下属性：
-    * 为“应用程序是多租户的”选择“是”
-    * 为“访问应用需要进行用户分配”选择“是”。
-
-6. 单击“保存” 。 保存完成时，请单击“管理清单”。 此操作下载应用程序的清单 JavaScript 对象表示法 (JSON) 文件。 通过查找 `appRoles` 并添加以下应用程序角色编辑下载的清单：
-    ```json
-    "appRoles": [
-        {
-        "allowedMemberTypes": [
-            "User",
-            "Application"
-        ],
-        "displayName": "HpcAdminMirror",
-        "id": "61e10148-16a8-432a-b86d-ef620c3e48ef",
-        "isEnabled": true,
-        "description": "HpcAdminMirror",
-        "value": "HpcAdminMirror"
-        },
-        {
-        "allowedMemberTypes": [
-            "User",
-            "Application"
-        ],
-        "description": "HpcUsers",
-        "displayName": "HpcUsers",
-        "id": "91e10148-16a8-432a-b86d-ef620c3e48ef",
-        "isEnabled": true,
-        "value": "HpcUsers"
-        }
-    ],
-    ```
-7. 保存文件。 然后在门户中，依次单击“管理清单” > “上传清单”。 然后可以上传已编辑的清单。
-8. 单击“用户”、选择用户，并单击“分配”。 将可用角色之一（HpcUsers 或 HpcAdminMirror）分配给该用户。 为目录中的其他用户重复此步骤。 有关群集用户的背景信息，请参阅[管理群集用户](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx)。
-
-   > [!NOTE] 
-   > 为了管理用户，我们建议使用 [Azure 门户](https://portal.azure.com)中的“Azure Active Directory 预览”边栏选项卡。
-   >
+  ```json
+  "appRoles": [
+     {
+     "allowedMemberTypes": [
+         "User",
+         "Application"
+     ],
+     "displayName": "HpcAdminMirror",
+     "id": "61e10148-16a8-432a-b86d-ef620c3e48ef",
+     "isEnabled": true,
+     "description": "HpcAdminMirror",
+     "value": "HpcAdminMirror"
+     },
+     {
+     "allowedMemberTypes": [
+         "User",
+         "Application"
+     ],
+     "description": "HpcUsers",
+     "displayName": "HpcUsers",
+     "id": "91e10148-16a8-432a-b86d-ef620c3e48ef",
+     "isEnabled": true,
+     "value": "HpcUsers"
+     }
+  ],
+  ```
+7. 在“Azure Active Directory”中，单击“企业应用程序” > “所有应用程序”。 从列表中选择“HPCPackClusterServer”。
+8. 单击“属性”，然后将“需要进行用户分配”更改为“是”。 单击“保存”。
+9. 单击“用户和组” > “添加用户”。 分别选择一个用户和一个角色，然后单击“分配”。 将可用角色之一（HpcUsers 或 HpcAdminMirror）分配给该用户。 为目录中的其他用户重复此步骤。 有关群集用户的背景信息，请参阅[管理群集用户](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx)。
 
 
 ## <a name="step-2-register-the-hpc-cluster-client-with-your-azure-ad-tenant"></a>步骤 2：将 HPC 群集客户端注册到 Azure AD 租户
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”，并在订阅中单击所需的目录。 必须具有访问目录中的资源的权限。
-3. 依次单击“应用程序” > “添加”，并单击“添加我的组织正在开发的应用程序”。 在向导中输入以下信息：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 如果你的帐户有权限访问多个 Azure AD 租户，请在右上角单击该帐户， 并将门户会话设置为所需的租户。 必须具有访问目录中的资源的权限。 
+3. 在“Azure Active Directory”中，依次单击“应用注册” > “新应用程序注册”。 输入以下信息：
 
-    * **名称** - HPCPackClusterClient
-    * **类型** - 选择“本机客户端应用程序”
+    * **名称** - HPCPackClusterClient    
+    * “应用程序类型”- 选择“本机”
     * **重定向 URI** - `http://hpcclient`
+    * 单击“创建”
 
-4. 添加应用后，单击“配置”。 复制“客户端 ID”值并保存它。 稍后在配置应用程序时需要此值。
+4. 添加应用后，在“应用注册”列表中选择该应用。 复制应用程序 ID 值并保存它。 稍后在配置应用程序时需要此值。
 
-5. 在“针对其他应用程序的权限”中，单击“添加应用程序”。 搜索并添加 HpcPackClusterServer 应用程序（在步骤 1 中创建）。
+5. 依次单击“设置” > “所需的权限” > “添加” > “选择 API”。 搜索并选择 HpcPackClusterServer 应用程序（在步骤 1 中创建）。
 
-6. 在“委派权限”下拉列表中，选择“访问 HpcClusterServer”。 然后单击“保存”。
+6. 在“启用访问”页上，选择“访问 HpcClusterServer”。 然后单击“完成”。
 
 
 ## <a name="step-3-configure-the-hpc-cluster"></a>步骤 3：配置 HPC 群集
@@ -134,21 +131,23 @@ HPC Pack 群集与 Azure AD 的集成可帮助实现以下目标：
 
     ```powershell
 
-    Set-HpcClusterRegistry -SupportAAD true -AADInstance https://login.microsoftonline.com/ -AADAppName HpcClusterServer -AADTenant <your AAD tenant name> -AADClientAppId <client ID> -AADClientAppRedirectUri http://hpcclient
+    Set-HpcClusterRegistry -SupportAAD true -AADInstance https://login.microsoftonline.com/ -AADAppName HpcPackClusterServer -AADTenant <your AAD tenant name> -AADClientAppId <client ID> -AADClientAppRedirectUri http://hpcclient
     ```
     其中
 
     * `AADTenant` 指定 Azure AD 租户名称，例如 `hpclocal.onmicrosoft.com`
-    * `AADClientAppId` 指定在步骤 2 中创建的应用的客户端 ID。
+    * `AADClientAppId` 指定在步骤 2 中所创建应用的应用程序 ID。
 
-4. 重新启动 HpcSchedulerStateful 服务。
+4. 执行以下操作之一，具体取决于头节点配置：
 
-    在带有多个头节点的群集中，可以在头节点上运行以下 PowerShell 命令以切换 HpcSchedulerStateful 服务的主副本：
+    * 在单个头节点 HPC Pack 群集中，重新启动 HpcScheduler 服务。
+
+    * 在带有多个头节点的 HPC Pack 群集中，在头节点上运行以下 PowerShell 命令，以重新启动 HpcSchedulerStateful 服务：
 
     ```powershell
     Connect-ServiceFabricCluster
 
-    Move-ServiceFabricPrimaryReplica –ServiceName “fabric:/HpcApplication/SchedulerStatefulService”
+    Move-ServiceFabricPrimaryReplica –ServiceName "fabric:/HpcApplication/SchedulerStatefulService"
 
     ```
 
@@ -161,7 +160,7 @@ HPC Pack 群集与 Azure AD 的集成可帮助实现以下目标：
 现在可通过 Azure AD 帐户运行 HPC Pack 命令或使用 HPC Pack 作业管理器 GUI 提交和管理群集作业。 有关作业提交选项，请参阅[将 HPC 作业提交到 Azure 中的 HPC Pack 群集](hpcpack-cluster-submit-jobs.md#step-3-run-test-jobs-on-the-cluster)。
 
 > [!NOTE]
-> 首次在 Azure 中尝试连接到 HPC Pack 群集时，会显示弹出窗口。 输入 Azure AD 凭据登录。 然后缓存令牌。 之后在 Azure 中连接到群集时会使用缓存的令牌，除非身份验证更改或清除内容。
+> 首次在 Azure 中尝试连接到 HPC Pack 群集时，会显示弹出窗口。 输入 Azure AD 凭据登录。 然后缓存令牌。 之后在 Azure 中连接到群集时会使用缓存的令牌，除非身份验证更改或清除缓存。
 >
   
 例如，完成之前的步骤后，可以从本地客户端查询作业，如下所示：
@@ -174,7 +173,7 @@ Get-HpcJob –State All –Scheduler https://<Azure load balancer DNS name> -Own
 
 ### <a name="manage-the-local-token-cache"></a>管理本地令牌缓存
 
-HPC Pack 2016 提供两个新的 HPC PowerShell cmdlet 用于管理本地令牌缓存。 这些 cmdlet 对于以非交互方式提交作业很有用。 请参阅以下示例：
+HPC Pack 2016 提供以下 HPC PowerShell cmdlet 用于管理本地令牌缓存。 这些 cmdlet 对于以非交互方式提交作业很有用。 请参阅以下示例：
 
 ```powershell
 Remove-HpcTokenCache
@@ -191,9 +190,9 @@ Set-HpcTokenCache -UserName <AADUsername> -Password $SecurePassword -scheduler h
 1. 使用以下命令设置凭据：
 
     ```powershell
-    $localUser = “<username>”
+    $localUser = "<username>"
 
-    $localUserPassword=”<password>”
+    $localUserPassword="<password>"
 
     $secpasswd = ConvertTo-SecureString $localUserPassword -AsPlainText -Force
 

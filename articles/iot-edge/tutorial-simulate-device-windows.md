@@ -7,18 +7,25 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 08c501b9132bb21f47f099725d1fad5556befb4c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 0207418cf71902ce9bc9d2911124d1d46889d893
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>在 Windows 的模拟设备上部署 Azure IoT Edge - 预览
 
-Azure IoT Edge 将云带来的价值转移至物联网 (IoT) 设备。 本教程将介绍如何创建生成传感器数据的模拟 IoT Edge 设备。 学习如何：
+Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推送所有数据到云。 IoT Edge 教程演示如何部署不同类型的模块（通过 Azure 服务或自定义代码生成），但是首先需要一个设备用以测试。 
+
+本教程介绍如何执行下列操作：
+
+1. 创建 IoT 中心
+2. 注册 IoT Edge 设备
+3. 启动 IoT Edge 运行时
+4. 部署模块
 
 ![教程体系结构][2]
 
@@ -38,18 +45,18 @@ Azure IoT Edge 将云带来的价值转移至物联网 (IoT) 设备。 本教程
 3. 安装 [Windows 上的 Python 2.7][lnk-python] 并确保可以使用 pip 命令。
 4. 运行以下命令，下载 IoT Edge 控制脚本。
 
-   ```
+   ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
 > [!NOTE]
-> Azure IoT Edge 可运行 Windows 容器或 Linux 容器。 要使用 Windows 容器，必须在基于 x64 的设备上运行：
->    * Windows 10 Fall Creators Update，或
->    * Windows Server 1709（内部版本 16299），或
+> Azure IoT Edge 可运行 Windows 容器或 Linux 容器。 如果运行以下 Windows 版本之一，可以使用 Windows 容器：
+>    * Windows 10 Fall Creators Update
+>    * Windows Server 1709（内部版本 16299）
 >    * Windows IoT Core（内部版本 16299）
 >
-> 对于 Windows IoT Core，请按照[在 Windows IoT Core 上安装 IoT Edge 运行时][lnk-install-iotcore]中的说明进行操作。 否则，只能[将 Docker 配置为使用 Windows 容器][lnk-docker-containers]，并根据需要使用以下 PowerShell 命令验证先决条件：
->    ```
+> 对于 Windows IoT Core，请按照[在 Windows IoT Core 上安装 IoT Edge 运行时][lnk-install-iotcore]中的说明进行操作。 否则，只需[配置 Docker 以使用 Windows 容器][lnk-docker-containers]。 使用以下命令来验证你的先决条件：
+>    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
@@ -73,28 +80,28 @@ Azure IoT Edge 将云带来的价值转移至物联网 (IoT) 设备。 本教程
 在设备上安装并启动 Azure IoT Edge 运行时。 
 ![注册设备][5]
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 首先，IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 其次，IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。 
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 在新设备上配置运行时的时候，起初仅使用 IoT Edge 代理。 IoT Edge 中心将在稍后部署模块时使用。 
 
 
-使用以下步骤安装并启动 IoT Edge 运行时：
+使用上一节的 IoT Edge 设备连接字符串配置运行时。
 
-1. 使用上一节的 IoT Edge 设备连接字符串配置运行时。
+```cmd
+iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+```
 
-   ```
-   iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
-   ```
+启动运行时。
 
-1. 启动运行时。
+```cmd
+iotedgectl start
+```
 
-   ```
-   iotedgectl start
-   ```
+检查 Docker，查看 IoT Edge 代理是否正作为模块运行。
 
-1. 检查 Docker，查看 IoT Edge 代理是否正作为模块运行。
+```cmd
+docker ps
+```
 
-   ```
-   docker ps
-   ```
+![请参阅“Docker 中的 edgeAgent”](./media/tutorial-simulate-device-windows/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>部署模块
 
@@ -106,13 +113,23 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-此快速入门中，创建了新的 IoT Edge 设备，并在该设备上安装了 IoT Edge 运行时。 然后，使用了 Azure 门户推送 IoT Edge 模块，使其在不更改设备本身的情况下在设备上运行。 这种情况下，推送的模块创建可用于本教程的环境数据。 
+在本教程中，创建了新的 IoT Edge 设备，并在该设备上安装了 IoT Edge 运行时。 然后，使用了 Azure 门户推送 IoT Edge 模块，使其在不更改设备本身的情况下在设备上运行。 这种情况下，推送的模块创建可用于本教程的环境数据。 
 
-查看从 tempSensor 模块发送的消息：
+在运行模拟设备的计算机上再次打开命令提示符。 确认从云中部署的模块正在 IoT Edge 设备上运行。 
 
-```cmd/sh
-sudo docker logs -f tempSensor
+```cmd
+docker ps
 ```
+
+![查看设备上的三个模块](./media/tutorial-simulate-device-windows/docker-ps2.png)
+
+查看从 tempSensor 模块发送到云的消息。 
+
+```cmd
+docker logs -f tempSensor
+```
+
+![查看模块中的数据](./media/tutorial-simulate-device-windows/docker-logs.png)
 
 还可使用 [IoT 中心资源管理器工具][lnk-iothub-explorer]查看设备正在发送的遥测。 
 

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 10/06/2017
 ms.author: spelluru
-ms.openlocfilehash: 434c1de8a7310036fb1bb93d45c6b1364ba1fe6a
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 37c096199f4217e31d075fb5b6ee584936e9011b
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>将 SQL Server Integration Services 包部署到 Azure
 
@@ -55,6 +55,8 @@ ms.lasthandoff: 11/04/2017
 复制并粘贴以下脚本：指定变量的值。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。
 
 ```powershell
+# Azure Data Factory version 2 information 
+# If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
 $SubscriptionName = "<Azure subscription name>"
 $ResourceGroupName = "<Azure resource group name>"
 # Data factory name. Must be globally unique
@@ -214,6 +216,8 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 如需 Azure 数据工厂 V2 和 Azure-SSIS Integration Runtime 所支持的区域的列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。 展开“数据 + 分析”即可看到“数据工厂 V2”和“SSIS Integration Runtime”。
 
 ```powershell
+# Azure Data Factory version 2 information 
+# If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
 $SubscriptionName = "<Azure subscription name>"
 $ResourceGroupName = "<Azure resource group name>"
 # Data factory name. Must be globally unique

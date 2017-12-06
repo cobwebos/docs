@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/29/2017
 ms.author: JeffGo
-ms.openlocfilehash: 31ffd31b5d540617c4a7a1224e6cf0ee656c9678
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 6c74071cedb1da9a59f47b10eaf538d24cb9ab01
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 
@@ -49,10 +49,17 @@ ms.lasthandoff: 11/21/2017
 
     b. 在多节点系统中，主机必须是一个系统，可以访问特权终结点。
 
-3. [下载 SQL 资源提供程序二进制文件文件](https://aka.ms/azurestacksqlrp)和执行自动解压缩程序中，若要将内容提取到临时目录。
+3. 下载二进制 SQL 资源提供程序并执行自解压缩程序中，若要将内容提取到临时目录。
 
-    > [!NOTE]
-    > 如果你在 Azure 堆栈上运行生成 20170928.3 或更早版本，[下载此版本](https://aka.ms/azurestacksqlrp1709)。
+    >[!NOTE] 
+    > 资源提供程序生成对应于 Azure 堆栈生成。 你必须下载正确版本的正在运行的 Azure 堆栈的二进制文件。
+
+    | Azure 堆栈生成 | SQL RP 安装程序 |
+    | --- | --- |
+    | 1.0.171122.1 | [SQL RP 版本 1.1.10.0](https://aka.ms/azurestacksqlrp) |
+    | 1.0.171028.1 | [SQL RP 版本 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
+    | 1.0.170928.3 | [SQL RP 版本 1.1.3.0](https://aka.ms/azurestacksqlrp1709) |
+   
 
 4. 从特权终结点中检索 Azure 堆栈根证书。 为 ASDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
 
@@ -102,7 +109,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the Resource Provider VM
+# Set credentials for the new Resource Provider VM
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 

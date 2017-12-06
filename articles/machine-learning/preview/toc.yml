@@ -39,8 +39,12 @@
           href: how-to-use-tdsp-in-azure-ml.md
         - name: 漫游和协作
           href: roaming-and-collaboration.md
-    - name: 使用用于 AI 的 Visual Studio Code 工具
-      href: quickstart-visual-studio-tools.md
+    - name: 使用 IDE 扩展
+      items:
+        - name: 使用用于 AI 的 Visual Studio Tools
+          href: quickstart-visual-studio-tools.md
+        - name: 使用用于 AI 的 Visual Studio Code 工具
+          href: quickstart-visual-studio-code-tools.md
     - name: 使用 Azure IoT Edge AI 工具包
       href: use-azure-iot-edge-ai-toolkit.md
     - name: 配置计算环境
@@ -156,6 +160,8 @@
           href: experimentation-service-configuration-reference.md
         - name: 日志记录 API
           href: reference-logging-api.md
+        - name: 试验服务模板
+          href: experimentation-service-template.md
     - name: 模型管理
       items:
         - name: 模型管理 API
@@ -170,6 +176,8 @@
           href: release-notes-sprint-0.md
         - name: 冲刺 (sprint) 1 - 2017 年 11 月
           href: release-notes-sprint-1.md
+        - name: 冲刺 (sprint) 2 - 2017 年 12 月
+          href: release-notes-sprint-2.md
 - name: 资源
   items:
     - name: 常见问题

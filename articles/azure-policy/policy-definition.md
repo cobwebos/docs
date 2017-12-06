@@ -9,11 +9,11 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 8ff85f842356eff3f12ccd04e337d71c52d0efcd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -88,13 +88,21 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
     "type": "array",
     "metadata": {
       "description": "The list of allowed locations for resources.",
-      "displayName": "Allowed locations"
+      "displayName": "Allowed locations",
+      "strongType": "location"
     }
   }
 }
 ```
 
 参数类型可以是字符串，也可以是数组。 Azure 门户等工具使用元数据属性显示用户友好信息。
+
+在元数据属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。  **strongType** 的允许值目前包括：
+
+* `"location"`
+* `"resourceTypes"`
+* `"storageSkus"`
+* `"vmSKUs"`
 
 在策略规则中，使用下列语法引用参数：
 

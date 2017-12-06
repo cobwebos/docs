@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 280001f9057825b9dcd98c5180340a54e2e239cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
@@ -172,7 +172,7 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 - [SAP Support Note #171356 – SAP Software on Linux:  General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）。
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）。
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，与仅支持 RHEL 7.2 及更高版本的本机 Azure VM 不同，HANA 大型实例还支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
 
 其他与基于 Red Hat 的 SAP 相关的有用链接：
 - [SAP HANA on Red Hat Linux Site](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat)（“基于 Red Hat Linux 的 SAP HANA”站点）。
@@ -322,9 +322,9 @@ SUSEConnect –cleanup
 ### <a name="download-of-the-sap-hana-installation-bits"></a>下载 SAP HANA 安装位包
 由于 HANA 大型实例单元不直接连接 Internet，因此无法直接将安装程序包从 SAP 下载到 HANA 大型实例 VM。 若要解决不直接连接 Internet 的问题，需要使用跳转盒。 将程序包下载到跳转盒 VM。
 
-若要下载 HANA 安装程序包，需要以 SAP S 用户或其他用户身份下载，以便可以访问 SAP 商城。 登录后，请依次转到下列屏幕：
+若要下载 HANA 安装程序包，需要以 SAP S 用户或其他用户身份下载，以便可以访问 SAP Marketplace。 登录后，请依次转到下列屏幕：
 
-转到 [SAP 服务商城](https://support.sap.com/en/index.html) > 单击“下载软件”>“安装和升级”> 使用按字母顺序排列的索引 > 在“H”下选择“SAP HANA 平台版本”>“SAP HANA 平台版 2.0”>“安装”> 下载以下文件
+转到 [SAP Service Marketplace](https://support.sap.com/en/index.html) > 单击“下载软件”>“安装和升级”> 使用按字母顺序排列的索引 > 在“H”下选择“SAP HANA 平台版本”>“SAP HANA 平台版 2.0”>“安装”> 下载以下文件
 
 ![下载 HANA 安装程序包](./media/hana-installation/image16_download_hana.PNG)
 

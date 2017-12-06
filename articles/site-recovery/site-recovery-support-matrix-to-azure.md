@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: c38a69176f5f9e6a8f8dbcc411b85bef47362880
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
 
@@ -145,6 +145,7 @@ ELB | 是 | 是
 保留 IP | 是 | 是
 IPv4 | 是 | 是
 保留源 IP | 是 | 是
+虚拟网络服务终结点（Azure 存储防火墙和虚拟网络） | 否 | 否
 
 
 ## <a name="support-for-storage"></a>存储支持
@@ -188,9 +189,11 @@ GRS | 是 | 是
 RA-GRS | 是 | 是
 冷存储 | 否 | 否
 热存储| 否 | 否
+块 Blob | 否 | 否
 静态加密 (SSE)| 是 | 是
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
+在用于存储复制数据的目标存储帐户或缓存存储帐户上配置的虚拟网络服务终结点（Azure 存储防火墙和虚拟网络） | 否 | 否
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Azure 计算配置支持

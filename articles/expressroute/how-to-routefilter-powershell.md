@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 76077be4f443f8e0dd6341d1a87539277f23e1c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c940d2eab4d8e977b67b3553ab2e3d9110710956
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 开始配置之前，请确保满足以下条件：
 
- - 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。
+ - 安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。
 
   > [!NOTE]
   > 从 PowerShell 库下载最新版本，而不是使用安装程序。 安装程序当前不支持所需 cmdlet。
@@ -104,7 +104,7 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 社区值的列表
+## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.获取 BGP 团体值列表
 

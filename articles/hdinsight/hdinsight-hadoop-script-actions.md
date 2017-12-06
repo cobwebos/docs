@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1b10887bcfa7f7c25375bd990ec5e97d0fefbacf
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d0e95014f6ebfc4e0286d3a12999c918f831b489
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
 了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
@@ -245,7 +245,8 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 ## <a name="debug-custom-scripts"></a>调试自定义脚本
 脚本错误日志随同其他输出一起存储在创建群集时为该群集指定的默认存储帐户中。 这些日志存储在名为 *u<\cluster-name-fragment><\time-stamp>setuplog* 的表中。 这些是包含所有节点（头节点和从节点）中的记录的聚合日志，脚本在群集中的这些节点上运行。
-若要查看日志，一个简单方法是使用 HDInsight Tools for Visual Studio。 若要安装这些工具，请参阅[开始使用适用于 HDInsight 的 Visual Studio Hadoop 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)
+
+若要查看日志，一个简单方法是使用 HDInsight Tools for Visual Studio。 若要安装这些工具，请参阅[开始使用适用于 HDInsight 的 Visual Studio Hadoop 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-and-upgrade-data-lake-tools-for-visual-studio)
 
 **使用 Visual Studio 查看日志**
 

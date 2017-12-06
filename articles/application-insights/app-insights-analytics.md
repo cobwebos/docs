@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 80a9e248ca50c11ef61a5c50c4986c4f8f4ead9d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: adda6335b702470cd491f07d750236c368325a9e
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
 Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索和查询工具。 Analytics 是一个 Web 工具，因此不需要安装。 如果已经为某个应用配置了 Application Insights，则可以通过从该应用的[概述边栏选项卡](app-insights-dashboards.md)打开 Analytics 来对应用数据进行分析。
@@ -49,7 +49,7 @@ requests
 
 * 按任何字段（包括自定义属性和指标）[筛选](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)原始应用遥测。
 * [加入](https://docs.loganalytics.io/queryLanguage/query_language_joinoperator.html)多个表 – 将请求与页面视图、依赖项调用、 异常和日志跟踪关联起来。
-* 功能强大的统计[聚合](https://docs.loganalytics.io/learn/tutorials/aggregations.html)。
+* 功能强大的统计[聚合](https://docs.loganalytics.io/docs/Learn/Tutorials/Aggregation-functions)。
 * 功能强大的即时可视化效果。
 * 可以用来以编程方式运行查询的 [REST API](https://dev.applicationinsights.io/)，例如通过 PowerShell。
 

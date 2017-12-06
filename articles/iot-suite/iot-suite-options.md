@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e00dd828ef24b9bc97665f0f5fe8d7e14f4e4630
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1a23835f341bf02f8e662782984d95bfe194030b
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="compare-azure-iot-options"></a>比较 Azure IoT 选项
 
@@ -50,7 +50,7 @@ Azure IoT 中心是核心的 Azure 平台即服务，可供 Microsoft IoT Centra
 | 访问基础 PaaS 服务          | 有权访问基础 Azure 服务，根据需要对其进行管理或替换。 | SaaS。 完全托管的解决方案，基础服务不公开。 |
 | 灵活性            | 高。 微服务的代码是开源的，可以任意修改。 此外还可以自定义部署基础结构。| 中。 可以根据内置的基于浏览器的用户体验来自定义解决方案模型和 UI 的各个方面。 基础结构不可自定义，因为未公开各种不同的组件。|
 | 技能级别                 | 中-高。 需要 Java 或 .NET 技能才能自定义解决方案后端。 需要 JavaScript 技能才能自定义可视化效果。 | 低。 需要建模技能才能自定义解决方案。 不需编码技能。 |
-| 入门体验 | 预配置解决方案可实现常见的 IoT 方案。 可以在数分钟内部署。 | 模板提供预建的模型。 可以在数分钟内部署。 |
+| 入门体验 | 预配置解决方案可实现常见的 IoT 方案。 可以在数分钟内部署。 | 应用程序模板和设备模板提供预建的模型。 可以在数分钟内部署。 |
 | 定价                | 可以通过微调服务来控制成本。 | 简单且可预测的定价结构。 |
 
 使用哪种产品来生成 IoT 解决方案最终取决于：

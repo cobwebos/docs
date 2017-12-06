@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2017
+ms.date: 11/21/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 83ddc0cb4227235069b0027a24a52f4d8e818126
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bfbcded98814500a03b2b79b0248c84f8f043dc0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-costs-by-using-azure-cost-management"></a>使用 Azure 成本管理管理成本
 
@@ -80,6 +80,23 @@ ms.lasthandoff: 11/07/2017
 
 ![示例类别](./media/tutorial-manage-costs/category01.png)
 
+### <a name="tag-sources-and-reports"></a>标记源和报告
+
+Cloudyn 报告中的标记数据源自三个地方：
+
+- 云提供程序资源 API
+- 云提供程序计费 API
+- 从以下源手动创建标记：
+    - Cloudyn 实体标记 - 应用到 Cloudyn 实体的用户定义元数据
+    - 类别管理器 - 数据清理工具，可用来根据应用于现有标记的规则创建新标记
+
+若要在 Cloudyn 成本报表中查看云提供程序标记，必须使用成本分配 360 创建自定义成本分配模型。 若要执行此操作，依次转到“成本” > “成本管理” > “成本分配 360”，选择需要的标记，然后定义处理未标记成本的规则。 然后，创建新的成本模型。 稍后，可在成本分配分析中查看报表，对 Azure 资源标记执行查看、筛选和分类操作。
+
+Azure 资源标记只显示在“成本分配分析”报表中。
+
+云提供程序计费标记显示在所有成本报表中。
+
+Cloudyn 实体标记和手动创建的标记显示在所有成本报表中。
 
 
 ## <a name="create-showback-and-chargeback-reports"></a>创建报销和退款报表

@@ -85,7 +85,7 @@ ms.lasthandoff: 10/11/2017
 3. 单击服务器名称“myserver4demo”。
 4. 选择服务器的“属性”页，然后记下“服务器名称”和“服务器管理员登录名”。
  ![Azure Database for MySQL - 服务器管理员登录名](./media/connect-go/1_server-properties-name-login.png)
-5. 如果忘了服务器的登录信息，请导航到“概述”页，以查看服务器管理员登录名并重置密码（如果需要）。
+5. 如果忘了服务器的登录信息，请导航到“概览”页，查看服务器管理员登录名并重置密码（如果需要）。
    
 
 ## <a name="build-and-run-go-code"></a>生成和运行 Go 代码 
@@ -174,7 +174,7 @@ func main() {
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码进行连接，并使用 SELECT SQL 语句来读取数据。 
+使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[适用于 mysql 的 go sql driver](https://github.com/go-sql-driver/mysql#installation)（充当与 Azure Database for MySQL 通信所需的驱动程序），以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
 

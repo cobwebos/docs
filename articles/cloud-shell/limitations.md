@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: juluk
-ms.openlocfilehash: bd947af4cca0ed240ba5811d6a5cd06ff7fffc82
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 65a5c40ce0a4d0cfdc0a325476bea6e8ccebe8c6
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -28,10 +28,10 @@ Azure Cloud Shell 有以下已知限制：
 
 ### <a name="system-state-and-persistence"></a>系统状态和持久性
 
-提供 Cloud Shell 会话的计算机是暂时性的，在会话处于非活动状态 20 分钟后会被回收。 Cloud Shell 需要装载文件共享。 因此，订阅必须能够设置存储资源才能访问 Cloud Shell。 其他注意事项包括：
+提供 Cloud Shell 会话的计算机是暂时性的，在会话处于非活动状态 20 分钟后会被回收。 Cloud Shell 需要装载 Azure 文件共享。 因此，订阅必须能够设置存储资源才能访问 Cloud Shell。 其他注意事项包括：
 
 * 使用装载的存储时，仅持久保存 `clouddrive` 目录中的修改。 在 Bash 中，`$Home` 目录也会持久保存。
-* 仅可从[已分配区域](persisting-shell-storage.md#mount-a-new-clouddrive)内部装载文件共享。
+* 仅可从[已分配区域](persisting-shell-storage.md#mount-a-new-clouddrive)内部装载 Azure 文件共享。
   * 在 Bash 中，运行 `env` 可以找到设置为 `ACC_LOCATION` 的区域。
 * Azure 文件仅支持本地冗余存储和异地冗余存储帐户。
 
@@ -77,7 +77,12 @@ PowerShell in Azure Cloud Shell（预览版）最长可能需要 60 秒才能完
 由任何应用程序（例如 git、vim，等等）写入 `$Home` 的数据不会在 PowerShell 会话之间持久保留。 有关解决方法，请[参阅此文](troubleshooting.md#powershell-resolutions)。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置：
+
 使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 C:\Users 文件夹。 
+
+### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
+
+如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Login-AzureRMAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ## <a name="next-steps"></a>后续步骤
 

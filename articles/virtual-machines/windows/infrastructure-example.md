@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84cefcdb85f1a3c753027e827abde010b461cda7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee66bf554e8e623ebfaa82bc888fc541da322d2f
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
 
@@ -55,7 +55,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 以上各项都将遵循以下命名约定：
 
 * Adventure Works Cycles 使用 **[IT 工作负荷]-[位置]-[Azure 资源]** 作为前缀
-  * 在本示例中，IT 工作负荷名为 **azos** (Azure On-line Store)，位置为 **use**（美国东部 2）
+  * 在本示例中，IT 工作负荷名为 **azos**（Azure 在线商店），位置为 **use**（美国东部 2）
 * 虚拟网络使用 AZOS-USE-VN**[数字]**
 * 可用性集使用 use azos-use-as-**[角色]**
 * 虚拟机名称使用 azos-use-vm-**[VM 名称]**

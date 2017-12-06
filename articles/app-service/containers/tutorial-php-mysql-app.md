@@ -5,21 +5,18 @@ services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
-ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 07/21/2017
+ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 11e8708987f4e085fc8bf1db10144283a9a17d2e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 3496b00960ad1fe1213f2005d2173543988b4ff9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
 
@@ -106,7 +103,7 @@ composer install
 
 在存储库根路径中，创建名为 .env 的文件。 复制下列变量到 .env 文件。 请将 &lt;root_password> 占位符替换为 MySQL 根用户的密码。
 
-```
+```txt
 APP_ENV=local
 APP_DEBUG=true
 APP_KEY=SomeRandomString
@@ -158,7 +155,7 @@ php artisan serve
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-使用 [az mysql server create](/cli/azure/mysql/server#create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。
+使用 [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。
 
 在以下命令中，请将 &lt;mysql_server_name> 占位符替换为你自己的唯一 MySQL 服务器名称（有效字符是 `a-z`、`0-9` 和 `-`）。 此名称是 MySQL 服务器主机名 (`<mysql_server_name>.database.windows.net`) 的一部分，必须全局唯一。
 
@@ -183,7 +180,7 @@ az mysql server create --name <mysql_server_name> --resource-group myResourceGro
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-使用 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create) 命令创建 MySQL 服务器的防火墙规则，以便能够建立客户端连接。
+使用 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便能够建立客户端连接。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -236,7 +233,7 @@ quit
 
 在存储库根路径中创建一个 .env.production 文件，并在其中复制以下变量。 替换占位符 &lt;mysql_server_name >。
 
-```
+```txt
 APP_ENV=production
 APP_DEBUG=true
 APP_KEY=SomeRandomString
@@ -334,7 +331,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config/appsettings#set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname> 和 &lt;mysql_server_name>。
 
@@ -366,7 +363,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#set) 命令在应用服务 Web 应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
+使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令在应用服务 Web 应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -378,7 +375,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 设置 Web 应用的虚拟应用程序路径。 需要执行此步骤的原因是 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public 目录中开始，而不是在应用程序的根目录中开始。 无需手动配置虚拟应用程序路径，生命周期在根目录中开始的其他 PHP 框架也能正常工作。
 
-使用 [az resource update](/cli/azure/resource#update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
+使用 [az resource update](/cli/azure/resource#az_resource_update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01

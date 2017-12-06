@@ -1,6 +1,6 @@
 ---
-title: "PowerShell in Azure Cloud Shell（预览版）快速入门 | Microsoft Docs"
-description: "PowerShell in Cloud Shell 快速入门"
+title: "Azure Cloud Shell（预览版）中的 PowerShell 快速入门 | Microsoft Docs"
+description: "Cloud Shell 中的 PowerShell 快速入门"
 services: Azure
 documentationcenter: 
 author: maertendmsft
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 913bd917ae7c2b44df097ead9c3e35841338905c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）快速入门
 
-本文档详细介绍如何在 [Azure 门户](https://aka.ms/PSCloudPreview)中使用 PowerShell in Azure Cloud Shell。
+本文档详细介绍如何在 [Azure 门户](https://aka.ms/PSCloudPreview)中使用 Cloud Shell 中的 PowerShell。
 
 > [!NOTE]
-> 此外，还提供了 [Bash in Azure Cloud Shell](quickstart.md) 快速入门。
+> 此外，还提供了 [Azure Cloud Shell 中的 Bash](quickstart.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
@@ -276,7 +276,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="get-help"></a>Get-Help
 
-键入 `Get-Help` 可获取有关 PowerShell in Azure Cloud Shell 的信息。
+键入 `Get-Help` 可获取有关 Azure Cloud Shell 中的 PowerShell 的信息。
 
 ``` Powershell
 PS Azure:\> Get-Help
@@ -288,7 +288,7 @@ PS Azure:\> Get-Help
 PS Azure:\> Get-Help Get-AzureRmVM
 ```
 
-## <a name="use-azure-file-storage-to-store-your-data"></a>使用 Azure 文件存储来存储数据
+## <a name="use-azure-files-to-store-your-data"></a>使用 Azure 文件存储数据
 
 可以创建一个脚本（例如 `helloworld.ps1`）并将其保存到 `CloudDrive`，以便在不同的 shell 会话中使用该脚本。
 
@@ -300,7 +300,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-下次使用 PowerShell in Cloud Shell 时，`helloworld.ps1` 文件将出现在装载 Azure 文件共享的 `CloudDrive` 文件夹下。
+下次使用 Cloud Shell 中的 PowerShell 时，`helloworld.ps1` 文件将出现在装载 Azure 文件共享的 `CloudDrive` 文件夹下。
 
 ## <a name="use-custom-profile"></a>使用自定义配置文件
 

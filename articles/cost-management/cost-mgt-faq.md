@@ -5,19 +5,18 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2017
+ms.date: 11/21/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: a01d8d1ed0f5234f4950d448b54087767353c8ef
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure 成本管理常见问题解答
-
 
 本文解答有关 Azure 成本管理（也称作 Cloudyn）的一些常见问题。 如果在成本管理方面有任何疑问，可在 [Cloudyn 提供的 Azure 成本管理的常见问题解答](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)中提问。
 
@@ -125,3 +124,15 @@ Cloudyn 提供以下数据刷新时间线：
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>直接 CSP 如何为间接 CSP 客户或合作伙伴配置 Cloudyn 访问权限？
 
 有关说明，请参阅[在 Cloudyn 中配置间接 CSP 访问权限](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn)。
+
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>导致“优化器”菜单项显示的原因是什么？
+
+添加 Azure 资源管理器访问权限并收集数据后，应该会看到“优化器”选项。 若要激活 Azure 资源管理器访问权限，请参阅[我如何使用 Azure 凭据激活未激活的帐户？](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+
+## <a name="is-cost-managementcloudyn-agent-based"></a>是否基于成本管理/Cloudyn 代理？
+
+不能。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
+
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn 报表是否每报表显示多个 AD 租户？
+
+是的。 可以为拥有的每个 AD 租户[创建相应的云帐户实体](tutorial-user-access.md#create-entities)。 然后，可以查看所有 Azure AD 租户数据和其他云平台提供程序（包括 Amazon Web Services 和 Google Cloud Platform）。

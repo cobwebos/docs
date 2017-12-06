@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 05c4d419f6d7b42a14b9bb13570daaa666d52db3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -55,9 +55,9 @@ Cloud Shell 由 Microsoft 管理，因此预装了常用的命令行工具和语
 * [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-### <a name="connect-your-azure-files-storage"></a>连接 Azure 文件存储
+### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
 Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 `clouddrive` 来持久保存 $Home 目录。
-首次启动时，Cloud Shell 会提示将替你创建资源组、存储帐户和文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将 Bash 和 PowerShell in Cloud Shell（预览版）使用。
+首次启动时，Cloud Shell 会提示将替你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个 Azure 文件共享可以映射，将 Bash 和 PowerShell in Cloud Shell（预览版）使用。
 
 #### <a name="create-new-storage"></a>创建新存储
 ![](media/overview/basic-storage.png)
@@ -70,7 +70,7 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 3. 文件共享：`cs-<user>-<domain>-com-<uniqueGuid>`
 
 > [!Note]
-> Cloud Shell 中的 Bash 还会创建一个默认的 5-GB 磁盘映像用于持久保存 `$Home`。 $Home 目录中的所有文件（如 SSH 密钥）将持久保存在已装载的文件共享中存储的用户磁盘映像中。 在 $Home 目录和已装载的文件共享中保存文件时，请应用最佳做法。
+> Cloud Shell 中的 Bash 还会创建一个默认的 5-GB 磁盘映像用于持久保存 `$Home`。 $Home 目录中的所有文件（如 SSH 密钥）将持久保存在已装载的 Azure 文件共享中存储的用户磁盘映像中。 在 $Home 目录和已装载的 Azure 文件共享中保存文件时，请应用最佳做法。
 
 #### <a name="use-existing-resources"></a>使用现有资源
 ![](media/overview/advanced-storage.png)
@@ -79,15 +79,15 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 在存储设置提示下，单击“显示高级设置”显示其他选项。
 从下拉列表筛选分配的 Cloud Shell 区域和本地/全局冗余存储帐户。
 
-[了解 Cloud Shell 存储、更新文件共享和上传/下载文件。](persisting-shell-storage.md)
+[了解 Cloud Shell 存储、更新 Azure 文件共享和上传/下载文件。](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>概念
-* Cloud Shell 在按会话按用户提供的临时计算机上运行。
+* Cloud Shell 在按会话按用户提供的临时主机上运行
 * Cloud Shell 在 20 分钟没有交互活动后将超时
-* 只能通过所附加的文件共享访问 Cloud Shell
-* Cloud Shell 为 Bash 和 PowerShell 使用相同的文件共享
+* Cloud Shell 需要装载 Azure 文件共享
+* Cloud Shell 对 Bash 和 PowerShell 使用相同的 Azure 文件共享
 * 将针对每个用户帐户为 Cloud Shell 分配一台计算机
-* 权限是按常规 Linux 用户设置的 (Bash)
+* 在 Bash 中权限是按常规 Linux 用户设置的
 
 详细了解 [Bash in Cloud Shell](features.md) 和 [PowerShell in Cloud Shell（预览版）](features-powershell.md)的功能。
 
@@ -102,5 +102,5 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 托管 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
 
 ## <a name="next-steps"></a>后续步骤
-[Bash in Cloud Shell 快速入门](quickstart.md)
+[Bash in Cloud Shell 快速入门](quickstart.md) <br>
 [PowerShell in Cloud Shell（预览版）快速入门](quickstart-powershell.md)

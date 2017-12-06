@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.openlocfilehash: 1e4188313a87d07f396e5f8edc8969dd5da2c436
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6078ba7b553773294ebbf11949f7d3b53f46f0c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-azure-functions-runtime-preview"></a>安装 Azure Functions 运行时预览版
 
 如果希望安装 Azure Functions 运行时预览版，必须执行以下步骤：
 
-1. 确保计算机满足最低要求
-1. 下载 [Azure Functions 运行时预览版安装程序](https://aka.ms/azafr)。 
-1. 安装 Azure Functions 运行时预览版
-1. 完成 Azure Functions 运行时预览版的配置
+1. 确保计算机满足最低要求。
+1. 下载 [Azure Functions 运行时预览版安装程序](https://aka.ms/azafr)。
+1. 安装 Azure Functions 运行时预览版。
+1. 完成 Azure Functions 运行时预览版的配置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,52 +46,52 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
     ![Azure Functions 运行时预览版安装程序][1]
 
-1. **单击“下一步”**以通过安装程序的第一阶段
-1. 在阅读 **EULA** 的条款后，**选中复选框**以接受条款并**单击“下一步”**以继续操作。
-1. 现在，选择要在此计算机上安装的角色“Functions 管理角色”和/或“Functions 辅助角色”并**单击“下一步”**
+1. 单击“下一步”。
+1. 在阅读 **EULA** 的条款后，**选中复选框**以接受条款并单击“下一步”以继续操作。
+1. 现在，选择要在此计算机上安装的角色“Functions 管理角色”和/或“Functions 辅助角色”并单击“下一步”
 
     ![Azure Functions 运行时预览版安装程序 - 角色选择][3]
 
     > [!NOTE]
-    > 可以在多台其他计算机上安装 **Functions 辅助角色**，要执行此操作，请遵循以下说明并且在安装程序中仅选择“Functions 辅助角色”。
+    > 可以在其他许多计算机上安装 **Functions 辅助角色**。 为此，请按照这些说明进行操作，并且仅在安装程序中选择“Functions 辅助角色”。
 
-1. **单击“下一步”**让 **Azure Functions 运行时安装程序**在计算机上进行安装。
-1. 完成后，安装程序将启动 **Azure Functions 运行时配置工具**。
+1. 单击“下一步”，让 **Azure Functions 运行时安装向导**开始在计算机上执行安装过程。
+1. 完成后，安装向导将启动 **Azure Functions 运行时**配置工具。
 
     ![Azure Functions 运行时预览版安装程序完成][5]
 
     > [!NOTE]
-    > 如果是在 **Windows 10** 上进行安装并且未启用**容器**功能，则 **Azure Functions 运行时**安装程序会提示重新启动计算机来完成安装。
+    > 如果是在 **Windows 10** 上进行安装并且未启用**容器**功能，则 **Azure Functions 运行时安装程序**会提示重新启动计算机来完成安装。
 
 ## <a name="configure-the-azure-functions-runtime"></a>配置 Azure Functions 运行时
 
 若要完成 Azure Functions 运行时安装，必须完成配置。
 
-1. **Azure Functions 运行时配置工具**会显示计算机上安装了哪些角色。
+1. **Azure Functions 运行时**配置工具会显示计算机上安装了哪些角色。
 
     ![Azure Functions 运行时预览版配置工具][6]
 
-1. 单击“数据库”选项卡，输入 **SQL Server 实例的连接详细信息**并**单击“应用”**。  要使 Azure Functions 运行时创建数据库来支持运行时，这是必须执行的步骤。
+1. 单击“数据库”选项卡，输入 SQL Server 实例的连接详细信息并单击“应用”。  要使 Azure Functions 运行时创建数据库来支持运行时，这是必须执行的步骤。
     
     ![Azure Functions 运行时预览版数据库配置][7]
 
-1. 单击“凭据”选项卡。在此屏幕上，必须为托管所有 Azure Functions 的文件共享创建两个凭据。  为**文件共享所有者**和**文件共享用户****指定用户名和密码**组合，并单击“应用”。
+1. 单击“凭据”选项卡。在此屏幕上，必须为托管所有 Azure Functions 的文件共享创建两个凭据。  为**文件共享所有者**和**文件共享用户**指定**用户名**和**密码**组合，并单击“应用”。
 
     ![Azure Functions 运行时预览版凭据][8]
 
-1. 单击“文件共享”选项卡。在此屏幕中，必须指定**文件共享位置**的详细信息。  系统可以创建此位置，也可以选择一个现有文件共享并单击“应用”。  如果选择了新的文件共享位置，则必须指定一个目录供 Azure Functions 运行时使用。
+1. 单击“文件共享”选项卡。在此屏幕中，必须指定“文件共享”位置的详细信息。  系统可以创建此位置，也可以选择一个现有文件共享并单击“应用”。  如果选择了新的文件共享位置，则必须指定一个目录供 Azure Functions 运行时使用。
     
     ![Azure Functions 运行时预览版文件共享][9]
 
-1. 单击“IIS”选项卡。此选项卡显示 Azure Functions 运行时安装会在 IIS 中创建的网站的详细信息。  **单击“应用”**以完成操作。
+1. 单击“IIS”选项卡。此选项卡显示 Azure Functions 运行时配置工具会在 IIS 中创建的网站的详细信息。  单击“应用”以完成操作。
 
     ![Azure Functions 运行时预览版 IIS][10]
 
-1. 单击“服务”选项卡。此选项卡显示 Azure Functions 运行时安装中的服务的状态。  在初始配置后，如果 **Azure Functions 主机激活服务**没有运行，请单击“启动服务”
+1. 单击“服务”选项卡。此选项卡显示 Azure Functions 运行时配置工具中的服务的状态。  在初始配置后，如果 **Azure Functions 主机激活服务**没有运行，请单击“启动服务”
 
     ![Azure Functions 运行时预览版配置完成][11]
 
-1. 最后，以 `https://<machinename>/` 形式浏览 **Azure Functions 运行时门户**
+1. 最后，以 `https://<machinename>/` 形式浏览 **Azure Functions 运行时门户**。
 
     ![Azure Functions 运行时预览版门户][12]
 

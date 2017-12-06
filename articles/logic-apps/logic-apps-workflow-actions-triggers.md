@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: 7e0266cdc477715a5d2f9067c6dcea73da9ba763
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f95c0c486401e0d709829ce8d560f030932eea7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>逻辑应用工作流触发器和操作
 
@@ -114,11 +114,11 @@ ms.lasthandoff: 10/11/2017
 | 元素名称 | 必选 | 类型 | 说明 | 
 | ------------ | -------- | ---- | ----------- | 
 | 频率 | 是 | String | 触发器执行频率的时间单位。 只使用以下值之一：“second”、“minute”、“hour”、“day”、“week”或“month” | 
-| interval | 是 | Integer | 一个正整数，它基于频率描述工作流运行的次数。 <p>下面是最小和最大间隔： <p>- Month：1-16 个月 </br>- Day：1-500 天 </br>- Hour：1-12,000 小时 </br>- Minute：1-72,000 分钟 </br>- Second：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“month”，那么重复周期为每 6 个月。 | 
+| interval | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- Second：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“month”，那么重复周期为每 6 个月。 | 
 | timezone | 否 | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 指定要应用的时区。 | 
 | startTime | 否 | String | 采用以下格式指定启动日期和时间： <p>如果指定时区，则为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果不指定时区，则为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2 点，则指定“2017-09-18T14:00:00”并指定时区（如“太平洋标准时间”）。 或者指定“2017-09-18T14:00:00Z”，无需指定时区。 <p>**注意：**此启动时间必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)中的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未指定时区，则必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，启动时间即第一次循环；而对于复杂计划，触发器不会在启动时间之前执行。 有关启动日期和时间的详细信息，请参阅[创建和计划定期运行任务](../connectors/connectors-native-recurrence.md)。 | 
 | 工作日 | 否 | 字符串或字符串数组 | 如果为 `frequency` 指定“Week”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“Monday”、“Tuesday”、“Wednesday”、“Thursday”、“Friday”、“Saturday”和“Sunday” | 
-| 小时 | 否 | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 23 范围内指定一个或多个整数（用逗号分隔），作为一天中要运行工作流的时间点。 <p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为时间点标记。 | 
+| 小时 | 否 | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 23 范围内指定一个或多个整数（用逗号分隔），作为一天中要运行工作流的时间点。 <p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为小时标记。 | 
 | 分钟数 | 否 | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 59 范围内指定一个或多个整数（用逗号分隔），作为要运行工作流的分钟。 <p>例如，可指定“30”为分钟标记，使用前面示例中的时间点，则可得到上午 10:30、中午 12:30 和下午 2:30。 | 
 |||||| 
 
@@ -196,19 +196,9 @@ HTTP 触发器将轮询指定的终结点并检查响应，确定是否应运行
 | 查询 | 否 | 对象 | 表示要包括在 URL 中的任何查询参数。 <p>例如，`"queries": { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。 | 
 | headers | 否 | 对象 | 表示请求中发送的每个标头。 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | 否 | 对象 | 表示发送到终结点的有效负载。 | 
-| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 | 
+| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md)。 | 
 | authentication | 否 | 对象 | 表示请求应使用的身份验证方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 <p>除了计划程序以外，还有另一个受支持的属性：`authority`。 如果未指定此值，则它默认为 `https://login.windows.net`，但也可使用其他值，例如 `https://login.windows\-ppe.net`。 | 
 ||||| 
-
-重试策略适用于具有 HTTP 状态代码 408、429 和 5xx 特征的间歇性失败，以及任何连接异常。 可使用 `retryPolicy` 对象定义此策略，如下所示：
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
  
 为了与逻辑应用正常配合工作，HTTP 触发器要求 HTTP API 符合特定的模式。 触发器可识别以下属性：  
   
@@ -269,7 +259,7 @@ API 连接触发器在基本功能上类似于 HTTP 触发器。 但是，用于
 | 查询 | 否 | 对象 | 表示要包括在 URL 中的任何查询参数。 <p>例如，`"queries": { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。 | 
 | headers | 否 | 对象 | 表示请求中发送的每个标头。 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | 否 | 对象 | 表示发送到终结点的有效负载。 | 
-| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 | 
+| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md)。 | 
 | authentication | 否 | 对象 | 表示请求应使用的身份验证方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 | 
 ||||| 
 
@@ -280,16 +270,6 @@ API 连接触发器在基本功能上类似于 HTTP 触发器。 但是，用于
 | api runtimeUrl | 是 | 托管 API 的终结点 | 
 | connection name |  | 工作流使用的托管 API 连接的名称。 必须引用名为 `$connection` 的参数。 |
 |||| 
-
-重试策略适用于具有 HTTP 状态代码 408、429 和 5xx 特征的间歇性失败，以及任何连接异常。 可使用 `retryPolicy` 对象定义此策略，如下所示：
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 
 下面是 API 连接触发器的输出：
   
@@ -529,20 +509,11 @@ HTTP 操作调用指定的终结点并检查响应，确定是否应运行工作
 | 查询 | 否 | 对象 | 表示要包括在 URL 中的任何查询参数。 <p>例如，`"queries": { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。 | 
 | headers | 否 | 对象 | 表示请求中发送的每个标头。 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | 否 | 对象 | 表示发送到终结点的有效负载。 | 
-| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 | 
+| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md)。 | 
 | operationsOptions | 否 | String | 定义要重写的特殊行为集。 | 
 | authentication | 否 | 对象 | 表示请求应使用的身份验证方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 <p>除了计划程序以外，还有另一个受支持的属性：`authority`。 如果未指定此值，则它默认为 `https://login.windows.net`，但也可使用其他值，例如 `https://login.windows\-ppe.net`。 | 
 ||||| 
 
-HTTP 操作和 APIConnection 操作支持重试策略。 重试策略适用于具有 HTTP 状态代码 408、429 和 5xx 特征的间歇性失败，以及任何连接异常。 可使用 `retryPolicy` 对象定义此策略，如下所示：
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 此示例 HTTP 操作重试提取最新的新闻 2 次，如果发生间歇性失败，则总共执行 3 次，每次尝试之间延迟 30 秒：
   
 ```json
@@ -631,20 +602,10 @@ APIConnection 操作引用 Microsoft 托管连接器。 此操作需要引用有
 | 查询 | 否 | 对象 | 表示要包括在 URL 中的任何查询参数。 <p>例如，`"queries": { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。 | 
 | headers | 否 | 对象 | 表示请求中发送的每个标头。 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | 否 | 对象 | 表示发送到终结点的有效负载。 | 
-| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 | 
+| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md)。 | 
 | operationsOptions | 否 | String | 定义要重写的特殊行为集。 | 
 | authentication | 否 | 对象 | 表示请求应使用的身份验证方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 |
 ||||| 
-
-重试策略适用于具有 HTTP 状态代码 408、429 和 5xx 特征的间歇性失败，以及任何连接异常。 可使用 `retryPolicy` 对象定义此策略，如下所示：
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 
 ## <a name="apiconnection-webhook-action"></a>APIConnection webhook 操作
 
@@ -684,7 +645,7 @@ APIConnectionWebhook 操作引用 Microsoft 托管连接器。 此操作需要�
 | 查询 | 否 | 对象 | 表示要包括在 URL 中的任何查询参数。 <p>例如，`"queries": { "api-version": "2015-02-01" }` 将 `?api-version=2015-02-01` 添加到 URL。 | 
 | headers | 否 | 对象 | 表示请求中发送的每个标头。 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | 否 | 对象 | 表示发送到终结点的有效负载。 | 
-| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 | 
+| retryPolicy | 否 | 对象 | 此对象用于针对 4xx 或 5xx 错误自定义重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md)。 | 
 | operationsOptions | 否 | String | 定义要重写的特殊行为集。 | 
 | authentication | 否 | 对象 | 表示请求应使用的身份验证方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 |
 ||||| 
@@ -878,7 +839,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 }
 ```
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- | 
 | from | 是 | Array | 源数组 |
 | 选择 | 是 | 任意 | 应用到源数组中每个元素的投影 |
@@ -970,7 +931,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 
 <table><thead><tr><th>Produce ID</th><th>说明</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- | 
 | from | 是 | Array | 源数组。 如果 `from` 属性值为空数组，输出将为空表。 | 
 | 格式 | 是 | String | 所需的表格式 - CSV 或 HTML | 
@@ -998,7 +959,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 }
 ```
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- | 
 | runStatus | 是 | String | 目标运行状态 - `Failed` 或 `Cancelled` |
 | runError | 否 | 对象 | 错误详细信息。 仅当 `runStatus` 设置为 `Failed` 时才支持。 |
@@ -1044,7 +1005,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 }
 ``` 
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- | 
 | actions | 是 | 对象 | `expression` 计算结果为 `true` 时要执行的内部操作 | 
 | 表达式 | 是 | String | 要计算的表达式 |
@@ -1086,7 +1047,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 }
 ```
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- |  
 | actions | 是 | 对象 | 要在范围中运行的内部操作 |
 ||||| 
@@ -1122,7 +1083,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 }
 ```
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- | 
 | actions | 是 | 对象 | 要在循环中运行的内部操作 | 
 | foreach | 是 | String | 要循环访问的数组 | 
@@ -1155,7 +1116,7 @@ response 操作包含一些不适用于其他操作的特殊限制，尤其是�
 }
 ```
 
-| Name | 必选 | 类型 | 说明 | 
+| 名称 | 必选 | 类型 | 说明 | 
 | ---- | -------- | ---- | ----------- | 
 | actions | 是 | 对象 | 要在循环中运行的内部操作 | 
 | 表达式 | 是 | String | 每次迭代后要计算的表达式 | 

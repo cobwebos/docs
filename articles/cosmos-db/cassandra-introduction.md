@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 23909c65499697be66fc2d2f43c6d0bd8a02b614
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: fe911b69278021262f1d90f2157bb78ca48db0db
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Apache Cassandra API for Azure Cosmos DB 简介
 
@@ -36,7 +36,10 @@ Azure Cosmos DB 提供的 Cassandra API（预览版）适用于为 Apache Cassan
 
 ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-通过 Cassandra API 可以使用基于 Cassandra 查询语言的工具（如 CQLSH）和熟悉的 Cassandra 客户端驱动程序与 Azure Cosmos DB 中存储的数据交互。
+通过 Cassandra API 可以使用基于 Cassandra 查询语言的工具（如 CQLSH）和熟悉的 Cassandra 客户端驱动程序与 Azure Cosmos DB 中存储的数据交互。 有关其更多的详细说明，可观看由首席工程经理 Kirill Gavrylyuk 主讲的 Microsoft Mechanics 视频。
+
+> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
+>
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>使用 Azure Cosmos DB Cassandra API 的优势是什么？
 
@@ -56,17 +59,34 @@ Azure Cosmos DB 提供的 Cassandra API（预览版）适用于为 Apache Cassan
 
 企业级：默认情况下具有安全性和符合性 – Azure cosmos DB 提供[符合性证书](https://www.microsoft.com/trustcenter)，确保用户可以在使用平台时无需担心符合性问题。 Azure Cosmos DB 还提供静态和动态加密、IP 防火墙和审核日志以控制平面活动。  
 
+<a id="sign-up-now"></a>
+## <a name="sign-up-now"></a>立即注册 
+
+如果已经有 Azure 订阅，则可以在 [Azure 门户](https://aka.ms/cosmosdb-cassandra-signup)中注册，以加入 Cassandra API（预览版）计划。  如果是 Azure 新手，请注册[免费试用版](https://azure.microsoft.com/free)，获取对 Azure Cosmos DB 12 个月的免费访问权限。 请完成以下步骤，以请求访问 Cassandra API（预览版）计划。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“新建” > “数据库” > “Azure Cosmos DB”。 
+
+2. 在“新建帐户”页中，选择 API 框中的“Cassandra”。 
+
+3. 在“订阅”框中，请选择要用于此帐户的 Azure 订阅。
+
+4. 单击“立即注册预览版”。
+
+    ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cassandra-sign-up.png)
+
+3. 在“立即注册预览版”窗格中，单击“确定”。 
+
+    提交请求后，新帐户窗格中的状态将更改为“等待审批”。 
+
+提交请求后，等待通知你请求已获得批准的电子邮件。 由于提交请求的用户很多，应该会在一周内收到通知。 你无需创建完成请求的支持票证。 我们将按照收到请求的顺序来审阅请求。 
+
 ## <a name="how-to-get-started"></a>如何入门
-按照 Cassandra API 快速入门中的说明创建 Azure Cosmos DB Cassandra API 帐户并创建 Cassandra 应用：
+加入预览计划后，请遵循“Cassandra API 快速入门”中说明，使用 Cassandra API 来创建应用：
 
 * [快速入门：使用 Node.js 和 Azure Cosmos DB 生成 Cassandra Web 应用](create-cassandra-nodejs.md)
 * [快速入门：使用 Java 和 Azure Cosmos DB 生成 Cassandra Web 应用](create-cassandra-java.md)
 * [快速入门：使用 .NET 和 Azure Cosmos DB 生成 Cassandra Web 应用](create-cassandra-dotnet.md)
 * [快速入门：使用 Python 和 Azure Cosmos DB 生成 Cassandra Web 应用](create-cassandra-python.md)
-
-## <a name="sign-up-now"></a>立即注册 
-
-如果已经有 Azure 订阅，则可以在 [Azure 门户](https://aka.ms/cosmosdb-cassandra-signup)中注册 Cassandra API（预览版）。 如果是 Azure 新手，请注册[免费试用版](https://azure.microsoft.com/free)，获取对 Azure Cosmos DB 12 个月的免费访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

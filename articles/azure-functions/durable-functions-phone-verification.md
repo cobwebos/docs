@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: cfb6758703ebf3ce0458a4e1ad74324a4ccc2ece
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 822abf5cd09a0cd0d66441acfe4ae114c6ba73eb
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/13/2017
 
 此示例涉及使用 [Twilio](https://www.twilio.com/) 服务向移动电话发送短信。 Azure Functions 已通过 [Twilio 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)提供对 Twilio 的支持，此示例使用了这一功能。
 
-首先，需要一个 Twilio 帐户。 可以在 https://www.twilio.com/try-twilio 上免费创建一个该帐户。 创建帐户以后，向项目添加以下三个应用设置。
+首先，需要一个 Twilio 帐户。 可以在 https://www.twilio.com/try-twilio 上免费创建一个该帐户。 创建帐户以后，向函数应用添加以下三个**应用设置**。
 
 | 应用设置名称 | 值说明 |
 | - | - |

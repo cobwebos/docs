@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c2c95373912131445b584fa8518785b26caa9c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a780461bb934b4766f8050fba825e1d7503f4fd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 提供了多种语言的_设备 SDK_，方便用户创建与 IoT 中心交互的[设备应用](#device-app)。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和更多信息。
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
-可以使用 IoT Edge 编写应用程序，使连接到网关的设备能够与 [IoT 中心](#iot-hub)通信。 IoT Edge 教程介绍了如何使用此服务。 可以在此 GitHub [存储库](https://github.com/Azure/iot-edge)中找到有关 Azure IoT Edge 的源代码和更多信息。
+Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的组织就可以专注于业务见解而非数据管理。 你可以配置 IoT 软件，通过标准容器将其部署到设备，然后对其进行监视，这一切都可以从云中操作，使解决方案能够真正地缩放。 开始使用教程，了解如何在 [Linux](../iot-edge/tutorial-simulate-device-linux.md) 或 [Windows](../iot-edge/tutorial-simulate-device-windows.md) 设备上安装和使用 Azure IoT Edge。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 提供了多种语言的_服务 SDK_，方便用户创建与 IoT 中心交互的[后端应用](#back-end-app)。 IoT 中心教程介绍了如何使用这些服务 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关服务 SDK 的源代码和进一步信息。
@@ -48,8 +48,8 @@ ms.lasthandoff: 10/11/2017
 ## <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
-可以使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
+## <a name="azure-resource-manager"></a>Azure 资源管理器
+可以使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)以组的方式处理解决方案中的资源。 可以通过一个协调操作为解决方案部署、更新或删除资源。
 
 ## <a name="azure-service-bus"></a>Azure 服务总线
 通过[服务总线](../service-bus/index.md)，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 某些 IoT 中心教程使用服务总线[队列](../service-bus-messaging/service-bus-messaging-overview.md)。
@@ -189,7 +189,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 使用[作业 REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) 可以管理 IoT 中心内运行的[作业](#job)。
 
 ## <a name="module"></a>模块
-在 [Azure IoT Edge](iot-hub-linux-iot-edge-get-started.md) 中，[模块](iot-hub-linux-iot-edge-get-started.md)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT Edge 包括一组示例模块。 用户还可以创建自己的自定义模块。
+在 [Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md) 中，[模块](../iot-edge/iot-edge-modules.md)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT Edge 包括一组示例模块。 用户还可以创建自己的自定义模块。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
@@ -216,7 +216,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，报告的属性是设备孪生的一部分，和[所需属性](#desired-properties)一起用于同步设备配置或条件。 报告的属性只能由[设备应用](#device-app)设置，可由[后端应用](#back-end-app)读取和查询。
 
 ## <a name="resource-group"></a>资源组
-[Azure Resource Manager](#azure-resource-manager) 使用资源组将相关的资源组合在一起。 通过使用资源组，可以对组中的所有资源同时执行操作。
+[Azure 资源管理器](#azure-resource-manager)使用资源组将相关的资源组合在一起。 通过使用资源组，可以对组中的所有资源同时执行操作。
 
 ## <a name="retry-policy"></a>重试策略
 连接到云服务时使用重试策略来处理[暂时性错误](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx)。

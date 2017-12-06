@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 11/14/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 58ebf74e166cdcae2c54b134cb99552333fafa24
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 9fbcac4bd6240aed607c3da6c6535d207a782448
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>访问 Azure AD 报告 API 的先决条件
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/01/2017
 
 **若要注册 Azure Active Directory 应用程序，请执行以下操作：**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”。
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
@@ -129,11 +129,11 @@ ms.lasthandoff: 11/01/2017
 
 **若要获取域名，请执行以下操作：**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”。
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“域名”。
+2. 在“Azure Active Directory”边栏选项卡中，单击“自定义域名”。
 
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/09.png) 
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/01/2017
 
 **若要获取应用程序的客户端 ID，请执行以下操作：**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”。
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/01/2017
 
 **若要获取应用程序的客户端机密，请执行以下操作：**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”。
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 

@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/13/2017
+ms.date: 11/28/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: d22fe6456c3bd886f8f8863d362c0084fbe03da3
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 66748adc49ef921ab8adb5306b2a483234b076ae
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>从托管在环境中的 Linux 计算机上收集数据
 [Azure Log Analytics](log-analytics-overview.md) 可直接从物理或虚拟 Linux 计算机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Linux 计算机中配置或收集数据。  有关 Azure Linux VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
- 
+
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
@@ -55,6 +55,9 @@ ms.lasthandoff: 10/24/2017
 
 ## <a name="install-the-agent-for-linux"></a>安装适用于 Linux 的代理
 以下步骤配置在 Azure 和 Azure 政府云中用于 Log Analytics 的代理。  
+
+>[!NOTE]
+>无法将适用于 Linux 的 OMS 代理配置为向多个 Log Analytics 工作区报告。  
 
 1. 要配置 Linux 计算机以连接至 Log Analytics，请运行以下命令，并提供先前复制的工作区 ID 和主密钥。  此命令将下载代理、验证其校验和并对其进行安装。 
     
@@ -113,7 +116,7 @@ Log Analytics 可从 Linux Syslog 以及指定用于长期分析的性能计数�
 
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
-要删除工作区，请选择之前创建的 Log Analytics 工作区，并在资源页上单击“删除”。<br><br> ![删除 Log Analytics 资源](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+若要删除工作区，请选择前面创建的 Log Analytics 工作区，在资源页上单击“删除”。<br><br> ![删除 Log Analytics 资源](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>后续步骤
 从本地 Linux 计算机上收集操作和性能数据后，现在可轻松开始浏览、分析免费收集的数据，并对它们采取措施。  

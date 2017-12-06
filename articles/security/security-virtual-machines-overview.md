@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d10b9fde99867a218c4368f0be6bee00bc44dc1
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 借助 Azure 虚拟机，可以采用灵活的方式部署各种计算解决方案。 通过对 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服务的支持，可以在几乎所有操作系统上部署任何工作负荷和任何语言。
@@ -72,7 +72,7 @@ Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的�
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务](../virtual-machines/windows/classic/install-trend.md)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/windows/classic/install-symantec.md)
-* [Azure 应用商店中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
+* [Azure Marketplace 中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 可通过提高密钥安全性来增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。 密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。

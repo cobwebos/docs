@@ -40,8 +40,6 @@
 - name: 托管服务标识
   href: msi-overview.md
   items:
-    - name: 如何登录或获取令牌
-      href: msi-how-to-get-access-token-using-msi.md
     - name: 为 Azure VM 配置 MSI
       items:
         - name: 使用 Azure 门户
@@ -62,6 +60,14 @@
           href: msi-howto-assign-access-powershell.md
         - name: 使用 Azure CLI
           href: msi-howto-assign-access-cli.md
+    - name: 如何使用 VM MSI
+      items:
+        - name: 获取访问令牌
+          href: msi-how-to-use-vm-msi-token.md
+        - name: 登录到 PowerShell 和 Azure CLI
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: 与 Azure SDK 配合使用
+          href: msi-how-to-use-vm-msi-sdk.md
     - name: 使用 VM MSI 访问 Azure Data Lake Store
       items:
         - name: 从 Windows VM 访问

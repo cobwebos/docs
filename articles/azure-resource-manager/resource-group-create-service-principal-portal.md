@@ -1,6 +1,6 @@
 ---
 title: "在门户中为 Azure 应用创建标识 | Microsoft 文档"
-description: "介绍如何创建新的 Azure Active Directory 应用程序和服务主体，在 Azure Resource Manager 中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
+description: "介绍如何创建新的 Azure Active Directory 应用程序和服务主体，在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2017
+ms.date: 11/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3b9c49d4c7d49cc6795fb093f9abc748d55b5b6f
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: fc5bfebbcbac7096dea874684bdefe099b572adc
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 10/14/2017
 * 职责变化时，无需更改应用的凭据。 
 * 执行无人参与的脚本时，可使用证书自动进行身份验证。
 
-本主题演示如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
+本文介绍了如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
 ## <a name="required-permissions"></a>所需的权限
 
-为完成本主题，必须具有足够的权限向 Azure AD 租户注册应用程序，并将应用程序分配到 Azure 订阅中的角色。 请确保拥有适当的权限来执行这些步骤。
+若要完成本文，必须拥有足够的权限向 Azure AD 租户注册应用，并将应用分配给 Azure 订阅中的角色。 请确保拥有适当的权限来执行这些步骤。
 
 ### <a name="check-azure-active-directory-permissions"></a>检查 Azure Active Directory 权限
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 10/14/2017
 
    ![添加应用](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. 为应用提供名称和 URL。 选择“Web 应用/API”或“本机”作为要创建的应用程序的类型。 设置这些值后，选择“创建”。
+1. 为应用提供名称和 URL。 选择“Web 应用/API”作为要创建的应用类型。 无法创建原生应用的凭据，因此这种类型不适用于自动应用。 设置这些值后，选择“创建”。
 
    ![命名应用程序](./media/resource-group-create-service-principal-portal/create-app.png)
 
@@ -196,6 +196,6 @@ ms.lasthandoff: 10/14/2017
 * [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ## <a name="next-steps"></a>后续步骤
-* 若要设置多租户应用程序，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](resource-manager-api-authentication.md)。
+* 若要设置多租户应用程序，请参阅[使用 Azure 资源管理器 API 进行授权的开发人员指南](resource-manager-api-authentication.md)。
 * 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。  
-* 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../active-directory/role-based-access-control-resource-provider-operations.md)。
+* 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../active-directory/role-based-access-control-resource-provider-operations.md)。

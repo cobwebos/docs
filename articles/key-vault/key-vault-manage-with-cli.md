@@ -3,7 +3,7 @@ title: "使用 CLI 管理 Azure Key Vault | Microsoft Docs"
 description: "使用本教程通过 CLI 自动执行密钥保管库中的常见任务"
 services: key-vault
 documentationcenter: 
-author: BrucePerlerMS
+author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 66be6e44-684a-411b-802e-884628458ae7
@@ -12,30 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
-ms.author: bruceper
-ms.openlocfilehash: c2565a742ce4f6ab5f7639a54c4a475f00cbc260
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/14/2017
+ms.author: barclayn
+ms.openlocfilehash: 94ea95e7f40c8d47dd18422a9c0795655dae365b
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-key-vault-using-cli"></a>使用 CLI 管理密钥保管库
 
+本教程会帮助你开始使用 Azure Key Vault 在 Azure 中创建强化容器（保管库）。 Azure Key Vault 用于存储和管理加密密钥和机密。 本文将指导你完成使用 Azure 跨平台命令行接口创建保管库的过程。 然后将与保管库进行交互以执行各种常见操作。 
+
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
-
-## <a name="introduction"></a>介绍
-
-本教程会帮助你开始使用 Azure 密钥保管库在 Azure 中创建强化容器（保管库），以存储和管理 Azure 中的加密密钥和机密。 本教程会引导完成使用 Azure 跨平台命令行接口创建包含密钥或密码（稍后可用于 Azure 应用程序）的保管库程序。 然后，会说明应用程序后续如何使用该密钥或密码。
 
 **估计完成时间：** 20 分钟。
 
 > [!NOTE]
-> 本教程未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用密钥保管库中的密钥或机密。
-> 
-> 目前，无法在 Azure 门户中配置 Azure 密钥保管库。 请改用这些跨平台命令行接口说明。 或者，有关 Azure PowerShell 说明，请参阅[此对应教程](key-vault-get-started.md)。
-> 
-> 
+> 本教程不包括有关如何编写其中一个步骤包括的 Azure 应用程序的说明。 此示例应用程序用于演示如何授权应用程序使用密钥保管库中存储的密钥或机密。
+> 本文重点介绍如何使用跨平台命令行接口配置 Azure Key Vault。 有关 Azure PowerShell 说明，请参阅[此对应教程](key-vault-get-started.md)。
 
 有关 Azure 密钥保管库的概述信息，请参阅 [什么是 Azure 密钥保管库？](key-vault-whatis.md)
 
@@ -61,62 +56,61 @@ ms.lasthandoff: 10/11/2017
 
 当你对某一命令所需的参数有疑问时，请使用 --help、-h 或 azure help [命令] 来查看帮助。
 
-还可阅读以下教程以熟悉如何在 Azure 跨平台命令行接口中使用 Azure 资源管理器：
+还可阅读以下教程以熟悉如何在 Azure 跨平台命令行接口中使用 Azure 资源管理器部署模型：
 
 * [如何安装和配置 Azure 跨平台命令行接口](../cli-install-nodejs.md)
-* [将 Azure 跨平台命令行接口用于 Azure Resource Manager](../xplat-cli-azure-resource-manager.md)
+* [将 Azure 跨平台命令行接口用于 Azure 资源管理器](../xplat-cli-azure-resource-manager.md)
 
 ## <a name="connect-to-your-subscriptions"></a>连接到订阅
 
-要使用组织帐户登录，请使用以下命令：
+使用以下命令登录到 Azure：
 
-    azure login -u username -p password
+```azurecli-interactive
+azure login -u username -p password
+```
 
 或者如果想要通过以交互方式键入来登录
 
-    azure login
-
-> [!NOTE]
-> login 方法仅适用于组织帐户。 组织帐户是指受组织管理、并在组织的 Azure Active Directory 租户中定义的用户。
-> 
-> 
-
-如果当前没有组织帐户，且已使用 Microsoft 帐户登录到 Azure 订阅，则可以按照以下步骤轻松地创建一个组织帐户。
-
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.com/)，并单击“Active Directory”。
-2. 如果目录不存在，请选择“创建目录”，并提供所请求的信息。
-3. 选择目录，并添加新用户。 此新用户即为组织帐户。 创建用户时，系统将提供用户电子邮件地址和临时密码。 保存此信息，因为此信息还要用于另一个步骤。
-4. 从门户中，选择“设置”，并选择“管理员”。 选择“添加”，并将新用户添加为共同管理员。 这样组织帐户即可管理 Azure 订阅。
-5. 最后，从 Azure 门户注销，并使用新的组织帐户重新登录。 如果这是使用此帐户首次登录，系统会提示更改密码。
-
-有关在 Microsoft Azure 中使用组织帐户的详细信息，请参阅[以组织身份注册 Microsoft Azure](../active-directory/sign-up-organization.md)。
+```azurecli-interactive
+azure login
+```
 
 如果有多个订阅，并想要指定其中一个订阅供 Azure 密钥保管库使用，请键入以下内容以查看帐户的订阅：
 
-    azure account list
+```azurecli-interactive
+azure account list
+```
 
 然后，要指定要使用的订阅，请键入：
 
-    azure account set <subscription name>
+```azurecli-interactive
+azure account set <subscription name>
+```
 
 有关配置 Azure 跨平台命令行接口的详细信息，请参阅[如何安装和配置 Azure 跨平台命令行接口](../cli-install-nodejs.md)。
 
 ## <a name="switch-to-using-azure-resource-manager"></a>切换到使用 Azure 资源管理器
 密钥保管库需要 Azure 资源管理器，因此请键入以下内容以切换到 Azure 资源管理器模式：
 
-    azure config mode arm
+```azurecli-interactive
+azure config mode arm
+```
 
 ## <a name="create-a-new-resource-group"></a>创建新的资源组
 使用 Azure 资源管理器时，会在资源组中创建所有相关资源。 在本教程中，我们将创建新资源组“ContosoResourceGroup”。
 
-    azure group create 'ContosoResourceGroup' 'East Asia'
+```azurecli-interactive
+azure group create 'ContosoResourceGroup' 'East Asia'
+```
 
 第一个参数是资源组名称，第二个参数是位置。 对于位置，请使用命令 `azure location list` 来了解如何针对本示例中的位置指定替代位置。 如需更多信息，请键入：`azure help location`
 
 ## <a name="register-the-key-vault-resource-provider"></a>注册密钥保管库资源提供程序
 确保在订阅中注册密钥保管库资源提供程序：
 
-`azure provider register Microsoft.KeyVault`
+```azurecli-interactive
+azure provider register Microsoft.KeyVault
+```
 
 此操作每个订阅仅需执行一次。
 
@@ -124,9 +118,14 @@ ms.lasthandoff: 10/11/2017
 
 使用 `azure keyvault create` 命令来创建密钥保管库。 此脚本包含三个必需参数：资源组名称、密钥保管库名称和地理位置。
 
-例如，如果使用的保管库名称为 ContosoKeyVault，资源组名称为 ContosoResourceGroup，位置为亚洲东部，请键入：
+例如：
+- 如果使用保管库名称 **ContosoKeyVault**、
+- 资源组名称 **ContosoResourceGroup**、
+- 位置“亚洲东部”，请键入：
 
-    azure keyvault create --vault-name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
+```azurecli-interactive
+azure keyvault create --vault-name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
+```
 
 此命令的输出会显示刚刚创建的密钥保管库的属性。 两个最重要的属性是：
 
@@ -139,17 +138,23 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
 
 如果希望 Azure 密钥保管库创建一个受软件保护的密钥，请使用 `azure key create` 命令，并键入以下内容：
 
-    azure keyvault key create --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey' --destination software
+```azurecli-interactive
+azure keyvault key create --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey' --destination software
+````
 
 但是，如果在保存为本地文件的 .pem 文件（名为 softkey.pem）中有现有密钥要上传到 Azure 密钥保管库，请键入以下命令以从 .PEM 文件（通过密钥保管库服务中的软件保护密钥）中导入该密钥：
 
-    azure keyvault key import --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
+```azurecli-interactive
+azure keyvault key import --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
+```
 
-现在可以使用密钥的 URI，引用已创建或已上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 可始终获取最新版本，使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 可获取此特定版本。
+现在可以通过使用密钥的 URI，引用已创建或上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 可始终获取最新版本，使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 可获取此特定版本。
 
 要将名为 SQLPassword 且其 Azure 密钥保管库的值为 Pa$$w0rd 的机密添加到保管库，请键入以下内容：
 
-    azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
+```azurecli-interactive
+azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
+```
 
 现在，可以通过使用密码的 URI，引用已添加到 Azure 密钥保管库的此密码。 使用 **https://ContosoVault.vault.azure.net/secrets/SQLPassword** 可获取最新版本，使用 **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** 可获取此特定版本。
 
@@ -163,46 +168,56 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
 此步骤通常由开发人员在独立的计算机上完成。 这并非 Azure 密钥保管库的特有状况，在此列出是为了让过程完整。
 
 > [!IMPORTANT]
-> 要完成本教程，帐户、保管库以及会在本步骤中注册的应用程序全都必须位于相同的 Azure 目录中。
-> 
-> 
+> 要完成本教程，帐户、保管库以及会在本步骤中注册的应用程序必须全都位于同一 Azure Active Directory 中。
 
 使用密钥保管库的应用程序必须使用 Azure Active Directory 的令牌进行身份验证。 为此，应用程序的所有者首先必须在其 Azure Active Directory 中注册该应用程序。 注册结束后，应用程序所有者会获得以下值：
 
-* **应用程序 ID**（也称为客户端 ID）和**身份验证密钥**（也称为共享机密）。 应用程序必须向 Azure Active Directory 提供这两个值才能获取令牌。 如何将应用程序配置为执行此操作取决于应用程序。 对于密钥保管库示例应用程序，应用程序所有者会在 app.config 文件中设置这些值。
+- **应用程序 ID** 
+- **身份验证密钥**（也称共享机密）。 
 
-要在 Azure Active Directory 中注册应用程序，请执行以下操作：
+应用程序必须向 Azure Active Directory 提供这两个值才能获取令牌。 如何将应用程序配置为执行此操作取决于应用程序。 对于 [Key Vault 示例应用程序](https://www.microsoft.com/download/details.aspx?id=45343)，应用程序所有者会在 app.config 文件中设置这些值。
 
-1. 登录到 Azure 门户。
-2. 单击左侧的“Active Directory”，然后选择要在其中注册应用程序的目录 **注意：**必须选择包含用于创建密钥保管库的 Azure 订阅的相同目录。 <br> <br> 
+如需将应用程序注册到 Azure Active Directory 的详细步骤，应参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)一文或[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)一文。若要在 Azure Active Directory 中注册应用程序，请执行以下操作：
 
->[!NOTE] 
-> 必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 如果你不知道是哪个目录，请单击 **设置** ，找到用于创建密钥保管库的订阅，并记下最后一列中显示的目录名称。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧单击“应用注册”。 如果没有看到应用注册，单击“更多服务”即可找到。  
+    >[!NOTE]
+    必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 
+3. 单击“新建应用程序注册”。
+4. 在“创建”边栏选项卡上提供应用程序的名称，然后选择“WEB 应用程序和/或 WEB API”（默认值）并指定 Web 应用程序的“登录 URL”。 对于此步骤，如果目前没有该信息，可以进行编造（例如，可以指定 http://test1.contoso.com）。 这些网站是否存在并不重要。 
 
-3. 单击“应用程序” 。 如果目录中尚未添加任何应用，此页面将仅显示“添加应用”链接。 单击该链接，或者单击命令栏上的“添加”。
-4. 在“添加应用程序”向导的“要执行什么操作?”页面上，单击“添加我的组织正在开发的应用程序”。
-5. 在“向我们说明你的应用程序”页上，指定应用程序名称，并选择“Web 应用程序和/或 Web API”（默认值）。 单击“下一步”图标。
-6. 在“应用程序属性”页上，为 Web 应用程序指定“登录 URL”和“应用程序 ID URI”。 如果应用程序没有这些值，可以在此步骤中虚构这些值（例如，可以在两个框中指定 http://test1.contoso.com for both boxes）。 这些网站是否存在并不重要；重要的是目录中每个应用程序的应用程序 ID URI 都不相同。 目录会使用此字符串来识别应用程序。
-7. 单击“完成”图标以保存向导中的更改。
-8. 在“快速启动”页上，单击“配置”。
-9. 滚动到“密钥”部分，选择持续时间，并单击“保存”。 页面会刷新，随后显示密钥值。 必须使用此密钥值和“客户端 ID”值来配置应用程序。 （有关此配置的说明仅适用于特定的应用程序。）
-10. 从此页中复制客户端 ID，后面的步骤将使用它来设置对保管库的权限。
+   ![新建应用程序注册](./media/key-vault-manage-with-cli/new-application-registration.png)
+
+5. 单击“创建”  按钮。
+6. 完成应用注册以后，即可看到已注册应用的列表。 找到刚注册的应用，然后单击它。
+7. 单击“已注册应用”边栏选项卡，然后复制**应用程序 ID**
+8. 单击“所有设置”
+9. 在“设置”边栏选项卡上，单击“密钥”
+10. 在“密钥说明”框中键入说明，选择持续时间，然后单击“保存”。 页面会刷新，随后显示密钥值。 
+11. 在下一步，需使用“应用程序 ID”和“密钥”信息来设置保管库的权限。
 
 ## <a name="authorize-the-application-to-use-the-key-or-secret"></a>授权应用程序使用密钥或密码
-若要授权应用程序访问保管库中的密钥或机密，请使用 `azure keyvault set-policy` 命令。
+若要授权应用程序访问保管库中的密钥或机密，请使用：
+
+```azurecli-interactive
+azure keyvault set-policy
+```
 
 例如，如果保管库名称是 ContosoKeyVault，要授权的应用程序的客户端 ID 为 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed，而希望授权应用程序使用保管库中的密钥来进行解密和签名，那么，请执行以下操作：
 
-    azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-keys '[\"decrypt\",\"sign\"]'
+```azurecli-interactive
+azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-keys '[\"decrypt\",\"sign\"]'
+```
 
 > [!NOTE]
 > 如果是在 Windows 命令提示符下运行，则应将单引号替换为双引号，并对内部双引号进行转义操作。 例如：“[\"decrypt\",\"sign\"]”。
 > 
-> 
 
 如果要授权同一应用程序读取保管库中的机密，请运行以下命令：
 
-    azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '[\"get\"]'
+```azurecli-interactive
+azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '[\"get\"]'
+```
 
 ## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>如果要使用硬件安全模块 (HSM)
 为了提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 这些 HSM 都通过 FIPS 140-2 第 2 级验证。 如果此要求对你不适用，请跳过本部分并转到[删除密钥保管库以及关联的密钥和机密](#delete-the-key-vault-and-associated-keys-and-secrets)。
@@ -211,30 +226,42 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
 
 创建密钥保管库时，添加“sku”参数：
 
-    azure azure keyvault create --vault-name 'ContosoKeyVaultHSM' --resource-group 'ContosoResourceGroup' --location 'East Asia' --sku 'Premium'
+```azurecli-interactive
+azure azure keyvault create --vault-name 'ContosoKeyVaultHSM' --resource-group 'ContosoResourceGroup' --location 'East Asia' --sku 'Premium'
+```
 
 可以将软件保护的密钥（如前所示）和 HSM 保护的密钥添加到此保管库。 若要创建受 HSM 保护的密钥，请将 Destination 参数设为“HSM”：
 
-    azure keyvault key create --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --destination 'HSM'
+```azurecli-interactive
+azure keyvault key create --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --destination 'HSM'
+```
 
 可以使用以下命令，从计算机上的 .pem 文件导入密钥。 此命令会将密钥导入到密钥保管库服务中的 HSM：
 
-    azure keyvault key import --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --destination 'HSM' --password 'PaSSWORD'
+```azurecli-interactive
+azure keyvault key import --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --destination 'HSM' --password 'PaSSWORD'
+```
 
 下一个命令会导入“自带密钥”(BYOK) 包。 这样，便可以在本地 HSM 中生成密钥，并将其传输到密钥保管库服务中的 HSM，而密钥不会超出 HSM 界限：
 
-    azure keyvault key import --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --byok-file './ITByok.byok' --destination 'HSM'
+```azurecli-interactive
+azure keyvault key import --vault-name 'ContosoKeyVaultHSM' --key-name 'ContosoFirstHSMKey' --byok-file './ITByok.byok' --destination 'HSM'
+```
 
 有关如何生成此 BYOK 包的详细说明，请参阅[如何对 Azure 密钥保管库使用受 HSM 保护的密钥](key-vault-hsm-protected-keys.md)。
 
 ## <a name="delete-the-key-vault-and-associated-keys-and-secrets"></a>删除密钥保管库以及关联的密钥和机密
 如果不再需要密钥保管库及其包含的密钥或机密，可以使用 azure keyvault delete 命令来删除密钥保管库：
 
-    azure keyvault delete --vault-name 'ContosoKeyVault'
+```azurecli-interactive
+azure keyvault delete --vault-name 'ContosoKeyVault'
+```
 
 或者，可以删除整个 Azure 资源组，其中包括密钥保管库和你加入该组的任何其他资源：
 
-    azure group delete --name 'ContosoResourceGroup'
+```azurecli-interactive
+azure group delete --name 'ContosoResourceGroup'
+```
 
 
 ## <a name="other-azure-cross-platform-command-line-interface-commands"></a>其他 Azure 跨平台命令行接口命令
@@ -242,25 +269,38 @@ Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 �
 
 此命令列出以表格形式显示的所有密钥和所选属性：
 
-    azure keyvault key list --vault-name 'ContosoKeyVault'
+```azurecli-interactive
+azure keyvault key list --vault-name 'ContosoKeyVault'
+```
 
 此命令显示特定密钥的完整属性列表：
 
-    azure keyvault key show --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey'
+```azurecli-interactive
+azure keyvault key show --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey'
+```
 
 此命令列出以表格形式显示的所有机密名称和所选属性：
 
-    azure keyvault secret list --vault-name 'ContosoKeyVault'
+```azurecli-interactive
+azure keyvault secret list --vault-name 'ContosoKeyVault'
+```
 
 下面是演示如何删除特定密钥的示例：
 
-    azure keyvault key delete --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey'
+```azurecli-interactive
+azure keyvault key delete --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey'
+```
 
 下面是演示如何删除特定机密的示例：
 
-    azure keyvault secret delete --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword'
+```azurecli-interactive
+azure keyvault secret delete --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword'
+```
 
 
 ## <a name="next-steps"></a>后续步骤
-有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](key-vault-developers-guide.md)。
+- 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](key-vault-developers-guide.md)。
+- 有关 Azure 密钥保管库的概述信息，请参阅 [什么是 Azure 密钥保管库？](key-vault-whatis.md)
+- 如何使用 PowerShell 处理 Azure Key Vault [Azure Key Vault 入门](key-vault-get-started.md)。
+
 

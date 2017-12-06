@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: rclaus
 ms.custom: 
-ms.openlocfilehash: 1bfc95977634a41a23fc8bcfee22c44849a9cf04
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 865fa54c908481b3f4c211f12293538c617b6129
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
@@ -64,3 +64,4 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 | SAP BPC 10.01 MS SP08 | Windows | | 所有 NetWeaver 认证的 VM 类型<br /> SAP 说明 #2451795 |
 | SAP 业务对象 BI 平台 | Windows | | SAP 说明 #2145537 |
 | SAP 数据服务 4.2 | | | SAP 说明 #2288344 |
+| SAP Hybris Commerce Platform 5.x 和 6.x | Windows | SQL Server、Oracle | 所有 NetWeaver 认证的 VM 类型<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |

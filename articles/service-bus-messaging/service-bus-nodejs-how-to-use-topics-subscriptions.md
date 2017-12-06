@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 5e758e831765ba2762b7efe7c3a10f10e59a5ddc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9e463273fff0ecc198b0574443c4241dde7be79
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>如何通过 Node.js 使用服务总线主题和订阅
 
@@ -61,7 +61,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>设置服务总线连接
-Azure 模块读取环境变量 `AZURE_SERVICEBUS_NAMESPACE` 和 `AZURE_SERVICEBUS_ACCESS_KEY`，获取连接到服务总线所需的信息。 如果未设置这些环境变量，则必须在调用 `createServiceBusService` 时指定帐户信息。
+Azure 模块将读取前面在执行步骤“获取凭据”时获取的连接字符串的环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`。 如果未设置此环境变量，则在调用 `createServiceBusService` 时必须指定帐户信息。
 
 有关设置 Azure 云服务环境变量的示例，请参阅[使用存储的 Node.js 云服务][Node.js Cloud Service with Storage]。
 

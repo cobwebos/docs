@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 5903c8ac7a16a87b93ea6e105d82bbfdfa26bf8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ebd6109fdae00da9e6dc1fc456573327d521e7e9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -52,7 +52,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="licenses"></a>许可证
 
-适用于 Azure MFA 的 NPS 扩展向持有 [Azure 多重身份验证许可证](multi-factor-authentication.md)（Azure AD Premium、EMS 或 MFA 订阅已随附）的客户提供。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 
+适用于 Azure MFA 的 NPS 扩展向持有 [Azure 多重身份验证许可证](multi-factor-authentication.md)（Azure AD Premium、EMS 或 MFA 独立证书已随附）的客户提供。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 
 
 ### <a name="software"></a>软件
 
@@ -81,7 +81,7 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 ### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>在已加入域的服务器上启用 NPS 角色
 
-NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份验证。 为此角色选择一台服务器。 我们建议选择一台不处理来自其他服务的请求的服务器，因为对于不是 RADIUS 的任何请求，NPS 扩展都会引发错误。
+NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份验证。 为此角色选择一台服务器。 我们建议选择一台不处理来自其他服务的请求的服务器，因为对于不是 RADIUS 的任何请求，NPS 扩展都会引发错误。 NPS 服务器必须设置为环境的主要和次要身份验证服务器，它不能将 RADIUS 请求代理到另一台服务器。
 
 1. 在服务器上，从“服务器管理器快速入门”菜单中打开“添加角色和功能向导”。
 2. 为安装类型选择“基于角色或基于功能的安装”。
@@ -193,9 +193,9 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未设置（相当于 TRUE） |
 
-此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 如果该键不存在、未设置或设置为 TRUE，并且用户未注册，则该扩展将通不过 MFA 质询。 如果该键设置为 FALSE 并且用户未注册，身份验证将会继续且不执行 MFA。
+此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 如果该键不存在、未设置或设置为 TRUE，并且用户未注册，则该扩展将通不过 MFA 质询。 如果该键设置为 FALSE 并且用户未注册，身份验证会继续且不执行 MFA。 如果用户在 MFA 中注册，则即使 REQUIRE_USER_MATCH 设置为 FALSE，用户也必须使用 MFA 进行身份验证。
 
-你可以选择在用户加入并且可能尚未所有用户都已注册 Azure MFA 时创建该键并将其设置为 FALSE。 但是，由于设置该键允许未注册 MFA 的用户登录，因此应在转到生产环境之前删除该键。
+可以选择在用户加入并且可能尚未所有用户都已注册 Azure MFA 时创建该键并将其设置为 FALSE。 但是，由于设置该键允许未注册 MFA 的用户登录，因此应在转到生产环境之前删除该键。
 
 ## <a name="troubleshooting"></a>故障排除
 

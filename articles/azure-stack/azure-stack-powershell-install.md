@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: sngun
-ms.openlocfilehash: 3014b8a424e554f3c46f1c7e76eab586d089e059
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: abbc1eac3ff1e8de90bd420dc1fcce7dbeda234c
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure 堆栈 PowerShell  
 
@@ -53,7 +53,7 @@ Set-PSRepository `
 
 以下各节描述了安装适用于 Azure 堆栈 PowerShell 所需的步骤。 连接，部分连接，在中运行的 Azure 堆栈上或在断开连接的情况下，可以安装 PowerShell。 
 
-## <a name="install-powershell-in-a-connected-scenario"></a>在连接方案中安装 PowerShell 
+## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>在连接方案中安装 PowerShell （具有 internet 连接）
 
 通过 API 版本配置文件安装了 azure 堆栈兼容 AzureRM 模块。 Azure 堆栈需要**自 2017 年 1-03-09-配置文件**API 版本配置中，数据文件可通过安装 AzureRM.Bootstrapper 模块。 若要了解有关 API 版本配置文件和它们所提供的 cmdlet，请参阅[管理 API 版本配置文件](azure-stack-version-profiles.md)。 除了 AzureRM 模块中，你还应安装的 Azure 堆栈特定 PowerShell 模块。 运行下面的 PowerShell 脚本，以在开发工作站上安装这些模块：
 
@@ -82,7 +82,7 @@ Set-PSRepository `
   ```
   如果安装不成功，将 AzureRM 和 AzureStack 模块将显示在输出中。
 
-## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>在断开连接或部分连接方案中安装 PowerShell
+## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>安装 PowerShell 断开连接或部分连接的方案中 （具有有限的 internet 连接）
 
 中断开连接的情况下，必须首先下载到计算机具有 internet 连接的 PowerShell 模块，然后将它们传输到安装了 Azure 堆栈开发工具包。
 

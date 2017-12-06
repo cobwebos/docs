@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 38e771b8d7211e8f4f408a43b1ab2e293370ab9c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: d262d9c2bd23a09c2efdb5fd6695bb2ed29cae54
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -65,7 +65,30 @@ ms.lasthandoff: 10/25/2017
 
 可以，需要将名为 `WEBSITE_WEBDEPLOY_USE_SCM` 的应用设置设置为 *false*。
 
+**使用 Linux Web 应用时，应用程序的 Git 部署失败。如何解决此问题？**
+
+如果 Linux Web 应用的 Git 部署失败，可选择以下替代选项部署应用程序代码：
+
+- 使用持续交付（预览版）功能：可将应用的源代码存储在 Team Services Git 存储库或 GitHub 存储库中，以使用 Azure 持续交付。 有关更多详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+
+- 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：若要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection)，并转到要在其中部署代码的文件夹。 运行以下内容：
+
+   ```
+   curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
+   ```
+
+   如果有错误指出找不到 `curl` 命令，请确保在运行前一条 `curl` 命令之前使用 `apt-get install curl` 安装 curl。
+
 ## <a name="language-support"></a>语言支持
+
+**我想要在 Node.js 应用程序中使用 websocket，要设置什么特殊设置或配置吗？**
+
+需要，请在服务器端 Node.js 代码中禁用 `perMessageDeflate`。 例如，如果要使用 socket.io，请执行以下操作：
+```
+var io = require('socket.io')(server,{
+  perMessageDeflate :false
+});
+```
 
 **是否支持未编译的 .NET Core 应用？**
 

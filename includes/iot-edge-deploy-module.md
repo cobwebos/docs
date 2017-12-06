@@ -7,6 +7,9 @@ Azure IoT Edge 的主要功能之一是能够从云中将模块部署到 IoT Edg
 1. 在“名称”字段中，输入 `tempSensor`。 
 1. 在“映像 URI”字段中，输入 `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`。 
 1. 将其他设置保留不变，然后选择“保存”。
+
+   ![在输入名称和映像 URI 之后保存 IoT Edge 模块](./media/iot-edge-deploy-module/name-image.png)
+
 1. 返回到“添加模块”步骤，选择“下一步”。
 1. 在“指定路由”步骤中，选择“下一步”。
 1. 在“审阅模板”步骤中，选择“提交”。

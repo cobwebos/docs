@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 03f0b07e9f4994c616a39692f7a5ba52a154aa0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20cecf0b3e38e8f2241f3589b9548c93730c7783
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 2. 一个 **Azure AD 目录** - 已与本地目录或仅限云的目录同步。
 3. 必须为 Azure AD 目录启用 **Azure AD 域服务**。 如果未启用，请遵循[入门指南](active-directory-ds-getting-started.md)中所述的所有任务。
 4. 请确保已将托管域的 IP 地址配置为虚拟网络的 DNS 服务器。 有关详细信息，请参阅[如何更新 Azure 虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
-5. 完成[将密码同步到 Azure AD 域服务托管域](active-directory-ds-getting-started-password-sync.md)所需的步骤。
+5. 完成[将密码同步到 Azure AD 域服务托管域](active-directory-ds-getting-started-password-sync.md)所要执行的步骤。
 
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>预配 Red Hat Enterprise Linux 虚拟机
@@ -50,14 +50,14 @@ RHEL 7.2 虚拟机已在 Azure 中预配。 下一个任务是使用在预配 VM
 请遵循[如何登录到运行 Linux 的虚拟机](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文中的说明。
 
 
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>配置 Linux 虚拟机上的主机文件
+## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>配置 Linux 虚拟机上的 hosts 文件
 在 SSH 终端中编辑 /etc/hosts 文件，并更新计算机的 IP 地址和主机名。
 
 ```
 sudo vi /etc/hosts
 ```
 
-在主机文件中，输入以下值：
+在 hosts 文件中输入以下值：
 
 ```
 127.0.0.1 contoso-rhel.contoso100.com contoso-rhel
@@ -82,12 +82,12 @@ sudo vi /etc/hosts
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE] 
-      > **故障排除：**如果*领域发现*找不到托管域：
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
-      >
+     > [!NOTE] 
+     > **故障排除：**如果“领域发现”找不到托管域：
+     * 确保域可从虚拟机（请尝试 ping）进行访问。
+     * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
+     * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
+     >
 
 2. 初始化 Kerberos。 在 SSH 终端中键入以下命令： 
 
@@ -103,7 +103,7 @@ sudo vi /etc/hosts
 3. 将计算机加入域。 在 SSH 终端中键入以下命令： 
 
     > [!TIP] 
-    > 使用前一步骤中所指定的同一用户帐户（“kinit”）。
+    > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
     >
 
     ```

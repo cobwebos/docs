@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 56ddd5742b63851b9477bae0705ebd24e30ff185
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bb2e1aebc60eee5f94ed486e0efb43265728df6f
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 11/15/2017
 如果已禁用要求注册，用户仍可手动注册其联系信息。 他们可以访问 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)，或选择访问面板中“配置文件”选项卡下的“注册密码重置”链接。
 
 > [!NOTE]
-> 用户可以通过选择“取消”或关闭窗口来隐藏密码重置注册门户。 但是，在完成注册之前，当他们每次登录时，系统都会提示他们注册。
+> 用户可以通过选择“取消”或关闭窗口来隐藏密码重置注册门户。 但是，在完成注册之前，每当他们登录时，系统都会提示他们注册。
 >
 > 如果用户已登录，此行为不会中断用户的连接。
 
@@ -207,7 +207,18 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="on-premises-integration"></a>本地集成
 
-如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](active-directory-passwords-writeback.md#configuring-password-writeback)。
+如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](active-directory-passwords-writeback.md#configure-password-writeback)。
+
+![写回][Writeback]
+
+本页提供了本地写回客户端的快速状态，根据当前配置将显示以下消息之一：
+
+* 已启动并运行本地写回客户端。
+* Azure AD 处于联机状态并连接到本地写回客户端。 但是，似乎 Azure AD Connect 的已安装版本已经过期了。 请考虑[更新 Azure AD Connect](./connect/active-directory-aadconnect-upgrade-previous-version.md)，确保拥有最新连接功能和重要 bug 修复。
+* 很遗憾，因为 Azure AD Connect 的已安装版本已过期，因此无法查看本地写回客户端状态。 [更新 Azure AD Connect](./connect/active-directory-aadconnect-upgrade-previous-version.md) 可查看连接状态。
+* 很遗憾，现在似乎无法连接到本地写回客户端。 [对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
+* 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](active-directory-passwords-writeback.md#configure-password-writeback)以还原连接。
+* 很遗憾，现在似乎无法连接到本地写回客户端。 这可能是因我们终端的临时问题导致。 如果问题仍然存在，[对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>将密码写回到本地目录
 
@@ -233,7 +244,7 @@ ms.lasthandoff: 11/15/2017
 若要测试此方案，请让上述合作伙伴用户之一转到 http://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。
 
 > [!NOTE]
-> 已被授予 Azure AD 租户来宾访问权限的 Microsoft 帐户（例如 Hotmail.com、Outlook.com 的电子邮件地址或其他个人电子邮件地址）无法使用 Azure AD SSPR。 他们需要根据[无法登录到 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中的信息重置其密码。
+> 已被授予 Azure AD 租户来宾访问权限的 Microsoft 帐户（例如 Hotmail.com、Outlook.com 的电子邮件地址或其他个人电子邮件地址）无法使用 Azure AD SSPR。 他们需要使用[当你无法登录到 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的信息重置其密码。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -253,3 +264,4 @@ ms.lasthandoff: 11/15/2017
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "可用的 Azure AD 身份验证方法和所需数量"
+[Writeback]: ./media/active-directory-passwords-how-it-works/troubleshoot-writeback-running.png "本地集成密码写回配置和故障排除信息"

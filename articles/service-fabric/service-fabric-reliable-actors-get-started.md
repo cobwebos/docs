@@ -12,139 +12,160 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 11/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 7e24cb902cb3f863931fc0be5e0f178707e806b6
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
 > * [Linux 上的 Java](service-fabric-reliable-actors-get-started-java.md)
-> 
-> 
 
-本文介绍了 Azure Service Fabric Reliable Actors 的基础知识，并演示了如何在 Visual Studio 中创建、调试和部署简单的 Reliable Actor 应用程序。
+本文演示在 Visual Studio 中创建和调试简单的 Reliable Actor 应用程序。 有关 Reliable Actors 的详细信息，请参阅 [Service Fabric Reliable Actors 简介](service-fabric-reliable-actors-introduction.md)。
 
-## <a name="installation-and-setup"></a>安装和设置
-在开始之前，确保计算机上已设置 Service Fabric 开发环境。
-如果需要设置此环境，请参阅有关[如何设置开发环境](service-fabric-get-started.md)的详细说明。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="basic-concepts"></a>基本概念
-若要开始使用 Reliable Actors，只需了解几个基本概念：
-
-* **执行组件服务**。 可以在 Service Fabric 基础结构中部署的 Reliable Services 中封装了 Reliable Actors。 执行组件服务在命名的服务实例中激活。
-* **执行组件注册**。 与 Reliable Services 一样，Reliable Actor 服务也需要注册到 Service Fabric 运行时。 此外，需要将执行组件类型注册到执行组件运行时。
-* **执行组件接口**。 执行组件接口用于定义执行组件的强类型公共接口。 在 Reliable Actor 模型术语中，执行组件接口用于定义执行组件可以理解并处理的消息类型。 其他执行组件或客户端应用程序使用此执行组件接口将消息“发送”到（异步方式）此执行组件。 Reliable Actors 可实现多个接口。
-* **ActorProxy 类**。 客户端应用程序使用 ActorProxy 类调用通过执行组件接口公开的方法。 ActorProxy 类提供两个重要功能：
-  
-  * 名称解析：能够在群集中找到执行组件（查找托管它的群集节点）。
-  * 故障处理：例如，在需要将执行组件重新定位到群集中另一个节点的故障之后，它可以重试方法调用和重新解析执行组件的位置。
-
-有必要提一下以下与执行组件接口有关的规则：
-
-* 不能重载执行组件接口方法。
-* 执行组件接口方法不能有 out、ref 或可选参数。
-* 不支持泛型接口。
+在开始之前，确保计算机上已设置 Service Fabric 开发环境（包括 Visual Studio）。 有关详细信息，请参阅[如何设置开发环境](service-fabric-get-started.md)。
 
 ## <a name="create-a-new-project-in-visual-studio"></a>在 Visual Studio 中创建新项目
-以管理员身份启动 Visual Studio 2015 或 Visual Studio 2017，并新建一个 Service Fabric 应用程序项目：
+
+以管理员身份启动 Visual Studio 2015 或以上版本，然后新建一个“Service Fabric 应用程序”项目：
 
 ![适用于 Visual Studio 的 Service Fabric 工具 - 新建项目][1]
 
-在下一个对话框中，可以选择你想要创建的项目类型。
+在下一对话框中，选择“执行组件服务”并输入服务的名称。
 
 ![Service Fabric 项目模板][5]
 
-对于 HelloWorld 项目，我们使用 Service Fabric Reliable Actors 服务。
-
-创建此解决方案之后，可看到以下结构：
+创建的项目显示以下结构：
 
 ![Service Fabric 项目结构][2]
 
-## <a name="reliable-actors-basic-building-blocks"></a>Reliable Actors 基本构建基块
-典型的 Reliable Actors 解决方案由 3 个项目组成：
+## <a name="examine-the-solution"></a>检查解决方案
 
-* **应用程序项目 (MyActorApplication)**。 这是将所有服务打包在一起以进行部署的项目。 它包含用于管理应用程序的 *ApplicationManifest.xml* 和 PowerShell 脚本。
-* **接口项目 (MyActor.Interfaces)**。 这是包含执行组件的接口定义的项目。 在 MyActor.Interfaces 项目中，可以定义在解决方案中执行组件所使用的接口。 可在任何项目中使用任何名称定义执行组件接口。不过，因为该接口定义了执行组件实现和调用执行组件的客户端所共享的执行组件协定，所以合理的做法是在独立于执行组件实现的程序集中定义接口，并且其他多个项目可以共享接口。
+该解决方案包含三个项目：
+
+* 应用程序项目 (MyApplication)。 此项目将所有服务打包在一起以进行部署。 它包含用于管理应用程序的 *ApplicationManifest.xml* 和 PowerShell 脚本。
+
+* 接口项目 (HelloWorld.Interfaces)。 此项目包含执行组件的接口定义。 可以在任何项目中使用任何名称来定义执行组件接口。  接口将定义由执行组件实现和调用执行组件的客户端这两者所共享的执行组件协定。  由于客户端项目可能依赖于接口，因此通常在独立于执行组件实现的程序集中定义它。
+
+* 执行组件服务项目 (HelloWorld)。 此项目定义要托管执行组件的 Service Fabric 服务。 它包含执行组件的实现 HellowWorld.cs。 执行组件实现是派生自基类型 `Actor` 的一个类，用于实现 MyActor.Interfaces 项目中定义的接口。 执行组件类还必须实现一个接受 `ActorService` 实例和 `ActorId` 并将其传递给基本 `Actor` 类的构造函数。
+    
+    此项目还包含 Program.cs，它使用 `ActorRuntime.RegisterActorAsync<T>()` 向 Service Fabric 运行时注册执行组件类。 `HelloWorld` 类已注册。 还必须使用 `Main()` 方法来注册添加到项目中的任何其他执行组件实现。
+
+## <a name="customize-the-helloworld-actor"></a>自定义 HelloWorld 执行组件
+
+项目模板定义 `IHelloWorld` 接口中的某些方法，并在 `HelloWorld` 执行组件实现中实现这些方法。  替换这些方法，以便执行组件服务返回简单的“Hello World”字符串。
+
+在 HelloWorld.Interfaces 项目中的 IHelloWorld.cs 文件上，替换接口定义，如下所示：
 
 ```csharp
-public interface IMyActor : IActor
+public interface IHelloWorld : IActor
 {
-    Task<string> HelloWorld();
+    Task<string> GetHelloWorldAsync();
 }
 ```
 
-* **执行组件服务项目 (MyActor)**。 这是用于定义要托管执行组件的 Service Fabric 服务的项目。 它包含执行组件的实现。 执行组件实现是派生自基类型 `Actor` 的一个类，用于实现 MyActor.Interfaces 项目中定义的接口。 执行组件类还必须实现一个接受 `ActorService` 实例和 `ActorId` 并将其传递给基本 `Actor` 类的构造函数。 这就允许平台依赖项注入构造函数相关内容。
+在 HelloWorld 项目中的 HelloWorld.cs 上，替换整个类定义，如下所示：
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
+internal class HelloWorld : Actor, IHelloWorld
 {
-    public MyActor(ActorService actorService, ActorId actorId)
+    public HelloWorld(ActorService actorService, ActorId actorId)
         : base(actorService, actorId)
     {
     }
 
-    public Task<string> HelloWorld()
+    public Task<string> GetHelloWorldAsync()
     {
-        return Task.FromResult("Hello world!");
+        return Task.FromResult("Hello from my reliable actor!");
     }
 }
 ```
 
-执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。
+按 Ctrl-Shift-B 以生成项目并确保编译所有内容。
 
-```csharp
-internal static class Program
-{
-    private static void Main()
+## <a name="add-a-client"></a>添加客户端
+
+创建一个简单的控制台应用程序，以调用执行组件服务。
+
+1. 右键单击“解决方案资源管理器”中的解决方案，并单击“添加” > “新建项目...”。
+
+2. 在“.NET Core”项目类型下，选择“控制台应用(.NET Core)”。  将项目命名为 ActorClient。
+    
+    ![“添加新项目”对话框][6]    
+    
+    > [!NOTE]
+    > 控制台应用程序不是通常在 Service Fabric 中用作客户端的那种应用，但它非常便于使用本地 Service Fabric 群集进行调试和测试。
+
+3. 控制台应用程序必须为 64 位的应用程序，以保持与接口项目和其他依赖项的兼容性。  在“解决方案资源管理器”中，右键单击“ActorClient”项目，并单击“属性”。  在“生成”选项卡上，将“平台目标”设置为“x64”。
+    
+    ![生成属性][8]
+
+4. 客户端项目需要 Reliable Actors NuGet 包。  单击“工具” > “NuGet 包管理器” > “包管理器控制台”。  在“包管理器控制台”中，输入以下命令：
+    
+    ```powershell
+    Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
+    ```
+
+    NuGet 包及其所有依赖项都安装在 ActorClient 项目中。
+
+5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”，然后单击“添加引用...”。选择“项目”>“解决方案”（如果尚未选择），然后勾选“HelloWorld.Interfaces”旁边的复选框。  单击 **“确定”**。
+    
+    ![“添加引用”对话框][7]
+
+6. 在 ActorClient 项目中，将 Program.cs 的整个内容替换为以下代码：
+    
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.ServiceFabric.Actors;
+    using Microsoft.ServiceFabric.Actors.Client;
+    using HelloWorld.Interfaces;
+    
+    namespace ActorClient
     {
-        try
+        class Program
         {
-            ActorRuntime.RegisterActorAsync<MyActor>(
-                (context, actorType) => new ActorService(context, actorType, () => new MyActor())).GetAwaiter().GetResult();
-
-            Thread.Sleep(Timeout.Infinite);
-        }
-        catch (Exception e)
-        {
-            ActorEventSource.Current.ActorHostInitializationFailed(e.ToString());
-            throw;
+            static void Main(string[] args)
+            {
+                IHelloWorld actor = ActorProxy.Create<IHelloWorld>(ActorId.CreateRandom(), new Uri("fabric:/MyApplication/HelloWorldActorService"));
+                Task<string> retval = actor.GetHelloWorldAsync();
+                Console.Write(retval.Result);
+                Console.ReadLine();
+            }
         }
     }
-}
+    ```
 
-```
+## <a name="running-and-debugging"></a>运行和调试
 
-如果在 Visual Studio 中从新项目开始，并且只有一个执行组件定义，那么默认情况下，在 Visual Studio 生成的代码中包含此注册。 如果在服务中定义其他执行组件，则需要使用以下操作添加执行组件注册：
+按 F5 在 Service Fabric 开发群集中本地生成、部署和运行应用程序。  在部署过程中，可以在“**输出**”窗口中查看进度。
 
-```csharp
- ActorRuntime.RegisterActorAsync<MyOtherActor>();
+![Service Fabric 调试输出窗口][3]
 
-```
+当输出包含文本“应用程序已准备就绪”时，可使用 ActorClient 应用程序来测试服务。  在“解决方案资源管理器”中，右键单击“ActorClient”项目，然后单击“调试” > “启动新实例”。  命令行应用程序应显示执行组件服务中的输出。
+
+![应用程序输出][9]
 
 > [!TIP]
 > Service Fabric 执行组件运行时发出一些[与执行组件方法相关的事件和性能计数器](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)。 它们可用于进行诊断和性能监视。
-> 
-> 
-
-## <a name="debugging"></a>调试
-适用于 Visual Studio 的 Service Fabric 工具支持在本地计算机上进行调试。 可以通过点击 F5 键启动调试会话。 Visual Studio 会生成包（如果需要）。 Visual Studio 还会在本地 Service Fabric 群集中部署应用程序，并附加调试器。
-
-在部署过程中，可以在“**输出**”窗口中查看进度。
-
-![Service Fabric 调试输出窗口][3]
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Reliable Actors 如何使用 Service Fabric 平台](service-fabric-reliable-actors-platform.md)的详细信息。
 
-<!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG
 [2]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-projectstructure.PNG
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
+[6]: ./media/service-fabric-reliable-actors-get-started/new-console-app.png
+[7]: ./media/service-fabric-reliable-actors-get-started/add-reference.png
+[8]: ./media/service-fabric-reliable-actors-get-started/build-props.png
+[9]: ./media/service-fabric-reliable-actors-get-started/app-output.png

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2017
+ms.date: 11/16/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 06368cb5084dd49e24c1c25aa8100a7680aacefb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ae2466bdd3b21984b141c9178ea46bd25bb6357b
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>在 Azure 容器实例中运行容器化任务
 
@@ -147,7 +147,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 例如，可以通过指定不同的命令行，让示例容器分析除“哈姆雷特”以外的文本。 容器执行的 Python 脚本 *wordcount.py* 接受使用 URL 作为参数，并处理该页面的内容而不是默认内容。
 
-例如，若要确定“罗密欧与朱丽叶”中最频繁出现的、由五个字母构成的单词，请运行以下命令：
+例如，若要确定“罗密欧与朱丽叶”中前 3 个由五个字母构成的单词，请运行以下命令：
 
 ```azurecli-interactive
 az container create \
@@ -172,6 +172,8 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
+### <a name="persist-task-output"></a>保留任务输出
 
 有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
 

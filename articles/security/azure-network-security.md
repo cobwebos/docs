@@ -1,6 +1,6 @@
 ---
 title: "Azure 网络安全 | Microsoft Docs"
-description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。"
+description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。"
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -75,7 +75,7 @@ Azure 有许多与网络安全话题相关的网络组件。 我们将介绍这�
 
 ### <a name="basic-network-connectivity"></a>基本网络连接
 
-利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 还可以使用站点到站点 VPN 和专用 [WAN 链路](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)将 VNet 连接到 VNet 和本地网络。
+利用 [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)服务，可以安全地将 Azure 资源通过虚拟网络 (VNet) 相互连接。 VNet 是自己的网络在云中的表示形式。 VNet 是对专用于订阅的 Azure 网络基础结构进行的逻辑隔离。 还可使用站点到站点 VPN 和专用 [WAN 链路](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)将 VNet 连接到其他 VNet 和本地网络。
 
 ![基本网络连接](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -174,7 +174,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 - **网络安全组 (NSG)：**每个 NSG 可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选流量。 可将 NSG 应用到一个 VM 中的每个 NIC。 也可将 NSG 应用到 NIC 或其他 Azure 资源所连接的子网。 若要详细了解 NSG，请阅读[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)。
 
-- **虚拟网络设备：**虚拟网络设备是运行软件的 VM，软件可执行网络功能，例如防火墙。 请查看 Azure 应用商店中的可用 NVA 列表。 NVA 也可用于提供 WAN 优化和其他网络流量功能。 NVA 通常与用户定义路由或 BGP 路由配合使用。 还可使用 NVA 筛选 VNet 之间的流量。
+- **虚拟网络设备：**虚拟网络设备是运行软件的 VM，软件可执行网络功能，例如防火墙。 请查看 Azure Marketplace 中的可用 NVA 列表。 NVA 也可用于提供 WAN 优化和其他网络流量功能。 NVA 通常与用户定义路由或 BGP 路由配合使用。 还可使用 NVA 筛选 VNet 之间的流量。
 
 **路由**
 
@@ -341,7 +341,7 @@ NSG 附带了一些应当注意的内置规则。 其中包括：
 
 ![网络安全设备](./media/azure-network-security/azure-network-security-fig-10.png)
 
-Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应商通过 [Azure 应用商店](https://azuremarketplace.microsoft.com)提供了这类设备。 通过部署这些虚拟安全设备，可以提供：
+Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应商通过 [Azure Marketplace](https://azuremarketplace.microsoft.com) 提供了这类设备。 通过部署这些虚拟安全设备，可以提供：
 
 -   高度可用的防火墙
 
@@ -469,13 +469,13 @@ Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据
 
 -   [Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
--   Azure Resource Manager
+-   Azure 资源管理器
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 操作 Microsoft Azure 的人员和进程可能是平台最重要的安全功能。 本部分介绍 Microsoft 全球数据中心基础结构的功能，这些功能可帮助增强和维护安全性、连续性和隐私。
 
-应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure Resource Manager 以组的方式处理解决方案中的资源。
+应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。
 
 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 

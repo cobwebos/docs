@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 7068d6e83d196d95b4625d1b1a496be5a22c88a0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
@@ -63,7 +63,7 @@ Service Fabric 提供一种服务发现和解析服务，称为“命名服务�
 有关如何使用 DNS 服务的更多详细信息，请参阅 [Azure Service Fabric 中的 DNS 服务](service-fabric-dnsservice.md)一文。
 
 ### <a name="reverse-proxy-service"></a>反向代理服务
-反向代理处理群集中的服务，群集公开包括 HTTPS 在内的 HTTP 终结点。 反向代理拥有特定的 URI 格式，能够极大地简化调用其他服务及其方法的操作，它能够处理一个服务使用命名服务与其他服务进行通信所需完成的解析、连接、重试步骤。 换而言之，它会在调用其他服务时对用户隐藏命名服务，并让这一操作和调用 URL 一样简单。
+反向代理处理群集中的服务，群集公开包括 HTTPS 在内的 HTTP 终结点。 反向代理具有特定的 URI 格式，能够极大地简化调用其他服务及其方法的操作，它能够处理一个服务使用命名服务与其他服务进行通信所需完成的解析、连接、重试步骤。 换而言之，它会在调用其他服务时对用户隐藏命名服务，并让这一操作和调用 URL 一样简单。
 
 ![服务终结点][10]
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: b06d0196f1f911f2f6cf87242d70455ba22b1f88
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: fb32ef2881bdc1e88bb3f54446163c0feac5da9b
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>将 Service Fabric Windows 群集部署到 Azure 虚拟网络
-本教程是一个系列中的第一部分。 可以了解到如何使用 PowerShell 将 Windows Service Fabric 群集部署到现有 Azure 虚拟网络 (VNET) 及子网。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。  若要使用 Azure CLI 创建 Linux 群集，请参阅[在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
+本教程是一个系列中的第一部分。 你将学习如何使用 PowerShell 将运行 Windows 的 Service Fabric 群集部署到现有 Azure 虚拟网络 (VNET) 及子网。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。  若要使用 Azure CLI 创建 Linux 群集，请参阅[在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -47,6 +47,22 @@ ms.lasthandoff: 11/15/2017
 
 以下步骤将创建一个五节点 Service Fabric 群集。 若要计算在 Azure 中运行 Service Fabric 群集的成本，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
 
+## <a name="introduction"></a>介绍
+本教程将单个节点类型的五个节点群集部署到 Azure 的虚拟网络中。
+
+[Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集可以扩展到成千上万台计算机。 属于群集一部分的计算机或 VM 称为节点。 需为每个节点分配节点名称（字符串）。 节点具有各种特征，如放置属性。
+
+节点类型定义群集中一组虚拟机的大小、数量和属性。 每个已定义的节点类型均设置为[虚拟机规模集](/azure/virtual-machine-scale-sets/)，是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 节点类型用于定义一组群集节点（如“前端”或“后端”）的角色。  群集可以有多个节点类型，但主节点类型必须至少有 5 个 VM 供群集用于生产（或至少有 3 个 VM 用于测试群集）。  [Service Fabric 系统服务](service-fabric-technical-overview.md#system-services)位于主节点类型的节点上。
+
+## <a name="cluster-capacity-planning"></a>群集容量规划
+本教程部署单个节点类型中的五个节点群集。  对于任何生产群集部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
+
+- 群集需要的节点类型数目 
+- 每个节点类型的属性（例如，大小、主节点、面向 Internet 以及 VM 数量等）
+- 群集的可靠性和耐久性特征
+
+有关详细信息，请参阅[群集容量规划注意事项](service-fabric-cluster-capacity.md)。
+
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>登录到 Azure，然后选择订阅
 本指南使用 Azure PowerShell。 开始新的 PowerShell 会话时，请登录到 Azure 帐户并选择订阅，并执行 Azure 命令。
  
@@ -68,7 +84,7 @@ New-AzureRmResourceGroup -Name $groupname -Location $clusterloc
 ```
 
 ## <a name="deploy-the-network-topology"></a>部署网络拓扑
-接下来，设置将向其部署 API 管理和 Service Fabric 群集的网络拓扑。 [network.json][network-arm] 资源管理器模板会配置为针对 Service Fabric 创建虚拟网络 (VNET) 以及一个子网和网络安全组 (NSG)，并配置为针对 API 管理创建一个子网和 NSG。 在[此处](../virtual-network/virtual-networks-overview.md)了解有关 VNET、子网和 NSG 的详细信息。
+接下来，设置将向其部署 API 管理和 Service Fabric 群集的网络拓扑。 [network.json][network-arm] 资源管理器模板会配置为针对 Service Fabric 创建虚拟网络 (VNET) 以及一个子网和网络安全组 (NSG)，并配置为针对 API 管理创建一个子网和 NSG。 API 管理将在本教程后面部分中进行部署。 在[此处](../virtual-network/virtual-networks-overview.md)了解有关 VNET、子网和 NSG 的详细信息。
 
 [network.parameters.json][network-parameters-arm] 参数文件包含子网名称以及向其部署 Service Fabric 和 API 管理的 NSG。  API 管理将在[以下教程](service-fabric-tutorial-deploy-api-management.md)中进行部署。 本指南中，不需要更改参数值。 Service Fabric 资源管理器模板使用这些值。  如果在此处修改这些值，则必须在本教程和[部署 API 管理教程](service-fabric-tutorial-deploy-api-management.md)中所使用的其他资源管理器模板中对其进行修改。 
 

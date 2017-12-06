@@ -14,13 +14,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: dda284b45e2e8a35a7228d77afef0ad058c8ea42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1db0dee597ffe60c587e7bacd00640a308d04e99
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>排查、诊断和防止 SQL 数据库中的 SQL 连接错误和暂时性错误
 本文介绍如何防止、排查、诊断和减少客户端应用程序在与 Azure SQL 数据库交互时发生的连接错误和暂时性错误。 了解如何配置重试逻辑、生成连接字符串以及调整其他连接设置。
@@ -40,16 +40,17 @@ ms.lasthandoff: 11/04/2017
 * **在尝试连接期间发生暂时性错误**：应该延迟数秒后再重试连接。
 * **执行 SQL 查询命令期间发生暂时性错误**：不得立即重试命令。 而应在一定的延迟之后建立新的连接。 然后可以重试该命令。
 
+
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
-### <a name="retry-logic-for-transient-errors"></a>针对暂时性错误的重试逻辑
+## <a name="retry-logic-for-transient-errors"></a>针对暂时性错误的重试逻辑
 在偶尔会遇到暂时性错误的客户端程序中包含重试逻辑可以让它变得更稳健。
 
 如果程序通过第三方中间件与 Azure SQL 数据库通信，请咨询供应商该中间件是否包含暂时性错误的重试逻辑。
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
-#### <a name="principles-for-retry"></a>重试原则
+### <a name="principles-for-retry"></a>重试原则
 * 如果错误是暂时性的，则应重新尝试打开连接。
 * 不得直接重试无法执行且出现暂时性错误的 SQL SELECT 语句。
   
@@ -58,30 +59,31 @@ ms.lasthandoff: 11/04/2017
   
   * 重试逻辑必须确保整个数据库事务完成，或整个事务已回滚。
 
-#### <a name="other-considerations-for-retry"></a>其他重试注意事项
+### <a name="other-considerations-for-retry"></a>其他重试注意事项
 * 下班后自动启动的批处理程序以及在凌晨之前完成的批处理程序在每次重试前经过较长的时间间隔。
 * 用户界面程序应该解释用户会在长时间等待后放弃操作的倾向。
   
   * 但是，解决方案不得每隔几秒钟重试，因为该策略可能会使系统填满请求。
 
-#### <a name="interval-increase-between-retries"></a>增大重试间隔
+### <a name="interval-increase-between-retries"></a>增大重试间隔
 我们建议在第一次重试前延迟 5 秒钟。 如果在少于 5 秒的延迟后重试，云服务有超载的风险。 对于后续的每次重试，延迟应以指数级增大，最大值为 60 秒。
 
 [SQL Server 连接池 (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx) 中提供了有关使用 ADO.NET 的客户端的*阻塞期*的说明。
 
 还可能想要设置程序在自行终止之前的重试次数上限。
 
-#### <a name="code-samples-with-retry-logic"></a>重试逻辑代码示例
-以下位置提供了采用各种编程语言的重试逻辑代码示例：
+### <a name="code-samples-with-retry-logic"></a>重试逻辑代码示例
+以下文档提供了有关重试逻辑的代码示例：
 
-* [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
+- [使用 ADO.NET 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [使用 PHP 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
-#### <a name="test-your-retry-logic"></a>测试重试逻辑
+### <a name="test-your-retry-logic"></a>测试重试逻辑
 若要测试重试逻辑，必须模拟或生成程序仍在运行时可更正的错误。
 
-##### <a name="test-by-disconnecting-from-the-network"></a>通过断开网络连接进行测试
+#### <a name="test-by-disconnecting-from-the-network"></a>通过断开网络连接进行测试
 可以测试重试逻辑的一种方法是在程序运行时断开客户端计算机与网络的连接。 将产生错误：
 
 * **SqlException.Number** = 11001
@@ -98,7 +100,7 @@ ms.lasthandoff: 11/04/2017
    * 通过使用 **Console.ReadLine** 方法或具有“确定”按钮的对话框暂停进一步执行。 将计算机接入网络后，用户按 Enter 键。
 5. 重新尝试连接，预期会成功。
 
-##### <a name="test-by-misspelling-the-database-name-when-connecting"></a>通过在连接时拼错数据库名称进行测试
+#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>通过在连接时拼错数据库名称进行测试
 在首次连接尝试之前，程序可以故意拼错用户名。 将产生错误：
 
 * **SqlException.Number** = 18456
@@ -114,15 +116,15 @@ ms.lasthandoff: 11/04/2017
 4. 从用户名中删除“WRONG_”。
 5. 重新尝试连接，预期会成功。
 
+
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
-### <a name="net-sqlconnection-parameters-for-connection-retry"></a>连接重试的 .NET SqlConnection 参数
+## <a name="net-sqlconnection-parameters-for-connection-retry"></a>连接重试的 .NET SqlConnection 参数
 如果客户端程序使用 .NET Framework 类 **System.Data.SqlClient.SqlConnection** 连接 Azure SQL 数据库，应使用 .NET 4.6.1 或更高版本（或 .NET Core），以便利用其连接重试功能。 有关该功能的详细信息请参阅[此处](http://go.microsoft.com/fwlink/?linkid=393996)。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
-
 
 为 **SqlConnection** 对象生成[连接字符串](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，应在以下参数之间协调值：
 
@@ -138,7 +140,7 @@ ms.lasthandoff: 11/04/2017
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
-### <a name="connection-versus-command"></a>连接与命令
+## <a name="connection-versus-command"></a>连接与命令
 **ConnectRetryCount** 和 **ConnectRetryInterval** 参数使 **SqlConnection** 对象在重试连接操作时不用通知或麻烦程序（例如，将控制权返还给程序）。 在以下情况下可能会进行重试：
 
 * mySqlConnection.Open 方法调用
@@ -146,8 +148,9 @@ ms.lasthandoff: 11/04/2017
 
 有个很微妙的地方。 如果正在执行*查询*时发生暂时性错误，**SqlConnection** 对象不会重试连接操作，因而肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
 
-#### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount 是否应结合应用程序重试逻辑？
+### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount 是否应结合应用程序重试逻辑？
 假设应用程序具有功能强大的自定义重试逻辑。 它可能会重试连接操作 4 次。 如果将 **ConnectRetryInterval** 和 **ConnectRetryCount** =3 添加到连接字符串，则将重试计数提高到 4 * 3 = 12 次重试。 可能未打算重试这么多次。
+
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
@@ -373,9 +376,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 ### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient 方法的源代码
 接下来，**SqlDatabaseTransientErrorDetectionStrategy** 类包含 **IsTransient** 方法的 C# 源代码。 该源代码阐明了哪些错误被视为暂时性错误并值得重试（从 2013 年 4 月起）。
 
-为了注重易读性，我们在此副本中删除了大量的 **//comment** 行。
-
-```
+```csharp
 public bool IsTransient(Exception ex)
 {
   if (ex != null)
@@ -444,6 +445,14 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>后续步骤
 * 有关其他常见的 Azure SQL 数据库连接问题的疑难解答，请访问 [Azure SQL 数据库的连接问题疑难解答](sql-database-troubleshoot-common-connection-issues.md)。
-* [SQL Server 连接池 (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
+* [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
+* [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 * [重试是 Apache 2.0 授权的通用重试库，它以 **Python** 编写，可以简化向几乎任何程序添加重试行为的任务。](https://pypi.python.org/pypi/retrying)
+
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
 

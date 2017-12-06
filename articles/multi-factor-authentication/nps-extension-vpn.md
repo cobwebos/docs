@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: bf83952b29759ff601685513ace31828404c7b1a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c058f1e747849cde0f15a039779665c8718da947
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 11/15/2017
 
 ### <a name="azure-mfa-license"></a>Azure MFA 许可证
 
-Azure 多重身份验证需要许可证，可通过 Azure AD Premium、企业移动性 + 安全性或多重身份验证订阅获取。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅[如何获取 Azure 多重身份验证](multi-factor-authentication-versions-plans.md)。 出于测试目的，你可以使用一个试用订阅。
+Azure 多重身份验证需要许可证，可通过 Azure AD Premium、企业移动性 + 安全性或多重身份验证独立许可证获取。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅[如何获取 Azure 多重身份验证](multi-factor-authentication-versions-plans.md)。 出于测试目的，你可以使用一个试用订阅。
 
 ### <a name="windows-server-software"></a>Windows Server 软件
 

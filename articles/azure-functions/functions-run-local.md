@@ -14,17 +14,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 35fd47025ca0dba1edbe1d7dd3ee0172fc45d6f5
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
 虽然 [Azure 门户]提供了一整套用于开发和测试 Azure Functions 的工具，但许多开发人员更喜欢本地开发体验。 Azure Functions 方便用户使用其喜欢的代码编辑器和本地开发工具在本地计算机上开发和测试函数。 其函数可在 Azure 中触发事件，并且用户可以在本地计算机上调试 C# 和 JavaScript 函数。 
 
 如果是 Visual Studio C# 开发人员，Azure Functions 还可以[与 Visual Studio 2017 集成](functions-develop-vs.md)。
+
+>[!IMPORTANT]  
+> 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目创建和发布函数时，不应尝试维护或修改门户中的项目代码。
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
@@ -83,7 +86,7 @@ func init MyFunctionProj
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 
-在本地运行时，Functions 项目是包含 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings) 的目录。 此目录相当于 Azure 中的一个函数应用。 若要深入了解 Azure Functions 文件夹结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
+在本地运行时，Functions 项目是包含 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 的目录。 此目录相当于 Azure 中的一个函数应用。 若要深入了解 Azure Functions 文件夹结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
 在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
@@ -102,8 +105,6 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
 若要创建不包含本地 Git 存储库的项目，请使用 `--no-source-control [-n]` 选项。
-
-<a name="local-settings"></a>
 
 ## <a name="local-settings-file"></a>本地设置文件
 

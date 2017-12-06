@@ -7,8 +7,10 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 AKS 群集
+    - name: 创建 AKS 群集 - CLI
       href: kubernetes-walkthrough.md
+    - name: 创建 AKS 群集 - 门户
+      href: kubernetes-walkthrough-portal.md
 - name: 教程
   items:
     - name: 1 - 为 AKS 准备应用程序

@@ -12,13 +12,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: mimig
-ms.openlocfilehash: 0900ec1931cc622339133393b72b558076a42710
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1c64401a7d0ccfa12232b04cfd57e6beaa1dbca8
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成表 API 应用
 
@@ -38,6 +38,10 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 * 来自 [python.org](https://www.python.org/downloads/release/python-2712/) 的 Python 2.7
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
+
+> [!IMPORTANT] 
+> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -84,7 +88,13 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     ![在“连接字符串”窗格中查看并复制“连接字符串”](./media/create-table-python/connection-string.png)
 
-2. 打开 config.py 文件，并将所需的连接字符串属性复制到配置文件中。
+2. 使用右侧的按钮复制帐户名称。
+
+3. 打开 config.py 文件，并将帐户名称从门户粘贴到第 19 行的 STORAGE_ACCOUNT_NAME 中。
+
+4. 返回到门户，然后复制主键。
+
+5. 将主键从门户复制到第 20 行的 STORAGE_ACCOUNT_KEY 值中。
 
 3. 保存 config.py 文件。
 

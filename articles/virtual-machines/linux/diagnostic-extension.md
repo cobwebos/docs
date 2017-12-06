@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebb963236a069f272499fce59945d0cf0d3d647f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -108,7 +108,7 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 
 * 启用自动次要版本升级后再安装扩展。
   * 在经典的部署模型 VM 上，如果要通过 Azure XPLAT CLI 或Powershell 安装扩展，请指定“3.*”作为版本。
-  * 在 Azure Resource Manager 部署模型 VM 上，在 VM 部署模板中加入“"autoUpgradeMinorVersion": true”。
+  * 在 Azure 资源管理器部署模型 VM 上，在 VM 部署模板中加入“"autoUpgradeMinorVersion": true”。
 * 为 LAD 3.0 使用新的/不同的存储帐户。 LAD 2.3 和 LAD 3.0 之间存在几个小的不兼容性，使得共享帐户变得麻烦：
   * LAD 3.0 将 syslog 事件存储在不同名称的表中。
   * LAD 3.0 中 `builtin` 指标的 counterSpecifier 字符串不同。
@@ -267,7 +267,7 @@ sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间�
 
 元素 | 值
 ------- | -----
-resourceId | VM 或 VM 所属虚拟机规模集的 Azure Resource Manager 资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
+resourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
 scheduledTransferPeriod | 计算聚合指标并将转移到 Azure Metrics 的频率，以 IS 8601 时间间隔形式表示。 最小传输周期为 60 秒，即 PT1M。 必须指定至少一个 scheduledTransferPeriod。
 
 performanceCounters 节中指定的指标样本每 15 秒收集一次，或者按计数器明确定义的采样率进行收集。 如果出现多个 scheduledTransferPeriod 频率（如示例所示），则每个聚合都将独立计算。
@@ -319,7 +319,7 @@ displayName | Azure Metrics 中要附加到此数据的标签（使用由相关�
 
 counterSpecifier 是一个任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 counterSpecifier 作为标识指标或指标实例的“关键字”。 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 counterSpecifier 值。 如果要收集指标的特定实例，建议将该实例的标识符附加到 counterSpecifier 值。 下面是一些示例：
 
-* `/builtin/Processor/PercentIdleTime` - 所有内核的平均空闲时间
+* `/builtin/Processor/PercentIdleTime` - 所有 vCPU 的平均空闲时间
 * `/builtin/Disk/FreeSpace(/mnt)` - /mnt 文件系统的可用空间
 * `/builtin/Disk/FreeSpace` - 已装入的所有文件系统的平均可用空间
 
@@ -424,7 +424,7 @@ sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>处理器类的内置指标
 
-处理器类指标提供有关 VM 中处理器使用情况的信息。 聚合百分比时，结果是所有 CPU 的平均值。 在双核 VM 中，如果一个核心 100% 忙碌，另一个 100% 空闲，则报告的 PercentIdleTime 将是 50。 如果在相同时段内每个核心都是 50% 忙碌，则报告的结果也将是 50。 在四核 VM 中，如果一个核心 100% 忙碌，其他空闲，则报告的 PercentIdleTime 将是 75。
+处理器类指标提供有关 VM 中处理器使用情况的信息。 聚合百分比时，结果是所有 CPU 的平均值。 在双 vCPU VM 中，如果一个 vCPU 100% 忙，另一个 vCPU 100% 空闲，则报告的 PercentIdleTime 将是 50。 如果在相同时段内每个 vCPU 都是 50% 忙，则报告的结果也将是 50。 在四 vCPU VM 中，如果一个 vCPU 100% 忙，其他 vCPU 空闲，则报告的 PercentIdleTime 将是 75。
 
 counter | 含义
 ------- | -------
@@ -438,7 +438,7 @@ PercentPrivilegedTime | 非空闲时间内，处于特权（内核）模式的�
 
 前四个计数器结果之和应为 100%。 后三个计数器结果之和也应为 100%，它们对 PercentProcessorTime、PercentIOWaitTime 和 PercentInterruptTime 之和（非空闲时间）进行了细分。
 
-若要获取跨所有处理器聚合的单个指标，请设置 `"condition": "IsAggregate=TRUE"`。 若要获取特定处理器的指标，如四核 VM 的第二个逻辑处理器，请设置 `"condition": "Name=\\"1\\""`。 逻辑处理器编号处于 `[0..n-1]` 范围内。
+若要获取跨所有处理器聚合的单个指标，请设置 `"condition": "IsAggregate=TRUE"`。 若要获取特定处理器的指标，如四 vCPU VM 的第二个逻辑处理器，请设置 `"condition": "Name=\\"1\\""`。 逻辑处理器编号处于 `[0..n-1]` 范围内。
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>内存类的内置指标
 

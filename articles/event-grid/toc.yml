@@ -22,6 +22,8 @@
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: 调整已上传图像的大小
       href: resize-images-on-storage-blob-upload-event.md
+    - name: 触发自动化 Runbook
+      href: ensure-tags-exists-on-new-virtual-machines.md
 - name: 概念
   items:
     - name: 事件网格概念

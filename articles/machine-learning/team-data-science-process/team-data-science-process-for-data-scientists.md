@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: d572fe3ad01d75b76ac87b441a5397d1c1841547
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 52d6fe0757043a0a298c3fdee0478fb364074537
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>用于数据科学家的 Team Data Science Process
 
@@ -30,6 +30,8 @@ ms.lasthandoff: 10/31/2017
 - 了解数据传输和存储的基础知识
 - 提供数据源文档
 - 使用工具来处理分析
+
+这些培训材料与 Team Data Science Process (TDSP) 及 Microsoft 与开源代码软件和工具包相关，有助于构想、执行和交付数据科学解决方案。
 
 ## <a name="lesson-path"></a>课程路径
 可通过下表中所列项目进行自学。 要按照路径学习请参阅“说明”列，要查看学习参考请单击“主题”链接，要检查技能掌握情况请使用“知识检查”列。

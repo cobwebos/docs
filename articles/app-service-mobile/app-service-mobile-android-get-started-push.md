@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 11/17/2017
 ms.author: glenga
-ms.openlocfilehash: b89e9af55342d5d7473d848956996f846250b4b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6882a7b1864d511e70495e1d1d782aa0f03beca3
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -56,12 +56,12 @@ ms.lasthandoff: 10/11/2017
 ### <a name="verify-android-sdk-version"></a>验证 Android SDK 版本
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-下一步就是安装 Google Play Services。 Google Cloud Messaging 对开发和测试提出了一些最低的 API 级别要求，清单中的 **minSdkVersion** 属性必须符合这些要求。
+下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion 属性必须符合这些要求。
 
-如果要对某台较旧的设备进行测试，请查阅[设置 Google Play Services SDK]，以确定此值可设置到的最小值，并相应地进行设置。
+如果要测试一台较旧的设备，请查阅[将 Firebase 添加到 Android 项目]，以确定此值可设置到的最小值，并相应地进行设置。
 
-### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
-[!INCLUDE [Add Play Services](../../includes/app-service-mobile-add-google-play-services.md)]
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>将 Firebase Cloud Messaging 添加到项目
+[!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
 ### <a name="add-code"></a>添加代码
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
@@ -79,5 +79,4 @@ ms.lasthandoff: 10/11/2017
 
 <!-- URLs -->
 [Android 快速入门]: app-service-mobile-android-get-started.md
-
-[设置 Google Play Services SDK]:https://developers.google.com/android/guides/setup
+[将 Firebase 添加到 Android 项目]:https://firebase.google.com/docs/android/setup

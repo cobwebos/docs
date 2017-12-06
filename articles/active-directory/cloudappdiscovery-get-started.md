@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: c09410bc6ed8b4eac4316e206c75db84ef0b07fb
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 92cafe24fc3a038f2acd68ec21ec845316ef46de
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>在 Azure AD 中设置 Cloud App Discovery
 
@@ -37,7 +37,7 @@ Azure AD 中的 Cloud App Discovery 现在基于与可从 Microsoft Cloud App Se
 
 2. [设置连续报告](https://docs.microsoft.com/cloud-app-security/discovery-docker)，使用 Cloud App Security 日志收集器分析从网络转发的所有日志。 可以使用它们来标识新的应用和使用情况趋势。
 
-3. 如果日志当前不受支持，请[设置自定义日志分析程序](https://docs.microsoft.com/en-us/cloud-app-security/custom-log-parser)，以便 Cloud App Discovery 可以对其进行分析。
+3. 如果日志当前不受支持，请[设置自定义日志分析程序](https://docs.microsoft.com/cloud-app-security/custom-log-parser)，以便 Cloud App Discovery 可以对其进行分析。
   
 ## <a name="log-processing-flow"></a>日志处理流
 

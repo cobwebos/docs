@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 0bf6177bc34b6f7daf9c14a22c3b381025f0f825
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: b8aa841cca63c0c4eb45105e3ccff91920ad35e3
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
@@ -72,7 +72,7 @@ ms.lasthandoff: 11/14/2017
 高级规则正文的总长度不能超过 2048 个字符。
 
 > [!NOTE]
-> 字符串和正则表达式运算不区分大小写。 还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
+> 字符串和正则表达式运算不区分大小写。 还可执行 Null 检查，使用 null 作为常量，例如 user.department -eq null。
 > 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
 
 ## <a name="supported-expression-rule-operators"></a>支持的表达式规则运算符
@@ -158,31 +158,32 @@ ms.lasthandoff: 11/14/2017
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
-| city |任意字符串值或 $null |(user.city -eq "value") |
-| country |任意字符串值或 $null |(user.country -eq "value") |
-| companyName | 任意字符串值或 $null | (user.companyName -eq "value") |
-| department |任意字符串值或 $null |(user.department -eq "value") |
+| city |任意字符串值或 null |(user.city -eq "value") |
+| country |任意字符串值或 null |(user.country -eq "value") |
+| companyName | 任意字符串值或 null | (user.companyName -eq "value") |
+| department |任意字符串值或 null |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
-| facsimileTelephoneNumber |任意字符串值或 $null |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |任意字符串值或 $null |(user.givenName -eq "value") |
-| jobTitle |任意字符串值或 $null |(user.jobTitle -eq "value") |
-| mail |任意字符串值或 $null（用户的 SMTP 地址） |(user.mail -eq "value") |
+| employeeId |任意字符串值 |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
+| facsimileTelephoneNumber |任意字符串值或 null |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |任意字符串值或 null |(user.givenName -eq "value") |
+| jobTitle |任意字符串值或 null |(user.jobTitle -eq "value") |
+| mail |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
-| mobile |任意字符串值或 $null |(user.mobile -eq "value") |
+| mobile |任意字符串值或 null |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | 从本地同步至云端的用户的本地安全标识符 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |任意字符串值或 $null |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |任意字符串值或 $null |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |任意字符串值或 null |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |任意字符串值或 null |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 代码 |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |任意字符串值或 $null |(user.sipProxyAddress -eq "value") |
-| state |任意字符串值或 $null |(user.state -eq "value") |
-| streetAddress |任意字符串值或 $null |(user.streetAddress -eq "value") |
-| surname |任意字符串值或 $null |(user.surname -eq "value") |
-| telephoneNumber |任意字符串值或 $null |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |任意字符串值或 null |(user.sipProxyAddress -eq "value") |
+| state |任意字符串值或 null |(user.state -eq "value") |
+| streetAddress |任意字符串值或 null |(user.streetAddress -eq "value") |
+| surname |任意字符串值或 null |(user.surname -eq "value") |
+| telephoneNumber |任意字符串值或 null |(user.telephoneNumber -eq "value") |
 | usageLocation |双字母国家/地区代码 |(user.usageLocation -eq "US") |
 | userPrincipalName |任意字符串值 |(user.userPrincipalName -eq "alias@domain") |
-| userType |member guest $null |(user.userType -eq "Member") |
+| userType |member guest null |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 允许的操作
@@ -225,14 +226,10 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ## <a name="use-of-null-values"></a>Null 值的用法
 
-若要在规则中指定 null 值，可以使用“null”或 $null。 示例：
+要在规则中指定 null 值，可以使用 null 值。 注意，不要在 null 这个词两边使用引号 - 如果这样做，它将被解释为文本字符串值。 引用 null 值的正确方法如下：
 ```
    user.mail –ne null
 ```
-等效于
-```
-   user.mail –ne $null
-   ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>扩展属性和自定义属性
 动态成员身份规则支持扩展属性和自定义属性。

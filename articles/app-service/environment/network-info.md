@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 121dd1a90e9bde66f1c3b752412a657a67295084
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -164,7 +164,7 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 ![入站安全规则][5]
 
-定义 NSG 之后，请将其分配到 ASE 所在的子网。 如果你不记得 ASE VNet 或子网，可以通过 ASE 管理门户查看。 若要将 NSG 分配到子网，请转到子网 UI 并选择该 NSG。
+定义 NSG 之后，请将其分配到 ASE 所在的子网。 如果你不记得 ASE VNet 或子网，可以通过 ASE 门户页查看。 若要将 NSG 分配到子网，请转到子网 UI 并选择该 NSG。
 
 ## <a name="routes"></a>路由 ##
 

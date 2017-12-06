@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: tarcher
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03cd09e37ff7dd0b7731eee19810ada7aed1a875
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 7f42baa1ac37f425f915b6949e018f6e7397d3ae
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 
@@ -79,7 +79,9 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 如果启用此策略，请指定要关闭当前实验室中所有 VM 的时间（和时区）。
 
-1. 对于在指定的自动关闭时间之前 15 分钟发送通知的选项，指定“是”或“否”。 如果指定“是”，请输入 Webhook URL 终结点或电子邮件地址，用作将要发布或发送通知的位置。 有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
+1. 对于在指定的自动关闭时间之前 15 分钟发送通知的选项，指定“是”或“否”。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置。 用户会收到通知，其中提供了延迟关闭的选项。
+
+   有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
 
 1. 选择“保存”。
 
@@ -112,6 +114,6 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 * [配置成本管理](devtest-lab-configure-cost-management.md) - 演示了如何使用**每月的估计成本趋势**图表  
   查看当前所处月份的截止目前估计的成本以及截止本月结束预计成本。
 * [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或应用商店映像。 本文演示了如何从 VHD 文件创建自定义映像。
-* [配置应用商店映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure 应用商店映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 应用商店映像（如果有）。
-* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或应用商店映像）创建 VM，以及如何使用在 VM 中使用项目。
+* [配置应用商店映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure 应用商店映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure Marketplace 映像（如果有）。
+* [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或应用商店映像）创建 VM，以及如何在 VM 中使用项目。
 

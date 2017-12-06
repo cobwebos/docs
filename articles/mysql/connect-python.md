@@ -129,7 +129,7 @@ else:
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码进行连接，并使用 SELECT SQL 语句来读取数据。 
+使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
 
 在代码中，mysql.connector 库已导入。 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数用于通过配置集合中的[连接参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)连接到 Azure Database for MySQL。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 语句。 数据行使用 [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) 方法读取。 结果集保留在集合行中，for 迭代器用于针对行进行循环。
 

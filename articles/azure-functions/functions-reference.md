@@ -3,7 +3,7 @@ title: "Azure Functions 开发指南 | Microsoft 文档"
 description: "了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
-ms.author: chrande
-ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.author: tdykstra
+ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -81,11 +81,8 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service/app-service-deploy-local-git.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
 
 #### <a name="to-use-app-service-editor"></a>使用应用服务编辑器
-1. 在 Azure Functions 门户中，单击“函数应用设置”。
-2. 在“高级设置”部分中，单击“转到应用服务设置”。
-3. 在“应用菜单导航”下的“开发工具”中单击“应用服务编辑器”。
-4. 单击“开始”。
-   
+1. 在 Azure Functions 门户中，单击“平台功能”。
+2. 在“开发工具”部分中，单击“应用服务编辑器”。   
    加载“应用服务编辑器”后，wwwroot 下将出现 host.json 文件和函数文件夹。 
 5. 打开进行编辑，或者从开发计算机拖放文件进行上传。
 

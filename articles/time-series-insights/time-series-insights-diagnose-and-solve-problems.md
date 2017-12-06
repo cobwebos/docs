@@ -1,6 +1,8 @@
 ---
 title: "诊断并解决 Azure 时序见解中的问题 | Microsoft Docs"
 description: "本文介绍如何诊断、排查和解决可能在 Azure 时序见解环境中遇见的常见问题。"
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
@@ -9,11 +11,11 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/15/2017
-ms.openlocfilehash: 4216b245fd480003cfa4a34452f87efade964f8d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>在时序见解环境中诊断并解决问题
 
@@ -37,7 +39,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
    如上图所示，“读取”和“管理”策略均可使用，因为两者都具有“侦听”权限。
 
 ### <a name="possible-cause-c-the-consumer-group-provided-is-not-exclusive-to-time-series-insights"></a>可能的原因 C：提供的使用者组不是时序见解独有的
-am IoT hub 或事件中心注册期间，指定应用于读取数据的使用者组。 绝对不能共享此使用者组。 如果共享了此使用者组，则基础事件中心会随机自动断开一个读取器的连接。 请提供唯一的使用者组，供时序见解从中读取。
+IoT 中心或事件中心注册期间，指定应用于读取数据的使用者组。 绝对不能共享此使用者组。 如果共享了此使用者组，则基础事件中心会随机自动断开一个读取器的连接。 请提供唯一的使用者组，供时序见解从中读取。
 
 ## <a name="problem-2-some-data-is-shown-but-some-is-missing"></a>问题 2：显示了一些数据，但是还有一些数据缺失
 当可以看见部分数据但数据滞后时，需要考虑几种可能性：

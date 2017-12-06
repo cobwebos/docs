@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: e4ee80826a710bde9483d130a4d1c986a72645ca
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: da7b83846418bfe5f95b126d4f5f7b34d3a7b35d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/15/2017
 
 * 必须先配置 HDInsight 群集，才能使用 Azure Log Analytics。 有关说明，请参阅[将 Azure Log Analytics 用于 HDInsight 群集](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
 
-* 必须已将特定于 HDInsight 群集的管理解决方案添加到 OMS 工作区，如[将 HDInsight 群集管理解决方案添加到 Log Analytics](hdinsight-hadoop-oms-log-analytics-management-solutions.md) 中所述。
+* 必须已将特定于 HDInsight 群集的管理解决方案添加到 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 工作区，如[将 HDInsight 群集管理解决方案添加到 Log Analytics](hdinsight-hadoop-oms-log-analytics-management-solutions.md) 中所述。
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>分析 HDInsight 群集指标
 
@@ -152,5 +152,5 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="see-also"></a>另请参阅
 
-* [使用 OMS Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [使用 Operations Management Suite Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [在 Log Analytics 中创建警报规则](../log-analytics/log-analytics-alerts-creating.md)

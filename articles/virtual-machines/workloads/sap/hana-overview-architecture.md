@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ef5ec3d8f4b96d4a318e01b449d3baad8a6324a
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 2461e5fbf620fa2651792b47d41e9835d4d6ef8c
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
@@ -291,7 +291,10 @@ HANA 的内存需求将随数据量增长而增加，因此，需要了解当前
 - 在 Azure 中的 Azure VM 上部署的 Red Hat 订阅管理器。 使用 Red Hat 订阅管理器，Azure 上的 SAP HANA（大型实例）能够通过 Red Hat 进行注册并相应地进行更新（因为 Azure 大型实例模具上部署的租户内没有直接 Internet 访问）。
 - SAP 要求拥有支持与 Linux 提供程序的协定。 此要求不清除 HANA 大型实例或这一事实的解决方案，在 Azure 中的运行的 Linux。 与不同的 Linux Azure 库映像，一些服务费未包含在 HANA 大型实例解决方案产品/服务。 你作为客户有责任履行 SAP 与 Linux 分发服务器之间的支持协定的要求。   
    - 对于 SUSE Linux，请查看 [SAP 说明 #1984787 - SUSE LINUX Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787)和 [SAP 说明 #1056161 - SUSE 优先支持 SAP 应用程序](https://launchpad.support.sap.com/#/notes/1056161)中的支持合同要求。
-   - 对于 Red Hat Linux，你需要具有正确的订阅级别，其中包括支持和服务（HANA 大型实例的操作系统的更新）。 Red Hat 建议获取“RHEL for SAP Business Applications”订阅。 有关支持和服务的详细信息，请查看 [SAP 说明 #2002167 - Red Hat Enterprise Linux 7.x：安装和升级](https://launchpad.support.sap.com/#/notes/2002167)和 [SAP 说明 #1496410 - Red Hat Enterprise Linux 6.x：安装和升级](https://launchpad.support.sap.com/#/notes/1496410)。
+   - 对于 Red Hat Linux，你需要具有正确的订阅级别，其中包括支持和服务（HANA 大型实例的操作系统的更新）。 Red Hat 建议获取“RHEL for [SAP Solutions](https://access.redhat.com/solutions/3082481)”订阅。 
+
+有关不同 Linux 版本的不同 SAP HANA 版本的支持矩阵，请查看 [SAP 说明 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。
+
 
 **数据库：**
 

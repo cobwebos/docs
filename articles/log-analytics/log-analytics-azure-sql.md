@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: a1214d8327075ee081124d42aeb78846e09ff588
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 957b8b9aca0ae27362923c87c7a0161cf2c052b7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -29,6 +29,11 @@ Azure Log Analytics 中的 Azure SQL Analytics 解决方案收集和可视化重
 此预览版解决方案目前支持每个工作区使用多达 150,000 个 Azure SQL 数据库和 5,000 个 SQL 弹性池。
 
 与其他适用于 Log Analytics 的解决方案一样，Azure SQL Analytics 解决方案可以帮助用户监视和接收有关 Azure 资源（在此示例中为 Azure SQL 数据库）运行状况的通知。 Microsoft Azure SQL 数据库是可缩放的关系数据库服务，为运行在 Azure 云中的应用程序提供熟悉的类似于 SQL Server 的功能。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
+
+有关使用 Azure SQL Analytics 解决方案的实践概述和典型使用方案，请观看嵌入视频：
+          
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
+>
 
 ## <a name="connected-sources"></a>连接的源
 
@@ -115,7 +120,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="intelligent-insights-report"></a>智能见解报告
 
-可通过见解透视，对收集的所有智能见解进行可视化和访问。 
+使用 Azure SQL 数据库 [Intelligent Insights](../sql-database/sql-database-intelligent-insights.md) 可以知道数据库发生了什么情况。 可通过见解透视，对收集的所有智能见解进行可视化和访问。
 
 ![Azure SQL Analytics 见解](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: bbfcbadcb0010d50e572b335d4cac78b33e974c8
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 21168d0862cfdaaaced60fa80a2dc04859f49550
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB：导入 Cassandra 数据
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="use-cqlsh-copy"></a>使用 cqlsh COPY
 
-若要将 Cassandra 数据的数据导入到 Azure Cosmos DB，以与 Cassandra API 一起使用，请使用以下指南：
+若要将 Cassandra 数据导入到 Azure Cosmos DB，以与 Cassandra API 一起使用，请使用以下指南：
 
 1. 使用门户中的连接信息登录到 cqhsh。
 2. 使用 [CQL COPY命令](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)将本地数据复制到 Apache Cassandra API 终结点。 确保源和目标位于同一数据中心，以最大程度减少延迟问题。

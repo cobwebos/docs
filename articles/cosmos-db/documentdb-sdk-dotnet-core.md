@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 11/17/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56a2aff21a728d5ac0355516fc6988512c062b4c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 835956f185b4ecdcbfa0b486223dd9bc2d0377cb
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -56,6 +56,11 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](docu
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK 与通用 Windows 平台 (UWP) 应用尚不兼容。 如果不支持 UWP 应用的 .NET Core SDK 感兴趣，请向 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 发送电子邮件。
+
+### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
+ 
+ * 添加了通过使用 DocumentCollection 上的 UniqueKeyPolicy 属性来指定文档唯一索引的功能。
+ * 修复了自定义 JsonSerializer 设置无法用于某些查询和存储过程执行的 bug。
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
  
@@ -150,6 +155,7 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.7.1](#1.7.1) |2017 年 11 月 16 日 |--- |
 | [1.7.0](#1.7.0) |2017 年 11 月 10 日 |--- |
 | [1.6.0](#1.6.0) |2017 年 10 月 17 日 |--- |
 | [1.5.1](#1.5.1) |2017 年 10 月 2日 |--- |

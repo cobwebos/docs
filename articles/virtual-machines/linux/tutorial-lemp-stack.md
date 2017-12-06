@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: 87d60ae51aaa33b709d272605419fd85eeb5d93d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c77cd0148a7e3e7b99e90e29bc1499dae8f95028
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="install-a-lemp-web-server-on-an-azure-vm"></a>在 Azure VM 上安装 LEMP Web 服务器
 本文逐步讲解如何在 Azure 中的 Ubuntu VM 上部署 NGINX Web 服务器、MySQL 和 PHP（LEMP 堆栈）。 LEMP 堆栈可以替代常用的 [LAMP 堆栈](tutorial-lamp-stack.md)，可安装在 Azure 中。 若要了解 LEMP 服务器的运作情况，可以选择性地安装并配置 WordPress 站点。 本教程介绍如何执行下列操作：
@@ -31,6 +31,8 @@ ms.lasthandoff: 10/11/2017
 > * 验证安装和配置
 > * 在 LEMP 服务器上安装 WordPress
 
+
+此设置用于快速测试或概念证明。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -73,15 +75,16 @@ nginx -v
 mysql -V
 ```
 
-建议运行以下脚本来帮助保护 MySQL 的安装：
+若要帮助保护 MySQL 的安装，请运行 `mysql_secure_installation` 脚本。 如果只是设置临时服务器，则可以跳过此步骤。 
 
 ```bash
 mysql_secure_installation
 ```
 
-输入 MySQL root 密码，并配置环境的安全设置。
+输入 MySQL 的 root 密码，并配置环境的安全设置。
 
-如果想要创建 MySQL 数据库，请添加用户或更改配置设置，并登录到 MySQL：
+如果想要试用 MySQL 功能（创建 MySQL 数据库、添加用户或更改配置设置），请登录到 MySQL。 此步骤非本教程必需步骤。 
+
 
 ```bash
 mysql -u root -p

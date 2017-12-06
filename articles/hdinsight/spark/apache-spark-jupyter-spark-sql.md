@@ -4,8 +4,8 @@ description: "此 HDInsight Spark 快速入门介绍如何在 HDInsight 中创�
 keywords: "spark 快速入门,交互式 spark,交互式查询,hdinsight spark,azure spark"
 services: hdinsight
 documentationcenter: 
-author: nitinme
-manager: jhubbard
+author: mumian
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 91f41e6a-d463-4eb4-83ef-7bbb1f4556cc
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
-ms.author: nitinme
-ms.openlocfilehash: 3783848395554e3b543bd68c813fa684df7cbc03
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: jgao
+ms.openlocfilehash: 20952702ee9dbe9880c80dddc0d75f39e53b6659
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>在 Azure HDInsight 中创建 Apache Spark 群集
 

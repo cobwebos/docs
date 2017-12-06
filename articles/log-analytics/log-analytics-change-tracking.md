@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 528b569ff9ffb3659e9210ea70e3aa06921cfe0d
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
 
@@ -41,10 +41,10 @@ ms.lasthandoff: 10/11/2017
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Linux 文件跟踪”。
 3. 在“Linux 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），然后单击“添加”符号。 例如："/etc/*.conf"
-4. 单击“保存” 。  
+4. 单击“保存”。  
 
 > [!NOTE]
-> Linux 文件跟踪具有其他功能，包括目录跟踪、递归通过目录和通配符跟踪。
+> Linux 文件跟踪具有一些附加功能，包括目录跟踪、通过目录递归和通配符跟踪。
 
 ### <a name="configure-windows-files-to-track"></a>配置要跟踪的 Windows 文件
 使用以下步骤，配置要在 Windows 计算机上跟踪的文件。
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
    * **文件**（报表文件元数据 - 大小、修改日期、哈希，等等）
    * **目录**（报表目录元数据 - 大小、修改日期，等等）
 2. **链接**（处理对其他文件或目录的 Linux 符号链接引用）
-   * **忽略**（在递归期间忽略符号链接以便不包括引用的文件/目录）
+   * 忽略（在递归期间忽略符号链接以便不包括引用的文件/目录）
    * **追随**（在递归期间追随符号链接以便同时包括引用的文件/目录）
    * **管理**（追随符号链接并修改返回内容的处置）
 
@@ -96,6 +96,10 @@ ms.lasthandoff: 10/11/2017
 * 当网络流量较高时，更改记录可能需要最多六个小时才能显示。
 * 如果在计算机关闭的情况下修改配置，计算机可能会发布属于以前配置的文件更改。
 
+### <a name="known-issues"></a>已知问题
+更改跟踪解决方案当前遇到以下问题：
+* 没有为 Windows 10 创意者更新和 Windows Server 2016 Core RS3 计算机收集修补程序更新。
+
 ## <a name="change-tracking-data-collection-details"></a>“更改跟踪”数据收集详细信息
 “更改跟踪”使用已启用的代理来收集软件清单和 Windows 服务元数据。
 
@@ -103,7 +107,7 @@ ms.lasthandoff: 10/11/2017
 
 | 平台 | 直接代理 | Operations Manager 代理 | Linux 代理 | Azure 存储空间 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows 和 Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请参阅下表。 |
+| Windows 和 Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请查阅下表。 |
 
 
 下表显示了各种更改类型的数据收集频率。

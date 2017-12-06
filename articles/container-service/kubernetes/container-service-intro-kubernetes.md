@@ -35,7 +35,7 @@ ms.lasthandoff: 10/24/2017
 Azure 容器服务旨在通过使用当今客户中热门的开源工具和技术提供容器托管环境。 为此，我们公开标准 Kubernetes API 终结点。 通过使用这些标准终结点，可利用能够与 Kubernetes 群集通信的任何软件。 例如，可以选择 [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)、[helm](https://helm.sh/) 或 [draft](https://github.com/Azure/draft)。
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service"></a>使用 Azure 容器服务创建 Kubernetes 群集
-若要开始使用 Azure 容器服务，可通过 [Azure CLI 2.0](container-service-kubernetes-walkthrough.md) 或门户（在 Marketplace 中搜索“Azure 容器服务”）部署 Azure 容器服务群集。 如果你是需要对 Azure Resource Manager 模板进行更多控制的高级用户，可以使用开源的 [acs-engine](https://github.com/Azure/acs-engine) 项目来生成自己的自定义 Kubernetes 群集，然后通过 `az` CLI 进行部署。
+若要开始使用 Azure 容器服务，可通过 [Azure CLI 2.0](container-service-kubernetes-walkthrough.md) 或门户（在 Marketplace 中搜索“Azure 容器服务”）部署 Azure 容器服务群集。 如果你是需要对 Azure 资源管理器模板进行更多控制的高级用户，可以使用开源的 [acs-engine](https://github.com/Azure/acs-engine) 项目来生成自己的自定义 Kubernetes 群集，然后通过 `az` CLI 进行部署。
 
 ### <a name="using-kubernetes"></a>使用 Kubernetes
 Kubernetes 对容器化应用程序自动进行部署、扩展和管理。 它具有一组丰富的功能，包括：

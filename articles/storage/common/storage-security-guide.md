@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 592a8716dd15b25b14fed145c11e5f5714cdd41c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3973c7e529cd1d0ecd98ae17d4d979d0d458ef3
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 ## <a name="overview"></a>概述
@@ -30,7 +30,7 @@ Azure 存储提供配套的安全性功能，这些功能相辅相成，可让�
 
 * [管理平面安全性](#management-plane-security) - 保护存储帐户
 
-  管理平面包含用于管理存储帐户的资源。 此部分讨论 Azure Resource Manager 部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制访问存储帐户。 此外，还将讨论如何管理存储帐户密钥以及重新生成此类密钥。
+  管理平面包含用于管理存储帐户的资源。 此部分讨论 Azure 资源管理器部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制访问存储帐户。 此外，还将讨论如何管理存储帐户密钥以及重新生成此类密钥。
 * [管理平面安全性](#data-plane-security) - 保护对数据的访问
 
   此部分探讨如何在存储帐户（例如 Blob、文件、队列和表）中，允许使用共享访问签名和存储访问策略来访问实际的数据对象。 我们介绍服务级别 SAS 和帐户级别 SAS。 此外，还将了解如何限制访问特定的 IP 地址（或 IP 地址范围）、如何限制用于 HTTPS 的协议，以及如何吊销共享访问签名而无需等到它过期。
@@ -98,7 +98,7 @@ Azure 存储提供配套的安全性功能，这些功能相辅相成，可让�
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/azure/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）
 
   该参考信息介绍了可用于按编程方式管理存储帐户的 API。
-* [Developer’s guide to auth with Azure Resource Manager API](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)（开发人员指南：使用 Azure Resource Manager API 进行身份验证）
+* [开发人员指南：使用 Azure 资源管理器 API 进行身份验证](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
 
   此文说明如何使用 Resource Manager API 进行身份验证。
 * [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)（Ignite 中提供的适用于 Microsoft Azure 的基于角色的访问控制）
@@ -170,7 +170,7 @@ Azure 存储提供配套的安全性功能，这些功能相辅相成，可让�
 
 例如，可读取 Blob、写入队列、创建表，还可修改文件。 可通过 Azure 门户或利用诸多 存储资源管理器应用程序中的某一种执行其中的很多操作。 还可编写代码，利用 REST API 或某个存储客户端库执行这些操作。
 
-如[管理平面安全性](#management-plane-security)部分中所述，可通过授予对 Azure 订阅的完全访问权限，使用户可访问经典存储帐户的存储密钥。 可通过基于角色的访问控制 (RBAC)，控制借助 Azure Resource Manager 模型访问存储帐户存储密钥的情况。
+如[管理平面安全性](#management-plane-security)部分中所述，可通过授予对 Azure 订阅的完全访问权限，使用户可访问经典存储帐户的存储密钥。 可通过基于角色的访问控制 (RBAC)，控制借助 Azure 资源管理器模型访问存储帐户存储密钥的情况。
 
 ### <a name="how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies"></a>如何使用共享访问签名和存储访问策略来委派对帐户中对象的访问权限
 共享访问签名是一个字符串，包含可附加到 URI 的安全令牌，可让你委派存储对象的访问权限，以及指定访问的权限和日期/时间范围等限制。
@@ -354,7 +354,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 此功能可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 #### <a name="resources"></a>资源
-* [Azure Disk Encryption for Windows and Linux IaaS VMs](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)（适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密）
+* [Azure Disk Encryption for Windows and Linux IaaS VMs](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)（适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密）
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure 磁盘加密、SSE 和客户端加密的比较
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VM 及其 VHD 文件

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: mimig
-ms.openlocfilehash: fd0454252080679fa880eecb677d609ea0734f09
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 5163d20aece01addddeae93cb07355bde928a440
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>导入要在 Azure Cosmos DB 表 API 中使用的数据
 
@@ -32,11 +32,11 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="data-migration-tool"></a>数据迁移工具
 
-可以使用命令行形式的 Azure Cosmos DB 数据迁移工具 (dt.exe) 将现有 Azure 表存储数据导入到表 API GA 帐户，或者将数据从表 API（预览版）帐户迁移到表 API GA 帐户。 目前不支持其他源。
+可以使用命令行形式的 Azure Cosmos DB 数据迁移工具 (dt.exe) 将现有 Azure 表存储数据导入到表 API GA 帐户，或者将数据从表 API（预览版）帐户迁移到表 API GA 帐户。 目前不支持其他源。 基于 UI 的数据迁移工具 (dtui.exe) 目不支持表 API 帐户。 
 
 若要执行表数据迁移，请完成以下任务：
 
-1. 从 [Microsoft 下载中心](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)或从 [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) 下载迁移工具。
+1. 从 [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) 下载迁移工具。
 2. 使用适用于你的方案的命令行参数运行 `dt.exe`。
 
 dt.exe 采用以下格式的命令：

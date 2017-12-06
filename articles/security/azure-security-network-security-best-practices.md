@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dee3411dadbca5e88951dec2ed1836d440423c4
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Azure 网络安全最佳实践
-Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从而将它们连接到其他网络设备。 Azure 虚拟网络是一种虚拟网络构造，可让你将虚拟网络接口卡连接到虚拟网络，允许有网络功能的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的 Azure 虚拟机能够连接到相同 Azure 虚拟网络、不同 Azure 虚拟网络、Internet 甚至自己的本地网络上的设备。
+Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从而将它们连接到其他网络设备。 Azure 虚拟网络这一构造，可让你将虚拟网络接口卡连接到虚拟网络，允许有网络功能的设备之间进行基于 TCP/IP 的通信。 连接到 Azure 虚拟网络的 Azure 虚拟机能够连接到相同 Azure 虚拟网络、不同 Azure 虚拟网络、Internet 甚至自己的本地网络上的设备。
 
 本文介绍一系列 Azure 网络安全最佳实践。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
 
@@ -52,7 +52,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 ## <a name="logically-segment-subnets"></a>以逻辑方式分段子网
 [Azure 虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)类似于本地网络上的 LAN。 Azure 虚拟网络背后的思路是创建单个基于空间的专用 IP 地址网络，以将所有 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)置于其上。 可用的专用 IP 地址空间位于类别 A (10.0.0.0/8)、类别 B (172.16.0.0/12) 和类别 C (192.168.0.0/16) 范围内。
 
-类似于在本地执行的操作，需要将较大的地址空间分段成子网。 可以使用基于 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 的子网原理来创建子网。
+类似于在本地执行的操作，应将较大的地址空间分段成子网。 可以使用基于 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 的子网原理来创建子网。
 
 子网之间的路由会自动发生，不需要手动配置路由表。 但是，默认设置是 Azure 虚拟网络上创建的子网之间没有任何网络访问控制。 若要创建子网之间的网络访问控制，必须在子网之间添加某项设置。
 
@@ -74,7 +74,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 建议在部署虚拟网络安全设备时配置“用户定义的路由”，我们会在后面的最佳实践中进行介绍。
 
 > [!NOTE]
-> 不需要用户定义的路由，默认系统路由适用于大多数情况。
+> 不需要用户定义的路由，默认系统路由适用于大多数实例。
 >
 >
 
@@ -82,7 +82,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 
 ## <a name="enable-forced-tunneling"></a>启用强制隧道
 若要进一步了解强制隧道，最好能了解“拆分隧道”是什么。
-最常见的拆分隧道示例出现在 VPN 连接中。 假设要建立从酒店客房到企业网络的 VPN 连接。 这种连接可让你连接到企业网络上的资源，而企业网络上的资源的所有通信都将经过 VPN 隧道。
+最常见的拆分隧道示例出现在 VPN 连接中。 假设要建立从酒店客房到企业网络的 VPN 连接。 这种连接允许访问企业资源，而企业网络上的所有通信都将经过 VPN 隧道。
 
 连接到 Internet 上的资源时会发生什么情况？ 启用拆分隧道后，这些连接将直接连到 Internet，而不会经过 VPN 隧道。 某些安全专家将此视为潜在的风险，因此建议禁用拆分隧道，而以 Internet 为目标和以企业资源为目标的所有连接都经过 VPN 隧道。 这样做的好处是对 Internet 的连接会被迫通过企业网络安全设备，而如果 VPN 客户端连接到 VPN 隧道之外的 Internet，不会发生这种情况。
 
@@ -91,7 +91,7 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 
 如果没有跨界连接，请务必使用网络安全组（前面已介绍）或 Azure 虚拟网络安全设备（接下来介绍）来防止从 Azure 虚拟机对 Internet 的出站连接。
 
-若要详细了解强制隧道及其启用方式，请阅读[使用 PowerShell 和 Azure Resource Manager 配置强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)一文。
+若要详细了解强制隧道及其启用方式，请阅读[使用 PowerShell 和 Azure 资源管理器配置强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)一文。
 
 ## <a name="use-virtual-network-appliances"></a>使用虚拟网络设备
 尽管网络安全组和用户定义路由可以在 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)的网络和传输层中实现一定的网络安全，但在某些情况下，将希望或需要在高级别堆栈中实现安全保障。 在此类情况下，建议部署 Azure 合作伙伴所提供的虚拟网络安全设备。
@@ -109,7 +109,7 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 
 如果需要的网络安全级别高于可以使用网络级别访问控件获取的级别，则建议调查并部署 Azure 虚拟网络安全设备。
 
-若要了解有哪些可用的 Azure 虚拟网络安全设备及其相关功能，请访问 [Azure 应用商店](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”。
+若要了解有哪些可用的 Azure 虚拟网络安全设备及其相关功能，请访问 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 并搜索“安全”和“网络安全”。
 
 ## <a name="deploy-dmzs-for-security-zoning"></a>部署外围网络进行安全分区
 外围网络或“周边网络”是物理或逻辑网络区段，用于在资产与 Internet 之间提供额外的安全级别。 外围网络的目的是要将专用网络访问控制设备放在外围网络网络的边缘，只允许所需的流量通过网络安全设备进入 Azure 虚拟网络。
@@ -144,10 +144,9 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 可用性可被视为与运行时间和性能有关。 如果服务已关闭，便无法访问信息。 如果性能不佳，以致数据无法使用，我们可将此数据视为不可访问。 因此，从安全角度来看，我们需要尽可能确保服务有最佳的运行时间和性能。
 用于增强可用性和性能的常用且有效的方法是使用负载均衡。 负载均衡是将网络流量分布于服务中各服务器的方法。 例如，如果服务中有前端 Web 服务器，可以使用负载均衡将流量分布于多台前端 Web 服务器。
 
-这种流量分布将提高可用性，因为如果其中一台 Web 服务器不可用，负载均衡器会停止将流量发送到该服务器，并将流量重定向到仍在运行的服务器。 负载均衡还有助于性能，因为处理请求的处理器、网络和内存开销将分布于所有负载均衡的服务器之间。
+这种流量分布将提高可用性，因为如果其中一台 Web 服务器不可用，负载均衡器停止将流量发送到该服务器，并将它重定向到仍在运行的服务器。 负载均衡还有助于性能，因为处理请求的处理器、网络和内存开销将分布于所有负载均衡的服务器之间。
 
-建议尽可能为服务采用适当的负载均衡。 我们会在以下部分中探讨适当性。
-在 Azure 虚拟网络级别，Azure 将提供三个主要负载均衡选项：
+建议尽可能为服务采用适当的负载均衡。 将在以下部分中探讨适用性：在 Azure 虚拟网络级别，Azure 将提供三个主要负载均衡选项：
 
 * 基于 HTTP 的负载均衡
 * 外部负载均衡
@@ -162,7 +161,7 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 * 希望使用应用程序网关的 [SSL 卸载](https://f5.com/glossary/ssl-offloading)功能消除 Web 服务器场的 SSL 终端开销的应用程序。
 * 要求长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同后端服务器的应用程序（例如内容传送网络）。
 
-若要详细了解 Azure 应用程序网关的工作原理及其在部署中的使用方式，请阅读[应用程序网关概述](../application-gateway/application-gateway-introduction.md)一文。
+若要详细了解 Azure 应用程序网关的工作原理及其在部署中的使用方式，请阅读[应用程序网关概述](../application-gateway/application-gateway-introduction.md)。
 
 ## <a name="external-load-balancing"></a>外部负载均衡
 来自 Internet 的传入连接在位于 Azure 虚拟网络中的服务器之间达到平衡负载时，将进行外部负载均衡。 Azure 外部负载均衡器可以提供此功能，建议在不需要粘性会话或 SSL 卸载时使用。
@@ -176,7 +175,7 @@ Azure 网络安全设备可通过网络级别控件提供的功能来提供大�
 ## <a name="internal-load-balancing"></a>内部负载均衡
 内部负载均衡类似于外部负载均衡，使用相同的机制对其背后服务器的连接进行负载均衡。 唯一的差别在于，在此情况下的负载均衡器将接受来自不在 Internet 上的虚拟机的连接。 在大多数情况下，Azure 虚拟网络上的设备将发起负载均衡可接受的连接。
 
-建议将内部负载均衡用于将受益于此功能的方案，例如当需要对 SQL 服务器或内部 Web 服务器的连接进行负载均衡时。
+建议将内部负载均衡用于受益于此功能的方案，例如当需要对 SQL 服务器或内部 Web 服务器的连接进行负载均衡时。
 
 若要详细了解 Azure 内部负载均衡器的工作原理和部署方式，请阅读[开始使用 PowerShell 创建 Internet 负载均衡器](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer)一文。
 

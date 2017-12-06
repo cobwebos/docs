@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 910077645b521d4cd303d39f543cf155161a31c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2d4915cf12690c98275b1fe327dd2574a6343e9e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -33,7 +33,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 创建认知服务帐户。
+> * 创建认知服务 API 资源。
 > * 创建一个用来对推文情感进行分类的函数。
 > * 创建连接到 Twitter 的逻辑应用。
 > * 将情感检测功能添加到逻辑应用。 
@@ -47,29 +47,28 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 + 本主题以在[从 Azure 门户创建第一个函数](functions-create-first-azure-function.md)主题中创建的资源为基础。  
 现在请完成以下步骤创建 Function App（如果尚未这样做）。
 
-## <a name="create-a-cognitive-services-account"></a>创建认知服务帐户
+## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
 
-需要使用认知服务帐户来检测所监视的推文的情感。
+Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析 API 可检测受监视的推文观点。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 单击 Azure 门户左上角的“新建”按钮。
 
-3. 单击“数据 + 分析” > “认知服务”。 然后，请使用表中指定的设置，接受条款，并选中“固定到仪表板”。
+3. 单击“AI + 分析” > “文本分析 API”。 然后，请使用表中指定的设置，接受条款，并选中“固定到仪表板”。
 
-    ![“创建认知帐户”页](media/functions-twitter-email/cog_svcs_account.png)
+    ![创建认知资源页](media/functions-twitter-email/cog_svcs_resource.png)
 
     | 设置      |  建议的值   | 说明                                        |
     | --- | --- | --- |
     | **Name** | MyCognitiveServicesAccnt | 选择唯一的帐户名称。 |
-    | **API 类型** | 文本分析 API | 用于分析文本的 API。  |
-    | **位置** | 美国西部 | 目前只能在“美国西部”执行文本分析。 |
+    | **位置** | 美国西部 | 使用最靠近的位置。 |
     | **定价层** | F0 | 从最低的层着手。 如果已用完调用配额，请扩展到更高的层。|
     | **资源组** | myResourceGroup | 请本教程中的所有服务使用同一个资源组。|
 
-4. 单击“创建”以创建帐户。 创建帐户后，请单击已固定到仪表板的新认知服务帐户。 
+4. 单击“创建”以创建资源。 创建资源后，请选择已固定到仪表板的新认知服务资源。 
 
-5. 在该帐户中单击“密钥”，复制并保存“密钥 1”的值。 使用此密钥将逻辑应用连接到认知服务帐户。 
+5. 在左侧导航栏中，单击“密钥”，复制并保存“密钥 1”的值。 使用此密钥将逻辑应用连接到认知服务 API。 
  
     ![密钥](media/functions-twitter-email/keys.png)
 
@@ -77,13 +76,26 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
 函数可让你方便地卸载逻辑应用工作流中的处理任务。 本教程使用 HTTP 触发的函数来处理认知服务提供的推文情感评分，并返回一个类别值。  
 
-1. 展开函数应用，单击“函数”旁边的 **+** 按钮，并单击“HTTPTrigger”模板。 为函数的“名称”键入 `CategorizeSentiment`，并单击“创建”。
+1. 单击“新建”按钮，然后选择“计算” > “函数应用”。 然后使用下表中指定的设置。 接受条款，并选择“固定到仪表板”。
+
+    ![创建 Azure 函数应用](media/functions-twitter-email/create_fun.png)
+
+    | 设置      |  建议的值   | 说明       |
+    | --- | --- | --- |
+    | **Name** | MyFunctionApp | 选择唯一的帐户名称。 |
+    | **资源组** | myResourceGroup | 请本教程中的所有服务使用同一个资源组。|
+    | **托管计划** | 使用计划 | 定义成本和使用情况分配。
+    | **位置** | 美国西部 | 使用最靠近的位置。 |
+    | **存储** | 新建 | 自动生成新的存储帐户。|
+    | **定价层** | F0 | 从最低的层着手。 如果已用完调用配额，请扩展到更高的层。|
+
+2. 从仪表板中选择函数应用并展开函数，单击“函数”旁边的 **+** 按钮，依次单击“Webhook + API”、“CSharp”、“创建此函数”。 这将使用 HTTPTrigger C# 模板创建函数。 代码作为 `run.csx` 显示在新窗口中
 
     ![Function Apps 边栏选项卡，Functions +](media/functions-twitter-email/add_fun.png)
 
-2. 将 run.csx 文件的内容替换为以下代码，然后单击“保存”：
+3. 将 `run.csx` 文件的内容替换为以下代码，然后单击“保存”：
 
-    ```c#
+    ```csharp
     using System.Net;
     
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
@@ -110,11 +122,11 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
     ```
     此函数代码基于请求中收到的情感评分返回颜色类别。 
 
-3. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中键入 `0.2` 的值，并单击“运行”。 响应正文中将返回 **RED** 值。 
+4. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中键入 `0.2` 的值，并单击“运行”。 响应正文中将返回 **RED** 值。 
 
     ![在 Azure 门户中测试函数](./media/functions-twitter-email/test.png)
 
-现已创建一个可对情感评分分类的函数。 接下来，请创建用于将函数与 Twitter 和认知服务帐户集成的逻辑应用。 
+现已创建一个可对情感评分分类的函数。 接下来，请创建用于将函数与 Twitter 和认知服务 API 集成的逻辑应用。 
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用   
 
@@ -124,7 +136,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
  
 4. 然后，请键入“名称”（例如 `TweetSentiment`），使用表中指定的设置，接受条款，并选中“固定到仪表板”。
 
-    ![在 Azure 门户创建逻辑应用](./media/functions-twitter-email/new_logicApp.png)
+    ![在 Azure 门户创建逻辑应用](./media/functions-twitter-email/new_logic_app.png)
 
     | 设置      |  建议的值   | 说明                                        |
     | ----------------- | ------------ | ------------- |
@@ -152,7 +164,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
     | 设置      |  建议的值   | 说明                                        |
     | ----------------- | ------------ | ------------- |
-    | **搜索文本** | #Azure | 使用足够热门的井号标签按所选的间隔生成新的推文。 如果使用免费层并且井号标签过于热门，可能很快就会用完认知服务帐户中的事务配额。 |
+    | **搜索文本** | #Azure | 使用足够热门的井号标签按所选的间隔生成新的推文。 如果使用免费层并且井号标签过于热门，可能很快就会用完认知服务 API 中的事务配额。 |
     | **频率** | 分钟 | 用于轮询 Twitter 的频率单位。  |
     | **间隔** | 15 | 每两次处理 Twitter 请求所用的时间，采用频率单位。 |
 
@@ -170,7 +182,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
     ![检测情感](media/functions-twitter-email/detect_sent.png)
 
-3. 键入连接名称（例如 `MyCognitiveServicesConnection`），粘贴保存的认知服务帐户密钥，并单击“创建”。  
+3. 键入连接名称（例如 `MyCognitiveServicesConnection`），粘贴保存的认知服务 API 密钥，并单击“创建”。  
 
 4. 单击“要分析的文本” > “推文文本”，并单击“保存”。  
 
@@ -202,7 +214,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
     ![将条件添加到逻辑应用。](media/functions-twitter-email/condition.png)
 
-3. 在“如果是，则不执行任何操作”中单击“添加操作”，搜索 `outlook.com`，单击“发送电子邮件”，并登录到 Outlook.com 帐户。
+3. 在“如果是”中单击“添加操作”，搜索 `outlook.com`，单击“发送电子邮件”，并登录到 Outlook.com 帐户。
     
     ![为条件选择操作。](media/functions-twitter-email/outlook.png)
 
@@ -211,7 +223,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 
 4. 在“发送电子邮件”操作中，请使用表中指定的电子邮件设置。 
 
-    ![为“发送电子邮件”操作配置电子邮件。](media/functions-twitter-email/sendEmail.png)
+    ![为“发送电子邮件”操作配置电子邮件。](media/functions-twitter-email/send_email.png)
 
     | 设置      |  建议的值   | 说明  |
     | ----------------- | ------------ | ------------- |
@@ -246,7 +258,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
         return req.CreateResponse(HttpStatusCode.OK, category);
 
     > [!IMPORTANT]
-    > 完成本教程后，应禁用该逻辑应用。 禁用该应用可以避免产生执行费用，以及用完认知服务帐户中的事务配额。
+    > 完成本教程后，应禁用该逻辑应用。 禁用该应用可以避免产生执行费用，以及用完认知服务 API 中的事务配额。
 
 我们已看到，将 Functions 集成到逻辑应用工作流的过程是多么简单。
 
@@ -261,7 +273,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 创建认知服务帐户。
+> * 创建认知服务 API 资源。
 > * 创建一个用来对推文情感进行分类的函数。
 > * 创建连接到 Twitter 的逻辑应用。
 > * 将情感检测功能添加到逻辑应用。 

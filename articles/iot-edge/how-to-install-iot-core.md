@@ -7,14 +7,14 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: veyalla
-ms.date: 11/15/2017
+ms.date: 11/17/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: be2a80645d23e709d6c5cfb3978498bbe85eca34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d3ff260b4ac238ce7aaa2a63538dede7bd21a19c
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>在 Windows IoT Core 上安装 IoT Edge 运行时 - 预览
 
@@ -25,8 +25,22 @@ Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板
 1. 在主机系统上安装 [Windows 10 IoT Core 仪表板][lnk-core]。
 1. 安装[设置设备][lnk-board]中的步骤使用 MinnowBoard Turbot/MAX Build 16299 映像配置板。 
 1. 打开设备，然后[使用 PowerShell 远程登录][lnk-powershell]。
-1. 在 PowerShell 控制台中，[安装 Docker 二进制文件][lnk-docker-install]。
-1. 在 PowerShell 控制台中运行以下命令，安装 IoT Edge 运行时并验证配置：
+1. 在 PowerShell 控制台中，安装容器运行时： 
+
+   ```powershell
+   Invoke-WebRequest https://master.dockerproject.org/windows/x86_64/docker-17.06.0-dev.zip -o temp.zip
+   Expand-Archive .\temp.zip $env:ProgramFiles -f
+   Remove-Item .\temp.zip
+   $env:Path += ";$env:programfiles\docker"
+   SETX /M PATH "$env:Path"
+   dockerd --register-service
+   start-service docker
+   ```
+
+   >[!NOTE]
+   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、背书或支持。
+
+1. 安装 IoT Edge 运行时并验证配置：
 
    ```powershell
    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
@@ -36,7 +50,7 @@ Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板
    * Python 3.6
    * IoT Edge 控件脚本 (iotedgectl.exe)
 
-在远程 PowerShell 窗口中可能会看见 iotedgectl.exe 工具中的信息输出为红色。 这不一定表示错误。 
+在远程 PowerShell 窗口中可能会看见 iotedgectl.exe 工具中的信息输出为绿色。 这不一定表示错误。 
 
 ## <a name="next-steps"></a>后续步骤
 

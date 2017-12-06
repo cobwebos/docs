@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
-ms.date: 11/14/2017
-ms.openlocfilehash: 7fa7eb53876746f1934af8ca3428cfdacb56382d
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.date: 11/29/2017
+ms.openlocfilehash: b48e5bc2552c92b45e0417e5a8a34705a473073e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -163,7 +163,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 3. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
 
-请注意，以下设置命令要求你具有订阅的“参与者”访问权限。 如果你没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
+   请注意，以下设置命令要求你具有订阅的“参与者”访问权限。 如果你没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
@@ -276,10 +276,10 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 若要测试正在运行的 irisapp Web 服务，请使用 JSON 编码的记录（其中包含由四个随机数构成的数组）：
 
-1. 该 Web 服务包括示例数据。 以本地模式运行时，可以调用 **az ml service show realtime** 命令。 该调用会检索可用于测试服务的示例运行命令。 该调用还会检索可用于将服务合并到你自己的自定义应用中的评分 URL：
+1. 该 Web 服务包括示例数据。 以本地模式运行时，可以调用 **az ml service usage realtime** 命令。 该调用会检索可用于测试服务的示例运行命令。 该调用还会检索可用于将服务合并到你自己的自定义应用中的评分 URL：
 
    ```azurecli
-   az ml service show realtime -i <web service ID>
+   az ml service usage realtime -i <web service ID>
    ```
 
 2. 若要测试服务，请执行返回的服务运行命令：

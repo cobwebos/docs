@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 76179b6a8eb7066c90828d33729b557f5e37c17a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2b873501085ba2d293be564009b5d5daccbf9c1e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件（预览）
 
@@ -27,47 +27,66 @@ ms.lasthandoff: 11/03/2017
 > 同意使用条款即可使用预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 
-计划事件是 Azure 元数据服务下的一个子服务。 该服务负责显示有关即将发生的事件（例如，重新启动）的信息，使应用程序可做好准备并限制中断。 它可用于所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 计划事件给予虚拟机时间来执行预防性任务，以最大限度地降低事件的影响。 
+预定事件是一个 Azure 元数据服务，可提供应用程序时间用于准备虚拟机维护。 它提供有关即将发生的维护事件的信息（例如重新启动），使应用程序可以为其准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 
 
-计划事件可同时用于 Linux 和 Windows VM。 有关 Linux 上计划事件的信息，请参阅 [Linux VM 的计划事件](../linux/scheduled-events.md)。
+有关 Linux 上计划事件的信息，请参阅 [Linux VM 的计划事件](../linux/scheduled-events.md)。
 
 ## <a name="why-scheduled-events"></a>为何使用计划事件？
 
-借助计划事件可采取相应步骤，限制由平台启用的维护或用户采取的操作对服务的影响。 
+许多应用程序都可以受益于时间来准备虚拟机维护。 时间可以用于执行应用程序的特定任务的提高可用性、可靠性和可维护性，包括： 
 
-使用复制技术保持状态的多实例工作负荷可能易受到跨多个实例发生的服务中断的影响。 此类服务中断可能会导致开销高的任务（例如，重新生成索引）甚至副本丢失。 
+- 检查点和还原
+- 连接清空
+- 主副本故障转移 
+- 从负载均衡器池删除
+- 事件日志记录
+- 正常关闭 
 
-在其他许多情况下，执行正常的关闭顺序可改善整体服务的可用性，例如完成（或取消）正在进行的事务、将任务重新分配到群集中的其他 VM（手动故障转移），或从网络负载均衡器池中删除虚拟机。 
+使用计划事件，应用程序可以发现维护的发生，并触发任务以限制其影响。  
 
-有时会通知管理员即将发生的事件，或记录此类事件也会帮助改进托管在云中的应用程序的可维护性。
-
-Azure 元数据服务在以下用例中显示计划事件：
--   平台启动的维护（例如，主机 OS 部署）
--   用户启动的调用（例如，用户重启或重新部署 VM）
-
+预定事件提供以下用例中的事件：
+- 平台启动维护（例如主机 OS 更新）
+- 用户启动的维护（例如，用户重启或重新部署 VM）
 
 ## <a name="the-basics"></a>基础知识  
 
 Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正在运行的虚拟机的信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
 ### <a name="scope"></a>范围
-计划事件会显示到云服务中的所有虚拟机或可用性集中的所有虚拟机上。 因此，应查看事件中的 `Resources` 字段，确定哪些 VM 将会受到影响。 
+计划的事件传送到：
+- 云服务中的所有虚拟机
+- 可用性集中的所有虚拟机
+- 规模集位置组中的所有虚拟机。 
 
-### <a name="discovering-the-endpoint"></a>发现终结点
+因此，应查看事件中的 `Resources` 字段，确定哪些 VM 将会受到影响。 
+
+## <a name="discovering-the-endpoint"></a>发现终结点
+对于启用 VNET 的 VM，预定事件的最新版本的完整终结点是： 
+
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+
 在虚拟网络 (VNet) 中创建虚拟机的情况下，元数据服务可从不可路由的静态 IP：`169.254.169.254` 获得。
-如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的终结点。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
+如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
 ### <a name="versioning"></a>版本控制 
-已对实例元数据服务进行了版本控制。 版本是必需的，当前版本为 `2017-03-01`。
+计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-08-01`。
+
+| 版本 | 发行说明 | 
+| - | - | 
+| 2017-08-01 | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | <li>公共预览版
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
 
 ### <a name="using-headers"></a>使用标头
-查询元数据服务时，必须提供标头 `Metadata: true`，以确保不会意外将请求重定向。
+查询元数据服务时，必须提供标头 `Metadata:true`，以确保不会意外将请求重定向。 `Metadata:true` 标头对于所有预定事件请求是必需的。 不在请求中包含标头会导致元数据服务发出的“错误的请求”响应。
 
 ### <a name="enabling-scheduled-events"></a>启用计划事件
 第一次请求计划事件时，Azure 会在虚拟机上隐式启用该功能。 因此，第一次调用时应该会延迟响应最多两分钟。
+
+> [!NOTE]
+> 如果服务有 1 天未调用终结点，会自动为服务禁用预定事件。 为服务禁用预定事件后，不会为用户启动的维护创建事件。
 
 ### <a name="user-initiated-maintenance"></a>用户启动的维护
 用户通过 Azure 门户、API、CLI 或 PowerShell 启动的虚拟机维护会生成计划事件。 这样便可以在应用程序中测试维护准备逻辑，并可以通过应用程序准备用户启动的维护。
@@ -75,7 +94,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 重新启动虚拟机会计划 `Reboot` 类型的事件。 重新部署虚拟机会计划 `Redeploy` 类型的事件。
 
 > [!NOTE] 
-> 目前，可以同时计划最多 10 个用户启动的维护操作。 在计划事件公开发布之前将放宽此限制。
+> 目前，可以同时计划最多 100 个用户启动的维护操作。
 
 > [!NOTE] 
 > 目前，生成计划事件的用户启动的维护不可配置。 可配置性已计划在将来的版本中推出。
@@ -85,8 +104,9 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="query-for-events"></a>查询事件
 只需进行以下调用即可查询计划事件：
 
+#### <a name="powershell"></a>Powershell
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @{"Metadata"="true"}
 ```
 
 响应包含计划事件的数组。 空数组表示目前没有计划事件。
@@ -130,8 +150,20 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 了解即将发生的事件并完成正常关闭逻辑后，可通过使用 `EventId` 对元数据服务进行 `POST` 调用，审核未完成事件。 这表明 Azure 可缩短最短通知时间（如有可能）。 
 
+下面是 `POST` 请求正文中所需的 json。 请求应包含 `StartRequests` 列表。 每个 `StartRequest` 包含想要加速的事件的 `EventId`：
 ```
-curl -H Metadata:true -X POST -d '{"DocumentIncarnation":"5", "StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
+{
+    "StartRequests" : [
+        {
+            "EventId": {EventId}
+        }
+    ]
+}
+```
+
+#### <a name="powershell"></a>Powershell
+```
+curl -H @{"Metadata"="true"} -Method POST -Body '{"DocumentIncarnation":"5", "StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
 ```
 
 > [!NOTE] 
@@ -144,7 +176,7 @@ curl -H Metadata:true -X POST -d '{"DocumentIncarnation":"5", "StartRequests": [
 
 ```PowerShell
 # How to get scheduled events 
-function GetScheduledEvents($uri)
+function Get-ScheduledEvents($uri)
 {
     $scheduledEvents = Invoke-RestMethod -Headers @{"Metadata"="true"} -URI $uri -Method get
     $json = ConvertTo-Json $scheduledEvents
@@ -153,7 +185,7 @@ function GetScheduledEvents($uri)
 }
 
 # How to approve a scheduled event
-function ApproveScheduledEvent($eventId, $docIncarnation, $uri)
+function Approve-ScheduledEvent($eventId, $docIncarnation, $uri)
 {    
     # Create the Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
@@ -168,7 +200,7 @@ function ApproveScheduledEvent($eventId, $docIncarnation, $uri)
     Invoke-RestMethod -Uri $uri -Headers @{"Metadata"="true"} -Method POST -Body $approvalString
 }
 
-function HandleScheduledEvents($scheduledEvents)
+function Handle-ScheduledEvents($scheduledEvents)
 {
     # Add logic for handling events here
 }
@@ -180,10 +212,10 @@ $localHostIP = "169.254.169.254"
 $scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-03-01' -f $localHostIP 
 
 # Get events
-$scheduledEvents = GetScheduledEvents $scheduledEventURI
+$scheduledEvents = Get-ScheduledEvents $scheduledEventURI
 
 # Handle events however is best for your service
-HandleScheduledEvents $scheduledEvents
+Handle-ScheduledEvents $scheduledEvents
 
 # Approve events when ready (optional)
 foreach($event in $scheduledEvents.Events)
@@ -192,190 +224,13 @@ foreach($event in $scheduledEvents.Events)
     $entry = Read-Host "`nApprove event? Y/N"
     if($entry -eq "Y" -or $entry -eq "y")
     {
-        ApproveScheduledEvent $event.EventId $scheduledEvents.DocumentIncarnation $scheduledEventURI 
+        Approve-ScheduledEvent $event.EventId $scheduledEvents.DocumentIncarnation $scheduledEventURI 
     }
 }
 ``` 
 
-
-## <a name="c-sample"></a>C\# 示例 
-
-以下示例是与元数据服务进行通信的简单客户端。
-
-```csharp
-public class ScheduledEventsClient
-{
-    private readonly string scheduledEventsEndpoint;
-    private readonly string defaultIpAddress = "169.254.169.254"; 
-
-    // Set up the scheduled events URI for a VNET-enabled VM
-    public ScheduledEventsClient()
-    {
-        scheduledEventsEndpoint = string.Format("http://{0}/metadata/scheduledevents?api-version=2017-03-01", defaultIpAddress);
-    }
-
-    // Get events
-    public string GetScheduledEvents()
-    {
-        Uri cloudControlUri = new Uri(scheduledEventsEndpoint);
-        using (var webClient = new WebClient())
-        {
-            webClient.Headers.Add("Metadata", "true");
-            return webClient.DownloadString(cloudControlUri);
-        }   
-    }
-
-    // Approve events
-    public void ApproveScheduledEvents(string jsonPost)
-    {
-        using (var webClient = new WebClient())
-        {
-            webClient.Headers.Add("Content-Type", "application/json");
-            webClient.UploadString(scheduledEventsEndpoint, jsonPost);
-        }
-    }
-}
-```
-
-使用以下数据结构可代表计划事件：
-
-```csharp
-public class ScheduledEventsDocument
-{
-    public string DocumentIncarnation;
-    public List<CloudControlEvent> Events { get; set; }
-}
-
-public class CloudControlEvent
-{
-    public string EventId { get; set; }
-    public string EventStatus { get; set; }
-    public string EventType { get; set; }
-    public string ResourceType { get; set; }
-    public List<string> Resources { get; set; }
-    public DateTime? NotBefore { get; set; }
-}
-
-public class ScheduledEventsApproval
-{
-    public string DocumentIncarnation;
-    public List<StartRequest> StartRequests = new List<StartRequest>();
-}
-
-public class StartRequest
-{
-    [JsonProperty("EventId")]
-    private string eventId;
-
-    public StartRequest(string eventId)
-    {
-        this.eventId = eventId;
-    }
-}
-```
-
-以下示例将查询计划事件的元数据服务并审核每个未完成事件。
-
-```csharp
-public class Program
-{
-    static ScheduledEventsClient client;
-
-    static void Main(string[] args)
-    {
-        client = new ScheduledEventsClient();
-
-        while (true)
-        {
-            string json = client.GetDocument();
-            ScheduledEventsDocument scheduledEventsDocument = JsonConvert.DeserializeObject<ScheduledEventsDocument>(json);
-
-            HandleEvents(scheduledEventsDocument.Events);
-
-            // Wait for user response
-            Console.WriteLine("Press Enter to approve executing events\n");
-            Console.ReadLine();
-
-            // Approve events
-            ScheduledEventsApproval scheduledEventsApprovalDocument = new ScheduledEventsApproval()
-            {
-                DocumentIncarnation = scheduledEventsDocument.DocumentIncarnation
-            };
-        
-            foreach (CloudControlEvent event in scheduledEventsDocument.Events)
-            {
-                scheduledEventsApprovalDocument.StartRequests.Add(new StartRequest(event.EventId));
-            }
-
-            if (scheduledEventsApprovalDocument.StartRequests.Count > 0)
-            {
-                // Serialize using Newtonsoft.Json
-                string approveEventsJsonDocument =
-                    JsonConvert.SerializeObject(scheduledEventsApprovalDocument);
-
-                Console.WriteLine($"Approving events with json: {approveEventsJsonDocument}\n");
-                client.ApproveScheduledEvents(approveEventsJsonDocument);
-            }
-
-            Console.WriteLine("Complete. Press enter to repeat\n\n");
-            Console.ReadLine();
-            Console.Clear();
-        }
-    }
-
-    private static void HandleEvents(List<CloudControlEvent> events)
-    {
-        // Add logic for handling events here
-    }
-}
-```
-
-## <a name="python-sample"></a>Python 示例 
-
-以下示例将查询计划事件的元数据服务并审核每个未完成事件。
-
-```python
-#!/usr/bin/python
-
-import json
-import urllib2
-import socket
-import sys
-
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01"
-headers = "{Metadata:true}"
-this_host = socket.gethostname()
-
-def get_scheduled_events():
-   req = urllib2.Request(metadata_url)
-   req.add_header('Metadata', 'true')
-   resp = urllib2.urlopen(req)
-   data = json.loads(resp.read())
-   return data
-
-def handle_scheduled_events(data):
-    for evt in data['Events']:
-        eventid = evt['EventId']
-        status = evt['EventStatus']
-        resources = evt['Resources']
-        eventtype = evt['EventType']
-        resourcetype = evt['ResourceType']
-        notbefore = evt['NotBefore'].replace(" ","_")
-        if this_host in resources:
-            print "+ Scheduled Event. This host is scheduled for " + eventype + " not before " + notbefore
-            # Add logic for handling events here
-
-def main():
-   data = get_scheduled_events()
-   handle_scheduled_events(data)
-   
-if __name__ == '__main__':
-  main()
-  sys.exit(0)
-```
-
 ## <a name="next-steps"></a>后续步骤 
 
+- 在 [Azure 实例元数据计划事件 Github 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看预定事件代码示例
 - 详细了解[实例元数据服务](instance-metadata-service.md)中可用的 API。
 - 了解 [Azure 中 Windows 虚拟机的计划内维护](planned-maintenance.md)。
-

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: d93667f16f2d72995e4a42e79e9125b8e3f6b07c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 598387b6066612c6c4a4c92cba5ba03e03a55203
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
 
@@ -96,6 +96,10 @@ ms.lasthandoff: 10/11/2017
 
 本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Trello 应用程序中配置单一登录。
 
+>[!NOTE]
+    >应从 Trello 获取**\<企业\>**数据域。 如果没有数据域值，请联系 [Trello 支持团队](mailto:support@trello.com)为企业获取数据域。
+    > 
+
 **若要配置 Trello 的 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 门户中的 Trello 应用程序集成页上，单击“单一登录”。
@@ -112,17 +116,15 @@ ms.lasthandoff: 10/11/2017
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
 
-4. 在“Trello 域和 URL”部分中，如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
-    
-    ![配置单一登录](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
+4. 如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
+
+  ![配置单一登录](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
 
     a. 单击“显示高级 URL 设置”。
 
-    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/login/<enterprise>`
 
-    >[!NOTE]
-    >应从 Trello 获取**\<企业\>**数据域。 如果没有数据域值，请联系 [Trello 支持团队](mailto:support@trello.com)为企业获取数据域。
-    > 
+  c. 在“标识符”文本框中，键入以下 URL：`https://trello.com/auth/saml/metadata`
 
 5. Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序配置以下属性。 可从应用程序的“用户属性”下管理这些属性的值。 以下屏幕截图显示一个示例。
 

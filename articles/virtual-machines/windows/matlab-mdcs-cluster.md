@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: b302c6b3c6acbb8552796e7fb1bfd153d23dceb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 177f8a61487130e718e3e6cfb779b17a3ed8ed69
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>在 Azure VM 上创建 MATLAB 分布式计算服务器群集
 使用 Microsoft Azure 虚拟机可以创建一个或多个 MATLAB 分布式计算服务器群集，运行计算密集型并行 MATLAB 工作负荷。 在 VM 上安装 MATLAB 分布式计算服务器软件以用作基本映像，并使用 Azure 快速入门模板或 Azure PowerShell 脚本（可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) 上获取）来部署和管理群集。 部署之后，可连接到群集来运行工作负荷。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 * **客户端计算机** - 部署后，需要使用一台基于 Windows 的客户端计算机来与 Azure 和 MATLAB 分布式计算服务器群集通信。
 * **Azure PowerShell** - 请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），在客户端计算机上安装该软件。
 * **Azure 订阅** - 如果没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
-* **核心配额** - 可能需要增大核心配额才能部署大型群集或多个 MATLAB 分布式计算服务器群集。 若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
+* **vCPU 配额** - 可能需要增大 vCPU 配额才能部署大型群集或多个 MATLAB 分布式计算服务器群集。 若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 * **MATLAB、并行计算工具箱和 MATLAB 分布式计算服务器许可证** - 脚本假设所有许可证都使用 [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/)。  
 * **MATLAB 分布式计算服务器软件** - 将安装在用作群集 VM 基本 VM 映像的 VM 上。
 
@@ -62,7 +62,7 @@ MATLAB 客户端节点、MATLAB 作业计划程序节点和 MATLAB 分布式计�
 * 若要使用群集，请通过远程桌面连接到客户端节点。 客户端节点运行 MATLAB 客户端。
 * 客户端节点具有可供所有辅助角色访问的文件共享。
 * MathWorks Hosted License Manager 用于检查所有 MATLAB 软件的许可证。
-* 默认情况下，会在辅助角色 VM 上为每个核心创建一个 MATLAB 分布式计算服务器辅助角色，但可以指定任意数目。
+* 默认情况下，会在辅助角色 VM 上为每个 vCPU 创建一个 MATLAB 分布式计算服务器辅助角色，但可以指定任意数目。
 
 ## <a name="use-an-azure-based-cluster"></a>使用基于 Azure 的群集
 与其他类型的 MATLAB 分布式计算服务器群集一样，需要在 MATLAB 客户端（位于客户端 VM 上）中使用群集配置文件管理器来创建 MATLAB 作业计划程序群集配置文件。

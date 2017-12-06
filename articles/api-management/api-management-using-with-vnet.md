@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 9970452b62b31f28f8277580dd1075c306767d8b
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 7fad1b662c587fed6cd7dd6a1792d8598f0e4f85
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/13/2017
 可以将 Azure API 管理部署到虚拟网络 (VNET) 内部，以便它可以访问该网络中的后端服务。 可以将开发人员门户和 API 网关配置为可以从 Internet 访问或只能在虚拟网络内访问。
 
 > [!NOTE]
-> Azure API 管理同时支持经典 VNet 和 Azure Resource Manager VNet。
+> Azure API 管理同时支持经典 VNet 和 Azure 资源管理器 VNet。
 >
 
 ## <a name="prerequisites"></a>先决条件
@@ -44,8 +44,8 @@ ms.lasthandoff: 10/13/2017
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>使用 Azure 门户启用 VNET 连接
 
-1. 在 [Azure 门户](https://portal.azure.com/)中导航到 APIM 实例。
-2. 选择“自定义域和 SSL”。
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 APIM 实例。
+2. 选择“虚拟网络”。
 3. 配置要在虚拟网络内部署的 API 管理实例。
 
     ![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
@@ -116,6 +116,7 @@ ms.lasthandoff: 10/13/2017
 | * / 14000 - 14999 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|**访问 Azure SQL V12** |外部和内部 |
 | * / 5671 |出站 |AMQP |VIRTUAL_NETWORK/INTERNET|事件中心策略日志和监视代理的依赖项 |外部和内部 |
 | * / 445 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|与适用于 GIT 的 Azure 文件共享的依赖关系 |外部和内部 |
+| * / 25028 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|连接到 SMTP 中继以发送电子邮件 |外部和内部 |
 | * / 6381 - 6383 |入站和出站 |TCP |VIRTUAL_NETWORK/VIRTUAL_NETWORK|访问 RoleInstance 之间的 Redis 缓存实例 |外部和内部 |
 | * / * | 入站 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure 基础结构负载均衡器 |外部和内部 |
 

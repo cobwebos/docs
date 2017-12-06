@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: 54b6a6984e66f32642336f4ea5e1e9f4ec9d03f3
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: b54bb67e1188037385d0b373850b6b923eb8d7ac
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>在 Azure 堆栈中提供的自定义虚拟机映像
 
@@ -184,7 +184,7 @@ Remove-AzsVMImage `
 
 2. 运算符以登录到 Azure 堆栈。 在菜单中，选择**更多的服务** > **资源提供程序**。 然后，选择**计算** > **VM 映像** > **添加**。
 
-3. 下**添加 VM 映像**，输入发布者、 产品/服务、 SKU、 和版本的虚拟机映像。 这些名称段指资源管理器模板中的 VM 映像。 请务必选择**osType**正确值。 有关**OD 磁盘 Blob URI**，输入已上载的图像的 Blob URI。 然后，选择**创建**若要开始创建 VM 映像。
+3. 下**添加 VM 映像**，输入发布者、 产品/服务、 SKU、 和版本的虚拟机映像。 这些名称段指资源管理器模板中的 VM 映像。 请务必选择**osType**正确值。 有关**OS 磁盘 Blob URI**，输入已上载的图像的 Blob URI。 然后，选择**创建**若要开始创建 VM 映像。
    
    ![开始创建映像](./media/azure-stack-add-vm-image/image4.png)
 

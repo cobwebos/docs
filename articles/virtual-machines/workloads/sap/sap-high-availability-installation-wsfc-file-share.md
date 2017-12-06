@@ -1,6 +1,6 @@
 ---
-title: "Azure 上针对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享的 SAP NetWeaver HA 安装 | Microsoft Docs"
-description: "针对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享的 SAP NetWeaver HA 安装"
+title: "Windows 故障转移群集上的 SAP NetWeaver 高可用性安装和 Azure 上适用于 SAP ASCS/SCS 实例的文件共享 | Microsoft Docs"
+description: "Windows 故障转移群集上的 SAP NetWeaver 高可用性安装和适用于 SAP ASCS/SCS 实例的文件共享"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,13 +17,13 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ec7888cfb9b0d288b5b25f580c852ee32306684c
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: fc957ece0250d233db9cec4f1fdd8b063c13a136
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="sap-netweaver-ha-installation-on-windows-failover-cluster-and-file-share-for-sap-ascs-instance-on-azure"></a>Azure 上针对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享的 SAP NetWeaver HA 安装
+# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -33,6 +33,8 @@ ms.lasthandoff: 10/16/2017
 [1596496]:https://launchpad.support.sap.com/#/notes/1596496
 
 [sap-installation-guides]:http://service.sap.com/instguides
+
+[sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
@@ -194,24 +196,23 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-本文档描述如何在 Azure 上安装和配置高可用 SAP 系统，使用 **Windows 故障转移群集 (WSFC)**和**横向扩展文件共享**作为一个选项来群集化 SAP (A)SCS 实例。
+本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始安装之前，请确保查看以下文档：
+在开始安装之前，请查看以下文章：
 
-* [体系结构指南 - 基于 Windows 故障转移群集使用文件共享群集化 SAP (A)SCS 实例][sap-high-availability-guide-wsfc-file-share]
+* [体系结构指南：使用文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
 
-* [针对 SAP (A)SCS 实例使用 Windows 故障转移群集和文件共享完成 SAP HA 的 Azure 基础结构准备工作][sap-high-availability-infrastructure-wsfc-file-share]
+* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 Azure 基础结构以实现 SAP 高可用性][sap-high-availability-infrastructure-wsfc-file-share]
 
+需要以下来自 SAP 的可执行文件和 DLL：
+* SAP 软件预配管理器 (SWPM) 安装工具版本 SPS21 或更高版本。
+* 下载包含新的 SAP 群集资源 DLL 的最新 NTCLUST.SAR 档案。 新的 SAP 群集 DLL 支持基于 Windows Server 故障转移群集使用文件共享的 SAP ASCS/SCS 高可用性。
 
-你需要以下来自 SAP 的可执行文件/dll：
-* SAP 软件预配管理器 (SWPM) 安装工具版本 SPS21（或更高版本）。
-* 下载包含新的 SAP 群集资源 DLL 的最新 NTCLUST.SAR 档案。 新的 SAP 群集 dll 支持基于 Windows Server 故障转移群集使用文件共享的 SAP (A)SCS 高可用性。
+  有关新的 SAP 群集资源 DLL 的详细信息，请查看此博客：[新的 SAP 群集资源 DLL 可用！][sap-blog-new-sap-cluster-resource-dll]。
 
-  有关新的 SAP 群集资源 DLL 的详细信息，请查看此博客：[新的 SAP 群集资源 DLL 可用！][sap-blog-new-sap-cluster-resource-dll]
-
-我们不会介绍 DBMS 安装，因为安装因所使用的 DBMS 系统而异。 但是，本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 例如，适用于 SQL Server 的 Always On 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
+我们不会介绍数据库管理系统 (DBMS) 安装，因为安装因使用的 DBMS 而异。 但是，本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 此类功能包括：适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
 
 当不同的 DBMS 服务与 Azure 中这种群集 SAP ASCS/SCS 配置交互时，不存在任何特殊注意事项。
 
@@ -220,34 +221,34 @@ ms.lasthandoff: 10/16/2017
 >
 >
 
-## <a name="install-ascs-instance-on-ascs-cluster"></a>在 (A)SCS 群集上安装 (A)SCS 实例
+## <a name="install-an-ascsscs-instance-on-an-ascsscs-cluster"></a>在 ASCS/SCS 群集上安装 ASCS/SCS 实例
 
 > [!IMPORTANT]
 >
->目前，SAP 安装工具软件预配管理器 (SWPM) 不支持使用文件共享配置的 HA 设置。 因此，需手动安装 SAP 系统，例如，安装和群集化 SAP (A)SCS 实例并配置单独的 SAP GLOBALHOST。  
+> 目前，SAP SWPM 安装工具不支持使用文件共享配置的高可用性设置。 因此，需手动安装 SAP 系统（例如，安装和群集化 SAP ASCS/SCS 实例并配置单独的 SAP 全局主机）。  
 >
->安装（和群集化）DBMS 实例和 SAP 应用程序服务器的其他安装步骤没有变化。
+> 安装（和群集化）DBMS 实例和 SAP 应用程序服务器的其他安装步骤没有变化。
 >
 
-### <a name="install-ascs-instance-on-local-drive"></a>在本地驱动器上安装 (A)SCS 实例
+### <a name="install-an-ascsscs-instance-on-your-local-drive"></a>在本地驱动器上安装 ASCS/SCS 实例
 
-在两个 (A)SCS 群集节点上安装 SAP(A)SCS 实例。 将其安装在本地驱动器中。 在本示例中，我们选择的本地驱动器为 C:\\。 也可以选择任何其他本地驱动器。  
+在 ASCS/SCS 群集的两个节点上安装 SAP ASCS/SCS 实例。 将其安装在本地驱动器中。 在示例中，本地驱动器为 C:\\，但也可选择任何其他本地驱动器。  
 
-若要安装，请在 SAP 安装工具 SWPM 中导航到：
+若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-&lt;产品&gt; -> &lt;DBMS&gt; -> 安装 -> 应用程序服务器 ABAP（或 Java） -> 分布式系统 -> (A)SCS 实例
+**\<产品>** > **\<DBMS>** > “安装” > “应用程序服务器 ABAP”（或 **Java**）>“分布式系统” > “ASCS/SCS 实例”
 
 > [!IMPORTANT]
->目前，SAP 安装工具 SWPM 尚不支持文件共享方案，因此不能使用安装路径：
+> 目前，SAP SWPM 安装工具不支持文件共享方案。 不能使用以下安装路径：
 >
->&lt;产品&gt; -> &lt;DBMS&gt; -> 安装 -> 应用程序服务器 ABAP（或 Java） -> 高可用性系统 -> …
+> **\<产品>** > **\<DBMS>** > “安装” > “应用程序服务器 ABAP”（或 **Java**）>“高可用性系统”> …
 >
 
-### <a name="remove-sapmnt-and-create-saploc-file-share"></a>删除 SAPMNT 并创建 SAPLOC 文件共享
+### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>删除 SAPMNT 并创建 SAPLOC 文件共享
 
-SWMP 在 C:\\usr\\sap 文件夹上创建了 SAPMNT 本地共享。
+SWMP 在 C:\\usr\\sap 文件夹中创建了 SAPMNT 本地共享。
 
-在两个 (A)SCS 群集节点上删除 SAPMNT 文件共享：
+在两个 ASCS/SCS 群集节点上删除 SAPMNT 文件共享。
 
 执行以下 PowerShell 脚本：
 
@@ -255,7 +256,7 @@ SWMP 在 C:\\usr\\sap 文件夹上创建了 SAPMNT 本地共享。
 Remove-SmbShare sapmnt -ScopeName * -Force
  ```
 
-如果 SAPLOC 共享不存在，则在两个 ASCS 群集节点上创建一个。
+如果 SAPLOC 共享不存在，则在两个 ASCS/SCS 群集节点上创建一个。
 
 执行以下 PowerShell 脚本：
 
@@ -272,19 +273,19 @@ $SAPusrSapPath = "$SAPDisk\usr\sap"
 New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators", $SAPSIDGlobalAdminGroupName , $SAPLocalAdminGroupName  
  ```
 
-## <a name="prepare-sap-global-host-on-sofs-cluster"></a>在 SOFS 群集上准备 SAP GLOBAL HOST
+## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>在 SOFS 群集上准备 SAP 全局主机
 
-在此步骤中，在 SOFS 群集上创建以下卷和文件共享：
+在 SOFS 群集上创建以下卷和文件共享：
 
-* SOFS 群集共享卷 (CSV) 上的 SAP GLOBALHOST 文件 C:\ClusterStorage\Volume1\usr\sap\\&lt;SID&gt;\SYS\ 结构
+* SOFS 群集共享卷 (CSV) 上的 SAP GLOBALHOST 文件 C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ 结构
 
-* 创建 SAPMNT 文件共享
+* SAPMNT 文件共享
 
 * 通过对以下项的完全控制，在 SAPMNT 文件共享和文件夹上设置安全性：
-    * &lt;DOMAIN&gt;\SAP_&lt;SID&gt;_GlobalAdmin 用户组
-    * SAP (A)SCS 群集节点计算机对象 &lt;DOMAIN&gt;\ClusterNode1$ 和 &lt;DOMAIN&gt;\ClusterNode2$
+    * \<域>\SAP_\<SID>_GlobalAdmin 用户组
+    * SAP ASCS/SCS 群集节点计算机对象 \<域>\ClusterNode1$ 和 \<域>\ClusterNode2$
 
-若要创建具有镜像复原的 CSV 卷，如 **Azure 中 SOFS 的 SAP 先决条件 - 添加链接**章节中所定义的那样，请在其中一个 SOFS 群集节点上执行以下 PowerShell cmdlet：
+若要创建具有镜像还原功能的 CSV 卷，请在某个 SOFS 群集节点上执行以下 PowerShell cmdlet：
 
 
 ```PowerShell
@@ -298,11 +299,11 @@ $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName = "$DomainName\SAP_" + $SAPSID + "_GlobalAdmin"
 
-# SAP (A)SCS cluster nodes
+# SAP ASCS/SCS cluster nodes
 $ASCSClusterNode1 = "ascs-1"
 $ASCSClusterNode2 = "ascs-2"
 
-# Define SAP (A)SCS cluster node computer objects
+# Define SAP ASCS/SCS cluster node computer objects
 $ASCSClusterObjectNode1 = "$DomainName\$ASCSClusterNode1$"
 $ASCSClusterObjectNode2 = "$DomainName\$ASCSClusterNode2$"
 
@@ -312,83 +313,79 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 
 $UsrSAPFolder = "C:\ClusterStorage\Volume1\usr\sap\"
 
-# Create SAPMNT file share and set share security
+# Create a SAPMNT file share and set share security
 New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $SAPSIDGlobalAdminGroupName, $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $false -CachingMode None -Verbose
 
 # Get SAPMNT file share security settings
 Get-SmbShareAccess sapmnt
 
-# Set files & folder security
+# Set file and folder security
 $Acl = Get-Acl $UsrSAPFolder
 
-# Add file security object of SAP_<sid>_GlobalAdmin group
+# Add a file security object of SAP_<sid>_GlobalAdmin group
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($SAPSIDGlobalAdminGroupName,"FullControl", 'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode1$ computer object
+# Add  a security object of the clusternode1$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode1,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode2$ computer object
+# Add a security object of the clusternode2$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode2,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
 # Set security
 Set-Acl $UsrSAPFolder $Acl -Verbose
  ```
-## <a name="stop-ascs-instances-and-sap-services"></a>停止 (A)SCS 实例和 SAP 服务
+## <a name="stop-ascsscs-instances-and-sap-services"></a>停止 ASCS/SCS 实例和 SAP 服务
 
 执行以下步骤：
-* 停止两个 (A)SCS 群集节点上的 SAP (A)SCS 实例
-* 停止两个群集节点上的 SAP (A)SCS Windows 服务 SAP&lt;SID&gt;_&lt;InstanceNumber&gt;
+1. 停止两个 ASCS/SCS 群集节点上的 SAP ASCS/SCS 实例。
+2. 停止两个群集节点上的 SAP ASCS/SCS Windows 服务 **SAP\<SID>_\<InstanceNumber>**。
 
-## <a name="move-sys-folder-to-sofs-cluster"></a>将 \SYS\...文件夹移动到 SOFS 群集
+## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>将 \SYS\... 文件夹移至 SOFS 群集
 
 执行以下步骤：
-* 将 SYS 文件夹（例如 C:\usr\sap\\&lt;SID&gt;\SYS）从一个 (A)SCS 群集节点移动到 SOFS 群集，例如 C:\ClusterStorage\Volume1\usr\sap\\&lt;SID&gt;\SYS
-* 从这两个 (A)SCS 群集节点删除 C:\usr\sap\\&lt;SID&gt;\SYS 文件夹
+1. 将 SYS 文件夹（例如，C:\usr\sap\\<SID>\SYS）从某个 ASCS/SCS 群集节点复制到 SOFS 群集（例如，复制到 C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS）。
+2. 从两个 ASCS/SCS 群集节点删除 C:\usr\sap\\<SID>\SYS 文件夹。
 
-## <a name="update-cluster-security-setting-on-sap-ascs-cluster"></a>更新 SAP (A)SCS 群集上的群集安全设置
+## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>更新 SAP ASCS/SCS 群集上的群集安全设置
 
-在其中一个 SAP(A)SCS 群集节点上执行以下 PowerShell 脚本：
+在其中一个 SAP ASCS/SCS 群集节点上执行以下 PowerShell 脚本：
 
 ```PowerShell
-# Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to cluster
+# Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to the cluster
 
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName = "$DomainName\SAP_" + $SAPSID + "_GlobalAdmin"
 
-# Set full access for <DOMAIn>\SAP_<SID>_GlobalAdmin group
+# Set full access for the <DOMAIN>\SAP_<SID>_GlobalAdmin group
 Grant-ClusterAccess -User $SAPSIDGlobalAdminGroupName -Full
 
 #Check security settings
 Get-ClusterAccess
 ```
 
-## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascs-instance"></a>为群集 SAP (A)SCS 实例创建虚拟主机名
+## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-如章节[为群集 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述，创建 SAP (A)SCS 群集网络名称，例如 pr1-ascs [10.0.6.7]
+创建 SAP ASCS/SCS 群集网络名称（例如，**pr1-ascs [10.0.6.7]**），如[为群集化 SAP ASCS/SCS 实例创建虚拟主机名][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]中所述。
 
-## <a name="update-default-and-sap-ascs-instance-profile"></a>更新默认和 SAP (A)SCS 实例配置文件
+## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>更新默认设置和 SAP ASCS/SCS 实例配置文件
 
-必须更新默认值和 SAP (A)SCS 实例配置文件 &lt;SID&gt;_(A)SCS<Nr>_<Host>才能使用以下内容：
-
-* 新的 SAP (A)SCS 虚拟主机名
-
-* 新的 SAP 全局主机名
+若要使用新的 SAP ASCS/SCS 虚拟主机名和 SAP 全局主机名，必须更新默认设置和 SAP ASCS/SCS 实例配置文件 \<SID>_ASCS/SCS\<Nr>_<Host>。
 
 
 | 旧值 |  |
 | --- | --- |
-| SAP (A)SCS 主机名 = SAP 全局主机 | ascs-1 |
-| SAP (A)SCS 实例配置文件名称 | PR1_ASCS00_ascs-1 |
+| SAP ASCS/SCS 主机名 = SAP 全局主机 | ascs-1 |
+| SAP ASCS/SCS 实例配置文件名称 | PR1_ASCS00_ascs-1 |
 
 | 新值 |  |
 | --- | --- |
-| SAP (A)SCS 主机名 | pr1-ascs |
+| SAP ASCS/SCS 主机名 | pr1-ascs |
 | SAP 全局主机 | sapglobal |
-| SAP (A)SCS 实例配置文件名称 | PR1\_ASCS00\_pr1-ascs |
+| SAP ASCS/SCS 实例配置文件名称 | PR1\_ASCS00\_pr1-ascs |
 
 ### <a name="update-sap-default-profile"></a>更新 SAP 默认配置文件
 
@@ -399,12 +396,12 @@ Get-ClusterAccess
 | rdisp/mshost | pr1-ascs |
 | enque/serverhost | pr1-ascs |
 
-### <a name="update-sap-ascs-instance-profile"></a>更新 SAP (A)SCS 实例配置文件
+### <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
 
 | 参数名称 | 参数值 |
 | --- | --- |
 | SAPGLOBALHOST | sapglobal |
-| DIR_PROFILE | \\\\sapglobal\sapmnt\PR1\SYS\profile |
+| DIR_PROFILE | \\\sapglobal\sapmnt\PR1\SYS\profile |
 | _PF | $(DIR_PROFILE)\PR1\_ASCS00_ pr1-ascs |
 | Restart_Program_02 = local$(_MS) pf=$(_PF) | Start_Program_02 = local$(_MS) pf=$(_PF) |
 | SAPLOCALHOST | pr1-ascs |
@@ -414,28 +411,28 @@ Get-ClusterAccess
 | service/ha_check_node | **1** |
 
 > [!IMPORTANT]
->可以使用 Update-SAPASCSSCSProfile PowerShell cmdlet 自动更新配置文件
+>可以使用 Update-SAPASCSSCSProfile PowerShell cmdlet 自动更新配置文件。
 >
 >PowerShell cmdlet 支持 SAP ABAP ASCS 和 SAP Java SCS 实例。
 >
 
-将 SAPScripts.ps1 复制到本地驱动器 C:\tmp 并运行以下 PowerShell cmdlet：
+将 [**SAPScripts.psm1**][sap-powershell-scrips] 复制到本地驱动器 C:\tmp 并运行以下 PowerShell cmdlet：
 
 ```PowerShell
-Import-Module C:\tmp\SAPScripts.ps1
+Import-Module C:\tmp\SAPScripts.psm1
 
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
 ```
 
-![图 1：SAPScripts.ps1 输出][sap-ha-guide-figure-8012]
+![图 1：SAPScripts.psm1 输出][sap-ha-guide-figure-8012]
 
-图 1：SAPScripts.ps1 输出
+**图 1**：SAPScripts.psm1 输出
 
-## <a name="update-ltsidgtadm-user-environment-variable"></a>更新 &lt;sid&gt;adm 用户环境变量
+## <a name="update-the-sidadm-user-environment-variable"></a>更新 \<sid>adm 用户环境变量
 
-更新两个 (A)SCS 群集节点上的 &lt;sid&gt;adm 用户环境新 GLOBALHOST UNC 路径。
-以 &lt;sid&gt;adm 用户身份登录并启动 Regedit.exe 工具。
-转到“HKEY_CURRENT_USER” -> “环境”，并将变量更新为新值：
+1. 更新两个 ASCS/SCS 群集节点上的 \<sid>adm 用户环境新 GLOBALHOST UNC 路径。
+2. 作为 \<sid>adm 用户登录，然后启动 Regedit.exe 工具。
+3. 转到“HKEY_CURRENT_USER” > “环境”，然后将变量更新为新值：
 
 | 变量 | 值 |
 | --- | --- |
@@ -445,31 +442,25 @@ Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SY
 | SAPLOCALHOST  | pr1-ascs |
 
 
-## <a name="install-new-saprcdll"></a>安装新的 SAPRC.DLL
+## <a name="install-a-new-saprcdll-file"></a>安装新 saprc.dll 文件
 
-你需要安装支持文件共享方案的新版 SAP 群集资源。
+1. 安装支持文件共享方案的新版 SAP 群集资源。
 
-从 SAP 服务商城下载最新的 NTCLUST.SAR包。
+2. 从 SAP Service Marketplace 下载最新的 NTCLUST.SAR 包。
 
-在其中一个 (A)SCS 群集节点上解压缩 NTCLUS.SAR，并从命令提示符运行以下命令来安装新的 saprc.dll：
+3. 在其中一个 ASCS/SCS 群集节点上解压缩 NTCLUS.SAR，然后从命令提示符运行以下命令来安装新的 saprc.dll 文件：
 
 ```
 .\NTCLUST\insaprct.exe -yes -install
 ```
 
-将在两个 (A)SCS 群集节点上安装新的 saprc.dll。
+在两个 ASCS/SCS 群集节点上安装新的 saprc.dll 文件。
 
 有关详细信息，请参阅 [SAP 说明 1596496 - 如何更新群集资源监视器的 SAP 资源类型 DLL][1596496]。
 
-## <a name="create-sap-sid-cluster-group-network-name-and-ip"></a>创建 SAP <SID> 群集组、网络名称和 IP
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>创建 SAP <SID> 群集组、网络名称和 IP
 
-你必须创建：
-
-* SAP &lt;SID&gt; 群集组
-* <(A)SCSNetworkName>
-* 和对应的 IP 地址
-
-运行以下 PowerShell cmdlet：
+若要创建 SAP \<SID> 群集组、ASCS/SCS 网络名称和相应的 IP 地址，请运行以下 PowerShell cmdlet：
 
 ```PowerShell
 # Create SAP Cluster Group
@@ -480,23 +471,23 @@ $SAPASCSNetworkName = "pr1-ascs"
 $SAPASCSIPAddress = "10.0.6.7"
 $SAPASCSSubnetMask = "255.255.255.0"
 
-# Create SAP ASCS instance Virtual IP cluster resource
+# Create an SAP ASCS instance virtual IP cluster resource
 Add-ClusterGroup -Name $SAPClusterGroupName -Verbose
 
-#Create SAP ASCS Virtual IP Address
+#Create an SAP ASCS virtual IP address
 $SAPIPClusterResource = Add-ClusterResource -Name $SAPIPClusterResourceName -ResourceType "IP Address" -Group $SAPClusterGroupName -Verbose
 
-# Set static IP Address
+# Set a static IP address
 $param1 = New-Object Microsoft.FailoverClusters.PowerShell.ClusterParameter $SAPIPClusterResource,Address,$SAPASCSIPAddress
 $param2 = New-Object Microsoft.FailoverClusters.PowerShell.ClusterParameter $SAPIPClusterResource,SubnetMask,$SAPASCSSubnetMask
 $params = $param1,$param2
 $params | Set-ClusterParameter
 
-# Create corresponding network name
+# Create a corresponding network name
 $SAPNetworkNameClusterResourceName = $SAPASCSNetworkName
 Add-ClusterResource -Name $SAPNetworkNameClusterResourceName -ResourceType "Network Name" -Group $SAPClusterGroupName -Verbose
 
-# Set Network DNS Name
+# Set a network DNS name
 $SAPNetworkNameClusterResource = Get-ClusterResource $SAPNetworkNameClusterResourceName
 $SAPNetworkNameClusterResource | Set-ClusterParameter -Name Name -Value $SAPASCSNetworkName
 
@@ -506,17 +497,17 @@ $SAPNetworkNameClusterResource | Get-ClusterParameter
 #Set resource dependencies
 Set-ClusterResourceDependency -Resource $SAPNetworkNameClusterResourceName -Dependency "[$SAPIPClusterResourceName]" -Verbose
 
-#Start SAP <SID> Cluster Group
+#Start an SAP <SID> cluster group
 Start-ClusterGroup -Name $SAPClusterGroupName -Verbose
 ```
 
-## <a name="register-sap-start-service-on-both-nodes"></a>在两个节点上注册 SAP START 服务
+## <a name="register-the-sap-start-service-on-both-nodes"></a>在两个节点上注册 SAP 启动服务
 
-你需要重新注册 SAP (A)SCS sapstart 服务以指向新的配置文件和配置文件路径。
+重新注册 SAP ASCS/SCS 启动服务，使之指向新的配置文件和配置文件路径。
 
-必须在两个 (A)SCS 群集节点上执行此操作。
+必须在两个 ASCS/SCS 群集节点上执行此重新注册操作。
 
-从提升的命令提示符运行以下命令：
+在提升的命令提示符下运行以下命令：
 
 ```
 C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_pr1-ascs -s PR1 -n 00 -U SAPCLUSTER\SAPServicePR1 -P mypasswd12 -e SAPCLUSTER\pr1adm
@@ -524,20 +515,20 @@ C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profi
 
 ![图 2：重新安装 SAP 服务][sap-ha-guide-figure-8013]
 
-图 2：重新安装 SAP 服务
+**图 2**：重新安装 SAP 服务
 
-确保参数正确，并选择“手动”作为启动类型。
+确保参数正确，然后选择“手动”作为“启动类型”。
 
-## <a name="stop-ascs-service"></a>停止 (A)SCS 服务
+## <a name="stop-the-ascsscs-service"></a>停止 ASCS/SCS 服务
 
-停止两个 (A)SCS 群集节点上的 SAP (A)SCS 服务 SAP&lt;SID&gt;_ &lt;InstanceNumber&gt;。
+停止两个 ASCS/SCS 群集节点上的 SAP ASCS/SCS 服务 SAP\<SID>_\<InstanceNumber>。
 
-## <a name="create-new-sap-service-and-sap-instance-resources"></a>创建新的 SAP 服务和 SAP 实例资源
+## <a name="create-a-new-sap-service-and-sap-instance-resources"></a>创建新的 SAP 服务和 SAP 实例资源
 
-现在，你必须完成 SAP SAP&lt;SID&gt; 群集组的资源创建，例如，你需要创建以下资源：
+若要完成 SAP SAP\<SID> 群集组的资源创建，请创建以下资源：
 
-* SAP &lt;SID&gt; &lt;InstanceNumber&gt; 服务 和
-* SAP &lt;SID&gt; &lt;InstanceNumber&gt; 实例
+* SAP \<SID> \<InstanceNumber> 服务
+* SAP \<SID> \<InstanceNumber> 实例
 
 运行以下 Azure Powershell cmdlet：
 
@@ -559,10 +550,10 @@ Set-ClusterResourceDependency -Resource $SAPASCSServiceClusterResource  -Depende
 
 $SAPInstanceClusterResourceName = "SAP $SAPSID $SAPInstanceNumber Instance"
 
-# Create SAP Instance cluster resource
+# Create SAP instance cluster resource
 $SAPASCSServiceClusterResource = Add-ClusterResource -Name $SAPInstanceClusterResourceName -Group $SAPClusterGroupName -ResourceType "SAP Resource" -SeparateMonitor -Verbose
 
-#Set SAP Instance cluster resource parameters
+#Set SAP instance cluster resource parameters
 $SAPASCSServiceClusterResource  | Set-ClusterParameter  -Name SAPSystemName -Value $SAPSID -Verbose
 $SAPASCSServiceClusterResource  | Set-ClusterParameter  -Name SAPSystem -Value $SAPInstanceNumber -Verbose
 
@@ -572,28 +563,27 @@ Set-ClusterResourceDependency -Resource $SAPASCSServiceClusterResource  -Depende
 
 ## <a name="add-a-probe-port"></a>添加探测端口
 
-此步骤使用 PowerShell 配置 SAP 群集资源 SAP-SID-IP 探测端口。 应在其中一个 SAP ASCS/SCS 群集节点上执行此配置，如[此处][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]所述。
+使用 PowerShell 配置 SAP 群集资源：SAP-SID-IP 探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此配置，如[此文][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]所述。
 
-## <a name="install-ers-instance-on-both-cluster-nodes"></a>在两个群集节点上安装 ERS 实例
+## <a name="install-an-ers-instance-on-both-cluster-nodes"></a>在两个群集节点上安装 ERS 实例
 
-在下一步中，必须在两个 (A)SCS 群集节点上安装 ERS（排入队列复制服务器）群集。
-可以在 SWPM 菜单中找到安装选项：
+在 ASCS/SCS 群集的两个节点上安装排入队列复制服务器 (ERS) 实例。 在 SWPM 菜单上，按以下安装路径操作：
 
-&lt;产品&gt; -> &lt;DBMS&gt; -> 安装-> 其他 SAP 系统实例 -> 排入队列复制服务器实例
+**\<产品>** > **\<DBMS>** > “安装” > “其他 SAP 系统实例” > “排入队列复制服务器实例”
 
-## <a name="install-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
+## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 
 通过安装以下项完成 SAP 系统安装：
-* DBMS 实例
-* 主 SAP 应用程序服务器
-* 其他 SAP 应用程序服务器
+* DBMS 实例。
+* 主 SAP 应用程序服务器。
+* 其他 SAP 应用程序服务器。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在没有共享磁盘的故障转移群集上安装一个 (A)SCS 实例 - HA 文件共享的官方 SAP 准则][sap-official-ha-file-share-document]：
+* [不使用共享磁盘在故障转移群集上安装 ASCS/SCS 实例 - 高可用性文件共享的官方 SAP 指南][sap-official-ha-file-share-document]
 
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 
 * [应用程序数据的横向扩展文件服务器概述][sofs-overview]
 
-* [Windows Server 2016 的存储中的新增功能][new-in-win-2016-storage]
+* [Windows Server 2016 中存储方面的新增功能][new-in-win-2016-storage]

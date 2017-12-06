@@ -12,6 +12,6 @@
 
 3. 关闭菜单，向下滚动到底部才能看到“函数”图标。 单击该图标可查看所有 Function App 的列表。 单击 Function App 以在此应用中使用函数。 
  
-    ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
+    ![收藏夹中的函数应用](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  
      

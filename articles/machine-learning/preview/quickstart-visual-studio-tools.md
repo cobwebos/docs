@@ -1,6 +1,6 @@
 ---
-title: "有关用于 Azure 上的机器学习的 Visual Studio Code 工具的快速入门文章 | Microsoft Docs"
-description: "本文介绍了如何开始使用用于机器学习的 Visual Studio Code 工具，包括创建试验、训练模型以及操作 web 服务。"
+title: "有关用于 Azure 上的机器学习的 Visual Studio Tools 的快速入门文章 | Microsoft Docs"
+description: "本文介绍了如何开始使用用于机器学习的 Visual Studio Tools，包括创建试验、训练模型以及操作 Web 服务。"
 services: machine-learning
 author: ahgyger
 ms.author: ahgyger
@@ -10,72 +10,71 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
-ms.date: 09/12/2017
-ms.openlocfilehash: 400fc384519f2ff5c9bb7d83dab6499f5008a833
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 11/15/2017
+ms.openlocfilehash: 582ec5babf2bac34f20d4e9c7517f78ee2002e0b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="visual-studio-code-tools-for-ai"></a>用于 AI 的 Visual Studio Code 工具
-用于 AI 的 Visual Studio Code 工具是一个开发扩展，用于生成、测试和部署深度学习 / AI 解决方案。 它具有与 Azure 机器学习的无缝集成，尤其是运行历史记录视图，其中详细列出了以前的训练和自定义指标的性能。 它还提供了一个示例资源管理器视图，允许通过 [Microsoft Cognitive Toolkit（以前称为 CNTK）](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org) 和其他深度学习框架浏览和启动新项目。 最后，它针对计算目标提供了一个资源管理器，可以使用该资源管理器提交作业以在远程环境（例如 Azure 虚拟机或具有 GPU 的 Linux 服务器）中训练模型。 
+# <a name="visual-studio-tools-for-ai"></a>用于 AI 的 Visual Studio Tools
+用于 AI 的 Visual Studio Tools 是一个开发扩展，用于生成、测试和部署深度学习/AI 解决方案。 它具有与 Azure 机器学习的无缝集成，尤其是运行历史记录视图，其中详细列出了以前的训练和自定义指标的性能。 它还提供了一个示例资源管理器视图，允许通过 [Microsoft Cognitive Toolkit（以前称为 CNTK）](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org) 和其他深度学习框架浏览和启动新项目。 最后，它针对计算目标提供了一个资源管理器，可以使用该资源管理器提交作业以在远程环境（例如 Azure 虚拟机或具有 GPU 的 Linux 服务器）中训练模型。 它还可用于快速访问 [Azure Batch AI（预览版）](https://docs.microsoft.com/en-us/azure/batch-ai/)。
  
 ## <a name="getting-started"></a>入门 
-若要开始，首先需要下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。 打开 Visual Studio Code 后，执行以下操作：
-1. 单击活动栏中的扩展图标。 
-2. 搜索“用于 AI 的 Visual Studio Code 工具”。 
-3. 单击“安装”按钮。 
-4. 在安装后，单击“重载”按钮。 
+若要开始，首先需下载并安装 [Visual Studio](https://www.visualstudio.com/downloads/)。 打开 Visual Studio 后，执行以下步骤：
+1. 单击 Visual Studio 中的菜单栏，选择“扩展和更新...”
+2. 单击“联机”选项卡，选择“搜索 Visual Studio Marketplace”。
+3. 搜索“用于 AI 的 Visual Studio”。 
+3. 单击“**下载**”按钮。 
+4. 安装后重启 Visual Studio。 
 
-在重载 Visual Studio Code 后，该扩展被激活。 [详细了解如何安装扩展](https://code.visualstudio.com/docs/editor/extension-gallery)。
+在重载 Visual Studio 后，该扩展被激活。 [详细了解如何查找扩展](hhttps://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions)。
+
+> [!NOTE]
+> 用于 AI 的 Visual Studio Tools 需要 Visual Studio 2015 或 2017 的专业版或企业版。 它不支持 Apple OSX 版本。 
+
 
 ## <a name="exploring-project-samples"></a>浏览项目示例
-用于 AI 的 Visual Studio Code 工具提供了一个示例浏览器。 通过示例浏览器，可以轻松发现示例，并且仅需单击几下便可试用这些示例。 若要打开浏览器，请如下所述执行操作：   
-1. 打开命令面板（视图 > **命令面板**或者 **Ctrl+Shift+P**）。
-2. 输入“AI Sample”。 
-3. 此时会出现“AI: Open Azure ML Sample Explorer”建议，选择该建议并按 Enter。 
+用于 AI 的 Visual Studio Tools 提供了一个示例浏览器。 通过示例浏览器，可以轻松发现示例，并且仅需单击几下便可试用这些示例。 若要打开该浏览器，请按以下步骤执行操作：   
+1. 在菜单栏中，单击“AI Tools”。
+2. 单击“Azure 机器学习库”。
 
-另外，还可以单击示例浏览器按钮。
+此时会打开包含所有 Azure ML 示例的选项卡。
 
 ## <a name="creating-a-new-project-from-the-sample-explorer"></a>从示例浏览器中创建一个新项目 
-可以浏览不同示例并获取有关它们的详细信息。 一直浏览，直至找到“Classifying Iris”示例。 若要基于此示例创建新项目，请执行以下操作：
-1. 单击项目示例上的“安装”按钮，注意所提示的命令，这些命令将引导你完成创建新项目的步骤。 
-2. 为项目选择一个名称，例如“Iris”。
-3. 选择一个文件夹路径以创建项目并按 Enter。 
-4. 选择一个现有的工作区并按 Enter。
+可以浏览不同示例并获取有关它们的详细信息。 一直浏览，直至找到“Classifying Iris”示例。 若要基于此示例创建新项目，请按以下步骤操作：
+1. 单击项目示例上的“安装”按钮，此时会打开一个新对话框。 
+2. 选择资源组、帐户和工作区。
+3. 项目类型可以保留为“常规”。
+4. 输入项目路径和项目名称，然后按 Enter。 
+5. 此时会打开一个提示保存解决方案的对话框，请单击“保存”。 
 
-随即会创建该项目。
+完成后，会在 Visual Studio 的新实例中打开新项目。 
 
 > [!TIP]
 > 需要登录才能访问 Azure 资源。 从嵌入的终端中，输入“az login”，并按照说明进行操作。 
 
 ## <a name="submitting-experiment-with-the-new-project"></a>使用新项目提交试验
-新项目在 Visual Studio Code 中打开，我们将向不同的计算目标（本地和具有 docker 的 VM）提交作业。
-用于 AI 的 Visual Studio Code 工具提供了多种用来提交试验的方法。 
-1. 上下文菜单（右键单击）- **AI: 提交作业**。
-2. 从命令面板中：“AI: Submit Job”。
-3. 另外，还可以直接使用 Azure CLI、机器学习命令以及使用嵌入的终端来运行命令。
+新项目在 Visual Studio 中打开后，向计算目标（本地目标或装有 Docker 的 VM）提交作业。
+若要提交作业，请执行以下操作： 
+1. 在解决方案资源管理器中右键单击要提交的文件，然后选择“设为启动文件”。
+2. 选择项目名称，然后右键单击并选择“提交作业...”。
+3. 此时会打开新对话框，用于选择要执行脚本的群集（或计算目标）。
+4. 单击“提交”
 
-打开 iris_sklearn.py，单击右键并选择“AI: 提交作业”。
-1. 选择你的平台：“Azure 机器学习”。
-2. 选择你的运行配置：“Docker-Python”。
-
-> [!NOTE]
-> 如果是首次提交作业，则会收到消息“未找到机器学习配置，正在创建...”。 随即会打开一个 JSON 文件，将其保存 (**Ctrl+S**)。
-
-在提交作业后，嵌入的终端会显示运行进度。 
+在提交作业后，嵌入的终端会显示运行进度。
 
 ## <a name="view-list-of-jobs"></a>作业的视图列表
-在提交作业后，可以从运行历史记录中列出作业。
-1. 打开命令面板（视图 > **命令面板**或者 **Ctrl+Shift+P**）。
-2. 输入“AI List”。
-3. 此时会出现“AI: List Jobs”建议，选择该建议并按 Enter。
+提交作业后，即可在运行历史记录中列出作业。
+1. 在“服务器资源管理器”中，单击“AI Tools”。
+2. 然后选择“Azure 机器学习”
+3. 单击“作业”菜单。
 
-作业列表视图将打开，其中会显示所有运行和一些相关信息。
+此时作业资源管理器会列出此项目的所有已提交试验。 
 
 ## <a name="view-job-details"></a>查看作业详细信息
-在作业列表视图保持打开的情况下，单击列表中的第一个运行。
-若要深入研究某个作业的结果，请单击顶部的**作业 ID** 来查看详细信息。 
+在作业资源管理器视图打开的情况下，单击列表中的第一个运行。
+此时会加载“作业摘要”面板，以及“日志和输出”面板。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

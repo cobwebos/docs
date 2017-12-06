@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 042035c89d466083659176ac49fc1b470244ef61
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 8881fc9193aa905b5d7083644a3ce8ac4411d693
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
@@ -45,6 +45,22 @@ ms.lasthandoff: 11/15/2017
 可以在多重身份验证服务器中配置可选字段。
 
 验证结果（成功或拒绝）和任何拒绝原因（如果有）与身份验证数据一起存储。 可在身份验证和使用情况报告中使用这些数据。
+
+**问：哪些短信简短代码用于向用户发送短信？**
+
+在美国，Microsoft 使用以下短信简短代码：
+
+   * 97671
+   * 69829
+   * 51789
+   * 99399
+
+在加拿大，Microsoft 使用以下短信简短代码：
+
+   * 759731 
+   * 673801
+
+Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 Microsoft 不支持除美国和加拿大以外的国家/地区的简短代码
 
 ## <a name="billing"></a>计费
 可以参考多[重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)或者有关[如何获取 Azure 多重身份验证](multi-factor-authentication-versions-plans.md)的文档解答大多数计费问题。
@@ -95,7 +111,7 @@ ms.lasthandoff: 11/15/2017
 
 **问：组织是否必须使用并同步标识才能使用 Azure 多重身份验证？**
 
-如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，只能在本地部署 Azure 多重身份验证服务器或 Azure 多重身份验证 SDK。
+如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，只能在本地部署 Azure 多重身份验证服务器。
 
 许可模式需要 Azure Active Directory，因为在购买许可证并将其分配给目录中的用户时，许可证将添加到 Azure AD 租户。
 

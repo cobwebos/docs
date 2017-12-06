@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf5f12e4a20d9692e311550fc7a02f14f0b4aaad
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 3ae7df7939431e3bd13c070d65876145706e06b5
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -309,7 +309,9 @@ ms.lasthandoff: 11/15/2017
 
 近似值的准确性很大程度上取决于配置的采样百分比。 此外，对于处理通常来自大量用户的类似请求的较大量的应用程序，准确性也会提升。 相反，对于不处理大量负载的应用程序，不需要采样，因为这些应用程序通常可以发送其所有遥测的同时保持在配额以内，而不会因限制而造成数据丢失。 
 
-请注意，Application Insights 不会采样指标和会话遥测数据类型，因为这些类型的精度降低可能会引起较高的不满意度。 
+> [!WARNING]
+> Application Insights 不会对指标和会话遥测类型采样。 对于这些遥测类型，可能非常有必要降低精度。
+> 
 
 ### <a name="adaptive-sampling"></a>自适应采样
 自适应采样添加用于监视当前 SDK 的传输速率的组件，并调整采样百分比，以便尝试保持在目标最大速率以内。 调整会定期重新计算，计算依据是传出的传输速率的移动平均线。

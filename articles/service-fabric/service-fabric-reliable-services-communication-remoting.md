@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>通过 Reliable Services 进行服务远程处理
 对于不依赖于特定的通信协议或堆栈的服务，如 WebAPI、Windows Communication Foundation (WCF) 或其他服务，Reliable Services 框架提供一种远程处理机制，以便快速而轻松地为这些服务设置远程过程调用。
@@ -82,12 +82,12 @@ string message = await helloWorldClient.HelloWorldAsync();
 此远程处理框架将服务引发的异常传播到客户端。 因此，在客户端使用 `ServiceProxy` 的异常处理逻辑可直接处理服务引发的异常。
 
 ## <a name="service-proxy-lifetime"></a>服务代理生存期
-由于 ServiceProxy 创建是轻量型操作，因此用户可根据需求随意创建，数目不限。 如有需要，用户可重复使用服务代理。 如果远程 API 引发异常，用户仍可重复使用同一代理。 每个 ServiceProxy 都包含用于通过线路发送消息的通信客户端。 在调用 API 时，我们通过内部检查来查看使用的通信客户端是否有效。 基于该结果，我们将重新创建通信客户端。 因此在发生异常的情况下，用户无需重新创建 serviceproxy。
+由于 ServiceProxy 创建是轻量型操作，因此用户可根据需求随意创建，数目不限。 如有需要，用户可重复使用服务代理实例。 如果远程过程调用引发了异常，用户仍可以重复使用相同的代理实例。 每个 ServiceProxy 都包含用于通过线路发送消息的通信客户端。 进行远程调用时，我们会在内部检查通信客户端是否有效。 基于该结果，我们将重新创建通信客户端（如果需要）。 因此在发生异常的情况下，用户无需重新创建 serviceproxy，但以透明方式这样做。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory 生存期
-[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理的工厂。 如果使用 API ServiceProxy.Create 来创建代理，那么框架会创建单一实例 ServiceProxyFactory。
+[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 api `ServiceProxy.Create` 创建代理，则框架将创建 ServiceProxy 的单一实例。
 在需要替代 [IServiceRemotingClientFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) 属性时，手动创建一个 ServiceProxyFactory 是有用的。
-Factory 是一项高成本操作。 ServiceProxyFactory 维护通信客户端的缓存。
+工厂创建是一项代价高昂的操作。 ServiceProxyFactory 维护通信客户端的内部缓存。
 最佳做法是尽可能久地缓存 ServiceProxyFactory。
 
 ## <a name="remoting-exception-handling"></a>远程异常处理

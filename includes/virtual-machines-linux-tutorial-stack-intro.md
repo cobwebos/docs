@@ -12,7 +12,7 @@ az group create --name myResourceGroup --location eastus
 
 使用 [az vm create](/cli/azure/vm#create) 命令创建 VM。 
 
-下面的示例创建一个名为 *myVM* 的 VM，并且在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
+下面的示例创建一个名为 *myVM* 的 VM，并且在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 该命令还会将 *azureuser* 设置为管理员用户名。 稍后要使用此名称连接到 VM。 
 
 ```azurecli-interactive 
 az vm create \
@@ -23,7 +23,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-创建 VM 后，Azure CLI 会显示类似于以下示例的信息。 记下 `publicIpAddress`。 此地址用于访问 VM。
+创建 VM 后，Azure CLI 会显示类似于以下示例的信息。 记下 `publicIpAddress`。 在后续步骤中，将使用此地址访问 VM。
 
 ```azurecli-interactive 
 {
@@ -50,14 +50,14 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ## <a name="ssh-into-your-vm"></a>通过 SSH 连接到 VM
 
 
-如果还不知道 VM 的公共 IP 地址，请运行 [az network public-ip list](/cli/azure/network/public-ip#list) 命令：
+如果还不知道 VM 的公共 IP 地址，请运行 [az network public-ip list](/cli/azure/network/public-ip#list) 命令。 在多个后续步骤中都需要用到此 IP 地址。
 
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-使用以下命令创建与虚拟机的 SSH 会话。 使用虚拟机的正确的公共 IP 地址进行替换。 在此示例中，IP 地址为 *40.68.254.142*。
+使用以下命令创建与虚拟机的 SSH 会话。 使用虚拟机的正确的公共 IP 地址进行替换。 在此示例中，IP 地址为 *40.68.254.142*。 *azureuser* 是创建 VM 时设置的管理员用户名。
 
 ```bash
 ssh azureuser@40.68.254.142

@@ -1,56 +1,76 @@
 ---
-title: "Azure Functions SendGrid 绑定 | Microsoft Docs"
-description: "Azure Functions SendGrid 绑定参考"
+title: "Azure Functions SendGrid 绑定"
+description: "Azure Functions SendGrid 绑定参考。"
 services: functions
 documentationcenter: na
-author: rachelappel
+author: tdykstra
 manager: cfowler
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/26/2017
-ms.author: rachelap
-ms.openlocfilehash: 4cdafbe05e29d8b483c6b0e1daf41a36583d7b5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/29/2017
+ms.author: tdykstra
+ms.openlocfilehash: f24c2aecf44dd44fec05dc9a4d156ff408b0c953
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
-本文介绍如何在 Azure Functions 中配置和使用 SendGrid 绑定。 通过 SendGrid，可以使用 Azure Functions 以编程方式发送自定义电子邮件。
+本文介绍如何使用 Azure Functions 中的 [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) 绑定发送电子邮件。 Azure Functions 支持 SendGrid 的输出绑定。
 
-此文提供适用于 Azure Functions 开发人员的参考信息。 Azure Functions 的新手请从以下资源入手：
+[!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-[创建第一个 Azure 函数](functions-create-first-azure-function.md)。 
-[C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md) 或 [Node](functions-reference-node.md) 开发人员参考。
+## <a name="example"></a>示例
 
-## <a name="functionjson-for-sendgrid-bindings"></a>适用于 SendGrid 绑定的 function.json
+参阅语言特定的示例：
 
-Azure Functions 为 SendGrid 提供输出绑定。 SendGrid 输出绑定允许以编程方式创建和发送电子邮件。 
+* [预编译 C#](#c-example)
+* [C# 脚本](#c-script-example)
+* [JavaScript](#javascript-example)
 
-SendGrid 绑定支持以下属性：
+### <a name="c-example"></a>C# 示例
 
-|属性  |说明  |
-|---------|---------|
-|**name**| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
-|**类型**| 必需 - 必须设置为 `sendGrid`。|
-|**direction**| 必需 - 必须设置为 `out`。|
-|**apiKey**| 必需 - 必须设置为存储在 Function App 应用设置中的 API 密钥名称。 |
-|**to**| 收件人的电子邮件地址。 |
-|**from**| 发件人的电子邮件地址。 |
-|**subject**| 电子邮件主题。 |
-|**text**| 电子邮件内容。 |
+以下示例演示一个使用服务总线队列触发器和 SendGrid 输出绑定的[预编译的 C# 函数](functions-dotnet-class-library.md)。
 
-**function.json** 示例：
+```cs
+[FunctionName("SendEmail")]
+public static void Run(
+    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
+{
+    message = new SendGridMessage();
+    message.AddTo(email.To);
+    message.AddContent("text/html", email.Body);
+    message.SetFrom(new EmailAddress(email.From));
+    message.SetSubject(email.Subject);
+}
+
+public class OutgoingEmail
+{
+    public string To { get; set; }
+    public string From { get; set; }
+    public string Subject { get; set; }
+    public string Body { get; set; }
+}
+```
+
+如果在应用设置中指定了名为“AzureWebJobsSendGridApiKey”的 API 密钥，则可以不设置特性的 `ApiKey` 属性。
+
+### <a name="c-script-example"></a>C# 脚本示例
+
+以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
+
+下面是 *function.json* 文件中的绑定数据：
 
 ```json 
 {
     "bindings": [
         {
-            "name": "$return",
+            "name": "message",
             "type": "sendGrid",
             "direction": "out",
             "apiKey" : "MySendGridKey",
@@ -62,19 +82,16 @@ SendGrid 绑定支持以下属性：
 }
 ```
 
-> [!NOTE]
-> Azure Functions 会将连接信息和 API 密钥存储为应用设置，这样它们就不会在源代码管理储存库中进行检查。 此操作可保护敏感信息。
->
->
+[配置](#configuration)部分解释了这些属性。
 
-## <a name="c-example-of-the-sendgrid-output-binding"></a>SendGrid 输出绑定的 C# 示例
+C# 脚本代码如下所示：
 
 ```csharp
 #r "SendGrid"
 using System;
 using SendGrid.Helpers.Mail;
 
-public static Mail Run(TraceWriter log, string input, out Mail message)
+public static void Run(TraceWriter log, string input, out Mail message)
 {
      message = new Mail
     {        
@@ -94,7 +111,31 @@ public static Mail Run(TraceWriter log, string input, out Mail message)
 }
 ```
 
-## <a name="node-example-of-the-sendgrid-output-binding"></a>SendGrid 输出绑定的 Node 示例
+### <a name="javascript-example"></a>JavaScript 示例
+
+以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
+
+下面是 *function.json* 文件中的绑定数据：
+
+```json 
+{
+    "bindings": [
+        {
+            "name": "$return",
+            "type": "sendGrid",
+            "direction": "out",
+            "apiKey" : "MySendGridKey",
+            "to": "{ToEmail}",
+            "from": "{FromEmail}",
+            "subject": "SendGrid output bindings"
+        }
+    ]
+}
+```
+
+[配置](#configuration)部分解释了这些属性。
+
+JavaScript 代码如下所示：
 
 ```javascript
 module.exports = function (context, input) {    
@@ -110,13 +151,44 @@ module.exports = function (context, input) {
 
     context.done(null, message);
 };
-
 ```
 
+## <a name="attributes"></a>属性
+
+对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) 中定义的 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
+
+有关可以配置的特性属性的信息，请参阅[配置](#configuration)。 下面是某个方法签名中的 `SendGrid` 特性示例：
+
+```csharp
+[FunctionName("SendEmail")]
+public static void Run(
+    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [SendGrid(ApiKey = "CustomSendGridKeyAppSettingName")] out SendGridMessage message)
+{
+    ...
+}
+```
+
+有关完整示例，请参阅[预编译 C# 示例](#c-example)。
+
+## <a name="configuration"></a>配置
+
+下表解释了在 *function.json* 文件和 `SendGrid` 特性中设置的绑定配置属性。
+
+|function.json 属性 | Attribute 属性 |说明|
+|---------|---------|----------------------|
+|**类型**|| 必需 - 必须设置为 `sendGrid`。|
+|**direction**|| 必需 - 必须设置为 `out`。|
+|**name**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
+|**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
+|**to**|**To**| 收件人的电子邮件地址。 |
+|**from**|**From**| 发件人的电子邮件地址。 |
+|**subject**|**主题**| 电子邮件主题。 |
+|**text**|**Text**| 电子邮件内容。 |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
 ## <a name="next-steps"></a>后续步骤
-若要了解 Azure Functions 的其他绑定和触发器，请参阅 
-- [Azure Functions 触发器和绑定开发人员参考](functions-triggers-bindings.md)
 
-- [Azure Functions 最佳做法](functions-best-practices.md)，列出了创建 Azure 函数时要使用的最佳做法。
-
-- [Azure Functions 开发人员参考](functions-reference.md)，这是可供程序员参考的有关为函数编写代码以及定义触发器和绑定的参考资料。
+> [!div class="nextstepaction"]
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)

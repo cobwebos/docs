@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: af27d01108cbfb3bd71023ffbce85f348abb0cfe
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 359887a8527d5432e705d9739e30f0eb2363e34f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 的服务主体
 
@@ -43,7 +43,7 @@ AKS 群集需要 [Azure Active Directory 服务主体](../active-directory/devel
 在以下示例中，已经创建了 AKS 群集，但由于未指定现有的服务主体，因此为群集创建了一个服务主体。 若要完成此操作，帐户必须具有创建服务主体所需的相应权限。
 
 ```azurecli
-az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys
+az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 ## <a name="use-an-existing-sp"></a>使用现有的 SP
@@ -52,8 +52,6 @@ az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 使用现有的服务主体时，该主体必须符合以下要求：
 
-- 范围：用于部署群集的订阅
-- 角色：参与者
 - 客户端机密：必须是密码
 
 ## <a name="pre-create-a-new-sp"></a>预先创建新的 SP
@@ -61,8 +59,7 @@ az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 若要通过 Azure CLI 来创建服务主体，请使用 [az ad sp create-for-rbac]() 命令。
 
 ```azurecli
-id=$(az account show --query id --output tsv)
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$id"
+az ad sp create-for-rbac --skip-assignment
 ```
 
 输出如下所示。 记下 `appId` 和 `password`。 创建 AKS 群集时，将使用这些值。
@@ -82,7 +79,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$id"
 使用预先创建的服务主体时，请提供 `appId` 和 `password` 作为 `az aks create` 命令的参数值。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> ----client-secret <password>
+az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> --client-secret <password>
 ```
 
 如果是从 Azure 门户部署 AKS 群集，请在 AKS 群集配置窗体中输入这些值。
@@ -99,6 +96,7 @@ az aks create --resource-group myResourceGroup --name myK8SCluster --service-pri
 * 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 /etc/kubernetes/azure.json 文件中。
 * 使用 `az aks create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 ~/.azure/acsServicePrincipal.json 文件中。
 * 使用 `az aks create` 命令自动生成服务主体时，服务主体也可以使用在同一订阅中创建的 [Azure 容器注册表](../container-registry/container-registry-intro.md)进行身份验证。
+* 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 可以使用 `az ad sp delete --id $clientID` 将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

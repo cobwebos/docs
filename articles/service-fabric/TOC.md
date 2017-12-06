@@ -6,7 +6,9 @@
 ## [创建 .NET 应用程序](service-fabric-quickstart-dotnet.md)
 ## [部署 Linux 容器应用程序](service-fabric-quickstart-containers-linux.md)
 ## [部署 Windows 容器应用程序](service-fabric-quickstart-containers.md)
-## [部署 Java 应用程序](service-fabric-quickstart-java.md)
+## Java 快速入门
+### [部署 Spring Boot 应用程序](service-fabric-quickstart-java-spring-boot.md)
+### [部署 Reliable Services 应用程序](service-fabric-quickstart-java-reliable-services.md)
 
 # 教程
 ## 部署 .NET 应用
@@ -29,7 +31,9 @@
 #### [1a- 创建 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 #### [1b- 创建 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 ### [2- 缩放群集](service-fabric-tutorial-scale-cluster.md)
-### [3- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+### [3- 升级群集运行时](service-fabric-tutorial-upgrade-cluster.md)
+### [4- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+
 
 
 # 示例

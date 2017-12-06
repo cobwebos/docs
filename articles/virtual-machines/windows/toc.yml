@@ -224,6 +224,8 @@
       items:
         - name: Chef
           href: chef-automation.md
+        - name: 从 Visual Studio 发布 Web 应用
+          href: publish-web-app-from-visual-studio.md
     - name: 运行应用程序
       items:
         - name: SQL Server

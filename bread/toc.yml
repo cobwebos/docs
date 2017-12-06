@@ -30,6 +30,13 @@
     - name: API 管理
       tocHref: /azure/api-management/
       topicHref: /azure/api-management/
+      items:
+        - name: 策略
+          tocHref: /azure/api-management/policies/
+          topicHref: /azure/api-management/policy-samples/
+        - name: Azure PowerShell
+          tocHref: /azure/api-management/scripts/
+          topicHref: /azure/api-management/powershell-samples/
     - name: 应用服务
       tocHref: /azure/app-service/
       topicHref: /azure/app-service/

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/03/2017
 ms.author: andredm
-ms.openlocfilehash: 56d8ad4fecf14dfa69ade43438672c31a4954209
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 6abbad8a086571702fd2e9d4d5d172189bb3c339
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure 堆栈开发工具包发行说明
 
@@ -56,11 +56,11 @@ ms.lasthandoff: 11/29/2017
    若要解决的最后两个问题，你可键入名称的订阅或资源组 （如果你知道它），也可以改为使用 PowerShell。
 
 - 你将看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 此行为被预期行为。
-- 在**所需的激活**警告警报详细信息，请不要单击的链接**AzureBridge**组件。 如果这样做，**概述**边栏选项卡将不成功尝试加载，且不会超时。
+- 如果**组件**从任何单击链接**基础结构角色**警报，生成**概述**边栏选项卡中尝试进行加载，并且无法正常工作。 此外 * * 概述 * * 边栏选项卡不会超时。
 - 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
 - 你不能通过使用 Azure 堆栈门户查看到你的订阅的权限。 一种解决方法，可以通过使用 PowerShell 来验证权限。
  
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>应用商店
 - 当你尝试通过将项添加到 Azure 堆栈市场**从 Azure 中的添加**选项，并非所有的项可能下载可见。
 - 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
  
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/29/2017
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 - 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
 
-#### <a name="networking"></a>联网
+#### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。
@@ -134,7 +134,7 @@ ms.lasthandoff: 11/29/2017
 - 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
 - 你不能通过使用 Azure 堆栈门户查看到你的订阅的权限。 一种解决方法，可以通过使用 PowerShell 来验证权限。
  
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>应用商店
 - 当你尝试通过将项添加到 Azure 堆栈市场**从 Azure 中的添加**选项，并非所有的项可能下载可见。
 - 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
  
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/29/2017
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 - 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
 
-#### <a name="networking"></a>联网
+#### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。
@@ -184,7 +184,7 @@ ms.lasthandoff: 11/29/2017
 - 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
 - 你不能查看你的订阅使用 Azure 堆栈门户的权限。 一种解决方法，可以通过使用 Powershell 来验证权限。
   
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>应用商店
 - 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
  
 #### <a name="compute"></a>计算
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/29/2017
 - 你可以配置虚拟机的可用性仅使用容错域之一，以及一个更新域设置。
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 
-#### <a name="networking"></a>联网
+#### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。

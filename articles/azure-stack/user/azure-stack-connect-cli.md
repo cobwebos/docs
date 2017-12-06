@@ -12,40 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2017
+ms.date: 12/04/2017
 ms.author: sngun
-ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 9a0ad3d8c2cdd3cd1d46e789c2b65677ac5a10b1
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>安装和配置 CLI 用于 Azure 堆栈
 
 在本文中，我们指导你完成使用 Azure 命令行界面 (CLI) 来管理 Azure 堆栈开发工具包资源从 Linux 和 Mac 客户端平台的过程。 
-
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Azure 堆栈 CA 根证书导出
-
-如果你使用 CLI 从在 Azure 堆栈开发工具包环境内运行的虚拟机，Azure 堆栈根证书以便可以直接检索它已安装在虚拟机中。 如果从外部开发工具包工作站使用 CLI，你必须从开发工具包导出 Azure 堆栈 CA 根证书并将其添加到你的开发工作站 （外部 Linux 或 Mac 平台） 的 Python 证书存储。 
-
-若要导出 PEM 格式中的 Azure 堆栈根证书，请登录到你的开发工具包，并运行以下脚本：
-
-```powershell
-   $label = "AzureStackSelfSignedRootCert"
-   Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
-   $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
-   if (-not $root)
-   {
-       Log-Error "Certificate with subject CN=$label not found"
-       return
-   }
-
-   Write-Host "Exporting certificate"
-   Export-Certificate -Type CERT -FilePath root.cer -Cert $root
-
-   Write-Host "Converting certificate to PEM format"
-   certutil -encode root.cer root.pem
-```
 
 ## <a name="install-cli"></a>安装 CLI
 
@@ -59,7 +36,7 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure 堆栈 CA 根证书
 
-若要信任 Azure 堆栈 CA 根证书，请将其追加到现有的 Python 证书。 如果你从在 Azure 堆栈环境内创建的 Linux 计算机中运行 CLI，运行以下 bash 命令：
+从 Azure 堆栈运算符获取 Azure 堆栈 CA 根证书并信任它。 若要信任 Azure 堆栈 CA 根证书，请将其追加到现有的 Python 证书。 如果你从在 Azure 堆栈环境内创建的 Linux 计算机中运行 CLI，运行以下 bash 命令：
 
 ```bash
 sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
@@ -110,11 +87,10 @@ Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-package
 Write-Host "Python Cert store was updated for allowing the azure stack CA root certificate"
 ```
 
-## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>设置虚拟机别名终结点
+## <a name="get-the-virtual-machine-aliases-endpoint"></a>获取虚拟机别名终结点
 
-用户可以使用 CLI 创建虚拟机之前，应设置可公开访问的终结点包含虚拟机映像别名的云管理员联系并将其与云注册此终结点。 `endpoint-vm-image-alias-doc`中的参数`az cloud register`命令用于此目的。 云管理员必须将映像下载到 Azure 堆栈应用商店之前它们将其添加到映像别名终结点。
+用户可以使用 CLI 创建虚拟机之前，它们必须联系 Azure 堆栈运算符以及获取虚拟机别名终结点 URI。 例如，Azure 使用以下 URI: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json。 云管理员应该类似的终结点用于 Azure 堆栈使用设置 Azure 堆栈应用商店中可用的映像。 用户需要将此终结点 URI 传递到`endpoint-vm-image-alias-doc`参数`az cloud register`命令，因为在下一部分中所示。 
    
-例如，Azure 使用以下 URI: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json。 云管理员应该类似的终结点用于 Azure 堆栈使用设置 Azure 堆栈应用商店中可用的映像。
 
 ## <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 

@@ -29,14 +29,18 @@
       href: project-ic-tasks.md
 - name: 项目结构
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
-- name: 项目规划和执行
+- name: 项目规划
+  href: team-data-science-process-project-templates.md
+- name: 项目执行
   items:
-    - name: 项目规划
-      href: team-data-science-process-project-templates.md
-    - name: 项目执行
-      items:
-        - name: 数据科学项目
-          href: project-execution.md
+    - name: 敏捷开发
+      href: agile-development.md
+    - name: 使用 Git 进行协作编码
+      href: collaborative-coding-with-git.md
+    - name: 执行数据科学任务
+      href: execute-data-science-tasks.md
+    - name: 跟踪进度
+      href: track-progress.md
 - name: 示例
   href: walkthroughs.md
   items:
@@ -52,12 +56,12 @@
     - name: Spark 与 PySpark 和 Scala
       href: walkthroughs-spark.md
       items:
-        - name: 浏览数据
+        - name: 数据探索和建模
           href: spark-data-exploration-modeling.md
+        - name: 高级数据探索和建模
+          href: spark-advanced-data-exploration-modeling.md
         - name: 评分模型
           href: spark-model-consumption.md
-        - name: 高级数据探索
-          href: spark-advanced-data-exploration-modeling.md
     - name: 将 Hive 与 HDInsight Hadoop 配合使用
       href: walkthroughs-hdinsight-hadoop.md
     - name: 将 U-SQL 与 Azure Data Lake 配合使用
@@ -136,7 +140,8 @@
             - name: 使用 AzCopy
               href: move-data-to-azure-blob-using-azcopy.md
             - name: 使用 Python
-              href: move-data-to-azure-blob-using-python.md
+              href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+              maintainContext: true
             - name: 使用 SSIS
               href: move-data-to-azure-blob-using-ssis.md
             - name: 移到 VM
@@ -211,14 +216,8 @@
             - name: 算法备忘单
               href: ../studio/algorithm-cheat-sheet.md
               maintainContext: true
-    - name: 部署模型
-      items:
-        - name: 使用 Web 服务
-          href: ../studio/publish-a-machine-learning-web-service.md
-          maintainContext: true
-        - name: 使用 Web 服务
-          href: ../studio/consume-web-services.md
-          maintainContext: true
+    - name: 在生产环境中部署模型
+      href: deploy-models-in-production.md
 - name: 相关内容
   items:
     - name: Microsoft 认知工具包 - CNTK

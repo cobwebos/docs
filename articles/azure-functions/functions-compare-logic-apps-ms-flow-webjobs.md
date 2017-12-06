@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/11/2017
+ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ab0aa377f9803d74d8a7a94bdb4c7b780e3ae41d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 03246846484878f7155449ad11b009aeffe8a576
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
 本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
@@ -81,12 +81,12 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
 | 运行类型 |触发、计划（通过计时器触发器） |触发、连续、计划 |
-| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 通知中心](functions-bindings-notification-hubs.md)、[Azure 服务总线](functions-bindings-service-bus.md)、[Azure 存储](functions-bindings-storage-blob.md) |[Azure 存储](functions-bindings-storage-blob.md)、[Azure 服务总线](functions-bindings-service-bus.md) |
+| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[Azure 存储队列和 blob](functions-bindings-storage-blob.md)、[Azure 服务总线队列和主题](functions-bindings-service-bus.md) |[Azure 存储队列和 blob](functions-bindings-storage-blob.md)、[Azure 服务总线队列和主题](functions-bindings-service-bus.md) |
 | 浏览器开发 |支持 |不支持 |
 | C# |支持 |支持 |
 | F# |支持 |不支持 |
 | JavaScript |支持 |支持 |
-| Java |支持 | 不支持 |
+| Java |预览 | 不支持 |
 | Bash |试验 |支持 |
 | Windows 脚本（.cmd、.bat） |试验 |支持 |
 | PowerShell |试验 |支持 |

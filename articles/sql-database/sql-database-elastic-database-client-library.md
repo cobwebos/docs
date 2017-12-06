@@ -15,22 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: ddove
-ms.openlocfilehash: 6a73f8d0b85198f0d4e10fbc31cbd21f93bdb8a8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 721b87c67aa5e8002f21faca5a10fe41b8958e1e
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>构建可缩放的云数据库
 使用 Azure SQL 数据库的可缩放工具和功能，可以轻松扩大数据库。 特别是，可以使用**弹性数据库客户端库**来创建和管理扩大的数据库。 此功能允许你使用数百甚至数千的 Azure SQL 数据库轻松开发分片应用程序。 然后，[弹性作业](sql-database-elastic-jobs-powershell.md)可用于帮助简化这些数据库的管理。
 
-若要安装该库，请在 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) 转到 NuGet。 
+若要下载：
+* .NET 版本的库，请参阅 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
+* Java 版本的库，请参阅 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)。
 
 ## <a name="documentation"></a>文档
 1. [弹性数据库工具入门](sql-database-elastic-scale-get-started.md)
 2. [弹性数据库功能](sql-database-elastic-scale-introduction.md)
 3. [分片映射管理](sql-database-elastic-scale-shard-map-management.md)
-4. [迁移要扩大的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
+4. [迁移要横向扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
 5. [数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)
 6. [多分片查询](sql-database-elastic-scale-multishard-querying.md)
 7. [使用弹性数据库工具添加分片](sql-database-elastic-scale-add-a-shard.md)
@@ -50,7 +52,7 @@ ms.lasthandoff: 11/14/2017
 - **分片映射管理**：创建一个称为“分片映射管理器”的特殊数据库。 分片映射管理是一种使应用程序能够管理其分片相关元数据的功能。 开发人员可使用此功能将数据库注册为分片（描述各个分片键或键范围到这些数据库的映射），并随着数据库的数量和组成发展来维护此元数据，以反映容量更改。 如果没有弹性数据库客户端库，则在执行分片时将需要花费大量的时间来编写管理代码。 有关详细信息，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。
 
 - **数据依赖型路由**：假设将一个请求传入应用程序。 基于请求的分片键值，应用程序必须根据该键值判断正确的数据库。 接着，它会与数据库建立连接来处理请求。 借助数据依赖型路由，能够通过对应用程序的分片映射的单个简单调用打开连接。 数据依赖型路由是基础结构代码的另一个区域，现在它由弹性数据库客户端库中的功能所取代。 有关详细信息，请参阅[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)。
-- **多分片查询 (MSQ)**：当一个请求涉及多个（或所有）分片时，多分片查询将生效。 多分片查询在所有分片或一组分片上执行相同的 T-SQL 代码。 使用 UNION ALL 语义，将参与分片中的结果合并到一个总结果集中。 该功能通过该客户端库处理多个任务公开，其中包括连接管理、线程管理、故障处理和中间结果处理。 MSQ 最多可以查询数百个分片。 有关详细信息，请参阅[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
+- **多分片查询 (MSQ)**：当一个请求涉及多个（或所有）分片时，多分片查询将生效。 多分片查询在所有分片或一组分片上执行相同的 T-SQL 代码。 使用 UNION ALL 语义，将参与分片中的结果合并到一个总结果集中。 通过客户端库公开的功能处理多个任务，其中包括：连接管理、线程管理、故障处理和中间结果处理。 MSQ 最多可以查询数百个分片。 有关详细信息，请参阅[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
 
 一般而言，当使用弹性数据库工具的客户提交具有其自己的语义的局部分片操作（与跨分片操作相对）时，预期可获取完整的 T-SQL 功能。
 
@@ -58,15 +60,11 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- [弹性数据库客户端库](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) - 使用 NuGet **安装**该库。
+- 弹性数据库客户端库（[.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）- 用于**下载**该库。
 
 - [弹性数据库工具入门](sql-database-elastic-scale-get-started.md) - 试用演示客户端功能的**示例应用**。
 
-- [Github，Azure/弹性数据库工具](https://github.com/Azure/elastic-db-tools) - 该库是一种开放源代码软件。
-    - ADO.NET 开发人员使用弹性数据库工具客户端库可以创建实现和使用 Azure SQL 数据库中称为“数据库分片”的模式的应用程序。
-
-- [弹性数据库客户端库的源代码现已发布！](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/) - 关于弹性数据库客户端库的**博客文章**，日期为 2015/09/09。
-
+- GitHub（[.NET](https://github.com/Azure/elastic-db-tools)、[Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md)）- 用于为代码做出贡献。
 - [Azure SQL 数据库弹性查询概述](sql-database-elastic-query-overview.md) - 使用弹性查询。
 
 - [在横向扩展云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md) - 获取有关使用**拆分/合并工具**的说明。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: bb9c19bb489873d1a2175f4a85f7654a3bf099b8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -87,6 +87,16 @@ Linux 代理必须具有访问更新存储库的权限。
 如需如何为非 Azure Windows 虚拟机和计算机启用更新管理的说明，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agents.md)。
 
 如需如何为非 Azure Linux 虚拟机和计算机启用更新管理的说明，请参阅[将 Linux 计算机连接到 Log Analytics](../log-analytics/log-analytics-agent-linux.md)。
+
+## <a name="view-computers-attached-to-your-automation-account"></a>查看附加到自动化帐户的计算机
+启用计算机的更新管理以后，单击“计算机”即可查看其信息。 提供“名称”、“符合性”、“环境”、“OS 类型”、“关键更新和安全更新”、“其他更新”等计算机信息。 
+
+  ![查看“计算机”选项卡](./media/manage-update-multi/update-computers-tab.png)
+
+最近启用了更新管理的计算机可能尚未进行评估。 这些计算机的符合性状态将会是“未评估”。  下面是一个列表，其中包含符合性状态的值：
+* 符合 - 计算机不缺少关键更新或安全更新。
+* 不符合 - 计算机缺少至少一项关键更新或安全更新。
+* 未评估 - 未在预期的时间范围内收到计算机的更新评估数据。  对于 Linux 计算机，这是指过去 3 小时；对于 Windows 计算机，这是指过去 12 小时。  
 
 ## <a name="view-an-update-assessment"></a>查看更新评估
 

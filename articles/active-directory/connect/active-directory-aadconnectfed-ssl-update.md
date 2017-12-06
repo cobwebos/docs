@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 11/15/2017
 ms.author: anandy
-ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eca5a61369c1653d8d3e04d191adfe4b54a11248
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 
 * **AD FS 场**：确保 AD FS 场基于 Windows Server 2012 R2 或更高版本。
-* **Azure AD Connect**：确保 Azure AD Connect 的版本为 1.1.443.0 或更高版本。 将使用任务“更新 AD FS SSL 证书”。
+* **Azure AD Connect**：确保 Azure AD Connect 的版本为 1.1.553.0 或更高版本。 将使用任务“更新 AD FS SSL 证书”。
 
 ![更新 SSL 任务](./media/active-directory-aadconnectfed-ssl-update/updatessltask.png)
 

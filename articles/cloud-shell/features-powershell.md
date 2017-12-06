@@ -1,6 +1,6 @@
 ---
-title: "PowerShell in Azure Cloud Shell（预览版）功能 | Microsoft Docs"
-description: "PowerShell in Azure Cloud Shell 功能概述"
+title: "Azure Cloud Shell（预览版）中的 PowerShell 功能 | Microsoft Docs"
+description: "Azure Cloud Shell 中的 PowerShell 功能概述"
 services: Azure
 documentationcenter: 
 author: maertendMSFT
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 11/14/2017
 ms.author: damaerte
-ms.openlocfilehash: 13289d9b18b4c53a2569b9a8772715b38ed22cf7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9c2eeef9c20f25d2af97e6c754f005b698222385
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）的功能和工具
 
@@ -37,7 +37,7 @@ PowerShell in Cloud Shell（预览版）安全并自动地验证帐户对 Azure 
 
 ### <a name="files-persistence-across-sessions"></a>不同会话中的文件持久性
 
-要在会话之间保存文件，Cloud Shell 会指导完成在首次启动时附加 Azure 文件共享。
+要在会话之间保存文件，Cloud Shell 会指导完成在首次启动时附加 Microsoft Azure 文件共享。
 完成后，Cloud Shell 会自动为所有将来的会话附加存储（装载为 `$home\clouddrive`）。
 由于 Cloud Shell 的每个请求分配临时计算机，因此，不同的会话不会持久保存 `$home\clouddrive` 外部的文件以及计算机状态。
 
@@ -91,7 +91,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 |**类别**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure 工具     |[Azure PowerShell (4.4.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1)<br> [Azure CLI (2.0.20)](https://docs.microsoft.com/en-us/cli/azure/overview)|
+|Azure 工具     |[Azure PowerShell (5.0.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Azure CLI (2.0.21)](https://docs.microsoft.com/en-us/cli/azure/overview)|
 |文本编辑器    |vim<br> nano                             |
 |包管理器 |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |源代码管理  |git                                      |

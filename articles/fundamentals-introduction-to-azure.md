@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69b8ec86f764077a0e6d029f7c540fa25d022a31
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="introducing-microsoft-azure"></a>介绍 Microsoft Azure
 Microsoft Azure 是 Microsoft 为公有云提供的应用程序平台。  本文的目的是提供了解 Azure 基本功能所需的基础知识，即使你对云计算一无所知也没有关系。
@@ -77,7 +77,7 @@ Azure 的 Web 界面称为[管理门户](http://manage.windowsazure.com)，允�
 
 Web 应用能做到这一点。 此计算模型使用 Azure 管理门户以及 API 提供托管 Web 环境。 可以将现有网站应用程序原封不动地移动到 Web 应用，或者直接在云中创建一个新网站。 网站开始运行后，可以动态添加或删除实例，依靠 Azure Web 应用在实例间对请求进行负载均衡。 Azure Apps 既提供一个共享选项，使网站与其他站点一起在一个虚拟机中运行，也提供让网站在自己的 VM 中运行的标准选项。 通过该标准选项，还可以在需要时增加实例的大小（计算能力）。
 
-在开发方面，Web 应用支持使用 .NET、PHP、Node.js、Java 和 Python 以及 SQL 数据库和 MySQL（来自 Microsoft 合作伙伴 ClearDB）执行关系存储。 它还为几个流行的应用程序（包括 WordPress、Joomla 和 Drupal）提供内置支持。 其目标是为在公有云中创建网站和 Web 应用程序提供一个低成本、可缩放且广泛适用的平台。
+在开发方面，Web 应用支持使用 .NET、PHP、Node.js、Java 和 Python 以及 SQL 数据库和 Azure Database for MySQL 执行关系存储。 它还为几个流行的应用程序（包括 WordPress、Joomla 和 Drupal）提供内置支持。 其目标是为在公有云中创建网站和 Web 应用程序提供一个低成本、可缩放且广泛适用的平台。
 
 **Web 应用方案**
 
@@ -522,12 +522,12 @@ Azure 媒体服务解决了此问题。 它提供了一组云组件，从而使�
 有关媒体服务工作方式的更直观展示，请下载 [Azure 媒体服务海报][Azure Media Services Poster]。
 
 ## <a name="commerce"></a>商务
-“软件即服务”的出现正在改变我们创建应用程序的方式。 它还改变了我们销售应用程序的方式。 由于 SaaS 应用程序位于云中，因此其潜在客户应联机查找解决方案。 并且此更改适用于数据和应用程序。 为什么人们不寻求通过云来寻找市场上销售的数据集？ Microsoft 使用 [Azure 应用商店](https://azure.microsoft.com/marketplace/)解决了这两个问题。
+“软件即服务”的出现正在改变我们创建应用程序的方式。 它还改变了我们销售应用程序的方式。 由于 SaaS 应用程序位于云中，因此其潜在客户应联机查找解决方案。 并且此更改适用于数据和应用程序。 为什么人们不寻求通过云来寻找市场上销售的数据集？ Microsoft 使用 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 解决了这两个问题。
 
 ![Azure 商务](./media/fundamentals-introduction-to-azure/CommerceIntroNew.png)   
  **图：使用 Azure 应用商店 (Azure Marketplace) 和 Azure 应用商店 (Azure Store) 可以查找和购买 Azure 应用程序和商业数据集，并将它们用作 Azure 应用程序的一部分。**
 
-这二者之间的差异是：应用商店处于 Azure 管理门户之外，而从该门户内部可以访问应用商店。 潜在客户可以通过搜索来查找满足其需求的 Azure 应用程序。 客户还可以在其中之一中搜索商业数据集，包括人口统计数据、财务数据、地理数据等等。 当他们找到喜欢的内容后，可以从供应商处访问它，也可以直接通过应用商店或应用商店 Web 位置进行访问，在某些情况下还可以从管理门户进行访问。 应用程序还可以通过应用商店来使用必应搜索 API，从而使它们可以访问 Web 搜索结果。
+这二者之间的差异是：Marketplace 处于 Azure 管理门户之外，而从该门户内部可以访问应用商店。 潜在客户可以通过搜索来查找满足其需求的 Azure 应用程序。 客户还可以在其中之一中搜索商业数据集，包括人口统计数据、财务数据、地理数据等等。 当他们找到喜欢的内容后，可以从供应商处访问它，也可以直接通过 Marketplace 或应用商店 Web 位置进行访问，在某些情况下还可以从管理门户进行访问。 应用程序还可以通过 Marketplace 来使用必应搜索 API，从而使它们可以访问 Web 搜索结果。
 
 **商务方案**
 

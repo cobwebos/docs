@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: e6aa6913bdb2cf8e581b76b7680d0a96c9858bd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b226aa4ec71535aa0222389aacd74764a80021a
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Azure Functions 外部表绑定（预览版）
 本文演示如何在函数中使用内置绑定处理 SaaS 提供程序（例如 Sharepoint、Dynamics）中的表格数据。 Azure Functions 支持外部表的输入和输出绑定。
@@ -198,4 +198,6 @@ GO
 dataSetName 为“default”。
 
 ## <a name="next-steps"></a>后续步骤
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+
+> [!div class="nextstepaction"]
+> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)

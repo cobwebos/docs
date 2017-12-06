@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
-ms.openlocfilehash: bc96221abf62677b53df43daa44a925ac5792043
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1ef4355f7234bc6a534d21a57fa52b480983b99b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的分片多租户应用程序
 
@@ -35,7 +35,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 此应用程序部署了三个示例租户的数据。 这些租户一起存储在一个多租户数据库中。
 
-任何人都可以从我们的 [Github 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
+任何人都可以从[我们的 GitHub 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
 
 #### <a name="learn-in-this-tutorial"></a>学习本教程
 
@@ -93,12 +93,12 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 > [!IMPORTANT]
 > 从外部源下载和提取 zip 文件时，可执行内容（脚本、ddl）可能受 Windows 阻止。 从 zip 文件提取脚本时，请按照以下步骤取消阻止 .zip 文件，然后再进行提取。 通过取消阻止 .zip 文件，确保允许脚本运行。
 
-1. 浏览到 [WingtipTicketsSaaS-MultiTenantDb github 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
+1. 浏览到 [WingtipTicketsSaaS-MultiTenantDb GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
 2. 单击“克隆或下载”。
 3. 单击“下载 ZIP”并保存文件。
 4. 右键单击“WingtipTicketsSaaS-MultiTenantDb-master.zip”文件，然后选择“属性”。
 5. 在“常规”选项卡上，选择“取消阻止”，然后单击“应用”。
-6. 单击“确定”。
+6. 单击 **“确定”**。
 7. 解压缩文件。
 
 脚本位于 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* 文件夹中。
@@ -138,7 +138,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>开始在租户数据库上生成负载
 
-现在已部署应用，接下来让我们投入使用！ Demo-LoadGenerator PowerShell 脚本将启动针对每个租户运行的一个工作负载。 许多 SaaS 应用上的实际负载通常是偶发性的且不可预测。 所以，为了模拟此类型的负载，负载生成器将生成分布在所有租户上的负载。 该负载包括以随机间隔期间发生的针对每个租户的随机突发。 负载模式显现会需要几分钟的时间，因此，最好让生成器先运行至少 3 或 4 分钟，然后再进行负载监测。
+现在已部署应用，接下来让我们投入使用！ Demo-LoadGenerator PowerShell 脚本将启动针对每个租户运行的一个工作负载。 许多 SaaS 应用上的实际加载通常是偶发性的且不可预测。 所以，为了模拟此类型的负载，负载生成器将生成分布在所有租户上的负载。 该负载包括以随机间隔期间发生的针对每个租户的随机突发。 负载模式显现会需要几分钟的时间，因此，最好让生成器先运行至少 3 或 4 分钟，然后再进行负载监测。
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Utilities\\Demo-LoadGenerator.ps1 脚本。
 2. 按 **F5** 运行该脚本并启动负载生成器（目前保留默认参数值）。

@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/27/2017
 ms.author: nitinme
-ms.openlocfilehash: 73c472140861a0d0d270021ab268e8c1113c23b5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>使用 Azure Log Analytics 监视 HDInsight 群集
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/15/2017
 
 * **一个 Azure 订阅**。 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
 
-* **一个 Azure HDInsight 群集**。 目前，可以将 Azure OMS 与以下 HDInsight 群集类型配合使用：
+* **一个 Azure HDInsight 群集**。 目前，可以将 Azure 操作管理套件与以下 HDInsight 群集类型配合使用：
 
     * Hadoop
     * HBase
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/15/2017
 
 * Log Analytics 工作区。 可将工作区视为独特的 Log Analytics 环境，其中包含自身的数据存储库、数据源和解决方案。 必须具有一个已创建的此类工作区，该工作区可以与 Azure HDInsight 群集关联。 有关说明，请参阅[创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)。
 
-## <a name="configure-hdinsight-cluster-to-use-log-analytics"></a>配置 HDInsight 群集以使用 Log Analytics
+## <a name="enable-log-analytics-by-using-the-portal"></a>使用门户启用 Log Analytics
 
 在本部分中，将配置现有 HDInsight Hadoop 群集，以使用 Azure Log Analytics 工作区来监视作业、调试日志等等。
 
@@ -56,12 +56,31 @@ ms.lasthandoff: 11/15/2017
 
     需要几分钟来保存设置。  完成后，可以在顶部看到“打开 OMS 仪表板”按钮。 
 
-    ![打开 OMS 仪表板](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "Open OMS dashboard")
+    ![打开操作管理套件仪表板](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "打开 OMS 仪表板")
 
 5. 单击“打开 OMS 仪表板”。
 6. 在系统提示时输入 Azure 凭据。
 
     ![Operations Management Suite 门户](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-oms-portal.png "Operations Management Suite portal")
+
+## <a name="enable-log-analytics-by-using-azure-powershell"></a>使用 Azure PowerShell 启用 Log Analytics
+
+可以使用 Azure PowerShell 启用 Log Analytics。 cmdlet 为：
+
+```powershell
+Enable-AzureRmHDInsightOperationsManagementSuite
+```
+
+请参阅 [Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0)。
+
+若要禁用，cmdlet 为： 
+
+```powershell
+Disable-AzureRmHDInsightOperationsManagementSuite
+```
+
+请参阅 [Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0)。
+
 
 ## <a name="next-steps"></a>后续步骤
 * [将 HDInsight 群集管理解决方案添加到 Log Analytics](hdinsight-hadoop-oms-log-analytics-management-solutions.md)

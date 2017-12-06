@@ -3,7 +3,7 @@ title: "Azure 服务的反向 DNS | Microsoft Docs"
 description: "了解如何为 Azure 中托管的服务配置反向 DNS 查找"
 services: dns
 documentationcenter: na
-author: jtuliani
+author: KumudD
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 63701e1ce0c1c6dcf2ce02ebce272b8280395e7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
@@ -28,9 +28,8 @@ Azure 中的服务使用 Azure 分配的、Microsoft 所有的 IP 地址。 必�
 
 阅读本文之前，应已熟悉此[反向 DNS 和 Azure 支持概述](dns-reverse-dns-overview.md)。
 
-Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。
-* 在 Resource Manager 部署模型中，通过 PublicIpAddress 资源公开计算资源（如虚拟机、虚拟机规模集或 Service Fabric 群集）。 使用 PublicIpAddress 的“ReverseFqdn”属性配置反向 DNS 查找。
-* 在经典部署模型中，使用云服务公开计算资源。 使用云服务的“ReverseDnsFqdn”属性配置反向 DNS 查找。
+在 Azure DNS 中，通过 PublicIpAddress 资源公开计算资源（如虚拟机、虚拟机规模集或 Service Fabric 群集）。 使用 PublicIpAddress 的“ReverseFqdn”属性配置反向 DNS 查找。
+
 
 Azure 应用服务目前不支持反向 DNS。
 

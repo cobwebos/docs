@@ -1,10 +1,10 @@
 ---
-title: "管理网络安全组 - Azure CLI 2.0 | Microsoft 文档"
-description: "了解如何使用 Azure 命令行接口 (CLI) 2.0 管理网络安全组。"
+title: "管理网络安全组 - Azure CLI | Microsoft Docs"
+description: "了解如何使用 Azure 命令行接口管理网络安全组。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed17d314-07e6-4c7f-bcf1-a8a2535d7c14
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="manage-network-security-groups-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 管理网络安全组
+# <a name="manage-network-security-groups-using-the-azure-cli"></a>使用 Azure CLI 管理网络安全组
 
 [!INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
-
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本 
-
-可以使用以下 CLI 版本之一完成任务： 
-
-- [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI 
-- [Azure CLI 2.0](#View-existing-NSGs) - 适用于资源管理部署模型（本文）的下一代 CLI
-
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
@@ -44,7 +36,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisite"></a>先决条件
 如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录 Azure 帐户。 
-
 
 ## <a name="view-existing-nsgs"></a>查看现有 NSG
 若要查看特定资源组中的 NSG 的列表，请使用 `-o table` 输出格式运行 [az network nsg list](/cli/azure/network/nsg#list) 命令：
@@ -89,13 +80,13 @@ az network nsg list -g RG-NSG -o table
 
 ## <a name="view-nsg-associations"></a>查看 NSG 关联项
 
-若要查看与 **NSG-FrontEnd** NSG 相关联的资源，请运行 `az network nsg show` 命令，如下所示。 
+若要查看与 **NSG-FrontEnd** NSG 关联的资源，请运行 `az network nsg show` 命令： 
 
 ```azurecli
 az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterfaces]'
 ```
 
-查找 **networkInterfaces** 和 **subnets** 属性，如下所示：
+查找 **networkInterfaces** 和 **subnets** 属性，如以下示例输出所示：
 
 ```json
 [
@@ -117,7 +108,7 @@ az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterface
 ]
 ```
 
-在上述示例中，NSG 不与任何网络接口 (NIC) 关联，而是与名为 **FrontEnd** 的子网关联。
+在上述示例中，NSG 未关联到任何网络接口 (NIC)，而是关联到名为 **FrontEnd** 的子网。
 
 ## <a name="add-a-rule"></a>添加规则
 若要向 **NSG-FrontEnd** NSG 添加规则，以允许来自任何计算机的**入站**流量流入端口 **443**，请输入以下命令：
@@ -160,7 +151,7 @@ az network nsg rule create  \
 ```
 
 ## <a name="change-a-rule"></a>更改规则
-要将上面创建的规则更改为仅允许来自 **Internet** 的入站流量，请运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令：
+若要将前面创建的规则更改为仅允许来自 **Internet** 的入站流量，请运行 [az network nsg rule update](/cli/azure/network/nsg/rule#update) 命令：
 
 ```azurecli
 az network nsg rule update \
@@ -339,7 +330,7 @@ az network vnet subnet update \
   ```
 
 ## <a name="delete-an-nsg"></a>删除 NSG
-仅当 NSG 不与任何资源关联时，才能删除 NSG。 若要删除 NSG，请按照以下步骤进行操作。
+仅当 NSG 不与任何资源关联时，才能删除 NSG。 若要删除 NSG，请完成以下步骤：
 
 1. 若要检查与 NSG 关联的资源，请运行 `azure network nsg show`，如[查看 NSG 关联项](#View-NSGs-associations)中所示。
 2. 如果 NSG 关联到任意 NIC，请为每个 NIC 运行 `azure network nic set`，如[取消 NSG 与 NIC 之间的关联](#Dissociate-an-NSG-from-a-NIC)中所示。 

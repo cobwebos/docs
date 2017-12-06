@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: 12d414b9653aa6f07648fff991b6291e5f91be4c
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 00a9e580a324ded8e979c2a3c58d51319091b628
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>使用证书身份验证配置与 VNet 的点到站点连接（经典）：Azure 门户
 
@@ -35,8 +35,10 @@ ms.lasthandoff: 10/20/2017
 
 点到站点 (P2S) VPN 网关用于创建从单个客户端计算机到虚拟网络的安全连接。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，则可使用 P2S VPN 这种解决方案来代替站点到站点 VPN。 可通过从客户端计算机启动连接来建立 P2S VPN 连接。
 
-经典部署模型仅支持 Windows VPN 客户端，并使用安全套接字隧道协议 (SSTP)，一种基于 SSL 的 VPN 协议。 为了支持非 Windows VPN 客户端，VNet 必须使用资源管理器部署模型创建。 除了 SSTP，资源管理器部署模型还支持 IKEv2 VPN。 有关详细信息，请参阅[关于 P2S 连接](point-to-site-about.md)。
-
+> [!IMPORTANT]
+> 经典部署模型仅支持 Windows VPN 客户端，并使用安全套接字隧道协议 (SSTP)，一种基于 SSL 的 VPN 协议。 为了支持非 Windows VPN 客户端，VNet 必须使用资源管理器部署模型创建。 除了 SSTP，资源管理器部署模型还支持 IKEv2 VPN。 有关详细信息，请参阅[关于 P2S 连接](point-to-site-about.md)。
+>
+>
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
@@ -88,7 +90,7 @@ ms.lasthandoff: 10/20/2017
 
   ![创建虚拟网络页](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
 5. 验证“订阅”  是否正确。 可以使用下拉列表更改订阅。
-6. 单击“资源组”  ，并选择现有资源组，或通过键入新的资源组名称创建新资源组。 如果要创建新资源组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 单击“资源组”  ，并选择现有资源组，或通过键入新的资源组名称创建新资源组。 如果要创建新资源组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
 7. 接下来，选择 VNet 的“位置”  设置。 该位置确定要部署到此 VNet 的资源所在的位置。
 8. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，并单击“创建”。
 

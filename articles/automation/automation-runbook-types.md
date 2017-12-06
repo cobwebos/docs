@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 2acf45187894aa3bfcaa4df639becf18605d50a5
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 508f4bb0fc8a443dd7b95cbf19861ab1a1abeb6e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  以下各个部分提供了每种类型的详细信息，包括如何选择在何时使用每种类型。
@@ -30,7 +30,6 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 | [PowerShell](#powershell-runbooks) |基于 Windows PowerShell 脚本的文本 Runbook。 |
 | [PowerShell 工作流](#powershell-workflow-runbooks) |基于 Windows PowerShell 工作流的文本 Runbook。 |
 | [Python](#python-runbooks) |基于 Python 的文本 Runbook。 |
-| [Bash](#bash-runbooks) |基于 Bash 的文本 Runbook。 |
 
 ## <a name="graphical-runbooks"></a>图形 Runbook
 使用 Azure 门户中的图形编辑器创建和编辑[图形](automation-runbook-types.md#graphical-runbooks) Runbook 和图形 PowerShell 工作流 Runbook。  可以将其导出到某个文件，然后将其导入另一个自动化帐户，但无法使用其他工具来创建或编辑图形 Runbook。  图形 Runbook 生成 PowerShell 代码，但无法直接查看或修改这些代码。 无法将图形 Runbook 转换成某种[文本格式](automation-runbook-types.md)，也无法将文本 Runbook 转换成图形格式。 在导入过程中，可以将图形 runbook 转换为图形 PowerShell 工作流 runbook，反之亦然。
@@ -39,7 +38,7 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 * 直观的插入-链接-配置创作模型  
 * 注重数据在执行流程期间的流动方式  
 * 直观展示管理流程  
-* 可以以子 Runbook 的形式包括其他 Runbook，以便创建高级工作流  
+* 可以以子 Runbook 形式包括其他 Runbook，以便创建高级工作流  
 * 鼓励模块化编程  
 
 

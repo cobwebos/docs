@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics 中的 IT Service Management Connector | Microsoft Docs"
-description: "使用 IT Service Management Connector 集中监视和管理 Azure Log Analytics 中的 ITSM 工作项，并快速解决任何问题。"
+description: "本文提供 IT 服务管理连接器 (ITSMC) 的概述以及有关如何使用此解决方案集中监视和管理 OMS Log Analytics 中的 ITSM 工作项并快速解决任何问题的信息。"
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: ba8542640fcec6e4bc63d8f0a41bf85b221d4c5e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd384255b3c46b3ae88b1269ab26e0ddaa6f6e77
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>使用 IT Service Management Connector（预览版）集成管理 ITSM 工作项
+# <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>使用 IT Service Management Connector（预览）集成管理 ITSM 工作项
 
 ![IT Service Management Connector 符号](./media/log-analytics-itsmc/itsmc-symbol.png)
 
-IT 服务管理连接器 (ITSMC) 在支持的 IT 服务管理 (ITSM) 产品/服务和 Log Analytics 之间提供双向集成。  通过此连接，可根据 Log Analytics 警报或日志记录在 ITSM 产品中创建偶发事故、警报或事件。 该连接器还可将 ITSM 产品中的事件和更改请求等数据导入 OMS Log Analytics。
+IT 服务管理连接器 (ITSMC) 在支持的 IT 服务管理 (ITSM) 产品/服务和 Log Analytics 之间提供双向集成。  通过此连接，可根据 Log Analytics 警报、日志记录或 Azure 警报在 ITSM 产品中创建意外事件、警报或事件。 该连接器还可将 ITSM 产品中的事件和更改请求等数据导入 OMS Log Analytics。
 
 通过 ITSMC，你可以：
 
@@ -56,7 +56,7 @@ IT 服务管理连接器 (ITSMC) 在支持的 IT 服务管理 (ITSM) 产品/服�
  ![ITSMC 刷新](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
 
 
-## <a name="configuring-the-connection-with-your-itsm-software"></a>配置与 ITSM 软件的连接
+## <a name="configuring-the-itsmc-connection-with-your-itsm-productsservices"></a>使用 ITSM 产品/服务配置 ITSMC 连接
 
 ITSMC 支持连接到 System Center Service Manager、ServiceNow、Provance 和 Cherwell。
 
@@ -159,7 +159,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ResolvedBy_s | 解决者|
 | ClosedBy_s  | 关闭者 |
 | Source_s| 联系类型 |
-| AssignedTo_s | 分配给  |
+| AssignedTo_s | 已分配到  |
 | Category_s | 类别 |
 | Title_s|  简短说明 |
 | Description_s|  说明 |
@@ -175,7 +175,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Number |
 | CreatedBy_s | 请求者 |
 | ClosedBy_s | 关闭者 |
-| AssignedTo_s | 分配给  |
+| AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
 | Type_s|  类型 |
 | Category_s|  类别 |
@@ -227,7 +227,7 @@ ITSM 连接器目前支持与服务映射解决方案集成。
 
     如果将此复选框保留未选中状态，则对于此警报下的任何数量的日志项，只会创建一个工作项。
 
-7. 单击“保存”。
+7. 单击“保存” 。
 
 可在“设置”>“警报”下查看已创建的 OMS 警报。 符合指定警报的条件时，将创建相应 ITSM 连接的工作项。
 
@@ -258,6 +258,7 @@ ITSM 连接器目前支持与服务映射解决方案集成。
 4. 在“联系人类型”、“影响”、“紧急性”、“类别”和“子类别”文本框中提供相应的值，并单击“创建”。
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>根据 Azure 警报创建 ITSM 工作项
+
 ITSMC 与操作组集成。
 
 [操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)对 Azure 警报提供模块化且可重用的方法来触发操作。 通过使用操作组中的 ITSM 操作，可以在与 ITSM 连接器解决方案有一个现有连接的 ITSM 产品中创建工作项。
@@ -280,13 +281,13 @@ ITSMC 与操作组集成。
 
 6. 从下拉列表菜单中选择“工作项”类型。
    选择使用现有模板或填充 ITSM 产品要求的字段。
-7. 单击“确定”。
+7. 单击 **“确定”**。
 
 创建/编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 警报触发时，会在 ITSM 工具中创建工作项。
 
 >[!NOTE]
 
-> 当前只有活动日志警报支持 ITSM 操作。 不支持对其他 Azure 警报执行 ITSM 操作。
+> 目前，只有活动日志警报支持 ITSM 操作，其他 Azure 警报不支持该操作。
 
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>在 OMS 中对 ITSM 连接进行故障排除
