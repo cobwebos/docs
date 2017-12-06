@@ -1,5 +1,5 @@
 ---
-title: "将经典虚拟网络连接到 Azure Resource Manager VNet：门户 | Microsoft Docs"
+title: "将经典虚拟网络连接到 Azure 资源管理器 VNet：门户 | Microsoft Docs"
 description: "了解如何使用 VPN 网关和门户在经典 VNet 和 Resource Manager VNet 之间创建 VPN 连接"
 services: vpn-gateway
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2100b2b8710207ddb5d1848f11f4d6133f1dfd91
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -49,7 +49,9 @@ ms.lasthandoff: 10/26/2017
 
 VNet 名称 = ClassicVNet <br>
 地址空间 = 10.0.0.0/24 <br>
-子网 1 = 10.0.0.0/27 <br>
+子网名称 = Subnet-1 <br>
+子网地址范围 = 10.0.0.0/27 <br>
+订阅 = 要使用的订阅 <br>
 资源组 = ClassicRG <br>
 位置 = 美国西部 <br>
 GatewaySubnet = 10.0.0.32/28 <br>
@@ -59,18 +61,20 @@ GatewaySubnet = 10.0.0.32/28 <br>
 
 VNet 名称 = RMVNet <br>
 地址空间 = 192.168.0.0/16 <br>
-子网 1 = 192.168.1.0/24 <br>
-网关子网 = 192.168.0.0/26 <br>
 资源组 = RG1 <br>
 位置 = 美国东部 <br>
+子网名称 = Subnet-1 <br>
+地址范围 = 192.168.1.0/24 <br>
+网关子网 = 192.168.0.0/26 <br>
 虚拟网络网关名称 = RMGateway <br>
 网关类型 = VPN <br>
 VPN 类型 = 基于路由 <br>
-网关公共 IP 地址名称 = rmgwpip <br>
-本地网络网关 = ClassicVNetLocal <br>
+SKU = VpnGw1 <br>
+位置 = 美国东部 <br>
+虚拟网络 = RMVNet <br> （将 VPN 网关关联到此 VNet）第一个 IP 配置 = rmgwpip <br> （网关公共 IP 地址）本地网络网关 = ClassicVNetLocal <br>
 连接名称 = RMtoClassic
 
-### <a name="connection-overview"></a>连接概述
+### <a name="connectoverview"></a>连接概述
 
 对于此配置，会在虚拟网络之间创建基于 IPsec/IKE VPN 隧道的 VPN 网关连接。 请确保 VNet 的范围不互相重叠，也不与它们连接到的任何本地网络重叠。
 
@@ -83,82 +87,104 @@ VPN 类型 = 基于路由 <br>
 
 ## <a name="classicvnet"></a>第 1 节 - 配置经典 VNet 设置
 
-在本部分中，会为经典 VNet 创建本地网络（本地站点）和虚拟网络网关。 如果还没有经典 VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)以及上文中的[示例](#values)设置值创建 VNet。
+在本部分中，会为经典 VNet 创建本地网络（本地站点）和虚拟网络网关。 这些屏幕截图仅供参考。 请务必将值替换成自己的值，或者使用[示例](#values)值。
 
-使用门户创建经典虚拟网络时，必须通过执行以下步骤导航到“虚拟网络”页面，否则不会显示用于创建经典虚拟网络的选项：
+### 1.<a name="classicvnet"></a>创建经典 VNet
 
-1. 单击“+”打开“新建”页面。
-2. 在“搜索 Marketplace”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
-3. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”页面。 
-4. 在“虚拟网络”页面上，选择“经典”以创建经典 VNet。 
+如果还没有经典 VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)以及上文中的[示例](#values)设置值创建 VNet。
 
-如果已有具有 VPN 网关的 VNet，请验证该网关是否为动态的。 如果为静态的，则必须先删除该 VPN 网关，再继续操作。
+如果已有具有 VPN 网关的 VNet，请验证该网关是否为动态的。 如果它是静态，必须首先删除 VPN 网关在执行前[配置本地站点](#local)。
 
-这些屏幕截图仅供参考。 请务必将值替换成自己的值，或者使用[示例](#values)值。
+1. 打开 [Azure 门户](https://ms.portal.azure.com)，并使用 Azure 帐户登录。
+2. 单击“+ 创建资源”打开“新建”页。
+3. 在“搜索 Marketplace”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
+4. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”页面。 
+5. 在“虚拟网络”页面上，选择“经典”以创建经典 VNet。 如果此处采用默认值，最终会创建资源管理器 VNet。
 
-### 1.<a name="local"></a>配置本地站点
-
-打开 [Azure 门户](https://ms.portal.azure.com)，并使用 Azure 帐户登录。
+### 2.<a name="local"></a>配置本地站点
 
 1. 导航到“所有资源”并在列表中找到“ClassicVNet”。
-2. 在“概述”页面的“VPN 连接”部分中，单击“网关”图形，创建网关。
-
-    ![配置 VPN 网关](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "配置 VPN 网关")
+2. 在“概述”页面的“VPN 连接”部分中，单击“网关”，创建网关。
+  ![配置 VPN 网关](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "配置 VPN 网关")
 3. 在“新建 VPN 连接”页面上，对于“连接类型”，选择“站点到站点”。
 4. 对于“本地站点”，单击“配置所需设置”。 这会打开“本地站点”页面。
 5. 在“本地站点”页面上，创建一个表示资源管理器 VNet 的名称。 例如，RMVNetLocal。
-6. 如果 Resource Manager VNet 的 VPN 网关已具有一个公共 IP 地址，则使用“VPN 网关 IP 地址”字段的值。 如果执行这些步骤进行练习，或者 Resource Manager VNet 尚没有虚拟网关，则可以虚构一个占位符 IP 地址。 请确保占位符 IP 地址使用的格式有效。 稍后，将使用 Resource Manager 虚拟网络网关的公共 IP 地址替换占位符 IP 地址。
-7. 对于**客户端地址空间**，请使用 Resource Manager VNet 的虚拟网络 IP 地址空间的值。 此设置用于指定要路由到 Resource Manager 虚拟网络的地址空间。
+6. 如果 Resource Manager VNet 的 **VPN 网关已具有一个公共 IP 地址**，则使用“VPN 网关 IP 地址”字段的值。 如果执行这些步骤进行练习，或者 Resource Manager VNet 尚没有虚拟网关，则可以虚构一个占位符 IP 地址。 请确保占位符 IP 地址使用的格式有效。 稍后，将使用 Resource Manager 虚拟网络网关的公共 IP 地址替换占位符 IP 地址。
+7. 对于**客户端地址空间**，请使用资源管理器 VNet 的虚拟网络 IP 地址空间的 [值](#connectoverview)。 此设置用于指定要路由到 Resource Manager 虚拟网络的地址空间。 在示例中，我们使用 192.168.0.0/16 作为 RMVNet 的地址范围。
 8. 单击“确定”，保存值并返回“新建 VPN 连接”页面。
 
-### <a name="classicgw"></a>2.创建虚拟网络网关
+### <a name="classicgw"></a>3.创建虚拟网络网关
 
-1. 在“新建 VPN 连接”页面上，选择“立即创建网关”复选框，并单击“可选网关配置”，打开“网关配置”页面。 
+1. 在“新建 VPN 连接”页上，选中“立即创建网关”复选框。
+2. 单击“可选网关配置”打开“网关配置”页。
 
-    ![打开网关配置页面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "打开网关配置页面")
-2. 单击“子网 - 配置所需设置”，打开“添加子网”页面。 “名称”已配置有所需值 **GatewaySubnet**。
-3. “地址范围”指网关子网的范围。 虽然可以创建具有地址范围 /29（3 个地址）的网关子网，但建议创建包含更多 IP 地址的网关子网。 这可以适应将来可能需要更多可用 IP 地址的配置。 如果可能，请使用 /27 或 /28。 如果使用这些步骤进行练习，可以参考[示例](#values)值。 单击“确定”创建网关子网。
-4. “网关配置”页面上的“大小”指的是网关 SKU。 为 VPN 网关选择网关 SKU。
-5. 验证“路由类型”是否为“动态”，并单击“确定”，返回“新建 VPN 连接”页面。
-6. 在“新建 VPN 连接”页面上，单击“确定”，开始创建 VPN 网关。 创建 VPN 网关可能需要多达 45 分钟才能完成。
+  ![打开网关配置页面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "打开网关配置页面")
+3. 单击“子网 - 配置所需设置”，打开“添加子网”页面。 “名称”已配置有所需值 **GatewaySubnet**。
+4. “地址范围”指网关子网的范围。 虽然可以创建具有地址范围 /29（3 个地址）的网关子网，但建议创建包含更多 IP 地址的网关子网。 这可以适应将来可能需要更多可用 IP 地址的配置。 如果可能，请使用 /27 或 /28。 如果使用这些步骤进行练习，可以参考[示例](#values)值。 本示例使用“10.0.0.32/28”。 单击“确定”创建网关子网。
+5. “网关配置”页面上的“大小”指的是网关 SKU。 为 VPN 网关选择网关 SKU。
+6. 验证“路由类型”是否为“动态”，并单击“确定”，返回“新建 VPN 连接”页面。
+7. 在“新建 VPN 连接”页面上，单击“确定”，开始创建 VPN 网关。 创建 VPN 网关可能需要多达 45 分钟才能完成。
 
-### <a name="ip"></a>3.复制虚拟网络网关的公共 IP 地址
+### <a name="ip"></a>4.复制虚拟网络网关的公共 IP 地址
 
 创建虚拟网络网关后，可查看网关 IP 地址。 
 
 1. 导航到经典 VNet，并单击“概述”。
-2. 单击“VPN 连接”，打开“VPN 连接”页面。 在“VPN 连接”页面上，可查看公共 IP 地址。 这是分配给虚拟网络网关的公共 IP 地址。 
-3. 记下或复制此 IP 地址。 在稍后的步骤中处理 Resource Manager 本地网络网关配置设置时会使用此地址。 还可查看网关连接的状态。 请注意，创建的本地网络站点被列为“连接”。 创建连接后，状态会改变。
-4. 复制网关 IP 地址后关闭页面。
+2. 单击“VPN 连接”，打开“VPN 连接”页面。 在“VPN 连接”页面上，可查看公共 IP 地址。 这是分配给虚拟网络网关的公共 IP 地址。 记下 IP 地址。 在稍后的步骤中处理 Resource Manager 本地网络网关配置设置时会使用此地址。 
+3. 可查看网关连接的状态。 请注意，创建的本地网络站点被列为“连接”。 创建连接后，状态会改变。 查看完状态后，可以关闭此页。
 
 ## <a name="rmvnet"></a>第 2 节 - 配置资源管理器 VNet 设置
 
-在本部分中，会为 Resource Manager VNet 创建虚拟网络网关和本地网络网关。 如果还没有 Resource Manager VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)以及上文中的[示例](#values)设置值创建 VNet。
+在本部分中，会为 Resource Manager VNet 创建虚拟网络网关和本地网络网关。 这些屏幕截图仅供参考。 请务必将值替换成自己的值，或者使用[示例](#values)值。
 
-这些屏幕截图仅供参考。 请务必将值替换成自己的值，或者使用[示例](#values)值。
+### <a name="1-create-a-virtual-network"></a>1.创建虚拟网络
 
-### <a name="1-create-a-gateway-subnet"></a>1.创建网关子网
+**示例值：**
 
-创建虚拟网络网关前，先要创建网关子网。 创建 CIDR 计数为 /28 或更大的网关子网。 （/27，/26 等）
+* VNet 名称 = RMVNet <br>
+* 地址空间 = 192.168.0.0/16 <br>
+* 资源组 = RG1 <br>
+* 位置 = 美国东部 <br>
+* 子网名称 = Subnet-1 <br>
+* 地址范围 = 192.168.1.0/24 <br>
+
+
+如果还没有资源管理器 VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)以及上文中的示例设置值创建 VNet。
+
+### <a name="2-create-a-gateway-subnet"></a>2.创建网关子网
+
+**示例值：**GatewaySubnet = 192.168.0.0/26
+
+创建虚拟网络网关前，先要创建网关子网。 创建 CIDR 计数为 /28 或更大（/27、/26 等）的网关子网。 如果正在练习创建此配置，可以使用示例值。
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-### <a name="creategw"></a>2.创建虚拟网络网关
+### <a name="creategw"></a>3.创建虚拟网络网关
+
+**示例值：**
+
+* 虚拟网络网关名称 = RMGateway <br>
+* 网关类型 = VPN <br>
+* VPN 类型 = 基于路由 <br>
+* SKU = VpnGw1 <br>
+* 位置 = 美国东部 <br>
+* 虚拟网络 = RMVNet <br>
+* 第一个 IP 配置 = rmgwpip <br>
 
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-### <a name="createlng"></a>3.创建本地网络网关
+### <a name="createlng"></a>4.创建本地网络网关
 
-本地网络网关指定与经典 VNet 和其虚拟网络网关关联的地址范围和公共 IP 地址。
-
-如果执行这些步骤进行练习，可以参考以下设置：
+**示例值：**本地网络网关 = ClassicVNetLocal
 
 | 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |网关公共 IP 地址|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美国西部 | RMVNetLocal (192.168.0.0/16) |分配给 ClassicVNet 网关的公共 IP 地址|
 | RMVNet | (192.168.0.0/16) |美国东部 |ClassicVNetLocal (10.0.0.0/24) |分配给 RMVNet 网关的公共 IP 地址。|
+
+本地网络网关指定与经典 VNet 和其虚拟网络网关关联的地址范围和公共 IP 地址。 如果执行这些步骤进行练习，可以参考示例值。
 
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
