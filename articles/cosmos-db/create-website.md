@@ -14,27 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 67c11277142d6616fe77179e03b55ed08993b818
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 7ceb4bf97c29a18d6879af55615eea46037c51ce
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
 
-使用 Azure Resource Manager 模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
+使用 Azure 资源管理器模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
 
 完成本教程后，能够回答以下问题：  
 
-* 如何使用 Azure Resource Manager 模板部署和集成 Azure Cosmos DB 帐户与 Azure 应用服务中的 Web 应用？
+* 如何使用 Azure 资源管理器模板部署和集成 Azure Cosmos DB 帐户与 Azure 应用服务中的 Web 应用？
 * 如何使用 Azure 资源管理器模板部署和集成 Azure Cosmos DB 帐户、应用服务 Web 应用中的 Web 应用以及 Webdeploy 应用程序？
 
 <a id="Prerequisites"></a>
 
 ## <a name="prerequisites"></a>先决条件
 > [!TIP]
-> 虽然本教程不会假设先前有使用 Azure Resource Manager 模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要有其中每个领域的知识。
+> 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要有其中每个领域的知识。
 > 
 > 
 
@@ -127,11 +128,11 @@ ms.lasthandoff: 10/11/2017
 <a name="NextSteps"></a>
 
 ## <a name="next-steps"></a>后续步骤
-祝贺你！ 已使用 Azure Resource Manager 模板部署了 Azure Cosmos DB、应用服务 Web 应用以及示例 Web 应用程序。
+祝贺你！ 已使用 Azure 资源管理器模板部署了 Azure Cosmos DB、应用服务 Web 应用以及示例 Web 应用程序。
 
 * 若要了解有关 Azure Cosmos DB 的详细信息，请单击[此处](http://azure.com/docdb)。
 * 若要了解有关 Azure 应用服务 Web 应用的详细信息，请单击[此处](http://go.microsoft.com/fwlink/?LinkId=325362)。
-* 若要了解有关 Azure Resource Manager 模板的详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
+* 若要了解有关 Azure 资源管理器模板的详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
 
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)

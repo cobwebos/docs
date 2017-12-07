@@ -4,7 +4,7 @@ description: "了解流分析如何针对 Azure Cosmos DB 进行 JSON 输出，�
 keywords: "JSON 输出"
 documentationcenter: 
 services: stream-analytics,documentdb
-author: samacha
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
@@ -14,19 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: cc80b0080c806541362a1ef2d71b95862bd51ca2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: ca7102f5fd4a5038cee983b5fdd588d41d1b2725
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>从流分析针对 Azure Cosmos DB 进行 JSON 输出
 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
 
 不熟悉 Cosmos DB 的人员可以查看 [Azure Cosmos DB 的学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)开始上手。 
 
-请注意：目前不支持基于 Mongo DB API 的 Cosmos DB 集合。 
+> [!Note]
+> 目前，Azure 流分析仅支持使用 DocumentDB (SQL) API 连接到 CosmosDB。
+> 尚不支持使用其他 Azure Cosmos DB API。 如果使用其他 API 将 Azure 流分析指向 创建的 Azure Cosmos DB 帐户，则可能无法正确存储数据。 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>作为输出目标的 Cosmos DB 基础知识
 使用流分析中的 Azure Cosmos DB 输出可以将流处理结果作为 JSON 输出写入到 Cosmos DB 集合中。 流分析不会在数据库中创建集合，而需要你预先创建这些集合。 这是为了让用户清楚地了解 Cosmos DB 集合的计费成本，以便可直接使用 [Cosmos DB API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 调整集合的性能、一致性和容量。 建议对每个流式处理作业使用一个 Cosmos DB 数据库，以便在逻辑上为流式处理作业划分集合。
@@ -44,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB 中的数据分区
 建议使用 Cosmos DB [分区集合](../cosmos-db/partition-data.md)对数据进行分区。 
 
-对于单一 Cosmos DB 集合，用户仍然可以使用流分析根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法向上扩展（或溢出）集合。 要向外扩展，流分析允许写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时，具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（Cosmos DB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个集合，可以预期大约 0.4 MB/秒的写入吞吐量。 使用多个集合，可以允许实现更高的吞吐量和更大的容量。
+对于单一 Cosmos DB 集合，用户仍然可以使用流分析根据应用程序的查询模式和性能需求对数据进行分区。 每个集合最多可包含 10GB 的数据（最大值），并且当前无法扩展（或溢出）集合。 要向外扩展，流分析允许写入到具有给定前缀的多个集合（请参见下面的用法详细信息）。 流分析根据用户提供的 PartitionKey 列，使用一致的[哈希分区解析程序](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx)对其输出记录进行分区。 流式处理作业开始时，具有给定前缀的集合数将用作输出分区计数，作业将并行写入到这些集合（Cosmos DB 集合数 = 输出分区数）。 对于延迟索引仅执行插入的单个集合，可以预期大约 0.4 MB/秒的写入吞吐量。 使用多个集合，可以允许实现更高的吞吐量和更大的容量。
 
 如果想要在将来增加分区计数，则可能需要停止作业，将现有集合中的数据重新划分为新的集合，然后重新启动流分析作业。 有关使用 PartitionResolver 和重新分区的更多详细信息以及示例代码会在后续帖子中提供。 [Cosmos DB 中的分区和缩放](../documentdb/documentdb-partition-data.md)一文中也提供了有关此内容的详细信息。
 
@@ -67,5 +69,5 @@ ms.lasthandoff: 10/11/2017
 * **集合名称模式** - 要使用的集合的集合名称或其模式。 可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。 以下是有效输入示例：  
   1\) MyCollection - 必须存在一个名为“MyCollection”的集合。  
   2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  
-* **分区键** - 可选。 仅当用户在集合名称模式中使用 {parition} 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
+* **分区键** - 可选。 仅当你在集合名称模式中使用 {partition} 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
 * **文档 ID** - 可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。  

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: cf077fef6df2fd21cf51f6b4fd4e26a4b5081247
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: b5cd022c87a6a7a9e18f33b869db04e72be5cef7
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/06/2017
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 ```
-./StorageExplorer.exe --disable-gpu
+./StorageExplorer --disable-gpu
 ```
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/06/2017
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 ```
-./StorageExplorer.exe --disable-gpu
+./StorageExplorer --disable-gpu
 ```
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 11/06/2017
 * [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-0816"></a>版本 0.8.16
-2017/8/21
+8/21/2017
 
 ### <a name="new"></a>新建
 * 打开 Blob 时，如果检测到更改，存储资源管理器会提示上传已下载的文件
@@ -244,7 +244,7 @@ ms.lasthandoff: 11/06/2017
     ```
 
 ### <a name="version-0813"></a>版本 0.8.13
-2017/05/12
+05/12/2017
 
 #### <a name="new"></a>新建
 
@@ -624,7 +624,7 @@ ms.lasthandoff: 11/06/2017
     * `sudo apt-get upgrade`
     * `sudo apt-get dist-upgrade`
 
-2015/11/18
+11/18/2015
 ### <a name="version-07201511160"></a>版本 0.7.20151116.0
 
 #### <a name="new"></a>新建

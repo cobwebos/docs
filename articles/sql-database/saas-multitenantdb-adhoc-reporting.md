@@ -1,5 +1,5 @@
 ---
-title: "针对多个 Azure SQL 数据库运行特别报告查询 | Microsoft Docs"
+title: "针对多个 Azure SQL 数据库运行特别报告查询 | Microsoft 文档"
 description: "在多租户应用示例中针对多个 SQL 数据库运行特别报告查询。"
 keywords: "sql 数据库教程"
 services: sql-database
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: AyoOlubeko
-ms.openlocfilehash: c85dec1023e4d4f0a14dfbc249850b6dc6e78edf
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c0ed3eb344ea8ec7e2d3e86125d60c8cc28f723d
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/15/2017
 
 若要完成本教程，请确保已完成了以下先决条件：
 
-* 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)。
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 安装了 SQL Server Management Studio (SSMS)。 若要下载和安装 SSMS，请参阅[下载 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -52,12 +52,11 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
 通过跨租户数据库的分布式查询，弹性查询可以即时了解实时生产数据。 但是，由于弹性查询从潜在的许多数据库中拉取数据，因此查询延迟有时可能高于提交到单个多租户数据库的等效查询的延迟。 请确保设计查询以最小化返回的数据。 弹性查询通常最适合查询少量实时数据，而不是构建频繁使用的或复杂的分析查询或报告。 如果查询效果不佳，请查看[执行计划](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)，了解将查询的哪部分推送到远程数据库。 并评估返回多少数据。 将已提取的租户数据保存到针对分析查询进行了优化的数据库，从而使需要进行复杂分析处理的查询获取到更好的服务。 SQL 数据库和 SQL 数据仓库可以托管此类分析数据库。
 
-<!-- ?? This pattern for analytics is explained in the [tenant analytics tutorial](saas-multitenantdb-tenant-analytics.md).
--->
+这种分析模式在[租户分析教程](saas-multitenantdb-tenant-analytics.md)中进行了介绍。
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序脚本
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
-可在 [WingtipTicketsSaaS-MultitenantDB github 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)中查看 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 确保遵循自述文件中列出的取消阻止步骤。
+在 [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-ticket-sales-data"></a>创建票证销售数据
 
@@ -96,7 +95,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
     ![创建凭据](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   外部数据源，已定义为在编录数据库中使用租户分片映射。 将此用作外部数据源，这样就可以在运行查询时将查询分发到在目录中注册的所有数据库。 由于每个部署的服务器名称均不相同，因此，此初始化脚本通过检索执行脚本的当前服务器 (@@servername) 来获取目录数据库的位置。
+   将此目录数据库用作外部数据源，这样就可以在运行查询时将查询分发到在目录中注册的所有数据库。 由于每个部署的服务器名称均不相同，因此，此初始化脚本通过检索执行脚本的当前服务器 (@@servername) 来获取目录数据库的位置。
 
     ![创建外部数据源](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -120,7 +119,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
 检查执行计划时，将鼠标悬停在计划图标上方可获取详细信息。 
 
-1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReportingQueries.sql。
+1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql*。
 2. 确保已连接到 adhocanalytics 数据库。
 3. 选择“查询”菜单，然后单击“包括实际的执行计划”
 4. 突出显示“当前注册了哪些地点?”查询，然后按 F5。
@@ -155,9 +154,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 > * 对所有租户数据库运行分布式查询
 > * 部署特别报告数据库并将架构添加到该数据库，以运行分布式查询。
 
-<!-- ??
-Now try the [Tenant Analytics tutorial](saas-multitenantdb-tenant-analytics.md) to explore extracting data to a separate analytics database for more complex analytics processing...
--->
+现在尝试学习[租户分析教程](saas-multitenantdb-tenant-analytics.md)，探索如何将数据提取到单独的分析数据库，从而进行更复杂的分析处理。
 
 ## <a name="additional-resources"></a>其他资源
 

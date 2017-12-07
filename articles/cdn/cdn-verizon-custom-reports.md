@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8df9fd46fe3ce8d87e7ad5377a21a0bc7a458d2b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon 中的自定义报表
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/21/2017
 ## <a name="accessing-verizon-custom-reports"></a>访问 Verizon 自定义报表
 1. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
    
-    ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-reports/cdn-manage-btn.png)
+    ![CDN 配置文件管理按钮](./media/cdn-reports/cdn-manage-btn.png)
    
     CDN 管理门户打开。
 2. 将鼠标悬停在“分析”选项卡，然后悬停在“自定义报表”浮出控件。 单击“边缘 CNAME”。

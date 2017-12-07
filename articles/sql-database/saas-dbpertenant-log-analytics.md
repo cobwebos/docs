@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: c036901bde5fff0d63ee2494de87e49410662099
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 48e8eb91a5febcc1109bee3404bb534bd0391f88
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="setup-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>通过多租户 Azure SQL 数据库 SaaS 应用设置和使用 Log Analytics (OMS)
+# <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>通过多租户 Azure SQL 数据库 SaaS 应用设置和使用 Log Analytics (OMS)
 
-在本教程中，将设置和使用 *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* 来监视弹性池和数据库。 本教程基于[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)。 它演示如何使用 Log Analytics 加强 Azure 门户中提供的监视和警报。 Log Analytics 适合大规模监视和警报，因为它支持数百个池以及成千上万的数据库。 本教程还提供单个监视解决方案，该方案可以集成跨多个 Azure 订阅监视不同应用程序和 Azure 服务的功能。
+在本教程中，将设置和使用 *Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* 来监视弹性池和数据库。 本教程基于[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)。 它演示如何使用 Log Analytics 加强 Azure 门户中提供的监视和警报。 Log Analytics 适合大规模监视和警报，因为它支持数百个池以及成千上万的数据库。 本教程还提供单个监视解决方案，该方案可以集成跨多个 Azure 订阅监视不同应用程序和 Azure 服务的功能。
 
 本教程介绍如何执行下列操作：
 
@@ -59,7 +59,7 @@ Log Analytics 工作区和分析解决方案在 Azure 门户和 OMS 中都可以
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
-可在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github 存储库中查看 Wingtip Tickets SaaS Database Per Tenant 的脚本和应用程序源代码。 脚本文件位于 [Learning Modules 文件夹](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/tree/master/Learning%20Modules)中。 将 **Learning Modules** 文件夹下载到本地计算机，保持其文件夹结构不变。
+在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>安装和配置 Log Analytics 和 Azure SQL Analytics 解决方案
 
@@ -85,7 +85,8 @@ Log Analytics 是一种需要配置的单独服务。 Log Analytics 在日志分
 1. 选择“概览”，在 Azure 门户中打开 Log Analytics 解决方案。
    ![overview-link](media/saas-dbpertenant-log-analytics/click-overview.png)
 
-    **重要**：可能需要数分钟才能激活解决方案。 请耐心等待！
+    > [!IMPORTANT]
+    > 可能需要数分钟才能激活解决方案。 请耐心等待！
 
 1. 单击“Azure SQL Analytics”磁贴将其打开。
 

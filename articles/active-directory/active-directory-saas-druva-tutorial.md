@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b23e73c47b9a00893e036b67826e4b7ead819a1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52212c44c925598b2c19df1b20eb4e8123f974ba
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>教程：Azure Active Directory 与 Druva 集成
 
@@ -104,21 +104,27 @@ ms.lasthandoff: 10/11/2017
  
     ![“单一登录”对话框](./media/active-directory-saas-druva-tutorial/tutorial_druva_samlbase.png)
 
-3. 在“Druva 域和 URL”部分中，执行以下步骤：
+3. 在“Druva 域和 URL”部分，如果希望在“IDP”启动模式下配置应用程序：
 
     ![配置单一登录](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
 
+    在“标识符”文本框中，键入字符串值：`druva-cloud`
+    
+4. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
+
+    ![配置单一登录](./media/active-directory-saas-druva-tutorial/tutorial_druva_url1.png)
+    
     在“登录 URL”文本框中，键入 URL：`https://cloud.druva.com/home`
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-druva-tutorial/tutorial_druva_certificate.png) 
 
-5. Druva 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性配置”添加自定义属性映射。  
+6. Druva 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性配置”添加自定义属性映射。  
 
     ![配置单一登录](./media/active-directory-saas-druva-tutorial/tutorial_druva_attribute.png)
 
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
+7. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
 
     | 属性名称      | 属性值      |
     | ------------------- | -------------------- |
@@ -136,47 +142,47 @@ ms.lasthandoff: 10/11/2017
     
     d.单击“下一步”。 单击“确定” 。    
 
-7. 单击“保存”按钮。
+8. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-druva-tutorial/tutorial_general_400.png)
 
-8. 在“Druva 配置”部分，单击“配置 Druva”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
+9. 在“Druva 配置”部分，单击“配置 Druva”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/active-directory-saas-druva-tutorial/tutorial_druva_configure.png) 
 
-9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Druva 公司站点。
+10. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Druva 公司站点。
 
-10. 转到“管理”\>“设置”。
+11. 转到“管理”\>“设置”。
 
     ![设置](./media/active-directory-saas-druva-tutorial/ic795091.png "设置")
 
-11. 在“单一登录设置”对话框上，执行以下步骤：
+12. 在“单一登录设置”对话框上，执行以下步骤：
 
     ![单一登录设置](./media/active-directory-saas-druva-tutorial/ic795092.png "Single Sign-On Settings")
     
-    a. 在“ID 提供者登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
-    
-    b. 在“ID 提供者注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
-    
-     c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“ID 提供者证书”文本框中。
+    a. 在“ID 提供程序登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
+        
+    b. 在“ID 提供程序注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”的值。
+        
+    c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“ID 提供者证书”文本框中。
      
-     d.单击“下一步”。 若要打开“设置”页，请单击“保存”。
+    d.单击“下一步”。 若要打开“设置”页，请单击“保存”。
 
-12. 在“设置”页上，单击“生成 SSO 令牌”。
+13. 在“设置”页上，单击“生成 SSO 令牌”。
 
     ![设置](./media/active-directory-saas-druva-tutorial/ic795093.png "设置")
 
-13. 在“单一登录身份验证令牌”对话框中，执行以下步骤：
+14. 在“单一登录身份验证令牌”对话框中，执行以下步骤：
 
     ![SSO 令牌](./media/active-directory-saas-druva-tutorial/ic795094.png "SSO Token")
     
-    a. 单击“复制”，在“添加属性”部分的“值”文本框中粘贴复制的值。
+    a. 单击“复制”，在 Azure 门户的“添加属性”部分的“值”文本框中，粘贴复制的值。
     
     b. 单击“**关闭**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+ 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -280,8 +286,6 @@ ms.lasthandoff: 10/11/2017
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

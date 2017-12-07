@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: 944a29aebf7abfe32a7789ab239718b1cd2d7b15
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3adf4dd824b31d5e3d368a0199bc2e981cafe176
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>排查云服务部署问题
 将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”窗格获取有关部署的信息。 可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。
@@ -27,7 +27,6 @@ ms.lasthandoff: 11/04/2017
 可按如下所述找到“属性”窗格：
 
 * 在 Azure 门户中，依次单击云服务的部署、“所有设置”“属性”。
-* 在 Azure 经典门户中，依次单击云服务的部署、“仪表板”，并定位到页面右下角（位于“速览”下）。 请注意，此窗格中没有“属性”标签。
 
 > [!NOTE]
 > 可以通过单击“属性”窗格右上角的图标将该窗格的内容复制到剪贴板。

@@ -3,18 +3,17 @@ title: "将 Docker 映像推送到专用 Azure 注册表"
 description: "使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像"
 services: container-registry
 author: stevelas
-manager: balans
-editor: mmacy
+manager: timlt
 ms.service: container-registry
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42877b0aeecf08602d31ba21dccc814e542fd174
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 21d1abfbb49eaeae654a600d35ab350b96a12fd3
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: afda0bc79a26c8cb9736c754a681ebb602e41af1
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 http://contoso.cloudapp.net）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/16/2017
 是否已经了解什么是 CNAME 和 A 记录？ [跳过解释](#add-a-cname-record-for-your-custom-domain)。
 
 > [!NOTE]
-> 本任务中的过程适用于 Azure 云服务。 关于应用服务，请参阅[此文](../app-service/app-service-web-tutorial-custom-domain.md)。 关于存储帐户，请参阅[此文](../storage/blobs/storage-custom-domain-name.md)。
+> 本任务中的过程适用于 Azure 云服务。 有关应用服务，请参阅[将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service/app-service-web-tutorial-custom-domain.md)。 有关存储帐户，请参阅 [为 Azure Blob 存储终结点配置自定义域名](../storage/blobs/storage-custom-domain-name.md)。
 > 
 > 
 

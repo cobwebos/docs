@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 12/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 79a165e3c4c8c2c2e212c6b95da3aed2d47cf6eb
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 054d3b3347ef2ce9fdbfa8ff8103cf4aa15bae20
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 本文介绍如何使用 PowerShell 来启用 Azure Active Directory (AD) 域服务。
@@ -62,7 +62,7 @@ $UserObjectId = Get-AzureADUser `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
-Add-AzureADGroupMember -ObjectId $GroupObjectId -RefObjectId $UserObjectId
+Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
 ## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>任务 4：注册 Azure AD 域服务资源提供程序

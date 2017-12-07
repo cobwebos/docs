@@ -1,5 +1,5 @@
 ---
-title: "在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs"
+title: "在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft 文档"
 description: "了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户"
 keywords: "sql 数据库教程"
 services: sql-database
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 17eb9b3ff059912e4fe3fafda0b9c435e3983888
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: b82623f63681daff502f1e23d052da7480dda942
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -68,9 +68,9 @@ ms.lasthandoff: 11/16/2017
 Wingtip Tickets SaaS 租户各有数据库应用通过复制在目录服务器上部署的名为 _basetenantdb_ 的模板数据库来预配新租户。  可使用脚本将预配集成到应用程序作为注册体验和/或支持的脱机的一部分。 本教程将探讨如何使用 PowerShell 进行预配。 预配脚本将复制 basetenantdb 数据库，以在弹性池中创建新的租户数据库，然后通过特定于租户的信息初始化该数据库，并在目录分片映射中注册该数据库。  在 Wingtip Tickets SaaS 租户各有数据库应用中，将基于租户名称给定租户数据库的名称，但这并非模式的关键部分 - 使用目录允许向租户数据库指定任何名称。 
 
 
-## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
-[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了 Wingtip SaaS 脚本和应用程序源代码。 [下载 Wingtip Tickets SaaS 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
+在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 
 ## <a name="provision-and-catalog-detailed-walkthrough"></a>预配和编录的详细演练
