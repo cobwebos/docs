@@ -19,7 +19,7 @@
 
 [网络接口 (NIC)](../articles/virtual-network/virtual-network-network-interface.md) 是 VM 与虚拟网络 (VNet) 之间互相连接的桥梁。 VM 必须至少有一个 NIC，但可以根据所创建 VM 的大小包含多个 NIC。 了解 [Windows](../articles/virtual-machines/windows/sizes.md) 或 [Linux](../articles/virtual-machines/linux/sizes.md) 的每个 VM 大小支持的 NIC 数。
 
-可以创建具有多个 NIC 的 VM，并可在 VM 的整个生命周期中添加或删除 NIC。 多个 NIC 允许 VM 连接到不同子网，并可通过最适当的接口发送或接收流量。 详细了解如何在 [Windows](../articles/virtual-machines/windows/multiple-nics.md) 或 [Linux](../articles/virtual-machines/linux/multiple-nics.md) VM 中使用多个 NIC。
+可以创建具有多个 NIC 的 VM，并可在 VM 的整个生命周期中添加或删除 NIC。 多个 NIC 允许 VM 连接到不同子网，并可通过最适当的接口发送或接收流量。
 
 如果 VM 已添加到可用性集，该可用性集中的所有 VM 必须包含一个或多个 NIC。 包含多个 NIC 的 VM 不一定要有相同数目的 NIC，但必须至少包含两个 NIC。
 
@@ -30,8 +30,8 @@
 | 方法 | 说明 |
 | ------ | ----------- |
 | Azure 门户 | 在 Azure 门户中创建 VM 时，系统会自动创建网络接口（无法使用单独创建的 NIC）。 门户将创建只包含一个 NIC 的 VM。 如果想要创建包含多个 NIC 的 VM，必须使用其他方法创建 VM。 |
-| [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) | 结合 **-PublicIpAddressId** 参数使用 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)，提供事先创建的公共 IP 地址标识符。 |
-| [Azure CLI](../articles/virtual-network/virtual-network-deploy-multinic-arm-cli.md) | 若要提供事先创建的公共 IP 地址标识符，请结合 **--public-ip-address** 参数使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create)。 |
+| [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | 结合 **-PublicIpAddressId** 参数使用 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)，提供事先创建的公共 IP 地址标识符。 |
+| [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 若要提供事先创建的公共 IP 地址标识符，请结合 **--public-ip-address** 参数使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create)。 |
 | [模板](../articles/virtual-network/virtual-network-deploy-multinic-arm-template.md) | 参考 [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)（虚拟网络中使用公共 IP 地址的网络接口），使用模板部署网络接口。 |
 
 ## <a name="ip-addresses"></a>IP 地址 

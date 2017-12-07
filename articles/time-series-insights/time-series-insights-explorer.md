@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 35f7bf0504075e8bb0b99f8492b850df2b7ceae1
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.date: 11/30/2017
+ms.openlocfilehash: 04e5465a56b8da9f2a078e513d5176f134fd011d
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 本文探讨时序见解资源管理器 Web 应用中可用的各种功能和选项。 在 Web 浏览器中使用时序见解资源管理器来创建数据的可视化效果。

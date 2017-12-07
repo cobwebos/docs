@@ -1,6 +1,6 @@
 # <a name="azure-managed-disks-overview"></a>Azure 托管磁盘概述
 
-Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../articles/storage/common/storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的类型（[高级](../articles/storage/common/storage-premium-storage.md)或[标准](../articles/storage/common/storage-standard-storage.md)）和磁盘大小，Azure 将创建和管理磁盘。
+Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../articles/storage/common/storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的类型（[高级](../articles/virtual-machines/windows/premium-storage.md)或[标准](../articles/virtual-machines/windows/standard-storage.md)）和磁盘大小，Azure 将创建和管理磁盘。
 
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -44,7 +44,7 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 
 下面将更详细地介绍各项。
 
-**存储类型：**托管磁盘提供了 2 个性能层：[高级](../articles/storage/common/storage-premium-storage.md)（基于 SSD）和[标准](../articles/storage/common/storage-standard-storage.md)（基于 HDD）。 托管磁盘的计费取决于为磁盘选择的存储类型。
+**存储类型：**托管磁盘提供了 2 个性能层：[高级](../articles/virtual-machines/windows/premium-storage.md)（基于 SSD）和[标准](../articles/virtual-machines/windows/standard-storage.md)（基于 HDD）。 托管磁盘的计费取决于为磁盘选择的存储类型。
 
 
 **磁盘大小**：托管磁盘的计费取决于磁盘的预配大小。 Azure 会将预配大小映射（向上舍入）到下面各表中指定的最接近的托管磁盘选项。 每个托管磁盘都映射到其中一种受支持的预配大小并相应地进行计费。 例如，如果创建了一个标准托管磁盘并将预配大小指定为 200 GB，则会根据 S20 磁盘类型的定价向你收费。
@@ -131,9 +131,9 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ### <a name="compare-managed-disks-storage-options"></a>比较托管磁盘存储选项
 
-* [高级存储和磁盘](../articles/storage/common/storage-premium-storage.md)
+* [高级存储和磁盘](../articles/virtual-machines/windows/premium-storage.md)
 
-* [标准存储和磁盘](../articles/storage/common/storage-standard-storage.md)
+* [标准存储和磁盘](../articles/virtual-machines/windows/standard-storage.md)
 
 ### <a name="operational-guidance"></a>操作指南
 

@@ -44,7 +44,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
 
 可以通过更改规模集的容量添加或删除 VM。 在 Azure 门户中，可以通过在“缩放”屏幕上向左或向右滑动“替代条件”块来减小或增大规模集中 VM 的数量（显示为**实例计数**）。
 
-如果使用 Azure PowerShell，则需要使用 [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) 获取规模集对象。 然后将 **sku.capacity** 属性设置为所需 VM 的数量，并使用 [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) 更新规模集。 如果使用 Azure CLI，则使用 [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#scale) 命令的 **--new-capacity** 参数更改容量。
+如果使用 Azure PowerShell，则需要使用 [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) 获取规模集对象。 然后将 **sku.capacity** 属性设置为所需 VM 的数量，并使用 [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) 更新规模集。 如果使用 Azure CLI，则使用 [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) 命令的 **--new-capacity** 参数更改容量。
 
 ### <a name="vertical"></a>垂直
 
