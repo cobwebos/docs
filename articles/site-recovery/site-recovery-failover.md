@@ -1,5 +1,5 @@
 ---
-title: "Site Recovery 中的故障转移 | Microsoft Docs"
+title: "Site Recovery 中的故障转移 | Microsoft 文档"
 description: "Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。"
 services: site-recovery
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/25/2017
 ms.author: pratshar
-ms.openlocfilehash: 9c00cf88fa8b754c92cfd0f01be61a596d04d7c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 160457fdad57cd947077aeb3a4ed85fd2a2849d8
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="failover-in-site-recovery"></a>Site Recovery 中的故障转移
 本文介绍如何故障转移受 Site Recovery 保护的虚拟机和物理服务器。
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 1. 如果故障转移后的虚拟机符合要求，可以**提交**故障转移。 提交操作会删除服务中的所有恢复点，并且“更改恢复点”选项不再可用。
 
 ## <a name="planned-failover"></a>计划的故障转移
-使用 Site Recovery 保护的虚拟机/物理服务器也支持计划的故障转移。 计划的故障转移是一个不会丢失任何数据的故障转移选项。 触发计划的故障转移时，首先会关闭源虚拟机，同步尚未同步的数据，然后触发故障转移。
+使用 Site Recovery 保护的虚拟机/物理服务器也支持计划的故障转移。 计划的故障转移是一个不会丢失任何数据的故障转移选项。 触发计划的故障转移时，首先会关闭源虚拟机，同步最新的数据，然后触发故障转移。
 
 > [!NOTE]
 > 在不同的本地站点之间故障转移 Hyper-V 虚拟机时，要返回到主要本地站点，必须先将虚拟机**反向复制**回到主站点，然后触发故障转移。 如果主虚拟机不可用，则在开始**反向复制**之前，必须从备份还原虚拟机。   

@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: a157e612ca4fca06a57df478eaa20793c8b35d60
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c2f511cd024accc099423f2ed5bbb15d2dd23414
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -140,9 +140,9 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 2. 在向导中，单击“下一步”，直到出现“服务器角色”页。
   
-3. 单击以选择“DHCP 服务器”复选框，单击“添加功能”，然后单击“下一步”直至完成向导。
+3. 单击以选择“DHCP 服务器”复选框，然后依次单击“添加功能”和“下一步”，直至完成向导。
   
-4. 单击“安装” 。
+4. 单击“安装”。
 
 #### <a name="configure-a-new-dhcp-scope"></a>配置新的 DHCP 作用域
 

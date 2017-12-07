@@ -1,6 +1,7 @@
 ---
 title: "将现有的自定义 DNS 名称映射到 Azure Web 应用 | Microsoft Docs"
 description: "了解如何在 Azure 应用服务中向 Web 应用、移动应用后端或 API 应用添加现有的自定义 DNS 域名（虚域）。"
+keywords: "应用服务, Azure 应用服务, 域映射, 域名, 现有域, 主机名"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d7c99b1b02a0450cae406e2bc70a7e5563e2ac2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>将现有的自定义 DNS 名称映射到 Azure Web 应用
 
@@ -269,6 +270,27 @@ ms.lasthandoff: 11/03/2017
 浏览至你之前配置的 DNS 名称（例如，`contoso.com`、`www.contoso.com`、`sub1.contoso.com` 和 `sub2.contoso.com`）。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+
+## <a name="resolve-404-error-web-site-not-found"></a>解决 404 错误“未找到网站”
+
+如果在浏览到自定义域的 URL 时收到 HTTP 404（未找到）错误，请验证域是否使用 <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> 对应用的 IP 地址进行解析。 如果没有，则可能是以下原因之一造成的：
+
+- 配置的自定义域缺少 A 记录和/或 CNAME 记录。
+- 浏览器客户端已缓存域的旧 IP 地址。 再次清除缓存并测试 DNS 解析。 在 Windows 计算机上，使用 `ipconfig /flushdns` 清除缓存。
+
+<a name="virtualdir"></a>
+
+## <a name="direct-default-url-to-a-custom-directory"></a>将默认 URL 定向到自定义目录
+
+默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 但是，某些 Web 框架不在根目录下启动。 例如，[Laravel](https://laravel.com/) 在 `public` 子目录中启动。 若要继续 `contoso.com` DNS 示例，此类应用应可在 `http://contoso.com/public` 中访问，但你实际上想要将 `http://contoso.com` 直接定向到 `public` 目录。 此步骤不涉及 DNS 解析，但涉及到自定义虚拟目录。
+
+若要执行此操作，请选择 Web 应用页左侧导航窗格中的“应用程序设置”。 
+
+在页面底部，根虚拟目录 `/` 默认指向 `site\wwwroot`，这是应用代码的根目录。 将其改为指向例如 `site\wwwroot\public`，并保存所做的更改。 
+
+![自定义虚拟目录](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
+
+操作完成后，应用应返回根路径的正确页面（例如，http://contoso.com）。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

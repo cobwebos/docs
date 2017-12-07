@@ -10,17 +10,17 @@ tags:
 ms.assetid: 
 ms.service: azure-policy
 ms.devlang: na
-ms.topic: article
+ms.topic: samples
 ms.tgt_pltfrm: 
 ms.workload: 
 ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 4042c3606155d1d37947afccafd64652c9659894
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4ac9696028b9f24341a630d630b583ac5041cee0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="templates-for-azure-policy"></a>Azure 策略模板
 

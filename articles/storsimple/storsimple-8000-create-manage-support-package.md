@@ -1,10 +1,10 @@
 ---
-title: "创建 StorSimple 8000 系列支持包 | Microsoft Docs"
+title: "创建 StorSimple 8000 系列支持包 | Microsoft 文档"
 description: "了解如何创建、解密和编辑 StorSimple 8000 系列设备支持包。"
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 92abbb96b2117e10800de61b5c405a784453265b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -58,14 +58,14 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
    
    * 对于受密码保护的网络共享，请输入：
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" –Credential "Username" -Force`
+       `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
-       系统会提示用户输入密码、网络共享文件夹的路径、加密密码（因为支持包已加密）。 然后会在指定的文件夹中创建支持包。
+       系统会提示用户输入密码和加密密码（因为支持包已加密）。 随后会在默认文件夹中创建支持包（设备名称后跟当前日期和时间）。
    * 对于不受密码保护的共享，不需 `-Credential` 参数。 输入以下内容：
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" -Force`
+       `Export-HcsSupportPackage`
      
-       为指定的网络共享文件夹中的两个控制器创建支持包。 该支持包是加密的压缩文件，可以发送到 Microsoft 支持部门进行故障排除。 有关详细信息，请参阅[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
+       在默认文件夹中为两个控制器创建支持包。 该支持包是加密的压缩文件，可以发送到 Microsoft 支持部门进行故障排除。 有关详细信息，请参阅[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
 
 ### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Export-HcsSupportPackage cmdlet 参数
 

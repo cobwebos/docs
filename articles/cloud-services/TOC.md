@@ -41,7 +41,6 @@
 ### [在门户中创建和部署云服务](cloud-services-how-to-create-deploy-portal.md)
 ### [在 PowerShell 中创建空云服务容器](cloud-services-powershell-create-cloud-container.md)
 ### [配置自定义域名](cloud-services-custom-domain-name-portal.md)
-### [暂存云服务部署 (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [连接到自定义域控制器](cloud-services-connect-to-custom-domain.md)
 
 ## 管理服务

@@ -1,5 +1,5 @@
 ---
-title: "使用 Bootstrap 自定义 HDInsight 群集 — Azure | Microsoft Docs"
+title: "使用 Bootstrap 自定义 HDInsight 群集 — Azure | Microsoft 文档"
 description: "了解如何使用 Bootstrap 自定义 HDInsight 群集。"
 services: hdinsight
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jgao
-ms.openlocfilehash: 4799e50056941b4fe477ce85c56cebf5d4e32def
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5ed66e263c3048981279ad26cb204ded8e8fba3
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -41,12 +41,13 @@ ms.lasthandoff: 10/11/2017
 * tez-site.xml
 * webhcat-site.xml
 * yarn-site.xml
+* server.properties（kafka-broker 配置）
 
 Bootstrap 的使用方式有三种：
 
 * 使用 Azure PowerShell
 * 使用 .NET SDK
-* 使用 Azure Resource Manager 模板
+* 使用 Azure 资源管理器模板
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -130,7 +131,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 }
 ```
 
-![HDInsight Hadoop 自定义群集 Bootstrap Azure Resource Manager 模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop 自定义群集 Bootstrap Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>另请参阅
 * [在 HDInsight 中创建 Hadoop 群集][hdinsight-provision-cluster]提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。

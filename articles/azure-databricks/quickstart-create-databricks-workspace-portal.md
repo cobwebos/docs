@@ -10,14 +10,15 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: cffc78c06de6be252704c2a116d7ded2c7e8567f
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.custom: mvc
+ms.openlocfilehash: 6a90ac77cd605a41f1fc7d0958662a7e752e3849
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 

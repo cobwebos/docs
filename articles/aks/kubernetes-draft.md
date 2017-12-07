@@ -1,26 +1,19 @@
 ---
-title: "结合使用 Draft 与 AKS 和 Azure 容器注册表 | Microsoft Docs"
+title: "结合使用 Draft 与 AKS 和 Azure 容器注册表"
 description: "结合使用 Draft 与 AKS 和 Azure 容器注册表"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: draft, helm, aks, azure-container-service
-keywords: "Docker, 容器, 微服务, Kubernetes, Draft, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3e607a6ce5662f6ff597fafbcec8c864f25ff54c
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: df5614d8a708b49ee1368c4d7983f45d29920fd8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>结合使用 Draft 与 Azure 容器服务 (AKS)
 

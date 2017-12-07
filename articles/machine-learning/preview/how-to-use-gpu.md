@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 552a4c9565bef62bb1aa7071b88473feb21a05f8
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 4ef5c9ad58f86a669fc5c0bceb085ef2a266a008
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用 GPU
 图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)。 
@@ -78,7 +78,7 @@ Azure ML 工作台还支持在 Azure Linux VM 的 Docker 中执行。 用户在�
 从 Azure ML 工作台启动命令行。 输入以下命令。 使用自己的姓名、IP 地址、用户名和密码值替换下面示例中的占位符文本。 
 
 ```batch
-C:\MyProj> az ml computetarget attach --name "my_dsvm" --address "my_dsvm_ip_address" --username "my_name" --password "my_password" --type remotedocker
+C:\MyProj> az ml computetarget attach remotedocker --name "my_dsvm" --address "my_dsvm_ip_address" --username "my_name" --password "my_password" 
 ```
 
 ### <a name="configure-azure-ml-workbench-to-access-gpu"></a>配置 Azure ML 工作台以访问 GPU

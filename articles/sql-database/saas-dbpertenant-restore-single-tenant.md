@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: 866b5eec6e9c7e8bf98547143c0393bfb6f97b14
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee2bc6d8b75b92243c0550db0044895e41c9474b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中还原单个租户 Azure SQL 数据库
+# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中还原单个租户的 Azure SQL 数据库
 
-Wingtip SaaS 应用是使用租户各有数据库的模型生成的，其中每个租户有自己的数据库。 此模型的好处之一是在不影响其他租户的情况下能轻松地单独还原单个租户的数据。
+Wingtip Tickets SaaS 应用是使用每租户数据库的模型构建而成，其中每个租户有其自己的数据库。 此模型的好处之一是在不影响其他租户的情况下能轻松地单独还原单个租户的数据。
 
 本教程介绍两种数据恢复模式：
 
@@ -53,9 +53,9 @@ Wingtip SaaS 应用是使用租户各有数据库的模型生成的，其中每�
 
 在第二种模式中（假定租户出现数据丢失或损坏的情况下），租户的生产数据库会被还原到之前的某个时间点。 在就地还原模式中，数据库进行还原时，租户会在短时间内处于脱机状态，直到完成后才重新回到联机状态。 原始数据库会被删除，但如有需要，仍可以从更早的时间点将其还原。 尽管此模式的变体能够重命名数据库，而不是将其删除，但就数据安全方面而言，重命名的数据库没有特别的优势。
 
-## <a name="get-the-wingtip-application-scripts"></a>获取 Wingtip 应用程序脚本
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
-Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub 存储库中找到。 [下载 Wingtip SaaS 脚本的步骤](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
+在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>模拟租户意外删除数据
 
@@ -146,6 +146,6 @@ Wingtip SaaS 脚本和应用程序源代码可在 [WingtipSaaS](https://github.c
 
 ## <a name="additional-resources"></a>其他资源
 
-* 其他[基于 Wingtip SaaS 应用程序编写的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [其他基于 Wingtip SaaS 应用程序编写的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [使用 Azure SQL 数据库确保业务连续性的相关概述](sql-database-business-continuity.md)
 * [了解 SQL 数据库备份](sql-database-automated-backups.md)

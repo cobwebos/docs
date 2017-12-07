@@ -2,26 +2,18 @@
 title: "Azure 容器实例教程 - 准备应用"
 description: "准备部署到 Azure 容器实例的应用"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
-editor: mmacy
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 3ae8eb53843e31ec66af52be9b04fbb626093f5b
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 6a168b600833c7e4544da7a5f5f4b7a0af73e0b5
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>创建部署到 Azure 容器实例的容器
 

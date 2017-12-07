@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: d27a4be968dc12818f7031b59ed40fbc9f9d88d3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 17ecf39128994dad93f017f87f105254f3017230
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>是应选择云服务还是其他服务？
 Azure 云服务是适合选择吗？ Azure 提供了用于运行应用程序的不同托管模型。 每种模型提供一组不同服务，而你选择哪种模型完全取决于要做什么。
@@ -50,7 +50,7 @@ Azure 云服务是适合选择吗？ Azure 提供了用于运行应用程序的�
 ## <a name="scaling-and-management"></a>缩放和管理
 使用云服务，无需创建虚拟机。 相反，提供一个配置文件，告知 Azure 每个 VM 需要多少个角色实例（如**三个 Web 角色实例**和**两个辅助角色实例**），平台将创建它们。  虽然仍然要选择这些备份 VM 的[大小](cloud-services-sizes-specs.md)，但不用直接自行进行创建。 如果应用程序需要处理更大的负载，则可以要求增加 VM，Azure 将创建这些实例。 如果负载降低，则可以关闭这些实例并停止为它们付费。
 
-通常通过两个步骤就能使云服务应用程序可供用户使用。 首先，开发人员[将应用程序上传](cloud-services-how-to-create-deploy-portal.md)到该平台的暂存区域。 当开发人员准备好使应用程序上线后，他们会使用 Azure 门户从过渡环境切换到生产环境。 [暂存与生产之间的这种切换](cloud-services-nodejs-stage-application.md)无需停机就可完成，这使运行的应用程序可在不打扰其用户的情况下升级到新版本。
+通常通过两个步骤就能使云服务应用程序可供用户使用。 首先，开发人员[将应用程序上传](cloud-services-how-to-create-deploy-portal.md)到该平台的暂存区域。 当开发人员准备好使应用程序上线后，他们会使用 Azure 门户从过渡环境切换到生产环境。 [暂存与生产之间的这种切换](cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production)无需停机就可完成，这使运行的应用程序可在不打扰其用户的情况下升级到新版本。
 
 ## <a name="monitoring"></a>监视
 云服务还提供监视功能。 像 Azure 虚拟机一样，它将检测到发生故障的物理服务器，并在新的计算机上重新启动原先在该服务器上运行的 VM。 云服务不仅检测硬件故障，还检测发生故障的 VM 和应用程序。 与虚拟机不同，它在每个 Web 角色和辅助角色中都存在有代理，因此它能够在发生故障时启动新的 VM 和应用程序实例。

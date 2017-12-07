@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: ff857e83a37b95bceb751539bb34e9fb7f202931
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58b37cf8927926cb128928e4d0e438945074f6e5
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>演练步骤 1：创建机器学习工作区
 这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第一步。
@@ -34,15 +34,6 @@ ms.lasthandoff: 10/11/2017
 <!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
 
 若要使用机器学习工作室，需要具有 Microsoft Azure 机器学习工作区。 此工作空间包含创建、管理和发布试验所需的工具。  
-
-<!--
-## To create a workspace
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
-2. In the  Azure services panel, click **MACHINE LEARNING**.  
-   ![Create workspace][1]
-3. Click **CREATE AN ML WORKSPACE**.
-4. On the **QUICK CREATE** page, enter your workspace information and then click **CREATE AN ML WORKSPACE**.
--->
 
 Azure 订阅的管理员需创建工作区，然后你将添加为所有者或参与者。 有关详细信息，请参阅[创建和共享 Azure 机器学习工作区](create-workspace.md)。
 

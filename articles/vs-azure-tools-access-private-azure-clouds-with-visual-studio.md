@@ -1,5 +1,5 @@
 ---
-title: "使用 Visual Studio 访问私有 Azure 云 | Microsoft Docs"
+title: "使用 Visual Studio 访问私有 Azure 云 | Microsoft 文档"
 description: "了解如何通过使用 Visual Studio 访问私有云资源。"
 services: visual-studio-online
 documentationcenter: na
@@ -12,28 +12,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 03/19/2017
+ms.date: 11/13/2017
 ms.author: kraigb
-ms.openlocfilehash: b2578c837732ab05d538e9b896ed3a3035075a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54acfc7c686dc7025368c381d79cde93d7d48fc5
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>使用 Visual Studio 访问私有 Azure 云
-默认情况下，Visual Studio 支持公有 Azure 云 REST 终结点。 在本主题中，介绍如何使用私有云证书访问 Visual Studio 中的私有云并与之交互。
 
-## <a name="to-access-a-private-azure-cloud-in-visual-studio"></a>在 Visual Studio 中访问私有 Azure 云
-1. 在私有云的 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中下载发布设置文件，或联系管理员获取发布设置文件。 在 Azure 的公共版中，用于下载的链接是 [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/)。 （下载的文件应使用 `.publishsettings` 扩展名）
+默认情况下，Visual Studio 支持 Azure 云 REST 终结点。 在本文中，介绍如何使用私有云证书访问 Visual Studio 中的私有云并与之交互。
 
-1. 打开 Visual Studio
+1. 在私有云的 Azure 门户中下载发布设置文件，或联系管理员获取发布设置文件。 （该文件的扩展名为 `.publishsettings`。）
 
-1. 在“服务器资源管理器”中，右键单击“Azure”节点，并选择上下文菜单中的”管理和筛选订阅”。
-   
+1. 在 Visual Studio 服务器资源管理器中，右键单击 Azure 节点，并选择“管理和筛选订阅”。
+
     ![管理订阅命令](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
 
 1. 在“管理 Microsoft Azure 订阅”对话框中，选择“证书”选项卡，并选择“导入”。
-   
+
     ![导入 Azure 证书](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790779.png)
 
 1. 在“导入 Microsoft Azure 订阅”对话框中，选择“浏览”。
@@ -49,7 +47,4 @@ ms.lasthandoff: 10/11/2017
     ![导入发布设置文件](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
 
     证书已从发布设置文件导入到 Visual Studio 中，现可与私有云资源进行交互。
-   
-## <a name="next-steps"></a>后续步骤
-- [从 Visual Studio 发布到 Azure 云服务](https://msdn.microsoft.com/library/azure/ee460772.aspx)
-- [如何：下载并导入发布设置和订阅信息](https://msdn.microsoft.com/library/dn385850\(v=nav.70\).aspx)
+

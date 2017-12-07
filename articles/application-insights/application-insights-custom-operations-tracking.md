@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 6412445f4e7a9b639ae9a38a44ff51038c6fcc00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18712b1c19fc81e290ead62f73a177874ebe86cd
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -33,7 +33,7 @@ Azure Application Insights SDK 自动跟踪传入的 HTTP 请求和对依赖服�
 ## <a name="overview"></a>概述
 操作是由应用程序运行的一项逻辑工作。 它具有名称、开始时间、持续时间、结果和执行上下文（如用户名、属性和结果）。 如果操作 A 由操作 B 启动，则操作 B 设置为 A 的父级。一个操作只能有一个父操作，但可以有许多子操作。 有关操作和遥测关联的详细信息，请参阅 [Azure Application Insights 遥测关联](application-insights-correlation.md)。
 
-在 Application Insights.NET SDK 中，操作由抽象类 [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs) 及其后代 [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) 和 [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs) 描述。
+在 Application Insights.NET SDK 中，操作由抽象类 [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) 及其后代 [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) 和 [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) 描述。
 
 ## <a name="incoming-operations-tracking"></a>传入操作跟踪 
 Application Insights Web SDK 自动收集 ASP.NET 应用程序（在 IIS 管道中运行）和所有 ASP.NET Core 应用程序的 HTTP 请求。 有其他平台和框架的社区支持解决方案。 但是，如果应用程序不受任何标准或社区支持解决方案的支持，则可手动进行检测。

@@ -1,6 +1,6 @@
 ---
-title: "如何通过 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务 | Microsoft Docs"
-description: "了解如何使用 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务。"
+title: "如何通过 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务 | Microsoft 文档"
+description: "了解如何使用 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务"
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -12,192 +12,119 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 11/10/2017
 ms.author: kraigb
-ms.openlocfilehash: d5de4f5a7357cf5adde7773867356d47ad447bab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5d41ab47c17a024900efc88ba0a006da63ab246
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>如何：通过 Visual Studio 将 Web 应用程序迁移和发布到 Azure 云服务
-要利用 Azure 的托管服务和伸缩性，可能要将 Web 应用程序迁移和发布到 Azure 云服务。 只需对现有 Web 应用程序进行最小程度的更改，便可在 Azure 中运行它。
 
-> [!NOTE]
-> 本主题是关于如何部署到云服务，而不是部署到网站。 有关如何部署到网站的信息，请参阅[在 Azure 应用服务中部署 Web 应用](app-service/app-service-deploy-local-git.md)。
->
->
+要利用 Azure 的托管服务和缩放功能，可能需要将 Web 应用程序迁移和部署到 Azure 云服务。 只需要很小的更改。 本文仅介绍了如何部署到云服务；对于应用服务，请参阅[在 Azure 应用服务中部署 Web 应用](app-service/app-service-deploy-local-git.md)。
 
-有关 Visual C# 和 Visual Basic 支持的特定模板列表，请参阅本主题下文中的**支持的项目模板**部分。
+> [!Important]
+> 仅特定的 ASP.NET、Silverlight、WCF 和 WCF 工作流项目支持此迁移， 而 ASP.NET Core 项目不支持。 请参阅[支持的项目模板](#supported-project-templates)。
 
-必须首先从 Visual Studio 中为 Azure 启用 Web 应用程序。 下图显示了通过添加用于部署的 Azure 项目，来发布现有 Web 应用程序的关键步骤。 此过程使用所需的 Web 角色，将 Azure 项目添加到解决方案。 基于拥有的 Web 项目类型，如果服务包需要额外的部署程序集，则该程序集的项目属性也将更新。
+## <a name="migrate-a-project-to-cloud-services"></a>将项目迁移到云服务
 
-![将 Web 应用程序发布到 Microsfot Azure](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC748917.png)
+1. 右键单击 Web 应用程序项目，然后选择“转换”>“转换到 Microsoft Azure 云服务项目”。 （如果解决方案中已有 Web 角色项目，则不会显示此命令。）
+1. Visual Studio 在包含所需 Web 角色的解决方案中创建一个云服务项目。 该项目的名称与加上后缀 `.Azure` 的应用程序项目相同。
+1. 对于 MVC 2、MVC 3、MVC 4 和 Silverlight 业务应用程序需要的任何程序集，Visual Studio 还将“复制本地”属性设置为 true。 此属性将这些程序集添加到用于部署的服务包。
 
-> [!NOTE]
-> 只有对于解决方案中的 Web 项目才会显示“转换”>“转换为 Azure 云服务项目”命令。 例如，该命令对解决方案中的 Silverlight 项目不可用。
-> 创建服务包或者将应用程序发布到 Azure 时，可能会出现警告或错误。 这些警告和错误可以帮助你在部署到 Azure 之前解决问题。 例如，你可能会收到有关缺少程序集的警告。 有关如何将任何警告视为错误的详细信息，请参阅[使用 Visual Studio 配置 Azure 云服务项目](vs-azure-tools-configuring-an-azure-project.md)。 当生成应用程序、使用计算模拟器在本地运行应用程序，或者将它发布到 Azure 时，可能会在“错误列表”窗口看到以下错误：“指定的路径和/或文件名太长”。 出现此错误的原因是 Azure 项目的完全限定名称太长。 项目名称，包括完整路径的长度不能超过 146 个字符。 例如，以下是完整的项目名称，包括为 Silverlight 应用程序创建的 Azure 项目的文件路径：`c:\users\<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj`。 可能需要将解决方案移到路径较短的不同目录，以减少完全限定的项目名称的长度。
->
->
+   > [!Important]
+   > 如果有此 Web 应用程序所需的其他程序集或文件，必须手动设置这些文件的属性。 有关如何设置这些属性的信息，请参阅[在服务包中包含文件](#include-files-in-the-service-package)。
 
-要从 Visual Studio 将 Web 应用程序迁移和发布到 Azure，请执行以下步骤。
+### <a name="errors-and-warnings"></a>错误和警告
 
-## <a name="enable-a-web-application-for-deployment-to-azure"></a>启用要部署到 Azure 的 Web 应用程序
-### <a name="to-enable-a-web-application-for-deployment-to-azure"></a>启用要部署到 Azure 的 Web 应用程序
-1. 要启用要部署到 Azure 的 Web 应用程序，请在解决方案中打开 Web 项目的快捷菜单，并选择“添加 Azure 部署项目”。
+发生的任何警告或错误都会指示在部署到 Azure 之前要解决的问题，例如缺少程序集。
 
-    执行以下操作：
+如果构建应用程序，请使用计算模拟器在本地运行它，或将其发布到 Azure，你可能会看到错误：“指定的路径、文件名太长，或两者都太长。” 此错误表示完全限定的 Azure 项目名称的长度超过了 146 个字符。 要解决该问题，请将你的解决方案移到路径较短的其他文件夹中。
 
-   * 将名为 `<name of the web project>.Azure` 的 Azure 项目添加到应用程序的解决方案中。
-   * 将 Web 项目的 Web 角色添加到此 Azure 项目中。
-   * 对于 MVC 2、MVC 3、MVC 4 和 Silverlight 业务应用程序需要的任何程序集，“本地复制”属性设置为 true。 这会将这些程序集添加到用于部署的服务包。
+有关如何将任何警告视为错误的详细信息，请参阅[使用 Visual Studio 配置 Azure 云服务项目](vs-azure-tools-configuring-an-azure-project.md)。
 
-   > [!IMPORTANT]
-   > 如果有此 Web 应用程序所需的其他程序集或文件，必须手动设置这些文件的属性。 有关如何设置这些属性的信息，请参阅本文下文中的**在服务包中包含文件**部分。
-   >
-   > [!NOTE]
-   > 如果在解决方案中的 Azure 项目内已存在特定 Web 项目的 Web 角色，则“转换”>“转换为 Azure 云服务项目”不会显示在此 Web 项目的快捷菜单中。
-   >
-   >
+### <a name="test-the-migration-locally"></a>在本地测试迁移
 
-   如果 Web 应用程序中有多个 Web 项目，且希望为每个 Web 项目都创建 Web 角色，则必须为每个 Web 项目执行此过程中的步骤。 这会为每个 Web 角色创建独立的 Azure 项目。 每个 Web 项目都可以单独发布。 或者，可以将另一个 Web 角色手动添加到 Web 应用程序中的现有 Azure 项目。 为此，请打开 Azure 项目中“角色”文件夹的快捷菜单，选择“添加”，在“解决方案中的 Web 角色项目”中，选择要添加为 Web 角色的项目，并选择“确定”按钮。
+1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击添加的云服务项目，然后选择“设为启动项目”。
+1. 选择“调试 > 启动调试” (F5) 以启动 Azure 调试环境。 该环境专门提供了各种 Azure 服务的仿真。
 
-## <a name="use-an-azure-sql-database-for-your-application"></a>为应用程序使用 Azure SQL 数据库
-如果使用内部 SQL Server 数据库的 Web 应用程序具有连接字符串，必须将此连接字符串改为使用 Azure 托管的 SQL 数据库实例。
+### <a name="use-an-azure-sql-database-for-your-application"></a>为你的应用程序使用 Azure SQL 数据库
 
-> [!IMPORTANT]
-> 订阅必须允许使用 SQL 数据库。 如果从 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)访问订阅，可以确定订阅提供哪些服务。 以下说明适用于已发行的 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)。 如果使用的是 [Azure portal](http://portal.microsoft.com)，请跳到下一过程。|
->
->
+如果你的 Web 应用程序具有使用本地 SQL Server 数据库的连接字符串，则必须将数据库迁移到 Azure SQL 数据库，然后更新连接字符串。 有关此过程的指导，请参阅以下主题：
 
-### <a name="to-use-a-sql-database-instance-in-your-web-role-for-your-connection-string"></a>为连接字符串使用 Web 角色中的 SQL 数据库实例
-1. 若要在 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中创建 SQL 数据库的实例，请执行以下文章中所述的步骤：[Create a SQL Database Server](http://go.microsoft.com/fwlink/?LinkId=225109)（创建 SQL 数据库服务器）。
+- [将 SQL Server 数据库迁移到云中的 SQL 数据库](sql-database/sql-database-cloud-migrate.md)
+- [使用 .NET (C#) 和 Visual Studio 连接并查询 Azure SQL 数据库](sql-database/sql-database-connect-query-dotnet-visual-studio.md)。
 
-   > [!NOTE]
-   > 为 SQL 数据库实例设置防火墙规则时，必须选中“允许其他 Azure 服务访问此服务器”复选框。
-   >
-   >
-2. 若要创建用于连接字符串的 SQL 数据库实例，请在下一部分中执行以下文章中所述的步骤：[Create a SQL Database](http://go.microsoft.com/fwlink/?LinkId=225110)（创建 SQL 数据库）。
-3. 要复制 ADO.NET 连接字符串以用作连接字符串，请在 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中执行以下步骤。  
+## <a name="publish-the-application-to-azure-cloud-service"></a>将应用程序发布到 Azure 云服务
 
-   1. 选择“数据库”按钮，并打开创建 SQL 数据库实例所用订阅的节点。
-   2. 若要显示可用的 SQL 数据库实例，请选择“SQL 数据库”节点。
-   3. 若要显示数据库的属性，请选择该数据库。 此时会显示“属性”视图。
-
-      > [!NOTE]
-      > 如果未显示“属性”视图，可能需要使用分隔条将其打开。
-      >
-      >
-   4. 若要查看连接字符串，请选择“视图”旁边的省略号 (...) 按钮。
-
-      此时会显示“连接字符串”对话框。
-   5. 要复制 ADO.NET 连接字符串，请突出显示文本，并按 Ctrl+C 键。
-   6. 若要关闭对话框，请选择“关闭”按钮。
-4. 要替换 web.config 文件中的连接字符串，改用此 SQL 数据库实例，请打开 web.config 文件，突出显示现有的连接字符串条目，并按 Ctrl+V 键。 该 SQL 数据库实例的 ADO.NET 连接字符串会替换现有连接字符串。
-5. 此外，还必须将参数`MultipleActiveResultSets=True` 添加到连接字符串。 连接字符串应为以下格式：
-
-    ```
-    connectionString=”Server=tcp:<database_server>.database.windows.net,1433;Database=<database_name>;User ID=<user_name>@<database_server>;Password=<myPassword>;Trusted_Connection=False;Encrypt=True;MultipleActiveResultSets=True"
-    ```
-6. （可选）直接更改 web.config 文件中的连接字符串的替代方法是将一段添加到其中一个 web.config 转换文件，取决于使用来创建服务包的生成配置。 打开 Web.Debug.Config 文件或Web.Release.Config 文件。 将以下节添加到此文件：
-
-    ```
-    XMLCopy<connectionStrings><addname="DefaultConnection"connectionString="Server=tcp:<database_server>.database.windows.net,1433;Database=<database_name>;User ID=<user_name>@<database_server>;Password=<myPassword>;Trusted_Connection=False;Encrypt=True;MultipleActiveResultSets=True"xdt:Transform="SetAttributes"xdt:Locator="Match(name)"/></connectionStrings>
-    ```
-7. 保存已修改的文件，并重新发布应用程序。
-
-### <a name="to-use-an-instance-of-sql-database-by-using-the-azure-classic-portal"></a>通过 Azure 经典门户使用 SQL 数据库实例
-1. 在 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)中，选择“SQL 数据库”节点。
-
-   * 如果显示了要使用的 SQL 数据库实例，请选择打开它。
-   * 如果尚未创建任何实例，请选择相应的链接，并创建一个实例。
-2. 打开或创建数据库实例后，选择“连接字符串”链接。
-3. 在页面底部，选择配置防火墙设置的链接，接受默认值或配置所需的值。
-4. 复制 ADO.NET 连接字符串，粘贴到 web.config 文件中，覆盖本地数据库的旧连接字符串，确保添加 `MultipleActiveResultSets=True`。
-
-## <a name="publish-a-web-application-to-azure"></a>将 Web 应用程序发布到 Azure
-### <a name="to-publish-a-web-application-to-azure"></a>将 Web 应用程序发布到 Azure
-1. 若要使用 Azure 计算模拟器测试本地开发环境中的应用程序，请打开 Web 角色的 Azure 项目的快捷菜单，并选择“设置为启动项目”。 然后选择“调试”、“启动调试”（键盘操作：F5）。
-
-    此时会显示“启动 Azure 调试环境”对话框，并在浏览器中启动应用程序。 有关如何在计算模拟器中启动每种类型的 Web 应用程序的具体信息，请参阅本部分中的表格。
-2. 要设置应用程序的服务以将其发布到 Azure，必须准备好一个 Microsoft 帐户和 Azure 订阅。 使用以下主题中所述的步骤来设置服务：[Prepare to publish or deploy an Azure application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)（准备从 Visual Studio 发布或部署 Azure 应用程序）。
-3. 要将 Web 应用程序发布到 Azure，请打开 Web 项目的快捷菜单，然后选择“发布到 Azure”。
-
-    此时会显示“发布 Azure 应用程序”对话框，Visual Studio 将启动部署过程。 有关如何发布应用程序的详细信息，请参阅 [Publishing a Cloud Service using the Azure Tools](vs-azure-tools-publishing-a-cloud-service.md)（使用 Azure Tools 发布云服务）中的 **Publish an Azure Application from Visual Studio**（从 Visual Studio 发布 Azure 应用程序）部分。
-
-   > [!NOTE]
-   > 还可以从 Azure 项目发布 Web 应用程序。 为此，请打开 Azure 项目的快捷菜单，并选择“发布”。
-   >
-   >
-4. 若要查看部署进度，可以查看“Azure 活动日志”窗口。 当启动部署过程时，会自动显示此日志。 可在活动日志中展开行项以显示详细信息，如下图所示：
+1. 如[准备从 Visual Studio 发布或部署 Azure 应用程序](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)中所述，在 Azure 订阅中创建必需的云服务和存储帐户。
+1. 在 Visual Studio 中，右键单击应用程序项目，然后选择“发布到 Microsoft Azure...”（与“发布...”命令不同）。
+1. 在出现的“发布 Azure 应用程序”中，使用你的 Azure 订阅帐户登录，然后选择“下一步 >”。
+1. 在“设置 > 通用设置”选项卡中，从“云服务”下拉列表中选择目标云服务以及你选择的环境和配置。 
+1. 在“设置 > 高级设置”中，选择要使用的存储帐户，然后选择“下一步 >”。
+1. 在“诊断”中，选择是否将信息发送至 Application Insights。
+1. 选择“下一步 >”以查看摘要，然后选择“发布”以开始部署。
+1. Visual Studio 将打开一个活动日志窗口，你可以在其中跟踪进度：
 
     ![VST_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
-5. （可选）若要取消部署过程，请打开活动日志中的行项目的快捷菜单，并选择“取消并删除”。 这会停止部署过程，并从 Azure 中删除部署环境。
 
-   > [!NOTE]
-   > 若要在已完成部署后删除此部署环境，必须使用 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)。
-   >
-   >
-6. （可选）启动角色实例后，Visual Studio 会自动在“云资源管理器”的“Azure 计算”节点中显示部署环境。 可以从此位置查看单个角色实例的状态。
+1. （可选）要取消部署过程，请右键单击活动日志中的行项目，然后选择“取消并删除”。 此命令会停止部署过程，并从 Azure 中删除部署环境。 注意：要在部署后删除这个部署环境，必须使用 [Azure门户](https://portal.azure.com)。
+1. （可选）角色实例启动后，Visual Studio 会自动在“服务器资源管理器 > 云服务”节点中显示部署环境。 可以从此位置查看单个角色实例的状态。
+1. 要在部署后访问你的应用程序，当 Azure 活动日志中显示“已完成”状态以及 URL 时，请选择部署旁边的箭头。 有关如何从 Azure 启动特定类型的 Web 应用程序的详细信息，请参阅下表。
 
-    下图显示了“服务器资源管理器”中仍处于“正在初始化”状态中的角色实例：
+## <a name="using-the-compute-emulator-and-starting-application-in-azure"></a>在 Azure 中使用计算模拟器并启动应用程序
 
-    ![VST_DeployComputeNode](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744134.png)
-7. 若要在部署后访问应用程序，请在“Azure 活动日志”中显示了“已完成”状态时，选择部署旁边的箭头。 这会显示 Web 应用程序在 Azure 中的 URL。 有关如何从 Azure 启动特定类型的 Web 应用程序的详细信息，请参阅下表。
+通过选择“调试 > 启动调试”(F5)，可以在连接到 Visual Studio 调试程序的浏览器中启动所有应用程序类型。 通过 ASP.NET 的空白 Web 应用程序项目，必须先在应用程序中添加一个 `.aspx` 页面，并将其设置为 Web 项目的起始页。
 
-    下表列出了有关如何从 Azure 启动特定 Web 应用程序，或者使用 Azure 计算模拟器在本地运行或调试 Web 应用程序的详细信息：
+下表提供了有关在 Azure 中启动应用程序的详细信息：
 
-   | Web 应用程序类型 | 使用计算模拟器本地运行/调试 | 在 Azure 中运行 |
+   | Web 应用程序类型 | 在 Azure 中运行 |
    | --- | --- | --- |
-   | ASP.NET Web 应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |选择“Azure 活动日志”的“部署”选项卡中显示的 URL 超链接，以便在浏览器中加载起始页。 |
-   | ASP.NET MVC 2 Web 应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |选择“Azure 活动日志”的“部署”选项卡中显示的 URL 超链接，以便在浏览器中加载起始页。 |
-   | ASP.NET MVC 3 Web 应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |选择“Azure 活动日志”的“部署”选项卡中显示的 URL 超链接，以便在浏览器中加载起始页。 |
-   | ASP.NET MVC 4 Web 应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |选择“Azure 活动日志”的“部署”选项卡中显示的 URL 超链接，以便在浏览器中加载起始页。 |
-   | ASP.NET 空 Web 应用程序 |必须在将应用程序设置为起始页的 Web 项目中添加 .aspx 页。 然后，在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 F5 键）。 |如果应用程序中包含默认的 .aspx 页，请选择“Azure 活动日志”的“部署”选项卡中显示的 URL 超链接，随后会在浏览器中加载此页。 如果有不同的 .aspx 页，则需要使用以下格式为 URL 导航到此特定页：`<url for deployment>/<name of page>.aspx` |
-   | Silverlight 应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |需要使用以下格式的 URL 导航到应用程序的特定页：`<url for deployment>/<name of page>.aspx` |
-   | Silverlight 业务应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |需要使用以下格式的 URL 导航到应用程序的特定页：`<url for deployment>/<name of page>.aspx` |
-   | Silverlight 导航应用程序 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |需要使用以下格式的 URL 导航到应用程序的特定页：`<url for deployment>/<name of page>.aspx` |
-   | WCF 服务应用程序 |必须将 .svc 文件设置为 WCF 服务项目的起始页。 然后，在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 F5 键）。 |需要使用以下格式的 URL 导航到应用程序的 svc 文件：`<url for deployment>/<name of service file>.svc` |
-   | WCF 工作流服务应用程序 |必须将 .svc 文件设置为 WCF 服务项目的起始页。 然后，在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 F5 键）。 |需要使用以下格式的 URL 导航到应用程序的 svc 文件：`<url for deployment>/<name of service file>.svc` |
-   | ASP.NET 动态实体 |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |必须更新连接字符串（请参阅下一部分）。 另外，需要使用以下格式的 URL 导航到应用程序的特定页：`<url for deployment>/<name of page>.aspx` |
-   | ASP.NET 动态数据 Linq to SQL |在菜单栏中选择“调试”、“启动调试”（键盘操作：选择 **F5** 键）。 |必须遵循以下过程中的步骤：为应用程序使用 SQL Azure 数据库（请参阅本主题前面的部分）。 另外，需要使用以下格式的 URL 导航到应用程序的特定页：`<url for deployment>/<name of page>.aspx` |
+   | ASP.NET Web 应用程序<br/>（包括 MVC 2、MVC 3、MVC 4） | 选择 Azure 活动日志的“部署”选项卡中的 URL。 |
+   | ASP.NET 空 Web 应用程序 | 如果你的应用程序中有默认的 `.aspx` 页面，请选择 Azure 活动日志的“部署”选项卡中的 URL。 要导航到其他页面，请在浏览器中输入以下窗体的 URL：`<deployment_url>/<page_name>.aspx` |
+   | Silverlight 应用程序<br/>Silverlight 业务应用程序<br/>Silverlight 导航应用程序 | 使用以下 URL 窗体导航到应用程序的特定页面：`<deployment_url>/<page_name>.aspx` |
+    WCF 服务应用程序<br/>WCF 工作流服务应用程序 | 将 `.svc` 文件设置为 WCF 服务项目的起始页。 然后导航到 `<deployment_url>/<service_file>.svc`。 |
+   | ASP.NET 动态实体<br/>ASP.NET 动态数据 Linq to SQL | 如下一部分所述更新连接字符串。 然后导航到 `<deployment_url>/<page_name>.aspx`。 对于 Linq to SQL，你必须使用 Azure SQL 数据库。 |
 
 ## <a name="update-a-connection-string-for-aspnet-dynamic-entities"></a>为 ASP.NET 动态实体更新连接字符串
-### <a name="to-update-a-connection-string-for-aspnet-dynamic-entities"></a>为 ASP.NET 动态实体更新连接字符串
-1. 若要创建可用于 ASP.NET 动态实体 Web 应用程序的 SQL Azure 数据库，必须遵循本主题上文中**为应用程序使用 SQL Azure 数据库**过程中的步骤。
-2. 从 [Azure 经典门户](http://go.microsoft.com/fwlink/?LinkID=213885)添加此数据库所需的表和字段。
-3. 在 web.config 文件中，这种类型的应用程序的连接字符串具有以下格式：  
 
-    ```
+1. 如前面 (#use-an-azuresql-database-for-your-application) 中所述，为 ASP.NET 动态实体 Web 应用程序创建 SQL Azure 数据库。
+1. 从 Azure 门户添加需要用于此数据库的表和字段。
+1. 使用以下格式在 `web.config` 文件中指定连接字符串并保存该文件：
+
+    ```xml
     <addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=<server name>\SQLEXPRESS;initial catalog=<database name>;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
     ```
 
     使用 SQL Azure 数据库的 ADO.NET 连接字符串更新 *connectionString* 值，如下所示：
 
-    ```
+    ```xml
     XMLCopy<addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Server=tcp:<SQL Azure server name>.database.windows.net,1433;Database=<database name>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
     ```
-4. 对连接字符串做出更改后，若要保存 web.config 文件，请在菜单栏上选择“文件”、“保存 web.config”。
 
 ## <a name="supported-project-templates"></a>支持的项目模板
-要将 Web 应用程序发布到 Azure，应用程序必须使用下表中列出的适用于 C# 或 Visual Basic 的项目模板之一。
 
-| 项目模板组 | 项目模板 |
+可以迁移并发布到云服务的应用程序必须使用下表中的一个模板。 不支持 ASP.NET Core。
+
+| 模板组 | 项目模板 |
 | --- | --- |
-| Web |ASP.NET Web 应用程序 |
-| Web |ASP.NET MVC 2 Web 应用程序 |
-| Web |ASP.NET MVC 3 Web 应用程序 |
-| Web |ASP.NET MVC 4 Web 应用程序 |
-| Web |ASP.NET 空 Web 应用程序 |
-| Web |ASP.NET MVC 2 空 Web 应用程序 |
-| Web |ASP.NET 动态数据实体 Web 应用程序 |
-| Web |ASP.NET 动态数据实体 Linq to SQL Web 应用程序 |
-| Silverlight |Silverlight 应用程序 |
-| Silverlight |Silverlight 业务应用程序 |
-| Silverlight |Silverlight 导航应用程序 |
-| WCF |WCF 服务应用程序 |
-| WCF |WCF 工作流服务应用程序 |
-| 工作流 |WCF 工作流服务应用程序 |
+| Web | ASP.NET Web 应用程序 (.NET Framework) |
+| Web | ASP.NET MVC 2 Web 应用程序 |
+| Web | ASP.NET MVC 3 Web 应用程序 |
+| Web | ASP.NET MVC 4 Web 应用程序 |
+| Web | ASP.NET 空白 Web 应用程序（或站点） |
+| Web | ASP.NET MVC 2 空 Web 应用程序 |
+| Web | ASP.NET 动态数据实体 Web 应用程序 |
+| Web | ASP.NET 动态数据实体 Linq to SQL Web 应用程序 |
+| Silverlight | Silverlight 应用程序 |
+| Silverlight | Silverlight 业务应用程序 |
+| Silverlight | Silverlight 导航应用程序 |
+| WCF | WCF 服务应用程序 |
+| WCF | WCF 工作流服务应用程序 |
+| 工作流 | WCF 工作流服务应用程序 |
 
 ## <a name="next-steps"></a>后续步骤
-关于发布的详细信息，请参阅[准备从 Visual Studio 发布或部署 Azure 应用程序](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)。 另请参阅 [Setting Up Named Authentication Credentials](vs-azure-tools-setting-up-named-authentication-credentials.md)（设置命名的身份验证凭据）。
+
+- [准备从 Visual Studio 发布或部署 Azure 应用程序](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)
+- [设置命名的身份验证凭据](vs-azure-tools-setting-up-named-authentication-credentials.md)。

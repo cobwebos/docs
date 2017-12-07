@@ -3,17 +3,17 @@ title: "Azure IoT Edge C# 模块 | Microsoft Docs"
 description: "使用 C# 代码创建 IoT Edge 模块，并将它部署到边缘设备"
 services: iot-edge
 keywords: 
-author: JimacoMS2
+author: kgremban
 manager: timlt
 ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 35a38be747f7bb75ed8865dedbd446a43e5397a8
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b8afc266cd416f39a895285d05b8ff323fb46330
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>开发 C# IoT Edge 模块，并将它部署到模拟设备 - 预览
 
@@ -269,7 +269,7 @@ ms.lasthandoff: 11/30/2017
     {
        "routes":{
           "sensorToFilter":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filterModule/inputs/input1\")",
-          "filterToIoTHub":"FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+          "filterToIoTHub":"FROM /messages/modules/filterModule/outputs/output1 INTO $upstream"
        }
     }
     ```

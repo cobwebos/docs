@@ -1,5 +1,5 @@
 ---
-title: "Azure 配额错误 | Microsoft Docs"
+title: "Azure 配额错误 | Microsoft 文档"
 description: "介绍如何解决资源配额错误。"
 services: azure-resource-manager,azure-portal
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 11/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a8024a12c4a79e92e37df0a56b6e6bd0cb6a8d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -93,9 +93,29 @@ Virtual Machines                             0 10000 Count
 
 ### <a name="solution-3"></a>解决方案 3
 
-如果需要提高配额限制，请前往门户并提交支持问题以增加你在要部署区域内的配额。
+若要请求增加配额，请转到门户并提出支持问题。 在支持问题中，为你想要在其中进行部署的区域请求增加配额。
 
 > [!NOTE]
 > 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果需要在美国西部部署 30 个核心，则必须在美国西部寻求 30 个 Resource Manager 核心。 如果需要在有权访问的任何区域内部署 30 个核心，则应在所有区域内请求 30 个 Resource Manager 核心。
 >
 >
+
+1. 选择“订阅”。
+
+   ![订阅](./media/resource-manager-quota-errors/subscriptions.png)
+
+2. 选择需要增加配额的订阅。
+
+   ![选择订阅](./media/resource-manager-quota-errors/select-subscription.png)
+
+3. 选择“使用情况 + 配额”
+
+   ![选择使用情况和配额](./media/resource-manager-quota-errors/select-usage-quotas.png)
+
+4. 在右上角选择“请求增加”。
+
+   ![请求增加](./media/resource-manager-quota-errors/request-increase.png)
+
+5. 填写你需要增加的配额类型的表单。
+
+   ![填写表单](./media/resource-manager-quota-errors/forms.png)

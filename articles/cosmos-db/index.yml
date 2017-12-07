@@ -6,14 +6,14 @@ metadata:
   title: Azure Cosmos DB 文档 - 教程和 API 参考
   description: 了解如何使用 Azure Cosmos DB 生成全局分布式多模型数据库。 教程介绍了如何生成和查询文档、键/值与图形数据库。
   services: cosmos-db
-  author: czeumault
-  manager: carolz
+  author: mimig
+  manager: jhubbard
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/29/2017
-  ms.author: carolz
+  ms.date: 12/05/2017
+  ms.author: mimig
 abstract:
   description: Azure Cosmos DB 是一种全球分布式多模型数据库服务。 使用这些快速入门、教程和示例，可通过使用常用 API 和编程模型开发文档数据库、键值数据库、宽列数据库和图形数据库。 然后了解在受益于全面 SLA 的同时，如何在任意数量的 Azure 区域之间复制数据，以及如何缩放吞吐量而不受你的存储影响。
   aside:
@@ -56,14 +56,14 @@ sections:
               - href: /azure/cosmos-db/create-mongodb-java
               - href: /azure/cosmos-db/create-mongodb-dotnet
               - href: /azure/cosmos-db/create-mongodb-nodejs
-              - href: null
+              - href: /azure/cosmos-db/create-mongodb-flask
               - href: null
           - title: Graph API
             values:
               - href: /azure/cosmos-db/create-graph-java
               - href: /azure/cosmos-db/create-graph-dotnet
               - href: /azure/cosmos-db/create-graph-nodejs
-              - href: /azure/cosmos-db/create-graph-python
+              - href: null
               - href: /azure/cosmos-db/create-graph-gremlin-console
           - title: 表 API
             values:

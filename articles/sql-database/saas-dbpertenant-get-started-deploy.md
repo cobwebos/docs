@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: sstein
-ms.openlocfilehash: 9b1ae219eb1278b818e3e1d4237d04fe54c980ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f91ddff81e51e7cc3d1561dc799013764530924b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署和探索多租户 SaaS 应用程序，该应用程序通过“每个租户各有数据库”模式使用 Azure SQL 数据库
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/15/2017
     > [!IMPORTANT]
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 创建新的资源组。 不要使用现有资源组、服务器或池。 不要将此应用程序、脚本或部署的任何资源用于生产。 使用完该应用程序时请删除此资源组，以停止相关计费。
 
-    * 资源组 - 选择“新建”，并为资源组提供一个**名称**。 
+    * **资源组** - 选择“新建”，并为资源组提供一个**名称**。 
     * 位置 - 从下拉列表中选择一个“位置”。
     * 用户 - 某些资源需要全局唯一的名称。 为了确保唯一性，请在每次部署应用程序时提供一个可将你创建的资源与 Wingtip 应用程序其他任何部署创建的资源区别开来的值。 建议使用简短的用户名，如姓名的首字母加上一个数字（例如 *af1*），然后将该名称用在资源组名称中（例如 *wingtip-af1*）。 **User** 参数只能包含字母、数字和连字符（不能有空格）。 第一个字符和最后一个字符必须是字母或数字（建议全部小写）。
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/15/2017
 1. 单击“下载 ZIP”并保存文件。
 1. 右键单击“WingtipTicketsSaaS-DbPerTenant-master.zip”文件，并选择“属性”。
 1. 在“常规”选项卡上，选择“取消阻止”，然后单击“应用”。
-1. 单击“确定”。
+1. 单击 **“确定”**。
 1. 解压缩文件。
 
 脚本位于 *..\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules* 文件夹中。
@@ -125,7 +125,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>开始在租户数据库上生成负载
 
-现在已部署应用，让我们投入使用！ Demo-LoadGenerator PowerShell 脚本将启动用于针对所有租户数据库运行的工作负荷。 许多 SaaS 应用上的实际负载通常是偶发性的且不可预测。 为了模拟这种加载类型，生成器生成了一种针对所有租户、按随机间隔对每个租户随机喷发的加载分布。 由于负载模式显现需要几分钟，因此在监视该负载之前最好让生成器运行至少 3 或 4 分钟。
+现在已部署应用，让我们投入使用！ Demo-LoadGenerator PowerShell 脚本将启动用于针对所有租户数据库运行的工作负荷。 许多 SaaS 应用上的实际加载通常是偶发性的且不可预测。 为了模拟这种加载类型，生成器生成了一种针对所有租户、按随机间隔对每个租户随机喷发的加载分布。 由于负载模式显现需要几分钟，因此在监视该负载之前最好让生成器运行至少 3 或 4 分钟。
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Utilities\\Demo-LoadGenerator.ps1 脚本。
 1. 按 **F5** 运行该脚本并启动负载生成器（目前保留默认参数值）。
@@ -173,7 +173,7 @@ ms.lasthandoff: 11/15/2017
 
 如果负载生成器已运行几分钟，那么应有足够的数据可用于开始了解一些内置于池和数据库中的监视功能。
 
-1. 浏览到服务器 **tenants1-dpt-&lt;USER&gt;**，然后单击“Pool1”，查看池的资源利用率（负载生成器一小时运行值如以下图表所示）：
+浏览到服务器 **tenants1-dpt-&lt;USER&gt;**，然后单击“Pool1”，查看池的资源利用率（负载生成器一小时运行值如以下图表所示）：
 
    ![监视池](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

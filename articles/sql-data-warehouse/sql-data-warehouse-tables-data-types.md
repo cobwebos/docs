@@ -3,8 +3,8 @@ title: "数据类型指南 - Azure SQL 数据仓库 | Microsoft Docs"
 description: "关于定义与 SQL 数据仓库兼容的数据类型的建议。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: barbkess
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 06/02/2017
-ms.author: shigu;barbkess
-ms.openlocfilehash: 53867eb7ba13cdfc47e3e47a9212b3c6839281da
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: 2bde5da8593c559e2afb33c9c4842695dc273ac3
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表定义数据类型的指南
 使用这些建议定义与 SQL 数据仓库兼容的表数据类型。 除兼容性外，最大限度降低数据类型大小将提高查询性能。

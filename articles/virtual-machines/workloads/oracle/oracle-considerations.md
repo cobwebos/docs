@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 011/28/2017
+ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: e903495e08001069fc33ddff5a343864fb7f7084
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle 解决方案及其部署
 本文介绍在 Microsoft Azure 上成功部署各种 Oracle 解决方案所需的信息。 这些解决方案以 Oracle 在 Azure Marketplace 中发布的虚拟机映像为基础。 若要获取当前可用映像的列表，请运行以下命令：

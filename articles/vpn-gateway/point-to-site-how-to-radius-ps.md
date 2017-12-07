@@ -13,21 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2017
-ms.author: cherylmc
-ms.openlocfilehash: 2afaf869af36c98f86feba238c6e1a30d3939ef8
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.date: 12/04/2017
+ms.author: anzaman
+ms.openlocfilehash: c78b3fe37a874fa25c7825046d91af62c39ab0d6
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell-preview"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell（预览版）
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell
 
 本文介绍如何创建一个 VNet，其中具有使用 RADIUS 身份验证的点到站点连接。 此配置仅适用于资源管理器部署模型。
-
->[!NOTE]
->P2S RADIUS 身份验证目前处于预览状态。
->
 
 点到站点 (P2S) VPN 网关用于创建从单个客户端计算机到虚拟网络的安全连接。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，则可使用 P2S VPN 这种解决方案来代替站点到站点 VPN。
 
@@ -71,7 +67,7 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 
 * 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
-* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* 安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="log-in"></a>登录
 

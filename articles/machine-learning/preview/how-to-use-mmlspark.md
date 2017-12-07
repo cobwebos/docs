@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 6714e8ad77693f0cdefe3e40c99153299e1c72d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 228ff59e2a495e8ca7c310214327bc846ecfb828
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>如何使用适用于 Apache Spark 的 Microsoft 机器学习库
 
@@ -68,7 +68,7 @@ packages:
 在 CLI 窗口中运行以下命令：
 
 ```
-az ml computetarget attach --name <myhdi> --address <myhdi-ssh.azurehdinsight.net> --username <sshusername> --password <sshpwd> --type cluster
+az ml computetarget attach cluster --name <myhdi> --address <myhdi-ssh.azurehdinsight.net> --username <sshusername> --password <sshpwd> 
 ```
 
 ```

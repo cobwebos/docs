@@ -1,5 +1,5 @@
 ---
-title: "如何从 Azure 故障回复到 VMware | Microsoft Docs"
+title: "如何从 Azure 故障回复到 VMware | Microsoft 文档"
 description: "将虚拟机故障转移到 Azure 之后，可以启动故障回复将虚拟机恢复到本地。 了解故障回复的步骤。"
 services: site-recovery
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 11/28/2017
 ms.author: ruturajd
-ms.openlocfilehash: 1ca34b262a51b694cb9541750588bbea139eeae1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad424818f41e6b48e754dd0d39771248a1cd04fb
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>从 Azure 故障回复到本地站点
 
@@ -135,3 +135,17 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="common-issues"></a>常见问题
 在执行故障回复之前，请确保 vCenter 处于连接状态。 否则，断开磁盘连接并将其附加回到虚拟机的操作会失败。
+
+### <a name="common-error-codes"></a>常见错误代码
+
+#### <a name="error-code-8038"></a>错误代码 8038
+
+由于错误导致本地虚拟机无法启动
+
+发生条件 
+1. 本地虚拟机在一个没有预配足够内存的主机上启动。
+
+解决方法
+1. 可以在 ESXi 主机上预配更多的内存。
+2. 将 VM 迁移到另一台有足够内存的 ESXi 主机上以启动虚拟机。
+

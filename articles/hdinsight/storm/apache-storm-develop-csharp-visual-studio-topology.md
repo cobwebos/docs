@@ -1,5 +1,5 @@
 ---
-title: "使用 Visual Studio 和 C# 的 Apache Storm 拓扑 — Azure HDInsight | Microsoft Docs"
+title: "使用 Visual Studio 和 C# 的 Apache Storm 拓扑 — Azure HDInsight | Microsoft 文档"
 description: "了解如何用 C# 创建 Storm 拓扑。 在 Visual Studio 中使用针对 Visual Studio 的 Hadoop 工具创建简单的字数统计拓扑。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/02/2017
+ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: d972def582ff8fee74c2eae59f4756eb1dcd0a70
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d777d467b3f0d4ef6101dffa551ec5c85feb209c
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -43,6 +43,9 @@ ms.lasthandoff: 11/03/2017
 > [!IMPORTANT]
 > 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)了解可能的不兼容问题。
 
+> [!WARNING]
+> 如果你在构建使用 SCP.NET 版本 1.0.0.x 的项目时遇到问题，请联系 Microsoft 支持部门以寻求帮助。
+
 ## <a name="install-visual-studio"></a>安装 Visual Studio
 
 通过安装以下 Visual Studio 版本之一，可以使用 SCP.NET 开发 C# 拓扑：
@@ -61,7 +64,7 @@ ms.lasthandoff: 11/03/2017
 
 ## <a name="install-java"></a>安装 Java
 
-从 Visual Studio 提交 Storm 拓扑时，SCP.NET 生成一个包含拓扑和依赖关系的 zip 文件。 这些 zip 文件用 Java 创建，因为该语言使用的格式与基于 Linux 的群集更兼容。
+从 Visual Studio 提交 Storm 拓扑时，SCP.NET 生成一个包含拓扑和依赖项的 zip 文件。 这些 zip 文件用 Java 创建，因为该语言使用的格式与基于 Linux 的群集更兼容。
 
 1. 在开发环境中安装 Java 开发人员工具包 (JDK) 7 或更高版本。 可以从 [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 获取 Oracle JDK。 也可以使用[其他 Java 分发](http://openjdk.java.net/)。
 

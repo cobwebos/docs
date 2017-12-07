@@ -1,5 +1,5 @@
 ---
-title: "在多租户应用中管理 Azure SQL 数据库架构 | Microsoft Docs"
+title: "在多租户应用中管理 Azure SQL 数据库架构 | Microsoft 文档"
 description: "在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构"
 keywords: "sql 数据库教程"
 services: sql-database
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: billgib
-ms.openlocfilehash: 346177be29ec196464f4f441858222ac5d5eb8c3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: e4b8e38d20ec408869f2228597afdf2f9620515b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构
 
@@ -40,12 +40,12 @@ ms.lasthandoff: 11/15/2017
 
 若要完成本教程，请确保满足以下先决条件：
 
-* 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip 票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip 票证 SaaS 多租户数据库应用程序。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)。
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> *本教程使用 SQL 数据库服务的功能，这些功能为有限预览版（弹性数据库作业）。如果希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。此预览版的功能有限，因此，如果存在相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。*
+> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供 给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
@@ -58,9 +58,9 @@ ms.lasthandoff: 11/15/2017
 
 有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能（不需其他服务或组件）。 此新版弹性作业目前为有限预览版。 此有限预览版目前支持 PowerShell 创建作业帐户，同时支持 T-SQL 创建和管理作业。
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序脚本
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
-可在 [WingtipTicketsSaaS-MultiTenantDB](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库中查看 Wingtip 票证 SaaS 多租户数据库脚本和应用程序源代码。 <!-- [Steps to download the Wingtip Tickets SaaS Multi-tenant Database scripts](saas-multitenantdb-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts)-->
+在 [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存储库中提供了 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。 
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>创建作业帐户数据库和新的作业帐户
 
@@ -89,13 +89,14 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 6. 修改语句：set @User = &lt;user&gt;，并将其替换为部署 Wingtip 票证 SaaS 多租户数据库应用程序时所用的用户值。
 7. 按 **F5** 运行脚本。
 
-    * sp\_add\_target\_group 创建目标组名称 DemoServerGroup，现在将目标成员添加到该组。
-    * sp\_add\_target\_group\_member 首先添加 server 目标成员类型，该类型认定在执行作业时该服务器（注意，这是包含租户数据库的 tenants1-mt-&lt;user&gt; 服务器）中的所有数据库都应包括在作业中；再添加 database 目标成员类型，也就是“golden”数据库 (basetenantdb)，该数据库位于 catalog-mt-&lt;ser&gt; 服务器上；最后添加 database 目标成员类型，用于包括在后面的教程中使用的 adhocreporting 数据库中。
-    * **sp\_add\_job** 创建名为“引用数据部署”的新作业。
-    * **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes。
-    * 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 使用这些查询可查看 lifecycle 列中的状态值，以确定何时作业成功地在租户数据库以及两个包含引用表的其他数据库上完成。
+在 DeployReferenceData.sql 脚本中观察以下内容：
+* sp\_add\_target\_group 创建目标组名称 DemoServerGroup，现在将目标成员添加到该组。
+* sp\_add\_target\_group\_member 首先添加 server 目标成员类型，该类型认定在执行作业时该服务器（注意，这是包含租户数据库的 tenants1-mt-&lt;user&gt; 服务器）中的所有数据库都应包括在作业中；再添加 database 目标成员类型，也就是“golden”数据库 (basetenantdb)，该数据库位于 catalog-mt-&lt;ser&gt; 服务器上；最后添加 database 目标成员类型，用于包括在后面的教程中使用的 adhocreporting 数据库中。
+* **sp\_add\_job** 创建名为“引用数据部署”的新作业。
+* **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes。
+* 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 使用这些查询可查看 lifecycle 列中的状态值，以确定何时作业成功地在租户数据库以及两个包含引用表的其他数据库上完成。
 
-1. 在 SSMS 中，浏览到 tenants1-mt-&lt;user&gt; 服务器上的租户数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”此时已添加到表中。
+在 SSMS 中，浏览到 tenants1-mt-&lt;user&gt; 服务器上的租户数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”此时已添加到表中。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>创建管理引用表索引的作业
@@ -105,11 +106,12 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 1. 在 SSMS 中，连接到 catalog-mt-&lt;User&gt;.database.windows.net 服务器中的 jobaccount 数据库。
 2. 在 SSMS 中，打开 …\\Learning Modules\\Schema Management\\OnlineReindex.sql。
-3. 按 F5 运行脚本
+3. 按 **F5** 运行脚本。
 
-    * sp\_add\_job 创建名为“Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885”的新作业。
-    * sp\_add\_jobstep 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新索引。
-    * 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成。
+在 OnlineReindex.sql 脚本中观察以下内容：
+* sp\_add\_job 创建名为“Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885”的新作业。
+* sp\_add\_jobstep 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新索引。
+* 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -121,7 +123,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 > * 更新所有租户数据库中的数据
 > * 在所有租户数据库中的表上创建索引
 
-[“即席分析”教程](saas-multitenantdb-adhoc-reporting.md)
+接下来，请尝试[即席报表教程](saas-multitenantdb-adhoc-reporting.md)。
 
 
 ## <a name="additional-resources"></a>其他资源

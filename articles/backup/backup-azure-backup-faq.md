@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 94b649d7949b6fbc2ec734afc955dabbfc84fc4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c91c320edb82ddfdc21372a168a2dc50449ce90
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure 备份组件。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -112,7 +112,6 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 | Windows Storage Server 2012 和最新的 SP |64 位 |Standard、Workgroup |
 | Windows Server 2012 R2 和最新的 SP |64 位 |Essential |
 | Windows Server 2008 R2 SP1 |64 位 |Standard、Enterprise、Datacenter、Foundation |
-| Windows Server 2008 SP2 |64 位 |Standard、Enterprise、Datacenter、Foundation |
 
 **对于 Azure VM 备份：**
 

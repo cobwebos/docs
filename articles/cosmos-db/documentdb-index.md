@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB：DocumentDB API 文章 | Microsoft Docs"
+title: "Azure Cosmos DB：DocumentDB API 文章 | Microsoft 文档"
 description: "特定于使用 Azure Cosmos DB 中的 DocumentDB API 创建文档数据库的所有文章列表。"
 services: cosmos-db
 author: mimig1
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: ce24e445177b7e2e499309f016478030efa6bfe8
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 8d618e00ed274f5d5705346a4ffd8281769de4e3
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-documentation"></a>Azure Cosmos DB: DocumentDB API 文档
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/26/2017
 
 ## <a name="quickstarts"></a>快速入门
 
-快速入门主题是使用 Azure Cosmos DB 创建可工作的应用程序的最快捷方法。 在每个快速入门中，将了解如何使用基于 UI 的 Azure 门户和常用编程语言创建使用 Azure Cosmos DB 的数据库解决方案。 可从 GitHub 区域克隆的 Web 应用可用于每个快速入门。 
+快速入门主题是使用 Azure Cosmos DB 创建可工作的应用程序的最快捷方法。 在每个快速入门中，将了解如何使用基于 UI 的 Azure 门户和常用编程语言创建使用 Azure Cosmos DB 的数据库解决方案。 可从 GitHub 克隆的 Web 应用可用于每个快速入门。 
 
 - [.NET + Azure 门户 + Web 应用](create-documentdb-dotnet.md)
 - [Java + Azure 门户 + Web 应用](create-documentdb-java.md)

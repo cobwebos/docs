@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/010/2017
+ms.date: 12/05/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0be8dd6d90edb7b32b6777c76c9778cda0dcd5ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb8fe1ea6d4de066744a6277c1aec96073c1703c
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/11/2017
 
   ![创建虚拟网络页](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "创建虚拟网络页")
 5. 验证“订阅”  是否正确。 可以使用下拉列表更改订阅。
-6. 单击“资源组”，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 单击“资源组”，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
 7. 接下来，选择 VNet 的“位置”  设置。 该位置确定要部署到此 VNet 的资源所在的位置。
 8. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”。 单击“创建”以创建 VNet。
 
@@ -96,8 +96,6 @@ ms.lasthandoff: 10/11/2017
 9. 单击“创建”后，仪表板上会出现一个磁贴，反映 VNet 的进度。 创建 VNet 时，该磁贴会更改。
 
   ![创建虚拟网络磁贴](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "创建虚拟网络")
-
-创建虚拟网络后，在 Azure 经典门户的“网络”页上，将看到“状态”下面列出了“已创建”。
 
 ## <a name="additionaladdress"></a>2.添加其他地址空间
 

@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则 | Microsoft Docs"
+title: "创建和管理 Azure Database for MySQL 的 MySQL 防火墙规则 | Microsoft 文档"
 description: "使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则"
 services: mysql
 author: v-chenyh
@@ -8,19 +8,19 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 0604b29fcd9849545886a783ae5bbb2cbb72f2ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: 63ea6337b35193420924096690ed15cc1d5ede25
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
 使用服务器级防火墙规则，管理员可以从指定的 IP 地址或某个范围的 IP 地址访问 Azure Database for MySQL 服务器。 
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
-1. 在 MySQL 服务器边栏选项卡上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”边栏选项卡。
+1. 在 MySQL 服务器页上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”页。
 
    ![Azure 门户 - 单击连接安全性](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
@@ -52,4 +52,4 @@ ms.lasthandoff: 10/11/2017
 * 单击“保存”以保存更改。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关连接到 Azure Database for MySQL 服务器的帮助，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)
+有关连接到 Azure Database for MySQL 服务器的帮助，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)

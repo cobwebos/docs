@@ -1,28 +1,22 @@
 ---
-title: "通过 Sysdig 监视 Azure 容器服务群集 | Microsoft Docs"
+title: "通过 Sysdig 监视 Azure 容器服务群集"
 description: "通过 Sysdig 监视 Azure 容器服务群集。"
 services: container-service
-documentationcenter: 
 author: sauryadas
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "容器, DC/OS, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: e61001161e632a5d2e513107e30f1eaf06103989
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>通过 Sysdig 监视 Azure 容器服务群集
+
 在本文中，我们将 Sysdig 代理部署到 Azure 容器服务群集中的所有代理节点。 此配置需要具有 Sysdig 的帐户。 
 
 ## <a name="prerequisites"></a>先决条件

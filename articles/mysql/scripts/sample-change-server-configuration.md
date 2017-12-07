@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/03/2017
-ms.openlocfilehash: 286b16148d28509714862714dcc5986496d9af44
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 9a94f257e5cd3534127e8594ddee3c5f837876df
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 列出和更新用于 MySQL 服务器的 Azure 数据库的配置
 此示例 CLI 脚本列出了 Azure 数据库所有适用于 MySQL 服务器的可用配置参数及其允许的值，并将 innodb_lock_wait_timeout 设置为默认值以外的值。
@@ -37,12 +37,12 @@ ms.lasthandoff: 11/06/2017
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az mysql server create](/cli/azure/mysql/server#create) | 创建用于托管数据库的 MySQL 服务器。 |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#list) | 列出用于 MySQL 服务器的 Azure 数据库的配置。 |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#set) | 更新用于 MySQL 服务器的 Azure 数据库的配置。 |
-| [az mysql server configuration show](/cli/azure/mysql/server/configuration#show) | 显示用于 MySQL 服务器的 Azure 数据库的配置。 |
-| [az group delete](/cli/azure/group#delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az mysql server create](/cli/azure/mysql/server#az_msql_server_create) | 创建用于托管数据库的 MySQL 服务器。 |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_msql_server_configuration_list) | 列出用于 MySQL 服务器的 Azure 数据库的配置。 |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_msql_server_configuration_set) | 更新用于 MySQL 服务器的 Azure 数据库的配置。 |
+| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az_msql_server_configuration_show) | 显示用于 MySQL 服务器的 Azure 数据库的配置。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。

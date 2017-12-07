@@ -2,26 +2,18 @@
 title: "快速入门 - 使用 PowerShell 创建首个 Azure 容器实例容器"
 description: "通过使用 PowerShell 创建 Windows 容器实例，可开始使用 Azure 容器实例。"
 services: container-instances
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/15/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: ca10274fc6a23d7f5e7436dbaf72a6e7a918f275
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f24619c9ff2667bb96827b1f17bf9ff04b42eaff
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
