@@ -164,6 +164,8 @@
       items:
         - name: 为 VM 预付 - 保留实例
           href: prepay-reserved-vm-instances.md
+        - name: VM 使用情况
+          href: vm-usage.md
         - name: 常见 PowerShell 任务
           href: ps-common-ref.md
         - name: 移动 VM

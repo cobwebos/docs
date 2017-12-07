@@ -139,3 +139,5 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: 数据库迁移指南
+      href: 'https://datamigration.microsoft.com/'

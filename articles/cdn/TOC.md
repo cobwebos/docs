@@ -41,13 +41,14 @@
 
 ## 分析
 ### [分析 Azure CDN 使用模式](cdn-log-analysis.md)
-#### [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)
-#### [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)
 #### [Azure 诊断日志](cdn-azure-diagnostic-logs.md)
-### Verizon 中用于 Azure CDN 的分析工具
-#### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
-#### [查看实时统计信息](cdn-real-time-stats.md)
-#### [分析边缘节点性能](cdn-edge-performance.md)
+#### Verizon 中用于 Azure CDN 的分析工具
+##### [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)
+##### [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)
+#### Verizon 提供的适用于 Azure CDN 高级版的分析工具
+##### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
+##### [查看实时统计信息](cdn-real-time-stats.md)
+##### [分析边缘节点性能](cdn-edge-performance.md)
 
 ## 开发
 ### [.NET](cdn-app-dev-net.md)
