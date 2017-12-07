@@ -203,6 +203,8 @@
       items:
         - name: SaaS 设计模式
           href: saas-tenancy-app-design-patterns.md
+        - name: SaaS 视频索引器
+          href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
         - name: SaaS 应用安全
           href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: 开发数据库

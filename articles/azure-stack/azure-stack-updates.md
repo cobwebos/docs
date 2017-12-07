@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.openlocfilehash: 3d0d5ea6cc3f3cc7bc0550b83dabbf0ae6af8a27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5c7810a88bee65cf22276082f72b18a7f9e983f
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>管理 Azure 堆栈概述中的更新
 
 *适用范围： Azure 堆栈集成系统*
 
-Microsoft 将发布为 Azure 堆栈集成系统定期更新包。 每个版本的 Microsoft 软件更新捆绑作为单个更新包中。 作为 Azure 堆栈操作员，你可以轻松地导入、 安装和监视器的安装进度的这些更新在管理员门户中的包。 
+Microsoft 将发布通常将不会在每月的第四个星期二上以正则频率的集成的 Azure 堆栈系统的更新包开始常规可用性。 向你的 OEM 询问有关其特定通知过程以确保你的组织的更新通知 reach 或此检查下 Concepts\Release notes\Integrated 系统发行说明，了解有关特定版本的详细信息。
+
+每个版本的 Microsoft 软件更新捆绑作为单个更新包中。 作为 Azure 堆栈操作员，你可以轻松地导入、 安装和监视器的安装进度的这些更新在管理员门户中的包。 
 
 原始设备制造商 (OEM) 硬件供应商还将发布更新，例如驱动程序和固件更新。 这些更新都作为单独的包提供 OEM 硬件供应商，并从 Microsoft 更新上单独进行管理。
 
