@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 3e52fc6ee18faa9b8a04ad19db52dd48505782ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 700f73d86686761908d241f989aab25e0fb43c0e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 
@@ -67,10 +67,7 @@ ms.lasthandoff: 11/03/2017
 * `wordmedian`：一种 MapReduce 程序，用于计算输入文件中单词的中间长度。
 * `wordstandarddeviation`：一种 MapReduce 程序，用于计算输入文件中单词长度的标准差。
 
-**Source code**：这些示例的源代码包含在 `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` 处的 HDInsight 群集上。
-
-> [!NOTE]
-> 路径中的 `2.2.4.9-1` 是 HDInsight 群集的 Hortonworks 数据平台的版本，对于群集，该版本可能会不同。
+**Source code**：这些示例的源代码包含在 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` 处的 HDInsight 群集上。
 
 ## <a name="run-the-wordcount-example"></a>运行 wordcount 示例
 

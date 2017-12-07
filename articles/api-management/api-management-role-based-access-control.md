@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: a3872aae3a9eb8da0b881ec9388f54546e84b08b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c775780a39c4d423c62bf88f55d35675c70442c7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用基于角色的访问控制
 Azure API 管理依赖于 Azure 基于角色的访问控制 (RBAC) 来为 API 管理服务和实体（例如，API 和策略）启用精细访问管理。 本文概述 API 管理中的内置角色和自定义角色。 有关 Azure 门户中的访问管理的详细信息，请参阅 [Azure 门户中的访问管理入门](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)。
@@ -61,9 +61,12 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
 
 [Azure 资源管理器资源提供程序操作](../active-directory/role-based-access-control-resource-provider-operations.md#microsoftapimanagement)一文提供了可以在 API 管理级别授予的权限的列表。
 
-## <a name="watch-a-video-overview"></a>观看视频概述
+## <a name="video"></a>视频
 
-有关详细信息，可以观看 [API 管理中基于角色的访问控制](https://channel9.msdn.com/Blogs/AzureApiMgmt/Role-Based-Access-Control-in-API-Management/player)视频。
+
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Role-Based-Access-Control-in-API-Management/player]
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 

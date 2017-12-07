@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 591fa6048553db4c347449a68ea4e39f3772d643
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4ff0556ba79c7104fa0e1cd84ece7fe27521ebbb
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数参考
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -828,7 +828,7 @@ Item 函数与 Contains 函数一起使用很有利，因为后一函数返回�
 如果索引超出界限，则引发错误。
 
 **示例：**  
-`Mid(Item([proxyAddress],Contains([proxyAddress], "SMTP:")),6)`  
+`Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 返回主电子邮件地址。
 
 - - -

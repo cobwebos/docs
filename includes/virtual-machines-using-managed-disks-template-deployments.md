@@ -214,6 +214,6 @@
     * [使用托管磁盘的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
     * [托管磁盘模板的完整列表](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * 请访问 [Azure 托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)文档，了解有关托管磁盘的详细信息。
-* 请访问 [Microsoft.Compute/virtualMachines 模板参考](/templates/microsoft.compute/virtualmachines)文档，查看虚拟机资源的模板参考文档。
-* 请访问 [Microsoft.Compute/disks 模板参考](/templates/microsoft.compute/disks)文档，查看磁盘资源的模板参考文档。
+* 请访问 [Microsoft.Compute/virtualMachines 模板参考](/azure/templates/microsoft.compute/virtualmachines)文档，查看虚拟机资源的模板参考文档。
+* 请访问 [Microsoft.Compute/disks 模板参考](/azure/templates/microsoft.compute/disks)文档，查看磁盘资源的模板参考文档。
  
