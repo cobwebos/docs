@@ -13,7 +13,6 @@
 # 如何
 ## 部署和使用
 ### [配置设置](multi-factor-authentication-whats-next.md)
-#### [使用 phonefactor 门户](multi-factor-authentication-whats-next-pfweb.md)
 ### [MFA 中的报告](multi-factor-authentication-manage-reports.md)
 ### [使用现有网络策略服务器](multi-factor-authentication-nps-extension.md)
 #### [NPS 扩展的高级配置](nps-extension-advanced-configuration.md)
