@@ -16,7 +16,7 @@ ms.date: 09/25/2017
 ms.author: helaw
 ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---

@@ -10,7 +10,7 @@ ms.topic: article
 ms.service: azure-stack
 ms.openlocfilehash: 7b7bac508a759a1367ac7328840848efe17ea3c5
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack 操作员文档
+title: "Azure Stack 操作员文档"
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-  title: Azure Stack 操作员文档 - 教程和 API 参考
-  description: 了解如何使用 Azure 堆栈以提供从你的数据中心的 Azure 服务。 了解和演示从开发工具包或集成的系统环境的功能。
+  title: "Azure Stack 操作员文档 - 教程和 API 参考"
+  description: "了解如何使用 Azure 堆栈以提供从你的数据中心的 Azure 服务。 了解和演示从开发工具包或集成的系统环境的功能。"
   services: azure-stack
   author: czeumault
   manager: carolz
@@ -14,46 +14,51 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/02/2017
   ms.author: carolz
+  ms.openlocfilehash: 59dea633182c774bab3408f8503a6bd6f5f5d783
+  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/11/2017
 abstract:
-  description: Microsoft Azure Stack 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 了解如何部署 Azure 堆栈开发工具包、 如何管理基础结构的集成的系统和开发工具包中，以及如何提供使用我们的快速入门和教程的服务。<br/><br/>如果你的 Azure 堆栈用户使用服务或 Azure 堆栈生成应用，请参阅我们<a href="/azure/azure-stack/user">用户文档</a>。
+  description: "Microsoft Azure Stack 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 了解如何部署 Azure 堆栈开发工具包、 如何管理基础结构的集成的系统和开发工具包中，以及如何提供使用我们的快速入门和教程的服务。<br/><br/>如果你的 Azure 堆栈用户使用服务或 Azure 堆栈生成应用，请参阅我们<a href=\"/azure/azure-stack/user\">用户文档</a>。"
 sections:
-  - title: 快速入门
+- title: "快速入门"
+  items:
+  - type: paragraph
+    text: "设置你的硬件和部署 Azure 堆栈开发工具包。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 设置你的硬件和部署 Azure 堆栈开发工具包。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            text: 部署 Azure 堆栈开发工具包
-            href: azure-stack-deploy-overview.md
-  - title: 分步教程
+    - image:
+        src: https://docs.microsoft.com/media/common/i_deploy.svg
+      text: "部署 Azure 堆栈开发工具包"
+      href: azure-stack-deploy-overview.md
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何将服务添加到你的 Azure 堆栈部署。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 了解如何将服务添加到你的 Azure 堆栈部署。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">提供 Azure 堆栈上的虚拟机</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">提供 Azure 堆栈上的 SQL 数据库</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">提供 Azure 堆栈上的 Web 应用</a>
-  - title: 免费 Pluralsight 视频培训
+    - html: "<a href=\"/azure/azure-stack/azure-stack-tutorial-tenant-vm\">提供 Azure 堆栈上的虚拟机</a>"
+    - html: "<a href=\"/azure/azure-stack/azure-stack-tutorial-sql-server\">提供 Azure 堆栈上的 SQL 数据库</a>"
+    - html: "<a href=\"/azure/azure-stack/azure-stack-tutorial-app-service\">提供 Azure 堆栈上的 Web 应用</a>"
+- title: "免费 Pluralsight 视频培训"
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 了解 Azure Stack 的基本原理
-            href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
-  - title: 引用
+    - title: "了解 Azure Stack 的基本原理"
+      href: https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>
+    - title: "命令行"
+      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>
