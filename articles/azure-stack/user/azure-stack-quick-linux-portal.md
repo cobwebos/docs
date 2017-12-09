@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f986c060b26489e412f6230665ec76a4730293f1
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>使用 Azure 堆栈门户创建 Linux 虚拟机
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/01/2017
 
 * **SSH 客户端访问**
 
-   如果你使用的 Azure 堆栈开发工具包 (ASDK)，你可能没有对 SSH 客户端访问你的环境中。 如果出现这种情况，你可以选择包括 SSH 客户端的多个包。 例如，你可以安装包括 SSH 客户端和 SSH 密钥生成器 (puttygen.exe) 的 PuTTY。 有关可能的选项的详细信息，请参阅以下相关 Azure 文章：[如何使用 SSH 密钥与在 Azure 上的 Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)。
+   如果你使用的 Azure 堆栈开发工具包 (ASDK)，你可能没有对 SSH 客户端访问你的环境中。 如果出现这种情况，你可以选择包括 SSH 客户端的多个包。 例如，你可以安装包括 SSH 客户端和 SSH 密钥生成器 (puttygen.exe) 的 PuTTY。 有关可能的选项的详细信息，请参阅以下相关 Azure 文章：[如何使用 SSH 密钥与在 Azure 上的 Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)。
 
    本快速入门教程使用 PuTTY，用于生成 SSH 密钥并连接到 Linux 虚拟机。 若要下载并安装 PuTTY，请转到[http://www.putty.org/](http://www.putty.org)。
 

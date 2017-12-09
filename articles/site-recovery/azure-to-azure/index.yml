@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Site Recovery 文档 - Azure 到 Azure 灾难恢复
+title: "Site Recovery 文档 - Azure 到 Azure 灾难恢复"
 metadata:
-  title: Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft Docs
+  title: "Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft Docs"
   meta.description: Learn how to set up disaster recovery for Azure VMs
   services: site-recovery
   author: rayne-wiselman
@@ -13,37 +13,42 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/26/2017
   ms.author: raynew
+  ms.openlocfilehash: d89187ffd117479f6416427ab3ed9cd56c9666f1
+  ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/30/2017
 abstract:
-  description: Azure Site Recovery 可以协调和管理 Azure VM 的灾难恢复。 通过快速入门和教程了解如何复制到次要区域并运行故障转移和故障回复。
+  description: "Azure Site Recovery 可以协调和管理 Azure VM 的灾难恢复。 通过快速入门和教程了解如何复制到次要区域并运行故障转移和故障回复。"
 sections:
-  - title: 5 分钟快速入门
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "为 Azure VM 快速设置灾难恢复"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 为 Azure VM 快速设置灾难恢复
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/site-recovery/azure-to-azure/media/index/portal.svg
-            text: Azure 门户
-            href: /azure/site-recovery/azure-to-azure-quickstart
-  - title: 分步教程
+    - image:
+        src: /azure/site-recovery/azure-to-azure/media/index/portal.svg
+      text: "Azure 门户"
+      href: /azure/site-recovery/azure-to-azure-quickstart
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何为 Azure VM 设置灾难恢复、故障转移和故障回复。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 了解如何为 Azure VM 设置灾难恢复、故障转移和故障回复。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="azure-to-azure-tutorial-enable-replication">设置灾难恢复</a>
-          - html: <a href="azure-to-azure-tutorial-dr-drill">运行灾难恢复演练</a>
-          - html: <a href="azure-to-azure-tutorial-failover-failback">运行故障转移和故障回复</a>
-  - title: 引用
+    - html: "<a href=\"azure-to-azure-tutorial-enable-replication\">设置灾难恢复</a>"
+    - html: "<a href=\"azure-to-azure-tutorial-dr-drill\">运行灾难恢复演练</a>"
+    - html: "<a href=\"azure-to-azure-tutorial-failover-failback\">运行故障转移和故障回复</a>"
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">REST API 参考</a></p>
+    - title: "命令行"
+      html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/site-recovery/\">REST API 参考</a></p>"

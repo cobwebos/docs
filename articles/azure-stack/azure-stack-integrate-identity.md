@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: victorh
 keywords: 
-ms.openlocfilehash: e43b9c7a854bc7150247a2b92d2d37ad6d74c705
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: HT
+ms.openlocfilehash: c66761d44266a33ddfa1e95444355d3908186ef8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure 堆栈数据中心集成的标识
 
@@ -260,7 +260,7 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 - 各种应用程序
 - 需要非交互式登录
 
-有关创建 SPN 的详细信息，请参阅[为 AD FS 创建服务主体](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs)。
+有关创建 SPN 的详细信息，请参阅[为 AD FS 创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs)。
 
 
 ## <a name="troubleshooting"></a>故障排除
