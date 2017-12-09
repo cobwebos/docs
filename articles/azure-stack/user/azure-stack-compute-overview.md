@@ -9,7 +9,7 @@ ms.date: 9/25/2017
 ms.author: victorh
 ms.openlocfilehash: 68da653052d0e3dfd66d6b65958046e42cefce73
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---

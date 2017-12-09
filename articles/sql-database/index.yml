@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL 数据库文档
+title: "Azure SQL 数据库文档"
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Azure SQL 数据库文档 - 教程和 API 参考
+  title: "Azure SQL 数据库文档 - 教程和 API 参考"
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   author: czeumault
@@ -14,82 +14,87 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/03/2017
   ms.author: carolz
+  ms.openlocfilehash: a1d192cd5fc63b3e1f1b2c4f821cf447e7600373
+  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/11/2017
 abstract:
-  description: Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
+  description: "Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。"
   aside:
     image:
-      alt: null
+      alt: 
       height: 110
-      src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/create-sql-database-on-azure.png'
+      src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/create-sql-database-on-azure.png
       width: 250
-    title: '在 Azure 上创建 SQL 数据库。 (3:12)'
-    href: 'https://azure.microsoft.com/en-us/resources/videos/create-sql-database-on-azure/'
+    title: "在 Azure 上创建 SQL 数据库。 (3:12)"
+    href: https://azure.microsoft.com/en-us/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
-  - title: 5 分钟快速入门
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "了解如何创建 SQL 数据库、使用 SQL Management Studio 管理该数据库以及采用 C#、Java、Python、Node.js 和 Ruby 通过该数据库进行开发："
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: '了解如何创建 SQL 数据库、使用 SQL Management Studio 管理该数据库以及采用 C#、Java、Python、Node.js 和 Ruby 通过该数据库进行开发：'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
-            text: Azure 门户
-            href: 'https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal'
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-cli'
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-powershell'
-  - title: 分步教程
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+      text: "Azure 门户"
+      href: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg
+      text: Azure CLI
+      href: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-cli
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-powershell
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何使用 SQL DB 创建、管理和迁移数据库"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 了解如何使用 SQL DB 创建、管理和迁移数据库
-      - type: list
-        style: ordered
-        items:
-          - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新 SQL 数据库的架构
-          - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">迁移现有 SQL Server 数据库以使用 Azure SQL 数据库</a>
-          - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
-          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">实现地理分散的数据库</a>
-  - title: 免费 Pluralsight 视频培训
+    - html: "使用 <a href=\"/azure/sql-database/sql-database-design-first-database\">SSMS</a> 或 <a href=\"/azure/sql-database/sql-database-design-first-database-csharp\">.NET</a> 创建和设计新 SQL 数据库的架构"
+    - html: "<a href=\"/azure/sql-database/sql-database-migrate-your-sql-server-database\">迁移现有 SQL Server 数据库以使用 Azure SQL 数据库</a>"
+    - html: "<a href=\"/azure/sql-database/sql-database-security-tutorial\">保护 SQL 数据库</a>"
+    - html: "<a href=\"/azure/sql-database/sql-database-implement-geo-distributed-database\">实现地理分散的数据库</a>"
+- title: "免费 Pluralsight 视频培训"
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 在 Azure 上使用 .NET 进行开发
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-  - title: 示例
+    - title: "在 Azure 上使用 .NET 进行开发"
+      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+- title: "示例"
+  items:
+  - type: paragraph
+    text: "查找脚本来管理常见任务。"
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: 查找脚本来管理常见任务。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-  - title: 引用
+    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/powershell/module/azurerm.sql/#sql">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell（弹性 DB）</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>'
-          - title: 语言
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/sql/">REST API 参考</a></p>
-          - title: SQL Server 工具
-            html: '<p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://msdn.microsoft.com/hh550080.aspx">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL 数据库管理库包</a></p>'
-          - title: SQL Server 驱动程序
-            html: '<p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>'
+    - title: "命令行"
+      html: "<p><a href=\"/powershell/module/azurerm.sql/#sql\">Azure PowerShell</a></p><p><a href=\"/powershell/module/elasticdatabasejobs/#elasticdatabasejobs\">Azure PowerShell（弹性 DB）</a></p><p><a href=\"/cli/azure/sql\">Azure CLI</a></p>"
+    - title: "语言"
+      html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/sql/\">REST API 参考</a></p>"
+    - title: "SQL Server 工具"
+      html: "<p><a href=\"https://msdn.microsoft.com/library/mt238365.aspx\">SQL Server工具</a></p><p><a href=\"https://msdn.microsoft.com/library/mt238290.aspx\">SQL Server Management Studio (SSMS)</a></p><p><a href=\"https://msdn.microsoft.com/library/mt204009.aspx\">SQL Server Data Tools (SSDT)</a></p><p><a href=\"https://msdn.microsoft.com/library/ms162802.aspx\">BCP</a></p><p><a href=\"https://msdn.microsoft.com/library/ms162773.aspx\">SQLCMD</a></p><p><a href=\"https://msdn.microsoft.com/hh550080.aspx\">SqlPackage</a></p><p><a href=\"https://www.nuget.org/packages/Microsoft.Azure.Management.Sql\">SQL 数据库管理库包</a></p>"
+    - title: "SQL Server 驱动程序"
+      html: "<p><a href=\"https://msdn.microsoft.com/library/mt654049.aspx\">SQL Server 驱动程序</a></p><p><a href=\"https://msdn.microsoft.com/library/mt657768.aspx\">ADO.NET</a></p><p><a href=\"https://msdn.microsoft.com/library/mt484311.aspx\">JDBC</a></p><p><a href=\"https://msdn.microsoft.com/library/mt654048.aspx\">ODBC</a></p>"

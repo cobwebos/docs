@@ -16,7 +16,7 @@ ms.date: 10/10/2017
 ms.author: anwestg
 ms.openlocfilehash: 82b6002557431f87de8fd206b4d7f4a07dec08b0
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---

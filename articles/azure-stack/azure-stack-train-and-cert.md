@@ -10,7 +10,7 @@ ms.author: victorh
 keywords: 
 ms.openlocfilehash: 9112e43cbe3b075dd5665dff37a02c1eb0b05db8
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
