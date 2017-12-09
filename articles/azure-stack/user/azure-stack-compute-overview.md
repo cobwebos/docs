@@ -7,11 +7,11 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: 68da653052d0e3dfd66d6b65958046e42cefce73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c37ad8ac5b6c37261e22237e843dd97e2bbd09f9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>介绍 Azure 堆栈的虚拟机
 
@@ -30,7 +30,7 @@ Azure 堆栈 VM 可而无需管理单个的群集或多台虚拟化的灵活性�
 
 * **扩展数据中心**– Azure 堆栈虚拟网络中的虚拟机可以轻松地连接到你的组织网络或 Azure。
 
-可以根据需要，将应用程序使用的 VM 纵向和横向扩展为任意数目。
+可以根据需要，将应用程序使用的 VM 数纵向扩展和横向扩展为任意数目。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>在创建 VM 之前需要考虑哪些因素？
 
@@ -60,7 +60,7 @@ Azure 堆栈 VM 可而无需管理单个的群集或多台虚拟化的灵活性�
 ### <a name="operating-system-disks-and-images"></a>操作系统磁盘和映像
 
 虚拟机使用虚拟硬盘 (VHD) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。
-Azure 堆栈提供应用商店以用于各种版本和类型的操作系统。 应用商店映像由映像发布者、产品、SKU 和版本（通常指定为最新版本）标识。
+Azure 堆栈提供应用商店以用于各种版本和类型的操作系统。 Marketplace 映像由映像发布者、产品、SKU 和版本（通常指定为最新版本）标识。
 
 下表显示了你可以查找映像的信息的一些方法：
 
@@ -121,8 +121,8 @@ VM 扩展提供你 VM 通过 post 部署配置和自动化的任务的其他功�
 |方法|说明|
 |---------|---------|
 |Azure 堆栈门户|在中心菜单上，单击虚拟机，然后从列表中选择 VM。 在虚拟机页上，可以访问的概述信息，设置值，以及监视度量值。|
-|Azure PowerShell|管理 Vm 是在 Azure 和 Azure 堆栈类似。 有关使用 PowerShell 的详细信息，请参阅以下 Azure 主题：<br>[创建和管理的 Azure PowerShell 模块的 Windows 虚拟机](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
-|客户端 SDK|使用 C# 来管理虚拟机是在 Azure 和 Azure 堆栈类似。 有关详细信息，请参阅以下 Azure 主题：<br>[创建和管理在 Azure 中使用 C# 中的 Windows Vm](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/csharp)|
+|Azure PowerShell|管理 Vm 是在 Azure 和 Azure 堆栈类似。 有关使用 PowerShell 的详细信息，请参阅以下 Azure 主题：<br>[创建和管理的 Azure PowerShell 模块的 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
+|客户端 SDK|使用 C# 来管理虚拟机是在 Azure 和 Azure 堆栈类似。 有关详细信息，请参阅以下 Azure 主题：<br>[创建和管理在 Azure 中使用 C# 中的 Windows Vm](https://docs.microsoft.com/azure/virtual-machines/windows/csharp)|
 
 ### <a name="connect-to-the-vm"></a>连接到 VM
 

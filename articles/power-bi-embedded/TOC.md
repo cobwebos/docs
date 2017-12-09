@@ -24,7 +24,7 @@
 
 # 引用
 ## API
-### [Azure 资源管理 REST API](/rest/api/powerbiembedded/)
+### [Azure 资源管理 REST API](https://docs.microsoft.com/rest/api/power-bi-embedded/)
 ### [REST API](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
 ## SDK
 ### [.NET SDK 下载](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)

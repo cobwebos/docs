@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure 事件网格文档
+title: "Azure 事件网格文档"
 metadata:
-  title: Azure 事件网格文档 - 教程和 API 参考
-  description: 使用 Azure 事件网格可以跨 Azure 和非 Azure 服务，以近乎实时的方式对相关事件做出响应。
+  title: "Azure 事件网格文档 - 教程和 API 参考"
+  description: "使用 Azure 事件网格可以跨 Azure 和非 Azure 服务，以近乎实时的方式对相关事件做出响应。"
   services: event-grid
   author: czeumault
   manager: carolz
@@ -13,47 +13,52 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/10/2017
   ms.author: carolz
+  ms.openlocfilehash: 63363a652402a20ed8972cf51bf475412f11bd4e
+  ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/02/2017
 abstract:
-  description: Azure 事件网格是一种完全托管的智能事件路由服务，允许通过发布-订阅模型来一致地使用事件。 使用 Azure 事件网格可以跨 Azure 和非 Azure 服务，以近乎实时的方式对相关事件做出响应。 参考快速入门、教程和示例，了解如何使用 Azure 事件网格。
+  description: "Azure 事件网格是一种完全托管的智能事件路由服务，允许通过发布-订阅模型来一致地使用事件。 使用 Azure 事件网格可以跨 Azure 和非 Azure 服务，以近乎实时的方式对相关事件做出响应。 参考快速入门、教程和示例，了解如何使用 Azure 事件网格。"
 sections:
-  - title: 5 分钟快速入门
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "了解如何创建和订阅自定义事件。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 了解如何创建和订阅自定义事件。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/event-grid/custom-event-quickstart
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-grid/custom-event-quickstart-powershell
-          - image:
-              src: /azure/event-grid/media/index/portal.svg
-            text: Azure 门户
-            href: /azure/event-grid/custom-event-quickstart-portal
-  - title: 分步教程
+    - image:
+        src: /azure/event-grid/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/event-grid/custom-event-quickstart
+    - image:
+        src: /azure/event-grid/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/event-grid/custom-event-quickstart-powershell
+    - image:
+        src: /azure/event-grid/media/index/portal.svg
+      text: "Azure 门户"
+      href: /azure/event-grid/custom-event-quickstart-portal
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何开发对事件做出响应的应用程序。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 了解如何开发对事件做出响应的应用程序。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">使用逻辑应用监视对 VM 的更改</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">调整已上传图像的大小</a>
-          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">将 Azure 自动化与事件网格集成</a>
-  - title: 引用
+    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">使用逻辑应用监视对 VM 的更改</a>"
+    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">调整已上传图像的大小</a>"
+    - html: "<a href=\"/azure/event-grid/ensure-tags-exists-on-new-virtual-machines\">将 Azure 自动化与事件网格集成</a>"
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
-          - title: REST API
-            html: <p><a href="/rest/api/eventgrid">REST</a></p>
-          - title: 架构
-            html: <p><a href="/azure/event-grid/subscription-creation-schema ">订阅架构</a></p><p><a href="/azure/event-grid/event-schema">事件架构</a></p>
+    - title: "命令行"
+      html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
+    - title: REST API
+      html: <p><a href="/rest/api/eventgrid">REST</a></p>
+    - title: "架构"
+      html: "<p><a href=\"/azure/event-grid/subscription-creation-schema \">订阅架构</a></p><p><a href=\"/azure/event-grid/event-schema\">事件架构</a></p>"

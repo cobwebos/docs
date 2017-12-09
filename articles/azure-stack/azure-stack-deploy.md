@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
-ms.translationtype: HT
+ms.openlocfilehash: 19a8db99c62fb4f560ce082d0974ef619080ef2d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure 堆栈部署先决条件
 
@@ -176,7 +176,7 @@ invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
 
 通过注册，Azure 堆栈也被配置为到 Azure 的正向使用情况信息。 从遥测独立控制使用情况报告。 你可以将使用情况报告时关闭[注册](azure-stack-register.md)使用 Github 上的脚本。 只需设置**$reportUsage**参数**$false**。
 
-设置使用情况数据的格式详见[报表 Azure 堆栈使用情况数据迁移到 Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)。 Azure 堆栈开发工具包用户不会实际收费。 此功能还包括开发工具包中，以便可以进行测试以查看使用情况报告的工作原理。 
+设置使用情况数据的格式详见[报表 Azure 堆栈使用情况数据迁移到 Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-usage-reporting)。 Azure 堆栈开发工具包用户不会实际收费。 此功能还包括开发工具包中，以便可以进行测试以查看使用情况报告的工作原理。 
 
 
 ## <a name="next-steps"></a>后续步骤

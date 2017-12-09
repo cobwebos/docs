@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: API 管理文档
+title: "API 管理文档"
 metadata:
-  title: Azure API 管理文档 - 教程和 API 参考 | Microsoft Docs
-  description: 了解如何使用 API 管理来安全、大规模地将 API 发布到外部、合作伙伴和雇用的开发人员。 教程、API 参考和其他文档介绍了如何为任意位置托管的现有后端服务创建和管理现代 API 网关。
+  title: "Azure API 管理文档 - 教程和 API 参考 | Microsoft Docs"
+  description: "了解如何使用 API 管理来安全、大规模地将 API 发布到外部、合作伙伴和雇用的开发人员。 教程、API 参考和其他文档介绍了如何为任意位置托管的现有后端服务创建和管理现代 API 网关。"
   services: api-management
   author: czeumault
   manager: carolz
@@ -13,45 +13,50 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: carolz
+  ms.openlocfilehash: 4a07555023e86dae1d77cc85cdcd5d10abb4bd96
+  ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/04/2017
 abstract:
-  description: 了解如何使用 API 管理来安全、大规模地将 API 发布到外部、合作伙伴和雇用的开发人员。 教程、API 参考和其他文档介绍了如何为任意位置托管的现有后端服务创建和管理现代 API 网关。
+  description: "了解如何使用 API 管理来安全、大规模地将 API 发布到外部、合作伙伴和雇用的开发人员。 教程、API 参考和其他文档介绍了如何为任意位置托管的现有后端服务创建和管理现代 API 网关。"
 sections:
-  - title: 5 分钟快速入门
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "创建 API 管理实例。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 创建 API 管理实例。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
-            text: 创建实例 - 门户
-            href: /azure/api-management/get-started-create-service-instance
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
-            text: 创建实例 - PowerShell
-            href: /azure/api-management/powershell-create-service-instance
-  - title: 分步教程
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+      text: "创建实例 - 门户"
+      href: /azure/api-management/get-started-create-service-instance
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+      text: "创建实例 - PowerShell"
+      href: /azure/api-management/powershell-create-service-instance
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何管理 API 管理。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 了解如何管理 API 管理。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/api-management/import-and-publish">导入和发布第一个 API</a>
-          - html: <a href="/azure/api-management/api-management-howto-add-products">创建和发布产品</a>
-          - html: <a href="/azure/api-management/mock-api-responses">模拟 API 响应</a>
-          - html: <a href="/azure/api-management/transform-api">转换和保护 API</a>
-          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">监视已发布的 API</a>
-          - html: <a href="/azure/api-management/api-management-howto-api-inspector">使用请求跟踪调试 API</a>
-          - html: <a href="/azure/api-management/api-management-get-started-revise-api">使用修订安全地进行非重大更改</a>
-          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">发布 API 的多个版本</a>
-          - html: <a href="/azure/api-management/api-management-customize-styles">自定义开发人员门户页面的样式</a>
-  - title: 示例
+    - html: "<a href=\"/azure/api-management/import-and-publish\">导入和发布第一个 API</a>"
+    - html: "<a href=\"/azure/api-management/api-management-howto-add-products\">创建和发布产品</a>"
+    - html: "<a href=\"/azure/api-management/mock-api-responses\">模拟 API 响应</a>"
+    - html: "<a href=\"/azure/api-management/transform-api\">转换和保护 API</a>"
+    - html: "<a href=\"/azure/api-management/api-management-howto-use-azure-monitor\">监视已发布的 API</a>"
+    - html: "<a href=\"/azure/api-management/api-management-howto-api-inspector\">使用请求跟踪调试 API</a>"
+    - html: "<a href=\"/azure/api-management/api-management-get-started-revise-api\">使用修订安全地进行非重大更改</a>"
+    - html: "<a href=\"/azure/api-management/api-management-get-started-publish-versions\">发布 API 的多个版本</a>"
+    - html: "<a href=\"/azure/api-management/api-management-customize-styles\">自定义开发人员门户页面的样式</a>"
+- title: "示例"
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/api-management/policy-samples">策略</a>
-          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
+    - html: "<a href=\"/azure/api-management/policy-samples\">策略</a>"
+    - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
