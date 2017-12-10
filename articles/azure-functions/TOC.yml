@@ -135,6 +135,8 @@
       items:
         - name: 连续部署
           href: functions-continuous-deployment.md
+        - name: Zip 推送部署
+          href: deployment-zip-push.md
         - name: 自动执行资源部署
           href: functions-infrastructure-as-code.md
         - name: 本地函数
