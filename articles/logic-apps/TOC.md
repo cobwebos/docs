@@ -50,6 +50,7 @@
 ### [验证 XML](logic-apps-enterprise-integration-xml-validation.md)
 ### [为 XML 验证添加架构](logic-apps-enterprise-integration-schemas.md)
 ### [转换 XML](logic-apps-enterprise-integration-transform.md)
+### [转换 JSON](logic-apps-enterprise-integration-liquid-transform.md)
 ### [为 XML 转换添加映射](logic-apps-enterprise-integration-maps.md)
 ### [添加证书来确保 B2B 的安全性](logic-apps-enterprise-integration-certificates.md)
 ### [存储项目的元数据](logic-apps-enterprise-integration-metadata.md)

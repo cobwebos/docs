@@ -28,6 +28,7 @@
 ### [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
+## [通过 Microsoft 对等互连配置站点到站点 VPN](site-to-site-vpn-over-microsoft-peering.md)
 ## 配置 ExpressRoute 的虚拟网络网关
 ### [Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
