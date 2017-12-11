@@ -68,8 +68,9 @@
 
 ### <a name="ai-and-deep-learning"></a>AI 和深度学习
 
+* 针对深度学习模型的 [Batch AI](../articles/batch-ai/overview.md) 培训
 * [Microsoft 认知工具包](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
-* [适用于数据科学 VM 的深度学习工具包](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
+* [深度学习 VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [用于深入学习的 Batch Shipyard 窍门](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
 
 
@@ -104,7 +105,7 @@ SaaS 提供商或开发商可以使用 Batch SDK 和工具将 HPC 应用程序�
 
 * [开始使用 Batch 进行开发](../articles/batch/batch-dotnet-get-started.md)
 * [使用 Azure Batch 代码示例](https://github.com/Azure/azure-batch-samples)
-* [将低优先级 VM 与 Batch（预览版）配合使用](../articles/batch/batch-low-pri-vms.md)
+* [将低优先级 VM 与 Batch 配合使用](../articles/batch/batch-low-pri-vms.md)
 * [使用 Batch Shipyard 运行容器化的 HPC 工作负荷](https://github.com/Azure/batch-shipyard)
 * [将 R 语言与 Batch 配合使用](https://github.com/Azure/doAzureParallel)
 
@@ -138,7 +139,7 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 * [文件存储](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>数据和分析
-* 用于 Azure 上的 Hadoop 群集的 [HDInsight](../articles/hdinsight/hdinsight-hadoop-introduction.md)
+* 用于 Azure 上的 Hadoop 群集的 [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [机器学习](../articles/machine-learning/machine-learning-what-is-machine-learning.md)

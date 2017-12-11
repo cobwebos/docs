@@ -13,7 +13,7 @@
 | 组策略| 不应在服务器上启用以下组策略 <br> - 阻止访问命令提示符 <br> - 阻止访问注册表编辑工具 <br> - 信任文件附件的逻辑 <br> - 打开脚本执行 <br> **注意：**可以在[此处](https://technet.microsoft.com/en-us/library/gg176671(v=ws.10).aspx)找到有关这些组策略的详细信息|
 | Internet Information Service (IIS) 配置 | - 无预先存在的默认网站 <br> - 启用[匿名身份验证](https://technet.microsoft.com/en-us/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/en-us/library/cc753077(v=ws.10).aspx) 设置  <br> - 不应在端口 443 上侦听预先存在的网站/应用程序<br>|
 | **网络** | |
-| 网络接口卡类型 | VMXNET3 |
+| 网络接口卡类型 | VMXNET3（部署为 VMware 虚拟机时） |
 | IP 地址类型 | 静态 |
 | Internet 访问权限 | 服务器应该能够直接或通过代理服务器访问以下 URL： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi（横向扩展进程服务器不需要此 URL） <br> - time.nist.gov <br> - time.windows.com |
 | 端口 | 443（控制通道协调）<br>9443（数据传输）|

@@ -1,27 +1,19 @@
 ---
-title: "将 ACR 与 Azure DC/OS 群集配合使用 | Microsoft Docs"
+title: "将 ACR 与 Azure DC/OS 群集配合使用"
 description: "在 Azure 容器服务中将 Azure 容器注册表与 DC/OS 群集配合使用"
 services: container-service
-documentationcenter: 
 author: julienstroheker
 manager: dcaro
-editor: 
-tags: acs, azure-container-service, acr, azure-container-registry
-keywords: "Docker, 容器, 微服务, Mesos, Azure, 文件共享, cifs"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 36e57bb6ebf9f55d42c526a361fed33b4238b313
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 4a3213c28f24e9d1dfc309c6d34771ccc062dae4
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>将 ACR 与 DC/OS 群集配合使用，部署应用程序
 

@@ -2,7 +2,7 @@
 
 | **资源** | **默认限制** | **注意**
 | --- | --- | --- |
-| 每日的总数据量 | 500 GB | 可以通过设置一个上限来减少数据。 如果需要更多，请发送邮件至 AIDataCap@microsoft.com。
+| 每日的总数据量 | 100 GB | 可以通过设置一个上限来减少数据。 如果需要更多，可以从门户最多将限制增加到 1,000 GB。 如需大于 1,000 GB 的容量，请将邮件发送到 AIDataCap@microsoft.com。
 | 每月免费数据量<br/> （基本价格计划） | 1 GB | 额外的数据按千兆字节收费。
 | 限制 | 32000 个事件/秒 | 限制按分钟计量。
 | 数据保留 | 90 天 | 此资源适用于[搜索](../articles/application-insights/app-insights-diagnostic-search.md)、[分析](../articles/application-insights/app-insights-analytics.md)和[指标资源管理器](../articles/application-insights/app-insights-metrics-explorer.md)。

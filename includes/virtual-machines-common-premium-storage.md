@@ -26,7 +26,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 有关将现有 VM 迁移到高级存储的信息，请参阅[将 Windows VM 从非托管磁盘转换为托管磁盘](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)或[将 Linux VM 从非托管磁盘转换为托管磁盘](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md)。
 
 > [!NOTE]
-> 大多数区域推出了高级存储。 有关推出高级存储的区域列表，请在 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)中查看支持可用高级存储大小 VM（DS、DSV2、GS 和 Fs 系列 VM）的区域。
+> 大多数区域推出了高级存储。 有关可用区域的列表，请参阅[可用 Azure 产品(按区域)](https://azure.microsoft.com/regions/#services) 中的**磁盘存储**所在的行。
 > 
 
 ## <a name="features"></a>功能

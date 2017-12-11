@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>逻辑应用循环、范围和解除批处理
   
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach 循环和数组
   
-借助逻辑应用可循环访问一组数据并对每个项执行操作。  这可以通过 `foreach` 操作来实现。  在设计器中，可以指定添加 foreach 循环。  选择要循环访问的数组之后，可以开始添加操作。  当前每个 foreach 循环仅限于一个操作，但是此限制会在未来几周解除。  处于循环中之后，可以指定对数组的每个值应执行的操作。
+借助逻辑应用可循环访问一组数据并对每个项执行操作。  这可以通过 `foreach` 操作来实现。  在设计器中，可以指定添加 foreach 循环。  选择要循环访问的数组之后，可以开始添加操作。  对于每个 foreach 循环，可以添加多个操作。  处于循环中之后，可以指定对数组的每个值应执行的操作。
 
 如果使用代码视图，则可以指定与以下类似的 for each 循环。  这是 for each 循环的示例，它会为包含“microsoft.com”的每个电子邮件地址都发送电子邮件：
 

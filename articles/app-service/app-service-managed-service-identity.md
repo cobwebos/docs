@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 59e6db7caf4988623e6d2f93e986b423db7d7248
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6b2dcaa4b0e0f59bf8a632b48813ba6a24202ec5
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
@@ -45,6 +45,35 @@ ms.lasthandoff: 11/15/2017
 4. 将“使用 Azure Active Directory 注册”切换至“打开”。 单击“保存” 。
 
 ![应用服务中的托管服务标识](media/app-service-managed-service-identity/msi-blade.png)
+
+### <a name="using-the-azure-cli"></a>使用 Azure CLI
+
+若要使用 Azure CLI 设置托管服务标识，需要针对现有应用程序使用 `az webapp assign-identity` 命令。 运行本部分中的示例有三个选项：
+
+- 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
+- 单击下面每个代码块右上角的“试用”按钮，使用嵌入的 Azure Cloud Shell。
+- 如果希望使用本地 CLI 控制台，可以[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.21 或更高版本）。 
+
+以下步骤将指导你完成使用 CLI 创建 Web 应用并为其分配标识的操作：
+
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与要在其下部署应用程序的 Azure 订阅关联的帐户：
+
+    ```azurecli-interactive
+    az login
+    ```
+2. 使用 CLI 创建 Web 应用程序。 有关如何将 CLI 用于应用服务的更多示例，请参阅[应用服务 CLI 示例](../app-service/app-service-cli-samples.md)：
+
+    ```azurecli-interactive
+    az group create --name myResourceGroup --location westus
+    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
+    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    ```
+
+3. 运行 `assign-identity` 命令为此应用程序创建标识：
+
+    ```azurecli-interactive
+    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 

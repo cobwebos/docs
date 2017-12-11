@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92a52910ef8b9f078a8ea6ac409f89719f889b24
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
@@ -332,7 +332,7 @@ ms.lasthandoff: 10/11/2017
 |DelegationEnabled|布尔值|是否已启用委派登录。|  
 |DelegationUrl|字符串|委派登录 URL（如果已启用）。|  
 |SsoSignUpUrl|字符串|用户的单一登录 URL（如果存在）。|  
-|AuxServiceUrl|字符串|如果当前用户为管理员，则此项为指向 Azure 经典门户中服务实例的链接。|  
+|AuxServiceUrl|字符串|如果当前用户为管理员，则此项为指向 Azure 门户中服务实例的链接。|  
 |提供程序|[提供程序](#Provider)实体的集合|此用户的身份验证提供程序。|  
 |UserRegistrationTerms|字符串|用户必须在登录之前同意的条款。|  
 |UserRegistrationTermsEnabled|布尔值|是否启用条款。|  

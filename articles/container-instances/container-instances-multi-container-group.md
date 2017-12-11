@@ -1,41 +1,33 @@
 ---
-title: "Azure 容器实例 - 多容器组 | Azure Docs"
-description: "Azure 容器实例 - 多容器组"
+title: "在 Azure 容器实例中部署多容器组"
+description: "了解如何在 Azure 容器实例中部署包含多个容器的容器组。"
 services: container-instances
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e1f23e20b001404d3f781e7e6deac87ede12684
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-a-container-group"></a>部署容器组
 
-Azure 容器实例支持使用容器组将多个容器部署到单台主机上。 当生成应用程序 sidecar 以用于日志记录、监视或用于某些其他配置（其中服务需要第二个附加进程）时，这种方法很有用。 
+Azure 容器实例支持使用容器组将多个容器部署到单台主机上。 当生成应用程序 sidecar 以用于日志记录、监视或用于某些其他配置（其中服务需要第二个附加进程）时，这种方法很有用。
 
 本文档介绍如何使用 Azure 资源管理器模板运行简单的多容器 sidecar 配置。
 
 ## <a name="configure-the-template"></a>配置模板
 
-创建名为 `azuredeploy.json` 的文件，并将以下 json 复制到文件中。 
+创建名为 `azuredeploy.json` 的文件，并将以下 json 复制到文件中。
 
-在此示例中，定义了包含两个容器的容器组和一个公共 IP 地址。 该组的第一个容器运行面向 Internet 的应用程序。 第二个容器 sidecar 通过该组的本地网络向主要 Web 应用程序发出 HTTP 请求。 
+在此示例中，定义了包含两个容器的容器组和一个公共 IP 地址。 该组的第一个容器运行面向 Internet 的应用程序。 第二个容器 sidecar 通过该组的本地网络向主要 Web 应用程序发出 HTTP 请求。
 
-如果此 sidecar 示例收到的 HTTP 响应代码不是 200 OK，则可将其扩展以触发警报。 
+如果此 sidecar 示例收到的 HTTP 响应代码不是 200 OK，则可将其扩展以触发警报。
 
 ```json
 {
@@ -46,7 +38,7 @@ Azure 容器实例支持使用容器组将多个容器部署到单台主机上�
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
-    "container2name": "aci-tutorial-sidecar",    
+    "container2name": "aci-tutorial-sidecar",
     "container2image": "microsoft/aci-tutorial-sidecar"
   },
     "resources": [
@@ -135,7 +127,7 @@ az group create --name myResourceGroup --location westus
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
-将在几秒钟内收到来自 Azure 的初始响应。 
+将在几秒钟内收到来自 Azure 的初始响应。
 
 ## <a name="view-deployment-state"></a>查看部署状态
 
@@ -153,9 +145,9 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
 ```
 
-## <a name="view-logs"></a>查看日志   
+## <a name="view-logs"></a>查看日志
 
-使用 `az container logs` 命令查看容器的日志输出。 `--container-name` 参数指定从中拉取日志的容器。 在此示例中，指定第一个容器。 
+使用 `az container logs` 命令查看容器的日志输出。 `--container-name` 参数指定从中拉取日志的容器。 在此示例中，指定第一个容器。
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup

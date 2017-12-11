@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 12/4/2017
 ms.author: sethm
-ms.openlocfilehash: 25311958314cca049d109ecbe3f46aaaa36b694d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b714c5de96a8fb7ed66a30c62daaa38b84fdc5b
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>使用 C 将事件发送到 Azure 事件中心
 
@@ -27,16 +27,16 @@ ms.lasthandoff: 10/11/2017
 
 有关详细信息，请参阅 [事件中心概述][Event Hubs overview]。
 
-在本教程中，将学习如何使用用 C 编写的控制台应用程序将事件发送到事件中心。要接收事件，请单击左侧目录中的相应接收语言。
+本教程介绍如何使用用 C 编写的控制台应用程序将事件发送到事件中心。若要了解如何接收事件，请单击左侧目录中的相应接收语言。
 
-若要完成本教程，需要满足以下条件：
+要完成本教程，需要以下各项：
 
-* C 语言开发环境。 对于本教程，我们将假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux 虚拟机上。
+* C 语言开发环境。 本教程假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux VM 上。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="send-messages-to-event-hubs"></a>将消息发送到事件中心
-在本部分中，我们将编写用于将事件发送到事件中心的 C 应用。 此代码使用 [Apache Qpid 项目](http://qpid.apache.org/)中的 Proton AMQP 库。 这类似于通过 C 将服务总线队列和主题与 AMQP 配合使用，如[此处](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)所示。 有关详细信息，请参阅 [Qpid Proton 文档](http://qpid.apache.org/proton/index.html)。
+本部分介绍如何编写用于将事件发送到事件中心的 C 应用。 此代码使用 [Apache Qpid 项目](http://qpid.apache.org/)中的 Proton AMQP 库。 这类似于通过 C 将服务总线队列和主题与 AMQP 配合使用，如[此示例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)所示。 有关详细信息，请参阅 [Qpid Proton 文档](http://qpid.apache.org/proton/index.html)。
 
 1. 在 [Qpid AMQP Messenger 页](https://qpid.apache.org/proton/messenger.html)中，根据具体的环境，按照说明安装 Qpid Proton。
 2. 若要编译 Proton 库，请安装以下程序包：
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 在工作目录中，创建一个包含以下代码的名为 sender.c 的新文件。 请记得替换事件中心名称和命名空间名称的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](http://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
+5. 在工作目录中，创建一个包含以下代码的名为 sender.c 的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](http://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
    
     ```c
     #include "proton/message.h"
@@ -147,15 +147,13 @@ ms.lasthandoff: 10/11/2017
     ```
 
     > [!NOTE]
-    > 在此代码中，我们使用传出窗口 1 以强制尽快发出消息。 通常，应用程序应尝试批处理消息，以提高吞吐量。 请参阅 [Qpid AMQP Messenger 页](https://qpid.apache.org/proton/messenger.html)，了解如何在此环境及其他环境中以及从为其提供了绑定的平台（目前为 Perl、PHP、Python 和 Ruby）中使用 Qpid Proton 库。
+    > 此代码使用传出窗口 1 以强制尽快发出消息。 建议应用程序尝试批处理消息，以提高吞吐量。 请参阅 [Qpid AMQP Messenger 页](https://qpid.apache.org/proton/messenger.html)，了解如何在此环境及其他环境中以及从为其提供了绑定的平台（目前为 Perl、PHP、Python 和 Ruby）中使用 Qpid Proton 库。
 
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：
 
-* [事件中心概述](event-hubs-what-is-event-hubs.md
-)
-* [创建事件中心](event-hubs-create.md)
+* [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [事件中心常见问题](event-hubs-faq.md)
 
 <!-- Images. -->

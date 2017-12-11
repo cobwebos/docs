@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -143,6 +143,7 @@ Linux 代理的正常运行依赖一些系统程序包：
     Provisioning.MonitorHostName=y
     Provisioning.DecodeCustomData=n
     Provisioning.ExecuteCustomData=n
+    Provisioning.AllowResetSysUser=n
     Provisioning.PasswordCryptId=6
     Provisioning.PasswordCryptSaltLength=10
     ResourceDisk.Format=y
@@ -157,6 +158,7 @@ Linux 代理的正常运行依赖一些系统程序包：
     OS.OpensslPath=None
     HttpProxy.Host=None
     HttpProxy.Port=None
+    AutoUpdate.Enabled=y
 
 下面详细描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示。
 
@@ -208,6 +210,10 @@ Linux 代理的正常运行依赖一些系统程序包：
 默认值：n
 
 如果已设置，waagent 会在预配后执行 CustomData。
+
+**Provisioning.AllowResetSysUser** 类型：布尔值 默认值：n
+
+此选项允许重置 sys 用户的密码；默认为禁用。
 
 **Provisioning.PasswordCryptId**  
 类型：字符串  
@@ -290,6 +296,12 @@ Linux 代理的正常运行依赖一些系统程序包：
 默认值：无
 
 如果已设置，代理将使用此代理服务器访问 Internet。 
+
+**AutoUpdate.Enabled** 类型：布尔值 默认值：y
+
+启用或禁用目标状态处理的自动更新；默认为启用。
+
+
 
 ## <a name="ubuntu-cloud-images"></a>Ubuntu 云映像
 请注意，Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) 执行多种配置任务，这些任务在其他情况下也可以通过 Azure Linux 代理来管理。  请注意以下不同：

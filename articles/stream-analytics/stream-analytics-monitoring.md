@@ -4,7 +4,7 @@ description: "了解流分析作业监视"
 keywords: "查询监视器"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5f5cc00f-4a7b-491e-89e1-dbafea46d399
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 12545dd3875e81f8f2248acceb66d2d840cf6702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7474f45494c6190ffcac354e75458b18f5777fb9
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
@@ -40,7 +40,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 | 输出事件数          | 流分析作业发送到输出目标的数据量，以事件数来衡量。 |
 | 无序事件数    | 收到的无序事件的数目，系统根据事件排序策略来删除这些事件，或者为其提供一个经过调整的时间戳。 这可能会受“无序容错时段”设置的影响。 |
 | 数据转换错误数 | 流分析作业导致的数据转换错误的数目。 |
-| 运行时错误         | 执行流分析作业的过程中发生的错误总数。 |
+| 运行时错误         | 与查询处理相关的错误总数（不包括引入事件或输出结果时发现的错误） |
 | 延迟输入事件数      | 延迟到达的事件的数目，系统根据延迟到达容错时段设置的事件排序策略配置删除这些事件，或者调整其时间戳。 |
 | 函数请求数      | 对 Azure 机器学习函数（如果存在）的调用数。 |
 | 失败的函数请求数 | 失败的 Azure 机器学习函数（如果存在）调用数。 |

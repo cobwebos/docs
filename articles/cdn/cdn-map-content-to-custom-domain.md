@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: fd36b94c64ad31064dbb2e0badceaee5e5bc400f
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>将自定义域添加到 CDN 终结点
 创建配置文件后，通常还会创建一个或多个 CDN [终结点](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)（`azureedge.net` 的子域），以通过 HTTP 和 HTTPS 传送内容。 默认情况下，此终结点会包含在所有 URL 中，例如 `https://contoso.azureedge.net/photo.png`。 为方便起见，Azure CDN 允许将自定义域（例如 `www.contoso.com`）与终结点相关联。 借助此选项，可以使用自定义域而不是终结点来传送内容。 例如，如果出于品牌宣传目的，你希望客户能够看到你自己的域名，则选项就很有用。
@@ -54,7 +54,7 @@ CNAME 记录映射特定的域和子域，例如 `www.contoso.com` 或 `cdn.cont
  
   | 名称             | 类型  | 值                  |
   |------------------|-------|------------------------|
-  | www\.consoto.com | CNAME | consoto\.azureedge.net |
+  | www\.contoso.com | CNAME | contoso\.azureedge.net |
 
 
 - 选项 2：使用 **cdnverify** 子域进行映射。 如果自定义域上运行了不可中断的生产流量，可以创建 CNAME 到 CDN 终结点的临时映射。 借助此选项，可以使用 Azure **cdnverify** 子域来提供中间注册步骤，这样，在发生 DNS 映射时，用户仍可以持续访问你的域。
@@ -64,7 +64,7 @@ CNAME 记录映射特定的域和子域，例如 `www.contoso.com` 或 `cdn.cont
 
    | 名称                       | 类型  | 值                            |
    |----------------------------|-------|----------------------------------|
-   | cdnverify.www\.consoto.com | CNAME | cdnverify.consoto\.azureedge.net | 
+   | cdnverify.www\.contoso.com | CNAME | cdnverify.contoso\.azureedge.net | 
 
 
 ## <a name="step-3-enable-the-cname-record-mapping-in-azure"></a>步骤 3：在 Azure 中启用 CNAME 记录映射
@@ -103,7 +103,7 @@ CNAME 记录映射特定的域和子域，例如 `www.contoso.com` 或 `cdn.cont
  
    | 名称             | 类型  | 值                  |
    |------------------|-------|------------------------|
-   | www\.consoto.com | CNAME | consoto\.azureedge.net |
+   | www\.contoso.com | CNAME | contoso\.azureedge.net |
 2. 删除包含前面所创建的 **cdnverify** 子域的 CNAME 记录。
 
 ## <a name="see-also"></a>另请参阅

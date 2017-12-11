@@ -4,7 +4,7 @@ description: "下载 VM 模板，帮助在 Resource Manager 部署模型中自�
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 9e4c0c3cf0e233447369a24b1d5fe27495abd1cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93ed84cb146119c877c3a143c5f7af9ca8ba0656
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="download-the-template-for-a-vm"></a>下载 VM 模板
 使用门户或 PowerShell 在 Azure 中创建 VM 时，系统会自动创建一个 Resource Manager 模板。 可以使用此模板快速复制部署。 该模板包含有关资源组中所有资源的信息。 对于虚拟机而言，这意味着该模板包含为在该资源组中支持该 VM 而创建的所有资源，包括网络资源。
 
 ## <a name="download-the-template-using-the-portal"></a>使用门户下载模板
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在中心菜单中，选择“虚拟机”。
+2. 在左侧菜单中，选择“虚拟机”。
 3. 从列表中选择虚拟机。
 4. 选择“自动化脚本”。
-5. 选择“下载”，将 .zip 文件保存到本地计算机。
+5. 从顶部菜单中选择“下载”，将 .zip 文件保存到本地计算机。
 6. 打开 .zip 文件，将文件解压缩到某个文件夹。 该 .zip 文件包含：
    
    * deploy.ps1

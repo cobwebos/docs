@@ -205,11 +205,6 @@
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
-#### 使用经典门户
-##### [下载连接器](application-proxy-enable-classic-portal.md)
-##### [发布应用](active-directory-application-proxy-publish.md)
-##### [使用连接器](active-directory-application-proxy-connectors-azure-portal.md)
-##### [条件性访问](application-proxy-enable-remote-access-sharepoint.md)
 
 ### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)

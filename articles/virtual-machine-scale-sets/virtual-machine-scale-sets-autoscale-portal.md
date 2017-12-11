@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 3714a4feb14bc47132e501629fc339bc7d0e40a1
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 141ae5f004ec1c85c506955873c69c03a89cd08c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>在 Azure 门户中自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/23/2017
 
     ![创建按计划进行缩放的自动缩放规则](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
-若要查看如何应用自动缩放规则，请通过顶部的缩放窗口选择“运行历史记录”。 图和事件列表显示触发自动缩放规则的时间和增加或减少的 VM 实例数。
+若要查看如何应用自动缩放规则，请通过顶部的缩放窗口选择“运行历史记录”。 图和事件列表显示触发自动缩放规则的时间和规模集中增加或减少的 VM 实例数。
 
 
 ## <a name="next-steps"></a>后续步骤

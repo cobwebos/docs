@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: joflore
-ms.openlocfilehash: 0a45a563d8aed45dd30cc76a13b0e197c248be84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18151f647b857dec78e659a3394359ff21a818c7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>在 Azure 虚拟网络中安装新的 Active Directory 林
-本主题说明如何在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。 在此情况下，Azure 虚拟网络未连接到本地网络。
+本文说明如何在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。 在此情况下，Azure 虚拟网络未连接到本地网络。
 
-也有可能对下列相关主题感兴趣：
+也有可能对下列相关文章感兴趣：
 
 * 有关这些步骤的演示视频，请参阅[如何在 Azure 虚拟网络中安装新的 Active Directory 林](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * 可以有选择性地[配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)，然后安装新林，或者将本地林扩展到 Azure 虚拟网络。 有关这些步骤的说明，请参阅[在 Azure 虚拟网络中安装副本 Active Directory 域控制器](active-directory-install-replica-active-directory-domain-controller.md)。
@@ -87,7 +87,7 @@ ms.lasthandoff: 10/11/2017
    3. 在“转发器”选项卡上，单击该转发器的 IP 地址，并单击“编辑”。  选择 IP 地址，并单击“删除”。
    4. 单击“确定”关闭编辑器，并再次单击“确定”关闭 DNS 服务器属性。
 2. 更新虚拟网络的 DNS 服务器设置。
-   1. 单击“虚拟网络”，双击创建的虚拟网络，单击“配置” > “DNS 服务器”，键入运行 DC/DNS 服务器角色的某个 VM 的名称和 DIP，并单击“保存”。
+   1. 单击“虚拟网络”，双击创建的虚拟网络，单击“配置” > “DNS 服务器”，键入运行 DC/DNS 服务器角色的某个 VM 的名称和 IP，并单击“保存”。
    2. 选择 VM 并单击“重新启动”触发该 VM，以便使用新 DNS 服务器的 IP 地址配置 DNS 解析器设置。
 
 ## <a name="create-vms-for-domain-members"></a>为域成员创建 VM

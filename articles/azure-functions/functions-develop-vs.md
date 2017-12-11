@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: 1f0d50331aa3986e80542902fd528f98e1c91bc2
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 099ff4c9748244ddaf9c12f5eb39657bf59c063b
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -32,6 +32,9 @@ Azure Functions 工具提供以下优势：
 * 可以在 C# 中编写函数的代码，同时利用 Visual Studio 开发环境的所有优势。 
 
 本主题介绍如何使用用于 Visual Studio 2017 的 Azure Functions 工具在 C# 中开发函数。 此外，还介绍如何将项目作为 .NET 程序集发布到 Azure。
+
+> [!IMPORTANT]
+> 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程将覆盖在门户中开发的任何函数。
 
 ## <a name="prerequisites"></a>先决条件
 
