@@ -14,130 +14,69 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: e85979859cca40b852e1f39ccaedf6e2781f84a1
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 7458ad6e0a864d742f74ce743ce3179594113c00
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。
+ 
+若要更详细地了解缓存，请参阅 [API 管理缓存策略](api-management-caching-policies.md)和 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
-本指南介绍如何为 API 添加响应缓存，以及为示例 Echo API 操作配置策略。 然后，可以从开发人员门户调用操作以验证缓存起作用。
+![缓存策略](media/api-management-howto-cache/cache-policies.png)
 
-> [!NOTE]
-> 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
-> 
-> 
+学习内容：
+
+> [!div class="checklist"]
+> * 为 API 添加响应缓存
+> * 验证作用的缓存
 
 ## <a name="prerequisites"></a>先决条件
-执行本指南中的步骤之前，API 管理服务实例必须已配置 API 和产品。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 
-## <a name="configure-caching"> </a>为缓存配置操作
-在此步骤中，将查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
+完成本教程：
 
-> [!NOTE]
-> 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 有关详细信息，请参阅 [Azure API 管理入门][Get started with Azure API Management]。
-> 
-> 
++ [创建一个 Azure API 管理实例](get-started-create-service-instance.md)
++ [导入和发布 API](import-and-publish.md)
 
-若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
+## <a name="caching-policies"> </a>添加缓存策略
 
-![发布者门户][api-management-management-console]
+使用此示例中显示的缓存策略时，向 **GetSpeakers** 操作发出的第一个请求返回来自后端服务的响应。 将缓存此响应，由指定的标头和查询字符串参数进行键控。 采用匹配的参数，对操作的后续调用会返回缓存的响应，直到缓存时间间隔过期。
 
-在左侧“API 管理”菜单中，单击“API”，并单击“Echo API”。
+1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+2. 浏览到自己的 APIM 实例。
+3. 选择“API”选项卡。
+4. 在 API 列表中单击“演示会议 API”。
+5. 选择“GetSpeakers”。
+6. 选择屏幕顶部的“设计”选项卡。
+7. 在“入站处理”窗口中，单击三角形（铅笔旁边）。
 
-![Echo API][api-management-echo-api]
+    ![代码编辑器](media/api-management-howto-cache/code-editor.png)
+8. 选择“代码编辑器”。
+9. 在 **inbound** 元素中添加以下策略：
 
-单击“操作”选项卡，并在“操作”列表中单击“GET 资源(已缓存)”操作。
-
-![Echo API 操作][api-management-echo-api-operations]
-
-单击“ **缓存** ”选项卡查看此操作的缓存设置。
-
-![缓存选项卡][api-management-caching-tab]
-
-要为操作启用缓存，请选中“ **启用** ”复选框。 在此示例中，已启用缓存。
-
-每个操作的响应基于根据“查询字符串参数变化”和“标头变化”字段中的值进行键控。 如果要缓存基于查询字符串参数或标头的多个响应，可以在这两个字段中对它们进行配置。
-
-**持续时间** 指定缓存响应的过期时间间隔。 在此示例中，时间间隔是 **3600** 秒，相当于一小时。
-
-在此示例中使用缓存配置，对“ **GET 资源（缓存）** ”操作的第一个请求将从后端服务返回一个响应。 将缓存此响应，由指定的标头和查询字符串参数进行键控。 采用匹配的参数，对操作的后续调用会返回缓存的响应，直到缓存时间间隔过期。
-
-## <a name="caching-policies"> </a>查看缓存策略
-在此步骤中，会查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
-
-在“ **缓存** ”选项卡上为操作配置缓存设置时，为操作添加缓存策略。 可以在策略编辑器中查看并编辑这些策略。
-
-在左侧“API 管理”菜单中单击“策略”，并从“操作”下拉列表中选择“Echo API/GET 资源(已缓存)”。
-
-![策略范围操作][api-management-operation-dropdown]
-
-这会在策略编辑器中显示此操作的策略。
-
-![API 管理策略编辑器][api-management-policy-editor]
-
-此操作的策略定义包括定义缓存配置的策略，使用上一步中“ **缓存** ”选项卡进行审核。
-
-```xml
-<policies>
-    <inbound>
-        <base />
         <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
             <vary-by-header>Accept</vary-by-header>
             <vary-by-header>Accept-Charset</vary-by-header>
+            <vary-by-header>Authorization</vary-by-header>
         </cache-lookup>
-        <rewrite-uri template="/resource" />
-    </inbound>
-    <outbound>
-        <base />
-        <cache-store caching-mode="cache-on" duration="3600" />
-    </outbound>
-</policies>
-```
 
-> [!NOTE]
-> 在策略编辑器中对缓存策略进行的更改将反映在操作的“ **缓存** ”选项卡中，反之亦然。
-> 
-> 
+10. 在 **outbound** 元素中添加以下策略：
+
+        <cache-store caching-mode="cache-on" duration="20" />
+
+    **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
 ## <a name="test-operation"> </a>调用操作和测试缓存
-要查看作用的缓存，我们可以从开发人员门户调用操作。 单击右上方菜单中的“ **开发人员门户** ”。
+若要查看作用的缓存，请从开发人员门户调用操作。
 
-![开发人员门户][api-management-developer-portal-menu]
-
-单击顶部菜单中的“API”，并选择“Echo API”。
-
-![Echo API][api-management-apis-echo-api]
-
-> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
-> 
-> 
-
-选择“GET 资源(已缓存)”操作，并单击“打开控制台”。
-
-![打开控制台][api-management-open-console]
-
-控制台允许直接从开发人员门户调用操作。
-
-![控制台][api-management-console]
-
-保留 param1 和 param2 的默认值。
-
-从“ **订阅密钥** ”下拉列表中选择所需的密钥。 如果帐户只有一个订阅，则已处于选中状态。
-
-在“请求标头”文本框中输入“sampleheader:value1”。
-
-单击“ **HTTP Get** ”并记下响应标头。
-
-在“请求标头”文本框中输入“sampleheader:value2”，并单击“HTTP Get”。
-
-请注意，sampleheader 的值仍是响应中的 value1。 尝试一些不同的值，请注意返回来自第一次调用的缓存响应。
-
-将“25”输入“param2”字段，然后单击“HTTP Get”。
-
-请注意，响应中 sampleheader 的值现在是 value2。 因为操作结果都由查询字符串进行键控，所以没有返回以前缓存的响应。
+1. 在 Azure 门户中浏览到自己的 APIM 实例。
+2. 选择“API”选项卡。
+3. 选择向其添加了缓存策略的 API。
+4. 选择“GetSpeakers”操作。
+5. 单击右上方菜单中的“测试”选项卡。
+6. 按“发送”。
 
 ## <a name="next-steps"> </a>后续步骤
 * 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
@@ -160,12 +99,12 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
-[Get started with Azure API Management]: api-management-get-started.md
+[Get started with Azure API Management]: get-started-create-service-instance.md
 
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
 [Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
 
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 [Configure an operation for caching]: #configure-caching
 [Review the caching policies]: #caching-policies

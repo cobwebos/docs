@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/28/2017
 ms.author: spelluru
-ms.openlocfilehash: 6a6d0af6ed4e2c4ece7d69f6d7606e3ca149f8a7
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 8d00602dd2634b6fdbd9e9203efaf1e4393f4c09
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -426,7 +426,7 @@ DeploymentDebugLogLevel :
     ```
 
 ## <a name="monitor-the-pipeline"></a>监视管道
-1. 登录到 [Azure 门户](https://portal.azure.com/)以后，单击“更多服务”，使用 `data fa` 之类的关键字进行搜索，然后选择“数据工厂”。
+1. 登录到 [Azure 门户](https://portal.azure.com/)以后，单击“更多服务”，使用 **data fa** 之类的关键字进行搜索，然后选择“数据工厂”。
 
     ![浏览数据工厂菜单](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
 2. 在“数据工厂”页中单击已创建的数据工厂。 根据需要使用数据工厂的名称对列表进行筛选。  

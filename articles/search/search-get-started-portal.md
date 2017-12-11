@@ -1,29 +1,29 @@
 ---
-title: "Azure 搜索门户页中的索引、查询和筛选器 | Microsoft Docs"
-description: "在 Azure 门户中使用预定义的示例数据生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。"
+title: "有关如何使用门户进行索引、查询和筛选的 Azure 搜索教程 | Microsoft Docs"
+description: "在 Azure 门户中，使用预定义的示例数据在 Azure 搜索中生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。"
 services: search
 documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
 editor: 
 tags: azure-portal
-ms.assetid: 21adc351-69bb-4a39-bc59-598c60c8f958
+ms.assetid: 
 ms.service: search
 ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 06/26/2017
+ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: a67de3d385ccb1f65d026acfa0d4413df889bafe
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>在门户中创建、查询和筛选 Azure 搜索索引
 
-在 Azure 门户中，通过“导入数据”向导开始使用预定义的示例数据集快速生成索引。 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索。  
+在 Azure 门户中，通过“导入数据”向导开始使用预定义的示例数据集快速生成 Azure 搜索索引。 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索。  
 
 这篇不包含代码的简介可帮助用户开始使用预定义的数据，使他们能够立即编写有趣的查询。 尽管门户工具不能取代代码，但可以用来完成以下任务：
 

@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3028e913937db304ac0a1df8e6a095072630505d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 22c5597cf14f27671667176dce8782cf0c79918d
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -56,10 +56,8 @@ ms.lasthandoff: 11/18/2017
 * [计算节点](#compute-node)
 * [池](#pool)
 * [作业](#job)
-
   * [作业计划](#scheduled-jobs)
 * [任务](#task)
-
   * [启动任务](#start-task)
   * [作业管理器任务](#job-manager-task)
   * [作业准备和释放任务](#job-preparation-and-release-tasks)
@@ -263,6 +261,9 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 * 执行任务所依据的 **约束** 。 例如，约束包括允许运行任务的最长时间、重试失败任务的次数上限，以及文件保留在任务工作目录中的最长时间。
 * **Application packages** 。 [应用程序包](#application-packages) 提供任务运行的应用程序的简化部署和版本控制。 在共享池的环境中，任务级应用程序包特别有用：不同的作业在一个池上运行，完成某个作业时不删除该池。 如果作业中的任务少于池中的节点，任务应用程序包可以减少数据传输，因为应用程序只部署到运行任务的节点。
 * Docker 中心的**容器映像**引用，或者专用注册表和其他设置，用于创建 Docker 容器，其中的任务运行在节点上。 如果池使用容器配置进行设置，则仅指定此信息。
+
+> [!NOTE]
+> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
 
 除了可以定义在节点上运行计算的任务以外，Batch 服务还提供以下特殊任务：
 

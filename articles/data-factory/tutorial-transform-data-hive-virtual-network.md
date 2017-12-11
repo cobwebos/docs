@@ -13,22 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shengc
-ms.openlocfilehash: b8c30a2fd68178ddd2bfb3ff079c47ba00928855
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c15d723efdcf273c86f54ddce04904ce1a274631
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
-
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>本教程
-
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-
-本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络中的数据。 在本教程中执行以下步骤：
+本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
 
 > [!div class="checklist"]
 > * 创建数据工厂。 
@@ -39,6 +31,8 @@ ms.lasthandoff: 11/04/2017
 > * 监视管道运行 
 > * 验证输出。 
 
+> [!NOTE]
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -71,22 +65,32 @@ ms.lasthandoff: 11/04/2017
    FROM hivesampletable
    ```
 2. 在 Azure Blob 存储中，创建名为 **adftutorial** 的容器（如果尚不存在）。
-3. 创建名为 `hivescripts` 的文件夹。
-4. 将 `hivescript.hql` 文件上传到 `hivescripts` 子文件夹。
+3. 创建名为 **hivescripts** 的文件夹。
+4. 将 **hivescript.hql** 文件上传到 **hivescripts** 子文件夹。
 
  
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 
-1. 逐个设置变量。
+1. 设置资源组名称。 在本教程中创建一个资源组。 不过，也可以使用现有的资源组。 
 
     ```powershell
-    $subscriptionID = "<subscription ID>" # Your Azure subscription ID
-    $resourceGroupName = "ADFTutorialResourceGroup" # Name of the resource group
-    $dataFactoryName = "MyDataFactory09142017" # Globally unique name of the data factory
-    $pipelineName = "MyHivePipeline" # Name of the pipeline
-    $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" # make it a unique name. 
+    $resourceGroupName = "ADFTutorialResourceGroup" 
+    ```
+2. 指定数据工厂名称。 必须全局唯一。
+
+    ```powershell
+    $dataFactoryName = "MyDataFactory09142017"
+    ```
+3. 指定管道名称。 
+
+    ```powershell
+    $pipelineName = "MyHivePipeline" # 
+    ```
+4. 指定自承载 Integration Runtime 的名称。 当数据工厂需要访问 VNet 中的资源（例如 Azure SQL 数据库）时，你需要自承载 Integration Runtime。 
+    ```powershell
+    $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
 2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
@@ -222,21 +226,27 @@ ms.lasthandoff: 11/04/2017
 - **clusterUri**。 以 https://<clustername>.azurehdinsight.net 格式指定 HDInsight 群集的 URL。  本文假设你有权通过 Internet 访问该群集。 例如，可以通过 `https://clustername.azurehdinsight.net` 连接到该群集。 此地址使用公共网关。如果已使用网络安全组 (NSG) 或用户定义的路由 (UDR) 限制了从 Internet 的访问，则该网关不可用。 要使数据工厂能够将作业提交到 Azure 虚拟网络中的 HDInsight 群集，需要相应地配置 Azure 虚拟网络，使 URL 可解析成 HDInsight 所用的网关的专用 IP 地址。
 
   1. 在 Azure 门户中，打开 HDInsight 所在的虚拟网络。 打开名称以 `nic-gateway-0` 开头的网络接口。 记下其专用 IP 地址。 例如 10.6.0.15。 
-  2. 如果 Azure 虚拟网络包含 DNS 服务器，请更新 DNS 记录，使 HDInsight 群集 URL `https://<clustername>.azurehdinsight.net` 可解析成 `10.6.0.15`。 这是建议的做法。 如果 Azure 虚拟网络中没有 DNS 服务器，可以通过编辑已注册为自我托管集成运行时节点的所有 VM 的 hosts 文件 (C:\Windows\System32\drivers\etc) 并添加如下所示的条目，来暂时解决此问题： 
+  2. 如果 Azure 虚拟网络包含 DNS 服务器，请更新 DNS 记录，使 HDInsight 群集 URL `https://<clustername>.azurehdinsight.net` 可解析成 `10.6.0.15`。 这是建议的做法。 如果 Azure 虚拟网络中没有 DNS 服务器，可以通过编辑已注册为自承载 Integration Runtime 节点的所有 VM 的 hosts 文件 (C:\Windows\System32\drivers\etc) 并添加如下所示的条目，来暂时解决此问题： 
   
         `10.6.0.15 myHDIClusterName.azurehdinsight.net`
 
-切换到在其中创建了 JSON 文件的文件夹，并运行以下命令部署链接服务： 
+## <a name="create-linked-services"></a>创建链接服务
+在 PowerShell 中切换到在其中创建了 JSON 文件的文件夹，并运行以下命令来部署链接服务： 
 
+1. 在 PowerShell 中切换到在其中创建了 JSON 文件的文件夹。
+2. 运行以下命令，创建 Azure 存储链接服务。 
 
-```powershell
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    ```powershell
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    ```
+3. 运行以下命令，创建 Azure HDInsight 链接服务。 
 
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDILinkedService" -File "MyHDILinkedService.json"
-```
+    ```powershell
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
+    ```
 
 ## <a name="author-a-pipeline"></a>创作管道
-本步骤创建包含 Hive 活动的新管道。 该活动执行 Hive 脚本来返回示例表中的数据，并将其保存到定义的路径。 在偏好的编辑器中创建一个 JSON 文件，复制管道定义的以下 JSON 定义，并将该文件另存为 **MyHiveOnDemandPipeline.json**。
+本步骤创建包含 Hive 活动的新管道。 该活动执行 Hive 脚本来返回示例表中的数据，并将其保存到定义的路径。 在偏好的编辑器中创建一个 JSON 文件，复制管道定义的以下 JSON 定义，然后将该文件另存为 **MyHivePipeline.json**。
 
 
 ```json

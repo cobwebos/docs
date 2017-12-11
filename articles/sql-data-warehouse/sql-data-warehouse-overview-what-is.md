@@ -4,7 +4,7 @@ description: "企业级分布式数据库，可处理 PB 量级的关系数据�
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: bjhubbard
+manager: jenniehubbard
 editor: 
 ms.assetid: 4006c201-ec71-4982-b8ba-24bba879d7bb
 ms.service: sql-data-warehouse
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: overview
 ms.date: 10/23/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: d5ad5b566bd8d40ab6d7a9151af54890fd47cc88
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: jrj
+ms.openlocfilehash: 7fd17c29c413905084c6b3736018d111d3b28fea
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>什么是 Azure SQL 数据仓库？
 
@@ -41,9 +41,9 @@ SQL 数据仓库通过列存储将数据存储到关系表中。 此格式可显
 
 SQL 数据仓库提供[性能层](performance-tiers.md)，方便用户根据数据需求（不管大小）进行灵活的设置。 可以选择经过弹性优化或计算优化的数据仓库。 
 
-- 弹性优化性能层在体系结构中将计算层和存储层分开。 此选项的优势是工作负荷，后者可以根据短期的高峰活动频繁进行伸缩，从而充分利用独立的计算层和存储层。 此计算层的价格门槛最低，可以根据大多数客户工作负荷的需求进行伸缩。
+- 弹性优化性能层在体系结构中将计算层和存储层分开。 此选项非常适合可以根据短期的高峰活动频繁进行缩放，从而充分利用独立的计算层和存储层的工作负荷。 此计算层的价格门槛最低，可以根据大多数客户工作负荷的需求进行缩放。
 
-- 计算优化性能层使用最新的 Azure 硬件，引入了新的 NVMe 固态磁盘缓存，让访问频率最高的数据靠近 CPU，这正是你所需要的。 此性能层可以对存储自动分层，尤其适合复杂的查询，因为所有 IO 对计算层来说都是本地的。 另外，列存储进行了增强，以便在 SQL 数据仓库中存储无限数量的数据。 计算优化性能层提供最高级别的可伸缩性，允许你扩展到 30,000 个计算数据仓库单位 (cDWU)。 对于需要进行持续且速度极快的操作的工作负荷，请选择此层。
+- **“计算优化”性能层**使用最新的 Azure 硬件，引入了新的 NVMe 固态磁盘缓存，让访问频率最高的数据靠近 CPU，这正是你所需要的。 此性能层可以对存储自动分层，尤其适合复杂的查询，因为所有 IO 对计算层来说都是本地的。 另外，列存储进行了增强，以便在 SQL 数据仓库中存储无限数量的数据。 计算优化性能层提供最高级别的可伸缩性，允许扩展到 30,000 个计算数据仓库单位 (cDWU)。 对于需要进行持续且速度极快的操作的工作负荷，请选择此层。
 
 ## <a name="next-steps"></a>后续步骤
 对 SQL 数据仓库有了初步的认识后，请继续学习如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。 如果不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  

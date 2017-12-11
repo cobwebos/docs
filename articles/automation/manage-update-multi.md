@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/30/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 119d8abcea91bf5c6ea03212fcb886f9e31c1ada
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/28/2017
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持服务器核心和 Nano Server 安装选项。
+* Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持 Nano Server。
 
   若要提供相关支持，以便将更新部署到 Windows Server 2008 R2 SP1，需要 .NET Framework 4.5 和 Windows Management Framework 5.0 或更高版本。
 

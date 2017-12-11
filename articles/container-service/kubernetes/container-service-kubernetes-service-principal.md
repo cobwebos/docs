@@ -1,26 +1,19 @@
 ---
-title: "Azure Kubernetes 群集的服务主体 | Microsoft Docs"
+title: "Azure Kubernetes 群集的服务主体"
 description: "在 Azure 容器服务中为 Kubernetes 群集创建和管理 Azure Active Directory 服务主体"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c07bebb98345981d36eb928bea14a09df9bc741
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 0c7e05525f1c6d11c17b4b36946dd797a7a95d08
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
@@ -36,9 +29,9 @@ ms.lasthandoff: 11/29/2017
 
 可以使用现有的符合以下条件的 Azure AD 服务主体，也可以创建一个新的。
 
-* **范围**：用于部署群集的资源组。
+* **范围**：资源组
 
-* **角色**：**参与者**
+* **角色**：参与者
 
 * **客户端机密**：必须是密码。 目前，无法使用针对证书身份验证设置的服务主体。
 
@@ -59,7 +52,7 @@ az account set --subscription "mySubscriptionID"
 
 az group create --name "myResourceGroup" --location "westus"
 
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/mySubscriptionID"
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>"
 ```
 
 输出如下所示（此处以密文形式显示）：
@@ -126,11 +119,50 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 * 指定服务主体的“客户端 ID”时，可以使用 `appId` 的值（如本文所示）或相应的服务主体 `name`（例如，`https://www.contoso.org/example`）。
 
-* 在 Kubernetes 群集的主 VM 和代理 VM 中，服务主体凭据存储在 /etc/kubernetes/azure.json 文件中。
+* 在 Kubernetes 群集的主 VM 和代理 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中。
 
-* 使用 `az acs create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 ~/.azure/acsServicePrincipal.json 文件中。
+* 使用 `az acs create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/acsServicePrincipal.json` 文件中。
 
 * 使用 `az acs create` 命令自动生成服务主体时，服务主体也可以使用在同一订阅中创建的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)进行身份验证。
+
+* 服务主体凭据可能会过期，导致群集节点进入“NotReady”状态。 请参阅[凭据过期](#credential-expiration)部分，了解缓解信息。
+
+## <a name="credential-expiration"></a>凭据过期
+
+除非在创建服务主体时使用 `--years` 参数指定了自定义时效期，否则凭据的有效期为自创建之时起 1 年。 凭据过期后，群集节点可能进入“NotReady”状态。
+
+若要查看服务主体的过期日期，请使用 `--debug` 参数执行 [az ad app show](/cli/azure/ad/app#az_ad_app_show) 命令，然后在输出底部附近查找 `passwordCredentials` 的 `endDate` 值：
+
+```azurecli
+az ad app show --id <appId> --debug
+```
+
+输出（此处显示的为截断的结果）：
+
+```json
+...
+"passwordCredentials":[{"customKeyIdentifier":null,"endDate":"2018-11-20T23:29:49.316176Z"
+...
+```
+
+如果服务主体凭据已过期，请使用 [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials) 命令更新凭据：
+
+```azurecli
+az ad sp reset-credentials --name <appId>
+```
+
+输出：
+
+```json
+{
+  "appId": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "name": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "password": "404203c3-0000-0000-0000-d1d2956f3606",
+  "tenant": "72f988bf-0000-0000-0000b-2d7cd011db47"
+}
+```
+
+然后，在所有群集节点上使用新凭据对 `/etc/kubernetes/azure.json` 进行更新，然后重启节点。
 
 ## <a name="next-steps"></a>后续步骤
 
