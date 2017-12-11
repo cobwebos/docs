@@ -1,11 +1,10 @@
 ---
-title: "将 SSL 证书添加到 Azure 应用服务应用 | Microsoft Docs"
-description: "了解如何将 SSL 证书添加到应用服务应用。"
+title: "为 Azure 应用服务购买和配置 SSL 证书 | Microsoft Docs"
+description: "了解如何购买应用服务证书并将其绑定到应用服务应用"
 services: app-service
 documentationcenter: .net
-author: ahmedelnably
-manager: stefsch
-editor: cephalin
+author: cephalin
+manager: cfowler
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -13,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: apurvajo
-ms.openlocfilehash: 214f05f45f59b0403e6902988f9184d6b62618bd
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 12/01/2017
+ms.author: apurvajo;cephalin
+ms.openlocfilehash: 256cb9a33d49bc3c24b2d94c417632edb0c8df31
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 10/24/2017
 > [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。
 >
 
-SSL 证书购买过程完成之后，需要打开“应用服务证书”页面。[](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)
+SSL 证书购买过程完成之后，需要打开[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面。
 
 ![插入已准备好存储在 KV 中的图像](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -74,12 +73,16 @@ SSL 证书购买过程完成之后，需要打开“应用服务证书”页面�
 
 ## <a name="step-4---verify-the-domain-ownership"></a>步骤 4 - 验证域所有权
 
-> [!NOTE]
-> 应用服务证书支持 3 种类型的域验证：域验证、邮件验证和手动验证。 有关验证类型的更多详细信息，请参阅[“高级”部分](#advanced)。
-
 在步骤 3 中使用的同一“证书配置”页面中，单击“步骤 2: 验证”。
 
-域验证：此过程最简便，但仅适用于已**[从 Azure 应用服务购买自定义域](custom-dns-web-site-buydomains-web-app.md)**的情况。
+选择首选的域验证方法。 
+
+应用服务证书支持四种类型的域验证：应用服务验证、域验证、邮件验证和手动验证。 有关验证类型的更多详细信息，请参阅[“高级”部分](#advanced)。
+
+> [!NOTE]
+> 当要验证的域已映射到同一订阅中的应用服务应用时，**应用服务验证**是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
+>
+
 请单击“验证”按钮完成此步骤。
 
 ![插入域验证图像](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
@@ -142,6 +145,10 @@ SSL 证书购买过程完成之后，需要打开“应用服务证书”页面�
 
 如果需要重新发送验证电子邮件，请单击“重新发送电子邮件”按钮。
 
+#### <a name="domain-verification"></a>域验证
+
+选择此选项仅适用于[从 Azure 购买的应用服务域](custom-dns-web-site-buydomains-web-app.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
+
 #### <a name="manual-verification"></a>手动验证
 
 > [!IMPORTANT]
@@ -197,6 +204,7 @@ SSL 证书购买过程完成之后，需要打开“应用服务证书”页面�
 - GoDaddy，用于生成应用服务证书，要求每三年进行一次域验证。 域管理员每隔三年会收到一封电子邮件，要求对域进行验证。 如果没有检查该电子邮件或者没有验证你的域，则会阻止自动续订应用服务证书。 
 - 在 2017 年 3 月 31 日之前颁发的所有应用服务证书在下次续订时都会要求重新验证域（即使为证书启用了自动续订也是如此）。 这是 GoDaddy 策略变更的结果。 请检查电子邮件并完成此一次性域验证，以继续自动续订应用服务证书。 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="more-resources"></a>更多资源
 
-* [添加内容交付网络](app-service-web-tutorial-content-delivery-network.md)
+* [在 Azure 应用服务的应用程序代码中使用 SSL 证书](app-service-web-ssl-cert-load.md)
+* [常见问题解答：应用服务证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
