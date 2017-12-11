@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 72b724d5cf6787f8d6afc73fb37f4944cbae78a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
 Microsoft 为传统经销商和分销商 (CSP) 提供超大规模的服务，允许他们为客户快速预配新服务和解决方案，而不需投资开发这些新服务。 为了让云解决方案提供商 (CSP) 能够直接管理这些新服务，Microsoft 提供了相应的程序和 API，以便 CSP 代表客户管理 Microsoft Azure 资源。 其中一项资源就是 ExpressRoute。 ExpressRoute 允许 CSP 将现有客户资源连接到 Azure 服务。 ExpressRoute 是一种高速专用通信链路，可以链接到 Azure 中的服务。 
 
-ExpresRoute 由一对可以实现高可用性的线路组成，这对线路连接到单个客户订阅，不能由多个客户共享。 每个线路都会在不同的路由器中终止，目的是维持高可用性。
+ExpressRoute 由一对可以实现高可用性的线路组成，这对线路连接到单个客户订阅，不能由多个客户共享。 每个线路都会在不同的路由器中终止，目的是维持高可用性。
 
 > [!NOTE]
 > ExpressRoute 存在带宽和连接限制，也就是说，进行大型/复杂的实施时，需要为单个客户提供多个 ExpressRoute 线路。
 > 
 > 
 
-Microsoft Azure 提供越来越多的服务，可以将这些服务提供给客户。  若要充分利用这些服务，需使用 ExpressRoute 连接对 Microsoft Azure 环境进行高速、低延迟访问。
+Microsoft Azure 提供越来越多的服务，可以将这些服务提供给客户。 ExpressRoute 允许对 Microsoft Azure 环境进行高速、低延迟访问，有助于你和你的客户充分利用这些服务。
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure 管理
 Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编程方式与自己的服务管理系统集成。 可在 [此处](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)找到受支持的管理功能。
@@ -67,7 +67,7 @@ Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编
 
 * **基于角色的访问控制 (RBAC)** – RBAC 基于 Azure Active Directory。  有关 Azure RBAC 的详细信息，请参阅 [此处](../active-directory/role-based-access-control-configure.md)。
 * **网络** – 介绍有关 Microsoft Azure 中网络的各种主题。
-* **Azure Active Directory (AAD)** – AAD 提供针对 Microsoft Azure 和第三方 SaaS 应用程序的标识管理。 有关 Azure AD 的详细信息，请参阅 [此处](https://azure.microsoft.com/documentation/services/active-directory/)。  
+* **Azure Active Directory (Azure AD)** – Azure AD 提供针对 Microsoft Azure 和第三方 SaaS 应用程序的标识管理。 有关 Azure AD 的详细信息，请参阅 [此处](https://azure.microsoft.com/documentation/services/active-directory/)。  
 
 ## <a name="network-speeds"></a>网络速度
 ExpressRoute 支持的网络速度其范围为 50 Mb/秒到 10Gb/秒。 因此，客户可以根据其具体环境购买所需的网络带宽。

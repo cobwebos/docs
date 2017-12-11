@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 2b4d04af7fe7a40a1d907a06ab8772f20956bc19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -47,9 +47,9 @@ Azure 机器学习是完全托管的服务，可用于创建、测试、操作�
 
 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
 
-**经典 Web 服务列在何处？新 Web 服务（基于 Azure Resource Manager）列在何处？**
+**经典 Web 服务列在何处？新 Web 服务（基于 Azure 资源管理器）列在何处？**
 
-使用经典部署模型创建的 Web 服务和使用新 Azure Resource Manager 部署模型创建的 Web 服务列在 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户中。
+使用经典部署模型创建的 Web 服务和使用新 Azure 资源管理器部署模型创建的 Web 服务列在 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户中。
 
 此外，还在“Web 服务”选项卡上的[机器学习工作室](http://studio.azureml.net)中列出了经典 Web 服务。
 
@@ -230,7 +230,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **如何监视生产环境中部署的 Web 服务？**
 
-部署预测模型后，可以从 Azure 经典门户（仅经典 Web 服务）或 Azure 机器学习 Web 服务门户对其进行监视。 每个已部署的服务都有其本身的仪表板，可以在此处查看该服务的监视信息。 有关如何管理已部署 Web 服务的详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)和[管理 Azure 机器学习工作区](manage-workspace.md)。
+部署预测模型后，可以从 Azure 机器学习 Web 服务门户对其进行监视。 每个已部署的服务都有其本身的仪表板，可以在此处查看该服务的监视信息。 有关如何管理已部署 Web 服务的详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)和[管理 Azure 机器学习工作区](manage-workspace.md)。
 
 **是否可以在某个位置查看 RRS/BES 输出？**
 
@@ -285,7 +285,7 @@ Azure 机器学习有两种类型的 Web 服务：
 ## <a name="security-and-availability"></a>安全性和可用性
 **默认情况下，哪些人可以访问 Web 服务的 HTTP 终结点？如何限制对终结点的访问？**
 
-部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以从 Azure 经典门户，或以编程方式使用 Web 服务管理 API 添加具有自身密钥的更多终结点。 需要使用访问密钥来调用 Web 服务。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以通过 Web Services 门户或编程方式使用 Web 服务管理 API 添加具有自身密钥的更多终结点。 需要使用访问密钥来调用 Web 服务。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
 
 **如果找不到 Azure 存储帐户，会发生什么情况？**
 
@@ -297,7 +297,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 在执行工作流时，机器学习工作室依赖用户提供的 Azure 存储帐户来存储中间数据。 此存储帐户是在创建工作区时提供给机器学习工作室的，访问密钥与该工作区相关联。 如果在创建工作区后更改了访问密钥，该工作区将无法再访问存储帐户。 它将停止工作，并且该工作区中的所有试验都会失败。
 
-如果更改了存储帐户访问密钥，请使用 Azure 经典门户在工作区中重新同步访问密钥。  
+如果更改了存储帐户访问密钥，请使用 Azure 门户在工作区中重新同步访问密钥。  
 
 ## <a name="support-and-training"></a>支持和培训
 **在哪里可以获得 Azure 机器学习的培训？**
@@ -362,7 +362,7 @@ API 计算小时数是使用机器学习计算资源运行 API 调用所花费�
 
 工作室计算小时数是试验在工作室中使用计算资源的聚合时间计费单位。
 
-**在新（基于 Azure Resource Manager）Web 服务中，开发/测试层的用途是什么？**
+**在新（基于 Azure 资源管理器）Web 服务中，开发/测试层的用途是什么？**
 
 基于 Resource Manager 的 Web 服务提供多个可用于预配计费计划的层。 开发/测试定价层提供有限的已包含数量，让用户以 Web 服务的形式测试试验，而不产生费用。 用户可以查看其运行情形。
 
@@ -509,7 +509,7 @@ Azure 机器学习 API 服务根据它是经典 Web 服务还是新（基于 Res
 
 **如何注册 Azure 机器学习标准层？**
 
-必须首先具有对 Azure 订阅的访问权限，才能创建标准机器学习工作区。 可以注册使用为期 30 天的 Azure 订阅免费试用，试用结束后再升级到 Azure 付费订阅，也可以立即购买 Azure 付费订阅。 然后，在获取访问订阅的权限后，可以从 Microsoft Azure 经典门户创建机器学习工作区。 请查看[分步说明](https://azure.microsoft.com/trial/get-started-machine-learning-b/)。
+必须首先具有对 Azure 订阅的访问权限，才能创建标准机器学习工作区。 可以注册使用为期 30 天的 Azure 订阅免费试用，试用结束后再升级到 Azure 付费订阅，也可以立即购买 Azure 付费订阅。 然后，在获取访问订阅的权限后，可以从 Microsoft Azure 门户创建机器学习工作区。 请查看[分步说明](https://azure.microsoft.com/trial/get-started-machine-learning-b/)。
 
 或者，可以接受标准机器学习工作区所有者的邀请访问其工作区。
 

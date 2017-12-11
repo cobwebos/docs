@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/04/2017
 ms.author: ryanwi
-ms.openlocfilehash: a4bada3c099e348e2aa188fe08a67ef170ad50ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70d365910569a2acb1c230c803fdfca5cb6b35af
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>创建你的第一个 C# Service Fabric 有状态 Reliable Services 应用程序
 
@@ -84,7 +84,7 @@ Visual Studio 会创建应用程序项目和有状态服务项目，并在解决
 
 我们使用的有状态服务模板直接显示在 MyStatefulService.cs 的 `RunAsync` 方法中递增的计数器值。
 
-展开事件之一可查看更多详细信息，包括运行代码的节点。 在此例中，它是 \_Node\_2，不过在你的计算机上可能会有所不同。
+展开事件之一可查看更多详细信息，包括运行代码的节点。 在此例中，它是 \_Node\_0，不过在你的计算机上可能会有所不同。
    
 ![诊断事件查看器详细信息][6]
 

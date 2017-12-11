@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 66a68a1ca048b50b8e2ba4ac1bb86d367b8a5bb9
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 11bc2418e439f86a228ff7d5c845caef683d9018
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="develop-for-azure-files-with-net-and-windowsazurestorage"></a>使用 .NET 和 WindowsAzure.Storage 针对 Azure 文件进行开发
+# <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-本教程演示使用 .NET 和 `WindowsAzure.Storage` API 开发使用 [Azure 文件](storage-files-introduction.md)存储文件数据的应用程序的基础知识。 本教程将创建一个简单的控制台应用程序，用于通过 .NET 和 Azure 文件执行基本的操作：
+本教程演示通过 .NET 开发应用程序的基础知识，此类应用程序使用 [Azure 文件](storage-files-introduction.md)来存储文件数据。 本教程将创建一个简单的控制台应用程序，用于通过 .NET 和 Azure 文件执行基本的操作：
 
 * 获取文件内容
 * 设置文件共享的配额（最大大小）。
@@ -45,9 +45,6 @@ API | 使用时机 | 说明
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 应用程序： <ul><li>需要通过 SMB 读取/写入文件</li><li>是否在可以通过端口 445 访问 Azure 文件帐户的设备上运行</li><li>不需要管理文件共享的任何管理设置</li></ul> | 通过 SMB 使用 Azure 文件对文件 I/O 进行编码与使用任何网络文件共享或本地存储设备对 I/O 进行编码相同。 有关 .NET 中的一些功能（包括文件 I/O）的简介，请参阅[此教程](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)。
 [WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | 应用程序： <ul><li>由于防火墙或 ISP 约束，无法通过 SMB 在端口 445 上访问 Azure 文件</li><li>需要管理功能，例如能够设置文件共享的配额或创建共享访问签名</li></ul> | 本文演示如何通过 REST（而不是 SMB）将 `WindowsAzure.Storage` 用于文件 I/O 以及如何管理文件共享。
-
-> [!TIP]
-> 根据应用程序的需求，Azure Blob 可能是更合适的存储选择。 有关选择 Azure 文件或 Azure Blob 的详细信息，请参阅[确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。

@@ -1,27 +1,19 @@
 ---
-title: "快速入门 - 适用于 Linux 的 Azure Docker Swarm 群集 | Microsoft Docs"
+title: "快速入门 - 适用于 Linux 的 Azure Docker Swarm 群集"
 description: "快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Docker Swarm 群集。"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, Docker, Swarm
-keywords: 
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/14/2017
 ms.author: nepeters
 ms.custom: 
-ms.openlocfilehash: 876135d62d548e155f4ebefd8bbd9d9cca8b87d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79e4fab9501141c78bca4b28eabb3964604be909
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="deploy-docker-swarm-cluster"></a>部署 Docker Swarm 群集
 

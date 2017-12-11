@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 数据工厂以增量方式复制数据 | Microsoft Docs"
+title: "使用 Azure 数据工厂以增量方式复制表 | Microsoft Docs"
 description: "在本教程中，我们将创建一个 Azure 数据工厂管道，它能够以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储。"
 services: data-factory
 documentationcenter: 
@@ -13,24 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: f352f46f2d4c23124f4ee7e886cae9bdd8d5d2c9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0b05971b5ab8ec3fd14dd4ce14d07df478e1dcc9
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
+在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
 
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>本教程
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-在数据集成历程中，一种广泛使用的方案是在完成初始数据加载和分析之后，以增量方式定期加载数据以刷新更新的分析结果。 本教程重点讲解如何仅将数据源中的新记录或更新的记录载入数据接收器。 与完全加载相比，这种方法更有有效，尤其是对于大型数据集。    
-
-可以使用管道中的“查找”、“复制”和“存储过程”活动，通过数据工厂创建高水印解决方案来实现增量数据加载。  
 
 在本教程中执行以下步骤：
 
@@ -46,7 +41,7 @@ ms.lasthandoff: 11/04/2017
 ## <a name="overview"></a>概述
 高级解决方案示意图： 
 
-![以增量方式加载数据](media\tutorial-Incrementally-load-data-from-azure-sql-to-blob\incrementally-load.png)
+![以增量方式加载数据](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
 
 下面是创建此解决方案所要执行的重要步骤： 
 
@@ -71,7 +66,7 @@ ms.lasthandoff: 11/04/2017
 * **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
-1. 打开“SQL Server Management Studio”，在“服务器资源管理器”中右键单击数据库，并单击“新建查询”。
+1. 打开 **SQL Server Management Studio**。 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
 2. 针对 Azure SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储。  
     
     ```sql
@@ -151,40 +146,47 @@ END
 ```
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
-
-1. 启动 **PowerShell**。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
-
-    运行以下命令并输入用于登录 Azure 门户的用户名和密码：
-        
-    ```powershell
-    Login-AzureRmAccount
-    ```        
-    运行以下命令查看此帐户的所有订阅：
-
-    ```powershell
-    Get-AzureRmSubscription
-    ```
-    运行以下命令选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
-
-    ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
-    ```
-2. 运行 **Set-AzureRmDataFactoryV2** cmdlet 创建数据工厂。 执行该命令之前，请将占位符替换为自己的值。
-
-    ```powershell
-    Set-AzureRmDataFactoryV2 -ResourceGroupName "<your resource group to create the factory>" -Location "East US" -Name "<specify the name of data factory to create. It must be globally unique.>" 
+1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"adfrg"`。 
+   
+     ```powershell
+    $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
-    请注意以下几点：
+    如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令
+2. 定义一个用于数据工厂位置的变量： 
 
-    * Azure 数据工厂的名称必须全局唯一。 如果收到以下错误，请更改名称并重试。
+    ```powershell
+    $location = "East US"
+    ```
+3. 若要创建 Azure 资源组，请运行以下命令： 
 
-        ```
-        The specified Data Factory name '<data factory name>' is already in use. Data Factory names must be globally unique.
-        ```
+    ```powershell
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+    如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令。 
+3. 定义一个用于数据工厂名称的变量。 
 
-    * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
-    * 目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+    > [!IMPORTANT]
+    >  更新数据工厂名称，使之全局唯一。 例如 ADFTutorialFactorySP1127。 
+
+    ```powershell
+    $dataFactoryName = "ADFIncCopyTutorialFactory";
+    ```
+5. 若要创建数据工厂，请运行以下 **Set-AzureRmDataFactoryV2** cmdlet： 
+    
+    ```powershell       
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    ```
+
+请注意以下几点：
+
+* Azure 数据工厂的名称必须全局唯一。 如果收到以下错误，请更改名称并重试。
+
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
+* 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
+* 目前，数据工厂版本 2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域创建数据工厂。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -224,7 +226,7 @@ END
     ```
 
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
-1. 在 **C:\ADF** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：（如果文件夹 ADF 不存在，请创建该文件夹）。 将 **&lt;server&gt;、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL 服务器名称、用户 ID 和密码，然后保存文件。 
+1. 在 **C:\ADF** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：（如果文件夹 ADF 不存在，请创建该文件夹）。 将 **&lt;server&gt;、&lt;database&gt;、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、用户 ID 和密码，然后保存文件。 
 
     ```json
     {
@@ -233,15 +235,15 @@ END
             "type": "AzureSqlDatabase",
             "typeProperties": {
                 "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
+                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
                     "type": "SecureString"
                 }
             }
         }
     }
     ```
-2. 在 **Azure PowerShell** 中，切换到 **ADF** 文件夹。
-3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 创建链接服务：**AzureSQLDatabaseLinkedService**。 
+1. 在 **Azure PowerShell** 中，切换到 **ADF** 文件夹。
+2. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 创建链接服务：**AzureSQLDatabaseLinkedService**。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -280,7 +282,7 @@ END
     }
    
     ```
-    本教程使用表名：**data_source_table**。 如果使用具有不同名称的表，请替换名称。 
+    本教程使用表名 **data_source_table**。 如果使用具有不同名称的表，请替换名称。 
 2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 创建数据集：SourceDataset
     
     ```powershell
@@ -379,7 +381,7 @@ END
 本教程创建包含两个查找活动、一个复制活动和存储过程活动的管道，这些活动链接在一个管道中。 
 
 
-1. 在同一文件夹中，创建包含以下内容的 JSON 文件 IncrementalCopyPipeline.json。 
+1. 在同一文件夹中，创建包含以下内容的 JSON 文件 IncrementalCopyPipeline.json： 
 
     ```json
     {
@@ -512,7 +514,7 @@ END
 1. 使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道：**IncrementalCopyPipeline**。 将占位符替换为自己的资源组和数据工厂名称。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup "<your resource group>" -dataFactoryName "<your data factory name>"
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
 2. 运行 Get-AzureRmDataFactoryV2ActivityRun cmdlet 检查管道的状态，直到看到所有活动成功运行的消息。 将占位符替换为针对 RunStartedAfter 和 RunStartedBefore 参数指定的、自己的适当时间。  本教程使用 -RunStartedAfter "2017/09/14" -RunStartedBefore "2017/09/15"
 
@@ -616,7 +618,7 @@ END
     VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
     ``` 
 
-    Azure SQL 数据库中的更新数据如下所示：
+    Azure SQL 数据库中的更新数据为：
 
     ```
     PersonID | Name | LastModifytime
@@ -632,7 +634,7 @@ END
 2. 再次使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道：**IncrementalCopyPipeline**。 将占位符替换为自己的资源组和数据工厂名称。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup "<your resource group>" -dataFactoryName "<your data factory name>"
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
 3. 运行 **Get-AzureRmDataFactoryV2ActivityRun** cmdlet 检查管道的状态，直到看到所有活动成功运行的消息。 将占位符替换为针对 RunStartedAfter 和 RunStartedBefore 参数指定的、自己的适当时间。  本教程使用 -RunStartedAfter "2017/09/14" -RunStartedBefore "2017/09/15"
 
@@ -700,7 +702,7 @@ END
     Error             : {errorCode, message, failureType, target}
 
     ```
-4.  在 Azure Blob 存储中，应会看到已在 Azure Blob 存储中创建了另一个文件。 在本教程中，新文件名为 `Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt`。  打开该文件，会看到其中包含 2 行记录：
+4.  在 Azure Blob 存储中，应会看到已在 Azure Blob 存储中创建了另一个文件。 在本教程中，新文件名为 `Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt`。  打开该文件，会看到其中包含两行记录：
 5.  检查 `watermarktable` 中的最新值，会看到水印值已再次更新
 
     ```sql
@@ -725,10 +727,10 @@ END
 > * 运行管道。
 > * 监视管道运行。 
 
-请转到下一篇教程，了解如何在 Azure 上使用 Spark 群集转换数据：
+在本教程中，管道将数据从 Azure SQL 数据库中的**单个表**复制到了 Azure Blob 存储。 转到下面的教程，了解如何将数据从本地 SQL Server 数据库中的**多个表**复制到 Azure SQL 数据库。 
 
 > [!div class="nextstepaction"]
->[在云中使用 Spark 群集转换数据](tutorial-transform-data-spark-powershell.md)
+>[以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 
 
