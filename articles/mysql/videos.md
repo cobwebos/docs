@@ -8,14 +8,26 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 88a3114271088ad49a3d4231facc88ee6f89b54b
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 12/01/2017
+ms.openlocfilehash: 9320a08217a5748ee8e41ab6f282490757b4acd1
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频
+
+[概述：Azure Database for PostgreSQL 和 MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T147/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL 和 Azure Database for MySQL 将社区版数据库引擎和完全托管服务的功能组合在一起，因此你可以专注于应用而无需管理数据库。 收看以快速了解使用该服务的优点，并查看运行中的一些功能。
+
+[深入了解 MySQL 和 PostgreSQL 的托管服务功能](https://channel9.msdn.com/Events/Connect/2017/T148)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T148/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL 和 Azure Database for MySQL 将社区版数据库引擎和完全托管服务的功能组合在一起。 收看以深入了解这些服务的工作方式 - 我们如何确保高可用性和快速缩放（在几秒中内），以便满足客户的需求。 还将了解在安全性和全球可用性方面的一些基础投资。
 
 [如何开始使用新的 Azure Database for MySQL 服务](https://channel9.msdn.com/events/Build/2017/B8045)
 

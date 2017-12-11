@@ -1,29 +1,22 @@
 ---
-title: "监视 Azure DC/OS 群集 - ELK 堆栈 | Microsoft 文档"
+title: "监视 Azure DC/OS 群集 - ELK 堆栈"
 description: "使用 ELK（Elasticsearch、Logstash 和 Kibana）监视 Azure 容器服务群集中的 DC/OS 群集。"
 services: container-service
-documentationcenter: 
 author: sauryadas
-manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: "容器, DC/OS, Azure, 监视, elk"
-ms.assetid: 
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: fcfa277cdd0f3cebc0fbbb23e771fb23ffbe2ca6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b378fc38233534df74582388e6e832d40f431d11
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>使用 ELK 监视 Azure 容器服务群集
+
 在本文中，我们将演示如何在 Azure 容器服务中的 DC/OS 群集上部署 ELK（Elasticsearch、Logstash、Kibana）堆栈。 
 
 ## <a name="prerequisites"></a>先决条件

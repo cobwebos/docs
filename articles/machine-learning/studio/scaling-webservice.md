@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: neerajkh
-ms.openlocfilehash: eea085308a5ca755cbf570465b97019de800768e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b4fcef51b2704f07f5d1d08a4bd16970864b0fd
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>通过添加更多终结点来扩展 Azure 机器学习 Web 服务
 > [!NOTE]
@@ -27,11 +27,11 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-默认情况下，每个已发布的 Web 服务配置为支持 20 个并发请求，并且最高可达 200 个并发请求。 尽管 Azure 经典门户提供了设置此值的方法，Azure 机器学习自动优化设置以为 Web 服务提供最佳性能，并忽略门户值。 
+默认情况下，每个已发布的 Web 服务配置为支持 20 个并发请求，并且最高可达 200 个并发请求。 Azure 机器学习自动优化设置以为 Web 服务提供最佳性能，并忽略门户值。 
 
 如果计划调用带有高于并发调用值 200 所支持的负载的 API，应在同一个 Web 服务上创建多个终结点。 然后可在所有终结点上随机分发负载。
 
-Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过 200 个并发请求、通过多个终结点增加可用性或为 Web 服务提供单独的终结点。 通过 [Azure 经典门户](https://manage.windowsazure.com/)或 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户为同一个 Web 服务添加其他终结点，可增加规模。
+Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过 200 个并发请求、通过多个终结点增加可用性或为 Web 服务提供单独的终结点。 通过 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户为同一个 Web 服务添加其他终结点，可增加规模。
 
 有关添加新终结点的详细信息，请参阅[创建终结点](create-endpoint.md)。
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure API 管理常见问题解答 | Microsoft Docs"
-description: "了解 Azure API 管理中的常见问题解答、模式和最佳做法。"
+description: "了解 Azure API 管理中的常见问题解答 (FAQ)、模式和最佳做法。"
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: a9740cf527e4a9811b510ad5c96e5ab769efc2d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0072a56c2688c297d499533a125926ba9915ff9
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
 
 ## <a name="contact-us"></a>联系我们
 * [如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
-
 
 ## <a name="frequently-asked-questions"></a>常见问题
 * [功能处于预览中意味着什么？](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -40,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 * [API 管理网关 IP 地址是否不变？是否可以在防火墙规则中使用它？](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
 * [是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
 * [API 管理使用何种路由方法部署到多个地理位置？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
-* [是否可以使用 Azure Resource Manager 模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
+* [是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [是否可以为后端使用自签名 SSL 证书？](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
 * [为何在尝试克隆 GIT 存储库时得到身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
@@ -62,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>如何确保 API 管理网关和后端服务之间的连接安全？
 有多个选项可确保 API 管理网关和后端服务之间的连接安全。 可以：
 
-* 使用 HTTP 基本身份验证。 有关详细信息，请参阅[配置 SharePoint](api-management-howto-create-apis.md#configure-api-settings)。
+* 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
 * 在后端服务上使用 IP 允许列表。 如果有标准或高级层 API 管理实例，则网关的 IP 地址保持不变。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
 * 将 API 管理实例连接到 Azure 虚拟网络。
@@ -102,7 +101,7 @@ ms.lasthandoff: 10/11/2017
 有几种选项可在 API 管理中使用 API 版本控制：
 
 * 在 API 管理中，可将 API 配置为表示不同版本。 例如，可具有两个不同的 API，MyAPIv1 和 MyAPIv2。 开发人员可选择该开发人员要使用的版本。
-* 还可使用不包含版本段的服务 URL 配置 API，例如 https://my.api。 然后，在每个操作的[重写 URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) 模板上配置版本段。 例如，可使操作带有名为 /resource 的 [URL 模板](api-management-howto-add-operations.md#url-template)和名为 /v1/Resource 的[重写 URL](api-management-howto-add-operations.md#rewrite-url-template) 模板。 可为每个操作单独更改版本段值。
+* 还可使用不包含版本段的服务 URL 配置 API，例如 https://my.api。 然后，在每个操作的[重写 URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) 模板上配置版本段。 
 * 如果希望在 API 的服务 URL 中保留“默认”版本段，请在选定操作上设置使用[设置后端服务](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService)策略的策略以更改后端请求路径。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
@@ -133,7 +132,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>API 管理使用何种路由方法部署到多个地理位置？
 API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#priority)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
-### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure Resource Manager 模板创建 API 管理服务实例？
+### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
 是的。 请参阅 [Azure API 管理服务](http://aka.ms/apimtemplate)快速入门模板。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>是否可以为后端使用自签名 SSL 证书？

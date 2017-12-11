@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 822abf5cd09a0cd0d66441acfe4ae114c6ba73eb
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 1763c63b37c5e6b326c3623dc058974f718ac990
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/29/2017
 
 以下各节介绍用于 Azure 门户开发的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
  
-## <a name="the-sms-verification-orchestration"></a>短信验证业务流程
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码） 
 
 E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json。
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 0815c4d826d9ee09f2e787d9b27258149c55d400
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e9b979861f5ad815fd3794a98f3b9ca2115b415c
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -117,4 +117,4 @@ ms.lasthandoff: 11/10/2017
 ## <a name="manage-an-app-service-plan"></a>管理应用服务计划
 
 > [!div class="nextstepaction"]
-> [纵向扩展 Azure 中的应用](app-service-plan-manage.md)
+> [管理应用服务计划](app-service-plan-manage.md)

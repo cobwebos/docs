@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0973f83ae839597f3b499814a4a04a8a640a1fb6
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/29/2017
  
 ## <a name="functionjson-file"></a>function.json 文件
 
-如果使用 Azure 门户进行开发，则此处为用于 orchestrator 函数的 function.json 文件的内容。 大多数 orchestrator function.json 文件的内容都与以下内容相似。
+如果使用 Visual Studio Code 或 Azure 门户进行开发，则此处为用于业务流程协调程序函数的 function.json 文件的内容。 大多数 orchestrator function.json 文件的内容都与以下内容相似。
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/29/2017
 > [!WARNING]
 > 为遵守 orchestrator 函数的“无 I/O”规则，在使用 `orchestrationTrigger` 触发器绑定时不要使用任何输入或输出绑定。  如果需要其他输入或输出绑定，则应改为在业务流程协调程序调用的 `activityTrigger` 函数的上下文中使用。
 
-## <a name="c-script"></a>C# 脚本
+## <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# 脚本（Visual Studio Code 和 Azure 门户的示例代码） 
 
 下面是源代码：
 

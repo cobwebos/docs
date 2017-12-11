@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/25/2017
   ms.author: tomfitz
-  ms.openlocfilehash: 1deaf3659882855a8b9f510c108db838020abb94
-  ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+  ms.openlocfilehash: a51f2d028dc09bfe8d58357d2ade7c3dfa6e3fef
+  ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/27/2017
+  ms.lasthandoff: 12/08/2017
 abstract:
   description: "使用 Azure 托管应用程序可为内部和外部客户提供云解决方案。 你需要为解决方案定义基础结构，并为正在进行的解决方案管理定义条款。 解决方案的计费通过 Azure 计费来处理。"
 sections:
@@ -37,10 +37,10 @@ sections:
   - type: paragraph
     text: "了解如何开发托管应用程序并通过 Azure Marketplace 提供这些应用程序。"
   - type: list
-    style: ordered
+    style: unordered
+    className: spaced noBullet
     items:
     - html: "<a href=\"/azure/managed-applications/publish-service-catalog-app\">为内部用户发布托管应用程序</a>"
-    - html: "<a href=\"/azure/managed-applications/publish-marketplace-app\">为外部用户发布托管应用程序</a>"
 - title: "引用"
   items:
   - type: list

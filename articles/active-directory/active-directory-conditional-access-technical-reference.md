@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: cfb3a309208c78dc7896d61891da9825cf36dbd9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 5fad793bcf9ac86c2a1bc67e74dfb62af9876100
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件访问技术参考
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 11/30/2017
 
 ![控制受支持浏览器的访问](./media/active-directory-conditional-access-technical-reference/05.png)
 
-此设置会影响通过以下浏览器做出的访问尝试： 
+此设置适用于所有浏览器。 但是，若要符合设备策略（如兼容设备要求），支持以下操作系统和浏览器：
 
 
 | 操作系统                     | 浏览器                            | 支持     |
@@ -138,6 +138,9 @@ ms.lasthandoff: 11/30/2017
 > [!NOTE]
 > 对于 Chrome 支持，必须使用 Windows 10 创意者更新（版本 1703）或更高版本。<br>
 > 可安装[此扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。
+
+这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。 
+
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>支持的移动应用程序和桌面客户端
 

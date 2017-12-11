@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: 1efdda867703613e4f85e6994004df32e70ccb3d
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 122a2f8e506b3f567e73a816cbbeac569339c924
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>使用 Spark 到 Azure Cosmos DB 的连接器加速实时大数据分析
 
@@ -172,7 +172,7 @@ Spark 与 Azure Cosmos DB 之间的通信速度会大幅提高，因为数据在
 ```
 mvn clean package
 ```
-也可以从 *releases* 文件夹中下载最新版本的 JAR。
+也可以从 [*releases* 文件夹](https://github.com/Azure/azure-cosmosdb-spark/releases) 中下载最新版本的 JAR。
 
 ### <a name="include-the-azure-cosmos-db-spark-jar"></a>包含 Azure Cosmos DB Spark JAR
 在执行任何代码之前，首先需要包含 Azure Cosmos DB Spark JAR。  如果使用 **spark-shell**，则可以使用 **--jars** 选项包含 JAR。  

@@ -1,27 +1,19 @@
 ---
-title: "Azure 上的 Kubernetes 教程 - 准备应用 | Microsoft Docs"
+title: "Azure 上的 Kubernetes 教程 - 准备应用"
 description: "AKS 教程 - 准备应用"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0048f9ab21c09860397989c41920562ebab2f561
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ef0395a9c666732ba117822f46e8d2a7540aee14
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="prepare-application-for-azure-container-service-aks"></a>准备用于 Azure 容器服务 (AKS) 的应用程序
 

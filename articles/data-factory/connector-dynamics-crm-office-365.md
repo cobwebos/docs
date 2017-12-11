@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: c2de89ba3adaaa7d745731cff74269deecef03e2
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365/Dynamics CRM 复制数据
 
@@ -30,14 +30,20 @@ ms.lasthandoff: 11/10/2017
 
 可将数据从 Dynamics 365/Dynamics CRM 复制到任何受支持的接收器数据存储，或者将数据从任何受支持的源数据存储到 Dynamics 365/Dynamics CRM。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体来说，此 Dynamics 连接器支持以下 Dynamics 版本和身份验证类型：
+此 Dynamics 连接器支持以下 Dynamics 版本和身份验证类型（*IFD 是“面向 Internet 的部署”的略写*）：
 
 | Dynamics 版本 | 身份验证类型 | 链接的服务示例 |
 |:--- |:--- |:--- |
 | Dynamics 365 联机 <br> Dynamics CRM 联机 | Office365 | [Dynamics 联机 + Office365 身份验证](#dynamics-365-and-dynamics-crm-online) |
 | 带有 IFD 的本地 Dynamics 365 <br> 带有 IFD 的本地 Dynamics CRM 2016 <br> 带有 IFD 的本地 Dynamics CRM 2015 | IFD | [带有 IFD 的本地 Dynamics + IFD 身份验证](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-*IFD 是“Internet Facing Deployment”（面向 Internet 的部署）的缩写。*
+具体而言，对于 Dynamics 365，支持以下应用程序类型：
+
+- Dynamics 365 for Sales
+- Dynamics 365 for Customer Service
+- Dynamics 365 for Field Service
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
 > [!NOTE]
 > 要使用 Dynamics 连接器，请将密码存储在 Azure Key Vault 中，并在执行数据复制时允许从中拉取 ADF 复制活动。 请参阅如何在[链接的服务属性](#linked-service-properties)部分进行配置。

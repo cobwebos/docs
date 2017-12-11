@@ -24,7 +24,7 @@
 
 ## <a name="policies"></a>策略
 
-可以使用 [Azure 资源管理器策略](../articles/azure-resource-manager/resource-manager-policy.md)为组织的 [Windows VM](../articles/virtual-machines/windows/policy.md) 和 [Linux VM](../articles/virtual-machines/linux/policy.md) 定义所需行为。 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。
+可以使用 [Azure 策略](../articles/azure-policy/azure-policy-introduction.md)为组织的 [Windows VM](../articles/virtual-machines/windows/policy.md) 和 [Linux VM](../articles/virtual-machines/linux/policy.md) 定义所需行为。 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 

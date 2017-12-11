@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db4774de28a17e022de111986f72a1f15ec32beb
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 458338cd23c704c40c512dd96b22a4790f27d017
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>适用于 Azure 机器学习数据准备的受支持数据源 
 本文概述了当前适用于 Azure 机器学习数据准备的受支持数据源。
@@ -24,6 +24,25 @@ ms.lasthandoff: 11/06/2017
 适用于本版本的受支持数据源如下。
 
 ## <a name="types"></a>类型 
+
+### <a name="sql-server"></a>SQL Server
+从本地 SQL Server 或 Azure SQL 数据库读取。
+
+#### <a name="options"></a>选项
+- 服务器地址
+- 信任服务器（即使服务器上的证书无效时也是， 请谨慎使用）
+- 身份验证类型（Windows、服务器）
+- 用户名
+- 密码
+- 要连接到的数据库
+- SQL 查询
+
+#### <a name="notes"></a>说明
+- 不支持 Sql 变体列
+- 通过将数据库中的时间追加到日期 1970/1/1 来将时间列转换为日期时间
+- 在 Spark 群集上执行时，所有数据相关列（date、datetime、datetime2、datetimeoffset）将评估早于 1583 年的不正确日期值
+- 由于转换为十进制，十进制列中的值可能会丢失精度
+
 ### <a name="directory-vs-file"></a>目录与文件
 选择一个文件并在数据准备中读入。 分析文件类型，确定下一屏幕上文件连接的默认参数。
 
@@ -88,6 +107,9 @@ Parquet 数据集是多个 .parquet 文件的集合，其中每个文件代表�
 ## <a name="locations"></a>位置
 ### <a name="local"></a>Local
 本地硬盘或映射网络存储位置。
+
+### <a name="sql-server"></a>SQL Server
+本地 SQL Sever 或 Azure SQL 数据库。
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 Azure Blob 存储需要 Azure 订阅。

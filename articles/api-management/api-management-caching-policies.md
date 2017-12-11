@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c7604fdb948a2f4d2adca5d6821d9ea36e96dae6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -28,15 +28,12 @@ ms.lasthandoff: 10/11/2017
 -   响应缓存策略  
   
     -   [从缓存中获取](api-management-caching-policies.md#GetFromCache) - 执行缓存查找，并返回有效的缓存响应（如果有）。  
-  
     -   [存储到缓存](api-management-caching-policies.md#StoreToCache) - 根据指定的缓存控制配置来缓存响应。  
   
 -   值缓存策略  
-  
-    -   [从缓存中获取值](#GetFromCacheByKey) - 根据密钥检索缓存的项。  
-  
-    -   [在缓存中存储值](#StoreToCacheByKey) - 根据密钥在缓存中存储项。  
-  
+
+    -   [从缓存中获取值](#GetFromCacheByKey) - 根据密钥检索缓存的项。 
+    -   [在缓存中存储值](#StoreToCacheByKey) - 根据密钥在缓存中存储项。 
     -   [从缓存中删除值](#RemoveCacheByKey) - 根据密钥在缓存中删除项。  
   
 ##  <a name="GetFromCache"></a> 从缓存中获取  
@@ -54,7 +51,7 @@ ms.lasthandoff: 10/11/2017
   <vary-by-header>Accept-Charset</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Authorization</vary-by-header>  
-  <!-- should be present when allow-authorized-response-caching is "true"-->  
+  <!-- should be present when allow-private-response-caching is "true"-->  
   <vary-by-header>header name</vary-by-header>  
   <!-- optional, can repeated several times -->  
   <vary-by-query-parameter>parameter name</vary-by-query-parameter>  
@@ -119,14 +116,13 @@ ms.lasthandoff: 10/11/2017
 |allow-private-response-caching|设置为 `true` 即可缓存包含 Authorization 标头的请求。|否|false|  
 |downstream-caching-type|此属性必须设置为以下值之一。<br /><br /> -   none - 不允许下游缓存。<br />-   private - 允许下游专用缓存。<br />-   public - 允许专用和共享下游缓存。|否|无|  
 |must-revalidate|启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。|否|true|  
-|vary-by-developer|设置为 `true` 即可按开发人员密钥缓存响应。|否|false|  
-|vary-by-developer-groups|设置为 `true` 即可按用户角色缓存响应。|否|false|  
+|vary-by-developer|设置为 `true` 即可按开发人员密钥缓存响应。|是||  
+|vary-by-developer-groups|设置为 `true` 即可按用户角色缓存响应。|是||  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：**入站  
-  
 -   **策略范围：**API、操作、产品  
   
 ##  <a name="StoreToCache"></a> 存储到缓存  
@@ -198,8 +194,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：**出站  
-  
+-   **策略段：**出站    
 -   **策略范围：**API、操作、产品  
   
 ##  <a name="GetFromCacheByKey"></a> 从缓存中获取值  
@@ -244,7 +239,6 @@ ms.lasthandoff: 10/11/2017
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  
-  
 -   **策略范围：**全局、API、操作、产品  
   
 ##  <a name="StoreToCacheByKey"></a> 在缓存中存储值  
@@ -287,11 +281,10 @@ ms.lasthandoff: 10/11/2017
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  
-  
 -   **策略范围：**全局、API、操作、产品  
   
 ###  <a name="RemoveCacheByKey"></a> 从缓存中删除值  
- `cache-remove-value` 删除通过密钥标识的缓存项。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
+`cache-remove-value` 删除通过密钥标识的缓存项。 密钥的值可以是任意字符串，通常使用策略表达式来提供密钥。  
   
 #### <a name="policy-statement"></a>策略语句  
   
@@ -325,9 +318,13 @@ ms.lasthandoff: 10/11/2017
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  
-  
 -   **策略范围：**全局、API、操作、产品  
-  
 
 ## <a name="next-steps"></a>后续步骤
-有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
+
+有关如何使用策略的详细信息，请参阅：
+
++ [API 管理中的策略](api-management-howto-policies.md)
++ [转换 API](transform-api.md)
++ [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
++ [策略示例](policy-samples.md)   

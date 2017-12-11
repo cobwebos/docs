@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: 978606aa5f16842f8198ee67a65b476b4f560ab7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2657db61ff3161cd87bc97edfe5f84f8b29cbcfb
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/03/2017
 
 ## <a name="mono-compatibility-with-net"></a>Mono 与 .NET 的兼容性
 
-Mono 版本 4.2.1 包含在 HDInsight 版本 3.5 中。 有关包含在 HDInsight 中的 Mono 版本的详细信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 若要安装 Mono 的特定版本，请参阅[安装或更新 Mono](hdinsight-hadoop-install-mono.md) 文档。
+HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight 中的 Mono 版本的详细信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 若要安装 Mono 的特定版本，请参阅[安装或更新 Mono](hdinsight-hadoop-install-mono.md) 文档。
 
 有关 Mono 与 .NET 间兼容性的详细信息，请参阅 [Mono 兼容性 (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) 文档。
 

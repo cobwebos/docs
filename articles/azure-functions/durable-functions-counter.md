@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ec7d51d3f30eb3417a48fbf8d31a9b8359e39ab9
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 05099e868e62f612be0a3354eb8b339507ac7e4a
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Durable Functions 中的有状态单一实例 - 计数器示例
 
@@ -45,15 +45,33 @@ Durable Functions 使实现此类方案变得简单，因为业务流程实例�
 
 本文通过示例应用介绍 E3_Counter 函数。
 
-以下各节介绍用于 Visual Studio 开发的代码。 用于 Azure 门户开发的代码与其类似。
+
 
 ## <a name="the-counter-orchestration"></a>计数器业务流程
+
+以下部分介绍用于 Visual Studio Code 和 Azure 门户开发的代码。
+
+### <a name="c-script"></a>C# 脚本
+
+function.json 文件：
+
+[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)]
+
+run.csx 文件：
+
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)]
+
+### <a name="precompiled-c"></a>预编译 C# 
+
+以下各节介绍用于 Visual Studio 开发的代码。
 
 下面的代码可实现业务流程协调程序函数：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)]
 
-本质上，该业务流程协调程序函数执行以下任务：
+### <a name="explanation-of-the-code"></a>代码说明
+
+本质上，该业务流程协调程序函数执行以下操作：
 
 1. 使用 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) 侦听名为 operation 的外部事件。
 2. 根据请求的运算递增或递减 `counterState` 本地变量。

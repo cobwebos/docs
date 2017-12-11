@@ -2,46 +2,36 @@
 title: "Azure 容器注册表 webhook"
 description: "了解如何使用 webhook 在注册表存储库中发生特定操作时触发事件。"
 services: container-registry
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acr, azure-container-registry
-keywords: "Docker、容器、ACR"
-ms.assetid: 
 ms.service: container-registry
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/08/2017
+ms.date: 12/02/2017
 ms.author: nepeters
-ms.openlocfilehash: 5a9dab91aafb92f944b473f05144242143e36477
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 133e36179a500dc65c3a543266a7afcf9988b87d
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
-Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 使用 webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。
+Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。
 
-有关更多背景信息和概念，请参阅[关于 Azure 容器注册表](./container-registry-intro.md)。
+有关 Webhook 请求的详细信息，请参阅 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 容器托管注册表 - 在 Azure 订阅中创建托管容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-- Docker CLI - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
+* Azure 容器注册表 - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* Docker CLI - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
 
 ## <a name="create-webhook-azure-portal"></a>创建 webhook Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)并导航到要在其中创建 webhook 的注册表。
-
-2. 在容器边栏选项卡中，选择“服务”下的“Webhook”。
-
-3. 在 webhook 边栏选项卡工具栏中选择“添加”。
-
-4. 使用以下信息完成“创建 webhook”窗体：
+1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 导航到要在其中创建 Webhook 的容器注册表。
+1. 在“服务”下，选择 **Webhook**。
+1. 在 Webhook 工具栏中选择“添加”。
+1. 使用以下信息完成“创建 webhook”窗体：
 
 | 值 | 说明 |
 |---|---|
@@ -68,7 +58,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在对容器映像推送和删除操作使用 webhook 之前，可以使用“Ping”按钮对其进行测试。 Ping 将向指定的终结点发送泛型 POST 请求并记录响应。 这可帮助验证是否已正确配置 Webhook。
+在对容器映像推送和删除操作使用 webhook 之前，可以使用“Ping”按钮对其进行测试。 Ping 将向指定的终结点发送泛型 POST 请求并记录响应。 使用 ping 功能可帮助验证是否已正确配置 Webhook。
 
 1. 选择想要测试的 webhook。
 2. 在顶部工具栏中，选择“Ping”。
@@ -101,3 +91,7 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 ```azurecli-interactive
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+[Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)

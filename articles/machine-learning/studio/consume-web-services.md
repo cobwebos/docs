@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 13de6daabf2b6d83cc703ae6b3f0a30a1dfa34d6
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: ed41ec58dbdfd41931e8bab3a3cbe33caafe9a74
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>如何使用 Azure 机器学习 Web 服务
 
@@ -64,18 +64,11 @@ Azure 机器学习有两种类型的服务：
 5. 复制并保存“主密钥”。
 
 ### <a name="classic-web-service"></a>经典 Web 服务
- 还可以从机器学习工作室或 Azure 经典门户来检索经典 Web 服务的密钥。
+ 还可以从机器学习工作室来检索经典 Web 服务的密钥。
 
 #### <a name="machine-learning-studio"></a>机器学习工作室
 1. 在机器学习工作室左侧，单击“Web 服务”。
 2. 单击一个 Web 服务。 “API 密钥”位于“仪表板”选项卡。
-
-#### <a name="azure-classic-portal"></a>Azure 经典门户
-1. 在左侧单击“机器学习”。
-2. 单击 Web 服务所在的工作区。
-3. 单击“Web 服务”。
-4. 单击一个 Web 服务。
-5. 单击一个终结点。 “API 密钥”降到了右下角。
 
 ## <a id="connect"></a>连接到机器学习 Web 服务
 可使用支持 HTTP 请求和响应的编程语言连接到机器学习 Web 服务。 可从机器学习 Web 服务帮助页，查看 C#、Python 和 R 示例。

@@ -1,27 +1,19 @@
 ---
-title: "Azure 上的 Kubernetes 教程 - 部署应用程序 | Microsoft Docs"
+title: "Azure 上的 Kubernetes 教程 - 部署应用程序"
 description: "AKS 教程 - 部署应用程序"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: aurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 73b943709fb3846058d4b1c09bc76b09460855ed
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 3a6a75a324987b82a08219217407ad7ad14db9f8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中运行应用程序
 

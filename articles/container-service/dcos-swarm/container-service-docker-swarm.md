@@ -1,28 +1,22 @@
 ---
-title: "使用 Docker API 管理 Azure Swarm 群集 | Microsoft Docs"
+title: "使用 Docker API 管理 Azure Swarm 群集"
 description: "在 Azure 容器服务中将容器部署到 Docker Swarm 群集"
 services: container-service
-documentationcenter: 
 author: rgardler
 manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, 容器, 微服务, Mesos, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 6ca2d2e49c4b7f5eb0580e7091b09209f8b73a7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f8d18bc053bc303ab124ba38c8621d4ee2e8cb8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="container-management-with-docker-swarm"></a>使用 Docker Swarm 管理容器
+
 Docker Swarm 提供了一个环境，用于跨一组共用的 Docker 主机部署容器化的工作负荷。 Docker Swarm 使用本地 Docker API。 用于在 Docker Swarm 中管理容器的工作流几乎完全与单个容器主机上的工作流相同。 本文档提供了简单的示例来演示如何在 Docker Swarm 的 Azure 容器服务实例中部署容器化的工作负荷。 有关深入介绍 Docker Swarm 的更多文档，请参阅 [Docker.com 上的 Docker Swarm](https://docs.docker.com/swarm/)。
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
