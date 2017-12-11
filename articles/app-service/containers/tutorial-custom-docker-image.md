@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 08503a7f6f32125c324173636dbda0548f3ccb8c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -84,7 +84,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 
 该命令生成的输出如下所示：
 
-```bash
+```
 # The output from the commands in this article has been shortened for brevity.
 
 Sending build context to Docker daemon  5.558MB
@@ -130,7 +130,7 @@ docker run -p 2222:8000 <docker-ID>/mydockerimage:v1.0.0
 
 Docker 中心是一种用于 Docker 映像的注册表，使用该注册表，用户能够托管自己的存储库，无论是公共的还是专用的均可。 要将自定义 Docker 映像推送至公共 Docker 中心，请使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 命令，并提供完整的映像名称和标记。 完整的映像名称和标记类似于下例所示：
 
-```bash
+```
 <docker-id>/image-name:tag
 ```
 
@@ -143,12 +143,12 @@ docker login --username <docker-id> --password <docker-hub-password>
 如果看到“登录成功”消息，说明登录成功。 登录后，即可使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 命令将映像推送至 Docker 中心。
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0 .
+docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
 可通过检查命令的输出来验证推送是否成功。
 
-```bash
+```
 The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
 c33197c3f6d4: Pushed
 ccd2c850ee43: Pushed
@@ -314,7 +314,7 @@ top
 
 `top` 命令会公开所有正在容器中运行的进程。
 
-```bash
+```
 PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
  1 root      20   0  945616  35372  15348 S  0.0  2.1   0:04.63 node
 20 root      20   0   55180   2776   2516 S  0.0  0.2   0:00.00 sshd
@@ -343,7 +343,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 此命令显示的输出与下列 JSON 字符串类似，说明配置更改已成功：
 
-```bash
+```json
 [
   {
     "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
@@ -383,7 +383,7 @@ az acr create --name <azure-container-registry-name> --resource-group myResource
 
 创建容器的操作将产生下列输出：
 
-```bash
+```
  - Finished ..
 Create a new service principal and assign access:
   az ad sp create-for-rbac --scopes /subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name> --role Owner --password <password>
@@ -447,6 +447,12 @@ docker login <azure-container-registry-name>.azurecr.io --username <registry-use
 
 ### <a name="push-an-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
+> [!NOTE]
+> 如果使用的是自己的映像，请按如下所示标记映像：
+> ```bash
+> docker tag <azure-container-registry-name>.azurecr.io/mydockerimage
+> ```
+
 使用 `docker push` 命令推送映像。 使用注册表名称后跟映像名称和标记的方式标记映像。
 
 ```bash
@@ -505,7 +511,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 此命令显示的输出与下列 JSON 字符串类似，说明配置更改已成功：
 
-```bash
+```json
 [
   {
     "name": "DOCKER_CUSTOM_IMAGE_NAME",
