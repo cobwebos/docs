@@ -142,6 +142,10 @@
               href: app-insights-proactive-failure-diagnostics.md
             - name: 性能异常
               href: app-insights-proactive-performance-diagnostics.md
+            - name: 跟踪降级
+              href: app-insights-proactive-trace-severity.md
+            - name: 异常卷
+              href: app-insights-proactive-exception-volume.md
         - name: 创建资源
           href: app-insights-create-new-resource.md
     - name: 分析

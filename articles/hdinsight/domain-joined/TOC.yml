@@ -1,29 +1,53 @@
 - name: Azure HDInsight 文档
   href: /azure/hdinsight
-- name: HDInsight 上的企业安全性
+- name: 企业安全性
   items:
     - name: 概述
       href: apache-domain-joined-introduction.md
-    - name: 规划已加入域的 HDInsight
+    - name: 企业安全性计划
       href: apache-domain-joined-architecture.md
-    - name: 组件版本控制
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-- name: 入门
-  items:
-    - name: 配置已加入域的 HDInsight
+    - name: 在 HDInsight 中配置企业安全性
       href: apache-domain-joined-configure.md
-    - name: 使用 Azure AD DS 配置已加入域的 HDInsight
+    - name: 使用 Azure AD DS 在 HDInsight 中配置企业安全性
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: 配置 Hive 策略
       href: apache-domain-joined-run-hive.md
     - name: 容量计划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
-- name: 如何
-  items:
-    - name: 管理群集
+    - name: 使用企业安全性管理群集
       href: apache-domain-joined-manage.md
+- name: 保护数据
+  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+  maintainContext: true
+- name: 网络访问
+  items:
+    - name: Azure VNet 中的 HDInsight
+      href: ../hdinsight-extend-hadoop-virtual-network.md
+      maintainContext: true
+    - name: 将 HDInsight 与本地网络相连
+      href: ../connect-on-premises-network.md
+      maintainContext: true
+    - name: 在 Azure VNet 中创建 HBase 群集
+      href: ../hbase/apache-hbase-provision-vnet.md
+      maintainContext: true
+    - name: Azure VNet 中的 HBase 群集复制
+      href: ../hbase/apache-hbase-replication.md
+      maintainContext: true
+- name: 使用 OMS 进行监视
+  items:
+    - name: 使用 Azure Log Analytics
+      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+      maintainContext: true
+    - name: 特定于群集的仪表板
+      href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+      maintainContext: true
+    - name: 将查询与 Log Analytics 配合使用
+      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+      maintainContext: true
+    - name: 监视群集性能
+      href: ../hdinsight-key-scenarios-to-monitor.md
+      maintainContext: true
 - name: 引用
   items:
     - name: 代码示例

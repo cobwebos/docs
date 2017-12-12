@@ -38,6 +38,7 @@
 
 ## 集成
 ### [概述](sql-data-warehouse-overview-integrate.md)
+### [SQL 数据库弹性查询](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
 ## 监视和优化
@@ -100,9 +101,8 @@
 
 
 ## 集成
-###  [配置来自 SQL 数据库的弹性查询](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
+### [配置 SQL 数据库弹性查询](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ### [添加 Azure 流分析作业](sql-data-warehouse-integrate-azure-stream-analytics.md)
-### [配置弹性查询](how-to-use-elastic-query-with-sql-data-warehouse.md)
 ### [使用机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 ### [使用 Power BI 进行可视化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 
