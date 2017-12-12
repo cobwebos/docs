@@ -34,8 +34,6 @@
       href: how-to-install-iot-core.md
 - name: 概念
   items:
-    - name: IoT Edge 术语表
-      href: iot-edge-glossary.md
     - name: IoT Edge 模块
       href: iot-edge-modules.md
       items:
@@ -51,6 +49,8 @@
       href: iot-edge-as-gateway.md
     - name: 安全
       href: security.md
+    - name: IoT Edge 术语表
+      href: iot-edge-glossary.md
 - name: 资源
   items:
     - name: Azure IoT 已认证设备目录
