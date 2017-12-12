@@ -75,6 +75,7 @@
 ##### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 ### [应用程序模型](service-fabric-application-model.md)
+### [应用程序和服务清单](service-fabric-application-and-service-manifests.md)
 ### [托管模型](service-fabric-hosting-model.md)
 
 ### 服务

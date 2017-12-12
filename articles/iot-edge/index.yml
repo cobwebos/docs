@@ -12,13 +12,13 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/08/2017
+  ms.date: 12/08/2017
   ms.author: kgremban
-  ms.openlocfilehash: 51bcd5bbf6cd388961f254c938d34df56596ed13
-  ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+  ms.openlocfilehash: d49e1647db25023cefd59d667f87396827b7ca27
+  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/15/2017
+  ms.lasthandoff: 12/11/2017
 abstract:
   description: "Azure IoT Edge 是基于物联网 (IoT) 中心构建的 IoT 服务。 此服务供想要在设备上 （也称为“在边缘上”）而不是在云中分析数据的客户使用。 通过将部分工作负荷移至边缘，设备将消息发送到云所花费的时间可以更少，并且设备可以对状态更改更快地做出响应。"
 sections:
@@ -48,4 +48,5 @@ sections:
     - html: "<a href=\"/azure/iot-edge/tutorial-simulate-device-Linux\">在 Linux 中模拟 IoT Edge 设备</a>"
     - html: "<a href=\"/azure/iot-edge/tutorial-csharp-module\">开发和部署 C# 模块</a>"
     - html: "<a href=\"/azure/iot-edge/tutorial-deploy-stream-analytics\">将 Azure 流分析作为模块部署</a>"
+    - html: "<a href=\"/azure/iot-edge/tutorial-deploy-machine-learning\">将 Azure 机器学习作为模块部署</a>"
     - html: "<a href=\"/azure/iot-edge/tutorial-deploy-function\">将 Azure Functions 作为模块部署</a>"

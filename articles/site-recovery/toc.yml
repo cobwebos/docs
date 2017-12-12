@@ -139,24 +139,24 @@
           items:
             - name: 概述与先决条件
               href: site-recovery-deployment-planner.md
-            - name: 运行部署规划器
+            - name: 运行部署规划器工具
               href: site-recovery-vmware-deployment-planner-run.md
             - name: 分析生成的报告
               href: site-recovery-vmware-deployment-planner-analyze-report.md
-            - name: 分析灾难恢复成本估算报告
+            - name: 分析成本估计报告
               href: site-recovery-vmware-deployment-planner-cost-estimation.md
         - name: 用于复制 VMware 虚拟机的横向扩展进程服务器
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
-        - name: 用于从 Hyper-V 复制到 Azure 的部署规划和工具
+        - name: 用于将 Hyper-V 虚拟机复制到 Azure 的部署规划工具
           href: null
           items:
             - name: 概述与先决条件
               href: site-recovery-hyper-v-deployment-planner.md
-            - name: 运行部署规划器
+            - name: 运行部署规划器工具
               href: site-recovery-hyper-v-deployment-planner-run.md
             - name: 分析生成的报告
               href: site-recovery-hyper-v-deployment-planner-analyze-report.md
-            - name: 分析灾难恢复成本估算报告
+            - name: 分析成本估计报告
               href: site-recovery-hyper-v-deployment-planner-cost-estimation.md
         - name: 为本地站点之间的 HYPER-V 虚拟机复制进行性能缩放测试
           href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md

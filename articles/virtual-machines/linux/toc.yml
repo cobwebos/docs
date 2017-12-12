@@ -124,6 +124,8 @@
       items:
         - name: 基础结构指南
           href: infrastructure-example.md
+        - name: vCPU 配额
+          href: quotas.md
 - name: 操作指南
   items:
     - name: 创建 VM
