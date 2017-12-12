@@ -45,6 +45,8 @@
       items:
         - name: 必备组件
           href: azure-stack-deploy.md
+        - name: 遥测
+          href: azure-stack-telemetry.md
         - name: 部署
           href: azure-stack-run-powershell-script.md
         - name: 安装 PowerShell

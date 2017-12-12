@@ -3,8 +3,8 @@ title: "有关 Azure 堆栈的规划注意事项集成系统 |Microsoft 文档"
 description: "了解可以执行哪些操作来立即计划和准备用于多节点 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 90f8fa1a-cace-4bfa-852b-5abe2b307615
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: twooley
-ms.openlocfilehash: 8484f7947f23a00c05b34babf13cd75f9d227740
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mabrigg
+ms.openlocfilehash: b39b3b8f73f9deef48173c712d7966eb13c6ecc3
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="planning-considerations-for-azure-stack-integrated-systems"></a>有关 Azure 堆栈的规划注意事项集成系统
 
@@ -163,7 +163,7 @@ Azure 堆栈的网络基础结构包含的交换机配置的多个逻辑网络�
 
 下表显示了逻辑网络和关联必须规划的 IPv4 子网范围。
 
-| 逻辑网络 | 说明 | 大小 | 
+| 本地网络 | 说明 | 大小 | 
 | -------- | ------------- | ------------ | 
 | 公共 VIP | Azure 堆栈服务，由租户虚拟机使用的其余部分一小部分的公共 IP 地址。 Azure 堆栈基础结构使用此网络中的 32 个地址。 如果你打算使用 App Service 和 SQL 资源提供程序，这将使用 7 详细。 | 月 26 日 （62 主机）-/ 22 （1022年主机）<br><br>建议 = / 24 （254 个主机） | 
 | 交换机基础结构 | 路由的目的，专用的点到点 IP 地址切换管理界面和环回地址分配给交换机。 | /26 | 

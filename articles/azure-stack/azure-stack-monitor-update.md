@@ -3,8 +3,8 @@ title: "监视使用特权终结点的 Azure 堆栈中的更新 |Microsoft 文�
 description: "了解如何使用特权终结点监视的集成的 Azure 堆栈系统更新状态。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
-ms.author: twooley
-ms.openlocfilehash: af7387268d60dc639a39da23e040097fd0695a22
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.author: mabrigg
+ms.openlocfilehash: 55688ad4959d59e41dca9be2d00011e1d41ebd8c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>监视使用特权终结点的 Azure 堆栈中的更新
 

@@ -3,8 +3,8 @@ title: "监视运行状况和 Azure 堆栈中的警报 |Microsoft 文档"
 description: "了解如何监视运行状况和 Azure 堆栈中的警报。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
-ms.author: twooley
-ms.openlocfilehash: cf454a438f088d8079352ac60ce845185b741327
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.author: mabrigg
+ms.openlocfilehash: 446df7922422ccfcf3fbb92ecf153c6dec2f6197
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>监视运行状况和 Azure 堆栈中的警报
 
