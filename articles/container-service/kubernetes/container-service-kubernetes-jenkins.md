@@ -1,27 +1,19 @@
 ---
-title: "Jenkins CI/CD 和 Azure 容器服务中的 Kubernetes | Microsoft Docs"
+title: "Jenkins CI/CD 和 Azure 容器服务中的 Kubernetes"
 description: "如何使用 Jenkins 自动完成 CI/CD 过程，以便在 Azure 容器服务中的 Kubernetes 上部署和升级容器化应用"
 services: container-service
-documentationcenter: 
 author: chzbrgr71
-manager: johny
-editor: 
-tags: acs, azure-container-service, jenkins
-keywords: "Docker, 容器, Kubernetes, Azure, Jenkins"
-ms.assetid: 
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/23/2017
 ms.author: briar
 ms.custom: mvc
-ms.openlocfilehash: c4b833b4d3234adc3f44a84f253ff9b8d78b1e23
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: cd8f7ae584b6b1afd357cc585df28dedd3c1f70e
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="jenkins-integration-with-azure-container-service-and-kubernetes"></a>Jenkins 与 Azure 容器服务和 Kubernetes 的集成 
 

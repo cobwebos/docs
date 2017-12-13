@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 24df96f55b0f207d8576bd05c2c83a884e7fc2bd
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 4c839bf0c39bf10855f8a31770b82a04ed1ca457
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Compute context options for R Server on HDInsight（适用于 HDInsight 上的 R Server 的计算上下文选项）
 
@@ -33,19 +33,19 @@ Microsoft R Server on Azure HDInsight 通过设置计算上下文来控制执行
 ## <a name="compute-contexts-for-an-edge-node"></a>边缘节点的计算上下文
 一般而言，在边缘节点上的 R Server 中运行的 R 脚本会在该节点上的 R 解释程序内运行。 但是，调用 ScaleR 函数的步骤例外。 ScaleR 调用会在计算环境中运行，而计算环境取决于如何设置 ScaleR 计算上下文。  从边缘节点运行 R 脚本时，计算上下文的值可能有：
 
-- 本地顺序（“local”）
-- 本地并行（“localpar”）
+- 本地顺序 (local)
+- 本地并行 (localpar)
 - Map Reduce
 - Spark
 
-“Local” 和 “localpar” 选项的区别只体现在 rxExec 调用的执行方式。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 ScaleR numCoresToUse 作了其他指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
+local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 ScaleR numCoresToUse 作了其他指定，例如，`rxOptions(numCoresToUse=6)`。 并行执行选项提供最佳性能。
 
 下表总结了用于设置调用执行方式的各个计算上下文选项：
 
 | 计算上下文  | 设置方式                      | 执行上下文                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| 本地顺序 | rxSetComputeContext(‘local’)    | 跨边缘节点服务器的核心并行执行，但 rxExec 调用除外（这种调用是串行执行的） |
-| 本地并行   | rxSetComputeContext(‘localpar’) | 跨边缘节点服务器的核心并行执行 |
+| 本地顺序 | rxSetComputeContext('local')    | 跨边缘节点服务器的核心并行执行，但 rxExec 调用除外（这种调用是串行执行的） |
+| 本地并行   | rxSetComputeContext('localpar') | 跨边缘节点服务器的核心并行执行 |
 | Spark            | RxSpark()                       | 通过 Spark 跨 HDI 群集的各个节点并行化分布式执行 |
 | Map Reduce       | RxHadoopMR()                    | 通过 Map Reduce 跨 HDI 群集的各个节点并行化分布式执行 |
 
@@ -62,8 +62,8 @@ Microsoft R Server on Azure HDInsight 通过设置计算上下文来控制执行
 鉴于这些原则，有一些用于选择计算上下文的常规经验规则，如下面部分所示。
 
 ### <a name="local"></a>Local
-* 如果要分析的数据量较小，并且不需要重复的分析，则直接将其流式处理为分析例程，并使用 “local” 或 “localpar”。
-* 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 “local” 或 “localpar” 进行分析。
+* 如果要分析的数据量较小，并且不需要重复的分析，则直接将其流式处理为分析例程，并使用 local 或 localpar。
+* 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析。
 
 ### <a name="hadoop-spark"></a>Hadoop Spark
 * 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过 Spark 计算上下文进行分析。
@@ -76,7 +76,7 @@ Microsoft R Server on Azure HDInsight 通过设置计算上下文来控制执行
 
     > ?rxSetComputeContext
 
-也可以参考 [R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx "R Server on MSDN") 库中提供的“[ScaleR 分布式计算指南](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)”。
+也可以参考 [R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx) 库提供的 [ScaleR 分布式计算指南](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)。
 
 ## <a name="next-steps"></a>后续步骤
 本文概述了可跨边缘节点的核心或 HDInsight 群集中指定是否并行化或如何并行化执行的相关选项。 要了解如何使用 HDInsight 群集上的 R Server 的详细信息，请参阅下列主题：

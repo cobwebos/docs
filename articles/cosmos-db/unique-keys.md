@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 030d6d136c16946d6231b165b4b33d496bb7c818
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 127b42b67a3e29022ac5d9535751a1b2a3be250e
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键
 
-开发人员可以使用唯一键对其数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个[分区](partition-data.md)的一个或多个值的唯一性。 使用唯一键策略创建容器后，它可以避免创建值与唯一键约束指定的值重复的任何新的或更新项。   
+开发人员可以使用唯一键对其数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个[分区键](partition-data.md)的一个或多个值的唯一性。 使用唯一键策略创建容器后，它可以避免创建值与唯一键约束指定的值重复的任何新的或更新项。   
 
 > [!NOTE]
 > 最新版本的 [.NET](documentdb-sdk-dotnet.md) 和 [.NET Core](documentdb-sdk-dotnet-core.md) DocumentDB (SQL) SDK 以及 [MongoDB API](mongodb-feature-support.md#unique-indexes) 支持唯一键。 表 API 和图形 API 目前不支持唯一键。 

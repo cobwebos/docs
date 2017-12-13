@@ -1,5 +1,5 @@
 ---
-title: "IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft 文档"
+title: "IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft Docs"
 description: "在本教程中了解如何设置 IoT DevKit AZ3166 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。"
 services: iot-hub
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: deb362796966524ec2db5808623d2f92a1bf44e1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 6a9d5e029e48c1bb62ad4731c7413f023b97c8c9
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/27/2017
 ## <a name="what-you-do"></a>准备工作
 将 [DevKit](https://microsoft.github.io/azure-iot-developer-kit/) 连接到创建的 Azure IoT 中心，从传感器收集温度和湿度数据，并将数据发送到 IoT 中心。
 
-还没有 DevKit？ [获取一个](https://aka.ms/iot-devkit-purchase)。
+还没有 DevKit？ 试用 [DevKit 模拟器](https://azure-samples.github.io/iot-devkit-web-simulator/)或[获取一个](https://aka.ms/iot-devkit-purchase)。
 
 ## <a name="what-you-learn"></a>学习内容
 

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 9ce1d32a2785bec1164d2a89dea9946fe113cb33
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 2560ca144f8ce4041aa592554f9945ed546cc49b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>创建 DSVM 和 HDI Spark 群集作为计算目标
 
@@ -63,18 +63,22 @@ ms.lasthandoff: 10/27/2017
 
 对于 _vmSize_ 字段，可以使用 [Ubuntu DSVM Azure 资源管理模板](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json)中所列的任何受支持 VM 大小。 我们建议使用以下大小之一作为 Azure 机器学习的计算目标。 
 
-- Standard_DS2_v2 
-- Standard_DS3_v2 
-- Standard_DS4_v2 
-- Standard_DS12_v2 
-- Standard_DS13_v2 
-- Standard_DS14_v2 
-- Standard_NC6 
-- Standard_NC12 
-- Standard_NC24 
- 
+
 >[!TIP]
-> 以“NC”开头的 VM 大小是配备 GPU 的大小。
+> 对于[深入学习工作负载](how-to-use-gpu.md)，可以部署到 GPU 支持的 VM。
+
+- [常规用途 VM](/virtual-machines/linux/sizes-general.md)
+  - Standard_DS2_v2 
+  - Standard_DS3_v2 
+  - Standard_DS4_v2 
+  - Standard_DS12_v2 
+  - Standard_DS13_v2 
+  - Standard_DS14_v2 
+- [GPU 支持的 VM](/virtual-machines/linux/sizes-gpu.md)
+  - Standard_NC6 
+  - Standard_NC12 
+  - Standard_NC24 
+ 
 
 详细了解这些 [Azure 中的 Linux 虚拟机大小](../../virtual-machines/linux/sizes.md)及其[定价信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
 
@@ -121,7 +125,7 @@ $ az vm show -g <resource group name> -n <vm name> --query "publicIps"
 ```azurecli
 # attach the DSVM compute target
 # it is a good idea to use FQDN in case the IP address changes after you deallocate the VM and restart it
-$ az ml computetarget attach --name <compute target name> --address <ip address or FQDN> --username <admin username> --password <admin password> --type remotedocker
+$ az ml computetarget attach remotedocker --name <compute target name> --address <ip address or FQDN> --username <admin username> --password <admin password> 
 
 # prepare the Docker image on the DSVM 
 $ az ml experiment prepare -c <compute target name>
@@ -171,7 +175,7 @@ Azure 中的 Linux VM 通常附带 30-GB 操作系统磁盘。 如果将该磁�
 
 ```azurecli
 # attach the HDI compute target
-$ az ml computetarget attach --name <compute target name> --address <cluster name, such as myhdicluster123.azurehdinsight.net> --username <ssh username> --password <ssh password> --type cluster
+$ az ml computetarget attach cluster --name <compute target name> --address <cluster name, such as myhdicluster123.azurehdinsight.net> --username <ssh username> --password <ssh password> 
 
 # prepare the conda environment on HDI
 $ az ml experiment prepare -c <compute target name>

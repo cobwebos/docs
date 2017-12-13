@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 35d7c04f245e93d8cc795dca7c01c2bab5a14eb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 51a1b65446a1a0db93c21378f156b608a38ef817
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>适用于 Azure 机器学习数据准备预览版的受支持检查器
 本文档概述了可用于此预览版的一组检查器。
@@ -113,3 +113,18 @@ X 轴上具有时间感知的折线图。
 此检查器支持通过在图上选择点来进行筛选。 按 **Ctrl** 键，然后单击并使用鼠标拖动以在点周围形成矩形。 然后按前面所述应用筛选器。
 
 通过按地图左侧的 **E**，可以快速调整地图的大小以便仅显示可能的点。
+
+
+## <a name="pattern-frequency"></a>模式频率 
+
+此检查器在所选字符串列中显示模式列表。 模式通过类似语法的正则表达式来表示。 将鼠标悬停在模式上，会显示由该模式表示的值的示例。 此外，以百分比表示的近似覆盖率和模式也会一同显示。
+
+![模式检查器的图像](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
+
+### <a name="options"></a>选项
+- 上限值​​数
+- 降序
+- 显示 Halo
+
+### <a name="actions"></a>操作
+此检查器支持基于显示模式进行筛选。 按 Ctrl，然后选择模式检查器中填充的栏。 然后按前面所述应用筛选器。 由于用户操作，添加了高级筛选器步骤。 可通过调用高级筛选器步骤的编辑选项来查看和修改生成的 Python 代码。

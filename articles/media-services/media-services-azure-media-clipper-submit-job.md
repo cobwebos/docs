@@ -9,16 +9,20 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a142648793f934e939be26378504c19facf40e1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d29889a4c972638f5d127e9c518aa85fbc19d861
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>从 Azure 媒体剪辑器提交剪辑作业
 Azure 媒体剪辑器需要实现 submitSubclipCallback 方法才可以处理剪辑作业提交。 该功能用于实现指向 Web 服务的 Clipper 输出的 HTTP POST。 此 Web 服务是可以在其中提交编码作业的位置。 Clipper 的输出是对呈现作业的 Media Encoder Standard 编码预设，或者是动态清单筛选器调用的 REST API 有效负载。 此传递模型是必需的，因为客户端浏览器中的媒体服务帐户凭据并不安全。
 
-下面的代码示例阐释了 submitSubclipCallback 示例方法。 在此方法中，将实现 MES 编码预设的 HTTP POST。 如果 POST 成功（结果），则承诺得到解决，否则，它会被拒绝并附带错误详细信息。
+以下序列图阐释浏览器客户端、Web 服务和 Azure 媒体服务之间的工作流程：![Azure 媒体剪辑器序列图](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+
+在上图中，这四个实体是：最终用户的浏览器、Web 服务、承载剪辑器资源的 CDN 终结点和 Azure 媒体服务。 当最终用户导航到 Web 页时，该页从承载的 CDN 终结点获取剪辑器 JavaScript 和 CSS 资源。 最终用户从浏览器配置剪裁作业或动态清单筛选器创建调用。 当最终用户提交作业或筛选器创建调用时，浏览器会将作业有效负载放入必须部署的 Web 服务中。 此 Web 服务最终使用媒体服务帐户凭据将剪裁作业或筛选器创建调用提交到 Azure 媒体服务。
+
+下面的代码示例阐释了 submitSubclipCallback 示例方法。 此方法实现 Media Encoder Standard 编码预设的 HTTP POST。 如果 POST 成功（结果），则承诺得到解决，否则，它会被拒绝并附带错误详细信息。
 
 ```javascript
 // Submit Subclip Callback
@@ -49,9 +53,11 @@ var subclipper = new subclipper({
     submitSubclipCallback: onSubmitSubclip,
 });
 ```
-作业提交的输出是对呈现作业的 MES 编码预设，或者是动态清单筛选器的 REST API 有效负载。
+作业提交的输出是对呈现作业的 Media Encoder Standard 编码预设，或者是动态清单筛选器的 REST API 有效负载。
 
-## <a name="rendered-output"></a>呈现的输出
+## <a name="submitting-encoding-job-to-create-video"></a>提交编码作业以创建视频
+可提交 Media Encoder Standard 编码作业来创建帧精确视频剪辑。 编码作业生成呈现视频，即新分段的 MP4 文件。
+
 呈现剪辑的作业输出协定是一个具有以下属性的 JSON 对象：
 
 ```json
@@ -145,8 +151,10 @@ var subclipper = new subclipper({
 }
 ```
 
-## <a name="filter-output"></a>筛选器输出
-筛选器剪辑的输出协定是一个具有以下属性的 JSON 对象：
+若要执行编码作业，请将 Media Encoder Standard 编码作业和关联的预设一同提交。 有关使用 [.NET SDK](https://docs.microsoft.com/en-us/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) 或 [REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-encode-asset) 提交编码作业的详细信息，请参阅本文。
+
+## <a name="quickly-creating-video-clips-without-encoding"></a>无需编码即可快速创建视频剪辑
+除了创建编码作业，还可使用 Azure 媒体剪辑器创建动态清单筛选器。 筛选器不需要编码即可快速创建，因为不会创建新资产。 筛选器剪辑的输出协定是一个具有以下属性的 JSON 对象：
 
 ```json
 {
@@ -218,3 +226,5 @@ var subclipper = new subclipper({
   }
 }
 ```
+
+若要提交 REST 调用以创建动态清单筛选器，请使用 [REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-dynamic-manifest) 提交关联的筛选器有效负载。

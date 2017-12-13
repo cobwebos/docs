@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 6eb07b5ad4b3ebdde75575fc5682ae2153a0c12f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: dcb7a777c66200c5046a6ad34dc4ff5d346f13e0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>适用于 Linux 的 OMS 虚拟机扩展
 
@@ -41,6 +41,10 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 | Debian GNU/Linux | 6、7 和 8 |
 | Ubuntu | 12.04 LTS、14.04 LTS、15.04、15.10 和 16.04 LTS |
 | SUSE Linux Enterprise Server | 11 和 12 |
+
+### <a name="azure-security-center"></a>Azure 安全中心
+
+Azure 安全中心自动设置 OMS 代理并将其与 Azure 订阅的默认记录分析工作区相连接。 如果使用 Azure 安全中心，请勿按照本文档中的步骤运行。 这样做会覆盖已配置的工作区并断开与 Azure 安全中心的连接。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 

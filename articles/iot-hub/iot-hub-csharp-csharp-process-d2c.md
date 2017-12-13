@@ -1,6 +1,6 @@
 ---
-title: "使用路由处理 Azure IoT 中心设备到云消息 (.Net) | Microsoft Docs"
-description: "如何使用路由规则和自定义终结点将消息发送到其他后端服务，从而处理 IoT 中心的设备到云消息。"
+title: "使用 Azure IoT 中心路由消息 (.NET) | Microsoft Docs"
+description: "如何使用路由规则和自定义终结点将消息发送到其他后端服务，从而处理 Azure IoT 中心的设备到云消息。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 1d2b52ea005ab520bf294efa603512c00a92ee63
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8fed08aa22577574b30b360ec164daf592ed456
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="process-iot-hub-device-to-cloud-messages-using-routes-net"></a>使用路由处理 IoT 中心设备到云消息 (.NET)
+# <a name="routing-messages-with-iot-hub-net"></a>使用 IoT 中心路由消息 (.NET)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 * Visual Studio 2015 或 Visual Studio 2017。
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-应具备 [Azure 存储]和 [Azure 服务总线]的一些基础知识。
+我们建议另外阅读有关 [Azure 存储]和 [Azure 服务总线]的主题。
 
 ## <a name="send-interactive-messages"></a>发送交互式消息
 
@@ -74,8 +74,16 @@ private static async void SendDeviceToCloudMessagesAsync()
 
         if (rand.NextDouble() > 0.7)
         {
-            messageString = "This is a critical message";
-            levelValue = "critical";
+            if (rand.NextDouble() > 0.5)
+            {
+                messageString = "This is a critical message";
+                levelValue = "critical";
+            }
+            else 
+            {
+                messageString = "This is a storage message";
+                levelValue = "storage";
+            }
         }
         else
         {
@@ -93,13 +101,13 @@ private static async void SendDeviceToCloudMessagesAsync()
 }
 ```
 
-此方法会将 `"level": "critical"` 属性随机添加到设备发送的消息，可模拟需要解决方案后端立即执行操作的消息。 设备应用会在消息属性中（而非在消息正文中）传递此信息，以便 IoT 中心能够将消息路由到适当的消息目标。
+此方法会将 `"level": "critical"` 和 `"level": "storage"` 属性随机添加到设备发送的消息，此设备模拟需要应用程序后端立即执行操作的消息，或需要永久存储的消息。 应用程序会在消息属性中传递此信息（而非在消息正文中），因此 IoT 中心可将消息路由到适当的消息目标。
 
 > [!NOTE]
 > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [Transient Fault Handling]（暂时性故障处理）中建议来实施重试策略（如指数退让）。
+> 我们强烈建议根据 MSDN 文章 [暂时性故障处理]中的建议实施重试策略（如指数退让）。
 
 ## <a name="route-messages-to-a-queue-in-your-iot-hub"></a>将消息路由到 IoT 中心中的队列
 
@@ -177,6 +185,30 @@ private static async void SendDeviceToCloudMessagesAsync()
    
    ![3 个控制台应用][50]
 
+## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>（可选）将存储容器添加到 IoT 中心并向其路由消息
+
+在本部分中，将创建一个存储帐户并将其连接到 IoT 中心，还会配置 IoT 中心，根据消息上的现有属性发送消息到该帐户。 有关如何管理存储的详细信息，请参阅 [Azure 存储入门][Azure 存储]。
+
+ > [!NOTE]
+   > 如果并不局限于一个**终结点**，则除了 **CriticalQueue** 以外，还可以设置 **StorageContainer**，并同时运行两者。
+
+1. 根据 [Azure 存储文档][lnk-storage] 中所述创建存储帐户。 记下帐户名称。
+
+2. 在 Azure 门户中，打开 IoT 中心并单击“终结点”。
+
+3. 在“终结点”边栏选项卡中选择“CriticalQueue”终结点，单击“删除”。 单击“是”，然后单击“添加”。 将终结点命名为 **StorageContainer**，使用下拉列表选择“Azure 存储容器”，并创建**存储帐户**和**存储容器**。  请记下名称。  完成后，单击底部的“确定”。 
+
+ > [!NOTE]
+   > 如果并不局限于一个**终结点**，则不需要删除 **CriticalQueue**。
+
+4. 在 IoT 中心单击“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的路由规则。 选择“设备消息”作为数据源。 输入 `level="storage"` 作为条件，并选择自定义终结点 **StorageContainer** 作为路由规则终结点。 在底部单击“保存”。  
+
+    请确保回退路由设为“开”。 此设置是 IoT 中心的默认配置。
+
+1. 确保以前的应用程序仍在运行。 
+
+1. 在 Azure 门户中，转到自己的存储帐户，在“Blob 服务”下面单击“浏览 Blob...”。选择自己的容器，导航到并单击 JSON 文件，然后单击“下载”以查看数据。
+
 ## <a name="next-steps"></a>后续步骤
 在本教程中，介绍了如何使用 IoT 中心的消息路由功能可靠地分派设备到云的消息。
 
@@ -203,6 +235,6 @@ private static async void SendDeviceToCloudMessagesAsync()
 [IoT 中心入门]: iot-hub-csharp-csharp-getstarted.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [Azure IoT 开发人员中心]: https://azure.microsoft.com/develop/iot
-[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
+[暂时性故障处理]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[lnk-c2d]: iot-hub-csharp-csharp-c2d.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/

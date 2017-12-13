@@ -8,11 +8,11 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 643cea5cc134a2eb25a0dec4abefd9edca726332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9372e45e8666dc572b805dfd4a505c9446145079
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 执行超参数的分布式优化
 
@@ -27,9 +27,9 @@ ms.lasthandoff: 10/11/2017
 
 许多机器学习算法具有一个或多个旋钮，称为超参数。 这些旋钮可用来优化算法以针对根据用户指定的指标（例如，准确度、AUC、RMSE）度量的将来数据优化其性能。 基于训练数据构建模型时以及查看将来的测试数据之前，数据科学家需要提供超参数的值。 可以如何基于已知的训练数据来设置超参数的值，以便使模型对于未知的测试数据具有良好的性能？ 
 
-用于优化超参数的一种常用方法是“网格搜索”加“交叉验证”。 交叉验证是一种评估方法，用于评估根据训练集训练的模型的好坏程度，针对测试集进行预测。 使用此方法时，我们首先将数据集分为 K 份，然后以循环方式针对除一份（称为保留份）之外的所有份将算法训练 K 次。 我们将针对 K 个保留份计算 K 个模型的指标的平均值。 此平均值称为“交叉验证的性能估计值”，取决于在创建 K 个模型时使用的超参数的值。 当优化超参数时，我们在候选超参数值的空间中进行搜索以查找可以优化交叉验证性能估计值的值。 网格搜索是一项常用的搜索技术，其中，多个超参数的候选值的空间是各个超参数的候选值集的叉积。 
+用于优化超参数的一种常用方法是“网格搜索”加“交叉验证”。 交叉验证是一种评估方法，用于评估根据训练集训练的模型的好坏程度，针对测试集进行预测。 使用此方法时，我们首先将数据集分为 K 份，然后以循环方式将算法训练 K 次。 该操作针对除保留份之外的所有份。 我们将针对 K 个保留份计算 K 个模型的指标的平均值。 此平均值称为“交叉验证的性能估计值”，取决于在创建 K 个模型时使用的超参数的值。 当优化超参数时，我们在候选超参数值的空间中进行搜索以查找可以优化交叉验证性能估计值的值。 网格搜索是一种常用的搜索技术。 在网格搜索中，多个超参数的候选值的空间是各个超参数的候选值集的叉积。 
 
-使用交叉验证的网格搜索可能非常耗时。 如果某个算法有 5 个超参数，每个超参数有 5 个候选值，并且我们使用 K=5 份，那么，若要完成网格搜索，需要训练 5<sup>6</sup>=15625 个模型。 幸运的是，使用交叉验证的网格搜索是一个复杂的并行过程，所有这些模型都可以并行训练。
+使用交叉验证的网格搜索可能非常耗时。 如果一个算法中包含 5 个超参数，每个超参数有 5 个候选值，那么我们将 K 设为 5（份）。 然后通过训练 5<sup>6</sup>=15625 个模型来完成网格搜索。 幸运的是，使用交叉验证的网格搜索是一个复杂的并行过程，所有这些模型都可以并行训练。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,9 +37,17 @@ ms.lasthandoff: 10/11/2017
 * 按照用于安装 Workbench 并创建帐户的[安装和创建快速入门](./quickstart-installation.md)安装的 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 副本。
 * 此方案假设在本地装有 Docker 引擎的 Windows 10 或 MacOS 上运行 Azure ML Workbench。 
 * 若要使用远程 Docker 容器运行此方案，请按照[说明](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu 数据科学虚拟机 (DSVM)。 建议使用至少具有 8 个核心和 28 GB 内存的虚拟机。 虚拟机的 D4 实例具有这样的容量。 
-* 若要使用 Spark 群集运行此方案，请按照[说明](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 HDInsight 群集。 建议使用至少具有 6 个工作节点的群集，并且建议在头节点和工作节点中都至少有 8 个核心和 28 GB 内存。 虚拟机的 D4 实例具有这样的容量。 若要最大程度地提高群集的性能，建议按照[说明](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager)进行操作并编辑“custom spark defaults”部分中的定义来更改参数 spark.executor.instances、spark.executor.cores 和 spark.executor.memory。
+* 若要使用 Spark 群集运行此方案，请按照这些[说明](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 Azure HDInsight 群集。 建议至少具备一个群集 
+- 6 个辅助角色节点
+- 8 个核心
+- 标头和辅助角色节点中的内存均为 28 GB。 虚拟机的 D4 实例具有这样的容量。 建议更改以下参数，使该群集的性能最大化。
+- spark.executor.instances
+- spark.executor.cores
+- spark.executor.memory 
 
-     **故障排除**：你的 Azure 订阅对于可以使用的核心数可能具有配额。 Azure 门户不允许使用超出配额的总核心数创建群集。 若要查明配额，请在 Azure 门户中转到“订阅”部分，单击用来部署群集的订阅，然后单击“使用情况 + 配额”。 通常，配额是按 Azure 区域定义的，并且你可以选择在有足够空闲核心的区域中部署 Spark 群集。 
+可以按照这些[说明](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager)进行操作并编辑“自定义 Spark 默认值”部分中的定义。
+
+     **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
 
 * 创建一个用于存储数据集的 Azure 存储帐户。 请按照[说明](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account)创建一个存储帐户。
 
@@ -72,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 修改后的 conda\_dependencies.yml 文件存储在教程的 aml_config 目录中。 
 
-在下面的步骤中，我们将执行环境连接到 Azure 帐户。 通过单击 AML Workbench 的左上角中的“文件”菜单并选择“打开命令提示符”打开命令行窗口 (CLI)。 然后，在 CLI 中运行以下命令：
+在下面的步骤中，我们将执行环境连接到 Azure 帐户。 单击 AML Workbench 左上角的文件菜单。 选择“打开命令提示符”。 然后，在 CLI 中运行以下命令：
 
     az login
 
@@ -84,7 +92,7 @@ ms.lasthandoff: 10/11/2017
 
     az account list -o table
 
-查找包含你的 AML Workbench Workspace 帐户的 Azure 订阅的订阅 ID。 最后，在 CLI 中运行以下命令：
+查找包含你的 AML Workbench Workspace 帐户的 Azure 订阅 ID。 最后，在 CLI 中运行以下命令：
 
     az account set -s <subscription ID>
 
@@ -96,7 +104,7 @@ ms.lasthandoff: 10/11/2017
 
  若要设置远程 Docker 容器，请在 CLI 中使用 DSVM 中的 IP 地址、用户名和密码运行以下命令：
 
-    az ml computetarget attach --name dsvm --address <IP address> --username <username> --password <password> --type remotedocker
+    az ml computetarget attach remotedocker --name dsvm --address <IP address> --username <username> --password <password> 
 
 。 可以在 Azure 门户中在你的 DSVM 页面的“概述”部分中找到 DSVM 的 IP 地址：
 
@@ -106,7 +114,7 @@ ms.lasthandoff: 10/11/2017
 
 若要设置 Spark 环境，请在 CLI 中使用群集的名称、群集的 SSH 用户名和密码运行以下命令：
 
-    az ml computetarget attach --name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> --type cluster
+    az ml computetarget attach cluster--name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
 
 。 SSH 用户名的默认值是 `sshuser`，除非在预配群集的过程中更改了该值。 可以在 Azure 门户中在你的群集页面的“属性”部分中找到群集的名称：
 
@@ -136,13 +144,13 @@ ms.lasthandoff: 10/11/2017
 ![打开 blob](media/scenario-distributed-tuning-of-hyperparameters/open_blob.png)
 ![打开容器](media/scenario-distributed-tuning-of-hyperparameters/open_container.png)
 
-从列表中选择数据集容器后，单击“上传”按钮。 Azure 门户允许同时上传多个文件。 在“上传 blob”部分中，单击文件夹按钮，从数据集中选择所有文件，单击“打开”，然后单击“上传”。 下面的屏幕截图展示了以下步骤：
+从列表中选择数据集容器后，单击“上传”按钮。 Azure 门户允许同时上传多个文件。 在“上传 blob”部分中，单击文件夹按钮，从数据集中选择所有文件，单击“打开”，然后单击“上传”。 以下屏幕截图展示了这些步骤：
 
 ![上传 blob](media/scenario-distributed-tuning-of-hyperparameters/upload_blob.png) 
 
 文件上传需要花费数分钟时间，具体取决于 Internet 连接。 
 
-在代码中，我们使用 [Azure 存储 SDK](https://azure-storage.readthedocs.io/en/latest/) 将数据集从 blob 存储下载到当前的执行环境。 下载是通过 load_data.py 文件中的 load\_data() 函数执行的。 若要使用此代码，需要将 <ACCOUNT_NAME> 和 <ACCOUNT_KEY> 替换为承载着该数据集的存储帐户的名称和主密钥。 帐户名称显示在存储帐户的 Azure 页面的左上角中。 若要获取帐户密钥，请在存储帐户的 Azure 页面中选择“访问密钥”（请参阅“数据引入”部分中的第一个屏幕截图），然后复制密钥列的第一行中的长字符串：
+在代码中，我们使用 [Azure 存储 SDK](https://azure-storage.readthedocs.io/en/latest/) 将数据集从 blob 存储下载到当前的执行环境。 下载是通过 load_data.py 文件中的 load\_data() 函数执行的。 若要使用此代码，需要将 <ACCOUNT_NAME> 和 <ACCOUNT_KEY> 替换为承载着该数据集的存储帐户的名称和主密钥。 可以看见帐户名称显示在存储帐户的 Azure 页面的左上角中。 若要获取帐户密钥，请在存储帐户的 Azure 页面中选择“访问密钥”（请参阅“数据引入”部分中的第一个屏幕截图），然后复制密钥列的第一行中的长字符串：
  
 ![访问密钥](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
@@ -161,7 +169,7 @@ load_data() 函数中的以下代码下载单个文件：
     # Load blob
     my_service.get_blob_to_path(CONTAINER_NAME, 'app_events.csv.zip', 'app_events.csv.zip')
 
-注意，不需要手动运行 load_data.py 文件。 以后将从其他文件调用该文件。
+注意，不需要手动运行 load_data.py 文件。 以后会从其他文件调用该文件。
 
 ### <a name="feature-engineering"></a>特性工程
 用于计算所有特征的代码位于 feature\_engineering.py 文件中。 不需要手动运行 feature_engineering.py 文件。 以后将从其他文件调用该文件。
@@ -178,7 +186,7 @@ load_data() 函数中的以下代码下载单个文件：
 
 这些特征是由 Kaggle 内核（ [针对应用和标签的一个线性模型](https://www.kaggle.com/dvasyukova/a-linear-model-on-apps-and-labels)）产生的。
 
-计算这些特征需要大量内存。 最初，我们在具有 16 GB RAM 的本地环境中计算机特征。 我们能够计算前四个特征集，但是在计算第五个特征集时，出现了“内存不足”错误。 前四个特征集的计算在 singleVMsmall.py 文件中，可以通过在 CLI 窗口中运行以下命令在本地环境中执行它： 
+计算这些特征需要大量内存。 最初，我们在具有 16 GB RAM 的本地环境中尝试计算特征。 我们能够计算前四个特征集，但是在计算第五个特征集时，出现了“内存不足”错误。 前四个特征集的计算在 singleVMsmall.py 文件中，可以通过在 CLI 窗口中运行以下命令在本地环境中执行它： 
 
      az ml experiment submit -c local .\singleVMsmall.py   
 
@@ -190,7 +198,7 @@ load_data() 函数中的以下代码下载单个文件：
 我们将使用梯度树提升的 [xgboost](https://anaconda.org/conda-forge/xgboost) 实现 [1]。 我们将使用 [scikit-learn](http://scikit-learn.org/) 包来优化 xgboost 的超参数。 虽然 xgboost 不是 scikit-learn 包的一部分，但是它实现了 scikit-learn API，因此可以与 scikit-learn 的超参数优化函数一起使用。 
 
 Xgboost 有八个超参数：
-* n_esitmators
+* n_estimators
 * max_depth
 * reg_alpha
 * reg_lambda
@@ -198,7 +206,10 @@ Xgboost 有八个超参数：
 * learning_rate
 * colsample\_by_level
 * subsample
-* objective 可以在[此处](http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn)和[此处](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)找到这些超参数的说明。 最初，我们使用远程 DSVM 并使用一个小网格范围内的候选值对超参数进行优化：
+* objective 可以在以下两处找到这些超参数的说明：
+- http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn 和 https://github.com/dmlc/xgboost/blob/master/doc/parameter.md。 
+- 
+最初，我们使用远程 DSVM 并使用一个小网格范围内的候选值对超参数进行优化：
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1],'learning_rate': [0.1], 'colsample_bylevel': [0.1,], 'subsample': [0.5]}]  
 
@@ -224,7 +235,7 @@ Xgboost 有八个超参数：
     for key in clf_cv.best_params_.keys():
         run_logger.log(key, clf_cv.best_params_[key]) 
 
-我们还将创建 sweeping_results.txt 文件，使其中包含网格中超参数值的所有组合的交叉验证负对数损失：
+我们还将创建 sweeping_results.txt 文件，使其中包含网格中超参数值的所有组合的交叉验证负对数损失。
 
     if not path.exists('./outputs'):
         makedirs('./outputs')
@@ -249,13 +260,13 @@ Xgboost 有八个超参数：
 
 ![运行历史记录](media/scenario-distributed-tuning-of-hyperparameters/run_history.png)
 
-默认情况下，“运行历史记录”窗口会显示前 1-2 个所记录值的值和图形。 若要查看超参数的所选值的完整列表，请单击上一屏幕截图中标有红圈的设置图标，并选择要在表中显示的超参数。 另外，若要选择在“运行历史记录”窗口的上半部分中显示的图形，请单击标有蓝圈的设置图标，并从列表中选择图形。 
+默认情况下，“运行历史记录”窗口会显示前 1-2 个所记录值的值和图形。 若要查看超参数的所选值的完整列表，请单击上一屏幕截图中标有红圈的设置图标。 然后选择要在表中显示的超参数。 另外，若要选择在“运行历史记录”窗口的上半部分中显示的图形，请单击标有蓝圈的设置图标，并从列表中选择图形。 
 
 还可以在“运行属性”窗口中查看超参数的所选值： 
 
 ![运行属性](media/scenario-distributed-tuning-of-hyperparameters/run_properties.png)
 
-“运行属性”窗口的右上角有一个“输出文件”部分，其中包含在执行环境的“.\output”文件夹中创建的所有文件的列表。 可以通过从那里选择 sweeping\_results.txt 并单击“下载”按钮来下载该文件。 sweeping_results.txt 应当具有以下输出：
+“运行属性”窗口的右上角有一个“输出文件”部分，其中包含在“.\output”文件夹中创建的所有文件的列表。 可以通过从那里选择 sweeping\_results.txt 并单击“下载”按钮来下载该文件。 sweeping_results.txt 应当具有以下输出：
 
     metric =  neg_log_loss
     mean: -2.29096, std: 0.03748, params: {'colsample_bytree': 1, 'learning_rate': 0.1, 'subsample': 0.5, 'n_estimators': 300, 'reg_alpha': 1, 'objective': 'multi:softprob', 'colsample_bylevel': 0.1, 'reg_lambda': 1, 'max_depth': 3}
@@ -297,15 +308,15 @@ Xgboost 有八个超参数：
 
     az ml experiment submit -c spark .\distributed_sweep.py
 
-当 Spark 群集有 6 个工作节点和 28 GB 内存时，此命令可在 1 小时 6 分钟内完成。 可以采用与在远程 DSVM 执行中相同的方式在 Azure Machine Learning Workbench 中访问在 Spark 群集中优化超参数的结果（也就是日志）、超参数的最佳值和 sweeping_results.txt 文件。 
+当 Spark 群集有 6 个工作节点和 28 GB 内存时，此命令可在 1 小时 6 分钟内完成。 采用与远程 DSVM 执行相同的方式，可以在 Azure Machine Learning Workbench 中访问超参数优化的结果。 （即日志、超参数的最佳值以及 sweeping_results.txt 文件）
 
 ### <a name="architecture-diagram"></a>体系结构关系图
 
-下面的关系图显示了端到端工作流： ![体系结构](media/scenario-distributed-tuning-of-hyperparameters/architecture.png) 
+下图显示了完整的工作流：![体系结构](media/scenario-distributed-tuning-of-hyperparameters/architecture.png) 
 
 ## <a name="conclusion"></a>结束语 
 
-在此方案中，我们已展示了如何使用 Azure Machine Learning Workbench 在远程虚拟机和远程 Spark 群集中执行超参数的优化。 我们看到，Azure Machine Learning Workbench 提供了用于轻松配置执行环境以及在它们之间进行切换的工具。 
+在此方案中，我们已展示了如何使用 Azure Machine Learning Workbench 在远程虚拟机和 Spark 群集中执行超参数的优化。 我们看到，Azure Machine Learning Workbench 提供了用于轻松配置执行环境的工具。 同时可以在这些工具之间轻松切换。 
 
 ## <a name="references"></a>参考
 

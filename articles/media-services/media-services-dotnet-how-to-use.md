@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: juliako
-ms.openlocfilehash: 024b4cbb13001d67e7c1f0b86a84dfb43478c49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5dd263a2e925989069c3b0257cfafa4c43e6157
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="media-services-development-with-net"></a>使用 .NET 进行媒体服务开发
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -66,8 +66,11 @@ ms.lasthandoff: 10/11/2017
 
     如果使用[用户身份验证](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication)，配置文件可能具有 Azure AD 租户域和 AMS REST API 终结点的值。
     
+    >[!Note]
+    >Azure 媒体服务文档集中的大多数代码示例都使用用户（交互）类型的身份验证连接到 AMS API。 此身份验证方法非常适合于管理或监视本机应用：移动应用、Windows 应用和控制台应用程序。
+    
     >[!Important]
-    >Azure 媒体服务文档集中的大多数代码示例都使用用户（交互）类型的身份验证连接到 AMS API。 此身份验证方法非常适合于管理或监视本机应用：移动应用、Windows 应用和控制台应用程序。 此身份验证方法不适合服务器、Web 服务、API 类型的应用程序。  有关详细信息，请参阅[通过 Azure AD 身份验证访问 AMS API](media-services-use-aad-auth-to-access-ams-api.md)。
+    > 交互式身份验证方法不适合服务器、Web 服务、API 类型的应用程序。 对于这些类型的应用程序，请使用服务主体身份验证方法。 有关详细信息，请参阅[通过 Azure AD 身份验证访问 AMS API](media-services-use-aad-auth-to-access-ams-api.md)。
 
         <configuration>
         ...

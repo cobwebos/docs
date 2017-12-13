@@ -14,17 +14,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a55a38df765dcd1947312e729dbd37e3284876cf
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-use-service-management-from-python"></a>如何从 Python 使用服务管理
-本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 **ServiceManagementService** 类支持以编程方式访问 [Azure 经典门户][management-portal]中提供的众多与服务管理相关的功能（例如**创建、更新和删除云服务、部署、数据管理服务和虚拟机**）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
+本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 ServiceManagementService 类支持以编程方式访问 [Azure 门户][management-portal]中提供的众多与服务管理相关的功能（例如创建、更新和删除云服务、部署、数据管理服务和虚拟机）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
 
 ## <a name="WhatIs"></a>什么是服务管理
-利用服务管理 API，可以编程方式访问通过 [Azure 经典门户][management-portal]提供的众多服务管理功能。 Azure SDK for Python 允许管理云服务和存储帐户。
+利用服务管理 API，可以编程方式访问通过 [Azure 门户][management-portal]提供的众多服务管理功能。 Azure SDK for Python 允许管理云服务和存储帐户。
 
 若要使用服务管理 API，需要[创建 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -35,7 +35,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 `azure-servicemanagement-legacy` 包中提供了本文介绍的所有功能，可以使用 pip 安装该包。 有关安装的详细信息（例如，如果刚开始接触 Python），请参阅此文：[安装 Python 和 Azure SDK](../python-how-to-install.md)
 
 ## <a name="Connect"></a>如何：连接到服务管理
-要连接到服务管理终结点，需要 Azure 订阅 ID 和有效管理证书。 可以通过 [Azure 经典门户][management-portal]获取订阅 ID。
+要连接到服务管理终结点，需要 Azure 订阅 ID 和有效管理证书。 可以通过 [Azure 门户][management-portal]获取订阅 ID。
 
 > [!NOTE]
 > 现在，在 Windows 上运行时可以使用通过 OpenSSL 创建的证书。  需要 Python 2.7.4 或更高版本。 我们建议用户使用 OpenSSL 而不是 .pfx，因为将来可能会取消对 .pfx 证书的支持。
@@ -53,9 +53,9 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 有关 Azure 证书的详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。 有关 OpenSSL 参数的完整说明，请参阅 [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) 上的文档。
 
-创建这些文件后，需要通过 [Azure 经典门户][management-portal]的“设置”选项卡的“上传”操作将 `.cer` 文件上传到 Azure，并且需要记下 `.pem` 文件的保存位置。
+创建这些文件后，需要通过 [Azure 门户][management-portal]的“设置”选项卡的“上传”操作将 `.cer` 文件上传到 Azure，并且需要记下 `.pem` 文件的保存位置。
 
-在你获取订阅 ID，创建证书并将 `.cer` 文件上传到 Azure 之后，你可以通过将订阅 ID 和 `.pem` 文件的路径传递给 **ServiceManagementService** 来连接到 Azure 管理终结点：
+在获取订阅 ID，创建证书并将 `.cer` 文件上传到 Azure 之后，可以通过将订阅 ID 和 `.pem` 文件的路径传递给 **ServiceManagementService** 来连接到 Azure 管理终结点：
 
     from azure import *
     from azure.servicemanagement import *
@@ -74,9 +74,9 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 该命令将创建 `.cer` 文件，然后将该文件安装到“**个人**”证书存储中。 有关详细信息，请参阅 [Azure 云服务证书概述](cloud-services-certs-create.md)。
 
-创建证书后，需要通过 [Azure 经典门户][management-portal]的“设置”选项卡的“上传”操作，将 `.cer` 文件上传到 Azure。
+创建证书后，需要通过 [Azure 门户][management-portal]的“设置”选项卡的“上传”操作，将 `.cer` 文件上传到 Azure。
 
-在获取了订阅 ID、创建了证书并且将 `.cer` 文件上传到 Azure 后，可以通过将订阅 ID 以及你的“**个人**”证书存储中的证书位置传递到 **ServiceManagementService**（此外，用你的证书名称替代 *AzureCertificate*），连接到 Azure 管理终结点：
+在获取了订阅 ID、创建了证书并且将 `.cer` 文件上传到 Azure 后，可以通过将订阅 ID 以及“**个人**”证书存储中的证书位置传递到 **ServiceManagementService**（此外，用证书名称替代 *AzureCertificate*），连接到 Azure 管理终结点：
 
     from azure import *
     from azure.servicemanagement import *
@@ -421,7 +421,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 [How to: Create a virtual machine]: #CreateVM
 [How to: Delete a virtual machine]: #DeleteVM
 [Next Steps]: #NextSteps
-[management-portal]: https://manage.windowsazure.com/
+[management-portal]: https://portal.azure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 

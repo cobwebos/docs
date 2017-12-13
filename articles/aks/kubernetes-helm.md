@@ -1,26 +1,19 @@
 ---
-title: "使用 Helm 在 Azure 上的 Kubernetes 中部署容器 | Microsoft Docs"
+title: "使用 Helm 在 Kubernetes on Azure 中部署容器"
 description: "使用 Helm 打包工具在 AKS 中的 Kubernetes 群集上部署容器"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: de52c2aad0f74b59970234872dfa3e4136929915
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7065ceaf87f0cb5ebf46c53c71c6df4b069b2deb
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-helm-with-azure-container-service-aks"></a>将 Helm 与 Azure 容器服务 (AKS) 配合使用
 

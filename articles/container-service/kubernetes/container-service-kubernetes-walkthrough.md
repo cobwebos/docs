@@ -1,27 +1,19 @@
 ---
-title: "快速入门 - 适用于 Linux 的 Azure Kubernetes 群集 | Microsoft Docs"
+title: "快速入门 - 适用于 Linux 的 Azure Kubernetes 群集"
 description: "快速学习在 Azure 容器服务中使用 Azure CLI 为 Linux 容器创建 Kubernetes 群集。"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
-ms.assetid: 8da267e8-2aeb-4c24-9a7a-65bdca3a82d6
 ms.service: container-service
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 59f37565d7e1912a149497223707e96a5ce8b24e
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 48bd7c0bb7b5d13586267cac202de41c25c1fc7b
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>为 Linux 容器部署 Kubernetes 群集
 

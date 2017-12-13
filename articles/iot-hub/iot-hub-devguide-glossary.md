@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 0a780461bb934b4766f8050fba825e1d7503f4fd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 87ab620444df4588cc43a3691cb215006561090d
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -35,9 +35,6 @@ ms.lasthandoff: 11/18/2017
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
 提供了多种语言的_设备 SDK_，方便用户创建与 IoT 中心交互的[设备应用](#device-app)。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和更多信息。
-
-## <a name="azure-iot-edge"></a>Azure IoT Edge
-Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的组织就可以专注于业务见解而非数据管理。 你可以配置 IoT 软件，通过标准容器将其部署到设备，然后对其进行监视，这一切都可以从云中操作，使解决方案能够真正地缩放。 开始使用教程，了解如何在 [Linux](../iot-edge/tutorial-simulate-device-linux.md) 或 [Windows](../iot-edge/tutorial-simulate-device-windows.md) 设备上安装和使用 Azure IoT Edge。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 提供了多种语言的_服务 SDK_，方便用户创建与 IoT 中心交互的[后端应用](#back-end-app)。 IoT 中心教程介绍了如何使用这些服务 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关服务 SDK 的源代码和进一步信息。
@@ -164,6 +161,49 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 ## <a name="interactive-message"></a>交互式消息
 交互式消息是[云到设备](#cloud-to-device)的消息，可在解决方案后端触发即时操作。 例如，设备可能会发送故障警报，而该故障会自动记录到 CRM 系统中。
 
+## <a name="iot-edge"></a>IoT Edge
+Azure IoT Edge 可以在本地设备进行 Azure 服务和解决方案特定代码的云驱动部署。 IoT Edge 设备可以聚合其他设备的数据，以在数据发送到云之前执行计算和分析。 有关详细信息，请参阅 [Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/)。
+
+## <a name="iot-edge-agent"></a>IoT Edge 代理
+IoT Edge 运行时部件负责部署和监视模块。
+
+## <a name="iot-edge-device"></a>IoT Edge 设备
+IoT Edge 设备已安装 IoT Edge 运行时，并且在设备详细信息中标记为“IoT Edge 设备”。 了解如何[在 Linux 的模拟设备上部署 Azure IoT Edge - 预览](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux)。
+
+## <a name="iot-edge-deployment"></a>IoT Edge 部署
+IoT Edge 部署配置 IoT Edge 设备的目标集以运行 IoT Edge 模块集。 每次部署持续确保符合其目标条件的所有设备运行指定的模块集，即使是在创建新设备或者为满足目标条件修改设备时。 每个 IoT Edge 设备仅接收满足其目标条件的最高优先级部署。 了解有关 [IoT Edge 部署](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring)的详细信息。
+
+## <a name="iot-edge-deployment-manifest"></a>IoT Edge 部署清单
+Json 文档包含要在一个或多个 IoT Edge 设备的模块孪生中复制的信息，以部署一组模块、路由和关联模块所需属性。
+
+## <a name="iot-edge-gateway-device"></a>IoT Edge 网关设备
+有下游设备的 IoT Edge 设备。 下游设备可以是 IoT Edge 设备，也可以不是 IoT Edge 设备。
+
+## <a name="iot-edge-hub"></a>IoT Edge 中心
+IoT Edge 运行时部件负责模块间通信、上游（流向 IoT 中心）和下游（离开 IoT Edge）通信。 
+
+## <a name="iot-edge-leaf-device"></a>IoT Edge 叶设备
+没有下游设备的 IoT Edge 设备。 
+
+## <a name="iot-edge-module"></a>IoT Edge 模块
+IoT Edge 模块是可部署到 IoT Edge 设备的 Docker 容器。 它执行特定的任务，例如从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 它与其他模块进行通信并将数据发送到 IoT Edge 运行时。 [了解开发 IoT Edge 模块的要求和工具](https://docs.microsoft.com/en-us/azure/iot-edge/module-development)。
+
+## <a name="iot-edge-module-identity"></a>IoT Edge 模块标识
+IoT 中心模块标识注册表中的记录详细说明，模块用来向 Edge 中心或 IoT 中心进行身份验证的存在和安全凭证。
+
+## <a name="iot-edge-module-image"></a>IoT Edge 模块映像
+IoT Edge 运行时用来实例化模块实例的 docker 映像。
+
+## <a name="iot-edge-module-twin"></a>IoT Edge 模块孪生
+保存在存储模块实例状态信息的 IoT 中心内的 Json 文档。 
+
+## <a name="iot-edge-runtime"></a>IoT Edge 运行时
+IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的所有内容。 它包括 Edge 代理、Edge 中心和 Edge CTL 工具。
+
+## <a name="iot-edge-set-modules-to-a-single-device"></a>IoT Edge 将模块设置为单个设备
+在一个设备的模块孪生上复制 IoT Edge 清单内容的操作。 基础 API 是泛型“应用配置”，仅将 IoT Edge 清单作为输入。
+s
+
 ## <a name="iot-hub"></a>IoT 中心
 IoT 中心是完全托管的 Azure 服务，用于支持数百万台设备和解决方案后端之间可靠、安全的双向通信。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md) 使用 [Azure 订阅](#subscription)可以创建 IoT 中心来处理 IoT 消息传送工作负荷。
 
@@ -188,9 +228,6 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 ## <a name="jobs-rest-api"></a>作业 REST API
 使用[作业 REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) 可以管理 IoT 中心内运行的[作业](#job)。
 
-## <a name="module"></a>模块
-在 [Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md) 中，[模块](../iot-edge/iot-edge-modules.md)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT Edge 包括一组示例模块。 用户还可以创建自己的自定义模块。
-
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
 
@@ -202,6 +239,9 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 
 ## <a name="primary-and-secondary-keys"></a>主要和次要密钥
 连接到 IoT 中心的面向设备或面向服务的终结点时，[连接字符串](#connection-string)包含用于授权的密钥。 在[标识注册表](#identity-registry)中添加设备或者在中心添加[共享访问策略](#shared-access-policy)时，服务将生成主要和次要密钥。 拥有两个密钥能够在更新密钥时从一个密钥切换到另一个密钥，而不会失去 IoT 中心访问权限。
+
+## <a name="priority"></a>Priority
+当两个 IoT Edge 部署以同一设备为目标时，应用优先级更高的部署。 如果两个部署优先级相同，则应用创建日期更晚的部署。 了解有关[优先级](#https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#priority)的详细信息。
 
 ## <a name="protocol-gateway"></a>协议网关
 协议网关通常部署在云中，为连接到 [IoT 中心](#iot-hub)的设备提供协议转换服务。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md)
@@ -247,6 +287,9 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 
 ## <a name="tags"></a>标记
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，标记是指由解决方案后端以 JSON 文档形式存储和检索的设备元数据。 标记对于设备上的应用程序不可见。
+
+## <a name="target-condition"></a>目标条件
+在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如“tag.environment = prod”）。 持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
 
 ## <a name="telemetry"></a>遥测
 设备收集遥测数据，如风速或温度，并使用[数据点消息](#data-point-messages)将遥测数据发送到 IoT 中心。

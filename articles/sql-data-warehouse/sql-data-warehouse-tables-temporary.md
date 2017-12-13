@@ -3,8 +3,8 @@ title: "SQL 数据仓库中的临时表 | Microsoft 文档"
 description: "开始使用 Azure SQL 数据仓库中的临时表。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: jhubbard
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
-ms.author: shigu;barbkess
-ms.openlocfilehash: fd8c31a727dae3b011aa8294a81f005bad72a278
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 > [!div class="op_single_selector"]
@@ -33,12 +33,12 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-临时表在处理数据时非常有用 - 尤其是具有暂时性中间结果的转换期间。 临时表存在于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。  Azure SQL 数据仓库中的临时表与 Azure SQL 数据库中的临时表略有不同，它们可以从会话内的任何位置进行访问，包括存储过程内部和外部。
+临时表在处理数据时非常有用 - 尤其是在具有暂时性中间结果的转换期间。 临时表位于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。  Azure SQL 数据仓库中的临时表与 Azure SQL 数据库中的临时表略有不同，它们可以从会话内的任何位置进行访问，包括存储过程内部和外部。
 
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。
 
 ## <a name="create-a-temporary-table"></a>创建临时表
-只需在表名的前面添加 `#` 作为前缀，即可创建临时表。  例如：
+只需为表名添加 `#` 前缀，即可创建临时表。  例如：
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -112,12 +112,12 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS` 是一个非常强大的命令，具有附加优势，可以非常有效地利用事务日志空间。 
+> `CTAS` 是一个强大的命令并具有附加优势，可有效利用事务日志空间。 
 > 
 > 
 
 ## <a name="dropping-temporary-tables"></a>删除临时表
-创建新会话时，应不存在任何临时表。  但是，如果调用同一存储过程，它将使用相同名称创建临时表，要确保 `CREATE TABLE` 语句成功执行，可以使用带 `DROP` 的简单预存在检查，如下面的示例中所示：
+创建新会话时，应不存在任何临时表。  但是，如果调用同一存储过程，它将使用相同名称创建临时表，要确保 `CREATE TABLE` 语句成功执行，可使用带 `DROP` 的简单预存在检查，如以下示例中所示：
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -126,14 +126,14 @@ BEGIN
 END
 ```
 
-为了实现编码一致性，好的做法是对表和临时表都使用此模式。  当在代码中完成临时表时，使用 `DROP TABLE` 来删除临时表也很不错。  在存储过程开发中，将 drop 命令捆绑在过程结尾来确保清除这些对象非常普遍。
+为了实现编码一致性，好的做法是对表和临时表都使用此模式。  当在代码中完成临时表时，使用 `DROP TABLE` 来删除临时表也很不错。  在存储过程开发中，通常将 drop 命令捆绑在过程末尾，以确保清除这些对象。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>模块化代码
-由于可以在用户会话中的任何位置查看临时表，可以利用这一点帮助将应用程序代码模块化。  例如，下面的存储过程会将上面建议的做法组合在一起生成 DDL，该 DDL 会按统计名称更新数据库中的所有统计信息。
+由于可以在用户会话中的任何位置查看临时表，可以利用这一点帮助将应用程序代码模块化。  例如，以下存储过程生成 DDL，按统计信息名称更新数据库中的所有统计信息。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -207,7 +207,7 @@ FROM    t1
 GO
 ```
 
-在此阶段发生的唯一操作是创建存储过程，该存储过程只使用 DDL 语句生成了临时表 #stats_ddl。  如果此存储过程在会话中运行了不止一次，它会删除已存在的 #stats_ddl，以确保它不会失败。  但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便可以在存储过程以外读取它。  在 SQL 数据仓库中，与其他 SQL Server 数据库不同，有可能在创建临时表的过程外部使用该临时表。  可以在会话中的**任何位置**使用 SQL 数据仓库临时表。 这可以提高代码的模块化程度与易管理性，如以下示例所示：
+在此阶段发生的唯一操作是创建存储过程，该存储过程使用 DDL 语句生成临时表 #stats_ddl。  如果此存储过程在会话中运行了不止一次，它会删除已存在的 #stats_ddl，以确保它不会失败。  但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  在 SQL 数据仓库中，与其他 SQL Server 数据库不同，有可能在创建临时表的过程外部使用该临时表。  可以在会话中的**任何位置**使用 SQL 数据仓库临时表。 这样可提高代码的模块化程度与易管理性，如以下示例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

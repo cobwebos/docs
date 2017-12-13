@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 70219ada2f4886f40d088486063afda2bc489611
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -33,6 +33,27 @@ ms.lasthandoff: 11/29/2017
 使用事件中心触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有事件中心的读取访问权限。
 
 触发事件中心触发器函数时，进行触发的消息将作为字符串传递到该函数中。
+
+## <a name="trigger---scaling"></a>触发器 - 缩放
+
+事件中心触发的函数的每个实例仅由 1 个 EventProcessorHost (EPH) 实例提供支持。 事件中心确保只有 1 个 EPH 能够获取给定分区的租约。
+
+例如，假设我们最初对某个事件中心采用以下设置：
+
+1. 10 个分区。
+1. 在所有分区之间平均分配 1000 个事件 => 每个分区接收 100 条消息。
+
+首次启用函数时，只有 1 个函数实例。 我们将此函数实例命名为 Function_0。 Function_0 包含 1 个 EPH，用于尽量获取所有 10 个分区的租约。 它开始从分区 0-9 读取事件。 从此时开始，将发生以下情况之一：
+
+* **只需要 1 个函数实例** - 在 Azure Functions 的缩放逻辑介入之前，Function_0 能够处理所有 1000 条消息。 因此，Function_0 会处理所有 1000 条消息。
+
+* **额外添加 1 个函数实例** - Azure Functions 的缩放逻辑确定 Function_0 收到的消息数超过了它可以处理的数量，因此创建了一个新实例 Function_1。 事件中心检测到新的 EPH 实例正在尝试读取消息。 事件中心开始在各个 EPH 实例之间对分区进行负载均衡，例如，将分区 0-4 分配到 Function_0，将分区 5-9 分配到 Function_1。 
+
+* **额外添加 N 个函数实例** - Azure Functions 的缩放逻辑确定 Function_0 和 Function_1 收到的消息数超过了它们可以处理的数量。 缩放逻辑再次针对 Function_2…N 缩放，其中 N 大于事件中心分区数。 事件中心在 Function_0…9 实例之间对分区进行负载均衡。
+
+Azure Functions 的当前缩放逻辑的独特之处在于，N 大于分区数。 实施此方案的目的是确保其他实例释放分区锁之后，始终有 EPH 实例随时可用于快速获取分区锁。 用户只需为执行函数实例时使用的资源付费，而不用为过度预配的资源付费。
+
+如果所有函数执行都成功且未出错，则会将检查点添加到关联的存储帐户。 检查点设置成功后，永远不会再次检索所有 1000 条消息。
 
 ## <a name="trigger---example"></a>触发器 - 示例
 

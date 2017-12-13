@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 53c9072f98dfe9c03b85eb7409b8ed91c3c0ce33
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>通过 Reliable Services 进行服务远程处理
 对于不依赖于特定的通信协议或堆栈的服务，如 WebAPI、Windows Communication Foundation (WCF) 或其他服务，Reliable Services 框架提供一种远程处理机制，以便快速而轻松地为这些服务设置远程过程调用。
@@ -79,10 +79,10 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-此远程处理框架将服务引发的异常传播到客户端。 因此，在客户端使用 `ServiceProxy` 的异常处理逻辑可直接处理服务引发的异常。
+此远程处理框架将服务引发的异常传播到客户端。 因此，使用 `ServiceProxy` 时，客户端负责处理服务引起的异常。
 
 ## <a name="service-proxy-lifetime"></a>服务代理生存期
-由于 ServiceProxy 创建是轻量型操作，因此用户可根据需求随意创建，数目不限。 如有需要，用户可重复使用服务代理实例。 如果远程过程调用引发了异常，用户仍可以重复使用相同的代理实例。 每个 ServiceProxy 都包含用于通过线路发送消息的通信客户端。 进行远程调用时，我们会在内部检查通信客户端是否有效。 基于该结果，我们将重新创建通信客户端（如果需要）。 因此在发生异常的情况下，用户无需重新创建 serviceproxy，但以透明方式这样做。
+由于 ServiceProxy 创建是轻量型操作，因此用户可根据需求随意创建，数目不限。 如有需要，用户可重复使用服务代理实例。 如果远程过程调用引发了异常，用户仍可以重复使用相同的代理实例。 每个 ServiceProxy 都包含用于通过线路发送消息的通信客户端。 进行远程调用时，我们会在内部检查通信客户端是否有效。 基于该结果，我们将重新创建通信客户端（如果需要）。 因此在发生异常的情况下，用户无需重新创建 `ServiceProxy`，因为已通过透明方式完成。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory 生存期
 [ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 api `ServiceProxy.Create` 创建代理，则框架将创建 ServiceProxy 的单一实例。
@@ -91,12 +91,13 @@ string message = await helloWorldClient.HelloWorldAsync();
 最佳做法是尽可能久地缓存 ServiceProxyFactory。
 
 ## <a name="remoting-exception-handling"></a>远程异常处理
-服务 API 引发的所有远程异常都将作为 AggregateException 发送回客户端。 RemoteExceptions 应该是 DataContract 可序列化的，否则 [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) 将引发至代理 API，且包含序列化错误。
+服务 API 引发的所有远程异常都将作为 AggregateException 发送回客户端。 RemoteExceptions 应该是 DataContract 可序列化的；如果不是，则代理 API 会引发 [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception)，且包含序列化错误。
 
 ServiceProxy 对为其创建的服务分区，处理所有故障转移异常。 如果存在故障转移异常（非暂时异常），它将重新解析终结点，并通过正确的终结点重试调用。 故障转移异常的重试次数无限。
 如果发生暂时性异常，代理会重试调用。
 
-默认重试参数由 [OperationRetrySettings] 提供。 (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 用户可通过将 OperationRetrySettings 对象传递至 ServiceProxyFactory 构造函数来配置这些值。
+默认重试参数由 [OperationRetrySettings](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 提供。
+用户可以通过将 OperationRetrySettings 对象传递给 ServiceProxyFactory 构造函数配置这些值。
 ## <a name="how-to-use-remoting-v2-stack"></a>如何使用 Remoting V2 堆栈
 借助 2.8 NuGet Remoting 包，可以通过相应的选项来使用 Remoting V2 堆栈。 Remoting V2 堆栈具有更高的性能，提供自定义可序列化对象等功能和更多的可插入 API。
 默认情况下，如果未进行以下更改，则会继续使用 Remoting V1 堆栈。

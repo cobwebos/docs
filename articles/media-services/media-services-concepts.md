@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: da2dc87543fd8a0aa99e1de3018a310abe93fa3a
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: fb21280921f353d2300767059290a1a8fac05e71
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
 本部分概述最重要的媒体服务概念。
@@ -151,10 +151,9 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
 有关详细信息，请参阅以下文章：
-
-[保护内容概述](media-services-content-protection-overview.md)
-[使用 AES-128 提供保护](media-services-protect-with-aes128.md)
-[使用 DRM 提供保护](media-services-protect-with-drm.md)
+- [保护内容概述](media-services-content-protection-overview.md)
+- [使用 AES-128 进行保护](media-services-protect-with-aes128.md)
+- [使用 PlayReady/Widevine 进行保护](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>传送
 ### <a id="dynamic_packaging"></a>动态打包

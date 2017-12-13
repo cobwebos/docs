@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: befd03d94f816cb2b59219cd9f1f9af238949592
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -91,6 +91,8 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
     > [!NOTE]
     > 只能通过 SSH 从客户端计算机访问群集头节点。 连接后，可以通过使用 SSH 从头节点访问辅助角色节点。
 
+有关详细信息，请参阅 [Hadoop on HDInsight 服务所使用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
+
 ## <a name="file-locations"></a>文件位置
 
 Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包含以下子目录：
@@ -108,9 +110,6 @@ HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认�
 
 * 成本低廉的长期存储
 * 可从外部服务访问，例如网站、文件上传/下载实用程序、各种语言 SDK 和 Web 浏览器
-
-> [!WARNING]
-> HDInsight 仅支持通用 Azure 存储帐户。 它当前不支持 __Blob 存储__帐户类型。
 
 一个 Azure 存储帐户容量最多为 4.75 TB，而单个 Blob（从 HDInsight 角度来说是文件）大小最多为 195 GB。 Azure Data Lake Store 可以动态增长以保存数万亿个文件，并且单个文件大于 1 PB。 有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。
 
@@ -234,6 +233,8 @@ HDInsight 使用 Azure 存储中的 Blob 或 Azure Data Lake Store 作为默认�
 
         1. 在 Web 浏览器中打开 **https://CLUSTERNAME.azurehdinsight.net/stormui**，其中“CLUSTERNAME”是 Storm 群集的名称。 如果系统提示，请输入创建群集时指定的 HDInsight 群集管理员 (admin) 名称和密码。
         2. 选择要重新平衡的拓扑，并选择“重新平衡”按钮。 输入执行重新平衡操作前的延迟。
+
+* **Kafka**：执行缩放操作后，应重新均衡分区副本。 有关详细信息，请参阅[通过 Kafka on HDInsight 实现数据的高可用性](./kafka/apache-kafka-high-availability.md)文档。
 
 有关缩放 HDInsight 群集的特定信息，请参阅：
 

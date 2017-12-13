@@ -1,28 +1,22 @@
 ---
-title: "Azure 云中的 Docker 容器托管 | Microsoft 文档"
+title: "托管在 Azure 云中的 Docker 容器"
 description: "Azure 容器服务提供了一种简化创建、配置和管理预配置来运行容器化应用程序的虚拟机群集的方法。"
 services: container-service
-documentationcenter: 
 author: rgardler
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, 容器, 微服务, Mesos, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 3e263b88bf6afe652e06bd8cc109c98a17269cae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94ae759803bc3a65ec7dc9a8e01486625a638368
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Azure 容器服务的 Docker 容器托管解决方案简介 
+
 Azure 容器服务让创建、配置和管理预配置来运行容器化应用程序的虚拟机群集变得更简单。 它使用热门开源计划和业务流程工具的优化配置。 通过此服务，用户可使用现有技能或利用不断增加的大量社区专业知识，在 Microsoft Azure 上部署和管理基于容器的应用程序。
 
 ![Azure 容器服务提供了在 Azure 的多个主机上管理容器化应用程序的方法。](./media/acs-intro/acs-cluster-new.png)

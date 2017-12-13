@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 11/23/2017
+ms.date: 12/04/2017
 ms.author: anoopkv
-ms.openlocfilehash: 1b7a2d99cfa9f7d54d5303c21202fc34cf6d15ab
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 2dcca54c9e1e9330bf7c2a37dc08f67817b6af47
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="manage-vmware-vcenter-server-in-azure-site-recovery"></a>在 Azure Site Recovery 中管理 VMware vCenter 服务器
 本文介绍可以在 VMware vCenter 上执行的各种 Site Recovery 操作。
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/27/2017
 
 **支持 VMware vCenter 和 VMware vSphere ESX 主机** | **详细信息** |
 |--- | --- |
-|**本地 VMware 服务器** | 一台或多台 VMware vSphere 服务器，运行带有最新更新的 6.0、5.5 或 5.1。 服务器应位于配置服务器（或单独的进程服务器）所在的同一网络。<br/><br/> 建议使用一台 vCenter 服务器（运行带有最新更新的 6.0 或 5.5）来管理主机。 部署版本 6.0 时，只有 5.5 版中提供的功能才受支持。|
+|**本地 VMware 服务器** | 一台或多台 VMware vSphere 服务器，运行带有最新更新的 6.5、6.0 或 5.5。 服务器应位于配置服务器（或单独的进程服务器）所在的同一网络。<br/><br/> 建议使用一台 vCenter 服务器（运行带有最新更新的 6.5、6.0 或 5.5）来管理主机。 部署版本 6.0 时，只有 5.5 版中提供的功能才受支持。|
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>为自动发现准备帐户
 Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动发现虚拟机，以及实现虚拟机的故障转移和故障回复。

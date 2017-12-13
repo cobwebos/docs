@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: 07e74c64e587cce99612cd5047516bf131943f2e
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: f8ea2c269906732aef8d577c0d744e730c1dedcd
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="aerial-image-classification"></a>航拍图像分类
 
@@ -59,9 +59,14 @@ ms.lasthandoff: 11/15/2017
 - [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md)
     - 请按照[安装和创建快速入门](quickstart-installation.md)中的说明安装 Azure Machine Learning Workbench 并创建试验和模型管理帐户。
 - [Batch AI](https://github.com/Azure/BatchAI) Python SDK 和 Azure CLI 2.0
-    - 按照[各窍门的先决条件部分](https://github.com/Azure/BatchAI/tree/master/recipes)中的以下说明，安装 Batch AI SDK 和 Azure CLI 2.0。
-        - 在本文中，Azure Machine Learning Workbench 使用 Azure CLI 2.0 的单独分支。 为清楚起见，我们将该 Workbench 的 CLI 版本称为“从 Azure Machine Learning Workbench 启动的 CLI”，将常规发布版本（包括 Batch AI）称为“Azure CLI 2.0”。
-    - 按以下[说明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)创建 Azure Active Directory 应用程序和服务主体。 记录客户端 ID、机密和租户 ID。
+    - 完成 [Batch AI 工作程序自述文件](https://github.com/Azure/BatchAI/tree/master/recipes)中的以下部分：
+        - “先决条件”
+        - “创建并获取 Azure Active Directory (AAD) 应用程序”
+        - “注册 BatchAI 资源提供程序”（在“使用 Azure CLI 2.0 运行工作程序”下）
+        - “安装 Azure Batch AI 管理客户端”
+        - “安装 Azure Python SDK”
+    - 记录客户端 ID、机密以及按引导创建的 Azure Active Directory 应用程序的租户 ID。 本教程的后面部分会用到这些凭据。
+    - 在本文中，Azure Machine Learning Workbench 和 Azure Batch AI 使用 Azure CLI 2.0 的单独分支。 为清楚起见，我们将该 Workbench 的 CLI 版本称为“从 Azure Machine Learning Workbench 启动的 CLI”，将常规发布版本（包括 Batch AI）称为“Azure CLI 2.0”。
 - [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)，一种用于协调 Azure 存储帐户之间的文件传输的免费实用工具
     - 确保包含 AzCopy 可执行文件的文件夹位于系统的 PATH 环境变量中。 （有关修改环境变量的说明，可在[此处](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)获取。）
 - 一个 SSH 客户端，建议使用 [PuTTY](http://www.putty.org/)。
@@ -215,7 +220,7 @@ Batch AI 群集访问网络文件服务器上的训练数据。 从 NFS 与 Azur
 1. 发布以下命令创建网络文件服务器：
 
     ```
-    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_D2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
 1. 使用以下命令检查网络文件服务器的预配状态：

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: 2ee7ec91700c66d5bedd917d0203a726b5c5e300
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9026090addde35dc702a80f302abd7e3eb9c690
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>使用 Azure 机器学习进行客户流失预测
 
@@ -90,14 +90,14 @@ __docs__：包含所有动手实验
 执行解决方案时动手实验的执行顺序如下所述：
 1. 数据准备：data 文件夹中与数据准备相关的主要文件为 `CATelcoCustomerChurnTrainingSample.csv`
 2. 建模和评估：根文件夹中与建模和评估相关的主要文件为 `CATelcoCustomerChurnModeling.py`
-3. Docker 中的建模和评估：根文件夹中用于此任务的主要文件为 `CATelcoCustomerChurnModelingDocker.py`
+3. 没有 .dprep 的建模和评估：根文件夹中用于此任务的主文件为 `CATelcoCustomerChurnModelingWithoutDprep.py`
 4. 操作化：用于部署的主要文件为模型 (`model.pkl`) 和 `churn_schema_gen.py`
 
 | 顺序| 文件名 | 相关的文件 |
 |--|-----------|------|
 | 1 | [`DataPreparation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/DataPreparation.md) | 'data/CATelcoCustomerChurnTrainingSample.csv' |
 | #N/A | [`ModelingAndEvaluation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/ModelingAndEvaluation.md) | 'CATelcoCustomerChurnModeling.py' |
-| 3 | [`ModelingAndEvaluationDocker.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/ModelingAndEvaluationDocker.md) | 'CATelcoCustomerChurnModelingDocker.py' |
+| 3 | [`CATelcoCustomerChurnModelingWithoutDprep.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/CATelcoCustomerChurnModelingWithoutDprep.md) | 'CATelcoCustomerChurnModelingWithoutDprep.py' |
 | 4 | [`Operationalization.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/Operationalization.md) | 'model.pkl'<br>'churn_schema_gen.py' |
 
 按上文所述的顺序方式执行实验。

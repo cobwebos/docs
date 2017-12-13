@@ -3,8 +3,8 @@ title: "为 SQL 数据仓库中的表编制索引 | Microsoft Azure"
 description: "Azure SQL 数据仓库中的表索引入门。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: barbkess
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 3e617674-7b62-43ab-9ca2-3f40c41d5a88
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 07/12/2016
-ms.author: shigu;barbkess
-ms.openlocfilehash: b205ed47833f675286539705e2754d2ea3821b8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: 672270536a7405e617edbcf5ec0e6eff68be7fde
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表编制索引
 > [!div class="op_single_selector"]
@@ -191,7 +191,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 这些因素可能导致列存储索引在每个行组中的行远远少于最佳数量（100 万）。  它们还会造成行转到增量行组而不是压缩的行组。 
 
 ### <a name="memory-pressure-when-index-was-built"></a>生成索引时内存有压力
-每个压缩行组的行数，与行宽度以及可用于处理行组的内存量直接相关。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  因此，最佳做法是尽可能让写入到列存储索引表的会话访问最多的内存。  因为内存与并发性之间有所取舍，正确的内存分配指导原则取决于表的每个行中的数据、已分配给系统的 DWU 数量，以及可以提供给将数据写入表的会话的并发访问槽数。  作为一种最佳做法，如果使用 DW300 或更少，我们建议从 xlargerc 开始；如果使用 DW400 到 DW600，则从 largerc 开始；如果使用 DW1000 和更高，则从 mediumrc 开始。
+每个压缩行组的行数，与行宽度以及可用于处理行组的内存量直接相关。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  因此，最佳做法是尽可能让写入到列存储索引表的会话访问最多的内存。  因为内存与并发性之间有所取舍，正确的内存分配指导原则取决于表的每个行中的数据、已分配给系统的数据仓库，以及可以提供给将数据写入表的会话的并发访问槽位数。  作为一种最佳做法，如果使用 DW300 或更少，我们建议从 xlargerc 开始；如果使用 DW400 到 DW600，则从 largerc 开始；如果使用 DW1000 和更高，则从 mediumrc 开始。
 
 ### <a name="high-volume-of-dml-operations"></a>有大量的 DML 操作
 更新和删除行的大量 DML 操作可能造成列存储低效。 当行组中的大多数行已修改时尤其如此。
@@ -247,7 +247,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 SQL 数据仓库中重建索引是一项脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理][Columnstore Indexes Defragmentation]中的 ALTER INDEX REBUILD 部分和语法主题 [ALTER INDEX][ALTER INDEX]。
+在 SQL 数据仓库中重建索引是一项脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理][Columnstore Indexes Defragmentation]中的 ALTER INDEX REBUILD 部分和 [ALTER INDEX][ALTER INDEX]。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步骤 3：验证聚集列存储段质量是否已改善
 重新运行识别出段质量不佳的表的查询，并验证段质量是否已改善。  如果段质量并未改善，原因可能是表中的行太宽。  请考虑在重建索引时使用较高的资源类或 DWU。
