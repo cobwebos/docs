@@ -11,7 +11,8 @@
 ## [顾问入门](advisor-get-started.md)
 
 # 引用
-## [REST](https://docs.microsoft.com/rest/api/advisor)
+## [REST API](https://docs.microsoft.com/rest/api/advisor)
+## [CLI](https://docs.microsoft.com/cli/azure/advisor)
 
 # 相关内容
 ## [安全中心](https://azure.microsoft.com/services/security-center/)

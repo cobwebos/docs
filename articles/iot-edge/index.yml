@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/08/2017
   ms.author: kgremban
-  ms.openlocfilehash: d49e1647db25023cefd59d667f87396827b7ca27
-  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+  ms.openlocfilehash: 909df13481d6bc47e0b7d30eb9f1ef755df01d27
+  ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/11/2017
+  ms.lasthandoff: 12/12/2017
 abstract:
   description: "Azure IoT Edge 是基于物联网 (IoT) 中心构建的 IoT 服务。 此服务供想要在设备上 （也称为“在边缘上”）而不是在云中分析数据的客户使用。 通过将部分工作负荷移至边缘，设备将消息发送到云所花费的时间可以更少，并且设备可以对状态更改更快地做出响应。"
 sections:
@@ -30,11 +30,11 @@ sections:
     style: icon48
     items:
     - image:
-        src: /azure/virtual-machines/linux/media/index/portal.svg
+        src: https://docs.microsoft.com/media/logos/logo_Windows.svg
       text: Windows
       href: /azure/iot-edge/quickstart
     - image:
-        src: /azure/virtual-machines/linux/media/index/portal.svg
+        src: https://docs.microsoft.com/media/logos/logo_linux.svg
       text: Linux
       href: /azure/iot-edge/quickstart-linux
 - title: "分步教程"
