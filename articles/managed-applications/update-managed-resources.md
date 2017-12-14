@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 59dce2fe7d91cc80f991e5ff298be7757ae19ef4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d3c955d7be0e7e6d45751c0e685bad498e524d94
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>处理 Azure 托管应用程序的托管资源组中的资源
 
@@ -97,4 +97,3 @@ az policy assignment show --name locationAssignment --scope $managedGroup --quer
 
 * 有关托管应用程序的简介，请参阅[托管应用程序概述](overview.md)。
 * 有关示例项目，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
-* 有关将托管应用程序发布到 Azure Marketplace 的信息，请参阅 [Marketplace 中的托管应用程序](publish-marketplace-app.md)。

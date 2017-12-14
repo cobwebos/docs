@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: f47a855b94a29a2e9bbf4ca509e68612423aa65d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9389ab5c3c67525703538cee644af9399417ffd5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 > [!NOTE]
@@ -61,7 +61,7 @@ Windows Server 2016 提供两种不同类型的容器，它们的隔离程度有
 ## <a name="scenarios-for-using-containers"></a>使用容器的方案
 下面是典型示例，其中容器是一个不错的选择：
 
-* **IIS 提升与移动**：如果有想继续使用的现有 [ASP.NET MVC](https://www.asp.net/mvc) 应用，将它们放在容器中而不是迁移到 ASP.NET 核心。 这些 ASP.NET MVC 应用都依赖于 Internet Information Services (IIS)。 可以从预先创建的 IIS 映像中将这些应用程序打包成容器映像，然后再使用 Service Fabric 部署。 有关 Windows 容器的信息，请参阅 [Windows Server 上的容器映像](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)。
+* **IIS 提升与移动**：如果有想继续使用的现有 [ASP.NET MVC](https://www.asp.net/mvc) 应用，将它们放在容器中而不是迁移到 ASP.NET 核心。 这些 ASP.NET MVC 应用都依赖于 Internet Information Services (IIS)。 可以从预先创建的 IIS 映像中将这些应用程序打包成容器映像，然后再使用 Service Fabric 部署。 有关 Windows 容器的信息，请参阅 [Windows Server 上的容器映像](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)。
 * **将容器和 Service Fabric 微服务混合**：可将现有容器映像用作应用程序的一部分。 例如，对于应用程序的 Web 前端，可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)；对于更密集的后端计算，可以使用有状态服务。
 * **降低“干扰性邻居”服务的影响**：可以使用容器的资源调控能力来限制服务在主机上使用的资源。 如果某些服务可能会消耗许多资源，因而影响其他服务的性能（例如，长时间运行的类似于查询的操作），请考虑将这些服务放入具有资源监管功能的容器中。
 
@@ -90,6 +90,6 @@ Service Fabric 提供多种容器功能，可帮助构建由容器化的微服�
 
 [在 Linux 上创建第一个 Service Fabric 容器应用程序](service-fabric-get-started-containers-linux.md)
 
-[了解更多关于 Windows 容器的信息](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/)
+[了解更多关于 Windows 容器的信息](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

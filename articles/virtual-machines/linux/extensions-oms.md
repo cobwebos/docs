@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: dcb7a777c66200c5046a6ad34dc4ff5d346f13e0
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: b20c54660552f527ff403fb41f2a04e478832d43
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>适用于 Linux 的 OMS 虚拟机扩展
 
@@ -182,7 +182,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 10 | VM 已连接至 OMS 工作区 | 要将 VM 连接到扩展架构中指定的工作区，请在公共设置中将“stopOnMultipleConnections”设置为 false，或删除该属性。 连接到工作区后，此 VM 立即开始计费。 |
 | 11 | 提供给扩展的无效配置 | 按上述示例设置部署所需的所有属性值。 |
 | 12 | dpkg 包管理器已锁定 | 请确保计算机上的所有 dpkg 更新操作已完成并重试。 |
-| 20 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
+| 20 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
 | 51 | VM 的操作系统不支持此扩展 | |
 | 55 | 无法连接到 Microsoft Operations Management Suite (OMS) 服务 | 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，确保工作区 ID 正确。 |
 

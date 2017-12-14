@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2bfeba27b6de9e5db623eba1526bd2d2ff1b7211
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建活动日志警报
-本文说明如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)配置活动日志警报。 使用模板，可以轻松设置在自动执行的部署过程中基于特定活动日志事件条件激活的多个警报。
+本文说明如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)配置活动日志警报。 使用模板，可以轻松设置在自动执行的部署过程中基于特定活动日志事件条件激活的多个警报。
 
 基本步骤如下：
 
