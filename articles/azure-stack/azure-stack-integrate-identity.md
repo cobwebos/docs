@@ -2,26 +2,25 @@
 title: "Azure 堆栈数据中心集成的标识"
 description: "了解如何将与你的数据中心 AD FS 集成 Azure 堆栈 AD FS"
 services: azure-stack
-author: troettinger
+author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/20/2017
-ms.author: victorh
+ms.date: 12/12/2017
+ms.author: mabrigg
 keywords: 
-ms.openlocfilehash: c66761d44266a33ddfa1e95444355d3908186ef8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 642ed3298eec0bab5515df117c0310786358e417
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure 堆栈数据中心集成的标识
 
 *适用范围： Azure 堆栈集成系统*
 
-可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供程序部署 azure 堆栈。 在部署之前，必须进行此选择。 使用 AD FS 部署也被称为在断开模式中部署 Azure 堆栈。
+你可以部署 Azure 堆栈使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供程序。 在部署 Azure 堆栈之前，必须做出的选择。 使用 AD FS 部署也被称为在断开模式中部署 Azure 堆栈。
 
 下表显示两个标识选项之间的差异：
-
 
 ||以物理方式断开连接|以物理方式连接|
 |---------|---------|---------|
@@ -75,33 +74,36 @@ ms.lasthandoff: 12/08/2017
 或者，您可以在现有 Active Directory 中创建用于 Graph 服务的帐户。 如果你还没有你想要使用的帐户，请执行此步骤。
 
 1. 在现有 Active Directory 中，创建以下用户帐户 （建议）：
-   - 用户名： graphservice
-   - 密码： 使用强密码<br>配置为永不过期的密码。
+   - **用户名**: graphservice
+   - **密码**： 使用强密码<br>配置为永不过期的密码。
 
-   没有特殊权限或成员身份是必需的
+   没有特殊权限或成员身份是必需的。
 
-**若要配置关系图的触发器自动化**
+#### <a name="trigger-automation-to-configure-graph"></a>若要配置关系图的触发器自动化
 
 对于此过程，在数据中心网络，可与 Azure 堆栈中的特权终结点进行通信中使用的计算机。
 
-2. 打开提升的 Windows PowerShell 会话 （以管理员身份运行），并连接到特权终结点的 IP 地址。 使用 CloudAdmin 的凭据进行身份验证。
+2. 打开提升的 Windows PowerShell 会话 （以管理员身份运行），并连接到特权终结点的 IP 地址。 使用的凭据**CloudAdmin**进行身份验证。
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. 现在，你已连接到特权的终结点，运行以下命令。 出现提示时，指定你想要用于 Graph 服务 （如 graphservice) 的用户帐户的凭据。
+3. 现在，你已连接到特权的终结点，运行以下命令： 
 
-   `Register-DirectoryService -CustomADGlobalCatalog contoso.com`
+   ```powershell
+   Register-DirectoryService -CustomADGlobalCatalog contoso.com
+   ```
+
+   出现提示时，指定你想要用于 Graph 服务 （如 graphservice) 的用户帐户的凭据。
 
    > [!IMPORTANT]
    > 等待弹出的凭据 （Get-credential 不支持特权终结点中），然后输入 Graph 服务帐户凭据。
 
-**Graph 协议和端口**
+#### <a name="graph-protocols-and-ports"></a>Graph 协议和端口
 
 Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Directory 进行通信：
-
 
 |类型|端口|协议|
 |---------|---------|---------|
@@ -114,7 +116,6 @@ Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Direc
 
 以下信息是必需的作为输入的自动化参数：
 
-
 |参数|说明|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。<cr>似乎在 AD FS 登录页上通过这种方式。|Contoso|
@@ -123,22 +124,26 @@ Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Direc
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>触发器的自动化功能来配置 Azure 堆栈中的声明提供方信任
 
-对于此过程，将可以进行通信的计算机使用 Azure 堆栈中的特权终结点。 应使用的帐户 STS AD FS 的证书受 Azure 堆栈。
+对于此过程，将可以进行通信的计算机使用 Azure 堆栈中的特权终结点。 应通过帐户使用的证书**STS AD FS**受 Azure 堆栈。
 
 1. 打开提升的 Windows PowerShell 会话，并连接到特权终结点。
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. 现在，你已连接到特权的终结点，运行以下命令使用适用于你环境的参数：
 
-   `Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
+   ```powershell
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+   ```
 
 3. 运行以下命令以更新订阅的所有者默认提供程序，使用适用于你环境的参数：
 
-   `Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"`
+   ```powershell
+   Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
+   ```
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>设置通过提供联合身份验证元数据文件的 AD FS 的集成
 
@@ -161,7 +166,7 @@ Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Direc
 
 1. 打开提升的 Windows PowerShell 会话，并运行以下命令，使用适用于你环境的参数：
 
-   ```
+   ```powershell
    [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
 
    $Metadata.outerxml|out-file c:\metadata.xml
@@ -176,18 +181,22 @@ Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Direc
 
 1. 打开提升的 Windows PowerShell 会话，并连接到特权终结点。
 
-   ```
+   ```powershell
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. 现在，你已连接到特权的终结点，运行以下命令使用适用于你环境的参数：
 
-   `Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml`
+   ```powershell
+   Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
+   ```
 
 3. 运行以下命令以更新订阅的所有者默认提供程序，使用适用于你环境的参数：
 
-   `Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"`
+   ```powershell
+   Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
+   ```
 
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>在现有 AD FS 部署 （帐户 STS） 上配置信赖方
 
@@ -199,7 +208,7 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 
 1. 数据中心的 AD FS 实例或服务器场成员上，将以下内容复制到一个.txt 文件 （例如，另存为 c:\ClaimRules.txt）：
 
-   ```
+   ```text
    @RuleTemplate = "LdapClaims"
    @RuleName = "Name claim"
    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer == "AD AUTHORITY"]
@@ -232,28 +241,43 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 
 2. 若要启用基于 Windows 窗体的身份验证，请打开 Windows PowerShell 会话以提升的用户，并运行以下命令：
 
-   `Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")`
+   ```powershell
+   Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
+   ```
 
 3. 若要添加的信赖方信任，请在 AD FS 实例或服务器场成员上运行以下 Windows PowerShell 命令。 请确保更新 AD FS 终结点，并指向在步骤 1 中创建的文件。
 
    **为 AD FS 2016**
 
-   `Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"`
+   ```powershell
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
+   ```
 
    **AD FS 2012/2012 r2**
 
-   `Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true`
+   ```powershell
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
+   ```
 
    > [!IMPORTANT]
    > 必须使用 AD FS MMC 管理单元时使用 Windows Server 2012 或 2012 R2 AD FS 配置颁发授权规则。
 
 4. 如果你使用 Internet Explorer 或 Edge 浏览器来访问 Azure 堆栈，你必须忽略令牌绑定。 否则，在登录尝试失败。 在 AD FS 实例或服务器场成员上，运行以下命令：
 
-   `Set-AdfsProperties -IgnoreTokenBinding $true`
+   ```powershell
+   Set-AdfsProperties -IgnoreTokenBinding $true
+   ```
+
+5. 若要启用刷新令牌，打开提升的 Windows PowerShell 会话，并运行以下命令：
+
+   ```powershell
+   Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
+   ```
 
 ## <a name="spn-creation"></a>SPN 创建
 
 有许多需要身份验证服务主体名称 (SPN) 的使用方案。 以下是一些示例：
+
 - CLI 用法和 Azure 堆栈的 AD FS 部署
 - 当使用 AD FS 部署的 Azure 堆栈的 system Center 管理包
 - 当使用 AD FS 部署的 Azure 堆栈中的资源提供程序
@@ -271,21 +295,25 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 
 1. 打开提升的 Windows PowerShell 会话并运行以下命令：
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. 然后运行以下 cmdlet:
 
-   `Reset-DatacenterIntegationConfiguration`
+   ```powershell
+   Reset-DatacenterIntegationConfiguration
+   ```
 
-   运行后的回滚操作，所有配置更改将都回滚。 仅与内置的"CloudAdmin"用户的身份验证是可能的。
+   运行后的回滚操作，所有配置更改将都回滚。 仅利用内置的身份验证**CloudAdmin**一点的用户。
 
    > [!IMPORTANT]
    > 你必须配置默认提供程序订阅的原始所有者
 
-   `Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"`
+   ```powershell
+   Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
+   ```
 
 ### <a name="collecting-additional-logs"></a>收集其他日志
 
@@ -293,14 +321,16 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 
 1. 打开提升的 Windows PowerShell 会话，并运行以下命令：
 
-   ```
+   ```powershell
    $creds = Get-Credential
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. 然后，运行以下 cmdlet:
 
-   `Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE`
+   ```powershell
+   Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
+   ```
 
 
 ## <a name="next-steps"></a>后续步骤

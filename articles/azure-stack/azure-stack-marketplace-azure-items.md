@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/13/2017
 ms.author: JeffGoldner
-ms.openlocfilehash: 1a6dbe2f4a66a44222e0b34b34a283c101b055de
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 8a4e92dbcf65d907e7b95b5f52597fc625e77897
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>可供 Azure 堆栈的 azure 应用商店项
 
@@ -29,6 +29,7 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店项目：
 |  | 项名称 | 说明 | 发布者 |
 | --- | --- | --- | --- |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.docker-arm?tab=Overview) | Linux 虚拟机的 docker 扩展。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | SQL IaaS 扩展 | <b>下载此扩展来部署任何 SQL Server 上的 Windows 应用商店项。<b> | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 Windows Server 2016 上的服务器 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016?tab=Overview) | Microsoft 机器学习服务器 9.2.1 Windows Server 2016 上。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习服务器 9.2.1 上 Ubuntu 16.04](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604?tab=Overview) | Microsoft 机器学习服务器 9.2.1 Ubuntu 16.04 上。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 CentOS Linux 7.2 上的服务器 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72?tab=Overview) | Microsoft 机器学习服务器 9.2.1 CentOS Linux 7.2 上。 | Microsoft |
@@ -156,8 +157,8 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店项目：
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine 销售 CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.x2enginesalescrm?tab=Overview) | Compact 市场营销、 销售和客户服务应用程序。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.xoops?tab=Overview) | CMS Web 门户和程序和创建动态网站。
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.zurmo?tab=Overview) | 打开源 CRM 系统： 移动、 社会、 和 Gamified。 | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [检查点 vSEC 安全管理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | 检查点 vSEC 提供高级、 多层次的威胁防护来保护 Azure 中的客户资产免受恶意软件和复杂的威胁。 | 检查点 |
-| ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef 自动执行](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | 生成、 部署和使用 Chef 自动执行，持续的自动化平台进行管理。 | Chef 软件，Inc |
+| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [检查点 vSEC 安全管理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | 检查点 vSEC 提供高级、 多层次的威胁防护来保护 Azure 中的客户资产免受恶意软件和复杂的威胁。 <b>下载这两个检查点 vSEC 应用商店项。</b> | 检查点 |
+| ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef 自动执行](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | 生成、 部署和使用 Chef 自动执行，持续的自动化平台进行管理。 <b>下载这两个 Chef 应用商店项</b> | Chef 软件，Inc |
 | ![](media/azure-stack-marketplace-azure-items/coreos.png) | [通过 CoreOS 容器 Linux](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CoreOS.CoreOS?tab=Overview) | 容器 Linux 是现代和最少的 Linux 分发，提供运行容器、 管理群集和无缝地将服务器更新的简单办法-启用仓库缩放的所有组件都计算。 | CoreOS |
 | ![](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview) | Ubuntu Server 是全球流行的 Linux 云环境。 | Canonical |
 | ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8"Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian?tab=Overview) | Debian GNU/Linux 是最流行的 Linux 分发版之一。 | credativ |
@@ -171,7 +172,9 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店项目：
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Linux 的 deep Security 代理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-linux?tab=Overview) | 适用于 Linux 的 trend Micro Deep Security 扩展。 | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Windows 的 deep Security 代理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm?tab=Overview) | 适用于 Windows 的 trend Micro Deep Security 扩展。 | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown 软件工具](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown 软件工具 v7.1-迁移 + HA。 | ZeroDown 软件 |
-
+| ![](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise 使你能够自动你 Azure 堆栈的基础结构的整个生命周期。 <b>下载这两个 Puppet 应用商店项。</b> | Puppet |
+| ![](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa 混合 AWS S3 compatibe-Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | 跨公用和本地容量资源的 S3 兼容存储服务。 | NooBaa |
+| ![](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks 数据平台 (HDP) 沙盒](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | 采用 HDP 2.5 100%打开源平台 Hadoop、 Spark、 Storm、 HBase、 Kafka、 Hive、 Ambari。 | Hortonworks |
 
 ### <a name="next-steps"></a>后续步骤
 [下载的应用商店项](azure-stack-download-azure-marketplace-item.md)

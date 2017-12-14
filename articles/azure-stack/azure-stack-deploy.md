@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 2bfd9b2603575545fef1c26310a2eecd2c8968e4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure 堆栈部署先决条件
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 创建为至少一个 Azure AD 目录管理员的 Azure AD 帐户。 如果你已经有一个，可以使用的。 否则，您可以创建一个免费在[http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (在中国，请访问<http://go.microsoft.com/fwlink/?LinkID=717821>相反)。 如果你于稍后计划[向 Azure 注册 Azure 堆栈](azure-stack-register.md)，还必须具有一个订阅，在这个新创建的帐户。
    
-    保存的步骤 6 中使用这些凭据[部署开发工具包](azure-stack-run-powershell-script.md#deploy-the-development-kit)。 这*服务管理员*帐户可以配置和管理资源云、 用户帐户、 租户计划、 配额和定价。 在门户中，它们可以创建网站云、 虚拟机私有云、 创建计划和管理用户订阅。
+    保存的步骤 6 中使用这些凭据[部署开发工具包](azure-stack-run-powershell-script.md)。 这*服务管理员*帐户可以配置和管理资源云、 用户帐户、 租户计划、 配额和定价。 在门户中，它们可以创建网站云、 虚拟机私有云、 创建计划和管理用户订阅。
 2. [创建](azure-stack-add-new-user-aad.md)至少一个帐户，以便你可以登录到作为租户的开发工具包。
    
    | **Azure Active Directory 帐户** | **支持？** |
