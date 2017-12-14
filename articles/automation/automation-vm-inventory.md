@@ -8,11 +8,11 @@ ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: hero-article
 manager: carmonm
-ms.openlocfilehash: bfdd67ac1018f242e415da1a66d93f22bea8d054
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 275e4e9103808710e2a71168a05b3440bb288c6a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="before-you-begin"></a>开始之前
 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/)。
-如果没有 Azure 虚拟机，请[创建虚拟机](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)。
+如果没有 Azure 虚拟机，请[创建虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com/)。

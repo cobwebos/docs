@@ -4,7 +4,7 @@ description: "了解如何为 Microsoft Azure 多重身份验证分配许可证�
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 514ef423-8ee6-4987-8a4e-80d5dc394cf9
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.openlocfilehash: 48f6ca268630524dab6d239621a7824faaa67849
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd07919b67d7df2c5737237d55ec77fb277109f6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>向用户分配 Azure MFA、Azure AD Premium 或企业移动性许可证
 如果已购买 Azure MFA、Azure AD Premium 或企业移动性套件许可证，则不需要创建 Multi-Factor Auth 提供程序。 将许可证分配给用户后，即可开始为用户启用 MFA。

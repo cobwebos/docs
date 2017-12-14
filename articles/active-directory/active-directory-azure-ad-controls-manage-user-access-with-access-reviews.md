@@ -4,7 +4,7 @@ description: "了解如何使用 Azure Active Directory 访问评审管理（以
 services: active-directory
 documentationcenter: 
 author: markwahl-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: c4ea5d797613b214be569c6405a0fc672cae83a0
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6a4d25b2eb228cafab48419a0d0eda92bba9f1ec
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理用户访问权限
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/02/2017
 
 4. 开始访问评审。 有关详细信息，请参阅[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。
 
-5. 要求审阅者提供输入。 默认情况下，他们收到来自 Azure AD 的电子邮件（其中包含访问面板的链接），在该访问面板中[执行访问评审](active-directory-azure-ad-controls-perform-access-review.md)。
+5. 要求审阅者提供输入。 默认情况下，他们会收到来自 Azure AD 的电子邮件（其中包含访问面板的链接），他们将在该访问面板中[执行访问评审](active-directory-azure-ad-controls-perform-access-review.md)。
 
 6. 如果审阅者尚未提供输入，可以要求 Azure AD 向他们发送提醒。 默认情况下，Azure AD 自动在中途向还未作出回复的审阅者发送结束日期提醒。
 
