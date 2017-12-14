@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
-ms.openlocfilehash: 2ccadfdec0e653264671f5a9a38d4541b0fc4e69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db82c2b8f0f9acec41b0b0f87b8839d3d7f49c68
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure 磁盘加密 FAQ
 
@@ -119,13 +119,13 @@ ms.lasthandoff: 10/11/2017
 * 加密（可能需要多个小时或甚至几天时间，具体取决于 VM 的特征和任何附加数据磁盘的大小）
 * 根据需要自定义软件，并将其添加到映像。
 
-如果此工作流不可用，可在平台存储帐户层使用[存储服务加密](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE)，作为通过 dm-crypt 实现完整磁盘加密的一个替代方法。
+如果此工作流不可用，可在平台存储帐户层使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE)，作为通过 dm-crypt 实现完整磁盘加密的一个替代方法。
 
 **问：**磁盘“Bek 卷”或“/mnt/azure_bek_disk”是什么？
 
 **答：**“Bek 卷”（适用于 Windows）或“/mnt/azure_bek_disk”（适用于 Linux）是安全存储用于加密 Azure IaaS VM 的加密密钥的本地数据卷。
 > [!NOTE]
-> 请勿删除或编辑此磁盘中的任何内容。 请勿卸载此磁盘，因为 IaaS VM 上的任何加密操作都需要加密密钥。
+> 请勿删除或编辑此磁盘中的任何内容。 请勿卸载磁盘，因为 IaaS VM 上的任何加密操作都需要有加密密钥才能执行。
 
 问：在何处可以提问或提供反馈？
 

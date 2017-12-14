@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 85136ff2783b21472ef02aee15f8ec5844a00c12
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: b28e442a075e38a4fbe7b0d9d46f2c9d23e7c6fb
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>创建策略分配，识别 Azure 环境中的不合规资源
 了解 Azure 中符合性的第一步需要了解自己当前资源的状况。 本快速入门教程指导你完成创建策略分配的过程，以识别未使用托管磁盘的虚拟机。
@@ -21,20 +21,6 @@ ms.lasthandoff: 11/28/2017
 此过程结束时，应已成功识别哪些虚拟机未使用托管磁盘，也就是不符合要求。
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="opt-in-to-azure-policy"></a>选择加入 Azure 策略
-
-Azure 策略现已在公共预览版中提供，因此需要注册才能请求访问权限。
-
-1. 在 https://aka.ms/getpolicy 转到 Azure 策略，然后选择左侧窗格中的“注册”。
-
-   ![搜索策略](media/assign-policy-definition/sign-up.png)
-
-2. 通过选择“订阅”列表中想要使用的订阅来选择加入 Azure 策略。 然后选择“注册”。
-
-   ![选择加入使用 Azure 策略](media/assign-policy-definition/preview-opt-in.png)
-
-   在预览版中，将自动批准请求。 请预留 30 分钟，以便系统完成注册。
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
@@ -65,7 +51,7 @@ Azure 策略现已在公共预览版中提供，因此需要注册才能请求�
    Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于我们处于受限预览版，尚未发布定价模型，因此你不会收到选择标准的帐单。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy/)。
 
 7. 选择要向其应用策略的范围。  范围用于确定对其强制执行策略分配的资源或资源组。 它可以从订阅延伸至资源组。
-8. 选择之前在选择加入 Azure 策略时注册的订阅（或资源组）。 此示例使用此订阅 -“Azure 分析容量开发”，你的选项将有所不同。
+8. 选择之前注册的订阅（或资源组）。 此示例使用此订阅 -“Azure 分析容量开发”，你的选项将有所不同。
 
    ![找到正确的策略定义](media/assign-policy-definition/assign-policy.png)
 

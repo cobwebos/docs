@@ -3,8 +3,8 @@ title: "为 Azure 堆栈用户启用 Azure CLI |Microsoft 文档"
 description: "了解如何使用跨平台命令行界面 (CLI) 来管理和部署 Azure 堆栈上的资源"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: sngun
-ms.openlocfilehash: d854c106fbce7e3f01c2878bb9828bdffa4d42a5
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mabrigg
+ms.openlocfilehash: e2483bda5a0c6a6b270759946f146c37c5dad5b1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>为 Azure 堆栈用户启用 Azure CLI
 

@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 11/06/2017
 ms.author: elbutter
-ms.openlocfilehash: e2138f26a78338406b466bdd2aa6e756e602726d
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 8947da9d34261be46ad9aea961b6020141484172
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-functions-to-automate-sql-dw-compute-levels"></a>使用 Azure Functions 自动调整 SQL DW 计算级别
 
 本教程将演示如何使用 Azure Functions 管理 Azure SQL 数据仓库的计算级别。 建议将以下体系结构与[进行弹性优化][Performance Tiers]的 SQL 数据仓库配合使用。
 
-若要将 Azure Function App 与 SQL 数据仓库配合使用，必须在数据仓库实例所在的订阅下创建具有参与者访问权限的[服务主体帐户](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)。 
+若要将 Azure Function App 与 SQL 数据仓库配合使用，必须在数据仓库实例所在的订阅下创建具有参与者访问权限的[服务主体帐户](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)。 
 
 ## <a name="deploy-timer-based-scaler-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署基于计时器的 ScaleR
 

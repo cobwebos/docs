@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e7007bd6cca24dc4c2573fb274cecbf88ecfa374
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>大规模部署和监控 IoT Edge 模块 - 预览
 
@@ -42,19 +42,21 @@ ms.lasthandoff: 11/15/2017
 
 1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。 
 1. 选择“IoT Edge (预览版)”。
-1. 选择“创建边缘部署”。
+1. 选择“添加 IoT Edge 部署”。
 
 创建部署需要五个步骤。 下列各节将引导完成每个步骤。 
 
-### <a name="step-1-label-deployment"></a>步骤 1：标签部署
+### <a name="step-1-name-and-label"></a>步骤 1：名称和标签
 
-1. 为部署提供一个唯一的 ID。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
+1. 为部署提供唯一名称。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 1. 添加用于帮助跟踪部署的标签。 标签是描述部署的“名称, 值”对。 例如 `HostPlatform, Linux` 或 `Version, 3.0.1`。
 1. 选择“下一步”，进入到步骤 2。 
 
-### <a name="step-2-add-modules"></a>步骤 2：添加模块
+### <a name="step-2-add-modules-optional"></a>步骤 2：添加模块（可选）
 
 可添加到部署的模块类型有两种。 第一种是基于 Azure 服务的模块，如存储帐户或 Azure 流分析。 第二种是基于自身代码的模块。 可以向部署添加任意一种类型的多个模块。 
+
+如果创建不含模块的部署，则会删除设备中任何现有模块。 
 
 >[!NOTE]
 >Azure 机器学习和 Azure Functions 暂不支持自动 Azure 服务部署。 使用自定义模块部署将这些服务手动添加到部署中。 

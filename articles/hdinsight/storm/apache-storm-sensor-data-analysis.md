@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 87c2aece68c5de06d683abf971b6c7ccf7f67a54
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8c8cda26f2b9b564dee330e4883ec12f39feb652
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>使用 Apache Storm、事件中心和 HDInsight 中的 HBase (Hadoop) 分析传感器数据
 
@@ -361,7 +361,7 @@ dashboard.uri: http://localhost:3000
     > [!NOTE]
     > 将 `your_HDInsight_cluster_name 替换为 HDInsight 群集的名称。 出现提示时，输入 HDInsight 管理员登录名的密码。
     >
-    > 本示例需要 Azure PowerShell。 有关使用 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/en-us/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)
+    > 本示例需要 Azure PowerShell。 有关使用 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)
 
     这些示例返回的信息类似于以下文本：
 

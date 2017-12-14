@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 10/20/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 5906605192f9b03f612e6ca3a445434a23713d7f
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="automate-your-first-workflow-to-process-data-with-a-logic-app"></a>自动执行第一个通过逻辑应用处理数据的工作流
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/21/2017
 
    ![Azure 门户 >“新建”>“Enterprise Integration”>“逻辑应用”](./media/logic-apps-create-a-logic-app/azure-portal-create-logic-app.png)
 
-3. 使用表中的设置创建逻辑应用，见下图：
+3. 使用此图片下面表格中的设置创建逻辑应用：
 
    ![提供逻辑应用的详细信息](./media/logic-apps-create-a-logic-app/logic-app-settings.png)
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 10/21/2017
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能方面的想法或进行相关投票，请访问[逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

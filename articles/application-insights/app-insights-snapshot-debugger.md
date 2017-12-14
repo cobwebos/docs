@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a0344dcef779a9818be3e320bd5c269a2859f71
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2f1f9f306d7759cbd1202c985da27a2a3b879ebd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
@@ -27,6 +27,16 @@ ms.lasthandoff: 10/26/2017
 快照集合可用于：
 * 运行 .NET Framework 4.5 或更高版本的 .NET Framework 和 ASP.NET 应用程序。
 * 在 Windows 上运行的 .NET Core 2.0 和 ASP.NET Core 2.0 应用程序。
+
+支持以下环境：
+* Azure 应用服务。
+* 运行 OS 系列 4 或更高版本的 Azure 云服务。
+* Windows Server 2012 R2 或更高版本上运行的 Azure Service Fabric 服务。
+* 运行 Windows Server 2012 R2 或更高版本的 Azure 虚拟机。
+* 运行 Windows Server 2012 R2 或更高版本的本地虚拟机或物理计算机。
+
+> [!NOTE]
+> 不支持客户端应用程序（例如，WPF、Windows 窗体或 UWP）。
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>为 ASP.NET 应用程序配置快照集合
 
@@ -289,6 +299,6 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在代码中设置捕捉点](https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
+* [在代码中设置捕捉点](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
 * [诊断 Web 应用中的异常](app-insights-asp-net-exceptions.md)介绍了如何在 Application Insights 中显示更多的异常。 
 * [智能检测](app-insights-proactive-diagnostics.md)可自动发现性能异常。

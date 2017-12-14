@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: d203580f676d55acbad4936160982a40592af1d0
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.custom: mvc
+ms.openlocfilehash: 63b4747164959b0e95f6d3f1908d1fd265589a98
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>缩放 Service Fabric 群集
 
@@ -30,6 +31,13 @@ ms.lasthandoff: 11/10/2017
 > * 读取群集节点计数
 > * 添加群集节点（扩大）
 > * 移除群集节点（缩小）
+
+在此系列教程中，你会学习如何：
+> [!div class="checklist"]
+> * 使用模板在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+> * 缩小或扩大群集
+> * [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
+> * [部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前：
@@ -250,8 +258,8 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 > * 移除群集节点（缩小）
 
 
-接下来，转到以下教程了解如何部署应用程序和使用 API 管理。
+接下来，请转到以下教程了解如何升级群集运行时。
 > [!div class="nextstepaction"]
-> [部署 API 管理](service-fabric-tutorial-deploy-api-management.md)
+> [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

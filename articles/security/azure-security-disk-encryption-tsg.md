@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: devtiw
-ms.openlocfilehash: c7734b8e02b6a2f08f5fc6ebe4b2ec43e34b35c3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 618e5e6d159a8f0d4610d6d652c21e121a93a5e0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/22/2017
 - OS 磁盘使用逻辑卷管理器 (LVM) 方案。 尽管此时可以使用有限的 LVM 数据磁盘支持，但无法使用 LVM OS 磁盘支持。
 - 不满足最低内存要求（建议为 OS 磁盘加密提供 7GB）。
 - 数据驱动器以递归方式装载在 /mnt/ 目录下，或者相互装载（例如 /mnt/data1、/mnt/data2、/data3 + /data3/data4）。
-- 不满足 Linux 的其他 Azure 磁盘加密[先决条件](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)。
+- 不满足 Linux 的其他 Azure 磁盘加密[先决条件](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
 
 ## <a name="unable-to-encrypt"></a>无法加密
 

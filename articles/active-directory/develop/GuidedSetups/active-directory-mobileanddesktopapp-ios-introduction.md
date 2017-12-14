@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: 948693c8501ecc46a1508e5ea085846d0910783e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fcd78eaa0c5b09b70aa973466a34556fff56071
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-app"></a>从 iOS 应用调用 Microsoft Graph API
 
@@ -45,9 +45,9 @@ Microsoft Graph 等 API 需要访问令牌才能允许访问特定资源 - 例�
 MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这些任务。
 
 
-### <a name="nuget-packages"></a>NuGet 包
+### <a name="libraries"></a>库
 
-本指南使用以下 NuGet 包：
+本指南使用以下库：
 
 |库|说明|
 |---|---|

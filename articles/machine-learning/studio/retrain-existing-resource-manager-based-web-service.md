@@ -3,7 +3,7 @@ title: "重新训练现有预测 Web 服务 | Microsoft Docs"
 description: "了解如何重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6d96d173928fa18a3ab4f3086e5971ad1927df89
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>重新训练现有预测 Web 服务
 本文档介绍了以下方案的重新训练流程：
@@ -86,20 +86,19 @@ ms.lasthandoff: 11/07/2017
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）中的文件上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。  
 
-要更新 Azure 存储信息，就必须从 Azure 经典门户检索存储帐户的存储帐户名称、密钥和容器信息，然后在代码中更新对应的值。
 运行试验之后，生成的工作流应与以下内容类似：
 
 ![运行后生成的工作流][4]
 
-1. 登录到 Azure 经典门户。
-2. 在左侧导航列中，单击“**存储**”。
+1. 登录到 Azure 门户。
+2. 在左侧导航栏中，单击“更多服务”，搜索“存储帐户”，然后选择它。
 3. 从存储帐户列表中，选择一个来存储重新训练模型。
-4. 在该页的底部，单击“**管理访问密匙**”。
-5. 复制并保存“**主访问密匙**”，并关闭对话框。
-6. 在该页顶部，单击“**容器**”。
+4. 在左侧导航栏中，单击“访问密钥”。
+5. 复制并保存“主访问密钥”。
+6. 在左侧导航栏中，单击“容器”。
 7. 选择现有容器或创建新的容器并保存名称。
 
-定位“StorageAccountName”、“StorageAccountKey”和“StorageContainerName”声明，然后更新从经典门户保存的值。
+找到“StorageAccountName”、“StorageAccountKey”和“StorageContainerName”声明，然后更新从门户保存的值。
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key

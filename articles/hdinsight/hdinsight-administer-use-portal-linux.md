@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 11/22/2017
 ms.author: jgao
-ms.openlocfilehash: 7d5534649595a3109442619e0adf13c0b354cc0f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: a65daae8931c5ef892bf01eb049897488d6b15c7
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -36,14 +36,17 @@ ms.lasthandoff: 11/09/2017
 1. 登录到 [https://portal.azure.com](https://portal.azure.com)。
 2. 打开门户之后，可以：
 
-   * 单击左侧菜单中的“新建”以创建新的群集：
+   * 单击左侧菜单中的“创建资源”以创建新的群集：
 
        ![新建 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-new-button.png)
+
+       在“搜索 Marketplace”中输入 HDInsight ，单击 HDInsight，然后单击“创建”。
+
    * 在左侧菜单中单击“HDInsight 群集”以列出现有群集：
 
        ![Azure 门户中的 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
-       如果没有看到 HDInsight 群集按钮，请单击列表底部的“更多服务”，并单击“智能 + 分析”部分下的“HDInsight 群集”。
+       如果看不到“HDInsight 群集”按钮，请单击“智能 + 分析”部分下的“HDInsight 群集”。
 
 
 ## <a name="create-clusters"></a>创建群集
@@ -73,7 +76,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 
 ## <a name="list-and-show-clusters"></a>列出并显示群集
 1. 登录到 [https://portal.azure.com](https://portal.azure.com)。
-2. 在左侧菜单中单击“HDInsight 群集”以列出现有群集。 如果看不到 **HDInsight 群集**，请先单击“更多服务”。
+2. 在左侧菜单中单击“HDInsight 群集”以列出现有群集。 如果看不到“HDInsight 群集”，请先单击“所有服务”。
 3. 单击群集名称。 如果群集列表很长，可以使用页面顶部的筛选器。
 4. 单击列表中的群集可查看概述页：
 
@@ -81,6 +84,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **仪表板**：打开群集仪表板，即可用于基于 Linux 群集的 Ambari Web。
     * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
     * **缩放群集**：可更改此群集的辅助角色节点数。
+    * **移动**：将群集移至其他资源组或订阅。
     * **删除**：删除群集。
 
     **左侧菜单：**
@@ -92,17 +96,18 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **自动化脚本**：为群集显示并导出 Azure 资源管理器模板。 当前，只能导出相关的 Azure 存储帐户。 请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
     * **快速入门**：显示可帮助你开始使用 HDInsight 的信息。
     * **适用于 HDInsight 的工具**：HDInsight 相关工具的帮助信息。
-    * **群集登录**：显示群集登录信息。
     * **订阅核心使用情况**：显示订阅的已使用和可用核心。
     * **缩放群集**：增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
-    * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+    * **SSH + 群集登录**：显示使用安全外壳 (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)，并重置群集登录凭据。
     * **HDInsight 合作伙伴**：添加/删除当前的 HDInsight 合作伙伴。
     * **外部元存储**：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。 请参阅[使用 Hive/Oozie 元存储](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)。
     * **脚本操作**：在群集上运行 Bash 脚本。 请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
     * **应用程序**：添加/删除 HDInsight 应用程序。  请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+    * **监视**：监视 Azure Operations Management Suite 和 Azure Log Analytics 中的群集。
     * **属性**：查看群集属性。
     * **存储帐户**：查看存储帐户和密钥。 存储帐户在群集创建过程中配置。
-    * **群集 AAD 标识**：
+    * **Data Lake Store 访问**：配置 Data Lake Store 的访问。  请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+    * **资源运行状况**：请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
     * **新的支持请求**：允许对 Microsoft 支持创建支持票证。
     
 6. 单击“属性”：
@@ -128,7 +133,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 删除群集不会删除默认存储帐户或任何链接的存储帐户。 可以使用相同的存储帐户和相同的元存储来重新创建群集。 建议在重新创建群集时使用新的默认 Blob 容器。
 
 1. 登录到[门户][azure-portal]。
-2. 单击左侧菜单中的“HDInsight 群集”。 如果看不到 **HDInsight 群集**，请先单击“更多服务”。
+2. 单击左侧菜单中的“HDInsight 群集”。 如果看不到“HDInsight 群集”，请先单击“所有服务”。
 3. 单击要删除的群集。
 4. 单击顶部菜单中的“删除”，并按照说明操作。
 

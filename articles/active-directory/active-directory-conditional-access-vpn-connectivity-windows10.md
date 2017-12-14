@@ -4,7 +4,7 @@ description: "了解针对 VPN 连接的 Azure Active Directory 条件性访问�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 51a1ee61-3ffe-4f65-b8de-ff21903e1e74
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e9dadb3291ee760e7b05caedfa6b4128be77aa7d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 8941e631976eb11966c1f9ddd207af816df5dadf
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-for-vpn-connectivity-preview"></a>针对 VPN 连接的 Azure Active Directory 条件性访问（预览版）
 
@@ -136,7 +136,7 @@ ms.lasthandoff: 10/24/2017
 
     c. 在“选择”页中，选择测试用户，并单击“选择”。
 
-    d. 在“用户和组”页，单击“完成”。
+    d.单击“下一步”。 在“用户和组”页，单击“完成”。
 
 7. 在“新建”页，执行以下步骤：
 
@@ -148,9 +148,9 @@ ms.lasthandoff: 10/24/2017
 
     c. 在“选择”页面上，在“应用程序”框中，键入“vpn”。
 
-    d. 选择“VPN 服务器”。
+    d.单击“下一步”。 选择“VPN 服务器”。
 
-    e. 单击“选择”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“选择”。
 
 
 13. 在“新建”页的“控制”部分中，单击“授权”，打开“授权”页。

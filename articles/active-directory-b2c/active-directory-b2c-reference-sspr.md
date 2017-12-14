@@ -4,7 +4,7 @@ description: "本主题演示如何在 Azure Active Directory B2C 中为使用�
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: mbaldwin
+manager: mtillman
 editor: curtand
 ms.assetid: c87ed86e-1520-42b1-8c31-46cd44ed5310
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: beaf7dc6260db7509b2202c7801bcc0d2dd2c69e
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 27bc191c66b195692e324d1a10ab276b561ef129
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-set-up-self-service-password-reset-for-your-consumers"></a>Azure Active Directory B2C：为使用者设置自助密码重置
 借助自助密码重置功能，使用者（已注册本地帐户）可以将密码重置为他们自己的密码。 这样可以显著减少支持人员的负担，尤其当有数百万使用者定期使用应用程序时。 目前，仅支持使用已验证的电子邮件地址作为一种恢复方法。 以后我们将添加其他恢复方法（已验证的电话号码、安全问题等）。

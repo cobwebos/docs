@@ -3,22 +3,22 @@ title: "向 Azure 报告 Azure 堆栈使用情况数据 |Microsoft 文档"
 description: "了解如何设置 Azure 堆栈中的报表的使用情况数据。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 2A397C83-1A6C-4290-B0EF-FDC34EE290CD
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
-ms.author: sngun;AlfredoPizzirani
-ms.openlocfilehash: a4ca742e232a19cd890552bec08f4d11cca52020
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.author: mabrigg;AlfredoPizzirani
+ms.openlocfilehash: 451e8c604e48d9cfc42284f2413fa5ed4fea03bc
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure 堆栈使用情况数据 
 

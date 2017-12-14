@@ -1,6 +1,6 @@
 ---
-title: "创建网络安全组 - Azure Resource Manager 模板 | Microsoft 文档"
-description: "了解如何使用  Azure Resource Manager 模板创建和部署网络安全组。"
+title: "创建网络安全组 - Azure 资源管理器模板 | Microsoft 文档"
+description: "了解如何使用 Azure 资源管理器模板创建和部署网络安全组。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1fc210ac5e28efe10be27f8b5a752788d3d5a5a3
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>使用  Azure Resource Manager 模板创建网络安全组
+# <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建网络安全组
 
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 下面的部分介绍了因方案而异的前端 NSG 定义。
 
 ```json
-"apiVersion": "2015-06-15",
+"apiVersion": "2017-03-01",
 "type": "Microsoft.Network/networkSecurityGroups",
 "name": "[parameters('frontEndNSGName')]",
 "location": "[resourceGroup().location]",

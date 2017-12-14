@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68d519cd36d41728f57419cd6cecd2a79d65a4af
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述
-## <a name="overview"></a>概述
-Azure 媒体服务现在允许配置和请求 Widevine 许可证。 当最终用户播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
+Azure 媒体服务允许配置和请求 Widevine 许可证。 当最终用户播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
 
 Widevine 许可证请求将格式化为 JSON 消息。  
 
@@ -101,7 +100,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | policy_overrides。 renew_with_usage |布尔值。true 或 false |指示开始使用时应该发送许可证以进行续订。 仅当 can_renew 为 true 时才使用此字段。 |
 
 ## <a name="session-initialization"></a>会话初始化
-| Name | 值 | 说明 |
+| 名称 | 值 | 说明 |
 | --- | --- | --- |
 | provider_session_token |Base64 编码的字符串 |此会话令牌将传回到许可证，并存在于后续的续订中。  会话令牌不在会话之外保存。 |
 | provider_client_token |Base64 编码的字符串 |要在许可证响应中返回的客户端令牌。  如果许可证请求包含客户端令牌，则忽略此值。 客户端令牌会在许可证会话之外保存。 |
@@ -197,5 +196,5 @@ Widevine 许可证请求将格式化为 JSON 消息。
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>另请参阅
-[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
+[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)
 

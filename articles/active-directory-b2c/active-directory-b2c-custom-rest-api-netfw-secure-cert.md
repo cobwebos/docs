@@ -4,7 +4,7 @@ description: "使用客户端证书保护 Azure AD B2C 中的自定义 REST API 
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 867484799020a4e65844523a88240b3d550c69f7
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 9547ba8c65360a03168ff1b6eba01038554e7fd3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 在相关的文章中，我们已[创建一个 RESTful 服务](active-directory-b2c-custom-rest-api-netfw.md)，该服务可与 Azure Active Directory B2C (Azure AD B2C) 交互。
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/21/2017
 若要将 **Azure 应用服务**设置为要求提供客户端证书，请将 Web 应用的 `clientCertEnabled` 站点设置指定为 *true*。 若要进行此项更改，必须使用 REST API。 可通过 Azure 门户中的管理体验完成此项设置。 若要找到该项设置，请在 RESTful 应用程序的“设置”菜单中的“开发工具”下面，选择“资源浏览器”。
 
 >[!NOTE]
->确保 Azure 应用服务计划使用标准或更高的层。 有关详细信息，请参阅 [Azure 应用服务计划深入概述](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)。
+>确保 Azure 应用服务计划使用标准或更高的层。 有关详细信息，请参阅 [Azure 应用服务计划深入概述](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)。
 
 
 使用 [Azure 资源浏览器（预览版）](https://resources.azure.com)将 **clientCertEnabled** 属性设置为 *true*，如下图所示：
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/21/2017
 ![通过 Azure 资源浏览器设置 clientCertEnabled](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
 
 >[!NOTE]
->有关设置 **clientCertEnabled** 属性的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
+>有关设置 **clientCertEnabled** 属性的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
 
 >[!TIP]
 >或者，可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 工具更轻松地编写 REST API 调用。
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/21/2017
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>步骤 4：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，选择“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
 
 2. 选择“标识体验框架”。
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 10/21/2017
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
 
 3. 在“名”框中键入 **Test** 来测试该过程。  
     Azure AD B2C 会在窗口顶部显示一条错误消息。    
@@ -165,7 +165,7 @@ ms.lasthandoff: 10/21/2017
 本部分会添加示例 ASP.NET 代码，用于针对身份验证目的验证证书属性。
 
 > [!NOTE]
->有关为 Azure 应用服务配置客户端证书身份验证的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
+>有关为 Azure 应用服务配置客户端证书身份验证的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
 
 ### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1：将应用程序设置添加到项目的 web.config 文件
 在前面创建的 Visual Studio 项目中，将以下应用程序设置添加到 *web.config* 文件中的 `appSettings` 元素后面：

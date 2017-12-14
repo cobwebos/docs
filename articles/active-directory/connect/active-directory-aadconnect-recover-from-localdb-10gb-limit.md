@@ -4,7 +4,7 @@ description: "本主题介绍在遇到 LocalDB 10 GB 限制问题时，如何恢
 services: active-directory
 documentationcenter: 
 author: cychua
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 41d081af-ed89-4e17-be34-14f7e80ae358
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 08e682c51b12d4506019d2f6b68e1eae0798b990
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b54461a58fb6b60d0686743f90b6c85d7819f1f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
 Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整 SQL。 SQL Server Express 存在 10 GB 的大小限制。 使用 LocalDB 并达到此限制后，Azure AD Connect Synchronization Service 将无法正常启动或同步。 本文提供了恢复步骤。
@@ -63,11 +63,11 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 * 用作 Azure AD Connect Synchronization Service 操作上下文的 Sync Service 帐户。
 * 安装期间创建的本地组 ADSyncAdmins。
 
-1. 备份数据库，方法是将 `%ProgramFiles%\program files\Microsoft Azure AD Sync\Data` 下的 **ADSync.mdf** 和 **ADSync_log.ldf** 文件复制到安全位置。
+1. 备份数据库，方法是将 `%ProgramFiles%\Microsoft Azure AD Sync\Data` 下的 **ADSync.mdf** 和 **ADSync_log.ldf** 文件复制到安全位置。
 
 2. 启动新的 PowerShell 会话。
 
-3. 导航到文件夹 `%ProgramFiles%\Program Files\Microsoft SQL Server\110\Tools\Binn`。
+3. 导航到文件夹 `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`。
 
 4. 启动 **sqlcmd** 实用程序，方法是运行 `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>` 命令并使用 sysadmin 或数据库 DBO 的凭据。
 

@@ -11,16 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/29/2017
 ms.author: bwren
-ms.openlocfilehash: 783223a37c2a13c9affbf382209ca2aa4f1ba4c7
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 017a1da233827f19489a99b234ee9009fd9f6fe3
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="whats-changed-in-azure-log-analytics"></a>Azure Log Analytics 有哪些变化？
 将 Log Analytics 工作区[升级到新的查询语言](log-analytics-log-search-new.md)之后，除了查询语言本身以外，还应该注意其他几项改进和更改。  本文简要介绍旧版与升级后的工作区之间的变化，并提供每项更改的详细内容的链接。 
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Whats-changed-in-Azure-Log-Analytics/player]
 
 请参阅 [Log Analytics 新日志搜索常见问题解答和已知问题](log-analytics-log-search-faq.md)，获取所有已知升级问题的说明，以及常见问题的解答。  
 

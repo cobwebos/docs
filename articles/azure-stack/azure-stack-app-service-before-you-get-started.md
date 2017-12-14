@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: d6962bf2ffbf731a4aa301e663c7c7d3428080d4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>之前开始使用 Azure 堆栈上的 App Service
 
@@ -250,7 +250,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 对于使用 Azure 堆栈开发工具包的使用，你可以使用 SQL Express 2014 SP2 或更高版本。
 
-对于生产和高可用性的目的，你应使用完整版本的 SQL 2014 SP2 或更高版本，启用混合模式身份验证，并将部署中的[高度可用的配置](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)。
+对于生产和高可用性的目的，你应使用完整版本的 SQL 2014 SP2 或更高版本，启用混合模式身份验证，并将部署中的[高度可用的配置](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)。
 
 Azure 堆栈 SQL 服务器上的 Azure 应用程序服务必须可从 App Service 的所有角色访问。 SQL Server 可以部署在 Azure 堆栈中的默认提供程序订阅。 也可以使用你的组织中的现有基础结构 （只要没有连接到 Azure 堆栈）。 如果你使用的 Azure 应用商店映像，请记住相应地配置防火墙。 
 

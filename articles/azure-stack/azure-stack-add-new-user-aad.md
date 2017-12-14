@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7fd3c36825746a009c01c97fb8664e04278159f
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 *适用范围： Azure 堆栈开发工具包*
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>创建 Azure 堆栈租户帐户使用 Azure 门户
 你必须具有一个 Azure 订阅来使用 Azure 门户。
 
-1. 登录到[Azure](http://manage.windowsazure.com)。
+1. 登录到[Azure](https://portal.azure.com)。
 2. 在 Microsoft Azure 左侧的导航栏中，单击**Active Directory**。
 3. 在目录列表中，单击你想要用于 Azure 堆栈的目录或创建一个新。
 4. 在此目录页上，单击**用户**。

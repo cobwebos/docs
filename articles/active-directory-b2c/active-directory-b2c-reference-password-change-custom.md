@@ -4,7 +4,7 @@ description: "本主题演示了如何在 Azure Active Directory B2C 中为使�
 services: active-directory-b2c
 documentationcenter: 
 author: vigunase
-manager: ajalexander
+manager: mtillman
 ms.assetid: 712a7128-5788-4914-8a52-24e200aa4de1
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2016
 ms.author: vigunase
-ms.openlocfilehash: b152c22c96da38f8724010504cc2711ab82af00a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e7ed328716d09dc57e25f15c411f07fda77bb9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C：在自定义策略中配置密码更改  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -208,7 +208,7 @@ ms.lasthandoff: 10/11/2017
 2. 打开新文件，并使用唯一值更新 `<TrustFrameworkPolicy>` 的 `PolicyId` 属性。 这是策略的名称（例如 PasswordChange）。
 3. 修改 `<DefaultUserJourney>` 中的 `ReferenceId` 属性，使其与创建的新用户旅程的 `Id` 匹配（例如 PasswordChange）。
 4. 保存更改，然后上传文件。
-5. 若要测试所上传的自定义策略，请在 Azure 门户中，转到策略边栏选项卡，然后单击“立即运行”。
+5. 若要测试所上传的自定义策略，请在 Azure 门户中转到策略边栏选项卡，并单击“立即运行”。
 
 
 

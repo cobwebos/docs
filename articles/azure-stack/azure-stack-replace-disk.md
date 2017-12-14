@@ -3,8 +3,8 @@ title: "替换 Azure 堆栈中的物理磁盘 |Microsoft 文档"
 description: "概述了如何替换 Azure 堆栈中的物理磁盘的过程。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: twooley
-ms.openlocfilehash: 26e5e9f8882cc764922a2cbf0f39e7a3d1b6995b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: a95617a8dd2a8f296164c672e2b4b2628574ce5a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>替换 Azure 堆栈中的物理磁盘
 

@@ -2,26 +2,18 @@
 title: "快速入门 - 使用 Azure CLI 在 Azure 中创建专用 Docker 注册表"
 description: "快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。"
 services: container-registry
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: tysonn
-tags: 
-keywords: 
-ms.assetid: 29e20d75-bf39-4f7d-815f-a2e47209be7d
 ms.service: container-registry
-ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quicksart
 ms.date: 10/16/2017
 ms.author: nepeters
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b3fb9a3ea090f0083e8f113ddf13312fe42b59a
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: 5cddf0ffea256ed6d1c51d48a61ac8176d08b9cc
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建容器注册表
 
@@ -43,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-在本快速入门中，我们将创建*基本*注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的扩展详细信息，请参阅[容器注册表 SKU](container-registry-skus.md)。
+在本快速入门中，我们将创建基本注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的扩展详细信息，请参阅[容器注册表 SKU](container-registry-skus.md)。
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 

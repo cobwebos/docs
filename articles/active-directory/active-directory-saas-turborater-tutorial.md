@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 TurboRater 之间配置
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: abb116b8-8024-4cc6-bc81-f32ef490ea17
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 1d8f7b438858df1944a1fe11073e0f1dcdf954df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82d9ee4768507bfcc554bbd18a2588f315180e82
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教程：Azure Active Directory 与 TurboRater 的集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 TurboRater 的集成，需要以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用单一登录的 TurboRater 订阅
 
 > [!NOTE]
@@ -112,7 +112,7 @@ ms.lasthandoff: 10/11/2017
  
     b. 在“回复 URL”文本框中，键入以下值：
     
-    | 环境 | URL |
+    | 环境 | 代码 |
     | ---------------| --------------- |    
     | 测试  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
     | 实时  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
@@ -154,9 +154,9 @@ ms.lasthandoff: 10/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-turborater-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 

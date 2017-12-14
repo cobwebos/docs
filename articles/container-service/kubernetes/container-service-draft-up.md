@@ -1,26 +1,19 @@
 ---
-title: "结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表 | Microsoft Docs"
+title: "将 Draft 与 Azure 容器服务及 Azure 容器注册表配合使用"
 description: "创建 ACS Kubernetes 群集和 Azure 容器注册表，使用 Draft 在 Azure 中创建首个应用程序。"
 services: container-service
-documentationcenter: 
 author: squillace
-manager: gamonroy
-editor: 
-tags: draft, helm, acs, azure-container-service
-keywords: "Docker, 容器, 微服务, Kubernetes, Draft, Azure"
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 08fd66ed68b651bd24bc1bc58ec9631106665381
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 9cf5b1227e69ada46bc0b1e5ff01cc12e73598f7
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 

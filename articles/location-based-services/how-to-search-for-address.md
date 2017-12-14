@@ -8,11 +8,11 @@ ms.author: philmea
 ms.date: 11/29/2017
 ms.topic: how-to
 ms.service: location-based-services
-ms.openlocfilehash: f7337c1c5821016987096da47dda4ac1124d7910
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: d928e4ff7c6e35291bcc1e6a1359d54542968278
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>如何使用 Azure Location Based Services（预览版）搜索服务查找地址
 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点、兴趣点、商业列表和其他地理信息。 搜索服务将纬度/经度分配到特定的地址、十字路口、地理特征或兴趣点 (POI)。 在路由和流量流 API 等其他 Azure Location Based Services 中，可将搜索服务 API 返回的纬度和经度值用作参数。
@@ -62,12 +62,11 @@ Azure Location Based Services 帐户和订阅密钥。 有关创建帐户和检�
     
     此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 可以使用 **countrySet** 参数来指定只搜索应用程序需要覆盖的国家/地区，因为默认行为是搜索全球，这可能会返回不必要的结果。
 
-5. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,countrySet=US
-    ```
-    >[!NOTE] 
-    >确保在查询字符串中使用逗号分隔附加的 URI 参数。
+5. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |------------------|-------------------------|
+    | countrySet | 美国 |
     
     结果现在受限为国家/地区代码，查询返回了美国境内的比萨餐馆。
     
@@ -116,10 +115,11 @@ Azure Location Based Services 帐户和订阅密钥。 有关创建帐户和检�
         400 Broad, Seattle
     ```
 
-5. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,typeahead
-    ```
+5. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |-----|------------|
+    | typeahead | 是 |
 
     **typeahead** 标志告知地址搜索 API 要将查询视为部分输入，并返回预测值的数组。
 
@@ -150,37 +150,43 @@ Azure Location Based Services 帐户和订阅密钥。 有关创建帐户和检�
     
     响应包含 Safeco Field 的 POI 条目，其 POI 类别为“stadium”。 
     
-4. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,number
-    ```
+4. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |-----|------------|
+    | 数字 | 是 |
+
     如果连同请求一起发送了 [number](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，则响应可能包含街道的边侧（左/右），以及该编号的偏移位置。
     
-5. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,spatialKeys
-    ```
+5. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |-----|------------|
+    | spatialKeys | 是 |
 
     如果设置了 [spatialKeys](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将会包含指定位置的专属地域空间键信息。
 
-6. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,returnSpeedLimit
-    ```
+6. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |-----|------------|
+    | returnSpeedLimit | 是 |
     
     如果设置了 [returnSpeedLimit](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回发布的速度限制。
 
-7. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,returnRoadUse
-    ```
+7. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |-----|------------|
+    | returnRoadUse | 是 |
 
     如果设置了 [returnRoadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回街道级别的 reversegeocodes 的道路用途数组。
 
-8. 将以下值添加到查询字符串并单击“发送”：
-    ```
-        ,roadUse
-    ```
+8. 将以下键/值对添加至 Params 部分，并单击“发送”：
+
+    | 密钥 | 值 |
+    |-----|------------|
+    | roadUse | 是 |
 
     可以使用 [roadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，将反向地理编码查询限制为特定类型的道路用途。
     

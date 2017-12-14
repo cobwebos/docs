@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Migrate 文档
+title: "Azure Migrate 文档"
 metadata:
-  title: Azure Migrate 文档 - 教程和 API 参考 | Microsoft Docs
-  description: 了解如何评估要迁移到 Azure 的本地计算机
+  title: "Azure Migrate 文档 - 教程和 API 参考 | Microsoft Docs"
+  description: "了解如何评估要迁移到 Azure 的本地计算机"
   services: migration-planner
   author: rayne-wiselman
   manager: carmonm
@@ -13,14 +13,19 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/22/2017
   ms.author: raynew
+  ms.openlocfilehash: 64e5293473dd9b5d4b55088e447a5ec3a289372d
+  ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/27/2017
 abstract:
-  description: Azure Migrate 可帮助发现和评估本地计算机是否适合迁移到 Azure，并为正在运行的 Azure VM 提供大小调整和成本估计。
+  description: "Azure Migrate 可帮助发现和评估本地计算机是否适合迁移到 Azure，并为正在运行的 Azure VM 提供大小调整和成本估计。"
 sections:
-  - title: 分步教程
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何评估要迁移到 Azure 的 VMware VM"
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: 了解如何评估要迁移到 Azure 的 VMware VM
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-assessment-vmware">发现和评估本地 VMware VM</a>
+    - html: "<a href=\"tutorial-assessment-vmware\">发现和评估本地 VMware VM</a>"

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/08/2017
 ms.author: ramical
-ms.openlocfilehash: 38c240ed1608b2e99bde78f3633e722f8e2fa30b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>使用证书通过 Azure AD 报告 API 获取数据
 本文介绍如何在没有用户干预的情况下，使用证书凭据通过 Azure AD 报告 API 从目录获取数据。 
@@ -89,7 +89,7 @@ Azure AD 报告 API 要求完成以下步骤：
 现在可以导出到 CSV 并保存到 SIEM 系统。 也可以将脚本包装到计划的任务中，以便从租户定期获取 Azure AD 数据，不需将应用程序密钥存储在源代码中。 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 标识管理基础知识](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
+[Azure 标识管理基础知识](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)<br>
 
 
 

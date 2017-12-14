@@ -3,8 +3,8 @@ title: "缩放 Azure 堆栈中的单元节点操作 |Microsoft 文档"
 description: "了解如何查看节点状态和使用开机、 关机，排出，并恢复节点在集成的 Azure 堆栈的系统上的操作。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: dbb68b10-c721-4188-aa07-584d0cd63138
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
-ms.author: twooley
-ms.openlocfilehash: 3696cd0da0859bebf001f7749ac8874efd574046
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 4b94092f1284abfa2462ddef04b6e84136e54dde
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure 堆栈中的缩放单元节点操作
 

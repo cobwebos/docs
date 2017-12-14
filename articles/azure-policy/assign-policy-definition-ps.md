@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 5c00d50817e40de0a43d05eb85662b494247d8fa
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6a9b7cff1341bd898b76a226ca413b8135eec408
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-using-powershell"></a>使用 PowerShell 创建策略分配，识别 Azure 环境中的不合规资源
 
@@ -30,19 +30,6 @@ PowerShell 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="opt-in-to-azure-policy"></a>选择加入 Azure 策略
-
-Azure 策略现已在公共预览版中提供，因此需要注册才能请求访问权限。
-
-1. 在 https://aka.ms/getpolicy 转到 Azure 策略，然后选择左侧窗格中的“注册”。
-
-   ![搜索策略](media/assign-policy-definition/sign-up.png)
-
-2. 通过选择“订阅”列表中想要使用的订阅选择加入 Azure 策略。 然后选择“注册”。
-
-   ![选择加入使用 Azure 策略](media/assign-policy-definition/preview-opt-in.png)
-
-   在预览版中，将自动批准请求。 请预留 30 分钟，以便系统完成注册。
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 

@@ -45,6 +45,8 @@
       items:
         - name: 必备组件
           href: azure-stack-deploy.md
+        - name: 遥测
+          href: azure-stack-telemetry.md
         - name: 部署
           href: azure-stack-run-powershell-script.md
         - name: 安装 PowerShell
@@ -231,6 +233,10 @@
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
+- name: 相关内容
+  items:
+    - name: Azure Stack 用户文档
+      href: /azure/azure-stack/user/
 - name: 资源
   items:
     - name: Azure 路线图

@@ -1,10 +1,10 @@
 ---
 title: "Azure Active Directory v2.0 终结点 | Microsoft Docs"
-description: "使用 Microsoft 帐户和 Azure Active Directory 登录的构建应用简介。"
+description: "介绍如何使用 Microsoft 帐户和 Azure Active Directory 登录名生成应用程序。"
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 2dee579f-fdf6-474b-bc2c-016c931eaa27
 ms.service: active-directory
@@ -15,42 +15,40 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a6a7c6bdf3deaee3a3949fe409a7fab6b7664695
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 446e39f57448cbc0cd9a6f93a388159d7eca5863
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>在单个应用中登录 Microsoft 帐户和 Azure AD 用户
-在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用开发人员需要集成两个单独的系统。  **Azure AD v2.0 终结点**推出了新的身份验证 API 版本，可让你通过一个简单的集成登录这两种类型的帐户。  使用 v2.0 终结点的应用还可以通过其中一种帐户从 [Microsoft Graph](https://graph.microsoft.io) 使用 REST API。
+# <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>在单个应用程序中将 Microsoft 帐户和 Azure Active Directory 用户登录
+在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用程序开发人员必须集成两个单独的系统。 Azure Active Directory (Azure AD) v2.0 终结点推出了新的身份验证 API 版本，可简化此过程。 使用 Azure AD v2.0 终结点可通过一次集成从这两种类型的帐户登录。 使用 Azure AD v2.0 终结点的应用程序还可以通过其中一种帐户从 [Microsoft 图形 API](https://graph.microsoft.io) 使用 REST API。
 
 ## <a name="getting-started"></a>入门
-从下述列表中选择偏爱的平台，以便使用开源库与框架生成应用。  或者，可以使用我们的 OAuth 2.0 和 OpenID Connect 协议文档来直接发送和接收协议消息，而不必使用身份验证库。
-
+从下述列表中选择偏爱的平台，以使用 Microsoft 开源库与框架生成应用程序。 也可以使用 OAuth 2.0 和 OpenID Connect 协议直接发送和接收协议消息，而无需使用身份验证库。
 <br />
 
-[!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
+[!INCLUDE [Azure AD v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
 
-## <a name="whats-new"></a>新增功能
-此处提供的信息可帮助你了解 v2.0 终结点的定义及其功能限制。
+## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>详细了解 Azure AD v2.0 终结点
+了解 Azure AD v2.0 终结点的作用：
 
-* 了解[使用 v2.0 终结点可以构建哪种类型的应用](active-directory-v2-flows.md)。
-* 了解 v2.0 终结点的[限制、局限性和约束](active-directory-v2-limitations.md)。
-* 请观看 v2.0 终结点的此概述视频：
+* 探索[可以使用 Azure AD v2.0 终结点生成的应用程序类型](active-directory-v2-flows.md)。
+* 了解 Azure AD v2.0 终结点的[限制、局限性和约束](active-directory-v2-limitations.md)。
+* 观看此视频了解 Azure AD v2.0 终结点的概述：
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
 
-## <a name="reference"></a>引用
-这些链接有助于深入地利用平台：
+## <a name="additional-resources"></a>其他资源
+浏览有关 Azure AD v2.0 终结点平台的详细信息：
 
-* [v2.0 协议参考](active-directory-v2-protocols.md)
-* [v2.0 令牌参考](active-directory-v2-tokens.md)
-* [v2.0 库参考](active-directory-v2-libraries.md)
-* [v2.0 终结点中的范围和许可](active-directory-v2-scopes.md)
-* [Microsoft Graph](https://graph.microsoft.io)
+* [Azure AD v2.0 协议参考](active-directory-v2-protocols.md)
+* [Azure AD v2.0 令牌参考](active-directory-v2-tokens.md)
+* [Azure AD v2.0 身份验证库参考](active-directory-v2-libraries.md)
+* [Azure AD v2.0 终结点中的范围和许可](active-directory-v2-scopes.md)
+* [Microsoft 图形 API](https://graph.microsoft.io)
 
 > [!NOTE]
-> 如果只需从 Azure Active Directory 登录工作和学校帐户，则应从我们的 [Azure AD 开发人员指南](active-directory-developers-guide.md)开始。  V2.0 终结点供显式需要登录 Microsoft 个人帐户的开发人员使用。
+> 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](active-directory-developers-guide.md)入手。 Azure AD v2.0 终结点供明确需要登录到 Microsoft 个人帐户的开发人员使用。
 
-
-[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]
+[!INCLUDE  [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

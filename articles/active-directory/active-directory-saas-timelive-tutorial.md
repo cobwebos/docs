@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 TimeLive 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 34123629-4ad5-465c-a4c1-8299f857e720
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 99c57f2191ea47bc1cf5cda79e9b399999594a18
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 945067f0f413790883d55ab6cc9b2721144e966a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>教程：Azure Active Directory 与 TimeLive 的集成
 
@@ -143,9 +143,9 @@ ms.lasthandoff: 10/21/2017
 
     c. 从标题为“通过单一登录 (SSO) 进行登录时使用”的下拉菜单中选择“SAML”。
 
-    d. 在“SAML SSO URL”中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    d.单击“下一步”。 在“SAML SSO URL”中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    e. 在“远程注销 URL”中，粘贴从 Azure 门户复制的“注销 URL”值。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“远程注销 URL”中，粘贴从 Azure 门户复制的“注销 URL”值。
 
     f. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，复制内容，然后将其粘贴到“X.509 证书”文本框中。
 
@@ -178,9 +178,9 @@ ms.lasthandoff: 10/21/2017
 
     ![“用户”对话框](./media/active-directory-saas-timelive-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 

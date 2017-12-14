@@ -14,18 +14,19 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: c403a73d03fd5152e2c0617b3e3784926c28f5c3
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: de1220e9b5a01429f4eea5c3605f1cf7221f3e1e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Azure SQL 数据仓库性能层（预览）
 SQL 数据仓库提供两个已针对分析工作负荷进行优化的性能层。 本文介绍性能层的概念，以帮助选择最适合工作负荷的性能层。 
 
-
 ## <a name="what-is-a-performance-tier"></a>什么是性能层？
 性能层是确定数据仓库配置的选项。 此选项是创建数据仓库时所要做出的首要选择之一。  
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T140/player]
 
 - **“弹性优化”性能层**在体系结构中将计算层和存储层分开。 此选项非常适合可以根据短期的高峰活动频繁进行缩放，从而充分利用独立的计算层和存储层的工作负荷。 此计算层的价格门槛最低，可以根据大多数客户工作负荷的需求进行缩放。
 

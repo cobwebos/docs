@@ -60,9 +60,8 @@
 - name: 概念
   items:
     - name: 服务功能
+      href: sql-database-servers-databases.md
       items:
-        - name: 概述
-          href: sql-database-servers-databases.md
         - name: 服务层
           href: sql-database-service-tiers.md
         - name: 资源限制
@@ -105,10 +104,9 @@
           href: sql-vulnerability-assessment.md
         - name: SQL Server 常用功能
           href: sql-database-features.md
-    - name: “安全”
+    - name: 安全
+      href: sql-database-security-overview.md
       items:
-        - name: 概述
-          href: sql-database-security-overview.md
         - name: 访问控制
           href: sql-database-control-access.md
         - name: Azure AD
@@ -121,10 +119,11 @@
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: 数据屏蔽
           href: sql-database-dynamic-data-masking-get-started.md
+    - name: 高可用性
+      href: sql-database-high-availability.md
     - name: 业务连续性
+      href: sql-database-business-continuity.md
       items:
-        - name: 概述
-          href: sql-database-business-continuity.md
         - name: 数据库恢复
           href: sql-database-recovery-using-backups.md
         - name: 配置安全性
@@ -140,9 +139,8 @@
         - name: 执行恢复演练
           href: sql-database-disaster-recovery-drills.md
     - name: 迁移到 SQL 数据库
+      href: sql-database-cloud-migrate.md
       items:
-        - name: 迁移 SQL Server DB
-          href: sql-database-cloud-migrate.md
         - name: T-SQL 的更改
           href: sql-database-transact-sql-information.md
         - name: 在迁移后管理数据库
@@ -158,9 +156,8 @@
         - name: 同步数据
           href: sql-database-sync-data.md
     - name: 监视和优化
+      href: sql-database-troubleshoot-performance.md
       items:
-        - name: 概述
-          href: sql-database-troubleshoot-performance.md
         - name: 性能监视
           href: sql-database-single-database-monitor.md
         - name: 性能建议
@@ -180,9 +177,8 @@
         - name: 监视内存中存储
           href: sql-database-in-memory-oltp-monitoring.md
     - name: 向外扩展
+      href: sql-database-elastic-scale-introduction.md
       items:
-        - name: 概述
-          href: sql-database-elastic-scale-introduction.md
         - name: 分片映射
           href: sql-database-elastic-scale-shard-map-management.md
         - name: 查询路由
@@ -203,6 +199,8 @@
       items:
         - name: SaaS 设计模式
           href: saas-tenancy-app-design-patterns.md
+        - name: SaaS 视频索引器
+          href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
         - name: SaaS 应用安全
           href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: 开发数据库
@@ -218,9 +216,8 @@
         - name: 配置“内存中”设置
           href: sql-database-in-memory-oltp-migration.md
     - name: 开发应用
+      href: sql-database-develop-overview.md
       items:
-        - name: 概述
-          href: sql-database-develop-overview.md
         - name: 连接
           href: sql-database-libraries.md
         - name: 应用身份验证

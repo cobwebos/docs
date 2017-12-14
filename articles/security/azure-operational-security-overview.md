@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 6ee60c5f9a8049523f05a1f3afd6604768dde602
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: dba643f5c8e926bee1c5d13e71f785e5cc72a2dc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是一个框架，它融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
@@ -158,5 +158,5 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](https://docs.micros
 若要了解有关 OMS 安全和审核解决方案的详细信息，请参阅以下文章：
 
 - [Operations Management Suite | 安全性和符合性](https://www.microsoft.com/cloud-platform/security-and-compliance)。
-- [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-security-responding-alerts)。
-- [监视 Operations Management Suite 安全和审核解决方案中的资源](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-security-monitoring-resources)。
+- [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)。
+- [监视 Operations Management Suite 安全和审核解决方案中的资源](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)。

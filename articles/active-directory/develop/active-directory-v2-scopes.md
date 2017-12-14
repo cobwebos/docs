@@ -4,7 +4,7 @@ description: "介绍 Azure AD v2.0 终结点中的授权，包括范围、权限
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a93cfd710f89efbd4dab01b84ecdb12b4acb0033
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
 与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
@@ -46,8 +46,8 @@ Azure AD 实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OA
 
 在 Azure AD 和 OAuth 中，将这些类型的权限称为范围。 它们有时也被称为 *oAuth2Permissions*。 在 Azure AD 中范围以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的范围值如下：
 
-* 使用 `Calendar.Read` 读取用户的日历
-* 使用 `Mail.ReadWrite` 写入用户的日历
+* 使用 `Calendars.Read` 读取用户的日历
+* 使用 `Calendars.ReadWrite` 写入用户的日历
 * 使用 `Mail.Send` 以用户身份发送邮件
 
 在对 v2.0 终结点的请求中指定范围，应用即可请求这些权限。
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
 &scope=
-https%3A%2F%2Fgraph.microsoft.com%2Fcalendar.read%20
+https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20
 https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```

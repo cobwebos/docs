@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 QPrism 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: jeedes
-ms.openlocfilehash: a380e9c07710e0c79a44e036f9c5bd72a731fe40
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>教程：Azure Active Directory 与 QPrism 集成
 
@@ -124,11 +124,11 @@ ms.lasthandoff: 10/13/2017
     
     ![配置单一登录终结点](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
      
-    d. 现在，转到 **QPrism** 的属性页，使用“复制”来复制**应用程序 ID**。 然后将其粘贴到记事本。
+    d.单击“下一步”。 现在，转到 **QPrism** 的属性页，使用“复制”来复制**应用程序 ID**。 然后将其粘贴到记事本。
  
     ![配置单一登录应用程序 ID](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
 
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`。 
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`。 
 
 5. 选择“保存”。
 
@@ -163,13 +163,13 @@ ms.lasthandoff: 10/13/2017
 
     ![“用户”对话框](./media/active-directory-saas-qprism-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择“创建” 。
+    d.单击“下一步”。 选择“创建” 。
  
 ### <a name="create-a-qprism-test-user"></a>创建 QPrism 测试用户
 

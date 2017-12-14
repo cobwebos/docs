@@ -3,23 +3,24 @@ title: "如何查询 Azure Cosmos DB 中的图数据？ | Microsoft 文档"
 description: "学习如何查询 Azure Cosmos DB 中的图数据"
 services: cosmos-db
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: 
 tags: 
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
-ms.author: denlee
-ms.openlocfilehash: ee420983104f199edf57966bf22aa4d8451b4782
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.author: lbosq
+ms.custom: mvc
+ms.openlocfilehash: 358f2650f767057f4a220d3b3b8507de4ce14e6f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB：如何使用图形 API（预览版）进行查询？
 

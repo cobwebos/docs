@@ -3,7 +3,7 @@ title: "重新训练机器学习模型 | Microsoft Docs"
 description: "了解如何重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 0270a43f79202d102a8cdfe9cba7011a882e8117
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54655c33336ff3fef261024984947108d6f1df9c
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="retrain-a-machine-learning-model"></a>重新训练机器学习模型
 作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 
 如果已部署了新的 Web 服务：
 
-* 登录到 Azure Resource Manager 帐户
+* 登录到 Azure 资源管理器帐户
 * 获取 Web 服务定义
 * 将 Web 服务定义导出为 JSON
 * 在 JSON 中更新对 `ilearner` blob 的引用

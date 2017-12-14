@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 3c56719d99a5a3cc3e650b72ecd2e92438533448
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9246def86fa647213aa3ec12427d829c24fa8034
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 - 安装[免费 Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)。 本快速入门使用 Eclipse Oxygen (4.7)
 - 将需要 Azure 订阅和现有 Java 动态 Web 项目
  
-如果没有 Java 动态 Web 项目，可以使用[创建 Java Web 应用快速入门](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-java)创建一个。
+如果没有 Java 动态 Web 项目，可以使用[创建 Java Web 应用快速入门](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java)创建一个。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -138,4 +138,4 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [查找和诊断性能问题](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)
+> [查找和诊断性能问题](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/21/2017
+ms.date: 12/04/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure 成本管理常见问题解答
 
@@ -92,20 +92,13 @@ Cloudyn 发现你的 Azure 帐户后，会立即在基于成本的报告中提�
 
 若要将更多 CSP 帐户添加到某个实体，请在创建新实体时选择“MSP 访问”而不是“企业”。 如果已将帐户注册为企业协议并想要添加 CSP 凭据，Cloudyn 支持人员可能需要修改帐户设置。 付费的 Azure 订阅者可在 Azure 门户中创建新的支持请求。 依次选择“帮助 + 支持”、“新建支持请求”。
 
-## <a name="how-do-i-change-the-currency-symbol-used-in-cloudyn"></a>如何更改 Cloudyn 中使用的货币符号？
+## <a name="currency-symbols-in-cloudyn-reports"></a>Cloudyn 报表中的货币符号
 
-如果单个实体中的所有 Azure 帐户使用相同的货币，系统会自动检测所用的货币。 但是，对于以下任何货币，货币符号会错误地显示为 **$**：
+可能有多个使用不同货币的 Azure 帐户。 但在 Cloudyn 中，每个成本报表不显示超过一种货币类型。
 
-- GBP = 英国英镑
-- EUR = 欧元
-- INR = 印度卢比
-- NOK = 挪威克朗
+如果有多个使用不同货币的订阅，则父实体及其子实体货币会显示 $ 符号。 建议的最佳做法是避免在同一实体层次结构中使用不同的货币。 换而言之，实体结构中组织的所有订阅应使用同一货币。
 
-尽管货币符号可能会显示为美元 **$**，但成本值会以正确的货币显示。 例如，如果所有帐户在同一实体中使用欧元，Cloudyn 中的值会显示欧元，不过，同时会错误地显示 **$** 符号。
-
-对于 Azure 企业协议客户，Cloudyn 支持人员可以更改成本报告中显示的货币符号，使之不同于 $。 可在 Azure 门户中创建新的支持请求。 依次选择“帮助 + 支持”、“新建支持请求”。
-
-CSP 客户无法更改货币符号。 Cloudyn 仅支持使用美元的费率卡。 Cloudyn 正在探索可支持采用不同货币的费率卡的选项。
+Cloudyn 会自动检测企业协议订阅货币并在报表中正确显示。  但是，Cloudyn 仅对 CSP 和 Web 直通 Azure 帐户显示 $ 符号。
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn 数据刷新时间线是什么？
 

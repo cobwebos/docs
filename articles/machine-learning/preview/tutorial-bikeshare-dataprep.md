@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 9e20c606973447e0b01eaf9716fabf47eefd228b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: e85515c29d8f626c7eb2bfb636dc6c18da78b5c5
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>共享自行车教程：使用 Azure Machine Learning Workbench 执行高级数据准备
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -287,7 +287,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    针对第一行键入 `Jan 01, 2015 12AM-2AM` 作为示例，然后按 **Enter**。
 
-   Workbench 将根据你提供的示例来确定转换。 在本例中，结果是日期格式已更改并且联接了两小时时间窗口。
+   Workbench 将根据你提供的示例来确定转换。 在本例中，结果是日期格式已更改并且连接了两小时时间窗口。
 
    ![图像：示例“Jan 01, 2015 12AM-2AM”](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
 

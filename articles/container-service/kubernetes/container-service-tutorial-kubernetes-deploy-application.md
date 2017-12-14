@@ -1,27 +1,19 @@
 ---
-title: "Azure 容器服务教程 - 部署应用程序 | Microsoft Docs"
+title: "Azure 容器服务教程 - 部署应用程序"
 description: "Azure 容器服务教程 - 部署应用程序"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: aurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c9563a38f0aedcb6f67fd44031a47a712088ddc
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: c763d6867deb76f5b9d197c7062ee07d7ed6d865
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="run-applications-in-kubernetes"></a>在 Kubernetes 中运行应用程序
 
@@ -93,7 +85,7 @@ service "azure-vote-front" created
 
 创建向 Internet 公开应用程序的 [Kubernetes 服务](https://kubernetes.io/docs/concepts/services-networking/service/)。 此过程可能需要几分钟。 
 
-若要监视进度，请将 [kubectl get service](https://review.docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) 命令与 `--watch` 参数配合使用。
+若要监视进度，请将 [kubectl get service](https://review.docs.microsoft.com/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) 命令与 `--watch` 参数配合使用。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch

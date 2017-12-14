@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 85da2a521af0ca92c07d8b2041e92b98f98e9661
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
@@ -52,7 +52,7 @@ Intelligent Insights 可根据查询执行等待时间、错误或超时自动�
 | [定价层降级](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | 定价层降级操作减少了可用资源，这影响 SQL 数据库性能。 |
 
 > [!TIP]
-> 若要持续进行 SQL 数据库性能优化，请启用 [Azure SQL 数据库自动优化](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning)。 SQL 数据库内置智能的这项独特功能可以持续监视 SQL 数据库、自动优化索引，并应用查询执行计划更正。
+> 若要持续进行 SQL 数据库性能优化，请启用 [Azure SQL 数据库自动优化](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning)。 SQL 数据库内置智能的这项独特功能可以持续监视 SQL 数据库、自动优化索引，并应用查询执行计划更正。
 >
 
 以下部分更详细地描述了前面列出的可检测性能模式。
@@ -63,7 +63,7 @@ Intelligent Insights 可根据查询执行等待时间、错误或超时自动�
 
 这种可检测性能模式合并了各种性能问题，涉及达到可用资源限制、工作线程限制和会话限制。 检测到这种性能问题之后，诊断日志的说明字段就会指示性能问题是否与资源、工作线程或会话限制相关。
 
-SQL 数据库上的资源通常称为 [DTU 资源](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-what-is-a-dtu)， 包含 CPU 和 I/O（数据和事务日志 I/O）资源的混合度量值。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
+SQL 数据库上的资源通常称为 [DTU 资源](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)， 包含 CPU 和 I/O（数据和事务日志 I/O）资源的混合度量值。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
 
 会话限制资源表示系统只允许一定数量的 SQL 数据库并发登录。 如果连接到 SQL 数据库的应用程序达到允许的数据库并发登录数，则认为出现了此性能模式。 如果应用程序尝试使用的会话数超过了可在数据库中使用的数目，则会影响查询性能。
 
@@ -75,7 +75,7 @@ SQL 数据库上的资源通常称为 [DTU 资源](https://docs.microsoft.com/en
 
 如果已达到可用会话限制，可以通过减少数据库登录次数来优化应用程序。 如果无法减少从应用程序到数据库的登录数，可以考虑提高数据库的定价层。 也可以将数据库拆分成多个数据库并进行移动，使工作负荷的分配更为均衡。
 
-有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 若要了解订阅层的可用资源限制，请参阅 [SQL 数据库资源限制](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-resource-limits)。
+有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 若要了解订阅层的可用资源限制，请参阅 [SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits)。
 
 ## <a name="workload-increase"></a>工作负载增加
 
@@ -145,7 +145,7 @@ SQL 数据库的 MAXDOP 服务器配置选项用于控制并行执行同一查�
 
 诊断日志会输出与查询相关的查询哈希，这些查询由于并行化程度超出预期，其执行持续时间延长。 日志还会输出 CXP 等待时间。 此时间表示单个组织器/协调器线程（线程 0）在合并结果并继续运行之前，等待其他所有线程完成的时间。 此外，诊断日志还会输出性能不佳的查询在执行过程中等待的总时间。 可以将此信息用作故障排除的基础。
 
-首先，优化或简化复杂的查询。 合理的做法是将长时间运行的批处理作业分解成较小的作业。 此外，确保创建了用于支持查询的索引。 对于被标记为性能不佳的查询，也可通过手动方式强制实现最大并行度 (MAXDOP)。 若要使用 T-SQL 配置此操作，请参阅 [Configure the MAXDOP server configuration option](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)（配置 MAXDOP 服务器配置选项）。
+首先，优化或简化复杂的查询。 合理的做法是将长时间运行的批处理作业分解成较小的作业。 此外，确保创建了用于支持查询的索引。 对于被标记为性能不佳的查询，也可通过手动方式强制实现最大并行度 (MAXDOP)。 若要使用 T-SQL 配置此操作，请参阅 [Configure the MAXDOP server configuration option](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)（配置 MAXDOP 服务器配置选项）。
 
 将 MAXDOP 服务器配置选项设置为 零 (0)（作为默认值）表示 SQL 数据库可以使用所有可用的逻辑 CPU 核心将执行单个查询的线程并行化。 将 MAXDOP 设置为一 (1) 表示只能将一个核心用于单个查询的执行。 实际上，这意味着并行功能处于关闭状态。 根据具体的情况、数据库的可用核心数与诊断日志信息，可将 MAXDOP 选项优化成用于并行查询执行且能够解决具体问题的核心数。
 
@@ -231,7 +231,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 诊断日志输出 tempDB 争用详细信息。 可以将此信息用作故障排除的入手点。 可以通过两项操作来减轻此类争用并提高整个工作负荷的吞吐量：一是停止使用临时表， 二是使用内存优化表。 
 
-有关详细信息，请参阅[内存优化表简介](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)。 
+有关详细信息，请参阅[内存优化表简介](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)。 
 
 ## <a name="elastic-pool-dtu-shortage"></a>弹性池 DTU 不足
 
@@ -328,10 +328,10 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 > [!TIP]
 > 选择可下载 PDF 版本的流程图。
 
-Intelligent Insights 通常需要花费一小时来针对性能问题执行根本原因分析。 如果在 Intelligent Insights 中找不到问题，而该问题又很重要，则请使用查询存储手动确定性能问题的根本原因。 （通常情况下，这些问题是不到一小时之前的问题。）有关详细信息，请参阅[使用查询存储监视性能](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
+Intelligent Insights 通常需要花费一小时来针对性能问题执行根本原因分析。 如果在 Intelligent Insights 中找不到问题，而该问题又很重要，则请使用查询存储手动确定性能问题的根本原因。 （通常情况下，这些问题是不到一小时之前的问题。）有关详细信息，请参阅[使用查询存储监视性能](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解 [Intelligent Insights](sql-database-intelligent-insights.md) 概念。
 - 使用 [Intelligent Insights Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
-- [使用 Azure SQL Analytics 监视 Azure SQL 数据库](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)。
+- [使用 Azure SQL Analytics 监视 Azure SQL 数据库](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
 - 了解如何[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。

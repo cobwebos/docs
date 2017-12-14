@@ -50,14 +50,11 @@
 ## [术语](service-fabric-technical-overview.md)
 
 ## 生成应用程序和服务
-### 支持的编程模型
-#### [概述](service-fabric-choose-framework.md)
-#### 容器
-##### [概述](service-fabric-containers-overview.md)
+### [支持的编程模型](service-fabric-choose-framework.md)
+#### [容器](service-fabric-containers-overview.md)
 ##### [Docker Compose（预览）](service-fabric-docker-compose.md)
 ##### [资源调控](service-fabric-resource-governance.md)
-#### Reliable Services
-##### [概述](service-fabric-reliable-services-introduction.md)
+#### [Reliable Services](service-fabric-reliable-services-introduction.md)
 ##### [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
 ##### [Reliable Services 生命周期 - Java](service-fabric-reliable-services-lifecycle-java.md)
 ##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
@@ -69,8 +66,7 @@
 ##### [可靠状态管理器和 Reliable Collection 内部](service-fabric-reliable-services-reliable-collections-internals.md)
 ##### [高级使用率](service-fabric-reliable-services-advanced-usage.md)
 
-#### Reliable Actors
-##### [概述](service-fabric-reliable-actors-introduction.md)
+#### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
 ##### [体系结构](service-fabric-reliable-actors-platform.md)
 ##### [生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 ##### [状态管理](service-fabric-reliable-actors-state-management.md)
@@ -79,6 +75,7 @@
 ##### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 ### [应用程序模型](service-fabric-application-model.md)
+### [应用程序和服务清单](service-fabric-application-and-service-manifests.md)
 ### [托管模型](service-fabric-hosting-model.md)
 
 ### 服务
@@ -86,10 +83,9 @@
 #### [服务状态](service-fabric-concepts-state.md)
 #### [服务分区](service-fabric-concepts-partitioning.md)
 #### [服务的可用性](service-fabric-availability-services.md)
-#### [副本和实例](service-fabric-concepts-replica-lifecycle.md)
+#### [副本和实例生命周期](service-fabric-concepts-replica-lifecycle.md)
 #### [重新配置](service-fabric-concepts-reconfiguration.md)
-#### 服务通信
-##### [概述](service-fabric-connect-and-communicate-with-services.md)
+#### [服务通信](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS 服务](service-fabric-dnsservice.md)
 ##### [反向代理](service-fabric-reverseproxy.md)
 ##### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -99,19 +95,16 @@
 
 ### [规划应用程序容量](service-fabric-capacity-planning.md)
 
-## 管理应用程序
-### [概述](service-fabric-application-lifecycle.md)
-### [ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
-### 应用程序升级
-#### [概述](service-fabric-application-upgrade.md)
+## [管理应用程序](service-fabric-application-lifecycle.md)
+### [应用程序升级](service-fabric-application-upgrade.md)
 #### [配置](service-fabric-visualstudio-configure-upgrade.md)
 #### [应用程序升级参数](service-fabric-application-upgrade-parameters.md)
 #### [应用程序升级中的数据序列化](service-fabric-application-upgrade-data-serialization.md)
 #### [应用程序升级的高级主题](service-fabric-application-upgrade-advanced.md)
 ### [故障分析概述](service-fabric-testability-overview.md)
+### [ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
 
-## 创建和管理群集
-### [概述](service-fabric-deploy-anywhere.md)
+## [创建和管理群集](service-fabric-deploy-anywhere.md)
 ### 规划和准备
 #### [容量规划](service-fabric-cluster-capacity.md)
 #### [灾难恢复](service-fabric-disaster-recovery.md)
@@ -121,8 +114,7 @@
 ### Azure 上的群集
 #### [节点类型和 VM 规模集](service-fabric-cluster-nodetypes.md)
 #### [群集网络模式](service-fabric-patterns-networking.md)
-### 群集 Resource Manager
-#### [概述](service-fabric-cluster-resource-manager-introduction.md)
+### [群集资源管理器](service-fabric-cluster-resource-manager-introduction.md)
 #### [体系结构](service-fabric-cluster-resource-manager-architecture.md)
 #### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
 #### [应用程序组概述](service-fabric-cluster-resource-manager-application-groups.md)
@@ -135,8 +127,6 @@
 #### [均衡群集](service-fabric-cluster-resource-manager-balancing.md)
 #### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
-
-## [与 API 管理集成](service-fabric-api-management-overview.md)
 
 ## 监视和诊断
 ### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
@@ -164,13 +154,14 @@
 #### [使用 OMS 分析事件](service-fabric-diagnostics-event-analysis-oms.md)
 ### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
 
+## [与 API 管理集成](service-fabric-api-management-overview.md)
+
 # 操作指南
 ## 设置开发环境
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
-
-## [设置 Service Fabric CLI](service-fabric-cli.md)
+### [设置 Service Fabric CLI](service-fabric-cli.md)
 
 ## 构建应用程序
 ### [在 Visual Studio 中创建你的第一个 C# 应用](service-fabric-create-your-first-application-in-visual-studio.md)
@@ -231,7 +222,7 @@
 #### [管理应用程序机密](service-fabric-application-secret-management.md)  
 #### [配置应用程序的安全策略](service-fabric-application-runas-security.md)
 
-## 在 Windows 开发环境中工作
+## 在 Windows/VS 开发环境中工作
 ### [在 Visual Studio 中管理应用程序](service-fabric-manage-application-in-visual-studio.md)
 ### [在 Visual Studio 中配置安全连接](service-fabric-visualstudio-configure-secure-connections.md)
 ### [为多个环境配置应用程序](service-fabric-manage-multiple-environment-app-configuration.md)
@@ -240,7 +231,7 @@
 ### [在本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 ### [在 Windows 上设置 Linux 群集](service-fabric-local-linux-cluster-windows.md)
 
-## 在 Linux 开发环境中工作
+## 在 Linux/Eclipse 开发环境中工作
 ### [用于 Java 开发的 Eclipse 插件入门](service-fabric-get-started-eclipse.md)
 ### [在 Eclipse 中调试 Java 服务](service-fabric-debugging-your-application-java.md)
 ### [在本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)

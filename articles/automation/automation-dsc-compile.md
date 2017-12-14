@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
@@ -128,6 +128,50 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ```
 
 详细了解如何将 PSCredentials 作为参数传入，请参阅下面的<a href="#credential-assets">**凭据资产**</a>。
+
+## <a name="composite-resources"></a>复合资源
+
+借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。  这样，便可将多个配置应用到单个资源。  有关**复合资源**的详细信息，请参阅[复合资源：将 DSC 配置用作资源](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite)
+
+> [!NOTE]
+> 若要正确编译**复合资源**，首先必须确保复合资源所依赖的所有 DSC 资源已事先安装在 Azure 自动化帐户模块存储库中，否则复合资源不会正确导入。
+
+若要添加 DSC **复合资源**，必须将资源模块添加到存档 (*.zip)。 在 Azure 自动化帐户中转到“模块”存储库。  然后单击“添加模块”按钮。
+
+![添加模块](./media/automation-dsc-compile/add_module.png)
+
+导航到存档所在的目录。  选择该存档文件，单击“确定”。
+
+![选择模块](./media/automation-dsc-compile/select_dscresource.png)
+
+随后将会回到模块目录，在其中可以监视**复合资源**在解包和注册到 Azure 自动化时的状态。
+
+![导入复合资源](./media/automation-dsc-compile/register_composite_resource.png)
+
+注册模块后，可以单击它，以验证**复合资源**现在是否可在配置中使用。
+
+![验证复合资源](./media/automation-dsc-compile/validate_composite_resource.png)
+
+然后，可在配置中调用**复合资源**，如下所示：
+
+```powershell
+
+    Node ($AllNodes.Where{$_.Role -eq "WebServer"}).NodeName
+    {
+            
+            JoinDomain DomainJoin
+            {
+                DomainName = $DomainName
+                Admincreds = $Admincreds
+            }
+
+            PSWAWebServer InstallPSWAWebServer
+            {
+                DependsOn = "[JoinDomain]DomainJoin"
+            }        
+    }
+
+```
 
 ## <a name="configurationdata"></a>ConfigurationData
 通过 **ConfigurationData** 可在使用 PowerShell DSC 时区分结构化配置与任何环境特定配置。 有关 **ConfigurationData** 的详细信息，请参阅[区分 PowerShell DSC 中的“What”与“Where”](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)。

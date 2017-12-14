@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 12/10/2017
 ms.author: magoedte
-ms.openlocfilehash: 387ec757ec17799408ef45bfeb523eb98a5b1013
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 OMS 工作区集成。  这会允许利用 OMS 的机会，同时继续使用 Operations Manager 执行以下操作：
@@ -40,9 +40,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="system-requirements"></a>系统要求
 开始之前，请查看以下详细信息来验证是否满足先决条件。
 
-* OMS 仅支持 Operations Manager 2016、Operations Manager 2012 SP1 UR10 及更高版本，以及 Operations Manager 2012 R2 UR11 及更高版本。
+* OMS 仅支持 Operations Manager 2016、Operations Manager 2012 SP1 UR6 及更高版本，以及 Operations Manager 2012 R2 UR2 及更高版本。  Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理达到最低更新，否则 Windows 代理流量会失败，Operations Manager 事件日志可能会出现许多错误。
-* 一个 Azure Log Analytics 订阅。  有关进一步的详细信息，请参阅 [Log Analytics入门](log-analytics-get-started.md)。
+* 一个 OMS 订阅。  有关进一步的详细信息，请参阅 [Log Analytics入门](log-analytics-get-started.md)。
 
 ### <a name="network"></a>网络
 下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 OMS 进行通信时必需的代理和防火墙配置信息。  来自每个组件的流量将从网络传出到 OMS 服务。     
@@ -208,7 +208,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ```
-    `param(
+    param(
     [String] $connectorName,
     [String] $msName="localhost"
     )

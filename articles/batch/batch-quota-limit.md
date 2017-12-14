@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bb5470918aa3ad15cb9081f5c02b40984d83f51
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -51,10 +51,11 @@ ms.lasthandoff: 10/11/2017
 | 每个应用程序的应用程序包数 |40 |
 | 应用程序包大小（每个） |约 195GB<sup>1</sup> |
 | 启动任务最大大小 | 32,768 个字符<sup>2</sup> |
+| 最长任务生存期 | 7 天<sup>3</sup> |
 
 <sup>1</sup> 最大的块 Blob 大小的 Azure 存储限制<br />
-<sup>2</sup> 包括资源文件和环境变量
-
+<sup>2</sup> 包括资源文件和环境变量<br />
+<sup>3</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
 
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额

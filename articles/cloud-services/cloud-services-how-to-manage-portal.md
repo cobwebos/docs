@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 9af1fdeb5cfe69631cabe13bd341b43319175aae
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: a06becda42541b22d3e090087dd96cd08c980f44
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>如何管理云服务
-在 Azure 门户的“云服务(经典)”区域中，可以更新服务角色或部署、将预留部署提升到生产、将资源链接到云服务，以便查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
+在 Azure 门户的“云服务”区域中，可以更新服务角色或部署、将预留部署提升到生产、将资源链接到云服务，以便查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
 
 有关如何缩放云服务的详细信息，请参阅[此文](cloud-services-how-to-scale-portal.md)。
 
@@ -80,9 +80,6 @@ ms.lasthandoff: 11/16/2017
 **应用程序的交换是否会导致停机？应如何处理它？**
 
 如在上一部分中所述，部署交换通常非常快，因为它只更改 Azure 负载均衡器中的配置。 但是，在某些情况下，它会需要 10 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](../best-practices-retry-general.md)。
-
-## <a name="how-to-link-a-resource-to-a-cloud-service"></a>如何：将资源链接到云服务
-Azure 门户不会像当前 Azure 经典门户一样将资源链接在一起。 而是将其他资源部署到云服务正在使用的同一资源组。
 
 ## <a name="how-to-delete-deployments-and-a-cloud-service"></a>如何：删除部署和云服务
 必须先删除每个现有部署，才能删除云服务。

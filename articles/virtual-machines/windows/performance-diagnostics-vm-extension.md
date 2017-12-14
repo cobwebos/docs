@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 85d4764534c77ea0e4d999e249abe456d0234d75
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d9384af2cf1d8b3f55f9ec2316046536634c124e
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
 ## <a name="summary"></a>摘要
-Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，执行分析，并提供发现和建议的报告，以识别并解决虚拟机上的性能问题。 此扩展将安装被称为 [PerfInsights](http://aka.ms/perfinsights) 的疑难解答工具。
+Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据、执行分析，并提供发现和建议的报告，以识别并解决虚拟机上的性能问题。 此扩展将安装被称为 [PerfInsights](http://aka.ms/perfinsights) 的疑难解答工具。
 
 ## <a name="prerequisites"></a>先决条件
 ### <a name="operating-systems"></a>操作系统
@@ -46,7 +46,6 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -72,13 +71,11 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
 |typeHandlerVersion|1.0|扩展处理程序的版本
 |performanceScenario|基本|要捕获的数据适用的性能方案。 有效值为：“基本”、“vmslow”、“azurefiles”和“自定义”。
 |traceDurationInSeconds|300|如果选择了任何跟踪选项的跟踪持续时间。
-|DiagnosticsTrace|d|启用诊断跟踪的选项。 有效值为“d”或空值。 如果不希望捕获此跟踪，只需将该值设置为空即可。
 |perfCounterTrace|p|启用性能计数器跟踪的选项。 有效值为“p”或空值。 如果不希望捕获此跟踪，只需将该值设置为空即可。
 |networkTrace|n|启用 Netmon 跟踪的选项。 有效值为 **n** 或空值。 如果不希望捕获此跟踪，只需将该值设置为空即可。
 |xperfTrace|x|启用 XPerf 跟踪的选项。 有效值为“x”或空值。 如果不希望捕获此跟踪，只需将该值设置为空即可。
 |storPortTrace|s|启用 StorPort 跟踪的选项。 有效值为 s 或空值。 如果不希望捕获此跟踪，只需将该值设置为空即可。
 |srNumber|123452016365929|支持票证号码（如果有）。 如果不使用，则保留为空。
-|requestTimeUtc|9/2/2017 11:06:00 PM|UTC 格式的当前日期时间。 如果使用门户来安装此扩展，则不需要提供此值。
 |storageAccountName|mystorageaccount|要存储诊断日志和结果的存储帐户名称。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|存储帐户的密钥。
 
@@ -99,7 +96,7 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
 5. 提供用于安装的参数值，然后单击“确定”安装扩展。 有关受支持的故障排除方案的详细信息，可单击[此处](how-to-use-perfInsights.md#supported-troubleshooting-scenarios)进行了解。 
 
     ![安装扩展](media/performance-diagnostics-vm-extension/install-the-extension.png)
-6. 安装成功后，你将会看到一条指示预配成功的消息。
+6. 安装成功后，将会看到一条指示预配成功的消息。
 
     ![预配成功的消息](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
@@ -118,7 +115,7 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
     > 此外，你也可以选择扩展条目，并选择“卸载”选项。
 
 ## <a name="template-deployment"></a>模板部署
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可在 Azure 资源管理器模板中使用上一部分中详细说明的 JSON 架构，以在 Azure 资源管理器模板部署期间运行 Azure 性能诊断扩展。 以下是可与模板部署配合使用的示例模板。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可在 Azure 资源管理器模板中使用上一部分中详细说明的 JSON 架构，以在 Azure 资源管理器模板部署期间运行 Azure 性能诊断扩展。 以下是可与模板部署配合使用的示例模板。
 
 ````
 {
@@ -152,10 +149,6 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
     "traceDurationInSeconds": {
       "type": "int",
     "defaultValue": 300
-    },
-    "diagnosticsTrace": {
-      "type": "string",
-      "defaultValue": "d"
     },
     "perfCounterTrace": {
       "type": "string",
@@ -192,7 +185,6 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -216,8 +208,8 @@ Azure 性能诊断 VM 扩展可帮助从 Windows VM 收集性能诊断数据，�
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario" = "basic"; "traceDurationInSeconds" = 300; "diagnosticsTrace" = "d"; "perfCounterTrace" = "p"; "networkTrace" = ""; "xperfTrace" = ""; "storPortTrace" = ""; "srNumber" = ""; "requestTimeUtc" = "2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName" = "mystorageaccount" ; "storageAccountKey" = "mystoragekey"}
+$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `

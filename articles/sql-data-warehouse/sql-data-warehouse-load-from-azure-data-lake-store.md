@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 09/15/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: bb478484fba5a76fa12d5d1976919224965b6e0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3ca2a26fe47a8f0831a1ce4edf2c35911f3fc1
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>将数据从 Azure Data Lake Store 加载到 SQL 数据仓库中
 本文档提供了使用 PolyBase 从 Azure Data Lake Store (ADLS) 将自己的数据加载到 SQL 数据仓库中所需的所有步骤。
@@ -56,7 +56,7 @@ PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外
 ###  <a name="create-a-credential"></a>创建凭据
 若要访问 Azure Data Lake Store，需要创建数据库主密钥，以便加密下一步中使用的凭据密码。
 然后创建数据库范围的凭据，以存储 AAD 中设置的服务主体凭据。 已使用 PolyBase 连接到 Windows Azure 存储 Blob 的用户请注意，该凭据语法有所不同。
-若要连接到 Azure Data Lake Store，必须**先**创建 Azure Active Directory 应用程序，创建访问密钥，并授予应用程序访问 Azure Data Lake 资源的权限。 若要了解如何执行这些步骤，请单击[此处](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。
+若要连接到 Azure Data Lake Store，必须**先**创建 Azure Active Directory 应用程序，创建访问密钥，并授予应用程序访问 Azure Data Lake 资源的权限。 若要了解如何执行这些步骤，请单击[此处](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。
 
 ```sql
 -- A: Create a Database Master Key.

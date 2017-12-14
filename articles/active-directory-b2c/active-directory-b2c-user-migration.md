@@ -4,7 +4,7 @@ description: "介绍有关使用图形 API和选择性地使用 Azure AD B2C 自
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/04/2017
 ms.author: yoelh
-ms.openlocfilehash: f98f1826b492b8596f352b403b3b12775814c399
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了多种方法中的两种。 开发人员负责判断每种方法是否适用。
 
 ## <a name="user-migration-flows"></a>用户迁移流
-使用 Azure AD B2C，可以通过[图形 API](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) 迁移用户。 用户迁移过程划分为两个流：
+使用 Azure AD B2C，可以通过[图形 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) 迁移用户。 用户迁移过程划分为两个流：
 
 * **预迁移**：如果对用户凭据（用户名和密码）拥有明确的访问权限，或者凭据已加密但可将其解密，则适合使用此流。 预迁移过程涉及到从旧的标识提供者读取用户，并在 Azure AD B2C 目录中创建新帐户。
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 10/26/2017
 > 必须使用 B2C 租户本地的 B2C 租户管理员帐户。 帐户名称的语法为 *admin@contosob2c.onmicrosoft.com*。
 
 >[!NOTE]
-> 以下 PowerShell 脚本需要 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。
+> 以下 PowerShell 脚本需要 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。
 
 在此 PowerShell 脚本中执行以下操作：
 1. 连接到联机服务。 为此，请在 Windows PowerShell 命令提示符下运行 cmdlet `Connect-AzureAD` 并提供凭据。 
@@ -278,7 +278,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
     ```
 
 ### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>步骤 4.2：将 Web 应用程序部署到 Azure 应用服务
-将 API 服务发布到 Azure 应用服务。 有关详细信息，请参阅[将应用部署到 Azure 应用服务](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy)。
+将 API 服务发布到 Azure 应用服务。 有关详细信息，请参阅[将应用部署到 Azure 应用服务](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy)。
 
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>步骤 4.3：将技术配置文件和技术配置文件验证添加到策略 
 1. 在工作目录中，打开 *TrustFrameworkExtensions.xml* 扩展策略文件。 
@@ -346,7 +346,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 为 RESTful API 定义技术配置文件后，请让 Azure AD B2C 策略调用该技术配置文件。 XML 片段会重写基本策略中定义的 `SelfAsserted-LocalAccountSignin-Email`。 XML 片段还会添加 `ValidationTechnicalProfile`，其中包含指向技术配置文件 `LocalAccountUserMigration` 的 ReferenceId。 
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>步骤 4.4：将策略上传到租户
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，选择“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
 
 2. 选择“标识体验框架”。
 
@@ -384,11 +384,11 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 6. 检查 RESTful API 的输出。
 
-有关详细信息，请参阅[流式传输日志和控制台](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-streaming-logs-and-console)。
+有关详细信息，请参阅[流式传输日志和控制台](https://docs.microsoft.com/azure/app-service-web/web-sites-streaming-logs-and-console)。
 
 > [!IMPORTANT]
 > 只能在开发和测试期间使用诊断日志。 RESTful API 输出可能包含不应在生产环境中公开的机密信息。
 >
 
 ## <a name="optional-download-the-complete-policy-files"></a>（可选）下载完整的策略文件
-完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration)用于参考。 
+完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration)供你参考。 

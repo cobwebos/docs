@@ -73,6 +73,9 @@
           href: sizes-compute.md
         - name: 内存优化
           href: sizes-memory.md
+          items:
+            - name: 约束的 vCPU
+              href: constrained-vcpu.md
         - name: 存储优化
           href: sizes-storage.md
         - name: GPU 优化
@@ -121,6 +124,8 @@
       items:
         - name: 基础结构指南
           href: infrastructure-example.md
+        - name: vCPU 配额
+          href: quotas.md
 - name: 操作指南
   items:
     - name: 创建 VM
@@ -164,6 +169,8 @@
       items:
         - name: 为 VM 预付 - 保留实例
           href: prepay-reserved-vm-instances.md
+        - name: VM 使用情况
+          href: vm-usage.md
         - name: 常见 CLI 任务
           href: cli-manage.md
         - name: 移动 VM

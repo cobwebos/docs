@@ -3,8 +3,8 @@ title: "Azure 堆栈密钥保管库简介 |Microsoft 文档"
 description: "了解如何 Azure 堆栈密钥保管库管理密钥和机密"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 70f1684a-3fbb-4cd1-bf29-9f9882e98fe9
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/04/2017
-ms.author: sngun
-ms.openlocfilehash: 621a0cb865d0c050d7271d10bd14076f9f0c6f67
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.author: mabrigg
+ms.openlocfilehash: a50a03e70ccf014a8a9d33e0f177febed560853f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>介绍 Azure 堆栈中的密钥保管库
 

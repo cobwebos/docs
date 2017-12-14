@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>加密 Azure 虚拟机
 如果用户的虚拟机未加密，Azure 安全中心会向用户发送警报。 这些警报会显示为“高严重级别”，建议加密这些虚拟机。
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 ![磁盘加密建议](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> 本文档中的信息适用于在不使用密钥加密密钥（该密钥是使用“Azure 备份”备份虚拟机时必需的）的情况下对虚拟机进行加密。 有关如何使用密钥加密密钥支持将 Azure 备份用于已加密 Azure 虚拟机的信息，请参阅文章 [Windows 和 Linux Azure 虚拟机的 Azure 磁盘加密](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)。
+> 本文档中的信息适用于在不使用密钥加密密钥（该密钥是使用“Azure 备份”备份虚拟机时必需的）的情况下对虚拟机进行加密。 有关如何使用密钥加密密钥支持将 Azure 备份用于已加密 Azure 虚拟机的信息，请参阅文章 [Windows 和 Linux Azure 虚拟机的 Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
 >
 >
 

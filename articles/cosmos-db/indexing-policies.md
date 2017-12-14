@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.openlocfilehash: 30a21645831f0cfcb3b52c797dbddfa6b5283960
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53bf756963c305b8b31ac1a90d219f143522d051
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB 如何编制数据索引？
 
@@ -68,7 +68,7 @@ Azure Cosmos DB 支持三种索引模式，可通过索引策略对 Azure Cosmos
 
 **一致**：如果将 Azure Cosmos DB 集合的策略指定为“一致”，针对指定 Azure Cosmos DB 集合的查询将按照为点读取指定的一致性级别进行（即强、有限过期性、会话或最终）。 索引会作为文档更新（即插入、替换、更新和删除 Azure Cosmos DB 集合中的文档）的一部分进行同步更新。  一致索引支持一致的查询，但代价是可能降低写入吞吐量。 这种减少受需要索引的唯一路径和“一致性级别”的影响。 一致的索引模式适用于“快速写入、立即查询”的工作负荷。
 
-**延迟**：若要实现最大的文档引入吞吐量，可为 Azure Cosmos DB 集合配置延迟一致性；也就是说，查询最终是一致的。 Azure Cosmos DB 集合处于静止状态时（即为用户请求提供服务时没有完全利用集合的吞吐量），以异步方式更新索引。 对于需要无阻碍文档引入的“现在引入、稍后查询”工作负荷，可能适合“延迟”索引模式。
+**延迟**：Azure Cosmos DB 集合处于静止状态时（即处理用户请求时没有完全利用集合的吞吐量），以异步方式更新索引。 需要文档引入的“现在引入、稍后查询”工作负荷可能适合“延迟”索引模式。 请注意，如果数据引入和索引速度缓慢，则可能出现不一致的结果。 这意味着在索引数据之前，不能保证计数查询或特定的查询结果一定是正确的或可重复的。 索引通常处于追赶模式。 WRT 延迟索引 - TTL 更改会导致索引被删除，然后重新创建，所以此活动可能会导致意想不到的结果。 大部分客户应使用一致的索引。
 
 **无**：索引模式标记为“无”的集合没有与之关联的索引。 如果 Azure Cosmos DB 用作键值存储，并且只通过文档的 ID 属性访问文档，则通常使用该模式。 
 

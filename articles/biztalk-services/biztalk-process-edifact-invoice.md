@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>指南：使用 Azure BizTalk 服务处理 EDIFACT 发票
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>先决条件
 * 必须具有一个服务总线命名空间。 有关创建命名空间的说明，请参阅[操作方法：创建或修改服务总线服务命名空间](https://msdn.microsoft.com/library/azure/hh674478.aspx)。 假定已预配服务总线命名空间，名为 **edifactbts**。
-* 必须具有 BizTalk 服务订阅。 有关说明，请参阅[使用 Azure 经典门户创建 BizTalk 服务](http://go.microsoft.com/fwlink/?LinkID=302280)。 本教程假定用户已拥有 BizTalk 服务订阅，名为 **contosowabs**。
+* 必须具有 BizTalk 服务订阅。 本教程假定用户已拥有 BizTalk 服务订阅，名为 **contosowabs**。
 * 在 BizTalk 服务门户中注册 BizTalk 服务订阅。 有关说明，请参阅[在 BizTalk 服务门户中注册 BizTalk 服务部署](https://msdn.microsoft.com/library/hh689837.aspx)
 * 必须安装 Visual Studio。
 * 必须安装 BizTalk 服务 SDK。 可从 [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057) 下载该 SDK  

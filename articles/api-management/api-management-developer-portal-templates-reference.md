@@ -12,22 +12,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 2f2a943657dd328fc5657b775ba0273f99718f39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 540e9804d2ee84c050531f5287d4c4b8922ae999
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="azure-api-management-developer-portal-templates"></a>Azure API 管理开发人员门户模板
+# <a name="developer-portal-templates"></a>开发人员门户模板
+
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
- 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。  
+如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。  
 
-
-
-  
 ##  <a name="DeveloperPortalTemplates"></a> 开发人员门户模板  
   
 -   [API](api-management-api-templates.md)  
@@ -60,9 +58,9 @@ ms.lasthandoff: 10/11/2017
     -   [注册](api-management-page-templates.md#SignUp)  
     -   [找不到页面](api-management-page-templates.md#PageNotFound)
 
-
 ## <a name="next-steps"></a>后续步骤  
--   [模板参考](api-management-developer-portal-templates-reference.md)  
--   [数据模型参考](api-management-template-data-model-reference.md)  
--   [页面控件](api-management-page-controls.md)  
--   [模板资源](api-management-template-resources.md)
+
++ [模板参考](api-management-developer-portal-templates-reference.md)  
++ [数据模型参考](api-management-template-data-model-reference.md)  
++ [页面控件](api-management-page-controls.md)  
++ [模板资源](api-management-template-resources.md)

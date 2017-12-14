@@ -4,7 +4,7 @@ description: "介绍可以如何使用 Azure AD 进行自动化设置、取消�
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: 3fe57e9c22d04a3557978093ce3fe86613c5c1d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd82ef109abbc5707db4c02c2f14f9d55dfb74e3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>什么是 SaaS 应用的自动化用户预配？
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
 
-Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统的支持，以及对实现 [SCIM 2.0 标准](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-scim-provisioning)特定部分的应用的一般性支持。
+Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统的支持，以及对实现 [SCIM 2.0 标准](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)特定部分的应用的一般性支持。
 
 Azure AD 应用程序库中的所有“特别推荐的”应用均支持自动化用户预配。 [可以在此处查看特别推荐的应用列表。](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
 
@@ -90,7 +90,7 @@ Azure AD 应用程序库中的所有“特别推荐的”应用均支持自动�
 
 * 必须为 Azure AD 预配服务提供“管理员凭据”，使其能够连接到应用程序提供的用户管理 API。
 
-* 可以配置“属性映射”，用于指定要将源系统（例如 Azure AD）中的哪些字段内容同步到目标系统（例如 ServiceNow）中的哪些字段。 除了用户帐户的预配以外，还可在本部分中选择性地配置组的预配（如果目标应用程序支持这样做）。 使用“匹配的属性”可以选择要将哪些字段用于匹配系统之间的帐户。 使用[表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)可先修改和转换从源系统检索的值，然后将其写入目标系统。 有关详细信息，请参阅[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)。
+* 可以配置“属性映射”，用于指定要将源系统（例如 Azure AD）中的哪些字段内容同步到目标系统（例如 ServiceNow）中的哪些字段。 除了用户帐户的预配以外，还可在本部分中选择性地配置组的预配（如果目标应用程序支持这样做）。 使用“匹配的属性”可以选择要将哪些字段用于匹配系统之间的帐户。 使用 [表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)”可先修改和转换从源系统检索的值，然后将其写入目标系统。 有关详细信息，请参阅[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)。
 
 ![设置](./media/active-directory-saas-app-provisioning/provisioning_settings1.PNG)
 

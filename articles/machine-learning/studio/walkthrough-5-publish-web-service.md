@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 1bbc8ce31fc8e5ffb048a1fb9553a82975680a3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba8f1678d87159088c58cf0e05e0fe5a6579b358
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>演练步骤 5：部署 Azure 机器学习 Web 服务
 这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第五个步骤。
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/11/2017
 最后一次运行试验（单击“运行”）。要验证模型是否仍然正常工作，请单击[评分模型][score-model]模块的输出，并选择“查看结果”。 此时将显示原始数据，以及信用风险值（“评分标签”）和评分概率值（“评分概率”）。 
 
 ## <a name="deploy-the-web-service"></a>部署 Web 服务
-可以将实验部署为经典 Web 服务或基于 Azure Resource Manager 的新 Web 服务。
+可以将实验部署为经典 Web 服务或基于 Azure 资源管理器的新 Web 服务。
 
 ### <a name="deploy-as-a-classic-web-service"></a>部署为经典 Web 服务
 要部署派生自试验的经典 Web 服务，请单击画布下面的“部署 Web 服务”，并选择“部署 Web 服务 [经典]”。 机器学习工作室会将试验部署为 Web 服务，并你将转到该 Web 服务的仪表板。 在此页中可以返回试验（“查看快照”或“查看最新”），以及运行简单的 Web 服务测试（请参阅下面的**测试 Web 服务**）。 此处，还提供了有关创建可访问 Web 服务的应用程序的信息（本演练的下一步骤提供了更多相关信息）。
@@ -190,26 +190,6 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="manage-the-web-service"></a>管理 Web 服务
-
-### <a name="manage-a-classic-web-service-in-the-azure-classic-portal"></a>在 Azure 经典门户中管理经典 Web 服务
-
-部署经典 Web 服务后，可以从 [Azure 经典门户](https://manage.windowsazure.com)管理它。
-
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)
-2. 在 Microsoft Azure 服务面板中，单击“机器学习”
-3. 单击工作区
-4. 单击“Web 服务”选项卡
-5. 单击创建的 Web 服务
-6. 单击“默认”终结点
-
-然后可以执行一些操作，例如监视 Web 服务的运行状况，以及通过更改服务可处理的并发调用数来调整性能。
-
-有关详细信息，请参阅：
-
-* [创建终结点](create-endpoint.md)
-* [缩放 Web 服务](scaling-webservice.md)
-
-### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>在 Azure 机器学习 Web 服务门户中管理经典或新的 Web 服务
 
 部署 Web 服务（经典或新式）后，可以从 [Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net/quickstart)管理它。
 

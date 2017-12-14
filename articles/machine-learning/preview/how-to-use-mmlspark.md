@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 6714e8ad77693f0cdefe3e40c99153299e1c72d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ba2cbe1d6ce4b2010decb8bff4fa46faf0852b3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>如何使用适用于 Apache Spark 的 Microsoft 机器学习库
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 若要逐步执行本操作方法指南，需要：
 - [安装 Azure Machine Learning Workbench](quickstart-installation.md)
-- [设置 Azure HDInsight Spark 群集](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
+- [设置 Azure HDInsight Spark 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
 
 ## <a name="run-your-experiment-in-docker-container"></a>在 Docker 容器中运行试验
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="install-mmlspark-on-azure-hdinsight-spark-cluster"></a>在 Azure HDInsight Spark 群集上安装 MMLSpark。
 
-若要完成这一步和下一步，需要先[创建 Azure HDInsight Spark 群集](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)。
+若要完成这一步和下一步，需要先[创建 Azure HDInsight Spark 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)。
 
 运行试验时，Azure Machine Learning Workbench 会在群集上默认安装 MMLSpark 包。 用户可以控制此行为，通过在项目文件夹中编辑名为 _aml_config/spark_dependencies.yml_ 的文件来安装其他 Spark 包。
 
@@ -68,7 +68,7 @@ packages:
 在 CLI 窗口中运行以下命令：
 
 ```
-az ml computetarget attach --name <myhdi> --address <myhdi-ssh.azurehdinsight.net> --username <sshusername> --password <sshpwd> --type cluster
+az ml computetarget attach cluster --name <myhdi> --address <myhdi-ssh.azurehdinsight.net> --username <sshusername> --password <sshpwd> 
 ```
 
 ```

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 558c3c65a811a228f9d8ecae7ce41798ac8178c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 065638c1d724865f45b0c1e2691041848f90ad00
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 - [安装 .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
 - 将需要 Azure 订阅和现有 .NET Core Web 应用程序。
 
-如果没有 ASP.NET Core Web 应用程序，则可以按照[创建 ASP.NET Core Web 应用指南](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)创建一个。
+如果没有 ASP.NET Core Web 应用程序，则可以按照[创建 ASP.NET Core Web 应用指南](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)创建一个。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -126,4 +126,4 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [查找和诊断运行时异常](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [查找和诊断运行时异常](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

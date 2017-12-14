@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: fe6c003e095b25cf3ec3430fc68dcd399150b3ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1f543d3379b7f6a29cb57b5d41825abaacabfc3
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中 Application Insights 连接器解决方案（预览版）
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
-| [Windows 代理](log-analytics-windows-agents.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
+| [Windows 代理](log-analytics-windows-agent.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
 | [Linux 代理](log-analytics-linux-agents.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |

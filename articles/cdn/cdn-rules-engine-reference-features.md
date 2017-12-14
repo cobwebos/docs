@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: ec2555df27f4b709d06b660bf161f741e5b86ea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107601fcc53e5f5b6f809bb3c7fceaf5e5c03d36
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本主题列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
@@ -644,7 +644,7 @@ Enabled|请求调试缓存响应标头时，会返回包括 X-EC-Debug 标头的
 
 **默认行为：**禁用。
 
-###<a name="modify-client-response-header"></a>修改客户端响应标头
+###<a name="modify-client-request-header"></a>修改客户端请求标头
 **目的：**每个请求包含一组用于描述该请求的 [请求标头]()。 此功能可以：
 
 - 追加或覆盖分配给请求标头的值。 如果指定的请求标头不存在，则可使用此功能将其添加到请求。
@@ -680,7 +680,7 @@ Enabled|请求调试缓存响应标头时，会返回包括 X-EC-Debug 标头的
 ###<a name="modify-client-response-header"></a>修改客户端响应标头
 每个响应都包含一组用于描述该响应的 [响应标头]()。 此功能可以：
 
-- 追加或覆盖分配给响应标头的值。 如果指定的请求标头不存在，则可使用此功能将其添加到响应。
+- 追加或覆盖分配给响应标头的值。 如果指定的响应标头不存在，则可使用此功能将其添加到响应。
 - 从响应中删除响应标头。
 
 默认情况下，由源服务器和边缘服务器定义响应标头值。
@@ -689,9 +689,9 @@ Enabled|请求调试缓存响应标头时，会返回包括 X-EC-Debug 标头的
 
 选项|说明|示例
 -|-|-
-附加|指定的值将添加到现有请求标头值的末尾。|**响应标头值（客户端）：**Value1 <br/> **响应标头值（HTTP 规则引擎）：**Value2 <br/>**新的响应标头值：**Value1Value2
-覆盖|请求标头值将设置为指定的值。|**响应标头值（客户端）：**Value1 <br/>**响应标头值（HTTP 规则引擎）：**Value2 <br/>**新的响应标头值：**Value2 <br/>
-删除|删除指定的请求标头。|**请求标头值（客户端）：**Value1 <br/> **修改客户端请求标头配置：**删除相关的响应标头。 <br/>**结果：**指定的响应标头不会转发给请求者。
+附加|指定的值将添加到现有响应标头值的末尾。|**响应标头值（客户端）：**Value1 <br/> **响应标头值（HTTP 规则引擎）：**Value2 <br/>**新的响应标头值：**Value1Value2
+覆盖|响应标头值将设置为指定的值。|**响应标头值（客户端）：**Value1 <br/>**响应标头值（HTTP 规则引擎）：**Value2 <br/>**新的响应标头值：**Value2 <br/>
+删除|删除指定的响应标头。|**响应标头值（客户端）：**Value1 <br/> **修改客户端响应标头配置：**删除相关的响应标头。 <br/>**结果：**指定的响应标头不会转发给请求者。
 
 重要信息：
 

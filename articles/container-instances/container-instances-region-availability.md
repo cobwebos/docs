@@ -1,27 +1,18 @@
 ---
-title: "Azure 容器实例区域和资源可用性 | Azure Docs"
+title: "Azure 容器实例区域和资源可用性"
 description: "了解哪些 Azure 区域支持容器实例的部署，以及这些实例的 CPU 和内存限制。"
 services: container-instances
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/31/2017
 ms.author: marsma
-ms.custom: 
-ms.openlocfilehash: 2b9b1b864bbfd73383759212dd7d91f8e4941544
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ace4eb6b284f2c1b2caeb54c1d686e68cacb1725
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="region-availability-for-azure-container-instances"></a>Azure 容器实例的区域可用性
 

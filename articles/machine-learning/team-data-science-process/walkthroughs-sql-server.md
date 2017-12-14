@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 8a8a400b87bacae7f0c34ad5643f66c078053f7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f7d6a0b7b1f874d87e10c490d0b48fe6e6083ef
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-SQL 的 SQL Server 数据科学演练
 
@@ -39,12 +39,12 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>在 SQL Server 中通过 T-SQL 或存储过程使用 R 预测出租车小费
 
-[适用于 R 和 SQL Server 的数据科学演练](https://docs.microsoft.com/en-us/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)向 SQL 程序员提供了通过 SQL Server R Services 使用 Transact-SQL 构建高级分析解决方案以使用 R 解决方案的体验。 
+[适用于 R 和 SQL Server 的数据科学演练](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)向 SQL 程序员提供了通过 SQL Server R Services 使用 Transact-SQL 构建高级分析解决方案以使用 R 解决方案的体验。 
 
 
 ## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>在 SQL Server 存储过程中使用 Python 预测出租车小费
 
-[将 T-SQL 用于 SQL Server Python Services](https://docs.microsoft.com/en-us/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) 演练向 SQL 程序员介绍了如何在 SQL Server 中生成机器学习解决方案。 具体展示了如何将 Python 代码添加到存储过程，从而将 Python 合并到应用程序中。
+[将 T-SQL 用于 SQL Server Python Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) 演练向 SQL 程序员介绍了如何在 SQL Server 中生成机器学习解决方案。 具体展示了如何将 Python 代码添加到存储过程，从而将 Python 合并到应用程序中。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,22 +3,22 @@ title: "使用门户管理 Azure 堆栈中的密钥保管库 |Microsoft 文档"
 description: "了解如何通过使用门户管理 Azure 堆栈中的密钥保管库"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
-ms.author: sngun
-ms.openlocfilehash: d263cbcc81be37eaedfdb771436fd13ef25362f8
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.author: mabrigg
+ms.openlocfilehash: d76a1e188c5a5bf008ac2fba9b43741a6a8d97b1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>使用门户管理 Azure 堆栈中的密钥保管库
 

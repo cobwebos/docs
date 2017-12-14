@@ -4,7 +4,7 @@ description: "一种用于演示 Azure Active Directory B2C 中的页面 UI 自�
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: mbaldwin
+manager: mtillman
 editor: bryanla
 ms.assetid: ae935d52-3520-4a94-b66e-b35bb40e7514
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: swkrish
-ms.openlocfilehash: e0c2d827553567ddbc7d006192dc35574e66f1cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9ccdea64213d564b271699afe28f5ae6db0a71a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具
 本文是 Azure Active Directory (Azure AD) B2C 中[主 UI 自定义文章](active-directory-b2c-reference-ui-customization.md)的一篇配套文章。 以下步骤介绍了如何使用我们提供的示例 HTML 和 CSS 内容来演练页面 UI 自定义功能。

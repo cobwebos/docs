@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
-ms.openlocfilehash: 1d289c09465cb8d5e4bfa569441dffcbf562b3bf
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: b67fdfc82bbc132772186e3500079cfcfdafe02b
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 
@@ -28,11 +28,15 @@ ms.lasthandoff: 11/17/2017
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-可以使用多种不同的方法来删除 VPN 网关配置中的虚拟网络网关。
+本文提供了有关删除使用资源管理器部署模型部署的 Azure VPN 网关的说明。 可以使用多种不同的方法来删除 VPN 网关配置中的虚拟网络网关。
 
 - 如果要删除所有信息并从头开始配置（例如，在测试环境中），可以删除资源组。 删除某个资源组时，会删除该组中的所有资源。 仅不想要保留资源组中的任何资源时，才建议使用此方法。 使用这种方法时，无法做到有选择性地删除一部分资源。
 
 - 如果想要保留资源组中的某些资源，则删除虚拟网络网关的过程会略微复杂一些。 在删除虚拟网络网关之前，必须先删除任何依赖于该网关的资源。 遵循的步骤取决于创建的连接类型，以及每个连接的依赖资源。
+
+> [!IMPORTANT]
+> 下面的说明介绍如何删除使用资源管理器部署模型部署的 Azure VPN 网关。 若要删除使用经典部署模型部署的 VPN 网关，请使用[此处](vpn-gateway-delete-vnet-gateway-classic-powershell.md)所述的 Azure PowerShell。
+
 
 ## <a name="delete-a-vpn-gateway"></a>删除 VPN 网关
 

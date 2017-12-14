@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: owend
-ms.openlocfilehash: a97f9648efef7f07659110d720c200dcd0a241a9
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 14bdbf3dd6d940cc3f4b665658f0c789916a2597
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/16/2017
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-若要从 PowerShell 运行同步，请[更新到最新](https://github.com/Azure/azure-powershell/releases) 5.01 版或更高版本 AzureRM 模块。 使用 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance)。
+若要从 PowerShell 运行同步，请[更新到最新](https://github.com/Azure/azure-powershell/releases) 5.01 版或更高版本 AzureRM 模块。 使用 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance)。
 
 ## <a name="connections"></a>连接
 

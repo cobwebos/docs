@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6a5bb66db889dc1c52252773e3f129ba2c3d55f1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9bb55d5af16056ebafc131e73ac4b9da181bd8c7
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑
 Azure 媒体剪辑器是免费的 JavaScript 库，能让 Web 开发人员为其用户提供创建媒体剪辑的界面。 此工具可以集成到任何 Web 页面，并提供用于加载资产和提交剪辑作业的 API。
@@ -29,8 +29,11 @@ Azure 媒体剪辑器能够执行：
 
 若要请求新功能，请将意见或反馈提交至 [Azure 媒体服务 UserVoice](http://aka.ms/amsvoice/)。 如有具体问题、疑问或发现任何 bug，请通过 amcinfo@microsoft.com 与媒体服务团队联系。
 
+下图阐释剪辑器接口：![Azure 媒体剪辑器](media/media-services-azure-media-clipper-getting-started/media-services-azure-media-clipper-interface.PNG)
+
 ## <a name="release-notes"></a>发行说明
-以下列表介绍剪辑器最新版本的各种已知问题以及更改日志：
+请参阅下表获取最新版剪辑器的博客文章、各种已知问题和更改日志：
+- [博客文章](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [已知问题列表](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
 - [更改日志](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 

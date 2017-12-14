@@ -1,6 +1,6 @@
 ---
 title: "在 VNet 之间创建连接：经典：Azure 门户 l | Microsoft Docs"
-description: "如何使用 PowerShell 和 Azure 经典门户将 Azure 虚拟网络连接到一起。"
+description: "如何使用 PowerShell 和 Azure 门户将 Azure 虚拟网络连接到一起。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 12/05/2017
 ms.author: cherylmc
-ms.openlocfilehash: 77097d59077cd8e199acdb5dc0d8427369565eea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e7a7af26fbfb728aa5a6b8a0d63b71f678256bf
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -86,12 +86,12 @@ ms.lasthandoff: 10/11/2017
 
 在 [Azure 门户](https://portal.azure.com)中创建两个虚拟网络。 有关创建经典虚拟网络的步骤，请参阅[创建经典虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 
 
-使用门户创建经典虚拟网络时，必须通过执行以下步骤导航到“虚拟网络”边栏选项卡，否则不会显示用于创建经典虚拟网络的选项：
+使用门户创建经典虚拟网络时，必须通过执行以下步骤导航到“虚拟网络”页面，否则不会显示用于创建经典虚拟网络的选项：
 
-1. 单击“+”打开“新建”边栏选项卡。
+1. 单击“+”打开“新建”页面。
 2. 在“搜索 Marketplace”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
-3. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”边栏选项卡。 
-4. 在“虚拟网络”边栏选项卡上，选择“经典”创建经典 VNet。 
+3. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”页面。 
+4. 在“虚拟网络”页面上，选择“经典”以创建经典 VNet。 
 
 如果使用本文进行练习，可以使用以下示例值：
 
@@ -144,14 +144,14 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |美国东部 |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |美国西部 |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
-1. 在 Azure 门户中找到 TestVNet1。 在边栏选项卡的“VPN 连接”部分中，单击“网关”。
+1. 在 Azure 门户中找到 TestVNet1。 在页面的“VPN 连接”部分，单击“网关”。
 
     ![无网关](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
 2. 在“新建 VPN 连接”页面上，选择“站点到站点”。
 3. 单击“本地站点”以打开“本地站点”页面并配置设置。
 4. 在“本地站点”页面上，为本地站点命名。 在示例中，我们将本地站点命名为“VNet4Local”。
 5. 对于“VPN 网关 IP 地址”，可以使用所需的任何 IP 地址，只要它采用有效格式即可。 通常，应该使用 VPN 设备的实际外部 IP 地址。 但是，对于经典 VNet 到 VNet 配置，请使用分配给 VNet 的网关的公共 IP 地址。 考虑到尚未创建该虚拟网络网关，因此，将指定任何有效的公共 IP 地址作为占位符。<br>请勿将此留空 - 就此配置来说，此项不是可选项。 稍后将返回到这些设置，使用 Azure 生成的相应虚拟网络网关 IP 地址对其进行配置。
-6. 对于“客户端地址空间”，使用另一 VNet 的地址空间。 请参考规划示例。 单击“确定”以保存设置并返回到“新建 VPN 连接”边栏选项卡。
+6. 对于“客户端地址空间”，使用另一 VNet 的地址空间。 请参考规划示例。 单击“确定”以保存设置并返回到“新建 VPN 连接”页面。
 
     ![本地站点](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
 
@@ -159,13 +159,13 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 每个虚拟网络都必须具有一个虚拟网络网关。 虚拟网络网关对流量进行路由和加密。
 
-1. 在“新建 VPN 连接”边栏选项卡上，选中“立即创建网关”复选框。
-2. 单击“子网、大小和路由类型”。 在“网关配置”边栏选项卡上，单击“子网”。
+1. 在“新建 VPN 连接”页上，选中“立即创建网关”复选框。
+2. 单击“子网、大小和路由类型”。 在“网关配置”页上，单击“子网”。
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 “地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。
 4. 配置“网关大小”。 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。 此配置的路由类型必须为“动态”。 无法更改路由类型，除非删除网关并创建一个新网关。
 6. 单击 **“确定”**。
-7. 在“新建 VPN 连接”边栏选项卡上，单击“确定”以开始创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
+7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
 
 ## <a name="vnet4settings"></a>步骤 5 - 配置 TestVNet4 设置
 
@@ -183,7 +183,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 ### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>第 1 部分 - 获取虚拟网络网关的公共 IP 地址
 
 1. 在 Azure 门户中找到虚拟网络。
-2. 单击以打开 VNet“概述”边栏选项卡。 在该边栏选项卡上，在“VPN 连接”中，可以查看虚拟网络网关的 IP 地址。
+2. 单击以打开 VNet“概述”页。 在该页上，在“VPN 连接”中，可以查看虚拟网络网关的 IP 地址。
 
   ![公共 IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/publicIP.png)
 3. 复制 IP 地址。 在接下来的部分中将使用它。
@@ -192,10 +192,10 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 ### <a name="part-2---modify-the-local-sites"></a>第 2 部分 - 修改本地站点
 
 1. 在 Azure 门户中找到虚拟网络。
-2. 在 VNet“概述”边栏选项卡上，单击本地站点。
+2. 在 VNet“概述”页上，单击本地站点。
 
   ![创建的本地站点](./media/vpn-gateway-howto-vnet-vnet-portal-classic/local.png)
-3. 在“站点到站点 VPN 连接”边栏选项卡上，单击要修改的本地站点的名称。
+3. 在“站点到站点 VPN 连接”页上，单击要修改的本地站点的名称。
 
   ![打开本地站点](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
 4. 单击要修改的**本地站点**。
@@ -204,7 +204,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 5. 更新“VPN 网关 IP 地址”并单击“确定”以保存设置。
 
   ![网关 IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
-6. 关闭其他边栏选项卡。
+6. 关闭其他页。
 7. 为 TestVNet4 重复上述步骤。
 
 ## <a name="getvalues"></a>步骤 7 - 从网络配置文件中检索值

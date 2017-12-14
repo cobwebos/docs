@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
-ms.openlocfilehash: bdf0bd54130521a7178af3a28731f4c0e21e3e0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75577ad318f2ff23a7b7d10cf551f3bced56fb62
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>部署 Azure 机器学习 Web 服务
 Azure 机器学习让用户能够生成、测试和部署预测分析解决方案。
@@ -108,7 +108,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 部署 Web 服务后，可以：
 
 * 通过 Web 服务 API 进行**访问**。
-* 通过 Azure 机器学习 Web 服务门户或 Azure 经典门户进行**管理**。
+* 通过 Azure 机器学习 Web 服务门户进行**管理**。
 * 如果模型发生更改则对其进行**更新**。
 
 #### <a name="access-your-new-web-service"></a>访问新 Web 服务
@@ -141,7 +141,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 ![测试 Web 服务](./media/publish-a-machine-learning-web-service/figure-3.png)
 
-在“配置”页上，可以更改服务的显示名称并提供说明。 名称和说明会显示在 [Azure 经典门户](http://manage.windowsazure.com/)中，可在其中管理 Web 服务。
+在“配置”页上，可以更改服务的显示名称并提供说明。 名称和说明会显示在 [Azure 门户](https://portal.azure.com/)中，可以在其中管理 Web 服务。
 
 可通过在**输入架构**、**输出架构**和 **Web 服务参数**下为每列输入字符串来为输入数据、输出数据和 Web 服务参数提供描述。 这些描述用于为 Web 服务提供的示例代码文档中。
 

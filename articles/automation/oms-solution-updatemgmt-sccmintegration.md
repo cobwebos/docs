@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec97432cd14c6289928f0419c242e1ccc2c8d876
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
-# <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>将 System Center Configuration Manager 与 OMS 更新管理集成 [预览版]
+# <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>将 System Center Configuration Manager 与 OMS 更新管理集成
 
 在软件更新管理 (SUM) 周期中，已经投资购买 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还可以依赖其在管理软件更新方面的优势和成熟度。  
 
@@ -41,13 +41,14 @@ ms.lasthandoff: 10/11/2017
 
 如果打算继续从 Configuration Manager 管理更新部署，请执行以下步骤。  OMS 连接到 Configuration Manager 来向连接到 Log Analytics 工作区的客户端计算机应用更新。 可以从客户端计算机缓存获取更新内容，就像部署是由 Configuration Manager 管理的一样。  
 
-1. 使用 [deploy software update process](https://docs.microsoft.com/en-us/sccm/sum/deploy-use/deploy-software-updates)（部署软件更新过程）中介绍的过程从 Configuration Manager 层次结构中的顶层站点创建软件更新部署。  与标准部署不同的必须配置的唯一设置是选项“不安装软件更新”，此选项用于控制部署包的下载行为。 此行为是通过在下一步骤中创建计划的更新部署而通过 OMS 更新管理解决方案管理的。  
-2. 在 Azure 门户中，在“自动化帐户”屏幕上选择你的自动化帐户， 根据[使用 Azure 门户创建新变量](../automation/automation-variables.md#to-create-a-new-variable-with-the-azure-portal)中的说明，创建一个名为 **UseOMSForSCCMUpdates** 且值为 **true** 的布尔类型的变量。 
-3. 在 OMS 门户中，打开“更新管理”仪表板。  根据[创建更新部署](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)中介绍的步骤创建一个新部署，并从下拉列表中选择表示为 OMS 计算机组的相应 Configuration Manager 集合。  请记住以下要点：
+1. 使用 [deploy software update process](https://docs.microsoft.com/sccm/sum/deploy-use/deploy-software-updates)（部署软件更新过程）中介绍的过程从 Configuration Manager 层次结构中的顶层站点创建软件更新部署。  与标准部署不同的必须配置的唯一设置是选项“不安装软件更新”，此选项用于控制部署包的下载行为。 此行为是通过在下一步骤中创建计划的更新部署而通过 OMS 更新管理解决方案管理的。  
+
+1. 在 OMS 门户中，打开“更新管理”仪表板。  根据[创建更新部署](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)中介绍的步骤创建一个新部署，并从下拉列表中选择表示为 OMS 计算机组的相应 Configuration Manager 集合。  请记住以下要点：
     1. 如果为所选的 Configuration Manager 设备集合定义了维护窗口，则它将存储在集合的成员中而不是存储在 OMS 中的计划的部署中定义的“持续时间”设置中。
-    2. 目标集合的成员必须连接到 Internet（直接连接、通过代理服务器或者通过 OMS 网关）。  
+    1. 目标集合的成员必须连接到 Internet（直接连接、通过代理服务器或者通过 OMS 网关）。  
 
 使用 OMS 解决方案完成更新部署后，属于所选计算机组的成员的目标计算机将按计划的时间从本地客户端缓存中安装更新。  可以[查看更新部署状态](../operations-management-suite/oms-solution-update-management.md#viewing-update-deployments)来监视部署结果。  
+
 
 ### <a name="manage-software-updates-from-oms"></a>从 OMS 管理软件更新
 

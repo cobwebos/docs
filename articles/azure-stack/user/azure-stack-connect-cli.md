@@ -3,8 +3,8 @@ title: "连接到 Azure CLI 堆栈 |Microsoft 文档"
 description: "了解如何使用跨平台命令行界面 (CLI) 来管理和部署 Azure 堆栈上的资源"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
-ms.author: sngun
-ms.openlocfilehash: 9a0ad3d8c2cdd3cd1d46e789c2b65677ac5a10b1
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.author: mabrigg
+ms.openlocfilehash: 5d15815e9b1d20ab03b5716de45ad0fa77a11057
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>安装和配置 CLI 用于 Azure 堆栈
 
@@ -145,7 +145,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
      --profile 2017-03-09-profile
    ```
 
-4. 通过登录到你的 Azure 堆栈环境`az login`命令。 你可以登录到 Azure 堆栈环境以用户或作为[服务主体](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects)。 
+4. 通过登录到你的 Azure 堆栈环境`az login`命令。 你可以登录到 Azure 堆栈环境以用户或作为[服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)。 
 
    * 以登录*用户*： 你可以指定的用户名和密码直接内的`az login`命令或通过使用浏览器进行身份验证。 您需要做后者，如果你的帐户已启用多因素身份验证。
 
@@ -195,4 +195,3 @@ az group create \
 [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 
 [管理用户权限](azure-stack-manage-permissions.md)
-

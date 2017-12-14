@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/26/2017
+ms.date: 12/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 70c85bcb2c26d2ad3d0515d24e028f84495634c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3965c74d51996b3e4144130fad01fae9e265897
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 门户中使用 StorSimple 设备管理器服务来克隆卷
 
@@ -69,12 +69,7 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
    
     ![备份集列表](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. 展开备份集以查看相关联的卷。 在还原这些卷之前，必须使其在主机和设备上脱机。 在设备的“卷”边栏选项卡上访问卷，遵循[使卷脱机](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)中的步骤使其脱机。
-   
-   > [!IMPORTANT]
-   > 请确保在设备上使卷脱机之前，已在主机上使卷处于脱机状态。 如果未在主机上使卷脱机，则可能会导致数据损坏。
-   
-4. 导航回到“备份目录”，在备份集中选择一个卷。 单击右键，从上下文菜单中选择“克隆”。
+3. 展开备份集以查看关联的卷并选择备份集中的卷。 单击右键，从上下文菜单中选择“克隆”。
 
    ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 

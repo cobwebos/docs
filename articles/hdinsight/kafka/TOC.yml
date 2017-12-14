@@ -11,6 +11,9 @@
   items:
     - name: 创建 Kafka 群集
       href: apache-kafka-get-started.md
+    - name: 安装 HDInsight 应用
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: 容量计划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -50,26 +53,17 @@
         - name: 使用脚本操作自定义群集
           href: ../hdinsight-hadoop-customize-cluster-linux.md
           maintainContext: true
-        - name: 将 HDInsight 连接到本地网络
-          href: ../connect-on-premises-network.md
-          maintainContext: true
         - name: 开发脚本操作
           href: ../hdinsight-hadoop-script-actions-linux.md
           maintainContext: true
-        - name: 使用虚拟网络
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: 构建 HDInsight 应用程序
           items:
-            - name: 安装 HDInsight 应用
-              href: ../hdinsight-apps-install-applications.md
-              maintainContext: true
             - name: 安装自定义应用
               href: ../hdinsight-apps-install-custom-applications.md
               maintainContext: true
             - name: 使用 REST 安装应用
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
-            - name: 将 HDInsight 应用发布到 Azure 应用商店
+            - name: 将 HDInsight 应用发布到 Azure Marketplace
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
     - name: 安全
@@ -145,20 +139,6 @@
         - name: 为 HDInsight 群集修补 OS
           href: ../hdinsight-os-patching.md
           maintainContext: true
-    - name: 监视
-      items:
-        - name: 使用 Azure Log Analytics
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: 特定于群集的仪表板
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
-          maintainContext: true
-        - name: 将查询与 Log Analytics 配合使用
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
-        - name: 监视群集性能
-          href: ../hdinsight-key-scenarios-to-monitor.md
-          maintainContext: true
     - name: 故障排除
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
@@ -183,6 +163,33 @@
             - name: 为 Hadoop 服务启用堆转储
               href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
               maintainContext: true
+- name: 企业就绪情况
+  items:
+    - name: 保护数据
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      maintainContext: true
+    - name: 网络访问
+      items:
+        - name: Azure VNet 中的 HDInsight
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+          maintainContext: true
+        - name: 将 HDInsight 与本地网络相连
+          href: ../connect-on-premises-network.md
+          maintainContext: true
+    - name: 使用 OMS 进行监视
+      items:
+        - name: 使用 Azure Log Analytics
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          maintainContext: true
+        - name: 特定于群集的仪表板
+          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+          maintainContext: true
+        - name: 将查询与 Log Analytics 配合使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          maintainContext: true
+        - name: 监视群集性能
+          href: ../hdinsight-key-scenarios-to-monitor.md
+          maintainContext: true
 - name: 引用
   items:
     - name: 代码示例

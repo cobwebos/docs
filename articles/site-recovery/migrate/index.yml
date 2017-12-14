@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Site Recovery 文档
+title: "Azure Site Recovery 文档"
 metadata:
-  title: Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft Docs
+  title: "Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft Docs"
   meta.description: Learn how to migrate to Azure with Azure Site Recovery
   services: site-recovery
   author: rayne-wiselman
@@ -13,26 +13,31 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/26/2017
   ms.author: raynew
+  ms.openlocfilehash: 3742ef09cbe8d9bb07930ce61c41be25212528a2
+  ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 11/29/2017
 abstract:
-  description: 除了协调 Azure VM 和本地计算机的灾难恢复，Azure Site Recovery 还协调和管理本地计算机到 Azure 的迁移，以及 Azure VM 在 Azure 区域之间的迁移。 通过教程了解如何设置迁移。
+  description: "除了协调 Azure VM 和本地计算机的灾难恢复，Azure Site Recovery 还协调和管理本地计算机到 Azure 的迁移，以及 Azure VM 在 Azure 区域之间的迁移。 通过教程了解如何设置迁移。"
 sections:
-  - title: 分步教程
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何迁移本地 VM。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 了解如何迁移本地 VM。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">准备 Azure</a>
-          - html: <a href="tutorial-migrate-on-premises-to-azure">将本地计算机迁移到 Azure</a>
-          - html: <a href="tutorial-migrate-aws-to-azure">将 AWS 实例迁移到 Azure</a>
-  - title: 引用
+    - html: "<a href=\"tutorial-prepare-azure\">准备 Azure</a>"
+    - html: "<a href=\"tutorial-migrate-on-premises-to-azure\">将本地计算机迁移到 Azure</a>"
+    - html: "<a href=\"tutorial-migrate-aws-to-azure\">将 AWS 实例迁移到 Azure</a>"
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">REST API 参考</a></p>
+    - title: "命令行"
+      html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/site-recovery/\">REST API 参考</a></p>"

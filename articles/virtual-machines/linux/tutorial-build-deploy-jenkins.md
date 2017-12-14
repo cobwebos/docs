@@ -1,5 +1,5 @@
 ---
-title: "使用 Team Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft 文档"
+title: "使用 Team Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft Docs"
 description: "从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM"
 author: ahomer
 manager: douge
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: c96aafeb05293ccdc4c30c2b828cead1dfdb157c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>通过使用 Jenkins 和 Team Services 将应用部署到 Linux VM
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/09/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 需要具有对 Jenkins 服务器的访问权限。 如果尚未创建 Jenkins 服务器，请参阅[在 Azure 虚拟机上创建 Jenkins 主节点](https://docs.microsoft.com/en-us/azure/jenkins/install-jenkins-solution-template)。 
+* 需要具有对 Jenkins 服务器的访问权限。 如果尚未创建 Jenkins 服务器，请参阅[在 Azure 虚拟机上创建 Jenkins 主节点](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)。 
 
 * 登录到 Team Services 帐户 (https://{youraccount}.visualstudio.com)。 
   可以获取[免费 Team Services 帐户](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)。
@@ -48,9 +48,9 @@ ms.lasthandoff: 11/09/2017
   > [!NOTE]
   > 有关详细信息，请参阅[连接到 Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)。
 
-*  部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-manage-vm)。
+*  部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)。
 
-*  为虚拟机开启入站端口 80。 有关详细信息，请参阅[使用 Azure 门户创建网络安全组](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)。
+*  为虚拟机开启入站端口 80。 有关详细信息，请参阅[使用 Azure 门户创建网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)。
 
 ## <a name="get-the-sample-app"></a>获取示例应用
 

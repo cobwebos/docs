@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 3b2fbab10836b138792efad7ea30f4f0d15905c3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 69707931402de597c9d6a329da349723da2a782a
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 有关不同身份验证类型的更多属性和 JSON 示例，请分别参阅以下部分：
 
 - [使用服务主体身份验证](#using-service-principal-authentication)
-- [使用托管服务标识身份验证](#using-managed-service-identitiy-authentication)
+- [使用托管服务标识身份验证](#using-managed-service-identity-authentication)
 
 ### <a name="using-service-principal-authentication"></a>使用服务主体身份验证
 

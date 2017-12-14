@@ -3,33 +3,33 @@ title: "安装适用于 Azure 堆栈 PowerShell |Microsoft 文档"
 description: "了解如何安装适用于 Azure 堆栈 PowerShell。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: F8D99A91-15B5-4073-BE07-A43514A6D2CF
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: sngun
-ms.openlocfilehash: 1c4c9aa36836398ad87c3655ff039a9dc8730456
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.author: mabrigg
+ms.openlocfilehash: b5cc53387b6867d776059856b6e7793abbc67c9a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure 堆栈 PowerShell  
 
 Azure 堆栈兼容 Azure PowerShell 模块需要使用 Azure 堆栈处理。 在本指南中，我们引导你完成安装适用于 Azure 堆栈 PowerShell 所需的步骤。 你可以使用如果你通过 VPN 连接从 Azure 堆栈开发工具包中，或从基于 Windows 的外部客户端此文章中所述的步骤。
 
-本文提供了详细说明安装适用于 Azure 堆栈 PowerShell。 但是，如果你想要快速安装和配置 PowerShell，你可以使用"使用 PowerShell 获取启动并正在运行"主题中提供的脚本。 
+本文提供了详细说明安装适用于 Azure 堆栈 PowerShell。 但是，如果你想要快速安装和配置 PowerShell，你可以使用"使用 PowerShell 获取启动并正在运行"文章中提供的脚本。 
 
 > [!NOTE]
 > 以下步骤需要 PowerShell 5.0。 若要检查你的版本，请运行 $PSVersionTable.PSVersion 并将"主要"版本进行比较。
 
-通过 PowerShell 库安装 Azure 堆栈的 PowerShell 命令。 到 regiser PSGallery 存储库，打开提升的 PowerShell 会话从开发工具包或基于 Windows 的外部客户端如果你通过 VPN 连接，并运行以下命令：
+通过 PowerShell 库安装 Azure 堆栈的 PowerShell 命令。 若要注册 PSGallery 存储库，请从开发工具包或基于 Windows 的外部客户端通过打开提升的 PowerShell 会话如果你通过 VPN 连接，并运行以下命令：
 
 ```powershell
 Set-PSRepository `
@@ -78,7 +78,7 @@ Set-PSRepository `
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
-  如果安装不成功，将 AzureRM 和 AzureStack 模块将显示在输出中。
+  如果安装不成功，AzureRM 和 Azure 堆栈模块将显示在输出中。
 
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>安装 PowerShell 断开连接或部分连接的方案中 （具有有限的 internet 连接）
 

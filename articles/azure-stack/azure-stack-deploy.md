@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/14/2017
+ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2bfd9b2603575545fef1c26310a2eecd2c8968e4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure 堆栈部署先决条件
 
@@ -121,62 +121,6 @@ ms.lasthandoff: 11/15/2017
 
 ### <a name="internet-access"></a>Internet 访问权限
 Azure 堆栈需要访问 Internet，直接或通过透明的代理。 Azure 堆栈不支持的 web 代理，以启用 Internet 访问权限的配置。 主机 IP 和新的 IP 分配给 MA BGPNAT01 （通过 DHCP 还是静态 IP） 必须能够访问 Internet。 在位于域 graph.windows.net 和 login.microsoftonline.com 域下使用端口 80 和 443。
-
-## <a name="telemetry"></a>遥测
-
-遥测有助于我们调整以后版本的 Azure 堆栈。 它可让我们快速地响应反馈，提供新功能，并提高质量。 Microsoft Azure 堆栈包括 Windows Server 2016 和 SQL Server 2014。 从默认设置更改，这些产品任一并且均有介绍通过 Microsoft 企业隐私声明。 Azure 堆栈还包含具有尚未经过修改以将遥测发送到 Microsoft 的开放源代码软件。 下面是 Azure 堆栈遥测数据的一些示例：
-
-- 部署注册信息
-- 则在打开和关闭警报
-- 网络资源数
-
-若要支持遥测数据流，必须在你的网络中打开端口 443 (HTTPS)。 客户端终结点是 https://vortex-win.data.microsoft.com。
-
-如果你不想要为 Azure 堆栈提供遥测，你可以将其关闭，在开发工具包主机以及如下所述的基础结构虚拟机来使用。
-
-### <a name="turn-off-telemetry-on-the-development-kit-host-optional"></a>关闭遥测开发工具包主机上 （可选）
-
->[!NOTE]
-如果你想要关闭开发工具包宿主遥测，则必须在运行部署脚本之前执行操作。
-
-之前[运行 asdk installer.ps1 脚本]()若要部署开发工具包宿主，引导 CloudBuilder.vhdx 并在提升的 PowerShell 窗口中运行以下脚本：
-```powershell
-### Get current AllowTelmetry value on DVM Host
-(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name AllowTelemetry).AllowTelemetry
-### Set & Get updated AllowTelemetry value for ASDK-Host 
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name "AllowTelemetry" -Value '0'  
-(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name AllowTelemetry).AllowTelemetry
-```
-
-设置**AllowTelemetry**到 0 将关闭遥测 Windows 和 Azure 堆栈部署。 仅从操作系统的关键安全事件发送。 设置跨所有主机和基础结构 Vm，控制 Windows 遥测，并会重新应用到新的节点 Vm 发生横向扩展操作时。
-
-
-### <a name="turn-off-telemetry-on-the-infrastructure-virtual-machines-optional"></a>关闭遥测基础结构的虚拟机上 （可选）
-
-成功部署后，在开发工具包主机上 （作为 AzureStack\AzureStackAdmin 用户） 提升的 PowerShell 窗口中运行以下脚本：
-
-```powershell
-$AzSVMs= get-vm |  where {$_.Name -like "AzS-*"}
-### Show current AllowTelemetry value for all AzS-VMs
-invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
-### Set & Get updated AllowTelemetry value for all AzS-VMs
-invoke-command -computername $AzSVMs.name {Set-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Value '0'}
-invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
-```
-
-若要配置 SQL Server 遥测，请参阅[如何配置 SQL Server 2016](https://support.microsoft.com/en-us/help/3153756/how-to-configure-sql-server-2016-to-send-feedback-to-microsoft)。
-
-### <a name="usage-reporting"></a>使用情况报告
-
-通过注册，Azure 堆栈也被配置为到 Azure 的正向使用情况信息。 从遥测独立控制使用情况报告。 你可以将使用情况报告时关闭[注册](azure-stack-register.md)使用 Github 上的脚本。 只需设置**$reportUsage**参数**$false**。
-
-设置使用情况数据的格式详见[报表 Azure 堆栈使用情况数据迁移到 Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)。 Azure 堆栈开发工具包用户不会实际收费。 此功能还包括开发工具包中，以便可以进行测试以查看使用情况报告的工作原理。 
 
 
 ## <a name="next-steps"></a>后续步骤

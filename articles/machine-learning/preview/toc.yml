@@ -128,6 +128,8 @@
           href: scenario-tdsp-classifying-us-incomes.md
         - name: 使用 CNTK 进行的图像分类
           href: scenario-image-classification-using-cntk.md
+        - name: 深度学习预测性维护
+          href: scenario-deep-learning-for-predictive-maintenance.md
 - name: 引用
   items:
     - name: 数据准备工作

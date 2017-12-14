@@ -39,7 +39,7 @@
           href: data-factory-build-your-first-pipeline-using-vs.md
         - name: Azure PowerShell
           href: data-factory-build-your-first-pipeline-using-powershell.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: data-factory-build-your-first-pipeline-using-arm.md
         - name: REST API
           href: data-factory-build-your-first-pipeline-using-rest-api.md
@@ -157,7 +157,7 @@
           href: data-factory-compute-linked-services.md
     - name: 开发
       items:
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: data-factory-how-to-use-resource-manager-templates.md
         - name: 示例
           href: data-factory-samples.md
@@ -179,6 +179,8 @@
           href: data-factory-troubleshoot.md
         - name: 解决数据管理网关的使用问题
           href: data-factory-troubleshoot-gateway-issues.md
+    - name: 使用存储过程活动调用 SSIS 包
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: 引用
   items:
     - name: 代码示例

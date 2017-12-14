@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7a051e0f35b2dd943f3569391d7ca0f206a9ef02
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/03/2017
 3. 将所需库分发到所有工作节点
 4. 编写 Caffe 模型，以分布式方式运行。
 
-HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，可以轻松地执行某些任务。 我们在本博客文章中多次使用的一项功能称为[脚本操作](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)，适合执行 Shell 命令来自定义群集节点（头节点、工作节点或边缘节点）。
+HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，可以轻松地执行某些任务。 我们在本博客文章中多次使用的一项功能称为[脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)，适合执行 Shell 命令来自定义群集节点（头节点、工作节点或边缘节点）。
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>步骤 1：在所有节点上安装必需的依赖项
 
@@ -71,14 +71,14 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 第二步是在运行时下载、编译和安装适用于 Caffe 的 protobuf 2.5.0。 Protobuf 2.5.0 [是必需的](https://github.com/yahoo/CaffeOnSpark/issues/87)，但 Ubuntu 16 不提供包形式的该版本，因此需从源代码对其进行编译。 Internet 上也有一些介绍其编译方法的资源。 有关详细信息，请参阅[此文](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)。
 
-若要开始，可直接针对群集的所有工作节点和头节点运行此脚本操作（适用于 HDInsight 3.5）。 可在现有群集上运行脚本操作，或在群集创建过程中使用脚本操作。 有关脚本操作的详细信息，请参阅[此处](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)的文档。
+若要开始，可直接针对群集的所有工作节点和头节点运行此脚本操作（适用于 HDInsight 3.5）。 可在现有群集上运行脚本操作，或在群集创建过程中使用脚本操作。 有关脚本操作的详细信息，请参阅[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)的文档。
 
 ![用于安装依赖项的脚本操作](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
 ## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>步骤 2：在头节点上生成 Caffe on Spark for HDInsight
 
-第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 在此步骤中，必须[使用 SSH 连接到头节点](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)。 之后，必须执行 [CaffeOnSpark 生成步骤](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)。 下面是使用其他步骤生成 CaffeOnSpark 的脚本。 
+第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 在此步骤中，必须[使用 SSH 连接到头节点](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)。 之后，必须执行 [CaffeOnSpark 生成步骤](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)。 下面是使用其他步骤生成 CaffeOnSpark 的脚本。 
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive

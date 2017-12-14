@@ -41,6 +41,8 @@
       href: kubernetes-draft.md
     - name: 使用 Azure 文件持久保存数据
       href: azure-files.md
+    - name: 使用 OSBA 与 Azure 集成
+      href: integrate-azure.md
     - name: 使用 Kubernetes 仪表板
       href: kubernetes-dashboard.md
     - name: 创建服务主体

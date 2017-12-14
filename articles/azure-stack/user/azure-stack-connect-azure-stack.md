@@ -3,8 +3,8 @@ title: "连接到 Azure 的堆栈 |Microsoft 文档"
 description: "了解如何连接 Azure 堆栈"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
 ms.service: azure-stack
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
-ms.author: sngun
-ms.openlocfilehash: 914f2e5d10aa341cea5eba8c24c7c37610e6b626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 7479202a8afabf5a84560691a2bccf849206c077
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 
-若要管理的资源，你必须连接到 Azure 堆栈开发工具包。 本主题详细说明连接到开发工具包所需的步骤。 你可以使用以下连接选项之一：
+若要管理的资源，你必须连接到 Azure 堆栈开发工具包。 本文详细介绍连接到开发工具包所需的步骤。 你可以使用以下连接选项之一：
 
 * [远程桌面](#connect-with-remote-desktop)： 允许单个并发用户快速连接从开发工具包。
 * [虚拟专用网络 (VPN)](#connect-with-vpn)： 允许从 Azure 堆栈的基础结构 （需要配置） 以外的客户端的多个并发用户连接。
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="configure-vpn-connectivity"></a>配置 VPN 连接
 
-若要创建与开发工具包的 VPN 连接，从本地基于 Windows 的计算机打开提升的 PowerShell 会话，并运行以下脚本 (请务必更新你的环境的 IP 地址和密码值):
+若要创建与开发工具包的 VPN 连接，从本地基于 Windows 的计算机打开提升的 PowerShell 会话并运行以下脚本 （请确保更新你的环境的 IP 地址和密码值）：
 
 ```PowerShell 
 # Configure winrm if it's not already configured
@@ -82,7 +82,7 @@ Add-AzsVpnConnection `
 
 ```
 
-如果设置成功，你应看到**azurestack**列表中的 VPN 连接。
+如果成功进行的设置，你应看到**azurestack**列表中的 VPN 连接。
 
 ![网络连接](media/azure-stack-connect-azure-stack/image3.png)  
 

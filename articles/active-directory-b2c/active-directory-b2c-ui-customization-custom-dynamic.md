@@ -4,7 +4,7 @@ description: "支持多品牌体验（包含运行时动态更改的 HTML5/CSS �
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
-ms.openlocfilehash: fffb6c82b2e04976c420fba07bbcf967ffd25929
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 342e82071778156477d216c9b624a938c48cb37f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 使用 Azure Active Directory B2C (Azure AD B2C) 自定义策略可在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 
@@ -155,7 +155,7 @@ ms.lasthandoff: 10/25/2017
     此时会打开“创建应用服务”窗口。 在此窗口中，可以开始创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
     > [!NOTE]
-    > 有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)。
+    > 有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)。
 
 3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、A-Z、0-9 和连字符 (-)）。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.NET`，其中 `<app_name>` 是 Web 应用名称。 可以接受自动生成的名称，它是唯一的。
 
@@ -216,7 +216,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
     ![内容定义](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>步骤 6：将策略上传到租户
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，选择“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
 
 2. 选择“标识体验框架”。
 
@@ -229,12 +229,12 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>步骤 7：使用“立即运行”测试自定义策略
-1. 选择“Azure AD B2C 设置”，再选择“标识体验框架”。
+1. 选择“Azure AD B2C 设置”，然后选择“标识体验框架”。
 
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。  
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。  
     应会看到带有前面所创建的背景的自定义 HTML5。
 
     ![注册或登录策略](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)

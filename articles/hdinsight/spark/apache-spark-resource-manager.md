@@ -16,22 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jgao
-ms.openlocfilehash: 3c98150239134c686ac8edebd3c477bec8be7dd8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: b2208f0553ce62be054409a415723445733708d4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
 
-本文介绍如何访问与 Spark 群集关联的界面，例如 Ambari UI、YARN UI 和 Spark History Server。 此外，介绍如何优化群集配置以获得最佳性能。
+了解如何访问与 Spark 群集关联的界面（如 Ambari UI、YARN UI 和 Spark History Server），以及如何优化群集配置以达到最佳性能。
 
 **先决条件：**
 
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
-## <a name="how-do-i-launch-the-ambari-web-ui"></a>如何启动 Ambari Web UI？
+## <a name="open-the-ambari-web-ui"></a>打开 Ambari Web UI
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
 2. 单击 Spark 群集的“仪表板”。 出现提示时，输入 Spark 群集的管理员凭据。
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 11/29/2017
 
     ![Ambari Web UI](./media/apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")   
 
-## <a name="how-do-i-launch-the-spark-history-server"></a>如何启动 Spark History Server？
+## <a name="open-the-spark-history-server"></a>打开 Spark History Server
 1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。
 2. 在群集边栏选项卡中的“快速链接”下，单击“群集仪表板”。 在“群集仪表板”边栏选项卡中，单击“Spark History Server”。
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 11/29/2017
 
     出现提示时，输入 Spark 群集的管理员凭据。
 
-## <a name="how-do-i-launch-the-yarn-ui"></a>如何启动 Yarn UI？
+## <a name="open-the-yarn-ui"></a>打开 YARN UI
 可以使用 YARN UI 来监视 Spark 群集上当前运行的应用程序。
 
 1. 在群集边栏选项卡中，单击“群集仪表板”，并单击“YARN”。
@@ -60,7 +59,7 @@ ms.lasthandoff: 11/29/2017
    >
    >
 
-## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications"></a>用于运行 Spark 应用程序的最佳群集配置是什么？
+## <a name="the-optimum-cluster-configuration-to-run-spark-applications"></a>用于运行 Spark 应用程序的最佳群集配置
 根据应用程序的要求，可用于 Spark 配置的三个关键参数为 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 执行器是针对 Spark 应用程序启动的进程。 它在辅助角色节点上运行，负责执行应用程序的任务。 执行器的默认数目和每个群集的执行器大小是根据辅助角色节点数目和辅助角色节点大小计算的。 这些信息存储在群集头节点上的 `spark-defaults.conf` 中。
 
 这三个配置参数可在群集级别配置（适用于群集上运行的所有应用程序），也可以针对每个应用程序指定。

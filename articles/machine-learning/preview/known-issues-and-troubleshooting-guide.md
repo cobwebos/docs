@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -112,6 +112,19 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
    - 删除脚本 `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
    - 删除用于启动上述脚本的桌面快捷方式
    - 下载安装程序 https://aka.ms/azureml-wb-msi 并重新安装。
+
+## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>登录后停留在“正在检查试验帐户”屏幕
+登录后，Workbench 应用可能会停留在空白屏幕上，同时会出现一条消息，显示“正在检查试验帐户”以及一个旋转滚轮。 若要解决此问题，请执行以下步骤：
+1. 关闭该应用
+2. 删除以下文件：
+  ```
+  # on Windows
+  %appdata%\AmlWorkbench\AmlWb.settings
+
+  # on macOS
+  ~/Library/Application Support/AmlWorkbench/AmlWb.settings
+  ```
+3. 重新启动应用。
 
 ## <a name="cant-delete-experimentation-account"></a>无法删除试验帐户
 可使用 CLI 删除试验帐户，但是必须先删除这些子工作区内的子工作区和子项目。 否则会出错。

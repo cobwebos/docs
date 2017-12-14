@@ -4,7 +4,7 @@ description: "在 Windows Server 2012 R2 中使用 Active Directory 联合身份
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 11/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6d53d08156d0e5d1d070361db5b74d201f18a224
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 4117414f4605b73d8aab8acc2e788720deff8b99
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -166,9 +166,9 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 4. 出现提示时，请使用凭据登录。 随后将加入该设备。
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册加入 Windows 7 设备
-若要注册已加入域的 Windows 7 设备，需要部署设备注册软件包。 此软件包名为 Workplace Join for Windows 7，可以从 [Microsoft Connect 网站](https://connect.microsoft.com/site1164)下载。 
+若要注册已加入域的 Windows 7 设备，需要部署[设备注册软件包](https://www.microsoft.com/download/details.aspx?id=53554)。
 
-有关如何使用此包的说明，可在[如何使用 Azure Active Directory 配置已加入域的 Windows 设备的自动注册](active-directory-conditional-access-automatic-device-registration-setup.md)中找到。
+有关如何使用程序包的说明，请参阅[适用于非 Windows 10 计算机的 Windows Installer 程序包](device-management-hybrid-azuread-joined-devices-setup.md#windows-installer-packages-for-non-windows-10-computers)。
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>验证注册的设备是否已写回到 Active Directory
 可以使用 LDP.exe 和 ADSI 编辑器来查看并确认已将设备对象写回到 Active Directory。 Active Directory 管理员工具中提供了这两个程序。

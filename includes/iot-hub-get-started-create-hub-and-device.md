@@ -1,33 +1,14 @@
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“新建” > “物联网” > “IoT 中心”。
+[!INCLUDE [iot-hub-create-hub](iot-hub-create-hub.md)]
 
-   ![在 Azure 门户中创建 IoT 中心](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
-2. 在“IoT 中心”窗格中，输入 IoT 中心的以下信息：
+创建 IoT 中心以后，即可找到将设备和应用程序连接到 IoT 中心时需要使用的重要信息。 
 
-     名称：输入 IoT 中心的名称。 如果输入的名称有效，会显示一个绿色复选标记。
-
-     定价和缩放层：选择“F1 - 免费”层。 此选项对于本演示来说已足够。 有关详细信息，请参阅[定价和缩放层](https://azure.microsoft.com/pricing/details/iot-hub/)。
-
-     **资源组**：创建用于托管 IoT 中心的资源组，或使用现有的资源组。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../articles/azure-resource-manager/resource-group-portal.md)。
-
-     **位置**：选择与创建的 IoT 中心最靠近的位置。
-
-     **固定仪表板**：选中此选项可以方便地从仪表板访问 IoT 中心。
-
-   ![输入创建 IoT 中心所需的信息](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
-
-   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
-
-3. 单击“创建” 。 创建 IoT 中心可能需要数分钟的时间。 可在“通知”窗格中查看进度。
-
-   ![请查看 IoT 中心的进度通知](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
-
-4. 创建 IoT 中心后，请在仪表板中单击它。 记下“主机名”，并单击“共享访问策略”。
+1. 创建 IoT 中心后，请在仪表板中单击它。 记下“主机名”，并单击“共享访问策略”。
 
    ![获取 IoT 中心的主机名](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
 
-5. 在“共享访问策略”窗格中单击“iothubowner”策略，复制并记下 IoT 中心的**连接字符串**。 有关详细信息，请参阅[控制对 IoT 中心的访问](../articles/iot-hub/iot-hub-devguide-security.md)。
+1. 在“共享访问策略”窗格中单击“iothubowner”策略，复制并记下 IoT 中心的**连接字符串**。 有关详细信息，请参阅[控制对 IoT 中心的访问](../articles/iot-hub/iot-hub-devguide-security.md)。
 
 > [!NOTE] 
 此设置教程不需要此 iothubowner 连接字符串。 不过，在完成此设置以后，可能需要将其用于某些讲述其他 IoT 方案的教程。

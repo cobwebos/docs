@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
-ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aef243e34f1d5fc8240576a9803bb8b08693a7b7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>升级虚拟机规模集
 本文介绍了如何在不停机的情况下为 Azure 虚拟机规模集推出 OS 更新。 在此上下文中，OS 更新涉及到更改 OS 的版本或 SKU，或者更改自定义映像的 URI。 在不停机的情况下更新意味着一次只更新一台虚拟机或分组更新（如一次更新一个容错域），而不是一次更新所有虚拟机。 这样做能使没有进行升级的虚拟机继续运行。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 * 更改使用 Azure 托管磁盘创建的规模集的映像引用。
 * 从虚拟机内部修补 OS（这样的示例包括安装安全修补程序以及运行 Windows 更新）。 尽管此方案是受支持的，但在本文中不予讨论。
 
-此处不讨论部署为 [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) 群集的一部分的虚拟机规模集。 有关修补 Service Fabric 的详细信息，请参阅[在 Service Fabric 群集中修补 Windows OS](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-patch-orchestration-application)。
+此处不讨论部署为 [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) 群集的一部分的虚拟机规模集。 有关修补 Service Fabric 的详细信息，请参阅[在 Service Fabric 群集中修补 Windows OS](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)。
 
 更改平台映像的 OS 版本/SKU 或自定义映像的 URI 的基本顺序，如下所示：
 

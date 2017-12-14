@@ -1,10 +1,10 @@
 ---
-title: "Azure Active Directory 中的 Office 365 组过期预览 | Microsoft Docs"
+title: "Azure Active Directory 中的 Office 365 组过期 | Microsoft Docs"
 description: "如何在 Azure Active Directory 中为 Office 365 组设置过期（预览版）"
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory
@@ -12,29 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 12/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d485d2e7d22ea79a87dc52dbc063a811f4a1a2ec
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="configure-office-365-groups-expiration-preview"></a>配置 Office 365 组过期（预览版）
+# <a name="configure-expiration-for-office-365-groups-preview"></a>配置 Office 365 组过期（预览版）
 
-现在可以通过为所选的任何 Office 365 组设置过期来管理 Office 365 组的生命周期。 设置过期后，会要求组的所有者续订这些组（如果仍需要）。 将删除所有未续订的 Office 365 组。 组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。  
-
+现在可以通过为 Office 365 组设置过期来管理其生命周期。 可以在 Azure Active Directory (Azure AD) 中为 Office 365 组设置过期。 将某个组设置为过期后：
+-   在过期时间即将到来时，通知该组的所有者续订该组
+-   未续订的任何组将被删除
+-   组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。
 
 > [!NOTE]
-> 可以仅为 Office 365 组设置过期。
->
-> 要为 O365 组设置过期，需要先将 Azure AD Premium 许可证分配给
->   - 为租户配置过期设置的管理员
->   - 为此设置选择的组的所有成员
+> 为 Office 365 组设置过期要求过期设置要应用到的所有组成员具有 Azure AD Premium 许可证或 Azure AD Basic EDU 许可证。
+> 
+> 对于 Azure AD Basic EDU 许可客户：首次配置此策略时，需使用 Azure Active Directory PowerShell cmdlet。 以后，可以在 PowerShell 或 Azure AD 门户中，使用充当 Azure AD 租户中用户帐户管理员或全局管理员的帐户更新过期设置。
 
-## <a name="set-office-365-groups-expiration"></a>设置 Office 365 组过期
+有关如何下载和安装 Azure AD PowerShell cmdlet 的信息，请参阅 [Azure Active Directory PowerShell for Graph – 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)。
+
+## <a name="set-group-expiration"></a>设置组过期
 
 1. 使用 Azure AD 租户中的全局管理员帐户打开 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
@@ -51,7 +53,6 @@ ms.lasthandoff: 10/11/2017
   * 选择会过期的 Office 365 组。 可以为所有 Office 365 组启用过期，从各 Office 365 组中进行选择，或选择“无”为所有组禁用过期。
   * 设置完成后，选择“保存”来保存设置。
 
-有关如何通过 PowerShell 下载和安装 Microsoft PowerShell 模块以配置 Office 365 组过期的指南，请参阅 [Azure Active Directory V2 PowerShell Module - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)（Azure Active Directory V2 PowerShell 模块 - 公共预览版 2.0.0.137）。
 
 如下电子邮件通知将在组过期前的 30 天、15 天和 1 天发送到 Office 365 组所有者。
 
@@ -68,7 +69,8 @@ ms.lasthandoff: 10/11/2017
 如果所还原的组包含文档、SharePoint 站点或其他持久对象，可能需要最多 24 小时才能完全还原该组及其内容。
 
 > [!NOTE]
-> * 在部署过期设置时，可能存在某些比过期时段更早的组。 这些组不会立即删除，而会被设置为在 30 天后过期。 首个续订通知电子邮件将在一天内发出。 例如，组 A 创建于 400 天前，而过期间隔设置为 180 天。 当应用过期设置后，组 A 在被删除前还有 30 天（除非所有者续订它）。
+> * 首次设置过期时，早于过期间隔的所有组将设置为 30 天后过期。 首个续订通知电子邮件将在一天内发出。 
+>   例如，组 A 创建于 400 天前，而过期间隔设置为 180 天。 当应用过期设置后，组 A 在被删除前还有 30 天（除非所有者续订它）。
 > * 当删除并还原动态组时，会将视其为一个新组并根据规则重新填充。 此过程可能最多需要 24 小时。
 
 ## <a name="next-steps"></a>后续步骤

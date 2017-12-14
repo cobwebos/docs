@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ced8ecde1f36c49b479c7b253a90614567783663
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) 是一种综合的[标识和访问管理云解
 使用网络观察程序监视和诊断网络问题，无需登录虚拟机 (VM)。 通过设置警报触发[数据包捕获](https://docs.microsoft.com/azure/network-watcher/network-watcher-alert-triggered-packet-capture)，并获取数据包级别上的实时性能信息访问权限。 如果遇到问题，可进行详细调查，获得更精确的诊断。
 
 ### <a name="gain-insight-into-your-network-traffic-using-flow-logs"></a>使用流日志深入了解网络流量
-使用[网络安全组流日志](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview)更深入地了解网络流量模式。 流日志提供的信息可帮助收集符合性数据、审核和监视网络安全配置文件。
+使用[网络安全组流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)更深入地了解网络流量模式。 流日志提供的信息可帮助收集符合性数据、审核和监视网络安全配置文件。
 
 ### <a name="diagnose-vpn-connectivity-issues"></a>诊断 VPN 连接问题
 利用网络观察程序可[诊断最常见的 VPN 网关和连接问题](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity)。 不仅能够标识问题，还可以使用创建的详细日志协助进一步调查。

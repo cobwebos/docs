@@ -3,7 +3,7 @@ title: "使用 Azure 机器学习 Web 服务门户 | Microsoft 文档"
 description: "管理对 Azure 机器学习工作区的访问，部署并管理 ML API Web 服务"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: jhubbard
 editor: cgronlun
 ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 2fc71d3a03ff978485104bcd1cd9391c1d5ee392
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9024bc82c0de5b8058a848cc809a2571baa7ce83
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>使用 Azure 机器学习 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/11/2017
 
 * “**新建**”允许创建一个新的计划。
 * “**添加/删除计划实例**”允许“向外扩展”现有的计划来增加容量。
-* “**升级/降级**”允许"向上扩展"现有的计划来增加容量。
+* “**升级/降级**”允许“纵向扩展”现有的计划来增加容量。
 * “**删除**”允许删除某一个计划。
 
 单击一个计划以查看其仪表板。 仪表板提供所选时间段内的快照或计划使用情况。 若要选择要查看的时间段，单击仪表板右上方的“**期间**”下拉列表。 
@@ -155,36 +155,4 @@ ms.lasthandoff: 10/11/2017
 * “**日志记录**”允许启用或禁用终结点上的错误记录。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 * “**启用示例数据**”允许提供可用于测试请求 - 响应服务的示例数据。 如果在机器学习工作室中创建 Web 服务，示例数据将来自你用于训练模型的数据。 如果以编程方式创建服务，则从作为 JSON 包的一部分提供的示例数据中获取数据。
 
-## <a name="grant-or-suspend-access-to-web-services-for-users-in-the-portal"></a>授予或暂停门户中的用户对 Web 服务的访问权
-通过使用 Azure 经典门户，可以允许或拒绝对特定用户的访问。
-
-### <a name="access-for-users-of-new-web-services"></a>新的 Web 服务的用户访问权限
-要允许其他用户使用 Azure 机器学习 Web 服务门户中的 Web 服务，必须将他们添加为 Azure 订阅的共同管理员。
-
-使用 Microsoft Azure 帐户登录到 [Azure 经典门户](https://manage.windowsazure.com/) - 使用与 Azure 订阅相关联的帐户。
-
-1. 在导航窗格中，单击“**设置**”，并单击“**管理员**”。
-2. 在窗口底部，单击“**添加**”。 
-3. 在“添加共同管理员”对话框中，键入要添加为共同管理员的人员的电子邮件地址，并选择允许共同管理员访问的订阅。
-4. 单击“保存” 。
-
-### <a name="access-for-users-of-classic-web-services"></a>经典 Web 服务的用户访问权限
-要管理工作区：
-
-使用 Microsoft Azure 帐户登录到 [Azure 经典门户](https://manage.windowsazure.com/) - 使用与 Azure 订阅相关联的帐户。
-
-1. 在 Microsoft Azure 服务面板中，单击“**机器学习**”。
-2. 单击想要管理的工作区。
-3. 单击“**配置**” 选项卡。
-
-从配置选项卡中，可以通过单击“**拒绝**”暂停对机器学习工作区的访问。 用户不再能够在机器学习工作室中打开工作区。 若要恢复访问，单击“**允许**”。
-
-对于特定用户：
-
-若要管理其他有权访问机器学习工作室中的工作区的帐户，单击”**仪表板**“选项卡中的”**登录到机器学习工作室**“。这会打开机器学习工作室中的工作区。 从此处单击”**设置**“选项卡，并单击”**用户**“。 可以单击”**邀请多个用户**“，以允许用户访问工作区，或选择一个用户并单击”**删除**“。
-
-> [!NOTE]
-> ”**登录到机器学习工作室**“链接会使用当前登录的 Microsoft 帐户打开机器学习工作室。 用于登录 Azure 经典门户以创建工作区的 Microsoft 帐户不会自动具有打开工作区的权限。 若要打开工作区，则必须登录到已定义为工作区所有者的 Microsoft 帐户，或者需要收到所有者发出的邀请以加入工作区。
-> 
-> 
 

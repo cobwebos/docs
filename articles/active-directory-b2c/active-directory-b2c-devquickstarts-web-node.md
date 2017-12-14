@@ -4,7 +4,7 @@ description: "如何生成一个使用 B2C 租户登录用户的 Node.js Web 应
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: db97f84a-1f24-447b-b6d2-0265c6896b27
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: c85b8f8434d1e837ac96ac63b9b37f990677ed6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b306a79d0daa1c6d51557b6abad617182c76e9ee
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C：将登录添加到 Node.js Web 应用
 
@@ -151,7 +151,7 @@ passport.use(new OIDCStrategy({
   }
 ));
 ```
-Passport 对所有策略都使用类似的模式（Twitter 和 Facebook 也不例外）。 所有策略编写器都遵循该模式。 查看该策略即可发现，为其传递了一个包含令牌的 `function()`，以及一个用作参数的 `done`。 策略在完成所有工作之后会返回。 存储用户和令牌，这样就不需要再次请求。
+Passport 对所有策略都使用类似的模式（Twitter 和 Facebook 也不例外）。 所有策略编写器都遵循该模式。 查看该策略即可发现，为其传递了一个包含令牌的 `function()`，以及一个用作参数的 `done`。 策略在完成所有工作之后会返回。 存储用户并储藏令牌，这样一来，就不需要再次请求。
 
 > [!IMPORTANT]
 上面的代码会接受经过服务器身份验证的所有用户。 这是自动注册。 使用生产服务器时，如果用户未完成你所设置的注册过程，不会允许系统接受该用户。 通常可以在消费类应用中看到这种模式。 这样便可以使用 Facebook 来注册，但此后你必须按照要求填写其他信息。 如果应用程序不是示例应用程序，我们就可以从返回的令牌对象提取电子邮件地址，并要求用户填写其他信息。 由于这是测试服务器，因此，我们直接将用户添加到内存中的数据库。

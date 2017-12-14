@@ -8,15 +8,7 @@
 
 - 基本层大小主要用于开发工作负荷，以及其他不需要负载均衡、自动缩放或内存密集型虚拟机的应用程序。 若要了解更适用于生产应用程序的 VM 大小，请参阅(虚拟机的大小)[virtual-machines-size-specs.md]；若要了解 VM 定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)。
 
-## <a name="b-series-preview"></a>B 系列（预览版）
-
-> [!NOTE] 
-> 同意使用条款即可使用预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 此预览版仅限于以下区域：
-> - 美国 - 西部 2
-> - 美国 - 东部
-> - 欧洲 - 西部
-> - 亚太 - 东南部
+## <a name="b-series"></a>B 系列
 
 对于并非持续需要 CPU 完全性能的工作负荷（如 Web 服务器、小型数据库以及开发和测试环境）而言，B 系列可突增 VM 十分理想。 这些工作负荷通常具有可突增的性能要求。 B 系列使这些客户能够购买具有高性价比基线性能的 VM 大小，允许 VM 实例在 VM 使用的性能小于其基线性能时积累积分。 如果 VM 已累积了积分，则 VM 可以在应用程序需要更高的 CPU 性能时突增到 VM 的基线之上，使用最多达到 100% 的 vCPU。
 
@@ -31,7 +23,7 @@
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
 
 
-## <a name="dsv3-series"></a>Dsv3 系列
+## <a name="dsv3-series"></a>Dsv3 系列*
 
 ACU：160-190
 
@@ -46,9 +38,9 @@ Dsv3 系列大小基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，
 | Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32,000 / 256 (400)                                                    | 25,600 / 384                              | 8/高                                       |
 | Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64,000 / 512 (800)                                                    | 51,200 / 768                              | 8/极高                                       |
 | Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128,000 / 1024 (1600)                                                    | 80,000 / 1200                              | 8/极高                                       |
+*Dsv3 系列 VM 的 Intel® 超线程技术功能
 
-
-## <a name="dv3-series"></a>Dv3 系列
+## <a name="dv3-series"></a>Dv3 系列* 
 
 ACU：160-190
 
@@ -65,7 +57,7 @@ Dv3 系列大小基于 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) 处理器，�
 | Standard_D16_v3 | 16        | 64          | 400            | 32             | 24000/375/187                                            | 8/高                     |
 | Standard_D32_v3 | 32        | 128          | 800            | 32             | 48000/750/375                                            | 8/极高                     |
 | Standard_D64_v3 | 64        | 256          | 1600            | 32             | 96000/1000/500                                            | 8/极高                     |
-
+*Dv3 系列 VM 的 Intel® 超线程技术功能
 
 ## <a name="dsv2-series"></a>DSv2-series
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: d200587e211758ade85b14cbeb206ebce9291f1d
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 4087cb787e43c3d1b40ad082e84534b34918c9e9
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -137,7 +137,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 从使用已安装的 Linux 代理切换为使用容器中的 Linux 代理
 
-如果以前使用直接安装的代理，并且想要改为使用容器中运行的代理，则必须首先删除 OMS Agent for Linux。 请参阅[卸载 OMS Agent for Linux](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux)，了解如何成功卸载代理。  
+如果以前使用直接安装的代理，并且想要改为使用容器中运行的代理，则必须首先删除 OMS Agent for Linux。 请参阅[卸载 OMS Agent for Linux](log-analytics-agent-linux.md)，了解如何成功卸载代理。  
 
 #### <a name="configure-an-oms-agent-for-docker-swarm"></a>配置适用于 Docker Swarm 的 OMS 代理
 
@@ -515,9 +515,9 @@ KEY:    88 bytes
 
 #### <a name="install-windows-agents"></a>安装 Windows 代理
 
-若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装 Microsoft Monitoring Agent (MMA)。 要了解在本地环境中运行 Windows 的计算机，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)。 为使虚拟机在 Azure 中运行，请使用[虚拟机扩展](log-analytics-azure-vm-extension.md)将其连接到 Log Analytics。
+若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装 Microsoft Monitoring Agent (MMA)。 要了解在本地环境中运行 Windows 的计算机，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agent.md)。 为使虚拟机在 Azure 中运行，请使用[虚拟机扩展](log-analytics-azure-vm-extension.md)将其连接到 Log Analytics。
 
-可以监视在 Service Fabric 上运行的 Windows 容器。 但是，目前 Service Fabric 仅支持[在 Azure 中运行的虚拟机](log-analytics-azure-vm-extension.md)和[在本地环境中运行 Windows 的计算机](log-analytics-windows-agents.md)。
+可以监视在 Service Fabric 上运行的 Windows 容器。 但是，目前 Service Fabric 仅支持[在 Azure 中运行的虚拟机](log-analytics-azure-vm-extension.md)和[在本地环境中运行 Windows 的计算机](log-analytics-windows-agent.md)。
 
 可以验证已为 Windows 正确设置容器监视解决方案。 要检查是否已正确下载管理包，请查找 ContainerManagement.xxx。 文件应位于 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 文件夹中。
 
@@ -534,7 +534,7 @@ KEY:    88 bytes
 以下代理类型每 3 分钟收集一次数据。
 
 - [适用于 Linux 的 OMS 代理](log-analytics-linux-agents.md)
-- [Windows 代理](log-analytics-windows-agents.md)
+- [Windows 代理](log-analytics-windows-agent.md)
 - [Log Analytics VM 扩展](log-analytics-azure-vm-extension.md)
 
 

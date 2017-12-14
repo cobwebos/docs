@@ -209,6 +209,8 @@
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: 对 Azure 备份服务器进行故障排除
           href: backup-azure-mabs-troubleshoot.md
+        - name: 对 Azure 备份代理进行故障排除
+          href: backup-azure-mars-troubleshoot.md
 - name: 引用
   items:
     - name: Azure PowerShell

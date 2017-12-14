@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions 托管计划比较 | Microsoft Docs"
+title: "Azure Functions 的缩放和托管 | Microsoft Docs"
 description: "了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。"
 services: functions
 documentationcenter: na
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ff3f7072792c76c5d05310451771bde61b61e009
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions 托管计划比较
+# <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-可在两种不同模式下运行 Azure Functions：消耗量计划和 Azure 应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 本文重点介绍消耗计划（一种[无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用模型）。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
+可在两种不同模式下运行 Azure Functions：消耗量计划和 Azure 应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 无需为空闲的 VM 付费，且无需提前保留容量。 本文重点介绍消耗计划（一种[无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用模型）。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 
 
 >[!NOTE]  
 > Linux 托管目前仅在应用服务计划中提供。
@@ -76,7 +76,7 @@ VM 使得成本不再取决于执行数量、执行时间和所用内存。 因�
 <a name="always-on"></a>
 ### 始终可用
 
-如果在应用服务计划上运行，应该启用“始终可用”设置，使函数应用能正常运行。 在应用服务计划中，若函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 必须为 Web 作业启用 Always On 的原因与此类似。 
+如果在应用服务计划上运行，应该启用“Always On”设置，使函数应用能正常运行。 在应用服务计划中，若函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 必须为 Web 作业启用 Always On 的原因与此类似。 
 
 只能对应用服务计划使用“始终可用”。 在消耗计划中，平台会自动激活函数应用。
 
@@ -84,18 +84,20 @@ VM 使得成本不再取决于执行数量、执行时间和所用内存。 因�
 
 无论是在消耗计划还是应用服务计划中，函数应用都需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 Azure Functions 在内部使用 Azure 存储，执行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户。 创建函数应用时，将在“存储帐户”边栏选项卡中筛选这些帐户。
 
+<!-- JH: Does using a PRemium Storage account improve perf? -->
+
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)。
 
 ## <a name="how-the-consumption-plan-works"></a>如何使用消耗量计划
 
-在消耗计划中，缩放控制器通过根据触发函数的事件数添加额外的 Functions 主机实例来自动缩放 CPU 和内存资源。 Functions 主机的每个实例的上限为 1.5 GB 内存。
+在消耗计划中，缩放控制器通过根据触发函数的事件数添加额外的 Functions 主机实例来自动缩放 CPU 和内存资源。 Functions 主机的每个实例的上限为 1.5 GB 内存。  主机实例是函数应用，这意味着，函数应用中的所有函数共享某个实例中的资源并同时缩放。
 
 使用消耗托管计划时，函数代码文件存储在函数的主存储帐户的 Azure 文件共享上。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
 
 > [!NOTE]
 > 在消耗计划中使用 Blob 触发器时，如果函数应用处于空闲状态，则在处理新 Blob 时，可能会出现长达 10 分钟的延迟。 函数应用运行后，就会立即处理 Blob。 若要避免此初始延迟，请考虑以下选项之一：
 > - 将函数应用托管在应用服务计划中，并启用“始终可用”。
-> - 使用另一种机制来触发 Blob 处理，例如包含 Blob 名称的队列消息。 有关示例，请参阅 [blob 输入和输出绑定的 C# 脚本和 JavaScript 示例](functions-bindings-storage-blob.md#input--output---example)。
+> - 使用另一种机制来触发 Blob 处理，例如包含 Blob 名称的事件网格订阅或队列消息。 有关示例，请参阅 [blob 输入和输出绑定的 C# 脚本和 JavaScript 示例](functions-bindings-storage-blob.md#input--output---example)。
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
@@ -104,6 +106,20 @@ Azure Functions 使用名为“缩放控制器”的组件来监视事件率以�
 缩放单位是 Function App。 横向扩展函数应用时，将分配额外的资源来运行 Azure Functions 主机的多个实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 实例数最终会缩减为零，此时 Function App 中没有任何函数运行。
 
 ![用于监视事件和创建实例的扩展控制器](./media/functions-scale/central-listener.png)
+
+### <a name="understanding-scaling-behaviors"></a>了解缩放行为
+
+缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 但是，当今的系统中存在一些缩放特征：
+* 单个函数应用最大只能扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
+* 最多每隔 10 秒分配一次新实例。
+
+不同触发器还可能有不同的缩放限制，如下所述：
+
+* [事件中心](functions-bindings-event-hubs.md#trigger---scaling)
+
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
+
+函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项文章的可伸缩性部分](functions-best-practices.md#scalability-best-practices)。
 
 ### <a name="billing-model"></a>计费模式
 

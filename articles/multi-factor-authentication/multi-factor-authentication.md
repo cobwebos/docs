@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure MFA 中的双重验证 | Microsoft 文档"
+title: "了解 Azure MFA 中的双重验证 | Microsoft Docs"
 description: "Azure 多重身份验证概念、使用 MFA 的原因、有关多重身份验证客户端以及其他可用方法和版本的详细信息。 "
 keywords: "MFA 简介, mfa 概述, 什么是 mfa"
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: c40d7a34-1274-4496-96b0-784850c06e9b
 ms.service: multi-factor-authentication
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: joflore
-ms.openlocfilehash: a928344dfc41687c92e7845bc304a05122ab8a92
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 63b717fb08861b0efe902400a8765f9515ed5b1a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="what-is-azure-multi-factor-authentication"></a>什么是 Azure 多重身份验证？
 双重验证是需要使用一个以上验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。 它需要以下验证方法中的两种或更多种来进行工作：
@@ -37,13 +37,13 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azur
 
 Azure 多重身份验证是一种易于使用、可缩放且可靠的解决方案，用于提供第二种身份验证方法来保护用户。
 
-| ![易于使用](./media/multi-factor-authentication/simple.png) | ![可缩放](./media/multi-factor-authentication/scalable.png) | ![始终受保护](./media/multi-factor-authentication/protected.png) | ![可靠](./media/multi-factor-authentication/reliable.png) |
+| ![易用](./media/multi-factor-authentication/simple.png) | ![可缩放](./media/multi-factor-authentication/scalable.png) | ![始终受保护](./media/multi-factor-authentication/protected.png) | ![可靠](./media/multi-factor-authentication/reliable.png) |
 |:---:|:---:|:---:|:---:|
-| **易于使用** |**可缩放** |**始终受保护** |**可靠** |
+| **易于使用** |**规模可变** |**始终受保护** |**可靠** |
 
-* 易于使用 - Azure 多重身份验证的设置和使用都很简单。 Azure 多重身份验证自带的额外保护允许用户管理自己的设备。 最重要的是在许多情况下，都只需单击几次便可完成设置。
-* 可缩放 - Azure 多重身份验证利用云技术并与本地 AD 和自定义应用相集成。 这种保护甚至可以延伸到高事务量的任务关键型方案。
-* 始终受保护 - Azure 多重身份验证使用最高行业标准提供强大的身份验证功能。
+* **易用** - Azure 多重身份验证的设置和使用都很简单。 Azure 多重身份验证自带的额外保护允许用户管理自己的设备。 最重要的是在许多情况下，都只需单击几次便可完成设置。
+* **规模可变** - Azure 多重身份验证利用云技术并与本地 AD 和自定义应用相集成。 这种保护甚至可以延伸到高事务量的任务关键型方案。
+* **始终受保护** - Azure 多重身份验证使用最高行业标准提供强大的身份验证功能。
 * 可靠 - Microsoft 保证 Azure 多重身份验证 99.9% 的可用性。 当服务无法接收或处理双重验证的验证请求时，即将服务视为不可用。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]

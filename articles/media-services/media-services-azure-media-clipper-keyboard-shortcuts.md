@@ -1,5 +1,5 @@
 ---
-title: "配置 Azure Media Clipper 键盘设置 | Microsoft Docs"
+title: "配置 Azure 媒体剪辑器键盘设置 | Microsoft Docs"
 description: "为 Azure Media Clipper 设置可配置的键盘快捷键的步骤"
 services: media-services
 keywords: "剪辑;子剪辑;编码;媒体"
@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 00c1bba54444336b1a6390c1f40a867b4a06d942
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d6fa463f71c00787c994b41d84bb349dce676de5
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>配置 Azure Media Clipper 键盘快捷方式
 Azure Media Clipper 支持通过提供可选的 `keymap` JSON 参数自定义默认的键盘快捷方式。

@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/30/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: aea0b93e658a0c5dd14deedbd2c5c92bb1fbf652
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/28/2017
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持服务器核心和 Nano Server 安装选项。
+* Windows Server 2008 及更高版本，以及针对 Windows Server 2008 R2 SP1 及更高版本的更新部署。 不支持 Nano Server。
 
   若要提供相关支持，以便将更新部署到 Windows Server 2008 R2 SP1，需要 .NET Framework 4.5 和 Windows Management Framework 5.0 或更高版本。
 
@@ -84,7 +84,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>启用非 Azure 虚拟机和计算机的更新管理
 
-如需如何为非 Azure Windows 虚拟机和计算机启用更新管理的说明，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agents.md)。
+如需如何为非 Azure Windows 虚拟机和计算机启用更新管理的说明，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agent.md)。
 
 如需如何为非 Azure Linux 虚拟机和计算机启用更新管理的说明，请参阅[将 Linux 计算机连接到 Log Analytics](../log-analytics/log-analytics-agent-linux.md)。
 

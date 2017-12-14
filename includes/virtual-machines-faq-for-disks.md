@@ -54,7 +54,7 @@
 
 **托管磁盘是否是 Azure 门户中的默认选项？**
 
-目前不是，但将来会成为默认选项。
+是的。 
 
 **是否可以创建一个空托管磁盘？**
 
@@ -105,9 +105,43 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 否。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
 
-**在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure Resource Manager 模板？**
+**在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？**
 * [使用托管磁盘的模板列表](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘 
+
+**迁移到托管磁盘之前/之后，需要在现有的 Azure 备份服务配置中进行哪些更改？**
+
+不需要进行任何更改。 
+
+**在迁移之前通过 Azure 备份服务创建的 VM 备份是否可继续工作？**
+
+是的，备份可以顺利工作。
+
+**迁移到托管磁盘之前/之后，需要在现有的 Azure 磁盘加密配置中进行哪些更改？**
+
+不需要进行任何更改。 
+
+**是否支持将现有 VM 规模集 (VMSS) 从非托管磁盘自动迁移到托管磁盘？**
+
+不能。 可以使用包含非托管磁盘的旧 VMSS 中的映像创建包含托管磁盘的新 VMSS。 
+
+**是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？**
+
+不能。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。 
+
+**是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？**
+
+是的，可以选择故障转移到包含托管磁盘的 VM。
+
+**迁移是否影响 Azure Site Recovery (ASR) 通过 Azure 到 Azure 复制保护的 Azure VM？**
+
+是的。 包含托管磁盘的 VM 不支持 ASR Azure 到 Azure 保护。 2018 日历年末将会支持这种保护。 
+
+**是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？**
+
+是
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>托管磁盘和存储服务加密 
 

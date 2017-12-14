@@ -4,20 +4,20 @@ description: "了解如何将用户帐户从 Azure AD 自动预配到 Google App
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 6dbd50b5-589f-4132-b9eb-a53a318a64e5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 12/01/2017
 ms.author: jeedes
-ms.openlocfilehash: e8ca7fdacf8361570d88260b3c359ee6e2fd3e17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a77b5b1fff670ed7698d0ef48fa63f8a8f9be819
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>教程：配置 Google Apps 实现自动用户预配
 
@@ -90,6 +90,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      ![域](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_4.png)
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对所有要添加到目录的域重复上述步骤。
+
+    > [!NOTE]
+    若要进行用户预配，Google Apps 自定义域必须与源 Azure AD 的域名匹配。 如果不匹配，可以通过实现属性映射自定义来解决此问题。
+
 
 5. 向 Azure AD 验证完所有域后，必须再次向 Google Apps 验证这些域。 对于每个尚未注册 Google Apps 的域，请执行以下步骤：
    

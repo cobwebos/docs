@@ -3,7 +3,7 @@ title: "使用 Chocolatey 进行 Azure 自动化 DSC 持续部署 | Microsoft Do
 description: "使用 Azure Automation DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON ARM 模板和 PowerShell 源代码的示例。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/29/2016
 ms.author: golive
-ms.openlocfilehash: f23d7374a8954a0a95853fa9e00b54a8d9c468c4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>用例：使用 Automation DSC 和 Chocolatey 持续部署到虚拟机
 DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个点。  Azure Automation Desired State Configuration (DSC) 是 DevOps 团队可以采用的新选项。  本文演示如何为 Windows 计算机设置持续部署 (CD)。  可以轻松扩展技术，在角色（例如网站）中按需要添加更多 Windows 计算机，还能从该角色扩展到其他角色。
@@ -49,7 +49,7 @@ Resource Manager 模板的一项主要功能是能够在预配时将 VM 扩展�
 ## <a name="quick-trip-around-the-diagram"></a>示意图速览
 首先，需要编写、生成和测试代码，然后创建安装包。  Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。  如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。  将包放入可访问的位置 – 包存储库。  本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。  Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。  [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。  本用例使用 NuGet。  Nuspec 是包的元数据。  Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。  当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。  也可以请求特定版本的包。
 
-示意图左下方有一个 Azure Resource Manager (ARM) 模板。  在本用例中，VM 扩展将 VM 注册到 Azure Automation DSC“拉”服务器（即提取服务器）成为“节点”。  配置存储在“拉”服务器中。  实际上存储两次：一次存储为纯文本，另一次编译成 MOF 文件（适用于对此有所了解的人。）在门户，MOF 是“节点配置”（而不只是“配置”）。  它是与“节点”关联的项目，节点知道它的配置。  以下详细信息演示如何将节点配置分配给节点。
+示意图左下方有一个 Azure 资源管理器 (ARM) 模板。  在本用例中，VM 扩展将 VM 注册到 Azure Automation DSC“拉”服务器（即提取服务器）成为“节点”。  配置存储在“拉”服务器中。  实际上存储两次：一次存储为纯文本，另一次编译成 MOF 文件（适用于对此有所了解的人。）在门户，MOF 是“节点配置”（而不只是“配置”）。  它是与“节点”关联的项目，节点知道它的配置。  以下详细信息演示如何将节点配置分配给节点。
 
 也许已从头开始完成了部分或大部分工作。  创建和编译 nuspec 并将其存储在 NuGet 服务器中是一件很简单的事。  此外，已在管理 VM。  持续部署的下一步需要设置拉取服务器（一次）、向它注册节点（一次），然后创建配置并存储到节点中（初步）。  接下来，当包升级并部署到存储库时，请刷新“拉”服务器中的“配置”和“节点配置”（根据需要重复）。
 

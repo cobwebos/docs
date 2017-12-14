@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure 容器注册表文档
+title: "Azure 容器注册表文档"
 metadata:
-  title: Azure 容器注册表文档 - 教程 | Microsoft Docs
-  description: 使用 Azure 容器注册表可以存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。
+  title: "Azure 容器注册表文档 - 教程 | Microsoft Docs"
+  description: "使用 Azure 容器注册表可以存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。"
   services: container-registry
   author: czeumault
   manager: carolz
@@ -13,47 +13,54 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
+  ms.openlocfilehash: cdd33e3aed48cc94f91962b78f17628a6e29657d
+  ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/07/2017
 abstract:
-  description: 使用 Azure 容器注册表可以存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。
+  description: "使用 Azure 容器注册表可以存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。"
 sections:
-  - title: 5 分钟快速入门
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "了解如何部署 Azure 容器注册表。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 了解如何部署 Azure 容器注册表。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
-            text: Azure CLI
-            href: /azure/container-registry/container-registry-get-started-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure 门户
-            href: /azure/container-registry/container-registry-get-started-portal
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-registry/container-registry-get-started-powershell
-  - title: 分步教程
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/container-registry/container-registry-get-started-azure-cli
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg
+      text: "Azure 门户"
+      href: /azure/container-registry/container-registry-get-started-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/container-registry/container-registry-get-started-powershell
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "参考这些教程来了解如何使用 Azure 容器注册表。"
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: 参考这些教程来了解如何使用 Azure 容器注册表。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">容器注册表异地复制（预览版）</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">将容器注册表与 Azure 容器实例配合使用</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">将容器注册表与 Azure 容器服务 (AKS) 配合使用</a>
-          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">将容器注册表与 Service Fabric 配合使用</a>
-  - title: 引用
+    - html: "<a href=\"/azure/container-registry/container-registry-tutorial-prepare-registry\">容器注册表异地复制（预览版）</a>"
+    - html: "<a href=\"/azure/container-instances/container-instances-tutorial-prepare-app\">Azure 容器实例的容器注册表</a>"
+    - html: "<a href=\"/azure/aks/tutorial-kubernetes-prepare-app\">将容器注册表与 Azure 容器服务 (AKS) 配合使用</a>"
+    - html: "<a href=\"/azure/service-fabric/service-fabric-tutorial-create-container-images\">将容器注册表与 Service Fabric 配合使用</a>"
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerregistry">PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/containerregistry">REST API 参考</a></p>
+    - title: "命令行"
+      html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerregistry">PowerShell</a></p>
+    - title: "语言"
+      html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/containerregistry\">REST API 参考</a></p><p><a href=\"/azure/templates/microsoft.containerregistry/registries\">资源管理器模板</a></p><p><a href=\"/azure/container-registry/container-registry-webhook-reference\">Webhook 架构</a></p>"

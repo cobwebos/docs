@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3544112b025f5df10e6f67c8e2e02f4bb587b4e0
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>针对方案优化 Azure 内容传送
 
@@ -103,7 +103,7 @@ Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供
 
 如果使用 Akamai 的 Azure 内容传送网络，对大于 10MB 的内容使用大文件下载优化。 如果平均文件大小不到 10MB，建议使用常规 Web 传送优化。 如果平均文件大小始终超过 10MB，为大文件单独创建终结点可能会更有效。 例如，固件或软件更新通常是大文件。
 
-Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供流媒体内容。
+Verizon 的 Azure 内容传送网络使用常规 Web 传送优化类型来提供大文件下载内容。
 
 若要详细了解大文件优化，请参阅[大文件优化](cdn-large-file-optimization.md)。
 

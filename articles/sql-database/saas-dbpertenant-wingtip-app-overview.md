@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: ddd51c23c7e7d01e38b02c79c27d1951eea61e70
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: d17c361d2249cc95be78cde143925251ad65db44
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL 数据库多租户 SaaS 应用示例简介
 
 Wingtip SaaS 应用程序是一个示例多租户应用，用于演示 SQL 数据库的独特优势。 该应用使用租户各有数据库（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用旨在展示支持 SaaS 方案（包括多个 SaaS 设计及管理模式）的 Azure SQL 数据库功能。 Wingtip SaaS 应用的部署时间不到五分钟，可快速启动并运行！
 
-可在 [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github 存储库获取应用程序源代码和管理脚本。 若要运行这些脚本，请将[Learning Modules 文件夹下载](#download-and-unblock-the-wingtip-saas-scripts)到本地计算机。
+[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了应用程序源代码和管理脚本。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="application-architecture"></a>应用程序体系结构
 
@@ -42,7 +42,7 @@ Wingtip SaaS 应用使用租户各有数据库模型，并使用 SQL 弹性池�
 
 | 教程 | 说明 |
 |:--|:--|
-| [Azure SQL 数据库多租户 SaaS 应用示例指南和提示](saas-dbpertenant-wingtip-app-guidance-tips.md) | 从此处开始！ 下载并运行 PowerShell 脚本，准备应用程序部件。 |
+| [Azure SQL 数据库多租户 SaaS 应用示例指南和提示](saas-tenancy-wingtip-app-guidance-tips.md) | 从此处开始！ 下载并运行 PowerShell 脚本，准备应用程序部件。 |
 |[部署和浏览 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)|  向 Azure 订阅部署并浏览 Wingtip SaaS 应用程序。 |
 |[预配和编录租户](saas-dbpertenant-provision-and-catalog.md)| 了解应用程序如何使用目录数据库连接到租户，以及目录如何将租户映射到其数据。 |
 |[监视和管理性能](saas-dbpertenant-performance-monitoring.md)| 了解如何使用 SQL 数据库的监视功能，以及如何在超出性能阈值时设置警报。 |
@@ -55,6 +55,6 @@ Wingtip SaaS 应用使用租户各有数据库模型，并使用 SQL 弹性池�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure SQL 数据库多租户 SaaS 应用示例指南和提示](saas-dbpertenant-wingtip-app-guidance-tips.md)
+- [Azure SQL 数据库多租户 SaaS 应用示例指南和提示](saas-tenancy-wingtip-app-guidance-tips.md)
 
 - [部署 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)

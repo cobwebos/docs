@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 模板创建和配置 Log Analytics 工作区 | Microsoft Docs"
-description: "可以使用 Azure Resource Manager 模板创建和配置 Log Analytics 工作区。"
+title: "使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Microsoft Docs"
+description: "可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。"
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 12/06/2017
 ms.author: richrund
-ms.openlocfilehash: 7f522a672d1691990bec3e63a41b2ed7e81058ad
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 7fffaf3861feebc0cf3537ca096b1eebb252b7d6
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/08/2017
 ---
-# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板管理 Log Analytics
-可以使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
+# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
+可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
 * 创建工作区
 * 添加解决方案
@@ -141,7 +141,7 @@ ms.lasthandoff: 10/17/2017
         "sku": {
           "Name": "[parameters('serviceTier')]"
         },
-    "retention": "[parameters('dataRetention')]"
+    "retentionInDays": "[parameters('dataRetention')]"
       },
       "resources": [
         {
@@ -478,7 +478,7 @@ azure group deployment create <my-resource-group> <my-deployment-name> --Templat
 ```
 
 
-## <a name="example-resource-manager-templates"></a>示例 Resource Manager 模板
+## <a name="example-resource-manager-templates"></a>示例 资源管理器模板
 Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括：
 
 * [使用 Log Analytics VM 扩展部署运行 Windows 的虚拟机](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)

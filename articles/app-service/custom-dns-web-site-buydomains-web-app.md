@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ba6e3a79e5eb4eca4a3c7d35ada8c58bfe2295e
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>为 Azure Web 应用购买自定义域名
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 10/11/2017
 完成本教程：
 
 * [创建应用服务应用](/azure/app-service/)，或使用为另一教程创建的应用。
+* [移除订阅中的支出限制](../billing/billing-spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
 
 ## <a name="prepare-the-app"></a>准备应用
 
@@ -86,11 +87,21 @@ ms.lasthandoff: 10/11/2017
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
+> [!NOTE]
+> 如果看不到“应用服务域”部分，则需要移除 Azure 帐户上的支出限制（请参阅[先决条件](#prerequisites)）。
+>
+>
+
 ### <a name="configure-the-domain-purchase"></a>配置域购买
 
-在“应用服务域”页上的“搜索域”框中，键入要购买的域名并按 `Enter`。 文本框的正下方会显示建议的可用域。 选择要购买的一个或多个域。 
+在“应用服务域”页上的“搜索域”框中，键入要购买的域名并按 `Enter`。 文本框的正下方会显示建议的可用域。 选择要购买的一个或多个域。
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+
+> [!NOTE]
+> 应用服务域支持以下[顶级域](https://wikipedia.org/wiki/Top-level_domain)：com、net、co.uk、org、nl、in、biz、org.uk 和 co.in。
+>
+>
 
 单击“联系人信息”，并填写域的联系人信息表单。 完成后，单击“确定”返回“应用服务域”页。
    
@@ -100,8 +111,7 @@ ms.lasthandoff: 10/11/2017
 
 | 设置 | 建议的值 | 说明 |
 |-|-|-|
-|自动续订 | **启用** | 每年自动续订应用服务域。 续订时，将以相同的购买价格从信用卡中扣费。 |
-|隐私保护 | 启用 | 选择启用“隐私保护”，购买价格_免费_附送此功能（_.co.in_、_.co.uk_ 等顶级域除外，因为其注册表不支持隐私保护）。 |
+|隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
 | 分配默认主机名 | **www** 和 **@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的 Web 应用。 如果 Web 应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
 
 ### <a name="accept-terms-and-purchase"></a>接受条款并购买
@@ -125,7 +135,7 @@ ms.lasthandoff: 10/11/2017
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-此外，“自定义域”页上的“主机名”部分中也会显示选定的主机名。 
+此外，“自定义域”页上的“自定义主机名”部分也会显示选定的主机名。 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
@@ -182,7 +192,25 @@ ms.lasthandoff: 10/11/2017
 
 在浏览器中导航到列出的主机名。 在上面屏幕截图所示的示例中，请尝试导航到 _abc.kontoso.net_。
 
-<a name="custom" />
+## <a name="renew-the-domain"></a>续订域
+
+你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 如果要关闭自动续订，或者手动续订域，请按照以下步骤操作。
+
+在“Web 应用”选项卡中，单击 Web 应用的名称，选择“设置”，并选择“自定义域”。
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+
+在“应用服务域”部分，选择要配置的域。
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+
+从域的左侧导航窗格，选择“域续订”。 若要停止自动续订域，请选择“关闭”，然后“保存”。 
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+
+若要手动续订域，选择“续订域”。 但是，此按钮仅在域过期前的 90 天内才会处于活动状态。
+
+<a name="custom"></a>
 
 ## <a name="manage-custom-dns-records"></a>管理自定义 DNS 记录
 
@@ -236,6 +264,14 @@ ms.lasthandoff: 10/11/2017
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-选择“确定”以确认操作。 如果不想继续，请单击确认对话框外部的任何位置。
+选择“是”以确认操作。
 
 完成该操作后，该域将从订阅中释放，可供任何人再次购买。 
+
+## <a name="direct-default-url-to-a-custom-directory"></a>将默认 URL 定向到自定义目录
+
+默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 若要将它们定向到一个子目录，例如 `public`，请参阅[将默认 URL 定向到自定义目录](app-service-web-tutorial-custom-domain.md#virtualdir)。
+
+## <a name="more-resources"></a>更多资源
+
+[常见问题：应用服务域（预览版）和自定义域](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

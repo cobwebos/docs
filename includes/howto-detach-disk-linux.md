@@ -6,7 +6,7 @@
 ## <a name="find-the-disk"></a>找到磁盘
 在从 VM 中分离磁盘之前，需要先确定 LUN 号（要分离的磁盘的标识符）。 为此，请执行以下步骤：
 
-1. 打开 Azure CLI 并[连接到 Azure 订阅](../articles/xplat-cli-connect.md)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
+1. 打开 Azure CLI 并[连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
 2. 找出哪些磁盘已附加到 VM。 以下示例列出名为 `myVM` 的 VM 的磁盘：
 
     ```azurecli

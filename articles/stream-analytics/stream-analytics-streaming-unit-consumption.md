@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e1fb9ee3147f94b173b0fd324943b8801b984d2b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -27,7 +27,7 @@ Azure 流分析将运行作业的性能“权重”聚合到流式处理单位 (
 
 为了实现低延迟流式处理，Azure 流分析作业将执行内存中的所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
-指标是一个范围从 0% 到 100% 的百分数。 对于占用最小内存的流式处理作业，SU 利用率指标通常介于 10% 到 20%。 最好保持低于 80% 的指标，以应对偶发的峰值。  可以在指标上设置一个警报（请参阅[此处设置指标警报](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-alerts-portal)）。
+指标是一个范围从 0% 到 100% 的百分数。 对于占用最小内存的流式处理作业，SU 利用率指标通常介于 10% 到 20%。 最好保持低于 80% 的指标，以应对偶发的峰值。  可以在指标上设置一个警报（请参阅[此处设置指标警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal)）。
 
 
 
@@ -82,7 +82,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
 将查询分区后，它会分散到多个节点中。 因此，可以通过减少依据运算符分组的基数来减少传入每个节点的 clusterid 数。 
 
-事件中心分区应根据分组键进行分区，以避免减少步骤的需要。 其他详细信息，请单击[此处](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview)查看。 
+事件中心分区应根据分组键进行分区，以避免减少步骤的需要。 其他详细信息，请单击[此处](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview)查看。 
 #### <a name="temporal-join"></a>临时联接
 临时联接的状态大小与联接的临时调整空间中的事件数量成正比，即事件输入速率与调整空间大小的乘积。 
 

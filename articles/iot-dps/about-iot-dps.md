@@ -1,22 +1,22 @@
 ---
-title: "Azure IoT 中心设备预配服务（预览版）概述 | Microsoft Docs"
+title: "Azure IoT 中心设备预配服务概述 | Microsoft Docs"
 description: "介绍在 Azure 中使用设备预配服务和 IoT 中心预配设备"
 services: iot-dps
 keywords: 
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a9df3f4e27e0d6e11b9d85a44467f3c62f453121
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a2ac24442c425e1c2f2e81badef5dbd3a8dcf5e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>使用 Azure IoT 中心设备预配服务（预览版）预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触实时预配至合适的 IoT 中心，客户可以采用安全且可缩放的方式预配数百万台设备。
@@ -59,7 +59,7 @@ Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT �
 
 设备预配服务不会在制造过程中引入新的步骤；而是与在设备上安装初始软件和（理想情况下）HSM 的现有步骤相关。 此步骤中不创建设备 ID，而是使用预配服务信息对设备进行简单的编程，因此设备开启时，将调用预配服务以获取其连接信息/IoT 解决方案分配。
 
-同样在此步骤中，制造商向设备部署人员/操作员提供识别性密钥信息。 这非常简单，如同确认所有设备都有从由设备部署人员/操作员提供的根 CA 生成的 X.509 证书，及至从每个 TPM 设备提取 TPM 认可密钥的公共部分。 这些服务如今由众多硅制造商提供。
+同样在此步骤中，制造商向设备部署人员/操作员提供识别性密钥信息。 这非常简单，如同确认所有设备都有从由设备部署人员/操作员提供的签名证书生成的 X.509 证书，及至从每个 TPM 设备提取 TPM 认可密钥的公共部分。 这些服务如今由众多硅制造商提供。
 
 ### <a name="cloud-setup-step"></a>云设置步骤
 此步骤有关配置云实现正确的自动预配。 云设置步骤中通常涉及两种类型的用户：知道设备需要如何初始设置的用户（设备操作员），以及知道如何在 IoT 中心之间拆分设备的人员（解决方案操作员）。
@@ -84,19 +84,29 @@ Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT �
 * 多分配策略，用于根据自己的需要控制设备预配服务向 IoT 中心分配设备的方式。
 * 监视和诊断日志，用于确保一切都正常工作。
 * 多中心支持，允许设备预配服务将设备分配给多个 IoT 中心。 设备预配服务可跨多个 Azure 订阅与中心进行通讯。
+* **跨区域支持**，允许设备预配服务将设备分配给多个 IoT 中心。
 
 可在[设备概念](concepts-device.md)、[服务概念](concepts-service.md)和[安全概念](concepts-security.md)中详细了解设备预配中涉及的概念和功能。
 
 ## <a name="cross-platform-support"></a>跨平台支持
-设备预配服务与所有 Azure IoT 服务一样，可以在各种操作系统上跨平台运行。 公共预览版支持一组有限的受支持语言/协议，但当设备预配服务公开发布后可以使用更多的语言/协议。 公共预览版中，设备预配服务仅对设备和服务操作支持 HTTPS 连接。 设备 SDK 采用 C，服务 SDK 采用 C#。
+设备预配服务与所有 Azure IoT 服务一样，可以在各种操作系统上跨平台运行。 Azure 提供各种不同的开放源 SDK [语言](https://github.com/Azure/azure-iot-sdks)以便将设备连接和管理服务。 设备设置服务支持用于将设备连接的以下协议：
+
+* HTTPS
+* AMQP
+* 基于 WebSocket 的 AMQP
+* MQTT
+* 基于 WebSocket 的 MQTT
+
+设备预配服务仅对服务操作支持 HTTPS 连接。
 
 ## <a name="regions"></a>区域
-设备预配服务在美国东部、西欧和东南亚已推出公共预览版。 我们对所有服务维护其现有区域和新宣布推出区域的更新列表。
+设备预配服务在许多区域可用。 我们对 [Azure 区域](https://azure.microsoft.com/regions/)的所有服务维护其现有区域和新宣布推出区域的更新列表。 可以在 [Azure 状态](https://azure.microsoft.com/status/)页上看到设备预配服务可用的区域。
 
-* [Azure 区域](https://azure.microsoft.com/regions/)
+> [!NOTE]
+> 设备预配服务是全球性的，不局限于某个位置。 但是，必须指定与设备预配服务配置文件关联的元数据将驻留在其中一个区域。
 
 ## <a name="availability"></a>可用性
-公开预览期间，我们将最大程度保持服务的可用性。 公开预览期间没有服务级别协议。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/) 说明了 Azure 作为整体的保证可用性。
+我们为设备预配服务维护 99.9% 服务级别协议，可以[阅读 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/) 说明了 Azure 作为整体的保证可用性。
 
 ## <a name="quotas"></a>配额
 每个 Azure 订阅附带默认的配额限制，这些限制可能影响 IoT 解决方案的范围。 每个订阅的当前限制是每订阅 10 个设备预配服务。
@@ -106,7 +116,7 @@ Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT �
 * [Azure 订阅服务限制](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
-设备预配服务使用 Azure IoT 中心自动进行设备预配。 了解有关 [IoT 中心](https://docs.microsoft.com/en-us/azure/iot-hub/)的详细信息。
+设备预配服务使用 Azure IoT 中心自动进行设备预配。 了解有关 [IoT 中心](https://docs.microsoft.com/azure/iot-hub/)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 现已大致了解在 Azure 中配置 IoT 设备。 后续步骤是尝试端对端 IoT 方案。

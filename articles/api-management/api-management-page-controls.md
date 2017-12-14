@@ -3,27 +3,26 @@ title: "Azure API 管理页面控件 | Microsoft 文档"
 description: "了解适用于 Azure API 管理中的开发人员门户模板的页面控件。"
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 03e0ac8d-64ff-4e9a-b029-d7be14fb31e3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 6aa7a25a9addceee78abe027fb3a19351940464e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  
   
- 要使用控件，请将其放在开发人员门户模板中的所需位置。 某些控件（例如 [app-actions](#app-actions) 控件）有参数，如以下示例所示。  
+要使用控件，请将其放在开发人员门户模板中的所需位置。 某些控件（例如 [app-actions](#app-actions) 控件）有参数，如以下示例所示：  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
@@ -36,19 +35,12 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 ## <a name="developer-portal-template-page-controls"></a>开发人员门户模板页面控件  
   
 -   [app-actions](#app-actions)  
-  
 -   [basic-signin](#basic-signin)  
-  
 -   [paging-control](#paging-control)  
-  
 -   [providers](#providers)  
-  
 -   [search-control](#search-control)  
-  
 -   [sign-up](#sign-up)  
-  
 -   [subscribe-button](#subscribe-button)  
-  
 -   [subscription-cancel](#subscription-cancel)  
   
 ##  <a name="app-actions"></a> app-actions  
@@ -69,7 +61,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 |appId|应用程序的 ID。|  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `app-actions` 控件可用于以下开发人员门户模板。  
+ `app-actions` 控件可用于以下开发人员门户模板：  
   
 -   [应用程序](api-management-user-profile-templates.md#Applications)  
   
@@ -88,7 +80,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `basic-signin` 控件可用于以下开发人员门户模板。  
+ `basic-signin` 控件可用于以下开发人员门户模板：  
   
 -   [登录](api-management-page-templates.md#SignIn)  
   
@@ -107,7 +99,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `paging-control` 控件可用于以下开发人员门户模板。  
+ `paging-control` 控件可用于以下开发人员门户模板：  
   
 -   [API 列表](api-management-api-templates.md#APIList)  
   
@@ -116,7 +108,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 -   [产品列表](api-management-product-templates.md#ProductList)  
   
 ##  <a name="providers"></a> 提供程序  
- `providers` 控件提供了一个控件，用于选择开发人员门户的登录页中的身份验证提供程序。  
+ `providers` 控件提供了一个控件，用于在开发人员门户的登录页中选择身份验证提供程序。  
   
  ![提供程序控件](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供程序控件")  
   
@@ -130,7 +122,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `providers` 控件可用于以下开发人员门户模板。  
+ `providers` 控件可用于以下开发人员门户模板：  
   
 -   [登录](api-management-page-templates.md#SignIn)  
   
@@ -149,7 +141,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `search-control` 控件可用于以下开发人员门户模板。  
+ `search-control` 控件可用于以下开发人员门户模板：  
   
 -   [API 列表](api-management-api-templates.md#APIList)  
   
@@ -170,7 +162,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `sign-up` 控件可用于以下开发人员门户模板。  
+ `sign-up` 控件可用于以下开发人员门户模板：  
   
 -   [注册](api-management-page-templates.md#SignUp)  
   
@@ -189,7 +181,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `subscribe-button` 控件可用于以下开发人员门户模板。  
+ `subscribe-button` 控件可用于以下开发人员门户模板：  
   
 -   [产品](api-management-product-templates.md#Product)  
   
@@ -214,7 +206,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 |cancelUrl|订阅取消 URL。|  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
- `subscription-cancel` 控件可用于以下开发人员门户模板。  
+ `subscription-cancel` 控件可用于以下开发人员门户模板：  
   
 -   [产品](api-management-product-templates.md#Product)
 

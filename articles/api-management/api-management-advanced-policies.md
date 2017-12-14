@@ -6,53 +6,38 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: 
-ms.assetid: 8a13348b-7856-428f-8e35-9e4273d94323
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 191870aea5f35830115ae1e8885cd3035597411f
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
-  
+
 ##  <a name="AdvancedPolicies"></a> 高级策略  
   
 -   [控制流](api-management-advanced-policies.md#choose) - 根据布尔[表达式](api-management-policy-expressions.md)的求值结果，有条件地应用策略语句。  
-  
 -   [转发请求](#ForwardRequest) - 将请求转发到后端服务。
-
 -   [限制并发](#LimitConcurrency) - 阻止括住的策略一次执行超过指定数量的请求。
-  
 -   [记录到事件中心](#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的事件中心。 
-
 -   [模拟响应](#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
-  
 -   [重试](#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会根据指定的时间间隔重复，直到执行指定的重试计数为止。  
-  
 -   [返回响应](#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。 
-  
 -   [发送单向请求](#SendOneWayRequest) - 将请求发送到指定的 URL，无需等待响应。  
-  
 -   [发送请求](#SendRequest) - 将请求发送到指定的 URL。  
-
 -   [设置 HTTP 代理](#SetHttpProxy) - 允许通过 HTTP 代理路由转发请求。  
-
 -   [设置请求方法](#SetRequestMethod) - 允许更改请求的 HTTP 方法。  
-  
 -   [设置状态代码](#SetStatus) - 将 HTTP 状态代码更改为指定的值。  
-  
 -   [设置变量](api-management-advanced-policies.md#set-variable) - 保存命名[上下文](api-management-policy-expressions.md#ContextVariables)变量中的值供以后访问。  
-
 -   [跟踪](#Trace) - 将字符串添加到 [API 检查器](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/)输出中。  
-  
 -   [等待](#Wait) - 在继续下一步之前，等待括住的[发送请求](api-management-advanced-policies.md#SendRequest)、[从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey)或[控制流](api-management-advanced-policies.md#choose)策略完成。  
   
 ##  <a name="choose"></a> 控制流  
@@ -264,7 +249,6 @@ ms.lasthandoff: 11/22/2017
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**后端  
-  
 -   **策略范围：**所有范围  
   
 ##  <a name="LimitConcurrency"></a> 限制并发  
@@ -807,7 +791,6 @@ status code and media type. If no example or schema found, the content is empty.
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**出站、后端、错误时  
-  
 -   **策略范围：**所有范围  
 
 ##  <a name="set-variable"></a> 设置变量  
@@ -843,72 +826,41 @@ status code and media type. If no example or schema found, the content is empty.
  此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端、错误时  
-  
 -   **策略范围：**所有范围  
   
 ###  <a name="set-variableAllowedTypes"></a> 允许的类型  
  在 `set-variable` 策略中使用的表达式必须返回以下基本类型之一。  
   
 -   System.Boolean  
-  
 -   System.SByte  
-  
 -   System.Byte  
-  
 -   System.UInt16  
-  
 -   System.UInt32  
-  
 -   System.UInt64  
-  
 -   System.Int16  
-  
 -   System.Int32  
-  
 -   System.Int64  
-  
 -   System.Decimal  
-  
 -   System.Single  
-  
 -   System.Double  
-  
 -   System.Guid  
-  
 -   System.String  
-  
 -   System.Char  
-  
 -   System.DateTime  
-  
 -   System.TimeSpan  
-  
 -   System.Byte?  
-  
 -   System.UInt16?  
-  
 -   System.UInt32?  
-  
 -   System.UInt64?  
-  
 -   System.Int16?  
-  
 -   System.Int32?  
-  
 -   System.Int64?  
-  
 -   System.Decimal?  
-  
 -   System.Single?  
-  
 -   System.Double?  
-  
 -   System.Guid?  
-  
 -   System.String?  
-  
 -   System.Char?  
-  
 -   System.DateTime?  
 
 ##  <a name="Trace"></a>跟踪  
@@ -1004,13 +956,16 @@ status code and media type. If no example or schema found, the content is empty.
 |for|确定 `wait` 策略是等待所有直接子策略完成，还是只等待其中之一完成。 允许值包括：<br /><br /> -   `all` - 等待所有直接子策略完成<br />-   any - 等待任一直接子策略完成。 第一个直接子策略完成后，`wait` 策略即告完成，同时会终止执行任何其他直接子策略。|否|本应返回的所有记录的总数，|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 
+此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端  
-  
 -   **策略范围：**所有范围  
   
 ## <a name="next-steps"></a>后续步骤
+
 有关如何使用策略的详细信息，请参阅：
--   [API 管理中的策略](api-management-howto-policies.md) 
--   [Policy expressions](api-management-policy-expressions.md)（策略表达式）
++ [API 管理中的策略](api-management-howto-policies.md) 
++ [策略表达式](api-management-policy-expressions.md)
++ [策略参考](api-management-policy-reference.md)，获取策略语句及其设置的完整列表
++ [策略示例](policy-samples.md)   

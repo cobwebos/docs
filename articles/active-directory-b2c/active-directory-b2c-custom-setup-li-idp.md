@@ -4,7 +4,7 @@ description: "有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
-ms.openlocfilehash: f72fac677aa7d461f174b2b06db69df235273375
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/24/2017
 
 3. 选择“身份验证”，记下“客户端 ID”和“客户端机密”值。
 
-4. 在“已授权的重定向 URL”框中，粘贴 **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**。 将 {*tenant*} 替换为自己的租户名称（例如 contosob2c.onmicrosoft.com）。 请务必使用 HTTPS 方案。 
+4. 在“已授权的重定向 URL”框中，粘贴 **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**。 将 {*tenant*} 替换为你自己的租户名称（例如 contosob2c.onmicrosoft.com）。 请务必使用 HTTPS 方案。 
 
     ![LinkedIn 帐户 - 设置已授权的重定向 URL](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 
@@ -159,11 +159,11 @@ ms.lasthandoff: 10/24/2017
 
 1. 打开策略的基文件（例如 TrustFrameworkBase.xml）。
 
-2. 搜索 `<UserJourneys>` 元素，选择 `<UserJourney>` 节点的整个内容，再选择“剪切”将所选文本移到剪贴板。
+2. 搜索 `<UserJourneys>` 元素，选择 `<UserJourney>` 节点的整个内容，再选择“剪切”将所选文本移动到剪贴板。
 
 3. 打开扩展文件（例如 TrustFrameworkExtensions.xml），并搜索 `<UserJourneys>` 元素。 如果该元素不存在，请添加该元素。
 
-4. 将 `<UserJourney>` 节点的整个内容（在步骤 2 中已移到剪贴板）粘贴到 `<UserJourneys>` 元素。
+4. 将 `<UserJourney>` 节点的整个内容（已在步骤 2 中移动到剪贴板）粘贴到 `<UserJourneys>` 元素。
 
 ### <a name="step-42-display-the-button"></a>步骤 4.2：显示“按钮”
 `<ClaimsProviderSelections>` 元素定义声明提供程序选择选项的列表及其顺序。 `<ClaimsProviderSelection>` 节点类似于注册或登录页上的标识提供者按钮。 如果为 LinkedIn 帐户添加了 `<ClaimsProviderSelection>` 节点，则当用户进入页面时，会显示一个新按钮。 若要添加此元素，请执行以下操作：
@@ -183,7 +183,7 @@ ms.lasthandoff: 10/24/2017
 
 1. 在 `<UserJourney>` 节点中搜索包含 `Order="2"` 的 `<OrchestrationStep>` 节点。
 
-2. 在 `<ClaimsExchanges>` 元素中添加以下 XML 片段：
+2. 在 `<ClaimsExchanges>` 元素中添加以下 XML 代码片段：
 
     ```xml
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAuth" />
@@ -194,7 +194,7 @@ ms.lasthandoff: 10/24/2017
     >* 确保 `TechnicalProfileReferenceId` ID 设置为前面创建的技术配置文件 (LinkedIn-OAuth)。
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>步骤 5：将策略上传到租户
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，选择“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
 
 2. 选择“标识体验框架”。
 
@@ -207,16 +207,16 @@ ms.lasthandoff: 10/24/2017
 6. 上传 *TrustFrameworkBase.xml* 和 *TrustFrameworkExtensions.xml* 文件，并确保它们可通过验证。
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>步骤 6：使用“立即运行”测试自定义策略
-1. 选择“Azure AD B2C 设置”，再选择“标识体验框架”。
+1. 选择“Azure AD B2C 设置”，然后选择“标识体验框架”。
 
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。  
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。  
     现在，应可使用 LinkedIn 帐户登录。
 
 ## <a name="step-7-optional-register-the-linkedin-account-claims-provider-to-the-profile-edit-user-journey"></a>步骤 7：（可选）向配置文件编辑用户旅程注册 LinkedIn 帐户声明提供程序
-可能还需要将 LinkedIn 帐户标识提供者添加到用户 `ProfileEdit` 用户旅程。 若要使用户旅程可用，请重复“步骤 4”。 这次请选择包含 `Id="ProfileEdit"` 的 `<UserJourney>` 节点。 保存、上传并测试策略。
+可能还需要将 LinkedIn 帐户标识提供者添加到用户 `ProfileEdit` 用户旅程。 若要使用户旅程可用，请重复“步骤 4”。 这次，请选择包含 `Id="ProfileEdit"` 的 `<UserJourney>` 节点。 保存、上传并测试策略。
 
 ## <a name="optional-download-the-complete-policy-files"></a>（可选）下载完整的策略文件
-完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-li-app)用于参考。
+完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-li-app)供你参考。

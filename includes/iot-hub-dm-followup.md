@@ -20,4 +20,4 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
-[lnk-iot-edge]: ../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md
+[lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md

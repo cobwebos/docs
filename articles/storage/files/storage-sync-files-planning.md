@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 241b744f5c5e89f53addb4d41d732245d76ef9a3
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: f2e7f93d2d2914399f3fc7b24a00540f1c045b58
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -39,23 +39,29 @@ ms.lasthandoff: 11/13/2017
 
 ### <a name="azure-file-sync-agent"></a>Azure 文件同步代理
 Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 Azure 文件共享的同步。 Azure 文件同步代理包含 3 个主要组件： 
-- **FileSyncSvc.exe**：后台 Windows 服务，负责监视服务器端点的更改并启动到 Azure 的同步会话。
+- **FileSyncSvc.exe**：后台 Windows 服务，负责监视服务器终结点的更改并启动到 Azure 的同步会话。
 - **StorageSync.sys**：Azure 文件同步系统筛选器，负责将文件分层存入 Azure 文件（若云分层已启用）。
 - **PowerShell 管理 cmdlet**：PowerShell cmdlet，用于与 Microsoft.StorageSync Azure 资源提供程序进行交互。 可在以下位置（默认位置）找到这些文件：
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>服务器终结点
-服务器终结点表示已注册服务器上的特定位置，例如服务器卷中的文件夹或服务器卷的根。 如果命名空间不重叠（例如 F:\sync1 和 F:\sync2），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
+服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹或服务器卷的根。 如果命名空间不重叠（例如 F:\sync1 和 F:\sync2），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
+
+> [!Note]  
+> 服务器终结点可能位于 Windows 系统卷上。 系统卷上不支持云分层。
 
 ### <a name="cloud-endpoint"></a>云终结点
 云终结点是一个 Azure 文件共享，它属于同步组。 整个 Azure 文件共享同步和 Azure 文件共享只能属于一个云终结点。 因此，Azure 文件共享只能是一个同步组的成员。 如果将带一组现有文件的 Azure 文件共享作为云终结点添加到同步组中，则现有文件将与同步组中其他终结点上已有的任何其他文件进行合并。
 
 > [!Important]  
-> Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 云终结点更改检查作业每 24 小时只会启动一次。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
+> Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
 ### <a name="cloud-tiering"></a>云分层 
 云分层是 Azure 文件同步的一项可选功能，可用于将很少使用或访问文件分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性，因此第三方应用程序可识别分层文件。 当用户打开分层文件时，Azure 文件同步会从 Azure 文件中无缝调用此文件数据，而用户无需知道文件未存储在本地系统上。 此功能也称为分层存储管理 (HSM)。
+
+> [!Important]  
+> Windows 系统卷上不支持对服务器终结点进行云分层。
 
 ## <a name="azure-file-sync-interoperability"></a>Azure 文件同步互操作性 
 本部分介绍 Azure 文件同步与 Windows Server 功能和角色以及第三方解决方案的互操作性。
@@ -80,14 +86,14 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 | 硬链接 | 已跳过 | |
 | 符号链接 | 已跳过 | |
 | 装入点 | 部分支持 | 装入点可能是服务器终结点的根，但如果包含在服务器终结点的命名空间内，则跳过此装入点。 |
-| 交接点 | 已跳过 | |
+| 交接点 | 已跳过 | 例如，分布式文件系统中的 DfrsrPrivate 和 DFSRoots 文件夹。 |
 | 重分析点 | 已跳过 | |
 | NTFS 压缩 | 完全支持 | |
 | 稀疏文件 | 完全支持 | 稀疏文件会进行同步（不受阻），但作为完整文件同步到云。 如果在云中（或在其他服务器上）更改文件内容，则下载更改时，文件不再是稀疏文件。 |
 | 备用数据流 (ADS) | 保留但不同步 | |
 
 > [!Note]  
-> 仅支持 NTFS 卷。
+> 仅支持 NTFS 卷。 不支持 ReFS、FAT、FAT32 及其他文件系统。
 
 ### <a name="failover-clustering"></a>故障转移群集
 Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般用途文件服务器”部署选项。 不可在“适用于应用程序数据的横向扩展文件服务器”(SOFS) 或群集共享卷 (CSV) 上使用故障转移群集。
@@ -97,6 +103,24 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 ### <a name="data-deduplication"></a>重复数据删除
 对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。 目前不可在启用云分层的 Azure 文件同步和重复数据删除之间进行互操作。
+
+### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
+从 [Azure 文件同步代理 1.2](https://go.microsoft.com/fwlink/?linkid=864522) 开始，Azure 文件同步就支持与 DFS 命名空间 (DFS-N) 和 DFS 复制 (DFS-R) 进行互操作。
+
+**DFS 命名空间 (DFS-N)**：Azure 文件同步在 DFS-N 服务器上完全受支持。 可以在一个或多个 DFS-N 成员上安装 Azure 文件同步代理，以在服务器终结点与云终结点之间同步数据。 有关详细信息，请参阅 [DFS 命名空间概述](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)。
+ 
+**DFS 复制 (DFS-R)**：因为 DFS-R 和 Azure 文件同步都是复制解决方案，所以在大多数情况下建议将 DFS-R 替换为 Azure 文件同步。不过在以下几个方案中，可能需要同时使用 DFS-R 和 Azure 文件同步：
+
+- 从 DFS-R 部署迁移至 Azure 文件同步部署。 有关详细信息，请参阅[将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)。
+- 并非需要文件数据副本的每个本地服务器都可以直接连接至 Internet。
+- 分支服务器将数据合并至单个中心服务器，你希望在该服务器中使用 Azure 文件同步。
+
+对于 Azure 文件同步和 DFS-R 并行工作的情况：
+
+1. 必须在包含 DFS-R 复制文件夹的卷上禁用 Azure 文件同步云分层。
+2. 不应在 DFS-R 只读复制文件夹上配置服务器终结点。
+
+有关详细信息，请参阅 [DFS 复制概述](https://technet.microsoft.com/library/jj127250)。
 
 ### <a name="antivirus-solutions"></a>防病毒解决方案
 由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 由于分层文件设置有“脱机”属性，因此建议咨询软件供应商，了解如何配置解决方案以跳过读取脱机文件。 

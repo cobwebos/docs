@@ -1,27 +1,19 @@
 ---
-title: "Azure 上的 Kubernetes 教程 - 缩放应用程序 | Microsoft 文档"
+title: "Kubernetes on Azure 教程 - 缩放应用程序"
 description: "AKS 教程 - 缩放应用程序"
 services: container-service
-documentationcenter: 
 author: dlepow
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Docker, 容器, 微服务, Kubernetes, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: aurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/15/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f060b37d5ae02dfd53f513b134692186024cf727
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 9eba0de054b06233f2de7fb375010b4b40c6937f
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="scale-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中缩放应用程序
 

@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 Mercer BenefitsCentral 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3788b28c-49aa-4208-9acd-630362008e89
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jeedes
-ms.openlocfilehash: c577a0163af04bec5737a215e788c3fb92c653c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfc963be9d087c6ad1c56dcdaf922ff5dbf5b284
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>教程：Azure Active Directory 与 Mercer BenefitsCentral (MBC) 的集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 要配置 Azure AD 与 Mercer BenefitsCentral (MBC) 的集成，需要满足以下条件：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 具有已启用 Mercer BenefitsCentral (MBC) 单一登录的订阅
 
 > [!NOTE]

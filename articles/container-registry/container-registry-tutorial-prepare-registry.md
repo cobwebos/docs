@@ -2,25 +2,18 @@
 title: "Azure 容器注册表教程 - 准备异地复制的 Azure 容器注册表"
 description: "创建 Azure 容器注册表，配置异地复制，准备 Docker 映像，并将该映像部署到注册表。 由三个部分构成的系列教程的第一部分。"
 services: container-registry
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: mmacy
-tags: acr, azure-container-registry, geo-replication
-keywords: "Docker, 容器, 注册表, Azure"
 ms.service: container-registry
-ms.devlang: 
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/26/2017
 ms.author: marsma
-ms.custom: 
-ms.openlocfilehash: 02bb792ddc017efd3be6e14d951eca1d5671f719
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: mvc
+ms.openlocfilehash: 7ae0fbf5f7566bd3f1f6591501b8b004a1e5cb0f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>准备异地复制的 Azure 容器注册表
 
@@ -100,7 +93,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 配置异地复制后，生成一个容器映像并将其推送到注册表。 在将映像推送到 ACR 实例之前，必须先登录到 ACR 实例。 通过[基本、标准和高级 SKU](container-registry-skus.md)，可以使用 Azure 标识进行身份验证。
 
-使用 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为在前面步骤中创建的注册表的名称。
+使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为在前面步骤中创建的注册表的名称。
 
 ```azurecli
 az acr login --name <acrName>
