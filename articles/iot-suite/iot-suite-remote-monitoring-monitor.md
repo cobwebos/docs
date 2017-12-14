@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 3dfc5809344af920540a88e097ce399cce653363
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2e6d965d9177a61f974b319a1bd2155c9132533f
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>使用远程监视解决方案执行高级监视
 
@@ -90,9 +90,6 @@ ms.lasthandoff: 11/10/2017
 可以使用“系统警报”筛选器来调整最近警报的时间跨度。 默认情况下，该面板显示过去一个小时的警报：
 
 ![按时间筛选警报](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
-
-> [!NOTE]
-> 向右滚动可以看到时间跨度筛选器。
 
 ## <a name="view-the-system-kpis"></a>查看系统 KPI
 

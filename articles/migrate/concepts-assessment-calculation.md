@@ -1,24 +1,16 @@
 ---
 title: "在 Azure Migrate 中评估计算 |Microsoft 文档"
 description: "概述 Azure Migrate 服务中的评估计算。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 39a63769-31eb-49f9-9089-4d3e4e88a412
-ms.service: migrate
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.service: azure-migrate
+ms.topic: conceptual
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: f00825ff9a5018e67672ce452f01130f84919e52
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 2b274244cc7b7fd0fc3eee22a57a51db77370370
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="assessment-calculations"></a>评估计算
 

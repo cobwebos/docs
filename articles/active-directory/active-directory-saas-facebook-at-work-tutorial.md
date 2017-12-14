@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 Workplace by Facebook �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 27e62a00832484667117d8718db9f2fc05e2f4e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f34f6509d762cba6aba98a6eba010fd94656e67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 与 Workplace by Facebook 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 Workplace by Facebook 单一登录 (SSO) 的订阅
 
 若要测试本教程中的步骤，请遵循以下建议：

@@ -4,7 +4,7 @@ description: "在 Azure AD B2C 用户旅程中以用户输入验证的形式集�
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: e9a5b6ffdf2a2c30ae1bcb2bd8f91adb12f35266
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 使用构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架，可在用户旅程中与 RESTful API 相集成。 本演练将会介绍 Azure AD B2C 如何与 .NET Framework RESTful 服务 (Web API) 交互。
@@ -215,7 +215,7 @@ ms.lasthandoff: 10/21/2017
     此时会打开“创建应用服务”窗口。 在此窗口中，创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
     > [!NOTE]
-    >有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)。
+    >有关发布方法的详细信息，请参阅[在 Azure 中创建 ASP.NET Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)。
 
 3. 在“Web 应用名称”框中，键入唯一的应用名称（有效字符为 a-z、0-9 和连字符 (-)）。 Web 应用的 URL 为 http://<app_name>.azurewebsites.NET，其中，*app_name* 是 Web 应用的名称。 可以接受自动生成的名称，它是唯一的。
 
@@ -345,7 +345,7 @@ ms.lasthandoff: 10/21/2017
     > [!NOTE]
     > “立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
 
     ![B2C_1A_signup_signin 窗口](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 

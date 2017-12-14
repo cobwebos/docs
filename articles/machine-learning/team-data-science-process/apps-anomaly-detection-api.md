@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: cd7dab8514b41d930d01fd134229cc9da48b18fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 519ac38c484b9631a3fc096a17be026e9378a178
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -44,13 +44,13 @@ ms.lasthandoff: 10/11/2017
 >
 
 ## <a name="api-deployment"></a>API 部署
-要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行该操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
+要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行该操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
 
 ## <a name="scaling-the-api"></a>缩放 API
 默认情况下，部署将使用一个免费的开发/测试计费计划，其中包括 1,000 次交易/月和 2 个计算小时/月。  可以根据需求升级到其他计划。  在[此处](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)的“生产 Web API 定价”下提供了有关不同计划的定价的详细信息。
 
 ## <a name="managing-aml-plans"></a>管理 AML 计划 
-可以在[此处](https://services.azureml.net/plans/)管理计费计划。  计划名称将基于在部署 API 时选择的资源组名称，再加上一个订阅所独有的字符串。  在[此处](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice)的“管理计费计划”部分下提供了有关如何升级计划的说明。
+可以在[此处](https://services.azureml.net/plans/)管理计费计划。  计划名称将基于在部署 API 时选择的资源组名称，再加上一个订阅所独有的字符串。  在[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)的“管理计费计划”部分下提供了有关如何升级计划的说明。
 
 ## <a name="api-definition"></a>API 定义
 该 Web 服务提供 HTTPS 上基于 REST 的 API，可以不同方式使用该 API，包括 Web 或移动应用程序、R、Python、Excel 等。可将时间系列数据通过 REST API 调用发送到此服务，此服务将运行下面介绍的三种异常类型的组合。

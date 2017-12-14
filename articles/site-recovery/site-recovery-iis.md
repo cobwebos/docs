@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.openlocfilehash: 4ac79df703de00ac009d9845772d8be740e74f29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cff6a7502e80eb4ff447cc99fe31b48cb660c27e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制基于 IIS 的多层 Web 应用程序
 
@@ -71,6 +71,7 @@ ms.lasthandoff: 10/11/2017
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 否 | 是
+**Azure**|不可用|是
 
 ## <a name="replicate-virtual-machines"></a>复制虚拟机
 

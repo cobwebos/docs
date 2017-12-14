@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3d3c6c95763bc8eb67f092bda61bb58c7af9daf2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 764eb479733a7d4acdb6e6c3eee721cb4a161c88
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>通过 Azure 门户发布服务目录应用程序
 
@@ -62,5 +62,4 @@ ms.lasthandoff: 11/03/2017
 
 * 有关托管应用程序的简介，请参阅[托管应用程序概述](overview.md)。
 * 有关托管应用程序示例，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
-* 有关将托管应用程序发布到 Azure Marketplace 的信息，请参阅 [Marketplace 中的 Azure 托管应用程序](publish-marketplace-app.md)。
 * 若要了解如何为托管应用程序创建 UI 定义文件，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。

@@ -4,7 +4,7 @@ description: "本 Azure 多重身份验证页面会帮助你部署 LDAP 身份�
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: e1a68568-53d1-4365-9e41-50925ad00869
 ms.service: multi-factor-authentication
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.openlocfilehash: 60b96fcfcbbc33a101d06fc59425a4ea8907bce0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 37f96afab67680b3140a6f4da6bff0c23a1f328f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 身份验证和 Azure 多重身份验证服务器
 默认情况下，Azure 多重身份验证服务器配置为从 Active Directory 导入或同步用户。 但是，可以将它配置为绑定到不同 LDAP 目录，如 ADAM 目录或特定的 Active Directory 域控制器。 通过 LDAP 连接到目录后，Azure 多重身份验证服务器可以充当 LDAP 代理来执行身份验证。 它还允许将 LDAP 绑定用作 RADIUS 目标，使用 IIS 身份验证对用户进行预身份验证，或者在 Azure MFA 用户门户中进行主要身份验证。

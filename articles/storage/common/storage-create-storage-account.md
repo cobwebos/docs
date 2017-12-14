@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: c9630e575de15b404bd91cbeefc60d698c5da667
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6e20cf37f039f6bec32aee712a4d3c564d54cfc6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="about-azure-storage-accounts"></a>关于 Azure 存储帐户
 
@@ -99,7 +99,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数�
 
 更改复制选项将更改定价。 有关更多详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/) 页。
 
-对于 Blob 存储帐户，更改访问层除了会更改定价之外，可能还会产生更改费用。 有关更多详细信息，请参阅 [Blob 存储帐户 — 定价和计费](../blobs/storage-blob-storage-tiers.md#pricing-and-billing) 。
+对于 Blob 存储帐户，更改访问层除了会更改定价之外，可能还会产生更改费用。 有关更多详细信息，请参阅 [Blob 存储帐户 — 定价和计费](../blobs/storage-account-options.md#pricing-and-billing) 。
 
 ### <a name="manage-your-storage-access-keys"></a>管理存储访问密钥
 创建存储帐户时，Azure 将生成两个 512 位存储访问密钥，用于在用户访问该存储帐户时对其进行身份验证。 通过提供两个存储访问密钥，Azure 使你能够在不中断存储服务的情况下重新生成用于访问该服务的密钥。

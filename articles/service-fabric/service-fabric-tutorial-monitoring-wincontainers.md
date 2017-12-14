@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69a59ea9fb93f6e9f3f3eea66b1a9e973b1b4eea
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 8fe3266cfcb7141684f9e1b5dfa74d6569c23b24
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>使用 OMS 监视 Service Fabric 上的 Windows 容器
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/20/2017
 
 如果使用了本教程第一部分中[提供的模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)，则它应包含常规 Service Fabric Azure 资源管理器模板的下列附加件。 如果拥有自己的群集，并且想要对它进行设置，以便使用 OMS 监视容器：
 * 在资源管理器模板中进行以下更改。
-* 使用 PowerShell 部署它，以通过[部署模板](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-creation-via-arm)升级群集。 Azure 资源管理器会确认此资源的存在，以将它作为升级内容推出。
+* 使用 PowerShell 部署它，以通过[部署模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)升级群集。 Azure 资源管理器会确认此资源的存在，以将它作为升级内容推出。
 
 ### <a name="adding-oms-to-your-cluster-template"></a>将 OMS 添加到群集模板
 

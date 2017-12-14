@@ -3,7 +3,7 @@ title: "Azure 自动化混合 Runbook 辅助角色 | Microsoft Docs"
 description: "本文介绍如何安装和使用混合 Runbook 辅助角色，该角色是 Azure 自动化的一项功能，可以用于在本地数据中心或云提供商的计算机上运行 Runbook。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/21/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 5697491ed62a3a2ed5b4762041a683ee97f42b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d33ce1b4f00e8186ad894d54901e3bc09d263fa4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。  利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。  
@@ -103,7 +103,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3.安装 Microsoft Monitoring Agent
 Microsoft Monitoring Agent 可将计算机连接到 Operations Management Suite。  在计算机本地安装代理并将其连接到工作区时，代理会自动下载混合 Runbook 辅助角色所需的组件。
 
-按照[将 Windows 计算机连接到 Log Analytics](../log-analytics/log-analytics-windows-agents.md) 中的说明在本地计算机上安装代理。  可以对多台计算机重复此过程，以将多个辅助角色添加到环境。
+按照[将 Windows 计算机连接到 Log Analytics](../log-analytics/log-analytics-windows-agent.md) 中的说明在本地计算机上安装代理。  可以对多台计算机重复此过程，以将多个辅助角色添加到环境。
 
 代理成功连接到 Operations Management Suite 后，将列在 Operations Management Suite“设置”窗格的“已连接的源”选项卡上。  当 C:\Program Files\Microsoft Monitoring Agent\Agent 中出现名为 **AzureAutomationFiles** 的文件夹时，可确认代理已正确下载自动化解决方案。  若要确认混合 Runbook 辅助角色的版本，可以导航到 C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ 并留意 \\*version* 子文件夹。   
 

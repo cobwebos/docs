@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 694d0c27b26c1ed9f6a1a54f766d024d882b5b64
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 6f82ae396a17f903a522c716f73a5f7d2de660e7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>在 Azure 内容交付网络中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/06/2017
 > 
 > 有关 Azure CDN 如何加速访问 blob 和其他文件的详细信息，请参阅 [Azure 内容交付网络概述](cdn-overview.md)。
 > 
-> 有关 Azure Blob 存储的详细信息，请参阅 [Blob 存储简介](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)。
+> 有关 Azure Blob 存储的详细信息，请参阅 [Blob 存储简介](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)。
  
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>使用 Azure PowerShell 设置 Cache-Control 标头
@@ -113,7 +113,7 @@ class Program
 ![Azure 存储资源管理器属性](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure 命令行接口
-使用 [Azure 命令行接口](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) (CLI)，可以从命令行管理 Azure blob 资源。 若要在使用 Azure CLI 上传 Blob 时设置 cache-control 标头，可使用 `-p` 开关设置 *cacheControl* 属性。 以下示例说明如何将 TTL 设置为 1 小时（3600 秒）：
+使用 [Azure 命令行接口](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) (CLI)，可以从命令行管理 Azure blob 资源。 若要在使用 Azure CLI 上传 Blob 时设置 cache-control 标头，可使用 `-p` 开关设置 *cacheControl* 属性。 以下示例说明如何将 TTL 设置为 1 小时（3600 秒）：
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\test.txt myContainer test.txt

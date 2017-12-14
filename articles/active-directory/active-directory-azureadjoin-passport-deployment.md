@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: 
 keywords: "配置 Microsoft Passport、Microsoft Windows Hello for Business 部署"
 author: MarkusVi
-manager: femila
+manager: mtillman
 tags: azure-classic-portal
 ms.assetid: 7dbbe3c6-1cd7-429c-a9b2-115fcbc02416
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: 8fd9f3a51651fc163abd79aaf21ec3dd92502bb5
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: b5b48edda76bedc14d5528fa82f1d9b7bfffe53a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>在组织中启用 Microsoft Windows Hello for Business
 在[将已加入域的 Windows 10 设备与 Azure Active Directory 相连](active-directory-azureadjoin-devices-group-policy.md)后，执行以下操作在组织中启用 Microsoft Windows Hello for Business：

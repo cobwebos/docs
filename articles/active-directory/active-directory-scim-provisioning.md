@@ -4,7 +4,7 @@ description: "Azure Active Directory 可以使用 SCIM 协议规范中定义的�
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
@@ -12,25 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.custom: aaddev;it-pro;oldportal
-ms.openlocfilehash: 91978cee88d55c99bcb63c63cdaf01581ae84668
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: aaddev;it-pro
+ms.openlocfilehash: 82649b0da67882a0088876798b6f0d79e46051a7
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统将用户和组从 Azure Active Directory 自动预配到应用程序
 
 ## <a name="overview"></a>概述
 Azure Active Directory (Azure AD) 可以使用[跨域标识管理系统 (SCIM) 2.0 协议规范](https://tools.ietf.org/html/draft-ietf-scim-api-19)中定义的接口，将用户和组自动预配到以 Web 服务为前端的任何应用程序或标识存储。 Azure Active Directory 可将创建、修改或删除分配用户和组的请求发送到 web 服务。 然后，Web 服务可将这些请求转换为针对目标标识存储的操作。 
-
-> [!IMPORTANT]
-> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。 
-
-
 
 ![][0]
 *图 1：通过 Web 服务从 Azure Active Directory 预配到标识存储*
@@ -87,7 +82,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 13. 单击“保存”以启用 Azure AD 预配服务。 
 14. 如果仅同步分配的用户和组（推荐），请确保选择“用户和组”选项卡，并分配要同步的用户和/或组。
 
-一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)。
+一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)。
 
 >[!NOTE]
 >初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 
@@ -159,7 +154,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 13. 单击“保存”以启用 Azure AD 预配服务。 
 14. 如果仅同步分配的用户和组（推荐），请确保选择“用户和组”选项卡，并分配要同步的用户和/或组。
 
-一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)。
+一旦启动初始同步，即可使用“审核日志”选项卡来监视进程，它将显示由应用中预配服务所执行的所有操作。 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)。
 
 验证此示例的最后一步是打开 Windows 计算机上 \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug 文件夹中的 TargetFile.csv 文件。 运行预配过程后，此文件会显示所有已分配和预配的用户与组的详细信息。
 

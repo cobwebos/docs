@@ -1,5 +1,5 @@
 ---
-title: "了解虚拟机规模集模板 | Microsoft 文档"
+title: "了解虚拟机规模集模板 | Microsoft Docs"
 description: "了解如何创建虚拟机规模集的最小可行规模集模板"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 65f02c4675eb752dcc82e9a1d1c7f6c2c193fc32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1672474e22411e7f7fca4082ce83146e40ebfbc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
-[Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建最小的可行规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。 
+[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建最小的可行规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。 
 
 此模板简单易用。 有关更完整的规模集模板的示例，请参阅 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)，并搜索包含字符串 `vmss` 的文件夹。
 
@@ -123,7 +123,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>指定规模集属性
-规模集具有多个用于自定义规模集中 VM 的属性。 有关这些属性的完整列表，请参阅[规模集 REST API 文档](https://docs.microsoft.com/en-us/rest/api/virtualmachinescalesets/create-or-update-a-set)。 本教程中，我们仅设置一些常用属性。
+规模集具有多个用于自定义规模集中 VM 的属性。 有关这些属性的完整列表，请参阅[规模集 REST API 文档](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set)。 本教程中，我们仅设置一些常用属性。
 ### <a name="supply-vm-size-and-capacity"></a>提供 VM 大小和容量
 规模集需要知道要创建的 VM 的大小（“sku name”） 和要创建的此类 VM的 数量（“sku capacity”）。 若要查看可用的 VM 大小，请参阅 [VM 大小文档](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)。
 

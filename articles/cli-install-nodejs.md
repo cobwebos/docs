@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 0dc9d95729f28dd0846178e24a25425170c893df
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="install-the-azure-cli-10"></a>安装 Azure CLI 1.0
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/01/2017
 
 有关更多选项和背景信息，请参阅 [GitHub](https://github.com/azure/azure-xplat-cli) 上的项目存储库。
 
-安装 Azure CLI 1.0 后，[将它连接到 Azure 订阅](xplat-cli-connect.md)，并从命令行接口（Bash、终端、命令提示符等）运行 **azure** 命令，从而使用 Azure 资源。
+安装 Azure CLI 1.0 后，[将它连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)，并从命令行接口（Bash、终端、命令提示符等）运行 **azure** 命令，从而使用 Azure 资源。
 
 ## <a name="option-1-install-an-npm-package"></a>选项 1：安装 npm 包
 若要通过 npm 包安装 CLI，请确保已下载并安装了[最新的 Node.js 和 npm](https://nodejs.org/en/download/package-manager/)。 然后，运行 npm install，安装 azure-cli 包：
@@ -99,7 +99,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 azure --version
 ```
 
-现在已准备就绪！ 若要访问所有 CLI 命令来使用自己的资源，请[从 Azure CLI 连接到 Azure 订阅](xplat-cli-connect.md)。
+现在已准备就绪！ 若要访问所有 CLI 命令来使用自己的资源，请[从 Azure CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
 
 > [!NOTE]
 > 首次使用 Azure CLI 时，会看到一条消息，询问是否允许 Microsoft 收集使用情况信息。 参与为自愿性质。 如果选择参与，通过运行 `azure telemetry --disable` 即可随时停止参与。 若要随时启用参与，请运行 `azure telemetry --enable`。
@@ -129,7 +129,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 ## <a name="next-steps"></a>后续步骤
-* [从 CLI 连接到 Azure 订阅](xplat-cli-connect.md)以创建和管理 Azure 资源。
+* [从 CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)以创建和管理 Azure 资源。
 * 若要了解有关 Azure CLI、下载源代码、报告问题或贡献项目的详细信息，请访问[适用于 Azure CLI 的 GitHub 存储库](https://github.com/azure/azure-xplat-cli)。
 * 如果在使用 Azure CLI 或 Azure 方面有疑问，请访问 [Azure 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting)。
 

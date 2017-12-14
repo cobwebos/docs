@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 41eed9c44a226817da9ee5f324e62902bc23754c
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 04a03436d554d9f06eed0fbdf5cf34a786061e21
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>使用 DPM 准备将工作负荷备份到 Azure
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/23/2017
 >
 >
 
-[System Center DPM](https://docs.microsoft.com/en-us/system-center/dpm/dpm-overview) 备份文件和应用程序数据。 可在[此处](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix)查看有关支持的工作负载的详细信息。备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
+[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) 备份文件和应用程序数据。 可在[此处](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)查看有关支持的工作负载的详细信息。备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
 
 * **部署为物理服务器或本地虚拟机的 DPM** - 如果 DPM 部署为物理服务器或本地 Hyper-V 虚拟机，则除了磁盘和磁带备份外，还可以将数据备份到恢复服务保管库。
 * **部署为 Azure 虚拟机的 DPM** — 通过 System Center 2012 R2 Update 3，可以将 DPM 部署为 Azure 虚拟机。 如果 DPM 部署为 Azure 虚拟机部署，则可以将数据备份到附加到 DPM Azure 虚拟机的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/23/2017
 
 1. **保管库凭据** — 当计算机向 Azure 备份服务中标识的保管库发送备份数据时，需要使用保管库凭据来对计算机进行身份验证。 保管库凭据可从保管库下载，并且在 48 小时内有效。
 2. **密码** — 密码用于加密向云中进行的备份。 请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
-3. **安全 PIN** — 若已启用保管库的[安全设置](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature)，则需要使用安全 PIN 来执行关键的备份操作。 该多重身份验证相当于增加了额外一层安全措施。 
+3. **安全 PIN** — 若已启用保管库的[安全设置](https://docs.microsoft.com/azure/backup/backup-azure-security-feature)，则需要使用安全 PIN 来执行关键的备份操作。 该多重身份验证相当于增加了额外一层安全措施。 
 4. **恢复文件夹** — 这是执行云恢复时云中的备份临时下载到的文件夹名称。 其大小应与你想要并行恢复的备份项的大小大致相等。
 
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/23/2017
     ![创建恢复服务保管库步骤 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
 5. 单击“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
-6. 单击“资源组”查看可用资源组列表，或单击“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
+6. 单击“资源组”查看可用资源组列表，或单击“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)
 7. 单击“位置”，为保管库选择地理区域  。
 8. 单击“创建” 。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
    创建保管库后，它会在门户中打开。

@@ -4,7 +4,7 @@ description: "详细介绍 Azure Active Directory 应用程序清单，该清单
 services: active-directory
 documentationcenter: 
 author: sureshja
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 4804f3d4-0ff1-4280-b663-f8f10d54d184
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: sureshja
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: d5e18f41d6eb69ccb7eafaa4de2646c4c38df5e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c92631323040f9be015d3824b9803cdde95d874b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understanding-the-azure-active-directory-application-manifest"></a>了解 Azure Active Directory 应用程序清单
 与 Azure Active Directory (AD) 集成的应用程序必须向 Azure AD 租户注册，提供应用程序的持久性标识配置。 在运行时查阅此配置，启用允许应用程序通过 Azure AD 外部和代理身份验证/授权的方案。 有关 Azure AD 应用程序模型的详细信息，请参阅[添加、更新和删除应用程序][ADD-UPD-RMV-APP]一文。
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 * **声明已知的客户端应用程序 (knownClientApplications)**，可让你以逻辑方式将指定客户端应用程序的许可绑定到资源/Web API。
 * **请求 Azure AD 对登录用户发出组成员资格声明** (groupMembershipClaims)。  还可配置为发出有关用户目录角色成员资格的声明。 请参阅[使用 AD 组在云应用程序中执行授权][AAD-GROUPS-FOR-AUTHORIZATION]一文获取实现示例。
 * **允许应用程序支持 OAuth 2.0 隐式授权**流 (oauth2AllowImplicitFlow)。 这种类型的授权流可用于嵌入式 JavaScript 网页或单页应用程序 (SPA)。 有关隐式授权许可的详细信息，请参阅 [Understanding the OAuth2 implicit grant flow in Azure Active Directory][IMPLICIT-GRANT]（了解 Azure Active Directory 中的 OAuth2 隐式授予流）。
-* **允许使用 X509 证书作为机密密钥** (keyCredentials)。 有关实现示例，请参阅文章 [Build service and daemon apps in Office 365][O365-SERVICE-DAEMON-APPS]（在 Office 365 中构建服务和守护程序应用）和 [Developer’s guide to auth with Azure Resource Manager API][DEV-GUIDE-TO-AUTH-WITH-ARM]（使用 Azure Resource Manager API 进行身份验证的开发人员指南）。
+* **允许使用 X509 证书作为机密密钥** (keyCredentials)。 有关实现示例，请参阅文章 [Build service and daemon apps in Office 365][O365-SERVICE-DAEMON-APPS]（在 Office 365 中构建服务和守护程序应用）和 [Developer’s guide to auth with Azure Resource Manager API][DEV-GUIDE-TO-AUTH-WITH-ARM]（使用 Azure 资源管理器 API 进行身份验证的开发人员指南）。
 * 为应用程序（标识符 URI[]）**添加新的应用 ID URI**。 应用 ID URI 用于唯一标识其 Azure AD 租户中的应用程序（或是通过已验证的自定义域限定多个租户方案时跨多个 Azure AD 租户中的应用程序）。 在请求资源应用程序的权限，或获取资源应用程序的访问令牌时使用应用程序 ID URI。 更新此元素时，相应的服务主体的 servicePrincipalNames[] 集合将做出同样的更新，该集合位于应用程序的主租户中。
 
 使用应用程序清单还能很好地跟踪应用程序注册状态。 由于它可以 JSON 格式提供，因此文件表示形式可以签入源代码管理，以及应用程序的源代码。

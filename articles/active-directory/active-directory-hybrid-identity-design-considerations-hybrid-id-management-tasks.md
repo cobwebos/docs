@@ -4,7 +4,7 @@ description: "借助条件性访问控制，Azure Active Directory 会在验证�
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 921c8391fc18eca35d10c3ade158a98ae88df397
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3257b5b9c714103773dfe646093cb632f500d459
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
 标识是企业移动性和应用程序访问策略的基石之一。 无论登录移动设备还是 SaaS 应用，标识都是能否进行访问的关键所在。 从最高层面讲，标识管理解决方案涉及到存储库的统合与同步，其中又包含预配资源过程的自动化和集中化。 标识解决方案应为跨本地与云的集中式标识功能，且应使用某种形式的标识联合，以维护集中式身份验证，安全地与外部用户和企业进行共享和协作。 资源的范围涵盖操作系统和应用程序，乃至组织中或隶属于组织的人员。 组织结构可以改变，以适应预配策略和过程。

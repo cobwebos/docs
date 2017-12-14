@@ -8,11 +8,11 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 9372e45e8666dc572b805dfd4a505c9446145079
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 执行超参数的分布式优化
 
@@ -36,8 +36,8 @@ ms.lasthandoff: 12/05/2017
 * [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
 * 按照用于安装 Workbench 并创建帐户的[安装和创建快速入门](./quickstart-installation.md)安装的 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 副本。
 * 此方案假设在本地装有 Docker 引擎的 Windows 10 或 MacOS 上运行 Azure ML Workbench。 
-* 若要使用远程 Docker 容器运行此方案，请按照[说明](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu 数据科学虚拟机 (DSVM)。 建议使用至少具有 8 个核心和 28 GB 内存的虚拟机。 虚拟机的 D4 实例具有这样的容量。 
-* 若要使用 Spark 群集运行此方案，请按照这些[说明](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 Azure HDInsight 群集。 建议至少具备一个群集 
+* 若要使用远程 Docker 容器运行此方案，请按照[说明](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu 数据科学虚拟机 (DSVM)。 建议使用至少具有 8 个核心和 28 GB 内存的虚拟机。 虚拟机的 D4 实例具有这样的容量。 
+* 若要使用 Spark 群集运行此方案，请按照这些[说明](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 Azure HDInsight 群集。 建议至少具备一个群集 
 - 6 个辅助角色节点
 - 8 个核心
 - 标头和辅助角色节点中的内存均为 28 GB。 虚拟机的 D4 实例具有这样的容量。 建议更改以下参数，使该群集的性能最大化。
@@ -45,11 +45,11 @@ ms.lasthandoff: 12/05/2017
 - spark.executor.cores
 - spark.executor.memory 
 
-可以按照这些[说明](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager)进行操作并编辑“自定义 Spark 默认值”部分中的定义。
+可以按照这些[说明](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager)进行操作并编辑“自定义 Spark 默认值”部分中的定义。
 
      **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
 
-* 创建一个用于存储数据集的 Azure 存储帐户。 请按照[说明](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account)创建一个存储帐户。
+* 创建一个用于存储数据集的 Azure 存储帐户。 请按照[说明](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)创建一个存储帐户。
 
 ## <a name="data-description"></a>数据说明
 

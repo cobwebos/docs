@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 668065933745168c88a1f4bf755f1adc0cc31d7f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="update-management-solution-in-oms"></a>更新 OMS 中的管理解决方案
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/02/2017
     > 此解决方案不支持适用于 Linux 且配置为向多个 OMS 工作区报告的 OMS 代理。  
     >
 
-若要详细了解如何安装适用于 Linux 的 OMS 代理并下载最新版本，请参阅 [Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux)（适用于 Linux 的 Operations Management Suite 代理）。  若要了解如何安装适用于 Windows 的 OMS 代理，请参阅[适用于 Windows 的 Operations Management Suite 代理](../log-analytics/log-analytics-windows-agents.md)。  
+若要详细了解如何安装适用于 Linux 的 OMS 代理并下载最新版本，请参阅 [Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux)（适用于 Linux 的 Operations Management Suite 代理）。  若要了解如何安装适用于 Windows 的 OMS 代理，请参阅[适用于 Windows 的 Operations Management Suite 代理](../log-analytics/log-analytics-windows-agent.md)。  
 
 ### <a name="permissions"></a>权限
 若要创建或更新部署，需在自动化帐户和 Log Analytics 工作区中获得参与者角色。  
@@ -126,7 +126,7 @@ ms.lasthandoff: 12/02/2017
 1.  在控制面板中打开 Microsoft Monitoring Agent，此时该代理会在“Azure Log Analytics (OMS)”选项卡上显示一条消息，指出“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。   
 2.  打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。  这些事件指示计算机已注册到 OMS 工作区并且正在接收配置。  
 
-如果代理无法与 OMS 服务通信且已配置为通过防火墙或代理服务器与 Internet 通信，则请参阅 [Windows 代理的网络配置](../log-analytics/log-analytics-windows-agents.md#network)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md#network)，确认防火墙或代理服务器是否已正确配置。
+如果代理无法与 OMS 服务通信且已配置为通过防火墙或代理服务器与 Internet 通信，则请参阅 [Windows 代理的网络配置](../log-analytics/log-analytics-windows-agent.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)，确认防火墙或代理服务器是否已正确配置。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 OMS 网关通信，并且你将载入此解决方案，请执行以下命令更新 proxy.conf 权限，向 omiuser 组授予对文件的读取权限：  

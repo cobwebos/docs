@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/10/2017
 ms.author: motanv
-ms.openlocfilehash: 9a205d1b8e088b7007bb8c3a64139732d8858267
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 9475774b99ee6bc01fb43ffc6fcddea025779c05
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。
 
-[故障注入和群集分析服务](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-testability-overview)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](https://docs.microsoft.com/en-us/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
+[故障注入和群集分析服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
 
 混沌测试在整个群集模拟定期交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。 常规故障由一组 Service Fabric API 调用组成，例如，重启副本故障是常规故障，因为这次关闭后接着副本打开。 删除副本、移动主要副本和移动次要副本是混沌测试执行的其他常规故障。 非常规故障是进程退出，例如重启节点和重启代码包。 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/01/2017
 > 从目前来看，混沌测试只会引入安全的故障，这意味着，在没有外部故障的情况下，绝对不会发生仲裁丢失或数据丢失。
 >
 
-混沌测试在运行时，将生成不同的事件来捕获当前的运行状态。 例如，ExecutingFaultsEvent 包含混沌测试决定在该迭代中执行的所有故障。 ValidationFailedEvent 包含群集验证期间发现的验证故障（运行状况或稳定性问题）的详细信息。 可以调用 GetChaosReport API（C#、Powershell 或 REST）来获取混沌测试运行报告。 这些事件保存在一个 [Reliable Dictionary](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections) 中，该字典的截断策略由两项配置决定：**MaxStoredChaosEventCount**（默认值为 25000）和 **StoredActionCleanupIntervalInSeconds**（默认值为 3600）。 混沌测试每隔 *StoredActionCleanupIntervalInSeconds* 进行一次检查，从 Reliable Dictionary 中清除除最新 *MaxStoredChaosEventCount* 事件以外的所有事件。
+混沌测试在运行时，将生成不同的事件来捕获当前的运行状态。 例如，ExecutingFaultsEvent 包含混沌测试决定在该迭代中执行的所有故障。 ValidationFailedEvent 包含群集验证期间发现的验证故障（运行状况或稳定性问题）的详细信息。 可以调用 GetChaosReport API（C#、Powershell 或 REST）来获取混沌测试运行报告。 这些事件保存在一个 [Reliable Dictionary](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections) 中，该字典的截断策略由两项配置决定：**MaxStoredChaosEventCount**（默认值为 25000）和 **StoredActionCleanupIntervalInSeconds**（默认值为 3600）。 混沌测试每隔 *StoredActionCleanupIntervalInSeconds* 进行一次检查，从 Reliable Dictionary 中清除除最新 *MaxStoredChaosEventCount* 事件以外的所有事件。
 
 ## <a name="faults-induced-in-chaos"></a>在混沌测试中引入的故障
 混沌测试在整个 Service Fabric 群集中生成故障，将几个月或几年内出现的故障压缩成几小时。 通过将各种具有高故障率的交叉故障组合在一起，能够找出很有可能被忽视的极端状况。 运行这种混沌测试会使服务的代码质量得到显著提高。

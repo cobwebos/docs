@@ -4,7 +4,7 @@ description: "构建一个可让用户使用工作或学校帐户登录的 Java 
 services: active-directory
 documentationcenter: java
 author: navyasric
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 2b92b605-9cd5-4b99-bcbb-66c026558119
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5358404881b65d217ab36a41ca04a73f2c462c86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e849f99edfc80f7f175c0829552f39da456a204
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Java Web 应用登录和注销
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

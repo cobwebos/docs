@@ -4,7 +4,7 @@ description: "使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,18 +14,18 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 641e0cc691eae77ef0480e5743d85e020cd8d354
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: d65d94bb5c807abfd6cbb1fae786a02f179e93d6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 在[相关的 Azure AD B2C 文章](active-directory-b2c-custom-rest-api-netfw.md)中，我们已创建一个无需身份验证即可集成到 Azure Active Directory B2C (Azure AD B2C) 用户旅程的 RESTful 服务 (Web API)。 
 
 本文介绍如何将 HTTP 基本身份验证添加到 RESTful 服务，以便只有经过验证的用户（包括 B2C）可以访问你的 API。 使用 HTTP 基本身份验证在自定义策略中设置用户凭据（应用 ID 和应用机密）。 
 
-有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication)。
+有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)。
 
 ## <a name="prerequisites"></a>先决条件
 完成[在 Azure AD B2C 用户旅程中集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)一文中所述的步骤。
@@ -307,7 +307,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，选择“立即运行”。
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
 
 3. 在“名”框中键入 **Test** 来测试该过程。  
     Azure AD B2C 会在窗口顶部显示一条错误消息。

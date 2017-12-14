@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: ed2a17fd735c1b0e67cbf5d08450d36620d4c857
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccad7e41921c2fecbac113f3b950f654c62b1c8e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**
@@ -82,7 +82,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 
 可通过以下方式找到 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)查询：
 
-* 登录到 [Azure 门户](https://manage.windowsazure.com/)
+* 登录到 [Azure 门户](https://portal.azure.com/)
 * 找到部署解决方案时生成的流分析作业 ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png)。 一个作业用于将数据推送到 Blob 存储（例如 mytest1streaming432822asablob），另一种作业用于将数据推送到 Power BI（例如 mytest1streaming432822asapbi）。
 * 选择
 

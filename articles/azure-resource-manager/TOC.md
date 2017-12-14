@@ -14,6 +14,7 @@
 ### [模板节](resource-group-authoring-templates.md)
 #### [参数](resource-manager-templates-parameters.md)
 #### [变量](resource-manager-templates-variables.md)
+#### [资源](resource-manager-templates-resources.md)
 ### [模板最佳实践](resource-manager-template-best-practices.md)
 ### [链接到其他模板](resource-group-linked-templates.md)
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)

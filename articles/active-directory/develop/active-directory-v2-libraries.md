@@ -4,7 +4,7 @@ description: "Azure Active Directory v2.0 终结点的兼容客户端库和服�
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 50a1cc0bf9e00cf5b866b88b3e88c62b06a2376b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a1e2c4db54ca81325751ed85b26b904174e94078
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 身份验证库
-[Azure Active Directory (Azure AD) v2.0 终结点](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 可以对 v2.0 终结点使用 Microsoft 和其他组织提供的各种库。
+[Azure Active Directory (Azure AD) v2.0 终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 可以对 v2.0 终结点使用 Microsoft 和其他组织提供的各种库。
 
 在构建使用 v2.0 终结点的应用程序时，建议使用协议领域的专家根据安全开发生命周期 (SDL) 方法（例如 [Microsoft 遵循的方法][Microsoft-SDL]）编写的库。 如果决定手动编写协议支持，建议遵循 SDL 方法并认真对待每个协议的标准规范中的安全注意事项。
 
 > [!NOTE]
-> 是否在寻找 Azure AD v1.0 库 (ADAL)？ 请查看 [ADAL 库指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries)。 
+> 是否在寻找 Azure AD v1.0 库 (ADAL)？ 请查看 [ADAL 库指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)。 
 > 
 > 
 

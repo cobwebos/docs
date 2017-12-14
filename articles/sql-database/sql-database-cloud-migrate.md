@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 11/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 4e22a512f7ee11dde14f8eac818506b59791e17f
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8a31ed948fe9387720db61018e0edded530cd900
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>将 SQL Server 数据库迁移到云中的 SQL 数据库
 本文介绍两种将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库的主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
@@ -39,11 +39,11 @@ ms.lasthandoff: 11/07/2017
 
   ![VSSSDT 迁移示意图](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. 使用最新版[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) [评估](https://docs.microsoft.com/en-us/sql/dma/dma-assesssqlonprem)数据库的兼容性。
+1. 使用最新版[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) [评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)数据库的兼容性。
 2. 以 Transact-SQL 脚本形式准备任何必需的修补程序。
 3. 对要迁移的源数据库进行事务一致性复制 - 确保不对源数据库进行进一步的更改（也可在迁移完成后手动应用任何此类更改）。 有许多方法可以使数据库处于静默状态，例如禁用客户端连接以创建[数据库快照](https://msdn.microsoft.com/library/ms175876.aspx)。
 4. 部署 Transact-SQL 脚本，将修补程序应用到数据库副本。
-5. 通过使用数据迁移助手，将数据库副本[迁移](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsql)到新的 Azure SQL 数据库。
+5. 通过使用数据迁移助手，将数据库副本[迁移](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql)到新的 Azure SQL 数据库。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>优化迁移过程中的数据传输性能 
 

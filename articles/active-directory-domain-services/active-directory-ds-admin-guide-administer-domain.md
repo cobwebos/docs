@@ -4,7 +4,7 @@ description: "管理 Azure Active Directory 域服务托管域"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 8edf01d994e54a8f1af98861cb445a5909b6a1df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ffe3e54b891fd74e14666c136be49132d78590b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory 域服务托管域
 本文介绍如何管理 Azure Active Directory (AD) 域服务托管域。
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 2. 单击“概述”选项卡上的“连接”按钮。此时会创建并下载远程桌面协议 (.rdp) 文件。
 
     ![连接到 Windows 虚拟机](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 出现登录提示时，请使用属于“AAD DC 管理员”组的用户的凭据。 例如，我们在示例中使用“bob@domainservicespreview.onmicrosoft.com”。 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
+3. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。 出现登录提示时，请使用属于“AAD DC 管理员”组的用户的凭据。 例如，我们在示例中使用“bob@domainservicespreview.onmicrosoft.com”。 你可能会在登录过程中收到证书警告。 单击“是”或“继续”以继续连接。
 4. 在“开始”屏幕中打开“服务器管理器”。 在“服务器管理器”窗口的中心窗格中单击“添加角色和功能”。
 
     ![在虚拟机上启动服务器管理器](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: dekapur
-ms.openlocfilehash: 1277969d820c6348392d07e2dc5f35b52377fd7e
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 8452b5ae733b21254b0beecaec44a968897ae491
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="platform-level-event-and-log-generation"></a>平台级别事件和日志生成
 
@@ -105,7 +105,7 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 
 以下是设置群集收集性能数据的两种常见方式：
 
-* 使用代理：这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 阅读有关[如何配置适用于 Service Fabric 的 OMS](service-fabric-diagnostics-event-analysis-oms.md) 和[设置 OMS Windows 代理](../log-analytics/log-analytics-windows-agents.md)的文章，了解有关 OMS 代理的更多信息，OMS 代理是一个能够读取群集 VM 的性能数据和部署容器的监视代理。
+* 使用代理：这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 阅读有关[如何配置适用于 Service Fabric 的 OMS](service-fabric-diagnostics-event-analysis-oms.md) 和[设置 OMS Windows 代理](../log-analytics/log-analytics-windows-agent.md)的文章，了解有关 OMS 代理的更多信息，OMS 代理是一个能够读取群集 VM 的性能数据和部署容器的监视代理。
 
 * 配置诊断以将性能计数器写入表中：对于 Azure 上的群集，这意味着更改 Azure 诊断配置以从群就中的 VM 读取适当的性能计数器，如果要部署任何容器，也能使其读取 docker 统计数据。 阅读有关在 Service Fabric 中配置[WAD 中的性能计数器](service-fabric-diagnostics-event-aggregation-wad.md)，设置性能计数器集合。
 

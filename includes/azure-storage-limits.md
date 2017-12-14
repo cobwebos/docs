@@ -3,6 +3,7 @@
 | 每个订阅的存储帐户数 | 200<sup>1</sup> |
 | 最大存储帐户容量 | 500 TiB<sup>2</sup> |
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 | 无限制 |
+| 每个存储帐户的最大请求速率 | 每秒 20,000 个请求<sup>2</sup> |
 | 每个存储帐户的最大入口 <sup>3</sup>（美国区域） | 如果已启用 GRS/ZRS<sup>4</sup>，则为 10 Gbps；LRS<sup>2</sup> 为 20 Gbps |
 | 每个存储帐户的最大出口 <sup>3</sup>（美国区域） | 如果已启用 GRS/GRS/ZRS<sup>4</sup>，则为 20 Gbps；LRS<sup>2</sup> 为 30 Gbps |
 | 每个存储帐户的最大入口<sup>3</sup>（非美国区域） | 如果已启用 GRS/ZRS<sup>4</sup>，则为 5 Gbps；LRS<sup>2</sup> 为 10 Gbps |

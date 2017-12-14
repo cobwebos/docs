@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: bfd7208af3252ab69808d09fa7434a2cea7f93a8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 1af02c90c6a97bed612903de438b4d8c26be19b6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
-在大多数基础结构即服务 (IaaS) 方案中，[Azure 虚拟机 (VM)](https://docs.microsoft.com/en-us/azure/virtual-machines/) 是使用云计算的组织的主要工作负荷。 这种事实在[混合方案](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx)中尤为明显，组织希望在混合方案中慢慢将工作负荷迁移到云。 在这种方案中，应遵循 [IaaS 常规安全注意事项](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)，并向所有 VM 应用安全最佳做法。
+在大多数基础结构即服务 (IaaS) 方案中，[Azure 虚拟机 (VM)](https://docs.microsoft.com/azure/virtual-machines/) 是使用云计算的组织的主要工作负荷。 这种事实在[混合方案](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx)中尤为明显，组织希望在混合方案中慢慢将工作负荷迁移到云。 在这种方案中，应遵循 [IaaS 常规安全注意事项](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)，并向所有 VM 应用安全最佳做法。
 
 本文介绍各项 VM 安全最佳做法，每项做法源自我们的客户以及我们自己在 VM 方面的经验。
 

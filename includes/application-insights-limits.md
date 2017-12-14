@@ -11,7 +11,7 @@
 | 属性和指标名称长度 | 150 | 请参阅[类型架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | 属性值字符串长度 | 8,192 | 请参阅[类型架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | 跟踪和异常消息长度 | 10 k | 请参阅[类型架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
-| 每个应用的[可用性测试](../articles/application-insights/app-insights-monitor-web-app-availability.md)计数  | 10 |
+| 每个应用的[可用性测试](../articles/application-insights/app-insights-monitor-web-app-availability.md)计数  | 100 |
 | [探查器](../articles/application-insights/app-insights-profiler.md)数据保留期 | 5 天 |
 | 每天发送的[探查器](../articles/application-insights/app-insights-profiler.md)数据量 | 10GB |
 

@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6cf8e2469a6fe6bac0db6caf9acb182a6349096f
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 5c9231f400b00f455f30692c58f007bd63d3cc76
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
 
@@ -227,9 +227,9 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 [lnk-what-is-iot-edge]: what-is-iot-edge.md
 [lnk-module-dev]: module-development.md
 [iot-hub-get-started-create-hub]: ../../includes/iot-hub-get-started-create-hub.md
-[azure-iot]: https://docs.microsoft.com/en-us/azure/iot-hub/
-[azure-storage]: https://docs.microsoft.com/en-us/azure/storage/
-[azure-stream]: https://docs.microsoft.com/en-us/azure/stream-analytics/
+[azure-iot]: https://docs.microsoft.com/azure/iot-hub/
+[azure-storage]: https://docs.microsoft.com/azure/storage/
+[azure-stream]: https://docs.microsoft.com/azure/stream-analytics/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md

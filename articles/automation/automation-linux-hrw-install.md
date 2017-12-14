@@ -3,7 +3,7 @@ title: "Azure 自动化 Linux 混合 Runbook 辅助角色 | Microsoft Docs"
 description: "本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色，该角色可以用于在本地数据中心或云环境的基于 Linux 的计算机上运行 Runbook。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 5e6687e4e868ae998c77bba231437d52fdbe719c
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 938e4f4fa3326db23ea4c2b499c783de78dcfa76
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>如何部署 Linux 混合 Runbook 辅助角色
 

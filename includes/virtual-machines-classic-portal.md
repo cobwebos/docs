@@ -1,1 +1,1 @@
-自 2017 年 11 月 15 日起，仅在 [Azure 门户](https://portal.azure.com)提供虚拟机。 无法再从经典门户中访问。
+自 2017 年 11 月 15 日起，仅在 [Azure 门户](https://portal.azure.com)提供虚拟机。 

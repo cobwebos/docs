@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 Bynder 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 250dbdf2-faf5-48dd-be7c-d54502ef7528
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 9062aea7813d62e9ef67e82d86ff4f63791f3355
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eecdfa41899629842d191ecc3f8848c2e018fad8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>教程：Azure Active Directory 与 Bynder 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 Bynder 的集成，需要以下项目：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 Bynder 单一登录的订阅
 
 > [!NOTE]

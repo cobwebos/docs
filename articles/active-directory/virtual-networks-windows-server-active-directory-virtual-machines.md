@@ -4,7 +4,7 @@ description: "可以在 Azure 虚拟机上运行 Windows Server Active Directory
 services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 tags: azure-classic-portal
 ms.assetid: 683f6bbb-61d0-423e-9aeb-66f0b0001d67
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2017
 ms.author: joflore
-ms.openlocfilehash: 928de285e126a7f62ee075d1c02688bf8f388cb7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0217e34c8d4461c7731a583a37aaf8cbcf6265ff
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="windows-server-active-directory-on-azure-vms"></a>Azure VM 上的 Windows Server Active Directory
 此导航主题包含有关如何在 Azure 虚拟机 (VM) 上部署 Windows Server Active Directory 域服务 (AD DS) 或 Active Directory 联合身份验证服务 (AD FS) 的其他主题的链接。

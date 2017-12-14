@@ -3,7 +3,7 @@ title: "Azure Active Directory 入门 | Microsoft Docs"
 description: "获取许可证，在 Azure Active Diretory 中添加域名，创建自定义登录页，并添加自助密码重置"
 keywords: 
 author: curtand
-manager: michael.tillman
+manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
@@ -15,11 +15,11 @@ ms.technology:
 ms.assetid: 
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: dd745869494a1ed740a0a05a5508363334aa7360
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: eb428b6ce8af85f06506fb9edc2696477d87c70e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD 入门
 现代的标识管理需要一贯的可伸缩性和可靠性，确保只向经过身份验证的用户提供应用程序和服务。 为了充分支持用户对标识管理的需求，IT 部门需要通过某种方式提供对已批准的公用软件即服务 (SaaS) 应用的访问，托管内部业务线应用，甚至还需要通过某些方式来增强本地应用的开发与使用。 满足所有这些要求需要一种基于云的标识管理解决方案。      

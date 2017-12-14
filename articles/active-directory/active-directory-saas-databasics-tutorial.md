@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 DATABASICS 之间配置
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a37ded45-84c8-4e88-8d9b-c5b9443eb0d4
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a9776e6d11a54220a3b055d59e89d2eb4161a1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3758af9a9ef29dc344af25acd8db75539de46e12
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>教程：Azure Active Directory 与 DATABASICS 的集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 DATABASICS 的集成，需要具有以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 DATABASICS 单一登录的订阅
 
 > [!NOTE]

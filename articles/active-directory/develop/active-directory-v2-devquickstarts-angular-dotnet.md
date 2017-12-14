@@ -4,7 +4,7 @@ description: "如何构建一个使用个人 Microsoft 帐户和工作或学校�
 services: active-directory
 documentationcenter: 
 author: jmprieur
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c68180c0ecabf5c0732f0db77ef1f3cc93be965b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>向 AngularJS 单页应用添加登录凭据 - .NET
 在本文中，我们将使用 Azure Active Directory v2.0 终结点将 Microsoft 支持的帐户的登录凭据添加到 AngularJS 应用。  v2.0 终结点可让你在应用中执行单一集成，以及使用个人和工作/学校帐户对用户进行身份验证。

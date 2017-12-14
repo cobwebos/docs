@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 Form.com 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: fe3fa637e570ebdb01cfdebc6ba3e000c05b6a8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4de55d99fce1cb1feff18a784eb029d3cb6a404
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>教程：Azure Active Directory 与 Form.com 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 Form.com 的集成，需要以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 Form.com 单一登录的订阅
 
 > [!NOTE]

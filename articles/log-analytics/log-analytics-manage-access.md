@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: d9f86ac19044fd13e77d35d6c3dd9964c3852001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1549408c6885ee556a142ab7de613ebb1629070d
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 * 公司是托管服务提供商，需要为所管理的每位客户单独保留 Log Analytics 数据，即与其他客户的数据分开保存。
 * 管理多个客户，并希望每个客户/部门/业务组能够看到自己的数据，而不是他人的数据。
 
-使用代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](log-analytics-windows-agents.md)。
+使用代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](log-analytics-windows-agent.md)。
 
 如果使用 System Center Operations Manager，每个 Operations Manager 管理组仅可以连接一个工作区。 但是，可将计算机上的 Microsoft Monitoring Agent 配置为向 Operations Manager 和不同的 Log Analytics 工作区报告。  
 

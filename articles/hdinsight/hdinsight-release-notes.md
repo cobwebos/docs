@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2017
+ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 8a8b62e2cdf9f4f6c41b041ac20694303203531b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e0977417ec8678db54d91677b1f9bdc709e196b5
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight 上的 Hadoop 组件发行说明
 
@@ -101,7 +101,7 @@ Spark 2.0.1 现已在 Spark 群集（HDInsight 版本 3.5）上发行。
 * 边缘节点访问 URI 已更改为 **clustername**-ed-ssh.azurehdinsight.net
 * R Server on HDInsight 群集预配已简化。
 * R Server on HDInsight 现可作为常规 HDInsight“R Server”群集类型提供，并且不再作为单独的 HDInsight 应用程序进行安装。 边缘节点和 R Server 二进制文件现已作为 R Server 群集部署的一部分进行预配。 这会提高预配的速度和可靠性。 R Server 的定价模型将相应更新。
-* R Server 群集类型价格现基于标准层价格加上 R Server 额外费用价格。 高级层现在为不同群集类型中可用的高级功能进行保留，且不用于 R Server 群集类型。 此更改不会影响 R Server 的有效定价，它只会更改费用在帐单中的呈现方式。 所有现有 R Server 群集将继续生效，并且 Resource Manager 模板仍可在发出弃用通知前正常使用。 **建议更新脚本化的部署，以使用新的 Resource Manager 模板。**
+* R Server 群集类型价格现基于标准层价格加上 R Server 额外费用价格。 此更改不会影响 R Server 的有效定价，它只会更改费用在帐单中的呈现方式。 所有现有 R Server 群集将继续生效，并且 Resource Manager 模板仍可在发出弃用通知前正常使用。 **建议更新脚本化的部署，以使用新的 Resource Manager 模板。**
 
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 87ab620444df4588cc43a3691cb215006561090d
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7e6590b97470bb00c5967f232e3ae134ce20a347
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -162,16 +162,16 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 交互式消息是[云到设备](#cloud-to-device)的消息，可在解决方案后端触发即时操作。 例如，设备可能会发送故障警报，而该故障会自动记录到 CRM 系统中。
 
 ## <a name="iot-edge"></a>IoT Edge
-Azure IoT Edge 可以在本地设备进行 Azure 服务和解决方案特定代码的云驱动部署。 IoT Edge 设备可以聚合其他设备的数据，以在数据发送到云之前执行计算和分析。 有关详细信息，请参阅 [Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/)。
+Azure IoT Edge 可以在本地设备进行 Azure 服务和解决方案特定代码的云驱动部署。 IoT Edge 设备可以聚合其他设备的数据，以在数据发送到云之前执行计算和分析。 有关详细信息，请参阅 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)。
 
 ## <a name="iot-edge-agent"></a>IoT Edge 代理
 IoT Edge 运行时部件负责部署和监视模块。
 
 ## <a name="iot-edge-device"></a>IoT Edge 设备
-IoT Edge 设备已安装 IoT Edge 运行时，并且在设备详细信息中标记为“IoT Edge 设备”。 了解如何[在 Linux 的模拟设备上部署 Azure IoT Edge - 预览](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux)。
+IoT Edge 设备已安装 IoT Edge 运行时，并且在设备详细信息中标记为“IoT Edge 设备”。 了解如何[在 Linux 的模拟设备上部署 Azure IoT Edge - 预览](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)。
 
 ## <a name="iot-edge-deployment"></a>IoT Edge 部署
-IoT Edge 部署配置 IoT Edge 设备的目标集以运行 IoT Edge 模块集。 每次部署持续确保符合其目标条件的所有设备运行指定的模块集，即使是在创建新设备或者为满足目标条件修改设备时。 每个 IoT Edge 设备仅接收满足其目标条件的最高优先级部署。 了解有关 [IoT Edge 部署](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring)的详细信息。
+IoT Edge 部署配置 IoT Edge 设备的目标集以运行 IoT Edge 模块集。 每次部署持续确保符合其目标条件的所有设备运行指定的模块集，即使是在创建新设备或者为满足目标条件修改设备时。 每个 IoT Edge 设备仅接收满足其目标条件的最高优先级部署。 了解有关 [IoT Edge 部署](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)的详细信息。
 
 ## <a name="iot-edge-deployment-manifest"></a>IoT Edge 部署清单
 Json 文档包含要在一个或多个 IoT Edge 设备的模块孪生中复制的信息，以部署一组模块、路由和关联模块所需属性。
@@ -186,7 +186,7 @@ IoT Edge 运行时部件负责模块间通信、上游（流向 IoT 中心）和
 没有下游设备的 IoT Edge 设备。 
 
 ## <a name="iot-edge-module"></a>IoT Edge 模块
-IoT Edge 模块是可部署到 IoT Edge 设备的 Docker 容器。 它执行特定的任务，例如从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 它与其他模块进行通信并将数据发送到 IoT Edge 运行时。 [了解开发 IoT Edge 模块的要求和工具](https://docs.microsoft.com/en-us/azure/iot-edge/module-development)。
+IoT Edge 模块是可部署到 IoT Edge 设备的 Docker 容器。 它执行特定的任务，例如从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 它与其他模块进行通信并将数据发送到 IoT Edge 运行时。 [了解开发 IoT Edge 模块的要求和工具](https://docs.microsoft.com/azure/iot-edge/module-development)。
 
 ## <a name="iot-edge-module-identity"></a>IoT Edge 模块标识
 IoT 中心模块标识注册表中的记录详细说明，模块用来向 Edge 中心或 IoT 中心进行身份验证的存在和安全凭证。
@@ -241,7 +241,7 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 连接到 IoT 中心的面向设备或面向服务的终结点时，[连接字符串](#connection-string)包含用于授权的密钥。 在[标识注册表](#identity-registry)中添加设备或者在中心添加[共享访问策略](#shared-access-policy)时，服务将生成主要和次要密钥。 拥有两个密钥能够在更新密钥时从一个密钥切换到另一个密钥，而不会失去 IoT 中心访问权限。
 
 ## <a name="priority"></a>Priority
-当两个 IoT Edge 部署以同一设备为目标时，应用优先级更高的部署。 如果两个部署优先级相同，则应用创建日期更晚的部署。 了解有关[优先级](#https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#priority)的详细信息。
+当两个 IoT Edge 部署以同一设备为目标时，应用优先级更高的部署。 如果两个部署优先级相同，则应用创建日期更晚的部署。 了解有关[优先级](#https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority)的详细信息。
 
 ## <a name="protocol-gateway"></a>协议网关
 协议网关通常部署在云中，为连接到 [IoT 中心](#iot-hub)的设备提供协议转换服务。 有关详细信息，请参阅[什么是 Azure IoT 中心？](iot-hub-what-is-iot-hub.md)
@@ -289,7 +289,7 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，标记是指由解决方案后端以 JSON 文档形式存储和检索的设备元数据。 标记对于设备上的应用程序不可见。
 
 ## <a name="target-condition"></a>目标条件
-在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如“tag.environment = prod”）。 持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
+在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如“tag.environment = prod”）。 持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
 
 ## <a name="telemetry"></a>遥测
 设备收集遥测数据，如风速或温度，并使用[数据点消息](#data-point-messages)将遥测数据发送到 IoT 中心。

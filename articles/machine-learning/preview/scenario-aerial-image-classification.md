@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: f8ea2c269906732aef8d577c0d744e730c1dedcd
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="aerial-image-classification"></a>航拍图像分类
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/05/2017
         - “安装 Azure Python SDK”
     - 记录客户端 ID、机密以及按引导创建的 Azure Active Directory 应用程序的租户 ID。 本教程的后面部分会用到这些凭据。
     - 在本文中，Azure Machine Learning Workbench 和 Azure Batch AI 使用 Azure CLI 2.0 的单独分支。 为清楚起见，我们将该 Workbench 的 CLI 版本称为“从 Azure Machine Learning Workbench 启动的 CLI”，将常规发布版本（包括 Batch AI）称为“Azure CLI 2.0”。
-- [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)，一种用于协调 Azure 存储帐户之间的文件传输的免费实用工具
+- [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)，一种用于协调 Azure 存储帐户之间的文件传输的免费实用工具
     - 确保包含 AzCopy 可执行文件的文件夹位于系统的 PATH 环境变量中。 （有关修改环境变量的说明，可在[此处](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)获取。）
 - 一个 SSH 客户端，建议使用 [PuTTY](http://www.putty.org/)。
 

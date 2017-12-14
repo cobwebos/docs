@@ -6,17 +6,17 @@ keywords:
 author: dsk-2015
 ms.author: dkshir
 ms.date: 11/28/2017
-ms.topic: article
+ms.topic: overview
 ms.service: location-based-services
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: c8ebce06a72bcaf769a11ec954702463d7489aa0
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 9b4b54c3a4cf0ed4350f570259f6997e4398682b
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Azure Location Based Services（预览版）简介
 Azure Location Based Services 是一项地理空间服务组合，包括适用于地图、搜索、路线、交通和时区的服务 API。 借助这组与 Azure OneAPI 兼容的服务，可让你使用熟悉的开发人员工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 Azure Location Based Services 向开发人员提供各个行业强大的地理空间功能，并搭配所需的全新地图数据，以便为 Web 和移动应用程序提供地理环境。 Azure Location Based Services 是与 Azure One API 兼容的一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发极其简单、灵活且可跨多个媒体移植。 

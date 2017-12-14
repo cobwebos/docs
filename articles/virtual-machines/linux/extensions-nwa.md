@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: eaadd531b9e05a54446e61f98584ae9d75470a5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd160fc8cfc2e79ffa9492bb0ef4556bec5820d0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
 ## <a name="overview"></a>概述
 
-[Azure 网络观察程序](https://review.docs.microsoft.com/en-us/azure/network-watcher/)是一项网络性能监视、诊断和分析服务，适用于对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是在 Azure 虚拟机上使用某些网络观察程序功能所必需的。 其中包括根据需要捕获网络流量等高级功能。
+[Azure 网络观察程序](https://review.docs.microsoft.com/azure/network-watcher/)是一项网络性能监视、诊断和分析服务，适用于对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是在 Azure 虚拟机上使用某些网络观察程序功能所必需的。 其中包括根据需要捕获网络流量等高级功能。
 
 本文档详细介绍适用于 Linux 的网络观察程序代理虚拟机扩展支持的平台和部署选项。
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-某些网络观察程序代理功能要求将目标虚拟机连接到 Internet。 如果无法建立传出连接，某些网络观察程序代理功能可能无法正常使用，或者会变得不可使用。 有关更多详细信息，请参阅[网络观察程序文档](https://review.docs.microsoft.com/en-us/azure/network-watcher/)。
+某些网络观察程序代理功能要求将目标虚拟机连接到 Internet。 如果无法建立传出连接，某些网络观察程序代理功能可能无法正常使用，或者会变得不可使用。 有关更多详细信息，请参阅[网络观察程序文档](https://review.docs.microsoft.com/azure/network-watcher/)。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure Resource Manager 模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure Resource Manager 模板部署过程中运行网络观察程序代理扩展。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行网络观察程序代理扩展。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 

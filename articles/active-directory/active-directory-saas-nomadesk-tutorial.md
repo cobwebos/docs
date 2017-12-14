@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 Nomadesk 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: d261b776-b48e-45f0-9722-0297adefabb8
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 1d652d562f4c5caffded18d928e2395e537f59f4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12e14abfedc90465fd7d5e336386a4cb1a6fc21b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>教程：Azure Active Directory 与 Nomadesk 的集成
 

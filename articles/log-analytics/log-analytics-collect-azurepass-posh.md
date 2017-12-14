@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 7bae18e151fbdccf95f3fe5f569041d6dd9c42eb
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: e818a1b94891e687d8aa5962092e0a577b0db356
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>使用 Log Analytics 配置 Azure PaaS 资源指标的收集
 
@@ -37,7 +37,7 @@ Azure SQL 和网站（Web 应用）等 Azure 平台即服务 (PaaS) 资源原生
 >[!NOTE]
 >我们建议对所有 Azure 资源管理器模块使用相同的版本，确保从 PowerShell 运行 Azure 资源管理器命令时能够兼容。
 >
-若要在计算机上安装最新版本的 Azure 资源管理器模块，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps)。  
+若要在计算机上安装最新版本的 Azure 资源管理器模块，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps)。  
 
 ## <a name="enable-azure-diagnostics"></a>启用 Azure 诊断  
 可以执行 [PowerShell 库](https://www.powershellgallery.com/packages/Enable-AzureRMDiagnostics/2.52/DisplayScript)中提供的脚本 **Enable-AzureRMDiagnostics.ps1**，来为 PaaS 资源配置 Azure 诊断。  该脚本支持以下方案：

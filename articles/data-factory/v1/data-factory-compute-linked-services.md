@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1547b5c3a5c629b85ff5fa9de6b39b25531d9ec9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b7686dc5c52737106a8bc819c160b67baaffd147
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
@@ -50,7 +50,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 - 客户将无法使用 Azure 数据工厂 v1 中的按需 HDInsight 链接服务创建基于 Linux 的 HDInsight 版本 3.3（或更早版本）的群集。 
 
-- 如果未在现有 Azure 数据工厂 v1 按需 HDInsight 链接服务 JSON 定义中显式指定 [osType 和/或版本属性](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，默认值将从“版本=3.1，osType=Windows”更改为“版本=3.6，osType=Linux”。
+- 如果未在现有 Azure 数据工厂 v1 按需 HDInsight 链接服务 JSON 定义中显式指定 [osType 和/或版本属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，默认值将从“版本=3.1，osType=Windows”更改为“版本=3.6，osType=Linux”。
 
 2018 年 7 月 31 日后：
 
@@ -58,10 +58,10 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
  **推荐操作** 
 
-- 将受影响 Azure 数据工厂 v1 按需 HDInsight 链接服务定义的 [osType 和/或版本属性](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)更新到较新版本的基于 Linux 的 HDInsight (HDInsight 3.6)，以确保可以使用最新的 Hadoop 生态系统组件和修补程序。 
-- 在 2017 年 12 月 15 日前，测试引用受影响链接服务的 Azure 数据工厂 V1 Hive、Pig、MapReduce 和 Hadoop 流式处理活动，确保它们与新的 osType 和/或版本默认值（版本=3.6，osType=Linux）或要升级到的显式 HDInsight 版本和 osType 兼容。 若要了解有关兼容性的详细信息，请查看[从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)和 [HDInsight 提供了哪些 Hadoop 组件和版本？](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions)文档网页。 
+- 将受影响 Azure 数据工厂 v1 按需 HDInsight 链接服务定义的 [osType 和/或版本属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)更新到较新版本的基于 Linux 的 HDInsight (HDInsight 3.6)，以确保可以使用最新的 Hadoop 生态系统组件和修补程序。 
+- 在 2017 年 12 月 15 日前，测试引用受影响链接服务的 Azure 数据工厂 V1 Hive、Pig、MapReduce 和 Hadoop 流式处理活动，确保它们与新的 osType 和/或版本默认值（版本=3.6，osType=Linux）或要升级到的显式 HDInsight 版本和 osType 兼容。 若要了解有关兼容性的详细信息，请查看[从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)和 [HDInsight 提供了哪些 Hadoop 组件和版本？](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions)文档网页。 
 - 如果希望继续使用 Azure 数据工厂 v1 按需 HDInsight 链接服务创建基于 Windows 的 HDInsight 群集，请在 2017 年 12 月 15 日前将 osType 显式设置为 Windows。 不过，我们仍然建议在 2018 年 7 月 31 前迁移到基于 Linux 的 HDInsight 群集。 
-- 如果目前使用按需 HDInsight 链接服务执行 Azure 数据工厂 v1DotNet 自定义活动，请改为将 DotNet 自定义活动 JSON 定义更新为使用 Azure Batch 链接服务。 若要了解详细信息，请参阅[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities)文档网页。 
+- 如果目前使用按需 HDInsight 链接服务执行 Azure 数据工厂 v1DotNet 自定义活动，请改为将 DotNet 自定义活动 JSON 定义更新为使用 Azure Batch 链接服务。 若要了解详细信息，请参阅[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)文档网页。 
 
 >[!Note]
 >对于使用 Azure 数据工厂 v1 中的现有自带群集 (BYOC) HDInsight 链接服务的用户，或是使用 Azure 数据工厂 v2 中的 BYOC 和按需 HDInsight 链接服务的用户，现已强制实施 Azure HDInsight 群集的最新版本支持策略，因此无需执行任何操作。 

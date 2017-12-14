@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 9d3732d538f3ed9ecb87247f378a3736692025ca
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: beb2dab177d021fee1dbbe630f8b6854a7d94f68
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建应用程序网关
 
@@ -42,7 +42,7 @@ Azure 应用程序网关是专用虚拟设备，以服务形式提供应用程�
 
 ## <a name="prerequisite-install-the-azure-cli-20"></a>先决条件：安装 Azure CLI 2.0
 
-若要执行本文中的步骤，需要[安装适用于 macOS、Linux 和 Windows 的 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
+若要执行本文中的步骤，需要[安装适用于 macOS、Linux 和 Windows 的 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)。
 
 > [!NOTE]
 > 必须有 Azure 帐户，才能创建应用程序网关。 如果没有订阅，可以注册[免费试用版](../active-directory/sign-up-organization.md)。

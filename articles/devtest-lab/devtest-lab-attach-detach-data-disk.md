@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 3183c61323b1b9ce22b0b64d9021f683b2276d9d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 1e156b2baad0d49c21e852a22d3b149e630b3750
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>对 Azure 开发测试实验室中的虚拟机执行附加或分离数据磁盘操作
-[Azure 托管磁盘](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)管理与虚拟机数据磁盘关联的存储帐户。 用户将新数据磁盘附加到 VM，指定所需的磁盘的类型和大小，然后 Azure 会自动创建并管理磁盘。 数据磁盘可以从 VM 中分离，并且可以在以后重新附加到同一 VM 或附加到属于同一用户的其他 VM。
+[Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)管理与虚拟机数据磁盘关联的存储帐户。 用户将新数据磁盘附加到 VM，指定所需的磁盘的类型和大小，然后 Azure 会自动创建并管理磁盘。 数据磁盘可以从 VM 中分离，并且可以在以后重新附加到同一 VM 或附加到属于同一用户的其他 VM。
 
 通过此功能可以很方便地管理每个单独虚拟机外部的存储或软件。 如果存储或软件已存在于数据磁盘内部，拥有该数据磁盘的用户可以轻松地对任何 VM 执行附加、分离和重新附加该数据磁盘的操作。
 
 ## <a name="attach-a-data-disk"></a>附加数据磁盘
 将数据磁盘附加到 VM 之前，请查看以下提示：
 
-- VM 的大小决定了可以附加多少个数据磁盘。 有关详细信息，请参阅[虚拟机大小](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)。
+- VM 的大小决定了可以附加多少个数据磁盘。 有关详细信息，请参阅[虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。
 - 只能将数据磁盘附加到正在运行的 VM。 尝试附加数据磁盘之前，请确保 VM 正在运行。
 
 ### <a name="attach-a-new-disk"></a>附加新磁盘

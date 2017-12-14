@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: 43a2a9784668fad2aa5b1441cfd37751c0c240b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="using-the-anomalydetection-operator"></a>使用 ANOMALYDETECTION 运算符
 
@@ -38,12 +38,12 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="syntax"></a>语法
 
-`ANOMALYDETECTION(\<scalar_expression\>) OVER ([PARTITION BY \<partition key\>] LIMIT DURATION(\<unit\>, \<length\>) [WHEN boolean_expression])` 
+`ANOMALYDETECTION(<scalar_expression>) OVER ([PARTITION BY <partition key>] LIMIT DURATION(<unit>, <length>) [WHEN boolean_expression])` 
 
 
 ## <a name="example-usage"></a>用法示例
 
-`SELECT id, val, ANOMALYDETECTION(val) OVER(PARTITION BY id LIMIT DURATION(hour, 1) WHEN id \> 100) FROM input`|
+`SELECT id, val, ANOMALYDETECTION(val) OVER(PARTITION BY id LIMIT DURATION(hour, 1) WHEN id > 100) FROM input`|
 
 
 ## <a name="arguments"></a>参数
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 - partition_by_clause 
 
-  `PARTITION BY \<partition key\>` 子句将学习和培训划分为不同分区。 换言之，将根据 `\<partition key\>` 的值使用单独的模型，仅含有该值的事件才会用于该模型中的学习和培训。 例如，
+  `PARTITION BY <partition key>` 子句将学习和培训划分为不同分区。 换言之，将根据 `<partition key>` 的值使用单独的模型，仅含有该值的事件才会用于该模型中的学习和培训。 例如，
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 要从记录中提取单个值，请使用 GetRecordPropertyValue 函数。 例如：
 
-`SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) \> 3.25` 
+`SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 
 上述异常情况分数如果有一项超过阈值，将检测到某个特定类型的异常。 阈值可以是任意浮点数 \>= 0。 阈值是敏感度和置信度之间的权衡值。 例如，过低的阈值使得检测对变化更敏感，生成更多警报，而较高的阈值会使检测的敏感性下降，其置信度虽然变高，但容易过滤某些异常。 阈值的精确值取决于具体情况。 虽然不设上限，但建议使用 3.25-5 范围内的值。
@@ -160,12 +160,12 @@ ANOMALYDETECTION 期望输入时列是一致的。 通过聚合翻转或跳跃�
 
     WHERE
 
-        CAST(GetRecordPropertyValue(scores, 'BiLevelChangeScore') as float) \>= 3.25
+        CAST(GetRecordPropertyValue(scores, 'BiLevelChangeScore') as float) >= 3.25
 
-        OR CAST(GetRecordPropertyValue(scores, 'SlowPosTrendScore') as float) \>=
+        OR CAST(GetRecordPropertyValue(scores, 'SlowPosTrendScore') as float) >=
         3.25
 
-       OR CAST(GetRecordPropertyValue(scores, 'SlowNegTrendScore') as float) \>=
+       OR CAST(GetRecordPropertyValue(scores, 'SlowNegTrendScore') as float) >=
        3.25
 
 ## <a name="references"></a>参考

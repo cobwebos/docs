@@ -6,25 +6,25 @@ documentationcenter:
 author: adamab
 manager: timlt
 editor: tysonn
-ms.service: multiple
+ms.service: azure-portal
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 694b5bd1ddfbaa4c973e9f55bce1c94ffd89c3dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f71ff9383f20a1a75fd2c1cf4dc3aaf049d970cf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
 
 ![示例仪表板](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-由于共享的 [Azure 仪表板是资源](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)，所以此仪表板可以表示为 JSON。  以下 JSON 表示上面构思的仪表板。
+由于共享的 [Azure 仪表板是资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，所以此仪表板可以表示为 JSON。  以下 JSON 表示上面构思的仪表板。
 
 ```json
 
@@ -294,7 +294,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="the-id-property"></a>Id 属性
 
-Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions)。 门户创建仪表板时通常选择 GUID 形式的 id，如果以编程方式创建 id，可随意使用任何有效的名称。 
+Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)。 门户创建仪表板时通常选择 GUID 形式的 id，如果以编程方式创建 id，可随意使用任何有效的名称。 
 
 ### <a name="the-name-property"></a>“名称”属性
 名称是资源 Id 中不包含订阅、资源类型或资源组信息的那部分。 本质上，它是资源 id 的最后一段。
@@ -303,7 +303,7 @@ Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/en-
 所有仪表板均属于 Microsoft.Portal/dashboards 类型。
 
 ### <a name="the-location-property"></a>“位置”属性
-与其他资源不同，仪表板没有运行时组件。  对于仪表板，location 指示用于存储仪表板 JSON 表示形式的主地理位置。 该值应为可使用[订阅资源上的位置 API](https://docs.microsoft.com/en-us/rest/api/resources/subscriptions) 提取的位置代码之一。
+与其他资源不同，仪表板没有运行时组件。  对于仪表板，location 指示用于存储仪表板 JSON 表示形式的主地理位置。 该值应为可使用[订阅资源上的位置 API](https://docs.microsoft.com/rest/api/resources/subscriptions) 提取的位置代码之一。
 
 ### <a name="the-tags-property"></a>“标记”属性
 标记是 Azure 资源的一项常见功能，可使用它按任意名称-值对来整理资源。 对于仪表板，有一个名为“hidden-title”的特殊标记。 如果仪表板已填充此属性，则它将用作门户中仪表板的显示名称。 Azure 资源 Id 不能重命名，但标记可以。 通过标记可重命名仪表板的显示名称。

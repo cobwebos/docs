@@ -5,22 +5,22 @@ services: active-directory
 keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重置"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: 
+ms.devlang: 
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8ca760c3f144cda15920dd401c6a8726d3d53da0
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 6dfc3246b210b382665eeef2d638945c91d5b62f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
@@ -160,7 +160,6 @@ ms.lasthandoff: 11/28/2017
   * 管理员以自助形式执行的任何自愿更改密码操作
   * 任何管理员自助强制更改密码操作（例如，密码到期）
   * 源自[密码重置门户](https://passwordreset.microsoftonline.com)的任何管理员自助密码重置操作
-  * 任何管理员通过 [Azure 经典门户](https://manage.windowsazure.com)发起的任何最终用户密码重置操作
   * 任何管理员通过 [Azure 门户](https://portal.azure.com)发起的任何最终用户密码重置操作
 
 ### <a name="user-and-admin-operations-that-are-not-supported-for-password-writeback"></a>密码写回服务不支持的用户和管理员操作

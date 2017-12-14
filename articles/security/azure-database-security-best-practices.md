@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: b3a9befe5c6607c108e11b583f8b67c483710021
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
 
@@ -137,7 +137,7 @@ SQL 数据库支持两种身份验证：SQL 身份验证和 Azure Active Directo
 
 无法保护传输中数据的组织更容易遭受[中间人攻击](https://technet.microsoft.com/library/gg195821.aspx)、[窃听](https://technet.microsoft.com/library/gg195641.aspx)和会话劫持。 这些攻击可能是获取机密数据访问权限的第一步。
 
-有关 Azure VPN 选项的详细信息，请阅读[规划和设计 VPN 网关](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-plan-design)一文。
+有关 Azure VPN 选项的详细信息，请阅读[规划和设计 VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)一文。
 
 ## <a name="enable-database-auditing"></a>启用数据库审核
 审核 SQL Server 数据库引擎或单个数据库的实例涉及到跟踪和记录数据库引擎中发生的事件。 使用 SQL Server 审核可以创建服务器审核，其中可能包含服务器级事件的服务器审核规范，以及数据库级事件的数据库审核规范。 可将审核的事件写入事件日志或审核文件。

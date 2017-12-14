@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 3e8727e80571be70124fb439f4c7e448f521b692
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
  
 此功能适用于所有属于 Verizon（标准版和高级版）和 Akamai（标准版）CDN 配置文件的 CDN 终结点。 
 
-通过 Azure 诊断日志，可将基本使用情况指标从 CDN 终结点导出到不同的源，以便以自定义方式使用它们。 例如，可执行以下数据导出类型：
+通过 Azure 诊断日志，可将基本使用情况指标从 CDN 终结点导出到不同的源，以便以自定义方式使用它们。 例如，可执行以下类型的数据导出：
 
 - 将数据导出到 Blob 存储、导出为CSV，并在 Excel 中生成图形。
 - 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="logging-with-oms-log-analytics"></a>使用 OMS Log Analytics 的日志记录
 
-若要使用 OMS Log Analytics 存储日志，请按照以下步骤：
+若要使用 OMS Log Analytics 存储日志，请按照以下步骤操作：
 
 1. 在“诊断日志”边栏选项卡中，选择“发送到 Log Analytics”。 
 
@@ -182,7 +182,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>通过 OMS Log Analytics 存储库使用诊断日志
 Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
 
-若要使用 Log Analytics，必须在 Azure OMS Log Analytics 存储库中[启用日志记录](#enable-logging-with-azure-storage)，本文前面已经对此讨论过。
+若要使用 Log Analytics，必须在 Azure OMS Log Analytics 存储库中[启用日志记录](#enable-logging-with-azure-storage)，本文前面已经对此进行过讨论。
 
 ### <a name="using-the-oms-repository"></a>使用 OMS 存储库
 
@@ -194,7 +194,7 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
 使用管理解决方案可通过各种方式显示数据。 可从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) 获取管理解决方案。
 
-可以通过单击每个解决方案底部的“立即获取”链接从 Azure 应用商店安装管理解决方案。
+可以通过单击每个解决方案底部的“立即获取”链接从 Azure Marketplace 安装管理解决方案。
 
 ### <a name="adding-an-oms-cdn-management-solution"></a>添加 OMS CDN 管理解决方案
 
@@ -203,9 +203,9 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 1.   如果尚未登录 Azure 门户，请使用 Azure 订阅登录并转到仪表板。
     ![Azure 仪表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. 在“新建”边栏选项卡中，在“应用商店”下，选择“监视 + 管理”。
+2. 在“新建”边栏选项卡中，在“Marketplace”下，选择“监视 + 管理”。
 
-    ![应用商店](./media/cdn-diagnostics-log/14_Marketplace.png)
+    ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
 3. 在“监视 + 管理”边栏选项卡中，单击“查看所有”。
 
@@ -245,15 +245,15 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
     ![查看全部](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. OMS 门户现在应如下屏幕所示：
+12. OMS 门户现在应如以下屏幕所示：
 
     ![查看全部](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    单击其中一个磁贴以查看数据中的多个视图。
+    单击其中一个磁贴以查看多个数据视图。
 
     ![查看全部](./media/cdn-diagnostics-log/25_Interior-view.png)
 
-    可向左或向右滚动查看表示数据中各个视图的其他磁贴。 
+    可向左或向右滚动查看表示各个数据视图的其他磁贴。 
 
     单击其中一个磁贴可以提供有关数据的更多详细信息。
 
@@ -261,7 +261,7 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
 ### <a name="offers-and-pricing-tiers"></a>产品和定价层
 
-可在[此处](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)查看 OMS 管理解决方案的优惠和定价层。
+可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)查看 OMS 管理解决方案的优惠和定价层。
 
 ### <a name="customizing-views"></a>自定义视图
 
@@ -410,8 +410,8 @@ Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时
 
 * [Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [通过 Azure CDN 补充门户进行核心分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure OMS Log Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics REST API](https://docs.microsoft.com/en-us/rest/api/loganalytics)
+* [Azure OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 
 

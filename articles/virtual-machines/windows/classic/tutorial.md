@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 61d71479ae39c1ee22618f2c7fc6677b5bae8fe4
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 0a80599df07767cd6a117157fc699315cce7ad23
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>在 Azure 门户中创建运行 Windows 的虚拟机
 > [!div class="op_single_selector"]
@@ -39,8 +39,6 @@ ms.lasthandoff: 11/09/2017
 本部分演示如何使用 Azure 门户中的“仪表板”选择并创建虚拟机。
 
 也可以使用[自己的映像](createupload-vhd.md)创建 VM。 若要了解此方法和其他方法，请参阅[创建 Windows 虚拟机的不同方式](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-<!-- 02/27/2017 Video removed as it was based on the classic portal. -->
 
 ## <a id="createvirtualmachine"></a>创建虚拟机
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]

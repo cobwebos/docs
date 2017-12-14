@@ -10,18 +10,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: fbde63a2fe986342026e2b9dca5db06ea667c8d6
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.custom: mvc
+ms.openlocfilehash: 08490af077ad92dfa8e4ec248a1416980ac400f3
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 
-API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。 所有企业都想要作为数字平台扩大其运营、创建新渠道、查找新客户和深化与现有的契合。 API 管理提供了核心能力，通过开发人员参与、商业洞察力、分析、安全和保护确保 API 程序成功。 可以使用 Azure API 管理处理任何后端，并基于它发布正式的 API 程序。
+API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。 所有企业都想要作为数字平台扩大其运营、创建新渠道、查找新客户和深化与现有的契合。 API 管理通过开发人员参与、商业洞察力、分析、安全性和保护提供了核心竞争力以确保成功的 API 程序。 可以使用 Azure API 管理处理任何后端，并基于它发布正式的 API 程序。
 
 观看以下视频，概要了解 Azure API 管理，并学习如何使用 API 管理将更多功能添加到 API，包括访问控制、速率限制、监视、事件日志记录和响应缓存，将工作量降至最低。
 

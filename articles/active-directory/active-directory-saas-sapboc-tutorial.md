@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 SAP Business Object Clo
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 6d517c5e302ac36e5bba2053998c75f8f4d42683
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：将 Azure Active Directory 与 SAP Business Object Cloud 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要设置 Azure AD 与 SAP Business Object Cloud 的集成，需备齐以下各项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用单一登录的 SAP Business Object Cloud
 
 > [!NOTE]

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/19/2017
 ms.author: carolz
-ms.openlocfilehash: 31e2820baa20dab98dcfb233c9040d954641e7b7
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: e3816551142cb866a8e2da63226905ada16cc0d7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
@@ -50,7 +50,7 @@ Azure 中国世纪互联提供一流的安全性与<a href="https://www.trustcen
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="https://docs.microsoft.com/en-us/media/common/i_guide.svg" alt="" />
+                            <img src="https://docs.microsoft.com/media/common/i_guide.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">

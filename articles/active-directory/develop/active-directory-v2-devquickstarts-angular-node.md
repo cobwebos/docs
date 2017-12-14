@@ -4,7 +4,7 @@ description: "如何构建一个使用个人 Microsoft 帐户和工作或学校�
 services: active-directory
 documentationcenter: 
 author: navyasric
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: d286aa33-8a94-452f-beb7-ddc6c6daa5c8
 ms.service: active-directory
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0e90171afd9c4c782fbb18375ab2d147497ef442
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 10f797ad97ac3253984896c6cadb66b6b948ff8a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---nodejs"></a>将登录凭据添加到 AngularJS 单页应用 - NodeJS
 在本文中，我们将使用 Azure Active Directory v2.0 终结点将 Microsoft 支持的帐户的登录凭据添加到 AngularJS 应用。 v2.0 终结点可让你在应用中执行单一集成，以及使用个人和工作/学校帐户对用户进行身份验证。
 
-本示例是一个可在后端 REST API 存储任务的简单待办事项列表单页应用，它是使用 NodeJS 编写的，并使用 Azure AD 的 OAuth 持有者令牌进行保护。  AngularJS 应用使用我们的开源 JavaScript 身份验证库 [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) 来处理整个登录过程，并获取用于调用 REST API 的令牌。  可以应用与此相同的模式来验证其他 REST API，例如 [Microsoft Graph](https://graph.microsoft.com) 或 Azure Resource Manager API。
+本示例是一个可在后端 REST API 存储任务的简单待办事项列表单页应用，它是使用 NodeJS 编写的，并使用 Azure AD 的 OAuth 持有者令牌进行保护。  AngularJS 应用使用我们的开源 JavaScript 身份验证库 [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) 来处理整个登录过程，并获取用于调用 REST API 的令牌。  可以应用与此相同的模式来验证其他 REST API，例如 [Microsoft Graph](https://graph.microsoft.com) 或 Azure 资源管理器 API。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。  若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。

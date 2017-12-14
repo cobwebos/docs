@@ -1,6 +1,6 @@
 ---
 title: "捕获 Azure Linux VM 以用作模板 | Microsoft Docs"
-description: "了解如何捕获和通用化使用 Azure Resource Manager 部署模型创建的、基于 Linux 的 Azure 虚拟机 (VM) 的映像。"
+description: "了解如何捕获和通用化使用 Azure 资源管理器部署模型创建的、基于 Linux 的 Azure 虚拟机 (VM) 的映像。"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: b1164fbd816eea5189786850f096438e32f8f802
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f990a0da0be7f10dc16aa2e5a6320b456cfffed1
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>捕获在 Azure 上运行的 Linux 虚拟机
 按照本文中的步骤通用化和捕获 Resource Manager 部署模型中的 Azure Linux 虚拟机 (VM)。 通用化 VM 时，将删除个人帐户信息，并准备要用作映像的 VM。 然后捕获 OS 的通用化虚拟硬盘 (VHD) 映像、附加的数据磁盘的 VHD，以及新 VM 部署的[资源管理器模板](../../azure-resource-manager/resource-group-overview.md)。 本文详细介绍了如何使用 Azure CLI 1.0 为使用非托管磁盘的 VM 捕获 VM 映像。 也可以[使用 Azure CLI 2.0 捕获使用 Azure 托管磁盘的 VM](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 托管磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 有关详细信息，请参阅 [Azure 托管磁盘概述](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
 
-若要使用映像创建 VM，请为每个新 VM 设置网络资源，并使用模板（JavaScript 对象表示法或 JSON 文件）从捕获的 VHD 映像部署它。 这样，可以复制具有其当前软件配置的 VM，与在 Azure 应用商店中使用映像的方式类似。
+若要使用映像创建 VM，请为每个新 VM 设置网络资源，并使用模板（JavaScript 对象表示法或 JSON 文件）从捕获的 VHD 映像部署它。 这样，可以复制具有其当前软件配置的 VM，与在 Azure Marketplace 中使用映像的方式类似。
 
 > [!TIP]
 > 如果要创建具有其专用备份或调试状态的现有 Linux VM 的副本，请参阅[创建在 Azure 上运行的 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果要从本地 VM 上传 Linux VHD，请参阅[上传自定义磁盘映像并从其创建 Linux VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。  
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="step-2-capture-the-vm"></a>步骤 2：捕获 VM
 使用 Azure CLI 通用化和捕获 VM。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 **myResourceGroup**、**myVnet** 和 **myVM**。
 
-1. 从本地计算机中打开 Azure CLI 并[登录到 Azure 订阅](../../xplat-cli-connect.md)。 
+1. 从本地计算机中打开 Azure CLI 并[登录到 Azure 订阅](/cli/azure/authenticate-azure-cli)。 
 2. 请确保处于 Resource Manager 模式。
    
     ```azurecli
@@ -204,5 +204,5 @@ azure vm create -g myResourceGroup1 -n myNewVM -l eastus -y Linux \
 对于其他命令选项，运行 `azure help vm create`。
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 CLI 管理 VM，请参阅[使用 Azure Resource Manager 模板和 Azure CLI 部署和管理虚拟机](create-ssh-secured-vm-from-template.md)中的任务。
+若要使用 CLI 管理 VM，请参阅[使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机](create-ssh-secured-vm-from-template.md)中的任务。
 

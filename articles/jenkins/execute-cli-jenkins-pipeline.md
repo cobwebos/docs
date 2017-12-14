@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: b93e787050613b241ea116e7263f63835bd211fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 490112417870fb3bfdb75abdb82f9adfff550f0a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
 若要将 Java Web 应用部署到 Azure，可以通过 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)使用 Azure CLI。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
@@ -56,7 +56,7 @@ sudo apt-get install -y maven
 需要 Azure 凭据才能执行 Azure CLI。
 
 * 在 Jenkins 仪表板中，单击“Credentials”（凭据）->“System”（系统）。 单击“Global credentials(unrestricted)”（全局凭据(不受限制)）。
-* 单击“Add Credentials”（添加凭据），通过填写订阅 ID、客户端 ID、客户端密码和 OAuth 2.0 令牌终结点，添加 [Microsoft Azure 服务主体](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)。 提供一个 ID 供后续步骤使用。
+* 单击“Add Credentials”（添加凭据），通过填写订阅 ID、客户端 ID、客户端密码和 OAuth 2.0 令牌终结点，添加 [Microsoft Azure 服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)。 提供一个 ID 供后续步骤使用。
 
 ![添加凭据](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 

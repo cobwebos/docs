@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 Agiloft 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: caacd51319be76cde11e9b7f4fd00305ce485b38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0932bde663ea22c1e2e762dccf556253487d16e2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>教程：Azure Active Directory 与 Agiloft 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 Agiloft 的集成，需要以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 启用 Agiloft 单一登录的订阅
 
 > [!NOTE]

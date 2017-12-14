@@ -4,7 +4,7 @@ description: "了解如何构建一个可从个人 Microsoft 帐户及公司或�
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 94e945a52b9df7c495de1611baa08083357670c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>使用 Node.js 保护 Web API
 > [!NOTE]
@@ -751,7 +751,7 @@ return done(null, user, token);
 passport.use(oidcStrategy);
 ```
 
-Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式。 所有策略编写器都遵循该模式。 向策略传递使用令牌和 `done` 作为参数的 `function()`。 策略会在完成所有任务后返回。 存储用户和令牌，这样一来，就不需要再次请求。
+Passport 对其所有策略（Twitter、Facebook 等）都使用类似的模式。 所有策略编写器都遵循该模式。 向策略传递使用令牌和 `done` 作为参数的 `function()`。 策略会在完成所有任务后返回。 存储用户并储藏令牌，这样一来，就不需要再次请求。
 
 > [!IMPORTANT]
 > 前面的代码会将所有可以进行身份验证的用户转到服务器。 这就是所谓的自动注册。 在生产服务器上，会希望所有人都先经历指定的注册过程，才能进入服务器。 通常会在消费类应用中看到这种模式。 应用可能会允许使用 Facebook 注册，但随后会要求输入其他信息。 如果在本教程中没有使用命令行程序，可从返回的令牌对象中提取电子邮件。 然后，可以要求用户输入其他信息。 由于这是测试服务器，可以直接将用户添加到内存中数据库。

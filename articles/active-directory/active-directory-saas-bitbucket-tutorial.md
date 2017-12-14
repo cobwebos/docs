@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 SAML SSO for Bitbucket 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: fc947df1-f24e-43ae-9a34-518293583d69
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 853a0acd2c596f2dd26f1132d4ecff56cef5aa2e
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 52c741c66a796e53698a690c415cc60c814f74e8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Bitbucket by resolution GmbH 的集成
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 12/06/2017
 
     ![标识提供者](./media/active-directory-saas-bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
-    a. 选择“AZURE AD”作为“Idp 类型”。
+    a. 选择“Idp 类型”作为“AZURE AD”。
 
     b. 在“名称”文本框中，键入名称。
 

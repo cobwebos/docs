@@ -32,8 +32,8 @@
 ### [迁移数据](sql-data-warehouse-migrate-data.md)
 
 ## 加载和移动数据
-### [概述](sql-data-warehouse-overview-load.md)
-### [PolyBase](sql-data-warehouse-load-polybase-guide.md)
+### [概述](design-elt-data-loading.md)
+### [指南](guidance-for-loading-data.md)
 
 
 ## 集成

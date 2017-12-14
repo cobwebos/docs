@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 09542c0e7f628ca4fea00a6562c0b9525432c213
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 977c5d64a32157b39aa6b618196dde20c4c3cc8e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>使用 OMS 进行事件分析和可视化
 
@@ -41,7 +41,7 @@ Log Analytics 收到数据后，OMS 提供多个预打包的管理解决方案�
 
 ## <a name="using-the-oms-agent"></a>使用 OMS 代理
 
-建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化方法，方便诊断和监视。 例如，若想从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 但如果决定使用 OMS Log Analytics 进行处理，需设置 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)。 将容器部署到群集时，还应使用 OMS 代理，如下所述。 
+建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化方法，方便诊断和监视。 例如，若想从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 但如果决定使用 OMS Log Analytics 进行处理，需设置 [OMS 代理](../log-analytics/log-analytics-windows-agent.md)。 将容器部署到群集时，还应使用 OMS 代理，如下所述。 
 
 相关步骤请访问[将 OMS 代理添加到群集](service-fabric-diagnostics-oms-agent.md)。
 

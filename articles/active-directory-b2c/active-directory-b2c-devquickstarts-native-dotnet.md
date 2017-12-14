@@ -4,7 +4,7 @@ description: "介绍如何使用 Azure Active Directory B2C 构建 Windows 桌�
 services: active-directory-b2c
 documentationcenter: .net
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 9da14362-8216-4485-960e-af17cd5ba3bd
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 8e2b5c704230ee2ba1395dc76a1551aaa8e7af7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 62b1a34f2380446b9f5cbadda7eab8c698f1a92f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C：构建 Windows 桌面应用
 通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到桌面应用。 本文将说明如何创建 .NET Windows Presentation Foundation (WPF)“待办事项列表”应用，其中包括用户注册、登录和配置文件管理。 该应用将支持使用用户名或电子邮件进行注册和登录。 该应用还将支持使用社交帐户（如 Facebook 和 Google）进行注册和登录。

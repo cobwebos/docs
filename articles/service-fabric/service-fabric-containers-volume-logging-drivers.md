@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 433424a6700d3e8940e3d1142ce2ff579a92067c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 772e51519d1ad45ababa0f4c1f4b402d280f9c14
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>在容器中使用 Docker 卷插件和日志记录驱动程序
 Azure Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)和 [Docker 日志记录驱动程序](https://docs.docker.com/engine/admin/logging/overview/)。 因此，可以在 [Azure 文件](https://azure.microsoft.com/services/storage/files/)中持久保存数据，即使容器已移动或已在另一台主机上重启，也是如此。
@@ -28,7 +28,7 @@ Azure Service Fabric 支持为容器服务指定 [Docker 卷插件](https://docs
 
 ## <a name="install-the-docker-volumelogging-driver"></a>安装 Docker 卷/日志记录驱动程序
 
-如果计算机上未安装 Docker 卷/日志记录驱动程序，则可通过 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-model#describe-a-service)执行安装操作。
+如果计算机上未安装 Docker 卷/日志记录驱动程序，则可通过 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service)执行安装操作。
 
 以下是安装 [Azure 的 Docker 卷驱动程序](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)的一个脚本实例：
 

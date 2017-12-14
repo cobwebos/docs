@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: b1d3304b231160c872574fe6f82572f000cfeb6e
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 661837912c9b2dbdd4b27fe6c25c2ebe95aa96f7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-and-connect-to-your-subscription"></a>管理和连接到订阅
 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）提供独特的 URL 和终结点用于管理环境。 必须使用正确的连接来管理环境。 连接到 Azure 环境后，如果已部署相应的组件，则可以运行管理服务的正常操作。
 
 ## <a name="connect-by-using-the-portal"></a>使用门户进行连接
-可通过 [Azure 门户](https://portal.azure.cn/)（一个 [Azure 资源管理器](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)平台）访问 Microsoft Azure 中国世纪互联中的应用程序和服务。
+可通过 [Azure 门户](https://portal.azure.cn/)（一个 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)平台）访问 Microsoft Azure 中国世纪互联中的应用程序和服务。
 
 ![Azure 门户](media/china-get-started-service-manage-and-connect/azureportal.png)
 
@@ -52,6 +52,6 @@ ms.lasthandoff: 10/27/2017
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure 门户](https://portal.azure.cn/)
-- [Azure 资源管理器](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
+- [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
 - [帐户中心](https://account.windowsazure.cn/)
 

@@ -3,7 +3,7 @@ title: "在空闲时间启动/停止 VM 解决方案 | Microsoft 文档"
 description: "VM 管理解决方案可按计划启动和停止 Azure 资源管理器虚拟机，并通过 Log Analytics 进行主动监视。"
 services: automation
 documentationCenter: 
-authors: eslesar
+authors: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2017
 ms.author: magoedte
-ms.openlocfilehash: 2ff2208f62c24c460c9d17533e28fd007549828b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: e6f1189b9729c57718a5cd6d6f6a583b94f6f142
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/23/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-- runbook 使用 [Azure 运行方式帐户](automation-offering-get-started.md#authentication-methods)。  运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。  
+- Runbook 使用 [Azure 运行方式帐户](automation-offering-get-started.md#authentication-methods)。  运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。  
 
 - 此解决方案只能管理与自动化帐户位于同一订阅中的 VM。  
 
@@ -137,8 +137,8 @@ ms.lasthandoff: 11/23/2017
    - 指定新 **OMS 工作区**的名称。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于**资源组**，可以创建新资源组，或选择现有资源组。  
-   - 选择“位置”。  目前可供选择的地点仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
-   - 选择“定价层” 。  该解决方案提供两种定价层：免费和 OMS 付费层。  免费层的每日可收集数据量、保留期和 runbook 作业运行时分钟数有限制。  OMS 付费级别对每日可收集的数据量没有限制。  
+   - 选择“位置” 。  目前可供选择的地点仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
+   - 选择“定价层” 。  该解决方案提供两种定价层：免费和 OMS 付费层。  免费层的每日可收集数据量、保留期和 Runbook 作业运行时分钟数有限制。  OMS 付费级别对每日可收集的数据量没有限制。  
 
         > [!NOTE]
         > 虽然“按 GB (独立)”付费层显示为一个选项，但它不适用。  如果选择它并继续在订阅中创建此解决方案，它会失败。  正式发布此解决方案时，此问题将得到解决。<br>如果使用此解决方案，它将仅使用自动化作业分钟数和日志引入。  此解决方案不会将其他 OMS 节点添加到环境中。  
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 7. 在“添加解决方案”边栏选项卡中，选择“自动化帐户”。  如果要创建新的 OMS 工作区，则还需要创建将与前面指定的新 OMS 工作区相关联的新自动化帐户，包括 Azure 订阅、资源组和区域。  可以选择“创建自动化帐户”，并在“添加自动化帐户”边栏选项卡中提供以下信息： 
   - 在“名称”字段中输入自动化帐户的名称。
 
-    系统会根据所选的 OMS 工作区自动填充所有其他选项，无法修改这些选项。  “Azure 运行方式帐户”是此解决方案为 runbook 包含的默认身份验证方法。  单击“确定”后，系统会验证配置选项并创建自动化帐户。  可以在菜单中的“通知”下面跟踪操作进度。 
+    系统会根据所选的 OMS 工作区自动填充所有其他选项，无法修改这些选项。  “Azure 运行方式帐户”是此解决方案为 Runbook 包含的默认身份验证方法。  单击“确定”后，系统会验证配置选项并创建自动化帐户。  可以在菜单中的“通知”下面跟踪操作进度。 
 
     也可以选择现有的自动化运行方式帐户。  请注意，选择的帐户不能已链接到另一个 OMS 工作区，否则边栏选项卡中会显示一条通知消息。  如果该帐户已链接，则需要选择不同的自动化运行方式帐户或创建新帐户。<br><br> ![自动化帐户已链接到 OMS 工作区](media/automation-solution-vm-management/vm-management-solution-add-solution-blade-autoacct-warning.png)<br>
 

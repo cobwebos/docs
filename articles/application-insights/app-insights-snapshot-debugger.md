@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68686e128d7e9528396f338b95f483adf07c3292
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2f1f9f306d7759cbd1202c985da27a2a3b879ebd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
@@ -299,6 +299,6 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在代码中设置捕捉点](https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
+* [在代码中设置捕捉点](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
 * [诊断 Web 应用中的异常](app-insights-asp-net-exceptions.md)介绍了如何在 Application Insights 中显示更多的异常。 
 * [智能检测](app-insights-proactive-diagnostics.md)可自动发现性能异常。

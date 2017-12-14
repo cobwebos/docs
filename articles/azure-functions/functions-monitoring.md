@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -486,7 +486,7 @@ module.exports = function (context, req) {
 
 ### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 监视函数应用日志文件
 
-若要开始，请[安装 Azure CLI 1.0](../cli-install-nodejs.md)，并[登录到 Azure](../xplat-cli-connect.md)。
+若要开始，请[安装 Azure CLI 1.0](../cli-install-nodejs.md)，并[登录到 Azure](/cli/azure/authenticate-azure-cli)。
 
 使用以下命令来启用经典服务管理模式，选择订阅，然后流式传输日志文件：
 

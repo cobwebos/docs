@@ -4,7 +4,7 @@ description: "原始 Azure AD 终结点与 v2.0 终结点之间的比较。"
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 81de65b0e825dec64383f52b02c5ee56c9434807
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4216c2215f494a81935cd4cdca52427b0cbac143
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 终结点有什么不同？
 如果熟悉 Azure Active Directory 或过去已将应用与 Azure AD 集成，v2.0 终结点中可能有一些预料不到的差异。  本文档汇总了这些差异来帮助你了解。

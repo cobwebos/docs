@@ -3,7 +3,7 @@ title: "迁移自动化帐户和资源 | Microsoft Docs"
 description: "本文介绍如何将 Azure 自动化中的自动化帐户及关联的资源从一个订阅移到另一个订阅。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 9c2db4a2-f324-48dc-8ce7-3343bf7230d5
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte
-ms.openlocfilehash: 6a6765753e0dadf31692819a9d8f2ca7e77c7f10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c13ee767cc2a1fb7880e6d0491cd6a247c737c13
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="migrate-automation-account-and-resources"></a>迁移自动化帐户和资源
 对于已在 Azure 门户中创建并且想要从一个资源组迁移到另一个资源组或从一个订阅到另一个订阅的自动化帐户及其关联的资源（即资产、Runbook、模块等），可以使用 Azure 门户中提供的[移动资源](../azure-resource-manager/resource-group-move-resources.md)功能轻松实现此目的。 但是，在执行此操作前，应该先查看以下[移动资源前需查看的清单](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources)，以及下面的特定于自动化的列表。   

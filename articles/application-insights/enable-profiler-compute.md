@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 66ea24cfe9dd03ed62c06daa76ee043886ad7bcc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 57a4cb560825e0c05ac49df26ac12ee52da52c3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>为 Azure VM、Service Fabric 和云服务启用 Application Insights Profiler
 
 本文演示如何在 Azure 计算资源托管的 ASP.NET 应用程序上启用 Azure Application Insights Profiler。 
 
-本文中的示例包括对 Azure 虚拟机、虚拟机规模集、Azure Service Fabric 和 Azure 云服务的支持。 所有示例依赖于支持 [Azure 资源管理器](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)部署模型的模板。  
+本文中的示例包括对 Azure 虚拟机、虚拟机规模集、Azure Service Fabric 和 Azure 云服务的支持。 所有示例依赖于支持 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)部署模型的模板。  
 
 
 ## <a name="overview"></a>概述
@@ -47,14 +47,14 @@ ms.lasthandoff: 10/26/2017
 此实例应与应用程序相同。 它已配置为向每个请求发送遥测数据。
 Profiler 结果也在此实例中提供。  
 
-在 Azure 门户中完成[启用 Profiler](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) 中所述步骤，为 Profiler 设置 Application Insights 实例。 不需为本文中的示例链接 Web 应用， 只需确保在门户中启用 Profiler 即可。
+在 Azure 门户中完成[启用 Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler) 中所述步骤，为 Profiler 设置 Application Insights 实例。 不需为本文中的示例链接 Web 应用， 只需确保在门户中启用 Profiler 即可。
 
 
 ## <a name="set-up-the-application-source-code"></a>设置应用程序源代码
 
 将应用程序设置为在每次执行 `Request` 操作时将遥测数据发送到 Application Insights 实例：  
 
-1. 将 [Application Insights SDK](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview#get-started) 添加到应用程序项目。 请确保 NuGet 包版本如下所示：  
+1. 将 [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) 添加到应用程序项目。 请确保 NuGet 包版本如下所示：  
   - 对于 ASP.NET 应用程序：[Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。
   - 对于 ASP.NET Core 应用程序：[Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 或更高版本。
   - 对于其他 .NET 和 .NET Core 应用程序（例如，Service Fabric 无状态服务或云服务辅助角色）：[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。  
@@ -138,9 +138,9 @@ Profiler 结果也在此实例中提供。
   * [虚拟机规模集](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
   * [Service Fabric 群集](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
-1. 若要确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。
+1. 若要确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。
 
-2. 在部署模板文件中找到 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)扩展，然后添加下面的 `SinksConfig` 节作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
+2. 在部署模板文件中找到 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)扩展，然后添加下面的 `SinksConfig` 节作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
   ```json
   "SinksConfig": {
     "Sink": [
@@ -152,16 +152,16 @@ Profiler 结果也在此实例中提供。
   }
   ```
 
-  若要了解如何将诊断扩展添加到部署模板，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+  若要了解如何将诊断扩展添加到部署模板，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
 ### <a name="cloud-services"></a>云服务
 
-1. 若要确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认 ServiceConfiguration.\*.cscfg 文件的 `osFamily` 值至少为“5”。
+1. 若要确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认 ServiceConfiguration.\*.cscfg 文件的 `osFamily` 值至少为“5”。
 
-2. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件：  
+2. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件：  
   ![诊断配置文件的位置](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
-  如果找不到该文件，则若要了解如何在云服务项目中启用诊断扩展，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/en-us/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)。
+  如果找不到该文件，则若要了解如何在云服务项目中启用诊断扩展，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)。
 
 3. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素：  
   ```xml
@@ -205,11 +205,11 @@ Profiler 结果也在此实例中提供。
 
 2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/platform/server.aspx) 运行，请启用 `IIS Http Tracing` Windows 功能：  
   
-  1. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/en-us/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
+  1. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-  2. 如果无法建立远程访问，则可使用 [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) 运行以下命令：  
+  2. 如果无法建立远程访问，则可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 运行以下命令：  
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
     ```
@@ -223,7 +223,7 @@ Profiler 结果也在此实例中提供。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 生成到应用程序的流量（例如，启动[可用性测试](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-web-app-availability)）。 然后等待 10 到 15 分钟，这样跟踪就会开始发送到 Application Insights 实例。
-- 请参阅 Azure 门户中的 [Profiler 跟踪](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler)。
+- 生成到应用程序的流量（例如，启动[可用性测试](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)）。 然后等待 10 到 15 分钟，这样跟踪就会开始发送到 Application Insights 实例。
+- 请参阅 Azure 门户中的 [Profiler 跟踪](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler)。
 - 在 [Profiler 故障排除](app-insights-profiler.md#troubleshooting)中获得有关排查 Profiler 问题的帮助。
 - 在 [Application Insights Profiler](app-insights-profiler.md) 中详细了解探查器。

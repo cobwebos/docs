@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: 70ec03d2ed32cb0362bf2f7b24c66979093603be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: d5b33b15c315c7538bba7bf9ae067946f3b6d3c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 本文讲解 Azure 中自动缩放的最佳实践。 Azure 监视器自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)和[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)。 其他 Azure 服务使用不同的缩放方法。
@@ -44,9 +44,6 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>始终使用执行增加和减少的扩大和缩小规则组合
 如果只使用该组合的一部分，则自动缩放只会进行单向扩大或缩小，直到达到最大值或最小值。
-
-### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>管理自动缩放时，请勿在 Azure 门户与 Azure 经典门户之间切换
-对于云服务和应用服务（Web 应用），请使用 Azure 门户 (portal.azure.com) 创建和管理自动缩放设置。 对于虚拟机规模集，请使用 PowerShell、CLI 或 REST API 创建和管理自动缩放设置。 管理自动调整规模配置时，请勿在 Azure 经典门户 (manage.windowsazure.com) 与 Azure 门户 (portal.azure.com) 之间切换。 Azure 经典门户及其基础后端具有限制。 请使用图形用户界面移动到 Azure 门户来管理自动缩放。 这些选项是使用自动缩放 PowerShell、CLI 或 REST API（通过 Azure 资源浏览器）。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
 对于诊断指标，可以选择“平均值”、“最小值”、“最大值”和“总计”作为用作缩放依据的指标。 最常见的统计信息是“平均值”。

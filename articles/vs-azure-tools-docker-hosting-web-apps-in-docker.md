@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 4a87ee69f23779bf4f6f5db40bc05edbcfc7668d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 60efffd9313f6972ae46fd1925d999597d3c6ba2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-an-aspnet-container-to-a-remote-docker-host"></a>将 ASP.NET 容器部署到远程 Docker 主机
 ## <a name="overview"></a>概述
 Docker 是轻型容器引擎，在某些方面类似于虚拟机，可以将其用于托管应用程序和服务。
-本教程将指导你完成使用 [Visual Studio Tools for Docker](https://docs.microsoft.com/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker) 扩展在 Azure 上通过 PowerShell 将 ASP.NET Core 应用部署到 Docker 主机。
+本教程将指导你完成使用 [Visual Studio Tools for Docker](https://docs.microsoft.com/dotnet/articles/core/docker/visual-studio-tools-for-docker) 扩展在 Azure 上通过 PowerShell 将 ASP.NET Core 应用部署到 Docker 主机。
 
 ## <a name="prerequisites"></a>先决条件
 以下是完成本教程所要做好的准备：

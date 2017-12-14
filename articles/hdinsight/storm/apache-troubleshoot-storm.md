@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 399ed17e997baf5dcf484f7798d3c4679522c633
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Storm 进行故障排除
 
@@ -91,7 +91,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
  
 /usr/hdp 中可能包含特定 HDP 版本的多个二进制文件（例如 /usr/hdp/2.5.0.1233/storm）。 /usr/hdp/current/storm-client 文件与群集上运行的最新版本建立了符号链接。
 
-有关详细信息，请参阅[使用 SSH 连接到 HDInsight 群集](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Storm](http://storm.apache.org/)。
+有关详细信息，请参阅[使用 SSH 连接到 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Storm](http://storm.apache.org/)。
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>如何确定 Storm 群集的部署拓扑？
 首先，请识别连同 HDInsight Storm 一起安装的所有组件。 Storm 群集由四个节点类别组成：
@@ -127,10 +127,10 @@ Storm 工作节点运行以下服务：
 有关在拓扑中使用 Storm 事件中心 Spout .jar 文件的详细信息，请参阅以下资源。
  
 ### <a name="java-based-topology"></a>基于 Java 的拓扑
-[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
  
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>基于 C# 的拓扑（HDInsight 3.4+ Linux Storm 群集上的 Mono）
-[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
  
 ### <a name="latest-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm 群集的最新 Storm 事件中心 Spout 二进制文件
 若要了解如何使用适用于 HDInsight 3.5+ Linux Storm 群集的最新 Storm 事件中心 Spout，请参阅 mvn-repo [自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。

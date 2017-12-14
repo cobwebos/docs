@@ -4,7 +4,7 @@ description: "使用 Azure AD B2C 测试环境进行登录、注册、编辑个�
 services: active-directory-b2c
 documentationcenter: 
 author: saraford
-manager: krassk
+manager: mtillman
 editor: PatAltimore
 ms.assetid: 5a8a46af-28bb-4b70-a7f0-01a5240d0255
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: saraford
-ms.openlocfilehash: 22da1ae317ba685d32f93d3331cf794b568891ec
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: ba8ee4657309ab2a541f4c7b3fd4879542eee63c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="test-drive-a-single-page-application-configured-with-azure-ad-b2c"></a>试用配置了 Azure AD B2C 的单页应用程序
 

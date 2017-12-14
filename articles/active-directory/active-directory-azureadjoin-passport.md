@@ -4,7 +4,7 @@ description: "提供了 Windows Hello 企业版的概述以及有关部署 Windo
 services: active-directory
 documentationcenter: 
 author: femila
-manager: femila
+manager: mtillman
 editor: 
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>通过 Windows Hello 企业版在没有密码的情况下进行身份验证
 单纯使用密码进行身份验证的传统方法不足以保障用户的安全。 使用这种方法时，用户需重复使用密码，有时还会忘记密码。 密码可能会泄露、被骗取、易于破解且可猜出。 密码也很难记住，并且易于遭受攻击，例如“[传递哈希](https://technet.microsoft.com/dn785092.aspx)”。

@@ -4,7 +4,7 @@ description: "如何在 Azure Active Directory 中编辑组的属性和其他配
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 2f058f9a-5a8f-4b4b-b3b7-885ff10cb1be
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: b4baccafc0a9178223dbf64c664fc34ab9f7f916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f1013419f7e54f5760636f169635b84c8bd118e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中管理组的设置
 本文介绍如何在 Azure Active Directory (Azure AD) 中更改组的设置。

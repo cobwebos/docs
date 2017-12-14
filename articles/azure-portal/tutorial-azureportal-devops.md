@@ -7,18 +7,18 @@ author: mlearned
 manager: douge
 editor: mlearned
 ms.assetid: 4f1c5bc1-c732-4d35-b5df-0fd68e547d38
-ms.service: multiple
+ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: b590fb06a3dba8aec66a380217269e1ca39bb5e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2c059fe415b743e4b2265d6dda492878307be93
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>教程：使用 Azure 门户进行开发运营
 Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。 在本教程中，将了解如何利用 Azure 门户功能来开发、测试、部署、监视和管理正在运行的应用程序以及对其进行故障排除。 本教程着重于以下内容：
@@ -262,7 +262,7 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 本教程演示了 Azure 平台的某些强大功能，包括快速启用 Web 应用的连续部署、执行各种开发和测试活动、对 Live App 进行监视和故障排除，以及管理密钥策略（例如灾难恢复、标识和基于角色的访问控制）。 Azure 平台支持对这些 DevOps 工作流使用集成体验，既可以高效地工作，同时又不会超出手头任务的范围。
 
 ## <a name="next-steps"></a>后续步骤
-* Azure Resource Manager 对于在 Azure 平台中启用 DevOps 至关重要。  有关详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+* Azure 资源管理器对于在 Azure 平台中启用 DevOps 至关重要。  有关详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 * 有关 Azure 应用服务部署的详细信息，请访问 [将应用部署到 Azure 应用服务](../app-service/app-service-deploy-local-git.md)
 
 [image1]: ./media/tutorial-azureportal-devops/image1.png

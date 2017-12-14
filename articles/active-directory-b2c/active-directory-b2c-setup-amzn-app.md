@@ -4,7 +4,7 @@ description: "在 Azure Active Directory B2C 保护的应用程序中向用户�
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: mbaldwin
+manager: mtillman
 editor: bryanla
 ms.assetid: 77c099bb-a005-4d75-87f9-f61e3de48725
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: dcc97e1b7f6287bd7692c52bf068950065a26572
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df69b075717e6b4311e336f5bd2d385c5f0e1f52
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-amazon-accounts"></a>Azure Active Directory B2C：向用户提供使用 Amazon 帐户的注册和登录功能
 ## <a name="create-an-amazon-application"></a>创建 Amazon 应用程序

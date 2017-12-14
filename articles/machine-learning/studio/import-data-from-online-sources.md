@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: 4c699a8e5a9fafa0fec10bcb731f9ba533e3d283
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: c6185cd240d1c040c993e581c27624e1f170f709
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>使用“导入数据”模块将数据从各种联机数据源导入 Azure 机器学习工作室
 本文介绍针对从各种源导入联机数据的支持，以及将数据从这些源移入 Azure 机器学习试验所需的信息。
@@ -43,7 +43,7 @@ ms.lasthandoff: 12/04/2017
 * Azure SQL 数据库，或 Azure VM 上的 SQL Server
 * 本地 SQL Server 数据库
 * 数据馈送提供程序（目前为 OData）
-* Azure CosmosDB（以前称为 DocumentDB）
+* Azure Cosmos DB
 
 要在工作室试验中访问联机数据源，请将[导入数据][import-data]模块添加到试验，选择“数据源”，然后提供访问数据时所需的参数。 下表列举了支持的联机数据源。 此表还汇总了支持的文件格式，以及用于访问数据的参数。
 

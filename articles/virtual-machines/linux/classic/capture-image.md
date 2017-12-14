@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: f140ff3841259251ddaf39124db2756084b26a53
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: e9296241b2128c9abe762f595161895948c8f70c
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
    > [!NOTE]
    > 剩余步骤假定已在客户端计算机上[安装 Azure CLI](../../../cli-install-nodejs.md)。 以下所有步骤也可在 [Azure 门户](http://portal.azure.com)中执行。
 
-5. 从客户端计算机中打开 Azure CLI 并登录到你的 Azure 订阅。 有关详细信息，请阅读[从 Azure CLI 连接到 Azure 订阅](../../../xplat-cli-connect.md)。
+5. 从客户端计算机中打开 Azure CLI 并登录到你的 Azure 订阅。 有关详细信息，请阅读[从 Azure CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
 
    > [!NOTE]
    > 登录到 Azure 门户。

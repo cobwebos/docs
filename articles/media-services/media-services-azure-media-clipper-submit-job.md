@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d29889a4c972638f5d127e9c518aa85fbc19d861
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>从 Azure 媒体剪辑器提交剪辑作业
 Azure 媒体剪辑器需要实现 submitSubclipCallback 方法才可以处理剪辑作业提交。 该功能用于实现指向 Web 服务的 Clipper 输出的 HTTP POST。 此 Web 服务是可以在其中提交编码作业的位置。 Clipper 的输出是对呈现作业的 Media Encoder Standard 编码预设，或者是动态清单筛选器调用的 REST API 有效负载。 此传递模型是必需的，因为客户端浏览器中的媒体服务帐户凭据并不安全。
@@ -151,7 +151,7 @@ var subclipper = new subclipper({
 }
 ```
 
-若要执行编码作业，请将 Media Encoder Standard 编码作业和关联的预设一同提交。 有关使用 [.NET SDK](https://docs.microsoft.com/en-us/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) 或 [REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-encode-asset) 提交编码作业的详细信息，请参阅本文。
+若要执行编码作业，请将 Media Encoder Standard 编码作业和关联的预设一同提交。 有关使用 [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) 或 [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset) 提交编码作业的详细信息，请参阅本文。
 
 ## <a name="quickly-creating-video-clips-without-encoding"></a>无需编码即可快速创建视频剪辑
 除了创建编码作业，还可使用 Azure 媒体剪辑器创建动态清单筛选器。 筛选器不需要编码即可快速创建，因为不会创建新资产。 筛选器剪辑的输出协定是一个具有以下属性的 JSON 对象：
@@ -227,4 +227,4 @@ var subclipper = new subclipper({
 }
 ```
 
-若要提交 REST 调用以创建动态清单筛选器，请使用 [REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-dynamic-manifest) 提交关联的筛选器有效负载。
+若要提交 REST 调用以创建动态清单筛选器，请使用 [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest) 提交关联的筛选器有效负载。

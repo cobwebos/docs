@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 @Task 之间配置单�
 services: active-directory
 documentationcenter: 
 author: jeevansd
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: aab8bd2f-f9dd-42da-a18e-d707865687d7
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: ebb19ca6cbaf04106fbce937d95651e709854cfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2443c7e2e57bd9c36af292658ff85a973d5ec224
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-task"></a>教程：Azure Active Directory 与 @Task 集成
 本教程旨在展示如何将 @Task 与 Azure Active Directory (Azure AD) 集成。  
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 @Task 的集成，需要以下项：
 
-* Azure AD 订阅
+* 一个 Azure AD 订阅
 * 启用的订阅上的 @Task 单一登录
 
 > [!NOTE]

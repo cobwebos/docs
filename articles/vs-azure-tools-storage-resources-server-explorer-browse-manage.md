@@ -1,5 +1,5 @@
 ---
-title: "使用服务器资源管理器浏览和管理存储资源 | Microsoft 文档"
+title: "使用服务器资源管理器浏览和管理存储资源 | Microsoft Docs"
 description: "使用服务器资源管理器浏览和管理存储资源"
 services: visual-studio-online
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
 ms.author: kraigb
-ms.openlocfilehash: 9f3d564fd844d982838cc6f29af24399801a62bc
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ee91ca168acf2fa0d248e18cce64ac546740a2bd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>使用服务器资源管理器浏览和管理存储资源
 
@@ -162,7 +162,7 @@ Blob 数据在本地缓存，并且对照 Azure Blob 存储中 Blob 的最后修
 有关存储服务队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](http://go.microsoft.com/fwlink/?LinkID=264702)。 有关存储服务队列的 Web 服务的详细信息，请参阅 [Queue Service Concepts](http://go.microsoft.com/fwlink/?LinkId=264788)（队列服务的概念）。 有关如何使用 Visual Studio 将消息发送到存储服务队列的信息，请参阅 [Sending Messages to a Storage Services Queue](https://msdn.microsoft.com/library/azure/jj649344.aspx)（将消息发送到存储服务队列）。
 
 > [!NOTE]
-> 存储服务队列不同于 Azure 服务总线队列。 有关服务总线队列的详细信息，请参阅[服务总线队列、主题和订阅](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions)。
+> 存储服务队列不同于 Azure 服务总线队列。 有关服务总线队列的详细信息，请参阅[服务总线队列、主题和订阅](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions)。
 
 ## <a name="work-with-table-resources"></a>处理表资源
 

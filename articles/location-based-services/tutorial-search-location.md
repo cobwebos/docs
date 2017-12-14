@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 15afdead60d4c1ee3c7e3c079d43e0651b262ec8
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>使用 Azure Location Based Services 搜索附近的兴趣点
 
@@ -101,12 +101,12 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
             }
         </style>
     </head>
+
     <body>
         <div id="map"></div>
         <script>
-        // Embed Map Control JavaScript code here
+            // Embed Map Control JavaScript code here
         </script>
-
     </body>
 
     </html>
@@ -115,26 +115,25 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
  
 3.  将以下 JavaScript 代码添加到 HTML 文件的 *script* 块。 将占位符 *<insert-key>* 替换为 Location Based Services 帐户的主密钥。 
 
-    ```HTML/JavaScript
-            // Instantiate map to the div with id "map"
-            var subscriptionKey = "<insert-key>";
-            var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey
-            });
-
+    ```JavaScript
+    // Instantiate map to the div with id "map"
+    var subscriptionKey = "<insert-key>";
+    var map = new atlas.Map("map", {
+        "subscription-key": subscriptionKey
+    });
     ```
     此段将会启动地图控件 API 来处理订阅密钥。 **Atlas** 是包含 Azure 地图控件 API 和相关视觉组件的命名空间。 **atlas.Map** 提供视觉对象和交互式 Web 地图的控件。 可以在浏览器中打开该 HTML 页面来观察地图的外观。 
 
 4. 将以下 JavaScript 代码添加到 *script* 块，以便在地图控件中添加一个搜索结果图钉层：
 
-    ```HTML/JavaScript
-            // Initialize the pin layer for search results to the map
-            var searchLayerName = "search-results";
-            map.addPins([], {
-                name: searchLayerName,
-                cluster: false,
-                icon: "pin-round-darkblue"
-            });
+    ```JavaScript
+    // Initialize the pin layer for search results to the map
+    var searchLayerName = "search-results";
+    map.addPins([], {
+        name: searchLayerName,
+        cluster: false,
+        icon: "pin-round-darkblue"
+    });
     ```
 
 5. 在计算机上保存该文件。 
@@ -147,91 +146,91 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
 本部分介绍如何使用 Azure Location Based Services 的搜索服务 API 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 
 
 1. 打开在上一部分中创建的 **MapSearch.html** 文件，并将以下 JavaScript 代码添加到 *script* 块以演示搜索服务。 
-    ```HTML/JavaScript
-            // Perform a request to the search service and create a pin on the map for each result
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                var searchPins = [];
+    ```JavaScript
+    // Perform a request to the search service and create a pin on the map for each result
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        var searchPins = [];
 
-                if (this.readyState === 4 && this.status === 200) {
-                    var response = JSON.parse(this.responseText);
+        if (this.readyState === 4 && this.status === 200) {
+            var response = JSON.parse(this.responseText);
 
-                    var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
+            var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
 
-                    searchPins = poiResults.map((poiResult) => {
-                        var poiPosition = [poiResult.position.lon, poiResult.position.lat];
-                        return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                            name: poiResult.poi.name,
-                            address: poiResult.address.freeformAddress,
-                            position: poiResult.position.lat + ", " + poiResult.position.lon
-                        });
-                    });
+            searchPins = poiResults.map((poiResult) => {
+                var poiPosition = [poiResult.position.lon, poiResult.position.lat];
+                return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
+                    name: poiResult.poi.name,
+                    address: poiResult.address.freeformAddress,
+                    position: poiResult.position.lat + ", " + poiResult.position.lon
+                });
+            });
 
-                    map.addPins(searchPins, {
-                        name: searchLayerName
-                    });
+            map.addPins(searchPins, {
+                name: searchLayerName
+            });
 
-                    var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
-                    var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
+            var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
+            var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
 
-                    var swLon = Math.min.apply(null, lons);
-                    var swLat = Math.min.apply(null, lats);
-                    var neLon = Math.max.apply(null, lons);
-                    var neLat = Math.max.apply(null, lats);
+            var swLon = Math.min.apply(null, lons);
+            var swLat = Math.min.apply(null, lats);
+            var neLon = Math.max.apply(null, lons);
+            var neLat = Math.max.apply(null, lats);
 
-                    map.setCameraBounds({
-                        bounds: [swLon, swLat, neLon, neLat],
-                        padding: 50
-                    });
-                }
-            };
+            map.setCameraBounds({
+                bounds: [swLon, swLat, neLon, neLat],
+                padding: 50
+            });
+        }
+    };
     ```
     此代码片段创建 [XMLHttpRequest](https://xhr.spec.whatwg.org/)，并添加事件处理程序来分析传入的响应。 对于成功的响应，它会在 `searchPins` 变量中收集返回的每个位置的地址、名称、纬度和经度信息。 最后，它会将此位置点集合添加到图钉形式的 `map` 控件。 
 
 2. 将以下代码添加到 *script* 块，以便将 XMLHttpRequest 发送到 Azure Location Based Services 的搜索服务：
 
-    ```HTML/JavaScript
-            var url = "https://atlas.microsoft.com/search/fuzzy/json?";
-            url += "&api-version=1.0";
-            url += "&query=gasoline%20station";
-            url += "&subscription-key=" + subscriptionKey;
-            url += "&lat=47.6292";
-            url += "&lon=-122.2337";
-            url += "&radius=100000"
+    ```JavaScript
+    var url = "https://atlas.microsoft.com/search/fuzzy/json?";
+    url += "&api-version=1.0";
+    url += "&query=gasoline%20station";
+    url += "&subscription-key=" + subscriptionKey;
+    url += "&lat=47.6292";
+    url += "&lon=-122.2337";
+    url += "&radius=100000";
 
-            xhttp.open("GET", url, true);
-            xhttp.send();
+    xhttp.open("GET", url, true);
+    xhttp.send();
     ``` 
     此代码片段使用搜索服务的基本搜索 API，即**模糊搜索**。 该 API 可处理最模糊的输入，并可处理地址或 *POI* 标记的任意组合。 它可以搜索附近的**加油站**、以纬度和经度指定的地址，并可以在指定的半径范围内搜索。 它使用前面在示例文件中提供的帐户订阅密钥向 Location Based Services 发出调用。 对于找到的位置，它以纬度/经度对的形式返回结果。 可以在浏览器中打开该 HTML 页面来观察搜索结果图钉。 
 
 3. 将以下行添加到 *script* 块，以创建搜索服务返回的兴趣点的弹出窗口：
 
-    ```HTML/JavaScript
-            // Add a popup to the map which will display some basic information about a search result on hover over a pin
-            var popup = new atlas.Popup();
-            map.addEventListener("mouseover", searchLayerName, (e) => {
-                var popupContentElement = document.createElement("div");
-                popupContentElement.style.padding = "5px";
+    ```JavaScript
+    // Add a popup to the map which will display some basic information about a search result on hover over a pin
+    var popup = new atlas.Popup();
+    map.addEventListener("mouseover", searchLayerName, (e) => {
+        var popupContentElement = document.createElement("div");
+        popupContentElement.style.padding = "5px";
 
-                var popupNameElement = document.createElement("div");
-                popupNameElement.innerText = e.features[0].properties.name;
-                popupContentElement.appendChild(popupNameElement);
+        var popupNameElement = document.createElement("div");
+        popupNameElement.innerText = e.features[0].properties.name;
+        popupContentElement.appendChild(popupNameElement);
 
-                var popupAddressElement = document.createElement("div");
-                popupAddressElement.innerText = e.features[0].properties.address;
-                popupContentElement.appendChild(popupAddressElement);
+        var popupAddressElement = document.createElement("div");
+        popupAddressElement.innerText = e.features[0].properties.address;
+        popupContentElement.appendChild(popupAddressElement);
 
-                var popupPositionElement = document.createElement("div");
-                popupPositionElement.innerText = e.features[0].properties.position;
-                popupContentElement.appendChild(popupPositionElement);
+        var popupPositionElement = document.createElement("div");
+        popupPositionElement.innerText = e.features[0].properties.position;
+        popupContentElement.appendChild(popupPositionElement);
 
-                popup.setPopupOptions({
-                    position: e.features[0].geometry.coordinates,
-                    content: popupContentElement
-                });
+        popup.setPopupOptions({
+            position: e.features[0].geometry.coordinates,
+            content: popupContentElement
+        });
 
-                popup.open(map);
-            });
+        popup.open(map);
+    });
     ```
     API **atlas.Popup** 提供一个固定在地图上所需位置的信息窗口。 此代码片段设置弹出窗口的内容和位置，并将一个事件侦听器添加到 `map` 控件，等待鼠标在弹出窗口上滑动。 
 

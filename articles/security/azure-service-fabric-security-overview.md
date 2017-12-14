@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 908bdaf002e42035567974b204f5b39e73e82024
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
@@ -50,7 +50,7 @@ Azure Service Fabric 协调跨计算机群集的服务。 必须保护群集以�
 
 创建群集时，Service Fabric 将使用指定的 X.509 服务器证书。 有关这些证书是什么以及如何获取或创建这些证书的概述，请参阅[使用证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates)。
 
-证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 指定的主证书和辅助证书应不同于为[客户端到节点安全性](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security)指定的管理员客户端证书和只读客户端证书。
+证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 可以指定一个主要证书和一个可选的辅助证书（用于证书滚动更新）。 指定的主证书和辅助证书应不同于为[客户端到节点安全性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)指定的管理员客户端证书和只读客户端证书。
 
 ### <a name="client-to-node-security"></a>客户端到节点安全性
 使用客户端标识配置客户端到节点安全性。 若要在客户端与群集之间建立信任关系，必须对群集进行配置，使其知道可以信任哪些客户端标识。 可以通过两种不同方法实现此目的：

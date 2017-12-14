@@ -9,11 +9,11 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6ced5941d06c02a2576bf7f561bd535810e7ffd9
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 5bfbdd0033f966422a84071a694845627827f016
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 
@@ -89,4 +89,4 @@ VSTS 现在支持连续监视，因此发布管道可以结合来自 Application
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解其他 VSTS 版本和发布，请参阅这些[快速入门](https://docs.microsoft.com/en-us/vsts/build-release/)。
+若要详细了解其他 VSTS 版本和发布，请参阅这些[快速入门](https://docs.microsoft.com/vsts/build-release/)。

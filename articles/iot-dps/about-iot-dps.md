@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 021ff1299321ae1aece3a77fc61129517c85697b
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4a2ac24442c425e1c2f2e81badef5dbd3a8dcf5e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>使用 Azure IoT 中心设备预配服务（预览版）预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触实时预配至合适的 IoT 中心，客户可以采用安全且可缩放的方式预配数百万台设备。
@@ -116,7 +116,7 @@ Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT �
 * [Azure 订阅服务限制](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
-设备预配服务使用 Azure IoT 中心自动进行设备预配。 了解有关 [IoT 中心](https://docs.microsoft.com/en-us/azure/iot-hub/)的详细信息。
+设备预配服务使用 Azure IoT 中心自动进行设备预配。 了解有关 [IoT 中心](https://docs.microsoft.com/azure/iot-hub/)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 现已大致了解在 Azure 中配置 IoT 设备。 后续步骤是尝试端对端 IoT 方案。

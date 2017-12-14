@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 PlanMyLeave 之间配�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: b0d31cbe-7ae2-488b-9cf3-4927391fa744
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: jeedes
-ms.openlocfilehash: f803378424d2c951e0ff85d80df72645af342208
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c545a79889a545976db57fbd6f1c4a39e1515a35
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>教程：Azure Active Directory 与 PlanMyLeave 的集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 PlanMyLeave 的集成，需要具有以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 启用了 PlanMyLeave 单一登录的订阅
 
 > [!NOTE]
