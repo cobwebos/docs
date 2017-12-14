@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/02/2017
+ms.date: 12/06/2017
 ms.author: alkohli
-ms.openlocfilehash: e4980cdb77650f011d143ed9e86fbe0af6b29d5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8990d68b327e5688c7078a6b1a9d41ad0600a67
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -157,7 +157,7 @@ StorSimple 设备管理器服务的主要作用是管理和配置 StorSimple 设
 > 
 > 如果服务数据加密密钥丢失，Microsoft 支持人员可以帮助你检索该密钥，前提是必须至少有一个设备处于联机状态。 我们建议在检索到服务数据加密密钥后对其进行更改。 有关说明，请转到[更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)。
 
-可以通过选择服务仪表板上的“**更改服务数据加密密钥**”选项来更改服务数据加密密钥和相应的数据加密证书。 若要确保不危及数据安全，必须使用物理 StorSimple 设备来更改服务数据加密密钥。 更改加密密钥需要使用新密钥更新所有设备。 因此，我们建议在所有设备都处于联机状态时更改该密钥。 如果设备处于脱机状态，则可以在不同时间更改其密钥。 使用过期密钥的设备仍能够运行备份，但它们在更新密钥前将无法还原数据。 有关详细信息，请转到[使用 StorSimple 设备管理器服务仪表板](storsimple-8000-service-dashboard.md)。
+若要更改服务数据加密密钥和相应的数据加密证书，请按照[更改 StorSimple 设备管理器服务的服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key) 中的步骤进行操作。 更改加密密钥需要使用新密钥更新所有设备。 因此，我们建议在所有设备都处于联机状态时更改该密钥。 如果设备处于脱机状态，则可以在不同时间更改其密钥。 使用过期密钥的设备仍能够运行备份，但它们在更新密钥前将无法还原数据。
 
 服务数据加密密钥和数据加密证书不会过期。 但是，我们建议每年更改一次服务数据加密密钥以帮助防止密钥泄漏。
 
@@ -212,7 +212,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：**你应该立即更改服务数据加密密钥以及用于数据分层的存储帐户的存储帐户密钥。 有关说明，请转到：
 
-* [更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [存储帐户的密钥轮换](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
 **问：**我有一台新的 StorSimple 设备，需要服务注册密钥。 我该如何获取它？
@@ -225,7 +225,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：**请与 Microsoft 支持部门联系。 支持部门可以登录到设备上的支持会话并帮助你获取密钥（前提是至少一台设备为联机状态）。 获取服务数据加密密钥后，应立即更改该密钥以保证仅自己知道新的密钥。 有关说明，请转到：
 
-* [更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
 **问：**我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 我该怎么办？
 
@@ -240,7 +240,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 **答：**请更改和重置用于访问 StorSimple 设备的密码，并更改服务数据加密密钥以确保新信息不会泄露给未获授权的人员。 有关说明，请转到：
 
 * [使用 StorSimple 设备管理器服务更改 StorSimple 密码](storsimple-8000-change-passwords.md)
-* [更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+* [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [为 StorSimple 设备配置 CHAP](storsimple-8000-configure-chap.md)
 
 **问：**我想要将 StorSimple Snapshot Manager 密码提供给连接到 StorSimple 设备的主机，但却想不起该密码。 我该怎么办？

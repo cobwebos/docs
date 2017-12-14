@@ -4,7 +4,7 @@ description: "解决与 Azure Active Directory 应用程序管理和开发相关
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: kbrint
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: ced7e23dca2ea7a9222648a79c2d0afc7c15001d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f75b90aa23068abcd6e3727d7b9cd1b0f71f396c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="troubleshoot-azure-active-directory-application-management-and-development"></a>对 Azure Active Directory 应用程序管理和开发进行故障排除
 通过阅读本文，可找到有关排除某些最常见问题的有用文档，这些问题涉及管理“企业应用程序”和使用“应用程序注册表”开发新应用程序。

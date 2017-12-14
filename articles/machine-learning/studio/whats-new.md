@@ -3,7 +3,7 @@ title: "Azure 机器学习中的新增功能 | Microsoft 文档"
 description: "Azure 机器学习中的新增功能。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: ddc716ed-2615-4806-bf27-6c9a5662a7f2
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 1e3dc7e1375488ae9473cdd26f4d00871a091fbd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82ec23f4edba88ec75c2073e24cad24b66323d72
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure 机器学习新增功能
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
   * 提供更简单的终结点管理。
 
 ### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Microsoft Azure 机器学习更新的 2016 年 7 月版提供以下功能：
-* Web 服务现在作为通过 [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) 接口管理的 Azure 资源进行管理，支持以下增强功能：
+* Web 服务现在作为通过 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)界面管理的 Azure 资源进行管理，支持以下增强功能：
   * 新 [REST API](https://msdn.microsoft.com/library/azure/Dn950030.aspx) 可部署和管理基于 Resource Manager 的 Web 服务。
   * 新 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户提供管理 Web 服务所有方面的一个地方。
 * 使用利用 Web 服务的 Resource Manager 资源提供程序基于 Resource Manager 的 API 合并新的基于订阅、多区域 Web 服务部署模型。

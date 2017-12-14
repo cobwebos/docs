@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: e4a53d053a4c792f54e215c19a8f0c4064815839
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 50bcb71cd4f52386e9ea428fc124ac30ae9a862b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现
  
@@ -186,8 +186,8 @@ DRM 子系统可能包含以下组件：
 
 1. 准备测试资产：将测试视频编码/打包为 Azure 媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 对于本教程，我们不需要密钥管理系统，因为只针对一些测试资产处理一组密钥 ID 和内容密钥；
-3. 使用 AMS API 来对测试资产配置多重 DRM 许可证传送服务。 如果使用公司或公司供应商的自定义许可证服务器，而不是 Azure 媒体服务中的许可证服务，则可以跳过此步骤，而是在配置许可证传送的步骤中指定许可证获取 URL。 需要使用 AMS API 指定一些详细配置，例如不同 DRM 许可证服务的许可证策略限制、许可证响应模板，等等。目前，Azure 门户尚未提供此配置所需的 UI。 可以在以下 Julia Kornich 的文档中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态常用加密](media-services-protect-with-drm.md)。
-4. 使用 AMS API 针对测试资产配置资产传送策略。 可以在以下 Julia Kornich 的文档中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态常用加密](media-services-protect-with-drm.md)。
+3. 使用 AMS API 来对测试资产配置多重 DRM 许可证传送服务。 如果使用公司或公司供应商的自定义许可证服务器，而不是 Azure 媒体服务中的许可证服务，则可以跳过此步骤，而是在配置许可证传送的步骤中指定许可证获取 URL。 需要使用 AMS API 指定一些详细配置，例如不同 DRM 许可证服务的许可证策略限制、许可证响应模板，等等。目前，Azure 门户尚未提供此配置所需的 UI。 可以在以下文章中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)。
+4. 使用 AMS API 针对测试资产配置资产传送策略。 可以在以下文章中查找 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)。
 5. 在 Azure 中创建和配置 Azure Active Directory 租户；
 6. 在 Azure Active Directory 租户中创建一些用户帐户和组：应该至少创建“EntitledUser”组，并将用户添加到此组。 此组中的用户将可通过许可证获取的权利检查，而不在此组中的用户将无法通过身份验证检查，且无法获取任何许可证。 成为此“EntitledUser”组的成员，是由 Azure AD 发出的 JWT 令牌中所需的“组”声明。 此声明要求应该在配置多重 DRM 许可证传送服务步骤中指定。
 7. 创建 ASP.NET MVC 应用，用于托管视频播放器。 此 ASP.NET 应用会根据 Azure Active Directory 租户受到用户身份验证的保护。 对用户进行身份验证后，适当的声明将包含在获取的访问令牌中。 建议在此步骤中使用 OpenID Connect API。 需要安装以下 NuGet 包：
@@ -323,7 +323,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
    https://[aad_tenant_name].onmicrosoft.com/[resource_name]；
 2. 为资源应用添加新的密钥；
 3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有以下值："groupMembershipClaims": "All"；  
-4. 在指向播放器 Web 应用的 Azure AD 应用中的“对其他应用程序的权限”部分中，添加上述步骤 1 中添加的资源应用。 在“委派权限”下面选中“访问 [资源名称]”复选框。 这样便可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，应该对本地和已部署版本的 Web 应用这样做。
+4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加上述步骤 1 中添加的资源应用。 在“委派权限”下面选中“访问 [资源名称]”复选框。 这样便可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，应该对本地和已部署版本的 Web 应用这样做。
 
 因此，Azure AD 颁发的 JWT 令牌确实是用于访问此“指针”资源的访问令牌。
 
@@ -332,18 +332,18 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 好消息是，可以使用完全相同的设计和实现来保护 Azure 媒体服务中的实时流，方法是将与节目关联的资产视为“VOD 资产”。
 
-具体而言，众所周知，要在 Azure 媒体服务中执行实时流，需要创建通道，并在通道下面创建节目。 若要创建节目，需要创建资产，其中包含节目的实时存档。 要使用带有多重 DRM 的 CENC 来保护实时内容，只需要在启动节目之前将相同设置/处理应用到资产，就如同它是“VOD 资产”一样。
+具体而言，众所周知，要在 Azure 媒体服务中执行实时流，需要创建通道，并在通道下面创建节目。 若要创建节目，需要创建资产并在其中包含节目的实时存档。 要使用带有多重 DRM 的 CENC 来保护实时内容，只需要在启动节目之前将相同设置/处理应用到资产，就如同它是“VOD 资产”一样。
 
 ### <a name="what-about-license-servers-outside-of-azure-media-services"></a>如何使用 Azure 媒体服务外部的许可证服务器？
 通常，客户可能已在他们自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 幸运的是，Azure 媒体服务内容保护可让在混合模式下运行：内容在 Azure 媒体服务中托管并以动态方式保护，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，存在以下变更注意事项：
 
-1. 安全令牌服务需要颁发令牌，许可证服务器场可接受和验证这些令牌。 例如，Axinom 提供的 Widevine 许可证服务器需要特定的 JWT 令牌，其中包含“权利消息”。 因此，需要有 STS 来颁发此类 JWT 令牌。 作者已完成此实现，并且可以在以下 [Azure 文档中心](https://azure.microsoft.com/documentation/)中的以下文档中查找详细信息：[使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务](media-services-axinom-integration.md)。
+1. 安全令牌服务需要颁发被许可证服务器场认可和验证的令牌。 例如，Axinom 提供的 Widevine 许可证服务器需要特定的 JWT 令牌，其中包含“权利消息”。 因此，需要有 STS 来颁发此类 JWT 令牌。 作者已完成此实现，并且可以在以下 [Azure 文档中心](https://azure.microsoft.com/documentation/)中的以下文档中查找详细信息：[使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务](media-services-axinom-integration.md)。
 2. 不再需要在 Azure 媒体服务中配置许可证传送服务 (ContentKeyAuthorizationPolicy)。 需要做的就是，在设置使用多重 DRM 的 CENC 过程中配置 AssetDeliveryPolicy 时，提供许可证获取 URL（针对 PlayReady、Widevine 和 FairPlay）。
 
 ### <a name="what-if-i-want-to-use-a-custom-sts"></a>如何使用自定义 STS？
 可能有多种原因使得客户想要选择使用自定义 STS（安全令牌服务）来提供 JWT 令牌。 以下是其中一些原因：
 
-1. 客户使用的标识提供者 (IDP) 不支持 STS。 在此情况下，自定义 STS 是一个选项。
+1. 客户使用的标识提供者 (IDP) 不支持 STS。 在此情况下，可以选择自定义 STS。
 2. 客户在集成 STS 与客户的订户计费系统时可能需要更多弹性或更紧密的控制。 例如，MVPD 运营商可能提供多个 OTT 订户套餐，如高级、基本、运动等。运营商可能想要让令牌中的声明与订户套餐匹配，这样，只有正确套餐中的内容可供使用。 在此情况下，自定义 STS 可提供所需的弹性和控制度。
 
 使用自定义 STS 时需要进行两项更改：
@@ -402,7 +402,7 @@ IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey
 ![自定义 Azure AD 租户域帐户](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="using-encrypted-media-extensions-for-playready"></a>使用 PlayReady 的加密媒体扩展
-在支持 PlayReady 加密媒体扩展 (EME) 的现代浏览器（例如 Windows 8.1 和更高版本上的 IE 11，以及 Windows 10 上的 Microsoft Edge 浏览器）上，PlayReady 是 EME 的基本 DRM。
+在支持 PlayReady 加密媒体扩展 (EME) 的新式浏览器（例如 Windows 8.1 和更高版本上的 IE 11，以及 Windows 10 上的 Microsoft Edge 浏览器）上，PlayReady 是 EME 的基本 DRM。
 
 ![使用 EME for PlayReady](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready1.png)
 
@@ -412,9 +412,9 @@ IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey
 
 ![使用 EME for PlayReady](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready2.png)
 
-Windows 10 上的 Microsoft Edge 和 IE 11 允许支持其的 Windows 10 设备上的 [PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) 的调用。 PlayReady SL3000 解锁增强型高级内容（4K、HDR 等）以及新的内容传送模型（增强型内容的早期窗口）流程。
+Windows 10 上的 Microsoft Edge 和 IE 11 中的 EME 允许支持其 Windows 10 设备上的 [PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) 的调用。 PlayReady SL3000 解锁增强型高级内容（4K、HDR 等）以及新的内容传送模型（增强型内容的早期窗口）流程。
 
-将重心放在 Windows 设备上：PlayReady 是 Windows 设备可用的 HW 中唯一的 DRM（PlayReady SL3000）。 流式处理服务可通过 EME 或 UWP 应用程序来使用 PlayReady，并利用 PlayReady SL3000 来提供比其他 DRM 所能提供更高的影片质量。 一般而言，2K 内容将流经 Chrome 或 Firefox，而 4K 内容流过 Microsoft Edge/IE11 或相同设备上的 UWP 应用程序（取决于服务的设置及实现）。
+将重心放在 Windows 设备上：PlayReady 是 Windows 设备可用的 HW 中唯一的 DRM（PlayReady SL3000）。 流式处理服务可通过 EME 或 UWP 应用程序来使用 PlayReady，并利用 PlayReady SL3000 来提供比其他 DRM 所能提供更高的影片质量。 一般而言，2K 内容会流经 Chrome 或 Firefox，而 4K 内容流过 Microsoft Edge/IE11 或相同设备上的 UWP 应用程序（取决于服务的设置及实现）。
 
 #### <a name="using-eme-for-widevine"></a>使用 EME for Widevine
 在支持 EME/Widevine 的现代浏览器上，例如 Windows 10、Windows 8.1、Mac OSX Yosemite 上的 Chrome 41+，以及 Android 4.4.4 上的 Chrome，Google Widevine 是 EME 背后的 DRM。
@@ -428,7 +428,7 @@ Windows 10 上的 Microsoft Edge 和 IE 11 允许支持其的 Windows 10 设备�
 ### <a name="not-entitled-users"></a>未获授权的用户
 如果用户不是“已获授权用户”组的成员，则通不过“权利检查”，且多重 DRM 许可证服务将拒绝颁发请求的许可证，如下所述。 详细的描述是“许可证获取失败”，这是设计使然。
 
-![未获授权的用户](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
+![未获得授权的用户](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
 
 ### <a name="running-custom-secure-token-service"></a>运行自定义安全令牌服务
 对于运行自定义安全令牌服务 (STS) 的方案，JWT 令牌由自定义 STS 使用对称或非对称密钥来颁发。
@@ -441,10 +441,10 @@ Windows 10 上的 Microsoft Edge 和 IE 11 允许支持其的 Windows 10 设备�
 
 ![运行自定义 STS](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts2.png)
 
-在上述两个方案中，用户身份验证相同 – 通过 Azure AD。 唯一的差别在于，JWT 令牌是由自定义 STS 而不是 Azure AD 颁发。 当然，配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 令牌的类型是对称还是非对称密钥。
+在上述两个方案中，用户身份验证相同 – 通过 Azure AD。 唯一的差别在于，JWT 令牌是由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 令牌的类型是对称还是非对称密钥。
 
 ## <a name="summary"></a>摘要
-在本文档中，我们讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、Azure 媒体服务与 Azure Media Player。
+在本文档中，我们讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、Azure 媒体服务和 Azure Media Player。
 
 * 文中提供了一个参考设计，其中包含 DRM/CENC 子系统中的所有必要组件；
 * Azure、Azure 媒体服务和 Azure Media Player 的参考实现。

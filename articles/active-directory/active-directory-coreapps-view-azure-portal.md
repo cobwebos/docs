@@ -4,7 +4,7 @@ description: "如何在 Azure Active Directory 中查看有权管理的企业应
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c4fb6f94-34f8-4323-8bd7-a3ee44901f7d
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 13a45733b3b8d9ea0593e3b546b6ea58aa5f1a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd933ee33212007a58903b607055f437cc9206fd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>在 Azure Active Directory 中查看可以管理的所有企业应用
 可以在 Azure Active Directory (Azure AD) 中管理企业应用程序。 其中包括查看可管理应用、将用户或组分配到应用、维护应用的属性（例如应用程序名称/徽标），甚至包括禁用应用程序，防止用户登录。

@@ -19,7 +19,7 @@ Blob 存储帐户公开 **访问层** 属性，该属性可在帐户创建过程
 * **热** 访问层，表示被更频繁地访问存储帐户中的对象。 该访问层允许以较低访问成本存储数据。
 * **冷** 访问层，表示将不经常访问存储帐户中的对象。 该访问层允许以较低数据存储成本存储数据。
 
-如果数据的使用模式有所更改，也可以随时在这些访问层之间切换。 更改访问层可能会产生额外费用。 有关更多详细信息，请参阅 [Blob 存储帐户的定价和计费](../articles/storage/blobs/storage-blob-storage-tiers.md#pricing-and-billing) 。
+如果数据的使用模式有所更改，也可以随时在这些访问层之间切换。 更改访问层可能会产生额外费用。 有关更多详细信息，请参阅 [Blob 存储帐户的定价和计费](../articles/storage/blobs/storage-account-options.md#pricing-and-billing) 。
 
 有关 Blob 存储帐户的更多详细信息，请参阅 [Azure Blob 存储：冷层和热层](../articles/storage/blobs/storage-blob-storage-tiers.md)。
 

@@ -11,11 +11,11 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: f49004b68f95ae796196009e3cf879e3503ecf91
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="security-trimming-with-azure-search"></a>使用 Azure 搜索实现安全修整
 
@@ -108,13 +108,13 @@ api-key: [admin key]
 }
 ```
 
-有关添加或更新文档的完整详细信息，可以阅读[编辑文档](https://docs.microsoft.com/en-us/rest/api/searchservice/addupdate-or-delete-documents)。
+有关添加或更新文档的完整详细信息，可以阅读[编辑文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
    
 ## <a name="apply-the-security-filter"></a>应用安全筛选器
 
 若要基于 `group_ids` 访问权限修整文档，应发出包含 `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` 筛选器的搜索查询，其中，'group_id1, group_id2,...' 是搜索请求发出者所属的组。
 此筛选器匹配其 `group_ids` 字段包含某个给定标识符的所有文档。
-有关使用 Azure 搜索搜索文档的完整详细信息，可以阅读[搜索文档](https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents)。
+有关使用 Azure 搜索搜索文档的完整详细信息，可以阅读[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 请注意，此示例演示如何使用 POST 请求搜索文档。
 
 发出 HTTP POST 请求：

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.openlocfilehash: 6d1e6752fb631114f5be06cb27a63e40547bf6ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 
@@ -50,7 +50,7 @@ Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性�
 ![显示加密选项的门户截图](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
 <br/>*为 Blob 服务启用 SSE*
 
-如果想要以编程方式启用或禁用存储帐户上的存储服务加密，可以使用 [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN)、[.NET 存储资源提供程序](https://docs.microsoft.com/en-us/dotnet/api/?redirectedfrom=MSDN)、[Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.0.0) 或 [Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli)。
+如果想要以编程方式启用或禁用存储帐户上的存储服务加密，可以使用 [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)、[.NET 存储资源提供程序](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0) 或 [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)。
 
 如果此屏幕上未显示“使用你自己的密钥”复选框，则表示你尚未通过预览版的批准。 请向 [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com) 发送电子邮件请求批准。
 
@@ -71,10 +71,10 @@ Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性�
 此外，可以通过 Azure 门户授予访问权限，方法是在 Azure 门户中转到“Azure Key Vault”，然后向存储帐户授予访问权限。
 
 ## <a name="step-4-copy-data-to-storage-account"></a>步骤 4：将数据复制到存储帐户
-若要将数据传输到新存储帐户中以便对其进行加密，请参阅[“静态数据的存储服务加密”的“入门”中所述的“步骤 3”](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account)。
+若要将数据传输到新存储帐户中以便对其进行加密，请参阅[“静态数据的存储服务加密”的“入门”中所述的“步骤 3”](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account)。
 
 ## <a name="step-5-query-the-status-of-the-encrypted-data"></a>步骤 5：查询加密数据的状态
-若要查询加密数据的状态，请参阅[“静态数据的存储服务加密”的“入门”中所述的“步骤 4”](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data)。
+若要查询加密数据的状态，请参阅[“静态数据的存储服务加密”的“入门”中所述的“步骤 4”](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data)。
 
 ## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>有关静态数据存储服务加密的常见问题
 **问：我正在使用高级存储；是否可以将 SSE 与客户托管的密钥配合使用？**
@@ -91,7 +91,7 @@ Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性�
 
 **问：是否可以吊销加密密钥的访问权限？**
 
-答：是，随时可以吊销访问权限。 可通过多种方式吊销对密钥的访问权限。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) 和 [Azure Key Vault CLI](https://docs.microsoft.com/en-us/cli/azure/keyvault)。 吊销访问权限会实际阻止对存储帐户中所有 Blob 的访问权限，因为 Azure 存储帐户无法访问帐户加密密钥。
+答：是，随时可以吊销访问权限。 可通过多种方式吊销对密钥的访问权限。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 吊销访问权限会实际阻止对存储帐户中所有 Blob 的访问权限，因为 Azure 存储帐户无法访问帐户加密密钥。
 
 **问：是否可以在不同的区域创建存储帐户和密钥？**
 
@@ -123,6 +123,6 @@ Microsoft Azure 致力于帮助保护数据，使组织能够信守在安全性�
 
 ## <a name="next-steps"></a>后续步骤
 
-*   有关可帮助开发人员构建安全应用程序的综合安全功能集的详细信息，请参阅[存储安全指南](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide)。
-*   有关 Azure Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis)
+*   有关可帮助开发人员构建安全应用程序的综合安全功能集的详细信息，请参阅[存储安全指南](https://docs.microsoft.com/azure/storage/storage-security-guide)。
+*   有关 Azure Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
 *   有关 Azure Key Vault 的入门信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)。

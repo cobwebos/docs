@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 55b857bd5b3d0c32553a60ff0649aeeb721cd6da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>将 Azure CLI 1.0 用于 Azure 存储
 
@@ -95,7 +95,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 ## <a name="manage-storage-accounts-with-the-azure-cli"></a>通过 Azure CLI 管理存储帐户
 ### <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
-大多数存储命令没有 Azure 订阅也可以使用，不过仍建议通过 Azure CLI 连接到订阅。 要将 Azure CLI 配置为使用用户的订阅，请执行[从 Azure CLI 连接到 Azure 订阅](../../xplat-cli-connect.md)中的步骤。
+大多数存储命令没有 Azure 订阅也可以使用，不过仍建议通过 Azure CLI 连接到订阅。 要将 Azure CLI 配置为使用用户的订阅，请执行[从 Azure CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)中的步骤。
 
 ### <a name="create-a-new-storage-account"></a>新建存储帐户
 要使用 Azure 存储，需要一个存储帐户。 可以在将计算机配置为连接到订阅之后，创建新的 Azure 存储帐户。

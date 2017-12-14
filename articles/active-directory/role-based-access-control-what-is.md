@@ -4,7 +4,7 @@ description: "Azure 门户中具有 Azure 基于角色的访问控制的访问�
 services: active-directory
 documentationcenter: 
 author: andredm7
-manager: femila
+manager: mtillman
 ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: 0462fe8ff75bdda397decb301c459795886e9e58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df1ebcc65998a2078f5f215277eef351e48ca1b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure 门户中基于角色的访问控制入门
 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。
@@ -56,12 +56,12 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 * 将参与者角色分配给资源组范围内的应用程序。 它可以管理该资源组中的所有类型的资源，但不能管理该订阅中的其他资源组资源。
 
 ## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Azure RBAC 与经典订阅管理员
-经典订阅管理员和共同管理员具有对 Azure 订阅的完全访问权限。 他们可以将 [Azure 门户](https://portal.azure.com)和 Azure Resource Manager API 配合使用或使用 [Azure 经典门户](https://manage.windowsazure.com) 和 Azure 经典部署模型管理资源。 在 RBAC 模型中，经典管理员具有订阅范围内的所有者角色。
+经典订阅管理员和共同管理员具有对 Azure 订阅的完全访问权限。 他们可以将 [Azure 门户](https://portal.azure.com)和 Azure 资源管理器 API 配合使用或使用 [Azure 经典门户](https://manage.windowsazure.com) 和 Azure 经典部署模型管理资源。 在 RBAC 模型中，经典管理员具有订阅范围内的所有者角色。
 
-仅 Azure 门户和新的 Azure Resource Manager API 支持 Azure RBAC。 分配了 RBAC 角色的用户和应用程序不能使用经典管理门户和 Azure 经典部署模型。
+仅 Azure 门户和新的 Azure 资源管理器 API 支持 Azure RBAC。 分配了 RBAC 角色的用户和应用程序不能使用经典管理门户和 Azure 经典部署模型。
 
 ## <a name="authorization-for-management-vs-data-operations"></a>管理授权与数据操作
-Azure RBAC 仅支持 Azure 门户和 Azure Resource Manager API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该人员不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
+Azure RBAC 仅支持 Azure 门户和 Azure 资源管理器 API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该人员不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 门户中基于角色的访问控制](role-based-access-control-configure.md)入门。

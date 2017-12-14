@@ -4,7 +4,7 @@
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>附加空磁盘
-1. 打开 Azure CLI 1.0 并[连接到 Azure 订阅](../articles/xplat-cli-connect.md)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
+1. 打开 Azure CLI 1.0 并[连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
 2. 输入 `azure vm disk attach-new` 以创建并附加新磁盘，如以下示例所示。 将 *myVM* 替换为 Linux 虚拟机的名称，并指定磁盘的大小（以 GB 为单位），在此示例中为 *100 GB*：
 
     ```azurecli
@@ -37,7 +37,7 @@
 ## <a name="attach-an-existing-disk"></a>附加现有磁盘
 附加现有磁盘需要存储帐户中具有可用的 .vhd。
 
-1. 打开 Azure CLI 1.0 并[连接到 Azure 订阅](../articles/xplat-cli-connect.md)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
+1. 打开 Azure CLI 1.0 并[连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。 确保是在 Azure 服务管理模式 (`azure config mode asm`) 下。
 2. 检查要附加的 VHD 是否已上传到 Azure 订阅：
    
     ```azurecli

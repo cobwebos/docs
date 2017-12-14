@@ -3,7 +3,7 @@ title: "使用 PowerShell 重新训练新的 Azure 机器学习 Web 服务 | Mic
 description: "了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondlaghaeian
 editor: 
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 77bc78e7ed27f1566e5e5f6a3539c93c9aa73e2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 630e9958d5083300fdf7910c5fdd47989b0376ad
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新的基于 Resource Manager 的 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。  
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)中所示。 
 
 > [!IMPORTANT]
-> 预测实验必须部署为基于 Azure Resource Manager（全新）的机器学习 Web 服务。 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
+> 预测实验必须部署为基于 Azure 资源管理器（全新）的机器学习 Web 服务。 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
 
 有关部署 Web 服务的其他信息，请参阅[部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)。
 
@@ -40,14 +40,14 @@ ms.lasthandoff: 10/11/2017
 
 可采取以下步骤：
 
-1. 登录到 Azure Resource Manager 帐户。
+1. 登录到 Azure 资源管理器帐户。
 2. 获取 Web 服务定义
 3. 将 Web 服务定义导出为 JSON
 4. 将引用更新到 JSON 中的 iLearner blob。
 5. 将 JSON 导入到 Web 服务定义中
 6. 使用新的 Web 服务定义更新 Web 服务
 
-## <a name="sign-in-to-your-azure-resource-manager-account"></a>登录到 Azure Resource Manager 帐户
+## <a name="sign-in-to-your-azure-resource-manager-account"></a>登录到 Azure 资源管理器帐户
 首先必须使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境内登录到 Azure 帐户。
 
 ## <a name="get-the-web-service-definition"></a>获取 Web 服务定义

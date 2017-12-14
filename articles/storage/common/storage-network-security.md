@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 2e155231e430a8333095fdcd92a727a17c6d1e8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2ea1c217031761e93d393aefa07eedd03f88d9b0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -293,13 +293,12 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 
 |服务|资源提供程序名称|目的|
 |:------|:---------------------|:------|
-|Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。  [了解详细信息](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-overview)。|
-|Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布。  [了解详细信息](https://docs.microsoft.com/en-us/azure/event-grid/overview)。|
-|Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview)。|
-|Azure HDInsight|Microsoft.HDInsight|群集预配和安装。  [了解详细信息](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
-|Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure SQL 数据仓库|Microsoft.Sql|数据导入和导出。  [了解详细信息](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-load#load-from-azure-blob-storage)。|
-|Azure 备份|Microsoft.RecoveryServices|备份和还原非托管磁盘。  [了解详细信息](https://docs.microsoft.com/en-us/azure/backup/backup-introduction-to-azure-backup)。|
+|Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。  [了解详细信息](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)。|
+|Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布。  [了解详细信息](https://docs.microsoft.com/azure/event-grid/overview)。|
+|Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。|
+|Azure HDInsight|Microsoft.HDInsight|群集预配和安装。  [了解详细信息](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
+|Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
+|Azure 备份|Microsoft.RecoveryServices|备份和还原非托管磁盘。  [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)。|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问

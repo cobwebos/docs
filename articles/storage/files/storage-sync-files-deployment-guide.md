@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 42a0e7a3816e0f1d96951feac210e5770add4fe1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 7b4de3e7b7e98ab76c02ea7c1cf069cee94706fc
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-azure-file-sync-preview"></a>部署 Azure 文件同步（预览版）
-使用 Azure 文件同步（预览版），即可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可以将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
+使用 Azure 文件同步（预览版），即可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
@@ -98,10 +98,10 @@ Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 要
 
 在打开的窗格中输入以下信息，创建具有云终结点的同步组：
 
-- 同步组名称：要创建的同步组的名称。 此名称在存储同步服务内必须是唯一的，但可以是符合逻辑的任何名称。
+- **同步组名称**：要创建的同步组的名称。 此名称在存储同步服务内必须是唯一的，但可以是符合逻辑的任何名称。
 - 订阅：在[部署存储同步服务](#deploy-the-storage-sync-service)中用于部署存储同步服务的订阅。
 - 存储帐户：如果选择“选择存储账户”，另一个窗格随即出现，可在其中选择包含要同步的 Azure 文件共享的存储帐户。
-- Azure 文件共享：要与其同步的 Azure 文件共享的名称。
+- **Azure 文件共享**：要与其同步的 Azure 文件共享的名称。
 
 要添加服务器终结点，请转到新创建的同步组，然后选择“添加服务器终结点”。
 
@@ -109,15 +109,31 @@ Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 要
 
 在“添加服务器终结点”窗格中，输入以下信息，创建服务器终结点：
 
-- 已注册服务器：要在其中创建服务器终结点的服务器或群集的名称。
-- 路径：要作为同步组一部分进行同步的 Windows Server 路径。
+- **已注册的服务器**：想要创建服务器终结点的服务器或群集的名称。
+- **路径**：要作为同步组一部分进行同步的 Windows Server 路径。
 - 云分层：启用或禁用云分层的开关。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
-- 卷可用空间：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
+- **卷可用空间**：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
 要添加服务器终结点，请选择“创建”。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
 
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
+
+## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步
+若要将 DFS-R 部署迁移至 Azure 文件同步，请执行以下操作：
+
+1. 创建一个同步组以表示要替换的 DFS-R 拓扑。
+2. 从 DFS-R 拓扑具有完整数据集的服务器开始迁移。 在该服务器上安装 Azure 文件同步。
+3. 注册该服务器，并为要迁移的第一个服务器创建服务器终结点。 请勿启用云分层。
+4. 让所有数据同步至你的 Azure 文件共享（云终结点）。
+5. 在剩余的每个 DFS-R 服务器上安装并注册 Azure 文件同步代理。
+6. 禁用 DFS-R。 
+7. 在每个 DFS-R 服务器上创建服务器终结点。 请勿启用云分层。
+8. 确保同步完成，并根据需要测试拓扑。
+9. 注销 DFS-R。
+10. 现在应该可以根据需要在任何一个服务器终结点上启用云分层。
+
+有关详细信息，请参阅 [Azure 文件同步与分布式文件系统 (DFS) 的互操作](storage-sync-files-planning.md#distributed-file-system-dfs)。
 
 ## <a name="next-steps"></a>后续步骤
 - [添加或删除 Azure 文件同步服务器终结点](storage-sync-files-server-endpoint.md)

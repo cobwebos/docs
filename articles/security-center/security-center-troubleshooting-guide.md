@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: yurid
-ms.openlocfilehash: 0e0a0ce5c0795cec0e47cd5f729099f4762381a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d61bf2af5eb7ca5d1da1aac406f4b8fe55c7f75b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>监视代理网络要求故障排除
 若要让代理连接和注册到安全中心，必须允许其访问包括端口号和域 URL 在内的网络资源。
 
-- 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)。
+- 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)。
 - 对于限制 Internet 访问的防火墙，需要将其配置为允许访问 OMS。 代理设置中不需要任何操作。
 
 下表显示通信所需的资源。
@@ -93,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 - 某些访问控制列表 (ACL) 可能会阻止磁盘访问。
 - 磁盘空间不足可能会阻止来宾代理正常工作。 
 
-默认情况下禁用 Microsoft 反恶意软件用户界面，请参阅 [Enabling Microsoft Antimalware User Interface on Azure Resource Manager VMs Post Deployment](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/)（部署后在 Azure Resource Manager VM 上启用 Microsoft 反恶意软件用户界面），深入了解如何在需要时启用该用户界面。
+默认情况下禁用 Microsoft 反恶意软件用户界面，请参阅[部署后在 Azure 资源管理器 VM 上启用 Microsoft 反恶意软件用户界面](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/)，深入了解如何在需要时启用该用户界面。
 
 ## <a name="troubleshooting-problems-loading-the-dashboard"></a>排查加载仪表板的问题
 

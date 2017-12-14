@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 668b32e99ba9a3bdf8e8f16ac51c35c609444cd9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ade40f8937d56cc561741e251095c4f14b4bb304
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 有关发票和每日使用情况明细文件的详细条款和说明，请参阅[了解 Microsoft Azure 发票的相关条款](billing-understand-your-invoice.md)和[了解 Microsoft Azure 使用情况明细的相关条款](billing-understand-your-usage.md)。 
 
-有关成本管理报表的详细信息，请参阅 [Azure 门户成本管理](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)。
+有关成本管理报表的详细信息，请参阅 [Azure 门户成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)。
 
 ## <a name="charges"></a>如何确定发票中的费用是正确的？
 <div style="padding-top: 56.25%; position: relative; width: 100%;">
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="option-1-review-your-invoice-and-compare-the-usage-and-costs-with-the-detailed-usage-csv-file"></a>选项 1：查看发票，并将使用情况和成本与使用情况明细 CSV 文件相比较
 
-使用情况明细 CSV 文件按计费周期和每日使用情况显示费用信息。 若要获取使用情况明细 CSV 文件，请参阅[获取 Azure 帐单发票和每日使用情况数据](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date)。
+使用情况明细 CSV 文件按计费周期和每日使用情况显示费用信息。 若要获取使用情况明细 CSV 文件，请参阅[获取 Azure 帐单发票和每日使用情况数据](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date)。
 
 在计量级别显示使用费。 下方的术语在发票和使用情况明细文件中表示同一事物。 例如，发票中的计费周期等同于使用情况明细文件中的计费周期。
 

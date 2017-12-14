@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 XaitPorter 之间配置
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 9734c3f91eace144993a75063334d5c6ce16eb2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2012d990f7cdcb8c12da5f16db518b261b06a5b7
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>教程：Azure Active Directory 与 XaitPorter 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 XaitPorter 的集成，需要准备好以下各项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 XaitPorter 单一登录的订阅
 
 > [!NOTE]

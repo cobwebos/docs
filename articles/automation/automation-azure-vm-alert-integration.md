@@ -3,7 +3,7 @@ title: " 使用自动化 Runbook 针对 Azure VM 警报做出补救 | Microsoft 
 description: "本文演示如何将 Azure 虚拟机警报与 Azure 自动化 Runbook 集成，以及如何自动补救问题"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 1f7baa7f-7283-4a4f-9385-3f5cd1062c7f
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: csand;magoedte
-ms.openlocfilehash: 18cccc88ab74235722e2f4886671fc483ab67da8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ef18a2de8ce62de945c49b91dc74aca7d7f408b0
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-scenario---remediate-azure-vm-alerts"></a>Azure 自动化解决方案 - 针对 Azure VM 警报做出补救
 Azure 自动化和 Azure 虚拟机发布了一项新功能，可让你将虚拟机 (VM) 配置为在出现警报时运行自动化 Runbook。 这项新功能可让你自动执行标准补救措施来响应 VM 警报，例如重新启动或停止 VM。

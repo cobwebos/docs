@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 6eb07b5ad4b3ebdde75575fc5682ae2153a0c12f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b20c54660552f527ff403fb41f2a04e478832d43
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>适用于 Linux 的 OMS 虚拟机扩展
 
@@ -41,6 +41,10 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 | Debian GNU/Linux | 6、7 和 8 |
 | Ubuntu | 12.04 LTS、14.04 LTS、15.04、15.10 和 16.04 LTS |
 | SUSE Linux Enterprise Server | 11 和 12 |
+
+### <a name="azure-security-center"></a>Azure 安全中心
+
+Azure 安全中心自动设置 OMS 代理并将其与 Azure 订阅的默认记录分析工作区相连接。 如果使用 Azure 安全中心，请勿按照本文档中的步骤运行。 这样做会覆盖已配置的工作区并断开与 Azure 安全中心的连接。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -178,7 +182,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 10 | VM 已连接至 OMS 工作区 | 要将 VM 连接到扩展架构中指定的工作区，请在公共设置中将“stopOnMultipleConnections”设置为 false，或删除该属性。 连接到工作区后，此 VM 立即开始计费。 |
 | 11 | 提供给扩展的无效配置 | 按上述示例设置部署所需的所有属性值。 |
 | 12 | dpkg 包管理器已锁定 | 请确保计算机上的所有 dpkg 更新操作已完成并重试。 |
-| 20 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
+| 20 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
 | 51 | VM 的操作系统不支持此扩展 | |
 | 55 | 无法连接到 Microsoft Operations Management Suite (OMS) 服务 | 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，确保工作区 ID 正确。 |
 

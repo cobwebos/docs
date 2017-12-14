@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: 682ad79cc5fe4f08051477b7b90ae80981e5d595
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
@@ -64,7 +64,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 使用各种技术实现群集安全性的[方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)有三种：
 
 -   节点到节点安全性：此方案可保护群集中 VM 与计算机的通信。 这种安全性可确保只有已获授权加入群集的计算机，才能在群集中托管应用程序和服务。
-在此方案中，Azure 上运行的群集或 Windows 上运行的独立群集可以使用[证书安全性](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)或 [Windows 安全性](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-windows-cluster-windows-security)（适用于 Windows Server 计算机）。
+在此方案中，Azure 上运行的群集或 Windows 上运行的独立群集可以使用[证书安全性](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)或 [Windows 安全性](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security)（适用于 Windows Server 计算机）。
 -   客户端到节点安全性：此方案可保护 Service Fabric 客户端与群集中各个节点的通信。
 -   基于角色的访问控制 (RBAC)：此方案对每个访问群集的管理员和用户客户端角色使用独立标识（证书、Azure AD 等）。 这些角色标识是在创建群集时指定。
 
@@ -125,7 +125,7 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 复制器配置用于配置负责使执行组件状态提供程序状态高度可靠的复制器。
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>配置适用于 Azure Service Fabric 的 SSL
-服务器身份验证流程向管理客户端[验证](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 [SSL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-creation-via-arm)。
+服务器身份验证流程向管理客户端[验证](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)。
 必须获取群集的自定义域名。 从证书颁发机构请求获取证书时，证书的使用者名称必须与用于群集的自定义域名匹配。
 
 若要为应用程序配置 SSL，首先需要获取已由 CA 签名的 SSL 证书。 CA 是受信任的第三方，负责颁发证书，以提高 SSL 安全性。 如果尚无 SSL 证书，需要从销售 SSL 证书的公司购买一个。

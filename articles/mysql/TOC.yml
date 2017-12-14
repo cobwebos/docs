@@ -83,12 +83,6 @@
           href: concepts-compatibility.md
         - name: 应用程序开发
           href: concepts-database-application-development.md
-    - name: 迁移数据库
-      items:
-        - name: 转储和还原
-          href: concepts-migrate-dump-restore.md
-        - name: 导入和导出
-          href: concepts-migrate-import-export.md
 - name: 操作指南
   items:
     - name: 管理服务器
@@ -107,6 +101,12 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+    - name: 迁移数据库
+      items:
+        - name: 转储和还原
+          href: concepts-migrate-dump-restore.md
+        - name: 导入和导出
+          href: concepts-migrate-import-export.md
     - name: 连接应用程序
       items:
         - name: 创建用户

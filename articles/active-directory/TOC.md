@@ -219,7 +219,6 @@
 ### [使用 HRD 策略配置登录自动加速](active-directory-auto-acceleration-using-hrd.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
-#### [自助服务访问权限](active-directory-self-service-application-access.md)
 #### [SSO 访问](active-directory-appssoaccess-whatis.md)
 #### [SSO 证书](active-directory-sso-certs.md)
 #### [租户限制](active-directory-tenant-restrictions.md)
@@ -284,8 +283,9 @@
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
+#### [迁移经典策略](active-directory-conditional-access-migration.md)
 #### 任务
-##### [迁移经典策略](active-directory-conditional-access-migration.md)
+##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
 ##### [设置基于应用的条件访问](active-directory-conditional-access-mam.md)
 ##### [为用户和应用提供使用条款](active-directory-tou.md)

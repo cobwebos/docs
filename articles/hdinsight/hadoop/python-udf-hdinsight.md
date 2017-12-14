@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 822293da48f14dc3fe29e7e95e7a30faaadbfea4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 002072c8eac37ffb1548b44627ec08e941c96a1d
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>在 HDInsight 中通过 Hive 和 Pig 使用 Python 用户定义的函数 (UDF)
 
@@ -166,7 +166,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-在 Pig Latin 示例中，我们已将 `LINE` 输入定义为 chararray，因为输入没有一致的架构。 Python 脚本将数据转换成用于输出的一致架构。
+在 Pig Latin 示例中，已将 `LINE` 输入定义为 chararray，因为此输入没有一致的架构。 Python 脚本将数据转换成用于输出的一致架构。
 
 1. `@outputSchema` 语句定义返回到 Pig 的数据的格式。 在本例中，该格式为**数据袋**，这是一种 Pig 数据类型。 该数据袋包含以下字段，所有这些字段都是 chararray（字符串）：
 
@@ -178,7 +178,7 @@ def create_structure(input):
 
 2. 接下来，`def create_structure(input)` 将定义一个函数，以便 Pig 将行项传递到其中。
 
-3. 示例数据 `sample.log` 基本上符合我们要返回的日期、时间、类名、级别和详细信息架构。 但是，它包含以 `*java.lang.Exception*` 开头的几个行。 必须修改这些行，使之与架构匹配。 `if` 语句会检查这些行，然后调整输入数据以将 `*java.lang.Exception*` 字符串移到末尾，使数据与预期的输出架构相一致。
+3. 示例数据 `sample.log` 基本上符合日期、时间、类名、级别和详细信息架构。 但是，它包含以 `*java.lang.Exception*` 开头的几个行。 必须修改这些行，使之与架构匹配。 `if` 语句会检查这些行，然后调整输入数据以将 `*java.lang.Exception*` 字符串移到末尾，使数据与预期的输出架构相一致。
 
 4. 接下来，使用 `split` 命令在前四个空格字符处拆分数据。 输出会分配到 `date`、`time`、`classname`、`level` 和 `detail` 中。
 
@@ -291,7 +291,7 @@ def create_structure(input):
     #from pig_util import outputSchema
     ```
 
-    这将修改 Python 脚本以使用 C Python 而不是 Jython。 更改后，请使用 Ctrl+X 退出编辑器。 选择 Y，然后选择 Enter 保存更改。
+    此行会修改 Python 脚本以使用 C Python 而不是 Jython。 更改后，请使用 Ctrl+X 退出编辑器。 选择 Y，然后选择 Enter 保存更改。
 
 6. 使用 `pig` 命令再次启动 shell。 在 `grunt>` 提示符下，使用以下命令运行带有 Jython 解释器的 Python 脚本。
 

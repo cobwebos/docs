@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/05/2017
   ms.author: mimig
-  ms.openlocfilehash: 1d40fbbe9b5162811a92f54d8f556cac01a4cc9c
-  ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+  ms.openlocfilehash: 57e4d41efebea7bd836afafed7d0aae6baac8355
+  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/06/2017
+  ms.lasthandoff: 12/11/2017
 abstract:
   description: "Azure Cosmos DB 是一种全球分布式多模型数据库服务。 使用这些快速入门、教程和示例，可通过使用常用 API 和编程模型开发文档数据库、键值数据库、宽列数据库和图形数据库。 然后了解在受益于全面 SLA 的同时，如何在任意数量的 Azure 区域之间复制数据，以及如何缩放吞吐量而不受你的存储影响。"
   aside:
@@ -49,7 +49,7 @@ sections:
     - image:
         src: media/index/logo_gremlin.svg
     rows:
-    - title: DocumentDB API
+    - title: SQL API
       values:
       - href: /azure/cosmos-db/create-documentdb-java
       - href: /azure/cosmos-db/create-documentdb-dotnet
@@ -91,10 +91,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: "使用 Azure Cosmos DB 开发应用：<a href=\"/azure/cosmos-db/tutorial-develop-documentdb-dotnet\">DocumentDB</a> | <a href=\"/azure/cosmos-db/tutorial-develop-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-develop-table-dotnet\">表</a> | <a href=\"/azure/cosmos-db/tutorial-develop-graph-dotnet\">图形</a> | <a href=\"https://aka.ms/cassandratutorial\">Cassandra</a>"
-    - html: "将数据导入 Cosmos DB：<a href=\"import-data\">DocumentDB</a> | <a href=\"mongodb-migrate\">MongoDB</a> | <a href=\"https://aka.ms/tableapiimporttool\">表</a> | <a href=\"https://aka.ms/cassandraimport\">Cassandra</a>"
-    - html: "使用 Azure Cosmos DB 查询数据：<a href=\"/azure/cosmos-db/tutorial-query-documentdb\">DocumentDB</a> | <a href=\"/azure/cosmos-db/tutorial-query-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-query-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-query-graph\">Graph</a>"
-    - html: "使用 Azure Cosmos DB 进行全球数据库复制：<a href=\"/azure/cosmos-db/tutorial-global-distribution-documentdb\">DocumentDB</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-graph\">Graph</a>"
+    - html: "使用 Cosmos DB 开发应用：<a href=\"/azure/cosmos-db/tutorial-develop-documentdb-dotnet\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-develop-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-develop-table-dotnet\">表</a> | <a href=\"/azure/cosmos-db/tutorial-develop-graph-dotnet\">图形</a> | <a href=\"https://aka.ms/cassandratutorial\">Cassandra</a>"
+    - html: "将数据导入 Cosmos DB：<a href=\"import-data\">SQL</a> | <a href=\"mongodb-migrate\">MongoDB</a> | <a href=\"https://aka.ms/tableapiimporttool\">表</a> | <a href=\"https://aka.ms/cassandraimport\">Cassandra</a>"
+    - html: "使用 Cosmos DB 查询数据：<a href=\"/azure/cosmos-db/tutorial-query-documentdb\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-query-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-query-table\">表</a> | <a href=\"/azure/cosmos-db/tutorial-query-graph\">图形</a>"
+    - html: "使用 Cosmos DB 进行全球数据库复制：<a href=\"/azure/cosmos-db/tutorial-global-distribution-documentdb\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-table\">表</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-graph\">图形</a>"
     - html: "<a href=\"local-emulator\">使用仿真程序本地开发应用程序</a>"
     - html: "<a href=\"/azure/cosmos-db/tutorial-functions-http-trigger\">使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器</a>"
 - title: "示例"
@@ -111,7 +111,7 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: DocumentDB API
+    - title: SQL API
       html: "<p><a href=\"/rest/api/documentdb/\">REST</a></p><p><a href=\"https://aka.ms/acdbnetref\">.NET</a></p><p><a href=\"documentdb-sdk-dotnet-changefeed\">.NET 更改源</a></p><p><a href=\"https://aka.ms/acdbnetcoreref\">.NET Core</a></p><p><a href=\"https://aka.ms/acdbnoderef\">Node.js</a></p><p><a href=\"https://aka.ms/acdbjavaref\">Java</a></p><p><a href=\"https://aka.ms/acdbpythonref\">Python</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">REST 资源提供程序</a></p><p><a href=\"documentdb-sql-query-reference\">SQL</a></p>"
     - title: MongoDB API
       html: "<p><a href=\"https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/\">线路协议</a></p><p><a href=\"https://mongodb.github.io/node-mongodb-native/ \">Node.js</a></p><p><a href=\"https://docs.mongodb.com/ecosystem/drivers/csharp/\">C#</a></p><p><a href=\"https://docs.mongodb.com/ecosystem/drivers/java/\">Java</a></p><p><a href=\"https://docs.mongodb.com/ecosystem/drivers/python/\">Python</a></p><p><a href=\"https://docs.mongodb.com/ruby-driver/master/\">Ruby</a></p>"

@@ -32,12 +32,13 @@
 ### [迁移数据](sql-data-warehouse-migrate-data.md)
 
 ## 加载和移动数据
-### [概述](sql-data-warehouse-overview-load.md)
-### [PolyBase](sql-data-warehouse-load-polybase-guide.md)
+### [概述](design-elt-data-loading.md)
+### [指南](guidance-for-loading-data.md)
 
 
 ## 集成
 ### [概述](sql-data-warehouse-overview-integrate.md)
+### [SQL 数据库弹性查询](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
 ## 监视和优化
@@ -100,9 +101,8 @@
 
 
 ## 集成
-###  [配置来自 SQL 数据库的弹性查询](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
+### [配置 SQL 数据库弹性查询](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ### [添加 Azure 流分析作业](sql-data-warehouse-integrate-azure-stream-analytics.md)
-### [配置弹性查询](how-to-use-elastic-query-with-sql-data-warehouse.md)
 ### [使用机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 ### [使用 Power BI 进行可视化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 

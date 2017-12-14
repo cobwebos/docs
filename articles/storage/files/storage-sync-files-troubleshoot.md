@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 265c5f660c4bee53a2faf4a073384587eb3f65fc
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: f12ee39f900373fcab80e59bc20de59fa039f0ff
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/13/2017
 本文旨在帮助排查和解决在 Azure 文件同步部署中可能遇到的问题。 此外，还介绍了在需要对问题进行更深入调查的情况下，如何从系统收集重要日志。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
 
 1. 本文评论部分。
-2. [Azure 存储论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredata)。
+2. [Azure 存储论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
 
@@ -43,7 +43,7 @@ StorageSyncAgent.msi /l*v Installer.log
 > [!Note]  
 > 如果将计算机设置为使用 Microsoft 更新，代理安装将会失败，并且 Windows 更新服务不会运行。
 
-<a id="server-registration-missing"></a>服务器未在 Azure 门户中的“已注册的服务器”下列出  
+<a id="server-registration-missing"></a>**服务器未在 Azure 门户中的“已注册的服务器”下列出**  
 如果对于存储同步服务，服务器未在“已注册的服务器”下列出：
 1. 登录到要注册的服务器。
 2. 打开文件资源管理器，然后转到存储同步代理安装目录（默认位置为 C:\Program Files\Azure\StorageSyncAgent）。 
@@ -133,6 +133,28 @@ Reset-StorageSyncServer
     > Azure 文件同步会定期创建 VSS 快照以同步具有打开的句柄的文件。
 
 ## <a name="cloud-tiering"></a>云分层 
+云分层中存在两个故障路径：
+
+- 文件可能无法层，这意味着，Azure 文件同步未成功尝试将某个文件分层到 Azure 文件。
+- 文件可能无法撤回，这意味着，当某个用户尝试访问已分层的文件时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 无法下载数据。
+
+通过任一故障路径可能发生两个主要故障类：
+
+- 云存储故障
+    - 暂时性存储服务可用性问题。 有关详细信息，请参阅 [Azure 存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)。
+    - Azure 文件共享不可访问。 删除仍属于同步组中的云终结点的 Azure 文件共享时，通常会发生此故障。
+    - 存储帐户不可访问。 删除仍包含 Azure 文件共享的存储帐户，且该文件共享属于同步组中的云终结点时，通常会发生此故障。 
+- 服务器故障 
+    - 未加载 Azure 文件同步文件系统筛选器 (StorageSync.sys)。 为了响应分层/撤回请求，必须加载 Azure 文件同步文件系统筛选器。 可能会出于多种原因而未能加载该筛选器，但最常见的原因是管理员已手动将其卸载。 要使 Azure 文件同步正常运行，始终必须加载 Azure 文件同步文件系统筛选器。
+    - 重分析点缺失、损坏或出现其他形式的中断。 重分析点是文件中的特殊数据结构，它由两个部分组成：
+        1. 一个重分析标记，向操作系统指示 Azure 文件同步文件系统筛选器 (StorageSync.sys) 可能需要针对文件的 IO 执行某项操作。 
+        2. 重分析数据，向文件系统筛选器指示关联云终结点（Azure 文件共享）上的文件的 URI。 
+        
+        重分析点损坏的最常见原因是管理员尝试修改标记或其数据。 
+    - 网络连接问题。 若要分层或撤回文件，服务器必须已建立 Internet 连接。
+
+以下部分说明如何排查云分层问题，并确定问题是云存储问题还是服务器问题。
+
 <a id="files-fail-tiering"></a>**排查文件无法分层的问题**  
 如果文件无法分层到 Azure 文件：
 

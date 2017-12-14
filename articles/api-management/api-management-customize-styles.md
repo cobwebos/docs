@@ -1,89 +1,87 @@
 ---
-title: "在 Azure API 管理中自定义开发人员门户中的样式 | Microsoft Docs"
-description: "了解如何在 Azure API 管理中修改开发人员门户中的任意页面所用的样式。"
+title: "在 Azure API 管理开发人员门户中自定义页面样式 | Microsoft Docs"
+description: "遵循本快速入门中的步骤，在 Azure API 管理开发人员门户中自定义元素的样式。"
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: vlvinogr
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2017
-ms.author: antonba
-ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.topic: tutorial
+ms.date: 11/19/2017
+ms.author: apimpm
+ms.openlocfilehash: f427663ba1c437785c8c521925d9f733c45cb40d
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>在 Azure API 管理中自定义开发人员门户的样式
-在 Azure API 管理中自定义开发人员门户有三种基本方法：
+# <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
 
-* [编辑静态页面内容和页面布局元素][modify-content-layout]
-* [跨开发人员门户更新页面元素所用的样式][customize-styles]（本指南中所述）
-* [修改门户生成的页面所用的模板][portal-templates]（例如 API 文档、产品和用户身份验证等）
+在 Azure API 管理中自定义开发人员门户有三种最常见的方法：
+ 
+* [编辑静态页面内容和页面布局元素](api-management-modify-content-layout.md)
+* 跨开发人员门户更新页面元素所用的样式（本指南中所述）
+* [修改门户生成的页面所用的模板](api-management-developer-portal-templates.md)（例如 API 文档、产品和用户身份验证）
 
-## <a name="change-headers-styling"> </a>更改页面元素的样式
+本教程介绍如何执行下列操作：
 
-由样式规则定义门户上任何页面的颜色、字体、大小、间距和其他样式相关的元素。 
+> [!div class="checklist"]
+> * 自定义**开发人员**门户页面中元素的样式
+> * 查看更改
 
-在以管理员身份登录时，可从“开发人员门户”编辑样式规则。 若要访问它，请先打开 Azure 门户，再单击 API 管理实例的服务工具栏中的“发布者门户”。
+![自定义样式](./media/modify-developer-portal-style/developer_portal.png)
 
-![发布者门户][api-management-management-console]
+## <a name="prerequisites"></a>先决条件
 
-然后单击右上角的“开发人员门户”。 
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
-![发布者门户上的开发人员门户链接][api-management-pp-dp-link]
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-要打开自定义工具栏，请将鼠标移到自定义图标上（或选择它），并从工具栏单击“样式”。
+## <a name="customize-the-developer-portal"></a>自定义开发人员门户
 
-![自定义工具栏按钮][api-management-customization-toolbar-button]
+1. 选择“概述”。
+2. 单击“概述”窗口顶部的“开发人员门户”按钮。 或者，可以单击“开发人员门户 URL”链接。
+3. 在屏幕的左上方，可以看到由两支画笔构成的图标。 将鼠标悬停在此图标上，打开门户自定义菜单。
 
-有两种主要方式来编辑样式规则 - 可以查看任意位置使用的所有样式规则的列表（这些规则是默认显示的），并根据需要修改样式；也可以选择“选择页面上的元素”，并单击页面任意位置即可只查看该元素的样式。 
+    ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+4. 从菜单中选择“样式”，打开样式自定义窗格。
 
-![自定义工具栏][api-management-customization-toolbar]
+    可以使用“样式”自定义的所有元素都显示在该页面上
+5. 在“更改变量值以自定义开发人员门户外观:”字段中输入“headings-color”。
 
-对于此示例，请单击“选择页面上的元素”选项。  现在将鼠标悬停在元素上方时元素将突出显示，以表示单击时可开始编辑的元素样式。 将鼠标移到标头中的文本上（此处通常是公司名称），并单击它。 样式编辑器中显示一组分类并命名的样式规则。 每个规则表示所选元素的样式属性。 例如，对于上面所选的标题文本，文本大小在 @font-size-h1 中，而带替代项的字体的名称在 @headings-font-family 中。
+    **@headings-color** 元素将显示在页面上。 此变量控制文本的颜色。
 
-> 如果熟悉 [bootstrap][bootstrap]，这些规则实际上是开发人员门户中使用的 bootstrap 主题中的 [LESS 变量][LESS variables]。
-> 
-> 
+    ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
+    
+6. 单击 **@headings-color** 变量对应的字段。 
+    
+    此时会打开颜色选取器下拉列表。
+7. 从颜色选取器下拉列表中选择一种新颜色。
 
-让我们来更改标题文本的颜色。 选择 **@headings-color** 字段中的条目，并键入“#000000”。 这是黑色的十六进制代码。 执行此操作时，可看到一个正方形颜色指示符出现在文本框的末尾。 如果单击该指示符，可使用颜色选取器选择一种颜色。
+    > [!TIP]
+    > 可实时预览所有更改。 自定义窗格顶部会显示进度指示器。 几秒钟后，标题文本的颜色将更改为刚刚选择的颜色。
 
-![颜色选取器][api-management-customization-toolbar-color-picker]
+8. 选择自定义窗格菜单左下角的“发布”。
+9. 选择“发布自定义项”，以公开所做的更改。
 
-所做更改是实时预览的，但仅对管理员可见。 要使这些更改对每个人都可见，请单击样式编辑器中的“发布”按钮，并确认所做的更改。
+## <a name="view-your-change"></a>查看更改
 
-![发布菜单][api-management-customization-toolbar-publish-form]
+1. 导航到开发人员门户。
+2. 可以看到所做的更改。
 
-> 若要更改应用于页面上任何其他元素的样式规则，请按照对标题所执行的相同步骤进行操作。 在样式编辑器中单击“选择页面上的元素”，选择感兴趣的元素，并开始修改显示在屏幕上的样式规则的值。
-> 
-> 
+## <a name="next-steps"></a>后续步骤
 
+本教程介绍了如何：
 
-## <a name="next-steps"> </a>后续步骤
-* 了解如何使用 [开发人员门户模板](api-management-developer-portal-templates.md)自定义开发人员门户页面的内容。
+> [!div class="checklist"]
+> * 自定义**开发人员**门户页面中元素的样式
+> * 查看更改
 
-[Change the styling of the headers]: #change-headers-styling
-[Next steps]: #next-steps
-
-[Azure Classic Portal]: https://manage.windowsazure.com/
-
-[api-management-management-console]: ./media/api-management-customize-styles/api-management-management-console.png
-[api-management-pp-dp-link]: ./media/api-management-customize-styles/api-management-pp-dp-link.png
-[api-management-customization-toolbar-button]: ./media/api-management-customize-styles/api-management-customization-toolbar-button.png
-[api-management-customization-toolbar]: ./media/api-management-customize-styles/api-management-customization-toolbar.png
-[api-management-customization-toolbar-color-picker]: ./media/api-management-customize-styles/api-management-customization-toolbar-color-picker.png
-[api-management-customization-toolbar-publish-form]: ./media/api-management-customize-styles/api-management-customization-toolbar-publish-form.png
-
-[modify-content-layout]: api-management-modify-content-layout.md
-[customize-styles]: api-management-customize-styles.md
-[portal-templates]: api-management-developer-portal-templates.md
-
-[bootstrap]: http://getbootstrap.com/
-[LESS variables]: http://getbootstrap.com/css/
+> [!div class="nextstepaction"]
+> [使用模板自定义 Azure API 管理开发人员门户](api-management-developer-portal-templates.md)

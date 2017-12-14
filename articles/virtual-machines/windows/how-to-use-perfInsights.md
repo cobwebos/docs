@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 36e204c73e62e950c3f40eab7e1ce6bccd7abd83
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: bb4c21456643532df040df4fcd5f4fa1a4f48d2c
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights 
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/04/2017
 
 PerfInsights 可以收集和分析多种按不同方案分组的信息。
 
-### <a name="collect-disk-configuration"></a>收集磁盘配置 
+### <a name="collect-basic-configuration"></a>收集基本配置 
 
 此方案收集磁盘配置和其他重要信息，包括以下项目：
 
@@ -57,7 +57,7 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 >[!Note]
 >此方案自动包括在下述每个方案中。
 
-### <a name="benchmarkstorage-performance-test"></a>基准测试/存储性能测试
+### <a name="benchmarking"></a>基准测试
 
 此方案针对所有附加到 VM 的驱动器运行 [diskspd](https://github.com/Microsoft/diskspd) 基准测试（IOPS 和 MBPS）。 
 
@@ -65,11 +65,11 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
 >
 
-### <a name="general-vm-slow-analysis"></a>常规 VM 慢速分析 
+### <a name="slow-vm-analysis"></a>慢速 VM 分析 
 
 此方案使用在 Generalcounters.txt 文件中指定的计数器运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪。 VM 在被确定是运行 SQL Server 的服务器后，会使用在 Sqlcounters.txt 文件中找到的计数器运行性能计数器跟踪， 并且会包括性能诊断数据。
 
-### <a name="vm-slow-analysis-and-benchmark"></a>VM 慢速分析和基准
+### <a name="slow-vm-analysis-and-benchmarking"></a>慢速 VM 分析和基准测试
 
 此方案运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪，随后运行 [diskspd](https://github.com/Microsoft/diskspd) 基准测试。 
 
@@ -99,9 +99,9 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 |              | 平均写入队列长度       |
 |              | 平均数据队列长度        |
 
-### <a name="custom-configuration"></a>自定义配置 
+### <a name="custom-slow-vm-analysis"></a>自定义慢速 VM 分析 
 
-运行自定义配置时，是在并行运行所有跟踪（性能诊断、性能计数器、xperf、网络、storport），具体取决于选择了多少不同的跟踪。 跟踪完成后，工具会运行 diskspd 基准测试（如果已选中）。 
+运行自定义的慢速 VM 分析时，是在并行运行所有跟踪（性能计数器、xperf、网络、storport），具体取决于选择了多少不同的跟踪。 跟踪完成后，工具会运行 diskspd 基准测试（如果已选中）。 
 
 > [!Note]
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
@@ -113,7 +113,7 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 
 |收集的数据                              |  |  | 性能方案 |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                              | 收集磁盘配置 | 基准测试/存储性能测试 | 常规 VM 慢速分析 | VM 慢速分析和基准 | Azure 文件分析 | 自定义配置 |
+|                              | 收集基本配置 | 基准测试 | 慢速 VM 分析 | 慢速 VM 分析和基准测试 | Azure 文件分析 | 自定义慢速 VM 分析 |
 | 事件日志中的信息      | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
 | 系统信息               | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
 | 卷映射                       | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
@@ -127,7 +127,7 @@ PerfInsights 可以收集和分析多种按不同方案分组的信息。
 | 网络配置            | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
 | 防火墙配置           | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
 | SQL Server 配置         | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 性能诊断跟踪 * |                            |                                    | 是                      |                                |                      | 是                  |
+| 性能诊断跟踪 * | 是                        | 是                                | 是                      |                                | 是                  | 是                  |
 | 性能计数器跟踪 **     |                            |                                    |                          |                                |                      | 是                  |
 | SMB 计数器跟踪 **             |                            |                                    |                          |                                | 是                  |                      |
 | SQL Server 计数器跟踪 **      |                            |                                    |                          |                                |                      | 是                  |
@@ -180,9 +180,9 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 **在生产 VM 上运行脚本时可能存在的问题：**
 
-1.  此脚本在与通过 XPerf 或 DiskSpd 配置的“基准”或“自定义”方案一起使用时，可能会对 VM 的性能造成负面影响。 在生产环境中运行脚本时要小心。
+1.  使用任何“基准测试”方案或配置为使用 XPerf 或 DiskSpd 的“自定义慢速 VM 分析”方案一起使用时，此脚本可能对 VM 的性能造成负面影响。 不建议在未受 CSS 工程师监控的生产环境中运行这些方案。
 
-2.  将脚本与通过 DiskSpd 配置的“基准”或“自定义”方案一起使用时，请确保没有其他后台活动干扰受测试磁盘上的 I/O 工作负荷。
+2.  使用任何“基准测试”方案或配置为使用 DiskSpd 的“自定义慢速 VM 分析”方案时，请确保没有其他后台活动干扰受测试磁盘上的 I/O 工作负荷。
 
 3.  默认情况下，此脚本使用临时存储驱动器来收集数据。 如果跟踪保持启用状态较长的时间，则收集的数据量会与之相关。 这会降低临时磁盘上空间的可用性，因此会影响任何依赖于该驱动器的应用程序。
 
@@ -236,7 +236,7 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 8.  还可以在没有 UI 的情况下运行 PerfInsights。
 
-    以下命令会在没有 UI 提示的情况下运行“常规 VM 慢速分析”故障排除方案，并且会捕获 30 秒的数据。 它会提示你同意免责声明和 EULA（与在步骤 4 中提到的相同）。
+    以下命令会在没有 UI 提示的情况下运行“慢速 VM 分析”故障排除方案，并且会捕获 30 秒的数据。 它会提示你同意免责声明和 EULA（与在步骤 4 中提到的相同）。
 
         powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30"
 
@@ -264,13 +264,13 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 故障发生后，请复制 PowerShell 控制台的完整输出，并将其发送给 Microsoft 支持部门代理，后者会协助你排查问题。
 
-### <a name="how-do-i-run-the-script-in-custom-configuration-mode"></a>如何在自定义配置模式下运行脚本？
+### <a name="how-do-i-run-the-script-in-custom-slow-vm-analysis-mode"></a>如何在“自定义慢速 VM 分析”模式下运行脚本？
 
-选择“自定义”配置即可启用多个并行的跟踪（使用 Shift 进行多选）：
+选择“自定义慢速 VM 分析”即可启用多个并行的跟踪（使用 Shift 进行多选）：
 
 ![选择方案](media/how-to-use-perfInsights/select-scenario.png)
 
-选择“性能诊断”、“性能计数器跟踪”、“XPerf 跟踪”、“网络跟踪”或“Storport 跟踪”方案时，请按对话框中的说明操作，然后尝试在启动跟踪后重现性能变慢的问题。
+选择“性能计数器跟踪”、“XPerf 跟踪”、“网络跟踪”或“Storport 跟踪”方案时，请按对话框中的说明操作，然后尝试在启动跟踪后重现性能变慢的问题。
 
 可通过以下对话框启动跟踪：
 
@@ -287,23 +287,24 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 在 PerfInsights 所生成的 CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip 文件中，可以找到一个 HTML 报告，其中详细说明了 PerfInsights 的发现。 若要查看该报告，请展开 CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip 文件，然后打开 PerfInsights Report.html 文件。
 
-选择“发现”选项卡。
+选择“结果”选项卡。
 
-![发现选项卡](media/how-to-use-perfInsights/findingtab.png)
+![查找选项卡](media/how-to-use-perfInsights/findingtab.png)
+![结果](media/how-to-use-perfInsights/findings.PNG)
 
 **说明**
 
--   红色消息为可能会导致性能问题的已知配置问题。
+-   分类为“关键”的发现结果是可能会导致性能问题的已知问题。
 
--   黄色消息为警告，表示配置未优化，但不一定导致性能问题。
+-   分类为“重要”的发现结果表示配置未优化，但不一定导致性能问题。
 
--   蓝色消息为声明，单纯起告知作用。
+-   分类“信息”的发现结果只是参考性的陈述。
 
-请查看所有红色错误消息的 HTTP 链接，详细了解相关发现及其对性能的影响，或者了解最佳做法，以便对配置进行性能方面的优化。
+请查看有关所有关键和重要发现结果的建议与链接，详细了解相关发现结果及其对性能的影响，或者了解最佳做法，以便对配置进行性能方面的优化。
 
-### <a name="disk-configuration-tab"></a>磁盘配置选项卡
+### <a name="storage-tab"></a>存储选项卡
 
-“概览”部分显示了存储配置的不同视图，其中包括来自 Diskpart 和存储空间的信息
+“结果”部分显示有关存储的各种发现结果和建议。
 
 “DiskMap”和“VolumeMap”以双视角的方式介绍了逻辑卷和物理磁盘的相互关系。
 
@@ -315,21 +316,24 @@ Diskspd IO 工作负荷测试 [OS 磁盘（写入）和池驱动器（读取/写
 
 ![卷选项卡](media/how-to-use-perfInsights/volumetab.png)
 
-### <a name="sql-server-tab"></a>“SQL Server”选项卡
+### <a name="sql-tab"></a>SQL 选项卡
 
-如果目标 VM 托管了任何 SQL Server 实例，则会在报告中看到另一名为“SQL Server”的选项卡：
+如果目标 VM 托管了任何 SQL Server 实例，则会在报告中看到另一名为“SQL”的选项卡：
 
 ![sql 选项卡](media/how-to-use-perfInsights/sqltab.png)
 
-此部分包含“概览”以及其他的子选项卡，对应于托管在 VM 上的每个 SQL Server 实例。
+此部分包含“结果”选项卡及其他子选项卡，对应于托管在 VM 上的每个 SQL Server 实例。
 
-“概览”部分包含一个帮助表，该表汇总了所有物理磁盘（系统磁盘和数据磁盘），这些磁盘处于运行状态，其中包含各种数据文件和事务日志文件。
+“结果”选项卡包含找到的所有 SQL 相关性能问题的列表和建议。
 
 在以下示例中，PhysicalDrive0（运行 C 驱动器）之所以显示，是因为 modeldev 和 modellog 文件均位于 C 驱动器上，并且属于不同的类型（例如，一个为“数据文件”，一个为“事务日志”）：
 
 ![loginfo](media/how-to-use-perfInsights/loginfo.png)
 
 SQL Server 的特定于实例的选项卡包含一个常规部分，用于显示所选实例的基本信息；此外还有其他部分，用于显示高级信息，包括“设置”、“配置”和“用户选项”。
+
+### <a name="diagnostic-tab"></a>诊断选项卡
+“诊断”选项卡包含运行 PerfInsights 过程中，机箱中 CPU、磁盘和内存消耗量最高的几个组件。 还可以在其中找到其他有用信息，例如，系统可能缺少的关键修补程序、任务列表和重要系统事件。 
 
 ## <a name="references-to-the-external-tools-used"></a>所用外部工具参考
 

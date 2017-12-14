@@ -6,18 +6,18 @@ documentationcenter:
 author: adamab
 manager: timlt
 editor: tysonn
-ms.service: multiple
+ms.service: azure-portal
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 6c0d76207233a04bdec604d95f1779c62f6e2d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9acb58791cb1412d5e67479ca6490e1548be2c8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="overview"></a>概述
 
-Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)。  因此，可通过 [Azure 资源管理器 REST API](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/overview)、[Azure PowerShell 命令](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-4.2.0) 和许多基于这些 API 构建的 [Azure 门户](https://portal.azure.com)功能，以编程方式更轻松地管理这些资源。  
+Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。  因此，可通过 [Azure 资源管理器 REST API](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-rest-api)、[Azure CLI](https://docs.microsoft.com/cli/azure/overview)、[Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0) 和许多基于这些 API 构建的 [Azure 门户](https://portal.azure.com)功能，以编程方式更轻松地管理这些资源。  
 
 所有这些 API 和工具都提供了创建、罗列、检索、修改和删除资源的方法。  由于仪表板是资源，因此可以选择使用最喜欢的 API/工具。
 
@@ -55,7 +55,7 @@ Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源]
 
 ![“共享”命令](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-单击“共享”命令后显示一个对话框，提示选择要发布到的订阅和资源组。 请记住，必须对所选订阅和资源组[具有写入权限](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)。
+单击“共享”命令后显示一个对话框，提示选择要发布到的订阅和资源组。 请记住，必须对所选订阅和资源组[具有写入权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
 
 ![共享和访问](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -79,11 +79,11 @@ Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源]
 
 若要在将来针对任何虚拟机发布此仪表板，需要参数化 JSON 中此字符串的每个匹配项。 
 
-在 Azure 中，有两种用于创建资源的 API。 [命令性 API](https://docs.microsoft.com/en-us/rest/api/resources/resources)：一次创建一个资源；[基于模板的部署](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)系统：可以使用单个 API 调用来安排多个从属资源的创建。 后者以本机方式支持参数化和模板化，所以我们以它为示例。
+在 Azure 中，有两种用于创建资源的 API。 [命令性 API](https://docs.microsoft.com/rest/api/resources/resources)：一次创建一个资源；[基于模板的部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)系统：可以使用单个 API 调用来安排多个从属资源的创建。 后者以本机方式支持参数化和模板化，所以我们以它为示例。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>使用模板部署以编程方式从模板创建仪表板
 
-Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于[模板语言](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持，如果与前述命令性 API 一起使用，则不起作用。
+Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于[模板语言](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持，如果与前述命令性 API 一起使用，则不起作用。
 
 如果要使用模板部署，则应使用模板的参数语法来实现参数化。  替换之前找到的所有资源 id 的实例，如下所示。
 
@@ -119,7 +119,7 @@ Azure 提供协调多资源部署的功能。 创建用于表达要部署的资�
 
 __可在本文档末尾查看完整的工作模板。__
 
-设置模板后，便可使用 [REST API](https://docs.microsoft.com/en-us/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/group/deployment#az_group_deployment_create) 或[门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)部署该模板。
+设置模板后，便可使用 [REST API](https://docs.microsoft.com/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create) 或[门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)部署该模板。
 
 以下是示例仪表板 JSON 的两个版本。 第一个版本是从门户导出的、已绑定到资源的模板。 第二个是可以编程方式绑定到任何 VM 并使用 Azure 资源管理器进行部署的模板版本。
 

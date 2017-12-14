@@ -62,6 +62,7 @@
 ### [我的 Web API 项目发生了什么情况](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 ## [ACS 迁移](active-directory-acs-migration.md)
+## [ADAL 错误处理最佳做法](active-directory-devhowto-adal-error-handling.md)
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [身份验证库 (ADAL)](active-directory-authentication-libraries.md)

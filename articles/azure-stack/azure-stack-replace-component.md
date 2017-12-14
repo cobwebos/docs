@@ -3,8 +3,8 @@ title: "替换的 Azure 堆栈缩放单元节点上的硬件组件 |Microsoft �
 description: "了解如何将在集成的 Azure 堆栈的系统上的硬件组件。"
 services: azure-stack
 documentationcenter: 
-author: troettinger
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: c6e036bf-8c80-48b5-b2d2-aa7390c1b7c9
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: twooley
-ms.openlocfilehash: 430274025bc6cd657a733fb80feb6cd7b39a36f3
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: mabrigg
+ms.openlocfilehash: 5f760ae0cc33e138fc3d484711b8747b984977d4
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>替换的 Azure 堆栈缩放单元节点上的硬件组件
 

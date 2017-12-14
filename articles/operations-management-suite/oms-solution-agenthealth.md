@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: b810e37e393ddab55500f636b72450789285a4f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS 中的代理运行状况解决方案
 OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 OMS 工作区报告或向连接到 OMS 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
 ## <a name="prerequisites"></a>先决条件
-在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../log-analytics/log-analytics-windows-agents.md)，此类代理向 OMS 工作区报告或向与 OMS 工作区集成的 [Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)报告。    
+在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../log-analytics/log-analytics-windows-agent.md)，此类代理向 OMS 工作区报告或向与 OMS 工作区集成的 [Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)报告。    
 
 ## <a name="solution-components"></a>解决方案组件
 此解决方案包含以下资源，这些资源添加到工作区和直接连接的代理或 Operations Manager 连接的管理组。

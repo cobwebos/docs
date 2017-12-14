@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 与 Getabstract 之间配�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 01ff91ab86a9140c066050d35da5b59e2a040c28
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 37419f8f65f5dfa171302bb0d85cef23e8cea93b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>教程：Azure Active Directory 与 Getabstract 集成
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/18/2017
     对于 Production：`https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
-    > 此值不是真实值。 请将此值更新为实际登录 URL。 请联系 [Getabstract 客户端支持团队](https://www.getabstract.com/en/contact)获取此值。
+    > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Getabstract 客户端支持团队](https://www.getabstract.com/en/contact)获取此值。
 
 5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 

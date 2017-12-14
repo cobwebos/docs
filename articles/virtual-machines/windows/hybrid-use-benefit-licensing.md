@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: c2b406530aec60299ea2db38ad9e34895fe36dcd
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 245bffbc208ce67d990a63e744c42dc671686b4b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益在 Azure 支持的任何平台（Windows Server 映像或 Windows 自定义映像）上部署新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -58,10 +58,10 @@ ms.lasthandoff: 11/23/2017
 ```powershell
 Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
-可以按照相应步骤[使用 PowerShell 创建 Windows 虚拟机](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)并传递 LicenseType = "Windows_Server"。 使用此选项，可以在 Azure 上使用现有的 Windows Server 许可证。
+可以按照相应步骤[使用 PowerShell 创建 Windows 虚拟机](#https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)并传递 LicenseType = "Windows_Server"。 使用此选项，可以在 Azure 上使用现有的 Windows Server 许可证。
 
 ### <a name="portal"></a>门户
-可以按照相应步骤[使用 Azure 门户创建 Windows 虚拟机](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)，并选择此选项使用现有的 Windows Server 许可证。
+可以按照相应步骤[使用 Azure 门户创建 Windows 虚拟机](#https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)，并选择此选项使用现有的 Windows Server 许可证。
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>将现有 VM 转换为使用 Windows Server 的 Azure 混合权益
 如果你要转换现有 VM 以充分利用 Windows Server 的 Azure 混合权益，则可以更新 VM 的许可证类型，如下所示：
@@ -181,17 +181,17 @@ foreach ($vm in $vms) {"VM Name: " + $vm.Name, "   Azure Hybrid Benefit for Wind
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-还可以[创建和部署虚拟机规模集](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)和设置 LicenseType 属性
+还可以[创建和部署虚拟机规模集](#https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)和设置 LicenseType 属性
 
 ## <a name="next-steps"></a>后续步骤
 详细了解[如何使用 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
-详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/en-us/windows-server/get-started/azure-hybrid-benefit)。
+详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
 
 详细了解如何[使用资源管理器模板](../../azure-resource-manager/resource-group-overview.md)
 
 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 
-详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 
 详细了解[常见问题](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)

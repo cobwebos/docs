@@ -3,7 +3,7 @@ title: "对 Azure 机器学习经典 Web 服务重新训练进行故障排除 | 
 description: "标识并更正重新训练 Azure 机器学习 Web 服务的模型时遇到的常见问题。"
 services: machine-learning
 documentationcenter: 
-author: VDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: 85cf9175bb4a5f253c7b47b2edc3ac8b00616ba2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 011/01/2017
+ms.author: garye
+ms.openlocfilehash: 1e5327ad135d9bc8881354679dc3f1b8a472cad3
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>对 Azure 机器学习经典 Web 服务重新训练进行故障排除
 ## <a name="retraining-overview"></a>重新训练概述
@@ -29,10 +29,10 @@ ms.lasthandoff: 10/11/2017
 ## <a name="retraining-process"></a>重新训练过程
 当需要重新训练 Web 服务时，必须添加一些其他部分：
 
-* 从训练实验部署的 Web 服务。 该实验必须具有已附加到**训练模型**模块的输出的 **Web 服务输出**模块。  
+* 从训练试验部署的 Web 服务。 该实验必须具有已附加到**训练模型**模块的输出的 **Web 服务输出**模块。  
   
     ![将 Web 服务输出附加到训练模型。][image1]
-* 已添加到评分 Web 服务的新终结点。  可使用“以编程方式重新训练机器学习模型”主题中引用的示例代码或通过 Azure 经典门户，以编程方式添加终结点。
+* 已添加到评分 Web 服务的新终结点。  可使用“以编程方式重新训练机器学习模型”主题中引用的示例代码或通过 Azure 机器学习 Web 服务门户，以编程方式添加终结点。
 
 然后，可以使用训练 Web 服务的 API 帮助页中的示例 C# 代码重新训练模型。 评估结果并对结果感到满意后，使用添加的新终结点更新训练的模型评分 Web 服务。
 
@@ -58,21 +58,19 @@ ms.lasthandoff: 10/11/2017
 3. 将 URL 粘贴到浏览器中，以导航到提供 Web 服务帮助链接的页面。
 4. 单击“更新资源”链接，打开修补程序帮助页面。
 
-**选项 2：使用 Azure 经典门户**
+**选项 2：使用 Azure 机器学习 Web 服务门户**
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 打开“机器学习”选项卡。![“机器学习”选项卡。][image4]
-3. 单击工作区名称，并单击“Web 服务”。
-4. 单击正在使用的评分 Web 服务。 （如果未修改 Web 服务的默认名称，它以 [Scoring Exp.] 结束。）
-5. 单击“添加终结点”。
-6. 添加终结点后，单击终结点名称。 然后单击“更新资源”，打开修补帮助页。
+1. 登录到 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户。
+2. 单击“Web 服务”或顶部的“经典 Web 服务”。
+4. 单击你正在使用的计分 web 服务（如果未修改的 web 服务的默认名称，其将以结尾“[Scoring Exp.]”）。
+5. 单击“+新建”。
+6. 添加终结点后，单击终结点名称。
+7. 在“修补程序”URL 下面，单击“API 帮助”打开修补帮助页。
 
 > [!NOTE]
 > 如果已向训练 Web 服务而非预测 Web 服务添加终结点，在单击“更新资源”链接时会收到以下错误：抱歉，此功能不受支持或在此上下文中不可用。 此 Web 服务没有可更新的资源。 我们对于所造成的不便深表歉意，正在努力改进此工作流。
 > 
 > 
-
-![新建终结点仪表板。][image3]
 
 修补程序帮助页包含你必须使用的修补程序 URL，并提供可用于调用它的示例代码。
 
@@ -82,32 +80,32 @@ ms.lasthandoff: 10/11/2017
 * 不修补训练 Web 服务：必须在评分 Web 服务上执行修补操作。
 * 不修补 Web 服务上的默认终结点：必须在添加的新评分 Web 服务终结点上执行修补操作。
 
-可通过访问 Azure 经典门户验证终结点在哪个 Web 服务上。 
+可通过访问 Web 服务门户验证终结点在哪个 Web 服务上。 
 
 > [!NOTE]
 > 确保将终结点添加到预测 Web 服务，而不是训练 Web 服务。 如果已正确部署训练和预测 Web 服务，应该看到已列出两个单独的 Web 服务。 预测 Web 服务应以“[predictive exp.]”结尾。
 > 
 > 
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 打开“机器学习”选项卡。![机器学习工作区 UI。][image4]
-3. 选择工作区。
-4. 单击“Web 服务”。
-5. 选择预测 Web 服务。
-6. 验证是否已向 Web 服务添加新的终结点。
+1. 登录到 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户。
+2. 单击“Web 服务”或“传统 Web 服务”。
+3. 选择预测 Web 服务。
+4. 验证是否已向 Web 服务添加新的终结点。
 
-### <a name="check-the-workspace-that-your-web-service-is-in-to-ensure-it-is-in-the-correct-region"></a>检查 Web 服务所在的工作区，确保它位于正确的区域中
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 从菜单中选择机器学习。
+### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>检查工作区是否与 Web 服务位于同一区域
+1. 登录到[机器学习工作室](https://studio.azureml.net/)。
+2. 在顶部，单击工作区下拉列表。
+
    ![机器学习区域 UI。][image4]
-3. 验证工作区的位置。
+
+3. 检查工作区所在的区域。
 
 <!-- Image Links -->
 
 [image1]: ./media/troubleshooting-retraining-a-model/ml-studio-tm-connnected-to-web-service-out.png
 [image2]: ./media/troubleshooting-retraining-a-model/addEndpoint-output.png
 [image3]: ./media/troubleshooting-retraining-a-model/azure-portal-update-resource.png
-[image4]: ./media/troubleshooting-retraining-a-model/azure-portal-machine-learning-tab.png
+[image4]: ./media/troubleshooting-retraining-a-model/check-workspace-region.png
 [image5]: ./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png
 [image6]: ./media/troubleshooting-retraining-a-model/retraining-output.png
 [image7]: ./media/troubleshooting-retraining-a-model/web-services-tab.png

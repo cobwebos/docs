@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94dedebe48060441cd3167fea87f6b721eb14517
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>什么是 Operations Management Suite (OMS)？
 本文介绍 Operations Management Suite (OMS)，包括它提供的商业价值、服务和管理解决方案以及将不同服务和解决方案打包在一起的产品的简要概述。  文中提供了有关部署和使用每种服务和解决方案的详细文档的链接。
@@ -64,7 +64,7 @@ OMS 的核心功能由 Azure 中运行的一组服务提供。  每个服务提�
 #### <a name="collecting-data"></a>收集数据
 可通过多种方法将数据收集到存储库，供 Log Analytics 分析。
 
-- **Windows 或 Linux 计算机和虚拟机。**  在要从中收集数据的 [Windows](../log-analytics/log-analytics-windows-agents.md) 和 [Linux](../log-analytics/log-analytics-linux-agents.md) 计算机或虚拟机上安装 Microsoft 监视代理。  该代理会自动从 Log Analytics 下载用于定义要收集的事件和性能数据的配置。  可以使用 Azure 门户在 Azure 中运行的虚拟机上轻松安装该代理。  如果有现有的 Operations Manager 环境，可将管理组连接到 Log Analytics，然后从所有现有代理自动开始收集数据。
+- **Windows 或 Linux 计算机和虚拟机。**  在要从中收集数据的 [Windows](../log-analytics/log-analytics-windows-agent.md) 和 [Linux](../log-analytics/log-analytics-linux-agents.md) 计算机或虚拟机上安装 Microsoft 监视代理。  该代理会自动从 Log Analytics 下载用于定义要收集的事件和性能数据的配置。  可以使用 Azure 门户在 Azure 中运行的虚拟机上轻松安装该代理。  如果有现有的 Operations Manager 环境，可将管理组连接到 Log Analytics，然后从所有现有代理自动开始收集数据。
 - **Azure 服务。**  Log Analytics 将 [Azure 诊断和 Azure 监视](../log-analytics/log-analytics-azure-storage.md)中的遥测数据收集到存储库，以便可以监视 Azure 资源。
 - **数据收集器 API。**  Log Analytics 提供[用于从任何客户端填充数据的 REST API](../log-analytics/log-analytics-data-collector-api.md)。  可以使用此 API 从第三方应用程序收集数据，或实现自定义管理方案。  一种常用方法是使用 Azure 自动化中的 Runbook 收集数据，然后使用数据收集器 API 将数据写入存储库。
 
@@ -149,7 +149,7 @@ Azure Site Recovery 有三种基本复制方案。
 Site Recovery 将元数据存储在位于特定 Azure 地理区域的保管库。 Site Recovery 服务不存储任何复制的数据。
 
 ## <a name="management-solutions"></a>管理解决方案
-[管理解决方案](operations-management-suite-solutions.md)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的特定管理方案。  Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。  合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 应用商店或快速启动模板将它们提供给用户。
+[管理解决方案](operations-management-suite-solutions.md)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的特定管理方案。  Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。  合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
 
 [更新管理解决方案](oms-solution-update-management.md)就是利用多个服务提供更多功能的解决方案的一个好例子。  此解决方案使用适用于 Windows 和 Linux 的 Log Analytics 代理来收集有关每个代理上所需的更新的信息。  它将这些数据写入 Log Analytics 存储库，可以使用随附的仪表板来分析这些数据。  创建部署时，可以使用 Azure 自动化中的 Runbook 来安装所需的更新。  可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
@@ -160,7 +160,7 @@ Site Recovery 将元数据存储在位于特定 Azure 地理区域的保管库�
 - 收集其他信息  Log Analytics 从客户端和服务收集各种数据，包括事件和性能数据。  管理解决方案通常使用 Azure 自动化 Runbook 收集其他数据源中不提供的其他信息。
 - 针对收集的信息提供附加分析。  管理解决方案包含仪表板和视图，可针对数据提供分析与可视化。  这些信息将链接回到预定义的日志搜索，方便用户钻取详细数据。  它们还可以针对已收集到存储库中的数据执行分析，例如，在所有安全事件中搜索指示出现威胁的模式。
 - 添加功能。  Microsoft 提供的某些解决方案可能构建在核心服务的功能基础之上，以提供更多的功能。  例如，服务映射提供自身的控制台用于实时发现和映射服务器与进程依赖关系。
-Microsoft 与合作伙伴会定期将解决方案添加到 OMS，使用户能够持续提高投资价值。  可以通过 OMS 门户中的“解决方案目录”浏览并安装 Microsoft 解决方案，或者在 Azure 门户中通过 Azure 应用商店来浏览并安装 Microsoft 与合作伙伴的解决方案。  
+Microsoft 与合作伙伴会定期将解决方案添加到 OMS，使用户能够持续提高投资价值。  可以通过 OMS 门户中的“解决方案目录”浏览并安装 Microsoft 解决方案，或者在 Azure 门户中通过 Azure Marketplace 来浏览并安装 Microsoft 与合作伙伴的解决方案。  
 
 ![解决方案库](media/operations-management-suite-overview/solution-gallery.png)
 

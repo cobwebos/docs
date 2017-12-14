@@ -12,14 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 11/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: db790f9dc56605b5b752e7ab797903e32b2fc675
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: e2a69f240068d3155c2fdd52c118dc037ccbcdcb
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/05/2017
 ---
+[适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器](site-recovery-hyper-v-deployment-planner.md)的新增强版本现已可用，并替换旧工具。 使用新工具规划部署。 该工具提供了以下指导原则： 
+* 根据磁盘数量、磁盘大小、IOPS、变动量和一些 VM 特征评估 VM 的合格性。
+* 网络带宽需求与 RPO 评估。
+* Azure 基础结构需求。
+* 本地基础结构需求。
+* 初始复制批处理指南。
+* DR 到 Azure 的估算总成本。
+
+
 # <a name="hyper-v-capacity-planner-tool-for-site-recovery"></a>Site Recovery 的 Hyper-V Capacity Planner 工具
 
 作为 Azure Site Recovery 部署的一部分，需要确定复制和带宽要求。 Site Recovery 的 Hyper-V Capacity Planner 工具可帮助用户针对 Hyper-V 虚拟机复制执行此操作。

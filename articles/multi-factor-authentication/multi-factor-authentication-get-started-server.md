@@ -5,7 +5,7 @@ services: multi-factor-authentication
 keywords: "身份验证服务器, azure 多重身份验证应用激活页, 身份验证服务器下载"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: e94120e4-ed77-44b8-84e4-1c5f7e186a6b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: a164dfa23a0bd8a598eb8871a160ced4158b172a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -89,7 +89,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
 | 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
 
-## <a name="download-the-mfa-server---public-preview"></a>下载 MFA 服务器 - 公共预览版
+## <a name="download-the-mfa-server"></a>下载 MFA 服务器
 
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
 
@@ -101,28 +101,6 @@ Azure MFA 服务器由三个 Web 组件组成：
    ![下载 MFA 服务器](./media/multi-factor-authentication-get-started-server/downloadportal.png)
 
 5. 让此页保持打开状态，因为我们在运行安装程序后需要用到它。
-
-
-## <a name="download-the-mfa-server"></a>下载 MFA 服务器
-
-执行以下步骤，从 pfweb 门户下载 Azure 多重身份验证服务器：
-
-1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧选择“Active Directory”
-3. 选择“用户和组”
-4. 选择“所有用户”
-5. 选择“多重身份验证”
-6. 在“多重身份验证”部分选择“服务设置”
-
-   ![服务设置页](./media/multi-factor-authentication-get-started-server/servicesettings.png)
-
-6. 在“服务设置”页上的屏幕底部单击“转到门户” 。 此时会打开一个新页面。
-7. 选择“下载”。
-8. 单击“下载”链接并保存安装程序。
-
-   ![下载 MFA 服务器](./media/multi-factor-authentication-get-started-server/download4.png)
-
-9. 让此页保持打开状态，因为我们在运行安装程序后需要用到它。
 
 ## <a name="install-and-configure-the-mfa-server"></a>安装和配置 MFA 服务器
 

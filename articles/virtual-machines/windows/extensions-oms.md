@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danis
-ms.openlocfilehash: b4cd56606d0f84653f3e50634fc5e4d1318c0f94
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: cfdbf6c3d1ac86d430543eada15c1e3b31e3712f
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>适用于 Windows 的 OMS 虚拟机扩展
 
@@ -28,7 +28,12 @@ Operations Management Suite (OMS) 提供跨云和本地资产的监视、警报�
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
+
 可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本中运行适用于 Windows 的 OMS 代理扩展。
+
+### <a name="azure-security-center"></a>Azure 安全中心
+
+Azure 安全中心自动设置 OMS 代理并将其与 Azure 订阅的默认记录分析工作区相连接。 如果使用 Azure 安全中心，请勿按照本文档中的步骤运行。 这样做会覆盖已配置的工作区并断开与 Azure 安全中心的连接。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 适用于 Windows 的 OMS 代理扩展要求目标虚拟机已连接到 Internet。 

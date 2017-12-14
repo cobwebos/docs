@@ -3,22 +3,22 @@ title: "管理 Azure 堆栈中的 API 版本配置文件 |Microsoft 文档"
 description: "了解 Azure 堆栈中的 API 版本配置文件"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 6B749785-DCF5-4AD8-B808-982E7C6BBA0E
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
-ms.author: sngun
-ms.openlocfilehash: f986abebaf9117b040c149c10f6b2358bbdc0f44
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.author: mabrigg
+ms.openlocfilehash: d86a54ea9e165269131eb961df7f74703f0ec6ff
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>管理 Azure 堆栈中的 API 版本配置文件
 

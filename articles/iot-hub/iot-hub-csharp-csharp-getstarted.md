@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24b75e4021d9d16aed317b48c2f963ff9dea04ac
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ec9ff4a866ef8736ed260b4d17aa997433c1ef8d
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-net"></a>使用 .NET 将设备连接到 IoT 中心
 
@@ -195,7 +195,7 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
     ```csharp
     Console.WriteLine("Simulated device\n");
     deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey ("myFirstDevice", deviceKey), TransportType.Mqtt);
-
+    deviceClient.ProductInfo = "HappyPath_Simulated-CSharp";
     SendDeviceToCloudMessagesAsync();
     Console.ReadLine();
     ```

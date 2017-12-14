@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/17/2017
+ms.date: 12/06/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ba425e938f81ffb37a2c8bc2a764a4db074e9106
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -26,22 +26,6 @@ ms.lasthandoff: 11/18/2017
 > * 在组织中实施新策略
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="opt-in-to-azure-policy"></a>选择加入 Azure 策略
-
-Azure 策略现已在有限预览版中提供，因此需要注册才能请求访问权限。
-
-1. 在 https://aka.ms/getpolicy 转到 Azure 策略，然后选择左侧窗格中的“注册”。
-
-   ![搜索策略](media/assign-policy-definition/sign-up.png)
-
-2. 通过选择“订阅”列表中想要使用的订阅来选择加入 Azure 策略。 然后选择“注册”。
-
-   订阅列表包括所有 Azure 订阅。
-
-   ![选择加入使用 Azure 策略](media/assign-policy-definition/preview-opt-in.png)
-
-   我们可能需要一两天时间来接受注册请求，具体视情况而定。 我们接受请求后，你将获得电子邮件通知，告知可以开始使用服务。
 
 ## <a name="assign-a-policy"></a>分配策略
 
@@ -69,7 +53,7 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
 
    Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于我们处于受限预览版，尚未发布定价模型，因此你不会收到选择标准的帐单。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/)。
 
-8. 选择“范围”- 之前在选择加入 Azure 策略时注册的订阅（或资源组）。 范围用于确定对其强制执行策略分配的资源或资源组。 它可以从订阅延伸至资源组。
+8. 选择“范围”- 之前注册的订阅（或资源组）。 范围用于确定对其强制执行策略分配的资源或资源组。 它可以从订阅延伸至资源组。
 
    此示例使用此订阅 -“Azure 分析容量开发”。 你的订阅将有所不同。
 
@@ -94,9 +78,9 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
       - 策略规则/条件，此示例中为 - VM SKU 大小等于 G 系列
       - 策略效果，此示例中为“拒绝”。
 
-   json 应如下所示
+    json 应如下所示
 
-```json
+    ```json
 {
     "policyRule": {
       "if": {
@@ -116,11 +100,9 @@ Azure 策略现已在有限预览版中提供，因此需要注册才能请求�
       }
     }
 }
-```
+    ```
 
-<!-- Update the following link to the top level samples page
--->
-   若要查看 json 代码的示例，请参阅此文 - [Azure 策略的模板](json-samples.md)
+    若要查看 json 代码的示例，请参阅 [Azure 策略的模板](json-samples.md)一文。
 
 4. 选择“保存”。
 

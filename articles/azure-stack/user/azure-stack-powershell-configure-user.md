@@ -3,26 +3,26 @@ title: "配置 Azure 堆栈用户 PowerShell 环境 |Microsoft 文档"
 description: "配置 Azure 堆栈用户 PowerShell 环境"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: sngun
-ms.openlocfilehash: e0ad968cac50ebb1e9ca0a4ff228c748f2da5f28
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mabrigg
+ms.openlocfilehash: 0bd5b4a98fee7a5d914e53e49a9517f5d3682a88
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>配置 Azure 堆栈用户 PowerShell 环境
 
-作为 Azure 堆栈用户，你可以配置你 Azure 堆栈开发工具包 PowerShell 环境。 在配置之后，你可以使用 PowerShell 管理 Azure 堆栈的资源如订阅产品，虚拟机创建，部署 Azure 资源管理器模板，等等。本主题范围以将环境只，如果你想要设置云运算符环境中，PowerShell 是指的用户与使用[配置 Azure 堆栈运算符 PowerShell 环境](../azure-stack-powershell-configure-admin.md)主题。 
+作为 Azure 堆栈用户，你可以配置你 Azure 堆栈开发工具包 PowerShell 环境。 在配置之后，你可以使用 PowerShell 管理 Azure 堆栈的资源如订阅产品，虚拟机创建，部署 Azure 资源管理器模板，等等。本主题范围以将环境只，如果你想要设置云运算符环境中，PowerShell 是指的用户与使用[配置 Azure 堆栈运算符 PowerShell 环境](../azure-stack-powershell-configure-admin.md)文章。 
 
 ## <a name="prerequisites"></a>必备组件 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/17/2017
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>配置用户环境并登录到 Azure 堆栈
 
-基于的部署 (Azure AD 或 AD FS)，运行以下脚本来配置 PowerShell 以 Azure 堆栈 （请确保将 AAD tenantName、 GraphAudience 终结点和根据你的环境配置 ArmEndpoint 值） 之一的类型：
+基于的部署 (Azure AD 或 AD FS)，运行以下脚本以配置 PowerShell 以 Azure 堆栈 （请确保将 AAD tenantName、 GraphAudience 终结点和根据你的环境配置 ArmEndpoint 值） 之一的类型：
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>部署基于 azure Active Directory (AAD)
        
@@ -118,7 +118,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
 
 ## <a name="test-the-connectivity"></a>测试连接
 
-现在，我们具有设置的所有内容，让我们使用 PowerShell 创建 Azure 堆栈中的资源。 例如，你可以创建应用程序的资源组并添加虚拟机。 使用以下命令创建名为"MyResourceGroup"的资源组：
+现在，我们具有所有内容设置，让我们使用 PowerShell 创建 Azure 堆栈中的资源。 例如，你可以创建应用程序的资源组并添加虚拟机。 使用以下命令创建名为"MyResourceGroup"的资源组：
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

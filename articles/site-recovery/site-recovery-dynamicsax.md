@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/11/2017
 ms.author: asgang
-ms.openlocfilehash: aa8a79cd152a532ef8989e61c2ec9609b826634b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 8ffc4a5a573b1c5951fab98fb766aed36f626fe4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 Dynamics AX 应用程序
 
@@ -31,7 +31,6 @@ ms.lasthandoff: 11/28/2017
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 为 Dynamics AX 应用程序创建灾难恢复解决方案。 此外，还介绍了使用一键式恢复计划的计划内/计划外测试故障转移，以及支持的配置和先决条件。
 
-Dynamics AX 已全面测试、认证并推荐基于 Site Recovery 的灾难恢复解决方案。
 
 
 ## <a name="prerequisites"></a>先决条件

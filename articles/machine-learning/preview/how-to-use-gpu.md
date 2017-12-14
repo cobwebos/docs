@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 4ef5c9ad58f86a669fc5c0bceb085ef2a266a008
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: ce1557aed09384b0d7a0b65aabd473fe72ab740c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>如何在 Azure 机器学习中使用 GPU
 图形处理单元 (GPU) 广泛用于处理通常在训练某些深度神经网络模型时发生的计算密集型任务。 使用 GPU 可以显著减少模型的训练时间。 在本文档中，可了解如何配置 Azure ML 工作台，以使用配备 GPU（作为执行目标）的 [DSVM（数据科学虚拟机）](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)。 
@@ -64,10 +64,10 @@ Azure ML 工作台还支持在 Azure Linux VM 的 Docker 中执行。 用户在�
 4. 单击“创建”以创建 Ubuntu DSVM。
 
 5. 使用所需信息填写“基础知识”窗体。
-在选择 VM 的位置时，请注意，GPU VM 仅适用于某些 Azure 区域，例如“美国中南部”。 请参阅[按区域提供的计算产品](https://azure.microsoft.com/en-us/regions/services/)。
+在选择 VM 的位置时，请注意，GPU VM 仅适用于某些 Azure 区域，例如“美国中南部”。 请参阅[按区域提供的计算产品](https://azure.microsoft.com/regions/services/)。
 单击“确定”以保存“基础知识”信息。
 
-6. 选择虚拟机的大小。 选择一个包含以 NC 为前缀的 VM 的大小，因为此类虚拟机配备了 NVidia GPU 芯片。  单击“全部查看”，根据需要查看完整列表。 了解关于[配备了 GPU 的 Azure VM](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-gpu) 的详细信息。
+6. 选择虚拟机的大小。 选择一个包含以 NC 为前缀的 VM 的大小，因为此类虚拟机配备了 NVidia GPU 芯片。  单击“全部查看”，根据需要查看完整列表。 了解关于[配备了 GPU 的 Azure VM](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) 的详细信息。
 
 7. 完成剩余的设置，并查看购买信息。 单击“购买”以创建 VM。 记下分配给虚拟机的 IP 地址。 
 
@@ -119,7 +119,7 @@ dependencies:
     - https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl
 ```
 
-还可以使用 1 位 SGD 版本的 Microsoft 认知工具包，它可以改进多 GPU VM 的性能。 请注意 [1 位 SGD 的许可要求](https://docs.microsoft.com/en-us/cognitive-toolkit/cntk-1bit-sgd-license)。
+还可以使用 1 位 SGD 版本的 Microsoft 认知工具包，它可以改进多 GPU VM 的性能。 请注意 [1 位 SGD 的许可要求](https://docs.microsoft.com/cognitive-toolkit/cntk-1bit-sgd-license)。
 
 ```yaml
 name: project_environment

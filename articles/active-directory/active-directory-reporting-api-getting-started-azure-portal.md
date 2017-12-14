@@ -4,7 +4,7 @@ description: "如何开始使用 Azure Active Directory 报告 API"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c94a52b8a34100f22b627e291cb0becd3501fd55
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9c858b8f2d5a4a348bc0b4443ddbe0000a5b62f4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -28,7 +28,7 @@ Azure Active Directory 可向你提供各种报告。 对于应用程序（如 S
 本文介绍了开始使用 Azure AD 报告 API 所需的信息。
 在下一部分中，可以找到有关使用审核和登录 API 的更多详细信息。 
 
-有关常见问题解答，请参阅我们的[常见问题解答](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-faq)。 有关问题，请[提交支持票证](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)
+有关常见问题解答，请参阅我们的[常见问题解答](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-faq)。 有关问题，请[提交支持票证](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 
 ## <a name="learning-map"></a>学习路线图
 1. **准备** - 需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites-azure-portal.md)，才能测试 API 示例。

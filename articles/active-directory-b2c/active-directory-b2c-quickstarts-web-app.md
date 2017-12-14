@@ -4,7 +4,7 @@ description: "使用 Azure AD B2C 测试环境进行登录、注册、编辑个�
 services: active-directory-b2c
 documentationcenter: .net
 author: saraford
-manager: krassk
+manager: mtillman
 editor: PatAltimore
 ms.assetid: 2ffb780d-2c51-4c2e-b8d6-39c40a81a77e
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: patricka
-ms.openlocfilehash: 07f2c21409176d30f4570e267a4472745f843f85
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: bc56da695145f396a2899fb9dc7add3af9a549e8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="test-drive-an-azure-ad-b2c-enabled-web-app"></a>试用启用了 Azure AD B2C 的 Web 应用
 
@@ -47,7 +47,7 @@ Azure Active Directory B2C 提供云身份管理来保护应用程序、业务�
 
 解决方法是包含两个项目的示例待办事项列表应用程序：
 
-* TaskWebApp – 一个用户可以管理待办事项列表项的 ASP.NET MVC Web 应用程序。  
+* **TaskWebApp** – 一个用户可以管理待办事项列表项的 ASP.NET MVC Web 应用程序。  
 * TaskService – 一个ASP.NET Web API 后端，用于管理在用户待办事项列表项上执行的操作。 Web 应用将调用此 Web API 并显示结果。
 
 在此快速入门中，需要同时运行 `TaskWebApp` 和 `TaskService` 项目。 

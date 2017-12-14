@@ -1,4 +1,4 @@
----
+﻿---
 title: "什么是 Azure Stack？ | Microsoft Docs"
 description: "Azure 堆栈可以在你的数据中心中运行 Azure 服务。"
 services: azure-stack

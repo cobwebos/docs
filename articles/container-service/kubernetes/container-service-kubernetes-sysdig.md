@@ -1,27 +1,19 @@
 ---
-title: "监视 Azure Kubernetes 群集 - Sysdig | Microsoft 文档"
+title: "监视 Azure Kubernetes 群集 - Sysdig"
 description: "使用 Sysdig 在 Azure 容器服务中监视 Kubernetes 群集"
 services: container-service
-documentationcenter: 
 author: bburns
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 283cae7031fd275fc1f355e25f01206d143756fe
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 4ff610f72af4e6a750749009f3cd4b4df632a37f
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>使用 Sysdig 监视 Azure 容器服务 Kubernetes 群集
 

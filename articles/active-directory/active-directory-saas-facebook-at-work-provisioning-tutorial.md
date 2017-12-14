@@ -4,7 +4,7 @@ description: "了解如何从 Azure AD 自动将用户帐户预配到 Workplace 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 6341e67e-8ce6-42dc-a4ea-7295904a53ef
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a347eedbf5511dc83e1bc7721667441cfb87cb59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77f5f33044b1915fbda7b86c6b07882c0e1e7554
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>教程：配置 Workplace by Facebook 以进行用户预配
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
-- Azure AD 订阅
+- 一个 Azure AD 订阅
 - 已启用 Workplace by Facebook 单一登录 (SSO) 的订阅
 
 若要测试本教程中的步骤，请遵循以下建议：

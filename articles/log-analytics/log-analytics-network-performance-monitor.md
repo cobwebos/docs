@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: banders
-ms.openlocfilehash: 10e8eeaade5d51b1a15c30802b28600bcf6c72d9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: d5d5ec1b524fa455c8d2231c7c16fd7942f713c4
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics 中的网络性能监视器解决方案
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/19/2017
 此外，如果已购买其他网络监视工具，那么该解决方案可以补充这些工具，因为大多数常规网络监视解决方案不会就端到端网络性能指标（如丢失和延迟）提供见解。  网络性能监视器解决方案可帮助填补这一空白。
 
 ## <a name="installing-and-configuring-agents-for-the-solution"></a>安装和配置适用于解决方案的代理
-使用[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md) 和[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 中的基本过程安装代理。
+使用[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agent.md) 和[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 中的基本过程安装代理。
 
 > [!NOTE]
 > 要有足够数据发现并监视网络资源，需要安装至少 2 个代理。 否则，该解决方案会一直保持为配置状态，直到安装并配置其他代理。

@@ -4,7 +4,7 @@ description: "如何设置 Application Insights 来跟踪自定义策略的执�
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 10b18400e92c5a626cd1e6ce9a6d6bd56df57dc1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
@@ -52,7 +52,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   ```
 
-1. 如果该元素尚未存在，请将子节点 `<UserJourneyBehaviors>` 添加到 `<RelyingParty>` 节点。 它必须紧接在 `<DefaultUserJourney ReferenceId="YourPolicyName" />` 的后面
+1. 如果该元素尚未存在，请将子节点 `<UserJourneyBehaviors>` 添加到 `<RelyingParty>` 节点。 它必须紧接在 `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` 的后面
 2. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。 确保将 `{Your Application Insights Key}` 替换为上一部分中从 Application Insights 获取的**检测密钥**。
 
   ```XML

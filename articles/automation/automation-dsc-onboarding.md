@@ -3,7 +3,7 @@ title: "Onboarding machines for management by Azure Automation DSC（登记由 A
 description: "如何设置可使用 Azure 自动化 DSC 管理的计算机"
 services: automation
 documentationcenter: dev-center-name
-author: eslesar
+author: georgewallace
 manager: carmonm
 ms.assetid: da13e1f5-2a1c-443b-8e3b-9f0d6f9e4810
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
-ms.author: eslesar
-ms.openlocfilehash: 1a6355c18aed8a4040121e5af482328b70294b83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: 0c399a24962efc1263ed35361a96c98bc60633ee
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）
 
@@ -133,9 +133,9 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
+### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
-可以通过 Azure Resource Manager 模板部署 Azure 虚拟机和登记到 Azure 自动化 DSC。 有关将现有 VM 登记到 Azure 自动化 DSC 的示例模板，请参阅 [Configure a VM via DSC extension and Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)（通过 DSC 扩展和 Azure 自动化 DSC 配置 VM）。 若要查找作为此模板的输入的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
+可以通过 Azure 资源管理器模板部署 Azure 虚拟机和登记到 Azure 自动化 DSC。 有关将现有 VM 登记到 Azure 自动化 DSC 的示例模板，请参阅 [Configure a VM via DSC extension and Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)（通过 DSC 扩展和 Azure 自动化 DSC 配置 VM）。 若要查找作为此模板的输入的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -334,7 +334,7 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
 如果 PowerShell DSC 本地配置管理器默认值与用例匹配，并且你想要将计算机登记为同时从 Azure 自动化 DSC 提取并报告信息，Azure 自动化 cmdlet 可提供一种简单的方法来生成所需的 DSC 元配置：
 
 1. 在本地环境中，以计算机管理员身份打开 PowerShell 控制台或 PowerShell ISE。
-2. 使用 **Add-AzureRmAccount** 连接到 Azure Resource Manager
+2. 使用 **Add-AzureRmAccount** 连接到 Azure 资源管理器
 3. 从要登记节点的目标自动化帐户下载想要登记的计算机的 PowerShell DSC 元配置：
 
     ```powershell

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -172,6 +172,14 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 - 验证该 URL 是否未过期。
 
 - 如果 SAS URL建立在访问策略基础上，请验证该访问策略是否被撤销。
+
+如果意外附加了无效的 SAS URL，并且无法分离，请执行以下步骤：
+1.  运行存储资源管理器时，按 F12 打开开发人员工具窗口。
+2.  单击“应用程序”选项卡，然后单击左侧树中的“本地存储”> file://。
+3.  查找与有问题的 SAS URI 服务类型关联的键。 例如，如果用于 blob 容器的 SAS URI 错误，请查找名为“StorageExplorer_AddStorageServiceSAS_v1_blob”的键。
+4.  键的值应为 JSON 数组。 查找与错误 URI 关联的对象，并将其删除。
+5.  按 Ctrl+R 重新加载存储资源管理器。
+
 
 ## <a name="next-steps"></a>后续步骤
 

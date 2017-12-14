@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 6213019131eec60263172f468ced516037a33c61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b236ab8dd80b0c34501e0d60ba74dee3043d262
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>利用生存时间使 Azure Cosmos DB 集合中的数据自动过期
 应用程序可以生成和存储大量数据。 其中的某些数据（如计算机生成的事件数据、日志和用户会话信息）仅在有限的一段时间内才有用。 当数据变得多余，应用程序不再需要时，可以安全地清除这些数据并减少应用程序的存储需求。
@@ -149,6 +149,8 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
     
     await client.ReplaceDocumentCollectionAsync(collection);
 
+## <a name="ttl-and-index-interaction"></a>TTL 和索引交互
+TTL 添加或更改是对基础索引的更改。 没有 TTL 并提供有效的 TTL 值时 - 将进行重新索引操作。 对于一致的索引 - 用户将不会看到索引状态中的任何更改。 在延迟索引情况下 - 索引首先总是追赶并与 ttl 中的这一更改保持一致，然后将从头开始重新创建索引。 后一种情况的影响是，在索引重新创建期间完成的查询不会返回完整或正确的结果。 如果索引模式本身延迟时需要精确数据计数，请不要更改延迟索引的 TTL。  理想情况下应始终选择一致的索引。 
 
 ## <a name="faq"></a>常见问题
 **TTL 将收取我多少费用？**

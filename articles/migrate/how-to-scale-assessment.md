@@ -1,24 +1,16 @@
 ---
 title: "使用 Azure Migrate 执行规模发现和评估 | Microsoft 文档"
 description: "介绍如何使用 Azure Migrate 服务访问大量本地计算机。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: dde0d07f-94b7-4b6a-a158-a89aa9324a35
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: raynew
-ms.openlocfilehash: 930ec182cf329e7dda072dc49bd7f70abb413f2d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e28a2144dd102fcd2ec05531432cac0df250ae01
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -26,7 +18,7 @@ ms.lasthandoff: 11/28/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-- VMware：至少必须具有一个 VMware VM 位于运行版本 5.0 或更高版本的 ESXi 主机或群集上。 主机或群集必须由运行版本 5.5 或 6.0 的 vCenter 服务器托管。
+- **VMware**：运行版本 5.0 或更高版本的 ESXi 主机或群集上至少需要一个 VMware VM。 主机或群集必须由运行版本 5.5 或 6.0 的 vCenter 服务器托管。
 - vCenter 帐户：需要具有一个对 vCenter 服务器拥有管理员凭据的只读帐户。 Azure Migrate 将使用此帐户发现 VM。
 - 权限：在 vCenter 服务器上，需要有通过导入 .OVA 格式的文件来创建 VM 的权限。
 - 统计信息设置：开始部署前，vCenter 服务器的统计信息设置应设置为级别 2 或更高级别。
@@ -50,14 +42,14 @@ ms.lasthandoff: 11/28/2017
 根据你的需要创建 Azure Migrate 项目。
 
 1. 在 Azure 门户中，单击“创建资源”。
-2. 搜索“Azure Migrate”，然后在搜索结果中选择服务“Azure Migrate（预览版）”。 然后单击“创建”。
+2. 搜索 **Azure Migrate**，然后在搜索结果中选择服务“Azure Migrate (预览版)”。 然后单击“创建”。
 3. 指定项目名称和项目的 Azure 订阅。
 4. 创建新的资源组。
-5. 指定创建项目的区域，然后单击“创建”。 从本地 VM 收集的元数据将存储在此区域中。
+5. 指定创建项目的区域，单击“创建”。 从本地 VM 收集的元数据将存储在此区域中。
 
 ## <a name="set-up-the-collector-appliance"></a>设置收集器设备
 
-Azure Migrate 将创建一个名为收集器设备的本地 VM。 此 VM 用于发现本地 VMware VM，并将有关其元数据发送到 Azure Migrate 服务。 若要设置收集器设备，需要下载 .OVA 文件，并将其导入到本地 vCenter 服务器，以创建 VM。
+Azure Migrate 将创建一个名为收集器设备的本地 VM。 此 VM 可发现本地 VMware VM，并将其相关元数据发送到 Azure Migrate 服务。 若要设置收集器设备，需要下载 .OVA 文件，并将其导入到本地 vCenter 服务器，以创建 VM。
 
 ### <a name="download-the-collector-appliance"></a>下载收集器设备
 
@@ -70,7 +62,7 @@ Azure Migrate 将创建一个名为收集器设备的本地 VM。 此 VM 用于�
    
 ### <a name="verify-the-collector-appliance"></a>验证收集器设备
 
-在部署 .OVA 文件前请检查其安全性。
+在部署 .OVA 文件之前请检查其安全性。
 
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 OVA 的哈希：
@@ -86,18 +78,18 @@ Azure Migrate 将创建一个名为收集器设备的本地 VM。 此 VM 用于�
 
 ## <a name="create-the-collector-vm"></a>创建收集器 VM
 
-将下载的文件导入到 vCenter 服务器。
+将下载的文件导入 vCenter 服务器。
 
 1. 在 vSphere 客户端控制台中，单击“文件” > “部署 OVF 模板”。
 
     ![部署 OVF](./media/how-to-scale-assessment/vcenter-wizard.png)
 
 2. 在“部署 OVF 模板向导”>“源”中，指定 .ova 文件的位置。
-3. 在“名称”和“位置”中，为收集器 VM 指定一个友好名称，以及要托管 VM 的清单对象。
-5. 在“主机/群集”中，指定收集器 VM 将运行的主机或群集。
+3. 在“名称”和“位置”中，为收集器 VM 指定一个友好名称，以及要托管 VM 的库存对象。
+5. 在“主机/群集”中，指定要在其上运行收集器 VM 的主机或群集。
 7. 在存储中，指定收集器 VM 的存储目标。
 8. 在“磁盘格式”中，指定磁盘类型和大小。
-9. 在“网络映射”中，指定收集器 VM 将连接到的网络。 网络需要 Internet 连接，以向 Azure 发送元数据。 
+9. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。 
 10. 查看并确认设置，然后单击“完成”。
 
 ## <a name="identify-the-key-and-id-for-each-project"></a>标识每个项目的密钥和 ID
@@ -132,15 +124,15 @@ Azure Migrate 将创建一个名为收集器设备的本地 VM。 此 VM 用于�
 1. 在 vSphere 客户端控制台中，右键单击“VM”>“打开控制台”。
 2. 提供设备的语言、时区和密码首选项。
 3. 在桌面上，单击“运行收集器”快捷方式。
-4. 在 Azure Migrate 收集器中，打开“设置先决条件”。
-    - 接受许可条款，然后阅读第三方信息。
-    - 收集器检查 VM 是否具有 Internet 访问权限。
+4. 在 Azure Migrate 收集器中，打开“设置必备组件”。
+    - 接受许可条款，并阅读第三方信息。
+    - 收集器将会检查 VM 是否可访问 Internet。
     - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。
-    - 收集器检查 Windows 探查器服务是否正在运行。 该服务默认安装在收集器 VM 上。
+    - 收集器将会检查 Windows 探查器服务是否正在运行。 该服务默认安装在收集器 VM 上。
     - 下载并安装 VMware PowerCLI。
-。 在“发现计算机”中，执行以下操作：
+。 在“发现计算机”中执行以下操作：
     - 指定 vCenter 服务器的名称 (FQDN) 或 IP 地址。
-    - 在“用户名称”和“密码”中，指定收集器将用于发现 vCenter 服务器上的 VM 的只读帐户凭据。
+    - 在“用户名称”和“密码”中，指定收集器用来发现 vCenter 服务器上的 VM 的只读帐户凭据。
     - 在“收集范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1000 台 VM。 
     - n 用于分组的标记类别，选择“无”。
 
@@ -152,9 +144,9 @@ Azure Migrate 将创建一个名为收集器设备的本地 VM。 此 VM 用于�
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 
-发现时间要取决于所发现的 VM 数。 通常情况下，对于 100 台 VM，在收集器完成运行后，大概需要一个小时的时间来完成发现。 
+发现所需的时间取决于所发现的 VM 数。 一般情况下，在收集器完成运行后，发现 100 个 VM 大概需要一个小时的时间来完成。 
 
-1. 在迁移规划工具项目中，单击“管理” > “计算机”。
+1. 在 Migration Planner 项目中，单击“管理” > “计算机”。
 2. 检查想要发现的 VM 是否出现在门户中。
 
 

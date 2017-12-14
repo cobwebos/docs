@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 470bba665dcf8b3517b86ee633a9570ec0f3cd33
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>配置 Azure 机器学习试验服务
 
@@ -198,7 +198,7 @@ _**本地 Docker 执行 Python 脚本概述：**_
 可使用以下命令，为基于 Docker 的远程执行创建计算目标定义和运行配置。
 
 ```
-az ml computetarget attach --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" --type remotedocker
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
 ```
 
 配置计算目标后，可使用以下命令运行脚本。
@@ -211,7 +211,7 @@ $ az ml experiment submit -c remotevm myscript.py
 远程 VM 的 Docker 构造过程与本地 Docker 运行的过程完全相同，所以应可用相同方式执行。
 
 >[!TIP]
->若要避免由于构建第一次运行的 Docker 映像引入的延迟，可先使用以下命令准备计算目标，再执行脚本。 az ml experiment prepare -c <remotedocker>
+>若要避免由于构建第一次运行的 Docker 映像引入的延迟，可先使用以下命令准备计算目标，再执行脚本。 az ml experiment prepare -c remotedocker
 
 
 远程 VM 执行 Python 脚本概述：__
@@ -226,7 +226,7 @@ HDInsight 支持 Apache Spark 的大数据分析常用平台。 Workbench 允许
 可使用以下命令为 HDInsight Spark 群集创建计算目标和运行配置：
 
 ```
-$ az ml computetarget attach --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword" --type cluster 
+$ az ml computetarget attach cluster --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword"  
 ```
 
 >[!NOTE]
@@ -253,6 +253,29 @@ Workbench 使用 Conda 在 HDInsight 群集上准备和管理执行环境。 通
 ## <a name="running-a-script-on-gpu"></a>在 GPU 上运行脚本
 若要在 GPU 上运行脚本，可以遵循此文中的指南：[如何在 Azure 机器学习中使用 GPU](how-to-use-gpu.md)
 
+## <a name="using-ssh-key-based-authentication-for-creating-and-using-compute-targets"></a>使用基于 SSH 密钥的身份验证来创建和使用计算目标
+除了基于用户名/密码的身份验证方案以外，Azure Machine Learning Workbench 还允许使用基于 SSH 密钥的身份验证来创建和使用计算目标。 将 remotedocker 或群集用作计算目标时可以使用此功能。 使用此方案时，Workbench 会创建公钥/私钥对，并报告回公钥。 将公钥追加至 ~/.ssh/authorized_keys 文件（针对你的用户名）。 然后 Azure Machine Learning Workbench 会使用基于 SSH 密钥的身份验证来访问此计算目标以及执行操作。 由于计算目标的私钥保存在工作区的密钥存储中，工作区的其他用户可以通过同样的方式使用计算目标，即提供用于创建计算目标的用户名。  
+
+请按照以下步骤使用此功能。 
+
+- 使用以下命令之一创建计算目标。
+
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --use-azureml-ssh-key
+```
+或
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" -k
+```
+- 将 Workbench 生成的公钥追加至附加计算目标上的 ~/.ssh/authorized_keys 文件。 
+
+[!IMPORTANT] 需要使用创建计算目标时所用的同一个用户名登录计算目标。 
+
+- 接着就可以使用基于 SSH 密钥的身份验证准备和使用计算目标。
+
+```
+az ml experiment prepare -c remotevm
+```
 
 ## <a name="next-steps"></a>后续步骤
 * [创建和安装 Azure 机器学习](quickstart-installation.md)

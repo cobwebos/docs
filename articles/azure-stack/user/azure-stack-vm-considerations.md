@@ -3,28 +3,28 @@ title: "差异和 Azure 堆栈中的虚拟机的注意事项 |Microsoft 文档"
 description: "了解差异和注意事项时使用 Azure 堆栈中的虚拟机。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
+author: mattbriggs
 manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
-ms.author: sngun
-ms.openlocfilehash: fa4816079660467e530237fef62aeadfef7fa8bd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: mabrigg
+ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure 堆栈中的虚拟机的注意事项
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-虚拟机是按需，由 Azure 堆栈提供可缩放计算资源。 当你使用虚拟机时，你必须了解有在 Azure 中提供的功能和 Azure 堆栈之间的差异。 本文概述了虚拟机和 Azure 堆栈中的其功能的唯一注意事项。 若要了解有关高级 Azure 堆栈和 Azure 之间的差异信息，请参阅[密钥注意事项](azure-stack-considerations.md)主题。
+虚拟机是按需，由 Azure 堆栈提供可缩放计算资源。 当你使用虚拟机时，你必须了解有在 Azure 中提供的功能和 Azure 堆栈之间的差异。 本文概述了虚拟机和 Azure 堆栈中的其功能的唯一注意事项。 若要了解有关高级 Azure 堆栈和 Azure 之间的差异信息，请参阅[密钥注意事项](azure-stack-considerations.md)文章。
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>速查表： 虚拟机的差异
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/15/2017
 | 虚拟机映像 | Azure 应用商店包含可用于创建虚拟机的映像。 请参阅[Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1)页后，可以查看 Azure 应用商店中可用的映像的列表。 | 默认情况下，不存在的任何映像可用 Azure 堆栈应用商店中。 Azure 堆栈云管理员应该发布或下载到 Azure 堆栈应用商店的映像之后用户可以使用它们。 |
 | 虚拟机大小 | Azure 支持各种大小的虚拟机。 若要了解有关可用大小和选项，请参阅[Windows 虚拟机大小](../../virtual-machines/virtual-machines-windows-sizes.md)和[Linux 虚拟机大小](../../virtual-machines/linux/sizes.md)主题。 | Azure 堆栈支持可在 Azure 中的虚拟机大小的子集。 若要查看支持的大小的列表，请参阅[虚拟机大小](#virtual-machine-sizes)部分中的所述。 |
 | 虚拟机配额 | [配额限制](../../azure-subscription-service-limits.md#service-specific-limits)由 Microsoft 设置 | Azure 堆栈云管理员必须将分配配额，然后它们向其用户提供虚拟机。 |
-| 虚拟机扩展 |Azure 支持各种虚拟机扩展。 若要了解有关可用扩展，请参阅[虚拟机扩展和功能](../../virtual-machines/windows/extensions-features.md)主题。| Azure 堆栈支持在 Azure 中提供的扩展的子集，每个扩展具有特定版本。 Azure 堆栈云管理员可以选择哪些扩展将变得可到为其用户。 若要查看支持的扩展插件的列表，请参见[虚拟机扩展](#virtual-machine-extensions)部分中的所述。 |
+| 虚拟机扩展 |Azure 支持各种虚拟机扩展。 若要了解有关可用扩展，请参阅[虚拟机扩展和功能](../../virtual-machines/windows/extensions-features.md)文章。| Azure 堆栈支持在 Azure 中提供的扩展的子集，每个扩展具有特定版本。 Azure 堆栈云管理员可以选择哪些扩展将变得可到为其用户。 若要查看支持的扩展插件的列表，请参见[虚拟机扩展](#virtual-machine-extensions)部分中的所述。 |
 | 虚拟机网络 | 分配给租户虚拟机的公共 IP 地址是可访问 Internet。<br><br><br>Azure 虚拟机都具有固定的 DNS 名称 | 分配给租户虚拟机的公共 IP 地址是在仅 Azure 堆栈开发工具包环境中访问。 用户必须有权访问通过 Azure 堆栈开发工具包[RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)以连接到在 Azure 堆栈中创建的虚拟机。<br><br>特定 Azure 堆栈实例中创建的虚拟机具有 DNS 名称由云管理员配置的值。 |
 | 虚拟机存储 | 支持[托管磁盘。](../../virtual-machines/windows/managed-disks-overview.md) | 在 Azure 堆栈中尚不支持被管理的磁盘。 |
 | API 版本 | Azure 始终具有最新的 API 版本，所有虚拟机功能。 | Azure 堆栈支持这些服务的特定 Azure 服务和特定的 API 版本。 若要查看支持的 API 版本的列表，请参阅[API 版本](#api-versions)部分中的所述。 |

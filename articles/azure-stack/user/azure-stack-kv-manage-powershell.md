@@ -3,22 +3,22 @@ title: "使用 PowerShell 管理 Azure 堆栈中的密钥保管库 |Microsoft �
 description: "了解如何使用 PowerShell 管理 Azure 堆栈中的密钥保管库"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 22B62A3B-B5A9-4B8C-81C9-DA461838FAE5
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
-ms.author: sngun
-ms.openlocfilehash: e920ee20268f5f43592e5a27fe82dcf27cb85af1
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.author: mabrigg
+ms.openlocfilehash: 6ee2ceff10d16456a6e8c6283f40fa594b3311bc
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>使用 PowerShell 管理 Azure 堆栈中的密钥保管库
 
@@ -109,7 +109,7 @@ Add-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01” -verbose -Destin
 
 **输出**
 
-![新的密钥](media/azure-stack-kv-manage-powershell/image5.png)
+![新建密钥](media/azure-stack-kv-manage-powershell/image5.png)
 
 现在，你可以通过使用其 URI 来引用创建的密钥。 如果你创建或导入一个具有同名的现有键项，原始密钥是使用新密钥中指定的值更新。 可以通过使用特定于版本的 URI 的密钥来访问以前的版本。 例如： 
 

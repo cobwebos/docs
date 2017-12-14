@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2017
 ms.author: yurid
-ms.openlocfilehash: 6ea08dc4a3082ead9e18fb6c0c30f2ed1df765d8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f533afebcb945a5ffe269ad8f21a095a81f54a18
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -125,7 +125,7 @@ Jeff（工作负荷所有者）
 
 安全中心策略包含以下组件：
 - [数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理预配和数据收集设置。
-- [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure 策略](http://docs.microsoft.com/en-us/azure/azure-policy/azure-policy-introduction)来决定安全中心所监视和建议的控件，还可以通过 Azure 策略来创建新的定义、定义其他策略，以及跨管理组分配策略。
+- [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure 策略](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)来决定安全中心所监视和建议的控件，还可以通过 Azure 策略来创建新的定义、定义其他策略，以及跨管理组分配策略。
 - [电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全联系人和通知设置。
 - [定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)：在选择定价时，可以选择“免费”或“标准”，这决定了相应范围内的资源可以使用哪些安全中心功能（可以针对订阅、资源组和工作区进行指定）。
 

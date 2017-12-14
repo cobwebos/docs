@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 12/04/2017
 ms.author: johnkem
-ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 1a58db2d424e4280fd56be972d48df89648e8c13
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 11/10/2017
 
 | 服务 | 架构和文档 |
 | --- | --- |
+| Analysis Services | 架构不可用。 |
 | API 管理 | [API 管理诊断日志](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
@@ -45,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS 保护 | 架构不可用。 |
-| 恢复服务 | 架构不可用。|
+| 恢复服务 | [Azure 备份的数据模型](../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
 | 服务器管理 | 架构不可用。 |
 | 服务总线 |[Azure 服务总线诊断日志](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -56,6 +57,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 |资源类型|类别|类别显示名称|
 |---|---|---|
+|microsoft.aadiam/tenants|登录|登录|
 |Microsoft.AnalysisServices/servers|引擎|引擎|
 |Microsoft.AnalysisServices/servers|服务|服务|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement 网关的相关日志|
@@ -63,6 +65,7 @@ ms.lasthandoff: 11/10/2017
 |Microsoft.Automation/automationAccounts|JobStreams|作业流|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc 节点状态|
 |Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|管道活动运行日志|
 |Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
@@ -77,7 +80,7 @@ ms.lasthandoff: 11/10/2017
 |Microsoft.Devices/IotHubs|DeviceIdentityOperations|设备标识操作|
 |Microsoft.Devices/IotHubs|FileUploadOperations|文件上传操作|
 |Microsoft.Devices/IotHubs|路由|路由|
-|Microsoft.Devices/IotHubs|D2CTwinOperations|D2C 孪生操作|
+|Microsoft.Devices/IotHubs|D2C 孪生操作|D2C 孪生操作|
 |Microsoft.Devices/IotHubs|C2DTwinOperations|C2D 孪生操作|
 |Microsoft.Devices/IotHubs|TwinQueries|孪生查询|
 |Microsoft.Devices/IotHubs|JobsOperations|作业操作|

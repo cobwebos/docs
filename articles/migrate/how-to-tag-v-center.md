@@ -1,24 +1,16 @@
 ---
 title: "使用 VMware vCenter 标记对 VM 进行分组 | Microsoft 文档"
 description: "介绍如何在使用 Azure Migrate 服务运行评估之前创建组。"
-services: migration-planner
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 5c279804-aa30-4946-a222-6b77c7aac508
-ms.service: site-recovery
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: db33e31cdef143aa70809442457e447446a1681a
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 967c2a1fc0e5144c6c7d5c8c4a81cec3d77ffdb5
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="group-vms-with-vcenter-tagging"></a>使用 vCenter 标记对 VM 进行分组
 

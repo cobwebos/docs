@@ -1,25 +1,19 @@
 ---
-title: "使用 Azure 容器服务和 Swarm 的 CI/CD 管道 | Microsoft 文档"
+title: "使用 Azure 容器服务和 Swarm 的 CI/CD"
 description: "使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Visual Studio Team Services 持续交付多容器 .NET Core 应用程序"
 services: container-service
-documentationcenter: " "
 author: jcorioland
-manager: pierlag
-tags: acs, azure-container-service
-keywords: "Docker, 容器, 微服务, Swarm, Azure, Visual Studio Team Services, DevOps"
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 99c27c37218a35d2a3416d6edd5e0a871cd5c011
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38877afb63e993eeaab723a6ea5f4c40d3c956a5
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>用于通过 Visual Studio Team Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -56,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-还需要准备一台装有 Docker 的 Ubuntu（14.04 或 16.04）计算机。 在生成和发布过程中，Visual Studio Team Services 将使用此计算机。 创建此计算机的方法之一是使用 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/)中提供的映像。 
+还需要准备一台装有 Docker 的 Ubuntu（14.04 或 16.04）计算机。 在生成和发布过程中，Visual Studio Team Services 将使用此计算机。 创建此计算机的方法之一是使用 [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/) 中提供的映像。 
 
 ## <a name="step-1-configure-your-visual-studio-team-services-account"></a>步骤 1：配置 Visual Studio Team Services 帐户 
 
@@ -72,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="install-the-docker-integration-vsts-extension"></a>安装 Docker 集成 VSTS 扩展
 
-Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 Docker。 [VSTS 应用商店](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker)中提供了此扩展。 单击“安装”，将此扩展添加到 VSTS 帐户：
+Microsoft 提供了一个 VSTS 扩展，用于在生成和发布过程中操作 Docker。 [VSTS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker) 中提供了此扩展。 单击“安装”，将此扩展添加到 VSTS 帐户：
 
 ![安装 Docker 集成](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 

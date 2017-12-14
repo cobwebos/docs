@@ -1,24 +1,16 @@
 ---
 title: "在 Azure Migrate 中使用计算机依赖项分组计算机 | Microsoft 文档"
 description: "介绍了如何在 Azure Migrate 服务中使用计算机依赖项创建评估。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 0527e34e-a078-405e-aeb9-c91a5808112a
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 5ed49f3dc71af6a8c1c7b6c9e38fd84452505aec
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 769c05916de4e7ad5b14812c2c8dbcf69e91320c
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>使用计算机依赖项映射分组计算机
 

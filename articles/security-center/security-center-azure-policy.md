@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: f0cb50c5ad991073b83dc5e87fbfb0300f40fc03
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>集成安全中心安全策略与 Azure 策略
 本文介绍如何配置 Azure 策略所支持的 Azure 安全中心安全策略。 
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/16/2017
 * 监视策略符合性。
 
 > [!NOTE]
-> Azure 策略为有限预览版。 若要加入，请转到 [Sign up for Azure Policy](https://aka.ms/getpolicy)（注册 Azure 策略）。 有关 Azure 策略的详细信息，请参阅[创建和管理策略以强制实施符合性](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy)。
+> Azure 策略为有限预览版。 若要加入，请转到 [Sign up for Azure Policy](https://aka.ms/getpolicy)（注册 Azure 策略）。 有关 Azure 策略的详细信息，请参阅[创建和管理策略以强制实施符合性](http://docs.microsoft.com/azure/azure-policy/create-manage-policy)。
 
 ## <a name="edit-security-policies"></a>编辑安全策略
 可以在安全中心为每个 Azure 订阅编辑默认的安全策略。 若要修改安全策略，你必须是该订阅或包含型管理组的所有者、参与者或安全管理员。 若要查看安全中心的安全策略，请执行以下操作：

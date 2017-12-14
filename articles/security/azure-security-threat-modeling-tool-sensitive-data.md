@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 | **Web 应用程序** | <ul><li>[确保不要在浏览器中缓存敏感内容](#cache-browser)</li><li>[加密 Web 应用配置文件中包含敏感数据的部分](#encrypt-data)</li><li>[在敏感窗体和输入中显式禁用自动填充 HTML 特性](#autocomplete-input)</li><li>[确保用户屏幕上显示的敏感数据经过屏蔽](#data-mask)</li></ul> | 
 | **数据库** | <ul><li>[实施动态数据屏蔽，限制透露给非特权用户的敏感数据](#dynamic-users)</li><li>[确保以加盐哈希格式存储密码](#salted-hash)</li><li>[确保数据库列中的敏感数据经过加密](#db-encrypted)</li><li>[确保启用数据库级加密 (TDE)](#tde-enabled)</li><li>[确保数据库备份经过加密](#backup)</li></ul> | 
 | **Web API** | <ul><li>[确保不要在浏览器的存储中存储与 Web API 相关的敏感数据](#api-browser)</li></ul> | 
-| Azure Document DB | <ul><li>[加密 DocumentDB 中存储的敏感数据](#encrypt-docdb)</li></ul> | 
+| Azure Document DB | <ul><li>[加密 Azure Cosmos DB 中存储的敏感数据](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS VM 信任边界** | <ul><li>[使用 Azure 磁盘加密来加密虚拟机所用的磁盘](#disk-vm)</li></ul> | 
 | **Service Fabric 信任边界** | <ul><li>[加密 Service Fabric 应用程序中的机密](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[根据需要执行安全建模并使用业务单位/团队](#modeling-teams)</li><li>[尽量避免访问关键实体的共享功能](#entities)</li><li>[为用户提供有关 Dynamics CRM 共享功能的风险与良好安全做法的培训](#good-practices)</li><li>[制定开发标准规则，禁止显示异常管理中的配置详细信息](#exception-mgmt)</li></ul> | 
@@ -261,7 +261,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [使用 Azure 磁盘加密来加密虚拟机所用的磁盘](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
-| **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure 应用商店创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
+| **步骤** | <p>Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。 Azure 磁盘加密解决方案支持以下三种客户加密方案：</p><ul><li>在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。</li><li>在通过 Azure Marketplace 创建的新 IaaS VM 上启用加密。</li><li>在 Azure 中已运行的现有 IaaS VM 上启用加密。</li></ul>| 
 
 ## <a id="fabric-apps"></a>加密 Service Fabric 应用程序中的机密
 

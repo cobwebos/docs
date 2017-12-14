@@ -66,6 +66,9 @@
         - name: 计算优化
           href: sizes-compute.md
         - name: 内存优化
+          items:
+            - name: 约束的 vCPU
+              href: constrained-vcpu.md
           href: sizes-memory.md
         - name: 存储优化
           href: sizes-storage.md
@@ -113,6 +116,8 @@
       items:
         - name: 基础结构指南
           href: infrastructure-example.md
+        - name: vCPU 配额
+          href: quotas.md
 - name: 操作指南
   items:
     - name: 创建 VM

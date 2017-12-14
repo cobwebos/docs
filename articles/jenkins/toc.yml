@@ -26,6 +26,9 @@
     - name: 使用 Azure VM 代理进行缩放
       href: /azure/jenkins/jenkins-azure-vm-agents
       maintainContext: true
+    - name: 使用 Azure 容器实例进行构建
+      href: /azure/jenkins/azure-container-agents-plugin-run-container-as-an-agent
+      maintainContext: true
 - name: 操作说明
   items:
     - name: 保护 Azure 上的 Jenkins

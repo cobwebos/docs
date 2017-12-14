@@ -3,8 +3,8 @@ title: "部署虚拟机与 Azure 堆栈上的安全地存储证书 |Microsoft �
 description: "了解如何部署虚拟机和通过 Azure 堆栈中使用密钥保管库推送到它上面的证书"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/03/2017
-ms.author: sngun
-ms.openlocfilehash: 29ccdc9eca9911b2f550f9e09da83d0b1d30f9db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: e319f5c6d27d3a223764b0a5593480f02864ddbe
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>创建虚拟机并将包含从密钥保管库中检索到的证书
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>必备组件
 
-* 你必须必须订阅服务关联，它包含密钥保管库服务。 
+* 您必须订阅服务关联，它包含密钥保管库服务。 
 * [安装适用于 Azure 堆栈 PowerShell。](azure-stack-powershell-install.md)  
 * [配置 Azure 堆栈用户 PowerShell 环境](azure-stack-powershell-configure-user.md)
 

@@ -3,8 +3,8 @@ title: "允许检索 Azure 堆栈密钥保管库机密信息的应用程序 |Mic
 description: "使用示例应用程序来使用 Azure 堆栈密钥保管库"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2017
-ms.author: sngun
-ms.openlocfilehash: 7cfb78cc5219d4adab5ceddc9d7eb8d1fc71b678
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 50103dca21d047c5cee211b2250e750739131bc1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>使用密钥和机密密钥保管库中存储的示例应用程序
 
@@ -132,7 +132,7 @@ Write-Host
 
 ## <a name="download-and-run-the-sample-application"></a>下载并运行示例应用程序
 
-从 Azure 下载密钥保管库示例[密钥保管库客户端示例](https://www.microsoft.com/en-us/download/details.aspx?id=45343)页。 提取到开发工作站上的.zip 文件的内容。 有两个样本示例文件夹中。 本主题中，我们使用 HellpKeyVault 示例。 浏览到**Microsoft.Azure.KeyVault.Samples** > **示例** > **HelloKeyVault**文件夹并打开 HelloKeyVault 应用程序在 Visual Studio。 
+从 Azure 下载密钥保管库示例[密钥保管库客户端示例](https://www.microsoft.com/en-us/download/details.aspx?id=45343)页。 提取到开发工作站上的.zip 文件的内容。 有两个样本示例文件夹中。 我们在本文中使用 HellpKeyVault 示例。 浏览到**Microsoft.Azure.KeyVault.Samples** > **示例** > **HelloKeyVault**文件夹并打开 HelloKeyVault 应用程序在 Visual Studio。 
 
 打开 HelloKeyVault\App.config 文件并将的值<appSettings>具有元素**VaultUrl**， **AuthClientId**，和**AuthClientSecret**值返回上一个脚本。 请注意，默认情况下 App.config 包含的占位符*AuthCertThumbprint*，但使用*AuthClientSecret*相反。 替换的设置后，重新生成解决方案并启动应用程序。
 

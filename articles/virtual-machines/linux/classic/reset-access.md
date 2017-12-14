@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cad36fdaf0e7b151809cf07ede10abd1abec99d0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性
 如果因为忘记密码、安全外壳 (SSH) 密钥不正确或 SSH 配置出现问题而不能连接到 Azure 上的 Linux 虚拟机，请使用 VMAccessForLinux 扩展通过 Azure CLI 重置密码或 SSH 密钥、修复 SSH 配置以及检查磁盘一致性。 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 需要执行以下操作：
 
-* 需要[安装 Azure CLI](../../../cli-install-nodejs.md) 并[连接到订阅](../../../xplat-cli-connect.md)才能使用帐户关联的 Azure 资源。
+* 需要[安装 Azure CLI](../../../cli-install-nodejs.md) 并[连接到订阅](/cli/azure/authenticate-azure-cli)才能使用帐户关联的 Azure 资源。
 * 在命令提示符下键入以下命令，为经典部署模型设置正确的模式：
     ``` 
         azure config mode asm
@@ -190,7 +190,7 @@ ms.lasthandoff: 10/11/2017
     ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要使用 Azure PowerShell cmdlet 或 Azure Resource Manager 模板来重置密码或 SSH 密钥、修复 SSH 配置和检查磁盘一致性，请参阅 [GitHub 上的 VMAccess 扩展文档](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)。 
+* 若要使用 Azure PowerShell cmdlet 或 Azure 资源管理器模板来重置密码或 SSH 密钥、修复 SSH 配置和检查磁盘一致性，请参阅 [GitHub 上的 VMAccess 扩展文档](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)。 
 * 也可以使用 [Azure 门户](https://portal.azure.com)来重置部署在经典部署模型中的 Linux VM 的密码或 SSH 密钥。 目前无法使用门户针对部署在 Resource Manager 部署模型中的 Linux VM 执行上述操作。
 * 有关使用适用于 Azure 虚拟机的 VM 扩展的详细信息，请参阅[关于虚拟机扩展和功能](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

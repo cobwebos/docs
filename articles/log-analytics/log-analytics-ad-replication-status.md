@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe52ef5d9d09ffe179faaf6ffbd90ef964fbda9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e56687519459f93998bcdd92336050093539270a
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
 
@@ -32,7 +32,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 OMS。 要了解如何将 Windows 计算机连接到 OMS，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)。 如果域控制器已经是你要连接到 OMS 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
+* 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 OMS。 要了解如何将 Windows 计算机连接到 OMS，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agent.md)。 如果域控制器已经是你要连接到 OMS 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
 * 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 复制状况解决方案添加到 OMS 工作区。  无需进一步的配置。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
@@ -47,7 +47,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>启用非域控制器以将 AD 数据发送到 OMS
 1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。
-2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 OMS](log-analytics-windows-agents.md) 或[使用现有 Operations Manager 环境将它连接到 OMS](log-analytics-om-agents.md)。
+2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 OMS](log-analytics-windows-agent.md) 或[使用现有 Operations Manager 环境将它连接到 OMS](log-analytics-om-agents.md)。
 3. 在该计算机上，设置以下注册表项：
 
    * 关键值：**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
@@ -148,7 +148,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
 为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 OMS 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”。
 
-如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 文档。
+如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agent.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md) 文档。
 
 如果不希望将任何域控制器直接连接到 OMS 或 SCOM，请参阅[允许非域控制器将 AD 数据发送到 OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
 

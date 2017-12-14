@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/31/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 2bb8370d23d9450fb8154f21c27817666fd7852c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure 加密技术：使用加密保护个人静态数据
 
@@ -57,7 +57,7 @@ Azure 服务提供多种工具和技术来帮助通过加密保护个人静态�
 
 ### <a name="azure-key-vault"></a>Azure 密钥保管库
 
-[Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) 为在 Azure 服务中加密静态数据所用的密钥提供安全存储，是建议的密钥存储和管理解决方案。 加密密钥管理对保护存储的数据至关重要。
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 为在 Azure 服务中加密静态数据所用的密钥提供安全存储，是建议的密钥存储和管理解决方案。 加密密钥管理对保护存储的数据至关重要。
 
 #### <a name="how-do-i-use-azure-key-vault-to-protect-keys-that-encrypt-personal-data"></a>如何使用 Azure Key Vault 来保护用于加密个人数据的密钥？
 
@@ -79,13 +79,13 @@ Azure Key Vault 可提供软件保护的密钥，或者你可以导入 .PFX 文�
 
 还可以在本地 HSM 中生成密钥，并将其传输到 Key Vault 服务中的 HSM，而密钥不会超出 HSM 界限。
 
-有关使用 Azure Key Vault 的详细的说明，请遵循 [Azure Key Vault 入门](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-get-started)中的步骤。
+有关使用 Azure Key Vault 的详细的说明，请遵循 [Azure Key Vault 入门](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)中的步骤。
 
-有关可对 Azure Key Vault 使用的 PowerShell Cmdlet 的列表，请参阅 [AzureRM.KeyVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0)。
+有关可对 Azure Key Vault 使用的 PowerShell Cmdlet 的列表，请参阅 [AzureRM.KeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0)。
 
 ### <a name="azure-disk-encryption-for-windows"></a>适用于 Windows 的 Azure 磁盘加密
 
-[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)保护 Azure 虚拟机上的个人静态数据，并与 Azure Key Vault 集成。 Azure 磁盘加密在 Windows 中使用 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx)、在 Linux 中使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 来加密 OS 磁盘和数据磁盘。 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 以及 Windows 8 和 Windows 10 客户端支持 Azure 磁盘加密。
+[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)保护 Azure 虚拟机上的个人静态数据，并与 Azure Key Vault 集成。 Azure 磁盘加密在 Windows 中使用 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx)、在 Linux 中使用 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 来加密 OS 磁盘和数据磁盘。 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 以及 Windows 8 和 Windows 10 客户端支持 Azure 磁盘加密。
 
 #### <a name="how-do-i-use-azure-disk-encryption-to-protect-personal-data"></a>如何使用 Azure 磁盘加密来保护个人数据？
 
@@ -103,11 +103,11 @@ Azure 会更新 VM 和 Key Vault 配置，并设置加密的 VM。
 
 ![](media/protect-personal-data-at-rest/create-key.png)
 
-[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)中提供了有关具体部署方案和用户体验的详细说明。
+[适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)中提供了有关具体部署方案和用户体验的详细说明。
 
 ### <a name="azure-storage-service-encryption"></a>Azure 存储服务加密
 
-[静态数据的 Azure 存储服务加密 (SSE)](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) 可帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 Azure 存储使用 256 位 AES 加密法自动加密数据，再将数据持久保存到存储中，并在检索之前解密数据。 此服务适用于 Azure Blob 和文件。
+[静态数据的 Azure 存储服务加密 (SSE)](https://docs.microsoft.com/azure/storage/storage-service-encryption) 可帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 Azure 存储使用 256 位 AES 加密法自动加密数据，再将数据持久保存到存储中，并在检索之前解密数据。 此服务适用于 Azure Blob 和文件。
 
 #### <a name="how-do-i-use-storage-service-encryption-to-protect-personal-data"></a>如何使用存储服务加密来保护个人数据？
 
@@ -129,13 +129,13 @@ Azure 会更新 VM 和 Key Vault 配置，并设置加密的 VM。
 
 启用加密之后，请使用以下方法之一将数据复制到存储帐户：
 
-1. 使用 [AzCopy 命令行实用工具](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy)复制 Blob 或文件。
+1. 使用 [AzCopy 命令行实用工具](https://docs.microsoft.com/azure/storage/storage-use-azcopy)复制 Blob 或文件。
 
-2. [使用 SMB 装载文件共享](https://docs.microsoft.com/en-us/azure/storage/storage-file-how-to-use-files-windows)，以便可以使用 Robocopy 等实用工具来复制文件。
+2. [使用 SMB 装载文件共享](https://docs.microsoft.com/azure/storage/storage-file-how-to-use-files-windows)，以便可以使用 Robocopy 等实用工具来复制文件。
 
-3. 使用 [.NET 等存储客户端库](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-blobs)来与 Blob 存储来回复制或者在存储帐户之间复制 Blob 或文件数据。
+3. 使用 [.NET 等存储客户端库](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-blobs)来与 Blob 存储来回复制或者在存储帐户之间复制 Blob 或文件数据。
 
-4.  使用[存储资源管理器](https://docs.microsoft.com/en-us/azure/storage/storage-explorers)将 Blob 上传到已启用加密的存储帐户。
+4.  使用[存储资源管理器](https://docs.microsoft.com/azure/storage/storage-explorers)将 Blob 上传到已启用加密的存储帐户。
 
 ### <a name="transparent-data-encryption"></a>透明数据加密
 
@@ -159,7 +159,7 @@ Azure 会更新 VM 和 Key Vault 配置，并设置加密的 VM。
 
 ![启用数据加密](media/protect-personal-data-at-rest/turn-data-encryption-on.png)
 
-[对 Azure SQL 数据库使用透明数据加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)中介绍了有关如何启用 TDE 的说明，以及有关解密受 TDE 保护的数据库的信息和其他信息。
+[对 Azure SQL 数据库使用透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)中介绍了有关如何启用 TDE 的说明，以及有关解密受 TDE 保护的数据库的信息和其他信息。
 
 ## <a name="summary"></a>摘要
 
@@ -169,10 +169,10 @@ Azure 会更新 VM 和 Key Vault 配置，并设置加密的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 磁盘加密故障排除指南](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-tsg)
+- [Azure 磁盘加密故障排除指南](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg)
 
-- [加密 Azure 虚拟机](https://docs.microsoft.com/en-us/azure/security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
+- [加密 Azure 虚拟机](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
 
-- [Azure Data Lake Store 中的数据加密](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-encryption)
+- [Azure Data Lake Store 中的数据加密](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption)
 
-- [Azure Cosmos DB 数据库静态加密](https://docs.microsoft.com/en-us/azure/cosmos-db/database-encryption-at-rest)
+- [Azure Cosmos DB 数据库静态加密](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)

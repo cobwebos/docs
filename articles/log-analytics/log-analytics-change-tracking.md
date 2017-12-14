@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 528b569ff9ffb3659e9210ea70e3aa06921cfe0d
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 81cc7f78ef777e02b195422a81d9a9f15cb63564
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/20/2017
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 在想要监视更改的每台计算机上，都必须装有 [Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md) 或 [Linux](log-analytics-linux-agents.md) 代理。
+* 在想要监视更改的每台计算机上，都必须装有 [Windows](log-analytics-windows-agent.md)、[Operations Manager](log-analytics-om-agents.md) 或 [Linux](log-analytics-linux-agents.md) 代理。
 * 将更改跟踪解决方案从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) 添加到 OMS 工作区。 或者，你可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中的信息来添加解决方案。 无需进一步配置。
 
 ### <a name="configure-linux-files-to-track"></a>配置要跟踪的 Linux 文件
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/20/2017
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Linux 文件跟踪”。
 3. 在“Linux 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），然后单击“添加”符号。 例如："/etc/*.conf"
-4. 单击“保存”。  
+4. 单击“保存” 。  
 
 > [!NOTE]
 > Linux 文件跟踪具有一些附加功能，包括目录跟踪、通过目录递归和通配符跟踪。

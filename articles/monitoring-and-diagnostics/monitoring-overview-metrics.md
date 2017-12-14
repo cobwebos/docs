@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的指标概述
 本文介绍 Microsoft Azure 中的指标及其优点，以及如何开始使用它们。  
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
    ![在 Azure 监视器中通过单个位置访问所有指标](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
-> 可以从 VM（基于 Azure Resource Manager）访问主机级指标和虚拟机规模集，无需指定任何额外的诊断设置。 这些新的主机级指标可供 Windows 和 Linux 实例使用。 这些指标不会与在 VM 或虚拟机规模集上打开 Azure 诊断后有权访问的来宾 OS 级指标相混淆。 有关配置诊断的详细信息，请参阅[什么是 Microsoft Azure 诊断](../azure-diagnostics.md)。
+> 可以从 VM（基于 Azure 资源管理器）访问主机级指标和虚拟机规模集，无需指定任何额外的诊断设置。 这些新的主机级指标可供 Windows 和 Linux 实例使用。 这些指标不会与在 VM 或虚拟机规模集上打开 Azure 诊断后有权访问的来宾 OS 级指标相混淆。 有关配置诊断的详细信息，请参阅[什么是 Microsoft Azure 诊断](../azure-diagnostics.md)。
 >
 >
 
@@ -89,11 +89,11 @@ Azure Monitor 预览版还提供全新的指标制图体验。 通过这种体�
 ## <a name="access-metrics-via-the-rest-api"></a>通过 REST API 访问指标
 可以通过 Azure 监视器 API 访问 Azure 指标。 存在两个可帮助发现和访问指标的 API：
 
-* 使用 [Azure Monitor 指标定义 REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricdefinitions) 访问服务可用的指标和任何维度列表。
-* 使用 [Azure Monitor 指标 REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metrics) 细分、筛选和访问实际指标数据。
+* 使用 [Azure Monitor 指标定义 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) 访问服务可用的指标和任何维度列表。
+* 使用 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics) 细分、筛选和访问实际指标数据。
 
 > [!NOTE]
-> 本文通过适用于 Azure 资源的[新指标 API](https://docs.microsoft.com/en-us/rest/api/monitor/) 介绍指标。 新指标定义和指标 API 的 API 版本为 2017-05-01-preview。 可以使用 API 版本 2014-04-01 访问旧指标定义和指标。
+> 本文通过适用于 Azure 资源的[新指标 API](https://docs.microsoft.com/rest/api/monitor/) 介绍指标。 新指标定义和指标 API 的 API 版本为 2017-05-01-preview。 可以使用 API 版本 2014-04-01 访问旧指标定义和指标。
 >
 >
 

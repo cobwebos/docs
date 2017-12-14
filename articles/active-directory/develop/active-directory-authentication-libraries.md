@@ -4,7 +4,7 @@ description: "通过 Azure AD 身份验证库 (ADAL)，客户端应用程序开�
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: mbaldwin
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/25/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1b79fb5b280b0cb4e087c2acde07796fd51e81fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f017e3d323b98660fdee902770652b3165e70e5e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 身份验证库
 通过 Azure Active Directory Authentication Library (ADAL)，应用程序开发者可以让用户通过云或本地 Active Directory (AD) 的身份验证，并获取令牌来保护 API 调用。 ADAL 通过以下功能使开发者更轻松地进行身份验证：
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
  - 更多
 
 > [!NOTE]
-> 在找 Azure AD v2.0 库 (MSAL) 吗？ 请参阅 [MSAL 库指南](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries)。 
+> 在找 Azure AD v2.0 库 (MSAL) 吗？ 请参阅 [MSAL 库指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)。 
 > 
 > 
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="v20-client-libraries-msal"></a>v2.0 客户端库 (MSAL)
 
-[Azure AD v2.0 终结点](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)在一个终结点后结合了 Azure AD 和 Microsoft 帐户。 若要访问此终结点，开发者可以使用[支持生产的预览版 MSAL 库](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries)（而不是 ADAL）。
+[Azure AD v2.0 终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)在一个终结点后结合了 Azure AD 和 Microsoft 帐户。 若要访问此终结点，开发者可以使用[支持生产的预览版 MSAL 库](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)（而不是 ADAL）。
 
 | 平台 | 库 | 下载 | 源代码 | 示例 | 引用
 | --- | --- | --- | --- | --- | --- |
