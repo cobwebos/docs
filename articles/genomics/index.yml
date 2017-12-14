@@ -1,0 +1,34 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Microsoft 基因组学文档"
+metadata:
+  title: "Microsoft 基因组学文档"
+  meta.description: Learn how to use the Microsoft Genomics service.
+  services: microsoft-genomics
+  author: grhuynh
+  manager: jhubbard
+  editor: jasonwhowell
+  ms.author: grhuynh
+  ms.service: microsoft-genomics
+  ms.workload: genomics
+  ms.topic: landing-page
+  ms.date: 12/07/2017
+  ms.openlocfilehash: 8a86847a27981ef814efc74755796c31fde85acc
+  ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/13/2017
+abstract:
+  description: "了解 Microsoft 基因组学如何使用 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK) 为基因组排序提供支持。"
+sections:
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "通过 Microsoft 基因组学服务提交工作流。"
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/helix-blue-orange.svg
+      text: "提交工作流"
+      href: quickstart-run-genomics-workflow-portal
