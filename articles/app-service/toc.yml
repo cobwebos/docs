@@ -89,6 +89,8 @@
       items:
         - name: 部署应用
           items:
+            - name: 部署 ZIP 文件
+              href: app-service-deploy-zip.md
             - name: 通过 FTP 进行部署
               href: app-service-deploy-ftp.md
             - name: 通过云同步进行部署

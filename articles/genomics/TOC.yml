@@ -1,0 +1,31 @@
+- name: Microsoft 基因组学文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Microsoft 基因组学？
+      href: overview-what-is-genomics.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 运行示例基因组学工作流
+      href: quickstart-run-genomics-workflow-portal.md
+    - name: 使用各种输入文件格式
+      items:
+        - name: 成对的 FASTQ 文件
+          href: quickstart-input-pair-fastq.md
+        - name: BAM 文件
+          href: quickstart-input-bam.md
+        - name: 多个 FASTQ 或 BAM 文件
+          href: quickstart-input-multiple.md
+- name: 资源
+  items:
+    - name: 常见问题
+      href: frequently-asked-questions-genomics.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/genomics/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支持选项
+      href: 'https://azure.microsoft.com/support/options/'

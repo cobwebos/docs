@@ -176,8 +176,10 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: 配置用于从 VMware 复制到 Azure 的设置
           href: site-recovery-setup-replication-settings-vmware.md
-        - name: 从复制中排除磁盘
+        - name: 在从 VMware 到 Azure 的复制中排除磁盘
           href: site-recovery-exclude-disk.md
+        - name: 在从 Hyper-V 到 Azure 的复制中排除磁盘
+          href: site-recovery-hyper-v-exclude-disk.md
         - name: 部署移动服务用于 VMware 复制
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:
