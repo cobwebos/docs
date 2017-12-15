@@ -44,6 +44,8 @@
       href: time-series-insights-send-events.md
     - name: 缩放环境
       href: time-series-insights-how-to-scale-your-environment.md
+    - name: 使用模板管理资源
+      href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
 - name: 引用
   items:
     - name: 查询 API

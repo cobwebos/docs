@@ -71,6 +71,7 @@
 ### [为已连接的工厂部署网关](iot-suite-connected-factory-gateway-deployment.md)
 ### [自定义连接的工厂](iot-suite-connected-factory-customize.md)
 ### [将 OPC 发布服务器用于连接的工厂](iot-suite-connected-factory-publisher.md)
+### [配置连接的工厂](iot-suite-connected-factory-configure.md)
 ## [azureiotsuite.com 权限](iot-suite-permissions.md)
 
 # 引用

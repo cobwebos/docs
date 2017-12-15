@@ -265,6 +265,7 @@
 #### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
+### [管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## 访问评审
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)
