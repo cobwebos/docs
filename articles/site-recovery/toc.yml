@@ -241,6 +241,8 @@
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
         - name: 管理 vCenter 服务器
           href: site-recovery-vmware-to-azure-manage-vCenter.md
+        - name: 使用 CSP 管理多租户
+          href: site-recovery-manage-multi-tenancy-with-csp.md
         - name: 删除服务器并禁用保护
           href: site-recovery-manage-registration-and-protection.md
         - name: 删除保管库
