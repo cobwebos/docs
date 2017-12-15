@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/14/2017
 ms.author: JeffGo
-ms.openlocfilehash: 6c74071cedb1da9a59f47b10eaf538d24cb9ab01
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 111b6274f4a3633fa4dd367866bf4e4e72d6e2df
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 
@@ -47,7 +47,11 @@ ms.lasthandoff: 12/01/2017
 
     a. 在 Azure 堆栈开发工具包 (ASDK) 安装中，登录到物理主机。
 
-    b. 在多节点系统中，主机必须是一个系统，可以访问特权终结点。
+    b. 在多节点系统中，主机必须是一个系统，可以访问特权终结点。 
+    
+    >[!NOTE]
+    > 正在运行该脚本的系统*必须*要安装的.NET 运行时的最新版本的 Windows 10 或 Windows Server 2016 系统。 否则安装将会失败。 ASDK 主机满足此条件。
+
 
 3. 下载二进制 SQL 资源提供程序并执行自解压缩程序中，若要将内容提取到临时目录。
 
@@ -56,16 +60,19 @@ ms.lasthandoff: 12/01/2017
 
     | Azure 堆栈生成 | SQL RP 安装程序 |
     | --- | --- |
-    | 1.0.171122.1 | [SQL RP 版本 1.1.10.0](https://aka.ms/azurestacksqlrp) |
+    | 1.0.171122.1 | [SQL RP 版本 1.1.12.0](https://aka.ms/azurestacksqlrp) |
     | 1.0.171028.1 | [SQL RP 版本 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
     | 1.0.170928.3 | [SQL RP 版本 1.1.3.0](https://aka.ms/azurestacksqlrp1709) |
    
 
 4. 从特权终结点中检索 Azure 堆栈根证书。 为 ASDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
 
-    如果你需要提供你自己的证书，你需要以下证书：
+    如果你需要提供你自己的证书，你将需要放入的 PFX 文件**DependencyFilesLocalPath** （请参见下文），如下所示：
 
-    通配符证书\*.dbadapter。\<区域\>。\<外部 fqdn\>。 此证书必须受信任，如将由证书颁发机构颁发。 即，信任链必须存在而无需中间证书。 可使用在安装过程中使用显式的 VM 名称 [sqladapter] 的单个站点证书。
+    - 通配符证书\*.dbadapter。\<区域\>。\<外部 fqdn\>或使用 sqladapter.dbadapter 的公用名的单个站点证书。\<区域\>。\<外部 fqdn\>
+    - 此证书必须受信任，如将由证书颁发机构颁发。 即，信任链必须存在而无需中间证书。
+    - 只有一个单个证书文件所在 DependencyFilesLocalPath。
+    - 文件名称必须不包含任何特殊字符。
 
 
 5. 打开**新**提升 （管理） 的 PowerShell 控制台和对您将文件解压缩 directory 的更改。 使用新窗口以避免可能不正确已加载的 PowerShell 模块从系统出现的问题。

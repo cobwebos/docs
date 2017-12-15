@@ -107,6 +107,8 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: 管理存储资源
           href: azure-stack-manage-storage-accounts.md
+        - name: 管理存储容量
+          href: azure-stack-manage-storage-shares.md
         - name: 管理 Windows Azure Pack VM
           href: azure-stack-manage-windows-azure-pack.md
         - name: 更换硬件
