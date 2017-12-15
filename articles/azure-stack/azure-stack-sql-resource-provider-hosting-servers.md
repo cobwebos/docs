@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 12/14/2017
 ms.author: JeffGo
-ms.openlocfilehash: 58c83b74041e0e2e82729f569c53aca59f3aed43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da76eaf92bf27195b4f1780511818a7689300f66
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>添加 SQL 适配器使用的宿主服务器
 
@@ -28,11 +28,9 @@ ms.lasthandoff: 10/11/2017
 * 由 RP 和用户工作负荷，必须使用专用的 SQL 实例。 不能使用任何其他使用者，包括应用程序服务正在使用的 SQL 实例。
 * RP 适配器未加入域，并可以仅使用 SQL 身份验证连接。
 * 你必须配置具有由 RP 使用的适当权限的帐户。
-* 网络流量从 RP to SQL 使用端口 1433，且无法更改。
 * RP 和如 Web Apps 的用户使用用户网络，因此不需要连接到此网络上的 SQL 实例。 此要求通常意味着您的 SQL 实例的 IP 必须在公用网络上。
 * SQL 实例和及其主机的管理是完全取决于您;RP 不执行修补、 备份，则凭据旋转，等等。
 * Sku 可以用于创建不同的 SQL 丰富功能，如性能，类始终，等等。
-
 
 
 有多种 SQL IaaS 虚拟机映像都是可通过应用商店管理功能。 请确保你在部署使用应用商店项目的 VM 之前始终下载最新版本的 SQL IaaS 扩展。 SQL 映像是在 Azure 中提供 SQL Vm 相同。 从这些映像，IaaS 扩展创建 SQL 虚拟机，并相应门户增强功能提供功能，例如自动修补和备份功能。
@@ -73,6 +71,8 @@ ms.lasthandoff: 10/11/2017
 
   ![新的宿主服务器](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
+    你可以选择性地包含实例名称，并可以提供一个端口号，如果此实例不分配给默认端口 1433年。
+
   > [!NOTE]
   > 只要可以按用户和管理 Azure 资源管理器访问 SQL 实例，它可以放置在控制之下的资源提供程序。 SQL 实例__必须__分配以独占方式给 RP。
 
@@ -86,10 +86,10 @@ ms.lasthandoff: 10/11/2017
 
     示例：
 
-    ![SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+![SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 >[!NOTE]
-Sku 可以花费一个小时的时间无法在门户中显示。 只有完全创建 SKU，才能创建数据库。
+> Sku 可以花费一个小时的时间无法在门户中显示。 用户无法创建数据库，直到完全创建 SKU。
 
 ## <a name="provide-capacity-using-sql-always-on-availability-groups"></a>提供使用 SQL Alwayson 可用性组的容量
 配置 SQL Always On 实例需要额外的步骤，并且涉及在至少三个虚拟机 （或物理计算机）。
@@ -126,7 +126,7 @@ GO
     **SQL 托管服务器**边栏选项卡是其中你可以连接到的 SQL Server 作为资源提供程序的后端的实际实例的 SQL Server 资源提供程序。
 
 
-3. 使用 SQL Server 实例，确保使用始终上侦听器的 FQDN 或 IPv4 地址的连接详细信息来填充窗体。 提供配置与系统管理员权限的帐户的帐户信息。
+3. 使用 SQL Server 实例，确保使用始终在侦听器 （和可选端口号） 的 FQDN 或 IPv4 地址的连接详细信息来填充窗体。 提供配置与系统管理员权限的帐户的帐户信息。
 
 4. 选中此框以启用对 SQL Alwayson 可用性组实例的支持。
 
@@ -137,7 +137,7 @@ GO
 
 ## <a name="making-sql-databases-available-to-users"></a>使 SQL 数据库可供用户
 
-创建计划，并提供可使 SQL 数据库可供用户使用。 将 Microsoft.SqlAdapter 服务添加到计划，并添加了现有的配额，或创建一个新。 如果你创建的配额，则可以指定的容量以允许用户。
+创建计划，并提供可使 SQL 数据库可供用户使用。 将 Microsoft.SqlAdapter 服务添加到计划，并添加了现有配额，或创建一个新。 如果你创建的配额，你指定的容量以允许用户。
 
 ![创建计划，并提供要包括数据库](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
 
