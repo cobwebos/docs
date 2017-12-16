@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: JeffGoldner
-ms.openlocfilehash: 939ae243c02eb375251cc4d959ab5d46dc41c040
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 4701891600ab0f3eb6105bec26ca4b911568c4ee
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/15/2017
@@ -30,10 +30,13 @@ ms.lasthandoff: 12/15/2017
 
 |  | 项名称 | 说明 | 发布者 | OS 类型 |
 | --- | --- | --- | --- | --- |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>下载此扩展来部署 Windows 应用商店项上的任何 SQL Server-这是必需的。</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [自定义脚本扩展](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>下载此更新到框中的自定义脚本扩展适用于 Windows 的版本。</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>下载此更新的现成新版 PowerShell DSC 扩展。</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft 反恶意软件扩展](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 | Microsoft | Windows |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | Linux 虚拟机的 docker 扩展。 | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>下载此扩展来部署 Windows 应用商店项上的任何 SQL Server-这是必需的。</b> | Microsoft | Windows |
-| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Windows 的 Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Windows |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Linux Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Linux |
+| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Windows 的 Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Windows |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Linux 的 deep Security 代理](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-linux) | 适用于 Linux 的 trend Micro Deep Security 扩展。 | Trend Micro | Linux |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Windows 的 deep Security 代理](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm) | 适用于 Windows 的 trend Micro Deep Security 扩展。 | Trend Micro | Windows |
 
