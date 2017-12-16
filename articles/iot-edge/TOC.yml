@@ -32,6 +32,8 @@
       href: how-to-deploy-monitor.md
     - name: 预配 IoT Core 设备
       href: how-to-install-iot-core.md
+    - name: 故障排除
+      href: troubleshoot.md
 - name: 概念
   items:
     - name: IoT Edge 模块
