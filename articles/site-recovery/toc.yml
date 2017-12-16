@@ -211,7 +211,7 @@
       items:
         - name: Active Directory 和 DNS
           href: site-recovery-active-directory.md
-        - name: 复制 SQL Server
+        - name: SQL Server
           href: site-recovery-sql.md
         - name: SharePoint
           href: site-recovery-sharepoint.md

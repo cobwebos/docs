@@ -26,7 +26,6 @@
 
 ## 迁移到 SQL 数据仓库
 ### [概述](sql-data-warehouse-overview-migrate.md)
-### [迁移实用工具](sql-data-warehouse-migrate-migration-utility.md)
 ### [迁移架构](sql-data-warehouse-migrate-schema.md)
 ### [迁移代码](sql-data-warehouse-migrate-code.md)
 ### [迁移数据](sql-data-warehouse-migrate-data.md)
