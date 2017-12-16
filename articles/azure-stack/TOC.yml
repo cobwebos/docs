@@ -4,6 +4,16 @@
   items:
     - name: 什么是 Azure Stack？
       href: azure-stack-poc.md
+    - name: 发行说明
+      items:
+        - name: 开发工具包发行说明
+          href: azure-stack-asdk-release-notes.md
+        - name: 集成的系统发行说明
+          items:
+            - name: 1711 更新
+              href: azure-stack-update-1711.md
+            - name: 1710 更新
+              href: azure-stack-update-1710.md
 - name: 快速入门
   expanded: true
   items:
@@ -23,16 +33,6 @@
       href: azure-stack-planning-considerations.md
     - name: 服务策略
       href: azure-stack-servicing-policy.md
-    - name: 发行说明
-      items:
-        - name: 开发工具包发行说明
-          href: azure-stack-asdk-release-notes.md
-        - name: 集成的系统发行说明
-          items:
-            - name: 1711 更新
-              href: azure-stack-update-1711.md
-            - name: 1710 更新
-              href: azure-stack-update-1710.md
     - name: 重要功能和概念
       href: azure-stack-key-features.md
     - name: 开发工具包体系结构

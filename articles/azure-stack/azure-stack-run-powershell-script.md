@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 7c320c6ba51ae0800407aab7aee92c42b2b441a7
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>部署 Azure 堆栈开发工具包
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 12/13/2017
 1. 主机计算机已成功启动到 CloudBuilder.vhdx 映像后，使用前面的步骤中指定的管理员凭据登录。 
 2. 打开已提升权限的 PowerShell 控制台并运行**\AzureStack_Installer\asdk-installer.ps1**脚本 （其中现在可能会在 CloudBuilder.vhdx 映像中的其他驱动器上）。 单击“安装” 。
 3. 在**类型**下拉列表框中，选择**Azure 云**或**AD FS**。
-    - **Azure 云**： 配置 Azure Active Directory (Azure AD) 为标识提供程序。 若要使用此选项，你将需要 internet 连接，Azure AD 的完整名称的窗体中的目录租户*domainname*。 onmicrosoft.com 和指定的目录的全局管理员凭据。 
+    - **Azure 云**： 配置 Azure Active Directory (Azure AD) 为标识提供程序。 若要使用此选项，你将需要 internet 连接，Azure AD 的完整名称的窗体中的目录租户*domainname*。 onmicrosoft.com 或 Azure AD 验证自定义域的名称和全局管理员凭据指定的目录。 
     - **AD FS**： 目录服务将用作为标识提供程序的默认戳。 用于登录的默认帐户是azurestackadmin@azurestack.local，且要使用的密码正是作为安装的一部分提供。
 4. 下**本地管理员密码**中**密码**框中，键入本地管理员密码 （这必须匹配当前配置的本地管理员密码），，然后单击**下一步**。
 5. 选择用于开发工具包，然后单击一个网络适配器**下一步**。
@@ -206,7 +206,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>"
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
 $aadcred = Get-Credential "<Azure AD global administrator account name>" #Example: user@AADDirName.onmicrosoft.com 
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<specific Azure AD directory in the form of domainname.onmicrosoft.com>" -TimeServer 52.168.138.145 #Example time server IP address.
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
 如果你的环境**不**具有 DHCP 已启用，则您必须包括以下其他参数 （提供的示例用法） 上方选项之一： 
@@ -219,7 +219,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 |参数|必需/可选|说明|
 |-----|-----|-----|
 |AdminPassword|必选|作为开发工具包部署的一部分创建的所有虚拟机上设置本地管理员帐户和所有其他用户帐户。 此密码必须匹配当前主机上的本地管理员密码。|
-|InfraAzureDirectoryTenantName|必选|设置租户目录。 使用此参数来指定特定目录的 AAD 帐户有权管理多个目录的位置。 完整的 AAD 目录租户中的格式的名称.c o m。|
+|InfraAzureDirectoryTenantName|必选|设置租户目录。 使用此参数来指定特定目录的 AAD 帐户有权管理多个目录的位置。 完整的 AAD 目录租户中的格式的名称。 onmicrosoft.com 或 Azure AD 验证自定义域名。|
 |时间服务器|必选|使用此参数来指定特定时间服务器。 此参数必须提供有效的时间服务器 IP 地址。 不支持服务器名称。|
 |InfraAzureDirectoryTenantAdminCredential|可选|设置 Azure Active Directory 用户名和密码。 这些 Azure 凭据必须是一个 Org id。|
 |InfraAzureEnvironment|可选|选择你想要注册此 Azure 堆栈部署的 Azure 环境。 选项包括公共 Azure，Azure-中国 Azure 的美国政府。|
