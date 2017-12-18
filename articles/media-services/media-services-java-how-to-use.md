@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: ad022eb8d3a0a22e679962d75c05eed799976ece
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: bbfe7fedb1d5216b8a159faa9543ade74176181f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>用于 Azure 媒体服务的 Java 客户端 SDK 入门
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/27/2017
     compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
 
 >[!IMPORTANT]
->自 `azure-media` 包的版本 `0.9.8` 开始，SDK 添加了对 Auzre Active Directory (AAD) 身份验证的支持，删除了对 Azure 访问控制服务 (ACS) 身份验证的支持。 ACS 服务将在 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。 有关迁移的详细信息，请阅读[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md) 一文。
+>自 `azure-media` 包的版本 `0.9.8` 开始，SDK 添加了对 Azure Active Directory (AAD) 身份验证的支持，删除了对 Azure 访问控制服务 (ACS) 身份验证的支持。 ACS 服务将在 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。 有关迁移的详细信息，请阅读[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md) 一文。
 
 >[!NOTE]
 >可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)中找到 Azure 媒体服务的源代码。 请确保切换到 0.9 分支而非主分支。 

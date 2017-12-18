@@ -15,16 +15,18 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/06/2017
 ms.author: barbkess
-ms.openlocfilehash: f24dc2600bec8b7086ee34a960e777a8a1b288ad
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 861c2c977fa9d0341125127852bc7747dfd6001a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库最佳实践
 本文包含一系列最佳实践，可确保用户从 Azure SQL 数据仓库获得最佳性能。  本文的有些概念很基本且很容易解释，而有些概念则相对高级，本文只对其进行大致介绍。  本文的目的是提供一些基本指导，让用户在生成数据仓库时更加关注那些重要的方面。  每部分都介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
 
 如果刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。  主题的顺序主要按照重要性排列。  如果一开始就关注头几个概念，则效果应该不错。  更熟悉 SQL 数据仓库且能运用自如后，请再回来看看其他概念。  融会贯通不需要很长时间。
+
+有关加载指南，请参阅[加载数据的指南](guidance-for-loading-data.md)。
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>使用暂停和缩放来降低成本
 SQL 数据仓库的一个重要功能，是能够在不使用它时予以暂停，这会停止计算资源的计费。  另一个重要功能是能够缩放资源。  暂停和缩放可以通过 Azure 门户或 PowerShell 命令完成。  请熟悉这些功能，因为这些功能可以在数据仓库不使用时大幅降低成本。  如果希望随时可访问数据仓库，建议将其缩放到最小的大小 (DW100)，而不是暂停。
@@ -52,7 +54,7 @@ SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase�
 另请参阅[加载数据][Load data]、[PolyBase 使用指南][Guide for using PolyBase]、[Azure SQL Data Warehouse loading patterns and strategies][Azure SQL Data Warehouse loading patterns and strategies]（Azure SQL 数据仓库加载模式和策略）、[使用 Azure 数据工厂加载数据][Load Data with Azure Data Factory]、[使用 Azure 数据工厂移动数据][Move data with Azure Data Factory]、[CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]、[Create table as select (CTAS)][Create table as select (CTAS)]
 
 ## <a name="load-then-query-external-tables"></a>加载并查询外部表
-虽然 Polybase（也称外部表）可以最快速地加载数据，但并不特别适合查询。 SQL 数据仓库 Polybase 表目前只支持 Azure blob 文件。 这些文件并没有任何计算资源的支持。  因此，SQL 数据仓库无法卸载此工作，因此必须读取整个文件，方法是将其加载到 tempdb 来读取数据。  因此，如果有多个查询需要查询此数据，则最好是先加载一次此数据，然后让查询使用本地表。
+虽然 Polybase（也称外部表）可以最快速地加载数据，但并不特别适合查询。 SQL 数据仓库 Polybase 表目前只支持 Azure Blob 文件和 Azure Data Lake 存储。 这些文件并没有任何计算资源的支持。  因此，SQL 数据仓库无法卸载此工作，因此必须读取整个文件，方法是将其加载到 tempdb 来读取数据。  因此，如果有多个查询需要查询此数据，则最好是先加载一次此数据，然后让查询使用本地表。
 
 另请参阅 [Guide for using PolyBase][Guide for using PolyBase]（PolyBase 使用指南）
 
@@ -127,8 +129,8 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。  以下监视相关
 [Table partitioning]: ./sql-data-warehouse-tables-partition.md
 [Manage table statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary tables]: ./sql-data-warehouse-tables-temporary.md
-[Guide for using PolyBase]: ./sql-data-warehouse-load-polybase-guide.md
-[Load data]: ./sql-data-warehouse-overview-load.md
+[Guide for using PolyBase]: ./guidance-for-loading-data.md
+[Load data]: ./design-elt-data-loading.md
 [Move data with Azure Data Factory]: ../data-factory/transform-data-using-machine-learning.md
 [Load data with Azure Data Factory]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md

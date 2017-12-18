@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/06/2017
 ms.author: yurid
-ms.openlocfilehash: 72a3e1eafb6f4150d8410fdd5a7a6095909c052d
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: c41e233e177f540562d80649c7bffc15e208e870
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -69,6 +69,16 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 如果使用 Azure 安全中心免费版，也可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 即使禁用数据收集，也仍会启用 VM 磁盘快照和项目收集。
 
+## <a name="data-consumption"></a>数据使用
+
+客户可以使用与安全中心相关的数据，这些数据来自不同的数据流，如下所示：
+
+* **Azure 活动**：所有安全警报、经审核的安全中心[实时](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)请求，以及由[自适应应用程序控件](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)生成的所有警报。
+* **Log Analytics**：所有安全警报。
+
+
+> [!NOTE]
+> 也可通过 REST API 使用安全建议。 有关详细信息，请阅读 [Security Resource Provider REST API Reference](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx)（安全资源提供程序 REST API 参考）。 
 
 ## <a name="see-also"></a>另请参阅
 本文档介绍如何在 Azure 安全中心管理数据和确保数据安全性。 若要详细了解 Azure 安全中心，请参阅：

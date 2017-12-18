@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 765d12bc283d991783fb3190ce7917b573f9fc78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c80d104fc456849f8bfd5169dd8ce1361d906a65
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>添加、禁用、启用或删除终结点
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
     1. 对于**类型**，单击“Azure 终结点”。
     2. 提供要用于识别此终结点的**名称**。
     3. 从下拉列表中选择适当的资源类型作为“目标资源类型”。
-    4. 从下拉列表中选择适当的目标资源作为“目标资源”，以便在“资源”边栏选项卡的同一订阅下显示列出的资源。 在显示的“资源”边栏选项卡中，选取要添加为第一个终结点的服务。
+    4. 如需**目标资源**，请单击“选择...”选择器，在“资源”边栏选项卡中列出同一订阅下的资源。 在显示的“资源”边栏选项卡中，选取要添加为第一个终结点的服务。
     5. 对于**优先级**，选为 **1**。 如果此终结点处于正常状态，这会导致所有流量转到此终结点。
     6. 使“添加为已禁用”保持未选中状态。
     7. 单击 **“确定”**

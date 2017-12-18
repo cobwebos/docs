@@ -13,14 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: d8b7d5830684b5e19eadd1b145a933527c2aa9fd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19ab428913517e4f3df156c93782fe23f1cd67ec
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
 
@@ -47,7 +47,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     ![创建 HDInsight 群集](./media/apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
-2. 在“基本信息”边栏选项卡中输入以下信息： 
+2. 在“基本信息”部分输入以下信息：
 
     * **群集名称**：HDInsight 群集的名称。
     * **订阅**：选择要使用的订阅。
@@ -58,7 +58,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
    ![选择订阅](./media/apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. 选择“群集类型”，并在“群集配置”边栏选项卡上设置以下值：
+3. 选择“群集类型”，并在“群集配置”部分设置以下值：
 
     * **群集类型**：Storm
 
@@ -74,11 +74,11 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 4. 选择群集类型后，使用“选择”按钮设置群集类型。 接下来，使用“下一步”按钮完成基本配置。
 
-5. 在“存储”边栏选项卡中，选择或创建存储帐户。 对于本文档中的步骤，请让此边栏选项卡上的其他字段保留默认值。 使用“下一步”按钮保存存储配置。
+5. 在“存储”部分，选择或创建存储帐户。 对于本文档中的步骤，请让此部分的其他字段保留默认值。 使用“下一步”按钮保存存储配置。
 
     ![设置 HDInsight 的存储帐户设置](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
-6. 在“摘要”边栏选项卡中，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
+6. 在“摘要”部分，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
 
     ![群集配置摘要](./media/apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
 
@@ -103,10 +103,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
 
-    > [!NOTE]
-    > 在以前版本的 HDInsight 中，拓扑的类名是 `storm.starter.WordCountTopology`，而不是 `org.apache.storm.starter.WordCountTopology`。
-
-    此命令可以在群集上启动具有友好名称“wordcount”的示例 WordCount 拓扑。 该命令随机生成句子，并统计句子中每个单词的出现次数。
+    此命令启动群集上的示例 WordCount 拓扑。 此拓扑生成随机句子，并计算单词的出现次数。 拓扑的友好名称为 `wordcount`。
 
     > [!NOTE]
     > 将自己的拓扑提交到群集时，必须先复制包含群集的 jar 文件，然后再使用 `storm` 命令。 使用 `scp` 命令来复制该文件。 例如： `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
@@ -199,7 +196,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 
 此 Apache Storm 教程介绍了有关使用 HDInsight 上 Storm 的基础知识。 接下来，了解如何 [使用 Maven 开发基于 Java 的拓扑](apache-storm-develop-java-topology.md)。
 
-如果已知道怎样开发基于 Java 的拓扑并想要将现有拓扑部署到 HDInsight，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology-linux.md)。
+如果已熟悉怎样开发基于 Java 的拓扑，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology-linux.md)文档。
 
 如果用户是 .NET 开发人员，则可使用 Visual Studio 创建 C# 拓扑或混合性的 C#/Java 拓扑。 有关详细信息，请参阅[使用用于 Visual Studio 的 Hadoop 工具开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
 

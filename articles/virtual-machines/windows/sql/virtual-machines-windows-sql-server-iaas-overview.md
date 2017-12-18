@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/02/2017
+ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 36fa884b451d41ed7443312cc21b49b0b720a954
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 140e59b971da379d7475097bf3e26d5b070fa610
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -103,7 +103,7 @@ SQL Server Azure VM 可以利用[自动备份](virtual-machines-windows-sql-auto
 
 Azure 虚拟机上的 SQL Server 入门：
 
-* [在 Azure 门户中创建 SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md)
+* [在 Azure 门户中创建 SQL Server VM](quickstart-sql-vm-create-portal.md)
 
 获取有关 SQL VM 的常见问题的解答：
 

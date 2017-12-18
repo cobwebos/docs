@@ -15,45 +15,42 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2017
+ms.date: 12/08/2017
 ms.author: larryfr
-ms.openlocfilehash: c978a9ba97ecb9b8facaf32cbefbdd06cab8df67
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2232ae8a838ae2d7feb9a66e0953f006bf45c644
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
 [Apache Storm](http://storm.apache.org/) 是一种容错的分布式开源计算系统。 若要实时处理数据流，可以将 Storm 与 Hadoop 配合使用。 Storm 解决方案还提供有保障的数据处理功能，能够重播第一次未成功处理的数据。
 
-Storm on HDInsight 具有下述重要优势：
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
-* 以托管服务的形式执行，提供 99.9% 运行时间 SLA。
+## <a name="why-use-storm-on-hdinsight"></a>为何要使用 Storm on HDInsight？
+
+Storm on HDInsight 提供以下功能：
+
+* __关于 Storm 正常运行时间的 99% 服务级别协议 (SLA)__：有关详细信息，请参阅 [HDInsight 的 SLA 信息](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)文档。
 
 * 支持在 Storm 群集创建期间或者创建之后，通过针对该群集运行脚本轻松进行自定义。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
 
-* 使用各种语言。 可以根据所选语言（例如 Java、C#、Python）编写 Storm 组件。
+* **创建多种语言的解决方案**：可以根据所选语言（例如 Java、C#、Python）编写 Storm 组件。
 
     * 将 Visual Studio 与 HDInsight 集成，以便开发、管理和监视 C# 拓扑。 有关详细信息，请参阅 [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)（使用用于 Visual Studio 的 HDInsight 工具开发 C# Storm 拓扑）。
 
     * 支持 Trident Java 接口。 可以创建支持一次性消息处理、事务性数据存储持久性和一组常见流分析操作的 Storm 拓扑。
 
-*  轻松地上下缩放 Storm 群集。 可以在不影响 Storm 拓扑运行的情况下添加或删除辅助角色节点。
+* **动态缩放**：可以在不影响 Storm 拓扑运行的情况下添加或删除辅助角色节点。
 
-* 与以下 Azure 服务集成：
+    > [!NOTE]
+    > 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
 
-    * Azure 事件中心
+* **使用多个 Azure 服务创建流式处理管道**：Storm on HDInsight 集成其他 Azure 服务，例如事件中心、SQL 数据库、Azure 存储、Azure Data Lake Store。
 
-    * Azure 虚拟网络
-
-    * Azure SQL 数据库
-
-    * Azure 存储
-
-    * Azure Cosmos DB
-
-* 使用虚拟网络，将多个 HDInsight 群集的功能安全地组合在一起。 可以创建使用 Storm、Kafka、Spark、HBase 或 Hadoop 群集的分析管道。
+    如需集成 Azure 服务的示例解决方案，请参阅[使用 Storm on HDInsight 处理事件中心的事件](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
 
 有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
 
@@ -68,6 +65,16 @@ Storm 运行的是拓扑，而不是你可能熟悉的 MapReduce 作业。 Storm
 * Spout 组件将数据引入拓扑。 它们将一个或多个流发出到拓扑中。
 
 * Bolt 组件使用 Spout 或其他 Bolt 发出的流。 Bolt 可以选择性地将流发出到拓扑中。 Bolt 还负责将数据写入 HDFS、Kafka 或 HBase 等外部服务或存储。
+
+## <a name="reliability"></a>可靠性
+
+Apache Storm 保证每个传入消息始终受到完全处理，即使数据分析分散在数百个节点。
+
+Nimbus 节点提供的功能与 Hadoop JobTracker 类似，它通过 Zookeeper 将任务分配给群集中的其他节点。 Zookeeper 节点为群集提供协调功能，并促进 Nimbus 与辅助节点上的 Supervisor 进程进行通信。 如果处理的一个节点出现故障，Nimbus 节点将得到通知，并分配到另一个节点的任务和关联的数据。
+
+Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 上的 Storm 提供两个 Nimbus 节点。 如果主节点出现故障，Storm 群集将切换到辅助节点，同时主节点会恢复。 下图说明了 Storm on HDInsight 的任务流配置：
+
+![nimbus、zookeeper 和 supervisor 示意图](./media/apache-storm-overview/nimbus.png)
 
 ## <a name="ease-of-creation"></a>容易创建
 
@@ -100,23 +107,6 @@ Storm 运行的是拓扑，而不是你可能熟悉的 MapReduce 作业。 Storm
     * [使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
 * __SQL 数据库__、__Cosmos DB__、__事件中心__和 __HBase__：针对 Visual Studio 的 Data Lake 工具包含模板示例。 有关详细信息，请参阅[为 Storm on HDInsight 开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
-
-## <a name="reliability"></a>可靠性
-
-Apache Storm 保证每个传入消息始终受到完全处理，即使数据分析分散在数百个节点。
-
-Nimbus 节点提供的功能与 Hadoop JobTracker 类似，它通过 Zookeeper 将任务分配给群集中的其他节点。 Zookeeper 节点为群集提供协调功能，并促进 Nimbus 与辅助节点上的 Supervisor 进程进行通信。 如果处理的一个节点出现故障，Nimbus 节点将得到通知，并分配到另一个节点的任务和关联的数据。
-
-Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 上的 Storm 提供两个 Nimbus 节点。 如果主节点出现故障，Storm 群集将切换到辅助节点，同时主节点会恢复。 下图说明了 Storm on HDInsight 的任务流配置：
-
-![nimbus、zookeeper 和 supervisor 示意图](./media/apache-storm-overview/nimbus.png)
-
-## <a name="scale"></a>缩放
-
-可以通过添加或删除辅助角色节点来动态地缩放 HDInsight 群集。 处理数据时，可以执行此操作。
-
-> [!IMPORTANT]
-> 若要利用通过缩放添加的新节点，需要重新平衡在增加大小之前启动的 Storm 拓扑。
 
 ## <a name="support"></a>支持
 

@@ -3,7 +3,7 @@ title: "创建 Azure AD 用户帐户 | Microsoft Docs"
 description: "本文介绍如何为 Azure 自动化中的 Runbook 创建 Azure AD 用户帐户凭据，以便在 Azure 和经典 Azure 中进行身份验证。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 keywords: "azure active directory 用户, azure 服务管理, azure ad 用户帐户"
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 8f24e6e57c2eec5950c8c12d9f4383ce11cf5c11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 700c4419821934daac89025c889b21d8e2ef46b6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>使用 Azure 经典部署和 Resource Manager 部署对 Runbook 进行身份验证
-本文介绍在为针对 Azure 经典部署模型或 Azure Resource Manager 资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。  尽管这仍是基于 Azure Resource Manager 的 Runbook 支持的身份验证标识，但建议的方法是使用 Azure 运行方式帐户。       
+本文介绍在为针对 Azure 经典部署模型或 Azure 资源管理器资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。  尽管这仍是基于 Azure 资源管理器的 Runbook 支持的身份验证标识，但建议的方法是使用 Azure 运行方式帐户。       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>创建新的 Azure Active Directory 用户
 1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 经典门户。
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 12. 在随后出现的“定义凭据”页上，在“用户名”字段中键入前面创建的 AD 用户帐户的用户名，并在“密码”和“确认密码”字段中键入密码。 单击“确定”  保存更改。
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>在 Azure 门户中创建自动化帐户
-在本部分中，将执行以下步骤以在 Azure 门户中创建一个 Azure 自动化帐户，该帐户用于在 Azure Resource Manager 模式下管理资源的 Runbook。  
+在本部分中，将执行以下步骤以在 Azure 门户中创建一个 Azure 自动化帐户，该帐户用于在 Azure 资源管理器模式下管理资源的 Runbook。  
 
 1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 门户。
 2. 选择“自动化帐户”。
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 6. 针对“创建 Azure 运行方式帐户”选项选择“是”值，并单击“创建”按钮。  
    
     > [!NOTE]
-    > 如果通过选择“否”选项来选择不创建运行方式帐户，则“添加自动化帐户”边栏选项卡中会出现一条警告消息。  尽管这会创建帐户并将其分配到订阅中的“参与者”角色，但该帐户在订阅目录服务中没有相应的身份验证标识，因此无法访问订阅中的资源。  这会导致引用此帐户的任何 Runbook 都无法进行身份验证并针对 Azure Resource Manager 资源执行任务。
+    > 如果通过选择“否”选项来选择不创建运行方式帐户，则“添加自动化帐户”边栏选项卡中会出现一条警告消息。  尽管这会创建帐户并将其分配到订阅中的“参与者”角色，但该帐户在订阅目录服务中没有相应的身份验证标识，因此无法访问订阅中的资源。  这会导致引用此帐户的任何 Runbook 都无法进行身份验证并针对 Azure 资源管理器资源执行任务。
     > 
     >
 

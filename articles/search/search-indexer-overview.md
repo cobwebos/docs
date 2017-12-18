@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: c1d393064313ea65d5226378172530115c338f86
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 827c0122fafceca369c0350e6846c77e98abc3b5
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
 > [!div class="op_single_selector"]
@@ -64,7 +64,10 @@ Azure 搜索中的 *索引器* 是一种爬网程序，它从外部数据源提�
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
-索引器会自动执行某些与数据引入相关的任务，但不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 有关构建索引的详细信息，请参阅 [创建索引（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。 如需字段关联方面的帮助，请参阅 [Azure 搜索索引器中的字段映射](search-indexer-field-mappings.md)。
+索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 有关构建索引的详细信息，请参阅 [创建索引（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。 如需字段关联方面的帮助，请参阅 [Azure 搜索索引器中的字段映射](search-indexer-field-mappings.md)。
+
+> [!Tip]
+> 虽然不能使用索引器来生成索引，但可以使用门户中的**导入数据**向导。 大多数情况下，该向导可以根据源中现有的元数据推断索引架构，提供一个初级索引架构，该架构在向导处于活动状态时可以进行内联编辑。 在服务上创建索引以后，若要在门户中进一步进行编辑，多数情况下只能添加新字段。 可以将向导视为索引的创建工具而非修订工具。 如需手动方式的学习，请一步步完成[门户演练](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步骤 3：创建和计划索引器
 索引器定义是一种构造，用于指定索引、数据源和计划。 索引器可从另一个服务引用数据源，前提是该数据源来自同一个订阅。 有关构建索引器的详细信息，请参阅 [创建索引器（Azure 搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。

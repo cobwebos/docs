@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: 6b5552bbb3a56a95e616a79bf9adeabe68d01216
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 4214bc2a58a1ce6d0d329010ec7775a343e9d782
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -201,7 +201,7 @@ typeProperties | typeProperties 部分的属性取决于每个活动类型。 �
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency)。 | 否
 
 ### <a name="activity-dependency"></a>活动依赖项
-活动依赖项定义后续活动对以前活动的依赖方式，确定是否继续执行下一个任务的条件。 活动可以保护具有不同依赖项条件的一个或多个以前的活动。 
+活动依赖项定义后续活动对以前活动的依赖方式，确定是否继续执行下一个任务的条件。 活动可能依赖于具有不同依赖项条件的一个或多个以前的活动。 
 
 不同的依赖项条件有：成功、失败、跳过和完成。
 

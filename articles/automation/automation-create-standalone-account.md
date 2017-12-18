@@ -3,7 +3,7 @@ title: "创建独立的 Azure 自动化帐户 | Microsoft Docs"
 description: "本教程引导在 Azure 自动化中创建、测试安全主体，并示范如何使用安全主体进行身份验证。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: e3c18c7886c8338efc6168464b63a9557909a769
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc4bfa4a94eaa2fb4e0e821c4931dcd1963f3109
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
-本主题介绍如何通过 Azure 门户创建自动化帐户，其前提是，需要在不包括其他管理解决方案或不与 OMS Log Analytics 集成的情况下，评估和了解 Azure 自动化，以便对 Runbook 作业进行高级监视。  可以在将来随时添加这些管理解决方案或集成 Log Analytics。  使用自动化帐户，可以对在 Azure Resource Manager 部署或 Azure 经典部署中管理资源的 Runbook 进行身份验证。
+本主题介绍如何通过 Azure 门户创建自动化帐户，其前提是，需要在不包括其他管理解决方案或不与 OMS Log Analytics 集成的情况下，评估和了解 Azure 自动化，以便对 Runbook 作业进行高级监视。  可以在将来随时添加这些管理解决方案或集成 Log Analytics。  使用自动化帐户，可以对在 Azure 资源管理器部署或 Azure 经典部署中管理资源的 Runbook 进行身份验证。
 
 在 Azure 门户中创建自动化帐户时，还会自动创建以下帐户：
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
 2. 单击“新建” 。<br><br> ![在 Azure 门户中选择“新建”选项](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
-3. 搜索“自动化”，并在搜索结果中选择“自动化与控制”*。<br><br> ![从应用商店搜索并选择“自动化”](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
+3. 搜索“自动化”，并在搜索结果中选择“自动化与控制”*。<br><br> ![从 Marketplace 搜索并选择“自动化”](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
 3. 在“自动化帐户”边栏选项卡中，单击“添加”。<br><br>![添加自动化帐户](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 10/11/2017
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
 | AzureAutomationTutorialPython2 Runbook |一个示例 python runbook，演示如何使用运行方式帐户进行身份验证，然后列出指定订阅中存在的资源组。 |
-| AzureRunAsCertificate |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的证书资产。  使用此证书，可以向 Azure 进行身份验证，以便通过 Runbook 管理 Azure Resource Manager 资源。  此证书有一年的有效期。 |
+| AzureRunAsCertificate |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的证书资产。  使用此证书，可以向 Azure 进行身份验证，以便通过 Runbook 管理 Azure 资源管理器资源。  此证书有一年的有效期。 |
 | AzureRunAsConnection |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的连接资产。 |
 
 下表汇总了经典运行方式帐户的资源。<br>

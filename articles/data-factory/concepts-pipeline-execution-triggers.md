@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -131,7 +131,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="triggers"></a>触发器
 触发器提供执行管道运行的第二种方式。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持按时钟计划调用管道的触发器。 它称为“计划程序触发器”。 目前，数据工厂不支持基于事件的触发器，例如，在文件到达时管道运行的触发器。
 
-管道和触发器具有“n-m”关系。 多个触发器可以启动单个管道，并且同一个触发器可以启动多个管道。 在触发器的以下 JSON 定义中，pipelines 属性是指由特定的触发器和管道参数的值触发的管道的列表。
+管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在触发器的以下 JSON 定义中，pipelines 属性是指由特定的触发器和管道参数的值触发的管道的列表。
 
 ### <a name="basic-trigger-definition"></a>基本触发器定义： 
 ```json
@@ -165,7 +165,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="scheduler-trigger-json-definition"></a>计划程序触发器 JSON 定义
 在创建计划程序触发器时，可以使用 JSON 指定计划和循环，如本部分中的示例所示。 
 
-若要使用计划程序触发器启动管道运行，请在触发器定义中包括特定管道的管道引用。 管道和触发器具有“n-m”关系。 多个触发器可以启动单个管道。 同一个触发器可以启动多个管道。
+若要使用计划程序触发器启动管道运行，请在触发器定义中包括特定管道的管道引用。 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。
 
 ```json
 {

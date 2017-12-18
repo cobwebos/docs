@@ -3,7 +3,7 @@ title: "从 Log Analytics 警报调用 Azure 自动化 Runbook | Microsoft 文�
 description: "本文概述如何从 Microsoft OMS Log Analytics 警报调用自动化 Runbook。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 10b445f8fcaa80182119e47f37ffb11240a46869
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0b15f33a177afc70a3662c5bd008eb236ed0d6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="calling-an-azure-automation-runbook-from-an-oms-log-analytics-alert"></a>从 OMS Log Analytics 警报调用 Azure 自动化 Runbook
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 12/06/2017
 
 ## <a name="characteristics-of-a-runbook-for-both-options"></a>Runbook 的特征（适用于上述两个选项）
 
-从 Log Analytics 警报调用 Runbook 的两种方法具有某些特征，在配置警报规则之前，需要理解这些特征。
+从 Log Analytics 警报调用 Runbook 的两种方法具有某些特征，在配置警报规则之前，需要理解这些特征。 在名为 **SearchResult** 的单个属性中，警报数据采用 json 格式。 此格式适用于使用标准有效负载的 runbook 和 webhook 操作。 对于使用自定义有效负载（包括 **RequestBody** 中的 **IncludeSearchResults:True**）的 webhook 操作，此属性为 **SearchResults**。
 
 * 必须创建一个名为 **WebhookData**、类型为 **Object** 的 Runbook 输入参数。 该参数可以是必需的，也可以是可选的。 警报会使用此输入参数将搜索结果传递给 Runbook。
 
@@ -61,6 +61,7 @@ ms.lasthandoff: 12/06/2017
     ```
 
     $SearchResult 是一个对象数组；每个对象包含一些字段，字段值取自一条搜索结果
+
 
 ## <a name="example-walkthrough"></a>示例演练
 
@@ -80,6 +81,9 @@ $SearchResult.SvcDisplayName_CF
 当服务停止时，Log Analytics 中的警报规则会检测匹配项并触发 Runbook，然后将警报上下文发送给 Runbook。 Runbook 执行操作来验证服务是否已停止，如果已停止，则尝试重启服务，然后验证服务是否已正常启动，并输出结果。     
 
 如果未会自动化帐户链接到 OMS 工作区，可遵循前面所述的指导，在警报规则中配置一个 Webhook 操作来触发 Runbook，将 Runbook 配置为转换 JSON 格式的字符串并根据 \*.SearchResult\* 进行筛选。    
+
+>[!NOTE]
+> 如果工作区已升级到[新 Log Analytics 查询语言](../log-analytics/log-analytics-log-search-upgrade.md)，则 webook 有效负载已更改。  [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) 中提供了格式的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

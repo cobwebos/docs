@@ -10,7 +10,7 @@
 ### <a name="are-there-asns-reserved-by-azure"></a>是否存在由 Azure 保留的 ASN？
 是，Azure 保留了以下 ASN 用于内部和外部的对等互连：
 
-* 公用 ASN：8075、8076、12076
+* 公用 ASN：8074、8075、12076
 * 专用 ASN：65515、65517、65518、65519、65520
 
 连接到 Azure VPN 网关时，不能为本地 VPN 设备指定这些 ASN。
