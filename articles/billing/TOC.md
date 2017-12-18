@@ -27,17 +27,17 @@
 ### [针对 Enterprise 注册了解保留实例使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## 管理订阅
+### [查找订阅或管理组](billing-enterprise-mgmt-grp-find.md)
 ### [管理管理员角色](billing-add-change-azure-subscription-administrator.md)
 ### [转让订阅所有权](billing-subscription-transfer.md)
 ### [重新激活已禁用的订阅](billing-subscription-become-disable.md)
 ### [从免费订阅升级](billing-upgrade-azure-subscription.md)
 ### [切换订阅产品](billing-how-to-switch-azure-offer.md)
+### [链接 Azure AD 租户](../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json)
 ### [取消订阅](billing-how-to-cancel-azure-subscription.md)
-### [查找订阅或管理组](billing-enterprise-mgmt-grp-find.md)
 ## 管理帐户
 ### [编辑个人资料](billing-how-to-change-azure-account-profile.md)
 ### [更新支付信息](billing-how-to-change-credit-card.md)
-### [链接 Office 365 租户](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [按发票为订阅付款](billing-how-to-pay-by-invoice.md)
 ## [管理保留 VM 实例](billing-manage-reserved-vm-instance.md)
 ## 故障排除

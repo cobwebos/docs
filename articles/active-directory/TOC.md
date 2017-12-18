@@ -58,6 +58,7 @@
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
 #### [动态组和 B2B 用户](active-directory-b2b-dynamic-groups.md)
 #### [审核和报表](active-directory-b2b-auditing-and-reporting.md)
+#### [适用于混合组织的 B2B](active-directory-b2b-hybrid-organizations.md)
 #### [B2B 和 Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 #### [B2B 许可](active-directory-b2b-licensing.md)
 #### [当前限制](active-directory-b2b-current-limitations.md)

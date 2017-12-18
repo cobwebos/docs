@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: a32159494fc374a162db07b67eb95ade87390d31
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 69213ca5c456f13b39c68eae2839329bfd05df6d
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/16/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -178,6 +178,7 @@ ms.lasthandoff: 12/14/2017
                                                 <h4>关系数据库</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-data-warehouse/">SQL 数据仓库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL 数据库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/mysql/">MySQL 数据库即服务</a></li>
                                                 </ul>
