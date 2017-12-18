@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: de0c83e4c99894f98de18eb089ce11cdf5c70f2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26d8399ce4ea23b51677def85b3732468dcbc02f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB：Visual Studio 连接服务（预览）
 
@@ -119,8 +119,8 @@ Visual Studio 连接服务可让开发人员轻松连接其 Azure Cosmos DB 帐�
 
 使用 Azure Cosmos DB 帐户启动并运行连接服务后，请继续阅读以下教程之一，以开始开发解决方案：
 
-* [在 .NET 中使用 DocumentDB API 进行开发](tutorial-develop-documentdb-dotnet.md)。
-* [Azure Cosmos DB：DocumentDB API 入门教程](documentdb-get-started.md)。
+* [在 .NET 中使用 SQL API 进行开发](tutorial-develop-documentdb-dotnet.md)。
+* [Azure Cosmos DB：SQL API 入门教程](documentdb-get-started.md)。
 * 希望使用 Azure Cosmos DB 执行规模和性能测试？ 请参阅[使用 Azure Cosmos DB 执行性能和缩放测试](performance-testing.md)。
 * 了解如何[监视 Azure Cosmos DB 帐户](monitor-accounts.md)。
 

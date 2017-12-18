@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/31/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: f0be787ba1ccee067fb1d7e6a6554be32f886089
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c66488ce4381a3c5f796aa9826810195b2738769
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -86,22 +86,26 @@ ms.lasthandoff: 10/11/2017
 
 使用采用 .NET 的媒体服务时，必须将 **CloudMediaContext** 类用于大多数媒体服务编程任务：连接到媒体服务帐户；创建、更新、访问和删除以下对象：资产、资产文件、作业、访问策略、定位符等等。
 
-使用以下代码覆盖默认程序类。 该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关详细信息，请参阅[连接到媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。
+使用以下代码覆盖默认的 Program 类：此代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关详细信息，请参阅[连接到媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。
 
 确保更新保存媒体文件所需的文件名和路径。
 
 **Main** 函数调用会在本部分中进一步定义的方法。
 
 > [!NOTE]
-> 将收到编译错误，直到为所有函数添加定义为止。
+> 会收到编译错误，直到为所有在本文后面部分进行定义的函数添加定义为止。
 
     class Program
     {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
@@ -109,7 +113,11 @@ ms.lasthandoff: 10/11/2017
         {
         try
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -137,7 +145,7 @@ ms.lasthandoff: 10/11/2017
             Console.ReadLine();
         }
         }
-    }
+    
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>创建新资产并上传视频文件
 
@@ -145,7 +153,7 @@ ms.lasthandoff: 10/11/2017
 
 下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。 **CreateFromFile** 创建指定的源文件所要上传到的新资产。
 
-**CreateFromFile** 方法采用 **AssetCreationOptions**，可用于指定以下任一资产创建选项：
+**CreateFromFile** 方法采用 **AssetCreationOptions，可用于指定以下任一资产创建选项：
 
 * **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
   如果计划使用渐进式下载交付 MP4，则使用此选项。
@@ -228,7 +236,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="some-details-about-url-formats"></a>有关 URL 格式的一些详细信息
 
-创建定位符后，可以生成用来流式处理或下载文件的 URL。 本教程中的示例将输出 URL，可以将其粘贴在适当的浏览器中。 此部分直接提供了多个简短的示例，介绍了各种不同的格式。
+创建定位符后，可以生成用来流式处理或下载文件的 URL。 本教程中的示例会输出 URL，可以将其粘贴在适当的浏览器中。 此部分直接提供了多个简短的示例，介绍了各种不同的格式。
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的流 URL 采用以下格式：
 

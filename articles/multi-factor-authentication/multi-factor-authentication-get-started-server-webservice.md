@@ -4,7 +4,7 @@ description: "Microsoft Authenticator 应用提供一个附加的带外身份验
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 6c8d6fcc-70f4-4da4-9610-c76d66635b8b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 3d1e8d62127a3c5c888804278fbcd9a4fe81e33f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 83b04e48dd528881097bcf16bc03e1a18ea20c43
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器启用移动应用身份验证
 
@@ -63,7 +63,7 @@ Microsoft Authenticator 应用提供一个附加的带外验证选项。 Azure �
 3. 使用默认设置完成安装，除非因某种原因而需要更改它们。
 4. 将 SSL 证书绑定到 IIS 中的站点。
 
-如果对如何在 IIS 服务器上配置 SSL 证书存在疑问，请参阅 [How to Set Up SSL on IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)（如何在 IIS 上设置 SSL）一文。
+如果对如何在 IIS 服务器上配置 SSL 证书存在疑问，请参阅 [How to Set Up SSL on IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)（如何在 IIS 上设置 SSL）一文。
 
 必须使用 SSL 证书保护 Web 服务 SDK。 也可以使用自签名证书实现此目的。 将该证书导入到用户门户 Web 服务器上的本地计算机帐户的“受信任的根证书颁发机构”存储中，使该服务器在发起 SSL 连接时信任该证书。
 
@@ -88,6 +88,7 @@ Microsoft Authenticator 应用提供一个附加的带外验证选项。 Azure �
 
 7. 如果已安装移动应用 Web 服务的网站尚未与公开签名的证书绑定，请在服务器上安装证书，打开 IIS 管理器并将证书绑定到该网站。
 8. 从任何计算机打开 Web 浏览器，导航到已安装移动应用 Web 服务的 URL（示例：https://mfa.contoso.com/MultiFactorAuthMobileAppWebService）。 确保未显示证书警告或错误。
+9. 若要详细了解 Web 服务 SDK 中提供的方法，请参阅 MFA 服务器帮助文件。
 
 ## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure 多重身份验证服务器中配置移动应用设置
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 12/13/2017
 ms.author: yurid
-ms.openlocfilehash: e68ec1b7d82a0e1d98953521b05f423044e6d2f2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 71dcafab92a9045388c2e602c0dc297aed32e527
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure 安全中心（预览版）的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
@@ -32,9 +32,6 @@ ms.lasthandoff: 10/18/2017
 - 避免运行旧的不受支持的应用。
 - 防止使用组织不允许的特定软件工具。
 - 允许 IT 部门控制用户使用应用来访问敏感数据。
-
-> [!NOTE]
-> 自适应应用程序控制以受限公共预览版的形式提供给 Azure 安全中心标准版客户。 若要体验预览版，请向[我们](mailto:ASC_appcontrol@microsoft.com)发送包含订阅 ID 的电子邮件。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>如何启用自适应应用程序控制？
 可以通过自适应应用程序控制来定义一组应用程序，允许这些应用程序在配置的资源组上运行。 此功能仅适用于 Windows 计算机（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）。 以下步骤可以用来在安全中心配置应用程序允许列表功能：
@@ -72,7 +69,7 @@ ms.lasthandoff: 10/18/2017
 
 - 名称：完整的应用程序路径
 - 进程数：每个路径中驻留的应用程序数
-- 常用：true 表示这些进程已在此资源组的大多数 VM 上执行。
+- **常用**：“是”表示这些进程已在此资源组的大多数 VM 上执行。
 - **可利用**：警告图标表示攻击者可能会利用应用程序来规避应用程序允许列表。 建议在这些应用程序审批前查看它们。 
 
 选择完以后，请单击“创建”按钮。 安全中心始终默认在“审核”模式下启用应用程序控制。 在验证允许列表对工作负荷没有任何负面影响之后，即可更改为“强制”模式。
