@@ -54,6 +54,8 @@
 #### [符合性 - UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
 ##### [概述](uk-official-three-tier-applications-overview.md)
 ##### [原则概述](uk-official-three-tier-applications-principles-overview.md)
+#### [符合性 - 金融服务](financial-services-regulated-workloads.md)
+##### [适用于受管制工作负荷的金融服务](financial-services-regulated-workloads.md)
 
 # 入门
 ## [Azure 安全入门](../azure-security-getting-started.md)

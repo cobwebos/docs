@@ -6,11 +6,11 @@
       href: overview.md
 - name: 快速入门
   items:
-    - name: 使用 Azure CLI 创建托管应用程序
+    - name: 创建托管应用程序
       href: managed-apps-quickstart-cli.md
 - name: 教程
   items:
-    - name: 创建服务目录应用程序
+    - name: 创建托管应用程序文件
       href: publish-service-catalog-app.md
 - name: 示例
   items:
@@ -26,7 +26,7 @@
       href: create-uidefinition-overview.md
     - name: 更新托管资源
       href: update-managed-resources.md
-    - name: 发布服务目录应用 - 门户
+    - name: 使用门户发布
       href: publish-portal.md
 - name: 引用
   items:
