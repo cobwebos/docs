@@ -59,8 +59,6 @@
           items:
             - name: 在 Azure 门户中准备 Azure 备份服务器工作负荷
               href: backup-azure-microsoft-azure-backup.md
-            - name: 在经典门户中准备 Azure 备份服务器工作负荷
-              href: backup-azure-microsoft-azure-backup-classic.md
             - name: 将存储添加到 Azure 备份服务器
               href: backup-mabs-add-storage.md
             - name: 将 Azure 备份服务器升级到 v.2
@@ -89,8 +87,6 @@
               href: backup-azure-arm-vms-prepare.md
             - name: Linux VM 的应用程序一致性备份
               href: backup-azure-linux-app-consistent.md
-            - name: 准备 Azure 虚拟机
-              href: backup-azure-vms-prepare.md
         - name: 规划环境
           items:
             - name: 规划 VM 备份基础结构
@@ -101,16 +97,12 @@
               href: backup-azure-arm-vms.md
             - name: 备份加密的虚拟机
               href: backup-azure-vms-encryption.md
-            - name: 备份 Azure 虚拟机
-              href: backup-azure-vms.md
         - name: 管理和监视 VM
           items:
             - name: 在 Azure 门户中管理 Azure VM 备份
               href: backup-azure-manage-vms.md
             - name: 在 Azure 门户中监视 Azure VM 备份警报
               href: backup-azure-monitor-vms.md
-            - name: 在经典门户中管理和监视 Azure VM 备份
-              href: backup-azure-manage-vms-classic.md
         - name: 从 VM 还原数据
           items:
             - name: 从 Azure VM 备份恢复文件
@@ -119,8 +111,6 @@
               href: backup-azure-arm-restore-vms.md
             - name: 还原加密的虚拟机
               href: backup-azure-vms-encryption.md
-            - name: 还原 Azure 中的虚拟机
-              href: backup-azure-restore-vms.md
             - name: 还原已加密 VM 的 Key Vault 密钥和机密
               href: backup-azure-restore-key-secret.md
     - name: 配置 Azure 备份报表
@@ -135,8 +125,6 @@
       items:
         - name: 在 Azure 门户中准备 DPM 工作负荷
           href: backup-azure-dpm-introduction.md
-        - name: 在经典 Azure 门户中准备 DPM 工作负荷
-          href: backup-azure-dpm-introduction-classic.md
         - name: 使用 System Center DPM 备份 Exchange 服务器
           href: backup-azure-backup-exchange-server.md
         - name: 将数据恢复到备用 DPM 服务器
@@ -149,16 +137,10 @@
       items:
         - name: Azure 门户中的 Azure VM
           href: backup-azure-vms-automation.md
-        - name: 经典门户中的 Azure VM
-          href: backup-azure-vms-classic-automation.md
         - name: Azure 门户中的 DPM
           href: backup-dpm-automation.md
-        - name: 经典门户中的 DPM
-          href: backup-dpm-automation-classic.md
         - name: Azure 门户中的 Windows Server
           href: backup-client-automation.md
-        - name: 经典门户中的 Windows Server
-          href: backup-client-automation-classic.md
     - name: Azure SQL 数据库
       items:
         - name: 配置长期备份保留
@@ -181,14 +163,6 @@
           href: backup-azure-restore-system-state.md
         - name: 监视和管理恢复服务保管库
           href: backup-azure-manage-windows-server.md
-        - name: 使用经典门户备份和还原
-          items:
-            - name: 使用经典部署模型备份 Windows Server
-              href: backup-configure-vault-classic.md
-            - name: 使用经典部署模型管理备份保管库
-              href: backup-azure-manage-windows-server-classic.md
-            - name: 使用经典部署模型将文件还原到 Windows Server
-              href: backup-azure-restore-windows-server-classic.md
     - name: 恢复服务保管库
       items:
         - name: 恢复服务保管库概述
@@ -201,8 +175,6 @@
       items:
         - name: 在 Azure 门户中排查 Azure VM 备份问题
           href: backup-azure-vms-troubleshoot.md
-        - name: 在经典门户中排查 Azure VM 备份问题
-          href: backup-azure-vms-troubleshoot-classic.md
         - name: Azure VM 备份失败：无法与 VM 代理通信以获取快照状态 - 快照 VM 子任务超时
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: 在 Azure 备份中备份文件和文件夹时速度缓慢
