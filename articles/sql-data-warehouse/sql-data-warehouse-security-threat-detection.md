@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f4a2376fe4fb710d031c35ca7fdbf4c7bb0f3caa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f5dab6936e8cac10ac7a4a7dc4c3be116de5ad5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-threat-detection"></a>威胁检测入门
 > [!div class="op_single_selector"]
@@ -55,14 +55,14 @@ ms.lasthandoff: 10/11/2017
    电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称和事件时间。 此外，还会提供可能原因和建议操作的相关信息，帮助调查和缓解数据库的潜在威胁。<br/>
    
     ![导航窗格][4]
-2. 在电子邮件中，单击“Azure SQL 审核日志”链接以启动 Azure 经典门户，并显示发生可疑事件前后的相关审核记录。
+2. 在电子邮件中，单击“**Azure SQL 审核日志**”链接以启动 Azure 门户，并显示发生可疑事件前后的相关审核记录。
    
     ![导航窗格][5]
 3. 单击审核记录可以查看有关可疑数据库活动的详细信息，例如 SQL 语句、失败原因和客户端的 IP。
    
     ![导航窗格][6]
 4. 在“审核记录”边栏选项卡中，单击“在 Excel 中打开”以打开预配置的 Excel 模板，以导入发生可疑事件前后的审核日志，并运行更深入的分析。<br/>
-   注意：在 Excel 2010 或更高版本中，需要配置 Power Query 和“快速合并”设置
+   **注意：**在 Excel 2010 或更高版本中，需要配置 Power Query 和“快速合并”设置
    
     ![导航窗格][7]
 5. 若要配置“快速合并”设置 - 请在“POWER QUERY”功能区选项卡中，选择“选项”以显示“选项”对话框。 选择“隐私”部分，并选择第二个选项 -“忽略隐私级别并潜在地改善性能”：

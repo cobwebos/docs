@@ -91,8 +91,7 @@
 #### 创建具有多个 IP 地址的 VM
 ##### [Azure 门户](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-##### [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md)
-##### [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md)
+##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [模板](virtual-network-multiple-ip-addresses-template.md)
 
 #### [创建具有加速网络的 VM](virtual-network-create-vm-accelerated-networking.md)

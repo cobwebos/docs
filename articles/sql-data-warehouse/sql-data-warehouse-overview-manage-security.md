@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 6ea45c40bc428282faf24b4a08f8b0d345adb3fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36f990dd16a3c6b65d16bab4b945ec56a1bb1000
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>保护 SQL 数据仓库中的数据库
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 * 除 db_datareader 和 db_datawriter 以外的[数据库角色][Database roles]可用于创建权限较大的应用程序用户帐户或权限较小的管理帐户。 内置的固定的数据库角色可以方便地用来授予权限，但可能会导致所授权限超出需要的情况。
 * [存储过程][Stored procedures]可用于限制可对数据库执行的操作。
 
-从 Azure 经典门户或使用 Azure Resource Manager API 管理数据库和逻辑服务器的操作会根据门户用户帐户的角色分配进行控制。 有关此主题的详细信息，请参阅 [Azure 门户中基于角色的访问控制][Role-based access control in Azure Portal]。
+从 Azure 门户或使用 Azure 资源管理器 API 管理数据库和逻辑服务器的操作会根据门户用户帐户的角色分配进行控制。 有关此主题的详细信息，请参阅 [Azure 门户中基于角色的访问控制][Role-based access control in Azure Portal]。
 
 ## <a name="encryption"></a>加密
 Azure SQL 数据仓库透明数据加密 (TDE) 可以对静态数据进行实时加密和解密，避免恶意活动造成的威胁。  在加密数据库时，可以对关联的备份和事务日志文件加密，无需对应用程序进行任何更改。 TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 SQL 数据仓库使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密][Transparent Data Encryption]。

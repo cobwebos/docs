@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
-ms.openlocfilehash: 874cf647d4b708bbbc64246ac0dff133639ad86c
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: be880efdcf1276252c76f27c2f2fd99edd606caa
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
-> * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+> * [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
 > * [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
@@ -34,13 +34,13 @@ ms.lasthandoff: 10/18/2017
 * 使用证书对管理员进行身份验证。
 
 > [!NOTE]
-> 有关更高级的安全选项（例如使用 Azure Active Directory 进行用户身份验证和设置应用程序安全证书），请参阅[使用 Azure Resource Manager 创建群集][create-cluster-arm]。
+> 有关更高级的安全选项（例如使用 Azure Active Directory 进行用户身份验证和设置应用程序安全证书），请参阅[使用 Azure 资源管理器创建群集][create-cluster-arm]。
 > 
 > 
 
 安全的群集是防止未经授权访问管理操作的群集，这些操作包括部署、升级和删除应用程序、服务及其包含的数据。 不安全的群集是任何人都可以随时连接并执行管理操作的群集。 尽管可以创建不安全的群集，但**强烈建议创建安全的群集**。 不安全的群集**无法在事后受到保护** - 要保护群集，必须创建新群集。
 
-无论群集是 Linux 群集还是 Windows 群集，创建安全群集的概念是相同的。 有关创建安全 Linux 群集的详细信息和帮助器脚本，请参阅[在 Linux 上创建安全群集](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters)。 可以按照[在 Azure 门户中创建群集](#create-cluster-portal)部分中所述，直接向门户输入通过提供的帮助器脚本获取的参数。
+无论群集是 Linux 群集还是 Windows 群集，创建安全群集的概念是相同的。 有关创建安全 Linux 群集的详细信息和帮助器脚本，请参阅[创建安全群集](service-fabric-cluster-creation-via-arm.md)。 可以按照[在 Azure 门户中创建群集](#create-cluster-portal)部分中所述，直接向门户输入通过提供的帮助器脚本获取的参数。
 
 ## <a name="configure-key-vault"></a>配置 Key Vault 
 ### <a name="log-in-to-azure"></a>登录 Azure
@@ -114,7 +114,15 @@ Service Fabric 使用 X.509 证书保护群集。 Azure 密钥保管库用于管
     Tags                             :
 ```
 
-如果有现有的密钥保管库，可以使用 Azure CLI 针对部署启用该保管库：
+如果有现有的 Key Vault，可使用以下方式之一针对部署启用它：
+
+##### <a name="azure-powershell"></a>Azure PowerShell
+
+```powershell
+PS C:\Users\vturecek> Set-AzureRmKeyVaultAccessPolicy -VaultName 'myvault' -EnabledForDeployment
+```
+
+##### <a name="azure-cli"></a>Azure CLI：
 
 ```cli
 > azure login
@@ -146,7 +154,7 @@ Service Fabric 使用 X.509 证书保护群集。 Azure 密钥保管库用于管
 无需将客户端身份验证证书上传到密钥保管库即可使用 Service Fabric。 只需将这些证书提供给有权管理群集的用户。 
 
 > [!NOTE]
-> 建议使用 Azure Active Directory 对执行群集管理操作的客户端进行身份验证。 若要使用 Azure Active Directory，必须[使用 Azure Resource Manager 创建群集][create-cluster-arm]。
+> 建议使用 Azure Active Directory 对执行群集管理操作的客户端进行身份验证。 若要使用 Azure Active Directory，必须[使用 Azure 资源管理器创建群集][create-cluster-arm]。
 > 
 > 
 
@@ -156,7 +164,7 @@ Service Fabric 使用 X.509 证书保护群集。 Azure 密钥保管库用于管
 * 加密和解密应用程序配置值
 * 在复制期间跨节点加密数据 
 
-通过 Azure 门户创建群集时，无法配置应用程序证书。 若要在设置群集时配置应用程序证书，必须[使用 Azure Resource Manager 创建群集][create-cluster-arm]。 也可以在创建群集后将应用程序证书添加到群集。
+通过 Azure 门户创建群集时，无法配置应用程序证书。 若要在设置群集时配置应用程序证书，必须[使用 Azure 资源管理器创建群集][create-cluster-arm]。 也可以在创建群集后将应用程序证书添加到群集。
 
 #### <a name="formatting-certificates-for-azure-resource-provider-use"></a>格式化证书以供 Azure 资源提供程序使用
 可以直接通过密钥保管库添加和使用私钥文件 (.pfx)。 但是，Azure 资源提供程序要求以特殊 JSON 格式存储密钥，在密钥中包含 .pfx 作为 Base-64 编码字符串和私钥密码。 要满足这些要求，必须将密钥放入 JSON 字符串，然后在密钥保管库中将其存储为*机密*。
@@ -242,7 +250,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 2. 主节点类型的 VM **大小**下限取决于为群集选择的**持久性**层。 持久性层的默认值为 bronze。 有关持久性的详细信息，请参阅[如何选择 Service Fabric 群集可靠性和持久性][service-fabric-cluster-capacity]。
 3. 选择 VM 大小和定价层。 D 系列 VM 具有 SSD 驱动器，强烈建议用于有状态应用程序。 不要使用任何具有部分核心或可用磁盘容量小于 7GB 的 VM SKU。 
 4. 主节点类型的 VM **数目**下限取决于选择的**可靠性**层。 可靠性层的默认值为 Silver。 有关可靠性的详细信息，请参阅[如何选择 Service Fabric 群集可靠性和持久性][service-fabric-cluster-capacity]。
-5. 选择节点类型的 VM 数目。 可在以后扩展或缩减节点类型中的 VM 数目，但数目下限取决于选择的可靠性层。 其他节点类型的下限可以是 1 个 VM。
+5. 选择节点类型的 VM 数目。 可在以后增加或减少节点类型中的 VM 数目，但数目下限取决于选择的可靠性层。 其他节点类型的下限可以是 1 个 VM。
 6. 配置自定义终结点。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序通信][service-fabric-connect-and-communicate-with-services]
 7. 配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 要禁用诊断，请将其“**状态**”切换为“**关闭**”。 **不**建议关闭诊断。
 8. 选择要将群集设置到的 Fabric 升级模式。 如果希望系统自动选取最新可用版本并尝试将群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。
@@ -274,7 +282,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 #### <a name="4-summary"></a>4.摘要
 
-要完成群集创建过程，请单击“**摘要**”查看提供的配置，或下载用于部署群集的 Azure Resource Manager 模板。 在提供所有必需的设置后，“**确定**”按钮会启用，只需单击它即可启动群集创建过程。
+要完成群集创建过程，请单击“**摘要**”查看提供的配置，或下载用于部署群集的 Azure 资源管理器模板。 在提供所有必需的设置后，“**确定**”按钮会启用，只需单击它即可启动群集创建过程。
 
 可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“**固定到启动板**”，现在会看到“**部署 Service Fabric 群集**”已固定到**开始**面板。
 
