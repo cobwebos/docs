@@ -32,6 +32,7 @@
 ### [启用许可的映像](devtest-lab-enable-licensed-images.md)
 ### [将标记添加到实验室](devtest-lab-add-tag.md)
 ### [在实验室中发布公告](devtest-lab-announcements.md)
+### [将支持信息添加到实验室](devtest-lab-internal-support-message.md)
 
 ## [选择自定义映像或公式](devtest-lab-comparing-vm-base-image-types.md)
 
