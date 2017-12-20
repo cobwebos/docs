@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: mazha
-ms.openlocfilehash: 04c9ad5e58af073204eb6a16df96f0517a0ee668
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9ffd05a0eb4d976dc40a1c5d45fd22ebf9bd4db1
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-query-strings"></a>使用查询字符串控制 Azure 内容交付网络缓存行为
 > [!div class="op_single_selector"]
@@ -43,13 +43,13 @@ ms.lasthandoff: 11/16/2017
    
    ![CDN 配置文件终结点](./media/cdn-query-string/cdn-endpoints.png)
    
-2. 在“设置”下，单击“缓存”。
+2. 在左窗格中的“设置”下面，单击“缓存规则”。
    
-    ![CDN 配置文件缓存按钮](./media/cdn-query-string/cdn-cache-btn.png)
+    ![CDN 缓存规则按钮](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
 3. 在“查询字符串缓存行为”列表中，选择查询字符串模式，然后单击“保存”。
    
-  <!--- Replace screen shot after general caching goes live ![CDN query string caching options](./media/cdn-query-string/cdn-query-string.png) --->
+   ![CDN 查询字符串缓存选项](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
 > 由于注册通过 CDN 传播需要时间，缓存字符串设置更改不会立即显示。 对于**来自 Akamai 的 Azure CDN** 配置文件，传播通常可在一分钟内完成。 对于**来自 Verizon 的 Azure CDN** 配置文件，传播通常在 90 分钟内完成，但某些情况下可能更长。

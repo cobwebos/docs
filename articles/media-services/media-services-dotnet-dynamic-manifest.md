@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 6c43473b86c14679ace558de478bd95f41d476da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ffd310573d0800593bd9d93d74da4bcece61fa4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>使用 Azure 媒体服务 .NET SDK 创建筛选器
 > [!div class="op_single_selector"]
@@ -27,13 +27,13 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-从 2.11 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
+从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
 有关与筛选器和动态清单相关的更多详细信息，请参阅[动态清单概述](media-services-dynamic-manifest-overview.md)。
 
-本主题介绍如何使用媒体服务 .NET SDK 创建、更新和删除筛选器。 
+本文介绍如何使用媒体服务 .NET SDK 创建、更新和删除筛选器。 
 
-请注意，如果更新筛选器，则流式处理终结点需要 2 分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 建议在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。 
+请注意，如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 请始终在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。 
 
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
 创建筛选器时会使用以下类型： 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 * **FilterTrackSelectStatement** 和 **IFilterTrackPropertyCondition**。 这些类型基于以下 REST API [FilterTrackSelect 和 FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>创建/更新/读取/删除全局筛选器
-下面的代码演示如何使用 .NET 创建、更新、读取和删除资产筛选器。
+以下代码演示如何使用 .NET 创建、更新、读取和删除资产筛选器。
 
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="createupdatereaddelete-asset-filters"></a>创建/更新/读取/删除资产筛选器
-下面的代码演示如何使用 .NET 创建、更新、读取和删除资产筛选器。
+以下代码演示如何使用 .NET 创建、更新、读取和删除资产筛选器。
 
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);

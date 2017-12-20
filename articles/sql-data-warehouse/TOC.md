@@ -32,7 +32,7 @@
 
 ## 加载和移动数据
 ### [概述](design-elt-data-loading.md)
-### [指南](guidance-for-loading-data.md)
+### [最佳实践](guidance-for-loading-data.md)
 
 
 ## 集成

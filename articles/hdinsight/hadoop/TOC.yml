@@ -428,9 +428,6 @@
         - name: 访问 YARN 应用程序日志
           href: ../hdinsight-hadoop-access-yarn-app-logs.md
           maintainContext: true
-        - name: 使用 Apache Phoenix 和 SQuirrel
-          href: ../hdinsight-hbase-phoenix-squirrel.md
-          maintainContext: true
         - name: 使用 Mahout 生成电影推荐
           href: ../hdinsight-mahout.md
           maintainContext: true

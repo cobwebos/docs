@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 9dc0f5140a538c3a359dd90b74de822dc163fd70
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 02bb5d23ee9468ab1f74396877cdcd6bdd8b8fba
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -50,6 +50,8 @@ ms.lasthandoff: 11/20/2017
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) 预览包已弃用，已被 [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) 包取代。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时，将不允许向已停用的 SDK 发出请求。
+
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 
 使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
@@ -58,7 +60,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日|--- |
-| [0.9.0-preview](#0.1.0-preview) |2017 年 11 月 11 日 |--- |
+| [0.9.0-preview](#0.9.0-preview) |2017 年 11 月 11 日 |--- |
 
 ## <a name="troubleshooting"></a>故障排除
 

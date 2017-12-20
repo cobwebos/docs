@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
-ms.openlocfilehash: f2797864d7f0bda35d4d84ee78b157879451f889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0b085ebf922cd5b14acd91bf86b9262a6921e9e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing"></a>使用基于路径的路由创建应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-url-route-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-create-url-route-arm-ps.md)
 > * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
 借助基于路径的路由，可根据 HTTP 请求的 URL 路径来关联路由。 它会检查是否有路由通向针对应用程序网关中所列 URL 配置的后端池，并将流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
@@ -55,7 +55,7 @@ http://contoso.com/image* 请求会被路由到图像服务器池 (pool1)，http
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-使用 Azure 经典门户与 Azure 资源管理器的区别在于，创建应用程序网关的顺序和需要配置的项。
+使用经典部署模型与 Azure 资源管理器的区别在于，创建应用程序网关的顺序和需要配置的项。
 
 使用 Resource Manager 时，组成应用程序网关的所有项都将分开配置，然后放在一起创建应用程序网关资源。
 

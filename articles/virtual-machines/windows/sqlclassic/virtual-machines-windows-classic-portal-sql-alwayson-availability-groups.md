@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 275c0fdfecac558e4f10d36eee71d38528f34679
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机中配置 AlwaysOn 可用性组（经典）
 > [!div class="op_single_selector"]
@@ -27,12 +27,12 @@ ms.lasthandoff: 10/11/2017
 > * [经典：PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-在开始之前，请先假设现在可以在 Azure Resource Manager 模型中完成此任务。 我们建议使用 Azure Resource Manager 模型来进行新的部署。 请参阅 [Azure 虚拟机上的 SQL Server AlwaysOn 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
+在开始之前，请先假设现在可以在 Azure 资源管理器模型中完成此任务。 我们建议使用 Azure 资源管理器模型来进行新的部署。 请参阅 [Azure 虚拟机上的 SQL Server AlwaysOn 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
 
 > [!IMPORTANT] 
 > Microsoft 建议大多数新部署使用 Resource Manager 模型。 Azure 具有两种不同的部署模型可用来创建和处理资源：[Resource Manager 模型和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 
 
-若要使用 Azure Resource Manager 模型完成此任务，请参阅 [Azure 虚拟机上的 SQL Server AlwaysOn 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
+若要使用 Azure 资源管理器模型完成此任务，请参阅 [Azure 虚拟机上的 SQL Server AlwaysOn 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
 
 本端到端教程介绍了如何使用 Azure 虚拟机上运行的 SQL Server AlwaysOn 来实施可用性组。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="create-the-virtual-network-and-domain-controller-server"></a>创建虚拟网络和域控制器服务器
-将从一个新的 Azure 试用帐户开始。 完成帐户设置后，则应位于 Azure 经典门户的主页屏幕。
+将从一个新的 Azure 试用帐户开始。 完成帐户设置后，则应位于 Azure 门户的主页屏幕。
 
 1. 单击页面左下角的“新建”按钮，如以下屏幕截图所示。
    
@@ -89,7 +89,7 @@ ms.lasthandoff: 10/11/2017
    | 虚拟机配置 |**云服务** = 创建新的云服务<br/>**云服务 DNS 名称** = 唯一云服务名称<br/>**DNS 名称** = 唯一名称（例如：ContosoDC123）<br/>**区域/地缘组/虚拟网络** = ContosoNET<br/>**虚拟网络子网** = Back(10.10.2.0/24)<br/>**存储帐户** = 使用自动生成的存储帐户<br/>**可用性集** = (无) |
    | 虚拟机选项 |使用默认值 |
 
-配置好新虚拟机后，请等待该虚拟机完成预配。 此过程需要一些时间才能完成。 如果单击 Azure 经典门户中的“虚拟机”选项卡，则可看到 ContosoDC 逐一经历的各个状态：从“正在启动(正在预配)”、“已停止”、“正在启动”、“正在运行(正在预配)”到最后的“正在运行”。
+配置好新虚拟机后，请等待该虚拟机完成预配。 此过程需要一些时间才能完成。 如果单击 Azure 门户中的“虚拟机”选项卡，则可看到 ContosoDC 逐一经历的各个状态：从“正在启动(正在预配)”、“已停止”、“正在启动”、“正在运行(正在预配)”到最后的“正在运行”。
 
 现在已成功预配 DC 服务器。 接下来，请在 DC 服务器上配置 Active Directory 域。
 

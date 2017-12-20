@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 4ad90ad979c5bd74fc55155098c88d5c13cb12e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e673a92a9740b96eac20cdf5673395bacca8b77
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何获取媒体处理器实例
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="overview"></a>概述
-在媒体服务中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 通常，创建一个任务以便对媒体内容进行编码、加密或格式转换时，就需要创建一个媒体处理器。
+媒体处理器是完成特定视频或音频处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 提交到媒体服务的所有任务需要通过一个媒体处理器来编码、加密或转换视频或音频内容。 
 
 ## <a name="azure-media-processors"></a>Azure 媒体处理器 
 
@@ -44,8 +44,6 @@ ms.lasthandoff: 10/11/2017
 
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
->[!NOTE]
->成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
 ## <a name="get-a-media-processor"></a>获取媒体处理器
 
@@ -60,7 +58,7 @@ ms.lasthandoff: 10/11/2017
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 响应：
@@ -89,5 +87,5 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-了解如何获取媒体处理器实例后，请转到[如何对资产进行编码](media-services-rest-get-started.md)主题，其中说明了如何使用 Media Encoder Standard 对资产进行编码。
+了解如何获取媒体处理器实例后，请转到[如何对资产进行编码](media-services-rest-get-started.md)一文，其中说明了如何使用 Media Encoder Standard 对资产进行编码。
 
