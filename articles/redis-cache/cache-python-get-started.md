@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sdanie
 ms.openlocfilehash: cdbee52574d0ffbe82ef3dc98f2848f4d00ba2ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-use-azure-redis-cache-with-python"></a>如何将 Azure Redis 缓存与 Python 配合使用
 > [!div class="op_single_selector"]
