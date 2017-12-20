@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5a056bf1ef6b13a2989922e135b99d31d84637c7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>部署本地 StorSimple 设备
 > [!NOTE]
-> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 你会收到有关此移动的电子邮件和门户通知。 此文档亦将在稍后停用。 任何与移动相关的问题，请参阅[常见问题解答：转移到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
+> 已弃用 StorSimple 经典门户。 按弃用计划，StorSimple 设备管理器将自动移至新的 Azure 门户。 会收到有关此移动的电子邮件和门户通知。 另外，此文档也将在稍后停用。 如有任何与移动相关的问题，请参阅[常见问题解答：移动到 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
 
 > [!div class="op_single_selector"]
 > * [Update 2 ](storsimple-deployment-walkthrough-u2.md)

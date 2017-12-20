@@ -16,10 +16,10 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: a763f1c600c1a3f37cb565a8eb7db3c3f27dcf75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-sql-data-warehouse-using-powershell"></a>使用 PowerShell 创建 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-a-sql-data-warehouse"></a>创建 SQL 数据仓库
 1. 打开 Windows PowerShell。
-2. 运行此 cmdlet 以登录到 Azure Resource Manager 中。
+2. 运行此 cmdlet 以登录到 Azure 资源管理器中。
 
     ```Powershell
     Login-AzureRmAccount

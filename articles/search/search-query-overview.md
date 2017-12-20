@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 11/13/2017
 ms.author: ashmaka
 ms.openlocfilehash: b1a96c2299e415db89f881fa72b150d50bb3c69c
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="queries-in-azure-search"></a>Azure 搜索中的查询
 > [!div class="op_single_selector"]

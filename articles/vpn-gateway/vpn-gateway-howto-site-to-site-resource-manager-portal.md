@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2017
 ms.author: cherylmc
 ms.openlocfilehash: 4f5e249238020429b6c6e0d39c580c83bc43969e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 

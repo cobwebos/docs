@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sdanie
 ms.openlocfilehash: f2c448af24e180db58f3ef3d39e90036dda3f7eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-use-azure-redis-cache-with-nodejs"></a>如何将 Azure Redis 缓存与 Node.js 配合使用
 > [!div class="op_single_selector"]

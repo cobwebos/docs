@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 05/09/2017
 ms.author: sdanie
 ms.openlocfilehash: 21dc87b3e8c26bfbda36202b31b3b4d44be32179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>如何使用 Redis 缓存创建 Web 应用
 > [!div class="op_single_selector"]
