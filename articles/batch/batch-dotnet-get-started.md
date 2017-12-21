@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 83f751c6b5e44705509804e6872bb16d7c2e1d18
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>通过适用于 .NET 的 Batch 客户端库开始构建解决方案
 
@@ -195,7 +195,7 @@ private static async Task CreateContainerIfNotExistAsync(
 ![将任务应用程序和输入（数据）文件上传到容器][2]
 <br/>
 
-在文件上传操作中，*DotNetTutorial* 先定义**应用程序**和**输入**文件在本地计算机上的路径的集合， 然后将这些文件上传到上一步骤创建的容器。
+在文件上传操作中，DotNetTutorial 先定义应用程序和输入文件在本地计算机上的路径的集合， 然后将这些文件上传到上一步骤创建的容器。
 
 ```csharp
 // Paths to the executable and its dependencies that will be executed by the tasks
@@ -290,7 +290,7 @@ DotNetTutorial 示例应用程序不使用 JobPreparationTask 或 JobReleaseTask
 >
 
 ## <a name="step-3-create-batch-pool"></a>步骤 3：创建 Batch 池
-![创建 Batch 池][3]
+![创建批处理池][3]
 <br/>
 
 Batch **池** 是 Batch 执行作业任务时所在的计算节点（虚拟机）集合。
@@ -509,7 +509,7 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 
 ## <a name="step-6-monitor-tasks"></a>步骤 6：监视任务
 ![监视任务][6]<br/>
-*脚本将会：(1) 监视任务的完成状态，(2) 监视将结果数据上传到 Azure 存储的任务*
+*客户端应用程序会：(1) 监视任务的完成和成功状态；(2) 监视将结果数据上传到 Azure 存储的任务*
 
 任务在添加到作业后，会自动排入队列并计划在与作业关联的池中的计算节点上执行。 根据你指定的设置，Batch 将处理所有任务排队、计划、重试和其他任务管理工作。
 

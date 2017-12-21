@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>适用于 Python 的 Batch SDK 入门
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 * **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
 
 ### <a name="code-sample"></a>代码示例
-Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击“azure-batch-samples-master.zip[github_samples_zip]”直接下载链接，即可下载所有示例。[] 解压缩 ZIP 文件的内容后，在 `article_samples` 目录中可找到本教程的两个脚本：
+Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击[azure-batch-samples-master.zip][github_samples_zip]”直接下载链接，即可下载所有示例。 解压缩 ZIP 文件的内容后，在 `article_samples` 目录中可找到本教程的两个脚本：
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
@@ -112,7 +112,7 @@ Batch Python 教程代码示例由两个 Python 脚本和若干数据文件组�
     &nbsp;&nbsp;&nbsp;&nbsp;**5b.** 每项任务从 Azure 存储下载其输入数据，并开始执行。<br/>
 [**步骤 6.**](#step-6-monitor-tasks) 监视任务。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**6a.** 当任务完成时，会将其输出数据上传到 Azure 存储。<br/>
-[**步骤 7.**](#step-7-download-task-output) 从存储空间下载任务输出。
+[**步骤 7.**](#step-7-download-task-output) 从存储下载任务输出。
 
 如前所述，并非每个 Batch 解决方案都会执行这些具体步骤，此类方案可能包含更多步骤，但本示例将演示 Batch 解决方案中的常见过程。
 
@@ -189,7 +189,7 @@ blob_client.create_container(OUTPUT_CONTAINER_NAME, fail_on_exist=False)
 ![将任务应用程序和输入（数据）文件上传到容器][2]
 <br/>
 
-在文件上传操作中，*python_tutorial_client.py* 先定义应用程序和输入文件在本地计算机上的路径的集合， 然后将这些文件上传到上一步骤创建的容器。
+在文件上传操作中，python_tutorial_client.py 先定义应用程序和输入文件在本地计算机上的路径的集合， 然后将这些文件上传到上一步骤创建的容器。
 
 ```python
 # Paths to the task script. This script will be executed by the tasks that
@@ -280,7 +280,7 @@ def upload_file_to_container(block_blob_client, container_name, path):
 >
 
 ## <a name="step-3-create-batch-pool"></a>步骤 3：创建 Batch 池
-![创建 Batch 池][3]
+![创建批处理池][3]
 <br/>
 
 Batch **池** 是 Batch 执行作业任务时所在的计算节点（虚拟机）集合。
@@ -371,7 +371,7 @@ def create_pool(batch_service_client, pool_id,
 
 * 池的 **ID**（*id* - 必需）<p/>与 Batch 中的大多数实体一样，新池在 Batch 帐户中必须具有唯一 ID。 代码将使用池 ID 引用此池，这也是在 Azure [门户][azure_portal]中识别池的方式。
 * **计算节点数**（*target_dedicated* - 必需）<p/>此属性指定应在池中部署多少个 VM。 必须注意，所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure Batch 服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如 Batch 帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
-* 节点的**操作系统**（*virtual_machine_configuration* **或** *cloud_service_configuration* - 必需）<p/>在 *python_tutorial_client.py* 中，使用 [VirtualMachineConfiguration][py_vm_config] 创建 Linux 节点池。 `common.helpers` 中的 `select_latest_verified_vm_image_with_node_agent_sku` 函数简化了 [Azure 虚拟机应用商店][vm_marketplace]映像的用法。 有关使用应用商店映像的详细信息，请参阅[在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md)。
+* 节点的**操作系统**（*virtual_machine_configuration* **或** *cloud_service_configuration* - 必需）<p/>在 *python_tutorial_client.py* 中，使用 [VirtualMachineConfiguration][py_vm_config] 创建 Linux 节点池。 `select_latest_verified_vm_image_with_node_agent_sku` 中的 `common.helpers` 函数简化了 [Azure 虚拟机 Marketplace][vm_marketplace] 映像的用法。 有关使用 Marketplace 映像的详细信息，请参阅[在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md)。
 * **计算节点的大小**（*vm_size* - 必需）<p/>由于我们要为 [VirtualMachineConfiguration][py_vm_config] 指定 Linux 节点，因此应根据 [Azure 中虚拟机的大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)指定 VM 大小（在本示例中为 `STANDARD_A1`）。 同样，请参阅 [在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md) 获取详细信息。
 * **启动任务**（*start_task* - 可选）<p/>还可以连同上述物理节点属性一起指定池的 [StartTask][py_starttask]（可选）。 StartTask 在每个节点加入池以及每次重新启动节点时在该节点上运行。 StartTask 特别适合用于准备计算节点，以便执行任务，例如安装任务将要运行的应用程序。<p/>在此示例应用程序中，StartTask 将它从存储下载的文件（使用 StartTask 的 **resource_files** 属性指定），从 StartTask *工作目录*复制到在节点上运行的所有任务可以访问的*共享*目录。 本质上，这会在节点加入池时，将 `python_tutorial_task.py` 复制到每个节点上的共享目录，因此该节点上运行的任何任务都可以访问它。
 
@@ -493,7 +493,7 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
 
 ## <a name="step-6-monitor-tasks"></a>步骤 6：监视任务
 ![监视任务][6]<br/>
-*脚本将会：(1) 监视任务的完成状态，(2) 监视将结果数据上传到 Azure 存储的任务*
+*脚本会：(1) 监视任务的完成状态，(2) 监视将结果数据上传到 Azure 存储的任务*
 
 任务在添加到作业后，会自动排入队列并计划在与作业关联的池中的计算节点上执行。 根据你指定的设置，Batch 将处理所有任务排队、计划、重试和其他任务管理工作。
 
