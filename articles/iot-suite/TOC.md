@@ -48,6 +48,10 @@
 ### [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ### [已连接的工厂解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 
+## 设备模拟
+### [部署设备模拟](iot-suite-device-simulation-deploy.md)
+### [浏览设备模拟](iot-suite-device-simulation-explore.md)
+
 # 操作指南
 ## 远程监视
 ### [执行高级监视](iot-suite-remote-monitoring-monitor.md)

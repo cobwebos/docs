@@ -34,8 +34,6 @@
 ### [3- 升级群集运行时](service-fabric-tutorial-upgrade-cluster.md)
 ### [4- 部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
-
-
 # 示例
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=service-fabric)
 ## [Azure PowerShell](service-fabric-powershell-samples.md)
@@ -49,66 +47,61 @@
 ## [体系结构](service-fabric-architecture.md)
 ## [术语](service-fabric-technical-overview.md)
 
-## 生成应用程序和服务
-### [支持的编程模型](service-fabric-choose-framework.md)
-#### [容器](service-fabric-containers-overview.md)
-##### [Docker Compose（预览）](service-fabric-docker-compose.md)
-##### [资源调控](service-fabric-resource-governance.md)
-#### [Reliable Services](service-fabric-reliable-services-introduction.md)
-##### [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
-##### [Reliable Services 生命周期 - Java](service-fabric-reliable-services-lifecycle-java.md)
-##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
-##### [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
-##### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
-##### [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-##### [可靠的并发队列](service-fabric-reliable-services-reliable-concurrent-queue.md)
-##### [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
-##### [可靠状态管理器和 Reliable Collection 内部](service-fabric-reliable-services-reliable-collections-internals.md)
-##### [高级使用率](service-fabric-reliable-services-advanced-usage.md)
+## [支持的编程模型](service-fabric-choose-framework.md)
+### [容器](service-fabric-containers-overview.md)
+#### [Docker Compose（预览）](service-fabric-docker-compose.md)
+#### [资源调控](service-fabric-resource-governance.md)
+### [Reliable Services](service-fabric-reliable-services-introduction.md)
+#### [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
+#### [Reliable Services 生命周期 - Java](service-fabric-reliable-services-lifecycle-java.md)
+#### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+#### [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
+#### [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
+#### [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+#### [可靠的并发队列](service-fabric-reliable-services-reliable-concurrent-queue.md)
+#### [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
+#### [可靠状态管理器和 Reliable Collection 内部](service-fabric-reliable-services-reliable-collections-internals.md)
+#### [高级使用率](service-fabric-reliable-services-advanced-usage.md)
 
-#### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
-##### [体系结构](service-fabric-reliable-actors-platform.md)
-##### [生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
-##### [状态管理](service-fabric-reliable-actors-state-management.md)
-##### [多形性](service-fabric-reliable-actors-polymorphism.md)
-##### [重新进入](service-fabric-reliable-actors-reentrancy.md)
-##### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
+#### [体系结构](service-fabric-reliable-actors-platform.md)
+#### [生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
+#### [状态管理](service-fabric-reliable-actors-state-management.md)
+#### [多形性](service-fabric-reliable-actors-polymorphism.md)
+#### [重新进入](service-fabric-reliable-actors-reentrancy.md)
+#### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
+## 应用程序和服务
 ### [应用程序模型](service-fabric-application-model.md)
 ### [应用程序和服务清单](service-fabric-application-and-service-manifests.md)
 ### [托管模型](service-fabric-hosting-model.md)
 
-### 服务
-#### [服务资源](service-fabric-service-manifest-resources.md)
-#### [服务状态](service-fabric-concepts-state.md)
-#### [服务分区](service-fabric-concepts-partitioning.md)
-#### [服务的可用性](service-fabric-availability-services.md)
-#### [副本和实例生命周期](service-fabric-concepts-replica-lifecycle.md)
-#### [重新配置](service-fabric-concepts-reconfiguration.md)
-#### [服务通信](service-fabric-connect-and-communicate-with-services.md)
-##### [DNS 服务](service-fabric-dnsservice.md)
-##### [反向代理](service-fabric-reverseproxy.md)
-##### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
-##### [反向代理诊断](service-fabric-reverse-proxy-diagnostics.md)
+### [服务状态](service-fabric-concepts-state.md)
+### [服务分区](service-fabric-concepts-partitioning.md)
 ### [应用程序的可伸缩性](service-fabric-concepts-scalability.md)
-### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
+### [服务的可用性](service-fabric-availability-services.md)
+### [副本和实例生命周期](service-fabric-concepts-replica-lifecycle.md)
+### [重新配置](service-fabric-concepts-reconfiguration.md)
 
-### [规划应用程序容量](service-fabric-capacity-planning.md)
+### [服务通信](service-fabric-connect-and-communicate-with-services.md)
+#### [DNS 服务](service-fabric-dnsservice.md)
+#### [反向代理](service-fabric-reverseproxy.md)
+#### [配置反向代理以进行安全通信](service-fabric-reverseproxy-configure-secure-communication.md)
+#### [反向代理诊断](service-fabric-reverse-proxy-diagnostics.md)
+#### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## [管理应用程序](service-fabric-application-lifecycle.md)
-### [应用程序升级](service-fabric-application-upgrade.md)
-#### [配置](service-fabric-visualstudio-configure-upgrade.md)
-#### [应用程序升级参数](service-fabric-application-upgrade-parameters.md)
-#### [应用程序升级中的数据序列化](service-fabric-application-upgrade-data-serialization.md)
-#### [应用程序升级的高级主题](service-fabric-application-upgrade-advanced.md)
-### [故障分析概述](service-fabric-testability-overview.md)
-### [ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
+### [应用程序生命周期](service-fabric-application-lifecycle.md)
+#### [应用程序升级](service-fabric-application-upgrade.md)
+##### [配置](service-fabric-visualstudio-configure-upgrade.md)
+##### [应用程序升级参数](service-fabric-application-upgrade-parameters.md)
+##### [应用程序升级中的数据序列化](service-fabric-application-upgrade-data-serialization.md)
+##### [应用程序升级的高级主题](service-fabric-application-upgrade-advanced.md)
+#### [使用故障分析来测试应用](service-fabric-testability-overview.md)
+#### [ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
 
-## [创建和管理群集](service-fabric-deploy-anywhere.md)
-### 规划和准备
-#### [容量规划](service-fabric-cluster-capacity.md)
-#### [灾难恢复](service-fabric-disaster-recovery.md)
-### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
+### [服务资源](service-fabric-service-manifest-resources.md)
+
+## [群集](service-fabric-deploy-anywhere.md)
 ### [群集安全性](service-fabric-cluster-security.md)
 ### [Linux 和 Windows 之间的功能差异](service-fabric-linux-windows-differences.md)
 ### Azure 上的群集
@@ -163,15 +156,30 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 ### [设置 Service Fabric CLI](service-fabric-cli.md)
 
+## 规划和准备
+### [计划群集容量](service-fabric-cluster-capacity.md)
+### [独立群集部署计划](service-fabric-cluster-standalone-deployment-preparation.md)
+### [为灾难恢复做准备](service-fabric-disaster-recovery.md)
+### [规划应用程序容量](service-fabric-capacity-planning.md)
+
+## 创建第一个...
+### [Visual Studio 中的 C# 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)
+### [Windows 容器应用程序](service-fabric-get-started-containers.md)
+### [Linux 容器应用程序](service-fabric-get-started-containers-linux.md)
+### [基于 Windows 的 C# Reliable Services 应用程序](service-fabric-reliable-services-quick-start.md)
+### [基于 Linux 的 Java Reliable Services 应用程序](service-fabric-reliable-services-quick-start-java.md)
+### [基于 Linux 的 C# Reliable Services 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
+### [基于 Windows 的 C# Reliable Actors 应用程序](service-fabric-reliable-actors-get-started.md)
+### [基于 Linux 的 Java Reliable Actors 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
+### [基于 Windows 的来宾可执行应用程序](quickstart-guest-app.md)
+### [独立群集](service-fabric-get-started-standalone-cluster.md)
+
 ## 构建应用程序
-### [在 Visual Studio 中创建你的第一个 C# 应用](service-fabric-create-your-first-application-in-visual-studio.md)
+
 ### 生成来宾可执行服务
-#### [在 Windows 上承载 Node.js 应用程序](quickstart-guest-app.md)
 #### [部署来宾可执行文件](service-fabric-deploy-existing-app.md)
 #### [部署多个来宾可执行文件](service-fabric-deploy-multiple-apps.md)
 ### 生成容器服务
-#### [创建 Windows 容器应用程序](service-fabric-get-started-containers.md)
-#### [创建 Linux 容器应用程序](service-fabric-get-started-containers-linux.md)
 #### [容器安全性](service-fabric-securing-containers.md)
 #### [Docker Compose（预览）](service-fabric-docker-compose.md)
 #### [容器和服务的资源调控](service-fabric-resource-governance.md)
@@ -185,10 +193,6 @@
 ##### [可靠的并发队列](service-fabric-reliable-services-reliable-concurrent-queue.md)
 ##### [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
 
-#### 入门
-##### [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
-##### [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
-##### [在 Linux 上创建 C# 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 #### 与服务进行通信
 ##### [与 Reliable Services 通信](service-fabric-reliable-services-communication.md)
 
@@ -203,9 +207,6 @@
 #### [备份和还原](service-fabric-reliable-services-backup-restore.md)
 
 ### 生成 Reliable Actors 服务
-#### 入门
-##### [Windows 上的 C#](service-fabric-reliable-actors-get-started.md)
-##### [Linux 上的 Java Actor](service-fabric-create-your-first-linux-application-with-java.md)
 #### [发送通知](service-fabric-reliable-actors-events.md)
 #### [设置计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
 #### [配置 KvsActorStateProvider](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
@@ -285,9 +286,7 @@
 #### [删除](service-fabric-cluster-delete.md)
 
 ### 独立群集
-#### [规划和准备部署](service-fabric-cluster-standalone-deployment-preparation.md)
 #### 创建
-##### [创建第一个独立群集](service-fabric-get-started-standalone-cluster.md)
 ##### [在本地创建](service-fabric-cluster-creation-for-windows-server.md)
 ##### [使用证书进行保护](service-fabric-windows-cluster-x509-security.md)  
 ##### [使用 Windows 安全进行保护](service-fabric-windows-cluster-windows-security.md)

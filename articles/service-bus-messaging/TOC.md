@@ -26,6 +26,8 @@
 
 # 如何
 ## 规划和设计
+### [托管服务标识（预览）](service-bus-managed-service-identity.md)
+### [基于角色的访问控制（预览）](service-bus-role-based-access-control.md)
 ### [高级消息传送](service-bus-premium-messaging.md)
 ### [Azure 队列与服务总线队列的比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [优化性能](service-bus-performance-improvements.md)
@@ -67,7 +69,7 @@
 ### [服务总线管理库](service-bus-management-libraries.md)
 ### [诊断日志](service-bus-diagnostic-logs.md)
 ### [挂起和重新激活消息传递实体](entity-suspend.md)
-### [使用 Azure Resource Manager 模板](service-bus-resource-manager-overview.md)
+### [使用 Azure 资源管理器模板](service-bus-resource-manager-overview.md)
 #### [创建命名空间](service-bus-resource-manager-namespace.md)
 #### [创建命名空间和队列](service-bus-resource-manager-namespace-queue.md)
 #### [创建包含主题和订阅的命名空间](service-bus-resource-manager-namespace-topic.md)

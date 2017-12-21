@@ -1,0 +1,69 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Azure 策略文档"
+metadata:
+  title: "Azure 策略文档 - 教程和 API 参考 | Microsoft Docs"
+  description: "可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。"
+  services: azure-policy
+  author: czeumault
+  manager: carolz
+  ms.service: azure-policy
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/18/2017
+  ms.author: carolz
+  ms.openlocfilehash: b5945fe76973aba267b529078466c7a97e5e6421
+  ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/20/2017
+abstract:
+  description: "可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。"
+sections:
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "了解如何在 Azure 中创建、分配和管理策略定义。"
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+      text: "Azure 门户"
+      href: /azure/azure-policy/assign-policy-definition
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/azure-policy/assign-policy-definition-ps
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure CLI
+      href: /azure/azure-policy/assign-policy-definition-cli
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何在 Azure 中创建、分配和管理策略定义。"
+  - type: list
+    style: unordered
+    items:
+    - html: "<a href=\"/azure/azure-policy/create-manage-policy\">创建和管理 Azure 策略</a>"
+- title: "示例"
+  items:
+  - type: paragraph
+    text: "通过以下 JSON 示例了解如何在 Azure 中创建策略定义。"
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: "命令行"
+      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/policy">Azure CLI</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
