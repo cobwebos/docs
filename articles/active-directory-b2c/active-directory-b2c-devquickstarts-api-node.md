@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: b45114e9e0357e0b5a4cee59db4e685baf8cb1ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C：使用 Node.js 保护 Web API
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -48,8 +48,6 @@ ms.lasthandoff: 12/11/2017
 * 在“回复 URL”中输入 `http://localhost/TodoListService`。 它是此代码示例的默认 URL。
 * 为应用程序创建 **应用程序机密** 并复制下来。 稍后需要此数据。 请注意，此值在使用之前必须经过 [XML 转义](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) 。
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要此数据。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
 在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：

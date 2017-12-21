@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 09/04/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 639f008eea61b973b9d32dc734d42d5c4e93e924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 954afd6d47f9bccdd2512ab92ba0d416231fb623
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 本教程会引导完成创建恢复服务保管库和备份 Azure 虚拟机 (VM) 的步骤。 恢复服务保管库保护：
 
-* Azure Resource Manager 部署型 VM
+* Azure 资源管理器部署的 VM
 * 经典 VM
 * 标准存储 VM
 * 高级存储 VM
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 
 有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)一文。 有关支持托管磁盘 VM 的详细信息，请参阅[备份和还原托管磁盘上的 VM](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。 若要详细了解适用于 Linux VM 备份的前脚本和后脚本框架，请参阅[使用前脚本和后脚本进行应用程序一致性 Linux VM 备份] (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
 
-若要详细了解可备份和不可备份的内容，请参阅[此处](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
+若要详细了解可备份和不可备份的内容，请参阅[此处](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
 
 > [!NOTE]
 > 本教程假设 Azure 订阅中已有 VM，且已采取措施允许备份服务访问 VM。
@@ -163,7 +163,7 @@ ms.lasthandoff: 10/11/2017
     或
     * 选择“使用现有项”，并单击下拉菜单查看可用的资源组列表。
 
-  有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+  有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
 7. 单击“位置”，为保管库选择地理区域  。 此选项决定了备份数据要发送到的地理区域。
 
@@ -264,7 +264,7 @@ ms.lasthandoff: 10/11/2017
 若要运行初始备份作业，请执行以下操作：
 
 1. 在保管库仪表板上，单击“备份项”下的数字，或单击“备份项”磁贴。 <br/>
-  ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
+  ![“设置”图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
   “**备份项**”边栏选项卡随即打开。
 
