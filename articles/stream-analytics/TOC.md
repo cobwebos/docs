@@ -17,6 +17,7 @@
 ### [IoT Edge 上的流分析（预览版）](stream-analytics-edge.md)
 ### [Azure 用法指南（预览版）中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
 ### [使用流分析进行高频率交易模拟](stream-analytics-high-frequency-trading.md)
+### [Azure Functions 与 Azure 流分析](stream-analytics-with-azure-functions.md)
 
 ## 创建作业
 ### [创建输入](stream-analytics-define-inputs.md)

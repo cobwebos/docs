@@ -90,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: 使用自动缩放
       items:
+        - name: 了解自动缩放设置
+          href: monitoring-understanding-autoscale-settings.md
         - name: 最佳实践
           href: insights-autoscale-best-practices.md
         - name: 常见指标

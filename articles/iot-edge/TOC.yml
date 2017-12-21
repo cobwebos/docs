@@ -38,6 +38,10 @@
           href: how-to-vscode-develop-csharp-module.md
         - name: '调试 C# 模块'
           href: how-to-vscode-debug-csharp-module.md
+        - name: 开发和部署 Azure Functions
+          href: how-to-vscode-develop-azure-function.md
+        - name: 调试 Azure Functions
+          href: how-to-vscode-debug-azure-function.md
     - name: 故障排除
       href: troubleshoot.md
 - name: 概念

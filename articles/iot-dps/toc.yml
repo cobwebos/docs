@@ -36,7 +36,11 @@
 - name: 操作指南
   items:
     - name: 管理设备注册
-      href: how-to-manage-enrollments.md
+      items:
+        - name: 通过 Azure 门户管理设备注册
+          href: how-to-manage-enrollments.md
+        - name: 通过服务 SDK 管理设备注册
+          href: how-to-manage-enrollments-sdks.md
     - name: 将 HSM 与 SDK 配合使用
       href: use-hsm-with-sdk.md
     - name: 控制对预配服务的访问
