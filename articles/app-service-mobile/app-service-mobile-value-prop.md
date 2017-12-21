@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 8576f2b6adce044d2060c3ba6d19ac330e3637c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0731237c9376d5f762eea1c7559bc6a70a2025d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
@@ -57,7 +57,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 ## <a name="azure-app-service-features"></a>Azure 应用服务功能
 以下平台功能可用于移动生产站点：
 
-* 自动缩放：使用应用服务可以快速地进行纵向或横向扩展，以处理任何传入的客户负载。 手动选择 VM 的数量和大小，或者设置自动缩放，根据负载或计划来缩放移动应用后端。
+* **自动缩放**：使用应用服务可以快速地进行纵向或横向扩展，以处理任何传入的客户负载。 手动选择 VM 的数量和大小，或者设置自动缩放，根据负载或计划来缩放移动应用后端。
 
   深入了解[自动缩放]。
 
@@ -88,7 +88,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [入门]: app-service-mobile-ios-get-started.md
 [Azure 表存储]:../cosmos-db/table-storage-how-to-use-dotnet.md
-[Azure Cosmos DB]: ../cosmos-db/documentdb-get-started.md
+[Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
 [身份验证功能]: ./app-service-mobile-auth.md
 [数据功能]: ./app-service-mobile-offline-data-sync.md
 [推送通知功能]: ../notification-hubs/notification-hubs-push-notification-overview.md

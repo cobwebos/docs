@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>集成安全中心安全策略与 Azure 策略
 本文介绍如何配置 Azure 策略所支持的 Azure 安全中心安全策略。 
@@ -39,14 +39,14 @@ ms.lasthandoff: 12/08/2017
 
 2. 在“安全中心”仪表板的“通用”下选择“安全策略”。
 
-    ![“策略管理”窗格](./media/security-center-policies/security-center-policies-fig10.png)
+    ![“策略管理”窗格](./media/security-center-azure-policy/security-center-policies-fig10.png)
 
 3. 选择要为其启用安全策略的订阅。  
 
 4. 在“策略组件”部分选择“安全策略”。  
     此时会打开“基本信息”窗口。
 
-    ![策略组件](./media/security-center-policies/security-center-policies-fig12.png)
+    ![策略组件](./media/security-center-azure-policy/security-center-policies-fig12.png)
 
 5. 若要删除策略定义，请在“策略和参数”下要删除的定义旁边选择“删除”。
 
@@ -57,12 +57,12 @@ ms.lasthandoff: 12/08/2017
 
     * 若要添加策略定义，请选择定义旁边的加号 (+)。
 
-    ![可用策略定义](./media/security-center-policies/security-center-policies-fig11.png)
+    ![可用策略定义](./media/security-center-azure-policy/security-center-policies-fig11.png)
 
     * 如需策略的详细说明，请选择它。  
     此时会打开定义“预览”窗口。 该窗口会显示对定义的说明，以及 JSON 代码的链接，其中提供了[策略定义](../azure-policy/policy-definition.md)结构。
 
-    ![定义“预览”窗口](./media/security-center-policies/security-center-policies-fig14.png)
+    ![定义“预览”窗口](./media/security-center-azure-policy/security-center-policies-fig14.png)
 
 7. 编辑完后，选择“保存”。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: fd3ca18fd7a9d1226d41229d37e637a62478f92a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: b8f0f899dff0f9e238017cb77126b3ca1275f3cd
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：热、冷、存档存储层
 
@@ -32,7 +32,7 @@ Azure 存储为 Blob 对象存储提供三个存储层，因此你可以根据�
 
 ## <a name="storage-accounts-that-support-tiering"></a>支持分层的存储帐户
 
-在 Blob 存储或常规用途 v2 (GPv2) 帐户中，只能将对象存储数据分为热层、冷层、存档层。 常规用途 v1 (GPv1) 帐户不支持分层。 不过，客户可以轻松地将其现有的 GPv1 或 Blob 存储帐户转换为 GPv2 帐户，只需在 Azure 门户中单击一下即可。 GPv2 为 Blob、文件和队列提供新的定价结构，还可以访问各种其他的全新存储功能。 另外，以后只对 GPv2 帐户提供某些新功能和价格折扣。 因此，客户应使用 GPv2 帐户进行评估，但只应在查看所有服务的定价以后再使用此类帐户，因为某些工作负荷的价格在 GPv2 中可能比在 GPv1 中更高。 若要了解详细信息，请参阅 [Azure 存储帐户选项](storage-account-options.md)。
+在 Blob 存储或常规用途 v2 (GPv2) 帐户中，只能将对象存储数据分为热层、冷层、存档层。 常规用途 v1 (GPv1) 帐户不支持分层。 不过，客户可以轻松地将其现有的 GPv1 或 Blob 存储帐户转换为 GPv2 帐户，只需在 Azure 门户中单击一下即可。 GPv2 为 Blob、文件和队列提供新的定价结构，还可以访问各种其他的全新存储功能。 另外，以后只对 GPv2 帐户提供某些新功能和价格折扣。 因此，客户应使用 GPv2 帐户进行评估，但只应在查看所有服务的定价以后再使用此类帐户，因为某些工作负荷的价格在 GPv2 中可能比在 GPv1 中更高。 若要了解详细信息，请参阅 [Azure 存储帐户选项](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你将存储帐户中任何 Blob 的默认存储层指定为热层或冷层，前提是该 Blob 尚未在对象级别设置该层。 对于已在对象级别设置该层的对象，不会应用帐户层。 存档层仅适用于对象级别。 可以随时在这些存储层之间进行切换。
 
@@ -139,7 +139,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 建议使用 GPv2 帐户而非 Blob 存储帐户进行分层。 GPv2 支持 Blob 存储帐户支持的所有功能，以及许多其他的功能。 Blob 存储和 GPv2 的定价几乎相同，但某些新功能和价格折扣只提供给 GPv2 帐户。 GPv1 帐户不支持分层。
 
-GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之前，应仔细评估这二者。 只需单击一下，即可轻松地将现有的 Blob 存储或 GPv1 帐户转换为 GPv2 帐户。 若要了解详细信息，请参阅 [Azure 存储帐户选项](storage-account-options.md)。
+GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之前，应仔细评估这二者。 只需单击一下，即可轻松地将现有的 Blob 存储或 GPv1 帐户转换为 GPv2 帐户。 若要了解详细信息，请参阅 [Azure 存储帐户选项](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 **是否可以将对象存储在同一帐户的所有三个存储层（热层、冷层和存档层）中？**
 

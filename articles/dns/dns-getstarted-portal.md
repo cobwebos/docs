@@ -3,8 +3,8 @@ title: "通过 Azure 门户开始使用 Azure DNS | Microsoft 文档"
 description: "了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure 门户创建和管理第一个 DNS 区域和记录的分步指南。"
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: jonatul
-ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/18/2017
+ms.author: kumud
+ms.openlocfilehash: b2a9a7dbd1fa7da7ebe479ac166602245cdaefde
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="get-started-with-azure-dns-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure DNS
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-getstarted-portal.md)
 > * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
 本文将逐步引导完成使用 Azure 门户创建第一个 DNS 区域和记录的步骤。 也可以使用 Azure PowerShell 或跨平台 Azure CLI 执行这些步骤。
@@ -36,11 +35,11 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户
-2. 在“中心”菜单上，单击“新建”>“网络”，并单击“DNS 区域”以打开“创建 DNS 区域”边栏选项卡。
+2. 在“中心”菜单上，单击“新建”>“网络”，然后单击“DNS 区域”以打开“创建 DNS 区域”页。
 
     ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
 
-4. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：
+4. 在“创建 DNS 区域”页上，输入以下值，并单击“创建”：
 
 
    | **设置** | **值** | **详细信息** |
@@ -57,11 +56,11 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 以下示例指导完成创建新的 A 记录的过程。 若要了解其他记录类型并修改现有记录，请参阅[使用 Azure 门户管理 DNS 记录和记录集](dns-operations-recordsets-portal.md)。 
 
-1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“contoso.com”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.com”， 轻松访问 DNS 区域。
+1. 创建 DNS 区域以后，在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击 **contoso.com** DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.com”， 轻松访问 DNS 区域。
 
-1. 在“DNS 区域”边栏选项卡顶部，选择“+ 记录集”以打开“添加记录集”边栏选项卡。
+1. 在“DNS 区域”页顶部，选择“+ 记录集”以打开“添加记录集”页。
 
-1. 在“添加记录集”边栏选项卡中，输入以下值，并单击“确定”。 在此示例中，将创建一个 A 记录。
+1. 在“添加记录集”页中，输入以下值，并单击“确定”。 在此示例中，将创建一个 A 记录。
 
    |**设置** | **值** | **详细信息** |
    |---|---|---|
@@ -73,7 +72,7 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 ## <a name="view-records"></a>查看记录
 
-在 DNS 区域边栏选项卡的下半部分，可以看到 DNS 区域的记录。 应当会看到默认的 DNS 和 SOA 记录（在每个区域中都会创建这些记录）以及创建的任何新记录。
+在“DNS 区域”页的下半部分，可看到 DNS 区域的记录。 应当会看到默认的 DNS 和 SOA 记录（在每个区域中都会创建这些记录）以及创建的任何新记录。
 
 ![区域](./media/dns-getstarted-portal/viewzone500.png)
 
@@ -92,8 +91,8 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 
 若要删除在本文中创建的所有资源，请完成以下步骤：
 
-1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击“MyResourceGroup”资源组。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“MyResourceGroup”， 轻松访问资源组。
-1. 在“MyResourceGroup”边栏选项卡中，单击“删除”按钮。
+1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击 **MyResourceGroup** 资源组。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“MyResourceGroup”， 轻松访问资源组。
+1. 在 **MyResourceGroup** 页中，单击“删除”按钮。
 1. 门户会要求用户键入资源组的名称，以便确认用户需要删除它。 单击“删除”，键入“MyResourceGroup”作为资源组名称，并单击“删除”。 删除资源组会删除资源组中的所有资源，因此在删除资源组之前，请确保始终确认其内容。 门户会先删除包含在资源组中的所有资源，然后删除资源组本身。 此过程需要几分钟。
 
 

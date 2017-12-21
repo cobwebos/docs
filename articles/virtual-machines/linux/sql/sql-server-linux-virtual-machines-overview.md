@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.workload: iaas-sql-server
 ms.date: 10/02/2017
 ms.author: jroth
-ms.openlocfilehash: 787e696edd2a446bec280b763fe5ac591782c8ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虚拟机 (Linux) 上的 SQL Server 概述
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 在 Azure VM 中运行 SQL Server 是在 Azure 中存储关系数据的一个选项。 也可使用 Azure SQL 数据库服务。 若要详细了解如何在虚拟机上的 SQL Server 与 Azure SQL 数据库之间进行选择，请参阅[选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)。
 
-## <a name="create-a-new-sql-vm"></a>创建新的 SQL VM
+## <a id="create"></a>创建新的 SQL VM
 
 在以下教程中查找创建新 SQL VM 的分步指南：[在 Azure 中预配 Linux SQL Server VM](provision-sql-server-linux-virtual-machine.md)。
 

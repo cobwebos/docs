@@ -3,7 +3,7 @@
 
 1. 导航到 Mobile Engagement 门户。 确保位于正确的位置，并单击底部的“参与”  按钮：
    
-    ![](./media/mobile-engagement-ios-send-push/engage-button.png)
+    ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 2. 单击 Engagement 门户中的“设置”  页面。 从中单击“原生推送”  部分，上传 p12 证书：
    
     ![](./media/mobile-engagement-ios-send-push/engagement-portal.png)
