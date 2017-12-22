@@ -1,5 +1,5 @@
 ## <a name="prerequisites"></a>先决条件
-在编写 CDN 管理代码之前，需要做好一些准备工作，使代码能够与 Azure Resource Manager 交互。  为此需要：
+在编写 CDN 管理代码之前，需要做好一些准备工作，使代码能够与 Azure 资源管理器交互。  为此需要：
 
 * 创建一个资源组，其中包含本教程创建的 CDN 配置文件
 * 配置 Azure Active Directory，为应用程序提供身份验证
@@ -27,7 +27,7 @@
 >
 > 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
-> 执行“Assign application to role”（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。[](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
+> 执行 [Assign application to role](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
 >
 >
 
