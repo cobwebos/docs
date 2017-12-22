@@ -1,6 +1,6 @@
 ---
-title: "Azure 中继节点 API 概述 | Microsoft Docs"
-description: "中继节点 API 概述"
+title: "Azure 中继 Node API 概述 | Microsoft Docs"
+description: "中继 Node API 概述"
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -20,11 +20,11 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接节点 API 概述
+# <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接 Node API 概述
 
 ## <a name="overview"></a>概述
 
-Azure 中继混合连接的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) 节点包是在 [‘ws’](https://www.npmjs.com/package/ws) NPM 包的基础上进行构建和扩展的。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
+Azure 中继混合连接的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) Node 包是在 [‘ws’](https://www.npmjs.com/package/ws) NPM 包的基础上进行构建和扩展的。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
 
 在现有应用程序中，`require('ws')` 可以改为结合使用此包与 `require('hyco-ws')`，从而还可以实现混合方案，其中应用程序可以同时从“防火墙内”和通过混合连接本地侦听 WebSocket 连接。
   
@@ -47,7 +47,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-帮助程序方法可用于此包，但也可用于节点服务器，使 Web 或设备客户端能够创建侦听器或发件人。 服务器使用这些方法时，向它们传递嵌入生存期较短的令牌的 URI。 这些 URI 也可用于不支持设置 WebSocket 握手的 HTTP 头的常见 WebSocket 堆栈。 将授权令牌嵌入到 URI 主要针对这些库外使用方案。 
+帮助程序方法可用于此包，但也可用于 Node 服务器，使 Web 或设备客户端能够创建侦听器或发件人。 服务器使用这些方法时，向它们传递嵌入生存期较短的令牌的 URI。 这些 URI 也可用于不支持设置 WebSocket 握手的 HTTP 头的常见 WebSocket 堆栈。 将授权令牌嵌入到 URI 主要针对这些库外使用方案。 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 

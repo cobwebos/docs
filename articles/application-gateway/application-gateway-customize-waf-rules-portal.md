@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: davidmu
 ms.openlocfilehash: 406e491aa54806b3534ef0f500d6aea03434e2c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>通过 Azure 门户自定义 Web 应用程序防火墙规则
 

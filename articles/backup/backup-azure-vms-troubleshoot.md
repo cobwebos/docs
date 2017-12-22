@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: f7fc4d367a0594a77d7ee25bbd1e40c4b2949c19
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d09208596de4609faace67e11926ad30f68cd901
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
-> [!div class="op_single_selector"]
-> * [恢复服务保管库](backup-azure-vms-troubleshoot.md)
-> * [备份保管库](backup-azure-vms-troubleshoot-classic.md)
->
->
-
 可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
 
 ## <a name="backup"></a>备份
@@ -137,7 +131,7 @@ ms.lasthandoff: 12/08/2017
 VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储或者快照任务执行延迟，则备份作业可能会失败。 以下因素可能会导致快照任务失败。
 
 1. 使用 NSG 阻止对存储进行网络访问<br>
-    详细了解如何使用 IP 允许列表或代理服务器[启用对存储的网络访问权限](backup-azure-vms-prepare.md#network-connectivity)。
+    详细了解如何使用 IP 允许列表或代理服务器[启用对存储的网络访问权限](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 2. 配置了 Sql Server 备份的 VM 可能会导致快照任务延迟 <br>
    默认情况下，VM 备份在 Windows VM 上发起 VSS 完整备份。 在运行 SQL Server 且已配置 SQL Server 备份的 VM 上，这可能会造成快照执行延迟。 如果由于快照问题而导致备份失败，请设置以下注册表项。
 
@@ -169,7 +163,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
    * 使用 [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) cmdlet 取消阻止 IP。 在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet（以管理员身份运行）。
    * 向 NSG 添加规则（如果已创建规则），以允许访问这些 IP。
 2. 为 HTTP 流量创建路径
-   * 如果指定了某种网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。 可在[此处](backup-azure-vms-prepare.md#network-connectivity)找到部署 HTTP 代理服务器的步骤。
+   * 如果指定了某种网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。 可在[此处](backup-azure-arm-vms-prepare.md#establish-network-connectivity)找到部署 HTTP 代理服务器的步骤。
    * 向 NSG 添加规则（如果已创建规则），以允许从 HTTP 代理访问 INTERNET。
 
 > [!NOTE]

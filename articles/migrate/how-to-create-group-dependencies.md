@@ -18,7 +18,7 @@ ms.lasthandoff: 12/12/2017
 
 ## <a name="modify-a-group"></a>修改组
 
-1. 在 Azure Migrate 项目中，在“管理”下，单击“组” ****，然后选择组。
+1. 在 Azure Migrate 项目中，在“管理”下，单击“组”，然后选择组。 ****
 2. 在组页面上，单击“查看依赖项” ****，打开组依赖项映射。 
 
      ![查看组](./media/how-to-create-group-dependencies/create-group.png)

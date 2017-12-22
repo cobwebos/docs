@@ -1,6 +1,6 @@
 ---
-title: "创建虚拟网络 | Azure Resource Manager 模板 | Microsoft 文档"
-description: "了解如何使用 Azure Resource Manager 模板创建虚拟网络。"
+title: "创建虚拟网络 | Azure 资源管理器模板 | Microsoft 文档"
+description: "了解如何使用 Azure 资源管理器模板创建虚拟网络。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -17,18 +17,18 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建虚拟网络
+# <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟网络
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Microsoft 建议通过 Resource Manager 部署模型创建资源。 若要详细了解这两个模型之间的差别，请阅读 [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md)（了解 Azure 部署模型）一文。
+Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Microsoft 建议通过 Resource Manager 部署模型创建资源。 若要详细了解这两个模型之间的差别，请阅读 [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md)（了解 Azure 部署模型）一文。
  
-本文说明如何使用 Azure Resource Manager 模板通过资源管理器部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
+本文说明如何使用 Azure 资源管理器模板通过资源管理器部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
 
 > [!div class="op_single_selector"]
 - [门户](virtual-networks-create-vnet-arm-pportal.md)
@@ -45,7 +45,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-## <a name="download-and-understand-the-azure-resource-manager-template"></a>下载 Azure Resource Manager 模板并对其进行了解
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>下载 Azure 资源管理器模板并对其进行了解
 可以从 GitHub 下载用于创建 VNet 和两个子网的现有模板，进行任何所需的更改，并重用该模板。 为此，请完成下列步骤：
 
 1. 导航到 [示例模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)。
@@ -65,7 +65,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
    | **subnet2Prefix** |第二个子网的 CIDR 块 |
    
    > [!IMPORTANT]
-   > 在 GitHub 中维护的 Azure Resource Manager 模板可能随着时间的推移发生变化。 请确保在使用该模板之前对其进行检查。
+   > 在 GitHub 中维护的 Azure 资源管理器模板可能随着时间的推移发生变化。 请确保在使用该模板之前对其进行检查。
    > 
    > 
 6. 查看 **resources** 下的内容，并注意以下项：
@@ -118,7 +118,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
     New-AzureRmResourceGroup -Name TestRG -Location centralus
     ```
 
-    该命令在*美国中部* Azure 区域中创建一个名为 *TestRG* 的资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+    该命令在*美国中部* Azure 区域中创建一个名为 *TestRG* 的资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
     预期输出：
 
@@ -208,7 +208,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 ## <a name="deploy-the-template-using-click-to-deploy"></a>通过单击部署方式部署模板
 
-可以重用上传到由 Microsoft 维护并对社区开放的 GitHub 存储库的预定义 Azure Resource Manager 模板。 这些模板可直接从 GitHub 部署，或者将其下载并修改以满足需要。 若要部署用于创建包含两个子网的 VNet 的模板，请完成以下步骤：
+可以重用上传到由 Microsoft 维护并对社区开放的 GitHub 存储库的预定义 Azure 资源管理器模板。 这些模板可直接从 GitHub 部署，或者将其下载并修改以满足需要。 若要部署用于创建包含两个子网的 VNet 的模板，请完成以下步骤：
 
 1. 从浏览器导航到 [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates)。
 2. 向下滚动模板列表，并单击“101-vnet-two-subnets”。 选中 **README.md** 文件，如下所示。

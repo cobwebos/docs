@@ -1,6 +1,6 @@
 ---
 title: "搭配使用 Azure 应用程序网关和内部负载均衡器 - PowerShell | Microsoft Docs"
-description: "本页提供有关使用 Azure Resource Manager 创建、配置、启动和删除具有内部负载均衡器 (ILB) 的 Azure 应用程序网关的说明"
+description: "本页提供有关使用 Azure 资源管理器创建、配置、启动和删除具有内部负载均衡器 (ILB) 的 Azure 应用程序网关的说明"
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: davidmu
 ms.openlocfilehash: 8d96af009055a5c0349f0ac17054bebee4e54d36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建具有内部负载均衡器 (ILB) 的应用程序网关
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建具有内部负载均衡器 (ILB) 的应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 经典 PowerShell](application-gateway-ilb.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ilb-arm.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-ilb-arm.md)
 
 可以配置使用面向 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载均衡器 (ILB) 终结点）的 Azure 应用程序网关。 配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-使用 Azure 经典部署和 Azure Resource Manager 部署的差别在于创建应用程序网关的顺序和需要配置的项。
+使用 Azure 经典部署和 Azure 资源管理器部署的差别在于创建应用程序网关的顺序和需要配置的项。
 使用 Resource Manager 时，组成应用程序网关的所有项都将单独配置，并放在一起创建应用程序网关资源。
 
 以下是创建应用程序网关所需执行的步骤：
@@ -92,7 +92,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上述示例中，我们创建了名为“appgw-rg”的资源组，位置为“美国西部”。
 

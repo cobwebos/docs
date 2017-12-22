@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2017
 ms.author: cherylmc
 ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -109,7 +109,7 @@ SKU = VpnGw1 <br>
 3. 在“新建 VPN 连接”页面上，对于“连接类型”，选择“站点到站点”。
 4. 对于“本地站点”，单击“配置所需设置”。 这会打开“本地站点”页面。
 5. 在“本地站点”页面上，创建一个表示资源管理器 VNet 的名称。 例如，RMVNetLocal。
-6. 如果 Resource Manager VNet 的 **VPN 网关已具有一个公共 IP 地址**，则使用“VPN 网关 IP 地址”字段的值。 如果执行这些步骤进行练习，或者 Resource Manager VNet 尚没有虚拟网关，则可以虚构一个占位符 IP 地址。 请确保占位符 IP 地址使用的格式有效。 稍后，将使用 Resource Manager 虚拟网络网关的公共 IP 地址替换占位符 IP 地址。
+6. 如果 Resource Manager VNet 的 VPN 网关已具有一个公共 IP 地址，则使用“VPN 网关 IP 地址”字段的值。 如果执行这些步骤进行练习，或者 Resource Manager VNet 尚没有虚拟网关，则可以虚构一个占位符 IP 地址。 请确保占位符 IP 地址使用的格式有效。 稍后，将使用 Resource Manager 虚拟网络网关的公共 IP 地址替换占位符 IP 地址。
 7. 对于**客户端地址空间**，请使用资源管理器 VNet 的虚拟网络 IP 地址空间的 [值](#connectoverview)。 此设置用于指定要路由到 Resource Manager 虚拟网络的地址空间。 在示例中，我们使用 192.168.0.0/16 作为 RMVNet 的地址范围。
 8. 单击“确定”，保存值并返回“新建 VPN 连接”页面。
 

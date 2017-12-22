@@ -16,18 +16,13 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 892a88a2bc9d492f8a3afe59c05b4729f4830e6d
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
-> [!div class="op_single_selector"]
-> * [将 VM 备份到恢复服务保管库](backup-azure-arm-vms.md)
-> * [将 VM 备份到备份保管库](backup-azure-vms.md)
->
->
 
 本文详细介绍如何将 Azure VM（使用 Resource Manager 部署和经典模型部署）备份到恢复服务保管库。 备份 VM 的大部分工作是进行准备。 在进行备份或保护 VM 之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 完成先决条件后，可以启动备份操作来创建 VM 的快照。
 
@@ -46,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 若要运行初始备份作业，请执行以下操作：
 
 1. 在保管库仪表板上，单击“备份项”下的数字，或单击“备份项”磁贴。 <br/>
-  ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
+  ![“设置”图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
   “**备份项**”边栏选项卡随即打开。
 

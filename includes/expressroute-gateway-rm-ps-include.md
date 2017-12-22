@@ -7,7 +7,7 @@
 * 资源组 = “TestRG”
 * Subnet1 名称 = “FrontEnd” 
 * Subnet1 地址空间 = “192.168.1.0/24”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 GatewaySubnet。
+* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
 * 网关子网地址空间 = “192.168.200.0/26”
 * 区域 =“美国东部”
 * 网关名称 = “GW”

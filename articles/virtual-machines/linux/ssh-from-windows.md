@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
 ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 > [!div class="op_single_selector"]
@@ -146,7 +146,7 @@ PuTTY 是适用于 Windows 的常见 SSH 客户端。 可随意使用任何所�
 
     ![已成功将密钥导入到 PuTTYgen 中](./media/ssh-from-windows/successfully-imported-key.png)
 6. 单击“确定”以关闭该提示。
-7. 公钥会显示在“PuTTYgen”窗口的顶部。 创建 Linux VM 时，将此公钥复制并粘贴到 Azure 门户或 Azure Resource Manager 模板中。 也可以单击“保存公钥”将副本保存到计算机中：
+7. 公钥会显示在“PuTTYgen”窗口的顶部。 创建 Linux VM 时，将此公钥复制并粘贴到 Azure 门户或 Azure 资源管理器模板中。 也可以单击“保存公钥”将副本保存到计算机中：
 
     ![保存 PuTTY 公钥文件](./media/ssh-from-windows/save-public-key.png)
 

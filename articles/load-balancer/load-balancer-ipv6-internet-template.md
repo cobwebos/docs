@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 90439d792eac618671a9de9938302d8930c986d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -106,7 +106,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="template-parameters-and-variables"></a>模板参数和变量
 
-Azure Resource Manager 模板包含可根据需要自定义的多个变量和参数。 对于不希望用户更改的固定值，可以使用变量。 对于在部署模板不希望用户提供的值，可以使用参数。 该示例模板是针对本文所述的方案配置的。 可以根据环境需求自定义此模板。
+Azure 资源管理器模板包含可根据需要自定义的多个变量和参数。 对于不希望用户更改的固定值，可以使用变量。 对于在部署模板不希望用户提供的值，可以使用参数。 该示例模板是针对本文所述的方案配置的。 可以根据环境需求自定义此模板。
 
 本文中使用的示例模板包含以下变量和参数：
 
