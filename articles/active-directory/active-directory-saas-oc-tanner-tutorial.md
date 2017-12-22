@@ -73,7 +73,7 @@ ms.lasthandoff: 12/11/2017
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
-5. 在结果面板中，选择“O.C. Tanner - AppreciateHub”****，然后单击“添加”**按钮添加该应用程序。
+5. 在结果面板中，选择“O.C. Tanner - AppreciateHub”**，然后单击“添加”按钮添加该应用程序。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
 

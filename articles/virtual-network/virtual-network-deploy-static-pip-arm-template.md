@@ -1,6 +1,6 @@
 ---
-title: "创建具有静态公共 IP 地址的 VM - Azure Resource Manager 模板 | Microsoft 文档"
-description: "了解如何使用 Azure Resource Manager 模板创建具有静态公共 IP 地址的 VM。"
+title: "创建具有静态公共 IP 地址的 VM - Azure 资源管理器模板 | Microsoft 文档"
+description: "了解如何使用 Azure 资源管理器模板创建具有静态公共 IP 地址的 VM。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,12 +17,12 @@ ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2f503aa60fdd9b7cf66ef482a1041e34c88e5c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建具有静态公共 IP 地址的 VM
+# <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建具有静态公共 IP 地址的 VM
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
