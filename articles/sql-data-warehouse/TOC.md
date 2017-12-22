@@ -1,6 +1,7 @@
 # 概述
 
 ## [关于 SQL 数据仓库](sql-data-warehouse-overview-what-is.md)
+## [备忘单](cheat-sheet.md)
 
 # 快速入门
 

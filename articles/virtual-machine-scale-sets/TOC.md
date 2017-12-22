@@ -2,9 +2,12 @@
 ## [什么是虚拟机规模集？](virtual-machine-scale-sets-overview.md)
 
 # 入门
-## [在 Azure 门户中部署规模集](virtual-machine-scale-sets-portal-create.md)
-## [使用 PowerShell 或 Azure CLI 部署规模集](virtual-machine-scale-sets-create.md)
-## [使用模板部署自动缩放应用](virtual-machine-scale-sets-deploy-scaling-app-template.md)
+## [在 Azure 门户中创建](virtual-machine-scale-sets-create-portal.md)
+## [使用 Azure CLI 2.0 创建](virtual-machine-scale-sets-create-cli.md)
+## [使用 Azure PowerShell 创建](virtual-machine-scale-sets-create-powershell.md)
+## 使用模板创建
+### [Linux 规模集](virtual-machine-scale-sets-create-template-linux.md)
+### [Windows 规模集](virtual-machine-scale-sets-create-template-windows.md)
 
 # 如何
 ## 规划和设计
@@ -17,9 +20,7 @@
 ### [将基于来宾的自动缩放与 Linux 规模集模板配合使用](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## 部署
-### [使用 Azure 门户进行创建](virtual-machine-scale-sets-portal-create.md)
 ### [使用 Visual Studio 进行创建](virtual-machine-scale-sets-vs-create.md)
-### [使用 Azure PowerShell 或 Azure CLI 进行创建](virtual-machine-scale-sets-create.md)
 ### [带有托管磁盘的规模集](virtual-machine-scale-sets-managed-disks.md)
 ### [自动缩放规模集](virtual-machine-scale-sets-autoscale-overview.md)
 #### [使用 Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)

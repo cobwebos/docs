@@ -286,6 +286,7 @@
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### [迁移经典策略](active-directory-conditional-access-migration.md)
+#### [假设分析工具](active-directory-conditional-access-whatif.md)
 #### 任务
 ##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)
