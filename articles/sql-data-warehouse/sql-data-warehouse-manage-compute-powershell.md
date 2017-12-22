@@ -16,10 +16,10 @@ ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>管理 Azure SQL 数据仓库中的计算能力 (PowerShell)
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 开始操作：
 
 1. 打开 Azure PowerShell。
-2. 在 PowerShell 提示符下，运行以下命令以登录到 Azure Resource Manager，然后选择订阅。
+2. 在 PowerShell 提示符下，运行以下命令以登录到 Azure 资源管理器，然后选择订阅。
 
     ```PowerShell
     Login-AzureRmAccount
