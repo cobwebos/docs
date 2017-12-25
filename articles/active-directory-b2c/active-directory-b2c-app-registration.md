@@ -1,12 +1,11 @@
 ---
-title: "Azure Active Directory B2C：应用程序注册 | Microsoft Docs"
+title: "应用程序注册 - Azure Active Directory B2C"
 description: "如何将应用程序注册到 Azure Active Directory B2C"
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
+editor: parakhj
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 36a421056b123f397c3d5f7d7bfb4c5314c82b78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b1d145466382c8fc2ea6c5e4e295940b0f000b97
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C：注册应用程序
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 若要构建可接受使用者注册和登录的应用程序，首先需要使用 Azure Active Directory B2C 租户注册应用程序。 通过使用 [创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)中所述的步骤获取自己的租户。
 
-从 Azure 门户中的 Azure AD B2C 边栏选项卡创建的应用程序必须从同一位置进行管理。 如果使用 PowerShell 或另一个门户编辑 B2C 应用程序，则应用程序不受支持且不适用于 Azure AD B2C。 有关详细信息，请参阅[出错的应用](#faulted-apps)部分。 
+在 Azure 门户中创建的应用程序必须从同一位置进行管理。 如果使用 PowerShell 或另一个门户编辑 Azure AD B2C 应用程序，则应用程序不受支持且不适用于 Azure AD B2C。 有关详细信息，请参阅[出错的应用](#faulted-apps)部分。 
 
 本文所用示例有助于示例入门。 可以在后续文章中详细了解这些示例。
 
@@ -117,7 +116,7 @@ ms.lasthandoff: 12/11/2017
 
 为移动/本机应用程序选择重定向 URI 时，有两个重要的考虑事项：
 
-* **唯一**：每个应用程序的重定向 URI 的方案应是唯一的。 在我们的示例 (com.onmicrosoft.contoso.appname://redirect/path) 中，我们使用 com.onmicrosoft.contoso.appname 作为方案。 建议遵循此模式。 如果两个应用程序共享同一方案，用户会看到“选择应用”对话框。 如果用户的选择不正确，登录会失败。
+* **唯一**：每个应用程序的重定向 URI 的方案应是唯一的。 在示例 (com.onmicrosoft.contoso.appname://redirect/path) 中，com.onmicrosoft.contoso.appname 是方案。 建议遵循此模式。 如果两个应用程序共享同一方案，用户会看到“选择应用”对话框。 如果用户的选择不正确，登录会失败。
 * **完整**：重定向 URI 必须同时包含方案和路径。 路径必须在域后包含至少一个正斜杠（例如，//contoso/ 可以使用，//contoso 不能使用）。
 
 请确保重定向 URI 中没有下划线等特殊字符。
@@ -126,10 +125,10 @@ ms.lasthandoff: 12/11/2017
 
 不应按以下方式编辑 B2C 应用程序：
 
-* 在其他应用程序管理门户上（如 [Azure 经典门户](https://manage.windowsazure.com/)和[应用程序注册门户](https://apps.dev.microsoft.com/)）编辑。
+* 在其他应用程序管理门户（如[应用程序注册门户](https://apps.dev.microsoft.com/)）中编辑。
 * 使用图形 API 或 PowerShell 编辑
 
-如果按照上述方式编辑 B2C 应用程序，并尝试在 Azure 门户上的 Azure AD B2C 功能边栏选项卡中再次进行编辑，那么它将成为出错的应用，且应用程序将无法再用于 Azure AD B2C。 需删除应用程序并重新创建。
+如果按照所述方式编辑 Azure AD B2C 应用程序，并尝试在 Azure 门户的 Azure AD B2C 功能中再次进行编辑，那么它将成为出错的应用，且应用程序无法再用于 Azure AD B2C。 需删除应用程序，然后重新创建它。
 
 若要删除应用，请转到[应用程序注册门户](https://apps.dev.microsoft.com/)并删除该应用程序。 若要使应用程序可见，须为该应用程序的所有者（而不仅仅是租户管理员）。
 

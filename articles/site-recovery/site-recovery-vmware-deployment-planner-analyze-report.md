@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 1eddd18e9b5ac0b4cb174e635f0f3cfd2f41059d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fe50f159baedf5455c2ea3cfe825d6d826e70851
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery 部署规划器报表
 生成的 Microsoft Excel 报表包含以下工作表：
@@ -234,8 +234,8 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 * VM 总大小（复制 + TFO）超出系统支持的存储帐户大小限制 (35 TB)。 当 VM 中的单个磁盘的性能特征超出系统支持的适用于标准存储的 Azure 或 Site Recovery 最大限制时，通常会表现出这种不兼容性。 如果出现这种情况，则必须将 VM 置于高级存储区域。 但是，高级存储帐户支持的最大大小为 35 TB，并且无法跨多个存储帐户保护单个需要保护的 VM。 另请注意，在受保护 VM 上执行测试性故障转移时，该故障转移运行时所使用的存储帐户与进行复制时所使用的存储帐户相同。 在这种情况下，可以在设置时会磁盘大小加倍，既可进行复制，又可成功地进行测试性故障转移。
 * 源 IOPS 超出了每个磁盘支持的存储 IOPS 限制，即 5000。
 * 源 IOPS 超出了每个 VM 支持的存储 IOPS 限制，即 80,000。
-* 平均数据变动量超出了磁盘支持的 Site Recovery 数据变动量限制：平均 I/O 大小不能超过 10 MBps。
-* VM 中所有磁盘的总数据变动量超出了每个 VM 支持的最大 Site Recovery 数据变动量限制，即 54 MBps。
+* 平均数据变动量超出了磁盘支持的 Site Recovery 数据变动量限制：平均 I/O 大小不能超过 10 MB/秒。
+* VM 中所有磁盘的总数据变动量超出了每个 VM 支持的最大 Site Recovery 数据变动量限制，即 54 MB/秒。
 * 平均有效写入 IOPS 超出了磁盘支持的 Site Recovery IOPS 限制，即 840。
 * 计算出的快照存储超出了支持的快照存储限制，即 10 TB。
 
@@ -263,12 +263,12 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
  
 **复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
 ---|---|---|---
-标准存储 | 8 KB | 2 MBps | 每个磁盘 168 GB
-高级 P10 或 P15 磁盘 | 8 KB  | 2 MBps | 每个磁盘 168 GB
-高级 P10 或 P15 磁盘 | 16 KB | 4 MBps |  每个磁盘 336 GB
-高级 P10 或 P15 磁盘 | 至少 32 KB | 8 MBps | 每个磁盘 672 GB
-高级 P20、P30、P40 或 P50 磁盘 | 8 KB    | 5 MBps | 每个磁盘 421 GB
-高级 P20、P30、P40 或 P50 磁盘 | 至少 16 KB |10 MBps | 每个磁盘 842 GB
+标准存储 | 8 KB | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 8 KB  | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 16 KB | 4 MB/秒 |  每个磁盘 336 GB
+高级 P10 或 P15 磁盘 | 至少 32 KB | 8 MB/秒 | 每个磁盘 672 GB
+高级 P20、P30、P40 或 P50 磁盘 | 8 KB    | 5 MB/秒 | 每个磁盘 421 GB
+高级 P20、P30、P40 或 P50 磁盘 | 至少 16 KB |10 MB/秒 | 每个磁盘 842 GB
 
 这是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。 Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。 上述数字假定通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上传后会在 5 分钟内进行处理并创建恢复点。
 

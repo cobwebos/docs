@@ -79,6 +79,8 @@
           href: concepts-on-premises-to-azure-networking.md
         - name: 设置在故障转移后用于访问辅助站点的 IP 地址
           href: concepts-on-premises-to-on-premises-networking.md
+        - name: 本地到 Azure 方案的网络接口管理
+          href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: 灾难恢复
       items:
         - name: Hyper-V VM 到 Azure

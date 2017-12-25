@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 77ee85db0bcc701514a1a98da9405a79d658d49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1b1c0661458669dc8f05a49037943320de2ecb3
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 
@@ -54,11 +54,12 @@ Azure 中继具有两项功能：
 
 混合连接取代了以前的“BizTalk 服务”功能，后者构建在 Azure 服务总线 WCF 中继的基础之上。 新的混合连接功能为现有 WCF 中继功能做了补充，这两项服务功能在 Azure 中继服务中共存。 它们共享一个公用网关，但实现方式有所不同。
 
-## <a name="wcf-relays"></a>WCF 中继
+## <a name="wcf-relay"></a>WCF 中继
 
-WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间发起连接。 在幕后，中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。
+WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间发起连接。 在幕后，中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。 有关详细信息，请参阅 [WCF 中继入门](relay-wcf-dotnet-get-started.md)。
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>体系结构：处理传入中继请求
+
 当客户端向 [Azure 中继](/azure/service-bus-relay/)服务发送请求时，Azure 负载均衡器将其路由到任何一个网关节点。 如果请求为侦听请求，网关节点将创建新的中继。 如果请求是对特定中继的连接请求，网关节点会将连接请求转发给拥有中继的网关节点。 拥有中继的网关节点向侦听客户端发送会合请求，要求侦听器与接收连接请求的网关节点创建一个临时通道。
 
 建立中继连接后，客户端可以通过用于会合的网关节点交换消息。
