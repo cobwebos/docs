@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
-ms.date: 10/05/2017
+ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: a001ae116e33e0b7be4431b0bc4c8bb319f4e801
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b556b01aa47aeb3588138dfa61e517c00dc44dc
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>在 Linux Azure 虚拟机上运行 SQL Server 的常见问题
 
@@ -24,22 +24,42 @@ ms.lasthandoff: 10/11/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](sql-server-linux-faq.md)
 
-本主题提供有关在 [Linux Azure 虚拟机上运行 SQL Server](sql-server-linux-virtual-machines-overview.md) 时出现的一些最常见问题解答。
+本文提供有关在 [Linux Azure 虚拟机上运行 SQL Server](sql-server-linux-virtual-machines-overview.md) 时出现的一些最常见问题的解答。
 
 > [!NOTE]
-> 本主题重点介绍在 Linux VM 上运行 SQL Server 的特定问题。 如果你当前在 Windows VM 上运行 SQL Server，请参阅 [Windows 常见问题](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)。
+> 本文重点阐述在 Linux VM 上运行 SQL Server 的特定问题。 如果你当前在 Windows VM 上运行 SQL Server，请参阅 [Windows 常见问题](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a id="images"></a>映像
+
+1. **有哪些 SQL Server 虚拟机库映像可用？**
+
+   Azure 为所有 Linux 和 Windows 版本中的所有受支持 SQL Server 主要发行版维护虚拟机映像。 有关更多详细信息，请参阅 [Linux VM 映像](sql-server-linux-virtual-machines-overview.md#create)和 [Windows VM 映像](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)的完整列表。
+
+1. **现有的 SQL Server 虚拟机库映像是否会更新？**
+
+   每隔两个月，都会使用最新的 Linux 和 Windows 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Linux 映像，这包括最新的系统更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的任何更新，以及重要的 SQL Server 安全更新和 Service Pack。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
+
+1. 还会安装哪些相关的 SQL Server 包？
+
+   若要查看默认情况下在 SQL Server Linux VM 上安装的 SQL Server 包，请参阅[安装的程序包](sql-server-linux-virtual-machines-overview.md#packages)。
+
+1. **是否可以从库中删除 SQL Server 虚拟机映像？**
+
+   是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
+
+## <a name="creation"></a>创建
 
 1. 如何创建装有 SQL Server 的 Linux Azure 虚拟机？
 
    最简单的解决方法是创建包含 SQL Server 的 Linux 虚拟机。 有关注册 Azure 并从门户创建 SQL VM 的教程，请参阅[在 Azure 门户中预配 Linux SQL Server 虚拟机](provision-sql-server-linux-virtual-machine.md)。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility)。
 
-1. **如何将 Azure VM 中的 SQL Server 升级到新版本？**
+1. 为什么无法使用有支出限制的 Azure 订阅来设置 RHEL 或 SLES SQL Server VM？
 
-   目前，在 Azure VM 中运行的 SQL Server 不提供任何就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)，将数据库迁移到新的服务器。
+   RHEL 和 SLES 虚拟机需要无支出限制的订阅和与订阅相关联的经验证付款方式（通常为信用卡）。 如果你在设置 RHEL 或 SLES VM 时没有删除支出限制，订阅将被禁用，并且所有 VM/服务都将停止。 如果你确实进入了此状态，请重新启用订阅[删除支出限制](https://account.windowsazure.com/subscriptions)。 如果你选择重新启动并继续运行，则剩余信用额度将在当前账单周期恢复，但 RHEL 或 SLES VM 映像附加费将会从你的信用卡中扣除。
+
+## <a name="licensing"></a>许可
 
 1. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
 
@@ -53,17 +73,23 @@ ms.lasthandoff: 10/11/2017
 
    不能。 无法将按分钟付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
 
-1. 还会安装哪些相关的 SQL Server 包？
+## <a name="administration"></a>管理
 
-   若要查看默认情况下在 SQL Server Linux VM 上安装的 SQL Server 包，请参阅[安装的程序包](sql-server-linux-virtual-machines-overview.md#packages)。
+1. **是否可以使用 SQL Server Management Studio (SSMS) 管理 Linux SQL Server 虚拟机？**
+
+   是的，但 SSMS 目前是仅限 Windows 的工具。 必须从 Windows 计算机建立远程连接才能对 Linux SQL Server VM 使用 SSMS。 在 Linux 本地，新的 [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以执行许多管理任务。 若要预览跨平台数据库管理工具，请参阅 [SQL Server Operations Studio（预览版）](https://docs.microsoft.com/sql/sql-operations-studio/what-is)。
+
+## <a name="updating-and-patching"></a>更新和修补
+
+1. **如何将 Azure VM 中的 SQL Server 升级到新版本？**
+
+   目前，在 Azure VM 中运行的 SQL Server 不提供任何就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)，将数据库迁移到新的服务器。
+
+## <a name="general"></a>常规
 
 1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？
 
    现在不行。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，如 Pacemaker。 SQL Server 受支持的 Linux 分发版在云中不支持其高可用性加载项。
-
-1. 为什么无法使用有支出限制的 Azure 订阅来设置 RHEL 或 SLES SQL Server VM？
-
-   RHEL 和 SLES 虚拟机需要无支出限制的订阅和与订阅相关联的经验证付款方式（通常为信用卡）。 如果你在设置 RHEL 或 SLES VM 时没有删除支出限制，订阅将被禁用，并且所有 VM/服务都将停止。 如果你确实进入了此状态，请重新启用订阅[删除支出限制](https://account.windowsazure.com/subscriptions)。 如果你选择重新启动并继续运行，则剩余信用额度将在当前账单周期恢复，但 RHEL 或 SLES VM 映像附加费将会从你的信用卡中扣除。
 
 ## <a name="resources"></a>资源
 

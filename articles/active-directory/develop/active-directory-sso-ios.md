@@ -296,7 +296,7 @@ ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iO
 
 <key>LSApplicationQueriesSchemes</key>
 
-<array> <string>msauth</string>
+<array><string>msauth</string>
 </array>
 
 ### <a name="youve-configured-sso"></a>已配置 SSO！

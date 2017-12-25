@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 29823708b2d26a383b76e371499859e57f470c6f
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: ac7f8ddaf84ba94075a9c9c3195bd57534c6821b
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>使用 Azure PowerShell 排查路由问题
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/31/2017
 ### <a name="view-effective-routes-for-a-network-interface"></a>查看网络接口的有效路由
 若要查看应用到网络接口的聚合路由，请完成以下步骤：
 
-1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。
+1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
 2. 以下命令返回对资源组 *RG1* 中名为 *VM1-NIC1* 的网络接口应用的所有路由。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
