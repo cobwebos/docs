@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 12/14/2017
 ms.author: barbkess
-ms.openlocfilehash: d736ad0dbfb109500a150d2bc3f7c40b16206fdb
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 46f7d2ea19a88e65b2d039fdf36d1619c4d74020
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>概述 SQL 数据仓库中的表
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ RENAME OBJECT Customer TO CustomerOrig;
 临时表是指仅在登录期间存在且其他用户无法查看的表。  临时表可用于防止他人查看临时结果，并且不需清除。  由于临时表也利用本地存储，因此对于某些操作来说，临时表可以提供更快速的性能。  请参阅[临时表][Temporary] 的文章，了解有关临时表的更多详细信息。
 
 ## <a name="external-tables"></a>外部表
-外部表，也称 PolyBase 表，是指可以从 SQL 数据仓库查询但其指向的数据却位于 SQL 数据仓库外部的表。  例如，可以创建一个外部表，让其指向 Azure Blob 存储上的文件。  若要详细了解如何创建和查询外部表，请参阅[使用 PolyBase 加载数据][Load data with Polybase]。  
+外部表，也称 PolyBase 表，是指可以从 SQL 数据仓库查询但其指向的数据却位于 SQL 数据仓库外部的表。  例如，可以创建一个外部表，让其指向 Azure Blob 存储或 Azure Data Lake Store 上的文件。  若要详细了解如何创建和查询外部表，请参阅[使用 PolyBase 加载数据][Load data with Polybase]。  
 
 ## <a name="unsupported-table-features"></a>不支持的表功能
 虽然 SQL 数据仓库包含许多与其他数据库提供的表功能相同的表功能，但也有一些功能是不受支持的。  下面是目前仍不支持的部分表功能的列表。
