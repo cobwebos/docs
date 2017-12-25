@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/29/2017
-ms.openlocfilehash: b48e5bc2552c92b45e0417e5a8a34705a473073e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -206,7 +206,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 1. 若要创建实时 Web 服务，请使用以下命令：
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
    ```
    此命令生成稍后可用的 Web 服务 ID。
 
@@ -216,6 +216,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    * `--model-file`：模型文件。 在此示例中，它是 pickle model.pkl 文件。
    * `-r`：模型类型。 在此示例中，它是 Python 模型。
    * `--collect-model-data true`：此项启用数据收集功能。
+   * `-c`：在其中指定了其他包的 conda 依赖项文件的路径。
 
    >[!IMPORTANT]
    >服务名称，也是新的 Docker 映像名称，必须全部小写， 否则会出错。 
@@ -254,10 +255,10 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 3. 创建 Docker 图像。
 
-   若要创建 Docker 映像，请使用以下命令并提供前一步骤生成的清单 ID 值输出：
+   若要创建 Docker 映像，请使用以下命令并提供前一步骤生成的清单 ID 值输出。 也可选择使用 `-c` 开关来包括 conda 依赖项。
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID>
+   az ml image create -n irisimage --manifest-id <manifest ID> -c amlconfig\conda_dependencies.yml
    ```
    此命令生成 Docker 映像 ID。
    

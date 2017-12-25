@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 
@@ -49,21 +49,20 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 ## <a name="workload-summary"></a>工作负荷摘要
 站点恢复可复制受支持计算机上运行的任何应用。 此外，我们已经与产品团队合作执行其他特定于应用的测试。
 
-| **工作负载** | **将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** |
-| --- | --- | --- | --- | --- |
-| Active Directory、DNS |Y |Y |Y |Y |
-| Web 应用（IIS、SQL） |Y |Y |Y |Y |
-| System Center Operations Manager |Y |Y |Y |Y |
-| Sharepoint |Y |Y |Y |Y |
-| SAP<br/><br/>将非群集 SAP 站点复制到 Azure |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |
-| Exchange（非 DAG） |Y |Y |Y |Y |
-| 远程桌面/VDI |Y |Y |Y |不适用 |
-| Linux（操作系统和应用） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |
-| Dynamics AX |Y |Y |Y |Y |
-| Dynamics CRM |Y |即将支持 |Y |即将支持 |
-| Oracle |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |
-| Windows 文件服务器 |Y |Y |Y |Y |
-| Citrix XenApp 和 XenDesktop |不适用 |Y |不适用 |Y |
+| **工作负载** |**将 Azure VM 复制到 Azure** |**将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** |
+| --- | --- | --- | --- | --- |---|
+| Active Directory、DNS |Y |Y |Y |Y |Y|
+| Web 应用（IIS、SQL） |Y |Y |Y |Y |Y|
+| System Center Operations Manager |Y |Y |Y |Y |Y|
+| Sharepoint |Y |Y |Y |Y |Y|
+| SAP<br/><br/>将非群集 SAP 站点复制到 Azure |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
+| Exchange（非 DAG） |Y |Y |Y |Y |Y|
+| 远程桌面/VDI |Y |Y |Y |Y |Y|
+| Linux（操作系统和应用） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
+| Dynamics AX |Y |Y |Y |Y |Y|
+| Oracle |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
+| Windows 文件服务器 |Y |Y |Y |Y |Y|
+| Citrix XenApp 和 XenDesktop |Y|不适用 |Y |不适用 |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>复制 Active Directory 和 DNS
 Active Directory 和 DNS 基础结构对于大多数企业应用而言至关重要。 在灾难恢复过程中恢复工作负荷和应用之前，需要保护和恢复这些基础结构组件。
@@ -106,13 +105,16 @@ Azure Site Recovery 可通过以下方式帮助保护 Dynamics AX ERP 解决方�
 远程桌面服务 (RDS) 允许虚拟桌面基础结构 (VDI)、基于会话的桌面和应用程序，让用户能够在任何地方工作。 使用 Azure Site Recovery 可以：
 
 * 将托管或非托管池虚拟桌面到辅助站点以及远程应用程序和会话复制到辅助站点或 Azure。
+
 * 下面是可以复制的项：
 
-| **RDS** | **将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** | **将物理服务器复制到辅助站点** | **将物理服务器复制到 Azure** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **入池虚拟桌面（非托管）** |是 |否 |是 |否 |是 |否 |
-| **入池虚拟桌面（托管但不包含 UPD）** |是 |否 |是 |否 |是 |否 |
-| **远程应用程序和桌面会话（不包含 UPD）** |是 |是 |是 |是 |是 |是 |
+| **RDS** |**将 Azure VM 复制到 Azure** | **将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** | **将物理服务器复制到辅助站点** | **将物理服务器复制到 Azure** |
+|---| --- | --- | --- | --- | --- | --- | --- |
+| **入池虚拟桌面（非托管）** |否|是 |否 |是 |否 |是 |否 |
+| **入池虚拟桌面（托管但不包含 UPD）** |否|是 |否 |是 |否 |是 |否 |
+| **远程应用程序和桌面会话（不包含 UPD）** |是|是 |是 |是 |是 |是 |是 |
+
+[Set up disaster recovery for RDS using Azure Site Recovery](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)（使用 Azure Site Recovery 为 RDS 设置灾难恢复）。
 
 [详细了解](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) 如何保护 RDS。
 

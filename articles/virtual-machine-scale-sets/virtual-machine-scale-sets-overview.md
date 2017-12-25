@@ -3,8 +3,8 @@ title: "Azure 虚拟机规模集概述 | Microsoft Docs"
 description: "了解有关 Azure 虚拟机规模集的详细信息"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0d181ad0732458e67d0f3f1d6676be099b52fc
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 7f2048a39f28a74ca8a31c2e6d7466c69ba4d58f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>什么是 Azure 中的虚拟机规模集？
-虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
+虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大型数据、容器化工作负荷的大规模服务。
 
 对于需要扩大和缩小计算资源的应用程序，缩放操作在容错域和更新域之间进行隐式平衡。 有关规模集的更多介绍，请参阅 [Azure 博客公告](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="autoscale"></a>自动缩放
 为了保持应用程序性能一致，可以自动增加或减少规模集中的 VM 实例数。 此自动缩放功能可以减少在客户需求随时间变化时对规模集进行监视和优化所需的管理开销。 可以根据性能指标、应用程序响应或固定的计划来定义规则，而规模集会根据需要自动缩放。
 
-对于基本的自动缩放规则，可以使用基于主机的性能指标，例如 CPU 使用情况或磁盘 I/O。 这些基于主机的指标是现成的，不需安装和配置其他代理或扩展。 可通过以下工具之一创建使用基于主机的指标的自动缩放规则：
+对于基本的自动缩放规则，可以使用基于主机的性能指标，例如 CPU 使用情况或磁盘 I/O。 这些基于主机的指标是自动提供的，不需安装和配置其他代理或扩展。 可通过以下工具之一创建使用基于主机的指标的自动缩放规则：
 
 - [Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
@@ -159,10 +159,10 @@ Update-AzureRmVmss -ResourceGroupName resourcegroupname -Name scalesetname -Virt
 
 **问：** 在一个规模集中使用多个扩展时，是否可以强制规定执行序列？
 
-**答：** 不能直接强制执行，但对于 customScript 扩展，脚本可以等待另一个扩展来完成操作。 在 [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure VM 规模集中的扩展序列）博客文章中可以获取有关扩展序列的其他指导。
+**答：** 不能直接强制执行，但对于 customScript 扩展，脚本可以等待另一个扩展来完成操作。 在 [Extension Sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展序列）博客文章中可以获取有关扩展序列的其他指导。
 
 **问：** 规模集是否适用于 Azure 可用性集？
 
-**答：** 是的。 规模集是包含 5 个容错域和 5 个更新域的隐式可用性集。 规模集如果包含 100 个以上的 VM，则会跨多个*位置组*，等效于多个可用性集。 有关位置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
+**答：** 是的。 规模集是包含五个容错域和五个更新域的隐式可用性集。 规模集如果包含 100 个以上的 VM，则会跨多个*位置组*，等效于多个可用性集。 有关位置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
 
 可在 [Azure 虚拟机规模集常见问题](virtual-machine-scale-sets-faq.md)中找到有关规模集的更多常见问题解答。

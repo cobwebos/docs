@@ -37,10 +37,14 @@
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
         - name: X.509
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
+            - name: Node.js
+              href: quick-enroll-device-x509-node.md
 - name: 教程
   items:
     - name: 1 - 设置云资源
@@ -67,6 +71,8 @@
           href: how-to-manage-enrollments.md
         - name: 通过服务 SDK 管理设备注册
           href: how-to-manage-enrollments-sdks.md
+    - name: 撤销设备访问权限
+      href: how-to-revoke-device-access-portal.md
     - name: 将 HSM 与 SDK 配合使用
       href: use-hsm-with-sdk.md
     - name: 控制对预配服务的访问

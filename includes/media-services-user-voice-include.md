@@ -7,4 +7,4 @@
 * [媒体分析](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
 * [Azure 门户](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST API 和平台](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
-* [视频点播流式处理](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
+* [点播视频流式处理](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)

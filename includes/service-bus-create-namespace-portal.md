@@ -16,7 +16,7 @@
 ### <a name="obtain-the-management-credentials"></a>获取管理凭据
 创建新的命名空间时，会自动生成一项初始的共享访问签名 (SAS) 规则，将一对主密钥和辅助密钥关联到一起，向每个密钥授予对命名空间的所有资产的完全控制权限。 请参阅[服务总线身份验证和授权](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md)，了解如何创建更多的规则，对常规的发送者和接收者的权限进行更多限制。 若要复制初始规则，请执行以下步骤： 
 
-1. 在命名空间列表中，单击新创建的命名空间名称。
+1.  单击“所有资源”，然后单击新创建的命名空间名称。
 2. 在命名空间窗口中，单击“共享访问策略”。
 3. 在“共享访问策略”屏幕中，单击“RootManageSharedAccessKey”。
    

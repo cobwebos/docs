@@ -3,7 +3,7 @@ title: "验证 Azure 自动化帐户配置 | Microsoft Docs"
 description: "本文介绍如何确认自动化帐户的配置设置是正确的。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 55f5d5524019ac63565e5ddd1f47dbdd65f05065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72be69b8d48abdcb15f4a89949edc3083ce85eee
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>测试 Azure 自动化运行方式身份验证
 成功创建自动化帐户以后，即可执行一个简单的测试，确认你能够成功地在 Azure 资源管理器部署或 Azure 经典部署中使用新创建的或更新的自动化运行方式帐户进行身份验证。    
@@ -66,9 +66,9 @@ ms.lasthandoff: 10/11/2017
 
 请注意，Runbook 中用于身份验证的 cmdlet **Add-AzureRmAccount**使用 *ServicePrincipalCertificate* 参数集。  它使用服务主体证书（而不是凭据）进行身份验证。  
 
-通过[运行 runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) 来验证运行方式帐户时，将创建一个 [Runbook 作业](automation-runbook-execution.md)并显示“作业”边栏选项卡，并在“作业摘要”磁贴中显示作业状态。 作业状态最初为“排队”，表示它正在等待云中的 Runbook 辅助角色变为可用  。 在某个辅助角色认领该作业后，该作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，该作业状态将变为“正在运行”。  Runbook 作业完成时，应会看到状态变为“已完成”。
+通过[运行 Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) 来验证运行方式帐户时，会创建一个 [Runbook 作业](automation-runbook-execution.md)并显示作业 W，然后在“作业摘要”磁贴中显示作业状态。 作业状态最初为“排队”，表示它正在等待云中的 Runbook 辅助角色变为可用  。 在某个辅助角色认领该作业后，该作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，该作业状态将变为“正在运行”。  Runbook 作业完成时，应会看到状态变为“已完成”。
 
-若要查看 Runbook 的详细结果，请单击“输出”磁贴。  在“输出”边栏选项卡中，应会看到帐户已成功完成身份验证并返回一个列表，其中包含订阅的所有资源组中的所有资源。  
+若要查看 Runbook 的详细结果，请单击“输出”磁贴。  在“输出”页中，会看到帐户已成功完成身份验证并返回一个列表，其中包含订阅的所有资源组中的所有资源。  
 
 将代码重用于 runbook 时，只需记住删除以注释 `#Get all ARM resources from all resource groups` 开头的代码块即可。
 
@@ -102,9 +102,9 @@ ms.lasthandoff: 10/11/2017
     #Get all VMs in the subscription and return list with name of each
     Get-AzureVM | ft Name
 
-通过[运行 runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) 来验证运行方式帐户时，将创建一个 [Runbook 作业](automation-runbook-execution.md)并显示“作业”边栏选项卡，并在“作业摘要”磁贴中显示作业状态。 作业状态最初为“排队”，表示它正在等待云中的 Runbook 辅助角色变为可用  。 在某个辅助角色认领该作业后，该作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，该作业状态将变为“正在运行”。  Runbook 作业完成时，应会看到状态变为“已完成”。
+通过[运行 Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) 来验证运行方式帐户时，会创建一个 [Runbook 作业](automation-runbook-execution.md)并显示“作业”页，然后在“作业摘要”磁贴中显示作业状态。 作业状态最初为“排队”，表示它正在等待云中的 Runbook 辅助角色变为可用  。 在某个辅助角色认领该作业后，该作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，该作业状态将变为“正在运行”。  Runbook 作业完成时，应会看到状态变为“已完成”。
 
-若要查看 Runbook 的详细结果，请单击“输出”磁贴。  在“输出”边栏选项卡中，应会看到帐户已成功完成身份验证并返回一个列表，其中包含部署在订阅中且按 VMName 列出的所有 Azure VM。  
+若要查看 Runbook 的详细结果，请单击“输出”磁贴。  在“输出”页中，会看到帐户已成功完成身份验证并返回一个列表，其中包含部署在订阅中且按 VMName 列出的所有 Azure VM。  
 
 将代码重用于 runbook 时，只需记住删除 cmdlet Get-AzureVM 即可。
 

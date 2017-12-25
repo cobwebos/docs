@@ -1,0 +1,31 @@
+- name: 托管服务标识（用户分配）
+  href: msi-overview.md
+  items:
+    - name: 为 Azure VM 配置 MSI
+      items:
+        - name: 使用 Azure CLI
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: 使用 Azure SDK
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: 向 MSI 授予对资源管理器的访问权限
+      items:
+        - name: 使用 Azure CLI
+          href: msi-howto-assign-access-cli.md
+    - name: 如何使用 VM MSI
+      items:
+        - name: 获取访问令牌
+          href: msi-how-to-use-vm-msi-token.md
+        - name: 登录 Azure CLI
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: 与 Azure SDK 配合使用
+          href: msi-how-to-use-vm-msi-sdk.md
+    - name: 使用 VM MSI 访问 Azure 资源管理器
+      items:
+        - name: 从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: 使用 VM MSI 访问 Azure 存储
+      items:
+        - name: 使用访问密钥从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: 反馈和已知问题
+      href: msi-known-issues.md

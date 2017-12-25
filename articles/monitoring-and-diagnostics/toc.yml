@@ -164,6 +164,8 @@
       href: monitoring-metric-charts.md
     - name: 向 Grafana 发送指标
       href: monitor-send-to-grafana.md
+    - name: 将监视数据发送到事件中心
+      href: monitor-stream-monitoring-data-event-hubs.md
 - name: 引用
   items:
     - name: Azure CLI

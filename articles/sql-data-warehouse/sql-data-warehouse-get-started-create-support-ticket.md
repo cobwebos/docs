@@ -15,67 +15,50 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 058ff1229acee5d03db7c0305c5565ae95a85758
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66aa12431e39ce295ce76411693bd20535a5c70c
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>如何创建 SQL 数据仓库的支持票证
-如果在 SQL 数据仓库方面遇到任何问题，请创建支持票证，让我们的工程团队提供帮助。
-
-> [!NOTE] 
-> 截止 2016 年 12 月 20 日，Azure 门户中的资源运行状况检查结果并不准确。 我们正在努力解决此问题。 
-
+如果在 SQL 数据仓库方面遇到任何问题，请创建支持票证，让我们的工程支持团队帮助你。
 
 ## <a name="create-a-support-ticket"></a>创建支持票证
 1. 打开 [Azure 门户][Azure portal]。
-2. 在“主页”屏幕上，单击“帮助 + 支持”磁贴。
+2. 在“主页”屏幕上，单击“帮助 + 支持”选项卡。
    
-    ![帮助 + 支持](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
-3. 在“帮助 + 支持”边栏选项卡上，单击“创建支持请求”。
+    ![帮助 + 支持](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
+3. 在“帮助 + 支持”边栏选项卡上单击“新建支持请求”，然后填充“基本信息”边栏选项卡。
+
+   选择 [Azure 支持计划][Azure support plan]。
    
-    ![新建支持请求](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
-   
-    <a name="request-quota-change"></a> 
-4. 选择“请求类型”
-   
-    ![请求类型](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
-   
-   > [!NOTE]
-   > 默认情况下，每个 SQL server (例如 myserver.database.windows.net) 具有 45,000 的 **DTU 配额** 。 此配额仅仅只是安全限制。 可以通过创建支持票证并选择“配额”  作为请求类型来增加配额。 要计算 DTU 需求，可将总 [DWU][DWU] 需求乘以 7.5。 例如，如果想要在一个 SQL Server 上托管两个 DW6000，应请求 90,000 的 DTU 配额。  可以在门户中的 SQL server 边栏选项卡中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 
-   > 
-   > 
-5. 选择发生了要报告其问题的数据库所在的**订阅**。
-   
-    ![订阅](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
-6. 选择“SQL 数据仓库”作为资源。
-   
-    ![资源](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
-7. 选择 [Azure 支持计划][Azure support plan]。
-   
-   * **计费、配额和订阅管理** 支持可用于所有支持级别。
+   * **计费、配额和订阅管理**支持适用于所有支持级别。
    * **故障维修服务**支持通过[开发人员支持][Developer]、[标准支持][Standard]、[专业直接支持][Professional Direct]或[顶级支持][Premier]提供。 故障维修服务问题是客户在使用 Azure 时遇到的确定是由 Microsoft 引起的问题。
    * 我们在[专业直接支持][Professional Direct]和[顶级支持][Premier]级别提供**开发人员辅导**与**咨询服务**。 
      
      如果购买了顶级支持计划，还可以在 [Microsoft Premier 在线门户][Microsoft Premier online portal]中报告 SQL 数据仓库的相关问题。  若要深入了解各种支持计划（包括范围、响应时间、定价等），请参阅 [Azure 支持计划][Azure support plan]。有关 Azure 支持的常见问题，请参阅 [Azure 支持常见问题][Azure support FAQs]。  
-     
-     ![支持计划](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. 选择“问题类型”和“类别”。 在本示例中，我们已选择“工具”作为问题类型，选择“客户端工具”作为类别。 
+        
+    ![“基本信息”边栏选项卡](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
+    ![“基本信息”边栏选项卡 1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
+4. 填写“问题”边栏选项卡。
+    ![Problem_blade](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_3.PNG)
    
-    ![问题类型和类别](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
-9. 描述问题并选择业务影响级别。
+   > [!NOTE]
+   > 默认情况下，每个 SQL Server（例如 myserver.database.windows.net）都有 45,000 的 **DTU 配额**。 此配额仅仅只是安全限制。 可以通过创建支持票证并选择“配额”  作为请求类型来增加配额。 若要计算 DTU 需求，请将所需的 [DWU][DWU] 总数乘以 7.5。 例如，如果想要在一个 SQL Server 上托管两个 DW6000，应请求 90,000 的 DTU 配额。  可以在门户中的 SQL server 边栏选项卡中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 
+   > 
+   > 
    
-    ![问题描述](./media/sql-data-warehouse-get-started-create-support-ticket/problem-description.png)
-10. 系统会在此支持票证中预先填充 **联系信息**。 请根据需要更新这些信息。
+5. 填写**联系信息**。
+![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
+
     
-    ![联系信息](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
-11. 单击“创建”提交支持请求。
+6. 单击“创建”提交支持请求。
 
 ## <a name="monitor-a-support-ticket"></a>监视支持票证
-在提交支持请求后，Azure 支持团队将与你取得联系。 若要查看请求状态和详细信息，请单击仪表板上的“管理支持请求”。
+在提交支持请求后，Azure 支持团队将与你取得联系。 若要查看请求状态和详细信息，请单击仪表板上的“所有支持请求”。
 
-![查看状态](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
+![查看状态](./media/sql-data-warehouse-get-started-create-support-ticket/Monitor_ticket.PNG)
 
 ## <a name="other-resources"></a>其他资源
 此外，可在 [Stack Overflow][Stack Overflow] 或 [Azure SQL 数据仓库 MSDN 论坛][Azure SQL Data Warehouse MSDN forum]上与 SQL 数据仓库社区互动。
