@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: f3d6215b672be0d8de8ba0d94320b1a2413eadf1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5b1269e2bee31316cba99d69ea2a6d702faf05
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>将在集成的 Azure 堆栈的系统上的缩放单元节点
 
@@ -51,6 +51,10 @@ ms.lasthandoff: 12/11/2017
 以下步骤提供作为缩放单元节点更换过程的高级概述。 请参阅特定于你的系统的详细步骤的 OEM 硬件供应商的 FRU 文档。 不用按照这些步骤而不会引用您 OEM 提供的文档。
 
 1. 使用[排出](azure-stack-node-actions.md#scale-unit-node-actions)操作将缩放单元节点置于维护模式。 此操作可能不需要基于硬件的物理条件。
+
+   > [!NOTE]
+   > 在任何情况下，可以完成操作。 只有一个节点且将其关闭在同一时间而不会破坏 SSD (Storage Spaces Direct)。
+
 2. 如果节点仍打开，使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 此操作可能不需要基于硬件的物理条件。
  
    > [!NOTE]

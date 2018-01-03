@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 12/15/2017
 ms.author: JeffGo
-ms.openlocfilehash: 111b6274f4a3633fa4dd367866bf4e4e72d6e2df
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 80b693420768d574b2371211298562ba35e7ed97
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 
@@ -165,6 +165,73 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 2. 验证部署成功完成。 浏览**资源组** &gt;，单击**系统。\<位置\>.sqladapter**资源组，并验证所有四个部署成功。
 
       ![验证部署的 SQL RP](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
+
+
+## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>更新 SQL 资源提供程序适配器 （多节点仅，生成 1710年及更高版本）
+每当更新 Azure 堆栈生成时，将发布新的 SQL 资源提供程序适配器。 虽然现有适配器可能会继续工作，则最好更新到最新版本越早越好后更新 Azure 堆栈。 更新过程是非常类似于上面所述的安装过程。 将替换为最新的 RP 代码，创建新的 VM 和设置将迁移到此新的实例，包括数据库和托管服务器信息，以及必要的 DNS 记录。
+
+将 UpdateSQLProvider.ps1 脚本用于与上述相同的参数。 你必须也提供此处所证书。
+
+> [!NOTE]
+> 在多节点的系统上仅支持更新。
+
+```
+# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
+Install-Module -Name AzureRm.BootStrapper -Force
+Use-AzureRmProfile -Profile 2017-03-09-profile
+Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
+
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
+# Point to the directory where the RP installation files were extracted
+$tempDir = 'C:\TEMP\SQLRP'
+
+# The service admin account (can be AAD or ADFS)
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
+
+# Set credentials for the new Resource Provider VM
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
+
+# and the cloudadmin credential required for Privileged Endpoint access
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# change the following as appropriate
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Change directory to the folder where you extracted the installation files
+# and adjust the endpoints
+. $tempDir\UpdateSQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert
+ ```
+
+### <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 参数
+你可以在命令行中指定这些参数。 如果你不希望这样做，或任何参数验证失败，系统会提示你提供所需的。
+
+| 参数名称 | 说明 | 注释或默认值 |
+| --- | --- | --- |
+| **CloudAdminCredential** | 有关访问特权终结点所需的云管理员凭据。 | （必需） |
+| **AzCredential** | 提供 Azure 堆栈服务管理员帐户的凭据。 使用相同的凭据用于部署 Azure 堆栈）。 | （必需） |
+| **VMLocalCredential** | 定义 SQL 资源提供程序 VM 的本地管理员帐户的凭据。 | （必需） |
+| **PrivilegedEndpoint** | 提供的 IP 地址或特权终结点的 DNS 名称。 |  （必需） |
+| **DependencyFilesLocalPath** | 您的证书 PFX 文件必须放置在此目录中。 | _可选_(_必需_多节点) |
+| **DefaultSSLCertificatePassword** | .Pfx 证书的密码 | （必需） |
+| **MaxRetryCount** | 定义你想要重试每个操作，如果有多少次失败。| 2 |
+| **RetryDuration** | 定义重试，以秒为单位之间的超时值。 | 120 |
+| **卸载** | 删除资源提供程序和所有关联的资源 （请参阅下面的注释） | 否 |
+| **DebugMode** | 阻止失败的自动清理 | 否 |
+
 
 
 ## <a name="remove-the-sql-resource-provider-adapter"></a>删除 SQL 资源提供程序适配器

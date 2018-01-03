@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: andredm
-ms.openlocfilehash: 3c51348be75a11419c12bc517ab7131323016a55
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 578d17bcfbb7e12c9855132772c2068a5cdf1f62
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-stack-1711-update"></a>Azure 堆栈 1711年更新
 
@@ -51,6 +51,7 @@ Azure 堆栈 1711年更新生成号是**171201.3**。
 - 用户可以自动激活 Windows Vm
 - 添加的特权终结点 PowerShell cmdlet 来检索保留目的的 BitLocker 恢复密钥
 - 支持更新基础结构时，更新脱机映像
+- 启用与启用备份服务的基础结构备份
 
 #### <a name="fixes"></a>修复项
 
@@ -118,7 +119,7 @@ Azure 堆栈 1711年更新生成号是**171201.3**。
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 - 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
  
-#### <a name="networking"></a>联网
+#### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。
@@ -138,6 +139,17 @@ Azure 堆栈 1711年更新生成号是**171201.3**。
 
 > [!IMPORTANT]
 > 即使**azurestack\cloudadmin**帐户是在 ADFS 部署环境中的默认提供程序订阅的所有者，它没有到 RDP 到主机的权限。 继续使用**azurestack\azurestackadmin**帐户或本地管理员帐户才能登录、 访问和管理主机，根据需要。
+
+#### <a name="infrastructure-backup-sevice"></a>基础结构备份服务
+<!-- 1974890-->
+
+- **有关云恢复不支持预 1711年备份。**  
+  Pre 1711 备份不是与云恢复兼容的。 你必须首先更新到 1711年，启用备份。 如果已启用备份，请确保在更新到 1711年后执行备份。 应删除前 1711年备份。
+
+- **ASDK 上的启用基础结构备份是仅用于测试目的。**  
+  基础结构备份可用来还原多节点解决方案。 你可以启用 ASDK 上的基础结构备份，但没有方法来测试恢复。
+
+有关详细信息请参阅[基础结构备份服务的 Azure 堆栈的备份和数据恢复](C:\Git\MS\azure-docs-pr\articles\azure-stack\azure-stack-backup-infrastructure-backup.md)。
 
 ## <a name="download-the-update"></a>下载更新
 

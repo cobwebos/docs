@@ -69,7 +69,7 @@
           href: azure-stack-integrate-endpoints.md
         - name: 外部监视
           href: azure-stack-integrate-monitor.md
-        - name: 安全
+        - name: “安全”
           href: azure-stack-integrate-security.md
     - name: 管理
       items:
@@ -121,6 +121,21 @@
               href: azure-stack-replace-disk.md
             - name: 更换的组件
               href: azure-stack-replace-component.md
+        - name: 备份 Azure 堆栈
+          href: azure-stack-backup-infrastructure-backup.md
+          items:
+            - name: 为 Azure 堆栈启用备份，从管理控制台
+              href: azure-stack-backup-enable-backup-console.md
+            - name: 使用 PowerShell 的 Azure 堆栈启用备份
+              href: azure-stack-backup-enable-backup-powershell.md
+            - name: 备份 Azure 堆栈
+              href: azure-stack-backup-back-up-azure-stack.md
+            - name: 从灾难性数据丢失中恢复
+              href: azure-stack-backup-recover-data.md
+            - name: 备份的最佳实践
+              href: azure-stack-backup-best-practices.md
+            - name: 备份的引用
+              href: azure-stack-backup-reference.md
     - name: 安全、符合性和标识
       items:
         - name: 安全概述
@@ -195,6 +210,8 @@
               href: azure-stack-create-and-publish-marketplace-item.md
             - name: 使用应用商店发布工具
               href: azure-stack-marketplace-publisher.md
+            - name: Azure 堆栈的受支持的来宾操作系统
+              href: azure-stack-supported-os.md
             - name: 创建自定义虚拟机映像
               href: azure-stack-add-vm-image.md
             - name: 添加虚拟机规模集
@@ -231,7 +248,7 @@
           href: azure-stack-diagnostics.md
         - name: 重新部署 Azure Stack 开发工具包
           href: azure-stack-redeploy.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
