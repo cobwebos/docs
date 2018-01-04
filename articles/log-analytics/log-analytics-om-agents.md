@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 |\*.service.opinsights.azure.com| 443||  
 |\*.blob.core.windows.net| 443| 是|  
 |\*.ods.opinsights.azure.com| 443| 是|  
-|*.azure-automation.net | 443| 是|  
+|* .azure-automation.net | 443| 是|  
 |**Operations Manager 控制台到 OMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  

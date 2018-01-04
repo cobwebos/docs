@@ -9,20 +9,20 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>创建 Azure 机器学习预览帐户并安装 Azure Machine Learning Workbench
 Azure 机器学习服务（预览版）是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 本快速入门介绍如何在 Azure 机器学习预览版中创建试验和模型管理帐户。 此外，介绍如何安装 Azure Machine Learning Workbench 桌面应用程序和 CLI 工具。 接下来，快速讲解 Azure 机器学习预览版功能，即如何使用[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)来生成模型，以便基于某些物理特征预测鸢尾花类型。  
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +54,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
    试验帐户名称 | 唯一的名称 |选择用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
    订阅 | 用户的订阅 |选择要用于试验的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的相应订阅。
    资源组 | 你的资源组 | 可以创建新的资源组名称，也可以使用订阅中现有的。
-   位置 | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
+   Location | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
    席位数 | #N/A | 输入席位数。 此项选择会影响[定价](https://azure.microsoft.com/pricing/details/machine-learning/)。 前两个席位是免费的。 对于本快速入门，请使用两个席位。 以后可根据需要在 Azure 门户中更新席位数。
    存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 Azure 存储帐户。 或者选择“使用现有资源组”，并从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
    试验帐户的工作区 | 唯一的名称 | 为新工作区提供一个名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。

@@ -247,7 +247,7 @@ ms.lasthandoff: 12/11/2017
 
 > [!NOTE]
 > 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行以下命令：<br>
-> Restart-Service AdHealth*
+> Restart-Service AdHealth *
 >
 >
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 5408e032670dda7f149c442e08f52b02abe23f05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a329676961c8be42b44bdd88c83ee154930e41bc
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-a-windows-app"></a>创建 Windows 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="download-and-run-the-client-project"></a>下载并运行客户端项目
 配置移动应用后端后，可以创建新的客户端应用或修改现有应用以连接到 Azure。 在此部分中，将下载已自定义以连接到移动应用后端的 UWP 应用模板项目。
 
-1. 回到移动应用后端的“快速入门”边栏选项卡，单击“创建新应用” > “下载”，并将压缩的项目文件提取到本地计算机上。
+1. 回到移动应用后端的“快速入门”边栏选项卡，单击“创建新应用” > “下载”，然后将压缩的项目文件提取到本地计算机上。
 
     ![下载 Windows 快速入门项目](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
 2. （可选）将 UWP 应用项目添加到服务器项目所在的解决方案。 这样更易于调试和测试同一 Visual Studio 解决方案中的应用和后端（如果选择这样做）。 若要向解决方案添加 UWP 应用项目，必须使用 Visual Studio 2015 或更高版本。
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 * [向应用添加推送通知](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 借助脱机同步，最终用户即使在没有网络连接时也能够与移动应用进行交互（查看、添加或修改数据）。
 
 <!-- Anchors. -->
 <!-- Images. -->

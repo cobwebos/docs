@@ -38,7 +38,7 @@ ms.lasthandoff: 12/14/2017
 Runbook | 说明| 
 --------|------------|
 Export-RunAsCertificateToHybridWorker | Runbook 会将 RunAs 证书从自动化帐户导出到混合辅助角色，使得辅助角色上的 Runbook 能够通过 Azure 进行身份验证，以便将 Runbook 导入到自动化帐户中。| 
-Sync-LocalGitFolderToAutomationAccount | Runbook 会同步混合计算机上的本地 Git 文件夹，并将 Runbook 文件 (*.ps1) 导入到自动化帐户中。|
+Sync-LocalGitFolderToAutomationAccount | Runbook 会同步混合计算机上的本地 Git 文件夹，并将 Runbook 文件 ( * .ps1) 导入到自动化帐户中。|
 
 ### <a name="credentials"></a>凭据
 
