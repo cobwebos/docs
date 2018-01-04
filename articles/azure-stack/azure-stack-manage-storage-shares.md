@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: f305f6ca3c92824aeed8a3b04181cc87e34b5321
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 7056aefc6bc6203c8961b8a254a2b631c9072c7b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure 堆栈的存储容量
 
@@ -63,7 +63,7 @@ Blob 放入容器后，可以增大该 blob 以使用更多空间。 在添加�
 
 容器并不局限于单个共享。 当容器中的混合的 blob 数据增长后使用 80%或更多可用空间时，容器将进入*溢出*模式。 在溢出模式下，在该容器中创建的任何新 blob 被分配到具有足够空间的其他卷。 随着时间推移，溢出模式中的容器可以分布在多个卷的 blob。
 
-当使用 80%，然后选择在卷中的可用空间的 90%时，系统会发出 Azure 堆栈管理员门户中的警报。 云操作员应查看可用的存储容量，并打算重新平衡内容。 存储服务停止工作时磁盘是 100%使用，并且没有任何其他警报。
+当使用 80%，然后选择在卷中的可用空间的 90%时，系统会发出 Azure 堆栈管理员门户中的警报。 云操作员应查看可用的存储容量，并打算重新平衡内容。 存储服务停止工作时磁盘为 100%使用，而没有其他警报。
 
 ### <a name="disks"></a>磁盘
 VM 磁盘通过租户添加到容器，并且包括操作系统磁盘。 Vm 还可以具有一个或多个数据磁盘。 这两种类型的磁盘存储为页 blob。 向租户提供指导是将每个磁盘放入单独的容器来提高虚拟机的性能。
@@ -123,7 +123,7 @@ VM 磁盘通过租户添加到容器，并且包括操作系统磁盘。 Vm 还�
 
 迁移将合并新的共享上的所有容器 blob。
 
-- 如果容器已进入溢出模式，并且已在其他卷上放置 blob，新的共享必须具有足够的容量来容纳所有迁移的容器的 blob。 这包括位于其他共享的博客。
+- 如果容器已进入溢出模式，并且已在其他卷上放置 blob，新的共享必须具有足够的容量来容纳所有迁移的容器的 blob。 这包括位于其他共享的 blob。
 
 - PowerShell cmdlet *Get AzsStorageContainer*标识仅在容器上的初始卷使用的空间。 该 cmdlet 不会确定 blob 放在其他卷上使用的空间。 因此，容器的完整大小可能不是显而易见的。 有可能，合并的新的共享上的一个容器可以发送该新共享到溢出条件放置到更多的共享的数据。 因此，你可能需要再次重新平衡共享。
 

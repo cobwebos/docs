@@ -135,7 +135,7 @@
   items:
     - name: 无服务器的数据库
       href: serverless-computing-database.md
-    - name: 全局分发
+    - name: 全球分布
       href: distribute-data-globally.md
     - name: 分区
       href: partition-data.md
@@ -143,7 +143,7 @@
       href: unique-keys.md
     - name: 一致性
       href: consistency-levels.md
-    - name: 吞吐量
+    - name: Throughput
       href: request-units.md
     - name: 多模型 API
       items:
@@ -157,7 +157,7 @@
           href: graph-introduction.md
         - name: Cassandra
           href: cassandra-introduction.md
-    - name: 安全
+    - name: “安全”
       href: database-security.md
     - name: TCO
       href: 'https://aka.ms/documentdb-tco-paper'
@@ -187,8 +187,10 @@
               href: programming.md
             - name: 性能测试
               href: performance-testing.md
-            - name: 性能提示
+            - name: .NET 性能提示
               href: performance-tips.md
+            - name: Java 性能提示
+              href: performance-tips-java.md
             - name: 多主设置
               href: multi-region-writers.md
             - name: 日期时间
@@ -270,7 +272,7 @@
               items:
                 - name: Node.js 控制台应用
                   href: mongodb-samples.md
-        - name: Graph API
+        - name: 图形 API
           items:
             - name: Gremlin 支持
               href: gremlin-support.md
@@ -340,7 +342,7 @@
           href: manage-account.md
         - name: Azure 存储资源管理器
           href: tutorial-documentdb-and-mongodb-in-storage-explorer.md
-        - name: 安全
+        - name: “安全”
           items:
             - name: 静态加密
               href: database-encryption-at-rest.md

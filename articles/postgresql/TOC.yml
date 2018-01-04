@@ -95,6 +95,8 @@
           href: howto-migrate-using-dump-and-restore.md
         - name: 导入和导出
           href: howto-migrate-using-export-and-import.md
+        - name: 停机时间最短的迁移
+          href: howto-migrate-online.md
     - name: 配置服务器参数
       items:
         - name: Azure 门户

@@ -1,5 +1,9 @@
 - name: Site Recovery 文档
   href: index.yml
+- name: 迁移本地计算机和 Azure VM
+  href: migrate/tutorial-migrate-on-premises-to-azure.md
+- name: Azure 到 Azure 灾难恢复
+  href: azure-to-azure/azure-to-azure-quickstart.md
 - name: 概述
   items:
     - name: 什么是 Site Recovery？
@@ -55,6 +59,8 @@
       href: site-recovery-support-matrix-azure-to-azure.md
     - name: 本地到 Azure 支持矩阵
       href: site-recovery-support-matrix-to-azure.md
+    - name: Hyper-V 到 Azure 支持矩阵
+      href: support-matrix-hyper-v-to-azure.md
     - name: 本地到辅助站点支持矩阵
       href: site-recovery-support-matrix-to-sec-site.md
     - name: 工作负荷的灾难恢复
@@ -67,7 +73,7 @@
       href: site-recovery-faq.md
 - name: 操作方法指南
   items:
-    - name: 联网
+    - name: 网络
       items:
         - name: 设置网络以进行 Azure VM 灾难恢复（预览版）
           href: site-recovery-azure-to-azure-networking-guidance.md
@@ -83,8 +89,12 @@
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: 灾难恢复
       items:
+        - name: 为复制到 Azure 准备 Hyper-V
+          href: tutorial-prepare-on-premises-hyper-v.md
         - name: Hyper-V VM 到 Azure
           href: tutorial-hyper-v-to-azure.md
+        - name: VMM 云中的 Hyper-V VM 到 Azure
+          href: tutorial-hyper-v-vmm-to-azure.md
         - name: 物理服务器到 Azure
           href: tutorial-physical-to-azure.md
         - name: Hyper-V VM 到辅助站点

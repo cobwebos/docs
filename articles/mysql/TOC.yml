@@ -107,6 +107,8 @@
           href: concepts-migrate-dump-restore.md
         - name: 导入和导出
           href: concepts-migrate-import-export.md
+        - name: 停机时间最短的迁移
+          href: howto-migrate-online.md
     - name: 连接应用程序
       items:
         - name: 创建用户
