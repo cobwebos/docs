@@ -107,7 +107,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 | 级别 |   高可用性   | 备份或 DR |
 | --- | --- | --- |
-| 应用程序 | SQL Server AlwaysOn | Azure 备份 |
+| Application | SQL Server AlwaysOn | Azure 备份 |
 | 基础结构    | 可用性集  | 具有一致快照的异地冗余存储 |
 
 ### <a name="using-azure-backup"></a>使用 Azure 备份 
@@ -138,7 +138,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 4.  确保在 VM 上安装了备份代理。 如果 VM 是使用 Azure 库映像创建而成，表明备份代理已安装。 否则（即使用的是自定义映像），请根据相关说明[在虚拟机中安装 VM 代理](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)。
 
-5.  确保 VM 允许备份服务的网络连接功能正常运行。 遵循[网络连接](../articles/backup/backup-azure-arm-vms-prepare.md#network-connectivity)的说明。
+5.  确保 VM 允许备份服务的网络连接功能正常运行。 遵循[网络连接](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)的说明。
 
 6.  完成上述步骤后，会按备份策略中指定的时间间隔定期进行备份。 如有必要，可以在 Azure 门户的保管库仪表板中手动触发首个备份。
 

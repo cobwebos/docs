@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/29/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 161d9fda75caa7836e012e6e1ff79df576281137
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0bd4f390e4507fccd1ca564c48c0f321412e229d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>在 Azure 中构建 Docker Python 和 PostgreSQL Web 应用
 
@@ -121,7 +121,7 @@ Flask 示例应用程序在数据库中存储用户数据。 如果成功注册�
 
 ### <a name="log-in-to-azure"></a>登录 Azure
 
-现在将使用 Azure CLI 2.0 创建在用于容器的 Web 应用中托管 Python 应用程序所需的资源。  使用 [az login](/cli/azure/#az_login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+现在将使用 Azure CLI 2.0 创建在用于容器的 Web 应用中托管 Python 应用程序所需的资源。  使用 [az login](/cli/azure/?view=azure-cli-latest#az_login) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```azurecli
 az login
@@ -129,7 +129,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az_group_create) 创建[资源组](../../azure-resource-manager/resource-group-overview.md)。
+使用 [az group create](/cli/azure/group?view=azure-cli-latest#az_group_create) 创建[资源组](../../azure-resource-manager/resource-group-overview.md)。
 
 [!INCLUDE [Resource group intro](../../../includes/resource-group.md)]
 
@@ -139,11 +139,11 @@ az login
 az group create --name myResourceGroup --location "West US"
 ```
 
-使用 [az appservice list-locations](/cli/azure/appservice#az_appservice_list_locations) Azure CLI 命令列出可用位置。
+使用 [az appservice list-locations](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations) Azure CLI 命令列出可用位置。
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 
-使用 [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) 命令创建 PostgreSQL 服务器。
+使用 [az postgres server create](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) 命令创建 PostgreSQL 服务器。
 
 在下列命令中，用唯一的服务器名称替换 *\<postgresql_name >* 占位符，并用用户名替换 *\<admin_username >* 占位符。 此服务器名称将用作 PostgreSQL 终结点 (`https://<postgresql_name>.postgres.database.azure.com`) 的一部分，因此需要在 Azure 中的所有服务器之间保持唯一。 此用户名用于初始数据库管理员用户帐户。 系统会提示选择此用户的密码。
 
@@ -364,7 +364,7 @@ docker push <registry_name>.azurecr.io/flask-postgresql-sample
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) 命令创建应用服务计划。
+使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) 命令创建应用服务计划。
 
 [!INCLUDE [app-service-plan](../../../includes/app-service-plan-linux.md)]
 
@@ -414,7 +414,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-使用 [az webapp create](/cli/azure/webapp#az_webapp_create) 命令在 myAppServicePlan 应用服务计划中创建 web 应用。
+使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 myAppServicePlan 应用服务计划中创建 web 应用。
 
 该 Web 应用提供托管空间用于部署代码，并提供一个 URL 用于查看已部署的应用程序。 用于创建 Web 应用。
 
@@ -445,7 +445,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 
 在本教程的前面部分，你已定义用于连接到 PostgreSQL 数据库的环境变量。
 
-在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 以下示例将数据库连接详细信息指定为应用设置。 它还使用 PORT 变量，映射 Docker 容器中的 PORT 5000，以接收 PORT 80 上的 HTTP 流量。
 

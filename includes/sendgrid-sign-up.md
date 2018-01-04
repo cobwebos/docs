@@ -1,7 +1,7 @@
 Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 25,000 封免费电子邮件，将可使用高级报告和分析以及[所有 API][all APIs]（Web、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
-1. 登录到 [Azure 管理门户][Azure Management Portal]。
+1. 登录到 [Azure 门户][Azure portal]。
 2. 在左侧菜单中，单击“新建”。
 
     ![command-bar-new][command-bar-new]
@@ -31,7 +31,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 
     **验证帐户之前，用户每天最多只能发送 100 封电子邮件。**
 
-    若要修改订阅计划或查看 SendGrid 联系人设置，请单击 SendGrid 服务的名称以打开 SendGrid 应用商店仪表板。
+    若要修改订阅计划或查看 SendGrid 联系人设置，请单击 SendGrid 服务的名称以打开 SendGrid Marketplace 仪表板。
 
     ![设置][settings]
 
@@ -82,7 +82,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 <!--Links-->
 
 [SendGrid Solutions]: https://sendgrid.com/solutions
-[Azure Management Portal]: https://manage.windowsazure.com
+[Azure portal]: https://portal.azure.com
 [SendGrid Getting Started]: http://sendgrid.com/docs
 [SendGrid Provisioning Process]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [all APIs]: https://sendgrid.com/docs/API_Reference/index.html

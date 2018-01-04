@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 3ca1710c969b9bc5a1f56dc53f52c706e1ed07cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="combine-columns-by-example-transformation"></a>“按示例合并列”转换
 此转换允许用户通过组合多个列的值来添加一个新列。 用户可以指定分隔符或提供组合值的示例来执行此转换。 在用户提供组合示例时，将由“按示例派生列”转换中使用的同一个“按示例”引擎来处理转换。
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 在本例中使用逗号和空格作为分隔符来合并街道、城市、州和邮政编码列。
 
-|街道|城市|状态|ZIP|列|
+|街道|城市|State|ZIP|列|
 |:----|:----|:----|:----|:----|
 |16011 N.E. 36th Way|REDMOND|WA|98052|16011 N.E. 36th Way, REDMOND, WA, 98052|
 |16021 N.E. 36th Way|REDMOND|WA|98052|16021 N.E. 36th Way, REDMOND, WA, 98052|

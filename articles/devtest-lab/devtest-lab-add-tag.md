@@ -3,7 +3,7 @@ title: "在 Azure 开发测试实验室中向实验室添加标记 | Microsoft D
 description: "了解如何在 Azure 开发测试实验室中向实验室添加标记"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: dc5b327a-62e4-41bc-80ef-deb3c23d51b2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
-ms.author: tarcher
-ms.openlocfilehash: c268c1a10e4a313d0520f96e452ef978b6201115
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: v-craic
+ms.openlocfilehash: 38b6612bc33326b758b357dca09081c02d294e5d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加标记
 
@@ -65,4 +65,4 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[设置策略和计划](devtest-lab-set-lab-policy.md)。
-* 浏览[开发测试实验室 Azure Resource Manager 快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
+* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。

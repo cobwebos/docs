@@ -38,7 +38,6 @@
 #### [管理 ACR](storsimple-virtual-array-manage-acrs.md)
 #### [管理作业](storsimple-virtual-array-manage-jobs.md)
 #### [更改设备密码](storsimple-virtual-array-change-device-admin-password.md)
-#### [在 Windows Server 主机上配置 MPIO](storsimple-virtual-array-configure-mpio-windows-server.md)
 #### [使用警报进行监视](storsimple-virtual-array-manage-alerts.md)
 #### [诊断和故障排除](storsimple-virtual-array-diagnose-problems.md)
 #### [记录支持请求](storsimple-virtual-array-log-support-ticket.md)

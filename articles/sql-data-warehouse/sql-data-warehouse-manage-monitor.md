@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: joeyong;barbkess;kevin
+ms.openlocfilehash: 56bae284bb83b1ff18bf2caf644e6dd071b8eb69
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
 本文介绍如何使用动态管理视图 (DMV) 在 Azure SQL 数据仓库中监视工作负荷及调查查询执行情况。
@@ -174,7 +174,7 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 如果查询正在主动等待另一个查询中的资源，则状态将为 **AcquireResources**。  如果查询具有全部所需资源，则状态将为 **Granted**。
 
 ## <a name="monitor-tempdb"></a>监视 tempdb
-高 tempdb 使用率可能是性能不佳和内存不足问题的根本原因。 首先请检查是否存在数据倾斜或行组性能不佳的情况，然后采取相应措施。 如果发现 tempdb 在查询执行期间达到其限制，请考虑缩放数据仓库。 下面介绍如何确定每个节点上每个查询的 tempdb 使用情况。 
+高 tempdb 使用率可能是性能不佳和内存不足问题的根本原因。 如果发现 tempdb 在查询执行期间达到其限制，请考虑缩放数据仓库。 下面介绍如何确定每个节点上每个查询的 tempdb 使用情况。 
 
 创建以下视图，为 sys.dm_pdw_sql_requests 关联相应的节点 ID。 如此，即可通过 sys.dm_pdw_sql_requests 利用其他直通 DMV 并联接这些表。
 
@@ -233,7 +233,7 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>监视内存
 
-内存可能是性能不佳和内存不足问题的根本原因。 首先请检查是否存在数据倾斜或行组性能不佳的情况，然后采取相应措施。 如果发现 SQL Server 内存用量在查询执行期间达到其限制，请考虑缩放数据仓库。
+内存可能是性能不佳和内存不足问题的根本原因。 如果发现 SQL Server 内存用量在查询执行期间达到其限制，请考虑缩放数据仓库。
 
 下面的查询将返回每个节点的 SQL Server 内存使用情况和内存压力：   
 ```sql
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>监视事务日志大小
-下面的查询将返回每个分布区的事务日志大小。 请检查是否存在数据倾斜或行组性能不佳的情况，然后采取相应措施。 如果其中一个日志文件将达到 160 GB，则应考虑扩展实例或限制事务大小。 
+下面的查询将返回每个分布区的事务日志大小。 如果其中一个日志文件将达到 160 GB，则应考虑扩展实例或限制事务大小。 
 ```sql
 -- Transaction log size
 SELECT

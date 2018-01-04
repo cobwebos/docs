@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: c4db342299e009249ac98a2b58fb882c57c01a0b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 597ea68f063d02541132d275de815c1673369ae0
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure Marketplace 中发布 HDInsight 应用程序
 可在基于 Linux 的 HDInsight 群集上安装 Azure HDInsight 应用程序。 在本文中，你将了解如何在 Azure Marketplace 中发布 HDInsight 应用程序。 有关在 Azure Marketplace 中发布的一般信息，请参阅[在 Azure Marketplace 中发布产品/服务](../marketplace-publishing/marketplace-publishing-getting-started.md)。

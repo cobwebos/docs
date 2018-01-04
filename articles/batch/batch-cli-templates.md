@@ -9,13 +9,13 @@ ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 10/17/2017
+ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 87ec0e1b6d01fc5d13e9b9f46987e416d8e1958f
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: c2d4a33cd6c4c9db608a76b24935b474b551b291
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>使用 Azure Batch CLI 模板和文件传输（预览版）
 
@@ -53,7 +53,7 @@ Batch 模板基于 [Azure CLI 中现有的 Batch 支持](https://docs.microsoft.
 安装 Azure CLI 后，即可使用以下 CLI 命令安装最新版本的 Batch 扩展：
 
 ```azurecli
-az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.0/azure_batch_cli_extensions-2.0.0-py2.py3-none-any.whl
+az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.1/azure_batch_cli_extensions-2.0.1-py2.py3-none-any.whl
 ```
 
 有关 Batch 扩展的详细信息，请参阅 [Microsoft Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux)（Windows、Mac 和 Linux 的 Microsoft Azure Batch CLI 扩展）。

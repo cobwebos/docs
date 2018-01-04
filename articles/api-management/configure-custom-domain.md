@@ -9,18 +9,17 @@ editor:
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: a7abba87035016eee05b4ab663404f10127bba1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf8a3eb502a808945e97822e10e44d38137d1161
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
 
 创建 API 管理 (APIM) 实例时，Azure 会将其分配到 azure api.net 的一个子域（例如 `apim-service-name.azure-api.net`）。 不过，你可以使用自己的域名（例如 **contoso.com**）公开你的 APIM 终结点。本教程演示了如何将现有的自定义 DNS 名称映射到 Azure API 管理实例公开的终结点。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,6 +56,8 @@ ms.lasthandoff: 10/11/2017
 
     >[!NOTE]
     >分配证书的过程可能需要 15 分钟左右。
+
+[!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

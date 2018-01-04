@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: parakhj
-ms.openlocfilehash: ac40d5a4838ac23d2613f1e2380fed3d28e31d7a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dd08c666c09b651e6c0def72a89eda56ba73e34d
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C：使用 Android 应用程序登录
 
@@ -42,8 +42,6 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 * 在应用程序中包含**本机客户端**。
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要此项。
 * 设置本机客户端**重定向 URI**（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）。 稍后也需要用到此信息。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
 

@@ -5,19 +5,19 @@ keywords:
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
-ms.author: jeffgilb
-ms.date: 7/5/2017
+ms.author: billmath
+ms.date: 01/03/2018
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 4bed74307f6f95cff9c779abc72da6514d869ea3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 78813cfbfc9d28e9578f1970083e17d423e071b5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft 混合标识解决方案
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 混合标识解决方案使你能够将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用已同步的标识还是使用联合标识。 通过已同步标识和可选密码哈希，你的用户能够使用相同密码访问本地和基于云的组织资源。 对于更高级的方案要求，如单一登录 (SSO) 或本地 MFA，需要将 Active Directory 联合身份验证服务 (AD FS) 部署到联合标识。 
@@ -50,9 +50,6 @@ ms.lasthandoff: 12/11/2017
 
 - Windows Server 2012 R2 或更高版本
 - 加入通过其验证用户的林中的域
-
-> [!NOTE]
-> Azure AD 传递身份验证当前处于预览阶段，支持新式身份验证的基于 Web 浏览器的客户端和 Office 客户端均支持这种身份验证。 对于不支持的客户端，例如旧的 Office 客户端和 Exchange ActiveSync（包括移动设备上的本机电子邮件客户端），建议使用等效的新式身份验证。 新式身份验证不仅允许使用传递身份验证，还允许应用条件访问策略，如多重身份验证。 
 
 使用加入到 Azure AD 的 Windows 10 设备时，当前不支持传递身份验证。 但可以将密码哈希同步用作自动回退，支持前面提到的 Windows 10 和旧客户端。 在预览阶段，如果选择传递身份验证作为 Azure AD Connect 中的登录选项，则默认启用密码哈希同步。
 

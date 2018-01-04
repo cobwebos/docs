@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 4121f94e15d9ba938d90d72e70d7bcb49a6c1ed5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f1085a8b434aca18499e17ba1c1d086edfc302e
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>在 Azure Active Directory 中添加或更改用户的个人资料信息
 本文介绍如何在 Azure Active Directory (Azure AD) 中添加用户个人资料信息（例如，个人资料图片或电话和电子邮件身份验证信息）。 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-azure-portal.md)。
@@ -42,5 +42,4 @@ ms.lasthandoff: 12/11/2017
 * [向 Azure Active Directory 添加新用户](active-directory-users-create-azure-portal.md)
 * [在 Azure Active Directory 中重置用户的密码](active-directory-users-reset-password-azure-portal.md)
 * [在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
-* [在 Azure Active Directory 中添加或更改用户的个人资料信息](active-directory-users-work-info-azure-portal.md)
 * [从 Azure Active Directory 的目录中删除用户](active-directory-users-delete-user-azure-portal.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 2d940b42108948f4cd36a585f1e79def05fe8fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 
@@ -29,13 +29,13 @@ ms.lasthandoff: 10/11/2017
 
 简而言之，此方法涉及创建关系图、识别威胁、缓解问题和验证每个缓解操作。 下面的关系图重点突出了此过程：
 
-![SDL 进程](./media/azure-security-threat-modeling-tool/sdlapproach.png)
+![SDL 进程](./media/azure-security-threat-modeling-tool-feature-overview/sdlapproach.png)
 
 ## <a name="starting-the-threat-modeling-process"></a>开始威胁建模进程
 
 启动威胁建模工具时，将注意到下图显示的几项：
 
-![空白起始页](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![空白起始页](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 ### <a name="threat-model-section"></a>威胁模型部分
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 > Cristina：没问题。 让我们一起看一下。
 > Ricardo 打开该工具并将他的屏幕与 Cristina 共享。
 
-![基本威胁模型](./media/azure-security-threat-modeling-tool/basictmt.png)
+![基本威胁模型](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 > Cristina：好的，我们直接看，不过可以先向我介绍一下整体情况吗？
 > Ricardo: 没问题！ 这是结构细节：
@@ -89,17 +89,17 @@ Ricardo 刚才向 Cristina 介绍的是 DFD，即**[数据流关系图](https://
 
 此方法类似于通过先确保房子里的每扇门、每扇窗都锁好来保护房屋的安全，然后再添加警报或抓小偷。
 
-![基本威胁](./media/azure-security-threat-modeling-tool/basicthreats.png)
+![基本威胁](./media/azure-security-threat-modeling-tool-feature-overview/basicthreats.png)
 
 Ricardo 先从选择列表上的第一项开始。 下面是发生的具体情况：
 
 首先，两个模具之间的交互得到了增强
 
-![交互](./media/azure-security-threat-modeling-tool/interaction.png)
+![交互](./media/azure-security-threat-modeling-tool-feature-overview/interaction.png)
 
 其次，有关威胁的其他信息显示在威胁属性窗口中
 
-![交互信息](./media/azure-security-threat-modeling-tool/interactioninfo.png)
+![交互信息](./media/azure-security-threat-modeling-tool-feature-overview/interactioninfo.png)
 
 生成的威胁帮助他了解潜在的设计缺陷。 STRIDE 分类为他提供了有关潜在的攻击途径的思路，而其他说明能够让他了解问题所在，以及缓解问题可能使用的方法。 他可以使用可编辑字段在理由详细信息中撰写理由，或根据他的组织的 bug 栏更改优先级评定。
 
@@ -116,7 +116,7 @@ Azure 模板具有附加详细信息，不仅帮助用户了解问题所在，�
 
 Ricardo 和 Cristina 查看列表并添加重要事项、缓解/理由、优先项和状态更改后，他选择“报表” -> “创建完整报表” -> “保存报表”，该操作将为他打印出一份完整的报表，让他与同事们一起查看，以确保执行了适当的安全操作。
 
-![交互信息](./media/azure-security-threat-modeling-tool/report.png)
+![交互信息](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
 相反，如果 Ricardo 想要共享该文件，他可以通过在他组织的 OneDrive 帐户进行保存而轻松地实现此操作。 实现此操作后，他可以复制该文档链接并将其与他的同事共享。 
 

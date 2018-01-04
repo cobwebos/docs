@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 97a7c011b72ea733b8bd22203fb7ed6eb97c6e38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="understand-common-error-messages-when-you-manage-linux-virtual-machines-in-azure"></a>了解在 Azure 中管理 Linux 虚拟机时遇到的常见错误消息
 

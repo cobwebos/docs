@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d8d52b7e151d116678169dd4839f0380f63132d7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -71,9 +71,9 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 |[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据| 提供相关信息，以便深入了解资源本身执行的操作| Azure Monitor，[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD 报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|日志和报告|关于用户和组管理的用户登录活动和系统活动信息|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[虚拟机和云服务](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows 事件日志和 Linux Syslog|    在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中使用 [WAD](https://docs.microsoft.com/azure/azure-diagnostics)（Windows Azure 诊断存储）的 Windows 和 Linux|
-|[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|    REST API 或[客户端库](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
+|[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|    REST API 或[客户端库](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG（网络安全组）流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|采用 JSON 格式，并根据规则显示出站和入站流|查看有关通过网络安全组的入口和出口 IP 流量的信息|[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|    多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
+|[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|    多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |处理数据/安全警报| Azure 安全中心警报，OMS 警报| 安全信息和警报。|   REST API，JSON|
 
 ### <a name="activity-log"></a>活动日志
@@ -128,12 +128,12 @@ Azure 诊断日志提供了多个配置选项，即 Azure 门户可使用 PowerS
 |应用程序网关|[应用程序网关的诊断日志记录](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|
-|密钥保管库|[Azure 密钥保管库日志记录](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
+|Key Vault|[Azure 密钥保管库日志记录](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
 |Azure 搜索|[允许并使用搜索流量分析](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
 |Data Lake Store|[访问 Azure Data Lake Store 的诊断日志](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|审核|
 |数据湖分析|[访问 Azure Data Lake Analytics 的诊断日志](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|审核|
-|||Microsoft.DataLakeAnalytics/accounts|请求|
-|||Microsoft.DataLakeStore/accounts|请求|
+|||Microsoft.DataLakeAnalytics/accounts|Requests|
+|||Microsoft.DataLakeStore/accounts|Requests|
 |逻辑应用|[逻辑应用 B2B 自定义跟踪架构](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
 |||Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|
 |Azure 批处理|[Azure Batch 诊断日志记录](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
@@ -228,7 +228,7 @@ Azure 中的网络日志记录和监视是一个综合性的功能，包括两�
 
 网络观察程序是一个区域性的服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
 
-NSG 流日志记录 - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 这些流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
+**NSG 流日志记录** - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 这些流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 ### <a name="network-security-group-flow-logging"></a>网络安全组流日志记录
 
@@ -364,7 +364,7 @@ Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配�
 |Data Lake Store|   Microsoft.DataLakeStore/<br>accounts|   诊断|||
 |事件中心命名空间|   Microsoft.EventHub/<br>namespaces|  诊断|    诊断||
 |IoT 中心|  Microsoft.Devices/<br>IotHubs||     诊断||
-|密钥保管库| Microsoft.KeyVault/<br>vaults|  诊断  || [密钥保管库分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
+|Key Vault| Microsoft.KeyVault/<br>vaults|  诊断  || [密钥保管库分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |负载均衡器|    Microsoft.Network/<br>loadBalancers|    诊断|||
 |逻辑应用|    Microsoft.Logic/<br>workflows|  诊断|    诊断||
 ||Microsoft.Logic/<br>integrationAccounts||||

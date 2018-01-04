@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/09/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 6d7c2eaf139ddbff46a2fba99bdf5515f64be40c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b5497e9d66833ec8bc291c40d71931aff11820c2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
 
@@ -106,7 +106,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 | 属性 | 值 |
 |----------|-------|
-| 位置 | 美国西部 |
+| Location | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -128,7 +128,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 | 属性 | 值 |
 |----------|-------|
-| 位置 | 美国东部 |
+| Location | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -178,7 +178,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
     >
     > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
 
-6. 选择“创建” 。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 

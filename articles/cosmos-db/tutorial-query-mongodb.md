@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: bdb68c4e68f6868c596d8e8410b94223cc5e535a
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1818476a95ddf373701ad93860b02ea4c2ad761d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB：如何使用 MongoDB API 进行查询？
 
@@ -312,5 +312,5 @@ Azure Cosmos DB [MongoDB API](mongodb-introduction.md) 支持 [MongoDB shell 查
 现在可继续学习下一教程，了解如何全局发布数据。
 
 > [!div class="nextstepaction"]
-> [全局分发数据](tutorial-global-distribution-documentdb.md)
+> [全局分发数据](tutorial-global-distribution-sql-api.md)
 

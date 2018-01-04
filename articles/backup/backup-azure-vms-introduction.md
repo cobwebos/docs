@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.openlocfilehash: 9a4e0b5a400668cb9ec96000d274f43739139a03
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 66b64c803dfea6a1e4c7795d10e4b4ba064f1cf7
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
-本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
+本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Azure 虚拟机备份原理
 当 Azure 备份服务在计划的时间启动备份作业时，它将触发进行时间点快照拍摄所需的备份扩展。 Azure 备份服务在 Windows 中使用 _VMSnapshot_ 扩展，在 Linux 中使用 _VMSnapshotLinux_ 扩展。 在第一个 VM 备份期间安装扩展。 若要安装扩展，VM 必须处于运行状态。 如果 VM 未运行，备份服务将创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
@@ -97,7 +97,7 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 ## <a name="total-vm-backup-time"></a>VM 备份总时间
 尽管大部分备份时间花在读取和复制数据上，但其他一些操作也会影响到备份 VM 所需的总时间：
 
-* 花费在[安装或更新备份扩展](backup-azure-vms.md)上的时间。
+* 花费在[安装或更新备份扩展](backup-azure-arm-vms.md)上的时间。
 * 快照时间，即触发某个快照所花费的时间。 在接近计划的备份时间时，会触发快照。
 * 队列等待时间。 由于备份服务要处理来自多个客户的备份，可能不会立即将备份数据从快照复制到备份或恢复服务保管库。 在负载高峰期，由于要处理的备份数过多，等待时间可能会长达 8 小时。 但是，每日备份策略规定的 VM 备份总时间不会超过 24 小时。
 * 数据传输时间，备份服务计算上一备份中的增量更改并将更改传输到保管库存储所需的时间。
@@ -148,7 +148,7 @@ VM 备份定价*并非*基于附加到虚拟机的每个数据磁盘的最大支
 如果有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>后续步骤
-* [备份虚拟机](backup-azure-vms.md)
+* [备份虚拟机](backup-azure-arm-vms.md)
 * [管理虚拟机备份](backup-azure-manage-vms.md)
-* [恢复虚拟机](backup-azure-restore-vms.md)
+* [恢复虚拟机](backup-azure-arm-restore-vms.md)
 * [解决 VM 备份问题](backup-azure-vms-troubleshoot.md)

@@ -3,7 +3,7 @@ title: "在 Azure 开发测试实验室中的实验室中创建和管理可认�
 description: "了解如何向 Azure 开发测试实验室中的实验室添加可声明的虚拟机"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: tarcher
-ms.openlocfilehash: 17ddf920dbed6b561c657495b2554d8c1450831c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: v-craic
+ms.openlocfilehash: a27423a75cb2b5063156109ea9ee3a45fa036c07
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建和管理可认领 VM
-使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[应用商店映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
+使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可认领 VM 的步骤
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
@@ -45,13 +45,13 @@ ms.lasthandoff: 10/25/2017
 
   ![进行选择，使 VM 可认领。](./media/devtest-lab-add-vm/devtestlab-claim-VM-option.png)
 
-1. 如果想要查看或复制 Azure Resource Manager 模板，请参阅[保存 Azure Resource Manager 模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)部分，并在完成后返回此处。
+1. 如果想要查看或复制 Azure 资源管理器模板，请参阅[保存 Azure 资源管理器模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)部分，并在完成后返回此处。
 1. 选择“创建”将指定的 VM 添加到实验室。
 
    将显示 VM 的创建状态，先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
 
 > [!NOTE]
-> 如果使用 [Azure Resource Manager 模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。
+> 如果使用 [Azure 资源管理器模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。
 >
 >
 

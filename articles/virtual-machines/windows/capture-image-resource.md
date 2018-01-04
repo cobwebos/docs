@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: a7e94fe2cd2db398ab2afa9a6492cea144071114
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 172ad5198f7c813ed114f9fe3caea3d6a5dc6a97
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -41,7 +41,7 @@ Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
 3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
 4. 在“关机选项”中选择“关机”。
-5. 单击 **“确定”**。
+5. 单击“确定”。
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 在完成运行后会关闭虚拟机。 请勿重启 VM。
@@ -127,7 +127,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 2. 获取 VM。
 
    ```azurepowershell-interactive
-   $vm = Get-AzureRmVm -Name myVM -ResourceGroupName $rgName
+   $vm = Get-AzureRmVm -Name $vmName -ResourceGroupName $rgName
    ```
 
 3. 获取托管磁盘的 ID。

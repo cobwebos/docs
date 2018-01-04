@@ -3,7 +3,7 @@ title: "使用 PowerShell 基于 VHD 文件创建 Azure 开发测试实验室自
 description: "使用 PowerShell 基于 VHD 文件在 Azure 开发测试实验室中自动创建自定义映像"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: a4729f70aae80a13233fbe96a5d8a56c0c9d01d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 0810a67c28224170ccde7e2c347f8704896e69ad
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 基于 VHD 文件创建自定义映像
 
@@ -119,4 +119,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Na
 
 ##<a name="next-steps"></a>后续步骤
 
-- [将 VM 添加到实验室](./devtest-lab-add-vm-with-artifacts.md)
+- [将 VM 添加到实验室](devtest-lab-add-vm.md)

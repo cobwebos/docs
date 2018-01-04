@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 1520cea72069be5d7bb078a3770d61fade26b853
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fbc6e18565ec14a3ccb4499b24804f681026023
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
 Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Azure 服务的部署和管理。 本文介绍如何使用[服务总线 Resource Manager PowerShell 模块](/powershell/module/azurerm.servicebus)，通过本地 Azure PowerShell 控制台或脚本来预配和管理服务总线实体（命名空间、队列、主题和订阅）。
 
-还可以使用 Azure Resource Manager 模板管理服务总线实体。 有关详细信息，请参阅[使用 Azure Resource Manager 模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
+还可以使用 Azure 资源管理器模板管理服务总线实体。 有关详细信息，请参阅[使用 Azure 资源管理器模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -162,7 +162,7 @@ Set-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关服务总线 Resource Manager PowerShell 模块的完整文档，请参阅[此处](/powershell/module/azurerm.servicebus)。 此页列出所有可用的 cmdlet。
-- 有关使用 Azure Resource Manager 模板的信息，请参阅[使用 Azure Resource Manager 模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
+- 有关使用 Azure 资源管理器模板的信息，请参阅[使用 Azure 资源管理器模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
 - 有关[服务总线 .NET 管理库](service-bus-management-libraries.md)的信息。
 
 这些博客文章介绍管理服务总线实体的一些备选方法：

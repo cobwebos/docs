@@ -4,7 +4,7 @@ description: "介绍如何更改 Windows VM 的盘符，以使用 D: 驱动器�
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2017
+ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 7667175c01be2421bfc3badd83b1d8aaeb29bfde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a4e29ce7ebb20753c3313e1148e1c91e853f49f5
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。
 
-如果调整虚拟机大小或**停止（解除分配）**虚拟机，这可能会触发将虚拟机放置于新虚拟机监控程序的操作。 计划中或计划外的维护事件也可能触发此放置操作。 在此方案中，临时磁盘将重新分配给第一个可用的盘符。 如果应用程序专门需要 D: 驱动器，则需要遵循这些步骤暂时移动 pagefile.sys，连接新的数据磁盘并为其分配盘符 D，然后将 pagefile.sys 移回到临时驱动器。 完成后，如果 VM 移到不同的虚拟机监控程序，Azure 将不收回 D:。
+如果调整虚拟机大小或**停止（解除分配）**虚拟机，这可能会触发将虚拟机放置于新虚拟机监控程序的操作。 计划中或计划外的维护事件也可能触发此放置操作。 在此方案中，临时磁盘将重新分配给第一个可用的盘符。 如果应用程序专门需要 D: 驱动器，则你需要遵循这些步骤暂时移动 pagefile.sys，连接新的数据磁盘并为其分配盘符 D，并将 pagefile.sys 移回到临时驱动器。 完成后，如果 VM 移到不同的虚拟机监控程序，Azure 将不收回 D:。
 
 有关 Azure 如何使用临时磁盘的详细信息，请参阅 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)（了解 Microsoft Azure 虚拟机上的临时驱动器）
 

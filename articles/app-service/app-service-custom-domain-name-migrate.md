@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a1fe545e4a341709232cba36c6e3cf3b4ce82e80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd04be2046a23901471cb7bd0da9e0ed2d514d0d
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
 若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify.&lt;subdomain> 映射到 &lt;appname>.azurewebsites.net。 
 
-你需要的 TXT 记录取决于要迁移的 DNS 记录。 有关示例，请参阅下表（`@` 通常表示根域）：  
+你需要的 TXT 记录取决于要迁移的 DNS 记录。 有关示例，请参阅下表（`@` 通常表示根域）：
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |

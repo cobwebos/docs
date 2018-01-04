@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: a348647becbb9119cc649e366f34c4c37f2bea43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c3b691022b02aa2f3836c4e3a96dd5db7affad76
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件性访问开发人员指南
 
@@ -110,7 +110,7 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
 
 ```WWW-Authenticate``` 标头确实包含唯一的结构，但为提取值而进行分析并不是件小事。  以下是可帮助的简短方法。
 
-    ```C#
+```C#
         /// <summary>
         /// This method extracts the claims value from the 403 error response from MS Graph. 
         /// </summary>
@@ -138,7 +138,7 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
             }
             return null; 
         }
-    ```
+```
 
 有关演示如何处理声明质询的代码示例，请参阅适用于 ADAL .NET 的[代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)。
 

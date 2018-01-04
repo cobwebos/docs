@@ -3,7 +3,7 @@ title: "Azure 开发测试实验室中自己的实验室的缩放配额和限制
 description: "了解如何在 Azure 开发测试实验室中缩放实验室"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: ae624155-9181-45fa-bd2b-1983339b7e0e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: tarcher
-ms.openlocfilehash: f11ed42b474e4f208eac92689bfa33fb188d15a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 7ea022dfb39154ec86c26856030111beee672bd6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
 在开发测试实验室中工作时，可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”。
@@ -67,4 +67,4 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>后续步骤
-* 浏览[开发测试实验室 Azure Resource Manager 快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
+* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。

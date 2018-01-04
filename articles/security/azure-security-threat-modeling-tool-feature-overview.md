@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
 
@@ -29,11 +29,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 若要打开一个空页面，请选择“创建模型”。
 
-![空页面](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![空页面](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 若要查看此工具中当前可用的功能，请使用[入门](./azure-security-threat-modeling-tool-getting-started.md)示例中我们的团队创建的威胁模型。
 
-![基本威胁模型](./media/azure-security-threat-modeling-tool/basictmt.png)
+![基本威胁模型](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 ## <a name="navigation"></a>导航
 
@@ -43,7 +43,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 此体验类似于其他 Microsoft 产品。 我们来了解顶级菜单项。
 
-![菜单项](./media/azure-security-threat-modeling-tool/menuitems.png)
+![菜单项](./media/azure-security-threat-modeling-tool-feature-overview/menuitems.png)
 
 | 标签                               | 详细信息      |
 | --------------------------------------- | ------------ |
@@ -75,11 +75,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 #### <a name="drop-the-stencil-on-the-canvas"></a>在画布上放置相应模具
 
-![画布拖放](./media/azure-security-threat-modeling-tool/canvasdrop1.png)
+![画布拖放](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop1.png)
 
 #### <a name="select-the-stencil"></a>选择模具
 
-![元素属性](./media/azure-security-threat-modeling-tool/canvasdrop2.png)
+![元素属性](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop2.png)
 
 ### <a name="stencils"></a>模具
 
@@ -120,15 +120,15 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 将鼠标悬停在“打开模型”上会显示 2 个选项：“从计算机打开”和“从 OneDrive 打开”。 第一个选项将打开“文件打开”屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
 
-![打开模型](./media/azure-security-threat-modeling-tool/openmodel.png)
+![打开模型](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
-![从计算机或 OneDrive 打开](./media/azure-security-threat-modeling-tool/openmodel2.png)
+![从计算机或 OneDrive 打开](./media/azure-security-threat-modeling-tool-feature-overview/openmodel2.png)
 
 ### <a name="feedback-suggestions-and-issues"></a>反馈、建议和问题
 
 选择“反馈、建议和问题”后，将转到 SDL 工具的 MSDN 论坛。 可以在其中阅读其他用户对该工具的看法，包括变通方法和新的想法。
 
-![反馈](./media/azure-security-threat-modeling-tool/feedback.png)
+![反馈](./media/azure-security-threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>设计视图
 
@@ -154,17 +154,17 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 #### <a name="before"></a>之前
 
-![之前](./media/azure-security-threat-modeling-tool/properties1.png)
+![之前](./media/azure-security-threat-modeling-tool-feature-overview/properties1.png)
 
 #### <a name="after"></a>之后
 
-![之后](./media/azure-security-threat-modeling-tool/properties2.png)
+![之后](./media/azure-security-threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>消息
 
 如果在创建威胁模型时忘记将数据流连接到元素，则会收到一个通知。 可忽略此消息，或按照说明进行操作以解决此问题。 
 
-![消息](./media/azure-security-threat-modeling-tool/messages.png)
+![消息](./media/azure-security-threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>说明
 
@@ -174,7 +174,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 生成关系图后，在快捷方式工具栏上选择“分析”符号（放大镜）可切换到“分析”视图。
 
-![分析视图](./media/azure-security-threat-modeling-tool/analysisview.png)
+![分析视图](./media/azure-security-threat-modeling-tool-feature-overview/analysisview.png)
 
 ### <a name="generated-threat-selection"></a>已发生威胁选择
 
@@ -182,27 +182,27 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 | 功能                               | 信息      |
 | --------------------------------------- | ------------ |
-| **已读指示器** | <p>将威胁标记为已读，可帮助你跟踪已查看的项。</p><p>![已读/未读指示器](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
-| **交互焦点** | <p>关系图中属于威胁的交互会突出显示。</p><p>![交互焦点](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
-| **威胁属性** | <p>有关威胁的其他信息显示在“威胁属性”窗口中。</p><p>![威胁属性](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
+| **已读指示器** | <p>将威胁标记为已读，可帮助你跟踪已查看的项。</p><p>![已读/未读指示器](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
+| **交互焦点** | <p>关系图中属于威胁的交互会突出显示。</p><p>![交互焦点](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
+| **威胁属性** | <p>有关威胁的其他信息显示在“威胁属性”窗口中。</p><p>![威胁属性](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>优先级更改
 
 可以更改每个已发生威胁的优先级。 不同的颜色便于识别高、中和低优先级的威胁。
 
-![优先级更改](./media/azure-security-threat-modeling-tool/prioritychange.png)
+![优先级更改](./media/azure-security-threat-modeling-tool-feature-overview/prioritychange.png)
 
 ### <a name="threat-properties-editable-fields"></a>威胁属性可编辑字段
 
 如前面的图像所示，可以更改工具生成的信息。 也可以向某些字段（例如“理由”）添加信息。 这些字段由模板生成。 如果需要了解各个威胁的详细信息，可以进行修改。
 
-![威胁属性](./media/azure-security-threat-modeling-tool/threatproperties.png)
+![威胁属性](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>报告
 
 完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 转到“报表” > “创建完整报表”。 为报表命名，然后应会看到类似于下图的信息：
 
-![报表](./media/azure-security-threat-modeling-tool/report.png)
+![报表](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>后续步骤
 

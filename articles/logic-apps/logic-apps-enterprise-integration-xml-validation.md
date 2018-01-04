@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 8558efffa354cc4bb93820c837077ee997924c95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c4b2c1b2fdd9bf70775e5fd4369d1633258ae2a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="validate-xml-for-enterprise-integration"></a>验证企业集成的 XML
 
@@ -30,29 +30,29 @@ ms.lasthandoff: 10/11/2017
 
 2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。
 
-    ![](./media/logic-apps-enterprise-integration-xml/xml-1.png)
+    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1.png)
 
 3. 若要添加“XML 验证”操作，请选择“添加操作”。
 
 4. 若要在所有操作中筛选出所需的操作，请在搜索框中输入“xml”。 选择“XML 验证”。
 
-    ![](./media/logic-apps-enterprise-integration-xml/xml-2.png)
+    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-2.png)
 
 5. 若要指定要验证的 XML 内容，请选择“内容”。
 
-    ![](./media/logic-apps-enterprise-integration-xml/xml-1-5.png)
+    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1-5.png)
 
 6. 选择正文标记作为要验证的内容。
 
-    ![](./media/logic-apps-enterprise-integration-xml/xml-3.png)
+    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-3.png)
 
 7. 若要指定要用于验证以前的*内容*输入的架构，请选择**架构名称**。
 
-    ![](./media/logic-apps-enterprise-integration-xml/xml-4.png)
+    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-4.png)
 
 8. 保存工作  
 
-    ![](./media/logic-apps-enterprise-integration-xml/xml-5.png)
+    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-5.png)
 
 现在已完成设置验证连接器。 在实际应用程序中，你可能想要将已验证的数据存储在业务线 (LOB) 应用（如 SalesForce）中。 要将已验证的输出发送到 Salesforce，请添加操作。
 

@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ded33a94205a67c7a9bcd37a8f0c7747f1d709fa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ffbc8af54ce542630f9bdc77a8823d3c2a22afd6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 ## <a name="overview"></a>概述
@@ -88,7 +88,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="integrating-custom-applications"></a>集成自定义应用程序
 如果正在编写新应用程序，并想要协助开发人员利用 Azure AD 的强大功能，请参阅[指导开发人员](active-directory-applications-guiding-developers-for-lob-applications.md)。
 
-如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)。
+如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
 
 ## <a name="see-also"></a>另请参阅
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

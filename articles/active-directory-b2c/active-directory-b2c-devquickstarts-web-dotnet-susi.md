@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 067b9fcada0c641f836e98559a0166b52a2ec37d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e7a10ab2e523a98bd8762e209d0f4a13b12ef187
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>使用 Azure Active Directory B2C 注册、登录、配置文件编辑和密码重置创建 ASP.NET Web 应用
 
@@ -49,8 +49,6 @@ ms.lasthandoff: 12/11/2017
 接下来，需要在 B2C 目录中创建并注册应用。 这将提供 Azure AD B2C 所需信息，使之能够与应用安全通信。 
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 完成后，将在应用程序设置中具有一个 API 和一个本机应用程序。
 

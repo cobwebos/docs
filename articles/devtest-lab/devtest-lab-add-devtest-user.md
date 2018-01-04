@@ -3,7 +3,7 @@ title: "在 Azure 开发测试实验室中添加所有者和用户 | Microsoft D
 description: "使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室中添加所有者和用户"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
-ms.author: tarcher
-ms.openlocfilehash: d67fa257574d6cb4ad4b18521900374fb51da290
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 2921356f848739d602807236006f9867eaa2a4e4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 | **VM 基本任务** | | | |
 | 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| Azure 应用商店映像允许列表 |否 |是 |是 |
+| Azure Marketplace 映像允许列表 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
-3. 从实验室列表中，选择所需的实验室。
+3. 从实验室列表，选择所需的实验室。
 4. 在实验室的边栏选项卡上，选择“配置”。 
 5. 在“配置”边栏选项卡上，选择“用户”。
 6. 在“用户”边栏选项卡上选择“+ 添加”。
