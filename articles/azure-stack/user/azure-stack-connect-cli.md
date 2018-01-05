@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: mabrigg
-ms.openlocfilehash: 5d15815e9b1d20ab03b5716de45ad0fa77a11057
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3ca71abb1b84f619cfafbf4c25b0c0cb95430858
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>安装和配置 CLI 用于 Azure 堆栈
 
@@ -76,7 +76,7 @@ $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().
 $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
 $sha1Entry    = [string]::Format("# SHA1 Finterprint: {0}", $sha1Hash)
 $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
-$certText = (Get-Content -Path root.pem -Raw).ToString().Replace("`r`n","`n")
+$certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
 
 $rootCertEntry = "`n" + $issuerEntry + "`n" + $subjectEntry + "`n" + $labelEntry + "`n" + `
 $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
