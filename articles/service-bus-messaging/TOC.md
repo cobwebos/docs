@@ -6,7 +6,6 @@
 
 # 入门
 ## [创建命名空间](service-bus-create-namespace-portal.md)
-### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 ## 使用队列
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -37,6 +36,7 @@
 
 ## 开发
 ### 消息处理
+#### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 #### [消息、有效负载和序列化](service-bus-messages-payloads.md)
 #### [消息传输、锁定和处置](message-transfers-locks-settlement.md)
 #### [消息序列化和时间戳](message-sequencing.md)

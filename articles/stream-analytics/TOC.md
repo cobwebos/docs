@@ -52,6 +52,7 @@
 ## 管理
 ### [轮转输入/输出凭据](stream-analytics-login-credentials-inputs-outputs.md)
 ### [在更新期间的作业可靠性](stream-analytics-job-reliability.md)
+### [配置兼容性级别](stream-analytics-compatibility-level.md)
 
 ## 故障排除
 ### [故障排除指南](stream-analytics-troubleshooting-guide.md)

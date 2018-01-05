@@ -1,5 +1,5 @@
 # 概述
-## [什么是 Azure Analysis Services？](analysis-services-overview.md)
+## [了解 Analysis Services](analysis-services-overview.md)
 ## [支持的数据源](analysis-services-datasource.md)
 ## [身份验证和用户权限](analysis-services-manage-users.md)
 ## [连接到本地数据源](analysis-services-gateway.md)

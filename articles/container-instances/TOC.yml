@@ -23,8 +23,8 @@
       href: container-instances-tutorial-deploy-app.md
 - name: 概念
   items:
-    - name: 区域和可用性
-      href: container-instances-region-availability.md
+    - name: 配额和区域限制
+      href: container-instances-quotas.md
     - name: 与协调器的关系
       href: container-instances-orchestrator-relationship.md
     - name: 容器组
