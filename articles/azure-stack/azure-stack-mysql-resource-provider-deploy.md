@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: JeffGo
-ms.openlocfilehash: 71abceb1afe315a09ea88b593f9806e9e8b31f16
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 065d4cbc9a324f00a0985c4ebed3d4dffc79d91a
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -71,6 +71,7 @@ ms.lasthandoff: 12/18/2017
 
     | Azure 堆栈生成 | MySQL RP 安装程序 |
     | --- | --- |
+    | 1.0.180102.3 | **详细信息，请稍候，当前版本将不会安装，但将继续以 Azure 堆栈升级后在多节点上运行。** |
     | 1.0.171122.1 | [MySQL RP 版本 1.1.12.0](https://aka.ms/azurestackmysqlrp) |
     | 1.0.171028.1 | [MySQL RP 版本 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
     | 1.0.170928.3 | [MySQL RP 版本 1.1.3.0](https://aka.ms/azurestackmysqlrp1709) |

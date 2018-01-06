@@ -1,5 +1,5 @@
 ---
-title: "对 Azure 堆栈的来宾操作系统支持 |Microsoft 文档"
+title: "来宾操作系统支持 Azure 堆栈 |Microsoft 文档"
 description: "在 Azure 堆栈上，可以使用这些来宾操作系统的系统。"
 services: azure-stack
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: JeffGoldner
-ms.openlocfilehash: af524b5f40fb79648d91deb54186826902aa8cd2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0a31da6cbc2c245b959825a4e715d0dc7511ba99
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>在 Azure 堆栈上受支持的来宾操作系统
 

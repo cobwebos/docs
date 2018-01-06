@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: 集成的系统发行说明
           items:
+            - name: 1712 更新
+              href: azure-stack-update-1712.md
             - name: 1711 更新
               href: azure-stack-update-1711.md
             - name: 1710 更新

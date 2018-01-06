@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/05/2018
 ms.author: alfredop
-ms.openlocfilehash: 5008c2a7764a17a937c8ab2025ac430f05b780cf
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9ec0b0456a0e7bc5f86f33981d4be6289f5fbc71
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>在 Azure 堆栈使用情况 API 的常见问题
 本文回答了一些有关 Azure 堆栈使用情况 API 的常见问题。
@@ -31,23 +31,23 @@ ms.lasthandoff: 01/03/2018
 | **网络** |F271A8A388C44D93956A063E1D2FA80B |静态 IP 地址使用情况 |IP 地址| 使用计数的 IP 地址 |
 | |9E2739BA86744796B465F64674B822BA |动态 IP 地址使用情况 |IP 地址| 使用计数的 IP 地址 |
 | **存储** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*小时数 |表占用的总容量 |
-| | B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*小时数 |由页 blob 的总容量 |
-| | B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*小时数 |使用的队列的总容量 |
-| | 09F8879E-87E9-4305-A572-4B7BE209F857 |BlockBlobCapacity |GB\*小时数 |使用块 blob 的总容量 |
-| | B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90 |TableTransactions |以 10,000 计的请求计数 |表服务请求 （以 10,000 计） |
-| | 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D |TableDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的表服务数据流入 |
-| | 1B8C1DEC-EE42-414B-AA36-6229CF199370 |TableDataTransOut |以 gb 为单位的出口 |以 gb 为单位的表服务数据流出量 |
-| | 43DAF82B-4618-444A-B994-40C23F7CD438 |BlobTransactions |请求计数以 10,000 计 |Blob 服务请求 （以 10,000 计） |
-| | 9764F92C-E44A-498E-8DC1-AAD66587A810 |BlobDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的 blob 服务数据流入 |
-| | 3023FEF4-ECA5-4D7B-87B3-CFBC061931E8 |BlobDataTransOut |以 gb 为单位的出口 |以 gb 为单位的 blob 服务数据流出量 |
-| | EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |请求计数以 10,000 计 |队列服务请求 （以 10,000 计） |
-| | E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的队列服务数据流入 |
-| | DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |以 gb 为单位的出口 |以 gb 为单位的队列服务数据流出量 |
+| |B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*小时数 |由页 blob 的总容量 |
+| |B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*小时数 |使用的队列的总容量 |
+| |09F8879E-87E9-4305-A572-4B7BE209F857 |BlockBlobCapacity |GB\*小时数 |使用块 blob 的总容量 |
+| |B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90 |TableTransactions |在 10 中，000's年请求计数 |（10，000's年) 中的表服务请求 |
+| |50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D |TableDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的表服务数据流入 |
+| |1B8C1DEC-EE42-414B-AA36-6229CF199370 |TableDataTransOut |以 gb 为单位的出口 |以 gb 为单位的表服务数据流出量 |
+| |43DAF82B-4618-444A-B994-40C23F7CD438 |BlobTransactions |在 10 中，000's年请求计数 |（10，000's年) 中的 blob 服务请求 |
+| |9764F92C-E44A-498E-8DC1-AAD66587A810 |BlobDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的 blob 服务数据流入 |
+| |3023FEF4-ECA5-4D7B-87B3-CFBC061931E8 |BlobDataTransOut |以 gb 为单位的出口 |以 gb 为单位的 blob 服务数据流出量 |
+| |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |在 10 中，000's年请求计数 |（10，000's年) 中的队列服务请求 |
+| |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的队列服务数据流入 |
+| |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |以 gb 为单位的出口 |以 gb 为单位的队列服务数据流出量 |
 | **计算** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |基本 VM 大小小时数 |虚拟内核分钟 | 虚拟内核数的次数 VM 运行的分钟 |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM 大小小时数 |虚拟内核分钟 | 虚拟内核数的次数 VM 运行的分钟 |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM 大小小时数 |VM 小时数 |捕获基类和 Windows 的 VM。 不进行调整核心数 |
-| **Key Vault** | EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |密钥保管库事务 | 以 10,000 计的请求计数| REST API 收到的请求数由密钥保管库数据平面 |
-
+| **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |密钥保管库事务 | 在 10 中，000's年请求计数| REST API 收到的请求数由密钥保管库数据平面 |
+| **应用程序服务** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | 应用服务   | 虚拟核心小时数  | 用于运行应用程序服务的虚拟内核数 |
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>如何实现 Api 与 Azure 堆栈使用[Azure 使用情况 API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) （当前在公共预览版）？
 * 租户使用情况 API 是与 Azure API，有一个例外一致： *showDetails*标志目前不支持 Azure 堆栈中。

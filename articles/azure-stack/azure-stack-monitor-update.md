@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: mabrigg
-ms.openlocfilehash: 55688ad4959d59e41dca9be2d00011e1d41ebd8c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>监视使用特权终结点的 Azure 堆栈中的更新
 
 *适用范围： Azure 堆栈集成系统*
 
-若要监视的运行时，Azure 堆栈更新进度，并继续失败的更新运行最后一个成功的步骤中，可以使用特权终结点。 
+你可以使用特权的终结点监视 Azure 堆栈更新运行的进度，恢复失败的更新运行最后一个成功的步骤应使用 Azure 堆栈变得不可用的门户。  使用 Azure 堆栈门户可管理 Azure 堆栈中的更新的推荐的方法。
 
 为集成的 Azure 堆栈系统 1710年更新中包含以下新的 PowerShell cmdlet 用于更新管理。
 
