@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/08/2018
 ms.author: andredm
-ms.openlocfilehash: 92708909a472f98b45492f3c0c807634f1c204d7
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: fadd72d76862694af96b51d198b6693e104c05de
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure 堆栈 1712年更新
 
@@ -31,17 +31,9 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="build-reference"></a>生成参考
 
-Azure 堆栈 1712年更新生成号是**180103.2**。
+Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180103.2**以前，无需应用**180106.1**。
 
 ## <a name="before-you-begin"></a>开始之前
-
-> [!WARNING]
-> 如果你当前的活动的交互 PEP 远程会话中，你需要退出初始化 Azure 堆栈更新安装过程之前会话。 你可以键入**退出**远程控制台退出会话中。
-> 你可以检查是否有任何现有的 PEP 远程会话通过运行两个 PowerShell 命令，首先**Get-pssession**其中列出了所有活动的远程会话，然后**Remove-pssession**终止和删除活动的远程会话。 PowerShell 命令需要的任何用于在 Azure 堆栈环境中创建 PEP 远程会话的计算机上运行。 下面是 PowerShell 命令示例：
-```
-Get-PSSession | Remove-PSSession
-```
-此外，不要创建 PEP 会话甚至 Azure 堆栈更新已启动后。
 
 > [!IMPORTANT]
 > 请勿尝试来 1712年更新安装过程中创建虚拟机。 请参阅[管理 Azure 堆栈概述中的更新](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#plan-for-updates)有关详细信息。
@@ -100,7 +92,7 @@ Get-PSSession | Remove-PSSession
 
 ### <a name="known-issues-post-installation"></a>已知的问题 （安装后）
 
-本部分包含安装后生成的已知的问题**180103.2**。
+本部分包含安装后生成的已知的问题**180106.1**。
 
 #### <a name="portal"></a>门户
 
@@ -161,6 +153,11 @@ Get-PSSession | Remove-PSSession
 
 你可以下载 Azure 堆栈 1712年更新包从[此处](https://aka.ms/azurestackupdatedownload)。
 
+## <a name="more-information"></a>详细信息
+
+Microsoft 提供了一种方法来监视和恢复使用特权终结点 (PEP) 与更新 1712年一起安装的更新。
+
+- 请参阅[监视 Azure 堆栈使用特权终结点文档中的更新](https://docs.microsoft.com/azure/azure-stack/azure-stack-monitor-update)。 
 ## <a name="see-also"></a>另请参阅
 
 - 请参阅[管理 Azure 堆栈概述中的更新](azure-stack-updates.md)有关 Azure 堆栈中的更新管理的概述。
