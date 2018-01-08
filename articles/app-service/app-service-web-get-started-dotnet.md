@@ -15,13 +15,17 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 47f8fd97ad3be833e4f86f4bda57b140ce73c5de
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 5860c88b3b6c9f6f715c8e2d8ce667189f9b4438
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Core Web 应用
+
+> [!NOTE]
+> 本文将应用部署到基于 Windows 的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的应用服务中创建 .NET Core Web 应用](./containers/quickstart-dotnetcore.md)。
+>
 
 [Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Core Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
 
@@ -109,7 +113,7 @@ ms.lasthandoff: 12/05/2017
 | 设置 | 建议的值 | 说明 |
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
-| 位置 | 欧洲西部 | 托管 Web 应用的数据中心。 |
+| Location | 欧洲西部 | 托管 Web 应用的数据中心。 |
 | 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
 选择“确定”。

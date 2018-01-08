@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 029ecaf43249175504cc1e22d246f24e927234af
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bc0913568be13aa348a6750f4304086aeec66b04
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>使用运行方式帐户更新自动化帐户身份验证 
 在以下情况下，可以通过 Azure 门户或使用 PowerShell 更新现有自动化帐户：
@@ -57,16 +57,16 @@ ms.lasthandoff: 12/14/2017
 若要更新自动化帐户，必须具有完成本主题所需的下述特定权限。   
  
 * 需将 AD 用户帐户添加到一个角色，该角色的权限相当于 Microsoft.Automation 资源的参与者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md#contributor-role-permissions)一文所述。  
-* Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是“应用注册设置”已设置为“是”。  如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。 
+* Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。 如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”边栏选项卡中会显示 “你无权创建...”警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
 ## <a name="create-run-as-account-from-the-portal"></a>通过门户创建运行方式帐户
-在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。  分别创建运行方式帐户和经典运行方式帐户，如果不需要管理经典资源，可只创建 Azure 运行方式帐户。  
+在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。  可以单独创建运行方式帐户和经典运行方式帐户。 如果不需管理经典资源，可以只创建 Azure 运行方式帐户。  
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
 2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
-3. 在“自动化帐户”页上选择自动化帐户。  
+3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。
 4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”。  
 5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”。  选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户。  
 6. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度。  此外还显示一个横幅，指出正在创建帐户。  此过程可能需要几分钟才能完成。  

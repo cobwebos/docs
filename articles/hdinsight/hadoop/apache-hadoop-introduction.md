@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: ba2a14e3f327fd8ab4f1ebfe329a64b4aa1a25a1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 49ec2f305c1aef50fcff977d60ff3ce0079ff5af
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="introduction-to-azure-hdinsight-the-hadoop-and-spark-technology-stack"></a>Azure HDInsight、Hadoop 和 Spark 技术堆栈简介
 本文介绍 Azure HDInsight，这是一项适用于企业的分析服务，具有完全托管、全面且开源的特点。 可以使用 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R 等开源框架。 
@@ -137,6 +137,7 @@ HDInsight 群集支持以下特定于 Hadoop 技术堆栈的语言：
 
 * [使用 Azure HDInsight 上的数据可视化工具的 Apache Spark BI](../spark/apache-spark-use-bi-tools.md)
 * [在 Azure HDInsight 中使用 Microsoft Power BI 可视化 Hive 数据](apache-hadoop-connect-hive-power-bi.md) 
+* [在 Azure HDInsight 中使用 Power BI 可视化交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [使用 Power Query 将 Excel 连接到 Hadoop](apache-hadoop-connect-excel-power-query.md)：了解如何使用 Microsoft Power Query for Excel，将 Excel 连接到存储 HDInsight 群集数据的 Azure 存储帐户。 所需的 Windows 工作站。 
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop](apache-hadoop-connect-excel-hive-odbc-driver.md)：了解如何使用 Microsoft Hive ODBC 驱动程序从 HDInsight 导入数据。 所需的 Windows 工作站。 
 * [Microsoft 云平台](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx)：了解有关 Power BI for Office 365、下载 SQL Server 试用版，以及设置 SharePoint Server 2013 和 SQL Server BI 的信息。

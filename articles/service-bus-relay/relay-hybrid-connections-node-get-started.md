@@ -14,11 +14,11 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 0349afa355038644e695858cc42d12a68ca2bdd8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>中继混合连接入门
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="what-will-be-accomplished"></a>将要完成的任务
 
-由于混合连接要求客户端和服务器组件，我们将在本教程中创建两个控制台应用程序。 下面是相关步骤：
+由于混合连接要求客户端和服务器组件，请在本教程中创建两个控制台应用程序。 下面是相关步骤：
 
 1. 使用 Azure 门户创建中继命名空间。
 2. 使用 Azure 门户创建混合连接。
@@ -56,13 +56,13 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="3-create-a-server-application-listener"></a>3.创建服务器应用程序（侦听程序）
 
-若要侦听和接收来自中继的消息，需编写 Node.js 控制台应用程序。
+若要侦听和接收来自中继的消息，请编写 Node.js 控制台应用程序。
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-node-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4.创建客户端应用程序（发送程序）
 
-要将消息发送到中继，需编写 Node.js 控制台应用程序。
+若要将消息发送到中继，请编写 Node.js 控制台应用程序。
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-node-get-started-client.md)]
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 12/21/2017
 
 祝贺你，现已使用 Node.js 创建端到端混合连接应用程序！
 
-## <a name="next-steps"></a>后续步骤：
+## <a name="next-steps"></a>后续步骤
 
 * [中继常见问题](relay-faq.md)
 * [创建命名空间](relay-create-namespace-portal.md)

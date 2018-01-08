@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/18/2017
+ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 68409d7832985bea635e4b6de341ea6aec6f560d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 694d75b57d0f1b26640848344fbbe268fe285009
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>在 Azure 中备份虚拟机
 可以通过 Azure 门户创建 Azure 备份。 此方法提供基于浏览器的用户界面用于创建和配置 Azure 备份及所有相关的资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure 门户备份虚拟机 (VM)。 
@@ -36,13 +36,13 @@ ms.lasthandoff: 12/05/2017
 
 1. 在左侧菜单中选择“虚拟机”。 
 2. 从列表中选择要备份的 VM。 如果使用了 VM 快速入门教程中的示例命令，VM 在 *myResourceGroup* 资源组中名为 *myVM*。
-3. 在“设置”部分，选择“备份”。 此时会打开“启用备份”窗口。
+3. 在“操作”部分，选择“备份”。 此时会打开“启用备份”窗口。
 
 
 ## <a name="enable-backup-on-a-vm"></a>在 VM 上启用备份
 恢复服务保管库是一个逻辑容器，用于存储每个受保护资源（例如 Azure VM）的备份数据。 运行受保护资源的备份作业时，该作业会在恢复服务保管库中创建一个恢复点。 然后，可以使用其中一个恢复点将数据还原到给定的时间点。
 
-1. 选择“新建”并提供新保管库的名称，例如 **myRecoveryServicesVault**。
+1. 选择“新建”并提供新保管库的名称，例如 *myRecoveryServicesVault*。
 2. 选择“使用现有”（如果尚未选择），并从下拉菜单中选择 VM 的资源组。
 
     ![在 Azure 门户中启用 VM 备份](./media/quick-backup-vm-portal/enable-backup.png)
@@ -52,6 +52,8 @@ ms.lasthandoff: 12/05/2017
     创建并使用策略来定义备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 
 
 3. 若要接受默认备份策略值，请选择“启用备份”。
+
+片刻之后即可创建恢复服务保管库。
 
 
 ## <a name="start-a-backup-job"></a>启动备份作业
@@ -93,7 +95,7 @@ VM 的“备份”窗口中显示了备份的状态，以及已完成的还原�
 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，我们创建了恢复服务保管库，在 VM 上启用了保护，并创建了初始恢复点。 若要详细了解 Azure 备份和恢复服务，请继续学习其他教程。
+本快速入门介绍了如何创建恢复服务保管库，如何在 VM 上启用保护，以及如何创建初始恢复点。 若要详细了解 Azure 备份和恢复服务，请继续学习其他教程。
 
 > [!div class="nextstepaction"]
 > [备份多个 Azure VM](./tutorial-backup-vm-at-scale.md)

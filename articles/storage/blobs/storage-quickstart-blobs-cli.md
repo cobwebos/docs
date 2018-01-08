@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: a300294c83cb206e6211985c736e3ff01bb1ab43
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 7313df35baadf7aa6d476f44b113dc60e6845f4b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>使用 Azure CLI 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门详细介绍了如何使用 Azure CLI 将数据上传和下载到 Azure Blob 存储或从 Azure Blob 存储上传和下载数据。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速�
 
 ## <a name="create-a-container"></a>创建容器
 
-始终将 blob 上传到容器中。 借助容器，可整理 blob 的组，就像在计算机的目录中整理文件一样。
+始终将 Blob 上传到容器中。 可以整理 Blob 组，就像在计算机的文件夹中整理文件一样。
 
 可以使用 [az storage container create](/cli/azure/storage/container#create) 命令创建用于存储 blob 的容器。
 
@@ -47,7 +47,10 @@ az storage container create --name mystoragecontainer
 
 Blob 存储支持块 blob、追加 blob 和页 blob。 存储在 Blob 存储中的大多数文件都存储为块 blob。 必须将数据添加到现有的 blob 中且不能修改该 blob 的现有内容时（例如进行日志记录时），使用追加 blob。 页 blob 支持 IaaS 虚拟机的 VHD 文件。
 
-此示例使用 [az storage blob upload](/cli/azure/storage/blob#upload) 命令将 blob 上传到在上一个步骤中创建的容器中。
+首先，创建要上传到 Blob 的文件。
+如果使用 Azure Cloud Shell，请使用以下方法来创建 `vi helloworld` 文件：当文件打开时，按“插入”，键入“Hello world”，然后按 **Esc** 并输入 `:x`，再按 **Enter**。
+
+此示例使用 [az storage blob upload](/cli/azure/storage/blob#upload) 命令将 Blob 上传到在上一个步骤中创建的容器中。
 
 ```azurecli-interactive
 az storage blob upload \
@@ -56,7 +59,18 @@ az storage blob upload \
     --file ~/path/to/local/file
 ```
 
-此操作将创建 Blob（如果该 Blob 尚不存在），如果该 Blob 已存在则将其覆盖。 上传尽可能多的文件，然后继续操作。
+如果使用了前述方法在 Azure Cloud Shell 中创建文件，则可改用此 CLI 命令（请注意，不需指定路径，因为此文件是在基目录创建的，而通常是需要指定路径的）：
+
+```azurecli-interactive
+az storage blob upload \
+    --container-name mystoragecontainer \
+    --name helloworld
+    --file helloworld
+```
+
+此操作将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。 上传尽可能多的文件，然后继续操作。
+
+若要同时上传多个文件，则可使用 [az storage blob upload-batch](/cli/azure/storage/blob#upload-batch) 命令。
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
@@ -70,7 +84,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>下载 Blob
 
-使用 [az storage blob download](/cli/azure/storage/blob#download) 命令下载之前上传的 blob。
+使用 [az storage blob download](/cli/azure/storage/blob#download) 命令下载之前上传的 Blob。
 
 ```azurecli-interactive
 az storage blob download \

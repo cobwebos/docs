@@ -10,25 +10,28 @@ ms.service: mysql
 ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 09/20/2017
-ms.openlocfilehash: aeca003a9b031a48804a057b627714b554298645
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.openlocfilehash: 6d27ec96f56e576d4af02c5e0e70e6364bd5a9ec
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Java 进行连接并查询数据
-本快速入门演示如何使用 Java 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Java 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
+本快速入门演示如何使用 Java 应用程序和 JDBC 驱动程序 [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) 连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Java 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
+
+[MySQL Connector 示例页](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html)中有许多其他的示例和代码示例。
 
 ## <a name="prerequisites"></a>先决条件
-此快速入门使用以下任意指南中创建的资源作为起点：
-- [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
+1. 此快速入门使用以下任意指南中创建的资源作为起点：
+   - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
+   - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-还需要：
-- 下载 JDBC 驱动程序 [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)
-- 将 JDBC jar 文件（例如 mysql-connector-java-5.1.42-bin.jar）包括到应用程序类路径中。 如果遇到此方面的问题，请参阅环境文档（例如 [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) 或 [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)），了解类路径具体信息
-- 确保在配置 Azure Database for MySQL 连接安全性时，已打开防火墙并对 SSL 设置进行了调整，以便应用程序能够成功进行连接。
+2. 确保在配置 Azure Database for MySQL 连接安全性时，已打开防火墙并对 SSL 设置进行了调整，以便应用程序能够成功进行连接。
+
+3. 使用以下某个方法获取 MySQL Connector/J 连接器：
+   - 使用 Maven 包 [mysql-connector-java](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22mysql%22%20AND%20a%3A%22mysql-connector-java%22) 在项目的 POM 文件中包括 [mysql 依赖项](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6)。
+   - 下载 JDBC 驱动程序 [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)，将 JDBC jar 文件（例如 mysql-connector-java-5.1.42-bin.jar）包括到应用程序类路径中。 如果遇到类路径的问题，请参阅环境文档（例如 [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) 或 [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)），了解类路径具体信息
 
 ## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
@@ -392,5 +395,7 @@ public class DeleteTable {
 ```
 
 ## <a name="next-steps"></a>后续步骤
+[MySQL Connector/J 示例页](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html)中有许多其他的示例和代码示例。
+
 > [!div class="nextstepaction"]
 > [使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL](concepts-migrate-dump-restore.md)
