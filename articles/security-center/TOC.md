@@ -82,7 +82,7 @@
 ## 故障排除
 ### [故障排除指南](security-center-troubleshooting-guide.md)
 
-# 参考
+# 引用
 ## [REST](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
 # 相关内容
@@ -90,6 +90,7 @@
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [安全中心就绪情况路线图](security-center-readiness-roadmap.md)
 ## [Azure 安全性、隐私性与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务概述](https://azure.microsoft.com/services/security-center/)

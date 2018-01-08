@@ -36,6 +36,8 @@
   items:
     - name: 将数据从事件中心流式传输到数据仓库
       href: event-grid-event-hubs-integration.md
+    - name: 事件订阅模板
+      href: event-subscription-template.md
 - name: 引用
   items:
     - name: Azure CLI

@@ -73,7 +73,7 @@
 
 ## [管理组和成员](active-directory-manage-groups.md)
 ### 管理组
-#### [Azure 门户](active-directory-groups-create-azure-portal.md)
+#### [Azure portal](active-directory-groups-create-azure-portal.md)
 #### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
@@ -90,7 +90,7 @@
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
 ### 管理组设置
-#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
+#### [Azure portal](active-directory-groups-settings-azure-portal.md)
 #### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
