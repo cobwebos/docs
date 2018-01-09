@@ -21,6 +21,7 @@
 ### [使用 Azure 策略的安全策略](security-center-azure-policy.md)
 ### [电子邮件通知](security-center-provide-security-contact-details.md)
 ### [定价层](security-center-pricing.md)
+### [安全配置](security-center-customize-os-security-config.md)
 
 ## [载入](security-center-onboarding.md)
 ## [事件](security-center-events-dashboard.md)
@@ -54,7 +55,7 @@
 #### [启用 VM 代理](security-center-enable-vm-agent.md)
 #### [安装终结点保护](security-center-install-endpoint-protection.md)
 #### [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates)
-#### [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md)
+#### [修正安全配置](security-center-remediate-os-vulnerabilities.md)
 #### [更新 OS 版本](security-center-update-os-version.md)
 #### [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
 ### [监视安全运行状况](security-center-monitoring.md)
@@ -90,7 +91,7 @@
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
-## [安全中心就绪情况路线图](security-center-readiness-roadmap.md)
+## [就绪情况路线图](security-center-readiness-roadmap.md)
 ## [Azure 安全性、隐私性与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务概述](https://azure.microsoft.com/services/security-center/)
