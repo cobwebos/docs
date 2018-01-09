@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: andredm
-ms.openlocfilehash: fadd72d76862694af96b51d198b6693e104c05de
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 344fe7496a9129ea1653881a72139fea8a202ff0
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/08/2018
@@ -55,7 +55,6 @@ Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180
 
 #### <a name="new-features"></a>新增功能
 
-- 新用户体验时从应用商店创建项
 - 测试 AzureStack cmdlet 来验证 Azure 堆栈云可通过特权终结点
 - 注册 Azure 堆栈的断开连接的部署能力
 - 证书和用户帐户到期的监视警报
@@ -76,7 +75,7 @@ Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180
 
 - [年 1 月，第三-2018年-KB4056890 （OS 内部 14393.2007）](https://support.microsoft.com/help/4056890/windows-10-update-kb4056890)
     - 此更新包括行业范围的安全问题所描述的软件修补[MSRC 安全公告 ADV 180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)。
- 
+
 ### <a name="known-issues-with-the-update-process"></a>在更新过程的已知的问题
 
 本部分包含 1712年更新安装过程中可能遇到的已知的问题。
@@ -103,7 +102,7 @@ Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180
 
    - 你可能会看到在列表顶部的空行。 你仍应将能够按预期方式选择一个项。
    - 如果下拉列表中项的列表很短，可能无法查看任何项名称。
-   - 如果你有多个用户订阅，资源组下拉列表可能为空。 
+   - 如果你有多个用户订阅，资源组下拉列表可能为空。
 
         > [!NOTE]
         > 若要解决的最后两个问题，你可键入名称的订阅或资源组 （如果你知道它），也可以改为使用 PowerShell。
@@ -124,16 +123,16 @@ Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180
 - 你可以配置虚拟机的可用性仅使用容错域之一，以及一个更新域设置。
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 - 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
- 
+
 #### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。
 - Azure 堆栈运算符可能不能部署、 删除、 修改 Vnet 或网络安全组。 在同一个包的后续更新尝试主要出现此问题。 这被引起更新其中我们正在调查打包问题。
 - 内部负载平衡 (ILB) 不正确处理的中断 Linux 实例后端 Vm 的 MAC 地址。
- 
+
 #### <a name="sqlmysql"></a>SQL/MySQL
-- 它可能需要一小时之前租户可以在新的 SQL 或 MySQL SKU 中创建数据库。 
+- 它可能需要一小时之前租户可以在新的 SQL 或 MySQL SKU 中创建数据库。
 - 直接在 SQL 和 MySQL 宿主服务器不由资源提供程序执行上的项目创建不支持，并且可能会导致不匹配的状态。
 
     > [!NOTE]
@@ -158,6 +157,7 @@ Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180
 Microsoft 提供了一种方法来监视和恢复使用特权终结点 (PEP) 与更新 1712年一起安装的更新。
 
 - 请参阅[监视 Azure 堆栈使用特权终结点文档中的更新](https://docs.microsoft.com/azure/azure-stack/azure-stack-monitor-update)。 
+
 ## <a name="see-also"></a>另请参阅
 
 - 请参阅[管理 Azure 堆栈概述中的更新](azure-stack-updates.md)有关 Azure 堆栈中的更新管理的概述。

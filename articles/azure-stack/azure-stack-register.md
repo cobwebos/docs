@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/5/2018
+ms.date: 1/8/2018
 ms.author: jeffgilb
-ms.openlocfilehash: c2edafbf483692d5a11771268a1755c11b74521f
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: b58b3fc538d2237c12a860d268d550c4223155ba
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>注册你的 Azure 订阅的 Azure 堆栈
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/05/2018
 
 - Azure 订阅的订阅 ID。 若要获取的 ID，登录到 Azure，单击**更多的服务** > **订阅**，单击你想要使用，的订阅并在列表视图**Essentials**可以找到**订阅 ID**。 当前不支持中国、 德国和我们政府云订阅。
 - 用户名和密码是订阅的所有者的帐户 （MSA/2FA 帐户也支持）。
-- *不需要从 Azure 堆栈 1712年更新版本 (1.0.180103.2) 开始：*的 Azure 订阅的 Azure Active Directory。 通过将鼠标悬停在 Azure 门户右上角用户标识，可以在 Azure 中找到此目录。
+- *不需要从 Azure 堆栈 1712年更新版本 (180106.1) 开始：*的 Azure 订阅的 Azure Active Directory。 通过将鼠标悬停在 Azure 门户右上角用户标识，可以在 Azure 中找到此目录。
 
 如果你没有满足这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/en-us/free/?b=17.06)。 注册 Azure 堆栈会产生任何费用在你的 Azure 订阅。
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 01/05/2018
 
 
 ## <a name="disconnected-registration"></a>断开连接的注册
-*此部分中的信息适用 Azure 堆栈 1712年更新版本 (1.0.180103.2) 开头，并且不支持与早期版本。*
+*此部分中的信息适用 Azure 堆栈 1712年更新版本 (180106.1) 开头，并且不支持与早期版本。*
 
 如果你要在连接断开的环境中注册 Azure 堆栈，你需要从 Azure 堆栈环境中获取了注册令牌，然后在可以连接到 Azure 进行注册的计算机上使用该令牌。  
 
