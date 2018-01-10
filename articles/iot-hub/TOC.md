@@ -162,6 +162,7 @@
 
 # 相关内容
 ## [Azure IoT 套件](https://azure.microsoft.com/documentation/suites/iot-suite/)
+## [Azure IoT 中心设备预配服务](https://azure.microsoft.com/documentation/services/iot-dps/)
 ## [Azure 事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)
 ## [流分析](https://azure.microsoft.com/documentation/services/stream-analytics/)
 ## [机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)
