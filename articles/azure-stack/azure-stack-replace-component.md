@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 20a830f99c5545b49e7b8c0211d145eef3e46179
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 4937b7725c8f39314ccc41584a8646b7197f6bdf
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>替换的 Azure 堆栈缩放单元节点上的硬件组件
 
@@ -55,6 +55,10 @@ Azure 堆栈运行状况和监视系统跟踪网络适配器和由存储空间�
 以下步骤提供组件更换过程的高级概述。 不用按照这些步骤而不会引用你的 OEM 提供 FRU 文档。
 
 1. 使用[排出](azure-stack-node-actions.md#scale-unit-node-actions)操作将缩放单元节点置于维护模式。 此操作可能不需要基于硬件的物理条件。
+
+   > [!NOTE]
+   > 可以在任何情况下，将断开而且而不会破坏 S2D 关机在同一时间只有一个节点 (Storage Spaces Direct)。
+
 2. 缩放单元节点处于维护模式后，使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 此操作可能不需要基于硬件的物理条件。
  
    > [!NOTE]
