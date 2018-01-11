@@ -64,6 +64,7 @@
 #### [将实体与自动转发链接在一起](service-bus-auto-forwarding.md)
 #### [事务处理](service-bus-transactions.md)
 #### [配对命名空间实现](service-bus-paired-namespaces.md)
+### [端到端跟踪和诊断](service-bus-end-to-end-tracing.md)
 ## 管理
 ### [使用 Azure 监视来监视服务总线](service-bus-metrics-azure-monitor.md)
 ### [服务总线管理库](service-bus-management-libraries.md)
