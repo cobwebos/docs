@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
 ms.openlocfilehash: 344d6922d1649449e26f2500e538b5a0b440476d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure Resource Manager 的 PowerShell 创建 Azure 应用程序网关的自定义探测
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
   New-AzureRmResourceGroup -Name appgw-rg -Location 'West US'
   ```
 
-Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
 

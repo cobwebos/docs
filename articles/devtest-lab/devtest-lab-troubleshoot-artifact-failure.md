@@ -3,7 +3,7 @@ title: "诊断 Azure 开发测试实验室虚拟机中的项目失败 | Microsof
 description: "了解如何对开 Azure 测试实验室中的项目失败进行故障排除。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 115e0086-3293-4adf-8738-9f639f31f918
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
-ms.author: tarcher
-ms.openlocfilehash: 9a79e50902e8e99e94148f8ef534e6745e31809a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 6c03ce8f91ec688e32e379f1284767db9a45920c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
 创建项目后，可检查其为成功还是失败。 Azure 开发测试实验室中的项目日志提供了可用于诊断项目失败的信息。 可通过几个选项查看 Windows VM 的项目日志信息：

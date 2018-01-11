@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 3d9ec6325e25477bf4ee0475caeca64b75b1f89f
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f30042ad8d687db59e1aaa092c46cee371e8c7fb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂  
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
-Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。 
+Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。 
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-pipelines.md)。
@@ -396,7 +396,7 @@ ADFV2 发出以下指标
 | TriggerSucceededRuns | 成功的触发器运行数指标  | 计数    | 总计                | 在一分钟时段内成功的触发器运行总数   |
 | TriggerFailedRuns    | 失败的触发器运行数指标     | 计数    | 总计                | 在一分钟时段内失败的触发器运行总数      |
 
-若要访问指标，请遵照以下文章中的说明 - https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+要访问指标，请遵照以下文章中的说明 - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
 
 ## <a name="next-steps"></a>后续步骤
 参阅[以编程方式监视和管理管道](monitor-programmatically.md)一文，了解如何通过运行  来监视和管理管道。 

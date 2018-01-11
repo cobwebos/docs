@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: 44044939f044b573d19270830ab140e8332b6825
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c17815db136b404cd0c723cf44cafe46fa681cf6
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 可以通过 [Application Insights][start] 来监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障情况和使用情况，只需将 Application Insights 的 SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据进行组合分析即可。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/08/2017
 * Microsoft Azure SDK 2.9 或更高版本
 * Developer Analytics Tools 7.10 或更高版本
 
-## <a name="quick-start"></a>快速启动
+## <a name="quick-start"></a>快速入门
 使用 Application Insights 监视云服务的最快、最简单方法是将服务发布到 Azure 时选择 Application Insights 选项。
 
 ![示例](./media/app-insights-cloudservices/azure-cloud-application-insights.png)
@@ -166,7 +166,7 @@ ms.lasthandoff: 12/08/2017
 
 参阅报告请求的两个检测示例辅助角色：[WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) 和 [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 有关如何从不同的 Web 应用程序类型收集未经处理的异常的信息，请参阅 [Monitoring Exceptions in Application Insights](app-insights-asp-net-exceptions.md)（在 Application Insights 中监视异常）。
 
 该示例 Web 角色包含 MVC5 和 Web API 2 控制器。 可使用以下处理程序捕获这两个控制器的未经处理的异常：
@@ -187,7 +187,7 @@ ms.lasthandoff: 12/08/2017
     * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
     * \Process(??APP_WIN32_PROC??)\Private Bytes
     * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
-    * \Processor(_Total)\% Processor Time
+    * \Processor(_Total)\% 处理器时间
 
 对于 Web 角色，还将收集以下计数器：
 

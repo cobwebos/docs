@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: d3f165c749af0553c4918b33b0d24cc1e21af2a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a7189d9ccc8ab7aee61cd32e465b2c9b63680d2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
-> [!div class="op_single_selector"]
-> * [ARM](backup-client-automation.md)
-> * [经典](backup-client-automation-classic.md)
->
->
-
 本文说明如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 
 ## <a name="install-azure-powershell"></a>安装 Azure PowerShell
@@ -204,7 +198,7 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此密码，将无法从 Azure 还原数据。
+> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，将无法从 Azure 还原数据。
 >
 >
 

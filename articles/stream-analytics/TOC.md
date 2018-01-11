@@ -17,6 +17,7 @@
 ### [IoT Edge 上的流分析（预览版）](stream-analytics-edge.md)
 ### [Azure 用法指南（预览版）中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
 ### [使用流分析进行高频率交易模拟](stream-analytics-high-frequency-trading.md)
+### [Azure Functions 与 Azure 流分析](stream-analytics-with-azure-functions.md)
 
 ## 创建作业
 ### [创建输入](stream-analytics-define-inputs.md)
@@ -51,6 +52,7 @@
 ## 管理
 ### [轮转输入/输出凭据](stream-analytics-login-credentials-inputs-outputs.md)
 ### [在更新期间的作业可靠性](stream-analytics-job-reliability.md)
+### [配置兼容性级别](stream-analytics-compatibility-level.md)
 
 ## 故障排除
 ### [故障排除指南](stream-analytics-troubleshooting-guide.md)

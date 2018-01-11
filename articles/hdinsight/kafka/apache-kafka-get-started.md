@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 91ef8aece812c0495fcb3bc31401606f40b7ba97
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 20b95f16e16c4b42289e1e25def4910fbca70db5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 入门
 
@@ -168,7 +168,7 @@ Kafka 在名为 topics 的类别中存储数据流。 与群集头节点建立 S
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生成者从 Kafka 代理检索记录。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。
+Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使用。 生成者将记录生成到 Kafka 代理。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。
 
 使用以下步骤将记录存储到之前创建的测试主题，并通过使用者对其进行读取：
 

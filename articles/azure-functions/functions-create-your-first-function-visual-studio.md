@@ -14,24 +14,24 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/1/2017
+ms.date: 12/11/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7f71ecb2b58728f466371c7aa6d2aac965177863
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 401230c6d7ef522a6a607fd03f798483f942a226
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
 Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/serverless-computing/)环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
 
-> [!VIDEO https://www.youtube-nocookie.com/embed/DrhG-Rdm80k]
-
 本主题介绍如何使用 Azure Functions 的 Visual Studio 2017 工具在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 这些工具包含在 Visual Studio 2017 版本 15.3 或更高版本的 Azure 开发工作负荷中。
 
 ![Visual Studio 项目中的 Azure Functions 代码](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
+
+如果你愿意，可以改为[观看视频](#watch-the-video)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -98,7 +98,11 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面演示浏览器中函数返回的对远程 GET 请求的响应： 
 
     ![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
- 
+
+## <a name="watch-the-video"></a>观看视频
+
+> [!VIDEO https://www.youtube-nocookie.com/embed/DrhG-Rdm80k]
+
 ## <a name="next-steps"></a>后续步骤
 
 你已使用简单的 HTTP 触发函数通过 Visual Studio 创建 C# 函数应用。 

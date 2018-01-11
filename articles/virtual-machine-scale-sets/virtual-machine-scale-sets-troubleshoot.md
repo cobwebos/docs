@@ -1,10 +1,10 @@
 ---
-title: "疑难解答使用虚拟机规模集的自动缩放问题 | Microsoft 文档"
+title: "疑难解答使用虚拟机规模集的自动缩放问题 | Microsoft Docs"
 description: "疑难解答使用虚拟机规模集的自动缩放问题。 了解遇到的典型问题以及如何解决这些问题。"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: guybo
-ms.openlocfilehash: 19871cd0433c6df88c631cf6e6e8e477dc902448
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: negat
+ms.openlocfilehash: 02a3acf818bfca31a56b364f7abab97551e0d3f0
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
 问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构 - 例如，通过部署一个与此类似的模板：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 定义了缩放规则，其效果良好，只不过是无论在 VM 中施放多少负载，它都不会自动缩放。

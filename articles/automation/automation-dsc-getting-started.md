@@ -3,7 +3,7 @@ title: "Azure Automation DSC 入门 | Microsoft Docs"
 description: "Azure 自动化所需状态配置 (DSC) 中最常见任务的说明和示例"
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: a3816593-70a3-403b-9a43-d5555fd2cee2
@@ -13,26 +13,26 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
-ms.author: magoedte;eslesar
-ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: magoedte;gwallace
+ms.openlocfilehash: e8b7d0d38f59589cbe6f82798b4e725af7b20e23
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC 入门
-本主题说明如何使用 Azure Automation Desired State Configuration (DSC) 执行最常见的任务，例如创建、导入、编译配置，载入要管理的计算机和查看报表。 若要大致了解什么是 Azure Automation DSC，请参阅 [ DSC 概述](automation-dsc-overview.md)。 有关 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](https://msdn.microsoft.com/PowerShell/dsc/overview)。
+本文说明如何使用 Azure Automation Desired State Configuration (DSC) 执行最常见的任务，例如创建、导入、编译配置，登记要管理的计算机和查看报表。 若要大致了解什么是 Azure Automation DSC，请参阅 [ DSC 概述](automation-dsc-overview.md)。 有关 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](https://msdn.microsoft.com/PowerShell/dsc/overview)。
 
-本主题分步介绍了如何使用 Azure Automation DSC。 如果需要一个已经设置好的示例环境，而不想按照本主题所述步骤进行操作，则可使用[以下 ARM 模板](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)。 此模板设置了一个完整的 Azure Automation DSC 环境，包括一个由 Azure Automation DSC 管理的 Azure VM。
+本文提供了如何使用 Azure 自动化 DSC 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下[资源管理器模板](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)。 此模板设置了一个完整的 Azure Automation DSC 环境，包括一个由 Azure Automation DSC 管理的 Azure VM。
 
 ## <a name="prerequisites"></a>先决条件
-若要完成本主题中的示例，需要具备以下条件：
+若要完成本文中的示例，需要具备以下条件：
 
 * 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
-* 一个运行 Windows Server 2008 R2 或更高版本的 Azure Resource Manager VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+* 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>创建 DSC 配置
-我们将创建一个简单的 [DSC 配置](https://msdn.microsoft.com/powershell/dsc/configurations)，以确保存在（或不存在）**Web-Server** Windows 功能 (IIS)，具体取决于分配节点的方式。
+将创建一个简单的 [DSC 配置](https://msdn.microsoft.com/powershell/dsc/configurations)，以确保存在（或不存在）**Web-Server** Windows 功能 (IIS)，具体取决于分配节点的方式。
 
 1. 启动 Windows PowerShell ISE（或任何文本编辑器）。
 2. 键入以下文本：
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/11/2017
 此配置调用每个节点块中的一个资源（[WindowsFeature 资源](https://msdn.microsoft.com/powershell/dsc/windowsfeatureresource)），以确保存在（或不存在）**Web-Server** 功能。
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>将配置导入 Azure 自动化
-接下来，我们会将配置导入自动化帐户。
+接下来，会将配置导入自动化帐户。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“中心”菜单中，单击“所有资源”，并单击自动化帐户的名称。
@@ -129,9 +129,9 @@ ms.lasthandoff: 10/11/2017
     ![“DSC 节点配置”边栏选项卡的屏幕快照](./media/automation-dsc-getting-started/NodeConfigs.png)
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-dsc"></a>登记使用 Azure Automation DSC 管理的 Azure VM
-可以使用 Azure Automation DSC 来管理 Azure VM（包括经 VM 和 Resource Manager VM）、本地 VM、Linux 计算机、AWS VM，以及本地物理机。 在本主题中，我们介绍如何仅登记 Azure Resource Manager VM。 有关如何登记其他类型的计算机的信息，请参阅[登记由 Azure Automation DSC 管理的计算机](automation-dsc-onboarding.md)。
+可以使用 Azure Automation DSC 来管理 Azure VM（包括经 VM 和 Resource Manager VM）、本地 VM、Linux 计算机、AWS VM，以及本地物理机。 本文介绍如何仅登记 Azure 资源管理器 VM。 有关如何登记其他类型的计算机的信息，请参阅[登记由 Azure Automation DSC 管理的计算机](automation-dsc-onboarding.md)。
 
-### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>登记由 Azure Automation DSC 管理的 Azure Resource Manager VM
+### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>登记由 Azure Automation DSC 管理的 Azure 资源管理器 VM
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“中心”菜单中，单击“所有资源”，并单击自动化帐户的名称。
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 节点”。
@@ -142,7 +142,7 @@ ms.lasthandoff: 10/11/2017
 6. 在“选择 VM”边栏选项卡中，选择要登记的 VM，并单击“确定”。
    
    > [!IMPORTANT]
-   > 该 VM 必须是运行 Windows Server 2008 R2 或更高版本的 Azure Resource Manager VM。
+   > 该 VM 必须是运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM。
    > 
    > 
 7. 在“添加 Azure VM”边栏选项卡中，单击“配置注册数据”。

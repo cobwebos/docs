@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: e9b979861f5ad815fd3794a98f3b9ca2115b415c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 720a5bd7fc3335e96570268c983578aad0774d7e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
-在应用服务中，应用在应用服务计划中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。 
+在应用服务中，应用在应用服务计划中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
 
 在特定的区域（例如“西欧”）中创建应用服务计划时，将为该区域中的该计划创建一组计算资源。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。 每个应用服务计划定义：
 
@@ -38,6 +38,8 @@ ms.lasthandoff: 12/04/2017
 - **专用计算**：“基本”、“标准”、“高级”和“高级 V2”层在专用的 Azure VM 上运行应用。 只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
 - **隔离**：此层在专用的 Azure 虚拟网络中运行专用的 Azure VM，这些虚拟网络基于应用的计算资源隔离提供网络隔离。 此层提供最大的横向扩展能力。
 - **消耗**：此层仅适用于[函数应用](../azure-functions/functions-overview.md)。 它根据工作负荷动态缩放函数。 有关详细信息，请参阅 [Azure Functions 托管计划的比较](../azure-functions/functions-scale.md)。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 每个层还提供应用服务功能的特定子集。 这些功能包括自定义域和 SSL 证书、自动缩放、部署槽位、备份、流量管理器集成，等等。 层越高，可用的功能越多。 若要了解每个定价层支持的功能，请参阅[应用服务计划详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 

@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 09/29/2017
 ms.author: nitinme
 ms.openlocfilehash: e8c7b788061b3eb18b3e6c282339a03d93ab8b1c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>使用 Java SDK 在 Data Lake Store 上进行的文件系统操作
 > [!div class="op_single_selector"]
@@ -42,9 +42,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 [GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) 上的代码示例逐步讲解了在存储中创建文件、连接文件、下载文件以及在存储中删除某些文件的过程。 本文的此部分演练代码的主要组成部分。
 
-1. 在命令行或 IDE 中使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
+1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 将以下依赖项添加到 Maven **pom.xml** 文件。 在 **\</project>** 标记前添加以下代码片段：
+2. 将以下依赖项添加到 Maven **pom.xml** 文件。 在 \</project> 标记前添加以下代码片段：
    
         <dependencies>
           <dependency>
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
           </dependency>
         </dependencies>
    
-    第一个依赖项从 maven 存储库使用 Data Lake Store SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Store SDK 使用 [slf4j](http://www.slf4j.org/) 日志记录体系，允许用户从多种流行记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用了 **slf4j-nop** 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](http://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Store SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Store SDK 使用 [slf4j](http://www.slf4j.org/) 日志记录体系，允许用户从多种流行记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](http://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 

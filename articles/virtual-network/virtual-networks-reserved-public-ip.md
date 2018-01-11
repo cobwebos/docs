@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 ms.openlocfilehash: 5e9c83cebec96c6bc8afd53b0c637d7af899746f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="reserved-ip-addresses-classic"></a>保留 IP 地址（经典）
 

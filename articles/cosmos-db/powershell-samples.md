@@ -15,20 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 10/16/2017
 ms.author: mimig
-ms.openlocfilehash: f2687369b8e247f00e9de5f3f79d8e44be5b8300
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: de892cc631585c55b0c15f4efe1e06ad55afdce5
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 下表包含指向适用于 Azure Cosmos DB 的示例 Azure PowerShell 脚本的链接。 目前只能通过 PowerShell 管理 Azure Cosmos DB accountlayer；不能通过 PowerShell 管理数据库和集合等其他资源。
 
 | |  |
 |---|---|
 |**创建 Azure Cosmos DB 帐户**||
-|[创建 DocumentDB API 帐户](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 DocumentDB API 的 Azure Cosmos DB 帐户。 |
+|[创建 SQL API 帐户](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建单个要用于 SQL API 的 Azure Cosmos DB 帐户。 |
 |**缩放 Azure Cosmos DB**||
 |[将 Azure Cosmos DB 帐户复制到多个区域中并配置故障转移优先级](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|在全局范围内将帐户数据复制到具有指定故障转移优先级的多个区域中。|
 |**保护 Azure Cosmos DB**||

@@ -1,17 +1,20 @@
 ---
 title: "开始使用 Azure 机器学习的数据准备 | Microsoft Docs"
 description: "这是 AML Workbench 数据准备部分的入门指南"
+services: machine-learning
 author: cforbe
 ms.author: cforbe
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: faf6e557914a33454229b5830419b9ef6f200a8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f90bcb83233b1a2f1a5d342ee444e4b02d4927d
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="getting-started-with-data-preparation"></a>数据准备入门
 

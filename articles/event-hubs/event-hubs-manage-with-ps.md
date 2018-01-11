@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 2b49c01153b1104612e6ebf9c88566fc40d1f635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: de86b8241166d4e0bd03beb22550464457e3db5e
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>使用 PowerShell 管理事件中心资源
 
 Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Azure 服务的部署和管理。 本文介绍如何使用本地 Azure PowerShell 控制台或脚本通过[事件中心资源管理器 PowerShell 模块](/powershell/module/azurerm.eventhub)设置和管理事件中心实体（命名空间、各个事件中心和使用者组）。
 
-还可以使用 Azure Resource Manager 模板管理事件中心资源。 有关详细信息，请参阅文章[使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间](event-hubs-resource-manager-namespace-event-hub.md)。
+还可以使用 Azure 资源管理器模板管理事件中心资源。 有关详细信息，请参阅文章[使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间](event-hubs-resource-manager-namespace-event-hub.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

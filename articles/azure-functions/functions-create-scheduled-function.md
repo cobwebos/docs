@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 476e103c7101621e116c5155241f56f1cb9036df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1c5ef3868a14f42d75720984ea19bb495b887e4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
 
@@ -52,13 +52,17 @@ ms.lasthandoff: 10/11/2017
 
     ![Azure 门户中的 Functions 快速入门页](./media/functions-create-scheduled-function/add-first-function.png)
 
-2. 为所需语言选择 TimerTrigger 模板。 然后使用表中指定的设置：
+2. 在搜索栏中键入 `timer`，然后选择需要用于计时器触发器模板的语言。 
 
-    ![在 Azure 门户中创建计时器触发的函数。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![选择计时器触发函数模板。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+
+3. 使用图像下面的表中指定的设置来配置新的触发器。
+
+    ![在 Azure 门户中创建计时器触发的函数。](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
-    | **为函数命名** | TimerTriggerCSharp1 | 定义计时器触发的函数的名称。 |
+    | **Name** | 默认 | 定义计时器触发的函数的名称。 |
     | **[计划](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，计划函数每分钟运行一次。 |
 
 2. 单击“创建” 。 将使用所选语言创建一个每分钟运行一次的函数。

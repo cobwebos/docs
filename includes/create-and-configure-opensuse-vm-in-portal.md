@@ -1,9 +1,7 @@
-1. 登录到 [Azure 经典门户](http://manage.windowsazure.com)。  
-2. 在窗口底部的命令栏上，单击“新建”。
-3. 在“计算”下，单击“虚拟机”，并单击“从库中”。
+1. 登录到 [Azure 门户](http://portal.azure.com)。  
+2. 单击“新建” > “计算” > “查看全部”，然后键入“SUSE”。
    
-    ![新建虚拟机][Image1]
-4. 在“SUSE”组下，选择一个 OpenSUSE 虚拟机映像，并单击箭头以继续。
+3. 选择一个 OpenSUSE 虚拟机映像，并单击箭头以继续。
 5. 在第一个“虚拟机配置”页上：
    
    * 键入“虚拟机名称”，例如“testlinuxvm”。 该名称必须包含 3 至 15 个字符，只能包含字母、数字和连字符，必须以字母开头，并且必须以字母或数字结尾。
@@ -49,7 +47,5 @@
 3. 安装完成后，选择“完成”。  系统现在已为最新。
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
-
-[Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png

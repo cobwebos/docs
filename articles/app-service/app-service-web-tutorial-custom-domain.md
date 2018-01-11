@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 9b35572b3275b5a2c5e89adf4890a2659d09626e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>将现有的自定义 DNS 名称映射到 Azure Web 应用
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/28/2017
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-本教程介绍如何：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 CNAME 记录映射子域（例如 `www.contoso.com`）
@@ -58,6 +58,8 @@ ms.lasthandoff: 11/28/2017
 ## <a name="prepare-the-app"></a>准备应用
 
 若要映射自定义 DNS 名称到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 

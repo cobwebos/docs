@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: f9bcecff4031bcf51e3885ad98da69d9be41b397
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -44,7 +44,7 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 * Azure Cosmos DB 容器的输入绑定可在 Azure Cosmos DB 触发器的相同函数中使用，并且无论是否与输出绑定一起使用都可正常运行。 可以使用此组合以将最新汇率信息（使用输入绑定提取到汇率容器）应用到购物车服务中新订单的更改源。 已对更新的购物车总额应用当前的货币兑换，可以使用输出绑定将其写入第三个容器中。
 
 > [!NOTE]
-> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 DocumentDB、表和图形 API 帐户一起使用。
+> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。
 
 ## <a name="use-cases"></a>用例
 
@@ -86,14 +86,14 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>游戏用例 - Azure Cosmos DB 触发器和输出绑定
 
-在游戏中，当新用户创建时，可以使用 [Azure Cosmos DB 图形 API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB 表数据库](table-introduction.md)以便于检索。
+在游戏中，当新用户创建时，可以使用 [Azure Cosmos DB 图形 API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB SQL 数据库]以便于检索。
 
 **实现：**使用 Azure Cosmos DB 触发器和输出绑定
 
 1. 通过使用 Azure Cosmos DB [图形数据库](graph-introduction.md)存储所有用户，可以使用 Azure Cosmos DB 触发器创建新函数。 
 2. 每当插入新用户时，都将调用该函数，然后使用“输出绑定”存储结果。
 3. 该函数将查询图形数据库，以搜索与新用户直接相关的所有用户，并将该数据集返回到函数。
-4. 随后，此数据作为一组键值对存储在 Azure Cosmos DB [表数据库](table-introduction.md)中，并且这些键值对可由任何前端应用程序（向新用户显示有联系的好友）轻松检索。
+4. 随后，此数据存储在 Azure Cosmos DB 表数据库中，并且这些键值对可由任何前端应用程序（向新用户显示有联系的好友）轻松检索。
 
 ### <a name="retail-use-case---multiple-functions"></a>零售用例 - 多个函数
 

@@ -3,22 +3,22 @@ title: "适用于通用 Windows 平台应用的 Azure 通知中心入门 | Micro
 description: "在本教程中，将了解如何使用 Azure 通知中心将通知推送到通用 Windows 平台应用程序。"
 services: notification-hubs
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: erikre
+author: jwhitedev
+manager: kpiteira
+editor: 
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: e18a810bcdbd97c79418f53c647df8723ecb6076
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>适用于通用 Windows 平台应用的通知中心入门
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="overview"></a>概述
 本文介绍如何使用 Azure 通知中心将推送通知发送到通用 Windows 平台 (UWP) 应用。
 
-在本文中，将创建一个空白 Windows 应用商店应用，它使用 Windows 推送通知服务 (WNS) 接收推送通知。 完成后，便可以使用通知中心将推送通知广播到运行应用的所有设备。
+本文介绍如何创建一个空白 Windows 应用商店应用，该应用使用 Windows 推送通知服务 (WNS) 接收推送通知。 完成后，便可以使用通知中心将推送通知广播到运行应用的所有设备。
 
 ## <a name="before-you-begin"></a>开始之前
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
@@ -76,13 +76,13 @@ ms.lasthandoff: 10/11/2017
 13. 选择应用程序名称。 在“Windows 应用商店”平台设置中，记下“应用程序机密”密码和“包安全标识符(SID)”。
 
     >[!WARNING]
-    >应用程序密钥和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。
+    >应用程序机密和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。
 
 ## <a name="configure-your-notification-hub"></a>配置通知中心
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="5">
-<li><p>选择“通知服务”<b></b>“Windows (WNS)”> <b></b>，然后在“安全密钥”<b></b>框中输入应用程序机密密码。 在“包 SID”框中，输入在之前部分从 WNS 获取的值，并选择“保存”。<b></b><b></b></p>
+<ol start="6">
+<li><p>在“Notification Services”<b></b>下选择“Windows (WNS)”<b></b>，然后在“安全密钥”<b></b>框中输入应用程序机密密码。 在“包 SID”框中，输入在之前部分从 WNS 获取的值，并选择“保存”。<b></b><b></b></p>
 </li>
 </ol>
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/11/2017
    
     ![“管理 NuGet 包”窗口][20]
    
-    此操作会使用 [WindowsAzure.Messaging.Managed NuGet 包](http://nuget.org/packages/WindowsAzure.Messaging)下载、安装并添加对用于 Windows 的 Azure 消息传送库的引用。
+    此操作会使用 [WindowsAzure.Messaging.Managed NuGet 包](http://nuget.org/packages/WindowsAzure.Messaging)下载、安装用于 Windows 的 Azure 消息传送库，并添加对该传送库的引用。
 
 3. 打开 App.xaml.cs 项目文件并添加以下 `using` 语句： 
    
@@ -125,10 +125,10 @@ ms.lasthandoff: 10/11/2017
    
         }
    
-    此代码从 WNS 检索应用的通道 URI，然后将该通道 URI 注册到通知中心。
+    此代码从 WNS 检索应用的通道 URI，并将该通道 URI 注册到通知中心。
    
     >[!NOTE]
-    >* 将“hub name”占位符替换为出现在 Azure 门户中通知中心的名称。 
+    >* 将“hub name”占位符替换为出现在 Azure 门户中的通知中心的名称。 
     >* 另外，使用在之前部分中从通知中心的“访问策略”页获取的 **DefaultListenSharedAccessSignature** 连接字符串替换连接字符串占位符。
    > 
    > 
@@ -162,58 +162,8 @@ ms.lasthandoff: 10/11/2017
     * [Java](notification-hubs-java-push-notification-tutorial.md)
     * [PHP](notification-hubs-php-push-notification-tutorial.md)
 
-## <a name="optional-send-notifications-from-a-console-app"></a>（可选）通过控制台应用发送通知
-若要使用 .NET 控制台应用程序发送通知，请执行以下操作： 
-
-1. 右键单击解决方案，选择“添加” > “新建项目”，并在“Visual C#”下选择“Windows”和“控制台应用程序”，然后选择“确定”。
-   
-    这会将新的 Visual C# 控制台应用程序添加到解决方案。 也可以在单独的解决方案中添加项目。
-
-2. 在 Visual Studio 中，依次选择“工具”、“NuGet 包管理器”和“包管理器控制台”。
-   
-    此时将在 Visual Studio 中打开包管理器控制台。
-
-3. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中运行以下命令：
-   
-        Install-Package Microsoft.Azure.NotificationHubs
-   
-    此操作会使用 [Microsoft.Azure.Notification Hubs NuGet 包](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)添加对 Azure 通知中心 SDK 的引用。
-   
-    ![“默认项目”名称](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-
-4. 打开文件 Program.cs 并添加以下 `using` 语句：
-   
-        using Microsoft.Azure.NotificationHubs;
-
-5. 在 **Program** 类中，添加以下方法：
-   
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient
-                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Hello from a .NET App!</text></binding></visual></toast>";
-            await hub.SendWindowsNativeNotificationAsync(toast);
-        }
-   
-    >[!NOTE]
-    >* 将“hub name”占位符替换为出现在 Azure 门户中通知中心的名称。 
-    >* 使用在“配置通知中心”部分中从通知中心的“访问策略”页获取的 **DefaultListenSharedAccessSignature** 连接字符串替换连接字符串占位符。
-    >* 请使用具有*完全*访问权限的连接字符串，而不是具有*侦听*访问权限的连接字符串。 侦听访问字符串无权发送通知。
-   > 
-   > 
-6. 在 **Main** 方法中添加以下行：
-   
-         SendNotificationAsync();
-         Console.ReadLine();
-
-7. 在 Visual Studio 中，右键单击控制台应用程序项目，然后选择“设为启动项目”，将它设置为启动项目。 然后选择 **F5** 键运行应用程序。
-   
-    所有已注册的设备会收到 toast 通知。 选择或点击 toast 标题可加载应用。
-
-可以在 MSDN 上的 [toast 目录]、[磁贴目录]和[锁屏提醒]主题中找到所有支持的负载。
-
 ## <a name="next-steps"></a>后续步骤
-在这个简单示例中，将使用门户或控制台应用将广播通知发送到所有 Windows 设备。 建议下一步学习[使用通知中心向用户推送通知]教程。 它演示了如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
+这个简单示例使用门户或控制台应用将广播通知发送到所有 Windows 设备。 建议下一步学习[使用通知中心向用户推送通知]教程。 它演示了如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
 
 如果要按兴趣组划分用户，可以阅读 [使用通知中心发送突发新闻]。 
 
@@ -230,7 +180,7 @@ ms.lasthandoff: 10/11/2017
 [使用通知中心向用户推送通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [使用通知中心发送突发新闻]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
-[toast 目录]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[磁贴目录]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[锁屏提醒]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
+[tile catalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
+[badge overview]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
  

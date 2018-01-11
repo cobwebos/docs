@@ -1,6 +1,6 @@
 ---
 title: "使用模板创建 Azure 事件中心命名空间并启用捕获 | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板创建包含一个事件中心的 Azure 事件中心命名空间并启用捕获"
+description: "使用 Azure 资源管理器模板创建包含一个事件中心的 Azure 事件中心命名空间并启用捕获"
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -12,21 +12,21 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 089a60ebccabac99771cd06ca8fbf0ea1fb2f1a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-capture-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间并启用捕获
+# <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
 本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的事件中心命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
 本文还介绍如何根据所选目标，指定将事件捕获到 Azure 存储 Blob 或 Azure Data Lake Store 中。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
 
 有关 Azure 资源命名约定的模式和实践的详细信息，请参阅 [Azure 资源命名约定][Azure Resources naming conventions]。
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 10/11/2017
     "minValue":60,
     "maxValue":900,
     "metadata":{
-         "description":"the time window in seconds for the capture"
+         "description":"The time window in seconds for the capture"
     }
 }
 ```
@@ -248,7 +248,7 @@ ms.lasthandoff: 10/11/2017
 "subscriptionId": {
     "type": "string",
     "metadata": {
-        "description": "Subscription Id of both Azure Data Lake Store and Event Hub namespace"
+        "description": "Subscription ID of both Azure Data Lake Store and Event Hubs namespace"
      }
  }
 ```
@@ -268,20 +268,20 @@ ms.lasthandoff: 10/11/2017
 
 ###<a name="datalakefolderpath"></a>dataLakeFolderPath
 
-捕获事件的目标文件夹路径。这是 Data Lake Store 中通过捕获将事件推送到的文件夹。 有关在此文件夹上设置权限的信息，请参阅[使用 Azure Data Lake Store 捕获事件中心的数据](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-archive-eventhub-capture)
+已捕获事件的目标文件夹路径。 这是 Data Lake Store 中的文件夹，事件会在执行捕获操作时推送到该文件夹。 若要在此文件夹上设置权限，请参阅[使用 Azure Data Lake Store 捕获事件中心的数据](../data-lake-store/data-lake-store-archive-eventhub-capture.md)。
 
 ```json
 "dataLakeFolderPath": {
     "type": "string",
     "metadata": {
-        "description": "Destination archive folder path"
+        "description": "Destination capture folder path"
     }
 }
 ```
 
 ## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>要针对 Azure 存储（作为已捕获事件的目标）进行部署的资源
 
-创建包含一个事件中心的 EventHubs 类型的命名空间，并允许捕获到 Azure Blob 存储。
+创建包含一个事件中心的 EventHub 类型的命名空间，并启用“捕获到 Azure Blob 存储”。
 
 ```json
 "resources":[  
@@ -342,7 +342,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>要针对 Azure Data Lake Store（作为目标）进行部署的资源
 
-创建包含一个事件中心的 EventHubs 类型的命名空间，并允许捕获到 Azure Data Lake Store。
+创建包含一个事件中心的 EventHub 类型的命名空间，并启用“捕获到 Azure Data Lake Store”。
 
 ```json
  "resources": [
@@ -407,7 +407,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 
 ## <a name="azure-cli"></a>Azure CLI
 
-选择 Azure Blob 存储作为目标：
+Azure Blob 存储（作为目标）：
 
 ```azurecli
 azure config mode arm
@@ -415,7 +415,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
-选择 Azure Data Lake Store 作为目标：
+Azure Data Lake Store（作为目标）：
 
 ```azurecli
 azure config mode arm

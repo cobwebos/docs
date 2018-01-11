@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.date: 01/02/2018
 ms.author: billmath
-ms.openlocfilehash: 724ccfbe6849c53f7c7e4e20444ac87197763e65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a12bd2ec296acfb810c8805c92941e5bf70c6ccb
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](active-directory-aadconnect-get-started-express.md)不能满足部署或拓扑的所有情况。
@@ -50,12 +50,10 @@ ms.lasthandoff: 12/11/2017
 | 单一登录选项 | 说明 |
 | --- | --- |
 | 密码哈希同步 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。 用户密码将作为密码哈希同步到 Azure AD，并在云中进行身份验证。 有关详细信息，请参阅[密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 |
-|直通身份验证|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码将传递到本地 Active Directory 控制器进行验证。
+|直通身份验证|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码会传递到本地 Active Directory 域控制器进行验证。
 | 使用 AD FS 进行联合身份验证 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户被重定向到他们的本地 AD FS 实例以进行登录，并在本地完成身份验证。 |
-| 不要配置 |不安装和配置任一功能。 如果已有第三方联合服务器或部署了另一个现有解决方案，请选择此选项。 |
-|启用单一登录|此选项适用于密码同步和传递身份验证，为企业网络中的桌面用户提供单一登录体验。  有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。</br>（如果同时未发布 PTA）
-|登录选项|此选项适用于密码哈希同步客户，为企业网络中的桌面用户提供单一登录体验。  </br>有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。
-
+| 不要配置 |不安装和配置用户登录功能。 如果已有第三方联合服务器或部署了另一个现有解决方案，请选择此选项。 |
+|启用单一登录|此选项适用于密码同步和传递身份验证，为企业网络中的桌面用户提供单一登录体验。 有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。</br>
 
 ### <a name="connect-to-azure-ad"></a>连接到 Azure AD
 在“连接到 Azure AD”屏幕中，输入全局管理员的帐户和密码。 如果在前一个页面选择了“与 AD FS 联合”，不要以计划启用联合的域中的帐户登录。 建议使用随附于 Azure AD 目录的默认 **onmicrosoft.com** 域中的帐户。
@@ -81,11 +79,10 @@ ms.lasthandoff: 12/11/2017
 
 | 选项 | 说明 |
 | --- | --- |
-| 使用现有帐户 | 如果需要提供一个现有的 AD DS 帐户，以便在目录同步期间用在 Azure AD Connect 中以连接到 AD 林，请选择此选项。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\syncuser 或 fabrikam.com\syncuser。 此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。 不过，根据方案，可能会需要更多权限。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)。 |
 | 创建新帐户 | 如果需要使用 Azure AD Connect 向导创建一个 Azure AD Connect 需要的 AD DS 帐户，以便在目录同步期间连接到 AD 林，请选择此选项。 选择此选项时，请输入企业管理员帐户的用户名和密码。 Azure AD Connect 向导将使用提供的企业管理员帐户创建所需的 AD DS 帐户。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 |
+| 使用现有帐户 | 如果需要提供一个现有的 AD DS 帐户，以便在目录同步期间用在 Azure AD Connect 中以连接到 AD 林，请选择此选项。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\syncuser 或 fabrikam.com\syncuser。 此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。 不过，根据方案，可能会需要更多权限。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)。 |
 
 ![连接目录](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
-
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD 登录配置
 此页用于查看本地 AD DS 中存在的 UPN 域，以及已在 Azure AD 中验证的 UPN 域。 此页还可让你配置用于 userPrincipalName 的属性。
@@ -172,7 +169,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 | 密码写回 |通过启用密码写回，源自 Azure AD 的密码更改将写回到本地目录。 有关详细信息，请参阅[密码管理入门](../active-directory-passwords-getting-started.md)。 |
 | 组写回 |如果使用了“Office 365 组”功能，则可以在本地 Active Directory 中呈现这些组。 仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。 有关详细信息，请参阅[组写回](active-directory-aadconnect-feature-preview.md#group-writeback)。 |
 | 设备写回 |允许将 Azure AD 中的设备对象写回本地 Active Directory 以实现条件性访问方案。 有关详细信息，请参阅[在 Azure AD Connect 中启用设备写回](active-directory-aadconnect-feature-device-writeback.md)。 |
-| 目录扩展属性同步 |通过启用目录扩展属性同步，可将指定的属性同步到 Azure AD。 有关详细信息，请参阅[目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)。 |
+| 目录扩展属性同步 |通过启用目录扩展属性同步，可将指定的属性同步到 Azure AD。 有关详细信息，请参阅 [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)。 |
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD 应用程序和属性筛选
 如果想要限制同步到 Azure AD 的属性，请通过选择正在使用的服务来启动。 如果在此页面上进行配置更改，则必须通过重新运行安装向导来明确选择新的服务。
@@ -239,7 +236,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 >可以使用 Azure AD Connect 更新 AD FS 场的 SSL 证书，即使不使用它来管理联合身份验证信任。
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>AD FS 配置先决条件
-若要使用 Azure AD Connect 配置 AD FS 场，请确保已在远程服务器上启用了 WinRM。 此外，请仔细查看[表 3 - Azure AD Connect 和联合服务器/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) 中列出的端口要求。
+若要使用 Azure AD Connect 配置 AD FS 场，请确保已在远程服务器上启用了 WinRM。 确保已完成[联合身份验证先决条件](active-directory-aadconnect-prerequisites.md#prerequisites-for-federation-installation-and-configuration)中的其他任务。 此外，请仔细查看[表 3 - Azure AD Connect 和联合服务器/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) 中列出的端口要求。
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>创建新的 AD FS 场或使用现有的 AD FS 场
 可以使用现有的 AD FS 场，或选择创建新的 AD FS 场。 如果选择创建新的场，则需要提供 SSL 证书。 如果 SSL 证书受密码保护，系统会提示输入密码。
@@ -252,7 +249,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 >Azure AD Connect 只能用来管理一个 AD FS 场。 如果现有的联合身份验证信任在所选 AD FS 场上配置了 Azure AD，则会由 Azure AD Connect 从头开始重新建立信任。
 
 ### <a name="specify-the-ad-fs-servers"></a>指定 AD FS 服务器
-输入要在其中安装 AD FS 的服务器。 可以根据容量规划需求添加一个或多个服务器。 执行此配置之前，请将所有服务器加入 Active Directory。 Microsoft 建议安装一台用于测试和试验部署的 AD FS 服务器。 然后，在完成初始配置之后通过再次运行 Azure AD Connect，根据缩放需求添加并部署更多的服务器。
+输入要在其中安装 AD FS 的服务器。 可以根据容量规划需求添加一个或多个服务器。 执行此配置之前，请将所有 AD FS 服务器（不是 WAP 服务器所需的）加入 Active Directory。 Microsoft 建议安装一台用于测试和试验部署的 AD FS 服务器。 然后，在完成初始配置之后通过再次运行 Azure AD Connect，根据缩放需求添加并部署更多的服务器。
 
 > [!NOTE]
 > 在执行此配置之前，请确保所有服务器已加入 AD 域。
@@ -265,7 +262,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 输入要用作 Web 应用程序代理服务器的特定服务器。 Web 应用程序代理服务器部署在外围网络中（面向 Extranet），支持来自 Extranet 的身份验证请求。 可以根据容量规划需求添加一个或多个服务器。 Microsoft 建议安装一台用于测试和试验部署的 Web 应用程序代理服务器。 然后，在完成初始配置之后通过再次运行 Azure AD Connect，根据缩放需求添加并部署更多的服务器。 我们建议使用数量相当的代理服务器，以满足来自 Intranet 的身份验证要求。
 
 > [!NOTE]
-> <li> 如果使用的帐户不是 AD FS 服务器上的本地管理员，系统会提示提供管理员凭据。</li>
+> <li> 如果使用的帐户不是 WAP 服务器上的本地管理员，系统会提示你提供管理员凭据。</li>
 > <li> 在运行此步骤之前，请确保 Azure AD Connect 服务器与 Web 应用程序代理服务器之间已建立 HTTP/HTTPS 连接。</li>
 > <li> 确保 Web 应用程序服务器与 AD FS 服务器之间的 HTTP/HTTPS 连接允许通过身份验证请求。</li>
 >

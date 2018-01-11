@@ -1,6 +1,6 @@
 ---
 title: "Service Fabric 项目创建后续步骤 | Microsoft 文档"
-description: "本文包含针对 Service Fabric 执行的一组核心开发任务的链接"
+description: "了解刚才在 Visual Studio 中创建的应用程序项目。  了解如何使用教程生成服务以及有关开发 Service Fabric 服务的详细信息。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,74 +12,65 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: e04f9e57c65da42da73a5ee6a0b601dcbb318aaa
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 17eb1e7c2184fe9cae19685a47ea80716292b754
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
-已创建 Azure Service Fabric 应用程序。 本文说明项目的构成以及有可能要执行的一些后续步骤。
+已创建 Azure Service Fabric 应用程序。 本文介绍了一些试验教程、项目的组成、你可能感兴趣的其他信息以及有可能执行的后续步骤。
 
-## <a name="your-application"></a>应用程序
+## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>快速入门教程、演练和示例
+已准备就绪？  
+
+按照 .NET 应用程序教程进行操作。 了解如何使用 ASP.NET Core 前端和监控状态的后端[构建应用](service-fabric-tutorial-create-dotnet-app.md)，如何为群集[部署应用程序](service-fabric-tutorial-deploy-app-to-party-cluster.md)、[配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 以及如何[设置监视和诊断](service-fabric-tutorial-monitoring-aspnet.md)。
+
+或尝试以下某个演练并创建第一个...
+- [基于 Windows 的 C# Reliable Services 服务](service-fabric-reliable-services-quick-start.md) 
+- [基于 Windows 的 C# Reliable Actors 服务](service-fabric-reliable-actors-get-started.md) 
+- [基于 Windows 的来宾可执行服务](quickstart-guest-app.md) 
+- [Windows 容器应用程序](service-fabric-get-started-containers.md) 
+
+还可以尝试[示例应用程序](http://aka.ms/servicefabricsamples)。
+
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>还有任何疑问或反馈？  需要报告问题？
+请浏览[常见问题](service-fabric-common-questions.md)，了解有关 Service Fabric 的功能及用法方面的解答。
+
+[支持选项](service-fabric-support.md)列出了 StackOverflow 和 MSDN 的相关论坛和选项，可通过论坛提问并通过选项报告问题、获得支持和提交产品反馈。
+
+## <a name="the-application-project"></a>应用程序项目
 每个新应用程序都包含一个应用程序项目。 根据选择的服务类型，可能有一个或两个附加的项目。
 
-### <a name="the-application-project"></a>应用程序项目
 应用程序项目包括：
 
 * 对构成应用程序的服务的引用集。
 * 三个发布配置文件（1-本地节点、5-本地节点和云），可用于维护首选项以适应不同的环境，诸如与群集终结点相关的首选项，以及是否按默认执行升级部署。
-* 三个应用程序参数文件（同上），可用于维护环境特定的应用程序配置，例如，要为服务创建的分区数目。
-* 可使用部署脚本从命令行部署应用程序，或者通过自动持续集成和部署管道来部署应用程序。
-* 用于描述应用程序的应用程序清单。 可以在 ApplicationPackageRoot 文件夹下查找清单。
-
-### <a name="stateless-service"></a>无状态服务
-当添加新的无状态服务时，Visual Studio 会在解决方案中添加一个服务项目，其中包含继承自 `StatelessService` 的类型。 该服务将递增计数器中的本地变量。
-
-### <a name="stateful-service"></a>有状态服务
-当添加新的有状态服务时，Visual Studio 会在解决方案中添加一个服务项目，其中包含继承自 `StatefulService` 的类型。 该服务会在其 `RunAsync` 方法中递增计数器，并将结果存储在 `ReliableDictionary` 中。
-
-### <a name="actor-service"></a>执行组件服务
-添加新的可靠执行组件时，Visual Studio 会将两个项目添加到解决方案：执行组件项目和接口项目。
-
-执行组件项目提供所需的方法用于设置和获取可靠保存在执行组件状态中的计数器的值。 接口项目提供其他服务可用来调用执行组件的接口。
-
-### <a name="stateless-web-api"></a>无状态 Web API
-无状态 Web API 项目提供一个基本 Web 服务，可用于向外部客户端打开应用程序。 有关如何构建该项目的信息，请参阅 [Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)。
+* 三个应用程序参数文件（同上），可用于维护环境特定的应用程序配置，例如，要为服务创建的分区数目。 了解如何[为多个环境配置应用程序](service-fabric-manage-multiple-environment-app-configuration.md)。
+* 可使用部署脚本从命令行部署应用程序，或者通过自动持续集成和部署管道来部署应用程序。 深入了解如何[使用 PowerShell 部署应用程序](service-fabric-deploy-remove-applications.md)。
+* 用于描述应用程序的应用程序清单。 可以在 ApplicationPackageRoot 文件夹下查找清单。 深入了解[应用程序和服务清单](service-fabric-application-model.md)。
 
 
-### <a name="aspnet-core"></a>ASP.NET core
-Service Fabric SDK 提供相同的一组可用于独立 ASP.NET Core 项目的 ASP.NET Core 模板：空的，[Web API][aspnet-webapi] 和 [Web 应用程序][aspnet-webapp]。
 
-### <a name="guest-executables-and-guest-containers"></a>来宾可执行文件和来宾容器
+## <a name="learn-more-about-the-programming-models"></a>了解有关编程模型的详细信息
+Service Fabric 提供了多种方法来编写和管理服务。  以下是[无状态与有状态 Reliable Services](service-fabric-reliable-services-introduction.md)、[Reliable Actors](service-fabric-reliable-actors-introduction.md)、[容器](service-fabric-containers-overview.md)、[来宾可执行文件](service-fabric-deploy-existing-app.md)和[无状态与有状态 ASP.NET Core 服务](service-fabric-reliable-services-communication-aspnetcore.md)的概述和概念信息。
 
-Service Fabric“来宾”是指不使用平台编程模型生成的服务。 可[直接在应用程序包中](service-fabric-deploy-existing-app.md)或[通过容器映像](service-fabric-deploy-container.md)打包来宾的二进制文件。 在这两种情况下，Visual Studio 都会在应用程序项目的 **ApplicationPackageRoot** 文件夹中创建必要的项目。 Visual Studio 不会创建新的服务项目，因为其他位置已存在相关代码。 如果想要一起管理 Service Fabric 应用程序项目和来宾项目，可将它们添加到同一 Visual Studio 解决方案中。
+## <a name="learn-about-service-communication"></a>了解服务通信相关信息
+Service Fabric 应用程序由不同的服务组成，其中每个服务执行专门任务。 这些服务之间可以相互通信，并且存在连接到服务并与之通信的群集外客户端应用程序。 了解如何在 Service Fabric 中[设置与服务进行的通信以及服务之间的通信](service-fabric-connect-and-communicate-with-services.md)。 
+
+## <a name="learn-about-configuring-application-security"></a>了解配置应用程序安全性的相关信息
+可以保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。  了解如何[配置应用程序的安全策略](service-fabric-application-runas-security.md)。
+
+应用程序可能包含敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 了解如何[管理应用程序中的机密](service-fabric-application-secret-management.md)。
+
+## <a name="learn-about-the-application-lifecycle"></a>了解应用程序生命周期的相关信息
+与其他平台一样，Service Fabric 应用程序通常将经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 [本文](service-fabric-application-lifecycle.md)提供了有关 API 的概述，并且介绍了在 Service Fabric 应用程序生命周期的各个阶段，它们如何被不同角色所使用。
 
 ## <a name="next-steps"></a>后续步骤
-### <a name="create-an-azure-cluster"></a>创建 Azure 群集
-Service Fabric SDK 提供一个用于开发和测试的本地群集。 若要在 Azure 中创建群集，请参阅[从 Azure 门户设置 Service Fabric 群集][create-cluster-in-portal]。
+- [在 Azure 中创建 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
+- 使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 可视化群集（包括已部署的应用程序和物理布局）。
+- [对服务进行版本控制和升级](service-fabric-application-upgrade-tutorial.md)
 
-### <a name="publish-your-application-to-azure"></a>将应用程序发布到 Azure
-可以直接从 Visual Studio 将应用程序发布到 Azure 群集。 要了解操作方法，请参阅[将应用程序发布到 Azure][publish-app-to-azure]。
 
-### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>使用 Service Fabric Explorer可视化群集
-Service Fabric Explorer 提供一种用于可视化群集（包括已部署的应用程序和物理布局）的简易方法。 有关详细信息，请参阅[使用 Service Fabric Explorer 可视化群集][visualize-with-sfx]。
-
-### <a name="version-and-upgrade-your-services"></a>对服务进行版本控制和升级
-Service Fabric 支持单独对应用程序中的独立服务进行版本控制和升级。 若要了解详细信息，请参阅[对服务进行版本控制和升级][app-upgrade-tutorial]。
-
-### <a name="configure-continuous-integration-with-visual-studio-team-services"></a>配置与 Visual Studio Team Services 的持续集成
-若要了解如何为 Service Fabric 应用程序设置持续集成过程，请参阅[使用 Visual Studio Team Services 配置持续集成][ci-with-vso]。
-
-<!-- Links -->
-[add-web-frontend]: service-fabric-add-a-web-frontend.md
-[create-cluster-in-portal]: service-fabric-cluster-creation-via-portal.md
-[publish-app-to-azure]: service-fabric-manage-application-in-visual-studio.md
-[visualize-with-sfx]: service-fabric-visualizing-your-cluster.md
-[ci-with-vso]: service-fabric-set-up-continuous-integration.md
-[reliable-services-webapi]: service-fabric-reliable-services-communication-webapi.md
-[app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
-[aspnet-webapi]: https://docs.asp.net/en/latest/tutorials/first-web-api.html
-[aspnet-webapp]: https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html

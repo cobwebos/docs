@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 1bfaa7b31bfed3ada22c83516839ebd95a351854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bfad01d8c14cdd972ebe8e4038f226ffe0da93b1
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 X12 消息以实现企业集成
 
@@ -57,11 +57,11 @@ ms.lasthandoff: 10/11/2017
 
 4. 选择“概述”，并选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。 
 
-    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. 在打开的“协议”边栏选项卡中，选择“添加”。
 
-    ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)     
+    ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
 6. 在“添加”下面，输入协议的**名称**。 对于协议类型，请选择“X12”。 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。 有关属性的详细信息，请参阅本步骤中的表格。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 
     | 属性 | 说明 |
     | --- | --- |
-    | Name |协议的名称 |
+    | 名称 |协议的名称 |
     | 协议类型 | 应为 X12 |
     | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
     | 管理方标识 |管理方的标识符 |

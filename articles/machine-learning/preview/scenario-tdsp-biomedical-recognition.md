@@ -7,6 +7,7 @@ author: bradsev
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 21f8f66d8b78c2b536792bc96e9233d5739fde81
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>使用 Team Data Science Process (TDSP) 模板的生物医学实体识别
 
@@ -121,7 +122,7 @@ ms.lasthandoff: 10/23/2017
 * [如何使用 Jupyter 笔记本](how-to-use-jupyter-notebooks.md)
 * [如何使用 GPU](how-to-use-gpu.md)
 
-## <a name="scenario-structure"></a>场景结构
+## <a name="scenario-structure"></a>方案结构
 对于此场景，我们使用遵循 [TDSP 生命周期](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)的 TDSP 项目结构和文档模板（图 1）。 根据[此处](./how-to-use-tdsp-in-azure-ml.md)提供的说明创建项目。
 
 

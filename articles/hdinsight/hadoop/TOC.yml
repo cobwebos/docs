@@ -121,6 +121,9 @@
       items:
         - name: 使用 Power Query 进行分析
           href: apache-hadoop-connect-excel-power-query.md
+        - name: 将 Power BI 连接到交互式查询
+          href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+          maintainContext: true
         - name: 将 Power BI 连接到 Hadoop
           href: apache-hadoop-connect-hive-power-bi.md
         - name: 将 Excel 连接到 Hadoop
@@ -427,9 +430,6 @@
           maintainContext: true
         - name: 访问 YARN 应用程序日志
           href: ../hdinsight-hadoop-access-yarn-app-logs.md
-          maintainContext: true
-        - name: 使用 Apache Phoenix 和 SQuirrel
-          href: ../hdinsight-hbase-phoenix-squirrel.md
           maintainContext: true
         - name: 使用 Mahout 生成电影推荐
           href: ../hdinsight-mahout.md

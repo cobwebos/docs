@@ -75,6 +75,7 @@
 ## 配置第三方 VPN 设备
 ### [概述和 Azure 配置](vpn-gateway-3rdparty-device-config-overview.md)
 ### [示例：Cisco ASA 设备（IKEv2/无 BGP）](vpn-gateway-3rdparty-device-config-cisco-asa.md)
+## [从经典部署模型迁移到资源管理器部署模型](vpn-gateway-classic-resource-manager-migration.md)
 ## 故障排除
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 ### [社区建议的 VPN 或防火墙设备设置](vpn-gateway-third-party-settings.md)

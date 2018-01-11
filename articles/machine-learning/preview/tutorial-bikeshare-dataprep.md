@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial, azure
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: e85515c29d8f626c7eb2bfb636dc6c18da78b5c5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 69f6911a95be382b06313d984f09c7e85aec10df
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>共享自行车教程：使用 Azure Machine Learning Workbench 执行高级数据准备
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -97,7 +97,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![图像：“文件/目录”菜单项](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **文件选择**：添加天气数据。 浏览并选择之前下载的 `BostonWeather.csv` 文件。 单击“下一步”。
+2. **文件选择**：添加天气数据。 浏览并选择之前下载的 `BostonWeather.csv` 文件。 单击“资源组名称” 的 Azure 数据工厂。
 
    ![图像：选择了 BostonWeater.csv 的“文件选择”](media/tutorial-bikeshare-dataprep/pickweatherdatafile.png)
 

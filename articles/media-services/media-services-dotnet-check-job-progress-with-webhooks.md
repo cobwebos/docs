@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9815e01dffb0342979f17974527b559de8146fed
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 通过 .NET 监视媒体服务作业通知
-运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用 Azure Webhook 或 [Azure 队列存储](media-services-dotnet-check-job-progress-with-queues.md)监视媒体服务作业通知。 本主题演示如何使用 Webhook。
+运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用 Azure Webhook 或 [Azure 队列存储](media-services-dotnet-check-job-progress-with-queues.md)监视媒体服务作业通知。 本文介绍如何使用 Webhook。
 
-本主题演示如何
+本文介绍如何
 
 *  定义为响应 webhook 而自定义的 Azure 函数。 
     
@@ -33,9 +33,9 @@ ms.lasthandoff: 10/11/2017
     >在继续之前，请确保了解 [Azure Functions HTTP 和 webhook 绑定](../azure-functions/functions-bindings-http-webhook.md)的工作原理。
     >
     
-* 向编码任务添加 webhook，并指定此 webhook 响应的 webhook URL 和密钥。 本主题末尾包含一个示例，将 Webhook 添加到编码任务。  
+* 向编码任务添加 webhook，并指定此 webhook 响应的 webhook URL 和密钥。 本文末尾包含一个示例，该示例演示将 Webhook 添加到编码任务。  
 
-可在[此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)找到各种媒体服务 .NET Azure Functions 的定义（包括本主题中所示的定义）。
+可在[此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)找到各种媒体服务 .NET Azure Functions 的定义（包括本文中所示的定义）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,9 +54,9 @@ ms.lasthandoff: 10/11/2017
 
 开发媒体服务函数时，可随时添加要在整个函数中使用的环境变量。 若要配置应用设置，请单击“配置应用设置”链接。 
 
-[应用程序设置](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)部分定义了本主题中所定义的 Webhook 中使用的参数。 还向应用设置添加以下参数。 
+[应用程序设置](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)部分定义了本文中所定义的 Webhook 中使用的参数。 还向应用设置添加以下参数。 
 
-|Name|定义|示例| 
+|名称|定义|示例| 
 |---|---|---|
 |SigningKey |签名密钥。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | webhook 终结点地址。 Webhook 函数创建后即可从“获取函数 URL”链接中复制 URL。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
@@ -72,7 +72,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="files"></a>文件
 
-Azure 函数与代码文件以及本部分所述的其他文件相关联。 默认情况下，函数与 **function.json** 和 **run.csx** (C#) 文件相关联。 需要添加 **project.json** 文件。 本部分的余下内容介绍这些文件的定义。
+Azure 函数与代码文件以及本部分所述的其他文件相关联。 默认情况下，函数与 **function.json** 和 **run.csx** (C#) 文件相关联。 需要添加 project.json 文件。 本部分的余下内容介绍这些文件的定义。
 
 ![文件](./media/media-services-azure-functions/media-services-azure-functions003.png)
 

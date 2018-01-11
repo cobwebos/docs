@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 983c7d1f7e3b562a8b89f6afaf52a3289ab33f17
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 96be510476434168a31c78f3a5f97c12ea1eee0f
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop 教程：开始使用 HDInsight 中的 Hadoop
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/03/2017
     某些属性已在模板中硬编码。  可以通过模板配置这些值。
 
     * **位置**：群集和依赖的存储帐户所用的位置与资源组所用的相同。
-    * **群集版本**：3.5
+    * **群集版本**：3.6
     * **OS 类型**：Linux
     * **辅助角色节点数**：2
 
@@ -66,11 +66,11 @@ ms.lasthandoff: 11/03/2017
      
      有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
-3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并单击“购买”。 门户仪表板上应会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集后，磁贴的标题被更改为指定的资源组名称。 门户会在新边栏选项卡中自动打开该资源组。 可以看到已同时列出群集和默认存储。
+3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并单击“购买”。 门户仪表板上应会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集后，该磁贴的标题将更改为指定的资源组名称。 门户会自动打开该资源组。 可以看到已同时列出群集和默认存储。
    
     ![HDInsight Linux 入门资源组](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Azure HDInsight 群集资源组")。
 
-4. 单击群集名称，在新边栏选项卡中打开该群集。
+4. 单击群集名称打开该群集。
 
    ![HDInsight Linux 入门群集设置](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png "HDInsight 群集属性")
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 11/03/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户仪表板中，单击显示了创建群集时所用资源组名称的磁贴。
-3. 在资源边栏选项卡中单击“删除”，删除包含群集和默认存储帐户的资源组；或者，在“资源”磁贴中单击群集名称，并在群集边栏选项卡中单击“删除”。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
+3. 单击“删除”，删除包含群集和默认存储帐户的资源组；或者在“资源”磁贴中单击群集名称，然后单击“删除”。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 
 ## <a name="troubleshoot"></a>故障排除
 
@@ -136,12 +136,12 @@ ms.lasthandoff: 11/03/2017
 * 若要了解 MapReduce（在 Hadoop 中处理数据的程序编写方式），请参阅[将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)。
 * 若要了解如何使用用于 Visual Studio 的 HDInsight 工具来分析 HDInsight 数据，请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md)（用于 HDInsight 的 Visual Studio Hadoop 工具入门）。
 
-如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下主题：
+如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下文章：
 
 * 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](../hdinsight-hadoop-use-blob-storage.md)。
 * 若要了解如何将数据上传到 HDInsight，请参阅[将数据上传到 HDInsight](../hdinsight-upload-data.md)。
 
-若要详细了解如何创建或管理 HDInsight 群集，请参阅以下主题：
+若要详细了解如何创建或管理 HDInsight 群集，请参阅以下文章：
 
 * 若要了解如何管理基于 Linux 的 HDInsight 群集，请参阅 [Manage HDInsight clusters using Ambari](../hdinsight-hadoop-manage-ambari.md)（使用 Ambari 管理 HDInsight 群集）。
 * 有关可用于创建 HDInsight 群集的选项的详细信息，请参阅 [Creating HDInsight on Linux using custom options](../hdinsight-hadoop-provision-linux-clusters.md)（使用自定义选项在 Linux 上创建 HDInsight）。

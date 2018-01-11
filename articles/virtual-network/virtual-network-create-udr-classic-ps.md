@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.openlocfilehash: e9564d223cb85529f1fa97bc398d35c6debcedae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>使用 PowerShell 控制路由和使用虚拟设备（经典）
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过选择本文顶部的选项来查看不同工具的文档。 本文介绍经典部署模型。
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure 资源管理器部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过选择本文顶部的选项来查看不同工具的文档。 本文介绍经典部署模型。
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

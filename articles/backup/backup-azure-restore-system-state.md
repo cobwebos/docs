@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 971f7979ca27bce5d147a9d479248c808dc658e3
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -89,9 +89,6 @@ ms.lasthandoff: 11/09/2017
 1. 在目标计算机中打开“Microsoft Azure 备份”管理单元。
 2. 确保“*目标计算机*”和“*源计算机*”已还原到同一个恢复服务保管库。
 3. 单击“**恢复数据**”以启动工作流。
-
-    ![恢复数据](./media/backup-azure-restore-windows-server-classic/recover.png)
-
 4. 选择“**另一台服务器**”
 
     ![另一台服务器](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -99,9 +96,6 @@ ms.lasthandoff: 11/09/2017
 5. 提供对应于“*示例保管库*”的保管库凭据文件。 如果保管库凭据文件无效（或已过期），请在 Azure 门户中从“示例保管库”下载新的保管库凭据文件。 提供保管库凭据文件后，会显示与保管库凭据文件相关联的恢复服务保管库。
 
 6. 在“选择备份服务器”窗格中，从显示的计算机列表中选择“源计算机”。
-
-    ![计算机列表](./media/backup-azure-restore-windows-server-classic/machinelist.png)
-
 7. 在“选择恢复模式”窗格中选择“系统状态”，并单击“下一步”。 
 
     ![搜索](./media/backup-azure-restore-system-state/recover-type-selection.png)
@@ -116,7 +110,7 @@ ms.lasthandoff: 11/09/2017
 
     ![加密](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-    “创建副本以便具有两个版本”选项将创建现有系统状态文件存档中各个文件的副本，而不是创建整个系统状态存档的副本。
+    “创建副本以便具有两个版本”选项将在现有系统状态文件存档中创建各个文件的副本，而不是创建整个系统状态存档的副本。
 
 11. 验证“确认”窗格中的恢复详细信息，并单击“恢复”。 
 

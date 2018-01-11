@@ -8,19 +8,19 @@ manager: timlt
 editor: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-ms.openlocfilehash: 808a6c3ea4cb26dbb91752d13e2118d081b10668
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c96ff625c3e83f6fc9057f1163c877e8e0aed5e3
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
-如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Linux VM 来修复所有错误，然后重新创建原始 VM。
+如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Linux VM 来修复所有错误，然后重新创建原始 VM。
 
 ## <a name="recovery-process-overview"></a>恢复过程概述
 故障排除过程如下：
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查启动诊断信息和 VM 屏幕截图，确定 VM 不能正常启动的原因。 一个常见的例子是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”，查看从 VM 流式传输的控制台消息。 检查控制台日志，看看是否能够判断出 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
+在门户中选择 VM，并向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”，查看从 VM 流式传输的控制台消息。 检查控制台日志，看看是否能够判断出 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal/boot-diagnostics-error.png)
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 
 恢复 VM 的第一步是删除 VM 资源本身。 删除 VM 时会将虚拟硬盘留在存储帐户中。 删除 VM 后，可将虚拟硬盘附加到另一个 VM，以排查和解决这些错误。
 
-在门户中选择 VM，然后单击“删除”：
+在门户中选择 VM，并单击“删除”：
 
 ![显示启动错误的 VM 启动诊断屏幕截图](./media/troubleshoot-recovery-disks-portal/stop-delete-vm.png)
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 10/11/2017
     等到 VM 成功分离数据磁盘，并继续操作。
 
 ## <a name="create-vm-from-original-hard-disk"></a>从原始硬盘创建 VM
-若要从原始虚拟硬盘创建 VM，请使用[此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示：
+若要从原始虚拟硬盘创建 VM，请使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet)。 该模板使用前面命令中的 VHD URL 将 VM 部署到现有虚拟网络。 单击“部署到 Azure”按钮，如下所示：
 
 ![从 GitHub 中的模板部署 VM](./media/troubleshoot-recovery-disks-portal/deploy-template-from-github.png)
 
@@ -174,4 +174,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
 
-有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

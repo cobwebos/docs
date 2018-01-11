@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 脚本 - 创建 Azure Cosmos DB DocumentDB API 帐户、数据库和集合 | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 创建 Azure Cosmos DB DocumentDB API 帐户、数据库和集合"
+title: "Azure CLI 脚本 - 创建 Azure Cosmos DB SQL API 帐户、数据库和集合 | Microsoft Docs"
+description: "Azure CLI 脚本示例 - 创建 Azure Cosmos DB SQL API 帐户、数据库和集合"
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: mimig
-ms.openlocfilehash: 28f99d56404e47adcd375d9f3106cc234469cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8225b074420983096ee89d5816b0bfe9bc138fe
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-create-an-documentdb-api-account-using-cli"></a>Azure Cosmos DB：使用 CLI 创建 DocumentDB API 帐户
+# <a name="azure-cosmos-db-create-an-sql-api-account-using-cli"></a>Azure Cosmos DB：使用 CLI 创建 SQL API 帐户
 
-此示例 CLI 脚本创建了 Azure Cosmos DB DocumentDB API 帐户、数据库和集合。  
+此示例 CLI 脚本创建了一个 Azure Cosmos DB SQL API 帐户、数据库和集合。  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB SQL API account, database, and collection")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

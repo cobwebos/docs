@@ -3,7 +3,7 @@ title: "使用图形 API 生成 Azure Cosmos DB .NET Framework 或 Core 应用�
 description: "演示了一个可以用来连接和查询 Azure Cosmos DB 的 .NET Framework/Core 代码示例"
 services: cosmos-db
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
@@ -13,19 +13,19 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/06/2017
-ms.author: denlee
-ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/02/2018
+ms.author: lbosq
+ms.openlocfilehash: 29153180da576f144a3f21718c3044b7b843eafb
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET Framework 或 Core 应用程序
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、数据库和图形（容器）。 然后将生成并运行基于[图形 API](graph-sdk-dotnet.md)（预览版）构建的控制台应用。  
+本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、数据库和图形（容器）。 然后将生成并运行基于[图形 API](graph-sdk-dotnet.md) 构建的控制台应用。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +63,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-让我们快速查看一下应用中发生的情况。 打开 Program.cs 文件，会发现以下代码行创建 Azure Cosmos DB 资源。 
+快速查看应用中发生的情况。 打开 Program.cs 文件，会发现以下代码行创建 Azure Cosmos DB 资源。 
 
 * 将对 DocumentClient 进行初始化。 在预览版中，我们将一个图形扩展 API 添加到了 Azure Cosmos DB 客户端。 我们正在努力开发从 Azure Cosmos DB 客户端和资源中解耦的独立图形客户端。
 
@@ -108,19 +108,31 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 Visual Studio 2017 中，打开 appsettings.json 文件。 
+1. 在 [Azure 门户](http://portal.azure.com/)中，单击“密钥”。 
 
-2. 在 Azure 门户上的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“密钥”。 
+    复制 URI 值的第一部分。
 
-    ![在 Azure 门户中的“密钥”页上查看和复制主密钥](./media/create-graph-dotnet/keys.png)
+    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-dotnet/keys.png)
 
-3. 从门户中复制“URI”值，并在 appsettings.json 中将其设置为终结点密钥的值。 可以使用前一屏幕截图中显示的复制按钮来复制值。
+2. 在 Visual Studio 2017 中打开 appsettings.json 文件，将值以粘贴方式覆盖 `endpoint` 中的 `FILLME`。 
 
     `"endpoint": "https://FILLME.documents.azure.com:443/",`
+
+    终结点值现在应如下所示：
+
+    `"endpoint": "https://testgraphacct.documents.azure.com:443/",`
+
+3. 如果是在 2017 年 11 月 27 日之前创建的图形数据库帐户，请将 `endpoint` 值中的 `documents` 更改为 `graphs`。 如果是在 2017 年 11 月 27 日当天或之后创建的图形数据库帐户，请将 `endpoint` 值中的 `documents` 更改为 `gremlin.cosmosdb`。
+
+    终结点值现在应如下所示：
+
+    `"endpoint": "https://testgraphacct.graphs.azure.com:443/",` 或 `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/",`
 
 4. 从门户复制“主密钥”的值，并在 App.config 中将其设为 AuthKey 密钥的值，然后保存所做的更改。 
 
     `"authkey": "FILLME"`
+
+5. 保存 appsettings.json 文件。 
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
@@ -165,7 +177,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

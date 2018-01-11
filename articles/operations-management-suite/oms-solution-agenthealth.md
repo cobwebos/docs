@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS 中的代理运行状况解决方案
 OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 OMS 工作区报告或向连接到 OMS 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -76,9 +76,9 @@ OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 
 
 | 属性 | 说明 |
 | --- | --- |
-| 类型 | Heartbeat|
+| Type | Heartbeat|
 | 类别 | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|
-| 计算机 | 计算机名称。|
+| Computer | 计算机名称。|
 | OSType | Windows 或 Linux 操作系统。|
 | OSMajorVersion | 操作系统主要版本。|
 | OSMinorVersion | 操作系统次要版本。|

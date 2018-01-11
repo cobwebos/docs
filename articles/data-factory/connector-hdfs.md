@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: a81d3264964b2433a2c93034ab815493548f0753
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: d423cf7896b66b729faa1e032462277a9283884d
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 HDFS 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -162,7 +162,7 @@ HDFS 链接的服务支持以下属性：
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。<br/>允许的值为：true（默认）、false | 否 |
 | distcpSettings | 使用 HDFS DistCp 时的属性组。 | 否 |
 | resourceManagerEndpoint | Yarn ResourceManager 终结点 | 是（如果使用 DistCp） |
-| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由 ADF 生成，并在复制作业完成后删除。 | 是（如果使用 DistCp） |
+| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，并在复制作业完成后删除。 | 是（如果使用 DistCp） |
 | distcpOptions | 提供给 DistCp 命令的其他选项。 | 否 |
 
 **示例：复制活动中使用 UNLOAD 的 HDFS 源**

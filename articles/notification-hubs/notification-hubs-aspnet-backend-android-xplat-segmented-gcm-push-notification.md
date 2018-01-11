@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b3fc05cfec2b20501a28f3d76f474ccd49e27e8
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -278,7 +278,7 @@ ms.lasthandoff: 10/11/2017
 2. 启用一个或多个类别开关，并单击“**订阅**”。
    
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在 toast 通知中。
-3. 通过运行 .NET 控制台应用发送新通知。  或者，也可以在 [Azure 经典门户]中使用通知中心的调试选项卡发送带标记的模板通知。
+3. 通过运行 .NET 控制台应用发送新通知。  或者，也可以在 [Azure 门户]中使用通知中心的调试选项卡发送带标记的模板通知。
    
     所选类别的通知作为 toast 通知显示。
 
@@ -302,5 +302,5 @@ ms.lasthandoff: 10/11/2017
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Azure 经典门户]: https://manage.windowsazure.com
+[Azure 门户]: https://portal.azure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591

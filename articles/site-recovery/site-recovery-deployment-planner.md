@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 665bb65d17e9abec98262b92afffba008ed6c891
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 0910d5802d64ca637b3ecd1e392a6df8629c7f25
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>适用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -42,6 +42,8 @@ Azure Site Recovery 部署规划器（第 2 版）是一个命令行工具，适
 * 增量复制所需的估计网络带宽
 * Site Recovery 可以获得的从本地到 Azure 的吞吐量
 * 要批处理的 VM 数，具体取决于在给定时间内完成初始复制所需的估计带宽
+* 给定带宽可以实现的 RPO
+* 在预配较低带宽的情况下，对所需 RPO 的影响。
 
 **Azure 基础结构要求**
 
@@ -55,7 +57,7 @@ Azure Site Recovery 部署规划器（第 2 版）是一个命令行工具，适
 **本地基础结构要求**
 * 在本地部署配置服务器和进程服务器必须达到的数量
 
-**DR 到 Azure 的估算成本** 
+**DR 到 Azure 的估算成本**
 * DR 到 Azure 的总估算成本：计算、存储、网络和 Azure Site Recovery 许可证成本
 * 每个 VM 的详细成本分析
 

@@ -71,10 +71,10 @@
       items:
         - name: 支持的语言
           href: supported-languages.md
-        - name: 'C# 脚本'
-          href: functions-reference-csharp.md
-        - name: .NET 类库
+        - name: 'C#（类库）'
           href: functions-dotnet-class-library.md
+        - name: 'C# 脚本 (.csx)'
+          href: functions-reference-csharp.md
         - name: 'F#'
           href: functions-reference-fsharp.md
         - name: JavaScript

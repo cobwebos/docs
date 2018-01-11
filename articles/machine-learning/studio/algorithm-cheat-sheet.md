@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: 2ee58d5235e4d6954a21349d7b7714ee364c8854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31251e039414ee6f268aeb54f3eef755fcde9cb3
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Microsoft Azure 机器学习工作室机器学习算法备忘单
 **Microsoft Azure 机器学习算法备忘单**可帮助为预测分析模型选择正确的算法。

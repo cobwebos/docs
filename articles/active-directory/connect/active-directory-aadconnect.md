@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: billmath
-ms.openlocfilehash: 6e3405f0883104a005946917d811036206603848
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 83654a406019c4ac3837a3e961a6de640c98f31c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
@@ -51,7 +51,7 @@ Azure Active Directory Connect 由三个主要组件构成：同步服务、可�
 ## <a name="install-azure-ad-connect"></a>安装 Azure AD Connect
 可以在 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=615771)找到 Azure AD Connect 的下载文件。
 
-| 解决方案 | 方案 |
+| 解决方案 | 场景 |
 | --- | --- |
 | 开始之前 - [硬件和先决条件](active-directory-aadconnect-prerequisites.md) |<li>开始安装 Azure AD Connect 之前所要完成的步骤。</li> |
 | [快速设置](active-directory-aadconnect-get-started-express.md) |<li>如果只有一个林 AD，我们建议使用此选项。</li> <li>使用密码同步以同一密码进行用户登录。</li> |

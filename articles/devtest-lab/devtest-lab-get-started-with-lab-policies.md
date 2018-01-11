@@ -3,7 +3,7 @@ title: "管理 Azure 开发测试实验室中的基本实验室策略 | Microsof
 description: "了解如何针对开发测试实验室中的实验室设置一些基本策略（设置）"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
-ms.author: tarcher
-ms.openlocfilehash: e87a37b7aafd774fb0176b74968ad0bba0f5cf3b
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: v-craic
+ms.openlocfilehash: f7ccd9f56742fe4500c6f5441623beca28801bcd
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中某个实验室的基本策略
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/18/2017
 
 1. 如果启用此策略，请指定要关闭当前实验室中所有 VM 的时间（和时区）。
 
-1. 对于在指定的自动关闭时间之前 15 分钟发送通知的选项，指定“是”或“否”。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置。 用户收到通知，其中提供了延迟关闭的选项。
+1. 对于在指定的自动关闭时间之前 15 分钟发送通知的选项，指定“是”或“否”。 如果选择“是”，请输入 Webhook URL 终结点或电子邮件地址，指定要将通知发布或发送到的位置。 用户会收到通知，其中提供了延迟关闭的选项。
 
    有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
 

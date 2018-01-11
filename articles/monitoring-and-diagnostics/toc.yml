@@ -33,6 +33,10 @@
           href: monitoring-overview-metrics.md
         - name: 警报
           href: monitoring-overview-alerts.md
+        - name: 警报（预览版）
+          href: monitoring-overview-unified-alerts.md
+        - name: 日志警报
+          href: monitor-alerts-unified-log.md
         - name: 自动缩放
           href: monitoring-overview-autoscale.md
         - name: 活动日志
@@ -74,6 +78,8 @@
           href: monitoring-near-real-time-metric-alerts.md
         - name: 在 Azure 门户中配置警报
           href: insights-alerts-portal.md
+        - name: 在 Azure 门户的警报（预览版）中配置指标或日志警报
+          href: monitor-alerts-unified-usage.md
         - name: 使用 CLI 配置警报
           href: insights-alerts-command-line-interface.md
         - name: 使用 Azure PowerShell 配置警报
@@ -84,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: 使用自动缩放
       items:
+        - name: 了解自动缩放设置
+          href: monitoring-understanding-autoscale-settings.md
         - name: 最佳实践
           href: insights-autoscale-best-practices.md
         - name: 常见指标
@@ -156,6 +164,8 @@
       href: monitoring-metric-charts.md
     - name: 向 Grafana 发送指标
       href: monitor-send-to-grafana.md
+    - name: 将监视数据发送到事件中心
+      href: monitor-stream-monitoring-data-event-hubs.md
 - name: 引用
   items:
     - name: Azure CLI

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2016
 ms.author: gwallace
 ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-以下示例演示如何使用两个 [Azure Resource Manager 标记](dns-zones-records.md#tags)（*project = demo* 和 *env = test*）创建 DNS 区域：
+以下示例演示如何使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)（*project = demo* 和 *env = test*）创建 DNS 区域：
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -85,7 +85,7 @@ $zoneList = Get-AzureRmDnsZone
 
 ## <a name="update-a-dns-zone"></a>更新 DNS 区域
 
-可以使用 `Set-AzureRmDnsZone` 对 DNS 区域资源进行更改。 此 cmdlet 不会更新区域中的任何 DNS 记录集（请参阅[如何管理 DNS 记录](dns-operations-recordsets.md)）。 该操作仅可用于更新区域资源本身的属性。 可写区域属性目前仅限于[区域资源的 Azure Resource Manager“标记”](dns-zones-records.md#tags)。
+可以使用 `Set-AzureRmDnsZone` 对 DNS 区域资源进行更改。 此 cmdlet 不会更新区域中的任何 DNS 记录集（请参阅[如何管理 DNS 记录](dns-operations-recordsets.md)）。 该操作仅可用于更新区域资源本身的属性。 可写区域属性目前仅限于[区域资源的 Azure 资源管理器“标记”](dns-zones-records.md#tags)。
 
 使用以下两种方式中的一种更新 DNS 区域：
 

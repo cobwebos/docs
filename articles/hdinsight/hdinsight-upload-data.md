@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 9cdf41bd5c15abca3570a08584dc0958497848a7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: cfe1b6bee9bc1f093b239f8f4acc523e47ad5d1a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Hadoop 作业的数据
 
@@ -186,7 +186,7 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 ### <a name="graphical-clients"></a>图形客户端
 某些应用程序还提供可配合 Azure 存储空间使用的图形界面。 下表是其中一些应用程序的列表：
 
-| 客户端 | Linux | OS X | Windows |
+| Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [用于 HDInsight 的 Microsoft Visual Studio 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) |✔ |✔ |✔ |
 | [Azure 存储空间资源管理器](http://storageexplorer.com/) |✔ |✔ |✔ |

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 76d2721138668d9f0a908af3fa42840309b068ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98df3b6592ed865fc0eb4b942d298b26e930365f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器
 > [!div class="op_single_selector"]
@@ -27,11 +27,11 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-从 2.11 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
+从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
 有关与筛选器和动态清单相关的更多详细信息，请参阅[动态清单概述](media-services-dynamic-manifest-overview.md)。
 
-本主题介绍如何使用 REST API 创建、更新和删除筛选器。 
+本文介绍如何使用 REST API 创建、更新和删除筛选器。 
 
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
 创建筛选器时会使用以下类型：  
@@ -49,9 +49,6 @@ ms.lasthandoff: 10/11/2017
 
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
->[!NOTE]
->成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
-
 ## <a name="create-filters"></a>创建筛选器
 ### <a name="create-global-filters"></a>创建全局筛选器
 若要创建全局筛选器，请使用以下 HTTP 请求：  
@@ -66,7 +63,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
@@ -119,7 +116,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
@@ -169,7 +166,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     Host: media.windows.net 
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>获取与资产关联的 **AssetFilter**
@@ -180,7 +177,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -192,14 +189,14 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000
 
 
 ## <a name="update-filters"></a>更新筛选器
 使用 PATCH、PUT 或 MERGE 并结合新的属性值来更新筛选器。  有关这些操作的详细信息，请参阅 [PATCH、PUT、MERGE](http://msdn.microsoft.com/library/dd541276.aspx)。
 
-如果更新筛选器，则流式处理终结点需要 2 分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 建议在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。  
+如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 请在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。  
 
 ### <a name="update-global-filters"></a>更新全局筛选器
 若要更新全局筛选器，请使用以下 HTTP 请求： 
@@ -214,7 +211,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
@@ -254,7 +251,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -292,7 +289,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     Host: media.windows.net 
 
 
@@ -306,7 +303,7 @@ ms.lasthandoff: 10/11/2017
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     Host: media.windows.net 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>生成使用筛选器的流 URL

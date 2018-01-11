@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: b9dc3f52e5fc275bc56b9964f2115833f2dde42e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebd7a886f5853ec3fa9b6e816083e9edd868ef76
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>监视 Azure 虚拟机备份的警报
 警报是服务发出的响应，指出已达到或超过了某个事件阈值。 了解问题何时开始出现可能是控制业务成本的关键所在。 警报通常不会按计划发生，因此在警报发生后尽快知晓将很有用。 例如，当备份或还原作业失败时，在失败后的 5 分钟内发生警报。 在保管库仪表板中，“备份警报”磁贴显示了“关键”和“警告”级别的事件。 在“备份警报”设置中，可以查看所有事件。 但是，如果在处理某个单独的问题时发生警报，该怎么办呢？ 如果不知道警报何时发生，则无法确定相关的问题只是一个小小的麻烦，还是会导致数据透露。 为了确保适当的人员能够意识到发生了警报（何时发生警报），可以将服务配置为通过电子邮件发送警报通知。 有关设置电子邮件通知的详细信息，请参阅 [Configure notifications](backup-azure-monitor-vms.md#configure-notifications)（配置通知）。
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 3. 在“**收件人（电子邮件）**”对话框中，键入通知接收者的电子邮件地址。 使用以下格式：username@domainname.com。使用分号 (;) 分隔多个电子邮件地址。
 4. 在“**通知**”区域中，选择“**按警报**”以便在发生指定的警报时发送通知，或者选择“**每小时摘要**”以便发送过去一小时的摘要。
 5. 在“**严重性**”对话框中，选择要触发电子邮件通知的一个或多个严重级别。
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
    ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Azure IaaS VM 备份有哪些警报类型？
    | 警报级别 | 已发送的警报 |
@@ -141,7 +141,7 @@ ms.lasthandoff: 10/11/2017
 
 | 列名称 | 说明 |
 | --- | --- |
-| 操作 |操作的名称 |
+| Operation |操作的名称 |
 | 级别 |操作级别，值可以是：“信息”、“警告”、“错误”或“关键” |
 | 状态 |操作的描述状态 |
 | 资源 |用于标识资源的 URL；也称为资源 ID |
@@ -213,4 +213,4 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 有关 Azure 服务中事件、操作和审核日志的详细说明，请参阅 [View events and audit logs](../monitoring-and-diagnostics/insights-debugging-with-events.md)（查看事件和审核日志）一文。
 
-有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 有关 VM 备份管理任务的信息，请参阅 [Manage Azure virtual machine backups](backup-azure-manage-vms.md)（管理 Azure 虚拟机备份）一文。
+有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-arm-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 有关 VM 备份管理任务的信息，请参阅 [Manage Azure virtual machine backups](backup-azure-manage-vms.md)（管理 Azure 虚拟机备份）一文。

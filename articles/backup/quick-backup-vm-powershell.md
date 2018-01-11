@@ -13,21 +13,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/18/2017
+ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 98a86652b13f62ef7acade9eb69e81852b2fc091
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9abb85c7a23a1fadc0afc1c4716c81aae712f30b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 Azure PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure PowerShell 模块备份虚拟机 (VM)。 也可以使用 [Azure CLI](quick-backup-vm-cli.md) 或 [Azure 门户](quick-backup-vm-portal.md)执行这些步骤。
 
 参考本快速入门可在现有的 Azure VM 上备份。 如果需要创建 VM，可以[使用 Azure PowerShell 创建 VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
 
-本快速入门需要 Azure PowerShell 模块 4.4 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本快速入门需要 Azure PowerShell 模块 4.4 版或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
@@ -136,7 +136,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup"
 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，我们创建了恢复服务保管库，在 VM 上启用了保护，并创建了初始恢复点。 若要详细了解 Azure 备份和恢复服务，请继续学习其他教程。
+本快速入门介绍了如何创建恢复服务保管库，如何在 VM 上启用保护，以及如何创建初始恢复点。 若要详细了解 Azure 备份和恢复服务，请继续学习其他教程。
 
 > [!div class="nextstepaction"]
 > [备份多个 Azure VM](./tutorial-backup-vm-at-scale.md)

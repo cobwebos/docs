@@ -1,6 +1,7 @@
 # 概述
 
 ## [关于 SQL 数据仓库](sql-data-warehouse-overview-what-is.md)
+## [备忘单](cheat-sheet.md)
 
 # 快速入门
 
@@ -19,21 +20,20 @@
 ### [容量限制](sql-data-warehouse-service-capacity-limits.md)
 ### [常见问题](sql-data-warehouse-overview-faq.md)
 
-## 安全
+## “安全”
 ### [概述](sql-data-warehouse-overview-manage-security.md)
 ### [身份验证](sql-data-warehouse-authentication.md)
 
 
 ## 迁移到 SQL 数据仓库
 ### [概述](sql-data-warehouse-overview-migrate.md)
-### [迁移实用工具](sql-data-warehouse-migrate-migration-utility.md)
 ### [迁移架构](sql-data-warehouse-migrate-schema.md)
 ### [迁移代码](sql-data-warehouse-migrate-code.md)
 ### [迁移数据](sql-data-warehouse-migrate-data.md)
 
 ## 加载和移动数据
 ### [概述](design-elt-data-loading.md)
-### [指南](guidance-for-loading-data.md)
+### [最佳实践](guidance-for-loading-data.md)
 
 
 ## 集成
@@ -83,19 +83,18 @@
 ### [还原数据仓库 - PowerShell](sql-data-warehouse-restore-database-powershell.md)
 ### [还原数据仓库 - REST API](sql-data-warehouse-restore-database-rest-api.md)
 
-## 安全
+## “安全”
 ### [启用加密 - 门户](sql-data-warehouse-encryption-tde.md)
 ### [启用加密 - T-SQL](sql-data-warehouse-encryption-tde-tsql.md)
 ### [威胁检测](sql-data-warehouse-security-threat-detection.md)
 
 
 ## 加载和移动数据
-### [AdventureWorks](sql-data-warehouse-load-sample-databases.md)
+### [Contoso 公共数据](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [从 Blob 存储使用 PolyBase ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [从 SQL Server 使用 PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+### [AzCopy](sql-data-warehouse-load-from-sql-server-with-polybase.md)
 ### [RedGate](sql-data-warehouse-load-with-redgate.md)
 ### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 

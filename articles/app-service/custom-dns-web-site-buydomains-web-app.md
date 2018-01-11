@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 2ba6e3a79e5eb4eca4a3c7d35ada8c58bfe2295e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 13a61caf9b4dff8ffc08970d5a4c09efa9c5f117
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>为 Azure Web 应用购买自定义域名
 
@@ -34,6 +34,8 @@ ms.lasthandoff: 11/28/2017
 * [移除订阅中的支出限制](../billing/billing-spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
 
 ## <a name="prepare-the-app"></a>准备应用
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 若要在 Azure Web 应用中使用自定义域，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。 在此步骤中，请确保 Web 应用位于受支持的定价层。
 

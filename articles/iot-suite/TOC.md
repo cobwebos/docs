@@ -48,6 +48,10 @@
 ### [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ### [已连接的工厂解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 
+## 设备模拟
+### [部署设备模拟](iot-suite-device-simulation-deploy.md)
+### [浏览设备模拟](iot-suite-device-simulation-explore.md)
+
 # 操作指南
 ## 远程监视
 ### [执行高级监视](iot-suite-remote-monitoring-monitor.md)
@@ -71,6 +75,7 @@
 ### [为已连接的工厂部署网关](iot-suite-connected-factory-gateway-deployment.md)
 ### [自定义连接的工厂](iot-suite-connected-factory-customize.md)
 ### [将 OPC 发布服务器用于连接的工厂](iot-suite-connected-factory-publisher.md)
+### [配置连接的工厂](iot-suite-connected-factory-configure.md)
 ## [azureiotsuite.com 权限](iot-suite-permissions.md)
 
 # 引用

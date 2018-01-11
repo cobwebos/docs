@@ -5,7 +5,7 @@ services: active-directory
 keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4e2f788f4e4dfd013754925d8f6dbc3bf35b1a91
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 79089f09342f520f7d43115cc606d794db6c1602
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置
 
@@ -37,6 +37,10 @@ ms.lasthandoff: 11/23/2017
 9. 确定何时需强制执行注册。 可以选择随时强制执行注册。 也可以要求用户在特定时间过后重新确认其身份验证信息。
 10. 使用报告功能。 一段时间过后，即可使用 [Azure AD 提供的报告功能](active-directory-passwords-reporting.md)查看用户的注册和使用情况。
 11. 启用密码重置。 准备就绪后，为所有用户启用密码重置，方法是将“启用自助密码重置”开关设置为“所有”。 
+
+   > [!NOTE]
+   > 将此选项从“选定组”更改为“所有人”不会导致现有的身份验证数据失效，这些数据是用户以测试组成员身份注册的。 只要用户经过了配置并注册了有效的身份验证数据，就可以继续使用该用户。
+
 12. [允许 Windows 10 用户在登录屏幕上重置其密码](active-directory-passwords-login.md)。
 
    > [!IMPORTANT]
@@ -56,9 +60,9 @@ ms.lasthandoff: 11/23/2017
 
 许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。他们在此页中填充以下信息的链接：
 
-* [Azure AD 密码重置门户](https://aka.ms/sspr)
-* [Azure AD 密码重置注册门户](http://aka.ms/ssprsetup)
-* [Azure AD 密码更改门户](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
+* [Azure AD 密码重置门户 - https://aka.ms/sspr](https://aka.ms/sspr)
+* [Azure AD 密码重置注册门户 - http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
+* [Azure AD 密码更改门户 - https://account.activedirectory.windowsazure.com/ChangePassword.aspx](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
 * 其他特定于组织的信息
 
 可以在发出的任何电子邮件通信或传单中包括带品牌标记的易记 URL，供用户在需要使用相应服务时访问。 我们为你创建了一个[示例密码重置页](https://github.com/ajamess/password-reset-page)，你可以根据组织需要使用它并进行自定义。

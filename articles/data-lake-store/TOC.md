@@ -12,7 +12,7 @@
 
 # 如何
 ## 加载和移动数据
-### [使用 Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)
+### [使用 Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)
 ### [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)

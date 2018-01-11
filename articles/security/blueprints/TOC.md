@@ -18,7 +18,8 @@
 ### [Azure 中的监管](../governance-in-azure.md)
 ### [静态数据加密](../azure-security-encryption-atrest.md)
 ### 体系结构蓝图
-#### [符合性 - PCI DSS](payment-processing-blueprint.md)
+#### 符合性 - PCI DSS
+##### [PCI DSS 相容环境的支付处理](payment-processing-blueprint.md)
 ##### [要求概述](pci-dss-requirements-overview.md)
 ##### [要求 1 - 防火墙](pci-dss-requirement-1-firewall.md)
 ##### [要求 2 - 密码](pci-dss-requirement-2-password.md)
@@ -32,7 +33,8 @@
 ##### [要求 10 - 监视](pci-dss-requirement-10-monitoring.md)
 ##### [要求 11 - 测试](pci-dss-requirement-11-testing.md)
 ##### [要求 12 - 策略](pci-dss-requirement-12-policy.md)
-#### [符合性 - FedRAMP](fedramp.md)
+#### 符合性 - FedRAMP
+##### [FedRAMP 的 Web 应用程序](fedramp.md)
 ##### [安全控制概述](fedramp-controls-overview.md)
 ##### [访问控制](fedramp-access-controls.md)
 ##### [审核和责任](fedramp-audit-accountability-controls.md)
@@ -51,9 +53,12 @@
 ##### [系统和通信保护](fedramp-system-communications-protection-controls.md)
 ##### [系统和信息完整性](fedramp-system-information-integrity-controls.md)
 ##### [系统和服务获取](fedramp-system-services-acquisition-controls.md)
-#### [符合性 - UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
+#### 符合性 - UK-OFFICIAL
+##### [UK-OFFICIAL 的三层式 Web 应用程序](uk-official-three-tier-applications-overview.md)
 ##### [概述](uk-official-three-tier-applications-overview.md)
 ##### [原则概述](uk-official-three-tier-applications-principles-overview.md)
+#### 符合性 - 金融服务
+##### [适用于受管制工作负荷的金融服务](financial-services-regulated-workloads.md)
 
 # 入门
 ## [Azure 安全入门](../azure-security-getting-started.md)

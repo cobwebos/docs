@@ -6,20 +6,20 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/20/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 98feed192f21cbc2bf9197b6d32646f50ddbd0c5
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 83666edc75a6c75fd2361e79192f9717d69fd746
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-container-instances"></a>Azure 容器实例
 
 容器正很快成为对云应用程序执行打包、部署和管理操作的首选方式。 Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。
 
-不管什么方案（包括简单应用程序、任务自动化、生成作业），只要能够在隔离容器中操作，就可以使用 Azure 容器实例这种解决方案。 对于需要完整容器业务流程的方案（包括跨多个容器的服务发现、自动缩放、协调式应用程序升级），建议使用 [Azure 容器服务](https://docs.microsoft.com/azure/container-service/)。
+不管什么方案（包括简单应用程序、任务自动化、生成作业），只要能够在隔离容器中操作，就可以使用 Azure 容器实例这种解决方案。 对于需要完整容器业务流程的方案（包括跨多个容器的服务发现、自动缩放、协调式应用程序升级），建议使用 [Azure 容器服务 (AKS)](../aks/index.yml)。
 
 ## <a name="fast-startup-times"></a>启动时间短
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="persistent-storage"></a>持久性存储
 
-为了通过 Azure 容器实例来检索和持久保存状态，我们提供直接装载 Azure 文件共享的功能。
+为了通过 Azure 容器实例来检索和持久保存状态，我们提供直接[装载 Azure 文件共享](container-instances-mounting-azure-files-volume.md)的功能。
 
 ## <a name="linux-and-windows-containers"></a>Linux 和 Windows 容器
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 
-Azure 容器实例支持对共享主机、本地网络、存储和生命周期的多容器组进行计划。 这样即可将主应用程序与其他充当配角（例如进行日志记录）的应用程序组合使用。
+Azure 容器实例支持对共享主机、本地网络、存储和生命周期的[多容器组](container-instances-container-groups.md)进行计划。 这样即可将主应用程序与其他充当配角（例如进行日志记录）的应用程序组合使用。
 
 ## <a name="next-steps"></a>后续步骤
 

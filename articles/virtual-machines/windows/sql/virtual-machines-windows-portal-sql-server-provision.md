@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中创建 Windows SQL Server 2017 VM | Microsoft Docs"
-description: "本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。"
+title: "如何在 Azure 门户中配置 Windows SQL Server 2017 VM | Microsoft Docs"
+description: "本操作指南介绍用于在 Azure 门户中创建 Windows SQL Server 2017 虚拟机的选项。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -9,39 +9,29 @@ tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 440c783de73652ad2d312cd92db8635dc65df9ed
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Windows SQL Server 虚拟机
+# <a name="how-to-create-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中创建 Windows SQL Server 虚拟机
 
-> [!div class="op_single_selector"]
-> * [门户](virtual-machines-windows-portal-sql-server-provision.md)
-> * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
+本指南介绍在 Azure 门户中创建 Windows SQL Server 虚拟机时可用的不同选项。 可以按照相关步骤创建自己的 SQL Server VM，同时了解不同选项。 或者，可以转到特定部分，以参考门户中的特定步骤。
 
-在本快速入门教程中，请使用 Azure 门户创建安装了 SQL Server 的 Windows 虚拟机。
+> [!TIP]
+> 若要快速开始使用默认门户值，请参阅 [Azure 快速入门 - 在门户中创建 SQL Server VM](quickstart-sql-vm-create-portal.md)。
 
-在本教程中，将：
-
-* [从库中选择 SQL VM 映像](#select)
-* [配置和创建 VM](#configure)
-* [使用远程桌面打开 VM](#remotedesktop)
-* [远程连接到 SQL Server](#connect)
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a id="select"></a> 从库中选择 SQL VM 映像
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.com)。
-
-   > [!NOTE]
-   > 如果没有 Azure 帐户，请访问 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 1. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”窗口。
 
@@ -103,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 * 在“资源组”框中，键入新资源组的名称。 此外，若要使用现有的资源组，请单击“使用现有资源组”。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。
 
   > [!NOTE]
-  > 如果只是测试或了解 Azure 中的 SQL Server 部署，使用新的资源组很有帮助。 测试完成后，删除资源组会自动删除 VM 和与该资源组相关联的所有资源。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../../azure-resource-manager/resource-group-overview.md)。
+  > 如果只是测试或了解 Azure 中的 SQL Server 部署，使用新的资源组很有帮助。 测试完成后，删除资源组会自动删除 VM 和与该资源组相关联的所有资源。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../../azure-resource-manager/resource-group-overview.md)。
 
 * 针对 Azure 区域选择用于托管该部署的“位置”。
 
@@ -277,19 +267,11 @@ ms.lasthandoff: 10/11/2017
 
 使用以下步骤通过远程桌面连接到 SQL Server 虚拟机：
 
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
+[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
 连接到 SQL Server 虚拟机以后，即可启动 SQL Server Management Studio 并使用本地管理员凭据通过 Windows 身份验证进行连接。 如果已启用 SQL Server 身份验证，也可以使用在预配期间配置的 SQL 登录名和密码来配合 SQL 身份验证进行连接。
 
 通过访问计算机，可以根据要求直接更改计算机和 SQL Server 设置。 例如，可以配置防火墙设置或更改 SQL Server 配置设置。
-
-## <a name="enable-tcpip-for-developer-and-express-editions"></a>为 Developer Edition 和 Express Edition 启用 TCP/IP
-
-预配新的 SQL Server VM 时，Azure 不会为 SQL Server Developer Edition 和 Express Edition 自动启用 TCP/IP 协议。 以下步骤说明了如何手动启用 TCP/IP，以便通过 IP 地址进行远程连接。
-
-以下步骤使用 SQL Server 配置管理器为 SQL Server Developer Edition 和 Express Edition 启用 TCP/IP 协议。
-
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ## <a id="connect"></a> 远程连接到 SQL Server
 
@@ -300,7 +282,7 @@ ms.lasthandoff: 10/11/2017
 
 以下部分说明了如何通过 Internet 从不同的计算机连接到 VM 上的 SQL Server 实例。
 
-> [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
+[!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

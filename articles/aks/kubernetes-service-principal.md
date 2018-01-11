@@ -9,15 +9,15 @@ ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a217f4cc8ac18888de8dfa803b4b8667a566dc0b
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 9814dca53f1a410f4d1e95cc18b98373f27f9802
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 的服务主体
 
-AKS 群集需要 [Azure Active Directory 服务主体](../active-directory/develop/active-directory-application-objects.md)才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由](../virtual-network/virtual-networks-udr-overview.md)和[第 4 层 Azure 负载均衡器](../load-balancer/load-balancer-overview.md)。
+AKS 群集需要 [Azure Active Directory 服务主体][aad-service-principal]才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由][user-defined-routes]和[第 4 层 Azure 负载均衡器][azure-load-balancer-overview]。
 
 本文介绍用于在 AKS 中为 Kubernetes 群集设置服务主体的不同选项。
 
@@ -26,7 +26,7 @@ AKS 群集需要 [Azure Active Directory 服务主体](../active-directory/devel
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者为 Kubernetes 群集预先创建一个服务主体。
 
-还需安装并配置 Azure CLI 2.0.21 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+还需安装并配置 Azure CLI 2.0.21 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="create-sp-with-aks-cluster"></a>使用 AKS 群集创建 SP
 
@@ -44,7 +44,7 @@ az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ss
 
 ## <a name="pre-create-a-new-sp"></a>预先创建新的 SP
 
-若要通过 Azure CLI 来创建服务主体，请使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令。
+若要通过 Azure CLI 来创建服务主体，请使用 [az ad sp create-for-rbac][az-ad-sp-create] 命令。
 
 ```azurecli
 az ad sp create-for-rbac --skip-assignment
@@ -83,7 +83,7 @@ az aks create --resource-group myResourceGroup --name myK8SCluster --service-pri
 * 指定服务主体的“客户端 ID”时，可以使用 `appId` 的值（如本文所示）或相应的服务主体 `name`（例如，`https://www.contoso.org/example`）。
 * 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中。
 * 使用 `az aks create` 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/acsServicePrincipal.json` 文件中。
-* 使用 `az aks create` 命令自动生成服务主体时，服务主体也可以使用在同一订阅中创建的 [Azure 容器注册表](../container-registry/container-registry-intro.md)进行身份验证。
+* 使用 `az aks create` 命令自动生成服务主体时，服务主体也可以使用在同一订阅中创建的 [Azure 容器注册表][acr-intro]进行身份验证。
 * 删除由 `az aks create` 创建的 AKS 群集时，不会删除自动创建的服务主体。 可以使用 `az ad sp delete --id $clientID` 将其删除。
 
 ## <a name="next-steps"></a>后续步骤
@@ -91,4 +91,13 @@ az aks create --resource-group myResourceGroup --name myK8SCluster --service-pri
 有关 Azure Active Directory 服务主体的详细信息，请参阅 Azure AD 应用程序文档。
 
 > [!div class="nextstepaction"]
-> [应用程序对象和服务主体对象](../active-directory/develop/active-directory-application-objects.md)
+> [应用程序对象和服务主体对象][service-principal]
+
+<!-- LINKS - internal -->
+[aad-service-principal]: ../active-directory/develop/active-directory-application-objects.md
+[acr-intro]: ../container-registry/container-registry-intro.md
+[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[azure-load-balancer-overview]: ../load-balancer/load-balancer-overview.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[service-principal]: ../active-directory/develop/active-directory-application-objects.md
+[user-defined-routes]: ../load-balancer/load-balancer-overview.md

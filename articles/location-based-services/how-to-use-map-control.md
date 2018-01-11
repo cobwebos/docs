@@ -2,18 +2,18 @@
 title: "如何使用 Azure Location Based Services Map Control | Microsoft 文档"
 description: "了解如何使用 Azure Location Based Services Map Control 客户端 Javascript 库。"
 services: location-based-services
-keywords: "未咨询 SEO 专家的情况下，不要添加或编辑关键字。"
+keywords: "未咨询 SEO 专家的情况下，请不要添加或编辑关键字。"
 author: philmea
 ms.author: philmea
 ms.date: 11/22/2017
-ms.topic: how-to
+ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 9ddd11806accddb41c02c0c6681aac07bba25356
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 06743640aae5e06d0160105458d9a3cfa35d5040
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>如何使用 Azure Location Based Services Map Control
 可通过 Map Control 客户端 Javascript 库呈现地图，并将 Azure Location Based Services 功能嵌入 Web 或移动应用中。 

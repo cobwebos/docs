@@ -35,7 +35,7 @@
   items:
     - name: 敏捷开发
       href: agile-development.md
-    - name: 使用 Git 进行协作编码
+    - name: 使用 Git 进行协作编程
       href: collaborative-coding-with-git.md
     - name: 执行数据科学任务
       href: execute-data-science-tasks.md
@@ -47,6 +47,8 @@
     - name: Azure 机器学习
       href: walkthroughs-aml-with-tdsp.md
       items:
+        - name: 情绪分类
+          href: predict-twitter-sentiment.md
         - name: 美国收入分类
           href: ../preview/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true

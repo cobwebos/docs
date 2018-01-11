@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0dba36e5490af56debd3b64b20d39809cd5d5f81
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
 ## <a name="overview"></a>概述
@@ -111,6 +111,8 @@ Azure 应用服务是适合该情况的强大解决方案，原因是其可免�
 * 根据需要向应用程序添加其他 Azure 服务和功能。
 * 使用 HTTPS 保护 Web 应用。
 
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+
 ### <a id="designer"></a> 我是 Web 或图形设计师，我想为客户设计和构建网站
 对 Web 开发人员和设计师而言，Azure 应用服务可与各种框架和工具轻松集成（包括 Git 和 FTP 的部署支持），并可与 Visual Studio 和 SQL 数据库等工具和服务紧密集成。 通过应用服务，可以：
 
@@ -130,7 +132,7 @@ Azure 应用服务是适合该情况的强大解决方案，原因是其可免�
 ### <a id="custom"></a>我的应用程序依赖高度自定义的 Windows 或 Linux 环境，我想将其转移到云中。
 如果应用程序需要对软件和操作系统进行复杂的安装或配置，虚拟机可能是最佳解决方案。 通过虚拟机，可以：
 
-* 使用虚拟机库从某个操作系统（如 Windows 或 Linux）开始着手，然后针对应用程序要求对其进行定制。
+* 使用虚拟机库从某个操作系统（如 Windows 或 Linux）开始着手，并针对应用程序要求对其进行定制。
 * 创建并上传现有本地服务器的自定义映像，在 Azure 中的虚拟机上运行。
 
 ### <a id="oss"></a>我的站点使用开放源代码软件，我希望在 Azure 中托管它

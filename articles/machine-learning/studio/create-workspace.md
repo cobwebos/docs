@@ -1,24 +1,22 @@
 ---
-title: "创建机器学习工作区 | Microsoft Docs"
+title: "创建机器学习工作室工作区 | Microsoft Docs"
 description: "如何为 Azure 机器学习工作室创建工作区"
 services: machine-learning
-documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
-ms.author: garye;bradsev;ahgyger
-ms.openlocfilehash: 4e1fa0a9abd4721d15a94923263ff2f521bceee8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/07/2017
+ms.author: garye
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
+ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>创建并共享 Azure 机器学习工作区
 此菜单链接到介绍如何设置用于 Cortana Analytics 过程 (CAPS) 的各种数据科学环境的主题。
@@ -39,16 +37,16 @@ ms.lasthandoff: 10/11/2017
 
 2. 单击“+新建”
 
-3. 选择“智能 + 分析”，单击“机器学习工作区”，并单击“创建”
+3. 在搜索框中，键入“机器学习工作室工作区”，并选择匹配项。 然后在页面底部选择单击“创建”。
 
-4. 输入工作区信息
+4. 输入工作区信息：
 
     - *工作区名称*最多可以为 260 个字符，不能以空格结束。 该名称不能包含下列字符：`< > * % & : \ ? + /`
     - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划*以及所选的关联*定价层*。
 
     ![创建新的工作区](./media/create-workspace/create-new-workspace.png)
 
-5. 单击“创建” 
+5. 单击“创建” 。
 
 部署工作区后，可以在机器学习工作室中打开它。
 

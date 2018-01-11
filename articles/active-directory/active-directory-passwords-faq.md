@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重置"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6497421b1c51e361d6881332a19c19c7d47c8e29
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 4216c417d137c00587bf65b39410eca6f4cef8bc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -41,6 +41,11 @@ ms.lasthandoff: 12/07/2017
 * **问：用户是否可以注册其自己的密码重置数据？**
 
   > **答：**可以。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户 (http://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板来注册 (http://myapps.microsoft.com)。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。
+  >
+  >
+* **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
+
+  > **答：**否。 已填充身份验证数据的用户不需要重新注册。
   >
   >
 * **问：我能否代表用户定义密码重置数据？**

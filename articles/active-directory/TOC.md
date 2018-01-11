@@ -44,6 +44,7 @@
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 ### [将用户分配到管理员角色](active-directory-users-assign-role-azure-portal.md)
+### [还原已删除的用户](active-directory-users-restore.md)
 ### [添加另一个目录中的来宾用户 (B2B)](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [管理员添加 B2B 用户](active-directory-b2b-admin-add-users.md)
 #### [信息工作者添加 B2B 用户](active-directory-b2b-iw-add-users.md)
@@ -58,6 +59,7 @@
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
 #### [动态组和 B2B 用户](active-directory-b2b-dynamic-groups.md)
 #### [审核和报表](active-directory-b2b-auditing-and-reporting.md)
+#### [适用于混合组织的 B2B](active-directory-b2b-hybrid-organizations.md)
 #### [B2B 和 Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 #### [B2B 许可](active-directory-b2b-licensing.md)
 #### [当前限制](active-directory-b2b-current-limitations.md)
@@ -72,7 +74,7 @@
 
 ## [管理组和成员](active-directory-manage-groups.md)
 ### 管理组
-#### [Azure 门户](active-directory-groups-create-azure-portal.md)
+#### [Azure portal](active-directory-groups-create-azure-portal.md)
 #### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
@@ -89,7 +91,7 @@
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
 ### 管理组设置
-#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
+#### [Azure portal](active-directory-groups-settings-azure-portal.md)
 #### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
@@ -265,6 +267,7 @@
 #### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
+### [管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## 访问评审
 ### [访问评审概述](active-directory-azure-ad-controls-access-reviews-overview.md)

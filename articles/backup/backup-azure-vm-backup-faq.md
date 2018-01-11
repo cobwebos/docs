@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 85d6ec20fb0447165c672ba267569994e3a96e45
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: bc5b97192e0d4ad896d6d74a8745a3866d053a25
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>有关 Azure VM 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure VM 备份组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/08/2017
 恢复服务保管库同时支持这两种模式。  可以将经典 VM（在经典门户中创建的）或 Resource Manager VM（在 Azure 门户中创建的）备份到恢复服务保管库。
 
 ### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Azure VM 备份不支持哪些配置？
-请参阅[支持的操作系统](backup-azure-arm-vms-prepare.md#supported-operating-system-for-backup)和 [VM 备份限制](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
+请参阅[支持的操作系统](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup)和 [VM 备份限制](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>为什么在配置备份向导中看不到我的 VM？
 在配置备份向导中，Azure 备份只列出符合以下条件的 VM：
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/08/2017
 
 ## <a name="backup"></a>备份
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否与计划内备份遵循相同的保留计划？
-不能。 应为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。 
+不会。 应为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。 
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
 需提供 Azure 备份服务访问 Key Vault 所需的权限。 可以在 PowerShell 中使用 [PowerShell](backup-azure-vms-automation.md) 文档的“启用备份”部分所述步骤提供这些权限。

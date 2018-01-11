@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 8f4fcc3eb0dac2c5796b0a291425ad17a60a5bae
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.date: 12/14/2017
+ms.author: sdash
+ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -29,9 +29,9 @@ ms.lasthandoff: 11/01/2017
 * [URL ping 测试](#create)：可以在 Azure 门户中创建的简单测试。
 * [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上传到门户的测试。
 
-对于每个应用程序资源，最多可以创建 25 个可用性测试。
+对于每个应用程序资源，最多可以创建 100 个可用性测试。
 
-## <a name="create"></a>1.为可用性测试报告打开资源
+## <a name="create"></a>为可用性测试报告打开资源
 
 **如果已配置 Application Insights**（针对 Web 应用），请在 [Azure 门户](https://portal.azure.com)中打开 Application Insights 资源。
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/01/2017
 
 单击“所有资源”，打开新资源的“概述”边栏选项卡。
 
-## <a name="setup"></a>2.创建 URL ping 测试
+## <a name="setup"></a>创建 URL ping 测试
 打开“可用性”边栏选项卡，并添加一个测试。
 
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/01/2017
 添加更多测试。 例如，除了测试主页外，还可以通过测试搜索 URL 来确保数据库正在运行。
 
 
-## <a name="monitor"></a>3.查看可用性测试结果
+## <a name="monitor"></a>查看可用性测试结果
 
 几分钟之后，单击“刷新”即可查看测试结果。 
 
@@ -102,14 +102,11 @@ ms.lasthandoff: 11/01/2017
 从可用性测试结果，可以：
 
 * 检查从服务器收到的响应。
-* 在处理失败的请求实例时会打开服务器应用发送的遥测。
+* 使用在处理失败的请求实例时收集的服务器端遥测数据进行故障诊断。
 * 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
 * 在 Visual Studio 中打开 Web 测试结果。
 
-
-*看起来正常，但却报告为失败* 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
-
-*没有相关项？* 如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](app-insights-sampling.md)正在进行。 
+*看起来正常，但却报告为失败* 请参阅[常见问题解答](#qna)，了解如何减少干扰。
 
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
@@ -256,6 +253,20 @@ Web 测试插件提供时间参数化方式。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
 ## <a name="qna"></a>有疑问？ 遇到问题？
+* 出现间歇性测试失败和违反协议错误？
+
+    错误（“违反协议: CR 必须后跟 LF”）表明服务器（或依赖项）存在问题。 在响应中设置的标头格式错误时，会发生这种情况。 可能是负载均衡器或 CDN 引发的。 具体说来，某些标头可能没有使用 CRLF 来指示行结束，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。 请检查响应，找出可能违反规范的标头。
+    
+    注意：URL 可能不会在对 HTTP 标头的验证比较宽松的浏览器上发生故障。 请查看以下博客文章，详细了解此问题：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+* 站点看上去正常，但测试却失败？
+
+    * 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。 
+
+    * 若要降低包括网络在内的各方面因素的干扰影响，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
+    
+* 看不到任何相关的、用于诊断测试失败的服务器端遥测数据？
+    
+    如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](app-insights-sampling.md)正在进行。
 * *是否可以从 Web 测试调用代码？*
 
     不可以。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。

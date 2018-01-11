@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 10/03/2017
 ms.author: mimig
 ms.custom: cda
-ms.openlocfilehash: 7d26974f67b69b2b861ef11ad8d76f34f53d453f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>“Azure Cosmos DB 的 20 天”提示
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 10/11/2017
 
 提示 11：使用 React、Node.js 和 Azure Cosmos DB 生成英雄跟踪应用。
 
-文章：[使用 React 和 Azure Cosmos DB 创建 MongoDB 应用](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint)
+文章：[使用 React 和 Azure Cosmos DB 创建 MongoDB 应用](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint)
 
 [![在 twitter 上转推](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910156604875649025)   [![在 LinkedIn 上共享](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315922463670751233)
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 10/11/2017
 
 提示 13：使用 @John_Papa 和 Azure Cosmos DB 从零到英雄。 了解如何从头开始生成 MEAN 应用
 
-文章：[使用 Angular 和 Azure Cosmos DB 创建 MongoDB 应用](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+文章：[使用 Angular 和 Azure Cosmos DB 创建 MongoDB 应用](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 
 [![在 twitter 上转推](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910881618855907329)   [![在 LinkedIn 上共享](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316647045599944704)
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 10/11/2017
 
 提示 20：每个人都喜欢好的旧速查表。 Azure #CosmosDB 也有一个。 请在 [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl) 上查看它
 
-速查表：[Azure Cosmos DB：Cosmos DB API SQL 查询速查表 PDF](https://aka.ms/Nt01nl)
+速查表：[Azure Cosmos DB：SQL 查询速查表 PDF](https://aka.ms/Nt01nl)
 
 [![在 twitter 上转推](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)   [![在 LinkedIn 上共享](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 

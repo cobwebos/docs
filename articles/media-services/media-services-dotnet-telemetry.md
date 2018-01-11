@@ -12,28 +12,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f8e22dc5e277407860b7ed31409caed15be59cb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 配置 Azure 媒体服务遥测
 
-本主题介绍了使用 .NET SDK 配置 Azure 媒体服务 (AMS) 遥测时可采取的常规步骤。 
+本文介绍了使用 .NET SDK 配置 Azure 媒体服务 (AMS) 遥测时可采取的常规步骤。 
 
 >[!NOTE]
->有关 AMS 遥测定义和使用方法的详细介绍，请参阅[概述](media-services-telemetry-overview.md)主题。
+>有关 AMS 遥测定义和使用方法的详细介绍，请参阅[概述](media-services-telemetry-overview.md)一文。
 
 可通过以下方式之一使用遥测数据：
 
-- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅[此](https://msdn.microsoft.com/library/mt742089.aspx)主题中的**使用遥测信息**。
+- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅[这篇文章](https://msdn.microsoft.com/library/mt742089.aspx)中的“使用遥测信息”。
 
 或
 
-- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据。 本主题说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
+- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据。 本文说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>为媒体服务帐户配置遥测
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
-有关使用遥测信息的信息，请参阅[此](media-services-telemetry-overview.md)主题。
+有关使用遥测信息的信息，请参阅[这篇文章](media-services-telemetry-overview.md)。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -72,20 +72,25 @@ ms.lasthandoff: 10/11/2017
     
 以下示例说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
 
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
+```
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
 
-    namespace AMSMetrics
+namespace AMSMetrics
+{
+    class Program
     {
-        class Program
-        {
         private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static readonly string _mediaServicesStorageAccountName =
             ConfigurationManager.AppSettings["StorageAccountName"];
@@ -98,7 +103,11 @@ ms.lasthandoff: 10/11/2017
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -112,21 +121,21 @@ ms.lasthandoff: 10/11/2017
             // No more than one monitoring configuration settings is allowed.
             if (monitoringConfigurations.ToArray().Length != 0)
             {
-            monitoringConfiguration = _context.MonitoringConfigurations.FirstOrDefault();
+                monitoringConfiguration = _context.MonitoringConfigurations.FirstOrDefault();
             }
             else
             {
-            INotificationEndPoint notificationEndPoint =
-                      _context.NotificationEndPoints.Create("monitoring",
-                      NotificationEndPointType.AzureTable, GetTableEndPoint());
+                INotificationEndPoint notificationEndPoint =
+                          _context.NotificationEndPoints.Create("monitoring",
+                          NotificationEndPointType.AzureTable, GetTableEndPoint());
 
-            monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
-                new List<ComponentMonitoringSetting>()
-                {
+                monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
+                    new List<ComponentMonitoringSetting>()
+                    {
                     new ComponentMonitoringSetting(MonitoringComponent.Channel, MonitoringLevel.Normal),
                     new ComponentMonitoringSetting(MonitoringComponent.StreamingEndpoint, MonitoringLevel.Normal)
 
-                });
+                    });
             }
 
             //Print metrics for a Streaming Endpoint.
@@ -156,19 +165,19 @@ ms.lasthandoff: 10/11/2017
 
             foreach (var log in res)
             {
-            Console.WriteLine("AccountId: {0}", log.AccountId);
-            Console.WriteLine("BytesSent: {0}", log.BytesSent);
-            Console.WriteLine("EndToEndLatency: {0}", log.EndToEndLatency);
-            Console.WriteLine("HostName: {0}", log.HostName);
-            Console.WriteLine("ObservedTime: {0}", log.ObservedTime);
-            Console.WriteLine("PartitionKey: {0}", log.PartitionKey);
-            Console.WriteLine("RequestCount: {0}", log.RequestCount);
-            Console.WriteLine("ResultCode: {0}", log.ResultCode);
-            Console.WriteLine("RowKey: {0}", log.RowKey);
-            Console.WriteLine("ServerLatency: {0}", log.ServerLatency);
-            Console.WriteLine("StatusCode: {0}", log.StatusCode);
-            Console.WriteLine("StreamingEndpointId: {0}", log.StreamingEndpointId);
-            Console.WriteLine();
+                Console.WriteLine("AccountId: {0}", log.AccountId);
+                Console.WriteLine("BytesSent: {0}", log.BytesSent);
+                Console.WriteLine("EndToEndLatency: {0}", log.EndToEndLatency);
+                Console.WriteLine("HostName: {0}", log.HostName);
+                Console.WriteLine("ObservedTime: {0}", log.ObservedTime);
+                Console.WriteLine("PartitionKey: {0}", log.PartitionKey);
+                Console.WriteLine("RequestCount: {0}", log.RequestCount);
+                Console.WriteLine("ResultCode: {0}", log.ResultCode);
+                Console.WriteLine("RowKey: {0}", log.RowKey);
+                Console.WriteLine("ServerLatency: {0}", log.ServerLatency);
+                Console.WriteLine("StatusCode: {0}", log.StatusCode);
+                Console.WriteLine("StreamingEndpointId: {0}", log.StreamingEndpointId);
+                Console.WriteLine();
             }
 
             Console.WriteLine();
@@ -178,13 +187,13 @@ ms.lasthandoff: 10/11/2017
         {
             if (_channel == null)
             {
-            Console.WriteLine("There are no channels in this AMS account");
-            return;
+                Console.WriteLine("There are no channels in this AMS account");
+                return;
             }
 
             Console.WriteLine(string.Format("Telemetry for channel '{0}'", _channel.Name));
 
-            DateTime timerangeEnd = DateTime.UtcNow; 
+            DateTime timerangeEnd = DateTime.UtcNow;
             DateTime timerangeStart = DateTime.UtcNow.AddHours(-5);
 
             // Get some channel metrics.
@@ -197,18 +206,18 @@ ms.lasthandoff: 10/11/2017
 
             foreach (var channelHeartbeat in channelMetrics.OrderBy(x => x.ObservedTime))
             {
-            Console.WriteLine(
-                "    Observed time: {0}, Last timestamp: {1}, Incoming bitrate: {2}",
-                channelHeartbeat.ObservedTime,
-                channelHeartbeat.LastTimestamp,
-                channelHeartbeat.IncomingBitrate);
+                Console.WriteLine(
+                    "    Observed time: {0}, Last timestamp: {1}, Incoming bitrate: {2}",
+                    channelHeartbeat.ObservedTime,
+                    channelHeartbeat.LastTimestamp,
+                    channelHeartbeat.IncomingBitrate);
             }
 
             Console.WriteLine();
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

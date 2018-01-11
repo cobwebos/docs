@@ -12,26 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
-ms.author: markgal;trinadhk
+ms.date: 12/20/2017
+ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd45dfb1f9e08add7a61a42e4f9b570dc25495d
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 474c5a6d0e7d3647ca14cb61e7b2718c99fdfa72
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>使用 AzureRM.RecoveryServices.Backup cmdlet 来备份虚拟机
-> [!div class="op_single_selector"]
-> * [Resource Manager](backup-azure-vms-automation.md)
-> * [经典](backup-azure-vms-classic-automation.md)
->
->
 
 本文说明如何使用 Azure PowerShell cmdlet 从恢复服务保管库备份和恢复 Azure 虚拟机 (VM)。 恢复服务保管库是一种 Azure 资源管理器资源，用于保护 Azure 备份和 Azure Site Recovery 服务中的数据与资产。 可以使用恢复服务保管库来保护 Azure Service Manager 部署型 VM 以及 Azure 资源管理器部署型 VM。
 
 > [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文的内容与使用 Resource Manager 模型创建的 VM 有关。
+> Azure 有两种用于创建和使用资源的部署模型： [资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文的内容与使用 Resource Manager 模型创建的 VM 有关。
 >
 >
 
@@ -85,7 +80,28 @@ Cmdlet          Unregister-AzureRmRecoveryServicesBackupContainer  1.4.0      Az
 Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
 Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
 ```
+3. 使用 **Login-AzureRmAccount** 登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据： 
+    - 或者，还可使用 -Credential 参数将帐户凭据作为参数包含在 Login-AzureRmAccount cmdlet 中。
+    - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：Login-AzureRmAccount -Tenant "fabrikam.com"
+4. 一个帐户可以有多个订阅，因此请将需要使用的订阅与帐户关联在一起：
 
+    ```
+    PS C:\> Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    ```
+
+5. 如果是首次使用 Azure 备份，则必须使用 **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+
+    ```
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
+    ```
+
+6. 可使用以下命令验证提供程序是否已成功注册：
+    ```
+    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace  "Microsoft.RecoveryServices"
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
+    ``` 
+在命令输出中，**RegistrationState** 应设置为 **Registered**。 如果不是，只需重新运行上面所示的 **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** cmdlet。
 
 使用 PowerShell 可以自动化以下任务：
 
@@ -98,22 +114,17 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 以下步骤引导创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
 
-1. 如果是首次使用 Azure 备份，则必须使用 **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** cmdlet 将 Azure 恢复服务提供程序注册到订阅。
-
-    ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    ```
-2. 恢复服务保管库是一种 Resource Manager 资源，因此需要将它放在资源组中。 可以使用现有的资源组，也可以使用 **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。  
+1. 恢复服务保管库是一种 Resource Manager 资源，因此需要将它放在资源组中。 可以使用现有的资源组，也可以使用 **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。  
 
     ```
     PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
-3. 使用 **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)** cmdlet 创建恢复服务保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
+2. 使用 **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)** cmdlet 创建恢复服务保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。 以下示例显示，testvault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
+3. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。 以下示例显示，testvault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
 
     ```
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"

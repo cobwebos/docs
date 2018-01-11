@@ -4,7 +4,7 @@ description: "通过 Azure AD 使用条款，你和你的公司可以向 Azure A
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: cf7b64bd956c236f5c70bb7dcd209ecdcd7176dd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory 使用条款功能（预览）
 Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  这可确保用户看到法律要求或合规性要求的相关免责声明。
@@ -52,14 +52,16 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 ### <a name="to-add-terms-of-use"></a>添加使用条款
 1. 导航到仪表板（位于 [https://aka.ms/catou](https://aka.ms/catou)）
 2. 单击“添加”。</br>
-![添加 TOU](media/active-directory-tou/tou2.png)
+![添加 TOU](media/active-directory-tou/tou12.png)
 3. 为该使用条款输入名称
 4. 输入“显示名称”。  此标题是用户登录时将看到的内容。
 5. 浏览到已完成的使用条款 (PDF)，并选择它。  建议的字号是 24。
-6. 可以使用模板或自定义条件访问策略强制执行已上传的使用条款。  可以使用自定义条件访问条款策略将使用条款细化，可向下细化到特定云应用程序或用户组。  有关详细信息，请参阅[配置条件访问策略](active-directory-conditional-access-best-practices.md)
-7. 单击“创建” 。
-8. 选择自定义条件访问模板后，将出现新的屏幕，可以通过此屏幕自定义 CA 策略。
-7. 现在应能看到你的新使用条款。</br>
+6. **选择**使用条款的语言。  可以通过语言选项上传多个版本的使用条款，每个版本的语言各不相同。  最终用户看到的使用条款版本取决于其浏览器首选项。
+7. 对于“要求用户展开使用条款”这一功能，可选择“启用”或“禁用”。  如果将此功能设置为“启用”，则最终用户在接受使用条款之前必须先进行查看。
+8. 可以在“条件访问”部分使用模板或自定义条件访问策略**强制执行**已上传的使用条款。  可以使用自定义条件访问条款策略将使用条款细化，可向下细化到特定云应用程序或用户组。  有关详细信息，请参阅[配置条件访问策略](active-directory-conditional-access-best-practices.md)
+9. 单击“创建” 。
+10. 选择自定义条件访问模板后，将出现新的屏幕，可以通过此屏幕自定义 CA 策略。
+11. 现在应能看到你的新使用条款。</br>
 
 ![添加 TOU](media/active-directory-tou/tou3.png)
 
@@ -90,6 +92,19 @@ Azure AD 使用条款提供了易于使用的审核功能，使你可以看到�
 ![审核事件](media/active-directory-tou/tou10.png)
 -   此屏幕显示它在移动设备上的外观</br></br>
 ![审核事件](media/active-directory-tou/tou11.png)
+
+### <a name="review-terms-of-use"></a>查看使用条款
+用户可以查看已接受的使用条款。  可使用以下过程完成此操作：
+
+1. 导航到 [https://myapps.microsoft.com](https://myapps.microsoft.com)，然后登录。
+2. 在右上角单击自己的姓名，然后从下拉列表中选择“个人资料”。
+![配置文件](media/active-directory-tou/tou14.png)
+
+3. 在“个人资料”中单击“查看使用条款”。
+![审核事件](media/active-directory-tou/tou13a.png)
+
+4.  可以在其中查看已接受的使用条款。 
+
 
 ## <a name="additional-information"></a>其他信息
 以下信息是需要注意的事项，可帮助你使用使用条款。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: danlep
-ms.openlocfilehash: 7624a905f81024fa87f15164efc56a300843972d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 26cab5ba892d892e035bd94c52cacabd23eebd0c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>在 Batch 池中使用支持 RDMA 或启用 GPU 的实例
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/01/2017
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC 或<br/>基于 CentO 的 HPC<br/>(Microsoft Azure Marketplace) | Intel MPI 5 | 启用节点间通信，禁用并发任务执行 |
-| [NC 系列*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 驱动程序 | 不适用 | 
+| [NC 系列*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 驱动程序 | 不适用 | 
 | [NV 系列](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA GRID 4.3 驱动程序 | 不适用 |
 
 *基于 Ubuntu 16.04 LTS 或 CentOS 且具备 Intel MPI 的 7.3 HPC （来自 Azure Marketplace）支持在 NC24r VM 上连接 RDMA。
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/01/2017
 若要在 Linux NC 节点的池上运行 CUDA 应用程序，需要在节点上安装 CUDA Toolkit 9.0。 该工具包安装了所需的 NVIDIA Tesla GPU 驱动程序。 以下是使用 GPU 驱动程序部署自定义 Ubuntu 16.04 LTS 映像的示例步骤：
 
 1. 部署运行 Ubuntu 16.04 LTS 的 Azure NC6 VM。 例如：在美国中南部区域创建 VM。 请确保创建具有托管磁盘的 VM。
-2. 请照以下步骤连接 VM 并[安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms)。
+2. 请照以下步骤连接 VM 并[安装 CUDA 驱动程序](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms)。
 3. 取消设置 Linux 代理，然后[捕获 Linux VM 映像](../virtual-machines/linux/capture-image.md)。
 4. 在支持 NC VM 的区域中创建 Batch 帐户。
 5. 通过 Batch API 或 Azure 门户，[使用自定义映像](batch-custom-images.md)创建具有所需节点数和规模的池。 下表列出了映像的示例池设置：

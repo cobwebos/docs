@@ -1,24 +1,16 @@
 ---
 title: "关于 Azure Migrate | Microsoft Docs"
 description: "概述 Azure Migrate 服务。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 7b313bb4-c8f4-43ad-883c-789824add3288
-ms.service: migrate
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.service: azure-migrate
+ms.topic: overview
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 5c78f68c481b68cff31bdc5fd410549c2d44ba5a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e998a085399718340e2e3ce2524244844f4e6a14
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -41,13 +33,12 @@ Azure Migrate 有助于：
 - 目前可以评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。
 
 > [!NOTE]
-> 对 Hyper-V 的支持已在规划中，将在数月内启用。 在此期间，建议使用 Azure Site Recovery 部署规划器来计划 Hyper-V 工作负荷的迁移。 
+> 对 Hyper-V 的支持已在规划中，将尽快启用。 在此期间，建议使用 [Azure Site Recovery 部署规划器](http://aka.ms/asr-dp-hyperv-doc)来计划 Hyper-V 工作负荷的迁移。 
 
-- 可以在单次评估中最多评估 1000 个 VM，在单个 Azure Migrate 项目中最多评估 1500 个计算机。 如需评估更多，可以增加项目数或评估次数。 [了解详细信息](how-to-scale-assessment.md)。
+- 一次发现最多可以发现 1000 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 400 个 VM。 如需发现或评估更多，可以增加发现或评估的次数。 [了解详细信息](how-to-scale-assessment.md)。
 - 必须通过 vCenter Server 5.5、6.0 或 6.5 来管理需评估的 VM。
 - 只能在“美国中西部”区域创建一个 Azure Migrate 项目。 但是，这不会影响迁移计划的制定。可以迁移到另一 Azure 目标位置。 迁移项目的位置只用来存储在本地环境中发现的元数据。
-- Azure Migrate 门户目前仅提供英文版。 
-- Azure Migrate 目前仅支持[本地冗余存储 (LRS)](../storage/common/storage-introduction.md#replication) 复制。
+- Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？
 
@@ -91,7 +82,7 @@ Azure Migrate 有助于：
 |-------------------|------------------------|---------------|---------|
 |收集器          |Azure Migrate 服务   |TCP 443        |连接器通过 SSL 端口 443 连接到服务|
 |收集器          |vCenter Server          |默认为 9443   | 默认情况下，收集器在端口 9443 上连接到 vCenter Server。 如果服务器在另一端口上侦听，则应在收集器 VM 上将该端口配置为传出端口。 |
-|本地 VM     | Operations Management Suite (OMS) 工作区          |[TCP 443](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |MMA 代理使用 TCP 443 连接到 Log Analytics。 只有在使用依赖关系可视化功能且要安装 Microsoft Monitoring Agent (MMA) 的情况下，才需要此端口。 |
+|本地 VM     | Operations Management Suite (OMS) 工作区          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |MMA 代理使用 TCP 443 连接到 Log Analytics。 只有在使用依赖关系可视化功能且要安装 Microsoft Monitoring Agent (MMA) 的情况下，才需要此端口。 |
 
 
   

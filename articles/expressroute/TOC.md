@@ -59,6 +59,7 @@
 
 ## 故障排除
 ### [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)
+### [解决网络性能问题](expressroute-troubleshooting-network-performance.md)
 ### [重置故障线路](reset-circuit.md)
 ### [获取 ARP 表](expressroute-troubleshooting-arp-resource-manager.md)
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
@@ -85,6 +86,7 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=expressroute)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+## [适用于云解决方案提供商 (CSP) 的 ExpressRoute](expressroute-for-cloud-solution-providers.md)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
 ### [将虚拟网络网关连接到线路](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [为 ExpressRoute 创建虚拟网络](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)

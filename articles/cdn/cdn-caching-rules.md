@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8f89ef5a1763d5fc4ad09a9aeae89ccf683138c7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2a94ba5cb9f026f66bc1f3b379f00b291a2299c9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-caching-rules"></a>使用缓存规则控制 Azure 内容交付网络缓存行为
 
@@ -40,13 +40,19 @@ Azure 内容交付网络提供两种方法用于控制文件的缓存方式：
 如何设置 CDN 缓存规则：
 
 1. 打开 Azure 门户，依次选择一个 CDN 配置文件和一个终结点。
-2. 在左窗格中的“设置”下面，单击“缓存”。
-3. 按如下所述创建一个全局缓存规则：
+2. 在左窗格中的“设置”下面，单击“缓存规则”。
+
+   ![CDN 缓存规则按钮](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
+
+1. 按如下所述创建一个全局缓存规则：
    1. 在“全局缓存规则”下面，将“查询字符串缓存行为”设置为“忽略查询字符串”。
    2. 将“缓存行为”设置为“缺少时设置”。
+       
    3. 对于“缓存过期持续时间”，请在“天”字段中输入 10。
 
        全局缓存规则会影响对终结点发出的所有请求。 此规则遵循源缓存指令标头（如果存在，值为 `Cache-Control` 或 `Expires`）；如果未指定此类标头，则将缓存设置为 10 天。 
+
+     ![全局缓存规则](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
 4. 按如下所述创建一个自定义缓存规则：
     1. 在“自定义缓存规则”下面，将“匹配条件”设置为“路径”，将“匹配值”设置为 `/images/*.jpg`。
@@ -54,7 +60,7 @@ Azure 内容交付网络提供两种方法用于控制文件的缓存方式：
        
        此自定义缓存规则针对终结点的 `/images` 文件夹中的所有 `.jpg` 图像文件设置 30 天缓存持续时间。 它会替代源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。
 
-  ![缓存规则对话框](./media/cdn-caching-rules/cdn-caching-rules-dialog.png)
+    ![自定义缓存规则](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
 > [!NOTE] 
 > 在发生规则更改之前缓存的文件会保留其源缓存持续时间设置。 若要重置其缓存持续时间，必须[清除文件](cdn-purge-endpoint.md)。 对于 **Azure CDN from Verizon** 终结点，缓存规则最长可能需要在 90 分钟后才会生效。

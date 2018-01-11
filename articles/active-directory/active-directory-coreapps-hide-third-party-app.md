@@ -1,10 +1,10 @@
 ---
-title: "使第三方应用程序不出现在用户在 Azure Active Directory 中的体验中 | Microsoft Docs"
-description: "如何使第三方应用程序不出现在用户在 Azure Active Directory 中的体验中"
+title: "使应用程序不出现在用户在 Azure Active Directory 中的体验中 | Microsoft Docs"
+description: "如何使应用程序不出现在用户在 Azure Active Directory 中的体验中"
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,18 +15,18 @@ ms.date: 10/11/2017
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 976cbb1341493186b9996d250ebca8f2f3688fdf
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 667fdd45bc9eb1f01ce3883006bb29274478cb83
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="hide-a-third-party-application-from-users-experience-in-azure-active-directory"></a>使第三方应用程序不出现在用户在 Azure Active Directory 中的体验中
+# <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>使应用程序不出现在用户在 Azure Active Directory 中的体验中
 
-如果有不希望显示在用户的访问面板或 Office 365 启动器上的第三方应用程序（不是由 Microsoft 发布的应用），可使用一个选项隐藏此应用磁贴。 隐藏该应用后，用户仍对该应用具有权限，但不会看到该应用显示在其应用启动器上。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。
+如果有不希望显示在用户的访问面板或 Office 365 启动器上的应用程序，可使用隐藏此应用磁贴的选项。 此选项仅适用于第三方应用程序（不是由 Microsoft 发布的应用）。 隐藏该应用后，用户仍对该应用具有权限，但不会看到该应用显示在其应用启动器上。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。 
 
-## <a name="hiding-a-third-party-app-from-a-users-experience"></a>从用户的体验中隐藏第三方应用
-使用以下步骤在用户的访问面板和 Office 365 应用启动器中隐藏第三方应用
+## <a name="hiding-an-application-from-users-end-user-experiences"></a>使应用程序不出现在用户的最终用户体验中
+使用以下步骤在用户的访问面板和 Office 365 应用启动器中隐藏应用程序
 
 ### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>如何使第三方应用不显示在用户的访问面板和 O365 应用启动器上？
 

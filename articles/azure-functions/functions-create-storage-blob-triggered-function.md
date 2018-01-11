@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: db95f3991cfc36e0588f94aa7053bf3f5a794222
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e34d3634b592efe4581135f9dee52bf77d7506cd
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
 
@@ -51,19 +51,23 @@ ms.lasthandoff: 10/11/2017
 
     ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
-2. 选择适用于所需语言的“BlobTrigger”模板，然后使用表中指定的设置。
+2. 在搜索栏中键入 `blob`，然后选择需要用于 Blob 存储触发器模板的语言。
 
-    ![创建 Blob 存储触发的函数。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+    ![选择 Blob 存储触发器模板。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+ 
+3. 使用图像下的表中指定的设置。
+
+    ![创建 Blob 存储触发的函数。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
 
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
-    | **路径**   | mycontainer/{name}    | 所监视的 Blob 存储中的位置。 blob 的文件名将作为 _name_ 参数传入绑定。  |
-    | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
-    | **为函数命名** | 在 Function App 中唯一 | 此 Blob 触发函数的名称。 |
+    | **Name** | 在 Function App 中唯一 | 此 Blob 触发函数的名称。 |
+    | **路径**   | samples-workitems/{name}    | 所监视的 Blob 存储中的位置。 blob 的文件名将作为 _name_ 参数传入绑定。  |
+    | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
 
 3. 单击“创建”以创建函数。
 
-接下来，连接到 Azure 存储帐户并创建 **mycontainer** 容器。
+接下来，连接到 Azure 存储帐户并创建 **samples-workitems** 容器。
 
 ## <a name="create-the-container"></a>创建容器
 
@@ -79,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 
     ![输入存储凭据和连接。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 展开附加的存储帐户，右键单击“Blob 容器”，单击“创建 blob 容器”，键入 `mycontainer`，并按 Enter。
+1. 展开附加的存储帐户，右键单击“Blob 容器”，单击“创建 blob 容器”，键入 `samples-workitems`，并按 Enter。
 
     ![创建存储队列。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -89,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”并确保日志流式处理未暂停。
 
-1. 在存储资源管理器中，依次展开存储帐户、“Blob 容器”和 **mycontainer**。 依次单击“上传”、“上传文件...”。
+1. 在存储资源管理器中，依次展开存储帐户、“Blob 容器”和 **samples-workitems**。 依次单击“上传”、“上传文件...”。
 
     ![将文件上传到 blob 容器。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 

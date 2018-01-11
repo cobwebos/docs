@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 8ffa1c6dd4794cbea6b2c1904e08557ba2a68ba2
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21fb0bca08bca0fe6384bbc9ba2511f7d8b746cf
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>教程：使用命令行接口将鸢尾花分类
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -28,7 +28,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 > * 提升并注册已训练的模型
 > * 部署 Web 服务以便为新数据评分
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 - 需要能够访问 Azure 订阅，并有权在该订阅中创建资源。 
@@ -68,7 +68,7 @@ PATH=$HOME/Library/Caches/AmlWorkbench/Python/bin:$PATH
 >[!TIP]
 >可通过设置上述环境变量，在偏好的终端窗口中启用 Azure CLI。
 
-## <a name="step-1-log-in-to-azure"></a>步骤 1。 登录 Azure
+## <a name="step-1-log-in-to-azure"></a>步骤 1. 登录 Azure
 第一步是从 AMLWorkbench 应用打开 CLI（“文件”>“打开命令提示符”）。 这可以确保使用正确的 Python 环境，并能够使用机器学习 CLI 命令。 
 
 然后，需要在 CLI 中设置正确的上下文来访问和管理 Azure 资源。
@@ -183,7 +183,7 @@ $ az ml experiment submit --run-configuration local iris_sklearn.py
 $ python run.py
 ```
 
-## <a name="step-5-view-run-history"></a>步骤 5. 查看运行历史记录
+## <a name="step-5-view-run-history"></a>步骤 5。 查看运行历史记录
 以下命令列出以前执行的所有运行。 
 
 ```azure-cli

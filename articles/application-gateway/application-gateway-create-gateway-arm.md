@@ -1,6 +1,6 @@
 ---
 title: "创建和管理 Azure 应用程序网关 - PowerShell | Microsoft 文档"
-description: "本页提供有关使用 Azure Resource Manager 创建、配置、启动和删除 Azure 应用程序网关的说明"
+description: "本页提供有关使用 Azure 资源管理器创建、配置、启动和删除 Azure 应用程序网关的说明"
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
 ms.openlocfilehash: c419e1032476818e430251246022ae14e4355024
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
-# <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 创建、启动或删除应用程序网关
+# <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建、启动或删除应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-create-gateway.md)
-> * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
+> * [Azure 资源管理器模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
 Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地​​的服务器间提供故障转移和性能路由 HTTP 请求。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)。
@@ -33,7 +33,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 本文指导完成创建、配置、启动和删除应用程序网关的步骤。
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保你了解 [部署模型和工具](../azure-classic-rm.md)。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文档介绍如何使用 Azure Resource Manager 创建应用程序网关。 若要使用经典版本，请转到 [使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保你了解 [部署模型和工具](../azure-classic-rm.md)。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文档介绍如何使用 Azure 资源管理器创建应用程序网关。 若要使用经典版本，请转到 [使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -77,7 +77,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
   New-AzureRmResourceGroup -Name ContosoRG -Location "West US"
   ```
 
-Azure Resource Manager 要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 在上面的示例中，我们在位置“美国东部”中创建了名为“ContosoRG”的资源组。
 

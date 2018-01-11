@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: mfussell
-ms.openlocfilehash: aae828489b708a5b538df1d63c12be23d0423da7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2ff715d8225bd0a9c7f6108f8804cdfa3189cc8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-security-policies-for-your-application"></a>配置应用程序的安全策略
 使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 可以定义和创建用户组，以便将一个或多个要统一管理的用户添加到每个组。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的某些常用权限，则这种做法特别有用。
 
 ## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>配置服务安装程序入口点的策略
-如[应用程序模型](service-fabric-application-model.md)中所述，安装程序入口点 **SetupEntryPoint** 是特权入口点，以与 Service Fabric 相同的凭据（通常是 *NetworkService* 帐户）先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 因此，具有单独的安装程序入口点可避免长时间使用高特权运行服务主机可执行文件。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果总是终止或崩溃，则将监视并重启所产生的进程（再次从 **SetupEntryPoint** 开始）。
+如[应用程序和服务清单](service-fabric-application-and-service-manifests.md)中所述，安装程序入口点 SetupEntryPoint 是特权入口点，以与 Service Fabric 相同的凭据（通常是 NetworkService 帐户）先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 因此，具有单独的安装程序入口点可避免长时间使用高特权运行服务主机可执行文件。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果总是终止或崩溃，则将监视并重启所产生的进程（再次从 **SetupEntryPoint** 开始）。
 
 下面是一个简单的服务清单示例，其中显示服务的 SetupEntryPoint 和主要 EntryPoint。
 
@@ -275,7 +275,7 @@ Echo "Test console redirection which writes to the application log folder on the
 
 下面的示例演示名为 *TestUser* 的 Active Directory 用户，其域密码使用名为 *MyCert* 的证书进行了加密。 可以使用 `Invoke-ServiceFabricEncryptText` PowerShell 命令创建密码文本。 请参阅[管理 Service Fabric 应用程序中的机密](service-fabric-application-secret-management.md)获取详细信息。
 
-用于解密密码的证书私钥必须使用带外方法（在 Azure 中通过 Azure Resource Manager）部署到本地计算机。 这样，当 Service Fabric 将服务包部署到计算机时，便能够解密密码和用户名，向 Active Directory 进行身份验证以使用这些凭据运行。
+用于解密密码的证书私钥必须使用带外方法（在 Azure 中通过 Azure 资源管理器）部署到本地计算机。 这样，当 Service Fabric 将服务包部署到计算机时，便能够解密密码和用户名，向 Active Directory 进行身份验证以使用这些凭据运行。
 
 ```xml
 <Principals>

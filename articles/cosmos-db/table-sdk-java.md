@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: 
 ms.openlocfilehash: 06ce541b42de2ad20014199a7e87fe3d8c2dfe01
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/20/2017
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]
-> 如果已在预览期间创建表 API 帐户，请创建[新的表 API 帐户](create-table-dotnet.md#create-a-database-account)以使用正式发布的表 API SDK。
+> 如果已在预览期间创建表 API 帐户，请[新建表 API 帐户](create-table-dotnet.md#create-a-database-account)，这样才能使用正式版表 API SDK。
 >
 
 ## <a name="release-notes"></a>发行说明

@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
 ## <a name="general"></a>常规
@@ -179,14 +179,14 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 在一段时间内，包含未打开的应用的设备将收不到通知。
 
 ### <a name="is-there-audit-log-capability"></a>是否有审核日志功能？
-有关所有通知中心管理操作，请转到 [Azure 经典门户]中公开的操作日志。
+有关所有通知中心管理操作，请转到 [Azure 门户]中公开的操作日志。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 ### <a name="what-troubleshooting-capabilities-are-available"></a>故障排除功能有哪些？
 Azure 通知中心提供多项可用于故障排除的功能，尤其是针对通知被删除的最常见情况。 有关详细信息，请参阅[通知中心故障排除]白皮书。
 
 ### <a name="what-telemetry-features-are-available"></a>遥测功能有哪些？
-Azure 通知中心支持在 [Azure 经典门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
+Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
 
 > [!NOTE]
 > 成功的通知仅意味着推送通知已传递到外部 PNS（例如 Apple 的 APNS，或 Google 的 GCM）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
@@ -195,7 +195,7 @@ Azure 通知中心支持在 [Azure 经典门户]中查看遥测数据。 可以�
 
 我们还提供了以编程方式导出遥测数据的功能（在标准层）。 有关详细信息，请参阅[通知中心指标示例]。
 
-[Azure 经典门户]: https://manage.windowsazure.com
+[Azure 门户]: https://portal.azure.com
 [通知中心定价]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [案例研究：Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942

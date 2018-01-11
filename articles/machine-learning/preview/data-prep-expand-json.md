@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 57f461f9a39e8069654985d86bfe3ae23dd0855a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 614f4422aa987fc32dcce62826bb2477473fdc32
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="expand-json-transformation"></a>“展开 JSON”转换
 通过“展开 JSON” 转换，用户可以将包含有效 JSON 文本的现有列展开为多列。
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/11/2017
 若要执行此转换，请执行以下步骤：
 1. 选择包含 JSON 文本的源列。
 2. 从“转换”菜单中选择“展开 JSON”。 或者，右键单击源列的标头，然后从上下文菜单中选择“展开 JSON”。 
-3. 单击 **“确定”**。 
+3. 单击“确定”。 
  
 在源列旁边添加新列。 这些列包含 JSON 文本下一级层次结构中的属性。 属性键（如果存在）用于创建相应列的名称。 嵌套的属性将保留为 JSON 文本，用户可根据需要以迭代方式扩展或放弃。
 

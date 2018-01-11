@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b30a444150c6ace87e9d506da9335373b5e017af
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: fb62a82f351502b5067367b2306f296272b6575b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="using-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
 
@@ -27,7 +27,12 @@ ms.lasthandoff: 12/07/2017
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >
->
+
+> [!NOTE]
+> 若要获取最新版本的 Java SDK 并开始使用 Java 进行开发，请参阅[媒体服务的 Java 客户端 SDK 入门](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)。 <br/>
+> 若要下载最新的媒体服务 PHP SDK，请在 [Packagist 存储库](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)中查找 0.5.7 版 Microsoft/WindowAzure 包。  
+
+## <a name="overview"></a>概述
 
 Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/)保护的 MPEG-DASH 流、平滑流式处理流和 HTTP 实时流式处理 (HLS) 流。 它还允许传送通过 Widevine DRM 许可证加密的 DASH 流。 PlayReady 和 Widevine 都是按通用加密 (ISO/IEC 23001-7 CENC) 规范加密的。 可以通过 [AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/)（从版本 3.5.1 开始）或 REST API 来配置 AssetDeliveryConfiguration 以使用 Widevine。
 
@@ -39,7 +44,7 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 
 为了充分利用动态加密，资产必须包含一组多码率 MP4 文件或多码率平滑流源文件。 还需要为资产配置传送策略（在本主题后面部分介绍）。 然后，根据你在流 URL 中指定的格式，按需流式处理服务器将确保使用你选定的协议来传送流。 因此，只需以单一存储格式存储文件并为其付费，媒体服务就会基于客户端的每个请求构建并提供相应的 HTTP 响应。
 
-开发应用程序以传送受多个 DRM（例如 PlayReady 和 Widevine）保护的媒体的开发人员可以参考本主题。 本主题介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 或 Widevine 许可证。 此外，还介绍如何通过 DASH 使用 PlayReady 或 Widevine DRM 进行动态加密。
+开发应用程序以传送受多个 DRM（例如 PlayReady 和 Widevine）保护的媒体的开发人员可以参考本文。 本文介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 或 Widevine 许可证。 此外，还介绍如何通过 DASH 使用 PlayReady 或 Widevine DRM 进行动态加密。
 
 >[!NOTE]
 >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
@@ -64,13 +69,13 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 
 6. 创建 OnDemand 定位符以获取流 URL。
 
-可以在主题末尾找到完整的 .NET 示例。
+可以在文章末尾找到完整的 .NET 示例。
 
 下图演示了上述工作流。 在图中，使用令牌进行了身份验证。
 
 ![使用 PlayReady 进行保护](media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
-本主题的余下部分提供了详细说明、代码示例和主题链接，向你演示如何完成上述任务。
+本文的余下部分提供了详细说明、代码示例和主题链接，向你演示如何完成上述任务。
 
 ## <a name="current-limitations"></a>当前限制
 如果添加或更新资产的传送策略，则必须删除关联的定位符（如果有）并创建新定位符。
@@ -83,7 +88,7 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 有关详细信息，请参阅 [将文件上传到媒体服务帐户](media-services-dotnet-upload-files.md)。
 
 ## <a name="encode-the-asset-containing-the-file-to-the-adaptive-bitrate-mp4-set"></a>将包含文件的资产编码为自适应比特率 MP4 集。
-使用动态加密时，只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。 然后，按需流式处理服务器会确保以选定的协议按清单和分段请求中的指定格式接收流。 因此，只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。 有关详细信息，请参阅 [动态打包概述](media-services-dynamic-packaging-overview.md) 主题。
+使用动态加密时，只需创建包含一组多码率 MP4 文件或多比特率平滑流式处理源文件的资产。 然后，按需流式处理服务器会确保以选定的协议按清单和分段请求中的指定格式接收流。 因此，只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。 有关详细信息，请参阅[动态打包概述](media-services-dynamic-packaging-overview.md)一文。
 
 有关如何编码的说明，请参阅 [如何使用 Media Encoder Standard 对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
@@ -104,7 +109,7 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 * 资产传送协议（例如 MPEG DASH、HLS、平滑流式处理或全部）。
 * 动态加密类型（在本示例中为“常用加密”）。
 
-有关详细信息，请参阅 [配置资产传送策略 ](media-services-rest-configure-asset-delivery-policy.md)。
+有关详细信息，请参阅[配置资产传送策略。
 
 ## <a id="create_locator"></a>创建 OnDemand 流定位符以获取流 URL
 需要为用户提供平滑流、DASH 或 HLS 的流 URL。
@@ -148,31 +153,36 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 请务必将变量更新为指向输入文件所在的文件夹。
 
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-    using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-    using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
-    using Newtonsoft.Json;
+```
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
+using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
+using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
+using Newtonsoft.Json;
 
-    namespace DynamicEncryptionWithDRM
+namespace DynamicEncryptionWithDRM
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static readonly Uri _sampleIssuer =
             new Uri(ConfigurationManager.AppSettings["Issuer"]);
@@ -190,7 +200,11 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -210,9 +224,9 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
             Console.WriteLine();
 
             if (tokenRestriction)
-            tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
+                tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
             else
-            AddOpenAuthorizationPolicy(key);
+                AddOpenAuthorizationPolicy(key);
 
             Console.WriteLine("Added authorization policy: {0}", key.AuthorizationPolicyId);
             Console.WriteLine();
@@ -223,19 +237,19 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
 
             if (tokenRestriction && !String.IsNullOrEmpty(tokenTemplateString))
             {
-            // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
-            // back into a TokenRestrictionTemplate class instance.
-            TokenRestrictionTemplate tokenTemplate =
-                TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
+                // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+                // back into a TokenRestrictionTemplate class instance.
+                TokenRestrictionTemplate tokenTemplate =
+                    TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-            // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-            // Note, you need to pass the key id Guid because we specified
-            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
-            Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-            string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
-                                        DateTime.UtcNow.AddDays(365));
-            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-            Console.WriteLine();
+                // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+                // Note, you need to pass the key id Guid because we specified
+                // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+                Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
+                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
+                                            DateTime.UtcNow.AddDays(365));
+                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+                Console.WriteLine();
             }
 
             // You can use the http://amsplayer.azurewebsites.net/azuremediaplayer.html player to test streams.
@@ -251,8 +265,8 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
         {
             if (!File.Exists(singleFilePath))
             {
-            Console.WriteLine("File does not exist.");
-            return null;
+                Console.WriteLine("File does not exist.");
+                return null;
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
@@ -465,8 +479,8 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
         {
             var template = new WidevineMessage
             {
-            allowed_track_types = AllowedTrackTypes.SD_HD,
-            content_key_specs = new[]
+                allowed_track_types = AllowedTrackTypes.SD_HD,
+                content_key_specs = new[]
             {
                     new ContentKeySpecs
                     {
@@ -475,12 +489,12 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
                     track_type = "SD"
                     }
                 },
-            policy_overrides = new
-            {
-                can_play = true,
-                can_persist = true,
-                can_renew = false
-            }
+                policy_overrides = new
+                {
+                    can_play = true,
+                    can_persist = true,
+                    can_renew = false
+                }
             };
 
             string configuration = JsonConvert.SerializeObject(template);
@@ -570,14 +584,14 @@ Microsoft Azure 媒体服务允许传送受 [Microsoft PlayReady DRM](https://ww
             using (var rng =
             new System.Security.Cryptography.RNGCryptoServiceProvider())
             {
-            rng.GetBytes(returnValue);
+                rng.GetBytes(returnValue);
             }
 
             return returnValue;
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

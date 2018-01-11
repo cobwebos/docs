@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 72694743a9e1f520211d133dcc0d7f473c087f38
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>如何：在 Azure 应用服务中监视 Web 应用
 [应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)在 [Azure 门户](https://portal.azure.com)中提供了内置监视功能。
@@ -29,6 +29,8 @@ ms.lasthandoff: 11/29/2017
 ## <a name="understanding-quotas-and-metrics"></a>了解配额和度量值
 ### <a name="quotas"></a>配额
 对于托管在应用服务中的应用程序，其可用资源受到某些*限制*。 限制由与应用关联的**应用服务计划**定义。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 如果应用程序托管在**免费**或**共享**计划中，则该应用可用资源的限制由**配额**定义。
 

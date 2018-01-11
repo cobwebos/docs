@@ -1,6 +1,6 @@
 ---
-title: "使用 Express (Node.js) 构建 Web 应用 | Microsoft Docs"
-description: "本教程以云服务教程为基础，演示如何使用 Express 模块。"
+title: "生成 Node.js Express 应用并将其部署到 Azure 云服务"
+description: "在 Node.js 中生成 Express.js 应用程序并将其部署到 Azure 云服务"
 services: cloud-services
 documentationcenter: nodejs
 author: craigshoemaker
@@ -14,15 +14,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: aa62438732db9e8df129440e6949858d9a61f65f
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>使用 Express 在 Azure 云服务中生成 Node.js Web 应用程序
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中生成并部署 Node.js Web 应用程序
+
 Node.js 包含核心运行时中最小的一个功能集。
-开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 在本教程中，将使用 [Express][Express] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
+开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 本教程将使用 [Express](https://github.com/expressjs/express) 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
 
 以下是已完成应用程序的屏幕快照：
 

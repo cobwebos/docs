@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: 4cc932ca2dcdad16f4b1b7cfc2494eec0ccf18b3
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 2591fad9efd9dba2f53101a747bcf79a4d0bad4f
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/10/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -102,13 +102,16 @@ ms.lasthandoff: 12/13/2017
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>管理资源</h3>
+                                                <h3> 安全和管理资源</h3>
                                                 <ul class="noBullet">
+                                                    <li><a class="barLink" href="/azure/security-center/">Azure 安全中心</a></li>
                                                     <li><a class="barLink" href="/azure/monitoring-and-diagnostics/">Azure Monitor</a></li>
                                                     <li><a class="barLink" href="/azure/application-insights/">Azure Application Insights</a></li>
                                                     <li><a class="barLink" href="/azure/cost-management/">Azure 成本管理</a></li>
                                                     <li><a class="barLink" href="/azure/backup/">Azure 备份</a></li>
                                                     <li><a class="barLink" href="/azure/site-recovery/">Azure Site Recovery</a></li>
+                                                    <li><a class="barLink" href="/azure/migrate/">Azure Migrate</a></li>
+                                                    <li><a class="barLink" href="/azure/azure-policy/">Azure 策略</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,6 +180,7 @@ ms.lasthandoff: 12/13/2017
                                                 <h4>关系数据库</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-data-warehouse/">SQL 数据仓库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL 数据库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/mysql/">MySQL 数据库即服务</a></li>
                                                 </ul>
@@ -318,7 +322,7 @@ ms.lasthandoff: 12/13/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>批处理</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -420,7 +424,7 @@ ms.lasthandoff: 12/13/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>批处理</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -465,7 +469,7 @@ ms.lasthandoff: 12/13/2017
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                         <li>
@@ -519,7 +523,7 @@ ms.lasthandoff: 12/13/2017
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>联网</h3>
+                                    <h3>网络</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/networking/networking-overview">
@@ -597,7 +601,7 @@ ms.lasthandoff: 12/13/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/bot-framework/azure-bot-service-overview">
+                                            <a href="https://docs.microsoft.com/bot-framework/bot-service-overview-introduction">
                                                 <img src="media/index/bot-service.svg" alt="" />
                                                 <p>Azure Bot 服务</p>
                                             </a>
@@ -653,7 +657,7 @@ ms.lasthandoff: 12/13/2017
                                         <li>
                                             <a href="/azure/cognitive-services/luis/">
                                                 <img src="media/index/API_Luis.svg" alt="" />
-                                                <p>语言理解智能服务 (LUIS)</p>
+                                                <p>语言理解 (LUIS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -885,7 +889,7 @@ ms.lasthandoff: 12/13/2017
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1412,7 +1416,7 @@ ms.lasthandoff: 12/13/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>批处理</h3>
+                                                    <h3>Batch</h3>
                                                     <p>云规模的作业计划和计算管理</p>
                                                 </div>
                                             </div>
@@ -2136,7 +2140,7 @@ ms.lasthandoff: 12/13/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>批处理</h3>
+                                                    <h3>Batch</h3>
                                                     <p>云规模的作业计划和计算管理</p>
                                                 </div>
                                             </div>
@@ -2343,7 +2347,7 @@ ms.lasthandoff: 12/13/2017
                                         </div>
                                     </div>
                                 </a>
-                            </li>   
+                            </li>
                             <li>
                                 <a href="/azure/stream-analytics/">
                                     <div class="cardSize">
@@ -2431,7 +2435,7 @@ ms.lasthandoff: 12/13/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
+                                                    <h3>数据工厂</h3>
                                                     <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
@@ -2562,7 +2566,7 @@ ms.lasthandoff: 12/13/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/bot-framework/azure-bot-service-overview/">
+                                <a href="https://docs.microsoft.com/bot-framework/bot-service-overview-introduction">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2669,7 +2673,7 @@ ms.lasthandoff: 12/13/2017
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Bing_Spell_Check.svg" alt="" />必应拼写检查</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/luis/"><img src="media/index/API_Luis.svg" alt="" /><span>语言理解智能服务 (LUIS)&nbsp;<sup style="font-size:70%">预览</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/luis/"><img src="media/index/API_Luis.svg" alt="" /><span>语言理解 (LUIS)</span></a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="media/index/API_LinguisticAnalysis.svg" alt="" /><span>语言分析&nbsp;<sup style="font-size:70%">预览</sup></span></a>
@@ -3157,7 +3161,7 @@ ms.lasthandoff: 12/13/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
+                                                    <h3>数据工厂</h3>
                                                     <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
@@ -4158,6 +4162,34 @@ Azure CLI </h3>
                                                 </h3>
                                                 <p>
                                                     <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">下载</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/en-us/media/common/i_tools.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+SQL 工具 </h3>
+                                                <p>
+                                                    <a href="/sql/sql-operations-studio/download">SQL Operations Studio <sup>预览</sup></a>
+                                                </p>
+                                                <p>
+                                                    <a href="/sql/ssms/download-sql-server-management-studio-ssms">SQL Server Management Studio (SSMS)</a>
+                                                </p>                                            <p>
+                                                    <a href="/sql/ssdt/download-sql-server-data-tools-ssdt">SQL Server Data Tools (SSDT)</a>
+                                                </p>
+                                                <p>
+                                                    <a href="/sql/tools/overview-sql-tools">查看所有 SQL 工具</a>
                                                 </p>
                                             </div>
                                         </div>

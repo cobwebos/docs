@@ -21,12 +21,12 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/04/2017
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 可重入性
-默认情况下，Reliable Actors 运行时允许基于逻辑调用上下文的可重入性。 这使执行组件在处于相同调用上下文链中时可重入。 例如，如果执行组件 A 将消息发送给执行组件 B，而后者将消息发送给执行组件 C。在处理消息的过程中，如果执行组件 C 调用执行组件 A，则允许消息可重入。 属于不同调用上下文的任何其他消息会在执行组件 A 上受阻，直到它完成处理。
+默认情况下，Reliable Actors 运行时允许基于逻辑调用上下文的可重入性。 因此执行组件在处于相同调用上下文链中时，可进行重入操作。 例如，如果执行组件 A 将消息发送给执行组件 B，而后者将消息发送给执行组件 C。在处理消息的过程中，如果执行组件 C 调用执行组件 A，这样的消息重入是允许的。 如果消息属于不同调用上下文，则会在执行组件 A 处受阻，直到处理完现有消息为止。
 
-有两个选项可用于 `ActorReentrancyMode` 枚举中定义的执行组件重新进入：
+执行组件重入有两个相关选项，可在 `ActorReentrancyMode` 枚举中定义：
 
 * `LogicalCallContext`（默认行为）
-* `Disallowed` - 禁用重新进入
+* `Disallowed` - 禁用重入
 
 ```csharp
 public enum ActorReentrancyMode
@@ -42,7 +42,7 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-可在注册过程中在 `ActorService` 的设置中配置重新进入。 该设置适用于执行组件服务中创建的所有执行组件实例。
+注册期间，可在 `ActorService`的设置中配置可重入性。 该设置适用于执行组件服务中创建的所有执行组件实例。
 
 以下示例演示了将重入模式设置为 `ActorReentrancyMode.Disallowed` 的执行组件服务。 在这种情况下，如果执行组件向另一个执行组件发送可重入消息，则会引发类型为 `FabricException` 的异常。
 
@@ -110,4 +110,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)中有关重新进入的详细信息
+* 在[执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)中进一步了解可重入性

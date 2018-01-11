@@ -3,7 +3,7 @@ title: "管理多个 Azure 虚拟机的更新 | Microsoft Docs"
 description: "本主题介绍如何管理 Azure 虚拟机的更新。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/30/2017
-ms.author: magoedte;eslesar
-ms.openlocfilehash: aea0b93e658a0c5dd14deedbd2c5c92bb1fbf652
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte;gwallace
+ms.openlocfilehash: 9bd6a290320958e2bc534ceb0abbcb647084920b
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 

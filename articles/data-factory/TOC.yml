@@ -144,6 +144,8 @@
               href: connector-magento.md
             - name: MariaDB
               href: connector-mariadb.md
+            - name: Marketo
+              href: connector-marketo.md
             - name: Microsoft Access
               href: 'connector-odbc.md#microsoft-access-source'
             - name: MongoDB
@@ -255,7 +257,7 @@
           href: control-flow-expression-language-functions.md
         - name: 系统变量
           href: control-flow-system-variables.md
-    - name: 安全
+    - name: “安全”
       items:
         - name: 数据移动安全注意事项
           href: data-movement-security-considerations.md
@@ -301,6 +303,8 @@
       items:
         - name: 创建计划触发器
           href: how-to-create-schedule-trigger.md
+        - name: 创建翻转窗口触发器
+          href: how-to-create-tumbling-window-trigger.md
 - name: 引用
   items:
     - name: .NET

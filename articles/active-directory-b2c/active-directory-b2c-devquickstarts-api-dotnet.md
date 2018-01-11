@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 9341fe50b8a51197da0696bd28d7f05feae23de6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 713bf8ea670b1c2b35a05ebd8cd9450c711cbf3b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C：构建 .NET Web API
 
@@ -41,8 +41,6 @@ ms.lasthandoff: 12/11/2017
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此信息。
 * 在“应用 ID URI”中输入应用标识符。 复制完整的应用 ID URI。 稍后需要用到此信息。
 * 通过“发布范围”菜单添加权限。
-
-  [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
 

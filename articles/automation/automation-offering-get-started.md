@@ -1,9 +1,9 @@
 ---
 title: "Azure 自动化入门 | Microsoft Docs"
-description: "本文概述了 Azure 自动化服务，探讨了 Azure 应用商店产品/服务的载入准备过程涉及的设计和实现细节。"
+description: "本文概述了 Azure 自动化服务，探讨了 Azure Marketplace 产品/服务的载入准备过程涉及的设计和实现细节。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Azure 自动化入门
 
@@ -97,22 +97,22 @@ Azure 自动化 DSC 可用于管理各种计算机：
 * 运行方式帐户。 此帐户在 Azure Active Directory (Azure AD) 中创建一个服务主体，并创建一个证书。 此外，它还向参与者分配基于角色的访问控制 (RBAC)，以便使用 Runbook 管理 Resource Manager 资源。
 * 经典运行方式帐户。 此帐户上传一个管理证书，用于通过 Runbook 管理经典资源。
 
-基于角色的访问控制在 Azure Resource Manager 中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。  请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文，详细了解如何开发自动化权限管理模型。  
+基于角色的访问控制在 Azure 资源管理器中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。  请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文，详细了解如何开发自动化权限管理模型。  
 
 #### <a name="authentication-methods"></a>身份验证方法
 下表总结了 Azure 自动化所支持的每个环境的不同身份验证方法。
 
 | 方法 | 环境 
 | --- | --- | 
-| Azure 运行方式帐户和经典运行方式帐户 |Azure Resource Manager 部署和 Azure 经典部署 |  
-| Azure AD 用户帐户 |Azure Resource Manager 部署和 Azure 经典部署 |  
+| Azure 运行方式帐户和经典运行方式帐户 |Azure 资源管理器部署和 Azure 经典部署 |  
+| Azure AD 用户帐户 |Azure 资源管理器部署和 Azure 经典部署 |  
 | Windows 身份验证 |使用混合 Runbook 辅助角色的本地数据中心或其他云提供程序 |  
 | AWS 凭据 |Amazon Web Services |  
 
 如何\身份验证和安全性部分是支持文章，这些文章概述了如何通过专用于上述环境的现有帐户或新帐户为此类环境配置身份验证，并提供了相应的实现步骤。  [更新自动化运行方式帐户](automation-create-runas-account.md)主题适用于 Azure 运行方式和经典运行方式帐户，介绍了如何从门户或使用 PowerShell 对现有的自动化帐户进行运行方式帐户更新（如果最初没有为其配置运行方式或经典运行方式帐户）。 如果要使用企业证书颁发机构 (CA) 颁发的证书创建运行方式和经典运行方式帐户，请参阅本文，了解如何使用此配置创建帐户。     
  
 ## <a name="network-planning"></a>网络规划
-要使混合 Runbook 辅助角色连接并注册到 Microsoft Operations Management Suite (OMS)，必须让其有权访问下述端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-windows-agents.md#network)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
+要使混合 Runbook 辅助角色连接并注册到 Microsoft Operations Management Suite (OMS)，必须让其有权访问下述端口号和 URL。  除了这些端口和 URL 以外，还需有权访问连接到 OMS 时 [Microsoft Monitoring Agent 需要的端口和 URL](../log-analytics/log-analytics-windows-agent.md)。 如果使用代理服务器在代理与 OMS 服务之间通信，则需确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问。
 
 下面的信息列出了混合 Runbook 辅助角色与自动化通信时所要使用的端口和 URL。
 
@@ -148,20 +148,20 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 |方法 | 说明 |
 |-------|-------------|
-| 从应用商店选择“自动化与控制” | 一种服务，用于创建自动化帐户和 OMS 工作区，二者在同一资源组和区域中互相关联。  与 OMS 的集成还包括使用 Log Analytics 监视和分析随时间推移的 runbook 作业状态和作业流，以及利用高级功能上报或调查问题的好处。 该服务还部署更改跟踪和更新管理解决方案（默认启用）。 |
-| 从应用商店选择“自动化” | 在新的或现有的资源组中创建自动化帐户，该资源组与 OMS 工作区没有关联，也不包含“自动化与控制”服务提供的任何解决方案。 这是自动化操作入门的基本配置，可以借此了解如何编写 Runbook 和 DSC 配置，以及如何使用该服务的功能。 |
+| 从 Marketplace 选择“自动化与控制” | 一种服务，用于创建自动化帐户和 OMS 工作区，二者在同一资源组和区域中互相关联。  与 OMS 的集成还包括使用 Log Analytics 监视和分析随时间推移的 runbook 作业状态和作业流，以及利用高级功能上报或调查问题的好处。 该服务还部署更改跟踪和更新管理解决方案（默认启用）。 |
+| 从 Marketplace 选择“自动化” | 在新的或现有的资源组中创建自动化帐户，该资源组与 OMS 工作区没有关联，也不包含“自动化与控制”服务提供的任何解决方案。 这是自动化操作入门的基本配置，可以借此了解如何编写 Runbook 和 DSC 配置，以及如何使用该服务的功能。 |
 | 选定管理解决方案 | 如果从**[更新管理](../operations-management-suite/oms-solution-update-management.md)**、**[在空闲时间启动/停止 VM](automation-solution-vm-management.md)** 或**[更改跟踪](../log-analytics/log-analytics-change-tracking.md)**中选择一个解决方案，系统会提示你选择现有的自动化与 OMS 工作区，或者允许你同时创建二者，这是在订阅中部署解决方案所必需的。 |
 
 本主题演示如何载入“自动化与控制”服务，以便创建自动化帐户和 OMS 工作区。  若要创建独立的自动化帐户，以便进行测试或对服务进行预览，请参阅[创建独立的自动化帐户](automation-create-standalone-account.md)一文。  
 
 ### <a name="create-automation-account-integrated-with-oms"></a>创建与 OMS 集成的自动化帐户
-若要载入自动化，建议的方法是从应用商店选择“自动化与控制”服务。  这将创建自动化帐户并建立与 OMS 工作区的集成，包括安装服务中提供的管理解决方案的选项。  
+若要载入自动化，建议的方法是从 Marketplace 选择“自动化与控制”服务。  这将创建自动化帐户并建立与 OMS 工作区的集成，包括安装服务中提供的管理解决方案的选项。  
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
 
 2. 单击“新建” 。<br><br> ![在 Azure 门户中选择“新建”选项](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 
-3. 搜索“自动化”，并在搜索结果中选择“自动化与控制”*。<br><br> ![从应用商店搜索并选择“自动化与控制”](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)。<br>   
+3. 搜索“自动化”，并在搜索结果中选择“自动化与控制”*。<br><br> ![从 Marketplace 搜索并选择“自动化和控制”](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)。<br>   
 
 4. 在阅读服务说明后，单击“创建”。  
 

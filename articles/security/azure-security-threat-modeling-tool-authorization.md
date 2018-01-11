@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 312a66544a5e64daa86b4902b57d4050f1f66af5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -28,12 +28,12 @@ ms.lasthandoff: 10/11/2017
 | **数据库** | <ul><li>[确保使用最低特权帐户连接到数据库服务器](#privileged-server)</li><li>[实施行级别安全性 RLS 来防止租户访问彼此的数据](#rls-tenants)</li><li>[Sysadmin 角色应该只包括必要的有效用户](#sysadmin-users)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用最低特权令牌连接到云网关](#cloud-least-privileged)</li></ul> |
 | **Azure 事件中心** | <ul><li>[使用拥有仅限发送权限的 SAS 密钥来生成设备令牌](#sendonly-sas)</li><li>[不要使用可提供事件中心直接访问权限的访问令牌](#access-tokens-hub)</li><li>[使用拥有所需最低权限的 SAS 密钥连接到事件中心](#sas-minimum-permissions)</li></ul> |
-| **Azure Document DB** | <ul><li>[尽可能使用资源令牌连接到 DocumentDB](#resource-docdb)</li></ul> |
+| **Azure Document DB** | <ul><li>[尽可能使用资源令牌连接到 Azure Cosmos DB](#resource-docdb)</li></ul> |
 | **Azure 信任边界** | <ul><li>[使用 RBAC 启用对 Azure 订阅的精细访问管理](#grained-rbac)</li></ul> |
 | **Service Fabric 信任边界** | <ul><li>[使用 RBAC 限制客户端对群集操作的访问](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[根据需要执行安全建模并使用字段级别安全性](#modeling-field)</li></ul> |
 | **Dynamics CRM 门户** | <ul><li>[执行门户帐户的安全建模并注意门户的安全模型不同于 CRM 的其他组件](#portal-security)</li></ul> |
-| **Azure 存储** | <ul><li>[针对 Azure 表存储中的一系列实体授予精细权限](#permission-entities)</li><li>[使用 Azure Resource Manager 对 Azure 存储帐户启用基于角色的访问控制 (RBAC)](#rbac-azure-manager)</li></ul> |
+| **Azure 存储** | <ul><li>[针对 Azure 表存储中的一系列实体授予精细权限](#permission-entities)</li><li>[使用 Azure 资源管理器对 Azure 存储帐户启用基于角色的访问控制 (RBAC)](#rbac-azure-manager)</li></ul> |
 | **移动客户端** | <ul><li>[实施隐式越狱或 root 检测](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF 中的弱类引用](#weak-class-wcf)</li><li>[WCF - 实施授权控制](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[在 ASP.NET Web API 中实施适当的授权机制](#authz-aspnet)</li></ul> |
@@ -224,7 +224,7 @@ WHERE userID=:id < - session var
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | 资源令牌与 DocumentDB 权限资源关联，可捕获数据库用户与该用户对某个特定 DocumentDB 应用程序资源（如集合、文档）的权限之间的关系。 如果无法信任客户端（例如，移动或桌面客户端等最终用户应用程序）对主密钥或只读密钥的处理，请始终使用资源令牌访问 DocumentDB。通过可以安全存储这些密钥的后端应用程序使用主密钥或只读密钥。|
+| **步骤** | 资源令牌与 Azure Cosmos DB 权限资源关联，可捕获数据库用户与该用户对某个特定 Azure Cosmos DB 应用程序资源（例如，集合、文档）的权限之间的关系。 如果无法信任客户端（例如，移动或桌面客户端等最终用户应用程序）对主密钥或只读密钥的处理，请始终使用资源令牌访问 Azure Cosmos DB。通过可以安全存储这些密钥的后端应用程序使用主密钥或只读密钥。|
 
 ## <a id="grained-rbac"></a>使用 RBAC 启用对 Azure 订阅的精细访问管理
 
@@ -290,7 +290,7 @@ WHERE userID=:id < - session var
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
-| **步骤** | <p>创建新的存储帐户时，可以选择经典或 Azure Resource Manager 部署模型。 在 Azure 中创建资源的经典模型只允许以孤注一掷的方式访问订阅，并访问存储帐户。</p><p>通过 Azure 资源管理器模型，可将存储帐户放在资源组中，使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可授权特定用户访问存储帐户密钥，而其他用户可查看存储帐户相关信息却无法访问存储帐户密钥。</p>|
+| **步骤** | <p>创建新的存储帐户时，可以选择经典或 Azure 资源管理器部署模型。 在 Azure 中创建资源的经典模型只允许以孤注一掷的方式访问订阅，并访问存储帐户。</p><p>通过 Azure 资源管理器模型，可将存储帐户放在资源组中，使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可授权特定用户访问存储帐户密钥，而其他用户可查看存储帐户相关信息却无法访问存储帐户密钥。</p>|
 
 ## <a id="rooting-detection"></a>实施“隐式越狱”或“获取 root 权限”检测
 

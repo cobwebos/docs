@@ -5,7 +5,7 @@
 
 3. 在“新建帐户”边栏选项卡中，为 Azure Cosmos DB 帐户指定所需的配置。 
 
-    使用 Azure Cosmos DB，可以选择以下四个编程模型之一：Gremlin（图形）、MongoDB、SQL (DocumentDB) 和表（键/值）。 
+    使用 Azure Cosmos DB，可以选择以下四个编程模型之一：Gremlin（图形）、MongoDB、SQL 和表（键/值）。 
        
     在本快速入门教程中，我们将针对 MongoDB API 编程，因此，在填写表单时，请选择“MongoDB”。 但如果有社交媒体应用的图形数据、来自目录应用的文档数据或键/值（表）数据，请意识到 Azure Cosmos DB 可以为所有任务关键型应用程序提供高度可用的全球分布式数据库服务平台。
 

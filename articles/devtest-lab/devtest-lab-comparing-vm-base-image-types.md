@@ -3,7 +3,7 @@ title: "比较开发测试实验室中的自定义映像和公式 | Microsoft Do
 description: "了解自定义映像和公式（例如 VM 基项）之间的差异，以便确定哪一种最适合自己的环境。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: a3cb259a-7d80-40ec-8ee8-45105704d589
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
-ms.author: tarcher
-ms.openlocfilehash: ff771abc26c08f0adb977c29739d2f5c91924b21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 78c0255f142bd3d4b2311ac953541153b72ac12d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>比较自定义映像和 DevTest 实验室中的公式
-在[创建新的虚拟机](devtest-lab-add-vm-with-artifacts.md)时，[自定义映像](devtest-lab-create-template.md) 和 [公式](devtest-lab-manage-formulas.md) 都可以用作基项。 但是，自定义映像和公式之间的主要区别在于自定义映像只是基于 VHD 的映像，而公式不仅是基于 VHD 的映像，*还有*预配置的设置 - 如 VM 大小、虚拟网络、子网和项目。 使用可在创建 VM 时重写的默认值，对这些预配置进行设置。 本文介绍和使用公式相比，使用自定义映像的一些优点和缺点。
+在[创建新的虚拟机](devtest-lab-add-vm.md)时，[自定义映像](devtest-lab-create-template.md) 和 [公式](devtest-lab-manage-formulas.md) 都可以用作基项。 但是，自定义映像和公式之间的主要区别在于自定义映像只是基于 VHD 的映像，而公式不仅是基于 VHD 的映像，*还有*预配置的设置 - 如 VM 大小、虚拟网络、子网和项目。 使用可在创建 VM 时重写的默认值，对这些预配置进行设置。 本文介绍和使用公式相比，使用自定义映像的一些优点和缺点。
 
 ## <a name="custom-image-pros-and-cons"></a>自定义映像得优点和缺点
 自定义映像以静态、不可变的方式，从所需的环境中创建 VM。 

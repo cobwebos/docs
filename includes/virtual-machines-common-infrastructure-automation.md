@@ -45,7 +45,7 @@
 
 Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
- 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure marketplace 中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和 VM 规模集 (VMSS)。 下表概述了当前启用了 cloud-init 的映像在 Azure 平台上的可用性：
+ 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure Marketplace 中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 下表概述了当前启用了 cloud-init 的映像在 Azure 平台上的可用性：
 
 | 发布者 | 产品 | SKU | 版本 | cloud-init 就绪
 |:--- |:--- |:--- |:--- |:--- |:--- |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 7d3e6a34b5851a5a35a530b18efc3db3e2249274
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: df1d316654bdfd282965000966f79543e0d5124c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -63,13 +63,15 @@ ms.lasthandoff: 11/04/2017
 
 ## <a name="service-chaining"></a>服务链
 
-可以将指向对等虚拟网络中虚拟机的用户定义的路由表配置为“下一个跃点”IP 地址，以便启用服务链。 使用服务链，可以通过用户定义的路由将流量从一个虚拟网络定向到对等虚拟网络中的虚拟设备。
+可将指向对等虚拟网络中虚拟机的用户定义的路由表配置为“下一跃点”IP 地址（也可配置指向虚拟网关的用户定义的路由），以便启用服务链。 使用服务链，可以通过用户定义的路由将流量从一个虚拟网络定向到对等虚拟网络中的虚拟设备（或虚拟网关）。
 
-用户也可以有效构建中心辐射型环境，允许中心在其中托管基础结构组件，如网络虚拟设备。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经在中心虚拟网络中运行的网络虚拟设备。 简言之，通过虚拟网络对等互连，用户定义的路由中的下一个跃点 IP 地址可以成为对等虚拟网络中虚拟机的 IP 地址。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md)。 若要了解如何创建中心和分支网络拓扑，请参阅[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)。
+可以部署中心辐射型网络，允许中心虚拟网络在其中托管基础结构组件，如网络虚拟设备或 VPN 网关。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经中心虚拟网络中的网络虚拟设备或 VPN 网关。 
+
+通过虚拟网络对等互连，用户定义的路由中的下一个跃点可以成为对等虚拟网络中虚拟机或 VNP 网关的 IP 地址。 但在虚拟网络之间进行路由时，不能通过用户定义的路由将 ExpressRoute 网关指定为下一跃点类型。 若要深入了解用户定义的路由，请参阅[用户定义的路由概述](virtual-networks-udr-overview.md#user-defined)。 若要了解如何创建中心和分支网络拓扑，请参阅[中心和分支网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)。
 
 ## <a name="gateways-and-on-premises-connectivity"></a>网关和本地连接
 
-无论是否与另一个虚拟网络对等，每个虚拟网络仍可具有自己的网关，并使用它连接到本地网络。 即使虚拟网络对等，用户也可以使用网关配置[虚拟网络到虚拟网络连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
+无论是否与另一个虚拟网络对等，每个虚拟网络仍可具有自己的网关，并使用它连接到本地网络。 即使虚拟网络对等，用户也可以使用网关配置[虚拟网络到虚拟网络连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 若已配置虚拟网络互连的两个选项，则虚拟网络之间的流量将通过对等配置（即通过 Azure 主干）流通。
 
@@ -98,20 +100,17 @@ ms.lasthandoff: 11/04/2017
 
 ## <a name="monitor"></a>监视
 
-对等互连两个通过资源管理器创建的虚拟网络时，必须为对等互连中的每个虚拟网络都配置对等互连。
-可以监视对等互连的状态。 对等互连处于以下状态之一：
+对等互连两个通过资源管理器创建的虚拟网络时，必须为对等互连中的每个虚拟网络都配置对等互连。 可以监视对等互连的状态。 对等互连处于以下状态之一：
 
-* **已启动**：从第一个虚拟网络创建与第二个虚拟网络的对等互连时，对等互连状态为“已启动”。
-
-* **已连接**：从第二个虚拟网络创建与第一个虚拟网络的对等互连时，对等互连状态为“已连接”。 如果查看第一个虚拟网络的对等互连状态，将看到其状态从“已启动”更改为“已连接”。 直到两个虚拟网络对等互连的对等互连状态均为“已连接”时，对等互连才成功建立。
-
-* **已断开连接**：如果在建立连接后删除了某个对等互连链接，对等互连状态为“已断开连接”。
+* **已启动**：创建从第一个虚拟网络到第二个虚拟网络的对等互连时显示的状态。
+* **已连接**：创建从第二个虚拟网络到第一个虚拟网络的对等互连后显示的状态。 第一个虚拟网络的对等互连状态从“已启动”更改为“已连接”。 直到两个虚拟网络对等互连的状态均为“已连接”时，虚拟网络对等互连才成功建立。
+* **已断开连接**：如果在两个虚拟网络之间建立对等互连后删除了从一个虚拟网络到另一个虚拟网络的对等互连，则这种情况下显示的状态为“已断开连接”。
 
 ## <a name="troubleshoot"></a>故障排除
 
-若要排查通过对等互连传送的流量问题，可以[检查有效路由](virtual-network-routes-troubleshoot-portal.md)。
+若要确认虚拟网络对等互连，可以[检查有效路由](virtual-network-routes-troubleshoot-portal.md)，看虚拟网络的任何子网中是否存在网络接口。 如果虚拟网络对等互连存在，则虚拟网络中的所有子网都会有下一跃点类型为“VNet 对等互连”的路由，这适用于每个对等互连的虚拟网络中的每个地址空间。
 
-还可以使用网络观察程序的[连接检查](../network-watcher/network-watcher-connectivity-portal.md)来排查与对等互连虚拟网络中某个虚拟机之间的连接问题。 使用连接检查可以查看流量如何直接从源 VM 的网络接口路由到目标 VM 的网络接口。
+还可以使用网络观察程序的[连接性检查](../network-watcher/network-watcher-connectivity-portal.md)来排查与对等互连虚拟网络中某个虚拟机之间的连接问题。 可以通过连接性检查来确定流量如何从源虚拟机的网络接口路由到目标虚拟机的网络接口。
 
 ## <a name="limits"></a>限制
 

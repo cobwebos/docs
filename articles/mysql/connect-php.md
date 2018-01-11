@@ -10,11 +10,11 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2017
-ms.openlocfilehash: 2af5871e8bf67070c83b5faebc1f9e44b0de609e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 530b02e7cd2a45ce3d9b8968b090d2b48b34e843
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL：使用 PHP 进行连接并查询数据
 本快速入门演示了如何使用 [PHP](http://php.net/manual/intro-whatis.php) 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 PHP 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -231,4 +231,4 @@ mysqli_close($conn);
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [在 Azure 中构建 PHP 和 MySQL Web 应用](../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json)
+> [通过 SSL 连接到 Azure Database for MySQL] (howto-configure-ssl.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: f63f317cc213519c50b0f07b4f93842a72500a82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 77f79c4e57aa8dd90fb0a519e7217e4f4e3618e7
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>教程：Azure Active Directory 与 Boomi 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Boomi
 - 可以让用户使用其 Azure AD 帐户自动登录到 Boomi（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Boomi 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Boomi 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -110,12 +110,12 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<accountname>/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<accountname>/saml`
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Boomi 支持团队](https://boomi.com/company/contact/)获取这些值。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Boomi 支持团队](https://boomi.com/company/contact/)获取这些值。
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
     
@@ -137,11 +137,11 @@ ms.lasthandoff: 12/11/2017
     
     ![配置单一登录](./media/active-directory-saas-boomi-tutorial/tutorial_attribute_05.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定” 。
+    d.单击“下一步”。 单击“确定” 。
 
 6. 单击“保存”按钮。
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 12/11/2017
     
     c. 在“标识提供者登录 URL”文本框中，输入 Azure AD 应用程序配置窗口中“SAML 单一登录服务 URL”的值。
 
-    d. 对于“联合 ID 位置”，选择“联合 ID 位于 FEDERATION_ID 属性元素中”单选按钮。 
+    d.单击“下一步”。 对于“联合 ID 位置”，选择“联合 ID 位于 FEDERATION_ID 属性元素中”单选按钮。 
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存”按钮。
 
@@ -198,11 +198,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-boomi-test-user"></a>创建 Boomi 测试用户
 
@@ -228,11 +228,11 @@ ms.lasthandoff: 12/11/2017
 
     c. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
     
-    d. 输入用户的**联合 ID**。 每个用户都必须具有在帐户中唯一标识用户的联合 ID。
+    d.单击“下一步”。 输入用户的**联合 ID**。 每个用户都必须具有在帐户中唯一标识用户的联合 ID。
     
-    e. 向用户分配“标准用户”角色。 不要分配管理员角色，因为这会向用户提供标准 Atmosphere 访问权限以及单一登录访问权限。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 向用户分配“标准用户”角色。 不要分配管理员角色，因为这会向用户提供标准 Atmosphere 访问权限以及单一登录访问权限。
     
-    f. 单击 **“确定”**。
+    f. 单击“确定”。
     
     > [!NOTE]
     > 用户不会收到包含可用于登录 AtomSphere 帐户的密码的欢迎通知电子邮件，因为其密码是通过标识提供者进行管理的。 可以使用任何其他 Boomi 用户帐户创建工具或 Boomi 提供的 API 来预配 AAD 用户帐户。 
@@ -276,7 +276,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

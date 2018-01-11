@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 565bcba848de1c518b25ff4c55a9a47aaa45bfb4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 170c3091efc90f640792682377ed10e2eab0cab3
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure Blob 存储操作
 
@@ -40,7 +40,7 @@ Azure Blob 存储是用于存储大量非结构化对象数据（例如文本或
 
 ## <a name="create-a-container"></a>创建容器
 
-始终将 blob 上传到容器中。 容器类似于计算机上的目录，允许在容器中组织成组的 Blob，就好比在计算机上的文件夹中组织文件。 存储帐户可以有任意数量的容器；它仅受到存储帐户中所占用空间的限制（最大 500TB）。 
+始终将 Blob 上传到容器中。 容器类似于计算机上的目录，允许在容器中组织成组的 Blob，就好比在计算机上的文件夹中组织文件。 存储帐户可以有任意数量的容器；它仅受到存储帐户中所占用空间的限制（最大 500TB）。 
 
 创建容器时，可以设置访问级别，这有助于定义谁可以访问该容器中的 Blob。 例如，它们可以是专用的（访问级别 = `Off`），这意味着如果没有共享访问签名或存储帐户的访问密钥，就无法访问它们。 如果你在创建容器时未指定访问级别，则默认为专用。
 
@@ -152,7 +152,7 @@ Get-AzureStorageBlob -Container $containerName -Context $ctx | select Name
 设置第二个存储帐户，检索上下文，在该存储帐户中设置容器并执行复制操作。 这部分的脚本与上述脚本几乎相同，只不过使用的第二个存储帐户而不是第一个。
 
 ```powershell
-#create new storage acount, get context 
+#create new storage account, get context 
 $storageAccount2Name = "blobstutorialtestcopy"
 $storageAccount2 = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccount2Name `

@@ -15,16 +15,11 @@
 #### [参数](resource-manager-templates-parameters.md)
 #### [变量](resource-manager-templates-variables.md)
 #### [资源](resource-manager-templates-resources.md)
-### [模板最佳实践](resource-manager-template-best-practices.md)
+#### [输出](resource-manager-templates-outputs.md)
 ### [链接到其他模板](resource-group-linked-templates.md)
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)
 ### [创建多个实例](resource-group-create-multiple.md)
-### [设置位置](resource-manager-template-location.md)
-### [分配标记](resource-manager-template-tags.md)
-### [设置子资源名称和类型](resource-manager-template-child-resource.md)
-### [更新资源](resource-manager-update.md)
-### [对参数使用对象](resource-manager-objects-as-parameters.md)
-### [在链接模板之间共享状态](best-practices-resource-manager-state.md)
+### [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource)
 ### [模板设计模式](best-practices-resource-manager-design-templates.md)
 
 

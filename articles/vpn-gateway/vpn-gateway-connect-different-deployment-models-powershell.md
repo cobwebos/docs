@@ -1,5 +1,5 @@
 ---
-title: "将经典虚拟网络连接到 Azure Resource Manager VNet：PowerShell | Microsoft 文档"
+title: "将经典虚拟网络连接到 Azure 资源管理器 VNet：PowerShell | Microsoft Docs"
 description: "了解如何使用 VPN 网关和 PowerShell 在经典 VNet 与 Resource Manager VNet 之间创建 VPN 连接"
 services: vpn-gateway
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
 
@@ -183,8 +183,8 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 2. 创建本地网络网关。 在虚拟网络中，局域网网关通常指本地位置。 在本例中，本地网络网关是指经典 VNet。 指定该网关的名称以供 Azure 引用，同时指定地址空间前缀。 Azure 使用指定的 IP 地址前缀来识别要发送到本地位置的流量。 如果稍后需要在创建网关之前调整此处的信息，可以修改这些值并再次运行该示例。
    
    **-Name** 是要分配以指代本地网络网关的名称。<br>
-   -AddressPrefix 是经典 VNet 的地址空间。<br>
-   -GatewayIpAddress 是经典 VNet 网关的公共 IP 地址。 请务必更改下面的示例以反映正确的 IP 地址。<br>
+   **-AddressPrefix** 是经典 VNet 的地址空间。<br>
+   **-GatewayIpAddress** 是经典 VNet 网关的公共 IP 地址。 请务必更改下面的示例以反映正确的 IP 地址。<br>
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
@@ -205,7 +205,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 5. 通过运行以下命令，检索用于网关的子网。 在此步骤中，我们还将设置一个要在下一步使用的变量。
    
    **-Name** 是 Resource Manager VNet 的名称。<br>
-   -ResourceGroupName 是 VNet 所关联的资源组。 此 VNet 必须已经存在网关子网，并且该子网必须命名为 *GatewaySubnet* 才能正常工作。<br>
+   **-ResourceGroupName** 是 VNet 所关联的资源组。 此 VNet 必须已经存在网关子网，并且该子网必须命名为 *GatewaySubnet* 才能正常工作。<br>
 
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `

@@ -1,6 +1,6 @@
 ---
 title: "使用 REST API 和模板部署资源 | Microsoft Docs"
-description: "使用 Azure Resource Manager 和 Resource Manager REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。"
+description: "使用 Azure 资源管理器和资源管理器 REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/10/2017
 ms.author: tomfitz
 ms.openlocfilehash: 46856a25fb57bb2c5a3c1aeae13c11655e1a58a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 > 有关在部署过程中调试错误的帮助，请参阅：
 > 
 > * [查看部署操作](resource-manager-deployment-operations.md)，了解如何获取有助于排查错误的信息
-> * [排查使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)，了解如何解决常见的部署错误
+> * [排查使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)，了解如何解决常见的部署错误
 > 
 > 
 

@@ -1,4 +1,4 @@
-使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。
+使用 [az group create](/cli/azure/group?view=azure-cli-latest#az_group_create) 命令创建资源组。
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 

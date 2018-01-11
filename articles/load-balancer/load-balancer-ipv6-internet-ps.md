@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: a84fd69c568e26bbd1ff06b699b804c70e0e9c09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 
@@ -49,7 +49,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="deploying-the-solution-using-the-azure-powershell"></a>使用 Azure PowerShell 部署解决方案
 
-以下步骤说明如何使用 Azure Resource Manager 和 PowerShell 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
+以下步骤说明如何使用 Azure 资源管理器和 PowerShell 创建面向 Internet 的负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，再将其合成一个新资源。
 
 若要部署负载均衡器，需要创建并配置以下对象：
 
@@ -59,11 +59,11 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 * 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
 
-有关详细信息，请参阅 [Azure Resource Manager 对负载均衡器的支持](load-balancer-arm.md)。
+有关详细信息，请参阅 [Azure 资源管理器对负载均衡器的支持](load-balancer-arm.md)。
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>将 PowerShell 设置为使用 Resource Manager
 
-确保具备 Azure Resource Manager 模块的最新生产版本才可用于 PowerShell。
+确保具备 Azure 资源管理器模块的最新生产版本才可用于 PowerShell。
 
 1. 登录 Azure
 

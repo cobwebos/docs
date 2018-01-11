@@ -7,20 +7,20 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 8b84b90e72f8cac1fc1f8a90391b7a5a4f6be1f4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 7550748c496f4e5c671ab49f9b139d2d4926d497
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>使用模拟设备测试解决方案
 
-本教程介绍如何在远程监视预配置解决方案中使用和自定义设备模拟器微服务。 为了演示设备模拟器的功能，本教程在 Contoso IoT 应用程序中使用了两个方案。
+本教程介绍如何在远程监视预配置解决方案中自定义设备模拟器微服务。 为了演示设备模拟器的功能，本教程在 Contoso IoT 应用程序中使用了两个方案。
 
 在第一个方案中，Contoso 想要测试新的智能灯泡设备。 为了执行测试，我们创建了具有以下特征的新模拟设备：
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 11/18/2017
       "SwitchOff": {
         "Type": "javascript",
         "Path": "SwitchOff-method.js"
-      },
+      }
     }
     ```
 
@@ -273,9 +273,9 @@ ms.lasthandoff: 11/18/2017
 
 配置项目，将新的“灯泡”设备文件复制到输出目录：
 
-* 如果使用 Visual Studio，请确保将上一部分中创建的三个新的灯泡文件复制到解决方案中的“服务”项目。 然后使用**解决方案资源管理器**将其标记为要复制到输出目录。
+* 如果使用 Visual Studio，请确保将上一部分中创建的四个新的灯泡文件复制到解决方案中的“服务”项目。 然后使用**解决方案资源管理器**将其标记为要复制到输出目录。
 
-* 如果使用 Visual Studio Code，请打开 **Services.csproj** 文件并添加在上一部分中创建的三个新的灯泡文件。 请参阅 **Services.csproj** 文件中的现有设备模型文件条目作为示例。
+* 如果使用 Visual Studio Code，请打开 **Services.csproj** 文件并添加在上一部分中创建的四个新的灯泡文件。 请参阅 **Services.csproj** 文件中的现有设备模型文件条目作为示例。
 
 若要在已部署的解决方案中测试新设备，请参阅以下文档之一：
 

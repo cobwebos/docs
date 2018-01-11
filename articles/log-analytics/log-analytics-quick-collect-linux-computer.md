@@ -12,25 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 12/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 66748adc49ef921ab8adb5306b2a483234b076ae
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: fae88e44ee763a0c59b4ad2c731d77db379aa1ee
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>从托管在环境中的 Linux 计算机上收集数据
 [Azure Log Analytics](log-analytics-overview.md) 可直接从物理或虚拟 Linux 计算机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Linux 计算机中配置或收集数据。  有关 Azure Linux VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要了解部署 Linux 代理的网络和系统要求，请参阅[使用 Azure Log Analytics 从环境收集数据](log-analytics-concept-hybrid.md#prerequisites)。
+
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
 
 ## <a name="create-a-workspace"></a>创建工作区
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
   * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 

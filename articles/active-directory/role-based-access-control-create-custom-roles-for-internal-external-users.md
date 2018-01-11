@@ -4,21 +4,23 @@ description: "为内部和外部用户分配使用 PowerShell 与 CLI 创建的�
 services: active-directory
 documentationcenter: 
 author: andreicradu
-manager: catadinu
+manager: mtillman
 editor: kgremban
 ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 12/06/2017
 ms.author: a-crradu
-ms.openlocfilehash: 213b02205bbe7f767b6aff6a0693bb34b97cb9ec
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.reviewer: skwan
+ms.custom: it-pro
+ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="intro-on-role-based-access-control"></a>基于角色的访问控制简介
 
@@ -35,7 +37,7 @@ ms.lasthandoff: 11/30/2017
 * 确保为用户订阅注册以下资源提供程序：**Microsoft.Authorization**。 有关如何注册资源提供程序的详细信息，请参阅 [Resource Manager 提供程序、区域、API 版本和架构](../azure-resource-manager/resource-manager-supported-services.md)。
 
 > [!NOTE]
-> 从 O365 门户预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：Azure Active Directory 访问权限）不符合 RBAC 的使用条件。
+> 从 Office 365 管理员中心预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：Azure Active Directory 访问权限）不符合 RBAC 的使用条件。
 
 ## <a name="how-can-rbac-be-used"></a>如何使用 RBAC
 可在 Azure 中的三个不同范围应用 RBAC。 这些范围从最高到最低的顺序为：
@@ -102,7 +104,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 
 ![RBAC 角色的电子邮件邀请消息](./media/role-based-access-control-create-custom-roles-for-internal-external-users/6.png)
 
-从现在开始，该外部用户会显示在 Azure Active Directory 租户中，可以在 Azure 门户和经典门户中查看该用户。
+从现在开始，该外部用户会显示在 Azure Active Directory 租户中，可以在 Azure 门户中查看该用户。
 
 
 
@@ -112,14 +114,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 
 
 
-
-
-![Azure Active Directory Azure 经典门户中的用户边栏选项卡](./media/role-based-access-control-create-custom-roles-for-internal-external-users/8.png)
-
-在这两个门户的“用户”视图中，可根据以下特征识别外部用户：
-
-* Azure 门户中的不同图标类型
-* 经典门户中的不同来源点
+在“用户”视图中，可以通过 Azure 门户中的不同图标类型识别外部用户。
 
 但是，在“订阅”范围向外部用户授予“所有者”或“参与者”访问权限并不允许他们访问管理员用户的目录，除非“全局管理员”允许访问。 在用户属性中，可以看到包含“成员”和“来宾”这两个通用参数的“用户类型”。 成员是已在目录中注册的用户，而来宾是来自外部源的、受邀加入目录的用户。 有关详细信息，请参阅 [Azure Active Directory 管理员如何添加 B2B 协作用户](active-directory-b2b-admin-add-users.md)。
 
@@ -145,9 +140,6 @@ Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如�
 * 无法查看订阅中的其他任何资源类型
 * 从计费角度无法操作任何更改
 
-> [!NOTE]
-> RBAC 是只能在 Azure 门户中使用的功能，不授予对经典门户的访问权限。
-
 ## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>将内置的 RBAC 角色分配到外部用户
 针对此项测试中的不同方案，外部用户“alflanigan@gmail.com”将添加为“虚拟机参与者”。
 
@@ -156,9 +148,7 @@ Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如�
 
 ![虚拟机参与者内置角色](./media/role-based-access-control-create-custom-roles-for-internal-external-users/11.png)
 
-使用此内置角色的此外部用户的正常行为是仅查看和管理虚拟机，以及部署时所需的仅限 Resource Manager 的相邻资源。 根据设计，这些受限角色只提供对在 Azure 门户中创建的相应资源的访问权限，不管是否仍可在经典门户中部署其他某些资源（例如：虚拟机）。
-
-
+使用此内置角色的此外部用户的正常行为是仅查看和管理虚拟机，以及部署时所需的仅限 Resource Manager 的相邻资源。 根据设计，这些受限角色只提供对在 Azure 门户中创建的相应资源的访问权限。
 
 
 

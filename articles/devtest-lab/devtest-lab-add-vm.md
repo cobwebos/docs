@@ -3,7 +3,7 @@ title: "向 Azure 开发测试实验室中的实验室添加 VM | Microsoft 文�
 description: "了解如何向 Azure 开发测试实验室中的实验室添加虚拟机"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
-ms.author: tarcher
-ms.openlocfilehash: 449bffb040dafc8edd0b8b0afd80dbea35cd28ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 5d9fb235eae381003d96895eae9eff86c711e372
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](devtest-lab-create-first-vm.md)，则很可能从预加载的[应用商店映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为[自定义映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)的*基本*映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。
@@ -47,9 +47,9 @@ ms.lasthandoff: 10/11/2017
 1. 选择“高级设置”来配置 VM 的网络选项和到期选项。 
 
    若要设置过期选项，请选择“日历”图标，指定一个自动删除 VM 的日期。  默认情况下，VM 永不过期。 
-1. 如果想要查看或复制 Azure Resource Manager 模板，请参阅[保存 Azure Resource Manager 模板](#save-azure-resource-manager-template)部分，并在完成后返回此处。
+1. 如果想要查看或复制 Azure 资源管理器模板，请参阅[保存 Azure 资源管理器模板](#save-azure-resource-manager-template)部分，并在完成后返回此处。
 1. 选择“创建”将指定的 VM 添加到实验室。
-1. 实验室边栏选项卡显示 VM 的创建状态 - 先是显示为“正在创建”，然后当启动 VM 后显示为“正在运行”。
+1. 实验室边栏选项卡显示 VM 的创建状态 - 先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
 
 > [!NOTE]
 > [添加可认领 的 VM](devtest-lab-add-claimable-vm.md) 演示了如何使 VM 可认领以使其供实验室中的任意用户使用。
@@ -97,14 +97,14 @@ ms.lasthandoff: 10/11/2017
 1. 在“添加项目”边栏选项卡上，根据需要进行更改，并选择“确定”关闭“添加项目”边栏选项卡。
 1. 选择“确定”关闭“已选项目”边栏选项卡。
 
-## <a name="save-azure-resource-manager-template"></a>保存 Azure Resource Manager 模板
-Azure Resource Manager 模板提供一种声明性方式来定义可重复部署。 下列步骤说明如何为正在创建的 VM保存 Azure Resource Manager 模板。
-保存后，可以使用 Azure Resource Manager 模板[通过 Azure PowerShell 部署新的 VM](../azure-resource-manager/resource-group-overview.md#template-deployment)。
+## <a name="save-azure-resource-manager-template"></a>保存 Azure 资源管理器模板
+Azure 资源管理器模板提供一种声明性方式来定义可重复部署。 下列步骤说明如何为正在创建的 VM保存 Azure 资源管理器模板。
+保存后，可以通过 Azure PowerShell 使用 Azure 资源管理器[部署新的 VM](../azure-resource-manager/resource-group-overview.md#template-deployment)。
 
 1. 在“虚拟机”边栏选项卡上选择“查看 ARM 模板”。
-2. 在“查看 Azure Resource Manager 模板”边栏选项卡上选择模板文本。
+2. 在“查看 Azure 资源管理器模板”边栏选项卡上选择模板文本。
 3. 将所选文本复制到剪贴板。
-4. 选择“确定”关闭“查看 Azure Resource Manager 模板”边栏选项卡。
+4. 选择“确定”关闭“查看 Azure 资源管理器模板”边栏选项卡。
 5. 打开文本编辑器。
 6. 从剪贴板粘贴到模板文本中。
 7. 保存该文件以供将来使用。
@@ -112,6 +112,6 @@ Azure Resource Manager 模板提供一种声明性方式来定义可重复部署
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>后续步骤
-* 创建 VM 后，可通过选择 VM 边栏选项卡上的“连接”来连接 VM。
+* 创建 VM 后，可通过在 VM 边栏选项卡上“连接”以连接 VM。
 * 了解如何[为开发测试实验室 VM 创建自定义项目](devtest-lab-artifact-author.md)。
-* 浏览[开发测试实验室 Azure Resource Manager 快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
+* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。

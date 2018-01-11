@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 812acea414096880c2b80958cb7c6f410f0d9c98
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>在已加入域的 HDInsight 中配置 Hive 策略
 了解如何为 Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/01/2017
 1. 通过浏览器连接到 Ranger 管理 UI。 URL 为 https://&lt;ClusterName>.azurehdinsight.net/Ranger/。
 
    > [!NOTE]
-   > Ranger 使用的凭据与 Hadoop 群集不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 inprivate 浏览器窗口连接到 Ranger 管理 UI。
+   > Ranger 使用的凭据与 Hadoop 群集不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 InPrivate 浏览器窗口连接到 Ranger 管理 UI。
    >
    >
 2. 使用群集管理员域用户名和密码登录：
@@ -45,10 +45,10 @@ ms.lasthandoff: 12/01/2017
     目前，Ranger 只能处理 Yarn 和 Hive。
 
 ## <a name="create-domain-users"></a>创建域用户
-在 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)（配置已加入域的 HDInsight 群集）教程中，已创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
+在 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#optional-create-ad-users-and-groups)（配置已加入域的 HDInsight 群集）教程中，已创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
-本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad)（配置已加入域的 HDInsight 群集）教程中创建的。  在下一部分，会在 Excel 中测试两个策略。
+本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#optional-create-ad-users-and-groups)（配置已加入域的 HDInsight 群集）教程中创建的。  在下一部分，会在 Excel 中测试两个策略。
 
 **创建 Ranger 策略**
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 12/01/2017
     ![打开数据连接向导][img-hdi-simbahiveodbc.excel.dataconnection]
 3. 选择“ODBC DSN”作为数据源，并单击“下一步”。
 4. 从 ODBC 数据源中，选择在上一步中创建的数据源名称，并单击“下一步”。
-5. 在向导中重新输入群集的密码，并单击“确定”。 等待“选择数据库和表”对话框打开。 这可能需要几秒钟时间。
+5. 在向导中重新输入群集的密码，然后单击“确定”。 等待“选择数据库和表”对话框打开。 这可能需要几秒钟时间。
 6. 选择 **hivesampletable**，并单击“下一步”。
 7. 单击“完成” 。
 8. 在“导入数据”对话框中，可更改或指定查询。 为此，请单击“属性”。 这可能需要几秒钟时间。
@@ -123,7 +123,7 @@ ms.lasthandoff: 12/01/2017
 测试在最后一个部分中创建的第二个策略 (read-hivesampletable-devicemake)
 
 1. 在 Excel 中添加一个新工作表。
-2. 遵循上一过程导入数据。  要做的唯一更改是使用 hiveuser2 的凭据，而不是 hiveuser1 的凭据。 此查询会失败，因为 hiveuser2 仅有权查看两个列。 此时会出现以下错误：
+2. 遵循上一过程导入数据。  所做的唯一更改是使用 hiveuser2 的凭据，而不是 hiveuser1 的凭据。 此查询失败，因为 hiveuser2 仅有权查看两个列。 此时会出现以下错误：
 
         [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
 3. 请遵循相同的过程导入数据。 这一次，请使用 hiveuser2 的凭据，同时，将以下 select 语句：
@@ -138,7 +138,7 @@ ms.lasthandoff: 12/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
-* 若要管理已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](apache-domain-joined-manage.md)（管理已加入域的 HDInsight 群集）。
+* 若要管理已加入域的 HDInsight 群集，请参阅[管理已加入域的 HDInsight 群集](apache-domain-joined-manage.md)。
 * 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）
 * 要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop with the Microsoft Hive ODBC drive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop）

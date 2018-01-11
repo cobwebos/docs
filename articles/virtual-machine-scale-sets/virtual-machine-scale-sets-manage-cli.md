@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 5686d8bd3f9817be2308583afe778e0615154580
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 6ae05dc8faf950f584806d9b4a3e7e1466ded652
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 2.0 命令。
 
-若要完成这些管理任务，需要 Azure CLI 2.0 的最新版本。 有关安装和使用最新版本的详细信息，请参阅 [Azure CLI 2.0 安装](/cli/azure/install-azure-cli)。 如果需要创建虚拟机规模集，可以[在 Azure 门户中创建规模集](virtual-machine-scale-sets-portal-create.md)。
+若要完成这些管理任务，需要 Azure CLI 2.0 的最新版本。 有关安装和使用最新版本的详细信息，请参阅 [Azure CLI 2.0 安装](/cli/azure/install-azure-cli)。 如果需要创建虚拟机规模集，可以[在 Azure 门户中创建规模集](virtual-machine-scale-sets-create-portal.md)。
 
 
 ## <a name="view-information-about-a-scale-set"></a>查看有关规模集的信息
@@ -127,7 +127,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>删除规模集中的 VM
-要在规模集中删除一个或多个 VM，请使用 [az vmss delete-instances](/cli/azure/vmss#delete-instances)。 通过 `--instance-ids`` 参数，可指定要删除的一个或多个 VM。 若指定实例 ID 的 *，规模集中所有 VM 都将删除。 要删除多个 VM，请用空格分隔每个实例 ID。
+要在规模集中删除一个或多个 VM，请使用 [az vmss delete-instances](/cli/azure/vmss#delete-instances)。 通过 `--instance-ids` 参数，可指定要删除的一个或多个 VM。 若指定实例 ID 的 *，规模集中所有 VM 都将删除。 要删除多个 VM，请用空格分隔每个实例 ID。
 
 以下示例将删除 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
 

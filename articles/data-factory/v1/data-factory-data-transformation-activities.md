@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: a631708ce755b07701c053e217dd658e5f7bb82b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]

@@ -43,8 +43,10 @@
       items:
         - name: Wordpress - 门户
           href: 'https://portal.azure.com/#create/WordPress.WordPress'
-        - name: PHP - Azure CLI
-          href: ../app-service/containers/tutorial-php-mysql-app.md?toc=%2fazure%2fmysql%2ftoc.json
+        - name: 将 PHP 与 MySQL 配合使用
+          href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+        - name: 将 Java 与 MySQL 配合使用
+          href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
 - name: 示例
   items:
     - name: Azure CLI
@@ -107,6 +109,8 @@
           href: concepts-migrate-dump-restore.md
         - name: 导入和导出
           href: concepts-migrate-import-export.md
+        - name: 停机时间最短的迁移
+          href: howto-migrate-online.md
     - name: 连接应用程序
       items:
         - name: 创建用户

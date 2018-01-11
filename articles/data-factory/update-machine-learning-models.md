@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: df139383eb2fa20fe75ecc6b3f5e2aa0773f186c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33855213c4bd3a677c8ebbed6624c85138d8ea6
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
@@ -62,7 +62,7 @@ ms.lasthandoff: 11/01/2017
 
 | 属性                      | 说明                              | 必选 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| 名称                          | 管道中活动的名称     | 是      |
+| name                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
 | type                          | 对于 Azure 机器学习“更新资源”活动，活动类型为 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 属性的 Azure 机器学习链接服务。 | 是      |
@@ -86,33 +86,6 @@ ms.lasthandoff: 11/01/2017
 2. 预测性 Web 服务的更新资源终结点的 Azure 机器学习链接服务。 此链接服务由“更新资源”活动用来使用上一步骤中返回的 iLearner 文件更新预测性 Web 服务。 
 
 对于第二个 Azure 机器学习链接服务，当 Azure 机器学习 Web 服务是经典 Web 服务与当该服务是新的 Web 服务时，配置是不同的。 下面的各部分分别讨论了不同之处。 
-
-## <a name="web-service-is-a-classic-web-service"></a>Web 服务是经典 Web 服务时
-如果预测 Web 服务是“经典 Web 服务”，请使用 Azure 门户创建第二个“非默认且可更新的终结点”。 请参阅[创建终结点](../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
-
-* 单击“批处理执行”获取 **mlEndpoint** JSON 属性的 URI 值。
-* 单击“更新资源”链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
-
-![可更新终结点](./media/update-machine-learning-models/updatable-endpoint.png)
-
-在此之后，使用以下链接服务示例创建一个新的 Azure 机器学习链接服务。 此链接服务使用 apiKey 进行身份验证。  
-
-```json
-{
-    "name": "updatableScoringEndpoint2",
-    "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--scoring experiment--/jobs",
-            "apiKey": {
-            "type": "SecureString",
-            "value": "APIKeyOfEndpoint2"
-            },
-            "updateResourceEndpoint": "https://management.azureml.net/workspaces/xxx/webservices/--scoring experiment--/endpoints/endpoint2"
-        }
-    }
-}
-```
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web 服务是新的 Azure 资源管理器 Web 服务时 
 

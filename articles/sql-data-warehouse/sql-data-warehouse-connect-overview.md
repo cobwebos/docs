@@ -13,23 +13,23 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: anvang;barbkess;kevin
+ms.openlocfilehash: bd2e89f39d54a2186fa9ca343d04135b2da5d352
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>连接到 Azure SQL 数据仓库
 本文介绍首次连接到 SQL 数据仓库的操作方法。
 
 ## <a name="find-your-server-name"></a>查找服务器名称
-连接到 SQL 数据仓库时，第一步是了解如何查找服务器名称。  例如，以下示例中的服务器名称是 sample.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
+连接到 SQL 数据仓库时，第一步是了解如何查找服务器名称。  例如，以下示例中的服务器名称是 samplesvr.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
 
 1. 转到 [Azure 门户][Azure portal]。
-2. 单击“SQL 数据库” 
-3. 单击要连接到的数据库。
+2. 单击“SQL 数据仓库”。
+3. 单击要连接到的数据仓库。
 4. 找到完整的服务器名称。
    
     ![完整服务器名称][1]
@@ -93,6 +93,6 @@ SQL 数据仓库在连接和创建对象期间标准化一些设置。 这些设
 [Azure portal]: https://portal.azure.com
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/get-server-name.png
+[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
 
 

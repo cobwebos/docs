@@ -4,7 +4,7 @@ description: "此页面将帮助用户了解什么是应用密码，以及在 Az
 services: multi-factor-authentication
 documentationcenter: 
 author: barlanmsft
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.service: multi-factor-authentication
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 12/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: c10a636b81751074f219682fec79ffe9f648a2c8
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 166a04fa18a57b239c195cbdd7b53a3baafbad65
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的应用密码是什么？
-某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持 Multi-Factor Authentication。 Multi-Factor Authentication 是按用户启用的。 这意味着，如果为某个用户启用了 Multi-Factor Authentication，而该用户尝试使用非浏览器应用会失败。 使用应用密码可以避免这种情况。
+某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持 Multi-Factor Authentication。 Multi-Factor Authentication 是按用户启用的。 这意味着，如果为某个用户启用了 Multi-Factor Authentication，而该用户尝试使用非浏览器应用会失败。 使用应用密码可以避免这种情况。 如果通过条件访问策略而不是通过每用户 MFA 强制实施多重身份验证，则无法创建应用密码。 使用条件访问策略控制访问权限的应用程序不需要应用密码。
 
 创建一个应用密码后，可使用此密码来取代这些非浏览器应用中的原始密码。 这是因为注册双重验证时，就是在告知 Microsoft 不让任何人使用密码登录（如果这些人还无法执行第二个验证）。 手机上的 Apple 本机电子邮件客户端不能以身份登录，因为它无法请求双重验证。 此问题的解决方案是创建更安全的应用密码，该密码平常不使用，但仅用于这些无法支持双重验证的应用。 请使用应用密码，以便应用可以绕过多重身份验证并继续工作。
 

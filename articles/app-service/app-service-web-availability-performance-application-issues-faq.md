@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: d997c291e487e27b7e12c015e34ad839ac020151
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 36869eb523706787257160e5859f50b24f7bf08b
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -174,7 +174,7 @@ Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行�
 
 如果使用应用服务的本地缓存功能，则应用服务实例的日志文件和数据文件夹的文件夹结构会受影响。 使用本地缓存时，会在存储日志文件和数据文件夹中创建子文件夹。 子文件夹使用命名模式“唯一标识符”+ 时间戳。 每个子文件夹都对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。
 
-若要确定是否在使用本地缓存，请检查应用服务“应用程序设置”选项卡。如果使用本地缓存，则应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。 
+若要确定是否在使用本地缓存，请检查应用服务“应用程序设置”选项卡。如果使用本地缓存，则应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
 
 如果未使用本地缓存并且遇到此问题，请提交支持请求。
 

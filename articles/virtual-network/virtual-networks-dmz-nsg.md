@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure Resource Manager 模板构建简单的外围网络
+# <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure 资源管理器模板构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
 
 > [!div class="op_single_selector"]
-> * [Resource Manager 模板](virtual-networks-dmz-nsg.md)
+> * [资源管理器模板](virtual-networks-dmz-nsg.md)
 > * [经典 - PowerShell](virtual-networks-dmz-nsg-asm.md)
 > 
 >
@@ -46,11 +46,11 @@ ms.lasthandoff: 10/11/2017
 * 一个代表 DNS 服务器的 Windows Server（“DNS01”）
 * 与应用程序 Web 服务器关联的公共 IP 地址
 
-在参考部分，提供了一个用于构建本示例中所述的环境的 Azure Resource Manager 模板的链接。 尽管该示例模板还完成了 VM 和虚拟网络的构建，但本文档未对其进行详细描述。 
+在参考部分，提供了一个用于构建本示例中所述的环境的 Azure 资源管理器模板的链接。 尽管该示例模板还完成了 VM 和虚拟网络的构建，但本文档未对其进行详细描述。 
 
 **若要构建此环境**，请参阅本文档参考部分中的详细说明；
 
-1. 通过以下链接部署 Azure Resource Manager 模板：[Azure 快速启动模板][Template]
+1. 通过以下链接部署 Azure 资源管理器模板：[Azure 快速启动模板][Template]
 2. 通过以下链接安装示例应用程序：[示例应用程序脚本][SampleApp]
 
 >[!NOTE]
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 > 
 >
 
-以下部分通过演练 Azure Resource Manager 模板的关键代码行，详细说明本示例的网络安全组及其运行方式。
+以下部分通过演练 Azure 资源管理器模板的关键代码行，详细说明本示例的网络安全组及其运行方式。
 
 ## <a name="network-security-groups-nsg"></a>网络安全组 (NSG)
 本示例将构建一个 NSG 组，然后加载六个规则。 
@@ -325,8 +325,8 @@ ms.lasthandoff: 10/11/2017
 可以在[此处][HOME]找到更多示例和网络安全边界的概述。
 
 ## <a name="references"></a>参考
-### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
-本示例使用 Microsoft 维护的、向社区开放的 GitHub 存储库的预定义 Azure Resource Manager 模板。 可直接从 GitHub 部署此模板，或者根据需要将其下载并进行修改。 
+### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+本示例使用 Microsoft 维护的、向社区开放的 GitHub 存储库的预定义 Azure 资源管理器模板。 可直接从 GitHub 部署此模板，或者根据需要将其下载并进行修改。 
 
 主模板位于名为“azuredeploy.json”的文件中。 可通过 PowerShell 或 CLI 提交此模板（结合关联的“azuredeploy.parameters.json”文件），以部署此模板。 最简单的方法就是使用 GitHub 上的 README.md 页面中的“部署到 Azure”按钮。
 

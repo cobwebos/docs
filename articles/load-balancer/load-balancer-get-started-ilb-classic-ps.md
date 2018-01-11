@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 ms.openlocfilehash: 85fd757bdd6dd9906a23977b760f01bb1f85bf77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>开始使用 PowerShell 创建内部负载均衡器（经典）
 

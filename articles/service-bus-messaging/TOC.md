@@ -6,7 +6,6 @@
 
 # 入门
 ## [创建命名空间](service-bus-create-namespace-portal.md)
-### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 ## 使用队列
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -26,6 +25,8 @@
 
 # 如何
 ## 规划和设计
+### [托管服务标识（预览）](service-bus-managed-service-identity.md)
+### [基于角色的访问控制（预览）](service-bus-role-based-access-control.md)
 ### [高级消息传送](service-bus-premium-messaging.md)
 ### [Azure 队列与服务总线队列的比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [优化性能](service-bus-performance-improvements.md)
@@ -35,6 +36,7 @@
 
 ## 开发
 ### 消息处理
+#### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 #### [消息、有效负载和序列化](service-bus-messages-payloads.md)
 #### [消息传输、锁定和处置](message-transfers-locks-settlement.md)
 #### [消息序列化和时间戳](message-sequencing.md)
@@ -62,12 +64,13 @@
 #### [将实体与自动转发链接在一起](service-bus-auto-forwarding.md)
 #### [事务处理](service-bus-transactions.md)
 #### [配对命名空间实现](service-bus-paired-namespaces.md)
+### [端到端跟踪和诊断](service-bus-end-to-end-tracing.md)
 ## 管理
 ### [使用 Azure 监视来监视服务总线](service-bus-metrics-azure-monitor.md)
 ### [服务总线管理库](service-bus-management-libraries.md)
 ### [诊断日志](service-bus-diagnostic-logs.md)
 ### [挂起和重新激活消息传递实体](entity-suspend.md)
-### [使用 Azure Resource Manager 模板](service-bus-resource-manager-overview.md)
+### [使用 Azure 资源管理器模板](service-bus-resource-manager-overview.md)
 #### [创建命名空间](service-bus-resource-manager-namespace.md)
 #### [创建命名空间和队列](service-bus-resource-manager-namespace-queue.md)
 #### [创建包含主题和订阅的命名空间](service-bus-resource-manager-namespace-topic.md)

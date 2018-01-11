@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3fd5a5b9d2e2eec485fd9ecc5380ad6adb9851d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77c8c8dbe6228d80062f34f4bb7fc93a1871e8c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
 
@@ -52,13 +52,16 @@ ms.lasthandoff: 10/11/2017
 
     ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-2. 选择适用于所需语言的“QueueTrigger”模板，然后使用表中指定的设置。
+2. 在搜索栏中键入 `queue`，然后选择需要用于队列存储触发器模板的语言。
 
-    ![创建存储队列触发的函数。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![选择队列存储触发器模板。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+
+3. 使用图像下的表中指定的设置。
+    ![配置存储队列触发的函数。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
     
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
-    | **为函数命名** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+    | **Name** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
     | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
     | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |    
 

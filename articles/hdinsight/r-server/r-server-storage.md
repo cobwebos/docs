@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: aafcc818af4c6e5d141d3633b31b913802a21752
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 863277294fc0462e9221edffab1dd4e2001d7493
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>适用于 R Server on HDInsight 的 Azure 存储解决方案
 
@@ -43,19 +43,25 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
 
 ## <a name="use-azure-blob-storage-accounts-with-r-server"></a>配合使用 Azure Blob 存储帐户和 R Server
 
-如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。 为此，需要在创建群集时在 UI 中指定其他存储帐户，并按照下列步骤进行操作，以便与 R Server 配合使用。
+创建 R Server 群集时若指定了多个存储帐户，则可通过以下介绍了解如何使用辅助帐户在 R Server 上访问数据和执行操作。 假定为以下存储帐户和容器：storage1 和名为 container1 的一个默认容器以及 storage2。
 
 > [!WARNING]
 > 出于性能目的，HDInsight 群集会在与你指定的主存储帐户相同的数据中心内创建。 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
-1. 使用存储帐户名 **storage1** 并使用名为 **container1** 的默认容器创建 HDInsight 群集。
-2. 指定名为 **storage2** 的另一个存储帐户。  
-3. 将 mycsv.csv 文件复制到 /share 目录，并对该文件执行分析。  
+1. 使用 SSH 客户端，以远程用户身份连接到群集的边缘节点。  
+
+  + 在 Azure 门户 >“HDI 集群服务”页面 >“概述”中，单击“安全外壳 (SSH)”。
+  + 在“主机名”中，选择边缘节点（其名称中包含 ed-ssh.azurehdinsight.net）。
+  + 复制主机名。
+  + 打开像 PutTY 或 SmartTY 这样的 SSH 客户端并输入主机名。
+  + 在用户名处输入 remoteuser，然后输入群集密码。
+  
+2. 将 mycsv.csv 文件复制到 /share 目录。 
 
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal myscsv.scv /share  
 
-4. 在 R 代码中，将名称节点设置为 **default**，并设置要处理的目录和文件。  
+3. 切换到 R Studio 或其他 R 控制台，写入 R 代码，将名称节点设置为默认和要访问的文件的位置。  
 
         myNameNode <- "default"
         myPort <- 0
@@ -64,7 +70,7 @@ Microsoft R Server on HDInsight 具有多种存储解决方案，用于保留数
         bigDataDirRoot <- "/share"  
 
         #Define Spark compute context:
-        mySparkCluster <- RxSpark(consoleOutput=TRUE)
+        mySparkCluster <- RxSpark(nameNode=myNameNode, consoleOutput=TRUE)
 
         #Set compute context:
         rxSetComputeContext(mySparkCluster)

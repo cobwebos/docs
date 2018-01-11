@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: nitinme
 ms.openlocfilehash: 2dd327f4e4abf19d41a54919c8b9c2e488d34d68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>从 Azure 存储 blob 复制数据到 Data Lake Store
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-    >[AZURE.NOTE] 上述语法指定将文件复制到 Data Lake Store 帐户中的文件夹。 如果指定的文件夹名不存在，则 AdlCopy 工具会创建一个文件夹。
+    >[AZURE.NOTE]上述语法指定将文件复制到 Data Lake Store 帐户中的文件夹。 如果指定的文件夹名不存在，则 AdlCopy 工具会创建一个文件夹。
 
     系统会提示输入 Azure 订阅（其下提供 Data Lake Store 帐户）的凭据。 会显示与下面类似的输出：
 

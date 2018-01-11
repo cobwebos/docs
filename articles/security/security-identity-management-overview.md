@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 85ea328bdea1aad28765712e3639f6719deab7e2
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 921d7eef90a86216dc13804d3dc4dd216247fb87
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云 (SaaS) 应用提供单一登录，并提供对你在本地运行的 Web 应用的访问。
@@ -81,7 +81,7 @@ Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证�
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
 安全监控、警报和基于机器学习的报告（它们识别不一致的访问模式）可以帮助保护业务。 可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
-在 Azure 经典门户中，报告按以下方式分类：
+在 Azure 门户中，报告按以下方式分类：
 
 * 异常报告 - 包含我们发现存在异常的登录事件。 我们的目标是让你知道这项活动并使你能够就事件是否可疑做出决定。
 * 集成应用程序报告 - 就你所在的组织如何使用云应用程序提供见解。 Azure Active Directory 提供与数千个云应用程序的集成。

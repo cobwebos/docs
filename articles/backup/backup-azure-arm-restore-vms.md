@@ -15,19 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: b659d5dc894afd2beef529c6b4f736e888b4540e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3b8bb53c467ad6f595a52e2a2e8f805a8f062f6
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
-> [!div class="op_single_selector"]
-> * [在经典门户中还原 VM](backup-azure-restore-vms.md)
-> * [在 Azure 门户中还原 VM](backup-azure-arm-restore-vms.md)
->
->
-
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
 
 * 新建 VM，表示处于特定时间点的已备份 VM。

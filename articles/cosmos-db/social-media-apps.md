@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: 9f2a3e104df579029da56ba515b2159c18f4eae6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分。 我们使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
@@ -103,7 +103,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 在获得其中一个列表之后，使用 [IN 运算符](documentdb-sql-query.md#WhereClause) 向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
+我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 在获得其中一个列表之后，使用 [IN 运算符](sql-api-sql-query.md#WhereClause) 向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
 
 可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/) [队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
 
@@ -237,7 +237,7 @@ Cosmos DB 根据给定的分区键（定义为文档中的一个属性）自动�
 
 但是你很快会意识到他们在平台的体验并不理想；他们与运营区域相距太远，延迟问题非常严重，显然不希望他们因此退出平台。 如果有一种简单的方法可以**扩展全球覆盖范围**就好了······确实有！
 
-通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-documentdb.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-documentdb.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](regional-failover.md)。 
+通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-sql-api.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-sql-api.md)中自动选择可用区域。 这也意味着可以拥有[多个故障转移区域](regional-failover.md)。 
 
 全局复制数据时，需确保客户端可以利用该数据。 如果要使用 Web 前端或从移动客户端访问 API，则可以部署 [Microsoft Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)并在所有所需区域克隆 Azure 应用服务（方法是通过使用性能配置支持扩展的全球覆盖范围）。 客户端访问前端或 API 时，将被路由到最近的应用服务，而该应用服务将连接到本地的 Cosmos DB 副本。
 

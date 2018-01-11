@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7f00fe304cc4a9de7727882bb2c38f85713bd521
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 46adcdf39625c85dc962a7541b68c5500cf920ee
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>发布托管应用程序供内部使用
 
@@ -91,6 +91,7 @@ Azure 门户使用 **createUiDefinition.json** 文件为创建托管应用程序
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
     "handler": "Microsoft.Compute.MultiVm",
     "version": "0.1.2-preview",
     "parameters": {
@@ -218,11 +219,11 @@ New-AzureRmManagedApplicationDefinition `
 
    ![选择“服务目录”](./media/publish-service-catalog-app/select-service-catalog.png)
 
-1. 选择“创建” 。
+1. 选择“创建”。
 
    ![选择“创建”](./media/publish-service-catalog-app/select-create.png)
 
-1. 从可用解决方案列表中查找要创建的托管应用程序并选择它。 选择“创建” 。
+1. 从可用解决方案列表中查找要创建的托管应用程序并选择它。 选择“创建”。
 
    ![查找托管应用程序](./media/publish-service-catalog-app/find-application.png)
 

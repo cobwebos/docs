@@ -307,7 +307,7 @@ Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时
 | RequestCountCacheUncacheable | 因资产的 Cache-Control 和 Expires 标头而无法缓存的资产的所有请求计数，这些标头指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存                |是   |否   |
 | RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。              |是   | 否  |
 | EgressTotal | 出站数据传输量（按 GB 计）              |是   |是   |
-| EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）            |是   |否   |
+| EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量* （按 GB 计）            |是   |否   |
 | EgressHttpStatus3xx | 针对状态代码为 3xx HTTP 的响应的出站数据传输量（按 GB 计）              |是   |否   |
 | EgressHttpStatus4xx | 针对状态代码为 4xx HTTP 的响应的出站数据传输量（按 GB 计）               |是   | 否  |
 | EgressHttpStatus5xx | 针对状态代码为 5xx HTTP 的响应的出站数据传输量（按 GB 计）               |是   |  否 |
@@ -318,7 +318,7 @@ Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时
 | EgressCacheUncacheable | 针对因资产的 Cache-Control 和/或 Expires 标头而无法缓存的资产的出站数据传输量。 指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。                   |是   | 否  |
 | EgressCacheOthers |  其他缓存方案的出站数据传输量。             |是   | 否  |
 
-*出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
+* 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>核心分析日志的架构 

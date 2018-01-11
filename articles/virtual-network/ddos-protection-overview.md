@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b26108b000bac56fe7d49a3a634f2be9d7543a8
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -33,7 +33,7 @@ Azure DDoS 保护与应用程序设计最佳做法相结合，可提供对 DDoS 
 ![Azure DDoS 保护标准](./media/ddos-protection-overview/ddos-protection-overview-fig2.png)
 
 > [!IMPORTANT]
-> Azure DDoS 保护标准当前为预览版。 保护关联了 Azure 公共 IP 地址的 Azure 资源，例如虚拟机、负载均衡器和应用程序网关。 需要针对该服务进行[注册](http://aka.ms/ddosprotection)，才能为订阅启用标准 DDoS 保护。 注册后，Azure DDoS 团队会联系你，指导你完成启用过程。 标准 DDoS 保护仅适用于美国东部、美国东部 2、美国西部、美国中西部、北欧、西欧、日本西部、日本东部、东亚和东南亚区域。 在预览版期间，使用该服务无需付费。
+> Azure DDoS 保护标准当前为预览版。 保护关联了 Azure 公共 IP 地址的 Azure 资源，例如虚拟机、负载均衡器和应用程序网关。 需要针对该服务进行[注册](http://aka.ms/ddosprotection)，才能为订阅启用标准 DDoS 保护。 注册后，Azure DDoS 团队会与你联系，并指导你完成启用过程。 标准 DDoS 保护仅适用于美国东部、美国东部 2、美国西部、美国中西部、北欧、西欧、日本西部、日本东部、东亚和东南亚区域。 在预览版期间，使用该服务无需付费。
 
 我们建议你在开发、测试或生产环境中试用 DDoS 保护标准。 使用以下资源提供有关体验的反馈：
 - [Microsoft Azure 论坛上的 Azure DDoS 保护](https://feedback.azure.com/forums/905032-azure-ddos-protection)。 

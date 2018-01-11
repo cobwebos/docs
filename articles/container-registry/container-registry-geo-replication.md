@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 10/24/2017
 ms.author: stevelas
-ms.openlocfilehash: dfab0a371ffb2d8ea52bea2cdcf3d92d6c669a9d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -94,7 +94,7 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 
 ## <a name="geo-replication-pricing"></a>异地复制定价
 
-异地复制是 Azure 容器注册表[高级 SKU](container-registry-skus.md#premium) 的一项功能。 将注册表复制到所需区域时，每个区域都会产生高级注册表费用。
+异地复制是 Azure 容器注册表[高级 SKU](container-registry-skus.md) 的一项功能。 将注册表复制到所需区域时，每个区域都会产生高级注册表费用。
 
 在前面的示例中，Contoso 将两个注册表合并到一起，并向美国东部、加拿大中部和西欧添加副本。 Contoso 每月将支付四次高级费用，且无额外配置或管理。 现在每个区域就从本地拉取映像，既提升了性能和可靠性，又节省了从美国西部到加拿大和美国东部的网络传输费用。
 

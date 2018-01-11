@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/04/2017
+ms.date: 12/08/2017
 ms.author: owend
-ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -116,7 +116,7 @@ Azure Analysis Services 受 [Microsoft 联机服务条款](http://www.microsoftv
 ## <a name="supports-the-latest-client-tools"></a>支持最新的客户端工具
 ![数据可视化](./media/analysis-services-overview/aas-overview-clients.png)
 
-利用新式的数据浏览和可视化工具（例如 Power BI、Excel 和第三方工具），用户可以通过交互性强且视觉效果丰富的方式来了解模型数据。
+利用新式的数据浏览和可视化工具（例如 Power BI、Excel、SQL Server 2017 Reporting Services 和第三方工具），用户可以通过交互性强且视觉效果丰富的方式来了解模型数据。 
 
 客户端使用 MSOLAP、AMO 或 ADOMD [客户端库](analysis-services-data-providers.md)连接到 Analysis Services 服务器。 Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装所有这三个客户端库。 但请记住，客户端库可能不是 Azure Analysis Services 所需要的最新版本，具体取决于更新的版本或频率。 这同样适用于自定义应用程序或其他界面，例如 AsCmd、TOM、ADOMD.NET。 这些应用程序通常需要手动安装包中的库。
 

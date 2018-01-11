@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
 用于填充 Azure 搜索索引的外部数据集有时包括分层或嵌套子结构，此种结构无法整齐地分解为表格行集。 此类结构可能包括单个客户的多个位置和电话号码、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，可能会看到称为*复杂数据类型*、*复合数据类型*、*复合数据类型*或*聚合数据类型*，仅举几例。
@@ -66,7 +66,7 @@ Azure 搜索本身并不支持复杂数据类型，但经验证的解决方法�
 虽然名为“id”、“name”和“company”的字段可以轻松地一对一映射为 Azure 搜索索引中的字段，但“locations”字段包含一个位置数组，其中具有一组位置 ID 以及位置描述。 鉴于 Azure 搜索没有支持此结构的数据类型，我们需要使用其他方法以在 Azure 搜索中对此结构建模。 
 
 > [!NOTE]
-> 另外，此技术由 Kirk Evans 在[使用 Azure 搜索索引 DocumentDB](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/) 博客文章中进行了介绍，其中演示了一种称为“平展数据”的技术，由此得到名为 `locationsID` 和 `locationsDescription` 的字段（两者都是[集合](https://msdn.microsoft.com/library/azure/dn798938.aspx)或字符串数组）。   
+> 另外，此技术由 Kirk Evans 在[使用 Azure 搜索索引 Azure Cosmos DB](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/) 博客文章中进行了介绍，其中演示了一种称为“平展数据”的技术，由此得到名为 `locationsID` 和 `locationsDescription` 的字段（两者都是[集合](https://msdn.microsoft.com/library/azure/dn798938.aspx)或字符串数组）。   
 > 
 > 
 

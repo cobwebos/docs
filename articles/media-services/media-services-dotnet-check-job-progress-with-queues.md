@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b5b1d7723b57db2614dc889282f98e9673b4bbd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知
 运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../storage/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 一种常见的媒体服务通知侦听方案是：你正在开发一个内容管理系统，完成编码作业后，该系统需要执行一些其他任务（例如触发工作流的下一步骤或者发布内容）。
 
-本主题说明如何从队列存储获取通知消息。  
+本文说明如何从队列存储获取通知消息。  
 
 ## <a name="considerations"></a>注意事项
 开发使用存储队列的媒体服务应用程序时，请注意以下几点：
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 9. 删除队列和通知终结点。
 
 > [!NOTE]
-> 监视作业状态的建议方法是侦听通知消息，如以下示例所示。
+> 建议通过侦听通知消息来监视作业的状态，如下例所示：
 >
 > 或者，可以使用 **IJob.State** 属性检查作业状态。  在 **IJob** 的状态设置为“已完成”之前，可能会先收到一条指示作业已完成的通知消息。 **IJob.State** 属性在延迟片刻之后反映正确的状态。
 >
@@ -63,7 +63,8 @@ ms.lasthandoff: 10/11/2017
 ### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
 1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
-2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），并复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\Media”路径。
+2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\Media”路径。
+3. 将引用添加到“System.Runtime.Serialization”库中。
 
 ### <a name="code"></a>代码
 
@@ -120,9 +121,14 @@ namespace JobNotification
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
+
         private static readonly string _StorageConnectionString = 
             ConfigurationManager.AppSettings["StorageConnectionString"];
 
@@ -138,11 +144,15 @@ namespace JobNotification
             string endPointAddress = Guid.NewGuid().ToString();
 
             // Create the context.
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
+            
             // Create the queue that will be receiving the notification messages.
             _queue = CreateQueue(_StorageConnectionString, endPointAddress);
 
@@ -326,7 +336,8 @@ namespace JobNotification
     }
 }
 ```
-以上示例生成了以下输出。 值会有所变化。
+
+上例生成了以下输出，值会有所变化。
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

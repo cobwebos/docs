@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
 ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="resource-manager-rest-apis"></a>Resource Manager REST API
 > [!div class="op_single_selector"]
@@ -29,9 +29,9 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-在每次调用 Azure Resource Manager、每次部署模板以及每次配置存储帐户时，都会对 Azure Resource Manager 的 RESTful API 进行一次或多次调用。 本主题专门介绍这些 API 以及如何在完全不使用任何 SDK 的情况下调用它们。 如果想要完全控制对 Azure 的请求，或者偏好语言的 SDK 无法使用或不支持所需的操作，则此方法很有用。
+在每次调用 Azure 资源管理器、每次部署模板以及每次配置存储帐户时，都会对 Azure 资源管理器的 RESTful API 进行一次或多次调用。 本主题专门介绍这些 API 以及如何在完全不使用任何 SDK 的情况下调用它们。 如果想要完全控制对 Azure 的请求，或者偏好语言的 SDK 无法使用或不支持所需的操作，则此方法很有用。
 
-本文不逐一介绍 Azure 中公开的每个 API，而以某些操作为例，说明如何连接到这些操作。 了解基础知识后，可阅读 [Azure Resource Manager REST API 参考](https://docs.microsoft.com/rest/api/resources/)，查找有关如何使用其余 API 的详细信息。
+本文不逐一介绍 Azure 中公开的每个 API，而以某些操作为例，说明如何连接到这些操作。 了解基础知识后，可阅读 [Azure 资源管理器 REST API 参考](https://docs.microsoft.com/rest/api/resources/)，查找有关如何使用其余 API 的详细信息。
 
 ## <a name="authentication"></a>身份验证
 Azure Active Directory (AD) 负责处理 Resource Manager 的身份验证。 若要连接到任何 API，首先需要使用 Azure AD 进行身份验证，以接收可传递给每个请求的身份验证令牌。 由于我们要介绍对 REST API 的单纯直接调用，因此我们假设你不想通过提示输入用户名和密码进行身份验证。 我们还假定你未使用双因素身份验证机制。 因此，我们将创建所谓的 Azure AD 应用程序和一个用于登录的服务主体。 但请记住，Azure AD 支持多个身份验证过程，而这些过程全都可用于检索后续 API 请求所需的身份验证令牌。
@@ -90,7 +90,7 @@ Invoke-RestMethod -Uri https://login.microsoftonline.com/<Azure AD Tenant ID>/oa
 从上面的 HTTP 结果可以看到，令牌在特定时间段内保持有效状态，应在这段期间缓存并重复使用该同一令牌。 即使可以在每次调用 API 时对 Azure AD 进行身份验证，但这样做的效率很低。
 
 ## <a name="calling-resource-manager-rest-apis"></a>调用 Resource Manager REST API
-本主题仅使用几个 API 来说明 REST 操作的基本用法。 有关所有操作的信息，请参阅 [Azure Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/)。
+本主题仅使用几个 API 来说明 REST 操作的基本用法。 有关所有操作的信息，请参阅 [Azure 资源管理器 REST API](https://docs.microsoft.com/rest/api/resources/)。
 
 ### <a name="list-all-subscriptions"></a>列出所有订阅
 可以执行的最简单操作之一是列出可以访问的可用订阅。 在以下请求中，可以看到如何传入访问令牌作为标头：
@@ -205,7 +205,7 @@ Content-Type: application/json
 已在 Azure 中成功创建资源组。 祝贺你！
 
 ### <a name="deploy-resources-to-a-resource-group-using-a-resource-manager-template"></a>使用 Resource Manager 模板将资源部署到资源组
-有了 Resource Manager，就可以使用模板部署资源。 模板可定义多个资源及其依赖项。 在本部分中，我们假设你熟悉资源管理器模板，并仅演示如何进行 API 调用以开始部署。 有关构造模板的详细信息，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
+有了 Resource Manager，就可以使用模板部署资源。 模板可定义多个资源及其依赖项。 在本部分中，我们假设你熟悉资源管理器模板，并仅演示如何进行 API 调用以开始部署。 有关构造模板的详细信息，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 
 模板的部署与调用其他 API 的方式并没有太大差别。 一个重要方面是模板的部署可能需要很长时间。 API 调用只返回部署的状态，并由作为开发人员的你来进行查询，以了解部署何时完成。 有关详细信息，请参阅[跟踪异步 Azure 操作](resource-manager-async-operations.md)。
 

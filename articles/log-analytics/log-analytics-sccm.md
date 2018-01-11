@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-ms.openlocfilehash: 62d31ed486458245156f7fc832294d662c62991e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6785bfcefb09fa6135ba451fafa76efc8c2e6c76
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可以将 System Center Configuration Manager 连接到 Log Analytics 以同步设备集合数据。 这就使得来自配置管理器层次结构的数据可在 OMS 中使用。
@@ -48,35 +48,35 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 >
 >
 
-1. 打开 [Azure 门户](https://portal.azure.com/)，并单击“浏览” > “Log Analytics (OMS)”，打开 Log Analytics (OMS) 边栏选项卡。  
-2. 在“**Log Analytics (OMS)**”边栏选项卡上，单击“**添加**”，打开“**OMS 工作区**”边栏选项卡。  
-   ![OMS 边栏选项卡](./media/log-analytics-sccm/sccm-azure01.png)
-3. 在“OMS 工作区”边栏选项卡上，提供以下信息，并单击“确定”。
+1. 打开 [Azure 门户](https://portal.azure.com/)，并单击“浏览” > “Log Analytics (OMS)”，打开 Log Analytics (OMS)。  
+2. 在“Log Analytics (OMS)”上，单击“添加”打开“OMS 工作区”。  
+   ![OMS](./media/log-analytics-sccm/sccm-azure01.png)
+3. 在“OMS 工作区”上，提供以下信息，并单击“确定”。
 
    * **OMS 工作区**
    * **订阅**
    * **资源组**
    * **位置**
    * **定价层**  
-     ![OMS 边栏选项卡](./media/log-analytics-sccm/sccm-azure02.png)  
+     ![OMS](./media/log-analytics-sccm/sccm-azure02.png)  
 
      > [!NOTE]
      > 以上示例将创建一个新的资源组。 在本示例中，该资源组仅用于为配置管理器提供对 OMS 工作区的访问权限。
      >
      >
-4. 单击“浏览” > “资源组”，打开“资源组”边栏选项卡。
-5. 在“资源组”边栏选项卡中，单击上面创建的资源组，打开资源组名称&lt;&gt;设置边栏选项卡。  
-   ![资源组设置边栏选项卡](./media/log-analytics-sccm/sccm-azure03.png)
-6. 在“资源组名称”&lt;&gt;设置边栏选项卡中，单击“访问控制 (IAM)”，以打开“资源组名称”&lt;&gt;用户边栏选项卡。  
+4. 单击“浏览” > “资源组”，打开“资源组”。
+5. 在“资源组”中，单击上面创建的资源组，打开 &lt;资源组名称&gt; 设置。  
+   ![资源组设置](./media/log-analytics-sccm/sccm-azure03.png)
+6. 在 &lt;资源组名称&gt; 设置中，单击“访问控制 (IAM)”，打开 &lt;资源组名称&gt; 用户边栏选项卡。  
    ![资源组用户边栏选项卡](./media/log-analytics-sccm/sccm-azure04.png)  
-7. 在“资源组名称”&lt;&gt;用户边栏选项卡中，单击“添加”以打开“添加访问”边栏选项卡。
-8. 在“添加访问”边栏选项卡中，单击“选择角色”，并选择“参与者”角色。  
+7. 在“资源组名称”&lt;&gt;用户边栏选项卡中，单击“添加”打开“添加访问权限”。
+8. 在“添加访问权限”中，单击“选择角色”，并选择“参与者”角色。  
    ![选择角色](./media/log-analytics-sccm/sccm-azure05.png)  
 9. 单击“添加用户”，选择配置管理器用户，单击“选择”，并单击“确定”。  
    ![添加用户](./media/log-analytics-sccm/sccm-azure06.png)  
 
 ## <a name="add-an-oms-connection-to-configuration-manager"></a>将 OMS 连接添加到配置管理器
-若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://technet.microsoft.com/library/mt627781.aspx)。
+若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的服务连接点[](https://technet.microsoft.com/library/mt627781.aspx)。
 
 1. 在配置管理器的“管理”工作区中，选择“OMS 连接器”。 这会打开**添加 OMS 连接向导**。 选择“下一步”。
 2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。
@@ -85,7 +85,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
    2. 在 Azure 管理门户中，已经为 Azure Active Directory 中注册的应用创建了应用密钥。  
    3. 在 Azure 管理门户中，已为注册的 Web 应用提供访问 OMS 的权限。  
       ![连接到 OMS 向导常规页](./media/log-analytics-sccm/sccm-console-general01.png)
-3. 在“**Azure Active Directory**”屏幕上，通过提供“**租户**”、“**客户端 ID**”，以及“**客户端密钥**”来配置到 OMS 的连接设置，并选择“**下一步**”。  
+3. 在“Azure Active Directory”屏幕上，通过提供“租户”、“客户端 ID”，以及“客户端密钥”来配置到 OMS 的连接设置，并选择“下一步”。  
    ![连接到 OMS 向导 Azure Active Directory 页](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
 4. 如果已成功完成所有其他过程，则“**OMS 连接配置**”屏幕上的信息会自动出现在此页中。 其中应显示用于“Azure 订阅”、“Azure 资源组”，以及“Operations Management Suite 工作区”的连接设置信息。  
    ![连接到 OMS 向导 OMS 连接页](./media/log-analytics-sccm/sccm-wizard-configure04.png)
@@ -103,15 +103,15 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 ## <a name="update-oms-connection-properties"></a>更新 OMS 连接属性
 如果密码或客户端密钥曾过期或丢失，将需要手动更新 OMS 连接属性。
 
-1. 在配置管理器中，导航到“**云服务**”，并选择“**OMS 连接器**”，打开“**OMS 连接属性**”页。
+1. 在配置管理器中，导航到“云服务”，并选择“OMS 连接器”，打开“OMS 连接属性”页。
 2. 在此页中，单击“**Azure Active Directory**”选项卡，查看“**租户**”、“**客户端 ID**”、“**客户端密钥过期**”。 如果“客户端密钥”已过期，则对其进行“验证”。
 
 ## <a name="download-and-install-the-agent"></a>下载并安装代理
-1. 在 OMS 门户中，[从 OMS 下载代理安装程序文件](log-analytics-windows-agents.md#download-the-agent-setup-file-from-oms)。
+1. 在 OMS 门户中，[从 OMS 下载代理安装程序文件](log-analytics-windows-agent.md)。
 2. 可使用以下方法之一，在运行配置管理器服务连接点站点系统角色的计算机上安装和配置代理：
-   * [使用安装程序安装代理](log-analytics-windows-agents.md#install-the-agent-using-setup)
-   * [使用命令行安装代理](log-analytics-windows-agents.md#install-the-agent-using-the-command-line)
-   * [使用 Azure 自动化中的 DSC 安装代理](log-analytics-windows-agents.md#install-the-agent-using-dsc-in-azure-automation)
+   * [使用安装程序安装代理](log-analytics-windows-agent.md)
+   * [使用命令行安装代理](log-analytics-windows-agent.md)
+   * [使用 Azure 自动化中的 DSC 安装代理](log-analytics-windows-agent.md)
 
 ## <a name="import-collections"></a>导入集合
 将 OMS 连接添加到配置管理器并在运行配置管理器服务连接点站点系统角色的计算机上安装代理之后，下一步是将集合以计算机组的形式从配置服务器导入 OMS 中。

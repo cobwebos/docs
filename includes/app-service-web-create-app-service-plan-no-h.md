@@ -1,4 +1,4 @@
-在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) 命令创建应用服务计划。
+在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) 命令创建应用服务计划。
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 

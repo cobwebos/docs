@@ -4,16 +4,17 @@ description: "Azure 机器学习的预览版功能的概念性概述，例如订
 services: machine-learning
 author: serinakaye
 ms.author: serinak
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 3d4ba2ca6f7adc8b51030c02d9e9eeb2b9995bb4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea9da6f23fd08c09f9e805519487648480816f35
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-machine-learning---concepts"></a>Azure 机器学习 - 概念
 
@@ -24,7 +25,7 @@ ms.lasthandoff: 10/11/2017
 - **订阅：**Azure 订阅向你授予对 Azure 中的资源的访问权限。 因为 Azure 机器学习与计算、存储和许多其他 Azure 资源和服务深度集成，所以，Workbench 要求每个用户都能够访问一个有效的 Azure 订阅。 用户还必须在该订阅中具有足够的权限以便创建资源。
 
 
-- **试验帐户：**试验帐户是 Azure ML 所需的一种 Azure 资源，是一种计费工具。 它包含工作区，而后者包含项目。 可以向试验帐户添加多个用户（称为_座位_）。 为了使用 Azure ML Workbench 运行试验，还必须对试验帐户具有访问权限。 
+- **试验帐户：**试验帐户是 Azure ML 所需的一种 Azure 资源，是一种计费工具。 它包含工作区，而后者包含项目。 可以向试验帐户添加多个用户（称为_席位_）。 为了使用 Azure ML Workbench 运行试验，还必须对试验帐户具有访问权限。 
 
 
 - **模型管理帐户** 模型管理帐户也是 Azure ML 所需的用于管理模型的一种 Azure 资源。 可以使用它来注册模型和清单，构建容器化 Web 服务并将其部署在本地或云中。 它还是 Azure ML 的另一种计费工具。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
 ms.openlocfilehash: dca6ca5f21f4a4f1701af57eb40d92094b6a4754
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>在 Azure 内容交付网络中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]

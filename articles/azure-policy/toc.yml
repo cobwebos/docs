@@ -1,3 +1,5 @@
+- name: Azure 策略文档
+  href: index.yml
 - name: 概述
   items:
     - name: Azure 策略概述

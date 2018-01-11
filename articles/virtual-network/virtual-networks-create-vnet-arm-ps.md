@@ -17,16 +17,16 @@ ms.date: 01/03/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e7072ddf51570d46578111e2e392e3cbea53f2aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>使用 PowerShell 创建虚拟网络
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Microsoft 建议通过 Resource Manager 部署模型创建资源。 若要详细了解这两个模型之间的差别，请阅读 [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md)（了解 Azure 部署模型）一文。
+Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Microsoft 建议通过 Resource Manager 部署模型创建资源。 若要详细了解这两个模型之间的差别，请阅读 [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md)（了解 Azure 部署模型）一文。
  
 本文说明如何使用 PowerShell 通过 Resource Manager 部署模型创建 VNet。 此外，也可以使用其他工具通过 Resource Manager 创建 VNet，或者从以下列表中选择一个不同的选项，通过经典部署模型创建 VNet：
 
@@ -47,7 +47,7 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 
 1. 请按[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 文章中的步骤安装和配置 Azure PowerShell。
 
-2. 如有必要，创建一个新的资源组，如下所示。 对于此方案，创建一个名为 *TestRG*的资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+2. 如有必要，创建一个新的资源组，如下所示。 对于此方案，创建一个名为 *TestRG*的资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
     ```powershell   
     New-AzureRmResourceGroup -Name TestRG -Location centralus

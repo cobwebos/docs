@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 09/18/2017
 ms.author: elbutter
-ms.openlocfilehash: 295cc59fdb23105534b4e7431902eaa720643330
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>如何结合使用弹性查询和 SQL 数据仓库
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="elastic-querying"></a>弹性查询
 
-- 外部表和内部缓存表作为 SQL 数据库实例随附的不同对象存在。 考虑根据表的缓存部分和外部表创建视图，将两个表结合在一起，并在每个表的边界点上应用筛选器。
+- 在许多情况下，可能需要管理一种延伸表，此表中的一部分作为缓存数据存在于 SQL 数据库中供使用，剩余的数据存储在 SQL 数据仓库中。 SQL 数据库中需要有两个对象：SQL 数据库内引用 SQL 数据仓库中基表的外部表，SQL 数据库中表的“缓存”部分。 考虑在表格缓存部分和外部表基础上创建视图，该操作会联合这两个表，并应用筛选器，用于分离在通过外部表公开的 SQL 数据库和 SQL 数据仓库中具体化的数据。
 
   假设要在 SQL 数据库实例中保留最近一年的数据。 有两个表，分别为引用数据仓库订单表的 ext.Orders，和表示 SQL 数据库实例中最近几年数据的 dbo.Orders。 我们根据两个表在最近一年的分区点上创建视图，而不是让用户决定是否查询哪个表。
 
@@ -135,13 +135,17 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="faq"></a>常见问题
 
-问：能否将弹性数据库池内的数据库与弹性查询结合使用？
+问：能否将弹性池内的数据库与弹性查询结合使用？
 
 答：是的。 弹性池中的 SQL 数据库可以使用弹性查询。 
 
 问：可以对弹性查询使用的数据库数量是否有上限？
 
-答：逻辑服务器有 DTU 限制，以防客户意外超支。 若要为多个数据库和 SQL 数据仓库实例启用弹性查询，可能会意外达到上限。 如果发生这种情况，请提交增加逻辑服务器的 DTU 限制的请求。 可增加配额，具体方法为[创建支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)，并选择“配额”作为请求类型
+答：弹性查询可使用的数据库数量没有硬上限。 但是，每个弹性查询（命中 SQL 数据仓库的查询）都会计入常规并发限制。
+
+问：弹性查询是否有 DTU 限制？
+
+答：弹性查询的 DTU 限制和一般查询相同。 标准策略是逻辑服务器有 DTU 限制，以防客户意外超支。 若要为多个数据库和 SQL 数据仓库实例启用弹性查询，可能会意外达到上限。 如果发生这种情况，请提交增加逻辑服务器的 DTU 限制的请求。 可增加配额，具体方法为[创建支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)，并选择“配额”作为请求类型
 
 问：能否将行级别安全性/动态数据掩码与弹性查询结合使用？
 

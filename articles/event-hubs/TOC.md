@@ -22,6 +22,8 @@
 
 # 如何
 ## 规划和设计
+### [托管服务标识（预览）](event-hubs-managed-service-identity.md)
+### [基于角色的访问控制（预览）](event-hubs-role-based-access-control.md)
 ### [异地灾难恢复和异地复制](event-hubs-geo-dr.md)
 ### [专用事件中心](event-hubs-dedicated-overview.md)
 ### [身份验证和安全模型概述](event-hubs-authentication-and-security-model-overview.md)

@@ -15,18 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 04a03436d554d9f06eed0fbdf5cf34a786061e21
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c22e6fc85e88d89007107c8c3bad142ac91e9d12
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>使用 DPM 准备将工作负荷备份到 Azure
 > [!div class="op_single_selector"]
 > * [Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
-> * [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
-> * [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
 >
 >
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 12/08/2017
 >
 >
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) 备份文件和应用程序数据。 可在[此处](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)查看有关支持的工作负载的详细信息。备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
+[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) 备份文件和应用程序数据。 在[此处](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)可以找到有关受支持工作负荷的详细信息。 备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
 
 * **部署为物理服务器或本地虚拟机的 DPM** - 如果 DPM 部署为物理服务器或本地 Hyper-V 虚拟机，则除了磁盘和磁带备份外，还可以将数据备份到恢复服务保管库。
 * **部署为 Azure 虚拟机的 DPM** — 通过 System Center 2012 R2 Update 3，可以将 DPM 部署为 Azure 虚拟机。 如果 DPM 部署为 Azure 虚拟机部署，则可以将数据备份到附加到 DPM Azure 虚拟机的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
@@ -139,7 +137,7 @@ ms.lasthandoff: 12/08/2017
 
     ![下载](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-   下载代理后，双击 MARSAgentInstaller.exe 以启动 Azure 备份代理的安装。 选择代理所需的安装文件夹和临时文件夹。 指定的缓存位置必须至少有备份数据的 5% 的可用空间。
+   下载代理后，请运行 MARSAgentInstaller.exe 以启动 Azure 备份代理的安装。 选择代理所需的安装文件夹和临时文件夹。 指定的缓存位置必须至少有备份数据的 5% 的可用空间。
 4. 如果使用代理服务器连接到 Internet，请在“代理配置”屏幕中，输入代理服务器详细信息。 如果使用已经过身份验证的代理，请在此屏幕中输入用户名和密码详细信息。
 5. Azure 备份代理将安装 .NET Framework 4.5 和 Windows PowerShell（如果尚未可用）以完成安装。
 6. 安装代理后，**关闭**该窗口。

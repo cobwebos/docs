@@ -1,6 +1,6 @@
 ---
 title: "使用 .NET SDK 管理流式处理终结点。 | Microsoft Docs"
-description: "本主题说明如何使用 Azure 门户管理流式处理终结点。"
+description: "本文说明如何使用 Azure 门户管理流式处理终结点。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,20 +13,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2f4f464f8604b6f453d6b50b736c6a3a889a3408
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba17e7a89ebfeb3bd854bb906bdb887b0cd54064
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点
 
 >[!NOTE]
->请确保查看[概述](media-services-streaming-endpoints-overview.md)主题。 此外，请查看 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
+>请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 此外，请查看 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
 
-本主题中的代码演示如何使用 Azure 媒体服务 .NET SDK 执行以下任务：
+本文中的代码演示如何使用 Azure 媒体服务 .NET SDK 执行以下任务：
 
 - 检查默认的流式处理终结点。
 - 创建/添加新的流式处理终结点。
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
     >[!NOTE]
     >无法删除默认流式处理终结点。
 
-有关如何缩放流式处理终结点的信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)主题。
+有关如何缩放流式处理终结点的信息，请参阅[这篇文章](media-services-portal-scale-streaming-endpoints.md)。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -55,27 +55,37 @@ ms.lasthandoff: 10/11/2017
     
 将 Program.cs 中的代码替换为以下代码：
 
-    using System;
-    using System.Configuration;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using Microsoft.WindowsAzure.MediaServices.Client.Live;
+```
+using System;
+using System.Configuration;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using Microsoft.WindowsAzure.MediaServices.Client.Live;
 
-    namespace AMSStreamingEndpoint
+namespace AMSStreamingEndpoint
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
+
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -104,10 +114,10 @@ ms.lasthandoff: 10/11/2017
             var name = "StreamingEndpoint" + DateTime.UtcNow.ToString("hhmmss");
             var option = new StreamingEndpointCreationOptions(name, 1)
             {
-            StreamingEndpointVersion = new Version("2.0"),
-            CdnEnabled = true,
-            CdnProfile = "CdnProfile",
-            CdnProvider = CdnProviderType.PremiumVerizon
+                StreamingEndpointVersion = new Version("2.0"),
+                CdnEnabled = true,
+                CdnProfile = "CdnProfile",
+                CdnProvider = CdnProviderType.PremiumVerizon
             };
 
             var streamingEndpoint = _context.StreamingEndpoints.Create(option);
@@ -118,7 +128,7 @@ ms.lasthandoff: 10/11/2017
         static public void UpdateStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
         {
             if (streamingEndpoint.StreamingEndpointVersion == "1.0")
-            streamingEndpoint.StreamingEndpointVersion = "2.0";
+                streamingEndpoint.StreamingEndpointVersion = "2.0";
 
             streamingEndpoint.CdnEnabled = false;
             streamingEndpoint.Update();
@@ -128,9 +138,9 @@ ms.lasthandoff: 10/11/2017
         {
             streamingEndpoint.Delete();
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

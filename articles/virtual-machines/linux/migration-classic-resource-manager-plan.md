@@ -1,5 +1,5 @@
 ---
-title: "规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器 | Microsoft 文档"
+title: "规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器 | Microsoft Docs"
 description: "规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: ab38f6866519aabe1b4740cfaa26d7ff570d78de
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 246032701d97fc7d16e6cb38ee79fbd5470f65d9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure 资源管理器提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。 
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/15/2017
 - **VM 扩展** - 虚拟机扩展可能是迁移正在运行的 VM 的最大障碍之一。 VM 扩展修正可能需要 1-2 天，因此请相应进行规划。  一个有效的 Azure 代理是报告正在运行的 VM 的 VM 扩展状态所需的。 如果正在运行的 VM 返回的状态为不佳，这会暂停迁移。 代理本身无需处于正常运行状态即可启用迁移，但如果 VM 上存在扩展，则同时需要正常运行的代理和出站 Internet 连接（含 DNS）才能使迁移继续。
   - 如果在迁移期间与 DNS 服务器的连接断开，那么在准备迁移之前，需要先从每个 VM 中删除所有 VM 扩展（BGInfo v1.\* 除外），随后再在 Azure 资源管理器迁移后将这些扩展重新添加回 VM。  **这仅适用于正在运行的 VM。**  如果已停止解除分配 VM，则无需删除 VM 扩展。 **注意：**Azure 诊断和安全中心监视等诸多扩展在迁移后将重新安装，因此删除它们没有问题。
   - 此外，确保网络安全组不限制出站 Internet 访问权限。 这可能针对某些网络安全组配置。 若要使 VM 扩展迁移到 Azure 资源管理器，出站 Internet 访问权限（和 DNS）是必需的。 
-  - BGInfo 扩展有两个版本：v1 和 v2。  如果 VM 通过使用经典门户或 PowerShell 创建，则该 VM 上可能具有 v1 扩展。 此扩展无需删除且会被迁移 API 跳过（即不迁移）。 但是，如果经典 VM 通过使用新的 Azure 门户创建，它很可能具有基于 JSON 的 v2 版本的 BGInfo，该版本可迁移到 Azure 资源管理器部署模型，只要代理正常运行且具有出站 Internet 访问权限（和 DNS）。 
+  - BGInfo 扩展有两个版本：v1 和 v2。  如果 VM 是使用 Azure 门户或 PowerShell 创建的，则该 VM 上可能具有 v1 扩展。 此扩展无需删除且会被迁移 API 跳过（即不迁移）。 但是，如果经典 VM 通过使用新的 Azure 门户创建，它很可能具有基于 JSON 的 v2 版本的 BGInfo，该版本可迁移到 Azure 资源管理器部署模型，只要代理正常运行且具有出站 Internet 访问权限（和 DNS）。 
   - **补救选项 1**。 如果你知道 VM 不会有出站 Internet 访问权限、正常运行的 DNS 服务和 VM 上正常运行的 Azure 代理，则在准备前在迁移期间卸载所有 VM 扩展，并在迁移后重新安装这些 VM 扩展。 
   - **补救选项 2**。 如果 VM 扩展是个大障碍，另一个方法是在迁移前关闭/解除分配所有 VM。 迁移已解除分配的 VM，并在 Azure 资源管理器端重新启动它们。 这样做的好处是可迁移 VM 扩展。 缺点是将丢失所有面向公众的虚拟 IP（这可能是非初学者），并且 VM 明显会关闭，从而对正常运行的应用程序产生大得多的影响。
 

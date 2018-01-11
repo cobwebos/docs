@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 6aa2905a97ec6b8c125f2ab9572a8e40bf525b27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 * 在 [Azure Service Fabric 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)中询问社区关于 Windows Server 的 Service Fabric 独立包的信息。
 * 打开 [Service Fabric 专业支持](http://support.microsoft.com/oas/default.aspx?prid=16146)票证。  在[此处](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)了解有关 Microsoft 专业支持的详细信息。
 * 还可以获取作为 [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)的一部分的对此包的支持。
-* 有关详细信息，请参阅 [Azure Service Fabric 支持选项](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)。
+* 有关详细信息，请参阅 [Azure Service Fabric 支持选项](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)。
 * 若要出于支持目的收集日志，请运行 [Service Fabric 独立日志收集器](service-fabric-cluster-standalone-package-contents.md)。
 
 <a id="downloadpackage"></a>

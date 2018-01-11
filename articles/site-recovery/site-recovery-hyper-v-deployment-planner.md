@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 54edb2d02701d36af52088cb8df7e252504a8760
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 815148d2a39ce8b18092619c9687a56b457c8339
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 Hyper-V 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
@@ -40,6 +40,9 @@ Azure Site Recovery 部署规划器（第 2 版）是一个命令行工具，适
 
 * 增量复制所需的估计网络带宽
 * Azure Site Recovery 可以获得的从本地到 Azure 的吞吐量
+* 给定带宽可以实现的 RPO
+* 在预配较低带宽的情况下，对所需 RPO 的影响。
+
     
 **Azure 基础结构要求**
 
@@ -52,6 +55,7 @@ Azure Site Recovery 部署规划器（第 2 版）是一个命令行工具，适
 
 **本地基础结构要求**
 * 在 Hyper-V 存储的每个卷上成功地进行初始复制和增量复制所需的可用存储空间，可确保 VM 复制不会导致任何会对生产应用程序造成负面影响的停机
+* 需要为 Hyper-V 复制设置的最大复制频率
 
 **初始复制批处理指南** 
 * 要用于保护的 VM 批数

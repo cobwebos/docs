@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04742a587284cf72632360a9575a63a576da36e8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack 开发工具包部署快速入门
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 10/11/2017
 
 2. [**下载并提取部署包**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit)。 你可以将部署包下载到开发工具包主机或另一台计算机。 提取的部署文件需要 60 GB 的可用磁盘空间，以便使用另一台计算机可以帮助减少开发工具包主机的硬件要求。
 
-3. [**准备开发工具包主机**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host)使用安装程序。 此步骤后，开发工具包主机将启动到 Cloudbuilder.vhdx （包括可启动的操作系统和 Azure 堆栈的虚拟硬盘驱动器安装文件）。
+3. [**准备开发工具包主机**](azure-stack-run-powershell-script.md)使用安装程序。 此步骤后，开发工具包主机将启动到 Cloudbuilder.vhdx （包括可启动的操作系统和 Azure 堆栈的虚拟硬盘驱动器安装文件）。
 
-4. [**部署开发工具包**](azure-stack-run-powershell-script.md#deploy-the-development-kit)开发工具包主机上。
+4. [**部署开发工具包**](azure-stack-run-powershell-script.md)开发工具包主机上。
 
 5. 如果你的 Azure 堆栈部署使用 Azure Active Directory，则必须[向 Azure 注册 Azure 堆栈](azure-stack-register.md)，以便你可以[下载 Azure 应用商店项](azure-stack-download-azure-marketplace-item.md)到 Azure 堆栈。
 

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 4bbac0e82181e46b84afee5ff7601da018226ec0
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: aec3f107cc94fba2e9b478d86a848c762f1f8b0e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>使用 PowerShell 创建 Azure 数据工厂 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,27 @@ ms.lasthandoff: 12/06/2017
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-[!INCLUDE [data-factory-quickstart-prerequisites-2](../../includes/data-factory-quickstart-prerequisites-2.md)]
+### <a name="azure-powershell"></a>Azure PowerShell
+按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+#### <a name="log-in-to-powershell"></a>登录到 PowerShell
+
+1. 在计算机上启动 **PowerShell**。 在完成本快速入门之前，请将 PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行这些命令。
+2. 运行以下命令，并输入用于登录 Azure 门户的同一 Azure 用户名和密码：
+       
+    ```powershell
+    Login-AzureRmAccount
+    ```        
+3. 运行以下命令查看此帐户的所有订阅：
+
+    ```powershell
+    Get-AzureRmSubscription
+    ```
+4. 如果看到多个订阅与帐户相关联，请运行以下命令，选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
+
+    ```powershell
+    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    ```
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"adfrg"`。 
@@ -46,7 +66,7 @@ ms.lasthandoff: 12/06/2017
 2. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
+    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'East US'
     ``` 
     如果该资源组已存在，请勿覆盖它。 为 `$ResourceGroupName` 变量分配另一个值，然后再次运行命令。 
 3. 定义一个用于数据工厂名称的变量。 
@@ -55,7 +75,7 @@ ms.lasthandoff: 12/06/2017
     >  更新数据工厂名称，使之全局唯一。 例如 ADFTutorialFactorySP1127。 
 
     ```powershell
-    $DataFactoryName = "ADFQuickStartFactory";
+    $dataFactoryName = "ADFQuickStartFactory";
     ```
 
 5. 若要创建数据工厂，请运行下面的 **Set-AzureRmDataFactoryV2** cmdlet，使用 $ResGrp 变量中的 Location 和 ResourceGroupName 属性： 
@@ -100,10 +120,9 @@ ms.lasthandoff: 12/06/2017
     如果使用记事本，请在“另存为”对话框中选择“所有文件”作为“另存为类型”字段的值。 否则，会为文件添加 `.txt` 扩展。 例如，`AzureStorageLinkedService.json.txt`。 如果先在文件资源管理器中创建该文件，然后再在记事本中将其打开，则可能看不到 `.txt` 扩展，因为系统默认设置“隐藏已知文件类型的扩展名”选项。 在执行下一步骤之前删除 `.txt` 扩展名。
 2. 在 **PowerShell** 中，切换到 **ADFv2QuickStartPSH** 文件夹。
 
-```powershell
-Set-Location 'C:\ADFv2QuickStartPSH'
-```
-
+    ```powershell
+    Set-Location 'C:\ADFv2QuickStartPSH'
+    ```
 3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 创建链接服务：**AzureStorageLinkedService**。 
 
     ```powershell
@@ -130,10 +149,7 @@ Set-Location 'C:\ADFv2QuickStartPSH'
         "properties": {
             "type": "AzureBlob",
             "typeProperties": {
-                "folderPath": {
-                    "value": "@{dataset().path}",
-                    "type": "Expression"
-                }
+                "folderPath": "@{dataset().path}"
             },
             "linkedServiceName": {
                 "referenceName": "AzureStorageLinkedService",

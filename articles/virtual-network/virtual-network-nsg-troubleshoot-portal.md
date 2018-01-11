@@ -1,6 +1,6 @@
 ---
 title: "排查网络安全组问题 - 门户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户在 Azure Resource Manager 部署模型中排查网络安全组问题。"
+description: "了解如何使用 Azure 门户在 Azure 资源管理器部署模型中排查网络安全组问题。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92816a5b1a74be5b64d974ad9ade47374db5db10
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 使用 NSG 可以控制流入和流出虚拟机 (VM) 的流量类型。 可对 Azure 虚拟网络 (VNet) 中的子网和/或网络接口 (NIC) 应用 NSG。 对 NIC 应用的有效规则是对 NIC 应用的 NSG 以及对 NIC 所连接到的子网应用的 NSG 的规则聚合。 这些 NSG 的规则有时互相冲突，影响 VM 的网络连接。  
 
-可以查看 NSG 中对 VM NIC 应用的所有有效安全规则。 本文说明如何在 Azure Resource Manager 部署模型中使用这些规则来排查 VM 连接问题。 如果不熟悉 VNet 与 NSG 的概念，请参阅[虚拟网络](virtual-networks-overview.md)和[网络安全组](virtual-networks-nsg.md)概述文章。
+可以查看 NSG 中对 VM NIC 应用的所有有效安全规则。 本文说明如何在 Azure 资源管理器部署模型中使用这些规则来排查 VM 连接问题。 如果不熟悉 VNet 与 NSG 的概念，请参阅[虚拟网络](virtual-networks-overview.md)和[网络安全组](virtual-networks-nsg.md)概述文章。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>使用有效的安全规则排查 VM 流量流问题
 以下情景是常见连接问题的示例：
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 可以从 VM 本身查看 NIC 上的完整有效安全规则列表。 如果有相应的权限，也可以从有效规则的边栏选项卡添加、修改和删除 NIC 与子网的 NSG 规则。
 
-1. 登录到 Azure 门户网站 https://portal.azure.com。
+1. 在 https://portal.azure.com 上使用 Azure 帐户登录到 Azure 门户。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
 2. 单击“**更多服务**”，并在显示的列表中单击“**虚拟机**”。
 3. 在显示的列表中选择要进行故障排除的 VM，随后会显示一个包含选项的 VM 边栏选项卡。
 4. 单击“**诊断和解决问题**”，并选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。 

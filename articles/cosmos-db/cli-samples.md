@@ -13,22 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: database
-ms.date: 11/02/2017
+ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 989ef9915028c42a4da817bf2dd3aa5ad2beb2ef
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 432ffc80d602a9e4eaf83fba15f0e6ebabd13603
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure CLI 示例
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 下表包括用于 Azure Cosmos DB 的示例 Azure CLI 脚本的链接。 [Azure CLI 2.0 参考](https://docs.microsoft.com/cli/azure/cosmosdb)中提供了所有 Azure Cosmos DB CLI 命令参考页。
 
 | |  |
 |---|---|
 |**创建 Azure Cosmos DB 帐户、数据库和容器**||
-|[创建 DocumentDB API 帐户](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| 创建单个 Azure Cosmos DB API 帐户、数据库及容器，以用于 DocumentDB API。 |
+|[创建 SQL API 帐户](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| 创建单个 Azure Cosmos DB API 帐户、数据库及容器，以用于 SQL API。 |
 | [创建 MongoDB API 帐户](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 创建单个 Azure Cosmos DB MongoDB API 帐户、数据库和集合。 |
 |**缩放 Azure Cosmos DB**||
 | [缩放容器吞吐量](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 更改容器上预配的吞吐量。|

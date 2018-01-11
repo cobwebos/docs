@@ -148,7 +148,7 @@
    
         using Microsoft.Azure.NotificationHubs;
 
-6. 将 `Notifications` 类定义替换为以下代码，并将两个占位符替换为通知中心的连接字符串（具有完全访问权限）和中心名称（可在 [Azure 经典门户](http://manage.windowsazure.com)中找到）：
+6. 将 `Notifications` 类定义替换为以下代码，并将两个占位符替换为通知中心的连接字符串（具有完全访问权限）和中心名称（可在 [Azure 门户](http://portal.azure.com)中找到）：
    
         public class Notifications
         {

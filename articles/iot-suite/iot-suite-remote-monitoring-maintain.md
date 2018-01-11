@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 46b0269b3f5b98e1bcecdbeabd5544e97bb5c06c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>排查和修正设备问题
 
@@ -46,11 +46,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 ![在仪表板中浏览警报](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-现在，可以在“维护”页上看到警报列表：
-
-![维护页上的警报列表](media/iot-suite-remote-monitoring-maintain/maintenancealarms.png)
-
-若要显示警报的详细信息，请“警报”列表中选择该警报。 详细信息视图显示：
+警报的详细视图显示：
 
 * 警报的触发时间
 * 与警报关联的设备的状态信息
@@ -70,7 +66,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 若要修正**原型**设备的问题，需在该设备上调用 **DecreaseTemperature** 方法。
 
-若要安排某个设备的操作，请在设备列表中将其选中，然后选择“计划”。 **引擎**设备模型指定设备必须支持的三个方法：
+若要安排某个设备的操作，请在设备列表中将其选中，然后选择“计划”。 原型设备模型指定设备必须支持的四个方法：
 
 ![查看设备支持的方法](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -78,11 +74,11 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 ![创建用于降低温度的作业](media/iot-suite-remote-monitoring-maintain/maintenancecreatejob.png)
 
-若要在“维护”页上跟踪作业的状态，请选择“系统状态”。 使用“系统状态”视图跟踪解决方案中的所有作业和方法调用：
+若要在“维护”页上跟踪作业状态，请选择“作业”。 使用“作业”视图跟踪解决方案中的所有作业和方法调用：
 
 ![监视用于降低温度的作业](media/iot-suite-remote-monitoring-maintain/maintenancerunningjob.png)
 
-若要查看特定作业或方法调用的详细信息，请在“系统状态”视图中的列表内将其选中：
+若要查看特定作业或方法调用的详细信息，请在“作业”视图中的列表内将其选中：
 
 ![查看作业详细信息](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
 

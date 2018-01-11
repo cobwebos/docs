@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/02/2017
+ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 36fa884b451d41ed7443312cc21b49b0b720a954
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -42,12 +42,19 @@ SQL Server Azure VM 可以利用[自动备份](virtual-machines-windows-sql-auto
 
 如果需要高可用性，请考虑配置 SQL Server 可用性组。 这涉及虚拟网络中的多个 SQL Server Azure VM。 可以手动配置高可用性解决方案，也可以在 Azure 门户中使用模板进行自动配置。 有关所有高可用性选项的概述，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md)。
 
+## <a name="performance"></a>性能
+
+Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还提供按性能要求优化的自动存储配置。 若要详细了解如何为 SQL VM 配置存储，请参阅 [SQL Server VM 的存储配置](virtual-machines-windows-sql-server-storage-configuration.md)。 若要优化性能，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)。
+
 ## <a name="get-started-with-sql-vms"></a>SQL VM 入门
 
 若要开始，请选择一个 SQL Server 虚拟机映像，其中包含所需的版本和操作系统。 以下部分提供了有关 SQL Server 虚拟机库映像到 Azure 门户的直接链接。
 
 > [!TIP]
 > 若要了解这些映像的 VM 和 SQL 定价，请参阅 [SQL Server Azure VM 的定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
+
+> [!TIP]
+> 若要了解 SQL Server 虚拟机库映像的更新和生命周期策略，请参阅 [SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)。
 
 ### <a id="payasyougo"></a> 即用即付
 下表提供了一个矩阵，其中包含即用即付 SQL Server 映像。
@@ -103,7 +110,7 @@ SQL Server Azure VM 可以利用[自动备份](virtual-machines-windows-sql-auto
 
 Azure 虚拟机上的 SQL Server 入门：
 
-* [在 Azure 门户中创建 SQL Server VM](virtual-machines-windows-portal-sql-server-provision.md)
+* [在 Azure 门户中创建 SQL Server VM](quickstart-sql-vm-create-portal.md)
 
 获取有关 SQL VM 的常见问题的解答：
 

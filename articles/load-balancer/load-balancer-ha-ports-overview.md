@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 46e284d1636988390f3533d93bfd07399f45dc92
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -74,7 +74,7 @@ HA 端口为 NVA HA 方案提供几项优势：
 
 以下是 HA 端口功能支持的配置或异常：
 
-- 单个前端 IP 配置可以有包含 HA 端口的单条 DSR 负载均衡器规则，也可以有包含 HA 端口的单条非 DSR 负载均衡器规则。 它不能同时具有这两者。
+- 单个前端 IP 配置可以有包含 HA 端口的一个直接服务器返回（DSR - Azure 中的浮动 IP）负载均衡器规则，也可以有包含 HA 端口的单条非 DSR 负载均衡器规则。 它不能同时具有这两者。
 - 单个网络接口 IP 配置只能有一条包含 HA 端口的非 DSR 负载均衡器规则。 无法为此 ipconfig 配置任何其他规则。
 - 单个网络接口 IP 配置可以有一条或多条包含 HA 端口的 DSR 负载均衡器规则，前提是其所有相应的前端 IP 配置都是唯一的。
 - 如果所有负载均衡规则都包含 HA 端口（仅 DSR），则两条（或更多）指向同一后端池的负载均衡器规则可以共存。 这同样适用于所有规则都包含非 HA 端口（DSR 和非 DSR）的情况。 如果存在 HA 端口和非 HA 端口规则的组合，这两种负载均衡规则不能共存。

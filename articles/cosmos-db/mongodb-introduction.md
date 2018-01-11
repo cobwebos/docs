@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/08/2017
 ms.author: anhoh
-ms.openlocfilehash: eca720f365a00070afd2a657829f5b108ab91fb9
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 9acc3268bc6a043852cadfafa40c0a54ecc66e59
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB: API for MongoDB 简介
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 11/15/2017
 
 **企业级**：Azure Cosmos DB 支持多个本地副本，在面对本地和区域故障时提供 99.99％ 的可用性和数据保护。 Azure Cosmos DB 具有企业级[符合性认证](https://www.microsoft.com/trustcenter)和安全功能。 
 
-与 Scott Hanselman 和 Azure Cosmos DB 的主要工程经理 Kirill Gavrylyuk 一起，通过 Azure Friday 视频了解更多信息。
+在此视频中通过 Azure Cosmos DB 高级项目经理 Aleksey Savateyev 了解详细信息。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Introducing-Azure-Cosmos-DB/player]
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T136/player]
 > 
 
 ## <a name="how-to-get-started"></a>如何入门

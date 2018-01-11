@@ -6,14 +6,14 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: f24619c9ff2667bb96827b1f17bf9ff04b42eaff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 3d8516c0f3f6cc8185b16f4cdabcc391e31cc605
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 12/05/2017
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][qs-powershell-01]
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -89,11 +89,11 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](./container-instances-tutorial-prepare-app.md)
 
+<!-- IMAGES -->
+[qs-powershell-01]: ./media/container-instances-quickstart-powershell/qs-powershell-01.png
+
 <!-- LINKS -->
 [New-AzureRmResourceGroup]: /powershell/module/azurerm.resources/new-azurermresourcegroup
 [New-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
 [Remove-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/remove-azurermcontainergroup
-
-<!-- IMAGES -->
-[qs-powershell-01]: ./media/container-instances-quickstart-powershell/qs-powershell-01.png

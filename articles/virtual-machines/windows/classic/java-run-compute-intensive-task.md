@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: a71efa7ff052c7c69de2b9aba3c1ed9328538e3f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>如何在虚拟机上通过 Java 运行计算密集型任务
 > [!IMPORTANT] 
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/08/2017
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="to-create-a-virtual-machine"></a>创建虚拟机
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。
    请注意，万一安装的是尚不能在 JDK 7 中运行的旧版应用程序，则可选择“JDK 6 Windows Server 2012”。
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/08/2017
    2. 单击“完成”。
 
 ## <a name="to-remotely-log-in-to-your-virtual-machine"></a>远程登录到虚拟机
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“虚拟机”。
 3. 单击要登录的虚拟机名称。
 4. 单击“连接”。
@@ -87,15 +87,15 @@ ms.lasthandoff: 11/08/2017
 
 创建服务命名空间：
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在 Azure 经典门户的左下方导航窗格中，单击“服务总线、访问控制和 Caching”。
-3. 在 Azure 经典门户的左上方窗格中，单击“服务总线”节点，并单击“新建”按钮。  
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户的左下方导航窗格中，单击“服务总线、访问控制和缓存”。
+3. 在 Azure 门户的左上方窗格中，单击“服务总线”节点，然后单击“新建”按钮。  
    ![“服务总线节点”屏幕截图][svc_bus_node]
 4. 在“新建服务命名空间”对话框中，输入一个**命名空间**，并单击“检查可用性”按钮以确保该命名空间是唯一的。  
    ![“创建新的命名空间”屏幕截图][create_namespace]
 5. 确保该命名空间名称可用之后，选择应在其中托管命名空间的国家或地区，并单击“创建命名空间”按钮。  
    
-   创建的命名空间随后会显示在 Azure 经典门户中，并需要一段时间激活。 请等到状态变为“活动”后再继续下一步。
+   创建的命名空间随后会显示在 Azure 门户中，并需要一段时间激活。 请等到状态变为“活动”后再继续下一步。
 
 ## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>获取命名空间的默认管理凭据
 若要在新命名空间上执行管理操作（如创建队列），则需要获取该命名空间的管理凭据。

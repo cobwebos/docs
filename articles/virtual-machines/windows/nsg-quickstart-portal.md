@@ -4,7 +4,7 @@ description: "了解如何在 Azure 门户中使用 Resource Manager 部署模�
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 33bc0be0aeae6d0276fd8999b9ac0a010e3067ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -38,7 +38,12 @@ ms.lasthandoff: 10/11/2017
 
 ![添加入站规则](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-从下拉菜单中选择常见的“服务”，如 HTTP。 还可以选择“自定义”，提供要使用的特定端口。 如果需要，请更改优先级或名称。 优先级会影响应用规则的顺序 - 数值越小，越先应用规则。 例如，还可在此屏幕顶部选择“高级”，输入特定的源 IP 块或端口范围。 准备就绪后，选择“确定”即可创建规则：
+若要创建允许流量的规则，请执行以下操作：
+
+- 选择“基本”按钮。 默认情况下，“高级”窗口会提供一些其他配置选项，例如用于定义特定源 IP 块或端口范围。
+- 从下拉菜单中选择常见的“服务”，如 HTTP。 还可以选择“自定义”，提供要使用的特定端口。 
+- 如果需要，请更改优先级或名称。 优先级会影响应用规则的顺序 - 数值越小，越先应用规则。
+- 准备就绪后，选择“确定”即可创建规则：
 
 ![创建入站规则](./media/nsg-quickstart-portal/create-inbound-rule.png)
 
@@ -60,5 +65,5 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 在本示例中，创建了简单的规则来允许 HTTP 流量。 可以从下列文章中，找到有关创建更详细环境的信息：
 
-* [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)
+* [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)
 * [什么是网络安全组 (NSG)？](../../virtual-network/virtual-networks-nsg.md)

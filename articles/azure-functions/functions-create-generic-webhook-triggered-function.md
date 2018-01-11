@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/12/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9f50a1762f003727e62b43b6e81e62b66878f2f
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>创建由通用 webhook 触发的函数
 
@@ -48,9 +48,13 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 
     ![Azure 门户中的 Functions 快速入门页](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
 
-2. 选择“通用 WebHook - C#”模板。 为 C# 函数键入一个名称，然后选择“创建”。
+2. 在搜索栏中键入 `generic`，然后选择需要用于泛型 Webhook 触发器模板的语言。 本主题使用 C# 函数。
 
-     ![在 Azure 门户中创建通用 webhook 触发的函数](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
+     ![选择泛型 Webhook 触发器模板](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png)
+
+2. 为函数键入一个**名称**，然后选择“创建”。 
+
+     ![在 Azure 门户中创建通用 webhook 触发的函数](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger-2.png) 
 
 2. 在新函数中，单击“</> 获取函数 URL”，并复制和保存相关值。 此值将用于配置 webhook。 
 

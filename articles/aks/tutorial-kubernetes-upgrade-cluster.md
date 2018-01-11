@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: aa457c97292fc9f97d3bc4769ca45d55dd5829a6
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 5fd9a1890c1940cdd4e79cc32e0b3984edd043e8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中升级 Kubernetes
 
-可使用 Azure CLI 升级 Azure 容器服务 (AKS) 群集。 在升级过程中，Kubernetes 节点会被仔细[封锁和排除](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)以尽量减少对正在运行的应用程序造成中断。
+可使用 Azure CLI 升级 Azure 容器服务 (AKS) 群集。 在升级过程中，Kubernetes 节点会被仔细[封锁和排除][kubernetes-drain]以尽量减少对正在运行的应用程序造成中断。
 
 在本教程的第 8 部分（共 8 部分）中，升级了 Kubernetes 群集。 要完成的任务包括：
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/06/2017
 
 在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 应用程序随后在 Kubernetes 群集上运行。
 
-如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像](./tutorial-kubernetes-prepare-app.md)。
+如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 
 ## <a name="get-cluster-versions"></a>获取群集版本
@@ -141,4 +141,11 @@ myK8sCluster  eastus     myResourceGroup  1.8.2                Succeeded        
 请单击以下链接了解有关 AKS 的详细信息。
 
 > [!div class="nextstepaction"]
-> [AKS 概述](./intro-kubernetes.md)
+> [AKS 概述][aks-intro]
+
+<!-- LINKS - external -->
+[kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
+
+<!-- LINKS - internal -->
+[aks-intro]: ./intro-kubernetes.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

@@ -20,9 +20,9 @@
 #### [使用 PowerShell 在可用性区域中添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### 虚拟机规模集
-#### [使用 Azure 门户创建虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+#### [在可用性区域中创建规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
-### 负载均衡器
+### 负载均衡
 #### [什么是负载均衡器？](../load-balancer/load-balancer-standard-overview.md)
 #### [使用 Azure 门户创建区域冗余的公共负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-portal.md)
 #### [使用 PowerShell 创建区域冗余的负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-powershell.md)

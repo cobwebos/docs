@@ -105,7 +105,7 @@ ms.lasthandoff: 12/08/2017
 
 在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
-| 源 / 目标端口 | 方向 | 传输协议 | 源/目标 | 用途 (*) | 虚拟网络类型 |
+| 源 / 目标端口 | 方向 | 传输协议 | 源/目标 | 用途 ( * ) | 虚拟网络类型 |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|客户端与 API 管理的通信|外部 |
 | * / 3443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|Azure 门户和 Powershell 的管理终结点 |内部 |
@@ -117,7 +117,7 @@ ms.lasthandoff: 12/08/2017
 | * / 445 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|与适用于 GIT 的 Azure 文件共享的依赖关系 |外部和内部 |
 | * / 25028 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|连接到 SMTP 中继以发送电子邮件 |外部和内部 |
 | * / 6381 - 6383 |入站和出站 |TCP |VIRTUAL_NETWORK/VIRTUAL_NETWORK|访问 RoleInstance 之间的 Redis 缓存实例 |外部和内部 |
-| * / * | 入站 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure 基础结构负载均衡器 |外部和内部 |
+| * / *  | 入站 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure 基础结构负载均衡器 |外部和内部 |
 
 >[!IMPORTANT]
 > * “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。 不过，阻止其他端口将导致使用和监视运行中服务的能力降级。

@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: d0f9f487226218e6a8409c60edd7ef39ce760386
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ed956e3d27d315e0ce4901c2c38d50652f77c09a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-storage-account-using-the-azure-cli"></a>使用 Azure CLI 创建存储帐户
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 此快速入门详细介绍如何使用 Azure CLI 创建 Azure 存储帐户。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
-## <a name="create-resource-group"></a>创建资源组
+## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create](/cli/azure/group#create) 命令创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 此示例在 eastus 区域中创建一个名为 myResourceGroup 的资源组。
 
@@ -49,7 +49,7 @@ az account list-locations \
     --out table
 ```
 
-## <a name="create-a-general-purpose-standard-storage-account"></a>创建通用的标准存储帐户
+## <a name="create-a-general-purpose-storage-account"></a>创建常规用途存储帐户
 
 不同的使用方案对应有多种类型的存储帐户，每种类型都可支持一项或多项存储服务（Blob、文件、表或队列）。 下表详细介绍可用的存储帐户类型。
 
@@ -58,12 +58,13 @@ az account list-locations \
 |支持的服务| Blob、文件、表和队列服务 | Blob 服务 | Blob 服务|
 |支持的 Blob 类型|块 Blob、页 Blob 和追加 Blob | 页 Blob | 块 Blob 和追加 Blob|
 
-使用 [az storage account create](/cli/azure/storage/account#create) 命令创建通用标准存储帐户。
+使用 [az storage account create](/cli/azure/storage/account#create) 命令创建常规用途存储帐户。
 
 ```azurecli-interactive
 az storage account create \
     --name mystorageaccount \
     --resource-group myResourceGroup \
+    --kind Storage \
     --location eastus \
     --sku Standard_LRS \
     --encryption blob

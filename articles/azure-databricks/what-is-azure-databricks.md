@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 20f6899362420d96e7f03ea4dddeb6147a92f304
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: b96896b22d406954e80d1df268f55c1c5a02ec6f
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
@@ -73,7 +73,7 @@ Databricks 运行时构建在 Apache Spark 的基础之上，原生针对 Azure 
 
 * 通过简单的数据浏览确定如何使用数据。
 * 在以 R、Python、Scala 或 SQL 编写的笔记本中记录进度。
-* 单击几下鼠标将数据可视化，可使用熟悉的工具，例如 Matplotlib、ggoplot 或 d3。
+* 单击几下鼠标将数据可视化，可使用熟悉的工具，例如 Matplotlib、ggplot 或 d3。
 * 使用交互式仪表板创建动态报告。
 * 在使用 Spark 的同时与数据交互。
 

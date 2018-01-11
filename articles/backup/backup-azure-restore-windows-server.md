@@ -14,18 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/16/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 231dd61f95267b3a504ed70e9b3a5abc470b69b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>使用 Resource Manager 部署模型将文件还原到 Windows Server 或 Windows 客户端计算机
-> [!div class="op_single_selector"]
-> * [Azure 门户](backup-azure-restore-windows-server.md)
-> * [经典门户](backup-azure-restore-windows-server-classic.md)
->
->
 
 本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 还原数据时，可能会：
 

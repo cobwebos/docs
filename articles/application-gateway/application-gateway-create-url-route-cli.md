@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
 ms.openlocfilehash: 10d01d5d80e2d111d6b39598eed3612f80162b23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing-with-azure-cli-20"></a>使用 Azure CLI 2.0，通过基于路径的路由创建应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-url-route-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
+> * [Azure 资源管理器 PowerShell](application-gateway-create-url-route-arm-ps.md)
 > * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
 借助基于 URL 路径的路由，可根据 HTTP 请求的 URL 路径来关联路由。 它会检查是否有路由连接到为应用程序网关中列出的 URL 配置的后端服务器池，并将网络流量发送到定义的池。 基于 URL 路径的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
