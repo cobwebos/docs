@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 5d5afdaf22ffea8f3b77a154acb5d0a8dda74405
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要
 ## <a name="overview"></a>概述
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 **Azure Media Video Thumbnail** MP 目前以预览版提供。
 
-此主题提供有关 **Azure Media Video Thumbnail** 的详细信息，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用。
+本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用。
 
 ## <a name="limitations"></a>限制
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/11/2017
 以下程序演示如何：
 
 1. 创建资产并将媒体文件上传到资产。
-2. 使用基于包含以下 json 预设值的配置文件的视频缩略图任务，创建一个作业。 
+2. 使用基于配置文件的视频缩略图任务创建一个作业，该配置文件包含以下 json 预设值： 
    
         {                
             "version": "1.0",
@@ -109,16 +109,24 @@ ms.lasthandoff: 10/11/2017
         {
             // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
-                ConfigurationManager.AppSettings["AADTenantDomain"];
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
-                ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             // Field for service context.
             private static CloudMediaContext _context = null;
 
             static void Main(string[] args)
             {
-                var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+                AzureAdTokenCredentials tokenCredentials = 
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
                 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);

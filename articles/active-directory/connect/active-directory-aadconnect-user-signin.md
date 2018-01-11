@@ -4,7 +4,7 @@ description: "Azure AD Connect 用户登录的自定义设置。"
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4670ec3cacd8d69a4ed59aa2bbbeb2e5c893f173
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，帮助选择登录到 Azure AD 时需要使用的标识。
@@ -28,6 +28,10 @@ Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登�
 * 使用[无缝单一登录 (SSO)](active-directory-aadconnect-sso.md) 的[密码哈希同步](#password-synchronization)
 * 使用[无缝单一登录 (SSO) ](active-directory-aadconnect-sso.md)的[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)
 * [（使用 Active Directory 联合身份验证服务 (AD FS)）联合的 SSO](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+
+> [!NOTE] 
+> 请记住，通过为 Azure AD 配置联合，可以建立 Azure AD 租户和联合域之间的信任，这一点很重要。 拥有此信任的联合域用户将有权访问该租户内的 Azure AD 云资源。  
+>
 
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>为组织选择用户登录方法
 由于大多数组织只想让用户登录 Office 365、SaaS 应用程序和其他基于 Azure AD 的资源，因此，我们建议使用默认的密码哈希同步选项。 然而，由于特别的原因，某些组织不能使用此选项。 他们则可以选择联合登录选项（如 AD FS）或直通身份验证。 可以使用下表来帮助做出正确的选择。

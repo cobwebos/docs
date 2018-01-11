@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 7b4de3e7b7e98ab76c02ea7c1cf069cee94706fc
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 7d6cb91f97020ad60bd2ea74b24df76511956f38
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-azure-file-sync-preview"></a>部署 Azure 文件同步（预览版）
 使用 Azure 文件同步（预览版），即可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/05/2017
 * 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-interoperability)。
 
 ## <a name="deploy-the-storage-sync-service"></a>部署存储同步服务 
-存储同步服务是 Azure 文件同步的顶级 Azure 资源。要部署存储同步服务，请转到 [Azure 门户](https://portal.azure.com/)，然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步(预览版)”，然后选择“创建”打开“部署存储同步”选项卡。
+存储同步服务是 Azure 文件同步的顶级 Azure 资源。要部署存储同步服务，请转到 [Azure 门户](https://portal.azure.com/)，单击“新建”，然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步(预览版)”，然后选择“创建”打开“部署存储同步”选项卡。
 
 在打开的窗格中，输入以下信息：
 

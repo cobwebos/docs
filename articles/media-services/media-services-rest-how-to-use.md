@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: juliako
-ms.openlocfilehash: eada8f2bcd2488d5ed36b0c24aa3d1b917815517
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/05/2017
+ms.author: juliako;johndeu
+ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
-**媒体服务操作 REST** API 用于在媒体服务帐户中创建作业、资产、访问策略和其他对象操作。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
+媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 
-Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。 由于媒体服务遵循 Azure 设计准则，因此在连接到媒体服务时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。 以下部分介绍你在创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
+媒体服务提供了接受 JSON 或 atom+pub XML 格式的 REST API。 媒体服务 REST API 需要每个客户端连接到媒体服务时必须发送的特定 HTTP 标头，以及一组可选标头。 以下部分介绍你在创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
 
-本主题概述了如何在媒体服务中使用 REST v2。
+对媒体服务 REST API 的身份验证通过 Azure Active Directory 身份验证完成，如[通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API](media-services-rest-connect-with-aad.md)一文所述
 
 ## <a name="considerations"></a>注意事项
 
@@ -41,7 +41,7 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.11
+        x-ms-version: 2.17
         Authorization: Bearer <token> 
         Host: media.windows.net
   
@@ -56,13 +56,13 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
-| 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 ACS 提供的访问令牌。 |
-| x-ms-version |小数 |2.11 |
+| 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
+| x-ms-version |小数 |2.17（或最新版本）|
 | DataServiceVersion |小数 |3.0 |
 | MaxDataServiceVersion |小数 |3.0 |
 
 > [!NOTE]
-> 由于媒体服务使用 OData 通过 REST API 公布其基础资产元数据存储库，因此任何请求中均应包括 DataServiceVersion 和 MaxDataServiceVersion 标头，但如果未包括这些标头，则当前媒体服务会假定使用的 DataServiceVersion 值为 3.0。
+> 由于媒体服务使用 OData 公开其 REST API，因此所有请求中均应包括 DataServiceVersion 和 MaxDataServiceVersion 标头，但如果未包括这些标头，则当前媒体服务会假定使用的 DataServiceVersion 值为 3.0。
 > 
 > 
 
@@ -71,7 +71,7 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
 | 日期 |RFC 1123 日期 |请求的时间戳 |
-| Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应将包含 BLOB 流作为负载。 |
+| Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
 | Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 编码（如果适用）。 注意：对于大型资源，媒体服务可能会忽略此标头并返回未经压缩的数据。 |
 | Accept-Language |“en”、“es”等。 |指定响应的首选语言。 |
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
@@ -86,7 +86,7 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 | --- | --- | --- |
 | request-id |字符串 |当前操作的唯一标识符，由服务生成。 |
 | client-request-id |字符串 |调用方在原始请求（如果存在）中指定的标识符。 |
-| 日期 |RFC 1123 日期 |处理请求的日期。 |
+| 日期 |RFC 1123 日期 |处理请求的日期/时间。 |
 | Content-Type |多种多样 |响应正文的内容类型。 |
 | Content-Encoding |多种多样 |Gzip 或 deflate（视情况而定）。 |
 
@@ -102,18 +102,22 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 | MERGE |使用指定的属性更改更新现有对象。 |
 | HEAD |为 GET 响应返回对象的元数据。 |
 
-## <a name="discover-media-services-model"></a>发现媒体服务模型
-为了使媒体服务实体易于发现，可使用 $metadata 操作。 使用该操作，可以检索所有有效的实体类型、实体属性、关联、函数、操作等。 以下示例演示了如何构建 URI：https://media.windows.net/API/$metadata。
+## <a name="discover-and-browse-the-media-services-entity-model"></a>查找并浏览媒体服务实体模型
+为了使媒体服务实体易于发现，可使用 $metadata 操作。 使用该操作，可以检索所有有效的实体类型、实体属性、关联、函数、操作等。 将 $metadata 操作添加到媒体服务 REST API 终结点的末尾后，即可访问此发现服务。
+
+ /api/$metadata。
 
 如果希望在浏览器中查看元数据，应在 URI 的末尾追加“?api-version=2.x”，或不要在请求中包括 x-ms-version 标头。
 
-## <a name="connect-to-media-services"></a>连接到媒体服务
+## <a name="authenticate-with-media-services-rest-using-azure-active-directory"></a>使用 Azure Active Directory 进行媒体服务 REST 身份验证
 
-若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
+对 REST API 的身份验证是通过 Azure Active Directory (AAD) 完成的。
+要详细了解如何从 Azure 门户获取媒体服务帐户所需的身份验证详细信息，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。
+
+有关使用 Azure AD 身份验证编写连接到 REST API 的代码的详细信息，请参阅[通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API](media-services-rest-connect-with-aad.md)。
 
 ## <a name="next-steps"></a>后续步骤
-
-若要使用 REST 访问 AMS API，请参阅[通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API](media-services-rest-connect-with-aad.md)。
+要了解如何配合使用 Azure AD 身份验证和媒体服务 REST API，请参阅[通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API](media-services-rest-connect-with-aad.md)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

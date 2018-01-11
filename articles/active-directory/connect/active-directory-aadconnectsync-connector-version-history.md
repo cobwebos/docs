@@ -4,7 +4,7 @@ description: "本主题列出了 Forefront Identity Manager (FIM) 和 Microsoft 
 services: active-directory
 documentationcenter: 
 author: fimguy
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.openlocfilehash: e6df124a38c748294e92183df272dc266a0afc51
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3fbdc60a21aa16926bc4db00f41ade8ecda415f1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
@@ -44,7 +44,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 
 * Lotus Notes：
   * 筛选自定义认证者选项
-  * 修复了类 ImportOperations 的导入，以便决定哪些操作可在“示图”模式下运行，哪些操作可在“搜索”模式下运行。
+  * 类 ImportOperations 的导入修复了关于哪些操作可在“视图”模式下运行，哪些操作可在“搜索”模式下运行的定义。
 * 泛型 LDAP：
   * OpenLDAP 目录使用 DN 而非 entryUUI 作为定位点。 增加了 GLDAP 连接器的新选项，用于修改定位点
 * 泛型 SQL：
@@ -123,7 +123,7 @@ Lotus：
 
 * 泛型 SQL：</br>
   **情景症状：**我们仅允许引用一个对象类型，并要求对成员使用交叉引用，这是一个已知的 SQL 连接器限制。 </br>
-  **解决方法说明：**如果选择了“*”选项，在执行引用的处理步骤时，对象类型的所有组合将返回给同步引擎。
+  **解决方案说明：**如果选择了“*”选项，在处理引用时，对象类型的所有组合将返回给同步引擎。
 
 >[!Important]
 - 这就会创建许多的占位符
@@ -131,7 +131,7 @@ Lotus：
 
 
 * 泛型 LDAP：</br>
- **情景：**在特定的分区中只选择少量的容器时，搜索仍会针对整个分区执行。 具体的信息由同步服务而不是 MA 筛选，这可能会导致性能下降。 </br>
+ **情景：**特定分区中只选择了少量容器时，仍会针对整个分区执行搜索。 具体的信息由同步服务而不是 MA 筛选，这可能会导致性能下降。 </br>
 
  **解决方法说明：**更改 GLDAP 连接器的代码，使连接器可通过所有容器并可搜索每个容器中的对象，而不是在整个分区中搜索。
 
@@ -139,7 +139,7 @@ Lotus：
 * Lotus Domino：
 
   **情景：**导出期间用于删除人员的 Domino 邮件删除支持。 </br>
-  **解决方法：**导出期间可配置用于删除人员的邮件删除支持。
+  **解决方案：**在导出期间配置用于删除人员的邮件删除支持。
 
 ### <a name="fixed-issues"></a>已解决的问题：
 * 泛型 Web 服务：

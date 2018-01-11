@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9a4a839e7b5cc772fb9d4c57ed70484d90a87fdd
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a6d3c89f0f99128e2bf754391c79c3d616f0730a
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
@@ -97,6 +97,9 @@ ms.lasthandoff: 11/01/2017
 ![在仪表板标题中单击“共享”](./media/app-insights-dashboards/41.png)
 
 了解[角色和访问控制](app-insights-resources-roles-access-control.md)。
+
+## <a name="create-dashboards-programmatically"></a>以编程方式创建仪表板
+可使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically)和简单的 JSON 编辑器自动执行仪表板的创建。
 
 ## <a name="app-navigation"></a>应用导航
 概述边栏选项卡是访问应用相关信息所要通过的网关。

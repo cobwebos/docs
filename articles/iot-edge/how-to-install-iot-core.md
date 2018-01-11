@@ -7,18 +7,20 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: veyalla
-ms.date: 11/17/2017
+ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d3ff260b4ac238ce7aaa2a63538dede7bd21a19c
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: cc34e5cecafe485608ba428395b690ba57f71e9c
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>在 Windows IoT Core 上安装 IoT Edge 运行时 - 预览
 
-Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板计算机 (SBC) 设备上运行。 本文介绍在运行 Windows IoT Core 的 [MinnowBoard Turbot][lnk-minnow] 开发板上预配运行时。
+配合使用 Azure IoT Edge 和 [Windows IoT Core](https://docs.microsoft.com/windows/iot-core/)，即使在小型设备上也能实现边缘计算。 Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板计算机 (SBC) 设备上运行。 
+
+本文介绍在运行 Windows IoT Core 的 [MinnowBoard Turbot][lnk-minnow] 开发板上预配运行时。 Windows IoT Core 仅在基于 Intel x64 的处理器上支持 Azure IoT Edge。 
 
 ## <a name="install-the-runtime"></a>安装运行时
 
@@ -38,7 +40,7 @@ Azure IoT Edge 运行时甚至可以在 IoT 行业内非常流行的小型单板
    ```
 
    >[!NOTE]
-   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、背书或支持。
+   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、认可或支持。
 
 1. 安装 IoT Edge 运行时并验证配置：
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: dbc81edd24ee714fbb173ed395a2f2fc91773fff
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45883d59e5fe9ab2b7a09bfdc6c11a681bd43d0b
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 复制可在同一数据中心内或向第二个数据中心复制数据，具体取决于所选的复制选项。 复制可保护数据，并在发生暂时性硬件故障时保留应用程序正常运行时间。 如果数据复制到第二个数据中心，还可以保护数据，以免主要位置发生灾难性故障。
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/02/2017
 |:--- |:--- |:--- |:--- |:--- |
 | 数据在多个数据中心之间进行复制。 |否 |是 |是 |是 |
 | 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
-| 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
+| 旨在给定年份为对象提供 ___ 的持续性。 |至少为 99.999999999% (11 9's)|至少为 99.9999999999% (12 9's)|至少为 99.99999999999999% (16 9's)|至少为 99.99999999999999% (16 9's)|
 
 有关不同冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/02/2017
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
 ## <a name="zone-redundant-storage"></a>区域冗余存储
-区域冗余存储空间 (ZRS) 除了存储类似于 LRS 的三个副本外，还在一个或两个区域内的数据中心之间异步复制数据，从而提供比 LRS 更高的持久性。 即使主数据中心不可用或不可恢复，存储在 ZRS 中的数据也是持久的。
+区域冗余存储空间 (ZRS) 旨在通过在一个或两个区域内跨数据中心异步复制数据，在给定年份为对象提供至少为 99.9999999999% (12 9's) 的持续性，由此提供比 LRS 更高的持续性。 即使主数据中心不可用或不可恢复，存储在 ZRS 中的数据也是持久的。
 计划使用 ZRS 的客户应了解：
 
 * ZRS 仅可用于通用存储帐户中的块 blob，并且仅在存储服务版本 2014-02-14 及更高版本中受支持。
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/02/2017
 
 * 应用程序必须管理在使用 RA-GRS 时与之交互的终结点。
 * 由于异步复制涉及延迟，因此在遇到区域性灾难时，如果无法将数据从主要区域中恢复，则尚未复制到次要区域的更改会丢失。
-* 如果 Microsoft 启动了故障转移到次要区域，那么在故障转移完成后，便可以读取和编写该数据。 有关详细信息，请参阅[灾难恢复指南](../storage-disaster-recovery-guidance.md)。 
+* 如果 Microsoft 启动了故障转移到次要区域，那么在故障转移完成后，便可以读取和编写该数据。 有关详细信息，请参阅[灾难恢复指南](../storage-disaster-recovery-guidance.md)。
 * RA-GRS 的用途是实现高可用性。 有关可伸缩性的指南，请查看[性能清单](../storage-performance-checklist.md)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -81,7 +81,8 @@ ms.lasthandoff: 11/02/2017
 <a id="howtochange"></a>
 #### <a name="1-how-can-i-change-the-geo-replication-type-of-my-storage-account"></a>1.如何更改存储帐户的异地复制类型？
 
-   可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md) 或者使用我们的众多存储客户端之一以编程方式，在 LRS、GRS 和 RA-GRS 之间更改存储帐户的异地复制类型。 请注意，ZRS 帐户无法转换为 LRS 或 GRS。 类似地，现有的 LRS 或 GRS 帐户也无法转换为 ZRS 帐户。
+   可以使用 [Azure 门户](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md) 或者使用我们的众多存储客户端之一以编程方式，在 LRS、GRS 和 RA-GRS 之间更改存储帐户的异地复制类型。
+请注意，ZRS 帐户无法转换为 LRS 或 GRS。 类似地，现有的 LRS 或 GRS 帐户也无法转换为 ZRS 帐户。
 
 <a id="changedowntime"></a>
 #### <a name="2-will-there-be-any-down-time-if-i-change-the-replication-type-of-my-storage-account"></a>2.更改存储帐户的复制类型是否会导致停机？
@@ -91,26 +92,27 @@ ms.lasthandoff: 11/02/2017
 <a id="changecost"></a>
 #### <a name="3-will-there-be-any-additional-cost-if-i-change-the-replication-type-of-my-storage-account"></a>3.更改存储帐户的复制类型是否会产生任何额外费用？
 
-   是的。 如果将存储帐户的复制类型从 LRS 更改为 GRS（或 RA-GRS），则会产生额外的出口流量费用，该费用与将现有数据从主要位置复制到次要位置相关。 复制初始数据后，将数据从主要位置复制到次要位置不会进一步产生额外的出口流量费用。 在 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)上可以找到带宽费的详细信息。 如果从 GRS 更改为 LRS，则不会产生额外的费用，但会从次要位置删除你的数据。
+   是的。 如果将存储帐户的复制类型从 LRS 更改为 GRS（或 RA-GRS），则会产生额外的出口流量费用，该费用与将现有数据从主要位置复制到次要位置相关。 复制初始数据后，将数据从主要位置复制到次要位置不会进一步产生额外的出口流量费用。 在 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)上可以找到带宽费的详细信息。
+如果从 GRS 更改为 LRS，则不会产生额外的费用，但会从次要位置删除你的数据。
 
 <a id="ragrsbenefits"></a>
 #### <a name="4-how-can-ra-grs-help-me"></a>4.RA-GRS 有什么作用？
-   
-   GRS 存储可将数据从主要区域复制到数百英里以外的次要区域。 在这种情况下，即使在遇到区域完全停电或导致主要区域不可恢复的灾难，数据也能持久保存。 RA-GRS 存储包含此功能，此外，还能从次要位置读取数据。 有关如何利用此功能的一些思路，请参阅[使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)。 
+
+   GRS 存储可将数据从主要区域复制到数百英里以外的次要区域。 在这种情况下，即使在遇到区域完全停电或导致主要区域不可恢复的灾难，数据也能持久保存。 RA-GRS 存储包含此功能，此外，还能从次要位置读取数据。 有关如何利用此功能的一些思路，请参阅[使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)。
 
 <a id="lastsynctime"></a>
 #### <a name="5-is-there-a-way-for-me-to-figure-out-how-long-it-takes-to-replicate-my-data-from-the-primary-to-the-secondary-region"></a>5.是否可以估算出将数据从主要区域复制到次要区域需要花费多长时间？
-   
-   如果使用 RA-GRS 存储，则可以检查存储帐户的上次同步时间。 上次同步时间是 GMT 日期/时间值；在上次同步时间之前主要位置的写入内容均已成功写入次要位置，这意味着可从次要位置读取这些内容。 在上次同步时间之后主要位置的写入内容不一定可供读取。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)，或者使用 REST API 或某个存储客户端库以编程方式查询此值。 
+
+   如果使用 RA-GRS 存储，则可以检查存储帐户的上次同步时间。 上次同步时间是 GMT 日期/时间值；在上次同步时间之前主要位置的写入内容均已成功写入次要位置，这意味着可从次要位置读取这些内容。 在上次同步时间之后主要位置的写入内容不一定可供读取。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)，或者使用 REST API 或某个存储客户端库以编程方式查询此值。
 
 <a id="outage"></a>
 #### <a name="6-how-can-i-switch-to-the-secondary-region-if-there-is-an-outage-in-the-primary-region"></a>6.如果主要区域发生中断，如何切换到次要区域？
-   
+
    有关详细信息，请参阅 [Azure 存储中断时该怎么办](../storage-disaster-recovery-guidance.md)一文。
 
 <a id="rpo-rto"></a>
 #### <a name="7-what-is-the-rpo-and-rto-with-grs"></a>7.GRS 的 RPO 和 RTO 是什么意思？
-   
+
    恢复点目标 (RPO)：在 GRS 和 RA-GRS 中，存储服务以异步方式将数据从主要位置异地复制到次要位置。 如果发生重大的区域性灾难，并且必须执行故障转移，则最近尚未异地复制的增量更改可能会丢失。 潜在的数据丢失分钟数称为 RPO（表示可将数据恢复到的时间点）。 我们的 RPO 通常小于 15 分钟，但目前没有 SLA 规定异地复制所用时长。
 
    恢复时间目标 (RTO)：用于度量在必须执行故障转移的情况下，执行故障转移以及将存储帐户恢复联机所花费的时间。 执行故障转移的时间包括：
@@ -118,7 +120,7 @@ ms.lasthandoff: 11/02/2017
     * 通过将主要 DNS 条目更改为指向次要位置来故障转移帐户。
 
    我们将会十分认真地负责保留你的数据，因此，只要存在任何恢复数据的可能性，我们就会暂缓故障转移，专注于在主要位置恢复数据。 我们计划将来提供一个 API 让你在帐户级别触发故障转移，这样，你便可以自行控制 RTO，但此功能目前尚未推出。
-   
+
 ## <a name="next-steps"></a>后续步骤
 * [使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)
 * [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)
@@ -126,4 +128,3 @@ ms.lasthandoff: 11/02/2017
 * [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
 * [Microsoft Azure Storage redundancy options and read access geo redundant storage ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Microsoft Azure 存储冗余选项和读取访问异地冗余存储）
 * [SOSP Paper - Azure Storage: A highly available cloud storage service with strong consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储：具有高度一致性的高可用性云存储服务）
-

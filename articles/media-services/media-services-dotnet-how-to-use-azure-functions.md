@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
-本主题说明如何开始创建使用媒体服务的 Azure Functions。 本主题中定义的 Azure Function 可监视新 MP4 文件中名为**输入**的存储帐户容器。 将文件放入存储容器后，blob 触发器就会执行此函数。 要查看 Azure 函数，请参阅 Azure 函数部分的[概述](../azure-functions/functions-overview.md)和其他主题。
+本文介绍如何开始创建使用媒体服务的 Azure Functions。 本文中定义的 Azure Function 可监视新 MP4 文件中名为“输入”的存储帐户容器。 将文件放入存储容器后，blob 触发器就会执行此函数。 要查看 Azure 函数，请参阅 Azure 函数部分的[概述](../azure-functions/functions-overview.md)和其他主题。
 
 如果你想要浏览并部署使用 Azure Media Services 的现有 Azure 功能，请查看[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存储库包含几个示例，示例中将使用媒体服务来演示有关直接从 Blob 存储引入内容、编码以及将内容写回 Blob 存储的工作流。 此存储库还包含演示如何通过 WebHook 和 Azure 队列监视作业通知的示例。 也可根据[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 存储库中的示例进行 Functions 开发。 若要部署此函数，请按“部署到 Azure”按钮。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
 **AMSClientSecret**：Azure AD 应用程序客户端密码。
 
-**StorageConnection**：与媒体服务帐户关联的帐户的存储连接。 “function.json”文件和“run.csx”文件使用了此值（如下所述）。
+**StorageConnection**：媒体服务帐户关联帐户的存储连接。 “function.json”文件和“run.csx”文件使用了此值（如下所述）。
 
 ## <a name="create-a-function"></a>创建函数
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 选择 Function App，然后单击“新建函数”。
 2. 选择“C#”语言和“数据处理”方案。
-3. 选择“BlobTrigger”模板。 只要将 blob 上传到**输入**容器，就会触发此函数。 下一步的“路径”中指定了**输入**名称。
+3. 选择“BlobTrigger”模板。 只要将 blob 上传到输入容器，就会触发此函数。 下一步的“路径”中指定了**输入**名称。
 
     ![文件](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
@@ -103,7 +103,7 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 
 ### <a name="projectjson"></a>project.json
 
-project.json 文件包含依赖项。 下面是一个 **project.json** 文件示例，其中包含 Nuget 所需的 .NET Azure 媒体服务包。 请注意，版本号将随包的最新更新而改变，因此应确认最新版本。 
+project.json 文件包含依赖项。 下面是一个 **project.json** 文件示例，其中包含 Nuget 所需的 .NET Azure 媒体服务包。 请注意，版本号随包的最新更新而改变，因此应确认最新版本。 
 
 向 project.json 添加以下定义。 
 
@@ -134,7 +134,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 在实际方案中，很可能需要跟踪作业进度，并发布编码的资产。 有关详细信息，请参阅[使用 Azure WebHook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)。 有关更多示例，请参阅[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。  
 
-将现有 run.csx 文件的内容替换为以下代码。 定义后，请单击“保存并运行”。
+使用以下代码替换现有 run.csx 文件的内容：函数定义完成后，单击“保存并运行”。
 
 ```
 #r "Microsoft.WindowsAzure.Storage"

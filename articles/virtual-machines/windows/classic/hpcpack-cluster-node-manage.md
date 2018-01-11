@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: dc9f354191b9e80ff6a01bd401a874c6998bda79
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ad67efecf9a688ac3e7ccd7cc32576e9a46d1f5
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>管理 Azure 的 HPC Pack 群集中计算节点的数量和可用性
 如果在 Azure VM 中创建了一个 HPC Pack 2012 R2 群集，你可能希望有轻松添加、删除、启动（设置）或停止（取消设置）群集中一些计算节点 VM 的方法。 若要执行这些任务，请运行头节点 VM 中安装的 Azure PowerShell 脚本。 这些脚本可帮助你控制 HPC Pack 群集资源的数量和可用性，以便可以控制成本。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 > 此外，本文所述的 PowerShell 脚本不可在 HPC Pack 2016 中使用。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure VM 中的 HPC Pack 2012 R2 群集**：在经典部署模型中创建一个 HPC Pack 2012 R2 群集。 例如，可以通过使用 Azure 应用商店中的 HPC Pack 2012 R2 VM 映像和 Azure PowerShell 脚本，自动执行部署。 有关信息和先决条件，请参阅[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](hpcpack-cluster-powershell-script.md)。
+* **Azure VM 中的 HPC Pack 2012 R2 群集**：在经典部署模型中创建一个 HPC Pack 2012 R2 群集。 例如，可以通过使用 Azure Marketplace 中的 HPC Pack 2012 R2 VM 映像和 Azure PowerShell 脚本，自动执行部署。 有关信息和先决条件，请参阅[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](hpcpack-cluster-powershell-script.md)。
   
     部署后，在头节点上的 %CCP\_HOME%bin 文件夹中查找节点管理脚本。 以管理员身份运行各个脚本。
 * **Azure 发布设置文件或管理证书**：需要在头节点上执行下列操作之一：
@@ -59,7 +59,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 ```
 ### <a name="parameters"></a>parameters
 * **ServiceName**：云服务的名称，新计算节点 VM 将添加到该服务。
-* **ImageName**：Azure VM 映像名称，可以通过 Azure 经典门户或 Azure PowerShell cmdlet **Get-AzureVMImage** 获得。 映像必须满足以下要求：
+* **ImageName**：Azure VM 映像名称，可以通过 Azure 门户或 Azure PowerShell cmdlet Get-AzureVMImage 获得。 映像必须满足以下要求：
   
   1. 必须安装了 Windows 操作系统。
   2. HPC Pack 必须安装在计算节点角色中。

@@ -4,7 +4,7 @@ description: "Azure AD 域服务故障排除指南"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -57,13 +57,10 @@ ms.lasthandoff: 11/15/2017
 
 执行以下步骤，检查是否存在该应用程序，如果存在，则将它删除：
 
-1. 导航到 **Azure 经典门户** ([https://manage.windowsazure.com](https://manage.windowsazure.com))。
-2. 在左窗格中，选择“Active Directory”节点。
-3. 选择要启用 Azure AD 域服务的 Azure AD 租户（目录）。
-4. 导航到“应用程序”选项卡。
-5. 从下拉列表中选择“我公司拥有的应用程序”选项。
-6. 检查是否存在名为“Azure AD 域服务同步”的应用程序。如果存在，请将它删除。
-7. 删除该应用程序后，再次尝试启用 Azure AD 域服务。
+1. 导航至 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)中 Azure AD 目录的“应用程序”部分。
+2. 选择“显示”下拉列表中的“所有应用程序”。 选择“应用程序状态”下拉列表中的“所有”。 选择“应用程序可见性”下拉列表中的“所有”。
+3. 在搜索框中键入“Azure AD 域服务同步”。 如果该应用程序存在，单击它，然后单击工具栏中的“删除”按钮，将其删除。
+4. 删除该应用程序后，再次尝试启用 Azure AD 域服务。
 
 ### <a name="invalid-configuration"></a>配置无效
 **错误消息：**
@@ -153,7 +150,7 @@ Azure AD 会防止意外删除用户对象。 如果从 Azure AD 租户中删除
 
 即使在 Azure AD 目录中重新创建带相同 UPN 的用户帐户，托管域中的用户帐户仍处于禁用状态。 若要从托管域中删除用户帐户，需要从 Azure AD 租户中强制删除该帐户。
 
-若要从托管域中完全删除用户帐户，可以从 Azure AD 租户中永久删除该用户。 如此 [MSDN 文章](https://msdn.microsoft.com/library/azure/dn194132.aspx)中所述，结合 '-RemoveFromRecycleBin' 选项使用 Remove-MsolUser PowerShell cmdlet 即可。
+若要从托管域中完全删除用户帐户，可以从 Azure AD 租户中永久删除该用户。 结合使用 `Remove-MsolUser` PowerShell cmdlet 和 `-RemoveFromRecycleBin` 选项，参照 [MSDN 文章](https://msdn.microsoft.com/library/azure/dn194132.aspx)中的介绍。
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](active-directory-ds-contact-us.md)。

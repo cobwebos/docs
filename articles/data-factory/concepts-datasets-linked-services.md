@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: 
 ms.date: 09/05/2017
 ms.author: shlo
-ms.openlocfilehash: a13e19c7e1a22581b14d1a96e20b8a649c303fc3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: e8572af6187a889067341bbebb254d701b39395a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure 数据工厂中的数据集和链接服务 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,6 +43,56 @@ ms.lasthandoff: 11/17/2017
 下图显示了数据工厂中管道、活动、数据集和链接服务之间的关系：
 
 ![管道、活动、数据集和链接服务之间的关系](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+
+## <a name="linked-service-json"></a>链接服务 JSON
+数据工厂中的链接服务采用 JSON 格式定义，如下所示：
+
+```json
+{
+    "name": "<Name of the linked service>",
+    "properties": {
+        "type": "<Type of the linked service>",
+        "typeProperties": {
+              "<data store or compute-specific type properties>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+下表描述了上述 JSON 中的属性：
+
+属性 | 说明 | 必选 |
+-------- | ----------- | -------- |
+名称 | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
+type | 链接服务的类型。 例如：AzureStorage（数据存储）或 AzureBatch（计算）。 请参阅 typeProperties 说明。 | 是 |
+typeProperties | 每个数据存储或计算的类型属性各不相同。 <br/><br/> 有关支持的数据存储类型及其类型属性，请参阅本文中的[数据集类型](#dataset-type)表。 导航到数据存储连接器一文，了解特定于数据存储的类型属性。 <br/><br/> 有关支持的计算类型及其类型属性，请参阅[计算链接服务](compute-linked-services.md)。 | 是 |
+connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否
+
+## <a name="linked-service-example"></a>链接服务示例
+以下链接服务是 Azure 存储链接服务。 请注意：类型设置为“AzureStorage”。 Azure 存储链接服务的类型属性包含连接字符串。 数据工厂服务使用此连接字符串在运行时连接到数据存储。 
+
+```json
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="dataset-json"></a>数据集 JSON
 采用 JSON 格式定义数据工厂中的数据集，如下所示：
@@ -72,12 +122,12 @@ ms.lasthandoff: 11/17/2017
 ```
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必选 | 默认
--------- | ----------- | -------- | -------
-name | 数据集名称。 | 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 | 是 | 不可用
-type | 数据集的类型。 | 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-types)。 | 是 | 不可用
-structure | 数据集的架构。 | 有关详细信息，请参阅[数据集结构](#dataset-structure)。 | 否 | 不可用
-typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 | 不可用
+属性 | 说明 | 必选 |
+-------- | ----------- | -------- |
+名称 | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
+type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-types)。 | 是 |
+structure | 数据集的架构。 有关详细信息，请参阅[数据集结构](#dataset-structure)。 | 否 |
+typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
 ## <a name="dataset-example"></a>数据集示例
 在以下示例中，数据集表示 SQL 数据库中名为 MyTable 的表。
@@ -104,28 +154,6 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 - type 设置为 AzureSqlTable。
 - tableName 类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
 - linkedServiceName 引用 AzureSqlDatabase 类型的链接服务，该类型在下一 JSON 片段中定义。
-
-## <a name="linked-service-example"></a>链接服务示例
-AzureSqlLinkedService 定义如下：
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
-        }
-    }
-}
-```
-在前面的 JSON 片段中：
-
-- “type”设置为 AzureSqlDatabase。
-- “connectionString”类型属性指定连接到 SQL 数据库的信息。
-
-如你所见，链接服务用于定义连接到 SQL 数据库的方式。 数据集用于定义将用作管道中活动的输入和输出的表类型。
 
 ## <a name="dataset-type"></a>数据集类型
 数据集的类型很多，具体取决于使用的数据存储。 请参阅下表，获取数据工厂支持的数据存储的列表。 单击数据存储，了解如何创建链接服务和该数据存储的数据集。

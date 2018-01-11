@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 25dc37c10435e45bc56fd48488f9f238922ed6e3
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 0ae573922938b775900b839a24a917e4211fbadc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/02/2017
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
-按照 [从 Azure 命令行接口 (Azure CLI) 连接到 Azure 订阅](../xplat-cli-connect.md) 中所述的步骤，使用 **登录** 方法连接到订阅。
+按照 [从 Azure 命令行接口 (Azure CLI) 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli) 中所述的步骤，使用 **登录** 方法连接到订阅。
 
 ## <a name="create-a-cluster"></a>创建群集
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 12/02/2017
     * 将 `sshuser` 和 `sshuserpassword` 替换为通过 SSH 访问群集时要使用的用户名和密码
 
     > [!IMPORTANT]
-    > 此示例创建一个具有两个辅助节点的群集。 也可以在创建群集后，通过执行缩放操作更改辅助节点数。 如果计划使用 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。 可以在创建群集的过程中使用 `--headNodeSize` 参数设置头节点大小。
+    > 此示例创建一个具有两个辅助角色节点的群集。 也可以在创建群集后，通过执行缩放操作更改辅助节点数。 如果计划使用 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。 可以在创建群集的过程中使用 `--headNodeSize` 参数设置头节点大小。
     >
     > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 

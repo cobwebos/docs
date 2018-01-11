@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2010e86e56c1ce7a98fae97a8f6f00c30b61035
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>流分析 Data Lake Store 输出
 流分析作业支持几种输出方法，其中一种方法为 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 Data Lake Store 可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。
 
 ## <a name="authorize-a-data-lake-store-account"></a>授权 Data Lake Store 帐户
-1. 在 Azure 门户中选择 Data Lake Store 作为输出时，会提示用户通过经典门户对现有 Data Lake Store 的使用进行授权或请求对 Data Lake Store 的访问权限。
+1. 在 Azure 门户中选择 Data Lake Store 作为输出时，会提示用户对现有 Data Lake Store 的使用进行授权或请求对 Data Lake Store 的访问权限。
    
    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
    

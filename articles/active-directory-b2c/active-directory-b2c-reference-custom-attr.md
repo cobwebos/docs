@@ -4,7 +4,7 @@ description: "如何使用 Azure Active Directory B2C 中的自定义属性来�
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: mbaldwin
+manager: mtillman
 editor: bryanla
 ms.assetid: 055ffb0a-197b-4716-8dad-1fd8a01e174f
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 356aaeff3a78fc7b682d621e8e0de9312582b2fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e2c8b3ab223cf269129d7723c37d98c24f0653c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C：使用自定义属性来收集有关使用者的信息
 Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性）：名、姓、市、邮编和其他属性。 但是，每个面向使用者的应用程序对于收集使用者的哪些属性具有独特的要求。 在 Azure AD B2C 中，可以扩展存储在每个使用者帐户上的属性集。 可以在 [Azure 门户](https://portal.azure.com/)中创建自定义属性，并将其用于注册策略，如下所示。 还可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 读取和写入这些属性。
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性
 4. 提供自定义属性的“名称”（例如，“ShoeSize”）和“说明”（可选） 。 单击“创建” 。
    
    > [!NOTE]
-   > 目前只有“字符串”**数据类型**可用。
+   > 当前可用“数据类型”仅包括“String”、“Boolean”和“Int”。
    > 
    > 
 

@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7b8732a06e54f7828418cba0c0d172e34f1f4ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图
 
-可以使用 Media Encoder Standard 以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 图像文件格式从输入视频生成一个或多个缩略图。 可以提交仅生成图像的任务，或者合并缩略图的生成与编码功能。 本主题针对此类方案提供一些示例 XML 和 JSON 缩略图预设。 本主题的末尾提供了一段[示例代码](#code_sample)，演示如何使用媒体服务 .NET SDK 来完成编码任务。
+可以使用 Media Encoder Standard 以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 图像文件格式从输入视频生成一个或多个缩略图。 可以提交仅生成图像的任务，或者合并缩略图的生成与编码功能。 本文针对此类方案提供一些示例 XML 和 JSON 缩略图预设。 本文末尾提供了一段[示例代码](#code_sample)，演示如何使用媒体服务 .NET SDK 来完成编码任务。
 
 有关示例预设中使用的元素的更多详细信息，请查看 [Media Encoder Standard 架构](media-services-mes-schema.md)。
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
     
 ## <a name="example-of-a-single-png-file-preset"></a>“单个 PNG 文件”预设示例
 
-使用以下 JSON 和 XML 预设可以基于输入视频的前几秒内容生成单个输出 PNG 文件，其中的编码器会尽力尝试查找“相关的”帧。 请注意，输出图像尺寸已设置为 100%，这意味着，这些尺寸将与输入视频的尺寸匹配。 另请注意需要如何指定“Outputs”中“Format”设置，以匹配“Codecs”节中“PngLayers”的用法。 
+使用以下 JSON 和 XML 预设可以基于输入视频的前几秒内容生成单个输出 PNG 文件，其中的编码器会尽力尝试查找“相关的”帧。 请注意，输出图像尺寸已设置为 100%，这意味着，这些尺寸与输入视频的尺寸匹配。 另请注意需要如何指定“Outputs”中“Format”设置，以匹配“Codecs”节中“PngLayers”的用法。 
 
 ### <a name="json-preset"></a>JSON 预设
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>“在特定时间戳处生成一个图像”预设示例
 
-使用以下 JSON 和 XML 预设可以在输入视频的 30 秒标记处生成单个 JPEG 图像。 此预设预期输入视频的持续时间超过 30 秒（否则作业会失败）。
+使用以下 JSON 和 XML 预设可以在输入视频的 30 秒标记处生成单个 JPEG 图像。 此预设预期输入视频的持续时间超过 30 秒（否则作业失败）。
 
 ### <a name="json-preset"></a>JSON 预设
 
@@ -194,7 +194,7 @@ ms.lasthandoff: 10/11/2017
     
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>“不同分辨率的缩略图”预设示例
 
-可使用以下预设在同一个任务中的不同解决方案下生成缩略图。 在该示例中，当输入时间线位于 5%、15%、…、95% 时，编码器将在两个时点各生成一个图像 - 一个是输入视频分辨率的 100% 处，一个是 50% 处。
+可使用以下预设在同一个任务中的不同解决方案下生成缩略图。 在该示例中，当输入时间线位于 5%、15%、…、95% 时，编码器会在输入视频分辨率的 100% 处和 50% 处各生成一个图像。
 
 请注意 FileName 中 {Resolution} 宏的使用；它指示在生成输出图像的文件名时，编码器要使用在预设的“编码”部分中所指定的宽度和高度。 这还能够帮助轻松区分不同图像
 
@@ -267,7 +267,7 @@ ms.lasthandoff: 10/11/2017
 上述所有示例都在讨论如何提交仅生成图像的编码任务，但还可以将视频/音频编码与缩略图生成结合起来。 以下的 JSON 和 XML 预设指示 Media Encoder Standard 在编码过程中生成一个缩略图。
 
 ### <a id="json"></a>JSON 预设
-有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)主题。
+有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。
 
     {
       "Version": 1.0,
@@ -330,7 +330,7 @@ ms.lasthandoff: 10/11/2017
     }
 
 ### <a id="xml"></a>XML 预设
-有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)主题。
+有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。
     
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -394,40 +394,49 @@ ms.lasthandoff: 10/11/2017
         string configuration = File.ReadAllText(fileName);  
 * 将一个编码任务添加到该作业。 
 * 指定要编码的输入资产。
-* 创建将包含所编码资产的输出资产。
+* 创建包含所编码资产的输出资产。
 * 添加事件处理程序以检查作业进度。
 * 提交作业。
 
-有关如何设置开发环境的指导，请参阅[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)主题。
+有关如何设置开发环境的指导，请参阅[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)一文。
 
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-        namespace EncodeAndGenerateThumbnails
-        {
-        class Program
-        {
-            // Read values from the App.config file.
-            private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+namespace EncodeAndGenerateThumbnails
+{
+    class Program
+    {
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+        ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+        ConfigurationManager.AppSettings["AMSClientSecret"];
 
-            private static CloudMediaContext _context = null;
+        private static CloudMediaContext _context = null;
 
-            private static readonly string _mediaFiles =
-            Path.GetFullPath(@"../..\Media");
+        private static readonly string _mediaFiles =
+        Path.GetFullPath(@"../..\Media");
 
-            private static readonly string _singleMP4File =
+        private static readonly string _singleMP4File =
             Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
 
-            static void Main(string[] args)
-            {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+        static void Main(string[] args)
+        {
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -439,10 +448,10 @@ ms.lasthandoff: 10/11/2017
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
-            }
+        }
 
-            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-            {
+        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+        {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Thumbnail Job");
             // Get a media processor reference, and pass to it the name of the 
@@ -454,9 +463,9 @@ ms.lasthandoff: 10/11/2017
 
             // Create a task
             ITask task = job.Tasks.AddNew("Media Encoder Standard Thumbnail task",
-                processor,
-                configuration,
-                TaskOptions.None);
+                    processor,
+                    configuration,
+                    TaskOptions.None);
 
             // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
@@ -464,47 +473,47 @@ ms.lasthandoff: 10/11/2017
             // This output is specified as AssetCreationOptions.None, which 
             // means the output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
-                AssetCreationOptions.None);
+                    AssetCreationOptions.None);
 
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
             job.Submit();
             job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
             return job.OutputMediaAssets[0];
-            }
+        }
 
-            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-            {
+        private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+        {
             Console.WriteLine("Job state changed event:");
             Console.WriteLine("  Previous state: " + e.PreviousState);
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
                 case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
                 case JobState.Canceling:
                 case JobState.Queued:
                 case JobState.Scheduled:
                 case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
+                    Console.WriteLine("Please wait...\n");
+                    break;
                 case JobState.Canceled:
                 case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
+                    // Display or log error details as needed.
+                    break;
                 default:
-                break;
+                    break;
             }
-            }
+        }
 
-            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-            {
+        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+        {
             var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
@@ -512,9 +521,10 @@ ms.lasthandoff: 10/11/2017
                 throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
-            }
         }
-
+    }
+}
+```
 
 ## <a name="considerations"></a>注意事项
 请注意以下事项：
@@ -522,8 +532,8 @@ ms.lasthandoff: 10/11/2017
 * 为 Start/Step/Range 使用的显式时间戳假设输入源的长度至少为 1 分钟。
 * Jpg/Png/BmpImage 元素包含 Start、Step 和 Range 字符串属性 – 这些属性解释如下：
   
-  * 帧数（如果为非负整数），例如： "Start": "120"；
-  * 相对于源持续时间（如果以 % 后缀表示），例如： "Start": "15%"，或者
+  * 帧数（如果为非负整数），例如："Start": "120"；
+  * 相对于源持续时间（如果以 % 为后缀表示），例如："Start": "15%"，或者
   * 时间戳（如果以 HH:MM:SS... 格式表示）。 例如 "Start" : "00:01:00"
     
     可以随意混搭使用表示法。

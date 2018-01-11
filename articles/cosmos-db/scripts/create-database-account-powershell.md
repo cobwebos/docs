@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell 脚本 - 创建 Azure Cosmos DB DocumentDB API 帐户 | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 创建 Azure Cosmos DB DocumentDB API 帐户"
+title: "Azure PowerShell 脚本 - 创建 Azure Cosmos DB SQL API 帐户 | Microsoft Docs"
+description: "Azure PowerShell 脚本示例 - 创建 Azure Cosmos DB SQL API 帐户"
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 9b54236ce3446fe1c6a2a30b31f6d91ad43a92d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 060270f424cb3bbb984430d9e17656453fa30c4d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-create-a-documentdb-api-account-using-powershell"></a>Azure Cosmos DB：使用 PowerShell 创建 DocumentDB API 帐户
+# <a name="azure-cosmos-db-create-a-sql-api-account-using-powershell"></a>Azure Cosmos DB：使用 PowerShell 创建 SQL API 帐户
 
 此示例 PowerShell 脚本创建一个 Azure Cosmos DB API 帐户。 
 
