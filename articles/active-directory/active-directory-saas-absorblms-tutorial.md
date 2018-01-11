@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: df39b957e70be38331b3711a36ce847348049591
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -30,13 +30,13 @@ ms.lasthandoff: 12/11/2017
 - 可以让用户使用其 Azure AD 帐户自动登录到 Absorb LMS（通过单一登录）。
 - 可在一个中心位置（即 Azure 门户）管理帐户。
 
-如果想要深入了解软件型服务 (SaaS) 应用与 Azure AD 的集成，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
+如果想要深入了解软件型服务 (SaaS) 应用与 Azure AD 集成，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Absorb LMS 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Absorb LMS 单一登录的订阅
 
 > [!NOTE]
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 * 从库中添加 Absorb LMS
-* 配置并测试 Azure AD 单一登录
+* 配置和测试 Azure AD 单一登录
 
 ## <a name="add-absorb-lms-from-the-gallery"></a>从库中添加 Absorb LMS
 要配置 Absorb LMS 与 Azure AD 的集成，请将库中的 Absorb LMS 添加到托管的 SaaS 应用列表。
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 要添加应用程序，请选择“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Absorb LMS”，在结果面板中选择“Absorb LMS”，然后选择“添加”按钮。
 
@@ -182,13 +182,13 @@ ms.lasthandoff: 12/11/2017
  
     ![“用户”对话框](./media/active-directory-saas-absorblms-tutorial/create_aaduser_04.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的电子邮件地址。
 
     c. 选择“显示密码”复选框，然后记下“密码”框中的值。
 
-    d.单击“下一步”。 选择“创建” 。
+    d.单击“下一步”。 选择“创建”。
 
 ### <a name="create-an-absorb-lms-test-user"></a>创建 Absorb LMS 测试用户
 
@@ -269,7 +269,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

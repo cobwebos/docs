@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure 虚拟机 (VM) 上的 SAP HANA 高可用性
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="deploying-linux"></a>部署 Linux
 
 SUSE Linux Enterprise Server for SAP Applications 中已随附 SAP HANA 的资源代理。
-Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以使用该映像中的 BYOS（自带订阅）部署新的虚拟机。
+Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以使用该映像中的 BYOS（自带订阅）部署新的虚拟机。
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -85,12 +85,12 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
 1. 创建负载均衡器（内部）  
    为上述步骤选择 VNET
 1. 创建虚拟机 1  
-   https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   请至少使用 SLES4SAP 12 SP1，在此示例中，我们将使用 SLES4SAP 12 SP1 BYOS 映像（https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1）  
    SLES For SAP Applications 12 SP1 (BYOS)  
    选择存储帐户 1  
    选择可用性集  
 1. 创建虚拟机 2  
-   https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   请至少使用 SLES4SAP 12 SP1，在此示例中，我们将使用 SLES4SAP 12 SP1 BYOS 映像（https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1）  
    SLES For SAP Applications 12 SP1 (BYOS)  
    选择存储帐户 2   
    选择可用性集  
@@ -99,7 +99,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     1. 创建前端 IP 池
         1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
         1. 输入新前端 IP 池的名称（例如 hana-frontend）
-       1. 单击“确定”
+        1. 单击“确定”
         1. 创建新前端 IP 池后，请记下其 IP 地址
     1. 创建后端池
         1. 打开负载均衡器，单击后端池，并单击“添加”
@@ -109,7 +109,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
         1. 选择 SAP HANA 群集的虚拟机
         1. 单击“确定”
     1. 创建运行状况探测器
-       1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+        1. 打开负载均衡器，选择运行状况探测，并单击“添加”
         1. 输入新运行状况探测的名称（例如 hana-hp）
         1. 选择 TCP 作为协议，选择端口 625**03**，将“间隔”保留为 5，将“不正常阈值”保留为 2
         1. 单击“确定”
@@ -119,17 +119,17 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend）
         1. 将协议保留为“TCP”，输入端口 3**03**15
         1. 将空闲超时增大到 30 分钟
-       1. **确保启用浮动 IP**
+        1. **确保启用浮动 IP**
         1. 单击“确定”
         1. 针对端口 3**03**17 重复上述步骤
 
 ### <a name="deploy-with-template"></a>使用模板进行部署
-可以使用 github 上的某个快速启动模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
-1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。数据库模板只会创建数据库的负载均衡规则，而聚合模板还会创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
+1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。数据库模板仅创建数据库的负载均衡规则，聚合模板还可以创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
 1. 输入以下参数
     1. SAP 系统 ID  
-       输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所部署的资源的前缀。
+       输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
     1. 堆栈类型（仅当使用聚合模板时才适用）  
        选择 SAP NetWeaver 堆栈类型
     1. OS 类型  
@@ -145,7 +145,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     1. 新子网或现有子网  
        确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择现有虚拟网络。
     1. 子网 ID  
-    虚拟机应当连接到的子网的 ID。 选择用于将虚拟机连接到本地网络的 VPN 或 Express Route 虚拟网络的子网。 ID 通常类似于 /subscriptions/`<subscription id`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`>
+    虚拟机应当连接到的子网的 ID。 选择用于将虚拟机连接到本地网络的 VPN 或 Express Route 虚拟网络的子网。 ID 通常类似于 /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`>
 
 ## <a name="setting-up-linux-ha"></a>设置 Linux HA
 
@@ -229,7 +229,7 @@ Azure 应用商店中包含 SUSE Linux Enterprise Server for SAP Applications 12
     sudo mkdir -p /hana/data
     sudo mkdir -p /hana/log
     sudo mkdir -p /hana/shared
-    # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+    # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
     sudo blkid
     </code></pre>
         * 创建三个逻辑卷的 fstab 条目
@@ -450,7 +450,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。这是**租户 ID**。
+   转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），并单击“创建”
@@ -458,7 +458,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。此 ID 用作服务主体的用户名（以下步骤中的**登录 ID**）
+1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。
 
@@ -476,13 +476,13 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 <pre>
 sudo vi crm-fencing.txt
 # enter the following to crm-fencing.txt
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 <code>
 primitive rsc_st_azure_1 stonith:fence_azure_arm \
-    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+    params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 primitive rsc_st_azure_2 stonith:fence_azure_arm \
-    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+    params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 </code>
@@ -496,7 +496,7 @@ sudo crm configure load update crm-fencing.txt
 <pre>
 sudo vi crm-saphanatop.txt
 # enter the following to crm-saphana.txt
-# replace the bold string with your instance number and HANA system id
+# replace the bold string with your instance number and HANA system ID
 <code>
 primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHanaTopology \
     operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -516,7 +516,7 @@ sudo crm configure load update crm-saphanatop.txt
 <pre>
 sudo vi crm-saphana.txt
 # enter the following to crm-saphana.txt
-# replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+# replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
 <code>
 primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
     operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -627,7 +627,7 @@ hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b>
 <pre><code>
 crm configure edited
 
-# delete location contraints that are named like the following contraint. You should have two contraints, one for the SAP HANA resource and one for the IP address group.
+# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 

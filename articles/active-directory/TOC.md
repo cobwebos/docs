@@ -44,6 +44,7 @@
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [共享帐户](active-directory-sharing-accounts.md)
 ### [将用户分配到管理员角色](active-directory-users-assign-role-azure-portal.md)
+### [还原已删除的用户](active-directory-users-restore.md)
 ### [添加另一个目录中的来宾用户 (B2B)](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [管理员添加 B2B 用户](active-directory-b2b-admin-add-users.md)
 #### [信息工作者添加 B2B 用户](active-directory-b2b-iw-add-users.md)
@@ -73,7 +74,7 @@
 
 ## [管理组和成员](active-directory-manage-groups.md)
 ### 管理组
-#### [Azure 门户](active-directory-groups-create-azure-portal.md)
+#### [Azure portal](active-directory-groups-create-azure-portal.md)
 #### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
@@ -90,7 +91,7 @@
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
 ### 管理组设置
-#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
+#### [Azure portal](active-directory-groups-settings-azure-portal.md)
 #### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
@@ -286,7 +287,6 @@
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)
 #### [迁移经典策略](active-directory-conditional-access-migration.md)
-#### [假设分析工具](active-directory-conditional-access-whatif.md)
 #### 任务
 ##### [迁移经典 MFA 策略](active-directory-conditional-access-migration-mfa.md)
 ##### [设置基于设备的条件访问](active-directory-conditional-access-policy-connected-applications.md)

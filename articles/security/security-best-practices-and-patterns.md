@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 593cb6da3527a32906e8e9faa11dc13a3ef5440f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c8a25d64f3925ec963d8d02c827bd2045994feac
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式
 我们当前提供了以下 Azure 安全最佳实践和模式文章。 请务必定期访问此网站，我们的 Azure 安全最佳实践和模式列表会持续更新：  
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/22/2017
 * [Azure IaaS 安全最佳实践] (azure-security-iaas.md)
 * [Azure 边界安全最佳实践](../best-practices-network-security.md)
 * [在 Azure 中实现安全的混合网络体系结构](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Azure PaaS 最佳实践] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
+* [Azure PaaS 最佳做法] (https://docs.microsoft.com/azure/security/security-paas-deployments)
 
 Azure 提供了一个安全的平台，可以基于其构建解决方案。 我们还提供了一些服务和技术，使解决方案在 Azure 上更加安全。 由于有许多选项可供使用，许多人对 Microsoft 推荐的用于提高安全性的最佳实践和模式表示了兴趣。
 

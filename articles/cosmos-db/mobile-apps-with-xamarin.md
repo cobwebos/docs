@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: c6cfe5c3282064573542050ecc477903ded20467
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 34952fb1cbe5577fa00ed7799d51ba46e7173d7e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-大多数移动应用需要在云中存储数据，而 Azure Cosmos DB 正是适用于移动应用的云数据库。 该产品提供移动开发人员所需的一切功能。 它是一个完全托管的数据库即服务，可按需缩放。 它能够以应用程序完全可见的方式存放全球各地用户的数据。 使用 [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md)，可让 Xamarin 移动应用直接与 Azure Cosmos DB 交互，而无需任何中间层。
+大多数移动应用需要在云中存储数据，而 Azure Cosmos DB 正是适用于移动应用的云数据库。 该产品提供移动开发人员所需的一切功能。 它是一个完全托管的数据库即服务，可按需缩放。 它能够以应用程序完全可见的方式存放全球各地用户的数据。 使用 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)，可让 Xamarin 移动应用直接与 Azure Cosmos DB 交互，而无需任何中间层。
 
 本文提供有关使用 Xamarin 和 Azure Cosmos DB 构建移动应用的教程。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 中找到本教程的完整源代码，包括如何管理用户和权限。
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 
 ![移动应用的 Azure Cosmos DB 功能](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
 
-* 针对无架构数据的丰富查询。 Azure Cosmos DB 将数据以无架构 JSON 文档的形式存储在异构集合中。 它提供[丰富的快速查询](documentdb-sql-query.md)，无需担心架构或索引问题。
+* 针对无架构数据的丰富查询。 Azure Cosmos DB 将数据以无架构 JSON 文档的形式存储在异构集合中。 它提供[丰富的快速查询](sql-api-sql-query.md)，无需担心架构或索引问题。
 * 快速吞吐量。 使用 Azure Cosmos DB 时，只需几毫秒就能读取和写入文档。 开发人员可以指定所需的吞吐量，Azure Cosmos DB 对所有单区域帐户和具有松散一致性的所有多区域帐户采用 99.99% 的可用性 SLA，对所有多区域数据库帐户采用 99.999% 的读取可用性。
 * 无限规模。 Azure Cosmos DB 集合[随着应用的增长而增长](partition-data.md)。 一开始可以处理较小规模的数据和每秒几百个请求的吞吐量。 集合可以扩展到每秒几亿个请求的任意大型吞吐量，处理 PB 量级的数据。
 * 全球分布。 移动应用的用户特点是经常在全球不同的地点漫游。 Azure Cosmos DB 是[全球分布的数据库](distribute-data-globally.md)。 单击地图即可让用户访问数据。
@@ -49,7 +49,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 
 ![适用于移动应用的 Azure Cosmos DB 快速入门](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 
-如果已有一个 Xamarin 应用，则可以添加 [Azure Cosmos DB NuGet 包](documentdb-sdk-dotnet-core.md)。 Azure Cosmos DB 支持 Xamarin.IOS、Xamarin.Android 和 Xamarin Forms 共享库。
+如果已有一个 Xamarin 应用，则可以添加 [Azure Cosmos DB NuGet 包](sql-api-sdk-dotnet-core.md)。 Azure Cosmos DB 支持 Xamarin.IOS、Xamarin.Android 和 Xamarin Forms 共享库。
 
 ### <a name="work-with-data"></a>处理数据
 数据记录以无架构 JSON 文档的形式存储在 Azure Cosmos DB 的异构集合中。 可在同一个集合中存储具有不同结构的文档：
@@ -103,9 +103,9 @@ Azure Cosmos DB 是托管型数据库即服务。 随着用户群体的扩大，
 
 ## <a name="next-steps"></a>后续步骤
 * 查看 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 的源代码。
-* 下载 [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md)。
-* 查找 [.NET 应用程序](documentdb-dotnet-samples.md)的更多代码示例。
-* 了解 [Azure Cosmos DB 的丰富查询功能](documentdb-sql-query.md)。
+* 下载 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)。
+* 查找 [.NET 应用程序](sql-api-dotnet-samples.md)的更多代码示例。
+* 了解 [Azure Cosmos DB 的丰富查询功能](sql-api-sql-query.md)。
 * 了解 [Azure Cosmos DB 中的地理空间支持](geospatial.md)。
 
 

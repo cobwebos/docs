@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 91b2f16611b88aa4b9395ca301d88042065ad9dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 AS2 消息以实现企业集成
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
     > [!TIP]
     > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
 
-    ![在“更多服务”中筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
+    ![在“更多服务”中筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. 在打开的“集成帐户”边栏选项卡中，选择要在其中创建协议的集成帐户。
 如果未看到任何集成帐户，请[先创建一个集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "有关集成帐户的详细信息")。  
@@ -54,19 +54,19 @@ ms.lasthandoff: 10/11/2017
 
 4. 选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。
 
-    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. 在打开的“协议”边栏选项卡中，选择“添加”。
 
-    ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+    ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
 6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“AS2”。 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。
 
-    ![提供协议详细信息](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
+    ![提供协议详细信息](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
     | 属性 | 说明 |
     | --- | --- |
-    | Name |协议的名称 |
+    | 名称 |协议的名称 |
     | 协议类型 | 应为 AS2 |
     | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
     | 管理方标识 |管理方的标识符 |
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
 1.  在“添加”下面，选择“接收设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
-    ![配置“接收设置”](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
+    ![配置“接收设置”](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
 2. 或者，可以选择“替代消息属性”来替代传入消息的属性。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 10/11/2017
 1.  在“添加”下面，选择“发送设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
-    ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-agreements/agreement-51.png)
+    ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
 
 2. 要将签名的消息发送到合作伙伴，请选择“启用消息签名”。 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 10/11/2017
 
 2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。 
 
-    ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+    ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>查看 Swagger
 请参阅 [Swagger 详细信息](/connectors/as2/)。 

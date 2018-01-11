@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c626d6415a27f8495304eeaab480ab62606102ea
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 当今企业正在逐渐趋向为其最终用户（外部）或员工（内部）创建移动应用程序。 它们已经拥有现成的后端系统，无论是大型机还是一些 LoB 应用程序都必须集成到移动应用程序体系结构中。 本指南介绍如何最好地实现此集成，并针对常见场景建议可能的解决方案。
@@ -212,7 +212,7 @@ ms.lasthandoff: 10/11/2017
    
     ![][3]
    
-    g. 将该作业配置为“连续运行”，以便在登录到 [Azure 经典门户]时，应看到如下内容：
+    g. 将该作业配置为“连续运行”，以便在登录到 [Azure 门户]时，可看到如下内容：
    
     ![][4]
 3. **EnterprisePushMobileApp**
@@ -245,7 +245,7 @@ ms.lasthandoff: 10/11/2017
 3. 运行 **EnterprisePushBackendSystem** 控制台应用程序，这会模拟 LoB 后端并将开始发送消息，应该会看到如下所示的 toast 通知：
    
     ![][5]
-4. 这些消息最初发送到服务总线主题，这些主题由 Web 作业中的服务总线订阅监视。 收到消息后，将创建通知并将其发送到移动应用。 转到 [Azure 经典门户]中 Web 作业的“日志”链接时，可以仔细查看 Web 作业日志来确认处理：
+4. 这些消息最初发送到服务总线主题，这些主题由 Web 作业中的服务总线订阅监视。 收到消息后，将创建通知并将其发送到移动应用。 转到 [Azure 门户]中 Web 作业的“日志”链接时，可以仔细查看 Web 作业日志来确认处理：
    
     ![][6]
 
@@ -264,4 +264,4 @@ ms.lasthandoff: 10/11/2017
 [服务总线 Pub/Sub 编程]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
 [通知中心 - Windows 通用教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure 经典门户]: https://manage.windowsazure.com/
+[Azure 门户]: https://portal.azure.com/

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 09d382e37e319ec7746c19bea46dfb380f077af3
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: b007e170e455360c27215902625a5f147e2c6efc
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-availability-in-china"></a>在中国可用的 Azure 服务
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 10/27/2017
 | Azure Data Lake Store     | GA                                                                                                                                             | *不可用*                                                                                                                                    |
 | Azure Data Lake Analytics | GA                                                                                                                                             | *不可用*                                                                                                                                    |
 | Microsoft Power BI SaaS   | GA                                                                                                                                             | GA                                                                                                                                                 |
-| Power BI PaaS (Embedded)  | GA                                                                                                                                             | GA                                                                                                                                                 |
+| Power BI PaaS（工作区集合）  | GA                                                                                                                                             | GA                                                                                                                                                 |
 
 ## <a name="internet-of-things-iot-services"></a>物联网 (IoT) 服务
 ---------------------------------
@@ -167,7 +167,7 @@ ms.lasthandoff: 10/27/2017
 |------------------------|----------------------------------------------|--------------------------|
 | Azure 门户           | GA                                           | GA                       |
 | Azure 资源管理器 | GA                                           | GA                       |
-| 应用商店            | GA                                           | 预览                  |
+| Marketplace            | GA                                           | 预览                  |
 | 计划程序              | 免费 <br>标准 <br>高级                        | 免费 <br>标准 <br>高级    |
 | 自动化             | 免费 <br>基本 <br>Desired State Configuration <br>(DSC) | 免费 <br>基本               |
 | Log Analytics          | 免费 <br>独立                              | *不可用*          |

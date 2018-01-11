@@ -1,5 +1,5 @@
 
-使用 [az webapp create](/cli/azure/webapp#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建应用。 
+使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建应用。 
 
 该 Web 应用为 API 提供托管空间，并提供 URL 查看已部署的应用。
 

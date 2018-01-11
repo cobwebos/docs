@@ -12,7 +12,7 @@
   items:
     - name: 评估计算
       href: concepts-assessment-calculation.md
-    - name: 依赖关系可视化
+    - name: 依赖项可视化
       href: concepts-dependency-visualization.md
 - name: 操作指南
   items:
@@ -22,8 +22,6 @@
       href: how-to-create-a-group.md
     - name: 使用计算机依赖关系将计算机分组
       href: how-to-create-group-machine-dependencies.md
-    - name: 使用 VMware 标记将计算机分组
-      href: how-to-tag-v-center.md
     - name: 使用组依赖关系优化组
       href: how-to-create-group-dependencies.md
     - name: 自定义评估

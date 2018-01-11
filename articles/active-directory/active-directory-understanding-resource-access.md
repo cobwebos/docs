@@ -4,21 +4,21 @@ description: "本主题介绍有关使用订阅管理员在整个 Azure 门户�
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 ms.assetid: 174f1706-b959-4230-9a75-bf651227ebf6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/06/2017
 ms.author: curtand
-ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 9492afeda8c11d9d4df866e416a2c2c7e1684569
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.custom: it-pro;
+ms.openlocfilehash: ad6658aaed55801ac8f6a39a721fb7469892303d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understanding-resource-access-in-azure"></a>了解 Azure 中的资源访问权限
 
@@ -26,27 +26,22 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 <br><br>![Azure 帐户][1]
 
-订阅也与目录相关联。 目录定义一组用户。 这些用户可以创建该目录的公司或学校的用户，也可以是外部用户（即 Microsoft 帐户）。 订阅可由这些已被指定为服务管理员 (SA) 或共同管理员 (CA) 的目录用户的子集来访问；唯一的例外是，为了保持向后兼容，可以将 Microsoft 帐户（以前称为 Windows Live ID）指定为 SA 或 CA，而这些帐户不必存在于目录中。
+订阅也与目录相关联。 目录定义一组用户。 这些用户可以是创建该目录的公司或学校用户，也可以是外部来宾用户。 订阅可由这些已被指定为服务管理员 (SA) 或共同管理员 (CA) 的目录用户的子集来访问；唯一的例外是，为了保持后向兼容，可以将 Microsoft 帐户（以前称为 Windows Live ID）指定为 SA 或 CA，而这些帐户不必存在于目录中。
 
 <br><br>![Azure 中的访问控制][2]
 
-借助 Azure 经典门户中的功能，使用 Microsoft 帐户登录的 SA 可以使用“设置”中“订阅”页上的“编辑目录”命令来更改与订阅关联的目录。 注意，此操作会影响该订阅的访问控制。
+Azure 门户中的功能让使用 Microsoft 帐户登录的 SA 可更改与订阅相关联的目录。 此操作会影响该订阅的访问控制。
 
-> [!NOTE]
-> 使用工作或学校帐户登录的用户不能使用 Azure 经典门户中的“编辑目录”命令，因为这些帐户只能登录到其所属的目录。
-> 
-> 
+<br><br>![简单的用户登录流程][3]
 
-<br><br>![简单用户登录流程][3]
-
-在这种简单的情况下，组织（如 Contoso）将对同一组订阅实行计费和访问控制。 也就是说，目录与由单个 Azure 帐户所拥有的订阅关联。 一旦成功登录到 Azure 经典门户，用户就可以看到两组资源（在前面的插图中以橘色表示）：
+在这种简单的情况下，组织（如 Contoso）将对同一组订阅实行计费和访问控制。 也就是说，目录与由单个 Azure 帐户所拥有的订阅关联。 成功登录到 Azure 门户后，用户即可看到两组资源（在前面的插图中以橘色表示）：
 
 * 其用户帐户所在的目录（源用户或添加为外部主体）。 请注意，用于登录的目录与此计算无关，因此，目录将始终显示，而不考虑你登录的位置。
 * 作为订阅一部分的资源，这些订阅与用于登录的目录关联且用户可以访问（对于此订阅，用户是 SA 或 CA）。
 
 <br><br>![具有多个订阅和目录的用户][4]
 
-跨多个目录具有订阅的用户可以通过使用订阅筛选器来切换 Azure 经典门户的当前上下文。 最终，这会导致单独登录到不同的目录，但这可以使用单一登录 (SSO) 无缝地实现。
+跨多个目录具有订阅的用户可以通过使用订阅筛选器来切换 Azure 门户的当前上下文。 最终，这会导致单独登录到不同的目录，但这可以使用单一登录 (SSO) 无缝地实现。
 
 由于这种单一的订阅目录视图所导致的结果，诸如在订阅之间移动资源的操作可能会更难以实现。 要执行资源传输，务必首先使用“设置”中“订阅”页上的“编辑目录”命令将订阅与相同目录关联。
 

@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.openlocfilehash: 7adaf2aa51d2a48116a816d83b42ba8416c157cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0218365a21f241b5672774005cd6e0417fba358b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-your-azure-ad-directory"></a>管理 Azure AD 目录
 
@@ -80,7 +80,6 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 * 设置与 Azure AD 标识和身份验证服务的本地集成
 
 Azure AD 管理中心、Office 365 管理中心、Microsoft Intune 帐户门户和 Azure AD cmdlet 均从与组织的目录关联的 Azure AD 的单个共享实例读取数据并将数据写入到该实例中。 每个这样的工具均可充当前端接口，用于拉入或更改目录数据。
-
 使用任意门户或 cmdlet 更改组织的数据时，如果此时已在此类服务之一的上下文中登录，则下一次登录时，所做的更改也会显示在其他门户中。 此数据在所订阅的 Microsoft 云服务中共享。
 
 例如，如果使用 Office 365 管理中心阻止某个用户登录，则该操作会阻止该用户登录到组织当前订阅的任何其他服务。 如果在 Microsoft Intune 帐户门户中查看同一用户帐户，则也会看到该用户被阻止。
@@ -117,8 +116,8 @@ Azure AD 要求删除目录之前必须符合特定的条件。 这可以降低�
 
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure AD 论坛](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-* [Azure 多重身份验证论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
-* [Stack Overflow for Azure 问题](http://stackoverflow.com/questions/tagged/azure)
+* [Azure AD 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuread)
+* [Azure 多重身份验证论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazureactiveauthentication)
+* [StackOverflow for Azure 问题](https://stackoverflow.com/questions/tagged/azure-active-directory)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)

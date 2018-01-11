@@ -6,7 +6,6 @@
 
 # 入门
 ## [创建命名空间](service-bus-create-namespace-portal.md)
-### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 ## 使用队列
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -37,6 +36,7 @@
 
 ## 开发
 ### 消息处理
+#### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 #### [消息、有效负载和序列化](service-bus-messages-payloads.md)
 #### [消息传输、锁定和处置](message-transfers-locks-settlement.md)
 #### [消息序列化和时间戳](message-sequencing.md)
@@ -64,6 +64,7 @@
 #### [将实体与自动转发链接在一起](service-bus-auto-forwarding.md)
 #### [事务处理](service-bus-transactions.md)
 #### [配对命名空间实现](service-bus-paired-namespaces.md)
+### [端到端跟踪和诊断](service-bus-end-to-end-tracing.md)
 ## 管理
 ### [使用 Azure 监视来监视服务总线](service-bus-metrics-azure-monitor.md)
 ### [服务总线管理库](service-bus-management-libraries.md)

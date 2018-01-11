@@ -1,4 +1,4 @@
----
+﻿---
 title: "使用 Azure IoT Edge 部署 Azure 流分析 | Microsoft 文档"
 description: "将 Azure 流分析作为模块部署到 Edge 设备"
 services: iot-edge
@@ -143,7 +143,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
    d.单击“下一步”。 将其他设置保留不变。
    
-   e.选择“保存”。
+   e. 选择“保存”。
 
 3. 若要添加 Azure 流分析 Edge 作业，请选择“导入 Azure 流分析 Azure IoT Edge 模块”。
 

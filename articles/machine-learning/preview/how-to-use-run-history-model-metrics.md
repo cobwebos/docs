@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 920155b2e70409fe1c7c3569326cc5a1fa01b222
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 143cbfa66436796e1b61b100def030dde43faac9
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>如何使用 Azure 机器学习工作台中的运行历史记录和模型指标
 
@@ -32,7 +32,7 @@ Azure 机器学习工作台通过其“运行历史记录”和“模型指标�
 ## <a name="azure-ml-logging-api-overview"></a>Azure ML 日志记录 API 概述
 通过 Python 中的 azureml.logging 模块（通过 Azure ML 工作台安装）可以使用 [Azure ML 日志记录 API](reference-logging-api.md)。导入此模块后，可以使用 **get_azureml_logger** 方法实例化“记录器”对象。
 然后，可以使用记录器的 **log** 方法存储 Python 脚本产生的键/值对。
-如下所示，当前支持标量、字典、列表、数据帧类型的日志记录模型指标。
+如下所示，当前支持标量和列表类型的日志记录模型指标。
 
 ```Python
 # create a logger instance in already set up environment 

@@ -4,16 +4,17 @@ description: "本文包含 Azure 机器学习预览功能的常见问题和解�
 services: machine-learning
 author: serinakaye
 ms.author: serinak
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 33583fb3d9bca94592c05c4c39c802e673a2ea8a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 94c6576f92b5a004e0fd509c1dc6e091c294658a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -126,11 +127,11 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **Workbench 是否是一个 IDE？**
 
-不能。 Machine Learning Workbench 设计成为诸如 Jupyter Notebook、Visual Studio Code 和 PyCharm 等常用 IDE 的助手，并非是一个具备完整功能的 IDE。 Machine Learning Workbench 可提供一些基本的文本编辑功能，但并不支持调试、智能感知和其他常用 IDE 功能。 我们建议你使用最喜欢的 IDE 来进行代码开发、编辑和调试。 
+不会。 Machine Learning Workbench 设计成为诸如 Jupyter Notebook、Visual Studio Code 和 PyCharm 等常用 IDE 的助手，并非是一个具备完整功能的 IDE。 Machine Learning Workbench 可提供一些基本的文本编辑功能，但并不支持调试、智能感知和其他常用 IDE 功能。 我们建议你使用最喜欢的 IDE 来进行代码开发、编辑和调试。 
 
 **是否要为使用 Azure Machine Learning Workbench 付费？**
 
-不能。 Azure Machine Learning Workbench 是一个免费的应用程序。 可以在所需的多台计算机上为多位用户下载它。 若要使用 Azure Machine Learning Workbench，必须具有试验帐户。 。  
+不会。 Azure Machine Learning Workbench 是一个免费的应用程序。 可以在所需的多台计算机上为多位用户下载它。 若要使用 Azure Machine Learning Workbench，必须具有试验帐户。 。  
 
 **是否支持命令行功能？**
 
@@ -199,7 +200,7 @@ Workbench 中的数据准备工具当前支持以下格式的引入：
 
 **是否将根据调用 Web 服务的次数进行收费？**
 
-不能。 可以随时按需调用 Web 服务，不会产生任何的模型管理费用。 可以完全控制部署的缩放以满足应用程序需求。
+不会。 可以随时按需调用 Web 服务，不会产生任何的模型管理费用。 可以完全控制部署的缩放以满足应用程序需求。
 
 **如何在 Azure 机器学习模型管理中对已购买单位的数量进行缩放？**
 

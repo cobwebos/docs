@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: b876881af6ead69906c14cf7aeeab70130ba66ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5979e5e4baa385cc0aaff5f1277f2a0f7492c426
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>物联网安全基础知识
 物联网 (IoT) 使全球企业面临独特的安全、隐私权与合规性挑战。 不同于传统网络技术（这些问题是以软件及其实现方式为中心），IoT 在意的是当网络与物理世界融合时会发生什么情况。 保护 IoT 解决方案要求确保安全预配设备，保护这些设备与云之间的连接，以及在处理和存储期间保护云中数据的安全。 但是，针对此类功能运行的是资源受限的设备、根据地理位置分布的部署，以及解决方案中的大量设备。
@@ -84,7 +84,7 @@ Microsoft Azure IoT 套件使用内置于 Azure 平台中的安全和隐私功�
 
 将数据移到云中之后，可以在任何用户定义工作流中处理和存储数据。 访问数据的每个部分根据所用的存储服务通过 Azure Active Directory 来控制。
 
-IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。 数据可以存储在 [Azure Cosmos DB](../documentdb/documentdb-introduction.md) 或 [SQL 数据库](../sql-database/sql-database-faq.md)中，启用对所需安全级别的定义。 此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
+IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。 数据可以存储在 [Azure Cosmos DB](../cosmos-db/introduction.md) 或 [SQL 数据库](../sql-database/sql-database-faq.md)中，启用对所需安全级别的定义。 此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
 
 ## <a name="conclusion"></a>结束语
 物联网是从事物开始 — 对业务最重要的事物。 IoT 可以通过降低成本、提高营收和使业务转型，为企业提供令人赞叹的价值。 这种转型的成败主要取决于是否选择了正确的 IoT 软件和服务提供商。 这意味着要找到适当的提供商，其不仅可通过了解企业需要与要求来催化这种转型，也将提供使用安全、隐私、透明性与合规性构建的服务和软件作为主要设计考虑因素。 Microsoft 具有开发和部署安全软件与服务的丰富经验，并持续在这个新的物联网时代中保持领先地位。 

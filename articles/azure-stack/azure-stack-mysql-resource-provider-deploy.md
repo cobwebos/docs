@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 12/15/2017
 ms.author: JeffGo
-ms.openlocfilehash: 37fc6a737bd1cfb09caf69ea2c6d81ea0b7d8693
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 065d4cbc9a324f00a0985c4ebed3d4dffc79d91a
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -71,6 +71,7 @@ ms.lasthandoff: 12/15/2017
 
     | Azure 堆栈生成 | MySQL RP 安装程序 |
     | --- | --- |
+    | 1.0.180102.3 | **详细信息，请稍候，当前版本将不会安装，但将继续以 Azure 堆栈升级后在多节点上运行。** |
     | 1.0.171122.1 | [MySQL RP 版本 1.1.12.0](https://aka.ms/azurestackmysqlrp) |
     | 1.0.171028.1 | [MySQL RP 版本 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
     | 1.0.170928.3 | [MySQL RP 版本 1.1.3.0](https://aka.ms/azurestackmysqlrp1709) |
@@ -264,6 +265,73 @@ SKU 名称应反映的属性，以便租户可以适当地将其数据库。 在
 可以通过第一个更改它的 MySQL server 实例上修改密码。 浏览到**管理资源** &gt; **MySQL 宿主服务器**&gt;单击的宿主服务器上。 在设置面板中，单击密码。
 
 ![更新管理员密码](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
+
+## <a name="update-the-mysql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>更新 MySQL 资源提供程序适配器 （多节点仅，生成 1710年及更高版本）
+每当更新 Azure 堆栈生成时，将发布新的 MySQL 资源提供程序适配器。 虽然现有适配器可能会继续工作，则最好更新到最新版本越早越好后更新 Azure 堆栈。 更新过程是非常类似于上面所述的安装过程。 将替换为最新的 RP 代码，创建新的 VM 和设置将迁移到此新的实例，包括数据库和托管服务器信息，以及必要的 DNS 记录。
+
+将 UpdateMySQLProvider.ps1 脚本用于与上述相同的参数。 你必须也提供此处所证书。
+
+> [!NOTE]
+> 在多节点的系统上仅支持更新。
+
+```
+# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
+Install-Module -Name AzureRm.BootStrapper -Force
+Use-AzureRmProfile -Profile 2017-03-09-profile
+Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
+
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
+# Point to the directory where the RP installation files were extracted
+$tempDir = 'C:\TEMP\SQLRP'
+
+# The service admin account (can be AAD or ADFS)
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
+
+# Set credentials for the new Resource Provider VM
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
+
+# and the cloudadmin credential required for Privileged Endpoint access
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# change the following as appropriate
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Change directory to the folder where you extracted the installation files
+# and adjust the endpoints
+. $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert `
+  -AcceptLicense
+ ```
+
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 参数
+你可以在命令行中指定这些参数。 如果你不希望这样做，或任何参数验证失败，系统会提示你提供所需的。
+
+| 参数名称 | 说明 | 注释或默认值 |
+| --- | --- | --- |
+| **CloudAdminCredential** | 有关访问特权终结点所需的云管理员凭据。 | （必需） |
+| **AzCredential** | 提供 Azure 堆栈服务管理员帐户的凭据。 使用相同的凭据用于部署 Azure 堆栈）。 | （必需） |
+| **VMLocalCredential** | 定义 SQL 资源提供程序 VM 的本地管理员帐户的凭据。 | （必需） |
+| **PrivilegedEndpoint** | 提供的 IP 地址或特权终结点的 DNS 名称。 |  （必需） |
+| **DependencyFilesLocalPath** | 您的证书 PFX 文件必须放置在此目录中。 | _可选_(_必需_多节点) |
+| **DefaultSSLCertificatePassword** | .Pfx 证书的密码 | （必需） |
+| **MaxRetryCount** | 定义你想要重试每个操作，如果有多少次失败。| 2 |
+| **RetryDuration** | 定义重试，以秒为单位之间的超时值。 | 120 |
+| **卸载** | 删除资源提供程序和所有关联的资源 （请参阅下面的注释） | 否 |
+| **DebugMode** | 阻止失败的自动清理 | 否 |
+| **AcceptLicense** | 跳过的提示时接受 GPL 许可证 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>删除 MySQL 资源提供程序适配器
 

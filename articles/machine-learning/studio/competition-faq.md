@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 12/18/2017
 ms.author: haining;garye
-ms.openlocfilehash: 809df66042f6c765ed56836db40f72a5cd8ca7f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 848d0a0882d538cadadf3172a20e628799488042
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence Competition 常见问题
 **什么是 Cortana Intelligence Competition？**
@@ -37,7 +37,7 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 通过 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)访问[竞赛](https://gallery.cortanaintelligence.com/competitions)主页，或者转到 [http://aka.ms/CIComp](http://aka.ms/CIComp)。 主页列出了当前正在举行的所有竞赛。 在每项竞赛的注册页面上都有对竞赛的详细说明、参与规则、奖品和竞赛时间。
 
-1. 找到想要参加的竞赛，阅读所有说明并观看教程视频，然后单击**参加竞赛**按钮以将初始试验复制到现有的 Azure 机器学习工作区。 如果还无权访问工作区，必须提前创建一个工作区。 运行初始试验，观察性能指标，然后使用创造力提高模型的性能。 大部分时间都将花费在此步骤中。   
+1. 找到想要参加的竞赛，阅读所有说明并观看教程视频，并单击**参加竞赛**按钮以将初始试验复制到现有的 Azure 机器学习工作区。 如果还无权访问工作区，必须提前创建一个工作区。 运行初始试验，观察性能指标，并使用创造力提高模型的性能。 大部分时间都将花费在此步骤中。   
 
 2. 在初始试验外，使用训练后的模型创建预测试验。 然后仔细调整 Web 服务的输入和输出架构，以确保它们符合竞赛文档中指定的要求。 教程文档库会提供有关这方面的详细说明。 如果可以，也可观看教程视频。   
 
@@ -53,7 +53,7 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 **是否只有数据科学家才能加入？**
 
-否。 事实上，我们鼓励数据爱好者，对数据科学感兴趣的人和其他有志于数据的科学家参加我们的竞赛。 我们已设计了支持文档，以便每个人都可以参与到比赛中。 我们的目标受众是：
+不会。 事实上，我们鼓励数据爱好者，对数据科学感兴趣的人和其他有志于数据的科学家参加我们的竞赛。 我们已设计了支持文档，以便每个人都可以参与到比赛中。 我们的目标受众是：
 
 * **数据开发人员**、**数据科学家**、**BI** 和**专业分析师**：负责生成数据和分析内容，供他人使用。
 * **数据专员**：了解数据的含义、用法和用途
@@ -104,7 +104,7 @@ Microsoft 会验证专用排行榜的结果，然后我们将与你联系。 请
 
 **可以使用来宾工作区参与竞赛吗？**
 
-不能。 必须使用免费或标准工作区参与竞赛。 可以在来宾工作区中打开竞赛初用者试验，但你不能从该工作区创建要提交的有效项。 
+不会。 必须使用免费或标准工作区参与竞赛。 可以在来宾工作区中打开竞赛初用者试验，但你不能从该工作区创建要提交的有效项。 
 
 **可以在任何 Azure 区域中使用工作区参与竞赛吗？**
 

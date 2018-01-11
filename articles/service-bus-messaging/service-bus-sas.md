@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: a2760072acb7c62204759f3ec0d3cb9899460f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdbac0fd18ad440ece35881cbe165c3c7eff8914
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-authentication-with-shared-access-signatures"></a>附有共享访问签名的服务总线身份验证
 
@@ -314,7 +314,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 
 下表显示对服务总线资源进行各种操作所需的访问权限。
 
-| 操作 | 所需声明 | 声明范围 |
+| Operation | 所需声明 | 声明范围 |
 | --- | --- | --- |
 | **命名空间** | | |
 | 在命名空间上配置授权规则 |管理 |任何命名空间地址 |

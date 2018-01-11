@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2016
 ms.author: arramac
-ms.openlocfilehash: 041982f251ddee7570619c0e7e61d07906aaed2f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 73e546dea2c1c102736a2043e0b67f0f2c622b18
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL 数据库的文档数据建模
 尽管无架构的数据库（如 Azure Cosmos DB）能够非常容易地接受对数据模型的更改，但你仍需花一些时间来研究数据。 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/11/2017
 
 在深入探讨之前，让我们先回顾一下在关系型数据库中我们会如何建模，许多人对该主题已很熟悉。 下面的示例演示了如何在关系型数据库中存储一个人的信息。 
 
-![关系型数据库模型](./media/documentdb-modeling-data/relational-data-model.png)
+![关系型数据库模型](./media/sql-api-modeling-data/relational-data-model.png)
 
 多年来我们在使用关系型数据库时一直被教导要规范化、规范化、规范化。
 
@@ -290,7 +290,7 @@ ms.lasthandoff: 11/11/2017
 ### <a name="how-do-i-model-manymany-relationships"></a>如何对多对多关系建模？
 在关系型数据库中，*多对多*关系通常使用联接表来建模，这种方法只是将其他表中的记录联接在一起。 
 
-![联接表](./media/documentdb-modeling-data/join-table.png)
+![联接表](./media/sql-api-modeling-data/join-table.png)
 
 可能想要使用文档复制相同内容，并生成类似以下示例的数据模型。
 
@@ -395,4 +395,4 @@ ms.lasthandoff: 11/11/2017
 
 若要了解有关 Azure Cosmos DB 的详细信息，请参阅该服务的[文档](https://azure.microsoft.com/documentation/services/cosmos-db/)页。 
 
-若要了解如何在多个分区之间对数据进行分片，请参阅[在 Azure Cosmos DB 中对数据进行分区](documentdb-partition-data.md)。 
+若要了解如何在多个分区之间对数据进行分片，请参阅[在 Azure Cosmos DB 中对数据进行分区](sql-api-partition-data.md)。 

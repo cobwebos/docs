@@ -23,10 +23,10 @@
 | **SKU**| **功能**|
 | ---    | ---         |
 |**基本**   | **基于路由的 VPN**：包含 P2S 的 10 个隧道；无适用于 P2S 的 RADIUS 身份验证；无适用于 P2S 的 IKEv2<br>基于策略的 VPN (IKEv1)：1 个隧道；不含 P2S|
-| VpnGw1、VpnGw2、VpnGw3 | 基于路由的 VPN：最多 30 个隧道 (*)、P2S、BGP、主动-主动、自定义 IPsec/IKE 策略、ExpressRoute/VPN 共存 |
+| VpnGw1、VpnGw2、VpnGw3 | 基于路由的 VPN：最多 30 个隧道 ( * )、P2S、BGP、主动-主动、自定义 IPsec/IKE 策略、ExpressRoute/VPN 共存 |
 |        |             |
 
-(*) 可以对“PolicyBasedTrafficSelectors”进行配置，以便将基于路由的 VPN 网关（VpnGw1、VpnGw2、VpnGw3）连接到多个本地的基于策略的防火墙设备。 有关详细信息，请参阅[使用 PowerShell 将 VPN 网关连接到多个本地的基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+( * ) 可以对“PolicyBasedTrafficSelectors”进行配置，以便将基于路由的 VPN 网关（VpnGw1、VpnGw2、VpnGw3）连接到多个本地的基于策略的防火墙设备。 有关详细信息，请参阅[使用 PowerShell 将 VPN 网关连接到多个本地的基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 
 ###  <a name="resize"></a>重设网关 SKU 大小
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 794117b6f383bdd1851681864e99b3c1ef077f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -80,8 +80,6 @@ ms.lasthandoff: 10/11/2017
 - 美国 DoD 中部
 - 德国中部
 - 德国东北部
-- 中国东部
-- 中国北部
 
 ## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>资源运行状况与服务运行状况仪表板或 Azure 门户服务通知有何不同？
 资源运行状况提供的信息比 Azure 服务运行状况仪表板提供的更具体。
@@ -94,7 +92,7 @@ ms.lasthandoff: 10/11/2017
 否。运行状况信息适用于可以通过资源运行状况获取的所有资源类型。 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>是否需要为组织启用资源运行状况？
-否。  Azure 资源运行状况可以在 Azure 门户中访问，没有任何设置要求。
+不会。  Azure 资源运行状况可以在 Azure 门户中访问，没有任何设置要求。
 
 ## <a name="is-resource-health-available-free-of-charge"></a>是否免费提供资源运行状况？
 是的。  Azure 资源运行状况免费提供。

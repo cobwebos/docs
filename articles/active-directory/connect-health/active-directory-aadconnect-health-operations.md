@@ -4,7 +4,7 @@ description: "本文介绍在部署 Azure AD Connect Health 后可以执行的�
 services: active-directory
 documentationcenter: 
 author: karavar
-manager: femila
+manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 06afc6b4149ea1590a2994d1638d6979a89035e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e6910ea52f880e28378c9bf7fde02d080bc2e58
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -114,7 +114,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”部分中，单击“用户”。<br>
-   ![Azure AD Connect Health RBAC 主边栏选项卡的屏幕快照（其中突出显示了“用户”）](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+   ![Azure AD Connect Health RBAC 主边栏选项卡的屏幕截图（其中突出显示了“用户”）](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
 2. 选择“添加”。
 3. 在“选择角色”窗格中，选择一个角色（例如“所有者”）。<br>
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/active-directory-aadconnect-health/RBAC_add.png)
@@ -122,7 +122,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/active-directory-aadconnect-health/RBAC_select_users.png)
 5. 选择“确定”。<br>
 6. 完成角色分配后，用户和组将显示在列表中。<br>
-   ![Azure AD Connect Health RBAC 用户窗口的屏幕快照（其中突出显示了新用户）](./media/active-directory-aadconnect-health/RBAC_user_list.png)
+   ![Azure AD Connect Health RBAC 用户窗口的屏幕截图（其中突出显示了新用户）](./media/active-directory-aadconnect-health/RBAC_user_list.png)
 
 现在，列出的用户和组具有基于所分配角色的相应访问权限。
 
@@ -135,7 +135,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>步骤 3：与用户或组共享边栏选项卡位置
 1. 分配权限后，用户可以转到[此处](http://aka.ms/aadconnecthealth)，访问 Azure AD Connect Health。
 2. 在边栏选项卡上，用户可将边栏选项卡或卡上的其他部件固定到仪表板。 只需单击“固定到仪表板”图标。<br>
-   ![Azure AD Connect Health RBAC 固定边栏选项卡的屏幕快照，其中突出显示了固定图标](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
+   ![Azure AD Connect Health RBAC 固定边栏选项卡的屏幕截图（其中突出显示了固定图标）](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 > [!NOTE]
 > 分配有“读取者”角色的用户无法从 Azure Marketplace 获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
@@ -144,7 +144,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 
 ### <a name="remove-users-or-groups"></a>删除用户或组
 可删除已添加到 Azure AD Connect Health RBAC 中的用户或组。 只需右键单击用户或组，然后选择“删除”。<br>
-![Azure AD Connect Health RBAC 用户窗口的屏幕快照，其中突出显示了“删除”](./media/active-directory-aadconnect-health/RBAC_remove.png)
+![Azure AD Connect Health RBAC 用户窗口的屏幕截图（其中突出显示了“删除”）](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
 [//]: # (End of RBAC section)
 

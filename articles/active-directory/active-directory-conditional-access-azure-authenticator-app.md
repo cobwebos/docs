@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 60a5cc2ecc550c76ca3cb1f1d4d20070b3e3b035
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-authenticator-for-android"></a>适用于 Android 的 Azure 验证器
 IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作资源。 此应用程序提供以下两个登录选项：
@@ -62,7 +62,7 @@ IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作
 1. 在应用程序的主页屏幕上，接受最终用户许可协议 (EULA)。
 2. 在“激活帐户”屏幕上，单击右侧的上下文菜单，并选择“工作帐户”。
 3. 在“帐户”屏幕上，单击“添加帐户”。
-4. 如果看到“帐户”屏幕，请单击“添加帐户”。 如果前面已创建工作帐户，会看到“同步”屏幕显示现有的工作帐户。 只需点击主页屏幕中的上一步箭头，即可保留该工作帐户。 或者，可以选择删除此帐户并重建新的工作帐户。在“工作区加入”屏幕上，输入组织提供的用户 ID，然后单击“加入”。
+4. 如果看到“帐户”屏幕，请单击“添加帐户”。 如果前面已创建工作帐户，会看到“同步”屏幕显示现有的工作帐户。 只需点击主页屏幕中的上一步箭头，即可保留该工作帐户。 或者，可以选择删除此帐户并重建新的工作帐户。在“工作区加入”屏幕上，输入组织提供的用户 ID，并单击“加入”。
 5. 要登录 Azure 验证器应用，请输入组织帐户和密码，并单击“登录”。
 6. 下一个屏幕会显示多重身份验证 (MFA) 的相关信息，此项设置是可选的，目的是为了提高安全性。 如果公司或学校要求使用双因素身份验证创建工作帐户，会看到这个屏幕。 其中提供了有关进一步验证帐户的说明。
 7. 在下一个屏幕上单击“确定”。 不要更改证书名称。

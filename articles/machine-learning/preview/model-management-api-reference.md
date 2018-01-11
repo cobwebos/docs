@@ -6,16 +6,17 @@ author: chhavib
 ms.author: chhavib
 manager: neerajkh
 editor: jasonwhowell
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 03e51ab298a08386f0094d6d0290aa1ec85d337f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 134971e4a663baefa4e1051f087038d3debcb969
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure 机器学习模型管理帐户 API 参考
 
@@ -78,9 +79,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | model | body | 用于注册模型的有效负载。 | 是 | [Model](#model) |
@@ -104,12 +105,12 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
-| 名称 | query | 对象名称。 | 否 | 字符串 |
+| name | query | 对象名称。 | 否 | 字符串 |
 | 标记 | query | 模型标记。 | 否 | 字符串 |
 | 计数 | query | 要在页中检索的项数。 | 否 | 字符串 |
 | $skipToken | query | 用于检索下一页的继续标记。 | 否 | 字符串 |
@@ -133,10 +134,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 对象 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 对象 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -159,9 +160,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | manifestRequest | body | 用于注册清单的有效负载。 | 是 | [Manifest](#manifest) |
@@ -185,9 +186,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | modelId | query | 模型 ID。 | 否 | 字符串 |
@@ -214,10 +215,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 对象 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 对象 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -240,9 +241,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | imageRequest | body | 用于创建映像的有效负载。 | 是 | [ImageRequest](#imagerequest) |
@@ -266,9 +267,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | manifestId | query | 清单 ID。 | 否 | 字符串 |
@@ -295,10 +296,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 映像 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 映像 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -322,9 +323,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | serviceRequest | body | 用于创建服务的有效负载。 | 是 | [ServiceCreateRequest](#servicecreaterequest) |
@@ -349,9 +350,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | serviceName | query | 服务名称。 | 否 | 字符串 |
@@ -383,10 +384,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 对象 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 对象 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -409,10 +410,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 对象 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 对象 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | serviceUpdateRequest | body | 用于更新现有服务的有效负载。 | 是 |  [ServiceUpdateRequest](#serviceupdaterequest) |
@@ -437,10 +438,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 对象 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 对象 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -464,10 +465,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 服务 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 服务 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -490,10 +491,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 服务 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 服务 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | regenerateKeyRequest | body | 用于更新现有服务的有效负载。 | 是 | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
@@ -517,9 +518,9 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 | serviceId | query | 服务 ID。 | 否 | 字符串 |
@@ -543,10 +544,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 部署 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 部署 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -569,10 +570,10 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 ### <a name="parameters"></a>parameters
 | 名称 | 所在位置 | 说明 | 必选 | 架构
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Azure 订阅 ID。 | 是 | 字符串 |
-| resourceGroupName | path | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
-| accountName | path | 模型管理帐户的名称。 | 是 | 字符串 |
-| id | path | 操作 ID。 | 是 | 字符串 |
+| subscriptionId | 路径 | Azure 订阅 ID。 | 是 | 字符串 |
+| resourceGroupName | 路径 | 模型管理帐户所在的资源组的名称。 | 是 | 字符串 |
+| accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
+| id | 路径 | 操作 ID。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
 
@@ -815,7 +816,7 @@ Azure 机器学习模型的实例。
 |名称|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
-|**value**  <br>（可选）|模型对象的数组。|<[Image](#image)> 数组|
+|**值**  <br>（可选）|模型对象的数组。|<[Image](#image)> 数组|
 
 
 <a name="paginatedmanifestlist"></a>
@@ -826,7 +827,7 @@ Azure 机器学习模型的实例。
 |名称|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
-|**value**  <br>（可选）|清单对象的数组。|<[Manifest](#manifest)> 数组|
+|**值**  <br>（可选）|清单对象的数组。|<[Manifest](#manifest)> 数组|
 
 
 <a name="paginatedmodellist"></a>
@@ -837,7 +838,7 @@ Azure 机器学习模型的实例。
 |名称|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
-|**value**  <br>（可选）|模型对象的数组。|<[Model](#model)> 数组|
+|**值**  <br>（可选）|模型对象的数组。|<[Model](#model)> 数组|
 
 
 <a name="paginatedservicelist"></a>
@@ -848,7 +849,7 @@ Azure 机器学习模型的实例。
 |名称|说明|架构|
 |---|---|---|
 |**nextLink**  <br>（可选）|列表中下一页结果的继续链接（绝对 URI）。|字符串|
-|**value**  <br>（可选）|服务对象的数组。|<[ServiceResponse](#serviceresponse)> 数组|
+|**值**  <br>（可选）|服务对象的数组。|<[ServiceResponse](#serviceresponse)> 数组|
 
 
 <a name="servicecreaterequest"></a>

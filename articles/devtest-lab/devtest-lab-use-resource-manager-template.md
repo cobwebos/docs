@@ -1,9 +1,9 @@
 ---
-title: "查看和使用虚拟机的 Azure Resource Manager 模板 | Microsoft Docs"
-description: "了解如何使用虚拟机的 Azure Resource Manager 模板创建其他 VM"
+title: "查看和使用虚拟机的 Azure 资源管理器模板 | Microsoft Docs"
+description: "了解如何使用虚拟机的 Azure 资源管理器模板创建其他 VM"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: a759d9ce-655c-4ac6-8834-cb29dd7d30dd
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: tarcher
-ms.openlocfilehash: 0807ab367b91be5acd261f2b58ca2112b2c9e380
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: d3800fe360a2451bdc39644e713b82ab0608ef12
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="use-a-virtual-machines-azure-resource-manager-template"></a>使用虚拟机的 Azure Resource Manager 模板
+# <a name="use-a-virtual-machines-azure-resource-manager-template"></a>使用虚拟机的 Azure 资源管理器模板
 
-如果通过 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)在开发测试实验室中创建虚拟机 (VM)，则在保存 VM 前可以查看 Azure Resource Manager 模板。 然后可以该模板为基准创建更多具有相同设置的实验室 VM。
+如果通过 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)在开发测试实验室中创建虚拟机 (VM)，则在保存 VM 前可以查看 Azure 资源管理器模板。 然后可以该模板为基准创建更多具有相同设置的实验室 VM。
 
 本文介绍创建 VM 时如何查看 Azure Resource Manager 模板以及如何部署模板以自动创建相同的 VM。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 本文的其余部分将讨论使用 Mirosoft.DevTestLab/labs/virtualmachines 的 Resource Manager 模板。 实验室管理员可使用这些模板自动创建实验室 VM（如可认领 VM）或自动生成黄金映像（如映像工厂）。
 
-[创建 Azure Resource Manager 模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure Resource Manager 模板。
+[创建 Azure 资源管理器模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure 资源管理器模板。
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>查看和保存虚拟机的 Resource Manager 模板
 1. 请遵循[在实验室中创建你的第一个 VM](devtest-lab-create-first-vm.md)中的步骤，开始创建虚拟机。

@@ -20,7 +20,7 @@
 ### [容量限制](sql-data-warehouse-service-capacity-limits.md)
 ### [常见问题](sql-data-warehouse-overview-faq.md)
 
-## 安全
+## “安全”
 ### [概述](sql-data-warehouse-overview-manage-security.md)
 ### [身份验证](sql-data-warehouse-authentication.md)
 
@@ -83,19 +83,18 @@
 ### [还原数据仓库 - PowerShell](sql-data-warehouse-restore-database-powershell.md)
 ### [还原数据仓库 - REST API](sql-data-warehouse-restore-database-rest-api.md)
 
-## 安全
+## “安全”
 ### [启用加密 - 门户](sql-data-warehouse-encryption-tde.md)
 ### [启用加密 - T-SQL](sql-data-warehouse-encryption-tde-tsql.md)
 ### [威胁检测](sql-data-warehouse-security-threat-detection.md)
 
 
 ## 加载和移动数据
-### [AdventureWorks](sql-data-warehouse-load-sample-databases.md)
+### [Contoso 公共数据](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [从 Blob 存储使用 PolyBase ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [从 SQL Server 使用 PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+### [AzCopy](sql-data-warehouse-load-from-sql-server-with-polybase.md)
 ### [RedGate](sql-data-warehouse-load-with-redgate.md)
 ### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 

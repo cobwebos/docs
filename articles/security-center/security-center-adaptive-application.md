@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 71dcafab92a9045388c2e602c0dc297aed32e527
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b54dfc454cfcdefb56bfda9b242412e0f213b50b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure 安全中心（预览版）的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
@@ -36,12 +36,11 @@ ms.lasthandoff: 12/14/2017
 ## <a name="how-to-enable-adaptive-application-controls"></a>如何启用自适应应用程序控制？
 可以通过自适应应用程序控制来定义一组应用程序，允许这些应用程序在配置的资源组上运行。 此功能仅适用于 Windows 计算机（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）。 以下步骤可以用来在安全中心配置应用程序允许列表功能：
 
-1.  打开“安全中心”仪表板，然后单击“概览”。
-2.  “高级云防御”下的“自适应应用程序控制”磁贴显示有多少 VM（相对于所有 VM 来说）目前已将控制设置到位。 它还显示在上一周发现的问题数： 
+1.  打开“安全中心”仪表板，然后单击位于左导航窗格的“高级云防御”部分下的“自适应应用程序控件”。
 
-    ![自适应应用程序控制](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
+    ![防御](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
-3. 单击“自适应应用程序控制”磁贴可查看更多选项。
+2. 此时会显示“自适应应用程序控件”页。
 
     ![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 

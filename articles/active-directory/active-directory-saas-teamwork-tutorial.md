@@ -4,7 +4,7 @@ description: "了解如何配置 Azure Active Directory 与 Teamwork.com 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e8ea13167ab4f1a43f753a91f9398582d519c6d
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>教程：Azure Active Directory 与 Teamwork.com 的集成
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>教程：Azure Active Directory 与 [Teamwork.com](https://www.teamwork.com/projects) 的集成
 
 本教程介绍如何将 Teamwork.com 与 Azure Active Directory (Azure AD) 集成。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/23/2017
 要配置 Azure AD 与 Teamwork.com 的集成，需要以下各项：
 
 - 一个 Azure AD 订阅
-- 已启用 Teamwork.com 单一登录的订阅
+- Pro 计划或更高版本上的 [Teamwork.com](https://www.teamwork.com/projects) 订阅
 
 > [!NOTE]
 > 不建议使用生产环境测试本教程中的步骤。

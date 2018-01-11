@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: b14d0aad5a1f50c225391dbab27ec6240423a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7b81c12c31fe7de40acca6baa8972e65c306ee0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中管理数据库
 SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，要缩放性能，只需调整相应级别的计算资源并为这些资源付费，然后即可让 SQL 数据仓库执行向外扩展和缩减的所有工作。
@@ -47,7 +47,7 @@ SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，
 ### <a name="sql-server-data-tools-in-visual-studio"></a>Visual Studio 中的 SQL Server Data Tools
 使用 Visual Studio 中的 [SQL Server Data Tools][SQL Server Data Tools] (SSDT)，可连接到数据库并对其进行管理和开发。 如果是熟悉 Visual Studio 或其他集成开发环境 (IDE) 的应用程序开发人员，请尝试使用 Visual Studio 中的 SSDT。
 
-使用 SSDT 包含的 SQL Server 对象资源管理器，可以针对 SQL 数据仓库数据库进行可视化、连接和执行脚本。 若要快速连接到 SQL 数据仓库，只需在 Azure 经典门户中查看数据库详细信息时，单击命令栏中的“**在 Visual Studio 中打开**”按钮。  
+使用 SSDT 包含的 SQL Server 对象资源管理器，可以针对 SQL 数据仓库数据库进行可视化、连接和执行脚本。 若要快速连接到 SQL 数据仓库，只需在 Azure 门户中查看数据库详细信息时，单击命令栏中的“在 Visual Studio 中打开”按钮。  
 
 若要开始使用 Visual Studio 中的 SSDT，请参阅[使用 Visual Studio 查询 Azure SQL 数据仓库][Query Azure SQL Data Warehouse with Visual Studio]。
 

@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1283d3cff4edc0c99d22612c65fda48f9dddfbd3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: d436e7d9046fa9c1bced890c005f98b40b372ef6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -28,21 +28,21 @@ Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专�
 
 ## <a name="before-you-begin"></a>开始之前
 
-在[上一教程](./tutorial-kubernetes-prepare-app.md)中，已经为一个 Azure Voting 应用程序示例创建了容器映像。 如果尚未创建 Azure Voting 应用映像，请返回到[教程 1：创建容器映像](./tutorial-kubernetes-prepare-app.md)。
+在[上一教程][aks-tutorial-prepare-app]中，已经为一个 Azure Voting 应用程序示例创建了容器映像。 如果尚未创建 Azure Voting 应用映像，请返回到[教程 1：创建容器映像][aks-tutorial-prepare-app]。
 
-本教程要求运行 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+本教程要求运行 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create](/cli/azure/group#create) 命令创建资源组。 在此示例中，在 `eastus` 区域中创建了名为 `myResourceGroup` 的资源组。
+使用 [az group create][az-group-create] 命令创建资源组。 在此示例中，在 `eastus` 区域中创建了名为 `myResourceGroup` 的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az acr create](/cli/azure/acr#create) 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。
+使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -52,7 +52,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="container-registry-login"></a>容器注册表登录
 
-运行 [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) 命令，登录 ACR 实例。 需要提供创建容器注册表时所使用的唯一名称。
+运行 [az acr login][az-acr-login] 命令，登录 ACR 实例。 需要提供创建容器注册表时所使用的唯一名称。
 
 ```azurecli
 az acr login --name <acrName>
@@ -62,7 +62,7 @@ az acr login --name <acrName>
 
 ## <a name="tag-container-images"></a>标记容器映像
 
-若要查看当前映像的列表，请使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令。
+若要查看当前映像的列表，请使用 [docker images][docker-images] 命令。
 
 ```console
 docker images
@@ -91,7 +91,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-进行标记后，运行 [docker images] (https://docs.docker.com/engine/reference/commandline/images/) 以验证操作。
+标记后即可运行 [docker images][docker-images] 验证操作。
 
 ```console
 docker images
@@ -121,7 +121,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v1
 
 ## <a name="list-images-in-registry"></a>列出注册表中的映像
 
-若要返回已推送到 Azure 容器注册表的映像列表，请使用 [az acr repository list](/cli/azure/acr/repository#list) 命令。 使用 ACR 实例名称更新命令。
+若要返回已推送到 Azure 容器注册表的映像列表，请使用 [az acr repository list][az-acr-repository-list] 命令。 使用 ACR 实例名称更新命令。
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -135,7 +135,7 @@ Result
 azure-vote-front
 ```
 
-然后，若要查看特定映像的标记，请使用 [az acr repository show-tags](/cli/azure/acr/repository#show-tags) 命令。
+然后，若要查看特定映像的标记，请使用 [az acr repository show-tags][az-acr-repository-show-tags] 命令。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
@@ -163,4 +163,17 @@ redis-v1
 进入下一教程，了解如何在 Azure 中部署 Kubernetes 群集。
 
 > [!div class="nextstepaction"]
-> [部署 Kubernetes 群集](./tutorial-kubernetes-deploy-cluster.md)
+> [部署 Kubernetes 群集][aks-tutorial-deploy-cluster]
+
+<!-- LINKS - external -->
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+
+<!-- LINKS - internal -->
+[az-acr-create]: /cli/azure/acr#create
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login
+[az-acr-repository-list]: /cli/azure/acr/repository#list
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#show-tags
+[az-group-create]: /cli/azure/group#az_group_create
+[azure-cli-install]: /cli/azure/install-azure-cli
+[aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

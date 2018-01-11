@@ -1,27 +1,27 @@
 ---
-title: "在 Windows Phone 上借助 Azure 通知中心发送推送通知 | Microsoft Docs"
+title: "适用于 Windows Phone 应用的 Azure 通知中心入门 | Microsoft Docs"
 description: "在本教程中，将了解如何使用 Azure 通知中心将通知推送到 Windows Phone 8 或 Windows Phone 8.1 Silverlight 应用程序。"
 services: notification-hubs
 documentationcenter: windows
 keywords: "推送通知,push notification,windows phone 推送"
-author: ysxu
-manager: erikre
-editor: erikre
+author: jwhitedev
+manager: kpiteira
+editor: 
 ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: f0bfe81f849813d146d644b32490af657b1071b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: 7d44d0a0f8683ad6ad55136ad17879e98e26498b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-on-windows-phone"></a>在 Windows Phone 上借助 Azure 通知中心发送推送通知
+# <a name="get-started-with-azure-notification-hubs-for-windows-phone-apps"></a>适用于 Windows Phone 应用的 Azure 通知中心入门
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概述
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="6">
-<li><p>单击“通知服务”部分（位于“设置”内），单击“Windows Phone (MPNS)”并选中“启用未经身份验证的推送”复选框。<b></b><i></i><b></b><b></b></p>
+<li><p>在“Notification Services”下选择“Windows Phone (MPNS)”，然后单击“启用未经身份验证的推送”复选框。<b></b><b></b><b></b></p>
 </li>
 </ol>
 
@@ -129,62 +129,7 @@ ms.lasthandoff: 10/11/2017
    
    > [!NOTE]
    > 若要接收 toast 推送通知，则应用程序不得在前台运行。
-   > 
-   > 
-
-## <a name="send-push-notifications-from-your-backend"></a>从后端发送推送通知
-可以使用通知中心通过公共 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送推送通知。 在本教程中，将使用 .NET 控制台应用程序来发送推送通知。 
-
-有关如何从与通知中心集成的 ASP.NET WebAPI 后端来发送推送通知的示例，请参阅 [Azure 通知中心 - 使用 .NET 后端通知用户](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)。  
-
-有关如何使用 [REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) 发送推送通知的示例，请参阅[如何通过 Java 使用通知中心](notification-hubs-java-push-notification-tutorial.md)和[如何通过 PHP 使用通知中心](notification-hubs-php-push-notification-tutorial.md)。
-
-1. 右键单击解决方案，选择“添加”和“新建项目...”，并在“Visual C#”下依次单击“Windows”、“控制台应用程序”和“确定”。
-   
-       ![Visual Studio - New Project - Console Application][6]
-   
-    这会将新的 Visual C# 控制台应用程序添加到解决方案。 也可以在单独的解决方案中进行此项操作。
-2. 依次单击“工具”、“库包管理器”、“包管理器控制台”。
-   
-    这会显示包管理器控制台。
-3. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：
-   
-       Install-Package Microsoft.Azure.NotificationHubs
-   
-   这会使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 包</a>添加对 Azure 通知中心 SDK 的引用。
-4. 打开 `Program.cs` 文件并添加以下 `using` 语句：
-   
-        using Microsoft.Azure.NotificationHubs;
-5. 在 `Program` 类中，添加以下方法：
-   
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient
-                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            string toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
-                   "<wp:Toast>" +
-                        "<wp:Text1>Hello from a .NET App!</wp:Text1>" +
-                   "</wp:Toast> " +
-                "</wp:Notification>";
-            await hub.SendMpnsNativeNotificationAsync(toast);
-        }
-   
-    确保将 `<hub name>` 占位符替换为出现在门户中的通知中心名称。 此外，使用在“配置通知中心”部分中获取的名称为 **DefaultFullSharedAccessSignature** 的连接字符串替换连接字符串占位符。
-   
-   > [!NOTE]
-   > 确保使用的是具有**完全**访问权限的连接字符串，而不是具有**侦听**访问权限的连接字符串。 侦听访问字符串无权发送推送通知。
-   > 
-   > 
-6. 在 `Main` 方法中添加以下行：
-   
-         SendNotificationAsync();
-         Console.ReadLine();
-7. 在 Windows Phone 模拟器正在运行且应用已关闭的情况下，将控制台应用程序项目设置为默认启动项目，然后按 `F5` 键运行应用。
-   
-    会收到 toast 推送通知。 点击 toast 标题可加载应用。
-
-可以在 MSDN 上的 [toast 目录]和[磁贴目录]主题中找到所有可能的负载。
+   >
 
 ## <a name="next-steps"></a>后续步骤
 在这个简单的示例中，已将推送通知广播到所有 Windows Phone 8 设备。 
@@ -220,7 +165,7 @@ ms.lasthandoff: 10/11/2017
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 [使用通知中心将通知推送到用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [使用通知中心发送突发新闻]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[toast 目录]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[磁贴目录]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
+[tile catalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [通知中心 - Windows Phone Silverlight 教程]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 

@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 71322c650b2ee464bab91bf8d4b176f3b2d93949
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="update-management-solution-in-oms"></a>更新 OMS 中的管理解决方案
 
@@ -181,10 +181,10 @@ ms.lasthandoff: 12/13/2017
 
 | 属性 | 说明 |
 | --- | --- |
-| Name |更新部署的名称 |
+| 名称 |更新部署的名称 |
 | 计划 |计划的类型。  可用选项包括：“一次”、“每周重复一次”、“每月重复一次”。 |
 | 开始时间 |计划启动更新部署的日期和时间。 |
-| 持续时间 |更新部署允许运行的分钟数。  如果在此持续时间内未安装所有更新，剩余的更新必须等待下一次更新部署。 |
+| Duration |更新部署允许运行的分钟数。  如果在此持续时间内未安装所有更新，剩余的更新必须等待下一次更新部署。 |
 | 服务器 |受更新部署影响的计算机数。  |
 | 状态 |更新部署的当前状态<br><br>可能的值包括：<br>- 未启动<br>- 正在运行<br>- 已完成 |
 
@@ -205,11 +205,11 @@ ms.lasthandoff: 12/13/2017
 
 | 属性 | 说明 |
 | --- | --- |
-| Name |用于标识更新部署的唯一名称。 |
+| 名称 |用于标识更新部署的唯一名称。 |
 | 时区 |开始时间所使用的时区。 |
 | 计划类型 | 计划的类型。  可用选项包括：“一次”、“每周重复一次”、“每月重复一次”。  
 | 开始时间 |启动更新部署的日期和时间 **注意：**如果需要立即进行部署，则从当前时间算起，最快也得 30 分钟才能运行部署。 |
-| 持续时间 |更新部署允许运行的分钟数。  如果在此持续时间内未安装所有更新，剩余的更新必须等待下一次更新部署。 |
+| Duration |更新部署允许运行的分钟数。  如果在此持续时间内未安装所有更新，剩余的更新必须等待下一次更新部署。 |
 | 计算机 |要包括在更新部署中并将其作为目标的计算机或计算机组的名称。  从下拉列表中选择一个或多个条目。 |
 
 <br><br> ![“新建更新部署”页](./media/oms-solution-update-management/update-newupdaterun-page.png)
@@ -227,12 +227,12 @@ ms.lasthandoff: 12/13/2017
 
 | 属性 | 说明 |
 | --- | --- |
-| 类型 |*更新* |
+| Type |*更新* |
 | SourceSystem |批准安装更新的源。<br>可能的值包括：<br>- Microsoft 更新<br>- Windows 更新<br>- SCCM<br>- Linux 服务器（从包管理器获取） |
 | 已批准 |指定是否已批准安装该更新。<br> 对于 Linux 服务器，这当前是可选选项，因为修补不由 OMS 管理。 |
 | 适用于 Windows 的类别 |更新的类别。<br>可能的值包括：<br>-    应用程序<br>- 关键更新<br>- 定义更新<br>- 功能包<br>- 安全更新<br>- 服务包<br>- 更新汇总<br>- 更新 |
 | 适用于 Linux 的类别 |更新的类别。<br>可能的值包括：<br>-关键更新<br>- 安全更新<br>-其他更新 |
-| 计算机 |计算机的名称。 |
+| Computer |计算机的名称。 |
 | InstallTimeAvailable |指定来自安装了相同更新的其他代理上的安装时间是否可用。 |
 | InstallTimePredictionSeconds |根据安装了相同更新的其他代理预计的安装时间（以秒为单位）。 |
 | KBID |介绍该更新的 KB 文章的 ID。 |
@@ -268,9 +268,9 @@ ms.lasthandoff: 12/13/2017
 
 | 属性 | 说明 |
 | --- | --- |
-| 类型 |UpdateSummary |
+| Type |UpdateSummary |
 | SourceSystem |OpsManager |
-| 计算机 |计算机的名称。 |
+| Computer |计算机的名称。 |
 | CriticalUpdatesMissing |计算机上缺少的关键更新数。 |
 | ManagementGroupName |SCOM 代理的管理组名称。 对于其他代理，即 AOI-<workspace ID>。 |
 | NETRuntimeVersion |计算机上已安装的 .NET 运行时版本。 |

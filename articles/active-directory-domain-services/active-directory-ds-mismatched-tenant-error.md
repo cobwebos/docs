@@ -4,7 +4,7 @@ description: "了解和解决现有 Azure AD 域服务托管域的不匹配目�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 24e11769e9b403bc00157e3f60869effa6a9633f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
-拥有使用 Azure 经典门户启用的现有托管域。 导航到新的 Azure 门户并查看托管域时，会看到以下错误消息：
+你有一个现有 Azure AD 域服务托管域。 导航到 Azure 门户并查看托管域时，会看到以下错误消息：
 
 ![不匹配目录错误](.\media\getting-started\mismatched-tenant-error.png)
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/31/2017
 
 新的 Azure 门户（具体指的是 Azure AD 域服务扩展）基于 Azure 资源管理器生成。 在新式 Azure 资源管理器环境中，将强制实施特定限制，以提供更高的安全性和实现对资源更好的基于角色的访问控制 (RBAC)。 为 Azure AD 租户启用 Azure AD 域服务是一项敏感操作，因为可能导致凭据哈希同步到托管域。 此操作要求用户是目录的租户管理员。 此外，还必须具有对在其中启用托管域的虚拟网络的管理权限。 若要使 RBAC 检查持续工作，托管域和虚拟网络应属于相同的 Azure AD 租户。
 
-简言之，无法在属于另一 Azure AD 租户“fabrikam.com”所有的 Azure 订阅的虚拟网络中为 Azure AD 租户“contoso.com”启用托管域。 Azure 经典门户不基于 Resource Manager 平台生成，也不强制实施此类限制。
+简言之，无法在属于另一 Azure AD 租户“fabrikam.com”所有的 Azure 订阅的虚拟网络中为 Azure AD 租户“contoso.com”启用托管域。 
 
 有效配置：在此部署方案中，将为 Contoso Azure AD 租户启用 Contoso 托管域。 托管域在属于 Contoso Azure AD 租户所有的 Azure 订阅的虚拟网络中公开。 因此，托管域以及虚拟网络属于相同的 Azure AD 租户。 此配置有效，且完全受支持。
 

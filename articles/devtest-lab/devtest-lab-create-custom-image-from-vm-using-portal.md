@@ -3,7 +3,7 @@ title: "基于 VM 创建 Azure 开发测试实验室自定义映像 | Microsoft 
 description: "介绍如何通过 Azure 门户在 Azure 开发测试实验室中基于预配的 VM 创建自定义映像"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: 9d2dcf7164985508d691e8a0c123efaf3b8aa19a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: ce854024df5c6974873cf3574bf2de282946f6d0
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
 
@@ -59,4 +59,4 @@ ms.lasthandoff: 10/11/2017
 
 ##<a name="next-steps"></a>后续步骤
 
-- [将 VM 添加到实验室](./devtest-lab-add-vm-with-artifacts.md)
+- [将 VM 添加到实验室](devtest-lab-add-vm.md)

@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 84c2eaaab2dfc09c93fbfeac3fe2bfcc7066a411
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-and-configure-your-devices"></a>管理和配置设备
 
@@ -40,13 +40,13 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 如果尚未部署远程监视解决方案，应完成[部署远程监视预配置解决方案](iot-suite-remote-monitoring-deploy.md)教程。
 
-## <a name="provision-a-simulated-device"></a>预配模拟设备
+## <a name="add-a-simulated-device"></a>添加模拟设备
 
-在解决方案中导航到“设备”页，选择“预配”。 在“预配”面板中，选择“模拟”：
+在解决方案中导航到“设备”页，然后选择“新建设备”。 在“新建设备”面板中，选择“模拟”：
 
 ![预配模拟设备](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-将要预配的设备数保留设置为 **1**。 选择“引擎”作为“设备模型”，并选择“应用”创建模拟设备：
+将要预配的设备数保留设置为 **1**。 选择“故障引擎”作为“设备模型”，并选择“应用”创建模拟设备：
 
 ![预配模拟引擎设备](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
@@ -68,7 +68,7 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 ## <a name="act-on-a-device"></a>安排设备操作
 
-若要安排某个设备的操作，请在设备列表中将其选中，然后选择“计划”。 “引擎”设备模型指定设备必须支持的四个方法：
+若要对一个或多个设备执行操作，请在设备列表中将其选中，然后选择“计划”。 “引擎”设备模型指定设备必须支持的四个方法：
 
 ![引擎方法](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
@@ -76,7 +76,7 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 ![计划重启方法](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
-若要在“维护”页上跟踪作业的状态，请选择“系统状态”：
+若要在“维护”页上跟踪作业的状态，请选择“作业”：
 
 ![监视计划作业](media/iot-suite-remote-monitoring-manage/maintenancerestart.png)
 
@@ -96,7 +96,7 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 ![更新设备属性值](media/iot-suite-remote-monitoring-manage/devicesreconfigurephysical.png)
 
-若要在“维护”页上跟踪作业的状态，请选择“系统状态”。
+若要在“维护”页上跟踪作业的状态，请选择“作业”。
 
 ## <a name="next-steps"></a>后续步骤
 

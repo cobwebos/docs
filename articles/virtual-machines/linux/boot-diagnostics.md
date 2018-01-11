@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 08/21/2017
 ms.author: delhan
-ms.openlocfilehash: 79e412bd7523a55fc7d081121af9434520868880
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70254d39b5c6326166f7e29fdfc99533835502f9
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>如何使用启用诊断功能来解决 Azure 中 Linux 虚拟机的问题
 
@@ -44,15 +44,15 @@ Azure 现在提供对两种调试功能的支持：控制台输出和屏幕截�
 - [FSTAB 错误](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/ )
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>对新虚拟机启用诊断
-1. 从预览门户创建新的虚拟机时，请从部署模型下拉列表中选择 **Azure Resource Manager** ：
+1. 从预览门户创建新的虚拟机时，请从部署模型下拉列表中选择 **Azure 资源管理器**：
  
-    ![Resource Manager](./media/boot-diagnostics/screenshot3.jpg)
+    ![资源管理器](./media/boot-diagnostics/screenshot3.jpg)
 
 2. 配置“监视”选项，选择要在其中放置这些诊断文件的存储帐户。
  
     ![创建 VM](./media/boot-diagnostics/screenshot4.jpg)
 
-3. 要从 Azure Resource Manager 模板进行部署，请导航到虚拟机资源，并追加诊断配置文件部分。 记得使用“2015-06-15”API 版本标头。
+3. 要从 Azure 资源管理器模板进行部署，请导航到虚拟机资源，并追加诊断配置文件部分。 记得使用“2015-06-15”API 版本标头。
 
     ```json
     {

@@ -1,6 +1,6 @@
 ---
-title: "在 Visual Studio Code 中使用 Python、R 和 CSharp 开发用于 Azure Data Lake Analytics 的 U-SQL | Microsoft 文档"
-description: "了解如何使用 Python、R 和 CSharp 的隐藏代码来提交 Azure Data Lake 中的作业。"
+title: "在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL | Microsoft Docs"
+description: "了解如何使用 Python、R 和 C# 的隐藏代码来提交 Azure Data Lake 中的作业。"
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/22/2017
 ms.author: jejiang
-ms.openlocfilehash: 82f6527388017aadecf761871f5acb25eb100acb
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 8fd8decfde1220be6aaa099c3afb24e8c1eecce4
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="develop-u-sql-with-python-r-and-csharp-for-azure-data-lake-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Python、R 和 CSharp 开发用于 Azure Data Lake Analytics 的 U-SQL
-了解如何使用 Visual Studio Code (VSCode) 来编写 U-SQL 的 Python、R 和 CSharp 隐藏代码，并将作业提交到 Azure Data Lake 服务。 有关 VSCode 的 Azure Data Lake 工具的详细信息，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。
+# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL
+了解如何使用 Visual Studio Code (VSCode) 来编写 U-SQL 的 Python、R 和 C# 隐藏代码，并将作业提交到 Azure Data Lake 服务。 有关 VSCode 的 Azure Data Lake 工具的详细信息，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。
 
 在编写代码隐藏自定义代码之前，需要在 VSCode 中打开文件夹或工作区。
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 11/27/2017
 5. 右键单击 USQL 文件，可以单击“编译脚本”或“提交作业”以运行作业。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [使用用于 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)
 * [开发用于 Azure Data Lake Analytics 作业的 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)
 * [通过 PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)

@@ -9,7 +9,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [添加数据](search-what-is-data-import.md)
-### [Azure 门户](search-import-data-portal.md)
+### [Azure portal](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [搜索索引](search-query-overview.md)
@@ -33,7 +33,7 @@
 ### [服务限制](search-limits-quotas-capacity.md)
 ### [服务可伸缩性](search-capacity-planning.md)
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
-## 安全
+## “安全”
 ### [数据和操作安全性](search-security-overview.md)
 ### [使用标识筛选器进行保护](search-security-trimming-for-azure-search.md)
 ### [使用 Active Directory 进行保护](search-security-trimming-for-azure-search-with-aad.md)
@@ -51,7 +51,7 @@
 ### [Azure Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)
 ### [Azure 表存储索引器](search-howto-indexing-azure-tables.md)
 ### [Azure SQL 索引器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure Cosmos DB 索引器](search-howto-index-documentdb.md)
+### [Azure Cosmos DB 索引器](search-howto-index-cosmosdb.md)
 ### [为 CSV Blob 创建索引](search-howto-index-csv-blobs.md)
 ### [为 JSON Blob 创建索引](search-howto-index-json-blobs.md)
 ### [配置与 Azure VM 上 SQL Server 的索引器连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)

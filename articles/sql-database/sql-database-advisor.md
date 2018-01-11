@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 9b6c60a14578842f4b3b1a9e4724eab6de3f8815
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="performance-recommendations"></a>性能建议
 
@@ -57,7 +57,12 @@ Azure SQL 数据库持续监视执行中的查询，并发现可以提升性能�
 
 应用此建议后，它会在几分钟之内对数据库启用强制参数化，并将启动监视进程（大约持续 24 小时）。 经过这段时间后，即可看到验证报告，该报告显示应用此建议之前和之后的 24 小时内数据库的 CPU 使用率。 SQL 数据库顾问具有安全机制，在检测到性能衰退的情况下，可以自动还原已应用的建议。
 
-## <a name="fix-schema-issues-recommendations"></a>修复架构问题建议
+## <a name="fix-schema-issues-recommendations-preview"></a>修复架构问题建议（预览）
+
+> [!IMPORTANT]
+> Microsoft 正在弃用“修复架构问题”的建议。 用户应该开始使用[智能见解](sql-database-intelligent-insights.md)来自动监控数据库性能问题，其中包括以前“修复架构问题”建议所涉及的架构问题。
+> 
+
 当 SQL 数据库服务发现 Azure SQL 数据库上架构相关 SQL 错误的数量发生异常时，就会出现**修复架构问题**建议。 此建议通常在数据库在一个小时内遭遇到多个架构相关的错误（无效的列名称、无效的对象名称等）时出现。
 
 “架构问题”是 SQL Server 中的一类语法错误，于 SQL 查询的定义与数据库架构的定义不一致时发生。 例如，目标表中可能缺少查询所需的某个列，反之亦然。 

@@ -3,8 +3,8 @@ title: "使用 Visual Studio 部署虚拟机规模集 | Microsoft Docs"
 description: "使用 Visual Studio 和 Resource Manager 模板部署虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4b0c8d305f57f495402cecb92d18425ff6bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73454abc11a832a1b7f4131bf13699bd0a94edea
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 创建虚拟机规模集
 本文介绍如何使用 Visual Studio 资源组部署部署 Azure 虚拟机规模集。
 
-[Azure 虚拟机规模集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一种 Azure 计算资源，可通过自动缩放和负载均衡部署和管理一组类似的虚拟机。 可使用 [Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)预配和部署虚拟机规模集。 可以使用 Azure CLI、PowerShell、REST 来部署 Azure Resource Manager 模板，也可直接从 Visual Studio 部署。 Visual Studio 提供了一组示例模板，这些模板可以作为 Azure 资源组部署项目的一部分进行部署。
+[Azure 虚拟机规模集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一种 Azure 计算资源，可通过自动缩放和负载均衡部署和管理一组类似的虚拟机。 可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)预配和部署虚拟机规模集。 可以使用 Azure CLI、PowerShell、REST 来部署 Azure 资源管理器模板，也可直接从 Visual Studio 部署。 Visual Studio 提供了一组示例模板，这些模板可以作为 Azure 资源组部署项目的一部分进行部署。
 
 Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure 资源组合并进行发布的方式。 可以在此处了解有关这些部署的详细信息：[通过 Visual Studio 创建和部署 Azure 资源组](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
 
@@ -43,7 +43,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
    
     ![新建文件][file_new]
 
-2. 在“Visual C#”的“云”下，选择“Azure Resource Manager”，创建用于部署 Azure Resource Manager 模板的项目。
+2. 在“Visual C#”的“云”下，选择“Azure 资源管理器”，创建用于部署 Azure 资源管理器模板的项目。
    
     ![创建项目][create_project]
 
@@ -51,7 +51,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
    
    ![选择模板][select_Template]
 
-4. 创建项目后，将看到 PowerShell 部署脚本、Azure Resource Manager 模板和虚拟机规模集的参数文件。
+4. 创建项目后，将看到 PowerShell 部署脚本、Azure 资源管理器模板和虚拟机规模集的参数文件。
    
     ![解决方案资源管理器][solution_explorer]
 
@@ -65,7 +65,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 ![JSON 资源管理器][json_explorer]
 
 ## <a name="deploy-the-project"></a>部署项目
-1. 部署 Azure Resource Manager 模板来创建虚拟机规模集资源。 右键单击项目节点，并选择“部署”->“新建部署”。
+1. 部署 Azure 资源管理器模板来创建虚拟机规模集资源。 右键单击项目节点，并选择“部署”->“新建部署”。
    
     ![部署模板][5deploy_Template]
     

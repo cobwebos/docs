@@ -11,13 +11,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2017
+ms.date: 12/11/2017
 ms.author: alkohli
-ms.openlocfilehash: b5c84dbea574afceba93d978425a70ce33271e36
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 36df62c4b01c623702707d39c6af59f4752ee6e0
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>将数据从 StorSimple 5000-7000 系列迁移到 8000 系列设备
 
@@ -73,12 +73,12 @@ ms.lasthandoff: 11/28/2017
     > [!IMPORTANT]
     > 我们建议在整个迁移过程中能够串行访问该设备。 如果遇到任何设备问题，串行访问将有助于进行故障排除。
 
-* 你的 5000 或 7000 系列源设备正在运行软件版本 v2.1.1.518。 不支持更早的版本。
+* 你的 5000 或 7000 系列源设备正在运行软件版本 v2.1.1.518 或更高版本。 不支持更早的版本。
 * 若要验证你的 5000 或 7000 系列正在运行的版本，请查看 Web UI 的右上角。 该位置应显示你的设备正在运行的软件版本。 针对迁移，你的 5000 或 7000 系列应运行 v2.1.1.518。
 
     ![检查旧设备上的软件版本。](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * 如果你的当前设备运行的不是 v2.1.1.518，请将系统升级到所要求的最低版本。 有关详细说明，请参阅[将系统升级到 v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)。
+    * 如果你的当前设备运行的不是 v2.1.1.518 或更高版本，请将系统升级到所要求的最低版本。 有关详细说明，请参阅[将系统升级到 v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)。
     * 如果正在运行的是 v2.1.1.518，请转到 Web UI 查看是否存在有关注册表还原失败的任何通知。 如果注册表还原已失败，请运行注册表还原。 有关详细信息，请参阅如何[运行注册表还原](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry)。
     * 如果有出现故障的设备没有运行 v2.1.1.518，请将其故障转移到运行 v2.1.1.518 的替换设备上。 有关详细说明，请参阅 5000/7000 系列 StorSimple 设备的 DR。
     * 通过使用云快照备份设备的数据。

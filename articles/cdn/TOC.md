@@ -8,7 +8,9 @@
 ## 集成
 ### [Web 应用](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [云服务](cdn-cloud-service-with-cdn.md)
-### [存储](cdn-create-a-storage-account-with-cdn.md)
+### 存储
+#### [集成存储帐户](cdn-create-a-storage-account-with-cdn.md)
+#### [SAS 存储支持](cdn-sas-storage-support.md)
 ### [跨域资源共享](cdn-cors.md)
 ### [将自定义域添加到 CDN 终结点](cdn-map-content-to-custom-domain.md)
 ### [在自定义域上配置 HTTPS](cdn-custom-ssl.md)

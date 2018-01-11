@@ -108,8 +108,8 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 #### <a name="proxy-outbound-rules"></a>代理出站规则
 允许访问连接器服务的以下终结点：
 
-* *.msappproxy.net
-* *.servicebus.windows.net
+* * .msappproxy.net
+* * .servicebus.windows.net
 
 为了完成初始注册，需允许访问以下终结点：
 

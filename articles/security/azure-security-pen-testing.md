@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 12/08/2017
 ms.author: yurid
-ms.openlocfilehash: 3ad22e78693c54c62f9230f7f52460e01e5e0022
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: dd5c874406ec184a2526a9eb0843cd6f3b6b3aa1
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="pen-testing"></a>渗透测试
 使用 Azure 进行应用程序测试和部署的一个优点是可快速创建环境。  不必为请求、获取以及“搭架和堆叠”本地硬件担心。
@@ -29,11 +29,12 @@ ms.lasthandoff: 11/23/2017
 
 我们不会对应用程序进行渗透测试，但我们知道希望并且需要对自己的应用程序执行渗透测试。 这是一件好事，因为增强应用程序的安全性可帮助使整个 Azure 生态系统更加安全。
 
-当用户对应用程序进行渗透测试时，看起来就像是对我们进行一次攻击。 我们[持续监视](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx)各种攻击模式，并且会根据需要发起事件响应过程。 如果用户进行正当的渗透测试我们就触发事件响应，这对用户和我们都没有好处。
-
 怎么办？
 
-准备好对 Azure 托管的应用程序进行渗透测试时，用户可以选择[告知我们](https://portal.msrc.microsoft.com/en-us/engage/pentest)。 在接到通知后，Microsoft 就不会无意中将用户关闭（例如阻止用户在测试时需要使用的 IP 地址）。 测试必须遵守 [Microsoft 云统一渗透测试参与规则](https://technet.microsoft.com/en-us/mt784683)中所述的 Azure 渗透测试条款和条件。
+自 2017 年 6 月 15 日起，对于针对 Azure 资源进行的渗透测试，Microsoft 不再要求执行预批准流程。 愿意正式记录即将进行的针对 Microsoft Azure 的渗透测试活动的用户，请填写 [Azure 服务渗透测试通知表](https://portal.msrc.microsoft.com/engage/pentest)。 本流程仅与 Microsoft Azure 相关，并不适用于任何其他 Microsoft 云服务。 
+
+>[!IMPORTANT] 
+>虽然参加渗透测试时无需再通知 Microsoft，客户仍须遵守 [Microsoft 云统一渗透测试参与规则](https://technet.microsoft.com/en-us/mt784683)。 
 
 可以执行的标准测试包括：
 

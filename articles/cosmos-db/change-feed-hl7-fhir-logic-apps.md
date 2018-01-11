@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a041e2121a2762af4307d7044437032cce79f05
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="azure-services-used-in-the-solution"></a>解决方案中使用的 Azure 服务
 
-#### <a name="azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API
+#### <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 如下图中所示，Azure Cosmos DB 是 FHIR 资源的存储库。
 
 ![此 HL7 FHIR 医疗保健教程中使用的 Azure Cosmos DB 帐户](./media/change-feed-hl7-fhir-logic-apps/account.png)
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
 #### <a name="api-app"></a>API 应用
 API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改后的 FHIR 文档。 此应用具有一个控制器 **FhirNotificationApi**，它带有一个操作 **GetNewOrModifiedFhirDocuments**，请参阅 [API 应用的源](#api-app-source)。
 
-我们将使用 Azure Cosmos DB DocumentDB .NET API 中的 [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) 类。 有关详细信息，请参阅[更改源](change-feed.md)一文。 
+我们将使用 Azure Cosmos DB SQL .NET API 中的 [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) 类。 有关详细信息，请参阅[更改源](change-feed.md)一文。 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>GetNewOrModifiedFhirDocuments 操作
 

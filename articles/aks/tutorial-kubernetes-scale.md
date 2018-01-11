@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 9eba0de054b06233f2de7fb375010b4b40c6937f
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ff8cf813f9c932f867413dbf7e76f949e0de2f26
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scale-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中缩放应用程序
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/06/2017
 
 在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 应用程序随后在 Kubernetes 群集上运行。
 
-如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像](./tutorial-kubernetes-prepare-app.md)。
+如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 ## <a name="scale-aks-nodes"></a>缩放 AKS 节点
 
@@ -64,7 +64,7 @@ az aks scale --resource-group=myResourceGroup --name=myK8SCluster --node-count 3
 
 ## <a name="manually-scale-pods"></a>手动缩放 Pod
 
-到目前为止，Azure 投票前端和 Redis 实例已部署，每个都有一个副本。 若要进行验证，请运行 [kubectl get](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) 命令。
+到目前为止，Azure 投票前端和 Redis 实例已部署，每个都有一个副本。 若要进行验证，请运行 [kubectl get][kubectl-get] 命令。
 
 ```azurecli
 kubectl get pods
@@ -78,13 +78,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-使用 [kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) 命令手动 `azure-vote-front` 部署中的 Pod 数。 此示例将该数量增加到 5。
+使用 [kubectl scale][kubectl-scale] 命令手动更改 `azure-vote-front` 部署中的 Pod 数。 此示例将该数量增加到 5。
 
 ```azurecli
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-运行 [kubectl get pods](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) 以验证 Kubernetes 是否在创建 Pod。 一分钟左右之后，其他 Pod 在运行：
+运行 [kubectl get pods][kubectl-get] 以验证 Kubernetes 是否在创建 Pod。 一分钟左右之后，其他 Pod 在运行：
 
 ```azurecli
 kubectl get pods
@@ -104,7 +104,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>自动缩放 Pod
 
-Kubernetes 支持[水平 Pod 自动缩放](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。
+Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。
 
 若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器请求 0.25 个 CPU，限制为 0.5 个 CPU。 设置与下面类似：
 
@@ -116,7 +116,7 @@ resources:
      cpu: 500m
 ```
 
-下面的示例使用 [kubectl autoscale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) 命令自动缩放 `azure-vote-front` 部署中的 Pod 数。 在此处，如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 10 个。
+下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 `azure-vote-front` 部署中的 Pod 数。 在此处，如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 10 个。
 
 
 ```azurecli
@@ -150,4 +150,14 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 继续学习下一个教程，了解如何在 Kubernetes 中更新应用程序。
 
 > [!div class="nextstepaction"]
-> [在 Kubernetes 中更新应用程序](./tutorial-kubernetes-app-update.md)
+> [在 Kubernetes 中更新应用程序][aks-tutorial-update-app]
+
+<!-- LINKS - external -->
+[kubectl-autoscale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
+[kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md

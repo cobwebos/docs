@@ -104,7 +104,7 @@
           href: sql-vulnerability-assessment.md
         - name: SQL Server 常用功能
           href: sql-database-features.md
-    - name: 安全
+    - name: “安全”
       href: sql-database-security-overview.md
       items:
         - name: 访问控制
@@ -279,7 +279,7 @@
         - name: 使用 BCP 加载数据
           href: sql-database-load-from-csv-with-bcp.md
         - name: 使用 ADF 加载数据
-          href: ../data-factory/v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md
         - name: 同步数据
           href: sql-database-get-started-sql-data-sync.md
     - name: 监视和优化

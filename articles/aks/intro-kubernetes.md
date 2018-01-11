@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 62cd20474e7770c30353fc74dfc67086593fca7a
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2980d4733dcf138c3a9aa1713cff994bbf5a296c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-azure-container-service-aks"></a>Azure 容器服务 (AKS) 简介
 
@@ -34,10 +34,10 @@ AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes �
 Azure 可处理 AKS 群集中的节点管理，因此我们不再需要手动执行许多任务，例如群集升级。 由于 Azure 可自动处理这些关键维护任务，AKS 不提供对群集的直接访问（例如使用 SSH）。
 
 ## <a name="using-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS)
-AKS 旨在通过使用当今客户中热门的开源工具和技术提供容器托管环境。 为此，我们公开标准 Kubernetes API 终结点。 通过使用这些标准终结点，可利用能够与 Kubernetes 群集通信的任何软件。 例如，可以选择 [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)、[helm](https://helm.sh/) 或 [draft](https://github.com/Azure/draft)。
+AKS 旨在通过使用当今客户中热门的开源工具和技术提供容器托管环境。 为此，我们公开标准 Kubernetes API 终结点。 通过使用这些标准终结点，可利用能够与 Kubernetes 群集通信的任何软件。 例如，可以选择 [kubectl][kubectl-overview]、[helm][helm] 或 [draft][draft]。
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 创建 Kubernetes 群集
-若要开始使用 AKS，可通过 [Azure CLI](./kubernetes-walkthrough.md) 或门户（在 Marketplace 中搜索“Azure 容器服务”）部署 AKS 群集。 如果你是需要对 Azure 资源管理器模板进行更多控制的高级用户，可以使用开源的 [acs-engine](https://github.com/Azure/acs-engine) 项目来生成自己的自定义 Kubernetes 群集，然后通过 `az` CLI 进行部署。
+若要开始使用 AKS，可通过 [Azure CLI][aks-quickstart] 或门户部署 AKS 群集（在 Marketplace 中搜索“Azure 容器服务”）。 如果你是需要对 Azure 资源管理器模板进行更多控制的高级用户，可以使用开源的 [acs-engine][acs-engine] 项目来生成自己的自定义 Kubernetes 群集，然后通过 `az` CLI 进行部署。
 
 ### <a name="using-kubernetes"></a>使用 Kubernetes
 Kubernetes 对容器化应用程序自动进行部署、扩展和管理。 它具有一组丰富的功能，包括：
@@ -67,4 +67,14 @@ Azure 容器服务 (AKS) - Azure Friday，2017 年 10 月：
 学习 AKS 快速入门，了解有关部署和管理 AKS 的详细信息。
 
 > [!div class="nextstepaction"]
-> [AKS 教程](./kubernetes-walkthrough.md)
+> [AKS 教程][aks-quickstart]
+
+<!-- LINKS - external -->
+[acs-engine]: https://github.com/Azure/acs-engine
+[draft]: https://github.com/Azure/draft
+[helm]: https://helm.sh/
+[kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
+
+<!-- LINKS - internal -->
+[aks-quickstart]: ./kubernetes-walkthrough.md
+

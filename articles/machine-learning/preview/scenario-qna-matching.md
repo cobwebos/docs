@@ -6,6 +6,7 @@ documentationcenter:
 author: mezmicrosoft
 editor: mezmicrosoft
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
-ms.manager: tihazen
-ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: tihazen
+ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 进行问答匹配
 回答开放式问题很难，通常需要行业专家 (SME) 提供人力帮助。 公司通常会创建常见问题解答 (FAQ) 的列表，作为一种协助用户的手段，同时也可以降低对内部 SME 的需求。 本示例介绍了各种有效的机器学习方法，将开放式查询与预先存在的常见问题解答的问答对进行匹配。 本示例演示了如何通过简单的开发过程，使用 Azure Machine Learning Workbench 生成此类解决方案。 
@@ -42,8 +43,8 @@ ms.lasthandoff: 10/11/2017
 
 运行此示例的先决条件如下所示：
 
-1. [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
-2. 按照[快速入门安装指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
+1. [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
+2. 遵循[安装快速入门指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 3. 本示例可以在任何计算上下文中运行。 但是，建议在内存至少为 16 GB 且磁盘空间至少为 5 GB 的多核计算机中运行本示例。
 
 ## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
@@ -79,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 这三个数据集的数据架构和直接下载链接见下表：
 
-| 数据集 | 字段 | 类型 | 说明
+| 数据集 | 字段 | Type | 说明
 | ----------|------------|------------|--------
 | [问题](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | String | 唯一的问题 ID（主键）
 |  | AnswerId | String | 每个问题的唯一解答 ID
@@ -99,7 +100,7 @@ ms.lasthandoff: 10/11/2017
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | 类型 | 说明
+| 文件名 | Type | 说明
 | ----------|------------|--------
 | `Image` | 文件夹 | 用于保存自述文件的图像的文件夹
 | `notebooks` | 文件夹 | Jupyter Notebooks 文件夹

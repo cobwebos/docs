@@ -4,7 +4,7 @@ description: "此页包含有关 Azure AD Connect 的常见问题。"
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 13f12f39fb72bd7d4e32056753a012c38034f807
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect 常见问题
 
@@ -35,6 +35,11 @@ ms.lasthandoff: 11/22/2017
 是的。 安装代理后，可以使用以下 PowerShell cmdlet 完成注册过程： 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
+
+**问：AADConnect 是否支持从两个域同步到一个 Azure AD？**</br>
+能，系统支持该操作。 请参阅[多个域](active-directory-aadconnect-multiple-domains.md)
+ 
+**问：是否支持在 Azure AD Connect 中同一个 Active Directory 域具有多个连接器？**</br> 否，不支持 
 
 ## <a name="network"></a>网络
 **问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的最长时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
@@ -78,8 +83,6 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：是否支持手动设置现有 Azure AD 组/联系人对象的 ImmutableId 属性，以将其硬匹配到本地 AD 组/联系人对象？**  
 不能，目前不支持。
 
-
-
 ## <a name="custom-configuration"></a>自定义配置
 **问：在哪里可以找到 Azure AD Connect 的 PowerShell cmdlet 介绍？**  
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
@@ -95,8 +98,6 @@ Azure AD Connect 不支持纯 IPv6 环境。
 
 **问：是否有方法来阻止并发会话？**</br>
 否。
-
-
 
 ## <a name="troubleshooting"></a>故障排除
 **问：如何获取有关 Azure AD Connect 的帮助？**

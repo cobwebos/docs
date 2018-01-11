@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: fd1a8cf442ea0688e027f8f8028ee8b4e149d8d2
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 9ec501d0a4e1c6165b83b5b590b87b0baa284423
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
+
 本主题介绍如何使用 [Azure 门户]配置 Web 应用。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
@@ -45,6 +46,8 @@ ms.lasthandoff: 10/17/2017
 
 <a name="platform"></a>
 **平台**。 选择是要在 32 位还是 64 位环境中运行 Web 应用。 64 位环境需要“基本”或“标准”模式。 “免费”和“共享”模式始终在 32 位环境下运行。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 **Web 套接字**。 设为“开”以启用 WebSocket 协议；例如，如果 Web 应用使用 [ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
 
@@ -120,7 +123,7 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 
 ![设置部署凭据][configure03]
 
-完整的 FTP 用户名是“app\username”，其中 *app* 是 Web 应用的名称。 用户名列在 Web 应用边栏选项卡的“软件包”下。  
+完整的 FTP 用户名是“app\username”，其中 *app* 是 Web 应用的名称。 用户名列在 Web 应用边栏选项卡的“软件包”下。
 
 ![FTP 部署凭据][configure02]
 

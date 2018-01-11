@@ -36,7 +36,7 @@
         mysql -u root -p
    
     输入在上一步中所更改的 MySQL 根密码，会显示一条可发出 SQL 语句以与数据库进行交互的位置提示。
-7. 若要创建新的 MySQL 用户，请在 **mysql>** 提示符处运行以下命令：
+7. 若要创建新的 MySQL 用户，请在 mysql> 提示符处运行以下命令：
    
         CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
@@ -57,18 +57,18 @@
         quit
 
 ## <a name="add-an-endpoint"></a>添加终结点
-1. 安装 MySQL 后，必须配置终结点，以便远程访问 MySQL。 登录到 [Azure 经典门户][AzurePortal]。 依次单击“虚拟机”、新虚拟机的名称和“终结点”。
+1. 安装 MySQL 后，必须配置终结点，以便远程访问 MySQL。 登录到 [Azure 门户][AzurePortal]。 依次单击“虚拟机”、新虚拟机的名称和“终结点”。
 2. 在页面底部单击“添加”。
 3. 添加名为“MySQL”的终结点，协议为“TCP”，并将“公用”和“专用”端口均设置为“3306”。
 4. 要从计算机远程连接到虚拟机，请键入：
    
         mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
    
-    例如，使用我们在本教程中创建的虚拟机时，键入以下命令：
+    例如，使用在本教程中创建的虚拟机时，键入以下命令：
    
         mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
 [MySQLDocs]: http://dev.mysql.com/doc/
-[AzurePortal]: http://manage.windowsazure.com
+[AzurePortal]: http://portal.azure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png

@@ -152,7 +152,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 
     管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要两个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://manage.windowsazure.com/)。 在左侧面板中找到“SQL 数据库![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png)”并单击它。 然后找到自己的数据库（例如 demo123456db）并单击它。 在下一页的“连接到数据库”部分下，单击“对 SQL 数据库运行 Transact-SQL 查询”。
 
-    随后，可以单击“新建查询”，并查询行数（例如，"select count(*) from DemandRealHourly"。随着数据库成长，表中的行数也应会增加）。
+    随后，可以单击“新建查询”，并查询行数（例如，"select count( * ) from DemandRealHourly"。随着数据库成长，表中的行数也应会增加）。
 3. 检查 Power BI 仪表板中的数据。
 
     可以设置 Power BI 的热路径仪表板，监视原始传入数据。 请遵循“Power BI 仪表板”部分中的说明。

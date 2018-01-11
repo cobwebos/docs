@@ -1,10 +1,10 @@
 ---
-title: "在 Azure 虚拟机规模集上部署应用 | Microsoft Docs"
-description: "了解如何使用 Azure Resource Manager 模板在虚拟机规模集上部署简单的自动缩放应用程序。"
+title: "使用 Azure 模板创建虚拟机规模集 | Microsoft Docs"
+description: "了解如何使用 Azure 资源管理器模板快速创建虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: rwike77
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,297 +13,211 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/24/2017
-ms.author: ryanwi
-ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/16/2017
+ms.author: iainfou
+ms.openlocfilehash: 614c7c82aabab212753529a21d7a770b7a02027e
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="deploy-an-autoscaling-app-using-a-template"></a>使用模板部署自动缩放应用
+# <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建虚拟机规模集
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在此入门文章中，可以使用 Azure 资源管理器模板创建虚拟机规模集。 也可使用 [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 或 [Azure 门户](virtual-machine-scale-sets-create-portal.md)创建规模集。
 
-[Azure Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本教程基于[部署简单规模集](virtual-machine-scale-sets-mvss-start.md)，介绍如何使用 Azure Resource Manager 模板在规模集上部署简单的自动缩放应用程序。  还可以使用 PowerShell、CLI 或门户设置自动缩放。 有关详细信息，请参阅[自动缩放概述](virtual-machine-scale-sets-autoscale-overview.md)。
 
-## <a name="two-quickstart-templates"></a>两个快速入门模板
-部署规模集时，可以使用 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md)在平台映像中安装新软件。 VM 扩展是小型应用程序，可在Azure 虚拟机上提供部署后配置和自动化任务，例如部署应用。 [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) 中提供两个不同的示例模板，介绍了如何使用 VM 扩展会自动缩放应用程序部署到规模集上。
+## <a name="overview-of-templates"></a>模板概述
+Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaScript 对象表示法 (JSON) 编写，可以为应用程序定义整个 Azure 基础结构环境。 在单个模板中，可以创建虚拟机规模集、安装应用程序，以及配置自动缩放规则。 在借助变量和参数的情况下，可以重复使用此模板来更新现有的规模集，或者创建更多的规模集。 可通过 Azure 门户、Azure CLI 2.0 或 Azure PowerShell 部署模板，并可从持续集成/持续交付 (CI/CD) 管道调用它们。
 
-### <a name="python-http-server-on-linux"></a>Linux 上的 Python HTTP 服务器
-[Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)示例模板部署一个在 Linux 规模集上运行的简单自动缩放应用程序。  使用自定义脚本 VM 扩展在规模集的每个 VM 上部署 Python Web 框架 [Bottle](http://bottlepy.org/docs/dev/) 和一个简单的 HTTP 服务器。 此规模集在所有 VM 的平均 CPU 使用率高于 60% 时增加，在平均 CPU 使用率低于 30% 时减少。
+有关模板的详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)
 
-除规模集资源外，azuredeploy.json 示例模板还声明虚拟网络、公共 IP 地址、负载均衡器和自动缩放设置资源。  有关在模板中创建这些资源的详细信息，请参阅[具有自动缩放功能的 Linux 规模集](virtual-machine-scale-sets-linux-autoscale.md)。
 
-在 azuredeploy.json 模板中，`Microsoft.Compute/virtualMachineScaleSets` 资源的 `extensionProfile` 属性指定自定义脚本扩展。 `fileUris` 指定脚本位置。 在这种情况下，存在两个文件：workserver.py，用于指定一个简单的 HTTP 服务器；installserver.sh，用于安装 Bottle 并启动 HTTP 服务器。 部署规模集后，`commandToExecute` 指定要运行的命令。
+## <a name="define-a-scale-set"></a>定义规模集
+模板用于定义每个资源类型的配置。 虚拟机规模集资源类型类似于单个 VM。 虚拟机规模集资源类型的核心部件包括：
+
+| 属性                     | 属性说明                                  | 示例模板值                    |
+|------------------------------|----------------------------------------------------------|-------------------------------------------|
+| type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
+| name                         | 规模集名称                                       | myScaleSet                                |
+| location                     | 要创建规模集的位置                     | 美国东部                                   |
+| sku.name                     | 每个规模集实例的 VM 大小                  | Standard_A1                               |
+| sku.capacity                 | 一开始需要创建的 VM 实例数           | #N/A                                         |
+| upgradePolicy.mode           | 更改发生时的 VM 实例升级模式              | 自动                                 |
+| imageReference               | 用于 VM 实例的平台或自定义映像 | Canonical Ubuntu Server 16.04-LTS         |
+| osProfile.computerNamePrefix | 每个 VM 实例的名称前缀                     | myvmss                                    |
+| osProfile.adminUsername      | 每个 VM 实例的用户名                        | azureuser                                 |
+| osProfile.adminPassword      | 每个 VM 实例的密码                        | P@ssw0rd!                                 |
+
+ 以下代码片段显示了模板中的核心规模集资源定义。 虚拟网络接口卡 (NIC) 配置未显示，这样是为了精简示例。 若要自定义规模集模板，可以更改 VM 大小或初始容量，也可以使用其他平台或自定义映像。
 
 ```json
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "lapextension",
-                "properties": {
-                  "publisher": "Microsoft.Azure.Extensions",
-                  "type": "CustomScript",
-                  "typeHandlerVersion": "2.0",
-                  "autoUpgradeMinorVersion": true,
-                  "settings": {
-                    "fileUris": [
-                      "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
-                      "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
-                    ],
-                    "commandToExecute": "bash installserver.sh"
-                  }
-                }
-              }
-            ]
-          }
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "name": "myScaleSet",
+  "location": "East US",
+  "apiVersion": "2016-04-30-preview",
+  "sku": {
+    "name": "Standard_A1",
+    "capacity": "2"
+  },
+  "properties": {
+    "upgradePolicy": {
+      "mode": "Automatic"
+    },
+    "virtualMachineProfile": {
+      "storageProfile": {
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage"
+        },
+        "imageReference":  {
+          "publisher": "Canonical",
+          "offer": "UbuntuServer",
+          "sku": "16.04-LTS",
+          "version": "latest"
+        }
+      },
+      "osProfile": {
+        "computerNamePrefix": "myvmss",
+        "adminUsername": "azureuser",
+        "adminPassword": "P@ssw0rd!"
+      }
+    }
+  }
+}
 ```
 
-### <a name="aspnet-mvc-application-on-windows"></a>Windows 上的 ASP.NET MVC 应用程序
-[Windows 上的 ASP.NET MVC 应用程序](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)示例模板部署一个在 Windows 规模集的 IIS 中运行的简单 ASP.NET MVC 应用。  使用 [PowerShell 所需状态配置 (DSC)](virtual-machine-scale-sets-dsc.md) VM 扩展部署 IIS 和 MVC 应用。  CPU 使用率高于 50% 持续 5 分钟时，（VM 上的）规模集增加。 
 
-除规模集资源外，azuredeploy.json 示例模板还声明虚拟网络、公共 IP 地址、负载均衡器和自动缩放设置资源。 此外，该模板还演示了应用程序升级。  有关在模板中创建这些资源的详细信息，请参阅[具有自动缩放功能的 Windows 规模集](virtual-machine-scale-sets-windows-autoscale.md)。
+## <a name="install-an-application"></a>安装应用程序
+部署规模集时，可以通过 VM 扩展来完成部署后配置和自动化任务，例如安装某个应用。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 若要对规模集应用某个扩展，请将 *extensionProfile* 节添加到前面的资源示例中。 扩展配置文件通常定义以下属性：
 
-在 azuredeploy.json 模板中，`Microsoft.Compute/virtualMachineScaleSets` 资源的 `extensionProfile` 属性指定[所需状态配置 (DSC)](virtual-machine-scale-sets-dsc.md) 扩展，此扩展从 WebDeploy 包安装 IIS 和默认 Web 应用。  IISInstall.ps1 脚本在虚拟机上安装 IIS，该脚本位于 DSC 文件夹中。  可在 WebDeploy 文件夹中找到 MVC Web 应用。  安装脚本和 Web 应用的路径定义在 azuredeploy.parameters.json 文件的 `powershelldscZip` 和 `webDeployPackage` 中。 
+- 扩展类型
+- 扩展发布者
+- 扩展版本
+- 配置或安装脚本的位置
+- 可在 VM 实例上执行的命令
+
+让我们看看通过扩展安装应用程序的两种方法 - 通过自定义扩展在 Linux 上安装 Python 应用，或者通过 PowerShell DSC 扩展在 Windows 上安装 ASP.NET 应用。
+
+### <a name="python-http-server-on-linux"></a>Linux 上的 Python HTTP 服务器
+[基于 Linux 的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)使用自定义脚本扩展来安装 [Bottle](http://bottlepy.org/docs/dev/)（Python Web 框架）和简单的 HTTP 服务器。 
+
+两个脚本在 *fileUris* - （*installserver.sh* 和 *workserver.py*）中定义。 从 GitHub 下载这些文件以后，*commandToExecute* 就可以定义 `bash installserver.sh` 来安装和配置应用：
 
 ```json
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "Microsoft.Powershell.DSC",
-                "properties": {
-                  "publisher": "Microsoft.Powershell",
-                  "type": "DSC",
-                  "typeHandlerVersion": "2.9",
-                  "autoUpgradeMinorVersion": true,
-                  "forceUpdateTag": "[parameters('powershelldscUpdateTagVersion')]",
-                  "settings": {
-                    "configuration": {
-                      "url": "[variables('powershelldscZipFullPath')]",
-                      "script": "IISInstall.ps1",
-                      "function": "InstallIIS"
-                    },
-                    "configurationArguments": {
-                      "nodeName": "localhost",
-                      "WebDeployPackagePath": "[variables('webDeployPackageFullPath')]"
-                    }
-                  }
-                }
-              }
-            ]
+"extensionProfile": {
+  "extensions": [
+    {
+      "name": "AppInstall",
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
+            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
+          ],
+          "commandToExecute": "bash installserver.sh"
+        }
+      }
+    }
+  ]
+}
+```
+
+### <a name="aspnet-application-on-windows"></a>基于 Windows 的 ASP.NET 应用程序
+[基于 Windows 的 ASP.NET 应用程序](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)示例模板使用 PowerShell DSC 扩展来安装在 IIS 中运行的 ASP.NET MVC 应用。 
+
+安装脚本从 url 中定义的 GitHub 下载。 扩展然后运行 *IISInstall.ps1* 脚本中的 *InstallIIS*（在 *function* 和 *Script* 中定义）。 ASP.NET 应用本身作为 Web 部署包提供，该包也从 *WebDeployPackagePath* 中定义的 GitHub 下载：
+
+```json
+"extensionProfile": {
+  "extensions": [
+    {
+      "name": "Microsoft.Powershell.DSC",
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.9",
+        "autoUpgradeMinorVersion": true,
+        "forceUpdateTag": "1.0",
+        "settings": {
+          "configuration": {
+            "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/DSC/IISInstall.ps1.zip",
+            "script": "IISInstall.ps1",
+            "function": "InstallIIS"
+          },
+          "configurationArguments": {
+            "nodeName": "localhost",
+            "WebDeployPackagePath": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/WebDeploy/DefaultASPWebApp.v1.0.zip"
           }
+        }
+      }
+    }
+  ]
+}
 ```
 
 ## <a name="deploy-the-template"></a>部署模板
-部署 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)模板最简单的方式是使用 GitHub 的自述文件中的“部署到 Azure”按钮。  也可使用 PowerShell 或 Azure CLI 部署示例模板。
+部署[基于 Linux 的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或[基于 Windows 的 ASP.NET MVC 应用程序](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)模板最简单的方式是使用 GitHub 的自述文件中的“部署到 Azure”按钮。  也可使用 PowerShell 或 Azure CLI 部署示例模板。
 
-### <a name="powershell"></a>PowerShell
-将 [Linux 上的 Python HTTP 服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)或 [Windows 上的 ASP.NET MVC 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)文件从 GitHub 存储库复制到本地计算机上的文件夹。  打开 azuredeploy.parameters.json 文件并更新 `vmssName`、`adminUsername` 和 `adminPassword` 参数的默认值。 将以下 PowerShell 脚本保存到 azuredeploy.json 模板所在文件夹中的 deploy.ps1。 若要部署示例模板，请从 PowerShell 命令窗口运行 deploy.ps1 脚本。
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+可以使用 Azure CLI 2.0 安装基于 Linux 的 Python HTTP 服务器，如下所示：
 
-```powershell
-param(
- [Parameter(Mandatory=$True)]
- [string]
- $subscriptionId,
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location EastUS
 
- [Parameter(Mandatory=$True)]
- [string]
- $resourceGroupName,
-
- [string]
- $resourceGroupLocation,
-
- [Parameter(Mandatory=$True)]
- [string]
- $deploymentName,
-
- [string]
- $templateFilePath = "template.json",
-
- [string]
- $parametersFilePath = "parameters.json"
-)
-
-<#
-.SYNOPSIS
-    Registers RPs
-#>
-Function RegisterRP {
-    Param(
-        [string]$ResourceProviderNamespace
-    )
-
-    Write-Host "Registering resource provider '$ResourceProviderNamespace'";
-    Register-AzureRmResourceProvider -ProviderNamespace $ResourceProviderNamespace;
-}
-
-#******************************************************************************
-# Script body
-# Execution begins here
-#******************************************************************************
-$ErrorActionPreference = "Stop"
-
-# sign in
-Write-Host "Logging in...";
-Login-AzureRmAccount;
-
-# select subscription
-Write-Host "Selecting subscription '$subscriptionId'";
-Select-AzureRmSubscription -SubscriptionID $subscriptionId;
-
-# Register RPs
-$resourceProviders = @("microsoft.compute","microsoft.insights","microsoft.network");
-if($resourceProviders.length) {
-    Write-Host "Registering resource providers"
-    foreach($resourceProvider in $resourceProviders) {
-        RegisterRP($resourceProvider);
-    }
-}
-
-#Create or check for existing resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
-if(!$resourceGroup)
-{
-    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
-    if(!$resourceGroupLocation) {
-        $resourceGroupLocation = Read-Host "resourceGroupLocation";
-    }
-    Write-Host "Creating resource group '$resourceGroupName' in location '$resourceGroupLocation'";
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
-}
-else{
-    Write-Host "Using existing resource group '$resourceGroupName'";
-}
-
-# Start the deployment
-Write-Host "Starting deployment...";
-if(Test-Path $parametersFilePath) {
-    New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
-} else {
-    New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath;
-}
+# Deploy template into resource group
+az group deployment create \
+    --resource-group myResourceGroup \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```
 
-### <a name="azure-cli"></a>Azure CLI
-```azurecli
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
+若要查看运行中的应用，请使用 [az network public-ip list](/cli/azure/network/public-ip#show) 命令获取负载均衡器的公共 IP 地址，如下所示：
 
-# -e: immediately exit if any command has a non-zero exit status
-# -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
-
-usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
-
-declare subscriptionId=""
-declare resourceGroupName=""
-declare deploymentName=""
-declare resourceGroupLocation=""
-
-# Initialize parameters specified from command line
-while getopts ":i:g:n:l:" arg; do
-    case "${arg}" in
-        i)
-            subscriptionId=${OPTARG}
-            ;;
-        g)
-            resourceGroupName=${OPTARG}
-            ;;
-        n)
-            deploymentName=${OPTARG}
-            ;;
-        l)
-            resourceGroupLocation=${OPTARG}
-            ;;
-        esac
-done
-shift $((OPTIND-1))
-
-#Prompt for parameters is some required parameters are missing
-if [[ -z "$subscriptionId" ]]; then
-    echo "Subscription Id:"
-    read subscriptionId
-    [[ "${subscriptionId:?}" ]]
-fi
-
-if [[ -z "$resourceGroupName" ]]; then
-    echo "ResourceGroupName:"
-    read resourceGroupName
-    [[ "${resourceGroupName:?}" ]]
-fi
-
-if [[ -z "$deploymentName" ]]; then
-    echo "DeploymentName:"
-    read deploymentName
-fi
-
-if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below to create a new resource group else skip this"
-    echo "ResourceGroupLocation:"
-    read resourceGroupLocation
-fi
-
-#templateFile Path - template file to be used
-templateFilePath="template.json"
-
-if [ ! -f "$templateFilePath" ]; then
-    echo "$templateFilePath not found"
-    exit 1
-fi
-
-#parameter file path
-parametersFilePath="parameters.json"
-
-if [ ! -f "$parametersFilePath" ]; then
-    echo "$parametersFilePath not found"
-    exit 1
-fi
-
-if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
-    echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
-    usage
-fi
-
-#login to azure using your credentials
-az account show 1> /dev/null
-
-if [ $? != 0 ];
-then
-    az login
-fi
-
-#set the default subscription id
-az account set --name $subscriptionId
-
-set +e
-
-#Check for existing RG
-az group show $resourceGroupName 1> /dev/null
-
-if [ $? != 0 ]; then
-    echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
-    set -e
-    (
-        set -x
-        az group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
-    )
-    else
-    echo "Using existing resource group..."
-fi
-
-#Start deployment
-echo "Starting deployment..."
-(
-    set -x
-    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath
-)
-
-if [ $?  == 0 ];
- then
-    echo "Template has been successfully deployed"
-fi
+```azurecli-interactive
+az network public-ip list \
+    --resource-group myResourceGroup \
+    --query [*].ipAddress -o tsv
 ```
+
+以 *http://<publicIpAddress>:9000/do_work* 格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+
+![NGINX 中的默认网页](media/virtual-machine-scale-sets-create-template/running-python-app.png)
+
+
+### <a name="azure-powershell"></a>Azure PowerShell
+可以使用 Azure PowerShell 安装基于 Windows 的 ASP.NET 应用程序，如下所示：
+
+```azurepowershell-interactive
+# Create a resource group
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+
+# Deploy template into resource group
+New-AzureRmResourceGroupDeployment `
+    -ResourceGroupName myResourceGroup `
+    -TemplateFile https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json
+```
+
+若要查看运行中的应用，请使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取负载均衡器的公共 IP 地址，如下所示：
+
+```azurepowershell-interactive
+Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+```
+
+以 *http://<publicIpAddress>/MyApp* 格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+
+![运行 IIS 网站](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
+
+
+## <a name="clean-up-resources"></a>清理资源
+如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除，如下所示：
+
+```azurecli-interactive 
+az group delete --name myResourceGroup
+```
+
 
 ## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

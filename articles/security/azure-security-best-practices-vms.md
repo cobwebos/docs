@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1af02c90c6a97bed612903de438b4d8c26be19b6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/08/2017
 
 属于该资源组的 VM 自然而然将继承该组的策略。 尽管我们建议使用此方法来管理 VM，但也可使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 来控制对单个 VM 策略的访问。
 
-启用 Resource Manager 策略和 RBAC 来控制 VM 访问有助于提高 VM 的整体安全性。 建议将具有相同生命周期的 VM 合并到同一个资源组中。 使用资源组可以部署和监视资源，并统计资源的计费成本。 若要让用户访问和设置 VM，可使用[最低特权方法](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)。 向用户分配特权时，请规划使用以下内置 Azure 角色：
+启用 Resource Manager 策略和 RBAC 来控制 VM 访问有助于提高 VM 的整体安全性。 建议将具有相同生命周期的 VM 合并到同一个资源组中。 使用资源组可以部署和监视资源，并统计资源的计费成本。 若要让用户访问和设置 VM，可使用[最低特权方法](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)。 向用户分配特权时，请规划使用以下内置 Azure 角色：
 
 - [虚拟机参与者](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)：可管理 VM，但无法管理虚拟机连接的虚拟网络或存储帐户。
 - [经典虚拟机参与者](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor)：可管理使用经典部署模型创建的 VM，但无法管理这些 VM 连接到的虚拟网络或存储帐户。
@@ -80,7 +80,7 @@ ms.lasthandoff: 12/08/2017
 
 可以根据组织的安全与符合性要求，运用磁盘加密来帮助保护数据。 组织应考虑使用加密来帮助降低与未经授权访问数据相关的风险。 此外，建议在将敏感数据写入驱动器之前先将驱动器加密。
 
-确保将 VM 数据卷加密，以保护 Azure 存储帐户中的静态数据。 使用 [Azure Key Vault](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/) 来保护加密密钥和机密。
+确保将 VM 数据卷加密，以保护 Azure 存储帐户中的静态数据。 使用 [Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-whatis/) 来保护加密密钥和机密。
 
 未实施数据加密的组织面临的数据完整性问题风险更大。 例如，未经授权的用户或恶意用户可能会窃取已入侵帐户中的数据，或者未经授权访问以明文格式编码的数据。 除了应对这些风险以外，为了遵守行业法规，公司还必须证明他们在不断作出相应努力并使用正确的安全控制机制来增强数据的安全性。
 
@@ -122,7 +122,7 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 如果 VM 进程消耗的资源多过实际所需的量，可能会造成资源滥用的问题。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 因此，不仅要在出现问题时被动监视 VM 的访问，而且还要在正常运行期间针对基准性能进行主动监视。
 
-通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
+通过分析 [Azure 诊断日志文件](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)，可以监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 Azure 诊断扩展在基于 Windows 的 VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
 
 还可以使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。
 

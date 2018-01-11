@@ -195,7 +195,7 @@
       href: web-service-error-codes.md
 - name: 相关内容
   items:
-    - name: Cortana Intelligence 库
+    - name: Azure AI 库
       items:
         - name: 概述
           href: gallery-how-to-use-contribute-publish.md

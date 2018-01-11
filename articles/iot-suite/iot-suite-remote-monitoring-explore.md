@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f4461b5c10ea4e4cce4c13cb590dd398c37cb7b6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>探索远程监控预配置解决方案的功能
 
@@ -101,11 +101,11 @@ Contoso 的操作员知道哪些阈值确定了设备是否正常工作。 例�
 
 1. 关闭“设备详细信息”。
 
-1. 若要导航到“维护”页，请单击警报网格中警报旁边的“浏览警报”列中的“...”。
+1. 若要导航到“维护”页，请在导航菜单上选择“维护”。
 
 在“维护”页上，可以查看触发冷却器压力警报的规则的详细信息。
 
-1. 可以查看警报的触发次数、警报确认，以及已打开和关闭的警报：
+1. 通知列表显示警报的触发次数、警报确认，以及已打开和关闭的警报：
 
     ![“维护”页显示已触发的警报列表](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
@@ -123,9 +123,9 @@ Contoso 的操作员知道哪些阈值确定了设备是否正常工作。 例�
 
     ![选择设备并计划操作](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
-1. 若要查看作业状态，请返回“维护”页，在“系统状态”视图中查看作业列表。 可以看到，该作业已运行，以释放冷却器的阀门压力：
+1. 若要查看作业状态，请返回“维护”页，并在“作业”视图中查看作业列表。 可以看到，该作业已运行，以释放冷却器的阀门压力：
 
-    ![“系统状态”中的作业状态](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
+    ![“作业”视图中的作业状态](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
 
 最后，确认来自冷却器的遥测值已恢复正常。
 
@@ -167,13 +167,13 @@ Contoso 正在现场测试某个新型设备。 在测试周期中，需确保�
 
 可以使用“维护”页来跟踪正在运行的作业。
 
-1. 若要查看作业列表，请导航到“维护”页，单击“系统状态”。
+1. 若要查看作业列表，请导航到“维护”页，单击“作业”。
 
 1. 找到与所创建的作业相关的事件。 验证固件更新过程是否已正常启动。
 
-可以创建一个筛选器来正确验证固件版本更新。
+可以创建一个筛选器来正确验证更新的固件版本。
 
-1. 若要创建筛选器，请导航到“设备”页并选择“管理”：
+1. 若要创建筛选器，请导航到“设备”页并选择“管理筛选器”：
 
     ![管理设备筛选器](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
@@ -202,7 +202,7 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
     ![选择原型制作和卡车设备](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
-1. 选择“标记”，创建名为 **FieldService**、包含值 **ConnectedVehicle** 的新字符串标记。 选择作业的名称。 然后单击“应用”：
+1. 选择“标记”，创建名为 **FieldService**、值为 **ConnectedVehicle** 的新文本标记。 选择作业的名称。 然后单击“应用”：
 
     ![将标记添加到原型制作和卡车设备](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
@@ -210,7 +210,7 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
     ![选择冷却器、引擎和升降机设备](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. 选择“标记”，创建名为 **FieldService**、包含值 **SmartBuilding** 的新标记。 选择作业的名称。 然后单击“保存”：
+1. 选择“标记”，创建名为 **FieldService**、值为 **SmartBuilding** 的新文本标记。 选择作业的名称。 然后单击“保存”：
 
     ![将标记添加到冷却器、引擎和升降机设备](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 

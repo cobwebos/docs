@@ -341,7 +341,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
 | **PostalCode**  |   postalCode  |     | 创建 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |
-| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
+| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
 | **姓氏**   |   sn   |     |  创建 + 更新 |
 | **CountryRegionReference** |  号     |     | 创建 + 更新 |
 | **AddressLineData**    |  streetAddress  |     |   创建 + 更新 |

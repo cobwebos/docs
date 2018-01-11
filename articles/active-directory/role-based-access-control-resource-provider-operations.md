@@ -4,7 +4,7 @@ description: "可对 Microsoft Azure 资源管理器资源提供程序使用的�
 services: active-directory
 documentationcenter: 
 author: jboeshart
-manager: 
+manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 27880402d377701448d095a1295ece875729cd67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
-本文档列出可对每个 Microsoft Azure 资源管理器资源提供程序使用的操作。 可在自定义角色中使用这些操作，针对 Azure 中的资源提供基于角色的访问控制 (RBAC) 的精细权限。 请注意，此列表并不详尽，随着每个提供程序的更新，可能会添加或删除操作。 操作字符串遵循格式 `Microsoft.<ProviderName>/<ChildResourceType>/<action>`。 如需最新的详尽列表，请使用 `Get-AzureRmProviderOperation`（在 PowerShell 中）或 `azure provider operations show`（在 Azure CLI 中）列出 Azure 资源提供程序的操作。
+本文档列出可对每个 Microsoft Azure 资源管理器资源提供程序使用的操作。 可在自定义角色中使用这些操作，针对 Azure 中的资源提供基于角色的访问控制 (RBAC) 的精细权限。 请注意，此列表并不详尽，随着每个提供程序的更新，可能会添加或删除操作。 操作字符串遵循格式 `Microsoft.<ProviderName>/<ChildResourceType>/<action>`。 
+
+> [!NOTE]
+> 如需最新的详尽列表，请使用 `Get-AzureRmProviderOperation`（在 PowerShell 中）或 `az provider operation list`（在 Azure CLI v2 中）列出 Azure 资源提供程序的操作。
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
@@ -2194,7 +2197,6 @@ ms.lasthandoff: 11/02/2017
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[创建自定义角色](role-based-access-control-custom-roles.md)。
-
 - 查看[内置的 RBAC 角色](role-based-access-built-in-roles.md)。
-
 - 了解如何[按用户](role-based-access-control-manage-assignments.md)或[按资源](role-based-access-control-configure.md)管理访问权限分配 
+- 了解如何[查看活动日志以审核对资源的操作](~/articles/azure-resource-manager/resource-group-audit.md)

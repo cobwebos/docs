@@ -22,6 +22,7 @@
 ## 部署
 ### [使用 Visual Studio 进行创建](virtual-machine-scale-sets-vs-create.md)
 ### [带有托管磁盘的规模集](virtual-machine-scale-sets-managed-disks.md)
+### [使用可用性区域](virtual-machine-scale-sets-use-availability-zones.md)
 ### [自动缩放规模集](virtual-machine-scale-sets-autoscale-overview.md)
 #### [使用 Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)
 #### [使用 Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)

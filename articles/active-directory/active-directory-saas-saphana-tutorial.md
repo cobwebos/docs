@@ -152,7 +152,7 @@ ms.lasthandoff: 12/11/2017
 
     ![添加标识提供者设置](./media/active-directory-saas-saphana-tutorial/sap2.png)
 
-    b. 如果 XML 文档的内容有效，则分析过程会提取“常规数据”屏幕区域中的“使用者、实体 ID 和颁发者”字段所需的信息。 此外，还会提取“目标”屏幕区域中的 URL 字段（例如，“基 URL 和单一登录 URL ()”字段）所需的信息。
+    b. 如果 XML 文档的内容有效，则分析过程会提取“常规数据”屏幕区域中的“使用者、实体 ID 和颁发者”字段所需的信息。 此外，还会提取“目标”屏幕区域中的 URL 字段（例如，“基 URL 和单一登录 URL ( * )”字段）所需的信息。
 
     ![添加标识提供者设置](./media/active-directory-saas-saphana-tutorial/sap3.png)
 

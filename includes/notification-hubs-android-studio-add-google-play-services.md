@@ -8,11 +8,15 @@
    
     ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
 4. 在 *dependencies*下面添加以下行： 
-   
-           compile 'com.google.android.gms:play-services-gcm:9.2.0'
+    
+    ```java
+        compile 'com.google.android.gms:play-services-gcm:9.2.0'
+    ```
 5. 在工具栏中，单击“将项目与 Gradle 文件同步”图标。
 6. 打开 **AndroidManifest.xml** 并将以下标记添加到 *application* 标记中。
    
-        <meta-data android:name="com.google.android.gms.version"
+    ```java
+    <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+    ```
 

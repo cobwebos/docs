@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 6e8fadd54a78d432ed802f4c4880c2f77bb28c37
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8552f6b2723fef2c61d49a34d2d60c2a6c209a32
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/20/2017
 
 
 ## <a name="prerequisites"></a>先决条件
-需要现有虚拟机规模集，才能创建自动缩放规则。 可以使用 [Azure 门户](virtual-machine-scale-sets-portal-create.md)、[Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli) 或 [Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell) 创建规模集。
+需要现有虚拟机规模集，才能创建自动缩放规则。 可以使用 [Azure 门户](virtual-machine-scale-sets-create-portal.md)、[Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 创建规模集。
 
 若要更轻松地创建自动缩放规则，请为规模集定义几个变量。 以下示例为 myResourceGroup 资源组和 eastus 区域内名为的 myScaleSet 的规模集定义变量。 使用 [az account show](/cli/azure/account#az_account_show) 获取订阅 ID。 如果帐户关联了多个订阅，则仅返回第一个订阅。 按照如下所示，调整名称和订阅 ID：
 
@@ -71,9 +71,9 @@ location_name="eastus"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 10 分钟      |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| *direction*       | 定义应用规则时，规模集应横向扩展还是横向缩减。                                             | 增加        |
+| *direction*       | 定义应用规则时，规模集应扩展还是缩减。                                             | 增加        |
 | *类型*            | 表明 VM 实例数应该增加一定的百分比。                                 | 百分比更改  |
-| *value*           | 应用规则时应增加或减少多少 VM 实例。                                            | 20              |
+| *值*           | 应用规则时应增加或减少多少 VM 实例。                                            | 20              |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |
 
 以下示例定义增加 VM 实例数的规则。 metricResourceUri 使用以前为订阅 ID、资源组名称和规模集名称定义的变量：

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 1846305e6834145046cf9903714c68e9a6fd4f7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>从 Web 应用程序使用 Azure 密钥保管库
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 * Web 应用程序。 我们将演示针对 Azure 中作为 Web 应用程序部署的 ASP.NET MVC 应用程序的步骤。
 
 >[!IMPORTANT]
->* 此示例依赖手动预配 AAD 标识的旧方法。 目前，预览版中有一项称为[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview)的新功能，它可以自动预配 AAD 标识。 如需了解更多详情，请参考 [github](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 上的以下示例。
+>* 此示例依赖手动预配 AAD 标识的旧方法。 目前，预览版中有一项称为[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview)的新功能，它可以自动预配 AAD 标识。 如需了解更多详情，请参考 [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 上的以下示例。
 
 > [!NOTE]
 >* 必须已完成 [Azure 密钥保管库入门](key-vault-get-started.md)中列出的适用于本教程的步骤，以便获取 Web 应用程序的密钥、客户端 ID 和客户端密钥的 URI。
@@ -107,7 +107,7 @@ public static async Task<string> GetToken(string authority, string resource, str
 ```
 
 > [!NOTE]
->* 目前情况下，若要进行身份验证，最容易的方法是使用托管服务标识 (MSI) 这一新功能。 有关更多详细信息，请参阅以下示例链接，了解[在 .NET 的应用程序中配合使用 Key Vault 和 MSI](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 以及相关的[搭配 MSI 使用应用服务和 Azure Functions 教程](https://docs.microsoft.com/en-us/azure/app-service/app-service-managed-service-identity)。 
+>* 目前情况下，若要进行身份验证，最容易的方法是使用托管服务标识 (MSI) 这一新功能。 有关更多详细信息，请参阅以下示例链接，了解[在 .NET 的应用程序中配合使用 Key Vault 和 MSI](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 以及相关的[搭配 MSI 使用应用服务和 Azure Functions 教程](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)。 
 >* 使用客户端 ID 和客户端机密是对 Azure AD 应用程序进行身份验证的另一种方法。 并且在 web 应用程序中使用它可以实现职责分离，并更好地控制密钥管理。 但它不依赖于将客户端机密放入配置设置中，对于某些人来说这可能就像将要保护的机密放入配置设置中一样具有风险。 有关如何使用客户端 ID 和证书（而非客户端 ID 和客户端机密）对 Azure AD 应用程序进行身份验证的讨论，请参阅下文。
 
 ## <a id="appstart"></a>在应用程序启动时检索机密
@@ -147,11 +147,11 @@ Utils.EncryptSecret = sec.Value;
 针对我们所需的用途，我们将生成一个测试证书。 下面是几个可在开发人员命令提示符下使用以创建证书的命令。 将目录更改为要在其中创建证书文件的位置。  此外，对于证书的开始和结束日期，使用当前日期加上 1 年。
 
 ```
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
+makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018 -r
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-记下 .pfx 的结束日期和密码（在此示例中为：07/31/2016 和 test123）。 稍后需要它们。
+记下 .pfx 的结束日期和密码（在此示例中为：07/31/2017 和 test123）。 稍后需要它们。
 
 有关创建测试证书的详细信息，请参阅[如何：创建自己的测试证书](https://msdn.microsoft.com/library/ff699202.aspx)
 

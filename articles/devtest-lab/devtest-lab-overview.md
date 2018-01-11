@@ -3,7 +3,7 @@ title: "关于 Azure 开发测试实验室 | Microsoft Docs"
 description: "了解开发测试实验室如何轻松地创建、管理和监视 Azure 虚拟机"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 1b9eed3b-c69a-4c49-a36e-f388efea6f39
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
-ms.author: tarcher
-ms.openlocfilehash: 62e2d214d6d685c7f27c8c45cae161eb25ed1cbd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 97afbb5de949587e0844a1f3467167ea9405652c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="about-azure-devtest-labs"></a>关于 Azure 开发测试实验室
 ## <a name="overview"></a>概述

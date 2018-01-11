@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 75ee9cc7c4b40e9a724c8ce98d770a18ae654096
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ca828dab7bdb47e41596be2717598cfe828953ca
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Azure 容器服务 Service (AKS) 中的 Kubernetes 仪表板
 
-可以使用 Azure CLI 启动 Kubernetes 仪表板。 本文档将指导你使用 Azure CLI 启动 Kubernetes 仪表板，它还指导你执行一些基本的仪表板操作。 有关 Kubernetes 仪表板的详细信息，请参阅 [Kubernetes Web UI 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)。
+可以使用 Azure CLI 启动 Kubernetes 仪表板。 本文档将指导你使用 Azure CLI 启动 Kubernetes 仪表板，它还指导你执行一些基本的仪表板操作。 有关 Kubernetes 仪表板的详细信息，请参阅 [Kubernetes Web UI 仪表板][kubernetes-dashboard]。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 kubectl 连接。 如果需要这些项，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)。
+本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 kubectl 连接。 如果需要这些项，请参阅 [AKS 快速入门][aks-quickstart]。
 
-还需安装并配置 Azure CLI 2.0.21 或更高版本。 若要查找版本，请运行 az --version。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+还需安装并配置 Azure CLI 2.0.21 或更高版本。 若要查找版本，请运行 az --version。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="start-kubernetes-dashboard"></a>启动 Kubernetes 仪表板
 
@@ -76,4 +76,11 @@ az aks browse --resource-group myResourceGroup --name myK8SCluster
 有关 Kubernetes 仪表板的详细信息，请参阅 Kubernetes 文档。
 
 > [!div class="nextstepaction"]
-> [Kubernetes Web UI 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+> [Kubernetes Web UI 仪表板][kubernetes-dashboard]
+
+<!-- LINKS - external -->
+[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+<!-- LINKS - internal -->
+[aks-quickstart]: ./kubernetes-walkthrough.md
+[install-azure-cli]: /cli/azure/install-azure-cli

@@ -3,7 +3,7 @@ title: "启用 Azure 开发测试实验室中自己的实验室中的已授权�
 description: "了解如何使用 Azure 门户在 Azure 开发测试实验室中启用已授权映像"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 221390d2-8d3b-4e1f-b454-43d33f8072b7
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: tarcher
-ms.openlocfilehash: a74eff05285602574e45703dbe5b6caf074adecd
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: v-craic
+ms.openlocfilehash: 3c969495454db2cd301fc985e512531ef0d4b103
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 
-1. 从实验室列表中，选择所需的实验室。  
+1. 从实验室列表，选择所需的实验室。  
 
 1. 在左侧面板的“设置”下，选择“配置和策略”。
 
@@ -83,4 +83,4 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将 VM 添加到实验室](./devtest-lab-add-vm-with-artifacts.md)
+- [将 VM 添加到实验室](devtest-lab-add-vm.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 1fbfbbc79a415af5e874c304412854849e134eb7
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>使用 Azure PowerShell 自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/20/2017
 
 
 ## <a name="prerequisites"></a>先决条件
-需要现有虚拟机规模集，才能创建自动缩放规则。 可使用 [Azure 门户](virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell) 或 [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli) 创建规模集。
+需要现有虚拟机规模集，才能创建自动缩放规则。 可使用 [Azure 门户](virtual-machine-scale-sets-create-portal.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 或 [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) 创建规模集。
 
 若要更轻松地创建自动缩放规则，请为规模集定义几个变量。 以下示例为 myResourceGroup 资源组和美国东部区域内名为 myScaleSet 的规模集定义变量。 使用 [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) 获取订阅 ID。 如果帐户关联了多个订阅，则仅返回第一个订阅。 按照如下所示，调整名称和订阅 ID：
 
@@ -55,12 +55,12 @@ $myLocation = "East US"
 | *-TimeWindow*           | 比较指标与阈值之前监视的时长。                                   | 10 分钟      |
 | *-Operator*             | 用于比较指标数据和阈值的运算符。                                                     | 大于   |
 | *-Threshold*            | 使自动缩放规则触发操作的值。                                                      | 70%            |
-| *-ScaleActionDirection* | 定义应用规则时，规模集应横向扩展还是横向缩减。                                             | 增加       |
+| *-ScaleActionDirection* | 定义应用规则时，规模集应扩展还是缩减。                                             | 增加       |
 | *–ScaleActionScaleType* | 表明 VM 实例数应该增加一定的百分比。                                 | 百分比更改 |
 | *-ScaleActionValue*     | 规则触发时，应更改 VM 实例的百分比。                                            | 20             |
 | *-ScaleActionCooldown*  | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟      |
 
-以下示例将创建名为 myRuleScaleOut 的对象，用于保存此横向扩展规则。 -MetricResourceId 使用以前为订阅 ID、资源组名称和规模集名称定义的变量：
+以下示例将创建名为 *myRuleScaleOut* 的对象，用于保存此扩展规则。 -MetricResourceId 使用以前为订阅 ID、资源组名称和规模集名称定义的变量：
 
 ```powershell
 $myRuleScaleOut = New-AzureRmAutoscaleRule `
@@ -81,7 +81,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-automatically-scale-in"></a>创建规则，以便自动横向缩减
 在夜间或周末，应用程序需求可能会降低。 如果这种负载降低在一段时间内持续稳定，可以配置自动缩放规则来减少规模集中的 VM 实例数。 这种横向缩减操作可以减少运行规模集所需的成本，因为只运行满足当前需求所需的实例数。
 
-平均 CPU 负载小于 30% 持续了 10 多分钟时，请使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 创建规则减少规模集中的 VM 实例数。 触发规则时，VM 实例数减少 20%。以下示例将创建名为 myRuleScaleDown 的对象，用于保存此横向扩展规则。 -MetricResourceId 使用以前为订阅 ID、资源组名称和规模集名称定义的变量：
+平均 CPU 负载小于 30% 持续了 10 多分钟时，请使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 创建规则减少规模集中的 VM 实例数。 触发规则时，VM 实例数减少 20%。以下示例将创建名为 *myRuleScaleDown* 的对象，用于保存此扩展规则。 -MetricResourceId 使用以前为订阅 ID、资源组名称和规模集名称定义的变量：
 
 ```powershell
 $myRuleScaleIn = New-AzureRmAutoscaleRule `

@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 7b8b9072d0e2fd054ca07873c0a9ce772dc2941e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1751d33b5f6f6a506654daedd15bbd75ae271483
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
 
 > [!IMPORTANT]
 > BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)。
 
+>[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="overview-of-the-steps"></a>步骤概述
 1. 通过在专用网络中为本地资源输入**主机名**或 **FQDN**，来创建混合连接。
@@ -48,26 +49,9 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="CreateHybridConnection"></a>创建混合连接
-可以在 Azure 门户中使用 Web 应用**或**使用 BizTalk 服务创建混合连接。 
+可以在 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)**中创建混合连接或**使用 [BizTalk 服务 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) 创建。 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
-
-**若要在 BizTalk 服务中创建混合连接**：
-
-1. 登录到 [Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
-2. 在左侧导航窗格中，选择“BizTalk 服务”，并选择 BizTalk 服务。 
-   
-    如果没有现有的 BizTalk 服务，则可以[创建 BizTalk 服务](biztalk-provision-services.md)。
-3. 选择“混合连接”选项卡：  
-   ![“混合连接”选项卡][HybridConnectionTab]
-4. 选择“创建混合连接”，或选择任务栏中的“添加”按钮。 输入以下内容：
-   
-   | 属性 | 说明 |
-   | --- | --- |
-   | Name |混合连接名称必须是唯一的，并且名称不能与 BizTalk 服务名称相同。 可以输入任何名称，但是尽量使其目的明确。 示例包括：<br/><br/>Payroll*SQLServer*<br/>SupplyList*SharepointServer*<br/>Customers*OracleServer* |
-   | 主机名 |输入完全限定的主机名或本地资源的 IPv4 地址。 示例包括：<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*yourCompany*.com<br/>10.100.10.10<br/><br/>如果使用的是 IPv4 地址，请注意客户端或应用程序代码可能不会解析 IP 地址。 请参阅本主题顶部的重要事项。 |
-   | 端口 |输入本地资源的端口号。 例如，如果使用的是 Web 应用，则输入端口 80 或端口 443。 如果使用的是 SQL Server，则输入端口 1433。 |
-5. 选择复选标记以完成设置。 
 
 #### <a name="additional"></a>其他
 * 可创建多个混合连接。 请参阅 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)，了解允许的连接数。 
@@ -78,16 +62,11 @@ ms.lasthandoff: 10/11/2017
 <!-- See [Access on-premises resources using hybrid connections in Azure App Service](../app-service-web/web-sites-hybrid-connection-get-started.md). -->
 
 ## <a name="InstallHCM"></a>本地安装混合连接管理器
-创建混合连接后，将混合连接管理器安装在本地资源上。 它可以从 Azure Web 应用或从 BizTalk 服务下载。 BizTalk 服务步骤： 
+创建混合连接后，将混合连接管理器安装在本地资源上。 它可以从 Azure Web 应用或从 BizTalk 服务下载。 
 
-1. 登录到 [Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
-2. 在左侧导航窗格中，选择“BizTalk 服务”，并选择 BizTalk 服务。 
-3. 选择“混合连接”选项卡：  
-   ![“混合连接”选项卡][HybridConnectionTab]
-4. 在任务栏中，选择“本地安装”：  
-   ![本地安装][HCOnPremSetup]
-5. 选择“安装和配置”以在本地系统上运行或下载混合连接管理器。 
-6. 选择复选标记以启动安装。 
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
+ 
+[Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)也是一个很好的资源。
 
 <!--
 You can also download the Hybrid Connection Manager MSI file and copy the file to your on-premises resource. Specific steps:
@@ -113,25 +92,16 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 * 通过在另一台服务器上安装混合连接管理器的另一实例，可以扩展混合连接。 配置本地侦听器以便将相同的地址用作第一个本地侦听器。 在此情况下，流量随机分布（轮循机制）在活动的本地侦听器之间。 
 
 ## <a name="ManageHybridConnection"></a>管理混合连接
-要管理混合连接，可以：
 
-* 使用 Azure 门户并转到 BizTalk 服务。 
-* 使用 [REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)。
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)] 
+
+[Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)也是一个很好的资源。
 
 #### <a name="copyregenerate-the-hybrid-connection-strings"></a>复制/重新生成混合连接字符串
-1. 登录到 [Azure 经典门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
-2. 在左侧导航窗格中，选择“BizTalk 服务”，并选择 BizTalk 服务。 
-3. 选择“混合连接”选项卡：  
-   ![“混合连接”选项卡][HybridConnectionTab]
-4. 选择混合连接。 在任务栏中，选择“管理连接”：  
-   ![管理选项][HCManageConnection]
-   
-    “管理选项”列出应用程序和本地连接字符串。 可以复制连接字符串或重新生成在连接字符串中使用的访问密钥。 
-   
-    **如果选择“重新生成**”，将更改在连接字符串内使用的共享访问密钥。 请执行以下操作：
-   
-   * 在 Azure 经典门户中，选择 Azure 应用程序中的“同步密钥”。
-   * 重新运行“本地安装”。 重新运行本地安装时，本地资源会自动配置为使用更新的主连接字符串。
+
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)] 
+
+[Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)也是一个很好的资源。
 
 #### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>使用组策略以控制混合连接所使用的本地资源
 1. 下载[混合连接管理器管理模板](http://www.microsoft.com/download/details.aspx?id=42963)。
@@ -149,7 +119,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 ## <a name="see-also"></a>另请参阅
 [用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)  
-[使用 Azure 经典门户创建 BizTalk 服务](biztalk-provision-services.md)  
+[创建 BizTalk 服务](biztalk-provision-services.md)  
 [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png

@@ -1,4 +1,4 @@
-## <a name="test-the-function"></a>测试函数
+## <a name="test"></a>测试函数
 
 在 Mac 或 Linux 计算机上使用 cURL 或者在 Windows 上使用 Bash 测试已部署的函数。 执行以下 cURL 命令（请将 `<app_name>` 占位符替换为 Function App 的名称）。 在 URL 的后面附加查询字符串 `&name=<yourname>`。
 
