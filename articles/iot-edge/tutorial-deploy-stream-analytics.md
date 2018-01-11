@@ -1,4 +1,4 @@
----
+﻿---
 title: "使用 Azure IoT Edge 部署 Azure 流分析 | Microsoft 文档"
 description: "将 Azure 流分析作为模块部署到 Edge 设备"
 services: iot-edge
