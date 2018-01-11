@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -77,9 +77,7 @@ Azure SQL 数据库采用以下内存中技术：
 
 内存中 OLTP 包括用于存储用户数据的内存优化表。 这些表必需在内存可容纳的范围内。 由于内存是直接在 SQL 数据库服务中管理的，因此我们提出了用户数据配额的概念。 这种概念称为*内存中 OLTP 存储*。
 
-每个受支持的独立数据库定价层和每个弹性池定价层都包括一定量的内存中 OLTP 存储。 在编写本文时，每 125 个数据库事务单位 (DTU) 或弹性数据库事务单位 (eDTU) 可使用 1 GB 存储。
-
-对于每个受支持的独立数据库和弹性池定价层可用的内存中 OLTP 存储，[SQL 数据库服务层](sql-database-service-tiers.md)一文提供了正式列表。
+每个受支持的独立数据库定价层和每个弹性池定价层都包括一定量的内存中 OLTP 存储。 在编写本文时，每 125 个数据库事务单位 (DTU) 或弹性数据库事务单位 (eDTU) 可使用 1 GB 存储。 有关详细信息，请参阅[资源限制](sql-database-resource-limits.md)。
 
 以下各项计入内存中 OLTP 存储上限：
 

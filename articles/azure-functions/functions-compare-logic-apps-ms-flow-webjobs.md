@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 03246846484878f7155449ad11b009aeffe8a576
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 3136bccb7724c95c4001e353d7feeecb045f1273
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
 本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
@@ -41,18 +41,18 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 * 它们具有相同的工作流设计器
 * [连接器](../connectors/apis-list.md)工作，便也可在另一个中工作
 
-借助流，任何办公室工作人员都可以执行简单的集成（例如，获取重要电子邮件的短信），而无需通过开发人员或 IT。 另一方面，逻辑应用可启用需要企业级 DevOps 和安全实践的高级或任务关键型集成（例如 B2B 进程）。 对于业务工作流，其典型特征就是复杂性会随时间增长而增加。 相应地，可以先从流开始，然后根据需要将其转换到逻辑应用。
+借助流，任何办公室工作人员都可以执行简单的集成（例如，对 SharePoint 文档库的审批过程），无需求助开发人员或 IT 部门。 另一方面，逻辑应用可启用需要企业级 DevOps 和安全实践的高级集成（例如 B2B 流程）。 对于业务工作流，其典型特征就是复杂性会随时间增长而增加。 相应地，可以先从流开始，然后根据需要将其转换到逻辑应用。
 
 下表有助于确定流或逻辑应用是否最适合给定的集成。
 
 |  | 流向 | 逻辑应用 |
 | --- | --- | --- |
-| 目标受众 |办公室工作人员、业务用户 |IT 专业人士、开发人员 |
-| 方案 |自助服务 |关键任务 |
+| 目标受众 |办公人员、企业用户、SharePoint 管理员 |Pro 集成人员和开发人员、IT 专业人员 |
+| 方案 |自助服务 |高级集成 |
 | 设计工具 |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
-| DevOps |临时，在生产中开发 |[Azure 资源管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源控件、测试、支持及自动化和可管理性 |
-| 管理员体验 |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
-| “安全” |标准做法：对敏感数据的[数据主权](https://wikipedia.org/wiki/Technological_Sovereignty)、[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
+| 应用程序生命周期管理 (ALM) |在非生产环境中进行设计和测试，并在准备就绪后推向生产。 |DevOps：[Azure 资源管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源代码管理、测试、支持、自动化和可管理性 |
+| 管理员体验 |管理流环境和数据丢失防护 (DLP) 策略，跟踪许可 [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |管理资源组、连接、访问管理和日志记录 [https://portal.azure.com](https://portal.azure.com) |
+| 安全 |Office 365 安全性和符合性审核日志、数据丢失防护 (DLP)、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
 
 <a name="function"></a>
 
@@ -106,7 +106,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 如前文所述，哪个服务最适合取决于具体情况。 
 
 * 对于简单的业务优化，请使用 Flow。
-* 如果集成方案相对流太过高级，或者需要 DevOps 功能和安全合规性，则使用逻辑应用。
+* 如果集成方案相对流太过高级，或者需要 DevOps 功能，则使用逻辑应用。
 * 如果集成方案中的某个步骤需要高度自定义的转换或专门的代码，请编写一个函数，并在逻辑应用中作为一个操作触发函数。
 
 可以在流中调用逻辑应用。 也可以在逻辑应用中调用函数，在函数中调用逻辑应用。 随着时间的推移，Flow、逻辑应用和 Functions 之间的集成将得到进一步改进。 可以在某服务中构建一些项，并将其用于其他服务。 因此，在这三项技术中所做的任何投资都是值得的。

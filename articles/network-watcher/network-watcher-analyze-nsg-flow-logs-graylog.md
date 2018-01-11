@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: eaee4e1ed213d0834d959d862feffd4bca57cd9f
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 8d82ffa84c3d75ec3acd102a2de2bdce3718a995
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志
 
@@ -152,8 +152,8 @@ Logstash 用于将 JSON 格式的流日志平展到流元组级别。 平展流�
 
 最后，output 节将每个 Logstash 事件转发到 Graylog 服务器。 若要满足特定需要，可根据需要修改 Logstash 配置文件。
 
-    > [!NOTE]
-    > The previous config file assumes that the Graylog server has been configured on the local host loopback IP address 127.0.0.1. If not, be sure to change the host parameter in the output section to the correct IP address.
+   > [!NOTE]
+   > 前面的配置文件假定已在本地主机环回 IP 地址 127.0.0.1 上配置 Graylog 服务器。 如果没有，请确保将输出部分中的主机参数更改为正确的 IP 地址。
 
 有关安装 Logstash 的其他说明，请参阅 Logstash [文档](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
 

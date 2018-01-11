@@ -5,20 +5,20 @@ services: active-directory
 keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: billmath
-ms.openlocfilehash: a7edfd1939ad45dd3309fe5eaee2afa36086e9eb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 98de47eab2636277acfd6393a7574ae18487bc6a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 12/06/2017
 完全支持以下方案：
 
 - 用户登录到所有基于 Web 浏览器的应用程序
-- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 365 客户端应用程序
-- 带有新式身份验证的 Office 2016 和 Office 2013
+- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：_带有_新式身份验证的 Office 2016 和 Office 2013
+- 用户登录到支持新式身份验证的 Skype for Business，包括联机和混合拓扑。 在[此处](https://technet.microsoft.com/library/mt803262.aspx)详细了解受支持的拓扑。
 - 适用于 Windows 10 设备的 Azure AD 域加入
 - Exchange ActiveSync 支持
 
@@ -40,14 +40,14 @@ ms.lasthandoff: 12/06/2017
 _不_支持以下方案：
 
 - 用户登录到旧版 Office 客户端应用程序：不带新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持。 此外，它还通过使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如 Azure 多重身份验证）来帮助保护你的用户帐户的安全。
-- 用户登录到 Skype for Business 客户端应用程序，包括 Skype for Business 2016。
+- 用户登录到_不带_新式身份验证的 Skype for Business 客户端应用程序。
 - 用户登录到 PowerShell 版本 1.0。 建议使用 PowerShell 版本 2.0。
-- Azure Active Directory 域服务。
 - 进行多重身份验证的应用密码。
 - 检测[凭据泄露](../active-directory-reporting-risk-events.md#leaked-credentials)的用户。
+- Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 
 >[!IMPORTANT]
->仅作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页上启用“密码哈希同步”。
+>_仅_作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页上启用“密码哈希同步”。
 
 >[!NOTE]
 此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从直通身份验证到 Active Directory 密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。

@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9dabf666c633b59c7d1f9478b0e9cfe9d313e129
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 
-使用我们的最新 cloud-api 版本，Chef 提供了与 Azure 的无缝集成，使得你能够通过单个命令设置和部署配置状态。
+使用最新 cloud api 版本，Chef 提供了与 Azure 的无缝集成，使得你能够通过单个命令预配和部署配置状态。
 
-在本文中，我将演示如何设置 Chef 环境来预配 Azure 虚拟机，并引导用户完成创建一个策略或“指南”并将此指南部署到 Azure 虚拟机的过程。
+在本文中，将设置 Chef 环境以预配 Azure 虚拟机，并引导用户完成创建一个策略或“指南”并将此指南部署到 Azure 虚拟机的过程。
 
 让我们开始吧！
 
 ## <a name="chef-basics"></a>Chef 基础知识
-在开始之前，建议复习一下 Chef 的基本概念。 <a href="http://www.chef.io/chef" target="_blank">此处</a>有大量资料，建议在尝试此演练之前快速阅读一下。 不过，在我们开始之前，我会扼要重述一下基础知识。
+在开始之前，请[复习一下 Chef 的基本概念](http://www.chef.io/chef)。 
 
 下图描绘了概要的 Chef 体系结构。
 
@@ -41,25 +41,24 @@ Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 
 Chef 有三个主要的体系结构组件：Chef 服务器、Chef 客户端（节点）和 Chef 工作站。
 
-Chef 服务器是我们的管理点，对于 Chef 服务器有两种选择：托管解决方案和内部部署解决方案。 我们将使用托管解决方案。
+Chef 服务器是管理点，对于 Chef 服务器有两种选择：托管解决方案和本地解决方案。 我们将使用托管解决方案。
 
 Chef 客户端（节点）是位于在管理的服务器上的代理。
 
-Chef 工作站是我们的管理工作站，我们会在其中创建策略并执行管理命令。 我们从 Chef 工作站运行 **knife** 命令来管理我们的基础结构。
+Chef 工作站是管理工作站，我们会在其中创建策略并执行管理命令。 我们会从 Chef 工作站运行 **knife** 命令以管理基础结构。
 
-我们还引入了“食谱”和“配方”的概念。 它们实际上是我们定义并应用于我们的服务器的策略。
+我们还引入了“食谱”和“配方”的概念。 它们实际上是我们定义并应用于服务器的策略。
 
 ## <a name="preparing-the-workstation"></a>准备工作站
-首先，让我们准备工作站。 我使用的是标准 Windows 工作站。 我们需要创建一个目录来存储我们的配置文件和食谱。
+首先，让我们准备工作站。 我使用的是标准 Windows 工作站。 我们需要创建一个目录来存储配置文件和指南。
 
 首先，创建一个名为 C:\chef 的目录。
 
 然后，创建另一个名为 c:\chef\cookbooks 的目录。
 
-现在，我们需要下载 Azure 设置文件，以便 Chef 可以与我们的 Azure 订阅进行通信。
+现在，我们需要下载 Azure 设置文件，以便 Chef 可以与 Azure 订阅进行通信。
 
-<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
-使用 PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) 命令下载发布设置。 
+使用 PowerShell Azure [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) 命令下载发布设置。 
 
 将发布设置文件保存到 C:\chef 中。
 
@@ -176,7 +175,7 @@ knife.rb 文件现在应类似于以下示例。
 在完成后，保存该文件。
 
 ## <a name="creating-a-template"></a>创建模板
-如上文提到的那样，我们需要生成一个模板文件，该文件将用作我们的 default.html 页面。
+如上文提到的那样，我们需要生成一个模板文件，该文件将用作 default.html 页面。
 
 运行以下命令来生成模板。
 
@@ -185,7 +184,7 @@ knife.rb 文件现在应类似于以下示例。
 现在导航到 C:\chef\cookbooks\webserver\templates\default\Default.htm.erb 文件。 通过添加一些简单的“Hello World”html 代码来编辑该文件，并保存该文件。
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上传到 Chef 服务器
-在此步骤中，我们将制作我们已在本地计算机上创建的食谱的副本并将其上传到 Chef 托管服务器。 上传完成后，指南会显示在“策略”选项卡下。
+在此步骤中，我们将制作我们已在本地计算机上创建的指南的副本并将其上传到 Chef 托管服务器。 上传完成后，指南会显示在“策略”选项卡下。
 
     knife cookbook upload webserver
 

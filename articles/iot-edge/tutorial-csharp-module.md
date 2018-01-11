@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b8afc266cd416f39a895285d05b8ff323fb46330
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: bf57fa11c63930c594c63043ab4b695f586d9e1b
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>开发 C# IoT Edge 模块，并将它部署到模拟设备 - 预览
 
@@ -219,7 +219,7 @@ ms.lasthandoff: 12/01/2017
         
    使用用户名、密码以及在创建时从 Azure 容器注册表复制的登录服务器。
 
-3. 将映像推送到 Docker 存储库。 选择“视图” > “命令面板”，搜索“Edge: 推送 IoT Edge 模块 Docker 映像”菜单命令。 在 VS Code 窗口顶部的弹出文本框中，输入映像名称。 使用步骤 1.d 中所用的映像名称。
+3. 将映像推送到 Docker 存储库。 选择“视图” > “命令面板”，搜索“Edge: 推送 IoT Edge 模块 Docker 映像”菜单命令。 在 VS Code 窗口顶部的弹出文本框中，输入映像名称。 使用步骤 4 中所用的同一映像名称。
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>将注册表凭据添加到 Edge 运行时
 在运行 Edge 设备的计算机上将注册表凭据添加到 Edge 运行时。 这些凭据为此运行时提供拉取容器的访问权限。 

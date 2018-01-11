@@ -8,26 +8,26 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: 18d082a1cd07e0b3572c93ea24b4e1edd92cad2a
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 339e600f18613e8cf4e5529c759ad33076d48654
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 
-结合使用 [Kubernetes 服务目录](https://github.com/kubernetes-incubator/service-catalog)和 Open Service Broker for Azure (OSBA) 时，开发人员可利用 Kubernetes 中的 Azure 托管服务。 本指南重点介绍如何使用 Kubernetes 部署 Kubernetes 服务目录、Open Service Broker for Azure (OSBA) 和使用 Azure 托管服务的应用程序。
+结合使用 [Kubernetes 服务目录][kubernetes-service-catalog]和 Open Service Broker for Azure (OSBA) 时，开发人员可利用 Kubernetes 中的 Azure 托管服务。 本指南重点介绍如何使用 Kubernetes 部署 Kubernetes 服务目录、Open Service Broker for Azure (OSBA) 和使用 Azure 托管服务的应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅
 
-* Azure CLI 2.0：可[在本地安装](/cli/azure/install-azure-cli)，或在 [Azure Cloud Shell](../cloud-shell/overview.md) 中使用。
+* Azure CLI 2.0：可[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
 
-* Helm CLI 2.7+：可[在本地安装](kubernetes-helm.md#install-helm-cli)，或在 [Azure Cloud Shell](../cloud-shell/overview.md) 中使用。
+* Helm CLI 2.7+：可[在本地安装][helm-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
 
 * 使用 Azure 订阅上的参与者角色创建服务主体的权限
 
-* 现有的 Azure 容器服务 (AKS) 群集。 如果需要 AKS 群集，请参照[创建 AKS 群集](kubernetes-walkthrough.md)操作，以便快速入门。
+* 现有的 Azure 容器服务 (AKS) 群集。 如果需要 AKS 群集，请参照[创建 AKS 群集][create-aks-cluster]操作，以便快速入门。
 
 ## <a name="install-service-catalog"></a>安装服务目录
 
@@ -68,7 +68,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>安装 Open Service Broker for Azure
 
-下一步是安装 [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure)，其中包括 Azure 托管服务目录。 可用 Azure 服务的示例包括：Azure Database for PostgreSQL、Azure Redis 缓存、Azure Database for MySQL，Azure Cosmos DB、Azure SQL 数据库等。
+下一步是安装 [Open Service Broker for Azure][open-service-broker-azure]，其中包括 Azure 托管服务目录。 可用 Azure 服务的示例包括：Azure Database for PostgreSQL、Azure Redis 缓存、Azure Database for MySQL，Azure Cosmos DB、Azure SQL 数据库等。
 
 首先添加 Open Service Broker for Azure Helm 存储库：
 
@@ -76,7 +76,7 @@ v1beta1.storage.k8s.io               10
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
-使用以下 Azure CLI 命令创建[服务主体](kubernetes-service-principal.md)：
+使用以下 Azure CLI 命令创建[服务主体][create-service-principal]：
 
 ```azurecli-interactive
 az ad sp create-for-rbac
@@ -124,7 +124,7 @@ helm install azure/open-service-broker-azure --name osba --namespace osba \
     --set azure.clientSecret=$AZURE_CLIENT_SECRET
 ```
 
-OSBA 部署完成后，请安装[服务目录 CLI](https://github.com/Azure/service-catalog-cli)，这是易于使用的命令行接口，可用于查询服务代理、服务类、服务计划等。
+OSBA 部署完成后，请安装[服务目录 CLI][service-catalog-cli]，这是易于使用的命令行接口，可用于查询服务代理、服务类、服务计划等。
 
 执行以下命令以安装服务目录 CLI 二进制：
 
@@ -184,4 +184,18 @@ kubectl get secrets -n wordpress -o yaml
 
 遵照此文章的说明，已将服务目录部署到 Azure 容器服务 (AKS) 群集。 并使用 Open Service Broker for Azure 部署了 WordPress 安装，后者使用 Azure 托管服务（在此例中为 Azure Database for MySQL）。
 
-请参阅 [Azure/helm-charts](https://github.com/Azure/helm-charts) 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解创建适用于 OSBA 的图表，请参阅[创建新图表](https://github.com/Azure/helm-charts#creating-a-new-chart)。
+请参阅 [Azure/helm-charts][helm-charts] 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解如何创建适用于 OSBA 的图表，请参阅[创建新图表][helm-create-new-chart]。
+
+<!-- LINKS - external -->
+[helm-charts]: https://github.com/Azure/helm-charts
+[helm-cli-install]: kubernetes-helm.md#install-helm-cli
+[helm-create-new-chart]: https://github.com/Azure/helm-charts#creating-a-new-chart
+[kubernetes-service-catalog]: https://github.com/kubernetes-incubator/service-catalog
+[open-service-broker-azure]: https://github.com/Azure/open-service-broker-azure
+[service-catalog-cli]: https://github.com/Azure/service-catalog-cli
+
+<!-- LINKS - internal -->
+[azure-cli-install]: /cli/azure/install-azure-cli
+[azure-cloud-shell]: ../cloud-shell/overview.md
+[create-aks-cluster]: ./kubernetes-walkthrough.md
+[create-service-principal]: ./kubernetes-service-principal.md

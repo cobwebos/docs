@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites-and-assumptions"></a>前提条件和假设
 * **Azure 订阅**：验证 Azure 订阅中可用的内核数。 如果创建的建议 VM 大小为 **A3**，则需要 **4** 个可用内核。 如果使用的 VM 大小为 **A2**，则需要 **2** 个可用内核。
   
-  * 要验证订阅的内核限制，请在 Azure 经典门户中，单击左侧窗格中的“设置”，并单击顶部菜单中的“使用情况”。
+  * 要验证订阅的核心限制，请在 Azure 门户中，单击左侧窗格中的“设置”，并单击顶部菜单中的“使用情况”。
   * 若要增加内核配额，请联系 [Azure 支持](https://azure.microsoft.com/support/options/)。 有关 VM 大小信息，请参阅 [Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * **Windows PowerShell 脚本**：本主题假定你具有有关 Windows PowerShell 的基础知识。 有关使用 Windows PowerShell 的详细信息，请参阅以下部分：
   
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
   * [Windows PowerShell 入门](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>步骤 1：设置 Azure 虚拟机
-1. 浏览到 Azure 经典门户。
+1. 浏览到 Azure 门户。
 2. 单击左侧窗格中的“虚拟机”。
    
     ![Microsoft Azure 虚拟机](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
@@ -117,7 +117,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 要信任本地 VM 上的证书的根 CA，请将该证书添加到**受信任的根证书颁发机构**。 以下是所需步骤的摘要。 有关如何信任 CA 的详细步骤，请参阅[安装服务器证书](https://technet.microsoft.com/library/cc740068)。
    
-   1. 从 Azure 经典门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
+   1. 从 Azure 门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
       
        ![连接到 Azure 虚拟机](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) 使用在创建 VM 时配置的用户 VM 名称、用户名和密码。 
       
@@ -153,7 +153,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>使用脚本来配置报表服务器和 HTTP
 若要使用 Windows PowerShell 脚本配置报表服务器，请完成以下步骤。 该配置包括 HTTP 而不是 HTTPS：
 
-1. 从 Azure 经典门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
+1. 从 Azure 门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
    
     ![连接到 Azure 虚拟机](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) 使用在创建 VM 时配置的用户 VM 名称、用户名和密码。 
    
@@ -287,7 +287,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="use-script-to-configure-the-report-server-and-https"></a>使用脚本来配置报表服务器和 HTTPS
 若要使用 Windows PowerShell 来配置报表服务器，请完成以下步骤。 该配置包括 HTTPS 而不是 HTTP。
 
-1. 从 Azure 经典门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
+1. 从 Azure 门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
    
     ![连接到 Azure 虚拟机](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) 使用在创建 VM 时配置的用户 VM 名称、用户名和密码。 
    
@@ -495,10 +495,10 @@ ms.lasthandoff: 10/11/2017
 ### <a name="use-configuration-manager-to-configure-the-report-server"></a>使用配置管理器配置报表服务器
 如果不想要运行 PowerShell 脚本来配置报表服务器，请按照本部分中的步骤使用 Reporting Services 本机模式配置管理器来配置报表服务器。
 
-1. 从 Azure 经典门户中，选择 VM 并单击“连接”。 使用在创建 VM 时配置的用户名和密码。
+1. 从 Azure 门户中，选择 VM 并单击“连接”。 使用在创建 VM 时配置的用户名和密码。
    
     ![连接到 Azure 虚拟机](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
-2. 运行 Windows 更新并将更新安装到 VM。 如果需要重新启动 VM，请重新启动 VM 并从 Azure 经典门户重新连接到该 VM。
+2. 运行 Windows 更新并将更新安装到 VM。 如果需要重新启动 VM，请重新启动 VM 并从 Azure 门户重新连接到该 VM。
 3. 从 VM 上的“开始”菜单，键入 **Reporting Services** 并打开“Reporting Services 配置管理器”。
 4. 保留“服务器名称”和“报表服务器实例”的默认值。 单击“连接”。
 5. 在左窗格中，单击“Web 服务 URL”。
@@ -593,7 +593,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>如果使用的不是 VM，将成本降到最低
 > [!NOTE]
-> 为了在不使用 Azure 虚拟机时尽可能减少费用，可从 Azure 经典门户关闭 VM。 如果使用 VM 内的 Windows 电源选项来关闭 VM，仍将为 VM 支付相同的金额。 若要减少费用，需要在 Azure 经典门户中关闭 VM。 如果不再需要该 VM，请记住删除 VM 和关联的 .vhd 文件以避免产生存储费用。有关详细信息，请参阅[虚拟机定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/)中的常见问题解答部分。
+> 为了在不使用 Azure 虚拟机时尽可能减少费用，可从 Azure 门户关闭 VM。 如果使用 VM 内的 Windows 电源选项来关闭 VM，仍将为 VM 支付相同的金额。 若要减少费用，需要在 Azure 门户中关闭 VM。 如果不再需要该 VM，请记住删除 VM 和关联的 .vhd 文件以避免产生存储费用。有关详细信息，请参阅[虚拟机定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/)中的常见问题解答部分。
 
 ## <a name="more-information"></a>更多信息
 ### <a name="resources"></a>资源

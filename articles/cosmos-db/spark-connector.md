@@ -13,17 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/08/2017
 ms.author: denlee
-ms.openlocfilehash: 122a2f8e506b3f567e73a816cbbeac569339c924
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: bcd29d0b21d7624f6de10fc27e3dfce2fb3406c6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>使用 Spark 到 Azure Cosmos DB 的连接器加速实时大数据分析
 
 Spark 到 Azure Cosmos DB 的连接器能使 Azure Cosmos DB 充当 Apache Spark 作业的输入源或输出接收器。 将 [Spark](http://spark.apache.org/) 连接到 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 后，可以使用 Azure Cosmos DB 快速保存和查询数据，更快地解决瞬息万变的数据科学问题。 Spark 到 Azure Cosmos DB 的连接器有效利用本机 Azure Cosmos DB 托管的索引。 利用这些索引，可在针对物联网 (IoT)、数据科学和分析方案等快速变化的全球分布式数据执行分析和下推谓词筛选时，启用可更新的列。
+
+在此视频中通过 Azure Cosmos DB 首席项目经理 Denny Lee 了解详细信息。 
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 有关如何使用 Spark GraphX 和 Azure Cosmos DB 的 Gremlin 图形 API 的信息，请参阅[使用 Spark 和 Apache TinkerPop Gremlin 执行图形分析](spark-connector-graph.md)。
 
@@ -52,13 +56,13 @@ Spark 到 Azure Cosmos DB 的连接器能使 Azure Cosmos DB 充当 Apache Spark
 |---------|-------|
 |Apache Spark|2.0+|
 | Scala| 2.11|
-| Azure DocumentDB Java SDK | 1.10.0 |
+| Azure Cosmos DB SQL Java SDK | 1.10.0 |
 
 本文将帮助你使用 Python（通过 pyDocumentDB）和 Scala 接口运行一些简单的示例。
 
 可使用两种方法连接 Apache Spark 和 Azure Cosmos DB：
-- 通过 [Azure DocumentDB Python SDK](https://github.com/Azure/azure-documentdb-python) 使用 pyDocumentDB。
-- 利用 [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java) 创建基于 Java 的 Spark 到 Azure Cosmos DB 的连接器。
+- 通过 [Azure Cosmos DB SQL Python SDK](https://github.com/Azure/azure-documentdb-python) 使用 pyDocumentDB。
+- 利用 [Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java) 创建基于 Java 的 Spark 到 Azure Cosmos DB 的连接器。
 
 ## <a name="pydocumentdb-implementation"></a>pyDocumentDB 实现
 使用最新的 [pyDocumentDB SDK](https://github.com/Azure/azure-documentdb-python) 可将 Spark 连接到 Azure Cosmos DB，如下图所示：
@@ -154,7 +158,7 @@ df = spark.createDataFrame(elements)
 
 ## <a name="spark-to-azure-cosmos-db-connector"></a>Spark 到 Azure Cosmos DB 的连接器
 
-Spark 到 Azure Cosmos DB 的连接器使用 [Azure DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java)，并在 Spark 工作节点与 Azure Cosmos DB 之间移动数据，如下图所示：
+Spark 到 Azure Cosmos DB 的连接器使用 [Azure Cosmos DB SQL Java SDK](https://github.com/Azure/azure-documentdb-java)，并在 Spark 工作节点与 Azure Cosmos DB 之间移动数据，如下图所示：
 
 ![Spark 到 Azure Cosmos DB 的连接器中的数据流](./media/spark-connector/spark-connector.png)
 
@@ -198,7 +202,7 @@ spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3.jar,/$
 }
 ```
 
-使用 **jars** 命令可以包含 **azure-cosmosdb-spark** 所需的两个 JAR（该 JAR 本身以及 Azure DocumentDB Java SDK）并排除 **scala-reflect**，使其不会干扰 Livy 调用（Jupyter 笔记本 > Livy > Spark）。
+使用 **jars** 命令可以包含 **azure-cosmosdb-spark** 所需的两个 JAR（该 JAR 本身以及 Azure Cosmos DB SQL Java SDK）并排除 **scala-reflect**，使其不会干扰 Livy 调用（Jupyter notebook > Livy > Spark）。
 
 ### <a name="connect-spark-to-azure-cosmos-db-using-the-connector"></a>使用连接器将 Spark 连接到 Azure Cosmos DB
 尽管通信传输有点复杂，但使用连接器执行从 Spark 到 Azure Cosmos DB 的查询要快得多。

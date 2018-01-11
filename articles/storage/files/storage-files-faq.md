@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 0bcf56e06c34af94746d42d8af18e32fcd9a7496
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f0337002bbaf554a6a775464edefc032e6c7bab2
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>有关 Azure 文件的常见问题解答
 [Azure 文件](storage-files-introduction.md)在云中提供可以通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)（也称为通用 Internet 文件系统，简称 CIFS）访问的完全托管文件共享。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步（预览版）在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -80,7 +80,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="azure-file-sync"></a>Azure 文件同步
 * <a id="afs-region-availability"></a>**Azure 文件同步（预览版）支持哪些地区？**  
-    Azure 文件同步目前适用于美国西部、西欧、澳大利亚东部和东南亚。 在我们努力全面推出的过程中，我们将增加对更多地区的支持。 有关详细信息，请参阅[地区可用性](storage-sync-files-planning.md#region-availability)。
+    Azure 文件同步目前适用于美国东部、美国西部、西欧、澳大利亚东部和东南亚。 在我们努力全面推出的过程中，我们将增加对更多地区的支持。 有关详细信息，请参阅[地区可用性](storage-sync-files-planning.md#region-availability)。
 
 * <a id="cross-domain-sync"></a>**是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
     是的。 同步组可以包含具有不同的 Active Directory 成员身份的服务器终结点，即使它们未加入域。 虽然从严格意义上讲这种配置可用，但不建议将此作为常规配置，因为在某个服务器上为文件和文件夹定义的访问控制列表 (ACL) 可能无法由同步组中的其他服务器实施。 为获得最佳结果，建议在同一个 Active Directory 林中的服务器之间、在不同 Active Directory 林中但已建立信任关系的服务器之间，或未加入域的服务器之间进行同步。 我们建议你避免混合使用这些配置。

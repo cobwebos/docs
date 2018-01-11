@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 3686057a267ef28d6a01ccc36775a399c64a0804
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: ab9e7b1b287be408f2d53ea005bad3815dc45f83
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/10/2017
 > * [版本 1 - GA](v1/data-factory-azure-documentdb-connector.md)
 > * [版本 2 - 预览版](connector-azure-cosmos-db.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB (CosmosDB API) 复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB (SQL API) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Cosmos DB 连接器](v1/data-factory-azure-documentdb-connector.md)。
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/10/2017
 
 具体而言，此 Azure Cosmos DB 连接器支持：
 
-- Cosmos DB [CosmosDB API](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-introduction)。
+- Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction)。
 - 按原样导入/导出 JSON 文档，或从/向表格数据集（例如 SQL 数据库、CSV 文件等）复制数据。
 
 要向/从 JSON 文件或另一 Cosmos DB 集合原样复制文档，请参阅[导入/导出 JSON 文档](#importexport-json-documents)。

@@ -3,7 +3,7 @@ title: "在 Azure 自动化 DSC 中编译配置 | Microsoft Docs"
 description: "本文介绍如何编译 Azure 自动化的 Desired State Configuration (DSC) 配置。"
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 ms.assetid: 49f20b31-4fa5-4712-b1c7-8f4409f1aecc
 ms.service: automation
@@ -12,16 +12,16 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
-ms.author: magoedte; eslesar
-ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.author: magoedte; gwallace
+ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
-使用 Azure 自动化时可通过两种方法编译 Desired State Configuration (DSC) ：使用 Azure 门户，或者使用 Windows PowerShell。 下表将帮助你根据每种方法的特征确定何时应使用哪种方法：
+使用 Azure 自动化时可通过两种方法编译 Desired State Configuration (DSC) ：使用 Azure 门户，或者使用 Windows PowerShell。 下表可帮助你根据每种方法的特征确定何时应使用哪种方法：
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -131,16 +131,16 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="composite-resources"></a>复合资源
 
-借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。  这样，便可将多个配置应用到单个资源。  有关**复合资源**的详细信息，请参阅[复合资源：将 DSC 配置用作资源](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite)
+借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。 这样，便可将多个配置应用到单个资源。  有关**复合资源**的详细信息，请参阅[复合资源：将 DSC 配置用作资源](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite)
 
 > [!NOTE]
 > 若要正确编译**复合资源**，首先必须确保复合资源所依赖的所有 DSC 资源已事先安装在 Azure 自动化帐户模块存储库中，否则复合资源不会正确导入。
 
-若要添加 DSC **复合资源**，必须将资源模块添加到存档 (*.zip)。 在 Azure 自动化帐户中转到“模块”存储库。  然后单击“添加模块”按钮。
+若要添加 DSC **复合资源**，必须将资源模块添加到存档 (*.zip)。 在 Azure 自动化帐户中转到“模块”存储库。 然后单击“添加模块”按钮。
 
 ![添加模块](./media/automation-dsc-compile/add_module.png)
 
-导航到存档所在的目录。  选择该存档文件，单击“确定”。
+导航到存档所在的目录。 选择该存档文件，单击“确定”。
 
 ![选择模块](./media/automation-dsc-compile/select_dscresource.png)
 
