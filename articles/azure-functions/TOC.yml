@@ -85,7 +85,7 @@
       href: functions-best-practices.md
     - name: Functions 代理
       href: functions-proxies.md
-    - name: Functions 运行时
+    - name: 本地函数
       href: functions-runtime-overview.md
     - name: Durable Functions
       items:
@@ -182,7 +182,7 @@
         - name: Blob 存储
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
-          href: functions-bindings-documentdb.md
+          href: functions-bindings-cosmosdb.md
         - name: 事件中心
           href: functions-bindings-event-hubs.md
         - name: 外部文件

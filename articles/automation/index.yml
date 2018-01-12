@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/13/2017
   ms.author: gwallace
-  ms.openlocfilehash: f6f3485929f2fd607e31cc7178c32f7cba7818c6
-  ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+  ms.openlocfilehash: b2b155480cd43ce8daa0b4916b244910f094a032
+  ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/22/2017
+  ms.lasthandoff: 01/11/2018
 abstract:
   description: "了解如何在混合环境中使用自动化来配置和自动完成操作任务。 教程、API 参考和其他文档介绍了如何实现过程自动化、执行更新管理、交付所需状态配置、跟踪更改和收集清单。"
 sections:
@@ -40,7 +40,7 @@ sections:
     - image:
         src: /azure/automation/media/index/dscconfig.svg
       text: "创建 DSC 配置"
-      href: /azure/automation/automation-quickstart-dsc-config
+      href: /azure/automation/automation-quickstart-dsc-configuration
 - title: "分步教程"
   items:
   - type: paragraph
@@ -53,27 +53,6 @@ sections:
     - html: "<a href=\"/azure/automation/automation-onboard-solutions\">大规模载入</a>"
     - html: "<a href=\"/azure/automation/automation-tutorial-installed-software\">标识 VM 上安装的软件</a>"
     - html: "<a href=\"/azure/automation/automation-tutorial-troubleshoot-changes\">排查 VM 上的更改问题</a>"
-- title: "免费 Pluralsight 视频培训"
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: "Azure 自动化入门"
-      href: https://app.pluralsight.com/library/courses/azure-automation-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-automation-getting-started/table-of-contents
-    - title: "通过 Azure 自动化 DSC 管理配置"
-      href: https://app.pluralsight.com/library/courses/azure-automation-dsc-managing-configurations/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-automation-dsc-managing-configurations/table-of-contents
-    - title: "详解弹性缩放以及如何与 Azure 自动化 DSC 保持一致"
-      href: https://app.pluralsight.com/library/courses/play-by-play-azure-automation-dsc-elastic-scale-consistency/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/play-by-play-azure-automation-dsc-elastic-scale-consistency/table-of-contents
 - title: "引用"
   items:
   - type: list

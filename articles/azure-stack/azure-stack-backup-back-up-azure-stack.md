@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: df1f4c6fadd08b17a1a1eb8bbe41ab71ae4729fc
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: daea97c0f5ee6ef855dc50c1ed6c7934aa85a1c4
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="back-up-azure-stack"></a>备份 Azure 堆栈
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/02/2018
 使用提升的提示符下，打开 Windows PowerShell 并运行以下命令：
 
    ```powershell
-   Start-AzSBackup -Location $location
+   Start-AzSBackup -Location $location.Name
    ```
 
 ## <a name="confirm-backup-completed-in-the-administration-portal"></a>确认在管理门户中完成的备份

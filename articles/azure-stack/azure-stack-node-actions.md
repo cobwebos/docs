@@ -12,19 +12,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 01/09/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4b94092f1284abfa2462ddef04b6e84136e54dde
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 55cc0eb3cc187d87e0d2ae96e2433cb9682ab370
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure 堆栈中的缩放单元节点操作
 
 *适用范围： Azure 堆栈集成系统*
 
 本文介绍如何查看缩放单位和其关联的节点的状态以及如何使用的可用节点操作。 节点的操作包括开机电源关闭、 排出、 继续和修复。 通常情况下，字段更换部件，或节点恢复方案的过程中使用这些节点的操作。
+
+> [!Important]  
+> 本文中所述的所有节点操作一次都应目标一个节点。
+
 
 ## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>查看缩放单位和及其节点的状态
 
@@ -75,13 +79,17 @@ ms.lasthandoff: 12/11/2017
 
 **关闭电源**操作将关闭节点。 它是相同的就像你按下电源按钮。 与其**不**向操作系统发送关闭信号。 对于计划关闭操作，请确保首先排出缩放单元节点。
 
-当节点处于挂起状态且不再响应请求，通常使用此操作。  
+当节点处于挂起状态且不再响应请求，通常使用此操作。
+
+> [!Important] 
+> 此功能仅可通过 PowerShell。 再次在更高版本时，它将是 Azure 堆栈管理员门户中提供。
+
 
 若要运行关闭通过 PowerShell 的操作：
 
-  ````PowerShell
+````PowerShell
   Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ```` 
+```` 
 
 在可能的情况下，关闭操作不起作用，请改用 BMC web 界面。
 
@@ -89,11 +97,14 @@ ms.lasthandoff: 12/11/2017
 
 **开启**操作会将在节点上。 它是相同的就像你按下电源按钮。 
 
+> [!Important] 
+> 此功能仅可通过 PowerShell。 再次在更高版本时，它将是 Azure 堆栈管理员门户中提供。
+
 对操作通过 PowerShell 运行幂：
 
-  ````PowerShell
+````PowerShell
   Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ````
+````
 
 在可能的情况下，在开启操作不起作用，请改用 BMC web 界面。
 

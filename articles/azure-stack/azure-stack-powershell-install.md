@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b44129400e878e9032623e4d0962153d50303660
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 25b89571277e393fbad7cdd6e193d9b3f02f3ee5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure 堆栈 PowerShell  
 
@@ -31,7 +31,7 @@ Azure 堆栈兼容 Azure PowerShell 模块需要使用 Azure 堆栈处理。 在
 > [!NOTE]
 > 以下步骤需要 PowerShell 5.0。 若要检查你的版本，请运行 $PSVersionTable.PSVersion 并将"主要"版本进行比较。
 
-通过 PowerShell 库安装 Azure 堆栈的 PowerShell 命令。 到 regiser PSGallery 存储库，打开提升的 PowerShell 会话从开发工具包或基于 Windows 的外部客户端如果你通过 VPN 连接，并运行以下命令：
+通过 PowerShell 库安装 Azure 堆栈的 PowerShell 命令。 若要注册 PSGallery 存储库，请从开发工具包或基于 Windows 的外部客户端通过打开提升的 PowerShell 会话如果你通过 VPN 连接，并运行以下命令：
 
 ```powershell
 Set-PSRepository `
@@ -49,7 +49,7 @@ Set-PSRepository `
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* 登录到开发工具包中，或基于 Windows 的外部客户端如果你打算建立 VPN 连接。 从删除以"Azure"开头的所有文件夹`C:\Program Files (x86)\WindowsPowerShell\Modules`和`C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules`文件夹。 删除这些文件夹中删除任何现有的 PowerShell 模块，通过"AzureStackAdmin"和"全局"用户作用域。 
+* 登录到开发工具包中，或基于 Windows 的外部客户端如果你打算建立 VPN 连接。 从删除以"Azure"开头的所有文件夹`C:\Program Files\WindowsPowerShell\Modules`和`C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules`文件夹。 删除这些文件夹中删除任何现有的 PowerShell 模块，通过"AzureStackAdmin"和"全局"用户作用域。 
 
 以下各节描述了安装适用于 Azure 堆栈 PowerShell 所需的步骤。 连接，部分连接，在中运行的 Azure 堆栈上或在断开连接的情况下，可以安装 PowerShell。 
 
@@ -126,7 +126,6 @@ Set-PSRepository `
      -SourceLocation $SourceLocation `
      -InstallationPolicy Trusted
 
-   ```powershell
    Install-Module AzureRM `
      -Repository $RepoName
 

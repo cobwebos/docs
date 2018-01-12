@@ -12,6 +12,8 @@
   items:
     - name: 创建托管应用程序文件
       href: publish-service-catalog-app.md
+    - name: 创建商城应用程序
+      href: publish-marketplace-app.md
 - name: 示例
   items:
     - name: Azure CLI

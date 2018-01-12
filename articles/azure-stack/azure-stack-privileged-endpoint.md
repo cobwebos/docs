@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 949715317de69064bb66fb470a805e367512bd6f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 80c3f248edb40b66e3177c512f3caf77295c6c5d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>在 Azure 堆栈中使用的特权的终结点
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-作为 Azure 堆栈操作员，应使用管理员门户中，PowerShell 或 Azure 资源管理器 Api，用于最日常管理任务。 但是，对于一些不太常见的操作，你需要使用*特权终结点*。 此终结点是预配置的远程 PowerShell 控制台，你提供刚好够用的功能，可帮助你执行所需的任务。 终结点利用 PowerShell JEA (Just Enough Administration) 来公开仅一组受限的 cmdlet。 若要访问特权终结点，并调用受限制的一组 cmdlet，请使用低特权帐户。 没有管理员帐户是必需的。 为了加强安全，不允许脚本。
+作为 Azure 堆栈操作员，应使用管理员门户中，PowerShell 或 Azure 资源管理器 Api，用于最日常管理任务。 但是，对于一些不太常见的操作，你需要使用*特权终结点*(PEP)。 此终结点是预配置的远程 PowerShell 控制台，你提供刚好够用的功能，可帮助你执行所需的任务。 终结点利用 PowerShell JEA (Just Enough Administration) 来公开仅一组受限的 cmdlet。 若要访问特权终结点，并调用受限制的一组 cmdlet，请使用低特权帐户。 没有管理员帐户是必需的。 为了加强安全，不允许脚本。
 
 特权的终结点可用于执行诸如下列任务：
 
@@ -98,6 +98,7 @@ ms.lasthandoff: 12/11/2017
     - 删除 CloudAdminUser
     - 选择对象
     - 集 CloudAdminUserPassword
+    - 测试 AzureStack
     - 停止 AzureStack
     - Get-clusterlog
 
