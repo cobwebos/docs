@@ -2,16 +2,16 @@
   href: /azure/storage/
 - name: 概述
   items:
-    - name: 介绍
+    - name: 简介
       href: storage-blobs-introduction.md
     - name: 选择 Blob、文件或数据磁盘
       href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: 快速入门
   items:
-    - name: 创建存储帐户 - PowerShell
-      href: ../common/storage-quickstart-create-storage-account-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: 创建存储帐户 - CLI
-      href: ../common/storage-quickstart-create-storage-account-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 创建存储帐户
+      href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: 使用 Blob - Azure 门户
+      href: storage-quickstart-blobs-portal.md
     - name: 使用 Blob - PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: 使用 Blob - CLI
@@ -70,6 +70,10 @@
       href: storage-samples-blobs-powershell.md
     - name: Azure CLI
       href: storage-samples-blobs-cli.md
+    - name: .NET
+      href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Java
+      href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: 概念
   items:
     - name: 规划和设计
@@ -94,16 +98,32 @@
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 高级存储
           items:
-            - name: 用于 VM 磁盘的高性能高级存储
-              href: ../common/storage-premium-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 使用 Azure Site Recovery 迁移到高级存储
-              href: ../common/storage-migrate-to-premium-storage-using-azure-site-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 高性能设计
-              href: ../common/storage-premium-storage-performance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Linux
+              items:
+                - name: 用于 VM 磁盘的高性能高级存储
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage'
+                - name: 使用 Azure Site Recovery 迁移到高级存储
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery'
+                - name: 高性能设计
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage-performance'
+            - name: Windows
+              items:
+                - name: 用于 VM 磁盘的高性能高级存储
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage'
+                - name: 使用 Azure Site Recovery 迁移到高级存储
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery'
+                - name: 高性能设计
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance'
         - name: 标准存储
           items:
-            - name: 高性价比标准存储以及非托管和托管 VM 磁盘
-              href: ../common/storage-standard-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Linux
+              items:
+                - name: VM 磁盘的标准存储
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/standard-storage'
+            - name: Windows
+              items:
+                - name: VM 磁盘的标准存储
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage'
     - name: 安全
       items:
         - name: 安全指南
@@ -146,6 +166,8 @@
       href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 开发
       items:
+        - name: REST
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: .NET
           href: storage-dotnet-how-to-use-blobs.md
         - name: Java
@@ -172,8 +194,6 @@
           href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 管理
       items:
-        - name: 将 PowerShell 用于 Azure Blob
-          href: storage-how-to-use-blobs-powershell.md
         - name: 将 PowerShell 用于 Azure 存储
           href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 将 PowerShell 用于中国云、政府云和德国云

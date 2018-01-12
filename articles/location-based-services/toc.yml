@@ -33,9 +33,9 @@
       href: how-to-search-for-address.md
 - name: 引用
   items:
-    - name: 功能 API - REST
+    - name: 功能 API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
-    - name: 管理 API - REST
+    - name: 管理 API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
     - name: 地图控件 API - Javascript
       href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'

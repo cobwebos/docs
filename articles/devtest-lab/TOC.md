@@ -16,6 +16,7 @@
 ### [创建 VM](devtest-lab-add-vm.md)
 ### [创建和管理可认领 VM](devtest-lab-add-claimable-vm.md)
 ### [使用 Azure CLI 创建和管理 VM](devtest-lab-vmcli.md)
+### [使用资源管理器模板创建 VM](devtest-lab-use-resource-manager-template.md)
 ### [重新启动 VM](devtest-lab-restart-vm.md)
 
 ## 在实验室中使用环境
@@ -46,7 +47,6 @@
 
 ## 管理可重用模板
 ### [添加 Git 存储库以存储项目和模板](devtest-lab-add-artifact-repo.md)
-### [使用 Resource Manager 模板](devtest-lab-use-resource-manager-template.md)
 ### [管理公式](devtest-lab-manage-formulas.md)
 
 ## 管理项目
@@ -70,7 +70,7 @@
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [自动创建或修改实验室](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST API](https://docs.microsoft.com/rest/api/dtl/)
-## [Resource Manager 模板](https://github.com/Azure/azure-devtestlab/tree/master/Samples)
+## [资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/Samples)
 
 
 # 相关内容
