@@ -217,7 +217,7 @@
 #### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 #### [管理适用于企业应用的单一登录](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [从用户的体验中隐藏第三方应用](active-directory-coreapps-hide-third-party-app.md)
+#### [从用户体验中隐藏应用程序](active-directory-coreapps-hide-third-party-app.md)
 ### [使用 HRD 策略配置登录自动加速](active-directory-auto-acceleration-using-hrd.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
@@ -283,6 +283,7 @@
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
 #### [控制](active-directory-conditional-access-controls.md)
+#### [位置条件](active-directory-conditional-access-locations.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)

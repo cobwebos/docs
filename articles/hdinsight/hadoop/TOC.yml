@@ -86,10 +86,16 @@
           href: submit-apache-hadoop-jobs-programmatically.md
     - name: 开发
       items:
+        - name: 运行自定义 MapReduce 程序
+          href: apache-hadoop-run-custom-programs.md
         - name: '开发 C# 流式处理 MapReduce 程序'
           href: apache-hadoop-dotnet-csharp-mapreduce-streaming.md
         - name: 开发 Java MapReduce 程序
           href: apache-hadoop-develop-deploy-java-mapreduce-linux.md
+        - name: 使用 Apache Hive 作为提取、转换和加载 (ETL) 工具
+          href: apache-hadoop-using-apache-hive-as-an-etl-tool.md
+        - name: 大规模提取、转换和加载
+          href: apache-hadoop-etl-at-scale.md
         - name: 使用空边缘节点
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
@@ -145,6 +151,8 @@
         - name: 分析 Application Insights 遥测日志
           href: ../spark/apache-spark-analyze-application-insight-logs.md
           maintainContext: true
+        - name: 适用于 HDInsight 的高级分析
+          href: apache-hadoop-deep-dive-advanced-analytics.md
     - name: 扩展群集
       items:
         - name: 使用 Bootstrap 自定义群集
@@ -378,6 +386,8 @@
         - name: 监视群集性能
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
+        - name: 分析 Hadoop 日志
+          href: apache-hadoop-debug-jobs.md
 - name: 引用
   items:
     - name: 代码示例
