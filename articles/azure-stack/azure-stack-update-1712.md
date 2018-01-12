@@ -3,7 +3,7 @@ title: "Azure 堆栈 1712年更新 |Microsoft 文档"
 description: "了解什么是 Azure 堆栈 1712年更新中集成的系统、 已知的问题和下载更新的位置。"
 services: azure-stack
 documentationcenter: 
-author: andredm7
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: b14f79ad-025f-45d8-9e1d-e53d2b420bb1
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2018
-ms.author: andredm
-ms.openlocfilehash: 344fe7496a9129ea1653881a72139fea8a202ff0
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.date: 01/11/2018
+ms.author: brenduns
+ms.openlocfilehash: 0456a202990d383370051d99112f829533b1b101
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure 堆栈 1712年更新
 
@@ -58,7 +58,7 @@ Azure 堆栈 1712年更新生成号是**180106.1**。 如果客户已部署**180
 - 测试 AzureStack cmdlet 来验证 Azure 堆栈云可通过特权终结点
 - 注册 Azure 堆栈的断开连接的部署能力
 - 证书和用户帐户到期的监视警报
-- 添加在 PEP BMC 密码循环的更新 BMCCredential cmdlet
+- 添加的 PEP 中的 BMC 密码轮换的集 BmcPassword cmdlet
 - 网络日志记录更新，以支持按需日志记录
 - 支持重置映像操作的虚拟机规模集 (VMSS)
 - 启用 ERCS VM 上 CloudAdmin 登录名的展台模式

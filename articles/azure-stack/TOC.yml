@@ -154,6 +154,8 @@
               href: Azure-stack-create-service-principals.md
             - name: 启用多租户
               href: azure-stack-enable-multitenancy.md
+        - name: 旋转机密
+          href: azure-stack-rotate-secrets.md
     - name: 提供服务
       items:
         - name: 提供服务概述
@@ -248,6 +250,8 @@
           href: azure-stack-troubleshooting.md
         - name: Azure Stack 中的诊断
           href: azure-stack-diagnostics.md
+        - name: 验证 Azure 堆栈
+          href: azure-stack-diagnostic-test.md
         - name: 重新部署 Azure Stack 开发工具包
           href: azure-stack-redeploy.md
 - name: 参考

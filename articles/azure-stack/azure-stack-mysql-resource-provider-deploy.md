@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/10/2018
 ms.author: JeffGo
-ms.openlocfilehash: 065d4cbc9a324f00a0985c4ebed3d4dffc79d91a
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: d0394fd1edf21cdbb863a88a1d3ecef118a7d886
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/05/2018
 
 你可以部署 Azure 堆栈上的 MySQL 资源提供程序。 在部署资源提供程序后，你可以创建 MySQL 服务器和数据库通过 Azure 资源管理器部署模板和作为服务提供 MySQL 数据库。 MySQL 数据库，共有网站，支持多个网站平台。 例如，部署资源提供程序之后, 你可以创建 WordPress 网站从 Azure Web Apps 平台作为服务 (PaaS) 外接程序用于 Azure 堆栈。
 
-若要部署不能访问 internet 的系统上的 MySQL 提供程序，你可以将文件复制[mysql 连接器 net 6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi)到本地共享。 然后，提供出现提示时该共享名称。 你还必须安装的 Azure 和 Azure 堆栈 PowerShell 模块。
+若要部署不能访问 internet 的系统上的 MySQL 提供程序，你可以将文件复制[mysql 连接器 net 6.10.5.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.10.5.msi)到本地共享。 然后，提供出现提示时该共享名称。 你还必须安装的 Azure 和 Azure 堆栈 PowerShell 模块。
 
 
 ## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL Server 资源提供程序适配器体系结构
@@ -71,10 +71,9 @@ ms.lasthandoff: 01/05/2018
 
     | Azure 堆栈生成 | MySQL RP 安装程序 |
     | --- | --- |
-    | 1.0.180102.3 | **详细信息，请稍候，当前版本将不会安装，但将继续以 Azure 堆栈升级后在多节点上运行。** |
-    | 1.0.171122.1 | [MySQL RP 版本 1.1.12.0](https://aka.ms/azurestackmysqlrp) |
+    | 1.0.180102.3 或 1.0.180106.1 （多节点） | [MySQL RP 版本 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
+    | 1.0.171122.1 | [MySQL RP 版本 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
     | 1.0.171028.1 | [MySQL RP 版本 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
-    | 1.0.170928.3 | [MySQL RP 版本 1.1.3.0](https://aka.ms/azurestackmysqlrp1709) |
 
 4.  从特权终结点中检索 Azure 堆栈根证书。 为 ASDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
 
@@ -165,7 +164,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **AzCredential** | 提供 Azure 堆栈服务管理员帐户的凭据。 使用相同的凭据用于部署 Azure 堆栈）。 | （必需） |
 | **VMLocalCredential** | 定义 MySQL 资源提供程序 VM 的本地管理员帐户的凭据。 | （必需） |
 | **PrivilegedEndpoint** | 提供的 IP 地址或特权终结点的 DNS 名称。 |  （必需） |
-| **DependencyFilesLocalPath** | 本地共享包含路径[mysql 连接器 net 6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi)。 如果你提供一个，证书文件必须放置在此目录中。 | _可选_(_必需_多节点) |
+| **DependencyFilesLocalPath** | 本地共享包含路径[mysql 连接器 net 6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi)。 如果你提供一个，证书文件必须放置在此目录中。 | _可选_(_必需_多节点) |
 | **DefaultSSLCertificatePassword** | .Pfx 证书的密码 | （必需） |
 | **MaxRetryCount** | 定义你想要重试每个操作，如果有多少次失败。| 2 |
 | **RetryDuration** | 定义重试，以秒为单位之间的超时值。 | 120 |

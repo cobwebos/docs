@@ -1,6 +1,6 @@
 ---
 title: "使用 PowerShell 的 Azure 堆栈启用备份 |Microsoft 文档"
-description: "启用基础结构返回服务使用 Windows PowerShell，以便可以还原 Azure 堆栈，如果故障。"
+description: "启用使用 Windows PowerShell 基础结构备份服务，以便可以还原 Azure 堆栈，如果故障。"
 services: azure-stack
 documentationcenter: 
 author: mattbriggs
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: b4f48b7fd07c5fb590b6989e04e9084c86142d2a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 5326aa5af174c9027729b98eac62a314e3ecc122
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>使用 PowerShell 的 Azure 堆栈启用备份
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-启用基础结构返回服务使用 Windows PowerShell，以便可以还原 Azure 堆栈，如果故障。 你可以访问 PowerShell cmdlet 来启用备份，开始备份，并获取通过运算符管理终结点的备份信息。
+启用使用 Windows PowerShell 基础结构备份服务，以便可以还原 Azure 堆栈，如果故障。 你可以访问 PowerShell cmdlet 来启用备份，开始备份，并获取通过运算符管理终结点的备份信息。
 
 ## <a name="download-azure-stack-tools"></a>下载 Azure 堆栈工具
 
@@ -90,6 +90,9 @@ ms.lasthandoff: 01/06/2018
    $encryptionkey = New-EncryptionKeyBase64
    ```
 
+> [!Warning]  
+> 必须使用 AzureStack 工具生成密钥。
+
 ## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>提供的备份的共享、 凭据和加密密钥，若要启用备份
 
 在相同的 PowerShell 会话中，通过添加你的环境的变量中编辑以下 PowerShell 脚本。 运行更新的脚本，以提供到基础结构备份服务备份的共享、 凭据和加密密钥。
@@ -98,18 +101,18 @@ ms.lasthandoff: 01/06/2018
 |---              |---                                        |
 | $username       | 类型**用户名**为共享的驱动器位置中使用的域和用户名。 例如，`Contoso\administrator`。 |
 | $password       | 类型**密码**用户。 |
-| $sharepath      | 键入的路径**备份存储位置**。 必须为文件共享托管在一个单独的设备的路径使用通用命名约定 (UNC) 字符串。 UNC 字符串指定的资源，如共享的文件或设备的位置。 若要确保备份数据的可用性，设备应在单独的位置。 |
+| $sharepath      | 键入的路径**备份存储位置**。 必须为一个单独的设备上托管的文件共享的路径使用通用命名约定 (UNC) 字符串。 UNC 字符串指定的资源，如共享的文件或设备的位置。 若要确保备份数据的可用性，设备应在单独的位置。 |
 
    ```powershell
-   $username = "domain\backupoadmin"
+    $username = "domain\backupoadmin"
     $password = "password"
     $credential = New-Object System.Management.Automation.PSCredential($username, ($password| ConvertTo-SecureString -asPlainText -Force))  
     $location = Get-AzsLocation
     $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
-
-Set-AzSBackupShare -Location $location -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey 
-
+    
+    Set-AzSBackupShare -Location $location.Name -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey
    ```
+   
 ##  <a name="confirm-backup-settings"></a>确认备份设置
 
 在相同的 PowerShell 会话中，运行以下命令：

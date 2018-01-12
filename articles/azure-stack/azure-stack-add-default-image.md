@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: ed62f2f8441220eb37aea7f4c848702e9821698b
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f88ac4da58279ea9642bd93ac5f971d8047e310b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>将 Windows Server 2016 VM 映像添加到 Azure 堆栈应用商店
 
@@ -34,11 +34,11 @@ ms.lasthandoff: 12/11/2017
 
 2. 选择**更多的服务** > **应用商店管理** > **从 Azure 中的添加**。 
 
-3. 查找或搜索**Windows Server 2016 数据中心 – Eval**映像，，然后选择**下载**。
+3. 查找或搜索**Windows Server 2016 Datacenter**映像，，然后选择**下载**。
 
    ![从 Azure 下载图像](media/azure-stack-add-default-image/download-image.png)
 
-下载完成后，该映像位于下**应用商店管理**。 映像也是可用在**虚拟机**。
+下载完成后，该映像位于下**应用商店管理**。 映像也是可用在**计算**并且可用于创建新虚拟机。
 
 ## <a name="add-the-image-by-using-powershell"></a>使用 PowerShell 添加映像
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 12/11/2017
       -GraphAudience $GraphAudience `
       -EnableAdfsAuthentication:$true
 
-   $TenantID = Get-AzsDirectoryTenantId `
+    $TenantID = Get-AzsDirectoryTenantId `
      -ADFS `
      -EnvironmentName "AzureStackAdmin" 
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="parameters"></a>parameters
 
-|新 AzsServer2016VMImage 参数|必需？|说明|
+|新 AzsServer2016VMImage 参数|需要|说明|
 |-----|-----|------|
 |ISOPath|是|下载 Windows Server 2016 ISO 完全限定的路径。|
 |net35|否|在 Windows Server 2016 映像上安装.NET 3.5 运行时。 默认情况下，此值设置为**true**。|
@@ -145,7 +145,7 @@ ms.lasthandoff: 12/11/2017
 |VHDSizeInMB|否|设置要添加到你的 Azure 堆栈环境的 VHD 映像的大小 （以 mb 为单位）。 默认情况下，此值设置为 40,960 MB。|
 |CreateGalleryItem|否|指定是否应为 Windows Server 2016 映像创建的应用商店项。 默认情况下，此值设置为**true**。|
 |location |否 |指定的 Windows Server 2016 映像应将其发布到的位置。|
-|IncludeLatestCU|否|适用于新的 VHD 的最新的 Windows Server 2016 累积更新。|
+|IncludeLatestCU|否|适用于新的 VHD 的最新的 Windows Server 2016 累积更新 （请检查脚本以确保它指向最新的更新或使用下面的两个选项之一）。 |
 |CUUri |否 |设置 Windows Server 2016 累积更新为特定 URI 从运行中。 |
 |CUPath |否 |设置 Windows Server 2016 累积更新从本地路径中运行。 此选项很有帮助，如果你已经部署了连接断开的环境中的 Azure 堆栈实例。|
 
