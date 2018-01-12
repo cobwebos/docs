@@ -1,6 +1,6 @@
 <!-- F-series, Fs-series* -->
 
-计算优化的 VM 大小具有较高的 CPU 内存比，适用于中等流量 Web 服务器、网络设备、批处理进程和应用程序服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
+计算优化的 VM 大小具有较高的 CPU 内存比，适用于中等流量 Web 服务器、网络设备、批处理进程和应用程序服务器。 本文针对此分组中每种大小提供有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。
 
 Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器，它具有 2.7 GHz 的基本核心频率和 3.7 GHz 的最大单核超频。 Intel 可扩展处理器上全新的 Intel® AVX-512 指令对于单精度和双精度浮点运算可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。 
 
@@ -12,7 +12,7 @@ F 系列基于 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器，该处理�
 
 Fs 系列具有 F 系列的所有优势（在高级存储的基础上）。
 
-## <a name="fsv2-series"></a>Fsv2 系列*
+## <a name="fsv2-series-sup1sup"></a>Fsv2 系列 <sup>1</sup>
 
 ACU：195 - 210
 
@@ -25,9 +25,10 @@ ACU：195 - 210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | 极高                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | 极高                                 |
 | Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | 极高                                 |
-*Fsv2 系列 VM 的 Intel® 超线程技术功能
 
-## <a name="fs-series"></a>Fs 系列*
+<sup>1</sup>Fsv2 系列 VM 的 Intel® 超线程技术功能
+
+## <a name="fs-series-sup1sup"></a>Fs 系列 <sup>1</sup>
 
 ACU：210 - 250
 
@@ -41,7 +42,7 @@ ACU：210 - 250
 
 MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
-*Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)。
+<sup>1</sup> *Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)。
 
 
 <br>

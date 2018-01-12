@@ -4,7 +4,7 @@ description: "为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 0d2e7e6f17fecb9809ac76fbfa0db860b7948a7e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 771ca39b37e6fb2d75a86df3ac785bc293b4cd5f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 本文说明如何为 Azure AD 域服务托管域启用安全轻量目录访问协议 (LDAPS)。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的轻量目录访问协议 (LDAP)。
@@ -39,23 +39,18 @@ ms.lasthandoff: 11/16/2017
 ### <a name="requirements-for-the-secure-ldap-certificate"></a>安全 LDAP 证书的要求
 根据以下指导原则获取有效证书，并启用安全 LDAP。 如果尝试使用无效/不正确的证书来为托管域启用安全 LDAP，操作会失败。
 
-1. **受信任的颁发者** - 证书必须由使用安全 LDAP 连接到托管域的计算机所信任的颁发机构颁发。 此颁发机构可能是这些计算机信任的公共证书颁发机构。
+1. **受信任的颁发者** - 证书必须由使用安全 LDAP 连接到托管域的计算机所信任的颁发机构颁发。 此颁发机构可能是公共证书颁发机构 (CA) 或受计算机信任的企业 CA。
 2. **生存期** - 证书必须至少在接下来的 3 到 6 个月内保持有效。 证书过期后，安全 LDAP 不再可以访问托管域。
 3. **使用者名称** - 在托管域中，证书的使用者名称必须是通配符。 例如，如果域名为“contoso100.com”，则证书的使用者名称必须是“*.contoso100.com”。 请将 DNS 名称（使用者替代名称）设置为此通配符名称。
 4. **密钥用途** - 必须将证书设置为以下用途：数字签名和密钥加密。
 5. **证书目的** - 证书必须有效，可用于 SSL 服务器身份验证。
-
-> [!NOTE]
-> **企业证书颁发机构：**Azure AD 域服务不支持使用组织的企业证书颁发机构颁发的安全 LDAP 证书。 限制的原因是：此服务不信任企业 CA 作为根证书颁发机构。 
->
->
 
 <br>
 
 ## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>任务 1 - 获取安全 LDAP 的证书
 第一个任务涉及到获取证书，该证书用于对托管域进行安全 LDAP 访问。 可以使用两个选项：
 
-* 从公共证书颁发机构获取证书。
+* 从公共 CA 或企业 CA 获取证书。
 * 创建自签名证书。
 
 > [!NOTE]
@@ -63,7 +58,7 @@ ms.lasthandoff: 11/16/2017
 >
 
 ### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>选项 A（建议）- 从证书颁发机构获取安全 LDAP 证书
-如果组织从公共证书颁发机构获取其证书，则请从该公共证书颁发机构获取安全 LDAP 证书。
+如果组织从公共 CA 获取其证书，则请从该公共 CA 获取安全 LDAP 证书。 如果部署企业 CA，请从企业 CA 获取安全 LDAP 证书。
 
 > [!TIP]
 > 为具有“onmicrosoft.com”域后缀的托管域使用自签名证书。

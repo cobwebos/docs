@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Data Lake Analytics 中使用 Python 扩展 U-SQL 脚本 | Microsoft 文档"
+title: "在 Azure Data Lake Analytics 中使用 Python 扩展 U-SQL 脚本 | Microsoft Docs"
 description: "了解如何在 U-SQL 脚本中运行 Python 代码"
 services: data-lake-analytics
 documentationcenter: 
@@ -14,13 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: 51c0bac3cd03965d002b3fe87804a0d7ea6cf63e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: a8acaa16265070308753c2a0df3a9e7b8a3a841a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>教程：使用 Python 扩展 U-SQL 入门
+
+## <a name="prerequisites"></a>先决条件
+
+开始之前，请确保 Azure Data Lake Analytics 帐户已安装 Python 扩展。
+
+* 在 Azure 门户中，导航到 Data Lake Analytics 帐户
+* 在左侧菜单的“入门”下方，单击“示例脚本”
+* 单击“安装 U-SQL 扩展”，然后单击“确定”
+
+## <a name="overview"></a>概述 
 
 通过 U-SQL 的 Python 扩展，开发人员可以执行大规模并发执行的 Python 代码。 以下示例演示了基本步骤：
 

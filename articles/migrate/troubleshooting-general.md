@@ -1,24 +1,16 @@
 ---
 title: "排查 Azure Migrate 问题 | Microsoft 文档"
 description: "概述 Azure Migrate 服务中的已知问题，并针对常见错误提供故障排除技巧。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 40faffa3f-1f44-4a72-94bc-457222ed7ac8
-ms.service: migrate
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.service: azure-migrate
+ms.topic: troubleshooting
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 8c7c79a23ee09a7de35252d7819d1f0e5b1d98c5
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -26,6 +18,16 @@ ms.lasthandoff: 11/28/2017
 
 [Azure Migrate](migrate-overview.md) 会评估要迁移到 Azure 的本地工作负载。 使用本文内容来排查在部署和使用 Azure Migrate 期间出现的问题。
 
+
+收集器不能连接到 Internet
+
+若所用的计算机使用代理，则可能发生这种情况。 请确保提供代理所需的授权凭据。
+如果使用任何基于 URL 的防火墙代理控制出站连接，请确保将下列必需的 URL 列入白名单：
+
+**URL** | **用途**  
+--- | ---
+*.portal.azure.com | 需检查与 Azure 服务的连接并验证时间同步问题。
+*.oneget.org | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。
 
 收集器不能使用从门户复制的项目 ID 和密钥连接到项目。
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: ed728011f2cb7b6108e19a916010fd5447c07093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 609b811705bb6f116db055b756910450f8990528
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 [sap-hana-ha]:sap-hana-high-availability.md
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00，ERS 实例编号 02 和 SAP 系统 ID NWS。 示例中的资源名称（例如虚拟机、虚拟网络）假设已将[聚合模板][template-converged]与 SAP 系统 ID NWS 结合使用以创建资源。
+在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NWS。 示例中的资源名称（例如虚拟机、虚拟网络）假设已将[聚合模板][template-converged]与 SAP 系统 ID NWS 结合使用以创建资源。
 
 请先阅读以下 SAP 说明和文档
 
@@ -142,7 +142,7 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 ### <a name="deploying-linux"></a>部署 Linux
 
 Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
-可以使用 github 上的某个快速启动模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
@@ -475,7 +475,7 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
    sudo crm configure
 
    crm(live)configure# primitive vip_<b>NWS</b>_nfs IPaddr2 \
-     params ip=<b>10.0.0.4</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.4</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_nfs anything \
@@ -495,7 +495,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。这是**租户 ID**。
+   转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），并单击“创建”
@@ -503,7 +503,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。此 ID 用作服务主体的用户名（以下步骤中的**登录 ID**）
+1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。
 
@@ -523,13 +523,13 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -547,9 +547,9 @@ sudo crm configure property stonith-enabled=true
 
 ### <a name="deploying-linux"></a>部署 Linux
 
-Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 应用商店映像包含适用于 SAP NetWeaver 的资源代理。
+Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 Marketplace 映像包含适用于 SAP NetWeaver 的资源代理。
 
-可以使用 github 上的某个快速启动模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [ASCS/SCS 多 SID 模板][template-multisid-xscs]或[聚合模板][template-converged]。ASCS/SCS 模板仅创建适用于 SAP NetWeaver ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则，而聚合模板还会创建适用于数据库的负载均衡规则（例如 Microsoft SQL Server 或 SAP HANA）。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
 1. 输入以下参数
@@ -967,7 +967,7 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.10</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.10</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ASCS anything \
@@ -1041,7 +1041,7 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ERS anything \
@@ -1101,7 +1101,7 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
    </code></pre>
 
    > [!NOTE]
-   > 请使用 SWPM SP 20 PL 05 或更高版本。 较低版本不会正确设置权限，安装将失败。
+   > 使用 SWPM SP 20 PL 05 或更高版本。 较低版本不会正确设置权限，安装将失败。
    > 
 
 1. [1] 调整 ASCS/SCS 和 ERS 实例配置文件
@@ -1228,7 +1228,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。这是**租户 ID**。
+   转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），并单击“创建”
@@ -1236,7 +1236,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。此 ID 用作服务主体的用户名（以下步骤中的**登录 ID**）
+1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。
 
@@ -1256,13 +1256,13 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -1280,7 +1280,7 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="install-database"></a>安装数据库
 
-在此示例中，安装并配置了 SAP HANA 系统复制。 SAP HANA 将在与 SAP NetWeaver ASCS/SCS 和 ERS 所在的同一群集中运行。 还可以在专用群集上安装 SAP HANA。 有关详细信息，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]。
+在此示例中，安装并配置了 SAP HANA 系统复制。 SAP HANA 会在与 SAP NetWeaver ASCS/SCS 和 ERS 所在的同一群集中运行。 还可以在专用群集上安装 SAP HANA。 有关详细信息，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]。
 
 ### <a name="prepare-for-sap-hana-installation"></a>准备 SAP HANA 安装
 
@@ -1326,7 +1326,7 @@ sudo crm configure property stonith-enabled=true
    sudo chattr +i /hana/data
    sudo chattr +i /hana/log
    sudo chattr +i /hana/shared
-   # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+   # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
    sudo blkid
    </code></pre>
    
@@ -1440,7 +1440,7 @@ sudo crm configure property stonith-enabled=true
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number and HANA system id
+   # replace the bold string with your instance number and HANA system ID
    
    crm(live)configure# primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b>   ocf:suse:SAPHanaTopology \
      operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1461,7 +1461,7 @@ sudo crm configure property stonith-enabled=true
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+   # replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
     
    crm(live)configure# primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
      operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \

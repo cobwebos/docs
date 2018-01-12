@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0fcd25183617de879ada6d1f7d2a8fcf9551d6de
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0edca9e5eb709eb3e1b42b45e5a41ac7a5ba1e75
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>使用 Azure Location Based Services（预览版）启动演示性的交互式地图搜索
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/30/2017
 
 1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) 文件的内容。
 2. 在本地将此文件的内容另存为 **AzureMapDemo.html**，并在文本编辑器中将其打开。
-3. 搜索字符串 **<insert-key>**，并将其替换为在上一部分中获取的**主密钥**。 
+3. 搜索字符串 **&#60;insert-key&#62;**，并将其替换为在上一部分中获取的**主密钥**。 
 
 
 ## <a name="launch-the-demo-application-for-azure-maps"></a>启动 Azure 地图的演示应用程序

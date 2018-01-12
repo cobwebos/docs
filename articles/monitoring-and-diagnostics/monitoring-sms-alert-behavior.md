@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 3e4eca174209eeb9cbce1d45111d1e5cc30af8b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 012f001356463a8a7d9b95f186111959627f2c28
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
 ## <a name="overview"></a>概述 ##
@@ -37,15 +37,15 @@ ms.lasthandoff: 10/11/2017
 - 警报的标题
 
 ### <a name="unsubscribing-from-sms-alerts-for-one-action-group"></a>为单个操作组取消订阅短信警报
-用户可通过关键字：“DISABLE &lt;操作组的短名称&gt;”回应短代码 20873，为一个操作组取消订阅短信警报。
+用户可通过关键字：“DISABLE &lt;操作组的短名称&gt;”回应短代码 29873，为一个操作组取消订阅短信警报。
 
-例如： 如果用户希望为短名称为“Azure”的操作组取消订阅警报，可向短代码 20873 发送短信“DISABLE Azure”
+例如： 如果用户希望为短名称为“Azure”的操作组取消订阅警报，可向短代码 29873 发送短信“DISABLE Azure”
 
 ### <a name="unsubscribing-from-sms-alerts-for-all-action-groups"></a>为所有操作组取消订阅短信警报
-用户可通过以下任何关键字回应短代码 20873，为所有操作组取消订阅短信警报：
+用户可通过以下任何关键字回应短代码 29873，为所有操作组取消订阅短信警报：
 * STOP
 
-例如： 如果用户希望为所有操作组取消订阅所有短信警报，可以向短代码 20873 发送短信“STOP”
+例如： 如果用户希望为所有操作组取消订阅所有短信警报，可以向短代码 29873 发送短信“STOP”
 
 >[!NOTE]
 >如果用户已取消订阅短信警报，但随后被添加到新的操作组，将接收新操作组的短信警报，但对于所有以前的操作组均保持取消订阅状态。
@@ -53,19 +53,19 @@ ms.lasthandoff: 10/11/2017
 >
 
 ### <a name="resubscribing-to-sms-alerts-for-one-action-group"></a>为一个操作组重新订阅短信警报
-用户可通过关键字：“ENABLE &lt;操作组的短名称&gt;”回应短代码 20873，为一个操作组重新订阅短信警报。
+用户可通过关键字：“ENABLE &lt;操作组的短名称&gt;”回应短代码 29873，为一个操作组重新订阅短信警报。
 
-例如： 如果用户希望为短名称为“Azure”的操作组重新订阅警报，可向短代码 20873 发送短信“ENABLE Azure”
+例如： 如果用户希望为短名称为“Azure”的操作组重新订阅警报，可向短代码 29873 发送短信“ENABLE Azure”
 
 ### <a name="resubscribing-to-sms-alerts-for-all-action-groups"></a>为所有操作组重新订阅短信警报
-用户可通过以下任何关键字回应短代码 20873，为所有操作组重新订阅短信警报：
+用户可通过以下任何关键字回应短代码 29873，为所有操作组重新订阅短信警报：
 
 * START
 
-例如： 如果用户希望为所有操作组重新订阅所有短信警报，可向短代码 20873 发送短信“START”
+例如： 如果用户希望为所有操作组取消订阅所有短信警报，可以向短代码 29873 发送短信“START”
 
 ### <a name="requesting-help-via-sms"></a>通过短信请求帮助
-用户可使用以下任何关键字回应短代码 20873，询问有关所收到短信的详细信息：
+用户可使用以下任何关键字回应短代码 29873，询问有关所收到短信的详细信息：
 * HELP
 
 将向用户发送带本文链接的回复信息。

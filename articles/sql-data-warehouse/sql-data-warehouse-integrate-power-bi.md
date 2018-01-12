@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: 4b7609fc5d6ce7bf0e3bd3ebf6d8f52e93a40a75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>将 Power BI 与 SQL 数据仓库配合使用
 在 Azure SQL 数据库中，SQL 数据仓库 Direct Connect 可让用户利用功能强大的逻辑下推，以及 Power BI 的分析功能。  使用 Direct Connect 可在浏览数据时会查询实时发回到 Azure SQL 数据仓库。  此项功能与 SQL 数据仓库的缩放性相结合，可让用户在数分钟内针对 TB 量级的数据创建动态报表。  此外，“在 Power BI 中打开”按钮的引入可让用户直接将 Power BI 连接到其 SQL 数据仓库，而无需从其他 Azure 部分收集信息。
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="using-the-open-in-power-bi-button"></a>使用“在 Power BI 中打开”按钮
 使用“在 Power BI 中打开”按钮是在 SQL 数据仓库与 Power BI 之间切换的最简单方式。 此按钮允许你在 Power BI 中无缝开始创建新仪表板。  
 
-1. 若要开始，请导航到 Azure 经典门户中的 SQL 数据仓库实例。
+1. 若要开始，请导航到 Azure 门户中的 SQL 数据仓库实例。
 2. 单击“在 Power BI 中打开”按钮。
 3. 如果我们无法直接你将登录，或者没有 Power BI 帐户，则需要自行登录。  
 4. 将被定向到 SQL 数据仓库连接页，其中已预先填充了你在 SQL 数据仓库中的信息。

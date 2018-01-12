@@ -4,7 +4,7 @@ description: "本文介绍如何使用 Azure 门户将应用程序注册到 Azur
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 7dc7b89f-653f-405a-b5f4-2c1288720c15
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>将应用程序注册到 Azure Active Directory 租户
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
   * 在“属性”页中，可以修改应用程序的常规信息。 这包括应用程序名称、登录 URL 和注销 URL。
   * 在“回复 URL”页中，可以添加回复 URL，即 Azure AD 发送令牌响应的位置。
   * 在“所有者”页中，可以添加应用程序所有者。
-  * 在“权限”面中，可为应用配置权限。 例如，要访问 Microsoft 图形 API，请单击“添加”，在 API 选择器中选择“Microsoft Graph”，并选择所需的权限（如“读取目录数据”）。
+  * 在“所需权限”页中，可为应用配置权限。 例如，要访问 Microsoft 图形 API，请单击“添加”，在 API 选择器中选择“Microsoft Graph”，并选择所需的权限（如“读取目录数据”）。
   * 在“密钥”页中，可以添加应用程序机密。 密码会在创建后立即显示，并且只显示一次，因此请复制密码，以便今后使用。
 
 ## <a name="use-the-inline-manifest-editor"></a>使用内联清单编辑器

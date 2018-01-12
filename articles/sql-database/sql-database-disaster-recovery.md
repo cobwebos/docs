@@ -13,39 +13,45 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 04/14/2017
+ms.date: 12/13/2017
 ms.author: sashan
-ms.openlocfilehash: cbd54a2a309874c81d8384d789bebe4f94c97adf
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.reviewer: carlrab
+ms.openlocfilehash: 224c0b9f12595ec6cdc65e3d397fb62dba504d06
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 
-* [活动异地复制](sql-database-geo-replication-overview.md)
+* [活动异地复制和故障转移组](sql-database-geo-replication-overview.md)
 * [异地还原](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 若要了解业务连续性方案以及支持这些方案的功能，请参阅[业务连续性](sql-database-business-continuity.md)。
 
-### <a name="prepare-for-the-event-of-an-outage"></a>准备好应对中断情况
-为了使用活动异地复制或异地冗余备份成功恢复到其他数据区域，需要为下一次数据中心中断准备服务器，以便在需要时使其成为新的主服务器，还需要记录、测试各项明确定义的步骤，确保顺利恢复数据。 准备步骤包括：
+> [!NOTE]
+> 如果使用区域冗余高级数据库或池，请自动执行恢复过程，此材料的其余部分将不适用。 
 
-* 标识其他区域中要成为新的主服务器的逻辑服务器。 使用活动异地复制时，至少标识一个辅助服务器（可能需要标识每个辅助服务器）。 对于异地还原，这个服务器通常位于数据库所在区域的[配对区域](../best-practices-availability-paired-regions.md)中。
+### <a name="prepare-for-the-event-of-an-outage"></a>准备好应对中断情况
+为了使用故障转移组或异地冗余备份成功恢复到其他数据区域，需要为下一次数据中心中断准备服务器，以便在需要时使其成为新的主服务器，还需要记录、测试各项明确定义的步骤，确保顺利恢复数据。 准备步骤包括：
+
+* 标识其他区域中要成为新的主服务器的逻辑服务器。 对于异地还原，这个服务器通常位于数据库所在区域的[配对区域](../best-practices-availability-paired-regions.md)中。 这将在异地还原操作期间消除额外的流量成本。
 * 标识（并选择性定义）用户访问新的主数据库时所需的服务器级防火墙规则。
 * 确定要如何将用户重定向到新的主服务器，例如通过更改连接字符串或更改 DNS 条目。
 * 标识（并选择性创建）新主服务器的 master 数据库中必须存在的登录信息，并确保这些登录信息在 master 数据库中具有相应权限（若有）。 相关详细信息，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)
 * 标识需要更新才可映射到新的主数据库的警报规则。
 * 记录当前主数据库上的审核配置
-* 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要模拟中断进行活动异地复制，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
+* 执行[灾难恢复演练](sql-database-disaster-recovery-drills.md)。 若要模拟中断情况进行异地还原，可删除或重命名源数据库以引发应用程序连接失败。 若要使用故障转移组模拟中断，可禁用连接到数据库的 Web 应用程序或虚拟机，或者故障转移数据库以引发应用程序连接失败。
 
 ## <a name="when-to-initiate-recovery"></a>何时启动恢复
 恢复操作会影响应用程序。 需更改 SQL 连接字符串或使用 DNS 重定向，可能导致参数数据丢失。 因此，仅当中断的持续时间可能超过应用程序的恢复时间目标时，才应执行此操作。 如果应用程序已部署到生产环境，应该定期监视应用程序的运行状况，并使用以下数据点来声明有必要进行恢复：
 
 1. 应用程序层与数据库之间的连接发生永久性故障。
 2. Azure 门户显示了警报，指出区域中的某个事件造成广泛影响。
-3. Azure SQL 数据库服务器标记为“已降级”。
+
+> [!NOTE]
+> 如果使用故障转移组并选择自动故障转移，恢复过程将自动执行并且对于应用程序是透明的。 
 
 根据应用程序的停机容忍度和可能的业务责任，可以考虑下列恢复选项。
 
@@ -54,22 +60,21 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 ## <a name="wait-for-service-recovery"></a>等待服务恢复
 Azure 团队会努力尽快还原服务可用性，但视根本原因而定，有可能需要数小时或数天的时间。  如果应用程序可以容忍长时间停机，则可以等待恢复完成。 在此情况下，不需要采取任何操作。 可在 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)上查看当前服务状态。 在区域恢复后，应用程序的可用性会还原。
 
-## <a name="fail-over-to-geo-replicated-secondary-database"></a>故障转移到异地复制的辅助数据库
-如果应用程序停机可能会带来业务责任，则应当在应用程序中使用异地复制的数据库。 这样，应用程序在发生中断时，就可以快速还原其他区域的可用性。 了解如何[配置异地复制](sql-database-geo-replication-portal.md)。
+## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>故障转移到故障转移组中异地复制的辅助服务器
+如果应用程序停机可能会带来业务责任，则应当使用故障转移组。 这样，应用程序在发生中断时，就可以快速还原其他区域的可用性。 了解如何[配置故障转移组](sql-database-geo-replication-portal.md)。
 
-若要还原数据库的可用性，必须使用其中一种受支持的方法，启动到异地复制的辅助数据库的故障转移。
+若要还原数据库的可用性，必须使用其中一种受支持的方法，启动到辅助服务器的故障转移。
 
 请参考下列指南之一，故障转移到异地复制的辅助数据库：
 
-* [使用 Azure 门户故障转移到异地复制的辅助数据库](sql-database-geo-replication-portal.md)
-* [使用 PowerShell 故障转移到异地复制的辅助数据库](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [使用 T-SQL 故障转移到异地复制的辅助数据库](/sql/t-sql/statements/alter-database-azure-sql-database)
+* [使用 Azure 门户故障转移到异地复制的辅助服务器](sql-database-geo-replication-portal.md)
+* [使用 PowerShell 故障转移到辅助服务器](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
 
 ## <a name="recover-using-geo-restore"></a>使用异地还原进行恢复
 如果应用程序停机不会带来业务责任，则可以使用[异地还原](sql-database-recovery-using-backups.md)作为恢复应用程序数据库的方法。 它会从其最新的异地冗余备份创建数据库的副本。
 
 ## <a name="configure-your-database-after-recovery"></a>恢复后配置数据库
-在服务中断后，如果使用异地复制进行故障转移或使用异地还原进行恢复，则必须确保已正确配置与新数据库的连接，以便恢复正常的应用程序功能。 以下任务清单可帮助你准备好将恢复的数据库投入生产。
+在服务中断后，如果使用异地还原进行恢复，则必须确保已正确配置与新数据库的连接，以便恢复正常的应用程序功能。 以下任务清单可帮助你准备好将恢复的数据库投入生产。
 
 ### <a name="update-connection-strings"></a>更新连接字符串
 因为恢复的数据库将位于不同的服务器中，所以必须更新应用程序的连接字符串以指向该服务器。

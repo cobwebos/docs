@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8aec171b46df3e0e7f2a2d3cc9d44084d064e6fd
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>使用通知中心发送突发新闻
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -207,7 +207,7 @@ ms.lasthandoff: 10/11/2017
 应用程序现在可以在设备的本地存储区中存储一组类别，每当应用程序启动时，将使用这些类别注册到通知中心。  用户可以在运行时更改选择的类别，并单击 **subscribe** 方法来更新设备注册。 接下来，将更新应用程序，以直接从应用本身发送突发新闻通知。
 
 ## <a name="optional-sending-tagged-notifications"></a>（可选）发送带标记的通知
-如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 经典门户]中使用通知中心的调试选项卡发送适当的模板通知。 
+如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 门户]中使用通知中心的调试选项卡发送适当的模板通知。 
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -331,4 +331,4 @@ ms.lasthandoff: 10/11/2017
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
-[Azure 经典门户]: https://manage.windowsazure.com
+[Azure 门户]: https://portal.azure.com

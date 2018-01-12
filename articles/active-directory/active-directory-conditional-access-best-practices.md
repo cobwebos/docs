@@ -5,7 +5,7 @@ services: active-directory
 keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 74b97ac263dcc45f7a8dd7461cbdb23d9fd5e6fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c6707505a6331b53e06b1de60575dd3637ea477
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
 
@@ -100,86 +100,18 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="policy-migration"></a>策略迁移
 
-如果已在 Azure 经典门户配置了策略，则应将其迁移到 Azure 门户，因为：
+应考虑迁移未在 Azure 门户中创建的策略，因为：
+
+- 现在可以解决以前无法处理的方案。
+
+- 可以通过合并来减少需要管理的策略数。   
+
+- 可以在一个中心位置管理所有条件访问策略。
+
+- Azure 经典门户将停用。   
 
 
-- 采用 Azure 经典门户策略和 Azure 门户策略的用户需同时满足两种策略的要求 
-
-- 如果不迁移现有策略，则无法实施授予访问权限的策略
-
-
-### <a name="migration-from-the-azure-classic-portal"></a>从 Azure 经典门户进行迁移
-
-在本方案中： 
-
-- 在 [Azure 经典门户](https://manage.windowsazure.com)，用户已配置：
-
-    - SharePoint Online
-
-    ![条件性访问](./media/active-directory-conditional-access-best-practices/14.png)
-
-    - 基于设备的条件访问策略
-
-    ![条件性访问](./media/active-directory-conditional-access-best-practices/15.png)
-
-- 希望在 Azure 门户中配置移动应用程序管理条件访问策略 
- 
-
-#### <a name="configuration"></a>配置 
-
-- 查看基于设备的条件访问策略
-
-- 将其迁移到 Azure 门户 
-
-- 添加移动应用程序管理条件访问策略
-
-
-### <a name="migrating-from-intune"></a>从 Intune 进行迁移 
-
-在本方案中：
-
-- 用户在 [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) 中为 Exchange Online 或 SharePoint Online 配置了移动应用管理条件访问策略
-
-    ![条件性访问](./media/active-directory-conditional-access-best-practices/15.png)
-
-- 希望迁移到在 Azure 门户中使用移动应用程序管理条件访问
-
-
-#### <a name="configuration"></a>配置 
- 
-- 查看基于设备的条件访问策略
-
-- 将其迁移到 Azure 门户 
-
-- 查看在 Intune 中为 Exchange Online 或 SharePoint Online 配置的移动应用管理条件访问策略
-
-- 除基于设备的控制外，添加对“需要批准的应用程序”的控制 
- 
-
-### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>从 Azure 经典门户和 Intune 进行迁移
-
-在本方案中：
-
-- 已配置以下内容：
-
-    - **Azure 经典门户：**基于设备的条件访问 
-
-    - **Intune：**移动应用程序管理条件访问策略 
-    
-- 希望将两个策略都迁移到在 Azure 门户中使用移动应用程序管理条件访问策略
-
-
-#### <a name="configuration"></a>配置
-
-- 查看基于设备的条件访问策略
-
-- 将其迁移到 Azure 门户 
-
-- 查看在 Intune 中为 Exchange Online 或 SharePoint Online 配置的移动应用管理条件访问策略
-
-- 除基于设备的控制外，添加对“需批准的应用程序”的控制 
-
-
+有关详细信息，请参阅[在 Azure 门户中迁移经典策略](active-directory-conditional-access-migration.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

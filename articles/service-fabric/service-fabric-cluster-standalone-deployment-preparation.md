@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
 ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: 67d47739c27081c4e10bf11988ed121ff02d8bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 <a id="preparemachines"></a>
 
@@ -161,7 +161,7 @@ Passed                     : True
 目前，此配置测试模块不会验证安全配置，因此必须单独执行验证。  
 
 > [!NOTE]
-> 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)告知我们。   
+> 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)告知我们。   
 > 
 > 
 

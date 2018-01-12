@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 11/17/2017
-ms.openlocfilehash: 3938af29caec99f076452529cbc5d93cf2c8802b
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 3e7e80d58a3eb27920736a1594633021b90014e9
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="migrate-sql-server-to-azure-sql-database"></a>将 SQL Server 迁移到 Azure SQL 数据库
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。 在本教程中，你将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）的本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库。

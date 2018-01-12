@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f9bdc28349c540ee68b421b7643e4bed099c9fdd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 357937aad5eb13ca87267629eb542cc43119dc0a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/03/2017
 ## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>弹性数据库作业中的已加密凭据
 数据库凭据可以插入密码已加密的作业*控制数据库*。 必须存储凭据，使作业可以在稍后执行（使用作业计划）。
 
-加密是通过创建为安装脚本一部分的证书来进行的。 安装脚本创建证书并将其上传到 Azure 云服务，以解密已存储的加密密码。 Azure 云服务稍后在作业*控制数据库*内存储公钥，让 PowerShell API 或 Azure 经典门户界面加密提供的密码，而不需要在本地安装证书。
+加密是通过创建为安装脚本一部分的证书来进行的。 安装脚本创建证书并将其上传到 Azure 云服务，以解密已存储的加密密码。 Azure 云服务稍后将公钥存储在作业“控制数据库”内，让 PowerShell API 或 Azure 门户界面加密提供的密码，而不需要在本地安装证书。
 
 凭据密码经过加密后，无法供只能通过只读方式访问弹性数据库作业对象的用户访问。 不过，具有弹性数据库作业对象读-写访问权限的恶意用户可能会提取密码。 凭据设计为跨作业执行重复使用。 在建立连接时，凭据将传递到目标数据库。 适用于每个凭据的目标数据库目前并没有受到限制，因此恶意用户可以针对自己所控制的数据库来添加数据库目标。 然后，该用户可以启动一个针对该数据库的作业，从而获取凭据的密码。
 

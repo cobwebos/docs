@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 Cezanne HR Software 之
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 620b0f62bceeda6fac87c31b325a078260f7d3d0
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 3934f814a9060adf275a4bdcc83403da4b2a4075
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教程：Azure Active Directory 与 Cezanne HR Software 的集成
 
@@ -125,25 +125,29 @@ ms.lasthandoff: 11/28/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
 
-6. 在“Cezanne HR Software 配置”部分中，单击“配置 Cezanne HR Software”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+6. 在“Cezanne HR Software 配置”部分中，单击“配置 Cezanne HR Software”打开“配置登录”窗口。
 
-    ![Cezanne HR Software 配置](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![Cezanne HR Software 配置](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png)
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Cezanne HR Software 租户。
+7. 向下滚动到“快速参考”部分。 从“快速参考”部分中复制“SAML 单一登录服务 URL 和 SAML 实体 ID”
 
-8. 在左侧导航窗格中，单击“系统设置”。 转到“安全设置”。 然后导航到“单一登录配置”。
+    ![Cezanne HR Software 配置](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure1.png)
+
+8. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Cezanne HR Software 租户。
+
+9. 在左侧导航窗格中，单击“系统设置”。 转到“安全设置”。 然后导航到“单一登录配置”。
 
     ![在应用端配置单一登录](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. 在“允许用户使用以下单一登录 (SSO) 服务进行登录”面板上，选中“SAML 2.0”框并选择“高级配置”选项。
+10. 在“允许用户使用以下单一登录 (SSO) 服务进行登录”面板上，选中“SAML 2.0”框并选择“高级配置”选项。
 
     ![在应用端配置单一登录](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-10. 单击“新增”按钮。
+11. 单击“新增”按钮。
 
     ![在应用端配置单一登录](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. 在“SAML 2.0 标识提供者”部分中执行以下步骤。
+12. 在“SAML 2.0 标识提供者”部分中执行以下步骤。
 
     ![在应用端配置单一登录](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
@@ -161,7 +165,7 @@ ms.lasthandoff: 11/28/2017
     
     g. 单击“确定”按钮。 
 
-12. 单击“保存”按钮。
+13. 单击“保存”按钮。
 
     ![在应用端配置单一登录](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 

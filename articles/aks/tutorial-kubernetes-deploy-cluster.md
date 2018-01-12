@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a03bbfbdedd418216c26379e9d8dbd780fa89fd8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2c2318d9a5f72800f9cfbd430dca448fd1e5746f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -28,7 +28,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 AKS，�
 
 ## <a name="before-you-begin"></a>开始之前
 
-在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像](./tutorial-kubernetes-prepare-app.md)。
+在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
 ## <a name="enabling-aks-preview-for-your-azure-subscription"></a>为 Azure 订阅启用 AKS 预览版
 AKS 为预览版时，创建新群集需要订阅上的功能标记。 可以为任意数量的订阅请求此功能，只要你想使用。 使用 `az provider register` 命令注册 AKS 提供程序：
@@ -41,7 +41,7 @@ az provider register -n Microsoft.ContainerService
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程](./tutorial-kubernetes-prepare-acr.md)中进行创建。
+下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
@@ -51,7 +51,7 @@ az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 
 
 ## <a name="install-the-kubectl-cli"></a>安装 kubectl CLI
 
-若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)（Kubernetes 命令行客户端）。
+若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl][kubectl]（Kubernetes 命令行客户端）。
 
 如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果要在本地安装它，请运行以下命令：
 
@@ -67,7 +67,7 @@ az aks install-cli
 az aks get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-若要验证与群集之间的连接，请运行 [kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) 命令。
+若要验证与群集之间的连接，请运行 [kubectl get nodes][kubectl-get] 命令。
 
 ```azurecli
 kubectl get nodes
@@ -94,4 +94,13 @@ k8s-myk8scluster-36346190-0   Ready     49m       v1.7.7
 继续学习下一个教程，了解如何在群集上运行应用程序。
 
 > [!div class="nextstepaction"]
-> [在 Kubernetes 中部署应用程序](./tutorial-kubernetes-deploy-application.md)
+> [在 Kubernetes 中部署应用程序][aks-tutorial-deploy-app]
+
+<!-- LINKS - external -->
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+
+<!-- LINKS - internal -->
+[aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
+[aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

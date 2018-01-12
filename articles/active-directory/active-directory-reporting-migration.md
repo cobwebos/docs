@@ -1,37 +1,36 @@
 ---
-title: "在 Azure 门户中查找活动报告 | Microsoft 文档"
-description: "了解如何在 Azure 门户中查找 Azure Active Directory 活动报告。"
+title: "查找 Azure 门户中的 Azure Active Directory 用户活动报告 | Microsoft Docs"
+description: "了解在 Azure 门户中何处查找 Azure Active Directory 用户活动报告。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
-manager: femila
+author: curtand
+manager: mtillman
 editor: 
 ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/21/2017
-ms.author: dhanyahk;markvi
+ms.date: 12/06/2017
+ms.author: curtand
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6f1485ad57eb28841ef5fe585e8cf1b8eb29e4a7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 23c186e268e9a43982ec6c34d350900793fad8de
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
-如果要从 Azure 经典门户移到 Azure 门户，请刷新 Azure Active Directory (Azure AD) 活动日志。 在最近的[博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/)中，我们介绍了如何在 Azure 门户中查看要处理的资源上下文中的活动日志。 本文介绍如何在 Azure 门户中查找 Azure 经典门户中使用的报告。
+通过本文可以了解如何在 Azure 门户中查找 Azure Active Directory 用户活动报告。
 
 ## <a name="whats-new"></a>新增功能
 
 Azure 经典门户中的报告分为以下类别：
-
-1.  安全报表
-2.  活动报表
-3.  集成的应用报告
+* 安全报表
+* 活动报表
+* 集成的应用报告
 
 ### <a name="activity-and-integrated-app-reports"></a>活动和集成的应用报表
 
@@ -43,14 +42,14 @@ Azure 经典门户中的报告分为以下类别：
 
 以下报告合并在此视图中：
 
--   审核报表
--   密码重置活动
--   密码重置注册活动
--   自助服务组活动
--   Office365 组名称更改
--   帐户设置活动
--   密码滚动更新状态
--   帐户设置错误
+* 审核报表
+* 密码重置活动
+* 密码重置注册活动
+* 自助服务组活动
+* Office365 组名称更改
+* 帐户设置活动
+* 密码滚动更新状态
+* 帐户设置错误
 
 
 “应用程序使用情况”报告已增强并包含在“登录”视图中。 若要查看此视图，请在“Azure Active Directory”边栏选项卡上的“活动”下，选择“登录”。

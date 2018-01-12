@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 299eb74686f00dc6d5eb9a1c6127aa134dcd9b77
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: a5380a3815335d7347b57dac49a3dca02c9d981c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scale-an-azure-container-service-aks-cluster"></a>缩放 Azure 容器服务 (AKS) 群集
 
-可轻松将 AKS 群集缩放为不同的节点数。  选择所需的节点数，然后运行 `az aks scale` 命令。  节点数减少时，节点会被仔细[封锁和排除](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)以尽量减少对正在运行的应用程序造成中断。  节点数增加时，`az` 命令将等待，直到 Kubernetes 群集将节点标记为 `Ready`。
+可轻松将 AKS 群集缩放为不同的节点数。  选择所需的节点数，然后运行 `az aks scale` 命令。  节点数减少时，节点会被仔细[封锁和排除][kubernetes-drain]，尽量避免对正在运行的应用程序造成中断。  节点数增加时，`az` 命令将等待，直到 Kubernetes 群集将节点标记为 `Ready`。
 
 ## <a name="scale-the-cluster-nodes"></a>缩放群集节点
 
@@ -88,4 +88,10 @@ az aks scale --name myK8sCluster --resource-group myResourceGroup --node-count 1
 学习 AKS 教程，了解有关部署和管理 AKS 的详细信息。
 
 > [!div class="nextstepaction"]
-> [AKS 教程](./tutorial-kubernetes-prepare-app.md)
+> [AKS 教程][aks-tutorial]
+
+<!-- LINKS - external -->
+[kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
+
+<!-- LINKS - internal -->
+[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md

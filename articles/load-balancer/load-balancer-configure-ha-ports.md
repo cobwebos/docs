@@ -15,54 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 646ade828e96810bdc3b07d4dc5c0276a1621969
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 36bc3d7a35f41384706cbc7101457d00848639b2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>如何为内部负载均衡器配置高可用性端口
+# <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 
-本文提供了在内部负载均衡器上部署高可用性 (HA) 端口的示例。 有关特定于网络虚拟设备 (NVA) 的配置，请参阅相应的提供程序网站。
+本文提供了在内部负载均衡器上部署高可用性端口的示例。 若要深入了解有关特定于网络虚拟设备 (NVA) 的配置信息，请参阅相应的提供程序网站。
 
 >[!NOTE]
-> 高可用性端口功能当前处于预览状态。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 高可用性端口功能当前处于预览状态。 在预览期，该功能的可用性和可靠性级别可能与正式发布版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-图 1 演示了本文中所述部署示例的以下配置：
-- NVA 部署在 HA 端口配置后面内部负载均衡器的后端池中。 
-- 应用于外围网络子网的 UDR 通过将下一跃点设为内部负载均衡器虚拟 IP 将所有流量路由到 NVA。 
-- 内部负载均衡器根据 LB 算法将流量分配到某个活动 NVA。
+该图演示了本文中所述部署示例的以下配置：
+
+- NVA 部署在内部负载均衡器（高可用性端口配置后）的后端池中。 
+- 应用于 DMZ 子网的用户定义路由 (UDR) 将下一跃点设为内部负载均衡器虚拟 IP，从而将所有流量路由到 NVA。 
+- 内部负载均衡器根据负载均衡器算法将流量分配到某一活动 NVA。
 - NVA 处理流量并将其转发到后端子网中的原始目标。
-- 如果在后端子网中配置了相应 UDR，返回路径也可以采用相同的路由。 
+- 如果在后端子网中配置了相应 UDR，则返回路径可采用相同的路由。 
 
-![ha 端口部署示例](./media/load-balancer-configure-ha-ports/haports.png)
+![高可用性端口示例部署](./media/load-balancer-configure-ha-ports/haports.png)
 
-图 1 - 部署在内部负载均衡器后面，具有高可用性端口的网络虚拟设备 
 
 ## <a name="preview-sign-up"></a>预览版注册
 
-若要体验负载均衡器标准版中 HA 端口功能的预览版，请使用 Azure CLI 2.0 或 PowerShell 注册订阅，以获取访问权限。 注册[负载均衡器标准预览版](https://aka.ms/lbpreview#preview-sign-up)的订阅。
+若要预览标准负载均衡器中高可用性端口功能，请使用 Azure CLI 2.0 或 PowerShell 注册订阅，获取访问权限。 注册[标准负载均衡器预览版](https://aka.ms/lbpreview#preview-sign-up)的订阅。
 
 >[!NOTE]
->注册负载均衡器标准预览版最长可能需要一小时。
+>注册标准负载均衡器预览版最长可能需要一小时。
 
-## <a name="configuring-ha-ports"></a>配置 HA 端口
+## <a name="configure-high-availability-ports"></a>配置高可用性端口
 
-HA 端口的配置涉及使用后端池中的 NVA 设置内部负载均衡器，设置用于检测 NVA 运行状况的相应负载均衡器运行状况探测配置，以及设置包含 HA 端口的负载均衡器规则。 [入门](load-balancer-get-started-ilb-arm-portal.md)中介绍了常规的负载均衡器相关配置。 本文重点介绍 HA 端口配置。
+若要配置高可用性端口，请在后端池中使用 NVA 设置内部负载均衡器。 设置相应的负载均衡器运行状况探测配置，以便使用高可用性端口检测 NVA 运行状况和负载均衡器规则。 [入门](load-balancer-get-started-ilb-arm-portal.md)中介绍了常规的负载均衡器相关配置。 本文重点介绍高可用性端口配置。
 
-该配置实质上包括将前端端口和后端端口值设置为 **0**，将协议值设置为 **All**。 本文介绍如何使用 Azure 门户、PowerShell 和 Azure CLI 2.0 配置高可用性端口。
+该配置实质上包括将前端端口和后端端口值设置为“0”。 将协议值设置为“All”。 本文介绍如何使用 Azure 门户、PowerShell 和 Azure CLI 2.0 配置高可用性端口。
 
-### <a name="configure-ha-ports-load-balancer-rule-with-the-azure-portal"></a>使用 Azure 门户配置 HA 端口负载均衡器规则
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>使用 Azure 门户配置高可用性端口负载均衡器规则
 
-Azure 门户为此配置提供“HA 端口”选项（通过复选框实现）。 选中时，会自动填充相关端口和协议配置。 
+若要使用 Azure 门户配置高可用性端口，请选中“HA 端口”复选框。 选中时，会自动填充相关端口和协议配置。 
 
-![通过 Azure 门户进行 ha 端口配置](./media/load-balancer-configure-ha-ports/haports-portal.png)
+![通过 Azure 门户配置高可用性端口](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
-图 2 - 通过门户进行 HA 端口配置
 
-### <a name="configure-ha-ports-lb-rule-via-resource-manager-template"></a>通过资源管理器模板配置 HA 端口负载均衡器规则
+### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>通过资源管理器模板配置高可用性端口负载均衡规则
 
-可以使用 2017-08-01 API 版本为负载均衡器资源中的 Microsoft.Network/loadBalancers 配置 HA 端口。 以下 JSON 代码片段演示通过 REST API 配置的 HA 端口的负载均衡器配置中的更改。
+可以使用 2017-08-01 API 版本为负载均衡器资源中的 Microsoft.Network/loadBalancers 配置高可用性端口。 以下 JSON 代码片段演示通过 REST API 配置的高可用性端口的负载均衡器配置中的更改：
 
 ```json
     {
@@ -93,17 +92,17 @@ Azure 门户为此配置提供“HA 端口”选项（通过复选框实现）�
     }
 ```
 
-### <a name="configure-ha-ports-load-balancer-rule-with-powershell"></a>使用 PowerShell 配置 HA 端口负载均衡器规则
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-powershell"></a>使用 PowerShell 配置高可用性端口负载均衡器规则
 
-使用以下命令，在使用 PowerShell 创建内部负载均衡器时，创建 HA 端口负载均衡器规则：
+使用以下命令，在使用 PowerShell 创建内部负载均衡器时，创建高可用性端口负载均衡器规则：
 
 ```powershell
 lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
-### <a name="configure-ha-ports-load-balancer-rule-with-azure-cli-20"></a>使用 Azure CLI 2.0 配置 HA 端口负载均衡器规则
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli-20"></a>使用 Azure CLI 2.0 配置高可用性端口负载均衡器规则
 
-在[创建内部负载均衡器集](load-balancer-get-started-ilb-arm-cli.md)的步骤 4，使用以下命令创建 HA 端口负载均衡器规则。
+在[创建内部负载均衡器集](load-balancer-get-started-ilb-arm-cli.md)的步骤 4 中，使用以下命令创建高可用性端口负载均衡器规则：
 
 ```azurecli
 azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
@@ -111,4 +110,4 @@ azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb -
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[高可用性端口](load-balancer-ha-ports-overview.md)
+深入了解[高可用性端口](load-balancer-ha-ports-overview.md)。

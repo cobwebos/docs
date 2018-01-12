@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: f9b0d28d9f7c2774af6f5ca508c58b22047f52c3
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: d373713dba7534866de31f941db458ffd4d171b2
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](/azure/china/china-get-started-service-availability)可在 Microsoft Azure 中国世纪互联中使用。
@@ -51,7 +51,7 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 
 另请参阅：
 - [Azure 中国应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=42064) 
+- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=42064) 
 - [开发人员指南](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide)（中文版）。
 
 
@@ -62,7 +62,7 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 | Azure 存储                         | \*.blob.core.windows.net \*.queue.core.windows.net \*.table.core.windows.net                                            | \*.blob.core.chinacloudapi.cn \*.queue.core.chinacloudapi.cn \*.table.core.chinacloudapi.cn                                                           |
 | Azure 服务管理              | https://management.core.windows.net                                                                                     | [https://management.core.chinacloudapi.cn](https://management.core.chinacloudapi.cn/)                                                                 |
 | Azure 资源管理器          | [https://management.azure.com](https://management.azure.com/)                                                           | [https://management.chinacloudapi.cn](https://management.chinacloudapi.cn/)                                                                           |
-| Azure 管理门户               | [http://manage.windowsazure.com](http://manage.windowsazure.com/) [https://portal.azure.com](https://portal.azure.com/) | [http://manage.windowsazure.cn](http://manage.windowsazure.cn/) [https://portal.azure.cn](https://portal.azure.cn/)                                   |
+| Azure 管理门户               | [https://portal.azure.com](https://portal.azure.com/) | [https://portal.azure.cn](https://portal.azure.cn/)                                   |
 | SQL 数据库                          | \*.database.windows.net                                                                                                 | \*.database.chinacloudapi.cn                                                                                                                          |
 | SQL Azure 数据库管理 API           | [https://management.database.windows.net](https://management.database.windows.net/)                                     | [https://management.database.chinacloudapi.cn](https://management.database.chinacloudapi.cn/)                                                         |
 | Azure 服务总线                     | \*.servicebus.windows.net                                                                                               | \*.servicebus.chinacloudapi.cn                                                                                                                        |
@@ -81,6 +81,6 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 
 ## <a name="next-steps"></a>后续步骤
 - [开发人员指南](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide)（中文版）
-- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=42064)
+- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=42064)
 - [管理性能和连接](/azure/china/china-how-to-manage-performance)
-- [Azure 体系结构中心](https://docs.microsoft.com/en-us/azure/architecture/)
+- [Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)

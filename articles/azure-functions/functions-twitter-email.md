@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/04/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 794ad146ee8cb72370216677913013b6bbcb4b8f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -72,28 +72,31 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
  
     ![密钥](media/functions-twitter-email/keys.png)
 
-## <a name="create-the-function"></a>创建函数
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
+
+## <a name="create-the-function-app"></a>创建函数应用
 
 函数可让你方便地卸载逻辑应用工作流中的处理任务。 本教程使用 HTTP 触发的函数来处理认知服务提供的推文情感评分，并返回一个类别值。  
 
-1. 单击“新建”按钮，然后选择“计算” > “函数应用”。 然后使用下表中指定的设置。 接受条款，并选择“固定到仪表板”。
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-    ![创建 Azure 函数应用](media/functions-twitter-email/create_fun.png)
+## <a name="create-an-http-triggered-function"></a>创建 HTTP 触发的函数  
 
-    | 设置      |  建议的值   | 说明       |
-    | --- | --- | --- |
-    | **Name** | MyFunctionApp | 选择唯一的帐户名称。 |
-    | **资源组** | myResourceGroup | 请本教程中的所有服务使用同一个资源组。|
-    | **托管计划** | 使用计划 | 定义成本和使用情况分配。
-    | **位置** | 美国西部 | 使用最靠近的位置。 |
-    | **存储** | 新建 | 自动生成新的存储帐户。|
-    | **定价层** | F0 | 从最低的层着手。 如果已用完调用配额，请扩展到更高的层。|
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
 
-2. 从仪表板中选择函数应用并展开函数，单击“函数”旁边的 **+** 按钮，依次单击“Webhook + API”、“CSharp”、“创建此函数”。 这将使用 HTTPTrigger C# 模板创建函数。 代码作为 `run.csx` 显示在新窗口中
+    ![Azure 门户中的 Functions 快速入门页](media/functions-twitter-email/add-first-function.png)
 
-    ![Function Apps 边栏选项卡，Functions +](media/functions-twitter-email/add_fun.png)
+2. 在搜索字段中，键入 `http`，然后针对 HTTP 触发器模板选择 **C#**。 
 
-3. 将 `run.csx` 文件的内容替换为以下代码，然后单击“保存”：
+    ![选择 HTTP 触发器](./media/functions-twitter-email/select-http-trigger-portal.png)
+
+3. 为函数键入**名称**，选择 `Function` 作为**[身份验证级别](functions-bindings-http-webhook.md#http-auth)**，然后选择“创建”。 
+
+    ![创建 HTTP 触发的函数](./media/functions-twitter-email/select-http-trigger-portal-2.png)
+
+    这将使用 HTTP 触发器模板创建 C# 脚本函数。 代码将作为 `run.csx` 显示在新窗口中。
+
+4. 将 `run.csx` 文件的内容替换为以下代码，然后单击“保存”：
 
     ```csharp
     using System.Net;

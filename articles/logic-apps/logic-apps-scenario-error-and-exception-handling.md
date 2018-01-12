@@ -16,11 +16,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
-我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
+我们选择 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 作为日志和错误记录的存储库（Cosmos DB 将记录作为文档来引用）。 由于 Azure 逻辑应用具有用于所有响应的标准模板，因此我们不必创建自定义架构。 我们可以创建 API 应用以便对错误和日志记录进行**插入**和**查询**。 我们还可以在 API 应用中为各个操作定义架构。  
 
 另一个要求是清除特定日期之后的记录。 Cosmos DB 具有一个名为[生存时间](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) 的属性，使用该属性可以为每个记录或集合设置“生存时间”值。 这样便无需在 Cosmos DB 中手动删除记录。
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/11/2017
    来自 CRM 的触发器为我们提供 **CRM PatentId**、**记录类型**、**新的或更新的记录**（新的或更新的布尔值）以及 **SalesforceId**。 **SalesforceId** 可以为 null，因为它只用于更新。
    使用 CRM 的“PatientID”和“记录类型”来获取 CRM 记录。
 
-2. 接下来，需要在逻辑应用设计器中添加 DocumentDB API 应用 **InsertLogEntry** 操作，如下所示。
+2. 接下来，需要在逻辑应用设计器中添加 Azure Cosmos DB SQL API 应用 **InsertLogEntry** 操作，如下所示。
 
    **插入日志条目**
 
@@ -400,7 +400,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB 存储库和门户
 
-我们的解决方案通过引入 [Cosmos DB](https://azure.microsoft.com/services/documentdb) 新增了多项功能。
+我们的解决方案通过引入 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) 新增了多项功能。
 
 ### <a name="error-management-portal"></a>错误管理门户
 
@@ -430,14 +430,14 @@ ms.lasthandoff: 10/11/2017
 
 我们的开源 Azure 逻辑应用异常管理 API 应用提供如下所述的功能 - 有两个控制器：
 
-* **ErrorController** 将错误记录（文档）插入 DocumentDB 集合中。
-* **LogController** 将日志记录（文档）插入 DocumentDB 集合中。
+* **ErrorController** 将错误记录（文档）插入 Azure Cosmos DB 集合中。
+* **LogController** 将错误记录（文档）插入 Azure Cosmos DB 集合中。
 
 > [!TIP]
-> 这两个控制器都使用 `async Task<dynamic>` 操作，这样可以在运行时解析操作，因此我们可以在操作的正文中创建 DocumentDB 架构。 
+> 这两个控制器都使用 `async Task<dynamic>` 操作，这样可以在运行时解析操作，因此我们可以在操作的正文中创建 Azure Cosmos DB 架构。 
 > 
 
-DocumentDB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId` 并添加戳转换为 Unix 时间戳值（双精度型）的时间戳。 将该值截断以删除小数值。
+Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId` 并添加戳转换为 Unix 时间戳值（双精度型）的时间戳。 将该值截断以删除小数值。
 
 可以[从 GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) 查看我们的错误控制器 API 的源代码。
 
@@ -479,7 +479,7 @@ DocumentDB 中的每个文档都必须具有唯一 ID。 我们使用 `PatientId
 ## <a name="summary"></a>摘要
 
 * 可以在逻辑应用中轻松实现日志记录和错误处理。
-* 可以使用 DocumentDB 作为日志和错误记录的存储库（文档）。
+* 可以使用 Azure Cosmos DB 作为日志和错误记录的存储库（文档）。
 * 可以使用 MVC 创建门户来显示日志和错误记录。
 
 ### <a name="source-code"></a>源代码

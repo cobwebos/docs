@@ -54,7 +54,7 @@
 
 1. 找到包含远程监视解决方案所用 Azure 服务的资源组。 该资源组与预配的远程监视解决方案同名。
 
-1. 在此资源组中导航到 IoT 中心。 然后选择“设备资源管理器”：
+1. 在此资源组中导航到 IoT 中心。 然后选择“IoT 设备”：
 
     ![设备资源管理器](media/iot-suite-selector-connecting/deviceexplorer.png)
 

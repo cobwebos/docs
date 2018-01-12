@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: fc5bfebbcbac7096dea874684bdefe099b572adc
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 9b5b33f61021bf4b0ae238e88c2926c0d17b4929
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 
@@ -118,7 +118,7 @@ ms.lasthandoff: 11/17/2017
 
    ![选择应用程序](./media/resource-group-create-service-principal-portal/select-app.png)
 
-1. 复制“应用程序 ID”并将其存储在应用程序代码中。 [示例应用程序](#sample-applications)部分的应用程序引用此值作为客户端 ID。
+1. 复制“应用程序 ID”并将其存储在应用程序代码中。 某些[示例应用程序](#log-in-as-the-application)将此值作为客户端 ID。
 
    ![客户端 ID](./media/resource-group-create-service-principal-portal/copy-app-id.png)
 

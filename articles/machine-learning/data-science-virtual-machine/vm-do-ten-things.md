@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 9aafd6300bebbb5505aa4ed707cac9716c8e6aa1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 622bb5971a6ad774e770f00d2d9f44999b844d12
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>数据科研虚拟机的十大功能
 
@@ -803,14 +803,14 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
 
 若要从 DSVM 访问 Azure Cosmos DB，需要执行以下每个必要步骤。
 
-1. 安装 DocumentDB Python SDK（在命令提示符下运行 ```pip install pydocumentdb```）
+1. 安装 Azure Cosmos DB Python SDK（在命令提示符下运行 ```pip install pydocumentdb```）
 2. 从 [Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库
 3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，并解压缩到所选目录
 4. 使用迁移工具（安装 Cosmos DB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 Cosmos DB。 通过以下参数输入源和目标位置：
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
-导入数据后，可以转到 Jupyter 并打开标题为 *DocumentDBSample* 的 Notebook，其中包含用于访问 DocumentDB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
+导入数据后，可以转到 Jupyter 并打开标题为 *DocumentDBSample* 的 Notebook，其中包含用于访问 Azure Cosmos DB 和执行一些基本查询的 python 代码。 访问服务的[文档页](https://docs.microsoft.com/azure/cosmos-db/)可了解有关 Cosmos DB 的详细信息。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
 让我们在 Power BI 中可视化我们在上述 Cosmos DB 示例中看到的火山 JSON 文件，以便以可视化方式查看数据。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
@@ -846,7 +846,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
 ![Power BI Desktop 报表视图 - Power BI 连接器](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
 ## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9.动态缩放 DSVM 即可满足项目需求
-可以增加和减少 DSVM 以满足项目需求。 如果不需要在晚上或周末使用 VM，只需从 [Azure 门户](https://portal.azure.com)关闭 VM。
+可以缩放 DSVM 以满足项目需求。 如果不需要在晚上或周末使用 VM，只需从 [Azure 门户](https://portal.azure.com)关闭 VM。
 
 > [!NOTE]
 > 如果仅使用 VM 上的操作系统关闭按钮，则会产生计算费用。  

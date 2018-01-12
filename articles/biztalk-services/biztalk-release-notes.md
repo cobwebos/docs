@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 
@@ -34,8 +36,8 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 * 支持组织帐户：  
   * 方案：使用 Microsoft 帐户（如 user@live.com）注册 BizTalk 服务部署。 在此方案中，仅 Microsoft 帐户用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用组织帐户。  
   * **方案**：使用 Azure Active Directory 中的组织帐户（如 user@fabrikam.com 或 user@contoso.com）注册 BizTalk 服务部署。 在此方案中，仅同一组织内的 Azure Active Directory 用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
-* 在 Azure 经典门户中创建 BizTalk 服务时，会在 BizTalk 服务门户中自动注册。
-  * **方案**：首次登录 Azure 经典门户、创建 BizTalk 服务，并选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
+* 创建 BizTalk 服务时，会在 BizTalk 服务门户中自动注册。
+  * **方案**：首次登录 Azure、创建 BizTalk 服务，然后选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
     请参阅[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx)。  
 
 ### <a name="august-14-update"></a>8 月 14 日更新

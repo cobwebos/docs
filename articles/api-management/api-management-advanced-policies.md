@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 191870aea5f35830115ae1e8885cd3035597411f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 6392a14f6bbc3c4708b36e3e1ab0b5b45a4d0671
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -242,7 +242,7 @@ ms.lasthandoff: 12/04/2017
   
 |属性|说明|必选|默认|  
 |---------------|-----------------|--------------|-------------|  
-|timeout="整数"|以秒为单位的超时间隔，此时间过后对后端服务的调用会失败。|否|无超时|  
+|timeout="整数"|以秒为单位的超时间隔，此时间过后对后端服务的调用会失败。|否|300 秒|  
 |follow-redirects="true &#124; false"|指定是由网关执行从后端服务的重定向，还是将重定向返回到调用方。|否|false|  
   
 ### <a name="usage"></a>使用情况  

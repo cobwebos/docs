@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 598e7c0c60c82c6f752ec37676dae52488cccb21
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dc8da80a89024d687a10b1539eeb1d90d218e4fb
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,7 +130,7 @@ Amazon Redshift 链接的服务支持以下属性：
 | type | 复制活动源的 type 属性必须设置为：**AmazonRedshiftSource** | 是 |
 | query |使用自定义查询读取数据。 |SQL 查询字符串。 例如，select * from MyTable。 |否（如果指定了数据集中的“tableName”） |
 | redshiftUnloadSettings | 使用 Amazon Redshift UNLOAD 时的属性组。 | 否 |
-| s3LinkedServiceName | 表示通过指定“AmazonS3”类型的 ADF 链接服务名称，将用作临时存储的 Amazon S3。 | 是（如果使用的是 UNLOAD） |
+| s3LinkedServiceName | 表示通过指定“AmazonS3”类型的链接服务名称，将用作临时存储的 Amazon S3。 | 是（如果使用的是 UNLOAD） |
 | bucketName | 指示 S3 Bucket 以存储临时数据。 如果未提供，数据工厂服务将自动生成它。  | 是（如果使用的是 UNLOAD） |
 
 **示例：复制活动中使用 UNLOAD 的 Amazon Redshift 源**
@@ -207,7 +207,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 ## <a name="data-type-mapping-for-amazon-redshift"></a>Amazon Redshift 的数据类型映射
 
-从 Teradata 复制数据时，以下映射用于从 Teradata 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 Amazon Redshift 复制数据时，以下映射用于从 Amazon Redshift 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 | Amazon Redshift 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |

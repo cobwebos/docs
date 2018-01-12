@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 1979f5bf5e8cab88dab5fba49018afacf24504b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c752573be7c07f800b0dce3d12d4dabd7328922
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容
 
@@ -43,11 +43,8 @@ ms.lasthandoff: 10/11/2017
 
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
->[!NOTE]
->成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
-
 ## <a name="storage-encryption-overview"></a>存储空间加密概述
-AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR 模式是一分组加密，无需填充便可对任意长度的数据进行加密。 它采用 AES 算法加密计数器分组，并使用要加密或解密的数据对 AES 的输出执行异或运算。  通过将 InitializationVector 的值复制到计数器值的 0 到 7 字节来构造所用的计数器分组，而计数器值的 8 到 15 字节设置为零。 在长度为 16 字节的计数器分组中，8 到 15 字节（即，最少有效字节）用作简单的 64 位无符号整数，对于所处理数据的每个后续分组，该整数都会递增 1 并保留网络字节顺序。 请注意，如果此整数达到最大值 (0xFFFFFFFFFFFFFFFF)，则递增会将分组计数器重置为零（8 到 15 字节），且不会影响其他 64 位计数器（即 0 到 7 字节）。   为了维护 AES-CTR 模式加密的安全性，每个内容密钥的给定密钥标识符的 InitializationVector 值对每个文件必须是唯一的，且文件长度应小于 2^64 分组。  这是为了确保计数器值永远不会重复用于给定密钥。 有关 CTR 模式的详细信息，请参阅[此 wiki 页](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR)（此 wiki 文章使用术语“Nonce”取代“InitializationVector”）。
+AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR 模式是一分组加密，无需填充便可对任意长度的数据进行加密。 它采用 AES 算法加密计数器分组，并使用要加密或解密的数据对 AES 的输出执行异或运算。  通过将 InitializationVector 的值复制到计数器值的 0 到 7 字节来构造所用的计数器分组，而计数器值的 8 到 15 字节设置为零。 在长度为 16 字节的计数器分组中，8 到 15 字节（即，最少有效字节）用作简单的 64 位无符号整数，对于所处理数据的每个后续分组，该整数都会递增 1 并保留网络字节顺序。 如果此整数达到最大值 (0xFFFFFFFFFFFFFFFF)，则递增会将分组计数器重置为零（8 到 15 字节），且不会影响其他 64 位计数器（即 0 到 7 字节）。   为了维护 AES-CTR 模式加密的安全性，每个内容密钥的给定密钥标识符的 InitializationVector 值对每个文件必须是唯一的，且文件长度应小于 2^64 分组。  这是为了确保计数器值永远不会重复用于给定密钥。 有关 CTR 模式的详细信息，请参阅[此 wiki 页](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR)（此 wiki 文章使用术语“Nonce”取代“InitializationVector”）。
 
 使用**存储加密**通过 AES-256 位加密在本地加密明文内容，并将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 
@@ -56,7 +53,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
 ## <a name="create-contentkeys-used-for-encryption"></a>创建用于加密的 ContentKey
 加密的资产必须与存储空间加密密钥关联。 在创建资产文件前，必须创建用于加密的内容密钥。 本节介绍如何创建内容密钥。
 
-以下是用于生成内容密钥的常规步骤，会将这些内容密钥与你想要进行加密的资产关联。 
+以下是用于生成内容密钥的常规步骤，你会将这些内容密钥与想要进行加密的资产关联。 
 
 1. 对于存储空间加密，随机生成一个 32 字节的 AES 密钥。 
    
@@ -118,7 +115,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 响应：
@@ -149,7 +146,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -189,7 +186,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -238,7 +235,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {"Name":"BigBuckBunny" "Options":1}
@@ -285,7 +282,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
     {"uri":"https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A01e6ea36-2285-4562-91f1-82c45736047c')"}
@@ -299,7 +296,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
 
 请注意，**AssetFile** 实例和实际媒体文件是两个不同的对象。 AssetFile 实例包含有关媒体文件的元数据，而媒体文件包含实际媒体内容。
 
-将数字媒体文件上传到 Blob 容器后，需要使用 **MERGE** HTTP 请求来更新 AssetFile 中有关媒体文件的信息（本主题中未展示）。 
+将数字媒体文件上传到 blob 容器后，需要使用 MERGE HTTP 请求来更新 AssetFile 中有关媒体文件的信息（本文中未展示）。 
 
 **HTTP 请求**
 
@@ -310,7 +307,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-4ca2-2233-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     Content-Length: 164
 

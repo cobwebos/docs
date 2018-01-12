@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>创建由 GitHub Webhook 触发的函数
 
@@ -51,9 +51,13 @@ ms.lasthandoff: 10/11/2017
 
     ![Azure 门户中的 Functions 快速入门页](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. 为所需语言选择“GitHub WebHook”模板。 为函数命名，然后选择“创建”。
+2. 在搜索栏中键入 `github`，然后选择需要用于 GitHub Webhook 触发器模板的语言。 
 
-     ![在 Azure 门户中创建 GitHub Webhook 触发的函数](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+     ![选择 GitHub Webhook 触发器模板](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+2. 为函数键入一个**名称**，然后选择“创建”。 
+
+     ![在 Azure 门户中配置 GitHub Webhook 触发的函数](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger-2.png) 
 
 3. 在新函数中，单击“</> 获取函数 URL”，并复制并保存相关值。 针对“</> 获取 GitHub 机密”执行相同的操作。 请使用这些值在 GitHub 中配置 Webhook。
 

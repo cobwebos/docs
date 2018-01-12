@@ -254,6 +254,8 @@
               href: mongodb-mongochef.md
             - name: 使用 Robomongo
               href: mongodb-robomongo.md
+            - name: 使用 Mongoose
+              href: mongodb-mongoose.md
             - name: MongoDB 功能支持
               href: mongodb-feature-support.md
             - name: Angular 教程系列
