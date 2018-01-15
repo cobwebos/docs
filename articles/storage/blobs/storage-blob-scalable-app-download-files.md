@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 12/12/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 46b0cf3666088175372b6a2e73b3dd421a4bff8b
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 3842860acb1c0fdd9e07f6d2f678ac5d5304003b
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>从 Azure 存储下载大量随机数据
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/13/2017
 > * 运行应用程序
 > * 验证连接数
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要完成本教程，必须先完成上一存储教程：[将大量随机数据并行上传到 Azure 存储][previous-tutorial]。
 
@@ -63,7 +63,7 @@ public static void Main(string[] args)
         UploadFilesAsync().GetAwaiter().GetResult();
 
         // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-scaleable-app-download-files.
+        // initially to support the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scaleable-app-download-files.
         // DownloadFilesAsync().GetAwaiter().GetResult();
     }
     catch (Exception ex)
@@ -74,7 +74,7 @@ public static void Main(string[] args)
     finally
     {
         // The following function will delete the container and all files contained in them.  This is commented out initialy
-        // As the tutorial at https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
+        // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
         if (!exception)
         {
             // DeleteExistingContainersAsync().GetAwaiter().GetResult();

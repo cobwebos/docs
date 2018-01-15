@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: ab675207094bc8ee317573192c33c20039780fe2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e885a482edcba48c18e425c54f4acc28ee650ddd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -200,7 +200,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和 Reliable Hashmaps，可以将数据直接存储在服务中而无需外部持久性存储。 Reliable Hashmaps 可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和 Reliable Hashmaps，可以将数据直接存储在服务中而无需外部持久性存储。 Reliable Hashmaps 可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个*副本*来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
 
 Reliable Collections 可以存储任何 Java 类型（包括自定义类型），但需要注意以下几点：
 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: d8e34924cb29e2e6469d009e40b04d5cee8930a6
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>预测性维护实际方案
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 12/13/2017
 
 重资产型行业企业面临的主要挑战是机械问题延误所导致的巨额成本。 大多数企业都有兴趣预测何时出现这些问题，以便在问题发生之前将其扼杀在摇篮里。 目标是减少停机时间，某些情况下还能提高安全性，从而降低成本。 
 
-此方案根据[预测性维护战术手册](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)中的理念来演示如何为模拟的数据集创建预测性模型。 示例数据来自许多预测性维护用例中的常用元素。
+此方案根据[预测性维护战术手册](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)中的理念来演示如何为模拟的数据集创建预测性模型。 示例数据来自许多预测性维护用例中的常用元素。
 
 这些模拟数据的业务问题是预测组件故障引发的问题。 因此，业务问题是“*由于组件故障而导致计算机故障的概率是多少*？” 将该问题格式化为多类分类问题（每个计算机多个组件），并使用机器学习算法来创建预测性模型。 基于从计算机中收集的历史数据定型模型。 在此方案中，用户将在 Azure Machine Learning Workbench 环境中完成实现此类模型的各种步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-* [Azure 帐户](https://azure.microsoft.com/en-us/free/)（提供免费试用版）。
+* [Azure 帐户](https://azure.microsoft.com/en-us/free/)（有免费试用版可用）。
 * 遵循[安装快速入门指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 * Azure 机器学习操作化需要一个本地部署环境和[模型管理帐户](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)
 

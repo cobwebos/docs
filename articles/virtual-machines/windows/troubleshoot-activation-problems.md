@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 4f3a388e95d3689cafcd2462e821cb361c46989a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f6095d98ada2974bce03ec8f5527367837daafd3
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/03/2018
 >[!NOTE]
 >如果使用的是站点间 VPN 和强制隧道，请参阅[使用 Azure 自定义路由通过强制隧道启用 KMS 激活](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)。 
 >
->如果使用的是 ExpressRoute 且已发布默认路由，请参阅 [Azure VM 可能无法通过 ExpressRoute 激活](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)。
+>如果使用的是 ExpressRoute 且已发布默认路由，请参阅 [Azure VM 可能无法通过 ExpressRoute 激活](https://blogs.technet.microsoft.com/jpaztech/2016/05/16/azure-vm-may-fail-to-activate-over-expressroute/)。
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>第 1 步：配置相应的 KMS 客户端安装密钥（对于 Windows Server 2016 和 Windows Server 2012 R2）
 

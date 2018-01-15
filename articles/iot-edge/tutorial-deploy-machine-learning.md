@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/13/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2afdb257421b1333f451eb9d0dd4c2af5a12e946
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a0131fdbbf926d59eae06089cde109649a1433b8
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
@@ -30,12 +30,12 @@ ms.lasthandoff: 12/13/2017
 本教程中创建的 Azure 机器学习模块将读取设备生成的温度数据，并且在检测到故障（称为异常）时仅将消息向上游发送到 Azure IoT 中心。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 已通过快速入门或第一个教程创建 Azure IoT Edge 设备。
 * IoT 中心连接字符串适用于 IoT Edge 设备连接到的 IoT 中心。
 * 一个 Azure 机器学习帐户。 若要创建帐户，请按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
-* 计算机上的“Azure ML 模块管理”。 若要设置环境并创建帐户，请按照[模型管理设置](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration)中的说明进行操作。
+* 计算机上的“Azure ML 模块管理”。 若要设置环境并创建帐户，请按照[模型管理设置](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration)中的说明进行操作。
 
 ## <a name="create-the-azure-ml-container"></a>创建 Azure ML 容器
 在本部分中，你将下载已训练的模型文件并将它们转换为 Azure ML 容器。  
@@ -102,7 +102,7 @@ Windows:
     }
     ``` 
 
-1. 选择“下一步”。 
+1. 选择“**下一步**”。 
 1. 在“审阅模板”步骤中，选择“提交”。 
 1. 返回到“设备详细信息”页，并选择“刷新”。  你应该会看到新的“machinelearningmodule”在与“tempSensor”模块和 IoT Edge 运行时模块同时运行。
 
