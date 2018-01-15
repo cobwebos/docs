@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: b7b27ca64d9aacabf96fdff8e7dca16f13000d19
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: e1734bdd22ecfc4e54074f02582f5a8eca7d4f59
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure 自动化方案 - 自动删除资源组
 许多客户会创建多个资源组。 有些资源组专门用于管理生产应用程序，还有一些资源组可能用于开发、测试和过渡环境。 自动部署这些资源是一回事，但按一下鼠标就能取消配置资源组则是另一回事。 使用 Azure 自动化可以简化这种常见的管理任务。 如果使用的 Azure 订阅由于会员优惠制度（例如 MSDN 或 Microsoft Partner Network Cloud Essentials 计划）而实施支出限制，则使用自动化就很有帮助。
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/14/2017
 | PreviewMode（可选） |执行此 Runbook 可查看将删除哪些资源组，但不执行任何操作。<br>默认值为 **true**，可帮助避免意外删除传递给 Runbook 的一个或多个资源组。 |
 
 ## <a name="install-and-configure-this-scenario"></a>安装和配置此方案
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 此 Runbook 使用 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)进行身份验证。    
 
 ### <a name="install-and-publish-the-runbooks"></a>安装和发布 Runbook

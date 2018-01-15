@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: 5326aa5af174c9027729b98eac62a314e3ecc122
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: cbec6242fb4e185c9801a93fc2c4b35721269c2f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>使用 PowerShell 的 Azure 堆栈启用备份
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/11/2018
 
 ## <a name="download-azure-stack-tools"></a>下载 Azure 堆栈工具
 
-安装和配置适用于 Azure 堆栈的 PowerShell 和 Azure 堆栈工具。 请参阅[获取启动并运行 Azure 堆栈中的 PowerShell](https://review.docs.microsoft.com/en-us/azure/azure-stack/azure-stack-powershell-configure-quickstart)。
+安装和配置适用于 Azure 堆栈的 PowerShell 和 Azure 堆栈工具。 请参阅[获取启动并运行 Azure 堆栈中的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)。
 
 ##  <a name="load-the-connect-and-infrastructure-modules"></a>加载连接和基础结构模块
 

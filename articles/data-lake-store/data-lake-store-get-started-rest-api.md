@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 6c43f2b341280731707e486ba6f22f11560102c6
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5fafde870a01a6ceb5e86f7b00b0ca11b748c68a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-rest-api"></a>Azure Data Lake Store 上的帐户管理操作（使用 REST API）
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 
 本文介绍如何使用 REST API 在 Data Lake Store 上执行帐户管理操作。 帐户管理操作包括创建 Data Lake Store 帐户、删除 Data Lake Store 帐户，等等。若要了解如何使用 REST API 在 Data Lake Store 上执行文件系统操作，请参阅[在 Data Lake Store 上使用 REST API 进行的文件系统操作](data-lake-store-data-operations-rest-api.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **[cURL](http://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Store 帐户进行 REST API 调用。

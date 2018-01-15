@@ -1,5 +1,5 @@
 ---
-title: "创建 StorSimple 8000 系列支持包 | Microsoft 文档"
+title: "创建 StorSimple 8000 系列支持包 | Microsoft Docs"
 description: "了解如何创建、解密和编辑 StorSimple 8000 系列设备支持包。"
 services: storsimple
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -73,8 +73,8 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 | 参数 | 必需/可选 | 说明 |
 | --- | --- | --- |
-| `-Path` |必选 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
-| `-EncryptionPassphrase` |必选 |用于提供一个密码，以便加密支持包。 |
+| `-Path` |必需 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-EncryptionPassphrase` |必需 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |
 | `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
@@ -147,6 +147,6 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[支持包中收集的信息](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
-* 了解如何[使用支持包和设备日志排查设备部署问题](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。
+* 了解如何[使用支持包和设备日志排查设备部署问题](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)。
 * 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 

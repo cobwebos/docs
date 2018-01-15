@@ -4,7 +4,7 @@ description: "了解如何使用 Spark MLlib 创建机器学习应用，以通�
 keywords: "spark 机器学习, spark 机器学习示例"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
-ms.author: nitinme
-ms.openlocfilehash: f98659081b991d403b6477196042c6ff3d40bb12
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: jgao
+ms.openlocfilehash: 864d34306dad2915a15b032a27600cefdc632bb9
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Spark MLlib 生成机器学习应用程序并分析数据集
 
@@ -179,7 +179,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
     后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](http://pandas.pydata.org/) 数据帧进行保存，指定名称为 **countResultsdf**。
 
-    应该会显示如下输出：
+    应该看到如下输出：
 
     ![SQL 查询输出](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL 查询输出")
 

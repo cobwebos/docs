@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: c66488ce4381a3c5f796aa9826810195b2738769
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98517b546fe5a00ad17d8478e94bc78a012c2de8
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 本教程介绍了在 Azure 媒体服务 .NET SDK 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 以下是完成本教程所需具备的条件：
 
@@ -246,7 +246,7 @@ ms.lasthandoff: 12/11/2017
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest**(format=m3u8-aapl)**
 
-#### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>平滑流式处理的流 URL 采用以下格式：
+#### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>平滑流式处理的流式处理 URL 采用以下格式：
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest
 
@@ -390,4 +390,4 @@ MPEG DASH
 
 <!-- URLs. -->
 [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-[Portal]: http://manage.windowsazure.com/
+[Portal]: http://portal.azure.com/

@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 6f5ca44e08c783fdf22a14d71c56c3019cc2bb52
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的声明映射（公共预览版）
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 12/11/2017
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|email|
+|电子邮件|
 |endpoint|
 |enfpolids|
 |exp|
@@ -280,7 +280,7 @@ Source 元素必须设置为以下值之一：
 ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source 的每个值有效的 ID 值。
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
-|源|ID|说明|
+|Source|ID|说明|
 |-----|-----|-----|
 |用户|surname|姓氏|
 |用户|givenname|名字|
@@ -317,7 +317,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |用户|othermail|其他邮件|
 |用户|country|国家/地区|
 |用户|city|城市|
-|用户|state|状态|
+|用户|state|State|
 |用户|jobtitle|职务|
 |用户|employeeid|员工 ID|
 |用户|facsimiletelephonenumber|传真电话号码|
@@ -378,7 +378,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 **SAML NameID 和 UPN：**NameID 和 UPN 值所源自的属性以及允许使用的声明转换会受到限制。
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
-|源|ID|说明|
+|Source|ID|说明|
 |-----|-----|-----|
 |用户|mail|电子邮件地址|
 |用户|userprincipalname|用户主体名称|
@@ -419,7 +419,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>系统必备
 在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解如何获取 Azure AD 租户。 
 
 若要开始，请执行以下步骤：
@@ -490,7 +490,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
     1. 若要创建该策略，请运行以下命令： 
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformation":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"Id":"string2","Value":"sandbox"},{"Id":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
     ```
     
     2. 若要查看新策略并获取策略 ObjectId，请运行以下命令： 

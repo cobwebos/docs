@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 89a0f388815b3a0e2a6e020690f9a644e73bbcad
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>补充课程 - 不规则层次结构
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 在本补充课程中，将解决对在不同级别包含空白值（成员）的层次结构进行透视时的一个常见问题。 例如，某个组织的高级经理同时具有部门经理和非经理作为直接下属。 或者，地理区域层次结构包含国家/地区-区域-城市，其中，某些城市没有父代“州”或“省”，例如“华盛顿特区”、“梵蒂冈城”。 当某个层次结构具有空白成员时，它通常降低到不同的（或不规则的）级别。
 
@@ -33,7 +31,7 @@ ms.lasthandoff: 11/02/2017
   
 本课预计完成时间：**20 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本补充课程主题是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。 
 
 如果已经将“AW Internet 销售”项目创建为教程的一部分，则模型中尚未包含任何不规则的数据或层次结构。 若要完成本补充课程，必须首先通过添加一些其他表并创建关系、计算列、度量值和新的 Organization 层次结构来制造问题。 该部分需要花费大约 15 分钟。 然后，需要花费几分钟时间来解决此问题。  

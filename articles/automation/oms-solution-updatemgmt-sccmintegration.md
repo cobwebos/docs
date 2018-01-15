@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 40e343ab75a2c2508d64ec0aeb293f5154813135
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 4696f3b9602c1da01d9706f15f38cdf5bc0f3372
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>将 System Center Configuration Manager 与 OMS 更新管理集成
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/14/2017
 
 基于 OMS 与 Configuration Manager 之间目前已有的集成，可以通过在 Configuration Manager 中创建和预暂存软件更新部署来报告和更新托管 Windows 服务器，并使用[更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)获取已完成的更新部署的详细状态。 如果使用 Configuration Manager 提供 Windows 服务器的更新合规性报告而不使用它管理更新部署，则可以继续向 Configuration Manager 进行报告，而使用 OMS 更新管理解决方案管理安全更新。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 必须将[更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)添加到 Log Analytics 工作区并将其与同一资源组和区域中的自动化帐户链接在一起。   
 * 当前由 System Center Configuration Manager 环境管理的 Windows 服务器还需要向也启用了更新管理解决方案的 Log Analytics 工作区进行报告。  

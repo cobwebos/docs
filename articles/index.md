@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: 56e50d633b29d2a5ce14fb50515407ac9d3bd821
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7a707abdb949927e5f3affe208001f245ace51f2
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/12/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -237,11 +237,11 @@ ms.lasthandoff: 01/11/2018
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/jenkins">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_jenkins.svg" alt=""> Jenkins </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_jenkins.svg" alt=""> Jenkins </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/terraform">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_terraform.svg" alt=""> Terraform </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_terraform.svg" alt=""> Terraform </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -893,7 +893,7 @@ ms.lasthandoff: 01/11/2018
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/en-us/azure/sql-data-warehouse/">
+                                            <a href="/azure/sql-data-warehouse/">
                                                 <img src="media/index/sqldatawarehouse.svg" alt="" />
                                                 <p>SQL 数据仓库</p>
                                             </a>
@@ -2406,7 +2406,7 @@ ms.lasthandoff: 01/11/2018
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/event-hubs/">
+                                <a href="/azure/event-hubs/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2444,7 +2444,7 @@ ms.lasthandoff: 01/11/2018
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/sql-data-warehouse/">
+                                <a href="/azure/sql-data-warehouse/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2880,7 +2880,7 @@ ms.lasthandoff: 01/11/2018
                                 </a>
                             </li>                            
                             <li>
-                                <a href="/en-us/azure/event-hubs/">
+                                <a href="/azure/event-hubs/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4174,7 +4174,7 @@ Azure CLI </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="https://docs.microsoft.com/en-us/media/common/i_tools.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/common/i_tools.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: f3b4b41593e0956e98f05c7f8d1c71632a489e56
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 7e489526fd1b6a7d38172d147df1f30d74119e95
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>鸢尾花分类（第 2 部分）：生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -34,7 +34,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 完成本系列教程的第一部分。 开始本教程的步骤之前，请遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建 Azure 机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
 
 （可选）可以尝试对本地 Docker 容器运行脚本。 为此，需在本地的 Windows 或 Mac OS 计算机上安装并启动 Docker 引擎（Community Edition 已足够）。 有关 Docker 安装的详细信息，请参阅 [Docker 安装说明](https://docs.docker.com/engine/installation/)。
@@ -345,7 +345,8 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>在 HDInsight 群集中执行脚本
 还可以在 HDInsight Spark 群集中运行此脚本。 了解[如何创建要在 Azure ML Workbench 中使用的 HDInsight Spark 群集](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
 
->![NOTE] HDInsight 群集必须使用 Azure Blob 作为主存储。 尚不支持使用 Azure Data Lake 存储。
+>[!NOTE] 
+>HDInsight 群集必须使用 Azure Blob 作为主存储。 尚不支持使用 Azure Data Lake 存储。
 
 1. 如果有权访问 Azure HDInsight 群集的 Spark，请按如下所示生成 HDInsight 运行配置命令。 提供 HDInsight 群集名称、HDInsight 用户名和密码作为参数。 请使用以下命令：
 

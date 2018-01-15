@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 30b3ed453cb67516b49bcf27376a1a0aea43d9b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c7e6cc4a78b3e31b1357671fdb19d8eb9cf927ce
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 集成
 
@@ -27,19 +27,19 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 SCC LifeCycle
 - 可以让用户使用其 Azure AD 帐户自动登录到 SCC LifeCycle（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要配置 Azure AD 与 SCC LifeCycle 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 SCC LifeCycle 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
-    b.在“磁贴徽标”下面，选择“删除上传的徽标”。 在“标识符”文本框中，使用以下模式键入 URL：
+    b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -132,10 +132,8 @@ ms.lasthandoff: 12/11/2017
 
 6. 若要在 SCC LifeCycle 端配置单一登录，需将下载的元数据 XML 发送给[ SCC LifeCycle 支持团队](mailto:lifecycle.support@scc.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-     >[!NOTE]
-   >单一登录必须由 SCC LifeCycle 支持团队来启用。
-   > 
-   > 
+  >[!NOTE]
+  >单一登录必须由 SCC LifeCycle 支持团队来启用。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -166,11 +164,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-an-scc-lifecycle-test-user"></a>创建 SCC LifeCycle 测试用户
 
@@ -179,7 +177,7 @@ ms.lasthandoff: 12/11/2017
 当已分配的用户尝试登录到 SCC LifeCycle 时，系统会根据需要自动创建 SCC LifeCycle 帐户。
 
 > [!NOTE]
-    > Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
+> Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -221,7 +219,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

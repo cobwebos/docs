@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 4877258c128d00f621eb198b0f0ec7d197e757ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c00dc99950c25dedc94c17444881a049138a7c5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>用于 Azure Data Lake Store 的开放源代码应用程序
 本文列出了用于 Azure Data Lake Store 的开放源代码大数据应用程序。 对于下表中的应用程序，仅支持所列分配可用的版本。 有关 HDInsight 可用的应用程序版本，请参阅 [HDInsight 组件版本](../hdinsight/hdinsight-component-versioning.md)。

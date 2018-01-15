@@ -223,7 +223,7 @@
 - name: 相关内容
   items:
     - name: Microsoft 认知工具包 - CNTK
-      href: 'https://docs.microsoft.com/en-us/cognitive-toolkit/'
+      href: 'https://docs.microsoft.com/cognitive-toolkit/'
       maintainContext: true
     - name: Cortana Intelligence 合作伙伴解决方案
       items:
@@ -240,7 +240,7 @@
             - name: 异常检测
               href: apps-anomaly-detection-api.md
             - name: 认知服务
-              href: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+              href: 'https://docs.microsoft.com/azure/cognitive-services/'
             - name: 预见性维护
               items:
                 - name: 概述

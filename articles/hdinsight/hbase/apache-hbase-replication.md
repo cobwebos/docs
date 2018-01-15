@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b5497e9d66833ec8bc291c40d71931aff11820c2
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b0a22815dc0bf0ea31e47efe5152498f9aa45de4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 01/03/2018
 
 可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>设置环境
@@ -121,7 +121,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 | 群集名称 | &lt;ClusterNamePrefix>1 |
 | 群集版本 | 3.6 |
 | 群集类型 | hbase |
-| 群集工作节点计数 | #N/A |
+| 群集工作节点计数 | 2 |
 
 
 **VNet 2**
@@ -143,7 +143,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 | 群集名称 | &lt;ClusterNamePrefix>2 |
 | 群集版本 | 3.6 |
 | 群集类型 | hbase |
-| 群集工作节点计数 | #N/A |
+| 群集工作节点计数 | 2 |
 
 HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper 节点设置静态 IP 地址。 若要设置静态 IP，请参阅本文的[在同一区域中设置两个虚拟网络](#set-up-two-virtual-networks-in-the-same-region)。
 
@@ -182,7 +182,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 必需参数：
 
-|名称|说明|
+|名称​​|说明|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -191,7 +191,7 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 
 可选参数：
 
-|名称|说明|
+|名称​​|说明|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
@@ -283,4 +283,4 @@ HBase 复制使用 ZooKeeper VM 的 IP 地址。 必须为目标 HBase ZooKeeper
 * [HDInsight 中的 Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight HBase 概述](./apache-hbase-overview.md)
 * [在 Azure 虚拟网络中创建 HBase 群集](./apache-hbase-provision-vnet.md)
-* [使用 HDInsight (Hadoop) 中的 Storm 和 HBase 分析传感器数据](../storm/apache-storm-sensor-data-analysis.md)
+

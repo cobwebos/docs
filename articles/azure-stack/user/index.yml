@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/02/2017
   ms.author: carolz
-  ms.openlocfilehash: 13bfcbfdb180ee50efa392ad43d58839e7e52cf0
-  ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+  ms.openlocfilehash: 6ab2ecc6e2082939b51eef8a95fe68a9303ab47c
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/13/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Azure Stack 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack 上生成应用。 然后，可将这些应用部署到 Azure Stack 或 Azure，或者，可以生成利用 Azure Stack 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你管理基础结构和提供服务 Azure 堆栈操作员，请参阅我们<a href=\"/azure/azure-stack/\">运算符文档</a>。"
 sections:
@@ -38,7 +38,7 @@ sections:
       text: PowerShell
       href: azure-stack-quick-create-vm-windows-powershell.md
     - image:
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
       text: CLI
       href: azure-stack-quick-create-vm-windows-cli.md
   - type: paragraph
@@ -55,7 +55,7 @@ sections:
       text: PowerShell
       href: azure-stack-quick-create-vm-linux-powershell.md
     - image:
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
       text: CLI
       href: azure-stack-quick-create-vm-linux-cli.md
 - title: "分步教程"
@@ -66,7 +66,7 @@ sections:
     style: ordered
     items:
     - html: "<a href=\"/azure/azure-stack/user/azure-stack-solution-pipeline\">将应用部署到 Azure Stack 和 Azure</a>"
-- title: "引用"
+- title: "参考"
   items:
   - type: list
     style: cards

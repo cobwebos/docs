@@ -2,8 +2,8 @@
 title: "启用与 iOS 移动应用进行脱机同步 | Microsoft 文档"
 description: "了解如何使用 Azure 应用服务移动应用来缓存和同步 iOS 应用程序中的脱机数据。"
 documentationcenter: ios
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 44c0d26b2d7d28322d436d4bda319d728c31a635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: b676b51241e4883fb1b4c40caba8e281bfa68a4c
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -158,11 +158,11 @@ ms.lasthandoff: 10/11/2017
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
 | id | Integer 64 |
 | itemId | 字符串 |
-| properties | 二进制数据 |
+| 属性 | 二进制数据 |
 | 表 | 字符串 |
 | tableKind | 16 位整数 |
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 10/11/2017
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
 | id |字符串 |
 | operationId |64 位整数 |
@@ -182,26 +182,26 @@ ms.lasthandoff: 10/11/2017
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
 | id |字符串 |
 | key |字符串 |
 | keyType |64 位整数 |
 | 表 |字符串 |
-| value |字符串 |
+| 值 |字符串 |
 
 ### <a name="data-table"></a>数据表
 
 **TodoItem**
 
-| 属性 | 类型 | 注意 |
+| 属性 | Type | 注意 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
 | complete | 布尔 | 待办事项字段 |
-| text |String |待办事项字段 |
+| text |字符串 |待办事项字段 |
 | createdAt | 日期 | （可选）映射到 **createdAt** 系统属性 |
 | updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
-| 版本 | String | （可选）用于检测冲突，映射到版本 |
+| 版本 | 字符串 | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。

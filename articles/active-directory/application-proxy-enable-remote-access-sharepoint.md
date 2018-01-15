@@ -3,7 +3,7 @@ title: "通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问 |
 description: "概要介绍如何将本地 SharePoint 服务器与 Azure AD 应用程序代理相集成。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: edc5602586ae2397bc039f252be09df969b06925
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6a1b82b82dc89378533e375bd8a5d4868ae5308
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 若要通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问，请一步步完成本文各部分的操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 本文假设已在环境中安装 SharePoint 2013 或更高版本。 此外，请注意以下先决条件：
 
@@ -156,7 +156,7 @@ Klist
   ![添加服务帐户的 SPN](./media/application-proxy-remote-sharepoint/users-computers.png)
 
 6. 在 SPN 列表中，选择此前为服务帐户创建的 SPN。
-7. 单击 **“确定”**。 再次单击“确定”保存更改。
+7. 单击“确定”。 再次单击“确定”保存更改。
 
 ## <a name="step-2-enable-remote-access-to-sharepoint"></a>步骤 2：启用对 SharePoint 的远程访问
 
@@ -198,7 +198,7 @@ Klist
 
   ![输入路径](./media/application-proxy-remote-sharepoint/alternate-access3.png)
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 现在，可以通过 Azure AD 应用程序代理从外部访问 SharePoint 站点。
 

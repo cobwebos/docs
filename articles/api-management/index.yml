@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: carolz
-  ms.openlocfilehash: 4a07555023e86dae1d77cc85cdcd5d10abb4bd96
-  ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+  ms.openlocfilehash: 627498481ff5e64573478dd736cdd28962036caf
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/04/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "了解如何使用 API 管理来安全、大规模地将 API 发布到外部、合作伙伴和雇用的开发人员。 教程、API 参考和其他文档介绍了如何为任意位置托管的现有后端服务创建和管理现代 API 网关。"
 sections:
@@ -29,11 +29,11 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
       text: "创建实例 - 门户"
       href: /azure/api-management/get-started-create-service-instance
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
       text: "创建实例 - PowerShell"
       href: /azure/api-management/powershell-create-service-instance
 - title: "分步教程"

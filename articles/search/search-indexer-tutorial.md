@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: c5b7d5a5f20a4a70cbbbe43e33fdf65f12cb8e7d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>如何使用 Azure 搜索索引器对 Azure SQL 数据库进行爬网
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/15/2017
 > * 搜索索引
 > * 查看门户中的索引器配置
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 有效的 Azure 帐户。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/free/)。 
 
@@ -286,7 +286,7 @@ public string HotelName { get; set; }
 有关其他受支持数据源的特定详细信息和任务，请参阅以下文章：
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [使用 Azure 搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)

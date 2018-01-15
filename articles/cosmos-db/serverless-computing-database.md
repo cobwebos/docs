@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: aeef39294bbf3ad4192fe116c6972e52bfa1c816
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -34,6 +34,9 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 * 或者，使用“输入绑定”将 Azure Function 绑定到 Azure Cosmos DB 集合。 执行某个函数时，输入绑定将从容器中读取函数。
 * 使用“输出绑定”将函数绑定到 Azure Cosmos DB 集合。 当函数执行完成时，输出绑定会将数据写入容器。
 
+> [!NOTE]
+> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。
+
 下图介绍了所有这三种集成： 
 
 ![Azure Cosmos DB 和 Azure Functions 如何集成](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
@@ -42,9 +45,6 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 * Azure Cosmos DB 触发器可与其他 Azure Cosmos DB 容器的输出绑定一起使用。 函数在更改源中的某个项目上执行操作后，可以将其写入其他容器（将其写入其来源的同一容器将有效创建递归循环）。 或者，将 Azure Cosmos DB 触发器与某个输出绑定一起使用，可有效地将所有更改的项目从一个容器迁移到其他容器。
 * Azure Cosmos DB 的输入绑定和输出绑定可在相同 Azure Function 中使用。 这非常适用于以下情况：使用输入绑定查找某些数据，在 Azure Function 中进行修改，并在修改后将其保存到相同容器或不同容器。
 * Azure Cosmos DB 容器的输入绑定可在 Azure Cosmos DB 触发器的相同函数中使用，并且无论是否与输出绑定一起使用都可正常运行。 可以使用此组合以将最新汇率信息（使用输入绑定提取到汇率容器）应用到购物车服务中新订单的更改源。 已对更新的购物车总额应用当前的货币兑换，可以使用输出绑定将其写入第三个容器中。
-
-> [!NOTE]
-> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。
 
 ## <a name="use-cases"></a>用例
 
@@ -153,7 +153,7 @@ Azure Functions 的优点：
 * [在 Azure 门户中创建 Azure Cosmos DB 触发器](https://aka.ms/cosmosdbtriggerportalfunc)
 * [使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器](https://aka.ms/cosmosdbinputbind)
 * [使用 Azure Functions 和 Cosmos DB 存储非结构化数据](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
-* [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-documentdb.md)
+* [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-cosmosdb.md)
 
 
  

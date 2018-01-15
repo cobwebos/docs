@@ -3,7 +3,7 @@ title: "发布本机客户端应用 - Azure AD | Microsoft Docs"
 description: "介绍如何使本机客户端应用与 Azure AD 应用程序代理连接器通信，以提供本地应用的安全远程访问。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: de49a8343a3db6c8b890050e7791f77105a09a3a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2be62c00d144e47cef8ea4df5aa82554f2bbcc18
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/11/2017
 4. 指定应用程序的名称，选择“本机”作为应用程序类型，并提供应用程序的重定向 URI。 
 
    ![创建新的应用注册](./media/active-directory-application-proxy-native-client/create.png)
-5. 选择“创建” 。
+5. 选择“创建”。
 
 有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](.//develop/active-directory-integrating-applications.md)。
 

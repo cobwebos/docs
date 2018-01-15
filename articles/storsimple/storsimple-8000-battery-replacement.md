@@ -4,7 +4,7 @@ description: "介绍如何移除、替换和维护 StorSimple 设备上的备用
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/05/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 174a3163082594ea6a49b7f5a78857848f8f0566
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8071cde67017ff031418f0d97da15a618c4969b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的备用电池模块
 
@@ -49,7 +49,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | #N/A |PCM 1 |
+   | 2 |PCM 1 |
    | 3 |控制器 0 |
    | 4 |控制器 1 |
    
@@ -62,12 +62,12 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    | 标签 | 说明 |
    |:--- |:--- |
    | 1 |交流电源故障 |
-   | #N/A |风扇故障 |
+   | 2 |风扇故障 |
    | 3 |电池故障 |
    | 4 |PCM 正常 |
    | 5 |直流电源故障 |
    | 6 |电池功能正常 |
-3. 若要移除电池发生故障的 PCM，请按[移除 PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm) 中的步骤操作。
+3. 若要移除电池发生故障的 PCM，请按[移除 PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm) 中的步骤操作。
 4. 移除 PCM 之后，请抬起并旋转电池模块把手（如下图所示），并向上拉将电池移除。
    
     ![将电池从 PCM 移除](./media/storsimple-battery-replacement/IC741019.png)
@@ -82,7 +82,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
 #### <a name="to-install-the-battery-module"></a>安装电池模块
 1. 按正确方向将备用电池模块置于 PCM 中。
 2. 按下电池模块把手，直至连接器就位。
-3. 按[更换 StorSimple 设备上的电源和散热模块](storsimple-power-cooling-module-replacement.md)中的指导更换主机箱中的 PCM。
+3. 按[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md)中的指导更换主机箱中的 PCM。
 4. 更换完成后，在 Azure 门户中，转到设备，然后转到“监视器” > “硬件运行状况”。 验证电池的状态，确保安装成功。 状态为绿色表示电池功能正常。
 
 ## <a name="maintain-the-backup-battery-module"></a>维护备用电池模块

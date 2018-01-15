@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 23506804ee41688bfebeb0674d99154ff1c77e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c00d324adfc1b71d436cb017214af98ff3002cf
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) 域服务
 ## <a name="overview"></a>概述
@@ -37,15 +37,17 @@ ms.lasthandoff: 12/11/2017
 Azure AD 域服务经过精心设计，可以提供一种更简便的替代方法。
 
 ### <a name="watch-an-introductory-video"></a>观看介绍视频
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
 
+>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
 ## <a name="introducing-azure-ad-domain-services"></a>Azure AD 域服务简介
+
 Azure AD 域服务提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器即可使用这些域服务。 Azure AD 域服务与现有的 Azure AD 租户集成，因此可让用户使用其企业凭据登录。 此外，可以使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源“即时转移”到 Azure 基础结构服务。
 
 无论 Azure AD 租户是在云中还是在本地 Active Directory 中，Azure AD 域服务功能都能顺利运行。
 
 ### <a name="azure-ad-domain-services-for-cloud-only-organizations"></a>仅限云的组织的 Azure AD 域服务
+
 仅限云的 Azure AD 租户（通常称为“托管租户”）不占用任何本地标识。 换而言之，用户帐户、其密码和组成员身份都在云本地 - 也就是说，在 Azure AD 中创建和管理。 假设 Contoso 是一个仅限云的 Azure AD 租户。 如下图所示，Contoso 的管理员已在 Azure 基础结构服务中配置虚拟网络。 应用程序和服务器工作负荷部署在此虚拟网络中的 Azure 虚拟机上。 由于 Contoso 是仅限云的租户，所有用户标识、其凭据和组成员身份都在 Azure AD 中创建和管理。
 
 ![Azure AD 域服务概述](./media/active-directory-domain-services-overview/aadds-overview.png)

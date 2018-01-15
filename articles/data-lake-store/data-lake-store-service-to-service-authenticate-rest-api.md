@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 754e65c4bcf8574a16b9620e2f21938ecc62b735
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 80934d3e5ded5c01e473f8450a3484d84c46e94e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>使用 REST API 进行 Data Lake Store 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/21/2017
 
 本文介绍如何使用 REST API 执行 Azure Data Lake Store 服务到服务身份验证。 有关使用 REST API 的 Data Lake Store 最终用户身份验证，请参阅[使用 REST API 通过 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
@@ -55,5 +55,4 @@ ms.lasthandoff: 12/21/2017
 
 * [使用 REST API 在Data Lake Store 上进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
 * [使用 REST API 在 Data Lake Store 上进行的数据操作](data-lake-store-data-operations-rest-api.md)
-
 

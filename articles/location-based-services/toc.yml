@@ -34,11 +34,11 @@
 - name: 引用
   items:
     - name: 功能 API
-      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
+      href: 'https://docs.microsoft.com/rest/api/location-based-services/'
     - name: 管理 API
-      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
+      href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: 地图控件 API - Javascript
-      href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
+      href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
 - name: 资源
   items:
     - name: Azure IoT 开发人员中心

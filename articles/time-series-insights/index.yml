@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/13/2017
   ms.author: kfile
-  ms.openlocfilehash: 3c181142dcdb4132964ba5da9582b9f2b1ad817e
-  ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+  ms.openlocfilehash: 8ccc0fe8ca23fabb6d2cb697836e8f402dbaf672
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/14/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "了解如何设置时序见解环境，以及如何浏览和分析 IoT 解决方案或所连接对象的时序数据。 文档介绍了先决条件、操作方法、API 参考和其他文档，可帮助你在几分钟内入门。"
 sections:
@@ -29,7 +29,7 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/time-series-insights/media/index/time-series-insights.svg
+        src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
       text: "探索 Azure 时序见解"
       href: /azure/time-series-insights/time-series-quickstart
 - title: "引用"

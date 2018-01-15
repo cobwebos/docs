@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 02b1b3f2a567f6073b891a0376eddbc87cd268aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 借助 Azure Active Directory (Azure AD) 传递身份验证证，用户可使用同一密码登录到本地应用程序和基于云的应用程序。 此功能为用户提供更好的体验 - 少记一个密码，并且能减少 IT 支持人员成本，因为用户不太可能忘记如何登录。 如果用户使用 Azure AD 进行登录，此功能可直接针对本地 Active Directory 验证用户的密码。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
 此功能是 [Azure AD 密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)的一种替代方法，可为组织提供同样的云身份验证权益。 但是，某些组织中的安全和符合性策略不允许这些组织发送用户密码，即使是以经过哈希处理的窗体在其内部边界之外进行发送也是如此。 传递身份验证是这类组织的理想解决方案。
 

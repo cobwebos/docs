@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7199009553eb7aae31db3f913fe4de87e03d74ba
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 
@@ -32,15 +32,15 @@ StorSimple 诊断工具可诊断 StorSimple 设备的系统、性能、网络和
 
 可通过 StorSimple 设备的 Windows PowerShell 界面运行此工具。 可使用以下两种方法访问设备的本地接口：
 
-* [使用 PuTTY 连接到设备串行控制台](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。
-* [通过 Windows PowerShell for StorSimple 远程访问该工具](storsimple-remote-connect.md)。
+* [使用 PuTTY 连接到设备串行控制台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。
+* [通过 Windows PowerShell for StorSimple 远程访问该工具](storsimple-8000-remote-connect.md)。
 
 本文假设已通过 PuTTY 连接到设备串行控制台。
 
 #### <a name="to-run-the-diagnostics-tool"></a>运行诊断工具
 
 连接到设备的 Windows PowerShell 界面后，请执行以下步骤来运行 cmdlet。
-1. 按照[使用 PuTTY 连接到设备串行控制台](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步骤登录到设备串行控制台。
+1. 按照[使用 PuTTY 连接到设备串行控制台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步骤登录到设备串行控制台。
 
 2. 输入以下命令：
 
@@ -85,11 +85,11 @@ StorSimple 诊断工具可诊断 StorSimple 设备的系统、性能、网络和
 * 报告的硬件组件包括未通过测试或者系统中不存在的组件。
 * 将报告系统中控制器 0、控制器 1 和共享组件的 USM 固件与磁盘固件版本。 有关硬件组件的完整列表，请参阅：
 
-    * [Components in primary enclosure](storsimple-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)（主机箱中的组件）
-    * [Components in EBOD enclosure](storsimple-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)（EBOD 机箱中的组件）
+    * [Components in primary enclosure](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)（主机箱中的组件）
+    * [Components in EBOD enclosure](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)（EBOD 机箱中的组件）
 
 > [!NOTE]
-> 如果硬件测试报告了组件故障，请[向 Microsoft 支持部门提出服务请求](storsimple-contact-microsoft-support.md)。
+> 如果硬件测试报告了组件故障，请[向 Microsoft 支持部门提出服务请求](storsimple-8000-contact-microsoft-support.md)。
 
 #### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>在 8100 设备上运行的硬件测试的示例输出
 
@@ -210,7 +210,7 @@ DisksFirmware       : SmrtStor:TXA2D20400GA6XYR:KZ50
 * 系统信息包括型号、设备序列号、时区、控制器状态，以及系统上运行的详细软件版本。 若要了解以输出形式报告的各个系统参数，请参阅[解释系统信息](#appendix-interpreting-system-information)。
 
 * 更新可用性报告是否有可用的例行模式和维护模式，以及相关的包名称。 如果 `RegularUpdates` 和 `MaintenanceModeUpdates` 为 `false`，则表示没有可用的更新， 设备使用的是最新版本。
-* 群集信息包含所有 HCS 群集组的各个逻辑组件的相关信息及其各自的状态。 如果在此报告部分中看到脱机的群集组，请[与 Microsoft 支持部门联系](storsimple-contact-microsoft-support.md)。
+* 群集信息包含所有 HCS 群集组的各个逻辑组件的相关信息及其各自的状态。 如果在此报告部分中看到脱机的群集组，请[与 Microsoft 支持部门联系](storsimple-8000-contact-microsoft-support.md)。
 * 服务信息包含设备上运行的所有 HCS 和 CiS 服务的名称和状态。 此信息可帮助 Microsoft 支持部门排查设备问题。
 
 #### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>在 8100 设备上运行的系统测试的示例输出
@@ -416,7 +416,7 @@ Controller0>
 | PowerShell 参数    | 说明  |
 |-------------------------|------------------|
 | 实例 ID             | 每个控制器都有一个关联的唯一标识符或 GUID。|
-| Name                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
+| 名称​​                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
 | 模型                   | StorSimple 8000 系列设备的型号。 型号可能是 8100 或 8600。|
 | 序列号            | 设备序列号是出厂分配的，长度为 15 个字符。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 设备型号。<br>SHX – 制造地。<br> 0991003 – 具体的产品。 <br> G44HT – 最后 5 位是递增的，确保构成唯一的序列号。 这组编号不一定是按顺序递增的。|
 | TimeZone                | 部署设备期间在 Azure 门户中配置的设备时区。|
@@ -433,7 +433,7 @@ Controller0>
 | CisAgentVersion         | StorSimple 设备上运行的 Cis 代理版本。 此代理可帮助与 Azure 中运行的 StorSimple Manager 服务通信。|
 | MdsAgentVersion         | 对应于 StorSimple 设备上运行的 Mds 代理的版本。 此代理可将数据移到监视和诊断服务 (MDS)。|
 | Lsisas2Version          | 对应于 StorSimple 设备上的 LSI 驱动程序的版本。|
-| 容量                | 设备的总容量，以字节为单位。|
+| Capacity                | 设备的总容量，以字节为单位。|
 | RemoteManagementMode    | 指示是否可以通过设备的 Windows PowerShell 界面远程管理该设备。 |
 | FipsMode                | 指示是否在设备上启用了美国联邦信息处理标准 (FIPS) 模式。 FIPS 140 标准定义的加密算法已经过批准，可以用于美国联邦政府计算机系统来保护敏感数据。 对于运行 Update 4 或更高版本的设备，FIPS 模式默认已启用。 |
 

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>使用门户将数据导入到 Azure 搜索中
 Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导，用于将数据加载到索引中。 
@@ -113,7 +113,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 若要了解有关索引器的详细信息，请查看以下链接：
 
 * [为 Azure SQL 数据库编制索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [为 Azure Cosmos DB 编制索引](search-howto-index-documentdb.md)
+* [为 Azure Cosmos DB 编制索引](search-howto-index-cosmosdb.md)
 * [为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)
 * [为表存储编制索引](search-howto-indexing-azure-tables.md)
 

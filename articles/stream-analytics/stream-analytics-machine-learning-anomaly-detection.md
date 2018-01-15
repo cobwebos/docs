@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ff8571c6447f32ef9a435f5200803e76f6013ffa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="using-the-anomalydetection-operator"></a>使用 ANOMALYDETECTION 运算符
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 12/14/2017
 
 ANOMALYDETECTION 使用滑动窗口语义，这意味着计算将根据进入函数的事件执行，并生成该事件的分数。 该计算基于 Exchangeability Martingales，它通过检查事件值的分布是否被更改来执行操作。 如果是，则检测出潜在的异常。 返回的分数表示该异常的置信度级别。 作为一种内部优化，ANOMALYDETECTION 根据 d 到 2d 的事件值来计算事件的异常分数，其中 d 是指定的检测窗口大小。
 
-ANOMALYDETECTION 期望输入时列是一致的。 通过聚合翻转或跳跃窗口可以使事件流一致。 当事件间的间隙总是小于聚合窗口时，一个翻转窗口就足以使时序一致。 当间隙较大时，可使用跳跃窗口重复最后一个值来填充间隙。 以下示例演示了如何处理这些情况。 目前不可跳过 `FillInMissingValuesStep` 步骤。 缺少此步骤将造成编译错误。
+ANOMALYDETECTION 期望输入时列是一致的。 通过聚合翻转或跳跃窗口可以使事件流一致。 当事件间的间隙总是小于聚合窗口时，一个翻转窗口就足以使时序一致。 当间隙较大时，可使用跳跃窗口重复最后一个值来填充间隙。 以下示例演示了如何处理这些情况。
 
 ## <a name="performance-guidance"></a>性能指南
 
@@ -105,8 +105,6 @@ ANOMALYDETECTION 期望输入时列是一致的。 通过聚合翻转或跳跃�
 
 可使用下列查询在检测到异常时输出警报。
 当输入流不一致时，聚合步骤可帮助将其转换为一致的时序。 该示例使用了 AVG，但聚合的特定类型取决于用户方案本身。 此外，当时序的间隙大于聚合窗口时，（根据滑动窗口语义）时序中将不再有任何能触发异常检测的事件。 因此，当下一事件到达时，一致性假设将不成立。 在这种情况下，需要一种在时序中填充间隙的方法。 一种可行方法是在每个跳跃窗口中采用最后一个事件，如下所示。
-
-如前所述，请勿跳过 `FillInMissingValuesStep` 步骤。 省略此步骤将造成编译错误。
 
     WITH AggregationStep AS 
     (

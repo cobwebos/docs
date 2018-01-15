@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/41/2017
   ms.author: carolz
-  ms.openlocfilehash: 54c154aed61e78c60ee1cb353e46baecd6befb09
-  ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+  ms.openlocfilehash: 889ec9829a76435daedc38bee66fd0f6c2846ba5
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/19/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Log Analytics 是 Microsoft Azure 总体监视解决方案的一部分。 Log Analytics 可监视云和本地环境，使其保持较高的可用性和性能。 从各种工作负荷和系统中获取见解，以保持较高的可用性和性能。 使用快速入门、教程和示例了解如何收集、分析和处理数据。"
 sections:
@@ -29,7 +29,7 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/media/index/virtualmachine.svg
+        src: https://docs.microsoft.com/azure/media/index/virtualmachine.svg
       text: Azure VM
       href: /azure/log-analytics/log-analytics-quick-collect-azurevm
     - image:

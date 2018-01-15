@@ -3,8 +3,8 @@ title: "移动应用和移动服务中的客户端与服务器 SDK 版本控制 
 description: "客户端 SDK 列表，以及移动服务与 Azure 移动应用的服务器 SDK 版本兼容性"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: f79e819b1547f81498ea213858faf3c75e374782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 37bf36af535eb9b5c8b0ba38434b71f1a6686811
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
 Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能。
@@ -76,7 +76,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |不适用 |
 | HTML |[1.2.7](http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |不适用 |
 
-### <a name="mobile-services-server-sdks"></a>移动 *服务* 服务器 SDK
+### <a name="mobile-services-server-sdks"></a>移动*服务*服务器 SDK
 | 服务器平台 | 版本 | 接受的版本标头 |
 | --- | --- | --- |
 | .NET |[WindowsAzure.MobileServices.Backend.* 版本 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |\*\* 无版本标头 \*\* |

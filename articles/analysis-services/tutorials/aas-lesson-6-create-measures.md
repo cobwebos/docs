@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a80500e806d85d0c1dd01d10fea74f59c92fb50a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fa47d4ea9aa019464e465c051b016dac7c224dc9
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-6-create-measures"></a>第 6 课：创建度量值
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-measures"></a>创建度量值
 
 在本课中，将创建要在模型中包括的度量值。 与所创建的计算列类似，度量值是使用 DAX 公式创建的计算。 但与计算列不同，度量值基于用户所选筛选器进行计算。 例如，添加到数据透视表中“行标签”字段的特定一列或切片器。 然后，所应用的度量值将计算筛选器中每个单元格的值。 度量值是强大而灵活的计算，在几乎所有表格模型中都希望包括这类计算来对数值数据执行动态计算。 若要了解详细信息，请参阅[度量值](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular)。
   
@@ -35,7 +33,7 @@ ms.lasthandoff: 11/02/2017
   
 本课程预计完成时间：**30 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 5 课：创建计算列](../tutorials/aas-lesson-5-create-calculated-columns.md)。  
   
 ## <a name="create-measures"></a>创建度量值  

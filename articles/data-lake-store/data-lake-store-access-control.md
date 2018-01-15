@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 43582ae805d560e72fb8d03ab8e0abee4c4325b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store 中的访问控制
 
@@ -274,7 +274,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不是。 Data Lake Store 帐户始终启用了通过 ACL 进行的访问控制。
+不会。 Data Lake Store 帐户始终启用了通过 ACL 进行的访问控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 
@@ -308,7 +308,7 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Data Lake Store 是否支持 ACL 继承？
 
-不是。
+不会。
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>掩码与 umask 之间有何差异？
 

@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rajanaki
-ms.openlocfilehash: cc832d06611c10901d4370dc7467f0b681d89cbd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 28f35498593c896a5ad1fe7030c96c38bd4a48a9
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
 > [!div class="op_single_selector"]
-> * [Azure 门户](site-recovery-vmm-to-azure.md)
-> * [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-> * [经典门户](site-recovery-vmm-to-azure-classic.md)
+> * [在 Azure 应用服务中创建 Java Web 应用](site-recovery-vmm-to-azure.md)
+> * [PowerShell - 资源管理器](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [PowerShell - 经典](site-recovery-deploy-with-powershell.md)
 >
 >
@@ -93,7 +92,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 如果希望部署网络映射，需要满足下列条件：
 
 * 源 VMM 服务器上要保护的虚拟机应当连接到某个 VM 网络。 该网络应当该链接到与该云相关联的逻辑网络。
-* 在故障转移后复制的虚拟机可以连接到的 Azure 网络。 将在故障转移时选择此网络。 此网络应与 Azure Site Recovery 订阅位于同一区域中。
+* 在故障转移后复制的虚拟机可以连接到的 Azure 网络。 将在故障转移时选择此网络。 此网络应当与 Azure Site Recovery 订阅位于同一区域中。
 
 若要详细了解网络映射，请参阅：
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8de2a541f307adfed1125dbfc25825b3e28d9c48
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8faa8a08d4a5bc323951a594049002fc61eb56b8
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Azure Cosmos DB：SQL API 文档
 
@@ -107,7 +107,7 @@ Azure Cosmos DB 提供许多 SDK 来支持客户端应用程序开发。
 - [REST](/rest/api/documentdb/)
 - [REST 资源提供程序](/rest/api/documentdbresourceprovider/)
 - [SQL 查询参考](sql-api-sql-query-reference.md)
-- [Azure Functions 参考](../azure-functions/functions-bindings-documentdb.md)
+- [Azure Functions 参考](../azure-functions/functions-bindings-cosmosdb.md)
 
 ## <a name="samples"></a>示例
 

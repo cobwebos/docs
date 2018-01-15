@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 919094c5e8c528810ce6545d6b0cf8d9f95cca2a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 7512af39041090db22d4ef45ec46925c14c4adb9
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>补充课程 - 动态安全性
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 本补充课程将创建一个附加的角色用于实现动态安全性。 动态安全性基于当前已登录用户的用户名或登录 ID 提供行级别安全性。 
   
@@ -35,7 +33,7 @@ ms.lasthandoff: 11/02/2017
   
 本课程预计完成时间：**30 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本补充课程主题是表格建模教程的一部分，应当按顺序完成。 在执行本补充课程中的任务之前，应已完成前面的课程。  
   
 ## <a name="add-the-dimsalesterritory-table-to-the-aw-internet-sales-tabular-model-project"></a>将 DimSalesTerritory 表添加到 AW Internet 销售表格模型项目  

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96ca9bb2d7a9f30a7d6492be43bfb44edc02fd93
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
 云服务角色通过内部和外部连接进行通信。 外部连接称为**输入终结点**，内部连接称为**内部终结点**。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 
 ## <a name="input-endpoint"></a>输入终结点
-想要向外部公开某个端口时，将使用输入终结点。 可以指定该终结点的协议类型和端口，然后，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性为终结点指定不同的内部端口。
+想要向外部公开某个端口时，将使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性为终结点指定不同的内部端口。
 
 输入终结点可以使用以下协议：**http、https、tcp、udp**。
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 10/11/2017
 ```xml
 <Endpoints>
   <InternalEndpoint name="Endpoint3" protocol="any">
-    <FixedPortRange max="8995" min="8999" />
+    <FixedPortRange max="8999" min="8995" />
   </InternalEndpoint>
 </Endpoints>
 ```

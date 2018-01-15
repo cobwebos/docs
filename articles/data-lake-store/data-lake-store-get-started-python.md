@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 76e84687815ca6f4b031e5f7143ba0079fb053db
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 834dbc93348e00b0a0821bcbca989b0c2d539056
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Azure Data Lake Store 上的帐户管理操作（使用 Python）
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 
 了解如何通过用于 Azure Data Lake Store 的 Python SDK 执行基本的帐户管理操作，例如创建 Data Lake Store 帐户、列出 Data Lake Store 帐户，等等。若要了解如何使用 Python 在 Data Lake Store 上执行文件系统操作，请参阅[在 Data Lake Store 上使用 Python 进行的文件系统操作](data-lake-store-data-operations-python.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 

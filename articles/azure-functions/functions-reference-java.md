@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 8586bc63ad9c1b3896b21f494ebbe14e6d25a439
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 > [!div class="op_single_selector"]
@@ -276,9 +276,9 @@ public class MyClass {
 | `HttpResponseMessage<T>` | HTTP 输出绑定 | 返回除 200 之外的状态   |
 
 > [!NOTE] 
-> 还可使用 `@BindingName` 注释来获取 HTTP 标头和查询。 例如，`@Bind("name") String query` 可循环访问 HTTP 请求标头和查询，并将该值传递给方法。 例如，如果请求 URL 为 `http://example.org/api/echo?name=test`，则 `query` 将为 `"test"`。
+> 还可使用 `@BindingName` 注释来获取 HTTP 标头和查询。 例如，`@BindingName("name") String query` 可循环访问 HTTP 请求标头和查询，并将该值传递给方法。 例如，如果请求 URL 为 `http://example.org/api/echo?name=test`，则 `query` 将为 `"test"`。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 元数据来自不同的源，例如 HTTP 标头、HTTP 查询和[触发器元数据](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties)。 配合使用 `@BindingName` 注释和元数据名称来获取值。
 

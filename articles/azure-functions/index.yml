@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 01-23-2017
   ms.author: carolz
-  ms.openlocfilehash: 05af130d89d78bedb43f4c5cf69203acfa17c64c
-  ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+  ms.openlocfilehash: 8e7bb72878af9d1e310ac2ffa7e90c14b3909633
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/29/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Azure Functions 是一个<a href=\"https://azure.microsoft.com/overview/serverless-computing/\">无服务器</a>计算服务，使用它可以按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。 参考我们的快速入门、教程和示例了解如何使用 Azure Functions。"
   aside:
@@ -39,7 +39,7 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/media/common/i_http.svg
+        src: https://docs.microsoft.com/media/common/i_http.svg
       text: HTTP
       href: /azure/azure-functions/functions-create-first-azure-function
     - image:
