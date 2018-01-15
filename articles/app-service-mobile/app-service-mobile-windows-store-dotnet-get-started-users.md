@@ -3,7 +3,7 @@ title: "向通用 Windows 平台 (UWP) 应用添加身份验证 | Microsoft Docs
 description: "了解如何使用 Azure 应用服务移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对通用 Windows 平台 (UWP) 应用的用户进行身份验证。"
 services: app-service\mobile
 documentationcenter: windows
-author: ggailey777
+author: conceptdev
 manager: panarasi
 editor: 
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 47da343d4ec956ec2e669757f56e853675f887a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-windows-app"></a>向 Windows 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -40,9 +40,9 @@ ms.lasthandoff: 10/11/2017
 
 3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击 **“确定”**。
+4. 单击“确定”。
 
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 ## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -161,7 +161,7 @@ ms.lasthandoff: 10/11/2017
 * [向应用添加推送通知](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 借助脱机同步，最终用户即使在没有网络连接时也能够与移动应用进行交互（查看、添加或修改数据）。
 
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md

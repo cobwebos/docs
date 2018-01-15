@@ -220,9 +220,15 @@
           href: ../hdinsight-hadoop-manage-ambari.md
           maintainContext: true
           items:
+            - name: 使用 Ambari Web UI 优化群集
+              href: ../hdinsight-changing-configs-via-ambari.md
+              maintainContext: true
             - name: 使用 Ambari REST API
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: 管理 HDInsight 群集的日志
+          href: ../hdinsight-log-management.md
+          maintainContext: true
         - name: 添加存储帐户
           href: ../hdinsight-hadoop-add-storage.md
           maintainContext: true
@@ -271,6 +277,9 @@
           maintainContext: true
     - name: 故障排除
       items:
+        - name: 排查 HDInsight 群集速度慢或故障问题
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+          maintainContext: true
         - name: Spark 故障排除
           href: apache-troubleshoot-spark.md
         - name: HDFS 故障排除

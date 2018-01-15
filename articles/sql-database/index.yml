@@ -14,21 +14,21 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/03/2017
   ms.author: carolz
-  ms.openlocfilehash: a1d192cd5fc63b3e1f1b2c4f821cf447e7600373
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.openlocfilehash: 662d4f32cb6abb8694253a50d17daa242b55e409
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/11/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。"
   aside:
     image:
       alt: 
       height: 110
-      src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/create-sql-database-on-azure.png
+      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
       width: 250
     title: "在 Azure 上创建 SQL 数据库。 (3:12)"
-    href: https://azure.microsoft.com/en-us/resources/videos/create-sql-database-on-azure/
+    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
 - title: "5 分钟快速入门"
@@ -39,17 +39,17 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
       text: "Azure 门户"
-      href: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal
+      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
       text: Azure CLI
-      href: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-cli
+      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-cli
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
       text: Azure PowerShell
-      href: https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-powershell
+      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-powershell
 - title: "分步教程"
   items:
   - type: paragraph

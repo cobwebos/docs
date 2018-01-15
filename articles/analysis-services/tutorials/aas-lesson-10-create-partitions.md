@@ -13,23 +13,21 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 99f7fcbd3a2d3b6f6fe48c7fb2703d35d3b3a8fd
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a73836b784a5e86d01df51fb83d619890d56502a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-10-create-partitions"></a>第 10 课：创建分区
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-partitions"></a>创建分区
 
 在本课中，将创建分区来将 FactInternetSales 表拆分为较小的逻辑部件，然后可以彼此独立地处理（刷新）各个逻辑部件。 默认情况下，模型中包含的每个表都有一个分区，该分区包括该表的所有列和行。 对于 FactInternetSales 表，我们希望按年份拆分数据；每个分区包含表中每五年的数据。 可以独立处理每个分区。 若要了解详细信息，请参阅[分区](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular)。 
   
 本课预计完成时间：**15 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 9 课：创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)。  
   
 ## <a name="create-partitions"></a>创建分区  

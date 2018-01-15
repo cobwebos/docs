@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2017
+ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0716bc6697b8350ec3f6c890e5fb7a1eb743bdd2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 集成
 本教程的目的是说明 Azure 与 SCC LifeCycle 的集成。  
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 为 SCC LifeCycle 启用应用程序集成
 2. 配置单一登录 (SSO)
-3. 配置用户设置
+3. 配置用户预配
 4. 分配用户
 
 ![方案](./media/active-directory-saas-scc-lifecycle-tutorial/IC794120.png "方案")
@@ -104,7 +104,7 @@ ms.lasthandoff: 12/11/2017
 > 
 
 ## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
+要测试配置，需要将访问权限分配给希望允许使用应用程序的 Azure AD 用户。
 
 **要将用户分配到 SCC LifeCycle，请执行以下步骤：**
 

@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a8bb8748d4fe39d664055549564d08524cdc80f3
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 190a9c998bceb97f8446265809b8d2c3bdc76abc
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-8-create-perspectives"></a>第 8 课：创建透视
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-perspectives"></a>创建透视
 
 在本课中，将创建“Internet 销售”透视。 透视定义模型的可查看子集，它提供集中的特定于业务的或特定于应用程序的视点。 当用户使用某个透视连接到模型时，他们只能看到在该透视中作为字段定义的那些模型对象（表、列、度量值、层次结构和 KPI）。 若要了解详细信息，请参阅[透视](https://docs.microsoft.com/sql/analysis-services/tabular-models/perspectives-ssas-tabular)。
   
@@ -33,7 +31,7 @@ ms.lasthandoff: 11/02/2017
   
 本课预计完成时间：5 分钟  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 7 课：创建关键绩效指标](../tutorials/aas-lesson-7-create-key-performance-indicators.md)。  
   
 ## <a name="create-perspectives"></a>创建透视  

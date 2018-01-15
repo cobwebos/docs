@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: ab9e7b1b287be408f2d53ea005bad3815dc45f83
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a8d0cf5e50fdc31aef110c359713be32fc09c8a7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-azure-documentdb-connector.md)
+> * [版本 1 - 正式版](v1/data-factory-azure-documentdb-connector.md)
 > * [版本 2 - 预览版](connector-azure-cosmos-db.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB (SQL API) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Cosmos DB 连接器](v1/data-factory-azure-documentdb-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Cosmos DB 连接器](v1/data-factory-azure-documentdb-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,7 +42,8 @@ ms.lasthandoff: 12/11/2017
 要向/从 JSON 文件或另一 Cosmos DB 集合原样复制文档，请参阅[导入/导出 JSON 文档](#importexport-json-documents)。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure Cosmos DB 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 
 Azure Cosmos DB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**CosmosDb**。 | 是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。 注意：需在连接字符串中指定数据库信息，如以下示例所示。 将此字段标记为 SecureString。 |是 |
@@ -83,7 +84,7 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 要从/向 Azure Cosmos DB 复制数据，请将数据集的 type 属性设置为“DocumentDbCollection”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**DocumentDbCollection** |是 |
 | collectionName |Cosmos DB 文档集合的名称。 |是 |
@@ -115,13 +116,13 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure Cosmos DB 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure Cosmos DB 源和接收器支持的属性列表。
 
 ### <a name="azure-cosmos-db-as-source"></a>Azure Cosmos DB 作为源
 
 要从 Azure Cosmos DB 复制数据，请将复制活动中的源类型设置为“DocumentDbCollectionSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**DocumentDbCollectionSource** |是 |
 | query |指定要读取数据的 Cosmos DB 查询。<br/><br/>示例：`SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
@@ -163,7 +164,7 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 要从 Azure Cosmos DB 复制数据，请将复制活动中的接收器类型设置为“DocumentDbCollectionSink”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**DocumentDbCollectionSink** |是 |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当nestedSeparator 是点时，输出数据集结构中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：`"Name": {"First": "[value maps to this column from source]"}`。 |否（默认值为点 `.`） |
@@ -214,4 +215,4 @@ Azure Cosmos DB 链接的服务支持以下属性：
 - 导入或导出 JSON 文件时，在相应的文件存储数据集中，指定“JsonFormat”作为格式类型，并适当配置“filePattern”（请参阅 [JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)部分，了解详细信息），然后不指定“structure”部分并跳过其他格式设置。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

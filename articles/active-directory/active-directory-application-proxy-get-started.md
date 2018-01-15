@@ -3,7 +3,7 @@ title: "如何提供对本地应用的安全远程访问"
 description: "介绍如何使用 Azure AD 应用程序代理来提供对本地应用的安全远程访问。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3ca7c7919f6cfcece38073520162dc44bbfd748e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 24def898f282c4e122ae53932ae86047e815595c
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>如何提供对本地应用程序的安全远程访问
 

@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 69670d789d75a99d69538821d88427bd8ac397be
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="getting-started-with-azure-automation"></a>Azure 自动化入门
 
@@ -41,7 +41,7 @@ Azure 中运行的 Runbook 在自动化沙盒中执行，这些沙盒托管在 A
 
 存储在 Azure 自动化中的 DSC 配置可直接应用于 Azure 虚拟机。 其他物理计算机和虚拟机可从 Azure 自动化 DSC 拉取服务器请求配置。  管理本地物理或虚拟 Windows 系统和 Linux 系统的配置时，不需部署任何支持自动化 DSC 请求服务器的基础结构，只需确保要通过自动化 DSC 管理每个系统能够进行出站 Internet 访问（经 TCP 端口 443 与 OMS 服务通信）即可。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 ### <a name="automation-dsc"></a>自动化 DSC
 Azure 自动化 DSC 可用于管理各种计算机：
@@ -88,10 +88,6 @@ Azure 自动化 DSC 可用于管理各种计算机：
 
 每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 如果策略要求将数据和资源隔离到特定的区域，请在不同区域中创建自动化帐户。
 
-> [!NOTE]
-> 无法在 Azure 经典门户中访问使用在 Azure 门户创建的自动化帐户及其包含的资源。 如果你想要使用 Windows PowerShell 来管理这些帐户或其资源，必须使用 Azure 资源管理器模块。
-> 
-
 在 Azure 门户中创建自动化帐户时，会自动创建两个身份验证实体：
 
 * 运行方式帐户。 此帐户在 Azure Active Directory (Azure AD) 中创建一个服务主体，并创建一个证书。 此外，它还向参与者分配基于角色的访问控制 (RBAC)，以便使用 Runbook 管理 Resource Manager 资源。
@@ -127,7 +123,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 | 美国东部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | 美国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net |
 | 欧洲西部 |we-jobruntimedata-prod-su1.azure-automation.net |
-| 欧洲北部 |ne-jobruntimedata-prod-su1.azure-automation.net |
+| 北欧 |ne-jobruntimedata-prod-su1.azure-automation.net |
 | 加拿大中部 |cc-jobruntimedata-prod-su1.azure-automation.net |
 | 东南亚 |sea-jobruntimedata-prod-su1.azure-automation.net |
 | 印度中部 |cid-jobruntimedata-prod-su1.azure-automation.net |
@@ -139,7 +135,7 @@ Azure 自动化 DSC 可用于管理各种计算机：
 有关 IP 地址列表（非名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) xml 文件并进行查看。 
 
 > [!NOTE]
-> 此文件包含 Microsoft Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到用于在每个月的第一周更新 Azure 空间中 BGP 播发的此文件。 
+> 此文件包含 Microsoft Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 快速路由用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。 
 > 
 
 ## <a name="creating-an-automation-account"></a>创建自动化帐户

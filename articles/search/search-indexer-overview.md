@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: 827c0122fafceca369c0350e6846c77e98abc3b5
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a51aa48a9a2c3c062c374885d45f08ae0b397ce1
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/13/2017
 > * [概述](search-indexer-overview.md)
 > * [门户](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [Azure Cosmos DB](search-howto-index-documentdb.md)
+> * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 > * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 > * [Azure 表存储](search-howto-indexing-azure-tables.md)
 >
@@ -57,7 +57,7 @@ Azure 搜索中的 *索引器* 是一种爬网程序，它从外部数据源提�
 索引器从保存信息的数据源（如连接字符串和可能的凭据）拉取数据。 当前支持以下数据源：
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * 适用于所选内容类型的 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 
@@ -76,7 +76,7 @@ Azure 搜索中的 *索引器* 是一种爬网程序，它从外部数据源提�
 了解基本概念后，下一步是查看每种数据源特定的要求和任务。
 
 * [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [使用 Azure 搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)

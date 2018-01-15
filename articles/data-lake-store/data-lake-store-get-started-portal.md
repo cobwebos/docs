@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d3a5c0c49b881db69a9d5cccc65406322212a8d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 38a8792588e013a0105ea57b20b2560f0acf02e6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Data Lake Store 入门（使用 Azure 门户）
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 
 了解如何使用 Azure 门户来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅 [Azure Data Lake Store 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 开始学习本教程之前，必须做好以下准备：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/18/2017
 
         有关详细信息，请参阅 [Azure Data Lake Store 中的数据加密](./data-lake-store-encryption.md)。
 
-4. 单击“创建” 。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Store 帐户的进度。 预配 Data Lake Store 帐户后，会显示帐户边栏选项卡。
+4. 单击“创建”。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Store 帐户的进度。 预配 Data Lake Store 帐户后，会显示帐户边栏选项卡。
 
 ### <a name="assign-permissions-to-azure-key-vault"></a>分配对 Azure Key Vault 的权限
 如果使用 Azure 密钥保管库中的密钥为 Data Lake Store 帐户配置加密，必须配置 Azure Data Lake Store 帐户与 Azure 密钥保管库之间的访问权限。 为此，请执行以下步骤。

@@ -3,8 +3,8 @@ title: "在 Azure 应用服务移动应用中创建 Cordova 应用 | Microsoft D
 description: "遵循本教程开始使用 Azure 移动应用后端进行 Apache Cordova 开发"
 services: app-service\mobile
 documentationcenter: javascript
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 tags: 
 keywords: "cordova,javascript,移动,客户端"
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 07/07/2017
-ms.author: glenga
-ms.openlocfilehash: b620465cdc3cfa04933dc6e70163fc32aa9a839b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 223e9e35fcab347f9b5b8db01a9fd667b9f5d55d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 只有在完成本教程后，才可以学习有关使用 Azure 应用服务中的移动应用功能的所有其他 Apache Cordova 教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 若要完成本教程，需要具备以下先决条件：
 
 * 装有 [Visual Studio Community 2017] 或更高版本的电脑。

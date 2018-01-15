@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6f9ca3d9b0f41210a3f43a8ae505f0a90b130b34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>了解如何使用、配置并重复使用 IoT Edge 模块 - 预览版
 
@@ -83,7 +83,7 @@ Edge 中心提供了一种在模块之间，以及模块和 IoT 中心之间以�
 
 源可以是以下任何内容：
 
-| 源 | 说明 |
+| Source | 说明 |
 | ------ | ----------- |
 | `/*` | 来自任何设备或模块的所有设备到云的消息 |
 | `/messages/*` | 由设备或模块通过某些输出或不借助输出发送的任何设备到云的消息 |
@@ -99,7 +99,7 @@ Edge 中心提供了一种在模块之间，以及模块和 IoT 中心之间以�
 | 接收器 | 说明 |
 | ---- | ----------- |
 | `$upstream` | 将消息发送到 IoT 中心 |
-| `BrokeredEndpoint(/modules/{moduleId}/inputs/{input})` | 将消息发送到模块 `{moduleId}` 的输入 `{input}` |
+| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | 将消息发送到模块 `{moduleId}` 的输入 `{input}` |
 
 请务必注意，Edge 中心将提供至少一次保证，这意味着，在路由无法将消息传送到其接收器的情况下（例如 Edge 中心无法连接到 IoT 中心或未连接目标模块），则会本地存储消息。
 
@@ -193,7 +193,7 @@ Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备与 IoT 
 
 ### <a name="edge-agent-twin-desired-properties"></a>Edge 代理孪生所需属性
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | runtime.type | 必须为“docker” | 是 |

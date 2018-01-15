@@ -4,7 +4,7 @@ description: "介绍如何在部署和配置软件之前打开 StorSimple 8600 �
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: 
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/24/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
 ## <a name="overview"></a>概述
@@ -38,7 +38,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 接着，按以下步骤打开设备包装。
 
 #### <a name="to-unpack-your-device"></a>打开设备包装
-1. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开箱子。 请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)，帮助你评估设备是否处于良好的工作状态。
+1. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开箱子。 请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)，帮助你评估设备是否处于良好的工作状态。
 2. 打开外箱，并取出装有主机箱和 EBOD 机箱的两个箱子。 现可打开主机箱和 EBOD 机箱的包装。 下图显示了一个机箱解包后的视图。
    
     ![打开存储设备的包装](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
@@ -48,7 +48,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | 标签 | 说明 |
    | --- | --- |
    |   1 |包装箱 |
-   |   #N/A |SAS 电缆（位于配件和电缆槽中） |
+   |   2 |SAS 电缆（位于配件和电缆槽中） |
    |   3 |底部泡沫 |
    |   4 |设备 |
    |   5 |顶部泡沫 |
@@ -66,7 +66,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    * 2 个机架安装套件（每箱中 1 个），4 个安装硬件的侧导轨（主机箱和 EBOD 机箱各用 2 个）
    * 入门文档
      
-     如果上述任一部件缺失，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。  
+     如果上述任一部件缺失，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。  
 
 接下来是安装设备的机架。
 
@@ -112,7 +112,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | 标签 | 说明 |
    | --- | --- |
    |  1 |M 3x4 圆头螺丝 |
-   |  #N/A |底架滑轨 |
+   |  2 |底架滑轨 |
 2. 将左右导轨组件连接到机架柜的垂直部件。 支架标有 **LH**、**RH** 和**此面朝上**，可帮助正确定向。
 3. 找到导轨组件前部和后部的导轨销。 延长导轨，使其适合机架立柱间距，并将销插入前后机架立柱的垂直部件孔中。 确保导轨组件保持水平。
 4. 使用提供的 2 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用 1 颗螺丝。
@@ -125,7 +125,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    | 标签 | 说明 |
    | --- | --- |
    |   1 |旋紧螺丝 |
-   |   #N/A |方孔前机架立柱螺丝 |
+   |   2 |方孔前机架立柱螺丝 |
    |   3 |左前侧导轨固定销 |
    |   4 |旋紧螺丝 |
    |   5 |左侧导轨固定销 |
@@ -167,7 +167,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 ## <a name="cable-your-storsimple-8600-device"></a>进行 StorSimple 8600 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8600 设备布线。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 在开始设备布线之前，需要：
 
 * 主机箱和 EBOD 机箱（完全解包）
@@ -234,7 +234,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 对于高可用性和性能，请记住：
 
 * 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐 10 GbE）。
-* 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)下的**网络接口**。
+* 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)下的**网络接口**。
 
 > [!NOTE]
 > 如果在 10 GbE 网络接口上使用 SFP+ 收发器，请使用提供的 QSFP-SFP+ 适配器。 有关详细信息，请转到 [StorSimple 设备上适用于 10 GbE 网络接口的支持硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)。
@@ -266,5 +266,5 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 现已完成设备电源、网络访问和串行连接布线。下一步便是配置设备上的软件。
 
 ## <a name="next-steps"></a>后续步骤
-现即可[部署和配置本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
+现即可[部署和配置本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
 

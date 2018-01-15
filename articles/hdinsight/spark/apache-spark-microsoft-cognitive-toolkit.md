@@ -3,7 +3,7 @@ title: "用于进行深度学习的包含 Azure HDInsight Spark 的 Microsoft �
 description: "了解如何在 Azure HDInsight Spark 群集中使用 Spark Python API 将定型的 Microsoft 认知工具包深入学习模型应用于数据集。"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: e4bf0b176817daf3c128f26f407cde2ce1adba4c
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: jgao
+ms.openlocfilehash: 036efd040370a821befbbd57beec24372fd0d204
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>将 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集配合使用
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/29/2017
 
 2. 将 Jupyter 笔记本上传到 Spark 群集，以了解如何使用 [Spark Python API (PySpark)](https://spark.apache.org/docs/0.9.0/python-programming-guide.html) 将定型的 Microsoft 认知工具包深入学习模型应用于 Azure Blob 存储帐户中的文件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * **一个 Azure 订阅**。 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/29/2017
 
 * 请确保仅在头节点和工作节点上运行脚本并清除其他所有复选框。
 
-* 单击“创建” 。
+* 单击“创建”。
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集
 

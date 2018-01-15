@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/18/2017
   ms.author: carolz
-  ms.openlocfilehash: b5945fe76973aba267b529078466c7a97e5e6421
-  ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+  ms.openlocfilehash: 6082601b46ab4b420575fbc4d04b176c96225f72
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/20/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "可以借助 Azure 策略，通过策略定义来强制实施资源的规则和操作，以便管理和预防 IT 问题。 使用 Azure 策略时，资源始终符合公司标准和服务级别协议。 通过快速入门、教程和示例了解如何创建、分配和管理策略定义。"
 sections:
@@ -29,15 +29,15 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
       text: "Azure 门户"
       href: /azure/azure-policy/assign-policy-definition
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: /azure/azure-policy/assign-policy-definition-ps
     - image:
-        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+        src: https://docs.microsoft.com/media/common/cli.svg
       text: Azure CLI
       href: /azure/azure-policy/assign-policy-definition-cli
 - title: "分步教程"
@@ -64,6 +64,6 @@ sections:
     className: cardsD
     items:
     - title: "命令行"
-      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/policy">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/policy">Azure CLI</a></p>
     - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>

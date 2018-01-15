@@ -44,13 +44,17 @@
     - name: 查看存储库
       href: container-registry-repositories.md
     - name: 创建服务主体
-      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json
-    - name: 使用注册表进行身份验证
-      href: container-registry-authentication.md
+      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.jso
     - name: 升级经典注册表
       href: container-registry-upgrade.md
     - name: 使用 ACR webhook
       href: ./container-registry-webhook.md
+    - name: 身份验证
+      items:
+        - name: 身份验证概述
+          href: container-registry-authentication.md
+        - name: Azure 容器服务
+          href: ./container-registry-auth-aks.md
 - name: 引用
   items:
     - name: Azure CLI

@@ -13,20 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 05/23/2017
+ms.date: 01/08/2018
 ms.author: sasubram
-ms.openlocfilehash: fecfb7217434a93fd5d44f1f07709009de7710fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: sasubram
+ms.openlocfilehash: 4c43082281cbc95ae75b65a2aefadbbab6d7cd30
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
 有关 Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作的常见问题解答 (FAQ) 会定期更新，以包含新主题。
-
-### <a name="is-azure-ad-b2b-collaboration-available-in-the-azure-classic-portal"></a>Azure 经典门户中是否提供 Azure AD B2B 协作？
-不会。 Azure AD B2B 协作功能仅在 [Azure 门户](https://portal.azure.com)和[访问面板](https://myapps.microsoft.com/)中提供。 
 
 ### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>是否可以自定义登录页，以便 B2B 协作来宾用户获得更直观的体验？
 当然！ 请参阅[有关此功能的博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 有关如何自定义组织登录页的详细信息，请参阅[在登录页和访问面板页中添加公司品牌](customize-branding.md)。

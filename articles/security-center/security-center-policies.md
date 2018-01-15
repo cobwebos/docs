@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: ec5463a785c9afe53ebae558d15027e541a60f6a
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4d1a30b046c0c398d934291a907af891e9ac7fdf
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
-本文介绍了如何在安全中心配置安全策略。 
+本文介绍了如何在安全中心配置安全策略。
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理
-安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略并监视策略遵循情况。 
+安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略并监视策略遵循情况。
 
 > [!NOTE]
 > 现在可以使用 Azure 策略（功能受限的预览版）来扩展安全中心策略。 若要加入预览版，请转到 [Sign up for Azure Policy](https://aka.ms/getpolicy)（注册 Azure 策略）。 有关详细信息，请参阅[集成安全中心安全策略与 Azure 策略](security-center-azure-policy.md)。
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/16/2017
 | 策略 | 策略的用途 |
 | --- | --- |
 | 系统更新 |从 Windows 更新或 Windows Server Update Services 检索包含可用安全更新和关键更新的每日列表。 检索的列表取决于为虚拟机配置的服务，并且会建议用户应用缺少的更新。 对于 Linux 系统，该策略会使用发行版提供的包管理系统确定包含可用更新的包。 此外还会查看是否存在 [Azure 云服务](../cloud-services/cloud-services-how-to-configure-portal.md) 虚拟机提供的安全更新和关键更新。 |
-| OS 漏洞 |每天分析操作系统配置，确定可能导致虚拟机受攻击的问题。 此策略还建议通过配置更改解决这些漏洞。 若要详细了解受监视的具体配置，请参阅[建议的基准配置列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 （目前不对 Windows Server 2016 提供完全支持。） |
+| 安全配置 |每天分析操作系统配置，确定可能导致虚拟机受攻击的问题。 此策略还建议通过配置更改解决这些漏洞。 若要详细了解受监视的具体配置，请参阅[建议的基准配置列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 （目前不对 Windows Server 2016 提供完全支持。） |
 | 终结点保护 |建议为所有 Windows 虚拟机 (VM) 设置终结点保护，以便确定并删除病毒、间谍软件以及其他恶意软件。 |
 | 磁盘加密 |建议在所有虚拟机中启用磁盘加密，增强静态数据保护。 |
 | 网络安全组 |建议配置 [网络安全组](../virtual-network/virtual-networks-nsg.md) ，控制具有公共终结点的 VM 的入站和出站流量。 除非另行指定，否则，为子网配置的网络安全组会被所有虚拟机网络接口继承。 除了查看网络安全组是否已配置，此策略还会评估入站安全规则，确定允许传入流量的规则。 |

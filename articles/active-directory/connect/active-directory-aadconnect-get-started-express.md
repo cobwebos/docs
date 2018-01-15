@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 638e654cb9e7a2454b37beb6067cb5a2fb9a57b5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7d180a83d7b0a8e02ed04d8771d2ad2c6fa386c6
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>通过快速设置开始使用 Azure AD Connect
 有单林拓扑和用于身份验证的 **密码同步** 时，便可使用 Azure AD Connect [快速设置](active-directory-aadconnectsync-implement-password-synchronization.md)。 **快速设置** 是默认选项，用于最常见的部署方案。 只需按几下鼠标即可将本地目录扩展到云中。
@@ -35,9 +35,10 @@ ms.lasthandoff: 12/11/2017
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。  
 4. 在“快速设置”屏幕上，单击“使用快速设置”。  
    ![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
-5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。  
-   ![连接到 Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)如果收到错误消息并出现连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
-6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“下一步”。  
+5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“资源组名称” 的 Azure 数据工厂。  
+   ![连接到 Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)  
+   如果收到错误消息并且出现连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
+6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“资源组名称” 的 Azure 数据工厂。  
    ![连接到 AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. 只有在未完成[先决条件](active-directory-aadconnect-prerequisites.md)中的[验证域](../active-directory-domains-add-azure-portal.md)步骤时，才会显示 [**Azure AD 登录配置**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration)页。
    ![未验证的域](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
@@ -53,8 +54,8 @@ ms.lasthandoff: 12/11/2017
 有关使用快速安装的视频，请参阅：
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Express-Settings/player]
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](active-directory-aadconnect-whats-next.md)。
@@ -66,10 +67,10 @@ ms.lasthandoff: 12/11/2017
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
 ## <a name="related-documentation"></a>相关文档
-| 主题 |
-| --- | --- |
-| Azure AD Connect 概述 |
-| 使用自定义设置安装 |
-| 从 DirSync 升级 |
-| 用于安装的帐户 |
 
+| 主题 | 链接 |
+| --- | --- |
+| Azure AD Connect 概述 | [将本地目录与 Azure Active Directory 进行集成](active-directory-aadconnect.md)
+| 使用自定义设置安装 | [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md) |
+| 从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+| 用于安装的帐户 | [有关 Azure AD Connect 凭据和权限的详细信息](active-directory-aadconnect-accounts-permissions.md) |

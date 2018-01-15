@@ -3,7 +3,7 @@ title: "使用 Azure AD 应用程序代理进行应用的单一登录 | Microsof
 description: "在 Azure 门户中使用 Azure AD 应用程序代理为已发布的本地应用程序启用单一登录。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 4ca913d79d9abd4b50e4f280eb993235ca543b0f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 501017ae416cc8aa473077c98ae0a213db749547
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用应用程序代理通过密码存储进行单一登录
 
@@ -49,7 +49,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
 -->
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 
 转到为远程访问应用程序配置的外部 URL。 使用该应用的凭据（或者已设置的具有访问权限的测试帐户的凭据）登录。 一旦成功登录，即可离开应用，在返回时无需再次输入凭据。 
 

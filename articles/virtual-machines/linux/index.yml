@@ -14,21 +14,21 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 6349327e6679ad7fa42d9425ce689ba57da627bd
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.openlocfilehash: 41531cf8ea7d4f94caafac0fd2ecaa1902eb8988
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/11/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Azure Linux 虚拟机使用所选 Red Hat、Ubuntu 或 Linux 分发按需提供具有高可伸缩性且十分安全的虚拟化基础结构。 使用快速入门、教程和示例了解如何创建、配置、管理、更新和缩放 Linux VM。"
   aside:
     image:
       alt: 
       height: 110
-      src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png
+      src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png
       width: 250
     title: "创建 Linux 虚拟机。 (4:11)"
-    href: https://azure.microsoft.com/en-us/resources/videos/create-linux-virtual-machine/
+    href: https://azure.microsoft.com/resources/videos/create-linux-virtual-machine/
     width: 250
 sections:
 - title: "5 分钟快速入门"
@@ -39,17 +39,17 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
       text: Azure CLI
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - image:
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
       text: "Azure 门户"
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - image:
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
       text: Azure PowerShell
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
 - title: "分步教程"
   items:
   - type: paragraph
@@ -59,7 +59,7 @@ sections:
     items:
     - html: "<a href=\"/azure/virtual-machines/linux/tutorial-manage-vm\">创建和管理 Linux VM</a>"
     - html: "<a href=\"/azure/virtual-machines/linux/tutorial-manage-disks\">创建和管理 VM 磁盘</a></li>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-automate-vm-deployment\">自动执行 VM 配置</a>"
+    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-automate-vm-deployment\">自动配置 VM</a>"
     - html: "<a href=\"/azure/virtual-machines/linux/tutorial-custom-images\">创建自定义 VM 映像</a>"
     - html: "<a href=\"/azure/virtual-machines/linux/tutorial-availability-sets\">创建高度可用的 VM</a>"
     - html: "<a href=\"/azure/virtual-machines/linux/tutorial-create-vmss\">创建 VM 规模集</a>"

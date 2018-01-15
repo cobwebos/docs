@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 01/04/2018
 ms.author: yurid
-ms.openlocfilehash: f4614ac55cde26e921edfe41160e2766aef6bb2c
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b304ce8c60aefc417993574a0baa43cfc2298d66
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
@@ -144,7 +144,6 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 * **文档凭据可疑**：此警报表明在通过恶意软件执行某个文件时，该恶意软件所使用的常用预计算密码哈希可疑。
 * **动态构造 PS 脚本**：此警报表明构造 PowerShell 脚本的方式是动态的。 攻击者使用此手段以渐进方式构造脚本，目的是逃避 IDS 系统的检测。
 * **指示存在 Metaploit**：此警报表明存在与 Metasploit 框架相关联的活动，该框架提供一系列可供攻击者使用的功能和工具。
-* **SENSE 篡改**：此警报表明有人尝试禁用 SENSE，这是 Windows Defender ATP 的安全监视服务。
 * **可疑的帐户活动**：此警报表明有人尝试使用最近泄漏的帐户连接到计算机。
 * **计划任务访问可能有疑问**：此警报表明有人执行了 cron 作业。攻击者可能通过该作业按计划定期执行恶意程序。
 * **命令历史记录文件访问可能有疑问**：此警报表明对命令历史记录文件的访问异常。

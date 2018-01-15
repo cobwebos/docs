@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5dedad4fa3695d1b210e1174d8f29966d2259889
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>集成安全中心安全策略与 Azure 策略
-本文介绍如何配置 Azure 策略所支持的 Azure 安全中心安全策略。 
+本文介绍如何配置 Azure 策略所支持的 Azure 安全中心安全策略。
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理
 安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑策略，也可以使用 [Azure 策略](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)执行以下操作：
@@ -50,8 +50,8 @@ ms.lasthandoff: 12/18/2017
 
 5. 若要删除策略定义，请在“策略和参数”下要删除的定义旁边选择“删除”。
 
-6. 单击“保存” 。  
-    此时会打开“可用定义”窗口，其中显示通过 Azure 策略分配到安全中心的默认策略。 
+6. 单击“ **保存**”。  
+    此时会打开“可用定义”窗口，其中显示通过 Azure 策略分配到安全中心的默认策略。
 
 7. （可选）在“可用定义”窗口中，执行以下操作之一：
 
@@ -68,12 +68,12 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="available-security-policy-definitions"></a>可用的安全策略定义
 
-若要了解默认安全策略中提供的策略定义，请参考下表： 
+若要了解默认安全策略中提供的策略定义，请参考下表：
 
 | 策略 | 已启用策略的功能 |
 | --- | --- |
 | 系统更新 |从 Windows 更新或 Windows Server Update Services 检索包含可用安全更新和关键更新的每日列表。 检索的列表取决于为虚拟机配置的服务，并且会建议用户应用缺少的更新。 对于 Linux 系统，该策略会使用发行版提供的包管理系统确定包含可用更新的包。 此外还会查看是否存在 [Azure 云服务](../cloud-services/cloud-services-how-to-configure-portal.md) 虚拟机提供的安全更新和关键更新。 |
-| OS 漏洞 |每天分析操作系统配置，确定可能导致虚拟机受攻击的问题。 此策略还建议通过配置更改解决这些漏洞。 若要详细了解受监视的具体配置，请参阅[建议的基准配置列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 （目前不对 Windows Server 2016 提供完全支持。） |
+| 安全配置 |每天分析操作系统配置，确定可能导致虚拟机受攻击的问题。 此策略还建议通过配置更改解决这些漏洞。 若要详细了解受监视的具体配置，请参阅[建议的基准配置列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 （目前不对 Windows Server 2016 提供完全支持。） |
 | 终结点保护 |建议为所有 Windows 虚拟机 (VM) 设置终结点保护，以便确定并删除病毒、间谍软件以及其他恶意软件。 |
 | 磁盘加密 |建议在所有虚拟机中启用磁盘加密，增强静态数据保护。 |
 | 网络安全组 |建议配置 [网络安全组](../virtual-network/virtual-networks-nsg.md) ，控制具有公共终结点的 VM 的入站和出站流量。 除非另行指定，否则，为子网配置的网络安全组会被所有虚拟机网络接口继承。 除了查看网络安全组是否已配置，此策略还会评估入站安全规则，确定允许传入流量的规则。 |

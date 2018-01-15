@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -124,7 +124,7 @@ HealthEvents          :
 ## <a name="application-system-health-reports"></a>应用程序系统运行状况报告
 **System.CM** 表示群集管理器服务，是管理应用程序信息的主管服务。
 
-### <a name="state"></a>状态
+### <a name="state"></a>State
 当创建或更新应用程序时，System.CM 报告正常。 它会在应用程序遭到删除时通知运行状况存储，以便将它从存储中删除。
 
 * **SourceId**：System.CM
@@ -157,7 +157,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>服务系统运行状况报告
 **System.FM** 表示故障转移管理器服务，是管理服务信息的主管服务。
 
-### <a name="state"></a>状态
+### <a name="state"></a>State
 当已创建服务时，System.FM 报告正常。 当已删除服务时，它从运行状况存储删除实体。
 
 * **SourceId**：System.FM
@@ -199,7 +199,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>分区系统运行状况报告
 **System.FM** 表示故障转移管理器服务，是管理服务分区信息的主管服务。
 
-### <a name="state"></a>状态
+### <a name="state"></a>State
 创建分区并且分区正常时，System.FM 报告正常。 当删除分区时，它从运行状况存储删除实体。
 
 如果分区小于最小副本计数，则它将报告错误。 如果分区不小于最低副本计数，但小于目标副本计数，将会报告警告。 如果分区在仲裁丢失中，则 System.FM 将报告错误。
@@ -376,7 +376,7 @@ HealthEvents          :
 ## <a name="replica-system-health-reports"></a>副本系统运行状况报告
 **System.RA** 表示重新配置代理组件，是用于处理副本状态的主管组件。
 
-### <a name="state"></a>状态
+### <a name="state"></a>State
 在副本创建后，System.RA 报告正常。
 
 * **SourceId**：System.RA

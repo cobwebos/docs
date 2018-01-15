@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: 54afc7d993058ac2b3d2990ba131d334e9332555
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: cdf4e808045bb649b3a2406e8f7c1ef30e34fe7b
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-http-connector.md)
+> * [版本 1 - 正式版](v1/data-factory-http-connector.md)
 > * [版本 2 - 预览版](connector-http.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 HTTP 终结点复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 HTTP 终结点复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 HTTP 连接器](v1/data-factory-http-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 HTTP 连接器](v1/data-factory-http-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,7 +42,8 @@ ms.lasthandoff: 11/07/2017
 此连接器与 [Web 表连接器](connector-web-table.md)之间的差异在于，后者用于从 HTML 网页提取表内容。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 HTTP 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 11/07/2017
 
 HTTP 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **HttpServer**。 | 是 |
 | url | Web 服务器的基 URL | 是 |
@@ -62,7 +63,7 @@ HTTP 链接的服务支持以下属性：
 
 将“authenticationType”属性设置为“Basic”、“Digest”或“Windows”，并指定以下属性及上节所述的泛型属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (userName) 的密码。 将此字段标记为 SecureString。 | 是 |
@@ -95,7 +96,7 @@ HTTP 链接的服务支持以下属性：
 
 要使用 ClientCertificate 身份验证，请将“authenticationType”属性设置为“ClientCertificate”，并指定以下属性以及在上一节中所述的泛型属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 编码的证书数据。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
 | certThumbprint | 自承载集成运行时计算机的证书存储中所安装证书的指纹。 仅当在 connectVia 中指定自承载类型的集成运行时时适用。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
@@ -158,7 +159,7 @@ HTTP 链接的服务支持以下属性：
 
 要从 HTTP 复制数据，请将数据集的 type 属性设置为“HttpFile”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HttpFile** | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
@@ -209,13 +210,13 @@ HTTP 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 HTTP 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 HTTP 源支持的属性列表。
 
 ### <a name="http-as-source"></a>HTTP 作为源
 
 要从 HTTP 复制数据，请将复制活动中的源类型设置为“HttpSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**HttpSource** | 是 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 (TimeSpan)。 这是获取响应而不是读取响应数据的超时。<br/> 默认值为：00:01:40  | 否 |
@@ -254,4 +255,4 @@ HTTP 链接的服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

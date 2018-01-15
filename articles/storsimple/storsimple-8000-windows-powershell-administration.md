@@ -4,7 +4,7 @@ description: "了解如何使用 Windows PowerShell for StorSimple 来管理 Sto
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/03/2017
+ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 89e1054117f19e787da5330932021351fb016209
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -126,8 +126,8 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 可以使用 HTTP 或 HTTPS 来通过 Windows PowerShell 远程处理进行连接。 使用以下教程中的指导︰
 
-* [使用 HTTP 远程连接](storsimple-remote-connect.md#connect-through-http)
-* [使用 HTTPS 远程连接](storsimple-remote-connect.md#connect-through-https)
+* [使用 HTTP 远程连接](storsimple-8000-remote-connect.md#connect-through-http)
+* [使用 HTTPS 远程连接](storsimple-8000-remote-connect.md#connect-through-https)
 
 ## <a name="connection-security-considerations"></a>连接安全注意事项
 
@@ -184,5 +184,5 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 ## <a name="next-steps"></a>后续步骤
 
-如果执行上述工作流之一时，StorSimple 设备遇到任何问题，请参阅[用于解决 StorSimple 部署问题的工具](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)。
+如果执行上述工作流之一时，StorSimple 设备遇到任何问题，请参阅[用于解决 StorSimple 部署问题的工具](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)。
 

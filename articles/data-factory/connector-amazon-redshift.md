@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: dc8da80a89024d687a10b1539eeb1d90d218e4fb
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 13b317b05e56554e4f6b74a3ecfd3bc268333db0
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,10 +25,10 @@ ms.lasthandoff: 12/12/2017
 > * [版本 2 - 预览版](connector-amazon-redshift.md)
 
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 复制数据。 本文基于说明复制活动总体概述的[复制活动概述](copy-activity-overview.md)一文构建。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon Redshift 连接器](v1/data-factory-amazon-redshift-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon Redshift 连接器](v1/data-factory-amazon-redshift-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -39,13 +39,14 @@ ms.lasthandoff: 12/12/2017
 > [!TIP]
 > 若要在从 Redshift 复制大量数据时获得最佳性能，请考虑通过 Amazon S3 使用内置的 Redshift UNLOAD。 有关详细信息，请参阅[使用 UNLOAD 从Amazon Redshift 复制数据](#use-unload-to-copy-data-from-amazon-redshift)部分。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 如果使用[自承载集成运行时](create-self-hosted-integration-runtime.md)将数据复制到本地数据存储，请授权集成运行时（使用计算机的 IP 地址）对 Amazon Redshift 群集的访问权限。 有关说明，请参阅[授予对群集的访问权限](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
 * 如果要将数据复制到 Azure 数据存储，请参阅 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，了解 Azure 数据中心使用的计算 IP 地址和 SQL 范围。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Amazon Redshift 连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 12/12/2017
 
 Amazon Redshift 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AmazonRedshift** | 是 |
 | server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
@@ -95,7 +96,7 @@ Amazon Redshift 链接的服务支持以下属性：
 
 要从 Amazon Redshift 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
 | tableName | Amazon Redshift 中的表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -119,16 +120,16 @@ Amazon Redshift 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Amazon Redshift 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Amazon Redshift 源支持的属性列表。
 
 ### <a name="amazon-redshift-as-source"></a>作为源的 Amazon Redshift
 
 要从 Amazon Redshift 复制数据，请将复制活动中的源类型设置为“AmazonRedshiftSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**AmazonRedshiftSource** | 是 |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如，select * from MyTable。 |否（如果指定了数据集中的“tableName”） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“tableName”） |
 | redshiftUnloadSettings | 使用 Amazon Redshift UNLOAD 时的属性组。 | 否 |
 | s3LinkedServiceName | 表示通过指定“AmazonS3”类型的链接服务名称，将用作临时存储的 Amazon S3。 | 是（如果使用的是 UNLOAD） |
 | bucketName | 指示 S3 Bucket 以存储临时数据。 如果未提供，数据工厂服务将自动生成它。  | 是（如果使用的是 UNLOAD） |
@@ -212,17 +213,17 @@ Amazon Redshift 链接的服务支持以下属性：
 | Amazon Redshift 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |String |
-| CHAR |String |
+| BOOLEAN |字符串 |
+| CHAR |字符串 |
 | DATE |DateTime |
 | DECIMAL |小数 |
 | 双精度 |Double |
 | INTEGER |Int32 |
 | REAL |Single |
 | SMALLINT |Int16 |
-| TEXT |String |
+| TEXT |字符串 |
 | TIMESTAMP |DateTime |
-| VARCHAR |String |
+| VARCHAR |字符串 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

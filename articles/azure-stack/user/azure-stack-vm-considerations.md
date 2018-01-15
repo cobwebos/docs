@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: mabrigg
-ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8367f7897581ff9599b763c7a39232bbe6860b8f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure 堆栈中的虚拟机的注意事项
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 12/11/2017
 |虚拟机可用性集|多个容错域 （2 或 3 每个区域）<br>多个更新域<br>管理磁盘支持|单个故障域<br>单个更新域<br>不管理的磁盘支持|
 |虚拟机规模集|自动缩放支持|不支持的自动缩放。<br>将多个实例添加到缩放集使用门户、 资源管理器模板或 PowerShell。
 
-## <a name="virtual-machine-sizes"></a>虚拟机大小 
+## <a name="virtual-machine-sizes"></a>虚拟机大小
 
-Azure 堆栈开发工具包支持以下大小： 
+Azure 堆栈支持以下大小：
 
-| 类型 | 大小 | 支持的大小的范围 |
+| Type | 大小 | 支持的大小的范围 |
 | --- | --- | --- |
 |常规用途 |基本 A|A0-A4|
 |常规用途 |标准 A|A0 - A7|
@@ -55,9 +55,9 @@ Azure 堆栈开发工具包支持以下大小：
 |内存优化|DS 系列|DS11-DS14|
 |内存优化 |DSv2-series|DS11_v2-DS14_v2|
 
-虚拟机大小和其关联的资源数量是 Azure 堆栈与 Azure 之间一致。 例如，这包括内核数量和可以创建的数据磁盘数量/大内存量。 但是，Azure 堆栈中的 VM 大小相同的性能取决于特定的 Azure 堆栈环境的基础特征。
+虚拟机大小和其关联的资源数量是 Azure 堆栈与 Azure 之间一致。 例如，这种一致性包括内核数量和可以创建的数据磁盘数量/大内存量。 但是，Azure 堆栈中的 VM 大小相同的性能取决于特定的 Azure 堆栈环境的基础特征。
 
-## <a name="virtual-machine-extensions"></a>虚拟机扩展 
+## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
  Azure 堆栈开发工具包支持以下虚拟机扩展版本：
 
@@ -65,15 +65,15 @@ Azure 堆栈开发工具包支持以下大小：
 
 使用以下 PowerShell 脚本以获取 Azure 堆栈环境中可用的虚拟机扩展的列表：
 
-```powershell 
+```powershell
 Get-AzureRmVmImagePublisher -Location local | `
   Get-AzureRmVMExtensionImageType | `
   Get-AzureRmVMExtensionImage | `
   Select Type, Version | `
-  Format-Table -Property * -AutoSize 
+  Format-Table -Property * -AutoSize
 ```
 
-## <a name="api-versions"></a>API 版本 
+## <a name="api-versions"></a>API 版本
 
 Azure 堆栈开发工具包中的虚拟机功能支持以下 API 版本：
 
@@ -81,7 +81,7 @@ Azure 堆栈开发工具包中的虚拟机功能支持以下 API 版本：
 
 以下 PowerShell 脚本可用于获取 Azure 堆栈环境中可用的虚拟机功能的 API 版本：
 
-```powershell 
+```powershell
 Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
   Select * -Expand ApiVersions | `

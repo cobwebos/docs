@@ -13,23 +13,21 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 8cff85337ac7f5d1c0e00f09128cbbd4fa79741e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-4-create-relationships"></a>第 4 课：创建关系
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-relationships"></a>创建关系
 
 本课程介绍如何验证导入数据时自动创建的关系，以及在不同的表之间添加新关系。 关系是两个表之间的连接，规定如何关联这些表中的数据。 例如，在 DimProduct 表与 DimProductSubcategory 表之间，基于每种产品属于某个子类别这一事实建立了关系。 若要了解详细信息，请参阅[关系](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular)。
   
 本课预计完成时间：**10 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课程中的任务之前，应已完成上一课：[第 3 课：标记为日期表](../tutorials/aas-lesson-3-mark-as-date-table.md)。 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>查看现有关系和添加新关系  

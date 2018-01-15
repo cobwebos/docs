@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: aaf2da57d8653371ab0b46e47474442aa4be1d65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7814b53a69506f81bc6a75387c62766e36d528d8
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory 基于应用程序的条件访问  
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 12/11/2017
 - [迁移条件访问策略](active-directory-conditional-access-best-practices.md#policy-migration)。
  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要创建基于应用程序的条件访问策略，必须先订阅企业移动性 + 安全性或 Azure Active Directory Premium，且用户必须获得 EMS 或 Azure AD 许可。 
 
@@ -389,9 +389,9 @@ ms.lasthandoff: 12/11/2017
 
     - “需要批准的客户端应用(预览)”
 
-    - “需要某一已选控件”   
+    - ”需要所有已选控件“   
  
-    ![条件性访问](./media/active-directory-conditional-access-mam/11.png)
+    ![条件性访问](./media/active-directory-conditional-access-mam/13.png)
 
 
 

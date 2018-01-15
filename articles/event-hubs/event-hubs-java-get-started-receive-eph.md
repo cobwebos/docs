@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3c1b455e6298367dc50f0943b58f6cf1e7f1c5fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94b56fdd1ad350d861b27644c6bedcc59e1cefb0
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>使用 Java 从 Azure 事件中心接收事件
 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 事件中心是一个具备高度伸缩性的引入系统，每秒可收入大量事件，从而使应用程序能够处理和分析连接的设备和应用程序所产生的海量数据。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。
 
 有关详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
 本教程演示如何使用用 Java 编写的控制台应用程序从事件中心接收事件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -68,11 +68,6 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
     <version>{VERSION}</version>
-</dependency>
-<dependency>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>azure-eventhubs-eph</artifactId>
-  <version>0.14.0</version>
 </dependency>
 ```
 

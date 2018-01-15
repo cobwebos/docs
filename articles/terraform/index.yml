@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/21/2017
   ms.author: routlaw
-  ms.openlocfilehash: 000d7d19a6bf897d5c32ec31017f96fe23461b29
-  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+  ms.openlocfilehash: ee0dc6f351823347b1d0572c0a9fb392bbc6956e
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/11/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "使用 Terraform 在 Azure 上可靠地版本化和创建基础结构。 使用我们的快速入门和教程了解如何创建资源、使用 Azure Terraform 模块和维护包含代码的基础结构。"
   aside:
@@ -35,11 +35,11 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/media/index/azure_dev-9.svg
+        src: https://docs.microsoft.com/azure/media/index/azure_dev-9.svg
       text: "安装和配置 Terraform"
       href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure
     - image:
-        src: https://docs.microsoft.com/en-us/azure/media/index/VirtualMachine.svg
+        src: https://docs.microsoft.com/azure/media/index/VirtualMachine.svg
       text: "创建 Linux VM"
       href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm
 - title: "分步教程"

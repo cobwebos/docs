@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: d7d2265aa82e54cdbd3b85e09a05e5ea55a7a2c2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9b491af1e5c9da03f48335f5793ed71ddaf644fb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-5-create-calculated-columns"></a>第 5 课：创建计算列
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-calculated-columns"></a>创建计算列
 
 在本课中，将通过添加计算列在模型中创建数据。 可以在使用“获取数据”时（通过使用查询编辑器）或稍后在模型设计器中（按照本教程中介绍的步骤）创建计算列（作为自定义列）。 若要了解详细信息，请参阅[计算列](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns)。
   
@@ -33,7 +31,7 @@ ms.lasthandoff: 11/02/2017
   
 本课预计完成时间：**15 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 4 课：创建关系](../tutorials/aas-lesson-4-create-relationships.md)。 
   
 ## <a name="create-calculated-columns"></a>创建计算列  

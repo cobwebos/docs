@@ -4,7 +4,7 @@ description: "了解如何记录支持请求，以及如何在 StorSimple 8000 �
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
@@ -44,7 +44,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
    1. 从“颁发类型”下拉列表中，选择“技术”。
    2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
    3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个**支持计划**。 需要付费的支持计划才能启用技术支持。
-   4. 单击“下一步”。
+   4. 单击“资源组名称” 的 Azure 数据工厂。
 
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -56,7 +56,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
     4. 提供问题的开始日期和时间。
     5. 在“文件上传”中单击文件夹图标，浏览到支持包。
     6. 选中“共享诊断信息”。
-    7. 单击“下一步”。
+    7. 单击“资源组名称” 的 Azure 数据工厂。
 
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
@@ -64,7 +64,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
     1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
     2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。
-    3. 单击“创建” 。
+    3. 单击“创建”。
    
         ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -97,7 +97,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-start-a-support-session"></a>启动支持会话
 
-1. 直接使用串行控制台或来自远程计算机的 Telnet 会话访问设备。 为此，请按[使用 PuTTY 连接到设备串行控制台](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)中的步骤操作。
+1. 直接使用串行控制台或来自远程计算机的 Telnet 会话访问设备。 为此，请按[使用 PuTTY 连接到设备串行控制台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步骤操作。
 2. 在打开的会话中，按 **Enter** 键启动命令提示符。
 3. 在串行控制台菜单中，选择选项 1“使用完整访问权限登录”。
 4. 在提示符处键入以下密码：
@@ -115,4 +115,4 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[诊断并解决与 StorSimple 8000 系列设备相关的问题](storsimple-troubleshoot-deployment.md)
+了解如何[诊断并解决与 StorSimple 8000 系列设备相关的问题](storsimple-8000-troubleshoot-deployment.md)

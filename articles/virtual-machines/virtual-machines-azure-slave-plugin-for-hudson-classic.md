@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>如何在 Hudson 连续集成中使用 Azure 从属插件
 适用于 Hudson 的 Azure 从属插件使你能够在运行分布式构建系统时，预配 Azure 上的从属节点。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
    
     如果选择滚动可用插件列表，会在“其他”选项卡中的“群集管理和分布式构建”部分下找到 Azure 从属插件。
 5. 选中“Azure 从属插件”复选框。
-6. 单击“安装” 。
+6. 单击“安装”。
 7. 重新启动 Hudson。
 
 现在插件安装完毕，后续步骤是用 Azure 订阅配置文件配置插件并创建一个在为从属节点创建 VM 时要使用的模板。
@@ -147,7 +147,7 @@ ms.lasthandoff: 10/11/2017
 1. 在 Hudson 仪表板中，单击“新建作业”。
 2. 为正在创建的作业输入一个名称。
 3. 对于作业类型，选择“生成自由格式的软件作业”。
-4. 单击 **“确定”**。
+4. 单击“确定”。
 5. 在作业配置页中，选择“限制可以运行此项目的位置”。
 6. 选择“节点和标签菜单”，并选择 **linux**（在上一部分中创建虚拟机模板时，我们指定了此标签）。
 7. 在“构建”部分，单击“添加构建步骤”，并选择“执行 shell”。

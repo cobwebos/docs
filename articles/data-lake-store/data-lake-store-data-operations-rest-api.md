@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 62cfc713c3b7ce8f7c0a7ff4dd5e80802f1843b7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: a850b3fdff956abe41ac9a4af10a96dc119a75f4
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>使用 REST API 在 Azure Data Lake Store 上进行的文件系统操作
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 
 本文介绍如何使用 WebHDFS REST API 和 Data Lake Store REST API 对 Azure Data Lake Store 执行文件系统操作。 若要了解如何使用 REST API 在 Data Lake Store 上执行帐户管理操作，请参阅[在 Data Lake Store 上使用 REST API 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure Data Lake Store 帐户**。 遵照[通过 Azure 门户使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。

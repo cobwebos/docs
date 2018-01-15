@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 1496e4523154ba791bf55a0708a1a77132f5257c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5fb0e2dd56e373ecf723a3672d9538bcc6dc68e3
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-11-create-roles"></a>第 11 课：创建角色
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-roles"></a>创建角色
 
 在本课中，将创建角色。 角色通过仅允许属于角色成员的用户进行访问，提供模型数据库对象和数据安全性。 每个角色都定义有单一权限：无、读取、读取和处理、处理，或管理员。 在创作模型期间，可以使用角色管理器来定义角色。 在部署模型后，可以使用 SQL Server Management Studio (SSMS) 来管理角色。 若要了解详细信息，请参阅[角色](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular)。
   
@@ -42,7 +40,7 @@ ms.lasthandoff: 11/02/2017
   
 本课预计完成时间：**15 分钟**  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 10 课：创建分区](../tutorials/aas-lesson-10-create-partitions.md)。  
   
 ## <a name="create-roles"></a>创建角色  

@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: dc4bfa4a94eaa2fb4e0e821c4931dcd1963f3109
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0397b45753ea64d1a33916d5e0dff12d6e1d80aa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 本主题介绍如何通过 Azure 门户创建自动化帐户，其前提是，需要在不包括其他管理解决方案或不与 OMS Log Analytics 集成的情况下，评估和了解 Azure 自动化，以便对 Runbook 作业进行高级监视。  可以在将来随时添加这些管理解决方案或集成 Log Analytics。  使用自动化帐户，可以对在 Azure 资源管理器部署或 Azure 经典部署中管理资源的 Runbook 进行身份验证。
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/14/2017
 
 
    > [!NOTE]
-   > 如果在“添加自动化帐户”边栏选项卡中看到以下警告，是因为帐户不是订阅管理员角色成员和订阅共同管理员。<br><br>![添加自动化帐户警告](media/automation-create-standalone-account/create-account-without-perms.png)
+   > 如果在“添加自动化帐户”边栏选项卡中看到以下警告，是因为帐户不是订阅管理员角色成员和订阅共同管理员。<br><br>![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
    > 
    > 
 4. 在“添加自动化帐户”边栏选项卡的“名称”框中，键入新自动化帐户的名称。
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/14/2017
    > [!NOTE]
    > 如果通过选择“否”选项来选择不创建运行方式帐户，则“添加自动化帐户”边栏选项卡中会出现一条警告消息。  尽管该帐户是在 Azure 门户中创建的，但它在经典或资源管理器订阅目录服务中没有对应的身份验证标识，因此，无法访问订阅中的资源。  这会导致引用此帐户的任何 Runbook 无法进行身份验证，也无法针对这些部署模型中的资源执行任务。
    > 
-   > ![添加自动化帐户警告](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)<br>
+   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)<br>
    > 未创建服务主体时不会分配参与者角色。
    > 
 

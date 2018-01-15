@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/05/2018
 ms.author: billmath
-ms.openlocfilehash: d25f682d3c42f95752d09454f778c3975f551cca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b842791be74094c87643528c0b4d3a65be6b3cb1
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 12/11/2017
     </QueryList>
 ```
 
-### <a name="performance-monitor-counters"></a>性能监视计数器
+## <a name="performance-monitor-counters"></a>性能监视计数器
 
 监视身份验证代理的另一种方法是跟踪安装有身份验证代理的每个服务器上特定的性能监视计数器。 使用以下全局计数器（# PTA 身份验证#PTA 失败身份验证和 #PTA 成功身份验证）和错误计数器（# PTA 身份验证错误：
 

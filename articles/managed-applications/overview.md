@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7f0f18062bc426508ec98b190fe0b73e41e88aa2
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -48,6 +48,8 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 希望为服务计费的供应商可以通过 Azure Marketplace 提供托管应用程序。 供应商发布应用程序后，该应用程序可供组织外部的用户使用。 通过这种方法，托管服务提供商 (MSP)、独立软件供应商 (ISV) 和系统集成商 (SI) 可向所有 Azure 客户提供其解决方案。
 
+有关将托管应用程序发布到 Marketplace 的信息，请参阅[创建 Marketplace 应用程序](publish-marketplace-app.md)。
+
 ## <a name="resource-groups-for-managed-applications"></a>托管应用程序的资源组
 
 通常，托管应用程序的资源驻留在两个资源组中。 使用者管理一个资源组，发布者管理另一个资源组。 定义托管应用程序时，发布者可指定访问级别。 下图显示了发布者请求托管资源组所有者角色的方案。 发布者在此资源组中针对使用者放置了一个只读锁。
@@ -70,4 +72,4 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 * 有关定义和部署托管应用程序的介绍，请参阅[使用 Azure CLI 创建和部署 Azure 托管应用程序](managed-apps-quickstart-cli.md)
 * 有关发布内部应用程序的信息，请参阅[创建服务目录应用程序](publish-service-catalog-app.md)。
-
+* 有关将托管应用程序发布到 Marketplace 的信息，请参阅[创建 Marketplace 应用程序](publish-marketplace-app.md)。

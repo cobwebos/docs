@@ -3,8 +3,8 @@ title: "从移动服务升级到 Azure 应用服务"
 description: "了解如何轻松将移动服务应用程序升级到应用服务移动应用"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 81c8ba6245565368eab4cdaca297ff7656180605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: f07b1d6037ff8ca16b673e6a1a235769355a9993
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>将现有 .NET Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -150,7 +150,7 @@ ms.lasthandoff: 10/11/2017
 
 在 iOS 上，应该根据以下列表更改数据实体的核心数据架构。 请注意，属性 `createdAt`、`updatedAt` 和 `version` 不再有 `ms_` 前缀：
 
-| 属性 | 类型 | 注意 |
+| 属性 | Type | 注意 |
 | --- | --- | --- |
 | id |字符串（标记为必需） |远程存储中的主键 |
 | createdAt |日期 |（可选）映射到 createdAt 系统属性 |

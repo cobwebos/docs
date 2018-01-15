@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jingwang
-ms.openlocfilehash: 2bfc59931bbbb08ad1cd0328cf624b7350f92ec0
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6f4d958779b709c6fa1c8e632224b073db382ba5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure Blob 存储复制数据。 本文基于说明复制活动总体概述的[复制活动概述](copy-activity-overview.md)一文构建。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon S3 连接器](v1/data-factory-amazon-simple-storage-service-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon S3 连接器](v1/data-factory-amazon-simple-storage-service-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,7 +42,8 @@ ms.lasthandoff: 11/10/2017
 可以从[在策略中指定权限](http://docs.aws.amazon.com/amazons3/latest/dev/using-with-s3-actions.html)中找到 Amazon S3 权限的完整列表（包含详细信息）。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。 
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
 
 对于特定于 Amazon S3 的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 11/10/2017
 
 Amazon S3 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“AmazonS3”。 | 是 |
 | accessKeyId | 机密访问键 ID。 |是 |
@@ -89,7 +90,7 @@ Amazon S3 链接的服务支持以下属性：
 
 要从 Amazon S3 复制数据，请将数据集的 type 属性设置为“AmazonS3Object”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AmazonS3Object** |是 |
 | bucketName | S3 存储桶的名称。 |是 |
@@ -161,13 +162,13 @@ Amazon S3 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure Data Lake 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure Data Lake 源和接收器支持的属性列表。
 
 ### <a name="amazon-s3-as-source"></a>作为源的 Amazon S3
 
 要从 Amazon S3 复制数据，请将复制活动中的源类型设置为“FileSystemSource”（这包含 Amazon S3）。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。<br/>允许的值为：true（默认）、false | 否 |
@@ -204,4 +205,4 @@ Amazon S3 链接的服务支持以下属性：
 ]
 ```
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

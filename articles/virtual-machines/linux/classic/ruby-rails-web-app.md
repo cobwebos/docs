@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
 ms.openlocfilehash: fb6ded1dcba2ac0f78fc6f1f4f7de9238cd752bd
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure 虚拟机上的 Ruby on Rails Web 应用程序
 本教程介绍如何在 Azure 中使用 Linux 虚拟机托管 Ruby on Rails 网站。  
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/08/2017
 本教程使用 Ubuntu Server 14.04 LTS 进行了验证。 如果使用不同 Linux 分发，则可能需要修改安装 Rails 的步骤。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 >
 

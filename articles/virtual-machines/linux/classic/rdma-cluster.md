@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 52048fb8ccd445b93296d2686ca46785b0c3e726
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: e09b472a53c02b39bcf7ad06d228049b0a392452
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
 了解如何在 Azure 中使用[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)设置 Linux RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 ## <a name="cluster-deployment-options"></a>群集部署选项
 以下是可用于创建 Linux RDMA 群集的方法（使用或不使用作业计划程序）。
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/09/2017
 >
 >
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 * **客户端计算机**：需要 Mac、Linux 或 Windows 客户端计算机，以便与 Azure 通信。 这些步骤假定你使用的是 Linux 客户端。
 * **Azure 订阅**：如果没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
 * **VM 大小可用性**：以下实例大小支持 RDMA：H16r、H16mr、A8 和 A9。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品）。
@@ -304,7 +304,7 @@ cluster12
 以下 Intel MPI 命令运行 pingpong 基准来验证群集配置和 RDMA 网络连接。
 
 ```
-mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
+mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
 ```
 
 在包含两个节点的工作群集上，应会看到类似如下内容的输出。 在 Azure RDMA 网络上，不超过 512 字节的消息可能会延迟 3 微秒或 3 微秒以下。

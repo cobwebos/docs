@@ -16,7 +16,7 @@
 #### [变量](resource-manager-templates-variables.md)
 #### [资源](resource-manager-templates-resources.md)
 #### [输出](resource-manager-templates-outputs.md)
-### [链接到其他模板](resource-group-linked-templates.md)
+### [链接和嵌套模板](resource-group-linked-templates.md)
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)
 ### [创建多个实例](resource-group-create-multiple.md)
 ### [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource)
@@ -43,7 +43,7 @@
 ## 管理
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
-### [Azure 门户](resource-group-portal.md)
+### [Azure portal](resource-group-portal.md)
 ### [REST API](resource-manager-rest-api.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
@@ -55,7 +55,7 @@
 ### 创建服务主体
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
 #### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure 门户](resource-group-create-service-principal-portal.md)
+#### [Azure portal](resource-group-create-service-principal-portal.md)
 ### [用于访问订阅的身份验证 API](resource-manager-api-authentication.md)
 ### [锁定资源](resource-group-lock-resources.md)
 

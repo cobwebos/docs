@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f2849fe25fd0d5b3dc26598ffba7591cb7433161
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="intro"></a>将云服务与 Azure CDN 集成
 云服务可以与 Azure CDN 集成，从云服务的位置提供任何内容。 此方法具有以下优点：
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/11/2017
     当 **Microsoft Azure 活动日志**显示发布状态为“已完成”时，便可以创建一个与此云服务集成的 CDN 终结点。
    
    > [!WARNING]
-   > 如果发布后，部署的云服务显示屏幕错误，这可能是因为部署的云服务使用的是[不包含 .NET 4.5.2 的来宾 OS](../cloud-services/cloud-services-guestos-update-matrix.md#news-updates)。  可通过[将 .NET 4.5.2 部署为启动任务](../cloud-services/cloud-services-dotnet-install-dotnet.md)来解决此问题。
+   > 如果发布后，部署的云服务显示屏幕错误，这可能是因为部署的云服务使用的是[不包含 .NET 4.5.2 的来宾 OS](../cloud-services/cloud-services-guestos-update-matrix.md#news-updates)。  可以通过[部署 .NET 4.5.2 作为启动任务](../cloud-services/cloud-services-dotnet-install-dotnet.md)来解决此问题。
    > 
    > 
 
@@ -111,7 +111,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 ## <a name="create-a-new-cdn-endpoint"></a>创建新的 CDN 终结点
 **为存储帐户创建新的 CDN 终结点**
 
-1. 在 [Azure 管理门户](https://portal.azure.com)中，导航到 CDN 配置文件。  可能在先前步骤中将其固定到了仪表板。  如果不是，则可单击“浏览”、“CDN 配置文件”，并单击计划向其添加终结点的配置文件。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到 CDN 配置文件。  可能在先前步骤中将其固定到了仪表板。  如果不是，则可单击“浏览”、“CDN 配置文件”，并单击计划向其添加终结点的配置文件。
    
     将出现 CDN 配置文件边栏选项卡。
    
@@ -126,7 +126,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 3. 为该 CDN 终结点输入 **名称** 。  此名称可用于访问在域 `<EndpointName>.azureedge.net`中缓存的资源。
 4. 在“源类型”下拉列表中，选择“云服务”。  
 5. 在“源主机名”下拉列表中，选择云服务。
-6. 保留**源路径**、**源主机头**和**协议/源端口**的默认值。  必须至少指定一种协议（HTTP 或 HTTPS）。
+6. 保留“源路径”、“源主机标头”和“协议/源端口”的默认值。  必须至少指定一种协议（HTTP 或 HTTPS）。
 7. 单击“创建”  按钮创建新的终结点。
 8. 终结点创建后，将出现在配置文件的终结点列表中。 该列表视图显示用于访问缓存内容的 URL 以及原始域。
    
@@ -172,7 +172,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 <a name="caching"></a>
 
 ## <a name="configure-caching-options-for-static-files-in-your-cloud-service"></a>在云服务中配置静态文件的缓存选项
-通过在云服务中进行 Azure CDN 集成，可以指定你所希望的在 CDN 终结点中缓存静态内容的方式。 为此，请通过某个 Web 角色项目（例如 WebRole1）打开 *Web.config*，并将 `<staticContent>` 元素添加到 `<system.webServer>`。 以下 XML 将缓存配置为 3 天后过期。  
+通过在云服务中进行 Azure CDN 集成，可以指定你所希望的在 CDN 终结点中缓存静态内容的方式。 为此，请通过某个 Web 角色项目（例如 WebRole1）打开 *Web.config*，然后将 `<staticContent>` 元素添加到 `<system.webServer>`。 以下 XML 将缓存配置为 3 天后过期。  
 
     <system.webServer>
       <staticContent>
@@ -181,7 +181,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
       ...
     </system.webServer>
 
-执行完此操作后，云服务中的所有静态文件会遵守 CDN 缓存中的同一规则。 要对缓存设置进行更细致的控制，可将 *Web.config* 文件添加到一个文件夹中，然后在该处添加设置。 例如，可将 *Web.config* 文件添加到 *\Content* 文件夹中，并使用以下 XML 替换其中的内容：
+执行完此操作后，云服务中的所有静态文件会遵守 CDN 缓存中的同一规则。 要对缓存设置进行更细致的控制，可将 *Web.config* 文件添加到一个文件夹中，然后在该处添加设置。 例如，可将 *Web.config* 文件添加到 *\Content* 文件夹中，然后使用以下 XML 替换其中的内容：
 
     <?xml version="1.0"?>
     <configuration>
@@ -207,7 +207,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 ![](media/cdn-cloud-service-with-cdn/cdn-5-memegenerator.PNG)
 
-提供了一个简单的 `Index` 操作，让客户能够指定照片中的夸张元素，然后待这些元素发布到操作后制作出迷因。 由于这是 Chuck Norris，可以想见该页面会在全球热传。 这是通过 Azure CDN 提供半动态内容的一个很好的示例。
+用户提供了一个简单的 `Index` 操作，让客户能够指定照片中的夸张元素，待这些元素发布到操作后制作出迷因。 由于这是 Chuck Norris，可以想见该页面会在全球热传。 这是通过 Azure CDN 提供半动态内容的一个很好的示例。
 
 按照上述步骤设置此控制器操作：
 
@@ -491,7 +491,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 [捆绑包](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx)类包含一个名为 [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) 的属性，该属性可以配置回退机制以应对 CDN 故障情况。 若要使用此属性，请执行以下步骤：
 
-1. 在 Web 角色项目中打开 *App_Start\BundleConfig.cs*（已在其中将 CDN URL 添加到了每个[捆绑包构造函数](http://msdn.microsoft.com/library/jj646464.aspx)），然后进行以下突出显示的更改，以便将回退机制添加到默认捆绑包中：  
+1. 在 Web 角色项目中打开 *App_Start\BundleConfig.cs*（已在其中将 CDN URL 添加到了每个[捆绑包构造函数](http://msdn.microsoft.com/library/jj646464.aspx)），并进行以下突出显示的更改，以便将回退机制添加到默认捆绑包中：  
    
         public static void RegisterBundles(BundleCollection bundles)
         {

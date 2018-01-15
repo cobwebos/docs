@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 79fcbbf5f506858789a6bd1e6ad2e292c72b65a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1256e7f0286d9eb6ea6498b024fba41eb9f6a641
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -52,7 +52,7 @@ public static async Task Run(
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
     await context.CreateTimer<string>(nextCleanup);
 
-    context.ContinueAsNew();
+    context.ContinueAsNew(null);
 }
 ```
 

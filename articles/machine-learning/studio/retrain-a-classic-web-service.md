@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 75b1862f288152fa2ff4619f807b86f94dc00e3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ad18d82109e3048625f32d90af9677956350fb84
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>重新训练经典 Web 服务
 部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)中所示。 
 
 > [!IMPORTANT]
@@ -116,9 +116,9 @@ ms.lasthandoff: 12/09/2017
 
 *Resources* 中的 *Name* 参数的值应与预测实验中已保存的训练模型的资源名称相匹配。 若要获取资源名称，请执行以下步骤：
 
-1. 登录到[经典 Azure 门户](https://manage.windowsazure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，单击“机器学习”。
-3. 在“名称”下，单击工作区，然后单击“Web 服务”。
+3. 在“名称”下，单击你的工作区，并单击“Web 服务”。
 4. 在“名称”下，单击“人口普查模型 [预测实验]”。
 5. 单击已添加的新终结点。
 6. 在终结点仪表板上，单击“更新资源”。

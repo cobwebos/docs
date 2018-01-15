@@ -3,7 +3,7 @@ title: "从移动服务升级到 Azure 应用服务 - Node.js"
 description: "了解如何轻松将移动服务应用程序升级到应用服务移动应用"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
+author: conceptdev
 manager: yochayk
 editor: 
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 888717afe14f29fd50da6478c2bba077616a5379
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: crdun
+ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -146,7 +146,7 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 
 <!-- URLs. -->
 
-[Azure 门户]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [Azure classic portal]: https://manage.windowsazure.com/
 [什么是移动应用？]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services

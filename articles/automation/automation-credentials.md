@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
-ms.openlocfilehash: 516f0ddcc50b3e6d744f70063b2112090d2e411d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ac253fda413718ded815c9a990ae61473a5d8870
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 自动化凭据资产包含 [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) 对象，该对象包含用户名和密码等安全凭据。 Runbook 和 DSC 配置可能会使用在身份验证时接受 PSCredential 对象的 cmdlet，也可能会提取 PSCredential 对象的用户名和密码，以便提供给需要进行身份验证的某些应用程序或服务。 在 Azure 自动化中安全地存储凭据的属性，并可以在 Runbook 或 DSC 配置中通过 [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) 活动访问这些属性。
@@ -81,13 +81,6 @@ ms.lasthandoff: 12/14/2017
     $pw = ConvertTo-SecureString "PassWord!" -AsPlainText -Force
     $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $user, $pw
     New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
-
-### <a name="to-create-a-new-credential-asset-with-the-azure-classic-portal"></a>使用 Azure 经典门户创建新的凭据资产
-1. 在自动化帐户中，单击窗口顶部的“资产”。
-2. 在窗口底部，单击“添加设置”。
-3. 单击“添加凭据”。
-4. 在“凭据类型”下拉列表中，选择“PowerShell 凭据”。
-5. 完成向导并单击复选框以保存新凭据。
 
 ## <a name="using-a-powershell-credential"></a>使用 PowerShell 凭据
 在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 此操作将返回 [PSCredential 对象](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx)，可将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有一个用于用户名和安全密码的属性，或者可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) 对象，该对象将提供该密码的不安全版本。

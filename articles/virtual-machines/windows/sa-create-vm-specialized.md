@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 995437f5a4a6fe1bc99bfe7fee555d0ac53101a8
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>从存储帐户中的专用 VHD 创建 VM
 
 通过使用 Powershell 将专用非托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是保留原始 VM 中的用户帐户、应用程序和其他状态数据的现有 VM 中 VHD 的副本。 
 
 可以使用两个选项：
-* [上传 VHD](create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [复制现有 Azure VM 的 VHD](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [上传 VHD](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
+* [复制现有 Azure VM 的 VHD](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>开始之前
 如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 01/12/2018
 ms.author: genemi
-ms.openlocfilehash: 1e13a9a89873b189e1ea05c0208e7c8646881655
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: d99456b488302c9b3fa44510af84641876861afe
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>设计 Azure SQL 数据库，并使用 C# 和 ADO.NET 进行连接
 
@@ -36,7 +36,7 @@ Azure SQL 数据库与 Microsoft 云 (Azure) 中的数据库即服务 (DBaaS) �
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 已安装 [Visual Studio Community 2017、Visual Studio Professional 2017 或 Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/)。
 

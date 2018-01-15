@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/13/2017
 ms.author: magoedte; bwren
-ms.openlocfilehash: 847a5eca37c80c0cd5cdbad52f39567fa85a355f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: c1e56f00e46dc3d04f6ac3bb42df6c1935c5c8b0
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -72,23 +72,17 @@ ms.lasthandoff: 12/14/2017
 4. 在“类型”下拉列表中，选择想要创建的连接类型。 表单会显示该特定类型的属性。
 5. 完成该表单，并单击“创建”以保存新连接。
 
-### <a name="to-create-a-new-connection-with-the-azure-classic-portal"></a>使用 Azure 经典门户创建新连接
-
-1. 在自动化帐户中，单击窗口顶部的“资产”。
-2. 在窗口底部，单击“添加设置”。
-3. 单击“添加连接”。
-4. 在“连接类型”下拉列表中，选择想要创建的连接类型。  向导会显示该特定类型的属性。
-5. 完成该向导并单击该复选框以保存新连接。
-
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>使用 Windows PowerShell 创建新连接
 
 使用 Windows PowerShell 通过 [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) cmdlet 创建新连接。 此 cmdlet 有一个名为 **ConnectionFieldValues** 的参数，预期为一个[哈希表](http://technet.microsoft.com/library/hh847780.aspx)，用于为连接类型定义的每个属性定义值。
 
 如果熟悉自动化的[运行方式帐户](automation-sec-configure-azure-runas-account.md)（可使用服务主体对 Runbook 进行身份验证），可以使用 PowerShell 脚本（在从门户创建运行方式帐户时作为替代方法提供）通过以下示例命令创建新的连接资产。  
 
-    $ConnectionAssetName = "AzureRunAsConnection"
-    $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
-    New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
+```powershell
+$ConnectionAssetName = "AzureRunAsConnection"
+$ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
+New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
+```
 
 可以使用脚本创建连接资产，因为在创建自动化帐户时，该帐户默认情况下会在使用连接类型 **AzurServicePrincipal** 时自动包括多个全局模块，以便创建 **AzureRunAsConnection** 连接资产。  牢记这一点很重要，因为如果尝试使用其他身份验证方法创建新的连接资产来连接到服务或应用程序，则会失败，原因在于连接类型尚未在自动化帐户中定义。  如需详细了解如何通过 [PowerShell 库](https://www.powershellgallery.com)为自定义模块创建自己的连接类型，请参阅[集成模块](automation-integration-modules.md)
   
@@ -100,8 +94,10 @@ ms.lasthandoff: 12/14/2017
 
 以下示例命令演示如何使用前述的运行方式帐户在 Runbook 中通过 Azure 资源管理器资源进行身份验证。  此示例使用代表运行方式帐户的连接资产，该帐户引用基于证书的服务主体而非凭据。  
 
-    $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
+```powershell
+$Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
+```
 
 ### <a name="graphical-runbook-samples"></a>图形 Runbook 示例
 
@@ -116,43 +112,43 @@ ms.lasthandoff: 12/14/2017
 ### <a name="python2-runbook-sample"></a>Python2 Runbook 示例
 下图演示了如何在 Python2 Runbook 中使用运行方式连接进行身份验证。
 
-    """ Tutorial to show how to authenticate against Azure resource manager resources """
-    import azure.mgmt.resource
-    import automationassets
+```python
+""" Tutorial to show how to authenticate against Azure resource manager resources """
+import azure.mgmt.resource
+import automationassets
 
+def get_automation_runas_credential(runas_connection):
+  """ Returns credentials to authenticate against Azure resoruce manager """
+  from OpenSSL import crypto
+  from msrestazure import azure_active_directory
+  import adal
 
-    def get_automation_runas_credential(runas_connection):
-        """ Returns credentials to authenticate against Azure resoruce manager """
-        from OpenSSL import crypto
-        from msrestazure import azure_active_directory
-        import adal
+  # Get the Azure Automation Run As service principal certificate
+  cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+  pks12_cert = crypto.load_pkcs12(cert)
+  pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pks12_cert.get_privatekey())
 
-        # Get the Azure Automation Run As service principal certificate
-        cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
-        pks12_cert = crypto.load_pkcs12(cert)
-        pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pks12_cert.get_privatekey())
+  # Get Run As connection information for the Azure Automation service principal
+  application_id = runas_connection["ApplicationId"]
+  thumbprint = runas_connection["CertificateThumbprint"]
+  tenant_id = runas_connection["TenantId"]
 
-        # Get Run As connection information for the Azure Automation service principal
-        application_id = runas_connection["ApplicationId"]
-        thumbprint = runas_connection["CertificateThumbprint"]
-        tenant_id = runas_connection["TenantId"]
+  # Authenticate with service principal certificate
+  resource = "https://management.core.windows.net/"
+  authority_url = ("https://login.microsoftonline.com/" + tenant_id)
+  context = adal.AuthenticationContext(authority_url)
+  return azure_active_directory.AdalAuthentication(
+    lambda: context.acquire_token_with_client_certificate(
+      resource,
+      application_id,
+      pem_pkey,
+      thumbprint)
+  )
 
-        # Authenticate with service principal certificate
-        resource = "https://management.core.windows.net/"
-        authority_url = ("https://login.microsoftonline.com/" + tenant_id)
-        context = adal.AuthenticationContext(authority_url)
-        return azure_active_directory.AdalAuthentication(
-            lambda: context.acquire_token_with_client_certificate(
-                resource,
-                application_id,
-                pem_pkey,
-                thumbprint)
-        )
-
-
-    # Authenticate to Azure using the Azure Automation Run As service principal
-    runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
-    azure_credential = get_automation_runas_credential(runas_connection)
+# Authenticate to Azure using the Azure Automation Run As service principal
+runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
+azure_credential = get_automation_runas_credential(runas_connection)
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 72be69b8d48abdcb15f4a89949edc3083ce85eee
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 187673fad2b5984441b93aa5313df31f1e8a3d2d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>测试 Azure 自动化运行方式身份验证
 成功创建自动化帐户以后，即可执行一个简单的测试，确认你能够成功地在 Azure 资源管理器部署或 Azure 经典部署中使用新创建的或更新的自动化运行方式帐户进行身份验证。    

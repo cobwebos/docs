@@ -14,11 +14,11 @@ ms.devlang: json
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: richrund
-ms.openlocfilehash: 7fffaf3861feebc0cf3537ca096b1eebb252b7d6
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: cea25429dc6e5f9f12f472d17e8743d272135257
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -63,7 +63,7 @@ ms.lasthandoff: 12/08/2017
 10. 收集自定义日志 
 11. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -469,10 +469,12 @@ ms.lasthandoff: 12/08/2017
 3. 使用 PowerShell 或命令行来部署模板
 
 #### <a name="powershell"></a>PowerShell
-`New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
+```powershell
+New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+```
 
 #### <a name="command-line"></a>命令行
-```
+```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```

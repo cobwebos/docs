@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 98898675b85d62c97a215f9922f1393001013943
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 本文讨论如何**创建 Azure AD 本机应用程序以进行最终用户身份验**。 有关服务到服务身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 订阅 ID。 可从 Azure 门户进行检索。 例如，Data Lake Store 帐户边栏选项卡中提供有此 ID。

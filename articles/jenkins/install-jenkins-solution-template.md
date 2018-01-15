@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0cf24d8db845beb63b1b895f895da761488fd8ec
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 422d133841a380b1ef02e95245207c464089138d
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
 本快速入门介绍如何使用经过配置的适用于 Azure 的工具和插件在 Ubuntu Linux VM 上安装 [Jenkins](https://jenkins.io)。 完成后，你会有一个在 Azure 中运行的 Jenkins 服务器，并可生成 [GitHub](https://github.com) 中的示例 Java 应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 订阅
 * 可以在计算机的命令行（例如 Bash shell 或 [PuTTY](http://www.putty.org/)）上访问 SSH
@@ -68,7 +68,7 @@ ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp
 通过 SSH 连接到 Jenkins VM 时，在命令行中运行以下命令，以便获取初始密码。
 
 ```bash
-`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
 首次解锁 Jenkins 仪表板时，请使用此初始密码。

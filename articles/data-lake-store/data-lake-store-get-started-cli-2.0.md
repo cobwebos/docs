@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 431c974401c201a76b6d20de9837e44374716417
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 976ddf25a57dd1eff66e121c5a66bc31f664a9dc
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure Data Lake Store 入门（使用 Azure CLI 2.0）
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/18/2017
 Azure CLI 2.0 是 Azure 的新命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 有关详细信息，请参阅 [Overview of Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview)（Azure CLI 2.0 概述）。 也可查看 [Azure Data Lake Store CLI 2.0 reference](https://docs.microsoft.com/cli/azure/dls)（Azure Data Lake Store CLI 2.0 参考），获取命令和语法的完整列表。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 在开始阅读本文前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
