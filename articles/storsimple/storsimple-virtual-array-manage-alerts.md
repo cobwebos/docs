@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
 
@@ -109,7 +109,7 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 
 ## <a name="sort-and-review-alerts"></a>排序和查看警报
 
-“警报”边栏选项卡最多可显示 250 个警报。 如果超过该警报数目，默认视图中不会显示所有警报。 可以结合以下字段来自定义要显示的通知：
+“警报”边栏选项卡最多可显示 250 个警报。 如果超过该警报数目，默认视图中不一定会显示所有警报。 可以结合以下字段来自定义要显示的通知：
 
 * **状态** - 可以显示“活动”或“已清除”的警报。 活动警报仍在系统上触发，而已清除的警报已由管理员手动清除，或由于系统以新信息更新警报条件而以编程方式清除。
 * **严重性** - 可以显示所有严重级别（关键、警告、信息）的警报，或只显示特定严重性的警报，例如仅显示关键警报。
@@ -125,7 +125,6 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 * [作业失败警报](#job-failure-alerts)
 * [性能警报](#performance-alerts)
 * [安全警报](#security-alerts)
-* [更新警报](#update-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>云连接警报
 
@@ -164,13 +163,6 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | <*device name*> 的密码将在 <*number*> 天后到期。 |密码警告。 |密码将在 <number< 天后到期。 请考虑更改密码。 有关详细信息，请转到 [更改 StorSimple 虚拟阵列设备管理员密码](storsimple-virtual-array-change-device-admin-password.md)。 |
-
-### <a name="update-alerts"></a>更新警报
-
-| 警报文本 | 事件 | 详细信息/建议的操作 |
-|:--- |:--- |:--- |
-| 新更新可用于设备。 |StorSimple 虚拟阵列的更新可用。 |可从“维护”页安装新更新。 |
-| 无法在 <*device name*> 上扫描新更新。 |更新失败。 |安装新更新时出错。 可手动安装更新。 如果问题仍然存在，请联系 [Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
 

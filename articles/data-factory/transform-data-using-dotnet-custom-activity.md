@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shengc
-ms.openlocfilehash: 9673c5ad3ae48f9f2b8a47165b739cc2431060ae
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 6300e59d001864c7adc6ba369586dbe848a85edd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-use-custom-activities.md)
+> * [版本 1 - 正式版](v1/data-factory-use-custom-activities.md)
 > * [版本 2 - 预览版](transform-data-using-dotnet-custom-activity.md)
 
 在 Azure 数据工厂管道中可使用两类活动。
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/08/2017
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
  
 
 如果不熟悉 Azure Batch 服务，请参阅以下主题：
@@ -105,9 +105,9 @@ ms.lasthandoff: 12/08/2017
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| 属性              | 说明                              | 必选 |
+| 属性              | 说明                              | 必需 |
 | :-------------------- | :--------------------------------------- | :------- |
-| 名称                  | 管道中活动的名称     | 是      |
+| name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
@@ -331,7 +331,7 @@ namespace SampleApp
    - 将不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。 
    - 编译代码，将可执行文件和依赖项上传到 Azure 存储，并在 folderPath 属性中定义路径。 
 
-有关端到端 DLL 和数据工厂 V1 文档[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写到数据工厂 V2 自定义活动样式中的完整示例。 请参阅[数据工厂 V2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
+有关端到端 DLL 和数据工厂 V1 文档[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写到数据工厂 V2 自定义活动样式中的完整示例。 请参阅[数据工厂 V2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 

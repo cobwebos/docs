@@ -3,7 +3,7 @@ title: "使用 Spark 中的 Python 库分析网站日志 — Azure | Microsoft D
 description: "此笔记本演示如何将自定义库与 Azure HDInsight 上的 Spark 配合使用来分析日志数据。"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: 9f733e8b0c21b25b212266bb6047416cfb29d0ad
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.author: jgao
+ms.openlocfilehash: 8a3119b636d69e031ee69a0e4a5c0ef7faf6776f
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Spark 群集配合使用来分析网站日志
 
 此笔记本演示如何将自定义库与 HDInsight 上的 Spark 配合使用来分析网站日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
 > [!TIP]
-> 本教程也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
+> 本教程也可用作在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
 >
 >
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 11/29/2017
        plt.xlabel('Time (min)')
        plt.ylabel('Average time taken for request (ms)')
 
-   应该会显示如下输出：
+   应该看到如下输出：
 
    ![Matplotlib 输出](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。

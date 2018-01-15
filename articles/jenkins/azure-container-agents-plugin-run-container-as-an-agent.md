@@ -14,11 +14,11 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 269e936cb79ba4138285f5dbd326413d70d5924d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 04a60bf021ec6e265a3880264386ad32ec7e8177
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>使用 Jenkins 和 Azure 容器实例在 Azure 中生成项目
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/13/2017
 > * 安装和配置适用于 Jenkins 的 Azure 容器代理插件
 > * 使用 Azure 容器实例生成 [Spring PetClinic 示例应用程序](https://github.com/spring-projects/spring-petclinic)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 - **Azure 订阅** - 若要了解 Azure 购买选项，请参阅[如何购买 Azure](https://azure.microsoft.com/pricing/purchase-options/) 或[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -329,4 +329,4 @@ az group delete -n <resourceGroup>
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [访问 Azure 中心上的“Jenkins”查看最新的文章和示例](https://docs.microsoft.com/en-us/azure/jenkins/)
+> [访问 Azure 中心上的“Jenkins”查看最新的文章和示例](https://docs.microsoft.com/azure/jenkins/)

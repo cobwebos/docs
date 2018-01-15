@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: 991f86c328aba9aa184658c7da748f24ee2d6506
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 6a08f042aad8ad00d712420d8f4d3b17305188e1
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>使用 IT Service Management Connector（预览）集成管理 ITSM 工作项
 
@@ -93,7 +93,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - 服务台连接名称
 - 服务台 ID
-- 状态
+- State
 - 紧急性
 - 影响
 - Priority
@@ -101,7 +101,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 创建者
 - 解决者
 - 关闭者
-- 源
+- Source
 - 分配给
 - 类别
 - 标题
@@ -110,7 +110,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 关闭日期
 - 解决日期
 - 上次修改日期
-- 计算机
+- Computer
 
 
 **工作项：****更改请求**
@@ -122,10 +122,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 服务台 ID
 - 创建者
 - 关闭者
-- 源
+- Source
 - 分配给
 - 标题
-- 类型
+- Type
 - 类别
 - 状态
 - 升级
@@ -144,14 +144,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 工作开始日期
 - 工作结束日期
 - 说明
-- 计算机
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
 
 | OMS 字段 | ITSM 字段 |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 状态 |
+| IncidentState_s | State |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
 | Priority_s | Priority |
@@ -166,7 +166,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | CreatedDate_t|  已打开 |
 | ClosedDate_t| closed|
 | ResolvedDate_t|已解决|
-| 计算机  | 配置项 |
+| Computer  | 配置项 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 更改请求的输出数据
 
@@ -177,9 +177,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 关闭者 |
 | AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
-| Type_s|  类型 |
+| Type_s|  Type |
 | Category_s|  类别 |
-| CRState_s|  状态|
+| CRState_s|  State|
 | Urgency_s|  紧急性 |
 | Priority_s| Priority|
 | Risk_s| 风险|
@@ -191,7 +191,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
 | Description_s | 说明 |
-| 计算机  | 配置项 |
+| Computer  | 配置项 |
 
 **ITSM 数据的示例 Log Analytics 屏幕：**
 
@@ -227,7 +227,7 @@ ITSM 连接器目前支持与服务映射解决方案集成。
 
     如果将此复选框保留未选中状态，则对于此警报下的任何数量的日志项，只会创建一个工作项。
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 可在“设置”>“警报”下查看已创建的 OMS 警报。 符合指定警报的条件时，将创建相应 ITSM 连接的工作项。
 
@@ -281,7 +281,7 @@ ITSMC 与操作组集成。
 
 6. 从下拉列表菜单中选择“工作项”类型。
    选择使用现有模板或填充 ITSM 产品要求的字段。
-7. 单击 **“确定”**。
+7. 单击“确定”。
 
 创建/编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 警报触发时，会在 ITSM 工具中创建工作项。
 
@@ -292,11 +292,11 @@ ITSMC 与操作组集成。
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>在 OMS 中对 ITSM 连接进行故障排除
 1.  如果从连接源的 UI 建立连接失败，并出现“保存连接时出错”消息，请执行以下步骤：
- - 对于 ServiceNow、Cherwell 和 Provance 连接，  
-        - 请确保正确输入每个连接的用户名、密码、客户端 ID 和客户端密码。  
-        检查在相应 ITSM 产品中是否拥有足够的权限来建立连接。  
- - 对于 Service Manager 连接，  
-        - 确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功建立与本地 Service Manager 计算机的连接，请访问建立[混合连接](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)文档中详细介绍的 Web 应用 URL。  
+- 对于 ServiceNow、Cherwell 和 Provance 连接，  
+       - 请确保正确输入每个连接的用户名、密码、客户端 ID 和客户端密码。  
+       检查在相应 ITSM 产品中是否拥有足够的权限来建立连接。  
+- 对于 Service Manager 连接，  
+       - 确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功建立与本地 Service Manager 计算机的连接，请访问建立[混合连接](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)文档中详细介绍的 Web 应用 URL。  
 
 2.  如果未向 Log Analytics 同步来自 ServiceNow 的数据，请确保 ServiceNow 实例处于非休眠状态。 如果 ServiceNow 开发实例长时间处于空闲状态，有时会进入休眠状态。 否则，请报告问题。
 3.  如果 OMS 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
