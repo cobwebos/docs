@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0209142da5d94e0ed863a07c9ea694232421cfb
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -94,7 +94,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Active Directory” > “多重身份验证”。
+2. 选择“Active Directory” > “MFA 服务器”。
 3. 选择“服务器设置”。
 4. 选择“下载”，按下载页上的说明保存安装程序。 
 

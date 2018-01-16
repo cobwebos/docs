@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/03/2017
+ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 23e8b1023aebd5381fc89535ce265883d6a8fceb
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ca0817b37b6baaa4ef63dfb76790fb3b3735b55f
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/18/2017
 
 在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Service Fabric 群集。  此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。  本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 一台运行以下软件的开发计算机：
 * Visual Studio 2015 或 Visual Studio 2017。
 * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
@@ -36,6 +36,14 @@ ms.lasthandoff: 12/18/2017
 一个 Windows 群集，其中至少有三个节点运行在包含容器的 Windows Server 2016 上 - [创建群集](service-fabric-cluster-creation-via-portal.md)或[免费试用 Service Fabric](https://aka.ms/tryservicefabric)。
 
 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
+
+> [!NOTE]
+> 不支持将容器部署到 Windows 10 中的 Service Fabric 群集或安装了 Docker CE 的群集。 本演练以本地方式测试如何在 Windows 10 中使用 Docker 引擎，并最终将容器服务部署到 Azure 中运行 Docker EE 的 Windows Server 群集。 
+>   
+
+> [!NOTE]
+> Service Fabric 版本 6.1 提供对 Windows Server 版本 1709 的预览支持。 不能在 Windows Server 版本 1709 中打开网络和 Service Fabric DNS 服务。 
+> 
 
 ## <a name="define-the-docker-container"></a>定义 Docker 容器
 基于 Docker 中心内的 [Python 映像](https://hub.docker.com/_/python/)生成一个映像。
@@ -294,7 +302,8 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
    > [!NOTE]
-   > hyperv 隔离模式在 Ev3 和 Dv3 Azure SKU 上提供，后者具有嵌套式虚拟化支持。 确保在主机上安装了 hyperv 角色。 可通过连接到主机对此进行验证。
+   > hyperv 隔离模式在 Ev3 和 Dv3 Azure SKU 上提供，后者具有嵌套式虚拟化支持。 
+   >
    >
 
 ## <a name="configure-resource-governance"></a>配置资源调控
@@ -309,6 +318,31 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
   </Policies>
 </ServiceManifestImport>
 ```
+## <a name="configure-docker-healthcheck"></a>配置 docker HEALTHCHECK 
+
+从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。 当 *health_status* 为“正常”时，会在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中显示运行状况报告“正常”；当 *health_status* 为“不正常”时，会显示“警告”。 在生成容器映像时使用的 **dockerfile** 中必须存在 **HEALTHCHECK** 指令，这是指在监视容器运行状况时执行的实际检查。 
+
+![HealthCheckHealthy][3]
+
+![HealthCheckUnealthyApp][4]
+
+![HealthCheckUnhealthyDsp][5]
+
+可以为每个容器配置 **HEALTHCHECK** 行为，方法是在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分。
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code">
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+      </ContainerHostPolicies>
+    </Policies>
+</ServiceManifestImport>
+```
+默认情况下，*IncludeDockerHealthStatusInSystemHealthReport* 设置为 **true**，*RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **false**。 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **true**，则会重启（可能在其他节点上进行）反复报告“不正常”的容器。
+
+若要禁用整个 Service Fabric 群集的 **HEALTHCHECK** 集成，则需将 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 设置为 **false**。
 
 ## <a name="deploy-the-container-application"></a>部署容器应用程序
 保存所有更改，生成应用程序。 若要发布应用程序，请右键单击解决方案资源管理器中的“MyFirstContainer”，然后选择“发布”。
@@ -324,7 +358,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 打开浏览器并导航到 http://containercluster.westus2.cloudapp.azure.com:8081 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ## <a name="clean-up"></a>清理
-只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md#clean-up-resources)。  [Party 群集](https://try.servicefabric.azure.com/)会在数小时后自动删除。
+只要群集处于运行状态，就会产生费用。若要避免不必要的费用，可考虑[删除群集](service-fabric-cluster-delete.md)。  [Party 群集](https://try.servicefabric.azure.com/)会在数小时后自动删除。
 
 将映像推送到容器注册表以后，即可从开发计算机中删除本地映像：
 
@@ -332,6 +366,34 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
+
+## <a name="specify-os-build-version-specific-container-images"></a>指定特定于 OS 内部版本的容器映像 
+
+Windows Server 容器（进程隔离模式）可能不兼容较新版的 OS。 例如，使用 Windows Server 2016 生成的 Windows Server 容器在 Windows Server 版本 1709 上无效。 因此，如果将群集节点更新到最新版本，则使用较早版本的 OS 生成的容器服务可能会发生故障。 为了避免 6.1 及更新版本的运行时出现这种情况，Service Fabric 允许为每个容器指定多个 OS 映像并为这些映像标记 OS 的内部版本（通过在 Windows 命令提示符处运行 `winver` 获取）。  建议先更新应用程序清单并为每个 OS 版本指定映像重写项，然后更新节点上的 OS。 以下代码片段演示了如何在应用程序清单 **ApplicationManifest.xml** 中指定多个容器映像：
+
+
+```xml
+<ContainerHostPolicies> 
+         <ImageOverrides> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
+         </ImageOverrides> 
+     </ContainerHostPolicies> 
+```
+WIndows Server 2016 的内部版本为 14393，Windows Server 版本 1709 的内部版本为 16299。 对于单个容器服务，服务清单仍然只指定一个映像，如下所示：
+
+```xml
+<ContainerHost>
+    <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName> 
+</ContainerHost>
+```
+
+   > [!NOTE]
+   > OS 内部版本标记功能仅适用于 Windows 上的 Service Fabric
+   >
+
+如果 VM 上的基础 OS 为内部版本 16299（版本 1709），Service Fabric 会根据该 Windows Server 版本选取容器映像。  如果应用程序清单中除了标记的容器映像外，还提供了未标记的容器映像，则 Service Fabric 会将未标记的映像视为可以跨版本使用的映像。 建议显式标记容器映像。
+
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单的完整示例
 下面本文中使用的服务和应用程序完整清单。
@@ -451,7 +513,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 可以将 Service Fabric 群集配置为从节点删除未使用的容器映像。 如果节点上存在过多容器映像，则可通过此配置回收磁盘空间。  若要启用此功能，请更新群集清单中的 `Hosting` 节，如以下代码片段所示： 
 
 
-```xml
+```json
 {
         "name": "Hosting",
         "parameters": [
@@ -467,6 +529,33 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 对于不应删除的映像，可以在 `ContainerImagesToSkip` 参数下进行指定。 
 
 
+## <a name="configure-container-image-download-time"></a>配置容器映像下载时间
+
+默认情况下，Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的时间，这适用于大多数容器映像。 如果是大型映像，或者网络连接速度较慢，则可能必须延长中止映像下载和解压缩之前的等待时间。 此项可以使用群集清单的 **Hosting** 节的 **ContainerImageDownloadTimeout** 属性来设置，如以下代码片段所示：
+
+```json
+{
+"name": "Hosting",
+        "parameters": [
+          {
+              "name": " ContainerImageDownloadTimeout ",
+              "value": "1200"
+          }
+]
+}
+```
+
+
+## <a name="set-container-retention-policy"></a>设置容器保留策略
+
+Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器，这样有助于诊断容器启动故障。 此策略可以在 **ApplicationManifest.xml** 文件中设置，如以下代码片段所示：
+
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+```
+
+**ContainersRetentionCount** 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。 **ContainersRetentionCount** 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 建议在使用此功能时使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何运行 [Service Fabric 上的容器](service-fabric-containers-overview.md)。
@@ -476,3 +565,6 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png

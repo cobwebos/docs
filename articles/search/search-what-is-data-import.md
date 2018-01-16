@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: ashmaka
-ms.openlocfilehash: ebf7319f0017b4adef25fe5840864e002c88fea7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8394475572502df9d57256dc5123fcdfa72765a6
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="data-import-in-azure-search"></a>Azure 搜索中的数据导入
+# <a name="indexing-in-azure-search"></a>在 Azure 搜索中编制索引
 > [!div class="op_single_selector"]
 > * [概述](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
