@@ -19,7 +19,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 部署 Azure Stack
+    - name: 评估 Azure 堆栈
       href: azure-stack-deploy-overview.md
 - name: 教程
   items:
@@ -31,8 +31,6 @@
       href: azure-stack-tutorial-app-service.md
 - name: 概念
   items:
-    - name: 规划注意事项
-      href: azure-stack-planning-considerations.md
     - name: 服务策略
       href: azure-stack-servicing-policy.md
     - name: 重要功能和概念
@@ -43,7 +41,7 @@
       href: azure-stack-manage-basics.md
 - name: 操作指南
   items:
-    - name: 部署
+    - name: 部署 ASDK
       items:
         - name: 必备组件
           href: azure-stack-deploy.md
@@ -61,6 +59,23 @@
           href: azure-stack-add-default-image.md
         - name: 创建测试 VM
           href: azure-stack-provision-vm.md
+    - name: 部署集成的 Azure 堆栈系统
+      items:
+        - name: 部署规划注意事项
+          href: azure-stack-deployment-planning.md
+        - name: 部署规划决策
+          href: azure-stack-deployment-decisions.md
+        - name: 部署连接到 Azure
+          href: azure-stack-connected-deployment.md
+        - name: 部署从 Azure 断开连接
+          href: azure-stack-disconnected-deployment.md
+        - name: Azure 堆栈部署 PKI 要求
+          href: azure-stack-pki-certs.md
+          items:
+            - name: 获取 Azure 堆栈部署 PKI 证书
+              href: azure-stack-get-pki-certs.md
+        - name: 注册 Azure 堆栈
+          href: azure-stack-registration.md
     - name: 数据中心集成
       items:
         - name: DNS

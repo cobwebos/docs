@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
+ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure 堆栈诊断工具
 
@@ -131,11 +131,11 @@ if($s)
    | NonPrivilegedAppGateway | NRP                    | SeedRing           |
    | SeedRingServices        | SLB                    | SQL                |   
    | SRP                     | 存储                | StorageController  |
-   | URP                     | UsageBridge            | virtualMachines    |  
-   | 已                     | WASPUBLIC              | WDS                |
+   | URP                     | UsageBridge            | VirtualMachines    |  
+   | WAS                     | WASPUBLIC              | WDS                |
 
 
-### <a name="collect-logs-using-a-graphical-user-interface"></a>收集日志使用图形用户界面
+### <a name="bkmk_gui"></a>收集日志使用图形用户界面
 而不是提供 Get AzureStackLog cmdlet 来检索 Azure 堆栈日志所需的参数，你还可以利用位于主 Azure 堆栈工具 GitHub 工具存储库在 http://aka.ms/AzureStackTools 可用的开放源代码 Azure 堆栈工具。
 
 **ERCS_AzureStackLogs.ps1** PowerShell 脚本存储在 GitHub 工具存储库，并定期更新。 若要确保你有可用的最新版本，您应直接从 http://aka.ms/ERCS 下载它。 从管理的 PowerShell 会话中启动，此脚本连接到特权终结点，并使用提供的参数运行 Get AzureStackLog。 如果未不提供任何参数，该脚本将默认为提示输入通过图形用户界面的参数。
@@ -159,3 +159,4 @@ if($s)
 
 ## <a name="next-steps"></a>后续步骤
 [Microsoft Azure Stack 故障排除](azure-stack-troubleshooting.md)
+
