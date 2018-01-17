@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3136bccb7724c95c4001e353d7feeecb045f1273
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: e61e664ef5cd9e296016c8fc572d67ec1d62c1f7
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
 本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
@@ -52,7 +52,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | 设计工具 |浏览器内和移动应用、仅 UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
 | 应用程序生命周期管理 (ALM) |在非生产环境中进行设计和测试，并在准备就绪后推向生产。 |DevOps：[Azure 资源管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md)中的源代码管理、测试、支持、自动化和可管理性 |
 | 管理员体验 |管理流环境和数据丢失防护 (DLP) 策略，跟踪许可 [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |管理资源组、连接、访问管理和日志记录 [https://portal.azure.com](https://portal.azure.com) |
-| 安全 |Office 365 安全性和符合性审核日志、数据丢失防护 (DLP)、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
+| “安全” |Office 365 安全性和符合性审核日志、数据丢失防护 (DLP)、针对敏感数据的[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
 
 <a name="function"></a>
 
@@ -81,7 +81,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 | 扩展 |无配置缩放 |应用服务计划的缩放 |
 | 定价 |按使用或作为应用服务计划的部分付费 |应用服务计划的部分 |
 | 运行类型 |触发、计划（通过计时器触发器） |触发、连续、计划 |
-| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[Azure 存储队列和 blob](functions-bindings-storage-blob.md)、[Azure 服务总线队列和主题](functions-bindings-service-bus.md) |[Azure 存储队列和 blob](functions-bindings-storage-blob.md)、[Azure 服务总线队列和主题](functions-bindings-service-bus.md) |
+| 触发事件 |[计时器](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-cosmosdb.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[HTTP/WebHook（GitHub、Slack）](functions-bindings-http-webhook.md)、[Azure 应用服务移动应用](functions-bindings-mobile-apps.md)、[Azure 事件中心](functions-bindings-event-hubs.md)、[Azure 存储队列和 blob](functions-bindings-storage-blob.md)、[Azure 服务总线队列和主题](functions-bindings-service-bus.md) |[Azure 存储队列和 blob](functions-bindings-storage-blob.md)、[Azure 服务总线队列和主题](functions-bindings-service-bus.md) |
 | 浏览器开发 |支持 |不支持 |
 | C# |支持 |支持 |
 | F# |支持 |不支持 |

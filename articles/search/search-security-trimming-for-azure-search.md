@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 搜索实现安全修整"
-description: "使用 Azure 搜索筛选器实现安全修整。"
+title: "用于在 Azure 搜索中修整结果的安全筛选器 | Microsoft Docs"
+description: "使用安全筛选器和用户标识对 Azure 搜索内容进行访问控制。"
 ms.custom: 
 ms.date: 08/07/2017
 ms.service: search
@@ -11,15 +11,15 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-with-azure-search"></a>使用 Azure 搜索实现安全修整
+# <a name="security-filters-for-trimming-results-in-azure-search"></a>用于在 Azure 搜索中修整结果的安全筛选器
 
-可以针对搜索结果应用安全筛选器，以根据用户标识限制对文档的访问。 此搜索体验通常需要将请求搜索的任何人的标识，与包含拥有文档权限的主体的字段进行比较。 如果找到匹配项，则该用户或主体（例如组或角色）有权访问该文档。
+可以应用安全筛选器，以根据用户标识对 Azure 搜索中的搜索结果进行修整。 此搜索体验通常需要将请求搜索的任何人的标识，与包含拥有文档权限的主体的字段进行比较。 如果找到匹配项，则该用户或主体（例如组或角色）有权访问该文档。
 
 实现安全筛选的方法之一是对相等表达式进行复杂析取：例如 `Id eq 'id1' or Id eq 'id2'`，等等。 此方法容易出错且难以维护，如果列表包含数百甚至数千个值，会将查询响应时间减慢许多秒。 
 
@@ -155,3 +155,8 @@ api-key: [admin or query key]
 
 本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  
+## <a name="see-also"></a>另请参阅
+
++ [使用 Azure 搜索筛选器进行 Active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure 搜索中的筛选器](search-filters.md)
++ [Azure 搜索操作中的数据安全性和访问控制](search-security-overview.md)

@@ -7,11 +7,12 @@ ms.author: csand
 ms.date: 12/14/2017
 ms.topic: quickstart
 ms.service: automation
-ms.openlocfilehash: 55bed1bc4788799465e87e65b136ff9e51318fbd
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: mvc
+ms.openlocfilehash: 34ae160c5e19e161f4412838e377a844c737728d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-an-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 
@@ -71,7 +72,7 @@ Azure 自动化 Runbook 可以通过 Azure 创建。 此方法提供一个基于
 
 1. 在“编辑 PowerShell Runbook”页中单击“发布”，将此 Runbook 作为帐户中的正式版 Runbook 发布。
 
-   ![Runbook 概览](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-overview.png)
+   ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
 ## <a name="run-the-runbook"></a>运行 Runbook
 
@@ -83,11 +84,11 @@ Runbook 发布以后，会显示概览页。
 
 1. 将“名称”保留为空，以便使用默认值，然后单击“确定”。 此时会提交 Runbook 作业，并显示作业页。
 
-   ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
+   ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
 1. 当“作业状态”为“正在运行”或“已完成”后，单击“输出”打开“输出”窗格并查看 Runbook 输出。
 
-    ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
+   ![Runbook 测试作业](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

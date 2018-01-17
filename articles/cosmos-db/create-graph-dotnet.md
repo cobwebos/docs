@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 29153180da576f144a3f21718c3044b7b843eafb
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: c7fff37e1b59fd90952826a1410a8dd8c6931e77
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET Framework 或 Core 应用程序
 
@@ -65,7 +65,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 快速查看应用中发生的情况。 打开 Program.cs 文件，会发现以下代码行创建 Azure Cosmos DB 资源。 
 
-* 将对 DocumentClient 进行初始化。 在预览版中，我们将一个图形扩展 API 添加到了 Azure Cosmos DB 客户端。 我们正在努力开发从 Azure Cosmos DB 客户端和资源中解耦的独立图形客户端。
+* 将对 DocumentClient 进行初始化。 
 
     ```csharp
     using (DocumentClient client = new DocumentClient(
@@ -122,17 +122,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     `"endpoint": "https://testgraphacct.documents.azure.com:443/",`
 
-3. 如果是在 2017 年 11 月 27 日之前创建的图形数据库帐户，请将 `endpoint` 值中的 `documents` 更改为 `graphs`。 如果是在 2017 年 11 月 27 日当天或之后创建的图形数据库帐户，请将 `endpoint` 值中的 `documents` 更改为 `gremlin.cosmosdb`。
-
-    终结点值现在应如下所示：
-
-    `"endpoint": "https://testgraphacct.graphs.azure.com:443/",` 或 `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/",`
-
-4. 从门户复制“主密钥”的值，并在 App.config 中将其设为 AuthKey 密钥的值，然后保存所做的更改。 
+3. 从门户复制“主密钥”的值，并在 App.config 中将其设为 AuthKey 密钥的值，然后保存所做的更改。 
 
     `"authkey": "FILLME"`
 
-5. 保存 appsettings.json 文件。 
+4. 保存 appsettings.json 文件。 
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 

@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2017
+ms.date: 12/14/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f62e5a224c2fb33714a80bc47b98238208b787e5
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure 成本管理常见问题解答
 
@@ -46,6 +46,29 @@ ms.lasthandoff: 12/05/2017
 
 可能还需要向部门管理员、帐户所有者和企业管理员授予使用计费 API 查看费用的权限。
 
+## <a name="why-dont-i-see-optimizer-recommendations"></a>我为何看不到优化器建议？
+
+只对已激活的帐户显示建议信息。 对于未激活的帐户，“优化器”报告类别中不会显示如下所述的任何建议信息：
+
+- 优化管理器
+- 大小优化
+- 低效率
+
+如果无法查看任何优化器建议数据，则很有可能是你的帐户未激活。 若要激活帐户，需要使用 Azure 凭据将其注册。
+
+激活帐户：
+
+1.  在 Cloudyn 门户中，单击右上方的“设置”，然后“云帐户”。
+2.  在“Microsoft Azure 帐户”选项卡上，找到包含**未激活**订阅的帐户。
+3.  在未激活帐户的右侧，单击“编辑”铅笔图标。
+4.  系统会自动检测租户 ID 和费率 ID。 单击“资源组名称” 的 Azure 数据工厂。
+5.  随后将重定向到 Azure 门户。 登录到门户并授权 Cloudyn 收集器访问你的 Azure 数据。
+6.  接下来，将会重定向到 Cloudyn 帐户管理页，订阅中的帐户状态已更新为“活动”。 该订阅显示了一个绿色的勾选标记符号。
+7.  如果有一个或多个订阅未显示绿色勾选标记符号，则表示你无权为订阅创建读取器应用 (CloudynCollector)。 具有更高订阅权限的用户需要重复步骤 3 和 4。  
+
+完成前面的步骤后，在一到两天内即可查看优化器建议。 但是，最长可能需要在五天之后才能显示完整的优化数据。
+
+
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>如何启用已暂停或已锁定的用户？
 
 如果收到请求允许某个用户进行访问的警报，需要激活该用户帐户。
@@ -66,10 +89,7 @@ Cloudyn 用户帐户使用单一登录从 Azure 建立连接。 如果用户错�
 
 我们建议至少创建两个 Cloudyn 管理员帐户，以防其中一个帐户被锁定。
 
-如果无法登录到 Cloudyn 门户，请确保使用正确的 Azure 成本管理 URL 登录到 Cloudyn。 使用以下 URL 之一：
-
-- https://azure.cloudyn.com
-- https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade
+如果无法登录到 Cloudyn 门户，请确保使用正确的 Azure 成本管理 URL 登录到 Cloudyn。 使用 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade)。
 
 避免使用 Cloudyn 直接 URL https://app.cloudyn.com。
 
@@ -124,7 +144,7 @@ Cloudyn 提供以下数据刷新时间线：
 
 ## <a name="is-cost-managementcloudyn-agent-based"></a>是否基于成本管理/Cloudyn 代理？
 
-不能。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
+不会。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn 报表是否每报表显示多个 AD 租户？
 

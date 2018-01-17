@@ -6,14 +6,14 @@ keywords: "dsc, 配置, 自动化"
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e9e75f1714217f452d55aba49929fec767df3353
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 Linux 虚拟机
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/22/2017
 通过 https://portal.azure.com 登录 Azure
 
 ## <a name="onboard-a-virtual-machine"></a>载入虚拟机
-可以通过多种不同的方法载入计算机并启用 Desired State Configuration。 本快速入门介绍如何通过自动化帐户进行载入。 可以阅读此[载入](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-onboarding)文章，详细了解如何通过不同的方法将计算机载入到 Desired State Configuration。
+可以通过多种不同的方法载入计算机并启用 Desired State Configuration。 本快速入门介绍如何通过自动化帐户进行载入。 可以阅读此[载入](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)文章，详细了解如何通过不同的方法将计算机载入到 Desired State Configuration。
 
 1. 在 Azure 门户的左窗格中，选择“自动化帐户”。 如果该选项未显示在左窗格中，请单击“所有服务”，然后在出现的视图中进行搜索。
 1. 在列表中选择一个自动化帐户。
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/22/2017
 1. 单击菜单选项“添加 Azure VM”。
 1. 找到要启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
 1. 单击虚拟机，然后选择“连接”。
-1. 选择适用于虚拟机的 DSC 设置。 如果已准备了一个配置，可以通过“节点配置名称”的形式来指定该配置。 可以将[配置模式](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig)设置为控制计算机的配置行为。
+1. 选择适用于虚拟机的 DSC 设置。 如果已准备了一个配置，可以通过“节点配置名称”的形式来指定该配置。 可以将[配置模式](https://docs.microsoft.com/powershell/dsc/metaconfig)设置为控制计算机的配置行为。
 1. 单击 **“确定”**
 
 ![将 Azure VM 载入到 DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -105,7 +105,7 @@ configuration LAMPServer {
 
 ## <a name="compile-a-configuration"></a>编译配置
 
-必须先将 DSC 配置编译为节点配置（MOF 文档），然后才能将其分配给节点。 编译时会验证配置，并允许输入参数值。 若要详细了解如何编译配置，请参阅：[在 Azure 自动化 DSC 中编译配置](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)
+必须先将 DSC 配置编译为节点配置（MOF 文档），然后才能将其分配给节点。 编译时会验证配置，并允许输入参数值。 若要详细了解如何编译配置，请参阅：[在 Azure 自动化 DSC 中编译配置](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 若要编译配置，请执行以下操作：
 
@@ -141,6 +141,6 @@ configuration LAMPServer {
 > [!div class="nextstepaction"]
 > [通过 DSC 和 Chocolatey 持续部署到 VM](./automation-dsc-cd-chocolatey.md)
 
-* 若要详细了解 PowerShell Desired State Configuration，请参阅 [PowerShell Desired State Configuration 概述](https://docs.microsoft.com/en-us/powershell/dsc/overview)。
-* 若要详细了解如何通过 PowerShell 管理自动化 DSC，请参阅 [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/?view=azurermps-5.0.0)。
-* 若要了解如何将用于报告信息和提醒用户的 DSC 报告转发到 Log Analytics，请参阅[将 DSC 报告转发到 Log Analytics](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-diagnostics)。 
+* 若要详细了解 PowerShell Desired State Configuration，请参阅 [PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/dsc/overview)。
+* 若要详细了解如何通过 PowerShell 管理自动化 DSC，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0)。
+* 若要了解如何将用于报告信息和提醒用户的 DSC 报告转发到 Log Analytics，请参阅[将 DSC 报告转发到 Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)。 
