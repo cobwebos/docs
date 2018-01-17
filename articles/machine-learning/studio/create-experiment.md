@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 4cc8e78e3ce22d70546d8a25da17b56f4b7cc166
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 11496f0ca225baf0e6647a62aae09b8992f825c8
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 10/11/2017
 [步骤 5：预测新汽车价格]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> 可在 [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com)（Cortana Intelligence 库）中找到以下试验的工作副本。 请访问 **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**（第一个数据科学试验 - 汽车价格预测），然后单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
+> 可在 [Azure AI Gallery](https://gallery.cortanaintelligence.com)（Azure AI 库）中找到以下试验的工作副本。 请访问 **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**（第一个数据科学试验 - 汽车价格预测），并单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
 
 
 ## <a name="step-1-get-data"></a>步骤 1：获取数据
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 
 ![单击输出端口，并选择“可视化”][select-visualize]
 <br/>
-***单击输出端口，然后选择“可视化”***
+***单击输出端口，并选择“可视化”***
 
 > [!TIP]
 > 数据集和模块都有由小圆圈表示的输入和输出端口 - 输入端口位于顶部，输出端口位于底部。
@@ -132,18 +132,18 @@ ms.lasthandoff: 10/11/2017
 
 首先添加一个彻底删除“规范化损失”列的模块，然后添加另一个删除任何有缺失数据的行的模块。
 
-1. 在模块控制板顶部的“搜索”框中键入“选择列”，查找“选择数据集中的列[select-columns]”模块，然后将其拖放到试验画布上。[] 使用此模块可以选择要将哪些列包含在模型中，或者从模型中排除。
+1. 在模块控制板顶部的“搜索”框中键入“选择列”，查找[选择数据集中的列][select-columns]模块，然后将其拖放到试验画布上。 使用此模块可以选择要将哪些列包含在模型中，或者从模型中排除。
 
-2. 将“汽车价格数据(原始)”数据集的输出端口连接到“选择数据集中的列[select-columns]”模块的输入端口。[]
+2. 将“汽车价格数据(原始)”数据集的输出端口连接到[选择数据集中的列][select-columns]模块的输入端口。
 
     ![将“选择数据集中的列”模块添加到试验画布并进行连接][type-select-columns]
     <br/>
     ***将“选择数据集中的列”模块添加到试验画布并进行连接***
 
-3. 单击“选择数据集中的列[select-columns]”模块，并单击“属性”窗格中的“启动列选择器”。[]
+3. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
     - 在左侧单击“使用规则”
-    - 在“开头为”下面，单击“所有列”。 这会指示“选择数据集中的列[select-columns]”传递所有列（但要排除的列除外）。[]
+    - 在“开头为”下面，单击“所有列”。 这会指示[选择数据集中的列][select-columns]”传递所有列（但要排除的列除外）。
     - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 10/11/2017
     ***属性窗格显示“规范化损失”列已排除***
 
     > [!TIP]
-    可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击“选择数据集中的列”[select-columns]模块，并键入注释“排除规范化损失”。[]
+    可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击[选择数据集中的列][select-columns]模块，并键入注释“排除规范化损失”。
     >
     >
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 10/11/2017
     <br/>
     ***双击要添加注释的模块***
 
-3. 将“清理缺失数据[clean-missing-data]”模块拖到试验画布，然后将其连接到“选择数据集中的列[select-columns]”模块。[][] 在“属性”窗格的“清理模式”下选择“删除整行”。 这会指示“清理缺失数据[clean-missing-data]”清理数据，删除存在缺失值的行。[] 双击该模块并键入注释“删除缺失值行”。
+3. 将[清理缺失数据][clean-missing-data]模块拖到试验画布，然后将其连接到[选择数据集中的列][select-columns]”模块。 在“属性”窗格的“清理模式”下选择“删除整行”。 这会指示[清理缺失数据][clean-missing-data]”清理数据，删除存在缺失值的行。 双击该模块并键入注释“删除缺失值行”。
 
     ![将“清理缺失数据”模块的清理模式设置为“删除整行”][set-remove-entire-row]
     <br/>
@@ -182,9 +182,9 @@ ms.lasthandoff: 10/11/2017
 ***运行以后，试验看起来应与上图类似***
 
 > [!TIP]
-> 为什么我们现在运行此试验？ 运行此试验，数据的列定义就会从数据集传入“选择数据集中的列[select-columns]”模块和“清理缺失数据[clean-missing-data]”模块。[][] 这意味着，只要连接到“清理缺失数据[clean-missing-data]”，任何模块也都会有此类相同信息。[]
+> 为什么我们现在运行此试验？ 运行此试验，数据的列定义就会从数据集传入[选择数据集中的列][select-columns]模块和[清理缺失数据][clean-missing-data]模块。 这意味着，只要连接到[清理缺失数据][clean-missing-data]，任何模块也都会有此类相同信息。
 
-试验到目前为止所完成的工作就是清理数据。 要查看已清理的数据集，请单击“清理缺失数据[clean-missing-data]”模块左侧的输出端口，并选择“可视化”。[] 请注意，此时不再包含“规范化损失”列，并且也没有缺失值。
+试验到目前为止所完成的工作就是清理数据。 要查看已清理的数据集，请单击[清理缺失数据][clean-missing-data]模块左侧的输出端口，并选择“可视化”。 请注意，此时不再包含“规范化损失”列，并且也没有缺失值。
 
 现已清理数据，接下来可以指定要在预测模型中使用哪些特征。
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 10/11/2017
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
 
-1. 将另一“选择数据集中的列[select-columns]”模块拖放到试验画布上。[] 将“清理缺失数据[clean-missing-data]”模块左侧的输出端口连接到“选择数据集中的列[select-columns]”模块的输入端口。[][]
+1. 将另一[选择数据集中的列][select-columns]模块拖放到试验画布上。 将[清理缺失数据][clean-missing-data]模块左侧的输出端口连接到[选择数据集中的列][select-columns]模块的输入端口。
 
     ![将“选择数据集中的列”模块连接到“清理缺失数据”模块][connect-clean-to-select]
     <br/>
@@ -237,9 +237,9 @@ ms.lasthandoff: 10/11/2017
 
 我们会将数据拆分为单独的定型数据集和测试数据集，用于模型定型和测试。
 
-1. 选择“拆分数据[split]”模块并将其拖到试验画布，然后将其连接到最后一个“选择数据集中的列[select-columns]”模块的输出。[][]
+1. 选择[拆分数据][split]模块并将其拖到试验画布，然后将其连接到最后一个[选择数据集中的列][select-columns]模块的输出。
 
-2. 单击“拆分数据[split]”模块将其选中。[] 找到“第一个输出数据集中的行的比例”（位于画布右侧的“属性”窗格中），将其设置为 0.75。 这样，我们将使用 75% 的数据进行模型定型，保留 25% 的数据用于测试（可在以后使用不同的百分比进行试验）。
+2. 单击[拆分数据][split]模块将其选中。 找到“第一个输出数据集中的行的比例”（位于画布右侧的“属性”窗格中），将其设置为 0.75。 这样，我们将使用 75% 的数据进行模型定型，保留 25% 的数据用于测试（可在以后使用不同的百分比进行试验）。
 
     ![将“拆分数据”模块的拆分比例设置为 0.75][set-split-data-percentage]
     <br/>
@@ -248,18 +248,18 @@ ms.lasthandoff: 10/11/2017
     > [!TIP]
     > 更改“随机种子”参数可为训练和测试生成不同的随机样本。 此参数控制伪随机数生成器的种子。
 
-2. 运行试验。 运行试验时，“选择数据集中的列[select-columns]”和“拆分数据[split]”模块会将列定义传递到接下来要添加的模块。[][]  
+2. 运行试验。 运行试验时，[选择数据集中的列][select-columns]和[拆分数据][split]模块会将列定义传递到接下来要添加的模块。  
 
-3. 要选择学习算法，请在画布左侧的模块控制板中展开“机器学习”类别，并展开“初始化模型”。 此时会显示多个可用于初始化机器学习算法的模块类别。 对于本试验，请选择“回归”类别下的“线性回归[linear-regression]”模块，然后将其拖放到试验画布上。[]
+3. 要选择学习算法，请在画布左侧的模块控制板中展开“机器学习”类别，并展开“初始化模型”。 此时会显示多个可用于初始化机器学习算法的模块类别。 对于本试验，请选择“回归”类别下的[线性回归][linear-regression]模块，然后将其拖放到试验画布上。
 （也可以在控制板的“搜索”框中键入“线性回归”找到该模块。）
 
-4. 找到“训练模型[train-model]”模块并将其拖到试验画布。[] 将“线性回归[linear-regression]”模块的输出连接到“定型模型[train-model]”模块左侧的输入，将“拆分数据[split]”模块的定型数据输出（左端口）连接到“定型模型[train-model]”模块右侧的输入。[][][][]
+4. 找到[训练模型][train-model]模块并将其拖到试验画布。 将[线性回归][linear-regression]”模块的输出连接到[定型模型][train-model]模块左侧的输入，将[拆分数据][split]”模块的定型数据输出（左端口）连接到[定型模型][train-model]”模块右侧的输入。
 
     ![将“定型模型”模块连接到“线性回归”和“拆分数据”模块][connect-train-model]
     <br/>
     ***将“定型模型”模块连接到“线性回归”和“拆分数据”模块***
 
-5. 选择“训练模型[train-model]”模块，单击“属性”窗格中的“启动列选择器”，并选择“价格”列。[] 这是模型要预测的值。
+5. 选择“训练模型[模块][train-model]，单击**属性**窗格中的**启动列选择器**，并选择**价格**列。 这是模型要预测的值。
 
     在列选择器中选择“价格”列，方法是将其从“可用列”列表移至“所选列”列表。
 
@@ -279,26 +279,26 @@ ms.lasthandoff: 10/11/2017
 
 使用 75% 的数据训练模型后，可以使用该模型为另外 25% 的数据评分，确定模型的运行情况。
 
-1. 找到“评分模型[score-model]”模块并将其拖放到试验画布上。[] 将“定型模型[train-model]”模块的输出连接到“评分模型[score-model]”的左侧输入端口。[][] 将“拆分数据[split]”模型的测试数据输出（右侧端口）连接到“评分模型[score-model]”[][]
+1. 找到[评分模型][score-model]模块并将其拖放到试验画布上。 将[定型模型][train-model]模块的输出连接到[评分模型][score-model]的左侧输入端口。 将[拆分数据][split]模型的测试数据输出（右侧端口）连接到[评分模型][score-model]
 
     ![将“评分模型”模块连接到“定型模型”和“拆分数据”模块][connect-score-model]
     <br/>
     ***将“评分模型”模块连接到“定型模型”和“拆分数据”模块***
 
-2. 运行试验，查看“评分模型[score-model]”模块的输出（单击“评分模型[score-model]”的输出端口，并选择“可视化”）。[][] 输出显示价格预测值，以及来自测试数据的已知值。  
+2. 运行试验，查看[评分模型][score-model]”模块的输出（单击[评分模型][score-model]的输出端口，并选择“可视化”）。 输出显示价格预测值，以及来自测试数据的已知值。  
 
     ![“评分模型”模块的输出][score-model-output]
     <br/>
     ***“评分模型”模块的输出***
 
-3. 最后，我们对结果的质量进行测试。 选择“评估模型[evaluate-model]”模块并将其拖放到试验画布上，然后将“评分模型[score-model]”模块的输出连接到“评估模型[evaluate-model]”的左侧输入。[][][]
+3. 最后，我们对结果的质量进行测试。 选择[评估模型][evaluate-model]模块并将其拖放到试验画布上，然后将[评分模型][score-model]模块的输出连接到[评估模型][evaluate-model]的左侧输入。
 
     > [!TIP]
-    > 之所以“评估模型[evaluate-model]”模块上有两个输入端口，是因为可将其用于并列比较两个模型。[] 可在以后向试验添加另一算法，并使用“评估模型[evaluate-model]”查看哪一个算法的结果更好。[]
+    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用[评估模型][evaluate-model]查看哪一个算法的结果更好。
 
 4. 运行试验。
 
-要查看“评估模型[evaluate-model]”模块的输出，请单击输出端口，并选择“可视化”。[]
+要查看[评估模型][evaluate-model]模块的输出，请单击输出端口，并选择“可视化”。
 
 ![试验的评估结果][evaluation-results]
 <br/>
@@ -326,8 +326,8 @@ ms.lasthandoff: 10/11/2017
 
 完成第一篇机器学习教程并设置试验后，可以继续改进模型，然后将其作为预测型 Web 服务进行部署。
 
-- **通过反复尝试改进模型** - 例如，可以更改预测时使用的特征。 或者，可以[修改线性回归][linear-regression]算法的属性，或尝试完全不同的算法。 甚至可以同时在试验中添加多个机器学习算法，使用“评估模型[evaluate-model]”模块进行比较（两两相比）。[]
-有关如何在单个试验中比较多个模型的示例，请参阅 [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com)（Cortana Intelligence 库）中的 [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5)（比较回归量）。
+- **通过反复尝试改进模型** - 例如，可以更改预测时使用的特征。 或者，可以[修改线性回归][linear-regression]算法的属性，或尝试完全不同的算法。 甚至可以同时在试验中添加多个机器学习算法，使用[评估模型][evaluate-model]模块进行比较（两两相比）。
+有关如何在单个试验中比较多个模型的示例，请参阅 [Azure AI Gallery](https://gallery.cortanaintelligence.com)（Azure AI 库）中的 [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5)（比较回归量）。
 
     > [!TIP]
     > 若要复制试验的任何迭代，请使用页面底部的“另存为”按钮。 可以单击页面底部的“查看运行历史记录”来查看试验的所有迭代。 有关详细信息，请参阅 [在 Azure 机器学习工作室中管理试验迭代][runhistory]。
