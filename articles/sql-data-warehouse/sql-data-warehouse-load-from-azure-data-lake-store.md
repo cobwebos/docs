@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 09/15/2017
+ms.date: 12/14/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 4c3ca2a26fe47a8f0831a1ce4edf2c35911f3fc1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>将数据从 Azure Data Lake Store 加载到 SQL 数据仓库中
-本文档提供了使用 PolyBase 从 Azure Data Lake Store (ADLS) 将自己的数据加载到 SQL 数据仓库中所需的所有步骤。
+本文档提供了使用 PolyBase 将数据从 Azure Data Lake Store (ADLS) 加载到 SQL 数据仓库中所要执行的所有步骤。
 虽然能够使用外部表对 ADLS 中存储的数据运行即席查询，但最佳做法是，建议将数据导入 SQL 数据仓库。
 
 在本教程中，将了解如何：
@@ -42,15 +42,9 @@ ms.lasthandoff: 12/08/2017
 
 * SQL Server Management Studio 或 SQL Server Data Tools，若要下载 SSMS 并进行连接，请参阅[查询 SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
 
-* Azure SQL 数据仓库，若要创建一个，请遵循：https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* 若要创建 Azure SQL 数据仓库，请遵循：https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
-* 启用或未启用加密的 Azure Data Lake Store。 若要创建一个，请遵循：https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
-
-
-
-
-## <a name="configure-the-data-source"></a>配置数据源
-PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外部对象存储在 SQL 数据仓库中，并引用外部存储的数据。
+* 若要创建 Azure Data Lake Store，请遵循：https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 ###  <a name="create-a-credential"></a>创建凭据
@@ -88,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>创建外部数据源
-使用此 [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] 命令存储数据的位置以及数据的类型。 要在 Azure 门户中查找 ADL URI，请导航到 Azure Data Lake Store，然后查看“概要”面板。
+使用此 [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] 命令存储数据的位置。 要在 Azure 门户中查找 ADL URI，请导航到 Azure Data Lake Store，然后查看“概要”面板。
 
 ```sql
 -- C: Create an external data source
@@ -104,11 +98,8 @@ WITH (
 );
 ```
 
-
-
 ## <a name="configure-data-format"></a>配置数据格式
 若要从 ADLS 导入数据，需要指定外部文件格式。 此命令具有格式特定的选项，用于描述数据。
-下面是一个常用的文件格式（竖线分隔的文本文件）的示例。
 请查看我们的 T-SQL 文档，获取 [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] 的完整列表
 
 ```sql
@@ -116,7 +107,7 @@ WITH (
 -- FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text file
 -- STRING_DELIMITER: Specifies the field terminator for data of type string in the text-delimited file.
 -- DATE_FORMAT: Specifies a custom format for all date and time data that might appear in a delimited text file.
--- Use_Type_Default: Store all Missing values as NULL
+-- Use_Type_Default: Store missing values as default for datatype.
 
 CREATE EXTERNAL FILE FORMAT TextFileFormat
 WITH
@@ -130,7 +121,7 @@ WITH
 ```
 
 ## <a name="create-the-external-tables"></a>创建外部表
-指定数据源和文件格式后，可以开始创建外部表。 外部表是你与外部数据交互的方式。 PolyBase 使用递归目录遍历读取位置参数中指定的目录的所有子目录中的所有文件。 此外，以下示例说明了如何创建对象。 需要自定义语句以便处理 ADLS 中的数据。
+指定数据源和文件格式后，可以开始创建外部表。 外部表是你与外部数据交互的方式。 位置参数可以指定文件或目录。 如果指定目录，将会加载该目录中的所有文件。
 
 ```sql
 -- D: Create an External Table
@@ -161,18 +152,15 @@ WITH
 ## <a name="external-table-considerations"></a>外部表注意事项
 创建外部表很容易，但有一些细微差别，需要进行讨论。
 
-使用 PolyBase 加载数据时会进行强类型化。 这意味着所引入的每行数据必须满足表架构定义。
-如果某个给定行不符合架构定义，则该行会被拒绝加载。
+外部表经过强类型化。 这意味着所引入的每行数据必须满足表架构定义。
+如果某个行不符合架构定义，则该行会被拒绝加载。
 
-使用 REJECT_TYPE 和 REJECT_VALUE 可以定义在最终表中必须存在的数据行数或数据的百分比。
-在加载过程中，如果达到拒绝值，则加载会失败。 行被拒绝的最常见原因是架构定义不匹配。
-例如，当文件中的数据是字符串时，如果错误地为列指定了 int 的架构，则每一行都将无法加载。
+使用 REJECT_TYPE 和 REJECT_VALUE 可以定义在最终表中必须存在的数据行数或数据的百分比。在加载过程中，如果达到拒绝值，则加载会失败。 行被拒绝的最常见原因是架构定义不匹配。 例如，当文件中的数据是字符串时，如果错误地为列指定了 int 的架构，则每一行都将无法加载。
 
-Location 指定要从中读取数据的最顶层目录。
-在此示例中，如果 /DimProduct/ 下有子目录，PolyBase 将导入这些子目录中的所有数据。 Azure Data Lake 存储使用基于角色的访问控制 (RBAC) 控制对数据的访问。 也就是说，服务主体必须拥有对位置参数中定义的目录以及最终目录和文件的子项的读取权限。 这样一来，PolyBase 可以进行身份验证，并加载读取相应数据。 
+ Azure Data Lake 存储使用基于角色的访问控制 (RBAC) 控制对数据的访问。 也就是说，服务主体必须拥有对位置参数中定义的目录以及最终目录和文件的子项的读取权限。 这样一来，PolyBase 可以进行身份验证，并加载读取相应数据。 
 
 ## <a name="load-the-data"></a>加载数据
-若要从 Azure Data Lake Store 加载数据，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 使用 CTAS 加载时会使用已创建的强类型化外部表。
+若要从 Azure Data Lake Store 加载数据，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 
 
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
 

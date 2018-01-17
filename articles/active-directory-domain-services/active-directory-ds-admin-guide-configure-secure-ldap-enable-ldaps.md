@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 12/15/2017
 ms.author: maheshu
-ms.openlocfilehash: e070dfad6ca51b941f1af60f85463f4534493dff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 
@@ -117,6 +117,7 @@ ms.lasthandoff: 12/11/2017
 * 验证 LDAP 客户端（例如 ldp.exe）连接到安全 LDAP 终结点时使用的是 DNS 名称，而不是 IP 地址。
 * 验证 LDAP 客户端所连接的 DNS 名称解析为托管域上安全 LDAP 的公共 IP 地址。
 * 验证托管域的安全 LDAP 证书具有“使用者”或“使用者可选名称”属性中的 DNS 名称。
+* 如果在 Internet 上通过安全 LDAP 建立连接，请确保虚拟网络的 NSG 设置允许 Internet 流量传入端口 636。
 
 如果在使用安全 LDAP 连接托管域的过程中仍遇到问题，请[联系产品团队](active-directory-ds-contact-us.md)寻求帮助。 包括以下有助于优化问题诊断的信息：
 * ldp.exe 建立连接并失败的屏幕截图。
@@ -126,7 +127,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
-* [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
+* [管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)
 * [管理 Azure AD 域服务托管域上的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [网络安全组](../virtual-network/virtual-networks-nsg.md)
 * [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
