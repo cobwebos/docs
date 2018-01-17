@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/11/2018
 ms.author: asaxton
-ms.openlocfilehash: b32b06e9d6cbaacdfbdfe92e2c72cb6763c9eb52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79ec87ad7d7dc4a4dc003e4163c8e609c828f545
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded 入门
 
@@ -46,6 +46,9 @@ Power BI Embedded 为 ISV 及其开发人员和客户带来优势。 例如，IS
 ## <a name="get-capacity-and-move-to-production"></a>获取容量，进入生产
 
 在 Microsoft Azure 中创建 Power BI Embedded 容量，使应用程序进入生产。 有关如何创建容量的信息，请参阅[在 Azure 门户中创建 Power BI Embedded 容量](create-capacity.md)。
+
+> [!IMPORTANT]
+> 由于嵌入令牌只应该用于开发测试，因此 Power BI 主帐户可以生成的嵌入令牌数是有限制的。 对于生产嵌入方案，[必须购买容量](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 购买容量后，嵌入令牌的生成就没有限制。
 
 在 Power BI 管理门户中管理容量。 分配用于应用工作区的工作区分配器。 有关详细信息，请参阅[管理 Power BI Premium 和 Power BI Embedded 中的容量](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/)。
 

@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 4f5275584d75c88ce3ef5b607f315f3b425d2c3f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>如何将 Azure 订阅关联或添加到 Azure Active Directory
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/16/2017
 
     ![显示更改目录 UI 的屏幕截图](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
 5. 单击“更改”。
-6. 成功！ 使用目录切换器转到新目录。
+6. 成功！ 使用目录切换器转到新目录。 正确显示所有内容可能需要长达 10 分钟的时间。
 
     ![显示“更改目录成功”通知的屏幕截图](./media/active-directory-how-subscriptions-associated-directory/edit-directory-success.PNG)
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/16/2017
 
 * 若要详细了解如何创建免费的全新 Azure AD 目录，请参阅[如何获取 Azure Active Directory 租户](develop/active-directory-howto-tenant.md)
 * 若要详细了解如何转让 Azure 订阅的账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
-* 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure](active-directory-understanding-resource-access.md)（了解 Azure 中的资源访问）
+* 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [了解 Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
 * 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)
 
 <!--Image references-->

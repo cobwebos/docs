@@ -1,5 +1,5 @@
 ---
-title: "什么是 Azure Analysis Services | Microsoft Docs"
+title: "Azure Analysis Services 概述 | Microsoft Docs"
 description: "Azure 中的 Analysis Services 简介。"
 services: analysis-services
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/08/2017
+ms.date: 01/04/2017
 ms.author: owend
-ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: fe46b3c099c4fd4e04a39e2b2f127c1206711e60
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
+# <a name="azure-analysis-services-overview"></a>Azure Analysis Services 概述
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services 在云中提供企业级数据建模。 它是完全托管的平台即服务 (PaaS)，与 Azure 数据平台服务集成。 
@@ -64,7 +64,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 | 美洲 | 欧洲 | 亚太区 |
 |----------|--------|--------------|
-|  巴西南部<br> 加拿大中部<br> 美国东部 2<br> 美国中北部<br> 美国中南部<br> 美国中西部<br> 美国西部 | 欧洲北部<br> 英国南部<br> 欧洲西部 |   澳大利亚东南部<br> 日本东部<br> 东南亚<br> 印度西部  |
+|  巴西南部<br> 加拿大中部<br> 美国东部 2<br> 美国中北部<br> 美国中南部<br> 美国中西部<br> 美国西部 | 北欧<br> 英国南部<br> 欧洲西部 |   澳大利亚东南部<br> 日本东部<br> 东南亚<br> 印度西部  |
 
 将会不断添加新区域，因此此列表可能并不完整。 通过 Azure 门户或 Azure 资源管理器模板创建服务器时，需选择位置。 若要获得最佳性能，请选择最接近最大用户群的位置。 请在多个区域的冗余服务器上部署模型，确保[高可用性](analysis-services-bcdr.md)。
 

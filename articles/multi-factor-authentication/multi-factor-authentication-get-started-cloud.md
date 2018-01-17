@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: joflore
-ms.openlocfilehash: 9d78bfc8c7872e3a248ee2deb19fa1bc40b8ee5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b7c82dc6f09b147651d999a831c657864fa59134
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>云中的 Azure 多重身份验证入门
 本文介绍如何在云中开始使用 Azure 多重身份验证。
 
 > [!NOTE]
-> 以下文档介绍如何通过 **Azure 经典门户**启用用户。 若要了解如何为 O365 用户设置 Azure 多重身份验证，请参阅[为 Office 365 设置多重身份验证](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)。
+> 以下文档介绍如何通过 **Azure 门户**启用用户。 若要了解如何为 O365 用户设置 Azure 多重身份验证，请参阅[为 Office 365 设置多重身份验证](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)。
 
 ![云中的 MFA](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 

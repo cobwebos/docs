@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 4acd06591b05b9328b35400e0932cfcf92cb7e80
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 2c5d9c5458b77263a5d1da93e5305e61999f229f
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>适用于 Android 应用的 Azure Mobile Engagement 入门
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/20/2017
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，以及如何向 Android 应用程序的分段用户发送推送通知。
 本教程演示使用 Mobile Engagement 的简单广播方案。 在本教程中，将创建一个空白 Android 应用，该应用使用 Google Cloud Messaging (GCM) 收集基本数据以及接收推送通知。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 完成本教程需要 [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
 
 它还需要 [Mobile Engagement Android SDK](https://aka.ms/vq9mfn)。
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/20/2017
 1. 启动“Android Studio”，在弹出的窗口中，选择“启动新的 Android Studio 项目”。
 
     ![][1]
-2. 提供应用名称和公司域。 记下填写的内容，因为之后会用到。 单击“下一步”。
+2. 提供应用名称和公司域。 记下填写的内容，因为之后会用到。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![][2]
 3. 选择目标外观规格和 API 级别，单击“下一步” 。
@@ -91,7 +91,7 @@ Android Studio 现在已经创建了会在其中集成 Mobile Engagement 的演�
 
         import com.microsoft.azure.engagement.EngagementAgent;
         import com.microsoft.azure.engagement.EngagementConfiguration;
-3. 返回 Azure 经典门户的应用“连接信息”页，复制“连接字符串”。
+3. 返回到 Azure 门户，在应用的“连接信息”页中复制**连接字符串**。
 
       ![](../../includes/media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 

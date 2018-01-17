@@ -13,25 +13,23 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: be23d25fe9765025b86e86687fb38b2dab61269e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8d7f79db612ee02eaf585f9b45d888b3533a91b2
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-12-analyze-in-excel"></a>第 12 课：在 Excel 中分析
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="analyze-in-excel"></a>在 Excel 中分析
 
 本课中，将使用“在 Excel 中分析”功能打开 Microsoft Excel，自动创建到模型工作区的连接，并自动向工作表添加数据透视表。 “在 Excel 中分析”功能提供一种快速简单的方法在部署模型之前测试模型的功效。 本课中不执行任何数据分析。 本课的目的是让你（模型作者）熟悉可以用来测试模型设计的工具。   
   
-若要完成本课，必须将 Excel 安装在 SSDT 所在的同一计算机上。
+若要完成本课，必须将 Excel 安装在 Visual Studio 所在的计算机上。
   
 本课预计完成时间：5 分钟  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 11 课：创建角色](../tutorials/aas-lesson-11-create-roles.md)。  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>使用默认透视和 Internet 销售透视进行浏览  
@@ -72,7 +70,7 @@ ms.lasthandoff: 11/02/2017
   
 2.  在“指定用于连接到模型的用户名或角色”中，选择“角色”，然后在下拉列表框中选择“销售经理”，然后单击“确定”。  
   
-    将在 Excel 中打开新的工作簿。 会自动创建一个数据透视表。 “数据透视表字段列表”包括新模型中可用的所有数据字段。  
+    将在 Excel 中打开新的工作簿。 将自动创建一个数据透视表。 “数据透视表字段列表”包括新模型中可用的所有数据字段。  
       
 3.  关闭 Excel 且不保存工作簿。  
   

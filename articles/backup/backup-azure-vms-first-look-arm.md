@@ -13,21 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/04/2017
+ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 954afd6d47f9bccdd2512ab92ba0d416231fb623
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 913cdd7906c5dc4ff48968230ce37c95fb441394
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库
-> [!div class="op_single_selector"]
-> * [使用恢复服务保管库保护 VM](backup-azure-vms-first-look-arm.md)
-> * [使用备份保管库保护 VM](backup-azure-vms-first-look.md)
->
->
 
 本教程会引导完成创建恢复服务保管库和备份 Azure 虚拟机 (VM) 的步骤。 恢复服务保管库保护：
 
@@ -48,13 +43,11 @@ ms.lasthandoff: 12/19/2017
 >
 >
 
-[!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
-
 根据想要保护的虚拟机数量，可从不同的起点开始。 如果想通过一次操作备份多台虚拟机，请转到恢复服务保管库，并[从保管库仪表板启动备份作业](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault)。 如果想要备份单台虚拟机，可以从 VM 管理边栏选项卡启动备份作业。
 
 ## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>从 VM 管理边栏选项卡配置备份作业
 
-执行以下步骤，在 Azure 门户的虚拟机管理边栏选项卡中配置备份作业。 这些步骤不适用于经典门户中的虚拟机。
+执行以下步骤，在 Azure 门户的虚拟机管理边栏选项卡中配置备份作业。 以下步骤仅适用于 Azure 门户中的虚拟机。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“中心”菜单上，单击“更多服务”，并在“筛选器”对话框中键入“虚拟机”。 键入时，系统将筛选出资源列表。 看到虚拟机时，请选择它。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 38101134beb59d9cae46e8ca00354e14d5c16c54
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c3cba0c9ba38e7b0539fde7dc6460c76a47a19d6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="network-security"></a>网络安全
 
@@ -48,12 +48,12 @@ ms.lasthandoff: 11/17/2017
 
 |属性  |说明  |
 |---------|---------|
-|名称|网络安全组中的唯一名称。|
+|名称​​|网络安全组中的唯一名称。|
 |Priority | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 值为“任何”，或者单个 IP 地址、CIDR 块（例如 10.0.0.0/24）、服务标记或应用程序安全组。 详细了解[服务标记](#service-tags)和[应用程序安全组](#application-security-groups)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能称为扩充式安全规则。 详细了解[扩充式安全规则](#augmented-security-rules)。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。|
 |协议     | TCP、UDP 或“任何”，包括 TCP、UDP 和 ICMP。 不能仅指定 ICMP，因此，如果需要 ICMP，则必须使用“任何”。 |
 |方向| 该规则是应用到入站还是出站流量。|
-|端口范围     |可以指定单个端口或端口范围。 例如，可以指定 80 或 10000-10005。 指定范围可以减少创建的安全规则数。 在一个规则中指定多个单独的端口和端口范围的功能以预览版提供，称为扩充式安全规则。 在使用扩充式安全规则之前，请阅读[预览功能](#preview-features)了解重要信息。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能在同一个安全规则中指定多个端口或端口范围。   |
+|端口范围     |可以指定单个端口或端口范围。 例如，可以指定 80 或 10000-10005。 指定范围可以减少创建的安全规则数。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能在同一个安全规则中指定多个端口或端口范围。   |
 |操作     | 允许或拒绝        |
 
 安全规则是有状态的。 例如，如果针对通过端口 80 访问的任何地址指定了出站安全规则，则不需要指定入站安全规则来响应出站流量。 如果通信是从外部发起的，则只需指定入站安全规则。 反之亦然。 如果允许通过某个端口发送入站流量，则不需要指定出站安全规则来响应通过该端口发送的流量。 若要了解创建安全规则时的限制，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
@@ -72,41 +72,41 @@ ms.lasthandoff: 11/17/2017
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|源|源端口|目标|目标端口|协议|Access|
+|Priority|Source|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|全部|ALLOW|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|全部|允许|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|源|源端口|目标|目标端口|协议|Access|
+|Priority|Source|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|全部|ALLOW|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|全部|允许|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|源|源端口|目标|目标端口|协议|Access|
+|Priority|Source|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|全部|DENY|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|全部|拒绝|
 
 ### <a name="outbound"></a>出站
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 全部 | ALLOW |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 全部 | 允许 |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 全部 | ALLOW |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 全部 | 允许 |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 全部 | DENY |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 全部 | 拒绝 |
 
 在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#tags)，而不是 IP 地址。 在“协议”列中，“所有”包含 TCP、UDP 和 ICMP。 创建规则时，可以指定 TCP、UDP 或“所有”，但不能仅指定 ICMP。 因此，如果规则需要 ICMP，则必须为协议选择“所有”。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。
  
@@ -144,8 +144,7 @@ ms.lasthandoff: 11/17/2017
 应用程序安全组以预览版提供。 预览版功能的可用性和可靠性级别与正式版不同。 在使用应用程序安全组之前，必须先完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md)的 Azure 或 PowerShell 部分中的步骤 1-5 来进行注册以使用这些功能。 应用程序安全组具有以下约束：
 
 -   一个应用程序安全组中的所有网络接口必须存在于同一虚拟网络中。 不能向同一应用程序安全组添加来自不同虚拟网络的网络接口。 第一个分配给应用程序安全组的网络接口所在的虚拟网络定义所有后续分配的网络接口必须存在于其中的虚拟网络。
-- 如果在安全规则中将应用程序安全组指定为源和目标，则两个应用程序安全组中的网络接口必须存在于同一虚拟网络中。 例如，如果 ASG1 包含来自 VNet1 的网络接口，ASG2 包含来自 VNet2 的网络接口，则不能在一项规则中将 ASG1 分配为源，将 ASG2 分配为目标，所有网络接口需存在于 VNet1 中。 
-- 仅可在美国中西部区域中使用。
+- 如果在安全规则中将应用程序安全组指定为源和目标，则两个应用程序安全组中的网络接口必须存在于同一虚拟网络中。 例如，如果 ASG1 包含来自 VNet1 的网络接口，ASG2 包含来自 VNet2 的网络接口，则不能在一项规则中将 ASG1 分配为源，将 ASG2 分配为目标，所有网络接口需存在于 VNet1 中。
 
 ## <a name="azure-platform-considerations"></a>Azure 平台注意事项
 
@@ -159,7 +158,7 @@ ms.lasthandoff: 11/17/2017
 
      - **企业协议**：允许端口 25 的出站通信。 可以将出站电子邮件直接从虚拟机发送到外部电子邮件提供商，不受 Azure 平台的限制。 
      - **即用即付：**阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。 在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
-     - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源经端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 如果必须从虚拟机发送电子邮件，则必须使用 SMTP 中继服务。
+     - **云服务提供商 (CSP)、MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源经端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 如果必须从虚拟机发送电子邮件，则必须使用 SMTP 中继服务。
 
   即使 Azure 允许经端口 25 发送电子邮件，Microsoft 也不能保证电子邮件提供商会接受来自你的虚拟机的入站电子邮件。 如果特定的提供商拒绝了来自你的虚拟机的邮件，你必须直接与该提供商协商解决邮件传送问题或垃圾邮件过滤问题，否则只能使用经身份验证的 SMTP 中继服务。 
 

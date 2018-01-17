@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: 38c5f722029c80d7e61039ebe05346b345573e34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adbd1badd8053d3c2b53386b0311e120738099f9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Azure 云中的机器学习简介
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>什么是 Microsoft Azure 云中的机器学习？
 Azure 机器学习是一种云预测分析服务，使用它可以快速创建预测模型，并将其部署为分析解决方案。
 
-可以从现成可用的算法库开始工作，在连接 Internet 的电脑上使用它们创建模型和快速部署预测解决方案。 可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)中的现成示例和解决方案着手。
+可以从现成可用的算法库开始工作，在连接 Internet 的电脑上使用它们创建模型和快速部署预测解决方案。 可以从 [Azure AI 库](https://gallery.cortanaintelligence.com/)中的现成示例和解决方案着手。
 
 ![什么是机器学习？ 在 Azure 机器学习中操作预测分析的基本工作流。](./media/what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
@@ -48,9 +48,9 @@ Azure 机器学习具有在云中创建完整的预测分析解决方案所需�
 ### <a name="machine-learning-studio-create-predictive-models"></a>机器学习工作室：创建预测模型
 在 [机器学习工作室](what-is-ml-studio.md)中，可以通过拖放和连接模块快速创建预测模型。 可以试验不同的组合，并且这种试验都是[免费](https://studio.azureml.net/?selectAccess=true&o=2)的。
 
-* 在 [Cortana Intelligence 库](gallery-how-to-use-contribute-publish.md)中，可以尝试其他人编写的分析解决方案，或者提供自己的解决方案。 在社区发表关于试验的问题或看法，或者通过 LinkedIn 和 Twitter 等社交网络分享试验的链接。
+* 在 [Azure AI 库](gallery-how-to-use-contribute-publish.md)中，可以尝试其他人编写的分析解决方案，或者提供自己的解决方案。 在社区发表关于试验的问题或看法，或者通过 LinkedIn 和 Twitter 等社交网络分享试验的链接。
 
-  ![在 Azure Cortana Intelligence 库中尝试运行预测试验，或者补充自己的试验](./media/what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
+  ![在 Azure AI 库中尝试运行预测试验，或者补充自己的试验](./media/what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 * 在机器学习工作室中使用 [机器学习算法和模块](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) 大型库立即开始创建预测模型。 从示例试验、R 和 Python 包，以及 Xbox 和 Bing 等 Microsoft 业务的一流算法中选择。 使用自定义的 [R](extend-your-experiment-with-r.md) 和 [Python](execute-python-scripts.md) 脚本扩展工作室模块。
 
   ![什么是预测分析：Azure 机器学习工作室中的预测分析试验示例](./media/what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)

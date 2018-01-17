@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/28/2017
+ms.date: 01/03/2018
 ms.author: yurid
-ms.openlocfilehash: a14528013b34b912f4f2e1bc07094c7b20a0f63c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>在 Azure 安全中心进行安全运行状况监视
 本文介绍如何通过 Azure 安全中心的监视功能监视合规性。
@@ -48,11 +48,11 @@ ms.lasthandoff: 01/02/2018
 每个选项卡可能包含多个部分，在每个部分，可以选择单个选项详细查看可解决该特定问题的建议步骤。
 
 #### <a name="monitoring-recommendations"></a>监视建议
-此部分显示已进行自动预配初始化的虚拟机和计算机的总数及其当前状态。 单击此条目时，“监视代理运行状况问题”会打开。
+此部分显示已进行自动预配初始化的虚拟机和计算机的总数及其当前状态。 此示例中有一个建议：**监视代理运行状况问题**。  选择此建议。
 
 ![监视代理运行状况问题](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
-会列出安全中心无法成功监视的 VM 和计算机。 选择要获取其详细信息的 VM 或计算机。 “监视状态”用于定义问题。
+此时会打开“监视代理运行状况问题”。 会列出安全中心无法成功监视的 VM 和计算机。 选择要获取其详细信息的 VM 或计算机。 “监视状态”提供安全中心不能进行监视的原因。 查看[安全中心故障排除指南](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)可获取一个列表，其中包含“监视状态”的值、说明和解决步骤。
 
 #### <a name="recommendations"></a>建议
 此部分提供了一组[针对每个受 Azure 安全中心监视的虚拟机和计算机的建议](security-center-virtual-machine-recommendations.md)。 第一列列出了建议。 第二列显示受该建议影响的虚拟机和计算机的总数。 第三列显示问题的严重性，如以下屏幕截图所示：

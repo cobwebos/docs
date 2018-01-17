@@ -61,9 +61,9 @@
 | &nbsp; |[ServiceNow (Beta)](../articles/data-factory/connector-servicenow.md) |✓ | |✓ |✓  |
 | &nbsp; |[Shopify (Beta)](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Square (Beta)](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
-| &nbsp; |[Web 表（HTML 表）](../articles/data-factory/connector-web-table.md) |✓ | |✓ |✓  |
+| &nbsp; |[Web 表（HTML 表）](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
 | &nbsp; |[Xero (Beta)](../articles/data-factory/connector-xero.md) |✓ | |✓ |✓  |
 | &nbsp; |[Zoho (Beta)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> 连接器标记为 *Beta* 意味着，可以试用它并向我们提供反馈，但不要在生产环境中使用它。
+> 连接器标记为 *Beta* 意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用 Beta 连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。

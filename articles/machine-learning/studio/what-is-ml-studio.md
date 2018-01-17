@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 923bf1163e4d27e8c453fc2fcd58ebb80222bd6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a96e80fa3ece14c40159c6937a0e34c1ebc634ff
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
@@ -31,7 +31,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>机器学习工作室交互式工作区
 要开发预测分析模型，通常需要使用一个或多个源中的数据，通过各种数据操作和统计函数来转换及分析数据，并生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断收敛，直到已训练的有效模型令人满意。
 
-**Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将***数据集***和分析***模块***拖放到交互式画布，将它们连接在一起构成***试验***，并在机器学习工作室中运行。 要迭代模型设计，可以编辑试验，根据需要保存副本，并重新运行试验。 准备就绪后，可以将***训练实验***转换为***预测试验***，并将其发布为 ***Web 服务***，使其他人可以访问模型。
+**Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将***数据集***和分析***模块***拖放到交互式画布，将它们连接在一起构成***试验***，然后在机器学习工作室中运行。 要迭代模型设计，可以编辑试验，根据需要保存副本，并重新运行试验。 准备就绪后，可以将***训练实验***转换为***预测试验***，然后将其发布为 ***Web 服务***，使其他人可以访问模型。
 
 不需要编程，只需以可视方式连接数据集和模块，即可构造预测分析模型。
 
@@ -64,9 +64,9 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **设置** - 用于配置帐户和资源的设置集合。
 
 ### <a name="gallery"></a>库
-单击“库”，会转到 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
+单击“库”就会转到 [Azure AI 库](http://gallery.cortanaintelligence.com/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
 
-有关该库的详细信息，请参阅 [Share and discover solutions in the Cortana Intelligence Gallery](gallery-how-to-use-contribute-publish.md)（共享和发现 Cortana Intelligence 库中的解决方案）。
+有关该库的详细信息，请参阅[共享和发现 Azure AI 库中的解决方案](gallery-how-to-use-contribute-publish.md)。
 
 ## <a name="components-of-an-experiment"></a>试验组件
 试验由数据集组成，数据集将数据提供给分析模块，将这些模块连接起来即可构成预测分析模型。 具体而言，有效的试验有以下特征：

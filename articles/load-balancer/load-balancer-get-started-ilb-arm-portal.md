@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5b983ca9ff28aac7f0e0501f353c48deeb6adcd5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8f0f575319eec0517366079c637ad7565530ac70
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>在 Azure 门户中创建内部负载均衡器
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -43,7 +43,7 @@ ms.lasthandoff: 12/18/2017
 1. 打开浏览器，导航到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。
 2. 在屏幕的左上方，单击“新建” > “网络” > “负载均衡器”。
 3. 在“创建负载均衡器”边栏选项卡中，输入负载均衡器的“名称”。
-4. 在“方案”下，单击“内部”。
+4. 在“类型”下，单击“内部”。
 5. 单击“虚拟网络”，并选择要在其中创建负载均衡器的虚拟网络。
 
    > [!NOTE]
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/18/2017
    > 如果选择使用静态 IP 地址，则必须为负载均衡器提供一个地址。
 
 8. 在“资源组”下，为负载均衡器指定新资源组的名称，或者单击“选择现有”，并选择现有资源组。
-9. 单击“创建” 。
+9. 单击“创建”。
 
 ## <a name="configure-load-balancing-rules"></a>配置负载均衡规则
 
@@ -66,16 +66,16 @@ ms.lasthandoff: 12/18/2017
 ### <a name="step-1-configure-a-backend-pool"></a>步骤 1：配置后端池
 
 1. 在 Azure 门户中，单击“浏览” > “负载均衡器”，并单击前面创建的负载均衡器。
-2. 在“设置”边栏选项卡中，单击“后端池”。
-3. 在“后端地址池”边栏选项卡中，单击“添加”。
-4. 在“添加后端池”边栏选项卡中，输入后端池的**名称**，并单击“确定”。
+2. 在“设置”页中，单击“后端池”。
+3. 在“后端地址池”页中，单击“添加”。
+4. 在“添加后端池”页中，输入后端池的**名称**，并单击“确定”。
 
 ### <a name="step-2-configure-a-probe"></a>步骤 2：配置探测器
 
 1. 在 Azure 门户中，单击“浏览” > “负载均衡器”，并单击前面创建的负载均衡器。
-2. 在“设置”边栏选项卡中，单击“探测器”。
-3. 在“探测器”边栏选项卡中，单击“添加”。
-4. 在“添加探测器”边栏选项卡中，输入探测器的**名称**。
+2. 在“设置”页中，单击“运行状况探测”。
+3. 在“运行状况探测”页中，单击“添加”。
+4. 在“添加运行状况探测”页中，输入探测的**名称**。
 5. 在“协议”下，选择“HTTP”（用于网站）或“TCP”（用于其他基于 TCP 的应用程序）。
 6. 在“端口”下，指定访问探测器时要使用的端口。
 7. 在“路径”下（仅适用于 HTTP 探测器），指定要用作探测器的路径。
@@ -86,10 +86,10 @@ ms.lasthandoff: 12/18/2017
 ### <a name="step-3-configure-load-balancing-rules"></a>步骤 3：配置负载均衡规则
 
 1. 在 Azure 门户中，单击“浏览” > “负载均衡器”，并单击前面创建的负载均衡器。
-2. 在“设置”边栏选项卡中，单击“负载均衡规则”。
-3. 在“负载均衡规则”边栏选项卡中，单击“添加”。
-4. 在“添加负载均衡规则”边栏选项卡中，输入规则的**名称**。
-5. 在“协议”下，选择“HTTP”（用于网站）或“TCP”（用于其他基于 TCP 的应用程序）。
+2. 在“设置”页中，单击“负载均衡规则”。
+3. 在“负载均衡规则”页中，单击“添加”。
+4. 在“添加负载均衡规则”页中，输入规则的**名称**。
+5. 在“协议”下选择“TCP”或“UDP”。
 6. 在“端口”下，指定负载均衡器中客户端连接到的端口。
 7. 在“后端端口”下，指定要在后端池中使用的端口（通常情况下，负载均衡器端口与后端端口是相同的）。
 8. 在“后端池”下，选择前面创建的后端池。

@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/19/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: c77e357d56fc246de4e0e9af697e770c876d1d78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3c59ad25294fe88f6145b6e55bb498cd958dbca2
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 
 若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装用于 Java 和 .NET Core 开发的可选 SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 支持使用以下操作系统版本进行开发：
 
@@ -127,6 +127,10 @@ sudo apt-get install servicefabricsdkcommon
   > [!NOTE]
   > Linux 不支持独立的群集。
   >
+
+
+>   [!TIP]
+    如果有可用的 SSD 磁盘，建议配合使用 `--clusterdataroot` 与 devclustersetup.sh 来传递 SSD 文件夹路径，以实现优异的性能。
 
 ## <a name="set-up-the-service-fabric-cli"></a>设置 Service Fabric CLI
 

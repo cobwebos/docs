@@ -3,7 +3,7 @@ title: "关于 Azure 应用服务中的移动应用"
 description: "了解应用服务为企业移动应用带来的优势。"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
+author: conceptdev
 manager: yochayk
 editor: 
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: f0731237c9376d5f762eea1c7559bc6a70a2025d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: crdun
+ms.openlocfilehash: b55d186aba49e91bab6814da2380a372f61f39cb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
@@ -65,7 +65,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 
   深入了解 [过渡环境]。
 
-* 连续部署：应用服务可与常用供应链管理 (SCM) 系统集成，用于将新版后端推送到 SCM 系统的分支以实现自动部署。
+* **持续部署**：应用服务可与常用源代码控制管理 (SCM) 系统集成，以便将新版后端推送到 SCM 系统的分支以实现自动部署。
 
   深入了解 [部署选项](../app-service/app-service-deploy-local-git.md)。
 
