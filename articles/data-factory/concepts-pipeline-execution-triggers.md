@@ -11,28 +11,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/10/2017
+ms.date: 01/03/2018
 ms.author: shlo
-ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 88ae5dfbf6246ecf92d6528ad3d9a8e5fb57e4b0
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器 
+# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-scheduling-and-execution.md)
+> * [版本 1 - 正式版](v1/data-factory-scheduling-and-execution.md)
 > * [版本 2 - 预览版](concepts-pipeline-execution-triggers.md)
 
-“管道运行”是 Azure 数据工厂版本 2 中的一个术语，用于定义管道执行的实例。 例如，假设你有一个管道分别在 8AM、9AM 和 10AM 执行。 在这种情况下，将单独运行管道三次（管道运行）。 每次管道运行都具有唯一的管道运行 ID，这是唯一定义特定管道运行的 GUID。 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道有两种方式：“手动”或通过“触发器”。 本文提供了有关执行管道的两种方式的详细信息。 
+“管道运行”是 Azure 数据工厂版本 2 中的一个术语，用于定义管道执行的实例。 例如，假设你有一个管道分别在 8AM、9AM 和 10AM 执行。 在这种情况下，将单独运行管道三次（管道运行）。 每次管道运行都具有唯一的管道运行 ID，这是唯一定义特定管道运行的 GUID。 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道有两种方式：“手动”或通过“触发器”。 本文提供了有关执行管道的两种方式的详细信息。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 数据工厂。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂 V1 中的计划和执行](v1/data-factory-scheduling-and-execution.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂 V1 中的计划和执行](v1/data-factory-scheduling-and-execution.md)。
 
 ## <a name="run-pipeline-on-demand"></a>按需运行管道
-在这种方法中，手动运行管道。 这也被视为管道的按需执行。 
+在这种方法中，手动运行管道。 这也被视为管道的按需执行。
 
-例如，假设你具有想要执行的名为 copyPipeline 的管道。 该管道是一个简单的管道，具有从 Azure Blob 存储中的源文件夹复制到同一存储中的目标文件夹的单个活动。 以下是示例管道定义： 
+例如，假设你具有想要执行的名为 copyPipeline 的管道。 该管道是一个简单的管道，具有从 Azure Blob 存储中的源文件夹复制到同一存储中的目标文件夹的单个活动。 以下是示例管道定义：
 
 ```json
 {
@@ -76,9 +76,9 @@ ms.lasthandoff: 12/07/2017
 }
 
 ```
-管道采用两个参数：sourceBlobContainer 和 sinkBlobContainer，如 JSON 定义中所示。 你在运行时将值传递给这些参数。 
+管道采用两个参数：sourceBlobContainer 和 sinkBlobContainer，如 JSON 定义中所示。 你在运行时将值传递给这些参数。
 
-若要手动运行管道，可以使用以下方式之一：.NET、PowerShell、REST 和 Python。 
+若要手动运行管道，可以使用以下方式之一：.NET、PowerShell、REST 和 Python。
 
 ### <a name="rest-api"></a>REST API
 下面是示例 REST 命令：  
@@ -90,7 +90,7 @@ https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGrou
 有关完整示例，请参阅[快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)。
 
 ### <a name="powershell"></a>PowerShell
-下面是示例 PowerShell 命令： 
+下面是示例 PowerShell 命令：
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
@@ -116,8 +116,8 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 
 有关完整示例，请参阅[快速入门：使用 PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
-### <a name="net"></a>.NET 
-下面是示例 .NET 调用： 
+### <a name="net"></a>.NET
+下面是示例 .NET 调用：
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
@@ -129,11 +129,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > 可以使用 .NET API 从 Azure Functions、你自己的 Web 服务等来调用数据工厂管道。
 
 ## <a name="triggers"></a>触发器
-触发器提供执行管道运行的第二种方式。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持按时钟计划调用管道的触发器。 它称为“计划程序触发器”。 目前，数据工厂不支持基于事件的触发器，例如，在文件到达时管道运行的触发器。
+触发器提供执行管道运行的第二种方式。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持两种类型的触发器：1)**计划程序触发器**，即按时钟计划调用管道的触发器；2)**翻转窗口触发器**，即在保留状态的同时按周期性的时间间隔运行的触发器。 目前，数据工厂不支持基于事件的触发器，例如，在文件到达时管道运行的触发器。
 
 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在触发器的以下 JSON 定义中，pipelines 属性是指由特定的触发器和管道参数的值触发的管道的列表。
 
-### <a name="basic-trigger-definition"></a>基本触发器定义： 
+### <a name="basic-trigger-definition"></a>基本触发器定义：
 ```json
     "properties": {
         "name": "MyTrigger",
@@ -159,8 +159,14 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
     }
 ```
 
-## <a name="scheduler-trigger"></a>计划程序触发器
-计划程序触发器按时钟计划运行管道。 这种触发器支持定期和高级日历选项（每周、星期一 5PM 和星期四 9PM）。 它非常灵活，与数据集模式无关，而且不区分时间序列和非时间序列数据。
+## <a name="schedule-trigger"></a>计划触发器
+计划触发器按时钟计划运行管道。 这种触发器支持定期和高级日历选项（每周、星期一 5PM 和星期四 9PM）。 它非常灵活，与数据集模式无关，而且不区分时间序列和非时间序列数据。
+
+有关计划触发器和示例的更多具体信息，请参阅[如何：创建计划触发器](how-to-create-schedule-trigger.md)
+
+## <a name="tumbling-window-trigger"></a>翻转窗口触发器
+翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。
+有关翻转窗口触发器和示例的更多具体信息，请参阅[如何：创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)
 
 ### <a name="scheduler-trigger-json-definition"></a>计划程序触发器 JSON 定义
 在创建计划程序触发器时，可以使用 JSON 指定计划和循环，如本部分中的示例所示。 
@@ -174,7 +180,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
     "typeProperties": {
       "recurrence": {
         "frequency": <<Minute, Hour, Day, Week, Year>>,
-        "interval": <<int>>,             // optional, how often to fire (default to 1)
+        "interval": <<int>>,             // how often to fire
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
         "timeZone": "UTC"
@@ -224,10 +230,20 @@ startTime | startTime 采用日期时间格式。 对于简单的计划，startT
 endTime | 指定触发器的结束日期时间。 触发器在这个时间之后不执行。 发生在过去的 endTime 是无效项。
 timezone | 目前仅支持 UTC。 
 recurrence | recurrence 对象指定触发器的循环规则。 recurrence 对象支持以下元素：frequency、interval、endTime、count 和 schedule。 如果定义了 recurrence，则必须定义 frequency；recurrence 的其他元素是可选项。
-frequency | 表示触发器重复的频率的单元。 支持的值为：`minute`、`hour`、`day`、`week` 或 `month`。
+频率 | 表示触发器重复的频率的单元。 支持的值为：`minute`、`hour`、`day`、`week` 或 `month`。
 interval | interval 是一个正整数。 它表示确定触发器运行频率的频率间隔。 例如，如果 interval 为 3，frequency 为“week”，则触发器每 3 周重复一次。
 schedule | 指定了频率的触发器会根据循环计划更改其循环。 schedule 包含基于分钟、小时、星期、月份日次和周次的修改。
 
+
+## <a name="tumbling-window-trigger-vs-schedule-trigger"></a>翻转窗口触发器与计划触发器
+既然翻转窗口触发器和计划触发器都按时间检测信号运行，其不同之处在哪里？
+对于翻转窗口触发器：
+* **回填方案**：翻转窗口触发器支持回填方案，能够按过去的窗口计划运行。 计划触发器只能按从现在开始计算的时段运行。
+* **可靠性：**翻转窗口触发器会针对所有窗口来计划管道运行，这些窗口有一个开始日期，没有间隔且 100% 可靠。
+* **重试**：翻转窗口触发器具有重试功能。 失败的管道运行的默认重试策略设置为 0，或者由用户在定义触发器时指定。 此外，在运行因并发/服务器/数量限制而失败的情况下，它还会自动重试。这种情况包括状态代码 400（用户错误）、429（请求过多）、500（内部服务器错误）。
+* **并发**：翻转窗口触发器允许用户显式设置触发器的并发限制（同时触发的管道运行数最大为 1-50）
+* **窗口开始与窗口结束变量**：对于翻转窗口触发器，用户可以访问在触发器定义中用作触发器系统变量的 triggerOutputs().windowStartTime 和 triggerOutputs().windowEndTime，分别对应于窗口开始与窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1 点到 2 点这一窗口，triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z，triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z。
+* **管道与触发器的关系**：计划触发器与管道之间存在一个 n:m 的关系。 一个计划触发器可以触发多个管道。 翻转窗口触发器与管道之间存在一个 1:1 的关系。 一个翻转窗口触发器只能触发一个管道。
 
 ### <a name="schedule-trigger-example"></a>计划触发器示例
 
@@ -267,10 +283,10 @@ schedule | 指定了频率的触发器会根据循环计划更改其循环。 sc
 
 JSON 名称 | 值类型 | 必需？ | 默认值 | 有效值 | 示例
 --------- | ---------- | --------- | ------------- | ------------ | -------
-startTime | String | 是 | 无 | ISO-8601 日期时间 | ```"startTime" : "2013-01-09T09:30:00-08:00"```
+startTime | 字符串 | 是 | 无 | ISO-8601 日期时间 | ```"startTime" : "2013-01-09T09:30:00-08:00"```
 recurrence | 对象 | 是 | 无 | Recurrence 对象 | ```"recurrence" : { "frequency" : "monthly", "interval" : 1 }```
-interval | Number | 否 | 1 | 1 到 1000。 | ```"interval":10```
-endTime | String | 是 | 无 | 代表将来某个时间的日期时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"`
+interval | Number | 是 | 无 | 1 到 1000。 | ```"interval":10```
+endTime | 字符串 | 是 | 无 | 代表将来某个时间的日期时间值 | `"endTime" : "2013-02-09T09:30:00-08:00"`
 schedule | 对象 | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }`
 
 ### <a name="deep-dive-starttime"></a>深入探讨：startTime
@@ -301,11 +317,11 @@ startTime 值 | 不按计划循环 | 按计划循环
 
 JSON 名称 | 说明 | 有效值
 --------- | ----------- | ------------
-分钟数 | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
-小时 | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul>
-工作日 | 运行触发器的星期日期。 只能配合每周频率指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六或星期日</li><li>任意值的数组（最大数组大小为 7）</li></p>不区分大小写</p>
+分钟数 | 运行触发器的小时中的分钟。 | <ul><li>整数数组</li></ul>
+小时 | 运行触发器的日期中的小时。 | <ul><li>整数数组</li></ul>
+工作日 | 运行触发器的星期日期。 只能配合每周频率指定。 | <ul><li>任意以下值的数组（最大数组大小为 7）<ul><li>星期一</li><li>星期二</li><li>星期三</li><li>星期四</li><li>星期五</li><li>星期六</li><li>星期日</li></ul></li></p>不区分大小写</p>
 monthlyOccurrences | 确定运行触发器的月份日期。 只能配合每月频率指定。 | MonthlyOccurence 对象的数组：`{ "day": day,  "occurrence": occurence }`。 <p> day 是运行触发器的星期日期，例如，`{Sunday}` 表示月份中的每个星期日。 必需。<p>Occurrence 是月份中重复的日期，例如，`{Sunday, -1}` 表示月份中的最后一个星期日。 可选。
-monthDays | 运行触发器的月份日期。 只能配合每月频率指定。 | <ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li><li>值组成的数组</li>
+monthDays | 运行触发器的月份日期。 只能配合每月频率指定。 | <ul><li>以下值的数组</li><ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li></ul></ul> |
 
 
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
@@ -346,6 +362,8 @@ monthDays | 运行触发器的月份日期。 只能配合每月频率指定。 
 
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下教程： 
+参阅以下教程：
 
 - [快速入门：使用 .NET 创建数据工厂](quickstart-create-data-factory-dot-net.md)
+- [如何：创建计划触发器](how-to-create-schedule-trigger.md)
+- [如何：创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)

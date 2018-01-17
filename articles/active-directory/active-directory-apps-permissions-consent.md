@@ -13,23 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/31/2017
+ms.date: 01/03/2018
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 9f51f46b0dc942bb9749f8e962a2872a8618245a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d3e14c18d5e4cd77f4c68d8a5d9d0b915e896695
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Azure Active Directory 中的应用、权限和许可
-在 Azure Active Directory，可以将应用程序添加到目录。  应用程序根据类型的不同而异。  要在经典门户中查看某个应用程序，请选择一个目录，并选择应用程序。
-
-![](media/active-directory-apps-permissions-consent/apps1.png)
+在 Azure Active Directory，可以将应用程序添加到目录。  应用程序根据类型的不同而异。  若要在门户中查看某个应用程序，请选择一个目录，并选择应用程序。
 
 > [!IMPORTANT]
-> Microsoft 建议使用 Azure 门户而不是本文中引用的 Azure 经典门户通过 [Azure AD 管理中心](https://aad.portal.azure.com)管理 Azure AD。
+> Microsoft 建议使用 Azure 门户中的 [Azure AD 管理中心](https://aad.portal.azure.com)而不是使用本文中引用的 Azure 门户来管理 Azure AD。
 
 ## <a name="types-of-apps"></a>应用类型
 
@@ -73,9 +71,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="controls"></a>控制
 
-下面列出了适用于所有这些行为的不同管理员控制措施。 可以在经典门户中通过目录下面的“配置”来访问管理员控制措施。
-
-![](media/active-directory-apps-permissions-consent/apps7.png)
+下面列出了适用于所有这些行为的不同管理员控制措施。
 
 在 Azure 门户中的“管理”下面，选择“用户设置”。
 
@@ -85,18 +81,14 @@ ms.lasthandoff: 12/11/2017
 
 - 可以控制用户能够许可应用：
 
-在经典门户中，选择“用户可以授权应用程序访问其数据”。
-![](media/active-directory-apps-permissions-consent/apps8.png)
-
 在 Azure 门户中，选择“用户可以允许应用访问其数据”。
 ![](media/active-directory-apps-permissions-consent/apps12.png)
 
 
 
-- 可以控制用户是否能够注册其自己的单租户 LOB 应用：在经典门户中，选择“用户可添加集成应用程序”。
-![](media/active-directory-apps-permissions-consent/apps9.png)
+- 可以对是否允许用户注册其自己的单租户 LOB 应用进行控制：
 
-在 Azure 门户中，选择“用户可以允许应用访问其数据”。
+在 Azure 门户中，选择“用户可以注册应用程序”。
 ![](media/active-directory-apps-permissions-consent/apps13.png)
 
 >[!NOTE]
@@ -108,20 +100,6 @@ ms.lasthandoff: 12/11/2017
 >- 注册单租户 LOB 应用时，如果委托的权限需要管理员的许可，则用户无法请求对其他应用的此类权限。
 >- 对于不是由自己拥有的应用，用户无法进行更改。
 
-
-
-- 可以控制用户是否可以自行添加使用密码 SSO（也称为“密码保管”）的预先集成的应用![](media/active-directory-apps-permissions-consent/apps10.png)
-
-
-
-- 可以控制在哪些条件下能够访问应用程序（即条件性访问）。 请注意，这同时适用于客户端应用和资源应用。 假设你设置了一个条件性访问策略，指定只能从合规的计算机访问“Office 365 Exchange Online”应用。  当用户尝试使用请求 Exchange Online 权限的客户端应用时，也会触发此策略。
-
-
-
-- 可以深入查看已经许可了哪些应用，以及正在使用哪些应用。
-
-1.  当用户许可某个应用时，会在租户中创建一个 ServicePrincipal 对象。 ServicePrincipal 创建操作将包含在审核报告中。
-2.  用户登录活动报告将说明用户正在登录哪个应用。 
 
 ## <a name="example"></a>示例
 

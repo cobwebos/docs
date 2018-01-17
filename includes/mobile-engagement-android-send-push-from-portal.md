@@ -2,7 +2,7 @@
 
 若要允许 Mobile Engagement 代表用户发送推送通知，需授予其访问 API 密钥的权限。 通过配置并将用户密钥输入 Mobile Engagement 门户中，即可完成授权。
 
-1. 从 Azure 经典门户中，确保进入用于本项目的应用中，并单击底部的“参与”  按钮：
+1. 从 Azure 门户中，确保进入用于本项目的应用中，并单击底部的“参与”按钮：
 
     ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 

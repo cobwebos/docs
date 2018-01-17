@@ -1,6 +1,6 @@
 ---
 title: "使用 Aspera 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs"
-description: "本教程逐步讲解如何使用 Azure 上的 Aspera Server On Demand 服务将文件上传到与媒体服务帐户关联的存储帐户。****"
+description: "本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。"
 services: media-services
 documentationcenter: 
 author: johndeu
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On Demand 服务将文件上传到媒体服务帐户
+# <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On-Demand 服务将文件上传到媒体服务帐户
 
 ## <a name="overview"></a>概述
 
 **Aspera** 是一个高速文件传输软件。 使用 **Aspera Server On Demand** for Azure 可快速将大型文件直接上传和下载到 Azure Blob 对象存储。 有关 **Aspera On Demand** 的信息，请参阅 [Aspera 云](http://cloud.asperasoft.com/)站点。 
   
-可从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure 应用商店。
+可从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/)购买 **Aspera Server On Demand** for Azure。 若要完成 **Aspera Server On Demand** for Azure 的购买，请使用 Windows Live ID 登录到 Azure Marketplace。
 
-本教程逐步讲解如何使用 Azure 上的 **Aspera Server On Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。 
+本教程逐步讲解如何使用 Azure 上的 **Aspera Server On-Demand** 服务将文件上传到与媒体服务帐户关联的存储帐户。 
 
 [此处](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/103-aspera-ingest)提供了一个示例，介绍如何将 Azure Functions 与 Aspera 和媒体服务配合使用。
 
 >[!NOTE]
->使用 Azure 媒体服务媒体处理器 (MP) 进行处理时，支持的最大文件大小有限制。 有关文件大小限制的详细信息，请参阅[此主题](media-services-quotas-and-limitations.md)。
+>使用 Azure 媒体服务媒体处理器 (MP) 进行处理时，支持的最大文件大小有限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>系统必备 
 
 要完成本教程，需要：
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="purchase-aspera-on-demand-for-azure"></a>购买 Aspera On Demand for Azure
 
-登录到 Azure 应用商店后，请遵循以下基本步骤完成 Aspera On Demand for Azure 的购买。
+登录到 Azure Marketplace 后，请遵循以下基本步骤完成 Aspera On Demand for Azure 的购买。
 
 1. 搜索“Aspera”，并选择“Server On Demand”。
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera002.png)
 
-3. 填写 Server on Demand 订阅的具体信息。
+3. 填写 Server on-Demand 订阅的具体信息。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 10/11/2017
     3. 使用 [Azure 门户](https://portal.azure.com/)检索与 Azure 媒体帐户关联的存储帐户的某些信息。 具体而言，请检查帐户名称和密钥，以及要将内容存放到的存储 Blob 容器名称。 
 
         * 要从门户获取存储信息，请找到存储帐户，单击“访问密钥”，并复制帐户的名称和密钥。
-        * 要获取容器名称，请找到存储帐户，选择“Blob”，然后选择要将内容上传到的容器的名称。 
+        * 要获取容器名称，请找到你的存储帐户，选择“Blob”，并选择要将内容上载到的容器的名称。 
 
     下面是 Aspera 客户端“连接管理器”的屏幕截图，必须在其中指定“Azure”存储类型和凭据以及 Blob 容器。
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 458b316ba76ff7cace56eb21eaf105233e508741
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>使用 IoT 中心进行设备管理的概述
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure IoT 中心提供功能和可扩展性模型，使设备和后端开发人员可以构建功能强大的设备管理解决方案。 设备的范围从受约束的传感器和单一用途微控制器到功能强大的路由设备组通信的网关。  此外，在不同行业中，IoT 操作员的用例和要求也显著不同。  尽管有此不同，但使用 IoT 中心进行设备管理提供了功能、模式和代码库，以满足不同设备和最终用户的需要。
 
 创建成功的企业 IoT 解决方案的一个重要部分，是提供操作员如何处理其设备集合的日常管理的策略。 IoT 操作员需要简单且可靠的工具和应用程序，使他们能够重点处理其工作的更具战略意义方面。 本文将提供：
@@ -57,7 +57,7 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
     *其他阅读材料*：[设备孪生入门][lnk-twins-getstarted]、[了解设备孪生][lnk-twins-devguide]、[如何使用设备孪生属性][lnk-twin-properties]。
 * **预配**：安全地为 IoT 中心预配新设备，使操作员立即发现设备功能。  使用 IoT 中心标识注册表创建灵活的设备标识和凭据，并使用作业成批执行此操作。 通过设备孪生中的设备属性构建设备来报告其功能和情况。
   
-    *其他阅读材料*：[管理设备标识][lnk-identity-registry]、[批量管理设备标识][lnk-bulk-identity]、[如何使用设备孪生属性][lnk-twin-properties]。
+    *其他阅读材料*：[管理设备标识][lnk-identity-registry]、[批量管理设备标识][lnk-bulk-identity]、[如何使用设备孪生属性][lnk-twin-properties]、[Azure IoT 中心设备预配服务][lnk-dps]。
 * **配置**：在保持正常运行和安全性的同时便于对设备进行批量配置更改和固件更新。 使用所需属性或通过直接方法和广播作业成批执行这些设备管理操作。
   
     *其他阅读材料*：[使用直接方法][lnk-c2d-methods]、[对设备调用直接方法][lnk-methods-devguide]、[如何使用设备孪生属性][lnk-twin-properties]、[计划和广播作业][lnk-jobs]、[在多台设备上计划作业][lnk-jobs-devguide]。
@@ -113,3 +113,4 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

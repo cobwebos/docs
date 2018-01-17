@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/04/2017
+ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3649cc2800e774f8dca1b88a1704744b4663a68d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4bd20cc9a553952ad86b662fa763e220cb8d8081
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/18/2017
 
 在 Service Fabric 群集上运行 Linux 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Service Fabric 群集。  此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。  本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * 一台运行以下软件的开发计算机：
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
@@ -202,6 +202,30 @@ docker push myregistry.azurecr.io/samples/helloworldapp
     </Policies>
    </ServiceManifestImport>
 ``` 
+## <a name="configure-docker-healthcheck"></a>配置 docker HEALTHCHECK 
+从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。 当 *health_status* 为“正常”时，会在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中显示运行状况报告“正常”；当 *health_status* 为“不正常”时，会显示“警告”。 在生成容器映像时使用的 **dockerfile** 中必须存在 **HEALTHCHECK** 指令，这是指在监视容器运行状况时执行的实际检查。 
+
+![HealthCheckHealthy][1]
+
+![HealthCheckUnealthyApp][2]
+
+![HealthCheckUnhealthyDsp][3]
+
+可以为每个容器配置 **HEALTHCHECK** 行为，方法是在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分。
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code">
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+      </ContainerHostPolicies>
+    </Policies>
+</ServiceManifestImport>
+```
+默认情况下，*IncludeDockerHealthStatusInSystemHealthReport* 设置为 **true**，*RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **false**。 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **true**，则会重启（可能在其他节点上进行）反复报告“不正常”的容器。
+
+若要禁用整个 Service Fabric 群集的 **HEALTHCHECK** 集成，则需将 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 设置为 **false**。
 
 ## <a name="build-and-package-the-service-fabric-application"></a>生成并打包 Service Fabric 应用程序
 Service Fabric Yeoman 模板包含 [Gradle](https://gradle.org/) 的生成脚本，可用于从终端生成应用程序。 若要生成并打包应用程序，请运行以下命令：
@@ -231,6 +255,7 @@ sfctl cluster select --endpoint http://localhost:19080
 连接到正在运行的容器。  打开 Web 浏览器并指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000 。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
+
 
 ## <a name="clean-up"></a>清理
 使用模板中提供的卸载脚本从本地开发群集中删除应用程序实例并取消注册应用程序类型。
@@ -359,7 +384,6 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 默认时间间隔设置为 10 秒。 由于此配置是动态的，因此对群集进行仅限配置的升级即可更新超时。 
 
-
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>将运行时配置为删除未使用的容器映像
 
 可以将 Service Fabric 群集配置为从节点删除未使用的容器映像。 如果节点上存在过多容器映像，则可通过此配置回收磁盘空间。  若要启用此功能，请更新群集清单中的 `Hosting` 节，如以下代码片段所示： 
@@ -380,6 +404,33 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 对于不应删除的映像，可以在 `ContainerImagesToSkip` 参数下进行指定。 
 
+## <a name="configure-container-image-download-time"></a>配置容器映像下载时间
+
+默认情况下，Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的时间，这适用于大多数容器映像。 如果是大型映像，或者网络连接速度较慢，则可能必须延长中止映像下载和解压缩之前的等待时间。 此项可以使用群集清单的 **Hosting** 节的 **ContainerImageDownloadTimeout** 属性来设置，如以下代码片段所示：
+
+```json
+{
+"name": "Hosting",
+        "parameters": [
+          {
+              "name": " ContainerImageDownloadTimeout ",
+              "value": "1200"
+          }
+]
+}
+```
+
+
+## <a name="set-container-retention-policy"></a>设置容器保留策略
+
+Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器，这样有助于诊断容器启动故障。 此策略可以在 **ApplicationManifest.xml** 文件中设置，如以下代码片段所示：
+
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+```
+
+**ContainersRetentionCount** 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。 **ContainersRetentionCount** 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 建议在使用此功能时使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何运行 [Service Fabric 上的容器](service-fabric-containers-overview.md)。
@@ -389,3 +440,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 [hello-world]: ./media/service-fabric-get-started-containers-linux/HelloWorld.png
 [sf-yeoman]: ./media/service-fabric-get-started-containers-linux/YoSF.png
+
+[1]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[2]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png

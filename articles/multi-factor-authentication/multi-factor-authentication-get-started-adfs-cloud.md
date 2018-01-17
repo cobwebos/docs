@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: joflore
-ms.openlocfilehash: 99052718d268135e1b9c51d019513aa59afede84
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c94b20ec984c96cfb8e7339826ee933ea4194bfc
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
 如果组织已与 Azure Active Directory 联合，则使用 Azure 多重身份验证或 Active Directory 联合身份验证服务 (AD FS) 来保护通过 Azure AD 访问的资源。 使用以下过程可通过 Azure 多重身份验证或 Active Directory 联合身份验证服务保护 Azure Active Directory 资源。
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/11/2017
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”。
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
 8. 单击“完成” 。
-9. 在“颁发转换规则”上，单击 **添加规则**。
+9. 在“颁发转换规则”上，单击“添加规则”。
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，并单击“下一步”。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”。
 12. 在“自定义规则”框中，输入：
@@ -83,16 +83,13 @@ ms.lasthandoff: 12/11/2017
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>配置联合用户的 Azure 多重身份验证受信任 IP
 创建声明后，可以开始配置受信任的 IP。
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧单击“Active Directory”。
-3. 在目录中，选择要设置受信任的 IP 的目录。
-4. 在选择的目录上，单击“配置”。
-5. 在“多重身份验证”部分中，单击“管理服务设置”。
-6. 在“服务设置”页的“受信任的 IP”下，选择“跳过对于 Intranet 上联合用户的请求的多重身份验证”。  
+1. 登录到 [Azure 门户](https://portal.com)。
+2. 选择“Azure Active Directory” > “条件访问” > “命名位置”。
+3. 从“条件性访问 - 命名位置”边栏选项卡中选择“配置 MFA 受信任的 IP”
 
-   ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
-   
-7. 单击“保存”。
-8. 应用更新后，单击“关闭”。
+   ![Azure AD 条件性访问命名位置配置 MFA 可信 IP](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+
+4. 在“服务设置”页的“受信任的 IP”下，选择“跳过对于 Intranet 上联合用户的请求的多重身份验证”。  
+5. 单击“保存”。
 
 就这么简单！ 现在，仅当声明来自公司 Intranet 外部时，Office 365 联合用户才需要使用 MFA。

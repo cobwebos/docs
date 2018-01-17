@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: jingwang
-ms.openlocfilehash: efe34835d20e3b0aa679ceaa4a6428848c735a3e
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: b7f8836fb792151dbfdd156735d3e2c297c80cd8
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/07/2017
 > * 创建、运行和监视增量复制管道
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="overview"></a>概述
 在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂第 2 版与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/07/2017
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * Azure PowerShell。 按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
 * **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
@@ -183,7 +183,7 @@ ms.lasthandoff: 12/07/2017
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
-请注意以下几点：
+注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果收到以下错误，请更改名称并重试。
 
@@ -384,12 +384,12 @@ ms.lasthandoff: 12/07/2017
     DataFactoryName   : IncCopyChgTrackingDF
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
-        ```
+    ```
 
-## Create a pipeline for the full copy
-In this step, you create a pipeline with a copy activity that copies the entire data from the source data store (Azure SQL Database) to the destination data store (Azure Blob Storage).
+## <a name="create-a-pipeline-for-the-full-copy"></a>创建用于完整复制的管道
+在这一步，请创建一个包含复制活动的管道，将完整数据从源数据存储（Azure SQL 数据库）复制到目标数据存储（Azure Blob 存储）。
 
-1. Create a JSON file: FullCopyPipeline.json in same folder with the following content: 
+1. 在同一文件夹中，创建包含以下内容的 JSON 文件 FullCopyPipeline.json： 
 
     ```json
     {

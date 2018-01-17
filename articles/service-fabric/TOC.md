@@ -96,6 +96,7 @@
 ##### [应用程序升级参数](service-fabric-application-upgrade-parameters.md)
 ##### [应用程序升级中的数据序列化](service-fabric-application-upgrade-data-serialization.md)
 ##### [应用程序升级的高级主题](service-fabric-application-upgrade-advanced.md)
+#### [管理多个环境的应用程序](service-fabric-manage-multiple-environment-app-configuration.md)
 #### [使用故障分析来测试应用](service-fabric-testability-overview.md)
 #### [ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
 
@@ -226,7 +227,6 @@
 ## 在 Windows/VS 开发环境中工作
 ### [在 Visual Studio 中管理应用程序](service-fabric-manage-application-in-visual-studio.md)
 ### [在 Visual Studio 中配置安全连接](service-fabric-visualstudio-configure-secure-connections.md)
-### [为多个环境配置应用程序](service-fabric-manage-multiple-environment-app-configuration.md)
 ### [在 VS 中调试 .NET 服务](service-fabric-debugging-your-application.md)
 ### [常见错误和异常](service-fabric-errors-and-exceptions.md)
 ### [在本地监视和诊断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
@@ -244,6 +244,9 @@
 
 ## 管理应用程序生命周期
 ### [打包应用程序](service-fabric-package-apps.md)
+### [将参数与配置文件配合使用](service-fabric-how-to-parameterize-configuration-files.md)
+### [使用参数指定端口号](service-fabric-how-to-specify-port-number-using-parameters.md)
+### [指定环境变量](service-fabric-how-to-specify-environment-variables.md)
 
 ### 部署或删除应用程序
 #### [在本地群集上部署应用程序](service-fabric-get-started-with-a-local-cluster.md)
@@ -273,7 +276,7 @@
 ## 创建和管理群集
 ### Azure 上的群集
 #### 创建
-##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
+##### [Azure portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
 #### 缩放
 ##### [手动](service-fabric-cluster-scale-up-down.md)
@@ -328,6 +331,7 @@
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 ## [服务模型 XML 架构](service-fabric-service-model-schema.md)
+## [环境变量](service-fabric-environment-variables-reference.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

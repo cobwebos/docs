@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: fb664b76a948244d96a26b199a4e8e6c83bae0f4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 7961f998b59991b47e1c22d826bf0a50fcd09099
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-introduction.md)
+> * [版本 1 - 正式版](v1/data-factory-introduction.md)
 > * [版本 2 - 预览版](introduction.md)
 
 在大数据环境中，原始、散乱的数据通常存储在关系、非关系和其他存储系统中。 但是，就其本身而言，原始数据没有适当的上下文或含义来为分析师、数据科学家或业务决策人提供有意义的见解。 
@@ -41,7 +41,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的数
 ![数据工厂的顶级视图](media/introduction/big-picture.png)
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 简介](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 简介](v1/data-factory-introduction.md)。
 
 ## <a name="how-does-it-work"></a>工作原理
 Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下四个步骤：
@@ -119,9 +119,9 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 Azure 数据工厂本身不存储任何数据。 它允许创建数据驱动型工作流，协调受支持数据存储之间的数据移动，以及使用计算服务在其他区域或本地环境中处理数据。 它还允许使用编程方式及 UI 机制来监视和管理工作流。
 
-尽管数据工厂只能在“美国东部”、“美国东部 2”和“西欧”区域使用，但数据工厂中支持数据移动的服务可在全球多个区域使用。 如果数据存储位于防火墙后面，则可改用本地环境中安装的数据管理网关来移动数据。
+尽管数据工厂只能在“美国东部”、“美国东部 2”和“西欧”区域使用，但数据工厂中支持数据移动的服务可在全球多个区域使用。 如果数据存储位于防火墙后面，则可改用本地环境中安装的自承载 Integration Runtime 来移动数据。
 
-例如，假设计算环境（例如 Azure HDInsight 群集和 Azure 机器学习）即将耗尽西欧区域的资源。 可以在北欧创建并使用一个 Azure 数据工厂实例来安排西欧计算环境中的作业。 只需几毫秒时间，数据工厂就能触发计算环境上的作业，但在计算环境上运行作业所需的时间不会改变。
+例如，假设计算环境（例如 Azure HDInsight 群集和 Azure 机器学习）即将耗尽西欧区域的资源。 可以在美国东部或美国东部 2 创建并使用一个 Azure 数据工厂实例来安排西欧计算环境中的作业。 只需几毫秒时间，数据工厂就能触发计算环境上的作业，但在计算环境上运行作业所需的时间不会改变。
 
 ## <a name="compare-with-version-2"></a>与第 2 版比较
 如需数据工厂服务第 1 版和第 2 版差异的列表，请参阅[与第 1 版比较](compare-versions.md)。 

@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 7a77efb21d38c7c5ff5ca6e17757cbfa9e845ad7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 25e4475c77a25e4dcdcb90729f8633656bb186ff
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-3-mark-as-date-table"></a>第 3 课：标记为日期表
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="mark-as-date-table"></a>标记为日期表
 
 在“第 2 课：获取数据”中，已导入了一个名为 DimDate 的维度表。 虽然此表在模型中名为 DimDate，但它也称为日期表，因为其中包含日期和时间数据。  
   
@@ -35,7 +33,7 @@ ms.lasthandoff: 11/02/2017
   
 本课预计完成时间：3 分钟  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>系统必备  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 2 课：获取数据](../tutorials/aas-lesson-2-get-data.md)。 
 
 ### <a name="to-rename-the-fulldatealternatekey-column"></a>重命名 FullDateAlternateKey 列
@@ -51,7 +49,7 @@ ms.lasthandoff: 11/02/2017
   
 2.  单击“表”菜单，并依次单击“Date”和“标记为日期表”。  
   
-3.  在“标记为日期表”对话框中，在“Date”列表框中，选择“Date”列作为唯一标识符。 它通常默认处于选中状态。 单击 **“确定”**。 
+3.  在“标记为日期表”对话框中，在“Date”列表框中，选择“Date”列作为唯一标识符。 它通常默认处于选中状态。 单击“确定”。 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   
