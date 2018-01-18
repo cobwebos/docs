@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: c9e0441ec42e5710f43bbe7fa8af4a9fe7447a69
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 0ac6226b1e5773b1212b70172e2c13a0a5c925a8
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT 套件是什么？
 
@@ -62,7 +62,7 @@ IoT 套件预配置解决方案在设计时遵循相同的原则和目标。
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [远程监视](iot-suite-remote-monitoring-explore.md)  |是 |是 |是 |-   |是 |是 |-   |
 | [前瞻性维护](iot-suite-predictive-overview.md)   |是 |是 |-   |-   |是 |是 |是 |
-| [连接工厂](iot-suite-connected-factory-overview.md) |是 |是 |是 |是 |是 |是 |-   |
+| [连接工厂](iot-suite-connected-factory-overview.md) |是 |- |- |是 |是 |是 |-   |
 
 * *数据提取*：向云中大规模输入数据。
 * *设备标识*：管理唯一设备标识，并控制对解决方案的设备访问权限。
@@ -83,11 +83,11 @@ IoT 套件预配置解决方案在设计时遵循相同的原则和目标。
 | IoT 中心              | 是                |                        | 是               |
 | 事件中心           |                    | 是                    |                   |
 | 时序见解 |                    |                        | 是               |
-| 容器服务   | 是                |                        | 是               |
+| 容器服务   | 是                |                        |                   |
 | 流分析     |                    | 是                    |                   |
 | Web 应用             | 是                | 是                    | 是               |
-| Cosmos DB            | 是                | 是                    | 是               |
-| Azure 表         |                    | 是                    | 是               |
+| Cosmos DB            | 是                | 是                    |                    |
+| Azure 存储         |                    | 是                    | 是               |
 
 > [!NOTE]
 > 若要详细了解在远程监视预配置解决方案中部署的资源，请参阅 GitHub 上的[此文](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments)。

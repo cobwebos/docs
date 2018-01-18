@@ -113,6 +113,8 @@
           href: log-analytics-computer-groups.md
         - name: Flow 连接器
           href: log-analytics-flow-tutorial.md
+        - name: 日志搜索 API
+          href: 'https://dev.loganalytics.io/'
     - name: 旧式日志搜索
       items:
         - name: 日志搜索概述
@@ -122,6 +124,11 @@
           items:
             - name: 正则表达式
               href: log-analytics-log-searches-regex.md
+        - name: 日志搜索 API
+          href: log-analytics-log-search-api.md
+          items:
+            - name: Python
+              href: log-analytics-log-search-api-python.md
     - name: 分析数据
       items:
         - name: 仪表板
@@ -258,11 +265,6 @@
           href: log-analytics-powershell-workspace-configuration.md
         - name: 资源管理器模板
           href: log-analytics-template-workspace-configuration.md
-        - name: 日志搜索 API
-          href: log-analytics-log-search-api.md
-          items:
-            - name: Python
-              href: log-analytics-log-search-api-python.md
         - name: 警报 API
           href: log-analytics-api-alerts.md
 - name: 引用
