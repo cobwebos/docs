@@ -3,7 +3,7 @@ title: "差异和 Azure 堆栈中的虚拟机的注意事项 |Microsoft 文档"
 description: "了解差异和注意事项时使用 Azure 堆栈中的虚拟机。"
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
-ms.author: mabrigg
-ms.openlocfilehash: 8367f7897581ff9599b763c7a39232bbe6860b8f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 11/17/2018
+ms.author: brenduns
+ms.openlocfilehash: 6eafa2a5058ef1309cbf50be069ea1bb12f7e5b9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure 堆栈中的虚拟机的注意事项
 
@@ -46,20 +46,20 @@ Azure 堆栈支持以下大小：
 
 | Type | 大小 | 支持的大小的范围 |
 | --- | --- | --- |
-|常规用途 |基本 A|A0-A4|
+|常规用途 |基本 A|A0 - A4|
 |常规用途 |标准 A|A0 - A7|
-|常规用途 |D 系列|D1-D4|
-|常规用途 |Dv2 系列|D1_v2-D5_v2|
-|常规用途 |DS 系列|DS1-DS4|
-|常规用途 |DSv2-series|DS1_v2-DS5_v2|
-|内存优化|DS 系列|DS11-DS14|
-|内存优化 |DSv2-series|DS11_v2-DS14_v2|
+|常规用途 |D 系列|D1 - D4|
+|常规用途 |Dv2 系列|D1_v2 - D5_v2|
+|常规用途 |DS 系列|DS1 - DS4|
+|常规用途 |DSv2-series|DS1_v2 - DS5_v2|
+|内存优化|DS 系列|DS11 - DS14|
+|内存优化 |DSv2-series|DS11_v2 - DS14_v2|
 
 虚拟机大小和其关联的资源数量是 Azure 堆栈与 Azure 之间一致。 例如，这种一致性包括内核数量和可以创建的数据磁盘数量/大内存量。 但是，Azure 堆栈中的 VM 大小相同的性能取决于特定的 Azure 堆栈环境的基础特征。
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
- Azure 堆栈开发工具包支持以下虚拟机扩展版本：
+ Azure 堆栈支持以下虚拟机扩展版本：
 
 ![VM 扩展](media/azure-stack-vm-considerations/vm-extensions.png)
 
@@ -75,7 +75,7 @@ Get-AzureRmVmImagePublisher -Location local | `
 
 ## <a name="api-versions"></a>API 版本
 
-Azure 堆栈开发工具包中的虚拟机功能支持以下 API 版本：
+Azure 堆栈中的虚拟机功能支持以下 API 版本：
 
 ![VM 资源类型](media/azure-stack-vm-considerations/vm-resoource-types.png)
 
