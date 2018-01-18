@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 3d8516c0f3f6cc8185b16f4cdabcc391e31cc605
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 18a342fed7e99e82082764d6f5a3429a3ce794b7
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/02/2018
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
-## <a name="create-resource-group"></a>创建资源组
+## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [New-AzureRmResourceGroup][New-AzureRmResourceGroup] 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
@@ -39,7 +39,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>创建容器
 
-在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中提供名称、Docker 映像和 Azure 资源组可创建容器。 可以选择通过公共 IP 地址向 Internet 公开容器。 在此情况下，我们将使用运行 Internet Information Services (IIS) 的 Windows Nano Server 容器。
+在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中提供名称、Docker 映像和 Azure 资源组可创建容器。 可以选择通过公共 IP 地址向 Internet 公开容器。 在这种情况下，我们将使用运行 Internet Information Services (IIS) 的 Nano Server 容器。
 
  ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -IpAddressType Public

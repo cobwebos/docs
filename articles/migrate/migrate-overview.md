@@ -4,13 +4,13 @@ description: "概述 Azure Migrate 服务。"
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/19/2017
+ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: e998a085399718340e2e3ce2524244844f4e6a14
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 0bd3d7a9961e7a095684262ae1031f5a3ac0c3fb
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -66,7 +66,7 @@ Azure Migrate 有助于：
 3.  首先使用 vCenter Server 中的控制台连接连接到 VM，在连接时为 VM 指定新密码，然后在 VM 中运行收集器应用程序，以便启动发现。
 4.  收集器使用 VMware PowerCLI cmdlet 收集 VM 元数据。 发现是无代理发现，且不在 VMware 主机或 VM 上安装任何内容。 收集的元数据包括 VM 信息（核心、内存、磁盘、磁盘大小、网络适配器）。 此外还收集 VM 的性能数据，包括 CPU 和内存使用情况、磁盘 IOPS、磁盘吞吐量 (MBps)、网络输出 (MBps)。
 5.  元数据推送到 Azure Migrate 项目， 可以在 Azure 门户中查看。
-6.  将发现的 VM 按组收集，以便进行评估。 例如，可以将运行同一应用程序的 VM 作为一组。 可以在 Azure Migrate 门户中将 VM 组合到一起，也可以在 vCenter Server 中使用标记。 另外，还可以使用依赖关系可视化来查看特定计算机的依赖关系，或者查看一种组中所有计算机的依赖关系，然后对组进行优化。
+6.  将发现的 VM 按组收集，以便进行评估。 例如，可以将运行同一应用程序的 VM 作为一组。 若要进行更精确的分组，还可以使用依赖关系可视化来查看特定计算机的依赖关系，或者查看一个组中所有计算机的依赖关系，然后对组进行优化。
 7.  形成一个组以后，即可为该组创建评估。 
 8.  评估完成以后，可以在门户中查看，也可以通过 Excel 格式来下载。
 

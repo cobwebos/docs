@@ -44,7 +44,12 @@
 ## 故障排除
 ### [常见问题](active-directory-ds-faqs.md)
 ### [故障排除指南](active-directory-ds-troubleshooting.md)
+### [排查警报问题](active-directory-ds-troubleshoot-alerts.md)
+#### [修复存在问题的 NSG 配置](active-directory-ds-troubleshoot-nsg.md)
+#### [恢复缺少的服务主体](active-directory-ds-troubleshoot-service-principals.md)
+#### [安全 LDAP 错误](active-directory-ds-troubleshoot-ldaps.md)
 ### [解决“不匹配的租户”错误](active-directory-ds-mismatched-tenant-error.md)
+
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)

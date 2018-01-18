@@ -16,27 +16,29 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ac6ed21f3cf363137381b82835a11d0920aee3b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c587a2ba10606a08aec7a75e4bdc6fe5cc297be9
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户创建 Linux 虚拟机
 
 可以通过 Azure 门户创建 Azure 虚拟机。 此方法提供一个基于浏览器的用户界面，用于创建和配置虚拟机和所有相关的资源。 本快速入门介绍了如何创建虚拟机并在 VM 上安装 Webserver。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-ssh-key-pair"></a>创建 SSH 密钥对
 
 需要一个 SSH 密钥对才能完成此快速入门。 如果有现成的 SSH 密钥对，则可跳过此步骤。
 
-在 Bash 外壳程序中，运行以下命令并按屏幕说明操作。 命令输出包括公钥文件的文件名。 将公钥文件的内容复制到剪贴板。
+在 Bash 外壳程序中，运行以下命令并按屏幕说明操作。 命令输出包括公钥文件的文件名。 将公钥文件 (`cat ~/.ssh/id_rsa.pub`) 的内容复制到剪贴板。 如果使用适用于 Linux 的 Windows 子系统，请确保不要复制输出中的换行符。 请记下私钥文件的文件名，供以后使用。
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
+
+[此处](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)提供该过程的更多详细信息
 
 ## <a name="log-in-to-azure"></a>登录 Azure 
 
@@ -102,8 +104,8 @@ sudo apt-get -y install nginx
 2. 选择“网络安全组”。 可以通过“类型”列来标识 NSG。 
 3. 在左侧菜单的“设置”下，单击“入站安全规则”。
 4. 单击“添加”。
-5. 在“名称”中，键入 **http**。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 
-6. 单击 **“确定”**。
+5. 在“名称”中，键入 **http**。 确保“源端口范围”设置为 `*`，“目标端口范围”设置为 *80*，“操作”设置为“允许”。 
+6. 单击“确定”。
 
 
 ## <a name="view-the-nginx-welcome-page"></a>查看 NGINX 欢迎页

@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 83666edc75a6c75fd2361e79192f9717d69fd746
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 01e539856adbdcf02dc4e49087a3ab71b328db5a
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-container-instances"></a>Azure 容器实例
 
@@ -43,7 +43,9 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="linux-and-windows-containers"></a>Linux 和 Windows 容器
 
-使用 Azure 容器实例时，可以通过同一 API 来计划 Windows 和 Linux 容器。 指出基础 OS 类型即可，其余设置都是相同的。
+使用 Azure 容器实例时，可以通过同一 API 来计划 Windows 和 Linux 容器。 直接在创建[容器组](container-instances-container-groups.md)时指定 OS 类型。
+
+某些功能当前仅限于 Linux 容器。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

@@ -202,7 +202,7 @@
 ### [Windows PowerShell for StorSimple cmdlet](https://technet.microsoft.com/library/dn688168.aspx)
 
 
-# StorSimple Data Manager（个人预览版）
+# StorSimple 数据管理器
 
 ## 概述
 ### [什么是解决方案？](storsimple-data-manager-overview.md)

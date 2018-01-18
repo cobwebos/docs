@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 75be5be0bef4dd07c8560076f47055105a70ee05
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f80e682a89dcf6b5d3d5d6f2f15c4eeab2046e7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB：使用 PHP 和 Azure 门户创建图形数据库
 
@@ -137,7 +137,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-3. 将连接对象中的 `username` 参数更改为你的数据库和图形名称。 如果使用建议的 `sample-database` 和 `sample-graph` 值，应如下所示：
+3. 如果图形数据库帐户是在 2017 年 12 月 20 日当天或之后创建的，请将主机名中的 `graphs.azure.com` 更改为 `gremlin.cosmosdb.azure.com`。
+
+4. 将连接对象中的 `username` 参数更改为你的数据库和图形名称。 如果使用建议的 `sample-database` 和 `sample-graph` 值，应如下所示：
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -155,7 +157,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-4. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到密码参数中的 `your_primary_key` 位置。
+5. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到密码参数中的 `your_primary_key` 位置。
 
     连接对象初始化现在应如下所示：
 
@@ -171,7 +173,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-5. 保存 `connect.php` 文件。
+6. 保存 `connect.php` 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 

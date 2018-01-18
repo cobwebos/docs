@@ -54,7 +54,10 @@
 ### [使用 .NET 进行开发](search-howto-dotnet-sdk.md)
 ### [使用 Node.js 进行开发](search-get-started-nodejs.md)
 ### [使用 Java 进行开发](search-get-started-java.md)
-### [升级 SDK](search-dotnet-sdk-migration.md)
+### 升级 SDK
+#### [.NET SDK 3.0](search-dotnet-sdk-migration.md)
+#### [.NET SDK 1.1](search-dotnet-sdk-migration-version-1.md)
+#### [.NET 管理 SDK](search-dotnet-mgmt-sdk-migration.md)
 ### [升级 REST API](search-api-migration.md)
 ### [为复杂数据类型建模](search-howto-complex-data-types.md)
 ### [处理并发更新](search-howto-concurrency.md)
