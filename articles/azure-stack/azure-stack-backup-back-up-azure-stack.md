@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: daea97c0f5ee6ef855dc50c1ed6c7934aa85a1c4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 955b286967ca2bc8450e8988ec16c6a5c352aa8a
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="back-up-azure-stack"></a>备份 Azure 堆栈
 
@@ -26,13 +26,22 @@ ms.lasthandoff: 01/10/2018
 
 使用就地备份 Azure 堆栈上执行按需备份。 如果你需要启用基础结构备份服务，请参阅[从管理门户的 Azure 堆栈启用备份](azure-stack-backup-enable-backup-console.md)。
 
+> [!Note]  
+>  Azure 堆栈工具包含**开始 AzSBackup** cmdlet。 有关安装工具的说明，请参阅[获取启动并运行 Azure 堆栈中的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)。
+
 ## <a name="start-azure-stack-backup"></a>启动 Azure 堆栈的备份
 
-使用提升的提示符下，打开 Windows PowerShell 并运行以下命令：
+使用提升的提示符在运算符管理环境中，打开 Windows PowerShell 并运行以下命令：
 
-   ```powershell
-   Start-AzSBackup -Location $location.Name
-   ```
+```powershell
+    cd C:\tools\AzureStack-Tools-master\Connect
+    Import-Module .\AzureStack.Connect.psm1
+
+    cd C:\tools\AzureStack-Tools-master\Infrastructure
+    Import-Module .\AzureStack.Infra.psm1 
+    
+    Start-AzSBackup -Location $location.Name
+```
 
 ## <a name="confirm-backup-completed-in-the-administration-portal"></a>确认在管理门户中完成的备份
 
