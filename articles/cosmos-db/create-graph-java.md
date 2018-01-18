@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e90879c70e47d2bc5034b4fbf2b0ed7172fe131e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b28300c4ed0a0c6f35bf49808b8ed12d4e180610
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
@@ -129,13 +129,19 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     `hosts: [test-graph.graphs.azure.com]`
 
-3. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password: $masterKey$` 中的 `$masterKey$`。
+3. 将 `endpoint` 值中的 `graphs` 更改为 `gremlin.cosmosdb`。 （如果是在 2017 年 12 月 20 日之前创建的图形数据库帐户，请勿更改终结点值，直接转到下一步即可。）
+
+    终结点值现在应如下所示：
+
+    `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"`
+
+4. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password: $masterKey$` 中的 `$masterKey$`。
 
     remote.yaml 的第 4 行现应如下所示 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-4. 将 remote.yaml 的第 3 行从
+5. 将 remote.yaml 的第 3 行从
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -143,7 +149,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     `username: /dbs/sample-database/colls/sample-graph`
 
-5. 保存 remote.yaml 文件。
+6. 保存 remote.yaml 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 

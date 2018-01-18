@@ -17,15 +17,18 @@ ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b64d994dbc8f53418981e33a1dcd3cf513838b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9bb71adf85490fe68bf6b73133017c5e9c377e1
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是存储非结构化数据和 JSON 数据的良好方式。 将 Cosmos DB 与 Azure Functions 结合使用，可以快速、轻松地存储数据，并且所需的代码也比在关系数据库中存储数据时所需的代码少得多。
+
+> [!NOTE]
+> 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。
 
 在 Azure Functions 中，输入和输出绑定提供从函数连接到外部服务数据的声明性方式。 本主题介绍如何更新现有的 C# 函数，以便添加输出绑定，在 Cosmos DB 文档中存储非结构化数据。 
 
@@ -65,7 +68,7 @@ ms.lasthandoff: 10/11/2017
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | 数据库的名称 | Azure Cosmos DB 数据库的唯一 ID  |
-    | **API** | SQL (DocumentDB) | 选择文档数据库 API。  |
+    | **API** | SQL | 选择 SQL API。 此时，Azure Cosmos DB 触发器、输入绑定和输出绑定仅可与 SQL API 和图形 API 帐户一起使用。 |
     | **订阅** | Azure 订阅 | Azure 订阅  |
     | **资源组** | myResourceGroup |  使用包含函数应用的现有资源组。 |
     | **位置**  | 西欧 | 选择一个靠近函数应用的位置，或者一个靠近的其他应用使用已存储文档的位置。  |
@@ -142,4 +145,4 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
 
-若要详细了解如何绑定到 Cosmos DB 数据库，请参阅 [Azure Functions Cosmos DB 绑定](functions-bindings-documentdb.md)。
+若要详细了解如何绑定到 Cosmos DB 数据库，请参阅 [Azure Functions Cosmos DB 绑定](functions-bindings-cosmosdb.md)。

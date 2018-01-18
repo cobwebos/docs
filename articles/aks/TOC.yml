@@ -29,6 +29,10 @@
       href: tutorial-kubernetes-monitor.md
     - name: 8 - 升级群集
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: 概念
+  items:
+    - name: 配额和区域限制
+      href: container-service-quotas.md
 - name: 操作指南
   items:
     - name: 缩放 AKS 群集
@@ -49,6 +53,8 @@
       href: kubernetes-service-principal.md
     - name: 配置数据卷
       items:
+        - name: Azure 磁盘 - 永久性卷
+          href: azure-disks-dynamic-pv.md
         - name: Azure 文件 - 永久性卷
           href: azure-files-dynamic-pv.md
         - name: Azure 文件 - 卷

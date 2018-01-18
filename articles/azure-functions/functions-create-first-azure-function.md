@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 16680aaf2f49ae8ece440d0e44b49d6cd1f8fad7
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 754ca6e5297c3be9166efa7a40a5ba3714911c99
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
@@ -36,7 +36,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/ser
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管函数的执行。 Function App 可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
+必须使用函数应用托管函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -52,21 +52,25 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/ser
    
     ![Azure 门户中的函数快速入门。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-使用 HTTP 触发函数模板，采用所选语言创建函数。 可以通过发送 HTTP 请求来运行新函数。
+使用 HTTP 触发函数模板，采用所选语言创建函数。 本主题介绍了门户中的 C# 脚本函数，不过你可以使用任何[支持的语言](supported-languages.md)来创建函数。 
+
+现在，可以通过发送 HTTP 请求来运行新函数了。
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 在新函数中，单击“</> 获取函数 URL”，选择“默认(函数密钥)”，然后单击“复制”。 
+1. 在新函数中，单击右上角的“</> 获取函数 URL”，选择“默认(函数密钥)”，然后单击“复制”。 
 
     ![从 Azure 门户复制函数 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串 `&name=<yourname>` 追加到该 URL，然后按键盘上的 `Enter` 键来执行请求。 下面是一个示例，说明了在 Edge 浏览器中由函数返回的响应：
+2. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值 `&name=<yourname>` 添加到该 URL 尾部，然后按键盘上的 `Enter` 键来执行请求。 此时会看到函数返回的响应显示在浏览器中。  
+
+    下面是 Edge 浏览器中的响应示例（其他浏览器可能包括显示的 XML）：
 
     ![浏览器中的函数响应。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
     请求 URL 包含通过 HTTP 访问函数默认所需的密钥。   
 
-3. 运行函数时，会在日志中写入跟踪信息。 要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的向上箭头以展开“日志”。 
+3. 运行函数时，会在日志中写入跟踪信息。 若要查看上次执行的跟踪输出，请返回到门户中的函数，并单击屏幕底部的箭头以展开“日志”。 
 
    ![Azure 门户中的“函数日志”查看器。](./media/functions-create-first-azure-function/function-view-logs.png)
 

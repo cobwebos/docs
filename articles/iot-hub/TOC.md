@@ -35,6 +35,7 @@
 ### [使用 Web 应用进行数据可视化](iot-hub-live-data-visualization-in-web-apps.md)
 ### [使用 Azure 机器学习预测天气](iot-hub-weather-forecast-machine-learning.md)
 ### [使用 iothub-explorer 进行设备管理](iot-hub-device-management-iothub-explorer.md)
+### [使用适用于 Azure CLI 2.0 的 IoT 扩展进行设备管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [使用逻辑应用执行远程监视和发送通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # 操作指南

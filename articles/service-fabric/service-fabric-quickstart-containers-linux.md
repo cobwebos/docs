@@ -2,24 +2,24 @@
 title: "在 Linux 上创建 Azure Service Fabric 容器应用程序 | Microsoft Docs"
 description: "在 Azure Service Fabric 上创建第一个 Linux 容器应用程序。  生成包含应用程序的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。"
 services: service-fabric
-documentationcenter: .net
-author: rwike77
+documentationcenter: linux
+author: suhuruli
 manager: timlt
 editor: 
 ms.assetid: 
 ms.service: service-fabric
-ms.devlang: dotNet
+ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
-ms.author: ryanwi
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a3fa592e08ab05dfc56cf0c0c13eb6a64a7e2052
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 23cc9ce855eeba9e9a365e42beeee01b09f0fee3
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>在 Azure 上部署 Azure Service Fabric Linux 容器应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。 
@@ -34,7 +34,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 > * 在 Service Fabric 中缩放和故障转移容器
 
 ## <a name="prerequisite"></a>先决条件
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
   
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -66,23 +66,34 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 > Web 前端服务配置为侦听端口 80 上是否有传入流量。 请确保此端口在群集中处于打开状态。 如果使用的是合作群集，此端口已处于打开状态。
 >
 
-### <a name="deploy-the-application-manifests"></a>部署应用程序清单 
+### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>安装 Service Fabric 命令行界面，然后连接到群集
 在 CLI 环境中安装 [Service Fabric CLI (sfctl)](service-fabric-cli.md)
 
 ```azurecli-interactive
 pip3 install --user sfctl 
 export PATH=$PATH:~/.local/bin
 ```
+
 使用 Azure CLI 连接到 Azure 中的 Service Fabric 群集。 终结点是群集的管理终结点 - 例如 `http://linh1x87d1d.westus.cloudapp.azure.com:19080`。
 
 ```azurecli-interactive
 sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
 ```
 
+### <a name="deploy-the-service-fabric-application"></a>部署 Service Fabric 应用程序 
+Service Fabric 容器应用程序可以使用所述的 Service Fabric 应用程序包或 Docker Compose 进行部署。 
+
+#### <a name="deploy-using-service-fabric-application-package"></a>使用 Service Fabric 应用程序包进行部署
 使用提供的安装脚本将投票应用程序定义复制到群集，注册应用程序类型，并创建应用程序的实例。
 
 ```azurecli-interactive
 ./install.sh
+```
+
+#### <a name="deploy-the-application-using-docker-compose"></a>使用 Docker Compose 部署应用程序
+使用 Docker Compose 和以下命令在 Service Fabric 群集上部署和安装应用程序。
+```azurecli-interactive
+sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
 ```
 
 打开浏览器并导航到 Service Fabric Explorer，其网址为 http://\<Azure Service Fabric 群集 URL>:19080/Explorer - 例如 `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`。 展开“应用程序”节点，可以看到投票应用程序类型的条目以及创建的实例。

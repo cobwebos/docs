@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: fa2a5f1599fb0d95c89d848860ba9b32139a3dd2
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 2729ad97b49e7284022adae06c5b5f006647849c
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
 
@@ -51,7 +51,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
     设置|建议的值|说明
     ---|---|---
-    hosts|[***.graphs.azure.com]|参阅以下屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值：删除 https://，将 documents 更改为 graphs 并删除尾部的 :443/ 即可。
+    hosts|[***.gremlin.cosmosdb.azure.com] 或 [***.graphs.azure.com]，适用于 2017 年 12 月 20 日之前创建的帐户|参阅以下屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值，方法是：删除 https://，将 documents 更改为 graphs pr gremlin.cosmosdb 并删除尾部的 :443/。
     端口|443|设置为 443。
     username|*用户名*|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是数据库名称，`<coll>` 是集合名称。
     password|*主密钥*| 请参阅下面的第二幅屏幕截图。 这是主密钥，可以从 Azure 门户的“密钥”页上的“主密钥”框中检索到。 使用该框左侧的复制按钮可复制该值。
@@ -65,7 +65,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 remote-secure.yaml 文件应如下所示：
 
 ```
-hosts: [your_database_server.graphs.azure.com]
+hosts: [your_database_server.gremlin.cosmosdb.azure.com]
 port: 443
 username: /dbs/your_database_account/colls/your_collection
 password: your_primary_key

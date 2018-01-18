@@ -95,6 +95,9 @@
         - name: 将结构化流式处理与 Kafka 配合使用
           href: ../hdinsight-apache-kafka-spark-structured-streaming.md
           maintainContext: true
+        - name: 通过结构化流式处理将数据从 Kafka 传输到 CosmosDB
+          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
+          maintainContext: true
         - name: 将 Spark 流式处理 (DStream) 与 Kafka 配合使用
           href: ../hdinsight-apache-spark-with-kafka.md
           maintainContext: true

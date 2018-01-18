@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b5160aec6504dfa924279286d9676a97716f5a6c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 68cc1a3b69e3e2d59a791a9241a1a8b4b3062673
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB：使用 Python 和 Azure 门户创建图形数据库
 
@@ -135,28 +135,30 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
         password="<YOUR_PASSWORD>")
     ```
 
-3. 更改 `client` 对象的第二个参数以替换 `<YOUR_DATABASE>` 和 `<YOUR_COLLECTION_OR_GRAPH>` 字符串。 如果使用建议的值，该参数应类似于以下代码：
+3. 将客户端名称中的 `graphs.azure.com` 更改为 `gremlin.cosmosdb.azure.com`。 （如果是在 2017 年 12 月 20 日之前创建的图形数据库帐户，请勿进行更改，直接转到下一步即可。）
+
+4. 更改 `client` 对象的第二个参数以替换 `<YOUR_DATABASE>` 和 `<YOUR_COLLECTION_OR_GRAPH>` 字符串。 如果使用建议的值，该参数应类似于以下代码：
 
     `username="/dbs/sample-database/colls/sample-graph"`
 
     整个 `client` 对象现在应类似于以下代码：
 
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/sample-database/colls/sample-graph", 
         password="<YOUR_PASSWORD>")
     ```
 
-4. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password=<YOUR_PASSWORD>` 参数中的 `<YOUR_PASSWORD>` 位置。
+5. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password=<YOUR_PASSWORD>` 参数中的 `<YOUR_PASSWORD>` 位置。
 
     整个 `client` 对象定义现在应类似以下代码：
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/sample-database/colls/sample-graph", 
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-5. 保存 `connect.py` 文件。
+6. 保存 `connect.py` 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 

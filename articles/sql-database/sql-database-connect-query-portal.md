@@ -15,17 +15,17 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/02/2017
+ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 7f85d569fee4e13c28a09347159f16fc4b4ae626
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure 门户：使用 SQL 查询编辑器进行连接并查询数据
 
-SQL 查询编辑器是一款浏览器查询工具，可以轻松有效地在 Azure SQL 数据库或 Azure SQL 数据仓库中执行 SQL 查询，不需离开 Azure 门户。 本快速入门演示了如何使用查询编辑器连接到 SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。 
+SQL 查询编辑器是一款浏览器查询工具，可以轻松有效地在 Azure SQL 数据库或 Azure SQL 数据仓库中执行 SQL 查询，不需离开 Azure 门户。 本快速入门演示了如何使用查询编辑器连接到 SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,17 +44,15 @@ SQL 查询编辑器是一款浏览器查询工具，可以轻松有效地在 Azu
 
 1. 单击左侧菜单中的“SQL 数据库”，然后单击要查询的数据库。
 
-2. 在数据库的“SQL 数据库”页上，单击工具栏上的“工具”。 此时会打开“工具”页。
+2. 在数据库的 SQL 数据库页的左侧菜单中找到并单击“数据资源管理器(预览)”。
 
-    ![工具菜单](./media/sql-database-connect-query-portal/tools-menu.png)
+    ![查找查询编辑器](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. 依次单击“查询编辑器(预览版)”、“预览条款”复选框、“确定”。 此时会打开“查询编辑器”页。
+3. 单击“登录”，在出现提示时选择“SQL Server 身份验证”，然后提供在创建数据库时提供的服务器管理员登录名和密码。
 
-4. 单击“登录”，在出现提示时选择“SQL Server 身份验证”，然后提供在创建数据库时提供的服务器管理员登录名和密码。
+    ![登录](./media/sql-database-connect-query-portal/login-menu.png)
 
-    ![登录](./media/sql-database-connect-query-portal/login-menu.png) 
-
-5. 单击“确定”登录。
+4. 单击“确定”登录。
 
 
 ## <a name="connect-using-azure-ad"></a>使用 Azure AD 进行连接
@@ -70,11 +68,11 @@ SQL 查询编辑器是一款浏览器查询工具，可以轻松有效地在 Azu
 
 3. 在 Active Directory 管理员边栏选项卡中，单击“设置管理员”命令，选择将成为 Active Directory 管理员的用户或组。
 
-    ![选择 active directory](./media/sql-database-connect-query-portal/select-active-directory.png) 
+    ![选择 active directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
 4. 在 Active Directory 管理员边栏选项卡顶部单击“保存”命令，设置 Active Directory 管理员。
 
-导航到要查询的 SQL 数据库，单击工具栏上的“工具命令”，选择“查询编辑器(预览版)”选项。 “查询编辑器”页此时会打开，并自动将你连接到数据库。
+导航到要查询的 SQL 数据库，单击左侧菜单中的“数据资源管理器(预览)”。 “数据资源管理器”页此时会打开，并自动将你连接到数据库。
 
 
 ## <a name="run-query-using-query-editor"></a>使用查询编辑器运行查询
@@ -154,13 +152,13 @@ SQL 查询编辑器是一款浏览器查询工具，可以轻松有效地在 Azu
 
 1. 确保在 Azure SQL Server 防火墙设置中将“允许访问 Azure 服务”选项设置为“打开”。 此选项允许 SQL 查询编辑器访问 SQL 数据库和数据仓库。
 
-2. Azure Active Directory 管理员登录不适用于已启用双重身份验证的帐户。 
+2. Azure Active Directory 管理员登录不适用于已启用双重身份验证的帐户。
 
 3. 目前尚不允许使用电子邮件帐户（例如 outlook.com、hotmail.com、live.com、gmail.com、yahoo.com）作为 Active Directory 管理员。 在选择用户时，请确保该用户原本就是在 Azure Active Directory 中创建的，或者是通过联合方式进入 Azure Active Directory 中的。
 
 4. 查询编辑器目前不支持空间数据类型查询。 查询空间列会导致“System.IO.FileNotFoundException”错误。
 
-5. 不支持适用于数据库表和视图的 IntelliSense。 但是，此编辑器支持针对已键入的名称启用自动完成功能。 
+5. 不支持适用于数据库表和视图的 IntelliSense。 但是，此编辑器支持针对已键入的名称启用自动完成功能。
 
 6. 按 F5 键会刷新查询编辑器页面，丢失正在处理的查询。 请使用工具栏上的“运行”按钮来执行查询。
 

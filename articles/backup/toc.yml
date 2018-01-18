@@ -83,7 +83,7 @@
       items:
         - name: 准备 VM
           items:
-            - name: 准备资源管理器部署的虚拟机
+            - name: 准备资源管理器部署的 VM
               href: backup-azure-arm-vms-prepare.md
             - name: Linux VM 的应用程序一致性备份
               href: backup-azure-linux-app-consistent.md
@@ -93,23 +93,23 @@
               href: backup-azure-vms-introduction.md
         - name: 备份 VM
           items:
-            - name: 将 Azure 虚拟机备份到恢复服务保管库
+            - name: 将 Azure VM 备份到恢复服务保管库
               href: backup-azure-arm-vms.md
-            - name: 备份加密的虚拟机
+            - name: 备份加密 VM
               href: backup-azure-vms-encryption.md
         - name: 管理和监视 VM
           items:
             - name: 在 Azure 门户中管理 Azure VM 备份
               href: backup-azure-manage-vms.md
-            - name: 在 Azure 门户中监视 Azure VM 备份警报
+            - name: 监视 Azure VM 备份警报
               href: backup-azure-monitor-vms.md
         - name: 从 VM 还原数据
           items:
             - name: 从 Azure VM 备份恢复文件
               href: backup-azure-restore-files-from-vm.md
-            - name: 在 Azure 门户中还原资源管理器部署的 VM
+            - name: 在 Azure 门户中还原 VM
               href: backup-azure-arm-restore-vms.md
-            - name: 还原加密的虚拟机
+            - name: 还原加密 VM
               href: backup-azure-vms-encryption.md
             - name: 还原已加密 VM 的 Key Vault 密钥和机密
               href: backup-azure-restore-key-secret.md
@@ -125,7 +125,7 @@
       items:
         - name: 在 Azure 门户中准备 DPM 工作负荷
           href: backup-azure-dpm-introduction.md
-        - name: 使用 System Center DPM 备份 Exchange 服务器
+        - name: 使用 DPM 备份 Exchange 服务器
           href: backup-azure-backup-exchange-server.md
         - name: 将数据恢复到备用 DPM 服务器
           href: backup-azure-alternate-dpm-server.md
