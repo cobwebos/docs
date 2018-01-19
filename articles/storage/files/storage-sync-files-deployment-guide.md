@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 7d6cb91f97020ad60bd2ea74b24df76511956f38
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d5864b8df85a5b3cec086d4cb2edc6d288f1639a
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="deploy-azure-file-sync-preview"></a>部署 Azure 文件同步（预览版）
 使用 Azure 文件同步（预览版），即可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * Azure 存储帐户和 Azure 文件共享位于要部署 Azure 文件同步的相同区域。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#region-availability)。
     - [创建存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)，了解创建存储帐户的分步说明。
@@ -71,6 +71,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 > [!Important]  
 > 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。
+
 
 Azure 文件同步代理安装包的安装速度应相对较快，没有太多其他提示。 建议执行以下操作：
 - 保留默认安装路径(C:\Program Files\Azure\StorageSyncAgent)，以简化故障排除和服务器维护。
@@ -118,6 +119,36 @@ Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 要
 
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
+
+## <a name="onboarding-with-azure-file-sync"></a>使用 Azure 文件同步进行载入
+若要通过 Azure 文件同步在不停机的情况下首次进行载入，同时保持完整的文件保真度和访问控制列表 (ACL)，则建议采用的步骤如下所述：
+ 
+1.  部署存储同步服务。
+2.  创建一个同步组。
+3.  在包含完整数据集的服务器上安装 Azure 文件同步代理。
+4.  注册该服务器并在共享中创建一个服务器终结点。 
+5.  让同步服务执行到 Azure 文件共享（云终结点）的完整上传。  
+6.  在初始上传完成后，在剩余的每台服务器上安装 Azure 文件同步代理。
+7.  在剩余的每台服务器上创建新的文件共享。
+8.  使用云分层策略在新的文件共享中创建服务器终结点（如果需要）。 （此步骤要求有额外的存储可供初始设置使用。）
+9.  让 Azure 文件同步代理在不实际传输数据的情况下快速还原整个命名空间。 在完成完整的命名空间同步后，同步引擎将根据服务器终结点的云分层策略填充本地磁盘空间。 
+10. 确保同步完成，并根据需要测试拓扑。 
+11. 将用户和应用程序重定向到此新共享。
+12. 还可以选择删除服务器上任何重复的共享。
+ 
+如果没有可用于初始载入的额外存储空间，并且希望附加到现有的共享，则可以在 Azure 文件共享中预先播种数据。 当且仅当可以接受停机并且绝对可以保证在初始载入过程中服务器共享上不会发生数据更改时，才建议使用此方法。 
+ 
+1.  确保任何服务器上的数据在载入过程中都不会发生更改。
+2.  使用基于 SMB 的任何数据传输工具（例如 Robocopy、直接 SMB 复制）在 Azure 文件共享中预先播种服务器数据。 由于 AzCopy 不通过 SMB 上传数据，因此不能使用它进行预先播种。
+3.  使用所需的指向现有共享的服务器终结点创建 Azure 文件同步拓扑。
+4.  让同步服务在所有终结点上完成对帐过程。 
+5.  在对帐完成后，你可以打开共享进行更改。
+ 
+请注意，预先播种方法当前有几个限制 - 
+- 不能保持文件的完全保真度。 例如，文件会丢失 ACL 和时间戳。
+- 在同步拓扑完全启动并运行之前更改服务器上的数据可能会导致各个服务器终结点上发生冲突。  
+- 创建云终结点后，Azure 文件同步在启动初始同步之前会运行一个流程来检测云中的文件。完成此流程所需的时间取决于各种因素，例如，网速、可用带宽以及文件和文件夹的数目。 对于预览版，粗略估计，检测流程以大约每秒 10 个文件的速度运行。因此，当在云中预先播种数据时，即使预先播种运行速度很快，获得完全运行的系统所需的总体时间也会更长。
+
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步
 若要将 DFS-R 部署迁移至 Azure 文件同步，请执行以下操作：
