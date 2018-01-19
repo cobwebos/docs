@@ -9,51 +9,49 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建数据工厂
-      items:
-        - name: 用户界面 (UI)
-          href: quickstart-create-data-factory-portal.md
-        - name: 复制数据工具
-          href: quickstart-create-data-factory-copy-data-tool.md
-        - name: PowerShell
-          href: quickstart-create-data-factory-powershell.md
-        - name: .NET
-          href: quickstart-create-data-factory-dot-net.md
-        - name: Python
-          href: quickstart-create-data-factory-python.md
-        - name: REST
-          href: quickstart-create-data-factory-rest-api.md
-        - name: 资源管理器模板
-          href: quickstart-create-data-factory-resource-manager-template.md
+    - name: 创建数据工厂 - 用户界面 (UI)
+      href: quickstart-create-data-factory-portal.md
+    - name: 创建数据工厂 -“复制数据”工具
+      href: quickstart-create-data-factory-copy-data-tool.md
+    - name: 创建数据工厂 - Azure PowerShell
+      href: quickstart-create-data-factory-powershell.md
+    - name: 创建数据工厂 - .NET
+      href: quickstart-create-data-factory-dot-net.md
+    - name: 创建数据工厂 - Python
+      href: quickstart-create-data-factory-python.md
+    - name: 创建数据工厂 - REST
+      href: quickstart-create-data-factory-rest-api.md
+    - name: 创建数据工厂 - 资源管理器模板
+      href: quickstart-create-data-factory-resource-manager-template.md
 - name: 教程
   items:
     - name: 1 - 将 SSIS 包部署到 Azure
       items:
         - name: 用户界面 (UI)
           href: tutorial-create-azure-ssis-runtime-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure.md
     - name: 2 - 复制云中的数据
       items:
-        - name: 复制数据工具
+        - name: “复制数据”工具
           href: tutorial-copy-data-tool.md
         - name: 用户界面 (UI)
           href: tutorial-copy-data-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-copy-data-dot-net.md
     - name: 3 - 将本地数据复制到云中
       items:
-        - name: 复制数据工具
+        - name: “复制数据”工具
           href: tutorial-hybrid-copy-data-tool.md
         - name: 用户界面 (UI)
           href: tutorial-hybrid-copy-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-hybrid-copy-powershell.md
     - name: 4 - 批量复制数据
       items:
         - name: 用户界面 (UI)
           href: tutorial-bulk-copy-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-bulk-copy.md
     - name: 5 - 以增量方式复制数据
       href: tutorial-incremental-copy-overview.md
@@ -62,41 +60,41 @@
           items:
             - name: 用户界面 (UI)
               href: tutorial-incremental-copy-portal.md
-            - name: PowerShell
+            - name: Azure PowerShell
               href: tutorial-incremental-copy-powershell.md
         - name: 5.2 - 从多个表复制
           items:
-            - name: PowerShell
+            - name: Azure PowerShell
               href: tutorial-incremental-copy-multiple-tables-powershell.md
         - name: 5.3 - 使用更改跟踪功能
           items:
             - name: 用户界面 (UI)
               href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: PowerShell
+            - name: Azure PowerShell
               href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 - 转换云中的数据
       items:
         - name: 用户界面 (UI)
           href: tutorial-transform-data-spark-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-transform-data-spark-powershell.md
     - name: 7 - 转换虚拟网络中的数据
       items:
         - name: 用户界面 (UI)
           href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-transform-data-hive-virtual-network.md
     - name: 8 - 控制流
       items:
         - name: 用户界面 (UI)
           href: tutorial-control-flow-portal.md
-        - name: PowerShell
+        - name: Azure PowerShell
           href: tutorial-control-flow.md
 - name: 示例
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
-    - name: PowerShell
+    - name: Azure PowerShell
       href: samples-powershell.md
 - name: 概念
   items:
@@ -116,7 +114,7 @@
       items:
         - name: 通过复制活动复制数据
           href: copy-activity-overview.md
-        - name: 复制数据工具
+        - name: “复制数据”工具
           href: copy-data-tool.md
           items:
             - name: 加载 Data Lake Store
