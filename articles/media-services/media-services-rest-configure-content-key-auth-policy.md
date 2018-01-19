@@ -1,5 +1,5 @@
 ---
-title: "使用 REST 配置内容密钥授权策略 - Azure | Microsoft 文档"
+title: "使用 REST 配置内容密钥授权策略 - Azure | Microsoft Docs"
 description: "了解如何使用媒体服务 REST API 配置内容密钥的授权策略。"
 services: media-services
 documentationcenter: 
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: d3388643a3d7c38104a4c61f94a8b68a86168846
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3f3972232a4342bfb7d8579d747d0cc4250963bc
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概述
-借助 Microsoft Azure 媒体服务，可传送使用高级加密标准（AES，使用 128 位加密密钥）以及 PlayReady 或 Widevine DRM 动态加密的内容。 媒体服务还提供了用于向已授权客户端传送密钥和 PlayReady/Widevine 许可证的服务。
+ 可以使用 Azure 媒体服务传送使用高级加密标准 (AES)（使用 128 位加密密钥）以及 PlayReady 或 Widevine 数字版权管理 (DRM) 动态加密的内容。 媒体服务还提供了用于向已授权客户端传送密钥和 PlayReady/Widevine 许可证的服务。
 
-如果希望媒体服务加密资产，需要将加密密钥（**CommonEncryption** 或 **EnvelopeEncryption**）与资产相关联（如[此处](media-services-rest-create-contentkey.md)所述），并配置密钥授权策略（如本文所述）。
+如果希望媒体服务对某个资产进行加密，则需要将加密密钥（CommonEncryption 或 EnvelopeEncryption）与该资产相关联。 有关详细信息，请参阅[使用 REST 创建内容密钥](media-services-rest-create-contentkey.md)。 还需要配置密钥的授权策略（如本文中所述）。
 
-当播放器请求流时，媒体服务将使用指定的密钥通过 AES 或 PlayReady 加密来动态加密内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+当播放器请求某个流时，媒体服务将使用 AES 或 PlayReady 加密使用指定的密钥来对内容进行动态加密。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 内容密钥授权策略可能受到一种或多种授权限制：**开放**或**令牌**限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用**简单 Web 令牌** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 **JSON Web 令牌** (JWT) 格式的令牌。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。
 
-媒体服务不提供安全令牌服务。 可以创建自定义 STS 或使用 Azure Active Directory (AAD) 颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
+媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
 有关详细信息，请参阅以下文章：
 - [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-- [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
+- [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
-### <a name="some-considerations-apply"></a>请注意以下事项：
+### <a name="some-considerations-apply"></a>需要注意的一些事项
 * 若要使用动态打包和动态加密，需确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
-* 使用 **AssetCreationOptions.StorageEncrypted** 选项上传资产并对其进行编码。
+* 使用 AssetCreationOptions.StorageEncrypted 选项上传资产并对其进行编码。
 * 如果打算创建需要相同策略配置的多个内容密钥，建议创建单个授权策略，并将其重复用于多个内容密钥。
-* 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。  如果创建 ContentKeyAuthorizationPolicy 并指定使用“令牌”限制，然后对其进行测试，再将策略更新为“开放”限制，则现有策略切换到“开放”版本的策略大约需要 15 分钟。
-* 如果添加或更新资产的传送策略，则必须删除现有定位符（如果有）并创建新定位符。
-* 目前，无法加密渐进式下载。
-* AMS 流式处理终结点将预检响应中 CORS“Access-Control-Allow-Origin”标头的值设置为通配符“\*”。 这适用于大多数播放器，其中包括 Azure Media Player、Roku、JW 等。 但是，这不适用于一些使用 dashjs 的播放器，因为将凭据模式设置为“包含”之后，dashjs 中的 XMLHttpRequest 不允许将通配符“\*”作为“Access-Control-Allow-Origin”的值。 作为 dashjs 的这一限制的解决办法，如果从单个域承载客户端，则 Azure 媒体服务可以指定预检响应标头中的域。 可以通过 Azure 门户开具支持票证来实现。
+* 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。 可以创建 ContentKeyAuthorizationPolicy 并指定使用令牌限制，对其进行测试，然后更新策略以开放限制。 在策略切换到策略的开放版本之前，此过程需要花费大约 15 分钟。
+* 如果添加或更新资产的传送策略，则必须删除现有的定位符并创建新的定位符。
+* 目前，无法对渐进式下载进行加密。
+* 媒体服务流式处理终结点将预检响应中 CORS Access-Control-Allow-Origin 标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dash.js 的播放器，因为将凭据模式设置为“包含”之后，dash.js 中的 XMLHttpRequest 不允许将通配符“\*”作为 Access-Control-Allow-Origin 的值。 作为 dash.js 中这一限制的解决办法，如果你将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户打开支持票证。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 动态加密
 > [!NOTE]
-> 使用媒体服务 REST API 时，需注意以下事项：
+> 使用媒体服务 REST API 时，需注意以下事项。
 > 
 > 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 > 
@@ -177,9 +177,9 @@ ms.lasthandoff: 12/08/2017
     HTTP/1.1 204 No Content
 
 ### <a name="token-restriction"></a>令牌限制
-本部分介绍如何创建内容密钥授权策略，以及如何将其与内容密钥相关联。 授权策略描述了必须达到什么授权要求才能确定用户是否有权接收密钥（例如，“验证密钥”列表是否包含令牌签名时使用的密钥）。
+本部分介绍如何创建内容密钥授权策略，以及如何将其与内容密钥相关联。 授权策略描述了必须达到什么授权要求才能确定用户是否有权接收密钥。 例如，“验证密钥”列表是否包含为令牌签名时使用的密钥？
 
-要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构：
+若要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构：
 
 
 #### <a id="schema"></a>令牌限制架构
@@ -230,12 +230,12 @@ ms.lasthandoff: 12/08/2017
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 **受众**（有时称为**范围**）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
+配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的 STS。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
 以下示例创建包含令牌限制的授权策略。 在此示例中，客户端必须出示令牌，其中包含：签名密钥 (VerificationKey)、令牌颁发者和必需的声明。
 
 ### <a name="create-contentkeyauthorizationpolicies"></a>创建 ContentKeyAuthorizationPolicies
-根据[此处](#ContentKeyAuthorizationPolicies)所示创建“令牌限制策略”。
+创建令牌限制策略，如“[创建 ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)”部分中所示。
 
 ### <a name="create-contentkeyauthorizationpolicyoptions"></a>创建 ContentKeyAuthorizationPolicyOptions
 请求：
@@ -274,13 +274,13 @@ ms.lasthandoff: 12/08/2017
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:e1ef6145-46e8-4ee6-9756-b1cf96328c23","Name":"Token option for HLS","KeyDeliveryType":2,"KeyDeliveryConfiguration":null,"Restrictions":[{"Name":"Token Authorization Policy","KeyRestrictionType":1,"Requirements":"<TokenRestrictionTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1\"><AlternateVerificationKeys><TokenVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>BklyAFiPTQsuJNKriQJBZHYaKM2CkCTDQX2bw9sMYuvEC9sjW0W7GUIBygQL/+POEeUqCYPnmEU2g0o1GW2Oqg==</KeyValue></TokenVerificationKey></AlternateVerificationKeys><Audience>urn:test</Audience><Issuer>http://testacs.com/</Issuer><PrimaryVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>E5BUHiN4vBdzUzdP0IWaHFMMU3D1uRZgF16TOhSfwwHGSw+Kbf0XqsHzEIYk11M372viB9vbiacsdcQksA0ftw==</KeyValue></PrimaryVerificationKey><RequiredClaims><TokenClaim><ClaimType>urn:microsoft:azure:mediaservices:contentkeyidentifier</ClaimType><ClaimValue i:nil=\"true\" /></TokenClaim></RequiredClaims><TokenType>SWT</TokenType></TokenRestrictionTemplate>"}]}
 
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>将 ContentKeyAuthorizationPolicies 与 Options 相链接
-根据[此处](#ContentKeyAuthorizationPolicies)所示将 ContentKeyAuthorizationPolicies 与 Options 相链接。
+将 ContentKeyAuthorizationPolicies 与 Options 相链接，如“[创建 ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)”部分中所示。
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
-根据[此处](#AddAuthorizationPolicyToKey)所示将 AuthorizationPolicy 添加到 ContentKey。
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
+将 AuthorizationPolicy 添加到 ContentKey，如“[将授权策略添加到内容密钥](#AddAuthorizationPolicyToKey)”部分中所示。
 
 ## <a name="playready-dynamic-encryption"></a>PlayReady 动态加密
-媒体服务允许配置相应的权限和限制，以便在用户尝试播放受保护的内容时，PlayReady DRM 运行时会强制实施这些权限和限制。 
+可以使用媒体服务配置相应的权限和限制，以便在用户尝试播放受保护的内容时，PlayReady DRM 运行时会强制实施这些权限和限制。 
 
 使用 PlayReady 保护内容时，需要在授权策略中指定的项目之一是用于定义 [PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 
 
@@ -363,16 +363,16 @@ ms.lasthandoff: 12/08/2017
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:1052308c-4df7-4fdb-8d21-4d2141fc2be0","Name":"","KeyDeliveryType":1,"KeyDeliveryConfiguration":"<PlayReadyLicenseResponseTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1\"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>false</AllowTestDevices><ContentKey i:type=\"ContentEncryptionKeyFromHeader\" /><LicenseType>Nonpersistent</LicenseType><PlayRight /></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>","Restrictions":[{"Name":"Open","KeyRestrictionType":0,"Requirements":null}]}
 
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>将 ContentKeyAuthorizationPolicies 与 Options 相链接
-根据[此处](#ContentKeyAuthorizationPolicies)所示将 ContentKeyAuthorizationPolicies 与 Options 相链接。
+将 ContentKeyAuthorizationPolicies 与 Options 相链接，如“[创建 ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)”部分中所示。
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
-根据[此处](#AddAuthorizationPolicyToKey)所示将 AuthorizationPolicy 添加到 ContentKey。
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
+将 AuthorizationPolicy 添加到 ContentKey，如“[将授权策略添加到内容密钥](#AddAuthorizationPolicyToKey)”部分中所示。
 
 ### <a name="token-restriction"></a>令牌限制
-要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合[此](#schema)部分所示的 XML 架构。
+若要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须遵循“[令牌限制架构](#schema)”部分中所示的 XML 架构。
 
 #### <a name="create-contentkeyauthorizationpolicies"></a>创建 ContentKeyAuthorizationPolicies
-根据[此处](#ContentKeyAuthorizationPolicies2)所示创建 ContentKeyAuthorizationPolicies。
+创建 ContentKeyAuthorizationPolicies，如“[创建 ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies2)”部分中所示。
 
 #### <a name="create-contentkeyauthorizationpolicyoptions"></a>创建 ContentKeyAuthorizationPolicyOptions
 请求：
@@ -411,10 +411,10 @@ ms.lasthandoff: 12/08/2017
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:e42bbeae-de42-4077-90e9-a844f297ef70","Name":"Token option","KeyDeliveryType":1,"KeyDeliveryConfiguration":"<PlayReadyLicenseResponseTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1\"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>false</AllowTestDevices><ContentKey i:type=\"ContentEncryptionKeyFromHeader\" /><LicenseType>Nonpersistent</LicenseType><PlayRight /></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>","Restrictions":[{"Name":"Token Authorization Policy","KeyRestrictionType":1,"Requirements":"<TokenRestrictionTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1\"><AlternateVerificationKeys><TokenVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>w52OyHVqXT8aaupGxuJ3NGt8M6opHDOtx132p4r6q4hLI6ffnLusgEGie1kedUewVoIe1tqDkVE6xsIV7O91KA==</KeyValue></TokenVerificationKey></AlternateVerificationKeys><Audience>urn:test</Audience><Issuer>http://testacs.com/</Issuer><PrimaryVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>dYwLKIEMBljLeY9VM7vWdlhps31Fbt0XXhqP5VyjQa33bJXleBtkzQ6dF5AtwI9gDcdM2dV2TvYNhCilBKjMCg==</KeyValue></PrimaryVerificationKey><RequiredClaims><TokenClaim><ClaimType>urn:microsoft:azure:mediaservices:contentkeyidentifier</ClaimType><ClaimValue i:nil=\"true\" /></TokenClaim></RequiredClaims><TokenType>SWT</TokenType></TokenRestrictionTemplate>"}]}
 
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>将 ContentKeyAuthorizationPolicies 与 Options 相链接
-根据[此处](#ContentKeyAuthorizationPolicies)所示将 ContentKeyAuthorizationPolicies 与 Options 相链接。
+将 ContentKeyAuthorizationPolicies 与 Options 相链接，如“[创建 ContentKeyAuthorizationPolicies](#ContentKeyAuthorizationPolicies)”部分中所示。
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
-根据[此处](#AddAuthorizationPolicyToKey)所示将 AuthorizationPolicy 添加到 ContentKey。
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
+将 AuthorizationPolicy 添加到 ContentKey，如“[将授权策略添加到内容密钥](#AddAuthorizationPolicyToKey)”部分中所示。
 
 ## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -447,5 +447,5 @@ ms.lasthandoff: 12/08/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-配置内容密钥的授权策略后，请转到[如何配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)一文。
+现在，你已配置了内容密钥的授权策略，可以查看[如何配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)了。
 
