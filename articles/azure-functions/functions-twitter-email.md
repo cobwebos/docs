@@ -17,10 +17,10 @@ ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -234,7 +234,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
     | **主题** | 检测到消极的推文情感  | 电子邮件通知的主题行。  |
     | **正文** | 推文文本、位置 | 单击“推文文本”和“位置”参数。 |
 
-5.  单击“保存” 。
+5.  单击“ **保存**”。
 
 完成工作流后，可以启用逻辑应用并查看函数的工作状态。
 

@@ -16,14 +16,14 @@ ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 67b328cb754e49fe1dea9d57f74dd31793acd93c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>连接到 Azure 上的 SQL Server 虚拟机（经典部署）
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
+> * [资源管理器](../sql/virtual-machines-windows-sql-connect.md)
 > * [经典](../classic/sql-connect.md)
 > 
 > 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/21/2017
 本主题介绍如何连接到 Azure 中虚拟机上运行的 SQL Server 实例。 介绍一些[常规连接方案](#connection-scenarios)，并提供[在 Azure VM 中配置 SQL Server 连接的详细步骤](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 如果使用的是 Resource Manager VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../sql/virtual-machines-windows-sql-connect.md)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 如果使用的是 Resource Manager VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../sql/virtual-machines-windows-sql-connect.md)。
 
 ## <a name="connection-scenarios"></a>连接方案
 客户端连接虚拟机上运行的 SQL Server 的方式取决于客户端的位置与计算机/网络配置。 这些方案包括：

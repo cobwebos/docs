@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: ponatara
 ms.openlocfilehash: 2943d33744a29da7ffd1f1544fc81696195ecce1
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>在迁移到 Azure 后，使用 Azure Site Recovery 将 Azure VM 复制到另一个区域
 

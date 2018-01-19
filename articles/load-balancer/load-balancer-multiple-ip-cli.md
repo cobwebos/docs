@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
 ms.openlocfilehash: 23dd3bf6a50a30477014081a955c3c154b765c5d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>在多个 IP 配置上进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [门户](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
