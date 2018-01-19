@@ -12,7 +12,7 @@
 
 # 如何
 ## 加载和移动数据
-### [使用 Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)
+### [使用 Azure 数据工厂](../data-factory/load-azure-data-lake-store.md)
 ### [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
@@ -66,7 +66,7 @@
 ### [从 Azure VNET 中的 VM 访问](data-lake-store-connectivity-from-vnets.md)
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [与 Azure 事件中心配合使用](data-lake-store-archive-eventhub-capture.md)
-### [与数据工厂配合使用](../data-factory/connector-azure-data-lake-store.md)
+### [与数据工厂配合使用](../data-factory/load-azure-data-lake-store.md)
 ### [与流分析配合使用](data-lake-store-stream-analytics.md)
 ### [与 Power BI 配合使用](data-lake-store-power-bi.md)
 ### [与数据目录配合使用](data-lake-store-with-data-catalog.md)
