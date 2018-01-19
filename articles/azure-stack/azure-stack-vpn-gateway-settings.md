@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/01/2017
+ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: 1276310a35d0d69a4111a58b9675f15bb5285a08
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1eba5df93b461eb22ab8341b4498682957c9298a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>适用于 Azure 堆栈的 VPN 网关配置设置
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/03/2018
 
 VPN 网关是一种发送加密的 Azure 堆栈中的虚拟网络和远程的 VPN 网关之间的流量的虚拟网络网关。 远程 VPN 网关可以在 Azure 中，你的数据中心中的设备或另一站点中的设备。  如果两个终结点之间没有网络连接，你可以建立两个网络之间安全的站点到站点 (S2S) VPN 连接。
 
-VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文的各部分介绍了与在 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 你可以找到说明和拓扑图中每个连接解决方案[有关 VPN 网关 Azure 堆栈](azure-stack-vpn-gateway-about-vpn-gateways.md)。
+VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置的设置。 本文的各个部分介绍与 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 你可以找到说明和拓扑图中每个连接解决方案[有关 VPN 网关 Azure 堆栈](azure-stack-vpn-gateway-about-vpn-gateways.md)。
 
 ## <a name="vpn-gateway-settings"></a>VPN 网关设置
 
@@ -43,7 +43,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 ```
 
 ### <a name="gateway-skus"></a>网关 SKU
-创建虚拟网络网关时，需要指定要使用的网关 SKU。 根据工作负荷、吞吐量、功能和、SLA 的类型，选择满足需求的 SKU。
+创建虚拟网络网关时，需要指定要使用的网关 SKU。 根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。
 
 >[!NOTE]
 > 经典虚拟网络应继续使用旧版 SKU。 有关旧版网关 SKU 的详细信息，请参阅[使用虚拟网关 SKU（旧版）](/azure/vpn-gateway/vpn-gateway-about-skus-legacy)。
@@ -52,8 +52,8 @@ Azure 堆栈提供了以下 VPN 网关 Sku:
 
 |   | VPN 网关吞吐量 |VPN 网关最大 IPsec 隧道 |
 |-------|-------|-------|
-|**基本 SKU**  | 100 Mbps  | 10    |
-|**标准 SKU**           | 100 Mbps  | 10    |
+|**基本 SKU**  | 100 Mbps  | 10 个    |
+|**标准 SKU**           | 100 Mbps  | 10 个    |
 |**高性能 SKU** | 200 Mbps    | 30    |
 
 ### <a name="resizing-gateway-skus"></a>调整大小网关 Sku
@@ -110,13 +110,13 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 |--|--|--|--|--|
 | **站点到站点连接 （S2S 连接）** | 不支持 | 基于路由的 VPN 配置 | 基于路由的 VPN 配置 | 基于路由的 VPN 配置 |
 | **身份验证方法**  | 不支持 | S2S 连接的预共享的密钥  | S2S 连接的预共享的密钥  | S2S 连接的预共享的密钥  |   
-| **S2S 连接的最大数目**  | 不支持 | 10 | 10| 30|
+| **S2S 连接的最大数目**  | 不支持 | 10 个 | 10 个| 30|
 |**活动路由支持 (BGP)** | 不支持 | 不支持 | 支持 | 支持 |
 
 ### <a name="gateway-subnet"></a>网关子网
-在创建 VPN 网关之前，必须创建一个网关子网。 网关子网包含虚拟网络网关 VM 和服务使用的 IP 地址。 在创建虚拟网络网关时，将网关 VM 部署到网关子网，并使用所需的 VPN 网关设置进行配置。 不会部署任何其他操作 （例如，更多虚拟机） 与网关子网。 网关子网必须命名为“GatewaySubnet”才能正常工作。 命名网关子网 GatewaySubnet 允许 Azure 堆栈，以标识要部署的虚拟网络网关 Vm 和服务添加到的子网。
+在创建 VPN 网关之前，必须创建一个网关子网。 网关子网包含虚拟网络网关 VM 和服务使用的 IP 地址。 创建虚拟网络网关时，会将网关 VM 部署到网关子网，并使用所需的 VPN 网关设置进行配置。 不会部署任何其他操作 （例如，更多虚拟机） 与网关子网。 网关子网必须命名为“GatewaySubnet”才能正常工作。 命名网关子网 GatewaySubnet 允许 Azure 堆栈，以标识要部署的虚拟网络网关 Vm 和服务添加到的子网。
 
-创建网关子网时，请指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 查看要创建的配置的说明，验证想要创建的网关子网是否会满足这些要求。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /28 或更大（/28、/27 和 /26 等）的网关子网。 这样一来，如果你添加功能在将来，你无需关闭您的网关，然后删除并重新创建网关子网，以允许多个 IP 地址。
+创建网关子网时，需指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 查看要创建的配置的说明，验证要创建的网关子网是否会满足这些要求。 此外，可能需要确保网关子网包含足够的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /28 或更大（/28、/27 和 /26 等）的网关子网。 这样一来，如果你添加功能在将来，你无需关闭您的网关，然后删除并重新创建网关子网，以允许多个 IP 地址。
 
 以下 Resource Manager PowerShell 示例显示名为 GatewaySubnet 的网关子网。 可以看到，CIDR 表示法指定了 /27，这可提供足够的 IP 地址供大多数现有配置使用。
 
@@ -125,12 +125,12 @@ Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.
 ```
 
 > [!IMPORTANT]
-> 使用网关子网时，避免将网络安全组 (NSG) 与网关子网关联。 将网络安全组与此子网关联可能会导致 VPN 网关停止按预期方式工作。 关于网络安全组的详细信息，请参阅[什么是网络安全组？](/azure/virtual-network/virtual-networks-nsg)。
+> 处理网关子网时，请避免将网络安全组 (NSG) 关联到网关子网。 将网络安全组与此子网关联可能会导致 VPN 网关停止按预期方式工作。 关于网络安全组的详细信息，请参阅[什么是网络安全组？](/azure/virtual-network/virtual-networks-nsg)。
 
 ### <a name="local-network-gateways"></a>本地网关
 当在 Azure 中创建 VPN 网关配置，本地网络网关通常表示你的本地位置。 在 Azure 堆栈，它表示位于 Azure 堆栈之外的任何远程 VPN 设备。  这可能是在你的数据中心、 远程数据中心或在 Azure 中的 VPN 网关的 VPN 设备。
 
-为指定的名称，VPN 设备的公共 IP 地址的本地网络网关，并指定位于本地位置的地址前缀。 Azure 将查看网络流量的目标地址前缀、查阅针对本地网络网关指定的配置，并相应地路由数据包。
+为指定的名称，VPN 设备的公共 IP 地址的本地网络网关，并指定位于本地位置的地址前缀。 Azure 查看网络流量的目标地址前缀、查阅针对本地网络网关指定的配置，并相应地路由数据包。
 
 以下 PowerShell 示例创建新的本地网络网关：
 
@@ -160,7 +160,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 |SDK 版本 |IKEv2 |
 |加密和哈希算法 （加密）     | GCMAES256|
 |加密和哈希算法 （身份验证） | GCMAES256|
-|SA 生存期（时间）  | 3,600 秒 |
+|SA 生存期（时间）  | 14400 秒 |
 |SA 生存期（字节数） | 819,200       |
 |完全向前保密 (PFS) |PFS2048 |
 |死对等体检测 | 支持|  
