@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3b228452d416bbb2c54243b95292f7e1198af14f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0ba0bc4e8350a65a95dc41788c93d5c89fc48334
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>在 Azure 堆栈中提供的自定义虚拟机映像
 
@@ -43,7 +43,7 @@ Azure 堆栈中运算符可以提供自定义虚拟机映像为其用户。 可�
    Azure 堆栈支持固定的磁盘 VHD 格式。 固定的格式结构逻辑磁盘以线性方式在文件中，因此该磁盘偏移量 X 存储在 blob 偏移量 X。在 blob 末尾一小段脚注介绍 VHD 的属性。 若要确认你的磁盘固定的是，使用[Get VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell 命令。  
 
    > [!IMPORTANT]
-   >  Azure 堆栈不支持动态磁盘 Vhd。 调整大小附加到 VM 的动态磁盘将 VM 处于失败状态。 若要缓解此问题，而不删除 VM 的磁盘，VHD blob 存储帐户中删除 VM。 ，转换从动态磁盘的 VHD 的固定的磁盘和重新创建虚拟机使用。
+   >  Azure 堆栈不支持动态磁盘 Vhd。 调整大小附加到 VM 的动态磁盘将 VM 处于失败状态。 若要缓解此问题，而不删除 VM 的磁盘，VHD blob 存储帐户中删除 VM。 然后将 VHD 从动态磁盘转换为固定磁盘，并重新创建虚拟机。
 
 若要将映像添加到 Azure 堆栈应用商店，请完成以下步骤：
 
