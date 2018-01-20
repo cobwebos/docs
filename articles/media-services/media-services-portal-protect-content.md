@@ -14,53 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: ecc766abb5df38813b3eb6dde98cdc9afd24ac6b
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 805e1246dbc984582528d2b351d2f14ab2e811fc
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="configuring-content-protection-policies-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
-通过 Microsoft Azure 媒体服务 (AMS)，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准（AES，使用 128 位加密密钥）、通用加密（CENC，使用 PlayReady 和/或 Widevine DRM）以及 Apple FairPlay 传送动态加密的内容。 
+# <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
+ 使用 Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 可以通过媒体服务传送按高级加密标准 (AES)（使用 128 位加密密钥）动态加密的内容。 也可借助 PlayReady 和/或 Widevine 数字版权管理 (DRM) 以及 Apple FairPlay，将其与通用加密 (CENC) 配合使用。 
 
-AMS 提供用于向已授权客户端传送 DRM 许可证和 AES 明文密钥的服务。 通过 Azure 门户，可创建适用于所有类型加密的一个**密钥/许可证授权策略**。
+媒体服务提供用于向已授权客户端传送 DRM 许可证和 AES 明文密钥的服务。 可以使用 Azure 门户创建一个适用于所有类型的加密的密钥/许可证授权策略。
 
-本文演示如何使用 Azure 门户配置内容保护策略。 本文还演示如何为资产应用动态加密。
+本文演示如何使用门户配置内容保护策略。 本文还演示如何为资产应用动态加密。
 
-## <a name="start-configuring-content-protection"></a>开始配置内容保护
-若要使用门户开始配置内容保护，全局到 AMS 帐户，执行以下操作：
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
+## <a name="start-to-configure-content-protection"></a>开始配置内容保护
+若要通过门户使用媒体服务帐户来配置全局内容保护，请执行以下步骤：
+
+1. 在[门户](https://portal.azure.com/)中选择媒体服务帐户。
+
 2. 选择“设置” > “内容保护”。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection001.png)
+    ![内容保护](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
 ## <a name="keylicense-authorization-policy"></a>密钥/许可证授权策略
-AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身份验证。 必须配置内容密钥授权策略，并且客户端必须遵守该策略，才能将密钥/许可证传送到客户端。 内容密钥授权策略可能受到一种或多种授权限制：**开放**或**令牌**限制。
+媒体服务支持通过多种方式对发出密钥或许可证请求的用户进行身份验证。 必须配置内容密钥授权策略。 然后，客户端必须符合策略，系统才会向其传送密钥/许可证。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。
 
-通过 Azure 门户，可创建适用于所有类型加密的一个**密钥/许可证授权策略**。
+可以使用门户创建一个适用于所有类型的加密的密钥/许可证授权策略。
 
 ### <a name="open-authorization"></a>开放授权
-开放限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。 
+“开放”限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。 
 
 ### <a name="token-authorization"></a>令牌授权
-令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 媒体服务不提供安全令牌服务。 可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则媒体服务密钥传送服务会将请求的密钥（或许可证）返回到客户端。
+令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure 访问控制服务来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则媒体服务密钥传送服务会将请求的密钥（或许可证）返回到客户端。
 
-在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
+配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection002.png)
+![密钥/许可证授权策略](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
 ## <a name="playready-license-template"></a>PlayReady 许可证模板
 PlayReady 许可证模板设置在 PlayReady 许可证上启用的功能。 有关 PlayReady 许可证模板的详细信息，请参阅[媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)。
 
-### <a name="non-persistent"></a>非永久
-如果将许可证配置为非永久，则在播放器使用许可证时，仅将其保持在内存中。  
+### <a name="nonpersistent"></a>非永久性
+如果将许可证配置为非永久性许可证，则当播放器使用它时，它仅存储在内存中。  
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection003.png)
+![非永久性内容保护](./media/media-services-portal-content-protection/media-services-content-protection003.png)
 
 ### <a name="persistent"></a>永久
-如果将许可证配置为永久，则其保存在客户端的永久性存储中。
+如果将许可证配置为永久性许可证，它会保存在客户端的永久性存储中。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection004.png)
+![永久性内容保护](./media/media-services-portal-content-protection/media-services-content-protection004.png)
 
 ## <a name="widevine-license-template"></a>Widevine 许可证模板
 Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
@@ -71,50 +73,52 @@ Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 ### <a name="advanced"></a>高级
 有关 Widevine 权限模板的详细信息，请参阅 [Widevine 许可证模板概述](media-services-widevine-license-template-overview.md)。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection005.png)
+![高级内容保护](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay 配置
-若要启用 FairPlay 加密，需要通过 FairPlay 配置选项提供应用证书和应用程序密钥 (ASK)。 有关 FairPlay 配置和要求的详细信息，请参阅[此](media-services-protect-hls-with-FairPlay.md)文章。
+若要启用 FairPlay 加密，请选择“FairPlay 配置”。 然后选择“应用证书”并输入**应用程序机密密钥**。 有关 FairPlay 配置和要求的详细信息，请参阅[使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容](media-services-protect-hls-with-FairPlay.md)。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection006.png)
+![FairPlay 配置](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
 ## <a name="apply-dynamic-encryption-to-your-asset"></a>将动态加密应用于资产
-要利用动态加密，需要将源文件编码为一组自适应比特率 MP4 文件。
+若要利用动态加密，请将源文件编码为一组自适应比特率 MP4 文件。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>选择要加密的资产
 若要查看所有资产，选择“设置” > “资产”。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection007.png)
+![“资产”选项](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>使用 AES 或 DRM 加密
-在资产上按“加密”后，有两种选择：**AES** 或 **DRM**。 
+针对资产选择“加密”时，会看到两个选择：**AES** 或 **DRM**。 
 
 #### <a name="aes"></a>AES
-将对所有流式处理协议启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG DASH。
+对所有流式处理协议启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG DASH。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection008.png)
+![加密配置](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 
 #### <a name="drm"></a>DRM
-如果选择“DRM”选项卡，可选择不同的内容保护策略（此时必须已配置）以及一组流式处理协议。
+1. 选择“DRM”后，会看到不同的内容保护策略（必须通过此点进行配置）和一组流式处理协议：
 
-* **将 PlayReady 和 Widevine 应用于 MPEG-DASH** - 将使用 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。
-* **将 PlayReady 和 Widevine 应用于 MPEG-DASH + 将 FairPlay 应用于 HLS** - 将使用 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。 还将使用 FairPlay 加密 HLS 流。
-* **仅 PlayReady 应用于平滑流式处理、HLS 和 MPEG-DASH** - 将使用 PlayReady DRM 动态加密平滑流式处理、HLS、MPEG-DASH 流。
-* **仅 Widevine 应用于 MPEG-DASH** - 将使用 Widevine DRM 动态加密 MPEG-DASH。
-* **仅 FairPlay 应用于 HLS** - 将使用 FairPlay 动态加密 HLS 流。
+    a. **将 PlayReady 和 Widevine 应用于 MPEG-DASH** 即可通过 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。
 
-若要启用 FairPlay 加密，则需要通过“内容保护”设置边栏选项卡的“FairPlay 配置”选项提供应用证书和应用程序密钥 (ASK)。
+    b. **将 PlayReady 和 Widevine 应用于 MPEG-DASH + 将 FairPlay 应用于 HLS** 即可通过 PlayReady 和 Widevine DRM 动态加密 MPEG-DASH 流。 此选项还使用 FairPlay 加密 HLS 流。
 
-![保护内容](./media/media-services-portal-content-protection/media-services-content-protection009.png)
+    c. **仅将 PlayReady 应用于平滑流式处理、HLS 和 MPEG-DASH** 即可通过 PlayReady DRM 动态加密平滑流式处理、HLS 和 MPEG-DASH 流。
 
-选择加密后，按“应用”。
+    d.单击“下一步”。 **仅将 Widevine 应用于 MPEG-DASH** 即可通过 Widevine DRM 动态加密 MPEG-DASH。
+    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 **仅将 FairPlay 应用于 HLS** 即可通过 FairPlay 动态加密 HLS 流。
+
+2. 若要启用 FairPlay 加密，请在“内容保护全局设置”边栏选项卡上选择“FairPlay 配置”。 然后选择“应用证书”并输入**应用程序机密密钥**。
+
+    ![加密类型](./media/media-services-portal-content-protection/media-services-content-protection009.png)
+
+3. 进行加密选择后，选择“应用”。
 
 >[!NOTE] 
->如果打算在 Safari 中播放 AES 加密的 HLS，请参阅 [Safari 中加密的 HLS 博客文章](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
+>如果打算在 Safari 中播放 AES 加密的 HLS，请参阅博客文章：[Safari 中加密的 HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
 
 ## <a name="next-steps"></a>后续步骤
-查看媒体服务学习路径。
-
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
