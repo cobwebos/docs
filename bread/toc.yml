@@ -104,7 +104,7 @@
     - name: 备份
       tocHref: /azure/backup/
       topicHref: /azure/backup/
-    - name: 批处理
+    - name: Batch
       tocHref: /azure/batch/
       topicHref: /azure/batch/
     - name: Batch AI
@@ -184,7 +184,7 @@
     - name: 数据目录
       tocHref: /azure/data-catalog/
       topicHref: /azure/data-catalog/
-    - name: Data Factory
+    - name: 数据工厂
       tocHref: /azure/data-factory/
       topicHref: /azure/data-factory/
     - name: 数据湖分析
@@ -239,6 +239,9 @@
         - name: Storm
           tocHref: /azure/hdinsight/storm
           topicHref: /azure/hdinsight/storm/apache-storm-overview
+    - name: IoT Edge
+      tocHref: /azure/iot-edge/
+      topicHref: /azure/iot-edge/
     - name: IoT 中心
       tocHref: /azure/iot-hub/
       topicHref: /azure/iot-hub/
@@ -304,7 +307,7 @@
     - name: 网络观察程序
       tocHref: /azure/network-watcher/
       topicHref: /azure/network-watcher/
-    - name: 联网
+    - name: 网络
       tocHref: /azure/networking/
       topicHref: /azure/networking/networking-overview
     - name: 通知中心
@@ -365,7 +368,7 @@
     - name: 搜索
       tocHref: /azure/search/
       topicHref: /azure/search/
-    - name: 安全
+    - name: “安全”
       tocHref: /azure/security/
       topicHref: /azure/security/
     - name: 安全中心
