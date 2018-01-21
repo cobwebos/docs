@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 条件性访问开发人员指南 | Microsoft 文档"
+title: "Azure Active Directory 条件性访问开发人员指南"
 description: "Azure AD 条件性访问开发人员指南和方案"
 services: active-directory
 keywords: 
@@ -8,17 +8,16 @@ manager: mtillman
 editor: PatAltimore
 ms.author: dadobali
 ms.date: 07/19/2017
-ms.assetid: 115bdab2-e1fd-4403-ac15-d4195e24ac95
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: c3b691022b02aa2f3836c4e3a96dd5db7affad76
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 346f19b01460aaa4aeb2c2d97c07ef11924ec80f
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件性访问开发人员指南
 
@@ -28,7 +27,7 @@ Azure Active Directory (AD) 提供了多种保护应用和服务安全的方法�
 * 仅允许已注册 Intune 的设备访问特定服务
 * 限制用户位置和 IP 范围
 
-有关条件性访问完整功能的详细信息，请参阅 [Azure 经典门户中的条件访问](../active-directory-conditional-access-azure-portal.md)。 
+有关条件访问完整功能的详细信息，请参阅 [Azure Active Directory 中的条件访问](../active-directory-conditional-access-azure-portal.md)。 
 
 在本文中，我们将重点介绍条件性访问对构建适用于 Azure AD 应用的开发人员的意义。  本文假定你了解[单租户](active-directory-integrating-applications.md)和[多租户](active-directory-devhowto-multi-tenant-overview.md)应用及[常见的身份验证模式](active-directory-authentication-scenarios.md)。
 
@@ -74,7 +73,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ## <a name="scenarios"></a>方案
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 Azure AD 条件性访问是 [Azure AD Premium](../active-directory-whatis.md#choose-an-edition) 包含的一项功能。  可以在[未授权用户使用情况报表](../active-directory-conditional-access-unlicensed-usage-report.md)中了解有关许可要求的更多信息。  开发人员可以加入 [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx)，其中包含包括 Azure AD Premium 的企业移动性套件的免费订阅。
 
@@ -218,7 +217,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>另请参阅
 
-* 若要详细了解这些功能，请参阅 [Azure AD 中的条件性访问](../active-directory-conditional-access-azure-portal.md)。
+* 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](../active-directory-conditional-access-azure-portal.md)。
 * 若要获取 Azure AD 代码示例，请参阅[代码示例 Github 存储库](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)。 
 * 有关 ADAL SDK 和访问参考文档的详细信息，请参阅[库指南](active-directory-authentication-libraries.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](active-directory-devhowto-multi-tenant-overview.md)。

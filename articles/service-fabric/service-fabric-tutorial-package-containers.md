@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0631b621c01eb880393d07323cdeb815e564a2e3
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: caa7f58860c4540fa6914b1c0f0cfcba437468fa
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>打包容器并将其部署为 Service Fabric 应用程序
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/20/2017
 > * 部署并运行应用程序 
 > * 清理应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 - 会使用已推送至在本教程系列[第 1 部分](service-fabric-tutorial-create-container-images.md)中所创建的 Azure 容器注册表的容器映像。
 - 会[设置](service-fabric-tutorial-create-container-images.md) Linux 开发环境。
@@ -65,10 +65,11 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
     ```bash
     yo azuresfcontainer
     ```
-2. 将应用程序命名为“TestContainer”，并将应用程序服务命名为“azurevotefront”。
-3. 为前端存储库（例如“test.azurecr.io/azure-vote-front:v1”）提供 ACR 中的容器映像路径。 
-4. 按 Enter 以使“命令”部分为空。
-5. 指定实例计数 1。
+2. 请键入“TestContainer”来命名应用程序
+3. 请键入“azurevotefront”来命名应用程序服务。
+4. 为前端存储库（例如“\<acrName>.azurecr.io/azure-vote-front:v1”）提供 ACR 中的容器映像路径。 \<acrName> 字段必须与前面教程中使用的值相同。
+5. 按 Enter 以使“命令”部分为空。
+6. 指定实例计数 1。
 
 下面显示了运行 yo 命令的输入和输出：
 
@@ -86,12 +87,12 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
    create TestContainer/uninstall.sh
 ```
 
-若要将其他容器服务添加到使用 yeoman 创建的应用程序，请执行以下步骤：
+若要将其他容器服务添加到已使用 Yeoman 创建的应用程序，请执行以下步骤：
 
-1. 将目录更改为“TestContainer”目录
+1. 将一级目录更改到 **TestContainer** 目录，例如，*./TestContainer*
 2. 运行 `yo azuresfcontainer:AddService` 
 3. 将服务命名为“azurevoteback”
-4. 为后端存储库（例如“test.azurecr.io/azure-vote-back:v1”）提供 ACR 中的容器映像路径
+4. 为 Redis 提供容器映像路径 - 'alpine:redis'
 5. 按 Enter 以使“命令”部分为空
 6. 指定实例计数“1”。
 
@@ -99,7 +100,7 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
 
 ```bash
 ? Name of the application service: azurevoteback
-? Input the Image Name: <acrName>.azurecr.io/azure-vote-back:v1
+? Input the Image Name: alpine:redis
 ? Commands: 
 ? Number of instances of guest container application: 1
    create TestContainer/azurevotebackPkg/ServiceManifest.xml
@@ -107,13 +108,16 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-在本教程的其余部分中，将在“TestContainer”目录中工作。
+在本教程的其余部分中，将在“TestContainer”目录中工作。 例如，*./TestContainer/TestContainer*。 此目录的内容应如下所示。
+```bash
+$ ls
+ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
+```
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>使用 Azure 容器注册表的凭据配置应用程序清单
 为了让 Service Fabric 能够从 Azure 容器注册表提取容器映像，我们需要提供“ApplicationManifest.xml”中的凭据。 
 
-
-登录到 ACR 实例。 使用 [az acr login](/cli/azure/acr#az_acr_login) 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
+登录到 ACR 实例。 使用 **az acr login** 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
 
 ```bash
 az acr login --name <acrName>
@@ -127,7 +131,7 @@ az acr login --name <acrName>
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-在“ApplicationManifest.xml”中，会在每个服务的“ServiceManifestImport”元素下添加代码片段。 为“AccountName”字段插入 **acrName**，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”。 
+在“ApplicationManifest.xml”中，会在前端服务的“ServiceManifestImport”元素下添加代码片段。 为“AccountName”字段插入 **acrName**，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”。 
 
 ```xml
 <Policies>
@@ -140,7 +144,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="configure-communication-port"></a>配置通信端口
 
-配置 HTTP 终结点，使客户端能够与服务通信。  打开 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* 文件，并在“ServiceManifest”元素中声明终结点资源。  添加协议、端口和名称。 在本教程中，服务会在端口 80 上进行侦听。 
+配置 HTTP 终结点，使客户端能够与服务通信。 打开 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* 文件，并在“ServiceManifest”元素中声明终结点资源。  添加协议、端口和名称。 在本教程中，服务会在端口 80 上进行侦听。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
   
 ```xml
 <Resources>
@@ -154,21 +158,21 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ```
   
-同样，修改后端服务的服务清单。 在本教程中，保留 redis 默认值 6379。
+同样，修改后端服务的服务清单。 打开 *./TestContainer/azurevotebackPkg/ServiceManifest.xml*，并在“ServiceManifest”元素中声明终结点资源。 在本教程中，保留 redis 默认值 6379。 以下代码片段放置在资源中的 *ServiceManifest* 标记下。
+
 ```xml
 <Resources>
   <Endpoints>
     <!-- This endpoint is used by the communication listener to obtain the port on which to 
             listen. Please note that if your service is partitioned, this port is shared with 
             replicas of different partitions that are placed in your code. -->
-    <Endpoint Name="azurevotebackTypeEndpoint" UriScheme="http" Port="6379" Protocol="http"/>
+    <Endpoint Name="azurevotebackTypeEndpoint" Port="6379" Protocol="tcp"/>
   </Endpoints>
 </Resources>
 ```
 提供 **UriScheme** 即可向 Service Fabric 命名服务自动注册容器终结点，确保其可以被发现。 本文末尾提供后端服务完整的 ServiceManifest.xml 示例文件作为示例。 
 
 ### <a name="map-container-ports-to-a-service"></a>将容器端口映射到服务
-    
 为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”策略引用了我们在“ServiceManifest.xml”文件中定义的“终结点”。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml” 件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”。 
   
 ```xml
@@ -195,13 +199,13 @@ az acr credential show -n <acrName> --query passwords[0].value
 </Service>
 ```
 
-前端服务读取环境变量以了解 Redis 实例的 DNS 名称。 会在 Dockerfile 中定义环境变量，如下所示：
+前端服务读取环境变量以了解 Redis 实例的 DNS 名称。 用于生成 Docker 映像的 Dockerfile 中已定义了此环境变量，因此此处不需要执行任何操作。
   
 ```Dockerfile
 ENV REDIS redisbackend.testapp
 ```
   
-呈现前端的 python 脚本使用此 DNS 名称以解析并连接到后端 redis 存储，如下所示：
+以下代码片段演示前端 Python 代码如何提取 Dockerfile 中所述的环境变量。 此处不需要执行任何操作。 
 
 ```python
 # Get DNS Name
@@ -223,10 +227,10 @@ r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>生成应用程序并将其部署到群集
 可以使用 Service Fabric CLI 将应用程序部署到 Azure 群集。 如果计算机上未安装 Service Fabric CLI，请按照[此处](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli)的说明进行安装。 
 
-连接到 Azure 中的 Service Fabric 群集。
+连接到 Azure 中的 Service Fabric 群集。 将占位符终结点替换为自己的终结点。 终结点必须是类似于下面的完整 URL。
 
 ```bash
-sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:19080
+sfctl cluster select --endpoint <http://lin4hjim3l4.westus.cloudapp.azure.com:19080>
 ```
 
 使用“TestContainer”目录中提供的安装脚本可将应用程序包复制到群集的映像存储、注册应用程序类型并创建应用程序的实例。
@@ -269,7 +273,6 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
     <ServiceManifestRef ServiceManifestName="azurevotebackPkg" ServiceManifestVersion="1.0.0"/>
       <Policies> 
         <ContainerHostPolicies CodePackageRef="Code">
-          <RepositoryCredentials AccountName="myaccountname" Password="<password>" PasswordEncrypted="false"/>
           <PortBinding ContainerPort="6379" EndpointRef="azurevotebackTypeEndpoint"/>
         </ContainerHostPolicies>
       </Policies>
@@ -303,7 +306,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>my.azurecr.io/azure-vote-front:v1</ImageName>
+            <ImageName>acrName.azurecr.io/azure-vote-front:v1</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>
@@ -316,7 +319,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="azurevotefrontTypeEndpoint" UriScheme="http" Port="8080" Protocol="http"/>
+      <Endpoint Name="azurevotefrontTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
     </Endpoints>
   </Resources>
 
@@ -337,7 +340,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>my.azurecr.io/azure-vote-back:v1</ImageName>
+            <ImageName>alpine:redis</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>
@@ -349,7 +352,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="azurevotebackTypeEndpoint" UriScheme="http" Port="6379" Protocol="http"/>
+      <Endpoint Name="azurevotebackTypeEndpoint" Port="6379" Protocol="tcp"/>
     </Endpoints>
   </Resources>
  </ServiceManifest>

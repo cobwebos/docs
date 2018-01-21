@@ -1,6 +1,6 @@
 ---
 title: "创建 Azure AD 用户帐户 | Microsoft Docs"
-description: "本文介绍如何为 Azure 自动化中的 Runbook 创建 Azure AD 用户帐户凭据，以便在 Azure 和经典 Azure 中进行身份验证。"
+description: "本文介绍如何为 Azure 自动化中的 Runbook 创建 Azure AD 用户帐户凭据，以便在 Azure 中进行身份验证。"
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -10,61 +10,35 @@ keywords: "azure active directory 用户, azure 服务管理, azure ad 用户帐
 ms.assetid: fcfe266d-b22e-4dfb-8272-adcab09fc0cf
 ms.service: automation
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 700c4419821934daac89025c889b21d8e2ef46b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f0a9664898cd27529daf73d130dd25fd296a9b48
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>使用 Azure 经典部署和 Resource Manager 部署对 Runbook 进行身份验证
 本文介绍在为针对 Azure 经典部署模型或 Azure 资源管理器资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。  尽管这仍是基于 Azure 资源管理器的 Runbook 支持的身份验证标识，但建议的方法是使用 Azure 运行方式帐户。       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>创建新的 Azure Active Directory 用户
-1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 经典门户。
-2. 选择“Active Directory” ，并选择组织目录的名称。
-3. 选择“用户”选项卡，并在命令区域中选择“添加用户”。
-4. 在“告诉我们有关此用户的信息”页上的“用户类型”下，选择“组织中的新用户”。
-5. 输入用户名。  
-6. 选择与 Active Directory 页上 Azure 订阅关联的目录名。
-7. 在“用户配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户。  不要**启用多重身份验证**。
-8. 记下该用户的完整名称和临时密码。
-9. 选择“设置”>“管理员”>“添加”。
-10. 键入所创建用户的完整用户名。
-11. 选择希望用户管理的订阅。
-12. 从 Azure 注销，然后使用刚创建的帐户重新登录。 系统会提示更改用户密码。
-
-## <a name="create-an-automation-account-in-azure-classic-portal"></a>在 Azure 经典门户中创建自动化帐户
-在本部分中，会执行以下步骤以在 Azure 门户中创建一个新的 Azure 自动化帐户，该帐户用于在 Azure 经典部署中管理资源的 Runbook。  
-
-> [!NOTE]
-> 可以通过 Azure 经典门户、Azure 门户和任何一组 cmdlet 来管理使用 Azure 经典门户创建的自动化帐户。 创建帐户后，在该帐户中创建和管理资源的方式没有差别。 若打算继续使用 Azure 经典门户，则应该使用它而不是 Azure 门户来创建任何自动化帐户。
-> 
-> 
-
-1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 经典门户。
-2. 选择“自动化” 。
-3. 在“自动化”页上，选择“创建自动化帐户”。
-4. 在“创建自动化帐户”框中键入新自动化帐户的名称，并从下拉列表中选择**区域**。  
-5. 单击“确定”  接受设置并创建帐户。
-6. 帐户在创建后会在“自动化”页上列出。
-7. 单击该帐户，转到“仪表板”页。  
-8. 在“自动化仪表板”页上，选择“资产” 。
-9. 在“资产”页上，选择位于页面底部的“添加设置”。
-10. 在“添加设置”页上，选择“添加凭据”。
-11. 在“定义凭据”页的“凭据类型”下拉列表中选择“Windows PowerShell 凭据”，并提供凭据名称。
-12. 在随后出现的“定义凭据”页上，在“用户名”字段中键入前面创建的 AD 用户帐户的用户名，并在“密码”和“确认密码”字段中键入密码。 单击“确定”  保存更改。
+1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 门户。
+2. 选择“Azure Active Directory” > “用户和组” > “所有用户” > “新建用户”。
+3. 输入用户的详细信息，如**名称**和**用户名**。  
+4. 记下该用户的完整名称和临时密码。
+5. 选择“目录角色”。
+6. 分配“全局管理员”或“受限管理员”角色。
+7. 从 Azure 注销，并使用刚创建的帐户重新登录。 系统会提示更改用户密码。
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>在 Azure 门户中创建自动化帐户
 在本部分中，将执行以下步骤以在 Azure 门户中创建一个 Azure 自动化帐户，该帐户用于在 Azure 资源管理器模式下管理资源的 Runbook。  
 
 1. 以要管理的 Azure 订阅的服务管理员身份登录到 Azure 门户。
 2. 选择“自动化帐户”。
-3. 在“自动化帐户”边栏选项卡中，单击“添加”。<br><br>![添加自动化帐户](media/automation-create-aduser-account/add-automation-acct-properties.png)
+3. 选择“添加”。<br><br>![添加自动化帐户](media/automation-create-aduser-account/add-automation-acct-properties.png)
 4. 在“添加自动化帐户”边栏选项卡的“名称”框中，键入新自动化帐户的名称。
 5. 如果有多个订阅，请为新帐户指定一个订阅，并指定一个新的或现有的**资源组**以及 Azure 数据中心**位置**。
 6. 针对“创建 Azure 运行方式帐户”选项选择“是”值，并单击“创建”按钮。  

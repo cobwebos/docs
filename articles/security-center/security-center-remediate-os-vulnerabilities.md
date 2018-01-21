@@ -1,6 +1,6 @@
 ---
-title: "修正 Azure 安全中心中的 OS 漏洞 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议**修正 OS 漏洞**。"
+title: "在 Azure 安全中心中修正安全配置 | Microsoft Docs"
+description: "本文档演示如何实现 Azure 安全中心建议**修正安全配置**。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,33 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 412234b1486fa15cbc399bcf43be8ce90aac252a
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>修正 Azure 安全中心中的 OS 漏洞
-Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检查是否存在可能使 VM 和计算机更易受到攻击的配置。 当 OS 配置与建议的配置规则不匹配时，安全中心建议解决漏洞，并建议更改配置以修复这些漏洞。
+# <a name="remediate-security-configurations-in-azure-security-center"></a>在 Azure 安全中心中修正安全配置
+Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检查是否存在可能使 VM 和计算机更易受到攻击的配置。 当 OS 配置与建议的安全配置规则不匹配时，安全中心建议解决漏洞，并建议修复这些漏洞所需的配置更改。
 
-> [!NOTE]
-> 有关受监视的具体配置的详细信息，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。
->
->
+有关受监视的具体配置的详细信息，请参阅[建议的配置规则列表](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)。 请参阅[自定义 OS 安全配置](security-center-customize-os-security-config.md)，了解如何在安全中心中自定义安全配置评估。
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-安全中心中显示“修正 OS 漏洞”建议。 此建议将显示在“建议”和“计算”下。
+安全中心中会显示“修正安全配置不匹配”建议。 此建议将显示在“建议”和“计算”下。
 
-在本示例中，我们将在“计算”下查看“修复操作系统漏洞(由 Microsoft 修复)”建议。
+在本示例中，我们将在“计算”下查看“修正安全配置”建议。
 1. 选择安全中心主菜单下的“计算”。
 
-   ![修正 OS 漏洞][1]
+   ![修正安全配置][1]
 
-2. 在“计算”下，选择“修复操作系统漏洞(由 Microsoft 修复)”。 “OS 漏洞(Microsoft)不匹配”仪表板将打开。
+2. 在“计算”下，选择“修正安全配置”。 此时将打开“安全配置”。
 
-   ![修正 OS 漏洞][2]
+   ![安全配置][2]
 
   仪表板顶部显示：
 
@@ -51,7 +48,7 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
   - CCEID：规则的 CCE 唯一标识符。 安全中心使用通用配置枚举 (CCE) 来分配配置规则的唯一标识符。
   - 名称：失败的规则的名称
   - 规则类型：注册表项、安全策略或审核策略
-  - **VM 和计算机数**： 应用失败的规则的 VM 和计算机的总数
+  - VM 和计算机数**： 应用失败的规则的 VM 和计算机的总数
   - 规则严重性：CCE 严重性值（紧急、重要或警告）
   - **状态**：该建议的当前状态：
 
@@ -77,11 +74,11 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
   - ACTUAL VALUE - 在针对规则分析 VM OS 配置后返回的值
   - RULE OPERATION - 在安全中心针对规则分析 VM OS 配置过程中使用的规则操作
 
-4. 选择顶部功能区中的“搜索”图标。 “搜索”打开，并列出包含具有所选 OS 漏洞的 VM 和计算机的工作区。 仅在所选规则应用到多个连接到不同工作区的 VM 时才会显示此工作区选择边栏选项卡。
+4. 选择顶部功能区中的“搜索”图标。 “搜索”将打开，并列出包含与所选安全配置不匹配的 VM 和计算机的工作区。 仅在所选规则应用到多个连接到不同工作区的 VM 时才会显示此工作区选择边栏选项卡。
 
   ![列出的工作区][4]
 
-5. 选择工作区。 Log Analytics 搜索查询打开，并筛选到包含 OS 漏洞的工作区。
+5. 选择工作区。 Log Analytics 搜索查询将打开，并筛选到与安全配置不匹配的工作区。
 
   ![包含 OS 漏洞的工作区][5]
 
@@ -90,7 +87,9 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
   ![仅为该计算机筛选的信息][6]
 
 ## <a name="next-steps"></a>后续步骤
-本文档演示如何实现安全中心建议“修正 OS 漏洞”。 可以在[此处](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)查看配置规则的集。 安全中心使用 CCE（通用配置枚举）来分配配置规则的唯一标识符。 请访问 [CCE](https://nvd.nist.gov/cce/index.cfm) 站点以了解详细信息。
+本文演示如何实现安全中心建议“修正安全配置”。 请参阅[自定义 OS 安全配置](security-center-customize-os-security-config.md)，了解如何在安全中心中自定义安全配置评估。
+
+可以在[此处](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)查看配置规则的集。 安全中心使用 CCE（通用配置枚举）来分配配置规则的唯一标识符。 请访问 [CCE](https://nvd.nist.gov/cce/index.cfm) 站点以了解详细信息。
 
 若要了解有关安全中心的详细信息，请参阅以下资源：
 

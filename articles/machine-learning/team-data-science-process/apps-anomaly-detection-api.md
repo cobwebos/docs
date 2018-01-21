@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: 519ac38c484b9631a3fc096a17be026e9378a178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2adfffa00a726fe2c452c25dd777ef054319b04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/08/2017
 >
 
 ## <a name="api-deployment"></a>API 部署
-要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行该操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
+要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
 
 ## <a name="scaling-the-api"></a>缩放 API
 默认情况下，部署将使用一个免费的开发/测试计费计划，其中包括 1,000 次交易/月和 2 个计算小时/月。  可以根据需求升级到其他计划。  在[此处](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)的“生产 Web API 定价”下提供了有关不同计划的定价的详细信息。
@@ -118,7 +118,7 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 ### <a name="parameters"></a>parameters
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | 说明 | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
+| 输入参数 | 说明 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
 | detectors.spikesdips | 是仅检测峰值、仅检测 dip，还是两者都检测 |两者 |枚举 |两者、峰值、Dip |两者 |
@@ -154,7 +154,7 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | 说明 | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
+| 输入参数 | 说明 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |聚合输入时间序列的聚合间隔单位为秒 |0（不执行任何聚合） |integer |0：跳过聚合，> 0 否则 |5 分钟到 1 天，时间系列依赖项 |
 | preprocess.aggregationFunc |用于将数据聚合到指定的 AggregationInterval 函数 |平均值 |枚举 |平均值、总和、长度 |不适用 |

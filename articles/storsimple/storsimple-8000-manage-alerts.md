@@ -4,7 +4,7 @@ description: "介绍了 StorSimple 警报条件和严重性、如何配置警报
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/22/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b7f9a2b7eb3dbf4cc97fac9a410359e068e67eb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e86b6af562208e51e36b4679fd088ea399ce70b8
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 StorSimple 设备可在响应各种条件时生成警报。 以下是最常见类型的警报条件：
 
 * **硬件问题** – 这些警报告知硬件的运行状况。 通过这些警报，可以知道是否需要进行固件升级、网络接口是否存在问题，或者某个数据驱动器是否有问题。
-* **连接问题** – 传输数据遇到困难时，会生成这些警报。 通信问题可能会在向 Azure 存储帐户往来传输数据时遇到，也可能是由于设备与 StorSimple 设备管理器服务断开连接所致。 由于故障点众多，通信问题属于修复难度最大的问题。 在继续进行更高级的故障排除之前，始终应该先验证网络连接和 Internet 访问是否可用。 有关故障排除的帮助，请转到[使用 Test-Connection cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md)。
+* **连接问题** – 传输数据遇到困难时，会生成这些警报。 通信问题可能会在向 Azure 存储帐户往来传输数据时遇到，也可能是由于设备与 StorSimple 设备管理器服务断开连接所致。 由于故障点众多，通信问题属于修复难度最大的问题。 在继续进行更高级的故障排除之前，始终应该先验证网络连接和 Internet 访问是否可用。 有关故障排除的帮助，请转到[使用 Test-Connection cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md)。
 * **性能问题** - 当系统未在最佳状态下运行时（例如在高负载下运行），会导致这些警报。
 
 此外，还可能会看到与安全、更新或作业失败相关的警报。
@@ -188,8 +188,8 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 |:--- |:--- |:--- |
 | 创建本地卷 <*卷名称*> 失败。 |卷创建作业失败。< <失败错误代码对应的错误消息>。 |连接问题可能会导致无法成功完成空间创建操作。 本地固定卷是丰富预配的，创建空间的过滤涉及到将分层卷分层到云中。 如果连接没有问题，则可能是已用完设备上的本地空间。 在重试此操作之前，请确定设备上是否还有空间。 |
 | 扩展本地卷 <*卷名称*> 失败。 |由于 <*对应于失败错误代码的错误消息*>，卷修改作业失败。 |连接问题可能会导致无法成功完成卷扩展操作。 本地固定卷是丰富预配的，扩展现有空间的过滤涉及到将分层卷分层到云中。 如果连接没有问题，则可能是已用完设备上的本地空间。 在重试此操作之前，请确定设备上是否还有空间。 |
-| 转换卷 <*卷名称*> 失败。 |将卷类型从本地固定转换为分层的转换作业失败。 |无法完成将类型从本地固定转换为分层的卷转换过程。 确保没有任何连接问题导致操作无法成功完成。 若要排查连接问题，请转到[使用 Test-HcsmConnection cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>由于本地固定卷中的某些数据已在转换期间分层到云中，原始本地固定卷现已标记为分层卷。 最终的分层卷仍占用设备上无法回收供将来本地卷使用的本地空间。<br>解决所有连接问题、清除警报并将此卷转换回原始本地固定卷类型，确保所有数据可再次在本地使用。 |
-| 转换卷 <*卷名称*> 失败。 |将卷类型从分层转换为本地固定的转换作业失败。 |无法完成将类型从分层转换为本地固定的卷转换过程。 确保没有任何连接问题导致操作无法成功完成。 若要排查连接问题，请转到[使用 Test-HcsmConnection cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>在转换过程中，现已标记为本地固定卷的原始分层卷继续在云中保留数据，而设备上为此卷丰富预配的空间不再回收供将来的本地卷使用。<br>解决所有连接问题、清除警报并将此卷还原为原始分层卷类型，确保可回收设备上丰富预配的本地空间。 |
+| 转换卷 <*卷名称*> 失败。 |将卷类型从本地固定转换为分层的转换作业失败。 |无法完成将类型从本地固定转换为分层的卷转换过程。 确保没有任何连接问题导致操作无法成功完成。 若要排查连接问题，请转到[使用 Test-HcsmConnection cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>由于本地固定卷中的某些数据已在转换期间分层到云中，原始本地固定卷现已标记为分层卷。 最终的分层卷仍占用设备上无法回收供将来本地卷使用的本地空间。<br>解决所有连接问题、清除警报并将此卷转换回原始本地固定卷类型，确保所有数据可再次在本地使用。 |
+| 转换卷 <*卷名称*> 失败。 |将卷类型从分层转换为本地固定的转换作业失败。 |无法完成将类型从分层转换为本地固定的卷转换过程。 确保没有任何连接问题导致操作无法成功完成。 若要排查连接问题，请转到[使用 Test-HcsmConnection cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>在转换过程中，现已标记为本地固定卷的原始分层卷继续在云中保留数据，而设备上为此卷丰富预配的空间不再回收供将来的本地卷使用。<br>解决所有连接问题、清除警报并将此卷还原为原始分层卷类型，确保可回收设备上丰富预配的本地空间。 |
 | 接近 <*卷组名称*> 本地快照的本地空间使用量 |备份策略的本地快照可能很快就会耗尽空间，并且会失效以免主机写入失败。 |在与此备份策略组关联的卷中，频繁创建本地快照和数据频繁进出导致设备上的本地空间很快耗尽。 删除不再需要的所有本地快照。 此外，将此备份策略的本地快照计划更新为以较低的频率创建本地快照，并确保定期创建云快照。 如果不采取这些措施，这些快照的本地空间可能很快耗尽，系统会自动将其删除，以确保继续成功处理主机写入。 |
 | <*卷组名称*> 的本地快照已失效。 |<*卷组名称*> 的本地快照已失效并已删除，因为它们超出了设备上的本地空间。 |为了确保将来不会重复发生这种情况，请检查此备份策略的本地快照计划并删除不再需要的所有本地快照。 在与此备份策略组关联的卷中，频繁创建本地快照和数据频繁进出可能导致设备上的本地空间很快耗尽。 |
 | 还原 <*源备份元素 ID*> 失败。 |还原作业失败。 |如果此备份策略中有本地固定卷，或者混合使用了本地固定卷与分层卷，请刷新备份列表，验证备份仍然有效。 如果备份有效，则可能是云连接问题导致还原操作无法成功完成。 已还原为此快照组的一部分的本地固定卷不需要将其所有数据下载到设备，如果此快照组中混合使用了分层卷和本地固定卷，则两者不会彼此同步。 要成功完成还原操作，需要在主机上将此组中的卷脱机，然后重试还原操作。 请注意，在还原过程中之前对卷数据进行的任何修改都将丢失。 |
@@ -199,15 +199,15 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |
-| 检测到“Data0”的 IP 地址重复。 | |系统检测到 IP 地址“10.0.0.1”冲突。 设备 *<device1>* 上的网络资源“Data0”已脱机。 确保此网络中的其他任何实体未使用此 IP 地址。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 请联系网络管理员帮助解决此问题。 如果问题持续出现，请联系 Microsoft 支持。 |
-| “Data0”的 IPv4（或 IPv6）地址已脱机。 | |设备 *<device1>* 上 IP 地址为“10.0.0.1”且前缀长度为“22”的网络资源“Data0”处于脱机状态。 确保此接口连接到的交换机端口运行正常。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
+| 检测到“Data0”的 IP 地址重复。 | |系统检测到 IP 地址“10.0.0.1”冲突。 设备 *<device1>* 上的网络资源“Data0”已脱机。 确保此网络中的其他任何实体未使用此 IP 地址。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 请联系网络管理员帮助解决此问题。 如果问题持续出现，请联系 Microsoft 支持。 |
+| “Data0”的 IPv4（或 IPv6）地址已脱机。 | |设备 *<device1>* 上 IP 地址为“10.0.0.1”且前缀长度为“22”的网络资源“Data0”处于脱机状态。 确保此接口连接到的交换机端口运行正常。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
 | 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关 Azure 门户中 URL 模式的详细信息，请转到 https://aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府云，请转到 https://aka.ms/ss8000-gov-network-reqs 中的 URL 模式。|
 
 ### <a name="performance-alerts"></a>性能警报
 
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
-| 设备负载已超过 <*阈值*>。 |响应时间比预期慢。 |设备会报告重度输入/输出负载下的利用率。 这可能导致设备不按预期工作。 检查已附加到设备的工作负荷，确定是否可将任何工作负荷转移到另一个设备，或者是否有不再需要的工作负荷。| 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |若要查看当前状态，请转到[使用 StorSimple 设备管理器服务监视设备](storsimple-monitor-device.md) |
+| 设备负载已超过 <*阈值*>。 |响应时间比预期慢。 |设备会报告重度输入/输出负载下的利用率。 这可能导致设备不按预期工作。 检查已附加到设备的工作负荷，确定是否可将任何工作负荷转移到另一个设备，或者是否有不再需要的工作负荷。| 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |若要查看当前状态，请转到[使用 StorSimple 设备管理器服务监视设备](storsimple-8000-monitor-device.md) |
 
 ### <a name="security-alerts"></a>安全警报
 
@@ -227,5 +227,5 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [StorSimple 错误以及如何排查运行中设备的问题](storsimple-troubleshoot-operational-device.md)。
+详细了解 [StorSimple 错误以及如何排查设备部署问题](storsimple-8000-troubleshoot-deployment.md)。
 

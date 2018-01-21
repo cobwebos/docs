@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.date: 06/13/2017
 ms.author: rachelap
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2170ac7df3b894c8d19b432abdcfef5c7fd75ff4
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 81d08e047a3689d110195f2325b52c6c0457e644
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>构建 Node.js RESTful API 并将它部署到 Azure 中的 API 应用
 
 本快速入门介绍如何使用 [Swagger](http://swagger.io/) 定义创建以 Node.js [Express](http://expressjs.com/) 编写的 REST API，并在 Azure 上部署它。 使用命令行工具创建应用，使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 配置资源，并使用 Git 部署该应用。  完成后，即可拥有一个在 Azure 上运行的有效示例 REST API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * [Git](https://git-scm.com/)
 * [Node.js 和 NPM](https://nodejs.org/)
@@ -84,7 +84,7 @@ yo swaggerize --apiPath api.json --framework express
 1. 将 lib 文件夹复制到 `yo swaggerize` 创建的 ContactList 文件夹，然后将目录更改为 ContactList。
 
     ```bash
-    cp -r lib/ ContactList/
+    cp -r lib ContactList/
     cd ContactList
     ```
 
@@ -246,14 +246,22 @@ yo swaggerize --apiPath api.json --framework express
     node_modules/
     ```
     确认已通过 `git status` 忽略 `node_modules` 文件夹。
+    
+4. 将以下行添加到 `package.json`。 Swaggerize 生成的代码没有指定 Node.js 引擎的版本。 在未指定版本的情况下，Azure 使用默认版本 `0.10.18`，该版本与生成的代码不兼容。
 
-4. 提交存储库更改。
+    ```javascript
+    "engines": {
+        "node": "~0.10.22"
+    },
+    ```
+
+5. 提交存储库更改。
     ```bash
     git add .
     git commit -m "initial version"
     ```
 
-5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
+6. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
 ## <a name="test-the-api--in-azure"></a>在 Azure 中测试 API
 

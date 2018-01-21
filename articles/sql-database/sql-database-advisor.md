@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ea1069d4ec29ad66562a6798a8b13998d0d2ef89
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="performance-recommendations"></a>性能建议
 
@@ -36,7 +36,7 @@ Azure SQL 数据库持续监视执行中的查询，并发现可以提升性能�
 
 应用“创建索引”建议后，Azure SQL 数据库便会比较查询性能与基线性能。 如果新索引确实带来了性能提升，系统会将建议标记为成功，并生成影响力报表。 否则，索引将会自动还原。 这样，Azure SQL 数据库可确保应用的建议只会提升数据库性能。
 
-所有“创建索引”建议都有撤回策略，即如果在过去 20 分钟内数据库或池 DTU 使用率超过 80% 或存储空间使用率超过 90%，则不允许应用建议。 在这种情况下，将推迟应用建议。
+所有“创建索引”建议都有退让策略，即如果数据库或池的资源使用率很高，则不允许应用建议。 退让策略将考虑 CPU、数据 IO、日志 IO 和可用存储。 如果在过去 30 分钟内 CPU、数据 IO 或日志 IO 高于 80%，则创建索引将会推迟。 如果创建索引后可用存储低于 10%，建议将进入错误状态。 如果几天后自动优化仍认为索引会很有益，此过程将再次启动。 此过程将重复，直到没有足够的存储可用来创建索引或不再认为索引有益。
 
 ## <a name="drop-index-recommendations"></a>“删除索引”建议
 除了能够检测缺少的索引外，Azure SQL 数据库还能持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在以下两种情况下，建议删除索引：

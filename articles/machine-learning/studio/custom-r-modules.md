@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
 ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 1cd2bbb6adecaba908252bd42fce292654a5cf5a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>在 Azure 机器学习中创作自定义 R 模块
 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块。 本主题解释什么是自定义 R 模块以及要使用什么文件来定义该模块。 本主题举例说明如何构建定义模块的文件以及如何在机器学习工作区中注册用于部署的模块。 随后本主题详细描述了定义自定义模块所使用的元素和属性。 本主题还讨论了如何使用辅助功能和文件以及多个输出。 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/01/2017
 ## <a name="what-is-a-custom-r-module"></a>什么是自定义 R 模块？
 **自定义模块**是一个用户定义的模块，可将其上传至工作区并作为 Azure 机器学习的一部分运行。 **自定义模块**是一个可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计学家和科学奖将其广泛用于运行一些算法。 目前，R 是自定义模块唯一支持的语言，但在未来发布的版本中会计划支持其他语言。
 
-自定义模型在 Azure 机器学习中处于**优先地位**，因为某种意义上来说可以像使用其他模块一样使用自定义模块。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及其他各种运行时操作。 包含自定义模块的实验也可发布到 Cortana Intelligence 库方便共享。
+自定义模型在 Azure 机器学习中处于**优先地位**，因为某种意义上来说可以像使用其他模块一样使用自定义模块。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及其他各种运行时操作。 包含自定义模块的实验也可发布到 Azure AI 库方便共享。
 
 ## <a name="files-in-a-custom-r-module"></a>自定义 R 模块中的文件
 自定义 R 模块由 .zip 文件定义，该文件至少包含两个文件：
@@ -288,7 +288,7 @@ XML 定义文件中的**语言**元素用于指定自定义模块的语言。 �
     * 数字
     * 布尔
     * 分类
-    * String
+    * 字符串
     * 标签
     * 功能
     * 得分

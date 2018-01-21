@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: c7cfd156faf6e4cd56f2b9094c3d63515f86cfde
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7ae89241c67655fbcaa747c4cac224b898947f39
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>将多重身份验证构建到自定义应用程序中 (SDK)
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/11/2017
 
 
 ## <a name="download-the-sdk"></a>下载该 SDK
-下载 Azure 多重身份验证 SDK 需要 [Azure 多重身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)。  即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。 由于已弃用该 SDK，因此下载该 SDK 的公共方法已停用。 如果需要下载该 SDK，请向 Microsoft 提交支持案例。
+下载 Azure 多重身份验证 SDK 需要 [Azure 多重身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)。  即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。 由于已弃用该 SDK，因此下载该 SDK 的公共方法已停用。 如果需要下载该 SDK，请向 Microsoft 提交支持案例。 仅向已在使用该 SDK 的客户提供该 SDK。 不会加入新客户。
 
 ## <a name="whats-in-the-sdk"></a>SDK 包括哪些内容？
 SDK 包括以下项：

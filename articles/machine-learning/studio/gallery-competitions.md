@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库竞赛 | Microsoft Docs"
-description: "在 Cortana Intelligence 库中发现竞赛。"
+title: "Azure AI 库竞赛 | Microsoft Docs"
+description: "在 Azure AI 库中发现竞赛。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: e9c1ae9448ad7179c33bbbafa34a4643a4840d0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e39d636b3322201465700a4c9de83dda1bbefcc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现竞赛
+# <a name="discover-competitions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现竞赛
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence 竞争
@@ -29,17 +29,17 @@ ms.lasthandoff: 10/11/2017
 有关竞赛的常见问题的解答，请参阅 [Microsoft Cortana Intelligence 竞赛常见问题](competition-faq.md)。
 
 ## <a name="discover"></a>发现
-  要浏览库中的竞赛，请打开 [库](http://gallery.cortanaintelligence.com)、将鼠标指向库主页顶部的 **更多**，然后选择 **竞赛**。
+[“竞赛”](https://gallery.cortanaintelligence.com/competitions)页 ([aka.ms/CIComp](http://aka.ms/CIComp)) 显示最热门竞赛的列表。
 
 ![从库主页中选择“竞争”](./media/gallery-competitions/select-competitions-in-gallery.png)
 
- [“竞赛”](https://gallery.cortanaintelligence.com/competitions)页显示最热门竞赛的列表。
-单击“查看所有”查看所有竞赛。
+ 
+ 单击“查看所有”查看所有竞赛。
 可在本页浏览库中的所有竞赛。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
  单击任意竞赛打开该竞赛的详细信息页，并阅读详细信息。 可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送指向竞赛的链接，来邀请其他用户查看页面。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![添加自己的备注](./media/gallery-how-to-use-contribute-publish/comments.png)
 

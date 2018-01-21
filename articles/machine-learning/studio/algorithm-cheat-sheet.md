@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: 31251e039414ee6f268aeb54f3eef755fcde9cb3
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5ecd569f68c2eada921193f2b7b88fe788120a9b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Microsoft Azure 机器学习工作室机器学习算法备忘单
 **Microsoft Azure 机器学习算法备忘单**可帮助为预测分析模型选择正确的算法。
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/19/2017
 
 * 此算法备忘单中提供的建议近似于经验法则。 一些可以不完全照做，一些可以大胆地违反。 它旨在建议一个起点。 不要担心几种算法之间对数据运行正面竞争。 只需了解每种算法的原理和了解生成数据的系统，此外别无选择。
 
-* 每种机器学习算法都有自己的样式或*归纳偏差*。 对于特定问题，可能有几种算法合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 下面是 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)。
+* 每种机器学习算法都有自己的样式或*归纳偏差*。 对于特定问题，可能有几种算法合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 下面是 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)。
 
 * 有三种主要类别的机器学习：**监督式学习**、**非监督式学习**和**强化学习**。
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: 0c399a24962efc1263ed35361a96c98bc60633ee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）
 
@@ -36,7 +36,7 @@ Azure 自动化 DSC 可用于管理各种不同的计算机：
 此外，如果未准备好从云管理计算机配置，Azure 自动化 DSC 也可用作仅限报告的终结点。 这样，便可以通过 DSC 本地设置（推送）所需配置，以及查看符合 Azure 自动化中的所需状态匹配节点的丰富报告详细信息。
 
 > [!NOTE]
-> 如果安装了高于 2.7 版的虚拟机 DSC 扩展，则包含使用 DSC 管理 Azure VM 的功能而无需额外付费。  有关详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/en-us/pricing/details/automation/)。
+> 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 DSC 管理 Azure VM 的功能而无需额外付费。 有关详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/en-us/pricing/details/automation/)。
 
 
 以下部分概述了如何将每种类型的计算机登记到 Azure 自动化 DSC。

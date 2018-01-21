@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 2ea1c217031761e93d393aefa07eedd03f88d9b0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9b00faa06684be353cfcf5f67f182a56511210c5
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -39,6 +39,10 @@ Azure 存储提供一种分层安全模型，用于保护存储帐户，使其�
 一旦应用网络规则，就会对所有请求强制实施这些规则。  用于向特定 IP 地址服务授予访问权限的 SAS 令牌可**限制**令牌持有者的访问权限，但不越过已配置的网络规则授予新的访问权限。 
 
 虚拟机磁盘流量（包括装载和卸载操作以及磁盘 IO）**不**受网络规则影响。  对页 blob 的 REST 访问受网络规则保护。
+
+> [!NOTE]
+> 当前不支持通过应用网络规则，在存储帐户中备份和还原使用非托管磁盘的虚拟机。  有关详细信息，请参阅[备份和还原 VM 时的限制](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)
+>
 
 经典存储帐户**不**支持防火墙和虚拟网络。
 
@@ -281,7 +285,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 >
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 在大多数情况下，网络规则可以实现安全的网络配置，但在某些情况下，必须允许一些例外才能启用完整功能。  可以为存储帐户针对受信任的 Microsoft 服务和存储分析数据访问配置例外。
 
 ### <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服务
@@ -298,7 +302,6 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。|
 |Azure HDInsight|Microsoft.HDInsight|群集预配和安装。  [了解详细信息](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure 备份|Microsoft.RecoveryServices|备份和还原非托管磁盘。  [了解详细信息](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)。|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问

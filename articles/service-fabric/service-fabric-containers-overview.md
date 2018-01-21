@@ -14,18 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: 9389ab5c3c67525703538cee644af9399417ffd5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 412107db2dc446eb5a6a433bfb7fc3bc5e760c27
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 > [!NOTE]
-> 目前尚不支持将容器部署到 Windows 10 中 Service Fabric 群集。 
+> 不支持将容器部署到 Windows 10 中的 Service Fabric 群集或安装了 Docker CE 的群集。 
 >   
 
-## <a name="introduction"></a>介绍
+> [!NOTE]
+> Service Fabric 版本 6.1 提供对 Windows Server 版本 1709 的预览支持。 不能在 Windows Server 版本 1709 中打开网络和 Service Fabric DNS 服务。 
+> 
+
+## <a name="introduction"></a>简介
 Azure Service Fabric 是跨计算机群集的服务的[协调器](service-fabric-cluster-resource-manager-introduction.md)，已在 Microsoft 的大规模服务中使用并优化了多年。 开发服务的方式多种多样：从使用 [Service Fabric 编程模型](service-fabric-choose-framework.md)，到部署[来宾可执行文件](service-fabric-deploy-existing-app.md)，不一而足。 默认情况下，Service Fabric 以进程形式部署和激活这些服务。 进程能够以最快的速度激活、以最高的密度使用群集中的资源。 Service Fabric 还可以部署容器映像中的服务。 重要的是，可以在同一应用程序中混合进程中的服务和容器中的服务。   
 
 ## <a name="what-are-containers"></a>什么是容器？

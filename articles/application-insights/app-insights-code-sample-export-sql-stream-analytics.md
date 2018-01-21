@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
 ms.author: mbullwin
-ms.openlocfilehash: e935350fbcdeb7a3192778b3dafb288aac281886
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8d008727d964df56d128265b632dafa4ab776f98
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -141,29 +141,29 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 本示例使用页面视图中的数据。 若要查看其他可用的数据，请检查 JSON 输出，并查看[导出数据模型](app-insights-export-data-model.md)。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
-在[经典 Azure 门户](https://manage.windowsazure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
+在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/37-create-stream-analytics.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/38-create-stream-analytics-form.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA002.png)
 
-创建新作业后，展开其详细信息：
+创建新作业后，选择“转到资源”。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/41-sa-job.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
 
-#### <a name="set-blob-location"></a>设置 Blob 位置
+#### <a name="add-a-new-input"></a>添加新输入
+
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
+
 将此位置设置为从连续导出 Blob 接收输入：
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/42-sa-wizard1.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/46-sa-wizard2.png)
-
 #### <a name="set-path-prefix-pattern"></a>设置路径前缀模式
-![](./media/app-insights-code-sample-export-sql-stream-analytics/47-sa-wizard3.png)
 
-请务必将“日期格式”设置为 **YYYY-MM-DD**（包含**短划线**）。
+**请务必将“日期格式”设置为 YYYY-MM-DD（包含短划线）。**
 
 “路径前缀模式”指定流分析在存储中查找输入文件的方式。 需要将它设置为与连续导出存储数据的方式相对应。 设置如下：
 
@@ -178,22 +178,12 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 若要获取 Application Insights 资源的名称和 iKey，请在资源的概述页中打开“概要”，或打开“设置”。
 
-#### <a name="finish-initial-setup"></a>完成初始设置
-确认序列化格式：
-
-![确认并关闭向导](./media/app-insights-code-sample-export-sql-stream-analytics/48-sa-wizard4.png)
-
-关闭向导并等待设置完成。
-
 > [!TIP]
 > 使用示例函数检查是否已正确设置输入路径。 如果检查失败：请检查在所选的示例时间范围内，存储中是否有数据。 编辑输入定义，检查是否已正确设置存储帐户、路径前缀和日期格式。
 > 
 > 
-
 ## <a name="set-query"></a>设置查询
 打开查询部分：
-
-![在流分析中选择“查询”](./media/app-insights-code-sample-export-sql-stream-analytics/51-query.png)
 
 将默认查询替换为以下内容：
 
@@ -238,22 +228,20 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 ## <a name="set-up-output-to-database"></a>设置数据库的输出
 选择“SQL”作为输出。
 
-![在流分析中选择“输出”](./media/app-insights-code-sample-export-sql-stream-analytics/53-store.png)
+![在流分析中选择“输出”](./media/app-insights-code-sample-export-sql-stream-analytics/SA006.png)
 
 指定 SQL 数据库。
 
-![填写数据库的详细信息](./media/app-insights-code-sample-export-sql-stream-analytics/55-output.png)
+![填写数据库的详细信息](./media/app-insights-code-sample-export-sql-stream-analytics/SA007.png)
 
 关闭向导，等待通知输出已设置。
 
 ## <a name="start-processing"></a>开始处理
 从操作栏启动作业：
 
-![在流分析中单击“开始”](./media/app-insights-code-sample-export-sql-stream-analytics/61-start.png)
+![在流分析中单击“开始”](./media/app-insights-code-sample-export-sql-stream-analytics/SA008.png)
 
 可以选择是要处理从当前时间开始传入的数据，还是处理以前的数据。 如果连续导出已运行了一段时间，则后一种做法将很有效果。
-
-![在流分析中单击“开始”](./media/app-insights-code-sample-export-sql-stream-analytics/63-start.png)
 
 几分钟后，可返回 SQL Server 管理工具监视流入的数据。 例如，使用如下所示的查询：
 

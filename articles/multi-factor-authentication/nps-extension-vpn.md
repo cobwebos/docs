@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 1879fc3d45e1a79fe5edd1ae1cf0d7060fd327ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1141245739f86a482bb0b5f550fd3b89d1213ce1
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/11/2017
 
 8. 用户被授予对 VPN 服务器上虚拟端口的访问权限，并建立加密的 VPN 隧道。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 此部分详细介绍集成 MFA 与远程桌面网关之前必须满足的先决条件。 开始集成之前，必须具备以下先决条件：
 
 * VPN 基础结构
@@ -171,8 +171,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 4. 在“指定拨号或 VPN 服务器”窗口中，选择“添加”。
 
-5. 在“新建 RADIUS 客户端”窗口中，提供一个友好名称，输入 VPN 服务器的可解析名称或 IP 地址，然后输入一个共享密钥密码。  
-    将此共享密钥密码设置为复杂的长密码。 请将其记录下来，因为下一个部分中会用到。
+5. 在“新建 RADIUS 客户端”窗口中，提供一个友好名称，输入 VPN 服务器的可解析名称或 IP 地址，然后输入一个共享密钥密码。 将此共享密钥密码设置为复杂的长密码。 请将其记录下来，因为下一个部分中会用到。
 
     ![新建 RADIUS 客户端](./media/nps-extension-vpn/image5.png)
 
@@ -183,12 +182,11 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
     > [!NOTE]
     > 如果配置可扩展的身份验证协议 (EAP)，则必须使用质询握手身份验证协议 (CHAPv2) 或受保护的可扩展身份验证协议 (PEAP)。 不支持任何其他 EAP。
  
-8. 在“指定用户组”窗口中，选择“添加”，然后选择相应的组。  
-    如果没有组，将此选项保留为空，以授予所有用户访问权限。
+8. 在“指定用户组”窗口中，选择“添加”，然后选择相应的组。 如果没有组，将此选项保留为空，以授予所有用户访问权限。
 
     ![“指定用户组”窗口](./media/nps-extension-vpn/image7.png)
 
-9. 选择“下一步”。
+9. 选择“**下一步**”。
 
 10. 在“指定 IP 筛选器”窗口中，选择“下一步”。
 
@@ -209,20 +207,17 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 1. 在网络策略服务器的“NPS(本地)”控制台中，展开“RADIUS 客户端”，然后选择“RADIUS 客户端”。
 
-2. 在详细信息窗格中，右键单击创建的 RADIUS 客户端，然后选择“属性”。  
-    RADIUS 客户端（VPN 服务器）的属性应类似于：
+2. 在详细信息窗格中，右键单击创建的 RADIUS 客户端，然后选择“属性”。 RADIUS 客户端（VPN 服务器）的属性应类似于：
 
     ![VPN 属性](./media/nps-extension-vpn/image11.png)
 
 3. 选择“取消”。
 
-4. 在网络策略服务器的“NPS(本地)”控制台中，展开“策略”，然后选择“连接请求策略”。  
-    VPN 连接策略如下图所示：
+4. 在网络策略服务器的“NPS(本地)”控制台中，展开“策略”，然后选择“连接请求策略”。 VPN 连接策略如下图所示：
 
     ![连接请求](./media/nps-extension-vpn/image12.png)
 
-5. 在“策略”下，选择“网络策略”。  
-    应会看见类似下图所示策略的虚拟专用网络 (VPN) 连接策略：
+5. 在“策略”下，选择“网络策略”。 应会看见类似下图所示策略的虚拟专用网络 (VPN) 连接策略：
 
     ![网络策略](./media/nps-extension-vpn/image13.png)
 
@@ -305,7 +300,8 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
     ![“事件属性”窗口](./media/nps-extension-vpn/image21.png)
 
-## <a name="troubleshooting-guide"></a>故障排除指南
+## <a name="troubleshooting-radius"></a>RADIUS 故障排除
+
 假定在你配置 VPN 服务器以使用集中式 RADIUS 服务器进行身份验证和授权之前你的 VPN 配置正在运行。 如果配置正常运行，则该问题很可能是由 RADIUS 服务器配置不正确或使用的用户名或密码无效导致的。 例如，如果在用户名中使用备用 UPN 后缀，则登录尝试可能失败。 为获得最佳结果，请使用相同的帐户名称。 
 
 若要解决这些问题，应先检查 RADIUS 服务器上的安全事件日志。 为了节省时间搜索事件，你可以使用事件查看器中基于角色的“网络策略和访问服务器”自定义视图，如下所示。 “事件 ID 6273”指示某类事件，在这些事件中，NPS 拒绝访问用户的操作。 
@@ -313,96 +309,8 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 ![事件查看器](./media/nps-extension-vpn/image22.png)
  
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
-本部分将介绍如何为用户启用 MFA，以及如何设置帐户进行双重验证。 
 
-### <a name="enable-multi-factor-authentication"></a>启用多重身份验证
-在此部分中，你可以启用进行 MFA 的 Azure AD 帐户。 使用 Azure 经典门户以为用户启用 MFA。 
-
-1. 转到 [Microsoft Azure](https://manage.windowsazure.com) 网站。 
-
-2. 以管理员身份登录。
-
-3. 在左窗格中选择“Active Directory”。
-
-    ![默认目录](./media/nps-extension-vpn/image23.png)
-
-4. 在“名称”列中，选择“默认目录”（或另一个目录，如果适用的话）。
-
-5. 在“默认目录”窗口中，选择“配置”。
-
-    ![配置默认目录](./media/nps-extension-vpn/image24.png)
-
-6. 在“配置”窗口的“多重身份验证”下，选择“管理服务设置”。
-
-    ![管理多重身份验证设置](./media/nps-extension-vpn/image25.png)
- 
-7. 在“多重身份验证”窗口中，查看默认服务设置，然后选择“用户”选项卡。 
-
-    ![多重身份验证“用户”选项卡](./media/nps-extension-vpn/image26.png)
- 
-8. 在“用户”选项卡上，选择需要应用 MFA 的用户，然后选择“启用”。
-
-    ![属性](./media/nps-extension-vpn/image27.png)
- 
-9. 看到提示后，选择“启用多重身份验证”。
-
-    ![启用多重身份验证](./media/nps-extension-vpn/image28.png)
- 
-10. 选择“关闭”。 
-
-11. 刷新页面。  
-    多重身份验证状态更改为“启用”。
-
-有关如何为用户启用 MFA 的信息，请参阅[云中的 Azure 多重身份验证入门](multi-factor-authentication-get-started-cloud.md) 
-
-### <a name="configure-accounts-for-two-step-verification"></a>配置帐户进行双重验证
-帐户启用了 MFA 后，在成功配置受信任的设备，以用于二次身份验证因素前，用户将无法登录 MFA 策略管理的资源。
-
-在本部分中，你将配置一个受信任的设备以用于双重验证。 有几种设备选项，其中包括：
-
-* **移动应用**：在 Windows Phone、Android 或 iOS 设备上安装 Microsoft Authenticator 应用。 根据组织策略，需要在两种模式中的一种下使用应用： 
-    * 收到验证通知（推送到设备的通知）。
-    * 使用验证码（需要输入每 30 秒更新一次的验证码）。 
-
-* **移动电话呼叫或短信**：可以收到自动电话呼叫或短信。 使用电话呼叫选项，可以接听电话并选择井号键 (#) 进行身份验证。 使用短信选项，可以回复短信或在登录界面中输入验证码。
-
-* **办公电话呼叫**：此过程与之前提及的自动电话呼叫过程相同。
-
-若要将设备设置为使用移动应用接收验证的推送通知，请执行以下操作：
-
-1. 登录到 [Microsoft Azure](https://aka.ms/mfasetup) 或任意需使用支持 MFA 的凭据进行身份验证的网站，例如 [Azure 门户](https://portal.azure.com)。  
-    系统会提示设置帐户以实现其他安全性验证，如下所示：
-
-    ![其他安全性](./media/nps-extension-vpn/image29.png)
-
-2. 选择“立即设置”。
-
-3. 在“其他安全性验证”窗口中，选择一种联系类型（身份验证电话、办公电话或移动应用），选择国家或地区，然后选择方法。 但是请勿选择“与我联系”。  
-    方法将因联系类型而异。 例如，如果你选择“移动应用”，则可以选择“接收验证通知”或“使用验证码”。 
-
-    ![“其他安全性验证”窗口](./media/nps-extension-vpn/image30.png)
-
-    后续步骤假定选择“移动应用”作为联系类型。
-
-4. 选择“移动应用”，选择“接收验证通知”，然后选择“设置”。 
-
-    ![“其他安全性验证”窗口](./media/nps-extension-vpn/image31.png)
- 
-5. 如果你尚未这样做，请在设备上安装 Microsoft Authenticator 移动应用。 
-
-6. 在移动应用中，扫描显示的条形码或者手动输入信息，然后选择“完成”。
-
-    ![配置 Microsoft Authenticator 移动应用](./media/nps-extension-vpn/image32.png)
-
-7. 在“其他安全性验证”窗口中，选择“与我联系”，然后回复发送到设备的通知。
-
-8. 在“其他安全性验证”窗口的“第 3 步: 如果无法访问移动应用”下，输入失去对移动应用的访问时呼叫的联系号码，然后选择“下一步”。
-
-    ![“其他安全性验证”窗口](./media/nps-extension-vpn/image33.png)
- 
-9. 在“其他安全性验证”窗口中，选择“完成”。
-
-现已配置设备以提供第二种验证方法。 有关设置帐户进行双重验证的信息，请参阅[设置我的帐户进行双重验证](./end-user/multi-factor-authentication-end-user-first-time.md)。
+如需针对多重身份验证配置用户的帮助，请参阅文章[如何对用户或组要求双重验证](multi-factor-authentication-get-started-user-states.md)和[为双重验证设置帐户](multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>安装和配置 NPS 扩展
 
@@ -470,8 +378,7 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 2. 在 PowerShell 命令提示符处，输入“cd c:\Program Files\Microsoft\AzureMfa\Config”，然后按 Enter。
 
-3. 在下一个命令提示符处，输入“.\AzureMfsNpsExtnConfigSetup.ps1”，然后按 Enter。  
-    该脚本检查是否安装了 Azure AD PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
+3. 在下一个命令提示符处，输入“.\AzureMfsNpsExtnConfigSetup.ps1”，然后按 Enter。 该脚本检查是否安装了 Azure AD PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
  
     ![PowerShell](./media/nps-extension-vpn/image38.png)
  

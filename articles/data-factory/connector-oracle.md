@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 8742860ce5950271189b8903f281d5643eac4a5f
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 10db7959396b4ee9927e4272dec9939ac8c13580
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-onprem-oracle-connector.md)
+> * [版本 1 - 正式版](v1/data-factory-onprem-oracle-connector.md)
 > * [版本 2 - 预览版](connector-oracle.md)
 
-本文概述了如何在 Azure 数据工厂中使用复制活动从/向 Oracle 数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何在 Azure 数据工厂中使用复制活动从/向 Oracle 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 数据工厂。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Oracle 连接器](v1/data-factory-onprem-oracle-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Oracle 连接器](v1/data-factory-onprem-oracle-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -41,12 +41,13 @@ ms.lasthandoff: 11/27/2017
 - Oracle 9i R1, R2 (9.0.1, 9.2)
 - Oracle 8i R3 (8.1.7)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 要从/向不可公开访问的 Oracle 数据库复制数据，需要设置自我托管集成运行时。 有关集成运行时的详细信息，请参阅[自我托管集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 Oracle 驱动程序，因此从/向 Oracle 复制数据时，无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Oracle 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -54,10 +55,10 @@ ms.lasthandoff: 11/27/2017
 
 Oracle 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Oracle | 是 |
-| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 将此字段标记为 SecureString。 | 是 |
+| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 将此字段标记为 SecureString。<br><br>**支持的连接类型**：可以选择使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 使用服务名称：`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
@@ -87,7 +88,7 @@ Oracle 链接服务支持以下属性：
 
 要从/向 OData 复制数据，请将数据集的 type 属性设置为“OracleTable”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：OracleTable | 是 |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 | 是 |
@@ -113,13 +114,13 @@ Oracle 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Oracle 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Oracle 源和接收器支持的属性列表。
 
 ### <a name="oracle-as-source"></a>Oracle 作为源
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：OracleSource | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否 |
@@ -162,7 +163,7 @@ Oracle 链接服务支持以下属性：
 
 要向 Oracle 复制数据，请将复制活动中的接收器类型设置为“OracleSink”。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**OracleSink** | 是 |
 | writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 10000） |
@@ -208,29 +209,29 @@ Oracle 链接服务支持以下属性：
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>（仅支持 Oracle 10g 和更高版本） |
-| CHAR |String |
-| CLOB |String |
+| CHAR |字符串 |
+| CLOB |字符串 |
 | DATE |DateTime |
 | FLOAT |十进制、字符串（如果精度 > 28） |
 | INTEGER |十进制、字符串（如果精度 > 28） |
-| LONG |String |
+| LONG |字符串 |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |字符串 |
+| NCLOB |字符串 |
 | NUMBER |十进制、字符串（如果精度 > 28） |
-| NVARCHAR2 |String |
+| NVARCHAR2 |字符串 |
 | RAW |Byte[] |
-| ROWID |String |
+| ROWID |字符串 |
 | TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |String |
-| TIMESTAMP WITH TIME ZONE |String |
+| TIMESTAMP WITH LOCAL TIME ZONE |字符串 |
+| TIMESTAMP WITH TIME ZONE |字符串 |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |字符串 |
+| XML |字符串 |
 
 > [!NOTE]
 > 不支持数据类型 INTERVAL YEAR TO MONTH 和 INTERVAL DAY TO SECOND。
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

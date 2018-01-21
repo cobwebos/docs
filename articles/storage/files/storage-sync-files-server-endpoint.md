@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 2ab14183a0ca4ade7873dbdece407937a746b663
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>添加/删除 Azure 文件同步（预览版）服务器终结点
-借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 可以使用 Windows Server 上任何可用协议在本地访问你的数据（包括 SMB、NFS 和 FTPS），并且可以根据需要在世界各地拥有尽可能多的缓存。
+借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
 服务器终结点表示已注册服务器上的特定位置，例如服务器卷中的文件夹或服务器卷的根。 如果命名空间不重叠（例如 F:\sync1 和 F:\sync2），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
 
 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 若要创建服务器终结点，必须首先确保满足以下条件： 
 - 服务器安装了 Azure 文件同步代理并已注册。 有关安装 Azure 文件同步代理的说明可以在[向 Azure 文件同步（预览版）注册/注销服务器](storage-sync-files-server-registration.md)一文中找到。 
 - 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步（预览版）](storage-sync-files-deployment-guide.md)。 
 - 确保已部署同步组。 了解如何[创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group)。
-- 确保服务器已连接到 Internet，并且 Azure 可以访问。
+- 确保服务器已连接到 Internet，并且 Azure 可以访问。 我们使用端口 443 处理服务器和我们的服务之间的所有通信。
 
 ## <a name="add-a-server-endpoint"></a>添加服务器终结点
 若要添加服务器终结点，请导航到所需同步组，然后选择“添加服务器终结点”。

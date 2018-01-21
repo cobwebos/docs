@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 0c479a58f4158bb1a72dc43432507160f65d2791
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcb5a6e118c779e7e13ba8472d5bba510cddeb12
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>在 Azure 媒体服务中管理 Azure CDN 缓存策略
-Azure 媒体服务提供基于 HTTP 的自适应流式处理和渐进式下载。 基于 HTTP 的流式处理是高度可伸缩的功能，具有可以在代理和 CDN 层中缓存以及在客户端缓存的优点。 流式处理终结点提供常用的流式处理功能以及针对 HTTP 缓存标头的配置。 流式处理终结点设置 HTTP Cache-Control: max-age 和 Expires 标头。 可以从 [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html) 获取更多有关 HTTP 缓存标头的信息。
+Azure 媒体服务提供基于 HTTP 的自适应流式处理和渐进式下载。 基于 HTTP 的流式处理是高度可缩放的功能，具有可以在代理和 CDN 层中缓存以及在客户端缓存的优点。 流式处理终结点提供常用的流式处理功能以及针对 HTTP 缓存标头的配置。 流式处理终结点设置 HTTP Cache-Control: max-age 和 Expires 标头。 可以从 [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html) 获取更多有关 HTTP 缓存标头的信息。
 
 ## <a name="default-caching-headers"></a>默认缓存标头
 默认情况下，流式处理终结点会对按需流式处理数据（实际的媒体片段/块）和清单（播放列表）应用缓存 3 天的标头。 如果是实时流式播放，流式处理终结点会对数据（实际的媒体片段/块）应用缓存 3 天的标头，对清单（播放列表）请求应用缓存 2 秒的标头。 当实时播放节目转为按需（实时存档）播放节目时，则会应用按需流式处理缓存标头。
@@ -32,12 +32,12 @@ Azure 媒体服务为流式处理终结点提供[集成 CDN](https://azure.micro
 > [!IMPORTANT]
 >Azure 媒体服务支持与 Azure CDN 的完整集成。 单击即可将所有可用的 Azure CDN 提供商（Akamai 和 Verizon）集成到流式处理终结点，包括 CDN 标准版和高级版产品。 有关详细信息，请参阅此[公告](https://azure.microsoft.com/blog/standardstreamingendpoint/)。
 > 
-> 只有在通过流式处理终结点 API 启用 CDN 或使用 Azure 管理门户的流式端点部分时，才会禁用流式处理终结点到 CDN 的数据费用。 如果进行手动集成，或者使用 CDN API 或门户直接创建 CDN 终结点，则不会禁用数据费用。
+> 只有在通过流式处理终结点 API 启用 CDN 或使用 Azure 门户的流式处理终结点部分时，才会禁用流式处理终结点到 CDN 的数据费用。 如果进行手动集成，或者使用 CDN API 或门户部分直接创建 CDN 终结点，则不会禁用数据费用。
 
 ## <a name="configuring-cache-headers-with-azure-media-services"></a>使用 Azure 媒体服务配置缓存标头
-可以使用 Azure 管理门户或 Azure 媒体服务 API 来配置缓存标头值。
+可以使用 Azure 门户或 Azure 媒体服务 API 来配置缓存标头值。
 
-1. 若要使用管理门户配置缓存标头，请参阅[如何管理流式处理终结点](../media-services/media-services-portal-manage-streaming-endpoints.md)的“配置流式处理终结点”部分。
+1. 若要使用 Azure 门户配置缓存标头，请参阅[如何管理流式处理终结点](../media-services/media-services-portal-manage-streaming-endpoints.md)部分配置流式处理终结点。
 2. Azure 媒体服务 REST API，[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl)。
 3. Azure 媒体服务 .NET SDK，[StreamingEndpointCacheControl Properties](http://go.microsoft.com/fwlink/?LinkId=615302)。
 

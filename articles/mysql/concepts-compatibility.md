@@ -9,11 +9,11 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 10/27/2017
-ms.openlocfilehash: 1042f7919b8761bdbc23ae19871703c53dff28f0
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 7578ae710a3d6c81fdfa2952c53a20c2cdccb6d0
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
 本文介绍与 Azure Database for MySQL 兼容的驱动程序和管理工具。
@@ -24,8 +24,8 @@ Azure Database for MySQL 使用世界上最常用的 MySQL 数据库社区版。
 | **驱动程序** | **链接** | **兼容版本** | **不兼容版本** | **说明** |
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
 | PHP | http://php.net/downloads.php | 5.5 5.6 7.x | 5.3 | 对于 PHP 7.0 与 SSL MySQLi 的连接，请在连接字符串中添加 MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO 设置：```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` 选项为 false。|
-| .Net | [Github 上的 MySqlConnector]：https://github.com/mysql-net/MySqlConnector/releases <br> [来自 Nuget 的安装包]：<br> https://www.nuget.org/packages/MySqlConnector/ | 0.27 及以上版本 | 0.26.5 及以下版本 | |
-| Nodejs |  [Github 上的 MySQLjs]：<br> https://github.com/mysqljs/mysql/releases <br> [来自 NPM 的安装包]：<br> 从 NPM 运行“npm install mysql” | 2.15 | 2.14.1 及以下版本 | |
+| .Net | [GitHub 上的 MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [来自 Nuget 的安装包](https://www.nuget.org/packages/MySqlConnector/) | 0.27 及以上版本 | 0.26.5 及以下版本 | |
+| Nodejs |  [GitHub 上的 MySQLjs](https://github.com/mysqljs/mysql/releases) <br> 来自 NPM 的安装包：<br> 从 NPM 运行 `npm install mysql` | 2.15 | 2.14.1 及以下版本 | |
 | 前往 | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 及以下版本 | 在连接字符串中使用 allowNativePasswords=true |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2 | 1.2.2 及以下版本 | |
 | Java | https://downloads.mariadb.org/connector-java/ | 2.1 2.0 1.6 | 1.5.5 及以下版本 | |

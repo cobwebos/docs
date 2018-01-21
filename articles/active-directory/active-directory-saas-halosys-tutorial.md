@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/22/2017
+ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: cfd932fa87ffd40ffc6ac96ad72ae7eac31e0b98
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: jeedes
+ms.openlocfilehash: 6e8167c1152fe80813d5c13706a72badce0a0ce9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>教程：Azure Active Directory 与 Halosys 集成
 
@@ -27,11 +28,11 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Halosys
 - 可以让用户使用其 Azure AD 帐户自动登录到 Halosys（单一登录）
-- 可在一个中心位置（即 Azure 经典门户）管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要配置 Azure AD 与 Halosys 的集成，需要以下项：
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 12/11/2017
 
 
 > [!NOTE] 
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 
 测试本教程中的步骤应遵循以下建议：
@@ -63,22 +64,17 @@ ms.lasthandoff: 12/11/2017
 
 **若要从库中添加 Halosys，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**的左侧导航窗格上，单击“Active Directory”。
+1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
 
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
-
-4. 在页面底部单击“添加”。
+    
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
-
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-
-    ![应用程序][4]
 
 6. 在搜索框中，键入“Halosys”。
 
@@ -105,101 +101,74 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，在经典门户中启用 Azure AD 单一登录，并在 Halosys 应用程序中配置单一登录。
+在本部分中，在门户中启用 Azure AD 单一登录，并在 Halosys 应用程序中配置单一登录。
 
 
 **若要配置 Halosys 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在经典门户中的“Halosys”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-     
-    ![配置单一登录][6] 
+1. 在 Azure 门户中的“SCC LifeCycle”应用程序集成页上，单击“单一登录”。
 
-2. 在“你希望用户如何登录 Halosys”页上，选择“Azure AD 单一登录”，并单击“下一步”。
+    ![配置单一登录][4]
 
-    ![配置单一登录](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_03.png) 
-
-3. 在“配置应用设置”对话框页上，执行以下步骤：
-
-    ![配置单一登录](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_04.png) 
-
-    a. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Halosys 应用程序的 URL：`https://<company-name>.Halosys.com/client-api/api`。
-
-    b.在“标识符 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.Halosys.com`。   
-         
-4. 在“配置 Halosys 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上：
-
-    ![配置单一登录](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_05.png)
-   
-5. 若要为应用程序配置 SSO，请联系 Halosys 支持团队，并向他们提供以下内容：
-
-    • 下载的**元数据文件**
-    
-    • **SAML SSO URL**
-    
-
-6. 在经典门户中，选择“单一登录配置确认”，并单击“下一步”。
-    
-    ![Azure AD 单一登录][10]
-
-7. 在“单一登录确认”页上，单击“完成”。  
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
-    ![Azure AD 单一登录][11]
+    ![配置单一登录](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_samlbase.png)
+
+3. 在“Halosys 域和 URL”部分中，执行以下步骤：
+    1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.hs.com/ic7/welcome/customer/PICTtest.aspx`
+
+    2. 在“标识符”文本框中，使用以下模式键入 URL：
+    | |
+    |--|--|
+    | `https://bs1.hs.com/<entity>`|
+    | `https://lifecycle.hs.com/<entity>`|
+    
+    > [!NOTE] 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [SCC LifeCycle 客户端支持团队](mailto:lifecycle.support@scc.com)获取这些值。 
+         
+4. 在“SAML 签名证书”部分中，选择“下载”下的“元数据 XML”，并在计算机上保存元数据文件。
+   
+5. 若要为应用程序配置单一登录，请联系 Halosys 支持团队，并向他们提供以下内容：
+
+  * 下载的**元数据文件**
+  * **SAML SSO URL**
+    
+
+  >[!NOTE]
+  >单一登录必须由 Halosys 支持团队来启用。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-在本部分中，在经典门户中创建名为“Britta Simon”的测试用户。
+在本部分中，会在门户中创建一个名为 Britta Simon 的测试用户。
 
 
 ![创建 Azure AD 用户][20]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
+1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_09.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_01.png) 
 
-2. 在“目录”列表中，选择要启用目录集成的目录。
+2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_02.png) 
 
-3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
+3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_03.png) 
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_03.png) 
+4. 在“用户”对话框页上，执行以下步骤：
+ 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_04.png) 
 
-4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_04.png) 
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
-5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_05.png) 
+    c. 选择“显示密码”并记下“密码”的值。
 
-    a. 对于“用户类型”，选择“组织中的新用户”。
-
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-
-    c. 单击“下一步”。
-
-6.  在“用户配置文件”对话框页面上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_06.png) 
-
-    a. 在“名字”文本框中，键入“Britta”。  
-
-    b. 在“姓氏”文本框中，键入“Simon”。
-
-    c. 在“显示名称”文本框中，键入“Britta Simon”。
-
-    d.单击“下一步”。 在“角色”列表中，选择“用户”。
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“下一步”。
-
-7. 在“获取临时密码”对话框页上，单击“创建”。
-
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_07.png) 
-
-8. 在“获取临时密码”对话框页上，执行以下步骤：
-
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-Halosys-tutorial/create_aaduser_08.png) 
-
-    a. 写下“新密码”的值。
-
-    b. 单击“完成”。   
-
+    d.单击“下一步”。 单击“创建”。
 
 
 ### <a name="creating-a-halosys-test-user"></a>创建 Halosys 测试用户
@@ -215,36 +184,37 @@ ms.lasthandoff: 12/11/2017
 
 **要将 Britta Simon 分配到 Halosys，请执行以下步骤：**
 
-1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
+1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
     ![分配用户][201] 
 
 2. 在应用程序列表中，选择“Halosys”。
 
-    ![配置单一登录](./media/active-directory-saas-Halosys-tutorial/tutorial_Halosys_50.png) 
+3. 在左侧菜单中，单击“用户和组”。
 
-3. 在顶部菜单中，单击“用户”。
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-4. 在“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-5. 在底部工具栏中，单击“分配”。
+6. 在“用户和组”对话框中单击“选择”按钮。
 
-    ![分配用户][205]
-
+7. 在“添加分配”对话框中单击“分配”按钮。
 
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Halosys”磁贴时，用户应自动登录到 Halosys 应用程序。
+单击访问面板中的“Halosys”磁贴时，用户应自动登录到 Halosys 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -261,6 +231,8 @@ ms.lasthandoff: 12/11/2017
 
 [200]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-Halosys-tutorial/tutorial_general_205.png
+ 

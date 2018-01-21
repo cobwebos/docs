@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 37f6049f2fc39bfa93135ce7c0d0013d7e37217c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dcb52e9de98d881474007410f3db599682e151ce
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中向用户分配管理员角色
 本文介绍如何将管理角色分配给 Azure Active Directory (Azure AD) 中的用户。 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-users-create-azure-portal.md)。 默认情况下添加的用户没有管理员权限，但随时可以为其分配角色。
@@ -30,17 +30,17 @@ ms.lasthandoff: 12/11/2017
 
    ![打开“用户管理”](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
 3. 选择“所有用户”。
-
-   ![打开“所有用户”组](./media/active-directory-users-assign-role-azure-portal/create-users-open-users-blade.png)
-1. 从列表中选择用户。
-2. 对于所选用户，选择“目录角色”，并为用户分配“目录角色”列表中的一个角色。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
+  
+  ![打开“所有用户”组](./media/active-directory-users-assign-role-azure-portal/create-users-open-users-blade.png)
+4. 从列表中选择用户。
+5. 对于所选用户，选择“目录角色”，并为用户分配“目录角色”列表中的一个角色。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)。
 
       ![为用户分配角色](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 6. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
-* [添加用户](active-directory-users-create-azure-portal.md)
-* [在新版 Azure 门户中重置用户的密码](active-directory-users-reset-password-azure-portal.md)
-* [更改用户的工作信息](active-directory-users-work-info-azure-portal.md)
+* [快速入门：在 Azure Active Directory 中添加或删除用户](add-users-azure-active-directory.md)
 * [管理用户个人资料](active-directory-users-profile-azure-portal.md)
-* [在 Azure AD 中删除用户](active-directory-users-delete-user-azure-portal.md)
+* [添加另一个目录中的来宾用户](active-directory-b2b-what-is-azure-ad-b2b.md) 
+* [在 Azure AD 中为用户分配角色](active-directory-users-assign-role-azure-portal.md)
+* [还原已删除的用户](active-directory-users-restore.md)

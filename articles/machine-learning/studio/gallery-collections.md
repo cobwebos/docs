@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库收藏 |Microsoft Docs"
-description: "在 Cortana Intelligence 库中发现并共享收藏。"
+title: "Azure AI 库收藏 | Microsoft Docs"
+description: "在 Azure AI 库中发现和共享收藏。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9ca9b45bf977a562982535feb4093fcee0f10a05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a90686d42aa3187e358d9ba3c8c5c3fb579a1d5e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现并共享收藏
+# <a name="discover-and-share-collections-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享收藏
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="collections"></a>集合
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 
 可在收藏详细信息页上获取有关收藏的详细信息。 若要打开某个收藏详细信息页，请选择收藏。 在收藏详细信息页的“评论”部分中，可对收藏进行评论、提供反馈或提问。 甚至可以在 Twitter 或 LinkedIn 上与好友或同事分享收藏。 还可以通过电子邮件发送指向收藏详细信息页的链接，来邀请其他用户查看该页面。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![添加自己的备注](./media/gallery-how-to-use-contribute-publish/comments.png)
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 使用 Microsoft 帐户登录到库。
 
-2.  选择页面顶部的图像，然后选择姓名。
+2.  选择页面顶部的图像，并选择你的姓名。
   
     ![选择帐户名](./media/gallery-collections/click-account-name.png)
 
@@ -69,9 +69,9 @@ ms.lasthandoff: 10/11/2017
    > 
    
     ![选择“公开”或“未列出”](./media/gallery-collections/create-collection-page-3.png)
-7. 选择“创建” 。
+7. 选择“创建”。
 
-收藏现在位于 Cortana Intelligence 库中。 收藏会在帐户页的“收藏”选项卡上列出。
+现在收藏已在 Azure AI 库中。 收藏会在帐户页的“收藏”选项卡上列出。
 
 ### <a name="add-items-to-a-collection"></a>向收藏添加项
 要将项添加到集合，则打开收藏，然后依次选择“编辑”和“添加项”。

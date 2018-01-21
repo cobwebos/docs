@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 6ff8e5ccdc7e14ed39466b4525fdbae86fdc4e9a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b9673376d0b2d2fab9254ab4e9f20484a46adc4b
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 创建内容密钥
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/13/2017
 > 
 > 
 
-媒体服务允许创建新资产和传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
+媒体服务允许传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
 创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/13/2017
 
 加密的资产必须与 **ContentKey** 关联。 本文介绍如何创建内容密钥。
 
-以下是用于生成内容密钥的常规步骤，会将这些内容密钥与你想要进行加密的资产关联。 
+以下是用于生成内容密钥的常规步骤，你会将这些内容密钥与想要进行加密的资产关联。 
 
 1. 随机生成一个 16 字节 AES 密钥（用于常规和信封加密）或 32 字节 AES 密钥（用于存储加密）。 
    

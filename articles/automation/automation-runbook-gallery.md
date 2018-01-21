@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 70bbc131f153efd88816450c239920c79665fdff
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d6a950d69e5279c3cc19d8e457bfa23c2b40f515
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的各种方案。  可以在不加以修改的情况下直接使用这些方案，或者使用它们作为起点并根据具体的要求进行编辑。
@@ -26,23 +26,14 @@ ms.lasthandoff: 12/14/2017
 可以从 [Runbook 库](#runbooks-in-runbook-gallery)获取 Runbook，并从[PowerShell 库](#modules-in-powerShell-gallery)获取模块。  还可以通过共享开发的方案来为社区做出贡献。
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbook 库中的 Runbook
-[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。 可以从 [TechNet 脚本中心](https://gallery.technet.microsoft.com/scriptcenter/site/upload)托管的库下载 Runbook，或者在 Azure 经典门户或 Azure 门户中直接从该库导入 Runbook。
+[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。 可以从 [TechNet 脚本中心](https://gallery.technet.microsoft.com/scriptcenter/site/upload)托管的库下载 Runbook，也可以在 Azure 门户中直接从该库导入 Runbook。
 
-直接从 Runbook 库导入只能使用 Azure 经典门户或 Azure 门户来完成。 而不能使用 Windows PowerShell 执行此功能。
+直接从 Runbook 库导入只能使用 Azure 门户来完成。 而不能使用 Windows PowerShell 执行此功能。
 
 > [!NOTE]
 > 应验证从 Runbook 库获取的任何 Runbook 的内容，在生产环境中安装和运行这些 Runbook 时，请谨慎操作。
 > 
 > 
-
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-classic-portal"></a>使用 Azure 经典门户从 Runbook 库导入 Runbook
-1. 在 Azure 门户中，依次单击“新建”、“应用服务”、“自动化”、“Runbook”、“从库中”。
-2. 选择一个类别以查看相关的 Runbook，并选择一个 Runbook 以查看其详细信息。 选择所需的 Runbook 后，单击右箭头按钮。
-   
-    ![Runbook 库](media/automation-runbook-gallery/runbook-gallery.png)
-3. 查看该 Runbook 的内容，并记下说明中所述的任何要求。 完成后，单击右箭头按钮。
-4. 输入 Runbook 详细信息，并单击复选标记按钮。 Runbook 名称已填入。
-5. Runbook 将出现在自动化帐户的“Runbook”选项卡中。
 
 ### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>使用 Azure 门户从 Runbook 库导入 Runbook
 1. 在 Azure 门户中，打开自动化帐户。
@@ -84,7 +75,7 @@ Microsoft 建议将 Runbook 添加到认为对其他客户有用的 Runbook 库�
 * 自动化每小时更新一次该库，因此，无法立即看见上传内容。
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell 库中的模块
-PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [PowerShell 库](http://www.powershellgallery.com)中找到可在 Azure 自动化中安装的现有模块。  可以从 Azure 门户启动此库，并将这些模块直接安装到 Azure 自动化中，也可以下载并手动安装这些模块。  不能直接从 Azure 经典门户安装这些模块，但可以在下载之后进行安装，就像使用其他模块一样。
+PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [PowerShell 库](http://www.powershellgallery.com)中找到可在 Azure 自动化中安装的现有模块。  可以从 Azure 门户启动此库，并将这些模块直接安装到 Azure 自动化中，也可以下载并手动安装这些模块。  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>使用 Azure 门户从自动化模块库导入模块
 1. 在 Azure 门户中，打开自动化帐户。

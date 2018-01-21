@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/05/2018
 ms.author: billmath
-ms.openlocfilehash: d5f47bd780de692a5e641fc49ea0c433809068bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aa28431c5926656ae97ded3f23b83f2a91c60487
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -27,6 +27,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="known-problems"></a>已知问题
 
 - 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
+- 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证（通常 10 小时有效）过期前，将不会获得单一登录体验。
 - 不支持 Edge 浏览器。
 - 启动 Office 客户端（尤其是在共享计算机方案中），用户可能会收到额外的登录提示。 用户必须频繁输入其用户名，而不是密码。
 - 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，SharePoint 和 OneDrive 映射方案将无法正常工作。
@@ -68,13 +69,15 @@ ms.lasthandoff: 12/11/2017
 使用以下清单排查无缝 SSO 问题：
 
 - 确保在 Azure AD Connect 中已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites)。
+- 如果同时对租户启用了 [Azure AD Join](../active-directory-azureadjoin-overview.md)和无缝 SSO，请确保 Azure AD Join 没有问题。 如果设备同时注册了 Azure AD 并加入了域，则 Azure AD Join 的 SSO 将优先于无缝 SSO。 使用 Azure AD Join 的 SSO，用户将看到显示“已连接到 Windows”的登录磁贴。
 - 确保两个 Azure AD URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net） 均为用户 Intranet 区域设置的一部分。
 - 确保企业设备已加入 Active Directory 域。
 - 确保用户已通过 Active Directory 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 Active Directory 林。
 - 确保已在企业网络中连接该设备。
 - 确保设备的时间与 Active Directory 和各域控制器的时间同步，并且彼此偏差不超过 5 分钟。
-- 使用命令提示符中的 `klist` 命令列出设备上的现有 Kerberos 票证。 确保存在针对 `AZUREADSSOACCT` 计算机帐户颁发的票证。 通常情况下，用户的 Kerberos 票证的有效期为 12 小时。 你可能在 Active Directory 中有不同的设置。
+- 使用命令提示符中的 `klist` 命令列出设备上的现有 Kerberos 票证。 确保存在针对 `AZUREADSSOACCT` 计算机帐户颁发的票证。 通常情况下，用户的 Kerberos 票证的有效期为 10 小时。 你可能在 Active Directory 中有不同的设置。
+- 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证过期前，将不会获得单一登录体验。
 - 使用 `klist purge` 命令从设备中清除现有的 Kerberos 票证，然后重试。
 - 若要确定是否存在与 JavaScript 相关的问题，请查看浏览器的控制台日志（在“开发人员工具”下）。
 - 查看[域控制器日志](#domain-controller-logs)。
@@ -118,6 +121,6 @@ ms.lasthandoff: 12/11/2017
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能
 
 调用 `Enable-AzureADSSO` 并在 `Enable:` 提示符处键入“true”，以在租户中启用此功能。

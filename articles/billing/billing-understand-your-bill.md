@@ -1,5 +1,5 @@
 ---
-title: "了解 Azure 帐单 | Microsoft Docs"
+title: "了解 Azure 帐单"
 description: "了解如何阅读并理解 Azure 订阅的使用情况和帐单"
 services: 
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: ade40f8937d56cc561741e251095c4f14b4bb304
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -34,9 +34,8 @@ ms.lasthandoff: 12/08/2017
 有关成本管理报表的详细信息，请参阅 [Azure 门户成本管理](https://docs.microsoft.com/azure/billing/billing-getting-started)。
 
 ## <a name="charges"></a>如何确定发票中的费用是正确的？
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/3YegFD769Pk" frameborder="0" allowfullscreen></iframe>
-</div>
+
+>[!VIDEO https://www.youtube.com/embed/3YegFD769Pk]
 
 如果想要更详细地了解发票上的费用，可以选择以下几种方式。
 
@@ -49,8 +48,8 @@ ms.lasthandoff: 12/08/2017
  | 发票（PDF） | 使用情况明细 (CSV)|
  | --- | --- |
 |计费周期 | 计费周期 |
- |名称 |测定仪类别 |
- |类型 |测定仪子类别 |
+ |名称​​ |测定仪类别 |
+ |Type |测定仪子类别 |
  |资源 |测定仪名称 |
  |区域 |测定仪区域 |
  |已耗用 |已耗用数量 |

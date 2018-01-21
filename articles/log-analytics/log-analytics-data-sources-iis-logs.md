@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 中的 IIS 日志 | Microsoft Docs"
-description: "Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  本文介绍如何配置 IIS 日志收集以及在 OMS 存储库中创建的记录的详细信息。"
+title: "Azure Log Analytics 中的 IIS 日志 | Microsoft Docs"
+description: "Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  本文介绍如何配置 IIS 日志收集以及在 Log Analytics 工作区中创建的记录的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 01/07/2018
 ms.author: bwren
-ms.openlocfilehash: 20155e7f0ad817993b5926a1a83b8683ab124075
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics 中的 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  
@@ -43,7 +43,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 计算机 |从中收集事件的计算机的名称。 |
+| Computer |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
 | csMethod |请求的方法，如 GET 或 POST。 |
 | csReferer |用户通过链接转到当前站点的来源站点。 |
@@ -78,5 +78,5 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 Log Analytics 以收集其他[数据源](log-analytics-data-sources.md)进行分析。
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。
+* 了解有关[日志搜索](log-analytics-log-searches.md)的信息，以分析从数据源和解决方案收集的数据。
 * 在 Log Analytics 中配置警报，以主动通知你在 IIS 日志中找到的重要情况。

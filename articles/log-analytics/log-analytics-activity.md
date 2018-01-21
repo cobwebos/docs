@@ -1,5 +1,5 @@
 ---
-title: "通过 Log Analytics 查看 Azure 活动日志 | Microsoft Docs"
+title: "收集和分析 Log Analytics 中的 Azure 活动日志 | Microsoft Docs"
 description: "可以使用 Azure 活动日志解决方案，分析并搜索所有 Azure 订阅的 Azure 活动日志。"
 services: log-analytics
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: fa8f51d621bc262ec72ef03929689c4af3c339a6
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e4f112a221221c7f68cc31c80fb43417bb617632
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="view-azure-activity-logs"></a>查看 Azure 活动日志
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>收集和分析 Log Analytics 中的 Azure 活动日志
 
 ![“Azure 活动日志”符号](./media/log-analytics-activity/activity-log-analytics.png)
 
@@ -57,7 +57,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | 解决方案不会从 Azure 存储收集信息。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 - 若要访问 Azure 活动日志信息，必须拥有 Azure 订阅。
 

@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 27ce6325773ba1f9fd9cd9ab9e07ea9f5e2488ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be0fc51574950cad0558a85b3f20f8b14eafda13
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频
 ## <a name="overview"></a>概述
 MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为那些希望传送高质量自适应视频流式处理输出的用户提供了显著的好处。 使用 MPEG-DASH，当在网络阻塞时，视频流会自动降低到较低清晰度。 这会减少在播放器下载下几秒钟要播放内容（又称缓冲）时观众看到“暂停”视频的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
 
 Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标是提供可以在需要视频播放的应用程序中自由重用的功能强大的跨平台播放器。 它在支持 W3C 媒体源扩展 (MSE) 的任何浏览器（目前为 Chrome、Microsoft Edge 和 IE11，其他浏览器已指示有意支持 MSE）中提供 MPEG-DASH 播放。 有关 DASH.js、js 的详细信息，请参阅 GitHub dash.js 存储库。
 
 ## <a name="creating-a-browser-based-streaming-video-player"></a>创建基于浏览器的流式处理视频播放器
-要使用所需控件（如播放、暂停、后退等）创建显示视频播放器的简单网页，需要：
+要使用所需控件（如播放、暂停、快退等）创建显示视频播放器的简单网页，需要：
 
 1. 创建一个 HTML 页
 2. 添加视频标记
@@ -79,7 +79,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 
 调用 MediaPlayer 类的 startup() 函数可确保播放器已准备好播放视频。 除了其他用处以外，此函数还可确保已加载所有必需的类（如上下文所定义）。 播放器准备就绪后，便可以使用 attachView() 函数将 video 元素附加到它。 这使 MediaPlayer 可以将视频流注入到该元素，还可以根据需要控制播放。
 
-将 MPD 文件的 URL 传递到 MediaPlayer，这样后者便了解有关它应播放的视频的信息。页面完全加载后，将需要执行刚创建的 setupVideo() 函数。 可通过使用 body 元素的 onload 事件来执行此操作。 将 <body> 元素更改为：
+将 MPD 文件的 URL 传递到 MediaPlayer，以便它了解应播放的视频。 刚刚创建的 setupVideo() 函数需要在完全加载页后执行一次。 可通过使用 body 元素的 onload 事件来执行此操作。 将 <body> 元素更改为：
 
     <body onload="setupVideo()">
 

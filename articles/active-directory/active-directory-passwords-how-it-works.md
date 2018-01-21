@@ -1,5 +1,5 @@
 ---
-title: "Azure AD SSPR 的工作原理 | Microsoft Docs"
+title: "自助密码重置工作原理 - Azure Active Directory"
 description: "Azure AD 自助密码重置深入探讨"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ad1735d618856fb13ec2846f1da4fdaec1c4e614
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 56a57960fc4804c7a1711d8c47b37ec28798357d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议至少选择两个身份验证方法，以便为用户提供更大的灵活性。
 
-* 电子邮件
+* Email
 * 移动电话
 * 办公电话
 * 安全提问
@@ -95,8 +95,8 @@ ms.lasthandoff: 12/11/2017
 | 注册的方法数 | 必选方法数 | 结果 |
 | :---: | :---: | :---: |
 | 大于等于 1 | 1 | 能够重置或解锁 |
-| 1 | #N/A | 不可重置或解锁 |
-| 2 或更大 | #N/A | 能够重置或解锁 |
+| 1 | 2 | 不可重置或解锁 |
+| 2 或更大 | 2 | 能够重置或解锁 |
 
 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
 

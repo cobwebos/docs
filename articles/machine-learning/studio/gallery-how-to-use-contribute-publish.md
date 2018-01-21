@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库 | Microsoft Docs"
-description: "在 Cortana Intelligence 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。"
+title: "Azure AI 库 | Microsoft Docs"
+description: "在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9da6cc9d306930fbec33ecebc85784d0d1e1532d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d60815e848277637e3d692a676dbde838b249754
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="share-and-discover-resources-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中共享和发现资源
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 <!-- separating these 2 includes -->
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-can-i-find-in-the-gallery"></a>可以在库中查找哪些内容？
-Cortana Intelligence 库包含各种可用于开发自己的分析解决方案的资源。
+Azure AI 库包含各种可用于开发自己的分析解决方案的资源。
 
 * **[试验](gallery-experiments.md)** - 该库包含在 Azure 机器学习工作室中开发的各种试验。 从演示特定机器学习技术的快速概念证明试验，到用于解决复杂机器学习问题的完整开发解决方案，都在这些试验的涵盖范围内。
 * **[Jupyter Notebook](gallery-jupyter-notebooks.md)** - Jupyter Notebook 在单一的交互式画布中包括代码、数据可视化和文档。
@@ -48,7 +48,7 @@ Cortana Intelligence 库包含各种可用于开发自己的分析解决方案�
 
 最后，**[竞赛](gallery-competitions.md)**提供了绝佳机会让你与数据科学家社区竞争，看谁能用 Cortana Intelligence Suite 解决复杂的问题。
 
-![Cortana Intelligence 库主页](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
+![Azure AI 库主页](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
 ## <a name="discover-and-learn"></a>发现和了解
 任何人都可以浏览和搜索已由 Microsoft 和高级分析社区发表的不同类型的资源。
@@ -66,14 +66,14 @@ Cortana Intelligence 库包含各种可用于开发自己的分析解决方案�
 甚至可以使用 LinkedIn 或 Twitter 的共享功能将感兴趣的资源与朋友或同事共享。
 还可以通过电子邮件发送这些资源都链接，以邀请其他用户查看这些网页。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/comment-and-share.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/comment-and-share.png)
 
 ## <a name="contribute-to-the-gallery"></a>为库作贡献
 在登录到库时你即会成为库社区的一名成员。 这允许提供自己的库项，以便其他人可以从你发现的解决方案中受益。
 
 当其他人在库中浏览你发布的内容时，可以了解内容的查看数和下载数：
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/view-and-download-counts.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/view-and-download-counts.png)
 
 用户还可以添加注释并与数据科学社区的其他成员共享你发布的内容。
 可以登录到类似于 Disqus 的讨论工具，接收通知以了解对你发布的内容所做的注释。

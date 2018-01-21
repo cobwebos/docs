@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: juliako
-ms.openlocfilehash: 89b4f7cee6d00b5bbbca4799eeca74a280147fc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6f551a7970f226ba40753009b24bd4c5eeb67fb
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点
 
-本主题说明如何使用 Azure 门户管理流式处理终结点。 
+本文说明如何使用 Azure 门户管理流式处理终结点。 
 
 >[!NOTE]
->请确保查看[概述](media-services-streaming-endpoints-overview.md)主题。 
+>请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 
 
-有关如何缩放流式处理终结点的信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)主题。
+有关如何缩放流式处理终结点的信息，请参阅[这篇文章](media-services-portal-scale-streaming-endpoints.md)。
 
 ## <a name="start-managing-streaming-endpoints"></a>开始管理流式处理终结点 
 
@@ -86,13 +86,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>缩放高级流式处理终结点
 
-有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)主题。
+有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
 
 ## <a id="enable_cdn"></a>启用 Azure CDN 集成
 
 创建新帐户时，默认情况下，默认流式处理终结点 Azure CDN 集成已启用。
 
-如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达 2 小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点将处于“正在启动”状态，你可能会发现性能降低。
+如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点将处于“正在启动”状态，你可能会发现性能降低。
 
 将在所有 Azure 数据中心启用 CDN 集成，但中国区域和联邦政府区域除外。
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
 * 为流式处理终结点启用 CDN 时，客户端不能从原点直接请求内容。 如果需要能够分别使用或不使用 CDN 测试内容，则可以创建另一个不启用 CDN 的流式处理终结点。
 * 流式处理终结点主机名在启用 CDN 后仍保持不变。 启用 CDN 后，不需要对媒体服务工作流进行任何更改。 例如，如果流式处理终结点主机名是 strasbourg.streaming.mediaservices.windows.net，则启用 CDN 后使用完全相同的主机名。
 * 对于新的流式处理终结点，只需通过创建新的终结点即可启用 CDN；对于现有流式处理终结点，则需要首先停止该终结点，再启用/禁用 CDN。
-* 只能通过 Azure 管理门户使用 **Verizon 标准 CDN 提供程序**配置标准流式处理终结点。 但是，可以使用 REST API 启用其他 Azure CDN 提供程序。
+* 只能通过 Azure 经典门户使用 **Verizon 标准 CDN 提供程序**配置标准流式处理终结点。 但是，可以使用 REST API 启用其他 Azure CDN 提供程序。
 
 ## <a name="configure-cdn-profile"></a>配置 CDN 配置文件
 

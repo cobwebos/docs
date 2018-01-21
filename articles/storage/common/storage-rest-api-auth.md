@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 73921f7fd4de65513f647db92b737a79f1043182
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="using-the-azure-storage-rest-api"></a>使用 Azure 存储 REST API
 
 本文演示如何使用 Blob 存储服务 REST API 以及如何对服务调用进行身份验证。 本文内容是从对 REST 无甚了解、而且也不知道如何进行 REST 调用的开发人员角度编写的。 我们来看一下有关 REST 调用的参考文档，并了解如何将其运用到实际的 REST 调用中 – 哪些字段可以在哪里设置？ 了解如何设置 REST 调用后，你可以利用这一知识使用任何其他存储服务 REST API。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>系统必备 
 
 应用程序在存储帐户的 blob 存储中列出容器。 若要尝试本文中的代码，需准备以下各项： 
 
 * 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)：
     - Azure 开发
 
-* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 通用存储帐户。 如果你没有任何存储帐户，可以使用 [Azure 门户](https://portal.azure.com)、[PowerShell](storage-quickstart-create-storage-account-powershell.md) 或 [Azure CLI](storage-quickstart-create-storage-account-cli.md) 创建一个帐户。
+* 通用存储帐户。 如果还没有存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
 * 本文中将举例说明如何列出存储帐户中的容器。 若要查看输出，请在开始之前，将一些容器添加到存储帐户中的 blob 存储。
 
@@ -182,7 +182,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 
 如果在调用 SendAsync 时运行网络探测器（如 [Fiddler](https://www.telerik.com/fiddler)），则会看到请求和响应信息。 让我们一起看一下。 存储帐户的名称是 contosorest。
 
-请求：
+**请求：**
 
 ```
 GET /?comp=list HTTP/1.1
@@ -487,7 +487,7 @@ SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 
 以下值来自 [Fiddler](http://www.telerik.com/fiddler)：
 
-请求：
+**请求：**
 
 ```
 GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=list HTTP/1.1

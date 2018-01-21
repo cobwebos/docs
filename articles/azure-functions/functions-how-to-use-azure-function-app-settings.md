@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.openlocfilehash: a6cfcd939cb0f21d01fe849ef04619ec9c1c972a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: f174766d4ab909fea0feea517a17b9d648722c2a
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
@@ -70,7 +70,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 | | |
 |-|-|
-| ![Function App 应用程序设置。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | 可在应用服务“应用程序设置”边栏选项卡中配置和管理框架版本、远程调试、应用设置和连接字符串。 将 Function App 与其他 Azure 和第三方服务集成时，可在此处修改这些设置。 |
+| ![Function App 应用程序设置。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | 可在应用服务“应用程序设置”边栏选项卡中配置和管理框架版本、远程调试、应用设置和连接字符串。 将 Function App 与其他 Azure 和第三方服务集成时，可在此处修改这些设置。 若要删除设置，请滚动至右侧，并选择该行右端的 **X** 图标（未显示在下图中）。
 
 ![配置应用程序设置](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 

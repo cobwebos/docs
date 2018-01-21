@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17ebb1d61f3fff85580fe4f616477c5084d1537a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4f2005e753e1892989fd902cb259bd5545f1e9a4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-web-table-connector.md)
+> * [版本 1 - 正式版](data-factory-web-table-connector.md)
 > * [版本 2 - 预览版](../connector-web-table.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Web 表连接器](../connector-web-table.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Web 表连接器](../connector-web-table.md)。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动，从网页中的表将数据移至受支持的接收器数据存储。 本文建立在 [数据移动活动](data-factory-data-movement-activities.md)一文的基础上，该文提供通过复制活动和一系列支持作为源/接收器的数据存储进行数据移动的一般概述。
 
@@ -35,6 +35,23 @@ ms.lasthandoff: 11/03/2017
 
 > [!IMPORTANT]
 > 此 Web 连接器目前仅支持从 HTML 页提取表内容。 若要从 HTTP/s 终结点中检索数据，请改用 [HTTP 连接器](data-factory-http-connector.md)。
+
+## <a name="prerequisites"></a>系统必备
+
+若要使用此 Web 表连接器，需要设置自托管集成运行时（又称数据管理网关）和配置接收器链接服务中的 `gatewayName` 属性。 例如，若要从 Web 表复制到 Azure Blob 存储，请按如下所示配置 Azure 存储链接服务：
+
+```json
+{
+  "name": "AzureStorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>",
+      "gatewayName": "<gateway name>"
+    }
+  }
+}
+```
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
@@ -55,7 +72,7 @@ ms.lasthandoff: 11/03/2017
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
 | URL |Web 源的 URL |是 |
@@ -83,10 +100,10 @@ ms.lasthandoff: 11/03/2017
 
 每种数据集的 **TypeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
-| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| 路径 |包含表的资源的相对 URL。 |不会。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
 | index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
@@ -111,7 +128,7 @@ ms.lasthandoff: 11/03/2017
 ```
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
@@ -127,7 +144,7 @@ ms.lasthandoff: 11/03/2017
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [WebSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将数据从 Web 表复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从 Web 表复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 下一个示例介绍如何从 Web 表将数据复制到 Azure blob。 然而，可在 Azure 数据工厂中使用复制活动，直接将数据复制到[数据移动活动](data-factory-data-movement-activities.md)一文中所述的接收器中。
 
@@ -156,7 +173,8 @@ ms.lasthandoff: 11/03/2017
   "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>",
+      "gatewayName": "<gateway name>"
     }
   }
 }
@@ -296,4 +314,4 @@ ms.lasthandoff: 11/03/2017
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
-请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法。

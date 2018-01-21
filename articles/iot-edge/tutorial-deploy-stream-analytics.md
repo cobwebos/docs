@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5c9231f400b00f455f30692c58f007bd63d3cc76
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>将 Azure 流分析作为 IoT Edge 模块进行部署 - 预览版
 
@@ -36,7 +36,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 > * 将新的 Azure 流分析作业与其他 IoT Edge 模块相连接。
 > * 将 Azure 流分析作业部署到 IoT Edge 设备。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * 一个 IoT 中心。 
 * 有关在 [Windows][lnk-tutorial1-win] 和 [Linux][lnk-tutorial1-lin] 中的模拟设备上部署 Azure IoT Edge 的快速入门和文章中创建并配置的设备。 需要知道设备连接密钥和设备 ID。 
@@ -82,7 +82,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
     > [!NOTE]
     > 目前，美国西部 2 区域不支持 IoT Edge 上的 Azure 流分析作业。 
 
-3. 选择“创建” 。
+3. 选择“创建”。
 
 4. 在所创建作业中的“作业拓扑”下，依次选择“输入”、“添加”。
 
@@ -96,7 +96,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
    ![Azure 流分析输入](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. 选择“创建” 。
+6. 选择“创建”。
 
 7. 在“作业拓扑”下，依次选择“输出”、“添加”。
 
@@ -106,7 +106,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
     
     b. 在剩余字段中使用默认值。 
     
-    c. 选择“创建” 。
+    c. 选择“创建”。
 
    ![Azure 流分析输出](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
@@ -143,7 +143,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
    d.单击“下一步”。 将其他设置保留不变。
    
-   e. 选择“保存”。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“保存”。
 
 3. 若要添加 Azure 流分析 Edge 作业，请选择“导入 Azure 流分析 Azure IoT Edge 模块”。
 
@@ -153,7 +153,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
     ![设置模块][6]
 
-6. 复制自动为 Azure 流分析模块生成的名称。 
+6. 复制 Azure 流分析模块的名称。 
 
     ![温度模块][11]
 
@@ -172,7 +172,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
     }
     ```
 
-9. 选择“下一步”。
+9. 选择“**下一步**”。
 
 10. 在“审阅模板”步骤中，选择“提交”。
 

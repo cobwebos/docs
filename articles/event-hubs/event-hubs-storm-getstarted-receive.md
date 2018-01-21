@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: cabfbda3ea31a81248e7f87b79a5637063091be0
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5a120cc38b8ecfc6ec29be35eda12978ca8b035e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 11/03/2017
     }
     ```
     
-    此 Storm 螺栓记录接收到的事件的内容。 在存储服务中，它可以轻松扩展为存储元组。 [HDInsight 传感器分析教程]同样使用这种方法将数据存储到 HBase 中。
+    此 Storm 螺栓记录接收到的事件的内容。 在存储服务中，它可以轻松扩展为存储元组。 [使用事件中心的 HDInsight Storm 示例]使用此同一方法将数据存储到 Azure 存储和 Power BI。
 11. 使用以下代码创建一个名为 **LogTopology** 的类：
     
     ```java
@@ -247,7 +247,7 @@ ms.lasthandoff: 11/03/2017
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[HDInsight 传感器分析教程]:../hdinsight/storm/apache-storm-sensor-data-analysis.md
+[使用事件中心的 HDInsight Storm 示例]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
 
 <!-- Images -->
 

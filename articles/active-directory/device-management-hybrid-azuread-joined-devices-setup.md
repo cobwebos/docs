@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 01/04/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f503f373ec32ffcdd9be3ca03da6ec5e1b10e35a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -32,11 +32,12 @@ ms.lasthandoff: 12/11/2017
 
 开始在环境中配置联接到混合 Azure AD 的设备之前，应该熟悉支持的方案和约束。  
 
+如果要依赖于[系统准备工具 (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10))，请确保从尚未向 Azure AD 注册的 Windows 安装创建映像。
+
 为了方便阅读介绍内容，本主题使用了以下术语： 
 
 - **Windows 当前设备** - 此术语指运行 Windows 10 或 Windows Server 2016 的已加入域的设备。
 - **Windows 下层设备** - 此术语指既不运行 Windows 10 也不运行 Windows Server 2016 的所有已加入域的**受支持** Windows 设备。  
-
 
 ### <a name="windows-current-devices"></a>Windows 当前设备
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 在组织中开始启用联接到混合 Azure AD 的设备之前，需确保运行最新版本的 Azure AD Connect。
 
@@ -66,6 +67,15 @@ Azure AD Connect：
 - 保留本地 Active Directory (AD) 中的计算机帐户与 Azure AD 中的设备对象之间的关联。 
 - 启用设备相关的其他功能，例如 Windows Hello for Business。
 
+请确保可从组织网络内的计算机访问以下 URL，以便将计算机注册到 Azure AD：
+
+- https://enterpriseregistration.windows.net
+
+- https://login.microsoftonline.com
+
+- https://device.login.microsoftonline.com
+
+如果组织需要通过出站代理访问 Internet，必须实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机可以注册到 Azure AD。
 
 
 ## <a name="configuration-steps"></a>配置步骤
@@ -76,7 +86,7 @@ Azure AD Connect：
 
 
 
-| 步骤                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
+| Steps                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
 | :--                                        | :-:                                    | :-:                            | :-:                |
 | 步骤 1：配置服务连接点 | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
 | 步骤 2：设置声明颁发           |                                        | ![勾选标记][1]                    | ![勾选标记][1]        |
@@ -548,7 +558,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 2. 转到与要在其中激活 Windows 当前计算机自动注册的域对应的域节点。
 3. 右键单击“组策略对象”并选择“新建”。
 4. 键入组策略对象的名称。 例如，*混合 Azure AD 联接。 
-5. 单击 **“确定”**。
+5. 单击“确定”。
 6. 右键单击新建的组策略对象，并选择“编辑”。
 7. 转到“计算机配置” > “策略” > “管理模板” > “Windows 组件” > “设备注册”。 
 8. 右键单击“将已加入域的计算机注册为设备”，然后选择“编辑”。
@@ -557,7 +567,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
    > 已从早期版本的组策略管理控制台对该组策略模板进行了重命名。 如果使用早期版本的控制台，请转到 `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`。 
 
 7. 选择“已启用”，并单击“应用”。
-8. 单击 **“确定”**。
+8. 单击“确定”。
 9. 将该组策略对象链接到所选位置。 例如，可以将其链接到特定的组织单位。 还可以将其链接到自动联接 Azure AD 的特定安全计算机组。 要为组织中所有已加入域的 Windows 10 和 Windows Server 2016 计算机设置此策略，请将此组策略对象链接到相应域。
 
 ### <a name="windows-installer-packages-for-non-windows-10-computers"></a>用于非 Windows 10 计算机的 Windows Installer 包

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 3faa6c1867808436a66a2b33ea1a9d79ede2c8fb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 45c8632f4e03c86cf4e32c6d1151977792f32add
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/13/2018
 ---
 > [!WARNING]
-> 仅在[开发人员和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层提供 Azure Active Directory 集成。
+> 仅在[开发人员、标准和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层中提供 Azure Active Directory 集成。
 
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 ## <a name="overview"></a>概述
@@ -102,7 +102,7 @@ ms.lasthandoff: 12/04/2017
 > 
 > 
 
-![键][api-management-aad-key-after-save]
+![密钥][api-management-aad-key-after-save]
 
 切换回发布者门户并将密钥粘贴到“客户端机密”文本框中。
 

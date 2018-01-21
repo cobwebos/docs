@@ -6,13 +6,13 @@ author: djrosanova
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 01/10/2018
 ms.author: darosa
-ms.openlocfilehash: e0f8afdfd84ea3c0c061459c27da285f6ae8957e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试 
 
@@ -62,9 +62,10 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="retry-duration"></a>重试持续事时间
 
-预览版中，Azure 事件网格会就将所有未在两小时内发送的事件视为过期。 正式发布之前，此时间会增加至 24 小时。 
+预览版中，Azure 事件网格会就将所有未在两小时内发送的事件视为过期。
 
 ## <a name="next-steps"></a>后续步骤
 
+* 若要查看事件传送的状态，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
 * 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

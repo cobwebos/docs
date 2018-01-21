@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ac9a1a8c59a26393d32f9c543e630c302b7ced9d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>使用网络和应用程序安全组（预览版）筛选网络流量
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/04/2017
 本文提供了通过资源管理器部署模型（创建网络安全组时建议使用的部署模型）创建网络安全组的步骤。 如果需要创建网络安全组（经典），请参阅[创建网络安全组（经典）](virtual-networks-create-nsg-classic-ps.md)。 如果不熟悉 Azure 的部署模型，请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 > [!NOTE]
-> 本教程利用了当前处于预览版的网络安全组功能。 预览版功能的可用性和可靠性与正式版不同。 在预览版中，这些功能仅在以下区域可用：美国中西部。 如果希望仅使用正式版中的功能实现网络安全组，请参阅[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)。 
+> 本教程利用了当前处于预览版的网络安全组功能。 预览版功能的可用性和可靠性与正式版不同。 如果希望仅使用正式版中的功能实现网络安全组，请参阅[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -42,14 +42,14 @@ ms.lasthandoff: 11/04/2017
 3. 使用 `az login` 命令登录到 Azure。
 4. 输入以下命令，针对预览版进行注册：
     
-    ```azurecli-interactive
+    ```azurecli
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     az provider register --namespace Microsoft.Network
     ``` 
 
 5. 输入以下命令，确认已针对预览版进行了注册：
 
-    ```azurecli-interactive
+    ```azurecli
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 11/04/2017
 
 6. 运行以下 bash 脚本，创建资源组：
 
-    ```azurecli-interactive
+    ```azurecli
     #!/bin/bash
     
     az group create \
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/04/2017
 
 7. 创建三个应用程序安全组，每个服务器类型一个：
 
-    ```azurecli-interactive
+    ```azurecli
     az network asg create \
       --resource-group myResourceGroup \
       --name WebServers \
@@ -87,7 +87,7 @@ ms.lasthandoff: 11/04/2017
 
 8. 创建网络安全组：
 
-    ```azurecli-interactive
+    ```azurecli
     az network nsg create \
       --resource-group myResourceGroup \
       --name myNsg \
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/04/2017
 
 9. 在 NSG 内创建安全规则，将应用程序安全组设置为目标：
     
-    ```azurecli-interactive    
+    ```azurecli    
     az network nsg rule create \
       --resource-group myResourceGroup \
       --nsg-name myNsg \
@@ -136,7 +136,7 @@ ms.lasthandoff: 11/04/2017
 
 10. 创建虚拟网络： 
     
-    ```azurecli-interactive
+    ```azurecli
     az network vnet create \
       --name myVnet \
       --resource-group myResourceGroup \
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/04/2017
 
 11. 将网络安全组关联到虚拟网络中的子网：
 
-    ```azurecli-interactive
+    ```azurecli
     az network vnet subnet update \
       --name mySubnet \
       --resource-group myResourceGroup \
@@ -157,7 +157,7 @@ ms.lasthandoff: 11/04/2017
     
 12. 创建三个网络接口，每个服务器类型一个： 
 
-    ```azurecli-interactive
+    ```azurecli
     az network nic create \
       --resource-group myResourceGroup \
       --name myNic1 \
@@ -183,11 +183,11 @@ ms.lasthandoff: 11/04/2017
       --application-security-groups "DatabaseServers"
     ```
 
-    只有在步骤 9 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 myNic1，只有 WebRule 会生效，因为该网络接口是 WebServers 应用程序安全组的成员并且该规则将 WebServers 应用程序安全组指定为其目标。 AppRule 和 DatabaseRule 规则不会应用于 myNic1，因为该网络接口不是 AppServers 和 DatabaseServers 应用程序安全组的成员。
+    只有在步骤 9 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 myNic2，只有 AppRule 规则会生效，因为该网络接口是 AppServers 应用程序安全组的成员并且该规则将 AppServers 应用程序安全组指定为其目标。 WebRule 和 DatabaseRule 规则不会应用于 myNic2，因为该网络接口不是 WebServers 和 DatabaseServers 应用程序安全组的成员。 但是，对于 *myNic1*，*WebRule* 和 *AppRule* 规则都会生效，因为 *myNic1* 网络接口同时是 *WebServers* 和 *AppServers* 应用程序安全组的成员并且这些规则将 *WebServers* 和 *AppServers* 应用程序安全组指定为其目标。 
 
 13. 为每个服务器类型创建一台虚拟机，将对应的网络接口附加到每台虚拟机。 此示例将创建 Windows 虚拟机，但是你可以将 *win2016datacenter* 更改为 *UbuntuLTS* 来改为创建 Linux 虚拟机。
 
-    ```azurecli-interactive
+    ```azurecli
     # Update for your admin password
     AdminPassword=ChangeYourAdminPassword1
 
@@ -198,7 +198,8 @@ ms.lasthandoff: 11/04/2017
       --nics myNic1 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -207,7 +208,8 @@ ms.lasthandoff: 11/04/2017
       --nics myNic2 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -281,8 +283,8 @@ ms.lasthandoff: 11/04/2017
       -SourceAddressPrefix Internet `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $webAsg.id `
-      -DestinationPortRange 80  
-
+      -DestinationPortRange 80
+    
     $appRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "AppRule" `
       -Access Allow `
@@ -292,8 +294,8 @@ ms.lasthandoff: 11/04/2017
       -SourceApplicationSecurityGroupId $webAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $appAsg.id `
-      -DestinationPortRange 443 
-
+      -DestinationPortRange 443
+      
     $databaseRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "DatabaseRule" `
       -Access Allow `
@@ -303,7 +305,7 @@ ms.lasthandoff: 11/04/2017
       -SourceApplicationSecurityGroupId $appAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $databaseAsg.id `
-      -DestinationPortRange 1336    
+      -DestinationPortRange 1336
     ``` 
 
 9. 创建网络安全组：
@@ -361,7 +363,7 @@ ms.lasthandoff: 11/04/2017
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    只有在步骤 8 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 myNic1，只有 WebRule 会生效，因为该网络接口是 WebServers 应用程序安全组的成员并且该规则将 WebServers 应用程序安全组指定为其目标。 AppRule 和 DatabaseRule 规则不会应用于 myNic1，因为该网络接口不是 AppServers 和 DatabaseServers 应用程序安全组的成员。
+    只有在步骤 8 中创建的对应安全规则会根据网络接口所属的应用程序安全组应用于网络接口。 例如，对于 myNic2，只有 AppRule 规则会生效，因为该网络接口是 AppServers 应用程序安全组的成员并且该规则将 AppServers 应用程序安全组指定为其目标。 WebRule 和 DatabaseRule 规则不会应用于 myNic2，因为该网络接口不是 WebServers 和 DatabaseServers 应用程序安全组的成员。 但是，对于 *myNic1*，*WebRule* 和 *AppRule* 规则都会生效，因为 *myNic1* 网络接口同时是 *WebServers* 和 *AppServers* 应用程序安全组的成员并且这些规则将 *WebServers* 和 *AppServers* 应用程序安全组指定为其目标。 
 
 13. 为每个服务器类型创建一台虚拟机，将对应的网络接口附加到每台虚拟机。 此示例将创建 Windows 虚拟机，但在执行脚本之前，可以将 *-Windows* 更改为 *-Linux*，将 *MicrosoftWindowsServer* 更改为 *Canonical*，将 *WindowsServer* 更改为 *UbuntuServer* 并将 *2016-Datacenter* 更改为 *14.04.2-LTS*，从而改为创建 Linux 虚拟机。
 
@@ -429,6 +431,33 @@ ms.lasthandoff: 11/04/2017
 
 14. 可选：若要删除在本教程中创建的资源，请完成[删除资源](#delete-cli)中所述的步骤。
 
+## <a name="remove-a-nic-from-an-asg"></a>从 ASG 中删除 NIC
+从应用程序安全组中删除网络接口后，将不会对已删除的网络接口应用指定应用程序安全组的规则。
+
+### <a name="azure-cli"></a>Azure CLI
+
+若要从所有应用程序安全组中删除 *myNic3*，请输入以下命令：
+
+```azurecli
+az network nic update \
+  --name myNic3 \
+  --resource-group myResourceGroup \
+  --remove ipConfigurations[0].applicationSecurityGroups
+```
+
+### <a name="powershell"></a>PowerShell
+
+若要从所有应用程序安全组中删除 *myNic3*，请输入以下命令：
+
+```powershell
+$nic=Get-AzureRmNetworkInterface `
+  -Name myNic3 `
+  -ResourceGroupName myResourceGroup
+
+$nic.IpConfigurations[0].ApplicationSecurityGroups = $null
+$nic | Set-AzureRmNetworkInterface 
+```
+
 ## <a name="delete"></a>删除资源
 
 完成本教程后，可以删除创建的资源，以免产生使用费。 删除资源组会删除其中包含的所有资源。
@@ -443,7 +472,7 @@ ms.lasthandoff: 11/04/2017
 
 在 CLI 会话中输入以下命令：
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup --yes
 ```
 

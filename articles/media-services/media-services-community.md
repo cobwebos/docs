@@ -14,23 +14,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: ef77ed3a4efee7ebcdd716376be78db38ce46f8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96bd97abf598414ebc88e955437c02873ff43ca8
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区
-此 Azure 媒体服务 (AMS) 社区页讨论了如何通过不同的方式来获取有关 AMS 的更新、观看新视频和播客、提问问题和提供反馈。   
+此 Azure 媒体服务 (AMS) 社区页讨论了如何通过不同的方式来获取有关 AMS 的更新。 此外，还可以观看新视频和播客、提出问题并提供反馈。   
 
 ## <a name="videos-and-podcasts"></a>视频和播客
-| 剧集 | 主讲人 | 日期 |
-| --- | --- | --- |
-| [Protecting your Media Content with DRM](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/)（通过 DRM 保护媒体内容） |Mingfei Yang |02/19/2016 |
-| [Protecting your Media Content with AES Encryption](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/)（通过 AES 加密保护媒体内容） |Mingfei Yang |2/19/2016 |
-| [Azure Media Services Developer Deep Dive](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/)（Azure 媒体服务开发人员深度课程） |Mingfei Yang |04/27/2015 |
-| [Azure Media Indexer automatically creates transcripts for your media](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)（Azure Media Indexer 自动为媒体创建脚本） |Adarsh Solanki |07/09/2015 |
-| [Microsoft Hyperlapse in Azure Media Services with Adarsh Solanki](https://azure.microsoft.com/documentation/videos/microsoft-hyperlapse-in-azure-media-services-with-adarsh-solanki/)（听 Adarsh Solanki 讲述 Azure 媒体服务中的 Microsoft Hyperlapse） |Adarsh Solanki |10/07/2015 |
+
+- [Protecting your Media Content with DRM](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/)（通过 DRM 保护媒体内容） 
+- [Protecting your Media Content with AES Encryption](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/)（通过 AES 加密保护媒体内容） 
+- [Azure Media Services Developer Deep Dive](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/)（Azure 媒体服务开发人员深度课程） 
+- [Azure Media Indexer automatically creates transcripts for your media](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)（Azure Media Indexer 自动为媒体创建脚本）  
+- [Microsoft Hyperlapse in Azure Media Services with Adarsh Solanki](https://azure.microsoft.com/documentation/videos/microsoft-hyperlapse-in-azure-media-services-with-adarsh-solanki/)（听 Adarsh Solanki 讲述 Azure 媒体服务中的 Microsoft Hyperlapse） 
 
 ## <a name="provide-feedback-and-make-suggestions"></a>提供反馈和建议
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
@@ -53,7 +52,7 @@ Azure 媒体服务主电子邮件是：**mediaservices@microsoft.com**。
 
 下表列出了功能子团队的电子邮件：
 
-| 功能 | 电子邮件 |
+| 功能 | Email |
 | --- | --- |
 | Azure 媒体分析 |amsanalytics@microsoft.com |
 | Azure Media Player |ampinfo@microsoft.com |

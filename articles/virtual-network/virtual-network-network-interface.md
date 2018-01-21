@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 7dafb491cec908ffbb3683991919654f3d3eb452
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f1cf113f75bc5a96af8c33d4b83d1bd0f5c6efd
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 - 查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文，了解网络接口的限制。
 - 使用 Azure 帐户登录到 Azure [门户](https://portal.azure.com)、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure PowerShell commandlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell >_ 按钮。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell >_ 按钮。
 
 ## <a name="create-a-network-interface"></a>创建网络接口
 
@@ -48,16 +48,16 @@ ms.lasthandoff: 10/11/2017
 
     |设置|必需？|详细信息|
     |---|---|---|
-    |名称|是|该名称在所选的资源组中必须唯一。 随着时间推移，Azure 订阅中可能会有多个网络接口。 请阅读[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)一文，获取有关创建命名约定来简化多个网络接口的管理的建议。 创建网络接口后，无法更改其名称。|
+    |名称​​|是|该名称在所选的资源组中必须唯一。 随着时间推移，Azure 订阅中可能会有多个网络接口。 请阅读[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)一文，获取有关创建命名约定来简化多个网络接口的管理的建议。 创建网络接口后，无法更改其名称。|
     |虚拟网络|是|为网络接口选择虚拟网络。 只能将网络接口分配到与该接口位于相同订阅和位置的虚拟网络。 创建网络接口后，无法更改其分配到的虚拟网络。 将网络接口添加到的虚拟机也必须位于该接口所在的同一位置和订阅中。|
     |子网|是|在所选的虚拟网络中选择一个子网。 创建网络接口后，可更改它分配到的子网。|
-    |专用 IP 地址分配|是| 在此设置中，将为 IPv4 地址选择分配方法。 从以下分配方法中选择：**动态：**选择此选项时，Azure 将从所选子网的地址空间中自动分配可用地址。 当网络接口所在的虚拟机处于停止（解除分配）状态后启动时，Azure 会向网络接口分配一个不同的地址。 如果在虚拟机未处于停止（解除分配）状态时将其重启，地址将保持不变。 **静态：**选择此选项时，必须手动从所选子网的地址空间中手动分配一个可用的 IP 地址。 静态地址保持不变，除非手动更改或删除网络接口。 创建网络接口后，可更改分配方法。 Azure DHCP 服务器将此地址分配到虚拟机操作系统中的网络接口。|
+    |专用 IP 地址分配|是| 在此设置中，将为 IPv4 地址选择分配方法。 从以下分配方法中选择：**动态：**选择此选项时，Azure 将从所选子网的地址空间中自动分配下一个可用地址。 **静态：**选择此选项时，必须手动从所选子网的地址空间中手动分配一个可用的 IP 地址。 静态地址和动态地址保持不变，除非手动更改或删除网络接口。 创建网络接口后，可更改分配方法。 Azure DHCP 服务器将此地址分配到虚拟机操作系统中的网络接口。|
     |网络安全组|否| 保留设置为“无”，选择现有的[网络安全组](virtual-networks-nsg.md)，或[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)。 网络安全组可用于筛选进出网络接口的网络流量。 可向网络接口应用零个或一个网络安全组。 也可向网络接口分配到的子网应用零个或一个网络安全组。 将网络安全组应用到网络接口以及该接口分配到的子网时，有时会产生意外结果。 若要对应用到网络接口和子网的网络安全组进行故障排除，请阅读[网络安全组故障排除](virtual-network-nsg-troubleshoot-portal.md#nsg)一文。|
     |订阅|是|选择一个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一订阅中。|
     |专用 IP 地址 (IPv6)|否| 如果选中此复选框，除了分配到网络接口的 IPv4 地址外，还会分配一个 IPv6 地址到网络接口。 请参阅本文的 [IPv6](#IPv6) 部分，了解有关 IPv6 和网络接口搭配使用的重要信息。 无法为 IPv6 地址选择分配方法。 如果选择分配 IPv6 地址，则会使用动态方法分配它。
     |IPv6 名称（仅在选中“专用 IP 地址 (IPv6)”复选框时出现） |是，如果选中“专用 IP 地址 (IPv6)”复选框。| 此名称将分配给网络接口的辅助 IP 配置。 在本文的 [查看网络接口设置](#view-network-interface-settings)部分详细了解相关 IP 配置。|
     |资源组|是|选择现有的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)或创建一个资源组。 网络接口可与它附加到的虚拟机或者连接到的虚拟网络位于相同或不同的资源组中。|
-    |位置|是|网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一[位置](https://azure.microsoft.com/regions)（也称为区域）中。|
+    |Location|是|网络接口附加到的虚拟机及其连接到的虚拟网络必须位于同一[位置](https://azure.microsoft.com/regions)（也称为区域）中。|
 
 创建网络接口时，门户不会提供向接口分配公共 IP 地址的选项，但使用门户创建虚拟机时，门户会创建一个公共 IP 地址并将其分配到网络接口。 若要了解创建网络接口后如何向其添加公共 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)一文。 若要使用公共 IP 地址创建网络接口，必须使用 CLI 或 PowerShell 创建网络接口。
 
@@ -108,7 +108,7 @@ DNS 服务器由 Azure DHCP 服务器分配到虚拟机操作系统中的网络�
 5. 单击以下选项之一：
     - **从虚拟网络继承(默认)**：选择此选项会继承针对网络接口分配到的虚拟网络定义的 DNS 服务器设置。 自定义 DNS 服务器或 Azure 提供的 DNS 服务器会在虚拟网络级别定义。 Azure 提供的 DNS 服务器可解析分配到同一虚拟网络的资源的主机名。 必须使用 FQDN 解析分配到不同虚拟网络的资源。
     - **自定义**：可自行配置 DNS 服务器来解析多个虚拟网络中的名称。 输入要用作 DNS 服务器的服务器的 IP 地址。 指定的 DNS 服务器地址仅分配到此网络接口，并将替代该网络接口分配到的虚拟网络的任何 DNS 设置。
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 **命令**
 
@@ -130,7 +130,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 3. 在出现的“网络接口”边栏选项卡中，单击要为其启用或禁用 IP 转发的网络接口。
 4. 在所选网络接口的边栏选项卡中，单击“设置”部分中的“IP 配置”。
 5. 单击“已启用”或“禁用”（默认设置）来更改设置。
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 **命令**
 
@@ -149,9 +149,9 @@ IP 转发使网络接口附加到的虚拟机能够：
 4. 在所选网络接口的边栏选项卡中的“设置”下面，单击“IP 配置”。 如果所列任何 IP 配置的任何专用 IP 地址旁边出现“(静态)”，则必须完成以下步骤，将 IP 地址分配方法更改为动态。 必须使用动态分配方法分配所有专用 IP 地址，以更改网络接口的子网分配。 如果使用动态方法分配地址，请转到步骤 5。 如果使用静态分配方法分配了任何 IPv4 地址，请完成以下步骤，将分配方法更改为动态：
     - 在 IP 配置列表中，单击想要更改其 IPv4 地址分配方法的 IP 配置。
     - 在显示的 IP 配置边栏选项卡中，选择“动态”作为“分配”方法。 无法使用静态分配方法分配 IPv6 地址。
-    - 单击“保存” 。
+    - 单击“ **保存**”。
 5. 从“子网”下拉列表中选择要将网络接口连接到的子网。
-6. 单击“保存” 。 新的动态地址是从新子网的子网地址范围中分配的。 将网络接口分配到新子网之后，可在需要时从新子网地址范围中分配静态 IPv4 地址。 若要详细了解如何添加、更改和删除网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)一文。
+6. 单击“ **保存**”。 新的动态地址是从新子网的子网地址范围中分配的。 将网络接口分配到新子网之后，可在需要时从新子网地址范围中分配静态 IPv4 地址。 若要详细了解如何添加、更改和删除网络接口的 IP 地址，请阅读[管理 IP 地址](virtual-network-network-interface-addresses.md)一文。
 
 **命令**
 

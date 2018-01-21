@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1e45d394a4c442a4fb255ed6d838a589e98860e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>如何使用 Azure 计划程序生成复杂的计划和高级循环
 ## <a name="overview"></a>概述
@@ -59,7 +59,7 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
         "recurrence":                     // optional
         {
             "frequency": "week",     // can be "year" "month" "day" "week" "hour" "minute"
-            "interval": 1,                // optional, how often to fire (default to 1)
+            "interval": 1,                // how often to fire
             "schedule":                   // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
@@ -89,11 +89,11 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 
 | **JSON 名称** | **值类型** | **必需？** | **默认值** | **有效值** | **示例** |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| ***startTime*** |String |否 |无 |ISO-8601 日期时间 |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
+| ***startTime*** |字符串 |否 |无 |ISO-8601 日期时间 |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
 | ***recurrence*** |对象 |否 |无 |Recurrence 对象 |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
-| ***frequency*** |String |是 |无 |"minute"、"hour"、"day"、"week"、"month" |<code>"frequency" : "hour"</code> |
-| ***interval*** |Number |否 |1 |1 到 1000。 |<code>"interval":10</code> |
-| ***endTime*** |String |否 |无 |代表将来某个时间的日期时间值 |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+| ***frequency*** |字符串 |是 |无 |"minute"、"hour"、"day"、"week"、"month" |<code>"frequency" : "hour"</code> |
+| ***interval*** |Number |是 |无 |1 到 1000。 |<code>"interval":10</code> |
+| ***endTime*** |字符串 |否 |无 |代表将来某个时间的日期时间值 |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
 | ***count*** |Number |否 |无 |>= 1 |<code>"count": 5</code> |
 | ***schedule*** |对象 |否 |无 |Schedule 对象 |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
 
@@ -125,11 +125,11 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
 
 | **JSON 名称** | **说明** | **有效值** |
 |:--- |:--- |:--- |
-| **分钟数** |运行作业的小时中的分钟 |<ul><li>整数，或</li><li>整数数组</li></ul> |
-| **小时数** |运行作业的日期中的小时 |<ul><li>整数，或</li><li>整数数组</li></ul> |
-| **工作日** |运行作业的星期日期。 只能配合每周频率指定。 |<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday" 或 "Sunday"</li><li>上述任意值的数组（最大数组大小为 7）</li></ul>*不*区分大小写 |
+| **分钟数** |运行作业的小时中的分钟 |<ul><li>整数数组</li></ul> |
+| **小时数** |运行作业的日期中的小时 |<ul><li>整数数组</li></ul> |
+| **工作日** |运行作业的星期日期。 只能配合每周频率指定。 |<ul><li>任意以下值的数组（最大数组大小为 7）<ul><li>“星期一”</li><li>"Tuesday"</li><li>"Wednesday"</li><li>"Thursday"</li><li>"Friday"</li><li>“星期六”</li><li>"Sunday"</li></ul></li></ul>*不*区分大小写 |
 | **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |<ul><li>MonthlyOccurrence 对象的数组：</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* 是运行作业的星期日期，例如，{Sunday} 表示月份中的每个星期日。 必需。</p><p>*Occurrence* 是月份中重复的日期，例如 {Sunday, -1} 表示月份中的最后一个星期日。 可选。</p> |
-| **monthDays** |运行作业的月份日期。 只能配合每月频率指定。 |<ul><li><= -1 且 >= -31 的任何值。</li><li>>= 1 且 <= 31 的任何值。</li><li>上述值的数组</li></ul> |
+| **monthDays** |运行作业的月份日期。 只能配合每月频率指定。 |<ul><li>以下值的数组</li><ul><li><= -1 且 >= -31 的任何值。</li><li>>= 1 且 <= 31 的任何值。</li></ul></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
 以下是循环计划的不同示例 – 着重于计划对象及其子元素。

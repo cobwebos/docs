@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 06e8d99aa2ad4eb11e594a729c6dab39d5cd1eb6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac57894e4f180f42f80479d2031f4dd5ddfdb1be
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="move-storsimple-device-manager-service-from-classic-to-azure-portal-frequently-asked-questions-faq"></a>将 StorSimple 设备管理器服务从经典门户移至 Azure 门户：常见问题解答 (FAQ)
 
@@ -38,20 +38,20 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="once-i-have-moved-to-azure-portal-can-i-still-create-a-storsimple-manager-service-in-the-classic-portal"></a>移至 Azure 门户后，是否仍然可在经典门户中创建 StorSimple Manager 服务？
 
-不能。 将 StorSimple Manager 服务迁移至 Azure 门户后，无法在经典门户中新建服务。 此外，无法通过经典门户管理设备。 有关详细信息，请转到[将服务移至 Azure 门户](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)。
+不会。 将 StorSimple Manager 服务迁移至 Azure 门户后，无法在经典门户中新建服务。 此外，[从 2018 年 1 月 8 日起经典门户将不可用](https://azure.microsoft.com/updates/azure-portal-updates-for-classic-portal-users)。 
 
 ### <a name="i-have-multiple-storsimple-managers-running-in-the-classic-portal-can-i-choose-which-ones-to-move-to-the-azure-portal"></a>我有多个 StorSimple Manager 在经典门户中运行。 是否可对要移至 Azure 门户的管理器进行选择？
 
-不能。 无法选择将哪一个 StorSimple Manager 移至 Azure 门户。 所有处于订阅中的 StorSimple Manager 都会被移动。
+不会。 无法选择将哪一个 StorSimple Manager 移至 Azure 门户。 所有处于订阅中的 StorSimple Manager 都会被移动。
 
 
 ### <a name="i-initiated-the-migration-of-my-service-to-the-new-azure-portal-should-i-delete-the-storsimple-manager-from-the-classic-portal"></a>我启动了将我的服务迁移到新的 Azure 门户。 是否应从经典门户中删除 StorSimple Manager？ 
 
-不能。 请勿尝试删除从经典门户移动的任何服务。 等待迁移完成，将所有的 StorSimple Manager 移至新门户后，不需要从经典门户中删除任何服务。 经典门户最终会被弃用。
+不会。 请勿尝试删除从经典门户移动的任何服务。 等待迁移完成，将所有的 StorSimple Manager 移至新门户后，不需要从经典门户中删除任何服务。 经典门户最终会被弃用。
 
 ### <a name="can-i-rename-my-storsimple-device-manager-service-in-the-azure-portal"></a>可否在 Azure 门户中重命名 StorSimple 设备管理器服务？
 
-不能。 一旦在 Azure 门户创建了服务，则无法更改服务名称。 这也适用于设备、卷、卷容器和备份策略等其他实体。
+不会。 一旦在 Azure 门户创建了服务，则无法更改服务名称。 这也适用于设备、卷、卷容器和备份策略等其他实体。
 
 ### <a name="can-i-create-the-80108020-storsimple-cloud-appliances-with-azure-resource-manager-deployment-model"></a>可否使用 Azure 资源管理器部署模型创建 8010/8020 StorSimple 云设备？
 
@@ -67,20 +67,20 @@ StorSimple 服务迁移与用于 StorSimple 云设备的虚拟机关联无关。
 
 如果已创建运行 Update 3.0 或以上版本的 StorSimple 云设备模型 8010/8020，则不会受到将服务移至新 Azure 门户的影响。 你应能够完全管理你的云设备，而不必担心出现任何问题。 
 
-如果你在经典门户中有运行版本早于 Update 3.0 的云设备，则只能使用部分功能。 有关详细信息，请转到[运行版本早于 Update 3 的设备的不支持操作列表](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)。
+如果你在经典门户中有运行版本早于 Update 3.0 的云设备，则只能使用部分功能。 有关详细信息，请转到[运行版本早于 Update 3 的设备的不支持操作列表](storsimple-8000-manage-service.md##supported-operations-on-devices-running-versions-prior-to-update-50)。
 
 无法更新云设备。 使用最新版本的软件新建云设备，然后将现有卷容器故障转移到新建的云设备。 有关详细信息，请转到[故障转移到云设备](storsimple-8000-cloud-appliance-u2.md#fail-over-to-the-cloud-appliance)
 
 
 ### <a name="my-storsimple-8000-series-device-is-running-update-20-i-migrated-my-service-to-new-azure-portal-my-device-connected-successfully-but-it-seems-that-i-am-not-able-to-fully-manage-my-device-how-do-i-resolve-this-behavior"></a>我的 StorSimple 8000 系列设备当前运行的是 Update 2.0。 我已将服务迁移至新的 Azure 门户。 我的设备已成功连接，但好像不能完全管理我的设备。 如何解决此问题呢？
 
-新的 Azure 门户仅支持运行 Update 3.0 和更高版本的 StorSimple 设备。 如果你的设备正在运行 Update 2.0，则仅可使用该设备的部分功能。 有关详细信息，请转到[运行版本早于 Update 3 的设备的不支持操作列表](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)。
+新的 Azure 门户仅支持运行 Update 3.0 和更高版本的 StorSimple 设备。 如果你的设备正在运行 Update 2.0，则仅可使用该设备的部分功能。 有关详细信息，请转到[运行版本早于 Update 3 的设备的不支持操作列表](storsimple-8000-manage-service.md##supported-operations-on-devices-running-versions-prior-to-update-50)。
 
 要完全管理设备，请在设备上安装最新更新。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。
 
 ### <a name="i-just-moved-my-storsimple-manager-service-to-the-azure-portal-i-am-seeing-some-alerts-related-to-my-device-is-this-behavior-related-to-the-move"></a>我刚刚将 StorSimple Manager 服务移到 Azure 门户。 我收到了几条与设备相关的警报。 这些警报与此次移动有关吗？
 
-没有。 移动本身不会导致错误或警报。 请按照警报建议消除相关警报。
+不会。 移动本身不会导致错误或警报。 请按照警报建议消除相关警报。
 
 ### <a name="i-am-using-a-storsimple-50007000-series-device-are-these-also-supported-in-the-azure-portal"></a>我正在使用 StorSimple 5000/7000 系列设备。 在 Azure 门户中，它们还受支持吗？
 
@@ -95,7 +95,7 @@ StorSimple 服务迁移与用于 StorSimple 云设备的虚拟机关联无关。
 
 ### <a name="can-i-move-storsimple-device-manager-from-one-subscription-to-another-subscription-in-the-azure-portal"></a>可否将 StorSimple 设备管理器从一个订阅移动到 Azure 门户中的另一个订阅？
 
-不能。 不支持将 StorSimple 设备管理器服务从一个订阅移到另一个订阅。 你可以执行包括以下步骤的手动过程：
+不会。 不支持将 StorSimple 设备管理器服务从一个订阅移到另一个订阅。 你可以执行包括以下步骤的手动过程：
 
 * 从 StorSimple 设备将数据迁出。
 * 让设备恢复出厂设置，此操作将删除设备上的一切本地数据。
@@ -104,7 +104,7 @@ StorSimple 服务迁移与用于 StorSimple 云设备的虚拟机关联无关。
 
 ### <a name="do-i-have-to-migrate-the-storage-account-to-azure-resource-manager-deployment-model"></a>是否必须将存储帐户迁移到 Azure 资源管理器部署模型？
 
-不是。 可从 Azure 门户完全管理经典存储帐户。 将 StorSimple 服务移至 Azure 门户时，存储帐户将继续如以前一样运行。
+不会。 可从 Azure 门户完全管理经典存储帐户。 将 StorSimple 服务移至 Azure 门户时，存储帐户将继续如以前一样运行。
 
 ### <a name="what-happens-to-the-storage-account-after-the-service-is-migrated-to-the-azure-portal"></a>在此服务迁移至 Azure 门户后，存储帐户会发生哪些变化？
 
@@ -112,13 +112,13 @@ StorSimple 服务迁移与用于 StorSimple 云设备的虚拟机关联无关。
 
 ### <a name="can-i-migrate-storsimple-device-manager-from-one-resource-group-to-another"></a>可否将 StorSimple 设备管理器从一个资源组迁移到另一个资源组？
 
-不能。 不能将使用一个资源组创建的 StorSimple 设备管理器移至另一个资源组。
+不会。 不能将使用一个资源组创建的 StorSimple 设备管理器移至另一个资源组。
 
 ## <a name="using-azure-resource-manager-based-cmdlets"></a>使用基于 Azure 资源管理器的 cmdlet
 
 ### <a name="i-moved-to-the-new-azure-portal-now-my-scripts-based-on-azure-classic-deployment-model-powershell-cmdlets-are-not-working-what-do-i-need-to-do"></a>我已经移到新的 Azure 门户。 现在我的基于 Azure 经典部署模型 PowerShell cmdlet 的脚本不起作用？ 我需要做什么？
 
-现有的 Azure 经典部署模型 PowerShell cmdlet 在 Azure 门户中不受支持。 请更新脚本以通过 Azure 资源管理器来管理设备。 有关更新脚本的详细信息，请转到[针对新 Azure 门户的示例](https://github.com/anoobbacker/storsimpledevicemgmttools)。
+现有的 Azure 经典部署模型 PowerShell cmdlet 在 Azure 门户中不受支持。 请更新脚本以通过 Azure 资源管理器管理设备。 有关更新脚本的详细信息，请转到[针对新 Azure 门户的示例](https://github.com/anoobbacker/storsimpledevicemgmttools)。
 
 ### <a name="i-just-moved-to-the-azure-portal-and-needed-to-roll-over-the-service-data-encryption-key-where-is-this-option-in-the-azure-portal"></a>我刚刚移到 Azure 门户，需要滚动服务数据加密密钥。 此选项在 Azure 门户中位于什么位置？
 
@@ -130,11 +130,9 @@ StorSimple 服务迁移与用于 StorSimple 云设备的虚拟机关联无关。
 
 ## <a name="moving-storsimple-data-manager-service"></a>移动 StorSimple 数据管理器服务
 
-### <a name="i-am-using-storsimple-data-manager-service-how-should-i-proceed-with-this-move"></a>我正在使用 StorSimple 数据管理器服务。 应如何继续进行此移动？
+### <a name="i-am-using-storsimple-data-manager-service-in-classic-azure-portal-how-should-i-proceed-with-this-move"></a>我正在使用 Azure 经典门户中的 StorSimple 数据管理器服务。 应如何继续进行此移动？
 
-如果你使用的是 StorSimple 数据管理器服务，则必须先将 StorSimple 设备管理器移至 Azure 门户。 移动完成后，在 Azure 门户中新建 StorSimple 数据管理器。 在移动之前创建的 StorSimple 数据管理器不起作用。
-
-有关 StorSimple 设备管理器服务迁移的详细信息，请转到[将服务移至 Azure 门户](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)。 有关 StorSimple 数据管理器创建的详细信息，请转到[创建 StorSimple 数据管理器服务](storsimple-data-manager-ui.md)。
+如果正在使用 StorSimple 数据管理器服务，你已自动移至 Azure 门户。
 
 ## <a name="miscellaneous"></a>其他
 
@@ -144,11 +142,11 @@ StorSimple 服务迁移与用于 StorSimple 云设备的虚拟机关联无关。
 
 ### <a name="can-i-rename-my-storsimple-device-volume-containers-or-volumes"></a>可否重命名我的 StorSimple 设备、卷容器或卷？
 
-不能。 无法在 Azure 门户中重命名设备、卷、卷容器或备份策略。
+不会。 无法在 Azure 门户中重命名设备、卷、卷容器或备份策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-逐步了解如何[将 StorSimple 设备管理器服务移至 Azure 门户](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)。
+详细了解[在运行 Update 5.0 之前版本的设备上支持的操作](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-50)。
 
 
 

@@ -1,12 +1,7 @@
-Azure 备份服务提供两种类型的保管库：备份保管库和恢复服务保管库。 备份保管库优先级最高。 随后是恢复服务保管库，用于支持扩展的 Resource Manager 部署。 Microsoft 建议使用 Resource Manager 部署，除非明确要求使用经典部署。
-
-| **部署** | **门户** | **保管库** |
-| --- | --- | --- |
-| 经典 |[经典](https://manage.windowsazure.com) |备份 |
-| Resource Manager |[Azure](https://portal.azure.com) |恢复服务 |
+Azure 备份服务提供两种类型的保管库：备份保管库和恢复服务保管库。 备份保管库优先级最高。 随后是恢复服务保管库，用于支持扩展的 Resource Manager 部署。 Microsoft 建议使用 Resource Manager 部署，除非明确要求使用经典部署。 到 2017 年底，所有备份保管库均已转换为恢复服务保管库。
 
 > [!NOTE]
-> 备份保管库无法保护 Resource Manager 部署的解决方案。 不过，可以使用恢复服务保管库保护经典部署的服务器和 VM。  
+> 备份保管库无法保护资源管理器部署的解决方案。 但是，恢复服务保管库可以保护经典部署的服务器和 VM。  
 > 
 > 
 

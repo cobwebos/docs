@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 2b274244cc7b7fd0fc3eee22a57a51db77370370
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: b8075f0e1149a6fc5194347fc34e2a16d5eb2ffc
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -47,10 +47,11 @@ Azure Migrate 评估包含三个阶段。 评估的第一步是适用性分析�
 
 计算机被标记为适合迁移到 Azure 后，Azure Migrate 会使用以下条件将其映射到 Azure 中的 VM 大小：
 
-- 存储检查：Azure Migrate 尝试将连接到计算机的每个磁盘映射到 Azure 中的磁盘：Azure Migrate 将每秒 I/O 数 (IOPS) 乘以舒适因子。 同时，它还将每个磁盘的吞吐量（以 MBps 为单位）乘以舒适因子。 这样可得到有效磁盘 IOPS 和吞吐量。 Azure Migrate 基于此值将磁盘映射到 Azure 中的标准或高级磁盘。
-    - 如果服务找不到具有所需 IOPS 和吞吐量的磁盘，则会将计算机标记为不适用于 Azure。
-    - 如果找到了一组合适的磁盘，Azure Migrate 将选择支持存储冗余方法以及在评估设置中指定的位置的磁盘。
-    - 如果有多个合格的磁盘，将选择成本最低的磁盘。
+- **存储检查**：Azure Migrate 尝试将连接到计算机的每个磁盘映射到 Azure 中的磁盘：
+    - Azure Migrate 将每秒的 I/O 数 (IOPS) 乘以舒适因子。 同时，它还将每个磁盘的吞吐量（以 MBps 为单位）乘以舒适因子。 这样可得到有效磁盘 IOPS 和吞吐量。 Azure Migrate 基于此值将磁盘映射到 Azure 中的标准或高级磁盘。
+      - 如果服务找不到具有所需 IOPS 和吞吐量的磁盘，则会将计算机标记为不适用于 Azure。
+      - 如果找到了一组合适的磁盘，Azure Migrate 将选择支持存储冗余方法以及在评估设置中指定的位置的磁盘。
+      - 如果有多个合格的磁盘，将选择成本最低的磁盘。
 - 存储磁盘吞吐量：[详细了解](../azure-subscription-service-limits.md#storage-limits)有关 Azure 对单个磁盘和 VM 的限制。
 - 磁盘类型：Azure Migrate 仅支持托管磁盘。
 - 网络检查：Azure Migrate 将尝试查找可以支持本地计算机上 NIC 数量的 Azure VM。

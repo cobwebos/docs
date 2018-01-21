@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 01/02/2018
 ms.author: billmath
-ms.openlocfilehash: 9c0ff3394dac12bdcac9d618832566ef0d3a6609
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fddbbeda50764ade149e8a8f370bf7341da01736
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
 > 设备写回需要 Azure AD Premium 订阅。
-> 
-> 
+>
+>
 
 以下文档提供有关如何在 Azure AD Connect 中启用设备写回功能的信息。 设备写回用于以下方案：
 
@@ -34,7 +34,8 @@ ms.lasthandoff: 12/11/2017
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
-> <li>只能将一个设备注册配置对象添加到本地 Active Directory 林。 此功能与本地 Active Directory 同步到多个 Azure AD 目录的拓扑不兼容。</li>> 
+> <li>只能将一个设备注册配置对象添加到本地 Active Directory 林。 此功能与本地 Active Directory 同步到多个 Azure AD 租户的拓扑不兼容。</li>
+>
 
 ## <a name="part-1-install-azure-ad-connect"></a>第 1 部分：安装 Azure AD Connect
 1. 使用自定义或快速设置安装 Azure AD Connect。 Microsoft 建议在启用设备写回之前，首先让所有用户和组成功完成同步。
@@ -43,15 +44,15 @@ ms.lasthandoff: 12/11/2017
 使用以下步骤来准备使用设备写回。
 
 1. 从已安装 Azure AD Connect 的计算机上，以权限提升模式启动 PowerShell。
-2. 如果未安装 Active Directory PowerShell 模块，请安装包含 AD PowerShell 模块的远程服务器管理工具，并安装运行脚本所需的 dsacls.exe。  运行以下命令：
-  
+2. 如果未安装 Active Directory PowerShell 模块，请安装包含 AD PowerShell 模块的远程服务器管理工具，并安装运行脚本所需的 dsacls.exe。 运行以下命令：
+
    ``` powershell
    Add-WindowsFeature RSAT-AD-Tools
    ```
 
 3. 如果尚未安装 Azure Active Directory PowerShell 模块，请从 [用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)下载并安装该模块。 此组件依赖于随 Azure AD Connect 一起安装的登录助手。  
 4. 使用企业管理员凭据运行以下命令，并退出 PowerShell。
-   
+
    ``` powershell
    Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
    ```
@@ -62,8 +63,7 @@ ms.lasthandoff: 12/11/2017
 
 由于需要对配置命名空间进行更改，因此需要使用企业管理员凭据。 域管理员没有足够的权限。
 
-![用于启用设备写回的 Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png) d
-
+![用于启用设备写回的 Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)  
 
 说明:
 
@@ -87,18 +87,22 @@ ms.lasthandoff: 12/11/2017
 3. 在写回页中，会看到提供的域是默认的设备写回林。
    ![自定义安装 - 设备写回目标林](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
 4. 在向导中完成安装，不需要更改其他配置。 如果需要，请参阅 [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)。
+5. 如果已在 Azure AD Connect 中启用[筛选](active-directory-aadconnectsync-configure-filtering.md)，请确保新创建的容器 CN=RegisteredDevices 包含在作用域中。
 
-## <a name="enable-conditional-access"></a>启用条件性访问
-[使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)中提供了有关启用此方案的详细说明。
-
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>验证设备是否已同步到 Active Directory
-设备写回现在应在正常运行。 请注意，将设备对象写回到 Active Directory 最长可能需要 3 个小时。  若要验证设备是否已正确同步，请在同步规则完成之后执行以下操作：
+## <a name="part-4-verify-devices-are-synchronized-to-active-directory"></a>第 4 部分：验证设备是否已同步到 Active Directory
+设备写回现在应在正常运行。 请注意，将设备对象写回到 Active Directory 最长可能需要 3 个小时。 若要验证设备是否已正确同步，请在同步完成之后执行以下操作：
 
 1. 启动 Active Directory 管理中心。
-2. 在要联合的域中展开 RegisteredDevices。
-   ![Active Directory 管理中心 - 已注册的设备](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
-3. 其中会列出当前已注册的设备。
-   ![Active Directory 管理中心 - 已注册的设备列表](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
+2. 在[第 2 部分](#part-2-prepare-active-directory)配置的域中展开 RegisteredDevices。  
+
+   ![Active Directory 管理中心 - 已注册的设备](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)  
+   
+3. 其中会列出当前已注册的设备。  
+
+   ![Active Directory 管理中心 - 已注册的设备列表](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)  
+
+## <a name="enable-conditional-access"></a>启用条件性访问
+   [使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)中提供了有关启用此方案的详细说明。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>写回复选框仍处于禁用状态
@@ -113,12 +117,13 @@ ms.lasthandoff: 12/11/2017
   * 打开“连接器”选项卡。
   * 查找类型为 Active Directory 域服务的连接器并选择它。
   * 在“操作”下面，选择“属性”。
-  * 转到“连接到 Active Directory 林”。 检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
+  * 转到“连接到 Active Directory 林”。 检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。  
+  
     ![同步服务管理器中的连接器帐户](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 在 Active Directory 中验证配置：
 
-* 检查设备注册服务是否位于配置命名上下文下面的以下位置：(CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration)。
+* 在配置命名上下文下验证设备注册服务是否位于以下位置：(CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration)。
 
 ![故障排除，配置命名空间中的 DeviceRegistrationService](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot1.png)
 
@@ -146,4 +151,3 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-

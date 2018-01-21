@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f31e32bb7cbd747af2e03699cfb2c6418828f8d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -27,6 +27,9 @@ ms.lasthandoff: 11/17/2017
 StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 创建此服务后，可以使用它从单个中央位置监视连接到 StorSimple 设备管理器服务的所有设备，因此最大限度地减少了管理负担。
 
 本教程介绍了创建、删除和迁移此服务以及管理服务注册密钥所需执行的步骤。 本文中包含的信息仅适用于 StorSimple 8000 系列设备。 有关 StorSimple 虚拟阵列的详细信息，请转到[为 StorSimple 虚拟阵列部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
+
+> [!NOTE]
+> 所有经典 StorSimple 设备管理器已自动移到新的 Azure 门户。 如果你有任何问题，请参阅[常见问题解答：移至 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。 移至新的 Azure 门户后，将不再支持 Azure 服务管理 (ASM) PowerShell cmdlet。 更新脚本以管理设备，然后转到[使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备](storsimple-8000-automation-azurerm-scripts.md)了解详细信息。 新的 Azure 门户支持运行 Update 5.0 或更高版本的设备。 如果设备不是最新的，请立即安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 如果使用的是 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建运行 Update 5.0 的云设备，然后故障转移到新建的云设备。 运行 Update 4.0 或更早版本的所有设备将会体验[简化的管理功能](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)。 
 
 ## <a name="create-a-service"></a>创建服务
 若要创建 StorSimple 设备管理器服务，需要具有：
@@ -57,86 +60,6 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 * **状态** – 服务的状态，可以是**活动**、**正在创建**或**联机**。
 * **位置** – 会在其中部署 StorSimple 设备的地理位置。
 * **订阅** – 与服务关联的计费订阅。
-
-## <a name="move-a-service-to-azure-portal"></a>将服务移动到 Azure 门户
-现在可以在 Azure 门户中管理 StorSimple 8000 系列了。 如果有用来管理 StorSimple 设备的现有服务，建议将该服务移动到 Azure 门户。 在 2017 年 9 月 30 日之后，将不再支持针对 StorSimple Manager 服务的 Azure 经典门户。 如果想要移动到新的 Azure 门户，请参阅[转换注意事项](#considerations-for-transition)。 
-
-> [!NOTE]
-> 从 2017 年 10 月 5 日开始，经典 StorSimple 设备管理器将自动移至新的 Azure 门户。 此为分阶段转出，我们将通过电子邮件和门户通知告知你有关移动的最新消息。 如果你有任何问题，请参阅[常见问题解答：移至 Azure 门户](storsimple-8000-move-azure-portal-faq.md)。
-
-### <a name="considerations-for-transition"></a>有关转换的注意事项
-
-在移动此服务之前，请查看迁移到新 Azure 门户的影响。
-
-> [!NOTE]
-> 在移至新的 Azure 门户后，将不再支持现有的 Azure 服务管理 (ASM) PowerShell cmdlet。 请更新脚本以通过 Azure 资源管理器 SDK 管理设备。 有关详细信息，请转到[使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备](storsimple-8000-automation-azurerm-scripts.md)。
-> 新的 Azure 门户支持运行 Update 3.0 或更高版本的设备。 如果你的设备不是最新的，我们强烈建议请尽快应用 Update 5。
-
-#### <a name="before-you-transition"></a>在转换之前
-
-* 设备运行的是 Update 3.0 或更高版本。 如果设备运行的是较旧版本，强烈建议使用修补程序方法安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 如果在使用 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建使用 Update 5.0 的云设备，然后故障转移到新建的云设备。
-
-* 一旦转换到新 Azure 门户，将无法使用 Azure 经典门户来管理 StorSimple 设备。
-
-* 此转换无破坏性，设备不需要停机。
-
-* 指定订阅下的所有 StorSimple 设备管理器都将转换。
-
-#### <a name="during-the-transition"></a>在转换期间
-
-* 无法从门户管理设备。
-* 诸如分层和计划备份等操作将继续进行。
-* 在转换进行过程中，不要删除旧的 StorSimple 设备管理器。
-
-#### <a name="after-the-transition"></a>在转换之后
-
-* 无法再从经典门户管理设备。
-
-* 现有 Azure 服务管理 (ASM) PowerShell cmdlet 将不受支持。 请更新脚本以通过 Azure 资源管理器管理设备。 有关使用资源管理器 SDK 的示例脚本，请参阅 [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools)。
-
-* 服务和设备配置将保留。 所有卷和备份也将转换到 Azure 门户。
-
-### <a name="begin-transition"></a>开始转换
-
-执行以下步骤将服务转换到 Azure 门户。
-
-1. 在新的 Azure 门户中转到现有的 StorSimple Manager 服务。
-    ![更多服务](./media/storsimple-8000-manage-service/service-browse01.png) ![选择设备管理器](./media/storsimple-8000-manage-service/service-browse02.png)
-
-2. 可以看到一条通知，指出现在可以在 Azure 门户中使用 StorSimple 设备管理器服务了。 在 Azure 门户中，该服务称为 StorSimple 设备管理器服务。
-    ![迁移通知](./media/storsimple-8000-manage-service/service-transition1.jpg)
-    
-    1. 请确保已查看了迁移的全部影响。
-    2. 查看将从经典门户移动的 StorSimple 设备管理器的列表。
-
-3. 单击“迁移”。 转换将开始并且需要花费几分钟时间才能完成。
-
-转换完成后，可以通过 Azure 门户中的 StorSimple 设备管理器服务管理设备。 如果你没有看到用来迁移到 Azure 门户的选项，但你想要移动，则可[提交请求](https://aka.ms/ss8000-cx-signup)。
-
-## <a name="supported-operations-on-devices-running-versions-prior-to-update-30"></a>在运行 Update 3.0 之前版本的设备上支持的操作
-Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 3.0 之前版本的设备上支持的操作。
-
-| 操作                                                                                                                       | 支持      |
-|---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| 注册设备                                                                                                               | 是            |
-| 配置设备设置，例如常规、网络和安全性                                                                | 是            |
-| 扫描、下载和安装更新                                                                                             | 是            |
-| 停用设备                                                                                                               | 是            |
-| 删除设备                                                                                                                   | 是            |
-| 创建、修改和删除卷容器                                                                                   | 否             |
-| 创建、修改和删除卷                                                                                             | 否             |
-| 创建、修改和删除备份策略                                                                                      | 否             |
-| 创建手动备份                                                                                                            | 否             |
-| 创建计划的备份                                                                                                         | 不适用 |
-| 从备份集还原                                                                                                        | 否             |
-| 克隆到运行 Update 3.0 和更高版本的设备 <br> 源设备运行的是 Update 3.0 之前的版本。                                | 是            |
-| 克隆到运行 Update 3.0 之前版本的设备                                                                          | 否             |
-| 作为源设备进行故障转移 <br> （从运行 Update 3.0 之前版本的设备故障转移到运行 Update 3.0 和更高版本的设备）                                                               | 是            |
-| 作为目标设备进行故障转移 <br> （故障转移到运行 Update 3.0 之前的软件版本的设备）                                                                                   | 否             |
-| 清除警报                                                                                                                  | 是            |
-| 查看在经典门户中创建的备份策略、备份目录、卷、卷容器、监视图表、作业和警报 | 是            |
-| 打开和关闭设备控制器                                                                                              | 是            |
-
 
 ## <a name="delete-a-service"></a>删除服务
 
@@ -262,6 +185,31 @@ Azure 门户中仅支持运行 Update 3.0 和更高版本的 StorSimple 设备�
 2. 打开 PowerShell 并在命令提示符处键入：`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 此脚本将确保在设备管理器下的所有 8010/8020 云设备上设置服务数据加密密钥。
+
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>在运行 Update 5.0 之前版本的设备上支持的操作
+Azure 门户中仅支持运行 Update 5.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 5.0 之前版本的设备上支持的操作。
+
+| Operation                                                                                                                       | 支持      |
+|---------------------------------------------------------------------------------------------------------------------------------|----------------|
+| 注册设备                                                                                                               | 是            |
+| 配置设备设置，例如常规、网络和安全性                                                                | 是            |
+| 扫描、下载和安装更新                                                                                             | 是            |
+| 停用设备                                                                                                               | 是            |
+| 删除设备                                                                                                                   | 是            |
+| 创建、修改和删除卷容器                                                                                   | 否             |
+| 创建、修改和删除卷                                                                                             | 否             |
+| 创建、修改和删除备份策略                                                                                      | 否             |
+| 创建手动备份                                                                                                            | 否             |
+| 创建计划的备份                                                                                                         | 不适用 |
+| 从备份集还原                                                                                                        | 否             |
+| 克隆到运行 Update 3.0 和更高版本的设备 <br> 源设备运行的是 Update 3.0 之前的版本。                                | 是            |
+| 克隆到运行 Update 3.0 之前版本的设备                                                                          | 否             |
+| 作为源设备进行故障转移 <br> （从运行 Update 3.0 之前版本的设备故障转移到运行 Update 3.0 和更高版本的设备）                                                               | 是            |
+| 作为目标设备进行故障转移 <br> （故障转移到运行 Update 3.0 之前的软件版本的设备）                                                                                   | 否             |
+| 清除警报                                                                                                                  | 是            |
+| 查看在经典门户中创建的备份策略、备份目录、卷、卷容器、监视图表、作业和警报 | 是            |
+| 打开和关闭设备控制器                                                                                              | 是            |
+
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple 部署过程](storsimple-8000-deployment-walkthrough-u2.md)。

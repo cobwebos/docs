@@ -1,5 +1,5 @@
 ---
-title: "策略：Azure AD SSPR | Microsoft Docs"
+title: "自助密码重置策略 - Azure Active Directory"
 description: "Azure AD 自助密码重置策略选项"
 services: active-directory
 keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重置"
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6b1abd23c6f578a3a776e6174d1ea0f47b3ba27d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 51eb7c594c02310c083b42b6c0d964b4af239d76
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -65,7 +65,7 @@ Microsoft 为任意 Azure 管理员角色强制实施默认强*双门*密码重�
 
 * Azure AD Connect 正在从本地目录同步标识
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
 * 它在试用订阅的前 30 天中

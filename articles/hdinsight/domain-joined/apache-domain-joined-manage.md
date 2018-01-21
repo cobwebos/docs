@@ -14,21 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/25/2016
+ms.date: 01/11/2018
 ms.author: saurinsh
-ms.openlocfilehash: 0fc32960fc2f1ae69315dbfd6bfb8c34c4adc0fa
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6a43ea602052b9b3338567571075742adc5a3ca0
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>管理已加入域的 HDInsight 群集
 了解已加入域的 HDInsight 中的用户和角色以及如何管理已加入域的 HDInsight 群集。
 
+## <a name="access-the-clusters-with-enterprise-security-package"></a>使用企业安全包访问群集。
+
+企业安全包（以前称为 HDInsight Premium）提供对群集的多用户访问，其中身份验证通过 Active Directory 以及 Apache Ranger 和存储 ACL (ADLS ACL) 授权来完成。 授权提供多个用户之间的安全边界，并仅允许特权用户根据授权策略访问数据。
+
+安全和用户隔离对于使用企业安全包的 HDInsight 群集很重要。 为了满足这些要求，将阻止通过 SSH 访问使用企业安全包的群集。 下表显示了对于每种群集类型建议的访问方法：
+
+|工作负载|方案|访问方法|
+|--------|--------|-------------|
+|Hadoop|Hive - 交互式作业/查询 |<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Spark|交互式作业/查询，PySpark 交互式环境|<ul><li>[Beeline](#beeline)</li><li>[带有 Livy 的 Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Spark|批处理方案 - Spark 提交，PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
+|交互式查询 (LLAP)|交互|<ul><li>[Beeline](#beeline)</li><li>[Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC - Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|任意|安装自定义应用程序|<ul><li>[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+
+
+使用标准 API 从安全角度获得帮助。 此外，可获得以下优势：
+
+1.  **管理** - 可以使用标准 API（Livy、HS2 等）管理代码和自动执行作业。
+2.  **审核** - 使用 SSH 时，没有办法审核哪些用户已通过 SSH 登录到群集。 通过标准终结点构造作业时就不会出现这种情况，因为这些作业将在用户上下文中执行。 
+
+
+
+### <a name="beeline"></a>使用 Beeline 
+在计算机上安装 Beeline，并使用以下参数通过公共 Internet 进行连接： 
+
+```
+- Connection string: -u 'jdbc:hive2://&lt;clustername&gt;.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2'
+- Cluster login name: -n admin
+- Cluster login password -p 'password'
+```
+
+如果本地安装了 Beeline 并通过 Azure 虚拟网络进行连接，请使用以下参数： 
+
+```
+- Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
+```
+
+若要查找头节点的完全限定域名，请使用“使用 Ambari REST API 管理 HDInsight”文档中的信息。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## <a name="users-of-domain-joined-hdinsight-clusters"></a>已加入域的 HDInsight 群集的用户
 未加入域的 HDInsight 群集具有两个在群集创建期间创建的用户帐户：
 
-* **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于在 https://&lt;clustername>.azurehdinsight.net 中登录到 Ambari。 也可将其用于在 Ambari 视图上运行查询、通过外部工具（即 PowerShell、Templeton、Visual Studio）执行作业和使用 Hive ODBC 驱动程序和 BI 工具（即 Excel、PowerBI 或 Tableau）进行身份验证。
+* **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于在 https://&lt;clustername>.azurehdinsight.net 中登录到 Ambari。 也可将其用于在 Ambari 视图上运行查询、通过外部工具（例如 PowerShell、Templeton、Visual Studio）执行作业和使用 Hive ODBC 驱动程序和 BI 工具（例如 Excel、PowerBI 或 Tableau）进行身份验证。
 * **SSH 用户**：此帐户可用于 SSH 和执行 sudo 命令。 它具有 Linux VM 的 root 权限。
 
 加入域的 HDInsight 群集具有除 Ambari 管理员和 SSH 用户外的三个新用户。
@@ -43,7 +95,7 @@ ms.lasthandoff: 12/01/2017
     请注意其他 AD 用户也具有这些权限。
 
     群集内有一些终结点不受 Ranger 管理（如 Templeton），因此不安全。 这些终结点已对所有用户锁定（群集管理员域用户除外）。
-* **常规**：群集创建期间，可提供多个 Active Directory 组。 这些组中的用户将同步到 Ranger 和 Ambari。 这些用户为域用户，仅对由 Ranger 管理的终结点具有访问权限（例如，Hiveserver2）。 所有 RBAC 策略和审核都适用于这些用户。
+* **常规**：群集创建期间，可提供多个 Active Directory 组。 这些组中的用户将同步到 Ranger 和 Ambari。 这些用户为域用户，仅对由 Ranger 管理的终结点（例如，Hiveserver2）具有访问权限。 所有 RBAC 策略和审核都适用于这些用户。
 
 ## <a name="roles-of-domain-joined-hdinsight-clusters"></a>已加入域的 HDInsight 群集的角色
 已加入域的 HDInsight 具有以下角色：
@@ -63,8 +115,9 @@ ms.lasthandoff: 12/01/2017
     ![已加入域的 HDInsight 角色权限](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>打开 Ambari 管理 UI
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在边栏选项卡中打开 HDInsight 群集。 请参阅[列出和显示群集](../hdinsight-administer-use-management-portal.md#list-and-show-clusters)。
+2. 打开 HDInsight 群集。 请参阅[列出和显示群集](../hdinsight-administer-use-management-portal.md#list-and-show-clusters)。
 3. 在顶部菜单中单击“仪表板”以打开 Ambari。
 4. 使用群集管理员域用户名和密码登录到 Ambari。
 5. 在右上角单击“管理员”下拉菜单，并单击“管理 Ambari”。

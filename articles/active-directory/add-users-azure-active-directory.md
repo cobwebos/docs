@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 3b914bb72d9d0d6b6021c221c6019aea69a964a6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0f18f377f194e78c05e63e9b6cbc31c1b945335
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>快速入门：将新用户添加到 Azure Active Directory
-此文章介绍了如何使用 Azure 门户或通过同步本地 Windows Server AD 用户帐户数据，在 Azure Active Directory (Azure AD) 中一次添加一个你组织中的新用户。 
+本文介绍如何使用 Azure 门户或通过同步本地 Windows Server AD 用户帐户数据，在组织的 Azure Active Directory (Azure AD) 租户中删除或添加组织中的用户。 
 
 ## <a name="add-cloud-based-users"></a>添加基于云的用户
 1. 使用属于目录全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
@@ -48,8 +48,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="learn-more"></a>了解详细信息 
 * [添加另一个目录中的来宾用户](active-directory-b2b-what-is-azure-ad-b2b.md) 
-
 * [在 Azure AD 中为用户分配角色](active-directory-users-assign-role-azure-portal.md)
+* [管理用户个人资料](active-directory-users-profile-azure-portal.md)
+* [还原已删除的用户](active-directory-users-restore.md)
+
+
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你已了解如何将新用户添加到 Azure AD Premium。 

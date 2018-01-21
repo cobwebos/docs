@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/05/2017
+ms.date: 01/05/2018
 ms.author: jroth
-ms.openlocfilehash: 7d501ab45a85010a8dbfd6135d77f18f1743354e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e3459e8a62386a94938aa52792b94e87315a48ab
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/21/2017
 
 若要查看本文的经典版本，请参阅 [Automated Patching for SQL Server in Azure Virtual Machines Classic](../classic/sql-automated-patching.md)（在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补）。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 若要使用自动修补，请考虑以下先决条件：
 
 **操作系统**：
@@ -109,6 +109,9 @@ ms.lasthandoff: 12/21/2017
     $aps = AzureRM.Compute\New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
     Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+
+> [!IMPORTANT]
+> 如果尚未安装该扩展，安装该扩展将会重新启动 SQL Server 服务。
 
 下表根据此示例描述了对目标 Azure VM 产生的实际效果：
 

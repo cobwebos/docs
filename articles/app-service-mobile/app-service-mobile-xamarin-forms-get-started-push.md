@@ -3,8 +3,8 @@ title: "向 Xamarin.Forms 应用添加推送通知 | Microsoft Docs"
 description: "了解如何使用 Azure 服务将多平台推送通知发送到 Xamarin.Forms 应用。"
 services: app-service\mobile
 documentationcenter: xamarin
-author: ysxu
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
-ms.author: yuaxu
-ms.openlocfilehash: 912367636f1b26b3b07fbd5fe3fe8ed053218fd5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: a9c7c5dbbc50ccf8c5383be28e96dfb82af48559
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 对于 iOS，用户需要 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
 ## <a name="configure-hub"></a>配置通知中心
@@ -49,221 +49,153 @@ ms.lasthandoff: 10/11/2017
 ### <a name="add-push-notifications-to-the-android-project"></a>向 Android 项目添加推送通知
 使用 FCM 配置后端以后，即可将组件和代码添加到客户端，以便通过 FCM 注册。 也可通过移动应用后端向 Azure 通知中心注册推送通知，然后即可接收通知。
 
-1. 在 **Droid** 项目中，右键单击 **Components** 文件夹，并单击“获取更多组件...”。然后搜索 **Google Cloud Messaging 客户端**组件并将其添加到项目。 此组件支持 Xamarin Android 项目的推送通知。
-2. 打开 MainActivity.cs 项目文件，在文件顶部添加以下语句：
+1. 在 **Droid** 项目中，右键单击“引用”>“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，搜索“Xamarin.Firebase.Messaging”包并将其添加到项目中。
+1. 在 **Droid** 项目的项目属性中，将应用设置为使用 Android 7.0 版或更高版本进行编译。
+1. 将从 Firebase 控制台下载的 **google-services.json** 文件添加到 **Droid** 项目的根目录，并将其生成操作设置为 **GoogleServicesJson**。 有关详细信息，请参阅[添加 Google 服务 JSON 文件](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File)。
 
-        using Gcm.Client;
-3. 调用 **LoadApplication** 后，将以下代码添加到 **OnCreate** 方法：
+#### <a name="registering-with-firebase-cloud-messaging"></a>注册到 Firebase Cloud Messaging
 
-        try
+1. 打开 **AndroidManifest.xml** 文件，并将以下 `<receiver>` 元素插入 `<application>` 元素：
+
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+          <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="${applicationId}" />
+          </intent-filter>
+        </receiver>
+
+#### <a name="implementing-the-firebase-instance-id-service"></a>实现 Firebase 实例 ID 服务
+
+1. 将新类添加到名为 `FirebaseRegistrationService` 的 **Droid** 项目，并确保文件顶部存在以下 `using` 语句：
+
+        using System.Threading.Tasks;
+        using Android.App;
+        using Android.Util;
+        using Firebase.Iid;
+        using Microsoft.WindowsAzure.MobileServices;
+
+1. 将空的 `FirebaseRegistrationService` 类替换为以下代码：
+
+        [Service]
+        [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
+        public class FirebaseRegistrationService : FirebaseInstanceIdService
         {
-            // Check to ensure everything's set up right
-            GcmClient.CheckDevice(this);
-            GcmClient.CheckManifest(this);
+            const string TAG = "FirebaseRegistrationService";
 
-            // Register for push notifications
-            System.Diagnostics.Debug.WriteLine("Registering...");
-            GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
-        }
-        catch (Java.Net.MalformedURLException)
-        {
-            CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
-        }
-        catch (Exception e)
-        {
-            CreateAndShowDialog(e.Message, "Error");
-        }
-4. 添加新的 **CreateAndShowDialog** 帮助器方法，如下所示：
-
-        private void CreateAndShowDialog(String message, String title)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-            builder.SetMessage (message);
-            builder.SetTitle (title);
-            builder.Create().Show ();
-        }
-5. 将以下代码添加到 **MainActivity** 类：
-
-        // Create a new instance field for this activity.
-        static MainActivity instance = null;
-
-        // Return the current activity instance.
-        public static MainActivity CurrentActivity
-        {
-            get
+            public override void OnTokenRefresh()
             {
-                return instance;
+                var refreshedToken = FirebaseInstanceId.Instance.Token;
+                Log.Debug(TAG, "Refreshed token: " + refreshedToken);
+                SendRegistrationTokenToAzureNotificationHub(refreshedToken);
+            }
+
+            void SendRegistrationTokenToAzureNotificationHub(string token)
+            {
+                // Update notification hub registration
+                Task.Run(async () =>
+                {
+                    await AzureNotificationHubService.RegisterAsync(TodoItemManager.DefaultManager.CurrentClient.GetPush(), token);
+                });
             }
         }
 
-    这会公开当前的 **MainActivity** 实例，以便在主 UI 线程上执行。
-6. 初始化 **OnCreate** 方法开头的变量 `instance`，如下所示。
+    `FirebaseRegistrationService` 类负责生成用于授权应用程序访问 FCM 的安全令牌。 当应用程序收到来自 FCM 的注册令牌时，会调用 `OnTokenRefresh` 方法。 此方法从 `FirebaseInstanceId.Instance.Token` 属性检索令牌，该属性通过 FCM 以异步方式更新。 很少调用 `OnTokenRefresh` 方法，因为仅当以下情况下才会更新令牌：安装或卸载应用程序、用户删除应用程序数据、应用程序清除实例 ID、令牌的安全性已受到威胁。 此外，FCM 实例 ID 服务将请求应用程序定期刷新其令牌，通常为每 6 个月一次。
 
-        // Set the current instance of MainActivity.
-        instance = this;
-7. 将新的类文件添加到名为 `GcmService.cs` 的 **Droid** 项目，确保文件的顶部存在以下 **using** 语句：
+    `OnTokenRefresh` 方法还会调用 `SendRegistrationTokenToAzureNotificationHub` 方法，该方法用于将用户的注册令牌与 Azure 通知中心相关联。
+
+#### <a name="registering-with-the-azure-notification-hub"></a>注册到 Azure 通知中心
+
+1. 将新类添加到名为 `AzureNotificationHubService` 的 **Droid** 项目，并确保文件顶部存在以下 `using` 语句：
+
+        using System;
+        using System.Threading.Tasks;
+        using Android.Util;
+        using Microsoft.WindowsAzure.MobileServices;
+        using Newtonsoft.Json.Linq;
+
+1. 将空的 `AzureNotificationHubService` 类替换为以下代码：
+
+        public class AzureNotificationHubService
+        {
+            const string TAG = "AzureNotificationHubService";
+
+            public static async Task RegisterAsync(Push push, string token)
+            {
+                try
+                {
+                    const string templateBody = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+                    JObject templates = new JObject();
+                    templates["genericMessage"] = new JObject
+                    {
+                        {"body", templateBody}
+                    };
+
+                    await push.RegisterAsync(token, templates);
+                    Log.Info("Push Installation Id: ", push.InstallationId.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(TAG, "Could not register with Notification Hub: " + ex.Message);
+                }
+            }
+        }
+
+    `RegisterAsync` 方法创建 JSON 格式的简单通知消息模板，并使用 Firebase 注册令牌注册以接收来自通知中心的模板通知。 这可确保从 Azure 通知中心发送的任何通知都将发送到注册令牌所表示的设备。
+
+#### <a name="displaying-the-contents-of-a-push-notification"></a>显示推送通知的内容
+
+1. 将新类添加到名为 `FirebaseNotificationService` 的 **Droid** 项目，并确保文件顶部存在以下 `using` 语句：
 
         using Android.App;
         using Android.Content;
         using Android.Media;
-        using Android.Support.V4.App;
         using Android.Util;
-        using Gcm.Client;
-        using Microsoft.WindowsAzure.MobileServices;
-        using Newtonsoft.Json.Linq;
-        using System;
-        using System.Collections.Generic;
-        using System.Diagnostics;
-        using System.Text;
-8. 在文件顶部的 **using** 语句后、**命名空间**声明前，添加以下权限请求。
+        using Firebase.Messaging;
 
-        [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-        [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-        [assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
-        [assembly: UsesPermission(Name = "android.permission.INTERNET")]
-        [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-        //GET_ACCOUNTS is only needed for android versions 4.0.3 and below
-        [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
-9. 将以下类定义添加到命名空间。
+1. 将空的 `FirebaseNotificationService` 类替换为以下代码：
 
-       [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
-       [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
-       [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "@PACKAGE_NAME@" })]
-       [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "@PACKAGE_NAME@" })]
-       public class PushHandlerBroadcastReceiver : GcmBroadcastReceiverBase<GcmService>
-       {
-           public static string[] SENDER_IDS = new string[] { "<PROJECT_NUMBER>" };
-       }
-
-   > [!NOTE]
-   > 用之前记下的项目编号替换 **<PROJECT_NUMBER>**。    
-   >
-   >
-10. 用以下代码（代码使用新的广播接收器）替换空的 **GcmService** 类：
-
-         [Service]
-         public class GcmService : GcmServiceBase
-         {
-             public static string RegistrationID { get; private set; }
-
-             public GcmService()
-                 : base(PushHandlerBroadcastReceiver.SENDER_IDS){}
-         }
-11. 将以下代码添加到 **GcmService** 类。 这样会重写 **OnRegistered** 事件处理程序并实现 **Register** 方法。
-
-        protected override void OnRegistered(Context context, string registrationId)
+        [Service]
+        [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+        public class FirebaseNotificationService : FirebaseMessagingService
         {
-            Log.Verbose("PushHandlerBroadcastReceiver", "GCM Registered: " + registrationId);
-            RegistrationID = registrationId;
+            const string TAG = "FirebaseNotificationService";
 
-            var push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
-
-            MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));
-        }
-
-        public async void Register(Microsoft.WindowsAzure.MobileServices.Push push, IEnumerable<string> tags)
-        {
-            try
+            public override void OnMessageReceived(RemoteMessage message)
             {
-                const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
+                Log.Debug(TAG, "From: " + message.From);
 
-                JObject templates = new JObject();
-                templates["genericMessage"] = new JObject
-                {
-                    {"body", templateBodyGCM}
-                };
+                // Pull message body out of the template
+                var messageBody = message.Data["message"];
+                if (string.IsNullOrWhiteSpace(messageBody))
+                    return;
 
-                await push.RegisterAsync(RegistrationID, templates);
-                Log.Info("Push Installation Id", push.InstallationId.ToString());
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                Debugger.Break();
-            }
-        }
-
-    请注意，此代码使用模板注册中的 `messageParam` 参数。
-12. 添加以下代码，实现 **OnMessage**：
-
-        protected override void OnMessage(Context context, Intent intent)
-        {
-            Log.Info("PushHandlerBroadcastReceiver", "GCM Message Received!");
-
-            var msg = new StringBuilder();
-
-            if (intent != null && intent.Extras != null)
-            {
-                foreach (var key in intent.Extras.KeySet())
-                    msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
+                Log.Debug(TAG, "Notification message body: " + messageBody);
+                SendNotification(messageBody);
             }
 
-            //Store the message
-            var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
-            var edit = prefs.Edit();
-            edit.PutString("last_msg", msg.ToString());
-            edit.Commit();
-
-            string message = intent.Extras.GetString("message");
-            if (!string.IsNullOrEmpty(message))
+            void SendNotification(string messageBody)
             {
-                createNotification("New todo item!", "Todo item: " + message);
-                return;
-            }
+                var intent = new Intent(this, typeof(MainActivity));
+                intent.AddFlags(ActivityFlags.ClearTop);
+                var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-            string msg2 = intent.Extras.GetString("msg");
-            if (!string.IsNullOrEmpty(msg2))
-            {
-                createNotification("New hub message!", msg2);
-                return;
-            }
-
-            createNotification("Unknown message details", msg.ToString());
-        }
-
-        void createNotification(string title, string desc)
-        {
-            //Create notification
-            var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
-
-            //Create an intent to show ui
-            var uiIntent = new Intent(this, typeof(MainActivity));
-
-            //Use Notification Builder
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-
-            //Create the notification
-            //we use the pending intent, passing our ui intent over which will get called
-            //when the notification is tapped.
-            var notification = builder.SetContentIntent(PendingIntent.GetActivity(this, 0, uiIntent, 0))
-                    .SetSmallIcon(Android.Resource.Drawable.SymActionEmail)
-                    .SetTicker(title)
-                    .SetContentTitle(title)
-                    .SetContentText(desc)
-
-                    //Set the notification sound
+                var notificationBuilder = new Notification.Builder(this)
+                    .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
+                    .SetContentTitle("New Todo Item")
+                    .SetContentText(messageBody)
+                    .SetContentIntent(pendingIntent)
                     .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
+                    .SetAutoCancel(true);
 
-                    //Auto cancel will remove the notification once the user touches it
-                    .SetAutoCancel(true).Build();
-
-            //Show the notification
-            notificationManager.Notify(1, notification);
+                var notificationManager = NotificationManager.FromContext(this);
+                notificationManager.Notify(0, notificationBuilder.Build());
+            }
         }
 
-    这会处理传入通知并将其发送到通知管理器进行显示。
-13. **GcmServiceBase** 还要求实现 **OnUnRegistered** 和 **OnError** 处理程序方法，操作方法如下：
-
-        protected override void OnUnRegistered(Context context, string registrationId)
-        {
-            Log.Error("PushHandlerBroadcastReceiver", "Unregistered RegisterationId : " + registrationId);
-        }
-
-        protected override void OnError(Context context, string errorId)
-        {
-            Log.Error("PushHandlerBroadcastReceiver", "GCM Error: " + errorId);
-        }
+    `OnMessageReceived` 方法（应用程序接收来自 FCM 的通知时调用）提取消息内容并调用 `SendNotification` 方法。 此方法将消息内容转换为运行应用程序时启动的本地通知，并将通知显示在通知区域中。
 
 现在，已准备好在 Android 设备或模拟器上运行的应用中测试推送通知。
 
@@ -418,13 +350,16 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 可以了解有关推送通知的详细信息：
 
+* [从 Azure 移动应用发送推送通知](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [使用 Firebase Cloud Messaging 发送远程通知](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [诊断推送通知问题](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   有多种原因可能导致通知被丢弃或最终未到达设备。 本主题演示如何分析和确定推送通知失败的根本原因。
 
 也可继续学习以下教程之一：
 
 * [向应用添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
-  了解如何使用标识提供者对应用程序的用户进行身份验证。
+  了解如何使用标识提供者对应用的用户进行身份验证。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 

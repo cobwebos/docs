@@ -15,18 +15,18 @@ ms.technology:
 ms.assetid: 
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: eb428b6ce8af85f06506fb9edc2696477d87c70e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD 入门
 现代的标识管理需要一贯的可伸缩性和可靠性，确保只向经过身份验证的用户提供应用程序和服务。 为了充分支持用户对标识管理的需求，IT 部门需要通过某种方式提供对已批准的公用软件即服务 (SaaS) 应用的访问，托管内部业务线应用，甚至还需要通过某些方式来增强本地应用的开发与使用。 满足所有这些要求需要一种基于云的标识管理解决方案。      
 
 Azure Active Directory (Azure AD) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 Azure AD 将核心目录服务、高级标识监管和应用程序访问管理相结合。 Azure AD 的多租户、地理分布、高可用性设计意味着可以依赖它来解决最关键的业务需求。
 
-Azure AD 提供整套标识管理功能，包括同步本地资源信息、可自定义的公司品牌、简单的许可证管理，甚至自助密码管理。  这些易于设置的功能可帮助我们开始使用 Azure AD 来保护基于云的应用程序，简化 IT 流程，削减成本，确保符合企业的合规目标。
+Azure AD 提供整套标识管理功能，包括同步本地资源信息、可自定义的公司品牌、简单的许可证管理，甚至自助密码管理。 这些易于部署的功能可帮助你开始使用 Azure AD 来保护基于云的应用程序、简化 IT 流程、削减成本、确保符合企业的合规目标。
 
 ![Azure AD ](./media/get-started-azure-ad/Azure_Active_Directory.png)
 
@@ -88,6 +88,6 @@ IT 管理员可以让用户通过[自助密码重置 (SSPR)](active-directory-pa
 
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Active Directory 产品页](https://azure.microsoft.com/services/active-directory/)
+[Azure Active Directory 服务页](https://azure.microsoft.com/services/active-directory/)
 
 [Azure Active Directory 定价信息页](https://azure.microsoft.com/pricing/details/active-directory/)

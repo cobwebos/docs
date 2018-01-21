@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/02/201
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: 58ba74585f650c570b5962408a3935e9cd2e591c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 2afcf918ffa104bd0e13048c152e04992f55ffe1
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
@@ -49,13 +49,13 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 删除 Microsoft Azure 中的某个自动化帐户时，该帐户中的所有对象都会被删除，包括 Runbook、模块、配置、设置、作业和资产。 在删除帐户后，这些对象不可恢复。  在删除自动化帐户之前，可以参考以下信息来备份该帐户的内容。 
 
 ### <a name="runbooks"></a>Runbook
-可以使用 Azure 管理门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/library/dn690269.aspx) cmdlet 将 Runbook 导出到脚本文件。  可以根据[创建或导入 Runbook](https://msdn.microsoft.com/library/dn643637.aspx) 中所述，将这些脚本文件导入另一个自动化帐户。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/library/dn690269.aspx) cmdlet 将 Runbook 导出到脚本文件。  可以根据[创建或导入 Runbook](https://msdn.microsoft.com/library/dn643637.aspx) 中所述，将这些脚本文件导入另一个自动化帐户。
 
 ### <a name="integration-modules"></a>集成模块
 无法从 Azure 自动化导出集成模块。  必须确保这些模块可在自动化帐户外部使用。
 
 ### <a name="assets"></a>资产
-不能从 Azure 自动化导出[资产](https://msdn.microsoft.com/library/dn939988.aspx)。  使用 Azure 管理门户时，必须记下变量、凭据、证书、连接和计划的详细信息。  然后，必须手动创建导入到另一个自动化中的 Runbook 使用的任何资产。
+不能从 Azure 自动化导出[资产](https://msdn.microsoft.com/library/dn939988.aspx)。  使用 Azure 门户时，必须记下变量、凭据、证书、连接和计划的详细信息。  然后，必须手动创建导入到另一个自动化中的 Runbook 使用的任何资产。
 
 但可以使用 [Azure cmdlet](https://msdn.microsoft.com/library/dn690262.aspx) 检索未加密资产的详细信息，然后保存这些资产供将来参考，或在另一个自动化帐户中创建等效的资产。
 
@@ -64,7 +64,7 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 无法从 Azure 自动化导出证书。  必须确保所有证书在 Azure 外部可用。
 
 ### <a name="dsc-configurations"></a>DSC 配置
-可以使用 Azure 管理门户或 Windows PowerShell 中的 [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) cmdlet 将配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzureRmAutomationDscConfiguration](https://msdn.microsoft.com/library/mt603485.aspx) cmdlet 将配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自动化中的异地复制
 Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他地理区域以实现冗余。 可以在设置帐户时选择主要区域，然后会自动向它分配次要区域。 从主要区域复制的辅助数据将持续更新，以防数据丢失。  
@@ -75,7 +75,7 @@ Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他�
 | --- | --- |
 | 美国中南部 |美国中北部 |
 | 美国东部 2 |美国中部 |
-| 欧洲西部 |欧洲北部 |
+| 欧洲西部 |北欧 |
 | 东南亚 |东亚 |
 | 日本东部 |日本西部 |
 

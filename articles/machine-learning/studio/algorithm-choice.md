@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: f645890fc5e08dd468002c1ff0af79ba636ccce3
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>如何选择 Microsoft Azure 机器学习的算法
 “应使用何种机器学习算法？”这一问题的答案 始终是“视情况而定。” 这取决于数据的大小、质量和性质。 这取决于想用算法做什么。 这取决于算法的数学如何转换为所使用的计算机的指令。 还取决于可用时间的长短。 即使是经验最丰富的数据科学家也无法在试用之前判断哪种算法执行效果最佳。
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/19/2017
 有时，它们都不是最佳选择。 它们本是根据经验法则提出的建议，因此并非十分精确。
 多个交谈过的数据科学家都表示，找到最佳算法的唯一确定方法就是尝试所有算法。
 
-下面是 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)。
+下面是 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)。
 
 > [!TIP]
 > 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
@@ -122,7 +122,7 @@ ms.lasthandoff: 12/19/2017
 | [一对多](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |查看所选双类方法的属性 |
 | **回归** | | | | | |
 | [线性](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
-| [贝叶斯线性](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |#N/A | |
+| [贝叶斯线性](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
 | [决策林](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [提升决策树](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |内存占用量大 |
 | [快速林分位](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |分发而不是点预测 |
@@ -130,7 +130,7 @@ ms.lasthandoff: 12/19/2017
 | [泊松](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |从技术上讲是对数线性。 用于预测计数 |
 | [序号](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |用于预测排序 |
 | **异常情况检测** | | | | | |
-| [支持向量机](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |#N/A |尤其适用于大型特征集 |
+| [支持向量机](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |尤其适用于大型特征集 |
 | [PCA-based anomaly detection](https://msdn.microsoft.com/library/azure/dn913102.aspx)（基于 PCA 的异常情况检测） | |○ |● |3 | |
 | [K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |聚类算法 |
 

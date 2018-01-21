@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: roastala
-ms.openlocfilehash: 5f45a500c7cc28b6d6ad3fcac780791d43067ff3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a43dc7162be4b2f3cfd122c6a87921caf2e3e418
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建文本分析模型
 可以使用 Azure 机器学习构建和实现文本分析模型的操作化。 例如，这些模型可以帮助你解决文档分类或情绪分析问题。
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 在本教程中，当我们使用“Amazon 书评数据集”逐步解说情绪分析模型时，可以学到这些步骤（请参阅研究报告 ”Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification”，作者：Association of Computational Linguistics (ACL) 的 John Blitzer、Mark Dredze 和 Fernando Pereira，2007 年）。此数据集是由评论分数（1-2 或 4-5）和自由格式文字组成。 目标是预测评论分数：低 (1-2) 或高 (4-5)。
 
-可以在 Cortana Intelligence 库中找到本教程中涵盖的实验：
+可以在 Azure AI 库中找到本教程中涵盖的实验：
 
 [预测书评](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 

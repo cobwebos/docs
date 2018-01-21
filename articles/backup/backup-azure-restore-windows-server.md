@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/16/2017
+ms.date: 1/4/2018
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3444b13972ab9e5c435fc009e8ddb51bcafb1a41
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>使用 Resource Manager 部署模型将文件还原到 Windows Server 或 Windows 客户端计算机
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/21/2017
 > 如果想要使用“即时还原”来还原数据，请安装 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/en-us/help/3216528?preview)。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/en-us/help/3216528?preview)以获取支持“即时还原”的区域的最新列表。 “即时还原”目前**并非**在所有区域都可用。
 >
 
-“即时还原”可以在 Azure 门户的恢复服务保管库中使用，也可以在经典门户的备份保管库中使用。 如果要使用即时还原，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
+在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用即时还原，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -135,11 +135,11 @@ ms.lasthandoff: 12/21/2017
 
 10. 在“浏览和恢复文件”窗格中，单击“浏览”打开 Windows 资源管理器并找到所需的文件和文件夹。
 
-    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
+    ![加密](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
 11. 在 Windows 资源管理器中，从恢复卷复制文件和/或文件夹，并将其粘贴到“目标计算机”位置。 可以从恢复卷直接打开或流式传输文件，并验证是否恢复了正确的版本。
 
-    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
+    ![加密](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
 12. 完成还原文件和/或文件夹后，请在“浏览和恢复文件”窗格中单击“卸载”。 然后单击“是”，确认要卸载该卷。
 

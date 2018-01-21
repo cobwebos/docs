@@ -4,7 +4,7 @@ description: "构建一个 Apache Spark 流式处理示例，用于演示如何�
 keywords: "apache spark 流式处理,spark 流式处理,spark 示例,apache spark 流式处理示例,事件中心 azure 示例,spark 示例"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: a542295e91a641289fa4261920a08eddbad6a217
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.author: jgao
+ms.openlocfilehash: e0486d2c5f78da1d1e4a12703f120eccef43c305
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="apache-spark-structured-streaming-on-hdinsight-to-process-events-from-event-hubs"></a>使用 HDInsight 中的 Apache Spark 结构化流处理事件中心的事件
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/01/2017
 1. 编译并在本地工作站上运行一个示例事件生成者应用程序，用于生成要发送到事件中心的事件。
 2. 使用 [Spark Shell](apache-spark-shell.md) 定义并运行一个简单的 Spark 结构化流应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/01/2017
 
 5. 生成的应用程序需要 Spark 流事件中心包。 若要运行 Spark Shell 以便自动从 [Maven 中心](https://search.maven.org)检索此依赖项，请务必按如下所示提供 packages 开关和 Maven 坐标：
 
-        spark-shell --packages "com.microsoft.azure:spark-streaming-eventhubs_2.11:2.1.0"
+        spark-shell --packages "com.microsoft.azure:spark-streaming-eventhubs_2.11:2.1.5"
 
 6. Spark Shell 完成加载后，应会看到：
 
@@ -92,10 +92,10 @@ ms.lasthandoff: 12/01/2017
             ____              __
             / __/__  ___ _____/ /__
             _\ \/ _ \/ _ `/ __/  '_/
-        /___/ .__/\_,_/_/ /_/\_\   version 2.1.0.2.6.0.10-29
+        /___/ .__/\_,_/_/ /_/\_\   version 2.1.1.2.6.2.3-1
             /_/
                 
-        Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_131)
+        Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_151)
         Type in expressions to have them evaluated.
         Type :help for more information.
 
@@ -113,8 +113,12 @@ ms.lasthandoff: 12/01/2017
             "eventhubs.progressTrackingDir" -> "/eventhubs/progress",
             "eventhubs.sql.containsProperties" -> "true"
             )
+            
+8. 如果查看以下格式的与事件中心兼容的终结点，则显示 `iothub-xxxxxxxxxx` 的部分是与事件中心兼容的命名空间名称并且可用于 `eventhubs.namespace`。 字段 `SharedAccessKeyName` 可用于 `eventhubs.policyname`，而 `SharedAccessKey` 可用于 `eventhubs.policykey`： 
 
-8. 将修改后的代码片段粘贴到等待中的 scala> 提示符，然后按回车键。 应看到如下输出：
+        Endpoint=sb://iothub-xxxxxxxxxx.servicebus.windows.net/;SharedAccessKeyName=xxxxx;SharedAccessKey=xxxxxxxxxx 
+
+9. 将修改后的代码片段粘贴到等待中的 scala> 提示符，然后按回车键。 应看到如下输出：
 
         scala> val eventhubParameters = Map[String, String] (
             |       "eventhubs.policyname" -> "RootManageSharedAccessKey",
@@ -128,31 +132,31 @@ ms.lasthandoff: 12/01/2017
             |     )
         eventhubParameters: scala.collection.immutable.Map[String,String] = Map(eventhubs.sql.containsProperties -> true, eventhubs.name -> hub1, eventhubs.consumergroup -> $Default, eventhubs.partition.count -> 2, eventhubs.progressTrackingDir -> /eventhubs/progress, eventhubs.policykey -> 2P1Q17Wd1rdLP1OZQYn6dD2S13Bb3nF3h2XZD9hvyyU, eventhubs.namespace -> hdiz-docs-eventhubs, eventhubs.policyname -> RootManageSharedAccessKey)
 
-9. 接下来，通过指定源来创作 Spark 结构化流查询。 将以下内容粘贴到 Spark Shell，然后按回车键。
+10. 接下来，通过指定源来创作 Spark 结构化流查询。 将以下内容粘贴到 Spark Shell，然后按回车键。
 
         val inputStream = spark.readStream.
         format("eventhubs").
         options(eventhubParameters).
         load()
 
-10. 应看到如下输出：
+11. 应看到如下输出：
 
         inputStream: org.apache.spark.sql.DataFrame = [body: binary, offset: bigint ... 5 more fields]
 
-11. 接下来创作查询，以便将其输出写入控制台。 为此，请将以下内容粘贴到 Spark Shell 并按回车键。
+12. 接下来创作查询，以便将其输出写入控制台。 为此，请将以下内容粘贴到 Spark Shell 并按回车键。
 
         val streamingQuery1 = inputStream.writeStream.
         outputMode("append").
         format("console").start().awaitTermination()
 
-12. 此时，应会看到一些以如下所示输出开头的批
+13. 此时，应会看到一些以如下所示输出开头的批
 
         -------------------------------------------
         Batch: 0
         -------------------------------------------
         [Stage 0:>                                                          (0 + 2) / 2]
 
-13. 此内容后接处理每个事件微批后生成的输出结果。 
+14. 此内容后接处理每个事件微批后生成的输出结果。 
 
         -------------------------------------------
         Batch: 0
@@ -184,8 +188,8 @@ ms.lasthandoff: 12/01/2017
         +--------------------+------+---------+------------+---------+------------+----------+
         only showing top 20 rows
 
-14. 当事件生成者发送的新事件抵达时，此结构化流查询会处理这些事件。
-15. 完成运行此示例后，请务必删除 HDInsight 群集。
+15. 当事件生成者发送的新事件抵达时，此结构化流查询会处理这些事件。
+16. 完成运行此示例后，请务必删除 HDInsight 群集。
 
 
 

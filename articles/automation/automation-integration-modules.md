@@ -11,23 +11,23 @@ ms.service: automation
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 01/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 589043f45a87595c9356cd8143beca23a4f83517
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 4eddce9d355a4b709e266129935766376d352045
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Azure 自动化集成模块
-PowerShell 是 Azure 自动化背后的基本技术。 由于 Azure 自动化是基于 PowerShell 构建的，因此 PowerShell 模块对于 Azure 自动化的可扩展性很重要。 在本文中，我们将向你详细介绍 Azure 自动化如何使用 PowerShell 模块（也称“集成模块”），以及如何根据最佳实践创建自己的 PowerShell 模块，确保这些模块在 Azure 自动化中作为集成模块来运行。 
+PowerShell 是 Azure 自动化背后的基本技术。 由于 Azure 自动化是基于 PowerShell 构建的，因此 PowerShell 模块对于 Azure 自动化的可扩展性很重要。 在本文中，我们将向你详细介绍 Azure 自动化如何使用 PowerShell 模块（也称“集成模块”），以及如何根据最佳做法创建自己的 PowerShell 模块，确保这些模块在 Azure 自动化中作为集成模块来运行。 
 
 ## <a name="what-is-a-powershell-module"></a>什么是 PowerShell 模块？
-PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作流、Runbook 使用的 PowerShell cmdlet（例如 **Get-Date** 或 **Copy-Item**），以及可以通过 PowerShell DSC 配置使用的 PowerShell DSC 资源（例如 WindowsFeature 或文件）。 PowerShell 的所有功能都是通过 cmdlet 和 DSC 资源公开的，所有 cmdlet/DSC 资源都受 PowerShell 模块支持，许多模块是 PowerShell 自带的。 例如，**Get-Date** cmdlet 属于 Microsoft.PowerShell.Utility PowerShell 模块，**Copy-Item** cmdlet 属于 Microsoft.PowerShell.Management PowerShell 模块，Package DSC 资源属于 PSDesiredStateConfiguration PowerShell 模块。 这些模块都是 PowerShell 附带的。 但是，许多 PowerShell 模块不是 PowerShell 附带的，而是通过第一方或第三方产品（例如 System Center 2012 Configuration Manager）分发的，或者由广大的 PowerShell 社区在 PowerShell 库这样的地方分发的。  这些模块很有用，因为模块可以通过封装的功能简化复杂的任务。  可以详细了解 [MSDN 上的 PowerShell 模块](https://msdn.microsoft.com/library/dd878324%28v=vs.85%29.aspx)。 
+PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作流、Runbook 使用的 PowerShell cmdlet（例如 **Get-Date** 或 **Copy-Item**），以及可以通过 PowerShell DSC 配置使用的 PowerShell DSC 资源（例如 WindowsFeature 或文件）。 PowerShell 的所有功能都是通过 cmdlet 和 DSC 资源公开的，所有 cmdlet/DSC 资源都受 PowerShell 模块支持，许多模块是 PowerShell 自带的。 例如，**Get-Date** cmdlet 属于 Microsoft.PowerShell.Utility PowerShell 模块，**Copy-Item** cmdlet 属于 Microsoft.PowerShell.Management PowerShell 模块，Package DSC 资源属于 PSDesiredStateConfiguration PowerShell 模块。 这些模块都是 PowerShell 附带的。 但是，许多 PowerShell 模块不是 PowerShell 附带的，而是通过第一方或第三方产品（例如 System Center 2012 Configuration Manager）分发的，或者由广大的 PowerShell 社区在 PowerShell 库这样的地方分发的。 这些模块很有用，因为模块可以通过封装的功能简化复杂的任务。  可以详细了解 [MSDN 上的 PowerShell 模块](https://msdn.microsoft.com/library/dd878324%28v=vs.85%29.aspx)。 
 
 ## <a name="what-is-an-azure-automation-integration-module"></a>什么是 Azure 自动化集成模块？
-集成模块与 PowerShell 模块并没有很大的不同。 集成模块就是 PowerShell 模块，只是选择性地包含了另一个文件 - 元数据文件，该文件指定的 Azure 自动化连接类型需要在 Runbook 中用于模块的 cmdlet。 不管是否为选择性文件，这些 PowerShell 模块均可导入到 Azure 自动化中，这样其 cmdlet 就可以在 Runbook 中使用，其 DSC 资源就可以在 DSC 配置中使用。 Azure 自动化在后台存储这些模块，在执行 Runbook 作业和 DSC 编译作业时将其载入 Azure 自动化沙盒中，并在其中执行 Runbook 以及编译 DSC 配置。  此外还会自动将模块中的任何 DSC 资源放置在自动化 DSC 拉取服务器上，供那些尝试应用 DSC 配置的计算机拉取。  
+集成模块与 PowerShell 模块并没有很大不同。 集成模块就是 PowerShell 模块，只是选择性地包含了另一个文件 - 元数据文件，该文件指定的 Azure 自动化连接类型需要在 Runbook 中用于模块的 cmdlet。 不管是否为选择性文件，这些 PowerShell 模块均可导入到 Azure 自动化中，这样其 cmdlet 就可以在 Runbook 中使用，其 DSC 资源就可以在 DSC 配置中使用。 Azure 自动化在后台存储这些模块，在执行 Runbook 作业和 DSC 编译作业时将其载入 Azure 自动化沙盒中，并在其中执行 Runbook 以及编译 DSC 配置。 此外还会自动将模块中的任何 DSC 资源放置在自动化 DSC 拉取服务器上，供那些尝试应用 DSC 配置的计算机拉取。  
 
 我们在 Azure 自动化中为用户附送许多现成的 Azure PowerShell 模块，以便用户能够立刻使用这些模块进行 Azure 自动化管理，但用户也可以地导入 PowerShell 模块，不管要集成的系统、服务或工具是什么。 
 
@@ -162,7 +162,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     ```
    <br>
 3. 在模块中定义所有 cmdlet 的输出类型。 定义 cmdlet 的输出类型以后，就可以利用设计时 IntelliSense 来确定 cmdlet 的输出属性，供创作时使用。 这在自动化 Runbook 的图形创作过程中特别有用，这种创作过程要求掌握一定程度的设计时知识，以改进用户对模块的使用体验。<br><br> ![图形 Runbook 输出类型](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> 这类似于 PowerShell ISE 中 cmdlet 输出的“预输入”功能，不需要运行。<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
-4. 模块中的 cmdlet 不应使用复杂对象类型作为参数。 PowerShell 工作流不同于 PowerShell，因为前者采用反序列化格式存储复杂类型。 基元类型仍为基于类型，而复杂类型则转换为反序列化版本，后者实质上是属性包。 例如，如果在 Runbook（或 PowerShell 工作流）中使用了 **Get-Process** cmdlet，则会返回 [Deserialized.System.Diagnostic.Process] 类型的对象，而不是所需的 [System.Diagnostic.Process] 类型。 此类型包含所有与非反序列化类型相同的属性，但不包含相关方法。 如果尝试将该值作为参数传递给某个 cmdlet，而此 cmdlet 需要该参数的值为 [System.Diagnostic.Process]，则会收到以下错误：*无法处理参数 &quot;process&quot; 的参数转换。错误：无法将 "System.Diagnostics.Process (CcmExec)" 值从类型 "Deserialized.System.Diagnostics.Process" 转换为类型 "System.Diagnostics.Process"。*   这是因为，预期的 [System.Diagnostic.Process] 类型与给定的 [Deserialized.System.Diagnostic.Process] 类型存在类型不匹配的情况。 若要解决此问题，必须确保模块的 cmdlet 不使用复杂类型作为参数。 下面是错误的处理方式。
+4. 模块中的 cmdlet 不应使用复杂对象类型作为参数。 PowerShell 工作流不同于 PowerShell，因为前者采用反序列化格式存储复杂类型。 基元类型仍为基元类型，而复杂类型则转换为反序列化版本，后者实质上是属性包。 例如，如果在 Runbook（或 PowerShell 工作流）中使用了 **Get-Process** cmdlet，则会返回 [Deserialized.System.Diagnostic.Process] 类型的对象，而不是所需的 [System.Diagnostic.Process] 类型。 此类型包含所有与非反序列化类型相同的属性，但不包含相关方法。 如果尝试将该值作为参数传递给某个 cmdlet，而此 cmdlet 需要该参数的值为 [System.Diagnostic.Process]，则会收到以下错误：*无法处理参数 'process' 的参数转换。错误：无法将 "System.Diagnostics.Process (CcmExec)" 值从类型 "Deserialized.System.Diagnostics.Process" 转换为类型 "System.Diagnostics.Process"。*   这是因为，预期的 [System.Diagnostic.Process] 类型与给定的 [Deserialized.System.Diagnostic.Process] 类型存在类型不匹配的情况。 若要解决此问题，必须确保模块的 cmdlet 不使用复杂类型作为参数。 下面是错误的处理方式。
    
     ```
     function Get-ProcessDescription {
@@ -205,7 +205,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ```
    <br>
-6. 该模块应完全包含在能够进行 Xcopy 操作的包中。 Azure 自动化模块是在需要执行 Runbook 时分发到自动化沙盒中的，因此在使用时需独立于运行时所在的主机。 这意味着，应该可以在压缩模块包后将其移到任何其他使用相同 PowerShell 版本或更新版本的主机上，并将其导入该主机的 PowerShell 环境中，然后就能正常地运行该模块包了。 因此，该模块不应依赖于模块文件夹（即导入到 Azure 自动化中时需要进行压缩的文件夹）外的任何文件，也不应依赖于主机上任何特殊的注册表设置，例如在安装产品时进行的设置。 如果不遵循此最佳实践，将无法在 Azure 自动化中使用该模块。  
+6. 该模块应完全包含在能够进行 Xcopy 操作的包中。 Azure 自动化模块是在需要执行 Runbook 时分发到自动化沙盒中的，因此在使用时需独立于运行时所在的主机。 这意味着，应该可以在压缩模块包后将其移到任何其他使用相同 PowerShell 版本或更新版本的主机上，并将其导入该主机的 PowerShell 环境中，就能正常地运行该模块包了。 因此，该模块不应依赖于模块文件夹（即导入到 Azure 自动化中时需要进行压缩的文件夹）外的任何文件，也不应依赖于主机上任何特殊的注册表设置，例如在安装产品时进行的设置。 如果不遵循此最佳实践，将无法在 Azure 自动化中使用该模块。  
 
 ## <a name="next-steps"></a>后续步骤
 

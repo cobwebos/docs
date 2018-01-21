@@ -8,8 +8,8 @@ sql-database-single-database-resources.md
 | **性能级别** | **基本** |
 | :--- | --: |
 | 最大 DTU 数 | 5 |
-| 包含的存储 (GB) | #N/A |
-| 最大存储选择 (GB) | #N/A |
+| 包含的存储 (GB) | 2 |
+| 最大存储选择 (GB) | 2 |
 | 最大内存中 OLTP 存储 (GB) |不适用 |
 | 最大并发工作线程数（请求数） | 30 |
 | 最大并发登录数 | 30 |
@@ -46,7 +46,7 @@ sql-database-single-database-resources.md
 | 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
 | 包含的存储 (GB) | 500 | 500 | 500 | 500 | 4096 | 4096 |
 | 最大存储选择 (GB)* | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
-| 最大内存中 OLTP 存储 (GB) | 1 | #N/A | 4 | 8 | 14 | 32 |
+| 最大内存中 OLTP 存储 (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | 最大并发工作线程数（请求数）| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | 最大并发登录数 | 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | 最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -58,7 +58,7 @@ sql-database-single-database-resources.md
 | 最大 DTU 数 | 125 | 250 | 500 | 1000 |
 | 包含的存储 (GB) | 500 | 500 | 500 | 500 |
 | 最大存储选择 (GB)* | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 |
-| 最大内存中 OLTP 存储 (GB) | 1 | #N/A | 4 | 8 |
+| 最大内存中 OLTP 存储 (GB) | 1 | 2 | 4 | 8 |
 | 最大并发工作线程数（请求数）| 200 | 400 | 800 | 1600 |
 | 最大并发登录数 | 200 | 400 | 800 | 1600 |
 | 最大并发会话数 | 30000 | 30000 | 30000 | 30000 |
@@ -67,7 +67,7 @@ sql-database-single-database-resources.md
 > [!IMPORTANT]
 > \* 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
 >
->\* 在高级层中，以下区域目前提供的存储超出 1 TB：美国东部 2、美国西部、美国弗吉尼亚州政府、西欧、德国中部、东南亚、日本东部、澳大利亚东部、加拿大中部和加拿大东部。 请参阅 [P11-P15 当前限制](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+>\*在高级层中，以下区域目前提供的存储超出 1 TB：澳大利亚东部、澳大利亚东南部、加拿大中部、加拿大东部、法国中部、德国中部、日本东部、韩国中部、美国中南部、东南亚、美国东部 2、美国西部、美国弗吉尼亚州政府和西欧。 请参阅 [P11-P15 当前限制](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 > 
 >\*\* 标准池中每个数据库的最大 DTU 数至少为 200 DTU 的为预览版。
 >

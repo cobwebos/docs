@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 9ceb299b3ee521aeefb45c21920bd3b6e0049d26
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>使用数据收集来收集模型数据
 
-可使用 Azure Machine Learning Workbench 中的模型数据收集功能对 Web 服务中的模型输入值和预测值进行存档。
+可使用 Azure 机器学习中的模型数据收集功能对 Web 服务中的模型输入值和预测值进行存档。
 
 ## <a name="install-the-data-collection-package"></a>安装数据收集包
 可以在 Linux 和 Windows 上本机安装数据收集库。
@@ -37,6 +37,12 @@ ms.lasthandoff: 12/08/2017
 然后，运行以下命令：
 
     pip install azureml.datacollector
+
+## <a name="set-environment-variables"></a>设置环境变量。
+
+模型数据收集依赖于两个环境变量。 AML_MODEL_DC_STORAGE_ENABLED 必须设置为 **true**（全小写），而 AML_MODEL_DC_STORAGE 必须设置为要存储数据的 Azure 存储帐户的连接字符串。
+
+在 Azure 中的群集上运行 Web 服务时，已为你设置这些环境变量。 在本地运行时，必须自行设置这些环境变量。 如果使用 Docker，请使用 docker run 命令的 -e 参数传递环境变量。
 
 ## <a name="collect-data"></a>收集数据
 

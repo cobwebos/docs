@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库特定于行业的解决方案 | Microsoft Docs"
-description: "在 Cortana Intelligence 库中发现行业解决方案。"
+title: "Azure AI 库特定于行业的解决方案 | Microsoft Docs"
+description: "在 Azure AI 库中发现行业解决方案。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 0dec0f47eced45c496399bc6b84169116dcc551d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b9f835620153d0e68e8c5504eab00d7b6e0f1e8
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-industry-specific-solutions-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现特定于行业的解决方案
+# <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现特定于行业的解决方案
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="industry-specific-cortana-intelligence-solutions"></a>特定于行业的 Cortana Intelligence 解决方案
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 单击“查看全部”即可查看库中所有特定于行业的资源。
 在本页中，可以浏览库中的所有资源。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![添加自己的备注](./media/gallery-how-to-use-contribute-publish/comments.png)
 

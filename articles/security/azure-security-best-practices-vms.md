@@ -1,5 +1,5 @@
 ---
-title: "Azure 虚拟机安全最佳做法 | Microsoft Docs"
+title: "Azure 虚拟机安全最佳做法"
 description: "本文提供了可用于 Azure 中虚拟机的各项最佳安全做法。"
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -114,7 +114,7 @@ Azure 提供的库存映像会定期更新，以包含最新的 Windows 更新�
 
 若要了解安全中心如何帮助识别云中 VM 的潜在威胁，请观看以下视频：
 
-<iframe src="https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response/player]
 
 没有为 VM 实施强大安全保护措施的组织将意识不到未经授权的用户试图绕过组织建立的安全控制机制。
 

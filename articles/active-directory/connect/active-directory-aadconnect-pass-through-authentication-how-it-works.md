@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: e8eb95649d9af1c8bf801df82f0f78aae0656d9e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cd42278048b8162a06af21de04397a959be33586
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 直通身份验证：技术深入研究
 本文简要介绍了 Azure Active Directory (Azure AD) 直通身份验证的工作原理。 有关深入的技术和安全信息，请参阅[深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)一文。
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/11/2017
 2. 如果用户尚未登录，该用户将被重定向到 Azure AD **用户登录**页面。
 3. 用户在 Azure AD 登录页中输入其用户名和密码，然后选择“登录”按钮。
 4. 收到登录请求后，Azure AD 将该用户名和密码（已使用公钥加密）排入队列。
-5. 本地身份验证代理从队列中检索用户名和已加密的密码。
+5. 本地身份验证代理从队列中检索用户名和已加密的密码。 请注意，代理不会频繁地从队列中轮询请求，但会通过预先建立的持久性连接检索请求。
 6. 代理使用其私钥解密密码。
 7. 代理使用标准 Windows API（类似于 Active Directory 联合身份验证服务 (AD FS) 使用的机制）针对 Active Directory 验证该用户名和密码。 用户名可以是本地默认用户名（通常为 `userPrincipalName`），也可以是在 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
 8. 本地 Active Directory 域控制器 (DC) 将评估请求并向代理返回适当的响应（成功、失败、密码过期或用户被锁定）。

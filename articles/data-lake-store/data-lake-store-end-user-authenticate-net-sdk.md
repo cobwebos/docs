@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 43cb2225d7fbf2fc7f8d93c78415f0f2c1a3fa25
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>使用 .NET SDK 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/21/2017
 
 本文介绍了如何使用 .NET SDK 进行 Azure Data Lake Store 最终用户身份验证。 有关使用 .NET SDK 的 Data Lake Store 服务到服务身份验证，请参阅[使用 .NET SDK 进行 Data Lake Store 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/21/2017
    | --- | --- |
    | 类别 |模板/Visual C#/Windows |
    | 模板 |控制台应用程序 |
-   | Name |CreateADLApplication |
+   | 名称​​ |CreateADLApplication |
 
 4. 单击“确定”以创建该项目  。
 
@@ -62,27 +62,32 @@ ms.lasthandoff: 12/21/2017
         ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器”。
 
-6. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
+6. 打开 **Program.cs**
+7. 将 using 语句替换为以下行：
 
-        using System;
-        using System.IO;
-        using System.Linq;
-        using System.Text;
-        using System.Threading;
-        using System.Collections.Generic;
-                
-        using Microsoft.Rest;
-        using Microsoft.Rest.Azure.Authentication;
-        using Microsoft.Azure.Management.DataLake.Store;
-        using Microsoft.Azure.Management.DataLake.Store.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading;
+    using System.Collections.Generic;
+            
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure.Authentication;
+    using Microsoft.Azure.Management.DataLake.Store;
+    using Microsoft.Azure.Management.DataLake.Store.Models;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    ```     
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
 在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD 本机应用程序（作为必备组件列出）检索到的值。 此代码片段允许使用 Data Lake Store **以交互方式**对应用程序进行身份验证，这意味着会提示你输入 Azure 凭据。
 
 为了便于使用，下面的代码片段针对客户端 ID 和重定向 URI 使用了对任何 Azure 订阅都有效的默认值。 在下面的代码片段中，只需要提供你的租户 ID 的值。 可以使用[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id) 中提供的说明来检索租户 ID。
     
+- 将 Main() 函数替换为以下代码：
+
+    ```csharp
     private static void Main(string[] args)
     {
         //User login via interactive popup
@@ -96,6 +101,7 @@ ms.lasthandoff: 12/21/2017
         var armCreds = GetCreds_User_Popup(TENANT, ARM_TOKEN_AUDIENCE, CLIENTID, tokenCache);
         var adlCreds = GetCreds_User_Popup(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, tokenCache);
     }
+    ```
 
 对于以上代码片段，需要注意以下几个问题：
 

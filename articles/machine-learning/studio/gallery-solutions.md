@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库解决方案 | Microsoft Docs"
-description: "在 Cortana Intelligence 库中发现解决方案。"
+title: "Azure AI 库解决方案 | Microsoft Docs"
+description: "在 Azure AI 库中发现解决方案。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 3d249a12b31418b159b3e5391528488f5d9d57a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 813b431b2e8ee22435e302800b7f707f6ba693b9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-solutions-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现解决方案
+# <a name="discover-solutions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现解决方案
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="solutions"></a>解决方案
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
  单击任何解决方案，以打开其详细信息页并了解更多信息。 可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送到解决方案的链接，来邀请其他用户查看页面。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![添加自己的备注](./media/gallery-how-to-use-contribute-publish/comments.png)
 

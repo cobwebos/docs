@@ -9,11 +9,11 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c4cb8acd12cbda5784d0ea48f7782e47f57db8b5
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -200,7 +200,6 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 * **Append**：会将定义的字段集添加到请求
 * **AuditIfNotExists**：如果资源不存在，则启用审核
 * **DeployIfNotExists**：如果资源不存在，则部署一个资源。 目前，只支持通过内置的策略实现这种效果。
-* **DenyIfNotExists**：如果资源不存在，则拒绝创建
 
 对于 **append**，必须提供以下详细信息：
 
@@ -216,7 +215,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 值可以是字符串或 JSON 格式对象。
 
-借助 AuditIfNotExists、DeployIfNotExists 和 DenyIfNotExists，可以评估子资源是否存在，并在该资源不存在时应用规则。 例如，可以要求为所有虚拟网络部署网络观察程序。
+借助 AuditIfNotExists 和 DeployIfNotExists，可以评估子资源是否存在，并在该资源不存在时应用规则和相应的作用。 例如，可以要求为所有虚拟网络部署网络观察程序。
 有关未部署虚拟机扩展时的审核示例，请参阅[如果扩展不存在，则进行审核](scripts/audit-ext-not-exist.md)。
 
 

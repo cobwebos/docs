@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6f38fe1e99c734bf09a403ea93b6487a71110cac
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -37,7 +37,7 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
 * [在创建函数应用时创建连接的 Application Insights 实例](#new-function-app)。
 * [将 Application Insights 实例连接到现有的函数应用](#existing-function-app)。
- 
+
 ### <a name="new-function-app"></a>新建函数应用
 
 在 Function App 的“创建”页上启用 Application Insights：
@@ -64,7 +64,15 @@ Functions 还具有不使用 Application Insights 的内置监视。 我们建�
 
    ![将检测密钥添加到应用设置](media/functions-monitoring/add-ai-key.png)
 
-1. 单击“保存” 。
+1. 单击“ **保存**”。
+
+## <a name="disable-built-in-logging"></a>禁用内置日志记录
+
+如果启用 Application Insights，我们建议你禁用[使用 Azure 存储的内置日志记录](#logging-to-storage)。 内置日志记录对于使用轻工作负荷测试非常有用，但不适合在高负载生产环境中使用。 对于生产监视，建议使用 Application Insights。 如果在生产环境中使用内置日志记录，日志记录可能因 Azure 存储限制而不完整。
+
+若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。
+
+启用 Application Insights 并禁用内置日志记录时，Azure 门户中函数的“监视”选项卡会将你转到 Application Insights。
 
 ## <a name="view-telemetry-data"></a>查看遥测数据
 
@@ -149,7 +157,7 @@ Functions 运行时创建具有以“Host”开头的类别的日志。 例如�
 |------------|---|
 |跟踪       | 0 |
 |调试       | 1 |
-|信息 | #N/A |
+|信息 | 2 |
 |警告     | 3 |
 |错误       | 4 |
 |严重    | 5 |
@@ -464,58 +472,41 @@ module.exports = function (context, req) {
 
 ## <a name="monitoring-without-application-insights"></a>不使用 Application Insights 进行监视
 
-我们建议使用 Application Insights 监视函数，因为它提供更多的数据和更好的方式来分析数据。 但还可以在 Azure 门户页面中为函数应用查找遥测和日志记录数据。 
+我们建议使用 Application Insights 监视函数，因为它提供更多的数据和更好的方式来分析数据。 但还可以在 Azure 门户页面中为函数应用查找日志和遥测数据。
 
-为函数选择“监视”选项卡，获取函数执行的列表。 选择某个函数执行可查看持续时间、输入数据、错误和关联的日志文件。
+### <a name="logging-to-storage"></a>记录到存储
 
-> [!IMPORTANT]
-> 对 Azure Functions 使用[消耗托管计划](functions-overview.md#pricing)时，Function App 中的“监视”磁贴不显示任何数据。 这是因为平台动态地缩放和管理计算实例。 这些指标在消耗计划上没有意义。
+内置日志记录使用 `AzureWebJobsDashboard` 应用设置中的连接字符串所指定的存储帐户。 如果配置了该应用设置，可以在 Azure 门户中看到日志记录数据。 在函数应用页中，选择某个函数，然后选择“监视”选项卡，并获取函数执行的列表。 选择某个函数执行可查看持续时间、输入数据、错误和关联的日志文件。
+
+如果使用 Application Insights 并[禁用了内置日志记录](#disable-built-in-logging)，“监视”选项卡会将你带到 Application Insights。
 
 ### <a name="real-time-monitoring"></a>实时监视
 
-实时监视可通过在函数“监视”选项卡上单击“实时事件流”实现。实时事件流在新浏览器选项卡的图表中显示
+可在本地工作站上使用 [Azure 命令行接口 (CLI) 2.0](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 将日志文件流式传输到命令行会话。  
 
-> [!NOTE]
-> 存在一个已知问题，可能会导致数据无法进行填充。 可能需要关闭包含实时事件流的浏览器选项卡，并再次单击“实时事件流”，让它可以正确填充事件流数据。 
-
-这些统计信息是实时的，但执行数据的实际作图可能会有约 10 秒钟的延迟。
-
-### <a name="monitor-log-files-from-a-command-line"></a>从命令行监视日志文件
-
-可在本地工作站上使用 Azure 命令行接口 (CLI) 1.0 或 PowerShell 将日志文件流式传输到命令行会话。
-
-### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 监视函数应用日志文件
-
-若要开始，请[安装 Azure CLI 1.0](../cli-install-nodejs.md)，并[登录到 Azure](/cli/azure/authenticate-azure-cli)。
-
-使用以下命令来启用经典服务管理模式，选择订阅，然后流式传输日志文件：
+对于 Azure CLI 2.0，使用以下命令登录，选择订阅并流式传输日志文件：
 
 ```
-azure config mode asm
-azure account list
-azure account set <subscriptionNameOrId>
-azure site log tail -v <function app name>
+az login
+az account list
+az account set <subscriptionNameOrId>
+az appservice web log tail --resource-group <resource group name> --name <function app name>
 ```
 
-### <a name="monitor-function-app-log-files-with-powershell"></a>使用 PowerShell 监视函数应用日志文件
-
-若要开始，请[安装和配置 Azure PowerShell](/powershell/azure/overview)。
-
-使用以下命令来添加 Azure 帐户，选择订阅，然后流式传输日志文件：
+对于 Azure PowerShell，使用以下命令添加 Azure 帐户，选择订阅并流式传输日志文件：
 
 ```
 PS C:\> Add-AzureAccount
 PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "MyFunctionAppSubscription" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
+PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
+PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-有关详细信息，请参阅[如何：流式传输 Web 应用的日志](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)。 
+有关详细信息，请参阅[如何流式传输日志](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)。
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [了解有关 Application Insights 的详细信息](https://docs.microsoft.com/azure/application-insights/)
+有关详细信息，请参阅以下资源：
 
-> [!div class="nextstepaction"]
-> [了解有关 Functions 使用的日志记录框架的详细信息](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
+* [Application Insights](/azure/application-insights/)
+* [ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/)

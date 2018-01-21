@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: 57e8274d67bff86832d9cd070b781ade6575dee7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: c7aadb4e535ed221f882f251324b6d4e633c2d5e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 现已推出：Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)。 了解[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
 
 ![吞吐量计算器][5]
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 由 Microsoft 提供，是全球分布式多模型数据库。 使用 Azure Cosmos DB，无需租用虚拟机、部署软件或监视数据库。 Azure Cosmos DB 由 Microsoft 顶尖工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 可以使用自己选择的 API 访问数据，例如 [SQL API](documentdb-introduction.md)、[MongoDB API](mongodb-introduction.md)、[表 API ](table-introduction.md)以及通过[图形 API](graph-introduction.md) 使用 Gremlin，这些都是本机支持的。 Azure Cosmos DB 的货币是请求单位 (RU)。 借助 RU，无需保留读取/写入容量或预配 CPU、内存和 IOPS。
 
 Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图形查询等）的许多 API。 并非所有请求都是相同的，因此系统会根据请求所需的计算量为它们分配规范化数量的请求单位。 操作的请求单位数是确定性的，可以通过响应标头跟踪 Azure Cosmos DB 中的任何操作消耗的请求单位数。 
@@ -55,7 +55,7 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>指定 Azure Cosmos DB 中的请求单位容量
 启用新集合、表或图形时，指定希望保留的每秒请求单位数（每秒 RU 数）。 Azure Cosmos DB 会根据预配的吞吐量分配物理分区来托管集合，并拆分/重新均衡分区中不断增长的数据。
 
-如果为集合预配的请求单位数大于或等于 2,500，Azure Cosmos DB 要求指定分区键。 以后将集合的吞吐量扩展到 2,500 个请求单位以上时，也需要使用分区键。 因此，强烈建议在创建容器时配置[分区键](partition-data.md)，不管初始吞吐量有多大。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放集合/表/图形与请求。 
+可以“固定”或“无限制”模式创建 Azure Cosmos DB 容器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放集合/表/图形与请求。 
 
 > [!NOTE]
 > 分区键是一个逻辑边界而不是物理边界。 因此，不需要限制非重复分区键值的数目。 事实上，分区键值宁多勿少，因为 Azure Cosmos DB 提供的负载均衡选项较多。
@@ -210,7 +210,7 @@ await client.ReplaceOfferAsync(offer);
 5. 记录应用程序使用的任何自定义脚本（存储的过程、触发器、用户自定义函数）的请求单位费用。
 6. 根据给定的预计每秒运行的操作估计数计算所需的请求单位。
 
-### <a id="GetLastRequestStatistics"></a>使用 API for MongoDB 的 GetLastRequestStatistics 命令
+## <a id="GetLastRequestStatistics"></a>使用 API for MongoDB 的 GetLastRequestStatistics 命令
 API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索指定操作的请求费用。
 
 例如，在 Mongo Shell 中，执行所需的操作来验证请求费用。
@@ -302,7 +302,7 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 
 下表显示了此项的典型操作的请求单位大概费用（假定帐户一致性级别设置为“会话”且所有项都自动编制索引）：
 
-| 操作 | 请求单位费用 |
+| Operation | 请求单位费用 |
 | --- | --- |
 | 创建项目 |~15 RU |
 | 读取项 |~1 RU |

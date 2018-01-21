@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库教程 | Microsoft Docs"
-description: "在 Cortana Intelligence 库中发现并共享教程。"
+title: "Azure AI 库教程 | Microsoft Docs"
+description: "在 Azure AI 库中发现和共享教程。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: eee86899c14905655c4217d5fcf3865ca594366f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be5ecf81c71dbf39593b2afb46ac0ae09ede466a
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-tutorials-in-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现并共享教程
+# <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享教程
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="tutorials"></a>教程
-Cortana Intelligence 库提供了多个[教程](https://gallery.cortanaintelligence.com/tutorials)，可向用户演示机器学习技术和概念。 教程还可能介绍用于解决机器学习问题的高级方法。
+Azure AI 提供了多个[教程](https://gallery.cortanaintelligence.com/tutorials)，可向用户演示机器学习技术和概念。 教程还可能介绍用于解决机器学习问题的高级方法。
 
 ## <a name="discover"></a>发现
 若要浏览[库中](http://gallery.cortanaintelligence.com)的教程，请在“更多”下选择“教程”。
@@ -35,7 +35,7 @@ Cortana Intelligence 库提供了多个[教程](https://gallery.cortanaintellige
 
 可在教程详细信息页上获取有关教程的详细信息。 若要打开某个教程详细信息页，请选择教程。 在教程详细信息页的“评论”部分中，可对教程进行评论、提供反馈或提问。 甚至可以在 Twitter 或 LinkedIn 上与好友或同事分享教程。 还可以通过电子邮件发送指向教程详细信息页的链接，来邀请其他用户查看该页面。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![添加自己的备注](./media/gallery-how-to-use-contribute-publish/comments.png)
 
@@ -46,7 +46,7 @@ Cortana Intelligence 库提供了多个[教程](https://gallery.cortanaintellige
 
 1. 使用 Microsoft 帐户登录到库。
 
-2. 选择页面顶部的图像，然后选择姓名。
+2. 选择页面顶部的图像，并选择你的姓名。
   
     ![选择帐户名](./media/gallery-tutorials/click-account-name.png)
 
@@ -70,9 +70,9 @@ Cortana Intelligence 库提供了多个[教程](https://gallery.cortanaintellige
   
     ![选择“公开”或“未列出”](./media/gallery-tutorials/create-tutorial-page-3.png)
 
-7. 选择“创建” 。
+7. 选择“创建”。
 
-教程现在位于 Cortana Intelligence 库中。 教程会在帐户页的“项”选项卡上列出。
+现在教程已在 Azure AI 库中。 教程会在帐户页的“项”选项卡上列出。
 
 **[转到库](http://gallery.cortanaintelligence.com)**
 

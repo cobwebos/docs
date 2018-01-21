@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 9024bc82c0de5b8058a848cc809a2571baa7ce83
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>使用 Azure 机器学习 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
@@ -110,7 +110,7 @@ ms.lasthandoff: 12/09/2017
 
 ## <a name="manage-classic-web-services"></a>管理经典 Web 服务
 > [!NOTE]
-> 此部分中的过程与通过 Azure 机器学习 Web 服务门户管理经典 Web 服务相关。 有关通过机器学习工作区和 Azure 经典门户管理传统 Web 服务的信息，请参阅[管理 Azure 机器学习工作区](manage-workspace.md)。
+> 此部分中的过程与通过 Azure 机器学习 Web 服务门户管理经典 Web 服务相关。 有关通过机器学习工作室和 Azure 门户管理经典 Web 服务的信息，请参阅[管理 Azure 机器学习工作区](manage-workspace.md)。
 > 
 > 
 

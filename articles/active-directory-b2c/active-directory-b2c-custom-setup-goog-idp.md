@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
-ms.openlocfilehash: 54bf10acfb885042278c4457a70ec86248c96c1c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d389a44ce38d84e510060f3b0a53cda58513dee5
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Google+ 作为 OAuth2 标识提供者
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 本指南演示如何通过使用[自定义策略](active-directory-b2c-overview-custom.md)，使用户能够从 Google+ 帐户进行登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/11/2017
 
     ![Google+ - 选择应用程序类型](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
 
-13.  提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建” 。
+13.  提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建”。
 
     ![Google + - 提供授权的 JavaScript 源和重定向 URI](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 12/11/2017
 1.  打开策略的基文件（例如 TrustFrameworkBase.xml）。
 2.  找到 `<UserJourneys>` 元素并复制整个 `<UserJourneys>` 节点的内容。
 3.  打开扩展文件（例如 TrustFrameworkExtensions.xml）并找到 `<UserJourneys>` 元素。 如果该元素不存在，请添加一个。
-4.  将复制的整个 `<UserJournesy>` 节点的内容粘贴为 `<UserJourneys>` 元素的子级。
+4.  将复制的整个 `<UserJourney>` 节点的内容粘贴为 `<UserJourneys>` 元素的子级。
 
 ### <a name="display-the-button"></a>显示按钮
 `<ClaimsProviderSelections>` 元素定义声明提供程序选择选项的列表及其顺序。  `<ClaimsProviderSelection>` 元素类似于注册/登录页上的标识提供者按钮。 如果为 Google+ 帐户添加 `<ClaimsProviderSelection>` 元素，则当用户进入页面时，会显示一个新按钮。 添加此元素：
@@ -243,6 +243,14 @@ ms.lasthandoff: 12/11/2017
 ```xml
 <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
 ```
+
+### <a name="upload-the-policy-to-your-tenant"></a>将策略上传到租户
+1.  在 [Azure 门户](https://portal.azure.com) 中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md) ，然后打开“Azure AD B2C”边栏选项卡。
+2.  选择“标识体验框架”。
+3.  打开“所有策略”边栏选项卡。
+4.  选择“上传策略”。
+5.  选中“覆盖策略(如果存在)”框。
+6.  上传 TrustFrameworkExtensions.xml，并确保它能够通过验证。
 
 ### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>使用“立即运行”测试自定义配置文件编辑策略
 

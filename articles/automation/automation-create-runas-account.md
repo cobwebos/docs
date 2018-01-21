@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: bc0913568be13aa348a6750f4304086aeec66b04
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 74d363be48972b40ba6a50b845acea78e1b5cc20
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>使用运行方式帐户更新自动化帐户身份验证 
 在以下情况下，可以通过 Azure 门户或使用 PowerShell 更新现有自动化帐户：
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/03/2018
 * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
 * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 如果选择[使用 PowerShell 创建运行方式帐户](#create-run-as-account-using-powershell)，则此过程需要：
 
 * 装有 Azure 资源管理器模块 3.4.1 及更高版本的 Windows 10 与 Windows Server 2016。 PowerShell 脚本不支持早期版本的 Windows。
@@ -225,7 +225,7 @@ ms.lasthandoff: 01/03/2018
               $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
               $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
               $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
-                      "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
+                      "Log in to the Microsoft Azure portal (https://portal.azure.com) and select Subscriptions -> Management Certificates." + [Environment]::NewLine +
                       "Then click Upload and upload the .cer format of #CERT#"
 
                if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
@@ -277,7 +277,7 @@ ms.lasthandoff: 01/03/2018
 
 成功执行脚本后，请注意以下事项：
 * 如果使用自签名公共证书（.cer 文件）创建了经典运行方式帐户，该脚本将创建该帐户，并将其保存到计算机上用于执行 PowerShell 会话的用户配置文件下方的临时文件夹（*%USERPROFILE%\AppData\Local\Temp*）。
-* 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 遵循有关[将管理 API 证书上传到 Azure 经典门户](../azure-api-management-certs.md)的说明，然后参考[用于通过 Azure 经典部署资源进行身份验证的示例代码](automation-verify-runas-authentication.md#classic-run-as-authentication)，使用经典部署资源来验证凭据配置。 
+* 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 遵循有关[将管理 API 证书上传到 Azure 门户](../azure-api-management-certs.md)的说明，然后参考[用于通过 Azure 经典部署资源进行身份验证的示例代码](automation-verify-runas-authentication.md#classic-run-as-authentication)，使用经典部署资源来验证凭据配置。 
 * 如果*未*创建经典运行方式帐户，请参考[用于通过服务管理资源进行身份验证的示例代码](automation-verify-runas-authentication.md#automation-run-as-authentication)，使用 Resource Manager 资源进行身份验证并验证凭据配置。
 
 ## <a name="next-steps"></a>后续步骤

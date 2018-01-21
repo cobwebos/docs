@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 32735a7dfaafd8bbfb983dd809b2204fb1b2fa10
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 2cb4a1c944d6893ca7913eef4e93620059f2a839
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>管理 Azure 安全中心的安全建议
 本文档介绍如何使用 Azure 安全中心中的建议帮助你保护 Azure 资源。
 
 > [!NOTE]
-> 本文档通过使用示例部署介绍该服务。  本文档不是一份分步指南。
+> 本文档将使用示例部署介绍该服务。  本文档不是一份分步指南。
 >
 >
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 | 建议 | 说明 |
 | --- | --- |
 | [为订阅启用数据收集](security-center-enable-data-collection.md) |建议为每个订阅、所有 Azure 虚拟机 (VM) 和非 Azure 计算机开启安全策略中的数据收集。 |
-| [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |
+| [修正安全配置](security-center-remediate-os-vulnerabilities.md) |建议使用推荐的安全配置规则调整 OS 配置，例如不允许保存密码。 |
 | [应用系统更新](security-center-apply-system-updates.md) |建议在 Windows 和 Linux VM 及计算机上部署缺少的系统安全和重要更新。 |
 | [应用实时网络访问控制](security-center-just-in-time.md) | 建议应用实时 VM 访问。 实时功能处于预览状态，并在安全中心的标准层上可用。 请参阅[定价](security-center-pricing.md)，详细了解安全中心的定价层。 |
 | [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates) |建议重启 VM 以完成应用系统更新的过程。 |

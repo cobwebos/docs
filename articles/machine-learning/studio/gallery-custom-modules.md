@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence 库自定义模块 | Microsoft Docs"
-description: "在 Cortana Intelligence 库中发现自定义机器学习模块。"
+title: "Azure AI 库自定义模块 | Microsoft Docs"
+description: "在 Azure AI 库中发现自定义机器学习模块。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 4bab94c04f09261eaa88b9e6a225c05f57992ab0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 278a24c44b76e6df097355b91d94a146be4aa9a9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-custom-machine-learning-modules-in-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中发现自定义机器学习模块
+# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>在 Azure AI 库中发现自定义机器学习模块
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="custom-modules-for-machine-learning-studio"></a>机器学习工作室的自定义模块
-Cortana Intelligence 库提供了多个[自定义模块](https://gallery.cortanaintelligence.com/customModules)，可扩展 Azure 机器学习工作室的功能。 可导入这些模块供在实验中使用，以便开发更先进的预测分析解决方案。
+Azure AI 库提供了多个[自定义模块](https://gallery.cortanaintelligence.com/customModules)，可扩展 Azure 机器学习工作室的功能。 可导入这些模块供在实验中使用，以便开发更先进的预测分析解决方案。
 
 目前，库提供*时序分析*、*关联规则*、*聚类分析算法*（k-means 除外）和*可视化效果*的模块，以及其他主力实用工具模块。
 
@@ -45,14 +45,14 @@ Cortana Intelligence 库提供了多个[自定义模块](https://gallery.cortana
 ### <a name="comment-and-share"></a>评论和共享
 在自定义模板详细信息页的“评论”部分中，可对模块进行评论、提供反馈或提问。 甚至可以在 Twitter 或 LinkedIn 上与好友或同事分享模块。 还可以通过电子邮件发送指向模块详细信息页的链接，来邀请其他用户查看该页面。
 
-![与朋友分享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![添加自己的备注](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="import"></a>导入
 可以将库中任意自定义模块导入自己的实验。
 
-Cortana Intelligence 库提供两种方法来导入模块的副本：
+Azure AI 库提供两种方法来导入模块的副本：
 
 * **从库中导入**。 当从库中导入自定义模块时，还可以获取演示如何使用模块的示例实验。
 * **从机器学习工作室中导入**。 在机器学习工作室中工作时，可导入任何自定义模块（在此情况下，无法获取示例实验）。
@@ -78,7 +78,7 @@ Cortana Intelligence 库提供两种方法来导入模块的副本：
 
 自定义模块将复制到工作区，并与内置或自定义机器学习工作室模块一起放置在模块面板中。 此时可以在自己的实验中使用它，就像在工作区中使用其他任何模块一样。
 
-## <a name="use"></a>使用
+## <a name="use"></a>用途
 
 无论选择哪种方法来导入自定义模块，在导入模块时，模块都会放置在机器学习工作室的模块面板中。 通过模块面板，可以像其他任何模块一样在工作区的任何实验中使用自定义模块。
 

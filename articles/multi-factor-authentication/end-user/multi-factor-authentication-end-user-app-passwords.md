@@ -1,5 +1,5 @@
 ---
-title: "如何使用 Azure MFA 中的应用密码？ | Microsoft 文档"
+title: "如何使用 Azure MFA 中的应用密码？ | Microsoft Docs"
 description: "此页面将帮助用户了解什么是应用密码，以及在 Azure MFA 中，应用密码有什么作用。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/05/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 166a04fa18a57b239c195cbdd7b53a3baafbad65
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 55ca5ada0db30440e4599c77b7a6834ef671c7a4
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的应用密码是什么？
 某些非浏览器应用（例如使用 Exchange Active Sync 的 Apple 本机电子邮件客户端）目前不支持 Multi-Factor Authentication。 Multi-Factor Authentication 是按用户启用的。 这意味着，如果为某个用户启用了 Multi-Factor Authentication，而该用户尝试使用非浏览器应用会失败。 使用应用密码可以避免这种情况。 如果通过条件访问策略而不是通过每用户 MFA 强制实施多重身份验证，则无法创建应用密码。 使用条件访问策略控制访问权限的应用程序不需要应用密码。
@@ -55,30 +55,12 @@ ms.lasthandoff: 12/13/2017
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>在 Azure 门户中管理应用密码
 如果在 Azure 中使用双重验证，则需要通过 Azure 门户创建应用密码。
 
-### <a name="to-create-app-passwords-in-the-azure-portal"></a>在 Azure 门户中创建应用密码
-1. 登录到 Azure 经典门户。
-2. 在顶部，右键单击用户名并选择“其他安全性验证”。
-3. 在验证页的顶部选择应用密码
-4. 单击“创建” 。
-5. 输入应用密码的名称，并单击“下一步”
-6. 将应用密码复制到剪贴板，然后将它粘贴到应用。
-
-   ![云](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
-
-
-### <a name="to-delete-app-passwords-in-the-azure-portal"></a>在 Azure 门户中删除应用密码
-1. 登录到 Azure 经典门户。
-2. 在顶部，右键单击用户名并选择“其他安全性验证”。
-3. 在顶部的“其他安全性验证”旁边，选择“应用密码”。
-4. 在要删除的应用密码旁边，选择“删除”。
-5. 单击“是”确认删除。
-6. 删除应用密码后，可以单击“关闭”。
 
 
 ## <a name="manage-app-passwords-with-the-myapps-portal"></a>使用 MyApps 门户管理应用密码。
 如果不确定多重身份验证的使用方式，则始终可以通过 myapps 门户创建和删除应用密码。
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>使用 Myapps 门户创建应用密码
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户创建应用密码
 1. 登录 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 单击右上角的名称，并选择“配置文件”。
 3. 选择“其他安全性验证”。
@@ -87,12 +69,12 @@ ms.lasthandoff: 12/13/2017
 4. 选择“应用密码”。
    ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
-5. 单击“创建” 。
+5. 单击“创建”。
 6. 输入应用密码的名称，并单击“下一步”。
-7. 将应用密码复制到剪贴板，然后将它粘贴到应用。
+7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
    ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>使用 Myapps 门户删除应用密码
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>使用 MyApps 门户删除应用密码
 1. 登录 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 在顶部选择配置文件。
 3. 选择“其他安全性验证”。

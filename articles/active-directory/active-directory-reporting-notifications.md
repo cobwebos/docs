@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7aacb31f708e8c3221a5b8cf4223c65160ccb019
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Azure Active Directory 报告通知
 ## <a name="what-reports-generate-email-notifications"></a>哪些报告可生成电子邮件通知
@@ -36,13 +36,13 @@ ms.lasthandoff: 12/11/2017
 如果在过去 30 天内或自上一封电子邮件发送后发生 10 次新的异常登录活动（以时间较短者为准），将发送电子邮件。
 
 ## <a name="how-do-i-access-the-report-mentioned-in-the-email"></a>如何访问电子邮件中提到的报告？
-单击该链接后，会转到 Azure 经典门户内的报告页面。 要访问该报告，需要具备以下身份：
+单击该链接时，会重定向到 Azure 门户中的报告页。 要访问该报告，需要具备以下身份：
 
 * Azure 订阅的管理员或共同管理员
 * 目录中的全局管理员，并且已分配 Active Directory Premium 许可证。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 
 ## <a name="can-i-turn-off-these-emails"></a>是否可以关闭这些电子邮件？
-是，要在 Azure 经典门户内关闭与异常登录相关的通知，请单击“配置”，并在“通知”部分下选择“已禁用”。
+是，要在 Azure 门户中关闭与异常登录相关的通知，请单击“配置”，并在“通知”部分下选择“已禁用”。
 
 ## <a name="whats-next"></a>后续步骤
 * 想要知道可以使用哪些安全、审核和活动报告吗？ 请查看 [Azure AD 安全、审核和活动报告](active-directory-view-access-usage-reports.md)

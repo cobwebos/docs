@@ -1,50 +1,57 @@
 ---
-title: "Azure 容器注册表存储库"
-description: "如何使用 Azure 容器注册表存储库存储 Docker 映像"
+title: "Azure 门户中的“Azure 容器注册表”存储库"
+description: "如何在 Azure 门户中查看“Azure 容器注册表”存储库。"
 services: container-registry
 author: cristy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 3321dd1d8bbd1b8232c26491edd8c374df16b813
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 593972e972207a27d1232fcb0c1bf220ac3a8def
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="azure-container-registry-repositories"></a>Azure 容器注册表存储库
+# <a name="view-container-registry-repositories-in-the-azure-portal"></a>在 Azure 门户中查看容器注册表存储库
 
-使用 Azure 容器注册表可将容器映像存储在存储库中。 通过将映像存储在存储库中，可以在隔离环境中获取映像组（或映像版本）。 将映像推送到注册表时，可以指定这些存储库。
+使用 Azure 容器注册表可将 Docker 容器映像存储在存储库中。 通过将映像存储在存储库中，可以将映像组（或映像版本）存储在隔离环境中。 将映像推送到注册表时，可以指定这些存储库，并可在 Azure 门户中查看其内容。
 
+## <a name="prerequisites"></a>系统必备
 
-## <a name="prerequisites"></a>先决条件
-* **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI 2.0](container-registry-get-started-azure-cli.md)。
-* **Docker CLI** - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
-* **提取映像** - 从公共 Docker Hub 注册表中提取映像，对其进行标记，然后将其推送到注册表。 有关如何推送和提取映像的指导，请参阅[将 Docker 映像推送到 Azure 专用注册表](container-registry-get-started-docker-cli.md)。
+* **容器注册表**：在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Docker CLI**：在本地计算机上安装 [Docker][docker-install]，该应用可为你提供 Docker 命令行接口。
+* **容器映像**：将映像推送到容器注册表。 有关如何推送和拉取映像的指南，请参阅[推送和拉取映像](container-registry-get-started-docker-cli.md)。
 
+## <a name="view-repositories-in-azure-portal"></a>在 Azure 门户中查看存储库
 
-## <a name="viewing-repositories-in-the-portal"></a>在门户中查看存储库
+在 Azure 门户中可以查看承载映像以及映像标记的存储库的列表。
 
-将映像推送到容器注册表后，便可以在 Azure 门户中看到托管映像的存储库列表了。
+如果已按照[推送和拉取映像](container-registry-get-started-docker-cli.md)中的步骤操作（且随后未删除映像），则应在容器注册表中有一个 Nginx 映像。 该文中的说明指定使用命名空间（`/samples/nginx` 中的“samples”）标记映像。 该文中指定的 [docker push][docker-push] 命令（作为刷新程序）如下所示：
 
-如果按照[将 Docker 映像推送到 Azure 专用注册表](container-registry-get-started-docker-cli.md)一文中的步骤进行操作，现在应在容器注册表中有 Nginx 映像。 在指令中，应指定映像的命名空间。 在以下示例中，该命令将 NGinx 映像推送到“示例”存储库：
-
-```
+```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
- Azure 容器注册表支持多级存储库命名空间。 使用此功能可将特定应用相关的映像集合分组，或者将特定开发或运营团队的应用集合分组。 若要详细了解容器注册表中的存储库，请参阅 [Azure 中的专用 Docker 容器注册表](container-registry-intro.md)。
 
-若要查看容器注册表存储库，请执行以下操作：
+ 由于 Azure 容器注册表支持此类多级存储库命名空间，因此可以将与特定应用或应用集合相关的映像集合的范围限制为不同的开发或运营团队。 若要详细了解容器注册表中的存储库，请参阅 [Azure 中的专用 Docker 容器注册表](container-registry-intro.md)。
 
-1. 登录到 Azure 门户
-2. 在“Azure 容器注册表”边栏选项卡上，选择要检查的注册表
-3. 在注册表边栏选项卡中，单击“存储库”以查看所有存储库及其映像的列表
-4. （可选）选择要查看标记的特定映像
+若要查看存储库，请执行以下操作：
+
+1. 登录 [Azure 门户][portal]
+1. 选择向其推送了 Nginx 映像的 **Azure 容器注册表**
+1. 选择“存储库”可查看包含注册表中映像的存储库的列表
+1. 选择某个存储库以查看该存储库中的映像标记
+
+例如，如果已按照[推送和拉取映像](container-registry-get-started-docker-cli.md)中的说明推送了 Nginx 映像，应看到的内容如下所示：
 
 ![门户中的存储库](./media/container-registry-repositories/container-registry-repositories.png)
 
-
 ## <a name="next-steps"></a>后续步骤
-了解基础知识后，便可以开始使用注册表了！ 例如，开始将容器映像部署到 [Azure 容器服务](https://azure.microsoft.com/documentation/services/container-service/)群集。
+
+现已基本了解如何在门户中查看和使用存储库，请尝试在 [Azure 容器服务 (AKS)](../aks/tutorial-kubernetes-prepare-app.md) 群集中使用 Azure 容器注册表。
+
+<!-- LINKS - External -->
+[docker-install]: https://docs.docker.com/engine/installation/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[portal]: https://portal.azure.com

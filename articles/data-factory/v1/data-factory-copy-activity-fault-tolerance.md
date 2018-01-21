@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5c32d4ac2c1179a83a82bd5deb41047b82e43b7e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6e7923e2e0a23f22f7dff8c316050a1757310456
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
 > [!NOTE]
@@ -44,6 +44,9 @@ ms.lasthandoff: 11/02/2017
 
     例如：将数据从 SQL 服务器复制到 SQL 数据库。 接收器 SQL 数据库中定义了主键，但源 SQL 服务器中未定义此类主键。 源中的重复行无法复制到接收器。 复制活动仅将源数据的第一行复制到接收器。 包含重复主键值的后续源行会被检测为不兼容，并被跳过。
 
+>[!NOTE]
+>当复制活动配置为调用外部数据加载机制时（包括 [Azure SQL 数据仓库 PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 或 [Amazon Redshift 卸载](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)），此功能不适用。 若要使用 PolyBase 将数据加载到 SQL 数据仓库中，请通过在复制活动中指定“[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)”来使用 PolyBase 的本机容错支持。
+
 ## <a name="configuration"></a>配置
 下面的 JSON 定义示例用于配置在复制活动中跳过不兼容行：
 
@@ -63,7 +66,7 @@ ms.lasthandoff: 11/02/2017
 }
 ```
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必需 |
 | --- | --- | --- | --- |
 | **enableSkipIncompatibleRow** | 允许或不允许在复制期间跳过不兼容行。 | True<br/>False（默认值） | 否 |
 | **redirectIncompatibleRowSettings** | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否 |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 58f7f71fd619eea2865ed42d2808fe6ae3e75c1f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 3133b0166689142a635926077bdb4e0abeba287c
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 策略表达式语法为 C# 6.0 版。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。  
@@ -26,13 +26,13 @@ ms.lasthandoff: 12/04/2017
 > [!TIP]
 >  有关策略表达式的详细信息，请观看[策略表达式](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/)视频。  
 >   
->  有关使用策略表达式配置策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能）。 该视频包含以下策略表达式演示。  
+>  有关使用策略表达式配置策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能）。 该视频包含以下策略表达式演示：  
 >   
->  -   10:30 - 了解如何应用 API 级策略，以便使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)和[设置 HTTP 标头](api-management-transformation-policies.md#SetHTTPheader)策略将上下文信息提供给后端服务。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看这些生效的策略。  
-> -   13:50 - 了解如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略根据令牌声明预先授予操作访问权限。 快进到 15:00，观看在策略编辑器中配置的策略，然后快进到 18:50，观看对使用和不使用所需授权令牌从开发人员门户调用操作的演示。  
-> -   21:00 - 了解如何使用 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)跟踪查看策略求值方法和求值结果。  
-> -   25:25 - 了解如何针对[从缓存获取](api-management-caching-policies.md#GetFromCache)和[存储到缓存](api-management-caching-policies.md#StoreToCache)策略使用策略表达式，以便配置 API 管理响应缓存持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。  
-> -   34:30 - 了解如何进行内容筛选，所用方法为删除从后端服务接收的响应中的数据元素，所用策略为[控制流](api-management-advanced-policies.md#choose)和[设置正文](api-management-transformation-policies.md#SetBody)。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。  
+>  -   10:30 - 了解如何向后端服务提供上下文信息。 使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)和[设置 HTTP 标头](api-management-transformation-policies.md#SetHTTPheader)策略来提供此信息。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看这些生效的策略。  
+> -   13:50 - 了解如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略根据令牌声明预先授予操作访问权限。 快进到 15:00，了解如何在策略编辑器中配置策略。 在 18:50 处，观看对使用和不使用所需授权令牌从开发人员门户调用操作的演示。  
+> -   21:00 - 使用 [API 检查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)跟踪了解策略求值方法和这些求值的结果。  
+> -   25:25 - 了解如何对[从缓存获取](api-management-caching-policies.md#GetFromCache)和[存储到缓存](api-management-caching-policies.md#StoreToCache)策略使用表达式，以便配置 API 管理响应缓存。 设置持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。  
+> -   34:30 - 了解如何进行内容筛选。 删除使用[控制流](api-management-advanced-policies.md#choose)和[设置正文](api-management-transformation-policies.md#SetBody)策略从后端接收的响应中的数据元素。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。  
 > -   若要下载此视频中使用的策略语句，请参阅 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) github 存储库。  
   
   
@@ -68,10 +68,10 @@ ms.lasthandoff: 12/04/2017
 ```  
   
 ##  <a name="PolicyExpressionsUsage"></a> 使用  
- 在任何 API 管理[策略](api-management-policies.md)中，表达式可以用作属性值或文本值，除非策略引用另行指定。  
+ 在任何 API 管理[策略](api-management-policies.md)中，表达式都可用作属性值或文本值（除非策略引用另行指定）。  
   
 > [!IMPORTANT]
->  请注意，在使用策略表达式对策略进行定义时，只能对策略表达式进行有限的验证。 由于表达式是在运行时的入站或出站管道中通过网关执行的，因此只要策略表达式生成了运行时异常，就会在 API 调用中出现运行时错误。  
+>  使用策略表达式定义策略时，只能对策略表达式进行有限的验证。 在运行时，表达式由网关执行，策略表达式生成的任何异常将导致运行时错误。  
   
 ##  <a name="CLRTypes"></a> 策略表达式中允许的 .NET Framework 类型  
  下表列出了策略表达式中允许的 .NET Framework 类型及其成员。  
@@ -140,7 +140,7 @@ ms.lasthandoff: 12/04/2017
 |System.Text.RegularExpressions.Group|Captures、Success|  
 |System.Text.RegularExpressions.GroupCollection|Count、Item|  
 |System.Text.RegularExpressions.Match|Empty、Groups、Result|  
-|System.Text.RegularExpressions.Regex|.ctor、IsMatch、Match、Matches、Replace|  
+|System.Text.RegularExpressions.Regex|(Constructor)、IsMatch、Match、Matches、Replace|  
 |System.Text.RegularExpressions.RegexOptions|Compiled、IgnoreCase、IgnorePatternWhitespace、Multiline、None、RightToLeft、Singleline|  
 |System.TimeSpan|全部|  
 |System.Tuple|全部|  
@@ -172,8 +172,8 @@ ms.lasthandoff: 12/04/2017
   
 |上下文变量|允许的方法、属性和参数值|  
 |----------------------|-------------------------------------------------------|  
-|上下文|Api: IApi<br /><br /> 部署<br /><br /> LastError<br /><br /> 操作<br /><br /> 产品<br /><br /> 请求<br /><br /> RequestId: Guid<br /><br /> 响应<br /><br /> 订阅<br /><br /> Tracing：布尔值<br /><br /> 用户<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
-|context.Api|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> ServiceUrl: IUrl|  
+|上下文|Api: IApi<br /><br /> 部署<br /><br /> LastError<br /><br /> Operation<br /><br /> 产品<br /><br /> 请求<br /><br /> RequestId: Guid<br /><br /> 响应<br /><br /> 订阅<br /><br /> Tracing：布尔值<br /><br /> 用户<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
+|context.Api|Id: 字符串<br /><br /> IsRevisionCurrent: bool<br /><br />  Name: 字符串<br /><br /> Path: 字符串<br /><br /> Revision: string<br /><br /> ServiceUrl: IUrl<br /><br /> Version: string |  
 |context.Deployment|Region: 字符串<br /><br /> ServiceName: 字符串<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Source: 字符串<br /><br /> Reason: 字符串<br /><br /> Message: 字符串<br /><br /> Scope: 字符串<br /><br /> Section: 字符串<br /><br /> Path: 字符串<br /><br /> PolicyId: 字符串<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|  
 |context.Operation|Id: 字符串<br /><br /> Method: 字符串<br /><br /> Name: 字符串<br /><br /> UrlTemplate: 字符串|  
@@ -193,7 +193,7 @@ ms.lasthandoff: 12/04/2017
 |string IUrl.Query.GetValueOrDefault(queryParameterName: 字符串, defaultValue: 字符串)|queryParameterName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到参数，则会返回逗号分隔的查询参数值或 `defaultValue`。|  
 |T context.Variables.GetValueOrDefault<T\>(variableName: 字符串, defaultValue: T)|variableName: 字符串<br /><br /> defaultValue: T<br /><br /> 如果找不到变量，则会返回强制转换为 `T` 或 `defaultValue` 类型的变量值。<br /><br /> 如果指定的类型与已返回变量的实际类型不符，此方法会引发异常。|  
 |BasicAuthCredentials AsBasic(input: this string)|input: 字符串<br /><br /> 如果输入参数包含有效的 HTTP Basic Authentication 授权请求标头值，此方法会返回类型为 `BasicAuthCredentials` 的对象；否则，此方法会返回 null。|  
-|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: 字符串<br /><br /> result: out BasicAuthCredentials<br /><br /> 如果输入参数包含有效的 HTTP Basic Authentication 授权请求标头值，此方法会返回 `true` 且结果参数会包含类型为 `BasicAuthCredentials` 的值；否则，此方法会返回 `false`。|  
+|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: 字符串<br /><br /> result: out BasicAuthCredentials<br /><br /> 如果输入参数包含请求标头中的有效 HTTP Basic Authentication 授权值，此方法会返回 `true` 且结果参数会包含类型为 `BasicAuthCredentials` 的值；否则，此方法会返回 `false`。|  
 |BasicAuthCredentials|Password: 字符串<br /><br /> UserId: 字符串|  
 |Jwt AsJwt(input: this string)|input: 字符串<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回类型为 `Jwt` 的对象；否则，此方法会返回 `null`。|  
 |bool TryParseJwt(input: this string, result: out Jwt)|input: 字符串<br /><br /> result: out Jwt<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回 `true` 且结果参数包含类型为 `Jwt` 的值；否则，此方法会返回 `false`。|  

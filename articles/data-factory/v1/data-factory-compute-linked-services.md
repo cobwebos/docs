@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b7686dc5c52737106a8bc819c160b67baaffd147
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7733ea111de896ab0f825c85b89be25ebafdbd85
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
@@ -49,8 +49,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 2017 年 12 月 15日后：
 
 - 客户将无法使用 Azure 数据工厂 v1 中的按需 HDInsight 链接服务创建基于 Linux 的 HDInsight 版本 3.3（或更早版本）的群集。 
-
-- 如果未在现有 Azure 数据工厂 v1 按需 HDInsight 链接服务 JSON 定义中显式指定 [osType 和/或版本属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，默认值将从“版本=3.1，osType=Windows”更改为“版本=3.6，osType=Linux”。
+- 如果未在现有 Azure 数据工厂 v1 按需 HDInsight 链接服务 JSON 定义中显式指定 [osType 和/或 Version 属性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，默认值将从“Version=3.1，osType=Windows”更改为“Version=[最新 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions), osType=Linux”。
 
 2018 年 7 月 31 日后：
 
@@ -100,17 +99,15 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "version": "3.5",
-            "clusterSize": 1,
-            "timeToLive": "00:05:00",
+            "version": "3.6",
             "osType": "Linux",
+            "clusterSize": 1,
+            "timeToLive": "00:05:00",            
             "linkedServiceName": "AzureStorageLinkedService"
         }
     }
 }
 ```
-
-要使用基于 Windows 的 HDInsight 群集，请将 **osType** 设置为 **windows**或者不使用属性，因为默认值为 windows。  
 
 > [!IMPORTANT]
 > HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
@@ -120,15 +117,15 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 > 
 
 ### <a name="properties"></a>属性
-| 属性                     | 说明                              | 必选 |
+| 属性                     | 说明                              | 必需 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 类型属性应设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
 | timetolive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则将会在活动运行处理完后立即删除群集。 然而，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果 timetolive 属性值设置适当，多个管道则可共享按需 HDInsight 群集实例。 | 是      |
-| 版本                      | HDInsight 群集的版本。 对于 Windows 群集，默认值为 3.1；对于 Linux 群集，则为 3.2。 | 否       |
+| 版本                      | HDInsight 群集的版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)了解允许的 HDInsight 版本。 如果未指定，则它使用[最新 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions)。 | 否       |
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此 Azure 存储帐户位于同一区域。<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 如果想要存储在 Azure Data Lake Store 中处理的来自 HDInsight 的结果数据，请使用复制活动将数据从 Azure Blob 存储复制到 Azure Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 这些存储帐户必须与 HDInsight 群集位于同一区域中，该群集是在与 linkedServiceName 指定的存储帐户相同的区域中创建的。 | 否       |
-| osType                       | 操作系统的类型。 允许的值为：Windows（默认值）和 Linux | 否       |
+| osType                       | 操作系统的类型。 允许的值为：Linux 和 Windows。 如果未指定，默认情况下使用 Linux。  <br/>我们强烈建议使用基于 Linux 的 HDInsight 群集，因为 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 | 否       |
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON 示例
@@ -143,7 +140,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="advanced-properties"></a>高级属性
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
-| 属性               | 说明                              | 必选 |
+| 属性               | 说明                              | 必需 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为待创建的 HDInsight 群集指定核心配置参数（如在 core-site.xml 中）。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -162,6 +159,8 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
   "properties": {
     "type": "HDInsightOnDemand",
     "typeProperties": {
+      "version": "3.6",
+      "osType": "Linux",
       "clusterSize": 16,
       "timeToLive": "01:30:00",
       "linkedServiceName": "adfods1",
@@ -194,7 +193,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 必需 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 指定头节点的大小。 默认值为：Standard_D3。 有关详细信息，请参阅**指定节点大小**部分。 | 否       |
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
@@ -250,7 +249,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 类型属性应设置为 **HDInsight**。 | 是      |
 | clusterUri        | HDInsight 群集的 URI。        | 是      |
@@ -298,7 +297,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 类型属性应设置为 **AzureBatch**。 | 是      |
 | accountName       | Azure Batch 帐户的名称。         | 是      |
@@ -325,9 +324,9 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ```
 
 ### <a name="properties"></a>属性
-| 属性   | 说明                              | 必选 |
+| 属性   | 说明                              | 必需 |
 | ---------- | ---------------------------------------- | -------- |
-| 类型       | 类型属性应设置为 **AzureML**。 | 是      |
+| Type       | 类型属性应设置为 **AzureML**。 | 是      |
 | mlEndpoint | 批处理计分 URL。                   | 是      |
 | apiKey     | 已发布的工作区模型的 API。     | 是      |
 
@@ -336,7 +335,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-| 属性                 | 说明                              | 必选                                 |
+| 属性                 | 说明                              | 必需                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **类型**                 | 类型属性应设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -352,7 +351,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必选 |
+| 属性                | 说明                              | 必需 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -380,7 +379,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 必需 |
 | :---------------- | :--------------------------------------- | :------- |
 | **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是      |
 | **sessionId**     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是      |

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: d06dd0a8ec63202825be347c4b69e21a6dd4b7db
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 637b380dacc91e4ad55044c1d92936be2435138d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/20/2017
 
     |设置|必需？|详细信息|
     |---|---|---|
-    |名称|是|对于网络接口必须是唯一的|
+    |名称​​|是|对于网络接口必须是唯一的|
     |Type|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。|
     |专用 IP 地址分配方法|是|[**动态**](#dynamic)：Azure 为在其中部署网络接口的子网地址范围分配下一可用地址。 [**静态**](#static)：为在其中部署网络接口的子网地址范围分配未使用的地址。|
     |公共 IP 地址|否|**已禁用：**该 IP 配置当前没有关联的公共 IP 地址资源。 **已启用：**选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
@@ -138,9 +138,9 @@ ms.lasthandoff: 12/20/2017
 > [!WARNING]
 > 如果在虚拟机操作系统中设置为网络接口的主要 IP 地址的 IPv4 地址曾经不同于为附加到 Azure 中的虚拟机的主要网络接口的主要 IP 配置分配的专用 IPv4 地址，则会失去到虚拟机的连接。
 
-在许多方案中，需要手动设置虚拟机操作系统内的网络接口的 IP 地址。 例如，在向 Azure 虚拟机添加多个 IP 地址时，必须手动设置 Windows 操作系统的主要和辅助 IP 地址。 对于 Linux 虚拟机，可能只需要手动设置辅助 IP 地址。 有关详细信息，请参阅[向 VM 操作系统添加 IP 地址](virtual-network-multiple-ip-addresses-portal.md#os-config)。 手动在操作系统中设置 IP 地址时，建议你始终使用静态（而非动态）分配方法为网络接口的 IP 配置分配地址。 使用静态分配方法可以确保地址在 Azure 内不会更改。 如果你需要更改分配给 IP 配置的地址，建议你：
+在许多方案中，需要手动设置虚拟机操作系统内的网络接口的 IP 地址。 例如，在向 Azure 虚拟机添加多个 IP 地址时，必须手动设置 Windows 操作系统的主要和辅助 IP 地址。 对于 Linux 虚拟机，可能只需要手动设置辅助 IP 地址。 有关详细信息，请参阅[向 VM 操作系统添加 IP 地址](virtual-network-multiple-ip-addresses-portal.md#os-config)。 如果你需要更改分配给 IP 配置的地址，建议你：
 
-1. 在操作系统中将 IP 地址的分配方法更改回 DHCP 并重新启动虚拟机，以确保虚拟机从 Azure DHCP 服务器收到地址。
+1. 确保虚拟机接收来自 Azure DHCP 服务器的地址。 之后，将分配的 IP 地址更改回到操作系统中的 DHCP，并重新启动虚拟机。
 2. 关闭（解除分配）虚拟机。
 3. 在 Azure 中更改 IP 配置的 IP 地址。
 4. 启动虚拟机。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: b37c9d9de171e69e38a4bae58f9fbac99eae2091
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 81634b366f5b66444d1e5474b4ab517208b50375
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/08/2017
 > Azure API 管理同时支持经典 VNet 和 Azure 资源管理器 VNet。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="network-configuration-issues"></a>常见网络配置问题
 下面是将 API 管理服务部署到虚拟网络时可能会发生的常见错误配置问题的列表。
 
-* **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
+* **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)指南进行自定义 DNS 安装。 有关参考信息，请参阅下面的端口表和其他网络要求。
 
 > [!IMPORTANT]
 > 如果对 VNET 使用自定义 DNS 服务器，建议在向其部署 API 管理服务**之前**完成该设置。 否则，需要每次通过运行[应用网络配置操作](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)更改 DNS 服务器时更新 API 管理服务
@@ -111,13 +111,11 @@ ms.lasthandoff: 12/08/2017
 | * / 3443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|Azure 门户和 Powershell 的管理终结点 |内部 |
 | * / 80, 443 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|依赖于 Azure 存储、Azure 服务总线和 Azure Active Directory（如果适用）。|外部和内部 | 
 | * / 1433 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|**访问 Azure SQL 终结点** |外部和内部 |
-| * / 11000 - 11999 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|**访问 Azure SQL V12** |外部和内部 |
-| * / 14000 - 14999 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|**访问 Azure SQL V12** |外部和内部 |
 | * / 5671, 5672 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|事件中心策略日志和监视代理的依赖项 |外部和内部 |
 | * / 445 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|与适用于 GIT 的 Azure 文件共享的依赖关系 |外部和内部 |
 | * / 25028 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|连接到 SMTP 中继以发送电子邮件 |外部和内部 |
 | * / 6381 - 6383 |入站和出站 |TCP |VIRTUAL_NETWORK/VIRTUAL_NETWORK|访问 RoleInstance 之间的 Redis 缓存实例 |外部和内部 |
-| * / *  | 入站 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure 基础结构负载均衡器 |外部和内部 |
+| * / * | 入站 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure 基础结构负载均衡器 |外部和内部 |
 
 >[!IMPORTANT]
 > * “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。 不过，阻止其他端口将导致使用和监视运行中服务的能力降级。

@@ -1,32 +1,36 @@
 ---
-title: "快速入门 Azure IoT Edge + Linux | Microsoft 文档"
+title: "快速入门 Azure IoT Edge + Linux | Microsoft Docs"
 description: "通过在模拟边缘设备上运行分析来试用 Azure IoT Edge"
 services: iot-edge
 keywords: 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Linux 设备 - 预览
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux 或 Mac 设备 - 预览
 
 Azure IoT Edge 将云带来的价值转移至物联网设备。 在本主题中，了解如何使用云接口将预生成的代码远程部署到 IoT Edge 设备。
 
 如果没有可用的 Azure 订阅，可以在开始前创建一个[免费帐户][lnk-account]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-若要完成此任务，请使用计算机或虚拟机模拟物联网设备。 需要以下服务以成功部署 IoT Edge 设备：
+本快速入门使用计算机或虚拟机，如物联网设备。 若要将计算机转换为 IoT Edge 设备，需要以下服务：
 
-- [安装 Docker on Linux][lnk-docker-ubuntu] 并确保其正在运行。 
-- 大多数 Linux 发行版（包括 Ubuntu）均已安装 Python 2.7。 使用以下命令确保已安装 pip：`sudo apt-get install python-pip`。
+* Python pip，用于安装 IoT Edge 运行时。
+   * Linux：`sudo apt-get install python-pip`。
+   * MacOS：`sudo easy_install pip`。
+* Docker，用于运行 IoT Edge 模块
+   * [安装适用于 Linux 的 Docker][lnk-docker-ubuntu] 并确保其正在运行。 
+   * [安装适用于 Mac 的 Docker][lnk-docker-mac] 并确保其正在运行。 
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 
@@ -135,6 +139,7 @@ az iot hub delete --name {your iot hub name} --resource-group {your resource gro
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com

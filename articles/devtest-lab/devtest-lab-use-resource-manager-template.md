@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: v-craic
-ms.openlocfilehash: d3800fe360a2451bdc39644e713b82ab0608ef12
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 97822d5fb11c5c106c67aaaab0b8972e1ec8deee
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="use-a-virtual-machines-azure-resource-manager-template"></a>使用虚拟机的 Azure 资源管理器模板
+# <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
 如果通过 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)在开发测试实验室中创建虚拟机 (VM)，则在保存 VM 前可以查看 Azure 资源管理器模板。 然后可以该模板为基准创建更多具有相同设置的实验室 VM。
 
-本文介绍创建 VM 时如何查看 Azure Resource Manager 模板以及如何部署模板以自动创建相同的 VM。
+本文介绍多 VM 和单 VM 的资源管理器模板比较，并演示在创建 VM 时如何查看和保存模板。
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>多 VM 和单 VM 的 Resource Manager 模板比较
-可通过两种方法使用 Resource Manager 模板在开发测试实验室中创建 VM：预配 Microsoft.DevTestLab/labs/virtualmachines 资源或预配 Microsoft.Commpute/virtualmachines 资源。 两种资源适用于不同的方案，并且需要不同的权限。
+可通过两种方法使用 Resource Manager 模板在开发测试实验室中创建 VM：预配 Microsoft.DevTestLab/labs/virtualmachines 资源或预配 Microsoft.Commpute/virtualmachines 资源。 这两种资源适用于不同的方案，并且需要不同的权限。
 
 - 使用 Microsoft.DevTestLab/labs/virtualmachines 资源类型（在模板中的“资源”属性中声明）的 Resource Manager 模板可以预配单个实验室 VM。 在开发测试实验室虚拟机列表中，每个 VM 显示为单个项：
 
@@ -53,18 +53,15 @@ ms.lasthandoff: 01/02/2018
    ![“查看 ARM 模板”按钮](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
 1. 复制并保存 Resource Manager 模板，以便稍后用于创建另一个虚拟机。
 
-   ![保存以供将来使用的 Resource Manager 模板](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
+   ![保存以供将来使用的资源管理器模板](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
 
 保存 Resource Manager 模板后，必须先更新模板的参数部分，然后再使用该模板。 可以在实际 Resource Manager 模板之外创建自定义参数的 parameter.json。 
 
 ![使用 JSON 文件自定义参数](./media/devtest-lab-use-arm-template/devtestlab-lab-custom-params.png)
 
-## <a name="deploy-a-resource-manager-template-to-create-a-vm"></a>部署 Resource Manager 模板以创建 VM
-保存 Resource Manager 模板并根据需要对其自定义后，可将该模板用于自动创建 VM。 请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)了解如何使用 Azure PowerShell 和 Resource Manager 模板将资源部署到 Azure。 请参阅[使用 Resource Manager 模板和 Azure CLI 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)了解如何使用 Azure CLI 和 Resource Manager 模板将资源部署到 Azure。
-
-> [!NOTE]
-> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果想要使用 Resource Manager 模板自动创建 VM，并且只具有用户权限，则可以使用 [CLI 中的 az lab vm create 命令](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create)。
+资源管理器模板现在已准备好用来[创建 VM](devtest-lab-create-environment-from-arm.md)。
 
 ### <a name="next-steps"></a>后续步骤
 * 了解如何[使用 Resource Manager 模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)。
-* 若要深入了解适用于开发测试实验室自动化的 Resource Manager 模板快速入门，请参阅[公共开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)。
+* [部署资源管理器模板以创建 VM](devtest-lab-create-environment-from-arm.md#deploy-a-resource-manager-template-to-create-a-vm)
+* 若要深入了解适用于开发测试实验室自动化的资源管理器模板快速入门，请参阅[公共开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)。

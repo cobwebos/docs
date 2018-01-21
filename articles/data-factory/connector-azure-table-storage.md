@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: a80a947f5dc6176aaa6334a10eabf1a2b4be5847
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 9aa0a1ed7bb07609e087e82d64f5f1c80bb590d9
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-azure-table-connector.md)
+> * [版本 1 - 正式版](v1/data-factory-azure-table-connector.md)
 > * [版本 2 - 预览版](connector-azure-table-storage.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure 表复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure 表复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure 表存储连接器](v1/data-factory-azure-table-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure 表存储连接器](v1/data-factory-azure-table-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -36,7 +36,8 @@ ms.lasthandoff: 12/01/2017
 具体而言，此 Azure 表连接器支持使用帐户密钥和服务 SAS（共享访问签名）身份验证复制数据。
 
 ## <a name="get-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure 表存储的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -46,7 +47,7 @@ ms.lasthandoff: 12/01/2017
 
 通过使用为数据工厂提供对 Azure 存储的全局访问权限的帐户密钥，创建 Azure 存储链接的服务。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureStorage** |是 |
 | connectionString | 为 connectionString 属性指定连接到 Azure 存储所需的信息。 将此字段标记为 SecureString。 |是 |
@@ -81,11 +82,14 @@ ms.lasthandoff: 12/01/2017
 
 > [!IMPORTANT]
 > Azure 数据工厂现仅支持**服务 SAS**，而不支持帐户 SAS。 有关这两种类型及其构建方式的详细信息，请参阅[共享访问签名的类型](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)。 通过 Azure 门户或存储资源管理器生成的 SAS URL 是不受支持的帐户 SAS。
->
+
+> [!TIP]
+> 可执行以下 PowerShell 命令为存储帐户生成服务 SAS（替换占位符并授予所需权限）：`$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 要使用服务 SAS 身份验证，需支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureStorage** |是 |
 | sasUri | 指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。 将此字段标记为 SecureString。 |是 |
@@ -124,7 +128,7 @@ ms.lasthandoff: 12/01/2017
 
 要向/从 Azure 表复制数据，请将数据集的 type 属性设置为“AzureTable”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureTable** |是 |
 | tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是 |
@@ -159,13 +163,13 @@ ms.lasthandoff: 12/01/2017
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 表源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure 表源和接收器支持的属性列表。
 
 ### <a name="azure-table-as-source"></a>以 Azure 表作为源
 
 要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**AzureTableSource** |是 |
 | azureTableSourceQuery |使用自定义 Azure 表查询读取数据。 请参阅下一节中的示例。 |否 |
@@ -191,7 +195,7 @@ ms.lasthandoff: 12/01/2017
 
 若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**AzureTableSink** |是 |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
@@ -271,7 +275,7 @@ ms.lasthandoff: 12/01/2017
 | Edm.Guid |Guid |128 位全局唯一标识符。 |
 | Edm.Int32 |Int32 |32 位整数。 |
 | Edm.Int64 |Int64 |64 位整数。 |
-| Edm.String |String |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
+| Edm.String |字符串 |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

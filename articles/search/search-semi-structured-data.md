@@ -8,40 +8,39 @@ ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
 ms.custom: mvc
-ms.openlocfilehash: ea57fa35f09299f95cdfd3c11b44657d35972295
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: a80ae99c2ada00885019ee93e4ef36821340d3a5
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="search-semi-structured-data-in-cloud-storage"></a>在云存储中搜索半结构化数据
+# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>第 2 部分：在云存储中搜索半结构化数据
 
-本教程系列由两个部分组成，介绍如何使用 Azure 搜索来搜索半结构化和非结构化数据。 本教程介绍如何搜索 Azure Blob 中存储的半结构化数据，例如 JSON。 半结构化数据包含用于分隔数据中的内容的标记或标签。 它与结构化数据的不同之处在于，它未根据某个数据模型（例如关系型数据库架构）设置正式的结构。
+在由两个部分组成的教程系列中，介绍如何使用 Azure 搜索来搜索半结构化和非结构化数据。 [第 1 部分](../storage/blobs/storage-unstructured-search.md)指导你完成搜索非结构化数据，但还包括本教程的重要先决条件，例如创建存储帐户。 
 
-本部分介绍以下操作：
+在第 2 部分中，将重点切换到 Azure blob 中存储的半结构化数据，例如 JSON。 半结构化数据包含用于分隔数据中的内容的标记或标签。 它的本质是提供必须全面索引的非结构化数据和符合数据模型的正式结构化数据之间的一个折中，例如可以按字段搜索的关系数据库架构。
+
+在第 2 部分中，了解如何：
 
 > [!div class="checklist"]
-> * 在 Azure 搜索服务中创建并填充索引
-> * 使用 Azure 搜索服务来搜索索引
+> * 为 Azure blob 容器配置 Azure 搜索数据源
+> * 创建并填充 Azure 搜索索引和索引器，以便抓取容器和提取可搜索内容
+> * 搜索刚刚创建的索引
 
 > [!NOTE]
-> “JSON 数组支持是 Azure 搜索中的预览功能。 此功能目前在门户中不可用。 为此，我们会使用可提供此功能的预览版 REST API，并使用某个 REST 客户端工具来调用该 API。”
+> 本教程依赖于 JSON 数组支持，该项当前是 Azure 搜索中的预览功能。 该功能在门户中不可用。 为此，我们会使用可提供此功能的预览版 REST API，并使用某个 REST 客户端工具来调用该 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-完成本教程：
-* 完成[前一篇教程](../storage/blobs/storage-unstructured-search.md)
-    * 本教程使用前一篇教程中创建的存储帐户和搜索服务
-* 安装 REST 客户端，并了解如何构造 HTTP 请求
+* 完成[前一教程](../storage/blobs/storage-unstructured-search.md)后，会获得前一教程中创建的存储帐户和搜索服务。
 
+* 安装 REST 客户端，并了解如何构造 HTTP 请求。 本教程使用 [Postman](https://www.getpostman.com/)。 可以任意使用你所熟悉的其他 REST 客户端。
 
-## <a name="set-up-the-rest-client"></a>设置 REST 客户端
+## <a name="set-up-postman"></a>设置 Postman
 
-若要完成本教程，需要一个 REST 客户端。 本教程使用 [Postman](https://www.getpostman.com/)。 可以任意使用你所熟悉的其他 REST 客户端。
+启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 Fiddler 或 Postman 探索 Azure 搜索 REST API](search-fiddler.md)了解详细信息。
 
-安装 Postman 后，将它启动。
-
-首次向 Azure 发出 REST 调用时，请注意本教程中所用的重要组件的简介：在本教程中发出的每个调用的请求方法是“POST”。 标头键为“Content-type”和“api-key”。 上述标头键的值分别为“application/json”和你的“admin key”（“admin key”是搜索主密钥的占位符）。 正文是调用的实际内容的放置位置。 根据所用的客户端，在如何构造查询方面可能存在一些差异，但基本思路相同。
+本教程中每个调用的请求方法是“POST”。 标头键为“Content-type”和“api-key”。 上述标头键的值分别为“application/json”和你的“admin key”（“admin key”是搜索主密钥的占位符）。 正文是调用的实际内容的放置位置。 根据所用的客户端，在如何构造查询方面可能存在一些差异，但基本思路相同。
 
   ![半结构化搜索](media/search-semi-structured-data/postmanoverview.png)
 

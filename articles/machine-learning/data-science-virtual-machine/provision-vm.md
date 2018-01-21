@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d0a9926f49e2be66a9d51a1bb0e4e19342205880
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，它已预装并配置了多个常用于数据分析和机器学习的热门工具。 这些工具包括：
@@ -57,7 +57,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
 ## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
 [Ubuntu](dsvm-ubuntu-intro.md) 映像同样可用，它包含多种相同的工具和一些附加的深度学习框架。 [CentOS](linux-dsvm-intro.md) 映像也可用。 我们还提供数据科学虚拟机的 [Windows Server 2012 版](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm)，不过，有些工具只能在 Windows Server 2016 版中使用。  否则，本文也适用于 Windows Server 2012 版。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 创建 Microsoft 数据科研虚拟机之前，必须满足以下条件：
 
 * **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](http://azure.com/free)。
@@ -174,7 +174,7 @@ VM 上安装了多个 Azure 工具：
 [**Microsoft Web 平台安装程序**](https://www.microsoft.com/web/downloads/platform.aspx)可用于发现和下载其他 Microsoft 开发工具。 Microsoft 数据科研虚拟机桌面上也提供了该工具的快捷方式。  
 
 ## <a name="important-directories-on-the-vm"></a>VM 上的重要目录
-| 项目 | Directory |
+| Item | Directory |
 | --- | --- |
 | Jupyter 笔记本服务器配置	 |C:\ProgramData\jupyter |
 | Jupyter 笔记本示例主目录 |c:\dsvm\notebooks |
@@ -200,5 +200,5 @@ VM 上安装了多个 Azure 工具：
 * 导航到 **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**，获取有关在 R 中使用 RevoScaleR 库的示例，该库支持企业级数据分析。  
 * 阅读文章：[数据科研虚拟机的十大功能](http://aka.ms/dsvmtenthings)
 * 通过使用 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)，了解如何系统性地构建端到端分析解决方案。
-* 访问 [Azure 机器学习库](http://gallery.cortanaintelligence.com)，获取在 Azure 上使用 Azure 机器学习和相关数据服务的数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。
+* 访问 [Azure AI 库](http://gallery.cortanaintelligence.com)，获取在 Azure 上使用 Azure 机器学习和相关数据服务的机器学习和数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。
 

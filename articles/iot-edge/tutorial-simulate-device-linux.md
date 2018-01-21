@@ -7,16 +7,16 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
-ms.date: 10/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 327a959ad97897fd19f45a0599f37492938df104
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux---preview"></a>在 Linux 的模拟设备上部署 Azure IoT Edge - 预览
+# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>在 Linux 或 MacOS 的模拟设备上部署 Azure IoT Edge - 预览
 
 Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推送所有数据到云。 IoT Edge 教程演示如何部署不同类型的模块（通过 Azure 服务或自定义代码生成），但是首先需要一个设备用以测试。 
 
@@ -31,12 +31,16 @@ Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推�
 
 本教程中创建的模拟设备是一种监视器，它能生成温度、湿度和压力数据。 其他 Azure IoT Edge 教程均以本教程中通过部署模块（这些模块分析业务见解）执行的操作为基础。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
-本教程假设使用运行 Linux 的计算机或虚拟机来模拟物联网设备。 需要以下服务以成功部署 IoT Edge 设备：
+本教程使用计算机或虚拟机，如物联网设备。 若要将计算机转换为 IoT Edge 设备，需要以下服务：
 
-- [安装适用于 Linux 的 Docker][lnk-docker-ubuntu] 并确保其正在运行。 
-- 大多数 Linux 发行版（包括 Ubuntu）均已安装 Python 2.7。 使用以下命令确保已安装 pip：`sudo apt-get install python-pip`。
+* Python pip，用于安装 IoT Edge 运行时。
+   * Linux：`sudo apt-get install python-pip`。
+   * MacOS：`sudo easy_install pip`。
+* Docker，用于运行 IoT Edge 模块
+   * [安装适用于 Linux 的 Docker][lnk-docker-ubuntu] 并确保其正在运行。 
+   * [安装适用于 Mac 的 Docker][lnk-docker-mac] 并确保其正在运行。 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -57,7 +61,7 @@ Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推�
 在设备上安装并启动 Azure IoT Edge 运行时。 
 ![注册设备][5]
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。 在新设备上配置运行时的时候，首先仅启动 IoT Edge 代理。 IoT Edge 中心将在稍后部署模块时使用。 
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 在新设备上配置运行时的时候，首先仅启动 IoT Edge 代理。 IoT Edge 中心将在稍后部署模块时使用。 
 
 在即将运行 IoT Edge 设备的计算机上，下载 IoT Edge 控件脚本：
 ```cmd
@@ -130,4 +134,5 @@ sudo docker logs -f tempSensor
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer

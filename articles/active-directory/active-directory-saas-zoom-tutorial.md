@@ -4,7 +4,7 @@ description: "了解如何在 Azure Active Directory 和 Zoom 之间配置单一
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: a525bab0409dc212da9fe46a23b8320aed9a4463
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a6d9ea9de1035bf9c84cf3c451cc1121f04a82a
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>教程：Azure Active Directory 与 Zoom 的集成
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/11/2017
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要配置 Azure AD 与 Zoom 的集成，需要具有以下项：
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 - 启用了单一登录的 Zoom 订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Zoom”，在结果面板中选择“Zoom”，然后单击“添加”按钮添加该应用程序。
 
@@ -113,29 +113,57 @@ ms.lasthandoff: 12/11/2017
     b. 在“标识符”文本框中，使用以下模式键入 URL：`<companyname>.zoom.us`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc)来获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc)来获取这些值。
+
+4. Zoom 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 
+
+    ![配置单一登录](./media/active-directory-saas-Zoom-tutorial/tutorial_attribute.png)
+
+5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，再执行以下步骤：
+    
+    | 属性名称 | 属性值 | 命名空间值 |
+    | ------------------- | -----------|--------- |    
+    | 电子邮件地址 | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail`|
+    | 名字 | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`|
+    | 姓氏 | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname `|
+    | 电话号码 | user.telephonenumber | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone`|
+    | 系 | user.department | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department`|
+
+    a. 单击“添加属性”，打开“添加属性”对话框。
+
+    ![配置单一登录](./media/active-directory-saas-Zoom-tutorial/tutorial_attribute_04.png)
+
+    ![配置单一登录](./media/active-directory-saas-Zoom-tutorial/tutorial_attribute_05.png)
+
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+
+    c. 在“值”列表中，选择为该行显示的属性值。
+
+    d.单击“下一步”。 在“命名空间”文本框中，键入为该行显示的命名空间值。
+    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“确定” 。 
  
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
-    ![证书下载链接](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_certificate.png) 
+    ![证书下载链接](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_certificate.png)
 
-5. 单击“保存”按钮。
+7. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-zoom-tutorial/tutorial_general_400.png)
 
-6. 在“Zoom 配置”部分中，单击“配置 Zoom”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+8. 在“Zoom 配置”部分中，单击“配置 Zoom”以打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
-    ![Zoom 配置](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_configure.png) 
+    ![Zoom 配置](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_configure.png)
 
-7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoom 公司站点。
+9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoom 公司站点。
 
-8. 单击“单一登录” 选项卡。
+10. 单击“单一登录” 选项卡。
    
     ![“单一登录”选项卡](./media/active-directory-saas-zoom-tutorial/IC784700.png "单一登录")
 
-9. 单击“安全控制”，并转到“单一登录”设置。
+11. 单击“安全控制”，并转到“单一登录”设置。
 
-10. 在“单一登录”部分中，执行以下步骤：
+12. 在“单一登录”部分中，执行以下步骤：
    
     ![“单一登录”部分](./media/active-directory-saas-zoom-tutorial/IC784701.png "单一登录")
    
@@ -147,7 +175,10 @@ ms.lasthandoff: 12/11/2017
 
     d.单击“下一步”。 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。 
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“ **保存**”。
+
+    > [!NOTE] 
+    > 有关详细信息，请访问 zoom 文档 [https://zoomus.zendesk.com/hc/zh-cn/articles/115005887566](https://zoomus.zendesk.com/hc/en-us/articles/115005887566)
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -177,13 +208,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-zoom-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="create-a-zoom-test-user"></a>创建 Zoom 测试用户
 
@@ -207,7 +238,7 @@ ms.lasthandoff: 12/11/2017
 
     b. 在“电子邮件”文本框中，键入要预配的有效 Azure AD 帐户的电子邮件地址。
 
-    c. 单击“添加”。
+    c. 单击 **“添加”**。
 
 > [!NOTE]
 > 可以使用 Zoom 提供的任何其他 Zoom 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
@@ -251,7 +282,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: c136016ba885ec9ba999cb72ee6c1d4fc8770a0b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 5c18444b5a2767ccdd9a61a3bc9218fa4c0aac04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 在 Azure 自动化中，最佳实践之一是编写可重用、模块化且提供可由其他 Runbook 使用的离散功能的 Runbook。 父 Runbook 通常会调用一个或多个子 Runbook 来执行所需的功能。 可通过两种方法调用子 Runbook，每种方法都有明显不同的差异，应该了解这些差异，以确定哪种方法最适合方案。
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/14/2017
 
 发布某个 Runbook 时，必须事先发布它所调用的任何子 Runbook。 这是因为，在编译 Runbook 时，Azure 自动化会生成与任何子 Runbook 的关联。 如果未进行这种关联，父 Runbook 看似发布正常，但在启动时会生成异常。 如果发生这种情况，可以重新发布父 Runbook，以正确引用子 Runbook。 如果由于已创建关联而更改了任何子 Runbook，则不需重新发布父 Runbook。
 
-内联调用的子 Runbook 的参数可以是任意数据类型（包括复杂对象），并且不会进行 [JSON 序列化](automation-starting-a-runbook.md#runbook-parameters)，因为使用 Azure 管理门户或 Start-AzureRmAutomationRunbook cmdlet 启动 Runbook 时会进行这种序列化。
+内联调用的子 Runbook 的参数可以是任意数据类型（包括复杂对象），并且不会进行 [JSON 序列化](automation-starting-a-runbook.md#runbook-parameters)，因为使用 Azure 门户或 Start-AzureRmAutomationRunbook cmdlet 启动 Runbook 时会进行这种序列化。
 
 ### <a name="runbook-types"></a>Runbook 类型
 哪些类型可以互相调用：

@@ -1,32 +1,32 @@
 ---
-title: "创建 Function App 并从 Visual Studio Team Services 部署函数代码 | Microsoft Docs"
+title: "在 Azure 中创建从 Visual Studio Team Services 部署的函数 | Microsoft Docs"
 description: "创建 Function App 并从 Visual Studio Team Services 部署函数代码"
 services: functions
 keywords: 
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/28/2017
+ms.date: 01/09/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 5851b5219b6e25a5a2b005fc3d3c3b44d98ed746
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf9428f23e851bae3485ec3d724dfb9ccd2af4c1
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="create-an-app-service"></a>创建应用服务
+# <a name="create-a-function-in-azure-that-is-deployed-from-visual-studio-team-services"></a>在 Azure 中创建从 Visual Studio Team Services 部署的函数
 
-在此方案中，学习如何使用[消耗计划](../functions-scale.md#consumption-plan)及其相关资源创建 Function App，并从 Visual Studio Team Services (VSTS) 存储库持续部署函数代码。 此示例需要：
+本主题演示如何使用 Azure Functions 创建使用[消耗计划](../functions-scale.md#consumption-plan)的[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数应用。 从 Visual Studio Team Services (VSTS) 存储库连续部署函数应用（即函数的容器）。 若要完成本主题，必须具备以下条件：
 
-* 包含函数代码且你对其拥有管理权限的 VSTS 存储库。
-* GitHub 帐户的[个人访问令牌(PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
+* 包含函数应用项目的 VSTS 存储库，并且你对其具有管理权限。
+* [个人访问令牌 (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate)，用于访问 VSTS 存储库。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果想要在本地使用 Azure CLI，必须安装和使用版本 2.0 或更高版本。 若要确定 Azure CLI 版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、Web 应用、documentdb 和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、存储帐户、函数应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|

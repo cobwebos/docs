@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/05/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: d485d2e7d22ea79a87dc52dbc063a811f4a1a2ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>配置 Office 365 组过期（预览版）
 
@@ -30,9 +30,7 @@ ms.lasthandoff: 12/11/2017
 -   组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。
 
 > [!NOTE]
-> 为 Office 365 组设置过期要求过期设置要应用到的所有组成员具有 Azure AD Premium 许可证或 Azure AD Basic EDU 许可证。
-> 
-> 对于 Azure AD Basic EDU 许可客户：首次配置此策略时，需使用 Azure Active Directory PowerShell cmdlet。 以后，可以在 PowerShell 或 Azure AD 门户中，使用充当 Azure AD 租户中用户帐户管理员或全局管理员的帐户更新过期设置。
+> 为 Office 365 组设置到期时间要求到期时间设置要应用到的组的所有成员具有 Azure AD Premium 许可证。
 
 有关如何下载和安装 Azure AD PowerShell cmdlet 的信息，请参阅 [Azure Active Directory PowerShell for Graph – 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)。
 

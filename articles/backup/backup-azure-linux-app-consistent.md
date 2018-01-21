@@ -1,6 +1,6 @@
 ---
 title: "Azure 备份：Linux VM 的应用程序一致性备份 | Microsoft Docs"
-description: "对于 Linux 虚拟机，使用脚本以保证对 Azure 的应用程序一致性备份。 脚本仅适用于 Resource Manager 部署中的 Linux VM；脚本不适用于 Windows VM 或服务管理器部署。 本文将指导完成包括故障排除在内的脚本配置步骤。"
+description: "创建 Linux 虚拟机到 Azure 的应用程序一致性备份。 本文介绍如何配置脚本框架以备份 Azure 部署的 Linux VM。 本文还包括故障排除信息。"
 services: backup
 documentationcenter: dev-center-name
 author: anuragmehrotra
@@ -12,35 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/12/2017
+ms.date: 1/12/2018
 ms.author: anuragm;markgal
-ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2437b4cd90deda3e7239d87837a47a072f52835
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Azure Linux VM 的应用程序一致性备份（预览版）
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的应用程序一致性备份
 
-本文介绍 Linux 操作前脚本和操作后脚本框架，以及如何使用该框架创建 Azure Linux VM 的应用程序一致性备份。
-
-> [!Note]
-> 操作前脚本和操作后脚本框架仅适用于部署了 Azure Resource Manager 的 Linux 虚拟机。 应用程序一致性脚本不可用于部署了 Service Manager 的虚拟机或 Windows 虚拟机。
->
+创建 VM 的备份快照时，应用程序一致性意味着 VM 在还原后启动时启动应用程序。 正如你所想象，应用程序一致性非常重要。 若要确保 Linux VM 是应用程序一致的，可以使用 Linux 前脚本和后脚本框架执行应用程序一致性备份。 前脚本和后脚本框架支持 Azure 资源管理器部署的 Linux 虚拟机。 应用程序一致性脚本不支持 Service Manager 部署的虚拟机或 Windows 虚拟机。
 
 ## <a name="how-the-framework-works"></a>框架工作原理
 
-该框架提供一个选项，用于在创建 VM 快照时运行自定义的操作前脚本和操作后脚本。 操作前脚本在创建 VM 快照前的那一刻运行，操作后脚本在创建 VM 快照后立即运行。 这样，用户即可在创建 VM 快照时灵活控制其应用程序和环境。
+该框架提供一个选项，用于在创建 VM 快照时运行自定义的操作前脚本和操作后脚本。 前脚本在创建 VM 快照前的那一刻运行，后脚本在创建 VM 快照后立即运行。 使用前脚本和后脚本可在创建 VM 快照时灵活控制应用程序和环境。
 
-在此方案中，重要的是确保创建应用程序一致性 VM 备份。 操作前脚本可以调用应用程序本机 API 来静止 IO 并将内存内容刷新到磁盘。 这样可确保快照具有应用程序一致性，即在 VM 还原后启动时，应用程序随之启用。 操作后脚本可用于解冻 IO。 方式是使用应用程序本机 API，让应用程序可在完成 VM 快照后恢复正常操作。
+前脚本可以调用本机应用程序 API 来使 IO 处于静默状态并将内存中内容刷新到磁盘。 这些操作可确保快照是应用程序一致的。 后脚本使用本机应用程序 API 来解冻 IO，使应用程序能够在创建 VM 快照后恢复正常操作。
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>配置操作前脚本和操作后脚本的步骤
 
 1. 以 root 用户身份登录到要备份的 Linux VM。
 
-2. 从 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下载 VMSnapshotScriptPluginConfig.json，并将其复制到要备份的所有 VM 上的 /etc/azure 文件夹。 创建 /etc/azure 目录（如果不存在）。
+2. 从 [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) 下载 **VMSnapshotScriptPluginConfig.json**，并将其复制到要备份的所有 VM 的 **/etc/azure** 文件夹。 如果 **/etc/azure** 文件夹不存在，则创建它。
 
-3. 在所有计划备份的 VM 上复制应用程序的操作前脚本和操作后脚本。 可将脚本复制到 VM 上的任意位置。 确保在 VMSnapshotScriptPluginConfig.json 文件中更新脚本文件的完整路径。
+3. 将应用程序的前脚本和后脚本复制到计划备份的所有 VM 上。 可将脚本复制到 VM 上的任意位置。 确保在 VMSnapshotScriptPluginConfig.json 文件中更新脚本文件的完整路径。
 
 4. 确保分配对这些文件的以下权限：
 
@@ -51,20 +47,20 @@ ms.lasthandoff: 10/11/2017
    - 操作后脚本：权限“700”。 例如，只有“root”用户才对此文件拥有“读取”、“写入”和“执行”权限。
 
    > [!Important]
-   > 该框架为用户提供强大功能。 重要的是它很安全，且只有“root”用户有权访问关键的 JSON 和脚本文件。
-   > 如果未满足上述要求，则脚本不会运行。 这引发文件系统/崩溃一致性备份。
+   > 该框架为用户提供强大功能。 保护该框架，并确保只有“root”用户可以访问关键 JSON 和脚本文件。
+   > 如果不符合要求，该脚本将不会运行，从而导致文件系统崩溃和生成不一致性备份。
    >
 
 5. 根据下述信息配置 VMSnapshotScriptPluginConfig.json：
-    - pluginName：将此字段保留原样，否则脚本可能无法按预期工作。
+    - **pluginName**：将此字段保留原样，否则脚本可能无法按预期工作。
 
     - preScriptLocation：提供要备份的 VM 上的操作前脚本的完整路径。
 
     - postScriptLocation：提供要备份的 VM 上的操作后脚本的完整路径。
 
-    - preScriptParams：提供需传递给操作前脚本的可选参数。 所有参数应在引号内，如果有多个参数，需用逗号分隔。
+    - preScriptParams：提供需传递给操作前脚本的可选参数。 所有参数都应当用引号引起来。 如果使用多个参数，请用逗号分隔参数。
 
-    - postScriptParams：提供需传递给操作后脚本的可选参数。 所有参数应在引号内，如果有多个参数，需用逗号分隔。
+    - postScriptParams：提供需传递给操作后脚本的可选参数。 所有参数都应当用引号引起来。 如果使用多个参数，请用逗号分隔参数。
 
     - preScriptNoOfRetries：设置发生任何错误时，程序终止前应重试操作前脚本的次数。 0 表示发生失败时只尝试一次且不重试。
 

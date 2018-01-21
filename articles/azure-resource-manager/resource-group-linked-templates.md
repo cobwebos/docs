@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 78e5749369de1dd9865f61baefd70e6ce4bde31d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 7f88cd2a9e23ec1b142fc754ada49a8562e774bc
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="using-linked-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接的模版
+# <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
-若要部署解决方案，可以使用单个模板，或者使用包含多个链接模板的主模板。 对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件，并重复使用模板。
+若要部署解决方案，可以使用单个模板或包含多个相关模板的主模板。 相关模板可以是从主模板链接到的单独文件，也可以是嵌套在主模板中的模板。
+
+对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件，并重复使用模板。
 
 使用链接模板时，需创建一个用于在部署期间接收参数值的主模板。 主模板包含所有链接模板，并根据需要将值传递给这些模板。
 
 ![链接模板](./media/resource-group-linked-templates/nestedTemplateDesign.png)
 
-## <a name="link-to-a-template"></a>链接到模板
+## <a name="link-or-nest-a-template"></a>链接或嵌套模板
 
 若要链接到另一个模板，请将一个**部署**资源添加到主模板。
 
@@ -40,17 +42,17 @@ ms.lasthandoff: 12/13/2017
       "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
-          <inline-template-or-external-template>
+          <nested-template-or-external-template>
       }
   }
 ]
 ```
 
-为部署资源提供的属性根据是要链接到外部模板，还是要在主模板中嵌入内联模板而异。
+为部署资源提供的属性将因要链接到外部模板，还是要将内联模板嵌套在主模板中而异。
 
-### <a name="inline-template"></a>内联模板
+### <a name="nested-template"></a>嵌套模板
 
-若要嵌入链接模板，请使用 **template** 属性并包含该模板。
+若要将模板嵌套在主模板中，请使用 **template** 属性并指定模板语法。
 
 ```json
 "resources": [
@@ -63,8 +65,6 @@ ms.lasthandoff: 12/13/2017
       "template": {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
-        "parameters": {},
-        "variables": {},
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
@@ -76,12 +76,13 @@ ms.lasthandoff: 12/13/2017
             }
           }
         ]
-      },
-      "parameters": {}
+      }
     }
   }
 ]
 ```
+
+对于嵌套模板，不能使用嵌套模板中定义的参数或变量。 可以使用主模板中的参数和变量。 在前面的示例中，`[variables('storageName')]` 从主模板（而不是嵌套模板）中检索值。 此限制不适用于外部模版。
 
 ### <a name="external-template-and-external-parameters"></a>外部模板和外部参数
 
@@ -176,7 +177,7 @@ ms.lasthandoff: 12/13/2017
 }
 ```
 
-父模板部署链接模板并获取返回值。 请注意，该模板按名称引用部署资源，并使用链接模板返回的属性的名称。
+主模板部署链接模板并获取返回值。 请注意，该模板按名称引用部署资源，并使用链接模板返回的属性的名称。
 
 ```json
 {
@@ -309,9 +310,9 @@ ms.lasthandoff: 12/13/2017
 }
 ```
 
-## <a name="linked-templates-in-deployment-history"></a>部署历史记录中的链接模板
+## <a name="linked-and-nested-templates-in-deployment-history"></a>部署历史记录中的链接模板和嵌套模板
 
-资源管理器将每个链接模板作为部署历史记录中的单独部署进行处理。 因此，包含三个链接模板的父模板在部署历史记录中显示为：
+资源管理器将每个模板作为部署历史记录中的单独部署进行处理。 因此，包含三个链接模板或嵌套模板的主模板在部署历史记录中显示为：
 
 ![部署历史记录](./media/resource-group-linked-templates/deployment-history.png)
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/09/2018
 ms.author: billmath
-ms.openlocfilehash: abd9b8559cb70be6d03b85cfe19a6b37b7069985
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory 传递身份验证：智能锁定
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 可防止暴力密码搜索攻击，并防止�
 传递身份验证会将密码验证请求转发到本地 Active Directory，因此，需要防止攻击者锁定用户的 Active Directory 帐户。 Active Directory 具有其自己帐户锁定策略，具体而言是[帐户锁定阈值](https://technet.microsoft.com/library/hh994574(v=ws.11).aspx)和[在此后重置帐户锁定计数器](https://technet.microsoft.com/library/hh994568(v=ws.11).aspx)策略。 请适当配置 Azure AD 锁定阈值和锁定持续时间值，以在云中的攻击到达本地 Active Directory 之前将其筛选出来。
 
 >[!NOTE]
->智能锁定功能是免费的，默认情况下，对所有客户_启用_。 但是，如果想要使用图形 API 修改 Azure AD 锁定阈值和锁定持续时间值，则租户需要具有至少一个 Azure AD Premium P2 许可证。 使用传递身份验证获取智能锁定功能，并不需要每个用户拥有一个 Azure AD Premium P2 许可证。
+>>智能锁定功能是免费的，默认情况下，对所有客户_启用_。 但是，使用图形 API 修改 Azure AD 的锁定阈值和锁定持续时间值需要租户已激活 Azure AD Premium P2。 
 
 若要确保用户的本地 Active Directory 帐户受到良好保护，需要确保：
 

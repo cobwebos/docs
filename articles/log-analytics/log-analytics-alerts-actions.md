@@ -1,6 +1,6 @@
 ---
-title: "响应 OMS Log Analytics 中的警报 | Microsoft 文档"
-description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，还可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
+title: "响应 Azure Log Analytics 中的警报 | Microsoft Docs"
+description: "Log Analytics 中的警报标识 Azure 工作区中的重要信息，并可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2017
+ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>将操作添加到 Log Analytics 中的警报规则
 [在 Log Analytics 中创建警报](log-analytics-alerts.md)时，可以选择[配置警报规则](log-analytics-alerts.md)以执行一个或多个操作。  本文介绍可用的不同操作，并详述如何配置每种类型的操作。
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/24/2017
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 使用者 |电子邮件主题。  不能修改邮件正文。 |
+| 主题 |电子邮件主题。  不能修改邮件正文。 |
 | 收件人 |所有电子邮件收件人的地址。  如果指定多个地址，则用分号 (;) 分隔地址。 |
 
 
@@ -71,7 +71,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 | SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |查询开始时间（UTC 格式）。 |
 | SearchQuery |#searchquery |警报规则所使用的日志搜索查询。 |
 | SearchResults |请参阅下文 |查询所返回的 JSON 格式的记录。  限制为前 5000 条记录。 |
-| WorkspaceID |#workspaceid |OMS 工作区的 ID。 |
+| WorkspaceID |#workspaceid |Log Analytics 工作区的 ID。 |
 
 例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。  该 Webhook 调用的服务将需要此参数。
 
@@ -97,11 +97,11 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
     }
 
 
-可以在 [在 OMS Log Analytics 中创建警报 webhook 操作以将消息发送到 Slack](log-analytics-alerts-webhooks.md) 中使用 webhook 来启动外部服务，逐步完成创建警报规则的完整示例。
+可以在 [在 Log Analytics 中创建警报 webhook 操作以将消息发送到 Slack](log-analytics-alerts-webhooks.md) 中使用 webhook 启动外部服务，逐步完成创建警报规则的完整示例。
 
 
 ## <a name="runbook-actions"></a>Runbook 操作
-Runbook 操作可在 Azure 自动化中启动 Runbook。  若要使用此类型的操作，必须在 OMS 工作区中安装和配置[自动化解决方案](log-analytics-add-solutions.md)。  可以从在自动化解决方案中配置的自动化帐户中的 Runbook 进行选择。
+Runbook 操作可在 Azure 自动化中启动 Runbook。  若要使用此类型的操作，必须在 Log Analytics 工作区中安装和配置[自动化解决方案](log-analytics-add-solutions.md)。  可以从在自动化解决方案中配置的自动化帐户中的 Runbook 进行选择。
 
 Runbook 操作需要下表中的属性。
 
@@ -121,7 +121,7 @@ Runbook 操作使用 [Webhook](../automation/automation-webhooks.md) 来启动 R
 |:--- |:--- |
 | id |搜索的路径和 GUID。 |
 | __metadata |有关警报的信息，包括记录数和搜索结果状态。 |
-| value |搜索结果中每个记录的单独条目。  条目的详细信息将匹配记录的属性和值。 |
+| 值 |搜索结果中每个记录的单独条目。  条目的详细信息将匹配记录的属性和值。 |
 
 例如，下面的 Runbook 会提取日志搜索返回的记录，并基于每个记录的类型分配不同属性。  请注意，该 Runbook 以从 json 转换 **RequestBody** 开始，因此，它可以作为 PowerShell 中的对象。
 

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/27/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c1ae74127fce40a6f1ab412f25797076dda9d888
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 3f2f9258b97d4886f41a2b991ff4de7e16379245
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>如何将 IoT Edge 设备用作网关 - 预览版
 
@@ -49,7 +49,7 @@ IoT 解决方案中的网关用途特是定于解决方案的，并将设备连�
 | 直接方法和云到设备的消息 | 云可以对每个已连接的设备单独寻址 | 云只能对网关设备寻址 | 云可以对每个已连接的设备单独寻址 |
 | [IoT 中心限制和配额][lnk-iothub-throttles-quotas] | 适用于每个设备 | 适用于网关设备 | 适用于每个设备 |
 
-使用不透明网关模式时，通过该网关连接的所有设备共享同一个可包含最多 50 条消息的云到设备的队列。 它遵循的原则是，仅当极少设备通过各字段网关进行连接以及云到设备的流量较低时，才使用不透明网关模式。
+使用不透明网关（协议转换）模式时，通过该网关连接的所有设备共享同一个可包含最多 50 条消息的云到设备的队列。 它遵循的原则是，仅当极少设备通过各字段网关进行连接以及云到设备的流量较低时，才使用不透明网关模式。
 
 ## <a name="next-steps"></a>后续步骤
 将 IoT Edge 设备用作[透明网关][lnk-iot-edge-as-transparent-gateway] 

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 18712b1c19fc81e290ead62f73a177874ebe86cd
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -40,14 +40,14 @@ Application Insights Web SDK 自动收集 ASP.NET 应用程序（在 IIS 管道�
 
 需要自定义跟踪的另一个示例是，从队列接收项目的辅助角色。 对于某些队列，向队列添加消息的调用将作为依赖项进行跟踪。 但是，不会自动收集描述消息处理的高级操作。
 
-我们来看看如何跟踪此类操作。
+我们来了解可以跟踪此类操作的方式。
 
 大致而言，此任务旨在创建 `RequestTelemetry` 并设置已知的属性。 在操作完成后，可跟踪遥测数据。 以下示例演示了此任务。
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Owin 自托管应用中的 HTTP 请求
-在此示例中，我们将遵循 [HTTP Protocol for Correlation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)（HTTP 关联协议）。 用户应该会收到此处所述的标头。
+在此示例中，跟踪上下文根据 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)进行传播。 用户应该会收到此处所述的标头。
 
-``` C#
+```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
 {
     private readonly TelemetryClient telemetryClient = new TelemetryClient(TelemetryConfiguration.Active);
@@ -121,16 +121,18 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 HTTP 关联协议还声明 `Correlation-Context` 标头。 但为了简单起见，此处省略了该标头。
 
 ## <a name="queue-instrumentation"></a>队列检测
-对于 HTTP 通信，我们创建了协议来传递关联详细信息。 某些队列的协议允许将其他元数据与消息一起传递，其他队列的协议则不然。
+虽然根据 [HTTP 相关协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)使用 HTTP 请求传递关联详细信息，但每个队列协议必须定义如何随队列消息传递相同的详细信息。 某些队列协议（如 AMQP）允许传递附加元数据，而另一些队列协议（如 Azure 存储队列）需要将上下文编码为消息有效负载。
 
 ### <a name="service-bus-queue"></a>服务总线队列
-Azure [服务总线队列](../service-bus-messaging/index.md)允许将属性包与消息一起传递。 我们用它来传递关联 ID。
+Application Insights 使用新的[适用于 .NET 的 Microsoft Azure 服务总线客户端](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) 3.0.0 版及更高版本跟踪服务总线消息传送调用。
+如果使用[消息处理程序模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)来处理消息，则无需执行其他操作，系统会自动跟踪由服务所完成的所有服务总线调用，并将其与其他遥测项关联。 如果手动处理消息，请参阅[使用 Microsoft Application Insights 跟踪的 Service Bus 客户端](../service-bus-messaging/service-bus-end-to-end-tracing.md)。
 
-服务总线队列使用基于 TCP 的协议。 Application Insights 不会自动跟踪队列操作，因而需要手动跟踪。 取消排队操作是一种推送样式 API，根本无法跟踪。
+如果使用 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 包，请进一步阅读 - 以下示例演示当服务总线队列使用 AMQP 协议且 Application Insights 不自动跟踪队列操作时，如何跟踪（和关联）对服务总线的调用。
+在消息属性中传递关联标识符。
 
 #### <a name="enqueue"></a>排队
 
-```C#
+```csharp
 public async Task Enqueue(string payload)
 {
     // StartOperation is a helper method that initializes the telemetry item
@@ -168,7 +170,7 @@ public async Task Enqueue(string payload)
 ```
 
 #### <a name="process"></a>进程
-```C#
+```csharp
 public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
@@ -208,7 +210,7 @@ public async Task Process(BrokeredMessage message)
 
 如果手动配置 Application Insights，请确保创建并初始化 `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`，如下所示：
  
-``` C#
+```csharp
 DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
 
 // You can prevent correlation header injection to some domains by adding it to the excluded list.
@@ -224,14 +226,14 @@ module.Initialize(TelemetryConfiguration.Active);
 #### <a name="enqueue"></a>排队
 由于存储队列支持 HTTP API，因此 Application Insights 会自动跟踪队列的所有操作。 在多数情况下，此检测已足够。 但是，为了将使用者跟踪与生成者跟踪相关联，必须传递某些关联上下文，方法类似于 HTTP 关联协议中所执行的操作。 
 
-在此示例中，我们跟踪可选的 `Enqueue` 操作。 可以：
+此示例演示如何跟踪 `Enqueue` 操作。 可以：
 
  - **关联重试（如果有）**：它们都有一个共同的父级，即 `Enqueue` 操作。 否则，它们都作为传入请求的子级进行跟踪。 如果有多个对队列的逻辑请求，可能很难发现导致重试的调用。
  - **关联存储日志（如果需要）**：它们与 Application Insights 遥测相关联。
 
 `Enqueue` 操作是某个父操作（例如，传入 HTTP 请求）的子级。 HTTP 依赖项调用是 `Enqueue` 操作的子级以及传入请求的孙级：
 
-```C#
+```csharp
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
@@ -285,7 +287,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 
 在多数情况下，将队列的 HTTP 请求与其他跟踪相关联也是有用处的。 以下示例演示如何执行此操作：
 
-``` C#
+```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
     var telemetry = new DependencyTelemetry
@@ -336,7 +338,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 
 在以下示例中，通过类似于跟踪传入 HTTP 请求的方式跟踪传入消息：
 
-```C#
+```csharp
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
@@ -366,7 +368,7 @@ public async Task Process(MessagePayload message)
 
 同样，可以检测其他队列操作。 应该以类似于取消排队操作的方式检测速览操作。 不必检测队列管理操作。 Application Insights 会跟踪 HTTP 之类的操作，在大多数情况下，这就足够了。
 
-检测消息删除时，请务必设置操作（关联）标识符。 或者，可以使用 `Activity` API。 这样就无需在遥测项目上设置操作标识符，因为 Application Insights 会为用户完成：
+检测消息删除时，请务必设置操作（关联）标识符。 或者，可以使用 `Activity` API。 这样就无需在遥测项目上设置操作标识符，因为 Application Insights SDK 会为用户完成：
 
 - 从队列中获取项目后，创建新的 `Activity`。
 - 使用 `Activity.SetParentId(message.ParentId)` 关联使用者日志和生成者日志。
@@ -383,7 +385,7 @@ public async Task Process(MessagePayload message)
 ## <a name="long-running-background-tasks"></a>长时间运行后台任务
 某些应用程序可能因用户请求而启动长时间运行的操作。 从跟踪/检测的角度来看，它与请求或依赖项检测没有区别： 
 
-``` C#
+```csharp
 async Task BackgroundTask()
 {
     var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
@@ -411,7 +413,7 @@ async Task BackgroundTask()
 }
 ```
 
-在此示例中，使用 `telemetryClient.StartOperation` 创建 `RequestTelemetry` 并填充相关上下文。 假设有一个父操作，它是由计划操作的传入请求创建的。 只要在与传入请求相同的异步控制流中启动 `BackgroundTask`，它就会与该父操作相关联。 `BackgroundTask` 和所有嵌套的遥测项自动与引发此项的请求相关联，即使请求结束也一样。
+在此示例中，`telemetryClient.StartOperation` 创建 `RequestTelemetry` 并填充相关上下文。 假设有一个父操作，它是由计划操作的传入请求创建的。 只要在与传入请求相同的异步控制流中启动 `BackgroundTask`，它就会与该父操作相关联。 `BackgroundTask` 和所有嵌套的遥测项自动与引发此项的请求相关联，即使请求结束也一样。
 
 从不含与之关联的任何操作 (`Activity`) 的后台线程启动任务时，`BackgroundTask` 没有任何父级。 但是，它可以具有嵌套操作。 从任务报告的所有遥测项与 `BackgroundTask` 中创建的 `RequestTelemetry` 相关联。
 
@@ -428,9 +430,33 @@ async Task BackgroundTask()
 - 完成后，使用 `StopOperation` 停止操作。
 - 处理异常。
 
+```csharp
+public async Task RunMyTaskAsync()
+{
+    using (var operation = telemetryClient.StartOperation<DependencyTelemetry>("task 1"))
+    {
+        try 
+        {
+            var myTask = await StartMyTaskAsync();
+            // Update status code and success as appropriate.
+        }
+        catch(...) 
+        {
+            // Update status code and success as appropriate.
+        }
+    }
+}
+```
+
+释放操作会导致操作停止，因此你可以执行此操作而不用调用 `StopOperation`。
+
+*警告*：在某些情况下，未处理的异常可能会[阻止](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally)调用 `finally`，因此无法跟踪操作。
+
+### <a name="parallel-operations-processing-and-tracking"></a>并行处理和跟踪操作
+
 `StopOperation` 仅停止已启动的操作。 如果当前运行的操作与要停止的操作不匹配，`StopOperation` 不执行任何操作。 如果在同一执行上下文中并行启动多个操作，则可能发生这种情况：
 
-```C#
+```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstTask = RunMyTaskAsync();
@@ -440,31 +466,31 @@ var secondTask = RunMyTaskAsync();
 
 await firstTask;
 
-// This will do nothing and will not report telemetry for the first operation
+// FAILURE!!! This will do nothing and will not report telemetry for the first operation
 // as currently secondOperation is active.
 telemetryClient.StopOperation(firstOperation); 
 
 await secondTask;
 ```
 
-确保始终调用 `StartOperation` 并在其自身的上下文中运行任务：
-```C#
-public async Task RunMyTaskAsync()
+请确保始终在同一**异步**方法中调用 `StartOperation` 和处理操作，以隔离并行运行的操作。 如果操作是同步的（或非异步的），请包装过程并使用 `Task.Run` 跟踪：
+
+```csharp
+public void RunMyTask(string name)
 {
-    var operation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
-    try 
+    using (var operation = telemetryClient.StartOperation<DependencyTelemetry>(name))
     {
-        var myTask = await StartMyTaskAsync();
+        Process();
         // Update status code and success as appropriate.
     }
-    catch(...) 
-    {
-        // Update status code and success as appropriate.
-    }
-    finally 
-    {
-        telemetryClient.StopOperation(operation);
-    }
+}
+
+public async Task RunAllTasks()
+{
+    var task1 = Task.Run(() => RunMyTask("task 1"));
+    var task2 = Task.Run(() => RunMyTask("task 2"));
+    
+    await Task.WhenAll(task1, task2);
 }
 ```
 

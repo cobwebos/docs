@@ -12,14 +12,14 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 543e8a591acc76918aa7159e6a31b67d85849148
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: a16c5011986c16aae26efaaa6191568b04f46567
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-location-based-services---geocoding-coverage"></a>Azure Location Based Services - 地理编码覆盖区域
-Azure Location Based Services (LBS) 提供详细的地理编码信息，用于查找地址、地点和世界各地其他地理实体。 这对于在搜索服务中搜索地址时那些想要知道自己可在哪里找到和没有不同保真度级别的客户来说非常重要。 在搜索低保真度覆盖区域时，不能期望较低置信度的搜索结果。 下表提供了有关 Azure LBS 搜索地理编码的覆盖区域信息。
+Azure Location Based Services (LBS) 提供详细的地理编码信息，用于查找地址、地点和世界各地其他地理实体。 这对于在搜索服务中搜索地址时那些想要知道自己可在哪里找到和没有不同保真度级别的客户来说非常重要。 在搜索低保真度覆盖区域时，可以预期较低置信度的搜索结果。 下表提供了有关 Azure LBS 搜索地理编码的覆盖区域信息。
 
 
 |区域  |地址点  |门牌号 |街道级|
@@ -104,7 +104,7 @@ Azure Location Based Services (LBS) 提供详细的地理编码信息，用于�
 |格恩西     |         |✓         |✓         |
 |匈牙利     |         |✓         |✓         |
 |冰岛     |         |✓         |✓         |
-|爱尔兰(共和国)     |✓         |✓         |✓         |
+|爱尔兰共和国     |✓         |✓         |✓         |
 |马恩岛     |         |✓         |✓         |
 |意大利     |✓         |✓         |✓         |
 |泽西岛     |         |✓         | ✓        |

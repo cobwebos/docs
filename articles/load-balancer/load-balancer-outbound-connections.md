@@ -3,8 +3,8 @@ title: "了解 Azure 中的出站连接 | Microsoft Docs"
 description: "本文介绍了 Azure 如何使 VM 与公共 Internet 服务通信。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d02960017b8793eccc2990a17e3d854991e877b6
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: b8e225ba4374c73dbabac3dddab9ba37fa798a5a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>了解 Azure 中的出站连接
 
@@ -46,7 +46,7 @@ SNAT 端口是可能会被耗尽的有限资源。 因此了解它们的使用�
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>负载均衡的 VM（无实例级公共 IP 地址）
 
-在此场景中，VM 是 Azure 负载均衡器池的一部分。  没有分配给 VM 的公共 IP 地址。 必须为负载均衡器资源配置一个规则来将公共 IP 前端链接到后端池。  如果没有完成此配置，则行为将如适用于[没有实例级公共 IP 的独立 VM](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address)上一节内容中所述。
+在此场景中，VM 是 Azure 负载均衡器池的一部分。  没有分配给 VM 的公共 IP 地址。 必须为负载均衡器资源配置一个负载均衡器规则，以在公共 IP 前端与后端池之间创建链接。 如果没有完成此配置，则行为将如适用于[没有实例级公共 IP 的独立 VM](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address)上一节内容中所述。
 
 当负载均衡的 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共负载均衡器前端的公共 IP 地址。 Azure 使用源网络地址转换 (SNAT) 来执行此功能。 使用负载均衡器的公共 IP 地址的临时端口区分由 VM 产生的各个流。 创建出站流后 SNAT 动态分配临时端口。 在此情况下，用于 SNAT 的临时端口被称为 SNAT 端口。
 

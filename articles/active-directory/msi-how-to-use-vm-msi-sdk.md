@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: bryanla
-ms.openlocfilehash: 46fd75668999537dfbc9fd82c1f166e126b6f547
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c9bd57080c95e4aad45515a0814471194261286
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-with-azure-sdks"></a>如何将 Azure VM 托管服务标识 (MSI) 与 Azure SDK 配合使用 
 
-[!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]本文提供了 SDK 示例的列表，这些示例演示了如何使用其各自 Azure SDK 对 MSI 的支持。
+[!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]  
+本文提供了 SDK 示例的列表，这些示例演示了如何使用其各自 Azure SDK 对 MSI 的支持。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 [!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 

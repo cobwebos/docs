@@ -1,5 +1,5 @@
 ---
-title: "授权：Azure AD SSPR | Microsoft Docs"
+title: "许可证自助密码重置 - Azure Active Directory"
 description: "Azure AD 自助密码重置的授权要求"
 services: active-directory
 keywords: 
@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 45cecbf1334d4d708f1578d1512627bc0ead3a04
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ff9f80cfe9991000fdee45421fc74e662a4dfd1
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
 
 要使 Azure Active Directory (Azure AD) 密码重置正常工作，*必须在组织中至少分配一个许可证*。 我们不对密码重置体验强制实施每用户授权。 为了遵守 Microsoft 许可协议，需要向使用高级功能的所有用户分配许可证。
 
 * **仅限云用户**：Office 365 任何付费 SKU 或 Azure AD Basic
-* **云**或**本地用户** - Azure AD Premium P1 或 P2、企业移动性 + 安全性 (EMS) 或 Secure Productive Enterprise (SPE)
+* **云**或**本地用户**：Azure AD Premium P1 或 P2、企业移动性 + 安全性 (EMS) 或 Microsoft 365
 
 ## <a name="licenses-required-for-password-writeback"></a>密码写回所需的许可证
 
@@ -42,6 +42,7 @@ ms.lasthandoff: 12/11/2017
 
 > [!WARNING]
 > 独立 Office 365 许可计划*不支持密码写回*，要使此功能正常工作，需要使用上述计划之一。
+>
 
 可在以下页上找到其他许可信息（包括成本）：
 
@@ -69,4 +70,3 @@ Azure AD 现在支持基于组的许可。 管理员可以将许可证批量分�
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
-

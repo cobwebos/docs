@@ -60,7 +60,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
     Azure 使用存储帐户作为非托管磁盘的容器。 如果使用非托管磁盘创建 Azure DS、DSv2、GS 或 Fs 系列 VM 并选择高级存储帐户，操作系统和数据磁盘会存储在该存储帐户中。
 
 ## <a name="supported-vms"></a>支持的 VM
-高级存储支持 DS 系列、DSv2 系列、GS 系列和 LS 系列和 Fs 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
+高级存储支持 DS 系列、DSv2 系列、GS 系列、Ls 系列、Fs 系列和 B 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
 
 有关 Azure 中适用于 Windows 的 VM 类型和大小的信息，请参阅 [Windows VM 大小](../articles/virtual-machines/windows/sizes.md)。 有关 Azure 中适用于 Linux 的 VM 类型和大小的信息，请参阅 [Linux VM 大小](../articles/virtual-machines/linux/sizes.md)。
 
@@ -194,11 +194,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 ## <a name="snapshots-and-copy-blob"></a>快照和复制 Blob
 
-对于存储服务而言，VHD 文件是页 blob。 可以创建页 Blob 的快照，并将其复制到其他位置，例如其他存储帐户。
+对于存储服务而言，VHD 文件是页 blob。 可以创建页 Blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
-像使用标准存储的快照一样，为非托管高级磁盘创建[增量快照](../articles/virtual-machines/linux/incremental-snapshots.md)。 高级存储仅支持使用本地冗余存储作为复制选项。 我们建议创建快照，并将这些快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](../articles/storage/common/storage-redundancy.md)。
+像使用标准存储的快照一样，为非托管高级磁盘创建[增量快照](../articles/virtual-machines/linux/incremental-snapshots.md)。 高级存储仅支持使用本地冗余存储作为复制选项。 我们建议创建快照，然后将这些快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](../articles/storage/common/storage-redundancy.md)。
 
 如果将磁盘附加到 VM，该磁盘上将不允许某些 API 操作。 例如，将磁盘附加到 VM 后，无法在该 Blob 上执行[复制 Blob](/rest/api/storageservices/Copy-Blob) 操作。 应该先使用[快照 Blob](/rest/api/storageservices/Snapshot-Blob) REST API 创建该 Blob 的快照。 然后，对该快照执行[复制 Blob](/rest/api/storageservices/Copy-Blob) 以复制附加的磁盘。 或者，可以分离磁盘，并执行任何所需的操作。
 

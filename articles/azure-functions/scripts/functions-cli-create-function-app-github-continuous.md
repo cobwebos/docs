@@ -1,22 +1,22 @@
 ---
-title: "创建 Function App 并从 GitHub 部署函数代码 | Microsoft Docs"
-description: "创建 Function App 并从 GitHub 部署函数代码"
+title: "在 Azure 中创建从 GitHub 部署的函数 | Microsoft Docs"
+description: "使用 Azure Functions 创建函数应用并从 GitHub 存储库部署函数代码。"
 services: functions
 ms.service: functions
 keywords: 
 ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/27/2017
+ms.date: 01/09/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 8b148651d041bbc27e2deccec57b1759ce0095d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4224bc7973cd1e3ca36799db9f23a124fcba807
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="create-an-app-service"></a>创建应用服务
+# <a name="create-a-function-in-azure-that-is-deployed-from-github"></a>在 Azure 中创建从 GitHub 部署的函数
 
 此示例脚本使用[消耗计划](../functions-scale.md#consumption-plan)及其相关资源创建 Function App，并从 GitHub 存储库持续部署函数代码。 在此示例中，需要以下项：
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果想要在本地使用 Azure CLI，必须安装和使用版本 2.0 或更高版本。 若要确定 Azure CLI 版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 

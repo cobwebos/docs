@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 1ba56eb9539a4295fdaaab523cfd2a7e1587ef54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bef7643a989caee846f8235e024deb482f4b0a0
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 Azure 上有多个标准大小可供选择。 其中某些大小的注意事项包括：
 
 * D 系列的 VM 旨在运行需要更高计算能力和临时磁盘性能的应用程序。 D 系列 VM 为临时磁盘提供更快的处理器、更高的内存内核比和固态驱动器 (SSD)。 有关详细信息，请参阅 Azure 博客[新的 D 系列虚拟机大小](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)上的公告。
-* Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 该系列基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器，通过 Intel Turbo Boost Technology 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+* Dv3 系列、Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 该系列基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器，通过 Intel Turbo Boost Technology 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 * G 系列的 VM 可提供最大的内存，并在配备 Intel Xeon E5 V3 系列处理器的主机上运行。
 * A 系列 VM 可以部署在各种不同的硬件类型和处理器上。 根据硬件限制大小，为运行中的实例提供一致的处理器性能，而不考虑硬件部署的位置。 若要判断此大小部署所在的物理硬件，请从虚拟机中查询虚拟硬件。
 * A0 大小在物理硬件上过度订阅。 仅针对此特定大小，其他客户部署可能影响正在运行的工作负荷的性能。 以下概述的相对性能为预期的基准，受限于近似变化性的 15%。
@@ -42,7 +42,7 @@ Azure 上有多个标准大小可供选择。 其中某些大小的注意事项�
 以下注意事项可能会帮助你决定大小：
 
 * A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。 有关如何使用这些大小的详细信息和注意事项，请参阅[高性能计算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* Dv2 系列、D 系列和 G 系列是要求有更快速的 CPU、更好的本地磁盘性能，或更高内存的应用程序的理想选择。 它们为许多企业级应用程序提供强大的组合。
+* Dv3 系列、Dv2 系列、D 系列和 G 系列是要求有更快速的 CPU、更好的本地磁盘性能，或更高内存的应用程序的理想选择。 它们为许多企业级应用程序提供强大的组合。
 * Azure 数据中心内的一些物理主机可能不支持更大的虚拟机大小，例如 A5 – A11。 因此，在以下情况下，可能会显示错误消息“未能配置虚拟机 {虚拟机名称}”或“未能创建虚拟机 {虚拟机名称}”：将现有虚拟机的大小调整为新的大小时；在 2013 年 4 月 16 日之前创建的虚拟网络中创建新的虚拟机时；或者向现有的云服务中添加新的虚拟机时。 有关每个部署方案的解决方法，请参阅支持论坛上的[错误：“无法配置虚拟机”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows)。
 * 订阅也可能会限制某些大小系列中可部署的核心数。 若要增加配额，请联系 Azure 支持。
 
@@ -61,12 +61,13 @@ Azure 上有多个标准大小可供选择。 其中某些大小的注意事项�
 | [ExtraSmall](#a-series) |50 |
 | [Small-ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
-| [Standard_A1-8v2](#av2-series) |100 |
-| [Standard_A2m-8mv2](#av2-series) |100 |
 | [A8-A11](#a-series) |225* |
-| [D1-14](#d-series) |160 |
-| [D1-15v2](#dv2-series) |210 - 250* |
-| [G1-5](#g-series) |180 - 240* |
+| [A v2](#av2-series) |100 |
+| [D](#d-series) |160 |
+| [D v2](#dv2-series) |160 - 190* |
+| [D v3](#dv3-series) |160 - 190* |
+| [E v3](#ev3-series) |160 - 190* |
+| [G](#g-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
 ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。 提升量可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
@@ -84,10 +85,10 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | 特小型      | 1         | 0.768        | 20                   | 1/低 |
 | 小型           | 1         | 1.75         | 225                  | 1/中 |
-| 中型          | #N/A         | 3.5 GB       | 490                  | 1/中 |
+| 中型          | 2         | 3.5 GB       | 490                  | 1/中 |
 | 大型           | 4         | 7            | 1000                 | 2/高 |
 | 超大型      | 8         | 14           | 2040                 | 4/高 |
-| A5              | #N/A         | 14           | 490                  | 1/中 |
+| A5              | 2         | 14           | 490                  | 1/中 |
 | A6              | 4         | 28           | 1000                 | 2/高 |
 | A7              | 8         | 56           | 2040                 | 4/高 |
 
@@ -99,7 +100,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | A8*             |8          | 56           | 1817                 | 2/高 |
 | A9*             |16         | 112          | 1817                 | 4/非常高 |
 | A10             |8          | 56           | 1817                 | 2/高 |
-| A11             |16         | 112          | 1817                 | 4/很高 |
+| A11             |16         | 112          | 1817                 | 4/非常高 |
 
 \*支持 RDMA
 
@@ -107,11 +108,11 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_A1_v2  | 1         | #N/A            | 10                   | 1/中                 |
-| Standard_A2_v2  | #N/A         | 4            | 20                   | 2/中                 |
+| Standard_A1_v2  | 1         | 2            | 10                   | 1/中                 |
+| Standard_A2_v2  | 2         | 4            | 20                   | 2/中                 |
 | Standard_A4_v2  | 4         | 8            | 40                   | 4/高                     |
 | Standard_A8_v2  | 8         | 16           | 80                   | 8/高                     |
-| Standard_A2m_v2 | #N/A         | 16           | 20                   | 2/中                 |
+| Standard_A2m_v2 | 2         | 16           | 20                   | 2/中                 |
 | Standard_A4m_v2 | 4         | 32           | 40                   | 4/高                     |
 | Standard_A8m_v2 | 8         | 64           | 80                   | 8/高                     |
 
@@ -120,10 +121,10 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3.5          | 50                   | 1/中 |
-| Standard_D2     | #N/A         | 7            | 100                  | 2/高 |
+| Standard_D2     | 2         | 7            | 100                  | 2/高 |
 | Standard_D3     | 4         | 14           | 200                  | 4/高 |
 | Standard_D4     | 8         | 28           | 400                  | 8/高 |
-| Standard_D11    | #N/A         | 14           | 100                  | 2/高 |
+| Standard_D11    | 2         | 14           | 100                  | 2/高 |
 | Standard_D12    | 4         | 28           | 200                  | 4/高 |
 | Standard_D13    | 8         | 56           | 400                  | 8/高 |
 | Standard_D14    | 16        | 112          | 800                  | 8/非常高 |
@@ -132,20 +133,43 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3.5          | 50                   | 1/中 |
-| Standard_D2_v2  | #N/A         | 7            | 100                  | 2/高 |
+| Standard_D2_v2  | 2         | 7            | 100                  | 2/高 |
 | Standard_D3_v2  | 4         | 14           | 200                  | 4/高 |
 | Standard_D4_v2  | 8         | 28           | 400                  | 8/高 |
 | Standard_D5_v2  | 16        | 56           | 800                  | 8/极高 |
-| Standard_D11_v2 | #N/A         | 14           | 100                  | 2/高 |
+| Standard_D11_v2 | 2         | 14           | 100                  | 2/高 |
 | Standard_D12_v2 | 4         | 28           | 200                  | 4/高 |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8/高 |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/极高 |
 | Standard_D15_v2 | 20        | 140          | 1,000                | 8/极高 |
 
+## <a name="dv3-series"></a>Dv3 系列
+
+| 大小            | CPU 核心数 | 内存：GiB   | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standard_D2_v3  | 2         | 8             | 16                   | 2/中 |
+| Standard_D4_v3  | 4         | 16            | 32                   | 2/高 |
+| Standard_D8_v3  | 8         | 32            | 64                   | 4/高 |
+| Standard_D16_v3 | 16        | 64            | 128                  | 8/极高 |
+| Standard_D32_v3 | 32        | 128           | 256                  | 8/极高 |
+| Standard_D64_v3 | 64        | 256           | 512                  | 8/极高 |
+
+## <a name="ev3-series"></a>Ev3 系列
+
+| 大小            | CPU 核心数 | 内存：GiB   | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standard_E2_v3  | 2         | 16            | 32                   | 2/中 |
+| Standard_E4_v3  | 4         | 32            | 64                   | 2/高 |
+| Standard_E8_v3  | 8         | 64            | 128                  | 4/高 |
+| Standard_E16_v3 | 16        | 128           | 256                  | 8/极高 |
+| Standard_E32_v3 | 32        | 256           | 512                  | 8/极高 |
+| Standard_E64_v3 | 64        | 432           | 864                  | 8/极高 |
+
+
 ## <a name="g-series"></a>G 系列
 | 大小            | CPU 核心数 | 内存：GiB  | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
-| Standard_G1     | #N/A         | 28           | 384                  |1/高 |
+| Standard_G1     | 2         | 28           | 384                  |1/高 |
 | Standard_G2     | 4         | 56           | 768                  |2/高 |
 | Standard_G3     | 8         | 112          | 1,536                |4/非常高 |
 | Standard_G4     | 16        | 224          | 3,072                |8/极高 |
@@ -188,10 +212,10 @@ Azure H 系列虚拟机是下一代高性能计算 VM，旨在满足高端计算
 >
 
 ## <a name="get-a-list-of-sizes"></a>获取大小列表
-可以使用 PowerShell 或 REST API 获取大小列表。 [此处](https://msdn.microsoft.com/library/azure/dn469422.aspx)介绍了 REST API。 以下代码是一个 PowerShell 命令，用于列出当前可用于云服务的所有大小。
+可以使用 PowerShell 或 REST API 获取大小列表。 [此处](https://msdn.microsoft.com/library/azure/dn469422.aspx)介绍了 REST API。 以下代码是一个 PowerShell 命令，用于列出可用于云服务的所有大小。 
 
 ```powershell
-Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize
+Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
 ## <a name="next-steps"></a>后续步骤

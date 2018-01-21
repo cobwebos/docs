@@ -1,5 +1,5 @@
 ---
-title: "了解 Azure 的详细使用情况| Microsoft Docs"
+title: "了解 Azure 的详细使用情况"
 description: "了解如何阅读并理解 Azure 订阅的详细使用情况 CSV 部分"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: a99e0dfea16f9fe9776d24fc94eac9ee18c7b2b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 999f24b5a5c1bd5d259b785f9107697d2928b4eb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
+
 详细使用费 CSV 文件包含当前计费周期的每日和测定仪级使用费。 
 
 若要获取详细使用情况文件，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
@@ -28,15 +29,14 @@ ms.lasthandoff: 10/11/2017
 
 使用费是订阅的总“月度”费用。 使用费不考虑任何信用额度或折扣。
 
-
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/p13S350M2Vk" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>详细使用情况文件的详细条款和说明
+
 以下部分介绍版本 2 的详细使用情况文件中显示的重要条款。
 
 ### <a name="statement"></a>语句
+
 详细使用情况 CSV 文件的顶部显示了你在这个月的计费周期期间使用的服务。 下表列出了此部份中显示的条款和说明。
 
 | 术语 | 说明 |
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 |测定仪名称 |标识已使用计量的度量单位 |
 |测定仪区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
 |SKU |指明每个 Azure 测定仪的唯一系统标识符 |
-|计价单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
+|单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
 |已耗用数量 |计费周期期间使用的计量的量 |
 |附送数量 |当前计费周期中免费附送的计量的量 |
 |超额数量 |显示已耗用数量和已包含数量之间的差异。 将根据此数量对你计费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同。 |
@@ -70,13 +70,13 @@ ms.lasthandoff: 10/11/2017
 |测定仪子类别 |定义 Azure 服务类型，该类型可能会影响费率 |
 |测定仪名称 |标识已使用计量的度量单位 |
 |测定仪区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
-|计价单位 |指明测定仪的计价单位。 例如，GB、小时、10,000 秒。 |
+|单位 |指明测定仪的计价单位。 例如，GB、小时、10,000 秒。 |
 |已耗用数量 |当日已耗用的测定仪量 |
 |资源位置 |指明测定仪正在其中运行的数据中心 |
 |已耗用的服务 |你使用的 Azure 平台服务 |
-|资源组 |部署的测定仪正在其中运行的资源组。 <br/><br/>有关详细信息，请参阅 [Azure Resource Manager 概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 |
-|实例 ID | 测定仪的标识符。 <br/><br/> 此标识符包含你在测定仪创建时为其指定的名称。 它是资源的名称或完全限定的资源 ID。 有关详细信息，请参阅 [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources)。 |
-|标记 | 分配给测定仪的标记。 使用标记对计费记录进行分组。<br/><br/>例如，可以使用标记按使用测定仪的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
+|资源组 |部署的测定仪正在其中运行的资源组。 <br/><br/>有关详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 |
+|实例 ID | 测定仪的标识符。 <br/><br/> 此标识符包含你在测定仪创建时为其指定的名称。 它是资源的名称或完全限定的资源 ID。 有关详细信息，请参阅 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources)。 |
+|标记 | 分配给测定仪的标记。 使用标记对计费记录进行分组。<br/><br/>例如，可以使用标记按使用测定仪的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
 |其他信息 |服务特定的元数据。 例如，虚拟机的映像类型。 |
 |服务信息 1 |订阅上服务所属的项目名称 |
 |服务信息 2 |旧字段，用于捕获可选的服务特定元数据 |

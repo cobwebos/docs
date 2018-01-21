@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 日志搜索中的计算机组 | Microsoft Docs"
+title: "Azure Log Analytics 日志搜索中的计算机组 | Microsoft Docs"
 description: "Log Analytics 中的计算机组允许为一组特定的计算机设定日志搜索的范围。  本文介绍用于创建计算机组的不同方法以及如何在日志搜索中使用这些方法。"
 services: log-analytics
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -83,7 +83,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 导入组后时，菜单将列出检测到组成员身份的计算机数以及导入的组数。  可以单击任一链接以返回包含此信息的 **ComputerGroup** 记录。
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-在将 Log Analytics 配置为导入 WSUS 组成员身份时，它将使用 OMS 代理分析任何计算机的目标组成员身份。  如果使用客户端目标，连接到 OMS 并且属于任意 WSUS 目标组的所有计算机的组成员身份会导入到 Log Analytics。 如果使用服务器端目标，OMS 代理应安装在 WSUS 服务器上，以使组成员身份信息导入到 OMS。  此成员身份每 4 小时持续更新一次。 
+在将 Log Analytics 配置为导入 WSUS 组成员身份时，它将使用 OMS 代理分析任何计算机的目标组成员身份。  如果使用客户端目标，连接到 Log Analytics 并且属于任意 WSUS 目标组的所有计算机的组成员身份会导入到 Log Analytics。 如果使用服务器端目标，OMS 代理应安装在 WSUS 服务器上，以使组成员身份信息导入到 Log Analytics。  此成员身份每 4 小时持续更新一次。 
 
 在 Azure 门户中，从 Log Analytics“高级设置”中配置 Log Analytics 以导入 WSUS 组。  依次选择“计算机组”、“WSUS”和“导入 WSUS 组成员身份”。  无需进一步的配置。
 
@@ -145,13 +145,13 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 
 
 ## <a name="computer-group-records"></a>计算机组记录
-会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 OMS 存储库中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志搜索为计算机组创建记录。
+会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 Log Analytics 工作区中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志搜索为计算机组创建记录。
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 类型 |*ComputerGroup* |
+| Type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
-| 计算机 |成员计算机的名称。 |
+| Computer |成员计算机的名称。 |
 | 组 |组名称。 |
 | GroupFullName |包括源和源名称的组的完整路径。 |
 | GroupSource |从中收集组的源。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |

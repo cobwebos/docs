@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: 1dacbbef915580b0095ef588f3dafad35daf1bde
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d541e5a1af5e57cd5956a026d7772076509c8514
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -179,11 +179,11 @@ ms.lasthandoff: 12/08/2017
    |设置 |值 | |
    | --- | --- | --- |
    |Priority |2000 | |
-   |名称 |Custom_Dns  | |
-   |源 |VirtualNetwork | |
+   |名称​​ |Custom_Dns  | |
+   |Source |VirtualNetwork | |
    |目标 | VirtualNetwork | |
    |服务 | DNS (UDP/53) | |
-   |操作 | ALLOW  | |
+   |操作 | 允许  | |
    | | |
 
 4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址。 如果未指定模式，服务默认使用 nat 模式。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
@@ -220,6 +220,16 @@ ms.lasthandoff: 12/08/2017
     >[!NOTE]
     >Linux 群集上不支持混合不同服务的网络模式。 
     >
+
+5. 选择“打开”模式时，服务清单中的**终结点**定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
+   
+   ```xml
+   <Resources>
+     <Endpoints>
+       <Endpoint Name="ServiceEndpoint" Protocol="http" Port="80" CodePackageRef="Code"/>
+     </Endpoints>
+   </Resources>
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 * [了解 Service Fabric 应用程序模型](service-fabric-application-model.md)

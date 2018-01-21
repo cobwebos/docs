@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Power BI Embedded 是什么？ | Microsoft Docs"
+title: "关于 Azure Power BI Embedded | Microsoft Docs"
 description: "Power BI Embedded 旨在让 ISV 和开发者更轻松地使用 Power BI 功能，帮助他们在应用中快速添加无与伦比的视觉对象、报表和仪表板。"
 services: power-bi-embedded
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/04/2018
 ms.author: asaxton
-ms.openlocfilehash: 03ac36b2b3f3e26770f681b101824ddeca29b61f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e96575e74e20c80a79803ea56cdcbd4542e54a2
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-power-bi-embedded"></a>什么是 Power BI Embedded
+# <a name="about-power-bi-embedded"></a>关于 Power BI Embedded
 
 Power BI Embedded 旨在让 ISV 和开发者更轻松地使用 Power BI 功能。 Power BI Embedded 有助于在应用中快速添加无与伦比的视觉对象、报表和仪表板，简化了 Power BI 功能。 与在 Microsoft Azure 基础之上生成的应用类似，使用机器学习和 IoT 等服务。 ISV 方便客户在应用中轻松导航数据，从而视情况快速做出明智决策。
 

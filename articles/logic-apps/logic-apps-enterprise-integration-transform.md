@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>企业集成与 XML 转换
 ## <a name="overview"></a>概述
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/15/2017
 
 **下面是使用转换的步骤**：
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 * 创建集成帐户并向其中添加映射  
 
@@ -72,6 +72,28 @@ ms.lasthandoff: 11/15/2017
 * 使用“测试映射”功能可添加示例 XML 消息。 只需进行简单的单击，便可以测试创建的映射，并查看生成的输出。  
 * 上传现有映射  
 * 包括对 XML 格式的支持。
+
+## <a name="adanced-features"></a>高级功能
+以下功能只能从代码视图访问。
+
+### <a name="byte-order-mark"></a>字节顺序标记
+默认情况下，转换的响应将以字节顺序标记 (BOM) 开头。 若要禁用此功能，请为 `transformOptions` 属性指定 `disableByteOrderMark`：
+
+````json
+"Transform_XML": {
+    "inputs": {
+        "content": "@{triggerBody()}",
+        "integrationAccount": {
+            "map": {
+                "name": "TestMap"
+            }
+        },
+        "transformOptions": "disableByteOrderMark"
+    },
+    "runAfter": {},
+    "type": "Xslt"
+}
+````
 
 ## <a name="learn-more"></a>了解详细信息
 * [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 9b218756277e52a4d582b1e8e42200f78d38580e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e75facfd77fc1cb3c23aa4e1f6f7f799620fef39
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>从 Azure SQL 数据库长期备份保留进行配置和恢复
 
@@ -82,6 +82,9 @@ ms.lasthandoff: 10/31/2017
 12. 在“配置”页面上，为新保留策略提供有效的名称，根据需要修改默认保留策略，并单击“确定”。
 
    ![定义保留策略](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
+   
+   >[!NOTE]
+   >保留策略名称不允许使用某些字符，包括空格。
 
 13. 在数据库的“长期备份保留”页面上，单击“保存”，然后单击“确定”，将长期备份保留策略应用于所选数据库。
 

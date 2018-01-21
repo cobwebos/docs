@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 9139866b0dffd102f9b7c34835443d6337e7d39a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4a716c1934258e687eb48ecb4077c6be7b269c1f
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>自定义数据流转换示例 (Python) 
 菜单中的转换名称为“转换数据流(脚本)”。 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。
@@ -82,3 +82,8 @@ ms.lasthandoff: 12/18/2017
 |              |Texas         |San Antonio|
 |              |Texas         |Houston    |
 
+
+### <a name="min-max-normalization"></a>最小值最大值规范化
+```python
+    df["NewCol"] = (df["Col1"]-df["Col1"].mean())/df["Col1"].std()
+```

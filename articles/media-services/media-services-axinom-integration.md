@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9a3aa1680ada03e4472db3a198a3b806511671ed
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 * 生成 JWT 令牌以满足许可证服务器要求；
 * 开发 Azure Media Player 应用，以便通过 JWT 令牌身份验证处理许可证获取事项；
 
-下图很好地描述了整个系统以及内容密钥、密钥 ID、密钥种子、JWT 令牌及其声明的流动情况。
+下图很好地描述了整个系统以及内容密钥、密钥 ID、密钥种子、JWT 令牌及其声明的流动情况：
 
 ![DASH 和 CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
@@ -65,14 +65,14 @@ Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。 需
 
 AMP 代码的其余部分为标准 AMP API，如[此处](http://amp.azure.net/libs/amp/latest/docs/)的 AMP 文档所述。
 
-请注意，在 AMP 中的正式长期方法发布之前，上述 javascript 只能算是一个设置自定义授权标头的短期方法。
+在 AMP 中的正式长期方法发布之前，上述 javascript 仍是一个设置自定义授权标头的短期方法。
 
 ## <a name="jwt-token-generation"></a>生成 JWT 令牌
 用于测试的 Axinom Widevine 许可证服务器要求 JWT 令牌身份验证。 此外，JWT 令牌中的声明之一是复杂的对象类型而不是基元数据类型。
 
 遗憾的是，Azure AD 只能颁发基元类型的 JWT 令牌。 同样，.NET Framework API（System.IdentityModel.Tokens.SecurityTokenHandler 和 JwtPayload）只允许输入复杂对象类型作为声明。 但是，这些声明仍会序列化为字符串。 因此，这两种类型都不能用于生成 Widevine 许可证请求所需的 JWT 令牌。
 
-John Sheehan 的 [JWT Nuget 包](https://www.nuget.org/packages/JWT)符合要求，因此将使用该 Nuget 包。
+John Sheehan 的 [JWT NuGet 包](https://www.nuget.org/packages/JWT)符合要求，因此我们将使用该 NuGet 包。
 
 下面是通过所需声明生成 JWT 令牌的代码，这些声明是 Axinom Widevine 许可证进行测试所需的：
 
@@ -136,7 +136,7 @@ Axinom Widevine 许可证服务器
 
 ### <a name="considerations"></a>注意事项
 1. 虽然 AMS PlayReady 许可证交付服务要求使用“Bearer=”作为身份验证令牌的前缀，但 Axinom Widevine 许可证服务器不使用它。
-2. Axinom 通信密钥可用作签名密钥。 请注意，该密钥为十六进制字符串，但在进行编码时，必须将其视为一系列字节而非字符串。 这是通过方法 ConvertHexStringToByteArray 实现的。
+2. Axinom 通信密钥可用作签名密钥。 该密钥为十六进制字符串，但在进行编码时，必须将其视为一系列字节而非字符串。 这是通过方法 ConvertHexStringToByteArray 实现的。
 
 ## <a name="retrieving-key-id"></a>检索密钥 ID
 可能已经注意到，在用于生成 JWT 令牌的代码中，密钥 ID 是必需的。 由于在加载 AMP 播放器之前需确保 JWT 令牌就绪，因此需检索密钥 ID 以生成 JWT 令牌。

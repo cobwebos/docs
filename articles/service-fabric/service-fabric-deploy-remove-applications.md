@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: f19141919b3c61123e0e94c4513f872e095620c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 49f26a6195713a5bcdd8ab5711f3bf715f3e033f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
 > [!div class="op_single_selector"]
-> * [Resource Manager](service-fabric-application-arm-resource.md)
+> * [资源管理器](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
@@ -31,17 +31,29 @@ ms.lasthandoff: 12/21/2017
 
 [打包应用程序类型][10]后，即可部署到 Azure Service Fabric 群集中。 部署涉及以下三个步骤：
 
-1. 将应用程序包上传到映像存储
-2. 注册应用程序类型
-3. 创建应用程序实例
+1. 将应用程序包上传到映像存储区。
+2. 使用映像存储区相对路径注册应用程序类型。
+3. 创建应用程序实例。
 
-在部署应用程序并且实例在群集中运行后，可以删除应用程序实例及其应用程序类型。 从群集中完全删除某个应用程序涉及以下步骤：
+不再需要部署的应用程序后，可以删除应用程序实例及其应用程序类型。 从群集中完全删除某个应用程序涉及以下步骤：
 
-1. 删除正在运行的应用程序实例
-2. 如果不再需要该应用程序类型，则将其取消注册
-3. 从映像存储中删除应用程序包
+1. 删除正在运行的应用程序实例。
+2. 如果不再需要该应用程序类型，则将其取消注册。
+3. 从映像存储区中删除应用程序包。
 
 如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过 PowerShell 脚本自动处理上述所有步骤。  可在应用程序项目的 *Scripts* 文件夹中找到此脚本。 本文提供了有关这些脚本正在执行什么操作的背景，以便可以在 Visual Studio 外部执行相同的操作。 
+
+部署应用程序的另一种方法是使用外部预配。 应用程序包可以[打包为 `sfpkg`](service-fabric-package-apps.md#create-an-sfpkg) 并上传到外部存储区。 在这种情况下，不需要上传到映像存储区。 部署需要以下步骤：
+
+1. 将 `sfpkg` 上传到外部存储区。 外部存储区可以是公开了 REST http 或 https 终结点的任何存储区。
+2. 使用外部下载 URI 和应用程序类型信息注册应用程序类型。
+2. 创建应用程序实例。
+
+若要清理，请删除应用程序实例并取消注册应用程序类型。 由于已将包复制到映像存储区，因此没有要清理的临时位置。 从外部存储区预配的功能是从 Service Fabric 6.1 版开始提供的。
+
+>[!NOTE]
+> Visual Studio 目前不支持外部预配。
+
  
 ## <a name="connect-to-the-cluster"></a>连接至群集
 在运行本文中的任何 PowerShell 命令之前，请始终先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 连接到 Service Fabric 群集。 若要连接到本地部署群集，请运行以下命令：
@@ -53,7 +65,7 @@ PS C:\>Connect-ServiceFabricCluster
 有关连接到远程群集或连接到使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。
 
 ## <a name="upload-the-application-package"></a>上传应用程序包
-上传应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。
+上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。
 如果要在本地验证应用程序包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
 
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令用来将应用程序包上传到群集映像存储。
@@ -123,7 +135,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 |2048|1000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
-对包进行压缩后，便可根据需要将其上传到一个或多个 Service Fabric 群集。 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
+对包进行压缩后，便可根据需要将其上传到一个或多个 Service Fabric 群集。 压缩包和未压缩包的部署机制相同。 压缩包同样存储在群集映像存储区中。 运行应用程序之前，包在节点上未压缩。
 
 
 以下示例将包上传到映像存储中名为“MyApplicationV1”的文件夹中：
@@ -162,17 +174,27 @@ PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -Appl
 
 运行 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) cmdlet 以在群集中注册应用程序类型并使其可用于部署：
 
+### <a name="register-the-application-package-copied-to-image-store"></a>注册复制到映像存储区的应用程序包
+当包以前已复制到映像存储区时，注册操作会指定映像存储区中的相对路径。
+
 ```powershell
-PS C:\> Register-ServiceFabricApplicationType MyApplicationV1
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackagePathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
 “MyApplicationV1”是映像存储中应用程序包所在的文件夹。 现在已在群集中注册了名为“MyApplicationType”且版本为“1.0.0”（两者都可以在应用程序清单中找到）的应用程序类型。
 
+### <a name="register-the-application-package-copied-to-an-external-store"></a>注册复制到外部存储区的应用程序包
+从 Service Fabric 6.1 版开始，预配支持从外部存储区下载包。 下载 URI 表示 [`sfpkg` 应用程序包](service-fabric-package-apps.md#create-an-sfpkg)的路径，可使用 HTTP 或 HTTPS 协议从该处下载应用程序包。 包必须之前已上传到此外部位置。 该 URI 必须允许读取访问权限，因此 Service Fabric 可以下载该文件。 `sfpkg` 文件必须具有扩展名“.sfpkg”。 预配操作应包括应用程序类型信息，该信息可在应用程序清单中找到。
+
+```
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
+```
+
 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 命令只有在系统成功注册应用程序包后才会返回。 注册花费的时间取决于应用程序包的大小和内容。 如果需要，**-TimeoutSec** 参数可用于提供更长的超时（默认超时为 60 秒）。
 
-如果在处理大型应用程序包，或者遇到超时，请使用 **-Async** 参数。 该命令会在群集接受注册命令时返回，并根据需要继续进行处理。
-[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
+如果在处理大型应用程序包，或者遇到超时，请使用 **-Async** 参数。 该命令会在群集接受注册命令时返回。 注册操作会根据需要继续。
+[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -184,7 +206,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>从映像存储中删除应用程序包
-建议在成功注册应用程序后删除应用程序包。  从映像存储区中删除应用程序包可以释放系统资源。  保留未使用的应用程序包会占用磁盘存储空间，导致应用程序出现性能问题。
+如果包已复制到映像存储区，则应在成功注册该应用程序后将其从临时位置中删除。 从映像存储区中删除应用程序包可以释放系统资源。 保留未使用的应用程序包会占用磁盘存储空间，导致应用程序出现性能问题。
 
 ```powershell
 PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
@@ -244,7 +266,7 @@ PS C:\> Get-ServiceFabricApplication
 ```
 
 ## <a name="unregister-an-application-type"></a>取消注册应用程序类型
-当不再需要某个特定版本的应用程序类型时，应使用 [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) cmdlet 取消注册该应用程序类型。 通过删除应用程序二进制文件，取消注册未使用的应用程序类型将释放映像存储使用的存储空间。 取消注册应用程序类型不会删除应用程序包。 只要没有针对其实例化的应用程序或引用它的挂起应用程序升级，就可以注销应用程序类型。
+当不再需要某个特定版本的应用程序类型时，应使用 [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) cmdlet 取消注册该应用程序类型。 取消注册未使用的应用程序类型时，会通过删除应用程序类型文件释放映像存储区使用的存储空间。 如果使用了复制到映像存储区，取消注册应用程序类型不会删除复制到映像存储临时位置的应用程序包。 只要没有针对其实例化的应用程序或引用它的挂起应用程序升级，就可以注销应用程序类型。
 
 若要查看群集中当前已注册的应用程序类型，请运行 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps)：
 
@@ -334,6 +356,8 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="next-steps"></a>后续步骤
+[打包应用程序](service-fabric-package-apps.md)
+
 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
 
 [Service Fabric 运行状况简介](service-fabric-health-introduction.md)

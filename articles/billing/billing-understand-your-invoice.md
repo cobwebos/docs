@@ -1,5 +1,5 @@
 ---
-title: "了解 Azure 发票 | Microsoft Docs"
+title: "了解 Azure 发票"
 description: "了解如何阅读并理解 Azure 订阅的使用情况和计费"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: edd4702ccab9162329bf83993d236eec9ec40b3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54de5e123dbb51948eb62d90b444ebd78f9879cb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
+
 该发票提供了收费摘要和有关付款的说明。 可以从 [Azure 门户](https://portal.azure.com/)下载可移植文档格式 (.pdf) 的发票，也可通过电子邮件获取。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
 
 需要注意的若干事项：
@@ -31,9 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 -   对于国际客户，帐单上列出的费用仅用于估算目的。 不同的银行可能会根据不同的兑换率计算费用。
 
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>发票的详细条款和说明
 下列部分列出了发票上显示的重要条款以及每个条款的说明。
@@ -99,8 +98,8 @@ ms.lasthandoff: 10/11/2017
 
 | 术语 |说明 |
 | --- | --- |
-| 名称 |标识该次使用的最上层服务 |
-| 类型 |定义 Azure 服务类型，该类型可能会影响费率 |
+| 名称​​ |标识该次使用的最上层服务 |
+| Type |定义 Azure 服务类型，该类型可能会影响费率 |
 | 资源 |标识已使用计量的度量单位 |
 | 区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
 | 已耗用 |计费周期期间使用的计量的量 |

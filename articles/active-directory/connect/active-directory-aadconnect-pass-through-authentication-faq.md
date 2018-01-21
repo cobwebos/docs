@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 12ebfdfaaf9325ba57fe3972ee073fa5181cdbff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft Azure 德国云](http://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用直通身份验证？
 
-不能。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
+不会。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>是否可以在直通身份验证中使用[条件访问](../active-directory-conditional-access-azure-portal.md)？
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
-不能。 直通身份验证不自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
+不会。 直通身份验证不自动故障转移到密码哈希同步。 它仅可充当[传递身份验证尚不支持的方案](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)的回滚。 为避免用户登录失败，应配置传递身份验证以实现[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)。
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>能否在传递身份验证代理所在的同一台服务器上安装 [Azure AD 应用程序代理](../active-directory-application-proxy-get-started.md)连接器？
 
@@ -81,6 +81,12 @@ ms.lasthandoff: 12/11/2017
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 
 否。在一台服务器上只能安装一个传递身份验证代理。 若要配置直通身份验证实现高可用性，请遵循 [Azure Active Directory 直通身份验证：快速入门](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)中的说明。
+
+## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
+
+只要直通身份验证正在运行，它就会保持活动状态，并不断处理用户登录请求。 如果要卸载身份验证代理，请转到“控制面板”->“程序”->“程序和功能”，卸载“Microsoft Azure AD Connect 身份验证代理”和“Microsoft Azure AD Connect 代理更新程序”程序。
+
+如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“直通身份验证”边栏选项卡，将看到显示为“非活动”状态的身份验证代理。 这是正常情况。 该身份验证代理在几天后将自动从列表中删除。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>我已使用 AD FS 登录到 Azure AD。 如何将它切换为传递身份验证？
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: db928795cc38dea4ca9fc441e6053e3bb44da23e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 6c644395aa7ad51c289cdc4a23b02e9e0239a0fe
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>有关 IoT 套件的常见问题
 
@@ -86,13 +86,16 @@ ms.lasthandoff: 11/20/2017
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-microsoft-azure-for-dreamspark"></a>如果我具有 Microsoft Azure for DreamSpark，是否可以创建预配置解决方案？
 
-当前无法使用 [Microsoft Azure for DreamSpark][lnk-dreamspark] 帐户创建预配置解决方案。 但是，可以在几分钟内创建一个 [Azure 免费试用帐户][lnk-30daytrial]，以便创建预配置的解决方案。
+> [!NOTE]
+> Microsoft Azure for DreamSpark 现在称为 Microsoft Imagine 学生版。
+
+当前无法使用 [Microsoft Azure for DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) 帐户创建预配置解决方案。 但是，可以在几分钟内创建一个 [Azure 免费试用帐户](https://azure.microsoft.com/free/)，以便创建预配置的解决方案。
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-cloud-solution-provider-csp-subscription"></a>如果我有云解决方案提供商 (CSP) 订阅，是否可以创建预配置的解决方案？
 
 当前无法通过云解决方案提供商 (CSP) 订阅创建预配置的解决方案。 但是，可以在几分钟内创建一个 [Azure 免费试用帐户][lnk-30daytrial]，以便创建预配置的解决方案。
 
-### <a name="how-do-i-delete-an-aad-tenant"></a>如何删除 AAD 租户？
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>如何删除 Azure AD 租户？
 
 请参阅 Eric Golpe 的博客文章[删除 Azure AD 租户的演练][lnk-delete-aad-tennant]。
 

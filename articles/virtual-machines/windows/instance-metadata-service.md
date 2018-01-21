@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: d1f2f77dbdfc96adc616e8e5dae8f5839c176096
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 5a09895f32d5cc559cda9ec8794c3ce982d99774
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/12/2017
 Azure 实例元数据服务提供有关运行虚拟机实例的信息，这些实例可用于管理和配置虚拟机。
 这些信息中包括 SKU、网络配置和即将发送的维护事件等相关信息。 如要深入了解可用信息类型，请参阅[元数据类别](#instance-metadata-data-categories)。
 
-Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) 创建的所有 IaaS VM 使用。 该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，该地址只能从 VM 中访问。
+Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建的所有 IaaS VM 使用。 该终结点位于已知不可路由的 IP 地址 (`169.254.169.254`)，该地址只能从 VM 中访问。
 
 > [!IMPORTANT]
 > 此服务在所有 Azure 区域中提供有正式版。  它会定期更新，发布有关虚拟机实例的新信息。 此页显示了最新可用的[数据类别](#instance-metadata-data-categories)。
@@ -43,7 +43,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure Res
 
 当有服务更新和/或有可用的新支持版本时，此表将更新
 
-若要试用实例元数据服务，请在上述区域中从 [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) 或 [Azure 门户](http://portal.azure.com)创建一个 VM，并按照以下示例操作。
+若要试用实例元数据服务，请在上述区域中从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](http://portal.azure.com)创建一个 VM，并按照以下示例操作。
 
 ## <a name="usage"></a>使用情况
 
@@ -60,7 +60,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure Res
 
 ### <a name="retrieving-metadata"></a>检索元数据
 
-实例元数据可用于运行使用 [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) 创建/管理的 VM。 使用以下请求访问虚拟机实例的所有数据类别：
+实例元数据可用于运行使用 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建/管理的 VM。 使用以下请求访问虚拟机实例的所有数据类别：
 
 ```
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
@@ -282,7 +282,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 数据 | 说明 | 引入的版本 
 -----|-------------|-----------------------
 location | 正在运行 VM 的 Azure 区域 | 2017-04-02 
-名称 | VM 的名称 | 2017-04-02
+name | VM 的名称 | 2017-04-02
 offer | 为 VM 映像提供信息。 仅为从 Azure 映像库部署的映像显示此值。 | 2017-04-02
 发布者 | VM 映像的发布者 | 2017-04-02
 sku | VM 映像的特定 SKU | 2017-04-02
@@ -377,21 +377,24 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 语言 | 示例 
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go Lang  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
+Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
+Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
+Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
+Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
     
 
 ## <a name="faq"></a>常见问题
 1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这是什么意思呢？
    * 实例元数据服务要求将标头 `Metadata: true` 传入请求。 将此标头传入 REST 调用即可访问实例元数据服务。 
 2. 为什么我无法获取我的 VM 的计算信息？
-   * 目前，实例元数据服务仅支持使用 Azure Resource Manager 创建的实例。 将来可能会添加对云服务 VM 的支持。
-3. 我刚才通过 Azure Resource Manager 创建了虚拟机。 为什么我无法看到计算元数据信息？
+   * 目前，实例元数据服务仅支持使用 Azure 资源管理器创建的实例。 将来可能会添加对云服务 VM 的支持。
+3. 我刚才通过 Azure 资源管理器创建了虚拟机。 为什么我无法看到计算元数据信息？
    * 对于 2016 年 9 月之后创建的任何 VM，请添加[标记](../../azure-resource-manager/resource-group-using-tags.md)以开始查看计算元数据。 对于早期 VM（创建于 2016 年 9 月前），请在 VM 中添加/删除扩展或数据磁盘，刷新元数据。
 4. 我看不到为新版本 2017-08-01 填充的任何数据
    * 对于 2016 年 9 月之后创建的任何 VM，请添加[标记](../../azure-resource-manager/resource-group-using-tags.md)以开始查看计算元数据。 对于早期 VM（创建于 2016 年 9 月前），请在 VM 中添加/删除扩展或数据磁盘，刷新元数据。

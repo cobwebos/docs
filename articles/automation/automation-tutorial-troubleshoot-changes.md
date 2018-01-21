@@ -6,14 +6,14 @@ keywords: "更改, 跟踪, 自动化"
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 12/14/2017
-ms.topic: hero-article
+ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ae9ac6baaaeca418fcd3478145c50d1fa7917d7e
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/22/2017
 > * 触发事件
 > * 查看更改
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 要完成本教程，需要：
 
@@ -158,7 +158,7 @@ ConfigurationChange
 
 在 VM 中的“操作”下选择“更改跟踪”。
 
-![在 OMS 经典门户中创建警报](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+![显示对 VM 的更改列表的屏幕截图](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
 此图表显示了一段时间内发生的更改。
 添加活动日志连接以后，顶部的线形图会显示 Azure 活动日志事件。

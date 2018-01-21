@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: ccad7e41921c2fecbac113f3b950f654c62b1c8e
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**
@@ -150,7 +150,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
     某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Azure Blob 存储”组件，然后在右窗格中单击“打开”，会转到 [Azure 门户](https://portal.azure.com)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“energysadata”。 在随后出现的面板中，可以看到“demandongoing”文件夹。 在 rawdata 文件夹内，可以看到具有 date=2016-01-28 等名称的文件夹。如果看到这些文件夹，则表示原始数据已成功在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的文件。
 2. 检查 Azure SQL 数据库中的数据。
 
-    管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要两个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://manage.windowsazure.com/)。 在左侧面板中找到“SQL 数据库![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png)”并单击它。 然后找到自己的数据库（例如 demo123456db）并单击它。 在下一页的“连接到数据库”部分下，单击“对 SQL 数据库运行 Transact-SQL 查询”。
+    管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要两个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://portal.azure.com/)。 在左侧面板中找到“SQL 数据库”![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png)并单击它。 然后找到自己的数据库（例如 demo123456db）并单击它。 在下一页的“连接到数据库”部分下，单击“对 SQL 数据库运行 Transact-SQL 查询”。
 
     随后，可以单击“新建查询”，并查询行数（例如，"select count( * ) from DemandRealHourly"。随着数据库成长，表中的行数也应会增加）。
 3. 检查 Power BI 仪表板中的数据。
@@ -167,7 +167,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
 
    * 需要根据 [Azure 流分析和 Power BI：用于实时查看流数据的实时分析仪表板](stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
-   * 在 [Azure 门户](https://manage.windowsazure.com)中找到流分析作业。 作业名称应该是：解决方案名称+“streamingjob”+随机数字+“asapbi”（例如 demostreamingjob123456asapbi）。
+   * 在 [Azure 门户](https://portal.azure.com)中找到流分析作业。 作业名称应该是：解决方案名称+“streamingjob”+随机数字+“asapbi”（例如 demostreamingjob123456asapbi）。
    * 添加 ASA 作业的 PowerBI 输出。 将“输出别名”设置为“PBIoutput”。 将“数据集名称”和“表名称”设置为“EnergyStreamData”。 添加输出后，单击页面底部的“启动”启动流分析作业。 此时应会出现确认消息（例如，“已成功启动流分析作业 myteststreamingjob12345asablob”）。
 2. 登录到 [Power BI online](http://www.powerbi.com)
 

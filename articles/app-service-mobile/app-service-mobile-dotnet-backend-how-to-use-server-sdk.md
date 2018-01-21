@@ -4,8 +4,8 @@ description: "了解如何使用适用于 Azure 应用服务移动应用的 .NET
 keywords: "应用服务, azure 应用服务, 移动应用, 移动服务, 缩放, 可缩放, 应用部署, azure 应用部署"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 1728e1d76f075eae8f5500afa34674785f8e3848
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 3. 选择“ASP.NET Web 应用程序”。
 4. 填写项目名称。 然后单击“确定”。
 5. 在“ASP.NET 4.5.2 模板”下，选择“Azure 移动应用”。 选中“云中的主机”，在云中创建移动后端（可在其中发布此项目）。
-6. 单击 **“确定”**。
+6. 单击“确定”。
 
 ## <a name="install-sdk"></a>如何下载并初始化 SDK
 该 SDK 在 [NuGet.org] 上提供。此包包含开始使用 SDK 所需的基本功能。 若要初始化该 SDK，需要对 **HttpConfiguration** 对象执行操作。
@@ -244,6 +244,10 @@ Azure 移动应用使用应用服务身份验证/授权保护移动后端。  �
 若要了解如何在移动应用后端对客户端进行身份验证，请参阅[向应用添加身份验证](app-service-mobile-ios-get-started-users.md)。
 
 ### <a name="custom-auth"></a>如何对应用程序使用自定义身份验证
+> [!IMPORTANT]
+> 若要启用自定义身份验证，必须先启用应用服务身份验证，而不必在 Azure 门户中为应用服务选择提供程序。 托管时这将启用 WEBSITE_AUTH_SIGNING_KEY 环境变量。
+> 
+> 
 如果不想使用某个应用服务身份验证/授权提供程序，可以实现自己的登录系统。 安装 [Microsoft.Azure.Mobile.Server.Login] 包以协助生成身份验证令牌。  提供自己的代码验证用户凭据。 例如，可以针对数据库中的加盐密码和哈希密码进行检查。 在以下示例中，`isValidAssertion()` 方法（在其他位置定义）负责这些检查。
 
 通过创建 ApiController 并公开 `register` 和 `login` 操作，可以公开自定义身份验证。 客户端应使用自定义 UI 从用户处收集信息。  随后再通过标准 HTTP POST 调用将信息提交到 API。 服务器验证断言后，便可以使用 `AppServiceLoginHandler.CreateToken()` 方法颁发令牌。  ApiController **不可**使用 `[MobileAppController]` 属性。

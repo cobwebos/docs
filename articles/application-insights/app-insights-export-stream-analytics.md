@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 978af1a57a5fc3d9c95d517288a074c636874984
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ddaf7bf12854aa5f80c1d292613c3049850ca3ff
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](app-insights-export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -76,27 +76,27 @@ ms.lasthandoff: 11/01/2017
 事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析通过管道将数据传送到 Power BI。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
-在[经典 Azure 门户](https://manage.windowsazure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
+在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
-![](./media/app-insights-export-stream-analytics/090.png)
+![](./media/app-insights-export-stream-analytics/SA001.png)
 
-![](./media/app-insights-export-stream-analytics/100.png)
+![](./media/app-insights-export-stream-analytics/SA002.png)
 
-创建新作业后，展开其详细信息：
+创建新作业后，选择“转到资源”。
 
-![](./media/app-insights-export-stream-analytics/110.png)
+![](./media/app-insights-export-stream-analytics/SA003.png)
 
-### <a name="set-blob-location"></a>设置 Blob 位置
+### <a name="add-a-new-input"></a>添加新输入
+
+![](./media/app-insights-export-stream-analytics/SA004.png)
+
 将此位置设置为从连续导出 Blob 接收输入：
 
-![](./media/app-insights-export-stream-analytics/120.png)
+![](./media/app-insights-export-stream-analytics/SA005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 
-![](./media/app-insights-export-stream-analytics/130.png)
-
 ### <a name="set-path-prefix-pattern"></a>设置路径前缀模式
-![](./media/app-insights-export-stream-analytics/140.png)
 
 **请务必将“日期格式”设置为 YYYY-MM-DD（包含短划线）。**
 
@@ -114,33 +114,19 @@ ms.lasthandoff: 11/01/2017
 > [!NOTE]
 > 检查存储，确保路径正确。
 > 
-> 
 
-### <a name="finish-initial-setup"></a>完成初始设置
-确认序列化格式：
+## <a name="add-new-output"></a>添加新输出
+现在选择作业 >“输出” > “添加”。
 
-![确认并关闭向导](./media/app-insights-export-stream-analytics/150.png)
+![](./media/app-insights-export-stream-analytics/SA006.png)
 
-关闭向导并等待设置完成。
 
-> [!TIP]
-> 使用“示例”命令下载一些数据。 请将它保留为用于调试查询的测试示例。
-> 
-> 
-
-## <a name="set-the-output"></a>设置输出
-现在，请选择作业并设置输出。
-
-![选择新通道，并依次单击“输出”、“添加”、“Power BI”](./media/app-insights-export-stream-analytics/160.png)
+![选择新通道，并依次单击“输出”、“添加”、“Power BI”](./media/app-insights-export-stream-analytics/SA010.png)
 
 提供**工作或学校帐户**，以授权流分析访问 Power BI 资源。 然后为输出、目标 Power BI 数据集和表指定名称。
 
-![指定三个名称](./media/app-insights-export-stream-analytics/170.png)
-
 ## <a name="set-the-query"></a>设置查询
 查询控制从输入到输出的转换。
-
-![选择作业，并单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/180.png)
 
 使用“测试”功能检查输出是否正确。 在测试中提供从输入页获取的示例数据。 
 
@@ -206,7 +192,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="run-the-job"></a>运行作业
 可以选择从过去的某个日期启动作业。 
 
-![选择作业，并单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/190.png)
+![选择作业，并单击“查询”。 粘贴以下示例。](./media/app-insights-export-stream-analytics/SA008.png)
 
 等待作业运行。
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: d1f6d3af5fc414d06f4a6d3aeda660b759a88353
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee5d8d118234ca0335922be1a29c6ce1e68eb7b6
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>将 ITSM 产品/服务与 IT Service Management Connector（预览版）相连接
 本文提供有关如何将 ITSM 产品/服务连接到 OMS 中的 IT Service Management Connector (ITSMC)，以集中管理工作项的信息。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/16/2017
 
 以下部分提供有关如何将 System Center Service Manager 产品连接到 OMS 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 请确保满足以下先决条件：
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/16/2017
 
 - Azure 订阅详细信息
 - 资源组名称
-- 位置
+- Location
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/16/2017
 
 3. 请使用 Azure 凭据登录，并选择在其中创建了混合连接的订阅。
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 现已成功连接到混合连接。
 
@@ -170,18 +170,22 @@ ms.lasthandoff: 11/16/2017
 
 以下部分提供有关如何将 ServiceNow 产品连接到 OMS 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>先决条件
-
+### <a name="prerequisites"></a>系统必备
 请确保满足以下先决条件：
-
 - 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow 支持的版本 – Fuji、Geneva、Helsinki。
+- ServiceNow 支持的版本：雅加达、伊斯坦布尔、赫尔辛基、日内瓦
 
-ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
-- 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请参阅 [OAuth 设置](http://wiki.servicenow.com/index.php?title=OAuth_Setup)。
-- 安装用于 Microsoft OMS 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )。
+**ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作**：
+- 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请根据需要参阅以下信息：
+
+    - [为雅加达设置 OAuth](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [为伊斯坦布尔设置 OAuth](https://docs.servicenow.com/bundle/istanbul-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [为赫尔辛基设置 OAuth](https://docs.servicenow.com/bundle/helsinki-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [为日内瓦设置 OAuth](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+
+
+- 安装用于 Microsoft OMS 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)。
 - 为安装的用户应用创建集成用户角色。 [此处](#create-integration-user-role-in-servicenow-app)提供了有关如何创建集成用户角色的信息。
-
 
 ### <a name="connection-procedure"></a>**连接过程**
 使用以下过程创建 ServiceNow 连接：
@@ -263,7 +267,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 以下部分提供有关如何将 Provance 产品连接到 OMS 中的 ITSMC 的详细信息。
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 请确保满足以下先决条件：
 
@@ -309,7 +313,7 @@ ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作：
 
 以下部分提供有关如何将 Cherwell 产品连接到 OMS 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 
 请确保满足以下先决条件：
 

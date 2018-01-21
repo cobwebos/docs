@@ -4,7 +4,7 @@ description: "在与运行 CentOS 6.6 的 Linux 主机连接的 StorSimple 上�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: tysonn
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: add539351066f9ff94febeebfd5334773b360e8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -26,9 +26,8 @@ ms.lasthandoff: 10/11/2017
 此过程适用于 StorSimple 8000 系列设备的所有型号。
 
 > [!NOTE]
-> 此过程不可用于 StorSimple 虚拟设备。 有关详细信息，请参阅有关如何为虚拟设备配置主机服务器的主题。
-> 
-> 
+> 此过程不可用于 StorSimple 云设备。 有关详细信息，请参阅“如何为云设备配置主机服务器”。
+
 
 ## <a name="about-multipathing"></a>关于多路径
 使用多路径功能可在主机服务器与存储设备之间配置多个 I/O 路径。 这些 I/O 路径是可以包含不同电缆、交换机、网络接口和控制器的物理 SAN 连接。 多路径聚合了 I/O 路径，可配置与所有聚合路径关联的新设备。
@@ -67,7 +66,7 @@ multipath.conf 包括五个节：
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何配置多路径。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 本部分详细说明 CentOS 服务器和 StorSimple 设备的配置先决条件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主机上
@@ -298,7 +297,7 @@ StorSimple 设备应该：
 
     如果此处只显示了一个主机接口和两个路径，则需要在主机上为这两个接口启用 iSCSI。 可以遵循 [Linux 文档中的详细说明](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)。
 
-2. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6：创建卷](storsimple-deployment-walkthrough.md#step-6-create-a-volume)（通过 StorSimple 设备上的 Azure 经典门户）。
+2. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6：创建卷](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)（通过 StorSimple 设备上的 Azure 门户）。
 
 3. 验证可用路径。 键入：
 
@@ -335,17 +334,17 @@ StorSimple 设备应该：
 
 问： `multipath.conf` 文件中的更改未生效。
 
-答： 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 输入以下命令：
+A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 输入以下命令：
 
     service multipathd restart
 
 问： 我在 StorSimple 设备上启用了两个网络接口并在主机上启用了两个网络接口。 但列出可用路径时，只看到两个路径。 我原本以为能够看到四个可用路径。
 
-答： 请确保这两个路径位于同一子网且可路由。 如果网络接口位于不同的 vLAN 且不可路由，则只会显示两个路径。 验证方法之一是确定是否可从 StorSimple 设备上的网络接口访问这两个主机接口。 需要[联系 Microsoft 支持](storsimple-contact-microsoft-support.md)，因为这种验证只能通过支持会话完成。
+A. 请确保这两个路径位于同一子网且可路由。 如果网络接口位于不同的 vLAN 且不可路由，则只会显示两个路径。 验证方法之一是确定是否可从 StorSimple 设备上的网络接口访问这两个主机接口。 需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)，因为这种验证只能通过支持会话完成。
 
 问： 列出可用路径时，未看到任何输出。
 
-答： 通常，看不到任何多路径的路径即表示多路径后台程序有问题，其中很有可能是 `multipath.conf` 文件有问题。
+A. 通常，看不到任何多路径的路径即表示多路径后台程序有问题，其中很有可能是 `multipath.conf` 文件有问题。
 
 此外，最好是检查在连接到目标后是否确实能够看到一些磁盘，因为多路径列表不包含响应内容也可能意味着没有任何磁盘。
 
@@ -420,7 +419,7 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 有关详细信息，请转到 [use troubleshooting interactive command for multipathing](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html)（对多路径使用故障排除交互式命令）。
 
 ## <a name="list-of-useful-commands"></a>有用命令列表
-| 类型 | 命令 | 说明 |
+| Type | 命令 | 说明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |启动 iSCSI 服务 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服务 |

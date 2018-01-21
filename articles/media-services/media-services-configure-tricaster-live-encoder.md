@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: 42b012fb98bd0504c931ce391d63aecca8c3d311
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: eecb17b0e93e1717c5b79701c69e5263e73add9a
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-本主题说明如何配置 [NewTek TriCaster](http://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
+本文说明如何配置 [NewTek TriCaster](http://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -49,7 +49,7 @@ ms.lasthandoff: 12/21/2017
 * 在确定带宽要求时，可以认为它就是将流式处理比特率翻倍。 虽然此要求不是强制性要求，但它可以减轻网络拥塞的影响。
 * 使用基于软件的编码器时，请关闭任何不需要的程序。
 
-## <a name="create-a-channel"></a>创建频道
+## <a name="create-a-channel"></a>创建通道
 1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/21/2017
 启动频道时，可以[配置编码器](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp)。
 
 > [!IMPORTANT]
-> 请注意，只要频道进入就绪状态，就会开始计费。 有关详细信息，请参阅[频道的状态](media-services-manage-live-encoder-enabled-channels.md#states)。
+> 只要频道进入就绪状态，就会开始计费。 有关详细信息，请参阅[频道的状态](media-services-manage-live-encoder-enabled-channels.md#states)。
 >
 >
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/21/2017
 3. 菜单打开以后，单击“连接”标题下的“新建”。 当系统提示输入连接类型时，请选择“Adobe Flash”。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
-4. 单击 **“确定”**。
+4. 单击“确定”。
 5. 现在，可以单击“流式处理配置文件”下的下拉箭头并导航到“浏览”，以便导入 FMLE 配置文件。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
@@ -136,7 +136,7 @@ ms.lasthandoff: 12/21/2017
 
 如果流出现在播放器中，则编码器已正确配置，可以连接到 AMS。
 
-如果收到错误，则需重置频道并调整编码器设置。 请参阅[故障排除](media-services-troubleshooting-live-streaming.md)主题以获取相关指导。  
+如果收到错误，则需重置频道并调整编码器设置。 有关指南，请参阅[故障排除](media-services-troubleshooting-live-streaming.md)一文。  
 
 ## <a name="create-a-program"></a>创建节目
 1. 一旦确认频道可以播放，则可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。  
@@ -149,13 +149,13 @@ ms.lasthandoff: 12/21/2017
     >[!NOTE]
     >创建节目需要的时间比创建频道需要的时间少。
         
-5. 可以运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，并选择“使用 Azure Media Player”。  
+5. 运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，并选择“使用 Azure Media Player”。  
 6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（也可通过菜单从“节目信息和设置”选项检索此信息）。
 
 现在可以将流嵌入到播放器中，也可将其分发给受众进行实时观看。  
 
 ## <a name="troubleshooting"></a>故障排除
-请参阅[故障排除](media-services-troubleshooting-live-streaming.md)主题以获取相关指导。
+有关指南，请参阅[故障排除](media-services-troubleshooting-live-streaming.md)一文。
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32e63b250467f5733b2e691614fe52f96f2f9d91
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -84,7 +84,7 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 给定的 IoT 解决方案存储的设备数据取决于该解决方案的特定要求。 但是，解决方案必须至少存储设备标识和身份验证密钥。 Azure IoT 中心包含标识注册表，可以存储每个设备的值，例如 ID、身份验证密钥和状态代码。 解决方案可以使用其他 Azure 服务（例如表存储、Blob 存储或 Cosmos DB）来存储任何其他设备数据。
 
-*设备预配*是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将设备 ID 和密钥添加到 IoT 中心的标识注册表。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
+*设备预配*是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将设备 ID 和密钥添加到 IoT 中心的标识注册表。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档][lnk-dps]。
 
 ## <a name="device-heartbeat"></a>设备检测信号
 
@@ -105,7 +105,7 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 
 属性：消息系统属性以 `'$'` 符号为前缀。
 
-| 名称 | 值 |
+| 名称​​ | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  发送通知的时间 |
@@ -184,6 +184,11 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [Azure IoT 中心入门][lnk-getstarted-tutorial]
 
+若要了解如何使用 IoT 中心设备预配服务启用零接触实时预配，请参阅： 
+
+* [Azure IoT 中心设备预配服务][lnk-dps]
+
+
 <!-- Links and images -->
 
 [lnk-endpoints]: iot-hub-devguide-endpoints.md
@@ -205,3 +210,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
