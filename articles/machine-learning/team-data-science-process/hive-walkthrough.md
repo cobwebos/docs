@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
-ms.openlocfilehash: ad7bc8bb65a3395599a4de9a9954ff203fa624c6
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: d10026b4f04ab77accf7d089e98270c4c769b636
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
-通过本演练，我们在使用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)的端到端方案中借助 [Team Data Science Process (TDSP)](overview.md)，对公开发布的[纽约市出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 数据模型是使用 Azure 机器学习构建的，用于处理二元分类、多类分类和回归预测任务。
+本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](http://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 数据模型是使用 Azure 机器学习构建的，用于处理二元分类、多类分类和回归预测任务。
 
 针对使用 HDInsight Hadoop 群集进行数据处理的类似方案，有关介绍处理其大型 (1 TB) 数据集的演练，请参阅 [Team Data Science Process - 使用 Azure HDInsight Hadoop 群集处理 1 TB 数据集](hive-criteo-walkthrough.md)。
 
 也可以使用 IPython Notebook 完成该具备 1 TB 数据集的演练中介绍的任务。 想要尝试此方法的用户应该咨询[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)主题。
 
 ## <a name="dataset"></a>NYC 出租车行程数据集介绍
-NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖 2013 年的所有行程，并每月在以下两个数据集中提供：
+NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件。 其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
-1. ‘trip_data’ CSV 文件包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
+1. “trip_data”CSV 文件包含行程的详细信息。 这包括乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -38,7 +38,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. “trip_fare”CSV 文件包含每个行程支付费用的详细信息，例如付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
+2. “trip_fare”CSV 文件包含每个行程支付费用的详细信息。 这包括付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -57,7 +57,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 着手处理数据时，根据其分析确定要进行的预测类型有助于明确需要包括在过程中的任务。
 下面是本演练中讨论的三个预测问题示例，其表述基于 *tip\_amount*：
 
-1. **二元分类**：预测是否已支付某个行程的小费，即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
+1. **二元分类**：预测某个行程是否支付小费。 即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
@@ -91,7 +91,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 > 
 > 
 
-要从 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集的公共位置获取该数据集，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法，将数据复制到计算机。
+要将 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集从其公共位置复制，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法。
 
 此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用程序入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
 
@@ -109,7 +109,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 在以下 AzCopy 命令中，将以下参数替换为创建 Hadoop 群集和解压缩数据文件时所指定的实际值。
 
-* ***<path_to_data_folder>*** 计算机上包含解压缩数据文件的目录（与路径）  
+* ***&#60;path_to_data_folder>*** 计算机上包含解压缩数据文件的目录（与路径）  
 * ***<Hadoop 群集的存储帐户名称>*** 与 HDInsight 群集关联的存储帐户
 * ***<Hadoop 群集的默认容器>*** 群集使用的默认容器。 注意，默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
 * ***<存储帐户密钥>*** 群集使用的存储帐户密钥
@@ -126,7 +126,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 现在，数据应在 Azure Blob 存储中，并且可以在 HDInsight 群集中使用。
 
-## <a name="#download-hql-files"></a>登录到 Hadoop 群集的头节点，并准备进行探索数据分析
+## <a name="#download-hql-files"></a>登录到 Hadoop 群集的头节点，并为探索数据分析做好准备
 > [!NOTE]
 > 这通常是**管理员**任务。
 > 
@@ -142,7 +142,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-这两个命令会将本演练中需要的所有 .hql 文件下载到头节点中的本地目录 C:\temp&#92;。
+这两个命令会将本演练中需要的所有 .hql 文件下载到头节点中的本地目录 ***C:\temp&#92;***。
 
 ## <a name="#hive-db-tables"></a>创建按月分区的 Hive 数据库和表
 > [!NOTE]
@@ -222,7 +222,7 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-*sample\_hive\_load\_data\_by\_partitions.hql* 文件包含以下 **LOAD** 命令。
+*sample\_hive\_load\_data\_by\_partitions.hql* 文件包含以下 **LOAD** 命令：
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
@@ -341,7 +341,7 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
 此处，第一列表示月份，第二列表示该月份的行程数。
 
-我们还可以通过在 Hive 目录提示符处发出以下命令来计算行程数据集中的记录总数。
+我们还可以通过在 Hive 目录提示符处发出以下命令来计算行程数据集中的记录总数：
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
@@ -413,7 +413,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-从 Hive 目录提示符中发出以下命令：
+从 Hive 目录提示符中，发出以下命令：
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
@@ -425,7 +425,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 探索数据集时，我们经常想要检查值组共同出现的次数。 本部分提供如何针对出租车和司机执行此操作的示例。
 
-*sample\_hive\_trip\_count\_by\_medallion\_license.hql* 文件将“medallion”和“hack_license”上的费用数据集分组，并返回每个组合的计数。 以下是其内容。
+*sample\_hive\_trip\_count\_by\_medallion\_license.hql* 文件将“medallion”和“hack_license”上的费用数据集分组，并返回每个组合的计数。 以下是其内容：
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -477,7 +477,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 * 已付小费（类 1，tip\_amount > $0）  
 * 无小费（类 0，tip\_amount = $0）。
 
-下面显示的 *sample\_hive\_tipped\_frequencies.hql* 文件执行此操作。
+以下 *sample\_hive\_tipped\_frequencies.hql* 文件执行此操作：
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -578,7 +578,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 > 
 > 
 
-在探索数据分析阶段之后，便可以开始在 Azure 机器学习中对数据进行下采样，以便构建模型。 本部分演示如何使用 Hive 查询对数据进行下采样，并从 Azure 机器学习中的[导入数据][import-data]模块访问该数据。
+在探索数据分析阶段之后，便可以开始在 Azure 机器学习中对数据进行下采样，以便构建模型。 本部分演示如何使用 Hive 查询对数据进行下采样。 然后从 Azure 机器学习中的[导入数据][import-data]模块访问该数据。
 
 ### <a name="down-sampling-the-data"></a>对数据进行下采样
 此过程包含两个步骤。 首先，在存在于所有记录中的三个键上将“nyctaxidb.trip”和“nyctaxidb.fare”表联接，这三个键是：“medallion”、“hack\_license”和“pickup\_datetime”。 然后，生成一个二元分类标签“tipped”和一个多类分类标签“tip\_class”。
@@ -719,7 +719,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 我们现在已拥有了一个内部表“nyctaxidb.nyctaxi_downsampled_dataset”，可使用 Azure 机器学习中的[导入数据][import-data]模块访问该表。 此外，可以将此数据集用于构建机器学习模型。  
 
 ### <a name="use-the-import-data-module-in-azure-machine-learning-to-access-the-down-sampled-data"></a>使用 Azure 机器学习中的“导入数据”模块访问已经过下采样的数据
-作为在 Azure 机器学习的[导入数据][import-data]模块中发出 Hive 查询的先决条件，我们需要对 Azure 机器学习工作区的访问权限和对群集凭据及其关联的存储帐户的访问权限。
+作为在 Azure 机器学习的[导入数据][import-data]模块中发出 Hive 查询的先决条件，我们需要对 Azure 机器学习工作区的访问权限。 我们还需要对群集凭据及其关联的存储帐户的访问权限。
 
 有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
@@ -761,7 +761,7 @@ Azure 容器名称：这是群集的默认容器名称，通常与群集名称�
 
 **使用的学习器：**双类逻辑回归
 
-a. 对于此问题，我们的目标（或类）标签为“tipped”。 我们的原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体：tip\_class、tip\_amount 和 total\_amount 揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块移除这些列，不将其纳入考虑。
+a. 对于此问题，目标（或类）标签为“tipped”。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体：tip\_class、tip\_amount 和 total\_amount 揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块移除这些列，不将其纳入考虑。
 
 以下快照显示预测给定行程是否支付小费的实验。
 
@@ -773,7 +773,7 @@ b. 对于此实验，我们的目标标签分布大约是 1:1。
 
 ![提示类标签的分布](./media/hive-walkthrough/9mM4jlD.png)
 
-最终，我们获得的 AUC 为 0.987，如下图所示。
+最终，我们获得的 AUC 为 0.987，如下图所示：
 
 ![AUC 值](./media/hive-walkthrough/8JDT0F8.png)
 
@@ -791,7 +791,7 @@ a. 对于此问题，我们的目标（或类）标签为“tip\_class”，其�
 
 ![测试类分布](./media/hive-walkthrough/Vy1FUKa.png)
 
-b. 对于此实验，我们使用混淆矩阵检查来预测准确性。 如下所示。
+b. 对于此实验，我们使用混淆矩阵检查来预测准确性。 如下所示：
 
 ![混淆矩阵](./media/hive-walkthrough/cxFmErM.png)
 
@@ -801,20 +801,20 @@ b. 对于此实验，我们使用混淆矩阵检查来预测准确性。 如下�
 
 **使用的学习器：**提升决策树
 
-a. 对于此问题，我们的目标（或类）标签为“tip\_amount”。 这种情况下，我们的目标泄漏为：tipped、tip\_class 和 total\_amount；所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块移除这些列。
+a. 对于此问题，目标（或类）标签为“tip\_amount”。 这种情况下，目标泄漏为：tipped、tip\_class 和 total\_amount；所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块移除这些列。
 
 以下快照显示预测支付的小费金额的实验。
 
 ![实验快照](./media/hive-walkthrough/11TZWgV.png)
 
-b. 对于回归问题，我们通过查看预测中的平方误差，决定系数等，测量预测准确性。 显示如下。
+b. 对于回归问题，我们通过查看预测中的平方误差，决定系数等，测量预测准确性。
 
 ![预测统计信息](./media/hive-walkthrough/Jat9mrz.png)
 
-我们可以看到，决定系数是 0.709，这意味着我们的模型系数解释了大约 71％ 的方差。
+我们可以看到，决定系数是 0.709，这意味着模型系数解释了大约 71％ 的方差。
 
 > [!IMPORTANT]
-> 若要深入了解 Azure 机器学习以及如何访问和使用它，请参阅[什么是机器学习](../studio/what-is-machine-learning.md)。 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)是一个非常有用的资源，可用于在 Azure 机器学习上进行一系列机器学习实验。 该库涵盖了各类实验，并提供对 Azure 机器学习功能范围的全面介绍。
+> 若要深入了解 Azure 机器学习以及如何访问和使用它，请参阅[什么是机器学习](../studio/what-is-machine-learning.md)。 [Azure AI 库](https://gallery.cortanaintelligence.com/)是一个非常有用的资源，可用于在 Azure 机器学习上进行一系列机器学习实验。 该库涵盖了各类实验，并提供对 Azure 机器学习功能范围的全面介绍。
 > 
 > 
 
