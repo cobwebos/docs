@@ -15,10 +15,10 @@ ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 89a232af6387f6403e6e341cced16d06e9979dae
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>针对开发人员的 Azure Active Directory
 Azure Active Directory (Azure AD) 是一项云标识服务，开发人员可以使用它将任何用户安全地登录到 Microsoft 工作或学校帐户。 本文档介绍了如何使用行业标准协议（OAuth2.0 与 OpenID Connect）向应用程序添加 Azure AD 支持。

@@ -16,10 +16,10 @@ ms.date: 07/05/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 88a8860ef7645e09eec4d6186a5f5f0c42f89d72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 [!INCLUDE [1. Introduction](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)]
 [!INCLUDE [2. Setup](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-setup.md)]
