@@ -1,4 +1,4 @@
----
+﻿---
 title: "在 IoT Core 上安装 Azure IoT Edge | Microsoft Docs"
 description: "在 Windows IoT Core 设备上安装 Azure IoT Edge 运行时"
 services: iot-edge

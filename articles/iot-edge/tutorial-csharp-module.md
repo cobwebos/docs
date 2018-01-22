@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure IoT Edge C# 模块 | Microsoft Docs"
 description: "使用 C# 代码创建 IoT Edge 模块，并将它部署到边缘设备"
 services: iot-edge
