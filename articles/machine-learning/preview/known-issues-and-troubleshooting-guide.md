@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/12/2018
+ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/02/2017
 ## <a name="gather-diagnostics-information"></a>收集诊断信息
 如果在请求帮助时可以提供诊断信息，有时会很有帮助。 下面是日志文件所在的位置：
 
-### <a name="installer"></a>安装程序
+### <a name="installer-log"></a>安装程序日志
 如果在安装过程中遇到问题，可在此处找到安装程序日志文件：
 
 ```
@@ -40,18 +40,7 @@ ms.lasthandoff: 12/02/2017
 ```
 可以打包这些目录的内容，然后将它发送给我们进行诊断。
 
-### <a name="app-update"></a>应用更新 
-#### <a name="no-update-notification-on-windows-desktop"></a>Windows 桌面上不显示更新通知 
-此问题会在将来的更新中解决。 在此期间，解决方法是避免通过已固定到任务栏的快捷方式启动该应用。 应该使用“开始”菜单或“开始”搜索栏，或使用桌面上的快捷方式（如果有）启动该应用。 
-
-#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Ubuntu 数据科学虚拟机 (DSVM) 上不显示更新通知
-请执行以下步骤下载最新的应用程序：   
-   - 删除文件夹 \Users\AppData\Local\amlworkbench
-   - 删除脚本 `c:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
-   - 删除用于启动上述脚本的桌面快捷方式
-   - 使用 [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi) 进行全新安装
-
-### <a name="workbench-desktop-app"></a>Workbench 桌面应用
+### <a name="workbench-desktop-app-log"></a>Workbench 桌面应用日志
 如果登录出现问题或 Workbench 桌面崩溃，可以在此处找到日志文件：
 ```
 # Windows
@@ -62,7 +51,7 @@ ms.lasthandoff: 12/02/2017
 ``` 
 可以打包这些目录的内容，然后将它发送给我们进行诊断。
 
-### <a name="experiment-execution"></a>执行试验
+### <a name="experiment-execution-log"></a>试验执行日志
 如果从桌面应用提交的过程中某个特定脚本执行失败，请尝试通过 CLI 使用 `az ml experiment submit` 命令将其重新提交。 此命令应以 JSON 格式提供完整的错误消息，最重要的是它包含**操作 ID** 值。 请向我们发送包含**操作 ID** 的 JSON 文件，我们可以帮助诊断。 
 
 如果某个特定脚本在提交时成功，但在执行时失败，它应输出**运行 ID** 来标识该特定的运行。 可使用以下命令打包相关日志文件：
@@ -96,6 +85,8 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
 
 - 只有 Windows 和 Linux 上（Docker 容器中）支持 RevoScalePy 库。 macOS 不支持此库。
 
+- 从 Workbench 应用打开 Jupyter 笔记本时，最大只能打开大小为 5 MB 的笔记本。 可使用“az ml notebook start”命令从 CLI 中打开较大的笔记本，并清除单元输出以减小文件大小。
+
 ## <a name="cant-update-workbench"></a>无法更新 Workbench
 有新的更新可用时，Workbench 应用主页会显示一条消息，告知有关新更新的信息。 应用左下角的钟形图标上应会显示一条更新锁屏提醒。 单击锁屏提醒并遵照安装向导安装更新。 
 
@@ -113,7 +104,7 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
    - 删除用于启动上述脚本的桌面快捷方式
    - 下载安装程序 https://aka.ms/azureml-wb-msi 并重新安装。
 
-## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>登录后停留在“正在检查试验帐户”屏幕
+## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>登录后停留在“正在检查试验帐户”屏幕
 登录后，Workbench 应用可能会停留在空白屏幕上，同时会出现一条消息，显示“正在检查试验帐户”以及一个旋转滚轮。 若要解决此问题，请执行以下步骤：
 1. 关闭该应用
 2. 删除以下文件：
@@ -127,7 +118,7 @@ $ az ml experiment diagnostics -r <run_id> -t <target_name>
 3. 重新启动应用。
 
 ## <a name="cant-delete-experimentation-account"></a>无法删除试验帐户
-可使用 CLI 删除试验帐户，但是必须先删除这些子工作区内的子工作区和子项目。 否则会出错。
+可使用 CLI 删除试验帐户，但是必须先删除这些子工作区内的子工作区和子项目。 否则，会看到“删除嵌套资源前无法删除资源”错误。
 
 ```azure-cli
 # delete a project
@@ -147,6 +138,15 @@ $ az ml account experimentation delete -g <resource group name> -n <experimentat
 
 ## <a name="file-name-too-long-on-windows"></a>Windows 上的文件名太长
 如果在 Windows 上使用 Workbench，则可能会遇到最大 260 个字符的默认文件名长度限制，这可能会呈现为“系统找不到指定的路径”错误。 可以修改注册表项设置以允许较长的文件路径名。 查看[本文](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)深入了解如何设置 MAX_PATH 注册表项。
+
+## <a name="interrupt-cli-execution-output"></a>中断 CLI 执行输出
+如果使用 `az ml experiment submit` 或 `az ml notebook start` 启动试验运行并且想要中断输出，请执行以下操作： 
+- 在 Windows 上，使用键盘中的 Ctrl+Break 组合键
+- 在 macOS 上，使用 Ctrl+C。
+
+请注意，这将仅中断 CLI 窗口中的输出流， 不会实际停止正在执行的作业。 如果想要取消正在进行的作业，请使用 `az ml experiment cancel -r <run_id> -t <target name>` 命令。
+
+在键盘中没有 Break 键的 Windows 计算机上，可使用 Fn+B、Ctrl+Fn+B 或 Fn+Esc 替代。请参阅硬件供应商的文档了解特定的组合键。
 
 ## <a name="docker-error-read-connection-refused"></a>Docker 错误“读取: 连接被拒绝”
 针对本地 Docker 容器执行时，有时可能会出现以下错误： 
@@ -198,9 +198,20 @@ username ALL=(ALL) NOPASSWD:ALL
 $ docker system prune -a
 ```
 
-还可以添加一个数据磁盘，并将 Docker 引擎配置为使用该数据磁盘来存储映像。 了解[如何添加数据磁盘](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk)。 然后，可以[更改 Docker 的映像存储位置](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169)。
+还可以添加一个数据磁盘，并将 Docker 引擎配置为使用该数据磁盘来存储映像。 了解[如何添加数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。 然后，可以[更改 Docker 的映像存储位置](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169)。
 
-或者，可以扩展 OS 磁盘，这样就不需要更改 Docker 引擎配置。 了解[如何扩展 OS 磁盘](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk)。
+或者，可以扩展 OS 磁盘，这样就不需要更改 Docker 引擎配置。 了解[如何扩展 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks)。
+
+```azure-cli
+#Deallocate VM (stopping will not work)
+$ az vm deallocate --resource-group myResourceGroup  --name myVM
+
+# Update Disc Size
+$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+    
+# Start VM    
+$ az vm start --resource-group myResourceGroup  --name myVM
+```
 
 ## <a name="sharing-c-drive-on-windows"></a>在 Windows 上共享 C 驱动器
 如果在 Windows 上的本地 Docker 容器中执行，在 `docker.compute` 文件中的 `aml_config` 下将 `sharedVolumes` 设置为 `true` 可以改善执行性能。 但是，这需要在“适用于 Windows 的 Docker 工具”中共享 C 驱动器。 如果无法共享 C 驱动器，请尝试遵循以下提示操作：
@@ -213,6 +224,18 @@ $ docker system prune -a
 * 使用域凭据共享 C 驱动器时，对无法访问的域控制器所在的网络，共享可能停止（例如，家庭网络和公共 WiFi 等）。 有关详细信息，请参阅[此文章](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/)。
 
 还可以通过在 `docker.compute` 文件中将 `sharedVolumne` 设置为 `false`，以较低的性能代价避免共享问题。
+
+## <a name="wipe-clean-workbench-installation"></a>完全擦除 Workbench 安装
+通常不需要执行此操作。 如果必须完全擦除安装，请按照以下步骤进行操作：
+
+- 在 Windows 上：
+  - 首选确保使用“控制面板”中的“添加或删除程序”小程序删除“Azure Machine Learning Workbench”应用程序条目。  
+  - 然后可下载并运行以下脚本之一：
+    - [Windows 命令行脚本](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd)。
+    - [Windows PowerShell 脚本](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1)。 （可能需要先在提升权限的 PowerShell 窗口中运行 `Set-ExecutionPolicy Unrestricted`，然后才能运行该脚本。）
+- 在 macOS 上：
+  - 只需下载并运行 [macOS bash shell 脚本](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh)。
+
 
 ## <a name="some-useful-docker-commands"></a>一些有用的 Docker 命令
 

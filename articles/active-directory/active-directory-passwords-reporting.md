@@ -1,5 +1,5 @@
 ---
-title: "报告：Azure AD SSPR | Microsoft Docs"
+title: "自助密码重置报告 - Azure Active Directory"
 description: "报告 Azure AD 自助密码重置事件"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 1d27dd77547c62a3c2f77aeba214f05326c9cab4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c1f8beaf73bfa424c9a5c86df430822b5626282b
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -64,6 +64,12 @@ ms.lasthandoff: 12/11/2017
 
 Azure AD 报表和事件 API 支持检索密码重置和密码重置注册报表中包含的所有信息。 使用此 API，可以下载单个密码重置和密码重置注册事件，并将其与所选报表技术集成。
 
+> [!IMPORTANT]
+> 目前，Azure AD 报表和事件 API 最多可以检索 [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) 和 [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) 类型的 75,000 个事件。 该 API 的检索范围为过去 30 天。
+> 
+> 如果需要检索或存储的数据超过此时间范围，建议使用该 API 来查询生成的差异数据，以便将数据保存在外部数据库中。 建议当开始在组织中使用 SSPR 时即开始检索此数据。 将其保留在外部，然后继续跟踪之后的差异数据。
+>
+
 ### <a name="how-to-get-started-with-the-reporting-api"></a>如何开始使用报告 API
 
 要访问此数据，需要编写一个小型应用程序或脚本，以便从我们的服务器检索这些数据。 有关详细信息，请参阅 [Azure AD 报表 API 入门](active-directory-reporting-api-getting-started.md)。
@@ -72,12 +78,6 @@ Azure AD 报表和事件 API 支持检索密码重置和密码重置注册报表
 
 * [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)：列出密码重置事件可用的列。
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent)：列出密码重置注册事件可用的列。
-
-### <a name="reporting-api-data-retrieval-limitations"></a>报告 API 数据检索限制
-
-目前，Azure AD 报表和事件 API 最多可以检索 [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) 和 [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) 类型的 75,000 个事件。 该 API 的检索范围为过去 30 天。
-
-如果需要检索或存储的数据超过此时间范围，建议使用该 API 来查询生成的差异数据，以便将数据保存在外部数据库中。 建议当开始在组织中使用 SSPR 时即开始检索此数据。 将其保留在外部，然后继续跟踪之后的差异数据。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 

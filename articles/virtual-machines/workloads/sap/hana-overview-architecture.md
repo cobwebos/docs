@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2461e5fbf620fa2651792b47d41e9835d4d6ef8c
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: e48e0e256306707ca7fde3636a4215b235fa2eb7
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
 
@@ -36,16 +36,18 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 仅支持这些裸机服务器单元运行 SAP HANA。 SAP 应用层或工作负荷中间软件层在 Microsoft Azure 虚拟机中运行。 运行 Azure 上的 SAP HANA（大型实例）单元的基础结构模具连接到 Azure 网络骨干网，因此可提供 Azure 上的 SAP HANA（大型实例）单元与 Azure 虚拟机之间的那种低延迟连接。
 
-本文档是介绍 Azure 上的 SAP HANA（大型实例）主题的五个文档之一。 在本文档中，我们介绍了该解决方案的基本体系结构、职责、提供的服务并概括介绍了功能。 对于大多数领域（如网络和连接），其他四个文档涵盖了详细信息并进行了深入介绍。 Azure 上的 SAP HANA（大型实例）文档不涵盖 SAP NetWeaver 安装或 Azure VM 中的 SAP NetWeaver 部署这些方面。 同一文档容器中的不同文档中介绍了此主题。 
+本文档是介绍 Azure 上的 SAP HANA （大型实例）的几个文档之一。 在本文档中，我们介绍了该解决方案的基本体系结构、职责、提供的服务并概括介绍了功能。 对于大多数领域（如网络和连接），其他四个文档涵盖了详细信息并进行了深入介绍。 Azure 上的 SAP HANA（大型实例）文档不涵盖 SAP NetWeaver 安装或 Azure VM 中的 SAP NetWeaver 部署这些方面。 Azure 上的 SAP NetWeaver 在同一 Azure 文档容器的不同文档中介绍。 
 
 
-本指南的五个部分涵盖以下主题：
+HANA 大型实例指南的不同文档涵盖以下几个方面：
 
 - [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [如何安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP HANA（大型实例）的故障排除和监视](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [使用 STONITH 在 SUSE 中进行高可用性设置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [为类型 II SKU 执行 OS 备份和还原](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 ## <a name="definitions"></a>定义
 
@@ -67,7 +69,7 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
     - 类型 II 类：S384、S384m、S384xm、S576、S768 和 S960
 
 
-有关在 Azure 公有云上部署 SAP 工作负荷的主题，已发布的各种其他资源中都有所介绍。 强烈建议由拥有相关经验的人员来规划和执行 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续学习之前，应该先阅读以下资源，其中提供了更多信息：
+有关在 Microsoft Azure 公有云上部署 SAP 工作负荷的主题，已发布的各种其他资源中都有所介绍。 强烈建议由拥有相关经验的人员来规划和执行 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续学习之前，应该先阅读以下资源，其中提供了更多信息：
 
 
 - [在 Microsoft Azure 虚拟机上使用 SAP 解决方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -365,7 +367,7 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 对于 II 类 SKU 的 HANA 大型实例，需使用 OS 方法加密启动 LUN。 有关更多信息，请联系 Microsoft Service Management 团队。
 
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 Azure 网络的体系结构是在 HANA 大型实例上成功部署 SAP 应用程序的关键组件。 通常，Azure 上的 SAP HANA（大型实例）部署具有较大的 SAP 布局和多种不同的 SAP 解决方案，其中具有可变的数据库大小、CPU 资源消耗和内存利用。 这些 SAP 系统中，可能并不是所有系统都基于 SAP HANA，因此，SAP 布局可能是混合式的，它使用以下各项：
 
@@ -464,14 +466,18 @@ HANA 大型实例的网络体系结构如下所示，可以分为四个不同的
 
 ### <a name="routing-in-azure"></a>Azure 中的路由
 
-对于 Azure 上的 SAP HANA（大型实例），有两个重要的网络路由注意事项：
+对于 Azure 上的 SAP HANA（大型实例），有三个重要的网络路由注意事项：
 
-1. Azure 上的 SAP HANA（大型实例）只能由 Azure VM 通过专用 ExpressRoute 连接进行访问，不能从本地直接访问。 需要进行直接访问的某些管理客户端和任何应用程序（例如在本地运行的 SAP Solution Manager）都无法连接到 SAP HANA 数据库。
+1. Azure 上的 SAP HANA（大型实例）只能由 Azure VM 通过专用 ExpressRoute 连接进行访问，不能从本地直接访问。 由于用于 SAP HANA 大型实例的当前 Azure 网络体系结构存在传递路由限制，在 Microsoft 向你提供 HANA 大型实例单元后，不能立即从本地直接访问。 需要进行直接访问的某些管理客户端和任何应用程序（例如在本地运行的 SAP Solution Manager）都无法连接到 SAP HANA 数据库。
 
-2. Azure 上的 SAP HANA（大型实例）单位有一个分配的 IP 地址，该地址源自你作为客户提交的 Server IP 池地址范围（有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。  可通过 Azure 订阅以及用于将 Azure VNet 连接到 Azure 上的 HANA（大型实例）的 ExpressRoute 访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元，而不会经过 NAT 转换；在此解决方案的第一个部署中也存在这种情况。 
+2. 如果在两个不同的 Azure 区域部署了 HANA 大型实例单元用于进行灾难恢复，将适用相同的传递路由限制。 换言之，一个区域（如美国西部）中的 HANA 大型实例的 IP 地址不会路由到另一个区域（如美国东部）部署的 HANA 大型实例。 这与跨区域或跨 ExpressRoute 线路连接（将 HANA 大型实例单元连接到 Azure VNet）使用 Azure 网络对等互连的情况不同。 具体如本文档进一步所介绍。 部署的体系结构存在此限制，禁止立即将 HANA 系统复制用作灾难恢复功能。
+
+3. Azure 上的 SAP HANA（大型实例）单位有一个分配的 IP 地址，该地址源自你作为客户提交的 Server IP 池地址范围（有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。  可通过 Azure 订阅以及用于将 Azure VNet 连接到 Azure 上的 HANA（大型实例）的 ExpressRoute 访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元，而不会经过 NAT 转换；在此解决方案的第一个部署中也存在这种情况。 
 
 > [!NOTE] 
-> 在某个_数据仓库_方案中，应用程序和/或最终用户需要连接到 SAP HANA 数据库（直接运行），在这种情况下，如果需要连接到 Azure 上的 SAP HANA（大型实例），则必须使用另一个网络组件：使用一个反向代理来往返路由数据。 例如，使用 Azure 中部署的带流量管理器的 F5 BIG-IP、NGINX 作为虚拟防火墙/流量路由解决方案。
+> 如果需要克服上述前两个列表项中介绍的暂时性路由限制，需要使用其他组件进行路由。 可用于克服该限制的组件有来回路由数据的反向代理。 例如，使用 Azure 中部署的带流量管理器的 F5 BIG-IP、NGINX 作为虚拟防火墙/流量路由解决方案。
+> 在 Linux VM 中使用 [IPTables 规则](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)在本地位置与 HANA 大型实例单元之间，或者在不同区域中的 HANA 大型实例单元之间实现路由。
+> 请注意，Microsoft 不实现也不支持涉及第三方网络设备或 IPTables 的自定义解决方案。 需要由所用组件的供应商或集成者提供支持。 
 
 ### <a name="internet-connectivity-of-hana-large-instances"></a>HANA 大型实例的 Internet 连接
 HANA 大型实例未建立直接 Internet 连接。 这会限制某些功能，例如直接向操作系统供应商注册 OS 映像的功能。 因此，可能需要使用本地 SLES SMT 服务器或 RHEL 订阅管理器

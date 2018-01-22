@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d40f67c354e29f3a58c9d0f1967e0154b5b998d0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b5c139766af9e166b12e8833c2ced8be08e743a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="what-is-the-access-panel"></a>访问面板是什么？
 
@@ -70,7 +70,33 @@ ms.lasthandoff: 12/11/2017
 
 访问面板的最低要求是使用支持 JavaScript 且已启用 CSS 的浏览器。 为了让用户通过基于密码的单一登录 (SSO) 登录到应用程序，必须在浏览器中安装“访问面板”扩展。 选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
-访问面板扩展目前适用于 Internet Explorer 8 和更高版本、Microsoft Edge、Chrome 及 Firefox 浏览器。
+访问面板扩展插件当前适用于：
+-   Windows 10 周年纪念版或更高版本上的 Edge 
+
+-   Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
+
+-   Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
+
+-   Internet Explorer 8、9、10、11（Windows 7 或更高版本）（支持受限）
+
+## <a name="my-apps-secure-sign-in-extension"></a>我的应用安全登录扩展插件
+此扩展插件要求用户使用密码进行单一登录。 安装后，用户还可通过单击“登录以开始使用”登录该扩展插件，启用附加功能。 
+
+- 用户可通过访问应用的“登录 URL”直接登录应用。 当用户导航到应用的登录 URL 时，该扩展插件会进行检测并为用户提供从该扩展插件进行登录的选项。
+- 用户也可使用该扩展插件的“快速搜索”功能，从访问面板启动其任何应用。 
+- 该扩展插件还会在“最近使用的应用”部分显示用户最近启动的三个应用程序。
+
+> [!NOTE]
+> 附加功能仅适用于 Edge、Chrome 和 Firefox。
+>
+>
+
+如果使用的“我的应用 URL”不是 https://myapps.microsoft.com，则必须通过以下步骤配置默认 URL：
+1. 未登录到该扩展插件时，请右键单击该扩展插件图标。
+2. 从菜单中单击“选择我的应用 URL”。
+3. 选择默认 URL。
+4. 单击该扩展插件图标。
+5. 通过选择“登录以开始使用”登录到该扩展插件。
 
 ## <a name="mobile-app-support"></a>移动应用支持
 

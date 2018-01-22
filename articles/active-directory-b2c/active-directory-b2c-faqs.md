@@ -1,12 +1,11 @@
 ---
-title: "常见问题解答 (FAQ) - Azure AD B2C | Microsoft Docs"
-description: "有关 Azure Active Directory B2C 的常见问题"
+title: "常见问题解答 - Azure Active Directory B2C"
+description: "有关 Azure Active Directory B2C 的常见问题解答 (FAQ)"
 services: active-directory-b2c
-documentationcenter: 
-author: saeeda
+author: PatAltimore
 manager: mtillman
-editor: bryanla
-ms.assetid: ed33c2ca-76d0-442a-abb1-8b7b7bb92d6a
+editor: saeeda
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 8bc487bdcc33f70d39d884830bfaf9187828694e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 38f33f2a5d0bba4686cfeef121f2087326e1897d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
@@ -64,9 +63,9 @@ Azure AD B2C 还增加了对[自定义策略](https://docs.microsoft.com/azure/a
 
     ![自定义验证电子邮件的屏幕截图](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-电子邮件签名包含首次创建 B2C 租户时提供的 B2C 租户名称。 可以使用以下说明更改名称：
+电子邮件签名包含首次创建 Azure AD B2C 租户时提供的 Azure AD B2C 租户名称。 可以使用以下说明更改名称：
 
-1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure Active Directory”边栏选项卡。
 1. 单击“属性”选项卡。
 1. 更改“名称”字段。
@@ -106,22 +105,22 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 能！  请阅读公共预览版中的[语言自定义](active-directory-b2c-reference-language-customization.md)。  我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，可以将 URL 从 login.microsoftonline.com 更改为 login.contoso.com 吗？
-目前不可以。 该功能在我们的计划之中。 在 Azure 经典门户上的“域”选项卡中验证域并不能实现此目标。
+目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 请按照以下步骤删除 Azure AD B2C 租户：
 
 1. 请按照以下步骤在 Azure 门户上[导航到 Azure AD B2C 设置](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 1. 导航到“应用程序”、“标识提供者”、“所有策略”，并删除其中的所有条目。
-1. 现在，以订阅管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com/) 。 （使用在注册 Azure 时使用的同一工作或学校帐户，或同一 Microsoft 帐户。）
-1. 导航到左侧的 Active Directory 扩展，并单击 B2C 租户。
-1. 单击“用户”选项卡。
-1. 依次选择每个用户（排除当前以订阅管理员身份登录的用户）。 单击页面底部的“删除”，并在出现提示时单击“是”。
-1. 单击“应用程序”选项卡。
-1. 在“显示”下拉菜单中选择“我公司拥有的应用程序”，然后单击复选标记。
-1. 名为 b2c-extensions-app 的应用程序。 单击页面底部的“删除”，并在出现提示时单击“是”。
-1. 再次导航到 Active Directory 扩展，并选择 B2C 租户。
-1. 单击页面底部的“删除”。 要完成该过程，请按照屏幕上的说明进行操作。
+1. 现在，以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 （使用在注册 Azure 时使用的同一工作或学校帐户，或同一 Microsoft 帐户。）
+1. 切换到要删除的 Azure AD B2C 租户。
+2. 导航到左侧的 Active Directory 菜单。
+3. 选择“用户和组”。
+4. 依次选择每个用户（排除当前以订阅管理员身份登录的用户）。 单击页面底部的“删除”，并在出现提示时单击“是”。
+5. 单击“应用注册”。
+6. 选择名为“b2c-extensions-app”的应用程序。 单击“删除”，出现提示时，单击“是”。
+7. 选择“概述”。
+8. 单击“删除目录”。 要完成该过程，请按照屏幕上的说明进行操作。
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>我可以将 Azure AD B2C 作为企业移动性套件的一部分吗？
 不，Azure AD B2C 是即用即付 Azure 服务，不是企业移动套件的一部分。

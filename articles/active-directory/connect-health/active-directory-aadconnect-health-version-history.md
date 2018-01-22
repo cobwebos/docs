@@ -14,26 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: f961ef253fd090d3f064c9da5950d5eab6547e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b43eb5e78b70f38226e3e8cb53d1530d348c7c20
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。
+
+## <a name="december-2017"></a>2017 年 12 月
+**代理更新：**
+
+*   适用于 AD DS 的 Azure AD Connect Health 代理（3.0.145.0 版）
+  1. 提高了代理可用性 
+  2. 新增了代理故障排除命令
+  3. 修复了 Bug，进行了一般改进
+*   适用于 AD FS 的 Azure AD Connect Health 代理（3.0.145.0 版）
+  1. 新增了代理故障排除命令
+  2. 提高了代理可用性 
+  3. 修复了 Bug，进行了一般改进
+  
+## <a name="october-2017"></a>2017 年 10 月
+**代理更新：**
+
+ * 适用于同步的 Azure AD Connect Health 代理（3.0.129.0 版），与 Azure AD Connect 1.1.649.0 版一起发布
+<br></br> 修复了 Azure AD Connect 与适用于同步的 Azure AD Connect Health 代理之间存在的版本兼容性问题。此问题会影响要执行 Azure AD Connect 就地升级到版本 1.1.647.0，但当前 Health 代理版本为 3.0.127.0 的用户。 升级之后，Health 代理不再能够将有关 Azure AD Connect 同步服务的运行状况数据发送到 Azure AD Health 服务。 通过此修复，在 Azure AD Connect 就地升级过程中将安装 Health 代理版本 3.0.129.0。 Health 代理版本 3.0.129.0 与 Azure AD Connect 版本 1.1.649.0 没有兼容性问题。
+
+## <a name="july-2017"></a>2017 年 7 月
+**代理更新：**
+
+*   适用于 AD DS 的 Azure AD Connect Health 代理（3.0.68.0 版）
+  1. 修复了 Bug，进行了一般改进
+  2. 支持 Sovereign 云
+*   适用于 AD FS 的 Azure AD Connect Health 代理（3.0.68.0 版）
+  1. 修复了 Bug，进行了一般改进
+  2. 支持 Sovereign 云
+* 适用于同步的 Azure AD Connect Health（3.0.68.0 版），与 Azure AD Connect 1.1.614.0 版一起发布
+1. 支持 Microsoft Azure 政府云和 Microsoft 德国云
+
+## <a name="april-2017"></a>2017 年 4 月      
+**代理更新：**
+
+*   适用于 AD FS 的 Azure AD Connect Health 代理（3.0.12.0 版）
+  1. 修复了 Bug，进行了一般改进
+*   适用于 AD DS 的 Azure AD Connect Health 代理（3.0.12.0 版）
+  1. 改进了性能计数器上传
+  2. 修复了 Bug，进行了一般改进
 
 ## <a name="october-2016"></a>2016 年 10 月
 **代理更新：**
 
 * 适用于 AD FS 的 Azure AD Connect Health 代理（\(2.6.408.0 版\)）
-  1. 改进在身份验证请求中检测客户端 IP 地址的方法
-  2. 与警报相关的 Bug 修复
+1. 改进在身份验证请求中检测客户端 IP 地址的方法
+2. 与警报相关的 Bug 修复
 * 适用于 AD DS 的 Azure AD Connect Health 代理（2.6.408.0 版）
-  1. 与警报相关的 Bug 修复。
+1. 与警报相关的 Bug 修复。
 * 用于同步的 Azure AD Connect Health（2.6.353.0 版），与 Azure AD Connect 1.1.281.0 版一起发布
-  1. 为同步错误报告提供所需的数据
-  2. 与警报相关的 Bug 修复
+1. 为同步错误报告提供所需的数据
+2. 与警报相关的 Bug 修复
 
 **新的预览功能：**
 

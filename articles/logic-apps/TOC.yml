@@ -33,9 +33,9 @@
           href: logic-apps-create-logic-apps-from-templates.md
         - name: 创建自定义模板
           href: logic-apps-create-deploy-azure-resource-manager-templates.md
-        - name: 生成逻辑应用 - VS
+        - name: 生成逻辑应用 - Visual Studio
           href: logic-apps-deploy-from-vs.md
-        - name: 生成无服务器的应用 - VS
+        - name: 生成无服务器应用 - Visual Studio
           href: logic-apps-serverless-get-started-vs.md
         - name: 从 BizTalk 服务迁移
           href: logic-apps-move-from-mabs.md
@@ -91,80 +91,6 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: 排查错误
           href: logic-apps-diagnosing-failures.md
-    - name: 管理
-      items:
-        - name: 管理逻辑应用 - VS
-          href: logic-apps-manage-from-vs.md
-        - name: 管理集成帐户
-          href: logic-apps-enterprise-integration-accounts.md
-    - name: 连接器 - 深入的主题
-      items:
-        - name: AS2
-          href: logic-apps-enterprise-integration-as2.md
-        - name: Azure Blob 存储
-          href: ../connectors/connectors-create-api-azureblobstorage.md
-        - name: Azure Functions
-          href: logic-apps-azure-functions.md
-        - name: Azure 逻辑应用
-          href: logic-apps-http-endpoint.md
-        - name: Azure SQL 数据库
-          href: ../connectors/connectors-create-api-sqlazure.md
-        - name: 自定义 API/Web 应用
-          href: logic-apps-create-api-app.md
-        - name: DB2
-          href: ../connectors/connectors-create-api-db2.md
-        - name: Dynamics 365 CRM Online
-          href: ../connectors/connectors-create-api-crmonline.md
-        - name: EDIFACT
-          href: logic-apps-enterprise-integration-edifact.md
-        - name: 事件中心
-          href: ../connectors/connectors-create-api-azure-event-hubs.md
-        - name: 文件系统
-          href: logic-apps-using-file-connector.md
-        - name: 平面文件
-          href: logic-apps-enterprise-integration-flatfile.md
-        - name: FTP
-          href: ../connectors/connectors-create-api-ftp.md
-        - name: HTTP
-          href: ../connectors/connectors-native-http.md
-        - name: HTTP + Swagger
-          href: ../connectors/connectors-native-http-swagger.md
-        - name: HTTP Webhook
-          href: ../connectors/connectors-native-webhook.md
-        - name: Informix
-          href: ../connectors/connectors-create-api-informix.md
-        - name: 集成帐户
-          href: logic-apps-enterprise-integration-metadata.md
-        - name: MQ
-          href: ../connectors/connectors-create-api-mq.md
-        - name: Office 365 Outlook
-          href: ../connectors/connectors-create-api-office365-outlook.md
-        - name: Oracle Database
-          href: ../connectors/connectors-create-api-oracledatabase.md
-        - name: 请求/响应
-          href: ../connectors/connectors-native-reqres.md
-        - name: Salesforce
-          href: ../connectors/connectors-create-api-salesforce.md
-        - name: SAP
-          href: logic-apps-using-sap-connector.md
-        - name: 计划
-          href: ../connectors/connectors-native-recurrence.md
-        - name: 服务总线
-          href: ../connectors/connectors-create-api-servicebus.md
-        - name: SharePoint Online
-          href: ../connectors/connectors-create-api-sharepointonline.md
-        - name: SharePoint Server
-          href: ../connectors/connectors-create-api-sharepointserver.md
-        - name: SQL Server
-          href: ../connectors/connectors-create-api-sqlazure.md
-        - name: 转换 XML
-          href: logic-apps-enterprise-integration-transform.md
-        - name: Twitter
-          href: ../connectors/connectors-create-api-twitter.md
-        - name: X12
-          href: logic-apps-enterprise-integration-x12.md
-        - name: XML 验证
-          href: logic-apps-enterprise-integration-xml-validation.md
     - name: 针对 B2B 方案进行开发
       items:
         - name: 创建集成帐户
@@ -226,6 +152,80 @@
           href: logic-apps-gateway-install.md
         - name: 连接到本地数据
           href: logic-apps-gateway-connection.md
+    - name: 连接器 - 深入的主题
+      items:
+        - name: AS2
+          href: logic-apps-enterprise-integration-as2.md
+        - name: Azure Blob 存储
+          href: ../connectors/connectors-create-api-azureblobstorage.md
+        - name: Azure Functions
+          href: logic-apps-azure-functions.md
+        - name: Azure 逻辑应用
+          href: logic-apps-http-endpoint.md
+        - name: Azure SQL 数据库
+          href: ../connectors/connectors-create-api-sqlazure.md
+        - name: 自定义 API 和 Web 应用
+          href: logic-apps-create-api-app.md
+        - name: DB2
+          href: ../connectors/connectors-create-api-db2.md
+        - name: Dynamics 365 CRM Online
+          href: ../connectors/connectors-create-api-crmonline.md
+        - name: EDIFACT
+          href: logic-apps-enterprise-integration-edifact.md
+        - name: 事件中心
+          href: ../connectors/connectors-create-api-azure-event-hubs.md
+        - name: 文件系统
+          href: logic-apps-using-file-connector.md
+        - name: 平面文件
+          href: logic-apps-enterprise-integration-flatfile.md
+        - name: FTP
+          href: ../connectors/connectors-create-api-ftp.md
+        - name: HTTP
+          href: ../connectors/connectors-native-http.md
+        - name: HTTP + Swagger
+          href: ../connectors/connectors-native-http-swagger.md
+        - name: HTTP Webhook
+          href: ../connectors/connectors-native-webhook.md
+        - name: Informix
+          href: ../connectors/connectors-create-api-informix.md
+        - name: 集成帐户
+          href: logic-apps-enterprise-integration-metadata.md
+        - name: MQ
+          href: ../connectors/connectors-create-api-mq.md
+        - name: Office 365 Outlook
+          href: ../connectors/connectors-create-api-office365-outlook.md
+        - name: Oracle Database
+          href: ../connectors/connectors-create-api-oracledatabase.md
+        - name: 请求/响应
+          href: ../connectors/connectors-native-reqres.md
+        - name: Salesforce
+          href: ../connectors/connectors-create-api-salesforce.md
+        - name: SAP
+          href: logic-apps-using-sap-connector.md
+        - name: 计划
+          href: ../connectors/connectors-native-recurrence.md
+        - name: Azure 服务总线
+          href: ../connectors/connectors-create-api-servicebus.md
+        - name: SharePoint Online
+          href: ../connectors/connectors-create-api-sharepointonline.md
+        - name: SharePoint Server
+          href: ../connectors/connectors-create-api-sharepointserver.md
+        - name: SQL Server
+          href: ../connectors/connectors-create-api-sqlazure.md
+        - name: 转换 XML
+          href: logic-apps-enterprise-integration-transform.md
+        - name: Twitter
+          href: ../connectors/connectors-create-api-twitter.md
+        - name: X12
+          href: logic-apps-enterprise-integration-x12.md
+        - name: XML 验证
+          href: logic-apps-enterprise-integration-xml-validation.md
+    - name: 管理
+      items:
+        - name: 管理逻辑应用 - VS
+          href: logic-apps-manage-from-vs.md
+        - name: 管理集成帐户
+          href: logic-apps-enterprise-integration-accounts.md
     - name: 部署
       items:
         - name: 创建自动部署模板

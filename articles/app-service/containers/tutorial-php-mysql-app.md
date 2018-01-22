@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 中构建 PHP 和 MySQL Web 应用 | Microsoft Docs"
+title: "在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用 | Microsoft Docs"
 description: "了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。"
 services: app-service\web
 documentationcenter: nodejs
@@ -12,19 +12,23 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3496b00960ad1fe1213f2005d2173543988b4ff9
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: cf398d18091a008afc24cbe583001fd538039db2
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
+# <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用
+
+> [!NOTE]
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 Windows 的应用服务，请参阅[在 Azure 中生成 PHP 和 MySQL Web 应用](../app-service-web-tutorial-php-mysql.md)。
+>
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何创建 PHP Web 应用，并将其连接到 MySQL 数据库。 完成本教程后，Linux 上的应用服务将会运行一个 [Laravel](https://laravel.com/) 应用。
 
 ![在 Azure 应用服务中运行的 PHP 应用](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
-本教程介绍如何：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 MySQL 数据库
@@ -34,7 +38,7 @@ ms.lasthandoff: 11/29/2017
 > * 从 Azure 流式传输诊断日志
 > * 在 Azure 门户中管理应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 完成本教程：
 
@@ -155,12 +159,12 @@ php artisan serve
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-使用 [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。
+使用 [az mysql server create](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。
 
 在以下命令中，请将 &lt;mysql_server_name> 占位符替换为你自己的唯一 MySQL 服务器名称（有效字符是 `a-z`、`0-9` 和 `-`）。 此名称是 MySQL 服务器主机名 (`<mysql_server_name>.database.windows.net`) 的一部分，必须全局唯一。
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password MySQLAzure2017 --ssl-enforcement Disabled
+az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --ssl-enforcement Disabled
 ```
 
 创建 MySQL 服务器后，Azure CLI 会显示类似于以下示例的信息：
@@ -180,7 +184,7 @@ az mysql server create --name <mysql_server_name> --resource-group myResourceGro
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-使用 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便能够建立客户端连接。
+使用 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便能够建立客户端连接。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -198,7 +202,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
 ```
 
-当出现输入密码提示时，请使用创建数据库时指定的 $tr0ngPa$ w0rd！。
+当提示输入密码时，请使用创建数据库服务器时指定的 $tr0ngPa$w0rd!。
 
 ### <a name="create-a-production-database"></a>创建生产数据库
 
@@ -239,7 +243,7 @@ APP_DEBUG=true
 APP_KEY=SomeRandomString
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql_server_name>.database.windows.net
+DB_HOST=<mysql_server_name>.mysql.database.azure.com
 DB_DATABASE=sampledb
 DB_USERNAME=phpappuser@<mysql_server_name>
 DB_PASSWORD=MySQLAzure2017
@@ -313,7 +317,7 @@ git commit -m "database.php updates"
 
 应用已可用于部署。
 
-## <a name="deploy-to-azure"></a>部署到 Azure
+## <a name="deploy-to-azure"></a>“部署到 Azure”
 
 此步骤将已连接 MySQL 的 PHP 应用程序部署到 Azure 应用服务。
 
@@ -331,7 +335,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [az webapp config appsettings update ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname> 和 &lt;mysql_server_name>。
 
@@ -363,7 +367,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令在应用服务 Web 应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
+使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令在应用服务 Web 应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -375,7 +379,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 设置 Web 应用的虚拟应用程序路径。 需要执行此步骤的原因是 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public 目录中开始，而不是在应用程序的根目录中开始。 无需手动配置虚拟应用程序路径，生命周期在根目录中开始的其他 PHP 框架也能正常工作。
 
-使用 [az resource update](/cli/azure/resource#az_resource_update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
+使用 [az resource update](/cli/azure/resource?view=azure-cli-latest#az_resource_update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01

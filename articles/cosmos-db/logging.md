@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 407a9a3be4ae8a9b00a953914e6b4414d8dac8b6
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 835f6ffce9b2e1bb4b6cfd7476bb3fdb24a4f092
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/14/2017
 
 ## <a name="what-is-logged"></a>记录哪些内容？
 
-* 记录所有经验证的 REST CosmosDB (SQL) API 请求，包括由于访问权限、系统错误或错误请求而失败的请求。 当前不支持 MongoDB、Graph 和表 API。
+* 记录所有经过身份验证的 REST SQL API 请求，包括由于访问权限、系统错误或错误请求而失败的请求。 当前不支持 MongoDB、Graph 和表 API。
 * 对数据库本身的操作，包括对所有文档、容器和数据库的 CRUD 操作。
 * 对帐户密钥的操作，包括创建、修改或删除这些密钥。
 * 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/14/2017
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，必须备好以下资源：
 
-* 现有的 Azure Cosmos DB 帐户、数据库和容器。 有关创建这些资源的说明，请参阅[使用 Azure 门户创建数据库帐户](create-documentdb-dotnet.md#create-a-database-account)、[CLI 示例](cli-samples.md)或 [PowerShell 示例](powershell-samples.md)。
+* 现有的 Azure Cosmos DB 帐户、数据库和容器。 有关创建这些资源的说明，请参阅[使用 Azure 门户创建数据库帐户](create-sql-api-dotnet.md#create-a-database-account)、[CLI 示例](cli-samples.md)或 [PowerShell 示例](powershell-samples.md)。
 
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>在 Azure 门户中启用日志记录
@@ -54,13 +54,13 @@ ms.lasthandoff: 10/14/2017
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 要在门户中创建新的存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)，并按照说明创建资源管理器（即通用帐户）。 然后在门户中返回到此页，选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * **发送到 Log Analytics**。     若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅[在 Log Analytics 中查看日志](#view-in-loganalytics)。
-    * **记录 DataPlaneRequests**。 选择此选项可以记录 DocumentDB API、图形 API 和表 API 帐户的诊断。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **记录 DataPlaneRequests**。 选择此选项可以记录 SQL API、图形 API 和表 API 帐户的诊断。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
     * **记录 MongoRequests**。 选择此选项可以记录 MongoDB API 帐户的诊断。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **指标请求**。 选择此选项可在 [Azure 指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftdocumentdbdatabaseaccounts-cosmosdb)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **指标请求**。 选择此选项可在 [Azure 指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
 
-3. 单击“保存” 。
+3. 单击“ **保存**”。
 
-    如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
+    如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
 
     若要更改在将来的任意时间点保存诊断日志的方式，可以随时返回到此页，修改帐户的诊断日志设置。
 
@@ -383,7 +383,7 @@ $blobs | Get-AzureStorageBlobContent `
 * 哪些操作花费的时间超过 3 毫秒。
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 3000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * 哪些代理正在运行操作。

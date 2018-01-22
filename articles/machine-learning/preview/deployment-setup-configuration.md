@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/29/2017
-ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/6/2017
+ms.openlocfilehash: c8949e4f66623951ef66005b3acc2b2279486b4d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="model-management-setup"></a>模型管理安装
 
@@ -25,8 +25,8 @@ ms.lasthandoff: 10/11/2017
 读完本文档后，你应该能够设置模型管理环境，并随时可以部署机器学习模型。
 
 ## <a name="what-you-need-to-get-started"></a>入门所需操作
-为了充分利用本指南，你对可将模型部署到的 Azure 订阅应该拥有所有者访问权限。
-Azure Machine Learning Workbench 和 [Azure DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) 上预安装了 CLI。
+为了充分利用本指南，对可将模型部署到的 Azure 订阅或资源组应该拥有参与者访问权限。
+Azure Machine Learning Workbench 和 [Azure DSVM](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) 上预安装了 CLI。
 
 ## <a name="using-the-cli"></a>使用 CLI
 若要从 Workbench 使用命令行接口 (CLI)，请单击“文件” -> “打开命令提示符”。 
@@ -81,13 +81,15 @@ pip install azure-cli-ml
 
 完成环境设置后：
 - 系统会提示你登录到 Azure。 若要登录，请使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入提供的代码进行身份验证。
-- 在身份验证过程中，系统会提示你输入帐户进行身份验证。 重要说明：选择一个具有有效 Azure 订阅和足够权限的帐户，以在帐户中创建资源。登录完成后，会显示订阅信息，并且会提示你确认是否要继续使用所选帐户。
+- 在身份验证过程中，系统会提示你输入帐户进行身份验证。 重要说明：选择具有有效 Azure 订阅并且有足够权限在帐户中创建资源的帐户。 登录完成后，会显示你的订阅信息，并提示是否想要继续使用选定帐户。
 
 ### <a name="environment-setup"></a>环境设置
-若要启动设置过程，需要通过输入以下命令来注册环境提供程序：
+若要启动设置过程，需要通过输入以下命令来注册几个环境提供程序：
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
+az provider register -n Microsoft.ContainerRegistry
+az provider register -n Microsoft.ContainerService
 ```
 #### <a name="local-deployment"></a>本地部署
 要在本地计算机上部署和测试 Web 服务，请使用以下命令设置本地环境。 资源组名称是可选的。
@@ -128,9 +130,9 @@ az ml env setup --cluster -n [your environment name] -l [Azure region e.g. eastu
 - Application Insights 帐户
 
 >[!IMPORTANT]
-> 为成功创建群集环境，需要成为 Azure 订阅的所有者，并且还可以创建服务主体。 要检查你是否拥有足够的权限，请按照此页面上的说明进行操作：[在 Azure 中创建服务主体](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+> 若要成功创建群集环境，需要对 Azure 订阅或资源组拥有参与者访问权限。
 
-快速创建了资源组、存储帐户和 ACR。 ACS 部署最多可能需要 20 分钟。 
+系统将快速创建资源组、存储帐户和 ACR。 ACS 部署最多可能需要 20 分钟。 
 
 要检查当前正在进行的群集调配的状态，请使用以下命令：
 

@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2017
+ms.date: 01/03/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: ba425e938f81ffb37a2c8bc2a764a4db074e9106
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 882cf3cde71f5154efcd88f055984e72463b3099
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/07/2017
 > * 解决不符合或遭拒绝的资源
 > * 在组织中实施新策略
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="assign-a-policy"></a>分配策略
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/07/2017
 6. 提供策略分配的显示名称。 在此示例中，我们使用“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明详细介绍了此策略分配如何确保此环境中创建的所有 SQL Server 版本均为 12.0。
 7. 将定价层更改为“标准”，确保策略应用于现有资源。
 
-   Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于我们处于受限预览版，尚未发布定价模型，因此你不会收到选择标准的帐单。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/)。
+   Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于我们处于受限预览版，尚未发布定价模型，因此你不会收到选择标准的帐单。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)。
 
 8. 选择“范围”- 之前注册的订阅（或资源组）。 范围用于确定对其强制执行策略分配的资源或资源组。 它可以从订阅延伸至资源组。
 
@@ -73,12 +73,12 @@ ms.lasthandoff: 12/07/2017
    - 策略定义的名称 - 需要 VM SKU 小于 G 系列
    - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围中创建的所有 VM 具有的 SKU 都小于 G 系列，以减少成本。
    - 将执行策略定义的订阅 - 本示例中，策略定义位于“顾问分析容量开发”中。 你的订阅列表将有所不同。
-   - 使用以下内容编写 json 代码：
+   - 复制以下 json 代码并根据需要进行更新：
       - 策略参数。
       - 策略规则/条件，此示例中为 - VM SKU 大小等于 G 系列
       - 策略效果，此示例中为“拒绝”。
 
-    json 应如下所示
+    json 应如下所示。 将修改后的代码粘贴到 Azure 门户。
 
     ```json
 {
@@ -348,7 +348,7 @@ az policy definition list
 
    从列表中选择策略定义后，该策略定义将显示在“策略和参数”下，如上所示。
 
-5. 选择“创建” 。
+5. 选择“创建”。
 
 ### <a name="assign-an-initiative-definition"></a>分配计划定义
 

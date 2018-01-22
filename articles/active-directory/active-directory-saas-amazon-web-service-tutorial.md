@@ -5,20 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 1/3/2017
 ms.author: jeedes
-ms.reviewer: jeedes
-ms.openlocfilehash: 0fb9c8f428368271b548e3f174726fa01ea910c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4d96df72fd7f8f817140e7599e22a63ddd79910
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -26,34 +26,26 @@ ms.lasthandoff: 10/11/2017
 
 将 Amazon Web Services (AWS) 与 Azure AD 集成提供以下优势：
 
-- 可以在 Azure AD 中控制谁有权访问 Amazon Web Services (AWS)
-- 可以让用户使用其 Azure AD 帐户自动登录到 Amazon Web Services (AWS)（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在 Azure AD 中控制谁有权访问 Amazon Web Services (AWS)。
+- 可以让用户使用其 Azure AD 帐户自动登录到 Amazon Web Services (AWS)（单一登录）。
+- 可在中心位置（即 Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-<!--## Overview
-
-To enable single sign-on with Amazon Web Services (AWS), it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Amazon Web Services (AWS).
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 若要配置 Azure AD 与 Amazon Web Services (AWS) 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
-- 启用了 Amazon Web Services (AWS) 单一登录的订阅
+- Azure AD 订阅
+- 已启用 Amazon Web Services (AWS) 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
-- 不应使用生产环境，除非有此必要。
-- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+- 除非必要，请勿使用生产环境。
+- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -68,66 +60,59 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
 
 1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![Active Directory][1]
+    ![“Azure Active Directory”按钮][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![应用程序][2]
+    ![“企业应用程序”边栏选项卡][2]
     
-3. 单击对话框顶部的“添加”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![应用程序][3]
+    ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入 **Amazon Web Services (AWS)**。
+4. 在搜索框中，键入“Amazon Web Services (AWS)”，从结果面板中选择“Amazon Web Services (AWS)”，然后单击“添加”按钮添加该应用程序。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_search.png)
+    ![结果列表中的 Amazon Web Services (AWS)](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
 
-5. 在结果窗格中，选择“Amazon Web Services (AWS)”，并单击“添加”以添加该应用程序。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Amazon Web Services (AWS) 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Amazon Web Services (AWS) 用户。 换句话说，需在 Azure AD 用户与 Amazon Web Services (AWS) 中的相关用户间建立链接关系。
 
-可以通过将 Azure AD 中的“用户名”值分配为 Amazon Web Services (AWS) 中“用户名”的值来建立此链接关系。
+可通过将 Azure AD 中“用户名”的值指定为 Amazon Web Services (AWS) 中“用户名”的值来建立此链接关系。
 
 若要配置并测试 Amazon Web Services (AWS) 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Amazon Web Services 测试用户](#creating-an-amazon-web-services-test-user)** - 在 Amazon Web Services (AWS) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
+2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Amazon Web Services (AWS) 测试用户](#create-an-amazon-web-services-aws-test-user)**：在 Amazon Web Services (AWS) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 Amazon Web Services (AWS) 应用程序中配置单一登录。
 
 **若要配置 Amazon Web Services (AWS) 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中，在 **Amazon Web Services (AWS)** 应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户的 **Amazon Web Services (AWS)** 应用程序集成页上，单击“单一登录”。
 
-    ![配置单一登录][4]
+    ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
+2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_samlbase.png)
+    ![“单一登录”对话框](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_samlbase.png)
 
 3. 在“Amazon Web Services (AWS) 域和 URL”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_url.png)
+    ![Amazon Web Services (AWS) 域和 URL 单一登录信息](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存 XML 文件。
-    
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_certificate.png)
+4. Amazon Web Services (AWS) Software 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
 
-5. Amazon Web Services (AWS) Software 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+    ![配置单一登录 attb](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_attribute.png)   
 
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_attribute.png)
-
-6. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+5. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 属性名称  | 属性值 | 命名空间 |
     | --------------- | --------------- | --------------- |
@@ -139,57 +124,61 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
 
     a. 单击“添加属性”，打开“添加属性”对话框。
 
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
+    ![配置单一登录 add](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    ![配置单一登录 addattb](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
 
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
-    c. 在“值”列表中，选择为该行显示的属性值。 根据上文中的指定添加 Namespace 值。
+    c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定” 。
+    d.单击“下一步”。 单击“确定” 。
 
-7. 单击“保存”按钮在 Azure 中保存设置。
+6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_400.png)
+    ![证书下载链接](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
+
+7. 单击“保存”按钮。
+
+    ![配置单一登录“保存”按钮](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_400.png)
 
 8. 在其他浏览器窗口中，以管理员身份登录 Amazon Web Services (AWS) 公司站点。
 
 9. 单击“控制台主页”。
    
-    ![配置单一登录][11]
+    ![配置单一登录主页][11]
 
-10. 从**安全性、标识和合规性**服务中单击“IAM”。
+10. 单击“标识和访问管理”。 
    
-    ![配置单一登录][12]
+    ![配置单一登录标识][12]
 
-11. 单击“标识提供者”，并单击“创建提供者”。
+11. 单击“标识提供者”，并单击“创建提供者”。 
    
-    ![配置单一登录][13]
+    ![配置单一登录提供者][13]
 
-12. 在“配置提供者”对话框页上，执行以下步骤：
+12. 在“配置提供者”对话框页上，执行以下步骤： 
    
-    ![配置单一登录][14]
+    ![配置单一登录对话框][14]
  
     a. 对于“提供者类型”，请选择“SAML”。
 
     b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
-    c. 若要上传下载的元数据文件，请单击“选择文件”。
+    c. 若要上传从 Azure 门户下载的**元数据文件**，请单击“选择文件”。
 
-    d. 单击“下一步”。
+    d.单击“下一步”。 单击“下一步”。
 
 13. 在“验证提供者信息”对话框页上，单击“创建”。 
     
-    ![配置单一登录][15]
+    ![配置单一登录验证][15]
 
 14. 单击“角色”，并单击“创建新角色”。 
     
-    ![配置单一登录][16]
+    ![配置单一登录角色][16]
 
 15. 在“设置角色名称”对话框中，执行以下步骤： 
     
-    ![配置单一登录][17] 
+    ![配置单一登录名称][17] 
 
     a. 在“角色名称”文本框中，键入角色名称（例如：*TestUser*）。 
 
@@ -197,7 +186,7 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
 
 16. 在“选择角色类型”对话框中，执行以下步骤： 
     
-    ![配置单一登录][18] 
+    ![配置单一登录角色类型][18] 
 
     a. 选择“标识提供者角色的访问权限”。 
 
@@ -205,142 +194,203 @@ To enable single sign-on with Amazon Web Services (AWS), it must be configured t
 
 17. 在“建立信任”对话框中，执行以下步骤：  
     
-    ![配置单一登录][19] 
+    ![配置单一登录信任][19] 
 
-    a. 对于 SAML 提供者，选择之前创建的 SAML 提供者（例如：*WAAD*）
+    a. 对于 SAML 提供者，选择之前创建的 SAML 提供者（例如：*WAAD*） 
   
     b. 单击“下一步”。
 
-18. 在“验证角色信任”对话框中，单击“下一步”。
+18. 在“验证角色信任”对话框中，单击“下一步”。 
     
-    ![配置单一登录][32]
+    ![配置单一登录角色信任][32]
 
-19. 在“附加策略”对话框中，单击“下一步”。
+19. 在“附加策略”对话框中，单击“下一步”。  
     
-    ![配置单一登录][33]
+    ![配置单一登录策略][33]
 
-20. 在“审阅”对话框中，执行以下步骤：
+20. 在“审阅”对话框中，执行以下步骤：   
     
-    ![配置单一登录][34]
- 
+    ![配置单一登录审阅][34] 
+
     a. 单击“创建角色”。
 
     b. 创建所需数量的角色，并将其映射到标识提供者。
 
-21. 现在，配置用户预配以从 AWS 中提取所有角色
+21. 在 Azure AD 用户预配中使用 AWS 服务帐户凭据从 AWS 帐户提取角色。 为此，请打开 AWS 控制台主页。
 
-    a. 在 AWS 控制台中，使用根帐户进行登录
+22. 单击“服务” -> “安全、标识和符合性” -> “IAM”。
 
-    b. 在右上角，单击你的姓名，并单击“我的安全凭据”选项。 这会打开一个屏幕，其中显示了警告消息。 单击“安全凭据”按钮以通过该屏幕。
-        
-       ![配置单一登录][36]
+    ![从 AWS 帐户提取角色](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
-       ![配置单一登录][37]
+23. 在 IAM 部分选择“策略”选项卡。
 
-    c. 在“访问密钥”部分中，单击“新建访问密钥”按钮。 这会生成访问密钥 ID 和令牌值。
+    ![从 AWS 帐户提取角色](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole2.png)
+
+24. 通过单击“创建策略”来创建新策略。
+
+    ![创建新策略](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
+ 
+25. 创建自己的策略，以从 AWS 帐户提取所有角色。 在“创建自己的策略”部分单击“选择”按钮。
     
-       ![配置单一登录][38]
+    ![创建新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
-    d. 复制这些值并下载它们，以免丢失它们。
+26. 通过执行以下步骤来定义新策略：
 
-    e. 在 Azure 门户中，在 Amazon Web Services (AWS) 应用程序集成页上，单击“预配”。
-        
-       ![配置单一登录][35]
+    ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
 
-    f. 将预配模式设置为“自动”
-        
-       ![配置单一登录][39]
+    a. 提供 **AzureAD_SSOUserRole_Policy** 作为“策略名称”。
 
-    g. 现在，在“clientsecret”和“密钥标记”中，粘贴已从 AWS 控制台复制的相应值。
+    b. 可以提供“此策略将允许从 AWS 帐户提取角色”作为策略的“说明”。
     
-    h. 可以单击“测试连接”按钮来测试连接。 在成功后，可以启动预配连接器。
-       
-       ![配置单一登录][40]
+    c. 在策略文档中，添加以下 JSON。
+    
+    ```
+    
+    {
 
-    i. 现在，将预配状态启用为“开启”。 这会开始从应用程序提取角色。
+    "Version": "2012-10-17",
 
-       ![配置单一登录][41]
+    "Statement": [
 
-    > [!NOTE]
-    > Azure AD 预配服务每隔一段时间会运行一次来从 AWS 同步角色。 应当会看到所有标识提供者都已将 AWS 角色附加到 Azure AD 中，并且在将应用程序分配给用户或组时可以使用这些角色。
+    {
 
-<!--### Next steps
+    "Effect": "Allow",
+        
+    "Action": [
+        
+    "iam: ListRoles"
+        
+    ],
 
-To ensure users can sign-in to Amazon Web Services (AWS) after it has been configured to use Azure Active Directory, review the following tasks and topics:
+    "Resource": "*"
 
-- User accounts must be pre-provisioned into Amazon Web Services (AWS) prior to sign-in. To set this up, see Provisioning.
+    }
+
+    ]
+
+    }
+    
+    ```
+    
+    d.单击“下一步”。 确保选中“使用自动格式设置进行策略编辑”。
+    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击底部的“验证策略”按钮。
+    
+    f. 正确验证策略后，即可单击“创建策略”按钮。
+    
+27. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
+
+    a. 在 AWS IAM 控制台中单击“用户”导航。
+
+    ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy3.png)
+    
+    b. 单击“添加用户”按钮创建新用户。
+
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/policy4.png)
+
+    c. 在“添加用户”部分中，执行以下步骤：
+    
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser1.png)
+    
+    * 输入 **AzureADRoleManager** 作为用户名。
+    
+    * 在“访问类型”中，选择“编程访问”选项。 这样，用户就可以调用 API 并从 AWS 帐户中提取角色。
+    
+    * 单击右下角的“后续权限”按钮。
+
+28. 现在，通过执行以下步骤为此用户创建新策略：
+
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
+    
+    a. 单击“直接附加现有策略”按钮。
+
+    b. 在筛选器部分中搜索新创建的策略 **AzureAD_SSOUserRole_Policy**。
+    
+    c. 选择“策略”，然后单击“下一步: 审阅”按钮。
+
+29. 通过执行以下步骤，审阅附加用户的策略：
+
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
+    
+    a. 审阅映射到该用户的用户名、访问类型和策略。
+    
+    b. 单击右下角的“创建用户”按钮创建用户。
+
+30. 通过执行以下步骤，下载用户的用户凭据：
+
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
+    
+    a. 复制用户的“访问密钥 ID”和“密码访问密钥”。
+    
+    b. 在 Azure AD 用户预配部分输入这些凭据，以便从 AWS 控制台提取角色。
+    
+    c. 单击底部的“关闭”按钮。
+
+31. 在 Azure AD 管理门户中导航到 Amazon Web Services 应用的“用户预配”部分。
+
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
+
+32. 分别在“客户端密码”和“密码令牌”字段中输入**访问密钥**和**密码**。
+
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
+    
+    a. 在“客户端密码”字段中输入 AWS 用户访问密钥。
+    
+    b. 在“密码令牌”字段中输入 AWS 用户密码。
+    
+    c. 单击“测试连接”按钮，应当能够成功测试此连接。
+
+    d.单击“下一步”。 单击顶部的“保存”按钮保存此设置。
  
-- Users must be assigned access to Amazon Web Services (AWS) in Azure AD to sign-in. To assign users, see Users.
- 
-- To configure access polices for Amazon Web Services (AWS) users, see Access Policies.
- 
-- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+33. 现在，确保在“设置”部分中将“预配状态”设置为“开”，方法是打开开关，然后单击顶部的“保存”按钮。
 
+    ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-![创建 Azure AD 用户][100]
+   ![创建 Azure AD 测试用户][100]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_01.png) 
+    ![“Azure Active Directory”按钮](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_01.png)
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
-    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_02.png) 
+2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
-3. 在对话框顶部单击“添加”，打开“用户”对话框。
+    ![“用户和组”以及“所有用户”链接](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_02.png)
+
+3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+
+    ![“添加”按钮](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_03.png)
+
+4. 在“用户”对话框中，执行以下步骤：
+
+    ![“用户”对话框](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_04.png)
+
+    a. 在“姓名”框中，键入“BrittaSimon”。
+
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+
+    d.单击“下一步”。 单击“创建”。
  
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_03.png) 
+### <a name="create-an-amazon-web-services-aws-test-user"></a>创建 Amazon Web Services (AWS) 测试用户
 
-4. 在“用户”对话框页上，执行以下步骤：
- 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_04.png) 
+本部分要在 Amazon Web Services (AWS) 中创建名为“Britta Simon”的测试用户。 Amazon Web Services (AWS) 不需要在其系统中创建用户进行 SSO，因此，你无需在此处执行任何操作。
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+在本部分中，通过向 Britta Simon 授予对 Amazon Web Services (AWS) 的访问权限，使她能够使用 Azure 单一登录。
 
-    c. 选择“显示密码”并记下“密码”的值。
-
-    d.单击“下一步”。 单击“创建” 。
- 
-### <a name="creating-an-amazon-web-services-test-user"></a>创建 Amazon Web Services 测试用户
-
-为了使 Azure AD 用户能够登录到 Amazon Web Services (AWS)，必须将其预配到 Amazon Web Services (AWS) 中。 对于 Amazon Web Services (AWS)，预配任务需要手动完成。
-
-**若要预配用户帐户，请执行以下步骤：**
-
-1. 以管理员身份登录 **Amazon Web Services (AWS)** 公司站点。
-
-2. 单击“控制台主页”图标。 
-   
-    ![配置单一登录][11]
-
-3. 单击“标识和访问管理”。 
-   
-    ![配置单一登录][28]
-
-4. 在仪表板中，单击“用户”，并单击“创建新用户”。 
-   
-    ![配置单一登录][29]
-
-5. 在“创建用户”对话框页上，执行以下步骤： 
-   
-    ![配置单一登录][30]   
-    
-    a. 在“输入用户名称”文本框中，键入 Brita Simon 在 Azure AD 中的用户名 (userprincipalname)。
-
-    b. 单击“创建”。
-        
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，将通过向 Britta Simon 授予对 Amazon Web Services (AWS) 的访问权限使她能够使用 Azure 单一登录。
-
-![分配用户][200] 
+![分配用户角色][200] 
 
 **要将 Britta Simon 分配到 Amazon Web Services (AWS)，请执行以下步骤：**
 
@@ -350,34 +400,33 @@ To ensure users can sign-in to Amazon Web Services (AWS) after it has been confi
 
 2. 在应用程序列表中，选择“Amazon Web Services (AWS)”。
 
-    ![配置单一登录](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_app.png) 
+    ![应用程序列表中的 Amazon Web Services (AWS) 链接](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_app.png)  
 
 3. 在左侧菜单中，单击“用户和组”。
 
-    ![分配用户][202] 
+    ![“用户和组”链接][202]
 
 4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
-    ![分配用户][203]
+    ![“添加分配”窗格][203]
 
 5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
 6. 在“用户和组”对话框中单击“选择”按钮。
 
-7. 在“选择角色”选项卡上，为用户选择合适的角色。 所有这些角色都显示有角色名称和标识提供者名称。 因此，可以轻松识别来自 AWS 的角色。
-
-8. 在“添加分配”对话框中单击“分配”按钮。
+7. 在“添加分配”对话框中单击“分配”按钮。
     
-### <a name="testing-single-sign-on"></a>测试单一登录
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Amazon Web Services (AWS)”磁贴时，应该会自动登录 Amazon Web Services (AWS) 应用程序。 
+在访问面板中单击“Amazon Web Services (AWS)”磁贴时，应该会自动登录 Amazon Web Services (AWS) 应用程序。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -403,23 +452,14 @@ To ensure users can sign-in to Amazon Web Services (AWS) after it has been confi
 [17]: ./media/active-directory-saas-amazon-web-service-tutorial/ic795023.png
 [18]: ./media/active-directory-saas-amazon-web-service-tutorial/ic795024.png
 [19]: ./media/active-directory-saas-amazon-web-service-tutorial/ic795025.png
-[20]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950351.png
-[21]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_80.png
-[22]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950352.png
-[23]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_81.png
-[24]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950353.png
-[25]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_15.png
-
-[28]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950321.png
-[29]: ./media/active-directory-saas-amazon-web-service-tutorial/ic795037.png
-[30]: ./media/active-directory-saas-amazon-web-service-tutorial/ic795038.png
 [32]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950251.png
 [33]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950252.png
-[34]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950253.png
 [35]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning.png
+[34]: ./media/active-directory-saas-amazon-web-service-tutorial/ic7950253.png
 [36]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_securitycredentials.png
 [37]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_securitycredentials_continue.png
 [38]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_createnewaccesskey.png
 [39]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
 [40]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
 [41]: ./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_on.png
+

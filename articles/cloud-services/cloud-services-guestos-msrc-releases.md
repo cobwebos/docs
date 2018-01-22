@@ -12,16 +12,48 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/8/2017
+ms.date: 1/4/2018
 ms.author: raiye
-ms.openlocfilehash: f753a30fa833aaf19069b01607c8beaadcc667f5
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 675a304e2ca913c8b9cd18fb2f2a41abfd8f28d4
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="january-guest-os"></a>1 月来宾 OS
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| 不适用 | [4056898] |仅 Windows 安全性 |4.50 |2018 年 1 月 3 日 |
+| 不适用 | [4056890] |仅 Windows 安全性 |5.15 |2018 年 1 月 3 日 |
+
+## <a name="december-guest-os"></a>12 月来宾 OS
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 17-12 | [4053579]、[4054517] |Windows 10 安全更新 |4.49、5.14 |2017 年 12 月 12 日 |
+| Rel 17-12 | [4054521]、[4054522]、[4054523] |仅 Windows 安全性 |2.69、3.56、4.49 |2017 年 12 月 12 日 |
+| Rel 17-12 | [4052978] |Internet Explorer |2.69、3.56、4.49 |2017 年 12 月 12 日 |
+| Rel 17-12 | [4052978] |闪烁 |3.56、4.49、5.14 |2017 年 12 月 12 日 |
+| 不适用 | [4048957] |11 月非安全性汇总 |2.67 |2017 年 11 月 14 日 |
+| 不适用 | [4048959] |11 月非安全性汇总 |3.56 |2017 年 11 月 14 日 |
+| 不适用 | [4048958] |11 月非安全性汇总 |4.49 |2017 年 11 月 14 日 |
+| 不适用 | [4049068] |12 月时区更新 |2.69、3.56、4.49 |2017 年 12 月 12 日 |
+
+## <a name="november-guest-os"></a>11 月来宾 OS
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 17-10 | [4048953] |Windows 10 更新 |5.13 |2017 年 11 月 14 日 |
+| Rel 17-10 | [4048960]、[4048962]、[4048961] |仅 Windows 安全性 |2.68、3.55、4.48 |2017 年 11 月 14 日 |
+| Rel 17-10 | [4047206] |Internet Explorer |2.68、3.55、4.48 |2017 年 11 月 14 日 |
+| Rel 17-10 | [4048951] |闪烁 |3.55、4.48、5.13 |2017 年 11 月 14 日 |
+| 不适用 | [4041681] |10 月非安全性汇总 |2.67 |2017 年 10 月 10 日 |
+| 不适用 | [4041690] |10 月非安全性汇总 |3.55 |2017 年 10 月 10 日 |
+| 不适用 | [4041693] |10 月非安全性汇总 |4.48 |2017 年 10 月 10 日 |
+| 不适用 | [3191566] |Windows Management Framework 5.1 更新  |2.68 |2017 年 11 月 14 日 |
+| 不适用 | [3191565] |Windows Management Framework 5.1 更新  |3.55 |2017 年 11 月 14 日 |
+| 不适用 | [3191564] |Windows Management Framework 5.1 更新  |4.48 |2017 年 11 月 14 日 |
 
 ## <a name="october-guest-os"></a>10 月来宾 OS
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -548,6 +580,36 @@ ms.lasthandoff: 11/09/2017
 | 不适用 |[3007054] |在 Windows 的 Windows 应用商店应用程序中打印文档时，始终显示 PIN 保护的打印选项 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 不适用 |[2999802] |在 Windows 中打印时，虚线变成实线 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 不适用 |[2896881] |在 Windows 中登录期间使用 AddPrinterConnection VBScript 命令映射用户的打印机时，登录时间过长 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
+
+[4056898]: http://support.microsoft.com/kb/4056898
+[4056890]: http://support.microsoft.com/kb/4056890 
+
+[4053579]: http://support.microsoft.com/kb/4053579
+[4054517]: http://support.microsoft.com/kb/4054517 
+[4054521]: http://support.microsoft.com/kb/4054521
+[4054522]: http://support.microsoft.com/kb/4054522
+[4054523]: http://support.microsoft.com/kb/4054523
+[4052978]: http://support.microsoft.com/kb/4052978
+[4048951]: http://support.microsoft.com/kb/4048951
+[4048957]: http://support.microsoft.com/kb/4048957
+[4048959]: http://support.microsoft.com/kb/4048959
+[4048958]: http://support.microsoft.com/kb/4048958
+[4049068]: http://support.microsoft.com/kb/4049068
+
+
+[4048953]: http://support.microsoft.com/kb/4048953
+[4048960]: http://support.microsoft.com/kb/4048960 
+[4048962]: http://support.microsoft.com/kb/4048962
+[4048961]: http://support.microsoft.com/kb/4048961
+[4047206]: http://support.microsoft.com/kb/4047206
+[4048951]: http://support.microsoft.com/kb/4048951
+[4041681]: http://support.microsoft.com/kb/4041681
+[4041693]: http://support.microsoft.com/kb/4041693
+[4041690]: http://support.microsoft.com/kb/4041690
+[3191566]: http://support.microsoft.com/kb/3191566
+[3191565]: http://support.microsoft.com/kb/3191565
+[3191564]: http://support.microsoft.com/kb/3191564
+
 
 [4041691]: http://support.microsoft.com/kb/4041691 
 [4041678]: http://support.microsoft.com/kb/4041678 

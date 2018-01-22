@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/31/2017
+ms.date: 12/08/2017
 ms.author: sujayt
-ms.openlocfilehash: 7dae1d903b6cbb6a74f89443ec9601c6b4b9d078
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c15583b9420355bb7c35bd107b899c59e80e3741
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/22/2017
 **部署模型** | **支持/不支持** | **备注**  
 --- | --- | ---
 **经典** | 支持 | 只能在复制经典虚拟机后将其恢复为经典虚拟机。 不能将其恢复为 Resource Manager 虚拟机。 如果直接向 Azure 区域部署不带虚拟网络的经典 VM，将不受支持。
-**Resource Manager** | 支持 |
+**资源管理器** | 支持 |
 
 >[!NOTE]
 >
@@ -80,8 +80,8 @@ ms.lasthandoff: 11/22/2017
 
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7、6.8、6.9、7.0、7.1、7.2、7.3
-- CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3
+- Red Hat Enterprise Linux 6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4
+- CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4
 - Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7
@@ -100,11 +100,14 @@ ms.lasthandoff: 11/22/2017
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-14.04 LTS | 9.9 | 3.13.0-24-generic 到 3.13.0-117-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic 到 3.13.0-121-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic 到 3.13.0-125-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-83-generic |
+14.04 LTS | 9.12 | 3.13.0-24-generic 到 3.13.0-132-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-96-generic |
+14.04 LTS | 9.13 | 3.13.0-24-generic 到 3.13.0-137-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-104-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic 到 4.4.0-81-generic、<br/>4.8.0-34-generic 到 4.8.0-56-generic、<br/>4.10.0-14-generic 到 4.10.0-24-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic 到 4.4.0-83-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-27-generic |
+16.04 LTS | 9.12 | 4.4.0-21-generic 到 4.4.0-96-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-35-generic |
+16.04 LTS | 9.13 | 4.4.0-21-generic 到 4.4.0-104-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>运行 Linux OS 的 Azure 虚拟机上支持的文件系统和来宾存储配置
 
@@ -122,6 +125,9 @@ ms.lasthandoff: 11/22/2017
 欧洲 | 英国西部、英国南部、北欧、西欧
 亚洲 | 印度南部、印度中部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部
 澳大利亚   | 澳大利亚东部、澳大利亚东南部
+Azure Government     | 美国弗吉尼亚州政府、美国爱荷华州政府、美国亚利桑那州政府、美国德克萨斯州政府、美国国防部东部、美国国防部中部
+德国 | 德国中部、德国东北部
+中国 | 中国东部、中国北部
 
 >[!NOTE]
 >
@@ -165,6 +171,7 @@ RA-GRS | 支持 |
 ZRS | 不支持 |  
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
 虚拟网络服务终结点（Azure 存储防火墙和虚拟网络）  | 否 | 不支持访问用于存储复制数据的缓存存储帐户上特定的 Azure 虚拟网络。 
+常规用途 V2 存储帐户（冷热存储层） | 否 | 与常规用途 V1 存储帐户相比，事务成本显著增加
 
 >[!IMPORTANT]
 > 确保观察 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) 虚拟机的 VM 磁盘可伸缩性和性能目标，以避免任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请确保遵循源 VM 的磁盘可伸缩性和性能目标。

@@ -7,6 +7,7 @@ author: daden
 manager: mithal
 editor: daden
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: c7ed8e695097d0cf2f5c99f8ccf3378c4e553c3b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>基于 TB 量级的数据执行服务器工作负荷预测
 
@@ -41,14 +42,16 @@ ms.lasthandoff: 12/05/2017
 在此方案中，重点是针对每台计算机（或服务器）的工作负荷预测。 具体说来，请使用每台服务器上的会话数据来预测未来服务器的工作负荷类别。 请使用 [Apache Spark ML](https://spark.apache.org/docs/2.1.1/ml-guide.html) 中的随机林分类器将每台服务器的负荷分为低、中、高三个类别。 该示例中的机器学习技术和工作流可以被轻松地延伸至其他类似问题。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 运行此示例的先决条件如下所示：
 
-* [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
-* [Machine Learning Workbench](./overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](./quickstart-installation.md)。
+* [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
+* [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的已安装副本。 若要安装此程序并创建工作区，请参阅[快速入门安装指南](./quickstart-installation.md)。 如果有多个订阅，则可以[将所需订阅设置为当前的活动订阅](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set)。
 * Windows 10（对于 macOS 系统，此示例中的说明通常也一样）。
-* 适用于 Linux (Ubuntu) 的数据科学虚拟机 (DSVM)。 可以按照[这些说明](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu DSVM。 也可参阅[此快速入门](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)。 我们建议使用至少具有 8 个内核和 32 GB 内存的虚拟机。 需要 DSVM IP 地址、用户名和密码以尝试该示例。 将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
+* Data Science Virtual Machine (DSVM) for Linux (Ubuntu)，最好位于数据所在的美国东部地区。 可以按照[这些说明](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)预配 Ubuntu DSVM。 也可参阅[此快速入门](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)。 我们建议使用至少具有 8 个内核和 32 GB 内存的虚拟机。 
+
+按照[说明](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present)在 VM 上为 AML Workbench 启用无密码 sudoer 访问。  可以选择[在 AML Workbench 中使用基于 SSH 密钥的身份验证来创建和使用 VM](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)。 在此示例中，我们使用密码来访问 VM。  将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
 
  字段名称| 值 |  
  |------------|------|
@@ -56,9 +59,10 @@ DSVM IP 地址 | xxx|
  用户名  | xxx|
  密码   | xxx|
 
+
  可以选择将任何 VM 与安装的 [Docker 引擎](https://docs.docker.com/engine/)结合使用。
 
-* 具有 Hortonworks Data Platform 版本 3.6 和 Spark 版本 2.1.x 的 HDInsight Spark 群集。 请访问[在 Azure HDInsight 中创建 Apache Spark 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)，详细了解如何创建 HDInsight 群集。 建议使用一个三工作节点型群集，每个工作节点具有 16 个核心和 112 GB 的内存。 也可直接选择 VM 类型 `D12 V2` 作为头节点，`D14 V2` 作为工作节点。 群集的部署需要约 20 分钟。 尝试该示例需要群集名、SSH 用户名和密码。 将下表与 Azure HDInsight 群集信息一起保存，以供在后续步骤中使用：
+* 具有 Hortonworks Data Platform 版本 3.6 和 Spark 版本 2.1.x 的 HDInsight Spark 群集，最好位于数据所在的美国东部地区。 请访问[在 Azure HDInsight 中创建 Apache Spark 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)，详细了解如何创建 HDInsight 群集。 建议使用一个三工作节点型群集，每个工作节点具有 16 个核心和 112 GB 的内存。 也可直接选择 VM 类型 `D12 V2` 作为头节点，`D14 V2` 作为工作节点。 群集的部署需要约 20 分钟。 尝试该示例需要群集名、SSH 用户名和密码。 将下表与 Azure HDInsight 群集信息一起保存，以供在后续步骤中使用：
 
  字段名称| 值 |  
  |------------|------|
@@ -84,35 +88,35 @@ DSVM IP 地址 | xxx|
 2.  在“项目”页上选择 + 号，然后选择“新建项目”。
 3.  在“新建项目”窗格中，填写新项目的信息。
 4.  在“搜索项目模板”搜索框中，键入“TB 数据的工作负荷预测”，并选择模板。
-5.  选择“创建” 。
+5.  选择“创建”。
 
 可以按照[此说明](./tutorial-classifying-iris-part-1.md)创建包含预先创建的 git 存储库的 Workbench 项目。  
 运行 `git status`，检查用于版本跟踪的文件的状态。
 
 ## <a name="data-description"></a>数据说明
 
-此示例中使用的数据是综合性的服务器工作负荷数据， 托管在可公开访问的 Azure Blob 存储帐户中。 可以在 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) 的 `dataFile` 字段中找到特定存储帐户信息。 可以直接使用 Blob 存储中的数据。 如果许多用户同时使用存储，可以使用 [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 将数据下载到自己的存储中。 
+此示例中使用的数据是综合性的服务器工作负荷数据， 托管于可在美国东部地区公开访问的 Azure Blob 存储帐户中。 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) 的 `dataFile` 字段中提供了具体的存储帐户信息，格式为“wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>”。 可以直接使用 Blob 存储中的数据。 如果许多用户同时使用存储，你可以使用 [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 将数据下载到自己的存储中，以便获得更好的试验体验。 
 
 总数据大小约为 1 TB。 每个文件约为 1-3 GB，且是不含标头的 CSV 文件格式。 每行数据代表某个特定服务器上的事务负荷。 数据架构的详细信息如下所示：
 
-列号 | 字段名称| 类型 | 说明 |  
+列号 | 字段名称| Type | 说明 |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | Datetime |    会话开始时间
-#N/A  |`SessionEnd`    | Datetime | 会话结束时间
+2  |`SessionEnd`    | Datetime | 会话结束时间
 3 |`ConcurrentConnectionCounts` | Integer | 并发连接数
 4 | `MbytesTransferred` | Double | 以兆字节为单位传输的规范化数据
 5 | `ServiceGrade` | Integer |  会话服务等级
 6 | `HTTP1` | Integer|  会话使用 HTTP1 或 HTTP2
 7 |`ServerType` | Integer   |服务器类型
 8 |`SubService_1_Load` | Double |   子服务 1 负荷
-9 | `SubService_1_Load` | Double |  子服务 2 负荷
-10 | `SubService_1_Load` | Double |     子服务 3 负荷
-11 |`SubService_1_Load` | Double |  子服务 4 负荷
-12 | `SubService_1_Load`| Double |      子服务 5 负荷
+9 | `SubService_2_Load` | Double |  子服务 2 负荷
+10 | `SubService_3_Load` | Double |     子服务 3 负荷
+11 |`SubService_4_Load` | Double |  子服务 4 负荷
+12 | `SubService_5_Load`| Double |      子服务 5 负荷
 13 |`SecureBytes_Load`  | Double | 安全字节负荷
 14 |`TotalLoad` | Double | 服务器总负荷
-15 |`ClientIP` | String|    客户端 IP 地址
-16 |`ServerIP` | String|    服务器 IP 地址
+15 |`ClientIP` | 字符串|    客户端 IP 地址
+16 |`ServerIP` | 字符串|    服务器 IP 地址
 
 
 
@@ -123,7 +127,7 @@ DSVM IP 地址 | xxx|
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | 类型 | 说明 |
+| 文件名 | Type | 说明 |
 |-----------|------|-------------|
 | `Code` | 文件夹 | 包含该示例中所有代码的文件夹。 |
 | `Config` | 文件夹 | 包含配置文件的文件夹。 |
@@ -154,7 +158,7 @@ DSVM IP 地址 | xxx|
 
 应将一个容器用于一个月数据集的试验，将另一个容器用于完整数据集的试验。 因为数据和模型另存为 Parquet 文件，所以每个文件实际上是容器中的一个文件夹，包含多个 Blob。 生成的容器如下所示：
 
-| Blob 前缀名称 | 类型 | 说明 |
+| Blob 前缀名称 | Type | 说明 |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | 数字功能的标准扩展器模型。 |
 | stringIndexModel | Parquet | 非数字功能的字符串索引器模型。|
@@ -180,13 +184,13 @@ DSVM IP 地址 | xxx|
 
 第一个参数 `configFilename` 是本地配置文件，可以在该文件中存储 Blob 存储信息并指定加载数据的位置。 默认情况下，它是 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json)，并将在一个月数据运行中使用。 我们还加入了 [`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json)，完整数据集运行中将需要使用。 配置中的内容如下所示： 
 
-| 字段 | 类型 | 说明 |
+| 字段 | Type | 说明 |
 |-----------|------|-------------|
-| storageAccount | String | Azure 存储帐户名称 |
-| storageContainer | String | Azure 存储帐户中用于存储中间结果的容器 |
-| storageKey | String |Azure 存储帐户访问密钥 |
-| dataFile|String | 数据源文件  |
-| duration| String | 数据源文件中的数据持续时间|
+| storageAccount | 字符串 | Azure 存储帐户名称 |
+| storageContainer | 字符串 | Azure 存储帐户中用于存储中间结果的容器 |
+| storageKey | 字符串 |Azure 存储帐户访问密钥 |
+| dataFile|字符串 | 数据源文件  |
+| duration| 字符串 | 数据源文件中的数据持续时间|
 
 同时修改 `Config/storageconfig.json` 和 `Config/fulldata_storageconfig.json` 以配置存储帐户、存储密钥和 Blob 容器，以存储中间结果。 默认情况下，一个月数据运行的 Blob 容器是 `onemonthmodel`，完整数据集运行的 Blob 容器是 `fullmodel`。 请确保在存储帐户中创建这两个容器。 [`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) 中的 `dataFile` 字段配置在 [`Code/etl.py`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) 中加载的数据。 `duration` 字段配置数据所包括的范围。 如果持续时间设置为 ONE_MONTH，则所加载的数据应为 2016 年 6 月数据的七个文件中的一个 .csv 文件。 如果持续时间为 FULL，则加载完整数据集 (1 TB)。 无需在这两个配置文件中更改 `dataFile` 和 `duration`。
 
@@ -270,7 +274,7 @@ attach_storage_container(spark, storageAccount, storageKey)
 
 下述两个文件在 aml_config 文件夹中创建：
     
--  myhdo.compute：此文件包含远程执行目标的连接和配置信息。
+-  myhdi.compute：此文件包含远程执行目标的连接和配置信息。
 -  myhdi.runconfig：此文件是一组在 Workbench 应用程序中使用的运行选项。
 
 
@@ -324,7 +328,7 @@ run_logger.log("Test Accuracy", testAccuracy)
 
 ### <a name="operationalize-the-model"></a>实施模型
 
-在此部分，请实施在前述步骤中作为 Web 服务创建的模型。 另请了解如何使用 Web 服务来预测工作负荷。 使用计算机语言实施命令行接口 (CLI) 将代码和依赖项打包为 Docker 图像，并将模型作为容器化 Web 服务发布。 有关详细信息，请参阅[此概述](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/operationalization-overview.md)。
+在此部分，请实施在前述步骤中作为 Web 服务创建的模型。 另请了解如何使用 Web 服务来预测工作负荷。 使用计算机语言实施命令行接口 (CLI) 将代码和依赖项打包为 Docker 图像，并将模型作为容器化 Web 服务发布。
 
 可以在 Machine Learning Workbench 中使用命令行提示符来运行 CLI。  也可以按照[安装指南](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md)在 Ubuntu Linux 上运行 CLI。 
 

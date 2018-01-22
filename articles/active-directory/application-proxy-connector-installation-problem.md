@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a02f6cf0923bbe7083ba29fac5f59bcce9f5ab44
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
@@ -37,9 +37,9 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 **目的︰**验证连接器计算机是否可以连接到 AAD 应用程序代理注册终结点以及 Microsoft 登录页。
 
-1.  打开浏览器，并转到以下网页：<https://aadap-portcheck.connectorporttest.msappproxy.net>，验证与美国中部和美国东部数据中心（使用端口 9090 和 9091）的连接是否正常。
+1.  打开浏览器，并转到以下网页：<https://aadap-portcheck.connectorporttest.msappproxy.net>，验证与美国中部和美国东部数据中心（使用端口 80 和 443）的连接是否正常。
 
-2.  如果任何端口都没有成功连接（即没有绿色复选标记），则验证防火墙或后端代理是否已正确定义 \*.msappproxy.net（使用端口 9090 和 9091）。
+2.  如果任何端口都没有成功连接（即没有绿色复选标记），则验证防火墙或后端代理是否已正确定义 \*.msappproxy.net（使用端口 80 和 443）。
 
 3.  打开浏览器（单独选项卡）并转到以下网页：<https://login.microsoftonline.com>，确保可登录到该页。
 

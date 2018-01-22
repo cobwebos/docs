@@ -3,7 +3,7 @@ title: "使用 PingAccess for Azure AD 应用程序代理进行基于标头的�
 description: "使用 PingAccess 和应用代理发布应用程序，以支持基于标头的身份验证。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7c2e56a5f747aa2a37fc4bed0e3f3877b64f2be2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>什么是 PingAccess for Azure AD？
 
-PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能够允许用户访问和单一登录使用标头进行身份验证的应用程序。 应用程序代理将这些应用视为与其他任何应用一样，它使用 Azure AD 对访问进行身份验证，并通过连接器服务传递流量。 PingAccess 驻留在应用的前面，可将 Azure AD 提供的访问令牌转换为标头，使应用程序能够接收采用可读格式的身份验证令牌。
+PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能够允许用户访问和单一登录使用标头进行身份验证的应用程序。 应用程序代理将这些应用视为与其他任何应用一样，它使用 Azure AD 对访问进行身份验证，然后通过连接器服务传递流量。 PingAccess 驻留在应用的前面，可将 Azure AD 提供的访问令牌转换为标头，使应用程序能够接收采用可读格式的身份验证令牌。
 
 用户登录后使用企业应用时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 
 
@@ -73,6 +73,10 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 4. 选择“本地应用程序”。
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置：
    - **内部 URL**：通常提供在企业网络中时可你将转到应用登录页的 URL。 对于此方案，连接器需要将 PingAccess 代理视为应用的首页。 使用此格式：`https://<host name of your PA server>:<port>`。 默认情况下端口为 3000，但可以在 PingAccess 中对其进行配置。
+
+    > [!WARNING]
+    > 对于此类型的 SSO，内部 URL 必须使用 https，不能使用 http。
+
    - **预身份验证方法**：Azure Active Directory
    - **转换标头中的 URL**：否
 
@@ -135,7 +139,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>可选 - 更新 GraphAPI 以发送自定义字段
 
-有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](./develop/active-directory-token-and-claims.md)。 如果需要发送其他令牌的自定义声明，请使用 GraphAPI 将应用字段 acceptMappedClaims 设置为“True”。 只能使用 Azure AD Graph Explorer 来进行此配置。 
+有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](./develop/active-directory-token-and-claims.md)。 如果需要用于发送其他令牌的自定义声明，请使用 Graph 浏览器或 Azure 门户中的应用程序清单，将应用字段“acceptMappedClaims”设置为“True”。    
 
 本示例中使用的是 Graph 浏览器：
 
@@ -146,6 +150,13 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
+本示例使用 [Azure 门户](https://portal.azure.com)来更新“acceptedMappedClaims”字段：
+1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“Azure Active Directory” > “应用注册”。
+3. 选择应用程序 >“清单”。
+4. 选择“编辑”，搜索“acceptedMappedClaims”字段，将其值更改为“true”。
+![应用清单](media/application-proxy-ping-access/application-proxy-ping-access-manifest.PNG)
+1. 选择“保存”。
 
 >[!NOTE]
 >若要使用自定义声明，还必须定义自定义策略并将其分配给应用程序。  此策略应包括所有必需的自定义属性。
@@ -163,7 +174,7 @@ Ping Identity 文档 [Configure PingAccess for Azure AD](https://docs.pingidenti
 
 这些步骤将引导完成获取 PingAccess 帐户（如果尚未获取）、安装 PingAccess 服务器并使用从 Azure 门户中复制的目录 ID 创建 Azure AD OIDC 提供程序连接的整个过程。 然后，在 PingAccess 中使用应用程序 ID 和密钥值创建 Web 会话。 接下来，可以设置标识映射并创建虚拟主机、站点和应用程序。
 
-### <a name="test-your-app"></a>测试应用程序
+### <a name="test-your-app"></a>测试应用
 
 完成所有这些步骤后，应用应会启动并运行。 若要测试应用，请打开浏览器并导航到在 Azure 中发布应用该时创建的外部 URL。 使用分配给应用的测试帐户登录。
 

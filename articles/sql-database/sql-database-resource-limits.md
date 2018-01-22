@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 10/11/2017
+ms.date: 01/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e0acc3cc09de4293dcc049c37bee6b899e6101a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 13641b190c3c157f5b302314f88a42a160a1f2e0
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL 数据库资源限制
 
@@ -49,8 +49,7 @@ ms.lasthandoff: 10/31/2017
 整个扩展过程的持续时间同时取决于更改前后数据库的大小和服务层。 例如，一个正在更改到标准服务层、从标准服务层更改或在标准服务层内更改的 250 GB 的数据库应在六小时内完成。 如果数据库与正在高级服务层内更改性能级别的大小相同，应在三小时内完成扩展。
 
 > [!TIP]
-> 若要检查正在进行的 SQL 数据库缩放操作的状态，可以使用以下查询：```select * from sys.dm_operation_status```。
->
+> 若要监视正在进行的操作，请参阅：[使用 SQL REST API 管理操作](/rest/api/sql/Operations/List)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 T-SQL 管理操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)及以下两个 PowerShell 命令：[Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) 和 [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity)。
 
 * 如果要升级到更高的服务层或性能级别，除非显式指定了更大的大小（最大），否则，最大数据库大小不会增大。
 * 若要对数据库进行降级，数据库所用空间必须小于目标服务层和性能级别允许的最大大小。 
@@ -147,3 +146,4 @@ ms.lasthandoff: 10/31/2017
 - 有关弹性池的信息，请参阅[弹性池](sql-database-elastic-pool.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 - 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](sql-database-what-is-a-dtu.md)。
+- 有关 tempdb 大小限制的信息，请参阅 https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database。

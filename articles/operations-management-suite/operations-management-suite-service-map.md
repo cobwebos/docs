@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>使用 Operations Management Suite 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/16/2017
 
 ![服务映射概述](media/oms-service-map/service-map-overview.png)
 
-可在映射中扩展计算机，以在选定时间范围内显示具有有效网络连接的运行中的进程。 展开具有服务映射代理的远程计算机以显示进程详细信息时，仅显示与焦点计算机通信的进程。 连接到焦点计算机的无代理前端计算机计数显示在它们所连接到的进程左侧。 如果焦点计算机连接到无代理的后端计算机，则服务器端口组中包含该后端服务器以及与同一端口号相连的其他连接。
+可在映射中扩展计算机，以在选定时间范围内显示具有有效网络连接的运行中的进程组和进程。 展开具有服务映射代理的远程计算机以显示进程详细信息时，仅显示与焦点计算机通信的进程。 连接到焦点计算机的无代理前端计算机计数显示在它们所连接到的进程左侧。 如果焦点计算机连接到无代理的后端计算机，则服务器端口组中包含该后端服务器以及与同一端口号相连的其他连接。
 
 默认情况下，“服务映射”映射显示过去 30 分钟的依赖关系信息。 使用左上角的时间控件，可在映射中查询历史时间范围（最多一小时），显示依赖关系在过去（例如，发生事件期间或发生更改之前）的出现形式。 服务映射数据在付费工作区中存储 30 天，在免费工作区中存储 7 天。
 
@@ -59,6 +59,9 @@ ms.lasthandoff: 11/16/2017
 根据状态徽章的严重性，计算机节点边框的颜色可以是红色（严重）、黄色（警告）或蓝色（信息）。 该颜色表示任何状态徽章的最严重状态。 灰色边框指示没有状态指示器的节点。
 
 ![状态徽章](media/oms-service-map/status-badges.png)
+
+## <a name="process-groups"></a>进程组
+进程组将与常用产品或服务关联的进程合并到一个进程组中。  展开计算机节点后，将显示独立的进程以及进程组。  如果进程组中某个进程的入站和出站连接失败，则整个进程组的连接都将显示为失败。
 
 ## <a name="machine-groups"></a>计算机组
 使用计算机组可以查看以一组服务器为中心的映射，而不只是某个服务器的映射，这样，通过一个映射就可以查看某个多层应用程序或服务器群集的所有成员。
@@ -279,7 +282,7 @@ Linux：
 
 | 属性 | 说明 |
 |:--|:--|
-| 类型 | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | 工作区中计算机的唯一标识符 |
 | ResourceName_s | 工作区中计算机的唯一标识符 |
@@ -306,7 +309,7 @@ Linux：
 
 | 属性 | 说明 |
 |:--|:--|
-| 类型 | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | 工作区中进程的唯一标识符 |
 | ResourceName_s | 进程在运行它的计算机中的唯一标识符|
@@ -330,34 +333,34 @@ Linux：
 ## <a name="sample-log-searches"></a>示例日志搜索
 
 ### <a name="list-all-known-machines"></a>列出所有已知计算机
-Type=ServiceMapComputer_CL | dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量。
-Type=ServiceMapComputer_CL | select PhysicalMemory_d, ComputerName_s | Dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>列出计算机名称、DNS、IP 和 OS。
-Type=ServiceMapComputer_CL | select ComputerName_s, OperatingSystemFullName_s, DnsNames_s, IPv4Addresses_s  | dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>在命令行中查找带有“sql”的所有进程
-Type=ServiceMapProcess_CL CommandLine_s = \*sql\* | dedup ResourceId
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>按资源名称查找计算机（最新记录）
-Type=ServiceMapComputer_CL "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>按 IP 地址查找计算机（最新记录）
-Type=ServiceMapComputer_CL "10.229.243.232" | dedup ResourceId
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>列出指定计算机上的所有已知进程
-Type=ServiceMapProcess_CL MachineResourceName_s="m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-all-computers-running-sql"></a>列出所有运行 SQL 的计算机
-Type=ServiceMapComputer_CL ResourceName_s IN {Type=ServiceMapProcess_CL \*sql\* | Distinct MachineResourceName_s} | dedup ResourceId | Distinct ComputerName_s
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>在我的数据中心列出 curl 的所有唯一产品版本
-Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>创建由运行 CentOS 的所有计算机组成的计算机组
-Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
 
 ## <a name="rest-api"></a>REST API

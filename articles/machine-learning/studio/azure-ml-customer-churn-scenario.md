@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: b3dca9e75df2d057d7ee1b314faac490e5f10a08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b82fe8e8c8bc4ac9c45370d90fa9330d749878
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>使用 Azure 机器学习分析客户流失
 ## <a name="overview"></a>概述
@@ -28,23 +28,23 @@ ms.lasthandoff: 10/11/2017
 Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习前产品经理）对此实验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的[零售流失模型模板](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)
+> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.cortanaintelligence.com/)中的[零售流失模型模板](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-problem-of-customer-churn"></a>客户流失的问题
-消费者市场和所有营业行业中的企业都必须处理客户流失问题。 有时流失过多，会影响策略决策。 传统的解决方案是预测高倾向性的流失人员，并通过接待服务、市场营销活动或应用特殊处理方式来满足其需求。 这些方法可在不同行业之间变化，甚至可从特定使用者群集到一个行业（例如，电信）内另一群集之间变化。
+消费者市场和所有营业行业中的企业都必须处理客户流失问题。 有时流失过多，会影响策略决策。 传统的解决方案是预测高倾向性的流失人员，并通过接待服务、市场营销活动或应用特殊处理方式来满足其需求。 这些方法可能因行业而异。 即使行业相同（例如，电信），不同的使用者群集使用的方法也不尽相同。
 
-常见情况是，企业需要减少对保留这些特殊客户作出的努力。 因此，一种自然的方法是根据流失可能性对每位客户进行评分，并解决前 N 名客户。 前几名客户可能是最赚钱的；例如，在更复杂的情况下，在选择要应用特殊处理方式的客户时，将使用利润函数。 但是，这些注意事项只是处理流失问题的整体策略的一部分。 企业还必须考虑到帐户风险（以及关联的风险容差）、干预的级别和成本，以及合理的客户划分。  
+常见情况是，企业需要减少对保留这些特殊客户作出的努力。 因此，一种自然的方法是根据流失可能性对每位客户进行评分，并解决前 N 名客户。 前几名客户可能是最赚钱的。 例如，在更复杂的情况下，在选择要应用特殊处理方式的客户时，将使用利润函数。 但是，这些注意事项只是处理流失问题的整体策略的一部分。 企业还必须考虑到帐户风险（以及关联的风险容差）、干预的级别和成本，以及合理的客户划分。  
 
 ## <a name="industry-outlook-and-approaches"></a>行业前景和方法
 复杂的流失处理是成熟行业的符号。 经典示例是电信行业，在此行业中，订户经常从一个提供商转换为另一个提供商。 自愿流失是首要关心的问题。 此外，提供商要积累关于*流失驱动者*的重要知识，这是驱动客户转变的因素。
 
-例如，在移动电话业务中，对手机或设备的选择是为人所熟知的流失驱动者。 结果是，为新订户补贴手机价格并向现有用户的升级收取完整价格，这成为了常用策略。 从历史上看，此策略将导致客户希望从一个提供商换为另一个提供商，以获取新的折扣，而反过来，这也会引起提供商对其策略进行优化。
+例如，在移动电话业务中，对手机或设备的选择是为人所熟知的流失驱动者。 结果是，为新订户补贴手机价格并向现有用户的升级收取完整价格，这成为了常用策略。 从历史上看，此策略将导致客户希望从一个提供商换为另一个提供商，以获取新的折扣。 反过来，这也会引起提供商对其策略进行优化。
 
-手机产品的高波动性是使基于当前手机模型的流失模型快速失效的因素。 此外，移动电话不仅仅是通信设备；它们也是时尚宣言（如 iPhone），这些社会因素不属于规则的电信数据集的范围。
+手机产品的高波动性是使基于当前手机模型的流失模型快速失效的因素。 另外，手机不仅仅是电信设备，它们也是时尚宣言（如 iPhone）。 这些社会预测因素不在常规电信数据集的范围之内。
 
 建模的最终结果是不能通过消除流失的已知原因简单制定可靠的策略。 事实上，一个持续建模策略是**必需的**，它包含了量化分类变量的经典模型（如决策树）。
 
@@ -109,7 +109,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
  
 
 > 请注意，此数据是私有的，因此不能共享模型和数据。
-> 但是，有关使用公开可用数据的类似模型，请参阅 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)：[Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）中的示例实验。
+> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](http://gallery.cortanaintelligence.com/)中的以下示例实验：[Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）
 > 
 > 若要了解如何能使用 Cortana Intelligence 套件实现流失分析，还推荐由高级经理 Wee Hyong Tok 制作的[此视频](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)。 
 > 
@@ -211,16 +211,6 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 ## <a name="conclusion"></a>结束语
 此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 确定了评分模型的原型，并通过使用 Azure 机器学习来实现它。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
 
-**有关详细信息：**  
-
-此白皮书是否有帮助？ 欢迎提供反馈。 告诉我们你对此白皮书的评价，评分标准为 1（差）到 5（优秀）分，并说明如此评分的理由。 例如：  
-
-* 打分高，因为本文具有很好的示例，优秀的屏幕快照，条理清晰或其他理由？
-* 打分低，因为所给的示例较差，屏幕快照模糊不清，或条理不清晰？  
-
-此反馈将帮助我们改进发布的白皮书的质量。   
-
-[发送反馈](mailto:sqlfback@microsoft.com)。
  
 
 ## <a name="references"></a>参考
@@ -232,7 +222,7 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
-[5] [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的[Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)（电信流失模型模板） 
+[5] [Azure AI 库](http://gallery.cortanaintelligence.com/) 中的 [电信流失模型模板](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) 
  
 
 ## <a name="appendix"></a>附录

@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 10/10/2017
-ms.openlocfilehash: f3fc8fb08cd23543ecfcbdc4010aabc9c0184a65
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: f3b32c1f6b33bc60b50f1496414a300db468dc92
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -32,8 +32,7 @@ ms.lasthandoff: 12/01/2017
 受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡，以根据应用程序要求获取定义并配置服务器参数。 
 
 ## <a name="nonconfigurable-server-parameters"></a>不可配置的服务器参数
-
-下列参数无法配置并且与[定价层](concepts-service-tiers.md)关联。 
+InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-service-tiers.md)而定。 
 
 | **定价层** | InnoDB 缓冲池 (MB) | 最大连接数 |
 | :------------------------ | :-------- | :----------- |
@@ -44,7 +43,13 @@ ms.lasthandoff: 12/01/2017
 | 标准 400 | 10240 | 800 | 
 | 标准 800 | 20480 | 1600 |
 
-在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的所有其他服务器参数将设置为其默认值。
+以下附加服务器参数不可在系统中配置 <br>
+ 在基本层中，innodb_file_per_table 为 OFF<br>
+ innodb_flush_log_at_trx_commit 为 1<br>
+ sync_binlog 为 1<br>
+ innodb_log_file_size 为 512 MB<br>
+ 
+在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure Database for MySQL 的连接库](concepts-connection-libraries.md)。

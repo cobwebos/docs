@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 01/12/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b16e57e06d5055fc0c2750385630a908e10bd217
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 49e367d4bf1ae2e060b77b0259771403c81a56d6
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>为运行 Windows Server 的 N 系列 VM 安装 GPU 驱动程序
 若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，请安装支持的 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序安装信息。
@@ -54,12 +54,12 @@ ms.lasthandoff: 11/11/2017
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
 
-## <a name="rdma-network-for-nc24r-vms"></a>NC24r VM 的 RDMA 网络
+## <a name="rdma-network-connectivity"></a>RDMA 网络连接
 
-可以在同一可用性集中部署的 NC24r VM 上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向 NC24r VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](/powershell/azure/overview) cmdlet。
+可以在支持 RDMA 的 N 系列 VM（如同一可用性集中部署的 NC24r）上启用 RDMA 网络连接。 必须添加 HpcVmDrivers 扩展才能安装用来启用 RDMA 连接的 Windows 网络设备驱动程序。 若要向支持 RDMA 的 N 系列 VM 添加 VM 扩展，请使用 Azure 资源管理器的 [Azure PowerShell](/powershell/azure/overview) cmdlet。
 
 > [!NOTE]
-> 当前，只有 Windows Server 2012 R2 支持 NC24r VM 上的 RDMA 网络。
+> 当前，只有 Windows Server 2012 R2 支持在 N 系列 VM 上启用 RDMA 网络。
 > 
 
 若要在 West US 区域中名为 myVM 的支持 RDMA 的现有 VM 上安装最新版本 1.1 HpcVMDrivers 扩展，请执行以下命令：
@@ -73,10 +73,6 @@ ms.lasthandoff: 11/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 N 系列 VM 上的 NVIDIA GPU 的详细信息，请参阅：
-    * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html)（适用于 Azure NC VM）
-    * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html)（适用于 Azure NV VM）
-
-* 为 NVIDIA Tesla GPU 构建 GPU 加速应用程序的开发人员也可下载并安装适用于 [Windows Server 2016](https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_win10-exe) 或 [Windows Server 2012 R2](https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_windows-exe) 的 CUDA 工具包 8。 有关详细信息，请参阅 [CUDA 安装指南](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi)。
+* 为 NVIDIA Tesla GPU 构建 GPU 加速应用程序的开发人员也可下载并安装 [CUDA 工具包 9.1](https://developer.nvidia.com/cuda-downloads)。 有关详细信息，请参阅 [CUDA 安装指南](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi)。
 
 

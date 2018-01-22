@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 0794952fdfbcc49cc66273be2d46484014ae1677
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c741f995c32bf6fa9ba4e0646573be8cdb67a7c3
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-use-custom-activities.md)
+> * [版本 1 - 正式版](data-factory-use-custom-activities.md)
 > * [版本 2 - 预览版](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的自定义活动](../transform-data-using-dotnet-custom-activity.md)。
 
 在 Azure 数据工厂管道中可使用两类活动。
 
@@ -36,16 +36,15 @@ ms.lasthandoff: 11/03/2017
 
 要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。 
 
-可将自定义活动配置为在虚拟机的 **Azure Batch**池或基于 Windows 的 **Azure HDInsight** 群集中运行。 使用 Azure Batch 时，只能使用现有的 Azure Batch 池。 而在使用 HDInsight 时，可以使用现有的 HDInsight 群集，或者在运行时系统根据用户需要自动创建的群集。  
+可将自定义活动配置为在虚拟机的“Azure Batch”池中运行。 使用 Azure Batch 时，只能使用现有的 Azure Batch 池。
 
-以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure Batch**链接服务。 要改用 Azure HDInsight 链接服务，请创建 **HDInsight** 类型的链接服务（自己的 HDInsight 群集），或 **HDInsightOnDemand** 类型的链接服务（数据工厂将按需创建 HDInsight 群集）。 然后，将自定义活动配置为使用 HDInsight 链接服务。 有关使用 Azure HDInsight 运行自定义活动的详细信息，请参阅[使用 Azure HDInsight 链接服务](#use-hdinsight-compute-service)部分。
+以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure Batch**链接服务。 
 
 > [!IMPORTANT]
-> - 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure Batch 池（而不是使用 HDInsight 群集）来运行自定义活动。
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。   
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>系统必备
 * Visual Studio 2012/2013/2015
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -113,7 +112,9 @@ public IDictionary<string, string> Execute(
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
      <li>单击“确定”以创建该项目 <b></b> 。</li>
    </ol>
-2. 单击“工具”****指向“NuGet 包管理器”****，并单击“程序包管理器控制台”****。
+   
+2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
+
 3. 在“包管理器控制台”中，执行以下命令导入 **Microsoft.Azure.Management.DataFactories**。
 
     ```PowerShell
@@ -479,8 +480,6 @@ test custom activity Microsoft test custom activity Microsoft
 
        对于 **poolName** 属性，也可指定池 ID 而非池名称。
 
-      > [!IMPORTANT]
-      > 数据工厂服务不支持 Azure Batch 的按需选项，而对 HDInsight 支持。 在 Azure 数据工厂中只可使用自己的 Azure Batch 池。   
     
 
 ### <a name="step-3-create-datasets"></a>步骤 3：创建数据集
@@ -558,7 +557,7 @@ test custom activity Microsoft test custom activity Microsoft
    | 切片 | 开始时间 | 输出文件 |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
-   | #N/A |2016-11-16T01:00:00 |2016-11-16-01.txt |
+   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
@@ -630,7 +629,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 若要部署管道，请在命令栏上单击“部署”。
 
 ### <a name="monitor-the-pipeline"></a>监视管道
-1. 在 Azure 门户的“数据工厂”边栏选项卡中，单击“图示”。
+1. 在 Azure 门户的数据工厂边栏选项卡中，单击“图”。
 
     ![图示磁贴](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. 现在在“图示”视图中，单击“OutputDataset”。
@@ -647,7 +646,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
     ```
-6. 使用 [Azure 门户][azure-preview-portal] 或 Azure PowerShell cmdlet 监视数据工厂、管道和数据集。 可在日志（特别是 user-0.log）中看到来自自定义活动的代码中 **ActivityLogger** 的消息，可从门户或使用 cmdlet 下载该日志。
+6. 使用 [Azure 门户][azure-preview-portal] 或 Azure PowerShell cmdlet 监视数据工厂、管道和数据集。 将显示来自日志（特别是 user-0.log）中自定义活动的代码中 **ActivityLogger** 的消息，可从门户或使用 cmdlet 下载日志。
 
    ![下载自定义活动的日志][image-data-factory-download-logs-from-custom-activity]
 
@@ -698,7 +697,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 如果输入切片未设置为 **Ready**，请确认输入文件夹结构正确，并且 **file.txt** 存在于输入文件夹中。
 3. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息会显示在用户日志文件（一个或多个文件，命名为 user-0.log、user-1.log、user-2.log 等）中。
 
-   在“OutputDataset”边栏选项卡中，单击切片以查看该切片的“数据切片”边栏选项卡。 可看到该切片的**活动运行**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，将启动同一切片的另一个活动运行。
+   在“OutputDataset”边栏选项卡，单击切片以查看该切片的“数据切片”边栏选项卡。 可看到该切片的**活动运行**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，将启动同一切片的另一个活动运行。
 
    单击活动运行时，会显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 user_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 单击活动运行时，会显示日志文件，可查看文件解决该错误。
 
@@ -786,115 +785,6 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 如果池使用默认 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)，则在运行自定义活动之前，Batch 服务可能需要 15-30 分钟准备 VM。  如果池使用其他 autoScaleEvaluationInterval，则 Batch 服务可能需要 autoScaleEvaluationInterval + 10 分钟。
 
-## <a name="use-hdinsight-compute-service"></a>使用 HDInsight 计算服务
-在本演练中，使用 Azure Batch 计算运行自定义活动。 也可以使用自己的基于 Windows 的 HDInsight 群集或使用数据工厂创建按需基于 Windows 的 HDInsight 群集，并在 HDInsight 群集上运行自定义活动。 以下是用于使用 HDInsight 群集的高级步骤。
-
-> [!IMPORTANT]
-> 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure Batch 池（而不是使用 HDInsight 群集）来运行自定义活动。
- 
-
-1. 创建 Azure HDInsight 链接服务。   
-2. 使用 HDInsight 链接服务代替管道 JSON 中的 **AzureBatchLinkedService**。
-
-如果想要参考本演练对其进行测试，可以更改管道的**开始**和**结束**时间，以便使用 Azure HDInsight 服务测试该方案。
-
-#### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
-Azure 数据工厂服务支持创建按需群集，并使用它处理输入，以生成输出数据。 也可使用自己的群集执行相同操作。 使用按需 HDInsight 群集时，将为每个切片创建群集。 但是，如果使用自己的 HDInsight 群集，群集将准备好立即处理切片。 因此，使用按需群集时，不会像使用自己的群集时那么快看到输出数据。
-
-> [!NOTE]
-> 在运行时，.NET 活动的实例只在 HDInsight 群集中的一个辅助角色节点上运行；无法扩展为在多个节点上运行。 .NET 活动的多个实例可以在 HDInsight 群集的不同节点上并行运行。
->
->
-
-##### <a name="to-use-an-on-demand-hdinsight-cluster"></a>使用按需 HDInsight 群集
-1. 在 **Azure 门户**中，单击数据工厂主页中的“创作和部署”。
-2. 在数据工厂编辑器中，单击命令栏中的“新建计算”，并从菜单中选择“按需 HDInsight 群集”。
-3. 对 JSON 脚本进行以下更改：
-
-   1. 对于 **clusterSize** 属性，指定 HDInsight 群集的大小。
-   2. 有关 **timeToLive** 属性，指定在删除客户之前其可以处于空闲状态的时长。
-   3. 对于 **version** 属性，指定想要使用的 HDInsight 版本。 如果要排除此属性，则使用最新版本。  
-   4. 对于 **linkedServiceName**，请指定 **AzureStorageLinkedService**。
-
-        ```JSON
-        {
-           "name": "HDInsightOnDemandLinkedService",
-           "properties": {
-               "type": "HDInsightOnDemand",
-               "typeProperties": {
-                   "clusterSize": 4,
-                   "timeToLive": "00:05:00",
-                   "osType": "Windows",
-                   "linkedServiceName": "AzureStorageLinkedService",
-               }
-           }
-        }
-        ```
-
-    > [!IMPORTANT]
-    > 自定义 .NET 活动仅在基于 Windows 的 HDInsight 群集上运行。 此限制的一种解决方法是使用 Map Reduce 活动在基于 Linux 的 HDInsight 群集上运行自定义 Java 代码。 另一个选项是使用 VM 的 Azure Batch 池（而不是使用 HDInsight 群集）来运行自定义活动。
-
-4. 单击命令栏上的“部署”，部署链接服务。
-
-##### <a name="to-use-your-own-hdinsight-cluster"></a>使用自己的 HDInsight 群集：
-1. 在 **Azure 门户**中，单击数据工厂主页中的“创作和部署”。
-2. 在“数据工厂编辑器”中，单击命令栏中的“新建计算”，并从菜单中选择“HDInsight cluster”。
-3. 对 JSON 脚本进行以下更改：
-
-   1. 对于 **clusterUri** 属性，请输入 HDInsight 的 URL。 例如：https://<clustername>.azurehdinsight.net/     
-   2. 对于 **UserName** 属性，请输入有权访问 HDInsight 群集的用户名。
-   3. 对于 **Password** 属性，请输入用户密码。
-   4. 对于 **LinkedServiceName** 属性，请输入 **AzureStorageLinkedService**。
-4. 单击命令栏上的“部署”，部署链接服务。
-
-有关详细信息，请参阅[计算链接服务](data-factory-compute-linked-services.md)。
-
-在**管道 JSON** 中，使用（按需或自己的）HDInsight链接服务：
-
-```JSON
-{
-  "name": "ADFTutorialPipelineCustom",
-  "properties": {
-    "description": "Use custom activity",
-    "activities": [
-      {
-        "Name": "MyDotNetActivity",
-        "Type": "DotNetActivity",
-        "Inputs": [
-          {
-            "Name": "InputDataset"
-          }
-        ],
-        "Outputs": [
-          {
-            "Name": "OutputDataset"
-          }
-        ],
-        "LinkedServiceName": "HDInsightOnDemandLinkedService",
-        "typeProperties": {
-          "AssemblyName": "MyDotNetActivity.dll",
-          "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-          "PackageLinkedService": "AzureStorageLinkedService",
-          "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
-          "extendedProperties": {
-            "SliceStart": "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"
-          }
-        },
-        "Policy": {
-          "Concurrency": 2,
-          "ExecutionPriorityOrder": "OldestFirst",
-          "Retry": 3,
-          "Timeout": "00:30:00",
-          "Delay": "00:00:00"
-        }
-      }
-    ],
-    "start": "2016-11-16T00:00:00Z",
-    "end": "2016-11-16T05:00:00Z",
-    "isPaused": false
-  }
-}
-```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>使用 .NET SDK 创建自定义活动
 在本文的演练中，将通过 Azure 门户使用包含自定义活动的管道创建数据工厂。 以下代码演示如何改用 .NET SDK 创建数据工厂。 可以在[使用 .NET API 创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)一文中找到有关使用 SDK 以编程方式创建管道的更多详细信息。 

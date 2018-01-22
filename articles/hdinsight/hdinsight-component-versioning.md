@@ -15,24 +15,24 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: d1098ea7f7ab7765f9769dd2e398eb3b62c5557b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 009b909f9d92c6a21babffae3984be36a7682476
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
 
-了解 Microsoft Azure HDInsight 中的 Apache Hadoop 生态系统组件和版本，以及标准和高级服务级别。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。 
+了解 Microsoft Azure HDInsight 中的 Apache Hadoop 生态系统组件和版本，以及 Enterprise Security 包。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。 
 
 每个 HDInsight 版本都是某个版本的 Hortonworks 数据平台 (HDP) 的云分发版。
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>可与不同 HDInsight 版本使用的 Hadoop 组件
 Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版本选项创建 HDP 分发版的一个特定版本和该分发版内包含的一组组件。 从 2017 年 2 月 17 日起，Azure HDInsight 使用的默认群集版本是 3.5 并基于 HDP 2.5。
 
-下表中列出了与 HDInsight 群集版本关联的组件版本。 
+下表列出了与 HDInsight 群集版本关联的组件版本： 
 
 > [!NOTE]
 > HDInsight 服务的默认版本可能会更改，不会另行通知。 如果依赖某个版本，建议在使用 .NET SDK 以及 Azure PowerShell 和 Azure CLI 创建群集时指定 HDInsight 版本。
@@ -74,25 +74,79 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 请参阅 [HDInsight 发行说明](hdinsight-release-notes.md)，了解 HDInsight 最新版本的更多发行说明。
 
 ## <a name="supported-hdinsight-versions"></a>支持的 HDInsight 版本
-下表列出了 Azure 门户上当前可用的 HDInsight 版本。 其中列出了与每个 HDInsight 版本对应的 HDP 版本以及产品发行日期。 还提供了支持到期日期和停用日期（如果已知这些日期）。
+下表列出了 HDInsight 版本。 其中列出了与每个 HDInsight 版本对应的 HDP 版本以及产品发行日期。 还提供了支持到期日期和停用日期（如果已知这些日期）。
+
+### <a name="available-versions"></a>可用版本
+
+下表列出了 Azure 门户以及其他部署方法（比如 PowerShell 和 .NET SDK）中可用的 HDInsight 版本。
+
+| HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |是 |是 |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 年 5 月 31 日 |是 |是 |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2018 年 7 月 31 日 |是 |否 |
 
 > [!NOTE]
-> 在对某个版本的支持到期后，不能通过 Microsoft Azure 经典门户获得该版本。 但是，可继续使用 Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) 命令中的 `Version` 参数和 .NET SDK 获取群集版本，直到版本停用的那天为止。
-> 
+> 在对某个版本的支持到期后，不能通过 Microsoft Azure 门户获得该版本。 但是，可继续使用 Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) 命令中的 `Version` 参数和 .NET SDK 获取群集版本，直到版本停用的那天为止。
+>
+
+### <a name="retired-versions"></a>已停用的版本
+
+下表列出了 Azure 门户中**不**可用的 HDInsight 版本。
+
+| HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016 年 3 月 29 日 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |是 |否 |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2017 年 7 月 31 日 |是 |否 |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS 或 Windows Server 2012 R2 |2015 年 2 月 18 日 |2016 年 3 月 1 日 |2017 年 4 月 1 日 |是 |否 |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |2014 年 6 月 24 日 |2015 年 5 月 18 日 |2016 年 6 月 30 日 |是 |否 |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014 年 2 月 11 日 |2014 年 9 月 17 日 |2015 年 6 月 30 日 |是 |否 |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |2013 年 10 月 28 日 |2014 年 5 月 12 日 |2015 年 5 月 31 日 |是 |否 |
+| HDInsight 1.6 |HDP 1.1 | |2013 年 10 月 28 日 |2014 年 4 月 26 日 |2015 年 5 月 31 日 |否 |否 |
+
+> [!NOTE]
 > 对于 HDInsight 2.1 和更高版本，默认情况下会集部署具有两个头节点的高度可用群集。 它们不适用于 HDInsight 1.6 版本的群集。
 
-| HDInsight 版本 | HDP 版本 | VM OS | 高可用性 | 发行日期 | 在 Azure 门户上的可用性 | 支持到期日期 | 停用日期 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16 |是 |2017 年 4 月 4 日 |是 | | |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |是 |2016 年 9 月 30 日 |是 |2017 年 9 月 5 日 |2018 年 5 月 31 日 |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |是 |2016 年 3 月 29 日 |是 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |是 |2015 年 12 月 2 日 |是 |2016 年 6 月 27 日 |2018 年 7 月 31 日 |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |是 |2015 年 12 月 2 日 |是 |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS 或 Windows Server 2012 R2 |是 |2015 年 2 月 18 日 |否 |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |是 |2014 年 6 月 24 日 |否 |2015 年 5 月 18 日 |2016 年 6 月 30 日 |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |是 |2014 年 2 月 11 日 |否 |2014 年 9 月 17 日 |2015 年 6 月 30 日 |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |是 |2013 年 10 月 28 日 |否 |2014 年 5 月 12 日 |2015 年 5 月 31 日 |
-| HDInsight 1.6 |HDP 1.1 | |否 |2013 年 10 月 28 日 |否 |2014 年 4 月 26 日 |2015 年 5 月 31 日 |
+## <a name="enterprise-security-package-for-hdinsight"></a>适用于 HDInsight 的 Enterprise Security 包
+
+Azure HDInsight 是一种可选包，可在 HDInsight 群集上作为创建群集工作流的一部分添加。 Enterprise Security 包支持：
+
+- 与 Active Directory 集成进行身份验证。
+
+    在过去，只能创建包含本地管理员用户和本地 SSH 用户的 HDInsight 群集。 本地管理员用户可以访问所有文件、文件夹、表和列。  如果使用 Enterprise Security 包，可通过将 HDInsight 群集与你自己的 Active Directory（包括本地 Active Directory、Azure Active Directory 域服务或 IaaS 虚拟机上的 Active Directory）集成，来启用基于角色的访问控制。 群集上的域管理员可以授权用户使用他们自己的公司（域）用户名和密码来访问群集。 
+
+    有关详细信息，请参阅：
+
+    - [已加入域的 HDInsight 群集的 Hadoop 安全性简介](./domain-joined/apache-domain-joined-introduction.md)
+    - [在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
+    - [配置已加入域的沙盒环境](./domain-joined/apache-domain-joined-configure.md)
+    - [使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+
+- 数据授权
+
+    - 与 Apache Ranger 集成以对 Hive、Spark SQL 和 Yarn 队列授权。
+    - 可以对文件和文件夹设置访问控制。
+
+    有关详细信息，请参阅：
+
+    - [在已加入域的 HDInsight 中配置 Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
+
+- 查看审核日志以监视访问和配置的策略。 
+
+### <a name="supported-cluster-types"></a>支持的群集类型
+
+目前只有以下群集类型支持 Enterprise Security 包：
+
+- Hadoop（仅限 HDInsight 3.6）
+- Spark
+- 交互式查询
+
+### <a name="support-for-azure-data-lake-store"></a>支持 Azure Data Lake Store
+
+Enterprise Security 包支持使用 Azure Data Lake Store 作为主存储和附加存储。
+
+### <a name="pricing-and-sla"></a>定价和 SLA
+有关 Enterprise Security 包的定价和 SLA 的信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="hdinsight-windows-retirement"></a>HDInsight Windows 停用
 Microsoft Azure HDInsight 版本 3.3 是 Windows 上的最新 HDInsight 版本。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 如果在 Windows 上具有 HDInsight 3.3 或更低版本的群集，则必须在 2018 年 7 月 31 日之前迁移到 Linux 上的 HDInsight（HDInsight 版本 3.5 或更高版本）。 迁移到 Linux OS 后，仍然能够创建 HDInsight 群集或调整其大小。 对 Windows 上的 HDInsight 版本 3.3 的支持已于 2016 年 6 月 27 日到期。
@@ -102,7 +156,7 @@ Microsoft Azure HDInsight 版本 3.3 是 Windows 上的最新 HDInsight 版本�
 ## <a name="faqs"></a>常见问题
 
 ### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>停用 Windows 上的 HDInsight 的日程表是怎样的？
-Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 如果针对你的区域计划的停用日期不同，则你会单独收到通知。 
+Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 如果针对你的区域计划的停用日期不同，你会单独收到通知。 
 
 ### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>停用 Windows 上的 HDInsight 对现有客户有何影响？
 在 Windows 上的 HDInsight 停用后，将无法创建新的 HDInsight Windows 群集，也无法调整现有 HDInsight Windows 群集的大小。 对 HDInsight 版本 3.3 的支持已于 2016 年 6 月 27 日到期。 因此，不会再为 HDInsight 3.3 或更低版本提供支持或 bug 修复。 HDInsight 的将来版本仅在 Linux OS 上可用。 Windows 上的 HDInsight 将不会有任何将来版本。
@@ -165,36 +219,10 @@ HDInsight Windows 群集将按现样运行，但是你将无法创建新的 HDIn
 * HDInsight 群集版本 2.1 使用基于 [Hortonworks 数据平台 1.3][hdp-1-3-0] 的 Hadoop 分发版。
 * HDInsight 群集版本 1.6 使用基于 [Hortonworks 数据平台 1.1][hdp-1-1-0] 的 Hadoop 分发版。
 
-## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard 和 HDInsight Premium
 
-Azure HDInsight 提供了两个类别的大数据云产品/服务：_标准_和_高级_。 下表列出了只有 HDInsight Premium 中才可用的功能。 此表中未显式介绍的功能在 HDInsight Standard 和 Premium 中都可用。
 
-> [!NOTE]
-> HDInsight Premium 产品/服务当前处于预览版，仅可用于 Linux 群集。
 
-| HDInsight Premium 功能 | 说明 |
-| --- | --- |
-| 已加入域的 HDInsight 群集 |将 HDInsight 群集加入 Azure Active Directory (Azure AD) 域以实现企业级安全性。 在 HDInsight Premium 中，可以配置企业中可以通过 Azure AD 进行身份验证以登录到 HDInsight 群集的员工的列表。 企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制来实现 Hive 安全性，并将数据访问权限的大小限制为仅满足使用需求。 最后，管理员可以审核员工访问的数据以及对访问控制策略所做的任何更改，从而以较大的力度监管其企业资源。 有关详细信息，请参阅 [Configure domain-joined HDInsight clusters](./domain-joined/apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。 |
 
-### <a name="cluster-types-supported-in-hdinsight-premium"></a>HDInsight Premium 支持的群集类型
-下表列出了 HDInsight Premium 中支持的群集类型。
-
-| 群集类型 | 标准 | 高级（预览） |
-| --- | --- | --- |
-| Hadoop |是 |是（仅限 HDInsight 3.6） |
-| Spark |是 |否 |
-| HBase |是 |否 |
-| Storm |是 |否 |
-| R Server |是 |否 |
-| 交互式查询 |是 |否 |
-| Kafka（预览版） |是 |否 | 
-
-### <a name="support-for-azure-data-lake-store-in-hdinsight-premium"></a>HDInsight Premium 对 Azure Data Lake Store 的支持
-
-HDInsight Premium 群集不支持将 Azure Data Lake Store 用作主存储。 但是，可以将 Azure Data Lake Store 用作 HDInsight Premium 群集的附加存储。
-
-### <a name="pricing-and-sla"></a>定价和 SLA
-有关 HDInsight Premium 的定价和 SLA 的信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
 下表列出了 HDInsight 群集的默认虚拟机 (VM) 大小。
@@ -206,28 +234,28 @@ HDInsight Premium 群集不支持将 Azure Data Lake Store 用作主存储。 �
 
 * 除巴西南部和日本西部外的所有受支持区域：
 
-  | 群集类型 | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | 头：默认 VM 大小 |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
-  | 头：建议的 VM 大小 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
-  | 辅助角色：默认 VM 大小 |D3 v2 |D3 v2 |D3 v2 |Windows：D12 v2；Linux：D4 v2 |Windows：D12 v2；Linux：D4 v2 |
-  | 辅助角色：建议的 VM 大小 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |
-  | Zookeeper：默认 VM 大小 | |A3 |A2 | | |
-  | Zookeeper：建议的 VM 大小 | |A3、A4、A5 |A2、A3、A4 | | |
-  | 边缘：默认 VM 大小 | | | | |Windows：D12 v2；Linux：D4 v2 |
-  | 边缘：建议的 VM 大小 | | | | |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |
+  | 群集类型 | Hadoop | HBase | 交互式查询 | Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | 头：默认 VM 大小 |D3 v2 |D3 v2 | D13、D14 |A3 |D12 v2 |D12 v2 |
+  | 头：建议的 VM 大小 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
+  | 辅助角色：默认 VM 大小 |D3 v2 |D3 v2  | D13、D14 |D3 v2 |Windows：D12 v2；Linux：D4 v2 |Windows：D12 v2；Linux：D4 v2 |
+  | 辅助角色：建议的 VM 大小 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |D3 v2、D4 v2、D12 v2 |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |
+  | Zookeeper：默认 VM 大小 | |A3 | |A2 | | |
+  | Zookeeper：建议的 VM 大小 | |A3、A4、A5 | | A2、A3、A4 | | |
+  | 边缘：默认 VM 大小 | | | | | |Windows：D12 v2；Linux：D4 v2 |
+  | 边缘：建议的 VM 大小 | | | | | |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |
 * 仅限巴西南部和日本西部（无 v2 大小）：
 
-  | 群集类型 | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | 头：默认 VM 大小 |D3 |D3 |A3 |D12 |D12 |
-  | 头：建议的 VM 大小 |D3、D4、D12 |D3、D4、D12 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |
-  | 辅助角色：默认 VM 大小 |D3 |D3 |D3 |Windows：D12；Linux：D4 |Windows：D12；Linux：D4 |
-  | 辅助角色：建议的 VM 大小 |D3、D4、D12 |D3、D4、D12 |D3、D4、D12 |Windows：D12、D13、D14；Linux：D4、D12、D13、D14 |Windows：D12、D13、D14；Linux：D4、D12、D13、D14 |
-  | Zookeeper：默认 VM 大小 | |A2 |A2 | | |
-  | Zookeeper：建议的 VM 大小 | |A2、A3、A4 |A2、A3、A4 | | |
-  | 边缘：默认 VM 大小 | | | | |Windows：D12；Linux：D4 |
-  | 边缘：建议的 VM 大小 | | | | |Windows：D12、D13、D14；Linux：D4、D12、D13、D14 |
+  | 群集类型 | Hadoop | HBase | 交互式查询 |Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | 头：默认 VM 大小 |D3 |D3  | D13、D14 |A3 |D12 |D12 |
+  | 头：建议的 VM 大小 |D3、D4、D12 |D3、D4、D12  | D13、D14 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |
+  | 辅助角色：默认 VM 大小 |D3 |D3  | D13、D14 |D3 |Windows：D12；Linux：D4 |Windows：D12；Linux：D4 |
+  | 辅助角色：建议的 VM 大小 |D3、D4、D12 |D3、D4、D12  | D13、D14 |D3、D4、D12 |Windows：D12、D13、D14；Linux：D4、D12、D13、D14 |Windows：D12、D13、D14；Linux：D4、D12、D13、D14 |
+  | Zookeeper：默认 VM 大小 | |A2 | | A2 | | |
+  | Zookeeper：建议的 VM 大小 | |A2、A3、A4 | |A2、A3、A4 | | |
+  | 边缘：默认 VM 大小 | | | | | |Windows：D12；Linux：D4 |
+  | 边缘：建议的 VM 大小 | | | | | |Windows：D12、D13、D14；Linux：D4、D12、D13、D14 |
 
 > [!NOTE]
 > - 对于 Storm 群集类型，头称为 *Nimbus*。

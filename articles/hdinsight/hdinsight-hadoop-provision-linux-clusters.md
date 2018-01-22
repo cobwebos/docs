@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: f59083510bab1f8d665444f829cffced98f4fe28
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: af4538bb398e6b18aeb9703ba5099b0e2c70fa64
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>使用 Hadoop、Spark、Kafka 等等在 HDInsight 中设置群集
 
@@ -40,9 +40,9 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 | 群集创建方法 | Web 浏览器 | 命令行 | REST API | SDK 中 IsInRole 中的声明 | 
 | --- |:---:|:---:|:---:|:---:|
-| [Azure 门户](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure 数据工厂](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
-| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure CLI（1.0 版）](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |
@@ -50,6 +50,8 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 ## <a name="quick-create-basic-cluster-setup"></a>快速创建：基本群集设置
 本文介绍如何在 [Azure 门户](https://portal.azure.com)中进行设置，通过该门户，可以使用“快速创建”或“自定义”创建 HDInsight 群集。 
+
+![hdinsight 创建选项 自定义 快速创建](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-options.png)
 
 按照屏幕上的说明进行基本群集设置。 下面提供了有关以下条目的详细信息：
 
@@ -70,7 +72,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一组用于提供特定功能的组件。
 
 > [!IMPORTANT]
-> HDInsight 群集类型繁多，每种类型适用于一种工作负荷或技术。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术，[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network)可以连接所需的群集类型。 
+> HDInsight 群集类型繁多，每种类型适用于一种工作负荷或技术。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术，[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network)可以连接所需的群集类型。 
 >
 >
 
@@ -78,32 +80,32 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |批量查询和分析存储数据 |
 | [HBase](hbase/apache-hbase-overview.md) |处理大量无架构的 NoSQL 数据 |
-| [Storm](storm/apache-storm-overview.md) |实时事件处理 |
-| [Spark](spark/apache-spark-overview.md) |内存中处理、交互式查询、微批流处理 |
-| [Kafka（预览版）](kafka/apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
-| [R Server](r-server/r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
 | [交互式查询](./interactive-query/apache-interactive-query-get-started.md) |更快的交互式 Hive 查询的内存中缓存 |
+| [Kafka](kafka/apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
+| [R Server](r-server/r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
+| [Spark](spark/apache-spark-overview.md) |内存中处理、交互式查询、微批流处理 |
+| [Storm](storm/apache-storm-overview.md) |实时事件处理 |
 
-### <a name="number-of-nodes-for-each-cluster-type"></a>每种群集类型的节点数
-每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
-
-| 类型 | Nodes | 图表 |
-| --- | --- | --- |
-| Hadoop |头节点 (2)，数据节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus 节点 (2)，监督程序服务器 (1+)，ZooKeeper 节点 (3) |![HDInsight Storm 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |头节点 (2)，辅助角色节点 (1+)，ZooKeeper 节点 (3)（对于 A1 ZooKeeper VM 大小免费） |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
-
-有关详细信息，请参阅“HDInsight 提供了哪些 Hadoop 组件和版本？”中的[群集的默认节点配置和虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
 ### <a name="hdinsight-version"></a>HDInsight 版本
 选择此群集的 HDInsight 版本。 有关详细信息，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
+
+### <a name="enterprise-security-package"></a>企业安全数据包
+
+对于 Hadoop、Spark 和交互式查询群集类型，可选择启用“企业安全数据包”。 启用此数据包，可通过使用 Apache Ranger 并与 Azure Active Direcotry 集成来实现更安全的群集设置。 有关详细信息，请参阅 [Azure HDInsight 中的企业安全数据包](./domain-joined/apache-domain-joined-introduction.md)。
+
+![hdinsight 创建选项 选择企业安全数据包](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
+
+有关如何创建已加入域的 HDInsight 群集的详细信息，请参阅[创建已加入域的 HDInsight 沙盒环境](./domain-joined/apache-domain-joined-configure.md)。
+
 
 ## <a name="cluster-login-and-ssh-user-name"></a>群集登录和 SSH 用户名
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
 * HTTP 用户：默认用户名为 *admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
 * SSH 用户（Linux 群集）：用于通过 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+
+企业安全数据包允许将 HDInsight 与 Active Directory 和 Apache Ranger 集成。 可使用企业安全数据包创建多个用户。
 
 ## <a name="location"></a>群集和存储所在的位置（区域）
 
@@ -145,6 +147,19 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 ## <a name="configure-cluster-size"></a>配置群集大小
 
 只要群集存在，用户就要为节点使用付费。 创建群集后便开始计费，删除群集后停止计费。 无法取消分配群集或暂停群集。
+
+
+### <a name="number-of-nodes-for-each-cluster-type"></a>每种群集类型的节点数
+每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
+
+| Type | Nodes | 图表 |
+| --- | --- | --- |
+| Hadoop |头节点 (2)，数据节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
+| Storm |Nimbus 节点 (2)，监督程序服务器 (1+)，ZooKeeper 节点 (3) |![HDInsight Storm 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Spark |头节点 (2)，辅助角色节点 (1+)，ZooKeeper 节点 (3)（对于 A1 ZooKeeper VM 大小免费） |![HDInsight Spark 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+
+有关详细信息，请参阅“HDInsight 提供了哪些 Hadoop 组件和版本？”中的[群集的默认节点配置和虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
 HDInsight 群集的成本取决于节点数和节点的虚拟机大小。 
 
@@ -233,7 +248,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 有关将 Azure 虚拟网络与 HDInsight 配合使用的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](hdinsight-extend-hadoop-virtual-network.md)。
 
-有关在一个 Azure 虚拟网络中使用两种群集类型的示例，请参阅[使用 Storm 和 HBase 分析传感器数据](storm/apache-storm-sensor-data-analysis.md)。 有关将 HDInsight 与虚拟网络配合使用的详细信息（包括虚拟网络的特定配置要求），请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
+有关在一个 Azure 虚拟网络中使用两种群集类型的示例，请参阅[结合使用 Spark Structured Streaming 和 Kafka](hdinsight-apache-kafka-spark-structured-streaming.md)。 有关将 HDInsight 与虚拟网络配合使用的详细信息（包括虚拟网络的特定配置要求），请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
 
 ## <a name="troubleshoot-access-control-issues"></a>排查访问控制问题
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/16/2017
+ms.date: 1/4/2018
 ms.author: raiye
-ms.openlocfilehash: e19bb15be29fefbfbc94f7396bb2b68f8236f66a
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: e645d57dfff040eb05f4d395fac058b2b485933b
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
@@ -42,6 +42,14 @@ ms.lasthandoff: 11/17/2017
 不太确定什么是来宾 OS 或者来宾 OS 的工作原理？ 请阅读[此部分](#how-it-works)。
 
 ## <a name="news-updates"></a>新闻更新
+###### <a name="january-4-2018"></a>**2018 年 1 月 4 日**
+1 月来宾 OS 已针对 OS 系列 4 (WA-GUEST-OS-4.50_201801-01) 和 5 (WA-GUEST-OS-5.15_201801-01) 发布，包含重要的安全修补程序。  
+
+###### <a name="january-4-2018"></a>**2018 年 1 月 4 日**
+12 月版来宾 OS 已发布。
+
+###### <a name="december-14-2017"></a>**2017 年 12 月 14 日**
+11 月版来宾 OS 已发布。
 
 ###### <a name="november-8-2017"></a>2017 年 11 月 8 日
 10 月版来宾 OS 已发布。
@@ -67,12 +75,6 @@ ms.lasthandoff: 11/17/2017
 ###### <a name="june-16-2017"></a>**2017 年 6 月 16 日**
 6 月版来宾 OS 将从 6 月 16 日开始推出，预计于 7 月 11 日正式发行。
 
-###### <a name="june-5-2017"></a>**2017 年 6 月 5 日**
-5 月版来宾 OS 已发布。
-
-###### <a name="may-17-2017"></a>**2017 年 5 月 17 日**
-由于存在安全 bug，我们将禁用以下 2016 年 12 月和 2017 年 1 月的 OS 版本，这些版本不包含门户的[修补程序]：WA-GUEST-OS-5.4_201612-01、WA-GUEST-OS-4.39_201612-01、WA-GUEST-OS-3.46_201612-01、WA-GUEST-OS-2.59_201701-01
-
 
 ## <a name="releases"></a>发行版本
 ## <a name="family-5-releases"></a>系列 5 发行版本
@@ -88,16 +90,18 @@ ms.lasthandoff: 11/17/2017
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-5.12_201710-02 |2017 年 11 月 8 日 |5.14 版发行后 |TBD |
-| WA-GUEST-OS-5.11_201709-01 |2017 年 10 月 6日 |5.13 版发行后 |TBD |
-| WA-GUEST-OS-5.10_201708-01 |2017 年 8 月 24 日 |5.12 版发行后 |TBD |
+| WA-GUEST-OS-5.15_201801-01 |2018 年 1 月 4 日 |5.17 发布后 |TBD |
+| WA-GUEST-OS-5.14_201712-01 |2018 年 1 月 4 日 |5.16 发布后 |TBD |
+| WA-GUEST-OS-5.13_201711-01 |2017 年 12 月 14 日 |5.15 发布后 |TBD |
+|~~WA-GUEST-OS-5.12_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
+|~~WA-GUEST-OS-5.11_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
+|~~WA-GUEST-OS-5.10_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
 |~~~~WA-GUEST-OS-5.9_201707-01 |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
 |~~WA-GUEST-OS-5.8_201706-01~~ |2017 年 7 月 7日 |2017 年 10 月 6日 |TBD |
 |~~WA-GUEST-OS-5.7_201705-01~~ |2017 年 6 月 5日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-5.6_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-5.5_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7日 |TBD |
 |~~WA-GUEST-OS-5.4_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5日|TBD |
-|~~WA-GUEST-OS-5.3_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 
 ## <a name="family-4-releases"></a>系列 4 发行版本
 **Windows Server 2012 R2**
@@ -111,16 +115,18 @@ ms.lasthandoff: 11/17/2017
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-4.47_201710-02 |2017 年 11 月 8 日 |4.49 版发行后 |TBD |
-| WA-GUEST-OS-4.46_201709-01 |2017 年 10 月 6日 |4.48 版发行后 |TBD |
-| WA-GUEST-OS-4.45_201708-01 |2017 年 8 月 24 日 |4.47 版发行后 |TBD |
+| WA-GUEST-OS-4.50_201801-01 |2018 年 1 月 4 日 |4.52 发布后 |TBD |
+| WA-GUEST-OS-4.49_201712-01 |2018 年 1 月 4 日 |4.51 发布后 |TBD |
+| WA-GUEST-OS-4.48_201711-01 |2017 年 12 月 14 日 |4.50 发布后 |TBD |
+|~~WA-GUEST-OS-4.47_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
+|~~WA-GUEST-OS-4.46_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
+|~~WA-GUEST-OS-4.45_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
 |~~~~WA-GUEST-OS-4.44_201707-01 |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
 |~~WA-GUEST-OS-4.43_201706-01~~ |2017 年 7 月 7日 |2017 年 10 月 6日 |TBD |
 |~~WA-GUEST-OS-4.42_201705-01~~ |2017 年 6 月 5日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-4.41_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-4.40_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7日 |TBD |
 |~~WA-GUEST-OS-4.39_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5日 |TBD |
-|~~WA-GUEST-OS-4.38_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 
 ## <a name="family-3-releases"></a>系列 3 发行版本
 **Windows Server 2012**
@@ -134,16 +140,17 @@ ms.lasthandoff: 11/17/2017
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-3.54_201710-02 |2017 年 11 月 8 日 |3.56 版发行后 |TBD |
-| WA-GUEST-OS-3.53_201709-01 |2017 年 10 月 6日 |3.55 版发行后 |TBD |
-| WA-GUEST-OS-3.52_201708-01 |2017 年 8 月 24 日 |3.54 版发行后 |TBD |
+| WA-GUEST-OS-3.56_201712-01 |2018 年 1 月 4 日 |3.58 发布后 |TBD |
+| WA-GUEST-OS-3.55_201711-01 |2017 年 12 月 14 日 |3.57 发布后 |TBD |
+|~~WA-GUEST-OS-3.54_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
+|~~WA-GUEST-OS-3.53_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
+|~~WA-GUEST-OS-3.52_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
 |~~~~WA-GUEST-OS-3.51_201707-01 |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
 |~~WA-GUEST-OS-3.50_201706-01~~ |2017 年 7 月 7日 |2017 年 10 月 6日 |TBD |
 |~~WA-GUEST-OS-3.49_201705-01~~ |2017 年 6 月 5日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-3.48_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-3.47_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7日 |TBD |
 |~~WA-GUEST-OS-3.46_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5日 |TBD |
-|~~WA-GUEST-OS-3.45_201611-01~~ |2016 年 12 月 14 日 |2017 年 5 月 9 日 |TBD |
 
 ## <a name="family-2-releases"></a>系列 2 发行版本
 **Windows Server 2008 R2 SP1**
@@ -157,9 +164,11 @@ ms.lasthandoff: 11/17/2017
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-2.67_201710-02 |2017 年 11 月 8 日 |2.69 版发行后 |TBD |
-| WA-GUEST-OS-2.66_201709-01 |2017 年 10 月 6日 |2.68 版发行后 |TBD |
-| WA-GUEST-OS-2.65_201708-01 |2017 年 8 月 24 日 |2.67 版发行后 |TBD |
+| WA-GUEST-OS-2.69_201712-01 |2018 年 1 月 4 日 |2.71 发布后 |TBD |
+| WA-GUEST-OS-2.68_201711-01 |2017 年 12 月 14 日 |2.70 发布后 |TBD |
+|~~WA-GUEST-OS-2.67_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
+|~~WA-GUEST-OS-2.66_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
+|~~WA-GUEST-OS-2.65_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
 |~~~~WA-GUEST-OS-2.64_201707-01 |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
 |~~WA-GUEST-OS-2.63_201706-01~~ |2017 年 7 月 7日 |2017 年 10 月 6日 |TBD |
 |~~WA-GUEST-OS-2.62_201705-01~~ |2017 年 6 月 5日 |2017 年 8 月 24 日 |TBD |
@@ -167,7 +176,6 @@ ms.lasthandoff: 11/17/2017
 |~~WA-GUEST-OS-2.60_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7日 |TBD |
 |~~WA-GUEST-OS-2.59_201701-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5日 |TBD |
 |~~WA-GUEST-OS-2.58_201612-01~~ |2017 年 1 月 10 日 |2017 年 5 月 9 日|TBD |
-|~~WA-GUEST-OS-2.57_201611-01~~ |2016 年 12 月 14 日 |2017 年 4 月 10 日 |TBD |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC 修补程序更新
@@ -181,7 +189,7 @@ ms.lasthandoff: 11/17/2017
 | 5 |版本 2.9.5.1+ |
 | 4 |版本 2.1+ |
 | 3 |版本 1.8+ |
-| #N/A |版本 1.3+ |
+| 2 |版本 1.3+ |
 | 1 |版本 1.0+ |
 
 ## <a name="guest-os-release-information"></a>来宾 OS 版本信息
@@ -244,4 +252,4 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[修补程序]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+[fix]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx

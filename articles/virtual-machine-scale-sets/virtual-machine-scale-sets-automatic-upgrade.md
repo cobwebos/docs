@@ -3,7 +3,7 @@ title: "Azure 虚拟机规模集的自动 OS 升级 | Microsoft Docs"
 description: "了解如何自动升级规模集中 VM 实例上的 OS"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
+author: gatneil
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
-ms.author: guybo
-ms.openlocfilehash: 32358b23bb0a0a878e986150dd992513579d61c4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 12/07/2017
+ms.author: negat
+ms.openlocfilehash: 145f4ec92b142a1585ba17bf6e49c7824cc32529
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure 虚拟机规模集自动 OS 升级
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/03/2017
 ## <a name="preview-notes"></a>预览说明 
 预览期间，存在以下限制和局限：
 
-- 自动 OS 升级仅支持 [3 个 OS SKU](#supported-os-images)。 无 SLA 或保证。 建议预览期间不自动升级对生产而言十分重要的工作负荷。
+- 自动 OS 升级仅支持 [4 个 OS SKU](#supported-os-images)。 无 SLA 或保证。 建议预览期间不自动升级对生产而言十分重要的工作负荷。
 - 即将推出对 Service Fabric 群集中规模集的支持。
 - 虚拟机规模集自动 OS 升级目前**不**支持 Azure 磁盘加密（当前处于预览状态）。
 - 即将推出门户体验。
@@ -78,9 +78,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
     
 | 发布者               | 产品         |  SKU               | 版本  |
 |-------------------------|---------------|--------------------|----------|
+| Canonical               | UbuntuServer  | 16.04-LTS          | 最新   |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter | 最新   |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    | 最新   |
-| Canonical               | UbuntuServer  | 16.04-LTS          | 最新   |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk | 最新   |
+
 
 
 ## <a name="application-health"></a>应用程序运行状况
@@ -90,6 +92,15 @@ OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客
 
 如果规模集配置为使用多个放置组，则探测需使用[负载均衡器标准版](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
 
+### <a name="important-keep-credentials-up-to-date"></a>重要说明：使凭据保持最新
+如果规模集使用任何凭据访问外部资源，例如，如果配置了 VM 扩展，它使用 SAS 令牌访问存储帐户，则需要确保凭据保持最新。 如果任何凭据（包括证书和令牌）过期，则升级将失败，并且第一批 VM 将处于失败状态。
+
+如果发生资源身份验证故障，则建议执行以下步骤来恢复 VM 和重新启用 OS 自动升级：
+
+* 重新生成传递到扩展的令牌（或任何其他凭据）。
+* 确保用于从 VM 内部访问外部实体的所有凭据均保持最新。
+* 使用任何新令牌更新规模集模型中的扩展。
+* 部署更新后的规模集，这将更新包括失败实例在内的所有 VM 实例。 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>在规模集上将自定义负载均衡器探测配置为应用程序运行状况探测
 最佳做法是为规模集运行状况显式创建负载均衡器探测。 运行状况探测可使用与现有 HTTP 探测或 TCP 探测相同的终结点，但所需的行为可能与传统负载均衡器探测不同。 例如，如果实例的负载过高，传统负载均衡器探测可能返回“不正常”，然而，这可能不符合自动 OS 升级过程中实际的实例运行状况。 请将探测配置为不超过两分钟的高探测速率。
@@ -141,7 +152,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Virtual
 
 以下示例使用 Azure CLI（2.0.20 或更高版本）为 myResourceGroup 资源组的 myVMSS 规模集配置自动升级：
 
-```azure-cli
+```azurecli
 rgname="myResourceGroup"
 vmssname="myVMSS"
 az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.AutomaticOSUpgrade=true
@@ -161,7 +172,7 @@ Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 以下示例使用 Azure CLI（2.0.20 或更高版本）检查 myResourceGroup 资源组的 myVMSS 规模集的状态：
 
-```azure-cli
+```azurecli
 az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
 ```
 

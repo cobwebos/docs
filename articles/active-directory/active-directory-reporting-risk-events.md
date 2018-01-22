@@ -4,21 +4,21 @@ description: "本主题详细概述了风险事件。"
 services: active-directory
 keywords: "azure active directory identity protection , 安全性, 风险, 风险级别, 漏洞, 安全策略"
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ff0bcf9bdf9eaf1b4f0084acf9e5ee6ccfeba19
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -31,9 +31,13 @@ ms.lasthandoff: 12/06/2017
 - [不可能前往异常位置](#impossible-travel-to-atypical-locations) 
 - [从受感染的设备登录](#sign-ins-from-infected-devices) 
 - [从具有可疑活动的 IP 地址登录](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-- [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations)（**Azure Active Directory Premium P2** 版本独有）
+- [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations) 
+
 
 ![风险事件](./media/active-directory-reporting-risk-events/91.png)
+
+从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 使用 Azure AD Premium P2 版本时，可以获取有关所有基础检测的最详细的信息。 使用 Azure AD Premium P1 版本时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。
+
 
 本主题介绍哪些风险事件的详细概述，以及如何使用它们来保护 Azure AD 标识。
 
@@ -154,7 +158,7 @@ Microsoft 对检测过程的持续投入使得：
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>从具有可疑活动的 IP 地址登录
 
-我们建议联系用户，验证他们实际上是否已从标记为可疑的 IP 地址登录。 此事件类型的风险级别是“中等”，因为同一 IP 地址后可能有多台设备，但仅某些设备可能导致可疑活动。 
+我们建议联系用户，验证他们实际上是否已从标记为可疑的 IP 地址登录。 这一事件类型的风险级别是“中等”，因为可能有多台设备在使用同一 IP 地址，但其中只有部分设备可能执行了可疑活动。 
 
 
  

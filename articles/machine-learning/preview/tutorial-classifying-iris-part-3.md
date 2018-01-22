@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -32,7 +32,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
  本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 先完成本系列教程的前两个部分：
 
    * 遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
@@ -161,6 +161,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    第三行输出显示 **"registrationState": "Registering"**。 请稍候片刻并重复 show 命令，直到输出显示 "registrationState": "Registered"。
 
+   >[!NOTE] 
+   如果将部署到 ACS 群集，则需要注册 Microsoft.ContainerService 资源提供程序以及使用完全相同的方法。
+
 3. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
 
    请注意，以下设置命令要求你具有订阅的“参与者”访问权限。 如果你没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
@@ -206,7 +209,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 1. 若要创建实时 Web 服务，请使用以下命令：
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
    此命令生成稍后可用的 Web 服务 ID。
 

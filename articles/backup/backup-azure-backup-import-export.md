@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/20/2017
+ms.date: 12/18/2017
 ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32a48a34711a7f053a74e103deb6853150de3903
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 Azure 备份可压缩初始备份。 通过脱机种子设定，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。  
@@ -31,7 +31,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 [Azure 备份 2016 年 8 月更新版（和更高版本）](http://go.microsoft.com/fwlink/?LinkID=229525)包含名为 AzureOfflineBackupDiskPrep 的 *Azure 磁盘准备工具*：
 
 * 可帮助使用 Azure 导入/导出工具为驱动器做好运行 Azure 导入的准备。
-* 可在 [Azure 经典门户](https://manage.windowsazure.com)上自动创建 Azure 导入/导出服务的 Azure 导入作业，而不是像旧版 Azure 备份一样通过手动方式创建相同的作业。
+* 在 [Azure 门户](https://ms.portal.azure.com)中自动为 Azure 导入/导出服务创建 Azure 导入作业。
 
 将备份数据上传到 Azure 之后，Azure 备份将备份数据复制到备份保管库，并计划增量备份。
 
@@ -40,13 +40,13 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 * [熟悉 Azure 导入/导出工作流](../storage/common/storage-import-export-service.md)。
 * 在启动工作流之前，请确保已做好以下准备：
   * 已创建 Azure 备份保管库。
   * 已下载保管库凭据。
   * 已在 Windows Server/Windows 客户端或 System Center Data Protection Manager 服务器上安装 Azure 备份代理，并已向 Azure 备份保管库注册计算机。
-* 在打算备份数据的计算机上，[下载 Azure 发布文件设置](https://manage.windowsazure.com/publishsettings)。
+* 在打算备份数据的计算机上，[下载 Azure 发布文件设置](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。
 * 准备一个暂存位置，这可能是网络共享或计算机上的其他驱动器。 暂存位置是暂时性的存储，在执行此工作流期间暂时使用。 确保临时位置具有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
 * 确定使用受支持的驱动器。 只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II/III 内部硬盘驱动器用于导入/导出服务。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-service.md#hard-disk-drives)，了解服务支持的最新驱动器集。
 * 在 SATA 驱动器写入器连接到的计算机上启用 BitLocker。
@@ -67,13 +67,13 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
     * **暂存位置** — 初始备份副本写入到的临时存储位置。 可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
     * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。
-    * **Azure 发布设置**：包含订阅配置文件相关信息的 XML 文件。 该文件中还包含与订阅关联的安全凭据。 可以[下载该文件](https://manage.windowsazure.com/publishsettings)。 提供发布设置文件的本地路径。
+    * **Azure 发布设置**：包含订阅配置文件相关信息的 XML 文件。 该文件中还包含与订阅关联的安全凭据。 可以[下载该文件](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 提供发布设置文件的本地路径。
     * **Azure 订阅 ID**：计划在其中启动 Azure 导入作业的 Azure 订阅的 ID。 如果有多个 Azure 订阅，请使用要与导入作业关联的订阅的 ID。
-    * **Azure 存储帐户**：提供的 Azure 订阅中与 Azure 导入作业关联的经典类型存储帐户。
+    * **Azure 存储帐户**：Azure 订阅中与 Azure 导入作业关联的存储帐户。
     * **Azure 存储容器**：Azure 存储帐户中导入此作业数据的目标存储 Blob 的名称。
 
     > [!NOTE]
-    > 如果已通过 [Azure 门户](https://portal.azure.com)在 Azure 恢复服务保管库中为备份注册了服务器，并且不是在云解决方案提供商 (CSP) 订阅上，则仍可以通过 Azure 门户创建经典类型的存储帐户，然后将它用于脱机备份工作流。
+    > 如果已通过 [Azure 门户](https://portal.azure.com)在 Azure 恢复服务保管库中为备份注册了服务器，并且不是在云解决方案提供商 (CSP) 订阅上，则仍可以通过 Azure 门户创建存储帐户，然后将它用于脱机备份工作流。
     >
     >
 
@@ -123,7 +123,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
 
     工具随后便开始使用备份数据准备磁盘。 可能需要工具的提示附加其他磁盘，以免提供的磁盘没有足够空间来容纳备份数据。 <br/>
 
-    在工具成功执行结束时，所提供的一个或多个磁盘便已准备好可以寄送到 Azure。 此外，Azure 经典门户上创建以在创建**启动脱机备份**工作流期间提供的名称来命名的导入作业。 最后，工具上还显示磁盘所要寄送到的 Azure 数据中心的寄送地址，以及用于找到 Azure 经典门户上的导入作业的链接。
+    在工具成功执行结束时，所提供的一个或多个磁盘便已准备好可以寄送到 Azure。 此外，还会在 Azure 门户中创建导入作业并使用在启动脱机备份工作流期间提供的名称来命名该作业。 最后，工具上还显示磁盘所要寄送到的 Azure 数据中心的寄送地址，以及用于找到 Azure 门户上的导入作业的链接。
 
     ![Azure 磁盘准备已完成](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
 
@@ -181,7 +181,7 @@ Azure 磁盘准备工具可在恢复服务代理（2016 年 8 月更新版和更
   ![PowerShell 输出](./media/backup-azure-backup-import-export/psoutput.png)
 
 ### <a name="create-an-import-job-in-the-azure-portal"></a>在 Azure 门户中创建导入作业
-1. 在 [Azure 经典门户](https://manage.windowsazure.com/)中转到存储帐户，单击“**导入/导出**”，并单击任务窗格中的“**创建导入作业**”。
+1. 在 [Azure 门户](https://ms.portal.azure.com/)中转到存储帐户，单击“导入/导出”，并单击任务窗格中的“创建导入作业”。
 
     ![Azure 门户中的导入/导出选项卡](./media/backup-azure-backup-import-export/azureportal.png)
 

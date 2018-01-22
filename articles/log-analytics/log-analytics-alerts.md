@@ -4,7 +4,7 @@ description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息�
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
@@ -12,23 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: ee11f64484a66fad06b6536a18f9b3e239fa40d5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>了解 Log Analytics 中的警报
 
-Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  本文详细说明了 Log Analytics 中警报规则的作用原理，并介绍了不同类型警报规则的差异。
+Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  本文将讨论必须根据查询数据的收集频率、由网络延迟或处理能力造成的数据引入随机延迟以及将数据提交到 Log Analytics 存储库而进行的设计决策。  本文还详细说明了 Log Analytics 中警报规则的作用原理，并介绍了不同类型警报规则的差异。
 
 有关创建预警规则的过程，请参阅以下文章：
 
 - 使用 [Azure 门户](log-analytics-alerts-creating.md)创建警报规则
 - 使用[资源管理器模板](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)创建警报规则
 - 使用 [REST API](log-analytics-api-alerts.md) 创建警报规则
+
+## <a name="considerations"></a>注意事项
+
+“解决方案概述”一文的[数据收集详细信息](log-analytics-add-solutions.md#data-collection-details)部分介绍了有关各种解决方案和数据类型的数据收集频率的详细信息。 如本文中所述，收集频率可以从每七天一次增加到“即时通知”。 在设置警报之前，请务必了解和考虑数据收集频率。 
+
+- 收集频率将确定计算机上的 OMS 代理将数据发送到 Log Analytics 的频率。 例如，如果收集频率为 10 分钟一次，且系统中没有其他延迟，则在添加到存储库并可由 Log Analytics 搜索之前，传输数据的时间戳可能是 0 到 10 分钟之间的任意值。
+
+- 必须先将数据写入到存储库，使其在查询时可用，才能触发警报。 由于上述延迟，收集频率与数据可供查询的时间不同。 例如，虽然可以每 10 分钟准时收集一次数据，但数据在数据存储库中可用的时间间隔是不规则的。 例如，以 0、10 和 20 分钟的间隔收集的数据，可用于搜索的时间可能分别是 25、28 和 35 分钟，也可能是引入延迟影响下的其他不规则间隔。 [Log Analytics 的 SLA](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1) 中记录了此类延迟的最长案例，其中不包括由于计算机和 Log Analytics 服务间收集频率或网络延迟而引入的延迟。
 
 
 ## <a name="alert-rules"></a>警报规则
@@ -37,11 +45,27 @@ Log Analytics 中的警报标识 Log Analytics 存储库中的重要信息。  �
 
 ![Log Analytics 警报](media/log-analytics-alerts/overview.png)
 
+由于日志数据引入没有预计延迟，因此对数据进行索引和数据可供搜索之间的绝对时间间隔可能不可预知。  定义警报规则时，应考虑所收集数据的准实时可用性。    
+
+应权衡警报可靠性和警报响应速度。 可选择将警报参数配置为最大程度地减少虚假警报和缺失警报，也可选择将警报参数设置为快速响应所监视的条件但偶尔生成虚假警报或缺失警报。
+
 预警规则通过以下详细信息定义：
 
 - **日志搜索**。  这是每次触发预警规则时都会运行的查询。  此查询返回的记录用于确定是否创建警报。
-- **时间窗口**。  指定查询的时间范围。  查询仅返回在当前时间的这个范围内创建的记录。  这可以是介于 5 分钟到 24 小时之间的任何值。 例如，如果时间范围设置为 60 分钟，且在下午 1:15 运行查询，则仅返回中午 12:15 和下午 1:15 之间创建的记录。
-- **频率**。  指定应运行查询的频率。 可以是介于 5 分钟到 24 小时之间的任何值。 应等于或小于时间范围。  如果该值大于时间范围，则会有记录缺失的风险。<br>例如，假设时间范围为 30 分钟，频率为 60 分钟。  如果查询在下午 1:00 运行，则会返回中午 12:30 和下午 1:00 之间的记录。  下次运行查询的时间是下午 2:00，会返回下午 1:30 到 2:00 之间的记录。  在下午 1:00 和 1:30 之间创建的任何记录不会获得评估。
+- **时间窗口**。  指定查询的时间范围。  查询仅返回在当前时间的这个范围内创建的记录。  这可以是介于 5 分钟到 24 小时之间的任何值。 范围宽度应足以容纳引入中的合理延迟。 时间范围内必须是你希望能处理的最长延迟的时长的两倍。<br> 例如，如果 30 分钟延迟得到可靠警报，则需将范围设置为一小时。  
+
+    如果时间范围过小，可能遇到两种症状。
+
+    - **缺失警报**。 假定引入延迟有时为 60 分钟，但大多数情况下为 15 分钟。  如果将时间窗口设置为 30 分钟，则当延迟为 60 分钟时，由于数据在执行警报查询时不可搜索，将会缺失警报。 
+   
+        >[!NOTE]
+        >将无法诊断缺失警报的原因。 例如，在以上示例中，数据在执行警报查询后 60 分钟写入到存储库。 如果第二天注意到缺失了警报，并且第二天在正确的时间间隔内执行了查询，则日志搜索条件将与结果匹配。 它会显示应已触发的警报。 事实上，未触发警报是因为数据在执行警报查询时尚不可用。 
+        >
+ 
+    - **虚假警报**。 有时，警报查询旨在标识事件的缺失。 这种情况的一个示例是通过搜索丢失的检测信号来检测虚拟机脱机的时间。 如上，如果检测信号在警报时间窗口内不可搜索，则将由于检测信号数据尚不可搜索（因此不存在）而生成警报。 这与 VM 正当脱机而未生成检测信号数据时的结果相同。 第二天在正确的时间窗口执行查询，将显示存在过检测信号且警报失败。 事实上，由于警报时间范围设置过小，该检测信号在警报时尚不可搜索。  
+
+- **频率**。  指定查询应运行的频率和可用于提高正常情况下警报响应速度的频率。 该值可介于 5 分钟到 24 小时之间，且应小于或等于警报时间窗口。  如果该值大于时间范围，则会有记录缺失的风险。<br>如果目标对于 30 分钟及以下的延迟可靠，而正常延迟为 10 分钟，则应将时间窗口设置为 1 小时，将频率值设置为 10 分钟。 对于有 10 分钟引入延迟的数据，这将在警报数据生成后 10 到 20 分钟触发警报。<br>为避免由于时间窗口过宽而对相同数据创建多个警报，可使用[阻止警报](log-analytics-tutorial-response.md#create-alerts)选项在时间窗口内阻止警报。
+  
 - **阈值**。  对日志搜索的结果进行评估，确定是否应创建警报。  不同类型的警报规则的阈值不同。
 
 Log Analytics 中的预警规则均为以下两种类型之一。  这些类型中的每一种都在随后的相应部分进行了详细介绍。
@@ -62,7 +86,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
 ### <a name="scenarios"></a>方案
 
-#### <a name="events"></a>事件
+#### <a name="events"></a>活动
 此类预警规则适用于处理 Windows 事件日志、Syslog 和自定义日志等事件。  生成特定错误事件时，或在特定时间范围内生成多个错误事件时，就可能需要创建警报。
 
 要对单个事件发出警报，请将结果数设置为大于 0，并将频率和时间范围都设置为 5 分钟。  这样，每 5 分钟运行一次查询，并检查自上次运行查询起创建的某事件的出现次数。  较长的频率可能会延长收集事件和创建警报之间的时间。
@@ -76,18 +100,15 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
 例如，若希望处理器超过 90% 时发出警报，可以使用如下查询，并将警报规则的阈值设置为“大于 0”。
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90
-
-    
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
 若希望处理器在特定时间范围平均超过 90% 时发出警报，则可使用如下所示的 [measure 命令](log-analytics-search-reference.md#commands)进行查询，并将警报规则的阈值设置为“大于 0”。
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
-    
 >[!NOTE]
-> 如果工作区尚未升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询将更改为以下内容：`Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
-> `Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90`
+> 如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询将更改为如下所示：`Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
 ## <a name="metric-measurement-alert-rules"></a>指标度量警报规则
@@ -110,11 +131,11 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 #### <a name="example"></a>示例
 考虑一下这样一种情形：如果任何计算机的处理器利用率在 30 分钟内超出 90% 三次，则需发出警报。  可以创建一个警报规则，详情如下。  
 
-**查询：** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
-时间范围：30 分钟<br>
-警报频率：5 分钟<br>
-聚合值：大于 90<br>
-触发警报的标准：总违规次数大于 5 次<br>
+**查询：**Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
+**时间范围：**30 分钟<br>
+**警报频率：**5 分钟<br>
+**聚合值：**大于 90<br>
+**触发警报的标准：**总违规次数大于 5 次<br>
 
 查询将按 5 分钟的时间间隔为每台计算机创建一个平均值。  对于在前 30 分钟 内收集的数据，此查询将每隔 5 分钟运行一次。  下面显示的示例数据是针对三台计算机的。
 
@@ -146,5 +167,5 @@ Log Analytics 中警报规则创建的警报记录的“**类型**”为“**警
 ## <a name="next-steps"></a>后续步骤
 * 安装[警报管理解决方案](log-analytics-solution-alert-management.md)，用于分析 Log Analytics 中创建的警报以及从 System Center Operations Manager 收集的警报。
 * 深入了解有关可生成警报的[日志搜索](log-analytics-log-searches.md)。
-* 完成[配置 Webhook](log-analytics-alerts-webhooks.md) 和警报规则的演练步骤。  
+* 完成[配置 Webook](log-analytics-alerts-webhooks.md) 和警报规则的演练步骤。  
 * 了解如何[在 Azure 自动化中编写 Runbook](https://azure.microsoft.com/documentation/services/automation)，以修正警报标识的问题。

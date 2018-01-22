@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB 图形 API 简介 | Microsoft Docs"
 description: "了解如何在 Azure Cosmos DB 中通过使用 Apache TinkerPop 的 Gremlin 图形查询语言以较低的延迟存储、查询和遍历大量图形。"
 services: cosmos-db
-author: dennyglee
+author: luisbosquez
 documentationcenter: 
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: denlee
-ms.openlocfilehash: 71d9d03b45d8c4fcf8acb41871dcf3f1304955aa
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 01/05/2017
+ms.author: lbosq
+ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB 简介：图形 API
 
@@ -98,12 +98,12 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供全局分发、�
 
 * 可优化的一致性级别
 
- 从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Azure Cosmos DB 提供五种不同的一致性级别：强、有限过时、会话、一致前缀和最终。 通过这些细化的妥善定义的一致性级别，可以在一致性、可用性与延迟之间实现合理的平衡。 有关详细信息，请参阅 [使用一致性级别最大化 DocumentDB 中的可用性和性能](consistency-levels.md)。
+ 从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Azure Cosmos DB 提供五种不同的一致性级别：强、有限过时、会话、一致前缀和最终。 通过这些细化的妥善定义的一致性级别，可以在一致性、可用性与延迟之间实现合理的平衡。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)。
 
 Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例如文档和图形）。 可以使用文档集合将图形数据与文档一起存储。 可以使用 JSON 上的 SQL 查询和 Gremlin 查询来查询与图形相同的数据。
 
 ## <a name="get-started"></a>入门
-可以使用支持图形 API 的 Azure 命令行接口 (CLI)、Azure PowerShell 或 Azure 门户创建 Azure Cosmos DB 帐户。 创建帐户后，Azure 门户将提供类似于 `https://<youraccount>.graphs.azure.com` 的、充当 Gremlin 的 WebSocket 前端的服务终结点。 可以将 TinkerPop 兼容的工具（例如 [Gremlin 控制台](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)）配置为连接到此终结点，并在 Java、Node.js 或任何 Gremlin 客户端驱动程序中生成应用程序。
+可以使用支持图形 API 的 Azure 命令行接口 (CLI)、Azure PowerShell 或 Azure 门户创建 Azure Cosmos DB 帐户。 创建帐户后，Azure 门户将提供类似于 `https://<youraccount>.gremlin.cosmosdb.azure.com` 的、充当 Gremlin 的 WebSocket 前端的服务终结点。 可以将 TinkerPop 兼容的工具（例如 [Gremlin 控制台](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)）配置为连接到此终结点，并在 Java、Node.js 或任何 Gremlin 客户端驱动程序中生成应用程序。
 
 下表显示可以对 Azure Cosmos DB 使用的常用 Gremlin 驱动程序：
 
@@ -113,7 +113,7 @@ Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例
 | [Node.js](https://www.npmjs.com/package/gremlin) |[Github 上的 Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) |
 | [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) |[TinkerPop 文档](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
 
-Azure Cosmos DB 还通过 NuGet 提供基于 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 的、包含 Gremlin 扩展方法的 .NET 库。 此库提供一个可用于直接连接到 DocumentDB 数据分区的“进程中”Gremlin 服务器。
+Azure Cosmos DB 还通过 NuGet 提供基于 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 的、包含 Gremlin 扩展方法的 .NET 库。 此库提供一个可用于直接连接到数据分区的“进程内”Gremlin 服务器。
 
 | 下载 | 文档 |
 | --- | --- |

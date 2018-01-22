@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/09/2018
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 R Server 和开放源代码 R 功能简介
 
 可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft R Server 部署。 这项新功能可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。
+
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 可依据手头的项目和任务适当调整群集大小，不再需要群集时将它解除。 由于这些群集属于 Azure HDInsight 的一部分，提供企业级全年无休支持、99.9% 运行时间 SLA，并且能够灵活地与 Azure 生态系统中的其他组件集成。
 
@@ -96,7 +98,7 @@ HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 �
 最后，通过 SSH 或 PuTY 连接后，在 Linux 命令提示符处键入 R 即可访问边缘节点上的 R Server 控制台。 如果在另一个窗口中运行 R 脚本开发的文本编辑器，可根据需要将脚本部分剪切并粘贴到 R 控制台，以便于使用控制台界面。
 
 ## <a name="learn-about-pricing"></a>了解定价
-包含 R Server 的 HDInsight 群集的相关费用结构与标准 HDInsight 群集类似。 这些费用以各种名称、数据和边缘节点的基础 VM 大小为基准，加上核心运行小时数附加费。 有关 HDInsight 定价和 30 天免费试用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
+包含 R Server 的 HDInsight 群集的相关费用结构与标准 HDInsight 群集类似。 这些费用以各种名称、数据和边缘节点的基础 VM 大小为基准，加上核心运行小时数附加费。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
 ## <a name="next-steps"></a>后续步骤
 要了解如何使用 HDInsight 群集上的 R Server 的详细信息，请参阅下列主题：

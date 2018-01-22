@@ -4,7 +4,7 @@ description: "了解 SQL 数据库安全管理，特别是如何通过服务器�
 keywords: "sql 数据库安全,数据库安全管理,登录安全,数据库安全,数据库访问权限"
 services: sql-database
 documentationcenter: 
-author: BYHAM
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 01/23/2017
-ms.author: rickbyh
-ms.openlocfilehash: 0e66eec6c1843df49d3dc323cd109fb9eeb708c3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: carlrab
+ms.openlocfilehash: 4963e67317f22140c318e29bcd03bce4b9f57ab6
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>控制和授予数据库访问权限
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/31/2017
 >
 
 > [!TIP]
-> 有关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
+> 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
 >
 
 

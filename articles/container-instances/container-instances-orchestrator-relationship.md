@@ -1,25 +1,25 @@
 ---
-title: "Azure 容器实例和容器协调"
-description: "了解 Azure 容器实例如何与容器协调器交互"
+title: "Azure 容器实例和容器业务流程"
+description: "了解 Azure 容器实例如何与容器业务流程协调程序交互。"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 01/09/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a51e746c501cca0521972b09d145439348d1d22d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4954dcb4cb03407b85ad35aec94920e39644844b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
 由于规模较小并面向应用程序，容器非常适合敏捷交付环境和基于微服务的体系结构。 自动化和管理大量容器及其交互方式的任务称为*协调*。 常见的容器协调器包括 Kubernetes、DC/OS 和 Docker Swarm，[Azure 容器服务](https://docs.microsoft.com/azure/container-service/)包含所有这些容器。
 
-Azure 容器实例提供协调平台的某些基本调度功能，但不包括这些平台提供的更高价值的服务，事实上可与这些服务互补。 本文介绍 Azure 容器实例的处理范围，以及整套容器协调器如何与它交互。
+Azure 容器实例提供业务流程平台的某些基本调度功能，但不包括这些平台提供的更高价值的服务，事实上可与这些服务互补。 本文介绍 Azure 容器实例的处理范围，以及整套容器协调器如何与它交互。
 
 ## <a name="traditional-orchestration"></a>传统的协调
 
@@ -40,8 +40,6 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 由于容器实例的所有底层基础结构由 Azure 管理，因此容器协调器平台不需要考虑如何查找用于运行单个容器的适当主机。 云的弹性确保始终有一台可用的主机。 协调器可将重心放在简化多容器体系结构的开发的任务上，包括缩放和协调的升级。
 
-
-
 ## <a name="potential-scenarios"></a>可能的方案
 
 尽管协调器与 Azure 容器实例的集成仍处于初步阶段，但我们可以预见到将来会出现一些不同的环境：
@@ -52,7 +50,7 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 ### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>在虚拟机中合并容器实例和容器
 
-对于长时间运行的稳定工作负荷，协调专用虚拟机群集中的容器通常会比使用容器实例运行相同的容器更节省。 但是，容器实例提供理想的解决方案来快速扩展和缩减整体容器，以处理意外的或短期高发的使用量。 协调器不必先增加群集中的虚拟机数目，然后将更多的容器部署到这些计算机，而可以直接使用容器实例调度更多的容器，并删除不再需要的容器。
+对于长时间运行的稳定工作负荷，协调专用虚拟机群集中的容器通常会比使用容器实例运行相同的容器更节省。 但是，容器实例提供理想的解决方案来快速扩展和缩减整体容器，以处理意外的或短期高发的使用量。 业务流程协调程序不必先增加群集中的虚拟机数目，然后将更多的容器部署到这些计算机，而可以直接使用容器实例调度更多的容器，并删除不再需要的容器。
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>示例实现：适用于 Kubernetes 的 Azure 容器实例连接器
 
@@ -75,6 +73,6 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 [aci-connector-k8s-gif]: ./media/container-instances-orchestrator-relationship/aci-connector-k8s.gif
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/azure/aci-connector-k8s
+[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

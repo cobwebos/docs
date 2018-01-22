@@ -1,6 +1,6 @@
 ---
 title: "复制他人的数据科学示例 - Azure 机器学习 | Microsoft Docs"
-description: "数据科学的商业机密：让他人完成工作。 从 Cortana Analytics 库获取机器学习示例。"
+description: "数据科学的商业机密：让他人完成工作。 从 Azure AI 库获取机器学习示例。"
 keywords: "数据科学示例, 机器学习示例, 聚类分析算法, 聚类分析算法示例"
 services: machine-learning
 documentationcenter: na
@@ -13,17 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/05/2018
 ms.author: cgronlun
-ms.openlocfilehash: 1c767a3fc6605c3e2400bda637d91031393360a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52edc2158e5e74fc544d03efbba2f7e29290e424
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
-数据科学的商业机密之一是让其他人完成工作。 在 Cortana Analytics 库中查找适合用于自己的机器学习试验的聚类分析算法示例。
+数据科学的商业机密之一是让其他人完成工作。 在 Azure AI 库中查找适合用于自己的机器学习试验的聚类分析算法示例。
+
+> [!IMPORTANT]
+> “Cortana Intelligence 库”已重命名为“Azure AI 库”。 因此，本文中的文本和图像与视频略有不同，视频中使用原来的名称。
+>
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
 <br>
@@ -48,14 +52,13 @@ ms.lasthandoff: 10/11/2017
 
 数据科学的商业机密之一是让其他人完成工作。
 
-## <a name="find-examples-in-the-cortana-intelligence-gallery"></a>在 Cortana Intelligence 库中查找示例
-Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)，欢迎免费进行试用。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
+## <a name="find-examples-in-the-azure-ai-gallery"></a>在 Azure AI 库中查找示例
 
-此服务的一部分被称为 **[Cortana Intelligence 库](http://aka.ms/CortanaIntelligenceGallery)**。 它包含资源，包括 Azure 机器学习试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。
+Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室](https://azure.microsoft.com/services/machine-learning-studio/)，欢迎免费进行试用。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
 
-可在 [aka.ms/CortanaIntelligenceGallery](http://aka.ms/CortanaIntelligenceGallery) 找到此库。 欢迎每个人前往浏览。
+此服务的一部分被称为 **[Azure AI 库](https://gallery.cortanaintelligence.com/)**。 它包含资源，包括 Azure 机器学习试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
 
-![Cortana Intelligence 库](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cortana-intelligence-gallery.png)
+![Azure AI 库](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
 如果在顶部单击“试验”，可看到库中最新和最常用的试验。 通过在屏幕顶部单击“浏览全部”，可在其余的试验中进行搜索，还可输入搜索词并选择搜索筛选器。
 
@@ -83,13 +86,13 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://a
 现在我已有起始点。 我可以将他们的数据置换为我自己的数据，并自行调整模型。 这给了我一个良好的开端，让我可以根据他人的工作来生成我自己的内容，这些人真正了解他们的工作内容。
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>查找演示机器学习技术的试验
-[Cortana Intelligence 库](http://aka.ms/CortanaIntelligenceGallery)中有一些其他试验，专门为数据科学新手提供操作方法示例。 例如，库中有一个试验演示了如何处理缺失值（[Methods for handling missing values](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)（处理缺失值的方法））。 它指导通过 15 种不同的方法来替代空值，并讨论了每种方法的优势以及使用时间。
+[Azure AI 库](https://gallery.cortanaintelligence.com)中有一些其他试验，专门为数据科学新手提供操作方法示例。 例如，库中有一个试验演示了如何处理缺失值（[Methods for handling missing values](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)（处理缺失值的方法））。 它指导通过 15 种不同的方法来替代空值，并讨论了每种方法的优势以及使用时间。
 
 ![在机器学习工作室中打开库试验 - 处理缺失值的方法](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Cortana Intelligence 库](http://aka.ms/CortanaIntelligenceGallery)是一个用于查找工作试验的位置，这些工作试验可用作自己的解决方案的起始点。
+可在 [Azure AI 库](https://gallery.cortanaintelligence.com)中查找工作试验，并将这些工作试验用作自己解决方案的起始点。
 
-务必观看 Microsoft Azure 机器学习中“适合初学者的数据科学”的其他视频。
+务必观看 Microsoft Azure 机器学习的“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure 机器学习尝试第一个数据科学实验](create-experiment.md)

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 12/19/2017
 ms.author: sethm;darosa
-ms.openlocfilehash: c4fd365ec8eeb389f0df9f53cd2f2a18f4c9b52a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbd4aef62891341ad3760b74cd8aaee7abf7b827
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-event-hubs-capture"></a>Azure 事件中心捕获
 
@@ -39,7 +39,13 @@ ms.lasthandoff: 10/11/2017
 使用事件中心捕获，用户可以设置用于控制捕获的窗口。 此窗口使用最小大小并具有使用“第一个获胜”策略的时间配置，这意味着遇到的第一个触发器将触发捕获操作。 如果使用 15 分钟，100 MB 的捕获窗口，且发送速度为每秒 1 MB，则大小窗口将在时间窗口之前触发。 每个分区独立捕获，并在捕获时写入已完成的块 blob，在遇到捕获间隔时针对时间进行命名。 存储命名约定如下所示：
 
 ```
-[namespace]/[event hub]/[partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
+{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
+```
+
+请注意，日期值填充为零；示例文件名可能是：
+
+```
+https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
 
 ### <a name="scaling-to-throughput-units"></a>缩放到吞吐量单位
@@ -50,10 +56,10 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="setting-up-event-hubs-capture"></a>设置事件中心捕获
 
-可以使用 [Azure 门户](https://portal.azure.com)或使用 Azure Resource Manager 模板在创建事件中心时配置捕获。 有关详细信息，请参阅以下文章：
+可以使用 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板在创建事件中心时配置捕获。 有关详细信息，请参阅以下文章：
 
 - [通过 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
-- [使用 Azure Resource Manager 模板创建包含事件中心的事件中心命名空间并启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+- [使用 Azure 资源管理器模板创建包含事件中心的事件中心命名空间并启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>浏览已捕获的文件和使用 Avro
 

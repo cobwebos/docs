@@ -13,244 +13,203 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 01/10/2018
 ms.author: saurinsh
-ms.openlocfilehash: 649d138a85ca47440e43c00637ee92b86f4eb03e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="configure-domain-joined-hdinsight-clusters"></a>配置已加入域的 HDInsight 群集
+# <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>配置已加入域的 HDInsight 沙盒环境
 
-了解如何使用 Azure Active Directory (Azure AD) 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 安装 Azure HDInsight 群集，以便利用强身份验证和丰富的基于角色的访问控制 (RBAC) 策略。  仅可在基于 Linux 的群集上配置已加入域的 HDInsight。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](apache-domain-joined-introduction.md)。
+了解如何使用独立的Active Directory 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 安装 Azure HDInsight 群集，以便利用强身份验证和丰富的基于角色的访问控制 (RBAC) 策略。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](apache-domain-joined-introduction.md)。
+
+如果没有已加入域的 HDInsight 群集，每个群集只能有一个 Hadoop HTTP 用户帐户和一个 SSH 用户帐户。  可使用以下服务实现多用户身份验证：
+
+-   在 Azure IaaS 上运行的独立 Active Directory。
+-   Azure Active Directory。
+-   在客户本地环境中运行的 Active Directory。
+
+本文介绍如何使用在 Azure IaaS 上运行的独立 Active Directory。 它是客户可用来获得 HDInsight 多用户支持的最简单的体系结构。 本文介绍实现此配置的两种方法：
+
+- 选项 1：使用一个 Azure 资源管理模板创建独立 Active Directory 和 HDInsight 群集。
+- 选项 2：整个过程分为以下步骤：
+    - 使用模板创建 Active Directory。
+    - 设置 LDAPS。
+    - 创建 AD 用户和组
+    - 创建 HDInsight 群集
 
 > [!IMPORTANT]
 > 在加入域的 HDInsight 上未启用 Oozie。
 
-本文是本系列的第一个教程：
+## <a name="prerequisite"></a>先决条件
+* Azure 订阅
 
-* 启用 Apache Ranger，创建通过 Active Directory 域服务功能连接到 Azure AD 的 HDInsight 群集。
-* 通过 Apache Ranger 创建并应用 Hive 策略，并允许数据科学家等用户使用基于 ODBC 的工具（如 Excel、Tableau）连接到 Hive。Microsoft 致力于将其他工作负荷（如 HBase 和 Storm）尽快添加到已加入域的 HDInsight。
+## <a name="option-1-one-step-approach"></a>选项 1：单步方法
+在本部分中，从 Azure 门户打开 Azure 资源管理模板。 使用该模板创建独立 Active Directory 和 HDInsight 群集。 目前，可以创建已加入域的 Hadoop 群集、Spark 群集和交互式查询群集。
 
-Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso 是虚构的名称。 完成本教程的过程中，必须使用其他名称替代 *contoso*。 
+1. 单击下面的图像即可在 Azure 门户中打开该模板。 该模板位于 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中。
+   
+    若要创建 Spark 群集，请执行以下操作：
 
-**名称：**
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Fspark%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-| 属性 | 值 |
-| --- | --- |
-| Azure AD 目录 |contosoaaddirectory |
-| Azure AD 域名 |contoso (contoso.onmicrosoft.com) |
-| HDInsight VNet |contosohdivnet |
-| HDInsight VNet 资源组 |contosohdirg |
-| HDInsight 群集 |contosohdicluster |
+    若要创建交互式查询群集，请执行以下操作：
 
-本教程介绍了配置已加入域的 HDInsight 群集的步骤。 每个部分都有其他文章的链接，可获取更多背景信息。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Finteractivequery%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-## <a name="prerequisite"></a>先决条件：
-* 熟悉 [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)及其[定价](https://azure.microsoft.com/pricing/details/active-directory-ds/)结构。
-* 请确保订阅已列入此公开预览的白名单。 可使用订阅 ID 向 hdipreview@microsoft.com 发送电子邮件来完成此操作。
-* 由域的签名颁发机构或自签名证书签名的 SSL 证书。 配置安全 LDAP 时需要该证书。
+    若要创建 Hadoop 群集，请执行以下操作：
 
-## <a name="procedures"></a>过程
-1. 在 Azure 资源管理模式下创建 HDInsight VNet。
-2. 创建并配置 Azure AD 和 Azure AD DS。
-3. 创建 HDInsight 群集。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Fhadoop%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-> [!NOTE]
-> 本教程假设你没有 Azure AD。 如果已有 Azure AD，可跳过该部分。
-> 
-> 
+2. 输入值，选择“我同意上述条款和条件”，选择“固定到仪表板”，然后单击“购买”。 将鼠标光标悬停在字段旁边的说明标志上可查看说明。 大多数值均已填充。 你可以使用默认值，也可以使用自己的值。
 
-## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>创建适用于 HDInsight 群集的 Resource Manager VNet
-在本部分中，将创建用于 HDInsight 群集的 Azure 资源管理器 VNet。 若要深入了解如何使用其他方法创建 Azure VNet，请参阅[创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+    - **资源组**：输入 Azure 资源组名称。
+    - **位置**：选择离你近的位置。
+    - **新建存储帐户名称**：输入 Azure 存储帐户名称。 PDC、BDC 和 HDInsight 群集将使用这个新的存储帐户作为默认存储帐户。
+    - **管理员用户名**：输入域管理员用户名。
+    - **管理员密码**：输入域管理员密码。
+    - **域名**：默认名称为 *contoso.com*。如果更改域名，则还必须更新“安全 LDAP 证书”字段和“组织单位 DN”字段。
+    - **群集名称**：输入 HDInsight 群集的名称。
+    - **群集类型**：请勿更改此值。 若想更改群集类型，请使用最后一步中的特定模板。
 
-创建 VNet 后，需要配置 Azure AD DS 以使用此 VNet。
+    模板中的某些值是硬编码值，例如，辅助节点实例计数为 2。  若要更改硬编码值，请单击“编辑模板”。
 
-**创建 Resource Manager VNet**
+    ![已加入域的 HDInsight 群集编辑模板](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)
+
+成功完成模板后，就会在资源组中创建 23 项资源。
+
+## <a name="option-2-multi-step-approach"></a>选项 2：多步骤方法
+
+本部分包含四个步骤：
+
+1. 使用模板创建 Active Directory。
+2. 设置 LDAPS。
+3. 创建 AD 用户和组
+4. 创建 HDInsight 群集
+
+### <a name="create-an-active-directory"></a>创建 Active Directory
+
+使用 Azure 资源管理器模板可以更轻松地创建 Azure 资源。 在本部分中，使用 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/active-directory-new-domain-ha-2-dc/)新建包含两个虚拟机的林和域。 这两个虚拟机分别充当主域控制器和备用域控制器。
+
+**创建具有两个域控制器的域**
+
+1. 单击下面的图像即可在 Azure 门户中打开该模板。
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="./media/apache-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+    该模板如下所示：
+
+    ![已加入域的 HDInsight 创建林域虚拟机](./media/apache-domain-joined-configure/hdinsight-domain-joined-create-arm-template.png)
+
+2. 输入以下值：
+
+    - **订阅**：选择一个 Azure 订阅。
+    - **资源组名称**：键入资源组名称。  资源组用于管理与项目相关的 Azure 资源。
+    - **位置**：选择离你近的 Azure 位置。
+    - **管理员用户名**：这是域管理员用户名。 此用户不是 HDInsight 群集的 HTTP 用户帐户。 这是你在本教程中使用的帐户。
+    - **管理员密码**：输入域管理员的密码。
+    - **域名**：域名必须由两部分组成。 例如：contoso.com、contoso.local 或 hdinsight.test。
+    - **DNS 前缀**：键入 DNS 前缀
+    - **PDC RDP 端口**：（对于本教程，请使用默认值）
+    - **BDC RDP 端口**：（对于本教程，请使用默认值）
+    - **项目位置**：（对于本教程，请使用默认值）
+    - **项目位置 SAS 令牌**：（对于本教程，请将其留空。）
+
+创建资源大约需要 20 分钟。
+
+### <a name="setup-ldaps"></a>设置 LDAPS
+
+轻型目录访问协议 (LDAP) 用于从 AD 中读取或写入到 AD。
+
+**使用远程桌面连接到 PDC**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“网络”和“虚拟网络”。 
-3. 在“选择部署模型”中，选择“Resource Manager”，并单击“创建”。
-4. 键入或选择以下值：
-   
-   * **名称**：contosohdivnet
-   * **地址空间**：10.0.0.0/16。
-   * **子网名称**：Subnet1
-   * **子网地址范围**：10.0.0.0/24
-   * **订阅**：（选择 Azure 订阅。）
-   * **资源组**：contosohdirg
-   * **位置**：（选择 Azure AD VNet 所在的同一位置。 例如 contosoaadvnet。）
-5. 单击“创建” 。
+2. 打开资源组，然后打开主域控制器 (PDC) 虚拟机。 默认 PDC 名称为 adPDC。 
+3. 单击“连接”，使用远程桌面连接到 PDC。
 
-**为 Resource Manager VNet 配置 DNS**
+    ![已加入域的 HDInsight 连接 PDC 远程桌面](./media/apache-domain-joined-configure/hdinsight-domain-joined-remote-desktop-pdc.png)
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“更多服务” > “虚拟网络”。 请确保不要单击“虚拟网络(经典)”。
-2. 单击“contosohdivnet”。
-3. 在新边栏选项卡的左侧，单击“DNS 服务器”。
-4. 单击“自定义”，并输入以下值：
-   
-   * 10.0.0.4
-   * 10.0.0.5     
-     
-5. 单击“保存” 。
 
-## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>为 Azure AD 创建并配置 Azure AD DS
-可在本部分中：
+**添加 Active Directory 证书服务**
 
-1. 创建 Azure AD。
-2. 创建 Azure AD 用户。 这些用户是域用户。 使用第一个用户，通过 Azure AD 配置 HDInsight 群集。  在本教程中，其他两个用户是可选项。 配置 Apache Ranger 策略时，他们可用于[为已加入域的 HDInsight 群集配置 Hive 策略](apache-domain-joined-run-hive.md)。
-3. 创建 AAD DC 管理员组并在组中添加 Azure AD 用户。 此用户用于创建组织单位。
-4. 为 Azure AD 启用 Azure AD 域服务 (Azure AD DS)。
-5. 为 Azure AD 配置 LDAPS。 轻型目录访问协议 (LDAP) 用于从 Azure AD 中读取或写入到 Azure AD。
+4. 打开“服务器管理器”（如果尚未打开）。
+5. 单击“管理”，然后单击“添加角色和功能”。
 
-如果要使用现有的 Azure AD，可跳过步骤 1 和 2。
+    ![已加入域的 HDInsight 添加角色和功能](./media/apache-domain-joined-configure/hdinsight-domain-joined-add-roles.png)
+5. 从“开始之前”中单击“下一步”。
+6. 选择“**基于角色或基于功能的安装**”，并单击“**下一步**”。
+7. 选择 PDC，然后单击“下一步”。  默认 PDC 名称为 adPDC。
+8. 选择“Active Directory 证书服务”。
+9. 从弹出对话框中单击“添加功能”。
+10. 按向导操作，对该过程的其余部分使用默认设置。
+11. 单击“**关闭**”以关闭向导。
 
-**创建 Azure AD**
+**配置 AD 证书**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击“新建” > 应用服务” > Active Directory” > 目录” > “自定义创建”。 
-2. 输入或选择下列值：
-   
-   * **名称**：contosoaaddirectory
-   * **域名**：contoso。  该名称必须全局唯一。
-   * **国家/地区**：选择所在国家或地区。
-3. 单击“完成”。
+1. 从服务器管理器中单击黄色通知图标，然后单击“配置 Active Directory 证书服务”。
 
-**创建 Azure AD 用户**
+    ![已加入域的 HDInsight 配置 AD 证书](./media/apache-domain-joined-configure/hdinsight-domain-joined-configure-ad-certificate.png)
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Active Directory” > “contosoaaddirectory” > “用户和组”。 
-2. 在菜单中单击“所有用户”。
-3. 单击“新建用户”。
-4. 输入“名称”和“用户名”，单击“下一步”。 
-5. 配置用户配置文件；在“角色”中选择“全局管理员”；并单击“下一步”。  创建组织单位时需要全局管理员角色。
-6. 创建临时密码的副本。
-7. 单击“创建” 。 在本教程的后面部分中，将使用此全局管理员用户创建 HDInsight 群集。
+2. 单击左侧的“角色服务”，选择“证书颁发机构”，然后单击“下一步”。
+3. 按向导操作，对该过程的其余部分使用默认设置（在最后一步单击“配置”）。
+4. 单击“**关闭**”以关闭向导。
 
-请按照相同的过程再创建两个用户，“用户”角色为 hiveuser1 和 hiveuser2。 以下用户可用于[为已加入域的 HDInsight 群集配置 Hive 策略](apache-domain-joined-run-hive.md)。
+### <a name="optional-create-ad-users-and-groups"></a>（可选）创建 AD 用户和组
 
-**创建 AAD DC 管理员组并添加 Azure AD 用户**
+**在 AD 中创建用户和组**
+1. 使用远程桌面连接到 PDC
+1. 打开“Active Directory 用户和计算机”。
+2. 在左窗格中选择域名。
+3. 单击顶部菜单中的“在当前容器中创建一个新用户”图标。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure Active Directory” > “contosoaaddirectory” > “用户和组”。 
-2. 在顶部菜单中，单击“所有组”。
-3. 单击“新建组”。
-4. 输入或选择下列值：
-   
-   * **名称**：AAD DC 管理员。  不要更改组名称。
-   * **成员身份类型**：已分配。
-5. 单击“选择”。
-6. 单击“成员”。
-7. 选择上一步骤中创建的第一个用户，单击“选择”。
-8. 重复相同步骤，再创建一个名为 **HiveUsers** 的组，并将两个 Hive 用户添加到组。
+    ![已加入域的 HDInsight 创建用户](./media/apache-domain-joined-configure/hdinsight-domain-joined-create-ad-user.png)
+4. 按照说明创建几个用户。 例如，hiveuser1 和 hiveuser2。
+5. 单击顶部菜单中的“在当前容器中创建一个新组”图标。
+6. 按照说明创建一个名为 **HDInsightUsers** 的组。  在本教程的后面部分创建 HDInsight 群集时会使用此组。
 
-有关详细信息，请参阅 [Azure AD 域服务（预览版）- 创建 AAD DC 管理员组](../../active-directory-domain-services/active-directory-ds-getting-started.md)。
+> [!IMPORTANT]
+> 在创建已加入域的 HDInsight 群集之前，必须重新启动 PDC 虚拟机。
 
-**为 Azure AD 启用 Azure AD DS**
+### <a name="create-an-hdinsight-cluster-in-the-vnet"></a>在 VNet 中创建 HDInsight 群集
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “安全 + 标识” > “Azure AD 域服务” > “添加”。 
-2. 输入或选择下列值：
-   * **目录名称**：contosoaaddirectory
-   * **DNS 域名**：显示 Azure 目录的默认 DNS 名称。 例如 contoso.onmicrosoft.com。
-   * **位置**：选择所在的区域。
-   * **网络**：选择前面创建的虚拟网络和子网。 例如 **contosohdivnet**。
-3. 在摘要页中单击“确定”。 通知下面会显示“部署正在进行...”。
-4. 请等到“部署正在进行...”消失和“IP 地址”填好。 两个 IP 地址都要填写。 这些 IP 地址属于域服务预配的域控制器。 相应的域控制器进行了预配并准备就绪之后，会显示每个 IP 地址。 记下这两个 IP 地址。 稍后需要它们。
+在本部分中，使用 Azure 门户将 HDInsight 群集添加到在本教程前面部分使用资源管理器模板创建的虚拟网络中。 本文仅介绍已加入域的群集配置的特定信息。  有关常规信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。  
 
-有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。
-
-**同步密码**
-
-如果使用自己的域，需要同步密码。 请参阅[对仅限云的 Azure AD 目录启用 Azure AD 域服务的密码同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
-
-**为 Azure AD 配置 LDAPS**
-
-1. 获取由域的签名颁发机构进行签名的 SSL 证书。
-2. 在 [Azure 门户](https://portal.azure.com)中，单击“Azure AD 域服务” > “contoso.onmicrosoft.com”。 
-3. 启用“安全 LDAP”。
-6. 按照说明指定证书文件和密码。  
-7. 请等到“安全 LDAP 证书”填好。 此操作至少需要 10 分钟。
-
-> [!NOTE]
-> 如果一些后台任务正在 Azure AD DS 上运行，则上传证书时可能会显示错误：<i>正在为此租户执行操作。请稍后重试</i>。  如果遇到此错误，请稍后再试。 预配第二个域控制器 IP 最多可能需要 3 小时。
-> 
-> 
-
-有关详细信息，请参阅[为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。
-
-## <a name="create-hdinsight-cluster"></a>创建 HDInsight 群集
-在本部分中，会在 HDInsight 中使用 Azure 门户或 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](../hdinsight-hadoop-create-windows-clusters-arm-templates.md)
-
-**使用 Azure 门户创建已加入域的 HDInsight 群集**
+**创建已加入域的 HDInsight 群集**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“智能+分析”和“HDInsight”。
-3. 在“新 HDInsight 群集”边栏选项卡上，输入或选择以下值：
-   
-   * **群集名称**：为已加入域的 HDInsight 群集输入新的群集名称。
-   * **订阅**：选择用于创建此群集的 Azure 订阅。
-   * **群集配置**：
-     
-     * **群集类型**：Hadoop。 已加入域的 HDInsight 当前仅在 Hadoop、Spark 和交互式查询群集上受支持。
-     * **操作系统**：Linux。  已加入域的 HDInsight 仅在基于 Linux 的 HDInsight 群集上受支持。
-     * **版本**：HDI 3.6。 已加入域的 HDInsight 仅在 HDInsight 群集 3.6 版上受支持。
-     * **群集类型**：PREMIUM
-       
-       单击“选择”保存更改。
-   * **凭据**：为群集用户和 SSH 用户配置凭据。
-   * **数据源**：创建新的存储帐户或使用现有的存储帐户，作为 HDInsight 群集的默认存储帐户。 位置必须与两个 VNet 的位置相同。  这个位置也是 HDInsight 群集的位置。
-   * **定价**：选择群集的辅助角色节点数量。
-   * **高级配置**： 
-     
-     * **域加入和 VNet/子网**： 
-       
-       * **域设置**： 
-         
-         * **域名**：contoso.onmicrosoft.com
-         * **域用户名**：输入域用户名。 此域必须具有以下特权：将计算机加入域并放置在群集创建期间指定的组织单位中；在群集创建期间指定的组织单位内创建服务主体；创建反向 DNS 项。 此域用户将成为此已加入域的 HDInsight 群集的管理员。
-         * **域密码**：输入域用户密码。
-         * **组织单位**：输入要用于 HDInsight 群集的 OU 的可分辨名称。 例如：OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。如果此 OU 不存在，HDInsight 群集将尝试创建此 OU。 确保 OU 已存在，或域帐户有权创建一个新的 OU。 如果使用的域帐户属于 AADDC 管理员，将具有创建 OU 所需的权限。
-         * **LDAPS URL**：ldaps://contoso.onmicrosoft.com:636
-         * **访问用户组**：指定其用户要同步到群集的安全组。 例如，HiveUsers。
-           
-           单击“选择”保存更改。
-           
-           ![已加入域的 HDInsight 门户配置域设置](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-domain-setting.png)
-       * **虚拟网络**：contosohdivnet
-       * **子网**：Subnet1
-         
-         单击“选择”保存更改。        
-         单击“选择”保存更改。
-   * **资源组**：选择用于 HDInsight VNet (contosohdirg) 的资源组。
-4. 单击“创建” 。  
+2. 打开在本教程前面部分使用资源管理器模板创建的资源组。
+3. 向资源组中添加一个 HDInsight 群集。
+4. 选择“自定义”选项：
 
-还可使用 Azure Resource Management 模板创建已加入域的 HDInsight 群集。 以下过程演示如何：
+    ![已加入域的 HDInsight 自定义创建选项](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-custom-configuration-option.png)
 
-**使用 Resource Management 模板创建已加入域的 HDInsight 群集**
+    一共有六个部分使用自定义配置选项：基本信息、存储、应用程序、群集大小、高级设置和摘要。
+5. 在“基本信息”部分中：
 
-1. 单击以下映像可在 Azure 门户中打开 Resource Manager 模板。 Resource Manager 模板位于公共 Blob 容器中。 
-   
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="./media/apache-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 在“参数”边栏选项卡中，输入以下值：
-   
-   * **订阅**：（选择 Azure 订阅）。
-   * **资源组**：单击“使用现有的”，并指定正在使用的同一资源组。  例如，contosohdirg。 
-   * **位置**：指定资源组位置。
-   * **群集名称**：为将创建的 Hadoop 群集输入名称。 例如，contosohdicluster。
-   * **群集类型**：选择群集类型。  默认值为 **hadoop**。
-   * **位置**：为群集选择位置。  默认存储帐户将使用同一位置。
-   * **群集辅助角色节点数**：选择辅助角色节点的数量。
-   * **群集登录名和密码**：默认登录名是 **admin**。
-   * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。 
-   * **虚拟网络 ID**：/subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>
-   * **虚拟网络子网**：/subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>/subnets/Subnet1
-   * **域名**：contoso.onmicrosoft.com
-   * **组织单位 DN**：OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com
-   * **群集用户组 DNS**：[\"HiveUsers\"]
-   * **LDAPUrls**：["ldaps://contoso.onmicrosoft.com:636"]
-   * **DomainAdminUserName**：（输入域管理员用户名）
-   * **DomainAdminPassword**：（输入域管理员用户密码）
-   * **我同意上述条款和条件**：（检查）
-   * **固定到仪表板**：（检查）
-3. 单击“购买”。 此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
+    - 群集类型：选择“Enterprise Security 包”。 目前只能为以下群集类型启用 Enterprise Security 包：Hadoop、交互式查询和 Spark。
+
+        ![已加入域的 HDInsight Enterprise Security 包](./media/apache-domain-joined-configure/hdinsight-creation-enterprise-security-package.png)
+    - 群集登录用户名：这是 Hadoop HTTP 用户。 此帐户不同于域管理员帐户。
+    - 资源组：选择先前使用资源管理器模板创建的资源组。
+    - 位置：该位置必须与使用资源管理器模板创建 vnet 和 DC 时使用的位置相同。
+
+6. 在“高级设置”部分中：
+
+    - 域设置：
+
+        ![已加入域的 HDInsight 高级设置域](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-advanced-domain-settings.png)
+        
+        - 域名：输入在“创建 Active Directory”[](#create-an-active-directory)中使用的域名。
+        - 域用户名：输入在“创建 Active Directory”[](#create-an-active-directory)中使用的 AD 管理员用户名。
+        - 组织单位：相关示例请参阅屏幕截图。
+        - LDAPS URL：相关示例请参阅屏幕截图
+        - 访问用户组：输入在“创建 AD 用户和组”[](#optionally-createad-users-and-groups)中创建的用户组名称
+    - 虚拟网络：选择在“创建 Active Directory”[](#create-an-active-directory)中创建的虚拟网络。 模板中所用的默认名称为 **adVNET**。
+    - 子网：模板中所用的默认名称为 **adSubnet**。
+
+
 
 完成教程之后，可能要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](../hdinsight-administer-use-management-portal.md#delete-clusters)。
 

@@ -1,5 +1,5 @@
 ---
-title: "故障排除：Azure AD SSPR | Microsoft Docs"
+title: "自助密码重置疑难解答 - Azure Active Directory"
 description: "排查 Azure AD 自助密码重置问题"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 73c8ea046a5bdbeaca1b3f357fc41f0a6938db1e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c489cf13574c49161b2dde22500f4ab7478a928b
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -165,7 +165,18 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="confirm-network-connectivity"></a>确认网络连接
 
-最常见的故障点是防火墙和/或代理端口以及空闲超时未正确配置。 有关详细信息，请查看 [Azure AD Connect 的先决条件](./connect/active-directory-aadconnect-prerequisites.md)一文中的连接先决条件。
+最常见的故障点是防火墙和/或代理端口以及空闲超时未正确配置。 
+
+对于 Azure AD Connect 1.1.443.0 和更高版本，需要对以下站点进行出站 HTTPS 访问：
+
+   - passwordreset.microsoftonline.com
+   - servicebus.windows.net
+
+若要进行更精细的访问，请参考 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的更新列表，该列表在每周星期三更新，在下一周星期一生效。
+
+有关详细信息，请查看 [Azure AD Connect 的先决条件](./connect/active-directory-aadconnect-prerequisites.md)一文中的连接先决条件。
+
+
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>重启 Azure AD Connect Sync 服务
 
@@ -295,5 +306,5 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * [SSPR 有哪些策略选项？](active-directory-passwords-policy.md)
 * [什么是密码写回？我为什么关心它？](active-directory-passwords-writeback.md)
 * [如何报告 SSPR 中的活动？](active-directory-passwords-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](active-directory-passwords-how-it-works.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

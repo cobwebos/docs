@@ -3,7 +3,7 @@ title: "使用应用程序代理进行单一登录 | Microsoft 文档"
 description: "介绍如何使用 Azure AD 应用程序代理提供单一登录。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d93dcdd1d6ae8de262c08ba095ca773795f0dec3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 170498b2876947a45128377fa6cecb3931784237
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/11/2017
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
 8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 开始为 IWA 应用程序使用 SSO 之前，请确保已在环境中完成以下设置和配置：
 
 * 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅 [Enable Support for Kerberos Authentication](https://technet.microsoft.com/library/dd759186.aspx)（启用对 Kerberos 身份验证的支持）；对于 SharePoint，请参阅 [Plan for Kerberos authentication in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx)（在 SharePoint 2013 中规划 Kerberos 身份验证）。
@@ -91,7 +91,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 非 Windows 应用通常使用用户名或 SAM 帐户名而非域电子邮件地址。 如果你的应用程序是这种情况，则需要配置委托的登录标识字段来将云标识连接到应用程序标识。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>使用不同的本地标识和云标识
-应用程序代理假设用户在云中与本地具有完全相同的标识。 如果不是这样，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识来指定在执行单一登录时要使用的标识。  
+应用程序代理假设用户在云中与本地具有完全相同的标识。 如果没有，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识来指定在执行单一登录时要使用的标识。  
 
 此功能可让许多具有不同本地标识与云标识的组织从云单一登录到本地应用程序，而不需要用户输入不同的用户名与密码。 这包括如下所述的组织：
 

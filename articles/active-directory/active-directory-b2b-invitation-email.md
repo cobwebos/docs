@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2B 协作邀请电子邮件的元素 | Microsoft Docs"
+title: "B2B 协作邀请电子邮件的元素 - Azure Active Directory | Microsoft Docs"
 description: "Azure Active Directory B2B 协作邀请电子邮件模板"
 services: active-directory
 documentationcenter: 
@@ -7,21 +7,19 @@ author: sasubram
 manager: mtillman
 editor: 
 tags: 
-ms.assetid: 
+ms.custom: seohack1
 ms.service: active-directory
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: ae8f96caaaeb9f3dad9f9f122b56fe264a5d7aec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7b82565a337f331b8b0eda723ccd58c3beaebdd9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>B2B 协作邀请电子邮件的元素
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
 邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 可使用它们增强收件人的信任。 可在电子邮件中添加合法性与社交证据，确保收件人愿意选择“开始”按钮来接受邀请。 这种信任是减少共享冲突的关键。 同时还要让电子邮件赏心悦目！
 
@@ -30,11 +28,11 @@ ms.lasthandoff: 12/11/2017
 ## <a name="explaining-the-email"></a>电子邮件说明
 让我们看看电子邮件的几个元素，以便了解如何充分利用其功能。
 
-### <a name="subject"></a>使用者
+### <a name="subject"></a>主题
 电子邮件的主题遵循以下模式：诚邀你加入 &lt;tenantname&gt; 组织
 
 ### <a name="from-address"></a>发件人地址
-对“发件人地址”使用类似于 LinkedIn 的模式。  应明确邀请方是谁，来自哪家公司，同时澄清该电子邮件发自某个 Microsoft 电子邮件地址。 格式为：&lt;租户名称&gt; 的 &lt;邀请方显示名称&gt; （通过 Microsoft） invites@microsoft.com&gt;
+对“发件人地址”使用类似于 LinkedIn 的模式。  应明确邀请方是谁，来自哪家公司，同时澄清该电子邮件发自某个 Microsoft 电子邮件地址。 格式为：&lt;租户名称&gt; 的 &lt;邀请方显示名称&gt;（通过 Microsoft）<invites@microsoft.com&gt;
 
 ### <a name="reply-to"></a>回复
 回复电子邮件设置为邀请方的电子邮件（如果适用），以便在回复该电子邮件后可将电子邮件发回给邀请方。

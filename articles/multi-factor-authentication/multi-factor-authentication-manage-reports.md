@@ -4,58 +4,53 @@ description: "介绍如何使用 Azure 多重身份验证功能 - 报告。"
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
-editor: curtand
+manager: mtillman
 ms.assetid: 3f6b33c4-04c8-47d4-aecb-aa39a61c4189
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 12/15/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: a0ac1711b6bfb8f461cd775ed1f3409925643615
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 696f4ae3cb479a208e73e53a9a9a437caeabd294
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
-Azure 多重身份验证提供了几个报告供你和组织使用。 可以通过多重身份验证管理门户访问这些报告。 下表列出了可用的报告：
+Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报表 | 说明 |
-|:--- |:--- |
-| 使用情况 |使用情况报告显示有关总体使用情况的信息、用户摘要和用户详细信息。 |
-| 服务器状态 |此报告显示与帐户关联的 多重身份验证服务器的状态。 |
-| 阻止的用户历史记录 |这些报告显示阻止或取消阻止用户的请求的历史记录。 |
-| 跳过的用户历史记录 |显示对用户的电话号码跳过 多重身份验证的请求的历史记录。 |
-| 欺诈警报 |显示在指定日期范围内提交的欺诈警报的历史记录。 |
-| 已排队 |列出排队等待处理的报告及其状态。 报告完成后，将提供下载或查看报告的链接。 |
+| 报表 | Location | 说明 |
+|:--- |:--- |:--- |
+| 阻止的用户历史记录 | Azure AD > MFA 服务器 > 阻止/解除阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
+| 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
+| 本地组件的使用情况 | Azure AD > MFA 服务器 > 活动报告 | 提供有关通过 NPS 扩展、ADFS 和 MFA 服务器实现的 MFA 的总体使用情况信息。 |
+| 跳过的用户历史记录 | Azure AD > MFA 服务器 > 免验证一次 | 提供请求对用户跳过多重身份验证的历史记录。 |
+| 服务器状态 | Azure AD > MFA 服务器 > 服务器状态 | 显示与帐户关联的多重身份验证服务器的状态。 |
 
-## <a name="view-reports"></a>查看报告
+## <a name="view-reports"></a>查看报告 
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧选择“Active Directory”。
-3. 选择这两个选项之一，具体取决于是否使用身份验证提供程序：
-   * **选项 1**：单击“多重身份验证提供程序”选项卡。选择 MFA 提供程序，并在底部单击“管理”按钮。
-   * **选项 2**：选择目录，并转到“配置”选项卡。在“多重身份验证”部分下，选择“管理服务设置”。 在“MFA 服务设置”页底部，单击“转到门户”链接。
-4. 在 Azure 多重身份验证管理门户中，从左侧导航栏的“查看报告”中选择所需的报告类型。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧选择“Azure Active Directory” > “MFA 服务器”。
+3. 选择要查看的报告。
 
-<center>![云](./media/multi-factor-authentication-manage-reports/report.png)</center>
+   <center>![云](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
-## <a name="powershell-reporting"></a>Powershell 报告
+## <a name="powershell-reporting"></a>PowerShell 报告
 
-使用后面的 Powershell 标识已注册 MFA 的用户。
+使用后面的 PowerShell 标识已注册 MFA 的用户。
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
 
-使用后面的 Powershell 标识未注册 MFA 的用户。
+使用后面的 PowerShell 标识未注册 MFA 的用户。
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
-**其他资源**
+## <a name="next-steps"></a>后续步骤
 
 * [面向用户](end-user/multi-factor-authentication-end-user.md)
-* [MSDN 上的 Azure 多重身份验证](https://msdn.microsoft.com/library/azure/dn249471.aspx)
+* [部署位置](multi-factor-authentication-get-started.md)

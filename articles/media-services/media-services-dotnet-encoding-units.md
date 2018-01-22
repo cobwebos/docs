@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: 4a1bf91c3b3e9dd4d42d84f205a9bc07a71525c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9274e2807beeb0fd517ba1e848cfc26db1c57655
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 缩放编码
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="overview"></a>概述
 > [!IMPORTANT]
-> 请确保查看[概述](media-services-scale-media-processing-overview.md)主题，获取有关调整媒体处理的规模主题的详细信息。
+> 请确保查看[概述](media-services-scale-media-processing-overview.md)主题，获取有关调整媒体处理规模的详细信息。
 > 
 > 
 
@@ -54,19 +54,6 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="opening-a-support-ticket"></a>创建支持票证
 默认情况下，每个媒体服务帐户最多可缩放到 25 个编码保留单位和 5 个点播流保留单位。 可以通过创建支持票证申请更高的限制值。
-
-### <a name="open-a-support-ticket"></a>开具支持票证
-若要开具支持票证，请执行以下操作：
-
-1. 单击[获取支持](https://manage.windowsazure.com/?getsupport=true)。 如果尚未登录，系统会提示输入凭据。
-2. 选择订阅。
-3. 在支持类型下，选择“技术”。
-4. 单击“创建票证”。
-5. 在下一页显示的产品列表中选择“Azure 媒体服务”。
-6. 选择适合你问题的“问题类型”。
-7. 单击“继续”(Continue)。
-8. 根据下一页上的说明进行操作，并输入问题的详细信息。
-9. 单击“提交”以创建该票证。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

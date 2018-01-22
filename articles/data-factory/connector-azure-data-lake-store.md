@@ -10,23 +10,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 69707931402de597c9d6a329da349723da2a782a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e3f15f043f6299592f4ece627f342d2ee324f467
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-azure-datalake-connector.md)
+> * [版本 1 - 正式版](v1/data-factory-azure-datalake-connector.md)
 > * [版本 2 - 预览版](connector-azure-data-lake-store.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure Data Lake Store 复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure Data Lake Store 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Data Lake Store 连接器](v1/data-factory-azure-datalake-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure Data Lake Store 连接器](v1/data-factory-azure-datalake-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -38,7 +38,8 @@ ms.lasthandoff: 12/04/2017
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
 
 ## <a name="get-started"></a>入门
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。 
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure Data Lake Store 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -46,7 +47,7 @@ ms.lasthandoff: 12/04/2017
 
 Azure Data Lake Store 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | dataLakeStoreUri | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -68,14 +69,14 @@ Azure Data Lake Store 链接服务支持以下属性：
 - 应用程序密钥
 - 租户 ID
 
->[!TIP]
+>[!IMPORTANT]
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
->- 作为源，至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹内容，或者授予“读取”权限来复制单个文件。 对帐户级别访问控制 (IAM) 没有要求。
->- 作为接收器，则至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来复制（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免使用此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示：
+>- **作为源**，至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹内容，或者授予“读取”权限来复制单个文件。 对帐户级别访问控制 (IAM) 没有要求。
+>- **作为接收器**，至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来复制（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免使用此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示：
 
 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString。 | 是 |
@@ -115,10 +116,10 @@ Azure Data Lake Store 链接服务支持以下属性：
 1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)。
 2. 像使用服务主体时一样，向该服务标识授予对 Data Lake Store 的访问权限。 有关详细步骤，请参阅[服务到服务身份验证 - 将 Azure AD 应用程序分配给 Azure Data Lake Store 帐户文件或文件夹](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder)。
 
->[!TIP]
+>[!IMPORTANT]
 > 确保在 Azure Data Lake Store 中授予数据工厂服务标识适当的权限：
->- 作为源，至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹内容，或者授予“读取”权限来复制单个文件。 对帐户级别访问控制 (IAM) 没有要求。
->- 作为接收器，则至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来复制（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免使用此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示：
+>- **作为源**，至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹内容，或者授予“读取”权限来复制单个文件。 对帐户级别访问控制 (IAM) 没有要求。
+>- **作为接收器**，至少授予“写入 + 执行”数据访问权限，才能在文件夹中创建子项目。 如果使用 Azure IR 来复制（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果需要避免使用此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示：
 
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 
@@ -149,7 +150,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 要向/从 Azure Data Lake Store 复制数据，请将数据集的 type 属性设置为“AzureDataLakeStoreFile”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureDataLakeStoreFile** |是 |
 | folderPath | 到文件存储中的容器和文件夹的路径。 例如：rootfolder/subfolder/ |是 |
@@ -187,13 +188,13 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure Data Lake 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Azure Data Lake 源和接收器支持的属性列表。
 
 ### <a name="azure-data-lake-store-as-source"></a>Azure Data Lake Store 作为源
 
 要从 Azure Data Lake Store 复制数据，请将复制活动中的源类型设置为“AzureDataLakeStoreSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**AzureDataLakeStoreSource** |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。<br/>允许的值为：true（默认）、false | 否 |
@@ -232,9 +233,9 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store 作为接收器
 
-要向 Azure Blob 复制数据，请将复制活动中的接收器类型设置为“AzureDataLakeStoreSink”。 接收器部分支持以下属性：
+若要向 Azure Data Lake Store 复制数据，请将复制活动中的接收器类型设置为“AzureDataLakeStoreSink”。 接收器部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**AzureDataLakeStoreSink** |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 | 否 |
@@ -285,4 +286,4 @@ Azure Data Lake Store 链接服务支持以下属性：
 | false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成名称<br/><br/>不会选取包含 File3、File4 和 File5 的 Subfolder1。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

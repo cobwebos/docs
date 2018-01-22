@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e5dd1ebd290c950c7f2bda3dae088f3ee7f836fd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
 > * [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
-> * [Azure 门户](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -74,7 +74,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 可以指定任意数量的其他证书用于管理操作或用户客户端操作。 默认情况下，群集证书具有管理客户端的特权。 不应将这些附加的客户端证书安装到群集中，只需指定在群集配置中允许这些证书；不过，在连接到群集和执行任何管理操作的客户端计算机上需要安装这些证书。
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>系统必备 
 无论是 Linux 或 Windows 群集，创建安全群集的概念是相同的。 本指南将介绍如何使用 Azure PowerShell 或 Azure CLI 创建新群集。 先决条件为 
 
 -  [Azure PowerShell 4.1 和更高版本][azure-powershell]或 [Azure CLI 2.0 和更高版本][azure-CLI]。
@@ -377,7 +377,7 @@ WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户�
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-系统会提示登录到具有 Azure AD 租户管理权限的帐户。 完成此操作后，脚本会创建 Web 和本机应用程序来代表 Service Fabric 群集。 在 [Azure 经典门户][azure-classic-portal]中查看租户的应用程序时，应会看到两个新条目：
+系统会提示登录到具有 Azure AD 租户管理权限的帐户。 完成此操作后，脚本会创建 Web 和本机应用程序来代表 Service Fabric 群集。 在 [Azure 门户][azure-portal]中查看租户的应用程序时，应会看到两个新条目：
 
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
@@ -615,17 +615,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 <a name="assign-roles"></a>
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
-创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。可通过使用 [Azure 经典门户][azure-classic-portal]来分配角色。
+创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。可使用 [Azure 门户][azure-portal]来分配这些角色。
 
-1. 在 Azure 门户中，转到自己的租户，并选择“应用程序”。
-2. 选择名称类似于 `myTestCluster_Cluster` 的 Web 应用程序。
-3. 单击“用户”选项卡。
-4. 选择要分配的用户，并单击屏幕底部的“分配”按钮。
+1. 在 Azure 门户中，选择右上角的租户。
 
-    ![将用户分配到角色按钮][assign-users-to-roles-button]
-5. 选择要分配给用户的角色。
+    ![“选择租户”按钮][select-tenant-button]
+2. 在左侧选项卡中选择“Azure Active Directory”，然后选择“企业应用程序”。
+3. 选择“所有应用程序”，然后找到并选择名称为 `myTestCluster_Cluster` 的 Web 应用程序。
+4. 单击“用户和组”选项卡。
 
-    ![“分配用户”对话框][assign-users-to-roles-dialog]
+    ![“用户和组”选项卡][users-and-groups-tab]
+5. 单击新页面上的“添加用户”，选择要分配的用户和角色，然后单击页面底部的“选择”按钮。
+
+    ![“将用户分配到角色”页面][assign-users-to-roles-page]
+6. 单击页面底部的“分配”按钮。
+
+    ![添加分配确认][assign-users-to-roles-confirm]
 
 > [!NOTE]
 > 有关 Service Fabric 中角色的详细信息，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
@@ -665,7 +670,7 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”列表中。
 
 #### <a name="solution"></a>解决方案
-在群集 (web) 应用程序的“配置”选项卡上，将 Service Fabric Explorer 的 URL 添加到“回复 URL”列表，或替换列表中的某个项。 完成后，保存所做的更改。
+在 AAD 页面中选择“应用注册”，选择你的群集应用程序，然后选择“回复 URL”按钮。 在“回复 URL”页面上，将 Service Fabric Explorer 的 URL 添加到列表中或替换列表中的某一项。 完成后，保存所做的更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
 
@@ -690,10 +695,10 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
-[azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://portal.azure.com/
+[azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
@@ -703,13 +708,15 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
-[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#Create-a-Service-Fabric-cluster- Resource-Manager-template
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-arm-dependency-map.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-[assign-users-to-roles-button]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-button.png
-[assign-users-to-roles-dialog]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles.png
+[select-tenant-button]: ./media/service-fabric-cluster-creation-via-arm/select-tenant-button.png
+[users-and-groups-tab]: ./media/service-fabric-cluster-creation-via-arm/users-and-groups-tab.png
+[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-page.png
+[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png

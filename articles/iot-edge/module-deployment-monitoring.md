@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d8688ab2daefd400e9c0948853459dd238fa0d43
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>了解单设备 IoT Edge 部署或大规模 IoT Edge 部署 - 预览
 
@@ -49,7 +49,7 @@ Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块�
 
 每个模块的配置元数据包括： 
 * 版本 
-* 类型 
+* Type 
 * 状态（例如“正在运行”或“已停止”） 
 * 重启策略 
 * 映像和容器存储库 
@@ -57,7 +57,23 @@ Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块�
 
 ### <a name="target-condition"></a>目标条件
 
-目标条件指定是否应将某个 IoT Edge 设备置于部署范围内。 目标条件基于设备孪生标记。 
+持续评估目标条件，以包括满足要求的任何新设备或者删除在部署生存期内不再满足要求的设备。 如果服务检测到任何目标条件更改，将重新激活部署。 例如，部署 A 具有目标条件 tags.environment = 'prod'。 启动该部署时，共有 10 个生产设备。 这 10 个设备都成功安装了模块。 IoT Edge 代理状态显示为总共 10 个设备，10 个成功响应，0 个失败响应，以及 0 个挂起响应。 现在，又添加 5 个 tags.environment = 'prod' 的设备。 服务检测到更改，当它尝试部署到这 5 个新设备时，IoT Edge 代理状态变为总共 15 个设备，10 个成功响应，0 个失败响应，以及 5 个挂起响应。
+
+使用设备孪生标记或 deviceId 上的任意布尔条件来选择目标设备。 如果想将条件与标记结合使用，则需在设备孪生中与属性相同的级别下添加 "tags":{} 节。 [深入了解设备孪生中的标记](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+
+目标条件示例：
+* deviceId ='linuxprod1'
+* tags.environment ='prod'
+* tags.environment = 'prod' AND tags.location = 'westus'
+* tags.environment = 'prod' OR tags.location = 'westus'
+* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+
+下面是构造目标条件时的一些限制：
+
+* 在设备孪生中，只能使用标记或 deviceId 生成目标条件。
+* 目标条件的任何部分都不允许用双引号引起来。 请使用单引号。
+* 单引号表示目标条件的值。 因此，如果某个单引号是设备名称的一部分，则必须使用另一个单引号对其转义。 例如，operator'sDevice 的目标条件需编写为 deviceId='operator''sDevice'。
+* 目标条件值中允许使用数字、字母和以下字符：-:.+%_#*?!(),=@;$
 
 ### <a name="priority"></a>Priority
 

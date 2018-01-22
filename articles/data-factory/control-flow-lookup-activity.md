@@ -11,37 +11,103 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 12/12/2017
 ms.author: spelluru
-ms.openlocfilehash: d498705ef7f714b4f15b8d2722053bf3081b5045
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 3c4f401682e5d1789c6e15597ced145a230bbcd6
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
-查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。 
+可使用查找活动从任何外部源读取或查找记录、表名称或值。 此输出可进一步由后续活动引用。 
 
-查找当前支持以下数据源：
-- Azure Blob 中的 JSON 文件
-- 本地 JSON 文件
-- Azure SQL 数据库（从查询转换为 JSON 数据）
-- Azure 表存储（从查询转换为 JSON 数据）
-
-当你想要从配置文件或数据源动态检索文件/记录/表列表时，查找活动会很有帮助。 活动输出可以进一步供其他活动使用，仅对这些项执行特定处理。
+当你想要从配置文件或数据源动态检索文件、记录或表列表时，查找活动会很有帮助。 活动输出可以进一步供其他活动使用，仅对这些项执行特定处理。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
+## <a name="supported-capabilities"></a>支持的功能
+
+以下数据源当前支持查找：
+- Azure Blob 存储中的 JSON 文件
+- 文件系统中的 JSON 文件
+- Azure SQL 数据库（从查询转换为 JSON 数据）
+- Azure SQL 数据仓库（从查询转换为 JSON 数据）
+- SQL Server（从查询转换为 JSON 数据）
+- Azure 表存储（从查询转换为 JSON 数据）
+
+## <a name="syntax"></a>语法
+
+```json
+{
+    "name": "LookupActivity",
+    "type": "Lookup",
+    "typeProperties": {
+        "source": {
+            "type": "<source type>"
+            <additional source specific properties (optional)>
+        },
+        "dataset": { 
+            "referenceName": "<source dataset name>",
+            "type": "DatasetReference"
+        },
+        "firstRowOnly": false
+    }
+}
+```
+
+## <a name="type-properties"></a>Type 属性
+名称​​ | 说明 | Type | 必需？
+---- | ----------- | ---- | --------
+dataset | 为查找提供数据集引用。 目前，支持的数据集类型包括：<ul><li>`AzureBlobDataset`，用于 [Azure Blob 存储](connector-azure-blob-storage.md#dataset-properties)（作为源）</li><li>`FileShareDataset`，用于[文件系统](connector-file-system.md#dataset-properties)（作为源）</li><li>`AzureSqlTableDataset`，用于 [Azure SQL 数据库](connector-azure-sql-database.md#dataset-properties)或 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#dataset-properties)（作为源）</li><li>`SqlServerTable`，用于 [SQL Server](connector-sql-server.md#dataset-properties)（作为源）</li><li>`AzureTableDataset`，用于 [Azure 表存储](connector-azure-table-storage.md#dataset-properties)（作为源）</li> | 键/值对 | 是
+源 | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 不会。 默认为 `true`。
+
+## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>在后续活动中使用查找活动结果
+
+查找结果会返回到活动运行结果的 `output` 节。
+
+* **当 `firstRowOnly` 设置为 `true`（默认值）时**，输出格式如以下代码所示。 查找结果位于固定的 `firstRow` 键下。 若要在后续活动中使用该结果，请使用 `@{activity('MyLookupActivity').output.firstRow.TableName}` 模式。
+
+    ```json
+    {
+        "firstRow":
+        {
+            "Id": "1",
+            "TableName" : "Table1"
+        }
+    }
+    ```
+
+* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回多少条记录，详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后面通常跟随 [Foreach 活动](control-flow-for-each-activity.md)。 可以使用 `@activity('MyLookupActivity').output.value` 模式将 `value` 数组传递到 ForEach 活动 `items` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 此处有一个示例：`@{activity('lookupActivity').output.value[0].tablename}`。
+
+    ```json
+    {
+        "count": "2",
+        "value": [
+            {
+                "Id": "1",
+                "TableName" : "Table1"
+            },
+            {
+                "Id": "2",
+                "TableName" : "Table2"
+            }
+        ]
+    } 
+    ```
 
 ## <a name="example"></a>示例
-在本示例中，复制活动将 Azure SQL 数据库 SQL 表中的数据复制到 Azure Blob 存储。 SQL 表的名称存储在 Blob 存储中的 JSON 文件中。 查找活动查找运行时的表名称。 此方法可以在无需重新部署管道/数据集的情况下对 JSON 进行动态修改。 
+在本示例中，复制活动将 Azure SQL 数据库实例的 SQL 表中的数据复制到 Azure Blob 存储。 SQL 表的名称存储在 Blob 存储的 JSON 文件中。 查找活动查找运行时的表名称。 此方法允许动态修改 JSON，而不必重新部署管道或数据集。 
+
+本示例演示如何只查找第一行。 若要查找所有行并将结果与 ForEach 活动链接，请参阅[使用 Azure 数据工厂批量复制多个表](tutorial-bulk-copy.md)中的示例。
 
 ### <a name="pipeline"></a>管道
-此管道包含两个活动：查找 和复制。 
+此管道包含两个活动：*查找*和*复制*。 
 
 - 查找活动配置为使用 LookupDataset，它指的是 Azure Blob 存储中的一个位置。 查找活动在此位置从 JSON 文件读取 SQL 表名称。 
-- 复制活动使用查找活动的输出（SQL 表名称）。 源数据集 (SourceDataset) 中的 tableName 配置为使用查找活动的输出。 复制活动将数据从 SQL 表复制到由 SinkDataset 指定的 Azure Blob 存储中的一个位置。 
+- 复制活动使用查找活动的输出（SQL 表名称）。 源数据集 (SourceDataset) 中的 tableName 属性配置为使用查找活动的输出。 复制活动将数据从 SQL 表复制到由 SinkDataset 属性指定的 Azure Blob 存储中的一个位置。 
 
 
 ```json
@@ -68,7 +134,7 @@ ms.lasthandoff: 11/17/2017
                 "typeProperties": {
                     "source": { 
                         "type": "SqlSource", 
-                        "sqlReaderQuery": "select * from @{activity('LookupActivity').output.tableName}" 
+                        "sqlReaderQuery": "select * from @{activity('LookupActivity').output.firstRow.tableName}" 
                     },
                     "sink": { 
                         "type": "BlobSink" 
@@ -99,7 +165,7 @@ ms.lasthandoff: 11/17/2017
 ```
 
 ### <a name="lookup-dataset"></a>查找数据集
-查找数据集是指由 AzureStorageLinkedService 指定的 Azure 存储中查找文件夹下的 sourcetable.json 文件。 
+查找数据集是指由 AzureStorageLinkedService 类型指定的 Azure 存储查找文件夹中的 *sourcetable.json* 文件。 
 
 ```json
 {
@@ -131,7 +197,7 @@ ms.lasthandoff: 11/17/2017
     "properties": {
         "type": "AzureSqlTable",
         "typeProperties":{
-            "tableName": "@{activity('LookupActivity').output.tableName}"
+            "tableName": "@{activity('LookupActivity').output.firstRow.tableName}"
         },
         "linkedServiceName": {
             "referenceName": "AzureSqlLinkedService",
@@ -142,7 +208,7 @@ ms.lasthandoff: 11/17/2017
 ```
 
 ### <a name="sink-dataset-for-the-copy-activity"></a>复制活动的接收器数据集
-复制活动将数据从 SQL 表复制到由 AzureStorageLinkedService 指定的 Azure 存储中 csv 文件夹下的 filebylookup.csv 文件。 
+复制活动将数据从 SQL 表复制到由 AzureStorageLinkedService 属性指定的 Azure 存储中 *csv* 文件夹下的 *filebylookup.csv* 文件。 
 
 ```json
 {
@@ -183,7 +249,7 @@ ms.lasthandoff: 11/17/2017
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
-此 Azure SQL 数据库包含要复制到 blob 存储的数据。 
+此 Azure SQL 数据库实例包含要复制到 Blob 存储的数据。 
 
 ```json
 {
@@ -215,6 +281,7 @@ ms.lasthandoff: 11/17/2017
   "tableName": "Table2",
 }
 ```
+
 #### <a name="array-of-objects"></a>对象数组
 
 ```json
@@ -230,19 +297,10 @@ ms.lasthandoff: 11/17/2017
 ]
 ```
 
-
-
-## <a name="type-properties"></a>Type 属性
-名称 | 说明 | 类型 | 必选
----- | ----------- | ---- | --------
-dataset | 该数据集属性为查找提供数据集引用。 目前，支持的数据集类型包括：<ul><li>FileShareDataset</li><li>AzureBlobDataset</li><li>AzureSqlTableDataset</li><li>AzureTableDataset</li> | 键/值对 | 是
-源 | 特定于数据集的源属性，与复制活动源相同 | 键/值对 | 否
-firstRowOnly | 返回第一行或所有行。 | 布尔值 | 否
-
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 
 
-- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
+- [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
-- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [获取元数据活动](control-flow-get-metadata-activity.md)
 - [Web 活动](control-flow-web-activity.md)

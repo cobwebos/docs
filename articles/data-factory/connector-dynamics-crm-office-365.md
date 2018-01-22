@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 91de03f3472244341f4cf086bc8a2f56f7d2e487
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365/Dynamics CRM 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Dynamics 365 和 Dynamics CRM 复制数据， 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -46,11 +46,11 @@ ms.lasthandoff: 12/04/2017
 - Dynamics 365 for Marketing
 
 > [!NOTE]
-> 要使用 Dynamics 连接器，请将密码存储在 Azure Key Vault 中，并在执行数据复制时允许从中拉取 ADF 复制活动。 请参阅如何在[链接的服务属性](#linked-service-properties)部分进行配置。
+> 若要使用 Dynamics 连接器，请将密码存储在 Azure Key Vault 中，并在执行数据复制时允许从中拉取复制活动。 请参阅如何在[链接的服务属性](#linked-service-properties)部分进行配置。
 
 ## <a name="getting-started"></a>入门
 
-可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建包含复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下部分提供了有关各属性的详细信息，这些属性用于定义特定于 Dynamics 的数据工厂实体。
 
@@ -60,7 +60,7 @@ Dynamics 链接的服务支持以下属性：
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM Online
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：Dynamics | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics 联机必须为“联机”。 | 是 |
@@ -68,10 +68,10 @@ Dynamics 链接的服务支持以下属性：
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics 联机指定“Office365”。 | 是 |
 | username | 指定要连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为用户名指定的用户帐户的密码。 必须将密码存放在 Azure Key Vault 中，并将密码配置为“AzureKeyVaultSecret”。 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“No”，对于接收器为“Yes” |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有 IR） |
 
 >[!IMPORTANT]
->若要将数据复制到 Dynamics，请使用接近 Dynamics 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并关联如下面示例中的链接服务。
+>将数据复制**到** Dynamics 时，不能使用默认 Azure 集成运行时执行复制。 换句话说，如果源链接服务未指定 IR，请使用接近 Dynamics 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并按以下示例所示关联 Dynamics 链接服务。
 
 示例：使用 Office365 身份验证的 Dynamics 联机
 
@@ -107,7 +107,7 @@ Dynamics 链接的服务支持以下属性：
 
 与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：Dynamics | 是 |
 | deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为“OnPremisesWithIfd”| 是 |
@@ -160,7 +160,7 @@ Dynamics 链接的服务支持以下属性：
 
 要从/向 Dynamics 复制数据，请将数据集的类型属性设置为“DynamicsEntity”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：DynamicsEntity |是 |
 | entityName | 要检索的实体的逻辑名称。 | 源为否（如果指定了活动源中的“query”），接收器为是 |
@@ -207,13 +207,13 @@ Dynamics 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Dynamics 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Dynamics 源和接收器支持的属性列表。
 
 ### <a name="dynamics-as-source"></a>作为源的 Dynamics
 
 要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**DynamicsSource**  | 是 |
 | query  | FetchXML 是在 Microsoft Dynamics（联机和本地）中使用的专有查询语言。 请参阅下面的示例，并从[使用 FeachXML 生成查询](https://msdn.microsoft.com/en-us/library/gg328332.aspx)了解详细信息。 | 否（如果指定了数据集中的“entityName”）  |
@@ -274,7 +274,7 @@ Dynamics 链接的服务支持以下属性：
 
 要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**DynamicsSink**  | 是 |
 | writeBehavior | 操作的写入行为。<br/>允许的值为：**"Upsert"**。 | 是 |
@@ -322,7 +322,7 @@ Dynamics 链接的服务支持以下属性：
 
 从 Dynamics 复制数据时，以下映射用于从 Dynamics 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-使用以下映射表，根据源 Dynamics 数据类型在数据集结构中配置相应的 ADF 数据类型：
+使用以下映射表，根据源 Dynamics 数据类型在数据集结构中配置相应的数据工厂数据类型：
 
 | Dynamics 数据类型 | 数据工厂临时数据类型 | 支持用作源 | 支持用作接收器 |
 |:--- |:--- |:--- |:--- |
@@ -332,22 +332,22 @@ Dynamics 链接的服务支持以下属性：
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | 小数 | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | String | ✓ | ✓ |
+| AttributeType.EntityName | 字符串 | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ |  |
 | AttributeType.ManagedProperty | 布尔 | ✓ |  |
-| AttributeType.Memo | String | ✓ | ✓ |
-| AttributeType.Money | 小数 | ✓ |  |
+| AttributeType.Memo | 字符串 | ✓ | ✓ |
+| AttributeType.Money | 小数 | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | String | ✓ | ✓ |
-| AttributeType.State | Int32 | ✓ |  |
-| AttributeType.Status | Int32 | ✓ |  |
+| AttributeType.String | 字符串 | ✓ | ✓ |
+| AttributeType.State | Int32 | ✓ | ✓ |
+| AttributeType.Status | Int32 | ✓ | ✓ |
 
 
 > [!NOTE]
 > Dynamics 数据类型 AttributeType.CalendarRules 和 AttributeType.PartyList 不受支持。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

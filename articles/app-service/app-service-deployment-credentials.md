@@ -13,16 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 2f8691b0aadbd97e87996c2683849a6db3b74618
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d66b5aa4eb2ad90596dfe9e26bbc18996c967295
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](app-service-deploy-local-git.md)和 [FTP/S 部署](app-service-deploy-ftp.md)。 这与 Azure Active Directory 凭据不同。
 
-* **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 需要部署到任何订阅（Azure 帐户有权对其进行访问）中的任何应用的应用服务时，可以使用这组凭据。 这些是默认的凭据组，可以在“应用服务” > **&lt;app_name>** > “部署凭据”中对其进行配置。 这也是在门户 GUI（例如应用的[资源边栏选项卡](../azure-resource-manager/resource-group-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。
+* **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 需要部署到任何订阅（Azure 帐户有权对其进行访问）中的任何应用的应用服务时，可以使用这组凭据。 这些是默认的凭据组，可以在“应用服务” > **&lt;app_name>** > “部署凭据”中对其进行配置。 这也是在门户 GUI（例如应用的[资源页](../azure-resource-manager/resource-group-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。
 
     > [!NOTE]
     > 通过基于角色的访问控制 (RBAC) 或共同管理员权限委派对 Azure 资源的访问权限时，每个接收应用访问权限的 Azure 用户都可以使用其个人用户级凭证，直到撤消访问权限。 不应与其他 Azure 用户共享这些部署凭据。
@@ -38,14 +38,14 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="userscope"></a>设置和重置用户级凭据
 
-可以在应用的[资源边栏选项卡](../azure-resource-manager/resource-group-portal.md#manage-resources)中配置用户级凭据。 不管是在哪个应用中配置这些凭据，该凭据适用于所有应用以及 Azure 帐户中的所有订阅。 
+可以在应用的[资源页](../azure-resource-manager/resource-group-portal.md#manage-resources)中配置用户级凭据。 不管是在哪个应用中配置这些凭据，该凭据适用于所有应用以及 Azure 帐户中的所有订阅。 
 
 配置用户级别凭据的步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“应用服务”> **&lt;any_app>** > “部署凭据”。
 
     > [!NOTE]
-    > 在门户中必须至少有一个应用，才能访问部署凭据边栏选项卡。 但在使用 [Azure CLI](/cli/azure/webapp/deployment/user#set) 时，却可在没有应用的情况下配置用户级凭据。
+    > 在门户中必须至少有一个应用，才能访问部署凭据页。 但在使用 [Azure CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) 时，却可在没有应用的情况下配置用户级凭据。
 
 2. 配置用户名和密码，并单击“保存”。
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-以及在应用的“属性”中查找 *FTP* 部署用户名。
+以及在应用的“属性”中查找 FTP 部署用户名。
 
 ![](./media/app-service-deployment-credentials/deployment_credentials_properties.png)
 

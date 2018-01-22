@@ -1,5 +1,5 @@
 ---
-title: "将备份保管库升级到恢复服务保管库（预览）| Microsoft Docs"
+title: "将备份保管库升级到恢复服务保管库 | Microsoft Docs"
 description: "将 Azure 备份保管库升级到恢复服务保管库的说明和支持信息。"
 services: backup
 documentationcenter: dev-center-name
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/09/2017
+ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 4867a43aab1357cb8e01c2ddcef74cdebb41a84a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/11/2017
 ## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>自动化与工具在升级之后的变化
 
 在为保管库升级准备基础结构时，必须更新现有的自动化或工具，确保它在升级后可继续运行。
-请参阅 [Service Manager 部署模型](backup-client-automation-classic.md)和[资源管理器部署模型](backup-client-automation.md)的 PowerShell cmdlet 参考。
+请参阅[资源管理器部署模型](backup-client-automation.md)的 PowerShell cmdlet 参考。
 
 
 ## <a name="before-you-upgrade"></a>升级之前
@@ -60,10 +60,10 @@ ms.lasthandoff: 11/11/2017
 RecoveryServicesVaultUpgrade-1.0.2.ps1 -SubscriptionID `<subscriptionID>` -VaultName `<vaultname>` -Location `<location>` -ResourceType `BackupVault` -TargetResourceGroupName `<rgname>`
 
 SubscriptionID - 正在升级的保管库的订阅 ID 编号。<br/>
-VaultName - 正在升级的备份保管库的名称。<br/>
-位置 - 正在升级的保管库的位置。<br/>
-ResourceType - 使用 BackupVault。<br/>
-TargetResourceGroupName - 由于要将保管库升级到基于资源管理器的部署，因此请指定资源组。 可以使用现有的资源组，也可以通过提供新名称创建新的资源组。 如果资源组的名称拼写不当，则会创建新的资源组。 若要详细了解资源组，请阅读[有关资源组的概述](../azure-resource-manager/resource-group-overview.md#resource-groups)文章。
+**VaultName** - 要升级的备份保管库的名称。<br/>
+**Location** - 要升级的保管库的位置。<br/>
+**ResourceType** - 使用 BackupVault。<br/>
+**TargetResourceGroupName** - 由于要将保管库升级到基于资源管理器的部署，因此请指定资源组。 可以使用现有的资源组，也可以通过提供新名称创建新的资源组。 如果资源组的名称拼写不当，则会创建新的资源组。 若要详细了解资源组，请阅读[有关资源组的概述](../azure-resource-manager/resource-group-overview.md#resource-groups)文章。
 
 >[!NOTE]
 > 资源组名称具有约束。 请务必遵循指导；否则可能导致保管库升级失败。
@@ -117,10 +117,10 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **升级计划是否影响正在进行的备份？**</br>
-否。 升级期间和之后，正在进行的备份都会继续，而不会中断。
+不会。 升级期间和之后，正在进行的备份都会继续，而不会中断。
 
 如果不尽快规划升级，保管库会发生什么情况？</br>
-由于所有新功能仅适用于恢复服务保管库，我们强烈建议升级保管库。 Microsoft 最终将弃用经典门户。 自 2017 年 9 月 1 日起，Microsoft 会将备份保管库自动升级为恢复服务保管库。 2017 年 11 月 30 日后，将不再能够使用 PowerShell 创建备份保管库。 保管库可在其间任何时间自动升级。 Microsoft 建议尽快升级保管库。
+由于所有新功能仅适用于恢复服务保管库，我们强烈建议升级保管库。 自 2017 年 9 月 1 日起，Microsoft 会将备份保管库自动升级为恢复服务保管库。 2017 年 11 月 30 日后，将不再能够使用 PowerShell 创建备份保管库。 保管库可在其间任何时间自动升级。 Microsoft 建议尽快升级保管库。
 
 对于现有的工具而言，此升级有何意义？</br>
 将工具更新为资源管理器部署模型。 恢复服务保管库是为在资源管理器部署模型使用而创建的。 规划资源管理器部署模型以及记录保管库中的差异十分重要。 
@@ -129,19 +129,16 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 这取决于要升级的资源数量。 对于小型部署（几十个受保护的实例），整个升级过程应会不到 20 分钟内完成。 对于大型部署，最长需要一小时。
 
 **升级后是否可以回滚？**</br>
-否。 成功升级资源后，就不支持回滚。
+不会。 成功升级资源后，就不支持回滚。
 
 **是否可以验证订阅或资源，确定它们是否可升级？**</br>
 是的。 升级过程的第一个步骤是验证资源是否可升级。 如果先决条件验证失败，会收到消息，其中包含无法完成升级的所有原因。
 
-**应有哪些权限才能触发保管库升级？**</br>
-若要执行保管库升级，必须在 Azure 经典门户中将你添加为订阅的协同管理员。 即使已在 Azure 门户中被列为所有者，仍需执行此操作。 在 Azure 经典门户中尝试为订阅添加协同管理员，确定你是否为订阅的协同管理员。 如果无法添加协同管理员，请联系订阅的服务管理员或协同管理员，他们可将你添加为协同管理员。
-
 **是否可以升级基于 CSP 的备份保管库？**</br>
-否。 目前无法升级基于 CSP 的备份保管库。 我们将在下一版本中添加对升级基于 CSP 的备份保管库的支持。
+不会。 目前无法升级基于 CSP 的备份保管库。 我们将在下一版本中添加对升级基于 CSP 的备份保管库的支持。
 
 **升级后是否可以查看经典保管库？**</br>
-否。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
+不会。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
 升级失败，但保存需要升级的代理的计算机不再存在。对于这种情况，该怎么办？</br>
 如果需要存储此计算机的备份以便长期保留，则无法升级保管库。 在将来版本中，我们将添加对升级此类保管库的支持。

@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure 存储资源管理器（预览版）发行说明 | Microsoft Docs"
+title: "Microsoft Azure 存储资源管理器（预览版）发行说明"
 description: "Microsoft Azure 存储资源管理器（预览版）发行说明"
 services: storage
 documentationcenter: na
@@ -14,25 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: b5cd022c87a6a7a9e18f33b869db04e72be5cef7
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
-本文包含 Azure 存储资源管理器 0.9.2（预览版）及先前版本的发行说明。
+本文包含 Azure 存储资源管理器 0.9.3（预览版）及先前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+
+## <a name="version-093"></a>版本 0.9.3
+12/08/2017
+
+### <a name="download-azure-storage-explorer-093-preview"></a>下载 Azure 存储资源管理器 0.9.3（预览版）
+- [适用于 Windows 的 Azure 存储资源管理器 0.9.3（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 0.9.3（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 0.9.3（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新建
+* 在以下情况下，将重新使用现有的存储资源管理器窗口：
+    * 打开存储资源管理器中生成的直接链接。
+    * 从门户打开存储资源管理器。
+    * 从 Azure 存储 VS Code 扩展（即将推出）打开存储资源管理器。
+* 增加了从存储资源管理器内部打开新存储资源管理器窗口的功能。
+    * 对于 Windows，文件菜单下以及任务栏的上下文菜单中有一个“新建窗口”选项。
+    * 对于 Mac，应用菜单下有一个“新建窗口”选项。
+
+### <a name="fixes"></a>修复项
+* 以前不会适当地清理旧活动。 这影响了长时间运行的作业的性能。 现在会正确清理旧活动。
+* 涉及大量文件和目录的操作有时可能导致存储资源管理器冻结。 现在限制了对 Azure 的文件共享请求，以限制系统资源的使用。
+
+### <a name="known-issues"></a>已知问题
+* 存储资源管理器不支持 ADFS 帐户。
+* “查看资源管理器”和“查看帐户管理”的快捷键应当分别为 Ctrl/Cmd+Shift+E 和 Ctrl/Cmd+Shift+A。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 帐户设置面板可能显示需重新输入凭据以筛选订阅。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+```
+./StorageExplorer --disable-gpu
+```
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-092"></a>版本 0.9.2
 2017/11/01
 
 ### <a name="download-azure-storage-explorer-092-preview"></a>下载 Azure 存储资源管理器 0.9.2（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [下载适用于 Windows 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [下载适用于 Mac 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [下载适用于 Linux 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+
 
 ### <a name="hotfixes"></a>修补程序
 * 根据本地时区编辑表实体的 Edm.DateTime 值时，可能发生意外的数据更改。 编辑器现使用纯文本文本框，以便始终如一地精确控制 Edm.DateTime 值。
@@ -95,13 +146,32 @@ ms.lasthandoff: 12/05/2017
 
 
 
+
+
+
+## <a name="previous-releases"></a>以前的版本
+
+* [版本 0.9.1/0.9.0](#version-091)
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
+* [版本 0.8.9/0.8.8](#version-089--088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-091--090-preview"></a>版本 0.9.1 / 0.9.0（预览版）
 10/20/2017
-### <a name="download-azure-storage-explorer-091-preview"></a>下载 Azure 存储资源管理器 0.9.1（预览版）
-* [下载适用于 Windows 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [下载适用于 Mac 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [下载适用于 Linux 的 Azure 存储资源管理器 0.9.1（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
-
 ### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
     * [联机文档](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
@@ -153,28 +223,6 @@ ms.lasthandoff: 12/05/2017
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-## <a name="previous-releases"></a>以前的版本
-
-* [版本 0.8.16](#version-0816)
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
-* [版本 0.8.9/0.8.8](#version-089--088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-0816"></a>版本 0.8.16
 8/21/2017
@@ -324,9 +372,9 @@ ms.lasthandoff: 12/05/2017
 ### <a name="version-089--088"></a>版本 0.8.9/0.8.8
 2017/02/23
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/R6gonK3cYAc?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SrRPCm94mfE?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/SrRPCm94mfE?ecver=1]
 
 
 #### <a name="new"></a>新建
@@ -357,7 +405,7 @@ ms.lasthandoff: 12/05/2017
 2016/12/16
 ### <a name="version-087"></a>版本 0.8.7
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
 #### <a name="new"></a>新建
 
@@ -445,7 +493,7 @@ ms.lasthandoff: 12/05/2017
 2016/09/12
 ### <a name="version-084"></a>版本 0.8.4
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
 #### <a name="new"></a>新建
 
@@ -466,7 +514,7 @@ ms.lasthandoff: 12/05/2017
 2016/08/03
 ### <a name="version-083"></a>版本 0.8.3
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
 #### <a name="new"></a>新建
 
@@ -492,7 +540,7 @@ ms.lasthandoff: 12/05/2017
 2016/07/07
 ### <a name="version-082"></a>版本 0.8.2
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
 #### <a name="new"></a>新建
 
@@ -515,11 +563,11 @@ ms.lasthandoff: 12/05/2017
 2016/06/15
 ### <a name="version-080"></a>版本 0.8.0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ycfQhKztSIY?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/ycfQhKztSIY?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k4_kOUCZ0WA?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/k4_kOUCZ0WA?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1]
 
 #### <a name="new"></a>新建
 
@@ -560,10 +608,9 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="version-07201603250"></a>版本 0.7.20160325.0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/imbgBRHX65A?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/imbgBRHX65A?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1" frameborder="0" allowfullscreen></iframe>
-
+>[!VIDEO https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1]
 
 #### <a name="new"></a>新建
 

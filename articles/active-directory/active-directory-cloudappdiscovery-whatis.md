@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/05/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5875cf4cc0938607fa1ff6adf840d513d1fb85bd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d0ad06fc7eec07f8e1e0ba47121b6eec01c87df
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="find-unmanaged-cloud-applications-with-cloud-app-discovery"></a>使用 Cloud App Discovery 查找非托管云应用程序
 ## <a name="summary"></a>摘要
 
-Cloud App Discovery 是 Azure Active Directory Premium 的一项功能，可用于发现组织中的人员所使用的非托管云应用程序。 在现代企业中，IT 部门不一定了解组织成员执行其工作所使用的所有云应用程序。 很容易知道为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。 缺乏认知可能使得要创建一个应付这些安全风险的计划让人却步。
+Azure Active Directory 中的 Cloud App Discovery 现在由 Microsoft Cloud App Security 支持，提供增强的无代理发现体验。 若要使用 Cloud App Discovery，只需使用 Azure AD Premium P1 凭据登录。 所有 Azure AD Premium P1 客户均可获得此更新，无需额外付费。 首先阅读[在 Azure AD 中设置 Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/cloudappdiscovery-get-started) 一文，然后试用 [Microsoft Cloud App Security](https://portal.cloudappsecurity.com/)。
 
-> [!TIP] 
-> 在 Azure Active Directory (Azure AD) 中核查 Cloud App Discovery 的改进，该功能已通过[与 Microsoft Cloud App Security 集成](https://portal.cloudappsecurity.com)而得到加强。
-
+> [!IMPORTANT] 
+> 当前的 Azure AD Cloud App Discovery 提供基于代理的发现体验，将于 2018 年 3 月 5 日关闭，之后会禁用代理和删除数据。 请在 3 月 5 日之前采取行动，启动并运行新的体验，避免服务中断。  
+ 
 **使用 Cloud App Discovery，可以：**
 
 * 查找正在使用的云应用程序，并根据用户数目、流量或应用程序的 Web 请求数目测量使用量。
