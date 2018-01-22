@@ -52,9 +52,15 @@
     - name: 2 - 设置设备
       href: tutorial-set-up-device.md
     - name: 3 - 将设备预配到 IoT 中心
-      href: tutorial-provision-device-to-hub.md
+      items:
+        - name: C
+          href: tutorial-provision-device-to-hub.md
+        - name: 'C#'
+          href: tutorial-net-provision-device-to-hub.md
     - name: 4 - 将设备预配到多个中心
       href: tutorial-provision-multiple-hubs.md
+    - name: 5 - 预配组注册
+      href: tutorial-group-enrollments.md
 - name: 概念
   items:
     - name: 设备概念
@@ -73,6 +79,8 @@
           href: how-to-manage-enrollments-sdks.md
     - name: 撤销设备访问权限
       href: how-to-revoke-device-access-portal.md
+    - name: 取消预配设备
+      href: how-to-unprovision-devices.md
     - name: 将 HSM 与 SDK 配合使用
       href: use-hsm-with-sdk.md
     - name: 控制对预配服务的访问

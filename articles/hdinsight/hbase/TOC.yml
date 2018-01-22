@@ -43,6 +43,11 @@
           href: apache-hbase-phoenix-squirrel-linux.md
         - name: 使用 Phoenix 查询服务器 REST SDK
           href: apache-hbase-using-phoenix-query-server-rest-sdk.md
+    - name: 分析大数据
+      items:
+        - name: 使用 Spark 读取和写入 HBase 数据
+          href: ../hdinsight-using-spark-query-hbase.md
+          maintainContext: true
     - name: 扩展群集
       items:
         - name: 使用 Bootstrap 自定义群集

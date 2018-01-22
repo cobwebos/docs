@@ -1,0 +1,65 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Azure 逻辑应用文档"
+metadata:
+  title: "Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档"
+  description: "Azure 逻辑应用简化了生成自动可缩放工作流的方法，便于跨云服务和本地系统集成应用和数据。 了解如何创建、设计和部署逻辑应用，以便自动完成快速入门、教程、模板和 API 中的业务流程。"
+  services: logic-apps
+  author: czeumault
+  manager: estfan
+  ms.service: logic-apps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: logic-apps
+  ms.date: 01/09/2018
+  ms.author: estfan
+  ms.openlocfilehash: f3238c50bf83719382537687faac16c249e1120a
+  ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/19/2018
+abstract:
+  description: "Azure 逻辑应用简化了生成自动可缩放工作流的方法，便于跨云服务和本地系统集成应用和数据。 了解如何创建、设计和部署逻辑应用，以便自动完成快速入门、教程、模板和 API 中的业务流程。"
+sections:
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "了解如何在 Azure 中创建逻辑应用。"
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: "Azure 门户"
+      href: /azure/logic-apps/quickstart-create-first-logic-app-workflow
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何生成按计划运行的逻辑应用，以便跨 Azure 服务、Microsoft 服务以及其他软件即服务 (SaaS) 应用集成数据。"
+  - type: list
+    style: ordered
+    items:
+    - html: "<a href=\"/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow\">使用按计划的逻辑应用检查流量</a>"
+    - html: "<a href=\"/azure/logic-apps/tutorial-process-mailing-list-subscriptions-workflow\">使用逻辑应用管理邮件列表请求</a>"
+    - html: "<a href=\"/azure/logic-apps/tutorial-process-email-attachments-workflow\">使用逻辑应用处理电子邮件和附件</a>"
+- title: "PluralSight 视频培训"
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: "Azure 逻辑应用 - 入门"
+      href: https://www.pluralsight.com/courses/azure-logic-apps-getting-started
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/azure-logic-apps-getting-started
+- title: "引用"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: "命令行"
+      html: <p><a href="/powershell/module/azurerm.logicapp/?view=azurermps-5.1.1">Azure PowerShell</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/logic/\">REST API 参考</a></p>"

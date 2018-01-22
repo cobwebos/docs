@@ -44,6 +44,8 @@
         - name: 适用于 VSCode 的工具
           href: ../hdinsight-for-vscode.md
           maintainContext: true
+        - name: 从针对 Visual Studio 的 R 工具提交作业
+          href: r-server-submit-jobs-r-tools-vs.md
     - name: 扩展群集
       items:
         - name: 使用 Bootstrap 自定义群集

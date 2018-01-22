@@ -286,6 +286,8 @@
           href: convert-disk-storage.md
         - name: 使用 Azure Site Recovery 迁移到高级存储
           href: migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: 查找未附加的磁盘
+          href: find-unattached-disks.md
         - name: 使用文件存储
           href: mount-azure-file-storage.md
         - name: 使用模板部署磁盘

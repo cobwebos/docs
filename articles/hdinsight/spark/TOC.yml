@@ -115,6 +115,9 @@
           href: apache-spark-microsoft-cognitive-toolkit.md
     - name: 分析大数据
       items:
+        - name: 使用 Spark 读取和写入 HBase 数据
+          href: ../hdinsight-using-spark-query-hbase.md
+          maintainContext: true
         - name: 分析 Application Insights 遥测日志
           href: apache-spark-analyze-application-insight-logs.md
     - name: 扩展群集
@@ -178,6 +181,8 @@
           maintainContext: true
     - name: 管理
       items:
+        - name: 优化 Spark 作业
+          href: apache-spark-perf.md
         - name: 群集容量规划
           href: ../hdinsight-capacity-planning.md
           maintainContext: true

@@ -131,10 +131,10 @@
       items:
         - name: Runbook 库
           href: automation-runbook-gallery.md
+        - name: 从 Azure 警报启动 Runbook
+          href: automation-create-alert-triggered-runbook.md
         - name: 创建 Amazon Web 服务 VM
           href: automation-scenario-aws-deployment.md
-        - name: 解决 Azure VM 警报
-          href: automation-azure-vm-alert-integration.md
         - name: 使用 JSON 标记启动/停止 VM
           href: automation-scenario-start-stop-vm-wjson-tags.md
         - name: 删除资源组
