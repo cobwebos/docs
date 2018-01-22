@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: d00c6e0acf437d2bfc3c27e948f4646a6685b08f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙保护下的 Azure 密钥保管库
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>问：我的密钥保管库客户端应用程序需位于防火墙之后。 我应该打开哪些端口、主机或 IP 地址才可启用对密钥保管库的访问？
 要访问密钥保管库，密钥保管库客户端应用程序必须访问多个终结点才可使用各种功能：
 
 * 通过 Azure Active Directory (Azure AD) 进行身份验证。
-* Azure 密钥保管库的管理。 这包括通过 Azure Resource Manager 创建、读取、更新、删除和设置访问策略。
+* Azure 密钥保管库的管理。 这包括通过 Azure 资源管理器创建、读取、更新、删除和设置访问策略。
 * 通过密钥保管库特定的终结点（例如 [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)），访问和管理密钥保管库本身存储的对象（密钥和密码）。  
 
 根据配置和环境，会有一些不同。   
@@ -38,18 +38,18 @@ ms.lasthandoff: 10/11/2017
 
 | 主体类型 | 终结点：端口 |
 | --- | --- |
-| 使用 Microsoft 帐户的用户<br> （例如，user@hotmail.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
-| 使用 Azure AD 的工作或学校帐户的用户或服务主体（例如，user@contoso.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443 |
+| 使用 Microsoft 帐户的用户<br> （例如，user@hotmail.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
+| 使用 Azure AD 的工作或学校帐户的用户或服务主体（例如，user@contoso.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443 |
 | 使用工作或学校帐户，以及 Active Directory 联合身份验证服务 (AD FS) 或其他联合终结点的用户或服务主体（例如，user@contoso.com） |工作或学校帐户的所有终结点，以及 AD FS 或其他联合终结点 |
 
 还可能存在一些其他复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](/documentation/articles/active-directory-authentication-scenarios/)、[将应用程序与 Azure Active Directory 集成](/documentation/articles/active-directory-integrating-applications/)和 [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  
 
 ## <a name="key-vault-management"></a>密钥保管库管理
-对于密钥保管库管理（CRUD 和设置访问策略），密钥保管库客户端应用程序需要访问 Azure Resource Manager 终结点。  
+对于密钥保管库管理（CRUD 和设置访问策略），密钥保管库客户端应用程序需要访问 Azure 资源管理器终结点。  
 
 | 操作类型 | 终结点：端口 |
 | --- | --- |
-| 密钥保管库控制平面操作<br> 密钥保管库控制平面操作 |**全局：**<br> management.azure.com:443<br><br> **Azure China：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |
+| 密钥保管库控制平面操作<br> （通过 Azure 资源管理器执行） |**全局：**<br> management.azure.com:443<br><br> **Azure China：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |
 | Azure Active Directory 图形 API |**全局：**<br> graph.windows.net:443<br><br> **Azure China：**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> graph.windows.net:443<br><br> **Azure Germany：**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>密钥保管库操作

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: b8f0f899dff0f9e238017cb77126b3ca1275f3cd
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: be84f68a044a73673e991f04c7fe36a7787b9c3c
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：热、冷、存档存储层
 
@@ -151,7 +151,7 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 
 **能否将默认帐户访问层设置为存档层？**
 
-不能。 只能将默认帐户访问层设置为热存储层或冷存储层。 只能在对象级别设置存档层。
+不会。 只能将默认帐户访问层设置为热存储层或冷存储层。 只能在对象级别设置存档层。
 
 **在哪些区域提供热、冷、存档存储层？**
 
@@ -189,7 +189,7 @@ Azure 门户、PowerShell 和 CLI 工具以及 .NET、Java、Python 和 Node.js 
 
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="evaluate-hot-cool-and-archvie-in-gpv2-blob-storage-accounts"></a>评估 GPv2 Blob 存储帐户中的热层、冷层和存档层
+### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>评估 GPv2 Blob 存储帐户中的热层、冷层和存档层
 
 [按区域查看热层、冷层和存档层](https://azure.microsoft.com/regions/#services)
 

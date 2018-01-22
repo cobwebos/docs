@@ -1,5 +1,5 @@
 ---
-title: "概述 - Azure AD B2C | Microsoft Docs"
+title: "云标识管理 Web 应用和移动应用 Azure AD B2C | Microsoft Docs"
 description: "使用 Azure Active Directory B2C 开发面向用户的应用程序"
 services: active-directory-b2c
 documentationcenter: 
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: saeedakhter-msft
-ms.openlocfilehash: bd29d78fa38dc4b5713d018eceed56e6b93739b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 7881793ebce10b4f9fbc9c534d9d6fc0ebb38f0b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C：专注于应用，让我们考虑注册和登录问题
 

@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a23835f341bf02f8e662782984d95bfe194030b
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 1a979bde37d247da5c630547924cadbd79c4a6a4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="compare-azure-iot-options"></a>比较 Azure IoT 选项
 
@@ -27,13 +27,13 @@ ms.lasthandoff: 11/29/2017
 
 若要实现此体系结构，可使用 Azure IoT 提供的几个选项，每个选项适用于不同组合的客户需求：
 
-* [Azure IoT 套件](index.md)是基于 Azure 平台即服务的企业级[预配置解决方案](iot-suite-what-are-preconfigured-solutions.md)集合，用于加速自定义 IoT 解决方案的开发。
+* [Azure IoT 套件](index.md)是基于 Azure 平台即服务 (PaaS) 的企业级[预配置解决方案](iot-suite-what-are-preconfigured-solutions.md)集合，用于加速自定义 IoT 解决方案的开发。
 
-* [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) 是一种 SaaS 解决方案，此解决方案使用基于模型的方法，用于生成企业级 IoT 解决方案而不需云解决方案开发专业知识。
+* [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) 是一种软件即服务 (SaaS) 解决方案，此解决方案使用基于模型的方法，用于生成企业级 IoT 解决方案而不需云解决方案开发专业知识。
 
 ## <a name="azure-iot-hub"></a>Azure IoT 中心
 
-Azure IoT 中心是核心的 Azure 平台即服务，可供 Microsoft IoT Central 和 Azure IoT 套件使用。 可以通过 IoT 中心在数百万个 IoT 设备和一个云解决方案之间实现安全可靠的双向通信。 可以借助 IoT 中心克服 IoT 实现难题，例如：
+Azure IoT 中心是核心的 Azure PaaS，可供 Microsoft IoT Central 和 Azure IoT 套件使用。 可以通过 IoT 中心在数百万个 IoT 设备和一个云解决方案之间实现安全可靠的双向通信。 可以借助 IoT 中心克服 IoT 实现难题，例如：
 
 * 大容量设备连接和管理。
 * 大容量遥测引入。
