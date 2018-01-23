@@ -1,6 +1,6 @@
 ---
-title: "Bash in Azure Cloud Shell 功能 | Microsoft Docs"
-description: "Bash in Azure Cloud Shell 的功能概述"
+title: "Azure Cloud Shell 中的 Bash 功能 | Microsoft Docs"
+description: "Azure Cloud Shell 中的 Bash 功能概述"
 services: Azure
 documentationcenter: 
 author: jluk
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 79c3f376c2800e2ce9123c31af6e1aa2aacfcf00
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: a6627ab6febc763ae3f1cd464f26ad641f7c717d
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Bash in Azure Cloud Shell 的功能和工具
+# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 的功能和工具
 
-[!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > 此外还提供了 [PowerShell](features-powershell.md) 中的功能和工具。
 
-Bash in Cloud Shell 在 `Ubuntu 16.04 LTS` 上运行。
+Cloud Shell 中的 Bash 在 `Ubuntu 16.04 LTS` 上运行。
 
 ## <a name="features"></a>功能
 
 ### <a name="secure-automatic-authentication"></a>安全自动身份验证
 
-Bash in Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 的访问权限。
+Cloud Shell 中的 Bash 安全并自动地验证帐户对 Azure CLI 2.0 的访问权限。
 
 ### <a name="ssh-into-azure-linux-virtual-machines"></a>通过 SSH 连接到 Azure Linux 虚拟机
 
@@ -43,10 +43,10 @@ Bash in Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 的访问权
 
 要在会话之间保存文件，Cloud Shell 会指导完成在首次启动时附加 Azure 文件共享。
 完成后，Cloud Shell 会自动为所有将来的会话附加存储（装载为 `$Home\clouddrive`）。
-此外，在 Bash in Cloud Shell 中，`$Home` 目录以 .img 格式持久保存在 Azure 文件共享中。
+此外，在 Cloud Shell 中的 Bash 中，`$Home` 目录以 .img 格式持久保存在 Azure 文件共享中。
 `$Home` 外部的文件和计算机状态不会持久保存在不同的会话中。
 
-[详细了解如何在 Bash in Cloud Shell 中持久保存文件。](persisting-shell-storage.md)
+[详细了解如何在 Cloud Shell 中的 Bash 中持久保存文件。](persisting-shell-storage.md)
 
 ## <a name="tools"></a>工具
 
@@ -59,7 +59,7 @@ Bash in Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 的访问权
 |生成工具            |make<br> maven<br> npm<br> pip         |
 |容器             |[Docker CLI](https://github.com/docker/cli)/[Docker 计算机](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |数据库              |MySQL 客户端<br> PostgreSql 客户端<br> [sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)|
+|其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/) |
 
 ## <a name="language-support"></a>语言支持
 
@@ -73,5 +73,5 @@ Bash in Cloud Shell 安全并自动地验证帐户对 Azure CLI 2.0 的访问权
 |Python     |2.7 和 3.5（默认）|
 
 ## <a name="next-steps"></a>后续步骤
-[Bash in Cloud Shell 快速入门](quickstart.md) <br>
+[Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
 [了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/)
