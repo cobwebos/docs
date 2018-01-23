@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: c99e5ebc2612e10f42bddbbd2f1c17d7404305d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c30b0a78cf3421554cf8f7c887c7973c7b9f4b9c
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="check-your-templates-for-azure-stack-with-template-validator"></a>与模板验证程序的 Azure 堆栈检查你的模板
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 说明 | 必选 |
+| 参数 | 说明 | 需要 |
 | ----- | -----| ----- |
 | TemplatePath | 指定的路径以递归方式查找资源管理器模板 | 是 | 
 | TemplatePattern | 指定要匹配的模板文件的名称。 | 否 |
@@ -93,7 +93,7 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 3.  Get CloudCapabilities cmdlet 用于检索服务版本，并创建云功能 JSON 文件：
 
     ```PowerShell
-    Get-AzureRMCloudCapabilities -Location 'local' -Verbose
+    Get-AzureRMCloudCapability -Location 'local' -Verbose
     ```             
 
 

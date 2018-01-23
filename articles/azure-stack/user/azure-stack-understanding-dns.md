@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.openlocfilehash: 8c023eda179ace41a082bf4a4fadc281c14db7ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 381947a5c936b2bbcae1cf61cdd36eb1653be30b
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introducing-idns-for-azure-stack"></a>为 Azure 堆栈引入 Idn
 
@@ -30,7 +30,7 @@ Idn 是一项功能，可用于解析外部 DNS 名称 （如 http://www.bing.co
 它是指一直都有在 Azure 中，但是位于 Windows Server 2016 和 Azure 堆栈过。
 
 ## <a name="what-does-idns-do"></a>Idn 的作用是什么？
-使用 Idn Azure 堆栈中，而无需指定自定义 DNS 服务器条目获取的以下功能。
+使用 Idn Azure 堆栈中，你可以获得以下功能，而无需指定自定义 DNS 服务器条目：
 
 * 共享租户工作负载的 DNS 名称解析服务。
 * 名称解析和 DNS 注册租户虚拟网络内的权威 DNS 服务。
@@ -47,7 +47,7 @@ Idn 是一项功能，可用于解析外部 DNS 名称 （如 http://www.bing.co
 
 在上图中，Azure 将创建的"A"记录在 DNS 中在该区域下指定的 DNS 名称标签**westus.cloudapp.azure.com**。前缀和后缀一起构成完全限定域名名称 (FQDN)，可以从任意位置在上解析公共 Internet。
 
-Azure 堆栈仅支持 Idn 的内部名称注册，因此它不能。
+Azure 堆栈仅支持 Idn 的内部名称注册，因此无法执行以下：
 
 * 创建现有托管 DNS 区域 (例如，local.azurestack.external) 下的 DNS 记录。
 * 创建 DNS 区域 （例如 Contoso.com)。
