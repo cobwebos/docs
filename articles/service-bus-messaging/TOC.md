@@ -28,13 +28,13 @@
 ### [基于角色的访问控制（预览）](service-bus-role-based-access-control.md)
 ### [高级消息传送](service-bus-premium-messaging.md)
 ### [Azure 队列与服务总线队列的比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-### [构建多层服务总线应用程序](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [优化性能](service-bus-performance-improvements.md)
 ### [异地灾难恢复和异地复制](service-bus-geo-dr.md)
 ### [异步消息传送和高可用性](service-bus-async-messaging.md)
 ### [处理中断和灾难问题](service-bus-outages-disasters.md)
 
 ## 开发
+### [构建多层服务总线应用程序](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### 消息处理
 #### [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 #### [消息、有效负载和序列化](service-bus-messages-payloads.md)

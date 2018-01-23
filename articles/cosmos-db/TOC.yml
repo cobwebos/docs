@@ -341,7 +341,7 @@
         - name: 管理密钥和一致性
           href: manage-account.md
         - name: Azure 存储资源管理器
-          href: tutorial-documentdb-and-mongodb-in-storage-explorer.md
+          href: storage-explorer.md
         - name: “安全”
           items:
             - name: 静态加密
