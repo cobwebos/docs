@@ -33,7 +33,7 @@
           href: tutorial-deploy-ssis-packages-azure.md
     - name: 2 - 复制云中的数据
       items:
-        - name: “复制数据”工具
+        - name: 复制数据工具
           href: tutorial-copy-data-tool.md
         - name: 用户界面 (UI)
           href: tutorial-copy-data-portal.md
@@ -41,7 +41,7 @@
           href: tutorial-copy-data-dot-net.md
     - name: 3 - 将本地数据复制到云中
       items:
-        - name: “复制数据”工具
+        - name: 复制数据工具
           href: tutorial-hybrid-copy-data-tool.md
         - name: 用户界面 (UI)
           href: tutorial-hybrid-copy-portal.md
@@ -64,6 +64,8 @@
               href: tutorial-incremental-copy-powershell.md
         - name: 5.2 - 从多个表复制
           items:
+            - name: 用户界面 (UI)
+              href: tutorial-incremental-copy-multiple-tables-portal.md
             - name: Azure PowerShell
               href: tutorial-incremental-copy-multiple-tables-powershell.md
         - name: 5.3 - 使用更改跟踪功能
@@ -114,7 +116,7 @@
       items:
         - name: 通过复制活动复制数据
           href: copy-activity-overview.md
-        - name: “复制数据”工具
+        - name: 复制数据工具
           href: copy-data-tool.md
           items:
             - name: 加载 Data Lake Store

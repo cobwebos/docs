@@ -34,7 +34,7 @@
         - name: Kafka 和 Spark（结构化流式处理）
           href: ../hdinsight-apache-kafka-spark-structured-streaming.md
           maintainContext: true
-        - name: 通过结构化流式处理将数据从 Kafka 传输到 CosmosDB
+        - name: 通过结构化流式处理将数据从 Kafka 传输到 Azure Cosmos DB
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
           maintainContext: true
         - name: Kafka 和 Spark (DStream)

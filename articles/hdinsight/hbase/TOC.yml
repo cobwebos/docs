@@ -39,6 +39,9 @@
         - name: 创建非交互式身份验证 .NET HDInsight 应用程序
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
           maintainContext: true
+        - name: HDInsight 中的 Apache Phoenix
+          href: ../hdinsight-phoenix-in-hdinsight.md
+          maintainContext: true
         - name: 使用 Phoenix 和 SQLLine
           href: apache-hbase-phoenix-squirrel-linux.md
         - name: 使用 Phoenix 查询服务器 REST SDK

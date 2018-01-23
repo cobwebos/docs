@@ -330,6 +330,8 @@
           items:
             - name: MySQL
               href: mysql-install.md
+            - name: SUSE 上的 MySQL
+              href: mysql-on-opensuse.md
             - name: MongoDB
               href: install-mongodb.md
             - name: PostgreSQL

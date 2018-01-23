@@ -265,7 +265,7 @@
           href: site-recovery-manage-registration-and-protection.md
         - name: 删除保管库
           href: delete-vault.md
-    - name: 故障排除
+    - name: 监视和故障排除
       items:
         - name: Azure 到 Azure 复制问题
           href: site-recovery-azure-to-azure-troubleshoot-errors.md
@@ -275,8 +275,8 @@
           href: site-recovery-vmware-to-azure-push-install-error-codes.md
         - name: 故障转移到 Azure 的问题
           href: site-recovery-failover-to-azure-troubleshoot.md
-        - name: 收集日志并排查本地问题
-          href: site-recovery-monitoring-and-troubleshooting.md
+        - name: 监视 Azure Site Recovery
+          href: site-recovery-monitor-and-troubleshoot.md
 - name: 引用
   items:
     - name: Azure PowerShell

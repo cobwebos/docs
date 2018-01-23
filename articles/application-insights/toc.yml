@@ -170,6 +170,8 @@
               href: app-insights-live-stream.md
             - name: 应用程序地图
               href: app-insights-app-map.md
+            - name: 事务诊断
+              href: app-insights-transaction-diagnostics.md
             - name: HockeyApp 数据
               href: app-insights-hockeyapp-bridge-app.md
         - name: Visual Studio

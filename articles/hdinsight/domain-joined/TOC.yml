@@ -10,6 +10,9 @@
       href: apache-domain-joined-configure.md
     - name: 使用 Azure AD DS 配置已加入域的群集
       href: apache-domain-joined-configure-using-azure-adds.md
+    - name: 将 Azure AD 用户同步到 HDInsight 群集
+      href: ../hdinsight-sync-aad-users-to-cluster.md
+      maintainContext: true
     - name: 配置 Hive 策略
       href: apache-domain-joined-run-hive.md
       maintainContext: true

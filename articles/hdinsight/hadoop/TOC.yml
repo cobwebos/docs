@@ -4,6 +4,9 @@
   items:
     - name: 概述
       href: apache-hadoop-introduction.md
+    - name: HDInsight 中的 Hadoop 体系结构
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
     - name: HDInsight 上的 Hadoop 组件
       href: ../hdinsight-component-versioning.md
       maintainContext: true
@@ -153,6 +156,12 @@
           maintainContext: true
         - name: 适用于 HDInsight 的高级分析
           href: apache-hadoop-deep-dive-advanced-analytics.md
+        - name: HDInsight 中的机器学习
+          href: ../hdinsight-machine-learning-overview.md
+          maintainContext: true
+        - name: HDInsight 中的大规模流式处理
+          href: ../hdinsight-streaming-at-scale-overview.md
+          maintainContext: true
     - name: 扩展群集
       items:
         - name: 使用 Bootstrap 自定义群集
