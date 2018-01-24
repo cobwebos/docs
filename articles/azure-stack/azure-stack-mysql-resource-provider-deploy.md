@@ -3,7 +3,7 @@ title: "MySQL 数据库用作 Azure 堆栈上的 PaaS |Microsoft 文档"
 description: "了解如何部署 MySQL 资源提供程序和提供作为 Azure 堆栈上的服务的 MySQL 数据库"
 services: azure-stack
 documentationCenter: 
-author: JeffGoldner
+author: mattbriggs
 manager: bradleyb
 editor: 
 ms.service: azure-stack
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: JeffGo
-ms.openlocfilehash: d0394fd1edf21cdbb863a88a1d3ecef118a7d886
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.author: mabrigg
+ms.openlocfilehash: 97344009ffb42d99824d053652594546f9f53374
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 01/10/2018
 
 6. [安装 Azure PowerShell 版本 1.2.11](azure-stack-powershell-install.md)。
 
-7. 运行 DeploySqlProvider.ps1 脚本。
+7. 运行 `DeployMySqlProvider.ps1` 脚本。
 
 脚本执行以下步骤：
 
@@ -155,7 +155,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 参数
+### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 参数
 你可以在命令行中指定这些参数。 如果你不希望这样做，或任何参数验证失败，系统会提示你提供所需的。
 
 | 参数名称 | 说明 | 注释或默认值 |
@@ -315,7 +315,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -AcceptLicense
  ```
 
-### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 参数
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 parameters
 你可以在命令行中指定这些参数。 如果你不希望这样做，或任何参数验证失败，系统会提示你提供所需的。
 
 | 参数名称 | 说明 | 注释或默认值 |

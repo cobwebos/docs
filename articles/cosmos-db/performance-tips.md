@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: mimig
 ms.openlocfilehash: 84a1913bd218d512f7f2818291f59d98628a7272
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/18/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -113,7 +113,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     (b) 优化MaxBufferedItemCount\: 并行查询专用于在客户端处理结果的当前批处理时预提取结果。 预提取帮助改进查询中的的总体延迟。 MaxBufferedItemCount 是限制预提取结果数目的参数。 将 MaxBufferedItemCount 设置为预期返回的结果数（或较大的数字）使查询从预提取获得最大的好处。
 
-    预提取的工作方式相同，而不考虑 MaxDegreeOfParallelism，还有来自所有分区的数据的单独缓冲区。  
+    预提取的工作方式不因 MaxDegreeOfParallelism 而异，并且有一个单独的缓冲区用来存储所有分区的数据。  
 5. **打开服务器端 GC**
 
     在某些情况下，降低垃圾收集的频率可能会有帮助。 在 .NET 中，应将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 true。

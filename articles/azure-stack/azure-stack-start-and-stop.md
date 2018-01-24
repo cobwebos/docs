@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 09c22b22b49664a55b8a9e77936df3b1362d5b88
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 9bbfffe15dc23d5d7d7b17aa4c79edc8a2aaab8c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>启动和停止 Azure 堆栈
 
@@ -41,6 +41,15 @@ ms.lasthandoff: 01/23/2018
 > [!Note]  
 > 可以通过从原始设备制造商 (OEM) 提供你的 Azure 堆栈硬件的说明来验证物理节点的电源状态。 
 
+## <a name="start-azure-stack"></a>启动 Azure 堆栈 
+
+通过执行以下步骤开始 Azure 堆栈。 请按照下列步骤而不考虑 Azure 堆栈的已停止。
+
+1. 在每个 Azure 堆栈环境中的物理节点上的电源。 通过按照从原始设备制造商 (OEM) 人员为 Azure 堆栈提供硬件的说明进行操作来验证说明物理节点上的电源。
+
+2. 等待，直到 Azure 堆栈的基础结构服务启动。 Azure 堆栈的基础结构服务可能需要完成启动过程的两个小时。 你可以验证 Azure 堆栈的启动状态[ **Get ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack)。
+
+
 ## <a name="get-the-startup-status-for-azure-stack"></a>Azure 堆栈中获得的启动状态
 
 启动获取 Azure 堆栈启动例程替换为以下步骤：
@@ -52,14 +61,6 @@ ms.lasthandoff: 01/23/2018
     ```powershell
       Get-ActionStatus Start-AzureStack
     ```
-
-## <a name="start-azure-stack"></a>启动 Azure 堆栈 
-
-通过执行以下步骤开始 Azure 堆栈。 请按照下列步骤而不考虑 Azure 堆栈的已停止。
-
-1. 在每个 Azure 堆栈环境中的物理节点上的电源。 通过按照从原始设备制造商 (OEM) 人员为 Azure 堆栈提供硬件的说明进行操作来验证说明物理节点上的电源。
-
-2. 等待，直到 Azure 堆栈的基础结构服务启动。 Azure 堆栈的基础结构服务可能需要完成启动过程的两个小时。 你可以验证 Azure 堆栈的启动状态[ **Get ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack)。
 
 ## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>解决 Azure 堆栈的启动和关闭
 

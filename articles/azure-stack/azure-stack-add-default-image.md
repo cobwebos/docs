@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 1/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: f88ac4da58279ea9642bd93ac5f971d8047e310b
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: b0b0a4af1d852de516d387697afb2760b967db43
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>将 Windows Server 2016 VM 映像添加到 Azure 堆栈应用商店
 
@@ -135,19 +135,23 @@ ms.lasthandoff: 01/10/2018
 
 若要确保 Windows Server 2016 VM 映像具有最新的累积更新，包括`IncludeLatestCU`参数在运行时`New-AzsServer2016VMImage`cmdlet。 有关允许的参数信息`New-AzsServer2016VMImage`cmdlet，请参阅[参数](#parameters)。 它采用大约一小时才能将该映像发布到 Azure 堆栈应用商店。 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters-for-new-azsserver2016vmimage"></a>新 AzsServer2016VMImage 参数
 
-|新 AzsServer2016VMImage 参数|需要|说明|
-|-----|-----|------|
-|ISOPath|是|下载 Windows Server 2016 ISO 完全限定的路径。|
-|net35|否|在 Windows Server 2016 映像上安装.NET 3.5 运行时。 默认情况下，此值设置为**true**。|
-|版本|否|指定**核心**，**完整**，或**同时**Windows Server 2016 映像。 默认情况下，此值设置为**完整**。|
-|VHDSizeInMB|否|设置要添加到你的 Azure 堆栈环境的 VHD 映像的大小 （以 mb 为单位）。 默认情况下，此值设置为 40,960 MB。|
-|CreateGalleryItem|否|指定是否应为 Windows Server 2016 映像创建的应用商店项。 默认情况下，此值设置为**true**。|
-|location |否 |指定的 Windows Server 2016 映像应将其发布到的位置。|
-|IncludeLatestCU|否|适用于新的 VHD 的最新的 Windows Server 2016 累积更新 （请检查脚本以确保它指向最新的更新或使用下面的两个选项之一）。 |
-|CUUri |否 |设置 Windows Server 2016 累积更新为特定 URI 从运行中。 |
-|CUPath |否 |设置 Windows Server 2016 累积更新从本地路径中运行。 此选项很有帮助，如果你已经部署了连接断开的环境中的 Azure 堆栈实例。|
+### <a name="new-azsserver2016vmimage"></a>New-AzsServer2016VMImage 
+
+创建和上载新的 Server 2016 Core 和，或完整的映像，并为其创建的应用商店项。
+
+| parameters | 需要 | 示例 | 说明 |
+|-----|-----|------|---- |
+|ISOPath|是| N:\ISO\en_windows_16_x64_dvd | 下载 Windows Server 2016 ISO 完全限定的路径。|
+|Net35|否| True | 在 Windows Server 2016 映像上安装.NET 3.5 运行时。 默认情况下，此值设置为**true**。|
+|版本|否| 完整 |  指定**核心**，**完整**，或**同时**Windows Server 2016 映像。 默认情况下，此值设置为**完整**。|
+|VHDSizeInMB|否| 40,960 | 设置要添加到你的 Azure 堆栈环境的 VHD 映像的大小 （以 mb 为单位）。 默认情况下，此值设置为 40,960 MB。|
+|CreateGalleryItem|否| True | 指定是否应为 Windows Server 2016 映像创建的应用商店项。 默认情况下，此值设置为**true**。|
+|location |否 | D:\ | 指定的 Windows Server 2016 映像应将其发布到的位置。|
+|IncludeLatestCU|否| False | 适用于新的 VHD 的最新的 Windows Server 2016 累积更新。 检查脚本以确保它指向最新的更新或使用下面的两个选项之一。 |
+|CUUri |否 | https://yourupdateserver/winservupdate2016 | 设置 Windows Server 2016 累积更新为特定 URI 从运行中。 |
+|CUPath |否 | C:\winservupdate2016 | 设置 Windows Server 2016 累积更新从本地路径中运行。 此选项很有帮助，如果你已经部署了连接断开的环境中的 Azure 堆栈实例。|
 
 ## <a name="next-steps"></a>后续步骤
 

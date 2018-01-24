@@ -302,7 +302,7 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 > 通常不应将有状态服务终结点公开到 Internet。 位于无法识别 Service Fabric 服务解析的负载均衡器（如 Azure 负载均衡器）后的群集将无法公开有状态服务，因为负载均衡器无法找到流量并将其路由到相应有状态服务副本。 
 
 ### <a name="externally-exposed-aspnet-core-stateless-services"></a>外部公开的 ASP.NET Core 无状态服务
-对于公开面向 Internet 的外部 HTTP 终结点的前端服务，建议使用 HttpSys Web 服务器。 在 Windows 上，HttpSys 可用于提供端口共享功能，允许使用同一端口在同一组节点上托管多个 Web 服务（通过主机名或路径进行区分），而不依赖前端代理或网关来提供 HTTP 路由。
+对于公开面向 Internet 的外部 HTTP 终结点的前端服务，建议使用 Kestrel Web 服务器。 在 Windows 上，HttpSys 可用于提供端口共享功能，允许使用同一端口在同一组节点上托管多个 Web 服务（通过主机名或路径进行区分），而不依赖前端代理或网关来提供 HTTP 路由。
  
 向 Internet 公开时，无状态服务应使用可通过负载均衡器到达的已知稳定终结点。 这是将为应用程序的用户提供的 URL。 建议采用以下配置：
 
