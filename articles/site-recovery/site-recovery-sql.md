@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: pratshar
-ms.openlocfilehash: 04fb9ebc8a235dd15817fbb5efd08922ae287aa1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server
 
@@ -66,7 +66,7 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 
 **功能** | **详细信息** | **SQL Server** |
 --- | --- | ---
-**Always On 可用性组** | SQL Server 的多个独立实例，每个实例在包含多个节点的故障转移群集中运行。<br/><br/>数据库可以分组到可在 SQL Server 实例上复制（镜像）的故障转移组，因此不需要任何共享存储。<br/><br/>在主站点与一个或多个辅助站点之间提供灾难恢复。 使用同步复制与自动故障转移在可用性组中配置 SQL Server 数据库时，可以在不共享任何内容的群集中设置两个节点。 | SQL Server 2014 和 2012 Enterprise 版本
+**Always On 可用性组** | SQL Server 的多个独立实例，每个实例在包含多个节点的故障转移群集中运行。<br/><br/>数据库可以分组到可在 SQL Server 实例上复制（镜像）的故障转移组，因此不需要任何共享存储。<br/><br/>在主站点与一个或多个辅助站点之间提供灾难恢复。 使用同步复制与自动故障转移在可用性组中配置 SQL Server 数据库时，可以在不共享任何内容的群集中设置两个节点。 | SQL Server 2016、SQL Server 2014 和 SQL Server 2012 Enterprise Edition
 **故障转移群集 (Always On FCI)** | SQL Server 利用 Windows 故障转移群集实现本地 SQL Server 工作负载的高可用性。<br/><br/>使用共享磁盘运行 SQL Server 实例的节点是在故障转移群集中配置的。 如果实例关闭，群集将故障转移到另一个节点。<br/><br/>群集无法防止共享存储的故障或中断。 共享磁盘可以使用 iSCSI、光纤通道或共享 VHDX 来实现。 | SQL Server Enterprise 版本<br/><br/>SQL Server Standard 版本（仅限两个节点）
 **数据库镜像（高安全性模式）** | 在单个辅助副本中保护单个数据库。 提供高安全性（同步）和高性能（异步）复制模式。 不需要故障转移群集。 | SQL Server 2008 R2<br/><br/>SQL Server Enterprise 的所有版本
 **独立 SQL Server** | SQL Server 和数据库托管在单个服务器（物理或虚拟）上。 如果是虚拟服务器，则主机群集用于高可用性。 没有来宾级别的高可用性。 | Enterprise 或 Standard 版本
@@ -118,7 +118,7 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 
 SQL Always On 无法原生支持测试性故障转移。 因此，我们建议：
 
-1. 在虚拟机上设置 [Azure 备份](../backup/backup-azure-vms.md)，该虚拟机在 Azure 中托管可用性组副本。
+1. 在虚拟机上设置 [Azure 备份](../backup/backup-azure-arm-vms.md)，该虚拟机在 Azure 中托管可用性组副本。
 
 1. 触发对恢复计划进行测试性故障转移之前，请从上一步骤中进行的备份恢复虚拟机。
 

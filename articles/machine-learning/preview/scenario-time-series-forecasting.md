@@ -7,6 +7,7 @@ author: anta
 manager: ireiter
 editor: anta
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17903df93e11b8d1a5b9c6fbe5fd8e53302f45f4
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="energy-demand-time-series-forecasting"></a>能源需求时序预测
 
@@ -53,16 +54,14 @@ Azure Machine Learning Workbench 能够为过程建模的每个步骤提供帮�
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
+- [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
 - 遵循[安装快速入门指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
 - 本示例假设在本地装有 [Docker 引擎](https://www.docker.com/)的 Windows 10 上运行 Azure ML Workbench。 如果使用 macOS，操作说明大致相同。
-- 已根据此[指南](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md)中所述，设置了装有本地开发环境的 Azure 机器学习操作化，并创建了模型管理帐户。
+- 已根据此[指南](./model-management-configuration.md)中所述，设置了装有本地开发环境的 Azure 机器学习操作化，并创建了模型管理帐户。
 - 本示例要求将 Pandas 安装更新到 0.20.3 或更高版本，并安装 matplotlib。 在 Workbench 上的“文件”菜单中单击“打开命令提示符”，运行以下命令安装这些依赖项：
 
     ```
-    conda install "pandas>=0.20.3"
-
-    conda install matplotlib
+    conda install "pandas>=0.21.1"
     ```
     
 ## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
@@ -77,7 +76,7 @@ Azure Machine Learning Workbench 能够为过程建模的每个步骤提供帮�
 
 ## <a name="data-description"></a>数据说明
 
-有两个数据集：`nyc_demand.csv` 和 `nyc_weather.csv`：
+此示例提供了两个数据集，可使用 `1-data-preparation.ipynb` 笔记本下载：`nyc_demand.csv` 和 `nyc_weather.csv`。
 
 **nyc_demand.csv** 包含纽约市 2012 至 2017 年每小时的能源需求值。 数据采用以下简单结构：
 

@@ -12,23 +12,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中心 .NET Framework API 概述
+
 本文汇总了一些重要的事件中心 .NET Framework 客户端 API。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 使用管理操作，可以通过创建、更新和删除实体来管理事件中心实体状态。
 
-监视方案跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅[服务总线 .NET](/dotnet/api/microsoft.servicebus.messaging) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 参考。
+[监视方案](event-hubs-metrics-azure-monitor.md)跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅[服务总线 .NET](/dotnet/api/microsoft.servicebus.messaging) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 参考。
 
 ## <a name="management-apis"></a>管理 API
+
 若要执行以下管理操作，必须对事件中心命名空间具有**管理**权限：
 
 ### <a name="create"></a>创建
+
 ```csharp
 // Create the event hub
 var ehd = new EventHubDescription(eventHubName);
@@ -37,6 +40,7 @@ await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
 ### <a name="update"></a>更新
+
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
 
@@ -49,18 +53,21 @@ await namespaceManager.UpdateEventHubAsync(ehd);
 ```
 
 ### <a name="delete"></a>删除
+
 ```csharp
-await namespaceManager.DeleteEventHubAsync("Event Hub name");
+await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
 ## <a name="run-time-apis"></a>运行时 API
 ### <a name="create-publisher"></a>创建发布者
+
 ```csharp
 // EventHubClient model (uses implicit factory instance, so all links on same connection)
-var eventHubClient = EventHubClient.Create("Event Hub name");
+var eventHubClient = EventHubClient.Create("event hub name");
 ```
 
 ### <a name="publish-message"></a>发布消息
+
 ```csharp
 // Create the device/temperature metric
 var info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
@@ -79,6 +86,7 @@ await client.SendAsync(data);
 ```
 
 ### <a name="create-consumer"></a>创建使用者
+
 ```csharp
 // Create the Event Hubs client
 var eventHubClient = EventHubClient.Create(EventHubName);
@@ -97,6 +105,7 @@ var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index
 ```
 
 ### <a name="consume-message"></a>使用消息
+
 ```csharp
 var message = await consumer.ReceiveAsync();
 
@@ -109,6 +118,7 @@ msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
 ## <a name="event-processor-host-apis"></a>事件处理程序主机 API
+
 这些 API 通过在可用工作进程之间分布分区，为可能变为不可用的工作进程提供复原能力。
 
 ```csharp

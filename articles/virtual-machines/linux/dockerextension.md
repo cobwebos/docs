@@ -12,16 +12,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 0cef78edaeec9d45aa733b1912d82d5a058ba289
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce44a5e4db080822aaec0b50a265b863059bd45a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>在 Azure 中使用 Docker VM 扩展创建 Docker 环境
-Docker 是流行的容器管理和映像处理平台，用于在 Linux 上快速操作容器。 在 Azure 中，可以通过各种方法根据需要部署 Docker。 本文重点介绍如何通过 Azure CLI 2.0 使用 Docker VM 扩展和 Azure Resource Manager 模板。 还可以使用 [Azure CLI 1.0](dockerextension-nodejs.md) 执行这些步骤。
+Docker 是流行的容器管理和映像处理平台，用于在 Linux 上快速操作容器。 在 Azure 中，可以通过各种方法根据需要部署 Docker。 本文重点介绍如何通过 Azure CLI 2.0 使用 Docker VM 扩展和 Azure 资源管理器模板。 还可以使用 [Azure CLI 1.0](dockerextension-nodejs.md) 执行这些步骤。
 
 ## <a name="azure-docker-vm-extension-overview"></a>Azure Docker VM 扩展概述
 Azure Docker VM 扩展在 Linux 虚拟机 (VM) 中安装并配置 Docker 守护程序、Docker 客户端和 Docker Compose。 使用 Azure Docker VM 扩展，可以获得更多控制和功能，而不是只是使用 Docker Machine 或自己创建 Docker 主机。 这些附加功能（如 [Docker Compose](https://docs.docker.com/compose/overview/)），使 Azure Docker VM 扩展适用于更可靠的开发人员或生产环境。
@@ -29,7 +29,8 @@ Azure Docker VM 扩展在 Linux 虚拟机 (VM) 中安装并配置 Docker 守护�
 有关不同部署方法（包括如何使用 Docker Machine 和 Azure 容器服务）的详细信息，请参阅以下文章：
 
 * 若要快速创建应用的原型，可以使用 [Docker Machine](docker-machine.md) 创建一个 Docker 主机。
-* 若要构建提供其他计划和管理工具的生产就绪、可缩放环境，可以[在 Azure 容器服务上部署 Docker Swarm 群集](../../container-service/dcos-swarm/container-service-deployment.md)。
+* 若要构建提供其他计划和管理工具的生产就绪、可缩放环境，可以在 Azure 容器服务上部署 [Kubernetes](../../container-service/kubernetes/index.yml) 或 [Docker Swarm](../../container-service/dcos-swarm/index.yml) 群集。
+
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>使用 Azure Docker VM 扩展部署模板
 让我们使用现有的快速入门模板来创建 Ubuntu VM，以使用 Azure Docker VM 扩展来安装和配置 Docker 主机。 可以在此处查看模板：[使用 Docker 轻松部署 Ubuntu VM](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)。 需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
@@ -40,32 +41,15 @@ Azure Docker VM 扩展在 Linux 虚拟机 (VM) 中安装并配置 Docker 守护�
 az group create --name myResourceGroup --location eastus
 ```
 
-接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 VM，其中包含 [GitHub 中此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值，如下所示：
+接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-需要几分钟才能完成部署。 部署完成后，[移到下一步](#deploy-your-first-nginx-container)，将 SSH 移到 VM。 
+需要几分钟才能完成部署。
 
-（可选）要改为将控制返回提示符，并允许部署在后台继续运行，请将 `--no-wait` 标志添加到前一个命令。 此过程允许在 CLI 中执行其他工作，同时部署将持续几分钟。 
-
-可以使用 [az vm show](/cli/azure/vm#show) 查看有关 Docker 主机状态的详细信息。 以下示例在名为 myResourceGroup 的资源组中检查名为 myDockerVM（模板中的默认名称 - 请不要更改该名称）的 VM 的状态：
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
-    --name myDockerVM \
-    --query [provisioningState] \
-    --output tsv
-```
-
-当此命令返回“已成功”时，表示部署完毕，可使用以下步骤将 SSH 移到 VM。
 
 ## <a name="deploy-your-first-nginx-container"></a>部署第一个 NGINX 容器
 若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm#show)：
@@ -79,7 +63,7 @@ az vm show \
     --output tsv
 ```
 
-通过 SSH 连接到新的 Docker 主机。 提供自己的 DNS 名称，如下所示：
+通过 SSH 连接到新的 Docker 主机。 提供来自前面步骤的自己的用户名和 DNS 名称：
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
@@ -145,7 +129,7 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 }
 ```
 
-有关更详细的 Resource Manager 模板用法演练，请阅读 [Azure Resource Manager overview](../../azure-resource-manager/resource-group-overview.md)（Azure Resource Manager 概述）。
+有关更详细的资源管理器模板用法演练，请阅读 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 可能需要使用 [Docker Compose](https://docs.docker.com/compose/overview/) [配置 Docker 守护程序 TCP 端口](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket)、了解 [Docker 安全性](https://docs.docker.com/engine/security/security/)或部署容器。 有关 Azure Docker VM 扩展本身的详细信息，请参阅 [GitHub 项目](https://github.com/Azure/azure-docker-extension/)。

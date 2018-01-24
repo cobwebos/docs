@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 [命名空间](relay-create-namespace-portal.md)是一个范围容器，可用于对应用程序中的中继资源进行寻址。 必须创建命名空间才能使用中继。 这是入门的开始步骤之一。
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>服务总线中继服务发生了什么情况？
-以前命名的服务总线中继服务现在称为 WCF 中继。 可以继续照常使用此服务。 混合连接功能是一种更新版的服务，从 Azure BizTalk 服务移植过来。 将继续支持 WCF 中继和混合连接。
+以前命名的服务总线中继服务现在称为 [WCF 中继](relay-wcf-dotnet-get-started.md)。 可以继续照常使用此服务。 混合连接功能是一种更新版的服务，从 Azure BizTalk 服务移植过来。 将继续支持 WCF 中继和混合连接。
 
 ## <a name="pricing"></a>定价
 本部分回答了一些关于中继定价结构的常见问题。 若要了解一般的 Azure 定价信息，还可以参阅 [Azure 支持常见问题](http://go.microsoft.com/fwlink/?LinkID=185083)。 有关中继定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。
@@ -76,7 +76,7 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用 **netTCPRelay** 绑定的中继，所有数据都会被视为用于计算可计费消息的数据流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
 
 ## <a name="quotas"></a>配额
-| 配额名称 | 范围 | 类型 | 超出时的行为 | 值 |
+| 配额名称 | 范围 | Type | 超出时的行为 | 值 |
 | --- | --- | --- | --- | --- |
 | 中继上的并发侦听器数 |实体 |静态 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
 | 并发中继侦听器数 |系统级 |静态 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |2,000 |

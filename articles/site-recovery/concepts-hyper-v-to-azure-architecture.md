@@ -1,24 +1,16 @@
 ---
-title: "查看使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制的体系结构 | Microsoft Docs"
+title: "使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制的体系结构 | Microsoft Docs"
 description: "本文概述通过 Azure Site Recovery 服务将本地 Hyper-V VM 复制到 Azure（不使用 VMM）所用的组件和体系结构。"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 737cd30b-3994-4b18-9bd4-78c723601310
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 991c72352eaa4c3b12fcdc1e4112063fb698e772
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa27d75c5a1efe3971cabfe2b6a39433c772a40a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V 到 Azure 复制体系结构
 
@@ -149,6 +141,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-检查支持矩阵，按照本教程启用从 Hyper-V 到 Azure 的复制。
-运行故障转移和故障回复。
+
+按照[此教程](tutorial-prepare-azure.md)开始执行 Hyper-V 到 Azure 的复制。
+
 

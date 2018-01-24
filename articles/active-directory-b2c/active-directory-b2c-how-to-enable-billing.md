@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: parja
-ms.openlocfilehash: d6b25d6b9a0d5b3bcf613046a82a9c6c99475d6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 063c00fe47be25b9359e80d71abfaf453c7a7074
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>将 Azure 订阅链接到 Azure AD B2C 租户
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
 
 ![创建 B2C 资源](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
-## <a name="manage-your-azure-ad-b2c-tenent-resources"></a>管理 Azure AD B2C 租户资源
+## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>管理 Azure AD B2C 租户资源
 
 在 Azure 订阅中成功创建 Azure AD B2C 资源后，应会看到连同其他 Azure 资源一起添加了“B2C 租户”类型的新资源。
 

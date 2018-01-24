@@ -4,15 +4,17 @@ description: "此方案展示了如何使用 Azure Machine Learning Workbench �
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>使用 Azure Machine Learning Workbench 执行超参数的分布式优化
 
@@ -26,24 +28,26 @@ ms.lasthandoff: 12/08/2017
 ## <a name="use-case-overview"></a>用例概述
 
 许多机器学习算法具有一个或多个旋钮，称为超参数。 这些旋钮可用来优化算法以针对根据用户指定的指标（例如，准确度、AUC、RMSE）度量的将来数据优化其性能。 基于训练数据构建模型时以及查看将来的测试数据之前，数据科学家需要提供超参数的值。 可以如何基于已知的训练数据来设置超参数的值，以便使模型对于未知的测试数据具有良好的性能？ 
-
+    
 用于优化超参数的一种常用方法是“网格搜索”加“交叉验证”。 交叉验证是一种评估方法，用于评估根据训练集训练的模型的好坏程度，针对测试集进行预测。 使用此方法时，我们首先将数据集分为 K 份，然后以循环方式将算法训练 K 次。 该操作针对除保留份之外的所有份。 我们将针对 K 个保留份计算 K 个模型的指标的平均值。 此平均值称为“交叉验证的性能估计值”，取决于在创建 K 个模型时使用的超参数的值。 当优化超参数时，我们在候选超参数值的空间中进行搜索以查找可以优化交叉验证性能估计值的值。 网格搜索是一种常用的搜索技术。 在网格搜索中，多个超参数的候选值的空间是各个超参数的候选值集的叉积。 
 
 使用交叉验证的网格搜索可能非常耗时。 如果一个算法中包含 5 个超参数，每个超参数有 5 个候选值，那么我们将 K 设为 5（份）。 然后通过训练 5<sup>6</sup>=15625 个模型来完成网格搜索。 幸运的是，使用交叉验证的网格搜索是一个复杂的并行过程，所有这些模型都可以并行训练。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
+* [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
 * 按照用于安装 Workbench 并创建帐户的[安装和创建快速入门](./quickstart-installation.md)安装的 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 副本。
 * 此方案假设在本地装有 Docker 引擎的 Windows 10 或 MacOS 上运行 Azure ML Workbench。 
 * 若要使用远程 Docker 容器运行此方案，请按照[说明](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)预配 Ubuntu 数据科学虚拟机 (DSVM)。 建议使用至少具有 8 个核心和 28 GB 内存的虚拟机。 虚拟机的 D4 实例具有这样的容量。 
-* 若要使用 Spark 群集运行此方案，请按照这些[说明](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 Azure HDInsight 群集。 建议至少具备一个群集 
-- 6 个辅助角色节点
-- 8 个核心
-- 标头和辅助角色节点中的内存均为 28 GB。 虚拟机的 D4 实例具有这样的容量。 建议更改以下参数，使该群集的性能最大化。
-- spark.executor.instances
-- spark.executor.cores
-- spark.executor.memory 
+* 若要使用 Spark 群集运行此方案，请按照这些[说明](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)预配 Azure HDInsight 群集。   
+我们建议具备一个至少满足以下条件的群集：
+    - 6 个辅助角色节点
+    - 8 个核心
+    - 标头和辅助角色节点中的内存均为 28 GB。 虚拟机的 D4 实例具有这样的容量。       
+    - 建议更改以下参数，使该群集的性能最大化：
+        - spark.executor.instances
+        - spark.executor.cores
+        - spark.executor.memory 
 
 可以按照这些[说明](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager)进行操作并编辑“自定义 Spark 默认值”部分中的定义。
 

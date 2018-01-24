@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 9cdbe4a12a0b16341a1e52f176901045baf327b5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>逻辑应用循环、范围和解除批处理
   
@@ -26,9 +26,9 @@ ms.lasthandoff: 12/06/2017
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach 循环和数组
   
-借助逻辑应用可循环访问一组数据并对每个项执行操作。  这可以通过 `foreach` 操作来实现。  在设计器中，可以指定添加 foreach 循环。  选择要循环访问的数组之后，可以开始添加操作。  对于每个 foreach 循环，可以添加多个操作。  处于循环中之后，可以指定对数组的每个值应执行的操作。
+借助逻辑应用可循环访问一组数据并对每个项执行操作。  循环访问集合是通过 `foreach` 操作实现的。  在设计器中，可以添加 foreach 循环。  选择要循环访问的数组之后，可以开始添加操作。  对于每个 foreach 循环，可以添加多个操作。  处于循环中之后，可以开始指定对数组的每个值应执行的操作。
 
-如果使用代码视图，则可以指定与以下类似的 for each 循环。  这是 for each 循环的示例，它会为包含“microsoft.com”的每个电子邮件地址都发送电子邮件：
+  此示例向包含“microsoft.com”的每个电子邮件地址发送一封电子邮件。 如果使用代码视图，可以指定 for each 循环，如以下示例所示：
 
 ``` json
 {
@@ -66,7 +66,7 @@ ms.lasthandoff: 12/06/2017
 }
 ```
   
-  `foreach` 操作可以循环访包含最多 5,000 行的数组。  默认情况下，并行执行每次迭代。  
+  `foreach` 操作可以循环访问数千个实体的数组。  默认情况下，并行执行迭代。  有关数组和并发限制的详细信息，请参阅[限制和配置](logic-apps-limits-and-config.md)。
 
 ### <a name="sequential-foreach-loops"></a>顺序 ForEach 循环
 
@@ -83,13 +83,15 @@ ms.lasthandoff: 12/06/2017
   
 ## <a name="until-loop"></a>Until 循环
   
-  可以执行一个或一系列操作，直到满足某个条件。  此循环的最常见情况是调用终结点，直到获取所需响应。  在设计器中，可以指定添加 until 循环。  在循环中添加操作之后，可以设置退出条件以及循环限制。  两次循环周期之间存在 1 分钟延迟。
+  可以执行一个或一系列操作，直到满足某个条件。  使用 until 循环的最常见情况是调用终结点，直到获取所需响应。  在设计器中，可以指定添加 until 循环。  在循环中添加操作之后，可以设置退出条件以及循环限制。
   
-  如果使用代码视图，则可以指定与以下类似的 until 循环。  这是一个示例，它调用 HTTP 终结点，直到响应正文包含值“Completed”。  它会在满足以下任一条件时完成 
+  此示例调用 HTTP 终结点，直到响应正文包含值“Completed”。  它在以下任一情况下完成： 
   
   * HTTP 响应的状态是“Completed”
-  * 尝试了 1 小时
+  * 已尝试了 1 小时
   * 循环了 100 次
+  
+  如果使用代码视图，可以指定 until 循环，如以下示例所示：
   
   ``` json
   {
@@ -117,9 +119,9 @@ ms.lasthandoff: 12/06/2017
   
 ## <a name="spliton-and-debatching"></a>SplitOn 和解除批处理
 
-有时触发器可能会收到要解除批处理并对每个项启动工作流的项数组。  这可以通过 `spliton` 命令来实现。  默认情况下，如果触发器 swagger 指定作为数组的有效负载，则 `spliton` 会添加，并对每个项启动运行。  SplitOn 只能添加到触发器。  这可以在定义代码视图中手动配置或重写。  当前 SplitOn 可以对最多包含 5,000 个项的数组解除批处理。  不能具有 `spliton` 且不能实现同步响应模式。  所有调用的工作流除具有 `spliton` 之外还具有 `response` 操作，以异步方式运行并发送即时 `202 Accepted` 响应。  
+有时触发器可能会收到要解除批处理并对每个项启动工作流的项数组。  此解除批处理操作可以通过 `spliton` 命令来实现。  默认情况下，如果触发器 swagger 指定作为数组的有效负载，则会添加 `spliton`。 `spliton` 命令对数组中的每一项启动运行。  SplitOn 只能添加到可以手动配置或重写的触发器。 不能具有 `spliton` 且不能实现同步响应模式。  调用的具有 `response` 操作以及 `spliton` 的任何工作流都会异步运行，并发送即时 `202 Accepted` 响应。  
 
-SplitOn 可以在代码视图中指定，如以下示例所示。  这会接收项数组并在每行上解除批处理。
+  此示例会接收包含多个项的数组并在每行上解除批处理。 SplitOn 可以在代码视图中指定，如以下示例所示：
 
 ```
 {
@@ -137,9 +139,9 @@ SplitOn 可以在代码视图中指定，如以下示例所示。  这会接收�
 }
 ```
 
-## <a name="scopes"></a>范围
+## <a name="scopes"></a>作用域
 
-可以使用范围将一系列操作分组在一起。  这对于实现异常处理特别有用。  在设计器中，可以添加新范围，并开始在其内部添加任何操作。  可以在代码视图中定义与以下类似的范围：
+可以使用范围将一系列操作分组在一起。  作用域对于实现异常处理很有用。  在设计器中，可以添加新范围，并开始在其内部添加任何操作。  可以在代码视图中定义作用域，如以下示例所示：
 
 
 ```

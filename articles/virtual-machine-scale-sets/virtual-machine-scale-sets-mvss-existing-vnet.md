@@ -4,7 +4,7 @@ description: "如何将虚拟网络添加到现有 Azure 虚拟机规模集模�
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: negat
-ms.openlocfilehash: 28117d467b491704aed8d45e5eba42530579dfa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb35975de5864e129f97b614a61487456dd972ef
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>在 Azure 规模集模板中添加对现有虚拟网络的引用
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 可以[在此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，可以[在此处](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json)查看用于将规模集部署到现有虚拟网络的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set existing-vnet`) 时使用的差异内容：
 
-首先，我们添加一个 `subnetId` 参数。 此字符串将传递到规模集配置，使得规模集能够识别要将虚拟机部署到的预先创建的子网。 此字符串必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`。 例如，要将规模集部署到具有名称 `myvnet`、子网 `mysubnet`、资源组 `myrg` 和订阅 `00000000-0000-0000-0000-000000000000` 的现有虚拟网络，则 subnetId 将是：`/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`。
+首先，添加一个 `subnetId` 参数。 此字符串将传递到规模集配置，使得规模集能够识别要将虚拟机部署到的预先创建的子网。 此字符串必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`。 例如，要将规模集部署到具有名称 `myvnet`、子网 `mysubnet`、资源组 `myrg` 和订阅 `00000000-0000-0000-0000-000000000000` 的现有虚拟网络，则 subnetId 将是：`/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`。
 
 ```diff
      },
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
    },
 ```
 
-接下来，我们可以从 `resources` 阵列中删除虚拟网络资源，因为我们使用现有虚拟网络，不需要部署新的虚拟网络。
+接下来，从 `resources` 阵列中删除虚拟网络资源，由于使用现有虚拟网络，因此不需要部署新的虚拟网络。
 
 ```diff
    "variables": {},
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
 -    },
 ```
 
-虚拟网络在部署模板前已存在，因此不需要指定从规模集到虚拟网络的 dependsOn 子句。 因此，我们删除以下行：
+虚拟网络在部署模板前已存在，因此不需要指定从规模集到虚拟网络的 dependsOn 子句。 删除以下行：
 
 ```diff
      {
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
          "capacity": 2
 ```
 
-最后，我们传入用户设置的 `subnetId` 参数（而非使用 `resourceId` 来获取同一部署中某个 vnet 的 id，这是最小可行规模集模板执行的操作）。
+最后，传入用户设置的 `subnetId` 参数（而非使用 `resourceId` 获取同一部署中某个 vnet 的 ID，这是最小可行规模集模板执行的操作）。
 
 ```diff
                        "name": "myIpConfig",

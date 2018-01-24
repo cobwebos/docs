@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: jejiang
-ms.openlocfilehash: 60307b8b16718fdc947bde7616532fa6a0920cf0
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: c70cfc309fe60f0641c89b4a341e3364af74771a
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/27/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-针对 VSCode 的 Azure Data Lake 工具支持 Windows、Linux 和 MacOS。  
+适用于 VSCode 的 Azure Data Lake 工具支持 Windows、Linux 和 MacOS。  
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
 
@@ -116,6 +116,16 @@ ms.lasthandoff: 11/27/2017
 
 若要启用输出作业详细信息，请在 **vscode for u-sql_settings.json** 文件中设置 **jobInformationOutputPath**。
  
+**Set Git Ignore**
+
+1. 按 Ctrl+Shift+P 打开命令面板。 
+2. 输入 **ADL:  Set Git Ignore**。
+
+    - 如果 VSCode 工作文件夹中没有 **.gitIgnore** 文件，则会在该文件夹中创建一个名为 **.gitIgnor** 的文件。 默认情况下会将四个项（**usqlCodeBehindReference**、**usqlCodeBehindGenerated**、**.cache** 和 **obj**）添加到该文件。 如果需要，可以进一步进行更新。
+    - 如果 VSCode 工作文件夹中已有一个 **.gitIgnore** 文件，则该工具会向 **.gitIgnore** 文件中添加四个项（**usqlCodeBehindReference**、**usqlCodeBehindGenerated**、**.cache**、**obj**）（如果该文件中尚未包括这四个项）。
+
+  ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
+
 ## <a name="use-python-r-and-csharp-code-behind-file"></a>使用 Python、R 和 CSharp 代码隐藏文件
 Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在 VSCode 中使用 Python、R 和 CSharp 开发用于 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)。
 
@@ -193,17 +203,19 @@ OUTPUT @d1
 **连接到 Azure 的方法**
 
 1.  按 Ctrl+Shift+P 打开命令面板。 
-2.  输入 **ADL: Login**。 登录信息显示在“输出”窗格中。
+2.  输入 **ADL: Login**。 登录信息将显示在顶部区域中。
 
     ![针对 Visual Studio Code 的 Data Lake 工具命令面板](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
     ![针对 Visual Studio Code 设备的 Data Lake 工具登录信息](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
-3. 按住 Ctrl 键并单击登录 URL：https://aka.ms/devicelogin 以打开登录网页。 在文本框中输入代码 **G567LX42V** 并选择“继续”。
+3.  单击“复制并打开”以打开 URL 为 https://aka.ms/devicelogin 的登录网页。 将代码 **G567LX42V** 粘贴到文本框中，然后选择“继续”。
 
    ![用于 Visual Studio Code 的 Data Lake 工具登录粘贴代码](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
 4.  按照说明从网页登录。 连接后，“VS Code”窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
     > [!NOTE] 
-    > 如果帐户已启用双重身份验证，我们建议使用手机身份验证，而不要使用 PIN 码。
+    >- 如果之前已经登录但尚未注销，则 Data Lake Tool 下次会自动登录。
+    >- 如果帐户已启用双重身份验证，我们建议使用手机身份验证，而不要使用 PIN 码。
+
 
 若要注销，请输入命令 **ADL: Logout**
 
@@ -324,15 +336,38 @@ OUTPUT @d1
    ![针对 Visual Studio Code 的 Data Lake 工具检查存储状态](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-status.png)
 
 ## <a name="vscode-explorer-integration-with-azure-data-lake"></a>VSCode 资源管理器与 Azure Data Lake 集成
-1. 登录后，你将看到所有 Azure 帐户在“DataLake 资源管理器”的左侧面板列出。 展开一个数据库，可以在节点下查看“架构”、“表”、“程序集”等。
+
+**Azure 集成** 
+
+- 在登录到 Azure 之前，始终可以展开“DATALAKE 资源管理器”，然后单击“登录到 Azure”以登录到 Azure。 登录后，你将看到你的 Azure 帐户下的所有订阅都在“DATALAKE 资源管理器”的左侧面板中列出。 
+
+   ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-2. 可以通过右键单击“程序集”节点执行命令“注册程序集”。
+**ADLA 元数据导航** 
+
+- 展开你的 Azure 订阅，可以在 U-SQL 数据库中导航，在“U-SQL 数据库”节点下查看**架构**、**凭据**、**程序集**、**表**、**索引**等等。
+
+**ADLA 元数据实体管理**
+
+- 展开“U-SQL 数据库”，可以通过在相应的节点下右键单击“用于创建的脚本”来创建新的数据库、架构、表、表类型、索引和统计信息。 在打开的脚本页中，根据需要编辑脚本，然后通过右键单击上下文菜单“ADL: 提交作业”来提交作业。 完成创建后，单击上下文菜单“刷新”来显示新创建的项。 还可以通过右键单击上下文菜单“删除”来删除该项。
+
+   ![DataLake 资源管理器“创建新项”菜单](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create.png)
+
+   ![DataLake 资源管理器“创建新项”脚本](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create-snippet.png)
+
+**ADLA 程序集注册**
+
+ - 可以通过右键单击“程序集”在相应的数据库中**注册程序集**。
 
     ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer-register-assembly.png)
 
-3. 导航到“存储帐户”，可以通过右键单击文件夹或文件上传或下载文件。 你还可以通过上下文菜单“预览”文件、“下载”、“复制相对路径”、“复制完整路径”。
+**ADLS 集成** 
+
+ - 导航到“存储帐户”，可以通过文件节点的上下文菜单进行**预览**、**下载**、**删除**、**复制相对路径**以及**复制完整路径**。 可以通过右键单击文件夹节点的上下文菜单进行**刷新**、**上传**、**上传文件夹**以及**删除**。
+
+   ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
    ![DataLake 资源管理器](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
 

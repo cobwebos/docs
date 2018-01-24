@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 58a37c0dd24d54996f517961f3a7f1ec36639cfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="using-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
+# <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
-## <a name="downloading-the-service-bus-sdk"></a>下载服务总线 SDK
+AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保使用最新版本，可以从 [NuGet][NuGet] 下载服务总线安装包。
 
-AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。 为确保使用最新版本，可以从 [NuGet][NuGet] 下载服务总线安装包。
-
-## <a name="configuring-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
+## <a name="configure-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
 
 默认情况下，Service Bus .NET 客户端库使用基于 SOAP 的专用协议与 Service Bus 服务通信。 若要使用 AMQP 1.0 而非默认协议，需要对服务总线连接字符串进行显式配置，如下一部分所述。 除了此更改之外，在使用 AMQP 1.0 时应用程序代码仍保持不变。
 
@@ -109,7 +107,7 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。 为确保�
 * `MessageReceiver.Receive(TimeSpan.Zero)` 以 `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` 的形式实现。
 * 只能通过最初收到信息的消息接收器，通过锁定标记完成消息。
 
-## <a name="controlling-amqp-protocol-settings"></a>控制 AMQP 协议设置
+## <a name="control-amqp-protocol-settings"></a>控制 AMQP 协议设置
 
 [.NET API](/dotnet/api/) 公开了几项设置以控制 AMQP 协议的行为：
 
@@ -124,7 +122,6 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。 为确保�
 
 * [服务总线 AMQP 概述]
 * [AMQP 1.0 协议指南]
-* [适用于 Windows Server 的服务总线中的 AMQP]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -135,4 +132,4 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。 为确保�
 [Azure portal]: https://portal.azure.com
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
 [AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
-[适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+

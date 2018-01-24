@@ -16,17 +16,17 @@ ms.workload:
 ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7e1a17517890f8ed738b6afdcbe073a2bf1ebc6f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 53987e5863d9fc11b4fa377295d198293819269c
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB：在 Java 中使用 Cassandra API 进行开发
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户，然后使用 [Cassandra API](cassandra-introduction.md) 创建 Cassandra 表(documentdb-partition-data.md#partition-keys)。 通过在创建表时定义主键，应用程序能够随数据增加轻松进行扩展。 
+本教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户，然后使用 [Cassandra API](cassandra-introduction.md) 创建 Cassandra 表(sql-api-partition-data.md#partition-keys)。 通过在创建表时定义主键，应用程序能够随数据增加轻松进行扩展。 
 
 本教程介绍如何使用 Cassandra API 完成以下任务：
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 有权访问 Azure Cosmos DB Cassandra API 预览程序。 如果尚未申请访问权限，请[立即注册](https://aka.ms/cosmosdb-cassandra-signup)。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或做出承诺。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 
 此外： 
 

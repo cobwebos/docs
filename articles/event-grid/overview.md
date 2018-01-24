@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 12/14/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b522b40b136e354c6ca83a56ac7ad690151ad7d
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: e6665b3b0c6e92ed462f18dbd41d62ccd9304928
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
@@ -20,9 +20,18 @@ ms.lasthandoff: 11/11/2017
 
 可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。 此外，事件网格还提供对自定义和第三方事件的内置支持。
 
-预览版的事件网格支持“westus2”和“westcentralus”区域。 将添加其他区域。
+目前，事件网格支持以下区域：
 
-本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+* 美国中部
+*   美国东部
+*   美国东部 2
+*   美国中西部
+*   美国西部
+*   美国西部 2
+
+将添加其他区域。
+
+本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 下图显示了事件网格如何连接发布服务器和处理程序，但它不提供支持选项的完整列表。
 
 ![事件网格功能模型](./media/overview/event-grid-functional-model.png)
 
@@ -30,11 +39,11 @@ ms.lasthandoff: 11/11/2017
 
 目前，以下 Azure 服务对事件网格的内置发布者提供支持：
 
-* 资源组（管理操作）
 * Azure 订阅（管理操作）
-* 事件中心
-* 存储 Blob
 * 自定义主题
+* 事件中心
+* 资源组（管理操作）
+* 存储 Blob
 
 本年度将添加其他 Azure 服务。
 
@@ -42,11 +51,12 @@ ms.lasthandoff: 11/11/2017
 
 目前，以下 Azure 服务对事件网格的内置处理程序提供支持： 
 
-* Azure Functions
-* 逻辑应用
 * Azure 自动化
-* Webhook
+* Azure Functions
+* 事件中心
+* 逻辑应用
 * Microsoft Flow
+* Webhook
 
 本年度将添加其他 Azure 服务。
 

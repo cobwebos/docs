@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 13e9b951c46ae1cd16c7f38d5ade8a4f8a156e63
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eee276f2bcf6a8b7b2c79139bfeb01e1ebf761c9
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,14 +33,15 @@ ms.lasthandoff: 10/11/2017
 "name": "value"
 ```
 
- 或  
+ （或者）  
   
 ```json
-"name": "@parameters('password') "
+"name": "@pipeline().parameters.password"
 ```
 
+
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)） ，请参阅[数据工厂 V1 中的函数和变量](v1/data-factory-functions-variables.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)） ，请参阅[数据工厂 V1 中的函数和变量](v1/data-factory-functions-variables.md)。
 
 
 ## <a name="expressions"></a>表达式  
@@ -53,20 +54,96 @@ ms.lasthandoff: 10/11/2017
 |"@@"|返回包含“@”的、由 1 个字符构成的字符串。|  
 |" @"|返回包含“@”的、由 2 个字符构成的字符串。|  
   
- 如果使用称为字符串内插的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName'}"`  
+ 如果使用称为字符串内插的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
- 使用字符串内插，结果始终是字符串。 假设我将 `myNumber` 定义为 `42`，将 `myString` 定义为 ༖༗：  
+ 使用字符串内插，结果始终是字符串。 假设我将 `myNumber` 定义为 `42`，将 `myString` 定义为 `foo`：  
   
 |JSON 值|结果|  
 |----------------|------------|  
-|"@parameters('myString')"|返回字符串形式的 `foo`。|  
-|"@{parameters('myString')}"|返回字符串形式的 `foo`。|  
-|"@parameters('myNumber')"|返回*数字*形式的 `42`。|  
-|"@{parameters('myNumber')}"|返回*字符串*形式的 `42`。|  
-|"Answer is: @{parameters('myNumber')}"|返回字符串 `Answer is: 42`。|  
-|"@concat('Answer is: ', string(parameters('myNumber')))"|返回字符串 `Answer is: 42`|  
-|"Answer is: @@{parameters('myNumber')}"|返回字符串 `Answer is: @{parameters('myNumber')}`。|  
+|"@pipeline().parameters.myString"| 返回字符串形式的 `foo`。|  
+|"@{pipeline().parameters.myString}"| 返回字符串形式的 `foo`。|  
+|"@pipeline().parameters.myNumber"| 返回*数字*形式的 `42`。|  
+|"@{pipeline().parameters.myNumber}"| 返回*字符串*形式的 `42`。|  
+|"Answer is: @{pipeline().parameters.myNumber}"| 返回字符串 `Answer is: 42`。|  
+|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| 返回字符串 `Answer is: 42`|  
+|"Answer is: @@{pipeline().parameters.myNumber}"| 返回字符串 `Answer is: @{pipeline().parameters.myNumber}`。|  
   
+### <a name="examples"></a>示例
+
+#### <a name="a-dataset-with-a-parameter"></a>使用参数的数据集
+在以下示例中，BlobDataset 采用名为 **path** 的参数。 其值用于使用以下表达式设置 **folderPath** 属性的值：`@{dataset().path}`。 
+
+```json
+{
+    "name": "BlobDataset",
+    "properties": {
+        "type": "AzureBlob",
+        "typeProperties": {
+            "folderPath": "@dataset().path"
+        },
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "path": {
+                "type": "String"
+            }
+        }
+    }
+}
+```
+
+#### <a name="a-pipeline-with-a-parameter"></a>使用参数的管道
+在以下示例中，管道采用 **inputPath** 和 **outputPath** 参数。 参数化 blob 数据集的**路径**使用这些参数的值进行设置。 此处使用的语法是：`pipeline().parameters.parametername`。 
+
+```json
+{
+    "name": "Adfv2QuickStartPipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "CopyFromBlobToBlob",
+                "type": "Copy",
+                "inputs": [
+                    {
+                        "referenceName": "BlobDataset",
+                        "parameters": {
+                            "path": "@pipeline().parameters.inputPath"
+                        },
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "BlobDataset",
+                        "parameters": {
+                            "path": "@pipeline().parameters.outputPath"
+                        },
+                        "type": "DatasetReference"
+                    }
+                ],
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
+                    "sink": {
+                        "type": "BlobSink"
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "inputPath": {
+                "type": "String"
+            },
+            "outputPath": {
+                "type": "String"
+            }
+        }
+    }
+}
+```
   
 ## <a name="functions"></a>函数  
  可以在表达式中调用函数。 以下各节提供了有关可以在表达式中使用的函数的信息。  
@@ -76,7 +153,7 @@ ms.lasthandoff: 10/11/2017
   
 |函数名称|说明|  
 |-------------------|-----------------|  
-|concat|将任意数量的字符串合并在一起。 例如，如果 parameter1 为 `foo,`，以下表达式将返回 `somevalue-foo-somevalue`:  `concat('somevalue-',parameters('parameter1'),'-somevalue')`<br /><br /> **参数数目**：1 ... *n*<br /><br /> **名称**：字符串 *n*<br /><br /> **说明**：必需。 要合并成单个字符串的字符串。|  
+|concat|将任意数量的字符串合并在一起。 例如，如果 parameter1 为 `foo,`，以下表达式将返回 `somevalue-foo-somevalue`:  `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **参数数目**：1 ... *n*<br /><br /> **名称**：字符串 *n*<br /><br /> **说明**：必需。 要合并成单个字符串的字符串。|  
 |substring|返回字符串中的字符子集。 例如，以下表达式：<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> 返回：<br /><br /> `foo`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要从中获取子字符串的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：起始索引<br /><br /> **说明**：必需。 参数 1 中子字符串的起始索引。<br /><br /> **参数数目**：3<br /><br /> **名称**：长度<br /><br /> **说明**：必需。 子字符串的长度。|  
 |replace|将某个字符串替换为给定的字符串。 例如，表达式：<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> 返回：<br /><br /> `the new string`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。  如果在参数 1 中找到参数 2，即要为参数 2 搜索并使用参数 3 更新的字符串。<br /><br /> **参数数目**：2<br /><br /> **名称**：旧字符串<br /><br /> **说明**：必需。 在参数 1 中找到匹配项时，要替换为参数 3 的字符串<br /><br /> **参数数目**：3<br /><br /> **名称**：新字符串<br /><br /> **说明**：必需。 在参数 1 中找到匹配项时，用于替换参数 2 中字符串的字符串。|  
 |guid| 生成全局唯一字符串（又称 guid）。 例如，可以生成下面的输出 `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`：<br /><br /> `guid()`<br /><br /> **参数数目**：1<br /><br /> **名称**：格式<br /><br /> **说明**：可选 单个格式说明符，指示[如何设置此 GUID 值的格式](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx)。 格式参数可以是“N”、“D”、“B”、“P”或“X”。 如果未提供格式，则使用“D”。|  
@@ -109,7 +186,7 @@ ms.lasthandoff: 10/11/2017
   
 |函数名称|说明|  
 |-------------------|-----------------|  
-|equals|如果两个值相等，则返回 true。 例如，如果 parameter1 为 foo，以下表达式返回 `true`: `equals(parameters('parameter1'), 'foo')`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要与**对象 2** 比较的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要与**对象 1** 比较的对象。|  
+|equals|如果两个值相等，则返回 true。 例如，如果 parameter1 为 foo，以下表达式返回 `true`: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要与**对象 2** 比较的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要与**对象 1** 比较的对象。|  
 |less|如果第一个参数小于第二个参数，则返回 true。 请注意，值的类型只能是整数、浮点数或字符串。 例如，以下表达式返回 `true`:  `less(10,100)`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要检查是否小于**对象 2** 的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要检查是否大于**对象 1** 的对象。|  
 |lessOrEquals|如果第一个参数小于或等于第二个参数，则返回 true。 请注意，值的类型只能是整数、浮点数或字符串。 例如，以下表达式返回 `true`:  `lessOrEquals(10,10)`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要检查是否小于或等于**对象 2** 的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要检查是否大于或等于**对象 1** 的对象。|  
 |greater|如果第一个参数大于第二个参数，则返回 true。 请注意，值的类型只能是整数、浮点数或字符串。 例如，以下表达式返回 `false`:  `greater(10,10)`<br /><br /> **参数数目**：1<br /><br /> **名称**：对象 1<br /><br /> **说明**：必需。 要检查是否大于**对象 2** 的对象。<br /><br /> **参数数目**：2<br /><br /> **名称**：对象 2<br /><br /> **说明**：必需。 要检查是否小于**对象 1** 的对象。|  
@@ -137,11 +214,11 @@ ms.lasthandoff: 10/11/2017
 |函数名称|说明|  
 |-------------------|-----------------|  
 |int|将参数转换为整数。 例如，以下表达式返回数字而不是字符串形式的 100：`int('100')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为整数的值。|  
-|字符串|将参数转换为字符串。 例如，以下表达式返回 `'10'`:  `string(10)`。你还可以将对象转换为字符串，例如，如果 foo 参数是一个具有属性 `bar : baz` 的对象，那么以下表达式将返回 `{"bar" : "baz"}` `string(parameters('foo'))`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为字符串的值。|  
+|字符串|将参数转换为字符串。 例如，以下表达式返回 `'10'`:  `string(10)`。你还可以将对象转换为字符串，例如，如果 foo 参数是一个具有属性 `bar : baz` 的对象，那么以下表达式将返回 `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为字符串的值。|  
 |json|将参数转换为 JSON 类型值。 它与 string() 相反。 例如，以下表达式返回数组而不是字符串形式的 `[1,2,3]`：<br /><br /> `parse('[1,2,3]')`<br /><br /> 同样，可以将字符串转换为对象。 例如，`json('{"bar" : "baz"}')` 返回：<br /><br /> `{ "bar" : "baz" }`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 要转换为本机类型值的字符串。<br /><br /> json 函数也支持 xml 输入。 例如，以下对象的参数值：<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 被转换为以下 json：<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|将参数自变量转换为浮点数。 例如，以下表达式返回 `10.333`:  `float('10.333')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为浮点数的值。|  
 |bool|将参数转换为布尔值。 例如，以下表达式返回 `false`:  `bool(0)`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为布尔值的值。|  
-|coalesce|返回传入的参数中的第一个非 null 对象。 注意：空字符串不为 null。 例如，如果未定义参数 1 和 2，则此函数返回 `fallback`:  `coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')`<br /><br /> **参数数目**：1 ... *n*<br /><br /> **名称**：对象*n*<br /><br /> **说明**：必需。 要检查是否为 `null` 的对象。|  
+|coalesce|返回传入的参数中的第一个非 null 对象。 注意：空字符串不为 null。 例如，如果未定义参数 1 和 2，则此函数返回 `fallback`:  `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **参数数目**：1 ... *n*<br /><br /> **名称**：对象*n*<br /><br /> **说明**：必需。 要检查是否为 `null` 的对象。|  
 |base64|返回输入字符串的 base64 表示形式。 例如，以下表达式返回 `c29tZSBzdHJpbmc=`:  `base64('some string')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串 1<br /><br /> **说明**：必需。 要编码为 base64 表示形式的字符串。|  
 |base64ToBinary|返回 base64 编码字符串的二进制表示形式。 例如，以下表达式返回某个字符串的二进制表示形式：`base64ToBinary('c29tZSBzdHJpbmc=')`。<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 base64 编码的字符串。|  
 |base64ToString|返回 based64 编码字符串的字符串表示形式。 例如，以下表达式返回某个字符串：`base64ToString('c29tZSBzdHJpbmc=')`。<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br /> **说明**：必需。 base64 编码的字符串。|  
@@ -157,7 +234,7 @@ ms.lasthandoff: 10/11/2017
 |uriComponentToBinary|返回 URI 编码字符串的二进制表示形式。 例如，以下表达式返回`You Are:Cool/Awesome`的二进制表示形式：`uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **参数数目**：1<br /><br /> **名称**：字符串<br /><br />**说明**：必需。 URI 编码的字符串。|  
 |uriComponentToString|返回 URI 编码字符串的字符串表示形式。 例如，以下表达式返回 `You Are:Cool/Awesome`: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **参数数目**：1<br /><br />**名称**：字符串<br /><br />**说明**：必需。 URI 编码的字符串。|  
 |xml|返回值的 xml 表示形式。 例如，以下表达式返回 xml 内容，表示为：`'\<name>Alan\</name>'`: `xml('\<name>Alan\</name>')`。 xml 函数也支持 JSON 对象输入。 例如，参数 `{ "abc": "xyz" }` 将转换为 xml 内容 `\<abc>xyz\</abc>`<br /><br /> **参数数目**：1<br /><br />**名称**：值<br /><br />**说明**：必需。 要转换为 XML 的值。|  
-|xpath|返回与 xpath 表达式计算结果值的 xpath 表达式匹配的 xml 节点数组。<br /><br />  **示例 1**<br /><br /> 假设参数“p1”的值是以下 XML 的字符串表示形式：<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.此代码：`xpath(xml(parameters('p1'), '/lab/robot/name')`<br /><br /> 将返回<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> whereas<br /><br /> 2.此代码：`xpath(xml(parameters('p1'), ' sum(/lab/robot/parts)')`<br /><br /> 将返回<br /><br /> `13`<br /><br /> <br /><br /> **示例 2**<br /><br /> 假设 XML 内容如下：<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.此代码：`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> 或<br /><br /> 2.此代码：`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> 返回<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 3.此代码：`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> 返回<br /><br /> ``bar``<br /><br /> **参数数目**：1<br /><br />**名称**：Xml<br /><br />**说明**：必需。 要在其中计算 XPath 表达式的 XML。<br /><br /> **参数数目**：2<br /><br />**名称**：XPath<br /><br />**说明**：必需。 要计算的 XPath 表达式。|  
+|xpath|返回与 xpath 表达式计算结果值的 xpath 表达式匹配的 xml 节点数组。<br /><br />  **示例 1**<br /><br /> 假设参数“p1”的值是以下 XML 的字符串表示形式：<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.此代码：`xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> 将返回<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> whereas<br /><br /> 2.此代码：`xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> 将返回<br /><br /> `13`<br /><br /> <br /><br /> **示例 2**<br /><br /> 假设 XML 内容如下：<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.此代码：`@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> 或<br /><br /> 2.此代码：`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> 返回<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 3.此代码：`@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> 返回<br /><br /> ``bar``<br /><br /> **参数数目**：1<br /><br />**名称**：Xml<br /><br />**说明**：必需。 要在其中计算 XPath 表达式的 XML。<br /><br /> **参数数目**：2<br /><br />**名称**：XPath<br /><br />**说明**：必需。 要计算的 XPath 表达式。|  
 |数组|将参数转换为数组。  例如，以下表达式返回 `["abc"]`: `array('abc')`<br /><br /> **参数数目**：1<br /><br /> **名称**：值<br /><br /> **说明**：必需。 要转换为数组的值。|
 |createArray|从参数创建数组。  例如，以下表达式返回 `["a", "c"]`: `createArray('a', 'c')`<br /><br /> 参数数目：1 ... n<br /><br /> 名称：Any n<br /><br /> **说明**：必需。 要合并成数组的值。|
 

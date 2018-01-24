@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: ee499b57733cd19dfe411e0e463dd3c65e82a52d
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 184a30c91de0d4141d6bd8a8b9db93c539e083b5
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>使用 Ansible 在 Azure 中创建基本的虚拟机
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机 (VM)，管理其他任意资源也一样。 本文介绍如何使用 Ansible 创建基本的 VM。 还可以了解如何[使用 Ansible 创建完整的 VM 环境](ansible-create-complete-vm.md)。
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/20/2017
 
 
 ## <a name="create-supporting-azure-resources"></a>创建支持的 Azure 资源
-在此示例中，我们创建一个 runbook 将 VM 部署到现有的基础结构中。 首先，使用 [az group create](/cli/azure/vm#create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+在此示例中，创建一个 runbook 将 VM 部署到现有的基础结构中。 首先，使用 [az group create](/cli/azure/vm#create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -56,7 +56,7 @@ az network vnet create \
 
 
 ## <a name="create-and-run-ansible-playbook"></a>创建并运行 Ansible 操作手册
-创建名为 azure_create_vm.yml 的 Ansible 操作手册并粘贴以下内容。 此示例创建一个单独的 VM 并配置 SSH 凭据。 在 key_data 对中输入如下所示的公钥数据：
+创建名为 azure_create_vm.yml 的 Ansible 操作手册并粘贴以下内容。 此示例创建一个单独的 VM 并配置 SSH 凭据。 在 *key_data* 对中输入自己的完整公钥数据，如下所示：
 
 ```yaml
 - name: Create Azure VM

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7b37f9e103644d2492f69f4a4cc80d3fd57d4aa4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4727560df897f6c1a0aaa6d7f5d4e1c76fc02a46
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>了解 Azure IoT Edge 运行时及其体系结构 - 预览
 
@@ -99,8 +99,16 @@ IoT Edge 代理是构成 Azure IoT Edge 运行时的其他模块。 它负责实
    * 故障时 - 如果模块发生故障，Edge 代理会重启它。 如果该模块完全关闭，Edge 代理不会重启它。
    * 不正常 - 如果模块发生故障或被视为不正常，Edge 代理会重启它。
    * 始终 - 如果模块发生故障、被视为不正常或者以任何方式关闭，Edge 代理会重启它。 
-   
-### <a name="security"></a>安全
+
+IoT Edge 代理会将运行时响应发送到 IoT 中心。 下面是可能的响应的列表：
+  * 200 - 正常
+  * 400 - 部署配置格式不正确或无效。
+  * 417 - 设备没有部署配置集。
+  * 412 - 部署配置中的架构版本无效。
+  * 406 - edge 设备脱机或不发送状态报告。
+  * 500 - edge 运行时中出错。
+
+### <a name="security"></a>“安全”
 
 IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它会执行某些操作，如在启动之前验证模块的映像。 在正式发布 V2 功能时将添加这些功能。 
 

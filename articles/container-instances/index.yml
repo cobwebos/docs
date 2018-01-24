@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: 37acd22cd6a85b1a9062b0c0aee6e48957f1ea11
-  ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+  ms.openlocfilehash: 251ce769ce9d43d7706cd7ba5d0c0f47cde36d3f
+  ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/07/2017
+  ms.lasthandoff: 01/24/2018
 abstract:
   description: "Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。 如果需要完整的容器协调解决方案，请参阅<a href=\"/azure/container-service/kubernetes/\">“Azure 容器服务上的 Kubernetes”文档</a>。 使用快速入门、教程和示例，了解如何创建和管理容器实例。"
 sections:
@@ -36,6 +36,10 @@ sections:
         src: https://docs.microsoft.com/media/common/i_portal.svg
       text: "Azure 门户"
       href: /azure/container-instances/container-instances-quickstart-portal
+    - image:
+        src: /azure/virtual-machines/linux/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/container-instances/container-instances-quickstart-powershell
 - title: "分步教程"
   items:
   - type: paragraph

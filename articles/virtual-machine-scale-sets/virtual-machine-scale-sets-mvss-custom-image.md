@@ -4,7 +4,7 @@ description: "了解如何向现有 Azure 虚拟机规模集模板添加自定�
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
 ms.author: negat
-ms.openlocfilehash: cf52fc9e95267c4bc5c0106aadf626685ddd5c24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28d2c080048a7f82e83ad9c1794c9757b330a8c7
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
-可在[此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，在[此处](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json)查看用于从自定义映像部署规模集的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set custom-image`) 时使用的差异内容：
+可在[此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，可在[此处](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json)查看用于从自定义映像部署规模集的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set custom-image`) 时使用的差异内容：
 
 ### <a name="creating-a-managed-disk-image"></a>创建托管磁盘映像
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 10/11/2017
            "osProfile": {
 ```
 
-本示例中，使用 `resourceId` 函数获取在同一模板中创建的映像的资源 ID。 如果事先创建了托管磁盘映像，应提供映像的 ID。 此 ID 必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`。
+本示例中，使用 `resourceId` 函数获取在同一模板中创建的映像的资源 ID。 如果事先创建了托管磁盘映像，应改为提供该映像的 ID。 此 ID 必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`。
 
 
 ## <a name="next-steps"></a>后续步骤

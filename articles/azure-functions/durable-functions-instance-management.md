@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 399bad6f00b61d582fdb077f33000b6c55cf8904
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: cbf7731c0faa82ebd3e662eb6d2a8fb0acd65c97
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>在 Durable Functions 中管理实例 (Azure Functions)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/30/2017
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 中的 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) 方法启动业务流程协调程序函数的新实例。 可以使用 `orchestrationClient` 绑定获取此类的实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称的、使用 `orchestrationTrigger` 触发器绑定的函数的启动。
 
-参数如下：
+[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) 的参数如下所示：
 
 * **Name**：要计划的业务流程协调程序函数的名称。
 * **Input**：应作为输入传递给业务流程协调程序函数的任何 JSON 可序列化数据。
@@ -97,7 +97,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 目前，只有 C# 函数支持实例查询。
+> 目前，只有 C# 业务流程协调程序函数支持实例查询。
 
 ## <a name="terminating-instances"></a>终止实例
 
@@ -115,11 +115,13 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> 目前，只有 C# 函数支持实例终止。
+> 目前，只有 C# 业务流程协调程序函数支持实例终止。
 
 ## <a name="sending-events-to-instances"></a>将事件发送到实例
 
-可以使用 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类的 [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) 方法将事件通知发送到正在运行的实例。 可以处理这些事件的实例是正在等待调用 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) 的实例。 输入包括：
+可以使用 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类的 [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) 方法将事件通知发送到正在运行的实例。 可以处理这些事件的实例是正在等待调用 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) 的实例。 
+
+[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) 的参数如下所示：
 
 * **InstanceId**：实例的唯一 ID。
 * **EventName**：要发送的事件的名称。
@@ -139,7 +141,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> 目前，只有 C# 函数支持引发事件。
+> 目前，只有 C# 业务流程协调程序函数支持引发事件。
 
 > [!WARNING]
 > 如果不存在具有指定实例 ID 的业务流程实例，或者该实例不在等待指定的事件名称，则会丢弃事件消息。 有关此行为的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues/29)。

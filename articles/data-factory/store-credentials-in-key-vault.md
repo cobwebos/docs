@@ -10,26 +10,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 12/14/2017
 ms.author: jingwang
-ms.openlocfilehash: f7604e251bd62ec382ac9ace3de058e345abb863
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
-可以在 [Azure Key Vault](../key-vault/key-vault-whatis.md) 中存储数据存储的凭据。 执行使用数据存储的活动时，Azure 数据工厂将检索凭据。 目前，仅 [Dynamics 连接器](connector-dynamics-crm-office-365.md)和 [Salesforce 连接器](connector-salesforce.md)支持此功能。
+可以在 [Azure Key Vault](../key-vault/key-vault-whatis.md) 中存储数据存储的凭据。 执行使用数据存储的活动时，Azure 数据工厂将检索凭据。
+
+目前，[Dynamics 连接器](connector-dynamics-crm-office-365.md)、[Salesforce 连接器](connector-salesforce.md)和几个新启用连接器支持此功能。 以后将有更多连接器支持此功能，敬请期待。 可以查看每个连接器主题，了解详细信息。 对于支持此功能的机密字段，可在说明中看到如下内容：*可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从“在 Key Vault 中存储凭据”了解详细信息*。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 此功能依赖于数据工厂服务标识。 从[数据工厂服务标识](data-factory-service-identity.md)了解其工作原理，并确保数据工厂已关联一个服务标识。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 若要引用 Azure Key Vault 中存储的凭据，需要：
 
@@ -98,4 +100,4 @@ Azure Key Vault 链接服务支持以下属性：
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

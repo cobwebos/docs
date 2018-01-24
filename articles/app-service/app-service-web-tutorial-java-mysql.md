@@ -15,19 +15,23 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 8b8d7b026973de9dee6c834404f2ed80b2c9ad21
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad53575b655ebec5a134c8d76b963708caf14334
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>在 Azure 中构建 Java 和 MySQL Web 应用
+
+> [!NOTE]
+> 本文将应用部署到基于 Windows 的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[将容器化 Spring Boot 应用部署到 Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)。
+>
 
 本教程介绍如何在 Azure 中创建 Java Web 应用，并将其连接到 MySQL 数据库。 完成本教程后，即可使用 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序将数据存储到[用于 MySQL 的 Azure 数据库](https://docs.microsoft.com/azure/mysql/overview)，后者运行在 [Azure 应用服务 Web 应用](app-service-web-overview.md)中。
 
 ![在 Azure appservice 中运行的 Java 应用](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
-本教程介绍如何：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 MySQL 数据库

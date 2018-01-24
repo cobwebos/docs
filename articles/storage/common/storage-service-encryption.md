@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: tamram
-ms.openlocfilehash: 772c36c8310a4bf30c62def507382fe74427e0d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32f622c39583a25a7bc53ffcb6d9be779459badc
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
 静态数据的 Azure 存储服务加密 (SSE) 可帮助你保护数据，使你的组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
@@ -33,7 +33,7 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 * 标准存储：用于 Blob 和文件存储的通用存储帐户，以及 Blob 存储帐户
 * 高级存储 
 * 所有冗余级别（LRS、ZRS、GRS、RA-GRS）
-* Azure Resource Manager 存储帐户（非经典） 
+* Azure 资源管理器存储帐户（非经典） 
 * 所有区域。
 
 若要了解详细信息，请参阅“常见问题解答”。
@@ -159,7 +159,7 @@ Azure 文件在云端通过标准 SMB 协议提供文件共享。 可以从本�
 
 **问：创建新的存储帐户时是否会按默认启用 SSE？**
 
-答：默认情况下不启用 SSE；可以使用 Azure 门户来启用它。 也可以编程方式使用存储资源提供程序 REST API 来启用此功能。
+答：Azure 存储团队正在使用 Microsoft 管理的密钥为写入到 Azure 存储（Blob、文件、表和队列存储）的所有数据和所有新的和现有存储帐户（Azure 资源管理器和经典存储帐户）默认启用加密。
 
 **问：此功能与 Azure 磁盘加密有何不同？**
 

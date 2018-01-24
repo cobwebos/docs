@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Xamarin 入门 | Microsoft 文档"
+title: "Azure AD Xamarin 入门 | Microsoft Docs"
 description: "构建一个与 Azure AD 集成以方便登录，并使用 OAuth 调用受 Azure AD 保护的 API 的 Xamarin 应用程序。"
 services: active-directory
 documentationcenter: xamarin
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 87e58e8df16f4b87b66a9ac0846be20e09073826
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e3d0a07323189599cb86dd2bf1347c2107efa842
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-xamarin-apps"></a>将 Azure AD 与 Xamarin 应用集成
+# <a name="azure-ad-xamarin-getting-started"></a>Azure AD Xamarin 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

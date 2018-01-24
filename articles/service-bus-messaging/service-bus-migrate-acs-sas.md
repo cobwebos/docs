@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 52015dc2f8450bb1af1587df8c0ccc3bda3c9db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2a55a6ad6a721a39c9f064aad817f841dd3235
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
-过去，服务总线应用程序有两种不同的授权模型可以选择。一种是服务总线直接提供的[共享访问签名 (SAS)](service-bus-sas.md) 令牌模型。另一种是联合模型，其中授权规则是由 [Azure Active Directory](/azure/active-directory/) 访问控制服务 (ACS) 在内部进行管理，从 ACS 获取的令牌会传递到服务总线，以授予对相应功能的访问权限。
+以前，服务总线应用程序有两种不同的授权模型可以选择。一种是服务总线直接提供的[共享访问签名 (SAS)](service-bus-sas.md) 令牌模型。另一种是联合模型，其中授权规则是由 [Azure Active Directory](/azure/active-directory/) 访问控制服务 (ACS) 在内部进行管理，从 ACS 获取的令牌会传递到服务总线，以授予对所需功能的访问权限。
 
 ACS 授权模型一直以来都被首选模型 [SAS 授权](service-bus-authentication-and-authorization.md)取代。目前，所有文档、指南和示例都只使用 SAS。 此外，无法再新建与 ACS 配对的服务总线命名空间。
 

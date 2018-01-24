@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 93f3912e2405a4ebeee26e3741d6412a75410b7f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c7d029515f27610e5d24c56ec1c60d6830e9e45
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="tutorial-configuring-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -89,26 +89,28 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
-11. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
+11. 如果 Salesforce 实例在 Salesforce 政府云中，则应输入**租户 URL**。 否则，它是可选项。 使用格式 https://your-instance.my.salesforce.com 输入租户 URL，并将“your-instance”替换为 Salesforce 实例的名称。
 
-12. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+12. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
 
-13. 单击“保存”。  
+13. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+
+14. 单击“保存”。  
     
-14.  在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”。
+15.  在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”。
 
-15. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Salesforce 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+16. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Salesforce 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-16. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+17. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-17. 单击“保存”。
+18. 单击“保存”。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务在 Salesforce 应用上执行的所有操作。
 
-现在可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Salesforce。
+现可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Salesforce。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

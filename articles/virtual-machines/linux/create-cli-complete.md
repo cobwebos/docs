@@ -4,7 +4,7 @@ description: "使用 Azure CLI 2.0 从头开始创建存储、Linux VM、虚拟�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
@@ -13,13 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/06/2017
+ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: e5c4785428b2150e951923e98079e00808a82d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd470144dc0fcbbfab662125b57d414c6ee1ccdd
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -102,7 +102,7 @@ az network vnet create \
 
 
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
-现在使用 [az network public-ip create](/cli/azure/network/public-ip#create) 创建公共 IP 地址。 可使用此公共 IP 地址从 Internet 连接到 VM。 因为默认地址是动态的，所以还需创建一个带 `--domain-name-label` 选项的命名 DNS 条目。 以下示例创建一个名为 *myPublicIP* 的公共 IP，其 DNS 名称为 *mypublicdns*。 DNS 名称必须唯一，因此请提供自己的唯一 DNS 名称：
+现在使用 [az network public-ip create](/cli/azure/network/public-ip#create) 创建公共 IP 地址。 可使用此公共 IP 地址从 Internet 连接到 VM。 因为默认地址是动态的，所以还需使用 `--domain-name-label` 参数创建一个命名 DNS 条目。 以下示例创建一个名为 *myPublicIP* 的公共 IP，其 DNS 名称为 *mypublicdns*。 DNS 名称必须唯一，因此请提供自己的唯一 DNS 名称：
 
 ```azurecli
 az network public-ip create \
@@ -141,7 +141,7 @@ az network public-ip create \
 
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
-若要控制传入和传出 VM 的流量，请创建网络安全组。 可将网络安全组应用到 NIC 或子网。 以下示例使用 [az network nsg create](/cli/azure/network/nsg#create) 创建一个名为 myNetworkSecurityGroup 的网络安全组：
+若要控制传入和传出 VM 的流量，请将网络安全组应用于虚拟 NIC 或子网。 以下示例使用 [az network nsg create](/cli/azure/network/nsg#create) 创建一个名为 myNetworkSecurityGroup 的网络安全组：
 
 ```azurecli
 az network nsg create \
@@ -149,7 +149,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-定义允许或拒绝特定流量的规则。 若要允许端口 22 上的入站连接（以支持 SSH），请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 为网络安全组创建入站规则。 以下示例创建名为 myNetworkSecurityGroupRuleSSH 的规则：
+定义允许或拒绝特定流量的规则。 若要允许端口 22 上的入站连接（以启用 SSH 访问），请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 创建入站规则。 以下示例创建名为 myNetworkSecurityGroupRuleSSH 的规则：
 
 ```azurecli
 az network nsg rule create \
@@ -162,7 +162,7 @@ az network nsg rule create \
     --access allow
 ```
 
-若要允许端口 80 上的入站连接（以支持 Web 流量），请添加另一网络安全组规则。 以下示例创建名为 myNetworkSecurityGroupRuleHTTP 的规则：
+若要允许端口 80 上的入站连接（以实现 Web 流量），请添加另一网络安全组规则。 以下示例创建名为 myNetworkSecurityGroupRuleHTTP 的规则：
 
 ```azurecli
 az network nsg rule create \
@@ -332,7 +332,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>创建虚拟 NIC
-由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以创建多个规则。 在以下 [az network nic create](/cli/azure/network/nic#create) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联。
+由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic#create) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联。
 
 ```azurecli
 az network nic create \
@@ -476,10 +476,10 @@ az vm availability-set create \
 ```
 
 
-## <a name="create-the-linux-vms"></a>创建 Linux VM
-已创建用于支持可访问 Internet 的 VM 的网络资源。 现在创建 VM，并使用 SSH 密钥进行保护。 在此情况下，我们需要基于最新的 LTS 创建 Ubuntu VM。 可使用 [az vm image list](/cli/azure/vm/image#list) 查找其他映像，如[查找 Azure VM 映像](cli-ps-findimage.md)中所述。
+## <a name="create-a-vm"></a>创建 VM
+已创建用于支持可访问 Internet 的 VM 的网络资源。 现在创建 VM，并使用 SSH 密钥进行保护。 在此示例中，让我们基于最新 LTS 创建 Ubuntu VM。 可使用 [az vm image list](/cli/azure/vm/image#list) 查找其他映像，如[查找 Azure VM 映像](cli-ps-findimage.md)中所述。
 
-我们还将指定用于身份验证的 SSH 密钥。 如果没有 SSH 公钥对，可[进行创建](mac-create-ssh-keys.md)或使用 `--generate-ssh-keys` 参数创建。 如果已有密钥对，此参数则使用 `~/.ssh` 中现有的密钥。
+指定用于身份验证的 SSH 密钥。 如果没有 SSH 公钥对，可[进行创建](mac-create-ssh-keys.md)或使用 `--generate-ssh-keys` 参数创建。 如果已有密钥对，此参数使用 `~/.ssh` 中的现有密钥。
 
 使用 [az vm create](/cli/azure/vm#create) 命令并结合所有资源和信息来创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
 
@@ -521,7 +521,7 @@ The authenticity of host 'mypublicdns.eastus.cloudapp.azure.com (13.90.94.252)' 
 ECDSA key fingerprint is SHA256:SylINP80Um6XRTvWiFaNz+H+1jcrKB1IiNgCDDJRj6A.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'mypublicdns.eastus.cloudapp.azure.com,13.90.94.252' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-81-generic x86_64)
+Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com

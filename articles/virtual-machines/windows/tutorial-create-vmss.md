@@ -4,7 +4,7 @@ description: "使用虚拟机规模集在 Windows VM 上创建和部署高度可
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: 
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d8f161af7753d2cd93a8683e8a93128144b86079
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d190d046f7572c51df0c5c9e14e14a41d93e3248
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>在 Windows 上创建虚拟机规模集和部署高度可用的应用
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在本教程中，会在 Azure 中部署虚拟机规模集。 学习如何：
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/29/2017
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
 
-本教程需要 Azure PowerShell 模块 3.6 或更高版本。 可以运行 ` Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本教程需要 Azure PowerShell 模块 5.1.1 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 
 ## <a name="scale-set-overview"></a>规模集概述
@@ -217,7 +217,7 @@ Get-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
     Select -ExpandProperty Sku
 ```
 
-然后，可以使用 [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) 手动增加或减少规模集中虚拟机的数目。 以下示例将规模集中 VM 的数目设置为“5”：
+然后，可以使用 [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) 手动增加或减少规模集中虚拟机的数目。 以下示例将规模集中 VM 的数目设置为 *3*：
 
 ```powershell
 # Get current scale set
@@ -226,7 +226,7 @@ $scaleset = Get-AzureRmVmss `
   -VMScaleSetName myScaleSet
 
 # Set and update the capacity of your scale set
-$scaleset.sku.capacity = 5
+$scaleset.sku.capacity = 3
 Update-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
     -Name myScaleSet `
     -VirtualMachineScaleSet $scaleset
@@ -236,7 +236,7 @@ Update-AzureRmVmss -ResourceGroupName myResourceGroupScaleSet `
 
 
 ### <a name="configure-autoscale-rules"></a>配置自动缩放规则
-定义自动缩放规则，而不是手动缩放规模集中实例的数目。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果平均 CPU 负载高于 60% 且持续时间超过 5 分钟，以下示例将增加一个实例。 如果平均 CPU 负载低于 30% 且持续时间超过 5 分钟，则将减少一个实例：
+定义自动缩放规则，而不是手动缩放规模集中实例的数目。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果在 5 分钟内平均 CPU 负载高于 60%，以下示例将增加一个实例。 如果在 5 分钟内平均 CPU 负载低于 30%，则将减少一个实例：
 
 ```powershell
 # Define your scale set information
@@ -245,7 +245,7 @@ $myResourceGroup = "myResourceGroupScaleSet"
 $myScaleSet = "myScaleSet"
 $myLocation = "East US"
 
-# Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5 minute period
+# Create a scale up rule to increase the number instances after 60% average CPU usage exceeded for a 5-minute period
 $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `
@@ -258,7 +258,7 @@ $myRuleScaleUp = New-AzureRmAutoscaleRule `
   -ScaleActionDirection Increase `
   -ScaleActionValue 1
 
-# Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5 minute period
+# Create a scale down rule to decrease the number of instances after 30% average CPU usage over a 5-minute period
 $myRuleScaleDown = New-AzureRmAutoscaleRule `
   -MetricName "Percentage CPU" `
   -MetricResourceId /subscriptions/$mySubscriptionId/resourceGroups/$myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$myScaleSet `

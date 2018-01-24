@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 8de1eca5a3e52533e05d93cfe30de612e3d0c648
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-azure-monitor"></a>Azure Monitor 概述
 本文概述了 Microsoft Azure 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 可以执行的工作并指出了可以在哪里找到有关如何使用 Azure Monitor 的其他信息。  如果喜欢观看视频介绍，请参阅本文底部“后续步骤”部分中的链接。 
@@ -43,7 +43,7 @@ Azure Monitor 的登录页有助于用户：
 
 打开页面时，可在有权读取的订阅之间进行选择。 对于所选订阅，可看到：
 
-- 已触发的警报和警报源 - 此表显示摘要计数、警报源以及所选时间段触发的警报次数。 它同时适用于指标警报和活动日志警报。
+- 已触发的警报和警报源 - 此表显示摘要计数、警报源以及所选时间段触发的警报次数。 它同时适用于指标警报和活动日志警报。 *<编辑：还针对所有警报（事件、指标和日志）显示了具有统一体验的警报（预览）>*
 - 活动日志错误 - 如果任何 Azure 资源日志事件具有严重错误级别，可查看高级计数并单击进入活动日志页来调查每个事件。
 - Azure 服务运行状况 - 可查看服务运行状况服务问题、计划内维护事件和运行状况咨询数。 当 Azure 基础结构中的问题影响到个人的服务时，Azure 服务运行状况会提供个性化的信息。  有关详细信息，请参阅 [Azure 服务运行状况](../service-health/service-health-overview.md)。  
 - Application Insights - 查看当前订阅中每个 AppInsights 资源的 KPI。 KPI 进行了优化，用于在 ASP.NET Web 应用、Java、节点和常规跨应用程序类型间进行服务器端应用程序监视。 KPI 包括请求速率、响应持续时间、故障率和可用性 % 的指标。 
@@ -55,6 +55,7 @@ Azure Monitor 的登录页有助于用户：
 ## <a name="azure-monitor-sources---compute-subset"></a>Azure Monitor 源 - 计算子集
 
 ![非计算资源的监视和诊断模型](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-compute_v6.png)
+
 
 此处的计算服务包括 
 - 云服务 
@@ -141,7 +142,10 @@ Azure Monitor 的登录页有助于用户：
 
 
 ### <a name="automate"></a>自动化
-可以使用监视数据触发警报甚至整个过程。 示例包括：
+> [!NOTE]
+> 随着 Microsoft Azure 上的警报功能的不断发展，现在用于发出警报的统一体验正处于预览状态。 有关 [Azure 警报（预览）](monitoring-overview-unified-alerts.md)的更多详细信息
+
+在标准 Azure 警报中，可以使用监视数据触发警报或甚至整个过程。 示例包括：
 
 * 使用数据根据应用程序负载自动缩放计算实例数。
 * 当某个指标超出预定阈值时发送电子邮件。

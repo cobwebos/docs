@@ -14,73 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 12/14/2017
 ms.author: saurinsh
-ms.openlocfilehash: 9deb5e4dbd925c4fdc523d8d21afbcfbf85947b8
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: eca019fa5e7866ed6281e8cfee105ba1d99249bc
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集
 
-传统 Hadoop 是单用户群集， 适用于大多数使用小型应用程序团队来构建大数据工作负荷的公司。 随着 Hadoop 越来越普及，许多企业开始转向这样一种模型：群集由 IT 团队管理，并由多个应用程序团队共享。 因此，涉及到多用户群集的功能是 HDInsight 中最常请求的功能之一。
+标准 HDInsight 群集是单用户群集。 适用于大多数使用小型应用程序团队来构建大数据工作负荷的公司。 随着 Hadoop 越来越普及，许多企业开始转向这样一种模型：群集由 IT 团队管理，并由多个应用程序团队共享。 因此，涉及到多用户群集的功能是 HDInsight 中最常请求的功能之一。
 
-HDInsight 不构建自己的多用户身份验证和授权，而是依赖于最常用的标识提供者 – Active Directory (AD)。 可以使用 AD 中强大的安全功能来管理 HDInsight 中的多用户授权。 将 HDInsight 与 AD 集成后，可以使用其 AD 凭据来与群集通信。 HDInsight 会将 AD 用户映射到本地 Hadoop 用户，因此在 HDInsight 上运行的所有服务（Ambari、Hive 服务器、Ranger、Spark Thrift 服务器等）都可以为经身份验证的用户无缝运行。
+HDInsight 不构建自己的多用户身份验证和授权，而是依赖于最常用的标识提供者 – Active Directory (AD)。 可以使用 AD 中强大的安全功能来管理 HDInsight 中的多用户授权。 将 HDInsight 与 AD 集成后，可以使用其 AD 凭据来与群集通信。 HDInsight 中的 VM 通过域加入到你的 AD，并且这是 HDInsight 将 AD 用户映射到本地 Hadoop 用户的方式，因此在 HDInsight 上运行的所有服务（Ambari、Hive 服务器、Ranger、Spark Thrift 服务器等）都可以为通过身份验证的用户无缝运行。 然后，管理员可以使用 Apache Ranger 创建强大的授权策略来针对 HDInsight 中的资源提供基于角色的访问控制。
+
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>将 HDInsight 与 Active Directory 集成
 
-将 HDInsight 与 Active Directory 集成时，HDInsight 群集节点可通过域加入 AD 域。 HDInsight 为群集上运行的 Hadoop 服务创建服务主体，并将其置于域中的指定组织单位 (OU) 内。 HDInsight 还会针对已加入域的节点的 IP 地址，在域中创建反向 DNS 映射。
+将 HDInsight 与 Active Directory 集成时，HDInsight 群集节点通过域加入某个 AD 域。 将为群集上的 Hadoop 组件配置 Kerberos 安全性。 对于每个 Hadoop 组件，将在 Active Directory 中创建一个服务主体。 还将为加入到该域的每台计算机创建一个对应的计算机主体。 这些服务主体和计算机主体可能会使 Active Directory 变得凌乱。 因此，需要在 Active Directory 中提供一个组织单位 (OU) 来放置这些主体。 
 
-有两个用于 Active Directory 的部署选项：
-* **[Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)：**此服务提供的托管 Active Directory 域与 Windows Server Active Directory 完全兼容。 Microsoft 负责管理、修补和监视 AD 域。 你可以部署群集，而不用担心如何维护域控制器。 将从 Azure Active Directory 同步用户、组和密码，使用户能够使用其公司凭据登录到群集。
+概而言之，需要在环境中设置以下项：
 
-* **Azure IaaS VM 上的 Windows Server Active Directory 域：**在此选项中，部署和管理自己在 Azure IaaS VM 上的 Windows Server Active Directory 域。 
+- 一个配置了 LDAPS 的 Active Directory 域。
+- 从 HDInsight 的虚拟网络到你的 Active Directory 域控制器的连接。
+- 在 Active Directory 上创建的一个组织单位。
+- 一个有权执行以下操作的服务帐户：
 
-可以使用多个体系结构来实现这种设置。 可从以下体系结构中选择。
+    - 在 OU 中创建服务主体。
+    - 将计算机加入到域并在 OU 中创建计算机主体。
 
+以下屏幕截图显示了在 contoso.com 中创建的一个 OU。屏幕截图中还显示了一些服务主体和计算机主体。
 
-### <a name="hdinsight-integrated-with-an-azure-ad-domain-services-managed-ad-domain"></a>与 Azure AD 域服务托管的 AD 域集成的 HDInsight
-可以部署 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md) (Azure AD DS) 托管域。 Azure AD DS 提供了 Azure 中托管的 AD 域，该域由 Microsoft 管理、更新和监视。 它会创建两个域控制器以确保高可用性，并包括 DNS 服务。 然后可以将 HDInsight 群集与此托管域集成。 使用此部署选项，不必担心如何管理、修补、更新和监视域控制器。
+![已加入域的 HDInsight 群集 OU](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)。
 
-![将 HDInsight 群集拓扑加入域](./media/apache-domain-joined-architecture/hdinsight-domain-joined-architecture_2.png)
+### <a name="three-ways-of-bringing-your-own-active-directory-domain-controllers"></a>自带 Active Directory 域控制器的三种方式
 
-与 Azure AD 域服务集成的先决条件：
+可以通过三种方式自带 Active Directory 域控制器来创建已加入域的 HDInsight 群集。 
 
-* [预配 Azure AD 域服务托管域](../../active-directory-domain-services/active-directory-ds-getting-started.md)。
-* 创建一个[组织单位](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)用于放置 HDInsight 群集 VM 以及群集使用的服务主体。
-* 配置 Azure AD DS 时，设置 [LDAPS](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。 用于设置 LDAPS 的证书必须由公共证书颁发机构颁发（不是自签名证书）。
-* 针对 HDInsight 子网的 IP 地址范围（例如上图中的 10.2.0.0/24）在托管域中创建反向 DNS 区域。
-* 配置 [NTLM 和 Kerberos 身份验证所需的密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)（从 Azure AD 到 Azure AD DS 托管域）。
-* 需要一个服务帐户或用户帐户， 到时要使用该帐户创建 HDInsight 群集。 此帐户必须具有以下权限：
+- **Azure Active Directory 域服务**：此服务提供的托管 Active Directory 域与 Windows Server Active Directory 完全兼容。 Microsoft 负责管理、修补和监视 AD 域。 你可以部署群集，而不用担心如何维护域控制器。 将从 Azure Active Directory 同步用户、组和密码，使用户能够使用其公司凭据登录到群集。 有关详细信息，请参阅[使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
-    - 在组织单位中创建服务主体对象和计算机对象的权限
-    - 创建反向 DNS 代理规则的权限
-    - 将计算机加入 Azure AD 域的权限。
+- **Azure IaaS VM 上的 Active Directory**：在此选项中，你将在 Azure IaaS VM 上部署和管理你自己的 Windows Server Active Directory 域。 有关详细信息，请参阅[配置已加入域的沙盒环境](./apache-domain-joined-configure.md)。
 
-
-### <a name="hdinsight-integrated-with-windows-server-ad-running-on-azure-iaas"></a>与 Azure IaaS 上运行的 Windows Server AD 集成的 HDInsight
-
-可以在 Azure 中的一个（或多个）虚拟机 (VM) 上部署 Windows Server Active Directory 域服务角色，并将它们提升为域控制器。 可以使用资源管理器部署模型将这些域控制器 VM 部署到 HDInsight 群集所在的虚拟网络。 如果域控制器部署到不同的虚拟网络，则需要使用 [VNet 到 VNet 对等互连](../../virtual-network/virtual-network-create-peering.md)将这些虚拟网络对等互连。 
-
-[详细信息 - 在 Azure VM 上部署 Windows Server Active Directory](../../active-directory/virtual-networks-windows-server-active-directory-virtual-machines.md)
-
-![将 HDInsight 群集拓扑加入域](./media/apache-domain-joined-architecture/hdinsight-domain-joined-architecture_1.png)
-
-> [!NOTE]
-> 在此体系结构中，不能将 Azure Data Lake Store 与 HDInsight 群集配合使用。
-
-
-与 Azure VM 上的 Windows Server Active Directory 集成的先决条件：
-
-* 必须创建一个[组织单位](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)用于放置 HDInsight 群集 VM 以及群集使用的服务主体。
-* 必须设置[轻型目录访问协议](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md) (LDAP) 来与 AD 通信。 用于设置 LDAPS 的证书必须是实际证书（不是自签名证书）。
-* 必须针对 HDInsight 子网的 IP 地址范围（例如上图中的 10.2.0.0/24）在域中创建反向 DNS 区域。
-* 需要一个服务帐户或用户帐户， 到时要使用该帐户创建 HDInsight 群集。 此帐户必须具有以下权限：
-
-    - 在组织单位中创建服务主体对象和计算机对象的权限
-    - 创建反向 DNS 代理规则的权限
-    - 将计算机加入 Active Directory 域的权限
+- **本地 Active Directory**：在此选项中，你需要将 HDInsight 与你的本地 Active Directory 域控制器进行集成。
 
 
 ## <a name="next-steps"></a>后续步骤

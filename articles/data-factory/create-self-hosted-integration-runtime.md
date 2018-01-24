@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: abnarain
-ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2c7df5c0a976aae8e3e0b99b083bbde942493bfa
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 数据工厂。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 自承载集成运行时能够在云数据存储和专用网络中数据存储之间运行复制活动，并针对本地或 Azure 虚拟网络中的计算资源调度转换活动。 在本地计算机或专用网络中的虚拟机上安装自承载集成运行时的需求。  
 
@@ -110,7 +110,20 @@ ms.lasthandoff: 11/10/2017
 如[教程](tutorial-hybrid-copy-powershell.md)中所述，可以通过直接从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自托管 Integration Runtime 软件，并通过使用从 New-AzureRmDataFactoryV2IntegrationRuntimeKey cmdlet 获取的任一身份验证密钥进行注册来关联多个节点
 
 > [!NOTE]
-> 不需要为关联每个节点而创建新的自承载集成运行时。
+> 不需要为关联每个节点而创建新的自承载集成运行时。 可以在另一台计算机上安装自承载集成运行时，并使用同一身份验证密钥注册它。 
+
+> [!NOTE]
+> 在添加另一个节点以实现**高可用性和可伸缩性**之前，请确保已在第 1 个节点上**启用**“远程访问 Intranet”选项（Microsoft Integration Runtime Configuration Manager ->“设置”->“远程访问 Intranet”）。 
+
+### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 证书要求
+下面是用于保护集成运行时节点间通信的 TLS/SSL 证书的相关要求：
+
+- 证书必须是公共可信的 X509 v3 证书。 建议使用公共（即第三方）证书颁发机构 (CA) 颁发的证书。
+- 每个集成运行时节点必须信任此证书。
+- 支持通配符证书。 如果 FQDN 名称为 node1.domain.contoso.com，可以使用 *.domain.contoso.com 作为证书的使用者名称。
+- 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
+- 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
+- 不支持使用 CNG 密钥的证书。 不支持使用 CNG 密钥的证书。
 
 ## <a name="system-tray-icons-notifications"></a>系统托盘图标/通知
 如果将游标移动到系统托盘图标/通知消息上，可以查看自承载集成运行时状态的详细信息。
@@ -225,14 +238,20 @@ ms.lasthandoff: 11/10/2017
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="open-port-8060-for-credential-encryption"></a>打开端口 8060 以实现凭据加密
-在 Azure 门户中设置本地链接服务时，**设置凭据**应用程序（当前不受支持）使用入站端口 8060 将凭据中继到自承载集成运行时。 在自承载集成运行时安装期间，默认情况下，自承载集成运行时安装将在自承载集成运行时计算机上打开。
+### <a name="enable-remote-access-from-intranet"></a>启用“从 Intranet 进行远程访问”  
+如果使用 **PowerShell** 或**凭据管理器应用程序**加密网络中未安装自承载集成运行时的另一台计算机上的凭据，则需要启用“从 Intranet 进行远程访问”选项。 如果运行 **PowerShell** 或**凭据管理器应用程序**加密安装了自承载集成运行时的同一台计算机上的凭据，则可以不启用“从 Intranet 进行远程访问”选项。
 
-如果正在使用第三方防火墙，则可以手动打开端口 8050。 如果在自承载集成运行时安装过程中遇到防火墙问题，可以尝试使用以下命令在不配置防火墙的情况下安装自承载集成运行时。
+在添加另一个节点以实现**高可用性和可伸缩性**之前，应**启用**“从 Intranet 进行远程访问”。  
+
+在自承载集成运行时安装（v 3.3.xxxx.x 及更高版本）期间，默认情况下，自承载集成运行时安装将在自承载集成运行时计算机上禁用“从 Intranet 进行远程访问”。
+
+如果使用的是第三方防火墙，则可以手动打开端口 8060（或用户配置的端口）。 如果在自承载集成运行时安装过程中遇到防火墙问题，可以尝试使用以下命令在不配置防火墙的情况下安装自承载集成运行时。
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
+> [!NOTE]
+> **凭据管理器应用程序**尚不可用于加密 ADFv2 中的凭据。 我们以后会添加此支持。  
 
 如果选择不打开自承载集成运行时计算机上的端口 8060，则使用机制（而不是使用**设置凭据**应用程序）来配置数据存储凭据。 例如，可以使用 New-AzureRmDataFactoryV2LinkedServiceEncryptCredential PowerShell cmdlet。 请参阅“设置凭据和安全”部分，了解如何设置数据存储凭据。
 

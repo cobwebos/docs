@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 12/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 1db25a5d9ff5cb6aa2787a0cafa40cfb010e3b06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f4b739fd34cc0c85d47b97b7b42a70eb7f5f5ac7
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>将 Windows VM 移到其他 Azure 订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Windows VM。 如果最初在个人订阅中创建了 VM，现在想要将其移到公司的订阅以继续工作，则在订阅之间移动 VM 可能很方便。
@@ -34,33 +34,31 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="use-powershell-to-move-a-vm"></a>使用 PowerShell 移动 VM
-要将虚拟机移到其他资源组，需确保同时移动所有依赖资源。 若要使用 Move-AzureRMResource cmdlet，需要资源的名称和类型。 可以通过 Find-AzureRMResource cmdlet 获取这两项信息。
 
-    Find-AzureRMResource -ResourceGroupNameContains "<sourceResourceGroupName>"
+要将虚拟机移到其他资源组，需确保同时移动所有依赖资源。 若要使用 Move-AzureRMResource cmdlet，需要各资源的 ResourceId。 可以使用 [Find-AzureRMResource](/powershell/module/azurerm.resources/find-azurermresource) cmdlet 获取 ResourceId 列表。
 
+```azurepowershell-interactive
+ Find-AzureRMResource -ResourceGroupNameContains <sourceResourceGroupName> | Format-table -Property ResourceId 
+```
 
-若要移动 VM，需要移动多个资源。 只需分别创建每个资源的变量，并列出这些变量即可。 本示例包括 VM 的大多数基本资源，但可以根据需要添加更多资源。
+若要移动 VM，需要移动多个资源。 可以使用 Find-AzureRMResource 的输出来创建 ResourceId 的逗号分隔列表并将该列表传递给 [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) 以将这些资源移到目标。 
 
-    $sourceRG = "<sourceResourceGroupName>"
-    $destinationRG = "<destinationResourceGroupName>"
+```azurepowershell-interactive
 
-    $vm = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Compute/virtualMachines" -ResourceName "<vmName>"
-    $storageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<storageAccountName>"
-    $diagStorageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<diagnosticStorageAccountName>"
-    $vNet = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/virtualNetworks" -ResourceName "<vNetName>"
-    $nic = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkInterfaces" -ResourceName "<nicName>"
-    $ip = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/publicIPAddresses" -ResourceName "<ipName>"
-    $nsg = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkSecurityGroups" -ResourceName "<nsgName>"
-
-    Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
-
+Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+    -ResourceId <myResourceId,myResourceId,myResourceId>
+```
+    
 要将资源移到其他订阅，请包含 **-DestinationSubscriptionId** 参数的值。 
 
-    Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
+```azurepowershell-interactive
+Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
+    -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+    -ResourceId <myResourceId,myResourceId,myResourceId>
+```
 
 
-
-系统会要求确认需要移动指定资源。 键入 **Y** 确认删除资源。
+系统会要求确认需要移动指定资源。 
 
 ## <a name="next-steps"></a>后续步骤
 可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../resource-group-move-resources.md)。    

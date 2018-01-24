@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ef68f64437935f08f76c29ecf15d574279cca7f1
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: d6c679518bfc712e6a08ffae722b0cc5d2b038aa
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
 
@@ -93,7 +93,7 @@ dotnet run
 
 ### <a name="create-a-sql-database-logical-server"></a>创建 SQL 数据库逻辑服务器
 
-在 Cloud Shell 中，使用 [az sql server create](/cli/azure/sql/server#create) 命令创建 SQL 数据库逻辑服务器。
+在 Cloud Shell 中，使用 [az sql server create](/cli/azure/sql/server?view=azure-cli-latest#az_sql_server_create) 命令创建 SQL 数据库逻辑服务器。
 
 将 \<server_name> 占位符替换为唯一的 SQL 数据库名称。 此名称用作 SQL 数据库终结点 `<server_name>.database.windows.net` 的一部分，因此必须在 Azure 的所有逻辑服务器中具有唯一性。 它只能包含小写字母、数字及连字符(-)，长度必须为 3 到 50 个字符。 此外，将 \<db_username> 和 \<db_password> 分别替换为所选用户名和密码。 
 
@@ -124,7 +124,7 @@ az sql server create --name <server_name> --resource-group myResourceGroup --loc
 
 ### <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [az sql server firewall create](/cli/azure/sql/server#create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+使用 [az sql server firewall create](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az_sql_server_firewall_rule_create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -132,7 +132,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 
 ### <a name="create-a-database"></a>创建数据库
 
-使用 [az sql db create](/cli/azure/sql/db#create) 命令在服务器中创建 [S0 性能级别](../../sql-database/sql-database-service-tiers.md)的数据库。
+使用 [az sql db create](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_create) 命令在服务器中创建 [S0 性能级别](../../sql-database/sql-database-service-tiers.md)的数据库。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
@@ -166,7 +166,7 @@ Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persis
 
 ### <a name="configure-an-environment-variable"></a>配置环境变量
 
-要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) 命令。 在下列命令中，将 \<app name> 和 \<connection_string> 参数替换为先前创建的连接字符串。
+要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令。 在下列命令中，将 \<app name> 和 \<connection_string> 参数替换为先前创建的连接字符串。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer

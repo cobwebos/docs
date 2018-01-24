@@ -1,6 +1,6 @@
 ---
-title: "收集和分析 OMS Log Analytics 中的 Windows 事件日志 | Microsoft Docs"
-description: "Windows 事件日志 Log Analytics 使用的最常见的数据源之一。  本文介绍如何配置 Windows 事件日志集合，以及它们在 OMS 存储库中创建记录的详细信息。"
+title: "收集和分析 Azure Log Analytics 中的 Windows 事件日志 | Microsoft Docs"
+description: "Windows 事件日志 Log Analytics 使用的最常见的数据源之一。  本文介绍如何配置 Windows 事件日志收集以及在 Log Analytics 工作区中创建的记录的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](log-analytics-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -46,7 +46,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 计算机 |从中收集事件的计算机的名称。 |
+| Computer |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |
 | EventData |所有原始格式的事件数据。 |
 | EventID |事件数。 |
@@ -56,7 +56,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | ParameterXml |XML 格式的事件参数值。 |
 | ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，该值为 AOI-<workspace ID> |
 | RenderedDescription |具有参数值的事件描述 |
-| 源 |事件源。 |
+| Source |事件源。 |
 | SourceSystem |从中收集事件的代理类型。 <br> OpsManager – Windows 代理，直接连接或 Operations Manager 管理 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
 | TimeGenerated |在 Windows 中创建事件的日期和时间。 |
 | Username |记录事件的帐户的用户名。 |

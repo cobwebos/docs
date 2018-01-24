@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 1a5922506a0db4277b205ba3390c9c30034c177d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 964475ba8b42ac41707fa78468bfe551677c595f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-messaging-exceptions"></a>事件中心消息传送异常
-本文列出 Azure 服务总线消息传送 API 生成的一些异常，其中包括事件中心。 这些参考信息可随时更改，请不时返回查看更新内容。
+
+本文列出 Azure 服务总线消息传送 API 库生成的一些异常，其中包括事件中心 API。 这些参考信息可随时更改，请不时返回查看更新内容。
 
 ## <a name="exception-categories"></a>异常类别
+
 事件中心 API 会生成以下类别的异常，以及在尝试修复这些异常时可以采取的相关操作。
 
 1. 用户代码错误：[System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 常规操作：继续之前尝试修复代码。
@@ -82,9 +84,9 @@ ms.lasthandoff: 10/11/2017
     
     解决方法：修改分区分发策略，或尝试 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) 可能会有所帮助。
 
-2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间边栏选项卡上的“指标”边栏选项卡来确认）。 请注意，门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
+2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 请注意，门户显示聚合（1 分钟）的信息，但吞吐量是实时测量的 - 因此吞吐量只是一个估计值。
 
-    解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间边栏选项卡的“缩放”边栏选项卡中执行此操作。
+    解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”窗口中执行此操作。
 
 ### <a name="error-code-50001"></a>错误代码 50001
 

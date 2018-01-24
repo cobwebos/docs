@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 7347be8520e643cd166851d3f525a9a0726b40c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 操作组可以具有最多 10 种不同的操作类型。 每个操作包含以下属性：
 
 * 名称：操作组中的唯一标识符。  
-* **操作类型**：发送短信、发送电子邮件、调用 webhook，或者将数据发送到 ITSM 工具。
+* **操作类型**：发送短信、发送电子邮件、调用 Webhook、将数据发送到 ITSM 工具、调用 Azure 应用或运行自动化 runbook。
 * **详细信息**：相应电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](monitoring-create-action-group-with-resource-manager-template.md)。
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 1. 在[门户](https://portal.azure.com)中，选择“监视器”。 “监视器”边栏选项卡将所有监视设置和数据合并到一个视图中。
 
     ![“监视”服务](./media/monitoring-action-groups/home-monitor.png)
-2. 在“活动日志”部分，选择“操作组”。
+2. 在“设置”部分中，选择“操作组”。
 
     ![“操作组”选项卡](./media/monitoring-action-groups/action-groups-blade.png)
 3. 选择“添加操作组”，并填写字段。
@@ -56,14 +56,12 @@ ms.lasthandoff: 10/11/2017
 
     a. 名称：输入此操作的唯一标识符。
 
-    b. **操作类型**：选择短信、电子邮件、webhook 或 ITSM。
+    b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用、ITSM 或自动化 Runbook。
 
-    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。 
+    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。 
 
-> [!NOTE]
-> ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。 ITSM 操作当前仅适用于活动日志警报。 对于其他警报类型，此操作当前不执行任何操作。
->
->
+   > [!NOTE]
+   > ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。 ITSM 操作当前仅适用于活动日志警报。 对于其他警报类型，此操作当前不执行任何操作。
 
 8. 选择“确定”创建操作组。
 

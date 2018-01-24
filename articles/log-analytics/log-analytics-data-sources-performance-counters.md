@@ -1,6 +1,6 @@
 ---
 title: "收集和分析 Azure Log Analytics 中的性能计数器 | Microsoft 文档"
-description: "性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器的集合、它们在 OMS 存储库中的存储详情和如何在 OMS 门户中对他们对其分析。"
+description: "性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。"
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: d0345155b2c13bd0b4341ce53272e7d84cd233fb
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -26,9 +26,9 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 ![性能计数器](media/log-analytics-data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
-可以在 OMS 门户中从 [Log Analytics 设置中的数据菜单](log-analytics-data-sources.md#configuring-data-sources)配置性能计数器。
+通过 [Log Analytics 设置中的“数据”菜单](log-analytics-data-sources.md#configuring-data-sources)配置性能计数器。
 
-首次为新的 OMS 工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建几个通用的计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
+首次为新的 Log Analytics 工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建多个常用计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
 
 对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
 
@@ -65,7 +65,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 5. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
-可以不使用 OMS 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** 中的配置进行控制。
+可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** 中的配置进行控制。
 
 要收集的性能指标的每个对象或类别应在配置文件中作为单个 `<source>` 元素进行定义。 语法遵循下面的模式。
 
@@ -80,7 +80,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 下表介绍了此元素中的参数。
 
-| 参数 | 说明 |
+| parameters | 说明 |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
 | instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定：`(crond\|sshd)`。 |
@@ -182,14 +182,14 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
     </source>
 
 ## <a name="data-collection"></a>数据收集
-Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  该数据不会聚合，在 OMS 订阅指定的时间期限内可在所有的日志搜索视图中获取其原始数据。
+Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，原始数据在订阅指定的持续时间内在所有日志搜索视图中提供。
 
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 计算机 |从中收集事件的计算机。 |
+| Computer |从中收集事件的计算机。 |
 | CounterName |性能计数器的名称 |
 | CounterPath |性能计数器的完整路径，以 \\\\\<Computer>\\object(instance)\\counter 格式显示。 |
 | CounterValue |计数器的数值。 |
@@ -220,12 +220,7 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 | Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |
 | Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | 所有性能数据来自命名 SQL Server 实例 INST2 的 master 数据库的数据库性能对象。  
 
-## <a name="viewing-performance-data"></a>查看性能数据
-运行性能数据的日志查询时，默认情况下将显示**列表**视图。  若要以图像形式查看数据，单击“**指标**”。  若要详细查看图形，单击计数器旁的 **+**。  
 
-![指标视图折叠](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
-
-若要聚合日志搜索中的性能数据，请参阅 [OMS 中的按需指标聚合和可视化](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/)。
 
 
 ## <a name="next-steps"></a>后续步骤

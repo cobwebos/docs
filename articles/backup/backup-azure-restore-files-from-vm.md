@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/27/2017
+ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: 46cc2737c23b02c6542320e355607f83042bd058
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2750b652b7de3c7a41ac5712071999c97d435db
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -70,40 +70,7 @@ Azure 备份提供从 Azure VM 备份（也称还原点）还原 [Azure 虚拟�
 
    在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。  
          
-   可以在具有与备份 VM 相同（或兼容）操作系统的任何计算机上运行该脚本。 有关兼容的操作系统，请参阅[兼容的 OS 表](backup-azure-restore-files-from-vm.md#compatible-os)。 如果受保护的 Azure 虚拟机使用 Windows 存储空间（适用于 Microsoft Azure VM）或 LVM/RAID 阵列（适用于 Linux VM），则不能在同一虚拟机上运行该可执行文件或脚本。 而应在具有兼容操作系统的任何其他计算机上运行该可执行文件或脚本。
-
-### <a name="compatible-os"></a>兼容的 OS
-
-#### <a name="for-windows"></a>对于 Windows
-
-下表显示了服务器与计算机操作系统之间的兼容性。 恢复文件时，不能将文件还原到更旧或更新的操作系统版本。 例如，不能将文件从 Windows Server 2016 VM 还原到 Windows Server 2012 或 Windows 8 计算机。 可将 VM 中的文件还原到相同的服务器操作系统，或还原到兼容的客户端操作系统。   
-
-|服务器 OS | 兼容的客户端 OS  |
-| --------------- | ---- |
-| Windows Server 2016    | Windows 10 |
-| Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
-
-#### <a name="for-linux"></a>对于 Linux
-
-在 Linux 中，用于还原文件的计算机的 OS 必须支持受保护虚拟机的文件系统。 选择用于运行脚本的计算机时，请确保计算机具有兼容的 OS，并使用下表中认定的版本之一：
-
-|Linux OS | 版本  |
-| --------------- | ---- |
-| Ubuntu | 12.04 及更高版本 |
-| CentOS | 6.5 及更高版本  |
-| RHEL | 6.7 及更高版本 |
-| Debian | 7 及更高版本 |
-| Oracle Linux | 6.4 及更高版本 |
-
-该脚本还需要 Python 和 bash 组件才能执行并安全地连接到恢复点。
-
-|组件 | 版本  |
-| --------------- | ---- |
-| bash | 4 及更高版本 |
-| Python | 2.6.6 及更高版本  |
-
+   可以在具有与备份 VM 相同（或兼容）操作系统的任何计算机上运行该脚本。 有关兼容的操作系统，请参阅[兼容的 OS 表](backup-azure-restore-files-from-vm.md#system-requirements)。 如果受保护的 Azure 虚拟机使用 Windows 存储空间（适用于 Windows Azure VM）或 LVM/RAID 阵列（适用于 Linux VM），则不能在同一虚拟机上运行该可执行文件或脚本。 而应在具有兼容操作系统的任何其他计算机上运行该可执行文件或脚本。
 
 ### <a name="identifying-volumes"></a>标识卷
 
@@ -192,6 +159,41 @@ $ mount [RAID Disk Path] [/mountpath]
 ```
 
 如果 RAID 磁盘中配置了另一 LVM，请使用前述 LVM 分区相关过程，但使用卷名称代替 RAID 磁盘名称
+
+## <a name="system-requirements"></a>系统要求
+
+### <a name="for-windows"></a>对于 Windows
+
+下表显示了服务器与计算机操作系统之间的兼容性。 恢复文件时，不能将文件还原到更旧或更新的操作系统版本。 例如，不能将文件从 Windows Server 2016 VM 还原到 Windows Server 2012 或 Windows 8 计算机。 可将 VM 中的文件还原到相同的服务器操作系统，或还原到兼容的客户端操作系统。   
+
+|服务器 OS | 兼容的客户端 OS  |
+| --------------- | ---- |
+| Windows Server 2016    | Windows 10 |
+| Windows Server 2012 R2 | Windows 8.1 |
+| Windows Server 2012    | Windows 8  |
+| Windows Server 2008 R2 | Windows 7   |
+
+### <a name="for-linux"></a>对于 Linux
+
+在 Linux 中，用于还原文件的计算机的 OS 必须支持受保护虚拟机的文件系统。 选择用于运行脚本的计算机时，请确保计算机具有兼容的 OS，并使用下表中认定的版本之一：
+
+|Linux OS | 版本  |
+| --------------- | ---- |
+| Ubuntu | 12.04 及更高版本 |
+| CentOS | 6.5 及更高版本  |
+| RHEL | 6.7 及更高版本 |
+| Debian | 7 及更高版本 |
+| Oracle Linux | 6.4 及更高版本 |
+| SLES | 12 及更高版本 |
+| openSUSE | 42.2 及更高版本 |
+
+该脚本还需要 Python 和 bash 组件才能执行并安全地连接到恢复点。
+
+|组件 | 版本  |
+| --------------- | ---- |
+| bash | 4 及更高版本 |
+| Python | 2.6.6 及更高版本  |
+| TLS | 应支持 1.2  |
 
 ## <a name="troubleshooting"></a>故障排除
 

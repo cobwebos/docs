@@ -5,7 +5,7 @@ keywords: "linux 虚拟机, 虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: madhana
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
@@ -16,21 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 0b05359938f4da544c4cb2a6fe60cfaf228478e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
-本主题讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
+本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>何时使用规模集而不使用虚拟机？
-一般而言，规模集非常适合用于部署高可用性基础结构（其中的一组计算机采用类似配置）。 但是，有些功能只能在规模集中使用，还有些功能只能在 VM 中使用。 若要就何时使用哪种技术做出明智的决策，我们首先应该大致了解可在规模集中使用，但不能在 VM 中使用的一些常用功能：
+一般而言，规模集非常适合用于部署高可用性基础结构（其中的一组计算机采用类似配置）。 但是，有些功能只能在规模集中使用，还有些功能只能在 VM 中使用。 若要就何时使用每种技术做出明智的决策，我们首先应该大致了解可在规模集中使用，但不能在 VM 中使用的一些常用功能：
 
 ### <a name="scale-set-specific-features"></a>特定于规模集的功能
 
-- 指定规模集配置后，只需更新“容量”属性即可同时部署更多的 VM。 这比编写一个脚本来协调众多 VM 的同时部署要简单得多。
+- 指定规模集配置后，可以更新“容量”属性以并行部署更多的 VM。 这比编写一个脚本来协调众多 VM 的同时部署要简单得多。
 - 可以[使用 Azure 自动缩放来自动缩放规模集](./virtual-machine-scale-sets-autoscale-overview.md)，但不能使用它来自动缩放单个 VM。
 - 可以[重置规模集 VM 的映像](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm)，但[不能重置单个 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachines)。
 - 可以[过度预配](./virtual-machine-scale-sets-design-overview.md)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码，否则在单个 VM 上无法做到这一点。
@@ -38,14 +38,14 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="vm-specific-features"></a>特定于 VM 的功能
 
-另一方面，某些功能只能在 VM 中使用（至少目前是这样）：
+某些功能目前仅在 VM 中可用：
 
 - 可将数据磁盘附加到特定的单个 VM，但附加的数据磁盘是针对规模集中的所有 VM 配置的。
 - 可将非空数据磁盘附加到单个 VM，但不能附加到规模集中的 VM。
 - 可以创建单个 VM 的快照，但不能创建规模集中 VM 的快照。
 - 可以从单个 VM 捕获映像，但不能从规模集中的 VM 捕获映像。
 - 可将单个 VM 从本机磁盘迁移到托管磁盘，但对于规模集中的 VM，无法执行此操作。
-- 可将 IPv6 公共 IP 地址分配给单个 VM 的 NIC，但对于规模集中的 VM，无法执行此操作。 请注意，可将 IPv6 公共 IP 地址分配到单个 VM 或规模集 VM 前面的负载均衡器。
+- 可将 IPv6 公共 IP 地址分配给单个 VM 的 NIC，但对于规模集中的 VM，无法执行此操作。 可将 IPv6 公共 IP 地址分配到单个 VM 或规模集 VM 前面的负载均衡器。
 
 ## <a name="storage"></a>存储
 

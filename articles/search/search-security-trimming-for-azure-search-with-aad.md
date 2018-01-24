@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Active Directory 在 Azure 搜索中进行安全修整 | Microsoft Docs"
-description: "使用 Azure 搜索筛选器和 Azure Active Directory 实现安全修整。"
+title: "用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器 | Microsoft Docs"
+description: "使用安全筛选器和 Active Directory 标识对 Azure 搜索内容进行访问控制。"
 services: search
 author: revitalbarletz
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 8d277ff43aa0d5d14471426632b5aa369df0e316
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-in-azure-search-with-azure-active-directory"></a>使用 Azure Active Directory 在 Azure 搜索中进行安全修整
+# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 
-本文演示如何结合使用 Azure Active Directory (AAD) 和 Azure 搜索基于用户组成员身份来限制文档访问。
+本文演示如何结合使用 Azure Active Directory (AAD) 安全标识和 Azure 搜索中的筛选器基于用户组成员身份来修剪搜索结果。
 
 本文涵盖以下任务：
 > [!div class="checklist"]
@@ -187,5 +187,6 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 ## <a name="see-also"></a>另请参阅
 
-+ [使用 Azure 搜索实现安全修整](search-security-trimming-for-azure-search.md)
++ [使用 Azure 搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
 + [Azure 搜索中的筛选器](search-filters.md)
++ [Azure 搜索操作中的数据安全性和访问控制](search-security-overview.md)

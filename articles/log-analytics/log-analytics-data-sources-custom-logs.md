@@ -1,6 +1,6 @@
 ---
-title: "收集 OMS Log Analytics 中的自定义日志 | Microsoft Docs"
-description: "Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 OMS 存储库中创建的记录的详细信息。"
+title: "在 Azure Log Analytics 中收集自定义日志 | Microsoft Docs"
+description: "Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Log Analytics 工作区中创建的记录的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: bwren
-ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -42,10 +42,10 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 使用以下步骤定义自定义日志文件。  请在本文末尾查看添加自定义日志的演示示例。
 
 ### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1. 打开自定义日志向导
-自定义日志向导在 OMS 门户中运行，可以定义要收集的新自定义日志。
+自定义日志向导在 Azure 门户中运行，使用它可以定义要收集的新自定义日志。
 
-1. 在 OMS 门户中，单击“设置”。
-2. 依次单击“数据”、“自定义日志”。
+1. 在 Azure 门户中，选择“Log Analytics”> 你的工作区 >“高级设置”。
+2. 单击“数据” > “自定义日志”。
 3. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，则取消选中“将下面的配置应用到我的 Linux 计算机”框即可。
 4. 单击“添加+”，打开自定义日志向导。
 
@@ -54,14 +54,14 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 “换行”是默认分隔符，用于每行包含单个条目的日志文件。  如果行以日期和时间开头且格式符合要求，则可以指定“时间戳”分隔符，它可支持跨多行的条目。
 
-如果使用时间戳分隔符，则存储在 OMS 中的每个记录的 TimeGenerated 属性将填充为在日志文件中为相应条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Log Analytics 收集此条目的日期和时间。
+如果使用时间戳分隔符，则存储在 Log Analytics 中的每个记录的 TimeGenerated 属性将填充为日志文件中为该条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Log Analytics 收集此条目的日期和时间。
 
 
 1. 单击“浏览”，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”。
-2. 单击“下一步”。
+2. 单击“资源组名称” 的 Azure 数据工厂。
 3. 自定义日志向导将上传文件，并列出其标识的记录。
 4. 更改用于标识新记录的分隔符。根据日志文件中的记录，选择标识效果最好的分隔符。
-5. 单击“下一步”。
+5. 单击“资源组名称” 的 Azure 数据工厂。
 
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。  这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。  还可以为单个日志文件提供多个路径。
@@ -103,13 +103,12 @@ Log Analytics 开始从自定义日志收集后，它的记录就可用于日志
 
 此处不提供分析自定义日志条目的详细步骤。  请参考[自定义字段](log-analytics-custom-fields.md)文档，获取此信息。
 
-## <a name="disabling-a-custom-log"></a>禁用自定义日志
-自定义日志定义一旦创建，就无法将其删除，但通过删除它的所有集合路径可将其禁用。
+## <a name="removing-a-custom-log"></a>删除自定义日志
+在 Azure 门户中使用以下过程删除以前定义的自定义日志。
 
-1. 在 OMS 门户中，单击“设置”。
-2. 依次单击“数据”、“自定义日志”。
-3. 单击自定义日志定义旁边的“详细信息”来禁用。
-4. 删除自定义日志定义的全部集合路径。
+1. 从工作区的“高级设置”中的“数据”菜单中选择“自定义日志”，列出所有自定义日志。
+2. 单击要删除的自定义日志旁边的“删除”。
+
 
 ## <a name="data-collection"></a>数据收集
 Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条目。  代理将记录其在每个日志文件中的位置。  如果代理在一段时间内处于脱机状态，Log Analytics 将从其上次脱机的位置收集条目，即使这些条目创建于代理脱机期间。
@@ -127,7 +126,7 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 | ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
 
 ## <a name="log-searches-with-custom-log-records"></a>使用自定义日志记录进行日志搜索
-与任何其他数据源中的记录一样，自定义日志的记录存储在 OMS 存储库中。  它们有与定义日志时提供的名称匹配的类型，因此可以在搜索中使用“类型”属性来检索从特定的日志收集的记录。
+与任何其他数据源中的记录一样，自定义日志的记录存储在 Log Analytics 工作区中。  它们将具有与定义日志时提供的名称匹配的类型，因此可以在搜索中使用类型属性来检索从特定的日志收集的记录。
 
 下表提供了日志搜索的不同示例，它们从自定义日志中检索记录。
 
@@ -173,4 +172,4 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 
 ## <a name="next-steps"></a>后续步骤
 * 使用[自定义字段](log-analytics-custom-fields.md)将自定义日志中的条目解析为单个字段。
-* 了解[日志搜索](log-analytics-log-searches.md)，分析从数据源和解决方案中收集的数据。
+* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。

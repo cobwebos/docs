@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/15/2017
 ms.author: jingwang
-ms.openlocfilehash: a2f370998ea219f9d36a6cda26405b6023666f92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7786fc785afa745da28b1da644ec58568d0cf424
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
 ## <a name="overview"></a>概述
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-data-movement-activities.md)
+> * [版本 1 - 正式版](v1/data-factory-data-movement-activities.md)
 > * [版本 2 - 预览版](copy-activity-overview.md)
 
 在 Azure 数据工厂中，可使用复制活动在本地和云数据存储之间复制数据。 复制数据后，可对其进一步执行转换和分析操作。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/22/2017
 ![复制活动的角色](media/copy-activity-overview/copy-activity.png)
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 复制活动在[集成运行时](concepts-integration-runtime.md)上执行。 对于不同的数据复制方案，可以利用不同风格的集成运行时：
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 11/22/2017
 
 复制活动执行详细信息和性能特性将返回到“复制活动运行结果 -> 输出”部分。 下面是详细列表。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。 可将方案的性能和配置与内部测试中复制活动的[性能参考](copy-activity-performance.md#performance-reference)进行比较。
 
-| 属性名称  | 说明 | 计价单位 |
+| 属性名称  | 说明 | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据大小 | Int64 值（字节） |
 | DataWritten | 写入接收器的数据大小 | Int64 值（字节） |
@@ -192,6 +192,12 @@ ms.lasthandoff: 11/22/2017
 ## <a name="performance-and-tuning"></a>性能和优化
 
 请参阅[复制活动性能和优化指南](copy-activity-performance.md)，其中介绍了影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素。 还列出了在内部测试期间观察到的性能，并讨论了优化复制活动性能的多种方法。
+
+## <a name="incremental-copy"></a>增量复制 
+数据工厂版本 2 支持以递增方式将增量数据从源数据存储复制到目标数据存储的方案。 请参阅[教程：以递增方式复制数据](tutorial-incremental-copy-overview.md)。 
+
+## <a name="read-and-write-partitioned-data"></a>读取和写入分区数据
+在版本 1 中，Azure 数据工厂支持使用 SliceStart/SliceEnd/WindowStart/WindowEnd 系统变量读取或写入分区的数据。 在版本 2 中，可使用管道参数和触发器的开始时间/计划时间作为参数值实现此行为。 有关详细信息，请参阅[如何读取或写入分区的数据](how-to-read-write-partitioned-data.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：

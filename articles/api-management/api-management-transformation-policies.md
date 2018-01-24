@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 18869b34b399e33bac00cf125e6324861c8b9f02
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 18b0a7d15c50ee147690063ac251f815c7fa34be
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -69,19 +69,19 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |json-to-xml|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不适用|  
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、错误时  
   
@@ -112,20 +112,20 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |xml-to-json|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不适用|  
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不适用|  
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 XML，则应用转换。<br />-   false - 始终应用转换。|否|true|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、错误时  
   
@@ -148,13 +148,13 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |find-and-replace|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |from|要搜索的字符串。|是|不适用|  
 |to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不适用|  
@@ -186,12 +186,12 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |redirect-content-urls|根元素。|是|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站  
   
@@ -250,13 +250,13 @@ ms.lasthandoff: 12/04/2017
 
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-backend-service|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |base-url|新的后端服务基 URL。|否|不适用|  
 |backend-id|要路由到的后端标识符。|否|不适用|  
@@ -264,9 +264,10 @@ ms.lasthandoff: 12/04/2017
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不适用|    
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不适用|    
 |sf-service-instance-name|只有在后端为 Service Fabric 服务时才适用。 允许在运行时更改服务实例。 |否|不适用|    
+|sf-listener-name|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 使用 Service Fabric Reliable Services 可在服务中创建多个侦听器。 当后端可靠服务具有多个侦听器时，此属性用于选择特定侦听器。 如果未指定此属性，API 管理将尝试使用没有名称的侦听器。 没有名称的侦听器对于只有一个侦听器的 Reliable Services 来说是非常典型的。 |否|不适用|  
 
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、后端  
   
@@ -331,7 +332,7 @@ ms.lasthandoff: 12/04/2017
 ```  
   
 #### <a name="filter-response-based-on-product"></a>根据产品筛选响应  
- 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。  
+ 此示例演示如何通过以下方法进行内容筛选：`Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。  
   
 ```xml  
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
@@ -385,13 +386,13 @@ ms.lasthandoff: 12/04/2017
 
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|  
 
 ### <a name="properties"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否|Liquid|  
 
@@ -436,7 +437,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站、后端  
   
@@ -480,14 +481,14 @@ OriginalUrl.
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-header|根元素。|是|  
-|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|  
+|值|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|  
   
 ### <a name="properties"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|  
 |name|指定要设置的标头的名称。|是|不适用|  
@@ -540,20 +541,20 @@ OriginalUrl.
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-query-parameter|根元素。|是|  
-|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|  
+|值|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|  
   
 ### <a name="properties"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|  
 |name|指定要设置的查询参数的名称。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、后端  
   
@@ -619,7 +620,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |rewrite-uri|根元素。|是|  
   
@@ -688,14 +689,14 @@ OriginalUrl.
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |xsl-transform|根元素。|是|  
 |参数|用于定义在转换中使用的变量|否|  
 |xsl:stylesheet|根样式表元素。 在其中定义的所有元素和属性都遵循标准的 [XSLT 规范](http://www.w3.org/TR/xslt)|是|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站  
   

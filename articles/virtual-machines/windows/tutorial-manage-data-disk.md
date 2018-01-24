@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 956f44068db8fe9c8c7a839a0ce80c19e2b2f11c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 58c8ba2682cc9cc8f2089d2a70cc95a03079832e
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="manage-azure-disks-with-powershell"></a>使用 PowerShell 管理 Azure 磁盘
 
@@ -47,7 +47,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 
-| 类型 | VM 大小 | 临时磁盘大小上限 (GB) |
+| Type | VM 大小 | 临时磁盘大小上限 (GB) |
 |----|----|----|
 | [常规用途](sizes-general.md) | A 和 D 系列 | 800 |
 | [计算优化](sizes-compute.md) | F 系列 | 800 |
@@ -62,7 +62,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
 
-| 类型 | VM 大小 | 每个 VM 的最大数据磁盘数 |
+| Type | VM 大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
 | [常规用途](sizes-general.md) | A 和 D 系列 | 32 |
 | [计算优化](sizes-compute.md) | F 系列 | 32 |
@@ -81,7 +81,7 @@ Azure 提供两种类型的磁盘。
 
 ### <a name="premium-disk"></a>高级磁盘
 
-高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 高级磁盘分为 3 种类型（P10、P20、P30、P40、P50），磁盘大小决定磁盘类型。 选择时，磁盘大小值舍入为下一类型。 例如，对于大小 128 GB、129 和 512 GB 之间、512 GB 以上、2 TB 和 4 TB，磁盘类型分别为 P10、P20、P30、P40 和 P50。 
+高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 高级磁盘分为 5 种类型（P10、P20、P30、P40、P50），磁盘大小决定磁盘类型。 选择时，磁盘大小值舍入为下一类型。 例如，对于大小 128 GB、129 和 512 GB 之间、512 GB 以上、2 TB 和 4 TB，磁盘类型分别为 P10、P20、P30、P40 和 P50。 
 
 ### <a name="premium-disk-performance"></a>高级磁盘性能
 

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 096beac3a1acae312ccddc6cbd88378370feed39
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6c0aeba2eaa7709bbe55ecadd82a4f22d57c25e
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="help-protect-a-web-api-by-using-bearer-tokens-from-azure-ad"></a>使用 Azure AD 提供的持有者令牌帮助保护 Web API
+# <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET Web API 入门
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 如果正在生成的应用程序会提供对受保护资源的访问，则需要知道如何防止有人在未经授权的情况下访问这些资源。

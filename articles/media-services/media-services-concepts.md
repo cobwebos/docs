@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: f7d2fd61dce93e8100ec33f82cd648b77efc1c0f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb02aaf541d2d2f4b1206136847af2b46621501d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
 本部分概述最重要的媒体服务概念。
 
-## <a id="assets"></a>资产和存储
+## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>资产和存储
 ### <a name="assets"></a>资产
 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产中后，即可用于媒体服务编码和流式处理工作流。
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 12/08/2017
 > 
 > 
 
-### <a id="locators"></a>定位符
+### <a name="a-idlocatorslocators"></a><a id="locators"/>定位符
 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)提供访问资产中所含文件的入口点。 访问策略用于定义客户端对给定资产具有的访问权限和持续时间。 定位符与访问策略的关系可以为多对一的关系，因此，不同定位符可以向不同客户端提供不同的开始时间和连接类型，而全部使用相同的权限和持续时间设置；但是，由于 Azure 存储服务设置的共享访问策略限制，一项给定的资产一次最多只能与五个唯一的定位符相关联。 
 
 媒体服务支持两种类型的定位符：OnDemandOrigin 定位符，用于对媒体进行流式处理（例如，MPEG DASH、HLS 或平滑流式处理）；渐进式下载媒体和 SAS URL 定位符，用于与 Azure 存储相互上传或下载媒体文件。 
@@ -111,7 +111,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 * 将单比特率流（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流（分片 MP4）发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 
 ### <a name="channel"></a>通道
-在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
+在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后要将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
 
 可以在创建通道时获取引入 URL 和预览 URL。 若要获取这些 URL，通道不一定要处于已启动状态。 准备好开始将数据从实时转码器推送到通道时，通道必须已启动。 实时转码器开始引入数据后，可以预览流。
 
@@ -156,7 +156,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 - [使用 PlayReady/Widevine 进行保护](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>传送
-### <a id="dynamic_packaging"></a>动态打包
+### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>动态打包
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
@@ -178,7 +178,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 ### <a name="asset-delivery-policy"></a>资产传送策略
 媒体服务内容传送工作流中的步骤之一是配置[资产传送策略](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)，以便对其进行流式传输。 资产传送策略告知媒体服务希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
 
-如果有存储加密的资产，在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 加密密钥加密的资产，请将策略类型设为 DynamicEnvelopeEncryption。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 NoDynamicEncryption。
+如果有存储加密的资产，在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 加密密钥加密的资产，请将策略类型设为 DynamicEnvelopeEncryption。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 NoDynamicEncryption。
 
 ### <a name="progressive-download"></a>渐进式下载
 渐进式下载可让你在下载完整个文件之前开始播放媒体。 只能渐进式下载 MP4 文件。

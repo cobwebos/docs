@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 8f693bc51fc9635fae4376137e7e573bf74da7cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ccb44b5009588c28bc79bb45e1a7640ead6c817
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-pricing-and-billing"></a>服务总线定价和计费
-服务总线推出标准和[高级](service-bus-premium-messaging.md)两种层级。 可为创建的每个服务总线服务命名空间选择一个服务层级，且此层级选择会应用到该命名空间内创建的所有实体。
+
+Azure 服务总线推出标准和[高级](service-bus-premium-messaging.md)两种层级。 可为创建的每个服务总线服务命名空间选择一个服务层级，且此层级选择会应用到该命名空间内创建的所有实体。
 
 > [!NOTE]
 > 有关当前服务总线定价的详细信息，请参阅 [Azure 服务总线定价页](https://azure.microsoft.com/pricing/details/service-bus/)和[服务总线常见问题解答](service-bus-faq.md#pricing)。
@@ -42,7 +43,8 @@ ms.lasthandoff: 10/11/2017
 [服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)表总结了标准层和高级层之间的功能差异。
 
 ## <a name="messaging-operations"></a>消息传送操作
-作为新的定价模式的一部分，队列和主题/订阅的计费会发生改变。 这些实体从按消息计费转换为按操作计费。 “操作”表示对队列或主题/订阅服务终结点所作的任何 API 调用。 这包括管理、发送/接收和会话状态操作。
+
+队列和主题/订阅按每个“操作”而不是每条消息计费。 操作是指对队列或主题/订阅服务终结点发出的任何 API 调用。 这包括管理、发送/接收和会话状态操作。
 
 | 操作类型 | 说明 |
 | --- | --- |
@@ -53,7 +55,8 @@ ms.lasthandoff: 10/11/2017
 有关成本的详细信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)页上列出的价格。
 
 ## <a name="brokered-connections"></a>中转连接
-*中转连接*允许客户的使用模式涉及对队列、主题或订阅的大量“永久连接”发送方/接收方。 永久连接的发送方/接收方是使用具有非零接收超时（例如，HTTP 长轮询）的 AMQP 或 HTTP 连接的那些。 具有立即超时的 HTTP 发送方和接收方不会生成中转连接。
+
+*中转连接*提供的使用模式涉及针对队列、主题或订阅的大量“永久连接”发送方/接收方。 永久连接的发送方/接收方是使用具有非零接收超时（例如，HTTP 长轮询）的 AMQP 或 HTTP 连接的那些。 具有立即超时的 HTTP 发送方和接收方不会生成中转连接。
 
 有关连接配额和其他服务限制，请参阅[服务总线配额](service-bus-quotas.md)一文。 有关中转连接的详细信息，请参阅本主题后面的[常见问题解答](#faq)部分。
 
@@ -78,6 +81,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="faq"></a>常见问题
 
 ### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>什么是中转连接，它的计费方式是怎样的？
+
 中转连接定义为下列其中一项：
 
 1. 从客户端到服务总线队列或主题/订阅的 AMQP 连接。
@@ -91,9 +95,11 @@ ms.lasthandoff: 10/11/2017
 2. 10,000 台设备通过 HTTP 从服务总线队列接收消息，超时不为零。 如果所有设备每天连接 12 小时，则需要支付以下连接费用（未包括任何其他服务总线费用）：10,000 个 HTTP 接收连接 * 12 小时/天 * 31 天/744 小时 = 5,000 个中转连接。
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>中转连接费用是否适用于队列和主题/订阅？
+
 是的。 使用 HTTP 发送事件没有连接费用，无论发送系统或设备的数量是多少。 使用超时值大于零的 HTTP 接收事件（有时称为“长轮询”）会产生中转连接费用。 无论连接是用于发送还是接收，AMQP 连接都会产生中转连接费用。 在 Azure 订阅中，所有“标准”命名空间内的前 1,000 个中转连接都是免费提供的（不包括在基础费用内）。 由于这些限额足以涵盖许多服务到服务方案，因此通常仅打算对大量客户端使用 AMQP 或 HTTP 长轮询时，即，想要实现更高效的事件流或者启用许多设备或应用程序实例的双向通信时，中转连接费用才会变得可观。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 有关服务总线定价的完整详细信息，请参阅[服务总线定价页](https://azure.microsoft.com/pricing/details/service-bus/)。
 * 有关服务总线定价和计费的一些常见问题解答，请参阅[服务总线常见问题解答](service-bus-faq.md#pricing)。
 

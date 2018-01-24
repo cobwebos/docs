@@ -1,29 +1,21 @@
 ---
-title: "查看在 Azure 区域之间执行 Azure VM 复制的体系结构 | Microsoft Docs"
+title: "使用 Azure Site Recovery 执行 Azure 到 Azure 的复制的体系结构 | Microsoft Docs"
 description: "本文概述使用 Azure Site Recovery 服务在 Azure 区域之间复制 Azure VM 时所用的组件和体系结构。"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/08/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 8251534b2e1e0d223f5e1df5dbd33831604615cb
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b37af3462a58f4418653d0e1b2300b5805e0a864
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure 到 Azure 复制体系结构
 
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在 Azure 区域之间对 Azure 虚拟机 (VM) 进行复制、故障转移和恢复时使用的体系结构和过程。
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在 Azure 区域之间对 Azure 虚拟机 (VM) 进行复制、故障转移和恢复时使用的体系结构。
 
 >[!NOTE]
 >使用 Site Recovery 服务复制 Azure VM 的功能目前处于预览状态。
@@ -45,7 +37,7 @@ ms.lasthandoff: 12/08/2017
 
 ### <a name="step-1"></a>步骤 1
 
-启用 Azure VM 复制时，将根据源区域设置自动在目标区域中创建下面所示的资源。 可根据需要自定义目标资源设置。 
+启用 Azure VM 复制时，将根据源区域设置自动在目标区域中创建以下资源。 可根据需要自定义目标资源设置。
 
 ![启用复制过程，步骤 1](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
@@ -53,7 +45,7 @@ ms.lasthandoff: 12/08/2017
 --- | ---
 **目标资源组** | 复制的 VM 在故障转移后所属的资源组。
 **目标虚拟网络** | 复制的 VM 在故障转移后所处的虚拟网络。 系统会在源虚拟网络和目标虚拟网络之间创建网络映射，反之亦然。
-**缓存存储帐户** | 在源 VM 更改复制到目标存储帐户前，系统会跟踪这些更改并将更改发送到目标位置的缓存存储帐户。 这样可确保将对 VM 上运行的生产应用产生的影响降至最低。
+**缓存存储帐户** | 在源 VM 更改复制到目标存储帐户前，系统会跟踪这些更改并将更改发送到源位置的缓存存储帐户。 此步骤可确保将对 VM 上运行的生产应用程序产生的影响降至最低。
 **目标存储帐户**  | 向其复制数据的目标位置的存储帐户。
 **目标可用性集**  | 复制的 VM 在故障转移后所处的可用性集。
 
@@ -67,8 +59,17 @@ ms.lasthandoff: 12/08/2017
 
    ![启用复制过程，步骤 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
-  
- Site Recovery 不需要与 VM 进行入站连接。 仅需要与 Site Recovery 服务 URL/IP 地址、Office 365 身份验证 URL/IP 地址和缓存存储帐户 IP 地址进行出站连接。
+
+ Site Recovery 不需要与 VM 进行入站连接。 以下项仅需要出站连接。
+
+ - 站点恢复服务 URL/IP 地址
+ - Office 365 身份验证 URL/IP 地址
+ - 缓存存储帐户 IP 地址
+
+如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 请确保没有防火墙设备阻止 VM 之间通过端口 20004 进行的内部通信。
+
+> [!IMPORTANT]
+如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
 
 ### <a name="step-3"></a>步骤 3
 
@@ -82,5 +83,4 @@ ms.lasthandoff: 12/08/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-复查支持矩阵，按照本教程启用从 Azure VM 到次要区域的复制。
-运行故障转移和故障回复。
+将 Azure VM [快速复制](azure-to-azure-quickstart.md)到次要区域。

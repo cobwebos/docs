@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 508b3755556bcae6aa2c7d17a2d86a1430a8109a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
 ## <a name="overview"></a>概述
 
-[Azure 网络观察程序](https://review.docs.microsoft.com/azure/network-watcher/)是一项网络性能监视、诊断和分析服务，适用于对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是在 Azure 虚拟机上使用某些网络观察程序功能所必需的。 其中包括根据需要捕获网络流量等高级功能。
+[Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)是一项网络性能监视、诊断和分析服务，可以对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是按需捕获网络流量和运行 Azure 虚拟机上的其他高级功能所必需的。
+
 
 本文档详细介绍适用于 Windows 的网络观察程序代理虚拟机扩展支持的平台和部署选项。
 
@@ -33,15 +34,15 @@ ms.lasthandoff: 12/08/2017
 
 ### <a name="operating-system"></a>操作系统
 
-可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本中运行适用于 Windows 的网络观察程序代理扩展。 请注意，目前不支持 Nano Server。
+可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本中运行适用于 Windows 的网络观察程序代理扩展。 不支持 Nano Server。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-某些网络观察程序代理功能要求将目标虚拟机连接到 Internet。 如果无法建立传出连接，某些网络观察程序代理功能可能无法正常使用，或者会变得不可使用。 有关更多详细信息，请参阅[网络观察程序文档](../../network-watcher/network-watcher-monitoring-overview.md)。
+某些网络观察程序代理功能要求将目标虚拟机连接到 Internet。 如果不能建立传出连接，网络观察程序代理将不能将数据包捕获上传到存储帐户。 有关更多详细信息，请参阅[网络观察程序文档](../../network-watcher/network-watcher-monitoring-overview.md)。
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示网络观察程序代理扩展的架构。 该扩展目前既不需要也不支持任何用户提供的设置，而是依赖于默认的配置。
+以下 JSON 显示网络观察程序代理扩展的架构。 该扩展既不需要也不支持任何用户提供的设置，而是依赖于其默认配置。
 
 ```json
 {
@@ -77,23 +78,24 @@ ms.lasthandoff: 12/08/2017
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-可以使用 `Set-AzureRmVMExtension` 命令将网络观察程序代理虚拟机扩展部署到现有的虚拟机。
+可以使用 `Set-AzureRmVMExtension` 命令将网络观察程序代理虚拟机扩展部署到现有的虚拟机：
 
 ```powershell
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
-                       -Location "WestUS" `
-                       -VMName "myVM1" `
-                       -Name "networkWatcherAgent" `
-                       -Publisher "Microsoft.Azure.NetworkWatcher" `
-                       -Type "NetworkWatcherAgentWindows" `
-                       -TypeHandlerVersion "1.4"
+Set-AzureRmVMExtension `
+  -ResourceGroupName "myResourceGroup1" `
+  -Location "WestUS" `
+  -VMName "myVM1" `
+  -Name "networkWatcherAgent" `
+  -Publisher "Microsoft.Azure.NetworkWatcher" `
+  -Type "NetworkWatcherAgentWindows" `
+  -TypeHandlerVersion "1.4"
 ```
 
 ## <a name="troubleshooting-and-support"></a>故障排除和支持
 
 ### <a name="troubleshooting"></a>故障排除
 
-有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令。
+可以从 Azure 门户和 PowerShell 检索有关扩展部署状态的数据。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent

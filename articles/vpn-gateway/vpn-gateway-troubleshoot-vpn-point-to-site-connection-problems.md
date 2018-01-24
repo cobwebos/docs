@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2017
+ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 76ab1600903705aad7f18f48f41cb7119c3c09bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 请确保已正确的位置安装下列证书：
 
-    | 证书 | 位置 |
+    | 证书 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
     | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 请确保已正确的位置安装下列证书：
 
-    | 证书 | 位置 |
+    | 证书 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
     | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
@@ -263,3 +263,52 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 ### <a name="solution"></a>解决方案
 
 若要解决此问题，请从 C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
+
+## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>点到站点 VPN 客户端无法解析本地域中的资源的 FQDN
+
+### <a name="symptom"></a>症状
+
+当客户端使用点到站点 VPN 连接来连接到 Azure 时，它无法解析本地域中的资源的 FQND。
+
+### <a name="cause"></a>原因
+
+点到站点 VPN 客户端使用在 Azure 虚拟网络中配置的 Azure DNS 服务器。 Azure DNS 服务器优先于在客户端中配置的本地 DNS 服务器，因此所有 DNS 查询都被发送到 Azure DNS 服务器。 如果 Azure DNS 服务器中没有本地资源的记录，则查询失败。
+
+### <a name="solution"></a>解决方案
+
+若要解决此问题，请确保在 Azure 虚拟网络上使用的 Azure DNS 服务器可以解析本地资源的 DNS 记录。 为此，可以使用 DNS 转发器或条件转发器。 有关详细信息，请参阅[使用自己的 DNS 服务器进行名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)。
+
+## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>点到站点 VPN 连接已建立，但仍然无法连接到 Azure 资源 
+
+### <a name="cause"></a>原因
+
+如果 VPN 客户端没有从 Azure VPN 网关获得路由，则可能会发生此问题。
+
+### <a name="solution"></a>解决方案
+
+若要解决此问题，请[重置 Azure VPN 网关](vpn-gateway-resetgw-classic.md)。
+
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>错误：“吊销功能无法检查吊销，因为吊销服务器已脱机。(错误 0x80092013)”
+
+### <a name="causes"></a>原因
+如果客户端无法访问 http://crl3.digicert.com/ssca-sha2-g1.crl 和 http://crl4.digicert.com/ssca-sha2-g1.cr，则会出现此错误消息。进行吊销检查需要访问这两个站点。  此问题通常发生在配置了代理服务器的客户端上。 在某些环境中，如果请求不通过代理服务器，则在边缘防火墙处会被拒绝。
+
+### <a name="solution"></a>解决方案
+
+检查代理服务器设置，确保客户端可以访问 http://crl3.digicert.com/ssca-sha2-g1.crl 和 http://crl4.digicert.com/ssca-sha2-g1.cr。
+
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN 客户端错误：由于 RAS/VPN 服务器上配置的某个策略，连接被阻止。 (错误 812)
+
+### <a name="cause"></a>原因
+
+如果用于对 VPN 客户端进行身份验证的 RADIUS 服务器具有不正确的设置，则会发生此错误。 
+
+### <a name="solution"></a>解决方案
+
+确保正确配置 RADIUS 服务器。 有关详细信息，请参阅[将 RADIUS 身份验证与 Azure 多重身份验证服务器集成](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md)。
+
+## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>从 VPN 网关下载根证书时出现“错误 405”
+
+### <a name="cause"></a>原因
+
+根证书尚未安装。 根证书安装在客户端的**可信证书**存储中。

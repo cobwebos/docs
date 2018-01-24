@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Android 入门 | Microsoft 文档"
-description: "如何构建一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 Android 应用程序。"
+description: "如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth2.0 调用受 Azure AD 保护 API 的 Android 应用程序。"
 services: active-directory
 documentationcenter: android
 author: danieldobalian
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1ea39854766332a87eae4f44f52a4853848d2120
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-into-an-android-app"></a>将 Azure AD 集成到 Android 应用中
+# <a name="azure-ad-android-getting-started"></a>Azure AD Android 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> 试用新的[开发人员门户](https://identity.microsoft.com/Docs/Android)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure AD。 在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。 完成上述过程后，会获得一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌并执行验证的后端。
->
->
 
 如果要开发桌面应用程序，Azure Active Directory (Azure AD) 可让你简单直接地使用用户的本地 Active Directory 帐户对其进行身份验证。 它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
@@ -78,7 +73,7 @@ Active Directory 支持添加两种类型的应用程序：
 3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 为应用程序输入一个友好的名称（例如“TodoListClient-Android”），选择“本机客户端应用程序”，并单击“下一步”。
-6. 对于“重定向 URI”，输入 `http://TodoListClient`。 单击“完成”。
+6. 对于“重定向 URI”，输入 `http://TodoListClient`。 单击“完成” 。
 7. 在应用程序页面中，找到应用程序 ID 值并复制它。 稍后在配置应用程序时需要此值。
 8. 在“设置”页上，选择“所需权限”，并选择“添加”。  找到并选择 TodoListService，在“委派的权限”下添加“访问 TodoListService”权限，并单击“完成”。
 
@@ -286,13 +281,13 @@ ADAL 提供了用于指定提示行为的选项。 如果刷新令牌无效并�
 ### <a name="diagnostics"></a>诊断
 下面是用来诊断问题的信息的主要来源：
 
-* 异常
+* 例外
 * 日志
 * 网络跟踪
 
 请注意，相关性 ID 是在库中进行诊断的关键所在。 如果想要在代码中将 ADAL 请求关联到其他操作，可以基于每个请求设置相关性 ID。 如果未设置相关性 ID，则 ADAL 将生成一个随机相关性 ID。 然后，会为所有日志消息和网络调用标上该相关性 ID。 每发出一个请求，自我生成的 ID 都会更改。
 
-#### <a name="exceptions"></a>异常
+#### <a name="exceptions"></a>例外
 异常是首选的诊断信息。 我们将尝试提供有用的错误消息。 如果发现某个错误消息没有作用，请记录相应的问题并告诉我们。 请提供设备信息，例如型号和 SDK 编号。
 
 #### <a name="logs"></a>日志

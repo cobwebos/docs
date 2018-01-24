@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8f04d8ed2e56cecb1b7a850bed55a02a9492bb5
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bdbde834695040df4e333bef42fab7d29614ab75
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>为托管应用程序创建 Azure 门户用户界面
 本文档介绍 createUiDefinition.json 文件的核心概念。 Azure 门户使用此文件生成用于创建托管应用程序的用户界面。
@@ -47,7 +47,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 建议包括 `$schema`，但这是可选的。 如果指定，则 `version` 的值必须与 `$schema` URI 中的版本匹配。
 
-## <a name="basics"></a>基础知识
+## <a name="basics"></a>Basics
 基础步骤始终是 Azure 门户在分析文件时生成的向导的第一个步骤。 除了会显示 `basics` 中指定的元素外，该门户还会为用户注入其他元素以用于为部署选择订阅、资源组和位置。 通常，对部署范围内的参数进行查询的元素（例如群集名称或管理员凭据）应当放在此步骤中。
 
 如果元素的行为依赖于用户的订阅、资源组或位置，则不能在 basics 中使用该元素。 例如，**Microsoft.Compute.SizeSelector** 需要依赖于用户的订阅和位置来确定可用大小的列表。 因此，**Microsoft.Compute.SizeSelector** 只能用于 steps 中。 通常，只有 **Microsoft.Common** 命名空间中的元素可以用于 basics 中。 但是也允许其他命名空间中不依赖于用户上下文的某些元素（例如 **Microsoft.Compute.Credentials**）。
@@ -58,6 +58,18 @@ steps 属性可以包含要在 basics 后显示的零个或多个其他步骤，
 ## <a name="outputs"></a>Outputs
 Azure 门户使用 `outputs` 属性来将 `basics` 和 `steps` 中的元素映射到 Azure 资源管理器部署模板的参数。 此字典中的键是模板参数的名称，值是所引用元素中的输出对象的属性。
 
+若要设置托管应用程序资源名称，必须在 outputs 属性中包括名为 `applicationResourceName` 的值。 如果未设置此值，应用程序将为名称分配 GUID。 可以在用户界面中包含一个文本框，用于向用户请求名称。
+
+```json
+"outputs": {
+    "vmName": "[steps('appSettings').vmName]",
+    "trialOrProduction": "[steps('appSettings').trialOrProd]",
+    "userName": "[steps('vmCredentials').adminUsername]",
+    "pwd": "[steps('vmCredentials').vmPwd.password]",
+    "applicationResourceName": "[steps('appSettings').vmName]"
+}
+```
+
 ## <a name="functions"></a>函数
 与 Azure 资源管理器中的模板函数类似（在语法和功能方面），CreateUiDefinition 提供了用于处理元素的输入和输出的函数，以及条件语句等诸多功能。
 
@@ -67,6 +79,6 @@ createUiDefinition.json 文件本身具有一个简单的架构。 它的实际�
 - [元素](create-uidefinition-elements.md)
 - [函数](create-uidefinition-functions.md)
 
-以下位置提供了 createUiDefinition 的当前 JSON 架构：https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json。 
+以下位置提供了 createUiDefinition 的当前 JSON 架构：https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json。
 
-更高版本也会在同一位置提供。 请将 URL 的 `0.1.2-preview` 部分和 `version` 值替换成打算使用的版本标识符。 当前支持的版本标识符为 `0.0.1-preview`、`0.1.0-preview`、`0.1.1-preview` 和 `0.1.2-preview`。
+有关用户界面文件示例，请参阅 [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json)。

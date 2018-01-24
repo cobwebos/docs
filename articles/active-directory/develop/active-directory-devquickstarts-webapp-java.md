@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0e849f99edfc80f7f175c0829552f39da456a204
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 21dfd8cc79c83b2c091249c7f214d394ad119c4c
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Java Web 应用登录和注销
+# <a name="azure-ad-java-web-app-getting-started"></a>Azure AD Java Web 应用入门
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-使用 Azure Active Directory (Azure AD)，只需编写几行代码、提供单一登录和注销，就能轻松外包 Web 应用的标识管理。 可以使用社区驱动的用于 Java 的 Azure Active Directory 身份验证库 (ADAL4J) 将用户登录到 Java Web 应用或者从中注销。
+使用 Azure Active Directory (Azure AD)，只需编写几行代码、提供单一登录和注销，就能简单外包 Web 应用的标识管理。 可以使用社区驱动的用于 Java 的 Azure Active Directory 身份验证库 (ADAL4J) 将用户登录到 Java Web 应用或者从中注销。
 
 本文演示如何使用 ADAL4J 执行以下操作：
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/11/2017
 3. 在左窗格中，单击“更多服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建一个 **Web 应用程序和/或 WebAPI**。
-  * “名称”向用户描述应用。
+  * **名称** - 向用户描述应用。
   * “登录 URL”是应用的基 URL。 框架的默认 URL 为 http://localhost:8080/adal4jsample/。
 6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 请复制应用页中的值，以便在后续部分中使用。
 7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 **应用 ID URI** 是应用的唯一标识符。 命名约定为 `https://<tenant-domain>/<app-name>`（例如 `http://localhost:8080/adal4jsample/`）。

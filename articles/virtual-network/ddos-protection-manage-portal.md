@@ -15,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 019d4ba9124173a7de555c46d32881ecf639a34c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 958533079c0e0864ff0e561ad865114ef2a415a8
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
-了解如何启用和禁用分布式拒绝服务 (DDoS) 保护，并使用 Azure DDoS 保护标准通过遥测来缓解 DDoS 攻击。 DDoS 保护标准可保护分配有 Azure [公共 IP 地址](virtual-network-public-ip-address.md)的 Azure 资源，如虚拟机、负载均衡器和应用程序网关等。 若要了解有关 DDoS 保护标准及其功能的详细信息，请参阅 [DDoS 保护标准概述](ddos-protection-overview.md)。 
+了解如何启用和禁用分布式拒绝服务 (DDoS) 保护，并使用标准 Azure DDoS 保护通过遥测来缓解 DDoS 攻击。 标准 DDoS 保护可保护分配有 Azure [公共 IP 地址](virtual-network-public-ip-address.md)的 Azure 资源，如虚拟机、负载均衡器和应用程序网关等。 若要了解有关标准 DDoS 保护及其功能的详细信息，请参阅[标准 DDoS 保护概述](ddos-protection-overview.md)。 
 
 >[!IMPORTANT]
->Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源支持 DDoS 保护，DDoS 保护仅在选定的几个区域中可用。 有关可用区域的列表，请参阅 [DDoS 保护标准概述](ddos-protection-overview.md)。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你，指导你完成启用过程。 
+>Azure DDoS 保护标准（DDoS 保护）当前为预览版。 有限数量的 Azure 资源支持 DDoS 保护，DDoS 保护仅在选定的几个区域中可用。 有关可用区域的列表，请参阅[标准 DDoS 保护概述](ddos-protection-overview.md)。 在使用受限的预览版期间，需要[针对该服务进行注册](http://aka.ms/ddosprotection)才能为订阅启用 DDoS 保护。 注册后，Azure DDoS 团队会联系你，指导你完成启用过程。 
 
-## <a name="enable-ddos-protection-standard---new-virtual-network"></a>启用 DDoS 保护标准 - 新建虚拟网络
+## <a name="enable-ddos-protection-standard---new-virtual-network"></a>启用标准 DDoS 保护 - 新建虚拟网络
 
-1. 通过 http://portal.azure.com 登录到 Azure 门户。如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-2. 单击 Azure 门户左上角的“新建”按钮。
+1. 通过 http://portal.azure.com 登录到 Azure 门户。如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+2. 在 Azure 门户的左上角单击“创建资源”。
 3. 选择“网络”，然后选择“虚拟网络”。
-4. 使用所选设置创建虚拟网络。 有关创建虚拟网络的详细信息，请参阅[创建虚拟网络](virtual-networks-create-vnet-arm-pportal.md)。 在“DDoS 保护”下，单击“已启用”，然后单击“创建”。
+4. 使用所选设置创建虚拟网络。 有关创建虚拟网络的详细信息，请参阅[创建虚拟网络](virtual-networks-create-vnet-arm-pportal.md)。 在“DDoS 保护”下，单击“已启用”，然后单击“创建”。 如果看不到“DDoS 保护”，则可能的原因是未为该功能注册订阅。 必须完成[注册](http://aka.ms/ddosprotection)并收到“已为订阅启用该功能”的通知后，才会显示“DDoS 保护”。
 
     ![创建虚拟网络](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 
     > [!WARNING]
-    > 选择区域时，从 [Azure DDoS 保护标准概述](ddos-protection-overview.md)中的列表中选择支持的区域。
+    > 选择区域时，从[标准 Azure DDoS 保护概述](ddos-protection-overview.md)中的列表中选择支持的区域。 如果未选择支持的区域，则创建虚拟网络会失败。
 
     一条警告将声明启用 DDoS 保护会产生费用。 在预览版期间，DDoS 保护不收费。 正式发布后，将需要支付费用。 在开始收费和正式发布前，用户将收到 30 天通知。
 
 ## <a name="enable-ddos-protection-standard---existing-virtual-network"></a>启用 DDoS 保护标准 - 现有虚拟网络 
 
 1. 在 Azure 门户菜单中单击“虚拟网络”，然后选择你的虚拟网络。
-2. 单击“DDoS 保护”，在“DDoS 保护”屏幕上单击“已启用”，然后单击“保存”。 
+2. 单击“DDoS 保护”，在“DDoS 保护”屏幕上单击“已启用”，然后单击“保存”。 如果看不到“DDoS 保护”，则可能的原因是未为该功能注册订阅。 必须完成[注册](http://aka.ms/ddosprotection)并收到“已为订阅启用该功能”的通知后，才会显示“DDoS 保护”。 
 
     > [!WARNING]
-    > 虚拟网络必须位于支持的区域中。 有关支持的区域的列表，请参阅 [Azure DDoS 保护标准概述](ddos-protection-overview.md)。
+    > 虚拟网络必须位于支持的区域中。 有关支持的区域的列表，请参阅[标准 Azure DDoS 保护概述](ddos-protection-overview.md)。
 
     一条警告将声明启用 DDoS 保护会产生费用。 在预览版期间，DDoS 保护不收费。 正式发布后，将需要支付费用。 在开始收费和正式发布前，用户将收到 30 天通知。
 

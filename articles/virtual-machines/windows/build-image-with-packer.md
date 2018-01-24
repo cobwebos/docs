@@ -12,16 +12,16 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/18/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 11a4a4d65be09e6c518836c25bb455a6df738dcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b5030e12743ca81b74502e31767eb6b2e05e444f
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
-Azure 中的每个虚拟机 (VM) 都创建至定义 Windows 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 应用商店为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
+Azure 中的每个虚拟机 (VM) 都创建至定义 Windows 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure Marketplace 为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
@@ -41,7 +41,8 @@ Packer 使用服务主体向 Azure 进行身份验证。 Azure 服务主体是�
 使用 [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) 创建服务主体，并为服务主体分配权限，以使用 [ New-AzureRmRoleAssignment ](/powershell/module/azurerm.resources/new-azurermroleassignment) 创建和管理资源：
 
 ```powershell
-$sp = New-AzureRmADServicePrincipal -DisplayName "Azure Packer IKF" -Password "P@ssw0rd!"
+$sp = New-AzureRmADServicePrincipal -DisplayName "Azure Packer" `
+    -Password (ConvertTo-SecureString "P@ssw0rd!" -AsPlainText -Force)
 Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
@@ -206,13 +207,13 @@ Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
 
 
 ## <a name="create-vm-from-azure-image"></a>从 Azure 映像创建 VM
-使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码。
+现在可以使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 从映像创建 VM。 首先，使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码。
 
 ```powershell
 $cred = Get-Credential
 ```
 
-现在可以使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 从映像创建 VM。 以下示例从 myPackerImage 创建一个名为 myVM 的 VM。
+以下示例从 myPackerImage 创建一个名为 myVM 的 VM。
 
 ```powershell
 # Create a subnet configuration
@@ -276,7 +277,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vmConfig
 ```
 
-创建 VM 需要几分钟时间。
+从 Packer 映像创建 VM 需要几分钟时间。
 
 
 ## <a name="test-vm-and-iis"></a>测试 VM 和 IIS

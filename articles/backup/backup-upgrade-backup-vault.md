@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: cfc2fde552b029412042474e31a1b28dd80b3021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>已升级到恢复服务保管库的备份保管库
 本文提供恢复服务保管库的功能概述、有关将现有备份保管库升级到恢复服务保管库的常见问题，以及升级后的步骤。 恢复服务保管库是与用于容装备份数据的备份保管库相当的 Azure 资源管理器。 不管在本地还是在 Azure 中，数据通常都是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 恢复服务保管库是 Azure 中的联机存储实体，用于保存备份副本、恢复点、备份策略之类的数据。 可以使用恢复服务保管库为各种 Azure 服务（例如 IaaS VM（Linux 或 Windows））和 Azure SQL 数据库存储备份数据。 恢复服务保管库支持 System Center DPM、Windows Server、Azure 备份服务器等。 使用恢复服务保管库可以方便地组织备份数据，并将管理开销降至最低。
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>比较恢复服务保管库和备份保管库
-恢复服务保管库基于 Azure 的 Azure Resource Manager 模型，而备份保管库则基于 Azure Service Manager 模型。 将备份保管库升级到恢复服务保管库时，备份数据在升级过程中和升级后均会保持不变。 恢复服务保管库提供不适用于备份保管库的功能，例如：
+恢复服务保管库基于 Azure 的 Azure 资源管理器模型，而备份保管库则基于 Azure Service Manager 模型。 将备份保管库升级到恢复服务保管库时，备份数据在升级过程中和升级后均会保持不变。 恢复服务保管库提供不适用于备份保管库的功能，例如：
 
 - **有助于确保备份数据安全的增强功能**：使用恢复服务保管库时，Azure 备份提供用于保护云备份的安全功能。 这些安全功能确保可以保护备份并从云备份安全地恢复数据，即使生产服务器和备份服务器受损。 [了解详细信息](backup-azure-security-feature.md)
 
@@ -68,16 +68,16 @@ ms.lasthandoff: 10/11/2017
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **升级计划是否影响正在进行的备份？**</br>
-否。 升级期间和之后，正在进行的备份都会继续，而不会中断。
+不会。 升级期间和之后，正在进行的备份都会继续，而不会中断。
 
 对于现有的工具而言，此升级有何意义？</br>
-必须将现有的自动化或工具更新到资源管理器部署模型，确保其在升级后可继续运行。 请参阅 [Service Manager 部署模型](backup-client-automation-classic.md)和[资源管理器部署模型](backup-client-automation.md)的 PowerShell cmdlet 参考。
+必须将现有的自动化或工具更新到资源管理器部署模型，确保其在升级后可继续运行。 请参阅[资源管理器部署模型](backup-client-automation.md)的 PowerShell cmdlet 参考。
 
 **升级后是否可以回滚？**</br>
-不能。 成功升级资源后，就不支持回滚。
+不会。 成功升级资源后，就不支持回滚。
 
 **升级后是否可以查看经典保管库？**</br>
-否。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
+不会。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
 **为何在升级后的保管库中看不到 MARS 代理保护的服务器？**</br>
 需要安装最新的 MARS 代理才能查看保管库中受 MARS 代理保护的所有服务器。 可从[此处]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe)下载最新版本的代理。

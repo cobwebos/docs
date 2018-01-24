@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions 中的检查点和重播 (Azure Functions)
 
@@ -90,7 +90,7 @@ public static async Task<List<string>> Run(
     * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
     * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
     * **TimerCreated**：已创建持久计时器。 `FireAt` 列包含计时器过期时的 UTC 计划时间。
-    * **TimerFired**：持久计时器已过期。
+    * **TimerFired**：持久计时器已触发。
     * **EventRaised**：已将外部事件发送到业务流程实例。 `Name` 列捕获事件的名称，`Input` 列捕获事件的有效负载。
     * **OrchestratorCompleted**：业务流程协调程序函数处于等待状态。
     * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
@@ -98,7 +98,7 @@ public static async Task<List<string>> Run(
 * **Timestamp**：历史记录事件的 UTC 时间戳。
 * **Name**：调用的函数的名称。
 * **Input**：函数的 JSON 格式输入。
-* **Output**：函数的输出，即其返回值。
+* **Result**：函数的输出，即其返回值。
 
 > [!WARNING]
 > 尽管此表可以用作有效的调试工具，但不要对它有任何依赖。 它可能会随着 Durable Functions 扩展的演变而变化。

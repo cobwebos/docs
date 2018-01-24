@@ -4,7 +4,7 @@ description: "了解如何使用 Azure CLI 2.0 在 Linux 虚拟机上安装和�
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/23/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: e19c09558285497f29eb78b4f4ae5b15d7f1a191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a9797e1fe3d03840e3a20589a50c90968ea5de0
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>如何在 Linux VM 上安装和配置 MongoDB
 [MongoDB](http://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文介绍如何使用 Azure CLI 2.0 在 Linux VM 上安装和配置 MongoDB。 还可以使用 [Azure CLI 1.0](install-mongodb-nodejs.md) 执行这些步骤。 文中提供了一些示例，详细说明如何执行以下操作：
@@ -57,18 +57,18 @@ ssh azureuser@<publicIpAddress>
 若要为 MongoDB 添加安装源，请按如下所示创建一个 yum 存储库文件：
 
 ```bash
-sudo touch /etc/yum.repos.d/mongodb-org-3.4.repo
+sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-打开该 MongoDB 存储库文件进行编辑。 添加以下行：
+打开该 MongoDB 存储库文件进行编辑，例如使用 `vi` 或 `nano`。 添加以下行：
 
 ```sh
-[mongodb-org-3.4]
+[mongodb-org-3.6]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
 按如下所示使用 yum 安装 MongoDB：
@@ -125,26 +125,17 @@ sudo chkconfig mongod on
 az group create --name myResourceGroup --location eastus
 ```
 
-接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 MongoDB 模板。 根据需要定义自己的资源名称和大小，例如针对 newStorageAccountName、virtualNetworkName 和 vmSize：
+接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 MongoDB 模板。 出现提示时，为 newStorageAccountName、dnsNameForPublicIP 以及管理员用户名和密码提供自己的唯一值：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"},
-    "virtualNetworkName": {"value": "myVnet"},
-    "vmSize": {"value": "Standard_DS2_v2"},
-    "vmName": {"value": "myVM"},
-    "publicIPAddressName": {"value": "myPublicIP"},
-    "nicName": {"value": "myNic"}}' \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
 使用 VM 的公共 DNS 地址登录到 VM。 可以使用 [az vm show](/cli/azure/vm#show) 查看公共 DNS 地址：
 
 ```azurecli
-az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
+az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
 ```
 
 使用自己的用户名和公共 DNS 地址 SSH 连接到 VM：
@@ -222,7 +213,7 @@ az group deployment show \
 
 这些示例部署用于开发的核心 MongoDB 环境。 请为你的环境应用必需的安全配置选项。 有关详细信息，请参阅 [MongoDB 安全文档](https://docs.mongodb.com/manual/security/)。
 
-有关使用模板创建这些规则的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。
+有关使用模板创建这些规则的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 
-Azure Resource Manager 模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md)。
+Azure 资源管理器模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md)。
 

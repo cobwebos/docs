@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4117414f4605b73d8aab8acc2e788720deff8b99
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c4b8364f88548cfc4595261302248cc2840c233
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -101,19 +101,13 @@ ms.lasthandoff: 12/11/2017
 | 用户可以注册其设备，则可以在 AD FS 中创建只允许已注册设备访问的应用程序访问策略。 在此任务中，将创建一个应用程序访问规则和自定义的访问被拒绝消息。 |[创建应用程序访问策略和自定义的访问被拒绝消息](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>将 Azure Active Directory 与本地 Active Directory 集成
-此步骤可帮助你使用 Azure AD Connect 将 Azure AD 租户与本地 Active Directory 集成。 尽管 Azure 经典门户中提供了这些步骤，但请记下本部分中所列的所有特殊说明。
 
-1. 使用作为 Azure AD 全局管理员的帐户登录到 Azure 经典门户。
-2. 在左窗格中选择“Active Directory”。
-3. 在“目录”选项卡中选择目录。
-4. 选择“目录集成”选项卡。
-5. 在“部署和管理”部分，执行步骤 1 到 3，将 Azure Active Directory 与你的本地目录集成。
-   
-   1. 添加域。
-   2. 使用 [Azure AD Connect 的自定义安装](connect/active-directory-aadconnect-get-started-custom.md)中的说明安装并运行 Azure AD Connect。
-   3. 验证和管理目录同步此步骤提供了有关单一登录的说明。
-   
-   另外，使用 AD FS 配置联合身份验证，如 [Azure AD Connect 的自定义安装](connect/active-directory-aadconnect-get-started-custom.md)中所述。
+**请参阅：**
+
+- [将本地目录与 Azure Active Directory 集成](./connect/active-directory-aadconnect.md) - 复查概念信息。
+
+- [Azure AD Connect 的自定义安装](./connect/active-directory-aadconnect-get-started-custom.md) - 获取安装说明。
+
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>升级 Active Directory 域服务架构
 > [!NOTE]

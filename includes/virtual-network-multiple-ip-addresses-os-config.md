@@ -22,6 +22,7 @@
     * 单击“确定”关闭“TCP/IP 设置”，并再次单击“确定”关闭适配器设置。 将重新建立 RDP 连接。
 
 6. 在命令提示符下，键入 *ipconfig /all*。 此时会显示添加的所有 IP 地址，DHCP 已关闭。
+7. 将 Windows 配置为使用 Azure 中主 IP 配置的专用 IP 地址作为 Windows 的主 IP 地址。 有关详细信息，请参阅[无法通过具有多个 IP 地址的 Azure Windows VM 访问 Internet](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse)。 
 
 
 ### <a name="validation-windows"></a>验证 (Windows)

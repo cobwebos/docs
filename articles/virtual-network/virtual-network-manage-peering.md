@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 9fcfca3de6204581936a2bacfd86e84fd373190a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edb70bd38611aad7e34bc5dbac8b1fd24c5e9b1d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 - 查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文，了解对等互连的限制。
 - 使用 Azure 帐户登录到 Azure 门户、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure PowerShell cmdlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell“>_”按钮。 
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 Cloud Shell 预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell >_ 按钮。 
 
 ## <a name="create-a-peering"></a>创建对等互连
 
@@ -58,14 +58,18 @@ ms.lasthandoff: 10/11/2017
     - 订阅：选择要进行对等互连的虚拟网络的[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)。 将列出一个或多个订阅，具体取决于帐户对多少个订阅具有读取访问权限。 如果选中“资源 ID”复选框，则此设置不可用。 只要两个虚拟网络都是通过资源管理器创建的，就可以对等互连不同订阅中的虚拟网络。 在预览版中，可以跨通过不同部署模型创建的订阅进行对等互连。 在不同订阅中通过不同部署模型部署的虚拟网络之间创建对等互连之前，请先注册预览版。 详细了解如何注册预览版，以及如何[对等互连不同订阅中通过不同部署模型创建的虚拟网络](create-peering-different-deployment-models-subscriptions.md)。
     - 虚拟网络：选择要进行对等互连的虚拟网络。 可以选择通过任一 Azure 部署模型创建的虚拟网络。 如果要选择不同区域中的虚拟网络，请[注册订阅以获取预览版](virtual-network-create-peering.md)。 必须具有对虚拟网络的读取访问权限，才能使其出现在列表中。 如果列出了某个虚拟网络，但显示为灰色，则可能是因为虚拟网络的地址空间与此虚拟网络的地址空间重叠。 如果虚拟网络地址空间重叠，则它们无法进行对等互连。 如果选中“资源 ID”复选框，则此设置不可用。
     - 允许虚拟网络访问：如果要启用两个虚拟网络之间的通信，请选择“启用”（默认）。 启用虚拟网络之间的通信可允许资源连接到任意虚拟网络，并以相同的带宽和延迟互相之间进行通信，就如同它们是连接到同一个虚拟网络一样。 这两个虚拟网络中的资源之间的所有通信都在 Azure 专用网络上进行。 网络安全组的默认标记 **VirtualNetwork** 会包围虚拟网络和已对等互连的虚拟网络。 若要了解网络安全组默认标记的详细信息，请阅读[网络安全组概述](virtual-networks-nsg.md#default-tags)一文。  如果不希望流量流到已对等互连的虚拟网络，请选择“禁用”。 如果已将一个虚拟网络与另一个虚拟网络对等互连，但有时想要禁用这两个虚拟网络之间的流量流动，则可以选择“禁用”。 可发现启用/禁用比删除并重新创建对等互连更加方便。 当禁用此设置时，流量不会在已对等互连的虚拟网络间流动。
-    - 允许转发的流量：选中此框以允许转发到已对等互连的虚拟网络的流量（流量不是源自已对等互连的虚拟网络）流动到此虚拟网络。 如果已在进行对等互连的虚拟网络中部署网络虚拟设备，并创建了用户定义的路由以在整个网络虚拟设备中转发流量，则流量转发会变得非常常见。 如果保留此框的未选中状态（默认），从已对等互连的虚拟网络转发的流量将无法流动到此虚拟网络。 虽然启动此功能可允许通过对等互连转发流量，但它并不会创建任何用户定义的路由或网络虚拟设备。 用户自定义的路由和网络虚拟设备是单独创建的。 了解[用户定义的路由](virtual-networks-udr-overview.md)。
-    - 允许网关传输：如果有附加到此虚拟网络的虚拟网络网关并且想要允许来自已对等互连的虚拟网络的流量流经网关，请选中此框。 例如，此虚拟网络有可能通过虚拟网络网关附加到本地网络。 选中此框将允许来自已对等互连的虚拟网络的流量流经附加到此虚拟网络的网关。 如果选中此框，则已对等连接的虚拟网络不能有已配置的网关。 将对等互连从另一个虚拟网络设置至此虚拟网络时，已对等互连的虚拟网络必须已选中复选框“使用远程网关”。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍可流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网络网关。 了解有关[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)的详细信息。 
+    - **允许转发的流量：**选中此框将允许从某个虚拟网络*转发的*（不是从该虚拟网络发起的）流量通过对等互连流动到此虚拟网络。 例如，假设有名为 Spoke1、Spoke2 和 Hub 的三个虚拟网络。 每个辐射虚拟网络与中心虚拟网络之间存在一个对等互连，但各个辐射虚拟网络之间不存在对等互连。 一个网络虚拟设备部署在中心虚拟网络中，用户定义的路由应用于通过该网络虚拟设备在各个子网之间路由流量的每个辐射虚拟网络。 如果没有为每个辐射虚拟网络与中心虚拟网络之间的对等互连选中此复选框，则流量不会在各个辐射虚拟网络之间流动，因为中心在各个虚拟网络之间转发流量。 虽然启动此功能可允许通过对等互连转发流量，但它并不会创建任何用户定义的路由或网络虚拟设备。 用户自定义的路由和网络虚拟设备是单独创建的。 了解[用户定义的路由](virtual-networks-udr-overview.md#user-defined)。
+    - 允许网关传输：如果有附加到此虚拟网络的虚拟网络网关并且想要允许来自已对等互连的虚拟网络的流量流经网关，请选中此框。 例如，此虚拟网络有可能通过虚拟网络网关附加到本地网络。 网关可以是一个 ExpressRoute 或 VPN 网关。 选中此框将允许来自所对等互连的虚拟网络的流量通过附加到此虚拟网络的网关流动到本地网络。 如果选中此框，则已对等连接的虚拟网络不能有已配置的网关。 设置从另一虚拟网络到此虚拟网络的对等互连时，对等互连的虚拟网络必须选中复选框“使用远程网关”。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍可流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网络网关。 
     
-        如果正在对等互连一个虚拟网络（资源管理器）与另一个虚拟网络（经典），则无法启用此选项。 虽然流量在这两个虚拟网络之间流动，但虚拟网络（经典）的流量无法流经附加到虚拟网络（资源管理器）的网络网关。
+    除了将流量转发到本地网络之外，VPN 网关还可以在与该网关所在的虚拟网络对等互连的虚拟网络之间转发网络流量，各个虚拟网络不需要都彼此对等互连。 当希望在中心（请参阅为**允许转发的流量**描述的中心和辐射示例）虚拟网络中使用 VPN 网关在未彼此对等互连的辐射虚拟网络之间路由流量时，这非常有用。 了解有关[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)的详细信息。 此方案要求实现用户定义的路由来将虚拟网络网关指定为下一跃点类型。 了解[用户定义的路由](virtual-networks-udr-overview.md#user-defined)。 只能将 VPN 网关指定为用户定义的路由中的下一跃点类型，不能将 ExpressRoute 网关指定为用户定义的路由中的下一跃点类型。
+
+        You cannot enable this option if you're peering a virtual network (Resource Manager) with a virtual network (classic). Though the traffic flows between the two virtual networks, the virtual network (classic) traffic cannot flow through a network gateway attached to the virtual network (Resource Manager). 
 
     - 使用远程网关：选中此框可允许来自此虚拟网络的流量流经附加到正与之对等互连的虚拟网络的虚拟网络网关。 例如，正与之对等互连的虚拟网络附加了一个 VPN 网关，可实现与本地网络的通信。  选中此框可允许来自此虚拟网络的流量流经附加到已对等互连的虚拟网络的 VPN 网关。 如果选中此框，已对等互连的虚拟网络必须附加有虚拟网络网关，并且必须已选中“允许网关传输”复选框。 如果保留此框的未选中状态（默认），则来自已对等互连的虚拟网络的流量仍将流动到此虚拟网络，但无法流经附加到此虚拟网络的虚拟网络网关。 
-    
+此虚拟网络只有一个对等互连可以启用此设置。
+如果已在虚拟网络中配置了网关，则无法使用此设置。
         如果正在对等互连一个虚拟网络（资源管理器）与另一个虚拟网络（经典），则无法启用此选项。 虽然流量在这两个虚拟网络之间流动，但虚拟网络（资源管理器）的流量无法流经附加到虚拟网络（经典）的网络网关。
+
 7. 单击“确定”按钮，将子网添加到所选的虚拟网络。
 
 ### <a name="commands"></a>命令
@@ -100,7 +104,7 @@ ms.lasthandoff: 10/11/2017
     >创建对等互连之前，请确保已熟悉[要求和约束](#requirements-and-constraints)和[所需权限](#permissions)。
     >
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 **命令**
 

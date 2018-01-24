@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
-ms.date: 03/30/2017
-ms.author: anvang;barbkess
-ms.openlocfilehash: f7023b78c241a7bc8014276cd0bfa455165b42cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: kevin;barbkess
+ms.openlocfilehash: e8170eefb2e359719684e08749180a4e7784f9b6
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT
 若要开发 SQL 数据仓库的应用程序，建议使用最新版本的 Visual Studio，并结合最新版本的 SQL Server Data Tools (SSDT)。  向后兼容也支持装有 SSDT 的 Visual Studio 2013 Update 5。  
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 使用装有 SSDT 的 Visual Studio 让可以使用 SQL Server 对象资源管理器以可视化方式浏览 SQL 数据仓库中的表格、视图、存储过程和其他更多对象，并运行查询。
 
 > [!NOTE]
-> SQL 数据仓库尚不支持 Visual Studio 数据库项目。  将来的版本会添加此功能。
+> SQL 数据仓库尚不支持 Visual Studio 数据库项目。  将来的版本会添加此功能。 若要接收有关此功能的定期更新，请在 [UserVoice] 上投票。
 > 
 > 
 
@@ -59,3 +59,4 @@ ms.lasthandoff: 10/11/2017
 [下载 Visual Studio]: https://www.visualstudio.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
+[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

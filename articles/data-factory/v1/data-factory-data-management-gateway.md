@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a1b5346b590081c703ccdc5197e08f35bcaf76e3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: af05f407661c2606719e733e373d0dad7bff3230
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/03/2017
 
 本文补充了[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练。 在本演练中，将创建一个管道，该管道使用网关将数据从本地 SQL Server 数据库移至 Azure Blob。 本文深入说明了数据管理网关。 
 
-可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来向上扩展数据管理网关。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。
+可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来进行扩展。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。
 
 > [!NOTE]
 > 目前，网关仅支持数据工厂中的复制活动和存储的过程活动。 不能使用自定义活动中的网关访问本地数据源。      
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/03/2017
 * 数据管理网关的单个实例可用于多个本地数据源。 但是，**单个网关实例只与一个 Azure 数据工厂关联**，不能与另一个数据工厂共享。
 * 在一台计算机上可以仅安装数据管理网关的一个实例。 假设有两个需要访问本地数据源的数据工厂，那么需要在两台本地计算机上安装网关。 换而言之，一个网关关联到一个特定的数据工厂
 * **网关不需要位于数据源所在的计算机上**。 但是，如果网关离数据源较近，可以减少网关连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装网关。 网关和数据源位于不同计算机上时，网关不会与数据源争用资源。
-* 可以**将不同计算机上的多个网关连接到同一本地数据源**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
+* 可以在**不同计算机上拥有多个连接到相同本地数据源的网关**。 例如，可以让两个网关服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 * 如果已在计算机中安装了为 **Power BI** 方案提供服务的网关，那么在其他计算机上安装**用于 Azure 数据工厂的单独网关**。
 * 即使使用 **ExpressRoute**，也必须使用网关。
 * 即使使用 **ExpressRoute**，也要将数据源视为本地数据源（位于防火墙之后）。 使用网关在服务和数据源之间建立连接。
@@ -190,7 +190,7 @@ ms.lasthandoff: 11/03/2017
 1. 启动“数据管理网关配置管理器”。
 2. 切换到“设置”选项卡。
 3. 单击“HTTP 代理”部分的“更改”链接，以启动“设置 HTTP 代理”对话框。  
-4. 单击“下一步”按钮后，将出现警告对话框，询问是否允许保存代理设置和重启网关主机服务。
+4. 单击“下一步”按钮后，会看到警告对话框，询问是否要保存代理设置并重启网关主机服务。
 
 可以使用配置管理器工具查看和更新 HTTP 代理。
 
@@ -323,6 +323,9 @@ ms.lasthandoff: 11/03/2017
 * 终结点的**状态**
 * “SSL 证书”视图可用于门户与网关之间的 SSL 通信，从而为数据源设置凭据。  
 
+### <a name="remote-access-from-intranet"></a>从 Intranet 进行远程访问  
+以后将启用此功能。 在即将发布的更新（v3.4 或更高版本）中，我们将让你在使用 PowerShell 或凭据管理器应用程序加密凭据时启用/禁用现在使用端口 8050 实现的任何远程连接（请参阅上面部分）。 
+
 ### <a name="diagnostics-page"></a>“诊断”页
 在“诊断”页中可执行以下操作：
 
@@ -389,9 +392,9 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。 
 
 ## <a name="scale-up-gateway"></a>向上扩展网关
-可配置可在单个节点上运行的并发数据移动作业数，提升在本地与云数据存储之间移动数据的能力。 
+可配置可在单个节点上运行的**并发数据移动作业数**，提升在本地与云数据存储之间移动数据的能力。 
 
-如果可用内存和 CPU 未充分利用，但空闲容量为 0，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因网关重载而超时时，也建议向上扩展。 在网关节点的高级设置中，可以增加节点的最大容量。 
+如果可用内存和 CPU 未充分利用，但空闲容量为 0，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因网关重载而超时时，可能也需要进行扩展。 在网关节点的高级设置中，可以增加节点的最大容量。 
   
 
 ## <a name="troubleshooting-gateway-issues"></a>网关问题疑难解答
@@ -464,7 +467,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 
 使用“设置凭据”应用程序时，门户使用网关计算机上“网关配置管理器”的“证书”选项卡上指定的证书来加密凭据。
 
-如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 将 JSON 用于 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) cmdlet 或在数据工厂编辑器。
+如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 通过 [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) cmdlet 或在数据工厂编辑器中使用 JSON。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

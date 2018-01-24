@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2017
+ms.date: 12/11/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22379dd7cb0118983505237fa16f01a865a53306
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 309396badf3a4daa4c339a280f774bcd500ce3bb
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -62,6 +62,9 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
 
     例如，如果 IoT 中心的名称为 **contoso.azure-devices.net**，设备的名称为 **MyDevice01**，则完整“**用户名**”字段应包含 `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14`。
 * “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`。
+
+    >[!NOTE]
+    >如果使用 X.509 证书身份验证，则不需要使用 SAS 令牌密码。 有关详细信息，请参阅[在 Azure IoT 中心设置 X.509 安全性][lnk-x509]
 
     有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌][lnk-sas-tokens]的设备部分。
 
@@ -137,7 +140,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ### <a name="receiving-cloud-to-device-messages"></a>接收“云到设备”消息
 
-若要从 IoT 中心接收消息，设备应使用 `devices/{device_id}/messages/devicebound/#` 作为**主题筛选器**来进行订阅。 主题筛选器中的多级通配符 **#** 仅用于允许设备接收主题名称中的其他属性。 IoT 中心不允许使用 **#** 或 **?** 用于筛选子主题的通配符。 由于 IoT 中心不是一般用途的发布-订阅消息传送中转站，因此它仅支持存档的主题名称和主题筛选器。
+若要从 IoT 中心接收消息，设备应使用 `devices/{device_id}/messages/devicebound/#` 作为**主题筛选器**来进行订阅。 主题筛选器中的多级通配符 `#` 仅用于允许设备接收主题名称中的其他属性。 IoT 中心不允许使用 `#` 或 `?` 通配符筛选子主题。 由于 IoT 中心不是一般用途的发布-订阅消息传送中转站，因此它仅支持存档的主题名称和主题筛选器。
 
 在设备成功订阅 `devices/{device_id}/messages/devicebound/#` 主题筛选器表示的设备特定终结点前，不会从 IoT 中心收到任何消息。 成功建立订阅后，设备仅会开始收到建立订阅后发送给它的云到设备消息。 如果设备在 **CleanSession** 标志设置为 0 的情况下进行连接，则订阅在经历不同的会话后仍然持久存在。 在此情况下，下次使用 CleanSession 0 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 1 的 CleanSession 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
 
@@ -147,9 +150,9 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ### <a name="retrieving-a-device-twins-properties"></a>检索设备克隆的属性
 
-首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含 request id 的填充值。服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备孪生数据，并且使用与请求相同的 request id。
+首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含**请求 ID** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备孪生数据，并且使用与请求相同的**请求 ID**。
 
-request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
+请求 ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
 响应正文包含设备孪生的 properties 部分：
 
 标识注册表项的正文限制为“properties”成员，例如：
@@ -228,7 +231,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 
 首先，设备需要订阅 `$iothub/methods/POST/#`。 IoT 中心向主题 `$iothub/methods/POST/{method name}/?$rid={request id}` 发送方法请求，其中包含有效的 JSON 或空正文。
 
-设备会向主题 `$iothub/methods/res/{status}/?$rid={request id}` 发送具有有效 JSON 或空正文的消息进行响应，其中 **request id** 必须与请求消息中的对应项匹配，**status** 必须是整数。
+设备会向主题 `$iothub/methods/res/{status}/?$rid={request id}` 发送具有有效 JSON 或空正文的消息进行响应，其中 **request ID** 必须与请求消息中的对应项匹配，**status** 必须是整数。
 
 有关详细信息，请参阅[直接方法开发人员指南][lnk-methods]。
 
@@ -270,6 +273,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-x509]: iot-hub-security-x509-get-started.md
 
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-messaging]: iot-hub-devguide-messaging.md

@@ -13,20 +13,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: e187b51769754a757991f7b5bdb335e62512b488
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 474a2d66cc46fcac35b145633e802d72881b10d8
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
 借助 [Compose](http://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
 
 
 ## <a name="set-up-a-linux-vm-as-a-docker-host"></a>将 Linux VM 设置为 Docker 主机
-可以使用各种 Azure 过程和 Azure 应用商店中提供的映像或 Resource Manager 模板创建 Linux VM，并将其设置为 Docker 主机。 例如，请参阅[使用 Docker VM 扩展部署环境](dockerextension.md)，了解使用[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)通过 Azure Docker VM 扩展快速创建 Ubuntu VM。 
+可以使用各种 Azure 过程和 Azure Marketplace 中提供的映像或 Resource Manager 模板创建 Linux VM，并将其设置为 Docker 主机。 例如，请参阅[使用 Docker VM 扩展部署环境](dockerextension.md)，了解使用[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)通过 Azure Docker VM 扩展快速创建 Ubuntu VM。 
 
 使用 Docker VM 扩展时，VM 会自动设置为 Docker 主机，并且已安装 Compose。
 
@@ -40,30 +40,14 @@ ms.lasthandoff: 10/11/2017
 az group create --name myResourceGroup --location eastus
 ```
 
-接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 VM，其中包含 [GitHub 中此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
+接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-需要几分钟才能完成部署。 部署完成后，[移到下一步](#verify-that-compose-is-installed)，将 SSH 移到 VM。 
-
-（可选）要改为将控制返回提示符，并允许部署在后台继续运行，请将 `--no-wait` 标志添加到前一个命令。 此过程允许在 CLI 中执行其他工作，同时部署将持续几分钟。 可以使用 [az vm show](/cli/azure/vm#show) 查看有关 Docker 主机状态的详细信息。 以下示例在名为 myResourceGroup 的资源组中检查名为 myDockerVM（模板中的默认名称 - 请不要更改该名称）的 VM 的状态：
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
-    --name myDockerVM \
-    --query [provisioningState] \
-    --output tsv
-```
-
-当此命令返回“已成功”时，表示部署完毕，可使用以下步骤将 SSH 移到 VM。
+需要几分钟才能完成部署。
 
 
 ## <a name="verify-that-compose-is-installed"></a>确认已安装 Compose
@@ -78,7 +62,7 @@ az vm show \
     --output tsv
 ```
 
-通过 SSH 连接到新的 Docker 主机。 提供自己的 DNS 名称，如下所示：
+通过 SSH 连接到新的 Docker 主机。 提供来自前面步骤的自己的用户名和 DNS 名称：
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
@@ -156,7 +140,7 @@ azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/
 ## <a name="next-steps"></a>后续步骤
 * 转到 [Docker VM 扩展用户指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md)，了解用于在 Docker VM 中配置 Docker 和 Compose 的更多选项。 例如，其中一个选项是将 Compose yml 文件（已转换为 JSON）直接放在 Docker VM 扩展的配置中。
 * 有关构建和部署多容器应用的更多示例，请查阅 [Compose 命令行参考](http://docs.docker.com/compose/reference/)和[用户指南](http://docs.docker.com/compose/)。
-* 使用 Azure Resource Manager 模板（自己的或[社区](https://azure.microsoft.com/documentation/templates/)提供的），通过 Docker 部署 Azure VM 和使用 Compose 设置的应用程序。 例如，[使用 Docker 部署 WordPress 博客](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql)模板使用 Docker 和 Compose 通过 Ubuntu VM 上的 MySQL 后端快速部署 WordPress。
+* 使用 Azure 资源管理器模板（自己的或[社区](https://azure.microsoft.com/documentation/templates/)提供的），通过 Docker 部署 Azure VM 和使用 Compose 设置的应用程序。 例如，[使用 Docker 部署 WordPress 博客](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql)模板使用 Docker 和 Compose 通过 Ubuntu VM 上的 MySQL 后端快速部署 WordPress。
 * 请尝试将 Docker Compose 与 Docker Swarm 群集集成。 相关方案请参阅 [Using Compose with Swarm](https://docs.docker.com/compose/swarm/)（将 Compose 与 Swarm 配合使用）。
 
 <!--Image references-->

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/04/2017
+ms.date: 12/14/2017
 ms.author: owend
-ms.openlocfilehash: 9cf5bcc9f7e089bd919c1a46934b64383b88c0ab
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 870d430d1926859894f452e0af812d794272a9e6
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 12/06/2017
 
 |下载  |版本  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    14.0.1000.397      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    14.0.1000.397      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   14.0.800.218      |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    14.0.1000.397      |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    14.0.801.241      |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    14.0.801.241      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   14.0.800.117      |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    14.0.801.241      |
 
 ## <a name="understanding-client-libraries"></a>了解客户端库
 

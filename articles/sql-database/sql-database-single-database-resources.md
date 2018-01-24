@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/11/2017
+ms.date: 12/14/2017
 ms.author: carlrab
-ms.openlocfilehash: f2dca5ac40dff077f9e5ce983b15fcb5b2624a14
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0f88b09c342c1849a5c61fdb5dc048d7cbadc83b
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>管理 Azure SQL 数据库中单一数据库的资源
 
@@ -35,6 +35,10 @@ ms.lasthandoff: 10/31/2017
 
 ![配置服务层和性能级别](./media/sql-database-single-database-resources/change-service-tier.png)
 
+单击“概述”以监视和/或取消正在进行的操作。
+
+![取消操作](./media/sql-database-single-database-resources/cancel-operation.png)
+
 > [!IMPORTANT]
 > 当选择 P11 或 P15 服务层时，请查看[最大大小为 4 TB 的 P11 和 P15 数据库的当前限制](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。
 >
@@ -48,6 +52,8 @@ ms.lasthandoff: 10/31/2017
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|创建数据库 |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|获取一个或多个数据库|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|设置数据库的属性，或将现有数据库移到弹性池中。 例如，使用 MaxSizeBytes 属性来设置数据库的最大大小。|
+|[Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity)|获取数据库操作的状态。 |
+|[Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity)|取消对数据库的异步更新操作。|
 
 
 > [!TIP]
@@ -64,7 +70,8 @@ ms.lasthandoff: 10/31/2017
 |[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|显示防火墙规则的详细信息|
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|更新防火墙规则|
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|删除防火墙规则|
-
+|[az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list)|获取对数据库执行的操作的列表。|
+|[az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel)|取消对数据库的异步操作。|
 
 > [!TIP]
 > 可以使用 Azure CLI 脚本在查询数据库的大小信息后将单一 Azure SQL 数据库缩放到不同的性能级别，有关这样的示例脚本，请参阅[使用 CLI 监视和缩放单一 SQL 数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
@@ -102,6 +109,7 @@ ALTER DATABASE <myDatabaseName>
 |[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
 |[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
 |[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
+|[操作 - 列表](/rest/api/sql/Operations/List)|列出所有可用的 SQL Rest API 操作。|
 
 
 

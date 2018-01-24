@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/14/2017
 ms.author: mblythe
 ms.custom: 
-ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
 [PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
@@ -45,34 +45,8 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 
 + 一个有效的 [PowerApps 帐户](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md)，其中登录凭据与 Azure 帐户相同。 
-+ Excel，因为要使用 Excel 作为应用的数据源。
++ Excel 和将用作应用的数据源的 [Excel 示例文件](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx)。
 + 完成[为函数创建 OpenAPI 定义](functions-openapi-definition.md)教程。
-
-
-## <a name="prepare-sample-data-in-excel"></a>在 Excel 中准备示例数据
-首先准备应用中使用的示例数据。 将下表复制到 Excel。 
-
-| 标题      | 纬度  | 经度  | 上次维修日期 | 最大输出 | 需要维修 | 预计工作量 | 检查备注                            |
-|------------|-----------|-------------|-----------------|-----------|-----------------|-----------------|--------------------------------------------|
-| 涡轮机 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | 是             | 6               | 这是本月的第二个问题。       |
-| 涡轮机 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | 是             | 6               |                                            |
-| 涡轮机 33 | 47.428229 | -121.404641 | 6/20/2017       | 2800      |                 |                 |                                            |
-| 涡轮机 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | 是             | 7               |                                            |
-| 涡轮机 46 | 47.471993 | -121.298949 | 3/2/2017        | 1200      |                 |                 |                                            |
-| 涡轮机 47 | 47.484059 | -121.311171 | 8/2/2016        | 3350      |                 |                 |                                            |
-| 涡轮机 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | 是             | 40               | 我们为这台涡轮机采购了一些即将到货的部件。 |
-
-1. 在 Excel 中，选择数据，在“开始”选项卡上，单击“套用表格格式”。
-
-    ![套用表格格式](media/functions-powerapps-scenario/format-table.png)
-
-1. 选择任意样式，单击“确定”。
-
-1. 选择表后，在“设计”选项卡上，输入 `Turbines` 作为“表名称”。
-
-    ![表名称](media/functions-powerapps-scenario/table-name.png)
-
-1. 保存 Excel 工作簿。
 
 [!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
@@ -97,35 +71,35 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-an-app-and-add-data-sources"></a>创建应用并添加数据源
 现在可以在 PowerApps 中创建应用，并添加 Excel 数据和自定义 API 作为应用数据源。
 
-1. 在 [web.powerapps.com](https://web.powerapps.com) 中，在左侧窗格中，单击“新建应用”。
+1. 在 [web.powerapps.com](https://web.powerapps.com) 中，选择“从空白开始” >  ![手机应用图标](media/functions-powerapps-scenario/icon-phone-app.png)（手机）>“生成此应用”。
 
-1. 在“空白应用”下，单击“手机布局”。
+    ![从空白开始 - 手机应用](media/functions-powerapps-scenario/create-phone-app.png)
 
-    ![创建平板电脑应用](media/functions-powerapps-scenario/create-phone-app.png)
-
-    应用在 Web PowerApps Studio 中打开。 下图显示了 PowerApps Studio 的各部分。 此图显示的是已完成的应用；中间窗格最初是空白屏幕。
+    应用在 Web PowerApps Studio 中打开。 下图显示了 PowerApps Studio 的各部分。
 
     ![PowerApps Studio](media/functions-powerapps-scenario/powerapps-studio.png)
 
-    **(1) 左导航栏**，其中可以看见每个屏幕上所有控件的分层视图
+    **(A) 左导航栏**，其中可以看见每个屏幕上所有控件的分层视图
 
-    **(2) 中间窗格**，其中显示当前操作的屏幕
+    **(B) 中间窗格**，其中显示当前操作的屏幕
 
-    **(3) 右窗格**，设置布局和数据源等选项的位置
+    **(C) 右窗格**，设置布局和数据源等选项的位置
 
-    **(4) 属性**下拉列表，选择公式应用到的属性的位置
+    **(D) 属性**下拉列表，选择公式应用到的属性的位置
 
-    **(5) 公式栏**，添加定义应用行为的公式（如在 Excel 中）的位置
+    **(E) 公式栏**，添加定义应用行为的公式（如在 Excel 中）的位置
     
-    **(6) 功能区**，添加控件并自定义设计元素的位置
+    **(F) 功能区**，添加控件并自定义设计元素的位置
 
 1. 将 Excel 文件添加为数据源。
 
-    1. 在右窗格中，在“数据”选项卡上，单击“添加数据源”。
+    将导入的数据如下所示：
 
-        ![添加数据源](media/functions-powerapps-scenario/add-data-source.png)
+    ![要导入的 Excel 数据](media/functions-powerapps-scenario/excel-table.png)
 
-    1. 单击“将静态数据添加到应用”。
+    1. 在应用画布上，选择“连接到数据”。
+
+    1. 在“数据”面板中，单击“将静态数据添加到应用”。
 
         ![添加数据源](media/functions-powerapps-scenario/add-static-data.png)
 
@@ -135,9 +109,10 @@ ms.lasthandoff: 10/11/2017
 
         ![添加数据源](media/functions-powerapps-scenario/choose-table.png)
 
+
 1. 将自定义 API 添加为数据源。
 
-    1. 在“数据”选项卡上，单击“添加数据源”。
+    1. 在“数据”面板上，单击“添加数据源”。
 
     1. 单击“涡轮机修复”。
 
@@ -156,17 +131,21 @@ ms.lasthandoff: 10/11/2017
 
     ![更改标题和重设库的大小](media/functions-powerapps-scenario/gallery-title.png)
 
-1. 选择库后，在右窗格的“数据”选项卡上，将数据源从“CustomGallerySample”更改为“涡轮机”。
+1. 选择库之后，在右窗格中的“属性”下，单击 **CustomGallerySample**。
 
     ![更改数据源](media/functions-powerapps-scenario/change-data-source.png)
 
+1. 在“数据”面板中，从列表中选择“涡轮机”。
+
+    ![选择数据源](media/functions-powerapps-scenario/select-data-source.png)
+
     数据集不包含图像，所以下一步更改布局以更好地适应数据。 
 
-1. 仍在右窗格中，将“布局”更改为“标题、副标题和正文”。
+1. 仍在“数据”面板中，将“布局”更改为“标题、副标题和正文”。
 
     ![更改库布局](media/functions-powerapps-scenario/change-layout.png)
 
-1. 在右窗格中执行的最后一步是更改库中显示的字段。
+1. 在“数据”面板中执行的最后一步是更改库中显示的字段。
 
     ![更改库字段](media/functions-powerapps-scenario/change-fields.png)
     
@@ -185,6 +164,8 @@ ms.lasthandoff: 10/11/2017
 1. 不需要应用中的原始屏幕。 在左窗格中，将鼠标悬停在“Screen1”，依次单击“...”和“删除”。
 
     ![删除屏幕](media/functions-powerapps-scenario/delete-screen.png)
+
+1. 单击“文件”，并命名应用。 单击左侧菜单中的“保存”，然后单击右下角的“保存”。
 
 在生产应用中通常还会涉及到许多其他格式设置，但我们将转移到此方案的重要部分，即调用函数。
 

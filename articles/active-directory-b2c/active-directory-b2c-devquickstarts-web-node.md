@@ -1,32 +1,31 @@
 ---
-title: "将登录添加到 Azure B2C 的 Node.js Web 应用 | Microsoft Docs"
-description: "如何生成一个使用 B2C 租户登录用户的 Node.js Web 应用。"
+title: "将登录功能添加到 Node.js Web 应用 - Azure Active Directory B2C"
+description: "如何生成一个使用 Azure Active Directory B2C 登录用户的 Node.js Web 应用。"
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+author: PatAltimore
 manager: mtillman
-editor: 
-ms.assetid: db97f84a-1f24-447b-b6d2-0265c6896b27
+editor: dstrockis
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: b306a79d0daa1c6d51557b6abad617182c76e9ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b4a5db7e6769d7ebb0bcf0287b3a1bfb7932984a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C：将登录添加到 Node.js Web 应用
 
 **Passport** 是 Node.js 的身份验证中间件。 Passport 极其灵活且采用模块化结构，可以在不造成干扰的情况下安装在任何基于 Express 的应用程序或 Resitify Web 应用程序中。 一套综合性策略支持使用用户名和密码、Facebook、Twitter 等进行身份验证。
 
-我们针对 Azure Active Directory (Azure AD) 开发了一个策略。 需要安装此模块，然后添加 Azure AD `passport-azure-ad` 插件。
+对于 Azure Active Directory (Azure AD)，可以安装此模块，然后添加 Azure AD `passport-azure-ad` 插件。
 
-若要实现此目的，需要：
+你需要：
 
 1. 使用 Azure AD 注册应用程序。
 2. 将应用设置为使用 `passport-azure-ad` 插件。
@@ -51,8 +50,6 @@ ms.lasthandoff: 12/11/2017
 - 在“回复 URL”中输入 `http://localhost:3000/auth/openid/return`。 它是此代码示例的默认 URL。
 - 为应用程序创建 **应用程序机密** 并复制下来。 稍后需要用到此值。 请注意，此值在使用之前必须经过 [XML 转义](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) 。
 - 复制分配给应用的 **应用程序 ID** 。 稍后也需要用到此信息。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
 
@@ -104,7 +101,7 @@ ms.lasthandoff: 12/11/2017
 打开项目根目录中的 `app.js` 文件。 添加以下调用，调用随 `passport-azure-ad` 附带的 `OIDCStrategy` 策略。
 
 
-```JavaScript
+```javascript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 // Add some logging
@@ -115,7 +112,7 @@ var log = bunyan.createLogger({
 
 使用刚刚引用的策略来处理登录请求。
 
-```JavaScript
+```javascript
 // Use the OIDCStrategy in Passport (Section 2).
 //
 //   Strategies in Passport require a "validate" function that accepts
@@ -158,7 +155,7 @@ Passport 对所有策略都使用类似的模式（Twitter 和 Facebook 也不�
 
 根据 Passport 的要求，添加用于跟踪已登录用户的方法。 其中包括将用户信息序列化和反序列化：
 
-```JavaScript
+```javascript
 
 // Passport session setup. (Section 2)
 
@@ -194,7 +191,7 @@ var findByEmail = function(email, fn) {
 
 添加可加载 Express 引擎的代码。 在下面的示例中，可以看到我们使用 Express 所提供的默认的 `/views` 和 `/routes` 模式。
 
-```JavaScript
+```javascript
 
 // configure Express (Section 2)
 
@@ -221,7 +218,7 @@ app.configure(function() {
 
 添加 `POST` 路由，以便将实际的登录请求递交到 `passport-azure-ad` 引擎：
 
-```JavaScript
+```javascript
 
 // Our Auth routes (Section 3)
 
@@ -271,7 +268,7 @@ app.post('/auth/openid/return',
 
 首先，向 `app.js` 文件添加默认方法、登录方法、帐户方法和注销方法：
 
-```JavaScript
+```javascript
 
 //Routes (Section 4)
 
@@ -306,7 +303,7 @@ app.get('/logout', function(req, res){
 
 对于 `app.js` 的最后一部分，请添加在 `/account` 路由中使用的 `EnsureAuthenticated` 方法。
 
-```JavaScript
+```javascript
 
 // Simple route middleware to ensure that the user is authenticated. (Section 4)
 
@@ -323,7 +320,7 @@ function ensureAuthenticated(req, res, next) {
 
 最后，在 `app.js` 中创建服务器本身。
 
-```JavaScript
+```javascript
 
 app.listen(3000);
 
@@ -336,7 +333,7 @@ app.listen(3000);
 
 在根目录下创建 `/routes/index.js` 路由。
 
-```JavaScript
+```javascript
 
 /*
  * GET home page.
@@ -349,7 +346,7 @@ exports.index = function(req, res){
 
 在根目录下创建 `/routes/user.js` 路由。
 
-```JavaScript
+```javascript
 
 /*
  * GET users listing.
@@ -364,7 +361,7 @@ exports.list = function(req, res){
 
 在根目录下创建 `/views/index.ejs` 视图。 这是一个简单的页面，用于调用登录和注销策略。也可将其用于获取帐户信息。 请注意，在请求中传递用户时，可以使用条件性的 `if (!user)`，提供用户已登录的证据。
 
-```JavaScript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login/?p=your facebook policy">Sign in with Facebook</a>
@@ -379,7 +376,7 @@ exports.list = function(req, res){
 
 在根目录下创建 `/views/account.ejs` 视图，以便查看 `passport-azure-ad` 放置在用户请求中的其他信息。
 
-```Javascript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login">Sign in</a>

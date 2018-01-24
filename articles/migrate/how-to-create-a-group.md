@@ -5,13 +5,13 @@ author: rayne-wiselman
 ms.service: azure-migrate
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 429a9150d1fbf50c0e3fa2046eb64affc8db8e5d
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: f42b184cddb3274d7ee0163c10cac002ccfbef62
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="group-machines-for-assessment"></a>分组将计算机以进行评估
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 12/12/2017
 
 ## <a name="create-a-group"></a>创建组
 
-1. 在 Azure Migrate 项目的**“仪表板”**中，单击 **“组”** > **“+ 组”**，然后指定组名。
+1. 在 Azure Migrate 项目的“概述”中，在“管理”下单击“组” **** “+ 组”> ****，然后指定组名。
 2. 将一个或多个计算机添加到组中，然后单击 **“创建”**。 
 3. 你可以视情况选择为组运行新评估。 
 
@@ -30,5 +30,5 @@ ms.lasthandoff: 12/12/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[计算机依赖项映射](how-to-create-group-machine-dependencies.md)创建更详细的组。
+- 了解如何使用[计算机依赖项映射](how-to-create-group-machine-dependencies.md)创建高可信度组。
 - [详细了解](concepts-assessment-calculation.md)如何计算评估。

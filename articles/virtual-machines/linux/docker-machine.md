@@ -4,7 +4,7 @@ description: "介绍如何使用 Docker Machine 在 Azure 中创建 Docker 主�
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: efd0b60079017e476b54acfc65ffe8f35ffe4933
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: a7c346b259f6635589f80a9c52c748fc0c05eef1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker Machine 在 Azure 中创建主机
 本文详细介绍如何使用 [Docker Machine](https://docs.docker.com/machine/) 在 Azure 中创建主机。 `docker-machine` 命令在 Azure 中创建一个 Linux 虚拟机 (VM)，然后安装 Docker。 然后，可以使用相同的本地工具和工作流来管理 Azure 中的 Docker 主机。 若要在 Windows 10 中使用 docker-machine，必须使用 Linux bash。
@@ -49,19 +49,19 @@ docker-machine create -d azure \
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
 Creating client certificate: /Users/user/.docker/machine/certs/cert.pem
 Running pre-create checks...
-(myvmdocker) Completed machine pre-create checks.
+(myvm) Completed machine pre-create checks.
 Creating machine...
-(myvmdocker) Querying existing resource group.  name="docker-machine"
-(myvmdocker) Creating resource group.  name="docker-machine" location="westus"
-(myvmdocker) Configuring availability set.  name="docker-machine"
-(myvmdocker) Configuring network security group.  name="myvmdocker-firewall" location="westus"
-(myvmdocker) Querying if virtual network already exists.  rg="docker-machine" location="westus" name="docker-machine-vnet"
-(myvmdocker) Creating virtual network.  name="docker-machine-vnet" rg="docker-machine" location="westus"
-(myvmdocker) Configuring subnet.  name="docker-machine" vnet="docker-machine-vnet" cidr="192.168.0.0/16"
-(myvmdocker) Creating public IP address.  name="myvmdocker-ip" static=false
-(myvmdocker) Creating network interface.  name="myvmdocker-nic"
-(myvmdocker) Creating storage account.  sku=Standard_LRS name="vhdski0hvfazyd8mn991cg50" location="westus"
-(myvmdocker) Creating virtual machine.  location="westus" size="Standard_A2" username="azureuser" osImage="canonical:UbuntuServer:16.04.0-LTS:latest" name="myvmdocker"
+(myvm) Querying existing resource group.  name="docker-machine"
+(myvm) Creating resource group.  name="docker-machine" location="westus"
+(myvm) Configuring availability set.  name="docker-machine"
+(myvm) Configuring network security group.  name="myvm-firewall" location="westus"
+(myvm) Querying if virtual network already exists.  rg="docker-machine" location="westus" name="docker-machine-vnet"
+(myvm) Creating virtual network.  name="docker-machine-vnet" rg="docker-machine" location="westus"
+(myvm) Configuring subnet.  name="docker-machine" vnet="docker-machine-vnet" cidr="192.168.0.0/16"
+(myvm) Creating public IP address.  name="myvm-ip" static=false
+(myvm) Creating network interface.  name="myvm-nic"
+(myvm) Creating storage account.  sku=Standard_LRS name="vhdski0hvfazyd8mn991cg50" location="westus"
+(myvm) Creating virtual machine.  location="westus" size="Standard_A2" username="azureuser" osImage="canonical:UbuntuServer:16.04.0-LTS:latest" name="myvm
 Waiting for machine to be running, this may take a few minutes...
 Detecting operating system of created instance...
 Waiting for SSH to be available...
@@ -73,14 +73,14 @@ Copying certs to the remote machine...
 Setting Docker configuration on the remote daemon...
 Checking connection to Docker...
 Docker is up and running!
-To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvmdocker
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm
 ```
 
 ## <a name="configure-your-docker-shell"></a>配置 Docker 外壳
 若要连接到 Azure 中的 Docker 主机，请定义适当的连接设置。 如输出的结尾所示，查看 Docker 主机的连接信息，如下所示： 
 
 ```bash
-docker-machine env myvmdocker
+docker-machine env myvm
 ```
 
 输出类似于以下示例：
@@ -91,10 +91,10 @@ export DOCKER_HOST="tcp://40.68.254.142:2376"
 export DOCKER_CERT_PATH="/Users/user/.docker/machine/machines/machine"
 export DOCKER_MACHINE_NAME="machine"
 # Run this command to configure your shell:
-# eval $(docker-machine env myvmdocker)
+# eval $(docker-machine env myvm)
 ```
 
-若要定义连接设置，可以运行推荐配置命令 (`eval $(docker-machine env myvmdocker)`)，也可以手动设置环境变量。 
+若要定义连接设置，可以运行建议的配置命令 (`eval $(docker-machine env myvm)`)，也可以手动设置环境变量。 
 
 ## <a name="run-a-container"></a>运行容器
 若要查看运行的容器，请运行一个基本的 NGINX Web 服务器。 使用 `docker run` 创建一个容器，并为 Web 流量公开端口 80，如下所示：
@@ -128,7 +128,7 @@ d5b78f27b335    nginx    "nginx -g 'daemon off"    5 minutes ago    Up 5 minutes
 
 
 ```bash
-docker-machine ip myvmdocker
+docker-machine ip myvm
 ```
 
 若要查看运行中的容器，请打开 Web 浏览器并输入上述命令输出中注明的公共 IP 地址：

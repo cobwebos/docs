@@ -4,22 +4,22 @@ description: "部署和浏览分片 Wingtip Tickets SaaS 多租户数据库应�
 keywords: "sql 数据库教程"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: MightyPen
 manager: craigg
-editor: billgib;MightyPen
+editor: billgib;anjangsh
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
-ms.author: sstein
-ms.openlocfilehash: 1ef4355f7234bc6a534d21a57fa52b480983b99b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.date: 12/18/2017
+ms.author: genemi
+ms.openlocfilehash: a7e6e319fb2fa8fee762055b625427403d14d679
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的分片多租户应用程序
 
@@ -31,16 +31,15 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 #### <a name="app-deploys-quickly"></a>应用程序快速部署
 
-下面的部署部分提供了“部署到 Azure”按钮。 当按下此按钮时，Wingtip 应用将在 5 分钟内完全部署完成。 Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 Wingtip 部署到 Azure 订阅。 你具有完全访问权限，可以使用各个应用程序组件。
+下面的部署部分提供了蓝色的“部署到 Azure”按钮。 当按下此按钮时，Wingtip 应用将在 5 分钟内完全部署完成。 Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 Wingtip 部署到 Azure 订阅。 你具有完全访问权限，可以使用各个应用程序组件。
 
 此应用程序部署了三个示例租户的数据。 这些租户一起存储在一个多租户数据库中。
 
-任何人都可以从[我们的 GitHub 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
+任何人都可以从 [GitHub 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
 
 #### <a name="learn-in-this-tutorial"></a>学习本教程
 
 > [!div class="checklist"]
-
 > - 如何部署 Wingtip SaaS 应用程序。
 > - 获取应用程序源代码和管理脚本的位置。
 > - 关于构成该应用的服务器和数据库。
@@ -58,24 +57,30 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>部署 Wingtip Tickets 应用
 
-1. 单击以下“部署到 Azure”按钮。
-    - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。 此模板要求提供两个参数值；新资源组的名称和用于区分该部署和应用中其他部署的“用户”值。 下一个步骤提供了设置这些参数值的详细信息。
-        - 请务必记下你使用的确切值，因为稍后的配置文件还需要用到。
+#### <a name="plan-the-names"></a>对名称进行计划
+
+在此部分的步骤中有两个地方，必须输入“用户”和新“资源组”的名称。 如果一个人名叫 *Ann Finley*，则建议输入以下名称：
+- 用户：&nbsp; **af1** &nbsp; （首字母缩写加数字）。
+- 资源组：&nbsp; **wingtip-af1** &nbsp; （建议全采用小写。追加连字符和用户名。）
+
+现在请选择自己的名称，并将其写下来。
+
+#### <a name="steps"></a>Steps
+
+1. 单击下面的“部署到 Azure”蓝色按钮。
+    - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。
 
     [![“部署到 Azure”按钮。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 2. 输入该部署所需的参数值。
 
     > [!IMPORTANT]
-    > 为了便于演示，某些身份验证和服务器防火墙设置将有意设置为不安全。 请选择“新建资源组”，不要使用现有资源组、服务器或池。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除此资源组，以停止相关计费。
-
-    最好在资源名称中仅使用小写字母、数字和连字符。
+    > 就本演示来说，请勿使用任何预先存在的资源组、服务器或池， 而应选择“创建新的资源组”。 使用完该应用程序时请删除此资源组，以停止相关计费。
+    > 不要使用该应用程序及其创建的任何资源进行生产。 为了便于演示，应用中身份验证的某些部分和服务器防火墙设置将有意设置为不安全。
 
     - 对于资源组 - 选择“新建”，然后为资源组提供一个名称（区分大小写）。
-        - 建议资源组名称中的字母全部采用小写形式。
-        - 建议后面附加短横线，依次后跟首字母、数字，例如 wingtip-af1。
         - 从下拉列表中选择一个**位置**。
-    - 对于用户 - 建议选择一个较短的用户值，例如在首字母后加一个数字：af1。
+    - 对于“用户”，建议选择短的“用户”值。
 
 3. **部署应用程序**。
 
@@ -90,15 +95,15 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 在应用程序部署的同时，下载应用程序源代码和管理脚本。
 
-> [!IMPORTANT]
-> 从外部源下载和提取 zip 文件时，可执行内容（脚本、ddl）可能受 Windows 阻止。 从 zip 文件提取脚本时，请按照以下步骤取消阻止 .zip 文件，然后再进行提取。 通过取消阻止 .zip 文件，确保允许脚本运行。
+> [!NOTE]
+> 从外部源下载 zip 文件并将其解压缩时，可执行内容（脚本、DLL）可能会被 Windows 阻止。 从 zip 文件提取脚本时，请按照以下步骤取消阻止 .zip 文件，然后再进行提取。 通过取消阻止 .zip 文件，确保允许脚本运行。
 
 1. 浏览到 [WingtipTicketsSaaS-MultiTenantDb GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
 2. 单击“克隆或下载”。
 3. 单击“下载 ZIP”并保存文件。
 4. 右键单击“WingtipTicketsSaaS-MultiTenantDb-master.zip”文件，然后选择“属性”。
 5. 在“常规”选项卡上，选择“取消阻止”，然后单击“应用”。
-6. 单击 **“确定”**。
+6. 单击“确定”。
 7. 解压缩文件。
 
 脚本位于 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* 文件夹中。
@@ -107,32 +112,44 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 运行任何脚本之前，在 UserConfig.psm1 中设置“资源组”和“用户”值。 将这些变量设置为在部署期间设置的相同值。
 
-1. 在 *PowerShell ISE* 中打开 ...\\Learning Modules\\*UserConfig.psm1*
+1. 在 *PowerShell ISE* 中打开 ...\\Learning Modules\\*UserConfig.psm1*。
 2. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name。
 3. 保存更改。
 
-所有脚本均可使用在此文件中设置的值，因此它们的准确性非常重要。 如果重新部署应用，请确保选择不同的资源组和用户值。 然后用新值更新用户配置。
+所有脚本均可使用在此文件中设置的值，因此它们的准确性非常重要。 如果重新部署应用，则必须为“用户”和“资源组”选择其他值。 然后用新值再次更新 UserConfig.psm1 文件。
 
 ## <a name="run-the-application"></a>运行应用程序
 
-该应用将展示举办活动的地点，如音乐厅、爵士乐俱乐部、运动俱乐部。 地点将作为 Wingtip 平台的客户（或租户）注册，以便于列出活动和销售票证。 每个地点均获得一个用于管理和列出其活动并销售票证的个性化 Web 应用，每个地点都是独立的，并且与其他租户隔离。 在封面下，每个租户的数据都默认存储在分片多租户数据库中。
+在 Wingtip 应用中，租户是场所。 场所可以是音乐厅、体育俱乐部或任何其他主办活动的场所。 场所在 Wingtip 中注册为客户，将为每个场所生成租户标识符。 每个场所都会在 Wingtip 中列出即将主办的活动，因此公众可以购买活动门票。
 
-中间的“事件中心”提供特定部署中租户的链接列表。
+每个场所都会通过个性化的 Web 应用列出其活动并售票。 每个 Web 应用都是独立的，处于与其他租户隔离的状态。 在 Azure SQL 数据库内部，每个租户的数据默认存储在分片式多租户数据库中。 所有数据都标记有租户标识符。
+
+中心式“事件中心”网页提供特定部署中租户的链接列表。 请执行以下步骤，体验**事件中心**网页和单个的 Web 应用：
 
 1. 在 Web 浏览器中打开“事件中心”：
-    - http://events.wingtip.&lt;USER&gt;.trafficmanager.net &nbsp;（替换为部署用户值。）
+    - http://events.wingtip.&lt;USER&gt;.trafficmanager.net &nbsp; （将 &lt;USER&gt; 替换为部署的用户值。）
 
     ![事件中心](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. 单击“活动中心”中的“Fabrikam 爵士乐俱乐部”。
 
-   ![事件](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![活动](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-该应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 租户特定的事件页需要租户名称包含在 URL 中。 此 URL 还包含特定用户值，并遵循以下格式：
+#### <a name="azure-traffic-manager"></a>Azure 流量管理器
+
+Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户的事件页都会在其 URL 中包括租户名称。 每个 URL 还包括特定的“用户”值。 每个 URL 都通过以下步骤遵循所显示的格式：
 
 - http://events.wingtip.&lt;USER&gt;.trafficmanager.net/*fabrikamjazzclub*
- 
-事件应用将分析 URL 中的租户名，并采用哈希算法来创建密钥，以使用[分片映射管理](sql-database-elastic-scale-shard-map-management.md)来访问目录。 该目录将密钥映射到租户的数据库位置。 “事件中心”将列出在目录中注册的所有租户。 “事件中心”使用目录中扩展的元数据来检索与每个映射关联的租户名称以构造 URL。
+
+1. 事件应用可以从 URL 分析租户名称。 在前一示例 URL 中，租户名称为 *fabrikamjazzclub*。
+2. 然后，该应用会对租户名称进行哈希处理，以便创建密钥，从而使用[分片映射管理](sql-database-elastic-scale-shard-map-management.md)来访问目录。
+3. 应用在目录中查找密钥，并获取租户数据库的相应位置。
+4. 应用使用位置信息来查找和访问包含租户的所有数据的那个数据库。
+
+#### <a name="events-hub"></a>事件中心
+
+1. “事件中心”将列出在目录中注册的所有租户及其场所。
+2. “事件中心”使用目录中扩展的元数据来检索与每个映射关联的租户名称以构造 URL。
 
 在生产环境中，通常要创建一条 CNAME DNS 记录，以[将公司 Internet 域指向](../traffic-manager/traffic-manager-point-internet-domain.md)流量管理器配置文件。
 
@@ -143,8 +160,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Utilities\\Demo-LoadGenerator.ps1 脚本。
 2. 按 **F5** 运行该脚本并启动负载生成器（目前保留默认参数值）。
 
-> [!IMPORTANT]
-> Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShell 会话。 负载生成器作为前台任务在此会话中运行，用于调用后台负载生成作业，每个租户一个。
+Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShell 会话。 负载生成器作为前台任务在此会话中运行，用于调用后台负载生成作业，每个租户一个。
 
 前台任务启动后，它仍处于作业调用状态。 该任务将为随后预配的任何新租户启动额外的后台作业。
 
@@ -154,13 +170,13 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>将新租户预配到分片数据库
 
-初始部署在 Tenants1 数据库中包括了三个示例租户。 让我们再创建一个租户，看看这会对已部署的应用程序有怎样的影响。 在此步骤中将快速创建新租户。
+初始部署在 Tenants1 数据库中包括了三个示例租户。 让我们再创建一个租户，观察其对已部署应用程序的影响。 在此步骤中，按一个键即可创建新租户：
 
-1. 在 PowerShell ISE 中打开 ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionTenants.ps1*。
-2. 按“F5”运行该脚本（目前保留默认值）。
+1. 在 *PowerShell ISE* 中打开...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1*。
+2. 按“F5”（不是 **F8**）运行该脚本（目前请保留默认值）。
 
    > [!NOTE]
-   > 许多 Wingtip Tickets SaaS 脚本都使用 $ PSScriptRoot 来允许导航文件夹、调用其他脚本或导入模块。 只有通过按“F5”完整执行脚本的情况下才能计算该变量。  突出显示和运行某个选择的内容 (F8) 时，可能会生成错误，因此请在运行脚本时按 F5。
+   > 必须按 **F5** 键来运行 PowerShell 脚本，而不是按 **F8** 来运行脚本的选定部分。 **F8** 的问题是 *$PSScriptRoot* 变量不会进行计算。 许多脚本需要此变量来导航文件夹、调用其他脚本或导入模块。
 
 新的 Red Maple Racing 租户已添加到 Tenants1 数据库中，并且已在目录中注册。 新租户的票证销售“事件”站点将在浏览器中打开：
 
@@ -170,22 +186,24 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>在其自己数据库中预配新租户
 
-分片多租户模型允许选择是在包含其他租户的数据库中预配新租户，还是在其自己的数据库中预配租户。 自身的租户可通过使其数据从其他租户的数据中隔离出来而受益。 通过隔离可使你独立于其他租户来管理该租户的性能。 此外，对于隔离的租户，将数据恢复到较早的时间更为容易。 你可以选择将免费试用版或常规客户放入多租户数据库，将高级客户放在单独数据库中。 如果创建大量每个当中只包含一个租户的数据库，则可以在弹性池中进行集中管理，以优化资源成本。  
+分片多租户模型允许选择是在包含其他租户的数据库中预配新租户，还是在其自己的数据库中进行预配。 租户在其自己的数据库中隔离具有以下好处：
+- 可以在不需考虑其他租户需求的情况下，管理租户数据库的性能。
+- 必要时可将数据库还原到较早的时间点，因为其他租户不会受影响。
 
-现在我们预配其他租户，这次是在自己的数据库中。
+可以选择将免费试用客户或经济客户置于多租户数据库中， 将每个高级租户置于其自己的专用数据库中。 如果创建大量只包含一个租户的数据库，则可以在弹性池中进行集中管理，以优化资源成本。
 
-1. 在 ...\\Learning Modules\\Provision and Catalog\*Demo-ProvisionTenants.ps1* 中，将 $TenantName 修改为 Salix Salsa，将 $VenueType 修改为 Dance，并将 $Scenario 修改为 2。
+接下来我们预配其他租户，这次是在其自己的数据库中：
+
+1. 在 ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* 中，将 *$TenantName* 修改为 **Salix Salsa**，将 *$VenueType* 修改为 **dance**，将 *$Scenario* 修改为 **2**。
 
 2. 按 F5 再次运行脚本。
-    - 此次按 F5 将预配单独数据库中的新租户。 数据库和租户在目录中注册。 然后，浏览器打开到租户的“事件”页。
+    - 此次按 **F5** 将预配单独数据库中的新租户。 数据库和租户在目录中注册。 然后，浏览器打开到租户的“事件”页。
 
    ![Salix Salsa 事件页](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
 
    - 滚动到页面底部。 在横幅中可以看到存储租户数据的数据库名称。
 
-3. 刷新“事件中心”，两个新租户将会出现在列表中。
-
-
+3. 刷新**事件中心**，两个新租户将会出现在列表中。
 
 ## <a name="explore-the-servers-and-tenant-databases"></a>浏览服务器和租户数据库
 
@@ -208,7 +226,7 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
 ## <a name="monitor-the-performance-of-the-database"></a>监测数据库的性能
 
-如果负载生成器已运行几分钟，那么应有足够的遥测数据可用于开始了解一些内置于门户中的数据库监测功能。
+如果负载生成器已运行几分钟，则应有足够的遥测数据，因此可以了解 Azure 门户内置的数据库监测功能。
 
 1. 浏览到 **tenants1-mt&lt;USER&gt;** 服务器，然后单击“tenants1”，查看在其中具有四个租户的数据库资源利用率。 每个租户都受到来自负载生成器的偶发过大负载的影响：
 
@@ -216,42 +234,39 @@ Wingtips 的这个实现将使用分片多租户数据库模式。 分片按租�
 
    DTU 利用率图表很好地说明了多租户数据库支持多租户不可预测的工作负载的方式。 在这种情况下，负载生成器正在向每个租户应用大约 30 个 DTU 的偶发负载。 此负载相当于 50 个 DTU 数据库的 60% 的利用率。 超过 60% 的峰值是同时向多个租户应用负载的结果。
 
-2. 浏览到 **tenants1-mt&lt;USER&gt;** 服务器，然后单击“salixsalsa”数据库，查看仅包含一个租户的数据库资源利用率。
+2. 浏览到 **tenants1-mt&lt;USER&gt;** 服务器，单击 **salixsalsa** 数据库。 可以看到这个只包含一个租户的数据库中的资源利用情况。
 
    ![salixsalsa 数据库](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
 负载生成器正在向每个租户应用类似负载，而不管每个租户在哪个数据库中。 在 salixsalsa 数据库中只有一个租户的情况下，你可以看到该数据库可以承受比有多个租户的数据库高得多的负载。 
 
-> [!NOTE]
-> 负载生成器创建的负载仅用于说明目的。  分配给多租户和单租户数据库的资源，以及在多租户数据库中可托管的租户数量，都要取决于应用程序中的实际工作负载模式。
+#### <a name="resource-allocations-vary-by-workload"></a>资源分配因工作负荷而异
 
+有时候，为了维持好的性能，多租户数据库需要比单租户数据库更多的资源，但情况并非总是如此。 资源的优化分配取决于系统中租户的具体工作负荷特征。
+
+负载生成器脚本生成的工作负荷仅用于演示目的。
+
+## <a name="additional-resources"></a>其他资源
+
+- 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
+
+- 若要了解弹性池，请参阅：
+    - [弹性池有助于管理和缩放多个 Azure SQL 数据库](sql-database-elastic-pool.md)
+    - [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了以下内容：
 
 > [!div class="checklist"]
-
-> - 如何部署 Wingtip Tickets SaaS 多租户数据库应用程序
-> - 关于构成该应用的服务器和数据库
-> - 租户通过目录映射到其数据
+> - 如何部署 Wingtip Tickets SaaS 多租户数据库应用程序。
+> - 关于构成该应用的服务器和数据库。
+> - 租户通过目录映射到其数据。
 > - 如何将新租户预配到多租户数据库和单租户数据库。
-> - 如何查看池使用率来监视租户活动
-> - 如何删除示例资源以停止相关计费
+> - 如何通过查看池使用率来监视租户活动。
+> - 如何删除示例资源以停止相关计费。
 
 现在，请尝试[预配和编录教程](sql-database-saas-tutorial-provision-and-catalog.md)。
-
-
-
-## <a name="additional-resources"></a>其他资源
-
-- 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](https://docs.microsoft.com/azure/sql-database/sql-database-design-patterns-multi-tenancy-saas-applications)
-
-
-
-
-
-
 
 
 <!--  Link references.
@@ -270,13 +285,10 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 
 
-
-
 <!--  Image references.
 
 [image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
-
 -->
 
-[image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png
+[image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "部署到 Azure 所需的按钮。"
 

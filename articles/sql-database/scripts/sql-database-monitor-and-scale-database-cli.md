@@ -14,13 +14,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 12/14/2017
 ms.author: janeng
-ms.openlocfilehash: 5913c8ec1b62fc38161e553dc2364c793951e047
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 741c066d62364e34b788883bfc96fba1ea3507c3
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>使用 CLI 监视和缩放单一 SQL 数据库
 
@@ -30,11 +30,14 @@ ms.lasthandoff: 12/07/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale single SQL Database")]
+
+> [!TIP]
+> 使用 [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list) 获取对数据库执行的操作列表，并使用 [az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) 取消对数据库的更新操作。
 
 ## <a name="clean-up-deployment"></a>清理部署
 

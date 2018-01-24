@@ -1,24 +1,16 @@
 ---
-title: "查看使用 Azure Site Recovery 执行 Hyper-V 到辅助站点的复制的体系结构 | Microsoft Docs"
+title: "使用 Azure Site Recovery 执行 Hyper-V 到辅助站点的复制的体系结构 | Microsoft Docs"
 description: "本文概述通过 Azure Site Recovery 将本地 Hyper-V VM 复制到辅助 System Center VMM 站点所用的体系结构。"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 26475782-a21a-408a-b089-35382d7e010e
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: a7a493097a4eaacc2c8d8449906b4a57eb411827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3380d189518f811ca6cf628608a253e5d93b2730
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点
 
@@ -51,20 +43,18 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="failover-and-failback-process"></a>故障转移和故障回复过程
 
-1. 可以故障转移单个虚拟机，或者创建恢复计划来协调多个虚拟机的故障转移。
-2. 可以在本地站点之间运行计划内或计划外故障转移。 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。
+- 可以故障转移单个虚拟机，或者创建恢复计划来协调多个虚拟机的故障转移。
+- 可以在本地站点之间运行计划内或计划外故障转移。 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。
     - 如果执行了到辅助站点的计划外故障转移，在故障转移后辅助位置中的虚拟机将不受保护。
     - 如果执行了计划内故障转移，在故障转移后，辅助位置中的计算机将受保护。
-3. 在初始故障转移运行后，可提交它来开始访问副本 VM 中的工作负载。
-
-当主位置再次可用时，可以进行故障回复。
-
-1. 启动反向复制以开始从辅助站点到主站点的复制。 反向复制会使虚拟机进入受保护状态，但辅助数据中心仍是活动位置。
-2. 要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，再次启动反向复制。
+- 在初始故障转移运行后，可提交它来开始访问副本 VM 中的工作负载。
+- 当主位置再次可用时，可以进行故障回复。
+    - 启动反向复制以开始从辅助站点到主站点的复制。 反向复制会使虚拟机进入受保护状态，但辅助数据中心仍是活动位置。
+    - 要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，再次启动反向复制。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-检查支持矩阵，按照本教程启用 VMM 云之间的 Hyper-V 复制。
-运行故障转移和故障回复。
+
+按照[此教程](tutorial-vmm-to-vmm.md)启用 VMM 云之间的 Hyper-V 复制。

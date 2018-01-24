@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: corywink
-ms.openlocfilehash: d4cb452b34ddefc70dc1adcff0e5fead072aa16a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.date: 12/12/2017
+ms.author: dobett
+ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>有关 IoT 套件连接工厂预配置解决方案的常见问题
 
@@ -42,7 +42,7 @@ OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以�
 
 ### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>为什么 Microsoft 为互联工厂预配置解决方案选择 OPC UA？
 
-Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独立于平台、已获得行业认可和已经过验证的标准。 它是 Industrie 4.0 (RAMI4.0) 参考体系结构解决方案的必要条件，可确保大量制造流程和设备之间的互操作性。 Microsoft 了解到客户对生成 Industrie 4.0 解决方案的需求。 OPC UA 支持有助于降低客户实现其目标的障碍，并为其提供即时业务价值。
+Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独立于平台、已获得行业认可和已经过验证的标准。 它是 Industrie 4.0 (RAMI4.0) 参考体系结构解决方案的必要条件，可确保大量制造流程和设备之间的互操作性。 Microsoft 看到了其客户对于构建工业 4.0 解决方案的需求。 OPC UA 支持有助于降低客户实现其目标的障碍，并为其提供即时业务价值。
 
 ### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>如何将公共 IP 地址添加到模拟 VM？
 
@@ -143,6 +143,64 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 * publisher.seattle.corp.contoso
 
 如未看见发送至 IoT 中心的数据，则该模拟存在问题。 首先应分析模拟组件的日志文件。 请参阅[如何从模拟组件获取日志数据？](#how-can-i-get-log-data-from-the-simulation-components) 接下来尝试停止和启动模拟。如果仍无发送的数据，请彻底更新模拟。 请参阅[如何更新 VM 中的模拟？](#how-do-i-update-the-simulation-in-the-vm)
+
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>如何在连接的工厂解决方案中启用互动地图？
+
+若要在连接的工厂解决方案中启用互动地图，必须具有现有的“适用于企业的必应地图 API”计划。 如果你在从 www.azureiotsuite.com 部署连接的工厂解决方案时已有“适用于企业的必应地图 API”计划，则会自动启用互动地图。
+
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>如何创建“适用于企业的必应地图 API”帐户？
+
+可以获取免费的*适用于企业的内部事务 1 级必应地图*计划。 但是，只能将这些计划中的两个添加到 Azure 订阅。 如果没有“适用于企业的必应地图 API”帐户，则通过单击“+ 创建资源”在 Azure 门户中创建一个。 然后，搜索“适用于企业的必应地图 API”并根据提示创建它。
+
+![必应密钥](media/iot-suite-faq-cf/bing.png)
+
+### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>如何获取“适用于企业的必应地图 API”查询密钥
+
+在创建“适用于企业的必应地图 API”计划后，在 Azure 门户中向你的连接的工厂解决方案的资源组中添加一个“适用于企业的必应地图 API”资源。
+
+1. 在 Azure 门户中，导航到包含你的“适用于企业的必应地图 API”计划的资源组。
+
+1. 单击“所有设置”，并单击“密钥管理”。
+
+1. 那里有两个密钥：**主密钥**和**查询密钥**。 复制**查询密钥**值。
+
+1. 若要通过 `build.ps1` 脚本选取密钥，请将 PowerShell 环境中的环境变量 `$env:MapApiQueryKey` 设置为你的计划的**查询密钥**。 然后，生成脚本会自动将该值添加到应用服务的设置。
+
+1. 使用 `build.ps1` 脚本运行本地或云部署。
+
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>在本地进行调试时如何启用互动地图？
+
+在本地进行调试时，若要启用互动地图，请将你的部署的根目录中的文件 `local.user.config` 和 `<yourdeploymentname>.user.config` 中的设置 `MapApiQueryKey` 的值设置为之前复制的**查询密钥**值。
+
+### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>如何在仪表板的主页上使用一个不同的图像？
+
+若要更改在仪表板的主页上显示的静态图像，请替换图像 `WebApp\Content\img\world.jpg`。 然后，重新生成并重新部署 WebApp。
+
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>如何将非 OPC UA 设备与连接的工厂一起使用？
+
+若要将遥测数据从非 OPC UA 设备发送到连接的工厂，请执行以下操作：
+
+1. 在 `ContosoTopologyDescription.json` 文件中[在连接的工厂拓扑中配置一个新站](iot-suite-connected-factory-configure.md)。
+
+1. 以连接的工厂兼容的 JSON 格式引入遥测数据：
+
+    ```json
+    [
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
+    ]
+    ```
+
+1. `<timestamp>` 的格式为：`2017-12-08T19:24:51.886753Z`
+
+1. 重新启动连接的工厂应用服务。
 
 ### <a name="next-steps"></a>后续步骤
 

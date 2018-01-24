@@ -1,24 +1,16 @@
 ---
-title: "查看体系结构以便将 VMware VM 复制到 Azure | Microsoft Docs"
+title: "使用 Azure Site Recovery 执行 VMware 到 Azure 的复制的体系结构 | Microsoft Docs"
 description: "本文概述了使用 Azure Site Recovery 服务将本地 VMware VM 复制到 Azure 所需使用的组件和体系结构"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: d03d2dd3-2455-4ca8-a942-a342030ee6ce
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: ac1151d15a88650f5845cb879cd210e9f7cba0fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1c991298d8f59c7f161b965541571b4c8ac3d8f9
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware 到 Azure 复制体系结构
 
@@ -85,5 +77,4 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-复查支持矩阵，按照本教程启用从 VMware 到 Azure 的复制。
-运行故障转移和故障回复。
+按照[此教程](tutorial-vmware-to-azure.md)启用 VMware 到 Azure 的复制。

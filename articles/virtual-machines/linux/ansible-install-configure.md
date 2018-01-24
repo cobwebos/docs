@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: c5257ef5c635080f5eaca371e1882b13cc37e0fd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 13b043f3d6154852647f6bb738d3717be6802fa9
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>安装和配置 Ansible 以管理 Azure 中的虚拟机
-本文详细介绍了如何为某些最常见的 Linux 发行版安装 Ansible 和所需的 Azure Python SDK 模块。 通过调整安装的程序包以适应特定的平台，在其他发行版上安装 Ansible。 若要安全地创建 Azure 资源，还需了解如何创建和定义用于 Ansible 的凭据。 
+本文详细介绍如何为某些最常见的 Linux 发行版安装 Ansible 和所需的 Azure Python SDK 模块。 通过调整安装的程序包以适应特定的平台，在其他发行版上安装 Ansible。 若要安全地创建 Azure 资源，还需了解如何创建和定义用于 Ansible 的凭据。 
 
 有关其他平台的安装方法和步骤的详细信息，请参阅[Ansible 安装指南](https://docs.ansible.com/ansible/intro_installation.html)。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/18/2017
 az group create --name myResourceGroupAnsible --location eastus
 ```
 
-现在创建 VM 并安装适用于以下发行版之一的 Ansible：
+现在创建 VM 并安装适用于所选以下发行版之一的 Ansible：
 
 - [Ubuntu 16.04 LTS](#ubuntu1604-lts)
 - [CentOS 7.3](#centos-73)
@@ -43,7 +43,7 @@ az group create --name myResourceGroupAnsible --location eastus
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 使用 [az vm create](/cli/azure/vm#create) 创建 VM。 以下示例创建一个名为 "myVMAnsible" 的 VM：
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -74,7 +74,7 @@ pip install ansible[azure]
 ### <a name="centos-73"></a>CentOS 7.3
 使用 [az vm create](/cli/azure/vm#create) 创建 VM。 以下示例创建一个名为 "myVMAnsible" 的 VM：
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -106,7 +106,7 @@ sudo pip install ansible[azure]
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 使用 [az vm create](/cli/azure/vm#create) 创建 VM。 以下示例创建一个名为 "myVMAnsible" 的 VM：
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -125,11 +125,14 @@ ssh azureuser@<publicIpAddress>
 
 ```bash
 ## Install pre-requisite packages
-sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 python-devel \
-    libopenssl-devel libtool python-pip python-setuptools
+sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
+    python-devel libopenssl-devel libtool python-pip python-setuptools
 
 ## Install Ansible and Azure SDKs via pip
 sudo pip install ansible[azure]
+
+# Remove conflicting Python cryptography package
+sudo pip uninstall -y cryptography
 ```
 
 现在转到[创建 Azure 凭据](#create-azure-credentials)。
@@ -138,26 +141,26 @@ sudo pip install ansible[azure]
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
 Ansible 使用用户名和密码或服务主体来与 Azure 通信。 Azure 服务主体是可用于应用、服务和 Ansible 等自动化工具的安全标识。 由你控制和定义有关服务主体可以在 Azure 中执行哪些操作的权限。 为了提供比使用用户名和密码更高的安全性，本示例将创建一个基本的服务主体。
 
-使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) 创建服务主体并输出 Ansible 所需的凭据：
+在主机计算机上使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) 创建服务主体，并输出 Ansible 需要的凭据：
 
 ```azurecli
-az ad sp create-for-rbac --query [appId,password,tenant]
+az ad sp create-for-rbac --query [client_id: appId, secret: password, tenant: tenant]
 ```
 
-前述命令中的输出示例如下所示：
+前述命令的输出示例如下所示：
 
 ```json
-[
-  "eec5624a-90f8-4386-8a87-02730b5410d5",
-  "531dcffa-3aff-4488-99bb-4816c395ea3f",
-  "72f988bf-86f1-41af-91ab-2d7cd011db47"
-]
+{
+  "client_id": "eec5624a-90f8-4386-8a87-02730b5410d5",
+  "secret": "531dcffa-3aff-4488-99bb-4816c395ea3f",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
 ```
 
 若要向 Azure 进行身份验证，还需使用 [az account show](/cli/azure/account#show) 获取 Azure 订阅 ID：
 
 ```azurecli
-az account show --query [id] --output tsv
+az account show --query "{ subscription_id: id }"
 ```
 
 在下一步中使用这两个命令的输出。
@@ -173,7 +176,7 @@ mkdir ~/.azure
 vi ~/.azure/credentials
 ```
 
-凭据文件本身会将订阅 ID 与创建服务主体的输出相结合。 以前的 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) 命令的输出顺序与 client_id、secret和 tenant 需要的顺序相同。 以下示例凭据文件显示了与以前的输出相匹配的这些值。 按如下所示输入自己的值：
+凭据文件本身会将订阅 ID 与创建服务主体的输出相结合。 前面的 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) 命令的输出与 client_id、secret和 tenant 所需的值相同。 以下示例凭据文件显示了与以前的输出相匹配的这些值。 按如下所示输入自己的值：
 
 ```bash
 [default]

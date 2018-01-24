@@ -15,21 +15,21 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: e38c69ec55d894053792fbf284d07944d7f44dc0
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 9b79e3b498e51e626e7e9a87d2bb1a66366acff5
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
 要将 Java Web 应用部署到 Azure，可在 [Jenkins 管道](/azure/jenkins/execute-cli-jenkins-pipeline)中使用 Azure CLI，也可使用 [Azure App Service Jenkins 插件](https://plugins.jenkins.io/azure-app-service)。 1.0 版 Jenkins 插件支持通过以下方式使用 Azure App Service 的 Web 应用功能进行持续部署：
-* Git 和 FTP。
+* Git 或 FTP。
 * 适用于 Linux 版 Web 应用的 Docker。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> * 配置 Jenkins 以通过 Git 和 FTP 部署 Web 应用。
+> * 配置 Jenkins 以通过 Git 或 FTP 部署 Web 应用。
 > * 配置 Jenkins 以部署用于容器的 Web 应用。
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>创建和配置 Jenkins 实例
@@ -64,7 +64,7 @@ sudo apt-get install -y maven
 3. 要添加 Microsoft Azure 服务主体，请选择“添加凭据”。 为“订阅 ID”、“客户端 ID”、“客户端密码”和“OAuth 2.0 令牌终结点”字段提供值。 将“ID”字段设为“mySp”。 本文后续步骤中将使用此 ID。
 
 
-## <a name="configure-jenkins-to-deploy-web-apps-through-git-and-ftp"></a>配置 Jenkins 以通过 Git 和 FTP 部署 Web 应用
+## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>配置 Jenkins 以通过上传文件部署 Web 应用
 
 要将项目部署到 Web 应用，可使用 Git 或 FTP 上传生成项目（例如，采用 Java 的 WAR 文件）。
 
@@ -104,7 +104,7 @@ sudo apt-get install -y maven
 8. 若要部署到非生产槽，还可设置槽名称。
 9. 保存并生成项目。 生成完成后，Web 应用将部署到 Azure。
 
-### <a name="deploy-web-apps-through-ftp-by-using-jenkins-pipeline"></a>使用 Jenkins 管道通过 FTP 部署 Web 应用
+### <a name="deploy-web-apps-by-uploading-files-using-jenkins-pipeline"></a>通过使用 Jenkins 管道上传文件部署 Web 应用
 
 Azure App Service Jenkins 插件中管道已就绪。 可参考 GitHub 存储库中的以下示例。
 

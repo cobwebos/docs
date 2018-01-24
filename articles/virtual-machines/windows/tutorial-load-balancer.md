@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 负载均衡器在 3 个 Windows VM 之�
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 12/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6738d88d5a0430abaf3855dbf97a618e4c83617f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eee852e703d25ccc4b13401c3e4ab46d09655da
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application"></a>如何在 Azure 中均衡 Windows 虚拟机负载以创建高可用性应用程序
 负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 学习如何：
@@ -68,7 +68,7 @@ $publicIP = New-AzureRmPublicIpAddress `
 ```
 
 ### <a name="create-a-load-balancer"></a>创建负载均衡器
-使用 [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig) 创建一个前端 IP 地址。 以下示例创建名为“myFrontEndPool”的前端 IP 地址： 
+使用 [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig) 创建一个前端 IP 池。 以下示例创建名为“myFrontEndPool”的前端 IP 池并附加 *myPublicIP* 地址： 
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
@@ -76,13 +76,13 @@ $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-使用 [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 以下示例创建名为“myBackEndPool”的后端地址池：
+使用 [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为“myBackEndPool”的后端地址池：
 
 ```powershell
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPool
 ```
 
-现在，使用 [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) 创建负载均衡器。 以下示例使用“myPublicIP”地址创建名为“myLoadBalancer”的负载均衡器：
+现在，使用 [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) 创建负载均衡器。 以下示例使用前面步骤中创建的前端和后端 IP 池创建名为 *myLoadBalancer* 的负载均衡器：
 
 ```powershell
 $lb = New-AzureRmLoadBalancer `
@@ -98,7 +98,7 @@ $lb = New-AzureRmLoadBalancer `
 
 以下示例创建一个 TCP 探测。 还可创建自定义 HTTP 探测，以便执行更精细的运行状况检查。 使用自定义 HTTP 探测时，必须创建运行状况检查页，例如 healthcheck.aspx。 探测必须为负载均衡器返回 HTTP 200 OK 响应，以保持主机处于旋转状态。
 
-若要创建 TCP 运行状况探测，请使用 [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig)。 以下示例创建名为“myHealthProbe”的运行状况探测，用于监视每个 VM：
+若要创建 TCP 运行状况探测，请使用 [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig)。 以下示例创建名为“myHealthProbe”的运行状况探测，用于在 *TCP* 端口 *80* 上监视每个 VM：
 
 ```powershell
 Add-AzureRmLoadBalancerProbeConfig `
@@ -110,7 +110,7 @@ Add-AzureRmLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-使用 [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) 更新负载均衡器：
+若要应用运行状况探测，请使用 [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) 更新负载均衡器：
 
 ```powershell
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -119,7 +119,7 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 若要确保仅正常运行的 VM 接收流量，还需定义要使用的运行状况探测。
 
-使用 [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为“myLoadBalancerRule”的负载均衡器规则并平衡端口 80 上的流量：
+使用 [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为“myLoadBalancerRule”的负载均衡器规则并均衡 *TCP* 端口 *80* 上的流量：
 
 ```powershell
 $probe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name myHealthProbe

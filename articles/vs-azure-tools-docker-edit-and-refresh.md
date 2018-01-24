@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df8bb2dd61466fd9af6492277d54cf0ffdfeb0b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>在本地 Docker 容器中调试应用
 ## <a name="overview"></a>概述

@@ -3,8 +3,8 @@ title: "泛型 SQL 连接器 | Microsoft Docs"
 description: "本文介绍如何配置 Microsoft 的泛型 SQL 连接器。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
-manager: mtillman
+author: fimguy
+manager: bhu
 editor: 
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
-ms.author: billmath
-ms.openlocfilehash: 04a6b7290c4a17d60145355ef1374960a8b6c5ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 12/19/2017
+ms.author: davidste
+ms.openlocfilehash: a365219e433f4876401a9c35b8a656060508efbd
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>泛型 SQL 连接器技术参考
 本指南介绍泛型 SQL 连接器。 本文适用于以下产品：
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/11/2017
 
 **对象类型检测方法**：连接器支持以下对象类型检测方法。
 
-* **固定值**：以逗号分隔列表来提供对象类型列表。 例如： `User,Group,Department`。  
+* **固定值**：以逗号分隔列表来提供对象类型列表。 例如：`User,Group,Department`。  
   ![schema1b](./media/active-directory-aadconnectsync-connector-genericsql/schema1b.png)
 * **表/视图/存储过程**：提供表/视图/存储过程的名称，并提供列名称以提供对象类型的列表。 如果使用存储过程，则还需要使用 **[名称]:[方向]:[值]** 格式提供其参数。 独行提供每个参数（使用 Ctrl+Enter 来换行）。  
   ![schema1c](./media/active-directory-aadconnectsync-connector-genericsql/schema1c.png)
@@ -231,7 +231,11 @@ ms.lasthandoff: 12/11/2017
 ![runstep1](./media/active-directory-aadconnectsync-connector-genericsql/runstep1.png)
 
 **表/视图**  
-若要导入对象的多值属性，必须在“多值表/视图名称”中提供逗号分隔的表/视图名称，以及在父表的“联接条件”中提供各自的联接条件。
+若要导入对象的多值属性，必须在“多值表/视图名称”中提供表/视图名称，以及在父表的“联接条件”中提供各自的联接条件。 如果数据源中有多个多值表，则可以使用联合到单个视图。
+
+>[!IMPORTANT]
+常规 SQL 管理代理仅使用一个多值表。 请不要在多值表/视图的名称中放入多个表名。 这是通用 SQL 的限制。
+
 
 示例：你想要导入员工对象及其所有的多值属性。 有两个表：“员工”（主表）和“部门”（多值）。
 请执行以下操作：

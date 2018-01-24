@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure 存储安全指南 | Microsoft Docs"
 description: "详细介绍保护 Azure 存储的多种方法，包括但不限于 RBAC、存储服务加密、客户端加密、SMB 3.0 和 Azure 磁盘加密。"
 services: storage
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: c3973c7e529cd1d0ecd98ae17d4d979d0d458ef3
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 9cb109dd9ce5a14bb80be61577c10d7191ec5ce6
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 ## <a name="overview"></a>概述
@@ -295,7 +295,7 @@ SSE 可让你请求存储服务在将数据写入 Azure 存储时自动加密数
 
 目前，用于加密的密钥由 Microsoft 管理。 我们最初将生成密钥，管理密钥的安全存储，并根据 Microsoft 内部策略的定义定期轮转密钥。 将来，能够管理自己的加密密钥，并可提供从 Microsoft 管理的密钥到客户管理的密钥的迁移路径。
 
-此功能可用于使用 Resource Manager 部署模型创建的标准和高级存储帐户。 SSE 仅适用于块 Blob、页 Blob 以及追加 Blob。 其他类型的数据（包括表、队列和文件）将不会加密。
+此功能可用于使用 Resource Manager 部署模型创建的标准和高级存储帐户。 SSE 适用于任何类型的数据：块 blob、页 blob、追加 blob、表、队列和文件。
 
 数据只有在启用 SSE 并将数据写入 Blob 存储时才会加密。 启用或禁用 SSE 并不会影响现有的数据。 换句话说，启用此加密时，不会返回并加密已存在的数据；也不会解密禁用 SSE 时已存在的数据。
 
@@ -325,7 +325,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 
-* 与 Azure 密钥保管库集成
+* 与 Azure Key Vault 集成
 * 标准层 VM：[A、D、DS、G 和 GS 等系列 IaaS VM](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * 在 Windows 和 Linux IaaS VM 上启用加密
 * 在 Windows IaaS VM 的 OS 和数据驱动器上禁用加密
@@ -380,7 +380,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 #### <a name="storage-service-encryption-sse"></a>存储服务加密 (SSE)
 SSE 由 Azure 存储管理。 使用 SSE 不是针对传输中数据安全性提供的，但它会在数据写入 Azure 存储时加密数据。 使用此功能时不会对性能造成任何影响。
 
-使用 SSE 只可以加密块 Blob、追加 Blob 和页 Blob。 如果需要加密表数据或队列数据，应该考虑使用客户端加密。
+可以使用 SSE 加密任何类型的存储帐户数据（块 blob、追加 blob、页 blob、表数据、队列数据和文件）。
 
 如果使用 VHD 文件的存档或库作为创建新虚拟机的基础，可以创建新的存储帐户、启用 SSE，并将 VHD 文件上传到该帐户。 这些 VHD 文件由 Azure 存储加密。
 

@@ -1,5 +1,5 @@
 ---
-title: "使用 Node.js 进行 Azure AD 登录和注销入门 | Microsoft Docs"
+title: "Azure AD Node.js Web 应用 入门 | Microsoft Docs"
 description: "了解如何构建用于登录的与 Azure AD 集成的 Node.js Express MVC Web 应用。"
 services: active-directory
 documentationcenter: nodejs
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 3a9bc44ec9fc5a7c5e18139070bac837421efff5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>使用 Azure AD 进行 Node.js Web 应用登录和注销
+# <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web 应用 入门
 此处，我们使用 Passport 进行以下操作：
 
 * 通过 Azure Active Directory (Azure AD) 将用户登录到应用。

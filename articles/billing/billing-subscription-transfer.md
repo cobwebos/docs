@@ -14,42 +14,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 08/15/2017
+ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9beef44b3fbaf26d49757544f32b97c7ef2cf425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
-可在帐户中心将订阅转让给其他用户。 使用此功能将订阅计费所有权转让给他人、更改登录帐户或将订阅移动到其他目录。 要将订阅更改为其他产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。
+将你的订阅转让给帐户中心内的另一个用户可更改帐户管理员并移交订阅账单所有权。 要将订阅更改为其他产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。
 
 > [!IMPORTANT]
 > 
 > 目前不支持免费试用版或 [Azure 开放许可 (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 订阅的订阅转让。 若要暂时避开此问题，请参阅[将资源移动到新的资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。
-
-<a id="supported"></a>
-
-## <a name="whats-supported"></a>支持的操作：
-
-自助服务订阅转让适用于下表中列出的产品/服务或订阅类型。 要转让其他订阅，例如[赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支持计划，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
-| 产品名称                                                                             | 产品编号 |
-|----------------------------------------------------------------------------------------|--------------|
-| [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
-| [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
-| [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
-| [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
-| [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
-| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
-| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
-| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
-| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
-
-\*[通过 EA 门户](#EA)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 
@@ -57,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
-1. 以帐户管理员身份登录 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。 若要找出谁是订阅的帐户管理员，请参阅[常见问题](#faq)。
+1. 以帐户管理员身份登录 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。若要找出谁是订阅的帐户管理员，请参阅[常见问题解答](#faq)。
 
 1. 选择要转让的订阅。
 
@@ -88,14 +68,33 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>接受订阅所有权后的后续步骤
 
-1. 现在是帐户管理员。 请查看并更新服务管理员和共同管理员。 在 [Azure 经典门户](https://manage.windowsazure.com)中转到“设置”来管理管理员。 [了解有关管理员角色的详细信息](billing-add-change-azure-subscription-administrator.md)。
-1. 用户还可以针对订阅和服务使用基于角色的访问控制 (RBAC)。 访问 [Azure 门户](https://portal.azure.com)。 [了解有关 RBAC 的详细信息](../active-directory/role-based-access-control-configure.md)
+1. 现在你是帐户管理员。查看和更新服务管理员、共同管理员和其他 RBAC 角色。 若要了解详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
 1. 更新与此订阅的服务关联的凭据，包括：
    1. 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)
    1. 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
    1. Azure 虚拟机等服务的远程访问凭据。 
 1. 请在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)[更新此订阅的计费警报](billing-set-up-alerts.md)。 
-1. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)更新合作伙伴 ID。
+1. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 门户](https://portal.azure.com)中更新合作伙伴 ID。
+
+<a id="supported"></a>
+
+## <a name="whats-supported"></a>支持的操作：
+
+自助服务订阅转让适用于下表中列出的产品/服务或订阅类型。 要转让其他订阅，例如[赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支持计划，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+
+| 产品名称                                                                             | 产品编号 |
+|----------------------------------------------------------------------------------------|--------------|
+| [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
+| [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
+| [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
+| [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
+| [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
+| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
+| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
+| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
+| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
+
+\*[通过 EA 门户](#EA)
 
 <a id="faq"></a>
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
-是的，所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 策略。
+所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 策略。 此外，[应用注册](../active-directory//develop/active-directory-integrating-applications.md)和其他特定于租户的服务不会一同转让。
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 

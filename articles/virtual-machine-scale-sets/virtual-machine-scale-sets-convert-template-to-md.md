@@ -1,11 +1,11 @@
 ---
-title: "转换 Azure Resource Manager 规模集模板以使用托管磁盘 | Microsoft 文档"
+title: "转换 Azure 资源管理器规模集模板以使用托管磁盘 | Microsoft Docs"
 description: "将规模集模板转换为托管磁盘规模集模板。"
 keywords: "虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: madhana
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: negat
-ms.openlocfilehash: 2f5cb85703888c5056611d466f508547ee72e44b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 760e30f5c6f4ecaff299bae1725548a6a7c5184c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
 
-使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何执行此操作，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例 Resource Manager 模板的社区主导存储库）中的拉取请求为例。 可在此处查看完整的拉取请求：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)，差异的相关部分如下，并进行了说明：
+使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何使用托管磁盘，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例资源管理器模板的社区主导存储库）中的拉取请求为例。 可在此处查看完整的拉取请求：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)，差异的相关部分如下，并进行了说明：
 
 ## <a name="making-the-os-disks-managed"></a>将 OS 磁盘设为托管磁盘
 
-在下面的差异部分中，我们可以看到我们已删除与存储帐户和磁盘属性相关的多个变量。 不再需要存储帐户类型（Standard_LRS 是默认值），但我们仍可以指定它（如果我们想要这么做）。 托管磁盘仅支持 Standard_LRS 和 Premium_LRS。 旧模板中使用了新存储帐户后缀、唯一的字符串数组和 sa 计数来生成存储帐户名称。 在新模板中这些变量不再需要，因为托管磁盘会自动以客户的名义创建存储帐户。 同样，vhd 容器名称和 os 磁盘名称也不再需要，因为托管磁盘会自动命名基础存储 blob 容器和磁盘。
+在以下差异部分中，已删除与存储帐户和磁盘属性相关的多个变量。 不再需要存储帐户类型（Standard_LRS 是默认值），但可以指定它（如果需要）。 托管磁盘仅支持 Standard_LRS 和 Premium_LRS。 旧模板中使用了新存储帐户后缀、唯一的字符串数组和 sa 计数来生成存储帐户名称。 在新模板中这些变量不再需要，因为托管磁盘会自动以客户的名义创建存储帐户。 同样，vhd 容器名称和 OS 磁盘名称也不再需要，因为托管磁盘会自动命名基础存储 blob 容器和磁盘。
 
 ```diff
    "variables": {
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 ```
 
 
-在下面的差异部分中，我们可以看到已将计算 api 更新到 2016-04-30-preview，该版本是支持带规模集的托管磁盘所需的最早版本。 请注意，我们仍可以在使用旧语法的新 api 版本中使用非托管磁盘（如果需要）。 换而言之，如果我们只更新计算 api 版本，而不更改任何其他内容，则模板应像以前那样继续工作。
+在以下差异部分中，已将计算 API 更新到版本 2016-04-30-preview，该版本是支持带规模集的托管磁盘所需的最早版本。 可以在使用旧语法的新 API 版本中使用非托管磁盘（如果需要）。 如果只更新计算 API 版本，而不更改任何其他内容，则模板应像以前那样继续工作。
 
 ```diff
 @@ -86,7 +74,7 @@
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
    },
 ```
 
-在下面的差异部分中，我们可以看到，我们要从资源数组中完全删除存储帐户资源。 我们不再需要这些资源，因为托管磁盘会自动以我们的名义创建它们。
+在以下差异部分中，已将存储帐户资源从资源数组中完全删除。 不再需要该资源，因为托管磁盘会自动创建它们。
 
 ```diff
 @@ -113,19 +101,6 @@
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
        "location": "[resourceGroup().location]",
 ```
 
-在下面的差异部分中，我们可以看到，我们要删除从规模集引用创建存储帐户的循环的 depends on 子句。 在旧模板中，此子句可确保开始创建规模集之前已创建存储帐户，但对于托管磁盘，此子句不再需要。 我们还会删除 vhd 容器属性和 os 磁盘名称属性，因为托管磁盘会在后台自动处理这些属性。 如果我们想要高级 OS 磁盘，可以根据需要在“osDisk”配置中添加 `"managedDisk": { "storageAccountType": "Premium_LRS" }`。 只有 VM sku 中带大写或小写“s”的 VM 可以使用高级磁盘。
+在以下差异部分中，我们可以看到，我们要删除从规模集引用创建存储帐户的循环的 depends on 子句。 在旧模板中，此子句可确保开始创建规模集之前已创建存储帐户，但对于托管磁盘，此子句不再需要。 还会删除 vhd 容器属性和 OS 磁盘名称属性，因为托管磁盘会在后台自动处理这些属性。 如果想要高级 OS 磁盘，可以在“osDisk”配置中添加 `"managedDisk": { "storageAccountType": "Premium_LRS" }`。 只有 VM sku 中带大写或小写“s”的 VM 可以使用高级磁盘。
 
 ```diff
 @@ -183,7 +158,6 @@

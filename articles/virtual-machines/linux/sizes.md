@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 0d25b77ab6202a255060de3988a599a124c22884
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 568048c6117d81ec351d5057505dafeec58d7b5a
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的大小
 本文介绍可用于运行 Linux 应用和工作负荷的 Azure 虚拟机的可用大小与选项。 此外，还提供了你在计划使用这些资源时要考虑的部署注意事项。 本文也适用于 [Windows 虚拟机](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
-| 类型                     | 大小           |    说明       |
+| Type                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)          | B、Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
 | [计算优化](sizes-compute.md)        | Fsv2、Fs、F             | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。        |
 | [内存优化](sizes-memory.md)         | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 | [存储优化](sizes-storage.md)        | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
-| [GPU](sizes-gpu.md)            | NV, NC            | 专门针对大量图形绘制和视频编辑的虚拟机。 可选择单个或多个 GPU。       |
+| [GPU](sizes-gpu.md)            | NV、NC、NCv2、ND            | 专门针对大量图形绘制和视频编辑的虚拟机。 可选择单个或多个 GPU。       |
 | [高性能计算](sizes-hpc.md) | H, A8-11          | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 
 
 <br>

@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afa863e2a900d4f823b77453d92f034db7d5a93f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1f0182f27cfb8441a09abd2031b365a4ab4315a
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 本文介绍了 Microsoft Azure 中的各种警报来源、这些警报的目的、警报优点以及警报的使用方法。 本文特别适用于 Azure Monitor，但也提供了其他带有警报服务的链接。 警报提供了一种在 Azure 中监视的方法，允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
+
 
 ## <a name="taxonomy-of-azure-alerts"></a>Azure 警报的分类
 Azure 使用以下术语来描述警报和及其功能：
@@ -32,8 +33,13 @@ Azure 使用以下术语来描述警报和及其功能：
 * **通知** - 警报变为活动状态时采取的操作。
 * **操作** - 发送给通知接收方的特定通话（例如，通过电子邮件发送地址或发布到 Webhook URL）。 通知通常可以触发多个操作。
 
+    > [!NOTE]
+    > 作为 Azure 中警报进化的一部分，在预览版中提供了新的统一体验。 新的“警报(预览)”体验使用不同的分类。 详细了解[警报（预览）](monitoring-overview-unified-alerts.md)。 
+    >
+
 ## <a name="alerts-in-different-azure-services"></a>不同 Azure 服务中的警报
 警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用这些服务的信息，请参阅[此文](./monitoring-overview.md)。 以下是 Azure 中可用的警报类型的明细：
+
 
 | 服务 | 警报类型 | 支持的服务 | 说明 |
 |---|---|---|---|
@@ -50,10 +56,10 @@ Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时
 * **指标警报** - 当指定的指标值越过了分配的阈值时，就会触发此警报。 当警报“激活”（当阈值越过并满足警报条件时）以及“已解决”（当阈值再次超过并且不再满足条件）时，警报将生成通知。 有关 Azure Monitor 支持的可用指标（不断增加中）的列表，请参阅 [Azure Monitor 支持的指标的列表](monitoring-supported-metrics.md)。
 * 准实时指标警报（预览版） - 这些警报类似于指标警报，但在以下几个方面有所不同。 首先，顾名思义，这些警报可准实时触发（最快 1 分钟）。 它们还支持监视多个（目前两个）指标。  当警报“激活”（同时越过每个指标的阈值并满足警报条件时）以及“已解决”（至少一个指标再次超过阈值并且不再满足条件）时，警报将生成通知。
 
-> [!NOTE]
-> 准实时指标警报目前以公开预览版提供。 功能和用户体验可能会发生变化。
->
->
+    > [!NOTE]
+    > 准实时指标警报目前以公开预览版提供。 功能和用户体验可能会发生变化。
+    >
+    >
 
 * **活动日志警报** - 当生成与分配的筛选器条件匹配的活动日志事件时，触发的流式处理日志警报。 这些警报只有“已激活”这一个状态，因为警报引擎只需将筛选器条件应用到任何新事件。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，可以使用这些警报通知。
 
@@ -91,3 +97,4 @@ Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时
 * 详细了解[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
 * 详细了解[服务通知](monitoring-service-notifications.md)
 * 详细了解[操作组](monitoring-action-groups.md)
+* 配置[通过警报（预览）发出警报](monitor-alerts-unified-usage.md)

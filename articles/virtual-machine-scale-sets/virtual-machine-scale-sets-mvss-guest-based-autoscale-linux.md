@@ -4,7 +4,7 @@ description: "了解如何使用 Linux 虚拟机规模集模板中的来宾指�
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
-ms.openlocfilehash: 98635ea6695fdb1e55456b5b6a293a3b4ad9d839
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e822d83dd3bafabfea60ad50224c87df226bdc6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>使用 Linux 规模集模板中的来宾指标执行自动缩放
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
-可在[此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，在[此处](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json)查看用于通过基于来宾的自动缩放部署 Linux 规模集的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set existing-vnet`) 时使用的差异内容：
+可在[此处](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)查看最小可行规模集模板，可在[此处](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json)查看用于通过基于来宾的自动缩放部署 Linux 规模集的模板。 让我们逐一查看创建此模板 (`git diff minimum-viable-scale-set existing-vnet`) 时使用的差异内容：
 
-首先，添加 `storageAccountName` 和 `storageAccountSasToken` 的参数。 诊断代理将指标数据存储在此存储帐户中的某个[表](../cosmos-db/table-storage-how-to-use-dotnet.md)内。 从 Linux 诊断代理版本 3.0 开始，不再支持使用存储访问密钥。 必须使用 [SAS 令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+首先，添加 `storageAccountName` 和 `storageAccountSasToken` 的参数。 诊断代理将指标数据存储在此存储帐户中的某个[表](../cosmos-db/table-storage-how-to-use-dotnet.md)内。 从 Linux 诊断代理版本 3.0 开始，不再支持使用存储访问密钥。 改为使用 [SAS 令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 ```diff
      },
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
    },
 ```
 
-接下来，修改规模集 `extensionProfile` 以包含诊断扩展。 在此配置中，指定要从中收集指标的规模集的资源 ID，以及用来存储指标的存储帐户和 SAS 令牌。 此外，指定指标的聚合频率（在本例中为每隔一分钟）以及要跟踪的指标（在本例中为已用内存百分比）。 有关此配置以及除已用内存百分比之外的其他指标的详细信息，请参阅[此文档](../virtual-machines/linux/diagnostic-extension.md)。
+接下来，修改规模集 `extensionProfile` 以包含诊断扩展。 在此配置中，指定要从中收集指标的规模集的资源 ID，以及用来存储指标的存储帐户和 SAS 令牌。 指定指标的聚合频率（在本例中为每隔一分钟）以及要跟踪的指标（在本例中为已用内存百分比）。 有关此配置以及除已用内存百分比之外的其他指标的详细信息，请参阅[此文档](../virtual-machines/linux/diagnostic-extension.md)。
 
 ```diff
                  }

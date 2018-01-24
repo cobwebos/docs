@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 941791ba398a3abbaa5137c36391fd23789cd3b1
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接使用不同子网，或为监视或备份解决方案使用一个专用网络。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
@@ -214,7 +214,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>使用模板创建多个 NIC
-Azure Resource Manager 模板可让你在部署期间创建资源的多个实例，例如，创建多个 NIC。 Resource Manager 模板使用声明性 JSON 文件来定义环境。 有关详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。 使用“copy”指定要创建的实例数：
+Azure 资源管理器模板可让你在部署期间创建资源的多个实例，例如，创建多个 NIC。 Resource Manager 模板使用声明性 JSON 文件来定义环境。 有关详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。 使用“copy”指定要创建的实例数：
 
 ```json
 "copy": {
@@ -232,6 +232,60 @@ Azure Resource Manager 模板可让你在部署期间创建资源的多个实例
 ```
 
 可以阅读[使用 Resource Manager 模板创建多个 NIC](../../virtual-network/virtual-network-deploy-multinic-arm-template.md) 的完整示例。
+
+## <a name="configure-guest-os-for-multiple-nics"></a>为多个 NIC 配置来宾 OS
+
+Azure 会将默认网关分配给附加到虚拟机的第一个（主）网络接口。 Azure 不会将默认网关分配给附加到虚拟机的其他（辅助）网络接口。 因此，默认情况下无法与辅助网络接口所在子网的外部资源进行通信。 但是，辅助网络接口可以与子网外部的资源进行通信，尽管对不同操作系统而言，启用通信的步骤有所不同。
+
+1. 从 Windows 命令提示符，运行 `route print` 命令，这将返回一个类似以下虚拟机输出的输出，该虚拟机包含两个附加的网络接口：
+
+    ```
+    ===========================================================================
+    Interface List
+    3...00 0d 3a 10 92 ce ......Microsoft Hyper-V Network Adapter #3
+    7...00 0d 3a 10 9b 2a ......Microsoft Hyper-V Network Adapter #4
+    ===========================================================================
+    ```
+ 
+    在本例中，Microsoft Hyper-V 网络适配器 #4（接口 7）是辅助网络接口，系统不会向其分配默认网关。
+
+2. 从命令提示符处，运行 `ipconfig` 命令查看分配给辅助网络接口的 IP 地址。 在本例中，192.168.2.4 被分配到接口 7。 辅助网络接口没有返回任何默认网关地址。
+
+3. 若要将发往辅助网络接口子网外部地址的所有流量路由到子网网关，请运行以下命令：
+
+    ```
+    route add -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5015 IF 7
+    ```
+
+    子网的网关地址是为该子网定义的地址范围中的第一个 IP 地址（以 .1 结尾）。 如果不想路由子网外部的所有流量，可改为向特定目标添加单独的路由。 例如，如果只想将流量从辅助网络接口路由到 192.168.3.0 网络，请输入以下命令：
+
+      ```
+      route add -p 192.168.3.0 MASK 255.255.255.0 192.168.2.1 METRIC 5015 IF 7
+      ```
+  
+4. 例如，若要确认与 192.168.3.0 网络中资源的通信是否成功，请输入以下命令使用接口 7 (192.168.2.4) 对 192.168.3.4 执行 ping 操作：
+
+    ```
+    ping 192.168.3.4 -S 192.168.2.4
+    ```
+
+    可能需要使用以下命令通过正在 ping 的设备的 Windows 防火墙打开 ICMP：
+  
+      ```
+      netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
+      ```
+  
+5. 若要确认已添加的路由是否在路由表中，请输入 `route print` 命令，它将返回一个类似于以下文本的输出：
+
+    ```
+    ===========================================================================
+    Active Routes:
+    Network Destination        Netmask          Gateway       Interface  Metric
+              0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4     15
+              0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
+    ```
+
+    “网关”下列出的路由 192.168.1.1 是主网络接口的默认路由。 “网关”下列出的路由 192.168.2.1 是你所添加的路由。
 
 ## <a name="next-steps"></a>后续步骤
 在尝试创建具有多个 NIC 的 VM 时，请查看 [Windows VM 大小](sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。 

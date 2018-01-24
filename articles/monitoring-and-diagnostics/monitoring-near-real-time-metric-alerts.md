@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 12/06/2017
 ms.author: snmuvva
 ms.custom: 
-ms.openlocfilehash: aeeb6c2fb87e6c19991ef243ee7230f4e8f4e251
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd1002929ad749ac1742e914a9f2411f09ec91d5
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="near-real-time-metric-alerts-preview"></a>准实时指标警报（预览版）
 Azure Monitor 现在支持一种称为准实时指标警报（预览版）的新型指标警报。 此功能目前处于公开预览状态。
@@ -38,6 +38,7 @@ Azure Monitor 现在支持一种称为准实时指标警报（预览版）的新
 准实时指标警报支持的完整资源类型列表：
 
 * Microsoft.ApiManagement/service
+* Microsoft.Automation/automationAccounts
 * Microsoft.Batch/batchAccounts
 * Microsoft.Cache/Redis
 * Microsoft.Compute/virtualMachines
@@ -51,48 +52,31 @@ Azure Monitor 现在支持一种称为准实时指标警报（预览版）的新
 * Microsoft.Network/publicipaddresses
 * Microsoft.Search/searchServices
 * Microsoft.ServiceBus/namespaces
-* Microsoft.Sql/servers/elasticpools
+* Microsoft.Storage/storageAccounts
+* Microsoft.Storage/storageAccounts/services
 * Microsoft.StreamAnalytics/streamingjobs
-* Microsoft.Timeseriesinsights
 * Microsoft.CognitiveServices/accounts
+
+## <a name="near-real-time-metric-alerts-on-metrics-with-dimensions"></a>基于多维指标的准实时指标警报
+准实时指标警报支持根据多维指标发出警报。 通过选择维度可将指标筛选到适当级别。 以下资源类型支持基于多维指标的准实时指标警报
+
+* Microsoft.ApiManagement/service
+* Microsoft.Storage/storageAccounts（仅美国区域中的存储帐户支持）
+* Microsoft.Storage/storageAccounts/services（仅美国区域中的存储帐户支持）
 
 
 ## <a name="create-a-near-real-time-metric-alert"></a>创建准实时指标警报
 目前，准实时指标警报只能通过 Azure 门户创建。 即将推出通过 PowerShell、命令行接口 (CLI) 和 Azure Monitor REST API 配置准实时指标警报的支持功能。
 
-1. 在此[门户](https://portal.azure.com/)，查找想要监视的资源并选中它。 该资源应该是[上一节](#what-resources-can-i-create-near-real-time-metric-alerts-for)中列出的资源类型之一。 此外，你也可以从“监视”>“警报”集中对所有支持的资源类型执行相同操作。
+准实时指标警报的创建警报体验已移动到新的“警报(预览)”体验。 即使当前“警报”页显示了“添加准实时指标警报”，也会将你重定向到新体验。
 
-2. 在“监视”部分下，选择“警报”或“警报规则”。 对于不同的资源，文本和图标可能会略有不同。
-   ![监视](./media/insights-alerts-portal/AlertRulesButton.png)
-
-3. 单击“添加准实时指标警报(预览)”命令。 如果该命令灰显，请确保在筛选器中选中资源。
-
-    ![“添加准实时指标警报”按钮](./media/monitoring-near-real-time-metric-alerts/AddNRTAlertButton.png)
-
-4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”。
-5. 选择想要监视的“指标”，然后为该指标依次选择“条件”、“时间聚合”和“阈值”。 也可以选择想要监视的另一个“指标”，然后为其依次选择“条件”、“时间聚合”和“阈值”。 
-
-    ![添加准实时指标警报1](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert1.png) ![添加准实时指标警报2](./media/monitoring-near-real-time-metric-alerts/AddNRTAlert2.png)
-6. 选择触发警报前指标规则必须满足的时间段。 例如，如果使用时间段“过去 5 分钟”，警报针对 CPU 使用率高于 80%（和 NetworkIn 高于 500 MB）的情况，则在 CPU 使用率持续高于 80% 达到 5 分钟时触发警报。 第一次触发后，CPU 5 分钟内持续低于 80% 时会再次触发警报。 警报根据“评估频率”进行评估
-
-
-6. 从下拉列表中选择适当的“严重性”。
-
-7. 指定是否要使用新建或现有“操作组”。
-
-8. 如果选择创建新操作组，请指定操作组的名称和短名称，指定操作（SMS、Email、Webhook）并填写相应的详细信息。
-
-
-8. 警报创建完成后，选择“确定”。   
-
-几分钟后，警报将处于活动状态，并按前面所述进行触发。
+按照[此处](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)所述的步骤可以创建准实时指标警报。
 
 ## <a name="managing-near-real-time-metric-alerts"></a>管理准实时指标警报
-创建警报后，可选择它并：
+创建了**准实时指标警报**后，可以按照[此处](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)所述的步骤进行管理。
 
-* 查看显示指标的阈值和前一天实际值的关系图。
-* 编辑或删除其。
-* 如果想要暂时停止或恢复接收该警报的通知，可**禁用**或**启用**它。
+## <a name="next-steps"></a>后续步骤
 
-
-
+* [了解有关新的“警报(预览)”体验的详细信息](monitoring-overview-unified-alerts.md)
+* [了解 Azure 警报 (预览) 中的日志警报](monitor-alerts-unified-log.md)
+* [了解 Azure 中的警报](monitoring-overview-alerts.md)

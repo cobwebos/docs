@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: sujayt
-ms.openlocfilehash: 726c12d3c91a6e4fdc77397a736aaa161f0e830c
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 02d68d091cbbe02e1b5b628924ded1c2155f7119
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -131,6 +131,20 @@ ms.lasthandoff: 11/30/2017
 
 可使用[删除过时 ASR 配置脚本](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时的配置后，启用复制时应会看到该 VM。
 
+## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM 的预配状态无效（错误代码 150019）
+
+若要在 VM 上启用复制，预配状态应为“已成功”。 可以通过执行以下步骤来检查 VM 状态。
+
+1.  从 Azure 门户的“所有服务”中选择“资源浏览器”。
+2.  展开“订阅”列表并选择你的订阅。
+3.  展开 **ResourceGroups** 列表并选择 VM 的资源组。
+4.  展开“资源”列表并选择你的虚拟机
+5.  在右侧的“实例”视图中检查 **provisioningState** 字段。
+
+### <a name="fix-the-problem"></a>解决问题
+
+- 如果 **provisioningState** 是“失败”，请联系支持人员并提供详细信息，以便进行故障排除。
+- 如果 **provisioningState** 是“正在更新”，可以部署其他扩展。 检查 VM 上是否有任何正在进行的操作，等待这些操作完成，然后重试失败的 Site Recovery 的“启用复制”作业。
 
 ## <a name="next-steps"></a>后续步骤
 [复制 Azure 虚拟机](azure-to-azure-quickstart.md)

@@ -4,7 +4,7 @@ description: "了解如何使用图形工具安装和配置远程桌面 (xrdp) �
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: d8d6130a270285c84c1dd057a3512cdeb39287f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdd8c5e932815c5741b1091a743d235de882c5b1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>安装和配置远程桌面以连接到 Azure 中的 Linux VM
 通常使用安全外壳 (SSH) 连接从命令行管理 Azure 中的 Linux 虚拟机 (VM)。 如果不熟悉 Linux，或者要快速进行故障排除，使用远程桌面可能会更方便。 本文详细介绍如何使用 Resource Manager 部署模型为 Linux VM 安装和配置桌面环境 ([xfce](https://www.xfce.org)) 和远程桌面 ([xrdp](http://www.xrdp.org))。
@@ -85,16 +85,10 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>为远程桌面流量创建网络安全组规则
 若要允许远程桌面流量到达 Linux VM，需要创建网络安全组规则以允许端口 3389 上的 TCP 访问 VM。 有关网络安全组规则的详细信息，请参阅[什么是网络安全组？](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 还可以[使用 Azure 门户创建网络安全组规则](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-以下示例使用 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 创建名为 *myNetworkSecurityGroupRule* 的网络安全组规则以*允许* *tcp* 端口 *3389* 上的流量。
+以下示例在端口 *3389* 上使用 [az vm open-port](/cli/azure/vm#open-port) 创建网络安全组规则。
 
 ```azurecli
-az network nsg rule create \
-    --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup \
-    --name myNetworkSecurityGroupRule \
-    --protocol tcp \
-    --priority 1010 \
-    --destination-port-range 3389
+az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
@@ -122,13 +116,13 @@ tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesm
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-如果 xrdp 服务未在侦听，请在 Ubuntu VM 上重新启动该服务，如下所示：
+如果 *xrdp-sesman* 服务未在侦听，请在 Ubuntu VM 上重新启动该服务，如下所示：
 
 ```bash
 sudo service xrdp restart
 ```
 
-请查看 Ubuntu VM 上的 */var/log*Thug 中的日志，以获得该服务可能未响应的原因的指示。 也可以在远程桌面连接尝试期间监视 syslog 以查看任何错误：
+请查看 Ubuntu VM 上的 */var/log* 中的日志，以获得该服务可能未响应的原因的指示。 也可以在远程桌面连接尝试期间监视 syslog 以查看任何错误：
 
 ```bash
 tail -f /var/log/syslog

@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB：在 .NET 中使用表 API 进行开发 | Microsoft 文档"
+title: "Azure Cosmos DB：在 .NET 中使用表 API 进行开发 | Microsoft Docs"
 description: "了解如何通过 .NET 使用 Azure Cosmos DB 的表 API 进行开发"
 services: cosmos-db
 documentationcenter: 
@@ -12,18 +12,18 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 29e6187c59f34122e98819b5775af261494995ca
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
 本教程涵盖以下任务： 
 
@@ -142,16 +142,14 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。
 | 连接模式  | Azure Cosmos DB 支持两种连接模式。 在`Gateway`模式下，将始终向 Azure Cosmos DB 网关发出请求，该网关会将其转发到相应的数据分区。 在`Direct`连接模式下，客户端会提取表到分区的映射，且会直接针对数据分区发出请求。 建议使用`Direct`（默认）。  |
 | 连接协议 | Azure Cosmos DB 支持两种连接协议 - `Https` 和 `Tcp`。 默认为 `Tcp`，并推荐使用该协议，因为它更轻质。 |
 | 首选位置 | 以逗号分隔的首选（多主页）位置列表，用于读取。 每个 Azure Cosmos DB 帐户可与 1-30+ 个区域关联。 每个客户端实例可按首选顺序指定这些区域的一个子集以实现低延迟的读取。 必须使用这些区域的[显示名称](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名这些区域，例如 `West US`。 另请参阅[多宿主 API](tutorial-global-distribution-table.md)。 |
-| 一致性级别 | 通过在后列五个定义完善的一致性级别之间进行选择，可在延迟、一致性和可用性之间权衡：`Strong`、`Session`、`Bounded-Staleness`、`ConsistentPrefix` 和 `Eventual`。 默认值为 `Session`。 一致性级别的选择会在多区域设置中产生显著的性能差异。 有关详细信息，请参阅[一致性级别](consistency-levels.md)。 |
+| 一致性级别 | 通过在后列五个定义完善的一致性级别之间进行选择，可在延迟、一致性和可用性之间权衡：`Strong`、`Session`、`Bounded-Staleness`、`ConsistentPrefix` 和 `Eventual`。 默认为 `Session`。 一致性级别的选择会在多区域设置中产生显著的性能差异。 有关详细信息，请参阅[一致性级别](consistency-levels.md)。 |
 
 可以通过以下 `appSettings` 配置值启用其他功能。
 
 | 密钥 | 说明 |
 | --- | --- |
-| TableThroughput | 表的保留吞吐量以请求单位 (RU) /秒表示。 单个表可支持数百至数百万的 RU/s。 请参阅[请求单位](request-units.md)。 默认为 `400` |
-| TableIndexingPolicy | 符合索引策略规范的 JSON 字符串。 要查看如何将索引策略更改为包括/排除特定列，请参阅[索引策略](indexing-policies.md)。 |
 | TableQueryMaxItemCount | 配置单个往返过程中按每个表查询所返回的最大项数。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
-| TableQueryEnableScan | 如果查询无法使用任何筛选器的索引，则无论如何要通过扫描运行它。 默认值为 `false`。|
+| TableQueryEnableScan | 如果查询无法使用任何筛选器的索引，则无论如何要通过扫描运行它。 默认为 `false`。|
 | TableQueryMaxDegreeOfParallelism | 用于执行跨分区查询的并行度。 `0` 是不使用任何预提取的串行，`1` 是使用预提取的串行，更高的值会增加并行度的速率。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
 
 若要更改默认值，请从 Visual Studio 中的解决方案资源管理器打开 `app.config` 文件。 添加 `<appSettings>` 元素的内容，如下所示。 将 `account-name` 替换为存储帐户名称，将 `account-key` 替换为帐户访问密钥。 
@@ -164,10 +162,6 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。
       <add key="CosmosDBStorageConnectionString" 
         value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
       <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!--Table creation options -->
-      <add key="TableThroughput" value="700"/>
-      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}"/>
 
       <!-- Table query options -->
       <add key="TableQueryMaxItemCount" value="-1"/>
@@ -194,13 +188,13 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");
-
-table.CreateIfNotExists();
+400
+table.CreateIfNotExists(throughput: 800);
 ```
 
 在表创建方式上存在一个重要差异。 与 Azure 存储的基于消耗的事务模型不同，Azure Cosmos DB 保留吞吐量。 吞吐量是专用/保留的，因此即使请求速率处于配置的吞吐量水平或以下，用户也不会受到限制。
 
-可通过以 RU（请求单位）/秒的形式配置 `TableThroughput` 的设置，来配置默认吞吐量。 
+可以通过以 CreateIfNotExists 参数的形式提供它来配置默认吞吐量。
 
 对 1-KB 实体的 1 次读取规范化为 1 RU，并会根据其他操作的 CPU、内存和 IOPS 消耗量将其规范化为固定 RU 值。 详细了解 [Azure Cosmos DB 中的请求单位](request-units.md)，具体说来就是[密钥值存储](key-value-store-cost.md)的请求单位。
 
@@ -301,7 +295,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，会在表 API 中提供更多的功能。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](documentdb-sql-query.md)。 
+对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，会在表 API 中提供更多的功能。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](sql-api-sql-query.md)。 
 
 ## <a name="replace-an-entity"></a>替换实体
 要更新实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码将更改现有客户的电话号码。 

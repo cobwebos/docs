@@ -12,25 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 855f6e7f401621d7f923d68215ca880c05d38629
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>事件中心 .NET Standard API 概述
+
 本文汇总了一些重要的事件中心 .NET Standard 客户端 API。 目前，有两个 .NET Standard 客户端库：
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
-  *  此库提供基本运行时的所有操作。
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-  * 此库添加了其他功能，可用于跟踪已处理的事件，并且是从事件中心读取的最简单方法。
+
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)：提供基本运行时的所有操作。
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)：添加了其他功能，该功能可以跟踪处理的事件，并且是从事件中心读取数据的最简单方法。
 
 ## <a name="event-hubs-client"></a>事件中心客户端
+
 [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) 是发送事件、创建接收器，以及获取运行时信息时使用的主对象。 此客户端链接到特定的事件中心，并创建与事件中心终结点的新连接。
 
 ### <a name="create-an-event-hubs-client"></a>创建事件中心客户端
+
 [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) 对象从连接字符串创建。 下面的示例显示了实例化新客户端的最简单方法：
 
 ```csharp
@@ -49,6 +51,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 ```
 
 ### <a name="send-events"></a>发送事件
+
 要将事件发送到事件中心，请使用 [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) 类。 主体必须是 `byte` 数组，或 `byte` 数组段。
 
 ```csharp
@@ -61,17 +64,19 @@ await eventHubClient.SendAsync(data);
 ```
 
 ### <a name="receive-events"></a>接收事件
-从事件中心接收事件的建议方法是使用 [Event Processor Host](#event-processor-host-apis)，它提供相关功能来自动跟踪偏移量和分区信息。 但是，在某些情况下，可能需要利用核心事件中心库的灵活性来接收事件。
+
+从事件中心接收事件的建议方法是使用 [Event Processor Host](#event-processor-host-apis)，它提供相关功能来自动跟踪事件中心偏移量和分区信息。 但是，在某些情况下，可能需要利用核心事件中心库的灵活性来接收事件。
 
 #### <a name="create-a-receiver"></a>创建接收器
-接收器将绑定到特定分区，因此为了接收事件中心内的所有事件，将需要创建多个实例。 一般来说，好的做法是以编程方式获取分区信息，而不是对分区 ID 进行硬编码。 为此，可以使用 [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) 方法。
+
+接收器将绑定到特定分区，因此为了接收事件中心内的所有事件，必须创建多个实例。 好的做法是以编程方式获取分区信息，而不是对分区 ID 进行硬编码。 为此，可以使用 [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) 方法。
 
 ```csharp
 // Create a list to keep track of the receivers
 var receivers = new List<PartitionReceiver>();
 // Use the eventHubClient created above to get the runtime information
 var runTimeInformation = await eventHubClient.GetRuntimeInformationAsync();
-// Loop over the resulting partition ids
+// Loop over the resulting partition IDs
 foreach (var partitionId in runTimeInformation.PartitionIds)
 {
     // Create the receiver
@@ -81,7 +86,7 @@ foreach (var partitionId in runTimeInformation.PartitionIds)
 }
 ```
 
-由于事件永远不会从事件中心删除（而只会过期），因此需要指定正确的起始点。 下面的示例演示可能的组合。
+由于事件永远不会从事件中心删除（而只会过期），因此必须指定适当的起始点。 以下示例演示可能的组合：
 
 ```csharp
 // partitionId is assumed to come from GetRuntimeInformationAsync()
@@ -97,6 +102,7 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 ```
 
 #### <a name="consume-an-event"></a>使用事件
+
 ```csharp
 // Receive a maximum of 100 messages in this call to ReceiveAsync
 var ehEvents = await receiver.ReceiveAsync(100);
@@ -116,6 +122,7 @@ if (ehEvents != null)
 ```
 
 ## <a name="event-processor-host-apis"></a>事件处理程序主机 API
+
 这些 API 通过在可用工作进程之间分布分区，为可能变为不可用的工作进程提供复原能力。
 
 ```csharp
@@ -137,7 +144,7 @@ var eventProcessorHost = new EventProcessorHost(
 // Start/register an EventProcessorHost
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-// Disposes of the Event Processor Host
+// Disposes the Event Processor Host
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 

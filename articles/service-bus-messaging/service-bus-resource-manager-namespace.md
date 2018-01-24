@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 资源管理器模板创建服务总线命名空间 | Microsoft Docs"
-description: "使用 Azure 资源管理器模板创建服务总线命名空间"
+title: "使用 Azure 资源管理器模板创建服务总线消息命名空间 | Microsoft Docs"
+description: "使用 Azure 资源管理器模板创建服务总线消息命名空间"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 12/21/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f184cc9418e4af95423c0ede65bca312dfca7393
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
@@ -41,6 +41,7 @@ ms.lasthandoff: 11/11/2017
 > 
 
 ## <a name="what-will-you-deploy"></a>将部署什么内容？
+
 使用此模板，可以部署包含[标准或高级](https://azure.microsoft.com/pricing/details/service-bus/) SKU 的服务总线命名空间。
 
 若要自动运行部署，请单击以下按钮：
@@ -48,11 +49,13 @@ ms.lasthandoff: 11/11/2017
 [![部署到 Azure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>parameters
+
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 此模板定义以下参数：
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 要创建的服务总线命名空间的名称。
 
 ```json
@@ -65,6 +68,7 @@ ms.lasthandoff: 11/11/2017
 ```
 
 ### <a name="servicebussku"></a>serviceBusSKU
+
 要创建的服务总线 [SKU](https://azure.microsoft.com/pricing/details/service-bus/) 的名称。
 
 ```json
@@ -86,6 +90,7 @@ ms.lasthandoff: 11/11/2017
 有关服务总线定价的详细信息，请参阅[服务总线定价和计费][Service Bus pricing and billing]。
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 模板的服务总线 API 版本。
 
 ```json
@@ -98,7 +103,9 @@ ms.lasthandoff: 11/11/2017
 ```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
+
 ### <a name="service-bus-namespace"></a>服务总线命名空间
+
 创建类型为 **Messaging** 的标准服务总线命名空间。
 
 ```json
@@ -120,15 +127,18 @@ ms.lasthandoff: 11/11/2017
 ```
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json

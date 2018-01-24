@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: 89b356c3959b7cb63a746805d60535e07f0d6898
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 80c52cfeab007030203b6af4bb220f1a847e9426
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
 
 ## <a name="general-prerequisites"></a>常规先决条件
 - 已在本地安装 Git。 可以根据操作系统[从 Git 下载页](https://git-scm.com/downloads)安装相应的 Git 版本。 如果是 Git 的新手，请通过 [Git 文档](https://git-scm.com/docs)了解其详细信息。
-- 已准备好 Service Fabric Jenkins 插件。 可从 [Service Fabric 下载页](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)下载该插件。 如果使用的是 edge 浏览器，请将已下载文件的扩展名从 .zip 重命名为 .hpi。
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>在 Service Fabric 群集中设置 Jenkins
 
@@ -96,7 +95,7 @@ vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
     > 可能需要几分钟时间在群集上下载 Jenkins 映像。
     >
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 1. 在浏览器中转到 ``http://PublicIPorFQDN:8081``。 该 URL 提供了登录时所需的初始管理员密码的路径。 
 2. 查看 Service Fabric 资源管理器确定 Jenkins 容器在哪一节点上运行。 通过安全外壳 (SSH) 登录到此节点。
 ```sh
@@ -128,9 +127,9 @@ ssh user@PublicIPorFQDN -p [port]
 
 现在，在终端中运行 ``docker info`` 时，输出中应会显示 Docker 服务正在运行。
 
-### <a name="steps"></a>步骤
-  1. 拉取 Service Fabric Jenkins 容器映像：``docker pull rapatchi/jenkins:v9``
-  2. 运行容器映像：``docker run -itd -p 8080:8080 rapatchi/jenkins:v9``
+### <a name="steps"></a>Steps
+  1. 拉取 Service Fabric Jenkins 容器映像：``docker pull rapatchi/jenkins:v10``。 此映像附带了预安装的 Service Fabric Jenkins 插件。
+  2. 运行容器映像：``docker run -itd -p 8080:8080 rapatchi/jenkins:v10``
   3. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器
   4. 执行以下步骤登录到 Jenkins 门户：
 
@@ -151,11 +150,6 @@ ssh user@PublicIPorFQDN -p [port]
 
 确保托管 Jenkins 容器映像的群集或计算机使用公共 IP。 这样，Jenkins 实例便可以从 GitHub 接收通知。
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>通过门户安装 Service Fabric Jenkins 插件
-
-1. 转到 ``http://PublicIPorFQDN:8081``
-2. 在 Jenkins 仪表板中，选择“管理 Jenkins” > “管理插件” > “高级”。
-可在此处上传插件。 选择“选择文件”，并选择已根据先决条件所述下载的“serviceFabric.hpi”文件，也可以在[此处](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)下载。 选择 **上传** 时，Jenkins 会自动安装该插件。 如果系统请求重新启动，请允许。
 
 ## <a name="create-and-configure-a-jenkins-job"></a>创建和配置 Jenkins 作业
 
@@ -174,7 +168,7 @@ ssh user@PublicIPorFQDN -p [port]
 
    c. 输入 Jenkins Webhook URL（默认为 ``http://<PublicIPorFQDN>:8081/github-webhook/``）。 单击“添加/更新服务”。
 
-   d. 将向 Jenkins 实例发送一个测试事件。 GitHub 中的 Webhook 旁边应会显示一个绿色复选标记，表示可以生成项目。
+   d.单击“下一步”。 将向 Jenkins 实例发送一个测试事件。 GitHub 中的 Webhook 旁边应会显示一个绿色复选标记，表示可以生成项目。
 
    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“生成触发器”部分下面，选择所需的生成选项。 在此示例中，我们希望每当向存储库推送信息，就会触发生成。 为此，可以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。 （以前，此选项称为“向 GitHub 推送更改时生成”。）
 
