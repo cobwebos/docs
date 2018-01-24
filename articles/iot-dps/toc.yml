@@ -87,6 +87,8 @@
       href: how-to-control-access.md
     - name: 使用 Azure CLI 管理设备预配服务
       href: how-to-manage-dps-with-cli.md
+    - name: 使用 SDK 工具进行开发
+      href: how-to-use-sdk-tools.md
 - name: 引用
   items:
     - name: REST

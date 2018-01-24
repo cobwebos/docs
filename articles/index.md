@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags: clicktale
-ms.openlocfilehash: 301a88918d96d94a8e3878cd5d8d33cbabcffdc1
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2cc74958c62ed99c75e848094e9da40fb21dddd3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1047,7 +1047,7 @@ ms.lasthandoff: 01/18/2018
                                                 <img src="media/index/LogicApp.svg" alt="" />
                                                 <p>逻辑应用</p>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="group">
@@ -1303,7 +1303,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>虚拟机规模集</h3>
-                                                    <p>管理和缩放数十到数千个 Linux 和 Windows 虚拟机</p>
+                                                    <p>管理和缩放数千台 Linux 和 Windows 虚拟机</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1341,7 +1341,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>应用服务</h3>
-                                                    <p>在 Linux 上使用容器部署 Web 应用</p>
+                                                    <p>快速创建适用于 Web 和移动的强大云应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1379,7 +1379,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 容器服务 (AKS)</h3>
-                                                    <p>使用 Kubernetes 大规模运行容器化应用程序</p>
+                                                    <p>简化 Kubernetes 的部署、管理和操作</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1536,8 +1536,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>应用程序网关</h3>
-                                                    <p>
-具有内置 HTTP 负载均衡和传送控件的第 7 层负载均衡器 </p>
+                                                    <p>在 Azure 中生成安全、可缩放且高度可用的 Web 前端</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1594,7 +1593,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>内容传送网络</h3>
-                                                    <p>通过全球数据中心的稳定网络向最终用户传送内容</p>
+                                                    <p>广泛的全球性覆盖，确保实现安全、可靠的内容交付</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1670,7 +1669,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>网络观察程序</h3>
-                                                    <p>在网络方案级别监视和诊断状态</p>
+                                                    <p>网络性能监视和诊断解决方案</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1713,7 +1712,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Blob 存储</h3>
-                                                    <p>高度可缩放的非结构化数据对象存储</p>
+                                                    <p>基于 REST 的对象存储，适用于非结构化数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1732,7 +1731,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>磁盘存储</h3>
-                                                    <p>VM 的磁盘存储</p>
+                                                    <p>支持虚拟机的永久性安全磁盘选项</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1751,7 +1750,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>队列存储</h3>
-                                                    <p>用于大容量云服务的持久队列</p>
+                                                    <p>根据流量有效缩放应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1770,7 +1769,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>文件存储</h3>
-                                                    <p>简单的分布式跨平台文件系统</p>
+                                                    <p>使用标准 SMB 3.0 协议的文件共享</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1808,7 +1807,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>可提高数据安全性的面向企业的混合云存储</p>
+                                                    <p>通过企业混合云存储解决方案降低成本</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1846,7 +1845,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>协调 Azure VM 以及本地 VM 和物理服务器的灾难恢复</p>
+                                                    <p>协调私有云的保护和恢复</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,7 +1945,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>内容传送网络</h3>
-                                                    <p>通过全球数据中心的稳定网络向最终用户传送内容 </p>
+                                                    <p>广泛的全球性覆盖，确保实现安全、可靠的内容交付</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2022,7 +2021,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>通知中心</h3>
-                                                    <p>快速发送数百万条消息的可缩放推送通知引擎</p>
+                                                    <p>从任何后端向任何平台发送推送通知</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2046,7 +2045,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 容器服务 (AKS)</h3>
-                                                    <p>使用 Kubernetes 大规模运行容器化应用程序</p>
+                                                    <p>简化 Kubernetes 的部署、管理和操作</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2165,7 +2164,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL 数据库</h3>
-                                                    <p>托管的关系数据库即服务</p>
+                                                    <p>托管关系 SQL 数据库即服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2279,7 +2278,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>表存储</h3>
-                                                    <p>适用于任何规模的全球分布式多模型数据库</p>
+                                                    <p>使用半结构化数据集的 NoSQL 键-值存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2298,7 +2297,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis 缓存</h3>
-                                                    <p>对数据进行高吞吐量、低延迟访问，构建快速、可缩放的应用程序</p>
+                                                    <p>具有高吞吐量、低延迟的数据访问的强大应用程序</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2398,7 +2397,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Analysis Services</h3>
-                                                    <p>云中的企业级数据建模</p>
+                                                    <p>企业级分析引擎即服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2474,7 +2473,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>机器学习工作室</h3>
-                                                    <p>基于云的强大预测分析工具，为前瞻性维护提供支持</p>
+                                                    <p>轻松生成、部署和管理预测分析解决方案</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2493,7 +2492,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>数据目录</h3>
-                                                    <p>允许在企业间自助发现数据源</p>
+                                                    <p>充分利用企业数据资产</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2558,7 +2557,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>机器学习服务</h3>
-                                                    <p>基于云的强大预测分析工具，为前瞻性维护提供支持</p>
+                                                    <p>通过试验和模型管理，使用端到端、可缩放的可信平台，让所有人都能够获得 AI 体验</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2834,7 +2833,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Edge</h3>
-                                                    <p>将云智能扩展到 Edge 设备</p>
+                                                    <p>将云端智能扩展到边缘设备</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2872,13 +2871,13 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Location Based Services</h3>
-                                                    <p>地图、路线、搜索和其他可靠的地理空间服务</p>
+                                                    <p>简单且安全的定位 API 为数据提供地理空间上下文</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="/azure/event-hubs/">
                                     <div class="cardSize">
@@ -2929,7 +2928,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>机器学习服务</h3>
-                                                    <p>基于云的强大预测分析工具，为前瞻性维护提供支持</p>
+                                                    <p>通过试验和模型管理，使用端到端、可缩放的可信平台，让所有人都能够获得 AI 体验</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2948,7 +2947,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>通知中心</h3>
-                                                    <p>快速发送数百万条消息的可缩放推送通知引擎</p>
+                                                    <p>从任何后端向任何平台发送推送通知</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3030,7 +3029,7 @@ ms.lasthandoff: 01/18/2018
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3105,7 +3104,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>可提高数据安全性的面向企业的混合云存储</p>
+                                                    <p>通过企业混合云存储解决方案降低成本</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3143,7 +3142,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>数据目录</h3>
-                                                    <p>允许在企业间自助发现数据源</p>
+                                                    <p>充分利用企业数据资产</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3224,7 +3223,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>安全中心</h3>
-                                                    <p>预防、检测和响应威胁，同时增加可见性</p>
+                                                    <p>跨混合云工作负荷统一安全管理并实现高级威胁防护</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3262,7 +3261,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>了解如何管理加密密钥和机密</p>
+                                                    <p>保护密钥和其他机密并始终对其进行控制</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3338,7 +3337,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>多重身份验证</h3>
-                                                    <p>利用额外的一层身份验证确保安全访问数据和应用</p>
+                                                    <p>提高数据和应用的安全性，而不给用户添麻烦</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3500,7 +3499,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 策略</h3>
-                                                    <p>创建、分配和管理策略定义 </p>
+                                                    <p>为 Azure 资源大规模实施公司管理和标准</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3519,7 +3518,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 成本管理</h3>
-                                                    <p>跟踪云的用量和开支</p>
+                                                    <p>优化云开支，同时发挥云的最大潜能</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3576,7 +3575,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>了解如何将计算机数据转变为操作智能</p>
+                                                    <p>从本地和云收集、搜索和呈现计算机数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3690,7 +3689,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 顾问</h3>
-                                                    <p>提高 Azure 资源的成本效益、性能、高可用性和安全性</p>
+                                                    <p>个性化 Azure 最佳做法推荐引擎</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3709,7 +3708,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure 服务运行状况</h3>
-                                                    <p>在 Azure 服务问题影响你时提供个性化指导和支持。</p>
+                                                    <p>在受 Azure 服务问题影响时获取个性化指导和支持</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3728,7 +3727,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>托管应用程序</h3>
-                                                    <p>为客户管理已部署的解决方案</p>
+                                                    <p>简化云产品/服务的管理</p>
                                                 </div>
                                             </div>
                                         </div>

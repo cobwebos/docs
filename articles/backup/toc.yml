@@ -97,6 +97,8 @@
               href: backup-azure-arm-vms.md
             - name: 备份加密 VM
               href: backup-azure-vms-encryption.md
+            - name: 在创建 VM 期间启用 VM 备份
+              href: backup-during-vm-creation.md
         - name: 管理和监视 VM
           items:
             - name: 在 Azure 门户中管理 Azure VM 备份

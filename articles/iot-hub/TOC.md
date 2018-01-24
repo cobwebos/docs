@@ -75,10 +75,12 @@
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.js](iot-hub-node-node-process-d2c.md)
+#### [Python](iot-hub-python-python-process-d2c.md)
 ### 发送“云到设备”消息
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
+#### [Python](iot-hub-python-python-c2d.md)
 ### 从设备上传文件
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
@@ -88,11 +90,13 @@
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-twin-getstarted.md)
+#### [Python 后端/Python 设备](iot-hub-python-twin-getstarted.md)
 ### 使用直接方法
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-direct-methods.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-direct-methods.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-direct-methods.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-direct-methods.md)
+#### [Python 后端/Python 设备](iot-hub-python-python-direct-methods.md)
 ### 设备管理入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-device-management-get-started.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-device-management-get-started.md)
