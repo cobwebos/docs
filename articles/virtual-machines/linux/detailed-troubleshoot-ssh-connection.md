@@ -5,7 +5,7 @@ keywords: "ssh 连接被拒绝,ssh 错误,azure ssh,SSH 连接失败"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: support-article
-ms.date: 07/06/2017
+ms.topic: article
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 264fe2acbdd393a2f9d349e1522263f1728c5d48
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 82b2bcf5b05288888714339af15ff2796d9660bd
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行 SSH 故障排除的具体步骤
 有许多可能的原因会导致 SSH 客户端无法连接到 VM 上的 SSH 服务。 如果已经执行了较[常规的 SSH 故障排除步骤](troubleshoot-ssh-connection.md)，则需要进一步排查连接问题。 本文将指导用户完成详细的故障排除步骤，以确定 SSH 连接失败的位置及其解决方法。
@@ -39,9 +39,9 @@ ms.lasthandoff: 12/08/2017
 
 2. 选择“设置”检查终结点、IP 地址、网络安全组和其他设置。
 
-   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/virtual-networks-nsg.md)”查看 SSH 流量。 将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 此外，请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
+   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/virtual-networks-nsg.md)”查看 SSH 流量。 将 VM 中使用 Resource Manager 创建的终结点存储在网络安全组中。 请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
 
-若要验证网络连接，请检查所配置的终结点，并了解是否可通过其他协议（例如 HTTP 或其他服务）连接到该 VM。
+要验证网络连接，请检查所配置的终结点，并了解是否可通过其他协议（例如 HTTP 或其他服务）连接到该 VM。
 
 在执行这些步骤之后，重新尝试 SSH 连接。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 12/08/2017
 
 ![突出显示组织边缘设备的图表](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-如果没有直接连接到 Internet 的计算机，可以在其自己的资源组或云服务中创建新的 Azure VM，并进行使用。 有关详细信息，请参阅[在 Azure 中创建运行 Linux 的虚拟机](quick-create-cli.md)。 测试完成后，请删除资源组或 VM 以及云服务。
+如果没有直接连接到 Internet 的计算机，可以在其自己的资源组或云服务中创建新的 Azure VM，并使用该 VM。 有关详细信息，请参阅[在 Azure 中创建运行 Linux 的虚拟机](quick-create-cli.md)。 测试完成后，请删除资源组或 VM 以及云服务。
 
 如果可以创建与直接连接到 Internet 的计算机之间的 SSH 连接，则检查组织边缘设备中是否存在以下问题：
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 12/08/2017
 > [!NOTE]
 > 此来源仅适用于使用经典部署模型创建的 VM。 对于使用 Resource Manager 创建的 VM，请跳转到[来源 4：网络安全组](#nsg)。
 
-要将云服务终结点和 ACL 从失败原因中排除，请验证同一虚拟网络中的其他 Azure VM 是否可与 VM 建立 SSH 连接。
+要将云服务终结点和 ACL 从失败原因中排除，请验证同一虚拟网络中的其他 Azure VM 是否可以使用 SSH 进行连接。
 
 ![突出显示云服务终结点和 ACL 的图表](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 

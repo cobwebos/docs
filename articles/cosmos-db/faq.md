@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: f32d23caa0a89b7f9336628280d726a351fb0603
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0bc0551259e47cdbd74d323d8d9877c74dd64c4b
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -30,11 +30,15 @@ Azure Cosmos DB 是一种全局复制的多模型数据库服务，可针对无�
 
 有关部署和使用此服务的更多数据库问题、解答及说明，请参阅 [Azure Cosmos DB 文档页面]((https://docs.microsoft.com/azure/cosmos-db/)。
 
-### <a name="what-happened-to-documentdb"></a>DocumentDB 发生了什么情况？
-DocumentDB API 是 Azure Cosmos DB 所支持的其中一个 API 和数据模型。 此外，Azure Cosmos DB 还支持图形 API（预览版）、表 API 和 MongoDB API。 有关详细信息，请参阅 [DocumentDB 客户提出的问题](#moving-to-cosmos-db)。
+### <a name="what-happened-to-the-documentdb-api"></a>DocumentDB API 发生了什么情况？
 
-### <a name="how-do-i-get-to-my-documentdb-account-in-the-azure-portal"></a>如何在 Azure 门户中登录到 DocumentDB 帐户？
-在 Azure 门户中，单击左侧窗格中的“Azure Cosmos DB”图标。 如果之前已有 DocumentDB 帐户，现在则拥有 Azure Cosmos DB 帐户，并且不会更改计费。
+Azure Cosmos DB DocumentDB API 或 SQL (DocumentDB) API 现在称为 Azure Cosmos DB SQL API。 无需进行任何更改即可继续运行使用 DocumentDB API 构建的应用。 功能保持相同。
+
+如果之前已有 DocumentDB API 帐户，现在则拥有 SQL API 帐户，并且不会更改计费。 
+
+### <a name="what-happened-to-azure-documentdb-as-a-service"></a>作为一项服务，Azure DocumentDB 发生了什么情况？
+
+Azure DocumentDB 服务现在是 Azure Cosmos DB 服务的一部分，以 SQL API 的形式显示出来。 在不对 Azure Cosmos DB SQL API 进行任何更改的情况下，将运行针对 Azure DocumentDB 生成的应用程序。 此外，Azure Cosmos DB 还支持图形 API、表 API、MongoDB API 和 Cassandra API（预览版）。
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Azure Cosmos DB 的典型用例有哪些？
 对于侧重于以下要求的新 Web、移动、游戏和 IoT 应用程序而言，Azure Cosmos DB 是一个不错的选择：自动缩放、可预测的性能、毫秒响应时间的快速排序，以及查询无架构数据的能力。 Azure Cosmos DB 有助于快速开发，且支持应用程序数据模型的连续迭代。 管理用户生成的内容和数据的应用程序就是 [Azure Cosmos DB 的常见用例](use-cases.md)。 
@@ -42,11 +46,11 @@ DocumentDB API 是 Azure Cosmos DB 所支持的其中一个 API 和数据模型�
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB 如何提供可预测的性能？
 [请求单位](request-units.md) (RU) 是 Azure Cosmos DB 中吞吐量的衡量单位。 1 RU 吞吐量相当于获取 1 KB 文档的吞吐量。 在 Azure Cosmos DB 中进行的每个操作（包括读取、写入、SQL 查询和存储过程执行）都具有一个确定性的 RU 值，该值基于完成该操作所需的吞吐量。 无需考虑 CPU、IO 和内存，以及它们会怎样影响应用程序吞吐量，而是从单个 RU 度量值的角度进行考虑。
 
-可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的*容器*一词是指 DocumentDB API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
+可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的容器一词是指 SQL API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB 如何支持各种数据模型（例如键/值、纵栏表、文档和图形）？
 
-键/值（表）、纵栏表、文档和图形数据模型都是原本就支持的，因为 Azure Cosmos DB 是基于 ARS（原子、记录和序列）设计构建的。 原子、记录和序列可以轻松映射和投影到各种数据模型。 现在提供了适用于一部分模型（DocumentDB、MongoDB、表和 Graph API）的 API，将来会提供特定于其他数据模型的其他 API。
+键/值（表）、纵栏表、文档和图形数据模型都是原本就支持的，因为 Azure Cosmos DB 是基于 ARS（原子、记录和序列）设计构建的。 原子、记录和序列可以轻松映射和投影到各种数据模型。 现在提供了适用于一个模型子集的 API（SQL、MongoDB、表和图形 API），并且将来会提供特定于其他数据模型的其他 API。
 
 Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动为它引入的所有数据编制索引，不会要求开发者提供任何架构或辅助索引。 该引擎依赖于一组逻辑索引布局（倒置、纵栏表、树形），这些布局将存储布局从索引和查询处理子系统中分离出来。 Cosmos DB 还能够以可扩展方式支持一组连网协议和 API 并将它们高效地转换为核心数据模型 (1) 和逻辑索引布局 (2)，这使得它具有原本就支持多个数据模型的独特功能。
 
@@ -60,7 +64,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 对于 Azure Cosmos DB 中容器可以支持的吞吐量总量并没有任何限制。 关键是要将工作负荷大致均匀地分布于数量足够多的分区键上。
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB 的费用是多少？
-有关详细信息，请参阅 [Azure Cosmos DB 定价详细信息](https://azure.microsoft.com/pricing/details/cosmos-db/)页面。 Azure Cosmos DB 使用费取决于预配的容器数目、容器的联机小时数，以及每个容器的预配吞吐量。 此处的*容器*一词是指 DocumentDB API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
+有关详细信息，请参阅 [Azure Cosmos DB 定价详细信息](https://azure.microsoft.com/pricing/details/cosmos-db/)页面。 Azure Cosmos DB 使用费取决于预配的容器数目、容器的联机小时数，以及每个容器的预配吞吐量。 此处的容器一词是指 SQL API 的集合、图形 API 的图、MongoDB API 的集合以及表 API 的表。 
 
 ### <a name="is-a-free-account-available"></a>有免费的帐户吗？
 是的，可免费注册一个限时的帐户，且无需任何承诺费。 若要注册，请访问[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 或参阅 [Azure Cosmos DB 试用常见问题解答](#try-cosmos-db)了解详细信息。
@@ -81,7 +85,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 以下条件适用于“试用 Azure Cosmos DB”订阅：
 
-* 对于 SQL (DocumentDB API)、Gremlin（图形 API）和表格帐户，每个订阅一个容器。
+* 对于 SQL、Gremlin（图形 API）和表帐户，每个订阅一个容器。
 * 对于 MongoDB 帐户，每个订阅最多 3 个集合。
 * 10 GB 存储容量。
 * 全球复制面向后列 [Azure 区域](https://azure.microsoft.com/regions/)提供：美国中部、北欧和东南亚
@@ -91,7 +95,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 ## <a name="set-up-azure-cosmos-db"></a>设置 Azure Cosmos DB
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>如何注册 Azure Cosmos DB？
-Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册成功后，便可将 DocumentDB API、图形 API（预览版）、表 API 或 MongoDB API 帐户添加到 Azure 订阅。
+Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册成功后，便可将 SQL API、图形 API、表 API、MongoDB API 或 Cassandra API 帐户添加到 Azure 订阅。
 
 ### <a name="what-is-a-master-key"></a>什么是主密钥？
 主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时要格外小心。 [Azure 门户][azure-portal]的“密钥”边栏选项卡中提供了主要主密钥和辅助主密钥。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](manage-account.md#keys)。
@@ -104,22 +108,22 @@ Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册�
 
 设置区域时，请记住，Azure Cosmos DB 遵从 主权和政府云的要求。 也就是说，如果帐户是在主权区域创建的，则不能在该主权区域外进行复制。 同样，也无法通过外部帐户启用到其他主权位置的复制。 
 
-## <a name="develop-against-the-documentdb-api"></a>针对 DocumentDB API 进行开发
+## <a name="develop-against-the-sql-api"></a>针对 SQL API 进行开发
 
-### <a name="how-do-i-start-developing-against-the-documentdb-api"></a>如何开始针对 DocumentDB API 进行开发？
-[Azure 门户][azure-portal]中提供了 Microsoft DocumentDB API。 首先必须注册 Azure 订阅。 注册 Azure 订阅后，可将 DocumentDB API 容器添加到 Azure 订阅。 有关添加 Azure Cosmos DB 帐户的说明，请参阅[创建 Azure Cosmos DB 数据库帐户](create-documentdb-dotnet.md#create-account)。 如果之前已有 DocumentDB 帐户，现在则拥有 Azure Cosmos DB 帐户。 
+### <a name="how-do-i-start-developing-against-the-sql-api"></a>如何开始针对 SQL API 进行开发？
+首先必须注册 Azure 订阅。 注册 Azure 订阅后，可将 SQL API 容器添加到 Azure 订阅。 有关添加 Azure Cosmos DB 帐户的说明，请参阅[创建 Azure Cosmos DB 数据库帐户](create-sql-api-dotnet.md#create-account)。 
 
-[SDK](documentdb-sdk-dotnet.md) 适用于 .NET、Python、Node.js、JavaScript 和 Java。 开发人员也可以使用 [RESTful HTTP API](/rest/api/documentdb/)，从各种平台使用各种语言与 Azure Cosmos DB 资源进行交互。
+[SDK](sql-api-sdk-dotnet.md) 适用于 .NET、Python、Node.js、JavaScript 和 Java。 开发人员也可以使用 [RESTful HTTP API](/rest/api/documentdb/)，从各种平台使用各种语言与 Azure Cosmos DB 资源进行交互。
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>是否可以访问一些现成的示例来帮助自己入门？
-GitHub 上提供了 DocumentDB API [.NET](documentdb-dotnet-samples.md)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](documentdb-nodejs-samples.md) 和 [Python](documentdb-python-samples.md) SDK 的示例。
+GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](sql-api-nodejs-samples.md) 和 [Python](sql-api-python-samples.md) SDK 的示例。
 
 
-### <a name="does-the-documentdb-api-database-support-schema-free-data"></a>DocumentDB API 数据库是否支持无架构数据？
-是，DocumentDB API 允许应用程序存储任意的 JSON 文档，而不需要架构定义或提示。 通过 Azure Cosmos DB SQL 查询界面便可立即查询数据。  
+### <a name="does-the-sql-api-database-support-schema-free-data"></a>SQL API 数据库是否支持无架构数据？
+是，SQL API 允许应用程序存储任意的 JSON 文档，而不需要架构定义或提示。 通过 Azure Cosmos DB SQL 查询界面便可立即查询数据。  
 
-### <a name="does-the-documentdb-api-support-acid-transactions"></a>DocumentDB API 是否支持 ACID 事务？
-是，DocumentDB API 支持以 JavaScript 存储过程和触发器形式表示的跨文档事务。 事务以每个集合内的单个分区为范围，且以 ACID 语义执行，也就是“全有或全无”，与其他并发执行的代码和用户请求隔离。 如果在服务器端执行 JavaScript 应用程序代码的过程中引发了异常，则会回滚整个事务。 有关事务的详细信息，请参阅[数据库程序事务](programming.md#database-program-transactions)。
+### <a name="does-the-sql-api-support-acid-transactions"></a>SQL API 是否支持 ACID 事务？
+是，SQL API 支持以 JavaScript 存储过程和触发器形式表示的跨文档事务。 事务以每个集合内的单个分区为范围，且以 ACID 语义执行，也就是“全有或全无”，与其他并发执行的代码和用户请求隔离。 如果在服务器端执行 JavaScript 应用程序代码的过程中引发了异常，则会回滚整个事务。 有关事务的详细信息，请参阅[数据库程序事务](programming.md#database-program-transactions)。
 
 ### <a name="what-is-a-collection"></a>什么是集合？
 集合是文档和其关联的 JavaScript 应用程序逻辑的组。 集合是一个计费实体，其[成本](performance-levels.md)由吞吐量和已用存储确定。 集合可以跨一个或多个分区或服务器，并且能缩放以处理几乎无限制增长的存储或吞吐量。
@@ -127,24 +131,24 @@ GitHub 上提供了 DocumentDB API [.NET](documentdb-dotnet-samples.md)、[Java]
 集合也是 Azure Cosmos DB 的计费实体。 每个集合根据预配的吞吐量和已用的存储空间按小时计费。 有关详细信息，请参阅 [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)。 
 
 ### <a name="how-do-i-create-a-database"></a>我如何创建数据库？
-可以按照[添加集合](create-documentdb-dotnet.md#create-collection)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 或使用 [REST API](/rest/api/documentdb/) 来创建数据库。 
+可以按照[添加集合](create-sql-api-dotnet.md#create-collection)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或使用 [REST API](/rest/api/documentdb/) 来创建数据库。 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>我如何设置用户和权限？
-可以使用某个 [Cosmos DB API SDK](documentdb-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 来创建用户和权限。  
+可以使用某个 [Cosmos DB API SDK](sql-api-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 来创建用户和权限。  
 
-### <a name="does-the-documentdb-api-support-sql"></a>DocumentDB API 是否支持 SQL？
-SQL 查询语言是 SQL 所支持的查询功能的增强子集。 Azure Cosmos DB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及扩展性。 JSON 语法允许将 JSON 文档模型化为具有标签化节点的树状，由 Azure Cosmos DB 自动索引技术及 Azure Cosmos DB 的 SQL 查询方言使用。 有关使用 SQL 语法的信息，请参阅[查询 DocumentDB][query] 一文。
+### <a name="does-the-sql-api-support-sql"></a>SQL API 是否支持 SQL？
+由 SQL API 帐户支持的 SQL 查询语言是 SQL Server 所支持的查询功能的增强子集。 Azure Cosmos DB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及扩展性。 JSON 语法允许将 JSON 文档模型化为具有标签化节点的树状，由 Azure Cosmos DB 自动索引技术及 Azure Cosmos DB 的 SQL 查询方言使用。 有关使用 SQL 语法的信息，请参阅 [SQL 查询][query]一文。
 
-### <a name="does-the-documentdb-api-support-sql-aggregation-functions"></a>DocumentDB API 是否支持 SQL 聚合函数？
-DocumentDB API 支持通过聚合函数 `COUNT`、`MIN`、`MAX`、`AVG` 和 `SUM` 使用 SQL 语法实现的任何规模的低延迟聚合。 有关详细信息，请参阅[聚合函数](documentdb-sql-query.md#Aggregates)。
+### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>SQL API 是否支持 SQL 聚合函数？
+SQL API 支持使用 SQL 语法通过聚合函数 `COUNT`、`MIN`、`MAX`、`AVG` 和 `SUM` 在任何规模中实现的低延迟聚合。 有关详细信息，请参阅[聚合函数](sql-api-sql-query.md#Aggregates)。
 
-### <a name="how-does-the-documentdb-api-provide-concurrency"></a>DocumentDB API 如何提供并发？
-DocumentDB API 通过 HTTP 实体标记或 ETag 支持乐观并发控制 (OCC)。 每个 DocumentDB API 资源都有一个 ETag，并且会在每次更新文档时，在服务器上设置此 ETag。 ETag 标头和当前值会包含在所有响应消息中。 ETag 可与 If-Match 标头配合使用，让服务器能够决定是否应该更新资源。 If-Match 值是用作检查依据的 ETag 值。 如果 ETag 值与服务器的 ETag 值匹配，就会更新资源。 如果 ETag 不再是最新状态，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应代码。 客户端接着必须重新提取资源，以获取该资源当前的 ETag 值。 此外，ETag 可以与 If-None-Match 标头配合使用，以确定是否需要重新提取资源。
+### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API 如何提供并发？
+SQL API 通过 HTTP 实体标记或 ETag 支持乐观并发控制 (OCC)。 每个 SQL API 资源都有一个 ETag，并且会在每次更新文档时在服务器上设置此 ETag。 ETag 标头和当前值会包含在所有响应消息中。 ETag 可与 If-Match 标头配合使用，让服务器能够决定是否应该更新资源。 If-Match 值是用作检查依据的 ETag 值。 如果 ETag 值与服务器的 ETag 值匹配，就会更新资源。 如果 ETag 不再是最新状态，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应代码。 客户端接着必须重新提取资源，以获取该资源当前的 ETag 值。 此外，ETag 可以与 If-None-Match 标头配合使用，以确定是否需要重新提取资源。
 
 若要在 .NET 中使用乐观并发，可使用 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) 类。 相关 .NET 示例请参阅 GitHub 上 DocumentManagement 示例中的 [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs)。
 
-### <a name="how-do-i-perform-transactions-in-the-documentdb-api"></a>如何在 DocumentDB API 中执行事务？
-DocumentDB API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果是单分区集合，则在集合范围内执行。 如果集合已分区，则在集合内具有相同分区键值的文档下执行。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)。
+### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>如何在 SQL API 中执行事务？
+SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果是单分区集合，则在集合范围内执行。 如果集合已分区，则在集合内具有相同分区键值的文档下执行。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)。
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>如何将文档批量插入到 Document DB 中？
 可以通过以下两种方法之一，将文档批量插入到 Azure Cosmos DB 中：
@@ -152,10 +156,10 @@ DocumentDB API 通过 JavaScript 存储过程和触发器支持语言集成式�
 * 数据集成工具，如 [Azure Cosmos DB 的数据迁移工具](import-data.md)中所述。
 * 存储过程，如 [Azure Cosmos DB 的服务器端 JavaScript 编程](programming.md)中所述。
 
-### <a name="does-the-documentdb-api-support-resource-link-caching"></a>DocumentDB API 是否支持资源链接缓存？
-是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 DocumentDB API 客户端可以指定“If-None-Match”标头来读取任何资源，例如文档或集合，然后在服务器版本更改后更新其本地副本。
+### <a name="does-the-sql-api-support-resource-link-caching"></a>SQL API 是否支持资源链接缓存？
+是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 SQL API 客户端可以指定“If-None-Match”标头来读取任何资源，例如文档或集合，然后在服务器版本更改后更新其本地副本。
 
-### <a name="is-a-local-instance-of-documentdb-api-available"></a>DocumentDB API 的本地实例是否可用？
+### <a name="is-a-local-instance-of-sql-api-available"></a>SQL API 的本地实例是否可用？
 是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，然后对 Azure Cosmos DB 的连接终结点进行单一配置更改，可以将这些应用程序部署到全局范围的 Azure。
 
 ## <a name="develop-against-the-api-for-mongodb"></a>针对 API for MongoDB 进行开发
@@ -236,7 +240,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>连接到表 API 需要使用哪个连接字符串？
 连接字符串为：
 ```
-DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountNameFromDocumentDB>.table.cosmosdb.azure.com
+DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountName>.table.cosmosdb.azure.com
 ```
 可以通过 Azure 门户中的“连接字符串”页获取连接字符串。 
 
@@ -288,7 +292,7 @@ Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以
 否，可以在没有任何干扰的情况下创建和使用现有 Azure 表存储资产。 但是，如果不使用表 API，则无法从自动索引、其他一致性选项或全局分发中受益。 
 
 ### <a name="how-do-i-add-replication-of-the-data-in-the-table-api-across-multiple-regions-of-azure"></a>如何在跨多个 Azure 区域的表 API 中添加数据复制？
-可以使用 Azure Cosmos DB 门户的[全局复制设置](tutorial-global-distribution-documentdb.md#portal)添加适合应用程序的区域。 若要开发全球分布的应用程序，还应该将应用程序的 PreferredLocation 信息设置为本地区域，以实现较低的读取延迟。 
+可以使用 Azure Cosmos DB 门户的[全局复制设置](tutorial-global-distribution-sql-api.md#portal)添加适合应用程序的区域。 若要开发全球分布的应用程序，还应该将应用程序的 PreferredLocation 信息设置为本地区域，以实现较低的读取延迟。 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>如何在表 API 中更改帐户的主要写入区域？
 可以使用 Azure Cosmos DB 的全局复制门户窗格添加区域，然后故障转移到所需区域。 有关说明，请参阅[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)。 
@@ -364,7 +368,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>平台形式的 Azure Cosmos DB 似乎拥有许多功能，例如排序、聚合、分层和其他功能。 是否会将这些功能添加到表 API 中？ 
-表 API 提供与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，我们会在表 API 中提供更多的功能。 有关详细信息，请参阅 [Azure Cosmos DB DocumentDB API 的 SQL 查询](../documentdb/documentdb-sql-query.md)。
+表 API 提供与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 在将来的服务更新中，我们会在表 API 中提供更多的功能。 有关详细信息，请参阅 [SQL 查询](sql-api-sql-query.md)。
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>何时应更改表 API 的 TableThroughput？
 符合以下任一情况时，都应更改 TableThroughput：
@@ -410,14 +414,14 @@ Azure 表存储和 Azure Cosmos DB 表 API 使用相同的 SDK，因此，大多
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>在表 API 中尝试一个接一个地创建许多表时，为何会受到限制？
 Azure Cosmos DB 是基于 SLA 的系统，在可用性、延迟和吞吐量方面提供保障。 由于它是预配的系统，因此会保留资源来保证满足这些要求。 以较快的速率创建表会被系统检测到并受到限制。 建议查看表创建速率，将其降至每分钟不超过 5 个。 请记住，表 API 是预配的系统。 只要预配它，就必须付费。 
 
-## <a name="develop-against-the-graph-api-preview"></a>针对图形 API（预览版）进行开发
-### <a name="how-can-i-apply-the-functionality-of-graph-api-preview-to-azure-cosmos-db"></a>如何向 Azure Cosmos DB 应用图形 API（预览版）的功能？
-可以使用扩展库来应用图形 API（预览版）的功能。 此库称为 Microsoft Azure Graphs，在 NuGet 中提供。 
+## <a name="develop-against-the-graph-api"></a>针对图形 API 进行开发
+### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>如何向 Azure Cosmos DB 应用图形 API 的功能？
+可以使用扩展库来应用图形 API 的功能。 此库称为 Microsoft Azure Graphs，在 NuGet 中提供。 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>你们似乎支持 Gremlin 图形遍历语言。 是否计划添加更多查询形式？
 是，我们计划将来添加其他查询机制。 
 
-### <a name="how-can-i-use-the-new-graph-api-preview-offering"></a>如何使用新的图形 API（预览版）服务？ 
+### <a name="how-can-i-use-the-new-graph-api-offering"></a>如何使用新的图形 API 服务？ 
 若要开始使用，请先阅读[图形 API](../cosmos-db/create-graph-dotnet.md) 快速入门文章。
 
 <a id="cassandra"></a> 
@@ -535,46 +539,5 @@ Apache Cassandra API 提供了与 Apache Cassandra 相同的 CQL 功能。 我�
 ### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>常规 Cassandra API 的功能 x 目前不工作，可以在哪里提供反馈？
 请通过 [uservoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)提供反馈。
 
-<a id="moving-to-cosmos-db"></a>
-## <a name="questions-from-documentdb-customers"></a>DocumentDB 客户提出的问题
-### <a name="why-are-you-moving-to-azure-cosmos-db"></a>为什么要迁移到 Azure Cosmos DB？ 
-
-Azure Cosmos DB 是大规模全球分布式云数据库的重大飞跃。 现在，DocumentDB 客户可以访问 Azure Cosmos DB 提供的突破性系统和功能。
-
-Azure Cosmos DB 在 2010 年以“Project Florence”的名义开始解决开发人员在 Microsoft 内部构建大型应用程序时面临的难题。 构建全球分布式应用并不是只有 Microsoft 才会遇到的难题，因此我们在 2015 年以 Azure DocumentDB 的形式向 Azure 开发人员提供了与此相关的第一代技术。 
-
-自此之后，我们添加了新的特性，并引入了重要新功能。 成果就是 Azure Cosmos DB。 随着此次发布，DocumentDB 客户连同其数据自动顺利地成为 Azure Cosmos DB 客户。 这些功能涉及的领域包括核心数据库引擎以及全局分发、弹性可伸缩性，并享有行业领先的全面 SLA 保障。 具体而言，我们已改进了 Azure Cosmos DB 数据库引擎，使其能够有效地将所有热门数据模型、类型系统和 API 映射到 Azure Cosmos DB 的基础数据模型。 
-
-对于开发人员而言，此项工作当前的成果包括对 [Gremlin](../cosmos-db/graph-introduction.md) 和[表存储 API](../cosmos-db/table-introduction.md) 的全新支持。 而这仅仅是一个开始。 我们计划不断添加其他热门 API 和更新的数据模型，为全球规模的性能和存储带来进步。 
-
-必须指出的是，DocumentDB 的 [SQL 方言](../documentdb/documentdb-sql-query.md)始终是基础 Azure Cosmos DB 能够支持的多种 API 之一。 对于使用 Azure Cosmos DB 等完全托管服务的开发人员，该服务的唯一接口就是该服务公开的 API。 现有 DocumentDB 客户在操作时与以往其实并无不同。 Azure Cosmos DB 提供的 SQL API 与 DocumentDB 完全相同。 现在（以及将来），你可以访问其他以前无法访问的功能。 
-
-我们持续努力的另一个成果是扩建了吞吐量和存储的全局分发与弹性缩放的基础。 我们对全局分发子系统做了几项基础性的增强。 一致前缀一致性模型就是这众多面向开发人员的功能之中的一个（总共提供五个定义完善的一致性模型）。 我们还会推出其他许多有趣的功能，在它们成熟时即会发布。 
-
-### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>如何确保 DocumentDB 资源可继续在 Azure Cosmos DB 上运行？
-
-不需要进行任何更改。 DocumentDB 资源现在称为 Azure Cosmos DB 资源，迁移后，服务不会发生任何中断。
-
-### <a name="what-changes-do-i-need-to-make-for-my-app-to-work-with-azure-cosmos-db"></a>要进行哪些更改才能让应用配合 Azure Cosmos DB 工作？
-
-不需要进行任何更改。 类、命名空间和 NuGet 包名称都没有变化。 与往常一样，我们建议使用最新的 SDK，以利用最新的功能和改进。 
-
-### <a name="whats-changed-in-the-azure-portal"></a>Azure 门户有哪些变化？
-
-DocumentDB 不再以 Azure 服务的形式显示在门户中。 它原来的位置上会显示一个新的 Azure Cosmos DB 图标，如下图所示。 可以像以前一样使用所有集合，并且仍可以缩放吞吐量、更改一致性级别和监视 SLA。 数据资源管理器（预览版）的功能已得到增强。 现在，可以在一个页面中查看和编辑文档、创建和运行查询，以及使用存储过程、触发器和 UDF，如下图所示： 
-
-![“Azure Cosmos DB 集合”页](./media/faq/cosmos-db-data-explorer.png)
-
-### <a name="are-there-changes-to-pricing"></a>价格是否有变化？
-
-没有，在 Azure Cosmos DB 上运行应用的费用与以前相同。
-
-### <a name="are-there-changes-to-the-slas"></a>SLA 是否有变化？
-
-没有，有关可用性、一致性、延迟和吞吐量的 SLA 都保持不变，并且仍会显示在门户中。 有关详细信息，请参阅 [Azure Cosmos DB 的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。
-   
-![包含示例数据的待办事项应用](./media/faq/azure-cosmosdb-portal-metrics-slas.png)
-
-
 [azure-portal]: https://portal.azure.com
-[query]: documentdb-sql-query.md
+[query]: sql-api-sql-query.md

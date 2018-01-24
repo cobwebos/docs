@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/22/2017
+ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: 97c1fc602ba27472fed2f11fd634e617ae9c636f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
 本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
@@ -31,7 +31,7 @@ Blob 索引器可从以下文档格式提取文本：
 ## <a name="setting-up-blob-indexing"></a>设置 Blob 索引
 可以使用以下方式设置 Azure Blob 存储索引器：
 
-* [Azure 门户](https://ms.portal.azure.com)
+* [Azure portal](https://ms.portal.azure.com)
 * Azure 搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure 搜索 [.NET SDK](https://aka.ms/search-sdk)
 
@@ -225,28 +225,6 @@ Blob 索引器可从以下文档格式提取文本：
 
 如果同时存在 `indexedFileNameExtensions` 和 `excludedFileNameExtensions` 参数，Azure 搜索服务会先查找 `indexedFileNameExtensions`，再查找 `excludedFileNameExtensions`。 这意味着，如果两个列表中存在同一个文件扩展名，将从索引编制中排除该扩展名。
 
-### <a name="dealing-with-unsupported-content-types"></a>处理不受支持的内容类型
-
-默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
-    }
-
-### <a name="ignoring-parsing-errors"></a>忽略分析错误
-
-Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支持内容类型的文档，例如 .DOCX 或 .PDF。 如果在遇到这种情况时不希望中断索引编制，可将 `maxFailedItems` 和 `maxFailedItemsPerBatch` 配置参数设置为某些合理值。 例如：
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
-    }
-
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要为 Blob 中的哪些部分编制索引
 
@@ -275,6 +253,31 @@ Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支�
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |指示 Blob 索引器完全跳过该 Blob， 既不尝试提取元数据，也不提取内容。 如果特定的 Blob 反复失败并且中断编制索引过程，此属性非常有用。 |
 | AzureSearch_SkipContent |"true" |此属性等效于[上面](#PartsOfBlobToIndex)所述的与特定 Blob 相关的 `"dataToExtract" : "allMetadata"` 设置。 |
+
+<a name="DealingWithErrors"></a>
+## <a name="dealing-with-errors"></a>处理错误
+
+默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
+    }
+
+对于某些 blob，Azure 搜索无法确定其内容类型，或无法处理其他受支持内容类型的文档。 若要忽略此故障模式，将 `failOnUnprocessableDocument` 配置参数设置为 false：
+
+      "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+如果在任意处理点（无论是在解析 blob 时，还是在将文档添加到索引时）发生错误，仍然可以继续索引。 若要忽略特定的错误数，将 `maxFailedItems` 和 `maxFailedItemsPerBatch` 配置参数设置为所需值。 例如：
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
+    }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
 将 Blob 索引器设置为按计划运行时，它只根据 Blob 的 `LastModified` 时间戳，为更改的 Blob 重新编制索引。

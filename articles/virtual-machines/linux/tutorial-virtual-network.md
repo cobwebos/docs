@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a49b4c2d4ddd6d686675cee53d46cd4dd6ad3811
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 0e7f4308290a14e592cf1739fa5b0b3360d7c68b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 虚拟网络和 Linux 虚拟机
 
@@ -156,6 +156,8 @@ az vm create \
 NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则会在优先级为 200 的规则之前评估。
 
 所有 NSG 都包含一组默认规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。
+
+NSG 的默认规则包括：
 
 - **虚拟网络** - 从方向上来说，在虚拟网络中发起和结束的通信可以是入站通信，也可以是出站通信。
 - **Internet** - 允许出站通信，但阻止入站通信。

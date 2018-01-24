@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: cb87b166a32c47395f99c9cd59442a7ccd65b7ed
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -163,7 +163,7 @@ VB
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-属性和测量参数是可选的，但对于[筛选和添加](app-insights-diagnostic-search.md)额外信息很有用。 例如，如果有一个可运行多个游戏的应用，可查找与特定游戏相关的所有异常报告。 可向每个字典添加任意数量的项目。
+属性和测量参数是可选的，但对于[筛选和添加](app-insights-diagnostic-search.md)额外信息很有用。 例如，如果有一个可运行多个游戏的应用，可查找与特定游戏相关的所有异常报表。 可向每个字典添加任意数量的项目。
 
 ## <a name="browser-exceptions"></a>浏览器异常
 报告大多数浏览器异常。

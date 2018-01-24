@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 081da55bb956db2879d7f2c5c91d25f5c36d5507
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -132,7 +132,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 | **值** | 在本地运行时所使用的一系列应用程序设置。 **AzureWebJobsStorage** 和 **AzureWebJobsDashboard** 为示例；有关完整列表，请参阅[应用设置参考](functions-app-settings.md)。  |
 | **主机** | 在本地运行时，本部分中的设置会自定义 Functions 主机进程。 | 
 | LocalHttpPort | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此值。 |
-| **CORS** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (**\***)，它允许使用任何来源的请求。 |
+| **CORS** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
 | ConnectionStrings | 包含函数的数据库连接字符串。 此对象中的连接字符串添加到提供者类型为 System.Data.SqlClient 的环境中。  | 
 
 大多数触发器和绑定都有 Connection 属性，该属性映射到环境变量或应用设置的名称。 对于每个连接属性，必须具有在 local.settings.json 文件中定义的应用设置。 

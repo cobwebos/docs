@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4dd24e4dddfedf58f1016511dfad087f91a0dbf8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3ca9157823a52bd0e4e8dd3b2656fc2724c8b4b6
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
 
@@ -201,7 +201,7 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 此方案与前一种方案类似，两者都提出了多重身份验证的要求。
 但是，主要区别在于此项要求的条件。  
 前一种方案的重心是有权访问敏感数据的应用，而本方案的重心则是受信任的位置。  
-换而言之，如果用户通过不受信任的网络访问应用，可以要求其进行多重身份验证。
+换而言之，如果用户通过不受信任的网络访问应用，则你可能要求执行多重身份验证。
 
 
 ### <a name="only-trusted-devices-can-access-office-365-services"></a>只允许受信任的设备访问 Office 365 服务
@@ -209,6 +209,9 @@ Azure Active Directory 的当前实现允许配置以下授权控制要求：
 如果在环境中使用 Intune，马上就可以在 Azure 控制台中开始使用条件性访问策略接口。
 
 许多 Intune 客户都在使用条件性访问来确保只有受信任的设备可以访问 Office 365 服务。 这意味着，访问这些服务的移动设备已注册到 Intune 并满足合规策略要求，Windows 电脑已加入本地域。 一项重要改进是不需要针对每个 Office 365 服务设置相同的策略。  创建新策略时，可以配置云应用，以包含想要使用条件性访问保护的每个 O365 应用。
+
+### <a name="switching-a-device-from-corporate-owned-to-bring-your-own-device-byod"></a>将设备从公司所有切换为自带设备办公 (BYOD)
+如果想要通过将设备所有权从公司切换为个人来阻止已注册的设备，可以使用 Azure Active Directory (AAD) 条件访问来达到此目的。 首先必须创建条件访问策略，可从访问控制“允许”边栏选项卡中选择“阻止访问”。 接着，通过将“deviceOwnership”属性设置为“个人”以创建“动态设备”组。 然后，将上述策略的目标设为新组。
 
 ## <a name="next-steps"></a>后续步骤
 

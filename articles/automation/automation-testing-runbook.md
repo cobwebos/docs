@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: df675dbf915d0fe08905a83b7874fdd95deed42d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 49e8dfa341940386f15932ec4346c8811effbf0b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>在 Azure 自动化中测试 Runbook
 测试 Runbook 时，将执行[草稿版](automation-creating-importing-runbook.md#publishing-a-runbook)，并会完成其所执行的任何操作。 不会创建作业历史记录，但会在“测试输出”窗格中显示[“输出”](automation-runbook-output-and-messages.md#output-stream)与[“警告和错误”](automation-runbook-output-and-messages.md#message-streams)。 仅当 [$VerbosePreference 变量](automation-runbook-output-and-messages.md#preference-variables)设置为 Continue 时，才会在“输出”窗格中显示发送到[详细流](automation-runbook-output-and-messages.md#message-streams)的消息。
@@ -42,5 +42,5 @@ ms.lasthandoff: 12/14/2017
 * 若要了解如何创建或导入 Runbook，请参阅[在 Azure 自动化中创建或导入 Runbook](automation-creating-importing-runbook.md)
 * 若要了解有关图形创作的详细信息，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
-* 若要详细了解如何配置 Runbook 以返回状态消息和错误（包括建议的做法），请参阅 [Azure 自动化中的 Runbook 输出和消息](automation-runbook-output-and-messages.md)
+* 要详细了解如何配置 runbook 以返回状态消息和错误（包括建议的做法），请参阅 [Azure 自动化中的 Runbook 输出和消息](automation-runbook-output-and-messages.md)
 

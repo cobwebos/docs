@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: efa5a50564d94dbecd4bc7fcb4082b01d16f680d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 
 若要导出 API 定义，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure Functions 或应用服务应用程序。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure Functions 或其他应用服务应用程序。
 
     如果使用的是 Azure Functions，请选择你的函数应用，然后依次选择“平台功能”、“API 定义”。
 
@@ -50,9 +50,9 @@ ms.lasthandoff: 10/11/2017
 
 3. 选择“导出模式”：
 
-    使用“快速”选项可以从 Azure 门户内部创建自定义连接器。 这要求你登录到 PowerApps 或 Microsoft Flow，并且有权在目标环境中创建连接器。 如果可以满足此要求，则我们建议采用此方法。 如果使用此模式，请遵照下面的[使用快速导出](#express)说明。
+    使用“快速”选项可以从 Azure 门户内部创建自定义连接器。 这要求你登录到 PowerApps 或 Microsoft Flow，并且有权在目标环境中创建连接器。 如果可以满足这两个要求，则建议采用此方法。 如果使用此模式，请遵照下面的[使用快速导出](#express)说明。
 
-    使用“手动”选项可以导出 API 定义，然后可以使用 PowerApps 或 Microsoft Flow 门户导入。 如果 Azure 用户与有权创建连接器的用户是不同的用户，或者需要在另一个租户中创建连接器，则我们建议采用此方法。 如果使用此模式，请遵照下面的[使用手动导出](#manual)说明。
+    使用“手动”选项可以导出 API 定义，然后可以使用 PowerApps 或 Microsoft Flow 门户导入。 如果 Azure 用户与有权创建连接器的用户是不同的用户，或者如果需要在另一个 Azure 租户中创建连接器，则建议采用此方法。 如果使用此模式，请遵照下面的[使用手动导出](#manual)说明。
 
     ![导出模式](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/11/2017
  
     ![快速导出到 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 单击 **“确定”**。 现在自定义连接器已生成并添加到了指定的环境中。
+3. 单击“确定”。 现在自定义连接器已生成并添加到了指定的环境中。
 
 有关对 Azure Functions 使用“快速”模式的示例，请参阅[从 PowerApps 调用函数](functions-powerapps-scenario.md)和[从 Microsoft Flow 调用函数](functions-flow-scenario.md)。
 
@@ -95,21 +95,25 @@ ms.lasthandoff: 10/11/2017
 
     此示例演示 OpenAPI 定义中包含的 API 密钥安全定义。
 
-现在已导出 API 定义，将其导入以在 PowerApps 和 Microsoft Flow 中创建自定义连接器。 以下示例使用 PowerApps，但自定义连接器在两项服务间共享，因此只需导入定义一次即可。
+现在已导出 API 定义，将其导入以在 PowerApps 和 Microsoft Flow 中创建自定义连接器。 自定义连接器在两项服务间共享，因此只需导入定义一次即可。
 
 若要将 API 定义导入 PowerApps 和 Microsoft Flow，请执行以下步骤：
 
-1. 登录到 [web.powerapps.com](https://web.powerapps.com) 或 [flow.microsoft.com](https://flow.microsoft.com/)。 
+1. 转到 [web.powerapps.com](https://web.powerapps.com) 或 [flow.microsoft.com](https://flow.microsoft.com)。
 
-2. 单击页面右上角的“设置”按钮（齿轮图标），并选择“自定义连接器”。
+2. 单击右上角的齿轮图标，然后单击“自定义连接器”。
 
-    ![自定义连接器](media/app-service-export-api-to-powerapps-and-flow/custom-connectors.png)
+   ![服务中的齿轮图标](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. 单击“创建自定义连接器”。
+3. 依次单击“创建自定义连接器”、“导入 OpenAPI 定义”。
 
-4. 在“常规”选项卡上，提供 API 名称，并上传 OpenAPI 定义或粘贴到元数据 URL。 单击“上传”，然后单击“继续”。
+   ![创建自定义连接器](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-    ![“常规”选项卡](media/app-service-export-api-to-powerapps-and-flow/tab-general.png)
+4. 输入自定义连接器的名称，导航到导出的 OpenAPI 定义，然后单击“继续”。
+
+   ![上传 OpenAPI 定义](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
+
+4. 在“常规”选项卡上，查看来自 OpenAPI 定义的信息。
 
 5. 在“安全”选项卡上，如果系统提示提供身份验证详细信息，请输入适合身份验证类型的值。 单击“继续”。
 

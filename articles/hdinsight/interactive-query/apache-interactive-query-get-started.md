@@ -17,14 +17,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jgao
-ms.openlocfilehash: f53234ddd8362e74c421c18c8d500308f5a232a7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 80e96e6bb727e6d5c1331580fad328d570b21494
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>将交互式查询与 HDInsight 配合使用
-交互式查询（也称为 Hive LLAP 或 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Hive 查询速度和交互性。 
+交互式查询（也称为 Hive LLAP 或 [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Hive 查询速度和交互性。
+
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)] 
 
 交互式查询群集与 Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。 
 
@@ -41,8 +43,8 @@ ms.lasthandoff: 11/28/2017
 
 * 使用 Power BI
 
-    请参阅[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
-
+    请参阅[在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据](./apache-hadoop-connect-hive-power-bi-directquery.md)以及[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
+ 
 * 使用 Zeppelin
 
     请参阅[在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](../hdinsight-connect-hive-zeppelin.md)。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/21/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: d33ce1b4f00e8186ad894d54901e3bc09d263fa4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0fcf7485d64d2e947be1730d168ed0a645a50714
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源，因为它们在 Azure 云中运行。  利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一个或多个指定计算机。  
@@ -165,7 +165,7 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
     如果 Microsoft Monitoring Agent Windows 服务未运行，会导致混合 Runbook 辅助角色无法与 Azure 自动化通信。  在 PowerShell 中输入以下命令，验证代理是否正在运行：`get-service healthservice`。  如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`start-service healthservice`。  
 
 4. 在 **Application and Services Logs\Operations Manager** 事件日志中，可看到事件 4502、包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 的事件消息以及下列描述：*服务 <wsid>.oms.opinsights.azure.com 提供的证书不是由 Microsoft 服务使用的证书颁发机构颁发的。请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。KB3126513 一文还介绍了关于连接问题的其他故障排除信息。*
-    原因可能是代理或网络防火墙阻止与 Microsoft Azure 通信。  确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
+    这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。  确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
 
 日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。  可以检查 **Application and Services Logs\Microsoft-SMA\Operations** 和 **Application and Services Logs\Operations Manager** 事件日志中是否写入了任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。  
 

@@ -4,7 +4,7 @@ description: "了解如何在 Azure 中创建一个 Jenkins 虚拟机，用于�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52408184c8cff53f8bb7006fa940b0db4b900db4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1426b7331b320397184805a6642fe6a57ca6ccb1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>如何使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
 要将应用程序开发的生成和测试阶段自动化，可以使用持续集成和部署 (CI/CD) 管道。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
@@ -36,12 +36,12 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.22 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-jenkins-instance"></a>创建 Jenkins 实例
 在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 本教程使用 cloud-init 文件在 VM 上安装 Jenkins 和 Docker。 Jenkins 是一种常用的开放源代码自动化服务器，它与 Azure 无缝集成以支持持续集成 (CI) 和持续交付 (CD)。 有关如何使用 Jenkins 的更多教程，请参阅[Azure 中心中的 Jenkins](https://docs.microsoft.com/azure/jenkins/)。
 
-在当前 shell 中，创建名为“cloud-init.txt”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init-jenkins.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
+在当前 shell 中，创建名为 cloud-init.txt 的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init-jenkins.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
 ```yaml
 #cloud-config
@@ -117,11 +117,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 现在，请打开 Web 浏览器并转到 `http://<publicIps>:8080`。 按如下所示完成初始 Jenkins 安装：
 
-- 输入在上一步骤从 VM 获取的 *initialAdminPassword*。
-- 选择“选择要安装的插件”
-- 在顶部文本框中搜索 GitHub，选择“GitHub 插件”，然后选择“安装”
-- 若要创建 Jenkins 用户帐户，请根据需要填写表单。 从安全角度讲，应该创建这第一个 Jenkins 用户，而不要继续使用默认管理员帐户。
-- 完成后，选择“开始使用 Jenkins”
+- 输入用户名“admin”，然后提供在上一步骤从 VM 获取的 initialAdminPassword。
+- 依次选择“管理 Jenkins”、“管理插件”。
+- 选择“可用”，然后在顶部文本框中搜索 GitHub。 选中“GitHub 插件”框，然后选择“立即下载并在重启后安装”。
+- 选中“安装完成并且没有作业运行时重启 Jenkins”框，然后等待插件安装过程完成。
 
 
 ## <a name="create-github-webhook"></a>创建 GitHub Webhook
@@ -162,13 +161,13 @@ response.end("Hello World!");
 
 若要提交更改，请选择底部的“提交更改”按钮。
 
-在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 选择生成号链接，并选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Testing` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 以此方式访问 Jenkins 并触发新的生成。
+在 Jenkins 中，作业页左下角的“生成历史记录”部分下面启动了一个新的生成。 选择生成号链接，并选择左侧的“控制台输出”。 从 GitHub 提取代码以及生成操作将消息 `Testing` 输出到控制台时，可以查看 Jenkins 执行的步骤。 每次在 GitHub 中提交内容时，Webhook 都以此方式访问 Jenkins 并触发新的生成。
 
 
 ## <a name="define-docker-build-image"></a>定义 Docker 生成映像
 为了查看基于 GitHub 提交内容运行的 Node.js 应用，让我们生成一个 Docker 映像用于运行该应用。 该映像是从定义如何配置运行应用的容器的 Dockerfile 生成的。 
 
-通过 SSH 连接到 VM 后，请切换到根据上一步骤创建的作业命名的 Jenkins 工作区目录。 在本示例中，该目录名为 *HelloWorld*。
+通过 SSH 连接到 VM 后，请切换到根据上一步骤创建的作业命名的 Jenkins 工作区目录。 在本示例中，该目录名为 HelloWorld。
 
 ```bash
 cd /var/lib/jenkins/workspace/HelloWorld

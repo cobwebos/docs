@@ -3,7 +3,7 @@ title: "管理 Azure 开发测试实验室中用于创建 VM 的公式 | Microso
 description: "了解如何更新和删除 Azure 开发测试实验室公式"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 841dd95a-657f-4d80-ba26-59a9b5104fe4
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: tarcher
+ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdab5def50158f9b764bbb1e50c2624cc6d5fb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
 [!INCLUDE [devtest-lab-formula-definition](../../includes/devtest-lab-formula-definition.md)]
 
-本文介绍如何从基项（自定义映像、应用商店映像或其他公式）或现有 VM 创建公式。 本文还引导完成管理现有公式的操作。
+本文介绍如何从基项（自定义映像、Marketplace 映像或其他公式）或现有 VM 创建公式。 本文还引导完成管理现有公式的操作。
 
 ## <a name="create-a-formula"></a>创建公式
 任何拥有开发测试实验室用户权限的用户都可以使用公式作为基础创建 VM。 有两种创建公式的方法： 
@@ -36,13 +36,13 @@ ms.lasthandoff: 10/11/2017
 有关添加用户和权限的详细信息，请参阅[在 Azure 开发测试实验室中添加所有者和用户](./devtest-lab-add-devtest-user.md)。
 
 ### <a name="create-a-formula-from-a-base"></a>从基项创建公式
-以下步骤介绍从自定义映像、应用商店映像或其他公式创建公式的过程。
+以下步骤介绍从自定义映像、Marketplace 映像或其他公式创建公式的过程。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
 
-3. 从实验室列表，选择所需实验室。  
+3. 从实验室列表，选择所需的实验室。  
 
 4. 在实验室的边栏选项卡上，选择“公式（可重用基项）”。
    
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
    
     ![添加公式](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、应用商店映像或公式）。
+6. 在“选择基项”边栏选项卡上，选择要从中创建公式的基项（自定义映像、Marketplace 映像或公式）。
    
     ![基项列表](./media/devtest-lab-create-formulas/base-list.png)
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/11/2017
     * “密码” - 输入或从下拉列表中选择与要用于指定用户的密码相关联的值。 有关密码的详细信息，请参阅 [Azure 开发测试实验室：个人密码存储](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/)。
     * “虚拟机磁盘类型” - 指定 HDD（硬盘驱动器）或 SSD（固态驱动器）以指明允许将哪种存储磁盘类型用于使用此基本映像预配的虚拟机。
     * **虚拟机大小** - 选择指定了要创建的 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。 
-    * “项目” - 选择此项会打开“添加项目”边栏选项卡，可以从中选择并配置要添加到基本映像的项目。 有关项目的详细信息，请参阅[管理 Azure 开发测试实验室中的 VM 项目](./devtest-lab-add-vm-with-artifacts.md)。
+    * “项目” - 选择此项会打开“添加项目”边栏选项卡，可以从中选择并配置要添加到基本映像的项目。 有关项目的详细信息，请参阅[创建 Azure 开发测试实验室虚拟机的自定义项目](devtest-lab-artifact-author.md)。
     * “高级设置” - 选择此项将打开“高级”边栏选项卡，可以在其中配置以下设置：
         * “虚拟网络” - 指定所需的虚拟网络。
         * “子网” - 指定所需的子网。    
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
-3. 从实验室列表，选择所需实验室。  
+3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的“概述”边栏选项卡上，选择要从中创建公式的 VM。
    
     ![实验室 VM](./media/devtest-lab-create-formulas/my-vms.png)
@@ -105,7 +105,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
-3. 从实验室列表，选择所需实验室。  
+3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的边栏选项卡上，选择“公式（可重用基项）”。
    
     ![公式菜单](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
@@ -117,7 +117,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
-3. 从实验室列表，选择所需实验室。  
+3. 从实验室列表，选择所需的实验室。  
 4. 在实验室“设置”边栏选项卡上，选择“公式”。
    
     ![公式菜单](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
@@ -135,5 +135,5 @@ ms.lasthandoff: 10/11/2017
 * [自定义映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
 ## <a name="next-steps"></a>后续步骤
-创建完用于创建 VM 的公式后，下一步就是[将 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
+创建完用于创建 VM 的公式后，下一步就是[将 VM 添加到实验室](devtest-lab-add-vm.md)。
 

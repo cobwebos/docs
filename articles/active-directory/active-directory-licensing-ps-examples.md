@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
-ms.openlocfilehash: cbc432c411e80c7fc49daecd727d8e1969faede5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 82d4bdbe60fe403ea07ed958e9aec9dbf4e9fbb8
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 示例
 
@@ -141,7 +141,7 @@ ObjectId                             DisplayName             GroupType Descripti
 ```
 ## <a name="get-all-users-with-license-errors-in-a-group"></a>获取组中含有许可证错误的所有用户
 
-如果某个组中包含一些许可证相关的错误，现在可以列出受这些错误影响的所有用户。 Jser 也可含有其他组中的错误。 但在此示例中，通过检查用户的每个 **IndirectLicenseError** 条目的 **ReferencedObjectId** 属性，我们仅将结果限于与所涉及组相关的错误。
+如果某个组中包含一些许可证相关的错误，现在可以列出受这些错误影响的所有用户。 用户也可可含有其他组中的错误。 但在此示例中，通过检查用户的每个 **IndirectLicenseError** 条目的 **ReferencedObjectId** 属性，我们仅将结果限于与所涉及组相关的错误。
 
 ```
 #a sample group with errors

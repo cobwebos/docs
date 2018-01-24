@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: tamram
-ms.openlocfilehash: 6059ce809e7a8b2115e391d9db5b5b0a8626109e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: b6814eea9120e0ee86afe333c11354fe49821978
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="introduction-to-blob-storage"></a>Blob 存储简介
 
@@ -38,7 +38,7 @@ Blob 服务包含以下组件：
 
 ![Blob 体系结构](./media/storage-blobs-introduction/blob1.png)
 
-* **存储帐户：** 对 Azure 存储服务的所有访问都要通过存储帐户来完成。 此存储帐户可以是**常规用途存储帐户**，也可以是专用于存储对象/Blob 的 **Blob 存储帐户**。 有关详细信息，请参阅[关于 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+* **存储帐户：** 对 Azure 存储服务的所有访问都要通过存储帐户来完成。 此存储账户可以是“通用存储帐户 (v1 or v2)”，也可以是“Blob 存储帐户”。 有关详细信息，请参阅[关于 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 * **容器：** 一个容器包含一组 blob 集。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无限个 Blob。 请注意，容器名称必须小写。
 

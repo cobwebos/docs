@@ -3,16 +3,18 @@ title: "航拍图像分类 | Microsoft Docs"
 description: "提供有关航拍图像分类的实际方案的说明"
 author: mawah
 ms.author: mawah
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
 services: machine-learning
-ms.date: 10/27/2017
-ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.workload: data-services
+ms.date: 12/13/2017
+ms.openlocfilehash: 76c706496b3bcdbc1604661be85dc31000873ad3
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="aerial-image-classification"></a>航拍图像分类
 
@@ -44,7 +46,7 @@ ms.lasthandoff: 12/08/2017
 
 ![航空图像分类实际方案的示意图](media/scenario-aerial-image-classification/scenario-schematic.PNG)
 
-[分步说明](https://github.com/MicrosoftDocs/azure-docs-pr/tree/release-ignite-aml-v2/articles/machine-learning/)首先指导你完成 Azure 存储帐户和 Spark 群集的创建和准备工作，这包括数据传输和依赖项安装。 然后，它们介绍如何启动定型作业并比较生成模型的性能。 最后，它们说明了如何将所选模型应用于 Spark 群集上的大型图像集，并在本地分析预测结果。
+这些分步说明首先指导你完成 Azure 存储帐户和 Spark 群集的创建和准备工作，这包括数据传输和依赖项安装。 然后，它们介绍如何启动定型作业并比较生成模型的性能。 最后，它们说明了如何将所选模型应用于 Spark 群集上的大型图像集，并在本地分析预测结果。
 
 
 ## <a name="set-up-the-execution-environment"></a>设置执行环境
@@ -52,7 +54,7 @@ ms.lasthandoff: 12/08/2017
 以下说明将指导你完成本示例的设置执行环境的过程。
 
 ### <a name="prerequisites"></a>先决条件
-- [Azure 帐户](https://azure.microsoft.com/en-us/free/)（提供免费试用版）
+- [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）
     - 你将创建一个具有 40 个辅助角色节点（共 168 个内核）的 HDInsight Spark 群集。 通过查看 Azure 门户中订阅的“使用情况 + 配额”选项卡，确保帐户拥有足够的可用内核。
        - 如果可用的内核较少，你可以修改 HDInsight 群集模板以减少所配备的工作节点数量。 这个说明显示在“创建 HDInsight Spark 群集”部分下。
     - 此示例使用两个 NC6（1 GPU 和 6 vCPU）VM 创建一个 Batch AI 训练群集。 通过查看 Azure 门户中订阅的“使用情况 + 配额”选项卡，确保帐户在美国东部拥有足够的可用内核。
@@ -68,7 +70,7 @@ ms.lasthandoff: 12/08/2017
     - 记录客户端 ID、机密以及按引导创建的 Azure Active Directory 应用程序的租户 ID。 本教程的后面部分会用到这些凭据。
     - 在本文中，Azure Machine Learning Workbench 和 Azure Batch AI 使用 Azure CLI 2.0 的单独分支。 为清楚起见，我们将该 Workbench 的 CLI 版本称为“从 Azure Machine Learning Workbench 启动的 CLI”，将常规发布版本（包括 Batch AI）称为“Azure CLI 2.0”。
 - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)，一种用于协调 Azure 存储帐户之间的文件传输的免费实用工具
-    - 确保包含 AzCopy 可执行文件的文件夹位于系统的 PATH 环境变量中。 （有关修改环境变量的说明，可在[此处](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)获取。）
+    - 确保包含 AzCopy 可执行文件的文件夹位于系统的 PATH 环境变量中。 （有关修改环境变量的说明，可在[此处](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp)获取。）
 - 一个 SSH 客户端，建议使用 [PuTTY](http://www.putty.org/)。
 
 在 Windows 10 电脑上测试了此示例；你应该可以从任何 Windows 计算机（包括 Azure 数据科学虚拟机）运行它。 Azure CLI 2.0 是按[以下说明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)从 MSI 安装的。 在 macOS 上运行此示例时可能需要进行细微的修改（例如更改文件路径）。
@@ -157,14 +159,14 @@ ms.lasthandoff: 12/08/2017
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/scripts /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.file.core.windows.net/baitshare/scripts /DestKey:%STORAGE_ACCOUNT_KEY% /S
     ```
 
-    文件传输预期最长需要 20 分钟时间。 在等待时，可以继续执行下面的部分：可能需要通过 Workbench 打开另一个命令行接口，并在其中重新定义临时变量。
+    预计文件传输大概需要一个小时。 在等待时，可以继续执行下面的部分：可能需要通过 Workbench 打开另一个命令行接口，并在其中重新定义临时变量。
 
 #### <a name="create-the-hdinsight-spark-cluster"></a>创建 HDInsight Spark 群集
 
 创建 HDInsight 群集的建议方法是使用此项目的“Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning”子文件夹中包含的 HDInsight Spark 群集资源管理器模板。
 
 1. HDInsight Spark 群集模板是此项目的“Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning”子文件夹下的“template.json”文件。 默认情况下，该模板会创建包含 40 个工作节点的 Spark 群集。 如果必须调整该数字，请在偏好的文本编辑器中打开该模板，并将出现的所有“40”替换为所选的工作节点数。
-    - 如果所选的工作节点数较小，可能会遇到内存不足错误。 若要避免内存错误，可根据本文档稍后所述，针对可用数据的子集运行训练和操作化脚本。
+    - 如果所选的工作节点数较小，稍后可能会遇到内存不足错误。 若要避免内存错误，可根据本文档稍后所述，针对可用数据的子集运行训练和操作化脚本。
 2. 为 HDInsight 群集选择唯一的名称和密码，并将其写入以下命令指示的位置。然后通过发出命令创建群集：
 
     ```
@@ -248,12 +250,10 @@ Batch AI 群集访问网络文件服务器上的训练数据。 从 NFS 与 Azur
 
 #### <a name="create-a-batch-ai-cluster"></a>创建 Batch AI 群集
 
-1. 发出以下命令创建群集：
+1. 发出以下命令来创建群集：
 
     ```
-    set AZURE_BATCHAI_STORAGE_ACCOUNT=%STORAGE_ACCOUNT_NAME%
-    set AZURE_BATCHAI_STORAGE_KEY=%STORAGE_ACCOUNT_KEY%
-    az batchai cluster create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 
+    az batchai cluster create -n landuseclassifier2 -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
 1. 使用以下命令检查群集的预配状态：
@@ -304,7 +304,7 @@ Batch AI 群集访问网络文件服务器上的训练数据。 从 NFS 与 Azur
 1.  从 Azure 机器学习命令行接口发出以下命令：
 
     ```
-    az ml computetarget attach --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD% -t cluster
+    az ml computetarget attach cluster --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
     此命令会将两个文件（`myhdi.runconfig` 和 `myhdi.compute`）添加到项目的 `aml_config` 文件夹。

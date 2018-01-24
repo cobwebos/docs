@@ -16,15 +16,15 @@ ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 9ddb5f7e6c5dbeb742002dfcdfb981fae699130b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c00f382546a0e5f1e9da9dc90777dcf9622ec94
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>了解多个 Azure Active Directory 租户的交互方式
 
-在 Azure Active Directory (Azure AD) 中，每个租户都是完全独立的资源。也就是说，对等租户与管理的其他租户在逻辑上相互独立。 租户之间不存在父子关系。 租户的这种独立性表现为资源独立性、管理独立性和同步独立性。
+在 Azure Active Directory (Azure AD) 中，每个租户都是完全独立的资源：也就是说，对等租户与管理的其他租户在逻辑上相互独立。 租户之间不存在父子关系。 租户的这种独立性表现为资源独立性、管理独立性和同步独立性。
 
 ## <a name="resource-independence"></a>资源独立性
 * 在一个租户中创建或删除某资源不影响其他租户中的任何资源，外部用户的部分例外情况除外。 

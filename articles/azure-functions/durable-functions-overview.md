@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Durable Functions 概述（预览版）
 
@@ -215,7 +215,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
         if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
         {
             timeoutCts.Cancel();
-            await ctx.CallActivityAsync("HandleApproval", approvalEvent.Result);
+            await ctx.CallActivityAsync("ProcessApproval", approvalEvent.Result);
         }
         else
         {
@@ -235,7 +235,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 业务流程协调程序函数使用云设计模式（称为[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)）可靠地维护其执行状态。 持久扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而非直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，这具有诸多优点，包括提升性能、可伸缩性和响应能力。 其他优点包括确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索本身可实现可靠的补偿操作。
 
-此扩展使用“事件溯源”的过程是透明的。 事实上，业务流程协调程序函数中的 `await` 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 这个透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在持久存储中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 如果正在使用 Azure Functions 消耗计划，将停止对其计费。  如果需要完成其他工作，可重启该函数并重新构造其状态。
+此扩展使用“事件溯源”的过程是透明的。 事实上，业务流程协调程序函数中的 `await` 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 这个透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 如果正在使用 Azure Functions 消耗计划，将停止对其计费。  如果需要完成其他工作，可重启该函数并重新构造其状态。
 
 如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器到期），业务流程协调程序再次唤醒，并从头开始重新执行整个函数，以便重新生成本地状态。 如果代码在此重播过程中尝试调用函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果发现已执行活动函数并生成某个结果，则它将重播该函数的结果，而业务流程协调程序代码继续运行。 在函数代码完成或计划了新的异步工作前，此过程一直继续。
 
@@ -249,7 +249,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
-如果使用 Application Insights 密钥配置函数应用，Durable Functions 扩展可自动向 [Application Insights](functions-monitoring.md) 发出结构化跟踪数据。 此跟踪数据可用于监视业务流程的行为和进度。
+如果使用 Application Insights 检测密钥配置函数应用，Durable Functions 扩展会自动向 [Application Insights](functions-monitoring.md) 发出结构化跟踪数据。 此跟踪数据可用于监视业务流程的行为和进度。
 
 下面的示例展示了使用 [Application Insights Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics) 时，Durable Functions 在 Application Insights 门户中的外观：
 

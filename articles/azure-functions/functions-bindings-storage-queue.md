@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: 0aae58fa52f9f7f64b08e1701b7688a90c56e6ed
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 2ca511bf0c145878cc80bdbae694f581fd487820
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -35,13 +35,13 @@ ms.lasthandoff: 11/29/2017
 
 参阅语言特定的示例：
 
-* [预编译 C#](#trigger---c-example)
-* [C# 脚本](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# 脚本 (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
-以下示例演示可在每次处理某个队列项之后轮询 `myqueue-items` 队列并写入日志的[预编译 C#](functions-dotnet-class-library.md) 代码。
+以下示例演示可在每次处理某个队列项之后轮询 `myqueue-items` 队列并写入日志的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```csharp
 public static class QueueFunctions
@@ -58,7 +58,7 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 
-以下示例演示 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
+以下示例演示 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
 *function.json* 文件如下所示：
 
@@ -153,7 +153,7 @@ module.exports = function (context) {
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
  
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用以下特性来配置队列触发器：
+在 [C# 类库](functions-dotnet-class-library.md)，请使用以下属性来配置队列触发器：
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)，在 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义
 
@@ -181,7 +181,7 @@ module.exports = function (context) {
   }
   ```
  
-  有关完整示例，请参阅[触发器 - 预编译 C# 示例](#trigger---c-example)。
+  有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)，在 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义
 
@@ -236,7 +236,7 @@ module.exports = function (context) {
 
 队列触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 相同。
 
-|属性|类型|说明|
+|属性|Type|说明|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
@@ -266,13 +266,13 @@ module.exports = function (context) {
 
 参阅语言特定的示例：
 
-* [预编译 C#](#output---c-example)
-* [C# 脚本](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# 脚本 (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
-以下示例演示针对收到的每个 HTTP 请求创建一条队列消息的[预编译 C#](functions-dotnet-class-library.md) 代码。
+以下示例演示针对收到的每个 HTTP 请求创建队列消息的[C# 函数](functions-dotnet-class-library.md)。
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -290,7 +290,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>输出 - C# 脚本示例
 
-以下示例演示 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数针对收到的每个 HTTP 请求创建一个包含 POCO 有效负载的队列项。
+以下示例演示 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 该函数针对收到的每个 HTTP 请求创建一个包含 POCO 有效负载的队列项。
 
 *function.json* 文件如下所示：
 
@@ -401,7 +401,7 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>输出 - 特性
  
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义的 [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义的 [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)。
 
 该特性将应用到 `out` 参数，或应用到函数的返回值。 该特性的构造函数采用队列的名称，如以下示例中所示：
 
@@ -418,16 +418,16 @@ public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
 
 ```csharp
 [FunctionName("QueueOutput")]
-[return: Queue("myqueue-items, Connection = "StorageConnectionAppSetting")]
+[return: Queue("myqueue-items", Connection = "StorageConnectionAppSetting")]
 public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
 {
     ...
 }
 ```
 
-有关完整示例，请参阅[输出 - 预编译 C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
-可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attributes-for-precompiled-c)。
+可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attribute)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 

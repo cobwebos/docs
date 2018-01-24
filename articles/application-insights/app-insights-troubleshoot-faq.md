@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7dcfea240a8dbb416226e76f8941cfe8147e2b39
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9f6cf019d681ce6e844481ca58de1ff472b3d32c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -242,7 +242,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>是否可以将遥测数据发送到 Application Insights 门户？
 
-建议使用 SDK，并且使用 SDK API (app-insights-api-custom-events-metrics.md)。 为各种[平台](app-insights-platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
+建议使用我们的 SDK 并使用 [SDK API](app-insights-api-custom-events-metrics.md)。 为各种[平台](app-insights-platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>是否可以监视 Intranet Web 服务器？
 

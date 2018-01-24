@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: arramac
-ms.openlocfilehash: 8ca4c7fb1ccfe1eb026de80e519894c0ff23028a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d1968e9fea0fb08edfdbf9e09acca9c4af00b048
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/03/2017
 ![使用 Azure Cosmos DB 更改源促成实时分析和事件驱动的计算方案](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> 更改源支持仅提供给 Azure Cosmos DB 中的所有数据模型和容器。 但是，更改源是使用 DocumentDB 客户端读取的，会将项序列化为 JSON 格式。 由于采用 JSON 格式，MongoDB 客户端会遇到 BSON 格式的文档与 JSON 格式的更改源不匹配的情况。 
+> 更改源支持仅提供给 Azure Cosmos DB 中的所有数据模型和容器。 但是，更改源是使用 SQL 客户端读取的，会将项序列化为 JSON 格式。 由于采用 JSON 格式，MongoDB 客户端会遇到 BSON 格式的文档与 JSON 格式的更改源不匹配的情况。 
 
 ## <a name="how-does-change-feed-work"></a>更改源的工作原理
 
@@ -90,11 +90,11 @@ Azure Cosmos DB 中的更改源支持的工作原理是侦听 Azure Cosmos DB �
 <a id="rest-apis"></a>
 ## <a name="using-the-sdk"></a>使用 SDK
 
-Azure Cosmos DB 的 [DocumentDB SDK](documentdb-sdk-dotnet.md) 提供用于读取和管理更改源的所有强大功能。 但是，强大的功能也附带了诸多的责任。 如果想要管理检查点、处理文档序列号，并想要精细控制分区键，则使用 SDK 可能是适当的方法。
+Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理更改源的所有强大功能。 但是，强大的功能也附带了诸多的责任。 如果想要管理检查点、处理文档序列号，并想要精细控制分区键，则使用 SDK 可能是适当的方法。
 
-本部分逐步讲解如何使用 DocumentDB SDK 来处理更改源。
+本部分逐步讲解如何使用 SQL SDK 来处理更改源。
 
-1. 首先，读取 appconfig 中的以下资源。 [更新连接字符串](create-documentdb-dotnet.md#update-your-connection-string)中提供了有关检索终结点和授权密钥的说明。
+1. 首先，读取 appconfig 中的以下资源。 [更新连接字符串](create-sql-api-dotnet.md#update-your-connection-string)中提供了有关检索终结点和授权密钥的说明。
 
     ``` csharp
     DocumentClient client;
@@ -166,7 +166,7 @@ Azure Cosmos DB 的 [DocumentDB SDK](documentdb-sdk-dotnet.md) 提供用于读�
 <a id="change-feed-processor"></a>
 ## <a name="using-the-change-feed-processor-library"></a>使用更改源处理器库 
 
-借助 [Azure Cosmos DB 更改源处理器库](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed)，可以轻松地在多个使用者之间分配事件处理负载。 此库简化了跨分区的以及并行工作的多个线程中的更改的读取。
+借助 [Azure Cosmos DB 更改源处理器库](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed)，可以轻松地在多个使用者之间分配事件处理负载。 此库简化了跨分区的以及并行工作的多个线程中的更改的读取。
 
 更改源处理器库的主要优势在于，无需管理每个分区和继续标记，也无需手动轮询每个集合。
 
@@ -276,11 +276,11 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 
 有关使用更改源处理器库的详细信息，请参阅以下资源：
 
-* [信息页](documentdb-sdk-dotnet-changefeed.md) 
+* [信息页](sql-api-sdk-dotnet-changefeed.md) 
 * [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
 * [演示上述步骤 1-6 的示例代码](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 * [GitHub 上的其他示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
 有关通过 SDK 使用更改源的详细信息，请参阅以下资源：
 
-* [SDK 信息页](documentdb-sdk-dotnet.md)
+* [SDK 信息页](sql-api-sdk-dotnet.md)

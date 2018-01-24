@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 95c5195ac2ea832586211cce37eb2094e06eaf03
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
@@ -134,7 +134,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 ## <a name="managing-the-maximum-daily-data-volume"></a>管理每日最大数据量
 
-可使用每日数据上限来限制收集的数据量，但如果达到上限，会导致当天剩余时间从应用程序发送的所有遥测丢失。 **不推荐**让应用程序达到每日上限，因为达到每日上限后将无法跟踪应用程序运行状况和性能。 
+可使用每日数据上限来限制收集的数据量，但如果达到上限，会导致当天剩余时间内从应用程序发送的所有遥测丢失。 **不推荐**让应用程序达到每日上限，因为达到每日上限后将无法跟踪应用程序运行状况和性能。 
 
 相反，请使用[采样](app-insights-sampling.md)将数据量调整到所需级别，将每日上限仅用作防止应用程序意外发送过多遥测数据量的“最后手段”。 
 

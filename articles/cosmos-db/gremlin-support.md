@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: f95a0abcd50b94714a76b36a0b5f9c73da909879
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
 Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、低至个位数的可预测延迟、自动编制索引、SLA、跨越两个或更多 Azure 区域的数据库帐户的读取可用性。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](http://spark.apache.org/graphx/)）无缝集成。 
 
-本文提供 Gremlin 的快速演练，并列举图形 API 预览版中支持的 Gremlin 功能和步骤。
+本文提供 Gremlin 的快速演练，并列举图形 API 支持的 Gremlin 功能和步骤。
 
 ## <a name="gremlin-by-example"></a>举例介绍 Gremlin
 我们使用一个示例图形来了解如何在 Gremlin 中表示查询。 下图显示了一个商业应用程序，该应用程序管理以图形形式呈现的有关用户、兴趣和设备的数据。  
@@ -80,7 +80,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 | 类别 | Azure Cosmos DB 实现 |  说明 | 
 | --- | --- | --- |
-| 图形功能 | 在预览版中提供持久性和并发访问。 旨在支持事务 | 可通过 Spark 连接器实现计算机方法。 |
+| 图形功能 | 提供持久性和并发访问。 旨在支持事务 | 可通过 Spark 连接器实现计算机方法。 |
 | 变量功能 | 支持布尔值、整数、字节、双精度值、浮点值、长整数和字符串 | 支持基元类型，通过数据模型与复杂类型兼容 |
 | 顶点功能 | 支持 RemoveVertices、MetaProperties、AddVertices、MultiProperties、StringIds、UserSuppliedIds、AddProperty、RemoveProperty  | 支持创建、修改和删除顶点 |
 | 顶点属性功能 | StringIds、UserSuppliedIds、AddProperty、RemoveProperty、BooleanValues、ByteValues、DoubleValues、FloatValues、IntegerValues、LongValues、StringValues | 支持创建、修改和删除顶点属性 |
@@ -154,7 +154,7 @@ GraphSON 为顶点使用的属性如下：
 
 | 属性 | 说明 |
 | --- | --- |
-| value | 属性的值
+| 值 | 属性的值
 
 ## <a name="gremlin-partitioning"></a>Gremlin 分区
 

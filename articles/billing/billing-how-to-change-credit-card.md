@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9cab81b6072c6f096f6f1a419cebcca9630ebde3
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡或借记卡
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/11/2017
 
 订阅禁用或取消后，我们将在 90 天后永久删除该订阅。 你的付款方式将保留至保留期结束，以便你能够随时根据需要重新激活订阅。 保留期结束后，将彻底删除订阅。
 
-如果需要在 90 天的保留期结束前删除信用卡或借记卡，[请联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+如果需要在 90 天的保留期结束前删除信用卡或借记卡，请[重新激活订阅](billing-subscription-become-disable.md)。 如果不能重新激活，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>为何我总是看到“登录会话已过期。 请单击此处以重新登录”？
 
@@ -96,6 +96,10 @@ ms.lasthandoff: 10/11/2017
 ### <a name="how-do-i-make-a-one-time-payment"></a>如何一次性付款？
 
 很遗憾，Azure 当前不支持信用卡或借记卡一次性付款。 
+
+### <a name="how-do-i-change-the-tax-id"></a>如何更改税务 ID？
+
+若要添加或更新税务 ID，请访问 [Azure 帐户中心中的“配置文件”](https://account.azure.com/Profile)，然后选择“税收记录”。 此税务 ID 用于免税计算，并且会显示在发票上。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

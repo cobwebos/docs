@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 10ce74097388a0283797e4692126c5039e8d4dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc4c643b8d0e8de1b5c38ca7bb1b0193d6b0f05b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="internal-queue-triggers"></a>内部队列触发器
 
-业务流程协调程序函数和活动函数都由函数应用默认存储帐户中的内部队列触发。 Durable Functions 中有两种类型的队列：**控制队列**和**工作项队列**。
+业务流程协调程序函数和活动函数都由函数应用默认存储帐户中的内部队列触发。 Durable Functions 中有两种类型的队列：“控制队列”和“工作项队列”。
 
 ### <a name="the-work-item-queue"></a>工作项队列
 
@@ -59,13 +59,13 @@ Durable Functions 中的每个任务中心都有一个工作项队列。 这是�
 业务流程实例针对业务流程的实例 ID 运行内部哈希函数，在控制队列实例之间分布。 默认情况下，实例 ID 是自动生成的且是随机的，确保在所有可用的控制队列之间均衡实例。 支持的控制队列分区的当前默认数目为 **4**。
 
 > [!NOTE]
-> 目前无法在 Azure Functions 中配置分区数。 [我们正在努力跟进此配置选项的支持工作](https://github.com/Azure/azure-functions-durable-extension/issues/73)。
+> 目前无法在 Azure Functions 中配置控制队列分区数。 [我们正在努力跟进此配置选项的支持工作](https://github.com/Azure/azure-functions-durable-extension/issues/73)。
 
 一般而言，业务流程协调程序函数是轻量型的，应该不需要大量的计算能力。 因此，无需创建大量的控制队列分区即可获得极佳的吞吐量。 相反，大部分繁重工作将在可无限横向扩展的无状态活动函数中完成。
 
 ## <a name="auto-scale"></a>自动缩放
 
-与消耗计划中运行的所有 Azure Functions 一样，Durable Functions 支持通过 [Azure Functions 缩放控制器](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling)自动缩放。 缩放控制器监视工作项队列和每个控制队列的长度，可相应地添加或删除 VM 资源。 如果控制队列的长度逐渐增大，缩放控制器会持续添加实例，直到达到控制队列分区计数。 如果工作项队列的长度逐渐增大，缩放控制器会持续添加 VM 资源，直到能够与负载相匹配，而不考虑控制队列分区计数。
+与消耗计划中运行的所有 Azure Functions 一样，Durable Functions 支持通过 [Azure Functions 缩放控制器](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling)自动缩放。 缩放控制器监视工作项队列和每个控制队列的长度，可相应地添加或删除 VM 实例。 如果控制队列的长度逐渐增加，缩放控制器会持续添加 VM 实例，直到达到控制队列分区计数为止。 如果工作项队列的长度逐渐增加，缩放控制器会持续添加 VM 实例，直到能够与负载相匹配为止，而不考虑控制队列分区计数。
 
 ## <a name="thread-usage"></a>线程用量
 

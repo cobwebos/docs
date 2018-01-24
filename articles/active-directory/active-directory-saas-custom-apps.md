@@ -15,11 +15,11 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 763007f004ab82ef5a6b2cac6dbef1ab221a060f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cedba7397e29cb397560c65a2408cd27442ec01c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-editions.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/11/2017
 
 其中包括：
 
-* **登录 URL (仅限 SP 发起)** – 用户可通过此 URL 登录到此应用程序。 如果将应用程序配置为执行服务提供者发起的单一登录，则当用户导航到此 URL 时，服务提供者会进行必要的重定向，重定向到 Azure AD 完成用户身份验证和登录。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果忽略此字段，则从 Office 365、Azure AD 访问面板或 Azure AD 单一登录 URL（从“仪表板”选项卡复制）启动应用时，Azure AD 会执行标识提供者发起的登录。
+* **登录 URL (仅限 SP 发起)** – 用户可通过此 URL 登录到此应用程序。 如果将应用程序配置为执行服务提供者发起的单一登录，则当用户导航到此 URL 时，服务提供者会进行必要的重定向，重定向到 Azure AD 完成用户身份验证和登录。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果忽略此字段，从 Office 365、Azure AD 访问面板或 Azure AD 单一登录 URL（可从“仪表板”选项卡复制）启动应用时，Azure AD 则改为执行标识提供者发起的登录。
 * **颁发者 URL** - 颁发者 URL 应唯一标识正在为其配置单一登录的应用程序。 这是 Azure AD 发送回应用程序的值，作为 SAML 令牌的 **Audience** 参数，预计由应用程序对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为**实体 ID**。 有关实体 ID 或 Audience 值的详细信息，请查看应用程序的 SAML 文档。 以下示例显示了在返回到应用程序的 SAML 令牌中的受众 URL 的形式：
 
 ```

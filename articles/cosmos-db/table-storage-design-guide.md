@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: eaa9d2208406afece5c77859546e888c1e49e902
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d93b6a25c1781c7d4f1f0534eda146963f439dd5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/06/2017
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/06/2017
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -111,7 +111,7 @@ ms.lasthandoff: 11/06/2017
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -251,7 +251,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 许多设计必须满足要求，才能允许根据多个条件查找实体。 例如，根据电子邮件、员工 ID 或姓氏查找员工实体。 [表设计模式](#table-design-patterns)部分中的下述模式瞒住了这些类型的要求，并介绍了相关方式来处理表服务不提供辅助索引的问题：  
 
 * [内分区的第二索引模式](#intra-partition-secondary-index-pattern) - 利用同一分区中的 **RowKey** 值存储每个实体的多个副本，实现快速、高效的查询，并借助不同的 **RowKey** 值替换排序顺序。  
-* [内分区的第二索引模式](#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 **RowKey** 值替换排序顺序。  
+* [内分区的第二索引模式](#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序。  
 * [索引实体模式](#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
 
 ### <a name="sorting-data-in-the-table-service"></a>对表服务中的数据进行排序
@@ -1120,7 +1120,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1140,7 +1140,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1177,7 +1177,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1213,7 +1213,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1235,7 +1235,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1276,7 +1276,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>

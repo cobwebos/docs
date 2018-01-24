@@ -1,44 +1,46 @@
 ---
 title: "Azure 容器实例教程 - 准备应用"
-description: "准备部署到 Azure 容器实例的应用"
+description: "Azure 容器实例教程第 1 部分（共 3 部分）- 准备部署到 Azure 容器实例的应用"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6a168b600833c7e4544da7a5f5f4b7a0af73e0b5
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fc16be80e776d1472be775fa32354ba157d16545
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>创建部署到 Azure 容器实例的容器
 
-使用 Azure 容器实例可以将 Docker 容器部署到 Azure 基础结构中，不需预配任何虚拟机，也不需采用任何更高级别的服务。 本教程将使用 Node.js 生成小型 Web 应用程序并将其打包到容器中，然后即可使用 Azure 容器实例运行该容器。 本文内容：
+使用 Azure 容器实例可以将 Docker 容器部署到 Azure 基础结构中，不需预配任何虚拟机，也不需采用任何更高级别的服务。 本教程将使用 Node.js 生成小型 Web 应用程序并将其打包到容器中，然后即可使用 Azure 容器实例运行该容器。
+
+本文（本系列的第一部分）将介绍如何：
 
 > [!div class="checklist"]
-> * 克隆 GitHub 中的应用程序源
-> * 根据应用程序源创建容器映像
+> * 克隆 GitHub 中的应用程序源代码
+> * 从应用程序源创建容器映像
 > * 在本地 Docker 环境中测试映像
 
 在后续教程中，需要将映像上传到 Azure 容器注册表，然后将其部署到 Azure 容器实例。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.21 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
+本教程要求运行 Azure CLI 2.0.23 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0][azure-cli-install]。
 
-本教程假定基本了解核心 Docker 概念，如容器、容器映像和基本 `docker` 命令。 如需要，请参阅 [Docker 入门]( https://docs.docker.com/get-started/)，了解容器基本知识。
+本教程假定基本了解核心 Docker 概念，如容器、容器映像和基本 `docker` 命令。 如有需要，请参阅 [Docker 入门][docker-get-started]，了解容器基本知识。
 
-若要完成本教程，需要 Docker 开发环境。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
+若要完成本教程，需要本地安装的 Docker 开发环境。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
-Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 因此，我们建议在本地安装 Azure CLI 和 Docker 开发环境。
+Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 若要完成本教程，必须在本地计算机安装 Azure CLI 和 Docker 开发环境。
 
 ## <a name="get-application-code"></a>获取应用程序代码
 
-本教程中的示例包括使用 [Node.js](http://nodejs.org) 生成的简单 Web 应用程序。 应用提供静态的 HTML 页面，如下所示：
+本教程中的示例包括使用 [Node.js][nodejs] 生成的简单 Web 应用程序。 应用提供静态的 HTML 页面，如下所示：
 
 ![显示在浏览器中的教程应用][aci-tutorial-app]
 
@@ -50,10 +52,10 @@ git clone https://github.com/Azure-Samples/aci-helloworld.git
 
 ## <a name="build-the-container-image"></a>生成容器映像
 
-在示例存储库中提供的 Dockerfile 演示如何生成容器。 它从基于 [Alpine Linux](https://alpinelinux.org/) 的[正式 Node.js 映像][dockerhub-nodeimage]开始，该映像是适用于容器的小型分发。 然后，它会将应用程序文件复制到容器中，使用 Node 包管理器安装依赖项，最后启动应用程序。
+在示例存储库中提供的 Dockerfile 演示如何生成容器。 它从基于 [Alpine Linux][alpine-linux] 的[正式 Node.js 映像][docker-hub-nodeimage]开始，该映像是适用于容器的小型分发。 然后，它会将应用程序文件复制到容器中，使用 Node 包管理器安装依赖项，最后启动应用程序。
 
 ```Dockerfile
-FROM node:8.2.0-alpine
+FROM node:8.9.3-alpine
 RUN mkdir -p /usr/src/app
 COPY ./app/* /usr/src/app/
 WORKDIR /usr/src/app
@@ -61,23 +63,23 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-使用 `docker build` 命令创建容器映像，将其标记为“aci-tutorial-app”：
+使用 [docker build][docker-build] 命令创建容器映像，将其标记为“aci-tutorial-app”：
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-`docker build` 命令的输出类似于以下内容（为方便阅读，已进行截断处理）：
+[docker build][docker-build] 命令的输出类似于以下内容（为方便阅读，已进行截断处理）：
 
 ```bash
 Sending build context to Docker daemon  119.3kB
-Step 1/6 : FROM node:8.2.0-alpine
-8.2.0-alpine: Pulling from library/node
+Step 1/6 : FROM node:8.9.3-alpine
+8.9.3-alpine: Pulling from library/node
 88286f41530e: Pull complete
 84f3a4bf8410: Pull complete
 d0d9b2214720: Pull complete
 Digest: sha256:c73277ccc763752b42bb2400d1aaecb4e3d32e3a9dbedd0e49885c71bea07354
-Status: Downloaded newer image for node:8.2.0-alpine
+Status: Downloaded newer image for node:8.9.3-alpine
  ---> 90f5ee24bee2
 ...
 Step 6/6 : CMD node /usr/src/app/index.js
@@ -88,7 +90,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-使用 `docker images` 查看生成的映像：
+使用 [docker images][docker-images] 命令查看已生成映像：
 
 ```bash
 docker images
@@ -127,9 +129,23 @@ docker run -d -p 8080:80 aci-tutorial-app
 > [!div class="nextstepaction"]
 > [向 Azure 容器注册表推送映像](./container-instances-tutorial-prepare-acr.md)
 
-<!-- LINKS -->
-[dockerhub-nodeimage]: https://store.docker.com/images/node
-
 <!--- IMAGES --->
 [aci-tutorial-app]:./media/container-instances-quickstart/aci-app-browser.png
 [aci-tutorial-app-local]: ./media/container-instances-tutorial-prepare-app/aci-app-browser-local.png
+
+<!-- LINKS - External -->
+[alpine-linux]: https://alpinelinux.org/
+[docker-build]: https://docs.docker.com/engine/reference/commandline/build/
+[docker-get-started]: https://docs.docker.com/get-started/
+[docker-hub-nodeimage]: https://store.docker.com/images/node
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
+[nodejs]: http://nodejs.org
+
+<!-- LINKS - Internal -->
+[azure-cli-install]: /cli/azure/install-azure-cli

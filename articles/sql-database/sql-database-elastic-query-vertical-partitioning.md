@@ -4,7 +4,7 @@ description: "如何在垂直分区上设置跨数据库查询"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
-author: torsteng
+author: MladjoA
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
 ms.custom: scale out apps
@@ -12,13 +12,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: d57f45066387f451463a38d76d3fe6adab77e41f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 12/12/2017
+ms.author: mlandzic
+ms.openlocfilehash: f3bf919aa4aab8d37a5a97b90138b1f5434eb6ea
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 ![跨不同数据库中的表进行查询][1]
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/31/2017
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
 弹性查询使用此凭据连接到远程数据库。  
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
     SECRET = '<password>'
     [;]
@@ -155,14 +155,14 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
-弹性查询还引入了一个存储过程，以便提供对分片的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于执行远程存储过程或远程数据库上的 T-SQL 代码。 它采用了以下参数： 
+弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于执行远程存储过程或远程数据库上的 T-SQL 代码。 它采用了以下参数： 
 
 * 数据源名称 (nvarchar)：RDBMS 类型的外部数据源名称。 
-* 查询 (nvarchar)：要在每个分片上执行的 T-SQL 查询。 
+* 查询 (nvarchar)：要在远程数据库上执行的 T-SQL 查询。 
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。 
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
+Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
 
 示例： 
 

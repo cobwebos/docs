@@ -3,7 +3,7 @@ title: "通过 Webhook 启动 Azure 自动化 Runbook | Microsoft 文档"
 description: "一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: d384a1f6e0f6bf49cf94020265fe5675ffc0029d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03d1617eb64c48b6a90925ae76e1ab3ce0312ff1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，外部服务（例如 Visual Studio Team Services、GitHub、Microsoft Operations Management Suite Log Analytics 或自定义应用程序）就可以在不通过 Azure 自动化 API 实现完整解决方案的情况下启动 Runbook。  
@@ -31,13 +31,13 @@ Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 
 | 属性 | 说明 |
 |:--- |:--- |
-| Name |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。  它只用来标识 Azure 自动化中的 Runbook。 <br>  最好是为 Webhook 提供一个与名称，该名称需要与将要使用的客户端相关。 |
+| 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。  它只用来标识 Azure 自动化中的 Runbook。 <br>  最好是为 Webhook 提供一个与名称，该名称需要与将要使用的客户端相关。 |
 | 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。  它是在创建 Webhook 时自动生成的。  不能指定自定义 URL。 <br> <br>  URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。  出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 应该将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 不再可用。  创建 Webhook 后，可以修改此到期日期。 |
-| Enabled |Webhook 在创建后已按默认启用。  如果将 Runbook 设置为“Disabled”，将没有客户端能够使用它。  可以在创建 Webhook 时设置 **Enabled** 属性，也可以在创建后随时设置它。 |
+| 已启用 |Webhook 在创建后已按默认启用。  如果将 Runbook 设置为“Disabled”，将没有客户端能够使用它。  可以在创建 Webhook 时设置 **Enabled** 属性，也可以在创建后随时设置它。 |
 
 ### <a name="parameters"></a>parameters
-Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会用到这些值。 Webhook 必须包含 Runbook 的任何必需参数的值，可以包含可选参数的值。 即使在创建 Webhoook 后，也可以修改配置给 Webhook 的参数值。 链接到单个 Runbook 的多个 Webhook 可以使用不同的参数值。
+Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会用到这些值。 Webhook 必须包含 Runbook 的任何必需参数的值，可以包含可选参数的值。 即使在创建 Webhook 后，也可以修改配置给 Webhook 的参数值。 链接到单个 Runbook 的多个 Webhook 可以使用不同的参数值。
 
 客户端在使用 Webhook 启动 Runbook 时，不能重写在 Webhook 中定义的参数值。  为了从客户端接收数据，Runbook 可能会接受名为 **$WebhookData** 且类型为 [object] 的单个参数，该参数会包含客户端包括在 POST 请求中的数据。
 
@@ -85,10 +85,10 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 ## <a name="creating-a-webhook"></a>创建 Webhook
 在 Azure 门户中使用以下过程来创建新的链接到 Runbook 的 Webhook。
 
-1. 在 Azure 门户的“Runbook”边栏选项卡中，单击需要通过 Webhook 来启动以查看其详细信息边栏选项卡的 Runbook。
-2. 单击边栏选项卡顶部的 **Webhook** 以打开“添加 Webhook”边栏选项卡。 <br>
-   ![Webhooks 按钮](media/automation-webhooks/webhooks-button.png)
-3. 单击“新建 Webhook”以打开“创建 Webhook”边栏选项卡。
+1. 在 Azure 门户的“Runbook”页中，单击需要通过 Webhook 来启动以查看其详细信息页的 Runbook。
+2. 单击页顶部的“Webhook”以打开“添加 Webhook”页。 <br>
+   ![Webhook 按钮](media/automation-webhooks/webhooks-button.png)
+3. 单击“新建 Webhook”以打开“创建 Webhook”页。
 4. 指定 Webhook 的**名称**、**到期日期**，以及是否应启用它。 有关这些属性的详细信息，请参阅 [Webhook 详细信息](#details-of-a-webhook)。
 5. 单击复制图标，并按 Ctrl+C 以复制 Webhook 的 URL。  然后，将其记录在某个安全的位置。  **一旦创建 Webhook，就不能再次检索该 URL。** <br>
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)

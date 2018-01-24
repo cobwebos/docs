@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: a1305432d98c2e9f9f8bc30cacc62d49b1a8ba36
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5cfb968b201f49d5b7029a0b677e3ce2a8aa6cb9
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -35,8 +35,8 @@ ms.lasthandoff: 11/29/2017
 
 参阅语言特定的示例：
 
-* [预编译 C# - 读取一个实体](#input---c-example-1)
-* [预编译 C# - 读取多个实体](#input---c-example-2)
+* [C# 读取一个实体](#input---c-example-1)
+* [C# 读取多个实体](#input---c-example-2)
 * [C# 脚本 - 读取一个实体](#input---c-script-example-1)
 * [C# 脚本 - 读取多个实体](#input---c-script-example-2)
 * [F#](#input---f-example-2)
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/29/2017
 
 ### <a name="input---c-example-1"></a>输入 - C# 示例 1
 
-以下示例演示读取单个表行的[预编译 C#](functions-dotnet-class-library.md) 代码。 
+以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 
 
 行键值“{queueTrigger}”指示行键来自队列消息字符串。
 
@@ -71,7 +71,7 @@ public class TableStorage
 
 ### <a name="input---c-example-2"></a>输入 - C# 示例 2
 
-以下示例演示读取多个表行的[预编译 C#](functions-dotnet-class-library.md) 代码。 请注意，`MyPoco` 类派生自 `TableEntity`。
+以下示例演示读取多个表行的 [C# 函数](functions-dotnet-class-library.md)。 请注意，`MyPoco` 类派生自 `TableEntity`。
 
 ```csharp
 public class TableStorage
@@ -286,7 +286,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>输入 - 特性
  
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用以下特性来配置表输入绑定：
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用以下属性来配置表输入绑定：
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)，在 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义。
 
@@ -316,7 +316,7 @@ module.exports = function (context, myQueueItem) {
   }
   ```
 
-  有关完整示例，请参阅[输入 - 预编译 C# 示例](#input---c-example)。
+  有关完整示例，请参阅[输入 - C# 示例](#input---c-example)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)，在 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义
 
@@ -389,14 +389,14 @@ module.exports = function (context, myQueueItem) {
 
 参阅语言特定的示例：
 
-* [预编译 C#](#output---c-example)
-* [C# 脚本](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# 脚本 (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
-以下示例演示使用 HTTP 触发器写入单个表行的[预编译 C#](functions-dotnet-class-library.md) 代码。 
+以下示例演示使用 HTTP 触发器写入单个表行的 [C# 函数](functions-dotnet-class-library.md)。 
 
 ```csharp
 public class TableStorage
@@ -569,7 +569,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>输出 - 特性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义的 [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) 中定义的 [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)。
 
 该特性的构造函数采用表名称。 可对函数的 `out` 参数或返回值使用该特性，如以下示例中所示：
 
@@ -597,9 +597,9 @@ public static MyPoco TableOutput(
 }
 ```
 
-有关完整示例，请参阅[输出 - 预编译 C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
-可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[输入 - 特性](#input---attributes-for-precompiled-c)。
+可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[输入 - 特性](#input---attributes)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 

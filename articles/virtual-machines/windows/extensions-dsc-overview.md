@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
-ms.openlocfilehash: c05c2d541a5f526f362f9cd72fe6d878374112b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: deb360e36b68f7ddb13b00946c700d0c83890ca6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,11 +37,9 @@ Azure VM 代理和关联的扩展是 Microsoft Azure 基础结构服务的一部
 ## <a name="terms-and-concepts"></a>术语和概念
 本指南假设熟悉以下概念：
 
-配置 - DSC 配置文档。 
-
-节点 - DSC 配置的目标。 本文档中，“节点”一律指 Azure VM。
-
-配置数据 - 包含配置环境数据的 .psd1 文件
+* **配置** - DSC 配置文档。 
+* **节点** -DSC 配置的目标。 本文档中，“节点”一律指 Azure VM。
+* **配置数据** - 包含配置环境数据的 psd1 文件
 
 ## <a name="architectural-overview"></a>体系结构概述
 Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 DSC 扩展需要一个 .zip 文件，其中至少包含一个配置文档，以及通过 Azure PowerShell SDK 或 Azure 门户提供的一组参数。
@@ -55,7 +53,7 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 安装 WMF 需要重新启动。 重新启动后，扩展将下载 `modulesUrl` 属性中指定的 .zip 文件。 如果此位置是在 Azure Blob 存储中，则可以在 `sasToken` 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 `configurationFunction` 中定义的配置函数以生成 .MOF 文件。 然后，扩展将针对生成的 MOF 文件运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写回到 Azure 状态通道。 然后，DSC LCM 将正常处理监视和更正操作。 
 
 ## <a name="powershell-cmdlets"></a>PowerShell cmdlet
-可在 Azure Resource Manager 或经典部署模型中使用 PowerShell cmdlet 来打包、发布和监视 DSC 扩展部署。 以下列出的 cmdlet 均为经典部署模型，但“AzureRm”可替代“Azure”，以使用 Azure 资源管理器模型。 例如，`Publish-AzureVMDscConfiguration` 使用经典部署模型，`Publish-AzureRmVMDscConfiguration` 使用 Azure Resource Manager。 
+可在 Azure 资源管理器或经典部署模型中使用 PowerShell cmdlet 来打包、发布和监视 DSC 扩展部署。 以下列出的 cmdlet 均为经典部署模型，但“AzureRm”可替代“Azure”，以使用 Azure 资源管理器模型。 例如，`Publish-AzureVMDscConfiguration` 使用经典部署模型，`Publish-AzureRmVMDscConfiguration` 使用 Azure 资源管理器。 
 
 `Publish-AzureVMDscConfiguration` 检索配置文件，扫描其中是否有依赖的 DSC 资源，并创建一个 .zip 文件，其中包含启用配置所需的配置和 DSC 资源。 它还可以使用 `-ConfigurationArchivePath` 参数在本地创建包。 否则，它会将 .zip 文件发布到 Azure Blob 存储，然后使用 SAS 令牌保护该文件。
 
@@ -69,15 +67,15 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 
 `Remove-AzureVMDscExtension` 可从给定的虚拟机中删除扩展处理程序。 此 cmdlet **不会**删除配置、卸载 WMF 或更改虚拟机上已应用的设置。 而只删除扩展处理程序。 
 
-**ASM cmdlet 和 Azure Resource Manager cmdlet 之间的主要差异**
+**ASM cmdlet 和 Azure 资源管理器 cmdlet 之间的主要差异**
 
-* Azure Resource Manager cmdlet 是同步的。 ASM cmdlet 是异步的。
-* ResourceGroupName、VMName、ArchiveStorageAccountName、Version 和 Location 都是 Azure Resource Manager 中的必需参数。
-* ArchiveResourceGroupName 是 Azure Resource Manager 的新可选参数。 如果用户的存储帐户所属的资源组与创建虚拟机的资源组不同，用户可以指定此参数。
-* ConfigurationArchive 在 Azure Resource Manager 中名为 ArchiveBlobName
-* ContainerName 在 Azure Resource Manager 中名为 ArchiveContainerName
+* Azure 资源管理器 cmdlet 是同步的。 ASM cmdlet 是异步的。
+* ResourceGroupName、VMName、ArchiveStorageAccountName、Version 和 Location 都是 Azure 资源管理器中的必需参数。
+* ArchiveResourceGroupName 是 Azure 资源管理器的新可选参数。 如果用户的存储帐户所属的资源组与创建虚拟机的资源组不同，用户可以指定此参数。
+* ConfigurationArchive 在 Azure 资源管理器中名为 ArchiveBlobName
+* ContainerName 在 Azure 资源管理器中名为 ArchiveContainerName
 * StorageEndpointSuffix 在 Azure 资源管理器中名为 ArchiveStorageEndpointSuffix
-* 已将 AutoUpdate 开关添加到 Azure Resource Manager，使扩展处理程序能够在有最新版本时自动更新。 请注意，当发布了新版本的 WMF 时，此参数可能会导致 VM 重新启动。 
+* 已将 AutoUpdate 开关添加到 Azure 资源管理器，使扩展处理程序能够在有最新版本时自动更新。 请注意，当发布了新版本的 WMF 时，此参数可能会导致 VM 重新启动。 
 
 ## <a name="azure-portal-functionality"></a>Azure 门户功能
 浏览到 VM。 在“设置”->“常规”下面，单击“扩展”。 此时会创建一个新窗格。 单击“添加”，并选择“PowerShell DSC”。
@@ -129,7 +127,7 @@ $demoVM | Update-AzureVM -Verbose
 #check on status
 Get-AzureVMDscExtensionStatus -VM $demovm -Verbose
 ```
-###<a name="azure-resource-manager-model"></a>Azure Resource Manager 模型
+###<a name="azure-resource-manager-model"></a>Azure 资源管理器模型
 
 ```powershell
 $resourceGroup = "dscVmDemo"
@@ -146,12 +144,14 @@ Set-AzureRmVmDscExtension -Version 2.21 -ResourceGroupName $resourceGroup -VMNam
 ## <a name="logging"></a>日志记录
 日志位于：
 
+```
 C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Version Number]
+```
 
 ## <a name="next-steps"></a>后续步骤
 有关 PowerShell DSC 的详细信息，请[访问 PowerShell 文档中心](https://msdn.microsoft.com/powershell/dsc/overview)。 
 
-检查 [Azure Resource Manager template for the DSC extension](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（适用于 DSC 扩展的 Azure Resource Manager 模板）。 
+检查[适用于 DSC 扩展的 Azure 资源管理器模板](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 若要查找可以使用 PowerShell DSC 管理的其他功能，请[浏览 PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)获取更多 DSC 资源。
 

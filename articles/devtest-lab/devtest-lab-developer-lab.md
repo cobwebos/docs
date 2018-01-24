@@ -3,7 +3,7 @@ title: "使用面向开发人员的 Azure 开发测试实验室 | Microsoft Docs
 description: "了解如何使用面向开发人员的 Azure 开发测试实验室。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 22e070e5-3d1a-49fe-9d4c-5e07cb0b7fe2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: tarcher
-ms.openlocfilehash: b829ebd90034031721dfe2e97427e624306da1e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: f99776a718c03e8af36d45d7006be8ce29208615
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
 可使用 Azure 开发测试实验室来实现许多关键方案，但其中一个主要方案涉及使用开发测试实验室为开发人员托管开发计算机。 在此方案中，开发测试实验室具有以下优势：
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [配置 Azure 应用商店映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表，仅使需用于开发人员的映像可供选择。|
+   | [配置 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表，仅使需用于开发人员的映像可供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让开发人员能够使用自定义映像快速创建 VM。|
    | [了解映像工厂](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |观看介绍如何设置和使用映像工厂的视频。|
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/11/2017
    | --- | --- |
    | [管理用于创建 VM 的开发测试实验室公式](devtest-lab-manage-formulas.md) |了解如何通过选取映像、VM 大小（CPU 和 RAM 的组合）和虚拟网络创建公式。|
 
-4. 创建项目，实现灵活的 VM 自定义
+4. **创建项目，实现灵活的 VM 自定义**
 
    项目用于在预配 VM 后部署和配置应用程序。 项目可以是：
 

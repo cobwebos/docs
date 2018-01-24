@@ -11,130 +11,181 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API
 
-Azure 媒体服务团队发布了 Azure Active Directory (Azure AD) 身份验证支持，以供访问 Azure 媒体服务。 它还宣布了计划停止通过 Azure 访问控制服务身份验证来访问媒体服务。 由于每个 Azure 订阅和每个媒体服务帐户都附加到 Azure AD 租户，因此 Azure AD 身份验证支持增添了许多安全保障。 若要详细了解此更改和迁移（如果对应用程序使用媒体服务 .NET SDK），请参阅以下博文和文章：
+通过 Azure 媒体服务使用 Azure AD 身份验证时，可以通过以下两种方式之一进行身份验证：
 
-- [Azure 媒体服务团队宣布支持 Azure AD 身份验证，并弃用访问控制身份验证](https://azure.microsoft.com/blog/azure%20media%20service%20aad%20auth%20and%20acs%20deprecation)
-- [通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)
-- [通过 Azure AD 身份验证使用 .NET 访问 Azure 媒体服务 API](media-services-dotnet-get-started-with-aad.md)
-- [通过 Azure 门户开始使用 Azure AD 身份验证](media-services-portal-get-started-with-aad.md)
+- **用户身份验证**：对使用应用程序与 Azure 媒体服务资源进行交互的人员执行身份验证。 交互式应用程序应首先提示用户输入凭据。 举个例子，授权用户用来监视编码作业或实时流式处理的管理控制台应用程序。 
+- **服务主体身份验证**：对服务进行身份验证。 通常使用此身份验证方法的应用程序是运行守护程序服务、中间层服务或计划作业的应用：如 Web 应用、函数应用、逻辑应用、 API 或微服务。
 
-一些客户需要在以下约束条件下开发媒体服务解决方案：
+    本教程演示如何通过 Azure AD“服务主体”身份验证使用 REST 访问 AMS API。 
 
-*   不使用 Microsoft.NET 或 C# 编程语言，或运行时环境不是 Windows。
-*   Azure AD 库（如 Active Directory 身份验证库）既不能用于编程语言，也不能用于运行时环境。
+    > [!NOTE]
+    > “服务主体”是为连接到 Azure 媒体服务的大多数应用程序推荐的最佳做法。 
 
-一些客户开发了应用程序，将 REST API 用于访问控制身份验证和 Azure 媒体服务访问。 对于此类客户，需要有一种方法，只对 Azure AD 身份验证和后续 Azure 媒体服务访问使用 REST API。 无需依赖任何 Azure AD 库或媒体服务 .NET SDK。 本文将介绍一种解决方案，并提供此方案的示例代码。 由于代码全都是 REST API 调用，不依赖任何 Azure AD 或 Azure 媒体服务库，因此可以将代码轻松转换为其他任何编程语言。
+本教程介绍如何执行下列操作：
+
+> [!div class="checklist"]
+> * 从 Azure 门户获取身份验证信息
+> * 使用 Postman 获取访问令牌
+> * 使用访问令牌测试资产 API
+
 
 > [!IMPORTANT]
 > 目前，媒体服务支持 Azure 访问控制服务身份验证模型。 不过，访问控制身份验证将于 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。
 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="design"></a>设计
+- 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
+- 查看[通过 ADD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
+- 安装 [Postman](https://www.getpostman.com/) REST 客户端以执行本文所示的 REST API。 
 
-本文将使用以下身份验证和授权设计：
+    本教程中要使用的是 Postman，但任何 REST 工具也适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
 
-*  授权协议：OAuth 2.0。 OAuth 2.0 是一种涉及身份验证和授权的 Web 安全标准。 Google、Microsoft、Facebook 和 PayPal 均支持此协议。 获准时间为 2012 年 10 月。 Microsoft 坚决支持 OAuth 2.0 和 OpenID Connect。 多个服务和客户端库都支持这两种标准，包括 Azure Active Directory、Open Web Interface for .NET (OWIN) Katana 和 Azure AD 库。
-*  授权类型：客户端凭据授权类型。 客户端凭据是 OAuth 2.0 中的四种授权类型之一。 通常用于 Azure AD Microsoft Graph API 访问。
-*  身份验证模式：服务主体。 另一种身份验证模式为用户或交互式身份验证。
+## <a name="get-the-authentication-information-from-the-azure-portal"></a>从 Azure 门户获取身份验证信息
 
-通过 Azure AD 身份验证和授权流使用媒体服务总共涉及四个应用程序或服务。 下表介绍了这些应用程序、服务和流：
+### <a name="overview"></a>概述
 
-|应用程序类型 |应用程序 |流向|
-|---|---|---|
-|客户端 | 客户应用程序或解决方案 | 此应用程序（实际上是它的代理）在 Azure 订阅和媒体服务帐户所在的 Azure AD 租户中注册。 然后，向已注册的应用程序服务主体授予媒体服务帐户访问控制 (IAM) 中的所有者或参与者角色。 服务主体以应用程序客户端 ID 和客户端密码表示。 |
-|标识提供者 (IDP) | 作为 IDP 的 Azure AD | 作为 IDP 的 Azure AD 对已注册的应用程序服务主体（客户端 ID 和客户端密码）进行身份验证。 此身份验证在内部隐式进行。 如客户端凭据流中所示，验证的是客户端，而不是用户。 |
-|安全令牌服务 (STS)/OAuth 服务器 | 作为 STS 的 Azure AD | 在 IDP（或 OAuth 2.0 术语中的 OAuth 服务器）进行身份验证后，作为 STS/OAuth 服务器的 Azure AD 颁发访问令牌或 JSON Web 令牌 (JWT)，以访问中间层资源（在此示例中，为媒体服务 REST API 终结点）。 |
-|资源 | 媒体服务 REST API | 每个媒体服务 REST API 调用都由作为 STS 的 Azure AD 或 OAuth 服务器颁发的访问令牌进行授权。 |
+若要访问媒体服务 API，需要收集以下数据点。
 
-如果运行示例代码，并捕获 JWT 令牌或访问令牌，那么 JWT 包含以下属性：
+|设置|示例|说明|
+|---|-------|-----|
+|Azure Active Directory 租户域|microsoft.onmicrosoft.com|使用以下格式创建作为安全令牌服务 (STS) 终结点的 Azure AD：https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token。 Azure AD 颁发用于访问资源的 JWT（访问令牌）。|
+|REST API 终结点|https://amshelloworld.restv2.westus.media.azure.net/api/|这是应用程序中发出的所有媒体服务 REST API 调用所针对的终结点。|
+|客户端 ID（应用程序 ID）|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD 应用程序（客户端）ID。 需要客户端 ID 才能获取访问令牌。 |
+|客户端机密|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD 应用程序密钥（客户端密码）。 需要客户端密码才能获取访问令牌。|
 
-    aud: "https://rest.media.azure.net",
+### <a name="get-aad-auth-info-from-the-azure-portal"></a>从 Azure 门户获取 AAD 身份验证信息
 
-    iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+若要获取信息，请按照以下步骤操作：
 
-    iat: 1497146280,
+1. 登录到 [Azure 门户](http://portal.azure.com)。
+2. 导航到 AMS 实例。
+3. 选择“API 访问”。
+4. 点击“通过服务主体连接到 Azure 媒体服务 API”。
 
-    nbf: 1497146280,
-    exp: 1497150180,
+    ![API 访问](./media/connect-with-rest/connect-with-rest01.png)
 
-    aio: "Y2ZgYDjuy7SptPzO/muf+uRu1B+ZDQA=",
+5. 选择现有的“Azure AD 应用程序”或新建一个 Azure AD 应用程序（如下所示）。
 
-    appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6",
+    > [!NOTE]
+    > 为使 Azure 媒体 REST 请求成功，对于尝试访问的媒体服务帐户，调用用户必须具有“参与者”或“所有者”角色。 如果出现“远程服务器返回错误: (401)未授权”的异常，请参阅[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
 
-    appidacr: "1",
+    如果需要创建新的 AD 应用，请执行以下步骤：
+    
+    1. 按“新建”。
+    2. 输入名称。
+    3. 再次按“新建”。
+    4. 按“保存”。
 
-    idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+    ![API 访问](./media/connect-with-rest/new-app.png)
 
-    oid: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+    新的应用将显示在页面上。
 
-    sub: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+6. 获取“客户端 ID”（应用程序 ID）。
+    
+    1. 选择应用程序。
+    2. 从右侧的窗口获取“客户端 ID”。 
 
-    tid: "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    ![API 访问](./media/connect-with-rest/existing-client-id.png)。
 
-下面展示了 JWT 中属性与上表中四个应用程序或服务的映射：
+7.  获取应用程序的“密钥”（客户端密码）。 
 
-|应用程序类型 |应用程序 |JWT 属性 |
-|---|---|---|
-|客户端 |客户应用程序或解决方案 |appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6"。 将在下一部分中注册到 Azure AD 的应用程序客户端 ID。 |
-|标识提供者 (IDP) | 作为 IDP 的 Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/" GUID 是 Microsoft 租户的 ID (microsoft.onmicrosoft.com)。 每个租户都有自己的唯一 ID。 |
-|安全令牌服务 (STS)/OAuth 服务器 |作为 STS 的 Azure AD | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"。 GUID 是 Microsoft 租户 (microsoft.onmicrosoft.com) 的 ID。 |
-|资源 | 媒体服务 REST API |aud: " https://rest.media.azure.net "。 访问令牌的接收人或受众。 |
+    1. 单击“管理应用程序”按钮（请注意，客户端 ID 信息位于“应用程序 ID”的下方）。 
+    2. 按“密钥”。
+    
+        ![API 访问](./media/connect-with-rest/manage-app.png)
+    3. 填写“说明”和“到期时间”，然后按“保存”以生成应用密钥（客户端密码）。
+    
+        按下“保存”按钮后将显示密钥值。 在退出此边栏选项卡之前复制此密钥值。
 
-## <a name="steps-for-setup"></a>设置步骤
+    ![API 访问](./media/connect-with-rest/connect-with-rest03.png)
 
-若要注册和设置 Azure Active Directory (AAD) 应用程序并获取用于调用 Azure 媒体服务 REST API 终结点的密钥，请参阅[通过 Azure 门户开始使用 Azure AD 身份验证](media-services-portal-get-started-with-aad.md)
+可以将 AD 连接参数的值添加到 web.config 或 app.config 文件，稍后在代码中使用。
 
+> [!IMPORTANT]
+> “客户端密钥”是重要的密码，应该正确地在密钥保管库中受到保护或在生产中加密。
 
-## <a name="info-to-collect"></a>要收集的信息
+## <a name="get-the-access-token-using-postman"></a>使用 Postman 获取访问令牌
 
-若要准备 REST 编码，请收集要在代码中添加的下列数据点：
+本部分演示如何使用 Postman 执行返回 JWT 持有者令牌（访问令牌）的 REST API。 若要调用任何媒体服务 REST API，需要将“授权”标头添加到这些调用，并将“持有者 your_access_token”的值添加到每个调用（如本教程的下一部分中所示）。 
 
-*   作为 STS 终结点的 Azure AD：https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token。 可以从此终结点请求获取 JWT 访问令牌。 除了用作 IDP 之外，Azure AD 还可以用作 STS。 Azure AD 颁发用于访问资源的 JWT（访问令牌）。 JWT 令牌具有各种声明。
-*   作为资源或受众的 Azure 媒体服务 REST API：https://rest.media.azure.net。
-*   客户端 ID：请参阅[设置步骤](#steps-for-setup)中的第 2 步。
-*   客户端密码：请参阅[设置步骤](#steps-for-setup)中的第 2 步。
-*   采用以下格式的媒体服务帐户 REST API 终结点：
+1. 打开 Postman。
+2. 选择“POST” 。
+3. 使用以下格式输入包括租户名称的 URL：此租户名称应以“.onmicrosoft.com”结尾，此 URL 应以“oauth2/token”结尾： 
 
-    https://[media_service_account_name].restv2.[data_center].media.azure.net/API 
+    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
 
-    这是应用程序中发出的所有媒体服务 REST API 调用所针对的终结点。 例如，https://willzhanmswjapan.restv2.japanwest.media.azure.net/API。
+4. 选择“标头”选项卡。
+5. 使用“密钥/值”数据网格输入“标头”信息。 
 
-然后，可以将这五个参数添加到 web.config 或 app.config 文件中，以便在代码中使用。
+    ![数据网格](./media/connect-with-rest/headers-data-grid.png)
 
-## <a name="sample-code"></a>代码示例
+    或者，单击 Postman 窗口右侧的“批量编辑”链接，然后粘贴以下代码。
 
-有关示例代码，可以参阅[通过 Azure AD 身份验证访问 Azure 媒体服务：均使用 REST API](https://github.com/willzhan/WAMSRESTSoln)。
+        Content-Type:application/x-www-form-urlencoded
+        Keep-Alive:true
 
-示例代码分为以下两部分：
+6. 按“正文”选项卡。
+7. 使用“密钥/值”数据网格输入正文信息（替换客户端 ID 和密钥值）。 
 
-*   包含 Azure AD 身份验证和授权所需的全部 REST API 代码的 DLL 库项目。 其中还包含一种方法，可使用访问令牌对媒体服务 REST API 终结点发出 REST API 调用。
-*   控制台测试客户端，用于启动 Azure AD 身份验证，并调用不同的媒体服务 REST API。
+    ![数据网格](./media/connect-with-rest/data-grid.png)
 
-示例项目具有以下三种功能：
+    或者，单击 Postman 窗口右侧的“批量编辑”，然后粘贴以下正文（替换客户端 ID 和密钥值）：
 
-*   只使用 REST API 通过客户端凭据授权进行 Azure AD 身份验证。
-*   只使用 REST API 访问 Azure 媒体服务。
-*   只使用 REST API 访问 Azure 存储（就像曾使用 REST API 创建媒体服务帐户）。
+        grant_type:client_credentials
+        client_id:{Your Client ID that you got from your AAD Application}
+        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        resource:https://rest.media.azure.net
 
+8. 按“发送”。
 
-## <a name="where-is-the-refresh-token"></a>刷新令牌在哪里？
+    ![获取令牌](./media/connect-with-rest/connect-with-rest04.png)
 
-一些读者可能会问：刷新令牌在哪里？ 本文为什么不使用刷新令牌？
+返回的响应包含需要用于访问任何 AMS API 的访问令牌。
 
-刷新令牌并不旨在刷新访问令牌。 它的用途是规避最终用户身份验证并在早期生成的令牌过期时仍获得有效的访问令牌。 刷新令牌的更准确名称可能是“规避用户重新登录令牌"。
+## <a name="test-the-assets-api-using-the-access-token"></a>使用访问令牌测试资产 API
 
-如果使用 OAuth 2.0 授权流（用户名和密码，以用户身份操作），刷新令牌有助于获取续订的访问令牌，无需请求用户干预。 不过，对于本文中介绍的 OAuth 2.0 客户端凭据授权流，客户端是以自身身份操作。 完全无需用户干预，所以授权服务器不需要提供刷新令牌。 如果调试“GetUrlEncodedJWT”方法，将会注意到，来自令牌终结点的响应包含访问令牌，但不含刷新令牌。
+本部分演示如何使用 Postman 访问资产 API。
+
+1. 打开 Postman。
+2. 选择“GET” 。
+3. 粘贴 REST API 终结点（例如 https://amshelloworld.restv2.westus.media.azure.net/api/Assets）
+4. 选择“授权”选项卡。 
+5. 选择“持有者令牌”。
+6. 粘贴上一部分中创建的令牌。
+
+    ![获取令牌](./media/connect-with-rest/connect-with-rest05.png)
+
+    > [!NOTE]
+    > Postman UX 在 Mac 和电脑上可能有所不同。 如果 Mac 版本的“身份验证”部分下拉列表中没有“持有者令牌”选项，应在 Mac 客户端上手动添加“授权”标头。
+
+   ![“授权”标头](./media/connect-with-rest/auth-header.png)
+
+7. 选择“标头”。
+5. 单击 Postman 窗口右侧的“批量编辑”链接。
+6. 粘贴以下标头：
+
+        x-ms-version:2.15
+        Accept:application/json
+        Content-Type:application/json
+        DataServiceVersion:3.0
+        MaxDataServiceVersion:3.0
+
+7. 按“发送”。
+
+返回的响应包含帐户中的资产。
 
 ## <a name="next-steps"></a>后续步骤
 
-开始[将文件上传到帐户](media-services-dotnet-upload-files.md)。
+* 尝试使用 [Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln)（Azure 媒体服务访问的 Azure AD 身份验证：均通过 REST API）中的此示例代码
+* [使用 .NET 上传文件](media-services-dotnet-upload-files.md)

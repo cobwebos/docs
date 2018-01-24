@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 9a013820689742faa732971c00b82c7ad8638a95
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c35b0c4171d411bd0c0483866f88780757cb3ee8
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -57,7 +57,7 @@ Azure AD Privileged Identity Management 可帮助组织实现以下目的：
 3. 选择“更多服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
 4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序打开。
 
-如果你是在目录中使用 Azure AD Privileged Identity Management 的第一个人并导航到 Azure AD 目录角色，[安全向导](active-directory-privileged-identity-management-security-wizard.md)会引导完成初始分配体验。 然后，将自动成为该目录的第一个**安全管理员**和**特权角色管理员**。
+如果你是在目录中使用 Azure AD Privileged Identity Management 的第一个人并导航到 Azure AD 目录角色，[安全向导](active-directory-privileged-identity-management-security-wizard.md)会引导你进行初始分配体验。 然后，将自动成为该目录的第一个**安全管理员**和**特权角色管理员**。
 
 对于 Azure AD 角色，只有充当“特权角色管理员”角色的用户可以管理 Azure AD PIM 中的其他管理员分配。 可以[在 PIM 中为其他用户提供管理目录角色的能力](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)。 全局管理员、安全管理员和安全读者可在 Azure AD PIM 中查看 Azure AD 角色的分配。
 对于 Azure RBAC 角色，只是订阅管理员、资源所有者或资源用户访问管理员可以在 Azure AD PIM 中管理其他管理员的分配。  默认情况下，充当特权角色管理员、安全管理员或安全读者的用户无权在 Azure AD PIM 中查看 Azure RBAC 角色的分配。
@@ -70,7 +70,7 @@ PIM 提供便捷的访问方式，让我们通过左侧导航菜单中的“任�
 
 从“概述”入口点访问任何“任务”菜单项时，生成的视图包含 Azure AD 目录角色和 Azure 资源角色（预览版）的结果。
 
-![快速启动](./media/active-directory-privileged-identity-management-configure/quick-start.png)
+![快速入门](./media/active-directory-privileged-identity-management-configure/quick-start.png)
 
 “我的角色”包含活动角色分配，以及 Azure AD 目录角色和 Azure 资源角色（预览版）的有资格角色分配。 [详细了解如何激活有资格的角色分配](active-directory-privileged-identity-management-how-to-activate-role.md)。
 

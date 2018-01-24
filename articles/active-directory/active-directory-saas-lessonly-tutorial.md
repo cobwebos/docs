@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 68ada2da62958948dbf232b5f83f69d7942b9c10
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 01e4395d5b2baaaf130f7a0fa7aaa29d611559b7
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>教程：Azure Active Directory 与 Lesson.ly 的集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在 Azure AD 中控制谁有权访问 Lesson.ly
 - 可以让用户使用其 Azure AD 帐户自动登录到 Lesson.ly（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Lesson.ly 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Lesson.ly 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Lesson.ly
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-lessonly-from-the-gallery"></a>从库中添加 Lesson.ly
 要配置 Lesson.ly 与 Azure AD 的集成，需要从库中将 Lesson.ly 添加到托管 SaaS 应用列表。
@@ -142,7 +142,8 @@ ms.lasthandoff: 12/11/2017
     | ---------------  | ----------------|
     | urn:oid:2.5.4.42 |user.givenname |
     | urn:oid:2.5.4.4  |user.surname |
-    | urn:oid:0.9.2342.19200300.1001.3 |user.mail |
+    | urn:oid:0.9.2342.19200300.100.1.3 |user.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |user.objectid |
 
     a. 单击“添加属性”，打开“添加属性”对话框。
 
@@ -150,11 +151,11 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-lessonly-tutorial/tutorial_attribute_05.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定” 。     
+    d.单击“下一步”。 单击“确定” 。     
 
 7. 单击“保存”按钮。
 
@@ -194,17 +195,17 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-lessonly-test-user"></a>创建 Lesson.ly 测试用户
 
 本部分的目的是在 Lesson.ly 中创建名为 Britta Simon 的用户。 Novatus 支持在默认情况下启用的实时预配。
 
-本部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Lesson.ly 期间会创建一个新用户。
+此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Lesson.ly 期间会创建一个新用户。
 
 > [!NOTE]
 > 如果需要手动创建用户，则需联系 [Lesson.ly 支持团队](mailto:dev@lessonly.com)。
@@ -241,14 +242,14 @@ ms.lasthandoff: 12/11/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Lesson.ly 磁贴时，应当会自动登录到 Lesson.ly 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

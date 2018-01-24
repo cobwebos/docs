@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: d6ca3bcb91261a863444bc331c78adf44844be56
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -286,6 +286,7 @@ ms.lasthandoff: 12/01/2017
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [在 Azure HDInsight 中使用 Microsoft Power BI 可视化 Hive 数据](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [为 Visual Studio Code 设置 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)
 * [在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](./hdinsight-connect-hive-zeppelin.md)
 

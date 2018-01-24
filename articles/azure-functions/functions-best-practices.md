@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 739e820a44194af984750932d6023c90fcd11e42
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: c3ef75a2a157190b24c171309c4d5c39596b5045
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/01/2017
 
 如果不使用 Durable Functions 或逻辑应用来集成多个函数，将存储队列用于跨函数通信通常是最佳做法。  主要原因是因为存储队列成本更低、更易预配。 
 
-存储队列中各消息的大小限制为 64 KB。 如果需要在函数之间传递更大的消息，则可使用 Azure 服务总线队列，支持最大为 256 KB 的消息大小。
+存储队列中各消息的大小限制为 64 KB。 如果需要在函数之间传递更大的消息，可使用 Azure 服务总线队列，以在标准层中支持最大为 256 KB 的消息大小，在高级层中最大为 1 MB 的消息大小。
 
 如果在处理前需要筛选消息，则服务总线主题十分有用。
 

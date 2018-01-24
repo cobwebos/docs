@@ -1,5 +1,5 @@
 ---
-title: "如何查询 Azure Cosmos DB 中的图数据？ | Microsoft 文档"
+title: "如何查询 Azure Cosmos DB 中的图数据？ | Microsoft Docs"
 description: "学习如何查询 Azure Cosmos DB 中的图数据"
 services: cosmos-db
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 358f2650f767057f4a220d3b3b8507de4ce14e6f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB：如何使用图形 API（预览版）进行查询？
+# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB：如何使用图形 API 进行查询？
 
-Azure Cosmos DB [图形 API](graph-introduction.md)（预览版）支持 [Gremlin](https://github.com/tinkerpop/gremlin/wiki) 查询。 本文包含示例文档和查询，提供入门指导。 [Gremlin 支持](gremlin-support.md)一文提供了详细的 Gremlin 引用。
+Azure Cosmos DB [图形 API](graph-introduction.md) 支持 [Gremlin](https://github.com/tinkerpop/gremlin/wiki) 查询。 本文包含示例文档和查询，提供入门指导。 [Gremlin 支持](gremlin-support.md)一文提供了详细的 Gremlin 引用。
 
 本文涵盖以下任务： 
 
@@ -85,4 +85,4 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 现在可继续学习下一教程，了解如何全局发布数据。
 
 > [!div class="nextstepaction"]
-> [全局分发数据](tutorial-global-distribution-documentdb.md)
+> [全局分发数据](tutorial-global-distribution-sql-api.md)

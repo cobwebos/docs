@@ -1,6 +1,6 @@
 ---
 title: "数据是否可用于数据科研？ 数据评估 - Azure 机器学习 | Microsoft Docs"
-description: "了解数据可用于数据科学的 4 个条件。 “适合初学者的数据科学”的视频 2 中提供具体示例，帮助了解基本数据评估。"
+description: "数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。"
 keywords: "相关数据, 评估数据, 准备数据, 数据条件, 数据就绪情况"
 services: machine-learning
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/03/2018
 ms.author: cgronlun
-ms.openlocfilehash: 9b5cf776981af0dff57195d5c7f1923b8d9a3862
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab9462c4cc4573717450ce48028807960cecee9
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -87,7 +87,7 @@ ms.lasthandoff: 10/11/2017
 
 观察右上方的靶子。 我们在靶心附近位置获得了一组紧密集聚的数据。 当然，这是准确数据。 但奇怪的是，在数据科学语言中，右下方靶子所呈现的数据也被视为准确数据。
 
-如果标出这些箭支的中心点，会发现其非常靠近靶心。 箭支分散在靶子四周，因此认为其不准确。但它们都是以靶心为中心围绕分布，所以认为其是准确。
+如果标出这些箭支的中心点，会发现它非常靠近靶心。 箭支分散在靶子四周，因此认为其不准确。但它们都是以靶心为中心围绕分布，所以认为其是准确。
 
 现在，观察左上方靶子。 在这个靶子上，箭支击中的点非常集中，形成一个紧密集聚的组。 他们是非常精确的，但因其中心远离靶心，所以他们所反应的数据是错误数据。 当然，左下方靶子中的箭支是错误且不精确的。 这名弓箭手需多加练习。
 

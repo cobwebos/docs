@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 9313f3bd09b24db8e33b1f89eb5aebea871605b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d222300a591bcba556be5813ada2de555d25a1f0
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
 
@@ -48,8 +48,10 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
 1. 选择一个订阅。
-1. 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
+。 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
 1. 选择适合选项。
+
+![选择删除支出限制的选项](./media/billing-spending-limit/remove-spending-limit.PNG)
 
 |选项|效果|
 |-------|-----|
@@ -80,8 +82,10 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>支出限制是否可防止产生任何 Azure 费用？
 
-即使设定了支出限制，某些 [Microsoft 服务和第三方品牌服务](billing-understand-your-azure-marketplace-charges.md)也会在付款方式下产生费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及通过 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 销售的大多数第三方品牌服务。
+[已在 Azure Marketplace 中发布的一些外部服务](billing-understand-your-azure-marketplace-charges.md)不能与订阅信用额度一起使用，即使设置了支出限制，这些服务也会产生单独的费用。 例如，Visual Studio 许可证、Azure Active Directory Premium、支持计划以及大多数第三方品牌服务。 预配新的外部服务时，将显示一条提示此服务会单独计费的警告：
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+![Marketplace 购买警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

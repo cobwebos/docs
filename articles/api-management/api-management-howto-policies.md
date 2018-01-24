@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 315e4bd7372416800373f98ecb5d8b1eb440e134
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 8576d590568a24df4c3320ec283edba7a28ab032
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="examples"></a>示例
 
-### <a name="appliy-policies-specified-at-different-scopes"></a>应用在不同范围指定的策略
+### <a name="apply-policies-specified-at-different-scopes"></a>应用在不同范围指定的策略
 
 如果在全局级别有一个策略并且为 API 配置了一个策略，则只要使用该特定 API，这两种策略都会被应用。 API 管理允许通过基础元素实现组合策略声明的确定性排序。 
 

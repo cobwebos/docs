@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 064b1b10f2bd776e4ae88d8460e106a0318476c7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: eca3cddf3677aad440378e4071f080a588397cf9
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势
 Application Insights 趋势工具以可视化方式呈现 Web 应用程序在各时间段的重要遥测事件变化，帮助快速识别问题和异常。 “趋势”提供更详细诊断信息的链接，可帮助改进应用程序性能、跟踪异常的原因，以及从自定义事件中找到见解。
