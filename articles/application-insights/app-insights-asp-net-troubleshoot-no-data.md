@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 843ffdf6c39cbdf00bfde969eaf93701db6ed536
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -30,6 +30,7 @@ ms.lasthandoff: 11/01/2017
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
 
 * 可能是防火墙有问题。 [为 Application Insights 设置防火墙例外即可发送数据](app-insights-ip-addresses.md)。
+* IIS 服务器可能缺少某些必备组件：.NET Extensibility 4.5 和 ASP.NET 4.5。
 
 *我已在 Web 服务器上[安装状态监视器](app-insights-monitor-performance-live-website-now.md)来监视现有应用，但未看到任何结果。*
 
@@ -118,7 +119,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 ## <a name="where-do-i-find-my-telemetry"></a>在哪里可以找到我的遥测数据？
 *我已登录到 [Microsoft Azure 门户](https://portal.azure.com)，并且看到了 Azure 主页仪表板。但是，可以在哪里找到我的 Application Insights 数据？*
 
-* 在左侧导航栏中单击“Application Insights”，然后选择应用名称。 如果未看到任何项目，则需要[在 Web 项目中添加或配置 Application Insights](app-insights-asp-net.md)。
+* 在左侧导航栏中单击“Application Insights”，并选择应用名称。 如果未看到任何项目，则需要[在 Web 项目中添加或配置 Application Insights](app-insights-asp-net.md)。
   
     然后，会看到一些摘要图表。 可以逐个单击这些图表查看详细信息。
 * 在 Visual Studio 中调试应用时，请单击“Application Insights”按钮。

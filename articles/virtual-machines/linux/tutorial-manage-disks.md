@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 41b122cdb4dcb836b431004fc162ebe06d0c8b17
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 16cc0c5e38eb273fc2504a39497d00c76d666316
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 磁盘
 
@@ -50,7 +50,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
 
-| 类型 | VM 大小 | 临时磁盘大小上限 (GB) |
+| Type | VM 大小 | 临时磁盘大小上限 (GB) |
 |----|----|----|
 | [常规用途](sizes-general.md) | A 和 D 系列 | 800 |
 | [计算优化](sizes-compute.md) | F 系列 | 800 |
@@ -65,7 +65,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
 
-| 类型 | VM 大小 | 每个 VM 的最大数据磁盘数 |
+| Type | VM 大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
 | [常规用途](sizes-general.md) | A 和 D 系列 | 32 |
 | [计算优化](sizes-compute.md) | F 系列 | 32 |

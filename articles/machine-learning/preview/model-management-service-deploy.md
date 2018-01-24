@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 0d59dccec4532ff0903972f2b15ed9dd8429a2ed
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/03/2018
+ms.openlocfilehash: 965e33f3c7d050dca8f6c4e92d75cb7c7a8fa60d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>将机器学习模型部署为 Web 服务
 
@@ -43,6 +43,7 @@ import pickle
 from sklearn import datasets
 iris = datasets.load_iris()
 X, y = iris.data, iris.target
+clf = linear_model.LogisticRegression()
 clf.fit(X, y)  
 saved_model = pickle.dumps(clf)
 ```
@@ -86,9 +87,9 @@ generate_schema(run_func=run, inputs=inputs, filepath='service_schema.json')
 
 在 score.py 文件的开头添加以下代码以启用数据收集功能，用以帮助收集模型输入和预测数据
 
-    ```
-    from azureml.datacollector import ModelDataCollector
-    ```
+```python
+from azureml.datacollector import ModelDataCollector
+```
 
 有关如何使用此功能的更多详细信息，请检查[模型数据收集](how-to-use-model-data-collection.md)部分。
 

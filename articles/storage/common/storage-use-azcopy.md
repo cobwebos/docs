@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
-ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>使用 AzCopy on Windows 传输数据
-AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令将数据复制到 Microsoft Azure Blob、文件和表存储以及从这些位置复制数据。 可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。
+AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能的简单命令将数据复制到 Microsoft Azure Blob、文件和表存储以及从这些位置复制数据。 可在文件系统和存储帐户之间或在存储帐户之间复制数据。  
 
 有两种版本的 AzCopy 可供下载。 AzCopy on Windows 是使用 .NET Framework 构建的，并提供 Windows 风格的命令行选项。 [AzCopy on Linux](storage-use-azcopy-linux.md) 是使用 .NET Core Framework 构建的，适用于 Linux 平台，并提供 POSIX 风格的命令行选项。 本文涉及到 AzCopy on Windows。
 

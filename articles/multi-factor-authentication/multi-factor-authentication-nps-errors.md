@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 53c9bde37215e4b7e315b6bc28f0e638816a48f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7960a398ac25ad0192300632dd6d5add94fd4a7c
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -106,9 +106,10 @@ ms.lasthandoff: 12/11/2017
 
 如需更多帮助，请通过 [Azure 多重身份验证服务器支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID、看到错误的用户的 ID 和调试日志。
 
-若要收集支持诊断的调试日志，请使用以下步骤： 
+若要收集支持诊断的调试日志，请在 NPS 服务器上使用以下步骤：
 
-1. 打开管理员命令提示符并运行以下命令：
+1. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 TRUE
+2. 打开管理员命令提示符并运行以下命令：
 
    ```
    Mkdir c:\NPS
@@ -118,9 +119,9 @@ ms.lasthandoff: 12/11/2017
    logman update trace "NPSExtension" -p {EC2E6D3A-C958-4C76-8EA4-0262520886FF} 0xffffffffffffffff 0xff -ets
    ```
 
-2. 再现问题
+3. 再现问题
 
-3. 使用以下命令停止跟踪：
+4. 使用以下命令停止跟踪：
 
    ```
    logman stop "NPSExtension" -ets
@@ -131,6 +132,7 @@ ms.lasthandoff: 12/11/2017
    Start .
    ```
 
-4. 压缩 C:\NPS 文件夹的内容，并将压缩文件附加到支持案例中。
+5. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 FALSE
+6. 压缩 C:\NPS 文件夹的内容，并将压缩文件附加到支持案例中。
 
 

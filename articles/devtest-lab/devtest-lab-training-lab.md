@@ -3,7 +3,7 @@ title: "使用 Azure 开发测试实验室培训 | Microsoft Docs"
 description: "了解如何使用 Azure 开发测试实验室培训的方案。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: steved0x
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
-ms.author: sdanie
-ms.openlocfilehash: 3bad7538121e1049af953e3937fc679b1d9184d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 96f7ed2084fbfc14c6bac09819ce3724b4168995
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure 开发测试实验室培训
 除开发/测试外，Azure 开发测试实验室可用于执行许多关键方案。 这些方案之一是为培训设置实验室。 Azure 开发测试实验室允许创建实验室，可在其中提供自定义模板，每个学员都可使用该模板创建相同和隔绝的培训环境。 可应用策略以确保为每个学员提供培训环境（需要时）并包含培训所需的足够资源（例如虚拟机）。 最后，可轻松与学员共享实验室（学员通过单击即可访问）。
@@ -48,13 +48,13 @@ Azure 开发测试实验室满足在任意虚拟环境中进行培训所需的�
    | [在 Azure 开发测试实验室中创建实验室](devtest-lab-create-lab.md) |了解如何在 Azure 门户中的 Azure 开发测试实验室中创建实验室。 |
 2. **使用现成应用商店映像和自定义映像在几分钟内创建培训 VM** 
    
-    可在 Azure 应用商店从多种映像中选择现成映像并将其提供给实验室中的学员。 如果现成的映像不能满足需求，可使用 Azure 应用商店中的现成映像创建实验室 VM、在培训所需的所有软件上安装和在实验室中将 VM 保存为自定义映像来创建自定义映像。 
+    可从 Azure Marketplace 的多种映像中选择现成映像并将其提供给实验室中的学员。 如果现成的映像不能满足需求，可使用 Azure Marketplace 中的现成映像创建实验室 VM、在培训所需的所有软件上安装和在实验室中将 VM 保存为自定义映像来创建自定义映像。 
    
     在以下表中单击链接可了解详细信息：
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [配置 Azure 应用商店映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure 应用商店映像列入允许列表；仅将培训所需的映像选择为可用。 |
+   | [配置 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表；仅将培训所需的映像选择为可用。 |
    | [创建自定义映像](devtest-lab-create-template.md) |通过预先安装培训所需的软件创建自定义映像，让学员能够使用自定义映像快速创建 VM。 |
 3. **为培训计算机创建可重复使用的模板** 
    

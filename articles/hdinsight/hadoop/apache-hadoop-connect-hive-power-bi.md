@@ -14,21 +14,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 390342eb08ae970fa760b414674b1a6783404d80
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8b4347fde274d0d7520ef3acbd081fdb83d7dc7d
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="visualize-hive-data-with-microsoft-power-bi-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Hive 数据
+# <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Hive 数据
 
-了解如何将 Microsoft Power BI 连接到 Azure HDInsight 并直观显示 Hive 数据。 目前，Power BI 仅支持通过 ODBC 连接到 HDInsight。 在本教程中，从 hivesampletable Hive 表将数据加载到 Power BI 中。 Hive 表包含一些移动电话使用情况数据。 然后在世界地图上绘制使用情况数据：
+了解如何使用 ODBC 将 Microsoft Power BI 连接到 Azure HDInsight 并直观显示 Hive 数据。 在本教程中，从 hivesampletable Hive 表将数据加载到 Power BI 中。 Hive 表包含一些移动电话使用情况数据。 然后在世界地图上绘制使用情况数据：
 
 ![HDInsight Power BI 地图报表](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
-这些信息也适用于新的[交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集类型。
+这些信息也适用于新的[交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集类型。 有关如何使用直接查询连接到 HDInsight 交互式查询的信息，请参阅[在 Azure HDInsight 中通过 Microsoft Power BI 使用直接查询可视化交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具备以下项：
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/03/2017
 4. 在“从 ODBC”窗格中，选择在上一部分中创建的数据源名称，然后单击“确定”。
 5. 在“导航器”窗格中，依次展开“ODBC”->“ HIVE”->“默认”，选择 **hivesampletable**，然后单击“加载”。
 
-## <a name="visualize-date"></a>直观显示日期
+## <a name="visualize-data"></a>可视化数据
 
 从上一过程继续进行。
 

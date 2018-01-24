@@ -5,15 +5,17 @@ services: machine-learning
 documentationcenter: 
 author: PatrickBue
 ms.author: pabuehle
-ms.reviewer: mawah, marhamil, mldocs
+manager: mwinkle
+ms.reviewer: mawah, marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 53d182d84c8f28c7b4055780a5b41df00fdc8583
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
 
@@ -46,12 +48,12 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 
 运行此示例的先决条件如下所示：
 
-1. [Azure 帐户](https://azure.microsoft.com/free/)（提供免费试用版）。
+1. [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
 2. [Azure 机器学习 Workbench](./overview-what-is-azure-ml.md) 遵循[安装指南快速入门](./quickstart-installation.md)来安装程序并创建工作区。  
 3. Windows 计算机。 必须使用 Windows 操作系统，因为 Workbench 仅支持 Windows 和 MacOS，而 Microsoft 认知工具包（我们用作深度学习库）仅支持 Windows 和 Linux。
 4. 在第 1 部分中，执行 SVM 训练不需要专用的 GPU，但第 2 部分所述的优化 DNN 将需要使用。 如果你没有强大的 GPU，又希望在多个 GPU 上进行训练，又或者没有 Windows 计算机，请考虑使用具有 Windows 操作系统的 Azure 深度学习虚拟机。 有关“一键式”部署指南，请参阅[此处](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)。 部署完成后，请通过远程桌面连接来连接 VM，在其中安装 Workbench，然后从 VM 本地执行代码。
 5. 需要安装 OpenCV 等多种 Python 库。 在 Workbench 上的“文件”菜单中单击“打开命令提示符”，运行以下命令安装这些依赖项：  
-    - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
+    - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
     - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` 从 http://www.lfd.uci.edu/~gohlke/pythonlibs/ 下载 OpenCV 滚轮之后（准确的文件名和版本可能会有变化）
     - `conda install pillow`
     - `pip install -U numpy`
@@ -61,10 +63,11 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 ### <a name="troubleshooting--known-bugs"></a>疑难解答/已知问题
 - 第 2 部分需要使用 GPU，否则在尝试优化 DNN 时会引发错误：“尚未实现在 CPU 上进行批量规范化训练”。
 - 通过减小 Minibatch（迷你批量）的大小（`PARAMETERS.py` 中的变量 `cntk_mb_size`），可以避免在 DNN 训练期间发生内存不足的错误。
-- 代码使用 CNTK 2.0 和 2.1 进行了测试，并应在不做任何更改（或只有少量更改）的情况下在更高版本上运行。
+- 代码使用 CNTK 2.2 进行了测试，并应在不做任何更改（或只有少量更改）的情况下在旧版本（最高至 v2.0）和更高版本上运行。
 - 撰写本文时，Azure 机器学习 Workbench 尚无法显示大于 5 MB 的笔记本。 如果保存笔记本时显示所有单元格输出，则可能会生成这种较大的笔记本。 如果发生此错误，请从 Workbench 中的“文件”菜单打开命令提示符，执行 `jupyter notebook`，打开笔记本，清除所有输出，然后保存笔记本。 执行以上步骤后，笔记本将在 Azure 机器学习 Workbench 中再次正常打开。
+- 此示例中所提供的全部脚本均需在本地执行，而不适用于 Docker 远程环境等场合。 所有笔记本都需使用名为“PROJECTNAME local”（例如，“myImgClassUsingCNTK local”）的本地项目内核的内核集来执行。
 
-
+    
 ## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
 
 要使用本示例作为模板创建新项目，请执行以下操作：
@@ -72,7 +75,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 2.  在“项目”页上单击 + 号，然后选择“新建项目”。
 3.  在“新建项目”窗格中，填写新项目的信息。
 4.  在“搜索项目模板”搜索框中，键入“图像分类”并选择模板。
-5.  单击“创建” 。
+5.  单击“创建”。
 
 执行这些步骤将创建如下所示的项目结构。 项目目录限制为小于 25 MB，因为 Azure 机器学习 Workbench 会在每次运行之后创建此文件夹的副本（以启用运行历史记录）。 因此，所有图像和临时文件都将保存到目录 ~/Desktop/imgClassificationUsingCntk_data 下（本文档中称为 DATA_DIR）。
 
@@ -91,7 +94,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 
 本教程使用包含多达 428 个图像组成的上衣纹理数据集作为运行示例。 每个图像将批注为三种不同的纹理（圆点、条纹、豹纹）之一。 我们使用了较少数量的图像，以便本教程可以快速执行。 但是，此代码已经过良好测试，可用于成千上万或更多个图像。 所有图像均使用必应图像搜索进行抓取，并已按[第 3 部分](#using-a-custom-dataset)的说明进行了手动批注。 带有各自属性的图像 URL 列在 /resources/fashionTextureUrls.tsv 文件中。
 
-脚本 `0_downloadData.py` 将所有图像下载到 DATA_DIR/images/fashionTexture/ 目录。 这 428 个 URL 中可能有部分已断开。 这并不是问题，只是意味着我们用于培训和测试的图像数量略有减少。
+脚本 `0_downloadData.py` 将所有图像下载到 DATA_DIR/images/fashionTexture/ 目录。 这 428 个 URL 中可能有部分已断开。 这并不是问题，只是意味着我们用于培训和测试的图像数量略有减少。 此示例中所提供的全部脚本均需在本地执行，而不适用于 Docker 远程环境等场合。
 
 下图展示了属性“圆点”（左侧）、“条纹”（中间）和“豹纹”（右侧）的示例。 批注是根据上衣来完成的。
 
@@ -114,7 +117,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 ### <a name="step-1-data-preparation"></a>步骤 1：数据准备
 `Script: 1_prepareData.py. Notebook: showImages.ipynb`
 
-笔记本 `showImages.ipynb` 可用于可视化图像，并根据需要更正其批注。 若要运行笔记本，请在 Azure 机器学习 Workbench 中打开它，单击“启动笔记本服务器”（如果显示此选项），然后在笔记本中执行所有单元格。 如果出现“笔记本太大，无法显示”的错误，请参阅本文档中的疑难解答部分。
+笔记本 `showImages.ipynb` 可用于可视化图像，并根据需要更正其批注。 若要运行笔记本，请在 Azure Machine Learning Workbench 中打开它，单击“启动笔记本服务器”（如果显示此选项），将本地项目内核的名称更改为“PROJECTNAME local”（例如“myImgClassUsingCNTK local”），然后在笔记本中执行所有单元格。 如果出现“笔记本太大，无法显示”的错误，请参阅本文档中的疑难解答部分。
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showImages.jpg" alt="alt text" width="700"/>
 </p>
@@ -178,7 +181,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 <img src="media/scenario-image-classification-using-cntk/roc_confMat.jpg" alt="alt text" width="700"/>
 </p>
 
-最后，提供笔记本 `showResults.py` 以浏览测试图像并可视化其各自分类得分：
+最后，提供笔记本 `showResults.py` 以浏览测试图像并可视化其各自分类得分。 如步骤 1 中所述，此示例中的每个笔记本都需使用名为“PROJECTNAME local”的本地项目内核：
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showResults.jpg" alt="alt text" width="700"/>
 </p>
@@ -190,7 +193,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 ### <a name="step-6-deployment"></a>步骤 6：部署
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-训练的系统现在可以作为 REST API 进行发布。 部署将在笔记本 `deploy.ipynb` 中进行说明，且基于 Azure 机器学习 Workbench 中的功能。 另请参阅 [IRIS 教程](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3)的杰出部署部分。
+训练的系统现在可以作为 REST API 进行发布。 笔记本 `deploy.ipynb` 对部署作有说明，部署基于 Azure Machine Learning Workbench 中的功能（请记住将内核设置成名为“PROJECTNAME local”的本地项目内核）。 另请参阅 [IRIS 教程](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3)的杰出部署部分，了解关于部署的详细信息。
 
 部署完成后，即可使用脚本 `6_callWebservice.py` 调用 Web 服务。 请注意，需要先在脚本中设置 Web 服务的 IP 地址（本地或云中）。 笔记本 `deploy.ipynb` 中介绍了如何查找此 IP 地址。
 

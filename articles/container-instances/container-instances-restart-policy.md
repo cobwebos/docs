@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: marsma
-ms.openlocfilehash: 3c7c57b05220d1e82c3baa8bc266e02d961a84be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a922525970eac9af6657e58daae971912183b369
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>在 Azure 容器实例中运行容器化任务
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 12/05/2017
 
 使用可配置的重启策略，可将容器指定为在完成其进程后停止。 由于容器实例按秒计费，我们只需针对执行任务的容器在运行时所用的计算资源付费。
 
-本文演示的示例使用 Azure CLI。 必须在[本地安装](/cli/azure/install-azure-cli) Azure CLI 2.0.21 或更高版本，或使用 [Azure Cloud Shell](../cloud-shell/overview.md) 中的 CLI。
+本文演示的示例使用 Azure CLI。 必须在[本地安装][azure-cli-install] Azure CLI 2.0.21 或更高版本，或使用 [Azure Cloud Shell](../cloud-shell/overview.md) 中的 CLI。
 
 ## <a name="container-restart-policy"></a>容器重启策略
 
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>一直运行到完成的示例
 
-若要查看重启策略的工作方式，请基于 [microsoft/aci-wordcount](https://hub.docker.com/r/microsoft/aci-wordcount/) 映像创建一个容器实例，并指定 `OnFailure` 重启策略。 此示例容器运行一个 Python 脚本，默认情况下，该脚本会分析莎士比亚著作[哈姆雷特](http://shakespeare.mit.edu/hamlet/full.html)中的文本，将 10 个最常见的单词写入 STDOUT，然后退出。
+要查看重启策略的工作方式，请基于 [microsoft/aci-wordcount][aci-wordcount-image] 映像创建一个容器实例，并指定 `OnFailure` 重启策略。 此示例容器运行一个 Python 脚本，默认情况下，该脚本会分析莎士比亚著作[哈姆雷特](http://shakespeare.mit.edu/hamlet/full.html)中的文本，将 10 个最常见的单词写入 STDOUT，然后退出。
 
 使用以下 [az container create][az-container-create] 命令运行示例容器：
 
@@ -168,7 +168,11 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 
 有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
 
-<!-- LINKS -->
+<!-- LINKS - External -->
+[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+
+<!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[azure-cli-install]: /cli/azure/install-azure-cli

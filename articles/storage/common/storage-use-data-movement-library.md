@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 
@@ -51,7 +51,7 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 1. 访问 [.NET Core 安装指南](https://www.microsoft.com/net/core)安装 .NET Core。 选择环境时，请选择命令行选项。 
 2. 通过命令行创建项目的目录。 导航到此目录，并键入 `dotnet new console -o <sample-project-name>` 创建 C# 控制台项目。
 3. 在 Visual Studio Code 中打开此目录。 通过在 Windows 中命令行上键入 `code .` 可快速完成此步骤。  
-4. 从 Visual Studio Code 应用商店安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新启动 Visual Studio Code。 
+4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新启动 Visual Studio Code。 
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
 6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 ` "console": "externalTerminal"`
 7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，并验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。 

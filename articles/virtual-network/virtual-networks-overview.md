@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: dc6916bd25c5a020fdcef0707fe28a1e34fb0f88
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6cc7035e798ef72f69958a7536a741f80939d4fe
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-virtual-network"></a>Azure 虚拟网络
 
-Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其他资源进行安全通信。 虚拟网络是你自己的网络在云中的表示形式。 虚拟网络是对专用于订阅的 Azure 云进行的逻辑隔离。 可将虚拟网络连接到其他虚拟网络，或本地网络。 下图显示了 Azure 虚拟网络服务的部分功能：
+Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其他每项资源进行安全通信。 虚拟网络是对专用于订阅的 Azure 云进行的逻辑隔离。 可将虚拟网络连接到其他虚拟网络，或本地网络。 下图显示了 Azure 虚拟网络服务的部分功能：
 
 ![网络示意图](./media/virtual-networks-overview/virtual-network-overview.png)
 
 若要了解有关以下 Azure 虚拟网络功能的详细信息，请单击功能：
-- **[隔离：](#isolation)**虚拟网络之间彼此隔离。 可以为使用相同 CIDR（例如 10.0.0.0/0）地址块的开发、测试和生产创建单独的虚拟网络。 相反地，也可以创建使用不同 CIDR 地址的多个虚拟网络并将网络连接在一起。 可将一个虚拟网络分为多个子网。 Azure 为虚拟网络中部署的虚拟机和 Azure 云服务角色实例提供内部名称解析。 可选择配置虚拟网络来使用自己的 DNS 服务器，而不使用 Azure 内部名称解析。
-- **[Internet 通信：](#internet)**默认情况下，虚拟网络中的所有 Azure 虚拟机和云服务角色实例都具有 Internet 访问权限。 根据需要，还可对特定资源启用入站访问。
-- **[Azure 资源通信：](#within-vnet)**可以在同一虚拟网络中部署云服务、虚拟机等 Azure 资源。 即使资源在不同的子网中，也可使用专用 IP 地址与彼此通信。 Azure 提供子网、VNet 和本地网络之间的默认路由，因此无需配置和管理路由。 如果需要，可以自定义 Azure 的路由。
+- **[隔离：](#isolation)**虚拟网络之间彼此隔离。 可以为使用相同 CIDR（例如 10.0.0.0/0）地址块的开发、测试和生产创建单独的虚拟网络。 相反地，也可以创建使用不同 CIDR 地址的多个虚拟网络并将网络连接在一起。 可将一个虚拟网络分为多个子网。 Azure 为部署在虚拟网络中的资源提供内部名称解析。 如有必要，可将虚拟网络配置为使用自己的 DNS 服务器，而不使用 Azure 内部名称解析。
+- **[Internet 通信：](#internet)**默认情况下，部署在虚拟网络中的虚拟机等资源具有 Internet 访问权限。 根据需要，还可对特定资源启用入站访问。
+- **[Azure 资源通信：](#within-vnet)**部署在虚拟网络中的 Azure 资源可使用专用 IP 地址相互通信，即使资源部署在不同的子网中，也是如此。 Azure 提供子网、连接的虚拟网络和本地网络之间的默认路由，因此无需配置和管理路由。 如果需要，可以自定义 Azure 的路由。
 - **[虚拟网络连接：](#connect-vnets)**虚拟网络可以互相连接，使任何虚拟网络中的资源可以与任何其他虚拟网络中的资源进行通信。
-- **[本地连接：](#connect-on-premises)**虚拟网络与本地网络可以私下连接，也可以通过 Internet 使用站点到站点 VPN 连接。
-- **[流量筛选：](#filtering)**按源 IP 地址和端口、目标 IP 地址和端口以及协议对虚拟机和云服务角色实例网络流量进行入站和出站筛选。
+- **[本地连接：](#connect-on-premises)**虚拟网络可连接到本地网络，使资源能够相互通信。
+- **[流量筛选：](#filtering)**可按源 IP 地址和端口、目标 IP 地址和端口以及协议来筛选传入和传出虚拟网络中的资源的网络流量。
 - **[路由：](#routing)**可选择通过配置自己的路由或通过网关传播 BGP 路由来替代 Azure 默认路由。
 
 ## <a name = "isolation"></a>网络隔离和细分
@@ -41,10 +41,10 @@ Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其
 可在每个 Azure [订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和 Azure [区域](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)中实现多个虚拟网络。 每个虚拟网络与其他虚拟网络相互隔离。 可以对每个虚拟网络执行以下操作：
 - 使用公共和专用 (RFC 1918) 地址指定自定义专用 IP 地址空间。 Azure 从分配的地址空间中向虚拟网络中的资源分配一个专用 IP 地址。
 - 将虚拟网络细分为一个或多个子网，并向每个子网分配一部分虚拟网络地址空间。
-- 使用 Azure 提供的名称解析或指定自己的 DNS 服务器以供虚拟网络中的资源使用。 若要了解虚拟网络中名称解析的详细信息，请阅读 [VM 和云服务的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)一文。
+- 使用 Azure 提供的名称解析或指定自己的 DNS 服务器以供虚拟网络中的资源使用。 要详细了解虚拟网络中的名称解析，请参阅[虚拟网络中资源的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)一文。
 
 ## <a name = "internet"></a>Internet 通信
-默认情况下，虚拟网络中的所有资源都可以与 Internet 进行出站通信。 资源的专用 IP 地址是源网络地址 (SNAT)，该地址被转换为 Azure 基础结构选择的公共 IP 地址。 若要了解出站网络连接的详细信息，请阅读[了解 Azure 中的出站连接](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)一文。 若要阻止出站 Internet 连接，可以自定义路由或筛选流量。
+虚拟网络中的所有资源都可以与 Internet 进行出站通信。 默认情况下，资源的专用 IP 地址是源网络地址 (SNAT)，该地址被转换为 Azure 基础结构选择的公共 IP 地址。 若要了解出站网络连接的详细信息，请阅读[了解 Azure 中的出站连接](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)一文。 若要阻止出站 Internet 连接，可以自定义路由或筛选流量。
 
 若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公共 IP 地址，请阅读 [公共 IP 地址](virtual-network-public-ip-address.md)一文。
 
@@ -52,9 +52,9 @@ Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其
 
 可以在虚拟网络中部署虚拟机。 虚拟机通过网络接口与虚拟网络中的其他资源进行通信。 若要了解有关网络接口的详细信息，请阅读[网络接口](virtual-network-network-interface.md)。
 
-还可以将其他类型的 Azure 资源部署到虚拟网络，如 Azure 虚拟机、Azure 云服务、Azure 应用服务环境和 Azure 虚拟机规模集。 有关可部署到虚拟网络的 Azure 资源完整列表，请参阅 [Azure 服务的虚拟网络服务集成](virtual-network-for-azure-services.md)。
+还可以将其他类型的 Azure 资源部署到虚拟网络，如 Azure 应用服务环境和 Azure 虚拟机规模集。 有关可部署到虚拟网络的 Azure 资源完整列表，请参阅 [Azure 服务的虚拟网络服务集成](virtual-network-for-azure-services.md)。
 
-某些资源不能部署到虚拟网络，但可将资源通信限制在虚拟网络中。 若要详细了解如何限制对资源的访问，请参阅[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md)。 
+某些资源不能部署到虚拟网络，但可将资源通信限制在虚拟网络中。 要详细了解如何限制对资源的访问，请参阅[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md)。 
 
 ## <a name="connect-vnets"></a>连接虚拟网络
 
@@ -67,7 +67,7 @@ Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其
 - **站点到站点 VPN：**在 VPN 设备和虚拟网络中部署的 Azure VPN 网关之间建立连接。 此连接类型可使授权的任何本地资源访问虚拟网络。 此连接是一个 IPSec/IKE VPN，该 VPN 通过 Internet 在本地设备和 Azure VPN 网关之间提供加密通信。 由于流量遍历 Internet，因此站点到站点连接的延迟不可预测。
 - **Azure ExpressRoute：**通过 ExpressRoute 合作伙伴在网络和 Azure 之间建立连接。 此连接是专用连接。 流量不会遍历 Internet。 由于流量未遍历 Internet，因此 ExpressRoute 连接的延迟可预测。
 
-若要了解有关所有以前连接选项的详细信息，请阅读[连接拓扑图](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)一文。
+要详细了解以前的所有连接选项，请参阅[连接拓扑图](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)。
 
 ## <a name="filtering"></a>筛选网络流量
 可使用以下两个选项中任意一个或同时使用这两个方案筛选子网之间的网络流量：
@@ -76,7 +76,7 @@ Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其
 
 ## <a name="routing"></a>路由网络流量
 
-默认情况下，Azure 会创建路由表，这些路由表可使连接到虚拟网络中任何子网的资源相互进行通信。 可使用以下两个选项中任意一个或同时使用二者替代 Azure 创建的默认路由：
+默认情况下，Azure 会创建路由表，这些路由表可使连接到虚拟网络中任何子网的资源相互进行通信并与 Internet 通信。 可使用以下两个选项中任意一个或同时使用二者替代 Azure 创建的默认路由：
 - **用户定义路由：**可创建自定义路由表，其中包含可对每个子网控制流量路由位置的路由。 若要深入了解用户定义的路由，请参阅[用户定义的路由](virtual-networks-udr-overview.md#user-defined)。
 - **BGP 路由：**如果使用 Azure VPN 网关或 ExpressRoute 连接将虚拟网络连接到本地网络，则可将 BGP 路由传播到虚拟网络。
 
@@ -87,7 +87,6 @@ Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其
 ## <a name="faq"></a>常见问题
 
 若要查看关于 Azure 虚拟网络的常见问题解答，请参阅[虚拟网络常见问题解答](virtual-networks-faq.md)一文。
-
 
 ## <a name="next-steps"></a>后续步骤
 

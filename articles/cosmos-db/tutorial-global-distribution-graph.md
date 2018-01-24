@@ -4,7 +4,7 @@ description: "了解如何使用图形 API 设置 Azure Cosmos DB 全局分发�
 services: cosmos-db
 keywords: "全局分发, 图形, gremlin"
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -13,38 +13,38 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.author: denlee
+ms.date: 01/02/2018
+ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: eb55bdee60400b4b14f47a6a0b1d0682b267d26f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1806bde383f04747f1f0fef46e5cf4d38de1e939
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>如何使用图形 API 设置 Azure Cosmos DB 全局分发
 
-本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用图形 API 进行连接（预览版）。
+本文介绍如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用图形 API 进行连接。
 
 本文涵盖以下任务： 
 
 > [!div class="checklist"]
 > * 使用 Azure 门户配置全局分发
-> * 使用[图形 API](graph-introduction.md) 配置全局分发（预览版）
+> * 使用[图形 API](graph-introduction.md) 配置全局分发
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
 ## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>通过 .NET SDK 使用图形 API 连接到首选区域
 
-图形 API 在 DocumentDB SDK 上作为扩展库公开。
+图形 API 在 SQL API 上作为扩展库公开。
 
 为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SDK 会根据 Azure Cosmos DB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
 此优先顺序列表是在使用 SDK 初始化连接时指定的。 SDK 接受可选参数“PreferredLocations”，这是 Azure 区域的顺序列表。
 
-* 写入：SDK 会自动将所有写入请求发送到当前写入区域。
-* 读取：所有读取请求将发送到 PreferredLocations 列表中的第一个可用区域。 如果请求失败，客户端会将请求转发到列表中的下一个区域，依此类推。 SDK 只会尝试读取 PreferredLocations 中指定的区域。 例如，如果 Cosmos DB 帐户在三个区域中可用，但客户端只为 PreferredLocations 指定了两个非写入区域，那么，即使是在故障转移时，也不会从写入区域为读取提供服务。
+* **写入**：SDK 自动将所有写入请求发送到当前写入区域。
+* **读取**：所有读取请求会被发送到 PreferredLocations 列表中的第一个可用区域。 如果请求失败，客户端会将请求转发到列表中的下一个区域，依此类推。 SDK 只会尝试读取 PreferredLocations 中指定的区域。 例如，如果 Cosmos DB 帐户在三个区域中可用，但客户端只为 PreferredLocations 指定了两个非写入区域，那么，即使是在故障转移时，也不会从写入区域为读取提供服务。
 
 应用程序可以通过检查 SDK 1.8 和更高版本中提供的两个属性 - WriteEndpoint 和 ReadEndpoint - 来验证 SDK 选择的当前写入终结点和读取终结点。 如果未设置 PreferredLocations 属性，则会从当前写入区域为所有请求提供服务。
 
@@ -87,7 +87,7 @@ await docClient.OpenAsync().ConfigureAwait(false);
 
 > [!div class="checklist"]
 > * 使用 Azure 门户配置全局分发
-> * 使用 DocumentDB API 配置全局分发
+> * 使用 SQL API 配置全局分发
 
 现在可以继续学习下一个教程，了解如何使用 Azure Cosmos DB 本地模拟器在本地开发。
 

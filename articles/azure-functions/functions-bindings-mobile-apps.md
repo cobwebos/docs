@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3c29c43f88608760cc6d5f19f27f692c8448ebd9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
 
@@ -37,8 +37,7 @@ ms.lasthandoff: 11/30/2017
 
 参阅语言特定的示例：
 
-<!-- * [Precompiled C#](#input---c-example)-->
-* [C# 脚本](#input---c-script-example)
+* [C# 脚本 (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>输入 - C# 脚本示例
@@ -129,7 +128,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>输入 - 特性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) 中定义的 [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) 中定义的 [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性。
 
 有关可以配置的特性属性的信息，请参阅[下面的“配置”部分](#input---configuration)。
 
@@ -168,13 +167,13 @@ module.exports = function (context, myQueueItem) {
 
 参阅语言特定的示例：
 
-* [预编译 C#](#output---c-example)
-* [C# 脚本](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# 脚本 (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
-以下示例演示一个由队列消息触发、在移动应用表中创建记录的[预编译 C# 函数](functions-dotnet-class-library.md)。
+以下示例演示由队列消息触发，并在移动应用表中创建记录的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -275,7 +274,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>输出 - 特性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) 中定义的 [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) 中定义的 [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性。
 
 有关可以配置的特性属性的信息，请参阅[输出 - 配置](#output---configuration)。 下面是某个方法签名中的 `MobileTable` 特性示例：
 
@@ -290,7 +289,7 @@ public static object Run(
 }
 ```
 
-有关完整示例，请参阅[输出 - 预编译 C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -312,7 +311,7 @@ public static object Run(
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 脚本函数中，使用类型为 `out object` 的命名输出参数来访问输出记录。 在预编译 C# 函数中，`MobileTable` 特性可与以下任何类型结合使用：
+在 C# 脚本函数中，使用类型为 `out object` 的命名输出参数来访问输出记录。 在 C# 类库中，`MobileTable` 属性可与以下任何类型结合使用：
 
 * `ICollector<T>` 或 `IAsyncCollector<T>`，其中，`T` 为 `JObject`，或包含 `public string Id` 属性的任何类型。
 * `out JObject`

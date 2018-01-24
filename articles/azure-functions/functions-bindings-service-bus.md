@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 6d59b26fa4ab17c17827a8e3450e808e40e5c2dd
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 2df003d47291570b31e1091f34994e4023000981
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -36,14 +36,14 @@ ms.lasthandoff: 11/29/2017
 
 参阅语言特定的示例：
 
-* [预编译 C#](#trigger---c-example)
-* [C# 脚本](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# 脚本 (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
-以下示例演示[预编译的 C# 函数](functions-dotnet-class-library.md)，用于记录服务总线队列消息。
+以下示例演示记录服务总线队列消息的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -146,7 +146,7 @@ module.exports = function(context, myQueueItem) {
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
-对于[预编译的 C#](functions-dotnet-class-library.md) 函数，请使用以下特性来配置服务总线触发器：
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用以下属性来配置服务总线触发器：
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)，在 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义
 
@@ -173,7 +173,7 @@ module.exports = function(context, myQueueItem) {
   }
   ```
 
-  有关完整示例，请参阅[触发器 - 预编译 C# 示例](#trigger---c-example)。
+  有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs)，在 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义
 
@@ -250,14 +250,14 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 参阅语言特定的示例：
 
-* [预编译 C#](#output---c-example)
-* [C# 脚本](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# 脚本 (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
-以下示例演示[预编译的 C# 函数](functions-dotnet-class-library.md)，用于发送服务总线队列消息：
+以下示例演示发送服务总线队列消息的 [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -411,7 +411,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="output---attributes"></a>输出 - 特性
 
-对于[预编译的 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义的 [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义的 [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs)。
 
 该特性的构造函数采用队列或者主题和订阅的名称。 也可指定连接的访问权限。 [输出 - 配置](#output---configuration)部分介绍了如何选择访问权限设置。 下面是一个示例，说明了应用于该函数的返回值的属性：
 
@@ -435,9 +435,9 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 }
 ```
 
-有关完整示例，请参阅[输出 - 预编译 C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
-可以使用 `ServiceBusAccount` 特性在类、方法或参数级别指定要使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](#trigger---attributes-for-precompiled-c)。
+可以使用 `ServiceBusAccount` 特性在类、方法或参数级别指定要使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 

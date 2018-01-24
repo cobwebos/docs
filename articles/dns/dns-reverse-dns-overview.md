@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>反向 DNS 和 Azure 支持概述
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 
 例如，DNS 记录“www.contoso.com”是使用区域“contoso.com”中名称为“www”的 DNS“A”记录实现的。  此 A 记录指向相应的 IP 地址，在本例中为 64.4.6.100。  反向查找是单独使用区域“6.4.64.in-addr.arpa”（请注意 ARPA 区域中的 IP 地址是反向的）中名为“100”的“PTR”记录实现的。如果配置正确，此 PTR 记录将指向名称“www.contoso.com”。
 
-如果组织被分配了 IP 地址块，则还有权管理相应的 ARPA 区域。 对应于 Azure 使用的 IP 地址块的 ARPA 区域由 Microsoft 托管和管理。 ISP 可代为托管用户自己的 IP 地址的 ARPA 区域，或者允许用户在所选的 DNS 服务（例如 Azure DNS）中托管 ARPA 区域。
+如果组织被分配了 IP 地址块，则还有权管理相应的 ARPA 区域。 对应于 Azure 使用的 IP 地址块的 ARPA 区域由 Microsoft 托管和管理。 ISP 可以代你托管你自己的 IP 地址的 ARPA 区域，或者允许在所选的 DNS 服务（例如 Azure DNS）中托管 ARPA 区域。
 
 > [!NOTE]
 > 正向 DNS 查找和反向 DNS 查找是在独立的并行 DNS 层次结构中实现的。 “www.contoso.com”的反向查找**不是**托管在区域“contoso.com”中，而是托管在相应 IP 地址块的 ARPA 区域中。 独立区域用于 IPv4 和 IPv6 地址块。

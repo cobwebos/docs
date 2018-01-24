@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
 ms.author: kraigb
-ms.openlocfilehash: a6f9b300cd832c5f9615f70ee297e3c5ad728e44
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>使用多种服务配置来配置 Visual Studio 中的 Azure 项目
 
@@ -77,7 +77,7 @@ Visual Studio 中的 Azure 云服务项目包括三个配置文件：`ServiceDef
 
 1. 在“连接时使用”下，选择“你的订阅”选项，以从订阅中选择存储帐户。 然后 Visual Studio 会从 `.publishsettings` 文件自动获取存储帐户凭据。
 1. 选择“手动输入凭据”，以便直接使用来自 Azure 门户的信息指定帐户名和密钥。 复制帐户密钥：a。 导航到 Azure 门户上的存储帐户，然后选择“管理密钥”。
-    2. 在“管理密钥访问权限”页面上，选择主访问密钥的文本，并按 Ctrl+C 进行复制。
+    2. 要复制帐户密钥，请导航到 Azure 门户中的存储帐户，选择“设置”>“访问密钥”，然后使用“复制”按钮将主访问密钥复制到剪贴板。
 1. 选择其中一个连接选项。 “指定自定义终结点”会要求你指定 blob、表和队列的特定 URL。 自定义终结点允许你使用[自定义域](storage/blobs/storage-custom-domain-name.md)以及更精确地控制访问权限。 请参阅[配置 Azure 存储连接字符串](./storage/common/storage-configure-connection-string.md)。
 1. 选择“确定”，然后选择“文件 > 保存”，以使用新的连接字符串更新配置。
 

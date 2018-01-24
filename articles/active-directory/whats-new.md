@@ -4,7 +4,7 @@ description: "了解 Azure Active Directory (Azure AD) 中的新增功能，其�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 featureFlags: clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1538e1c26cfe658c7f42ccdd57d8bf5aca0b1fb
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6e1cf6e2ee717ef7629e1388d7bca2090eed46fa
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
 
 
 
-> 通过在你收藏的 RSS 源读取器中订阅此[源](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3F%22&locale=en-us)随时了解 Azure Active Directory 中的新增功能。
+> 通过订阅此 [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [源](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)随时了解 Azure Active Directory 中的新增功能。
 
 
 
@@ -41,6 +41,163 @@ ms.lasthandoff: 11/29/2017
 
 请经常返回本页面，因为我们每月都会更新。
 
+
+## <a name="december-2017"></a>2017 年 12 月
+ 
+
+### <a name="terms-of-use-in-the-access-panel-for-end-users"></a>最终用户访问面板中的使用条款
+
+**类型：**新功能  
+**服务类别：**使用条款  
+**产品功能：**调控/符合性
+ 
+最终用户现可转到访问面板，并查看其以前接受的使用条款。
+
+用户可以查看已接受的使用条款。 可使用以下过程完成此操作：
+
+1. 导航到 [MyApps 门户](https://myapps.microsoft.com)并登录。
+
+2. 在右上角单击自己的姓名，然后从下拉列表中选择“个人资料”。 
+
+3. 在“个人资料”中单击“查看使用条款”。 
+
+4. 可以在其中查看已接受的使用条款。 
+
+有关详细信息，请参阅 [Azure Active Directory 使用条款功能（预览）](https://docs.microsoft.com/azure/active-directory/active-directory-tou)
+ 
+---
+ 
+
+### <a name="new-azure-ad-sign-in-experience"></a>新 Azure AD 登录体验
+
+**类型：**新功能  
+**服务类别：**Azure AD  
+**产品功能：**用户身份验证
+ 
+在融合 Azure AD 和 Microsoft 帐户标识系统的过程中，我们重新设计了两个系统上的 UI，使其具有一致的外观。 此外，我们还对 Azure AD 登录页面进行了分页，以便首先收集用户名，然后在第二个屏幕上收集凭证。
+
+有关详细信息，请参阅 [The new Azure AD Signin Experience is now in Public Preview](https://cloudblogs.microsoft.com/enterprisemobility/2017/08/02/the-new-azure-ad-signin-experience-is-now-in-public-preview/)（公共预览版中现已提供新的 Azure AD 登录体验）
+ 
+---
+ 
+
+### <a name="fewer-login-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-login"></a>更少的登录提示：Azure AD 登录的新“使我保持登录状态”体验
+
+**类型：**新功能  
+**服务类别：**Azure AD  
+**产品功能：**用户身份验证
+ 
+我们已将 Azure AD 登录页面上的“使我保持登录状态”复选框替换为新提示，在用户成功通过身份验证后显示。 
+
+如果用户对此提示的响应为“是”，则该服务向用户提供永久刷新令牌。 这与用户在旧体验中选中“使我保持登录状态”复选框时的行为相同。 对于联合租户，此提示在使用联合服务成功进行身份验证后显示。
+
+有关详细信息，请参阅 [Fewer login prompts: The new “Keep me signed in” experience for Azure AD is in preview](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/)（更少的登录提示：Azure AD 登录的新“使我保持登录状态”体验现在处于预览状态） 
+
+---
+ 
+
+### <a name="add-configuration-to-require-the-tou-to-be-expanded-prior-to-accepting"></a>添加配置以要求在接受 TOU 前先将其展开。
+
+**类型：**新功能  
+**服务类别：**使用条款  
+**产品功能：**调控
+ 
+现在，我们为管理员添加了一个选项，要求最终用户在接受使用条款前先将其展开。
+
+对于“要求用户展开使用条款”这一功能，可选择“启用”或“禁用”。 如果将此功能设置为“启用”，则最终用户在接受使用条款之前必须先进行查看。
+
+有关详细信息，请参阅 [Azure Active Directory 使用条款功能（预览）](active-directory-tou.md)
+ 
+---
+ 
+
+### <a name="scoped-activation-for-eligible-role-assignments"></a>符合条件的角色分配的作用域激活
+
+**类型：**新功能  
+**服务类别：**Privileged Identity Management  
+**产品功能：**Privileged Identity Management
+ 
+通过作用域激活，可激活符合条件的 Azure 资源角色分配，其自治性比原始分配的默认值小。 例如，系统将用户分配为租户中订阅的所有者。 使用作用域激活，可激活订阅中包含的最多五个资源的所有者（例如资源组、虚拟机等）。划分激活范围可能会降低对关键 Azure 资源执行不必要更改的可能性。
+
+有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](active-directory-privileged-identity-management-configure.md)。
+ 
+---
+ 
+
+### <a name="new-federated-apps-in-azure-ad-app-gallery"></a>Azure AD 应用库中的新联合应用
+
+**类型：**新功能  
+**服务类别：**Enterprise 应用  
+**产品功能：**第三方集成
+ 
+2017 年 12 月，我们在应用库中添加了以下具有联合支持的新应用：
+
+|名称|集成类型|说明|
+|:-- |----------------|:----------|
+|EFI Digital StoreFront|SAML 2.0|[Web 2 打印应用程序](https://go.microsoft.com/fwlink/?linkid=861685)|
+|Vodeclic|SAML 2.0|[使用 Azure AD 管理用户访问权限，并对 Vodeclic 启用单一登录](https://go.microsoft.com/fwlink/?linkid=863522)。  需要现有 Vodeclic 帐户。|
+|Accredible|SAML 2.0|[创建、管理和交付证书、徽章和区块链凭据](https://go.microsoft.com/fwlink/?linkid=863523)|
+|FactSet|SAML 2.0|[单一登录到 FactSet 的 FDSWeb 应用程序](https://go.microsoft.com/fwlink/?linkid=863525)|
+|MobileIron Azure AD 集成|SAML 2.0|[MobileIron](https://go.microsoft.com/fwlink/?linkid=858027) 的使命是使现代企业能在信息移动到移动设备和云端时保护和管理信息，同时保护最终用户的隐私和信任。|
+|IMAGE WORKS|SAML 2.0|使用 Azure AD 管理用户访问权限、预配用户帐户并允许使用 [IMAGE WORKS](https://go.microsoft.com/fwlink/?linkid=863517) 进行单一登录。 要求现有 IMAGE WORKS 订阅。|
+|SAML SSO for Bitbucket by resolution GmbH|SAML 2.0|[SSO Bitbucket](https://go.microsoft.com/fwlink/?linkid=863519) 将身份验证委派给 Azure AD，已登录到 Azure AD 的用户可直接访问 Bitbucket。 可使用 SAML 属性中的数据即时创建和更新用户。|
+|SAML SSO for Bamboo by resolution GmbH|SAML 2.0|[SSO Bamboo](https://go.microsoft.com/fwlink/?linkid=863520) 将身份验证委派给 Azure AD，已登录到 Azure AD 的用户可直接访问 Bamboo。|
+|Communifire|SAML 2.0|[Communifire](https://go.microsoft.com/fwlink/?linkid=861676) 是一种功能全面的新式社交 Intranet 软件，可为员工和业务提供支持。|
+|MOBI|SAML 2.0|[集中、理解和控制整个设备生态系统](https://go.microsoft.com/fwlink/?linkid=863521)。|
+|Reflektive|SAML 2.0|[Reflektive](https://go.microsoft.com/fwlink/?linkid=863518) 是用于性能管理、实时反馈和目标设置的新式平台。 我们支持员工推动自身发展，所以用户可更具战略性。|
+|CybSafe|OpenID Connect 与 OAuth|CybSafe 是一个 GCHQ 认证的网络感知平台。 它采用先进的技术和数据分析来显著减少网络安全和数据保护风险的人为因素影响。|
+|WebHR|OpenID Connect 与 OAuth|所有人都喜欢的一体化社交 HR 软件。 受到 197 个国家/地区 20,000 多家公司的信赖|
+ |Zenegy Azure AD 集成|OpenID Connect 与 OAuth|使用此应用，可使用公司的 Azure Active Directory 凭据登录 Zenegy。|
+|Adobe Experience Manager|SAML 2.0|Adobe Experience Manager (AEM) 是一款用于构建网站、移动应用和窗体的综合性内容管理平台解决方案，可简化营销内容和资产的管理。|
+
+ 
+---
+ 
+
+### <a name="approval-workflows-for-azure-ad-directory-roles"></a>Azure AD 目录角色的审批工作流
+
+**类型：**已更改的功能  
+**服务类别：**Privileged Identity Management  
+**产品功能：**Privileged Identity Management
+ 
+Azure AD 目录角色的审批工作流程已正式发布。
+
+通过审批工作流程，特权角色管理员可要求符合条件的角色成员先请求角色激活才能使用特权角色。
+可向多个用户和组委派审批职责。符合条件的角色成员会在审批完成且角色激活时收到通知
+
+---
+ 
+
+### <a name="pass-through-authentication---skype-for-business-support"></a>传递身份验证 - Skype for Business 支持
+
+**类型：**已更改的功能  
+**服务类别：**身份验证（登录）  
+**产品功能：**用户身份验证
+
+
+传递身份验证现在支持用户登录到支持新式身份验证的 Skype for Business 客户端应用程序，包括联机和混合拓扑。 
+
+有关详细信息，请参阅[支持新式身份验证的 Skype for Business 拓扑](https://technet.microsoft.com/library/mt803262.aspx)。
+ 
+---
+ 
+
+### <a name="updates-to-azure-active-directory-privileged-identity-management-pim-for-azure-rbac-preview"></a>更新到 Azure RBAC（预览版）的 Azure Active Directory Privileged Identity Management (PIM)
+
+**类型：**已更改的功能  
+**服务类别：**PIM  
+**产品功能：**Privileged Identity Management
+ 
+通过 Azure RBAC 的 Azure Active Directory Privileged Identity Management (PIM) 公共预览版刷新，现在可以：
+
+使用 Just Enough Administration。需要批准才能激活资源角色。安排将来激活需要批准 AAD 和 Azure RBAC 角色的角色
+
+ 
+有关详细信息，请参阅 [Azure 资源的 PIM（预览）](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)
+
+ 
+---
+ 
 ## <a name="november-2017"></a>2017 年 11 月
  
 ### <a name="retiring-acs"></a>即将停用 ACS
@@ -513,6 +670,6 @@ Azure 门户中利用 Azure 基于角色的访问控制 (RBAC) 功能的所有�
 - 是一项累积更新，可取代 Microsoft Identity Manager 2016 内部版本 4.4.1459.0 及其之前的所有 MIM 2016 SP1 更新。 
 - 要求安装 **Microsoft Identity Manager 2016 内部版本 4.4.1302.0。** 
 
-有关详细信息，请参阅[为 Microsoft Identity Manager 2016 SP1 推出了修补程序汇总包（内部版本 4.4.1642.0）](https://support.microsoft.com/en-us/help/4021562)。 
+有关详细信息，请参阅[为 Microsoft Identity Manager 2016 SP1 推出了修补程序汇总包（内部版本 4.4.1642.0）](https://support.microsoft.com/help/4021562)。 
 
 ---

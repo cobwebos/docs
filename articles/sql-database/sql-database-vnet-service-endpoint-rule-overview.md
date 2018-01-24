@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: 66dbc9c2c3ba9b9f0c7eb405dbafbd002ce50fbc
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: ce223fbd6a69bc789f902f9478b5255edfd44844
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/17/2017
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
-在你采取措施之前，子网上的 VM 不能与 SQL 数据库通信。 若要弄清楚为何需要选择虚拟网络规则方法来启用通信，则必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
+在你采取措施之前，子网上的 VM 不能与 SQL 数据库通信。 建立通信的一项操作是创建虚拟网络规则。 若要弄清楚为何选择 VNet 规则方法，必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
 
 #### <a name="a-allow-access-to-azure-services"></a>A. 允许访问 Azure 服务
 
@@ -115,16 +115,16 @@ ms.lasthandoff: 11/17/2017
 - 网络管理员：&nbsp;启用终结点。
 - 数据库管理员：&nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 SQL 数据库服务器。
 
-RBAC 备用： 
+RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
 可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
-
-
-
-
+> [!NOTE]
+> 在某些情况下，Azure SQL 数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
+> - 两个订阅都必须属于同一 Azure Active Directory 租户。
+> - 用户具有启动操作所需的权限，例如启用服务终结点，以及向给定服务器添加 VNet-子网。
 
 ## <a name="limitations"></a>限制
 
@@ -158,8 +158,32 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
+## <a name="impact-of-removing-allow-all-azure-services"></a>删除“允许所有 Azure 服务”的影响
+
+许多用户希望从其 Azure SQL Server 中删除“允许所有 Azure 服务”，将其替换为 VNet 防火墙规则。
+但是，删除该项会影响以下 Azure SQLDB 功能：
+
+#### <a name="import-export-service"></a>导入/导出服务
+Azure SQLDB 导入/导出服务在 Azure 中的 VM 上运行。 这些 VM 不在 VNet 中，因此在连接到数据库时会获取 Azure IP。 删除“允许所有 Azure 服务”后，这些 VM 将无法访问数据库。
+可以解决此问题。 通过 DACFx API 直接在代码中运行 BACPAC 导入或导出。 确保该项部署在 VM 中且已为其所在的 VNet-子网设置防火墙规则。
+
+#### <a name="sql-database-query-editor"></a>SQL 数据库查询编辑器
+Azure SQL 数据库查询编辑器部署在 Azure 中的 VM 上。 这些 VM 不在 VNet 中。 因此，这些 VM 在连接到数据库时会获取 Azure IP。 删除“允许所有 Azure 服务”后，这些 VM 将无法访问数据库。
+
+#### <a name="table-auditing"></a>表审核
+目前有两种方法可以在 SQL 数据库上启用审核。 在 Azure SQL Server 上启用服务终结点后，表审核会失败。 在这里，解决办法是转为 Blob 审核。
 
 
+## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>将 VNet 服务终结点与 Azure 存储配合使用的影响
+
+Azure 存储已实现相同的功能，允许限制到存储帐户的连接。
+如果选择将此功能与某个存储帐户配合使用，而该帐户正由 Azure SQL Server 使用，则可能会出现问题。 接下来会列出受此影响的 Azure SQLDB 功能并对其进行讨论。
+
+#### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
+PolyBase 通常用于将数据从存储帐户加载到 Azure SQLDW 中。 如果正从存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。
+
+#### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob 审核
+Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储帐户使用 VENT 服务终结点功能，则会断开从 Azure SQLDB 到存储帐户的连接。
 
 
 ## <a name="errors-40914-and-40615"></a>错误 40914 和 40615
@@ -217,16 +241,17 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 3. 将“允许访问 Azure 服务”控件设置为“禁用”。
 
     > [!IMPORTANT]
-    > 如果将该控件设置为“启用”，则 Azure SQL 数据库服务器会接受来自任何子网的通信，从安全角度来说，这样的访问权限设置过高。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
+    > 如果将此控件设置为“启用”，则 Azure SQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
 
 4. 在“虚拟网络”部分单击“+ 添加现有项”控件。
 
     ![单击“添加现有项(子网终结点，充当 SQL 规则)”。][image-portal-firewall-vnet-add-existing-10-png]
 
 5. 在新的“创建/更新”窗格的控件中填充 Azure 资源的名称。
- 
+
     > [!TIP]
-    > 必须包括子网的正确地址前缀。 可以在门户中找到该值。 导航到“所有资源”&gt;“所有类型”&gt;“虚拟网络”。 筛选器会显示虚拟网络。 单击虚拟网络，然后单击“子网”。 “地址范围”列包含所需的地址前缀。
+    > 必须包括子网的正确地址前缀。 可以在门户中找到该值。
+    > 导航到“所有资源”&gt;“所有类型”&gt;“虚拟网络”。 筛选器会显示虚拟网络。 单击虚拟网络，然后单击“子网”。 “地址范围”列包含所需的地址前缀。
 
     ![填充新规则的字段。][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -237,22 +262,26 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
     ![查看防火墙窗格中的新规则。][image-portal-firewall-vnet-result-rule-30-png]
 
 
-
-
+> [!NOTE]
+> 以下状态适用于这些规则：
+> - **就绪：**表示所启动的操作已成功。
+> - **失败：**表示所启动的操作已失败。
+> - **已删除：**仅适用于删除操作，表示规则已删除，不再适用。
+> - **进行中：**表示操作正在进行。 操作处于这种状态时，会应用旧规则。
 
 
 <a name="anchor-how-to-links-60h" />
 
 ## <a name="related-articles"></a>相关文章
 
-- [使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点，然后创建虚拟网络规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Azure 虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]
 - [Azure SQL 数据库服务器级和数据库级防火墙规则][sql-db-firewall-rules-config-715d]
 
-适用于 Azure SQL 数据库的 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能已在 2017 年 9 月下旬发布。
+Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 
+## <a name="next-steps"></a>后续步骤
 
-
+- [使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点，然后创建虚拟网络规则。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 
 
 <!-- Link references, to images. -->
@@ -304,4 +333,3 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 - ARM templates
 -->
-

@@ -1,30 +1,30 @@
 ---
-title: "Azure Active Directory 条件访问技术参考 | Microsoft Docs"
-description: "了解如何使用 Azure Active Directory 中的条件访问控制。 指定对用户进行身份验证和控制应用程序访问权限的条件。 满足指定条件时，可对用户进行身份验证，并向其授予对应用程序的访问权限。"
+title: "Azure Active Directory 条件访问设置参考 | Microsoft Docs"
+description: "获取 Azure Active Directory 条件访问策略中受支持设置的概述。"
 services: active-directory.
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 5fad793bcf9ac86c2a1bc67e74dfb62af9876100
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/23/2017
 ---
-# <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件访问技术参考
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
-可使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)来精细控制经授权的用户如何访问资源。   
+可使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)来控制经授权的用户如何访问资源。   
 
-本文提供有关以下条件访问策略配置选项的支持信息： 
+本文提供有关以下条件访问策略中的配置选项的支持信息： 
 
 - 云应用程序分配
 
@@ -35,6 +35,7 @@ ms.lasthandoff: 12/06/2017
 - 批准的客户端应用程序要求
 
 
+如果这不是你要查找的信息，请在本文末尾留下评论。
 
 ## <a name="cloud-apps-assignments"></a>云应用分配
 
@@ -57,7 +58,7 @@ ms.lasthandoff: 12/06/2017
 
 - Microsoft Office 365 Exchange Online
 
-- Microsoft Office 365 SharePoint Online（包括 OneDrive for Business）
+- Microsoft Office 365 SharePoint Online（包括 OneDrive for Business 和 Project Online）
 
 - Microsoft Power BI 
 

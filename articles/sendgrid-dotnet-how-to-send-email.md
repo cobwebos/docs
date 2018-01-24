@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: 14161a0747add43a99e301eacf700ab79c77c767
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
 ## <a name="overview"></a>概述
@@ -108,7 +108,7 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
     var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
     var client = new SendGridClient(apiKey);
 
-以下示例演示如何使用 Web API 发送邮件。
+以下示例演示如何通过控制台应用程序使用 SendGrid Web API 发送电子邮件。
 
     using System;
     using System.Threading.Tasks;
@@ -140,7 +140,83 @@ SendGrid 的 .NET 类库名为 **SendGrid**。 其中包含以下命名空间：
             }
         }
     }
+    
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>如何：使用 MailHelper 类从 ASP .NET Core API 发送电子邮件
 
+下面的示例可用于使用 `SendGrid.Helpers.Mail` 命名空间的 `MailHelper` 类将单个电子邮件从 ASP .NET Core API 发送给多个人。 在此示例中，我们使用的是 ASP .NET Core 1.0。 
+
+此示例中，API 密钥已存储在 `appsettings.json` 文件中，可以从 Azure 门户中重写该文件，如以上示例所示。
+
+`appsettings.json` 文件的内容类似于：
+
+    {
+       "Logging": {
+       "IncludeScopes": false,
+       "LogLevel": {
+       "Default": "Debug",
+       "System": "Information",
+       "Microsoft": "Information"
+         }
+       },
+     "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    }
+
+首先，我们需将以下代码添加到 .NET Core API 项目的 `Startup.cs` 文件中。 这是必需的，因此我们可使用 API 控制器中的依赖项注入，从 `appsettings.json` 文件访问 `SENDGRID_API_KEY`。 将 `IConfiguration` 接口添加到下列 `ConfigureServices` 方法中后，可将其注入控制器的构造函数中。 添加了所需代码之后，`Startup.cs` 文件的内容类似于：
+
+        public IConfigurationRoot Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Add mvc here
+            services.AddMvc();
+            services.AddSingleton<IConfiguration>(Configuration);
+        }
+
+在控制器上，插入 `IConfiguration` 接口后，可以使用 `MailHelper` 类的 `CreateSingleEmailToMultipleRecipients` 方法将单个电子邮件发送到多个收件人。 该方法接受一个名为 `showAllRecipients` 的附加布尔参数。 此参数可用于控制电子邮件收件人是否能够在电子邮件标题的“收件人”部分查看其他每个电子邮件地址。 控制器的示例代码应如下所示 
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using SendGrid;
+    using SendGrid.Helpers.Mail;
+    using Microsoft.Extensions.Configuration;
+
+    namespace SendgridMailApp.Controllers
+    {
+        [Route("api/[controller]")]
+        public class NotificationController : Controller
+        {
+           private readonly IConfiguration _configuration;
+
+           public NotificationController(IConfiguration configuration)
+           {
+             _configuration = configuration;
+           }      
+        
+           [Route("SendNotification")]
+           public async Task PostMessage()
+           {
+              var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
+              var client = new SendGridClient(apiKey);
+              var from = new EmailAddress("test1@example.com", "Example User 1");
+              List<EmailAddress> tos = new List<EmailAddress>
+              {
+                  new EmailAddress("test2@example.com", "Example User 2"),
+                  new EmailAddress("test3@example.com", "Example User 3"),
+                  new EmailAddress("test4@example.com","Example User 4")
+              };
+            
+              var subject = "Hello world email from Sendgrid ";
+              var htmlContent = "<strong>Hello world with HTML content</strong>";
+              var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
+              var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+              var response = await client.SendEmailAsync(msg);
+          }
+       }
+    }
+    
 ## <a name="how-to-add-an-attachment"></a>如何：添加附件
 可以通过调用 **AddAttachment** 方法并概要指定要附加的文件名和 Base64 编码内容，将附件添加到邮件。 若要包括多个附件，可对想要附加的每个文件调用此方法一次，或者使用 **AddAttachments** 方法。 以下示例演示了如何将附件添加到邮件：
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: e66dc2af18785c6c8e83815129c8bca5b877d25b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f8ba1a6308dfe234fff700d363fb9252b94570e2
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
@@ -227,6 +227,82 @@ CPU 正忙于执行指令。
 7. 在 Kudu 网站上，选择“站点扩展”。
 8. 从 Azure Web 应用库中安装“Application Insights”。
 9. 重新启动 Web 应用。
+
+## <a id="profileondemand"></a>手动触发探查器
+开发探查器时，我们添加了一个命令行接口，以便可以测试应用服务中的探查器。 用户也可以使用此接口来自定义探查器的启动方式。 在较高层面上，探查器使用应用服务的 Kudu 系统在后台管理探查。 当你安装 Application Insights 扩展时，我们会创建一个用于托管探查器的连续 Web 作业。 我们将使用与此相同的技术创建一个新的 Web 作业，你可以根据需要自定义此作业。
+
+本部分介绍如何：
+
+1.  创建一个 Web 作业。只需按下某个按钮，该作业就能将探查器启动两分钟。
+2.  创建一个可以计划运行探查器的 Web 作业。
+3.  设置探查器的参数。
+
+
+### <a name="set-up"></a>设置
+首先，让我们熟悉 Web 作业的仪表板。 在“设置”下面，单击“Web 作业”选项卡。
+
+![Web 作业边栏选项卡](./media/app-insights-profiler/webjobs-blade.png)
+
+可以看到，此仪表板显示了站点上当前安装的所有 Web 作业。 可以看到正在运行探查器作业的 ApplicationInsightsProfiler2 Web 作业。 我们将在此位置为手动和计划探查完成创建新的 Web 作业。
+
+首先，让我们获取所需的二进制文件。
+
+1.  转到 kudu 站点。 在“开发工具”选项卡下面，单击带有 Kudu 徽标的“高级工具”选项卡。 单击“转到”。 随后将会转到一个新站点并自动登录。
+2.  接下来，需要下载探查器二进制文件。 通过页面顶部的“调试控制台”->“CMD”导航到文件资源管理器。
+3.  单击“站点”->“wwwroot”->“App_Data”->“作业”->“连续”。 此时应会看到“ApplicationInsightsProfiler2”文件夹。 单击该文件夹左侧的下载图标。 随后将会下载“ApplicationInsightsProfiler2.zip”文件。
+4.  这会下载后续步骤所需的所有文件。 我建议创建一个空目录，以便在继续操作之前，将此 zip 存档移到该目录。
+
+### <a name="setting-up-the-web-job-archive"></a>设置 Web 作业存档
+简单而言，将新的 Web 作业添加到 Azure 网站就是创建一个包含 run.cmd 的 zip 存档。 该 run.cmd 告知 Web 作业系统在你运行该 Web 作业时要执行哪些操作。 可以查看 Web 作业文档中的其他选项，但对于本教程，我们不需要其他任何选项。
+
+1.  开始创建新文件夹，并将其命名为“RunProfiler2Minutes”。
+2.  将提取的 ApplicationInsightProfiler2 文件夹中的文件复制到此新文件夹。
+3.  创建新的 run.cmd 文件。 （为方便起见，在开始之前，我已在 VS Code 中打开此工作文件夹）
+4.  添加命令 `ApplicationInsightsProfiler.exe start --engine-mode immediate --single --immediate-profiling-duration 120` 并保存文件。
+a.  `start` 命令指示探查器启动。
+b.  `--engine-mode immediate` 告知探查器，我们要立即开始探查。
+c.  `--single` 表示运行，然后自动停止。  `--immediate-profiling-duration 120` 表示让探查器运行 120 秒，即 2 分钟。
+5.  保存此文件。
+6.  将此文件夹存档：可以右键单击该文件夹并选择“发送到”->“压缩(zip)文件夹”。 这会使用文件夹的名称创建一个 .zip 文件。
+
+![启动探查器命令](./media/app-insights-profiler/start-profiler-command.png)
+
+创建 Web 作业 .zip 文件后，可以在站点中使用它来设置 Web 作业。
+
+### <a name="add-a-new-web-job"></a>添加新的 Web 作业
+接下来，在站点中添加一个新的 Web 作业。 本示例将演示如何添加手动触发的 Web 作业。 完成此过程后，计划 Web 作业的过程几乎相同。 你可以自行阅读有关计划触发的作业的详细信息。
+
+1.  转到 Web 作业仪表板。
+2.  在工具栏中单击“添加”命令。
+3.  为 Web 作业命名，为方便阅读，我使用了与存档相同的名称，同时也方便将它打开以包含不同版本的 run.cmd。
+4.  在窗体的文件上传部分中，单击“打开文件”图标并找到前面创建的 .zip 文件。
+5.  对于“类型”，请选择“已触发”。
+6.  对于“触发器”，请选择“手动”。
+7.  点击“确定”以保存。
+
+![启动探查器命令](./media/app-insights-profiler/create-webjob.png)
+
+### <a name="run-the-profiler"></a>运行探查器
+
+添加可以手动触发的新 Web 作业后，可以尝试运行它。
+
+1.  根据设计，在任意给定时间，计算机上只能运行一个 ApplicationInsightsProfiler.exe 进程。 因此，若要开始运行探查器，请务必在此仪表板中禁用“连续”Web 作业。 单击相应的行并按“停止”。 在工具栏上刷新，并确认状态是否显示作业已停止。
+2.  单击添加的新 Web 作业所在的行，并按“运行”。
+3.  在仍旧选中该行的情况下，单击工具栏中的“日志”命令，转到已启动的 Web 作业的 Web 作业仪表板。 仪表板中列出了最近的运行及其结果。
+4.  单击刚刚启动的运行。
+5.  如果一切正常，将会看到探查器发来的一些诊断日志，表示探查已经开始。
+
+### <a name="things-to-consider"></a>注意事项
+
+尽管此方法相对简单直接，但需要注意一些问题。
+
+1.  由于此过程不是由我们的服务进行管理，因此，我们无法更新 Web 作业的代理二进制文件。 目前，二进制文件没有稳定的下载页，获取最新文件的唯一方法是更新扩展，然后从 continuous 文件夹中抓取文件，就像我们前面所做的一样。
+2.  由于此过程使用的命令行参数最初设计为面向开发人员而不是最终用户，这些参数将来可能会更改，因此，在升级时请注意这一点。 这不会造成太大的问题，因为可以添加 Web 作业、运行它，然后测试它是否正常工作。 最终我们会生成 UI 来执行此操作而无需手动过程，但这是一个需要考虑的问题。
+3.  应用服务的“Web 作业”功能独特之处在于，当它运行 Web 作业时，可以确保进程使用的环境变量和应用设置，与网站最终使用的环境变量和应用设置相同。 这意味着，不需要通过命令行将检测密钥传递给探查器，探查器只会从环境中拾取检测密钥。 但是，如果想要在应用服务外部的开发机箱或计算机上运行探查器，则需要提供检测密钥。 为此，可以传入参数 `--ikey <instrumentation-key>`。 请注意，此值必须与应用程序使用的检测密钥匹配。 探查器的日志输出将会告知探查器是使用哪个 ikey 启动的，以及在探查时，我们是否通过该检测密钥检测到活动。
+4.  手动触发的 Web 作业实际上可以通过 Web 挂钩来触发。 可通过以下方式获取此 URL：在仪表板中右键单击 Web 作业并查看属性，或者在从表中选择 Web 作业后，选择工具栏中的“属性”。 有大量在线文章介绍了此方法，因此我不会过多地重述。此方法为通过 CI/CD 管道（例如 VSTS）或 Microsoft Flow (https://flow.microsoft.com/en-us/) 触发探查器带来了可能性。 根据 run.cmd 的复杂程度（例如，创建 run.ps1），可能的方法有多种多样。  
+
+
+
 
 ## <a id="aspnetcore"></a>ASP.NET Core 支持
 

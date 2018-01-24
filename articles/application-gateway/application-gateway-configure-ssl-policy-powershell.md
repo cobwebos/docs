@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: f3d3d2b1ef0957417e09bb2c9b3913cd366aaa4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 407b62042d3f0d5c68234c4faeaa139c5e21b3a6
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 SSL 策略版本和密码套件
 
@@ -110,6 +110,8 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>配置自定义 SSL 策略
 
+配置自定义 SSL 策略时，会传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。 
+
 如下示例将在应用程序网关上设置自定义 SSL 策略。 它将最低协议版本设置为 `TLSv1_1`，并启用以下密码套件：
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -139,6 +141,8 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略创建应用程序网关
+
+配置预定义 SSL 策略时，会传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
 
 如下示例会使用预定义 SSL 策略创建一个新的应用程序网关。
 
@@ -177,6 +181,31 @@ $policy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Predefined -PolicyN
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略更新现有应用程序网关
 
-请访问[应用程序网关重定向概述](application-gateway-redirect-overview.md)，了解如何将 HTTP 流量重定向至 HTTPS 终结点。
+要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
+
+以下示例中提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
+
+```powershell
+# You have to change these parameters to match your environment.
+$AppGWname = "YourAppGwName"
+$RG = "YourResourceGroupName"
+
+$AppGw = get-azurermapplicationgateway -Name $AppGWname -ResourceGroupName $RG
+
+# SSL Custom Policy
+# Set-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256" -ApplicationGateway $AppGw
+
+# SSL Predefined Policy
+# Set-AzureRmApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName "AppGwSslPolicy20170401S" -ApplicationGateway $AppGW
+
+# Update AppGW
+# The SSL policy options are not validated or updated on the Application Gateway until this cmdlet is executed.
+$SetGW = Set-AzureRmApplicationGateway -ApplicationGateway $AppGW
+
+
+
+## Next steps
+
+Visit [Application Gateway redirect overview](application-gateway-redirect-overview.md) to learn how to redirect HTTP traffic to a HTTPS endpoint.

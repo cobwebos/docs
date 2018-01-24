@@ -1,5 +1,5 @@
 ---
-title: "Azure AD .NET 入门 | Microsoft 文档"
+title: "Azure AD .NET 桌面 (WPF) 入门 | Microsoft Docs"
 description: "如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 .NET Windows 桌面应用程序。"
 services: active-directory
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 41abe20d778a8c51c6b19733ddf5426d12d8751e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>将 Azure AD 集成到 Windows 桌面 WPF 应用程序中
+# <a name="azure-ad-net-desktop-wpf-getting-started"></a>Azure AD .NET 桌面 (WPF) 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -85,7 +85,7 @@ public MainWindow()
 }
 ```
 
-* 现在查找 `Search(...)` 方法，当用户在应用程序的 UI 中单击“搜索”按钮时，将调用该方法。  此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。  但是，要查询 Graph API，需要在请求的 `Authorization` 标头中包含 access_token - 这是 ADAL 传入的位置。
+* 现在查找 `Search(...)` 方法，此方法将在用户在应用的 UI 中单击“搜索”按钮时被调用。  此方法将向 Azure AD Graph API 发出 GET 请求，以查询其 UPN 以给定搜索词开头的用户。  但是，要查询 Graph API，需要在请求的 `Authorization` 标头中包含 access_token - 这是 ADAL 传入的位置。
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)

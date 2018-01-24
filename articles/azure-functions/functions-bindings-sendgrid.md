@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: f24c2aecf44dd44fec05dc9a4d156ff408b0c953
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: aa64bbc764fe96d7c15d62660114222458e5acf4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 11/30/2017
 
 参阅语言特定的示例：
 
-* [预编译 C#](#c-example)
-* [C# 脚本](#c-script-example)
+* [C#](#c-example)
+* [C# 脚本 (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# 示例
 
-以下示例演示一个使用服务总线队列触发器和 SendGrid 输出绑定的[预编译的 C# 函数](functions-dotnet-class-library.md)。
+以下示例演示使用服务总线队列触发器和 SendGrid 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```cs
 [FunctionName("SendEmail")]
@@ -155,7 +155,7 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>属性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) 中定义的 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) 中定义的 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 属性。
 
 有关可以配置的特性属性的信息，请参阅[配置](#configuration)。 下面是某个方法签名中的 `SendGrid` 特性示例：
 
@@ -169,7 +169,7 @@ public static void Run(
 }
 ```
 
-有关完整示例，请参阅[预编译 C# 示例](#c-example)。
+有关完整示例，请参阅 [C# 示例](#c-example)。
 
 ## <a name="configuration"></a>配置
 

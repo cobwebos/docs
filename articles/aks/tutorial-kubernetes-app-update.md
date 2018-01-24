@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 95c609ab49fe478eda48b2a2eca6a772d1356d18
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 6de5173aedc836f7a2d56370ea8e54ad6e77ab5e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-an-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中更新应用程序
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 12/06/2017
 
 在前面的教程中，已将应用程度打包到容器映像中，将该映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 应用程序随后在 Kubernetes 群集上运行。 
 
-还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 其中包含 `azure-vote` 目录和 `docker-compose.yml` 文件。
+还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 其中包含 `azure-vote` 目录和 `docker-compose.yaml` 文件。
 
-如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1：创建容器映像](./tutorial-kubernetes-prepare-app.md)。 
+如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。 
 
 ## <a name="update-application"></a>更新应用程序
 
@@ -61,7 +61,7 @@ SHOWHOST = 'false'
 
 ## <a name="update-container-image"></a>更新容器映像
 
-使用 [docker-compose](https://docs.docker.com/compose/) 重新创建前端映像并运行更新的应用程序。 `--build` 参数用于指示 Docker Compose 重新创建应用程序映像。
+使用 [docker-compose][docker-compose] 重新创建前端映像并运行更新的应用程序。 `--build` 参数用于指示 Docker Compose 重新创建应用程序映像。
 
 ```console
 docker-compose up --build -d
@@ -83,13 +83,13 @@ docker-compose up --build -d
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-使用 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) 标记映像。 将 `<acrLoginServer>` 替换为 Azure 容器注册表登录服务器名称或公共注册表主机名。 另请注意，映像版本已更新为 `redis-v2`。
+使用 [docker tag][docker-tag] 标记映像。 将 `<acrLoginServer>` 替换为 Azure 容器注册表登录服务器名称或公共注册表主机名。 另请注意，映像版本已更新为 `redis-v2`。
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 Azure 容器注册表的登录服务器名称。
+使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 Azure 容器注册表的登录服务器名称。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -97,7 +97,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>部署更新的应用程序
 
-为了确保最长运行时间，必须运行应用程序 Pod 的多个实例。 使用 [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) 命令验证此配置。
+为了确保最长运行时间，必须运行应用程序 Pod 的多个实例。 使用 [kubectl get pod][kubectl-get] 命令验证此配置。
 
 ```
 kubectl get pod
@@ -120,13 +120,13 @@ azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-若要更新应用程序，请使用 [kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) 命令。 使用登录服务器或容器注册表的主机名更新 `<acrLoginServer>`。
+若要更新应用程序，请使用 [kubectl set][kubectl-set] 命令。 使用登录服务器或容器注册表的主机名更新 `<acrLoginServer>`。
 
 ```azurecli
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-若要监视部署，请使用 [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) 命令。 部署更新的应用程序时，Pod 终止运行并通过新容器映像重新创建。
+若要监视部署，请使用 [kubectl get pod][kubectl-get] 命令。 部署更新的应用程序时，Pod 终止运行并通过新容器映像重新创建。
 
 ```azurecli
 kubectl get pod
@@ -167,4 +167,15 @@ kubectl get service azure-vote-front
 进入下一教程，了解如何使用 Operations Management Suite 监视 Kubernetes。
 
 > [!div class="nextstepaction"]
-> [使用 Log Analytics 监视 Kubernetes](./tutorial-kubernetes-monitor.md)
+> [使用 Log Analytics 监视 Kubernetes][aks-tutorial-monitor]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-set]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md

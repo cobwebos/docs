@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbdf263d9d7fdfbe4fbc47db9ba9f30637e8c3ad
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>将 Azure 存储帐户与 Azure CDN 集成
 启用 CDN 可以缓存 Azure 存储的内容。 它通过在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 Blob 和计算实例的静态内容，为开发人员提供一个传送高带宽内容的全球性解决方案。
@@ -53,9 +53,9 @@ ms.lasthandoff: 10/11/2017
     此值还在门户中用作此存储帐户的名称，或在通过编程方式访问此帐户时使用。
 4. 保留**部署模型**、**帐户类型**、**性能**和**复制**的默认值。 
 5. 选择将与存储帐户一起使用的**订阅**。
-6. 选择或创建“资源组” 。  有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 选择或创建“资源组” 。  有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
 7. 选择存储帐户的位置。
-8. 单击“创建” 。 创建存储帐户的过程可能需要几分钟时间完成。
+8. 单击“创建”。 创建存储帐户的过程可能需要几分钟时间完成。
 
 ## <a name="step-2-enable-cdn-for-the-storage-account"></a>步骤 2：为存储帐户启用 CDN
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
     ![CDN 存储新终结点][cdn-storage-new-endpoint]
 
 > [!NOTE]
-> 还可转到 Azure CDN 扩展来启用CDN。[教程](#Tutorial-cdn-create-profile)。
+> 还可转到 Azure CDN 扩展来启用 CDN。 [教程](#Tutorial-cdn-create-profile)。
 > 
 > 
 

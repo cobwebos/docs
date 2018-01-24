@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 0d48d0b008d76cfb2d7d7815a69774976e184467
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -59,14 +59,14 @@ Azure Functions 的当前缩放逻辑的独特之处在于，N 大于分区数�
 
 参阅语言特定的示例：
 
-* [预编译 C#](#trigger---c-example)
-* [C# 脚本](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# 脚本 (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
-以下示例演示用于记录事件中心触发器消息正文的[预编译 C#](functions-dotnet-class-library.md) 代码。
+以下示例演示用于记录事件中心触发器消息正文的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -199,7 +199,7 @@ module.exports = function (context, myEventHubMessage) {
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义的 [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义的 [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) 特性。
 
 该特性的构造函数使用事件中心的名称、使用者组的名称和包含连接字符串的应用设置的名称。 有关这些设置的详细信息，请参阅[触发器配置部分](#trigger---configuration)。 下面是 `EventHubTriggerAttribute` 特性的示例：
 
@@ -211,7 +211,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-有关完整示例，请参阅[触发器 - 预编译 C# 示例](#trigger---c-example)。
+有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
@@ -242,14 +242,14 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 参阅语言特定的示例：
 
-* [预编译 C#](#output---c-example)
-* [C# 脚本](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# 脚本 (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
-以下示例演示使用方法返回值作为输出将消息写入到事件中心的[预编译 C# 函数](functions-dotnet-class-library.md)：
+以下示例演示使用方法返回值作为输出将消息写入到事件中心的 [C# 函数](functions-dotnet-class-library.md)：
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -371,7 +371,7 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>输出 - 特性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义的 [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md) 中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) 中定义的 [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) 属性。
 
 该特性的构造函数使用事件中心的名称和包含连接字符串的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#output---configuration)。 下面是 `EventHub` 特性的示例：
 
@@ -384,7 +384,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 }
 ```
 
-有关完整示例，请参阅[输出 - 预编译 C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 

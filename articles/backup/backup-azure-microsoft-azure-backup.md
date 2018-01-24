@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/20/2017
-ms.author: masaran;trinadhk;pullabhk;markgal
-ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: masaran;trinadhk;pullabhk;markgal;adigan
+ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>准备使用 Azure 备份服务器来备份工作负荷
 > [!div class="op_single_selector"]
@@ -57,6 +57,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 | 操作系统 | 平台 | SKU |
 |:--- | --- |:--- |
+| Windows Server 2016 和最新的 SP |64 位 |Standard、Datacenter、Essentials (MABS v2 onwards) |
 | Windows Server 2012 R2 和最新的 SP |64 位 |Standard、Datacenter、Foundation |
 | Windows Server 2012 和最新的 SP |64 位 |Datacenter、Foundation、Standard |
 | Windows Storage Server 2012 R2 和最新的 SP |64 位 |Standard、Workgroup |
@@ -96,7 +97,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 5. 单击“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
 6. 单击“资源组”查看可用资源组列表，或单击“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)
 7. 单击“位置”，为保管库选择地理区域  。
-8. 单击“创建” 。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
+8. 单击“创建”。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
    创建保管库后，它会在门户中打开。
 
 ### <a name="set-storage-replication"></a>设置存储复制
@@ -243,7 +244,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
 | 已连接 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
-| 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
+| 连接断开超过 15 天 |已过期 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复
