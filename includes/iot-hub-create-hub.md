@@ -9,7 +9,7 @@
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   * **定价和缩放层**：对于本教程，请选择“F1 - 免费”层。 有关详细信息，请参阅[定价和缩放层][lnk-pricing]。
+   * **定价和缩放级别**：对于本教程，请选择“F1 - 免费”级别。 有关详细信息，请参阅[定价和缩放级别][lnk-pricing]。
 
    * **资源组**：创建用于托管 IoT 中心的资源组，或使用现有的资源组。 有关详细信息，请参阅[使用资源组管理 Azure 资源][lnk-resource-groups]
 
