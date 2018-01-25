@@ -12,29 +12,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 32b72577002962f049f446d6f3c2353189867e92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89b860bb4174a06c17da1db2bce2eaa11832b0b2
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-azure-documentdb-connector.md)
+> * [版本 1 - 正式版](data-factory-azure-documentdb-connector.md)
 > * [版本 2 - 预览版](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Azure Cosmos DB 连接器](../connector-azure-cosmos-db.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Azure Cosmos DB 连接器](../connector-azure-cosmos-db.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Cosmos DB (DocumentDB API)。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure Cosmos DB (SQL API)。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。 
 
 可将数据从任一支持的源数据存储复制到 Azure Cosmos DB，或从 Azure Cosmos DB 复制到任一支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 
 
 > [!IMPORTANT]
-> Azure Cosmos DB 连接器仅支持 DocumentDB API。
+> Azure Cosmos DB 连接器仅支持 SQL API。
 
 若要向/从 JSON 文件或另一 Azure Cosmos DB 集合原样复制数据，请参阅[导入/导出 JSON 文档](#importexport-json-documents)。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 创建管道的最简单方法是使用**复制向导**。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+也可以使用以下工具创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 10/11/2017
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的一个[管道](data-factory-create-pipelines.md)，该复制活动使用 [DocumentDbCollectionSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例将 Azure Cosmos DB 中的数据复制到 Azure Blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例将 Azure Cosmos DB 中的数据复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure Cosmos DB 链接服务：**
 
@@ -304,11 +304,11 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 
 1. [DocumentDb](#azure-documentdb-linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)。
 4. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 类型的一个输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的一个[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties)。
 
-此示例将数据从 Azure Blob 复制到 Azure Cosmos DB。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例将数据从 Azure Blob 复制到 Azure Cosmos DB。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure Blob 存储链接服务：**
 
@@ -489,7 +489,7 @@ Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构
 2. **问题：**复制到 Azure Cosmos DB 的重试操作如何处理已复制的记录？
 
     **答案：**如果记录具有一个“ID”字段，并且复制操作尝试插入具有相同 ID 的记录，则复制操作将引发错误。  
-3. **问题：**数据工厂是否支持[按范围分区或按基于哈希的数据分区](../../cosmos-db/documentdb-partition-data.md)？
+3. **问题：**数据工厂是否支持[按范围分区或按基于哈希的数据分区](../../cosmos-db/sql-api-partition-data.md)？
 
     **答案：**否。
 4. **问题：**是否可以为一个表指定多个 Azure Cosmos DB 集合？
@@ -497,4 +497,4 @@ Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构
     **答案：**否。 目前仅可以指定一个集合。
 
 ## <a name="performance-and-tuning"></a>性能和优化
-请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法。

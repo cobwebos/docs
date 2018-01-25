@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 17ffd0de41964736d2f59b0cf891d0c6b2e7d16b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-onprem-db2-connector.md)
+> * [版本 1 - 正式版](data-factory-onprem-db2-connector.md)
 > * [版本 2 - 预览版](../connector-db2.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1，即正式版 (GA)。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 DB2 连接器](../connector-db2.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 DB2 连接器](../connector-db2.md)。
 
 
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据从本地 DB2 数据库复制到数据存储。 可将数据复制到[数据工厂数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文中列为受支持接收器的任何存储。 本主题基于“数据工厂”一文，其中概述了如何使用复制活动移动数据，并列出了受支持的数据存储组合。 

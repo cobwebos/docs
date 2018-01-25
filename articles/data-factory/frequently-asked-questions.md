@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 其中提供了有关数据工厂的常见问题的解答。  
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 的常见问题解答](v1/data-factory-faq.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 的常见问题解答](v1/data-factory-faq.md)。
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
 数据工厂是一项完全托管的基于云的数据集成服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
@@ -164,7 +164,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 ## <a name="technical-deep-dive"></a>技术深入了解 
 
 ### <a name="can-version-1-and-version-2-pipelines-run-side-by-side"></a>是否可以同时运行版本 1 和版本 2 管道？
-不能。 版本 2 和版本 1 数据工厂不能包含另一版本的实体（例如链接服务、数据集或管道）。   
+不会。 版本 2 和版本 1 数据工厂不能包含另一版本的实体（例如链接服务、数据集或管道）。   
 
 ### <a name="do-i-still-need-to-define-data-sets-in-version-2"></a>在版本 2 中是否仍需定义数据集？
 对于大多数活动而言，数据集不再是必需的实体。 对于使用数据集中的架构和其他元数据信息进行转换的复制、机器学习、查找、验证和自定义活动，数据集还是必需的。 其余活动不再需要数据集。
