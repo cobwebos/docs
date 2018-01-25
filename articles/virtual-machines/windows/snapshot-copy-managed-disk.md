@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: dba70db512d88dfc57107bade0df50d1834eb883
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 10b5eb0062e4a029b0f233ee8af17d590d59c8d4
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-snapshot"></a>创建快照
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/14/2017
 6. 选择 Azure 数据中心的位置。  
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
 8. 选择用于存储快照的“帐户类型”。 建议使用 **Standard_LRS**，除非需要将其存储在高性能磁盘上。
-9. 单击“创建” 。
+9. 单击“创建”。
 
 ## <a name="use-powershell-to-take-a-snapshot"></a>使用 PowerShell 拍摄快照
 以下步骤演示如何使用 [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) cmdlet 获取要复制的 VHD 磁盘、创建快照配置以及创建磁盘的快照。 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/14/2017
 请确保已安装最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
 
 ```
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 ```
 有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
 

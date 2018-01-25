@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 473da6436ad39709359b579162a6b60efc38d61f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5eebae624ea024f2ff8c1fa4764027c05220a15f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>在集成帐户中为逻辑应用管理项目元数据
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/03/2017
 
 ## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>从项目中为逻辑应用检索元数据
 
-1. 创建[逻辑应用](logic-apps-create-a-logic-app.md)。
+1. 创建[逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
 2. 创建[从逻辑应用到集成帐户的链接](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app)。 
 

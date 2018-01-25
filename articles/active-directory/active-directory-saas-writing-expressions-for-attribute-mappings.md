@@ -4,20 +4,20 @@ description: "了解如何在 Azure Active Directory 中自动预配 SaaS 应用
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 2811b4d57f69425ef119c88f80b32d24c6c32195
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/18/2017
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如："公司名称: \"Contoso\""
 
 ## <a name="list-of-functions"></a>函数列表
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>附加
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |通常是来自源对象的属性的名称 |
 | **suffix** |必选 |String |要附加到源值末尾的字符串。 |
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |通常是来自源对象的属性的名称。 |
 | **inputFormat** |必选 |String |源值的预期格式。 有关支持的格式，请参阅 [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **separator** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
 | **source1  … sourceN ** |必选，次数可变 |String |要联接在一起的字符串值。 |
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |通常是属性的名称。 |
 | **start** |必选 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
@@ -102,7 +102,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |通常是来自源对象的属性的名称。 |
 | **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
@@ -140,6 +140,18 @@ ms.lasthandoff: 10/18/2017
 | **template** |可选 |String |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为源值。 |
 
 - - -
+### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
+**函数：**<br> SingleAppRoleAssignment([appRoleAssignments])
+
+**说明：**<br> 对于给定的应用程序，从向一个用户分配的所有 appRoleAssignments 列表中返回单个 appRoleAssignment。 需要此函数才能将 appRoleAssignments 对象转换为单个角色名称字符串。 请注意，最佳做法是确保每次只向一个用户分配一个 appRoleAssignment，如果分配了多个角色，则返回的角色字符串可能是不可预测的。
+
+**参数：**<br> 
+
+| 名称 | 必选/重复 | Type | 说明 |
+| --- | --- | --- | --- |
+| **[appRoleAssignments]** |必选 |String |**[appRoleAssignments]** 对象。 |
+
+- - -
 ### <a name="stripspaces"></a>StripSpaces
 **函数：**<br> StripSpaces(source)
 
@@ -147,7 +159,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |要更新的 **source** 值。 |
 
@@ -159,7 +171,7 @@ ms.lasthandoff: 10/18/2017
 
 **参数：**<br> 
 
-| Name | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |必选 |String |要更新的 **source** 值。 |
 | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |

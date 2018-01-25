@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 7486e7c6816538fc120fd0b0a8bea0b006fb21f0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 424a5ec49018e969edbf90c374a9da7e1d22395d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 > [!NOTE]
-> - 如果对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
+> - 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
 >
 > - 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 01/18/2018
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-copy-data-portal/deploying-data-factory.png)
-9. 创建完以后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，会显示图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-copy-data-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
@@ -147,7 +147,7 @@ ms.lasthandoff: 01/18/2018
 10. 切换到属性窗口中的“连接”选项卡。   
 
     ![“连接”选项卡](./media/tutorial-copy-data-portal/source-dataset-connection-tab.png)
-11. 单击“链接服务”文本框旁边的“+ 新建”。 链接服务可将数据存储或计算链接到数据工厂。 在本示例中，请创建 Azure 存储链接服务，将 Azure 存储帐户链接到数据存储。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到 Blob 存储。 数据集指定包含源数据的容器、文件夹和文件（可选）。 
+11. 单击“链接服务”文本框旁边的“+ 新建”。 链接服务可将数据存储或计算链接到数据工厂。 在本例中，我们将创建一个 Azure 存储链接服务，用于将 Azure 存储帐户链接到数据存储。 该链接服务包含的连接信息可供数据工厂服务用来在运行时连接到 Blob 存储。 数据集指定包含源数据的容器、文件夹和文件（可选）。 
 
     ![“新建链接服务”按钮](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
 12. 在“新建链接服务”窗口中，执行以下步骤： 
@@ -185,7 +185,7 @@ ms.lasthandoff: 01/18/2018
 23. 在属性窗口的“常规”选项卡中，将名称设置为 **OutputSqlDataset**。 
     
     ![输出数据集名称](./media/tutorial-copy-data-portal/output-dataset-name.png)
-24. 切换到“连接”选项卡，然后针对“链接服务”单击“新建”。 数据集必须与链接服务相关联。 链接服务包含的连接字符串可供数据工厂服务用来在运行时连接到 Azure SQL 数据集。 数据集指定可将数据复制到其中的容器、文件夹和文件（可选）。 
+24. 切换到“连接”选项卡，然后针对“链接服务”单击“新建”。 数据集必须与链接服务相关联。 该链接服务包含的连接字符串可供数据工厂服务用于在运行时连接到 Azure SQL 数据库。 数据集指定可将数据复制到其中的容器、文件夹和文件（可选）。 
     
     ![“新建链接服务”按钮](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
 25. 在“新建链接服务”窗口中，执行以下步骤： 
@@ -415,4 +415,4 @@ ms.lasthandoff: 01/18/2018
 若要了解如何将数据从本地复制到云，请转到以下教程： 
 
 > [!div class="nextstepaction"]
->[将数据从本地复制到云](tutorial-hybrid-copy-data-tool.md)
+>[将数据从本地复制到云](tutorial-hybrid-copy-portal.md)

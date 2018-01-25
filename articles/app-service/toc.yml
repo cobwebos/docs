@@ -31,6 +31,8 @@
   items:
     - name: 1 - 将应用与 DB 配合使用
       items:
+        - name: 将 .NET Core 与 SQL DB 配合使用
+          href: app-service-web-tutorial-dotnetcore-sqldb.md
         - name: 将 .NET 与 SQL DB 配合使用
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: 将 PHP 与 MySQL 配合使用
@@ -85,7 +87,7 @@
           href: web-sites-python-configure.md
         - name: 连接到本地资源
           href: web-sites-integrate-with-vnet.md
-    - name: 部署到 Azure
+    - name: “部署到 Azure”
       items:
         - name: 部署应用
           items:

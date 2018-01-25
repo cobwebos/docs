@@ -3,8 +3,8 @@ title: "使用 Azure CLI 管理 Azure Redis 缓存 | Microsoft 文档"
 description: "了解如何在任何平台上安装 Azure CLI、如何使用它连接到 Azure 帐户，以及如何从 Azure CLI 创建和管理 Redis 缓存。"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: sdanie
-ms.openlocfilehash: d3a425251035e09bb3163fbb052669d0a874806f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: wesmc
+ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>如何使用 Azure 命令行界面 (Azure CLI) 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演�
 
 | 属性 | Switch | 说明 |
 | --- | --- | --- |
-| 名称 |-n, --name |Redis 缓存的名称。 |
+| name |-n, --name |Redis 缓存的名称。 |
 | 资源组 |-g, --resource-group |资源的名称。 |
 | location |-l, --location |要创建缓存的位置。 |
 | size |-z, --size |Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |

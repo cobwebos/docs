@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 995983a8e32bc01ddc1ab8bbc64345da96875941
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 566773e9bc787bff4e92d86ec57fb0de3121b079
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -172,7 +172,7 @@ FROM HiveSampleIn Group by ProfileID
     }
     ```
 6. 部署管道。 有关详细信息，请参阅[创建管道](data-factory-create-pipelines.md)一文。 
-7. 使用数据工厂监视和管理视图来监视管道。 有关详细信息，请参阅[监视和管理数据工厂管道](data-factory-monitor-manage-pipelines.md)一文。 
+7. 使用数据工厂监视和管理视图来监视管道。 有关详细信息，请参阅文章[监视和管理数据工厂管道](data-factory-monitor-manage-pipelines.md)。 
 
 ## <a name="specifying-parameters-for-a-hive-script"></a>为 Hive 脚本指定参数
 在此示例中，将每天向 Azure Blob 存储中引入游戏日志，并将游戏日志存储在使用日期和时间进行分区的文件夹中。 需要对 Hive 脚本进行参数化和在运行时动态传递输入文件夹位置，并生成使用日期和时间进行分区的输出。

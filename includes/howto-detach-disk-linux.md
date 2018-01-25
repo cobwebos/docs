@@ -29,7 +29,7 @@
 3. 请记录要分离的磁盘的 LUN 或**逻辑单元号**。
 
 ## <a name="remove-operating-system-references-to-the-disk"></a>删除对该磁盘的操作系统引用
-从 Linux 来宾分离磁盘之前，应确保磁盘上的所有分区都未在使用。 确保操作系统在重新启动后不会尝试重新装载它们。 这些步骤将撤消在[附加](../articles/virtual-machines/linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)磁盘时有可能创建的配置。
+从 Linux 来宾分离磁盘之前，应确保磁盘上的所有分区都未在使用。 确保操作系统在重新启动后不会尝试重新装载它们。 这些步骤将撤消在[附加](../articles/virtual-machines/linux/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)磁盘时有可能创建的配置。
 
 1. 使用 `lsscsi` 命令发现磁盘标识符。 `lsscsi` 的安装可以通过 `yum install lsscsi`（在基于 Red Hat 的分发版上）或 `apt-get install lsscsi`（在基于 Debian 的分发版上）来进行。 可以使用 LUN 号找到要寻找的磁盘标识符。 每一行的元组中的最后一个数字就是 LUN。 在下面的示例中，从 `lsscsi` LUN 0 映射到 */dev/sdc*
 

@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f7d8f99bfa09847c01831a06efa8b94c1c0a89a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-connectors-in-a-logic-app"></a>在逻辑应用中使用连接器
 连接器提供对服务、协议和平台上的事件、数据和操作的快速访问。  逻辑应用支持的连接器完整列表可[在此处找到](apis-list.md)。  连接器可在逻辑应用中用作触发器或操作，并且可能需要使用已配置的*连接*（例如：授权 Twitter 帐户代表你进行访问或发布）。
 
-## <a name="basics"></a>基础知识
+## <a name="basics"></a>Basics
 连接器是可作为逻辑应用一部分访问的托管服务，用于与其他服务（如 Dynamics、Azure、Salesforce [等](apis-list.md)）集成。  它们由 Microsoft 部署和管理，因此可在考虑到规模、吞吐量和安全性的情况下生成集成工作流。  要将连接器添加到逻辑应用，可以在“显示 Microsoft 托管 API”下搜索并选择连接器操作或触发器。
 
 ![用于选择触发器的操作菜单][1]
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 可通过单击“浏览”并选择“API 连接”在 Azure 中查看和管理连接。  从 API 连接资源，可以查看、编辑、更新或重新创作任何已创建的连接。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+* [创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [了解逻辑应用的常见用途和示例](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [企业集成触发器和操作入门](../logic-apps/logic-apps-enterprise-integration-overview.md)
 

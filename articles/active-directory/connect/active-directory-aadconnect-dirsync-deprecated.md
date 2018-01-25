@@ -3,7 +3,7 @@ title: "从 DirSync 和 Azure AD Sync 升级 | Microsoft Docs"
 description: "介绍如何从 DirSync 和 Azure AD Sync 升级到 Azure AD Connect。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: bd68fb88-110b-4d76-978a-233e15590803
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e7b0aa1fc555f0fe4773b6bd67db87a55d85bcf
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 9e8faf365c0f47582b4abc3554e0bb6e1c3e7902
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升级 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
 Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。 这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。
@@ -41,11 +41,6 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两
 ## <a name="how-to-transition-to-azure-ad-connect"></a>如何过渡到 Azure AD Connect
 如果正在运行 DirSync，可通过两种方式升级：就地升级和并行部署。 对大多数客户，如果使用最新的操作系统并且对象数少于 50,000 个，我们建议使用就地升级。 对于其他情况，建议执行并行部署，这样，DirSync 配置将迁移到运行 Azure AD Connect 的新服务器。
 
->[!NOTE]
->2017 年 12 月 31 日之后，不再支持从 DirSync 就地升级到 Azure AD Connect，可能需要执行并行部署才能升级。
-
-如果使用 Azure AD Sync，则建议使用就地升级。 如果需要，也可以并行安装新的 Azure AD Connect 服务器，并运行从 Azure AD 同步服务器到 Azure AD Connect 的交叉迁移。
-
 | 解决方案 | 方案 |
 | --- | --- |
 | [从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>如果有已在运行的现有 DirSync 服务器。</li> |
@@ -65,7 +60,7 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两
 DirSync/Azure AD Sync 在 2017 年 4 月 13 日可继续工作。  但从 2017 年 12 月 31 日起，Azure AD 不再接受来自 DirSync/Azure AD Sync 的通信。
 
 **问：可从哪些 DirSync 版本升级？**  
-支持从当前所用的任何 DirSync 版本升级。 注意，2017 年 12 月 31 日之后，不再支持从 DirSync 到 Azure AD Connect 的就地升级。 在该日期之后，使用 DirSync 并且希望迁移到 Azure AD Connect 的客户可能需要重新安装 Azure AD Connect。
+支持从当前所用的任何 DirSync 版本升级。 
 
 **问：用于 FIM/MIM 的 Azure AD 连接器的情况怎样？**  
 用于 FIM/MIM 的 Azure AD 连接器**尚未**宣布弃用。 它目前处于**功能冻结**状态；其中不会添加任何功能，也不会接受任何 bug 修复。 Microsoft 建议其用户计划好迁移到 Azure AD Connect。 我们强烈建议不要使用它来启动任何新部署。 今后我们将宣布弃用此连接器。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 36d3474c2b8dde0355a265c149fe6ba1920a9f22
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connectors-list"></a>连接器列表
 若要查找每个连接器的 Swagger 说明和连接器限制所定义的触发器和操作，请参阅[连接器详细信息](/connectors/)。
@@ -143,7 +143,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 我们是否缺少连接器主题，或者你认为哪些细节很重要？ 如果是，请帮帮忙，为我们的现有主题添加相关内容，或者写下你自己的主题。 我们的文档是开源的，托管在 GitHub 上。 [GitHub 存储库](https://github.com/Microsoft/azure-docs)入门。 
 
 ## <a name="next-steps"></a>后续步骤
-* [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+* [创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [为逻辑应用创建自定义 API](../logic-apps/logic-apps-create-api-app.md)
 * [监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 

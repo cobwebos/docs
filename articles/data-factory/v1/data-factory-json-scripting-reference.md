@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: a437c369ac48fd4ac71dee2a85547d787d9dd210
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9457e90f378cf7b30810ca9cadfcad139e91e2d4
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/02/2017
 
 | 属性 | 说明 | 必选
 -------- | ----------- | --------
-| 名称 | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
+| name | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动或管道用途的文本 | 否 |
 | 活动 | 包含活动列表。 | 是 |
 | start |管道的开始日期-时间。 必须为 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41。 <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00**-05:00`（美国东部标准时间上午 6 点）。<br/><br/>start 和 end 属性共同指定管道的活动期限。 仅在此活动期限内生成输出切片。 |否<br/><br/>如果要指定 end 属性值，必须指定 start 属性值。<br/><br/>创建管道时，开始和结束时间均可为空。 必须指定这两个值，才能设置管道运行的活动期限。 如果创建管道时未指定开始和结束时间，可稍后使用 Set-AzureRmDataFactoryPipelineActivePeriod cmdlet 进行设置。 |
@@ -85,7 +85,7 @@ ms.lasthandoff: 11/02/2017
 
 | 标记 | 说明 | 必选 |
 | --- | --- | --- |
-| 名称 |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
+| name |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |否 |
 | type |指定活动的类型。 请参阅[数据存储](#data-stores)和[数据转换活动](#data-transformation-activities)部分，了解不同的活动类型。 |是 |
 | inputs |活动使用的输入表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |对于 HDInsightStreaming 和 SqlServerStoredProcedure 活动，为“否” <br/> <br/> 对于其他所有活动，为“是” |
@@ -159,7 +159,7 @@ ms.lasthandoff: 11/02/2017
 } 
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
 * 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/02/2017
 }
 ```
 
-请注意以下几点： 
+注意以下几点： 
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
 * Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **AzureStorageLinkedService**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/02/2017
 
 | 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- | 
-| 名称 | 链接服务的名称。 | 是 | 
+| name | 链接服务的名称。 | 是 | 
 | properties - type | 链接服务的类型。 例如：Azure 存储、Azure SQL 数据库。 |
 | typeProperties | typeProperties 节中的元素根据每个数据存储或计算环境的不同而不同。 有关所有数据存储链接服务，请参阅[数据存储](#datastores)部分；有关所有计算链接服务，请参阅[计算环境](#compute-environments) |   
 
@@ -296,7 +296,7 @@ ms.lasthandoff: 11/02/2017
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 名称 |列的名称。 |是 |
+| name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
 | culture |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
 | 格式 |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
@@ -316,7 +316,7 @@ structure:
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
+| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，请将“Frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |不可用 |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>若将 Month 设置为 Month，style 设置为 EndOfInterval，则会在每月的最后一天生成切片。 若将 style 设为 StartOfInterval，会在每月的第一天生成切片。<br/><br/>若将 Frequency 设置为 Day，style 设置为 EndOfInterval，则会在一天的最后一小时生成切片。<br/><br/>若将 Frequency 设置为 Hour，style 设置为 EndOfInterval，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 的日期部分比频率部分更精细，则忽略更精细部分。 <br/><br/>例如，如果 <b>interval</b> 为 <b>hourly</b>（frequency：hour，interval: 1），<b>AnchorDateTime</b> 包含<b>分钟和秒</b>，则会忽略 AnchorDateTime 的<b>分钟和秒</b>部分。 |否 |01/01/0001 |
@@ -354,7 +354,7 @@ structure:
 
 除非 Azure 数据工厂生成数据集，否则应将其标记为**外部**。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| Name | 说明 | 必选 | 默认值 |
+| 名称 | 说明 | 必选 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，如果数据应为每小时可用，可使用 dataDelay 推迟检查外部数据是否可用以及相应切片是否就绪。<br/><br/>仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>此设置不会影响过去的切片 (End Time + dataDelay < Now)，过去的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间需要使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00；请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次重试之间的等待时间。 如果尝试失败，下一次尝试会在 retryInterval 以后。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -1169,7 +1169,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 |否 |
+| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
@@ -1340,7 +1340,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 | 合并（默认值）<br/>上传| 否 |
+| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 | 合并（默认值）<br/>上载| 否 |
 | WriteBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到 Azure 搜索索引。 | 1 到 1,000。 默认值为 1000。 | 否 |
 
 #### <a name="example"></a>示例
@@ -1652,7 +1652,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 |否（如果指定了**数据集**的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了**数据集**的 **tableName**） |
 
 #### <a name="example"></a>示例
 
@@ -1771,7 +1771,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""`。 |否（如果指定了**数据集**的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from "MySchema"."MyTable""`。 |否（如果指定了**数据集**的 **tableName**） |
 
 #### <a name="example"></a>示例
 ```json
@@ -1889,7 +1889,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 |否（如果指定了**数据集**的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了**数据集**的 **tableName**） |
 
 
 #### <a name="example"></a>示例
@@ -2541,7 +2541,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
+| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
@@ -2738,7 +2738,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 |否（如果指定了**数据集**的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了**数据集**的 **tableName**） |
 
 #### <a name="example"></a>示例
 
@@ -2848,7 +2848,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 |是 |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |是 |
 
 #### <a name="example"></a>示例
 
@@ -2903,7 +2903,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 主机 |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
+| host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
 | 端口 |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
 | authenticationType |Basic 或 Anonymous |是 |
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
@@ -3097,7 +3097,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如： `select * from MyTable`。 |否（如果指定了**数据集**的 **collectionName**） |
+| query |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了**数据集**的 **collectionName**） |
 
 #### <a name="example"></a>示例
 
@@ -3316,7 +3316,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |确保类型属性设置为 **OnPremisesFileServer**。 |是 |
-| 主机 |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
+| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
 | userid |指定有权访问服务器的用户的 ID。 |否（如果选择 encryptedCredential） |
 | password |设置用户的密码 (userid)。 |否（如果选择 encryptedCredential） |
 | encryptedCredential |指定可通过运行 New-AzureRmDataFactoryEncryptValue cmdlet 获取的加密凭据。 |否（如果选择在纯文本中指定 userid 和密码） |
@@ -3548,7 +3548,7 @@ auto-
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| 主机 |FTP 服务器的名称或 IP 地址 |是 |&nbsp; |
+| host |FTP 服务器的名称或 IP 地址 |是 |&nbsp; |
 | authenticationType |指定身份验证类型 |是 |基本、匿名 |
 | username |有权访问 FTP 服务器的用户 |否 |&nbsp; |
 | password |用户 (username) 的密码 |否 |&nbsp; |
@@ -3862,7 +3862,7 @@ auto-
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- | --- |
-| 主机 | SFTP 服务器的名称或 IP 地址。 |是 |
+| host | SFTP 服务器的名称或 IP 地址。 |是 |
 | 端口 |SFTP 服务器侦听的端口。 默认值为 21 |否 |
 | authenticationType |指定身份验证类型。 允许的值：**Basic**、**SshPublicKey**。 <br><br> 有关其他属性和 JSON 示例，请分别参阅[使用基本身份验证](#using-basic-authentication)和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
 | skipHostKeyValidation | 指定是否要跳过主机密钥验证。 | 不会。 默认值：false |
@@ -4158,7 +4158,7 @@ auto-
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)，例如：`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`。 | 否 |
-| requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不会。 默认值为 `GET`。 |
+| requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不会。 默认为 `GET`。 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
 | 格式 | 如果只想要**从 HTTP 终结点按原样检索数据**而不分析它，请跳过此格式设置。 <br><br> 如果想要在复制期间分析 HTTP 响应内容，下面是支持的格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 |否 |
@@ -4537,7 +4537,7 @@ auto-
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `select * from MyTable`。 |是 |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |是 |
 
 #### <a name="example"></a>示例
 
@@ -4742,7 +4742,7 @@ auto-
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
-| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| 路径 |包含表的资源的相对 URL。 |不会。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
 | index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 #### <a name="example"></a>示例
@@ -4937,7 +4937,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 类型 |类型属性应设置为 **AzureML**。 |是 |
+| Type |类型属性应设置为 **AzureML**。 |是 |
 | mlEndpoint |批处理计分 URL。 |是 |
 | apiKey |已发布的工作区模型的 API。 |是 |
 
@@ -4965,7 +4965,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 类型 |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
+| Type |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
 | authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，会自动检索授权代码。 |是 |
@@ -5382,7 +5382,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
     }
 }
 ```
-请注意以下几点： 
+注意以下几点： 
 
 - **type** 属性设置为 **HDInsightSpark**。
 - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。

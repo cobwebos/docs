@@ -40,6 +40,9 @@
       maintainContext: true
     - name: 将 Jenkins 与 VSTS 配合使用
       href: 'https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins'
+    - name: 部署 Service Fabric 应用
+      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+      maintainContext: true
 - name: 示例
   items:
     - name: 示例作业和脚本
@@ -50,6 +53,8 @@
       items:
         - name: Azure 应用服务插件
           href: 'https://plugins.jenkins.io/azure-app-service'
+        - name: Azure AD 插件
+          href: 'https://plugins.jenkins.io/azure-ad'
         - name: Azure 容器代理插件
           href: 'https://plugins.jenkins.io/azure-container-agents'
         - name: Azure 容器服务插件
@@ -58,10 +63,14 @@
           href: 'https://plugins.jenkins.io/azure-credentials'
         - name: Azure Function 插件
           href: 'https://plugins.jenkins.io/azure-function'
+        - name: Azure Service Fabric 插件
+          href: 'https://plugins.jenkins.io/service-fabric'
         - name: Azure 存储插件
           href: 'https://plugins.jenkins.io/windows-azure-storage'
         - name: Azure VM 代理插件
           href: 'https://plugins.jenkins.io/azure-vm-agents'
+        - name: Azure VM 规模集插件
+          href: 'https://plugins.jenkins.io/azure-vmss'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Jenkins 主页

@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 5345c0fa6212127e9821adccc8cb4c339ce7ae28
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: b430f5932bcd54d5e2ab787fb6c4491b48dbc416
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [版本 1 - 正式版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [版本 2 - 预览版](quickstart-create-data-factory-dot-net.md)
 
-此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 
+此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 >
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
 
@@ -60,22 +60,22 @@ ms.lasthandoff: 11/21/2017
 #### <a name="create-input-folder-and-files"></a>创建 input 文件夹和文件
 此部分在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。 然后，在容器中创建名为 **input** 的文件夹，再将示例文件上传到 input 文件夹。 
 
-1. 在“存储帐户”页中，切换到“概述”，然后单击 **Blob**。 
+1. 在“存储帐户”页中切换到“概览”，然后单击“Blob”。 
 
-    ![选择 Blob 选项](media/quickstart-create-data-factory-dot-net/select-blobs.png)
+    ![选择“Blob”选项](media/quickstart-create-data-factory-dot-net/select-blobs.png)
 2. 在“Blob 服务”页中，单击工具栏上的“+ 容器”。 
 
     ![“添加容器”按钮](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
 3. 在“新建容器”对话框中，输入 **adftutorial** 作为名称，然后单击“确定”。 
 
     ![输入容器名称](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
-4. 在容器列表中单击 **adftutorial**。 
+4. 在容器列表中单击“adftutorial”。 
 
     ![选择容器](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
 1. 在“容器”页中，单击工具栏上的“上传”。  
 
     ![“上传”按钮](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
-6. 在“上传 blob”页中，单击“高级”。
+6. 在“上传 Blob”页中，单击“高级”。
 
     ![单击“高级”链接](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
 7. 启动**记事本**，创建包含以下内容的名为 **emp.txt** 的文件：将其保存在 **c:\ADFv2QuickStartPSH** 文件夹中（如果 **ADFv2QuickStartPSH** 文件夹不存在，请创建）。
@@ -84,15 +84,15 @@ ms.lasthandoff: 11/21/2017
     John, Doe
     Jane, Doe
     ```    
-8. 在 Azure 门户的“上传 blob”页上，浏览并选择 **emp.txt** 文件作为“文件”字段的值。 
+8. 在 Azure 门户的“上传 Blob”页上，浏览并选择 **emp.txt** 文件作为“文件”字段的值。 
 9. 输入 **input** 作为“上传到文件夹”字段的值。 
 
-    ![上传 blob 设置](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
+    ![上传 Blob 设置](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
 10. 确认文件夹是 **input**、文件是 **emp.txt**，然后单击“上传”。
 11. 应该会在列表中看到 **emp.txt** 文件和上传状态。 
-12. 通过单击边角处的 **X** 关闭“上传 blob”页。 
+12. 通过单击边角处的“X”关闭“上传 Blob”页。 
 
-    ![关闭“上传 blob”页](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
+    ![关闭“上传 Blob”页](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
 1. 使“容器”页保持打开状态。 在本快速入门结束时可以使用它来验证输出。
 
 ### <a name="visual-studio"></a>Visual Studio
@@ -303,7 +303,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 ## <a name="create-a-pipeline-run"></a>创建管道运行
 
-向 **Main** 方法中添加用于**触发管道运行**的以下代码。
+在 **Main** 方法中添加用于**触发管道运行**的以下代码。
 
 此代码还设置 **inputPath** 和 **outputPath** 参数的值，这些值是使用源和接收器 blob 路径的实际值在管道中指定的值。
 
@@ -358,7 +358,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 生成并启动应用程序，然后验证管道执行。
 
-控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等待，直至看到包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
+控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
 
 ### <a name="sample-output"></a>示例输出： 
 ```json

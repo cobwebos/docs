@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3ae7df7939431e3bd13c070d65876145706e06b5
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 1f6c58b219a5fb040048d0075644102f5f0c5323
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 11/28/2017
 
 *C#*
 
-```C#
+```csharp
 
     using Microsoft.ApplicationInsights;
     using Microsoft.ApplicationInsights.Extensibility;
@@ -243,7 +243,7 @@ ms.lasthandoff: 11/28/2017
 
 *C#*
 
-```C#
+```csharp
 
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;

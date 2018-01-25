@@ -11,15 +11,15 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: df1e19b772b41064aff1f345dee93813f0c21c73
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e31f30e46c3a49ff9eca72cb82c16acb731427bf
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
-你可以在 Azure 资源或第三方资源中发生特定事件时，启动自动化[逻辑应用工作流](../logic-apps/logic-apps-what-are-logic-apps.md)。 这些资源可以将这些事件发布到 [Azure 事件网格](../event-grid/overview.md)。 然后，事件网格会将这些事件推送给具有队列、webhook 或[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)作为终结点的订阅者。 作为订阅者，逻辑应用可以在运行自动化工作流以执行任务之前等待这些来自事件网格的事件 - 而无需编写任何代码。
+你可以在 Azure 资源或第三方资源中发生特定事件时，启动自动化[逻辑应用工作流](../logic-apps/logic-apps-overview.md)。 这些资源可以将这些事件发布到 [Azure 事件网格](../event-grid/overview.md)。 然后，事件网格会将这些事件推送给具有队列、webhook 或[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)作为终结点的订阅者。 作为订阅者，逻辑应用可以在运行自动化工作流以执行任务之前等待这些来自事件网格的事件 - 而无需编写任何代码。
 
 例如，下面是发布者可以将通过 Azure 事件网格服务发送给订阅者的某些事件：
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/01/2017
 
    ![选择逻辑应用模板](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   逻辑应用设计器现显示[连接器](../connectors/apis-list.md)和[触发器](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)，可用来启动逻辑应用，以及在触发器之后添加执行任务的操作。 触发器是创建逻辑应用实例并开始逻辑应用工作流的事件。 
+   逻辑应用设计器现显示[连接器](../connectors/apis-list.md)和[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)，可用来启动逻辑应用，以及在触发器之后添加执行任务的操作。 触发器是创建逻辑应用实例并开始逻辑应用工作流的事件。 
    逻辑应用需要触发器作为第一项。
 
 6. 在搜索框中，输入“事件网格”作为筛选器。 选择此触发器：“Azure 事件网格 - 在资源事件上”
@@ -154,7 +154,7 @@ ms.lasthandoff: 12/01/2017
 
 ## <a name="send-email-when-your-virtual-machine-changes"></a>虚拟机更改时发送电子邮件
 
-现在添加[操作](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)，以便在指定条件为 true 时收到电子邮件。
+现在添加[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)，以便在指定条件为 true 时收到电子邮件。
 
 1. 在该条件的“如果为 true”框中，选择“添加操作”。
 

@@ -251,8 +251,6 @@
           href: 'site-recovery-workload.md#workload-summary'
     - name: 管理
       items:
-        - name: 升级到恢复服务保管库
-          href: upgrade-site-recovery-vaults.md
         - name: 在 Azure 中管理进程服务器
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: 管理配置服务器

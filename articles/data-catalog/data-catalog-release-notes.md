@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: ba79bf465fc7775c44b370de287bfca5e29beccd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 249c3a690638bb91d060443d591d8e52791f50ae
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure 数据目录发行说明
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Azure 数据目录 2015 年 11 月 20 日发行说明

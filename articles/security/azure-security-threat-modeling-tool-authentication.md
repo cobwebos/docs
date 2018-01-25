@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: e547469dc61eddd1d772571ab0919532ac91f128
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -374,7 +374,7 @@ ms.lasthandoff: 10/11/2017
 | **步骤** | <p>开发人员可以使用 TokenReplayCache 属性来定义令牌重放缓存，这是一个可以用来保存令牌的存储，用途是验证没有多次使用某个令牌。</p><p>这是针对一种所谓的令牌重放攻击的常见攻击采取的措施：截获登录时发送的令牌的攻击者可能会尝试再次将该令牌发送到应用（“重放”它），以求建立新的会话。 例如，在 OIDC 代码授予流中，用户身份验证成功后，向信赖方的“/signin-oidc”终结点发出的请求包含“id_token”、“code”和“state”参数。</p><p>信赖方会验证此请求并建立新的会话。 如果攻击者捕获到此请求并重放它，就可以建立成功的会话并欺骗用户。 在 OpenID Connect 中使用 nonce 可以限制但不能完全消除攻击成功得手的结果。 为了保护应用程序，开发人员可以提供 ITokenReplayCache 的实现，并向 TokenReplayCache 分配一个实例。</p>|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 // ITokenReplayCache defined in ADAL
 public interface ITokenReplayCache
 {
@@ -385,7 +385,7 @@ bool TryFind(string securityToken);
 
 ### <a name="example"></a>示例
 下面是 ITokenReplayCache 接口的示例实现。 （请自定义并实现自己的特定于项目的缓存框架）
-```C#
+```csharp
 public class TokenReplayCache : ITokenReplayCache
 {
     private readonly ICacheProvider cache; // Your project-specific cache provider
@@ -409,7 +409,7 @@ public class TokenReplayCache : ITokenReplayCache
 }
 ```
 必须通过“TokenValidationParameters”属性在 OIDC 选项中引用实现的缓存，如下所示。
-```C#
+```csharp
 OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 {
     AutomaticAuthenticate = true,
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **步骤** | <ul><li>**泛型：**使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：**创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 static DeviceClient deviceClient;
 
 static string deviceKey = "{device key}";
@@ -560,7 +560,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -571,7 +571,7 @@ await deviceClient.SendEventAsync(message);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用 |

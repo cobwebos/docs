@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 9547ba8c65360a03168ff1b6eba01038554e7fd3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 582aadd35821779e307ac285804e3b7fe5c24abd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 在相关的文章中，我们已[创建一个 RESTful 服务](active-directory-b2c-custom-rest-api-netfw.md)，该服务可与 Azure Active Directory B2C (Azure AD B2C) 交互。
@@ -74,7 +74,7 @@ ms.lasthandoff: 12/11/2017
 
     ![上传策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. 选择“创建” 。
+7. 选择“创建”。
 
 8. 若要查看租户中的可用密钥并确认是否已创建 `B2C_1A_B2cRestClientCertificate` 密钥，请选择“策略密钥”。
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 12/11/2017
 ### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2：添加 IsValidClientCertificate 函数
 打开 *Controllers\IdentityController.cs* 文件，将以下函数添加到 `Identity` 控制器类： 
 
-```C#
+```csharp
 private bool IsValidClientCertificate()
 {
     string ClientCertificateSubject = ConfigurationManager.AppSettings["ClientCertificate:Subject"];
@@ -283,7 +283,7 @@ private bool IsValidClientCertificate()
 ### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3：调用 IsValidClientCertificate 函数
 打开 *Controllers\IdentityController.cs* 文件，在 `SignUp()` 函数的开头添加以下代码片段： 
 
-```C#
+```csharp
 if (IsValidClientCertificate() == false)
 {
     return Content(HttpStatusCode.Conflict, new B2CResponseContent("Your client certificate is not valid", HttpStatusCode.Conflict));

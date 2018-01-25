@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/03/2017
+ms.date: 01/23/2018
 ms.author: v-sharos
-ms.openlocfilehash: 247c422d7ea3feeec1342bb20f99390a07eb4f7a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 412978d2c343394f295e336690ec72153dda4b79
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>更新 StorSimple 8000 系列设备
 > [!NOTE]
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/07/2017
 [!INCLUDE [storsimple-install-maintenance-mode-hotfixes](../../includes/storsimple-install-maintenance-mode-hotfixes.md)]
 
 ## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>在对设备执行恢复出厂设置时更新会发生什么情况？
-如果将设备恢复出厂设置，则所有更新都将丢失。 注册并配置恢复出厂设置的设备后，将需要通过 Azure 经典门户和/或 Windows PowerShell for StorSimple 手动安装更新。 有关恢复出厂设置的详细信息，请参阅[将设备恢复为出厂默认设置](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
+如果将设备恢复出厂设置，则所有更新都将丢失。 注册并配置恢复出厂设置的设备后，将需要通过 Azure 经典门户和/或 Windows PowerShell for StorSimple 手动安装更新。 有关恢复出厂设置的详细信息，请参阅[将设备恢复为出厂默认设置](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何[使用 Windows PowerShell for StorSimple 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)。

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 960365d4dc842cf5ce5587599a155861390ebb26
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: ddbd27bd832c6fc3c7a0274095d6d203ecf1092a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/11/2018
 - **2.4、2.6、3.0 和 3.2 版本**的 MongoDB。
 - 使用基本或匿名身份验证复制数据。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 要从不可公开访问的 MongoDB 数据库复制数据，需要设置自承载集成运行时。 要了解详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 MongoDB 驱动程序，因此从/向 MongoDB 复制数据时，无需手动安装任何驱动程序。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/11/2018
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
@@ -96,7 +96,7 @@ MongoDB 链接的服务支持以下属性：
 
 要从 MongoDB 复制数据，请将数据集的 type 属性设置为“MongoDbCollection”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -127,7 +127,7 @@ MongoDB 链接的服务支持以下属性：
 
 要从 MongoDB 复制数据，请将复制活动中的源类型设置为“MongoDbSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
 | query |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
@@ -183,8 +183,8 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |字符串 |
-| 字符串 |字符串 |
+| ObjectID |String |
+| String |String |
 | UUID |Guid |
 | 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
@@ -239,7 +239,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | 1111 |0 |5 |
 | 1111 |1 |6 |
 | 2222 |0 |1 |
-| 2222 |1 |2 |
+| 2222 |1 |#N/A |
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: e09b472a53c02b39bcf7ad06d228049b0a392452
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 428dc1e8ba03ba17e348a33a33b5cf5e6118a43c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>设置 Linux RDMA 群集以运行 MPI 应用程序
 了解如何在 Azure 中使用[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)设置 Linux RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 本文提供准备 Linux HPC 映像以便在群集上运行 Intel MPI 的步骤。 准备映像后，使用此映像和支持 RDMA 的 Azure VM 大小（当前为 H16r、H16mr、A8 或 A9）之一来部署 VM 群集。 可以使用该群集来运行通过基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络有效进行通信的 MPI 应用程序。
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/10/2018
 >
 >
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 * **客户端计算机**：需要 Mac、Linux 或 Windows 客户端计算机，以便与 Azure 通信。 这些步骤假定你使用的是 Linux 客户端。
 * **Azure 订阅**：如果没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
 * **VM 大小可用性**：以下实例大小支持 RDMA：H16r、H16mr、A8 和 A9。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/regions/services/)（按区域提供的产品）。
@@ -151,7 +151,7 @@ ms.lasthandoff: 01/10/2018
 sudo waagent -deprovision
 ```
 
-从客户端计算机运行以下 Azure CLI 命令，以捕获映像。 有关详细信息，请参阅[如何捕获用作映像的经典 Linux 虚拟机](capture-image.md)。  
+从客户端计算机运行以下 Azure CLI 命令，以捕获映像。 有关详细信息，请参阅[如何捕获用作映像的经典 Linux 虚拟机](capture-image-classic.md)。  
 
 ```
 azure vm shutdown <vm-name>

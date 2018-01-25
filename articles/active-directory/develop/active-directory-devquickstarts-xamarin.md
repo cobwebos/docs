@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e3d0a07323189599cb86dd2bf1347c2107efa842
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 94a7d35115420d455fe94e1173abf76622172f6f
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Azure AD Xamarin 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -98,7 +98,7 @@ ms.lasthandoff: 12/20/2017
 
 1. 打开 DirectorySearcher.cs，然后将一个新参数添加到 `SearchByAlias(...)` 方法。 `IPlatformParameters` 是上下文参数，用于封装 ADAL 需要对其执行身份验证的特定于平台的对象。
 
-    ```C#
+    ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
     {
     ```
@@ -107,7 +107,7 @@ ms.lasthandoff: 12/20/2017
 此操作将传递 ADAL 与 Azure AD 通信时所需的坐标。
 3. 调用 `AcquireTokenAsync(...)`，该类接受 `IPlatformParameters` 对象，并调用所需的身份验证流来向应用程序返回令牌。
 
-    ```C#
+    ```csharp
     ...
         AuthenticationResult authResult = null;
         try
@@ -126,7 +126,7 @@ ms.lasthandoff: 12/20/2017
     `AcquireTokenAsync(...)` 首先会尝试返回请求资源（在本例中为图形 API）的令牌，而不提示用户输入其凭据（通过缓存或刷新旧令牌）。 必要时，它会在获取请求的令牌之前，向用户显示 Azure AD 登录页。
 4. 在 **Authorization** 标头中将访问令牌附加到图形 API 请求：
 
-    ```C#
+    ```csharp
     ...
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
     ...
@@ -137,12 +137,12 @@ ms.lasthandoff: 12/20/2017
 ### <a name="android"></a>Android
 1. 在 MainActivity.cs 中，在按钮单击处理程序中添加对 `SearchByAlias(...)` 的调用：
 
-    ```C#
+    ```csharp
     List<User> results = await DirectorySearcher.SearchByAlias(searchTermText.Text, new PlatformParameters(this));
     ```
 2. 重写 `OnActivityResult` 生命周期方法，将所有身份验证重定向转发回到相应的方法。 ADAL 在 Android 中为此提供了帮助器方法：
 
-    ```C#
+    ```csharp
     ...
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
     {
@@ -155,7 +155,7 @@ ms.lasthandoff: 12/20/2017
 ### <a name="windows-desktop"></a>Windows 桌面
 在 MainWindow.xaml.cs 中，只需调用 `SearchByAlias(...)`，并在桌面的 `PlatformParameters` 对象中传递 `WindowInteropHelper`：
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -164,7 +164,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 #### <a name="ios"></a>iOS
 在 DirSearchClient_iOSViewController.cs 中，iOS `PlatformParameters` 对象将引用视图控制器：
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -173,7 +173,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ### <a name="windows-universal"></a>Windows Universal
 在 Windows Universal 中打开 MainPage.xaml.cs，并实现 `Search` 方法。 此方法根据需要使用共享项目中的帮助器方法来更新 UI。
 
-```C#
+```csharp
 ...
 List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(SearchTermText.Text, new PlatformParameters(PromptBehavior.Auto, false));
 ...

@@ -3,7 +3,7 @@ title: "Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更�
 description: "介绍如何对 Azure AD Connect 同步中的配置进行更改。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 1fd07d506b2edc789d71001ac520b9ebddc3e1d9
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ed71272d2d10cd8b71fd3b2722d3ba033f1b51f9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何更改默认配置
 本主题旨在介绍如何对 Azure AD Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行一些简单的更改。
@@ -269,7 +269,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称​​ | *提供名称* | 例如，*“In from AD – User PreferredDataLocation”* |
+    | 名称 | *提供名称* | 例如，*“In from AD – User PreferredDataLocation”* |
     | 说明 | *提供自定义说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -298,7 +298,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **Prefer
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | 名称​​ | *提供名称* | 例如，“Out to AAD – User PreferredDataLocation” |
+    | 名称 | *提供名称* | 例如，“Out to AAD – User PreferredDataLocation” |
     | 说明 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | 用户 ||
@@ -464,7 +464,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 User 对象的 UserType 属
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称​​ | *提供名称* | 例如 “In from AD – User UserType” |
+    | 名称 | *提供名称* | 例如 “In from AD – User UserType” |
     | 说明 | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -506,7 +506,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 User 对象的 UserType 属
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | 名称​​ | *提供名称* | 例如“Out to AAD – User UserType” |
+    | 名称 | *提供名称* | 例如“Out to AAD – User UserType” |
     | 说明 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | 用户 ||

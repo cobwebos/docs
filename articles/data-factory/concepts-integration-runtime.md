@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/05/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 5c78f61074258c734cefade28d6aca1055519758
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 5285cddcb64e44cb61c99cc18f8a66d60cd1c0fc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/05/2017
 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的版本 2 的数据工厂。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它被链接服务引用，并提供运行或分派活动的计算环境。  这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
 
@@ -91,7 +91,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 若要提升和切换现有 SSIS 工作负荷，可以创建 Azure-SSIS IR 以本机执行 SSIS 包。
 
 ### <a name="network-environment"></a>网络环境
-可以在公用网络或专用网络中配置 Azure-SSIS IR。  通过将 Azure-SSIS IR 加入连接到你本地网络的虚拟网络 (VNet) 支持本地数据访问。 目前，仅支持经典 VNet。 
+可以在公用网络或专用网络中配置 Azure-SSIS IR。  通过将 Azure-SSIS IR 加入连接到你本地网络的虚拟网络 (VNet) 支持本地数据访问。  
 
 ### <a name="compute-resource-and-scaling"></a>计算资源和缩放
 Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 可以使用自己的 Azure SQL 数据库或托管实例（个人预览版）服务器托管附加到 SSIS 项目/包 (SSISDB) 的目录。 可以通过指定节点大小纵向扩展计算能力并通过指定群集中的节点数对其进行横向扩展。 可以在认为合适时停止和启动 Azure-SSIS 集成运行时以管理运行的成本。
@@ -145,8 +145,8 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 加拿大 | 加拿大东部 | 加拿大中部
 &nbsp; | 加拿大中部 | 加拿大中部
 巴西 | 巴西南部 | 巴西南部
-欧洲 | 北欧 | 欧洲北部
-&nbsp; | 欧洲西部 | 西欧
+欧洲 | 北欧 | 北欧
+&nbsp; | 欧洲西部 | 欧洲西部
 英国 | 英国西部 | 英国南部
 &nbsp; | 英国南部 | 英国南部
 亚太区 | 东南亚 | 东南亚

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="example"></a>示例
 这可以通过筛选器来实现。 可以使用以下示例： 
-```C#
+```csharp
 public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext == null || (filterContext.HttpContext != null && filterContext.HttpContext.Response != null && filterContext.HttpContext.Response.IsRequestBeingRedirected))
@@ -144,7 +144,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **步骤** | 自动完成特性指定是要打开还是关闭窗体的自动填充。 如果打开自动完成，浏览器会根据用户以前输入的值自动填充值。 例如，如果在窗体中输入新名称和密码，然后提交该窗体，则浏览器会提示是否应保存该密码。此后显示该窗体时，该名称和密码会自动填充，或者在输入名称时自动填充。 拥有本地访问权限的攻击者可能会通过浏览器缓存获取明文密码。 自动完成默认已启用，必须显式将它禁用。 |
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 <form action="Login.aspx" method="post " autocomplete="off" >
       Social Security Number: <input type="text" name="ssn" />
       <input type="submit" value="Submit" />    
@@ -322,7 +322,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -333,7 +333,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -353,7 +353,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ### <a name="example"></a>示例
 可以使用以下安全策略来配置 Intune，以保护敏感数据： 
-```C#
+```csharp
 Require encryption on mobile device    
 Require encryption on storage cards
 Allow screen capture
@@ -361,7 +361,7 @@ Allow screen capture
 
 ### <a name="example"></a>示例
 如果应用程序不是企业应用程序，请使用平台提供的密钥存储和密钥链来存储加密密钥，这样就可以在文件系统中执行加密操作。 以下代码片段演示如何使用 xamarin 访问密钥链中的密钥： 
-```C#
+```csharp
         protected static string EncryptionKey
         {
             get

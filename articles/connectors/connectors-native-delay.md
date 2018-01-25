@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>延迟和延迟到操作入门
 通过使用延迟和“延迟到”操作，可以完成各种工作流方案。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 * 等到工作日通过电子邮件发送状态更新。
 * 在恢复和检索结果前，延迟工作流直到 HTTP 调用有时间完成。
 
-若要开始在逻辑应用中使用延迟操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要开始在逻辑应用中使用延迟操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-the-delay-actions"></a>使用延迟操作
 操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](connectors-overview.md)。
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 
 | 显示名称 | 属性名称 | 说明 |
 | --- | --- | --- |
-| 计数* |count |要延迟的时间单位数 |
+| 计数* |计数 |要延迟的时间单位数 |
 | 单位* |单位 |时间单位：`Second`、`Minute`、`Hour` 或 `Day` |
 
 <br>
@@ -72,5 +72,5 @@ ms.lasthandoff: 10/11/2017
 <br>
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 

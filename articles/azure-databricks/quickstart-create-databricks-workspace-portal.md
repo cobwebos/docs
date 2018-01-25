@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 01/22/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 6a90ac77cd605a41f1fc7d0958662a7e752e3849
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: c471baa287c3a51e9787cc2103b23c2bab458db2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -38,10 +38,7 @@ ms.lasthandoff: 12/05/2017
 
 2. 在“Azure Databricks (预览版)”下，单击“创建”。
 
-    > [!NOTE]
-    > Azure Databricks 目前以受限预览版提供。 如果希望我们考虑将你的 Azure 订阅列入预览版的白名单，必须填写[注册表单](https://databricks.azurewebsites.net/)。
-
-2. 在“Azure Databricks 服务”下提供以下值：
+3. 在“Azure Databricks 服务”下提供以下值：
 
     ![创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
@@ -50,7 +47,7 @@ ms.lasthandoff: 12/05/2017
     * 对于“资源组”，指定是要创建新的资源组还是使用现有资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。
     * 对于“位置”，请选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。
 
-3. 单击“创建” 。
+4. 单击“创建”。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
@@ -89,7 +86,7 @@ ms.lasthandoff: 12/05/2017
 
     ![在 Databricks 中创建笔记本](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
-    单击“创建” 。
+    单击“创建”。
 
 3. 在以下代码片段中，请将 `{YOUR STORAGE ACCOUNT NAME}` 替换为所创建的 Azure 存储帐户名称，将 `{YOUR STORAGE ACCOUNT ACCESS KEY}` 替换为存储帐户访问密钥。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER 运行该代码单元。 此代码片段会将笔记本配置为从 Azure Blob 存储读取数据。
 

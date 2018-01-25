@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -274,7 +274,7 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 表 |
@@ -285,7 +285,7 @@ WHERE userID=:id < - session var
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -400,7 +400,7 @@ return result;
 | **步骤** | <p>如果应用程序依赖于 Azure AD 或 ADFS 声明，则可从这些声明派生应用程序用户的角色信息，因为标识提供者或应用程序本身可以提供此信息。 在上述任何情况下，自定义授权实现应验证用户角色信息。</p><p>如果应用程序依赖于 Azure AD 或 ADFS 声明，则可从这些声明派生应用程序用户的角色信息，因为标识提供者或应用程序本身可以提供此信息。 在上述任何情况下，自定义授权实现应验证用户角色信息。</p>
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
 public class ApiAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
 {
@@ -431,7 +431,7 @@ public bool ValidateRoles(actionContext)
 }
 ```
 所有需要保护的控制器和操作方法应使用上述特性进行修饰。
-```C#
+```csharp
 [ApiAuthorize]
 public class CustomController : ApiController
 {

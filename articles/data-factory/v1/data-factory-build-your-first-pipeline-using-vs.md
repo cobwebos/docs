@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 835f1804b204b988b86b13f48cd9143f6bc81cee
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 49fb249b6ff1169527829c77a6539926ec99b912
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -334,7 +334,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
         Get-AzureRmResourceProvider
         ```
     - 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
-- 数据工厂名称可能在将来被注册为 DNS 名称，因此将变成公开可见。
+- 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
 - 只有 Azure 订阅的管理员或共同管理员才可以创建数据工厂实例
 
 ### <a name="monitor-pipeline"></a>监视管道
@@ -426,7 +426,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     ![导出数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
-## <a name="update-data-factory-tools-for-visual-studio"></a>更新用于 Visual Studio 的数据工厂工具
+## <a name="update-data-factory-tools-for-visual-studio"></a>更新适用于 Visual Studio 的数据工厂工具
 若要更新适用于 Visual Studio 的 Azure 数据工厂工具，请执行以下步骤：
 
 1. 在菜单中单击“工具”，并选择“扩展和更新”。

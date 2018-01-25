@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 12/06/2017
+ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a8990d68b327e5688c7078a6b1a9d41ad0600a67
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -155,7 +155,7 @@ StorSimple 设备管理器服务的主要作用是管理和配置 StorSimple 设
 > [!IMPORTANT]
 > 务必要生成该服务数据加密密钥的副本并将其保存在安全位置。 服务数据加密密钥的副本应以这种方式存储：可以由经过授权的人员访问，并可以轻松地传递给设备管理员。
 > 
-> 如果服务数据加密密钥丢失，Microsoft 支持人员可以帮助你检索该密钥，前提是必须至少有一个设备处于联机状态。 我们建议在检索到服务数据加密密钥后对其进行更改。 有关说明，请转到[更改服务数据加密密钥](storsimple-service-dashboard.md#change-the-service-data-encryption-key)。
+> 如果服务数据加密密钥丢失，Microsoft 支持人员可以帮助你检索该密钥，前提是必须至少有一个设备处于联机状态。 我们建议在检索到服务数据加密密钥后对其进行更改。
 
 若要更改服务数据加密密钥和相应的数据加密证书，请按照[更改 StorSimple 设备管理器服务的服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key) 中的步骤进行操作。 更改加密密钥需要使用新密钥更新所有设备。 因此，我们建议在所有设备都处于联机状态时更改该密钥。 如果设备处于脱机状态，则可以在不同时间更改其密钥。 使用过期密钥的设备仍能够运行备份，但它们在更新密钥前将无法还原数据。
 
@@ -229,7 +229,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **问：**我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 我该怎么办？
 
-**答：**如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，然后重新开始该过程。
+**答：**如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，并重新开始该过程。
 
 **问：**我更改了服务数据加密密钥，但无法在 4 小时内更新其他设备。 是否必须重新开始？
 

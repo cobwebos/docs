@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: spelluru
-ms.openlocfilehash: e3c26c2358c15d18c71b82fe1f389c039ecbd97b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 48d4a33f7667786f2eb8851ed69dedc206e777ae
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。
@@ -98,7 +98,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <p>
 这些属性适用于所有根资产类型。
 
-<table><tr><td><b>属性名称</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr><tr><td>名称</td><td>String</td><td>派生自数据源位置信息的名称</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>对数据源进行唯一描述且为资产的标识符之一。 （请参阅双标识部分）。  dsl 的结构因协议和源类型而异。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>资产类型的详细信息。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>描述最新注册此资产的用户。  包含用户的唯一 id（upn）和显示名称（lastName 和 firstName）。</td></tr><tr><td>containerId</td><td>String</td><td>数据源容器资产的 Id。 此容器类型不支持此属性。</td></tr></table>
+<table><tr><td><b>属性名称</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr><tr><td>name</td><td>String</td><td>派生自数据源位置信息的名称</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>对数据源进行唯一描述且为资产的标识符之一。 （请参阅双标识部分）。  dsl 的结构因协议和源类型而异。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>资产类型的详细信息。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>描述最新注册此资产的用户。  包含用户的唯一 id（upn）和显示名称（lastName 和 firstName）。</td></tr><tr><td>containerId</td><td>String</td><td>数据源容器资产的 Id。 此容器类型不支持此属性。</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>常见非单一批注属性
 这些属性适用于所有非单一批注类型（每个资产可允许具有多个这样的批注）。
@@ -191,7 +191,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>lastName</td><td>字符串</td><td>用户的姓氏（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
 
 <tr><td>列</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>列或属性的名称。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>列或属性的名称。</td></tr>
 <tr><td></td><td>type</td><td>字符串</td><td>列或属性的数据类型。 允许的类型取决于资产的数据源类型。  仅支持类型的子集。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列或属性允许的最大长度。 派生自数据源。 仅适用于某些源类型。</td></tr>
 <tr><td></td><td>精度</td><td>字节</td><td>列或属性的精度。 派生自数据源。 仅适用于某些源类型。</td></tr>
@@ -223,19 +223,19 @@ Azure 数据目录提供了多个内置数据源协议，其列于[数据源引�
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>命名空间</td><td>字符串</td><td>协议的命名空间。 命名空间的字符长度必须介于 1 到 255 个字符之间，包括由点 (.) 分隔的一个或多个非空部分。 每个部分的长度必须介于 1 到 255 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>标识属性列表必须包含至少 1 个且不超过 20 个属性。 例如：“服务器”、“数据库”、“架构”和“对象”为“tds”协议的标识属性。</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>标识集列表。 定义标识属性集，其表示有效资产标识。 必须包含至少 1 个且不超过 20 个集。 例如：{“server”、“数据库”、“架构”和“对象”}是“tds”协议的标识集，其定义 Sql Server 表资产的标识。</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
 <tr><td></td><td>type</td><td>字符串</td><td>属性类型。 支持的值：“bool”、“Boolean”、“字节”、“guid”、“int”、“整数”、“long”、“字符串”、“url”</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>指示使用属性的值时是否应忽略大小写。 只能为具有“字符串”类型的属性指定。 默认值为 false。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>指示是否应忽略 url 路径每个段的大小写。 只能为具有“url”类型的属性指定。 默认值为 [false]。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>标识集的名称。</td></tr>
-<tr><td></td><td>properties</td><td>string[]</td><td>包括在此标识集的标识属性列表。 它不能包含重复项。 由标识集引用的每个属性必须在协议的“identityProperties”列表中定义。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>标识集的名称。</td></tr>
+<tr><td></td><td>属性</td><td>string[]</td><td>包括在此标识集的标识属性列表。 它不能包含重复项。 由标识集引用的每个属性必须在协议的“identityProperties”列表中定义。</td></tr>
 
 </table>
 

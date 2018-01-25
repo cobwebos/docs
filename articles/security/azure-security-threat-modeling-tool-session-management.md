@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 56471d8ef68eacacb3ecebad5056d7e7a9f3ca40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24bd0e8eff616920dba0eb5353f983444e3161cd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-session-management--articles"></a>安全框架：会话管理 | 文章 
 | 产品/服务 | 文章 |
@@ -43,13 +43,13 @@ ms.lasthandoff: 10/11/2017
 | **步骤** | 如果应用程序依赖于 Azure AD 颁发的访问令牌，注销事件处理程序应调用 |
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType)
 ```
 
 ### <a name="example"></a>示例
 此外，应该通过调用 Session.Abandon() 方法来销毁用户的会话。 以下方法演示了用户注销的安全实现：
-```C#
+```csharp
     [HttpPost]
         [ValidateAntiForgeryToken]
         public void LogOff()
@@ -100,7 +100,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **步骤** | 如果应用程序依赖于 ADFS 颁发的 STS 令牌，注销事件处理程序应调用 WSFederationAuthenticationModule.FederatedSignOut() 方法来注销用户。 此外，应销毁当前会话，重置会话令牌值并将其设为 null。|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
         [HttpPost, ValidateAntiForgeryToken]
         [Authorization]
         public ActionResult SignOut(string redirectUrl)
@@ -160,7 +160,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **步骤** | 通常只能从 Cookie 限定到的域访问这些 Cookie。 遗憾的是，“域”的定义不包括协议，因此，通过 HTTPS 创建的 Cookie 可通过 HTTP 访问。 “secure”特性可向浏览器指明，只能通过 HTTPS 使用 Cookie。 请确保通过 HTTPS 设置的所有 Cookie 使用 **secure** 特性。 可在 web.config 文件通过将 requireSSL 属性设置为 true，来强制实施此要求。 这是一种首选方法，因为它会强制所有当前和未来的 Cookie 使用 **secure** 属性，而无需对代码进一步进行更改。|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 <configuration>
   <system.web>
     <httpCookies requireSSL="true"/>
@@ -179,7 +179,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **步骤** | 如果 Web 应用程序是信赖方，IdP 是 ADFS 服务器，则可以通过在 web.config 的 `system.identityModel.services` 节中将 requireSSL 设置为 True，来配置 FedAuth 令牌的 secure 特性：|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
   <system.identityModel.services>
     <federationConfiguration>
       <!-- Set requireSsl=true; domain=application domain name used by FedAuth cookies (Ex: .gdinfra.com); -->
@@ -273,7 +273,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **步骤** | 反 CSRF 和 ASP.NET MVC 窗体 - 例如，在视图中使用 `AntiForgeryToken` 帮助器方法；将 `Html.AntiForgeryToken()` 放入窗体。|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 @using (Html.BeginForm("UserProfile", "SubmitUpdate")) { 
     @Html.ValidationSummary(true) 
     @Html.AntiForgeryToken()
@@ -281,7 +281,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 ```
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 <form action="/UserProfile/SubmitUpdate" method="post">
     <input name="__RequestVerificationToken" type="hidden" value="saTFWpkKN0BYazFtN6c4YbZAmsEwG0srqlUqqloi/fVgeV2ciIFVmelvzwRZpArs" />
     <!-- rest of form goes here -->
@@ -304,7 +304,7 @@ public ViewResult SubmitUpdate()
 
 ### <a name="example"></a>示例
 反 CSRF 和 AJAX：窗体令牌可能对 AJAX 请求造成问题，因为 AJAX 请求可以发送 JSON 数据，但不能发送 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 
-```C#
+```csharp
 <script>
     @functions{
         public string TokenHeaderValue()
@@ -329,7 +329,7 @@ public ViewResult SubmitUpdate()
 
 ### <a name="example"></a>示例
 处理请求时，请从请求标头中提取令牌。 然后调用 AntiForgery.Validate 方法来验证令牌。 如果令牌无效，Validate 方法将引发异常。
-```C#
+```csharp
 void ValidateRequestHeader(HttpRequestMessage request)
 {
     string cookieToken = "";
@@ -360,7 +360,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>示例
 需要在所有页面中添加以下代码：
-```C#
+```csharp
 void Page_Init (object sender, EventArgs e) {
    ViewStateUserKey = Session.SessionID;
    :
@@ -428,7 +428,7 @@ void Page_Init (object sender, EventArgs e) {
 
 ### <a name="example"></a>示例
 此外，应该通过在 ADFS 服务器上执行以下 powershell 命令，将 ADFS 颁发的 SAML 声明令牌的生存期设置为 15 分钟：
-```C#
+```csharp
 Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProviderName @(“Active Directory”) -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
@@ -488,7 +488,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ### <a name="example"></a>示例
 处理请求时，请从请求标头中提取令牌。 然后调用 AntiForgery.Validate 方法来验证令牌。 如果令牌无效，Validate 方法将引发异常。
-```C#
+```csharp
 void ValidateRequestHeader(HttpRequestMessage request)
 {
     string cookieToken = "";
@@ -510,7 +510,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>示例
 反 CSRF 和 ASP.NET MVC 窗体 - 例如，在视图中使用 AntiForgeryToken 帮助器方法；将 Html.AntiForgeryToken() 放入窗体。
-```C#
+```csharp
 @using (Html.BeginForm("UserProfile", "SubmitUpdate")) { 
     @Html.ValidationSummary(true) 
     @Html.AntiForgeryToken()
@@ -520,7 +520,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>示例
 上述示例输出如下所示的信息：
-```C#
+```csharp
 <form action="/UserProfile/SubmitUpdate" method="post">
     <input name="__RequestVerificationToken" type="hidden" value="saTFWpkKN0BYazFtN6c4YbZAmsEwG0srqlUqqloi/fVgeV2ciIFVmelvzwRZpArs" />
     <!-- rest of form goes here -->

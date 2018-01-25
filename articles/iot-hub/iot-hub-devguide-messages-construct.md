@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: b88567616e0a8c46494ae0af367f4deb4506be43
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c57ceb83951341d4a7bf368e209ba0f88825672c
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/12/2017
 * 一组*应用程序属性*。 应用程序可以定义的字符串属性字典，而不需将消息正文反序列化即可进行访问。 IoT 中心永不修改这些属性。
 * 不透明的二进制正文。
 
-在执行以下操作时，属性名称和值只能包含 ASCII 字母数字字符加上 ``{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``：  
+在执行以下操作时，属性名称和值只能包含 ASCII 字母数字字符加上 ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}```：  
 
 * 使用 HTTPS 协议发送设备到云的消息。
 * 发送云到设备的消息。
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/12/2017
 | --- | --- |
 | MessageId |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 |
 | 序列号 |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |
-| 如果 |[从云到设备][lnk-c2d]的消息中指定的目标。 |
+| 目标 |[从云到设备][lnk-c2d]的消息中指定的目标。 |
 | ExpiryTimeUtc |消息过期的日期和时间。 |
 | EnqueuedTime |IoT 中心收到[云到设备][lnk-c2d]消息的日期和时间。 |
 | CorrelationId |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 |

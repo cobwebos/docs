@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/26/2017
+ms.date: 12/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: f032af4714ad458fa6ad6fb0741f689d44f4098b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a9a565cf2c20490475d1b73b0f99fbe63e57dd3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 查询并向修复管理器服务发送命令。
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 |    --help -h           | 显示此帮助消息并退出。|
 |    --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。
 |    --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-|    --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+|    --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 
 ## <a name="sfctl-rpm-list"></a>sfctl rpm list

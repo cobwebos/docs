@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: f124748434be1b8f0c4704fe6ffba70414c47916
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
 
@@ -196,7 +196,7 @@ JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射
 
 ### <a name="classes"></a>类
 
-```C#
+```csharp
 namespace IngestionClient 
 { 
     using System; 
@@ -355,7 +355,7 @@ namespace IngestionClient
 
 将此代码用于每个 Blob。 
 
-```C#
+```csharp
    AnalyticsDataSourceClient client = new AnalyticsDataSourceClient(); 
 
    var ingestionRequest = new AnalyticsDataSourceIngestionRequest("iKey", "sourceId", "blobUrlWithSas"); 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 7b734a76545dbcbddac3c7ad7beae60d662a9129
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 64cd758e2f40ff2b18abbff1194a7e57389d8a54
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。 
@@ -191,7 +191,7 @@ ms.lasthandoff: 01/18/2018
 11. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。 
 
    ![集成运行时安装 - 成功](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
-12. 在 Web 浏览器中的“集成运行时安装”窗口中，单击“完成”。 随后会返回到“新建链接服务”窗口。
+12. 在 Web 浏览器中的“集成运行时安装”窗口中，单击“完成”。 
 
    ![集成运行时安装 -完成](./media/tutorial-hybrid-copy-portal/click-finish-integration-runtime-setup.png)
 13. 在“新建链接服务”窗口中执行以下步骤：

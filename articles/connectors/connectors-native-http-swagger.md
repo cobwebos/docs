@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger 操作入门
 
 在逻辑应用工作流中使用 HTTP + Swagger 操作时，可以通过 [Swagger 文档](https://swagger.io)向任意 REST 终结点创建一流连接器。 还可以扩展逻辑应用以调用任何带有一流逻辑应用设计器体验的 REST 终结点。
 
-若要了解如何使用连接器创建逻辑应用，请参阅[创建新的逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要了解如何使用连接器创建逻辑应用，请参阅[创建新的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>将 HTTP + Swagger 用作触发器或操作
 
@@ -100,7 +100,7 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 | 方法* |方法 |要使用的 HTTP 谓词。 |
 | URI* |uri |HTTP 请求的 URI。 |
 | 标头 |headers |要包含的 HTTP 标头的 JSON 对象。 |
-| 正文 |body |HTTP 请求正文。 |
+| Body |body |HTTP 请求正文。 |
 | 身份验证 |authentication |要用于请求的身份验证。 有关详细信息，请参阅 [HTTP 连接器](connectors-native-http.md#authentication)。 |
 
 **输出详细信息**
@@ -110,15 +110,15 @@ HTTP 响应
 | 属性名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | 标头 |对象 |响应标头 |
-| 正文 |对象 |响应对象 |
+| Body |对象 |响应对象 |
 | 状态代码 |int |HTTP 状态代码 |
 
 ### <a name="http-responses"></a>HTTP 响应
 对各种操作进行调用时，可能得到特定响应。 下表概述对应的响应和说明。
 
-| Name | 说明 |
+| 名称 | 说明 |
 | --- | --- |
-| 200 |确定 |
+| 200 |OK |
 | 202 |已接受 |
 | 400 |错误的请求 |
 | 401 |未授权 |
@@ -129,5 +129,5 @@ HTTP 响应
 - - -
 ## <a name="next-steps"></a>后续步骤
 
-* [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+* [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [查找其他连接器](apis-list.md)

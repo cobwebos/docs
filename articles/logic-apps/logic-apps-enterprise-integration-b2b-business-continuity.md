@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ef3965adac03f21c386765a43290c93d58d1c18
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>逻辑应用 B2B 跨区域灾难恢复
 
@@ -92,7 +92,7 @@ B2B 工作负荷涉及订单和发票等现金交易。 对于企业而言，在
 
 ![选择重复检查设置](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. 在次要区域中创建[逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。    
+1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
 2. 搜索“X12” ，然后选择“X12 - 当修改控制编号时” 。   
 
@@ -147,7 +147,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
 ![选择重复检查设置](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
-1. 在次要区域中创建[逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。    
+1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。    
 
 2. 搜索“EDIFACT” ，然后选择“EDIFACT - 当修改控制编号时”。
 
@@ -199,7 +199,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 > [!TIP]
 > 还可使用 [AS2 快速入门模板](https://github.com/Azure/azure-quickstart-templates/pull/3302)创建逻辑应用。 使用该模板的先决条件是创建主要和次要的集成帐户。 该模板有助于创建具有一个触发器和一个操作的逻辑应用。 逻辑应用在主要集成帐户的触发器和次要集成帐户的操作之间建立连接。
 
-1. 在次要区域中创建[逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。  
+1. 在次要区域中创建[逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。  
 
 2. 搜索“AS2”，并选择“AS2 - 当创建 MIC 值时”。   
 

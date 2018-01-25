@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 336e74d8f69cb04e6bd0e85fc68ba38b218fabae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbea84511c37cf52c3d98f0247e5ce3c0b2a05c3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 启动、停止和报告混沌测试服务。
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h        | 显示此帮助消息并退出。|
 | --output -o      | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query          | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose        | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose        | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h                  | 显示此帮助消息并退出。|
 | --output -o                | 输出格式。  允许的值：json、jsonc、table、tsv。           默认值：json。|
 | --query                    | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose                  | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose                  | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-chaos-stop"></a>sfctl chaos stop
 在群集中停止混沌测试（如果已运行），否则不执行任何操作。

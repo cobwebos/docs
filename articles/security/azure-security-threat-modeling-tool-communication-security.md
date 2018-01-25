@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 68bf128824a40afb25b3e088965f38a4cb4d1332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -173,7 +173,7 @@ ms.lasthandoff: 10/11/2017
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -184,7 +184,7 @@ ms.lasthandoff: 10/11/2017
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - Blob |
@@ -206,7 +206,7 @@ ms.lasthandoff: 10/11/2017
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Windows Phone |
 | **属性**              | 不适用  |
@@ -214,7 +214,7 @@ ms.lasthandoff: 10/11/2017
 | **步骤** | <p>证书绑定可以防范中间人 (MITM) 攻击。 绑定是将主机与其预期 X509 证书或公钥相关联的过程。 某个主机知悉或者识别到某个证书或公钥后，该证书或公钥将关联或“绑定”到该主机。 </p><p>因此，当攻击者尝试展开 SSL MITM 攻击时，在 SSL 握手期间，攻击者服务器中的密钥将与绑定证书的密钥不同，因此会丢弃该请求，阻止 MITM。可以通过实现 ServicePointManager 的 `ServerCertificateValidationCallback` 委派来完成证书固定。</p>|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
 using System;
 using System.Net;
 using System.Net.Security;
@@ -343,7 +343,7 @@ string GetData(int value);
 
 ### <a name="example"></a>示例 
 以下代码演示了一个检查 SSL 的 Web API 身份验证筛选器： 
-```C#
+```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
     public override void OnAuthorization(HttpActionContext actionContext)
@@ -363,7 +363,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
 }
 ```
 将此筛选器添加到要求使用 SSL 的任何 Web API 操作： 
-```C#
+```csharp
 public class ValuesController : ApiController
 {
     [RequireHttps]

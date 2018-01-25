@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
-在[创建并运行逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)后，可以检查其运行历史记录、触发历史记录、状态和性能。 对于实时事件监视和更丰富的调试，为逻辑应用设置[诊断记录](#azure-diagnostics)。 这样，就可以[查找和查看事件](#find-events)，例如触发事件、运行事件和操作事件。 还可以将此[诊断数据用于其他服务](#extend-diagnostic-data)，如 Azure 存储和 Azure 事件中心。 
+在[创建并运行逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)后，可以检查其运行历史记录、触发历史记录、状态和性能。 对于实时事件监视和更丰富的调试，为逻辑应用设置[诊断记录](#azure-diagnostics)。 这样，就可以[查找和查看事件](#find-events)，例如触发事件、运行事件和操作事件。 还可以将此[诊断数据用于其他服务](#extend-diagnostic-data)，如 Azure 存储和 Azure 事件中心。 
 
 要获取关于故障或其他可能问题的通知，请设置[警报](#add-azure-alerts)。 例如，可以创建一个警报，用于检测“一小时内运行失败超过五次的情况”。 还可以使用 [Azure 诊断事件设置和属性](#diagnostic-event-properties)以编程方式设置监视、跟踪和记录。
 
