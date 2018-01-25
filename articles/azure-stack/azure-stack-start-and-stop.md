@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 9bbfffe15dc23d5d7d7b17aa4c79edc8a2aaab8c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 98bf75f5883b734c785ed1a3ed924afca1737c56
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>启动和停止 Azure 堆栈
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>解决 Azure 堆栈的启动和关闭
 
-如果基础结构和租户服务不成功启动后开机 Azure 堆栈环境，请执行以下步骤。 
+如果基础结构和租户服务不成功 Azure 堆栈环境上启动后你 power 2 小时，请执行以下步骤。 
 
 1. 到 Azure 堆栈 ERCS Vm 从一台通过网络访问计算机打开特权的终结点会话。
 
