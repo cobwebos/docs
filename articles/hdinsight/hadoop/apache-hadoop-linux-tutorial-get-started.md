@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/20/2017
+ms.date: 01/17/2018
 ms.author: jgao
-ms.openlocfilehash: 96be510476434168a31c78f3a5f97c12ea1eee0f
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: e517edecce92acdadde5497558055c59fa819976
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop 教程：开始使用 HDInsight 中的 Hadoop
 
@@ -36,13 +36,14 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="create-cluster"></a>创建群集
 
-大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，并删除群集。 本部分介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-template-deploy.md)在 HDInsight 中创建 Hadoop 群集。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 使用页面顶部的选择器选择群集创建选项。
+大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，并删除群集。 本部分介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-template-deploy.md)在 HDInsight 中创建 Hadoop 群集。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
 
 在本教程中使用的 Resource Manager 模板位于 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)。 
 
 1. 单击以下映像以登录到 Azure，并在 Azure 门户中打开 Resource Manager 模板。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
 2. 输入或选择下列值：
    
     ![门户中的 HDInsight Linux 入门 Resource Manager 模板](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "使用 Azure 门户和资源组管理器模板在 HDInsigut 中部署 Hadoop 群集")。
@@ -56,19 +57,16 @@ ms.lasthandoff: 12/21/2017
     * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。 
      
     某些属性已在模板中硬编码。  可以通过模板配置这些值。
+    
+    每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 
+        
+    有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
-    * **位置**：群集和依赖的存储帐户所用的位置与资源组所用的相同。
-    * **群集版本**：3.6
-    * **OS 类型**：Linux
-    * **辅助角色节点数**：2
+3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并单击“购买”。 门户仪表板上应会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 
 
-     每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 
-     
-     有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
-
-3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并单击“购买”。 门户仪表板上应会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 创建群集后，该磁贴的标题将更改为指定的资源组名称。 门户会自动打开该资源组。 可以看到已同时列出群集和默认存储。
+4. 创建群集后，该磁贴的标题将更改为指定的资源组名称。 单击该磁贴可查看群集和列出的群集的默认存储。
    
-    ![HDInsight Linux 入门资源组](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Azure HDInsight 群集资源组")。
+    ![HDInsight Linux 入门资源组](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Azure HDInsight 群集资源组")
 
 4. 单击群集名称打开该群集。
 
@@ -76,35 +74,43 @@ ms.lasthandoff: 12/21/2017
 
 
 ## <a name="run-hive-queries"></a>运行 Hive 查询
+
 [Apache Hive](hdinsight-use-hive.md) 是 HDInsight 中最流行的组件。 可通过多种方法在 HDInsight 中运行 Hive 作业。 本教程使用门户中的 Ambari Hive 视图。 有关提交 Hive 作业的其他方法，请参阅 [Use Hive in HDInsight](hdinsight-use-hive.md)（在 HDInsight 中使用 Hive）。
 
-1. 根据上面的屏幕截图所示单击“群集仪表板”，并单击“HDInsight 群集仪表板”。  也可以浏览到 **https://&lt;ClusterName>.azurehdinsight.net** 打开 Ambari，其中 &lt;ClusterName> 是在上一部分中创建的群集。
-2. 输入在上一部分中指定的 Hadoop 用户名和密码。 默认的用户名为 **admin**。
+1. 若要打开 Ambari，请根据上面的屏幕截图所示单击“群集仪表板”，并单击“HDInsight 群集仪表板”。  也可以浏览到 **https://&lt;ClusterName>.azurehdinsight.net**，其中 &lt;ClusterName> 是在上一部分中创建的群集。
+
+2. 输入在创建群集时指定的 Hadoop 用户名和密码。 默认的用户名为 **admin**。
+
 3. 打开“Hive 视图”，如以下屏幕截图中所示： 
    
-    ![选择 Ambari 视图](./media/apache-hadoop-linux-tutorial-get-started/selecthiveview.png "HDInsight Hive 查看器菜单")。
-4. 在页面的“查询编辑器”部分中，将以下 HiveQL 语句粘贴到工作表中：
+    ![选择 Ambari 视图](./media/apache-hadoop-linux-tutorial-get-started/selecthiveview.png "HDInsight Hive 查看器菜单")
+
+4. 在“查询”选项卡中，将以下 HiveQL 语句粘贴到工作表中：
    
         SHOW TABLES;
+
+    ![HDInsight Hive 视图](./media/apache-hadoop-linux-tutorial-get-started/hiveview-1.png "HDInsight Hive 视图查询编辑器")
    
    > [!NOTE]
    > Hive 要求使用分号。       
    > 
    > 
-5. 单击“执行” 。 “查询过程结果”部分应会出现在查询编辑器下方，其中显示了有关作业的信息。 
+
+5. 单击“执行” 。 “结果”选项卡将显示在“查询”选项卡下面，并显示有关作业的信息。 
    
-    完成查询后，“查询过程结果”部分会显示操作结果。 **hivesampletable**的表。 所有 HDInsight 群集都随附了此示例 Hive 表。
+    完成查询后，“查询”选项卡将显示操作结果。 **hivesampletable**的表。 所有 HDInsight 群集都随附了此示例 Hive 表。
    
-    ![HDInsight Hive 视图](./media/apache-hadoop-linux-tutorial-get-started/hiveview.png "HDInsight Hive 视图查询编辑器")。
+    ![HDInsight Hive 视图](./media/apache-hadoop-linux-tutorial-get-started/hiveview.png "HDInsight Hive 视图查询编辑器")
+
 6. 重复步骤 4 和 5，运行以下查询：
    
         SELECT * FROM hivesampletable;
    
-   > [!TIP]
-   > 请注意“查询过程结果”部分右上角的“保存结果”下拉列表；可以使用此下拉列表下载结果，或者将结果以 CSV 文件形式保存到 HDInsight 存储。
-   > 
-   > 
-7. 单击“历史记录”获取作业列表。
+7. 还可以保存查询的结果。 单击右侧的菜单按钮，并指定是要将结果下载为 CSV 文件，还是要将其存储到与群集关联的存储帐户。
+
+    ![保存 Hive 查询的结果](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-hive-view-save-results.png "保存 Hive 查询的结果")
+
+
 
 完成 Hive 作业后，可以[将结果导出到 Azure SQL 数据库或 SQL Server 数据库](apache-hadoop-use-sqoop-mac-linux.md)，还可以[使用 Excel 将结果可视化](apache-hadoop-connect-excel-power-query.md)。 有关在 HDInsight 中使用 Hive 的详细信息，请参阅 [Use Hive and HiveQL with Hadoop in HDInsight to analyze a sample Apache log4j file](hdinsight-use-hive.md)（将 Hive 和 HiveQL 与 HDInsight 中的 Hadoop 配合使用以分析示例 Apache log4j 文件）。
 
@@ -120,7 +126,7 @@ ms.lasthandoff: 12/21/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户仪表板中，单击显示了创建群集时所用资源组名称的磁贴。
-3. 单击“删除”，删除包含群集和默认存储帐户的资源组；或者在“资源”磁贴中单击群集名称，然后单击“删除”。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
+3. 单击“删除资源组”，删除包含群集和默认存储帐户的资源组；或者单击“资源”磁贴中的群集名称，然后单击“删除”。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 
 ## <a name="troubleshoot"></a>故障排除
 

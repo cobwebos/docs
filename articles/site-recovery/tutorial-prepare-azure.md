@@ -5,18 +5,18 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 71d740107eb2082e3f112941e1d4abd715d25807
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
-[Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
+[Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 本教程将介绍如何在将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行下列操作：
 
@@ -46,9 +46,9 @@ ms.lasthandoff: 01/02/2018
 已复制计算机的映像保存在 Azure 存储中。 在从本地故障转移到 Azure 时，会从该存储中创建 Azure VM。
 
 1. 在 [Azure 门户](https://portal.azure.com)菜单中，单击“新建” -> “存储” -> “存储帐户”。
-2. 输入存储帐户的名称。 在本系列教程中，我们将使用名称 contosovmsacct1910171607。 该名称在 Azure 中必须唯一，长度介于 3-24 个字符，且仅包含数字和小写字母。
+2. 在“创建存储帐户”中，输入帐户的名称。 在本系列教程中，我们将使用名称 contosovmsacct1910171607。 该名称在 Azure 中必须唯一，长度介于 3-24 个字符，且仅包含数字和小写字母。
 3. 使用资源管理器部署模型。
-4. 选择“常规用途” > “标准”。
+4. 选择“常规用途” > “标准”。 请不要选择 blob 存储。
 5. 为存储冗余选择默认的“RA-GRS”。
 6. 选择想在其中创建新存储帐户的订阅。
 7. 指定新的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 在本系列教程中，我们将使用名称 ContosoRG。

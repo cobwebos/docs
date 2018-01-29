@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: aa570379890023c83383d291aa5d57fb79b2d5aa
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: f40f0551ed65a42bcacf2307cbec462fd5c3ac25
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 如果存在以下情况之一，则必须将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络 (VNet)： 
@@ -25,20 +25,20 @@ ms.lasthandoff: 12/13/2017
 - 在属于 VNet 的 SQL Server 托管实例（个人预览版）上承载 SSIS 目录数据库。
 - 想要从 Azure-SSIS 集成运行时中运行的 SSIS 包连接到本地数据存储。
 
- 使用 Azure 数据工厂版本 2（预览版）可将 Azure-SSIS 集成运行时加入经典 VNet。 目前不支持 Azure 资源管理器 VNet。 但是，可根据以下部分中所示解决此问题。 
+ 使用 Azure 数据工厂版本 2（预览版）可将 Azure-SSIS 集成运行时加入经典 VNet 或 Azure 资源管理器 VNet。 
 
  > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="access-on-premises-data-stores"></a>访问本地数据存储
-如果 SSIS 包仅访问公有云数据存储，则不需要将 Azure-SSIS IR 加入 VNet。 如果 SSIS 包访问本地数据存储，则必须将 Azure-SSIS IR 加入已连接到本地网络的 VNet。 如果 SSIS 目录承载于不在 VNet 上的 Azure SQL 数据库中，则需要打开相应的端口。 如果 SSIS 目录承载在经典 VNet 上的 Azure SQL 托管实例中，则可将 Azure-SSIS IR 加入到相同的经典 VNet，或加入到已建立经典到经典 VNet 连接、与 Azure SQL 托管实例所在的 VNet 不同的经典 VNet 中。 以下部分提供了更多详细信息。
+如果 SSIS 包仅访问公有云数据存储，则不需要将 Azure-SSIS IR 加入 VNet。 如果 SSIS 包访问本地数据存储，则必须将 Azure-SSIS IR 加入已连接到本地网络的 VNet。 如果 SSIS 目录承载于不在 VNet 上的 Azure SQL 数据库中，则需要打开相应的端口。 如果 SSIS 目录承载在 Azure 资源管理器 VNet 或经典 VNet 上的 Azure SQL 托管实例中，则可将 Azure-SSIS IR 加入到相同的 VNet 中，或加入到已与 Azure SQL 托管实例所在的 VNet 建立 VNet 到 VNet 连接的不同 VNet 中。 以下部分提供了更多详细信息。
 
 下面是几个要点： 
 
-- 如果没有任何现有 VNet 连接到本地网络，请先创建 Azure-SSIS 集成运行时要加入到的[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置从该 VNet 到本地网络的站点到站点 [VPN 网关连接](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)/[ExpressRoute](../expressroute/expressroute-howto-linkvnet-classic.md) 连接。
-- 如果已有现有的经典 VNet 连接到 Azure-SSIS 集成运行时所在同一位置中的本地网络，则可将 Azure-SSIS 集成运行时加入该 VNet。
-- 如果已有现有的经典 VNet 连接到与 Azure-SSIS 集成运行时所在位置不同的位置中的本地网络，可以先创建 Azure-SSIS 集成运行时要加入到的[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置[经典到经典 VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md) 连接。
-- 如果已有现有的 Azure 资源管理器 VNet 连接到本地网络，请先创建 Azure-SSIS 集成运行时要加入到的[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置[经典到 Azure 资源管理器 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) 连接。
+- 如果已有现有的 VNet 连接到本地网络，请先创建 Azure-SSIS 集成运行时要加入到的 [Azure 资源管理器 VNet](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vnet) 或[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置从该 VNet 到本地网络的站点到站点 [VPN 网关连接](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)/[ExpressRoute](../expressroute/expressroute-howto-linkvnet-classic.md) 连接。
+- 如果已有现有的 Azure 资源管理器 VNet 或经典 VNet 连接到 Azure-SSIS 集成运行时所在同一位置中的本地网络，则可将 Azure-SSIS 集成运行时加入该 VNet。
+- 如果已有现有的经典 VNet 连接到与 Azure-SSIS 集成运行时所在位置不同的位置中的本地网络，可以先创建 Azure-SSIS 集成运行时要加入到的[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置[经典到经典 VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md) 连接。 也可以创建 Azure-SSIS 集成运行时要加入到的 [Azure 资源管理器 VNet](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vnet)。 然后，配置[经典 VNet 到 Azure 资源管理器 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) 连接。
+- 如果已有现有的 Azure 资源管理器 VNet 连接到与 Azure-SSIS 集成运行时所在位置不同的位置中的本地网络，可以先创建 Azure-SSIS 集成运行时要加入到的 [Azure 资源管理器 VNet](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vnet)。 然后，配置“Azure 资源管理器 VNet到 Azure 资源管理器 VNet”连接。 也可以创建 Azure-SSIS 集成运行时要加入到的[经典 VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置[经典到 Azure 资源管理器 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) 连接。
 
 ## <a name="domain-name-services-server"></a>域名服务服务器 
 如果需要在 Azure-SSIS 集成运行时加入的 VNet 中使用自己的域名服务 (DNS) 服务器，请遵循指导以[确保 VNet 中 Azure-SSIS 集成运行时的节点可以解析 Azure 终结点](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)。
@@ -68,16 +68,17 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
     {
     Start-Sleep -s 10
     }
-    # Assign VM contributor role to Microsoft.Batch
-    New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
+    {
+        # Assign VM contributor role to Microsoft.Batch
+        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    }
 }
 ```
 
-### <a name="use-portal-to-configure-vnet"></a>使用门户配置 VNet
+### <a name="use-portal-to-configure-a-classic-vnet"></a>使用门户配置经典 VNet
 运行脚本是配置 VNet 的最简单方法。 如果没有配置该 VNet 所需的访问权限或自动配置失败，该 VNet 的所有者或者你可以尝试通过以下步骤手动进行配置：
 
-### <a name="find-the-resource-id-for-your-azure-vnet"></a>找到 Azure VNet 的资源 ID。
- 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“更多服务”。 筛选并选择“虚拟网络(经典)”。
 3. 在列表中筛选并选择自己的**虚拟网络**。 
@@ -110,6 +111,24 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 
     如果列表中未出现 `Microsoft.Batch`，若要注册该提供程序，请在订阅中[创建一个空的 Azure Batch 帐户](../batch/batch-account-create-portal.md)。 稍后可以删除该帐户。 
 
+### <a name="use-portal-to-configure-an-azure-resource-manager-vnet"></a>使用门户配置 Azure 资源管理器 VNet
+运行脚本是配置 VNet 的最简单方法。 如果没有配置该 VNet 所需的访问权限或自动配置失败，该 VNet 的所有者或者你可以尝试通过以下步骤手动进行配置：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 单击“更多服务”。 筛选并选择“虚拟网络”。
+3. 在列表中筛选并选择自己的**虚拟网络**。 
+4. 在“虚拟网络”页中选择“属性”。 
+5. 单击“资源 ID”对应的复制按钮，将虚拟网络的资源 ID 复制到剪贴板。 将剪贴板中的 ID 保存到 OneNote 或某个文件中。
+6. 在左侧菜单中单击“子网”，确保**可用地址**的数目大于 Azure-SSIS 集成运行时中的节点数。
+5. 验证是否已将 Azure Batch 提供程序注册到包含 VNet 的 Azure 订阅中，或注册 Azure Batch 提供程序。 如果订阅中已包含 Azure Batch 帐户，则已经为 Azure Batch 注册了订阅。
+    1. 在 Azure 门户上的左侧菜单中，单击“订阅”。 
+    2. 选择**订阅**。 
+    3. 在左侧单击“资源提供程序”，确认 `Microsoft.Batch` 是注册的提供程序。 
+    
+        ![confirmation-batch-registered](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
+
+    如果列表中未出现 `Microsoft.Batch`，若要注册该提供程序，请在订阅中[创建一个空的 Azure Batch 帐户](../batch/batch-account-create-portal.md)。 稍后可以删除该帐户。
+
 ## <a name="create-an-azure-ssis-ir-and-join-it-to-a-vnet"></a>创建 Azure-SSIS IR 并将其加入到 VNet
 可以创建 Azure-SSIS IR，同时将其加入到 VNet。 有关创建 Azure-SSIS IR 并同时将其加入到 VNet 的完整脚本和说明，请参阅[创建 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
 
@@ -126,10 +145,8 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 $ResourceGroupName = "<Azure resource group name>"
 $DataFactoryName = "<Data factory name>" 
 $AzureSSISName = "<Specify Azure-SSIS IR name>"
-# Get the following information from the properties page for your Classic Virtual Network in the Azure portal
-# It should be in the format: 
-# $VnetId = "/subscriptions/<Azure Subscription ID>/resourceGroups/<Azure Resource Group>/providers/Microsoft.ClassicNetwork/virtualNetworks/<Class Virtual Network Name>"
-$VnetId = "<Name of your Azure classic virtual netowrk>"
+# OPTIONAL: specify your VNet ID and the subnet name. 
+$VnetId = "<Name of your Azure virtual netowrk>"
 $SubnetName = "<Name of the subnet in VNet>"
 ```
 
@@ -154,8 +171,11 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
     {
         Start-Sleep -s 10
     }
-    # Assign VM contributor role to Microsoft.Batch
-    New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
+    {
+        # Assign VM contributor role to Microsoft.Batch
+        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    }
 }
 ```
 

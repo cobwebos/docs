@@ -31,6 +31,42 @@
       href: azure-stack-tutorial-app-service.md
 - name: 概念
   items:
+    - name: 数据中心集成
+      items:
+        - name: 常规 Azure 堆栈集成注意事项
+          href: azure-stack-datacenter-integration.md
+        - name: Azure 堆栈部署连接模型
+          href: azure-stack-connection-models.md
+        - name: 已连接的部署注意事项
+          href: azure-stack-connected-deployment.md
+        - name: 断开连接的部署注意事项
+          href: azure-stack-disconnected-deployment.md
+        - name: 数据中心网络集成
+          items:
+            - name: 网络集成
+              href: azure-stack-network.md
+            - name: 边框连接
+              href: azure-stack-border-connectivity.md
+            - name: DNS 集成
+              href: azure-stack-integrate-dns.md
+            - name: 防火墙集成
+              href: azure-stack-firewall.md
+              items:
+                - name: 发布终结点
+                  href: azure-stack-integrate-endpoints.md
+        - name: Azure 堆栈部署 PKI 要求
+          href: azure-stack-pki-certs.md
+          items:
+            - name: 获取 Azure 堆栈部署 PKI 证书
+              href: azure-stack-get-pki-certs.md
+        - name: 标识集成
+          href: azure-stack-integrate-identity.md
+        - name: 注册 Azure 堆栈
+          href: azure-stack-registration.md
+        - name: 外部监视
+          href: azure-stack-integrate-monitor.md
+        - name: 安全集成
+          href: azure-stack-integrate-security.md
     - name: 服务策略
       href: azure-stack-servicing-policy.md
     - name: 重要功能和概念
@@ -43,7 +79,7 @@
   items:
     - name: 部署 ASDK
       items:
-        - name: 必备组件
+        - name: 先决条件
           href: azure-stack-deploy.md
         - name: 遥测
           href: azure-stack-telemetry.md
@@ -59,35 +95,6 @@
           href: azure-stack-add-default-image.md
         - name: 创建测试 VM
           href: azure-stack-provision-vm.md
-    - name: 部署集成的 Azure 堆栈系统
-      items:
-        - name: 部署规划注意事项
-          href: azure-stack-deployment-planning.md
-        - name: 部署规划决策
-          href: azure-stack-deployment-decisions.md
-        - name: 部署连接到 Azure
-          href: azure-stack-connected-deployment.md
-        - name: 部署从 Azure 断开连接
-          href: azure-stack-disconnected-deployment.md
-        - name: Azure 堆栈部署 PKI 要求
-          href: azure-stack-pki-certs.md
-          items:
-            - name: 获取 Azure 堆栈部署 PKI 证书
-              href: azure-stack-get-pki-certs.md
-        - name: 注册 Azure 堆栈
-          href: azure-stack-registration.md
-    - name: 数据中心集成
-      items:
-        - name: DNS
-          href: azure-stack-integrate-dns.md
-        - name: 标识
-          href: azure-stack-integrate-identity.md
-        - name: 发布终结点
-          href: azure-stack-integrate-endpoints.md
-        - name: 外部监视
-          href: azure-stack-integrate-monitor.md
-        - name: “安全”
-          href: azure-stack-integrate-security.md
     - name: 管理
       items:
         - name: 区域管理
@@ -173,7 +180,7 @@
               href: azure-stack-enable-multitenancy.md
         - name: 旋转机密
           href: azure-stack-rotate-secrets.md
-    - name: 提供服务
+    - name: 优惠服务
       items:
         - name: 提供服务概述
           href: azure-stack-offer-services-overview.md
@@ -261,7 +268,7 @@
               href: azure-stack-vpn-gateway-settings.md
             - name: 使用 ExpressRoute 进行连接
               href: azure-stack-connect-expressroute.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 已知问题
           href: azure-stack-troubleshooting.md
@@ -271,11 +278,11 @@
           href: azure-stack-diagnostic-test.md
         - name: 重新部署 Azure Stack 开发工具包
           href: azure-stack-redeploy.md
-- name: 参考
+- name: 引用
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
-- name: 相关内容
+- name: 相关
   items:
     - name: Azure Stack 用户文档
       href: /azure/azure-stack/user/
@@ -287,7 +294,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
     - name: 定价信息
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
     - name: 培训和认证
       href: azure-stack-train-and-cert.md

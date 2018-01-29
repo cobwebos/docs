@@ -4,7 +4,7 @@ description: "介绍如何配置设备进行远程管理，以及如何通过 HT
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff76884f020a0fb8a1b48bd371c419bd65e85fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9414d9c93fe463910ffa6fce72aada6a0d720464
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 本教程介绍如何配置设备进行远程管理，以及如何连接到 Windows PowerShell for StorSimple。 可以使用 HTTP 或 HTTPS 通过 Windows PowerShell 建立远程连接。 但是，在决定如何连接到用于 StorSimple 的 Windows PowerShell 时，请注意以下信息：
 
 * 直接连接到设备串行控制台是安全的，但通过网络交换机连接到串行控制台并不安全。 通过网络交换机连接到设备串行控制台时，请警惕安全风险。
-* 与在网络上通过串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 虽然这不是最安全的方法，但在受信任的网络上是比较可行的方法。
+* 与在网络上通过串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 虽然这不是最安全的方法，但在受信任的网络上是比较安全的。
 * 通过使用自签名证书的 HTTPS 会话进行连接是最安全的选项（建议使用）。
 
 可以远程连接到 Windows PowerShell 接口。 但在默认情况下，通过 Windows PowerShell 接口远程访问 StorSimple 设备处于未启用状态。 首先必须在设备上启用远程管理，然后在用于访问设备的客户端上启用远程管理。
@@ -84,7 +84,10 @@ ms.lasthandoff: 10/11/2017
 在客户端上执行以下步骤以启用远程管理。
 
 #### <a name="to-prepare-the-client-for-remote-connection"></a>为远程连接准备客户端
-1. 以管理员身份启动 Windows PowerShell 会话。
+1. 以管理员身份启动 Windows PowerShell 会话。 如果使用 Windows 10 客户端，默认情况下，Windows 远程管理服务设置为手动启动。 可能需要通过键入以下命令启动该服务：
+
+    `Start-Service WinRM`
+    
 2. 键入以下命令将 StorSimple 设备的 IP 地址添加到客户端受信任的主机列表中：
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
@@ -212,7 +215,10 @@ ms.lasthandoff: 10/11/2017
 在想要从中建立远程 Windows PowerShell 连接的计算机上执行以下过程。
 
 #### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>通过使用 Windows PowerShell 和 SSL 在设备上输入 SSAdmin 会话
-1. 以管理员身份启动 Windows PowerShell 会话。
+1. 以管理员身份启动 Windows PowerShell 会话。 如果使用 Windows 10 客户端，默认情况下，Windows 远程管理服务设置为手动启动。 可能需要通过键入以下命令启动该服务：
+
+    `Start-Service WinRM`
+
 2. 通过键入以下内容将设备 IP 地址添加到客户端受信任的主机中：
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`

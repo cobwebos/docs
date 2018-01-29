@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 应用商店创建虚拟机映像 | Microsoft Docs"
-description: "详细说明了如何为 Azure 应用商店创建虚拟机映像，以供其他人购买。"
+title: "为 Azure Marketplace 创建虚拟机映像 | Microsoft Docs"
+description: "详细说明了如何为 Azure Marketplace 创建虚拟机映像，以供其他人购买。"
 services: Azure Marketplace
 documentationcenter: 
 author: HannibalSII
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: e37c55dbcc8de49aee32272b2f51b0792bef132c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 126c5a5b3abd48b350c7d11a038a5d94e40280a0
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/22/2018
 ---
-# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像指南
-本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
+# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像指南
+本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure Marketplace。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
 
 ## <a name="1-define-offers-and-skus"></a>1.定义产品/服务和 SKU
 在本部分中，会了解如何定义产品/服务及其关联的 SKU。
@@ -42,8 +42,8 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
 ### <a name="11-add-an-offer"></a>1.1 添加产品/服务
 1. 使用卖方帐户登录[发布门户][link-pubportal]。
-2. 在发布门户上选择“虚拟机”选项卡。 在提示的输入字段中，输入产品/服务名称。 产品/服务名称通常是计划在 Azure 应用商店中销售的产品或服务的名称。
-3. 选择“创建” 。
+2. 在发布门户上选择“虚拟机”选项卡。 在提示的输入字段中，输入产品/服务名称。 产品/服务名称通常是计划在 Azure Marketplace 中销售的产品或服务的名称。
+3. 选择“创建”。
 
 ### <a name="12-define-a-sku"></a>1.2 定义 SKU
 添加了产品/服务后，需要定义并标识 SKU。 客户可拥有多个产品/服务，并且每个产品/服务下面均可有多个 SKU。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。
@@ -51,17 +51,17 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 1. **添加 SKU。** SKU 需要在 URL 中使用的标识符。 该标识符在发布配置文件中必须独一无二，不过不会有标识符与其他发布者发生冲突的风险。
 
    > [!NOTE]
-   > 产品/服务和 SKU 标识符显示在应用商店的产品/服务 URL 中。
+   > 产品/服务和 SKU 标识符显示在 Marketplace 店的产品/服务 URL 中。
    >
    >
 2. **为 SKU 添加摘要说明。** 摘要说明对客户可见，因此要使它们便于阅读。 在“推送到过渡环境”阶段之前，无需锁定此信息。 到时候可随意编辑。
 3. 如果使用基于 Windows 的 SKU，请遵循建议链接来获取已批准的 Windows Server 版本。
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2.创建与 Azure 兼容的 VHD（基于 Linux）
-本部分重点介绍有关为 Azure 应用商店创建基于 Linux 的 VM 映像的最佳做法。 有关分步演练，请参阅以下文档：[创建和上传包含 Linux 操作系统的虚拟硬盘](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+本部分重点介绍有关为 Azure Marketplace 创建基于 Linux 的 VM 映像的最佳做法。 有关分步演练，请参阅以下文档：[创建自定义 Linux VM 映像](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>3.创建与 Azure 兼容的 VHD（基于 Windows）
-本部分重点介绍用于为 Azure 应用商店创建基于 Windows Server 的 SKU 的步骤。
+本部分重点介绍用于为 Azure Marketplace 创建基于 Windows Server 的 SKU 的步骤。
 
 ### <a name="31-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 请确保使用正确的基本 VHD
 用于 VM 映像的操作系统 VHD 必须基于 Azure 批准的基本映像（包含 Windows Server 或 SQL Server）。
@@ -112,7 +112,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
     b.    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这会加快 VHD 复制过程，Microsoft 会在提交映像进行认证时代表你执行该过程。
 
     ![绘制][img-portal-vm-location]
-7. 单击“创建” 。 开始部署 VM。 在几分钟内便会部署成功，可以开始为 SKU 创建映像。
+7. 单击“创建”。 开始部署 VM。 在几分钟内便会部署成功，可以开始为 SKU 创建映像。
 
 ### <a name="33-develop-your-vhd-in-the-cloud"></a>3.3 在云中开发 VHD
 我们强烈建议使用远程桌面协议 (RDP) 在云中开发 VHD。 使用在预配过程中指定的用户名和密码连接到 RDP。
@@ -167,7 +167,7 @@ VM 映像中的 Windows 操作系统 VHD 应创建为 128 GB 的固定格式的 
 * 不应有任何配置依赖于驱动器 C 或 D 之外的驱动器，因为这两个驱动器是仅有的始终保证存在的驱动器。 驱动器 C 是操作系统磁盘，而驱动器 D 是临时的本地磁盘。
 
 ### <a name="37-generalize-the-image"></a>3.7 一般化映像
-Azure 应用商店中的所有映像必须可采用一般形式重复使用。 换句话说，必须对操作系统 VHD 进行一般化：
+Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 换句话说，必须对操作系统 VHD 进行一般化：
 
 * 对于 Windows，映像应“执行 sysprep 操作”，不应进行任何不支持 **sysprep** 命令的配置。
 * 可从 %windir%\System32\Sysprep 目录中运行以下命令。
@@ -236,7 +236,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 >
 
 ## <a name="5-obtain-certification-for-your-vm-image"></a>5.获取 VM 映像的认证
-为 Azure 应用商店准备 VM 映像的下一步是进行认证。
+为 Azure  Marketplace 准备 VM 映像的下一步是进行认证。
 
 此过程包括运行一个专门认证工具、将认证结果上传到 VHD 所处的 Azure 容器、添加产品/服务、定义 SKU 以及提交 VM 映像进行认证。
 
@@ -296,7 +296,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 * 访问的持续时间应至少是三 (3) 周，从创建共享访问签名 URI 时算起。
 * 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-可以通过多种方式生成 SAS URL，以便向 Azure 应用商店共享 VHD。
+可以通过多种方式生成 SAS URL，以便向 Azure Marketplace 共享 VHD。
 以下是 3 个建议的工具：
 
 1.  Azure 存储资源管理器
@@ -350,7 +350,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
     c. **允许的操作**：选择“列出”和“读取”权限。
 
-    d. 如果已正确选择 .vhd 文件，则文件显示在“要访问的 Blob 名称”中，并带有扩展名 .vhd。
+    d.单击“下一步”。 如果已正确选择 .vhd 文件，则文件显示在“要访问的 Blob 名称”中，并带有扩展名 .vhd。
 
     e. 单击“生成签名”。
 
@@ -520,10 +520,10 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 |复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0（az 命令）时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>后续步骤
-填写完 SKU 详细信息后，可前进到 [Azure 应用商店市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，然后执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure 应用商店，使公众都可以看到和购买。  
+填写完 SKU 详细信息后，可前进到 [Azure Marketplace 市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，并执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure Marketplace，使公众都可以看到和购买。  
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png

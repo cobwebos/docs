@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 0be2391268e11593802cb0f455e8c4553f0d4731
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure 备份故障排除：代理和/或扩展的问题
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>不支持指定的磁盘配置
 
 > [!NOTE]
-> 我们提供了专用预览版以支持带有 >1TB 非托管磁盘的 VM 的备份。 有关详细信息，请参阅[支持大型磁盘 VM 备份的专用预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
+> 我们提供了个人预览版以支持带有 >1TB 磁盘的 VM 的备份。 有关详细信息，请参阅[支持大型磁盘 VM 备份的专用预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
 >
 >
 
@@ -97,11 +97,14 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 
 ####  <a name="solution"></a>解决方案
 若要解决此问题，请尝试此处列出的方法之一。
-##### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>允许访问 Azure 数据中心 IP 范围
+##### <a name="allow-access-to-the-azure-storage-corresponding-to-the-region"></a>允许访问与该区域对应的 Azure 存储
 
-1. 获取允许访问的 [Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。
-2. 通过在 Azure VM 的提升 PowerShell 窗口中运行 **New-NetRoute** cmdlet，取消阻止 IP。 以管理员身份运行该 cmdlet。
-3. 要允许访问 IP，如果有规则，请将其添加到网络安全组。
+可以允许使用[服务标记](../virtual-network/security-overview.md#service-tags)与特定区域的存储建立连接。 请确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。 
+
+![具有区域存储标记的 NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+> [!WARNING]
+> 存储服务标记仅在特定区域中可用，并且处于预览状态。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。
 
 ##### <a name="create-a-path-for-http-traffic-to-flow"></a>为 HTTP 流量创建路径
 
@@ -166,8 +169,6 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 | --- | --- |
 | VM 具有已配置的 SQL Server 备份。 | 默认情况下，VM 备份在 Windows VM 上运行 VSS 完整备份。 在运行基于 SQL Server 的服务器并配置了 SQL Server 备份的 VM 上，快照执行可能发生延迟。<br><br>如果由于快照问题而导致备份失败，请设置以下注册表项：<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | 由于在 RDP 中关闭了 VM，VM 状态报告不正确。 | 如果在远程桌面协议 (RDP) 中关闭了 VM，请检查门户，以确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
-| 同一个云服务中的许多 VM 配置为同时备份。 | 最佳做法是将备份计划分给同一云服务中的 VM。 |
-| VM 在运行时使用了很高的 CPU 或内存。 | 如果 VM 在运行时使用了很高的 CPU 使用率（超过 90%）或内存使用率，快照任务将排入队列、延迟并最终超时。在这种情况下，请尝试进行按需备份。 |
 | VM 无法从 DHCP 获取主机/结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。  如果 VM 无法从 DHCP 响应 245 获取主机/结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP 地址，应该通过平台配置该 IP。 VM 内的 DHCP 选项应保持启用。 有关详细信息，请参阅[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md)。 |
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>无法更新或加载备份扩展
@@ -192,24 +193,6 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 6. 单击“卸载”。
 
 此过程会导致在下一次备份期间重新安装扩展。
-
-### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Azure 经典 VM 可能需要执行其他步骤才能完成注册
-应注册 Azure 经典 VM 中的代理，才能与备份服务建立连接并开始备份
-
-#### <a name="solution"></a>解决方案
-
-安装 VM 来宾代理后，启动 Azure PowerShell <br>
-1. 使用以下命令登录到 Azure 帐户 <br>
-       `Login-AzureAsAccount`<br>
-2. 使用以下命令验证 VM 的 ProvisionGuestAgent 属性是否设置为 True <br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent`<br>
-3. 如果该属性设置为 FALSE，请执行以下命令将其设置为 TRUE<br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent = $true`<br>
-4. 然后运行以下命令更新 VM <br>
-        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
-5. 尝试初始化备份。 <br>
 
 ### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>备份服务因资源组锁定而无权删除旧的还原点
 此问题特定于托管 VM：当用户锁定资源组后，备份服务无法删除较早的还原点。 由于这一原因，新备份将开始失败，因为从后端施加了最多 18 个还原点的限制。

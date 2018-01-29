@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/25/2018
 ms.author: alfredop
-ms.openlocfilehash: 9ec0b0456a0e7bc5f86f33981d4be6289f5fbc71
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 65b9ff0881e46836d9f19a04cf470835679e7b2f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>在 Azure 堆栈使用情况 API 的常见问题
 本文回答了一些有关 Azure 堆栈使用情况 API 的常见问题。
 
 ## <a name="what-meter-ids-can-i-see"></a>可以看到哪些测定仪 Id？
-使用情况报告的以下资源提供程序。
+以下资源提供程序的报告使用率：
 
 | **资源提供程序** | **电表 ID** | **测定仪名称** | **单位** | 其他信息 |
 | --- | --- | --- | --- | --- |
@@ -43,11 +43,21 @@ ms.lasthandoff: 01/05/2018
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |在 10 中，000's年请求计数 |（10，000's年) 中的队列服务请求 |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的队列服务数据流入 |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |以 gb 为单位的出口 |以 gb 为单位的队列服务数据流出量 |
+| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*小时数   | 在创建过程中，报告每隔一小时的总 DB 容量。  |
+| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*小时数    | 在创建过程中，报告每隔一小时的总 DB 容量。 |
 | **计算** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |基本 VM 大小小时数 |虚拟内核分钟 | 虚拟内核数的次数 VM 运行的分钟 |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM 大小小时数 |虚拟内核分钟 | 虚拟内核数的次数 VM 运行的分钟 |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM 大小小时数 |VM 小时数 |捕获基类和 Windows 的 VM。 不进行调整核心数 |
-| **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |密钥保管库事务 | 在 10 中，000's年请求计数| REST API 收到的请求数由密钥保管库数据平面 |
-| **应用程序服务** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | 应用服务   | 虚拟核心小时数  | 用于运行应用程序服务的虚拟内核数 |
+| **密钥保管库** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |密钥保管库事务 | 在 10 中，000's年请求计数| REST API 收到的请求数由密钥保管库数据平面 |
+| **应用程序服务** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | App Service   | 虚拟核心小时数  | 用于运行应用程序服务的虚拟内核数 |
+|             | 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE | 函数的计算请求      | 10 个请求              | 适用于函数  |
+|             | 957E9F36-2C14-45A1-B6A1-1723EF71A01D | 共享的 App Service 小时数          | 1 小时                   |                       |
+|             | 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9 | 免费 App Service 小时数            | 1 小时                   |                       |
+|             | 88039D51-A206-3A89-E9DE-C5117E2D10A6 | 小型标准的 App Service 小时数  | 1 小时                   |                       |
+|             | 83A2A13E-4788-78DD-5D55-2831B68ED825 | 标准的中等规模 App Service 小时数 | 1 小时                   |                       |
+|             | 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6 | 大型标准的 App Service 小时数  | 1 小时                   |                       |
+|             | 264ACB47-AD38-47F8-ADD3-47F01DC4F473 | SNI SSL                           | 每个 SNI SSL 绑定      | 适用于 AppService |
+|             | 60B42D72-DC1C-472C-9895-6C516277EDB4 | IP SSL                            | 每个 IP 基于的 SSL 绑定 | 适用于 AppService |
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>如何实现 Api 与 Azure 堆栈使用[Azure 使用情况 API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) （当前在公共预览版）？
 * 租户使用情况 API 是与 Azure API，有一个例外一致： *showDetails*标志目前不支持 Azure 堆栈中。
@@ -65,7 +75,7 @@ ms.lasthandoff: 01/05/2018
 目前，可以仅可由查询*报告时间*。
 
 ## <a name="what-do-these-usage-api-error-codes-mean"></a>这些使用情况 API 错误代码是什么意思？
-| **HTTP 状态代码** | **错误代码** | **说明** |
+| **HTTP 状态代码** | 错误代码 | **说明** |
 | --- | --- | --- |
 | 400/错误的请求 |*NoApiVersion* |*Api 版本*缺少查询参数，则。 |
 | 400/错误的请求 |*InvalidProperty* |属性缺失或具有无效值。 响应正文中的错误代码中的消息标识缺少的属性。 |

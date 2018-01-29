@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f2be9ca98330866ac8b6fb12efd56efdc711eedf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 7303347444952d9c09dc6c04eea5b962e18729b4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>使用 Azure Location Based Services 查找兴趣点的路线
 
@@ -77,16 +77,16 @@ ms.lasthandoff: 12/14/2017
     ```
     请注意 HTML 标头如何为 Azure Location Based Services 库嵌入 CSS 和 JavaScript 文件的资源位置。 另请留意 HTML 文件正文中的 *script* 段，其中将会包含用于访问 Azure Location Based Services API 的内联 JavaScript 代码。
 
-3. 将以下 JavaScript 代码添加到 HTML 文件的 *script* 块。 将占位符 *<insert-key>* 替换为 Location Based Services 帐户的主密钥。
+3. 将以下 JavaScript 代码添加到 HTML 文件的 *script* 块。 在脚本中使用 Location Based Services 帐户的主密钥。
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    **atlas.Map** 提供视觉和交互式 Web 地图的控件，它是 Azure 地图控件 API 的一个组件。
+    Atlas.Map 提供一个可视和交互式的 Web 地图控件，它是 Azure Map Control API 的一个组件。
 
 4. 将以下 JavaScript 代码添加到 *script* 块。 这会将一个 *linestrings* 层添加到地图控件以显示路线：
 
@@ -172,21 +172,21 @@ ms.lasthandoff: 12/14/2017
         }
     };
     ```
-    此代码片段创建 [XMLHttpRequest](https://xhr.spec.whatwg.org/)，并添加事件处理程序来分析传入的响应。 如果返回了成功响应，此代码片段会针对返回的第一条路线的线段构造坐标数组。 然后，它将此路线的此坐标集添加到地图的 *linestrings* 层。
+    此代码片段将创建一个 [XMLHttpRequest](https://xhr.spec.whatwg.org/)，并添加事件处理程序以分析传入的响应。 如果返回了成功响应，此代码片段会针对返回的第一条路线的线段构造坐标数组。 然后，它将此路线的此坐标集添加到地图的 *linestrings* 层。
 
 2. 将以下代码添加到 *script* 块，以便将 XMLHttpRequest 发送到 Azure Location Based Services 的路线服务：
 
     ```JavaScript
     var url = "https://atlas.microsoft.com/route/directions/json?";
     url += "&api-version=1.0";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
     xhttp.open("GET", url, true);
     xhttp.send();
     ```
-    上述请求按给定的顺序显示所需的参数，分别为帐户的订阅密钥、起点和终点的坐标。 
+    上述请求按给定的顺序显示所需的参数，分别为帐户密钥以及起点和终点的坐标。 
 
 3. 将 **MapRoute.html** 文件保存在本地，然后在所选的 Web 浏览器中打开它并观察结果。 如果与 Location Based Services 的 API 成功建立连接，应会看到如下所示的地图。 
 

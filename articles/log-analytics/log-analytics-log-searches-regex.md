@@ -1,5 +1,5 @@
 ---
-title: "OMS Log Analytics 日志搜索中的正则表达式 | Microsoft 文档"
+title: "Azure Log Analytics 日志搜索中的正则表达式 | Microsoft Docs"
 description: "可以在 Log Analytics 日志搜索中使用 RegEx 关键字，根据正则表达式筛选结果。  本文为这些表达式的语法提供了多个示例。"
 services: log-analytics
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/18/2018
 ms.author: bwren
-ms.openlocfilehash: 28b2402cefa38ef3bfca68f2ff70e56b649c72f5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8915e0e35951871ff10fd84453d55bd5102e97df
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>在 Log Analytics 中使用正则表达式筛选日志搜索结果
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/16/2017
 > 本文介绍 Log Analytics 中使用旧查询语言的正则表达式。  如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[语言文档中的正则表达式](https://docs.loganalytics.io/docs/Language-Reference/References/Regular-Expressions-syntax)。
 
 
-可以通过[日志搜索](log-analytics-log-searches.md)从 Log Analytics 存储库提取信息。  可以通过[筛选表达式](log-analytics-search-reference.md#filter-expressions)按特定条件筛选搜索结果。  可以使用 **RegEx** 关键字为该筛选器指定正则表达式。  
+可以通过[日志搜索](log-analytics-log-searches.md)从 Log Analytics 工作区提取信息。  可以通过[筛选表达式](log-analytics-search-reference.md#filter-expressions)按特定条件筛选搜索结果。  可以使用 **RegEx** 关键字为该筛选器指定正则表达式。  
 
 本文详细介绍了 Log Analytics 使用的正则表达式语法。
 
@@ -101,4 +101,4 @@ ms.lasthandoff: 10/16/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* 熟悉[日志搜索](log-analytics-log-searches.md)，以便查看和分析 Log Analytics 存储库中的数据。
+* 熟悉[日志搜索](log-analytics-log-searches.md)，以便查看和分析 Log Analytics 工作区中的数据。

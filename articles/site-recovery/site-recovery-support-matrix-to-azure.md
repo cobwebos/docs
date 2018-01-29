@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 98f3b1fe5a0f1d7518e8f0ef6f2a478f59559139
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: a72c9104dc2df0c8a874f757c100a19dc26c1564
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
 
@@ -166,7 +166,7 @@ SAN (ISCSI) | 是 | 是
 VMDK | 是 | 不适用
 VHD/VHDX | 不适用 | 是
 第 2 代 VM | 不适用 | 是
-EFI/UEFI| 否 | 是
+EFI/UEFI| 仅限 Windows Server 2012 及更高版本到 Azure 的迁移。 </br></br> ** 请参阅表末尾的说明。  | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
 NFS | 否 | 不适用
@@ -180,6 +180,12 @@ RDM | 是<br/><br/> 不适用于物理服务器 | 不适用
 热添加/移除磁盘 | 否 | 否
 排除磁盘 | 是 | 是
 多路径 (MPIO) | 不适用 | 是
+
+> [!NOTE]
+> ** 运行 Windows Server 2012 或更高版本的 UEFI 引导 VMware 虚拟机或物理服务器可以迁移到 Azure。 存在以下限制。
+> - 仅迁移到 Azure。 不支持故障回复到本地 VMware 站点。
+> - 服务器的 OS 磁盘支持的分区不能超过 4 个。
+> - 需要 Azure Site Recovery 移动服务 9.13 版或更高版本。
 
 **Azure 存储** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
 --- | --- | ---

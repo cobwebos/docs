@@ -17,11 +17,11 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: fe3ea6c22fafad0d0dcf611ceb365a2ebca80011
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 64315945d977ba912634eb626491a4513def1556
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库
 
@@ -60,7 +60,7 @@ PolyBase 是一种标准加载技术，用于将数据加载到 SQL 数据仓库
 
     ![创建数据仓库](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
-3. 使用以下信息填写“SQL 数据仓库”窗体：   
+3. 使用以下信息填写“SQL 数据仓库”表单：   
 
    | 设置 | 建议的值 | 说明 | 
    | ------- | --------------- | ----------- | 
@@ -125,9 +125,9 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 4. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+5. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-6. 单击“确定”，并关闭“防火墙设置”页。
+6. 单击“确定”，然后关闭“防火墙设置”页。
 
 现在，可使用此 IP 地址连接到 SQL Server 及其数据仓库。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，请使用之前创建的 ServerAdmin 帐户。  
 
@@ -170,7 +170,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 ## <a name="create-a-user-for-loading-data"></a>创建用于加载数据的用户
 
-服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据通常需要大量内存。 [内存最大值](performance-tiers.md#memory-maximums)根据[性能层](performance-tiers.md)和[资源类](resource-classes-for-workload-management.md)定义。 
+服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 [内存最大值](performance-tiers.md#memory-maximums)根据[性能层](performance-tiers.md)和[资源类](resource-classes-for-workload-management.md)定义。 
 
 最好创建专用于加载数据的登录名和用户。 然后，将加载用户添加到启用相应最大内存分配的[资源类](resource-classes-for-workload-management.md)。
 
@@ -211,7 +211,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![使用新登录名连接](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. 输入完全限定的服务器名称，但此次输入“LoaderRC20”作为登录名。  输入 LoaderRC20 的密码。
+2. 输入完全限定的服务器名称，并输入“LoaderRC20”作为登录名。  输入 LoaderRC20 的密码。
 
 3. 单击“连接”。
 
@@ -452,6 +452,10 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 本部分使用刚才定义的外部表将示例数据从 Azure 存储 Blob 加载到 SQL 数据仓库。  
 
+> [!NOTE]
+> 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
+> 
+
 下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，SQL 数据仓库将数据导入数据仓库中的关系表。 
 
 1. 运行以下脚本，将数据加载到数据仓库中的新表。
@@ -567,7 +571,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 SQL 数据仓库不会自动创建或自动更新统计信息。 因此，若要实现较高的查询性能，必须在首次加载后基于每个表的每个列创建统计信息。 此外，在对数据做出重大更改后，必须更新统计信息。
 
-1. 运行以下命令，创建针对可能用于联接的列的统计信息。
+运行以下命令，创建针对可能用于联接的列的统计信息。
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);

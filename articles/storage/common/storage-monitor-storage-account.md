@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 8c566978531ceb9db9aa7c9e2ba3ab83b2dc67cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 >
 > Azure 文件目前支持存储分析指标，但尚不支持日志记录。
 >
-> 使用区域冗余存储空间 (ZRS) 复制类型的存储帐户目前不支持指标或日志记录功能。
+> 复制类型为区域冗余存储 (ZRS) 的存储帐户支持指标和日志记录。 已重命名了 ZRS 经典的以前 ZRS 帐户不支持指标或日志记录。 有关 ZRS 的详细信息，请参阅[区域冗余存储](storage-redundancy.md#zone-redundant-storage)。 
 > 
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../storage-monitoring-diagnosing-troubleshooting.md)。
 >
@@ -148,7 +148,7 @@ ms.lasthandoff: 10/11/2017
 1. 确保“状态”设置为“打开”，选择要为其启用日志记录的**服务**。
 
     ![在 Azure 门户中配置日志记录](./media/storage-monitor-storage-account/stg-enable-logging-01.png)
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft 存储资源管理器](http://storageexplorer.com)等存储资源管理器，或者使用存储客户端库或 PowerShell 以编程方式来查看日志数据。
 

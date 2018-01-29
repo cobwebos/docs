@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 10d06fd29640a350c5522c00c4c9ebd9c6b24c89
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 关于如何将数据加载到 Azure SQL 数据仓库中的建议以及与之相关的性能优化。 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/19/2017
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 存储中准备数据
 若要尽量减少延迟，请将存储层和数据仓库并置。
 
-将数据导出为 ORC 文件格式时，文字较多的列的数量可能会因 Java 内存不足的错误而被限制为少至 50 列。 若要解决此限制方面的问题，请仅导出列的一个子集。
+将数据导出为 ORC 文件格式时，如果存在较大的文本列，可能会收到“Java 内存不足”错误。 若要解决此限制方面的问题，请仅导出列的一个子集。
 
 PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置于 Azure Blob 存储或 Azure Data Lake Store 的文本文件中时，这些数据必须少于 1,000,000 字节。 无论表架构如何，都有此字节限制。
 
@@ -45,14 +45,22 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
 
-此代码为 staticrc20 资源类创建加载用户。 它为用户提供数据库的控制权限，然后将该用户添加为 staticrc20 数据库角色的成员。 若要使用 staticRC20 资源类的资源运行负载，请直接以 LoaderRC20 身份登录，然后运行该负载。 
+### <a name="example-of-creating-a-loading-user"></a>创建加载用户的示例
+此示例为 staticrc20 资源类创建加载用户。 第一步是**连接到主服务器**并创建登录名。
 
-    ```sql
-    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
-    CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
-    ```
+```sql
+   -- Connect to master
+   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+```
+连接到数据仓库并创建用户。 以下代码假定已连接到名为 mySampleDataWarehouse 的数据库。 它演示如何创建一个名为 LoaderRC20 的用户，并向该用户授予对此数据库的控制权限。 然后将该用户添加为 staticrc20 数据库角色的成员。  
+
+```sql
+   -- Connect to the database
+   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
+   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
+   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+```
+若要使用 staticRC20 资源类的资源运行负载，请直接以 LoaderRC20 身份登录，然后运行该负载。
 
 在静态而非动态资源类下运行负载。 使用静态资源类可确保不管[服务级别](performance-tiers.md#service-levels)如何，资源始终不变。 如果使用动态资源类，则资源因服务级别而异。 对于动态类，如果服务级别降低，则意味着可能需要对加载用户使用更大的资源类。
 
@@ -124,7 +132,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 
 ## <a name="next-steps"></a>后续步骤
-若要监视加载过程，请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)。
+若要监视数据加载，请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)。
 
 
 

@@ -4,7 +4,7 @@ description: "了解如何安装并配置已加入域的 HDInsight 群集"
 services: hdinsight
 documentationcenter: 
 author: saurinsh
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: 
 ms.assetid: 0cbb49cc-0de1-4a1a-b658-99897caf827c
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2018
+ms.date: 01/24/2018
 ms.author: saurinsh
-ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>配置已加入域的 HDInsight 沙盒环境
 
@@ -29,7 +29,6 @@ ms.lasthandoff: 01/12/2018
 
 -   在 Azure IaaS 上运行的独立 Active Directory。
 -   Azure Active Directory。
--   在客户本地环境中运行的 Active Directory。
 
 本文介绍如何使用在 Azure IaaS 上运行的独立 Active Directory。 它是客户可用来获得 HDInsight 多用户支持的最简单的体系结构。 本文介绍实现此配置的两种方法：
 
@@ -71,9 +70,10 @@ ms.lasthandoff: 01/12/2018
     - **管理员用户名**：输入域管理员用户名。
     - **管理员密码**：输入域管理员密码。
     - **域名**：默认名称为 *contoso.com*。如果更改域名，则还必须更新“安全 LDAP 证书”字段和“组织单位 DN”字段。
+    - **DNS 前缀**：负载均衡器使用的公共 IP 地址的 DNS 前缀。
     - **群集名称**：输入 HDInsight 群集的名称。
     - **群集类型**：请勿更改此值。 若想更改群集类型，请使用最后一步中的特定模板。
-
+    - **安全 Ldap 证书密码**：除非更改“安全 LDAP 证书”字段，否则使用默认值。
     模板中的某些值是硬编码值，例如，辅助节点实例计数为 2。  若要更改硬编码值，请单击“编辑模板”。
 
     ![已加入域的 HDInsight 群集编辑模板](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)
@@ -201,12 +201,12 @@ ms.lasthandoff: 01/12/2018
 
         ![已加入域的 HDInsight 高级设置域](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-advanced-domain-settings.png)
         
-        - 域名：输入在“创建 Active Directory”[](#create-an-active-directory)中使用的域名。
-        - 域用户名：输入在“创建 Active Directory”[](#create-an-active-directory)中使用的 AD 管理员用户名。
+        - 域名：输入在[创建 Active Directory](#create-an-active-directory)中使用的域名。
+        - 域用户名：输入在[创建 Active Directory](#create-an-active-directory)中使用的 AD 管理员用户名。
         - 组织单位：相关示例请参阅屏幕截图。
         - LDAPS URL：相关示例请参阅屏幕截图
-        - 访问用户组：输入在“创建 AD 用户和组”[](#optionally-createad-users-and-groups)中创建的用户组名称
-    - 虚拟网络：选择在“创建 Active Directory”[](#create-an-active-directory)中创建的虚拟网络。 模板中所用的默认名称为 **adVNET**。
+        - 访问用户组：输入在[创建 AD 用户和组](#optionally-createad-users-and-groups)中创建的用户组名称
+    - 虚拟网络：选择在[创建 Active Directory](#create-an-active-directory)中创建的虚拟网络。 模板中所用的默认名称为 **adVNET**。
     - 子网：模板中所用的默认名称为 **adSubnet**。
 
 

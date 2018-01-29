@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 46662c15374f781a6527bb1435d883ae060c63f4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6dba433536e07970ad5ce338e33b5d19f4532b2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
 [数据科学虚拟机](http://aka.ms/dsvm) (DSVM) 和[深度学习 VM](http://aka.ms/dsvm/deeplearning) 支持多个深度学习框架，可帮助生成具有预测分析和认知功能（例如图像和语言理解）的人工智能 (AI) 应用程序。 
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 | 支持的 DSVM 版本      | Windows、Linux     |
 | 如何在 DSVM 上配置/安装它？  | Keras 在 Python 2.7 (_root_) 以及 Python 3.5 (_py35_) 环境中安装。   |
 | 示例链接      | https://github.com/fchollet/keras/tree/master/examples      |
-| DSVM 上的相关工具      | Microsoft 认知工具包、TensorLlow、Theano      |
+| DSVM 上的相关工具      | Microsoft 认知工具包、TensorFlow、Theano      |
 | 如何使用/运行它？    | 从 Github 下载示例，将其复制到 ~/notebooks 下的目录中并在 Jupyter 中打开   |
 
 

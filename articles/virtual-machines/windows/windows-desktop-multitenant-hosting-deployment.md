@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 8/20/2017
+ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: e1fd3cf826915b128039e3d9fe20c309f20ad2c6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ad3b294e1d53d03f6ceb61048c8f657d8b471c0
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 有关详细信息，请参阅 [Multitenant Hosting for Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)（Windows 10 多租户托管）。
 
 > [!NOTE]
-> 本文演示如何实现 Windows 10 桌面版映像的许可权益。 可参阅以下内容了解[适用于 Windows Server 映像的 Azure 混合使用权益](hybrid-use-benefit-licensing.md)。
+> 本文演示如何在 Azure Marketplace 上实现 Windows 10 专业版桌面映像的许可权益。
+> - 有关 Azure Marketplace 上 MSDN 订阅的 Windows 7、Windows 8.1、Windows 10 企业版 (x64) 映像，请参阅 [Azure 中用于开发/测试方案的 Windows 客户端](client-images.md)
+> - 有关 Windows Server 许可权益，请参阅 [Windows Server 映像的 Azure 混合使用权益](hybrid-use-benefit-licensing.md)。
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>通过 Azure Marketplace 部署 Windows 10 映像 
@@ -34,6 +36,8 @@ ms.lasthandoff: 12/08/2017
 |:----------|:-------------:|:------|:------|
 | Windows 10 专业版    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 专业版 N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 专业版    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
+| Windows 10 专业版 N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>将 Windows 10 VHD 上传到 Azure
 如果要上传通用化的 Windows 10 VHD，请注意，Windows 10 不会默认启用内置 Administrator 帐户。 若要启用内置 Administrator 帐户，请在自定义脚本扩展中包含以下命令。

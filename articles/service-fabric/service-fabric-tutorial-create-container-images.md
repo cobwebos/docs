@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 9ea5be818cfc104c243ce31cc0e2d0f10135259f
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e1d110aea526c4632219ef8fd2a9681b1b6c330f
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>创建 Service Fabric 的容器映像
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/11/2018
 > * [使用容器生成和运行 Service Fabric 应用程序](service-fabric-tutorial-package-containers.md)
 > * [如何在 Service Fabric 中处理故障转移和缩放](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 设置 Service Fabric 的 Linux 开发环境。 按照[此处](service-fabric-get-started-linux.md)的说明设置 Linux 环境。 
 - 本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
@@ -58,7 +58,7 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-该解决方案包含两个文件夹和一个 docker-compse.yml 文件。 “azure-vote”文件夹包含 Python 前端服务以及用于生成映像的 Dockerfile。 “Voting”目录包含部署到群集的 Service Fabric 应用程序包。 这些目录包含本教程所需的资产。  
+该解决方案包含两个文件夹和一个“docker-compose.yml”文件。 “azure-vote”文件夹包含 Python 前端服务以及用于生成映像的 Dockerfile。 “Voting”目录包含部署到群集的 Service Fabric 应用程序包。 这些目录包含本教程所需的资产。  
 
 ## <a name="create-container-images"></a>创建容器映像
 

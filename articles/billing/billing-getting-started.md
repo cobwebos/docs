@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -157,6 +157,7 @@ ms.lasthandoff: 12/08/2017
 - 订阅费用基于使用情况，且独立于预付金额、超额用量、已包含数量、调整和税。 实际费用按注册级计算。 
 - 与企业门户中的值相比，Azure 门户中显示的数量可能会存在延迟。  
 - 如果未看见费用，可能是以下几种原因之一所致：
+    - 你在订阅级别的 RBAC 权限不足。 若要查看企业成本视图，必须在订阅级别是账单读者、读者、参与者或所有者。
     - 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  请联系你的注册管理员以获取费用访问权限。 
     - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。  请联系注册管理员以获取访问权限。 
     - 是通过一个通道合作伙伴购买的 Azure，而该合作伙伴尚未发布定价信息。  

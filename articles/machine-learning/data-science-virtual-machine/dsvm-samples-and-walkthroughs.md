@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 89bb5d255db9ab266d04169a3101e2b694236029
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>数据科学虚拟机 (DSVM) 的示例
 
@@ -34,7 +34,7 @@ DSVM 附带了以 Jupyter 笔记本形式完整编制的示例，其中一些示
 | Python 语言  | 以 Python 语言编写的示例，解释了与 Azure 云数据存储连接并使用 Azure机器学习等情况。  <br/> [屏幕快照](#python-language) | <br/>`~notebooks` <br/><br/>|
 | Julia 语言  | 以 Julia 语言编写的示例，详细介绍了 Julia 中的绘图，Julia 中的深度学习，以及从 Julia 调用 C 和 Python 等。 <br/> [屏幕快照](#julia-language) |<br/> Windows：<br/> `~notebooks/Julia_notebooks`<br/><br/>`~notebooks`<br/><br/> Linux：<br/> `~notebooks/julia`<br/><br/> |
 | CNTK <br/> (Microsoft Cognitive Toolkit)  | 深度学习示例由微软的 Cognitive Toolkit 团队发布。  <br/> [屏幕快照](#cntk) | <br/>Windows：<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> Linux：<br/> `~notebooks/CNTK`<br/> <br/>|
-| MXnet Notebook  | 深度学习示例利用基于 MXnet 的神经网络。 有多种从初级到高级场景的笔记本。  <br/> [屏幕快照](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
+| **MXNet** Notebook  | 深度学习利用基于 MXNet 的神经网络的示例。 有多种从初级到高级场景的笔记本。  <br/> [屏幕快照](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
 | Azure 机器学习 AzureML  | 与 Azure 机器学习工作室进行交互，并从本地培训的模型中创建 Web Service 终结点，用于基于云的评分工作流。 <br/> [屏幕快照](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
 | **caffe2** | 深度学习示例利用基于 caffe2 的神经网络。 有多个旨在让用户熟悉 caffe2 以及如何有效使用它的笔记本，包括图像预处理、数据集创建、回归和使用预先训练的模型等示例。 <br/> [屏幕快照](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
 | **H2O**   | 基于 Python 的示例利用 H2O 处理许多现实世界的场景问题。 <br/> [屏幕快照](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |

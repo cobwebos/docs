@@ -3,7 +3,7 @@ title: "SQL 数据仓库系统视图 | Microsoft 文档"
 description: "SQL 数据仓库的系统视图内容链接。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: kevinvngo
+author: barbkess
 manager: jhubbard
 editor: 
 ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 07/12/2017
-ms.author: kevin;barbkess
-ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/22/2018
+ms.author: barbkess
+ms.openlocfilehash: 9c686c9cd4f9baf4f2c13194e58aadc9ebec0a24
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="system-views"></a>系统视图
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL 数据仓库目录视图
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 * [sys.dm_pdw_sql_requests](http://msdn.microsoft.com/library/mt203889.aspx)
 * [sys.dm_pdw_sys_info](http://msdn.microsoft.com/library/mt203900.aspx)
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
-* [sys.dm_pdw_waits](http://msdn.microsoft.com/library/mt203909.aspx)
+* [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 
 ## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>适用于 SQL 数据仓库的 SQL Server DMV
 以下 DMV 适用于 SQL 数据仓库，但必须在连接到 **master** 数据库后才能执行。
@@ -137,16 +137,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL 数据仓库中提供的 SQL Server DMV
 SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数据仓库中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
 
-由于 SQL 数据仓库采用 Microsoft 的 MPP 技术，因此 SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 都使用相同的系统视图。
-
-这就是为何其中每个 DMV 都有一个名为 pdw_node_id 的特定列的原因。 这是计算节点的标识符。 在 PDW 中，计算节点是体系结构的强势概念。 在 SQL 数据仓库中，体系结构更严重依赖于分布区。
+SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。 
 
 > [!NOTE]
-> 若要使用这些视图，请在名称中插入“pdw_nodes_”，如下表所示。
+> 若要使用这些视图，请在名称中插入“pdw_nodes_”，如下表所示：
 > 
 > 
 
-| SQL 数据仓库中的 DMV 名称 | MSDN 上的 SQL Server Transact-SQL 主题链接 |
+| SQL 数据仓库中的 DMV 名称 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 

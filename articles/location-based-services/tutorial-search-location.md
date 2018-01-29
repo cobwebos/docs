@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>使用 Azure Location Based Services 搜索附近的兴趣点
 
@@ -24,11 +24,11 @@ ms.lasthandoff: 12/14/2017
 
 > [!div class="checklist"]
 > * 使用 Azure Location Based Services 创建帐户
-> * 获取帐户的订阅密钥
+> * 了解 Azure Location Based Services 帐户的主密钥
 > * 使用地图控件 API 创建新网页
 > * 使用搜索服务查找附近的兴趣点
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
 # <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。
@@ -55,7 +55,7 @@ ms.lasthandoff: 12/14/2017
 
 <a id="getkey"></a>
 
-## <a name="get-the-subscription-key-for-your-account"></a>获取帐户的订阅密钥
+## <a name="get-the-primary-key-for-your-account"></a>获取帐户的主密钥
 
 成功创建 Location Based Services 帐户后，请遵循以下步骤将该帐户链接到其地图搜索 API：
 
@@ -113,16 +113,16 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
     ``` 
     请注意，HTML 标头包含 Azure 地图控件库托管的 CSS 和 JavaScript 资源文件。 请注意已在 HTML 文件的正文中添加 *script* 段。 此段将会包含用于访问 Azure Location Based Services API 的内联 JavaScript 代码。
  
-3.  将以下 JavaScript 代码添加到 HTML 文件的 *script* 块。 将占位符 *<insert-key>* 替换为 Location Based Services 帐户的主密钥。 
+3.  将以下 JavaScript 代码添加到 HTML 文件的 *script* 块。 在脚本中使用 Location Based Services 帐户的主密钥。 
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    此段将会启动地图控件 API 来处理订阅密钥。 **Atlas** 是包含 Azure 地图控件 API 和相关视觉组件的命名空间。 **atlas.Map** 提供视觉对象和交互式 Web 地图的控件。 可以在浏览器中打开该 HTML 页面来观察地图的外观。 
+    此段为 Azure Location Based Services 帐户密钥启动地图控件 API。 **Atlas** 是包含 Azure 地图控件 API 和相关视觉组件的命名空间。 **atlas.Map** 提供视觉对象和交互式 Web 地图的控件。 可以在浏览器中打开该 HTML 页面来观察地图的外观。 
 
 4. 将以下 JavaScript 代码添加到 *script* 块，以便在地图控件中添加一个搜索结果图钉层：
 
@@ -193,7 +193,7 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
     var url = "https://atlas.microsoft.com/search/fuzzy/json?";
     url += "&api-version=1.0";
     url += "&query=gasoline%20station";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&lat=47.6292";
     url += "&lon=-122.2337";
     url += "&radius=100000";
@@ -201,7 +201,7 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
     xhttp.open("GET", url, true);
     xhttp.send();
     ``` 
-    此代码片段使用搜索服务的基本搜索 API，即**模糊搜索**。 该 API 可处理最模糊的输入，并可处理地址或 *POI* 标记的任意组合。 它可以搜索附近的**加油站**、以纬度和经度指定的地址，并可以在指定的半径范围内搜索。 它使用前面在示例文件中提供的帐户订阅密钥向 Location Based Services 发出调用。 对于找到的位置，它以纬度/经度对的形式返回结果。 可以在浏览器中打开该 HTML 页面来观察搜索结果图钉。 
+    此代码片段使用搜索服务的基本搜索 API，即**模糊搜索**。 该 API 可处理最模糊的输入，并可处理地址或 *POI* 标记的任意组合。 它可以搜索附近的**加油站**、以纬度和经度指定的地址，并可以在指定的半径范围内搜索。 它使用前面在示例文件中提供的帐户主密钥向 Location Based Services 发出调用。 对于找到的位置，它以纬度/经度对的形式返回结果。 可以在浏览器中打开该 HTML 页面来观察搜索结果图钉。 
 
 3. 将以下行添加到 *script* 块，以创建搜索服务返回的兴趣点的弹出窗口：
 
@@ -244,7 +244,7 @@ Azure 地图控件 API 是一个方便的客户端库，使用它可以轻松将
 
 > [!div class="checklist"]
 > * 使用 Azure Location Based Services 创建帐户
-> * 获取帐户的订阅密钥
+> * 获取帐户的主密钥
 > * 使用地图控件 API 创建新网页
 > * 使用搜索服务查找附近的兴趣点
 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 97cd46819a4547ec743270871bcb6b4eef3eb365
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -32,7 +32,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
  本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 先完成本系列教程的前两个部分：
 
    * 遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
@@ -134,37 +134,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    命令行提示符会在当前项目文件夹位置 **c:\temp\myIris>** 中打开。
 
-2. 确保已将 Azure 资源提供程序 **Microsoft.ContainerRegistry** 注册到订阅中。 在步骤 3 中创建环境之前，必须注册此资源提供程序。 可使用以下命令检查是否已注册该提供程序：
-   ``` 
-   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
-   ``` 
-
-   应看到如下输出： 
-   ```
-   Provider                                  Status 
-   --------                                  ------
-   Microsoft.Authorization                   Registered 
-   Microsoft.ContainerRegistry               Registered 
-   microsoft.insights                        Registered 
-   Microsoft.MachineLearningExperimentation  Registered 
-   ... 
-   ```
-   
-   如果 Microsoft.ContainerRegistry 未注册，可使用以下命令注册：
-   ``` 
-   az provider register --namespace Microsoft.ContainerRegistry 
-   ```
-   注册可能需要几分钟时间。 可使用以前的 az provider list 命令或以下命令查看其状态：
-   ``` 
-   az provider show -n Microsoft.ContainerRegistry 
-   ``` 
-
-   第三行输出显示 **"registrationState": "Registering"**。 请稍候片刻并重复 show 命令，直到输出显示 "registrationState": "Registered"。
-
-   >[!NOTE] 
-   如果将部署到 ACS 群集，则需要注册 Microsoft.ContainerService 资源提供程序以及使用完全相同的方法。
-
-3. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
+2. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
 
    请注意，以下设置命令要求你具有订阅的“参与者”访问权限。 如果你没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
 
@@ -176,25 +146,25 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    
    可以参考群集名称识别环境。 位置应该与在 Azure 门户中创建的模型管理帐户的位置相同。
 
-4. 创建模型管理帐户。 （这是一次性设置。）  
+3. 创建模型管理帐户。 （这是一次性设置。）  
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-5. 设置模型管理帐户。  
+4. 设置模型管理帐户。  
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-6. 设置环境。
+5. 设置环境。
 
-   完成设置后，使用以下命令设置操作化环境时所需的环境变量。 使用前面在步骤 4 中用过的同一环境名称。 使用完成设置过程时在命令窗口中输出的同一资源组名称。
+   完成设置后，使用以下命令设置操作化环境时所需的环境变量。 使用前面在步骤 2 中用过的同一环境名称。 使用完成设置过程时在命令窗口中输出的同一资源组名称。
 
    ```azurecli
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-7. 若要验证是否为本地 Web 服务部署正确配置了操作化环境，请输入以下命令：
+6. 若要验证是否为本地 Web 服务部署正确配置了操作化环境，请输入以下命令：
 
    ```azurecli
    az ml env show

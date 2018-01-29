@@ -1,5 +1,6 @@
 # 概述
 ## [关于数据库迁移服务](dms-overview.md)
+## [先决条件概述](pre-reqs.md)
 
 # 快速入门
 ## [创建服务 - 门户](quickstart-create-data-migration-service-portal.md)
@@ -16,3 +17,4 @@
 ## [数据库迁移指南](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [定价](https://aka.ms/dms-pricing)
+## [常见问题](faq.md)
