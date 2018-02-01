@@ -6,16 +6,16 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql
+ms.service: mysql-database
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/24/2018
-ms.openlocfilehash: 4aca7c4c0c096082d03c0514ce714cfd3624249b
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 44011c4b1ac5da686954a87bbf17a54b963ff6d8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Go 语言进行连接并查询数据
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Apple macOS 平台中使用以 [Go](https://golang.org/) 语言编写的代码连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不太熟悉 Azure Database for MySQL 的用法。

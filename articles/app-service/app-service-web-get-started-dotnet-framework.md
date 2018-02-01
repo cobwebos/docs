@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b4cde427115df5bb7cd80acd676c6788ff3a379e
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 6ce5d49fe4e58b3c89c09ef80d563d001a4abb41
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/05/2017
 观看视频，动态了解此快速入门教程，然后自行按步骤将你的第一个 .NET 应用发布到 Azure。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,8 +40,6 @@ ms.lasthandoff: 12/05/2017
     - **Azure 开发**
 
     ![ASP.NET 和 Web 开发以及 Azure 开发（在 Web 和云下）](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 12/05/2017
 | 设置 | 建议的值 | 说明 |
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
-| 位置 | 欧洲西部 | 托管 Web 应用的数据中心。 |
+| Location | 欧洲西部 | 托管 Web 应用的数据中心。 |
 | 大小 | 免费 | [定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
 选择“确定”。

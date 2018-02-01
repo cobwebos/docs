@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 83065e6cacd784a3914cfac3ff2552a712688366
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>比较 Azure 数据工厂 V1 和 V2
 本文比较了 Azure 数据工厂的 V1 和 V2。 有关 V1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 有关 V2 的简介，请参阅[数据工厂（V2 - 预览）简介](introduction.md)。
@@ -86,7 +86,7 @@ V2 允许在管道中对活动进行分支。 [If-condition 活动](control-flow
 
 Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 预配 Azure-SSIS Integration Runtime 以后，即可使用曾经用过的相同工具将 SSIS 包部署到本地 SSIS 环境。 
 
-例如，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SSIS 包部署到 Azure 上的此运行时。 有关分步说明，请参阅教程：[将 SQL Server Integration Services 包部署到 Azure](tutorial-deploy-ssis-packages-azure.md)。 
+例如，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SSIS 包部署到 Azure 上的此运行时。 有关分步说明，请参阅教程：[将 SQL Server Integration Services 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 
 
 ## <a name="flexible-scheduling"></a>灵活计划
 在数据工厂 V2 中，不需定义数据集可用性计划。 可以定义触发器资源，以便根据时钟计划程序范例来计划管道。 对于灵活的计划和执行模型，还可以将参数从触发器传递到管道。 

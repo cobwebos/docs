@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: e1d110aea526c4632219ef8fd2a9681b1b6c330f
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: eb7a357369b605464b9986123f3c026fd1595a6f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>创建 Service Fabric 的容器映像
 
@@ -188,7 +188,7 @@ docker push 命令需要几分钟才能完成。
 
 ## <a name="list-images-in-registry"></a>列出注册表中的映像
 
-若要返回已推送到 Azure 容器注册表的映像列表，请运行 [az acr repository list](/cli/azure/acr/repository#list) 命令。 使用 ACR 实例名称更新命令。
+若要返回已推送到 Azure 容器注册表的映像列表，请运行 [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) 命令。 使用 ACR 实例名称更新命令。
 
 ```bash
 az acr repository list --name <acrName> --output table

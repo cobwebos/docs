@@ -57,8 +57,6 @@
           href: azure-disks-dynamic-pv.md
         - name: Azure 文件 - 永久性卷
           href: azure-files-dynamic-pv.md
-        - name: Azure 文件 - 卷
-          href: azure-files.md
 - name: 引用
   items:
     - name: Azure CLI

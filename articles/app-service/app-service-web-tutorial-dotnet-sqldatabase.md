@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: db3be8068ef9e560614daa0e7f0dcf62467fd338
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
@@ -37,6 +37,8 @@ ms.lasthandoff: 10/27/2017
 > * 将日志从 Azure 流式传输到终端
 > * 在 Azure 门户中管理应用
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 完成本教程：
@@ -46,8 +48,6 @@ ms.lasthandoff: 10/27/2017
   - **Azure 开发**
 
   ![ASP.NET 和 Web 开发以及 Azure 开发（在 Web 和云下）](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 10/27/2017
 
 ![创建 SQL Server 实例](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-单击 **“确定”**。 尚不要关闭“配置 SQL 数据库”对话框。
+单击“确定”。 尚不要关闭“配置 SQL 数据库”对话框。
 
 ### <a name="create-a-sql-database"></a>创建 SQL 数据库
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 10/27/2017
 
 ![配置 SQL 数据库](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-“创建应用服务”对话框会显示已创建资源。 单击“创建” 。 
+“创建应用服务”对话框会显示已创建资源。 单击“创建”。 
 
 ![已创建资源](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -367,7 +367,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 再次右键单击 Azure Web 应用并选择“查看设置”。
 
-在“应用程序日志记录(文件系统)”下拉列表中，选择“详细”。 单击“保存” 。
+在“应用程序日志记录(文件系统)”下拉列表中，选择“详细”。 单击“ **保存**”。
 
 ![将跟踪级别更改为详细](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 

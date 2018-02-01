@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 355865b963c313097f7f5900007f341dba92bf67
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 88d4012145172bcd393070904980898d9923ea1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虚拟机规模集和附加数据磁盘
 Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)现在支持对虚拟机附加数据磁盘。 对于使用 Azure 托管磁盘创建的规模集，可以在存储配置文件中定义数据磁盘。 以前，适用于规模集中 VM 的唯一直接附加存储选项是 OS 驱动器和临时驱动器。
@@ -28,14 +28,14 @@ Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)现在支持对虚
 >  即使在创建规模集时定义了附加数据磁盘，也仍需在 VM 中装载并格式化这些磁盘，才能使用（就像标准 Azure VM 一样）。 若要完成此过程，可使用自定义脚本扩展来调用标准脚本，将 VM 中的所有数据磁盘分区和格式化，这是一种很方便的方法。
 
 ## <a name="create-a-scale-set-with-attached-data-disks"></a>创建包含附加数据磁盘的规模集
-若要创建包含附加磁盘的规模集，一种简单的方式是使用 [az vmss create](/cli/azure/vmss#create) 命令。 以下示例创建一个 Azure 资源组，以及一个包含 10 个 Ubuntu VM 的虚拟机规模集，每个 VM 有 2 个附加数据磁盘，分别为 50 GB 和 100 GB。
+若要创建包含附加磁盘的规模集，一种简单的方式是使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 命令。 以下示例创建一个 Azure 资源组，以及一个包含 10 个 Ubuntu VM 的虚拟机规模集，每个 VM 有 2 个附加数据磁盘，分别为 50 GB 和 100 GB。
 
 ```bash
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-[az vmss create](/cli/azure/vmss#create) 命令会对某些配置值进行默认设置（如果用户未指定这些值）。 若要查看可重写的选项，请尝试以下命令：
+[az vmss create](/cli/azure/vmss#az_vmss_create) 命令会对某些配置值进行默认设置（如果用户未指定这些值）。 若要查看可重写的选项，请尝试以下命令：
 
 ```bash
 az vmss create --help
