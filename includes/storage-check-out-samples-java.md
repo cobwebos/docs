@@ -2,6 +2,6 @@
 > 
 > **查看 Azure 存储代码示例存储库**
 > 
-> 如需易用且能够下载和运行的端到端 Azure 存储代码示例，请查看我们的 [Azure 存储示例](https://docs.microsoft.com/azure/storage/storage-samples-java)列表。
+> 若要获取能够下载和运行且易于使用的端到端 Azure 存储代码，请查看我们提供的 [Azure 存储示例](https://docs.microsoft.com/azure/storage/storage-samples-java)列表。
 
 

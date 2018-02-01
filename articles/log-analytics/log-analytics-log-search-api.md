@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 日志搜索 REST API | Microsoft Docs"
-description: "本指南提供的基本教程介绍了如何使用 Operations Management Suite (OMS) 中的 Log Analytics 搜索 REST API，提供的示例向你演示如何使用这些命令。"
+title: "Azure Log Analytics 日志搜索 REST API | Microsoft Docs"
+description: "本指南提供的基本教程通过展示如何使用这些命令的示例介绍了如何使用 Azure Log Analytics 搜索 REST API。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,29 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46c88f7cc250d4c35043039a6f0440aaac85b1c2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics 日志搜索 REST API
-本指南提供使用 Log Analytics 搜索 REST API 的基本教程，包括示例。 Log Analytics 是 Operations Management Suite (OMS) 的一部分。
 
-> [!NOTE]
-> 如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新版本日志搜索 API 文档](https://dev.loganalytics.io/)。
+> [!IMPORTANT]
+> 如果工作区已升级到[新的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则应参考[新版本日志搜索 API 文档](https://dev.loganalytics.io/)。  此旧 API 借助已升级的工作区可能仍可用，但很快将被弃用。  应修改任何现有解决方案，以便使用新 API。
 
-> [!NOTE]
-> Log Analytics 之前称为 Operational Insights（操作见解），这就是在资源提供程序中使用此名称的原因。
->
->
+本指南提供使用 Log Analytics 搜索 REST API 的基本教程，包括示例。 
+
 
 ## <a name="overview-of-the-log-search-rest-api"></a>日志搜索 REST API 概述
-Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API 访问。 本文提供通过 [ARMClient](https://github.com/projectkudu/ARMClient)（可简化 Azure Resource Manager API 调用的开源命令行工具）访问 API 的示例。 使用 ARMClient 是访问 Log Analytics 搜索 API 的多种选项之一。 另一个选项是使用 Operational Insights 的 Azure PowerShell 模块，其中包含了用于访问搜索的 cmdlet。 借助这些工具，可以利用 Azure Resource Manager API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 以 JSON 格式输出搜索结果，从而允许以编程方式使用多种不同的方法搜索结果。
+Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 API 访问。 本文提供通过 [ARMClient](https://github.com/projectkudu/ARMClient)（可简化 Azure 资源管理器 API 调用的开源命令行工具）访问 API 的示例。 使用 ARMClient 是访问 Log Analytics 搜索 API 的多种选项之一。 另一个选项是使用 Operational Insights 的 Azure PowerShell 模块，其中包含了用于访问搜索的 cmdlet。 借助这些工具，可以利用 Azure 资源管理器 API 对 Log Analytics 工作区进行调用并执行它们所包含的搜索命令。 API 以 JSON 格式输出搜索结果，从而允许以编程方式使用多种不同的方法搜索结果。
 
-可以通过 [.NET 的库](https://msdn.microsoft.com/library/azure/dn910477.aspx)和 [REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx) 使用 Azure Resource Manager。 若要了解详细信息，请查看链接的网页。
+可以通过 [.NET 的库](https://msdn.microsoft.com/library/azure/dn910477.aspx)和 [REST API](https://msdn.microsoft.com/library/azure/mt163658.aspx) 使用 Azure 资源管理器。 若要了解详细信息，请查看链接的网页。
 
 > [!NOTE]
 > 如果使用 `|measure count()` 或 `distinct` 之类的聚合命令，对搜索的每次调用可返回最多 500000 个记录。 不包含聚合命令的搜索返回最多 5000 个记录。
@@ -304,7 +301,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager API
 
 | **属性** | **说明** |
 | --- | --- |
-| 名称 |字段名称。 |
+| name |字段名称。 |
 | displayName |字段的显示名称。 |
 | type |字段值的类型。 |
 | facetable |当前“indexed”、“stored”和“facet”属性的组合。 |

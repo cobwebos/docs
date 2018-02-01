@@ -358,6 +358,8 @@
           href: spark-connector.md
         - name: 连接到 Spark GraphX
           href: spark-connector-graph.md
+        - name: 通过 HDInsight 上的 Kafka 和 Spark 进行流式处理
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
         - name: 使用 Azure 应用服务部署网站
           href: create-website.md
         - name: 使用逻辑应用进行应用程序日志记录

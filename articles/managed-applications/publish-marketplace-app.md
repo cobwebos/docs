@@ -3,18 +3,18 @@ title: "Marketplace 中的 Azure 托管应用程序 | Microsoft 文档"
 description: "介绍通过 Marketplace 提供的 Azure 托管应用程序。"
 services: azure-resource-manager
 author: tfitzmac
-manager: rjmax
+manager: timlt
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/08/2017
+ms.date: 01/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: e643c86bfd5a78f21f6d96051e4395168cb7d6e0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace 中的 Azure 托管应用程序
 
@@ -36,26 +36,18 @@ ms.lasthandoff: 01/12/2018
 * 同意 Azure Marketplace 参与政策与发布者协议的条款。
 * 同意遵守使用条款、Microsoft 隐私声明和 Microsoft Azure 认证计划协议。
 
-## <a name="set-up-your-account-for-publishing-portal"></a>为发布门户设置帐户
+## <a name="become-a-publisher"></a>成为发布者
 
-发布门户用于发布和管理产品/服务。 若要发布 Marketplace 应用程序，必须具有用于 Azure Marketplace 的一个已批准 Microsoft 开发人员帐户。 如果尚未注册已批准的帐户，请参阅[创建 Microsoft 开发人员帐户](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)。
+若要在 Azure Marketplace 中成为一名发布者，必须：
 
-如果具有已批准的 **Microsoft 开发人员中心**帐户，但之前未使用过 [Azure 发布门户](https://cloudpartner.azure.com/)，则必须为发布门户进行注册。
-
-1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到个人帐户。
-2. 转到 [https://cloudpartner.azure.com/](https://cloudpartner.azure.com/)。
-3. 如果是新用户并且首次登录到发布门户，则必须使用与开发人员中心帐户相同的电子邮件 ID 进行登录。 现在，开发人员中心帐户和发布门户帐户已链接在一起。
-
-之后，可以作为发布门户中的[共同管理员](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md#4-steps-to-add-a-co-admin-in-the-publishing-portal)添加公司的其他成员。 如果已将你添加为发布门户中的共同管理员，则可以使用共同管理员帐户进行登录。
-
-> [!TIP]
-> [Azure 网站](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)上对这些参与政策进行了介绍。
->
->
+1. 创建 Microsoft ID：使用属于公司的域（而不是属于个人）的电子邮件地址创建 Microsoft 帐户。 此电子邮件地址同时用于 Microsoft 开发人员中心和云合作伙伴门户。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
+1. 提交 [Azure Marketplace 提名表格](https://aka.ms/ampnomination)：对于“你要发布的解决方案?”，选择“托管应用程序”。 一旦提交表格，Marketplace Onboarding 团队就会对应用程序进行评审并核实该申请。 审批过程可能需要一到三天。 提名获得批准后，你会收到一个促销代码，可免除开发人员中心注册费用。 如果**不**完成 Marketplace 提名表格，你就需要支付 99 美元的注册费用。
+1. 在[开发人员中心](https://developer.microsoft.com)注册：Microsoft 会核实你的组织在进行注册的国家/地区是否为有效的合法实体以及是否具有有效的税号标识。 审批过程可能需要 5 到 10 天。 若要免除注册费用，请使用在提名过程中以电子邮件形式收到的促销代码。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
+1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com)：在发布者个人资料中，将开发人员中心帐户与 Marketplace 发布者个人资料相关联。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
 
 ## <a name="create-a-new-azure-application-offer"></a>创建新的 Azure 应用程序产品/服务
 
-满足先决条件后，便可创建托管应用程序产品/服务。
+创建合作伙伴门户帐户之后，就可以开始创建托管应用程序产品/服务。
 
 ### <a name="set-up-an-offer"></a>设置产品/服务
 
@@ -65,11 +57,7 @@ ms.lasthandoff: 01/12/2018
 
 1. 在左侧导航窗格中，选择“+ 新产品/服务” > “Azure 应用程序”。
 
-   ![新产品/服务](./media/publish-marketplace-app/newOffer.png)
-
 1. 在“编辑器”视图中，查看所需的窗体。 将在本文中后面介绍每个窗体。
-
-   ![产品/服务设置](./media/publish-marketplace-app/newOffer_OfferSettings.png)
 
 ## <a name="offer-settings-form"></a>产品/服务设置窗体
 
@@ -95,13 +83,9 @@ SKU 在 Marketplace 中显示在父级产品/服务下。 它在 Azure 门户中
 
 1. 选择“SKU” > “新建 SKU”。
 
-   ![选择“新建 SKU”](./media/publish-marketplace-app/newOffer_skus.png)
-
 1. 输入“SKU ID”。 SKU ID是 SKU 在产品/服务内的唯一标识符。 此 ID 显示在产品 URL、Resource Manager 模板和计费报表中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 此字段在产品/服务推出后处于锁定状态。 在产品/服务内可以有多个 SKU。 每个计划发布的映像都需要一个 SKU。
 
 1. 填写下面表单上的“SKU 详细信息”部分：
-
-   ![提供新的 SKU](./media/publish-marketplace-app/sku-settings.png)
 
    填写以下字段：
 
@@ -110,14 +94,9 @@ SKU 在 Marketplace 中显示在父级产品/服务下。 它在 Azure 门户中
    * 说明：输入关于此 SKU 的详细说明。
    * SKU 类型：允许的值为“托管应用程序”和“解决方案模板”。 对于本例，请选择“托管应用程序”。
    * **国家/区域可用性**：选择提供了该托管应用程序的国家/地区。
-
-      ![选择国家/地区](./media/publish-marketplace-app/select-country.png)
-
    * **定价**：提供用于应用程序管理的价格。 在设置价格之前，选择可用的国家/地区。
 
 1. 添加新的程序包。 填写下面表单上的“程序包详细信息”部分：
-
-   ![程序包](./media/publish-marketplace-app/new-package.png)
 
    填写以下字段：
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 533b5564a805e0b41f2b1a4ad92e12b133220952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Operations Management Suite (OMS) 管理解决方案中的视图（预览版）
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 [Operations Management Suite (OMS) 中的管理解决方案](operations-management-suite-solutions.md)通常包括一个或多个用于可视化数据的视图。  本文介绍如何导出[视图设计器](../log-analytics/log-analytics-view-designer.md)所创建的视图，并将其包含在管理解决方案中。  
 
 > [!NOTE]
-> 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)对此进行了介绍
+> 本文中的示例使用管理解决方案需要或通用的的参数和变量，且在[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)进行了介绍
 >
 >
 
@@ -75,11 +75,10 @@ ms.lasthandoff: 10/11/2017
 
 将以下变量添加到解决方案文件的 variables 元素，并将值替换为解决方案的值。
 
-    "LogAnalyticsApiVersion": "2015-11-01-preview",
+    "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
-
 
 注意：可以从导出的视图文件复制整个视图资源，但需要对其进行以下更改才能在解决方案中生效。  
 
@@ -89,6 +88,18 @@ ms.lasthandoff: 10/11/2017
 * 需要将 **DisplayName** 属性添加到视图。  **Id**、**名称** 和 **DisplayName** 必须完全匹配。
 * 必须更改参数名称，以匹配所需的参数集。
 * 变量应在解决方案中进行定义，并在适当的属性中使用。
+
+### <a name="log-analytics-api-version"></a>Log Analytics API 版本
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../log-analytics/log-analytics-log-search-upgrade.md)的具有查询的视图，此版本有所不同。  
+
+ 下表指定了旧版和升级版工作区中视图的 Log Analytics API 版本： 
+
+| 工作区版本 | API 版本 | 查询 |
+|:---|:---|:---|
+| v1（旧版）   | 2015-11-01-preview | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
+| v2（升级版） | 2015-11-01-preview | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
+| v2（升级版） | 2017-03-03-preview | 升级版格式。 <br>示例：Event &#124; where EventLevelName == "Error"  |
+
 
 ## <a name="add-the-view-details"></a>添加视图详细信息
 导出的视图文件中的视图资源会在 **properties** 属性中包含两个元素，名称分别为**仪表板**和 **OverviewTile**它们包含视图的详细配置。  将这两个元素及其内容复制解决方案文件中的视图资源的 **properties** 元素。

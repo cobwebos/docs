@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 混合标识设计注意事项 - 确定数据保护要求 | Microsoft 文档"
+title: "混合标识设计 - 数据保护需求 Azure | Microsoft Docs"
 description: "规划混合标识解决方案时，确定适用于业务的数据保护要求以及哪些选项可用于最好地满足这些要求。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 77b773f4cd1c4d0ff0a4566fa76fd1d002d15993
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 1a2feca8d24fabda4c191b5a181ab6606c912657
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>通过强标识解决方案增强数据安全性的计划
 保护数据的第一步是确定谁可以访问该数据，作为此过程的组成部分，需要具有可与系统集成的标识解决方案，以便提供身份验证和授权功能。 身份验证与授权经常给人造成混淆，并且其角色容易令人误解。 事实上它们有很大的差别，如下图中所示：

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: d8967d4504a8ccabb444c7f3d5635e2d00f287c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 193dbede0655376714c6f8f12c826ba3f9bc8933
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB 数据库静态加密
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Cosmos DB 中的所有用户数据无论是在传输过程中，还是处于静态时都处于加密状态，因此无需采取任何措施。 实现此目的的另一方式是，默认情况下，静态加密处于“开启”状态。 无法控制开启或关闭此功能。 在提供此功能的同时，我们继续满足[可用性和性能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。
 
-## <a name="implement-encryption-at-rest"></a>实现静态加密
+## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>实现针对 Azure Cosmos DB 的静态加密
 
 静态加密是通过许多安全技术实现的，其中包括安全密钥存储系统、加密网络以及加密 API。 对数据进行解密和处理的系统必须与管理密钥的系统进行通信。 该图展示了加密数据的存储和密钥管理的不同之处。 
 

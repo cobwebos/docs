@@ -3,7 +3,7 @@ title: "使用共享快照（预览版）| Microsoft Docs"
 description: "作为备份共享的一种方式，共享快照是某个时间点拍摄的 Azure 文件共享的只读版本。"
 services: storage
 documentationcenter: .net
-author: renash
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 5212866bda9ff775d32ebb57874b3d58e11f1eb3
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: c4a5f7d28601867c383b8b348568e4bb580a81eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="work-with-share-snapshots-preview"></a>使用共享快照（预览版）
-共享快照（预览版）是某个时间点拍摄的 Azure 文件共享的只读版本。 在创建共享快照后，可以读取、复制或删除该快照，但无法对其进行修改。 利用共享快照，可以在某个时间点备份共享。 
+共享快照（预览版）是某个时间点拍摄的 Azure 文件共享的只读版本。 在创建共享快照后，可以读取、复制或删除该快照，但无法对其进行修改。 利用共享快照，可以对共享内容在某个时间点的状态进行备份。 
 
 本文介绍如何创建、管理和删除共享快照。 有关详细信息，请参阅[共享快照概述](storage-snapshots-files.md)或[快照常见问题解答](storage-files-faq.md)。
 
@@ -77,7 +77,7 @@ $snapshot=$share.Snapshot()
 
 ## <a name="perform-common-share-snapshot-operations"></a>执行常用的共享快照操作
 
-可以通过 REST、客户端库、PowerShell 和门户使用 Windows 中的“以前版本”选项卡来枚举与文件共享关联的共享快照。 装载文件共享后，可以使用 Windows 中的“以前版本”选项卡查看所有以前版本的文件。 
+可以使用 Windows 中的“以前版本”选项卡或通过 REST、客户端库、PowerShell 和门户来枚举与文件共享关联的共享快照。 装载文件共享后，可以使用 Windows 中的“以前版本”选项卡查看所有以前版本的文件。 
 
 以下部分介绍如何使用 Azure 门户、Windows 和 Azure CLI 2.0 来列出、浏览到和还原共享快照。
 
@@ -106,10 +106,10 @@ $snapshot=$share.Snapshot()
 ![“下载”和“还原”按钮](./media/storage-snapshots-list-browse/snapshot-download-restore-portal.png)
 
 ### <a name="share-snapshot-operations-in-windows"></a>Windows 中的共享快照操作
-当已拍摄文件共享的共享快照后，即可从 Windows 上装载的文件共享来查看共享、目录或特定文件的以前版本。 例如，下面介绍如何使用“以前版本”功能来查看并还原 Windows 中目录的以前版本。
+拍摄文件共享的共享快照后，即可从 Windows 上装载的文件共享来查看共享、目录或特定文件的以前版本。 例如，下面介绍如何使用“以前版本”功能来查看并还原 Windows 中目录的以前版本。
 
 > [!Note]  
-> 可以在共享级别和文件级别执行相同的操作。 列表中仅显示包含该目录或文件的更改的版本。 如果某个特定目录或文件在两个共享快照之间未发生更改，则该共享快照在共享级别的以前版本列表中显示，而不在目录或文件的以前版本列表中显示。
+> 可以在共享级别和文件级别执行相同的操作。 列表中仅显示更改了该目录或文件的版本。 如果某个特定目录或文件在两个共享快照之间未发生更改，则该共享快照在共享级别的以前版本列表中显示，而不在目录或文件的以前版本列表中显示。
 
 #### <a name="mount-a-file-share"></a>装载文件共享
 首先，使用 `net use` 命令装载文件共享。
@@ -133,7 +133,7 @@ $snapshot=$share.Snapshot()
 ![打开的快照](./media/storage-snapshots-list-browse/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>从以前版本还原
-选择“还原”，在共享快照创建时以递归方式将整个目录的内容复制到原始位置。
+选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
  ![警告消息中的“还原”按钮](./media/storage-snapshots-list-browse/snapshot-windows-restore.png)
 
 ### <a name="share-snapshot-operations-in-azure-cli-20"></a>Azure CLI 2.0 中的共享快照操作
@@ -246,7 +246,46 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 
+<<<<<<< HEAD
+### <a name="file-share-snapshot-operations-in-azure-powershell"></a>Azure PowerShell 中的文件共享快照操作
+Azure PowerShell 可用于执行相同的操作，如列出共享快照、浏览共享快照内容、从共享快照还原或下载文件，或删除共享快照。
+
+#### <a name="list-share-snapshots"></a>列出共享快照
+
+可使用 `Get-AzureStorageShare` 列出特定共享的共享快照
+
+```powershell
+Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+```
+
+#### <a name="browse-share-snapshots"></a>浏览共享快照
+也可以浏览特定的共享快照，使用 `Get-AzureStorageFile` （包含指向特定快照的 `-Share` 值）来查看其内容
+
+```powershell
+$snapshot = Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+Get-AzureStorageFile -Share $snapshot
+```
+
+#### <a name="restore-from-share-snapshots"></a>从共享快照还原
+
+可以通过使用 `Get-AzureStorageFileContent` 命令从共享快照复制或下载文件来还原文件
+
+```powershell
+$download='C:\Temp\Download'
+Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $download
+```
+
+```powershell
+$snapshot = Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+$directory = Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzureStorageFile
+Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $directory
+```
+
+
+## <a name="delete-azure-files-share-snapshot"></a>删除 Azure 文件共享快照
+=======
 ## <a name="delete-a-share-snapshot"></a>删除共享快照
+>>>>>>> 6a1833e10031fbf1ab204bb1f30cb54cf5fbcada
 
 可以使用 Azure 门户、PowerShell、CLI、REST API 或任何存储 SDK 来删除共享快照。 以下部分介绍如何使用 Azure 门户、CLI 和 PowerShell 删除共享快照。
 

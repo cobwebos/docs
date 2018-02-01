@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>大规模部署和监控 IoT Edge 模块 - 预览
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/07/2017
 
 ## <a name="create-a-deployment"></a>创建部署
 
-1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。 
+1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
 1. 选择“IoT Edge (预览版)”。
 1. 选择“添加 IoT Edge 部署”。
 
@@ -61,26 +61,25 @@ ms.lasthandoff: 12/07/2017
 >[!NOTE]
 >Azure 机器学习和 Azure Functions 暂不支持自动 Azure 服务部署。 使用自定义模块部署将这些服务手动添加到部署中。 
 
-若要添加 Azure 服务中的模块，请执行以下步骤：
-1. 选择“添加 Azure 服务 IoT Edge 模块”。
+要添加 Azure 流分析中的模块，请执行以下步骤：
+1. 选择“导入 Azure 流分析 IoT Edge 模块”。
 1. 使用下拉列表菜单选择想要部署的 Azure 服务实例。
-1. 选择“保存”将模块添加到部署。 
+1. 选择“保存”，将模块添加到部署。 
 
 若要将自定义代码添加为模块，或手动添加 Azure 服务模块，请执行以下步骤：
-1. 选择“添加自定义 IoT Edge 模块”。
+1. 选择“添加 IoT Edge 模块”。
 1. 为模块提供一个名称。
-1. 对于映像字段，输入此模块的 Docker 容器映像：`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`。
-1. 使用“OS”和“构架”下的下拉菜单来标识代表此模块的 Docker 容器的属性。 
-1. 指定应传递到容器的任意 Create 选项。 有关详细信息，请参阅 [docker create][lnk-docker-create]。
+1. 对于“映像 URI”字段，输入此模块的 Docker 容器映像。 
+1. 指定应传递到容器的任意容器创建选项。 有关详细信息，请参阅 [docker create][lnk-docker-create]。
 1. 使用下拉菜单选择“重启策略”。 从以下选项中选择： 
    * 始终 - 如果模块因任何原因关闭，该模块将始终重启。
    * 从不 - 如果模块因任何原因关闭，该模块将不再重启。
    * 运行故障时 - 如果模块发生故障，它将重启，但如果完全关闭，则不重启。 
-   * 运行不正常时 - 如果模块发生故障或者返回不正常状态，它将重启。 这取决于每个执行运行状况状态功能的模块。 
-1. 使用下拉菜单选择模块的启动状态。 从以下选项中选择：
+   * **运行不正常时** - 如果模块发生故障或者返回不正常状态，它将重启。 这取决于每个执行运行状况监控功能的模块。 
+1. 使用下拉菜单选择模块的所需状态。 从以下选项中选择：
    * 正在运行 - 这是默认选项。 该模块在部署之后将立即开始运行。
    * 已停止 - 部署之后，模块将保持空闲状态，直到你或另一个模块要求启动。
-1. 如果想要将任意标记或所需属性添加到模块中，请选择“编辑模块孪生”。 
+1. 如果想要将任意标记或所需属性添加到模块孪生，请选择“启用”。 
 1. 选择“保存”，将模块添加到部署。 
 
 配置完部署的所有模块之后，选择“下一步”，进入到步骤 3。
@@ -172,7 +171,7 @@ ms.lasthandoff: 12/07/2017
 了解有关[将模块部署到边缘设备][lnk-deployments]的详细信息。
 
 <!-- Images -->
-[1]: ./media/how-to-deploy-monitor/view-deployments.png
+[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
 
 <!-- Links -->
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md

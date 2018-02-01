@@ -123,6 +123,8 @@
           href: site-recovery-create-recovery-plans.md
         - name: 将 Azure Runbook 添加到恢复计划
           href: site-recovery-runbook-automation.md
+        - name: 将 VMM 脚本添加到恢复计划
+          href: site-recovery-how-to-add-vmmscript.md
         - name: 故障转移
           items:
             - name: 关于故障转移

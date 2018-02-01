@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: v-craic
-ms.openlocfilehash: 3c969495454db2cd301fc985e512531ef0d4b103
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 022b6340a8d2748624ba292fb4a28a956d28c6f9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/02/2018
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
 1. 从实验室列表，选择所需的实验室。  
 
@@ -53,7 +53,9 @@ ms.lasthandoff: 01/02/2018
 
 可通过执行以下步骤来启用已授权映像的编程部署：
 
-1. 在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中的“Marketplace 映像”列表上，确定你希望用户可以访问但尚未接受其条款的已授权映像。 例如，你可能会看到显示“已接受条款”或“需要评审条款”状态的数据科学虚拟机。
+1. 在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中，转到 Marketplace 映像列表。
+
+1. 确定你希望用户可以访问但尚未接受其条款的已授权映像。 例如，你可能会看到显示“已接受条款”或“需要评审条款”状态的数据科学虚拟机。
 
     ![配置编程部署窗口](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
@@ -74,7 +76,15 @@ ms.lasthandoff: 01/02/2018
    >
 
 
-1. 选择“保存”。 在 Marketplace 映像列表中，该映像现在显示“已接受条款”且可供用户用于创建虚拟机。
+1. 选择“保存”。 
+
+    在 Marketplace 映像列表中，该映像现在显示“已接受条款”且可供用户用于创建虚拟机。
+
+> [!NOTE]
+> 用户可从已许可的映像中创建自定义映像。 有关详细信息，请参阅[从 VHD 文件创建自定义映像](devtest-lab-create-template.md)。
+>
+>
+
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 
@@ -83,4 +93,6 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="next-steps"></a>后续步骤
 
+- [从 VM 创建自定义映像](devtest-lab-create-custom-image-from-vm-using-portal.md)
+- [从 VHD 文件创建自定义映像](devtest-lab-create-template.md)
 - [将 VM 添加到实验室](devtest-lab-add-vm.md)

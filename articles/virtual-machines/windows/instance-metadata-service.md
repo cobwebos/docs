@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 5a09895f32d5cc559cda9ec8794c3ce982d99774
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 2694c25b0db7a4a0b9f527ec67e62fede5de6a80
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -53,7 +53,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
 
-我们添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。 但是请注意，在服务正式发布之后，先前的预览版本 (2017-03-01) 可能不再可用。
+在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。 但是，在服务正式发布之后，先前的预览版本（2017-03-01）可能不再可用。
 
 ### <a name="using-headers"></a>使用标头
 查询实例元数据服务时，必须提供标头 `Metadata: true`，以确保不会意外将请求重定向。
@@ -62,7 +62,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 实例元数据可用于运行使用 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)创建/管理的 VM。 使用以下请求访问虚拟机实例的所有数据类别：
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
 ```
 
@@ -80,13 +80,13 @@ API | 默认数据格式 | 其他格式
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
 ```
 
 ### <a name="security"></a>“安全”
 只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问实例元数据服务终结点。 此外，服务会拒绝任何带有 `X-Forwarded-For` 标头的请求。
-我们还要求请求包含 `Metadata: true` 标头，确保实际请求是直接计划好的，而不是无意重定向的一部分。 
+请求必须包含 `Metadata: true` 标头，以确保实际请求是直接计划好的，而不是无意重定向的一部分。 
 
 ### <a name="error"></a>错误
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务将返回标准 HTTP 错误。 例如：
@@ -109,7 +109,7 @@ HTTP 状态代码 | 原因
 
 **请求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
@@ -118,7 +118,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 > [!NOTE] 
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
-```
+```json
 {
   "interface": [
     {
@@ -148,7 +148,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 
 #### <a name="retrieving-public-ip-address"></a>检索公共 IP 地址
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text"
 ```
 
@@ -156,7 +156,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 
 **请求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
@@ -165,7 +165,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE] 
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
-```
+```json
 {
   "compute": {
     "location": "westus",
@@ -217,13 +217,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 可通过 Powershell 实用工具 `curl` 在 Windows 中检索实例元数据： 
 
-```
+```bash
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
 ```
 
 或通过 `Invoke-RestMethod` cmdlet 检索：
     
-```
+```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
 ```
 
@@ -232,7 +232,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 > [!NOTE] 
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
-```
+```json
 {
   "compute": {
     "location": "westus",
@@ -302,7 +302,7 @@ subnet/address | VM 的子网地址 | 2017-04-02
 subnet/prefix | 子网前缀，例如 24 | 2017-04-02 
 ipv6/ipaddress | VM 的本地 IPv6 地址 | 2017-04-02 
 macAddress | VM mac 地址 | 2017-04-02 
-scheduledevents | 目前为公共预览版，请查看 [scheduledevents](scheduled-events.md) | 2017-03-01
+scheduledevents | 目前处于公开预览状态。 请参阅[计划事件](scheduled-events.md) | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 
@@ -312,7 +312,7 @@ scheduledevents | 目前为公共预览版，请查看 [scheduledevents](schedul
 
 **请求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-04-02&format=text"
 ```
 
@@ -329,7 +329,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 **请求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-04-02&format=text" 
 ```
 
@@ -345,7 +345,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 **请求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-04-02"
 ```
 
@@ -354,7 +354,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 > [!NOTE] 
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
 
-```
+```json
 {
   "compute": {
     "location": "CentralUS",

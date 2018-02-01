@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 856ea3e01dad0936d8191a4e57b4137e06eac705
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: a0074bd68dc9714eed9064e42c6e1c6d708d1100
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,7 +49,7 @@ ms.lasthandoff: 01/11/2018
 
 Azure SQL 数据库链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：**AzureSqlDatabase** | 是 |
 | connectionString |为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 仅支持基本身份验证。 将此字段标记为 SecureString。 |是 |
@@ -85,7 +85,7 @@ Azure SQL 数据库链接的服务支持以下属性：
 
 要从/向 Azure SQL 数据库复制数据，请将数据集的 type 属性设置为“AzureSqlTable”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureSqlTable** | 是 |
 | tableName |链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 | 是 |
@@ -117,7 +117,7 @@ Azure SQL 数据库链接的服务支持以下属性：
 
 要从 Azure SQL 数据库复制数据，请将复制活动中的源类型设置为“SqlSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：SqlSource | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 |否 |
@@ -221,15 +221,15 @@ GO
 
 要向 Azure SQL 数据库复制数据，请将复制活动中的接收器类型设置为“SqlSink”。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**SqlSink** | 是 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
-| sqlWriterStoredProcedureName |在目标表中更新/插入数据的存储过程的名称。 |否 |
+| preCopyScript |将数据写入到 Azure SQL 数据库之前，指定复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 此属性可用于清理预先加载的数据。 |否 |
+| sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将由每个批处理调用。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `preCopyScript` 属性。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为：名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
-| preCopyScript |每次运行时，将数据写入到 Azure SQL 数据库之前，指定复制活动要执行的 SQL 查询。 此属性可用于清理预先加载的数据。 |否 |
 
 > [!TIP]
 > 将数据复制到 Azure SQL 数据库时，复制活动默认将数据追加到接收器表后面。 要执行 UPSERT 或其他业务逻辑，请在 SqlSink 中使用存储过程。 参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。

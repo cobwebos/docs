@@ -6,6 +6,10 @@
 # 快速入门
 
 ## [创建并连接 - 门户](create-data-warehouse-portal.md)
+## 暂停和恢复计算
+### [Portal](pause-and-resume-compute-portal.md)
+### [PowerShell](pause-and-resume-compute-powershell.md)
+
 
 # 教程
 ## [1 - 从 blob 加载数据](load-data-from-azure-blob-storage-using-polybase.md)

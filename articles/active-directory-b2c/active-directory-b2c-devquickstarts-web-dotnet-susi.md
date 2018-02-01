@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C | Microsoft Docs
+title: "身份验证, 注册, 密码重置 ASP.NET Azure Active Directory B2C"
 description: "如何生成使用 Azure Active Directory B2C 进行注册/登录、配置文件编辑和密码重置的 Web 应用程序。"
 services: active-directory-b2c
 documentationcenter: .net
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: e7a10ab2e523a98bd8762e209d0f4a13b12ef187
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.custom: seohack1
+ms.openlocfilehash: ffc46f4348a2ac3cae51c859a24c609756a710fe
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>使用 Azure Active Directory B2C 注册、登录、配置文件编辑和密码重置创建 ASP.NET Web 应用
 

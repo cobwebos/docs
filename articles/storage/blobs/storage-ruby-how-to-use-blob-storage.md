@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/18/2018
 ms.author: tamram
-ms.openlocfilehash: 2c1534dcbb0e26ecdff7c057efb5094c60b5c5b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4c6d47511acdae7afaf4a535c24c6fcc7e389b1
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-blob-storage-from-ruby"></a>如何通过 Ruby 使用 Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -35,28 +35,31 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
-创建 Ruby 应用程序。 有关说明，请参阅 [Azure VM 上的 Ruby on Rails Web 应用程序](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)
+创建 Ruby 应用程序。 有关说明，请参阅[使用 Linux 应用服务创建 Ruby 应用](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)。
+
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 要使用 Azure 存储，需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
-2. 在命令窗口中键入“gem install azure”以安装 gem 和依赖项。
+2. 在命令窗口中键入“gem install azure-storage-blob”以安装 gem 和依赖项。
 
 ### <a name="import-the-package"></a>导入包
 使用常用的文本编辑器将以下内容添加到要在其中使用存储的 Ruby 文件的顶部：
 
 ```ruby
-require "azure"
+require "azure/storage/blob"
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>设置 Azure 存储连接
-Azure 模块会读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS_KEY** 以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::Blob::BlobService** 之前必须通过以下代码指定帐户信息：
+Azure 模块会读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS_KEY** 以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则必须使用 Azure::Blob::BlobService::create 通过以下代码指定帐户信息：
 
 ```ruby
-Azure.config.storage_account_name = "<your azure storage account>"
-Azure.config.storage_access_key = "<your azure storage access key>"
+blob_client = Azure::Storage::Blob::BlobService.create(
+    storage_account_name: account_name,
+    storage_access_key: account_key
+    )
 ```
 
 从 Azure 门户中的经典或 Resource Manager 存储帐户中获取这些值：
@@ -70,12 +73,12 @@ Azure.config.storage_access_key = "<your azure storage access key>"
 ## <a name="create-a-container"></a>创建容器
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-使用 **Azure::Blob::BlobService** 对象可以对容器和 blob 进行操作。 若要创建容器，请使用 **create\_container()** 方法。
+使用 Azure::Storage::Blob::BlobService 对象可以对容器和 blob 进行操作。 若要创建容器，请使用 **create\_container()** 方法。
 
 以下代码示例创建一个容器或输出存在的错误。
 
 ```ruby
-azure_blob_service = Azure::Blob::BlobService.new
+azure_blob_service = Azure::Storage::Blob::BlobService.create_from_env
 begin
     container = azure_blob_service.create_container("test-container")
 rescue
@@ -119,17 +122,19 @@ puts blob.name
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 若要列出容器，请使用 **list_containers()** 方法。
-若要列出容器中的 blob，请使用 **list\_blobs()** 方法。
+若要列出容器中的 blob，请使用 **list\_blobs()** 方法。 若要列出容器中的所有 blob，必须遵从服务返回的继续令牌，并继续通过此令牌运行 list_blobs。 有关详细信息，请参阅[列出 Blob REST API](https://docs.microsoft.com/rest/api/storageservices/list-blobs)。
 
-这将输出帐户的所有容器中的所有 Blog 的 URL。
+以下代码输出容器中的所有 blob。
 
 ```ruby
-containers = azure_blob_service.list_containers()
-containers.each do |container|
-    blobs = azure_blob_service.list_blobs(container.name)
+nextMarker = nil
+loop do
+    blobs = azure_blob_service.list_blobs(container_name, { marker: nextMarker })
     blobs.each do |blob|
-    puts blob.name
+        puts "\tBlob name #{blob.name}"
     end
+    nextMarker = blobs.continuation_token
+    break unless nextMarker && !nextMarker.empty?
 end
 ```
 
@@ -154,6 +159,6 @@ azure_blob_service.delete_blob(container.name, "image-blob")
 若要了解有关更复杂存储任务的信息，请访问下面的链接：
 
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
-* GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
+* GitHub 上[用于 Ruby 的 Azure 存储 SDK](https://github.com/azure/azure-storage-ruby) 存储库
 * [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

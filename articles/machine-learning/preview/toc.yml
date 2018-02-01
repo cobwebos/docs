@@ -140,6 +140,8 @@
           href: data-prep-python-extensibility-overview.md
         - name: 支持的数据源
           href: data-prep-appendix2-supported-data-sources.md
+        - name: 将 Azure Cosmos DB 加载为数据源
+          href: data-prep-load-azure-cosmos-db.md
         - name: 支持的检查器
           href: data-prep-appendix4-supported-inspectors.md
         - name: 支持的数据目标

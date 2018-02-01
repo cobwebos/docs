@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 81634b366f5b66444d1e5474b4ab517208b50375
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 167a4eda4cec509a262b7e032f7629c7435beafd
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/13/2018
 > Azure API 管理同时支持经典 VNet 和 Azure 资源管理器 VNet。
 >
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 01/13/2018
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|客户端与 API 管理的通信|外部 |
 | * / 3443 |入站 |TCP |INTERNET / VIRTUAL_NETWORK|Azure 门户和 Powershell 的管理终结点 |内部 |
-| * / 80, 443 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|依赖于 Azure 存储、Azure 服务总线和 Azure Active Directory（如果适用）。|外部和内部 | 
+| * / 80, 443 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|Azure 存储上的依赖项、Azure 服务总线和 Azure Active Directory（如果适用）。|外部和内部 | 
 | * / 1433 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|**访问 Azure SQL 终结点** |外部和内部 |
 | * / 5671, 5672 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|事件中心策略日志和监视代理的依赖项 |外部和内部 |
 | * / 445 |出站 |TCP |VIRTUAL_NETWORK/INTERNET|与适用于 GIT 的 Azure 文件共享的依赖关系 |外部和内部 |

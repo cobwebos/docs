@@ -13,37 +13,39 @@
 ## [Websocket](application-gateway-websocket.md)
 ## [服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 入门
-## 创建应用程序网关
-### [Azure 门户](application-gateway-create-gateway-portal.md)
-### [Azure PowerShell](application-gateway-create-gateway-arm.md)
-### [资源管理器模板](application-gateway-create-gateway-arm-template.md)
-### [Azure CLI](application-gateway-create-gateway-cli.md)
+## [Azure portal](application-gateway-create-gateway-portal.md)
+## [Azure PowerShell](application-gateway-create-gateway-arm.md)
+## [Azure CLI](application-gateway-create-gateway-cli.md)
 # 如何
+## 使用 VMSS 创建应用程序网关
+### [Azure PowerShell](tutorial-create-vmss-powershell.md)
+### [Azure CLI](tutorial-create-vmss-cli.md)
+## [使用模板](application-gateway-create-gateway-arm-template.md)
 ## 配置 Web 应用程序防火墙
-### [Azure 门户](application-gateway-web-application-firewall-portal.md)
+### [Azure portal](application-gateway-web-application-firewall-portal.md)
 ### [Azure PowerShell](application-gateway-web-application-firewall-powershell.md)
 ### [Azure CLI](application-gateway-web-application-firewall-cli.md)
 ## 自定义 Web 应用程序防火墙规则
-### [Azure 门户](application-gateway-customize-waf-rules-portal.md)
+### [Azure portal](application-gateway-customize-waf-rules-portal.md)
 ### [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 ## 配置 SSL
-### [Azure 门户](application-gateway-ssl-portal.md)
+### [Azure portal](application-gateway-ssl-portal.md)
 ### [Azure PowerShell](application-gateway-ssl-arm.md)
 ### [Azure CLI](application-gateway-ssl-cli.md)
 ### [SSL 策略](application-gateway-configure-ssl-policy-powershell.md)
-## 创建基于 URL 路径的路由
-### [Azure 门户](application-gateway-create-url-route-portal.md)
+## 配置基于 URL 路径的路由
+### [Azure portal](application-gateway-create-url-route-portal.md)
 ### [Azure PowerShell](application-gateway-create-url-route-arm-ps.md)
 ### [Azure CLI](application-gateway-create-url-route-cli.md)
 ## 配置多站点托管
-### [Azure 门户](application-gateway-create-multisite-portal.md)
+### [Azure portal](application-gateway-create-multisite-portal.md)
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## 配置重定向
 ### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
 ## 将 Web 应用配置为后端池成员
 ### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## 配置运行状况探测
-### [Azure 门户](application-gateway-create-probe-portal.md)
+### [Azure portal](application-gateway-create-probe-portal.md)
 ### [Azure PowerShell](application-gateway-create-probe-ps.md)
 ## [Azure 安全中心集成](application-gateway-integration-security-center.md)
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)

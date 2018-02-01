@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 10c8b708cad245f4ac0304489beb36dcf63cd4b1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: fcd79f25dee4ccaf674594222a6465fda137fd7a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>管理已向 Azure 文件同步（预览版）注册的服务器
 借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/04/2018
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
 向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
 
 * 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅[支持的 Windows Server 版本](storage-sync-files-planning.md#supported-versions-of-windows-server)。
@@ -42,6 +42,26 @@ ms.lasthandoff: 01/04/2018
 
     > [!Note]  
     > 我们建议使用最新版本的 AzureRM PowerShell 模块注册/注销服务器。 如果 AzureRM 包之前已安装在此服务器上（并且此服务器上的 PowerShell 版本是 5.* 或更高版本），则可以使用 `Update-Module` cmdlet 更新此包。 
+* 如果你在环境中利用网络代理服务器，请在服务器上为要利用的同步代理配置代理设置。
+    1. 确定代理 IP 地址和端口号
+    2. 编辑以下这两个文件：
+        * C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+        * C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+    3. 在上面两个文件中的 /System.ServiceModel 下添加图 1（此部分下方）中的行，将 127.0.0.1:8888 更换为正确的 IP 地址（替换 127.0.0.1）和正确的端口号（替换 8888）：
+    4. 通过命令行设置 WinHTTP 代理设置：
+        * 显示代理：netsh winhttp show proxy
+        * 设置代理：netsh winhttp set proxy 127.0.0.1:8888
+        * 重置代理：netsh winhttp reset proxy
+        * 如果这在安装了代理之后进行设置，则重启我们的同步代理：net stop filesyncsvc
+    
+```XML
+    Figure 1:
+    <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+            <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+    </system.net>
+```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>向存储同步服务注册服务器
 服务器必须先向存储同步服务注册，然后才能在 Azure 文件同步同步组中用作服务器终结点。 服务器一次只能向一个存储同步服务注册。

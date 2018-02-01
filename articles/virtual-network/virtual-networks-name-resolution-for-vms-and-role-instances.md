@@ -3,8 +3,8 @@ title: "VM 和角色实例的解析"
 description: "Azure IaaS、混合解决方案、不同的云服务之间、Active Directory 和使用自己的 DNS 服务器的名称解析方案 "
 services: virtual-network
 documentationcenter: na
-author: GarethBradshawMSFT
-manager: carmonm
+author: jimdial
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 5d73edde-979a-470a-b28c-e103fcf07e3e
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2016
-ms.author: telmos
-ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jdial
+ms.openlocfilehash: 5a298f535308cff90ddd249594b7bb5e36909867
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="name-resolution-for-vms-and-role-instances"></a>VM 和角色实例的名称解析
 可能需要允许 VM 和创建的角色实例相互通信，具体取决于如何使用 Azure 托管 IaaS、PaaS 和混合解决方案。 尽管这种通信可以通过使用 IP 地址完成，但使用容易记住且不会更改的名称要简单得多。 
@@ -35,6 +35,7 @@ ms.lasthandoff: 10/11/2017
 | **方案** | **解决方案** | **后缀** |
 | --- | --- | --- |
 | 位于相同云服务或虚拟网络中的角色实例或 VM 之间的名称解析 |[Azure 提供的名称解析](#azure-provided-name-resolution) |主机名或 FQDN |
+| 通过 Azure 应用服务（Web 应用、函数、自动程序等）实现的名称解析：对同一虚拟网络中的角色实例或 VM 使用 VNET 集成 |客户托管的 DNS 服务器，在 VNet 之间转发可供 Azure（DNS 代理）解析的查询。  请参阅 [Name resolution using your own DNS server](#name-resolution-using-your-own-dns-server)（使用自己的 DNS 服务器的名称解析） |仅 FQDN |
 | 位于不同虚拟网络中的角色实例或 VM 之间的名称解析 |客户托管的 DNS 服务器，在 VNet 之间转发可供 Azure（DNS 代理）解析的查询。  请参阅 [Name resolution using your own DNS server](#name-resolution-using-your-own-dns-server)（使用自己的 DNS 服务器的名称解析） |仅 FQDN |
 | 通过 Azure 中的角色实例或 VM 解析本地计算机和服务的名称 |客户托管的 DNS 服务器（例如本地域控制器、本地只读域控制器或使用区域传送同步的 DNS 辅助服务器）。  请参阅 [Name resolution using your own DNS server](#name-resolution-using-your-own-dns-server)（使用自己的 DNS 服务器的名称解析） |仅 FQDN |
 | 解析本地计算机中的 Azure 主机名 |将查询转发到客户托管的相应 VNet 中的 DNS 代理服务器，代理服务器再将查询转发到 Azure 进行解析。 请参阅 [Name resolution using your own DNS server](#name-resolution-using-your-own-dns-server)（使用自己的 DNS 服务器的名称解析） |仅 FQDN |
@@ -75,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 
 默认 Windows DNS 客户端具有内置的 DNS 缓存。  默认情况下，某些 Linux 发行版不包括缓存，建议每个 Linux VM 都添加缓存（此前必须确保不存在本地缓存）。
 
-有许多不同 DNS 缓存包可用，例如 dnsmasq，下面是在最常见的发行版上安装 dnsmasq 的步骤：
+有许多不同的 DNS 缓存包可用。 例如，dnsmasq。 以下步骤列出如何在最常见的发行版上安装 dnsmasq：
 
 * **Ubuntu（使用 resolvconf）**：
   * 只安装 dnsmasq 包（“sudo apt-get install dnsmasq”）。
@@ -104,7 +105,7 @@ DNS 主要是一个 UDP 协议。  因为 UDP 协议无法保证消息传递，�
 * Windows 操作系统在 1 秒后重试，并在再过 2 秒后、再过 4 秒后和另外再过 4 秒后重试。 
 * 默认 Linux 设置在 5 秒后重试。  建议将此更改为重试 5 次，每次间隔 1 秒。  
 
-若要检查 Linux VM 上的当前设置，“cat /etc/resolv.conf”并查看“options”行，例如：
+使用“cat /etc/resolv.conf”命令检查 Linux VM 上的当前设置，然后查看“选项”行，例如：
 
     options timeout:1 attempts:5
 
@@ -121,13 +122,13 @@ resolv.conf 文件通常是自动生成的，不应进行编辑。  添加“opt
   * 运行“service network restart”以更新
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>使用自己的 DNS 服务器的名称解析
-在很多情况下，Azure 所提供的功能可能无法满足名称解析需求，例如，可能需要使用 Active Directory 域，或者需要在虚拟网络 (VNet) 之间进行 DNS 解析。  考虑到这些情况，Azure 提供了使用自己的 DNS 服务器的功能。  
+在很多情况下，Azure 所提供的功能可能无法满足名称解析需求，例如，使用 Active Directory 域的时候，或者需要在虚拟网络之间进行 DNS 解析的时候。  考虑到这些情况，Azure 提供了使用自己的 DNS 服务器的功能。  
 
 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名。  例如，在 Azure 中运行的域控制器 (DC) 可以响应自身域的 DNS 查询，而将所有其他查询转发到 Azure。  这样一来，VM 就可以（通过 DC）查看本地资源以及（通过转发器）查看 Azure 提供的主机名。  可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
 
-DNS 转发还可用于在 VNet 之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。  为了解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。  由于 DNS 后缀在每个 VNet 中是不同的，因此可使用条件性转发规则将 DNS 查询发送到正确的 VNet 进行解析。  下图显示了如何通过两个 VNet 和一个本地网络使用该方法在 VNet 之间进行 DNS 解析。  DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。
+DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。  为了解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。  由于 DNS 后缀在每个 VNet 中是不同的，因此可使用条件性转发规则将 DNS 查询发送到正确的 VNet 进行解析。  下图显示了两个虚拟网络和一个本地网络使用本方法在虚拟网络之间进行 DNS 解析。  DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。
 
-![VNet 间 DNS](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
+![虚拟网络间 DNS](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
 使用 Azure 提供的名称解析时，会通过 DHCP 为每个 VM 提供内部 DNS 后缀 (*.internal.cloudapp.net)。  这样则可进行主机名解析，因为主机名记录位于 internal.cloudapp.net 区域中。  使用自己的名称解析解决方案时，不会向 VM 提供 IDNS 后缀，因为该后缀会干扰其他 DNS 体系结构（例如已加入域的方案）。  相反，我们会提供无法正常运行的占位符 (reddog.microsoft.com)。  
 

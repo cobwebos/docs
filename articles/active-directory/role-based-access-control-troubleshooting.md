@@ -1,9 +1,9 @@
 ---
-title: "Azure RBAC 故障排除 | Microsoft Docs"
+title: "Azure 基于角色的访问控制疑难解答 RBAC | Microsoft Docs"
 description: "获取有关基于角色的访问控制资源问题或疑问的帮助。"
 services: azure-portal
 documentationcenter: na
-author: andredm7
+author: curtand
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: andredm
+ms.date: 01/14/2018
+ms.author: curtand
 ms.reviewer: rqureshi
-ms.openlocfilehash: b7155ed7613d46329229d8e572c75400041022ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 8ca6c53b24c3e708d4631becabcedc523d436d6b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="role-based-access-control-troubleshooting"></a>基于角色的访问控制故障排除
+# <a name="troubleshooting-azure-role-based-access-control"></a>Azure 基于角色的访问控制疑难解答 
 
 本文解答了有关为角色授予的特定访问权限的常见问题，让你能够预料到在 Azure 门户中使用角色时可能出现的情况，并解决访问权限问题。 以下三种角色涵盖所有资源类型：
 

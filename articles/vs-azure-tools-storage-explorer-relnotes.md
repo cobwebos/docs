@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
-本文包含 Azure 存储资源管理器 0.9.3（预览版）及先前版本的发行说明。
+本文包含 Azure 存储资源管理器 0.9.4（预览版）及先前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-093"></a>版本 0.9.3
-12/08/2017
+## <a name="version-094--093"></a>版本 0.9.4 / 0.9.3
+2018 年 1 月 21 日
 
-### <a name="download-azure-storage-explorer-093-preview"></a>下载 Azure 存储资源管理器 0.9.3（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.9.3（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.9.3（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.9.3（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-094-preview"></a>下载 Azure 存储资源管理器 0.9.4（预览版）
+- [适用于 Windows 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
 * 在以下情况下，将重新使用现有的存储资源管理器窗口：
@@ -44,6 +44,7 @@ ms.lasthandoff: 01/09/2018
     * 对于 Mac，应用菜单下有一个“新建窗口”选项。
 
 ### <a name="fixes"></a>修复项
+* 修复了安全性问题。 请尽早升级至 0.9.4。
 * 以前不会适当地清理旧活动。 这影响了长时间运行的作业的性能。 现在会正确清理旧活动。
 * 涉及大量文件和目录的操作有时可能导致存储资源管理器冻结。 现在限制了对 Azure 的文件共享请求，以限制系统资源的使用。
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 01/09/2018
 
 ### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
-    * [联机文档](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [联机文档](./cosmos-db/storage-explorer.md)
     * 创建数据库和集合
     * 操作数据
     * 查询、创建或删除文档
@@ -174,7 +175,7 @@ ms.lasthandoff: 01/09/2018
 10/20/2017
 ### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
-    * [联机文档](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [联机文档](./cosmos-db/storage-explorer.md)
     * 创建数据库和集合
     * 操作数据
     * 查询、创建或删除文档

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: f7dd532e96540fa297cac8fa3736f9f4a6ccd82f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 072a70c1da74b3b50ad8c0a93ee3c079a724d81f
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>运行 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver
 此文介绍在 Microsoft Azure SUSE Linux 虚拟机 (VM) 上运行 SAP NetWeaver 时应注意的各个事项。 自 2016 年 5 月 19 日起，Azure 上的 SUSE Linux VM 已正式支持 SAP NetWeaver。 有关 Linux 版本、SAP 内核版本和其他必备组件的所有详细信息，请参阅 SAP 说明 1928533“Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型”。
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 需要为 Azure 上的所有安装使用 Azure 资源管理器部署框架。 若要通过 Azure PowerShell 或 Azure 命令行界面 (CLI) 查找 SUSE SLES 映像和版本，请使用如下所示的命令。 然后可以使用输出，例如，在 JSON 模板中定义 OS 映像以部署新的 SUSE Linux VM。
 这些 PowerShell 命令适用于 Azure PowerShell 1.0.1 和更高版本。
 
-尽管仍可使用标准 SLES 映像进行 SAP 安装，但建议使用新的 SLES for SAP 映像。 这些映像现已在 Azure 映像库中提供。 有关这些映像的详细信息，可参阅相应的 [Azure 应用商店页面]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP )或[关于 SLES for SAP 的 SUSE FAQ 网页]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ )。
+尽管仍可使用标准 SLES 映像进行 SAP 安装，但建议使用新的 SLES for SAP 映像。 这些映像现已在 Azure 映像库中提供。 有关这些映像的详细信息，可参阅相应的 [Azure Marketplace 页面]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP )或[关于 SLES for SAP 的 SUSE FAQ 网页]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ )。
 
 
 * 查找现有发布服务器（包括 SUSE）：
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/11/2017
    ```
 
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>在 SUSE VM 中安装 WALinuxAgent
-名为 WALinuxAgent 的代理是 Azure 应用商店中 SLES 映像的一部分。 有关如何手动安装该代理的信息（例如，从本地上传 SLES OS 虚拟硬盘 (VHD) 时），请参阅：
+名为 WALinuxAgent 的代理是 Azure Marketplace 中 SLES 映像的一部分。 有关如何手动安装该代理的信息（例如，从本地上传 SLES OS 虚拟硬盘 (VHD) 时），请参阅：
 
 * [OpenSUSE](http://software.opensuse.org/package/WALinuxAgent)
 * [Azure](../../linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -88,7 +88,7 @@ SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 请�
 
 解决此问题的方法之一是从受损的 VM 将 OS 磁盘附加到 Azure 上的另一个 SUSE VM。 然后进行适当的更改，例如，编辑 /etc/fstab 或删除网络 udev 规则，如下一部分中所述。
 
-需要考虑一个重要事项。 从同一 Azure 应用商店映像（例如 SLES 11 SP4）部署多个 SUSE VM 会导致始终通过同一个 UUID 装载 OS 磁盘。 因此，通过 UUID 从使用同一 Azure Marketplace 映像部署的不同 VM 附加 OS 磁盘会生成两个相同的 UUID。 两个相同的 UUID 会导致用于故障排除的 VM 从附加的已损坏 OS 磁盘启动，而不是从原始的 OS 磁盘启动。
+需要考虑一个重要事项。 从同一 Azure Marketplace 映像（例如 SLES 11 SP4）部署多个 SUSE VM 会导致始终通过同一个 UUID 装载 OS 磁盘。 因此，通过 UUID 从使用同一 Azure Marketplace 映像部署的不同 VM 附加 OS 磁盘会生成两个相同的 UUID。 两个相同的 UUID 会导致用于故障排除的 VM 从附加的已损坏 OS 磁盘启动，而不是从原始的 OS 磁盘启动。
 
 可通过两种方式来避免问题：
 
@@ -110,7 +110,7 @@ SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 请�
 还可以安装 Azure Linux 代理 (waagent) 来帮助避免在没有多个 NIC 时可能出现的问题。
 
 ## <a name="deploying-a-suse-vm-on-azure"></a>在 Azure 上部署 SUSE VM
-在新的 Azure Resource Manager 模型中，应使用 JSON 模板文件创建新的 SUSE VM。 创建 JSON 模板文件后，便可以使用以下 CLI 命令作为 PowerShell 的替代方法部署 VM 了：
+在新的 Azure 资源管理器模型中，应使用 JSON 模板文件创建新的 SUSE VM。 创建 JSON 模板文件后，便可以使用以下 CLI 命令作为 PowerShell 的替代方法部署 VM 了：
 
    ```
    azure group deployment create "<deployment name>" -g "<resource group name>" --template-file "<../../filename.json>"
@@ -162,5 +162,5 @@ SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 S
    ```
 
 ## <a name="sap-support-for-oracle-on-linux-in-the-cloud"></a>对云中 Linux 上 Oracle 的 SAP 支持
-在虚拟化环境中，对于Linux 上的 Oracle 有支持限制。 尽管此支持限制不是特定于 Azure 的主题，但请务必了解其中所述的信息。 SAP 不支持 Azure 等公有云中的 SUSE 或 Red Hat 上的 Oracle。 若要讨论此主题，请直接联系 Oracle。
+在虚拟化环境中，对于Linux 上的 Oracle 有支持限制。 尽管此支持限制不是特定于 Azure 的主题，但请务必了解其中所述的信息。 SAP 不支持 Azure 等公有云中的 SUSE 或 Red Hat 上的 Oracle。 在此期间运行，Azure 中的 Oracle DB 完全受 Oracle Linux 上的 SAP 支持（请参阅 SAP 说明 1928533）。 如果需要其他组合，请直接联系 Oracle。
 

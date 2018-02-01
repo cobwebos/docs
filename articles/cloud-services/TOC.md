@@ -44,12 +44,12 @@
 ### [连接到自定义域控制器](cloud-services-connect-to-custom-domain.md)
 
 ## 管理服务
-### [缓解推理执行](mitigate-se.md}
 ### [常见管理任务](cloud-services-how-to-manage-portal.md)
 ### [配置云服务](cloud-services-how-to-configure-portal.md)
 ### [使用 Azure 自动化管理云服务](automation-manage-cloud-services.md)
 ### [配置自动缩放](cloud-services-how-to-scale-portal.md)
 ### [使用 Python 管理 Azure 资源](cloud-services-python-how-to-use-service-management.md)
+### [防御推理执行](mitigate-se.md)
 
 ### [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
 ### 来宾 OS 停用

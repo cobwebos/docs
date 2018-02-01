@@ -13,30 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: security
-ms.date: 08/21/2017
+ms.date: 01/16/2018
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f851c82ebeaa647f663d499a4d327c3479e36121
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5400f29d8c7579809ef7b2a084115473df7baa85
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的审核
-> [!div class="op_single_selector"]
-> * [审核](sql-data-warehouse-auditing-overview.md)
-> * [威胁检测](sql-data-warehouse-security-threat-detection.md)
-> 
-> 
 
-SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储帐户中的审核日志。 审核可帮助保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。 SQL 数据仓库审核还与 Microsoft Power BI 集成，适用于向下钻取报告和分析数据。
+SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储帐户中的审核日志。 审核可帮助保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。 SQL 数据仓库审核还与 Microsoft Power BI 集成，用于报告和分析数据。
 
 审核工具有助于遵从法规标准，但不能保证遵从法规。 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure 信任中心</a>。
 
-* [数据库审核基础知识]
-* [为数据库设置审核]
-* [分析审核日志和报告]
-
-## <a id="subheading-1"></a>Azure SQL 数据仓库数据库审核基础知识
+## <a id="subheading-1"></a>审核基础知识
 使用 SQL 数据仓库数据库审核可以：
 
 * **保留**选定事件的审核痕迹。 可以定义要审核的数据库操作的类别。
@@ -65,13 +56,13 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 
 ## <a id="subheading-2"></a>为数据库设置审核
 1. 启动 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
-2. 转到要审核的 SQL 数据仓库的“设置”边栏选项卡。 在“设置”边栏选项卡中，选择“审核和威胁检测”。
+2. 转到要审核的 SQL 数据仓库的“设置”。 选择“审核和威胁检测”。
    
     ![][1]
 3. 接下来，通过单击“打开”按钮启用审核。
    
     ![][3]
-4. 在审核配置边栏选项卡中，选择“存储详细信息”打开“审核日志存储”边栏选项卡。 选择要用于保存日志的 Azure 存储帐户以及保持期。 
+4. 在审核配置面板中，选择“存储详细信息”打开“审核日志存储”面板。 选择日志的 Azure 存储帐户和保留期。 
 >[!TIP]
 >对所有已审核的数据库使用相同的存储帐户，以便充分利用预配置的报告模板。
    
@@ -79,7 +70,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 5. 单击“确定”按钮保存存储详细信息配置。
 6. 在“按事件记录日志”下，单击“成功”和“失败”以记录所有事件，或者选择单个事件类别。
 7. 如果要为某个数据库配置审核，可能需要更改客户端的连接字符串，以确保正确捕获数据审核。 对于下层客户端连接，请查看[修改连接字符串中的服务器 FDQN](sql-data-warehouse-auditing-downlevel-clients.md) 主题。
-8. 单击 **“确定”**。
+8. 单击“确定”。
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 审核日志会在设置期间选择的 Azure 存储帐户中前缀为 **SQLDBAuditLogs** 的一系列存储表内进行聚合。 可以使用工具（比如 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure 存储资源管理器</a>）查看日志文件。
@@ -91,11 +82,12 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 ## <a id="subheading-4"></a>重新生成存储密钥
 在生产环境中，可能会定期刷新存储密钥。 刷新密钥时，需要保存策略。 过程如下：
 
-1. 在“审核配置”边栏选项卡中（如上面“设置审核”部分中所述），将“存储访问密钥”从“主”切换为“辅助”，然后单击“保存”。
+1. 在前述设置审核部分中介绍的审核配置面板中，将“存储访问密钥”从“主要”更改为“辅助”，然后单击“保存”。
 
    ![][4]
-2. 转到存储配置边栏选项卡，并**重新生成**主访问密钥。
-3. 返回审核配置边栏选项卡，将“存储访问密钥”从“辅助”切换为“主”，然后按“保存”。
+2. 转到存储配置面板，“重写”“主访问密钥”。
+3. 返回审核配置面板， 
+4. 将“存储访问密钥”从“辅助”切换到“主要”，并按“保存”。
 4. 返回存储 UI 并**重新生成**辅助访问密钥（为下一个密钥刷新周期做好准备）。
 
 ## <a id="subheading-5"></a>自动化 (PowerShell/REST API)
@@ -103,18 +95,41 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 
 * **PowerShell cmdlet**：
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy][101]
-   * [Get-AzureRMSqlServerAuditingPolicy][102]
-   * [Remove-AzureRMSqlDatabaseAuditing][103]
-   * [Remove-AzureRMSqlServerAuditing][104]
-   * [Set-AzureRMSqlDatabaseAuditingPolicy][105]
-   * [Set-AzureRMSqlServerAuditingPolicy][106]
-   * [Use-AzureRMSqlServerAuditingPolicy][107]
+   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
+   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
+   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
+   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
+   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
+   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
+   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+
+
+## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>审核和动态数据掩码的下层客户端支持
+审核适用于支持 TDS 重定向的 SQL 客户端。
+
+任何实现了 TDS 7.4 的客户端同样应当支持重定向。 例外情况包括不完全支持重定向功能的 JDBC 4.0 以及未实现重定向的 Tedious（适用于 Node.JS）。
+
+对于支持 TDS 7.3 版和更低版本的客户端的“下层客户端”，应修改连接字符串中的服务器 FQDN，如下所示：
+
+- 连接字符串中的原始服务器 FQDN：<服务器名称>.database.windows.net
+- 连接字符串中的修改后的服务器 FQDN：<服务器名称>.database.**secure**.windows.net
+
+“下层客户端”的部分列表包括：
+
+* .NET 4.0 和更低版本，
+* ODBC 10.0 和更低版本。
+* JDBC（JDBC 虽然支持 TDS 7.4，但不完全支持 TDS 重定向功能）
+* Tedious（适用于 Node.JS）
+
+**注释：**前面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。     
+
+
+
 
 <!--Anchors-->
-[数据库审核基础知识]: #subheading-1
-[为数据库设置审核]: #subheading-2
-[分析审核日志和报告]: #subheading-3
+[Database Auditing basics]: #subheading-1
+[Set up auditing for your database]: #subheading-2
+[Analyze audit logs and reports]: #subheading-3
 
 
 <!--Image references-->
@@ -125,11 +140,3 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 [5]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-dashboard.png
 
 
-<!--Link references-->
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy
-[107]: /powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy
