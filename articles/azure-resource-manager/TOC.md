@@ -20,8 +20,6 @@
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)
 ### [创建多个实例](resource-group-create-multiple.md)
 ### [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource)
-### [模板设计模式](best-practices-resource-manager-design-templates.md)
-
 
 ## 部署
 ### Azure PowerShell

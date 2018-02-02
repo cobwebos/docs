@@ -164,7 +164,7 @@
         - name: 克隆应用
           href: app-service-web-app-cloning.md
         - name: 移动资源
-          href: app-service-move-resources.md
+          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: 运行后台任务
       items:
         - name: 创建 WebJobs
