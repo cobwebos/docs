@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3fd392a3f5b48d6b8d19af530c949d91cd461099
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c1a9310d0a09d714f1d58f29e5683097c9dc6b90
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -289,7 +289,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 #### <a name="using-the-func-run-command-in-version-1x"></a>在版本 1.x 中使用 `func run` 命令
 
 >[!IMPORTANT]  
-> 该工具的 2.x 版本不支持 `func run` 命令。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](functions-versions.md)。
+> 该工具的 2.x 版本不支持 `func run` 命令。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](set-runtime-version.md)。
 
 也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。 
 

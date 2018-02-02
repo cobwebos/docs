@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc29d9a57f1dd452d2b4b77a53f52a5b66a25416
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
 
@@ -45,7 +45,7 @@ az acr login --name <acrName>
 
 服务主体在推送和拉取方案中启用到注册表的“无外设”连接，如下所示：
 
-  * *读者*：从注册表到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）的容器部署。 还可从容器注册表进行拉取并推送到相关 Azure 服务，例如 [AKS](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.md) 和 [Service Fabric](/azure/service-fabric/) 等。
+  * *读者*：从注册表到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）的容器部署。 还可从容器注册表进行拉取并推送到相关 Azure 服务，例如 [AKS](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml) 和 [Service Fabric](/azure/service-fabric/) 等。
 
   * *参与者*：生成容器映像并将它们推送到注册表的持续集成和部署解决方案（如 Visual Studio Team Services (VSTS) 或 Jenkins）。
 

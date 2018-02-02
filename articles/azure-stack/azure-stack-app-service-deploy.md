@@ -12,21 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 522e5a334b5165344b66524d03f0d85468b81332
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6851fd46d243fcdce4f69811495c74dfe8311478
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>添加到 Azure 堆栈的 App Service 资源提供程序
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
 作为 Azure 堆栈云操作员，你可以使你的用户能够创建 web 角色和 API 应用程序。 若要执行此操作，必须首先添加[App Service 资源提供程序](azure-stack-app-service-overview.md)到 Azure 堆栈部署本文中所述。 安装 App Service 资源提供程序后，你可以将其包含在你的产品/服务和计划。 然后，用户可以订阅以获取服务并开始创建应用程序。
 
 > [!IMPORTANT]
 > 在之前运行安装程序，请确保您已按照中的指导[开始之前](azure-stack-app-service-before-you-get-started.md)。
-> 
+>
 >
 
 
@@ -85,7 +86,7 @@ App Service 资源提供程序安装到 Azure 堆栈环境可以花费一个小�
 
     | Box | 证书文件名称示例 |
     | --- | --- |
-    | **应用程序服务默认 SSL 证书文件** | \_。 appservice.local.AzureStack.external.pfx |
+    | **应用程序服务默认 SSL 证书文件** | \_.appservice.local.AzureStack.external.pfx |
     | **App Service API SSL 证书文件** | api.appservice.local.AzureStack.external.pfx |
     | **应用程序服务发布服务器 SSL 证书文件** | ftp.appservice.local.AzureStack.external.pfx |
 
@@ -101,7 +102,7 @@ App Service 资源提供程序安装到 Azure 堆栈环境可以花费一个小�
 
     > [!NOTE]
     > 对于生产部署，按照中的指导[容量规划 Azure 堆栈中的 Azure App Service 服务器角色](azure-stack-app-service-capacity-planning.md)。
-    > 
+    >
     >
 
     | 角色 | 最小实例 | 最小的 SKU | 说明 |

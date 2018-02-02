@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure CLI 导出 Resource Manager 模板 | Microsoft Docs"
-description: "使用 Azure Resource Manager 和 Azure CLI 从资源组导出模板。"
+description: "使用 Azure 资源管理器和 Azure CLI 从资源组导出模板。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 617664129a5353e25da1e90c742c4b009db172ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e93fe5af62893d361b6cc4adac42a7d172235978
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="export-azure-resource-manager-templates-with-azure-cli"></a>使用 Azure CLI 导出 Azure Resource Manager 模板
+# <a name="export-azure-resource-manager-templates-with-azure-cli"></a>使用 Azure CLI 导出 Azure 资源管理器模板
 
 使用 Resource Manager 可从订阅中的现有资源导出 Resource Manager 模板。 可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。
 
@@ -44,7 +44,7 @@ az group deployment create \
 
 ## <a name="save-template-from-deployment-history"></a>从部署历史记录保存模板
 
-可以使用 [az group deployment export](/cli/azure/group/deployment#export) 命令从部署历史记录中检索模板。 以下示例保存以前部署的模板：
+可以使用 [az group deployment export](/cli/azure/group/deployment#az_group_deployment_export) 命令从部署历史记录中检索模板。 以下示例保存以前部署的模板：
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
@@ -55,7 +55,7 @@ az group deployment export --name NewStorage --resource-group ExampleGroup
 
 ## <a name="export-resource-group-as-template"></a>将资源组导出为模板
 
-可以使用 [az group export](/cli/azure/group#export) 命令检索表示资源组当前状态的模板，而不是从部署历史记录中检索模板。 如果对资源组进行了许多更改，并且现有模板未表示所有更改，则可以使用此命令。
+可以使用 [az group export](/cli/azure/group#az_group_export) 命令检索表示资源组当前状态的模板，而不是从部署历史记录中检索模板。 如果对资源组进行了许多更改，并且现有模板未表示所有更改，则可以使用此命令。
 
 ```azurecli
 az group export --name ExampleGroup
@@ -204,6 +204,6 @@ az group deployment create --name NewStorage --resource-group ExampleGroup \
 重新部署已修改的模板。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用门户导出模板的信息，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
+* 有关使用门户导出模板的信息，请参阅[从现有资源导出 Azure 资源管理器模板](resource-manager-export-template.md)。
 * 若要在模板中定义参数，请参阅[创作模板](resource-group-authoring-templates.md#parameters)。
-* 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
+* 有关解决常见部署错误的提示，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。

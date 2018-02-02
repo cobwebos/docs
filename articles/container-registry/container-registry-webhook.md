@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: nepeters
-ms.openlocfilehash: 133e36179a500dc65c3a543266a7afcf9988b87d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 915f90fd5d969d5544d56e5bec754b799f349015
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
@@ -48,7 +48,7 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 
 ## <a name="create-webhook-azure-cli"></a>创建 webhook Azure CLI
 
-若要使用 Azure CLI 创建 webhook，请使用 [az acr webhook create](/cli/azure/acr/webhook#create) 命令。
+若要使用 Azure CLI 创建 webhook，请使用 [az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create) 命令。
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -68,7 +68,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 Azure CLI 测试 ACR webhook，请使用 [az acr webhook ping](/cli/azure/acr/webhook#ping) 命令。
+若要使用 Azure CLI 测试 ACR webhook，请使用 [az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) 命令。
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

@@ -2,19 +2,19 @@
 title: "Azure Batch 上的容器工作负载 | Microsoft Docs"
 description: "了解如何在 Azure Batch 上从容器映像中运行应用程序。"
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 12/01/2017
-ms.author: v-dotren
-ms.openlocfilehash: 1795bdde5506f599849a30d4e59ed7b916595ac4
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: danlep
+ms.openlocfilehash: 2fa5f9335a4d00f489f11c0db23322ab971a224f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 

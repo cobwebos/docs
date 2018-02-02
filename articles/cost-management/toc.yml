@@ -25,10 +25,14 @@
       href: tutorial-manage-costs.md
 - name: 概念
   items:
-    - name: 了解成本报告
+    - name: 了解成本报表
       href: understading-cost-reports.md
 - name: 操作指南
   items:
+    - name: 激活 Azure 订阅和帐户
+      href: activate-subs-accounts.md
+    - name: 为 VM 添加扩展的指标
+      href: azure-vm-extended-metrics.md
     - name: 使用成本管理报表
       href: use-reports.md
 - name: 资源

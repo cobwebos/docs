@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: ff56ced9f1d43780097cd65e58b492daaba9b61d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0151b64b39699e2a7a804cdc57e368fd786119a7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure 集成的堆栈系统连接模型
 如果你感兴趣的集成的 Azure 堆栈系统，你将需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)Azure 堆栈部署，以确定系统将如何适应你的数据中心。 此外，你将需要决定完全你将如何集成 Azure 堆栈到混合云环境。 本文概述了这些主要决定包括 Azure 连接，标识存储和计费模型的决策。
@@ -45,6 +45,8 @@ ms.lasthandoff: 01/29/2018
 
 您已决定在 Azure 的连接模型上要用于 Azure 堆栈部署后，必须标识应用商店应用和计费方法进行其他、 连接相关的决策。 
 
-## <a name="next-steps"></a>接下来的步骤
-- 详细了解[Azure 连接 Azure 堆栈部署决策](azure-stack-connected-deployment.md)
-- 详细了解[Azure 断开连接 Azure 堆栈部署决策](azure-stack-disconnected-deployment.md)
+## <a name="next-steps"></a>后续步骤
+
+[Azure 连接的 Azure 堆栈部署决策](azure-stack-connected-deployment.md)
+
+[Azure 断开连接的 Azure 堆栈部署决策](azure-stack-disconnected-deployment.md)

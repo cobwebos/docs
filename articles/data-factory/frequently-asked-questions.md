@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: dd2475d5940927c65cae4d12b9697cbe535b69a8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 其中提供了有关数据工厂的常见问题的解答。  
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 的常见问题解答](v1/data-factory-faq.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 的常见问题解答](v1/data-factory-faq.md)。
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
 数据工厂是一项完全托管的基于云的数据集成服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
@@ -68,7 +68,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 有关详细信息，请参阅[教程：控制流](tutorial-control-flow.md)。
 
 ### <a name="deploy-ssis-packages-to-azure"></a>将 SSIS 包部署到 Azure 
-如果想要移动 SSIS 工作负荷，可以创建一个版本 2 数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS 集成运行时是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](tutorial-deploy-ssis-packages-azure.md) 教程。 
+如果想要移动 SSIS 工作负荷，可以创建一个版本 2 数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS 集成运行时是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 教程。 
  
 
 ### <a name="sdks"></a>SDK

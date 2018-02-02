@@ -7,19 +7,19 @@ author: sasubram
 manager: mtillman
 editor: 
 tags: 
-ms.assetid: 
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
-ms.author: sasubram
-ms.openlocfilehash: 6a75fdd6c6f8fc03945be4b7d843777286cc70a7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 672eda222a0fa7d0e05dd2fc75ac743ec330463d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 准备 .CSV 文件：创建一个新的 CSV 文件，并将其命名为 invitations.csv。 在此示例中，该文件保存在 C:\data 中，并包含以下信息：
   
-  Name                  |  InvitedUserEmailAddress
+  名称                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
   Gmail B2B 被邀请者     | b2binvitee@gmail.com
   Outlook B2B 被邀请者   | b2binvitee@outlook.com
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/11/2017
   ```
   $invitations = import-csv C:\data\invitations.csv
   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-  $messageInfo.customizedMessageBody = “Hey there! Check this out. I created an invitation through PowerShell”
+  $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
   ```
 
@@ -237,7 +237,7 @@ namespace SampleInviteApp
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [向角色添加 B2B 协作用户](active-directory-b2b-add-guest-to-role.md)
+* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
 * [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
 * [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
 * [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)

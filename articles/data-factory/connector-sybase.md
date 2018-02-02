@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 01/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 47aabaf8512a7fffc189255212010efb5389f38a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4d9a87f244501b91c60a895f0e16d0c979163444
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Sybase 连接器](v1/data-factory-onprem-sybase-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Sybase 连接器](v1/data-factory-onprem-sybase-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -60,7 +60,6 @@ Sybase 链接的服务支持以下属性：
 | type | type 属性必须设置为：**Sybase** | 是 |
 | server | Sybase 服务器的名称。 |是 |
 | database | Sybase 数据库的名称。 |是 |
-| schema | 数据库中架构的名称。 |否 |
 | authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许的值为：Basic 和 Windows。 |是 |
 | username | 指定用于连接到 Sybase 数据库的用户名。 |是 |
 | password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString。 |是 |

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: ef8b30744c3334086680ab8c7211ad73b792c95c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2c013c11dea5217d564ac15a13a8d11614989057
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关集成 Azure 堆栈系统的数据中心集成注意事项
 如果你感兴趣的集成的 Azure 堆栈系统，你应了解一些围绕部署和系统如何适应你的数据中心的主要规划注意事项。 本文概述了这些注意事项，可帮助你做出你 Azure 堆栈的多节点系统的重要的基础结构决策。 使用你的 OEM 硬件供应商联系，与它们部署到你的数据中心的 Azure 堆栈时，可帮助了解这些注意事项。  
@@ -27,9 +27,7 @@ ms.lasthandoff: 01/29/2018
 > [!NOTE]
 > 仅可以从授权的硬件供应商购买 azure 堆栈多节点系统。 
 
-如果要部署 Azure 堆栈有一组你需要进行正确地与您的环境集成 Azure 堆栈的决策。 你需要在规划过程中向你的解决方案提供商提供此信息和部署开始运行帮助转迅速和顺利地进程之前保持准备好进行硬件供应商联系。
-
-将必需的范围信息跨网络、 安全和标识信息与很多可能需要从许多不同的区域和决策者的知识的重要决策。 因此，你可能需要拉入与你的组织中的多个团队的人员，以确保部署开始之前已准备好所有必需的信息。 它可以帮助进行对话硬件供应商时收集此信息，因为它们可能具有建议对你决定有所帮助。
+若要部署 Azure 堆栈，你需要在部署开始帮助转迅速和顺利地进程之前给你的解决方案提供商提供规划信息。 将必需的范围信息跨网络、 安全和标识信息与很多可能需要从许多不同的区域和决策者的知识的重要决策。 因此，你可能需要拉入与你的组织中的多个团队的人员，以确保部署开始之前已准备好所有必需的信息。 它可以帮助进行对话硬件供应商时收集此信息，因为它们可能具有建议对你决定有所帮助。
 
 时研究和收集所需的信息，你可能需要对你的网络环境进行一些预部署配置更改。 这可能包括保留 Azure 堆栈解决方案中，配置你的路由器、 交换机和防火墙来准备新的 Azure 堆栈解决方案交换机连接的 IP 地址空间。 请确保有帮助你规划主题区域专家达内联。
 
@@ -38,7 +36,7 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 对于日常管理和操作，对基础结构没有不受限制的管理员权限。 Azure 堆栈运算符必须管理的系统通过管理员门户或通过 Azure 资源管理器 （通过 PowerShell 或 REST API）。 没有对系统其他管理工具，如 Hyper-v 管理器或故障转移群集管理器所访问。 为了帮助保护系统，无法在 Azure 堆栈基础结构的组件安装第三方软件 （例如，代理）。 通过 PowerShell 或 REST API，则会发生与外部管理和安全软件互操作性。
 
-当通过警报中介步骤未解决的问题的故障排除需要更高的访问级别时，你必须使用支持。 通过支持，没有方法来提供对系统执行更高级的操作的临时的完全权限管理员访问权限。 
+当通过警报中介步骤未解决的问题的故障排除需要更高的访问级别时，你必须使用 Microsoft 支持。 通过支持，没有方法来提供对系统执行更高级的操作的临时的完全权限管理员访问权限。 
 
 ## <a name="identity-considerations"></a>标识注意事项
 
@@ -70,7 +68,7 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 下表总结了这些域命名决策。
 
-| 名称 | 描述 | 
+| 名称 | 说明 | 
 | -------- | ------------- | 
 |区域名称 | 你的第一个 Azure 堆栈区域的名称。 此名称用作 Azure 堆栈将管理的公共虚拟 IP 地址 (Vip) FQDN 的部分。 通常情况下，区域名称将是例如数据中心位置的物理位置标识符。 | 
 | 外部域名 | 具有面向外部的 Vip 的终结点域名系统 (DNS) 区域的名称。 FQDN 中用于这些公共 Vip。 | 
@@ -119,9 +117,9 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 | 方案 | 连接方法 | 优点 | 缺点 | 适用于 |
 | -- | -- | --| -- | --|
 | 单租户 Azure 堆栈，intranet 部署 | 出站 NAT | 更高的速度更快的传输的带宽。 易于实现;所需的任何网关。 | 通信未加密;无隔离或超出 TOR 的加密。 | 所有租户都都同样受信任的企业部署。<br><br>具有 Azure ExpressRoute 线路到 Azure 的企业。 |
-| 多租户 Azure 堆栈，intranet 部署 | 点对点 VPN | 来自租户 VNet 流量引导至目标是安全的。 | 带宽受限制站点到站点 VPN 隧道。<br><br>需要在虚拟网络和目标网络上的 VPN 设备网关。 | 必须从其他租户保护企业部署，其中一些租户通信。 |
+| 多租户 Azure 堆栈，intranet 部署 | 站点到站点 VPN | 来自租户 VNet 流量引导至目标是安全的。 | 带宽受限制站点到站点 VPN 隧道。<br><br>需要在虚拟网络和目标网络上的 VPN 设备网关。 | 必须从其他租户保护企业部署，其中一些租户通信。 |
 | 单租户 Azure 堆栈，internet 部署 | 出站 NAT | 更高的速度更快的传输的带宽。 | 通信未加密;无隔离或超出 TOR 的加密。 | 托管租户其中获取其自己的 Azure 堆栈部署和一条专用的线路到 Azure 堆栈环境的方案。 例如，ExpressRoute 和多协议标签切换 (MPLS)。
-| 多租户 Azure 堆栈，internet 部署 | 点对点 VPN | 来自租户 VNet 流量引导至目标是安全的。 | 带宽受限制站点到站点 VPN 隧道。<br><br>需要在虚拟网络和目标网络上的 VPN 设备网关。 | 托管提供程序要提供多租户云方案，其中租户不信任彼此和流量必须进行加密。
+| 多租户 Azure 堆栈，internet 部署 | 站点到站点 VPN | 来自租户 VNet 流量引导至目标是安全的。 | 带宽受限制站点到站点 VPN 隧道。<br><br>需要在虚拟网络和目标网络上的 VPN 设备网关。 | 托管提供程序要提供多租户云方案，其中租户不信任彼此和流量必须进行加密。
 |  |  |  |  |  |
 
 ### <a name="using-expressroute"></a>使用 ExpressRoute
@@ -143,7 +141,7 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 下表总结了当前可用选项的列表。
 
-| 面积图 | 外部的监视解决方案 |
+| 区域 | 外部的监视解决方案 |
 | -- | -- |
 | Azure 堆栈软件 | - [Azure 堆栈适用于 Operations Manager 管理包](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>- [Nagios 插件](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>-基于 REST 的 API 调用 | 
 | 物理服务器 (通过 IPMI Bmc) | Operations Manager 供应商管理包<br>OEM 硬件供应商提供的解决方案<br>硬件供应商 Nagios 插件 | OEM 合作伙伴支持的监视解决方案 （包括） | 
@@ -179,7 +177,10 @@ Azure 堆栈不会备份最多租户应用程序和数据。 你必须规划备�
 > [!IMPORTANT]
 > 在集成的系统的初始版本，我们将支持 IaaS 虚拟机的来宾级别的工作的保护技术。 无法在底层基础结构服务器上安装代理。
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="learn-more"></a>了解详细信息
 
 - 有关用例、 购买、 合作伙伴和 OEM 硬件供应商的信息，请参阅[Azure 堆栈](https://azure.microsoft.com/overview/azure-stack/)产品页。
 - 有关 Azure 堆栈信息的路线图和地域可用性集成的系统，请参阅白皮书： [Azure 堆栈： Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
+
+## <a name="next-steps"></a>后续步骤
+[Azure 堆栈部署连接模型](azure-stack-connection-models.md)

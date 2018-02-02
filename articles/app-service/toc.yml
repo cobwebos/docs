@@ -41,6 +41,8 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: 将 Java 与 MySQL 配合使用
           href: app-service-web-tutorial-java-mysql.md
+        - name: 将 Python 与 PostgreSQL 配合使用
+          href: app-service-web-tutorial-python-postgresql.md
     - name: 1 - 创建 RESTful API
       href: app-service-web-tutorial-rest-api.md
     - name: 2 - 映射自定义域

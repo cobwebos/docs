@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 737df48a24d8e077f898d00526c7138db69dbb93
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f7b621312677c0b250e267770ae0c445ee9f083f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure 堆栈防火墙集成
 建议你使用防火墙设备来帮助安全 Azure 堆栈。 虽然防火墙可以帮助与分布式的拒绝服务 (DDOS) 攻击、 入侵检测等内容检查内容，但它们也可能会变为如 blob、 表和队列的 Azure 存储服务的形成吞吐量瓶颈。
@@ -59,7 +59,9 @@ NAT 也可在外部网络或公共 Vip 上的公共 IP 地址的替代方法。 
 
 ![Azure 堆栈外围网络示例](.\media\azure-stack-firewall\perimeter-network-scenario.png)
 
+## <a name="learn-more"></a>了解详细信息
+详细了解[使用由 Azure 堆栈的终结点端口和协议](azure-stack-integrate-endpoints.md)。
 
-## <a name="next-steps"></a>接下来的步骤
-详细了解[使用由 Azure 堆栈的终结点端口和协议](azure-stack-integrate-endpoints.md)
+## <a name="next-steps"></a>后续步骤
+[Azure 堆栈 PKI 要求](azure-stack-pki-certs.md)
 

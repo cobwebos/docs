@@ -62,25 +62,7 @@
         - name: 保护逻辑应用
           href: logic-apps-securing-a-logic-app.md
         - name: 开发自定义连接器
-          items:
-            - name: 自定义连接器概述
-              href: custom-connector-overview.md
-            - name: 从 Web API 创建连接器
-              href: custom-connector-build-web-api-app-tutorial.md
-            - name: 使用 Azure AD 保护连接器
-              href: custom-connector-azure-active-directory-authentication.md
-            - name: 使用 Postman 描述 API
-              href: custom-connector-api-postman-collection.md
-            - name: 为自定义连接器扩展 OpenAPI
-              href: custom-connector-openapi-extensions.md
-            - name: 创建并注册 OpenAPI 连接器
-              href: logic-apps-custom-connector-register.md
-            - name: 创建并注册 SOAP 连接器
-              href: logic-apps-soap-connector-create-register.md
-            - name: 认证连接器
-              href: custom-connector-submit-certification.md
-            - name: 自定义连接器常见问题解答
-              href: custom-connector-faq.md
+          href: custom-connector-overview.md
         - name: 开发自定义 API
           items:
             - name: 为逻辑应用创建自定义 API
@@ -140,6 +122,8 @@
           href: logic-apps-enterprise-integration-transform.md
         - name: 为 XML 转换添加映射
           href: logic-apps-enterprise-integration-maps.md
+        - name: 转换 JSON
+          href: logic-apps-enterprise-integration-liquid-transform.md
         - name: 添加安全证书
           href: logic-apps-enterprise-integration-certificates.md
         - name: 排查 B2B 错误

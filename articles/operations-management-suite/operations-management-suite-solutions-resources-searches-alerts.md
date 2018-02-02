@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2036da052e998797d860db2eadfd2ac5c968aae
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到 OMS 管理解决方案（预览版）
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/17/2018
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
+Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
 
 工作区的名称包含在每个 Log Analytics 资源的名称中。  这是在具有 **workspace** 参数的解决方案中完成的，如以下 savedsearch 资源示例所示。
 
@@ -266,7 +266,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|
 | type | 是 | 操作的类型。  Webhook 操作的类型是 Webhook。 |
-| name | 是 | 操作的显示名称。  控制台中不显示此名称。 |
+| 名称 | 是 | 操作的显示名称。  控制台中不显示此名称。 |
 | wehookUri | 是 | Webhook 的 URI。 |
 | customPayload | 否 | 发送到 Webhook 的自定义负载。 格式取决于 Webhook 的期望。 |
 

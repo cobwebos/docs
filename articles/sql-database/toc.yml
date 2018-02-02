@@ -4,6 +4,8 @@
   items:
     - name: 关于 SQL DB
       href: sql-database-technical-overview.md
+    - name: PaaS 或 IaaS
+      href: sql-database-paas-vs-sql-server-iaas.md
 - name: 快速入门
   expanded: true
   items:
@@ -59,7 +61,7 @@
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
-    - name: 服务功能
+    - name: 数据库服务
       items:
         - name: 服务器和数据库
           href: sql-database-servers-databases.md
@@ -73,42 +75,22 @@
           href: sql-database-elastic-pool.md
         - name: 连接体系结构
           href: sql-database-connectivity-architecture.md
-        - name: 防火墙规则
-          href: sql-database-firewall-configure.md
-        - name: 防火墙虚拟网络规则
-          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: DTU 和 eDTU
           href: sql-database-what-is-a-dtu.md
         - name: DTU 基准
           href: sql-database-benchmark-overview.md
-        - name: PaaS 或 IaaS
-          href: sql-database-paas-vs-sql-server-iaas.md
-        - name: 审核
-          href: sql-database-auditing.md
-        - name: 威胁检测
-          href: sql-database-threat-detection.md
-        - name: 数据库备份
-          href: sql-database-automated-backups.md
-        - name: 备份保留
-          href: sql-database-long-term-retention.md
-        - name: 故障转移组
-          href: sql-database-geo-replication-overview.md
-        - name: 弹性客户端库
-          href: sql-database-elastic-database-client-library.md
-        - name: 弹性查询
-          href: sql-database-elastic-query-overview.md
-        - name: 弹性事务
-          href: sql-database-elastic-transactions-overview.md
-        - name: 弹性作业
-          href: sql-database-elastic-jobs-overview.md
-        - name: SQL 漏洞评估
-          href: sql-vulnerability-assessment.md
         - name: SQL Server 常用功能
           href: sql-database-features.md
+    - name: 高可用性
+      href: sql-database-high-availability.md
     - name: “安全”
       items:
         - name: 概述
           href: sql-database-security-overview.md
+        - name: 防火墙规则
+          href: sql-database-firewall-configure.md
+        - name: 防火墙虚拟网络规则
+          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: 访问控制
           href: sql-database-control-access.md
         - name: Azure AD
@@ -117,16 +99,28 @@
           href: sql-database-manage-logins.md
         - name: 多重身份验证
           href: sql-database-ssms-mfa-authentication.md
+        - name: 审核
+          href: sql-database-auditing.md
+        - name: 威胁检测
+          href: sql-database-threat-detection.md
         - name: 表审核和 TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
-        - name: 数据屏蔽
+        - name: 动态数据掩码
           href: sql-database-dynamic-data-masking-get-started.md
-    - name: 高可用性
-      href: sql-database-high-availability.md
+        - name: 漏洞评估
+          href: sql-vulnerability-assessment.md
+        - name: 数据发现和分类
+          href: sql-database-data-discovery-and-classification.md
     - name: 业务连续性
       items:
         - name: 概述
           href: sql-database-business-continuity.md
+        - name: 数据库备份
+          href: sql-database-automated-backups.md
+        - name: 备份保留
+          href: sql-database-long-term-retention.md
+        - name: 故障转移组
+          href: sql-database-geo-replication-overview.md
         - name: 数据库恢复
           href: sql-database-recovery-using-backups.md
         - name: 配置安全性
@@ -185,6 +179,14 @@
       items:
         - name: 概述
           href: sql-database-elastic-scale-introduction.md
+        - name: 弹性客户端库
+          href: sql-database-elastic-database-client-library.md
+        - name: 弹性查询
+          href: sql-database-elastic-query-overview.md
+        - name: 弹性事务
+          href: sql-database-elastic-transactions-overview.md
+        - name: 弹性作业
+          href: sql-database-elastic-jobs-overview.md
         - name: 分片映射
           href: sql-database-elastic-scale-shard-map-management.md
         - name: 查询路由
@@ -299,6 +301,8 @@
           href: sql-database-advisor-portal.md
         - name: 启用自动优化
           href: sql-database-automatic-tuning-enable.md
+        - name: 自动优化电子邮件通知
+          href: sql-database-automatic-tuning-email-notifications.md
         - name: 智能见解性能故障排除
           href: sql-database-intelligent-insights-troubleshoot-performance.md
         - name: 使用 DMV 监视性能

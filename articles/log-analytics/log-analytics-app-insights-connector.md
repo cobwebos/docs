@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: c1f543d3379b7f6a29cb57b5d41825abaacabfc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中 Application Insights 连接器解决方案（预览版）
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 12/13/2017
 1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) 或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 在 OMS 门户中，单击“设置”&gt;“数据”&gt;“Application Insights”。
 3. 在“选择订阅”下面选择包含 Application Insights 资源的订阅，然后在“应用程序名称”下面选择一个或多个应用程序。
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 大约 30 分钟后，数据将会可用，Application Insights 磁贴中会更新数据，如下图所示：
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/13/2017
 
 该仪表板包含下表中所示的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题时，可运行返回所有记录的日志搜索。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **列** | **说明** |
 | --- | --- |
@@ -157,8 +157,8 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 解决方案从连接的 Application Insights 应用接收以下遥测类型的数据：
 
 - 可用性
-- 异常
-- 请求
+- 例外
+- Requests
 - 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../application-insights/app-insights-api-custom-events-metrics.md#page-views)。
 - 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../application-insights/app-insights-api-custom-events-metrics.md#trackevent)。
 
@@ -172,7 +172,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 | 属性 | 说明 |
 | --- | --- |
-| 类型 | ApplicationInsights |
+| Type | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | 记录的时间 |
 | ApplicationId | Application Insights 应用的检测密钥 |
@@ -221,7 +221,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 ### <a name="exception-specific-fields"></a>异常特定的字段
 
-| 类型 | ApplicationInsights |
+| Type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 异常 |
 | ExceptionType | 异常的类型 |
@@ -240,7 +240,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 | 属性 | 说明 |
 | --- | --- |
-| 类型 | ApplicationInsights |
+| Type | ApplicationInsights |
 | TelemetryType | 请求 |
 | ResponseCode | 发送到客户端的 HTTP 响应 |
 | RequestSuccess | 指示成功或失败。 True 或 False。 |

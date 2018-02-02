@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 43d79a8c14751ee25eaca7a3b50649702d159d76
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a198ff5fe7135e17301025d6a712236b76be0ede
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
-## <a name="network-connectivity"></a>网络连接
+# <a name="network-connectivity"></a>网络连接
 本文提供了 Azure 堆栈网络基础结构信息来帮助你决定如何最好地将 Azure 堆栈集成到你现有的网络环境。 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Azure 堆栈解决方案需要弹性和高可用物理基础结构以支持其�
 
 下表显示了逻辑网络和关联的 IPv4 子网地址范围，必须考虑的：
 
-| 本地网络 | 描述 | 大小 | 
+| 本地网络 | 说明 | 大小 | 
 | -------- | ------------- | ------------ | 
 | 公共 VIP | Azure 堆栈服务，由租户虚拟机使用的其余部分一小部分的公共 IP 地址。 Azure 堆栈基础结构使用此网络中的 32 个地址。 如果你打算使用 App Service 和 SQL 资源提供程序，将使用 7 个地址。 | 月 26 日 （62 主机）-/ 22 （1022年主机）<br><br>建议 = / 24 （254 个主机） | 
 | 交换机基础结构 | 路由的目的，专用的点到点 IP 地址切换管理界面和环回地址分配给交换机。 | /26 | 
@@ -62,10 +62,10 @@ Azure 堆栈的网络基础结构包含的交换机配置的多个逻辑网络�
 - **内部虚拟 IP 网络**。 A/25 网络软件负载平衡器的专用于仅限内部使用的 Vip。
 
 ### <a name="azure-stack-infrastructure-network"></a>Azure 堆栈的基础结构网络
-这/24 网络专用于内部 Azure 堆栈组件，以便他们可以进行通信和交换彼此之间的数据。 此子网需要可路由的 IP 地址，但将保持私有到解决方案通过使用访问控制列表 (Acl)，因此不应超出除外 / 27 大小等于很小范围的边框交换机路由网络利用其中的某些类当它们需要访问外部资源和/或 internet 的服务。 
+这/24 网络专用于内部 Azure 堆栈组件，以便他们可以进行通信和交换彼此之间的数据。 此子网需要可路由的 IP 地址，但将保持私有到解决方案通过使用访问控制列表 (Acl)。 它不应超出除外 / 27 大小等于较小范围的边框交换机路由网络利用其中的某些服务，它们需要外部资源和/或 internet 访问时。 
 
 ### <a name="public-infrastructure-network"></a>公共基础结构网络
-这/27 网络是从前面所述的 Azure 堆栈基础结构子网非常小的范围，它不需要公共 IP 地址，但它需要通过 NAT 或透明的代理访问 internet。 此网络将分配的紧急情况下恢复控制台系统 (ERCS)，ERCS VM 注册到 Azure 期间需要访问 internet，并且应该路由到你的管理网络进行故障排除。
+这/27 网络是从前面所述的 Azure 堆栈基础结构子网较小的范围，它不需要公共 IP 地址，但它需要通过 NAT 或透明的代理访问 internet。 此网络将分配的紧急情况下恢复控制台系统 (ERCS)，ERCS VM 注册到 Azure 期间需要访问 internet，并且应该路由到你的管理网络进行故障排除。
 
 ### <a name="public-vip-network"></a>公共 VIP 网络
 公共 VIP 网络分配给 Azure 堆栈中的网络控制器。 它不是在交换机上的逻辑网络。 SLB 使用的地址池，并将分配/32 网络的租户工作负载。 交换机路由表，这些 32 Ip 正为可通过 BGP 路由播发。 此网络包含外部访问或公共 IP 地址。 Azure 堆栈基础结构使用从此公共 VIP 网络至少 8 个地址，而其余部分由租户虚拟机。 此子网的网络大小的范围可以从最小/26 （64 个主机） 到最大/22 （1022年主机），我们建议你计划对于/24 网络。
@@ -82,12 +82,7 @@ Azure 堆栈的网络基础结构包含的交换机配置的多个逻辑网络�
 ### <a name="ports-and-urls"></a>端口和 Url
 若要使 Azure 堆栈的服务 （如门户，Azure 资源管理器、 DNS 等） 可用的外部网络，则必须允许与这些终结点的入站的流量特定 Url、 端口和协议。
  
-在部署中其中的透明代理上行到传统的代理服务器，你必须允许特定端口和 Url 用于出站通信。 这些包括端口和 Url 标识、 应用商店联合、 修补程序和更新、 注册和使用情况数据。
+在部署中其中透明代理的上行以传统的代理服务器，则必须允许特定端口和 Url 同时[入站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)和[出站](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)通信。 这些包括端口和 Url 标识、 应用商店联合、 修补程序和更新、 注册和使用情况数据。
 
-有关详细信息，请参阅：
-- [入站的端口和协议](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound)
-- [出站端口和 Url](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)
-
-
-## <a name="next-steps"></a>接下来的步骤
-[Azure 堆栈边框连接性](azure-stack-border-connectivity.md)
+## <a name="next-steps"></a>后续步骤
+[边框连接](azure-stack-border-connectivity.md)

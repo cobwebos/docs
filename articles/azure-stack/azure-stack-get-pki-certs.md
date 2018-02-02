@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: e7edbc1c4aa6e3cb1026d493886ef7ca704b9131
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.reviewer: ppacent
+ms.openlocfilehash: a9f2a882947e07cde0e0505458608f86043b2a67
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>生成 Azure 堆栈部署的 PKI 证书
 既然你知道[的 PKI 证书要求](azure-stack-pki-certs.md)对于 Azure 堆栈部署，你需要从所选证书颁发机构 (CA) 获取这些证书。 
@@ -74,3 +74,5 @@ ms.lasthandoff: 01/17/2018
 4. **导入。CER**。 CA 返回。CER 文件。 使用从其生成的申请文件的相同 Windows 计算机，导入。CER 文件返回到的计算机/个人存储中。 
 5. **导出并复制。到部署文件夹的 PFX**。 为导出的证书 （包括私钥）。PFX 文件中，并复制。到部署文件夹中所述的 PFX 文件[Azure 堆栈部署 PKI 要求](azure-stack-pki-certs.md)。
 
+## <a name="next-steps"></a>后续步骤
+[标识集成](azure-stack-integrate-identity.md)

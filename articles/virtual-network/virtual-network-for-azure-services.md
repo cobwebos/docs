@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 2c3ffb8432fae41b376cc71bb600a0b1c490f345
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15a5ede13aebb039c1d17f118ee1acdcf9031d50
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure 服务的虚拟网络集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 - [应用程序网关（内部）](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure 容器服务引擎](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：Azure 容器服务可创建默认虚拟网络。 可创建自定义虚拟网络，与 [Azure 容器服务引擎](https://github.com/Azure/acs-engine/tree/master/examples/vnet)配合使用。
 - [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：仅限虚拟网络（经典）
-- [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)：仅限虚拟网络（经典）
+- [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
 - [云服务](https://msdn.microsoft.com/library/azure/jj156091)：仅限虚拟网络（经典）
 
 可部署[内部 Azure 负载均衡器](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，实现前面列出的多种资源的负载均衡。 在某些情况下，服务在创建资源时自动创建和部署负载均衡器。

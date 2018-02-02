@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: b48ba1a1a47bc27e1d394e6fa56826df1eb742dd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9046bdb5bd8ff21429c951cbe7120334bd000621
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>预配 Red Hat Enterprise Linux 虚拟机
 使用以下任一方法在 Azure 中预配 RHEL 7 虚拟机：
-* [Azure 门户](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -69,7 +69,7 @@ sudo vi /etc/hosts
 接下来，在虚拟机上安装加入域所需的包。 在 SSH 终端中，键入以下命令以安装所需的包：
 
     ```
-    sudo yum install realmd sssd krb5-workstation krb5-libs
+    sudo yum install realmd sssd krb5-workstation krb5-libs samba-common-tools
     ```
 
 

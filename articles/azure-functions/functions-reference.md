@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 53ba5eaf3272746bd107efbcbae4b5d5889a197f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -102,7 +102,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](functions-versions.md)。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：

@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 01/27/2018
 ms.author: brenduns
-ms.openlocfilehash: 6eafa2a5058ef1309cbf50be069ea1bb12f7e5b9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 59053e4beda48fd8474da675e50e02438c79a98e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure 堆栈中的虚拟机的注意事项
 
@@ -59,9 +59,7 @@ Azure 堆栈支持以下大小：
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
- Azure 堆栈支持以下虚拟机扩展版本：
-
-![VM 扩展](media/azure-stack-vm-considerations/vm-extensions.png)
+ Azure 堆栈包括扩展的一小部分。 更新和其他扩展和均可通过应用商店联合。
 
 使用以下 PowerShell 脚本以获取 Azure 堆栈环境中可用的虚拟机扩展的列表：
 

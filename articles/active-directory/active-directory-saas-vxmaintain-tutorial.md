@@ -1,5 +1,5 @@
 ---
-title: "教程：将 Azure Active Directory 与 vxMaintain 集成 | Microsoft Docs"
+title: "教程：Azure Active Directory 与 vxMaintain 集成 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 vxMaintain 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a987247d2c8a76161f9c8a5a027e34b3a8e25b30
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>教程：将 Azure Active Directory 与 vxMaintain 集成
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>教程：Azure Active Directory 与 vxMaintain 集成
 
 本教程介绍如何将 vxMaintain 与 Azure Active Directory (Azure AD) 集成。
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 vxMaintain 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 vxMaintain SSO 的订阅
 
 > [!NOTE]
@@ -149,13 +149,13 @@ ms.lasthandoff: 12/11/2017
  
     ![“用户”对话框](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入测试用户 Britta Simon 的电子邮件地址。
 
     c. 选择“显示密码”复选框，然后记下“密码”框中生成的值。
 
-    d.单击“下一步”。 选择“创建” 。
+    d.单击“下一步”。 选择“创建”。
  
 ### <a name="create-a-vxmaintain-test-user"></a>创建 vxMaintain 测试用户
 
@@ -198,7 +198,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [有关将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

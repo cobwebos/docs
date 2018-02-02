@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/29/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4937b7725c8f39314ccc41584a8646b7197f6bdf
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 7018f0122ab1ef11d64cce8a9adf58419d0e9ba7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>替换的 Azure 堆栈缩放单元节点上的硬件组件
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/10/2018
 
 非热插拔组件包括：
 
-- CPU *
+- CPU*
 - 内存 *
 - 母板/基板管理控制器 (BMC) / 视频卡
 - 磁盘控制器/主机总线适配器 (HBA) / 底板
@@ -44,11 +44,11 @@ ms.lasthandoff: 01/10/2018
 
 * 此操作可能不需要基于硬件的物理条件。
 
-* * 无法随 OEM 硬件供应商执行组件更换并更新固件的是否在支持协定。
+* * OEM 硬件供应商是否执行组件更换和固件可能会有所不同的更新基于您的支持合同。
 
 ## <a name="review-alert-information"></a>查看警报信息
 
-Azure 堆栈运行状况和监视系统跟踪网络适配器和由存储空间直通控制的数据驱动器的运行状况。 它不跟踪其他硬件组件。 对于所有其他硬件组件，在监视硬件生命周期主机运行的解决方案的特定于供应商的硬件中引发警报。
+Azure 堆栈运行状况和监视系统跟踪网络适配器和由存储空间直通控制的数据驱动器的运行状况。 它不跟踪其他硬件组件。 对于所有其他硬件组件，在监视硬件生命周期主机运行的解决方案的特定于供应商的硬件中引发警报。  
 
 ## <a name="component-replacement-process"></a>组件更换过程
 
@@ -60,7 +60,7 @@ Azure 堆栈运行状况和监视系统跟踪网络适配器和由存储空间�
    > 可以在任何情况下，将断开而且而不会破坏 S2D 关机在同一时间只有一个节点 (Storage Spaces Direct)。
 
 2. 缩放单元节点处于维护模式后，使用[关闭电源](azure-stack-node-actions.md#scale-unit-node-actions)操作。 此操作可能不需要基于硬件的物理条件。
- 
+
    > [!NOTE]
    > 在关闭操作不起作用不大可能情况下，改用基板管理控制器 (BMC) 的 web 界面。
 
@@ -74,4 +74,3 @@ Azure 堆栈运行状况和监视系统跟踪网络适配器和由存储空间�
 
 - 有关替换的热插拔的物理磁盘的信息，请参阅[替换的磁盘](azure-stack-replace-disk.md)。
 - 有关替换物理节点的信息，请参阅[替换缩放单元节点](azure-stack-replace-node.md)。
-- 

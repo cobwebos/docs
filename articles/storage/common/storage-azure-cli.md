@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: tamram
-ms.openlocfilehash: 34780001afb309a2986cc21dae948d9d94f1a63f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 00b608f36caf51e27a1751560df0ffb1308695c4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>将 Azure CLI 2.0 用于 Azure 存储
 
@@ -269,7 +269,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
-使用 [az storage blob list](/cli/azure/storage/blob#list) 命令列出容器中的 blob。
+使用 [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) 命令列出容器中的 blob。
 
 ```azurecli
 az storage blob list \

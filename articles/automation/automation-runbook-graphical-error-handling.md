@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.openlocfilehash: afe7043e31c05444dded089dc02689a3b0c94659
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 86d62ba7fb12b09a2c19b4689af38bb8c121880b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
@@ -40,7 +40,7 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 
 每当关键活动引发错误或异常时，必须阻止 Runbook 中下一活动的继续执行，并对错误进行相应处理。 当 Runbook 在为业务过程或服务运营过程提供支持时，特别有必要采取此措施。
 
-对于可能会生成错误的每个活动，Runbook 创作者可以添加指向其他任何活动的错误链接。  目标活动可属于任何类型，包括：代码活动、调用 cmdlet、调用另一个 Runbook，等等。
+对于可能会生成错误的每个活动，Runbook 创作者可以添加指向其他任何活动的错误链接。 目标活动可属于任何类型，包括：代码活动、调用 cmdlet、调用另一个 Runbook，等等。
 
 此外，目标活动还可以有传出链接。 这些链接可以是常规链接，也可以是错误链接。 这意味着，Runbook 创作者可以在不求助于代码活动的情况下，实现复杂的错误处理逻辑。 建议的做法是创建具有常用功能的专用错误处理 Runbook，但这不是必需的。 在 PowerShell 代码活动中实现错误处理逻辑不是唯一选项。  
 
@@ -63,7 +63,7 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 
 在以下示例中，一个 Runbook 检索的变量包含虚拟机的计算机名称。 然后，该 Runbook 尝试使用下一活动启动虚拟机。<br><br> ![自动化 Runbook 错误处理示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-**Get-AutomationVariable** 活动和 **Start-AzureRmVm** 已配置为将异常转换为错误。  如果在获取变量或启动 VM 时出现问题，会生成错误。<br><br> ![自动化 Runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+**Get-AutomationVariable** 活动和 **Start-AzureRmVm** 已配置为将异常转换为错误。 如果在获取变量或启动 VM 时出现问题，会生成错误。<br><br> ![自动化 Runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
 错误链接从这些活动流向单个“错误管理”活动（代码活动）。 该活动是通过使用 *Throw* 关键字的简单 PowerShell 表达式（用于停止处理）以及 *$Error.Exception.Message*（用于获取描述当前异常的消息）配置的。<br><br> ![自动化 Runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

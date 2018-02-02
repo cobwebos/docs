@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 74aace2136136c25bc56327d38cfbab168265401
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d3f4a83b654315a5ff9344594323c5dcb801e77
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 在开始本文所述的任务之前，请先完成以下先决条件：
 
-- 如果对如何使用虚拟网络不太熟悉，建议查看[创建你的第一个 Azure 虚拟网络](virtual-network-get-started-vnet-subnet.md)中的练习。 此练习有助于熟悉虚拟网络。
+- 如果对如何使用虚拟网络不太熟悉，建议查看[创建你的第一个 Azure 虚拟网络](quick-create-portal.md)中的练习。 此练习有助于熟悉虚拟网络。
 - 若要了解有关虚拟网络限制的详细信息，请查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 使用 Azure 帐户登录到 Azure 门户、Azure 命令行工具 (Azure CLI) 或 Azure PowerShell。 若没有 Azure 帐户，请注册 [免费试用帐户](https://azure.microsoft.com/free)
 - 如果打算使用 PowerShell 命令来完成本文中所述的任务，首先必须[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure PowerShell cmdlet。 若要获取示例中的 PowerShell 命令的相关帮助，请输入 `get-help <command> -full`。
@@ -138,7 +138,7 @@ ms.lasthandoff: 10/11/2017
 5. 在地址空间的边栏选项卡中，完成以下选项之一：
     - 添加地址空间：输入新的地址空间。 该地址空间不能与为虚拟空间定义的现有地址空间重叠。
     - 删除地址空间：右键单击某个地址空间，然后单击“删除”。 如果该地址空间包含子网，则无法删除该地址空间。 要删除某个地址空间，必须先删除存在于该地址空间中的所有子网（以及已连接到这些子网的所有资源）。
-6. 单击“保存”。
+6. 单击“ **保存**”。
 
 **命令**
 
@@ -162,7 +162,7 @@ ms.lasthandoff: 10/11/2017
         - 删除地址：在要删除的服务器旁边，单击 **X**。删除服务器只会将服务器从此虚拟网络列表中删除。 DNS 服务器在 Azure 中仍为注册状态，可供其他虚拟网络使用。
         - **重新排列 DNS 服务器的地址**：确认按所处环境的正确顺序列出 DNS 服务器，这一点很重要。 将按指定服务器的顺序使用 DNS 服务器列表。 它们并非以轮循机制工作。 如果列表中的第一个 DNS 服务器可访问，则无论此 DNS 服务器是否运行正常，客户端都会使用该 DNS 服务器。 删除列出的所有 DNS 服务器，并按照所需顺序，将这些服务器重新添加到列表中。
         - 更改地址：在列表中突出显示 DNS 服务器，然后输入新名称。
-6. 单击“保存”。
+6. 单击“ **保存**”。
 7. 重启已连接到虚拟网络的 VM，以便为它们分配新的 DNS 服务器设置。 VM 在重新启动之前，将继续使用其当前 DNS 设置。
 
 **命令**
@@ -194,7 +194,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建 VM 然后将其连接到虚拟网络，请参阅[创建虚拟网络并连接 VM](virtual-network-get-started-vnet-subnet.md#create-vms)。
+- 若要创建 VM 然后将其连接到虚拟网络，请参阅[创建虚拟网络并连接 VM](quick-create-portal.md#create-virtual-machines)。
 - 若要筛选虚拟网络内子网之间的网络流量，请参阅[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)。
 - 若要将虚拟网络对等互连到另一个虚拟网络，请参阅[创建虚拟网络对等互连](virtual-network-create-peering.md#portal)。
 - 若要了解用于将虚拟网络连接到本地网络的选项，请参阅[关于 VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)。

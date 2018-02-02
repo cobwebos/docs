@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 30ab325488684a26a6ef442e7c8241526a66aa4c
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: a9be9011062f07d59842d417bf6761ec81c39275
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure 堆栈上的 app Service： 添加更多的基础结构或辅助角色
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*  
 
 本文档提供有关如何在 Azure 堆栈的基础结构和辅助角色上缩放 App Service 的说明。 它不包含用于创建其他辅助角色来支持的任何大小的应用程序的步骤。
 
@@ -40,15 +41,15 @@ Azure 堆栈上的 azure App Service 部署使用虚拟机规模集的所有角�
 2. 浏览到**应用程序服务**。
 
     ![](media/azure-stack-app-service-add-worker-roles/image01.png)
-  
+
 3. 单击“角色”。 你看到的所有部署的应用程序服务角色的明细。
 
 4. 右键单击你想要缩放，然后单击类型的行**ScaleSet**。
 
     ![](media/azure-stack-app-service-add-worker-roles/image02.png)
-  
+
 5. 单击**缩放**，选择你想要扩展到，然后单击的实例数**保存**。
-    
+
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
 
 6. Azure 堆栈上的 app Service 现在将添加更多的虚拟机、 将其配置，安装所有所需的软件，和将其标记为准备此过程完成后。 此过程可能需要大约 80 分钟。

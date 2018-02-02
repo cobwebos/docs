@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4b6f4e2b0e42724276448fd4726c8326de8ea6ee
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 98683af2ca35b687f918647602a561d37dd42b11
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-azure-cli"></a>使用 Azure CLI 为 VM 配置用户分配的托管服务标识 (MSI)
 
@@ -28,14 +28,14 @@ ms.lasthandoff: 01/09/2018
 
 本文将介绍如何使用 Azure CLI 为 Azure VM 启用和删除用户分配的 MSI。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
-- 从 Azure 门户或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果希望使用本地 CLI 控制台，可以[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。 然后使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与要在其下部署用户分配的 MSI 和 VM 的 Azure 订阅关联的帐户：
+- 从 Azure 门户中或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。 然后使用 [az login](/cli/azure/#az_login) 登录到 Azure。 使用与要在其下部署用户分配的 MSI 和 VM 的 Azure 订阅关联的帐户：
 
    ```azurecli
    az login
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/09/2018
 
 本部分介绍如何创建 VM 以及向 VM 分配用户分配的 MSI。 如果已有要使用的 VM，请跳过本部分，继续到下一部分。
 
-1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/azure/group/#create)，创建用于容纳和部署 VM 的[资源组](~/articles/azure-resource-manager/resource-group-overview.md#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 :
+1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/azure/group/#az_group_create)，创建用于容纳和部署 VM 的[资源组](~/articles/azure-resource-manager/resource-group-overview.md#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/09/2018
    }
    ```
 
-3. 运行 [az vm create](/cli/azure/vm/#create) 创建 VM。 以下示例创建与新的用户分配 MSI 关联的 VM，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<`MSI ID> 替换为自己的值。对于 <MSI ID>，将使用上一步中所创建用户分配 MSI 的资源 id 属性值：` parameter values with your own values. For `<MSI ID>`, use the user-assigned MSI's resource ` 
+3. 运行 [az vm create](/cli/azure/vm/#az_vm_create) 创建 VM。 以下示例创建与新的用户分配 MSI 关联的 VM，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<`MSI ID> 替换为自己的值。对于 <MSI ID>，将使用上一步中所创建用户分配 MSI 的资源 id 属性值：` parameter values with your own values. For `<MSI ID>`, use the user-assigned MSI's resource ` 
 
    ```azurecli-interactive 
    az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>

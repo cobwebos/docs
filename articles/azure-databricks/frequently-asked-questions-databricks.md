@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
-ms.openlocfilehash: b56253e7b9c9ab144ebc4006511631756de4f89b
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -36,7 +36,7 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 2. 在 Data Lake Store 中分配服务主体的必需权限。
 3. 若要访问 Data Lake Store 中的文件，请使用 Notebook 中的服务主体凭据。
 
-有关详细信息，请参阅[配合使用 Data Lake Store 和 Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store)。
+有关详细信息，请参阅[配合使用 Data Lake Store 和 Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)。
 
 ## <a name="fix-common-problems"></a>解决常见问题
 

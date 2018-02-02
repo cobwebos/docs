@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 9b79e3b498e51e626e7e9a87d2bb1a66366acff5
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -71,7 +71,7 @@ sudo apt-get install -y maven
 在 Jenkins 中设置作业前，需要 Azure 应用服务计划和 Web 应用以运行 Java 应用。
 
 
-1. 使用 `az appservice plan create` [Azure CLI 命令](/cli/azure/appservice/plan#create)通过免费定价层创建 Azure 应用服务计划。 应用服务计划定义用于托管应用的物理资源。 分配到应用服务计划的所有应用程序共享这些资源。 共享资源可帮助你在托管多个应用时节省成本。
+1. 使用 `az appservice plan create` [Azure CLI 命令](/cli/azure/appservice/plan#az_appservice_plan_create)通过免费定价层创建 Azure 应用服务计划。 应用服务计划定义用于托管应用的物理资源。 分配到应用服务计划的所有应用程序共享这些资源。 共享资源可帮助你在托管多个应用时节省成本。
 2. 创建 Web 应用。 可使用 [Azure 门户](/azure/app-service-web/web-sites-configure)或以下 `az` Azure CLI 命令：
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>

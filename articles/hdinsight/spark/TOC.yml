@@ -84,10 +84,14 @@
       items:
         - name: 与 Data Lake Store 配合使用
           href: apache-spark-use-with-data-lake-store.md
+        - name: 连接到 Azure SQL 数据库
+          href: apache-spark-connect-to-sql-database.md
     - name: Spark 流式处理
       items:
         - name: 概述
           href: apache-spark-streaming-overview.md
+        - name: 在 YARN 中创建高度可用的 Spark 流式处理作业
+          href: apache-spark-streaming-high-availability.md
         - name: 处理流事件
           href: apache-spark-eventhub-streaming.md
         - name: 使用事件中心进行结构化流式处理
@@ -101,6 +105,8 @@
         - name: 将 Spark 流式处理 (DStream) 与 Kafka 配合使用
           href: ../hdinsight-apache-spark-with-kafka.md
           maintainContext: true
+        - name: 使用一次性事件处理创建 Spark 流式处理作业
+          href: apache-spark-streaming-exactly-once.md
     - name: Spark 和机器学习
       items:
         - name: 预测 HVAC 性能
@@ -198,6 +204,8 @@
           maintainContext: true
     - name: 管理
       items:
+        - name: 配置 Spark 设置
+          href: apache-spark-settings.md
         - name: 优化 Spark 作业
           href: apache-spark-perf.md
         - name: 群集容量规划

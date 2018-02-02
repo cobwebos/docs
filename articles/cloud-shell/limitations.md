@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 01/30/2018
 ms.author: juluk
-ms.openlocfilehash: 7e498582d78d2807070c943dfd838dd9efeb4ed2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 08426b6142dd125a5981d65635ecc55336cb3d15
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -41,7 +41,7 @@ Cloud Shell 支持最新版本的 Microsoft Edge、Microsoft Internet Explorer�
 
 ### <a name="copy-and-paste"></a>复制和粘贴
 
-[!include [copy-paste](../../includes/cloud-shell-copy-paste.md)]
+[!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>对于一个给定的用户，只有一个 shell 可处于活动状态
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: e4f112a221221c7f68cc31c80fb43417bb617632
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: bfe1ad012d126b3522b79a6ccecfe03b2b86f7b5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>收集和分析 Log Analytics 中的 Azure 活动日志
 
@@ -57,7 +57,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | 解决方案不会从 Azure 存储收集信息。 |
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - 若要访问 Azure 活动日志信息，必须拥有 Azure 订阅。
 
@@ -90,10 +90,10 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 | 边栏选项卡 | 说明 |
 | --- | --- |
-| Azure 活动日志条目 | 显示所选日期范围内排名前列的 Azure 活动日志条目记录总数的条形图，并显示前 10 个活动调用方的列表。 单击该条形图可针对 <code>Type=AzureActivity</code> 运行日志搜索。 单击某个调用方项，运行日志搜索，从而为该项返回所有活动日志条目。 |
-| 按状态分类的活动日志 | 为所选日期范围内的 Azure 活动日志状态显示圆环图。 此外还显示前十个状态记录的列表。 单击该图表可针对 <code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> 运行日志搜索。 单击某个状态项，运行日志搜索，从而为该状态记录返回所有活动日志条目。 |
-| 按资源分类的活动日志 | 显示包含活动日志的资源总数，并列出前十个为每个资源显示记录计数的资源。 单击全部区域可针对 <code>Type=AzureActivity &#124; measure count() by Resource</code> 运行日志搜索，这会显示解决方案可以使用的所有 Azure 资源。 单击某个资源以运行日志搜索，从而为该资源返回所有活动记录。 |
-| 按资源提供程序分类的活动日志 | 显示生成活动日志的资源提供程序的总数，并列出前十个资源提供程序。 单击全部区域可针对 <code>Type=AzureActivity &#124; measure count() by ResourceProvider</code> 运行日志搜索，这会显示所有 Azure 资源提供程序。 单击某个资源提供程序以运行日志搜索，从而为该提供程序返回所有活动记录。 |
+| Azure 活动日志条目 | 显示所选日期范围内排名前列的 Azure 活动日志条目记录总数的条形图，并显示前 10 个活动调用方的列表。 单击该条形图可针对 <code>AzureActivity</code> 运行日志搜索。 单击某个调用方项，运行日志搜索，从而为该项返回所有活动日志条目。 |
+| 按状态分类的活动日志 | 为所选日期范围内的 Azure 活动日志状态显示圆环图。 此外还显示前十个状态记录的列表。 单击该图表可针对 <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code> 运行日志搜索。 单击某个状态项，运行日志搜索，从而为该状态记录返回所有活动日志条目。 |
+| 按资源分类的活动日志 | 显示包含活动日志的资源总数，并列出前十个为每个资源显示记录计数的资源。 单击全部区域可针对 <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code> 运行日志搜索，这会显示解决方案可以使用的所有 Azure 资源。 单击某个资源以运行日志搜索，从而为该资源返回所有活动记录。 |
+| 按资源提供程序分类的活动日志 | 显示生成活动日志的资源提供程序的总数，并列出前十个资源提供程序。 单击全部区域可针对 <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code> 运行日志搜索，这会显示所有 Azure 资源提供程序。 单击某个资源提供程序以运行日志搜索，从而为该提供程序返回所有活动记录。 |
 
 ![Azure 活动日志仪表板](./media/log-analytics-activity/activity-log-dash.png)
 

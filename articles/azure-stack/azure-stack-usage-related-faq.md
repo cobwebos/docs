@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 01/30/2018
 ms.author: alfredop
-ms.openlocfilehash: 65b9ff0881e46836d9f19a04cf470835679e7b2f
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 855d74698f2109fa426d34044cbc89b83c224e6f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>在 Azure 堆栈使用情况 API 的常见问题
 本文回答了一些有关 Azure 堆栈使用情况 API 的常见问题。
@@ -28,8 +28,8 @@ ms.lasthandoff: 01/29/2018
 
 | **资源提供程序** | **电表 ID** | **测定仪名称** | **单位** | 其他信息 |
 | --- | --- | --- | --- | --- |
-| **网络** |F271A8A388C44D93956A063E1D2FA80B |静态 IP 地址使用情况 |IP 地址| 使用计数的 IP 地址 |
-| |9E2739BA86744796B465F64674B822BA |动态 IP 地址使用情况 |IP 地址| 使用计数的 IP 地址 |
+| **网络** |F271A8A388C44D93956A063E1D2FA80B |静态 IP 地址使用情况 |IP 地址| 使用计数的 IP 地址。 如果调用使用情况 API 每日粒度，计量器将返回 IP 地址小时数的乘积。 |
+| |9E2739BA86744796B465F64674B822BA |动态 IP 地址使用情况 |IP 地址| 使用计数的 IP 地址。 如果调用使用情况 API 每日粒度，计量器将返回 IP 地址小时数的乘积。 |
 | **存储** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*小时数 |表占用的总容量 |
 | |B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*小时数 |由页 blob 的总容量 |
 | |B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*小时数 |使用的队列的总容量 |
@@ -43,19 +43,19 @@ ms.lasthandoff: 01/29/2018
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |在 10 中，000's年请求计数 |（10，000's年) 中的队列服务请求 |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |以 gb 为单位的传入数据 |以 gb 为单位的队列服务数据流入 |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |以 gb 为单位的出口 |以 gb 为单位的队列服务数据流出量 |
-| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*小时数   | 在创建过程中，报告每隔一小时的总 DB 容量。  |
-| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*小时数    | 在创建过程中，报告每隔一小时的总 DB 容量。 |
-| **计算** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |基本 VM 大小小时数 |虚拟内核分钟 | 虚拟内核数的次数 VM 运行的分钟 |
-| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM 大小小时数 |虚拟内核分钟 | 虚拟内核数的次数 VM 运行的分钟 |
+| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*小时数   | 在创建的总 DB 容量。 如果调用使用情况 API 每日粒度，计量器将返回 MB 的小时数的乘积。 |
+| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*小时数    | 在创建的总 DB 容量。 如果调用使用情况 API 每日粒度，计量器将返回 MB 的小时数的乘积。 |
+| **计算** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |基本 VM 大小小时数 |虚拟核心小时数 | 虚拟内核数乘以 VM 运行的小时数 |
+| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM 大小小时数 |虚拟核心小时数 | 虚拟内核数乘以 VM 运行的小时数 |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM 大小小时数 |VM 小时数 |捕获基类和 Windows 的 VM。 不进行调整核心数 |
-| **密钥保管库** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |密钥保管库事务 | 在 10 中，000's年请求计数| REST API 收到的请求数由密钥保管库数据平面 |
-| **应用程序服务** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | App Service   | 虚拟核心小时数  | 用于运行应用程序服务的虚拟内核数 |
+| **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |密钥保管库事务 | 在 10 中，000's年请求计数| REST API 收到的请求数由密钥保管库数据平面 |
+| **应用程序服务** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | 应用服务   | 虚拟核心小时数  | 用于运行应用程序服务的虚拟内核数 |
 |             | 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE | 函数的计算请求      | 10 个请求              | 适用于函数  |
-|             | 957E9F36-2C14-45A1-B6A1-1723EF71A01D | 共享的 App Service 小时数          | 1 小时                   |                       |
-|             | 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9 | 免费 App Service 小时数            | 1 小时                   |                       |
-|             | 88039D51-A206-3A89-E9DE-C5117E2D10A6 | 小型标准的 App Service 小时数  | 1 小时                   |                       |
-|             | 83A2A13E-4788-78DD-5D55-2831B68ED825 | 标准的中等规模 App Service 小时数 | 1 小时                   |                       |
-|             | 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6 | 大型标准的 App Service 小时数  | 1 小时                   |                       |
+|             | 957E9F36-2C14-45A1-B6A1-1723EF71A01D | 共享的 App Service 小时数          | 1 小时	                   |                       |
+|             | 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9 | 免费 App Service 小时数            | 1 小时	                   |                       |
+|             | 88039D51-A206-3A89-E9DE-C5117E2D10A6 | 小型标准的 App Service 小时数  | 1 小时	                   |                       |
+|             | 83A2A13E-4788-78DD-5D55-2831B68ED825 | 标准的中等规模 App Service 小时数 | 1 小时	                   |                       |
+|             | 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6 | 大型标准的 App Service 小时数  | 1 小时	                   |                       |
 |             | 264ACB47-AD38-47F8-ADD3-47F01DC4F473 | SNI SSL                           | 每个 SNI SSL 绑定      | 适用于 AppService |
 |             | 60B42D72-DC1C-472C-9895-6C516277EDB4 | IP SSL                            | 每个 IP 基于的 SSL 绑定 | 适用于 AppService |
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/29/2018
 目前，可以仅可由查询*报告时间*。
 
 ## <a name="what-do-these-usage-api-error-codes-mean"></a>这些使用情况 API 错误代码是什么意思？
-| **HTTP 状态代码** | 错误代码 | **说明** |
+| **HTTP 状态代码** | **错误代码** | **说明** |
 | --- | --- | --- |
 | 400/错误的请求 |*NoApiVersion* |*Api 版本*缺少查询参数，则。 |
 | 400/错误的请求 |*InvalidProperty* |属性缺失或具有无效值。 响应正文中的错误代码中的消息标识缺少的属性。 |

@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 01/17/2018
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 783a6bd8c665f1e08d94d2712a581955be8501e9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="templates-for-azure-policy"></a>Azure 策略模板
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/18/2018
 | [允许的负载均衡器 SKU](scripts/allowed-lb-skus.md) | 要求负载均衡器使用已批准的 SKU。 指定允许的 SKU 的数组。 |
 | [无网络与 ER 网络对等](scripts/no-peering-er-net.md) | 禁止将网络对等关联到指定资源组中的网络。 用于防止与中心托管的网络基础结构连接。 指定要防止关联的资源组的名称。 |
 | [无用户定义的路由表](scripts/no-user-def-route-table.md)  |禁止通过用户定义的路由表部署虚拟网络。 |
-| [允许的虚拟网络网关 SKU](scripts/no-user-def-route-table.md) | 要求虚拟网络网关使用已批准的 SKU 和网关类型。 指定一个已批准的 SKU 的数组和已批准的网关类型的数组。 |
+| [允许的虚拟网络网关 SKU](scripts/allowed-vn-gate-sku.md) | 要求虚拟网络网关使用已批准的 SKU 和网关类型。 指定一个已批准的 SKU 的数组和已批准的网关类型的数组。 |
 | [对 VM 网络接口使用已批准的子网](scripts/use-approved-subnet-vm-nics.md) | 要求网络接口使用已批准的子网。 指定已批准的子网的 ID。 |
 | [对 VM 网络接口使用已批准的 vNet](scripts/use-approved-vnet-vm-nics.md) | 要求网络接口使用已批准的虚拟网络。 由你指定已批准的虚拟网络的 ID。 |
 |**标记**||

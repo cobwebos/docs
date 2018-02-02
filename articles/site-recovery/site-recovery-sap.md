@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 5a47acab598e113ef7ed968dd3a6429ac3bc1ec3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 96dc9bc81b8889e2e962c9c2dbf119ee985ec2f1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护多层 SAP NetWeaver 应用程序部署
 
@@ -81,7 +81,7 @@ Azure Site Recovery 是针对应用层（包括 (A)SCS）的推荐解决方案�
 使用恢复计划可将多层应用程序中各个层的故障转移排序，从而可以保持应用程序一致性。 为多层 Web 应用程序创建恢复计划时，请遵循[此处](site-recovery-create-recovery-plans.md)介绍的步骤。
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>将脚本添加到恢复计划
-在故障转移/测试故障转移后，可能需要在 Azure 虚拟机上执行一些操作才能让应用程序正常工作。 可以通过按[本文](site-recovery-create-recovery-plans.md#add-scripts)中所述在恢复计划中添加对应脚本，来自动执行故障转移后操作（如更新 DNS 条目以及更改绑定和连接）。
+在故障转移/测试故障转移后，可能需要在 Azure 虚拟机上执行一些操作才能让应用程序正常工作。 可以通过按[本文](site-recovery-how-to-add-vmmscript.md)中所述在恢复计划中添加对应脚本，来自动执行故障转移后操作（如更新 DNS 条目以及更改绑定和连接）。
 
 ### <a name="dns-update"></a>DNS 更新
 如果为动态 DNS 更新配置了 DNS，则虚拟机在启动后，通常会使用新的 IP 更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的后期操作。  

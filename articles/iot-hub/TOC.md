@@ -40,10 +40,11 @@
 
 # 操作指南
 ## 计划
-### [IoT 中心与事件中心的比较](iot-hub-compare-event-hubs.md)
+### [比较 IoT 中心与事件中心](iot-hub-compare-event-hubs.md)
 ### [缩放解决方案](iot-hub-scaling.md)
 ### [高可用性和灾难恢复](iot-hub-ha-dr.md)
 ### [支持其他协议](iot-hub-protocol-gateway.md)
+### [比较消息和事件路由](iot-hub-event-grid-routing-comparison.md)
 ## [开发](iot-hub-how-to.md)
 ### [开发人员指南](iot-hub-devguide.md)
 #### [设备到云的功能指南](iot-hub-devguide-d2c-guidance.md)
@@ -51,6 +52,7 @@
 #### [发送和接收消息](iot-hub-devguide-messaging.md)
 ##### [将设备到云的消息发送到 IoT 中心](iot-hub-devguide-messages-d2c.md)
 ##### [从内置终结点读取设备到云的消息](iot-hub-devguide-messages-read-builtin.md)
+##### [响应 IoT 中心事件](iot-hub-event-grid.md)
 ##### [对设备到云的消息使用自定义终结点和路由规则](iot-hub-devguide-messages-read-custom.md)
 ##### [从 IoT 中心发送云到设备的消息](iot-hub-devguide-messages-c2d.md)
 ##### [创建和读取 IoT 中心消息](iot-hub-devguide-messages-construct.md)

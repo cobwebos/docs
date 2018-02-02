@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: raynew
-ms.openlocfilehash: ceb4b13e326b24360799c1a7a25fe48f213fabd7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1761da23c669d5370d12e5619e09b56c8b00c9a6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 11/02/2017
 
 ### <a name="set-up-an-azure-network"></a>设置 Azure 网络
 
-设置 [Azure 网络](../virtual-network/virtual-network-get-started-vnet-subnet.md)。
+设置 [Azure 网络](../virtual-network/quick-create-portal.md)。
 
 - 在故障转移后创建 Azure VM 时，Azure VM 将置于此网络中。
 - 该网络应位于与恢复服务保管库相同的区域

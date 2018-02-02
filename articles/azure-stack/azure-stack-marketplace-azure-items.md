@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 01/27/2018
 ms.author: JeffGoldner
-ms.openlocfilehash: d6a0cbf696d59cec5b70e147de2879a311d88687
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: a23b5ff4dc8b0cf18e529d9cdc9925ea7fcedba0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>可供 Azure 堆栈的 azure 应用商店项
 
@@ -38,8 +38,6 @@ ms.lasthandoff: 01/22/2018
 | ![](media/azure-stack-marketplace-azure-items/cse.png) | [适用于 Linux 的 VM 访问](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>下载此更新的现成新版 VMAccess for Linux 扩展。这是重要信息： 如果你打算使用 Debian Linux Vm。</b> | Microsoft | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Linux Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Windows 的 Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Windows |
-| ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Linux 的 deep Security 代理](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-linux) | 适用于 Linux 的 trend Micro Deep Security 扩展。 | Trend Micro | Linux |
-| ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [适用于 Windows 的 deep Security 代理](https://azuremarketplace.microsoft.com/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm) | 适用于 Windows 的 trend Micro Deep Security 扩展。 | Trend Micro | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft 虚拟机映像和解决方案模板
 
@@ -47,7 +45,7 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 
 |  | 项名称 | 说明 | 发布者 |
 | --- | --- | --- | --- |
-| ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | 为部署简单、 经济高效、 应用程序为中心和以用户为中心的企业级的解决方案。 这些映像被定期更新的最新修补程序。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | 为部署简单、 经济高效、 应用程序为中心和以用户为中心的企业级的解决方案。 这些映像被定期更新的最新修补程序。 <b>重要信息： 下载之前必须删除 2018 年 1 月 18，，然后将其替换为最新版本的映像。</b> | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [远程桌面服务 (RDS) 部署](https://azuremarketplace.microsoft.com/marketplace/apps/rds.remote-desktop-services-basic-deployment) | 创建基本的远程桌面服务 (RDS) 部署。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 试用版 Windows Server 2012 Datacenter 和 Visual Studio 2017 社区版上。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Microsoft SharePoint Server 2016 试用版 Windows Server 2016 数据中心内。 | Microsoft |

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: bryanla
-ms.openlocfilehash: 7d817a90277a1320ccc028822032916c98cae4b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 15a7d43da7b5a700ae84a42d59a7f01f1711c5cd
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 授予托管服务标识 (MSI) 对资源的访问权限
 
@@ -41,13 +41,13 @@ ms.lasthandoff: 12/11/2017
 
 在 Azure 资源（[如 Azure VM](msi-qs-configure-cli-windows-vm.md)）上启用 MSI 后： 
 
-1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#az_login) 登录到 Azure。 使用与要在其下部署 VM 的 Azure 订阅关联的帐户：
 
    ```azurecli-interactive
    az login
    ```
 
-2. 此示例要授予 Azure VM 对存储帐户的访问权限。 首先，运行 [az resource list](/cli/azure/resource/#list) 获取名为“myVM”的 VM 的服务主体，它是在 VM 上启用 MSI 时创建的：
+2. 此示例要授予 Azure VM 对存储帐户的访问权限。 首先，运行 [az resource list](/cli/azure/resource/#az_resource_list) 获取名为“myVM”的 VM 的服务主体，它是在 VM 上启用 MSI 时创建的：
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)

@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 490112417870fb3bfdb75abdb82f9adfff550f0a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
 若要将 Java Web 应用部署到 Azure，可以通过 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)使用 Azure CLI。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
@@ -62,7 +62,7 @@ sudo apt-get install -y maven
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>创建 Azure 应用服务以部署 Java Web 应用
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
+使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -121,7 +121,7 @@ az webapp create \
 
 ### <a name="configure-java"></a>配置 Java 
 
-使用 [az appservice web config update](/cli/azure/appservice/web/config#update) 命令，设置应用所需的 Java 运行时配置。
+使用 [az appservice web config update](/cli/azure/appservice/web/config#az_appservice_web_config_update) 命令，设置应用所需的 Java 运行时配置。
 
 以下命令配置的 Web 应用可在最新的 Java 8 JDK 和 [Apache Tomcat](http://tomcat.apache.org/) 8.0 上运行。
 
@@ -153,7 +153,7 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ## <a name="create-jenkins-pipeline"></a>创建 Jenkins 管道
 在 Web 浏览器中打开 Jenkins，单击“New Item”（新建项）。 
 
-* 为该作业提供一个名称并选择“Pipeline”（管道）。 单击 **“确定”**。
+* 为该作业提供一个名称并选择“Pipeline”（管道）。 单击“确定”。
 * 接下来单击“Pipeline”（管道）选项卡。 
 * 对于“Definition”（定义），选择“Pipeline script from SCM”（来自 SCM 的管道脚本）。
 * 对于“SCM”，选择“Git”。

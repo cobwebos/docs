@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: c1a5496f3ab9a625d7d97c3096ae89100b7c5592
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 93dd609df90adac2c84ba8c62cf0d18f55a317bb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="border-connectivity"></a>边框连接 
 网络集成规划是为成功集成的 Azure 堆栈系统部署、 操作和管理的重要前提条件。 边框连接规划开始通过选择使用边界网关协议 (BGP) 的动态路由。 这要求分配 16 位 BGP 自治系统编号 （公共或私有），或使用静态路由，其中一个静态默认路由分配给边界设备。
@@ -59,5 +59,5 @@ TOR 设备必须使用静态默认路由将所有流量都发送到边框设备�
 
 ![透明代理](media/azure-stack-border-connectivity/transparent-proxy.png)
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 [DNS 集成](azure-stack-integrate-dns.md)

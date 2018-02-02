@@ -15,7 +15,9 @@
 ### [访问控制列表](virtual-networks-acl.md)
 
 # 入门
-## [创建自己的首个虚拟网络](virtual-network-get-started-vnet-subnet.md)
+## [创建虚拟网络 - 门户](quick-create-portal.md)
+## [创建虚拟网络 - PowerShell](quick-create-powershell.md)
+## [创建虚拟网络 - Azure CLI](quick-create-cli.md)
 
 # 如何
 ## 规划和设计

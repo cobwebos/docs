@@ -5,15 +5,15 @@ services: azure-stack
 author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: ae59ae74dd6dfe29a077ed5943eb1a16e561078a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure 堆栈数据中心集成-发布终结点
 
@@ -43,21 +43,23 @@ Azure 堆栈将设置其基础结构角色的各种终结点 (Vip 的虚拟 IP �
 |Azure 资源管理器 （管理员）|Adminmanagement。*&lt;区域 >。&lt;fqdn >*|HTTPS|443<br>30024|
 |门户 （用户）|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003|
 |Azure 资源管理器 （用户）|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|图形|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |证书吊销列表|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP 和 UDP|53|
-|密钥保管库 （用户）|*.vault.*&lt;region>.&lt;fqdn>*|TCP|443|
-|密钥保管库 （管理员）|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|TCP|443|
+|密钥保管库 （用户）|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|密钥保管库 （管理员）|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |存储队列|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |存储表|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |存储 Blob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|SQL 资源提供程序|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|MySQL 资源提供程序|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304
 
 ## <a name="ports-and-urls-outbound"></a>端口和 Url （出站）
 
 Azure 堆栈仅支持透明的代理服务器。 在部署中其中透明代理的上行以传统的代理服务器，你必须允许下列端口和 Url 用于出站通信：
 
 
-|目的|URL|协议|端口|
+|目的|代码|协议|端口|
 |---------|---------|---------|---------|
 |标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net|HTTP<br>HTTPS|80<br>443|
 |应用商店联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
@@ -66,5 +68,5 @@ Azure 堆栈仅支持透明的代理服务器。 在部署中其中透明代理�
 |使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
 
 
-## <a name="next-steps"></a>接下来的步骤
-[Azure 堆栈数据中心集成的安全](azure-stack-integrate-security.md)
+## <a name="next-steps"></a>后续步骤
+[Azure 堆栈 PKI 要求](azure-stack-pki-certs.md)

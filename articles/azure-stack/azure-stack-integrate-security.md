@@ -2,17 +2,18 @@
 title: "Azure 堆栈数据中心集成的安全"
 description: "了解如何将 Azure 堆栈安全集成数据中心安全"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/17/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: eb7c651362838d44d6558e080e6130b4a8041d1e
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Azure 堆栈数据中心集成的安全
 
@@ -93,4 +94,4 @@ Syslog 目标地址是收集有关部署，一个可选参数，但它还可添�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 堆栈数据中心集成-发布终结点](azure-stack-integrate-endpoints.md)
+[维护策略](azure-stack-servicing-policy.md)

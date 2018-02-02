@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bf9f676b48f25ae2d8949dbdba8b4792b05c67f0
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 [767598]:https://launchpad.support.sap.com/#/notes/767598

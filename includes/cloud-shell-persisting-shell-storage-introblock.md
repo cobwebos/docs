@@ -29,7 +29,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。
 ![资源组设置](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
 ### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
-在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags)。
+在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../articles/azure-policy/json-samples.md)。
 
 ## <a name="supported-storage-regions"></a>支持的存储区域
 关联的 Azure 存储帐户必须与其装载到的 Cloud Shell 计算机位于同一区域。

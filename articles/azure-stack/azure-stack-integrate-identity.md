@@ -5,19 +5,17 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/12/2017
-ms.author: mabrigg
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 642ed3298eec0bab5515df117c0310786358e417
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2f15e130859272a729fb0ad6e0b718d4724f2103
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure 堆栈数据中心集成的标识
-
-*适用范围： Azure 堆栈集成系统*
-
 你可以部署 Azure 堆栈使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供程序。 在部署 Azure 堆栈之前，必须做出的选择。 使用 AD FS 部署也被称为在断开模式中部署 Azure 堆栈。
 
 下表显示两个标识选项之间的差异：
@@ -26,7 +24,7 @@ ms.lasthandoff: 12/13/2017
 |---------|---------|---------|
 |计费|必须是容量<br> 仅企业协议 (EA)|容量或作为你的使用付费<br>EA 或云解决方案提供商 (CSP)|
 |标识|必须是 AD FS|Azure AD 或 AD FS|
-|应用商店联合|当前不可用|支持<br>BYOL 许可|
+|应用商店联合|支持<br>BYOL 许可|支持<br>BYOL 许可|
 |注册|建议，需要可移动媒体<br> 和单独的连接的设备。|自动|
 |修补程序和更新|必需，这需要可移动媒体<br> 和单独的连接的设备。|可以直接下载更新包<br> 从 Internet 到 Azure 的堆栈。|
 
@@ -56,8 +54,8 @@ ms.lasthandoff: 12/13/2017
 
 |组件|要求|
 |---------|---------|
-|图形|Microsoft Active Directory 2012/2012 R2/2016年|
-|AD FS|Windows Server 2012/2012 R2/2016年|
+|图形|Microsoft Active Directory 2012/2012 R2/2016|
+|AD FS|Windows Server 2012/2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>设置关系图的集成
 
@@ -66,7 +64,7 @@ ms.lasthandoff: 12/13/2017
 
 |参数|说明|示例|
 |---------|---------|---------|
-|CustomADGlobalCatalog|目标的 Active Directory 林的 FQDN<br>你想要与集成|contoso.com|
+|CustomADGlobalCatalog|目标的 Active Directory 林的 FQDN<br>你想要与集成|Contoso.com|
 |CustomADAdminCredentials|具有 LDAP 读取权限的用户|YOURDOMAIN\graphservice|
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>在现有 Active Directory 中创建用户帐户 （可选）
@@ -105,7 +103,7 @@ ms.lasthandoff: 12/13/2017
 
 Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Directory 进行通信：
 
-|类型|端口|协议|
+|Type|端口|协议|
 |---------|---------|---------|
 |LDAP|389|TCP 和 UDP|
 |LDAP SSL|636|TCP|
@@ -335,4 +333,4 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 堆栈数据中心集成-发布终结点](azure-stack-integrate-endpoints.md)
+[注册 Azure 堆栈](azure-stack-registration.md)
