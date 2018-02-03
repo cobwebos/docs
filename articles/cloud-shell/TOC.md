@@ -17,6 +17,8 @@
 # 示例
 ## [在 Bash 中使用 Terraform 部署 Azure 资源](example-terraform-bash.md)
 
+## [在 Bash 中运行 Ansible](../ansible/ansible-run-playbook-in-cloudshell.md)
+
 # [嵌入 Cloud Shell](embed-cloud-shell.md)
 
 # [故障排除](troubleshooting.md)
