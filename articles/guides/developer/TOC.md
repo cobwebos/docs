@@ -1,7 +1,5 @@
 # 概述
 ## [开发人员指南](azure-developer-guide.md) 
-## [Azure 服务概述](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
-## [门户概述](../../azure-portal-overview.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [SDK 和工具](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # 快速入门

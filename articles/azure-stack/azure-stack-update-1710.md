@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: mabrigg
-ms.openlocfilehash: 7945b802e8c1482d9c6379a26618df23535daacf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 1a482f1d2f3eef8775bb7b64d4f6749f69fa5471
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure 堆栈 1710年更新 （生成 20171020.1）
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 12/11/2017
 | 当执行更新时，更新过程看起来停止<br> 步骤之后使进度"步骤： 运行步骤 2.4-安装<br> 更新"的更新操作计划。<br><br>此步骤后跟一系列的.nupkg 复制过程<br> 文件复制到内部基础结构，文件共享。 例如：<br><br>**将 1 文件复制到 content\PerfCollector\VirtualMachines 从<br>\VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\ <br>PerfCounterConfiguration**<br><br>或者，你看到消息：<br><br>**WarningMessage:Task： 接口 LiveUpdate 调用<br>的角色 Cloud\Fabric\VirtualMachines 失败：<br>类型角色 VirtualMachines 引发 LiveUpdate<br>异常： 磁盘上没有足够的空间.**  | 问题是由填满基础结构的虚拟机并在 Windows Server 横向扩展文件服务器 (SOFS) 中的后续更新时将交付的问题上的磁盘的日志文件引起的。 | 请与 Microsoft 客户服务和支持 (CSS) 联系以获取帮助。 | 
 | 当你执行更新，类似于以下错误<br> 步骤期间可能会出现"步骤： 运行步骤 2.13.2-更新<br> *VM_Name*"的更新操作计划。 （虚拟机<br> 名称可能有所不同。）<br><br>**ActionPlanInstanceWarning ece/MachineName:<br> WarningMessage:Task： 调用的接口 LiveUpdate<br>角色 Cloud\Fabric\WAS 失败： 键入 LiveUpdate 角色的<br>是引发了异常： 过程中的出错存储<br>初始化： 尝试建立 API 时发生错误<br>调用到 Microsoft 存储服务: {"消息":"超时<br>与 Service Fabric 通信时出现。<br>异常类型： TimeoutException。<br>异常消息： 操作已超时。"}**  | 问题是由 Windows server 中将在后续的更新中修复 I/O 超时导致的。 | 请与 Microsoft CSS 联系以获取帮助。
 | 当你执行更新，类似于以下错误<br> 可能会出现在步骤"单步跳 21 的重新启动 SQL server 虚拟机。"<br><br>**键入的角色 VirtualMachines 引发 LiveUpdateRestart<br>异常： VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br>查询 VM MachineName-Sql01。-10/13/2017年 5:11:50 PM VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br> VM 被标记为 HighlyAvailable。-10/13/2017年 5:11:50 PM<br> VerboseMessage: [VirtualMachines:LiveUpdateRestart] 在<br>MS。在 Internal.ServerClusters.ExceptionHelp.Build<br>MS。Internal.ServerClusters.ClusterResource.BeginTakeOffline<br>（布尔强制） 在 Microsoft.FailoverClusters.PowerShell。<br>在 StopClusterResourceCommand.BeginTimedOperation() <br>Microsoft.FailoverClusters.PowerShell.TimedCmdlet.Wrapped<br>在 Microsoft.FailoverClusters.PowerShell ProcessRecord()。<br>FCCmdlet.ProcessRecord()-10/13/2017年 5:11:50 PM 警告<br>消息： 任务： 调用的接口 LiveUpdateRestart<br>角色 Cloud\Fabric\VirtualMachines 失败：** | 如果虚拟机无法重新启动，则可能出现此问题。 | 请与 Microsoft CSS 联系以获取帮助。
-| 当执行更新时，可能会出现错误：<br><br>**自 2017 年 1-10-22T01:37:37.5369944Z 角色 'SQL' 的类型关闭<br>引发了异常： 出错暂停节点<br>s45r1004 Sql01 站点参阅停止 SQL C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\Applications\ EnterpriseCloud <br>EngineApplicationType &#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 在<br>关闭、 C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br>应用程序 \EnterpriseCloudEngineApplicationType &#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br>Deployment\Classes\SQL\SQL.psm1： 行在 50 &#60;ScriptBlock &#62;，<br> &#60;没有文件 >： 行在 18 &#60;ScriptBlock &#62;、 &#60;没有文件 &#62;: 行 16** | 如果无法将虚拟机置于挂起状态，以排出角色，则可能出现此问题。 | 请与 Microsoft CSS 联系以获取帮助。
+| 当执行更新时，可能会出现错误：<br><br>**自 2017 年 1-10-22T01:37:37.5369944Z 角色 'SQL' 的类型关闭<br>引发了异常： 出错暂停节点<br>s45r1004 Sql01 站点参阅停止 SQL C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\Applications\ EnterpriseCloud <br>EngineApplicationType &#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 在<br>关闭、 C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br>应用程序 \EnterpriseCloudEngineApplicationType &#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br>Deployment\Classes\SQL\SQL.psm1： 行在 50 < ScriptBlock &#62;，<br> <No file>： 行在 18 < ScriptBlock &#62;，< 没有文件 &#62;: 行 16** | 如果无法将虚拟机置于挂起状态，以排出角色，则可能出现此问题。 | 请与 Microsoft CSS 联系以获取帮助。
 | 当执行更新时，可能会出现以下错误之一：<br><br>**类型验证的角色 ADFS 引发了异常： 验证<br>ADFS/Graph 角色失败，出现错误： 错误检查 ADFS<br>探测终结点*endpoint_URI*： 异常调用<br>"GetResponse"带"0"的参数:"远程服务器<br>返回了一个错误: (503) 服务器不可用。"Invoke-<br>ADFSGraphValidation**<br><br>**类型验证的角色 ADFS 引发了异常： 验证<br>ADFS/Graph 角色失败，出现错误： 错误提取<br>ADFS 属性： 无法连接到<br>net.tcp: //localhost: 1500年/策略。连接尝试持续<br>为 00:00:02.0498923 的时间范围。TCP 错误代码<br>10061： 由于无法建立连接目标<br>计算机主动拒绝 127.0.0.1:1500。<br>在 Invoke ADFSGraphValidation** | 更新操作计划无法验证 Active Directory 联合身份验证服务 (AD FS) 运行状况。 | 请与 Microsoft CSS 联系以获取帮助。
 
 ## <a name="known-issues-post-installation"></a>已知的问题 （安装后）
@@ -104,7 +104,7 @@ ms.lasthandoff: 12/11/2017
 - 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
 - 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
  
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 - 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
 - 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
 - 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。

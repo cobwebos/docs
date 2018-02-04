@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 3738ca8ce8dfe0e5375779e9273a3d10baf8861a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e73a607a7f8ad948ab821b0aeda164418509f076
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
@@ -49,8 +49,7 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 2. 输入**应用程序名称**例如-Azure 堆栈上的 App Service。
 3. 输入“主页 URL”。 主页 URL 必须是 Azure 堆栈门户地址。 例如，https://portal.local.azurestack.external。
 4. 输入**应用程序说明**。
-5. 输入“授权回调 URL”。  在默认 Azure 堆栈部署中，Url 是在窗体 https://portal.local.azurestack.external/tokenauthorize，如果你使用的运行不同的域替代在域中的查找 azurestack.local。
-    ![GitHub-注册使用值填充新的应用程序][4]
+5. 输入“授权回调 URL”。  在默认 Azure 堆栈部署中，该 Url 采用窗体 https://portal.local.azurestack.external/tokenauthorize，如果你使用的运行不同的域替代在域中的查找 local.azurestack.external ![GitHub-注册一个新使用值填充的应用程序][4]
 6. 单击“注册应用程序”。  此时会出现一个页面，其中列出了应用程序的“客户端 ID”和“客户端机密”。
     ![GitHub - 已完成应用程序注册][5]
 7.  在新浏览器选项卡或窗口中登录到 Azure 堆栈管理员门户 (https://adminportal.local.azurestack.external) 作为服务管理员。
