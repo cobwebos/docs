@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 308d78550e9e60303b70d591eb4e6bfff3e49ce7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fca2b9983e70b754e3b4cb736023c47c598bedfc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-rss-connector"></a>RSS 连接器入门
 RSS 是一种流行的 Web 联合格式，用于发布频繁更新的内容，如博客文章和新闻标题。  许多内容发布者提供 RSS 源，允许用户订阅它。  当 RSS 源中发布新项时，使用 RSS 连接器检索源信息并触发流。
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-rss"></a>创建到 RSS 的连接
 > [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]

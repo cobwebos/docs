@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 01/16/2018
 ms.author: mimig
-ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -38,9 +38,11 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 
 1. 下载适用于环境的驱动程序：
 
-    * [Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64)（适用于 64 位 Windows）
-    * [Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64)（适用于 32 位或 64 位 Windows）
-    * [Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32)（适用于 32 位 Windows）
+    | 安装程序 | 支持的操作系统| 
+    |---|---| 
+    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64)（适用于 64 位 Windows）| 64 位的 Windows 8.1 或更高版本、Windows 8、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2。| 
+    |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64)（适用于 32 位或 64 位 Windows）| 64 位的 Windows 8.1 或更高版本、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2003。| 
+    |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32)（适用于 32 位 Windows）|32 位的 Windows 8.1 或更高版本、Windows 8、Windows 7、Windows XP 和 Windows Vista。|
 
     在本地运行 msi 文件，启动“Microsoft Azure Cosmos DB ODBC 驱动程序安装向导”。 
 2. 使用默认输入完成安装向导，安装 ODBC 驱动程序。
@@ -58,9 +60,9 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
     ![“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **数据源名称**：ODBC DSN 的友好名称。 此名称是 Azure Cosmos DB 帐户的唯一名称，因此，如果有多个帐户，请适当地为数据源命名。
     - **说明**：数据源的简短说明。
-    - 主机：Azure Cosmos DB 帐户的 URI。 可在 Azure 门户“Azure Cosmos DB 密钥”边栏选项卡中检索此信息，如以下屏幕截图所示。 
-    - 访问密钥：从 Azure 门户中“Azure Cosmos DB 密钥”边栏选项卡获取的主要或辅助读写或只读密钥，如以下屏幕截图所示。 如果 DSN 用于只读数据的处理和报告，我们建议使用只读密钥。
-    ![“Azure Cosmos DB 密钥”边栏选项卡](./media/odbc-driver/odbc-driver-keys.png)
+    - 主机：Azure Cosmos DB 帐户的 URI。 可在 Azure 门户的“Azure Cosmos DB 密钥”页中检索此信息，如以下屏幕截图所示。 
+    - **访问密钥**：从 Azure 门户中“Azure Cosmos DB 密钥”页获取的主要或辅助读写或只读密钥，如以下屏幕截图所示。 如果 DSN 用于只读数据的处理和报告，我们建议使用只读密钥。
+    ![“Azure Cosmos DB 密钥”页](./media/odbc-driver/odbc-driver-keys.png)
     - **加密以下对象的访问密钥**：根据此计算机的用户选择最合适的选项。 
 4. 单击“测试”按钮，确保可以连接到 Azure Cosmos DB 帐户。 
 5. 单击“高级选项”并设置以下值：
@@ -109,7 +111,7 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
     b. 如果只想要将采样范围限定为刚刚输入的属性的值，请在选择框中选择该属性，在“值”框中输入值（例如 Seattle），然后按 Enter 键。 可以继续添加属性的多个值。 只需确保在输入值时选择正确的属性。
 
     例如，如果包含 City 的 **Attributes** 值，并想要将表限制为仅包含带有 New York 和 Dubai 城市值的行，请在“属性”框中输入 City，在“值”框中输入 New York 和 Dubai。
-4. 单击 **“确定”**。 
+4. 单击“确定”。 
 5. 完成想要采样的集合的映射定义后，请在“架构编辑器”窗口中单击“采样”。
      可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
     - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以“_”开头的所有 Azure Cosmos DB 系统必需属性。
@@ -148,4 +150,4 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure Cosmos DB 的详细信息，请参阅[什么是 Azure Cosmos DB？](introduction.md)。
+若要了解有关 Azure Cosmos DB 的详细信息，请参阅[欢迎使用 Azure Cosmos DB](introduction.md)。

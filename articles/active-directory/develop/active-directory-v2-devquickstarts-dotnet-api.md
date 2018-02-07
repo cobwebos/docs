@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5d56e74c6344580760f55506d7d90dac3e90721d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65f25e2496065ca1aaba443a9d6b3e29239e0218
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-an-mvc-web-api"></a>保护 MVC Web API
 利用 Azure Active Directory 的 v2.0 终结点，可使用 [OAuth 2.0](active-directory-v2-protocols.md) 访问令牌保护 Web API，使拥有 Microsoft 个人帐户和公司/学校帐户的用户安全访问 Web API。
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 * 将名为 `Startup.cs` 的 OWIN 启动类添加到 TodoListService 项目。  右键单击项目，选择“添加” --> “新建项”，并搜索“OWIN”。  当应用程序启动时，该 OWIN 中间件将调用 `Configuration(…)` 方法。
 * 将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。  在 `Configuration(…)` 方法中，调用 ConfgureAuth(...) 以设置 Web 应用的身份验证。
 
-```C#
+```csharp
 public partial class Startup
 {
     public void Configuration(IAppBuilder app)
@@ -81,7 +81,7 @@ public partial class Startup
 
 * 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(…)` 方法，以便将 Web API 设置为接受来自 v2.0 终结点的令牌。
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
         var tvps = new TokenValidationParameters
@@ -118,7 +118,7 @@ public void ConfigureAuth(IAppBuilder app)
 
 * 现在，可以使用 `[Authorize]` 属性并结合 OAuth 2.0 持有者身份验证来保护控制器和操作。  使用 authorize 标记修饰 `Controllers\TodoListController.cs` 类。  这会强制用户在访问该页面之前登录。
 
-```C#
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -126,7 +126,7 @@ public class TodoListController : ApiController
 
 * 如果已授权的调用方成功调用了某个 `TodoListController` API，该操作可能需要访问有关调用方的信息。  OWIN 通过 `ClaimsPrincipal` 对象提供对持有者令牌中的声明的访问。  
 
-```C#
+```csharp
 public IEnumerable<TodoItem> Get()
 {
     // You can use the ClaimsPrincipal to access information about the

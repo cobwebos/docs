@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e61e664ef5cd9e296016c8fc572d67ec1d62c1f7
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7ffe44828735a5687008ebc5a7d8d9f017f49daa
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>在流、逻辑应用、函数和 WebJobs 之间进行选择
 本文对 Microsoft 云中的以下服务进行比较和对比，这些服务都可以解决集成问题并自动化业务流程：
@@ -115,7 +115,7 @@ Microsoft Flow 和 Azure 逻辑应用可以一起讨论，这是因为它们都�
 通过创建第一个流、逻辑应用、函数应用或 WebJob，开始使用每个服务。 单击以下任一链接：
 
 * [开始使用 Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+* [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
 * [使用 Visual Studio 部署 WebJobs](../app-service/websites-dotnet-deploy-webjobs.md)
 

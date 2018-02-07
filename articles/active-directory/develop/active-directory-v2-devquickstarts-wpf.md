@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7436db2943a6b3de6ec53cdaa6692aa05d2f2f69
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88679e7dd71011f767cbe4de295c284516375d20
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>将登录凭据添加到 Windows 桌面应用
 v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  它也可让应用安全地与后端 Web API，以及 [Microsoft Graph](https://graph.microsoft.io) 和多个 [Office 365 统一 API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 进行通信。
@@ -69,7 +69,7 @@ MSAL 遵守的基本原理是，每当应用需要访问令牌时，只需调用
 
 * 在 `TodoListClient` 项目中，打开 `MainWindow.xaml.cs` 并找到 `OnInitialized(...)` 方法。  第一步是初始化应用的 `PublicClientApplication`（MSAL 表示本机应用程序的主类）。  将在此处向 MSAL 传递其与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
 
-```C#
+```csharp
 protected override async void OnInitialized(EventArgs e)
 {
         base.OnInitialized(e);
@@ -82,7 +82,7 @@ protected override async void OnInitialized(EventArgs e)
 
 * 当应用程序启动时，我们希望检查并查看用户是否已登录应用。  但是，我们不想在此时调用登录 UI，而是让用户单击“登录”才执行此操作。  另外，在 `OnInitialized(...)` 方法中：
 
-```C#
+```csharp
 // As the app starts, we want to check to see if the user is already signed in.
 // You can do so by trying to get a token from MSAL, using the method
 // AcquireTokenSilent.  This forces MSAL to throw an exception if it cannot
@@ -119,7 +119,7 @@ catch (MsalException ex)
 
 * 如果用户未登录而按下“登录”按钮，我们希望调用登录 UI 并让用户输入其凭据。  实现“登录”按钮处理程序：
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
         // TODO: Sign the user out if they clicked the "Clear Cache" button
@@ -167,7 +167,7 @@ catch (MsalException ex)
 
 * 如果用户成功登录，MSAL 将接收和缓存令牌，让可以放心地继续调用 `GetTodoList()` 方法。  获取用户任务的剩余步骤是实现 `GetTodoList()` 方法。
 
-```C#
+```csharp
 private async void GetTodoList()
 {
 
@@ -219,7 +219,7 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 
 - When the user is done managing their To-Do List, they may finally sign out of the app by clicking the "Clear Cache" button.
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
         // If the user clicked the 'clear cache' button,

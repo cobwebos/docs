@@ -3,7 +3,7 @@ title: "使用 Azure Active Directory 域服务配置已加入域的 HDInsight �
 description: "了解如何使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集"
 services: hdinsight
 documentationcenter: 
-author: saurinsh
+author: bprakash
 manager: jhubbard
 editor: cgronlun
 tags: 
@@ -13,21 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
-ms.author: saurinsh
-ms.openlocfilehash: c5ab129e87c8c7903972bd94286ba0368037a738
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.author: bhanupr
+ms.openlocfilehash: 77478616eae27828a57a36dc0aaf3884e80ce403
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集
 
 已加入域的群集在 HDInsight 上提供多用户企业安全功能。 已加入域的 HDInsight 群集连接到 Active Directory 域，使域用户能够使用其域凭据对群集进行身份验证和运行大数据作业。 
 
-可通过三种方法来设置已加入域的 HDInsight 群集可连接到的域控制器：
+可通过两种方法来设置已加入域的 HDInsight 群集可连接到的域控制器：
 
 - Azure Active Directory 域服务 (Azure AD DS)
-- 本地 Active Directory
 - Azure IaaS VM 上的 Active Directory 域控制器
 
 本文介绍如何使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集。
@@ -37,7 +36,7 @@ ms.lasthandoff: 01/12/2018
 在创建 HDInsight 群集之前，需要先创建 Azure AD DS。 若要创建 Azure ADDS，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。 
 
 > [!NOTE]
-> 只有租户管理员拥有创建域服务的特权。 
+> 只有租户管理员拥有创建域服务的特权。 如果将 Azure Data Lake 存储 (ADLS) 用作 HDInsight 的默认存储，则确保 ADLS 的默认 Azure AD 租户与 HDInsight 群集的域相同。 
 
 预配域服务后，需要在“Azure AD DC 管理员”组中创建一个服务帐户用于创建 HDInsight 群集。 服务帐户必须是 Azure AD 上的全局管理员。
 

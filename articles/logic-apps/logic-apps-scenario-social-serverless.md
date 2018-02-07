@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
-ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3e07b8d7194d83e3ba3986177170edff21e1d7a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建实时客户见解仪表板
 
@@ -37,7 +37,7 @@ Functions 在云中提供无服务器计算。  在此方案中，我们将使�
 
 ## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>生成可以针对客户数据进行触发操作的逻辑应用
 
-在 Visual Studio 或 Azure 门户中[创建逻辑应用](logic-apps-create-a-logic-app.md)后，请执行以下操作：
+在 Visual Studio 或 Azure 门户中[创建逻辑应用](quickstart-create-first-logic-app-workflow.md)后，请执行以下操作：
 
 1. 针对 Twitter 的“出现新推文时”添加一个触发器
 2. 将触发器配置为侦听推文的关键字或井号标签。

@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: 13d01e63cfecdc826eba19b8eb0dc539019409dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储度量值和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
+# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
 诊断和故障排除是构建和支持包含 Microsoft Azure 存储的客户端应用程序的一项关键技能。 由于 Azure 应用程序的分布特性，诊断和排查错误与性能问题可能会比在传统环境中更为复杂。
@@ -37,9 +37,7 @@ ms.lasthandoff: 10/11/2017
   * **存储日志记录**可在服务器端日志中记录发送到 Azure 存储服务的每个请求。 日志用于跟踪每个请求的详细数据，包括执行的操作、操作的状态和延迟信息。 若要深入了解存储分析写入日志的请求和响应数据，请参阅 [Storage Analytics Log Format](/rest/api/storageservices/Storage-Analytics-Log-Format)（存储分析日志格式）。
 
 > [!NOTE]
-> 具有区域冗余存储空间 (ZRS) 复制类型的存储帐户此时不启用度量值或日志记录功能。 
-> 
-> 
+> 复制类型为区域冗余存储 (ZRS) 的存储帐户支持指标和日志记录。 ZRS 经典版帐户不支持指标或日志记录。 有关 ZRS 的详细信息，请参阅[区域冗余存储](storage-redundancy.md#zone-redundant-storage)。 
 
 * **Azure 门户**。 可以在 [Azure 门户](https://portal.azure.com)中配置存储帐户的指标和日志记录。 还可以查看显示应用程序在各时间段执行情况的图表和图形，以及配置警报，以便在应用程序的特定度量值不同于预期时接收通知。
   
@@ -349,11 +347,11 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 
 | 若要调查... | 使用筛选器表达式… | 将表达式应用到日志（客户端、服务器、网络、全部） |
 | --- | --- | --- |
-| 队列上的消息传递出现意外的延迟 |AzureStorageClientDotNetV4.Description   包含“正在重试失败的操作。” |客户端 |
+| 队列上的消息传递出现意外的延迟 |AzureStorageClientDotNetV4.Description   包含“正在重试失败的操作。” |Client |
 | PercentThrottlingError 的 HTTP 提升 |HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |网络 |
 | PercentTimeoutError 提升 |HTTP.Response.StatusCode == 500 |网络 |
 | PercentTimeoutError 提升（全部） |*StatusCode == 500 |全部 |
-| PercentNetworkError 提升 |AzureStorageClientDotNetV4.EventLogEntry.Level < 2 |客户端 |
+| PercentNetworkError 提升 |AzureStorageClientDotNetV4.EventLogEntry.Level < 2 |Client |
 | HTTP 403（禁止）消息 |HTTP.Response.StatusCode == 403 |网络 |
 | HTTP 404（未找到）消息 |HTTP.Response.StatusCode == 404 |网络 |
 | 404（全部） |*StatusCode == 404 |全部 |

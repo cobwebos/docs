@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3e4b73f432f2695fa8b66b4d2bca23d32bfa9f3a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1733e953d9dd65a3d2b801e6c5ba5cfbb5f82920
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-create-datasets.md)
+> * [版本 1 - 正式版](data-factory-create-datasets.md)
 > * [版本 2 - 预览版](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
@@ -112,7 +112,7 @@ ms.lasthandoff: 11/02/2017
 }
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * “type”设置为 AzureSqlTable。
 * “tableName”类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
@@ -195,7 +195,7 @@ structure:
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 名称 |列的名称。 |是 |
+| name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
 | culture |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
 | 格式 |类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
@@ -238,7 +238,7 @@ structure:
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| frequency |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
+| 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”指定为“Minute”，则应将“interval”设置为小于 15 的值。 |是 |不可用 |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”设置为“Month”，将“style”设置为“EndOfInterval”，则会在每月的最后一天生成切片。 若将“style”设置为“StartOfInterval”，则会在每月的第一天生成切片。<br/><br/>若将“frequency”设置为“Day”，将“style”设置为“EndOfInterval”，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
 | anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>注意：如果此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“interval”是“每小时”（frequency: hour 且 interval: 1），而 anchorDateTime 包含“分钟和秒”，则将忽略 anchorDateTime 的“分钟和秒”部分。 |否 |01/01/0001 |

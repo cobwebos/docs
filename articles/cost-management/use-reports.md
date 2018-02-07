@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/29/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 92bb4f2a6458057613bdbcb749026781111a778d
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-cost-management-reports"></a>使用成本管理报表
 
@@ -135,7 +135,7 @@ Cloudyn 通过应用帐户关联，确保分配结果保持每个链接帐户的
 
 
 
-### <a name="cost-over-time-report"></a>时段成本报表
+### <a name="cost-over-time-report"></a>成本历时报告
 
 时段成本报表显示一段时间内的支出，以便可以观察趋势，并检测部署中的异常。 它实质上是显示定义时间段内的成本分布。 该报表包含主要成本促成因素，包括选定时间范围内的持续成本，以及一次性支出的保留实例费用。 此报表可以使用 Cost Manager 360° 中设置的策略。
 
@@ -162,4 +162,4 @@ Cloudyn 通过应用帐户关联，确保分配结果保持每个链接帐户的
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果尚未完成有关成本管理的第一篇教程，请阅读[查看用量和成本](tutorial-review-usage.md)。
+- 如果尚未完成有关成本管理的第一本教程，请阅读[查看使用情况和成本](tutorial-review-usage.md)。

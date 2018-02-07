@@ -2,23 +2,18 @@
 title: "从 VMware 到 Azure 的 Azure Site Recovery 故障排除 | Microsoft 文档"
 description: "解决复制 Azure 虚拟机时出现的错误"
 services: site-recovery
-documentationcenter: 
 author: anoopkv
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: df8234ad79439245025cb7ecf87a2050960958b2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c5566ec44a8bfed0a3e7207c2cebf21517573541
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -74,7 +69,7 @@ ms.lasthandoff: 12/13/2017
 
 **错误代码** | **可能的原因** | **错误特定建议**
 --- | --- | ---
-95108 </br>**消息：**移动服务到源计算机的推送安装失败，错误代码为 **EP0859**。 <br>| 提供用于安装移动服务的凭据不正确或用户帐户没有足够权限 <br>| 请确保提供的凭据是**根**帐户的凭据。 若要[添加/编辑用户凭据](site-recovery-vmware-to-azure-manage-configuration-server.md#modify-user-accounts-and-passwords)，请转到配置服务器并单击桌面上的“Cspsconfigtool”快捷方式图标。 单击“管理帐户”以添加/编辑凭据。|
+95108 </br>**消息：**移动服务到源计算机的推送安装失败，错误代码为 **EP0859**。 <br>| 提供用于安装移动服务的凭据不正确或用户帐户没有足够权限 <br>| 请确保提供的凭据是**根**帐户的凭据。 若要添加/编辑用户凭据，请转到配置服务器并单击桌面上的“Cspsconfigtool”快捷方式图标。 单击“管理帐户”以添加/编辑凭据。|
 
 ## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>错误 95265 - 无法启用保护 (EP0902)
 
@@ -92,13 +87,14 @@ ms.lasthandoff: 12/13/2017
 ## <a name="resource-to-troubleshoot-push-installation-problems"></a>用于排查推送安装问题的资源
 
 #### <a name="troubleshoot-file-and-print-sharing-issues"></a>排查文件和打印共享问题
-*  [使用组策略启用或禁用文件共享](https://technet.microsoft.com/en-us/library/cc754359(v=ws.10).aspx)
-* [如何通过 Windows 防火墙启用文件和打印共享](https://technet.microsoft.com/en-us/library/ff633412(v=ws.10).aspx)
+*  [使用组策略启用或禁用文件共享](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
+* [如何通过 Windows 防火墙启用文件和打印共享](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
 
 #### <a name="troubleshoot-wmi-issues"></a>排查 WMI 问题
 * [基本 WMI 测试](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI 故障排除](https://msdn.microsoft.com/en-us/library/aa394603(v=vs.85).aspx)
-* [使用 WMI 脚本和 WMI 服务排查问题](https://technet.microsoft.com/en-us/library/ff406382.aspx#H22)
+* [WMI 故障排除](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
+* [使用 WMI 脚本和 WMI 服务排查问题](https://technet.microsoft.com/library/ff406382.aspx#H22)
 
 ## <a name="next-steps"></a>后续步骤
-- [启用 VMware 虚拟机的复制](vmware-walkthrough-enable-replication.md)
+
+[了解如何](tutorial-vmware-to-azure.md)为 VMware VM 设置灾难恢复。

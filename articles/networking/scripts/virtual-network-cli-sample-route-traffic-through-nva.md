@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.openlocfilehash: 78091b515c00591a4af8d807945475b6be50188a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af6e9d55038acba194f3cc631ff1b4e2e371852c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>通过网络虚拟设备路由流量
 
@@ -45,22 +45,22 @@ az group delete --name MyResourceGroup --yes
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#create) | 创建用于存储所有资源的资源组。 |
-| [az network vnet create](/cli/azure/network/vnet#create) | 创建 Azure 虚拟网络和前端子网。 |
-| [az network subnet create](/cli/azure/network/vnet/subnet#create) | 创建后端子网和 DMZ 子网。 |
-| [az network public-ip create](/cli/azure/network/public-ip#create) | 创建用于从 Internet 访问 VM 的公共 IP 地址。 |
-| [az network nic create](/cli/azure/network/nic#create) | 创建虚拟网络接口，并对它启用 IP 转发。 |
-| [az network nsg create](/cli/azure/network/nsg#create) | 创建网络安全组 (NSG)。 |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#create) | 创建允许 HTTP 和 HTTPS 端口入站到 VM 的 NSG 规则。 |
-| [az network vnet subnet update](/cli/azure/network/vnet/subnet#update)| 将 NSG 和路由表关联到子网。 |
-| [az network route-table create](/cli/azure/network/route-table#create)| 为所有路由创建路由表。 |
-| [az network route-table route create](/cli/azure/network/route-table/route#create)| 创建路由，通过 VM 在子网和 Internet 之间路由流量。 |
-| [az vm create](/cli/azure/vm#create) | 创建虚拟机并向其附加 NIC。 此命令还指定要使用的虚拟机映像和管理凭据。 |
-| [az group delete](/cli/azure/group#delete) | 删除资源组及其包含的所有资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | 创建 Azure 虚拟网络和前端子网。 |
+| [az network subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | 创建后端子网和 DMZ 子网。 |
+| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | 创建用于从 Internet 访问 VM 的公共 IP 地址。 |
+| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | 创建虚拟网络接口，并对它启用 IP 转发。 |
+| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | 创建网络安全组 (NSG)。 |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | 创建允许 HTTP 和 HTTPS 端口入站到 VM 的 NSG 规则。 |
+| [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)| 将 NSG 和路由表关联到子网。 |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| 为所有路由创建路由表。 |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| 创建路由，通过 VM 在子网和 Internet 之间路由流量。 |
+| [az vm create](/cli/azure/vm#az_vm_create) | 创建虚拟机并向其附加 NIC。 此命令还指定要使用的虚拟机映像和管理凭据。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组及其包含的所有资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

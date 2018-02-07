@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 4ef8cbf22f2fcd7017af16083240608e5ca0fb5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86a9cf2c1106180ba5c8c65849042784bfd2afcd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
 
 应用程序可以使用共享访问签名 (SAS) 身份验证对 Azure 中继进行身份验证。 通过 SAS 身份验证，应用程序能够使用在中继命名空间中配置的访问密钥向 Azure 中继服务进行身份验证。 然后可以使用此密钥生成共享访问签名令牌，客户端可用它向中继服务进行身份验证。
 
 ## <a name="shared-access-signature-authentication"></a>共享访问签名身份验证
+
 通过 [SAS 身份验证](../service-bus-messaging/service-bus-sas.md)可向具有特定权限的用户授予对 Azure 中继资源的访问权限。 SAS 身份验证涉及配置具有资源相关权限的加密密钥。 客户端随后即可通过提供 SAS 令牌获取该资源的访问权限，该令牌由要访问的资源 URI 和签有已配置密钥的过期时间组成。
 
 可以在中继命名空间上配置用于 SAS 的密钥。 与服务总线消息传送不同，[中继混合连接](relay-hybrid-connections-protocol.md)支持未经授权的发件人或匿名发件人。 可在创建实体时启用它的匿名访问权限，如门户中以下屏幕快照所示：
@@ -45,6 +46,7 @@ ms.lasthandoff: 10/11/2017
 Azure.NET SDK 2.0 版和更高版本中包含 Azure 中继的 SAS 身份验证支持。 SAS 支持 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关 SAS 的详细信息，请继续阅读[使用共享访问签名进行服务总线身份验证](../service-bus-messaging/service-bus-sas.md)。
 - 有关混合连接功能的详细信息，请参阅[Azure 中继混合连接协议指南](relay-hybrid-connections-protocol.md)。
 - 有关服务总线消息传送身份验证和授权的相关信息，请参阅[服务总线身份验证和授权](../service-bus-messaging/service-bus-authentication-and-authorization.md)。 

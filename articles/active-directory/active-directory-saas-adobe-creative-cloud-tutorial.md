@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 892055728ccc35690b19edf708997e9f104f75b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c34d6bddb733c5979bc2006738e950cf7a185c4e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Adobe Creative Cloud 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 Adobe Creative Cloud 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Adobe Creative Cloud”，在结果面板中选择“Adobe Creative Cloud”，然后单击“添加”按钮添加该应用程序。
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 12/11/2017
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Adobe Creative Cloud 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Adobe Creative Cloud 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 12/11/2017
     | ---------------| ----------------|
     | FirstName |user.givenname |
     | LastName |user.surname |
-    | 电子邮件 |user.mail |
+    | Email |user.mail |
 
     a. 单击“添加属性”，打开“添加属性”对话框。
     
@@ -143,11 +143,11 @@ ms.lasthandoff: 12/11/2017
     
     ![配置单一登录](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_attribute_05.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定” 。
+    d.单击“下一步”。 单击“确定” 。
     
 8. 单击“保存”按钮。
 
@@ -157,11 +157,11 @@ ms.lasthandoff: 12/11/2017
 
     ![Adobe Creative Cloud 配置](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_configure.png)
     
-10. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Adobe Creative Cloud 租户。
+10. 在另一个 Web 浏览器窗口中，以管理员身份登录到 [Adobe 管理控制台](https://adminconsole.adobe.com)。
 
-11. 转到左侧导航窗格上的“标识”，单击域。 然后在“需要单一登录配置”部分执行以下步骤。
+11. 转到顶部导航栏上的“设置”，然后选择“标识”。 此时将打开域列表。 针对域单击“配置”链接。 然后在“需要单一登录配置”部分执行以下步骤。 有关详细信息，请参阅[设置域](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 
-    ![设置](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_001.png "设置")
+    ![设置](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "设置")
     
     a. 单击“浏览”，将已下载的证书从 Azure AD 上传到“IDP 证书”。
     
@@ -171,13 +171,11 @@ ms.lasthandoff: 12/11/2017
     
     d.单击“下一步”。 选择“HTTP - 重定向”作为“IDP 绑定”。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“电子邮件地址”作为“用户登录设置”。
+    e. 选择“电子邮件地址”作为“用户登录设置”。
     
     f. 单击“保存”按钮。
 
 12. 仪表板现将显示 XML“下载元数据”文件。 它包含 Adobe 的 EntityDescriptor URL 和 AssertionConsumerService URL。 请在 Azure AD 应用程序中打开文件并配置它们。
-
-    ![在应用端配置单一登录](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_002.png)
 
     ![在应用端配置单一登录](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
@@ -212,13 +210,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="create-an-adobe-creative-cloud-test-user"></a>创建 Adobe Creative Cloud 测试用户
 
@@ -226,11 +224,9 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
 
-1. 以管理员身份登录 Adobe Creative Cloud 公司站点。
+1. 以管理员身份登录到 [Adobe 管理控制台](https://adminconsole.adobe.com)站点。
 
-2. 添加 Adobe 控制台中的用户作为“联合 ID”，并将其分配某个组以授予权利
-
-    ![应用程序列表中的“Adobe Creative Cloud”链接](./media/active-directory-saas-adobe-creative-cloud-tutorial/users.png)  
+2. 添加 Adobe 控制台中的用户作为“联合 ID”，并将其分配到某个产品配置文件。 有关添加用户的详细信息，请参阅[在 Adobe 管理控制台中添加用户](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
 
 3. 现在，请在“Adobe 登录”窗体中键入电子邮件地址/UPN，按 Tab，随后应会联合回到 Azure AD：
     * Web 访问：www.adobe.com > 登录
@@ -277,7 +273,9 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+* [设置域 (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+* [配置 Azure 以用于 Adobe SSO (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 
 <!--Image references-->
 

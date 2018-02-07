@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0452610e56294a19bab302d6df73dff2a70a2eeb
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: daf865ef33e2b099e01f4647b17f36ca8df92c94
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-ftp-connector.md)
+> * [版本 1 - 正式版](data-factory-ftp-connector.md)
 > * [版本 2 - 预览版](../connector-ftp.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 FTP 连接器](../connector-ftp.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 FTP 连接器](../connector-ftp.md)。
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从 FTP 服务器移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，该文章总体概述了如何使用复制活动移动数据。
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/03/2017
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
 | type |将此类型设置为 FtpServer。 |是 |&nbsp; |
-| 主机 |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
+| host |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
 | authenticationType |指定身份验证类型。 |是 |基本、匿名 |
 | username |指定有权访问 FTP 服务器的用户。 |否 |&nbsp; |
 | password |指定用户（用户名）的密码。 |否 |&nbsp; |
@@ -217,7 +217,7 @@ ms.lasthandoff: 11/03/2017
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
 * 包含使用 [FileSystemSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动的[管道](data-factory-create-pipelines.md)
 
-此示例每小时将数据从 FTP 服务器复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从 FTP 服务器复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 ### <a name="ftp-linked-service"></a>FTP 链接服务
 

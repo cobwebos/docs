@@ -1,6 +1,6 @@
 ---
-title: "创建面向 Internet 的负载均衡器 - Azure CLI | Microsoft 文档"
-description: "了解如何使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载均衡器"
+title: "创建公共负载均衡器 - Azure CLI | Microsoft Docs"
+description: "了解如何使用 Azure CLI 创建公共负载均衡器"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8baf065a7aac0a38624197f8f6a1f6a84aaab2a8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8c2703a1b43834e1c82e0776e2dee807bb3192
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
+# <a name="creating-a-public-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建公共负载均衡器
 
 > [!div class="op_single_selector"]
-> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
@@ -34,13 +34,13 @@ ms.lasthandoff: 12/18/2017
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-本文介绍 Resource Manager 部署模型。 还可以[了解如何使用经典部署创建面向 Internet 的负载均衡器](load-balancer-get-started-internet-classic-portal.md)
+本文介绍 Resource Manager 部署模型。 还可以[了解如何使用经典部署创建公共负载均衡器](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>使用 Azure CLI 部署解决方案
 
-以下步骤说明如何使用 Azure 资源管理器和 CLI 创建面向 Internet 的负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，再将其合成一个新资源。
+以下步骤说明如何使用 Azure 资源管理器和 CLI 创建公共负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，再将其合成一个新资源。
 
 需要创建和配置以下对象才能部署负载均衡器：
 

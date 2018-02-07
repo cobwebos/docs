@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: f3b29db2dd74e6b3c0c066045d05cb853d1541f8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f57260b2ee280aa0f49f42cd145477205926cb0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix 查询服务器 REST SDK
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/12/2018
 
 若要开始使用库，请实例化新的 `PhoenixClient` 对象，将包含 `Uri` 的 `ClusterCredentials` 传递到群集，并传递群集的 Hadoop 用户名和密码。
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
 client = new PhoenixClient(credentials);
 ```
@@ -50,7 +50,7 @@ client = new PhoenixClient(credentials);
 
 若要将一个或多个请求发送到 PQS，需包括一个将请求与连接相关联的唯一连接标识符。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 ```
 
@@ -60,7 +60,7 @@ string connId = Guid.NewGuid().ToString();
 
 若要调用 `ConnectionSyncRequestAsync`，请传入 `ConnectionProperties` 对象。
 
-```c#
+```csharp
 ConnectionProperties connProperties = new ConnectionProperties
 {
     HasAutoCommit = true,
@@ -92,7 +92,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 | -- | -- |
 | 0 | 事务不受支持。 |
 | 1 | 可能出现脏读、不可重复读和幻读。 |
-| 2 | 可以防止脏读，但会出现不可重复读和幻读。 |
+| #N/A | 可以防止脏读，但会出现不可重复读和幻读。 |
 | 4 | 可以防止脏读和不可重复读，但会出现幻读。 |
 | 8 | 脏读、不可重复读和幻读都可以防止。 |
 
@@ -102,7 +102,7 @@ HBase 与任何其他 RDBMS 一样，在表中存储数据。 Phoenix 使用标�
 
 此示例和所有后续示例都按照[实例化新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中的定义使用实例化的 `PhoenixClient` 对象。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 
@@ -172,13 +172,13 @@ finally
 
 以下示例显示了一个单独的数据插入，引用的 `List<string>` 集合包含美国的州和领地缩写：
 
-```c#
+```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
 表的 `StateProvince` 列值会用在后续的选择操作中。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -289,7 +289,7 @@ finally
 
 以下代码几乎与逐个插入数据的代码相同。 此示例在调用 `ExecuteBatchRequestAsync` 的过程中使用 `UpdateBatch` 对象，而不是使用准备好的语句重复调用 `ExecuteRequestAsync`。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -407,7 +407,7 @@ finally
 2. 使用总行计数 select 语句检索单一标量结果。
 3. 执行一个 select 语句，返回单个州或领地的客户总数。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 

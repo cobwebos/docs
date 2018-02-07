@@ -3,7 +3,7 @@ title: "使用 Azure AD Connect 同步解决密码同步问题 | Microsoft Docs"
 description: "本文提供有关如何排查密码同步问题的信息。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 89e6fd07553570a13c134a94a25fc73f4fa8c99c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0bf07e80e575309fe7fa44661776c23da5db6dce
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码同步问题
 本主题提供有关如何解决密码同步问题的步骤。 如果密码未按预期同步，请区分该密码是一部分用户的密码还是所有用户的密码。
@@ -270,7 +270,7 @@ ms.lasthandoff: 12/11/2017
 
 9. 在列表中，输入应由 Connect 用于密码同步的域控制器。同一列表也用于导入和导出。 对所有域执行这些步骤。
 
-10. 如果脚本显示没有检测信号，请运行[触发所有密码的完全同步](#trigger-a-full-sync-of-all-passwords)中的脚本。
+10. 如果脚本显示没有检测信号，请运行[“触发所有密码的完全同步”](#trigger-a-full-sync-of-all-passwords)中的脚本。
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>一个对象未同步密码：手动排查问题的步骤
 可以通过检查对象的状态，轻松排查密码同步问题。
@@ -289,7 +289,7 @@ ms.lasthandoff: 12/11/2017
 
     c. 选择用户所在的 Active Directory 连接器。
 
-    d. 选择“搜索连接器空间”。
+    d.单击“下一步”。 选择“搜索连接器空间”。
 
     e. 在“作用域”框中，选择“DN 或定位点”，然后输入要排查的用户的完整 DN。
 

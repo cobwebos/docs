@@ -3,7 +3,7 @@ title: "已加入域的 Azure HDInsight 体系结构 | Microsoft Docs"
 description: "了解如何计划已加入域的 HDInsight。"
 services: hdinsight
 documentationcenter: 
-author: saurinsh
+author: bhanupr
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
-ms.author: saurinsh
-ms.openlocfilehash: eca019fa5e7866ed6281e8cfee105ba1d99249bc
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: bprakash
+ms.openlocfilehash: 5285199d22528ed6b9fa3b7dbc85e382e7b28569
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集
 
@@ -47,16 +47,13 @@ HDInsight 不构建自己的多用户身份验证和授权，而是依赖于最�
 
 ![已加入域的 HDInsight 群集 OU](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)。
 
-### <a name="three-ways-of-bringing-your-own-active-directory-domain-controllers"></a>自带 Active Directory 域控制器的三种方式
+### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>自带 Active Directory 域控制器的两种方式
 
-可以通过三种方式自带 Active Directory 域控制器来创建已加入域的 HDInsight 群集。 
+可以通过两种方式自带 Active Directory 域控制器来创建已加入域的 HDInsight 群集。 
 
 - **Azure Active Directory 域服务**：此服务提供的托管 Active Directory 域与 Windows Server Active Directory 完全兼容。 Microsoft 负责管理、修补和监视 AD 域。 你可以部署群集，而不用担心如何维护域控制器。 将从 Azure Active Directory 同步用户、组和密码，使用户能够使用其公司凭据登录到群集。 有关详细信息，请参阅[使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
 - **Azure IaaS VM 上的 Active Directory**：在此选项中，你将在 Azure IaaS VM 上部署和管理你自己的 Windows Server Active Directory 域。 有关详细信息，请参阅[配置已加入域的沙盒环境](./apache-domain-joined-configure.md)。
-
-- **本地 Active Directory**：在此选项中，你需要将 HDInsight 与你的本地 Active Directory 域控制器进行集成。
-
 
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure domain-joined HDInsight clusters](apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。

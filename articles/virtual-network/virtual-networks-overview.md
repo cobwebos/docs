@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: 6cc7035e798ef72f69958a7536a741f80939d4fe
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 55aece3f20ee98d21d7bb2b96cb3d039d4849f8f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-network"></a>Azure 虚拟网络
 
@@ -90,6 +90,6 @@ Microsoft Azure 虚拟网络服务可以使 Azure 资源与虚拟网络中的其
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成[创建首个虚拟网络](virtual-network-get-started-vnet-subnet.md)中的步骤，创建自己的首个虚拟网络，并将几个虚拟机部署到此网络。
+- 完成[创建首个虚拟网络](quick-create-portal.md)中的步骤，创建自己的首个虚拟网络，并将几个虚拟机部署到此网络。
 - 完成[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中的步骤，为虚拟网络创建一个点到站点连接。
 - 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。

@@ -1,10 +1,10 @@
 ---
-title: "在 Service Fabric 中管理多个环境 | Microsoft 文档"
-description: "Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。 在某些情况下，需要以不同的方式针对各种环境配置应用程序。 本文介绍如何为每个环境定义不同的应用程序参数。"
+title: "在 Azure Service Fabric 中管理多个环境的应用程序 | Microsoft Docs"
+description: "Azure Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。 在某些情况下，需要以不同的方式针对各种环境配置应用程序。 本文介绍如何为每个环境定义不同的应用程序参数。"
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
-manager: timlt
+manager: msfussell
 editor: 
 ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
 ms.service: service-fabric
@@ -12,217 +12,51 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/18/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 671cc9b0f7b7b37fcf5b052f7e34bc98e66b2838
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/09/2017
+ms.author: mikhegn
+ms.openlocfilehash: 959fdb4aceee48863f3914d1b91f2bec6e256d6b
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="manage-application-parameters-for-multiple-environments"></a>管理多个环境的应用程序参数
-可以在任何位置，使用任意数量的计算机（从一台到数千台）来创建 Service Fabric 群集。 尽管无需针对各种环境进行修改即可运行应用程序二进制文件，但通常会根据所要部署的计算机数目，以不同的方式配置应用程序。
+# <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
 
-举个简单的例子，假设某个无状态服务有 `InstanceCount` 参数。 在 Azure 中运行应用程序时，通常要将此参数设置为特殊值 "-1"。 此配置可以确保服务在群集中的每个节点上运行（或者，如果设置了放置约束，则在节点类型中的每个节点上运行）。 但是，此配置并不适用于单计算机群集，因为不能有多个进程在单计算机的同一终结点上侦听。 在这种情况下，通常会将 `InstanceCount` 设置为 "1"。
+借助 Azure Service Fabric 群集，可以在任何位置，使用任意数量的计算机（从一台到数千台）来创建群集。 大多数情况下，必须跨多个群集配置（本地开发群集、共享开发群集和生产群集）来部署应用程序。 所有这些群集被视为运行代码的不同环境。 尽管无需修改，应用程序二进制文件也可在这些不同环境中运行，但用户通常希望以不同方式配置应用程序。
 
-## <a name="specifying-environment-specific-parameters"></a>指定特定于环境的参数
-此配置问题的解决方法是使用一组参数化默认服务和应用程序参数文件，其中填充了给定环境的参数值。 默认服务和应用程序参数在应用程序和服务清单中进行配置。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+请参见以下两个简单的示例：
+  - 你的服务在已定义的端口上侦听，但是你需要该端口在各个环境中有所不同
+  - 你需要在各个环境中为数据库提供不同的绑定凭据
 
-### <a name="default-services"></a>默认服务
-Service Fabric 应用程序由服务实例的集合组成。 尽管可以先创建一个空应用程序，然后动态创建所有服务实例，但是，大多数应用程序都有一套核心服务，这些服务始终应该在实例化应用程序时创建。 这些服务称为“默认服务”。 它们在应用程序清单中指定。方括号中包含每个环境配置的占位符：
+## <a name="specifying-configuration"></a>指定配置
 
-```xml
-  <DefaultServices>
-      <Service Name="Stateful1">
-          <StatefulService
-              ServiceTypeName="Stateful1Type"
-              TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]"
-              MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
+提供的配置可分为两个类别：
 
-              <UniformInt64Partition
-                  PartitionCount="[Stateful1_PartitionCount]"
-                  LowKey="-9223372036854775808"
-                  HighKey="9223372036854775807"
-              />
-        </StatefulService>
-    </Service>
-  </DefaultServices>
-```
-
-必须在应用程序清单的 Parameters 元素中定义每个命名参数：
-
-```xml
-    <Parameters>
-        <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="3" />
-        <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
-        <Parameter Name="Stateful1_TargetReplicaSetSize" DefaultValue="3" />
-    </Parameters>
-```
-
-DefaultValue 属性指定当给定的环境缺少更具体的参数时所要使用的值。
+- 应用于服务运行方式的配置
+  - 例如，终结点的端口号或服务的实例数量
+  - 此配置是在应用程序或服务清单文件中指定的
+- 应用于应用程序代码的配置
+  - 例如，绑定数据库的信息
+  - 此配置可通过配置文件或环境变量来提供
 
 > [!NOTE]
-> 并非所有的服务实例参数都适用于每个环境配置。 在上述示例中，已针对服务的所有实例显式定义服务分区方案的 LowKey 和 HighKey 值，因为分区范围与数据域而不是与环境相关。
-> 
-> 
+> 并非应用程序和服务清单文件中的所有属性都支持参数。
+> 在这些情况下，用户必须依赖于将字符串替换为部署工作流的一部分。 在 Visual Studio Team Services 中，可以使用类似于替换令牌：https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens 的扩展，或者在 Jenkins 中通过运行脚本任务来替换值。
+>
 
-### <a name="per-environment-service-configuration-settings"></a>每个环境的服务配置设置
-服务可以使用 [Service Fabric 应用程序模型](service-fabric-application-model.md)加入配置包，其中包含可在运行时读取的自定义键值对。 也可以通过在应用程序清单中指定 `ConfigOverride`，按环境区分这些设置的值。
+## <a name="specifying-parameters-during-application-creation"></a>在应用程序创建期间指定参数
 
-假设`Stateful1`服务的 Config\Settings.xml 文件中存在以下设置：
+在 Service Fabric 中创建命名的应用程序实例时，可以选择传入参数。 执行此操作的方式取决于创建应用程序实例的方式。
 
-```xml
-  <Section Name="MyConfigSection">
-     <Parameter Name="MaxQueueSize" Value="25" />
-  </Section>
-```
-若要重写特定应用程序/环境对的此值，请在应用程序清单中导入服务清单时创建 `ConfigOverride`。
-
-```xml
-  <ConfigOverrides>
-     <ConfigOverride Name="Config">
-        <Settings>
-           <Section Name="MyConfigSection">
-              <Parameter Name="MaxQueueSize" Value="[Stateful1_MaxQueueSize]" />
-           </Section>
-        </Settings>
-     </ConfigOverride>
-  </ConfigOverrides>
-```
-然后，可以按环境配置此参数，如上所示。 为此，可以在应用程序清单的 parameters 节中声明该参数，并在应用程序参数文件中指定特定于环境的值。
-
-> [!NOTE]
-> 对于服务配置设置，可在三个位置设置键的值：服务配置包、应用程序清单和应用程序参数文件。 Service Fabric 始终先从应用程序参数文件（如果已指定）进行选择，再从应用程序清单选择，最后从配置包选择。
-> 
-> 
-
-### <a name="setting-and-using-environment-variables"></a>设置并使用环境变量 
-可以在 ServiceManifest.xml 文件中指定和设置环境变量，并在每个实例的 ApplicationManifest.xml 文件中重写这些环境变量。
-下面的示例演示了两个环境变量：一个具有值集合，另一个被重写。 可使用和配置重写相同的方式，使用应用程序参数设置环境变量。
-
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Description>An example service manifest</Description>
-  <ServiceTypes>
-    <StatelessServiceType ServiceTypeName="MyServiceType" />
-  </ServiceTypes>
-  <CodePackage Name="MyCode" Version="CodeVersion1">
-    <SetupEntryPoint>
-      <ExeHost>
-        <Program>MySetup.bat</Program>
-      </ExeHost>
-    </SetupEntryPoint>
-    <EntryPoint>
-      <ExeHost>
-        <Program>MyServiceHost.exe</Program>
-      </ExeHost>
-    </EntryPoint>
-    <EnvironmentVariables>
-      <EnvironmentVariable Name="MyEnvVariable" Value=""/>
-      <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
-    </EnvironmentVariables>
-  </CodePackage>
-  <ConfigPackage Name="MyConfig" Version="ConfigVersion1" />
-  <DataPackage Name="MyData" Version="DataVersion1" />
-</ServiceManifest>
-```
-若要重写 ApplicationManifest.xml 中的环境变量，请使用 `EnvironmentOverrides` 元素引用 ServiceManifest 中的代码包。
-
-```xml
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="FrontEndServicePkg" ServiceManifestVersion="1.0.0" />
-    <EnvironmentOverrides CodePackageRef="MyCode">
-      <EnvironmentVariable Name="MyEnvVariable" Value="mydata"/>
-    </EnvironmentOverrides>
-  </ServiceManifestImport>
- ``` 
- 创建命名服务实例后，可以从代码访问环境变量。 例如，在 C# 中可以执行以下代码：
-
-```csharp
-    string EnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
-```
-
-### <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
-Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表，其中粗体的是会在服务中使用的环境变量，其他环境变量由 Service Fabric 运行时使用。 
-
-* Fabric_ApplicationHostId
-* Fabric_ApplicationHostType
-* Fabric_ApplicationId
-* **Fabric_ApplicationName**
-* Fabric_CodePackageInstanceId
-* **Fabric_CodePackageName**
-* **Fabric_Endpoint_[YourServiceName]TypeEndpoint**
-* **Fabric_Folder_App_Log**
-* **Fabric_Folder_App_Temp**
-* **Fabric_Folder_App_Work**
-* **Fabric_Folder_Application**
-* Fabric_NodeId
-* **Fabric_NodeIPOrFQDN**
-* **Fabric_NodeName**
-* Fabric_RuntimeConnectionAddress
-* Fabric_ServicePackageInstanceId
-* Fabric_ServicePackageName
-* Fabric_ServicePackageVersionInstance
-* FabricPackageFileName
-
-以下代码显示如何列出 Service Fabric 环境变量
- ```csharp
-    foreach (DictionaryEntry de in Environment.GetEnvironmentVariables())
-    {
-        if (de.Key.ToString().StartsWith("Fabric"))
-        {
-            Console.WriteLine(" Environment variable {0} = {1}", de.Key, de.Value);
-        }
-    }
-```
-以下是应用程序类型称为 `GuestExe.Application`、服务类型称为 `FrontEndService` 的应用在本地开发计算机上运行时环境变量的示例。
-
-* **Fabric_ApplicationName = fabric:/GuestExe.Application**
-* **Fabric_CodePackageName = Code**
-* **Fabric_Endpoint_FrontEndServiceTypeEndpoint = 80**
-* **Fabric_NodeIPOrFQDN = localhost**
-* **Fabric_NodeName = _Node_2**
-
-### <a name="application-parameter-files"></a>应用程序参数文件
-Service Fabric 应用程序项目可以包含一个或多个应用程序参数文件。 每个文件为应用程序清单中定义的参数定义特定值：
-
-```xml
-    <!-- ApplicationParameters\Local.xml -->
-
-    <Application Name="fabric:/Application1" xmlns="http://schemas.microsoft.com/2011/01/fabric">
-        <Parameters>
-            <Parameter Name ="Stateful1_MinReplicaSetSize" Value="3" />
-            <Parameter Name="Stateful1_PartitionCount" Value="1" />
-            <Parameter Name="Stateful1_TargetReplicaSetSize" Value="3" />
-        </Parameters>
-    </Application>
-```
-默认情况下，新应用程序包含三个应用程序参数文件，分别名为 Local.1Node.xml、Local.5Node.xml 和 Cloud.xml：
-
-![解决方案资源管理器中的应用程序参数文件][app-parameters-solution-explorer]
-
-若要创建参数文件，只需复制并粘贴现有参数文件并为它指定新名称。
-
-## <a name="identifying-environment-specific-parameters-during-deployment"></a>在部署期间识别特定于环境的参数
-在部署时，需选择要应用于应用程序的适当参数文件。 可以通过 Visual Studio 中的“发布”对话框或通过 PowerShell 执行此操作。
-
-### <a name="deploy-from-visual-studio"></a>从 Visual Studio 部署
-在 Visual Studio 中发布应用程序时，可以从可用参数文件列表中进行选择。
-
-![在“发布”对话框中选择参数文件][publishdialog]
-
-### <a name="deploy-from-powershell"></a>从 PowerShell 部署
-应用程序项目模板中包含的 `Deploy-FabricApplication.ps1` PowerShell 脚本可接受发布配置文件作为参数，而 PublishProfile 包含对应用程序参数文件的引用。
-
-  ```PowerShell
-    ./Deploy-FabricApplication -ApplicationPackagePath <app_package_path> -PublishProfileFile <publishprofile_path>
-  ```
+  - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
+  - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
+  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 从 Visual Studio 发布、使用 Visual Studio Team Service 或 Team Foundation Server 时会用到这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤
-若要深入了解本主题中所述的某些核心概念，请参阅 [Service Fabric 技术概述](service-fabric-technical-overview.md)。 有关 Visual Studio 中其他可用应用管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)。
+以下文章演示如何使用此处所述的某些概念：
 
-<!-- Image references -->
+- [如何在 Service Fabric 中指定服务的环境变量](service-fabric-how-to-specify-port-number-using-parameters.md)
+- [如何在 Service Fabric 中使用参数来指定服务的端口号](service-fabric-how-to-specify-environment-variables.md)
+- [如何参数化配置文件](service-fabric-how-to-parameterize-configuration-files.md)
 
-[publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
-[app-parameters-solution-explorer]:./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
+- [环境变量引用](service-fabric-environment-variables-reference.md)

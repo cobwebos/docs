@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 中的自定义字段 | Microsoft Docs"
-description: "Log Analytics 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 OMS 数据创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。"
+title: "Azure Log Analytics 中的自定义字段 | Microsoft Docs"
+description: "Log Analytics 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 Log Analytics 记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics 中的自定义字段
-Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 OMS 存储库中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
+Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
 
 ![自定义字段概述](media/log-analytics-custom-fields/overview.png)
 
@@ -40,8 +40,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 以下各节提供了创建自定义字段的步骤。  本文末尾部分提供了示例提取的演练。
 
 > [!NOTE]
-> 在将匹配指定条件的记录添加到 OMS 数据存储后，会填充自定义字段，因此它将仅显示在创建自定义字段后收集的记录上。  创建自定义字段时，不会将该字段添加到数据存储中已存在的记录中。
-> 
+> 将匹配指定条件的记录添加到 Log Analytics 时，会填充自定义字段，因此它将仅显示在创建自定义字段后收集的记录上。  创建自定义字段时，不会将该字段添加到数据存储中已存在的记录中。
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>步骤 1 – 确定将具有自定义字段的记录
@@ -72,7 +71,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 7. 像任何其他记录属性一样使用自定义字段。  可以将它用于聚合和分组数据，甚至可以将它用于生成新的见解。
 
 ## <a name="viewing-custom-fields"></a>查看自定义字段
-可以通过 OMS 仪表板的“设置”磁贴中的管理组查看所有自定义字段的列表。  依次选择“数据”、“自定义字段”就可以获取工作区中所有自定义字段的列表。  
+可以在 Azure 门户中通过 Log Analytics 工作区的“高级设置”菜单，查看管理组中的所有自定义字段的列表。  依次选择“数据”、“自定义字段”就可以获取工作区中所有自定义字段的列表。  
 
 ![自定义字段](media/log-analytics-custom-fields/list.png)
 

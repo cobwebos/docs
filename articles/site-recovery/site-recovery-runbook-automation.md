@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 11/28/2017
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: af5de1c262bc55b1aa7513ca91b68eb50b44dbb7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的一致准确性、可重复性和自动化。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。
 
-如果刚开始接触 Azure 自动化，可以[注册](https://azure.microsoft.com/services/automation/)和[下载示例脚本](https://azure.microsoft.com/documentation/scripts/)。 有关详细信息，以及若要了解如何使用[恢复计划](https://azure.microsoft.com/blog/?p=166264)来安排恢复到 Azure，请参阅 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)。
+如果刚开始接触 Azure 自动化，可以[注册](https://azure.microsoft.com/services/automation/)和[下载示例脚本](https://azure.microsoft.com/documentation/scripts/)。 有关详细信息，以及若要了解如何使用[恢复计划](./site-recovery-create-recovery-plans.md)来安排恢复到 Azure，请参阅 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)。
 
 本文将介绍如何将 Azure 自动化 Runbook 集成到恢复计划中。 我们使用示例，自动执行以前需要手动干预的基本任务。 本文还将介绍如何将多步骤恢复过程转换为一键式恢复操作。
 
@@ -256,8 +256,10 @@ workflow AddPublicIPAndNSG {
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-
 ## <a name="additional-resources"></a>其他资源
-* [Azure 自动化服务运行方式帐户](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure 自动化服务运行方式帐户](../automation/automation-create-runas-account.md)
 * [Azure 自动化概述](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure 自动化概述")
 * [Azure 自动化示例脚本](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure 自动化示例脚本")
+
+## <a name="next-steps"></a>后续步骤
+[详细了解](site-recovery-failover.md)如何运行故障转移。

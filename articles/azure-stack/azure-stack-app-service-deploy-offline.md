@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: d2a9b9fbe2a057a6d36e80c89af83a543e90d3be
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 2e527620825a3b419c0191244ba0baff4b74f0fa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将 App Service 资源提供程序添加到 AD FS 保护的连接断开的 Azure 堆栈环境
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
 按照这篇文章中的说明进行操作，你可以安装[App Service 资源提供程序](azure-stack-app-service-overview.md)到是 Azure 堆栈环境：
 - 未连接到 internet
@@ -98,7 +99,7 @@ ms.lasthandoff: 11/27/2017
 
     | Box | 证书文件名称示例 |
     | --- | --- |
-    | **应用程序服务默认 SSL 证书文件** | \_。 appservice.local.AzureStack.external.pfx |
+    | **应用程序服务默认 SSL 证书文件** | \_.appservice.local.AzureStack.external.pfx |
     | **App Service API SSL 证书文件** | api.appservice.local.AzureStack.external.pfx |
     | **应用程序服务发布服务器 SSL 证书文件** | ftp.appservice.local.AzureStack.external.pfx |
 
@@ -114,7 +115,7 @@ ms.lasthandoff: 11/27/2017
 
      > [!NOTE]
      > 对于生产部署，按照中的指导[容量规划 Azure 堆栈中的 Azure App Service 服务器角色](azure-stack-app-service-capacity-planning.md)。
-     > 
+     >
      >
 
     | 角色 | 最小实例 | 最小的 SKU | 说明 |

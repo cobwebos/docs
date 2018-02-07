@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: tutorial
+ms.date: 01/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5810ff908d48fc4ff742d734e7c2457fdfe8cb03
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8acc8deff8b635c97e8722d65a728aebf0e49bb3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -46,115 +43,75 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-若要设置源环境，请下载 Site Recovery 统一安装程序文件。 运行安装程序来安装本地 Site Recovery 组件，在保管库中注册 VMware 服务器，并发现本地 VM。
-
-### <a name="verify-on-premises-site-recovery-requirements"></a>验证本地 Site Recovery 要求
-
-需要部署单个高度可用的本地 VMware VM 来托管本地 Site Recovery 组件。 组件包括配置服务器、进程服务器和主目标服务器。
+若要设置源环境，需要部署一台高度可用的本地计算机来托管本地 Site Recovery 组件。 组件包括配置服务器、进程服务器和主目标服务器。
 
 - 配置服务器在本地和 Azure 之间协调通信并管理数据复制。
 - 进程服务器充当复制网关。 接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。 进程服务器还会将移动服务安装在要复制的 VM 上，并在本地 VMware VM 上执行自动发现。
 - 主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
 
-VM 应满足以下要求。
+若要将配置服务器设置为高度可用的 VMware VM，请下载一个已准备好的 OVF 模板，并将该模板导入 VMware 以创建 VM。 设置配置服务器后，将它注册到保管库中。 注册后，Site Recovery 可发现本地 VMware VM。
 
-| **要求** | **详细信息** |
-|-----------------|-------------|
-| CPU 内核数| 8 |
-| RAM | 12 GB |
-| 磁盘数目 | 3 - 操作系统磁盘、进程服务器缓存磁盘、保留驱动器（用于故障回复） |
-| 磁盘可用空间（进程服务器缓存） | 600 GB |
-| 磁盘可用空间（保留磁盘） | 600 GB |
-| 操作系统版本 | Windows Server 2012 R2 |
-| 操作系统区域设置 | 美国英语 |
-| VMware vSphere PowerCLI 版本 | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") |
-| Windows Server 角色 | 不要启用这些角色：Active Directory 域服务、Internet Information Services、HYPER-V |
-| NIC 类型 | VMXNET3 |
-| IP 地址类型 | 静态 |
-| 端口 | 443（控制通道协调）<br/>9443（数据传输）|
+### <a name="download-the-vm-template"></a>下载 VM 模板
 
-此外： 
-- 在 VM 上，确保将系统时钟与时间服务器进行同步。 时间必须在 15 分钟内得到同步。 超出该时间安装会失败。
-安装失败。
-- 请确保配置服务器 VM 可以访问以下 URL：
+1. 在保管库中，转到“准备基础结构” > “源”。
+2. 在“准备源”中，单击“+配置服务器”。
+3. 在“添加服务器”中，检查“VMware 的配置服务器”是否已显示在“服务器类型”中。
+4. 下载配置服务器的开放虚拟化格式 (OVF) 模板。
 
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
-- 请确保任何基于 IP 地址的防火墙规则都允许与 Azure 通信。
-    - 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)，端口 443 (HTTPS) 和端口 9443（数据复制）。
-    - 允许订阅的 Azure 区域的 IP 地址范围以及美国西部的 IP 地址范围（用于访问控制和标识管理）。
+  > [!TIP]
+  可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器模板。
+
+## <a name="import-the-template-in-vmware"></a>在 VMware 中导入模板
+
+1. 使用 VMWare vSphere 客户端登录到 VMware vCenter 服务器或 vSphere ESXi 主机。
+2. 在“文件”菜单中，选择“部署 OVF 模板”启动“部署 OVF 模板”向导。  
+
+     ![OVF 模板](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
+
+3. 在“选择源”中，指定下载的 OVF 所在的位置。
+4. 在“查看详细信息”中，单击“下一步”。
+5. 在“选择名称和文件夹”和“选择配置”中，接受默认设置。
+6. 在“选择存储”中，为获得最佳性能，请在“选择虚拟磁盘格式”中选择“Thick Provision Eager Zeroed”。
+4. 在余下的向导页中，接受默认设置。
+5. 在“准备完成”中：
+  - 若要使用默认设置来设置 VM，请选择“部署后打开” > “完成”。
+  - 若要添加其他网络接口，请清除“部署后打开”，并选择“完成”。 默认情况下，配置服务器模板是使用单个 NIC 部署的，但部署后，可以添加其他 NIC。
+
+  
+## <a name="add-an-additional-adapter"></a>添加其他适配器
+
+若要将其他 NIC 添加到配置服务器，请在将服务器注册到保管库中之前执行该操作。 注册后不支持添加其他适配器。
+
+1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”。
+2. 在“硬件”中，单击“添加” > “以太网适配器”。 然后单击“下一步”。
+3. 选择适配器类型和网络。 
+4. 若要在打开 VM 时连接虚拟 NIC，请选择“打开时连接”。 单击“下一步” > “完成”，然后单击“确定”。
 
 
-### <a name="download-the-site-recovery-unified-setup-file"></a>下载 Site Recovery 统一安装程序文件
+## <a name="register-the-configuration-server"></a>注册配置服务器 
 
-1. 在保管库的“准备基础结构”中，单击“源”。
-1. 在“准备源”中，单击“+配置服务器”。
-2. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。
-3. 下载站点恢复统一安装程序安装文件。
-4. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
+1. 通过 VMWare vSphere 客户端控制台打开 VM。
+2. VM 将启动并进入 Windows Server 2016 安装体验。 接受许可协议，并指管理员密码。
+3. 安装完成后，以管理员身份登录到 VM。
+4. 首次登录时，会启动 Azure Site Recovery 配置工具。
+5. 指定用于向 Site Recovery 注册配置服务器的名称。 然后单击“下一步”。
+6. 该工具会检查 VM 是否能够连接到 Azure。 建立连接后，单击“登录”登录到 Azure 订阅。 使用的凭据必须有权访问配置服务器所要注册到的保管库。
+7. 该工具将执行一些配置任务，然后重新启动。
+8. 再次登录到计算机。 配置服务器管理向导将自动启动。
 
-   ![设置源](./media/tutorial-vmware-to-azure/source-settings.png)
+### <a name="configure-settings-and-connect-to-vmware"></a>配置设置并连接到 VMware
 
-### <a name="set-up-the-configuration-server"></a>设置配置服务器
+1. 在配置服务器管理向导中选择“设置连接”，然后选择要接收复制流量的 NIC。 然后单击“保存”。 配置后无法更改此设置。
+2. 在“选择恢复服务保管库”中，选择自己的 Azure 订阅以及相关的资源组和保管库。
+3. 在“安装第三方软件”中接受许可协议，然后单击“下载并安装”以安装 MySQL Server。
+4. 单击“安装 VMware PowerLCI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后单击“继续”。
+5. 在“验证设备配置”中验证先决条件，然后继续。
+6. 在“配置 vCenter Server/vSphere ESXi 服务器”中，指定要复制的 VM 所在的 vCenter Server 或 vSphere 主机的 FQDN 或 IP 地址。 指定服务器侦听的端口，以及保管库中的 VMware 服务器要使用的友好名称。
+7. 指定配置服务器用来连接到 VMware 服务器的凭据。 Site Recovery 将使用这些凭据自动发现可复制的 VMware VM。 单击“添加”，然后单击“继续”。
+8. 在“配置虚拟机凭据”中，指定用于在计算机上自动安装移动服务的用户名和密码（如果已启用复制）。 对于 Windows 计算机，该帐户在要复制的计算机上需有本地管理员特权。 对于 Linux，请提供根帐户的详细信息。
+9. 单击“完成配置”以完成注册。 
+10. 注册完成后，请在 Azure 门户中确认配置服务器和 VMware 服务器是否已在保管库中的“源”页上列出。 然后单击“确定”配置目标设置。
 
-1. 运行统一安装程序安装文件。
-2. 在“开始之前”中，选择“安装配置服务器和进程服务器”，然后单击“下一步”。
-
-3. 在“第三方软件许可证”中，单击“我接受”，下载并安装 MySQL，然后单击“下一步”。
-
-4. 在“注册”中，选择从保管库下载的注册密钥。
-
-5. 在“Internet 设置”中，指定配置服务器上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。
-
-   - 如果想要使用当前已在计算机上设置的代理进行连接，请选择“使用代理服务器连接到 Azure Site Recovery”。
-   - 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”。
-   - 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”，并指定地址、端口和凭据。
-
-   ![防火墙](./media/tutorial-vmware-to-azure/combined-wiz4.png)
-
-6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
-
-   ![先决条件](./media/tutorial-vmware-to-azure/combined-wiz5.png)
-
-7. 在“MySQL 配置”中，创建用于登录到要安装的 MySQL 服务器实例的凭据。
-
-8. 在“环境详细信息”中，选择“是”，以保护 VMware VM。 安装程序会检查 PowerCLI 6.0 是否已安装。
-
-9. 在“安装位置”中，选择要安装二进制文件和存储缓存的位置。 所选驱动器必须至少有 5 GB 的可用磁盘空间，但我们建议选择至少有 600 GB 可用空间的缓存驱动器。
-
-10. 在“网络选择”中，指定侦听器（网络适配器和 SSL 端口），以便配置服务器在其上发送和接收复制数据。 端口 9443 是用于发送和接收复制流量的默认端口，但可以根据环境的要求修改此端口号。 此外，我们还要打开端口 443，将使用该端口协调复制操作。 请不要使用端口 443 来发送或接收复制流量。
-
-11. 在“摘要”中复查信息，并单击“安装”。 安装程序安装配置服务器，并将其注册到 Azure Site Recovery 服务。
-
-    ![摘要](./media/tutorial-vmware-to-azure/combined-wiz10.png)
-
-    安装完成后，将生成通行短语。 启用复制时需要用到它，因此请复制并将它保存在安全的位置。 服务器显示在保管库中的“设置” > “服务器”窗格中。
-
-### <a name="configure-automatic-discovery"></a>配置自动发现
-
-若要发现 VM，配置服务器需要连接到本地 VMware 服务器。 本教程的目的是，使用在服务器具有管理员特权的帐户添加 vCenter 服务器或 vSphere 主机。 [上一教程](tutorial-prepare-on-premises-vmware.md)中已创建此帐户。 
-
-添加帐户：
-
-1. 在配置服务器 VM 上，启动 CSPSConfigtool.exe。 桌面上已提供该工具的快捷方式，在 *安装位置*\home\svsystems\bin 文件夹中也可以找到它。
-
-2. 单击“管理帐户” > “添加帐户”。
-
-   ![添加帐户](./media/tutorial-vmware-to-azure/credentials1.png)
-
-3. 在“帐户详细信息”中，添加用于自动发现的帐户。
-
-   ![详细信息](./media/tutorial-vmware-to-azure/credentials2.png)
-
-添加 VMware 服务器：
-
-1. 打开 [Azure 门户](https://portal.azure.com)，然后单击“所有资源”。
-2. 单击名为 ContosoVMVault 的恢复服务保管库。
-3. 单击“Site Recovery” > “准备基础结构” > “源”
-4. 选择“+vCenter”，以连接到 vCenter 服务器或 vSphere ESXi 主机。
-5. 在“添加 vCenter”中，为服务器指定一个友好名称。 然后，指定 IP 地址或 FQDN。
-6. 除非 VMware 服务器在不同的端口上侦听请求，否则请保持端口设置为 443。
-7. 选择要用于连接到服务器的帐户。 单击 **“确定”**。
 
 Site Recovery 将使用指定的设置连接到 VMware 服务器，并且将发现 VM。
 

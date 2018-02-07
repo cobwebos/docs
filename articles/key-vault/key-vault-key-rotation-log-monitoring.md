@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: f98ba1e2da6924476392948a4d18c807d68e39e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de788fabcae501d1a388bcea6b7759c9ea269cc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>使用端到端密钥轮替和审核设置 Azure 密钥保管库
 ## <a name="introduction"></a>介绍
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 >
 
 ## <a name="set-up-key-vault"></a>设置密钥保管库
-要使应用程序能够从密钥保管库检索机密，必须先创建机密并将其上传到保管库。 此操作可通过以下方式实现：启动 Azure PowerShell 会话，然后使用以下命令登录 Azure 帐户：
+要使应用程序能够从密钥保管库检索机密，必须先创建机密并将其上传到保管库。 此操作可通过以下方式实现：启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：
 
 ```powershell
 Login-AzureRmAccount
@@ -154,7 +154,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-现在，运行应用程序时，应该会向 Azure Active Directory 进行身份验证，然后从 Azure 密钥保管库中检索机密值。
+现在，当运行应用程序时，应该会向 Azure Active Directory 进行身份验证，并从 Azure 密钥保管库中检索机密值。
 
 ## <a name="key-rotation-using-azure-automation"></a>使用 Azure 自动化进行密钥轮替
 对于存储为 Azure 密钥保管库机密的值，可以使用多种选项实现其轮替策略。 机密可以手动轮替、使用 API 调用以编程方式轮替，或者通过自动化脚本轮替。 为实现本文的目的，我们将结合使用 Azure PowerShell 与 Azure 自动化更改 Azure 存储帐户访问密钥。 然后使用该新密钥更新密钥保管库机密。
@@ -416,7 +416,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ### <a name="azure-logic-app"></a>Azure 逻辑应用
 接下来，必须创建一个 Azure 逻辑应用，用于选取函数推送到服务总线队列的事件、分析内容，并根据匹配的条件发送电子邮件。
 
-通过转到“新建”>“逻辑应用”，[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+通过转到“新建”>“逻辑应用”，[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 创建逻辑应用后，导航到它，并选择“编辑”。 在逻辑应用编辑器中，选择“服务总线队列”，并输入服务总线凭据以将其连接到队列。
 

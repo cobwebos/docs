@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 9e8808a50e86e40af4991a6054a55ef57f744aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 
@@ -41,14 +41,14 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 ||||  
 |-|-|-|  
 |**属性**|**Azure Blob**|**Azure 文件**|  
-|持久性选项|LRS、ZRS、GRS（以及用于提高可用性的 RA-GRS）|LRS、GRS|  
+|持久性选项|LRS、ZRS、GRS、RA-GRS|LRS、ZRS、GRS|  
 |可访问性|REST API|REST API<br /><br /> SMB 2.1 和 SMB 3.0（标准文件系统 API）|  
 |连接|REST API - 全球|REST API - 全球<br /><br /> SMB 2.1 - 区域内部<br /><br /> SMB 3.0 - 全球|  
 |终结点|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |目录|平面命名空间|真正目录对象|  
 |名称区分大小写|区分大小写|不区分大小写，但保留大小写|  
-|容量|高达 500 TB 的容器|5 TB 文件共享|  
-|吞吐量|每个块 Blob 高达 60 MB/秒|每个共享高达 60 MB/秒|  
+|Capacity|高达 500 TB 的容器|5 TB 文件共享|  
+|Throughput|每个块 Blob 高达 60 MB/秒|每个共享高达 60 MB/秒|  
 |对象大小|每个块 Blob 高达 200 GB|每个文件高达 1 TB|  
 |计费容量|基于写入的字节数|基于文件大小|  
 |客户端库|多语言|多语言|  
@@ -70,7 +70,7 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
 |使用 REST 访问|无法访问 VHD 中的文件|可以访问共享中存储的文件|  
 |最大大小|4 TB 磁盘|5 TB 文件共享，共享中可保存 1 TB 文件|  
 |最大 8KB IOps|500 IOps|1000 IOps|  
-|吞吐量|每个磁盘高达 60 MB/秒|每个文件共享高达 60 MB/秒|  
+|Throughput|每个磁盘高达 60 MB/秒|每个文件共享高达 60 MB/秒|  
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -78,4 +78,4 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
   
 某些 SMB 功能不适用于云。 有关详细信息，请参阅 [Azure 文件服务不支持的功能](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)。
   
-有关磁盘的详细信息，请参阅[管理磁盘和映像](../../virtual-machines/windows/about-disks-and-vhds.md)以及[如何将数据磁盘附加到 Windows 虚拟机](../../virtual-machines/windows/classic/attach-disk.md)。
+有关磁盘的详细信息，请参阅[管理磁盘和映像](../../virtual-machines/windows/about-disks-and-vhds.md)以及[如何将数据磁盘附加到 Windows 虚拟机](../../virtual-machines/windows/attach-managed-disk-portal.md)。

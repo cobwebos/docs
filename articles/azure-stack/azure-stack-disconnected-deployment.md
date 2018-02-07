@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 8708f13109767c7cb9e4a1bf0d2797d7c4fb9a23
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: afea4b23aca322321b4096cdfdc9d30b087a2f30
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure 断开连接的部署规划 Azure 堆栈的决策集成系统
 您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-deployment-decisions.md)，然后才能最终完成 Azure 堆栈的部署决策。
@@ -60,3 +60,5 @@ Azure 堆栈旨在时连接到 Azure，因此务必要注意有障碍的用户�
 - 有关 Azure 堆栈信息的路线图和地域可用性集成的系统，请参阅白皮书： [Azure 堆栈： Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
 - 若要了解有关 Microsoft Azure 堆栈打包和定价的详细信息[下载.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。 
 
+## <a name="next-steps"></a>后续步骤
+[数据中心网络集成](azure-stack-network.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: a3d5cb909dbfcb00f3fbfa0165bb6cd58eb18688
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: def2b65f009c377233c45356f8fa661b86d73f51
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Azure SQL 数据库连接器入门
 使用 Azure SQL 数据库连接器，为管理表中数据的组织创建工作流。 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 本主题演示了如何在逻辑应用中使用 SQL 数据库连接器，还列出了相关操作。
 
-若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-overview.md)和[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="connect-to-azure-sql-database"></a>连接到 Azure SQL 数据库
 在逻辑应用能够访问任何服务前，需要先创建到该服务的*连接*。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SQL 数据库，首先创建 SQL 数据库*连接*。 若要创建连接，输入通常用于访问要连接到的服务的凭据。 因此在 SQL 数据库中，输入 SQL 数据库凭据以创建连接。 
@@ -42,10 +42,10 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="use-a-trigger"></a>使用触发器
-此连接器没有任何触发器。 使用其他触发器启动逻辑应用，例如重复触发器、HTTP Webhook 触发器、可用于其他连接器的触发器等。 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)提供了一个示例。
+此连接器没有任何触发器。 使用其他触发器启动逻辑应用，例如重复触发器、HTTP Webhook 触发器、可用于其他连接器的触发器等。 [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)提供了一个示例。
 
 ## <a name="use-an-action"></a>使用操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
 1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
    
@@ -71,5 +71,5 @@ ms.lasthandoff: 10/11/2017
 在[连接器详细信息](/connectors/sql/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
+[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 

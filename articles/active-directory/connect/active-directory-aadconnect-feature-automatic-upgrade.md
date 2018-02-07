@@ -3,7 +3,7 @@ title: "Azure AD Connect：自动升级 | Microsoft Docs"
 description: "本主题介绍 Azure AD Connect sync 中的内置自动升级功能。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 49fc908006f19135b4c4553eef97d2f396db33ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddf23193e7b9c2fb7a69045be539841dbb6e6249
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 1.1.105.0（于 2016 年 2 月发布）一起推出的。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 可以使用 PowerShell cmdlet `Get-ADSyncAutoUpgrade` 来查看当前的自动升级状态。 状态包括：
 
-| 状态 | 注释 |
+| State | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
 | 已挂起 |只能由系统设置。 系统不再能够接收自动升级。 |

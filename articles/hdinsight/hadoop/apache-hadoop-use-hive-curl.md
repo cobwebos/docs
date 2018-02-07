@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: b05dbdcec3cfb5c78115061567bb6229623cd0ff
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b451a80934a19f8a38ab9e8ace358674827aefa0
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Hadoop 运行 Hive 查询
 
@@ -50,7 +50,9 @@ ms.lasthandoff: 12/08/2017
 
     将收到类似于以下文本的响应：
 
-        {"status":"ok","version":"v1"}
+    ```json
+    {"status":"ok","version":"v1"}
+    ```
 
     此命令中使用的参数如下：
 
@@ -65,7 +67,9 @@ ms.lasthandoff: 12/08/2017
 
     此请求返回的响应类似于以下文本：
 
+    ```json
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
+    ```
 
 2. 使用以下命令创建名为 **log4jLogs** 的表：
 
@@ -105,7 +109,9 @@ ms.lasthandoff: 12/08/2017
 
    此命令会返回可用来检查作业状态的作业 ID。
 
+    ```json
        {"id":"job_1415651640909_0026"}
+    ```
 
 3. 若要检查作业的状态，请使用以下命令：
 
@@ -137,7 +143,7 @@ ms.lasthandoff: 12/08/2017
      > [!NOTE]
      > 与外部表不同，删除内部表会同时删除基础数据。
 
-   * **STORED AS ORC** - 以优化行纵栏表 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
+   * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
    * **INSERT OVERWRITE ...SELECT** - 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
    * **SELECT** - 选择新 **errorLogs** 表中的所有行。
 

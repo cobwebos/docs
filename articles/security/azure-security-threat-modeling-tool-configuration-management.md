@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 114666d0c173786373e3bdd025027eb217922749
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="example"></a>示例
 示例策略： 
-```C#
+```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
 此策略只允许从 Web 应用程序的服务器和 google 分析服务器加载脚本。 从其他任何站点加载的脚本会被拒绝。 在网站上启用 CSP 后，以下功能会自动禁用以缓解 XSS 攻击。 
@@ -111,7 +111,7 @@ Example: var str="alert(1)"; eval(str);
 
 ### <a name="example"></a>示例
 可以通过 IIS web.config 设置 X-FRAME-OPTIONS 标头。永远不应设计框架的站点 Web.config 代码片段： 
-```C#
+```csharp
     <system.webServer>
         <httpProtocol>
             <customHeader>
@@ -123,7 +123,7 @@ Example: var str="alert(1)"; eval(str);
 
 ### <a name="example"></a>示例
 只应由同一域中的页面设计框架的站点 Web.config 代码： 
-```C#
+```csharp
     <system.webServer>
         <httpProtocol>
             <customHeader>
@@ -158,7 +158,7 @@ Example: var str="alert(1)"; eval(str);
 
 ### <a name="example"></a>示例
 如果无法访问 Web.config，则可通过添加以下 CSharp 代码来配置 CORS： 
-```C#
+```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
 ```
 
@@ -226,7 +226,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 ### <a name="example"></a>示例
 通过全局 Application\_BeginRequest 添加该标头 
-```C#
+```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
@@ -235,7 +235,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ### <a name="example"></a>示例
 实现自定义的 HTTP 模块 
-```C#
+```csharp
 public class XContentTypeOptionsModule : IHttpModule
 {
 #region IHttpModule Members
@@ -262,7 +262,7 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 ### <a name="example"></a>示例
 对于特定的页面，只能通过将所需的标头添加到单个响应来启用该标头： 
 
-```C#
+```csharp
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
@@ -301,7 +301,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ### <a name="example"></a>示例
 在 App_Start/WebApiConfig.cs 中，将以下代码添加到 WebApiConfig.Register 方法 
-```C#
+```csharp
 using System.Web.Http;
 namespace WebService
 {
@@ -325,7 +325,7 @@ namespace WebService
 ### <a name="example"></a>示例
 可按如下所示，将 EnableCors 特性应用到控制器中的操作方法： 
 
-```C#
+```csharp
 public class ResourcesController : ApiController
 {
   [EnableCors("http://localhost:55912", // Origin
@@ -365,7 +365,7 @@ public class ResourcesController : ApiController
 
 ### <a name="example"></a>示例
 若要对类中的特定方法禁用 CORS，可按如下所示使用 DisableCors 特性： 
-```C#
+```csharp
 [EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
 {
@@ -399,7 +399,7 @@ public class ResourcesController : ApiController
 
 ### <a name="example"></a>示例
 第一种方式是使用 lambda 调用 UseCors。 lambda 使用一个 CorsPolicyBuilder 对象： 
-```C#
+```csharp
 public void Configure(IApplicationBuilder app)
 {
     app.UseCors(builder =>
@@ -411,7 +411,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="example"></a>示例
 第二种方式是定义一个或多个命名的 CORS 策略，并在运行时按名称选择策略。 
-```C#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddCors(options =>
@@ -434,7 +434,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="example"></a>示例
 按操作：要为特定的操作指定 CORS 策略，请将 [EnableCors] 特性添加到该操作。 指定策略名称。 
-```C#
+```csharp
 public class HomeController : Controller
 {
     [EnableCors("AllowSpecificOrigin")] 
@@ -446,7 +446,7 @@ public class HomeController : Controller
 
 ### <a name="example"></a>示例
 按控制器： 
-```C#
+```csharp
 [EnableCors("AllowSpecificOrigin")]
 public class HomeController : Controller
 {
@@ -454,7 +454,7 @@ public class HomeController : Controller
 
 ### <a name="example"></a>示例
 全局： 
-```C#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
@@ -468,7 +468,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="example"></a>示例
 若要为控制器或操作禁用 CORS，请使用 [DisableCors] 特性。 
-```C#
+```csharp
 [DisableCors]
     public IActionResult About()
     {
@@ -579,7 +579,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
@@ -590,7 +590,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储空间 | 
+| **组件**               | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |

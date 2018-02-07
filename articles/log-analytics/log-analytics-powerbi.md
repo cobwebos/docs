@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 163ac33af43a8cb7a23742f6336efca5fe7c4b4e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e687a1ee8ac4f565062e57b07cdfa9ac5e6bbf4f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>将 Azure Log Analytics 数据导入 Power BI
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/28/2017
 Power BI Desktop 是一个桌面应用程序，用于创建可发布到 Power BI 的数据集和报表。  另外，你还可以使用它创建使用从 Log Analytics 导出的 Power Query 语言的查询。 
 
 1. 请安装 [Power BI Desktop](https://powerbi.microsoft.com/desktop/)（如果你尚未安装），然后打开该应用程序。
-2. 选择“获取数据” > “空查询”，以打开一个新查询。  然后选择“高级编辑器”并将导出文件的内容粘贴到查询中。 单击“Done”（完成）。
+2. 选择“获取数据” > “空查询”，以打开一个新查询。  然后选择“高级编辑器”并将导出文件的内容粘贴到查询中。 单击“Done”（完成） 。
 
     ![Power BI Desktop 查询](media/log-analytics-powerbi/desktop-new-query.png)
 
@@ -86,12 +86,12 @@ Power BI Desktop 是一个桌面应用程序，用于创建可发布到 Power BI
 ![Log Analytics 到 Power BI](media/log-analytics-powerbi/overview-legacy.png)
 
 ### <a name="power-bi-schedules"></a>Power BI 计划
-*Power BI 计划*包含日志搜索，用于将一组数据从 OMS 存储库导出到 Power BI 中的相应数据集；还包含一个计划，用于定义为了数据集保持最新而运行此搜索的频率。
+*Power BI 计划*包含日志搜索，用于将一组数据从 Log Analytics 导出到 Power BI 中的相应数据集；还包含一个计划，用于定义为了数据集保持最新而运行此搜索的频率。
 
 数据集内的字段与日志搜索返回的记录的属性相匹配。  如果搜索返回不同类型的记录，则数据集将包括每个包含的记录类型中的所有属性。  
 
-### <a name="connecting-oms-workspace-to-power-bi"></a>将 OMS 工作区连接到 Power BI
-从 Log Analytics 导出到 Power BI 之前，必须使用以下步骤将 OMS 工作区连接到 Power BI 帐户。  
+### <a name="connecting-log-analytics-workspace-to-power-bi"></a>将 Log Analytics 工作区连接到 Power BI
+从 Log Analytics 导出到 Power BI 之前，必须使用以下步骤将工作区连接到 Power BI 帐户。  
 
 1. 在 OMS 控制台中，单击“设置”磁贴。
 2. 选择“帐户”。
@@ -108,7 +108,7 @@ Power BI Desktop 是一个桌面应用程序，用于创建可发布到 Power BI
 
 | 属性 | 说明 |
 |:--- |:--- |
-| Name |查看 Power BI 计划的列表时用于标识计划的名称。 |
+| 名称 |查看 Power BI 计划的列表时用于标识计划的名称。 |
 | 已保存的搜索 |要运行的日志搜索。  可以选择当前查询，也可以从下拉框中选择现有已保存的搜索。 |
 | 计划 |运行已保存的搜索并导出到 Power BI 数据集的频率。  该值必须介于 15 分钟到 24 小时之间。 |
 | 数据集名称 |Power BI 中数据集的名称。  如果数据集不存在，则进行创建；如果数据集已存在，则进行更新。 |

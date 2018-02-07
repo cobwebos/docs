@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: tamram
-ms.openlocfilehash: b6814eea9120e0ee86afe333c11354fe49821978
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 0097f1c02b88343a135b6489130a6e0d35cf6fba
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introduction-to-blob-storage"></a>Blob 存储简介
 
@@ -42,7 +42,7 @@ Blob 服务包含以下组件：
 
 * **容器：** 一个容器包含一组 blob 集。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无限个 Blob。 请注意，容器名称必须小写。
 
-* **Blob：** 任何类型和大小的文件。 Azure 存储提供三种类型的 Blob：块 Blob、页 Blob 和追加 Blob。
+* **Blob：** 任何类型和大小的文件。 Azure 存储提供三种类型的 Blob：块 Blob、[页 Blob](storage-blob-pageblob-overview.md) 和追加 Blob。
   
     *块 Blob* 特别适用于存储短的文本或二进制文件，例如文档和媒体文件。 *追加 Blob* 类似于块 Blob，因为它们是由块组成的，但针对追加操作对它们进行了优化，因此它们适用于日志记录方案。 单个块 Blob 可以包含最多 50000 个块，每个块最大 100 MB，总大小稍微大于 4.75 TB (100 MB X 50000)。 单个追加 Blob 可以包含最多 50000 个块，每个块最大 4 MB，总大小稍微大于 195 GB (4 MB X 50000)。
   

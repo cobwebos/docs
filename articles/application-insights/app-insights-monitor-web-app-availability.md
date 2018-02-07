@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: sdash
-ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c9dd60170e93722cab8e8d5eb5b4202b71bbb8e4
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -30,6 +30,12 @@ ms.lasthandoff: 12/15/2017
 * [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上传到门户的测试。
 
 对于每个应用程序资源，最多可以创建 100 个可用性测试。
+
+
+> [!NOTE] 
+> * 可用性测试位置最近已移至 Azure 数据中心。 此移动使得我们可以为这些位置添加不断增加的 Azure 数据中心网络，  
+> * 而无需更新测试。 所有测试已迁移，并将从新位置运行。 
+>* 有关详细信息，请参阅[服务更新](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/01/24/application-insights-availability-monitoring-test-locations-updated/)。
 
 ## <a name="create"></a>为可用性测试报告打开资源
 
@@ -118,7 +124,8 @@ ms.lasthandoff: 12/15/2017
 若要创建多步骤测试，可以使用 Visual Studio Enterprise 来录制方案，然后将录制内容上传到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
 > [!NOTE]
-> 不能在测试中使用编码的函数或循环。 测试必须完全包含在 .webtest 脚本中。 但是，可以使用标准插件。
+> * 不能在测试中使用编码的函数或循环。 测试必须完全包含在 .webtest 脚本中。 但是，可以使用标准插件。
+> * 仅多步骤 Web 测试支持使用英文字符。 如果在其他语言中使用 Visual Studio，请更新 Web 测试定义文件以转换/排除非英文字符。
 >
 
 #### <a name="1-record-a-scenario"></a>1.录制方案
@@ -269,7 +276,7 @@ Web 测试插件提供时间参数化方式。
     如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](app-insights-sampling.md)正在进行。
 * *是否可以从 Web 测试调用代码？*
 
-    不可以。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
+    不会。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
 * *是否支持 HTTPS？*
 
     支持 TLS 1.1 和 TLS 1.2。

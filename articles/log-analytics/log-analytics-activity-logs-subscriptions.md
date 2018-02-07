@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d8c970b322be7f735e51c7b246b2421589c91813
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ded0b4cdcbac747d52435023a24b5719f3c58758
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/09/2018
 
 ## <a name="overview"></a>概述
 
-此方案中使用的策略是让 Azure 活动日志将事件发送到某个[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)，其中的某个[逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)会将这些事件发送到 Log Analytics 工作区。 
+此方案中使用的策略是让 Azure 活动日志将事件发送到某个[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)，其中的某个[逻辑应用](../logic-apps/logic-apps-overview.md)会将这些事件发送到 Log Analytics 工作区。 
 
 ![从活动日志到 Log Analytics 的数据流示意图](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 01/09/2018
 
    |设置 | 说明  |
    |:---|:---|
-   | 名称​​           | 逻辑应用的唯一名称。 |
+   | 名称           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
    | 资源组 | 为逻辑应用选择现有的 Azure 资源组或创建新的资源组。 |
    | Location       | 选择用于部署逻辑应用的数据中心区域。 |
@@ -141,7 +141,7 @@ ms.lasthandoff: 01/09/2018
 
 此时，逻辑应用设计器会显示可用的连接器及其触发器，用于启动逻辑应用工作流。
 
-<!-- Learn [how to create a logic app](../logic-apps/logic-apps-create-a-logic-app.md). -->
+<!-- Learn [how to create a logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md). -->
 
 ### <a name="add-event-hub-trigger"></a>添加事件中心触发器
 

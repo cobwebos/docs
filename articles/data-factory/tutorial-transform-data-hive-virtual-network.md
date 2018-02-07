@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/06/2017
+ms.date: 01/22/2018
 ms.author: shengc
-ms.openlocfilehash: c15d723efdcf273c86f54ddce04904ce1a274631
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 04323e5f6b729cdadf5ede748a1178dfa9460cd2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/06/2017
 
 ## <a name="prerequisites"></a>先决条件
 - **Azure 存储帐户**。 创建 Hive 脚本并将其上传到 Azure 存储。 Hive 脚本的输出存储在此存储帐户中。 在本示例中，HDInsight 群集使用此 Azure 存储帐户作为主存储。 
-- **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/virtual-network-get-started-vnet-subnet.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
+- **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight 群集**。 创建一个 HDInsight 群集，并遵循[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) 一文中所述，将该群集加入到在前一步骤中创建的虚拟网络。 下面是虚拟网络中 HDInsight 的示例配置。 
@@ -150,7 +150,7 @@ ms.lasthandoff: 12/06/2017
    }
    ```
     记下 **AuthKey1** 的值（不包括引号）。 
-3. 创建一个 Azure VM，并将其加入到 HDInsight 群集所在的同一个虚拟网络。 有关详细信息，请参阅[如何创建虚拟机](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vms)。 将虚拟机加入 Azure 虚拟网络。 
+3. 创建一个 Azure VM，并将其加入到 HDInsight 群集所在的同一个虚拟网络。 有关详细信息，请参阅[如何创建虚拟机](../virtual-network/quick-create-portal.md#create-virtual-machines)。 将虚拟机加入 Azure 虚拟网络。 
 4. 在该 Azure VM 上，下载[自我托管的集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)。 使用上一步骤中获取的身份验证密钥手动注册自我托管的集成运行时。 
 
    ![注册集成运行时](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)

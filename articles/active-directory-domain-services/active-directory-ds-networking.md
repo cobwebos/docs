@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: b35e87da943de8d47f36b6443fa62e251f742149
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
@@ -74,15 +74,15 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 * 必须允许在 NSG 中访问此端口。 如果不允许访问此端口，则托管域不会与 Azure AD 目录同步。 用户可能无法登录，因为对其密码所做的更改不会同步到托管域。
 * 可将此端口的入站访问限制为属于 Azure IP 地址范围的 IP 地址。
 
-**端口 5986（PowerShell 远程处理）** 
+**端口 5986（PowerShell 远程处理）**
 * 使用此端口可通过托管域上的 PowerShell 远程处理来执行管理任务。
 * 必须在 NSG 中允许通过此端口访问。 如果不允许访问此端口，则无法更新、配置、备份或监视托管域。
-* 可将此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108、52.175.18.134、52.138.68.41、104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149、13.64.151.161 
+* 可将此端口的入站访问限制为以下源 IP 地址：52.180.183.8、23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108、52.175.18.134、52.138.68.41、104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149、13.64.151.161
 * 托管域的域控制器通常不侦听此端口。 只有当需要为托管域执行管理或维护操作时，服务才会在托管域控制器上打开此端口。 一旦操作完成，服务会立即在托管域控制器上关闭此端口。
 
-**端口 3389（远程桌面）** 
-* 此端口用于与托管域的域控制器建立远程桌面连接。 
-* 可以选择性地通过 NSG 打开此端口。 
+**端口 3389（远程桌面）**
+* 此端口用于与托管域的域控制器建立远程桌面连接。
+* 可以选择性地通过 NSG 打开此端口。
 * 大部分时间下，此端口在托管域上也保持关闭状态。 此机制并非经常使用，因为管理和监视任务是使用 PowerShell 远程处理执行的。 只有在极少数情况下，当 Microsoft 需要远程连接到你的托管域来进行高级故障排除时，才会使用此端口。 一旦故障排除操作完成，此端口会立即关闭。
 
 **端口 636（安全 LDAP）**
@@ -99,7 +99,7 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 
 此外，该 NSG 还演示如何通过 Internet 锁定安全 LDAP 访问。 如果未禁用通过 Internet 对托管域的安全 LDAP 访问，则跳过此规则。 NSG 包含一组规则，允许仅从指定的一组 IP 地址通过 TCP 端口 636 进行入站 LDAPS 访问。 NSG 规则允许从指定 IP 地址通过 Internet 进行 LDAPS 访问，此规则的优先级比 DenyAll NSG 规则的优先级高。
 
-![通过 Internet 进行安全 LDAPS 访问的示例 NSG](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![通过 Internet 进行安全 LDAPS 访问的示例 NSG](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
 详细信息 - [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)。
 
@@ -126,7 +126,7 @@ Azure AD 域服务托管域只能在 Azure 中的单个虚拟网络中启用。
     ![使用对等互连的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [详细信息 - 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
-    
+
 * **使用站点到站点 VPN 连接的 VNet 到 VNet 连接：**将虚拟网络连接到虚拟网络（VNet 到 VNet）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。
 
     ![使用 VPN 网关的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)

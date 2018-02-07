@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 01c5376ac5ba9125eede9deb5ee0a7a006a91bb4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>从 BizTalk 服务移动到逻辑应用
 
@@ -126,6 +126,6 @@ BizTalk 服务包括 EDI 和 B2B 处理，支持 AS2（适用性语句 2）、X1
 若要在 BizTalk 服务中实现高可用性 (HA)，需要在给定区域使用多个实例共享处理负载。 在逻辑应用中，区域内 HA 是内置的，不会另外收费。 对于 BizTalk 服务中用于 B2B 处理的区域外灾难恢复，则需要备份和还原过程。 在逻辑应用中，提供了跨区域主动/被动 [DR 功能](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)；这样可以跨不同区域的集成帐户同步 B2B 数据，以实现业务连续性。
 
 ## <a name="next"></a>下一步
-* [什么是逻辑应用](logic-apps-what-are-logic-apps.md)
-* [创建你的第一个逻辑应用](logic-apps-create-a-logic-app.md)，或者通过[预置模板](logic-apps-create-logic-apps-from-templates.md)快速入门  
+* [什么是逻辑应用](logic-apps-overview.md)
+* [创建你的第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)，或者通过[预置模板](logic-apps-create-logic-apps-from-templates.md)快速入门  
 * [查看所有可用的连接器](../connectors/apis-list.md)（可在逻辑应用中使用）

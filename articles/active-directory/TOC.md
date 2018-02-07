@@ -176,6 +176,16 @@
 ##### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 ##### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
+### [对 SaaS 应用进行用户预配和取消预配](active-directory-saas-app-provisioning.md)
+#### [应用集成教程](active-directory-saas-tutorial-list.md)
+#### [对启用 SCIM 的应用自动执行预配](active-directory-scim-provisioning.md)
+#### [自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
+#### [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+#### [使用范围筛选器](active-directory-saas-scoping-filters.md)
+#### [针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)
+#### [排查用户预配问题](active-directory-application-provisioning-content-map.md)
+
+
 
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
 #### 入门
@@ -219,7 +229,7 @@
 #### [SAML 应用的高级证书签名](active-directory-enterprise-apps-advance-certificate-options.md)
 #### [从用户体验中隐藏应用程序](active-directory-coreapps-hide-third-party-app.md)
 ### [使用 HRD 策略配置登录自动加速](active-directory-auto-acceleration-using-hrd.md)
-
+### [将 AD FS 应用迁移到 Azure AD](migrate-adfs-apps-to-azure.md)
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [SSO 访问](active-directory-appssoaccess-whatis.md)
 #### [SSO 证书](active-directory-sso-certs.md)
@@ -264,7 +274,8 @@
 
 ## 委托对资源的访问权限
 ### [管理员角色](active-directory-assign-admin-roles-azure-portal.md)
-#### [分配管理员角色](active-directory-users-assign-role-azure-portal.md)
+#### [向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
+#### [比较成员和来宾的用户权限](users-default-permissions.md)
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 ### [管理紧急访问管理帐户](active-directory-admin-manage-emergency-access-accounts.md)
@@ -321,8 +332,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [将其他服务与 Azure AD 集成]()
-### [启用 LinkedIn 集成](linkedin-integration.md)
+## 将其他服务与 Azure AD 集成
+### [将 LinkedIn 与 Azure AD 集成](linkedin-integration.md)
 
 ## [在 Azure VM 上部署 AD DS](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Azure VM 上的 Windows Server Active Directory](active-directory-deploying-ws-ad-guidelines.md)

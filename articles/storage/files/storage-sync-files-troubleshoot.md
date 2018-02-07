@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: f12ee39f900373fcab80e59bc20de59fa039f0ff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -42,6 +42,9 @@ StorageSyncAgent.msi /l*v Installer.log
 
 > [!Note]  
 > 如果将计算机设置为使用 Microsoft 更新，代理安装将会失败，并且 Windows 更新服务不会运行。
+
+<a id="agent-installation-websitename-failure"></a>**代理安装失败，并出现以下错误：“存储同步代理向导提前结束”**  
+如果更改了 IIS 网站的默认名称，则可能出现此问题。 要解决此问题，请将 IIS 默认网站重命名为“默认 Web 站点”，然后重试安装。 代理的未来更新中会修复此问题。 
 
 <a id="server-registration-missing"></a>**服务器未在 Azure 门户中的“已注册的服务器”下列出**  
 如果对于存储同步服务，服务器未在“已注册的服务器”下列出：
@@ -102,10 +105,11 @@ Reset-StorageSyncServer
     * “角色分配”应具有“读取”和“写入”权限。
     * “角色定义”应具有“读取”和“写入”权限。
 
-<a id="cloud-endpoint-deleteinternalerror"></a>**云终结点删除失败，并出现以下错误：“MgmtInternalError”**  
-如果在删除云终结点之前删除了 Azure 文件共享或存储帐户，则可能会出现此问题。 将来的更新中会解决此问题。 到时，便可以在删除 Azure 文件共享或存储帐户之后删除云终结点。
+<a id="server-endpoint-createjobfailed"></a>**服务器终结点创建失败，并出现以下错误：“MgmtServerJobFailed”（错误代码：-2134375898）**                                                                                                                           
+如果服务器终结点路径位于系统卷上并启用了云分层，则会出现此问题。 系统卷上不支持云分层。 要在系统卷上创建服务器终结点，请在创建服务器终结点时禁用云分层。
 
-同时，为了防止此问题发生，请先删除云终结点，再删除 Azure 文件共享或存储帐户。
+<a id="server-endpoint-deletejobexpired"></a>**服务器终结点删除失败，并出现以下错误：“MgmtServerJobExpired”**                
+如果服务器处于脱机状态或无网络连接，则会出现此问题。 如果服务器不再可用，请在门户中注销要删除服务器终结点的服务器。 要删除服务器终结点，请按照[使用 Azure 文件同步注销服务器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)中所述的步骤操作。
 
 ## <a name="sync"></a>同步
 <a id="afs-change-detection"></a>**我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件，该文件同步到同步组中的服务器需要多长时间？**  
@@ -131,6 +135,8 @@ Reset-StorageSyncServer
 
     > [!NOTE]
     > Azure 文件同步会定期创建 VSS 快照以同步具有打开的句柄的文件。
+
+当前不支持将资源移动到另一个订阅或不同的 Azure AD 租户。  如果将订阅移动到不同的租户，基于所有权变更的服务会无法访问 Azure 文件共享。 如果租户已发生更改，则需要删除服务器终结点和云终结点（请参阅“同步组管理”部分，了解如何清除要重新使用的 Azure 文件共享），然后重新创建同步组。
 
 ## <a name="cloud-tiering"></a>云分层 
 云分层中存在两个故障路径：

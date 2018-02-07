@@ -13,33 +13,26 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 10/31/2016
+ms.date: 01/22/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 55211e29149cd334421bd8723d47278a19afbfbb
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="load-data-with-bcp"></a>使用 bcp 加载数据
-> [!div class="op_single_selector"]
-> * [Redgate](sql-data-warehouse-load-with-redgate.md)  
-> * [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)  
-> * [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)  
-> * [BCP](sql-data-warehouse-load-with-bcp.md)
-> 
-> 
 
-**[bcp][bcp]** 是一个命令行批量加载实用程序，用于在 SQL Server、数据文件和 SQL 数据仓库之间复制数据。 使用 bcp 实用程序可将大量的行导入 SQL 数据仓库表，或将 SQL Server 表中的数据导出到数据文件。 除非与 queryout 选项一起使用，否则 bcp 不需要 Transact-SQL 方面的知识。
+**[bcp](/sql/tools/bcp-utility.md)** 是一个命令行批量加载实用工具，用于在 SQL Server、数据文件和 SQL 数据仓库之间复制数据。 使用 bcp 实用程序可将大量的行导入 SQL 数据仓库表，或将 SQL Server 表中的数据导出到数据文件。 除非与 queryout 选项一起使用，否则 bcp 不需要 Transact-SQL 方面的知识。
 
-bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻松方式。 通过 bcp 加载/提取数据时，建议的确切数据量取决于 Azure 数据中心的网络连接。  通常，使用 bcp 可以轻松地加载和提取维度表，但是，不建议使用 bcp 来加载或提取大量数据。  Polybase 是用于加载和提取大量数据的推荐工具，因为它能够更好地利用 SQL 数据仓库的大规模并行处理体系结构。
+bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻松方式。 通过 bcp 加载/提取数据时，建议的确切数据量取决于 Azure 的网络连接。  随时可以使用 bcp 加载和提取小型维度表。 但是，若要加载和提取大量数据，我们建议使用 Polybase 而不要使用 bcp。 PolyBase 适用于 SQL 数据仓库的大规模并行处理体系结构。
 
 使用 bcp 可以：
 
-* 使用简单的命令行实用程序将数据载入 SQL 数据仓库。
-* 使用简单的命令行实用程序从 SQL 数据仓库提取数据。
+* 使用命令行实用工具将数据载入 SQL 数据仓库。
+* 使用命令行实用工具从 SQL 数据仓库提取数据。
 
-本教程会说明如何：
+本教程：
 
 * 使用 bcp in 命令将数据导入表中
 * 使用 bcp out 命令从表中导出数据
@@ -52,13 +45,12 @@ bcp 是将较小数据集移入和移出 SQL 数据仓库数据库的快速轻�
 要逐步完成本教程，需要：
 
 * 一个 SQL 数据仓库数据库。
-* 已安装 bcp 命令行实用工具
-* 已安装 SQLCMD 命令行实用工具
+* bcp 和 sqlcmd 命令行实用工具。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=36433)下载这些工具。 
 
-> [!NOTE]
-> 可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用工具。
-> 
-> 
+### <a name="data-in-ascii-or-utf-16-format"></a>采用 ASCII 或 UTF-16 格式的数据
+如果使用自己的数据尝试学习本教程，则数据需要使用 ASCII 或 UTF-16 编码，因为 bcp 不支持 UTF-8。 
+
+PolyBase 支持 UTF-8，但尚不支持 UTF-16。 若要使用 bcp 执行数据导出，然后使用 PolyBase 执行数据加载，将数据从 SQL Server 导出后，需要将其转换为 UTF-8。 
 
 ## <a name="import-data-into-sql-data-warehouse"></a>将数据导入 SQL 数据仓库
 在本教程中，会在 Azure SQL 数据仓库中创建一个表，然后将数据导入该表。
@@ -82,10 +74,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-> [!NOTE]
-> 有关在 SQL 数据仓库中创建表和 WITH 子句中可用选项的详细信息，请参阅 [Table Overview][Table Overview]（表概述）或 [CREATE TABLE syntax][CREATE TABLE syntax]（CREATE TABLE 语法）。
-> 
-> 
+有关创建表的详细信息，请参阅[表概述](sql-data-warehouse-tables-overview.md)或[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse.md) 语法。
+ 
 
 ### <a name="step-2-create-a-source-data-file"></a>步骤 2：创建源数据文件
 打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。
@@ -123,7 +113,7 @@ bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Use
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-应返回以下结果：
+该查询应返回以下结果：
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -141,9 +131,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |#N/A |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>步骤 4：基于新加载的数据创建统计信息
-Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。 有关统计信息的详细说明，请参阅开发主题组中的[统计信息][Statistics]主题。 以下快速示例说明如何基于此示例中加载的表创建统计信息
+加载数据后，最后一步是创建或更新统计信息。 这有助于提升查询性能。 有关详细信息，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下 sqlcmd 示例在包含新加载的数据的表中创建统计信息。
 
-在 sqlcmd 提示符下执行以下 CREATE STATISTICS 语句：
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -154,7 +143,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="export-data-from-sql-data-warehouse"></a>从 SQL 数据仓库导出数据
-在本教程中，将从 Azure SQL 数据仓库中的表创建数据文件。 我们将上面创建的数据导出到名为 DimDate2_export.txt 的新数据文件。
+本教程基于 Azure SQL 数据仓库中的某个表创建数据文件。 它会导出在上一部分中导入的数据。 结果将保存到名为 DimDate2_export.txt 的文件中。
 
 ### <a name="step-1-export-the-data"></a>步骤 1：导出数据
 在 bcp 实用程序中，可以使用以下命令来连接并导出数据（相应地替换其中的值）：
@@ -162,7 +151,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-可以通过打开新文件来验证是否已正确导出数据。 文件中的数据应与以下文本匹配：
+可以通过打开新文件来验证是否已正确导出数据。 该文件中的数据应与以下文本匹配：
 
 ```
 20150301,1,3
@@ -185,21 +174,13 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关加载数据的概述，请参阅[将数据载入 SQL 数据仓库][Load data into SQL Data Warehouse]。
-有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL Data Warehouse development overview]。
+若要设计加载过程，请参阅 [加载概述] (sql-data-warehouse-design-elt-data-loading]。  
 
-<!--Image references-->
 
-<!--Article references-->
-
-[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-[Table Overview]: ./sql-data-warehouse-tables-overview.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+
+
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433

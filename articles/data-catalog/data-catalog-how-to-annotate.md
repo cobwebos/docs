@@ -13,17 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 011f4396b11cc43ba36dd678cd4ec0f5d5daa81a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f9dd68380773e3cdb93cf1033ccd1b55d9f69305
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-annotate-data-sources"></a>如何批注数据源
 ## <a name="introduction"></a>介绍
-**Microsoft Azure 数据目录**是一个完全托管的云服务，具有企业数据源的注册系统和发现系统的功能。 换而言之，“数据目录”旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源在“数据目录”中注册时，该服务将复制数据源的元数据并为其建立索引，但事情并未就此结束。 用户可使用数据目录提供自己的描述性元数据（例如说明和标记）补充从数据源中提取的元数据并让数据源更易于理解。
+**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，“数据目录”旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源在“数据目录”中注册时，该服务将复制数据源的元数据并为其建立索引，但事情并未就此结束。 用户可使用数据目录提供自己的描述性元数据（例如说明和标记）补充从数据源中提取的元数据并让数据源更易于理解。
 
 ## <a name="annotation-and-crowdsourcing"></a>批注和众包
 每个人都有自己的观点。 这是一件好事。

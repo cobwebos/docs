@@ -1,6 +1,6 @@
 ---
 title: "将 Azure 资源移到新的订阅或资源组 | Microsoft 文档"
-description: "使用 Azure Resource Manager 将资源移到新的资源组或订阅。"
+description: "使用 Azure 资源管理器将资源移到新的资源组或订阅。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5a28914d967e77d6c8881cd6e56b798269d3df3e
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -105,21 +105,21 @@ ms.lasthandoff: 10/18/2017
 * Application Insights
 * 自动化
 * Azure Cosmos DB
-* 批处理
+* Batch
 * 必应地图
 * CDN
 * 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
 * 认知服务
 * 内容审查器
 * 数据目录
-* Data Factory
+* 数据工厂
 * 数据湖分析
 * Data Lake Store
 * DNS
 * 事件中心
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
-* 密钥保管库
+* Key Vault
 * 负载均衡器
 * 逻辑应用
 * 机器学习
@@ -161,7 +161,7 @@ ms.lasthandoff: 10/18/2017
 * 托管应用程序
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
-* 安全
+* “安全”
 * StorSimple 设备管理器
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 
@@ -314,6 +314,12 @@ ms.lasthandoff: 10/18/2017
 移动不支持用于使用 Azure Site Recovery 设置灾难恢复的“存储”、“网络”或“计算”资源。
 
 例如，假设已设置将本地计算机复制到存储帐户 (Storage1)，并且想要受保护的计算机在故障转移到 Azure 之后显示为连接到虚拟网络 (Network1) 的虚拟机 (VM1)。 不能在同一订阅中的资源组之间或在订阅之间移动这些 Azure 资源 - Storage1、VM1 和 Network1。
+
+若要在资源组之间移动在 Azure 备份中注册的 VM：
+ 1. 暂时停止备份并保留备份数据
+ 2. 将 VM 移至目标资源组
+ 3. 在相同/新保管库中对其进行重新保护 用户可以从在移动操作之前创建的可用还原点进行还原。
+如果用户跨订阅移动备份 VM，则步骤 1 和步骤 2 保持相同。 在步骤 3 中，用户需要保护存在/创建于目标订阅中的新保管库下的 VM。恢复服务保管库不支持跨订阅备份。
 
 ## <a name="hdinsight-limitations"></a>HDInsight 限制
 

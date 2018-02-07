@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a3957ffcc149bdaf5c196960c7c7f23913f8b5c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-logic-apps-features"></a>使用逻辑应用功能
 
-在[上一个主题](../logic-apps/logic-apps-create-a-logic-app.md)中已创建了第一个逻辑应用。 若要控制逻辑应用的工作流，可为逻辑应用指定不同的运行路径以及指定在数组、集合和批处理中处理数据的方式。 可在逻辑应用工作流中包括这些元素：
+在[上一个主题](../logic-apps/quickstart-create-first-logic-app-workflow.md)中已创建了第一个逻辑应用。 若要控制逻辑应用的工作流，可为逻辑应用指定不同的运行路径以及指定在数组、集合和批处理中处理数据的方式。 可在逻辑应用工作流中包括这些元素：
 
 * 条件和[ 语句](../logic-apps/logic-apps-switch-case.md)可使逻辑应用根据是否符合特定条件来运行不同操作。
 

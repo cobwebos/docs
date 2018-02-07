@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 63bd33bf4e09b98aa53dcfec9fcc4a0109204952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e988ae22a3d6e47591c37ad0b4c9f781d523bcc8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
 连接到 OneDrive 以管理文件（包括上传、获取、删除文件等）。 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 本主题演示了如何在逻辑应用中使用 OneDrive 连接器，还列出了触发器和操作。
 
-若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-overview.md)和[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="connect-to-onedrive"></a>连接到 OneDrive
 在逻辑应用能够访问任何服务前，需要先创建到该服务的*连接*。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 OneDrive，首先需要 OneDrive *连接*。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此，在 OneDrive 中，将凭据输入到 OneDrive 帐户以创建连接。
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="use-a-trigger"></a>使用触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
 1. 在逻辑应用中，键入“onedrive”获取触发器列表：  
    
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 ## <a name="use-an-action"></a>使用操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
 1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
    

@@ -1,0 +1,1 @@
+如果不熟悉 MSI，请查看[托管服务标识概述](~/articles/active-directory/pp/msi-overview.md)，并**确保查看[系统分配的 MSI 和用户分配的 MSI 之间的差异](~/articles/active-directory/pp/msi-overview.md#how-does-it-work)**。 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。

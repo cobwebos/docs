@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 89cb7dc488da42724f212d13f8550064ff8b9188
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: dea6b137fb12467a881afaa9a3e6985b584f5559
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -73,7 +73,7 @@ Azure 门户仅显示当前对用于容器的 Web 应用有效的功能。 当�
 Linux 应用服务仅支持[基本和标准](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 以下也是有关 Linux 应用服务的重要限制：
 
 * 不能在已经托管非 Linux Web 应用的应用服务计划中创建用于容器的 Web 应用。
-* 在包含非 Linux Web 应用的资源组中创建用于容器的 Web 应用时，必须在不同于现有应用服务计划的区域中创建应用服务计划。
+* 在包含非 Linux Web 应用的资源组中创建用于容器的 Web 应用时，必须在不同于现有应用服务计划的资源组中创建应用服务计划。
 
 ## <a name="troubleshooting"></a>故障排除
 

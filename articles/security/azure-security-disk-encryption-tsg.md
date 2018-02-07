@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: devtiw
-ms.openlocfilehash: 618e5e6d159a8f0d4610d6d652c21e121a93a5e0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c252bc6aee79ad009684f9d3e62c42529c024109
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/08/2017
 
 在通过受支持的储备库映像修改或更改的目标 VM 环境上尝试加密 OS 磁盘更有可能发生此错误。 与支持的映像存在偏差，从而可能会妨碍扩展卸载 OS 驱动器的示例如下所示：
 - 自定义映像不再与受支持文件系统或分区方案匹配。
-- 加密之前在 OS 中安装并运行了 SAP、MongoDB 或 Apache Cassandra 等大型应用程序。 该扩展不能正确关闭这些应用程序。 如果这些应用程序将打开的文件句柄保留到 OS 驱动器，则驱动器无法卸载，从而导致失败。
+- 加密之前在 OS 中安装并运行了 SAP、MongoDB、Apache Cassandra 和 Docker 等大型应用程序时，将不支持这些应用程序。  “Azure 磁盘加密”在准备用于磁盘加密的 OS 驱动器时无法根据需要安全地关闭这些进程。  如果 OS 驱动器仍有持有打开文件句柄的活动进程，OS 驱动器将无法卸载，从而导致加密 OS 驱动器失败。 
 - 在启用加密的几乎同一时间内运行自定义脚本，或者在加密过程中在 VM 上进行其他任何更改。 如果 Azure 资源管理器模板定义了多个同时执行的扩展，或者在执行磁盘加密的同时运行自定义脚本扩展或其他操作，则可能会发生此冲突。 序列化并隔离此类步骤可能会解决问题。
 - 在启用加密之前未禁用安全性增强的 Linux (SELinux)，卸载步骤将会失败。 完成加密后，可以重新启用 SELinux。
 - OS 磁盘使用逻辑卷管理器 (LVM) 方案。 尽管此时可以使用有限的 LVM 数据磁盘支持，但无法使用 LVM OS 磁盘支持。
@@ -116,6 +116,10 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
+## <a name="troubleshooting-encryption-status"></a>加密状态故障排除
+
+如果预期的加密状态与门户中报告的内容不匹配，请参阅以下支持文章：[在 Azure 管理门户上显示的加密状态不正确](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por)
+
 ## <a name="next-steps"></a>后续步骤
 
 本文档已详细描述有关 Azure 磁盘加密的一些常见问题和解决这些问题的方法。 有关此服务及其功能的详细信息，请参阅以下文章：

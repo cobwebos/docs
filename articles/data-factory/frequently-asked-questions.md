@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: dd2475d5940927c65cae4d12b9697cbe535b69a8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 其中提供了有关数据工厂的常见问题的解答。  
@@ -68,7 +68,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 有关详细信息，请参阅[教程：控制流](tutorial-control-flow.md)。
 
 ### <a name="deploy-ssis-packages-to-azure"></a>将 SSIS 包部署到 Azure 
-如果想要移动 SSIS 工作负荷，可以创建一个版本 2 数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS 集成运行时是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](tutorial-deploy-ssis-packages-azure.md) 教程。 
+如果想要移动 SSIS 工作负荷，可以创建一个版本 2 数据工厂，并预配 Azure-SSIS 集成运行时。 Azure-SSIS 集成运行时是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 有关分步说明，请参阅[将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 教程。 
  
 
 ### <a name="sdks"></a>SDK
@@ -164,7 +164,7 @@ Azure 数据工厂版本 2 基于原始 Azure 数据工厂数据移动和转换�
 ## <a name="technical-deep-dive"></a>技术深入了解 
 
 ### <a name="can-version-1-and-version-2-pipelines-run-side-by-side"></a>是否可以同时运行版本 1 和版本 2 管道？
-不能。 版本 2 和版本 1 数据工厂不能包含另一版本的实体（例如链接服务、数据集或管道）。   
+不会。 版本 2 和版本 1 数据工厂不能包含另一版本的实体（例如链接服务、数据集或管道）。   
 
 ### <a name="do-i-still-need-to-define-data-sets-in-version-2"></a>在版本 2 中是否仍需定义数据集？
 对于大多数活动而言，数据集不再是必需的实体。 对于使用数据集中的架构和其他元数据信息进行转换的复制、机器学习、查找、验证和自定义活动，数据集还是必需的。 其余活动不再需要数据集。

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2017
+ms.date: 12/15/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
-ms.openlocfilehash: a196df5b4ab47b234b48594da45cd4d72f604086
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29e78bbb8e3d4d4feb3f7d32cf0a5ef1b02a6268
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>为函数创建 OpenAPI 定义
 通常使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
@@ -48,13 +48,21 @@ ms.lasthandoff: 10/11/2017
 
 本教程使用的 HTTP 触发函数采用两个参数：修复涡轮机的估计时间（小时）、涡轮机的容量（千瓦特）。 然后函数计算修复的费用和涡轮机 24 小时可以产生的收入。
 
-1. 展开函数应用，单击“函数”旁边的 **+** 按钮，并单击“HTTPTrigger”模板。 为函数“名称”输入 `TurbineRepair`，并单击“创建”。
+1. 展开 Function App，选择“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。 
 
-    ![Function Apps 边栏选项卡，Functions +](media/functions-openapi-definition/add-function.png)
+    ![Azure 门户中的 Functions 快速入门页](media/functions-openapi-definition/add-first-function.png)
+
+2. 在搜索字段中，键入 `http`，然后针对 HTTP 触发器模板选择“C#”。 
+ 
+    ![选择 HTTP 触发器](./media/functions-openapi-definition/select-http-trigger-portal.png)
+
+3. 为函数键入 `TurbineRepair` 作为名称，选择 `Function` 作为[身份验证级别](functions-bindings-http-webhook.md#http-auth)，然后选择“创建”。  
+
+    ![创建 HTTP 触发的函数](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
 1. 将 run.csx 文件的内容替换为以下代码，然后单击“保存”：
 
-    ```c#
+    ```csharp
     using System.Net;
 
     const double revenuePerkW = 0.12; 
@@ -117,7 +125,7 @@ ms.lasthandoff: 10/11/2017
 
     1. 在新 HTTP 触发器函数的“集成”选项卡上，将“允许的 HTTP 方法”更改为“选定的方法”。
 
-    1. 在“选定的 HTTP 方法”中，清除除“POST”外的所有选项。
+    1. 在“选定的 HTTP 方法”中，清除除“POST”外的所有选项，然后单击“保存”。
 
         ![选定的 HTTP 方法](media/functions-openapi-definition/selected-http-methods.png)
         
@@ -264,7 +272,7 @@ securityDefinitions:
 
 1. 返回到 API 定义：“function-demo-energy” > “平台功能” > “API 定义”。
 
-1. 在右侧窗格中，单击“更改身份验证”，输入复制的 API 密钥，然后单击“验证”。
+1. 在右侧窗格中，单击“身份验证”，输入复制的 API 密钥，然后单击“验证”。
 
     ![使用 API 密钥进行身份验证](media/functions-openapi-definition/authenticate-api-key.png)
 

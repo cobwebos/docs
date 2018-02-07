@@ -11,14 +11,14 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 754548a0beb4251d0fa4eef1fba73aabf02151ec
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 10/18/2017
 6. 此时会显示一个用于创建视图的对话框。 在“模板”列表中，选择“创建”。 在“模型类”列表中，选择“OnlineOrder”类。
    
    ![][15]
-7. 单击“添加”。
+7. 单击 **“添加”**。
 8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”中，双击“views/shared\\_Layout.cshtml”文件以在 Visual Studio 编辑器中将其打开。
 9. 将每一处 **My ASP.NET Application** 替换为 **Northwind Traders Products**。
 10. 删除“Home”、“About”和“Contact”链接。 删除突出显示的代码：

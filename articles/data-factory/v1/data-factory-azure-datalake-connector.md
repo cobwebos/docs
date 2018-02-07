@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f74a953d04e8633e802b33903de603b39ac08e9b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f4ba8288c1efd443310b4efc305c6f397c8163a0
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Store 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-azure-datalake-connector.md)
+> * [版本 1 - 正式版](data-factory-azure-datalake-connector.md)
 > * [版本 2 - 预览版](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
@@ -84,11 +84,11 @@ Data Lake Store 连接器支持以下身份验证类型：
 * 应用程序密钥 
 * 租户 ID
 
-> [!TIP]
+> [!IMPORTANT]
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
->- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。
 >- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件。 对帐户级别访问控制没有要求。
 >- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
+>- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。
 
 通过指定以下属性使用服务主体身份验证：
 
@@ -124,6 +124,12 @@ Data Lake Store 连接器支持以下身份验证类型：
 | **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
+> [!IMPORTANT]
+> 请确保在 Azure Data Lake Store 中授予用户适当的权限：
+>- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件。 对帐户级别访问控制没有要求。
+>- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
+>- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。
+
 **示例：用户凭据身份验证**
 ```json
 {
@@ -147,7 +153,6 @@ Data Lake Store 连接器支持以下身份验证类型：
 凭据操作错误: invalid_grant - AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21-09-31Z。
 
 下表介绍不同类型用户帐户的过期时间：
-
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
@@ -184,6 +189,49 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 有关代码中使用的数据工厂类的详细信息，请参阅以下主题：[AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)。 为代码中使用的 `WindowsFormsWebAuthenticationDialog` 类添加对 `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` 版本 `2.9.10826.1824` 的引用。
+
+## <a name="troubleshooting-tips"></a>故障排除提示
+
+症状：在将数据复制到 Azure Data Lake Store 时，如果复制活动失败，出现以下错误：
+
+  ```
+  Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
+  ```
+
+根本原因：可能有两个原因：
+
+1. 在 Azure Data Lake Store 已链接的服务中指定的 `resourceGroupName` 和/或 `subscriptionId` 不正确；
+2. 用户或服务主体没有所需的权限。
+
+**解决方法：**
+
+1. 请确保你的 data lake 帐户确实属于链接的服务 `typeProperties` 中指定的 `subscriptionId` 和 `resourceGroupName`。
+
+2. 请确保至少向用户或 data lake 帐户上的服务主体授予“读者”的角色。 以下为具体操作：
+
+    1. 请转到 Azure 门户 -> 你的 Data Lake Store 帐户
+    2. 在 Data Lake Store 的边栏选项卡上单击“访问控制 (IAM)”
+    3. 在“访问控制 (IAM)”的边栏选项卡上单击“添加”
+    4. 将“角色”设置为“读者”，并选择用于复制的用户或服务主体以授予访问权限
+
+3. 如果不想为用户或服务主体授予“读者”角色，可选择在复制活动中使用 Data Lake Store 的位置[显式指定执行位置](data-factory-data-movement-activities.md#global)。 示例：
+
+    ```json
+    {
+      "name": "CopyToADLS",
+      "type": "Copy",
+      ......
+      "typeProperties": {
+        "source": {
+          "type": "<source type>"
+        },
+        "sink": {
+          "type": "AzureDataLakeStoreSink"
+        },
+        "exeuctionLocation": "West US"
+      }
+    }
+    ```
 
 ## <a name="dataset-properties"></a>数据集属性
 要指定一个数据集来表示 Data Lake Store 中的输入数据，可以将该数据集的 **type** 属性设置为 **AzureDataLakeStore**。 将该数据集的 **linkedServiceName** 属性设置为 Data Lake Store 链接服务的名称。 有关可用于定义数据集的 JSON 节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 在 JSON 中，所有数据集类型（例如 Azure SQL 数据库、Azure Blob 和 Azure 表）的 **structure**、**availability** 和 **policy** 等节均类似。 每种数据集的 **typeProperties** 节均有所不同，该节提供数据在数据存储中的位置、格式等信息。 
@@ -530,7 +578,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 **Azure Blob 输出数据集**
 
-在下面的示例中，数据写入到新 Blob，每隔一小时进行一次 (`"frequency": "Hour", "interval": 1`)。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+在下面的示例中，数据写入到新 Blob，每隔一小时进行一次 (`"frequency": "Hour", "interval": 1`)。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {

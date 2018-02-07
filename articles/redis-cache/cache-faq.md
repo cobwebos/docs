@@ -3,8 +3,8 @@ title: "Azure Redis 缓存常见问题 | Microsoft Docs"
 description: "了解常见问题的答案，以及有关 Azure Redis 缓存的模式和最佳实践"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: sdanie
-ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: af185725433b0eacc5d57b90fb2e75edd143a59a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis 缓存常见问题
 了解常见问题的答案，以及有关 Azure Redis 缓存的模式和最佳实践。
@@ -306,7 +306,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 * [性能测试](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange.Redis 的最佳做法
-* 将 `AbortConnect` 设置为 false，并使 ConnectionMultiplexer 自动重新连接。 [请参阅此处了解详细信息](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
+* 将 `AbortConnect` 设置为 false，然后使 ConnectionMultiplexer 自动重新连接。 [请参阅此处了解详细信息](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
 * 重复使用 ConnectionMultiplexer - 不要为每个请求创建一个新的 ConnectionMultiplexe。 建议使用[此处所示](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)的 `Lazy<ConnectionMultiplexer>` 模式。
 * 具有较小值的 Redis 工作性能最佳，因此请考虑将较大数据分成多个密钥。 [本次讨论的 Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) 为 100 kb，属于大型数据。 阅读[此文章](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size)以了解较大值可能引起的问题示例。
 * 配置 [ThreadPool](#important-details-about-threadpool-growth) 设置，以免超时。
@@ -341,7 +341,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 * 可以使用 redis-benchmark.exe 对 Redis 服务器进行负载测试。
 * 确保负载测试客户端和 Redis 缓存位于同一区域。
 * 使用 redis-cli.exe，并使用 INFO 命令监视缓存。
-* 如果负载导致出现大量内存碎片，则你应该扩展为更大的缓存大小。
+* 如果负载导致出现大量内存碎片，则应该增加到更大的缓存大小。
 * 有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
 下面的命令提供了有关如何使用 redis-benchmark.exe 的示例。 为获得准确的结果，请从与缓存位于同一区域的 VM 运行这些命令。

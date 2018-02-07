@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 8372817b00d8a5f9e4203b072dbc143185639120
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 180b87e18d98bb1e7ddefdcce09fc45d2fc26d0f
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -77,7 +77,7 @@ Azure 虚拟机的 Dv3 和 Ev3 系列支持嵌套虚拟化。 此功能可在支
 2. 创建内部交换机。
 
     ```powershell
-    New-VMSwitch -SwitchName "InternalNATSwitch" -SwitchType Internal
+    New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
     ```
 
 3. 查看交换机的属性，并记下新适配器的 ifIndex。
@@ -142,7 +142,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   
 3. 单击以选择“DHCP 服务器”复选框，然后依次单击“添加功能”和“下一步”，直至完成向导。
   
-4. 单击“安装” 。
+4. 单击“安装”。
 
 #### <a name="configure-a-new-dhcp-scope"></a>配置新的 DHCP 作用域
 

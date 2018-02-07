@@ -4,7 +4,7 @@ description: "设置网页将实际用户度量发送到流量管理器"
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: 
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: ce5d333ad5d339b64d1fc1d081651052f71a8b67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f4088cf4470b1f9fa22c4ec83a9f92657032734
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 1.  在文本编辑器中打开 HTML 页面
 2.  将在前面步骤中复制的 JavaScript 代码粘贴到 HTML 的 BODY 部分中（复制的代码位于第 8 行和第 9 行，请参见图 3）。
  
-    ![将 Javascript 代码嵌入到实际用户度量网页中](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)  
+    ![将 Javascript 代码嵌入到实际用户度量网页中](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
     **图 3：嵌入实际用户度量 JavaScript 的简单 HTML**
 

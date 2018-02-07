@@ -3,8 +3,8 @@ title: "如何使用 Azure Redis 缓存 | Microsoft Docs"
 description: "了解如何使用 Azure Redis 缓存提高 Azure 应用程序的性能"
 services: redis-cache,app-service
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/27/2017
-ms.author: sdanie
-ms.openlocfilehash: 3dfc026490093523446650c510dbebdd660e8b6b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: wesmc
+ms.openlocfilehash: a9276eaa4c7d8b11891d7dfade475316ffac5f71
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-use-azure-redis-cache"></a>如何使用 Azure Redis 缓存
 > [!div class="op_single_selector"]

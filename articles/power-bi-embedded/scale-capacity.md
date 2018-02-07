@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: e1ab6a2f52fa56f1e04c6c327796587daf43596e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>缩放 Power BI Embedded 容量
 
@@ -26,7 +26,8 @@ ms.lasthandoff: 10/11/2017
 
 本文假定已创建了 Power BI Embedded 容量。 如果尚未创建，请参阅[在 Azure 门户中创建 Power BI Embedded 容量](create-capacity.md)以开始创建。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+> [!NOTE]
+> 缩放操作可能需要大约一分钟。 在此期间，容量将不可用。 嵌入的内容可能无法加载。
 
 ## <a name="scale-a-capacity"></a>扩展容量
 
@@ -48,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 
     ![以蓝色框出的当前定价层](media/scale-capacity/azure-portal-current-tier.png)
 
-5. 若要增加或减少，请选择要迁移到的新层。 选择新层会在所选项周围显示蓝色虚线边框。 选择“选择”以扩展到新层。
+5. 若要提升或降低，请选择要迁移到的新层。 选择新层会在所选项周围显示蓝色虚线边框。 选择“选择”以扩展到新层。
 
     ![选择新层](media/scale-capacity/azure-portal-select-new-tier.png)
 

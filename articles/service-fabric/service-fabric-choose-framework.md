@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 237b8396b56fdec86cc005c121646556825d8e98
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: a68db62f87bca5c641db310823588df6fb74f75e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 Service Fabric 提供了多种方法来编写和管理服务。 服务可以选择使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意已编译可执行程序，也可以是在 Service Fabric 群集上直接托管的容器中运行的代码。
@@ -45,7 +45,7 @@ Reliable Services 也可以是有状态的，专门用于 Service Fabric，其�
 ## <a name="aspnet-core"></a>ASP.NET Core
 ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连接 Internet 的应用程序，如 Web 应用、IoT 应用和移动后端。 Service Fabric 与 ASP.NET Core 集成，因此你可以编写无状态和有状态的 ASP.NET Core 应用程序，充分利用 Reliable Collections 和 Service Fabric 的高级编排功能。
 
-[了解有关 Service Fabric 中 ASP.NET Core 的详细信息](service-fabric-reliable-services-communication-aspnetcore.md)，或通过[编写第一个 ASP.NET Core Service Fabric 应用程序](service-fabric-add-a-web-frontend.md)开始使用。
+[了解有关 Service Fabric 中 ASP.NET Core 的详细信息](service-fabric-reliable-services-communication-aspnetcore.md)，或通过[编写第一个 ASP.NET Core Service Fabric 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)开始使用。
 
 ## <a name="reliable-actors"></a>Reliable Actors
 Reliable Actor 框架在 Reliable Services 的基础上构建，是根据执行组件设计模式实现虚拟执行组件模式的应用程序框架。 Reliable Actor 框架使用称为执行组件的单线程执行的独立的计算单元和状态。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
@@ -55,7 +55,7 @@ Reliable Actor 框架在 Reliable Services 的基础上构建，是根据执行�
 [详细了解 Reliable Actors](service-fabric-reliable-actors-introduction.md)，或开始[编写首个 Reliable Actors 服务](service-fabric-reliable-actors-get-started.md)
 
 
-[使用 ASP.NET Core 构建前端服务](service-fabric-add-a-web-frontend.md)
+[使用 ASP.NET Core 构建前端服务](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ## <a name="next-steps"></a>后续步骤
 [Service Fabric 和容器概述](service-fabric-containers-overview.md)

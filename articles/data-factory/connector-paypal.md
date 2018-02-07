@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 7a30cca215dad6ca71a31bd1f775b85dd2f8ea00
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: b0cc1bca6035104aba655bdb6fc63a1a66483f0c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 PayPal 复制数据
 
@@ -37,7 +37,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 对于特定于 PayPal 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -45,7 +45,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 PayPal 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**PayPal** | 是 |
 | host | PayPal 实例的 URL。 （即，api.sandbox.paypal.com）  | 是 |
@@ -103,7 +103,7 @@ PayPal 链接服务支持以下属性：
 
 要从 PayPal 复制数据，请将复制活动中的源类型设置为“PayPalSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：PayPalSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Payment_Experience"`。 | 是 |

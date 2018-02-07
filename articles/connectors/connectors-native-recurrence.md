@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 77567302c529e6e06e58534ffc9db44c9a85bdb7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>使用逻辑应用计划定期运行的任务和工作流
 
-若要计划定期运行的任务、操作、工作负荷或过程，可以创建一个能够通过“计划 - 定期”[触发器](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)启动的逻辑应用工作流。 使用此触发器，可以设置定期计划的开始日期和时间，以及一个用于执行任务的定期计划，部分示例如下：
+若要计划定期运行的任务、操作、工作负荷或过程，可以创建一个能够通过“计划 - 定期”[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动的逻辑应用工作流。 使用此触发器，可以设置定期计划的开始日期和时间，以及一个用于执行任务的定期计划，部分示例如下：
 
 * 获取内部数据：每天[运行 SQL 存储过程](../connectors/connectors-create-api-sqlazure.md)。
 * 获取外部数据：每隔 15 分钟从 NOAA 提取天气报告。
@@ -46,11 +46,11 @@ ms.lasthandoff: 11/02/2017
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 也可以[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
-* 有关[如何创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)的基本知识 
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识 
 
 ## <a name="add-a-recurrence-trigger-to-your-logic-app"></a>将定期触发器添加到逻辑应用
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用，或了解[如何创建空白逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用，或了解[如何创建空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 2. 显示逻辑应用设计器后，在搜索框中输入“定期”作为筛选器。 选择“计划 - 定期”触发器。 
 
@@ -96,9 +96,9 @@ ms.lasthandoff: 11/02/2017
 
 可为定期触发器配置以下属性。
 
-| 名称 | 必选 | 属性名称 | 类型 | 说明 | 
+| 名称 | 必选 | 属性名称 | Type | 说明 | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **频率** | 是 | frequency | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月” | 
+| **频率** | 是 | 频率 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月” | 
 | **间隔** | 是 | interval | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 <p>默认间隔为 1。 下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 | **时区** | 否 | timezone | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 | 
 | **开始时间** | 否 | startTime | String | 按以下格式提供开始时间： <p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果希望开始时间为 2017 年 9 月 18 日 2:00 PM，请指定“2017-09-18T14:00:00”并选择时区（例如“太平洋时间”）。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：**此开始时间必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)中的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？*](#start-time) | 

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0edec15c7f14ee5338555b03700b7be32c3a1023
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 437c45891d1d20f5fadca8a58954185a3aef56ac
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -63,6 +63,14 @@ Application Insights 收集应用程序中不同操作的性能详细信息。  
 5.  在此示例中，可以看到大量请求超过一秒才得到处理。 单击“操作详细信息”可查看此操作的详细信息。
 
     ![操作详细信息](media/app-insights-tutorial-performance/operation-details.png)
+
+    > [!NOTE]
+    启用“统一详细信息: E2E 事务诊断”[预览体验](app-insights-previews.md)可在单个全屏视图中查看所有相关的服务器端遥测数据，如请求、依赖项、异常、跟踪、事件等。 
+
+    启用预览后，可以查看依赖项调用所用的时间，以及统一体验中的任何失败或异常。 对于跨组件事务，甘特图以及详细信息窗格可以帮助你快速诊断根本原因组件、依赖项或异常。 可以展开下半部分，以查看针对所选组件操作收集的任何跟踪或事件的时间序列。 [详细了解此新体验](app-insights-transaction-diagnostics.md)  
+
+    ![事务诊断](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
+
 
 6.  目前收集到的信息只能确定存在性能缓慢，但很难确定根本原因。  “探查器”可显示操作所运行的实际代码和每步所需的时间，从而帮助确定根本原因。 由于探查器周期性运行，所以可能未记录到某些操作。  随着时间推移，应可记录到更多操作。  若要对操作启用探查器，请单击“探查器跟踪”。
 5.  跟踪显示每个操作的单个事件，以便诊断整个操作持续时间的根本原因。  单击持续时间最长的示例。

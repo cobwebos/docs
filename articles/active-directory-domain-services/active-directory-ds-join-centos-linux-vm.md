@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 65a9e4267c8883db5c8d8bfc5e0167577cd969d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>将 CentOS Linux 虚拟机加入托管域
 本文介绍了如何将 Azure 中的 CentOS Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>预配 CentOS Linux 虚拟机
 使用以下任何一种方法，在 Azure 中预配 CentOS 虚拟机：
-* [Azure 门户](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -82,11 +82,11 @@ sudo vi /etc/hosts
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE]
-      > **故障排除：**如果“领域发现”找不到托管域：
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
+    > [!NOTE]
+    > **故障排除：**如果“领域发现”找不到托管域：  
+      * 确保域可从虚拟机（请尝试 ping）进行访问。  
+      * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。 
+      * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。  
       >
 
 2. 初始化 Kerberos。 在 SSH 终端中键入以下命令：

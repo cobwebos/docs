@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/3/2017
+ms.date: 1/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b4d96df72fd7f8f817140e7599e22a63ddd79910
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 8d77215fd2923e22a9cc87e469cb135d035d22d9
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/09/2018
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Amazon Web Services (AWS) 的集成，需要具有以下项：
 
@@ -131,6 +131,8 @@ ms.lasthandoff: 01/09/2018
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
+
+    d.单击“下一步”。 在“命名空间”文本框中，键入为该行显示的命名空间值。
     
     d.单击“下一步”。 单击“确定” 。
 
@@ -230,19 +232,13 @@ ms.lasthandoff: 01/09/2018
 
     ![创建新策略](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
  
-25. 创建自己的策略，以从 AWS 帐户提取所有角色。 在“创建自己的策略”部分单击“选择”按钮。
-    
+25. 创建自己的策略，通过执行下列步骤从 AWS 帐户提取所有角色：
+
     ![创建新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
-26. 通过执行以下步骤来定义新策略：
+    a. 在“创建策略”部分中单击“JSON”选项卡。
 
-    ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
-
-    a. 提供 **AzureAD_SSOUserRole_Policy** 作为“策略名称”。
-
-    b. 可以提供“此策略将允许从 AWS 帐户提取角色”作为策略的“说明”。
-    
-    c. 在策略文档中，添加以下 JSON。
+    b. 在策略文档中，添加以下 JSON。
     
     ```
     
@@ -271,13 +267,21 @@ ms.lasthandoff: 01/09/2018
     }
     
     ```
+
+    c. 单击“查看策略”按钮以验证策略。
+
+    ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
+
+26. 通过执行以下步骤来定义新策略：
+
+    ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
+
+    a. 提供 **AzureAD_SSOUserRole_Policy** 作为“策略名称”。
+
+    b. 可以提供“此策略将允许从 AWS 帐户提取角色”作为策略的“说明”。
     
-    d.单击“下一步”。 确保选中“使用自动格式设置进行策略编辑”。
-    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击底部的“验证策略”按钮。
-    
-    f. 正确验证策略后，即可单击“创建策略”按钮。
-    
+    c. 单击“创建策略”按钮。
+        
 27. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
 
     a. 在 AWS IAM 控制台中单击“用户”导航。

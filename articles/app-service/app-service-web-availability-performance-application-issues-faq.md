@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 36869eb523706787257160e5859f50b24f7bf08b
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 926005eace0acde27e26619a2787368ba0954351
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 01/03/2018
 2. 选择“应用程序设置”。
 3. 对于“始终可用”，选择“打开”。
 
-## <a name="how-do-i-turned-on-failed-request-tracing"></a>如何打开失败请求跟踪？
+## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何打开失败请求跟踪？
 
 打开失败请求跟踪：
 

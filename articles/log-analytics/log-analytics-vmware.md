@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 01/16/2018
 ms.author: banders
-ms.openlocfilehash: 17072c4b6e4fdf6e4dc2b7a6a4ded7fa9f9f6fde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 287a98c59a33b603f7186dd99505ecd0ef4f0941
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -26,12 +26,12 @@ ms.lasthandoff: 10/11/2017
 
 Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大型 VMware 日志的集中式日志记录和监视方法的解决方案。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
 
-解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 OMS 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 OMS 代理打开端口 1514 并对它进行侦听。 当接收到数据后，OMS 代理将数据推送到 OMS 中。
+解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 OMS 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 OMS 代理打开端口 1514 并对它进行侦听。 当接收到数据后，OMS 代理将数据推送到 Log Analytics 中。
 
-## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
-使用以下信息来安装和配置解决方案。
+## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
+使用以下信息安装和配置解决方案。
 
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 VMware 监视解决方案添加到 OMS 工作区。
+* 使用[添加管理解决方案](log-analytics-add-solutions.md#add-a-management-solution)中所述的进程将 VMware 监视解决方案添加到订阅。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
 vSphere ESXi 主机 5.5 和 6.0
@@ -66,11 +66,11 @@ vSphere ESXi 主机 5.5 和 6.0
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-9. 在 OMS 门户中，针对 `Type=VMware_CL` 执行日志搜索。 OMS 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
+9. 在 Azure 门户中，针对 `VMware_CL` 执行日志搜索。 Log Analytics 收集 syslog 数据时，它将保留 syslog 格式。 在该门户中，将捕获某些特定字段，如 *Hostname* 和 *ProcessName*。  
 
     ![type](./media/log-analytics-vmware/type.png)  
 
-    如果查看的日志搜索结果类似于上面的图像，则要设置使用 OMS VMware 监视解决方案仪表板。  
+    如果查看的日志搜索结果类似于上面的图像，则要设置使用 VMware 监视解决方案仪表板。  
 
 ## <a name="vmware-data-collection-details"></a>VMware 数据收集详细信息
 VMware 监视解决方案使用已启用的 OMS Agent for Linux 从 ESXi 主机收集各种性能指标和日志数据。
@@ -99,13 +99,13 @@ VMware 监视解决方案使用已启用的 OMS Agent for Linux 从 ESXi 主机�
 | SyslogMessage_s |Syslog 数据 |
 | UserName_s |创建或删除 VM 的用户 |
 | VMName_s |VM 名称 |
-| 计算机 |主机 |
+| Computer |主机 |
 | TimeGenerated |生成数据的时间 |
 | DataCenter_s |VMware 数据中心 |
 | StorageLatency_s |存储延迟（毫秒） |
 
 ## <a name="vmware-monitoring-solution-overview"></a>VMware 监视解决方案概述
-VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 单击该磁贴时，将进入仪表板视图。
+VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高级视图。 单击该磁贴时，将进入仪表板视图。
 
 ![磁贴](./media/log-analytics-vmware/tile.png)
 
@@ -124,7 +124,7 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 
 单击任意边栏选项卡，打开 Log Analytics 搜索窗格，其中显示了特定于边栏选项卡的详细信息。
 
-在此处可以编辑搜索查询，以对某些具体内容进行修改。 有关 OMS 搜索的基础知识教程，请参阅 [OMS 日志搜索教程](log-analytics-log-searches.md)。
+在此处可以编辑搜索查询，以对某些具体内容进行修改。 有关创建日志搜索的详细信息，请参阅[在 Log Analytics 中使用日志搜索查找数据](log-analytics-log-searches.md)。
 
 #### <a name="find-esxi-host-events"></a>查找 ESXi 主机事件
 单台 ESXi 主机基于其进程会生成多个日志。 VMware 监视解决方案可对其进行集中管理，并总结事件计数。 此集中式视图可帮助你了解哪些 ESXi 主机有大量的事件，以及在环境中最常发生哪些事件。
@@ -155,12 +155,12 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 
 
 #### <a name="save-queries"></a>保存查询
-保存搜索查询是 OMS 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](log-analytics-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存搜索查询是 Log Analytics 中的标准功能，可帮助你记录发现的任何有用查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](log-analytics-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>从查询中创建警报
-创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](log-analytics-alerts.md)。 有关警报查询示例和其他查询示例，请参阅[使用 OMS Log Analytics 监视 VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) 博客文章。
+创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](log-analytics-alerts.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) 博客文章。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>需要对 ESXi 主机设置执行哪些操作？ 这对目前的环境有什么影响？
@@ -169,16 +169,16 @@ VMware 磁贴显示在 OMS 门户中。 它提供任何失败的高级视图。 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>是否需要重启 ESXi 主机？
 不会。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
 
-### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-oms"></a>是否可以增减发送到 OMS 的日志数据量？
+### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>是否可以增减发送到 Log Analytics 的日志数据量？
 可以。 可以在 vSphere 中使用 ESXi 主机日志级别设置。 日志集合基于 *info* 级别。 因此，如果想要审核 VM 创建或删除，则需在 Hostd 上保持 *info* 级别。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)。
 
-### <a name="why-is-hostd-not-providing-data-to-oms-my-log-setting-is-set-to-info"></a>为什么 Hostd 不向 OMS 提供数据？ 日志设置已设置为 info。
+### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>为什么 Hostd 不向 Log Analytics 提供数据？ 日志设置已设置为 info。
 syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202)。 采用解决方法处理后，Hostd 应能够正常工作。
 
 ### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>是否可以拥有多个 ESXi 主机将 syslog 数据转发到具有 omsagent 的单个 VM？
 是的。 可以拥有多个 ESXi 主机将数据转发到具有 omsagent 的单个 VM。
 
-### <a name="why-dont-i-see-data-flowing-into-oms"></a>为什么看不到数据流入 OMS？
+### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>为什么看不到数据流入 Log Analytics？
 可能有多个原因造成此情况：
 
 * ESXi 主机并未正确地将数据推送到运行 omsagent 的 VM。 若要对此进行测试，请执行以下步骤：
@@ -189,15 +189,16 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   2. 如果 syslog 端口连接成功，但仍看不到任何数据，则通过使用 ssh 运行以下命令在 ESXi 主机上重新加载 syslog：` esxcli system syslog reload`
 * 具有 OMS 代理的 VM 设置不正确。 若要对此进行测试，请执行以下步骤：
 
-  1. OMS 侦听端口 1514，并将数据推送到 OMS。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
+  1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   2. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-     1. 使用 `ps -ef | grep oms` 验证 OMS 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
-     2. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
+    a. 使用 `ps -ef | grep oms` 验证 OMS 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
-         验证适当的用户和组设置是否有效，类似于：`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+    b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 
-         如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
+    c. 验证适当的用户和组设置是否有效，类似于：`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+
+    d.单击“下一步”。 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Log Analytics 中的“[日志搜索](log-analytics-log-searches.md)”可查看详细的 VMware 主机数据。

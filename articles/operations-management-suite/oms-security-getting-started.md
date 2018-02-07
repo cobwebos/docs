@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 9772e4c1022cf8609e52ccfe16376959b67e92eb
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5832d46636cce5ceeda7f42d2e87b5a3a633bfe5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite 安全和审核解决方案入门
 本文档通过带你了解每个选项，助你快速入门 Operations Management Suite (OMS) 安全和审核解决方案功能。
@@ -72,7 +72,7 @@ OMS 安全和审核仪表板有四个主要类别：
 
 单击此磁贴时，将打开“搜索”边栏选项卡，显示**安全事件** (Type=SecurityEvents) 的查询结果，以及基于过去七天的数据，如下所示：
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![随时间推移的安全记录](./media/oms-security-getting-started/oms-getting-started-fig3.JPG)
 

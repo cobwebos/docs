@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 6803e22a78e27c15ff4fec301cd5bdd55aacd3e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Azure 无服务器产品/服务以及 Functions 和逻辑应用的概述
 
@@ -41,7 +41,7 @@ Azure Functions 是用于在云中轻松运行小段代码或“函数”的一�
 
 Azure 逻辑应用提供了用于在云中简化并实现可缩放的集成和工作流的方式。 它提供了可视化设计器，用于为流程建模并将流程作为一系列步骤（称为工作流）自动执行。  在云服务和本地服务之间有[许多连接器](../connectors/apis-list.md)可用来快速将无服务器应用连接到其他 API。  逻辑应用以触发器开头（例如，“当将帐户添加到 Dynamics CRM 时”），在触发之后许多组合操作、转换和条件逻辑才能开始。  在流程中安排不同的 Azure Functions 时，逻辑应用是一个很好的选择 - 尤其是当流程需要与外部系统或 API 进行交互时。
 
-要开始使用逻辑应用，请先[创建第一个逻辑应用](logic-apps-create-a-logic-app.md)。  如果要查找有关逻辑应用的更多技术信息，请参阅[开发人员参考](logic-apps-workflow-actions-triggers.md)。
+要开始使用逻辑应用，请先[创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)。  如果要查找有关逻辑应用的更多技术信息，请参阅[开发人员参考](logic-apps-workflow-actions-triggers.md)。
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>如何在 Azure 中构建和部署无服务器应用程序？
 

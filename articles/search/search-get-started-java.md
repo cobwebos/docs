@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8b253ef1eccfbc6ca703657b124d17d1482c2eed
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ ms.lasthandoff: 12/18/2017
 5. 复制服务 URL 和管理密钥。 稍后将它们添加到 **config.properties** 文件时会需要它们。
 
 ## <a name="download-the-sample-files"></a>下载示例文件
-1. 转到 GitHub 上的 [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo)。
+1. 转到 GitHub 上的[搜索 java 索引器演示](https://github.com/Azure-Samples/search-java-indexer-demo)。
 2. 单击“下载 ZIP”，将该 .zip 文件保存到磁盘，然后解压缩其包含的所有文件。 可考虑将文件解压缩到 Java 工作区中，以便于以后查找项目。
 3. 示例文件是只读文件。 右键单击文件夹属性，并清除只读属性。
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 12/18/2017
 7. 单击“完成” 。
 8. 选择“窗口” > “首选项” > “Java” > “已安装 JRE” > “添加”。
 9. 在“添加 JRE”中，选择“标准 VM”。
-10. 单击“下一步”。
+10. 单击“资源组名称” 的 Azure 数据工厂。
 11. 在“JRE 定义”中，单击“JRE 主目录”中的“目录” 。
 12. 导航到“程序文件” > “Java”，并选择以前安装的 JDK。 请务必将 JDK 选为 JRE。
 13. 在“已安装 JRE”中，选择“JDK” 。 设置应类似于以下屏幕截图。

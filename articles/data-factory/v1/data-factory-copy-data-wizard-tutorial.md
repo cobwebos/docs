@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: a6cf954c57f653c031d8f3bee9a84cd57ad3ecc5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f6fc7e0597176e2c23bc82581c86b951542fbc23
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建带有复制活动的管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)
+> * [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure 资源管理器模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/18/2017
         本教程中的一些步骤假定使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../../azure-resource-manager/resource-group-overview.md)。
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
-   6. 单击“创建” 。
+   6. 单击“创建”。
       
        ![“新建数据工厂”边栏选项卡](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
 3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/18/2017
    1. 输入 **CopyFromBlobToAzureSql** 作为**任务名称**
    2. 输入 **说明** （可选）。
    3. 更改“开始日期时间”和“结束日期时间”，使结束日期设置为当天，开始日期设置为五天前。  
-   4. 单击“下一步”。  
+   4. 单击“资源组名称” 的 Azure 数据工厂。  
       
       ![复制工具 - 属性页](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
 3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。 此页用于指定复制任务的源数据存储。 
@@ -120,7 +120,7 @@ ms.lasthandoff: 12/18/2017
    3. 选择 **Azure 订阅**。  
    4. 选择**服务器名称**和**数据库**。
    5. 输入**用户名**和**密码**。
-   6. 单击“下一步”。  
+   6. 单击“资源组名称” 的 Azure 数据工厂。  
       
       ![复制工具 - 指定 Azure SQL 数据库](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. 在“表映射”页上，在“目标”字段中通过下拉列表中选择“emp”，单击**向下箭头**查看架构并预览数据（可选）。

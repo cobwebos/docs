@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 66649bb6ae317eb227dcdf45aa084905967c117f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c1f485812918397b5b52e650611032c9058e3ee
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-service"></a>sfctl service
 创建、删除和管理服务、服务类型与服务包。
@@ -93,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-delete"></a>sfctl service delete
 删除现有的 Service Fabric 服务。
@@ -116,7 +116,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-description"></a>sfctl service description
 获取现有 Service Fabric 服务的说明。
@@ -138,7 +138,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-health"></a>sfctl service health
 获取指定 Service Fabric 服务的运行状况。
@@ -152,7 +152,7 @@ ms.lasthandoff: 10/11/2017
 | --service-id          [必需]| 服务的标识。 这通常是不带“fabric:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果服务名称为“fabric://myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp~app1~svc1”，在以前的版本中为“myapp/app1/svc1”。|
 | --events-health-state-filter | 用于根据运行状态筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 |--exclude-health-statistics     | 指示是否作为查询结果的一部分返回运行状况统计数据。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状态的子实体数。|
-| --partitions-health-state-filter| 用于根据运行状态筛选服务运行状况查询结果中返回的分区运行状态对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的分区。 所有分区用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的分区的运行状态。 - Default - 默认值。 匹配任何 HealthState。                  值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+| --partitions-health-state-filter| 用于根据运行状态筛选服务运行状况查询结果中返回的分区运行状态对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的分区。 所有分区用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的分区的运行状态。 - Default - 默认值。 匹配任何 HealthState。                  值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 | --timeout -t                 | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
@@ -163,7 +163,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h                    | 显示此帮助消息并退出。|
 | --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。                  默认值：json。|
 | --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-info"></a>sfctl service info
 获取有关属于 Service Fabric 应用程序的特定服务的信息。
@@ -186,7 +186,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-list"></a>sfctl service list
 获取属于根据应用程序 ID 指定的应用程序的所有服务的相关信息
@@ -210,7 +210,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-manifest"></a>sfctl service manifest
 获取描述服务类型的清单。
@@ -256,7 +256,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-resolve"></a>sfctl service resolve
 解析 Service Fabric 分区。
@@ -281,7 +281,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-service-update"></a>sfctl service update
 使用给定的更新说明更新指定的服务。

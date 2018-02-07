@@ -3,7 +3,7 @@ title: "Azure AD Connect：同步服务实例 | Microsoft Docs"
 description: "本页记录了 Azure AD 实例的特殊注意事项。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: f340ea11-8ff5-4ae6-b09d-e939c76355a3
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: billmath
-ms.openlocfilehash: 396a0ff94f380e194d4b1d45c3d8132a4265a131
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0b3f274c2bf457760a1d62d5cc369ebdb0c52c59
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
 Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例。 但也有其他实例，这些实例对 URL 具有不同的要求并且具有其他的特殊注意事项。
@@ -26,7 +26,7 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 ## <a name="microsoft-cloud-germany"></a>德国 Microsoft 云
 [德国 Microsoft 云](http://www.microsoft.de/cloud-deutschland)是由德国数据信托运营的最高等级的云。
 
-| 在代理服务器中打开的 URL |
+| 将在代理服务器中打开的 URL |
 | --- |
 | \*.microsoftonline.de |
 | \*.windows.net |
@@ -46,7 +46,7 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 
 DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本起，将支持下一代云。 这一代使用的是基于仅限美国的终结点，并具有不同的 URL 列表，可在代理服务器中打开。
 
-| 在代理服务器中打开的 URL |
+| 将在代理服务器中打开的 URL |
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |

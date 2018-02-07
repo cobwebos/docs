@@ -10,12 +10,12 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/13/2017
-ms.openlocfilehash: 9eebe8352d6a447df520c194b9906df8c2c9a83f
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.date: 01/24/2018
+ms.openlocfilehash: 8569bf65d04f677a45935284dc61d68879014c10
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB
 在本文中，请使用 Microsoft Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Microsoft Azure PowerShell 中的 `AzureRM.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。
@@ -63,22 +63,25 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 - Sku。 此参数对应于 DMS Sku 名称。 目前支持的 Sku 名称为 Basic_1vCore、Basic_2vCores、GeneralPurpose_4vCores
 - 虚拟子网标识符。 可以使用 cmdlet [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) 创建子网。 
 
-以下示例使用名为“MySubnet”的虚拟子网在位于“美国东部”区域的资源组 MyDMSResourceGroup 中创建名为“MyDMS”的服务。
+以下示例使用名为 MyVNET 的虚拟子网和名为 MySubnet 的子网在位于“美国东部”的资源组 MyDMSResourceGroup 中创建名为 MyDMS 的服务。
 
 ```powershell
+ $vNet = Get-AzureRmVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
+
+$vSubNet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
+
 $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
   -ServiceName MyDMS `
   -Location EastUS `
   -Sku Basic_2vCores `  
-  -VirtualSubnetId
-$vnet.Id`
+  -VirtualSubnetId $vSubNet.Id`
 ```
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 在创建 Azure 数据库迁移服务实例以后，创建迁移项目。 Azure 数据库迁移服务项目需要源和目标实例的连接信息，以及要在项目中迁移的数据库的列表。
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>创建源和目标连接的数据库连接信息对象
-可以使用 `New-AzureRmDmsConnInfo` cmdlet 创建数据库连接信息对象。  此 cmdlet 需要以下参数：
+可以使用 `New-AzureRmDmsConnInfo` cmdlet 创建数据库连接信息对象。 此 cmdlet 需要以下参数：
 - ServerType。 请求的数据库连接的类型，例如 SQL、Oracle 或 MySQL。 将 SQL 用于 SQL Server 和 SQL Azure。
 - DataSource。 SQL 实例或 SQL Azure 服务器的名称或 IP。
 - AuthType。 连接的身份验证类型，可以为 SqlAuthentication 或 WindowsAuthentication。
@@ -166,9 +169,9 @@ $selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name AdventureWorks2016 `
 ### <a name="create-and-start-a-migration-task"></a>创建并启动迁移任务
 
 使用 `New-AzureRmDataMigrationTask` cmdlet 创建并启动迁移任务。 此 cmdlet 需要以下参数：
-- TaskType。  要创建的迁移任务的类型。对于从 SQL Server 到 SQL Azure 的迁移类型，此项应为 MigrateSqlServerSqlDb。 
+- TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 SQL Azure 的迁移类型，此项应为 MigrateSqlServerSqlDb。 
 - ResourceGroupName。 要在其中创建任务的 Azure 资源组的名称。
-- ServiceName。  要在其中创建任务的 Azure 数据库迁移服务实例。
+- ServiceName。 要在其中创建任务的 Azure 数据库迁移服务实例。
 - ProjectName。 要在其中创建任务的 Azure 数据库迁移项目的名称。 
 - TaskName。 要创建的任务的名称。 
 - SourceConnection。 AzureRmDmsConnInfo 对象，表示源连接。

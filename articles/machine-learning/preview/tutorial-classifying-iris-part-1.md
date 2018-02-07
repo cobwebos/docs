@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 09/28/2017
-ms.openlocfilehash: f417154c2c2a27b356cefb94739838bd2136e756
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 4e558518a5a1fb7b4cd0a58fe2453fd4c083b46a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="classify-iris-part-1-prepare-the-data"></a>鸢尾花分类（第 1 部分）：准备数据
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -64,26 +64,30 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![数据视图](media/tutorial-classifying-iris/data_view.png)
 
-3. 保留默认值，然后选择“下一步”按钮。  
+3. 选择“文本文件(*.csv、.json、.txt....)”，单击“下一步”。
+   ![数据源](media/tutorial-classifying-iris/data-source.png)
+   
+
+4. 浏览到文件 **iris.csv**，然后单击“下一步”。  
  
    ![选择 iris](media/tutorial-classifying-iris/select_iris_csv.png)
 
    >[!IMPORTANT]
    >确保从本练习的当前项目目录内部选择 iris.csv 文件， 否则后续步骤可能失败。
    
-4. 选择该文件之后，选择“完成”按钮。
+5. 保留默认值，并单击“完成”。
 
-4. 此时会创建名为 iris-1.dsource 的新文件。 使用短划线 (-1) 为该文件进行唯一的命名，因为示例项目附带了没有编号的 iris.dsource 文件。  
+6. 此时会创建名为 iris-1.dsource 的新文件。 使用短划线“-1”为该文件进行唯一的命名，因为示例项目附带了没有编号的 iris.dsource 文件。  
 
    此时会打开文件并显示数据。 “列 1”到“列 5”的一系列列标题会自动添加到此数据集。 滚动到底部。可以看到，数据集的最后一行是空的。 该行为空是因为 CSV 文件中有一个额外的换行符。
 
    ![Iris 数据视图](media/tutorial-classifying-iris/iris_data_view.png)
 
-5. 选择“指标”按钮。 观察直方图。 已为每一列计算出一组完整的统计信息。 还可以选择“数据”按钮来再次查看数据。 
+7. 选择“指标”按钮。 观察直方图。 已为每一列计算出一组完整的统计信息。 还可以选择“数据”按钮来再次查看数据。 
 
    ![Iris 数据视图](media/tutorial-classifying-iris/iris_metrics_view.png)
 
-6. 选择“准备”按钮。 此时会打开“准备”对话框。 
+8. 选择“准备”按钮。 此时会打开“准备”对话框。 
 
    示例项目附带 iris.dprep 文件。 默认情况下，它会要求你在已经存在的 iris.dprep 数据准备包中创建一个新的数据流。 
 
@@ -93,27 +97,27 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    随后会在数据准备编辑器中创建并打开名为 iris-1.dprep 的新数据准备包。
 
-7. 现在，让我们进行一些基本的数据准备工作。 将列重命名。 选择每个列标题，使标题文本可编辑。 
+9. 现在，让我们进行一些基本的数据准备工作。 将列重命名。 选择每个列标题，使标题文本可编辑。 
 
    分别在五个列中输入“花萼长度”、“花萼宽度”、“花瓣长度”、“花瓣宽度”和“物种”。
 
    ![将列重命名](media/tutorial-classifying-iris/rename_column.png)
 
-8. 若要统计非重复值，请选择“物种”列，然后右键单击它进行选择。 从下拉菜单中选择“值计数”。 
+10. 若要统计非重复值，请选择“物种”列，然后右键单击它进行选择。 从下拉菜单中选择“值计数”。 
 
    ![选择“值计数”](media/tutorial-classifying-iris/value_count.png)
 
    此操作会打开“检查器”窗格并显示包含四个条形的直方图。 目标列包含三个非重复值：Iris_virginica、Iris_versicolor、Iris-setosa，以及一个 (null) 值。
 
-9. 若要筛选出 null 值，请在图形中选择表示 null 值的条形。 有一个包含 **(null)** 值的行。 若要删除此行，请选择减号 (-)。
+11. 若要筛选出 null 值，请在图形中选择表示 null 值的条形。 有一个包含 **(null)** 值的行。 若要删除此行，请选择减号 (-)。
 
    ![值计数直方图](media/tutorial-classifying-iris/filter_out.png)
 
-10. 注意“步骤”窗格中详述的各个步骤。 在重命名列并筛选 null 值行时，系统将每个操作作为数据准备步骤记录。 可以编辑各个步骤以调整设置、为步骤重新排序，以及删除步骤。
+12. 注意“步骤”窗格中详述的各个步骤。 在重命名列并筛选 null 值行时，系统将每个操作作为数据准备步骤记录。 可以编辑各个步骤以调整设置、为步骤重新排序，以及删除步骤。
 
    ![步骤](media/tutorial-classifying-iris/steps.png)
 
-11. 关闭数据准备编辑器。 在带图标的“iris-1”选项卡上选择“关闭”(x)。 工作会自动保存到“数据准备”标题下显示的 iris-1.dprep 文件中。
+13. 关闭数据准备编辑器。 在带图标的“iris-1”选项卡上选择“关闭”(x)。 工作会自动保存到“数据准备”标题下显示的 iris-1.dprep 文件中。
 
 ## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>生成可调用数据准备包的 Python/PySpark 代码
 

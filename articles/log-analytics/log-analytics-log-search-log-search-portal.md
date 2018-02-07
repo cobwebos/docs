@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 08d8ebfd18491eb78190651b76f444ffe0eca899
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 3a2e8803d51d81ab0eda3dc814d01822e17bc14e
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
 
@@ -37,11 +37,11 @@ ms.lasthandoff: 12/13/2017
 - 至少将一个 [Windows 代理](log-analytics-windows-agent.md)或一个 [Linux 代理](log-analytics-linux-agents.md)连接到工作区。  
 
 ## <a name="open-the-log-search-portal"></a>打开日志搜索门户
-首先打开日志搜索门户。  可以在 Azure 门户或 OMS 门户中访问该门户。
+首先打开日志搜索门户。 
 
 1. 打开 Azure 门户。
 2. 导航到 Log Analytics 并选择工作区。
-3. 可选择“日志搜索”留在 Azure 门户中，或通过选择“OMS 门户”，然后单击“日志搜索”按钮，启动 OMS 门户。
+3. 选择**“日志搜索”**。
 
 ![日志搜索按钮](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 

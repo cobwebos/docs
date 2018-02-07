@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: ea0bc72c03c7c51f79b838493eb2f6d3efe4f8f7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 160893f5b2e9c78bd62355782c279fb08f7f6b48
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>在 Azure 堆栈中使用 Azure CLI 创建 Linux 虚拟机
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 Azure CLI 用于创建和从命令行管理 Azure 堆栈资源。 本快速入门详细介绍如何使用 Azure CLI 在 Azure 堆栈中创建 Linux 虚拟机。  创建 VM 后，安装 web 服务器，并打开端口 80 以允许 web 流量。
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 * 请确保 Azure 堆栈运算符具有"Ubuntu Server 16.04 LTS"将图像添加到 Azure 堆栈市场。 
 
@@ -37,7 +37,7 @@ Azure CLI 用于创建和从命令行管理 Azure 堆栈资源。 本快速入�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是到哪些 Azure 堆栈部署和管理资源的逻辑容器。 从开发工具包或 Azure 堆栈集成运行的系统[az 组创建](/cli/azure/group#create)命令来创建资源组。 我们已分配了本文档中的所有变量的值，你可以使用它们也将分配一个不同的值。 下面的示例创建一个名为 myResourceGroup 中的本地位置的资源组。
+资源组是到哪些 Azure 堆栈部署和管理资源的逻辑容器。 从开发工具包或 Azure 堆栈集成运行的系统[az 组创建](/cli/azure/group#az_group_create)命令来创建资源组。 我们已分配了本文档中的所有变量的值，你可以使用它们也将分配一个不同的值。 下面的示例创建一个名为 myResourceGroup 中的本地位置的资源组。
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#create) 命令创建 VM。 以下示例创建名为 myVM 的 VM。 此示例使用 Demouser 管理用户名称和Demouser@123作为密码。 更新这些值，使其适用于环境。 时连接到虚拟机，需要这些值。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。 以下示例创建名为 myVM 的 VM。 此示例使用 Demouser 管理用户名称和Demouser@123作为密码。 更新这些值，使其适用于环境。 时连接到虚拟机，需要这些值。
 
 ```cli
 az vm create \
@@ -62,7 +62,7 @@ az vm create \
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80
 
-默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 将用作 Web 服务器，则需要从 Internet 打开端口 80。 使用 [az vm open-port](/cli/azure/vm#open-port) 命令打开所需端口。
+默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 会用作 Web 服务器，则需要从 Internet 打开端口 80。 使用 [az vm open-port](/cli/azure/vm#open-port) 命令打开所需端口。
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -98,13 +98,13 @@ NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
 
 ```cli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 在本快速入门教程，你已部署简单的 Linux 虚拟机。 若要了解有关 Azure 堆栈的虚拟机的详细信息，继续到[Azure 堆栈中的虚拟机的注意事项](azure-stack-vm-considerations.md)。
 

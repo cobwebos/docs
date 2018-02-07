@@ -1,5 +1,5 @@
 ---
-title: "Azure 内容交付网络中的缓存工作原理 | Microsoft Docs"
+title: "缓存工作原理 | Microsoft Docs"
 description: "缓存即在本地存储数据的过程，以便将来可以更快地访问数据请求。"
 services: cdn
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 638b105b4848d41b2755a4b153c13a77fb9ca08b
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 284b4bcbeafc422a2ed91cec00a5b5b83bb37b7b
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-caching-works"></a>缓存工作原理
 
-本文概述了一般缓存概念以及 Azure 内容交付网络 (CDN) 如何使用缓存来提高性能。 如果想了解如何在 CDN 终结点上自定义缓存行为，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)和[使用查询字符串控制 Azure CDN 缓存行为](cdn-query-string.md)。
+本文概述了一般缓存概念以及 [Azure 内容交付网络 (CDN)](cdn-overview.md) 如何使用缓存来提高性能。 如果想了解如何在 CDN 终结点上自定义缓存行为，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)和[使用查询字符串控制 Azure CDN 缓存行为](cdn-query-string.md)。
 
 ## <a name="introduction-to-caching"></a>缓存简介
 
@@ -57,35 +57,39 @@ ms.lasthandoff: 12/06/2017
 
 - 通过将工作卸载到 CDN，缓存可减少网络流量和源服务器上的加载。 这样做可降低应用程序的成本和资源需求，即使在有大量用户的情况下也是如此。
 
-与 Web 浏览器类似，可通过发送缓存指令标头来控制如何执行 CDN 缓存。 缓存指令标头即 HTTP 标头，通常由源服务器添加。 尽管大部分标头最初都旨在解决客户端浏览器中的缓存问题，但现在所有中间缓存（如 CDN）也会使用这些标头。 可使用两个标头来定义缓存刷新：`Cache-Control` 和 `Expires`。 如果两者都存在，则 `Cache-Control` 为最新且优先于 `Expires`。 还有两种用于验证的标头类型（称为验证程序）：`ETag` 和 `Last-Modified`。 如果两者均已定义，则 `ETag` 为最新且优先于 `Last-Modified`。  
+与缓存在 Web 浏览器中的执行方式类似，可通过发送缓存指令标头来控制缓存在 CDN 中的执行方式。 缓存指令标头即 HTTP 标头，通常由源服务器添加。 尽管大部分标头最初都旨在解决客户端浏览器中的缓存问题，但现在所有中间缓存（如 CDN）也会使用这些标头。 
+
+可使用两个标头来定义缓存刷新：`Cache-Control` 和 `Expires`。 如果两者都存在，则 `Cache-Control` 为最新且优先于 `Expires`。 还有两种用于验证的标头类型（称为验证程序）：`ETag` 和 `Last-Modified`。 如果两者均已定义，则 `ETag` 为最新且优先于 `Last-Modified`。  
 
 ## <a name="cache-directive-headers"></a>缓存指令标头
 
+> [!IMPORTANT]
+> 默认情况下，针对 DSA 进行了优化的 Azure CDN 终结点将忽略缓存指令标头，绕过缓存。 可通过使用 CDN 缓存规则启用缓存来调整 Azure CDN 终结点对待这些标头的方式。 有关详细信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
+
 Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时间和缓存共享： 
 
-`Cache-Control`  
+`Cache-Control`
 - 在 HTTP 1.1 中引入，用于为 Web 发布者提供对其内容的更多控制权，并解决 `Expires` 标头的局限性。
-- 如果定义了 `Expires` 和 `Cache-Control` 标头，则替代第一个标头。
-- 在请求标头中使用时：默认情况下会被 Azure CDN 忽略。
-- 在响应标头中使用时：Azure CDN 在使用常规 Web 交付、大型文件下载和常规/点播视频媒体流式处理优化时将优先处理以下 `Cache-Control` 指令：  
-   - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5`。 此指令指定了被视为最新内容的最长时间。
-   - `private`：内容仅供单个用户使用；请勿存储共享缓存内容，如 CDN。
-   - `no-cache`：缓存内容，但必须在每次传递缓存中的内容前对其进行验证。 等效于 `Cache-Control: max-age=0`。
-   - `no-store`：从不缓存内容。 删除之前已存储的内容。
+- 如果同时定义了 `Expires` 和 `Cache-Control` 标头，则将替代前一个标头。
+- 在请求标头中使用时，Azure CDN 默认情况下将忽略 `Cache-Control`。
+- 在响应标头中使用时，Azure CDN 将根据产品支持以下 `Cache-Control` 指令： 
+   - **Verizon 的 Azure CDN**：支持所有 `Cache-Control` 指令。 
+   - **Akamai 的 Azure CDN**：仅支持以下 `Cache-Control` 指令；将忽略所有其他指令： 
+      - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5`。 此指令指定了被视为最新内容的最长时间。
+      - `no-cache`：缓存内容，但每次传送缓存中的内容前会对其进行验证。 等效于 `Cache-Control: max-age=0`。
+      - `no-store`：从不缓存内容。 删除之前已存储的内容。
 
-`Expires` 
+`Expires`
 - HTTP 1.0 中引入的旧标头支持向后兼容性。
 - 使用基于日期的过期时间，精确到秒。 
 - 类似于 `Cache-Control: max-age`。
 - 当 `Cache-Control` 不存在时使用。
 
-`Pragma` 
-   - 默认情况下，Azure CDN 不会优先处理。
+`Pragma`
+   - Azure CDN 默认情况下未采用。
    - HTTP 1.0 中引入的旧标头支持向后兼容性。
    - 用作具有以下指令的客户端请求标头：`no-cache`。 此指令指示服务器提供新的资源版本。
    - `Pragma: no-cache` 等效于 `Cache-Control: no-cache`。
-
-默认情况下，DSA 优化忽略这些标头。 可通过使用 CDN 缓存规则来调整 Azure CDN 对待这些标头的方式。 有关详细信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
 
 ## <a name="validators"></a>验证程序
 
@@ -111,13 +115,13 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 |------------------ |------------------------|----------------------------------|
 | HTTP 状态代码 | 200                    | 200、203、300、301、302 和 401 |
 | HTTP 方法       | GET                    | GET                              |
-| 文件大小         | 300 GB                 | <ul><li>常规 Web 交付优化：1.8 GB</li> <li>媒体流式处理优化：1.8 GB</li> <li>大型文件优化：150 GB</li> |
+| 文件大小         | 300 GB                 | - 常规 Web 传递优化：1.8 GB<br />- 媒体流式处理优化：1.8 GB<br />- 大型文件优化：150 GB |
 
 ## <a name="default-caching-behavior"></a>默认缓存行为
 
 下表介绍了 Azure CDN 产品的默认缓存行为及其优化。
 
-|                    | Verizon - 常规 Web 交付 | Verizon - 动态站点加速 | Akamai - 常规 Web 交付 | Akamai - 动态站点加速 | Akamai - 大型文件下载 | Akamai - 常规或点播视频媒体流式处理 |
+|                    | Verizon - 常规 Web 交付 | Verizon - DSA | Akamai - 常规 Web 交付 | Akamai - DSA | Akamai - 大型文件下载 | Akamai - 常规或 VOD 媒体流式处理 |
 |--------------------|--------|------|-----|----|-----|-----|
 | **优先处理源**   | 是    | 否   | 是 | 否 | 是 | 是 |
 | **CDN 缓存持续时间** | 7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |

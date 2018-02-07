@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C | Microsoft Docs
+title: "身份验证、注册、编辑配置文件 .NET Azure Active Directory B2C | Microsoft Docs"
 description: "介绍如何使用 Azure Active Directory B2C 构建 Windows 桌面应用程序，其中包括登录、注册和配置文件管理。"
 services: active-directory-b2c
 documentationcenter: .net
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 7b6bd5c95c909cf4ed4c67cd33d09170f670c275
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.custom: seohack1
+ms.openlocfilehash: 5d4664e87ca0a45d59d976f6415fce858bc51dcd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C：构建 Windows 桌面应用
 通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到桌面应用。 本文将说明如何创建 .NET Windows Presentation Foundation (WPF)“待办事项列表”应用，其中包括用户注册、登录和配置文件管理。 该应用将支持使用用户名或电子邮件进行注册和登录。 该应用还将支持使用社交帐户（如 Facebook 和 Google）进行注册和登录。
@@ -71,7 +72,7 @@ PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ### <a name="enter-your-b2c-details"></a>输入 B2C 详细信息
 打开文件 `Globals.cs` 并将每个属性值替换为自己的值。 此类用于在整个 `TaskClient` 中引用常用值。
 
-```C#
+```csharp
 public static class Globals
 {
     ...
@@ -92,7 +93,7 @@ public static class Globals
 ### <a name="create-the-publicclientapplication"></a>创建 PublicClientApplication
 MSAL 的主类是 `PublicClientApplication`。 此类用于表示 Azure AD B2C 系统中的应用程序。 初始化应用程序时，在 `MainWindow.xaml.cs` 中创建 `PublicClientApplication` 实例。 这可以在整个窗口中使用。
 
-```C#
+```csharp
 protected async override void OnInitialized(EventArgs e)
 {
     base.OnInitialized(e);
@@ -110,7 +111,7 @@ protected async override void OnInitialized(EventArgs e)
 ### <a name="initiate-a-sign-up-flow"></a>启动注册流程
 用户选择注册时，建议启动一个注册流程，该流程使用所创建的注册策略。 通过使用 MSAL，只需调用 `pca.AcquireTokenAsync(...)`。 传递给 `AcquireTokenAsync(...)` 的参数可确定接收的令牌类型、身份验证请求中所用的策略等。
 
-```C#
+```csharp
 private async void SignUp(object sender, RoutedEventArgs e)
 {
     AuthenticationResult result = null;
@@ -161,7 +162,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
 ### <a name="initiate-a-sign-in-flow"></a>启动登录流程
 可以使用与启动注册流程相同的方式启动登录流程。 用户登录时，这一次是使用登录策略对 MSAL 执行相同调用：
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
     AuthenticationResult result = null;
@@ -176,7 +177,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 ### <a name="initiate-an-edit-profile-flow"></a>启动编辑配置文件流程
 同样，可以相同方式执行编辑配置文件策略：
 
-```C#
+```csharp
 private async void EditProfile(object sender, RoutedEventArgs e)
 {
     AuthenticationResult result = null;
@@ -192,7 +193,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 ### <a name="check-for-tokens-on-app-start"></a>应用启动时检查令牌
 MSAL 还可用于跟踪用户的登录状态。  在此应用中，我们希望用户即使关闭并重新打开它，也能保持登录状态。  回到 `OnInitialized` 替代中，请使用 MSAL 的 `AcquireTokenSilent` 方法检查缓存的令牌：
 
-```C#
+```csharp
 AuthenticationResult result = null;
 try
 {
@@ -231,7 +232,7 @@ catch (MsalException ex)
 ## <a name="call-the-task-api"></a>调用任务 API
 现在，已使用 MSAL 执行策略并获取令牌。  如果想要使用以下令牌之一来调用任务 API，可以再次使用 MSAL 的 `AcquireTokenSilent` 方法检查缓存的令牌：
 
-```C#
+```csharp
 private async void GetTodoList()
 {
     AuthenticationResult result = null;
@@ -276,7 +277,7 @@ private async void GetTodoList()
 
 成功调用 `AcquireTokenSilentAsync(...)` 并在缓存中找到令牌时后，可以将该令牌添加到 HTTP 请求的 `Authorization` 标头。 任务 Web API 将使用此标头对读取用户的待办事项列表的请求进行身份验证：
 
-```C#
+```csharp
     ...
     // Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
@@ -289,7 +290,7 @@ private async void GetTodoList()
 ## <a name="sign-the-user-out"></a>注销用户
 最后，用户选择“注销”时，可以使用 MSAL 结束用户与该应用的会话。使用 MSAL 时，清除令牌缓存中的所有令牌即可完成此操作：
 
-```C#
+```csharp
 private void SignOut(object sender, RoutedEventArgs e)
 {
     // Clear any remnants of the user's session.

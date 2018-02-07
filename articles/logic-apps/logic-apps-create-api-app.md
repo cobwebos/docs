@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 2a8b883975ed0c0a2a6ee9a2a7ad0c0b1e938fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>创建可从逻辑应用工作流调用的自定义 API
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](http://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/app-service-web-overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
-对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-what-are-logic-apps.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-what-are-logic-apps.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
+对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
 可在 [Azure App Service](../app-service/app-service-web-overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="action-patterns"></a>操作模式
 
-对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-what-are-logic-apps.md#logic-app-concepts)。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
+对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-overview.md#logic-app-concepts)。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
 
 对于标准操作，可在 API 中编写 HTTP 请求方法，并在 Swagger 文件中描述该方法。 然后，可以使用 [HTTP 操作](../connectors/connectors-native-http.md)或 [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 操作直接调用 API。 默认情况下，必须在[请求超时限制](./logic-apps-limits-and-config.md)内返回响应。 
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="trigger-patterns"></a>触发器模式
 
-自定义 API 还可充当[触发器](./logic-apps-what-are-logic-apps.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)或 [Webhook 触发器](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
+自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)或 [Webhook 触发器](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 

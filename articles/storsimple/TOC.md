@@ -2,7 +2,6 @@
 
 ## 概述
 ### [什么是解决方案？](storsimple-ova-overview.md)
-### [上市区域](storsimple-regions.md)
 
 ## 入门
 ### 计划
@@ -13,6 +12,7 @@
 ### 部署
 #### [准备部署](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [部署 StorSimple Manager 服务](storsimple-virtual-array-manage-service.md)
+##### [新的身份验证](storsimple-virtual-array-aad-registration-key.md)
 #### [在 HYPER-V 中预配](storsimple-virtual-array-deploy2-provision-hyperv.md)
 #### [在 VMware 中预配](storsimple-virtual-array-deploy2-provision-vmware.md)
 #### [设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
@@ -79,6 +79,7 @@
 
 ### 部署
 #### [StorSimple 设备管理器服务](storsimple-8000-manage-service.md)
+#### [服务的新身份验证](storsimple-8000-aad-registration-key.md)
 #### [Azure 中的物理设备](storsimple-8000-deployment-walkthrough-u2.md)
 #### [政务门户中的物理设备](storsimple-8000-deployment-walkthrough-gov-u2.md)
 #### [Azure 中的云设备](storsimple-8000-cloud-appliance-u2.md)

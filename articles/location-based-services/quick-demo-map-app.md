@@ -12,17 +12,17 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0edca9e5eb709eb3e1b42b45e5a41ac7a5ba1e75
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>使用 Azure Location Based Services（预览版）启动演示性的交互式地图搜索
 
 本文使用 Azure 地图和交互式搜索来演示 Azure Location Based Services (LBS)（预览版）的功能。 此外，还逐步讲解了自行创建 LBS 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -38,13 +38,13 @@ ms.lasthandoff: 12/14/2017
 
     ![在门户中创建 Location Based Services 帐户](./media/quick-demo-map-app/create-lbs-account.png)
 
-5. 成功创建帐户后，请将其打开，并导航到该帐户的“设置”。 单击“密钥”获取帐户的主要和辅助订阅密钥。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。 
+5. 成功创建帐户后，请将其打开，并导航到该帐户的“设置”。 单击“密钥”获取 Azure Location Based Services 帐户的主密钥和辅助密钥。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。 
 
 ## <a name="download-the-demo-application-for-azure-maps"></a>下载 Azure 地图的演示应用程序
 
 1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) 文件的内容。
 2. 在本地将此文件的内容另存为 **AzureMapDemo.html**，并在文本编辑器中将其打开。
-3. 搜索字符串 **&#60;insert-key&#62;**，并将其替换为在上一部分中获取的**主密钥**。 
+3. 搜索字符串 `<insert-key>`，并将其替换为在上一部分中获取的**主密钥**值。 
 
 
 ## <a name="launch-the-demo-application-for-azure-maps"></a>启动 Azure 地图的演示应用程序

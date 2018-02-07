@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 4ab0ddcc3a42ab4ebb7c9555f57bc2533989b071
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 7f494cff1e8dc57a41467cd722fdf224e10c9dec
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/11/2018
 - 使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
 - 使用基本身份验证复制数据。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse 连接器，需要：
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 01/11/2018
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：SapBw | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -124,7 +124,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 要从 SAP BW 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
 | query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
@@ -168,27 +168,27 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | ACCP | int |
-| CHAR | 字符串 |
-| CLNT | 字符串 |
+| CHAR | String |
+| CLNT | String |
 | CURR | 小数 |
-| CUKY | 字符串 |
+| CUKY | String |
 | DEC | 小数 |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | int |
-| LANG | 字符串 |
-| LCHR | 字符串 |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | 小数 |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | 字符串 |
-| 单位 | 字符串 |
-| DATS | 字符串 |
-| NUMC | 字符串 |
-| TIMS | 字符串 |
+| STRING | String |
+| 单位 | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="next-steps"></a>后续步骤

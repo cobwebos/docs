@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: d8fed08aa22577574b30b360ec164daf592ed456
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 4794f81787fd575c34fa8a2ef66431d85dcf4a5d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="routing-messages-with-iot-hub-net"></a>使用 IoT 中心路由消息 (.NET)
 
@@ -101,7 +101,7 @@ private static async void SendDeviceToCloudMessagesAsync()
 }
 ```
 
-此方法会将 `"level": "critical"` 和 `"level": "storage"` 属性随机添加到设备发送的消息，此设备模拟需要应用程序后端立即执行操作的消息，或需要永久存储的消息。 应用程序会在消息属性中传递此信息（而非在消息正文中），因此 IoT 中心可将消息路由到适当的消息目标。
+此方法会将 `"level": "critical"` 和 `"level": "storage"` 属性随机添加到设备发送的消息，此设备模拟需要应用程序后端立即执行操作的消息，或需要永久存储的消息。 应用程序支持基于消息正文路由消息。
 
 > [!NOTE]
 > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。

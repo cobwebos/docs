@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure 面向 Internet 的负载均衡器 - PowerShell | Microsoft 文档"
-description: "了解如何使用 PowerShell 在 Resource Manager 中创建面向 Internet 的负载均衡器"
+title: "创建公共负载均衡器 - PowerShell | Microsoft Docs"
+description: "了解如何使用 PowerShell 在资源管理器中创建公共负载均衡器"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d11ad8ff7f3d3357d1af276a9643b7a74e6c3f6d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 15e1c868a72a61d9721b96032d304fdec6d6e213
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="get-started"></a>在资源管理器中，透过使用 PowerShell 来创建网络面向的负载均衡器
+# <a name="get-started"></a>使用 PowerShell 在资源管理器中创建公共负载均衡器
 
 > [!div class="op_single_selector"]
-> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="deploying-the-solution-by-using-azure-powershell"></a>使用 Azure PowerShell 部署解决方案
 
-以下过程说明如何使用 Azure 资源管理器和 PowerShell 创建面向 Internet 的负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，然后将其组合在一起来创建负载均衡器。
+以下过程说明如何使用 Azure 资源管理器和 PowerShell 创建公共负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，然后将其组合在一起来创建负载均衡器。
 
 需要创建和配置以下对象才能部署负载均衡器：
 

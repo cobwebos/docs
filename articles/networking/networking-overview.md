@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 7ed018c8c9759bc497c5fea129257486f6128531
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-networking"></a>Azure 网络
 
@@ -96,7 +96,7 @@ Azure 流量管理器服务提供全局 DNS 负载均衡。 流量管理器根�
 
 ![流量管理器](./media/networking-overview/traffic-manager.png)
 
-客户端直接连接到该终结点。 当某个终结点运行不正常时，Azure 流量管理器可检测到这种状态，然后将客户端重定向到其他正常的终结点。 若要了解有关流量管理器的详细信息，请参阅 [Azure 流量管理器概述](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+客户端直接连接到该终结点。 当某个终结点运行不正常时，Azure 流量管理器可检测到这种状态，并将客户端重定向到其他正常的终结点。 若要了解有关流量管理器的详细信息，请参阅 [Azure 流量管理器概述](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 
 **应用程序负载均衡**
 
@@ -151,7 +151,7 @@ Azure 提供以下工具用于监视和管理网络：
 - **Azure 门户：**在浏览器中运行的图形用户界面。 打开 [Azure 门户](http://portal.azure.com)。
 - **Azure PowerShell：**用于在 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure PowerShell 概述](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure PowerShell 的详细信息。
 - **Azure 命令行接口 (CLI)：**用于在 Linux、macOS 或 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure CLI 概述](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure CLI 的详细信息。
-- **Azure Resource Manager 模板：**用于定义 Azure 解决方案的基础结构和配置的文件（采用 JSON 格式）。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解如何创作模板，请参阅[有关创作模板的最佳做法](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。 可以使用 Azure 门户、CLI 或 PowerShell 部署模板。 若要立即开始使用模板，请部署 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=network)库中预配置的众多模板之一。 
+- **Azure 资源管理器模板：**用于定义 Azure 解决方案的基础结构和配置的文件（采用 JSON 格式）。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解如何创作模板，请参阅[有关创作模板的最佳做法](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。 可以使用 Azure 门户、CLI 或 PowerShell 部署模板。 若要立即开始使用模板，请部署 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=network)库中预配置的众多模板之一。 
 
 ## <a name="pricing"></a>定价
 
@@ -159,6 +159,6 @@ Azure 提供以下工具用于监视和管理网络：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成[创建首个虚拟网络](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，创建自己的首个虚拟网络，并将几个 VM 连接到此网络。
+- 完成[创建首个虚拟网络](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，创建自己的首个虚拟网络，并将几个 VM 连接到此网络。
 - 完成[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，将计算机连接到 VNet。
 - 完成[创建面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，对发往公共服务器的 Internet 流量进行负载均衡。

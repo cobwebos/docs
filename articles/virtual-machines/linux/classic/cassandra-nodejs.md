@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 9782df5a5c94169b42d476b0c478fedd3465e3d0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>使用 Node.js 在适用于 Linux 的 Azure 上运行 Cassandra 群集
 
@@ -292,7 +292,7 @@ Azure 在进行配置时需要用 PEM 或 DER 编码的 X509 公钥。 按照如
 执行以下顺序的操作以捕获映像：
 
 ##### <a name="1-deprovision"></a>1.预配
-使用命令“sudo waagent –deprovision+user”删除特定于虚拟机实例的信息。 请参阅[如何捕获将用作模板的 Linux 虚拟机](capture-image.md)，了解映像捕获过程的详细信息。
+使用命令“sudo waagent –deprovision+user”删除特定于虚拟机实例的信息。 请参阅[如何捕获将用作模板的 Linux 虚拟机](capture-image-classic.md)，了解映像捕获过程的详细信息。
 
 ##### <a name="2-shut-down-the-vm"></a>2：关闭 VM
 确保突出显示该虚拟机，并单击底部命令栏中的“关闭”链接。

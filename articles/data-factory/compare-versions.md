@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/20/2017
+ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 8ae6c1eabf87b51dd04b6b6c9686bb89efff3bc0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>比较 Azure 数据工厂 V1 和 V2
 本文比较了 Azure 数据工厂的 V1 和 V2。 有关 V1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 有关 V2 的简介，请参阅[数据工厂（V2 - 预览）简介](introduction.md)。
@@ -86,7 +86,7 @@ V2 允许在管道中对活动进行分支。 [If-condition 活动](control-flow
 
 Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管群集，专用于在云中运行 SSIS 包。 预配 Azure-SSIS Integration Runtime 以后，即可使用曾经用过的相同工具将 SSIS 包部署到本地 SSIS 环境。 
 
-例如，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SSIS 包部署到 Azure 上的此运行时。 有关分步说明，请参阅教程：[将 SQL Server Integration Services 包部署到 Azure](tutorial-deploy-ssis-packages-azure.md)。 
+例如，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SSIS 包部署到 Azure 上的此运行时。 有关分步说明，请参阅教程：[将 SQL Server Integration Services 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 
 
 ## <a name="flexible-scheduling"></a>灵活计划
 在数据工厂 V2 中，不需定义数据集可用性计划。 可以定义触发器资源，以便根据时钟计划程序范例来计划管道。 对于灵活的计划和执行模型，还可以将参数从触发器传递到管道。 
@@ -128,7 +128,16 @@ V2 支持创建按需 Azure HDInsight Spark 群集。 若要创建按需 Spark �
 在 V2 中进行了更新的 SDK 不能向后兼容 V1 客户端。 
 
 ## <a name="authoring-experience"></a>创作体验
-可以使用数据工厂 V1，在 Azure 门户中通过数据工厂编辑器来创作管道。 目前，数据工厂 V2 只支持通过编程方法（例如 .NET SDK、REST API、PowerShell、Python）来创建数据工厂。 尚无用户界面支持。  数据工厂 V1 也提供 SDK、REST 和 PowerShell 创作支持。
+
+| &nbsp; | V2 | V1 |
+| ------ | -- | -- | 
+| Azure 门户 | [是](quickstart-create-data-factory-portal.md) | [是](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure PowerShell | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
+| .NET SDK | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
+| REST API | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| Python SDK | [是](quickstart-create-data-factory-python.md) | 否 |
+| 资源管理器模板 | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
+
 
 ## <a name="monitoring-experience"></a>监视体验
 在 V2 中，也可通过 [Azure Monitor](monitor-using-azure-monitor.md) 来监视数据工厂。 新的 PowerShell cmdlet 支持对 [Integration Runtime](monitor-integration-runtime.md) 进行监视。 V1 和 V2 都支持通过可以从 Azure 门户启动的监视应用程序进行视觉监视。

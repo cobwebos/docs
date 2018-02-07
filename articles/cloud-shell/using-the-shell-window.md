@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 01/30/2018
 ms.author: juluk
-ms.openlocfilehash: 4eb5680c618d78e0722e1eb4a0f551f26b4dc902
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 43da2bf5b66ff7db03a6fb5c2e1ceaebe322bcbb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
 
@@ -46,7 +46,7 @@ Cloud Shell 允许每个会话作为单独的 Bash 进程，因此可在多个�
 如要退出会话，请务必从每个会话窗口退出，因为虽然每个进程都在同一计算机上运行，但他们彼此独立运行。
 
 ## <a name="copy-and-paste"></a>复制和粘贴
-[!include [copy-paste](../../includes/cloud-shell-copy-paste.md)]
+[!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
 ## <a name="resize-cloud-shell-window"></a>调整 Cloud Shell 窗口的大小
 * 单击或向上/向下拖动工具栏边缘可调整 Cloud Shell 窗口的大小。

@@ -3,6 +3,7 @@
 > * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-direct-methods.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-direct-methods.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-direct-methods.md)
+> * [Python](../articles/iot-hub/iot-hub-python-python-direct-methods.md)
 
 Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一个解决方案后端之间实现安全可靠的双向通信。 以前的教程（[IoT 中心入门] 和 [使用 IoT 中心发送云到设备的消息] ）介绍了 IoT 中心的设备到云和云到设备的基本消息传递功能。 用户还可以通过 IoT 中心从云调用设备上的非持久方法。 直接方法表示与设备进行的请求-答复式交互，类似于 HTTPS 调用，因为它们不管是成功还是失败，速度都非常快（在用户指定的超时过后），会让用户知道调用的状态。 [调用设备上的直接方法][lnk-devguide-methods]更详细地介绍了各种直接方法，指导用户何时使用直接方法而不是云到设备消息或所需属性。
 

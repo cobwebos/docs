@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 0d293d3874b0cb43cee9f85c6c575e87c48ad291
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 046172d8c4cff880c8e5d59834f5753927fb90c2
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/11/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SFTP 服务器复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 SFTP 连接器](v1/data-factory-sftp-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 SFTP 连接器](v1/data-factory-sftp-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/11/2018
 
 SFTP 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sftp**。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
@@ -62,7 +62,7 @@ SFTP 链接的服务支持以下属性：
 
 要使用基本身份验证，请将“authenticationType”属性设置为“基本”，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (userName) 的密码。 将此字段标记为 SecureString。 | 是 |
@@ -71,7 +71,9 @@ SFTP 链接的服务支持以下属性：
 
 ```json
 {
+    "apiVersion": "2017-09-01-preview",
     "name": "SftpLinkedService",
+    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -98,7 +100,7 @@ SFTP 链接的服务支持以下属性：
 
 要使用 SSH 公钥身份验证，请将“authenticationType”属性设置为“SshPublicKey”，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定集成运行时可以访问的私钥文件的绝对路径。 仅当在“connectVia”中指定自承载类型的集成运行时时适用。 | 指定 `privateKeyPath` 或 `privateKeyContent`。  |
@@ -112,7 +114,9 @@ SFTP 链接的服务支持以下属性：
 
 ```json
 {
+    "apiVersion": "2017-09-01-preview",
     "name": "SftpLinkedService",
+    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -139,7 +143,9 @@ SFTP 链接的服务支持以下属性：
 
 ```json
 {
+    "apiVersion": "2017-09-01-preview",
     "name": "SftpLinkedService",
+    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -171,7 +177,7 @@ SFTP 链接的服务支持以下属性：
 
 要从 SFTP 复制数据，请将数据集的 type 属性设置为“FileShare”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare |是 |
 | folderPath | 文件夹路径。 例如：folder/subfolder/ |是 |
@@ -184,7 +190,9 @@ SFTP 链接的服务支持以下属性：
 
 ```json
 {
+    "apiVersion": "2017-09-01-preview",
     "name": "SFTPDataset",
+    "type": "Datasets",
     "properties": {
         "type": "FileShare",
         "linkedServiceName":{
@@ -216,10 +224,10 @@ SFTP 链接的服务支持以下属性：
 
 要从 SFTP 复制数据，请将复制活动中的源类型设置为“FileSystemSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource |是 |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。<br/>允许的值为：true（默认）、false | 否 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false | 否 |
 
 **示例：**
 

@@ -1,9 +1,10 @@
 下表显示了 Azure Functions 运行时的两个主要版本支持的绑定。
 
-| 类型 | 1.x | 2.x | 触发器 | 输入 | 输出 |  
+| Type | 1.x | 2.x | 触发器 | 输入 | 输出 |  
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob 存储](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|  
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔<sup>1</sup>|✔|✔|✔|  
+| [事件网格](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |  
 | [事件中心](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|  
 | [外部文件](../articles/azure-functions/functions-bindings-external-file.md)<sup>2</sup>    |✔|| |✔|✔|  
 | [外部表](../articles/azure-functions/functions-bindings-external-table.md)<sup>2</sup>  |✔|| |✔|✔|  

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: ganesr
-ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 87cf32c23c2b3f50057016a23212c95b706f2910
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -118,7 +118,7 @@ Microsoft 对等互连路径用于连接到不支持通过 Azure 公共对等互
 路由交换将通过 eBGP 协议进行。 EBGP 会话在 MSEE 与路由器之间建立。 不要求对 BGP 会话进行身份验证。 如果需要，可以配置 MD5 哈希。 有关配置 BGP 会话的信息，请参阅[配置路由](expressroute-howto-routing-classic.md)及[线路预配工作流和线路状态](expressroute-workflows.md)。
 
 ## <a name="autonomous-system-numbers"></a>自治系统编号
-Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。 我们保留了 ASN 65515-65520 供内部使用。 支持 16 和 32 位 AS 编号。
+Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。 我们保留了 ASN 65515-65520 供内部使用。 支持 16 和 32 位 AS 编号。 我们需要公开注册的 ASN 只是为了进行 Microsoft 对等互连。 专用和公共对等互连都可以使用专用 ASN。
 
 数据传输对称没有相关要求。 转发与返回路径可以遍历不同的路由器对。 相同的路由必须在拥有的多个线路对上，从任何一端播发。 路由指标不需要完全相同。
 
@@ -170,7 +170,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | **南美洲** | |
 | 巴西南部 | 12076:51014 |
 | **欧洲** | |
-| 欧洲北部 | 12076:51003 |
+| 北欧 | 12076:51003 |
 | 欧洲西部 | 12076:51002 |
 | 英国南部 | 12076:51024 |
 | 英国西部 | 12076:51025 |

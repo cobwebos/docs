@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 87c4573ce3b688cdc63b3a342bbc0bebb416ad36
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机 DBMS 部署
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -534,7 +534,7 @@ SAP 当前仅支持高级托管磁盘。 有关更多详细信息，请阅读 SA
 * 只需将所有 VHD、基础 VHD 以及数据 VHD 复制到新的 Azure 高级存储帐户中。 通常情况下，在 Azure 标准存储中选择大量 VHD 不是因为需要数据卷， 而是因为 IOPS。 已经移至 Azure 高级存储，现在可以使用较少的 VHD 来达到一定的 IOPS 吞吐量。 事实上，在 Azure 标准存储中，是为已用数据而不是名义上的磁盘大小付费，因此，VHD 的数目实际上与成本无关。 然而，在 Azure 高级存储中，就要为名义上的磁盘大小付费。 因此，大多数客户会尝试将高级存储中 Azure VHD 的数目控制在达到必要 IOPS 吞吐量所需的数目内。 所以，大多数客户不会选择简单的 1:1 复制方式。
 * 装载可包含 SAP 数据库的数据库备份的单个 VHD（如果尚未装载）。 备份之后，卸载所有 VHD（包括含有备份的 VHD），并将基础 VHD 和含有备份的 VHD 复制到 Azure 高级存储帐户。 然后根据基础 VHD 部署 VM，并装载含有备份的 VHD。 现在可以为 VM 创建额外的空白高级存储磁盘，用作数据库的目标还原位置。 这会假设 DBMS 允许在还原过程中更改数据和日志文件的路径。
 * 另一种可行方法是先前过程的变体，即，只将备份 VHD 复制到 Azure 高级存储，并将其附加到新部署和安装的 VM。
-* 当需要更改数据库的数据文件数目时，会选择第四种可行方法。 在这种情况下，会使用导出/导入来执行 SAP 同源系统复制。 将这些导出文件放入 VHD（已复制到 Azure 高级存储帐户），并将它附加到用于运行导入过程的 VM。 客户通常在想要减少数据文件数目时，才会使用这种可行方法。
+* 当需要更改数据库的数据文件数目时，会选择第四种可行方法。 在这种情况下，会使用导出/导入来执行 SAP 同源系统复制。 将这些导出文件放入 VHD（已复制到 Azure 高级存储帐户），然后将它附加到用于运行导入过程的 VM。 客户通常在想要减少数据文件数目时，才会使用这种可行方法。
 
 如果使用托管磁盘，则可通过以下方式迁移到高级存储：
 

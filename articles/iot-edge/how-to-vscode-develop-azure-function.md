@@ -9,24 +9,24 @@ ms.author: xshi
 ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9637986d10a0e89568b2f79ede3d7b7468bb99a7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 219474a4577a76f5ceb9a9efaa3c349d633de047
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>使用 Visual Studio Code 开发 Azure Functions 并将其部署到 Azure IoT Edge
 
 本文提供了有关使用 [Visual Studio Code](https://code.visualstudio.com/) 作为主要开发工具在 IoT Edge 上开发和部署 Azure Functions 的详细说明。 
 
 ## <a name="prerequisites"></a>先决条件
-本教程假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备，也可以在开发计算机上模拟 IoT Edge 设备。
+本教程假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一个物理设备，或者，你可以在开发计算机上模拟 IoT Edge 设备。
 
-在开始本指南之前，请确保已完成了下列教程。
+在开始本指南之前，请确保已完成以下教程。
 - 在 [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux) 中在模拟设备上部署 Azure IoT Edge
 - [部署 Azure Functions](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)
 
-下面是一个清单，其中显示了在完成前面的教程后应当得到的项目。
+下面是一个清单，其中显示了在完成前面的教程后应会得到的项目。
 
 - [Visual Studio Code](https://code.visualstudio.com/)。 
 - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
@@ -48,17 +48,17 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="start-a-local-docker-registry"></a>启动本地 Docker 注册表
 在此教程中，可以使用任意兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本部分使用[本地 Docker 注册表](https://docs.docker.com/registry/deploying/)，在早期开发过程中更容易使用它进行测试。
-在 VS Code **集成的终端**(Ctrl + `) 中，运行以下命令来启动一个本地注册表。  
+在 VS Code **集成终端** (Ctrl + `) 中，运行以下命令启动本地注册表。  
 
 ```cmd/sh
 docker run -d -p 5000:5000 --name registry registry:2 
 ```
 
 > [!NOTE]
-> 上面的示例显示了仅适用于测试的注册表配置。 就绪可用于生产的注册表必须由 TLS 提供保护，并且理想状态下应当使用某种访问控制机制。 建议使用 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)来部署就绪可用于生产的 IoT Edge 模块。
+> 上面的示例显示了仅适用于测试的注册表配置。 随时可用于生产的注册表必须由 TLS 提供保护，并且理想状态下应当使用某种访问控制机制。 建议使用 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)来部署随时可用于生产的 IoT Edge 模块。
 
 ### <a name="create-a-function-project"></a>创建函数项目
-以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块。 如果在以前的教程中已完成了本部分，可以放心地跳过本部分。
+以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块。 如果在前一篇教程中已完成本部分，则可以放心地跳过本部分。
 
 1. 在 Visual Studio Code 中选择“视图” > “集成终端”，打开 VS Code 集成终端。
 2. 要在 dotnet 中安装（或更新）**AzureIoTEdgeFunction** 模板，请在集成终端中运行以下命令：
@@ -140,9 +140,13 @@ docker run -d -p 5000:5000 --name registry registry:2
 
 1. 在 VS Code 资源管理器中展开 **Docker** 文件夹。 然后展开适用于所用容器平台的文件夹（linux-x64 或 windows-nano）。
 2. 右键单击“Dockerfile”文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
+
+    ![生成 docker 映像](./media/how-to-vscode-develop-csharp-function/build-docker-image.png)
+
 3. 导航到 **FilterFunction** 项目文件夹，然后单击“选择文件夹作为 EXE_DIR”。 
-4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如：`<your container registry address>/filterfunction:latest`。 如果要部署到本地注册表，则它应为 `localhost:5000/filterfunction:latest`。
-5. 将映像推送到 Docker 存储库。 使用“Edge: 推送 IoT Edge 模块 Docker 映像”命令，并在 VS Code 窗口顶部的弹出文本框中输入映像 URL。 使用上一步骤中所用的同一映像 URL。
+4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如：`<your container registry address>/filterfunction:latest`。 若要部署到本地注册表，则它应为 `localhost:5000/filterfunction:latest`。
+5. 将映像推送到 Docker 存储库。 使用 **Edge: Push IoT Edge module Docker image** 命令，并在 VS Code 窗口顶部的弹出文本框中输入映像 URL。 使用上一步骤中所用的同一映像 URL。
+    ![推送 docker 映像](./media/how-to-vscode-develop-csharp-function/push-image.png)
 
 ### <a name="deploy-your-function-to-iot-edge"></a>将函数部署到 IoT Edge
 
@@ -170,24 +174,30 @@ docker run -d -p 5000:5000 --name registry registry:2
    }
    ```
 
-2. 将 **routes** 部分替换为以下内容：
+2. 将 **routes** 节替换为以下内容：
    ```json
-   {
        "routes":{
            "sensorToFilter":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filterfunction/inputs/input1\")",
            "filterToIoTHub":"FROM /messages/modules/filterfunction/outputs/* INTO $upstream"
        }
-   }
    ```
    > [!NOTE]
    > 此运行时中的声明性规则将定义这些消息流经的位置。 本教程需要两个路由。 第一个路由会通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器函数。 第二个路由会将消息从筛选器函数传输到 IoT 中心。 在此路由中，upstream 是一个特殊目的地，它告诉 Edge 中心将消息发送到 IoT 中心。
 
 3. 保存此文件。
-4. 在命令面板中，选择 **Edge: Create deployment for Edge device**。 然后，选择你的 IoT Edge 设备 ID 来创建一个部署。 或者，在设备列表中右键单击该设备 ID 并选择“为 Edge 设备创建部署”。
-5. 选择你更新的 `deployment.json`。 在输出窗口中，可以看到你的部署的相应输出。
-6. 在命令面板中启动你的 Edge 运行时。 **Edge: Start Edge**
+4. 在命令面板中，选择 **Edge: Create deployment for Edge device**。 然后，选择 IoT Edge 设备 ID 来创建部署。 或者，在设备列表中右键单击该设备 ID 并选择“为 Edge 设备创建部署”。
+
+    ![创建部署](./media/how-to-vscode-develop-csharp-function/create-deployment.png)
+
+5. 选择更新的 `deployment.json`。 在输出窗口中，可以看到部署的相应输出。
+6. 在命令面板中启动 Edge 运行时。 **Edge: Start Edge**
 7. 可以看到，你的 IoT Edge 运行时已开始使用模拟传感器和筛选器函数在 Docker 资源管理器中运行。
-8. 右键单击你的 Edge 设备 ID，可以在 VS Code 中监视 D2C 消息。
+
+    ![正在运行的解决方案](./media/how-to-vscode-develop-csharp-function/solution-running.png)
+
+8. 右键单击 Edge 设备 ID，可以在 VS Code 中监视 D2C 消息。
+
+    ![监视消息](./media/how-to-vscode-develop-csharp-function/monitor-d2c-messages.png)
 
 
 ## <a name="next-steps"></a>后续步骤

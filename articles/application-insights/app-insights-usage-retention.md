@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 98ceee23f49d72034432f38307a4f5e8ab87c013
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 03f8bea65e319f357be4ca05fd4aa40da77a3436
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/27/2017
 
 如果采用 ASP.NET 服务器代码，则如下所示：
 
-```C#
+```csharp
    telemetry.TrackEvent("won game");
 ```
 

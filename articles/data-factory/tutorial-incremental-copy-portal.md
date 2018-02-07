@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: af01fac2c552e038377f5b394fecbe3ad9fd3acc
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: ff26d3ae159320f8c726b37eb0c68e6c5f2c2cc3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -178,7 +178,7 @@ END
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
-9. 创建完以后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，会显示图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-incremental-copy-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
@@ -283,7 +283,7 @@ END
 26. 在“新建链接服务”窗口中，执行以下步骤： 
 
     1. 输入 **AzureStorageLinkedService** 作为**名称**。 
-    2. 对于“存储帐户名称”，请选择 Azure 存储帐户。
+    2. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。
     3. 单击“ **保存**”。 
 
         ![Azure 存储链接服务 - 设置](./media/tutorial-incremental-copy-portal/azure-storage-linked-service-settings.png)
@@ -311,7 +311,7 @@ END
 
         | 名称 | Type | 值 | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue |
+        | LastModifiedtime | datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
@@ -446,7 +446,7 @@ PersonID | Name | LastModifytime
 在本教程中，管道将数据从 SQL 数据库中的单个表复制到了 Blob 存储。 转到下面的教程，了解如何将数据从本地 SQL Server 数据库中的多个表复制到 SQL 数据库。 
 
 > [!div class="nextstepaction"]
->[以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-powershell.md)
+>[以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-portal.md)
 
 
 

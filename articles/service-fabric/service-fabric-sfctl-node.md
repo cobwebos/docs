@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 76037c7b4a2f7ada314a9360e3990245e6fbc06c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理构成群集的节点。
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-enable"></a>sfctl node enable
 激活当前已停用的 Service Fabric 群集节点。
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-health"></a>sfctl node health
 获取 Service Fabric 节点的运行状况。
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/11/2017
 |参数|说明|
 | --- | --- |
 | --node-name       [必需]| 节点的名称。|
-| --events-health-state-filter| 用于根据运行状态筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+| --events-health-state-filter| 用于根据运行状态筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 | --timeout -t             | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h                | 显示此帮助消息并退出。|
 | --output -o              | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query                  | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose                | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose                | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
 获取 Service Fabric 群集中的节点的列表。
@@ -128,7 +128,7 @@ ms.lasthandoff: 10/11/2017
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-list"></a>sfctl node list
 获取 Service Fabric 群集中的节点的列表。
@@ -151,7 +151,7 @@ Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包
 | --help -h        | 显示此帮助消息并退出。|
 | --output -o      | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query          | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose        | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose        | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-load"></a>sfctl node load
 获取 Service Fabric 节点的负载信息。
@@ -173,7 +173,7 @@ Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-restart"></a>sfctl node restart
 重启 Service Fabric 群集节点。
@@ -197,7 +197,7 @@ Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包
 | --help -h          | 显示此帮助消息并退出。|
 | --output -o        | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query            | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose          | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-transition"></a>sfctl node transition
 启动或停止群集节点。

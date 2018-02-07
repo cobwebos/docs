@@ -1,6 +1,6 @@
 ---
 title: "为 Azure Functions 中的函数应用自动执行资源部署 | Microsoft Docs"
-description: "了解如何生成用于部署函数应用的 Azure Resource Manager 模板。"
+description: "了解如何生成用于部署函数应用的 Azure 资源管理器模板。"
 services: Functions
 documtationcenter: na
 author: ggailey777
@@ -16,17 +16,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: e6b3deb9353ba07d693d71822d37a1761dd70d67
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
-可以使用 Azure Resource Manager 模板来部署函数应用。 本文概述了完成此操作所需的资源和参数。 可能还需要部署其他资源，具体取决于函数应用中的[触发器和绑定](functions-triggers-bindings.md)。
+可以使用 Azure 资源管理器模板来部署函数应用。 本文概述了完成此操作所需的资源和参数。 可能还需要部署其他资源，具体取决于函数应用中的[触发器和绑定](functions-triggers-bindings.md)。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 有关示例模板，请参阅：
 - [基于消耗计划的函数应用]
@@ -99,7 +99,7 @@ ms.lasthandoff: 10/17/2017
 
 可以在两种不同的模式下运行函数应用：消耗计划和应用服务计划。 代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 因此，无需为空闲的 VM 付费，且无需提前保留容量。 若要详细了解托管计划，请参阅 [Azure Functions 消耗计划和应用服务计划](functions-scale.md)。
 
-有关 Azure Resource Manager 模板示例，请参阅[基于消耗计划的函数应用]。
+有关 Azure 资源管理器模板示例，请参阅[基于消耗计划的函数应用]。
 
 ### <a name="create-a-consumption-plan"></a>创建消耗计划
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 10/17/2017
 }
 ```
 
-### <a name="create-a-function-app"></a>创建 Function App
+### <a name="create-a-function-app"></a>创建函数应用
 
 此外，消耗计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
@@ -190,14 +190,14 @@ ms.lasthandoff: 10/17/2017
 }
 ```
 
-### <a name="create-a-function-app"></a>创建 Function App 
+### <a name="create-a-function-app"></a>创建函数应用 
 
 选择缩放选项后，便会创建函数应用。 该应用是一个包含所有函数的容器。
 
 函数应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 还可以选择删除 **sourcecontrols** 子资源，改用另一个[部署选项](functions-continuous-deployment.md)。
 
 > [!IMPORTANT]
-> 若要使用 Azure Resource Manager 成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** *之前*部署函数应用。 比如在[逻辑应用](../logic-apps/index.md)中使用函数时，函数是另一资源的依赖项。
+> 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** *之前*部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。
 
 ```json
 {
@@ -260,7 +260,7 @@ ms.lasthandoff: 10/17/2017
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮

@@ -4,7 +4,7 @@ description: "本文列出 Azure AD Connect 和 Azure AD Sync 的所有版本"
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
@@ -12,28 +12,95 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: 51cdb60d1967f2a4a4ebadbd2717fd580a79da6b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 815d2f289e18a97eff0a05ad1d7dfe4cad1fdfc5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
-
-本文旨在帮助你跟踪已发布的版本，并了解你是否需要更新为最新版本。
+本文旨在帮助你跟踪已发布的版本，并帮助你了解是否需要更新到最新版本。
 
 下面是相关主题的列表：
+
 
 
 主题 |  详细信息
 --------- | --------- |
 从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](active-directory-aadconnect-upgrade-previous-version.md) Azure AD Connect 的不同方法。
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
+
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
+## <a name="116540"></a>1.1.654.0
+状态：2017 年 12 月 12 日
+
+>[!NOTE]
+>这是适用于 Azure AD Connect 与安全相关的修补程序
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项改进，以确保当 Azure AD Connect 创建 AD DS 帐户时会自动应用[锁定对 AD DS 帐户的访问](#lock)部分下所述的建议权限更改。 
+
+- 设置 Azure AD Connect 时，安装管理员可提供现有的 AD DS 帐户，也可以让 Azure AD Connect 自动创建帐户。 权限更改将自动应用到在设置期间由 Azure AD Connect 创建的 AD DS 帐户。 它们不适用于安装管理员所提供的现有 AD DS 帐户。
+- 对于从早期版本的 Azure AD Connect 升级到 1.1.654.0（或更高版本）的客户，权限更改将不会以追溯的方式应用于升级前创建的现有 AD DS 帐户。 它们仅适用于升级后创建的新 AD DS 帐户。 在添加要被同步到 Azure AD 的新 AD 林时会发生这种情况。
+
+>[!NOTE]
+>此版本仅删除了 Azure AD Connect 新安装的漏洞，这些安装的服务帐户是由安装进程创建的。 对于现有安装，或者在自己提供帐户的情况下，你应该确保此漏洞不存在。
+
+#### <a name="lock"></a>锁定对 AD DS 帐户的访问
+通过在本地 AD 中实现以下权限更改来锁定对 AD DS 帐户的访问：  
+
+*   在指定对象上禁用继承
+*   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
+*   分配以下特定权限：
+
+Type     | 名称                          | Access               | 应用于
+---------|-------------------------------|----------------------|--------------|
+允许    | SYSTEM                        | 完全控制         | 此对象  |
+允许    | 企业管理员             | 完全控制         | 此对象  |
+允许    | 域管理员                 | 完全控制         | 此对象  |
+允许    | 管理员                | 完全控制         | 此对象  |
+允许    | 企业域控制器 | 列出内容        | 此对象  |
+允许    | 企业域控制器 | 读取所有属性  | 此对象  |
+允许    | 企业域控制器 | 读取权限     | 此对象  |
+允许    | 经过身份验证的用户           | 列出内容        | 此对象  |
+允许    | 经过身份验证的用户           | 读取所有属性  | 此对象  |
+允许    | 经过身份验证的用户           | 读取权限     | 此对象  |
+
+若要增强 AD DS 帐户的设置，可以运行[此 PowerShell 脚本](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)。 PowerShell 脚本将为 AD DS 帐户分配上述的权限。
+
+#### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>PowerShell 脚本增强预先存在的服务帐户
+
+若要使用 PowerShell 脚本将这些设置应用到预先存在的 AD DS 帐户（这些帐户由组织提供或由先前安装的 Azure AD Connect 创建），请从上面提供的链接下载脚本。
+
+##### <a name="usage"></a>用法：
+
+```powershell
+Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
+```
+
+其中 
+
+**$ObjectDN** = 需要增强权限的 Active Directory 帐户。
+
+**$Credential** = 管理员凭据，此凭据具有在 $ObjectDN 帐户上限制权限的必要权限。 这通常为企业或域管理员。 使用管理员帐户的完全限定的域名以避免查找帐户失败。 示例：contoso.com\admin。
+
+>[!NOTE] 
+>$credential.UserName 应为 FQDN\username 格式。 示例：contoso.com\admin 
+
+##### <a name="example"></a>示例：
+
+```powershell
+Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbackdc,DC=com" -Credential $credential 
+```
+### <a name="was-this-vulnerability-used-to-gain-unauthorized-access"></a>此漏洞曾用于未经授权的访问？
+
+若要查看此漏洞是否曾用于入侵 Azure AD Connect 配置，你应该验证服务帐户的最后一次密码重置日期。  如果存在非预期的时间戳，应通过事件日志进一步调查密码重置事件。
+
+有关详细信息，请参阅 [Microsoft 安全公告 4056318](https://technet.microsoft.com/library/security/4056318)
 
 ## <a name="116490"></a>1.1.649.0
 状态：2017 年 10 月 27 日
@@ -406,7 +473,7 @@ Azure AD Connect 同步
   * 如果属性有 15 个以上的值，更新的默认同步规则设置为不导出属性 **userCertificate** 和 **userSMIMECertificate**。
   * AD 属性 **employeeID** 和 **msExchBypassModerationLink** 现在包含在默认同步规则集中。
   * AD 属性 **photo** 已从默认同步规则集中删除。
-  * 添加 **preferredDataLocation** 到 Metaverse 架构和 AAD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。 若要了解有关该属性的详细信息，请参阅文章部分 [Azure AD Connect 同步：如何更改默认配置 - 启用 PreferredDataLocation 同步](active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-preferreddatalocation)。
+  * 添加 **preferredDataLocation** 到 Metaverse 架构和 AAD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。 
   * 添加 **userType** 到 Metaverse 架构和 AAD 连接器架构。 客户想要在 Azure AD 中更新任一属性可以实现自定义同步规则，可以这样做。
 
 * Azure AD Connect 现在会自动为本地 AD 对象启用将 ConsistencyGuid 属性用作源锚点属性。 而且，如果 ConsistencyGuid 属性为空，则 Azure AD Connect 会使用 objectGuid 属性值填充该属性。 此功能非常适用于新的部署。 要了解有关此功能的详细信息，请参阅文章部分 [Azure AD Connect：设计概念 - 将 msDS-ConsistencyGuid 用作 sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)。
@@ -486,8 +553,8 @@ Azure AD Connect 同步
 Azure AD Connect 同步
 * 修复了在 Azure AD 连接器的显示名称没有包含分配给 Azure AD 租户的初始 onmicrosoft.com 域时，Azure AD Connect 向导会失败的问题。
 * 修复了在同步服务帐户的密码包含特殊字符（如撇号、冒号和空格）的情况下，在与 SQL 数据库进行连接时，Azure AD Connect 向导会失败的问题。
-* 修复了在暂时不同步某个本地 AD 对象，再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“该 dimage 具有不同于映像的定位点”错误的问题。
-* 修复了在暂时不同步某个本地 AD 对象，再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“DN 定位的对象是一个幻影”错误的问题。
+* 修复了在暂时不同步某个本地 AD 对象，然后再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“该 dimage 具有不同于映像的定位点”错误的问题。
+* 修复了在暂时不同步某个本地 AD 对象，然后再将其进行同步后，暂存模式下的 Azure AD Connect 服务器上将出现“DN 定位的对象是一个幻影”错误的问题。
 
 AD FS 管理
 * 修复了在配置备用登录 ID 后，Azure AD Connect 向导不会更新 AD FS 配置并设置对信赖方信任的正确声明的问题。

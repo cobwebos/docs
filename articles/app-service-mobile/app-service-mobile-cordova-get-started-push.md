@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c4fd425ab479121fff80bb2c2eef016662ec3bfe
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 05fa692f9331cf6b5178c3e9dca60ad2598dc609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -79,6 +79,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 2. 单击安装源旁边的箭头。
 3. 在 **SENDER_ID** 中，如果已经有 Google Developer Console 项目的数值项目 ID，可将其添加在此处。 否则，请输入一个占位符值，如 777777。  如果以 Android 为目标，可稍后在 config.xml 中更新该值。
+     请注意，从版本 2.0.0 开始，已在安装时删除 SENDER_ID，并且需要在项目的根文件夹中安装 google-services.json。  请从[此处](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)了解更多详细信息。
 4. 单击 **“添加”**。
 
 现已安装推送插件。

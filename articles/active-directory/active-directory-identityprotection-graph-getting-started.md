@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory Identity Protection 和 Microsoft Graph 入门 | Microsoft 文档"
+title: "Azure Active Directory Identity Protection 的 Microsoft Graph | Microsoft Docs"
 description: "了解如何在 Microsoft Graph 中查询 Azure Active Directory 提供的风险事件列表和相关信息。"
 services: active-directory
 keywords: "azure active directory identity protection, 风险事件, 漏洞, 安全策略, Microsoft Graph"
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 12/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: fafad74f46baaf56a8220dab05028781b2f2258e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: df0d89fc93f1b9c19d669c29306398a8b25ee425
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection 和 Microsoft Graph 入门
 Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory Identity Protection](active-directory-identityprotection.md) API 的主页。 使用第一个 API **identityRiskEvents** 可以在 Microsoft Graph 中查询[风险事件](active-directory-identityprotection-risk-events-types.md)列表和相关信息。 可以参考本文开始查询此 API。 如需深入介绍、完整文档和访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)。
@@ -75,7 +76,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    
     c. 在“登录 URL”文本框中，键入 `http://localhost`。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
 
 4. 若要打开“设置”页，在应用程序列表中，单击最新创建的应用注册。 
 
@@ -132,7 +133,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
     
     b. 对于“持续时间”，请选择“1 年内”。
 
-    c. 单击“保存” 。
+    c. 单击“ **保存**”。
    
     d.单击“下一步”。 复制此密钥值，然后将其粘贴到安全位置。   
    

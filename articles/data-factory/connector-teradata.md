@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 8f586c12ce1d24cfccbd6804e80dae51f6adf085
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 905a2bf1b42819a531bc4b16dd1e6f5539e80068
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/11/2018
 - **12 版本和更高版本**的 Teradata。
 - 使用**基本**或 **Windows** 身份验证复制数据。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 要使用此 Teradata 连接器，需要：
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/11/2018
 
 Teradata 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Teradata** | 是 |
 | server | Teradata 服务器的名称。 | 是 |
@@ -94,7 +94,7 @@ Teradata 链接的服务支持以下属性：
 
 要从 Teradata 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：RelationalTable | 是 |
 | tableName | Teradata 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
@@ -123,7 +123,7 @@ Teradata 链接的服务支持以下属性：
 
 要从 Teradata 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -170,12 +170,12 @@ Teradata 链接的服务支持以下属性：
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |字符串 |
-| Clob |字符串 |
+| Char |String |
+| Clob |String |
 | 日期 |DateTime |
 | 小数 |小数 |
 | Double |Double |
-| Graphic |字符串 |
+| Graphic |String |
 | Integer |Int32 |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |
@@ -186,25 +186,25 @@ Teradata 链接的服务支持以下属性：
 | Interval Hour To Second |TimeSpan |
 | Interval Minute |TimeSpan |
 | Interval Minute To Second |TimeSpan |
-| Interval Month |字符串 |
+| Interval Month |String |
 | Interval Second |TimeSpan |
-| Interval Year |字符串 |
-| Interval Year To Month |字符串 |
+| Interval Year |String |
+| Interval Year To Month |String |
 | Number |Double |
-| Period(Date) |字符串 |
-| Period(Time) |字符串 |
-| Period(Time With Time Zone) |字符串 |
-| Period(Timestamp) |字符串 |
-| Period(Timestamp With Time Zone) |字符串 |
+| Period(Date) |String |
+| Period(Time) |String |
+| Period(Time With Time Zone) |String |
+| Period(Timestamp) |String |
+| Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
-| Time With Time Zone |字符串 |
+| Time With Time Zone |String |
 | Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
-| VarChar |字符串 |
-| VarGraphic |字符串 |
-| Xml |字符串 |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |String |
 
 
 ## <a name="next-steps"></a>后续步骤

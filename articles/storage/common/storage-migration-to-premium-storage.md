@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: cb46c3f2809fa86fea7a8370d4c417f04040b74c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -115,7 +115,7 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 
 VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存在停机时间。
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>步骤 1。 准备 VHD 以便进行迁移
+#### <a name="step-1-prepare-vhds-for-migration"></a>步骤 1. 准备 VHD 以便进行迁移
 如果要将现有 Azure VM 迁移至高级存储，则 VHD 可以是：
 
 * 通用操作系统映像
@@ -220,7 +220,7 @@ C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceCont
 ### <a name="scenario2"></a>情景 2：“要从其他平台将 VM 迁移到 Azure 高级存储。”
 如果要将 VHD 从非 Azure 云存储迁移到 Azure，必须首先将 VHD 导出到本地目录中。 准备好存储 VHD 的本地目录的完整源路径，并使用 AzCopy 将其上传至 Azure 存储。
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>步骤 1。 将 VHD 导出到本地目录
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>步骤 1. 将 VHD 导出到本地目录
 ##### <a name="copy-a-vhd-from-aws"></a>从 AWS 复制 VHD
 1. 如果要使用 AWS，请将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 按照 Amazon 文档导出 Amazon EC2 实例中所述的步骤安装 Amazon EC2 命令行接口 (CLI) 工具，并运行 create-instance-export-task 命令将 EC2 实例导出到 VHD 文件。 运行 **create-instance-export-task** 命令时，请务必对 DISK&#95;IMAGE&#95;FORMAT 变量使用 **VHD**。 导出的 VHD 文件将保存在该过程中指定的 Amazon S3 存储桶中。
 
@@ -759,8 +759,8 @@ Update-AzureVM  -VM $vm
 有关虚拟机迁移的特定方案，请参阅以下资源：
 
 * [Migrate Azure Virtual Machines between Storage Accounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)（在存储帐户之间迁移 Azure 虚拟机）
-* [创建 Windows Server VHD 并将其上传到 Azure。](../../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [创建并上传包含 Linux 操作系统的虚拟硬盘](../../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [创建 Windows Server VHD 并将其上传到 Azure。](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [创建 Linux VHD 并将其上传到 Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [将虚拟机从 Amazon AWS 迁移到 Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 另请参阅以下资源，以了解有关 Azure 存储和 Azure 虚拟机的详细信息：

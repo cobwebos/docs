@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: ad61870b49f7a8753e4dbd2e34847daf14b793a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85a12cbfdad4a1b8fbc7c3e3ea15b91c5267d7c8
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 本文档逐步讲解如何安装和配置 Azure AD Connect Health 代理。 可以从 [此处](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)下载代理。
@@ -103,32 +103,38 @@ ms.lasthandoff: 12/11/2017
 2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
 3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 2.0 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>。
-5. 关闭“本地安全策略”，然后打开“AD FS 管理”管理单元。 若要打开“AD FS 管理”管理单元，请单击“开始”，指向“程序”，指向“管理工具”，然后单击“AD FS 2.0 管理”。
-6. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-7. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
-8. 选择“成功审核”和“失败审核”复选框。
-9. 单击“确定”。
+5. 关闭“本地安全策略”。
+<br>   -- **仅主 AD FS 服务器需要执行以下步骤。** -- </br>
+6. 打开“AD FS 管理”管理单元。 若要打开“AD FS 管理”管理单元，请单击“开始”，指向“程序”，指向“管理工具”，然后单击“AD FS 2.0 管理”。
+7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
+9. 选择“成功审核”和“失败审核”复选框。
+10. 单击“确定”。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
 2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
-3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，并单击“确定”。
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
 4. 要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```。
-5. 关闭“本地安全策略”，并打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
-6. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-7. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
-8. 选择“成功审核”和“失败审核”复选框，并单击“确定”。
+5. 关闭“本地安全策略”。
+<br>   -- **仅主 AD FS 服务器需要执行以下步骤。** -- </br>
+6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
+7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
+9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>在 Windows Server 2016 上针对 AD FS 启用审核
 1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
 2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
-3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，并单击“确定”。
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，然后单击“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
-5. 关闭“本地安全策略”，并打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
-6. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-7. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
-8. 选择“成功审核”和“失败审核”复选框，并单击“确定”。 默认情况下，会启用此项。
-9. 打开 PowerShell 窗口并运行以下命令：```Set-AdfsProperties -AuditLevel Verbose```。
+5. 关闭“本地安全策略”。
+<br>   -- **仅主 AD FS 服务器需要执行以下步骤。** -- </br>
+6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
+7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
+9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。 默认情况下，会启用此项。
+10. 打开 PowerShell 窗口并运行以下命令：```Set-AdfsProperties -AuditLevel Verbose```。
 
 请注意，默认情况下启用“基本”审核级别。 请阅读有关 [Windows Server 2016 中的 AD FS 审核增强功能](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016)的更多内容
 
@@ -211,7 +217,7 @@ ms.lasthandoff: 12/11/2017
 ![验证 Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
 
 
-### <a name="agent-registration-using-powershell"></a>使用 PowerShell 进行的代理注册
+## <a name="agent-registration-using-powershell"></a>使用 PowerShell 进行的代理注册
 在安装适当的代理 setup.exe 后，可以根据角色使用以下 PowerShell 命令执行代理注册步骤。 打开 PowerShell 窗口并执行相应的命令：
 
 ```
@@ -247,7 +253,7 @@ ms.lasthandoff: 12/11/2017
 
 > [!NOTE]
 > 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行以下命令：<br>
-> Restart-Service AdHealth * 
+> Restart-Service AdHealth*
 >
 >
 

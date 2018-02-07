@@ -1,112 +1,77 @@
 ---
-title: "在 SQL 数据仓库中分布表 | Microsoft 文档"
-description: "开始在 Azure SQL 数据仓库中分布表。"
+title: "分布式表的设计指南 - Azure SQL 数据仓库 | Microsoft Docs"
+description: "有关如何在 Azure SQL 数据仓库中设计哈希分布表和轮循机制表的一些建议。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
 editor: 
-ms.assetid: 5ed4337f-7262-4ef6-8fd6-1809ce9634fc
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 01/18/2018
 ms.author: barbkess
-ms.openlocfilehash: 82e17e575cdb227af2fabf94f01e94df22994aac
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 692d92f2e45e04a4eb284b43797b5b468cd9ec1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
-# <a name="distributing-tables-in-sql-data-warehouse"></a>在 SQL 数据仓库中分布表
-> [!div class="op_single_selector"]
-> * [概述][Overview]
-> * [数据类型][Data Types]
-> * [分布][Distribute]
-> * [索引][Index]
-> * [分区][Partition]
-> * [统计信息][Statistics]
-> * [临时][Temporary]
->
->
+# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
 
-SQL 数据仓库是一种大规模并行处理 (MPP) 分布式数据库系统。  通过将数据和处理能力分布于多个节点，SQL 数据仓库能够提供极大的缩放性 - 远超任何单一系统。  确定如何在 SQL 数据仓库内分布数据是达到最佳性能的最重要因素之一。   要达到最佳性能的关键是将数据移动降到最低，而将数据移动降到最低的关键是选择正确的分布策略。
+本文针对如何在 Azure SQL 数据仓库中设计分布式表提出了一些建议。 哈希分布表可提高大型事实数据表上的查询性能，本文会重点进行介绍。 轮循机制表可用于提高加载速度。 这些设计选择对提高查询和加载性能具有重大影响。
 
-## <a name="understanding-data-movement"></a>了解数据移动
-在 MPP 系统中，每个表中的数据被分散到多个底层数据库。  只需传递 MPP 系统上优化程度最高的查询以便在单个分布式数据库上执行，而无需与其他数据库交互。  例如，假设包含销售数据的数据库有“销售”和“客户”两个表。  如果查询需要将销售表和客户表联接，将销售和客户表按客户编号划分，并将每个客户放在不同的数据库，则任何联接销售和客户的查询都可以在各个数据库中求解，而不需要知道其他数据库的存在。  相比之下，如果将销售数据按订单编号划分，将客户数据按客户编号划分，则任何给定数据库都不包含每位客户的相应数据，因此，如果想要将销售数据联接到客户数据，便需要从其他数据库获取每位客户的数据。  在第二个示例中，需要移动数据，以将客户数据移到销售数据，如此才可以联接两个表。  
+## <a name="prerequisites"></a>先决条件
+本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。 
 
-数据移动不一定是一件坏事，有时是求解查询的必要手段。  但如果可以避免此附加步骤，则查询的运行速度自然就更快。  数据移动往往发生在联接表或者执行聚合时。  通常需要执行这两种操作，因此即使可以针对其中一种方案（例如联接）进行优化，也仍需要移动数据来帮解决另一种方案（例如聚合）。  诀窍就是找出哪种方案的作用更小。  大多数情况下，在通常联接的列上分布大型事实表，是将数据移动降到最低的最有效方法。  相比于分布聚合涉及到的列数据，分布联接列上的数据是减少数据移动更为普遍的方法。
+在设计表的过程中，尽可能多地了解数据以及数据查询方式。  例如，考虑以下问题：
 
-## <a name="select-distribution-method"></a>选择分布方法
-SQL 数据仓库在幕后将数据划分成 60 个数据库。  每个数据库称为**分布区**。  当数据载入每个表时，SQL 数据仓库必须知道如何将数据分散到这 60 个分布区。  
+- 表有多大？   
+- 表的刷新频率是多少？   
+- 数据仓库中有事实数据表和维度表吗？   
 
-分布方法在表级别定义，目前有两种选择：
+## <a name="what-is-a-distributed-table"></a>什么是分布式表？
+分布式表显示为单个表，但表中的行实际存储在 60 个分布区中。 这些行使用哈希或轮循机制算法进行分布。 
 
-1. **轮循机制**均衡随机分布数据。
-2. **哈希分布**根据单个列中的哈希值分布数据
+另一个表存储选项是跨所有计算节点复制一个小型表。 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。 若要在这三个选项之间快速选择其一，请参阅[表概述](sql-data-warehouse-tables-overview.md)中的分布式表。 
 
-默认情况下，如果未定义数据分布方法，表将使用**轮循机制**分布方法进行分布。  但是，随着对自己的实施方案日益精通，可以考虑使用**哈希分布**表将数据移动降到最低，从而使查询性能达到优化。
 
-### <a name="round-robin-tables"></a>轮循机制表
-使用轮循机制数据分布方法名符其实。  加载数据后，每行只发送到下一个分布区。  此种数据分布方法始终将数据非常平均地随机分布到所有分布区。  也就是说，在轮循机制处理期间放置数据时，不会执行任何排序。  出于此原因，轮循机制分布有时称为随机哈希。  使用轮循机制分布式表时不需要了解数据。  出于此原因，轮循机制表通常具有良好的加载目标。
+### <a name="hash-distributed"></a>哈希分布
+哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，来跨计算节点分布表行。 
 
-默认情况下，如果未选择分布方法，则会使用轮循机制方法。  尽管轮循机制表很容易使用，但因为数据随机分布在系统中，这意味着系统无法保证每个行位于哪个分布区。  因此，系统有时候需要调用数据移动操作，以便在求解查询前更加合理地组织数据。  此附加步骤可能使查询变慢。
+![分布式表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分布式表")  
 
-在以下情况下，请考虑对表使用轮循机制分布：
+由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 SQL 数据仓库利用此信息最大程度地减少查询期间的数据移动，从而提高查询性能。 
 
-* 从一个简单的起点入门时
-* 没有明显的联接键时
-* 没有合适的候选列可供哈希分布表时
-* 表没有与其他表共享通用的联接键时
-* 该联接比查询中的其他联接更不重要时
-* 表是临时过渡表时
+哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户也可以通过了解一些设计注意事项，获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。 
 
-这两个示例都将创建轮循机制表：
+在以下情况下，考虑使用哈希分布表：
 
-```SQL
--- Round Robin created by default
-CREATE TABLE [dbo].[FactInternetSales]
-(   [ProductKey]            int          NOT NULL
-,   [OrderDateKey]          int          NOT NULL
-,   [CustomerKey]           int          NOT NULL
-,   [PromotionKey]          int          NOT NULL
-,   [SalesOrderNumber]      nvarchar(20) NOT NULL
-,   [OrderQuantity]         smallint     NOT NULL
-,   [UnitPrice]             money        NOT NULL
-,   [SalesAmount]           money        NOT NULL
-)
-;
+- 磁盘上的表大小超过 2 GB。
+- 对表进行频繁的插入、更新和删除操作。 
 
--- Explicitly Created Round Robin Table
-CREATE TABLE [dbo].[FactInternetSales]
-(   [ProductKey]            int          NOT NULL
-,   [OrderDateKey]          int          NOT NULL
-,   [CustomerKey]           int          NOT NULL
-,   [PromotionKey]          int          NOT NULL
-,   [SalesOrderNumber]      nvarchar(20) NOT NULL
-,   [OrderQuantity]         smallint     NOT NULL
-,   [UnitPrice]             money        NOT NULL
-,   [SalesAmount]           money        NOT NULL
-)
-WITH
-(   CLUSTERED COLUMNSTORE INDEX
-,   DISTRIBUTION = ROUND_ROBIN
-)
-;
-```
+### <a name="round-robin-distributed"></a>轮循机制分布
+轮循机制分布表将表行均衡分布在所有分布区中。 将行分配到分布区的过程是随机的。 与哈希分布表不同的是，值相等的行不一定分配到相同的分布区。 
 
-> [!NOTE]
-> 尽管轮循机制是默认的表类型，但最好在 DDL 中明确规定此方法，使其他人能够清楚了解表布局的意图。
->
->
+因此，系统有时候需要调用数据移动操作，以便在求解查询前更加合理地组织数据。  此附加步骤可能使查询变慢。 例如，联接轮循机制表通常需要对行重新进行数据重组，这会给性能带来影响。
 
-### <a name="hash-distributed-tables"></a>哈希分布表
-使用**哈希分布**算法来分布表可以减少查询时的数据移动，从而改善许多方案的性能。  哈希分布表是在选择的单个列中使用哈希算法分散在分布式数据库之间的表。  分布列确定如何将数据分散在分布式数据库之间。  哈希函数使用分布列将行分配到分布区。  哈希算法与最终的分布区具有确定性。  也就是，相同数据类型的相同值始终使用相同的分布区。    
+在以下情况下，考虑对表使用轮循机制分布：
 
-本示例将创建基于 ID 分布的表：
+- 从一个简单的起点入门时，因为该分布是默认选项
+- 没有明显的联接键时
+- 没有合适的候选列可供哈希分布表时
+- 表没有与其他表共享通用的联接键时
+- 该联接比查询中的其他联接更不重要时
+- 表是临时过渡表时
+
+[从 Azure 存储 blob 加载数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)教程提供了将数据加载到轮循机制临时表的示例。
+
+
+## <a name="choosing-a-distribution-column"></a>选择分布列
+哈希分布表中有一个分布列是哈希键。 例如，以下代码会创建一个以 ProductKey 作为分布列的哈希分布表。
 
 ```SQL
 CREATE TABLE [dbo].[FactInternetSales]
@@ -124,64 +89,57 @@ WITH
 ,  DISTRIBUTION = HASH([ProductKey])
 )
 ;
-```
+``` 
 
-## <a name="select-distribution-column"></a>选择分布列
-选择**哈希分布**表时，必须选择单个分布列。  选择分布列时，需要考虑三个主要因素。  
+选择分布列是一个重要的设计决策，因为此列中的值确定行的分布方式。 最佳选择取决于多种因素，通常需要对各方面进行权衡。 但是，如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新创建具有不同分布列的表。 
 
-选择具有以下特征的单个列：
+### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>选择不需要更新的分布列
+除非删除行并插入包含更新值的新行，否则无法更新分布列。 因此，应选择包含静态值的列。 
 
-1. 不会更新
-2. 平均分布数据，以避免数据偏斜
-3. 最小化数据移动
+### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>选择数据均衡分布的分布列
 
-### <a name="select-distribution-column-which-will-not-be-updated"></a>选择不会更新的分布列
-分布列不可更新，因此，请选择包含静态值的列。  如果列需要更新，该列通常不是理想的分布候选项。  如果必须更新分布列，做法是先删除行，然后插入新行。
+为了获得最佳性能，所有分布区都应当具有大致相同的行数。 当一个或多个分布区的行数不相称时，某些分布区会先于其他分布区完成其并行查询部分。 由于必须等到所有分布区都完成处理，才能完成查询，因此，每个查询的速度与最慢分布区的速度是一样的。
 
-### <a name="select-distribution-column-which-will-distribute-data-evenly"></a>选择会平均分布数据的分布列
-分布式系统的执行速度只与其最慢的分布区一样快，因此务必将任务平均分散于各分布区，以便让系统实现平衡的执行性能。  工作会根据每个分布区的数据所在位置，分散到分布式系统。  这对于选择正确的分布列来分布数据非常重要，这样，每个分布区都有相等的工作，并且完成其部分工作所需的时间相同。  如果工作在整个系统中分配良好，则数据在各个分布中达到平衡。  当数据分配不均衡时，称为“数据偏斜”。  
+- 数据倾斜意味着数据未均衡分布在分布区中
+- 处理倾斜意味着在运行并行查询时，某些分布区所用的时间比其他分布区长。 数据倾斜时可能会出现这种情况。
+  
+若要平衡并行处理，请选择符合以下条件的分布列：
 
-若要平均分散数据以避免数据偏斜，请在选择分布列时考虑以下事项：
+- **具有许多唯一值。** 分布列可以有一些重复值。 但具有相同值的所有行都分配到相同的分布区。 由于有 60 个分布区，分布列应具有至少 60 个唯一值。  通常情况下，唯一值的数量要多得多。
+- **没有 NULL 值，或者只有几个 NULL 值。** 在极端示例中，如果列中的所有值均为 NULL，则所有行都分配到相同的分布区。 因此，查询处理会向一个分布区倾斜，无法从并行处理中受益。 
+- **不是日期列**。 同一日期的所有数据都落在相同的分布区。 如果多个用户都筛选同一个日期，则会由 60 个分布区中的 1 个分布区单独执行所有处理工作。 
 
-1. 选择包含大量非重复值的列。
-2. 避免使用几个非重复值在列上分布数据。
-3. 避免频繁使用 null 值在列上分布数据。
-4. 避免在日期列中分布数据。
+### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>选择能最大程度减少数据移动的分布列
 
-由于每个值将散列到 60 个分布区中的 1 个，要实现平均分布，需要选择极为独特并包含超过 60 个唯一值的列。  举例来说，假设在某种情况下，某个列只有 40 个唯一值。  如果选择此列作为分布键，则该表的数据将最多落在 40 个分布区，以致 20 个分布区不包含任何数据，并且没有要执行的处理。  相反，如果数据平均分散到 60 个分布区，则其他 40 个分布区有更多工作需要完成。  这种情况是数据偏斜的例子。
+为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择能最大程度减少数据移动的分布列，是优化 SQL 数据仓库性能最重要的策略之一。
 
-在 MPP 系统中，每个查询步骤都会等待所有分布区完成其份内的工作。  如果一个分布区所做的工作多于其他分布区，则其他分布区的资源实际上是浪费掉了，因为必须等待忙的分布区完成其工作。  当工作没有在所有分布区均衡分布时，称为“处理偏斜”。  与工作负荷在分布区均衡分布相比，处理偏斜会导致查询运行速度下降。  数据偏差会导致处理偏斜。
+若要最大程度减少数据移动，请选择符合以下条件的分布列：
 
-避免在很可能为 null 值的列上进行分布，因为 null 值全都会落在同一分布区。 分布在日期列上也可能导致处理偏斜，因为给定日期的所有数据都会落在同一分布区。 如果多个用户在执行查询时都使用同一日期进行筛选，则 60 个分布区中的 1 个分布区需完成所有的工作，因为一个给定日期的数据只会落在一个分布区。 与将数据均衡分布到所有分布区相比，这种情况下的查询运行速度可能只有正常的 1/60。
+- 用于 `JOIN`、`GROUP BY`、`DISTINCT`、`OVER` 和 `HAVING` 子句。 当两个大型事实数据表频繁联接时，如果将这两个表分布在某个联接列上，查询性能将得到提升。  如果某个表不进行联接操作，则考虑将该表分布在经常出现在 `GROUP BY` 子句中的列上。
+- *不*用于 `WHERE` 子句。 这可以缩小查询范围，从而不必在所有分布区上运行查询。 
+- *不*是日期列。 WHERE 子句通常按日期进行筛选。  在这种情况下，可以在仅仅几个分布区上运行所有处理。
 
-若没有理想的候选列，请考虑使用轮循机制作为分布方法。
+### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>没有合适分布列时怎么办
 
-### <a name="select-distribution-column-which-will-minimize-data-movement"></a>选择可将数据移动降到最低的分布列
-通过选择适当分布列来将数据移动降到最低，是让 SQL 数据仓库的性能达到优化的最重要策略之一。  数据移动往往发生在联接表或者执行聚合时。  在 `JOIN`、`GROUP BY`、`DISTINCT`、`OVER` 和 `HAVING` 子句中使用的列都生成**适当**的哈希分布候选项。
+若没有合适的候选列，请考虑使用轮循机制作为分布方法。
 
-另一方面，`WHERE` 子句中的列**不是**理想的哈希列候选项，因为它们限制哪些分布区参与查询，导致处理偏斜。  用户可能很容易将数据分布到某个列，但该列通常会引发这种处理偏斜，日期列就是这样的例子。
+完成哈希分布表的设计后，下一步就是将数据加载到表。  有关加载指南，请参阅[加载概述](sql-data-warehouse-overview-load.md)。 
 
-一般而言，如果有两个经常涉及联接的大型事实表，将两个表分布到其中一个联接列可获得最佳性能。  如果有永远不会联接到另一个大型事实表的表，请查找经常出现在 `GROUP BY` 子句中的列。
+## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>如何判断分布列是否合适
+将数据加载到哈希分布表之后，查看行在 60 个分布区中分布的均衡程度。 每个分布区的行数最多可以相差 10%，但不对性能产生明显影响。 
 
-必须符合几个关键条件，以避免联接期间数据移动：
-
-1. 参与联接的列的相关表必须哈希分布在**一个**联接列中。
-2. 两个表之间联接列的数据类型必须匹配。
-3. 必须使用 equals 运算符联接列。
-4. 联接类型不能是 `CROSS JOIN`。
-
-## <a name="troubleshooting-data-skew"></a>排查数据偏斜问题
-使用哈希分布方法分布表数据时，某些分布可能会偏斜，比其他表具有更多数据。 过度的数据偏斜可能会影响查询性能，因为分布式查询的最终结果必须先等待运行时间最长的分布完成。 根据数据偏斜的程度，可能需要解决这种问题。
-
-### <a name="identifying-skew"></a>标识偏斜
-识别表偏斜的简单方法是使用 `DBCC PDW_SHOWSPACEUSED`。  这是一种非常快捷简便的方法，可以查看存储在数据库中每组 60 个分布区内的表行数目。  请记住，为了获得最平衡的性能，分布式表中的行应该平均分散在所有分布区中。
+### <a name="determine-if-the-table-has-data-skew"></a>确定表是否有数据倾斜现象
+一种快速的数据倾斜检查方法是使用 [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)。 以下 SQL 代码返回 60 个分布区中每个分布区存储的表行数。 为了获得平衡的性能，分布式表中的行应该均衡分布在所有分布区中。
 
 ```sql
 -- Find data skew for a distributed table
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-但是，如果查询 Azure SQL 数据仓库动态管理视图 (DMV)，则可以执行更详细的分析。  若要开始，请使用[表概述][Overview] 一文中的 SQL 创建 [dbo.vTableSizes][dbo.vTableSizes] 视图。  创建该视图后，运行此查询来识别哪些表有 10% 以上的数据偏斜。
+若要确定哪些表的数据倾斜率超过 10%，请执行以下操作：
+
+1. 创建[表概述](sql-data-warehouse-tables-overview.md#table-size-queries)一文中所示的 dbo.vTableSizes 视图。  
+2. 运行以下查询：
 
 ```sql
 select *
@@ -198,15 +156,28 @@ order by two_part_name, row_count
 ;
 ```
 
-### <a name="resolving-data-skew"></a>解决数据倾斜
-不能保证可以解决所有偏斜。  在某些情况下，某些查询中的表性能可能比数据偏斜的损害更严重。  要确定是否应该解决表中的数据偏斜，应该尽可能了解工作负荷中的数据卷和查询。   调查偏斜影响的方法之一是使用[查询监视][Query Monitoring]一文中的步骤来监视偏斜对查询性能的影响，尤其是对单个分布区完成查询所需时间的影响。
+### <a name="check-query-plans-for-data-movement"></a>检查查询计划中是否有数据移动
+合适的分布列可最大程度减少联接和聚合操作中的数据移动。 这会影响联接的编写方式。 若要在联接两个哈希分布表时最大程度减少数据移动，联接列中必须有一个是分布列。  当两个哈希分布表在一个数据类型相同的分布列上联接时，该联接不需要移动数据。 联接可以使用附加列，而不发生数据移动。
 
-分布式数据是找出将数据偏斜降至最低与将数据移动降至最低两者之间的适当平衡。 这些可能是相反的目标，有时你会想要保留数据倾斜，以减少数据移动。 例如，当分布列经常是联接和聚合中的共享列时，便会将数据移动降至最低。 最少的数据移动带来的好处可能胜过数据偏斜造成的影响。
+若要避免在联接过程中移动数据，应遵循以下做法：
 
-解决数据偏斜的典型方法是重新创建具有不同分布列的表。 由于没有任何方法可更改现有表上的分布列，因此更改表分布的方法是使用 [CTAS][] 重新创建表。  下面两个示例演示了如何解决数据偏斜：
+- 参与联接的列的相关表必须哈希分布在**一个**联接列中。
+- 两个表之间联接列的数据类型必须匹配。
+- 必须使用 equals 运算符联接列。
+- 联接类型不能是 `CROSS JOIN`。
 
-### <a name="example-1-re-create-the-table-with-a-new-distribution-column"></a>示例 1︰重新创建包含新分布列的表
-本示例使用 [CTAS][] 来重新创建具有不同哈希分布列的表。
+若要了解查询是否正在移动数据，可以查看查询计划。  
+
+
+## <a name="resolve-a-distribution-column-problem"></a>解决分布列问题
+无需解决所有数据倾斜问题。 分布数据就是为了找出将数据倾斜降至最低与将数据移动降至最低两者之间的适当平衡。 因为现实中无法每次都做到将数据倾斜和数据移动同时降至最低。 有时，最少的数据移动带来的好处可能胜过数据倾斜造成的影响。
+
+要确定是否应该解决表中的数据偏斜，应该尽可能了解工作负荷中的数据卷和查询。 可以按照[查询监视](sql-data-warehouse-manage-monitor.md)一文中的步骤监视倾斜对查询性能的影响。 具体而言，就是了解在各个分布区上完成大型查询所需的时间。
+
+由于不能更改现有表中的分布列，因此，解决数据倾斜的典型方法是重新创建具有不同分布列的表。  
+
+### <a name="re-create-the-table-with-a-new-distribution-column"></a>重新创建具有新分布列的表
+本示例使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) 重新创建具有不同哈希分布列的表。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -244,65 +215,11 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-### <a name="example-2-re-create-the-table-using-round-robin-distribution"></a>示例 2：使用轮循机制分布重新创建表
-本示例使用 [CTAS][] 来重新创建具有轮循机制分布而不是哈希分布的表。 这种变化将生成平均的数据分布，但代价是数据移动加大。
-
-```sql
-CREATE TABLE [dbo].[FactInternetSales_ROUND_ROBIN]
-WITH (  CLUSTERED COLUMNSTORE INDEX
-     ,  DISTRIBUTION =  ROUND_ROBIN
-     ,  PARTITION       ( [OrderDateKey] RANGE RIGHT FOR VALUES (   20000101, 20010101, 20020101, 20030101
-                                                                ,   20040101, 20050101, 20060101, 20070101
-                                                                ,   20080101, 20090101, 20100101, 20110101
-                                                                ,   20120101, 20130101, 20140101, 20150101
-                                                                ,   20160101, 20170101, 20180101, 20190101
-                                                                ,   20200101, 20210101, 20220101, 20230101
-                                                                ,   20240101, 20250101, 20260101, 20270101
-                                                                ,   20280101, 20290101
-                                                                )
-                        )
-    )
-AS
-SELECT  *
-FROM    [dbo].[FactInternetSales]
-OPTION  (LABEL  = 'CTAS : FactInternetSales_ROUND_ROBIN')
-;
-
---Create statistics on new table
-CREATE STATISTICS [ProductKey] ON [FactInternetSales_ROUND_ROBIN] ([ProductKey]);
-CREATE STATISTICS [OrderDateKey] ON [FactInternetSales_ROUND_ROBIN] ([OrderDateKey]);
-CREATE STATISTICS [CustomerKey] ON [FactInternetSales_ROUND_ROBIN] ([CustomerKey]);
-CREATE STATISTICS [PromotionKey] ON [FactInternetSales_ROUND_ROBIN] ([PromotionKey]);
-CREATE STATISTICS [SalesOrderNumber] ON [FactInternetSales_ROUND_ROBIN] ([SalesOrderNumber]);
-CREATE STATISTICS [OrderQuantity] ON [FactInternetSales_ROUND_ROBIN] ([OrderQuantity]);
-CREATE STATISTICS [UnitPrice] ON [FactInternetSales_ROUND_ROBIN] ([UnitPrice]);
-CREATE STATISTICS [SalesAmount] ON [FactInternetSales_ROUND_ROBIN] ([SalesAmount]);
-
---Rename the tables
-RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_HASH];
-RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
-```
-
 ## <a name="next-steps"></a>后续步骤
-若要了解表设计的详细信息，请参阅文章[分布][Distribute]、[索引][Index]、[分区][Partition]、[数据类型][Data Types]、[统计信息][Statistics]和[临时表][Temporary]。
 
-有关最佳实践的概述，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
+若要创建分布式表，请使用以下语句之一：
 
-<!--Image references-->
+- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
+- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)（CREATE TABLE AS SELECT（Azure SQL 数据仓库））
 
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-[Query Monitoring]: ./sql-data-warehouse-manage-monitor.md
-[dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 
-<!--MSDN references-->
-[DBCC PDW_SHOWSPACEUSED()]: https://msdn.microsoft.com/library/mt204028.aspx
-
-<!--Other Web references-->

@@ -1,6 +1,6 @@
 ---
 title: "使用 iothub-explorer 进行 Azure IoT 设备管理 | Microsoft Docs"
-description: "使用 iothub-explorer CLI 工具进行 Azure IoT 中心设备管理，该特点是使用直接方法并提供孪生所需的属性管理选项。"
+description: "使用 iothub-explorer CLI 工具进行 Azure IoT 中心设备管理，该特点是使用直接方法并提供孪生的所需属性管理选项。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: xshi
-ms.openlocfilehash: 5b7a5057bdfb5920fbb5759bed1f5561cfa1d7e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02d3241ae4ae515a8c2deaa14f50b5b7dbd4766f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>使用 iothub-explorer 进行 Azure IoT 中心设备管理
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 [iothub-explorer](https://github.com/azure/iothub-explorer) 是一种在主机上运行的 CLI 工具，用于管理 IoT 中心注册表中的设备标识。 它附带了可用于执行各种任务的管理选项。
 
 | 管理选项          | 任务                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | 直接方法             | 让设备执行操作，如开始或停止发送消息或重新启动设备。                                        |
 | 孪生所需属性    | 让设备进入特定状态，例如将 LED 设置为绿色，或将遥测发送间隔设置为 30 分钟。         |
 | 孪生报告属性   | 获取报告的设备状态。 例如，设备报告 LED 现在正在闪烁。                                    |
@@ -54,9 +54,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="what-you-need"></a>所需条件
 
 - 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
-  - 一个有效的 Azure 订阅。
-  - 已在订阅中创建一个 Azure IoT 中心。
-  - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
+- 一个有效的 Azure 订阅。
+- 已在订阅中创建一个 Azure IoT 中心。
+- 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 - 在学习本教程期间，确保设备与客户端应用程序均处于运行状态。
 - iothub-explorer, 在开发计算机上[安装 iothub-explorer](https://github.com/azure/iothub-explorer)。
 
@@ -82,7 +82,7 @@ iothub-explorer device-method <your device Id> start
 iothub-explorer device-method <your device Id> stop
 ```
 
-## <a name="use-iothub-explorer-with-twins-desired-properties"></a>结合使用 iothub-explorer 和孪生所需的属性
+## <a name="use-iothub-explorer-with-twins-desired-properties"></a>结合使用 iothub-explorer 和孪生的所需属性
 
 通过运行以下命令将所需属性间隔设置为 3000：
 
@@ -114,7 +114,6 @@ iothub-explorer get-twin <your device id>
 
 ```bash
 iothub-explorer update-twin <your device id> "{\"tags\":{\"role\":\"temperature&humidity\"}}"
-
 ```
 
 ## <a name="use-iothub-explorer-with-cloud-to-device-messages"></a>使用 iothub-explorer 发送云到设备的消息

@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/29/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 7f9e5a10066df8a464c285273e77a85c0d562ebb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7dde5bc4733af1aba34199f332379d2faf566725
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-workflow-definitions-for-logic-apps-using-json"></a>使用 JSON 为逻辑应用创建工作流定义
 
-可以使用简单的声明性 JSON 语言为 [Azure 逻辑应用](logic-apps-what-are-logic-apps.md)创建工作流定义。 首先请查看[如何使用逻辑应用设计器创建第一个逻辑应用](logic-apps-create-a-logic-app.md)（如果尚未这样做）。 另请参阅[工作流定义语言参考大全](http://aka.ms/logicappsdocs)。
+可以使用简单的声明性 JSON 语言为 [Azure 逻辑应用](logic-apps-overview.md)创建工作流定义。 首先请查看[如何使用逻辑应用设计器创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)（如果尚未这样做）。 另请参阅[工作流定义语言参考大全](http://aka.ms/logicappsdocs)。
 
 ## <a name="repeat-steps-over-a-list"></a>针对一个列表重复执行步骤
 

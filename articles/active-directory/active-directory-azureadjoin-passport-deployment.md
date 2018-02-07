@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: b5b48edda76bedc14d5528fa82f1d9b7bfffe53a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>在组织中启用 Microsoft Windows Hello for Business
 在[将已加入域的 Windows 10 设备与 Azure Active Directory 相连](active-directory-azureadjoin-devices-group-policy.md)后，执行以下操作在组织中启用 Microsoft Windows Hello for Business：
@@ -52,11 +52,11 @@ ms.lasthandoff: 12/11/2017
 
 1. 打开“服务器管理器”，并导航到“工具” > “组策略管理”。
 2. 从“组策略管理”，导航到与要启用“Azure AD Join”功能的域相对应的域节点。
-3. 右键单击“组策略对象”并选择“新建”。 为组策略对象命名，例如“启用 Windows Hello for Business”。 单击 **“确定”**。
+3. 右键单击“组策略对象”并选择“新建”。 为组策略对象命名，例如“启用 Windows Hello for Business”。 单击“确定”。
 4. 右键单击新建的组策略对象，并选择“编辑”。
 5. 导航到“计算机配置” > “策略” > “管理模板” > “Windows  组件” > “Windows Hello for Business”。
 6. 右键单击“启用 Windows Hello for Business”，并选择“编辑”。
-7. 选择“已启用”选项按钮，并单击“应用”。 单击 **“确定”**。
+7. 选择“已启用”选项按钮，并单击“应用”。 单击“确定”。
 8. 现在可以将该组策略对象链接到所选位置。 要为组织中所有已加入域的 Windows 10 设备启用此策略，请将此组策略链接到相应域。 例如：
    * 已加入域的 Windows 10 计算机将位于的 Active Directory 中的特定组织单位 (OU)
    * 包含会自动注册到 Azure AD 的已加入域的 Windows 10 计算机的特定安全组
@@ -76,7 +76,7 @@ ms.lasthandoff: 12/11/2017
    
     a. 在“名称”文本框中，键入配置文件的名称，例如“My WHfB Profile”。
    
-    b. 单击“下一步”。
+    b. 单击“资源组名称” 的 Azure 数据工厂。
 4. 在“支持的平台”对话框中，选择将使用该 Windows Hello for Business 配置文件进行配置的平台，然后单击“下一步”。
    
     ![配置 Windows Hello for Business](./media/active-directory-azureadjoin-passport-deployment/04.png)
@@ -90,7 +90,7 @@ ms.lasthandoff: 12/11/2017
    
     c. 显示“身份验证方法”时，选择“基于证书”。
    
-    d.单击“下一步”。 单击“下一步”。
+    d.单击“下一步”。 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“摘要”对话框中，单击“下一步”。
 7. 在“完成”对话框中，单击“关闭”。
 8. 在顶部工具栏中，单击“部署”。

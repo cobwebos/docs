@@ -183,6 +183,8 @@
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: 对 Azure 备份服务器进行故障排除
           href: backup-azure-mabs-troubleshoot.md
+        - name: 排查 System Center Data Protection Manager 问题
+          href: backup-azure-scdpm-troubleshooting.md
         - name: 对 Azure 备份代理进行故障排除
           href: backup-azure-mars-troubleshoot.md
 - name: 引用

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bc2e5c2b351fb87cb763459a9e24368a422ada1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 X12 消息
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 11/15/2017
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 X12 消息连接器。
-* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [X12 协议](logic-apps-enterprise-integration-x12.md)
 
 ## <a name="decode-x12-messages"></a>解码 X12 消息
 
-1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
+1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
-2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
+2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
 3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。
    

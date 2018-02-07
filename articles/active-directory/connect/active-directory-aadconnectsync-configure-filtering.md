@@ -3,7 +3,7 @@ title: "Azure AD Connect 同步：配置筛选 | Microsoft 文档"
 description: "介绍如何在 Azure AD Connect 同步中配置筛选。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: cbcf448ccff22219adb8c7d3652e7698ef4d231e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 
 在开始更改筛选之前，请确保[禁用计划的任务](#disable-scheduled-task)，以免意外导出尚未确认是否正确的更改。
 
-由于筛选操作可能会同时删除很多的对象，因此请先确保新的筛选器正确无误，再开始将更改导出到 Azure AD。 强烈建议，在完成配置步骤后，先执行[验证步骤](#apply-and-verify-changes)，然后再向 Azure AD 导出更改。
+由于筛选操作可能会同时删除很多的对象，因此请先确保新的筛选器正确无误，然后再开始将更改导出到 Azure AD。 强烈建议，在完成配置步骤后，先执行[验证步骤](#apply-and-verify-changes)，然后再向 Azure AD 导出更改。
 
 为了防止意外删除许多对象，默认情况下已打开[防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)功能。 如果由于筛选而删除了许多对象（默认为 500 个），则需要遵循本文中的步骤来允许将删除结果传播到 Azure AD。
 
@@ -209,9 +209,9 @@ Azure AD Connect 安装向导将始终创建此配置。
 3. 确保选择了“入站”，并单击“添加新规则”。
 4. 为规则指定一个描述性名称，如“*In from AD – User DoNotSyncFilter*”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 50），并单击“下一步”。  
    ![入站 1 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
-5. 在“范围筛选器”中，单击“添加组”，并单击“添加子句”。 在“属性”中选择“ExtensionAttribute15”。 确保“运算符”设置为“等于”，在“值”框中键入值 **NoSync**。 单击“下一步”。  
+5. 在“范围筛选器”中，单击“添加组”，并单击“添加子句”。 在“属性”中选择“ExtensionAttribute15”。 确保“运算符”设置为“等于”，在“值”框中键入值 **NoSync**。 单击“资源组名称” 的 Azure 数据工厂。  
    ![入站 2 范围](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
-6. 将“联接”规则留空，并单击“下一步”。
+6. 将“联接”规则留空，然后单击“下一步”。
 7. 单击“添加转换”，为“FlowType”选择“Constant”，为“目标属性”选择“cloudFiltered”。 在“源”文本框中键入 **True**。 单击“添加”保存规则。  
    ![入站 3 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
 8. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
@@ -228,16 +228,16 @@ Azure AD Connect 安装向导将始终创建此配置。
 3. 确保选择了“入站”，并单击“添加新规则”。
 4. 为规则指定一个描述性名称，如“In from AD – User Sales sync”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 51），并单击“下一步”。  
    ![入站 4 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
-5. 在“范围筛选器”中，单击“添加组”，并单击“添加子句”。 在“属性”中选择“department”。 确保“运算符”设置为“等于”，在“值”框中键入值 **Sales**。 单击“下一步”。  
+5. 在“范围筛选器”中，单击“添加组”，并单击“添加子句”。 在“属性”中选择“department”。 确保“运算符”设置为“等于”，在“值”框中键入值 **Sales**。 单击“资源组名称” 的 Azure 数据工厂。  
    ![入站 5 范围](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
-6. 将“联接”规则留空，并单击“下一步”。
+6. 将“联接”规则留空，然后单击“下一步”。
 7. 单击“添加转换”，为“FlowType”选择“Constant”，为“目标属性”选择“cloudFiltered”。 在“源”框中键入 **False**。 单击“添加”保存规则。  
    ![入站 6 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
    这是一种特殊情况，在此将 cloudFiltered 显式设置为 **False**。
-8. 我们现在必须创建全方位同步规则。 为规则指定一个描述性名称，如“In from AD – User Catch-all filter”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 99）。 现已选择高于先前同步规则的优先顺序值（较低优先顺序）。 但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。 单击“下一步”。  
+8. 我们现在必须创建全方位同步规则。 为规则指定一个描述性名称，如“In from AD – User Catch-all filter”。 选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。 在“链接类型”中选择“联接”。 在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 99）。 现已选择高于先前同步规则的优先顺序值（较低优先顺序）。 但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。 单击“资源组名称” 的 Azure 数据工厂。  
    ![入站 7 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
 9. 让“范围筛选器”保留空白，并单击“下一步”。 空白筛选器表示规则将应用到所有对象。
-10. 将“联接”规则留空，并单击“下一步”。
+10. 将“联接”规则留空，然后单击“下一步”。
 11. 单击“添加转换”，为“FlowType”选择“Constant”，为“目标属性”选择“cloudFiltered”。 在“源”框中键入 **True**。 单击“添加”保存规则。  
     ![入站 3 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)  
 12. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
@@ -256,7 +256,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 5. 在弹出窗口中，回答“是”创建规则的副本。
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。
 7. 单击左侧导航栏中的“范围筛选器”，并单击“添加子句”。 在“属性”中选择“mail”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **@contoso.com**，并单击“添加子句”。 在“属性”中选择“userPrincipalName”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **@contoso.com**。
-8. 单击“保存” 。
+8. 单击“ **保存**”。
 9. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 
 ## <a name="apply-and-verify-changes"></a>应用并验证更改

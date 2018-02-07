@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 6b3da498a613d63515ecb624b87496cf536c0ebf
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: fe0958b8a548e72df17f257e5700c28d3ebae79c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP 和 webhook 绑定
 
@@ -41,14 +41,14 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 参阅语言特定的示例：
 
-* [预编译 C#](#trigger---c-example)
-* [C# 脚本](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# 脚本 (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
-以下示例演示一个在查询字符串或 HTTP 请求正文中查找 `name` 参数的[预编译 C# 函数](functions-dotnet-class-library.md)。
+以下示例显示一个在查询字符串或 HTTP 请求正文中查找 `name` 参数的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -235,14 +235,14 @@ module.exports = function(context, req) {
 
 参阅语言特定的示例：
 
-* [预编译 C#](#webhook---c-example)
-* [C# 脚本](#webhook---c-script-example)
+* [C#](#webhook---c-example)
+* [C# 脚本 (.csx)](#webhook---c-script-example)
 * [F#](#webhook---f-example)
 * [JavaScript](#webhook---javascript-example)
 
 ### <a name="webhook---c-example"></a>Webhook - C# 示例
 
-以下示例演示一个在泛型 JSON 请求响应中发送 HTTP 200 的[预编译 C# 函数](functions-dotnet-class-library.md)。
+以下示例显示一个在泛型 JSON 请求的响应中发送 HTTP 200 的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -364,7 +364,7 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
-对于[预编译 C#](functions-dotnet-class-library.md) 函数，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) 中定义的 [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs)。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) 中定义的 [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 特性。
 
 可以在特性构造函数参数中设置授权级别和允许的 HTTP 方法，Webhook 类型和路由模板有相应的属性。 有关这些设置的详细信息，请参阅[触发器 - 配置](#trigger---configuration)。 下面是某个方法签名中的 `HttpTrigger` 特性：
 
@@ -377,18 +377,19 @@ public static HttpResponseMessage Run(
 }
  ```
 
-有关完整示例，请参阅[触发器 - 预编译 C# 示例](#trigger---c-example)。
+有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
 下表解释了在 *function.json* 文件和 `HttpTrigger` 特性中设置的绑定配置属性。
+
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 | **类型** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
 | **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
-| **authLevel** |  **AuthLevel** |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;主密钥是必需的。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
+| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;主密钥是必需的。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | **methods** |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 参阅[自定义 HTTP 终结点](#trigger---customize-the-http-endpoint)。 |
 | **route** | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | **webHookType** | **WebHookType** |将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 _authLevel_ 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 _authLevel_ 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
@@ -527,6 +528,10 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 - **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`）传递密钥名称。
 - **请求头**：提供程序通过 `x-functions-clientid` 头传递密钥名称。
 
+## <a name="trigger---limits"></a>触发器 - 限制
+
+HTTP 请求长度限制为 100K (102,400) 字节，并且 URL 长度限制为 4k (4,096) 字节。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
+
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
 [host.json](functions-host-json.md) 文件包含控制 HTTP 触发器行为的设置。
@@ -539,7 +544,7 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-对于预编译 C#，没有特定于输出的绑定配置属性。 若要发送 HTTP 响应，请让函数返回类型 `HttpResponseMessage` 或 `Task<HttpResponseMessage>`。
+对于 C# 类库，没有特定于输出的绑定配置属性。 若要发送 HTTP 响应，请让函数返回类型 `HttpResponseMessage` 或 `Task<HttpResponseMessage>`。
 
 对于其他语言，HTTP 输出绑定定义为 function.json 的 `bindings` 数组中的 JSON 对象，如以下示例中所示：
 

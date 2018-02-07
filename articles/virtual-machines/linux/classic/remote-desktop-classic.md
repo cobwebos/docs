@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.openlocfilehash: 65098dbad2cfb2de1f2e5156fbcc3d6477311867
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72c814aece7626b19cefccb18e1b90f8c44d7f57
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>使用远程桌面连接到 Microsoft Azure Linux VM
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ RDP（远程桌面协议）是用于 Windows 的专用协议。 我们如何使�
 Xrdp 工具是一个开源 RDP 服务器，支持你从 Windows 计算机通过远程桌面连接连接到 Linux 服务器。 RDP 比 VNC（虚拟网络计算）的性能更好。 VNC 通过 JPEG 质量的图形呈现，可能会很慢，而 RDP 快速又清晰。
 
 > [!NOTE]
-> 必须已有运行 Linux 的 Microsoft Azure VM。 若要创建和设置 Linux VM，请参阅 [Azure Linux VM 教程](createportal.md)。
+> 必须已有运行 Linux 的 Microsoft Azure VM。 若要创建和设置 Linux VM，请参阅 [Azure Linux VM 教程](createportal-classic.md)。
 > 
 > 
 

@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/19/2017
 ms.author: sngun
-ms.openlocfilehash: ab095827dc9dbfee19284abfbac353b16d3239a7
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>运行 Azure Functions 与 Azure 流分析作业 
- 
-> [!IMPORTANT]
-> 此功能处于预览状态。
 
 可将 Functions 配置为流分析作业的输出接收器之一，以便通过 Azure 流分析使用 Azure Functions。 Functions 是事件驱动的按需计算体验，它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。 Functions 响应触发的这一功能使其成为流分析作业的自然输出。
 
@@ -62,7 +59,7 @@ ms.lasthandoff: 01/13/2018
 
 2. 浏览到 run.csx 函数。 将其更新为以下代码。 （请务必将“\<在此处放置 redis 缓存的连接字符串\>”替换为上一节中检索到的 Azure Redis 缓存主连接字符串。）  
 
-   ```c#
+   ```csharp
    using System;
    using System.Net;
    using System.Threading.Tasks;
@@ -113,7 +110,7 @@ ms.lasthandoff: 01/13/2018
 
    当流分析从函数收到“HTTP 请求实体过大”异常时，将减小发送到 Azure Functions 的批次的大小。 在函数中，使用下面的代码检查流分析，确保其不会发送过大的批次。 确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
 
-   ```c#
+   ```csharp
    if (dataArray.ToString().Length > 262144)
       {        
         return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);

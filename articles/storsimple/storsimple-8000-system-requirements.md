@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 4458187999d0795be8637f6f5615e4900ddd94cc
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 1a9cdf31c5924d22d968cd99383417ba371cd1c3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 01/08/2018
 
 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必需 | 说明 |
+| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 说明 |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |出 |WAN |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
@@ -107,7 +107,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com`<br>`https://login.microsoftonline.us` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.us` |设备注册 |仅限 DATA 0 |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
@@ -129,7 +129,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
     | 网络接口 | 启用云 | 禁用云但配有网关 |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
-    | Data 1  | 2            | 20                       |
+    | Data 1  | #N/A            | 20                       |
     | Data 2  | 3            | 30                       |
     | Data 3  | 4            | 40                       |
     | Data 4  | 5            | 50                       |

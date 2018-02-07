@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 0950d453e53a70f96f59de572ac10326ef030444
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 89346113c6231442beb1147c4c4fea524d03d909
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保护对安全访问数据目录和数据资产的访问
 > [!IMPORTANT]
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/03/2017
     ![数据目录 - 设置](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. 在设置页面中，展开“目录用户”部分。
     ![目录用户 - 添加](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. 单击“添加”。
+3. 单击 **“添加”**。
 4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
     ![目录用户 - 用户或组](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 5. 在文本框外按 Enter 或 Tab。 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: bbf357b902474a1812eb7a5a2c914d0c8b91934b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="example"></a>示例
 若要控制 API 返回的状态代码，可按如下所示使用 `HttpResponseException`： 
-```C#
+```csharp
 public Product GetProduct(int id)
 {
     Product item = repository.Get(id);
@@ -89,7 +89,7 @@ public Product GetProduct(int id)
 
 ### <a name="example"></a>示例
 若要进一步控制异常响应，可按如下所示使用 `HttpResponseMessage` 类： 
-```C#
+```csharp
 public Product GetProduct(int id)
 {
     Product item = repository.Get(id);
@@ -109,7 +109,7 @@ public Product GetProduct(int id)
 
 ### <a name="example"></a>示例
 下面是可将 `NotImplementedException` 异常转换为 HTTP 状态代码 `501, Not Implemented` 的筛选器： 
-```C#
+```csharp
 namespace ProductStore.Filters
 {
     using System;
@@ -137,7 +137,7 @@ namespace ProductStore.Filters
 
 ### <a name="example"></a>示例
 要将筛选器应用到特定的操作，请将筛选器作为特性添加到该操作： 
-```C#
+```csharp
 public class ProductsController : ApiController
 {
     [NotImplExceptionFilter]
@@ -150,7 +150,7 @@ public class ProductsController : ApiController
 ### <a name="example"></a>示例
 要将筛选器应用到 `controller` 中的所有操作，请将筛选器作为特性添加到 `controller` 类： 
 
-```C#
+```csharp
 [NotImplExceptionFilter]
 public class ProductsController : ApiController
 {
@@ -160,14 +160,14 @@ public class ProductsController : ApiController
 
 ### <a name="example"></a>示例
 要将筛选器全局应用到所有 Web API 控制器，请将筛选器的实例添加到 `GlobalConfiguration.Configuration.Filters` 集合。 此集合中的异常筛选器将应用到任何 Web API 控制器操作。 
-```C#
+```csharp
 GlobalConfiguration.Configuration.Filters.Add(
     new ProductStore.NotImplExceptionFilterAttribute());
 ```
 
 ### <a name="example"></a>示例
 对于模型验证，可按如下所示，将模型状态传递给 CreateErrorResponse 方法： 
-```C#
+```csharp
 public HttpResponseMessage PostProduct(Product item)
 {
     if (!ModelState.IsValid)
@@ -225,7 +225,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **步骤** | 应用程序应安全失败。 对于根据所做的特定决策返回布尔值的任何方法，应该谨慎创建异常块。 许多逻辑错误就是因为在编写异常块时漫不经心，使安全问题日积月累造成的。|
 
 ### <a name="example"></a>示例
-```C#
+```csharp
         public static bool ValidateDomain(string pathToValidate, Uri currentUrl)
         {
             try

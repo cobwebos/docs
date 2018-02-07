@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/17/2018
 ms.author: jeedes
-ms.openlocfilehash: fc0d7223cdc15cd7f17a4983d2c2ac46c5d1669b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f1ca40b5ca490644a3af2c9d727026c1a18a2eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>教程：配置 Workplace by Facebook 以进行用户预配
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Workplace by Facebook 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -75,7 +75,7 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 
     ![预配](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. 在“管理凭据”部分下，输入 Workplace by Facebook 管理员的机密令牌和租户 URL。
+5. 在“管理凭据”部分下，输入 Workplace by Facebook 管理员的“机密令牌”并将“租户 URL”值设为 `https://www.facebook.com/scim/v1/`。
 
 6. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Workplace by Facebook 应用。 如果连接失败，请确保 Workplace by Facebook 帐户具有团队管理员权限。
 
@@ -98,6 +98,5 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-workplacebyfacebook-tutorial.md)
-

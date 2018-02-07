@@ -2,15 +2,15 @@
 ms.assetid: 
 title: "Azure Key Vault 软删除 | Microsoft Docs"
 ms.service: key-vault
-author: BrucePerlerMS
-ms.author: bruceper
+author: lleonard-msft
+ms.author: alleonar
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 384b65bc89401780b174c143d84b3b8f552fba3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01357e4fdb9b6f27e9baf5f5c8e4c7d6b582ad35
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -27,7 +27,7 @@ Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象�
 
 ## <a name="scenarios"></a>方案
 
-Azure Key Vault 是 Azure Resource Manager 管理的跟踪资源。 Azure Resource Manager 还指定了定义明确的删除行为，要求成功的 DELETE 操作必须使该资源不再可访问。 软删除功能解决了已删除对象的恢复问题，无论是意外删除还是有意删除。
+Azure Key Vault 是 Azure 资源管理器管理的跟踪资源。 Azure 资源管理器还指定了定义明确的删除行为，要求成功的 DELETE 操作必须使该资源不再可访问。 软删除功能解决了已删除对象的恢复问题，无论是意外删除还是有意删除。
 
 1. 在典型方案中，用户可能无意中删除了 Key Vault 或 Key Vault 对象；如果 Key Vault 或 Key Vault 对象在预定时间段内可恢复，则用户可以撤消删除并恢复其数据。
 

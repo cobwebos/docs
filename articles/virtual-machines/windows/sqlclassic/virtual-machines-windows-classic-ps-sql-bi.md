@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 Microsoft Azure 虚拟机库包括含有 SQL Server 安装的映像。 库映像中支持的 SQL Server 版本是可以安装到本地计算机和虚拟机的相同安装文件。 本主题总结了在映像上安装的 SQL Server Business Intelligence (BI) 功能以及在预配虚拟机后所需的配置步骤。 本主题还介绍了 BI 功能和最佳实践的受支持的部署拓扑。
 
@@ -98,7 +98,7 @@ Microsoft Azure 虚拟机库包括若干含有 Microsoft SQL Server 的映像。
   * 默认驱动器 **C**: 的驱动器缓存策略未针对处理数据进行优化。
   * **D**: 驱动器是主要用于页面文件的临时驱动器。 **D**: 驱动器不会持久保留且不保存在 Blob 存储中。 诸如更改虚拟机大小之类的管理任务会重置 **D**: 驱动器。 建议**不**要将 **D**: 驱动器用于数据库文件（包括 tempdb）。
     
-    有关创建和附加磁盘的详细信息，请参阅[如何将数据磁盘附加到虚拟机](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+    有关创建和附加磁盘的详细信息，请参阅[如何将数据磁盘附加到虚拟机](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * 停止或卸载计划不使用的服务。 例如，如果虚拟机仅用于 Reporting Services，停止或卸载 Analysis Services 和 SQL Server Integration Services。 下图是默认情况下启动的服务的示例。
   
     ![SQL Server 服务](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
@@ -316,7 +316,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
   * 为前述端口 (*) 打开虚拟机终结点。
 * 如果虚拟机使用 Azure 虚拟网络等 VPN 隧道加入域，则不需要终结点。 但是要在 VM 防火墙中打开端口。
   
-  | 端口 | 类型 | 说明 |
+  | 端口 | Type | 说明 |
   | --- | --- | --- |
   | **80** |TCP |报表服务器远程访问 (*)。 |
   | **1433** |TCP |SQL Server Management Studio (*)。 |
@@ -339,7 +339,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 * [Azure 虚拟机上的 SQL Server 概述](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [在 Azure 上预配 SQL Server 虚拟机](../sql/virtual-machines-windows-portal-sql-server-provision.md)
-* [如何将数据磁盘附加到虚拟机](../classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [如何将数据磁盘附加到虚拟机](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [将数据库迁移到 Azure VM 上的 SQL Server](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 * [确定 Analysis Services 实例的服务器模式](https://msdn.microsoft.com/library/gg471594.aspx)
 * [多维建模（Adventure Works 教程）](https://technet.microsoft.com/library/ms170208.aspx)

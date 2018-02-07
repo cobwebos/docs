@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/29/2017
 ms.author: jroth
-ms.openlocfilehash: 5babea628180501e959387f80dac55618051f552
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e6d1f36d998ac8726e3a74b31772a5dd5a24bd58
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-create-sql-server-virtual-machines-with-azure-powershell"></a>如何使用 Azure PowerShell 创建 SQL Server 虚拟机
 
 本指南解释了使用 Azure PowerShell 创建 Windows SQL Server VM 的选项。 有关具有多个默认值的简明 Azure PowerShell 示例，请参阅 [SQL VM Azure PowerShell 快速入门](quickstart-sql-vm-create-powershell.md)。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="configure-your-subscription"></a>配置订阅
 
-1. 打开 PowerShell，并通过运行 **Add-AzureRmAccount** 命令建立对 Azure 帐户的访问。
+1. 打开 PowerShell，通过运行 **Add-AzureRmAccount** 命令建立对 Azure 帐户的访问。
 
    ```PowerShell
    Add-AzureRmAccount
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>设置虚拟机的操作系统属性
-现在，我们可以使用 [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) cmdlet 设置虚拟机的操作系统属性了，将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
+现在，我们可以使用 [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) cmdlet 设置虚拟机的操作系统属性了，将操作系统的类型设置为 Windows，要求安装[虚拟机代理](../agent-user-guide.md)，指定该 cmdlet 允许使用前面初始化的变量自动更新和设置虚拟机名称、计算机名称和凭据。
 
 执行以下 cmdlet 来设置虚拟机的操作系统属性。
 
@@ -307,7 +307,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 虚拟机已创建。
 
 > [!NOTE]
-> 可以忽略关于启动诊断的错误。 由于为虚拟机磁盘指定的存储帐户是高级存储帐户，因此会创建标准存储帐户用于启动诊断。
+> 可以忽略有关启动诊断的错误。 由于为虚拟机磁盘指定的存储帐户是高级存储帐户，因此会创建标准存储帐户用于启动诊断。
 
 ## <a name="install-the-sql-iaas-agent"></a>安装 SQL IaaS 代理
 SQL Server 虚拟机通过 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)支持自动化管理功能。 若要在新 VM 上安装该代理，请在创建 VM 后运行以下命令。
@@ -324,7 +324,7 @@ SQL Server 虚拟机通过 [SQL Server IaaS 代理扩展](virtual-machines-windo
 Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-还可以使用 **Remove-AzureRmResourceGroup** 命令永久删除与虚拟机关联的所有资源。 请小心使用此命令，因为它也会永久删除虚拟机。
+还可以使用 **Remove-AzureRmResourceGroup** 命令永久删除与虚拟机关联的所有资源。 请小心使用此命令，因为它也会永久删除该虚拟机。
 
 ## <a name="example-script"></a>示例脚本
 以下脚本包含本教程的完整 PowerShell 脚本。 其中假设已将 Azure 订阅设置为配合使用 **Add-AzureRmAccount** 和 **Select-AzureRmSubscription** 命令。

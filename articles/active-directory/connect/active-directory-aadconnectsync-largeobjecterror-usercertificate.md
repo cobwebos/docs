@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误 | Microsoft Docs"
+title: "Azure AD Connect - userCertificate 属性导致的 LargeObject 错误 | Microsoft Docs"
 description: "本主题提供针对 userCertificate 属性导致的 LargeObject 错误的补救步骤。"
 services: active-directory
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: fa824448288059aaad164035743982a2c9f20b9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
@@ -66,7 +67,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 8. 将更改导出到 Azure AD。
 9. 重新启用同步计划程序。
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步骤 1。 禁用同步计划程序，并验证是否没有正在进行的同步操作
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步骤 1. 禁用同步计划程序，并验证是否没有正在进行的同步操作
 确保实现新同步规则的中途不会发生同步，以免将意外的更改导出到 Azure AD。 若要禁用内置的同步计划程序，请执行以下操作：
 1. 在 Azure AD Connect 服务器上启动 PowerShell 会话。
 
@@ -88,7 +89,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
     | 属性 | 值 |
     | --- | --- |
-    | Direction |**Outbound** |
+    | 方向 |**Outbound** |
     | MV 对象类型 |**Person** |
     | 连接器 |*Azure AD 连接器的名称* |
     | 连接器对象类型 |**user** |
@@ -113,7 +114,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | Name | *提供名称* | 例如“Out to AAD – Custom override for userCertificate” |
+    | 名称 | *提供名称* | 例如“Out to AAD – Custom override for userCertificate” |
     | 说明 | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL” |
     | 连接的系统 | *选择 Azure AD 连接器* |
     | 连接的系统对象类型 | **user** | |

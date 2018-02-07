@@ -1,11 +1,11 @@
 ---
-title: "流分析：轮转输入和输出的登录凭据 | Microsoft 文档"
+title: "流分析：轮转输入和输出的登录凭据 | Microsoft Docs"
 description: "了解如何更新流分析输入和输出的凭据。"
 keywords: "登录凭据"
 services: stream-analytics
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
 ms.service: stream-analytics
@@ -13,187 +13,78 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/11/2018
+ms.author: sngun
+ms.openlocfilehash: c1aded8fefc7b56acd2e9ff36bb2c9641665db76
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>在流分析作业中轮转输入和输出的登录凭据
-## <a name="abstract"></a>摘要
-Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据。
+# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>轮转流分析作业的输入和输出的登录凭据
 
-虽然 Azure 流分析支持从上一次输出恢复作业，但我们仍希望分享整个操作过程，尽量缩短从停止作业到开始作业这段时间的延迟，并轮转登录凭据。
+每当重新生成流分析作业的输入或输出凭据时，应使用新的凭据更新作业。 必须在更新凭据前停止作业，不能在作业运行期间替换凭据。 为减少停止和重启作业之间的时滞，流分析支持从上一次输出开始继续执行作业。 本主题介绍轮换登录凭据和使用新凭据重启作业的过程。
 
-## <a name="part-1---prepare-the-new-set-of-credentials"></a>第 1 部分 - 准备一组新的凭据：
-此部分适用于以下输入/输出：
+## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>重新生成新凭据和使用新凭据更新作业 
 
-* Blob 存储
-* 事件中心
-* SQL 数据库
-* 表存储
-
-对于其他输入/输出，请执行第 2 部分。
+此部分将介绍如何重新生成 Blob 存储、事件中心、SQL 数据库和表存储的凭据。 
 
 ### <a name="blob-storagetable-storage"></a>Blob 存储/表存储
-1. 在 Azure 管理门户上，转到“存储”扩展：  
-   ![graphic1][graphic1]
-2. 找到作业使用的存储并进入：  
-   ![graphic2][graphic2]
-3. 单击“管理访问密钥”命令：  
-   ![graphic3][graphic3]
-4. 从主访问密钥和辅助访问密钥中**选择作业不使用的那个密钥**。
-5. 单击“重新生成”：  
-   ![graphic4][graphic4]
-6. 复制新生成的密钥：  
-   ![graphic5][graphic5]
-7. 继续完成第 2 部分。
+1. 登录 Azure 门户，浏览用作流分析作业输入/输出的存储帐户。    
+2. 从设置部分打开“访问密钥”。 在两个默认密钥（key1、key2）中选择作业不使用的那个密钥，并重新生成该密钥：  
+   ![重新生成存储帐户的密钥](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+3. 复制新生成的密钥。    
+4. 从 Azure 门户中，浏览流分析作业>选择“停止”并等待作业停止。    
+5. 找到要更新凭据的 Blob/表存储输入/输出。    
+6. 找到“存储帐户密钥”字段，在其中粘贴新生成的密钥，然后单击“保存”。    
+7. 保存更改后将自动开始进行连接测试，可在通知选项卡上查看。有两种通知：一种对应于保存更新，另一种对应于测试连接：  
+   ![编辑密钥后的通知](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+8. 进行至 [从上次停止的时间启动作业] (#start-your-job-from-the-last-stopped-time) 部分。
 
 ### <a name="event-hubs"></a>事件中心
-1. 转到 Azure 管理门户的服务总线扩展：  
-   ![graphic6][graphic6]
-2. 找到作业使用的服务总线命名空间，并进入该空间：  
-   ![graphic7][graphic7]
-3. 如果作业在服务总线命名空间上使用共享访问策略，请跳到步骤 6  
-4. 转到“事件中心”选项卡：  
-   ![graphic8][graphic8]
-5. 找到作业使用的事件中心并进入：  
-   ![graphic9][graphic9]
-6. 转到“配置”选项卡：  
-   ![graphic10][graphic10]
-7. 在“策略名称”下拉列表中，找到作业所使用的共享访问策略：  
-   ![graphic11][graphic11]
-8. 从主密钥和辅助密钥中**选择作业不使用的那个密钥**。  
-9. 单击“重新生成”：  
-   ![graphic12][graphic12]
-10. 复制新生成的密钥：  
-   ![graphic13][graphic13]
-11. 继续完成第 2 部分。  
+
+1. 登录 Azure 门户，浏览用作流分析作业输入/输出的事件中心。    
+2. 从设置部分中，打开“共享的访问策略”，并选择所需访问策略。 在“主密钥”和“辅助密钥”中，选择作业不使用的那个密钥，并重新生成该密钥：  
+   ![重新生成事件中心的密钥](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+3. 复制新生成的密钥。    
+4. 从 Azure 门户中，浏览流分析作业>选择“停止”并等待作业停止。    
+5. 找到需要更新凭据的事件中心输入/输出。    
+6. 找到“事件中心策略密钥”字段，在其中粘贴新生成的密钥，单击“保存”。    
+7. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。    
+8. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
 ### <a name="sql-database"></a>SQL 数据库
-> [!NOTE]
-> 注意：这会需要连接到 SQL 数据库服务。 我们会根据 Azure 管理门户的管理经验来演示如何连接，不过也可以选择使用某些客户端工具，例如 SQL Server Management Studio。
->
-> 
 
-1. 转到 Azure 管理门户的 SQL 数据库扩展：  
-   ![graphic14][graphic14]
-2. 找到作业使用的 SQL 数据库，并**单击服务器**链接（位于同一行）：  
-   ![graphic15][graphic15]
-3. 单击“管理”命令：  
-   ![graphic16][graphic16]
-4. 键入主数据库：  
-   ![graphic17][graphic17]
-5. 键入“用户名”、“密码”，并单击“登录”：  
-   ![graphic18][graphic18]
-6. 单击“新建查询”：  
-   ![graphic19][graphic19]
-7. 键入以下查询，将 <login_name> 替换为用户名，将 <enterStrongPasswordHere> 替换为新密码：  
-   `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
-8. 单击“运行”：  
-   ![graphic20][graphic20]
-9. 回到步骤 2，此时请单击数据库：  
-   ![graphic21][graphic21]
-10. 单击“管理”命令：  
-   ![graphic22][graphic22]
-11. 键入“用户名”、“密码”，并单击“登录”：  
-   ![graphic23][graphic23]
-12. 单击“新建查询”：  
-   ![graphic24][graphic24]
-13. 键入以下查询，将 <user_name> 替换为用于在该数据库的上下文中标识此登录名的名称（例如，提供的值可以与提供给 <login_name> 的值相同），并将 <login_name> 替换为新用户名：  
-   `CREATE USER <user_name> FROM LOGIN <login_name>`
-14. 单击“运行”：  
-   ![graphic25][graphic25]
-15. 现在应该向新用户提供与初始用户相同的角色和权限。
-16. 继续完成第 2 部分。
+需要连接到 SQL 数据库以更新现有用户的登录凭据。 可以使用 Azure 门户或客户端工具（如 SQL Server Management Studio）更新凭据。 本部分演示使用 Azure 门户更新凭据的过程。
 
-## <a name="part-2-stopping-the-stream-analytics-job"></a>第 2 部分：停止流分析作业
-1. 转到 Azure 管理门户的流分析扩展：  
-   ![graphic26][graphic26]
-2. 找到作业并进入：  
-   ![graphic27][graphic27]
-3. 转到“输入”选项卡或“输出”选项卡，具体取决于是在输入上轮转凭据还是在输出上轮转凭据。  
-   ![graphic28][graphic28]
-4. 单击“停止”命令，确认作业已停止：  
-   ![graphic29][graphic29] 等待作业停止。
-5. 找到要轮转凭据的输入/输出，并进入：  
-   ![graphic30][graphic30]
-6. 转到第 3 部分。
+1. 登录 Azure 门户，浏览用作流分析作业输出的 SQL 数据库。    
+2. 从“数据资源管理器”中，登录/连接到数据库 > 选择“SQL server 身份验证”作为“授权类型”> 在“登录”和“密码”中键入相应详细信息>选择“确定”。  
+   ![重新生成 SQL 数据库凭据](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
 
-## <a name="part-3-editing-the-credentials-on-the-stream-analytics-job"></a>第 3 部分：编辑流分析作业的凭据
-### <a name="blob-storagetable-storage"></a>Blob 存储/表存储
-1. 找到“存储帐户密钥”字段，将新生成的密钥粘贴到其中：  
-   ![graphic31][graphic31]
-2. 单击“保存”命令，并确认保存更改：  
-   ![graphic32][graphic32]
-3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。
-4. 转到第 4 部分。
+3. 在查询选项卡中，通过运行以下查询（确保使用用户名替换 `<user_name>`，使用新密码替换 `<new_password>`）更改其中一个用户的密码：  
 
-### <a name="event-hubs"></a>事件中心
-1. 找到“事件中心策略密钥”字段，将新生成的密钥粘贴到其中：  
-   ![graphic33][graphic33]
-2. 单击“保存”命令，并确认保存更改：  
-   ![graphic34][graphic34]
-3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。
-4. 转到第 4 部分。
+   ```SQL
+   Alter user `<user_name>` WITH PASSWORD = '<new_password>'
+   Alter role db_owner Add member `<user_name>`
+   ```
+
+4. 记录新的密码。    
+5. 从 Azure 门户中，浏览流分析作业>选择“停止”并等待作业停止。    
+6. 找到要轮换凭据的 SQL 数据库输出。 更新密码并保存更改。    
+7. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。    
+8. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
 ### <a name="power-bi"></a>Power BI
-1. 单击“续订授权”：  
+1. 登录 Azure 门户，浏览流分析作业，选择“停止”并等待作业停止。    
+2. 找到要续订凭据的 Power BI 输出 > 单击“续订授权”（应会看到成功消息）>“保存”更改。    
+3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。    
+4. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
-   ![graphic35][graphic35]
-2. 将获得以下确认：  
+## <a name="start-your-job-from-the-last-stopped-time"></a>从上次停止的时间启动作业
 
-   ![graphic36][graphic36]
-3. 单击“保存”命令，并确认保存更改：  
-   ![graphic37][graphic37]
-4. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。
-5. 转到第 4 部分。
-
-### <a name="sql-database"></a>SQL 数据库
-1. 找到“用户名”和“密码”字段，并将新创建的一组凭据粘贴到其中：  
-   ![graphic38][graphic38]
-2. 单击“保存”命令，并确认保存更改：  
-   ![graphic39][graphic39]
-3. 保存所做的更改时，连接测试会自动启动，请确保连接测试成功通过。  
-4. 转到第 4 部分。
-
-## <a name="part-4-starting-your-job-from-last-stopped-time"></a>第 4 部分：启动上次停止时的作业
-1. 通过导航离开“输入/输出”：  
-   ![graphic40][graphic40]
-2. 单击“开始”命令：  
-   ![graphic41][graphic41]
-3. 选择“上次停止时间”，并单击“确定”：  
-   ![graphic42][graphic42]
-4. 转到第 5 部分。  
-
-## <a name="part-5-removing-the-old-set-of-credentials"></a>第 5 部分：删除旧的凭据组
-此部分适用于以下输入/输出：
-
-* Blob 存储
-* 事件中心
-* SQL 数据库
-* 表存储
-
-### <a name="blob-storagetable-storage"></a>Blob 存储/表存储
-重复第 1 部分以获取作业以前使用过的访问密钥，以便续订现在不使用的访问密钥。
-
-### <a name="event-hubs"></a>事件中心
-重复第 1 部分以获取作业以前使用过的密钥，以便续订现在不使用的密钥。
-
-### <a name="sql-database"></a>SQL 数据库
-1. 回到第 1 部分步骤 7 中的查询窗口，键入以下查询，将 <previous_login_name> 替换为作业以前使用过的用户名：  
-   `DROP LOGIN <previous_login_name>`  
-2. 单击“运行”：  
-   ![graphic43][graphic43]  
-
-你会获得以下确认： 
-
-    Command(s) completed successfully.
-
-## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+1. 导航到作业的“概述”窗格 > 选择“启动”以启动作业。    
+2. 选择“上次停止时”> 单击“启动”。 请注意“上次停止时”选项仅在之前运行过作业且生成了输出的情况下出现。 作业的重启基于上次输出值的时间。
+   ![启动作业](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
@@ -201,48 +92,3 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-[graphic1]: ./media/stream-analytics-login-credentials-inputs-outputs/1-stream-analytics-login-credentials-inputs-outputs.png
-[graphic2]: ./media/stream-analytics-login-credentials-inputs-outputs/2-stream-analytics-login-credentials-inputs-outputs.png
-[graphic3]: ./media/stream-analytics-login-credentials-inputs-outputs/3-stream-analytics-login-credentials-inputs-outputs.png
-[graphic4]: ./media/stream-analytics-login-credentials-inputs-outputs/4-stream-analytics-login-credentials-inputs-outputs.png
-[graphic5]: ./media/stream-analytics-login-credentials-inputs-outputs/5-stream-analytics-login-credentials-inputs-outputs.png
-[graphic6]: ./media/stream-analytics-login-credentials-inputs-outputs/6-stream-analytics-login-credentials-inputs-outputs.png
-[graphic7]: ./media/stream-analytics-login-credentials-inputs-outputs/7-stream-analytics-login-credentials-inputs-outputs.png
-[graphic8]: ./media/stream-analytics-login-credentials-inputs-outputs/8-stream-analytics-login-credentials-inputs-outputs.png
-[graphic9]: ./media/stream-analytics-login-credentials-inputs-outputs/9-stream-analytics-login-credentials-inputs-outputs.png
-[graphic10]: ./media/stream-analytics-login-credentials-inputs-outputs/10-stream-analytics-login-credentials-inputs-outputs.png
-[graphic11]: ./media/stream-analytics-login-credentials-inputs-outputs/11-stream-analytics-login-credentials-inputs-outputs.png
-[graphic12]: ./media/stream-analytics-login-credentials-inputs-outputs/12-stream-analytics-login-credentials-inputs-outputs.png
-[graphic13]: ./media/stream-analytics-login-credentials-inputs-outputs/13-stream-analytics-login-credentials-inputs-outputs.png
-[graphic14]: ./media/stream-analytics-login-credentials-inputs-outputs/14-stream-analytics-login-credentials-inputs-outputs.png
-[graphic15]: ./media/stream-analytics-login-credentials-inputs-outputs/15-stream-analytics-login-credentials-inputs-outputs.png
-[graphic16]: ./media/stream-analytics-login-credentials-inputs-outputs/16-stream-analytics-login-credentials-inputs-outputs.png
-[graphic17]: ./media/stream-analytics-login-credentials-inputs-outputs/17-stream-analytics-login-credentials-inputs-outputs.png
-[graphic18]: ./media/stream-analytics-login-credentials-inputs-outputs/18-stream-analytics-login-credentials-inputs-outputs.png
-[graphic19]: ./media/stream-analytics-login-credentials-inputs-outputs/19-stream-analytics-login-credentials-inputs-outputs.png
-[graphic20]: ./media/stream-analytics-login-credentials-inputs-outputs/20-stream-analytics-login-credentials-inputs-outputs.png
-[graphic21]: ./media/stream-analytics-login-credentials-inputs-outputs/21-stream-analytics-login-credentials-inputs-outputs.png
-[graphic22]: ./media/stream-analytics-login-credentials-inputs-outputs/22-stream-analytics-login-credentials-inputs-outputs.png
-[graphic23]: ./media/stream-analytics-login-credentials-inputs-outputs/23-stream-analytics-login-credentials-inputs-outputs.png
-[graphic24]: ./media/stream-analytics-login-credentials-inputs-outputs/24-stream-analytics-login-credentials-inputs-outputs.png
-[graphic25]: ./media/stream-analytics-login-credentials-inputs-outputs/25-stream-analytics-login-credentials-inputs-outputs.png
-[graphic26]: ./media/stream-analytics-login-credentials-inputs-outputs/26-stream-analytics-login-credentials-inputs-outputs.png
-[graphic27]: ./media/stream-analytics-login-credentials-inputs-outputs/27-stream-analytics-login-credentials-inputs-outputs.png
-[graphic28]: ./media/stream-analytics-login-credentials-inputs-outputs/28-stream-analytics-login-credentials-inputs-outputs.png
-[graphic29]: ./media/stream-analytics-login-credentials-inputs-outputs/29-stream-analytics-login-credentials-inputs-outputs.png
-[graphic30]: ./media/stream-analytics-login-credentials-inputs-outputs/30-stream-analytics-login-credentials-inputs-outputs.png
-[graphic31]: ./media/stream-analytics-login-credentials-inputs-outputs/31-stream-analytics-login-credentials-inputs-outputs.png
-[graphic32]: ./media/stream-analytics-login-credentials-inputs-outputs/32-stream-analytics-login-credentials-inputs-outputs.png
-[graphic33]: ./media/stream-analytics-login-credentials-inputs-outputs/33-stream-analytics-login-credentials-inputs-outputs.png
-[graphic34]: ./media/stream-analytics-login-credentials-inputs-outputs/34-stream-analytics-login-credentials-inputs-outputs.png
-[graphic35]: ./media/stream-analytics-login-credentials-inputs-outputs/35-stream-analytics-login-credentials-inputs-outputs.png
-[graphic36]: ./media/stream-analytics-login-credentials-inputs-outputs/36-stream-analytics-login-credentials-inputs-outputs.png
-[graphic37]: ./media/stream-analytics-login-credentials-inputs-outputs/37-stream-analytics-login-credentials-inputs-outputs.png
-[graphic38]: ./media/stream-analytics-login-credentials-inputs-outputs/38-stream-analytics-login-credentials-inputs-outputs.png
-[graphic39]: ./media/stream-analytics-login-credentials-inputs-outputs/39-stream-analytics-login-credentials-inputs-outputs.png
-[graphic40]: ./media/stream-analytics-login-credentials-inputs-outputs/40-stream-analytics-login-credentials-inputs-outputs.png
-[graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png
-[graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png
-[graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
-

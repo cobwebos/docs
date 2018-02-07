@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 9b00faa06684be353cfcf5f67f182a56511210c5
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: d29f2d180df93f45202e881336e492c45587b276
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -300,7 +300,6 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure 开发测试实验室|Microsoft.DevTestLab|自定义映像创建和项目安装。  [了解详细信息](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)。|
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布。  [了解详细信息](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。|
-|Azure HDInsight|Microsoft.HDInsight|群集预配和安装。  [了解详细信息](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
 ||||
 

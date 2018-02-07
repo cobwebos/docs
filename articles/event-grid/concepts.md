@@ -6,19 +6,19 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: ccbd861c985e54a3808c0d4e8ea6169b6a61f134
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 4fd44387ac1c3dad9f0194f1b2c97d6350f9b15d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
 Azure 事件网格中的主要概念有：
 
-## <a name="events"></a>事件
+## <a name="events"></a>活动
 
 事件是完全描述系统中所发生情况的最小信息量。  每个事件都具有通用信息，如事件源、事件发生的时间和唯一标识符。  此外，每个事件还具有仅与特定事件类型相关的特定信息。 例如，与在 Azure 存储中创建的有关新文件的事件将包含有关该文件的详细信息，如 `lastTimeModified` 值。 或者，与虚拟机重启相关的事件包含该虚拟机的名称和重启原因。 每个事件被限制为 64 KB 的数据。
 
@@ -44,7 +44,7 @@ Azure 事件网格中的主要概念有：
 
 在订阅主题时，可以筛选发送到终结点的事件。 可以按事件类型或使用者模式进行筛选。 有关详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 
 事件网格可为订阅主题和发布主题提供安全性。 订阅时，必须对资源或主题具有足够的权限。 发布时，必须具有该主题的 SAS 令牌或密钥身份验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 混合标识设计注意事项 - 确定混合标识生命周期采用策略 | Microsoft 文档"
+title: "混合标识设计 - 生命周期采用策略 Azure | Microsoft Docs"
 description: "帮助依据每个生命周期阶段的可用选项定义混合标识管理任务。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: ef8c4a0f672af2540f071f40eac77dc881eb31ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。

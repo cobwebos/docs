@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: ff938697add98f3d21b4971175432335ee2e39ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3c3b036a8294e17aec103ba470402c1f8f707d8
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>从 Log Analytics 日志搜索结果中通过自动化 Runbook 采取操作
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="to-initiate-runbook-from-log-search"></a>从日志搜索中启动 runbook
 
-要从日志搜索结果中对事件采取操作或启动 runbook，首先需要创建日志搜索，从结果中，可以按需调用 runbook。  这可以通过 Azure 或 [OMS 门户](../log-analytics/log-analytics-log-searches.md)中的日志搜索功能来实现。  在此示例中，我们从 Azure 门户中执行日志搜索，对此功能进行了基本演示。
+要从日志搜索结果中对事件采取操作或启动 runbook，首先需要创建日志搜索，从结果中，可以按需调用 runbook。  这可以通过 [Azure 门户](../log-analytics/log-analytics-log-search-new.md)中的日志搜索功能来实现。  在此示例中，我们从 Azure 门户中执行日志搜索，对此功能进行了基本演示。
 
 1. 在 Azure 门户中的“中心”菜单上，单击“更多服务”，并选择“Log Analytics”。  
 2. 在 Log Analytics 边栏选项卡上，选择 Log Analytics 工作区，在工作区边栏选项卡上选择“日志搜索”。  
@@ -49,4 +49,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 * 查看 [Log Analytics 日志搜索引用](log-analytics-search-reference.md)以查看 Log Analytics 中所有可用的搜索字段和 Facet。
-* 若要了解如何自动调用自动化 runbook ，请查看[从 OMS Log Analytics 警报调用 Azure 自动化 runbook](../automation/automation-invoke-runbook-from-omsla-alert.md)。  
+* 若要了解如何自动调用自动化 runbook ，请查看[从 Log Analytics 警报调用 Azure 自动化 runbook](../automation/automation-invoke-runbook-from-omsla-alert.md)。  

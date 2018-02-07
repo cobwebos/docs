@@ -1,4 +1,4 @@
-1. 登录到 [Azure 门户][lnk-portal]。
+﻿1. 登录到 [Azure 门户][lnk-portal]。
 1. 选择“新建” > “物联网” > “IoT 中心”。
    
     ![Azure 门户跳转栏][1]

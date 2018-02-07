@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/05/2018
 
 ### <a name="windows-current-devices"></a>Windows 当前设备
 
-- 对于运行 Windows 桌面操作系统的设备，我们建议使用 Windows 10 周年更新（版本 1607）或更高版本。 
+- 对于运行 Windows 桌面操作系统的设备，支持的版本是 Windows 10 周年更新（版本 1607）或更高版本。 
 - 非联合环境（例如密码哈希同步配置）**支持** Windows 当前设备的注册。  
 
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/05/2018
 
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在组织中开始启用联接到混合 Azure AD 的设备之前，需确保运行最新版本的 Azure AD Connect。
 

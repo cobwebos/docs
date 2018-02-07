@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 8273647aa1cf8f7d35a9c645d44c64455e554cdb
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d65787c0db2b4e6c7c7d30d69dc77fe25b1ae8d9
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
@@ -117,7 +117,7 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>使用 Azure 门户进行故障排除
 ### <a name="using-portal-blades"></a>使用门户边栏选项卡
-有关步骤，请参阅[监视管道](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline)。
+有关步骤，请参阅[监视管道](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline)。
 
 ### <a name="using-monitor-and-manage-app"></a>使用监视和管理应用
 有关详细信息，请参阅[使用监视和管理应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。

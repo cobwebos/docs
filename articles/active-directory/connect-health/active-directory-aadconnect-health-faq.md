@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8cbe60ad3eb26aa1152f8eec3bdc36b8006cf242
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -45,6 +45,7 @@ ms.lasthandoff: 12/11/2017
 * 第一个 Connect Health 代理至少需要一个 Azure AD Premium 许可证。
 * 每个其他注册代理需要 25 个额外的 Azure AD Premium 许可证。
 * 代理计数等于在所有受监视角色（AD FS、Azure AD Connect 和/或 AD DS）中注册的总代理数。
+* AAD 连接运行状况许可不需要将许可证分配给特定用户。 只需拥有必要数量的有效许可证。
 
 许可信息还可在 [Azure AD 定价页](https://aka.ms/aadpricing)中找到。
 
@@ -84,7 +85,7 @@ Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconne
 
 **问：在 Azure AD Connect Health 代理安装期间，我必须重新启动我的服务器吗？**
 
-否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不会。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -101,7 +102,7 @@ Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconne
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不能。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不会。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 

@@ -9,15 +9,15 @@ ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: ccdeafeaf869768f4094aaa31fe2a69d52d7cf9d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 3bc28d6744725e7c58d78c5262d9e50d3bb674e8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>如何管理 Azure Location Based Services 帐户和密钥
 
-可以通过 Azure 门户管理你的 Azure Location Based Services 帐户和密钥。 获得帐户和订阅密钥后，可以在你的网站或移动应用程序中实现 API。
+可以通过 Azure 门户管理你的 Azure Location Based Services 帐户和密钥。 获得帐户和密钥后，可以在你的网站或移动应用程序中实现 API。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
